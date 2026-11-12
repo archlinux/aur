@@ -1,13 +1,14 @@
 pkgbase = anteon
 	pkgdesc = High-performance load testing tool
-	pkgver = 2.6.0
-	pkgrel = 2
+	pkgver = 2.4.0
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/getanteon/anteon
 	arch = any
 	license = AGPL-3.0-only
 	makedepends = go
 	makedepends = git
-	source = anteon-2.6.0-2.tar.gz::https://github.com/getanteon/anteon/archive/refs/tags/selfhosted-2.6.0.tar.gz
-	sha256sums = 228b2acc455e00866fbaf8dded3c3471da995385c5841390ea6010017195ee57
+	source = anteon-2.4.0-1.tar.gz::https://github.com/getanteon/anteon/archive/refs/tags/v2.4.0.tar.gz
+	sha256sums = ca0c1b8447bd2e2359697becb337767a50ed493f9e85d6fcfdd524fd85b579b4
 
 pkgname = anteon

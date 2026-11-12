@@ -2,25 +2,26 @@
 
 _pkgname=ddosify
 pkgname=anteon
-pkgver=2.6.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
+epoch=1
 pkgdesc="High-performance load testing tool"
 arch=('any')
 url="https://github.com/getanteon/anteon"
 license=('AGPL-3.0-only')
 makedepends=('go' 'git')
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/selfhosted-$pkgver.tar.gz")
-sha256sums=('228b2acc455e00866fbaf8dded3c3471da995385c5841390ea6010017195ee57')
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('ca0c1b8447bd2e2359697becb337767a50ed493f9e85d6fcfdd524fd85b579b4')
 
 prepare(){
-  cd "$pkgname-selfhosted-$pkgver/ddosify_engine/"
+  cd "$pkgname-$pkgver/ddosify_engine/"
   mkdir -p build/
   export GOPATH="${srcdir}"
   go mod download -modcacherw
 }
 
 build() {
-  cd "$pkgname-selfhosted-$pkgver/ddosify_engine/"
+  cd "$pkgname-$pkgver/ddosify_engine/"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -30,11 +31,11 @@ build() {
 }
 
 # check() {
-#   cd "$pkgname-selfhosted-$pkgver/ddosify_engine/"
+#   cd "$pkgname-$pkgver/ddosify_engine/"
 #   go test ./...
 # }
 
 package() {
-  cd "$pkgname-selfhosted-$pkgver/ddosify_engine/"
+  cd "$pkgname-$pkgver/ddosify_engine/"
   install -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$pkgname
 }
