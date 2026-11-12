@@ -1,0 +1,30 @@
+pkgbase = orgamnesia
+	pkgdesc = Lightweight Obsidian: second brain and personal wiki in Rust. Markdown and/or Emacs Org-mode notes.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/thomas-louvigne/orgamnesia
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	makedepends = rust-wasm
+	makedepends = trunk
+	makedepends = cargo-tauri
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = cairo
+	depends = libsoup3
+	depends = dbus
+	depends = glibc
+	depends = libgcc
+	depends = hicolor-icon-theme
+	conflicts = orgamnesia-git
+	options = !lto
+	options = !debug
+	source = orgamnesia::git+https://github.com/thomas-louvigne/orgamnesia.git#tag=v1.5.0
+	sha256sums = SKIP
+
+pkgname = orgamnesia
