@@ -4,7 +4,7 @@
 # VCS package: builds the tip of master. pkgver() derives the version from
 # git describe at build time; the value below only feeds the AUR web page.
 pkgname=actionlint-kjanat-git
-pkgver=1.17.0.r85.ge6f4a70
+pkgver=1.17.0.r706.g98a7376
 pkgrel=1
 pkgdesc='Static checker for GitHub Actions workflow files (kjanat fork, git master)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -59,17 +59,17 @@ build() {
 	export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
 	# makepkg strips symbols itself; keeping them here lets debuginfod work.
 	go build -o build/actionlint \
-		-ldflags "-linkmode=external -X ${_module}/internal/buildinfo.ReleaseVersion=${pkgver} -X ${_module}/internal/buildinfo.InstallOrigin=https://aur.archlinux.org/packages/${pkgname}" \
+		-ldflags "-linkmode=external -X ${_module}/internal/integrations/buildinfo.ReleaseVersion=${pkgver} -X ${_module}/internal/integrations/buildinfo.InstallOrigin=https://aur.archlinux.org/packages/${pkgname}" \
 		./cmd/actionlint
-	make man/actionlint.1
+	pandoc --standalone --from=markdown-smart --syntax-highlighting=none \
+		--to=man --metadata=title:ACTIONLINT --lua-filter=man/release-version.lua --lua-filter=man/inline-code-bold.lua \
+		--output=man/actionlint.1 man/actionlint.1.md
 }
 
 check() {
 	_system_tools
 	cd actionlint || exit 1
-	# The ./scripts/... tests reach the network; the shellcheck
-	# integration tests self-skip when those tools are absent.
-	go test . ./cmd/...
+	go test ./cmd/... ./internal/...
 }
 
 package() {
