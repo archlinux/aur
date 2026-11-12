@@ -3,8 +3,8 @@
 
 pkgname=vk-hdr-layer-phoenix
 pkgver=1.0.0
-pkgrel=2
-_commit=7ea2db8015098a4a0dd4499b98ad1c94a25b003a
+pkgrel=3
+_commit=38a39fc75389fdf0aa3956fd41b530b56af9723e
 _srcname=VK_hdr_layer-${_commit}
 _vkroots_commit=20733b938267dcac60f6ac105dbb757f9cc8df9c
 pkgdesc="Vulkan X11 HDR WSI Layer"
@@ -19,7 +19,7 @@ source=(
     "${_srcname}.tar.gz::$url/archive/${_commit}.tar.gz"
     "vkroots-${_vkroots_commit}.tar.gz::https://github.com/Joshua-Ashton/vkroots/archive/${_vkroots_commit}.tar.gz"
 )
-sha256sums=('30b572db89edc55b6dca552a87fda363cf0f5da4a972a9c5d1d8cefecdb49507'
+sha256sums=('9f868c219cee5691fe633a3c85ebf6d8d36cf99850c97d98d7dd4b1b53b0136e'
             '863ee36f80faa84d28e1f73b588f6f52d391d210267938a57f7a8fa14b9fd1ce')
 
 prepare() {

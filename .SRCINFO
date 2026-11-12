@@ -1,7 +1,7 @@
 pkgbase = vk-hdr-layer-phoenix
 	pkgdesc = Vulkan X11 HDR WSI Layer
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dec05eba/VK_hdr_layer
 	arch = x86_64
 	license = MIT
@@ -17,9 +17,9 @@ pkgbase = vk-hdr-layer-phoenix
 	provides = vk-hdr-layer
 	conflicts = vk-hdr-layer
 	conflicts = vk-hdr-layer-kwin6-git
-	source = VK_hdr_layer-7ea2db8015098a4a0dd4499b98ad1c94a25b003a.tar.gz::https://github.com/dec05eba/VK_hdr_layer/archive/7ea2db8015098a4a0dd4499b98ad1c94a25b003a.tar.gz
+	source = VK_hdr_layer-38a39fc75389fdf0aa3956fd41b530b56af9723e.tar.gz::https://github.com/dec05eba/VK_hdr_layer/archive/38a39fc75389fdf0aa3956fd41b530b56af9723e.tar.gz
 	source = vkroots-20733b938267dcac60f6ac105dbb757f9cc8df9c.tar.gz::https://github.com/Joshua-Ashton/vkroots/archive/20733b938267dcac60f6ac105dbb757f9cc8df9c.tar.gz
-	sha256sums = 30b572db89edc55b6dca552a87fda363cf0f5da4a972a9c5d1d8cefecdb49507
+	sha256sums = 9f868c219cee5691fe633a3c85ebf6d8d36cf99850c97d98d7dd4b1b53b0136e
 	sha256sums = 863ee36f80faa84d28e1f73b588f6f52d391d210267938a57f7a8fa14b9fd1ce
 
 pkgname = vk-hdr-layer-phoenix
