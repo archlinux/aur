@@ -1,7 +1,7 @@
 pkgbase = python39
 	pkgdesc = Major release 3.9 of the Python high-level programming language
 	pkgver = 3.9.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.python.org/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python39
 	depends = libffi
 	depends = libnsl
 	depends = libxcrypt
-	depends = openssl
+	depends = openssl-1.1
 	depends = zlib
 	optdepends = sqlite
 	optdepends = mpdecimal: for decimal

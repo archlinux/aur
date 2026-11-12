@@ -2,14 +2,14 @@
 
 pkgname=python39
 pkgver=3.9.25
-pkgrel=1
+pkgrel=2
 _pybasever=3.9
 _pymajver=3
 pkgdesc="Major release 3.9 of the Python high-level programming language"
 arch=('i686' 'x86_64')
 license=('PSF-2.0')
 url="https://www.python.org/"
-depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib')
+depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl-1.1' 'zlib')
 makedepends=('bluez-libs' 'mpdecimal' 'gdb' 'tk')
 optdepends=('sqlite' 'mpdecimal: for decimal' 'xz: for lzma' 'tk: for tkinter')
 source=(
@@ -44,7 +44,7 @@ build() {
   CFLAGS="${CFLAGS} -fno-semantic-interposition"
 
   export ax_cv_c_float_words_bigendian=no
-  ./configure --prefix=/usr \
+  PKG_CONFIG_PATH=/usr/lib/openssl-1.1/pkgconfig ./configure --prefix=/usr \
               --enable-shared \
               --with-computed-gotos \
               --with-lto \
