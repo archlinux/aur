@@ -1,6 +1,6 @@
 pkgbase = stuff-bin
 	pkgdesc = lightweight file manager
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/hyperpuncher/stuff
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = stuff-bin
 	depends = fontconfig
 	depends = glibc
 	depends = hicolor-icon-theme
+	depends = libarchive
 	depends = sdl3
 	depends = sdl3_image
 	depends = sdl3_ttf
@@ -20,13 +21,13 @@ pkgbase = stuff-bin
 	depends = xdg-utils
 	optdepends = polkit-agent: authentication prompts for protected storage operations
 	optdepends = xdg-desktop-portal: application chooser and desktop font settings
-	provides = stuff=0.2.0
+	provides = stuff=0.3.0
 	conflicts = stuff
 	options = !strip
 	options = !debug
-	source_x86_64 = stuff-bin-0.2.0-linux-x64.tar.zst::https://github.com/hyperpuncher/stuff/releases/download/v0.2.0/stuff-linux-x64.tar.zst
-	sha256sums_x86_64 = 28bc9de569dc022ecba09312dadc0af3439e188f98afe1d824f4799a164498cb
-	source_aarch64 = stuff-bin-0.2.0-linux-arm64.tar.zst::https://github.com/hyperpuncher/stuff/releases/download/v0.2.0/stuff-linux-arm64.tar.zst
-	sha256sums_aarch64 = f35da876c20076362c75e01e088650f7f8d7b610d01cd29b302896ce402c8f92
+	source_x86_64 = stuff-bin-0.3.0-linux-x64.tar.zst::https://github.com/hyperpuncher/stuff/releases/download/v0.3.0/stuff-linux-x64.tar.zst
+	sha256sums_x86_64 = 540b6dbfa8c645b18e99ab0c4b95d4ac4ba147dfb546f486601f31d4a9fc56a3
+	source_aarch64 = stuff-bin-0.3.0-linux-arm64.tar.zst::https://github.com/hyperpuncher/stuff/releases/download/v0.3.0/stuff-linux-arm64.tar.zst
+	sha256sums_aarch64 = 8190bf02257c3e2fa3eed833ddea3fe8d6ef96ee0e1684f3440e47e131a3bf48
 
 pkgname = stuff-bin
