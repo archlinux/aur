@@ -7,8 +7,8 @@
 # Import the key once: gpg --import keys/pgp/*.asc, or
 # gpg --recv-keys 33F9B54FD2A4B6A4110749B3BA464FC9847A832A.
 # The console is built for an ordinary desktop or laptop, with the features
-# images logind gpu bidi and hwaccel on (ADR-1500 D8), and VTIUM_FEATURES in
-# makepkg's environment names other features (below).
+# images logind gpu bidi libseat and hwaccel on (ADR-1500 D8), and
+# VTIUM_FEATURES in makepkg's environment names other features (below).
 #
 # pkgver is the tag without its v and without the hyphen before a
 # pre-release: v0.1.0-alpha.1 is 0.1.0alpha.1, which pacman sorts before
@@ -16,8 +16,8 @@
 
 pkgbase=vtium
 pkgname=vtium
-_tag=v0.1.0-alpha.6
-pkgver=0.1.0alpha.6
+_tag=v0.1.0-alpha.7
+pkgver=0.1.0alpha.7
 pkgrel=1
 pkgdesc='Terminal for the Linux console, drawn through KMS/DRM'
 arch=('x86_64')
@@ -26,7 +26,7 @@ url='https://github.com/vtium/vtium'
 # tables made from Unicode's data (Unicode-3.0) and X.Org's color names
 # (MIT-open-group and MIT), which COPYING lists.
 license=('MIT' 'OFL-1.1' 'Unicode-3.0' 'MIT-open-group')
-makedepends=('cargo' 'git' 'libxkbcommon' 'systemd-libs')
+makedepends=('cargo' 'git' 'libxkbcommon' 'seatd' 'systemd-libs')
 options=('!debug')
 source=("vtium::git+https://github.com/vtium/vtium.git#tag=${_tag}?signed"
         'terminus.vtfrit')
@@ -35,8 +35,10 @@ sha256sums=('SKIP'
 validpgpkeys=('33F9B54FD2A4B6A4110749B3BA464FC9847A832A') # Aaron Bockelie <aaronsb@gmail.com>
 
 package_vtium() {
-  depends=('bash' 'glibc' 'libgcc' 'libglvnd' 'libxkbcommon' 'mesa' 'systemd-libs'
-           'vtium-terminfo')
+  # seatd holds libseat.so, which the console links with libseat; installing
+  # it enables no seatd daemon.
+  depends=('bash' 'glibc' 'libgcc' 'libglvnd' 'libxkbcommon' 'mesa' 'seatd'
+           'systemd-libs' 'vtium-terminfo')
   optdepends=('vtium-fonts: the fonts the shipped frits name'
               'kbd: console fonts, which vtium draws when no frit is set'
               'kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon')
@@ -44,9 +46,10 @@ package_vtium() {
   # them provides vtium, so a package that depends on vtium is met by any.
   conflicts=('vtium-git' 'vtium-minspec' 'vtium-minspec-git'
              'vtium-minspec-gpu' 'vtium-minspec-gpu-git')
-  # The frits _make names in FRITS, and the Terminus frit, which keep a
-  # user's edits across an upgrade (ADR-1500 D8).
-  backup=('etc/vtium/fonts/desktop.vtfrit'
+  # The frits _make names in FRITS, the Terminus frit and seat mode's PAM
+  # file, which keep a user's edits across an upgrade (ADR-1500 D8).
+  backup=('etc/pam.d/vtium'
+          'etc/vtium/fonts/desktop.vtfrit'
           'etc/vtium/fonts/minspec-16.vtfrit'
           'etc/vtium/fonts/minspec-8.vtfrit'
           'etc/vtium/fonts/terminus.vtfrit')
@@ -58,12 +61,10 @@ package_vtium() {
 }
 
 # The console's features while VTIUM_FEATURES is unset, and the default of
-# hwaccel, the same as vtium-git's from v0.1.0-alpha.6 on, apart from
-# libseat: the console of v0.1.0-alpha.6 has no feature libseat, so
-# vtium-git alone builds it. The move to the first release that has it adds
-# libseat here, seatd to depends and makedepends, and etc/pam.d/vtium to
-# backup, as in vtium-git.
-_features='images logind gpu bidi'
+# hwaccel, the same as vtium-git's: the build for an ordinary desktop or
+# laptop, with right-to-left text, seat mode through libseat and logind, and
+# the GPU path on by default (ADR-1500 D8).
+_features='images logind gpu bidi libseat'
 _hwaccel=on
 
 # Everything below is the same in vtium-git/PKGBUILD and vtium/PKGBUILD;
