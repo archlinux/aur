@@ -2,19 +2,20 @@
 
 pkgname=iwdtray
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Tray icon and GUI front-end for iwd'
 url='https://github.com/bsd-source/iwdtray'
 arch=('x86_64')
 license=('GPL-3.0-or-later')
 depends=('iwd' 'gtk4>=4.12' 'glib2' 'libgcc' 'glibc')
 makedepends=('cargo' 'git')
+checkdepends=('dbus')
 conflicts=('iwgtk')
 backup=('etc/iwdtray/iwdtray.conf')
 options=('!lto' '!debug')
 source=("$pkgname::git+$url.git#tag=v$pkgver")
 # Checksum of the tagged tree: run 'makepkg -g' after tagging each release.
-sha256sums=('2ac6c50b8c185c5ca3cc63a3fc1e11efcc602bb4afb07a3879562e353f365594')
+sha256sums=('74f22bf43040d0cdcb70839120357f01f1681e590a348db8660f2d33ea6850b9')
 
 prepare() {
     cd "$pkgname"

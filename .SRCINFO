@@ -1,10 +1,11 @@
 pkgbase = iwdtray
 	pkgdesc = Tray icon and GUI front-end for iwd
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bsd-source/iwdtray
 	arch = x86_64
 	license = GPL-3.0-or-later
+	checkdepends = dbus
 	makedepends = cargo
 	makedepends = git
 	depends = iwd
@@ -17,6 +18,6 @@ pkgbase = iwdtray
 	options = !debug
 	backup = etc/iwdtray/iwdtray.conf
 	source = iwdtray::git+https://github.com/bsd-source/iwdtray.git#tag=v0.1.0
-	sha256sums = 2ac6c50b8c185c5ca3cc63a3fc1e11efcc602bb4afb07a3879562e353f365594
+	sha256sums = 74f22bf43040d0cdcb70839120357f01f1681e590a348db8660f2d33ea6850b9
 
 pkgname = iwdtray
