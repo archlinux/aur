@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=xdg-desktop-portal-cosmic-git
-pkgver=1.2.0.r0.g2948dd4
+pkgver=1.11.0.r10.gd205fec
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,7 @@ depends=(
   'mesa'
   'wayland'
   'xdg-desktop-portal'
+  'xdg-desktop-portal-gtk'
 )
 makedepends=(
   'cargo'
