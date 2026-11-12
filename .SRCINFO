@@ -1,0 +1,35 @@
+pkgbase = oplus-connect-private-bin
+	pkgdesc = Linux client for OPPO and OnePlus device connectivity（自用维护，CI 自编译重打包版）
+	pkgver = 1.0.0.r19.gfd752ee
+	pkgrel = 1
+	url = https://github.com/YuKongA/oplus-connect
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = glib2
+	depends = fontconfig
+	depends = freetype2
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugin-va
+	depends = gst-plugin-pipewire
+	depends = libnice
+	depends = xdg-desktop-portal
+	depends = iproute2
+	optdepends = gst-plugins-ugly: software H.264 encoder for tablet screen sharing
+	optdepends = libva-driver: GPU-specific VA-API driver
+	optdepends = networkmanager: determine the current Wi-Fi network
+	provides = oplus-connect=1.0.0.r19.gfd752ee
+	conflicts = oplus-connect
+	conflicts = oplus-connect-git
+	source = oplus-connect-private-bin-1.0.0.r19.gfd752ee.pkg.tar.zst::https://gh-proxy.com/https://github.com/Become-ILLUSORY/aur-auto-update/releases/download/oplus-connect-latest/oplus-connect-1.0.0.r19.gfd752ee-1-x86_64.pkg.tar.zst
+	sha256sums = 398e43ea6336d160802a5bd8cbd87099f3a3cd709cda5af026049540e6e47b21
+
+pkgname = oplus-connect-private-bin
