@@ -1,29 +1,72 @@
+# SPDX-FileCopyrightText: 2023 XWiki CryptPad Team <contact@cryptpad.org> and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Upstream's docs/cryptpad.service with the paths of the package: the server in
+# /usr/share/webapps/cryptpad, its data in /var/lib/cryptpad and its logs in /var/log/cryptpad
+
 [Unit]
-Description=CryptPad service
+Description=CryptPad API server
 After=network.target
 
 [Service]
 ExecStart=/usr/bin/node /usr/share/webapps/cryptpad/server.js
 WorkingDirectory=/usr/share/webapps/cryptpad
+
+Restart=always
+# Restart service after 2 seconds if node service crashes
+RestartSec=2
+
+# Proper logging to journald
+StandardOutput=journal
+StandardError=journal+console
+
 User=cryptpad
 Group=cryptpad
+
+# systemd sets the open file limit to 4000 unless you override it
+# cryptpad stores its data with the filesystem, so you should increase this to match the value of `ulimit -n`
+# or risk EMFILE errors.
+LimitNOFILE=1000000
+
+# hardening directives as per https://www.freedesktop.org/software/systemd/man/systemd.exec.html
+# check those with systemd-analyze security cryptpad.service for more information
+# Proc filesystem
+ProcSubset=all
+ProtectProc=invisible
+# Capabilities
+CapabilityBoundingSet=
+# Security
+NoNewPrivileges=true
+# Sandboxing
 ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET
+RestrictAddressFamilies=AF_INET6
+RestrictAddressFamilies=AF_NETLINK
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+PrivateMounts=true
+ProtectClock=true
+# System Call Filtering
+SystemCallArchitectures=native
+SystemCallFilter=~@cpu-emulation @debug @keyring @ipc @mount @obsolete @privileged @setuid
+SystemCallFilter=@chown
+SystemCallFilter=pipe
+SystemCallFilter=pipe2
+# The data and the logs; the configuration in /etc/webapps/cryptpad stays read-only
 ReadWritePaths=/var/lib/cryptpad /var/log/cryptpad
-ProtectHome=yes
-NoNewPrivileges=yes
-PrivateTmp=yes
-PrivateDevices=yes
-ProtectKernelTunables=yes
-ProtectKernelModules=yes
-ProtectKernelLogs=yes
-ProtectControlGroups=yes
-ProtectClock=yes
-ProtectHostname=yes
-RestrictNamespaces=yes
-RestrictRealtime=yes
-LockPersonality=yes
-RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
 
 [Install]
 WantedBy=multi-user.target
-

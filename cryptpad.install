@@ -1,3 +1,34 @@
+post_install() {
+  # A login salt of this instance, appended to the usernames before their passwords are hashed, so
+  # credentials of other instances and precomputed tables don't apply here. It can only be set before
+  # the first account: with another salt, existing accounts can't log in anymore. So it's only set
+  # when there's no account yet (no login blocks) and application_config.js doesn't set one. It goes
+  # into the module's factory, before the AppConfig it returns.
+  local config=/etc/webapps/cryptpad/customize/application_config.js salt
+  if ! grep -q 'loginSalt' "$config" &&
+    [[ -z "$(find /var/lib/cryptpad/block -type f -print -quit 2>/dev/null)" ]]; then
+    salt=$(od -An -N32 -tx1 /dev/urandom | tr -d ' \n')
+    if grep -q '^    return AppConfig;$' "$config"; then
+      sed -i "0,/^    return AppConfig;\$/s//    \/\/ The login salt of this instance, set when the package was installed. Changing it\n    \/\/ breaks the logins of all existing accounts.\n    AppConfig.loginSalt = '$salt';\n&/" "$config"
+      cat <<'MSG'
+A random login salt for this CryptPad instance is in /etc/webapps/cryptpad/customize/application_config.js
+(AppConfig.loginSalt). Keep it: changing it later breaks the logins of all existing accounts.
+MSG
+    else
+      cat <<MSG
+Set a login salt for this CryptPad instance before the first account is created: add
+  AppConfig.loginSalt = '$salt';
+to /etc/webapps/cryptpad/customize/application_config.js, before "return AppConfig;".
+MSG
+    fi
+  fi
+  cat <<'MSG'
+Optional: /usr/lib/cryptpad/build-pages builds CryptPad's pages with this instance's metadata for link
+previews (Open Graph), once config.js and infra.js have its addresses. They're built again after
+upgrades.
+MSG
+}
+
 post_upgrade() {
   # CryptPad 2026.10.0 split its configuration, the package ships infra.js since 2026.10.0-4
   if (($(vercmp "$2" 2026.10.0-4) < 0)); then

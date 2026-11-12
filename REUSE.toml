@@ -12,6 +12,7 @@ path = [
   "*.sysusers",
   "*.tmpfiles",
   "migrate-infra.js",
+  "build-pages",
   "*.logrotate",
   "*.pam",
   "*.service",

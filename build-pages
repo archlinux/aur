@@ -1,0 +1,20 @@
+#!/bin/bash
+# Builds the pages of CryptPad with the instance's metadata for link previews (Open Graph), like
+# upstream's `npm run build`: copies of the app pages with the instance's address and name, which
+# CryptPad serves from /etc/webapps/cryptpad/customize/www in place of its own. As they are copies of
+# the release's pages, they're built again after upgrades (cryptpad-build-pages.hook); with
+# --if-built, only when they've been built before.
+set -euo pipefail
+
+pages=/etc/webapps/cryptpad/customize/www
+if [[ "${1-}" == --if-built && ! -d "$pages" ]]; then
+  exit 0
+fi
+
+# build.js builds in $TMPDIR/CRYPTPAD_TEMP_BUILD, a fixed name: in a temporary folder of its own,
+# not in the shared /tmp, where another user could put a link in its place
+# Upstream fix: https://github.com/cryptpad/cryptpad/pull/2460
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+cd /usr/share/webapps/cryptpad
+TMPDIR=$tmp node scripts/build.js

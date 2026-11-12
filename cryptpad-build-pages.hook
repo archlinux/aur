@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = cryptpad
+
+[Action]
+Description = Building CryptPad's pages with the instance's metadata again...
+When = PostTransaction
+Exec = /usr/lib/cryptpad/build-pages --if-built
