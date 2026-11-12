@@ -7,7 +7,6 @@ pkgdesc="Very simple PDF parser"
 arch=('any')
 url="https://forge.soutade.fr/soutade/uPDFParser"
 license=('LGPL-3.0-or-later')
-provides=('updfparser')
 conflicts=('updfparser-git')
 makedepends=(
     'curl'

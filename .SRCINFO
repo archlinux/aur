@@ -9,7 +9,6 @@ pkgbase = updfparser
 	depends = libgcc
 	depends = glibc
 	depends = libstdc++
-	provides = updfparser
 	conflicts = updfparser-git
 	source = uPDFParser-0.1.tar.gz::https://forge.soutade.fr/soutade/uPDFParser/archive/v0.1.tar.gz
 	sha256sums = 520f4938b78386ae5e42a7876294cd4f61c5ef7425c906ca3449140ea447226e
