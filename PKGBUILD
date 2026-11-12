@@ -1,7 +1,7 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 _pkgname=appium-chromium-driver
 pkgname="nodejs-$_pkgname"
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Appium 2.x driver for Chromium-based browsers that work with Chromedriver"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('bf96126905865463aa65d9861a59a1000e8581bd5737e9c292ea7ada9d74e34a')
+sha256sums=('9e5349114cedf9ed80ef25c2d205ba27a328c01bf8659a5a132dd09e503b59d7')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
