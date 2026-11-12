@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-apple-hinted
 	pkgdesc = Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched, tuned with fonttune
 	pkgver = 22.2.2.1+nf3.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom

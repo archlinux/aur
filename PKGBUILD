@@ -11,7 +11,7 @@ _ftapi=1       # fonttune API this PKGBUILD was written for; the build stops if 
 # families (SF Mono alone gives 18.0.1.1+nf3.5.1), restore both lines before
 # committing: `git checkout PKGBUILD` and re-apply the pkgrel bump.
 pkgver=22.2.2.1+nf3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched, tuned with fonttune"
 arch=(any)
 url="https://developer.apple.com/fonts/"
@@ -56,7 +56,10 @@ sha256sums=('SKIP'
 #
 #  Apple-specific (this PKGBUILD):
 #    NERD_PATCH     true/false  patch with Nerd Fonts glyphs (default false)
-#    WANT_VARIABLE  true/false  also install the variable TTFs; never with NERD_PATCH
+#    WANT_VARIABLE  true/false  also install the variable TTFs; never with NERD_PATCH.
+#                   One per family and slope (SF Pro, SF Compact, SF Arabic, New York;
+#                   SF Mono has none), named the bare family, with every optical
+#                   size on opsz: the *_SUBS choice does not apply to them
 #    WANT_SF_PRO / WANT_SF_COMPACT / WANT_SF_MONO / WANT_SF_ARABIC / WANT_NY
 #                   true/false  (defaults true false true false true)
 #    SF_PRO_SUBS / SF_COMPACT_SUBS / NY_SUBS   space-separated subfamilies, empty = all
@@ -229,6 +232,10 @@ _resolve_options() {
 
   if [[ "$_interactive" == true && "$NERD_PATCH" == false && -z "${WANT_VARIABLE:-}" ]]; then
     echo "  Variable fonts hold all weights in one file; font-patcher destroys their axes."
+    echo "  They install next to the statics under the bare family name (\"SF Pro\","
+    echo "  \"New York\"): Display/Text or Small..ExtraLarge are their opsz axis, which"
+    echo "  Pango sets to the point size, so the subfamily choice below does not limit"
+    echo "  them. SF Mono has no variable font."
     _ask_yn "[WANT_VARIABLE] Include variable TTF fonts" n
     [[ "$_yn" =~ ^[yY]$ ]] && WANT_VARIABLE=true || WANT_VARIABLE=false
   fi
@@ -354,9 +361,14 @@ _select_fonts() {
       [[ "$_bn" == ._* ]] && continue
       _fam="${_fam_of[$_bn]:-}"
       [[ -n "$_fam" ]] || continue
-      _family_matches "$_fam" "$_base" "$_subs" || continue
       if [[ "$_bn" == *.ttf || "$_bn" == *.TTF ]]; then
         [[ "$NERD_PATCH" == true || "$WANT_VARIABLE" != true ]] && continue
+        # A variable font has the bare family name ("SF Pro", "New York") and
+        # holds every optical size on its opsz axis, so the subfamily choice
+        # (Display/Text, Small/Large) does not apply to it.
+        [[ "$_fam" == "$_base" ]] || _family_matches "$_fam" "$_base" "$_subs" || continue
+      else
+        _family_matches "$_fam" "$_base" "$_subs" || continue
       fi
       cp -n "$_f" "$srcdir/selected/" && _n=$(( _n + 1 ))
     done
