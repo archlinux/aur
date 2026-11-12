@@ -1,0 +1,26 @@
+pkgbase = roughenough-bin
+	pkgdesc = Roughtime (RFC 10049) server and client (prebuilt)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/int08h/roughenough
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0 OR MIT
+	depends = glibc
+	depends = libgcc
+	provides = roughenough=2.2.0
+	conflicts = roughenough
+	source_x86_64 = roughenough-client-2.2.0-x86_64.tar.gz::https://github.com/int08h/roughenough/releases/download/2.2.0/roughenough-client-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = roughenough-server-2.2.0-x86_64.tar.gz::https://github.com/int08h/roughenough/releases/download/2.2.0/roughenough-server-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = roughenough-keys-2.2.0-x86_64.tar.gz::https://github.com/int08h/roughenough/releases/download/2.2.0/roughenough-keys-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = cfd805205e891c556ebf3d6ab510a5a72b9b8018e549390d9deddcdf64ff3d0d
+	sha256sums_x86_64 = d4bb29bac6c89363f3f64c2091ecdeb8140665e9ae298385636d706762beecee
+	sha256sums_x86_64 = d0847f0a7ae1575191b8abb0cff7eee0e86f0658ad8ccd5fbd182118f4d56358
+	source_aarch64 = roughenough-client-2.2.0-aarch64.tar.gz::https://github.com/int08h/roughenough/releases/download/2.2.0/roughenough-client-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = roughenough-server-2.2.0-aarch64.tar.gz::https://github.com/int08h/roughenough/releases/download/2.2.0/roughenough-server-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = roughenough-keys-2.2.0-aarch64.tar.gz::https://github.com/int08h/roughenough/releases/download/2.2.0/roughenough-keys-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2f3d7aed1a70528caa1f01edfa273bb1a5634e7a88e2bdf2119721976ed1dfd1
+	sha256sums_aarch64 = 0dfa8e268a7be0c78220a79a78ff084cf824720501cf3b1e9e6763369ddc3115
+	sha256sums_aarch64 = c65eb3551dcf70e3aab3463a36591f7a493b195fa5c81682447159f9cf5be7a0
+
+pkgname = roughenough-bin
