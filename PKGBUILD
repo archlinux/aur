@@ -1,6 +1,6 @@
 # Maintainer: Inplico UK James@inplico.uk
 pkgname=wkgtk-html2pdf
-pkgver=1.0.13
+pkgver=1.0.99
 pkgrel=2
 pkgdesc="C++ Library with CLI tool to convert HTML to PDF, A modern replacement for wkhtmltopdf"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=('podofo' 'webkit2gtk-4.1' 'webkitgtk-6.0' 'json-c' 'libsystemd' 'xorg-s
 conflicts=()
 install=wk2gtkpdf.install
 source=("https://github.com/Timh1970/wkgtk-html2pdf/archive/v${pkgver}.tar.gz")
-sha256sums=('3a08ef5c96bcc41deb6be7f3dfcbcb7047636375b6f7af9419168cdc834926b1')
+sha256sums=('806befd87d49f55f526b2e4971de2374ca79e58a2dc1a090f49a4d7ad3bb14de')
 
 build() {
 
