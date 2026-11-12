@@ -1,7 +1,7 @@
 # Maintainer: gaou-piou <i.am.piou@gmail.com>
 
 pkgname=codemeyo-bin
-pkgver=1.11.7
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Multi-LLM autonomous coding agent with Claude, GPT, Grok, Gemini, DeepSeek, Mistral, Ollama and Groq support'
 arch=('x86_64')
@@ -21,7 +21,7 @@ options=('!strip' '!debug')
 # matching public id at https://codemeyo.com/api/v1/updater/files/<id> (its
 # Content-Disposition header carries the file name). Bump pkgver, _fileid and
 # the checksums.
-_fileid=62
+_fileid=91
 
 # codemeyo.com is fronted by a firewall that answers HTTP 403 to curl's stock
 # User-Agent ("curl/8.x") on a cold connection; any browser-like UA passes and
@@ -35,7 +35,7 @@ DLAGENTS=('http::/usr/bin/curl -fLC - -A Mozilla/5.0 --retry 5 --retry-delay 10 
 source=("CodeMeYo_${pkgver}_amd64.AppImage::https://codemeyo.com/api/v1/updater/files/${_fileid}"
         'codemeyo.desktop'
         'codemeyo.png')
-sha256sums=('6adbbcc0786f4c638ea0f16e6b3bf80722309c1390d0f96f58aa27e8063da878'
+sha256sums=('14cc293cce335ecbd4f50df481ff5871c8f8fa1cbcdf4cb85ef17ea00082f588'
             '322b6c50a4e434e57cd88498159573981321c3187039e7dbaf94d6485718d61c'
             '6c7660390d65217fe8de0892862254f47aee77e0af7096c75b8bfe168c5403f7')
 

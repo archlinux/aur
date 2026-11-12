@@ -21,11 +21,11 @@ versioned URL. The desktop auto-updater serves the very same artifact from a
 public, login-free endpoint:
 
 ```
-https://codemeyo.com/api/v1/updater/files/62
+https://codemeyo.com/api/v1/updater/files/91
 ```
 
-`62` currently maps to `CodeMeYo_1.11.7_amd64.AppImage` (sha256
-`6adbbc…a878`), which is exactly the file the download form returns. The
+`91` currently maps to `CodeMeYo_2.0.2_amd64.AppImage` (sha256
+`14cc29…f588`), which is exactly the file the download form returns. The
 `_fileid` variable in the PKGBUILD tracks it.
 
 ### Why `makepkg` used to fail with HTTP 403
