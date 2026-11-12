@@ -1,7 +1,7 @@
 pkgbase = dshub-bin
 	pkgdesc = Native desktop application for monitoring and controlling industrial devices via TCP/UDP
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skjafar/dshub
 	arch = x86_64
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = dshub-bin
 	conflicts = dshub
 	source = dshub-0.3.2-linux.tar.gz::https://github.com/skjafar/dshub/releases/download/v0.3.2/dshub-linux.tar.gz
 	source = dshub-0.3.2.tar.gz::https://github.com/skjafar/dshub/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = 95aba7673812c07b00e3f78080de44d06ab31da37c59bca21bca756dd112b3bc
-	sha256sums = 2b7c642af54ce3bb6321a56518e3fa2f866985faf6f42561be7fa9029fd15e0c
+	sha256sums = 0a0ec1eca2e18163570a7ed99f2a91a7485836e1fe99c665200ae0bc0ed751be
+	sha256sums = 8dc200232ed02e29c59110ae277c7fa4d583e49dfcf2a4561678ee584c54022c
 
 pkgname = dshub-bin
