@@ -2,20 +2,20 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz [at] gmail [dot] com>
 
 pkgname=bootstrap
-pkgver=5.3.8
+pkgver=5.3.9
 pkgrel=1
 pkgdesc="Front-end framework for web development"
 arch=('any')
 url="https://getbootstrap.com/"
 license=('MIT')
 install=bootstrap.install
-source=("https://github.com/twbs/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-dist.zip"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/twbs/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         "LICENSE")
-sha512sums=('601f9f9d25a1f894f55cfeac99b0d120af21c50df5154c6c1c751ed00ead3130779b37f5e1155087f5278d887e4d15c8acfd28a17053545a19ecd1c17266becf'
+sha512sums=('fa0b630b603d4a8fd5377cbea8c7e8b5265ec90af97e35f74549bc86f9f962bbcc465bb3a54bc3ff4ee7339fbacf6fbd786ce592cb4fa09e18ac837b22109695'
             '91e5270a12dbe91894bbbc0024314255ad3a0bb6cc85474d2887068026a0e914199822cfa54d144d531d129b26163bc8cea311c73fad3b83cb914a0971a27a1e')
 
 package() {
-  cd ${pkgname}-${pkgver}-dist
+  cd ${pkgname}-${pkgver}/dist
   install -d ${pkgdir}/usr/share/javascript/${pkgname}/{css,js}
   for _jsfile in ./js/*; do
 	install -m0644 "${_jsfile}" "${pkgdir}/usr/share/javascript/${pkgname}/js/"
