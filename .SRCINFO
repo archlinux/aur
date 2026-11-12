@@ -1,6 +1,6 @@
 pkgbase = nightcap-bin
 	pkgdesc = Android x86-64 Roblox compatibility runtime for Linux (prebuilt)
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/CoderDayton/nightcap
 	arch = x86_64
@@ -36,10 +36,10 @@ pkgbase = nightcap-bin
 	conflicts = mocktail
 	conflicts = nightcap
 	conflicts = nightcap-git
-	noextract = nightcap-0.5.1-1-x86_64.pkg.tar.zst
+	noextract = nightcap-0.5.2-1-x86_64.pkg.tar.zst
 	options = !debug
 	options = !strip
-	source = nightcap-0.5.1-1-x86_64.pkg.tar.zst::https://github.com/CoderDayton/nightcap/releases/download/v0.5.1/nightcap-0.5.1-1-x86_64.pkg.tar.zst
-	sha256sums = 83222548462aa84663c38eb45556a2b8d6c77b0e2ae51b9c74ac2640bd0bbb59
+	source = nightcap-0.5.2-1-x86_64.pkg.tar.zst::https://github.com/CoderDayton/nightcap/releases/download/v0.5.2/nightcap-0.5.2-1-x86_64.pkg.tar.zst
+	sha256sums = 7769b954a166204a0b1884a8fdb59eb3e5092bf17c705459058af2ebbed9607f
 
 pkgname = nightcap-bin
