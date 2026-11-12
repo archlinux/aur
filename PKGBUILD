@@ -6,14 +6,14 @@ pkgver=r408.b52b394
 pkgrel=1
 pkgdesc="Prettiest, easiest to use pastebin ever made"
 arch=('any')
-url="https://github.com/toptal/haste-server"
+url="https://github.com/C0rn3j/haste-server"
 license=('MIT')
 depends=('nodejs')
 makedepends=('git' 'npm')
 provides=('haste-server')
 conflicts=('haste-server')
 options=(!emptydirs)
-source=('git+https://github.com/toptal/haste-server.git')
+source=('git+https://github.com/C0rn3j/haste-server.git')
 sha256sums=('SKIP')
 
 pkgver() {
