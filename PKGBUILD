@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.70
-pkgver=1.0.0beta70
+_tag=v1.0.0-beta.71
+pkgver=1.0.0beta71
 pkgrel=1
 pkgdesc="A desktop shell for niri, built on Genoma: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -112,7 +112,7 @@ install=bioma-shell.install
 # but one switched off here must not come back with the next update.
 backup=('etc/xdg/autostart/bioma.desktop')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('425582bcd5b8d8e9dbb102ec02394bc0e578716eb40feb4082df8fc1f03dfc97')
+sha256sums=('4886c4ad749421fa6d1346c939d853ea8719ffed0c219cf5afe06961957599b6')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
@@ -156,6 +156,8 @@ package() {
     install -d "$pkgdir/usr/bin"
     ln -s /usr/share/bioma/scripts/bioma "$pkgdir/usr/bin/bioma"
     ln -s /usr/share/bioma/scripts/install "$pkgdir/usr/bin/bioma-install"
+    # Which shell runs, and restarting it: `bioma-shell restart`.
+    ln -s /usr/share/bioma/scripts/shell "$pkgdir/usr/bin/bioma-shell"
 
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 docs/configuration.md "$pkgdir/usr/share/doc/$pkgname/configuration.md"

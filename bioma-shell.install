@@ -87,7 +87,7 @@ post_install() {
     Already in niri, or starting niri from a TTY rather than a login manager?
     Start it now from a terminal inside niri:
 
-      /usr/share/bioma/scripts/shell start
+      bioma-shell start
 
     For a terminal instead, `bioma-install --autostart` writes the keys and
     the includes, and `bioma-install --check` says what is missing.
@@ -96,11 +96,16 @@ MSG
 
 post_upgrade() {
     _uinput
-    cat <<'MSG'
-==> Restart Bioma to run the new version:  /usr/share/bioma/scripts/shell restart
-    (or log out and back in). Keys the new version brings are added to your
-    bioma-binds.kdl then; the ones you removed stay removed.
+    # From 1.0.0-beta.71 a running Bioma restarts itself on the new version
+    # once pacman is done (genoma/services/upgrade.luau). One started by an
+    # older version does not know how yet.
+    if [ "$(vercmp "$2" 1.0.0beta71)" -lt 0 ]; then
+        cat <<'MSG'
+==> Restart Bioma to run the new version:  bioma-shell restart
+    (or log out and back in). From this version on it restarts by itself
+    after an upgrade.
 MSG
+    fi
     # 1.0.0-beta.61 moved Bioma from Quickshell to Genoma.
     if [ "$(vercmp "$2" 1.0.0beta61)" -lt 0 ]; then
         cat <<'MSG'
