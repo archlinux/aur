@@ -1,0 +1,5 @@
+post_install() {
+  echo "  Upstream enables telemetry by default: chainloop sends each command,"
+  echo "  its outcome, the user and organization IDs and a machine ID to"
+  echo "  t.chainloop.dev. Disable it with DO_NOT_TRACK=1."
+}

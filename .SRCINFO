@@ -1,0 +1,17 @@
+pkgbase = chainloop-cli-bin
+	pkgdesc = CLI for signed, policy-checked records of AI coding agents and CI/CD pipelines (prebuilt)
+	pkgver = 1.135.1
+	pkgrel = 1
+	url = https://github.com/chainloop-dev/chainloop
+	install = chainloop-cli.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = chainloop-cli=1.135.1
+	conflicts = chainloop-cli
+	source_x86_64 = chainloop-1.135.1-linux-amd64::https://github.com/chainloop-dev/chainloop/releases/download/v1.135.1/chainloop-linux-amd64
+	sha256sums_x86_64 = a958c35524917af288d2a5538b4ea288493f54e364a0eccaca1d658109c2b4e4
+	source_aarch64 = chainloop-1.135.1-linux-arm64::https://github.com/chainloop-dev/chainloop/releases/download/v1.135.1/chainloop-linux-arm64
+	sha256sums_aarch64 = 865d74ff172728da8cb16fed304c7c44ce4e6a666ef18879fc841e8b24673ace
+
+pkgname = chainloop-cli-bin
