@@ -1,12 +1,12 @@
 # Maintainer: hyperpuncher
 pkgname=stuff-git
 pkgver=r0
-pkgrel=1
+pkgrel=2
 pkgdesc='lightweight file manager'
 arch=('x86_64' 'aarch64')
 url='https://github.com/hyperpuncher/stuff'
 license=('MIT AND Zlib AND ISC')
-depends=('dbus' 'fontconfig' 'glibc' 'hicolor-icon-theme' 'sdl3'
+depends=('dbus' 'fontconfig' 'glibc' 'hicolor-icon-theme' 'libarchive' 'sdl3'
 	'sdl3_image' 'sdl3_ttf' 'systemd-libs' 'ttf-font' 'udisks2' 'wayland' 'xdg-utils')
 optdepends=('polkit-agent: authentication prompts for protected storage operations'
 	'xdg-desktop-portal: application chooser and desktop font settings')

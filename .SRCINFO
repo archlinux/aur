@@ -1,7 +1,7 @@
 pkgbase = stuff-git
 	pkgdesc = lightweight file manager
 	pkgver = r0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hyperpuncher/stuff
 	arch = x86_64
 	arch = aarch64
@@ -13,6 +13,7 @@ pkgbase = stuff-git
 	depends = fontconfig
 	depends = glibc
 	depends = hicolor-icon-theme
+	depends = libarchive
 	depends = sdl3
 	depends = sdl3_image
 	depends = sdl3_ttf
