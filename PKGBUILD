@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=apkscope
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Android APK decompiler, xrefs, API recon and MCP server, with native viewer"
 arch=('x86_64')
 url="https://github.com/suffixing/apkscope"
@@ -36,20 +36,30 @@ _cargo_env() {
   export CARGO_ENCODED_RUSTFLAGS="--remap-path-prefix=${srcdir}/="
 }
 
+# Upstream builds eframe with default-features off and never re-enables a
+# windowing backend, so winit aborts with "The platform you're compiling for is
+# not supported by winit" and the viewer only ever exists for Windows. Enabling
+# the two backends winit needs makes the viewer build here. All three phases use
+# this one value, because prepare() must cache exactly what the build reaches.
+_cargo_features="eframe/x11,eframe/wayland"
+
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  # `cargo fetch` caches only the crates the features above reach, but expanding
+  # eframe's weak `egui-wgpu?/x11` feature needs `egui-wgpu`'s registry entry even
+  # though that optional dependency stays disabled and never enters the lock
+  # file. Unwarmed, the --frozen build cannot resolve features offline and fails
+  # with "no matching package named `egui-wgpu` found". `cargo tree` performs that
+  # resolution from the registry index alone, pulling no crate payloads.
+  cargo tree --locked --features "$_cargo_features" > /dev/null
 }
 
 build() {
   cd "$pkgname-$pkgver"
   _cargo_env
-  # Upstream builds eframe with default-features off and never re-enables a
-  # windowing backend, so winit aborts with "The platform you're compiling for
-  # is not supported by winit" and the viewer only ever exists for Windows.
-  # Enabling the two backends winit needs makes the viewer build here.
-  cargo build --release --frozen --features eframe/x11,eframe/wayland
+  cargo build --release --frozen --features "$_cargo_features"
 }
 
 check() {
@@ -57,7 +67,7 @@ check() {
   _cargo_env
   # Same feature set as build(): a --no-default-features test run would replace
   # target/release/$pkgname with the viewer-less binary that package() installs.
-  cargo test --release --frozen --features eframe/x11,eframe/wayland
+  cargo test --release --frozen --features "$_cargo_features"
   # The viewer is the only consumer of these strings; their presence is the
   # proof that the tested binary is the one with the window, not the CLI build.
   grep -qaF 'Drop an APK here' "target/release/$pkgname"
