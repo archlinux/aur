@@ -1,0 +1,70 @@
+diff --git i/src/Export/Launch.lua w/src/Export/Launch.lua
+index 47878cc40..5d9db05b1 100644
+--- i/src/Export/Launch.lua
++++ w/src/Export/Launch.lua
+@@ -1,4 +1,4 @@
+-#@ SimpleGraphic
++-- #@ SimpleGraphic
+ -- Dat View
+ --
+ -- Module: Launch
+diff --git i/src/Export/browse.lua w/src/Export/browse.lua
+index eb35f484a..7b1ce5e97 100644
+--- i/src/Export/browse.lua
++++ w/src/Export/browse.lua
+@@ -1,4 +1,4 @@
+-#@
++-- #@
+ 
+ dofile("_common.lua")
+ 
+diff --git i/src/HeadlessWrapper.lua w/src/HeadlessWrapper.lua
+index 6ab11221c..a1c8e9c24 100644
+--- i/src/HeadlessWrapper.lua
++++ w/src/HeadlessWrapper.lua
+@@ -1,4 +1,4 @@
+-#@
++-- #@
+ ---@diagnostic disable: lowercase-global
+ -- This wrapper allows the program to run headless on any OS (in theory)
+ -- It can be run using a standard lua interpreter, although LuaJIT is preferable
+diff --git i/src/Launch.lua w/src/Launch.lua
+index e0f67db80..de8ce8980 100644
+--- i/src/Launch.lua
++++ w/src/Launch.lua
+@@ -1,4 +1,4 @@
+-#@ SimpleGraphic
++-- #@ SimpleGraphic
+ -- Path of Building
+ --
+ -- Module: Launch
+diff --git i/src/LaunchInstall.lua w/src/LaunchInstall.lua
+index 0ca3acacf..f2376fb59 100644
+--- i/src/LaunchInstall.lua
++++ w/src/LaunchInstall.lua
+@@ -1,4 +1,4 @@
+-#@ SimpleGraphic
++-- #@ SimpleGraphic
+ -- Path of Building
+ --
+ -- Module: Launch Install
+diff --git i/src/UpdateApply.lua w/src/UpdateApply.lua
+index 1032a9b14..b16680352 100644
+--- i/src/UpdateApply.lua
++++ w/src/UpdateApply.lua
+@@ -1,4 +1,4 @@
+-#@
++-- #@
+ -- Path of Building
+ --
+ -- Module: Update Apply
+diff --git i/src/UpdateCheck.lua w/src/UpdateCheck.lua
+index 969357151..bc6b36927 100644
+--- i/src/UpdateCheck.lua
++++ w/src/UpdateCheck.lua
+@@ -1,4 +1,4 @@
+-#@
++-- #@
+ -- Path of Building
+ --
+ -- Module: Update Check

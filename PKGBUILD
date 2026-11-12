@@ -9,7 +9,7 @@ provides=('path-of-building-community')
 conflicts=('path-of-building-community')
 url='https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 license=('MIT')
-pkgver=2.57.0.r8755.66.517
+pkgver=2.67.2.r9500.66.517
 
 depends=('zlib' 'qt6-base' 'luajit' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera' 'lua51-utf8')
 makedepends=('meson' 'ninja' 'unzip' 'rsync' 'git')
@@ -22,6 +22,7 @@ source=(
 	'PathOfBuilding.sh'
 	'lzip-linux.patch'
 	'PathOfBuilding-force-disable-devmode.patch'
+	'PathOfBuilding-strip-script-headers.patch'
 	'PathOfBuilding-logo.svg'
 	'PathOfBuilding-logo.png'
 	'PathOfBuildingCommunity.desktop'
@@ -34,6 +35,7 @@ sha256sums=(
 	'30118e22623b645a5e2cc81240fcf36d5189613383a09d1225aa3a76f7eba245'
 	'9dbc8802b74ceed78f1a6ba1d5b90251f5ae7f9a8cf5497426e4a35001112fcd'
 	'cab009c706747d45f654a3afc2a3cde3a650eb84cd4230353b40df5a4ad1d68b'
+	'd34d83b23666c9fcc178641cb9d58990ea1e9233c35ef6ed3fe2338ca969dd73'
 	'2467d10c7b5e201e337ba334a829e293a07027251bcda2b1f39774a62e8ff194'
 	'a64198061f60168ec07df33c37948e343eced7eeafe574cc20bdcf3a1d480cbc'
 	'079eff1a5e74cb6d776723f7c3d36349e426edaa332a8177ff8f5e78af56cf64'
@@ -53,6 +55,10 @@ prepare() {
 	# disable devmode
 	(cd "${srcdir}/PathOfBuilding" \
 		&& patch --no-backup-if-mismatch -p1 <"${srcdir}/PathOfBuilding-force-disable-devmode.patch"
+	)
+	# strip #@ script headers
+	(cd "${srcdir}/PathOfBuilding" \
+		&& patch --no-backup-if-mismatch -p1 <"${srcdir}/PathOfBuilding-strip-script-headers.patch"
 	)
 }
 

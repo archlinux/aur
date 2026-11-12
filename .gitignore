@@ -3,6 +3,7 @@
 !.gitignore
 !PKGBUILD
 !PathOfBuilding-force-disable-devmode.patch
+!PathOfBuilding-strip-script-headers.patch
 !PathOfBuilding-logo.png
 !PathOfBuilding-logo.svg
 !PathOfBuilding-lua51-bit.patch
