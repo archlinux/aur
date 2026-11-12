@@ -1,0 +1,17 @@
+pkgbase = texlive-minted-git
+	pkgdesc = Git version of minted with conditional local Python selection
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/arkadesOrg/minted
+	install = texlive-minted-git.install
+	arch = any
+	license = LPPL-1.3c
+	makedepends = git
+	makedepends = python
+	depends = python>=3.8
+	depends = texlive-latexextra
+	provides = texlive-minted
+	source = minted::git+https://github.com/arkadesOrg/minted.git#branch=conditional-local-python
+	sha256sums = SKIP
+
+pkgname = texlive-minted-git

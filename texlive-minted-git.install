@@ -1,0 +1,161 @@
+#!/bin/bash
+#
+# Switch /usr/bin/latexminted to the alternative launcher while preserving
+# the exact original symlink target.  The symlink itself remains owned by
+# texlive-latexextra; this script only changes its target.
+#
+# The state file is NUL-terminated so even unusual symlink targets are
+# preserved without shell-quoting or newline ambiguity.
+
+_link='/usr/bin/latexminted'
+_replacement='/usr/share/texmf/scripts/minted/latexminted.py'
+_state_dir='/var/lib/texlive-minted-git'
+_state_file="${_state_dir}/original-link-target"
+
+_warn() {
+    printf 'texlive-minted-git: warning: %s\n' "$*" >&2
+}
+
+_read_link() {
+    _link_target=''
+    [[ -L "$1" ]] || return 1
+    IFS= read -r -d '' _link_target < <(readlink -z -- "$1") || return 1
+}
+
+_atomic_link() {
+    local target=$1 tmpdir
+    tmpdir=$(mktemp -d "${_link}.tmp.XXXXXX") || return 1
+
+    if ! ln -s -- "$target" "${tmpdir}/latexminted"; then
+        rmdir -- "${tmpdir}"
+        return 1
+    fi
+
+    if ! mv -Tf -- "${tmpdir}/latexminted" "${_link}"; then
+        rm -f -- "${tmpdir}/latexminted"
+        rmdir -- "${tmpdir}"
+        return 1
+    fi
+
+    rmdir -- "${tmpdir}"
+}
+
+_refresh_texmf() {
+    if command -v mktexlsr >/dev/null 2>&1; then
+        mktexlsr /usr/share/texmf || _warn 'mktexlsr failed for /usr/share/texmf'
+    else
+        _warn 'mktexlsr is unavailable; refresh the TeX filename database manually'
+    fi
+}
+
+_activate_alternative() {
+    local current tmpfile
+
+    if [[ ! -L "${_link}" ]]; then
+        _warn "${_link} is not a symlink; leaving it untouched"
+        return 0
+    fi
+
+    if ! _read_link "${_link}"; then
+        _warn "cannot read ${_link}; leaving it untouched"
+        return 0
+    fi
+    current=${_link_target}
+
+    if [[ "${current}" == "${_replacement}" ]]; then
+        # Already active.  Do not overwrite the remembered original target.
+        return 0
+    fi
+
+    if [[ -e "${_state_file}" ]]; then
+        if ! IFS= read -r -d '' _original < "${_state_file}"; then
+            _warn "saved original target is unreadable; refusing to change ${_link}"
+            return 0
+        fi
+
+        # During an upgrade texlive-latexextra may have restored its own link.
+        # Re-activate only if it is still the target originally recorded.
+        if [[ "${current}" != "${_original}" ]]; then
+            _warn "${_link} was changed independently; preserving target '${current}'"
+            return 0
+        fi
+    else
+        # First installation: preserve the exact current symlink target.
+        mkdir -p -- "${_state_dir}" || {
+            _warn "cannot create ${_state_dir}; leaving ${_link} untouched"
+            return 0
+        }
+        chmod 0755 "${_state_dir}"
+
+        tmpfile="${_state_file}.tmp.$$"
+        if ! readlink -z -- "${_link}" > "${tmpfile}"; then
+            rm -f -- "${tmpfile}"
+            _warn "cannot save the original target; leaving ${_link} untouched"
+            return 0
+        fi
+        chmod 0600 "${tmpfile}"
+        if ! mv -f -- "${tmpfile}" "${_state_file}"; then
+            rm -f -- "${tmpfile}"
+            _warn "cannot commit saved target; leaving ${_link} untouched"
+            return 0
+        fi
+    fi
+
+    if ! _atomic_link "${_replacement}"; then
+        _warn "could not activate ${_replacement}; original target remains recorded"
+        return 0
+    fi
+
+    printf 'texlive-minted-git: activated %s\n' "${_replacement}"
+}
+
+_restore_original() {
+    local current
+
+    if [[ ! -f "${_state_file}" ]]; then
+        _warn 'no saved original symlink target; nothing to restore'
+        return 0
+    fi
+
+    if ! _read_link "${_link}"; then
+        _warn "${_link} is no longer a symlink; preserving current filesystem state"
+        rm -f -- "${_state_file}"
+        return 0
+    fi
+    current=${_link_target}
+
+    if [[ "${current}" == "${_replacement}" ]]; then
+        if ! IFS= read -r -d '' _original < "${_state_file}"; then
+            _warn 'saved original target is unreadable; leaving the alternative link in place'
+            return 0
+        fi
+        if ! _atomic_link "${_original}"; then
+            _warn 'could not restore the original symlink target; saved state retained'
+            return 0
+        fi
+        printf 'texlive-minted-git: restored original target of %s\n' "${_link}"
+    else
+        _warn "${_link} no longer points to this package; preserving target '${current}'"
+    fi
+
+    rm -f -- "${_state_file}"
+    rmdir -- "${_state_dir}" 2>/dev/null || true
+}
+
+post_install() {
+    _activate_alternative
+    _refresh_texmf
+}
+
+post_upgrade() {
+    _activate_alternative
+    _refresh_texmf
+}
+
+pre_remove() {
+    _restore_original
+}
+
+post_remove() {
+    _refresh_texmf
+}
