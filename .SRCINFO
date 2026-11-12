@@ -1,6 +1,6 @@
 pkgbase = wordcraft
 	pkgdesc = vibe coded clean-room reimplementation of Microsoft Word
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://getartcraft.com/apps/wordcraft
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = wordcraft
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	source = https://github.com/storytold/wordcraft/archive/refs/tags/v0.18.0/wordcraft-0.18.0.tar.gz
-	sha256sums = 0f2ef27987a129bcd78e600131f16443491e7a38bf8aabf09a48d35c8298567f
+	source = https://github.com/storytold/wordcraft/archive/refs/tags/v0.18.1/wordcraft-0.18.1.tar.gz
+	sha256sums = 55e6e6ca0e988a7ba320bef506e3910d2e2e5c1d1599a79571e144947438ab92
 
 pkgname = wordcraft
 	depends = glibc
