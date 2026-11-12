@@ -9,8 +9,8 @@ pkgname=(
     "${_pkgname}-x86-git"
 )
 _Pkgname="Millennium"
-pkgver=v3.6.3.beta.1.r7.gd6a7822a
-pkgrel=4
+pkgver=v3.6.3.beta.1.r35.gdee8e60f
+pkgrel=1
 pkgdesc="${_Pkgname} is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead. (git-version, next branch)"
 arch=('x86_64')
 url="https://steambrew.app"
@@ -44,10 +44,8 @@ makedepends=(
 provides=("${_pkgname}=${pkgver}")
 source=(
     "git+https://github.com/SteamClientHomebrew/${_Pkgname}.git#branch=main"
-    'https://patch-diff.githubusercontent.com/raw/SteamClientHomebrew/Millennium/pull/949.patch' # For the new SteamRT3 build
 )
 sha256sums=(
-    'SKIP'
     'SKIP'
 )
 options=(!debug)
