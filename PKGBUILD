@@ -2,7 +2,7 @@
 pkgname=rgy-search-avx2-bin
 install='rgy-search-avx2-bin.install'
 pkgver=0.1.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Whole-filesystem name search and content search in one stack (AVX2 optimized binary release)"
 arch=('x86_64')
 url="https://github.com/danalec/rgy"
@@ -11,7 +11,7 @@ depends=('glibc' 'gcc-libs')
 provides=('rgy-search-bin')
 conflicts=('rgy-search-bin' 'rgy-search-znver4-bin')
 source=("rgy-v${pkgver}-avx2-linux.tar.gz::https://github.com/danalec/rgy/releases/download/rgy-v${pkgver}/rgy-v${pkgver}-avx2-linux.tar.gz")
-sha256sums=('67b9e1c91f8bbaab9c550b5d466996e109a38d4ec2c83c023b2f5d9c2617117e')
+sha256sums=('4bca269ac7861eface567273ea420248124da5982aaec43a99db91c4bea074a9')
 options=('!strip')
 
 package() {
