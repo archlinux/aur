@@ -1,0 +1,13 @@
+pkgbase = bootvine-git
+	pkgdesc = A boot animation showing stages of systemd as a tree
+	pkgver = 0.1.3.ga7e33b4
+	pkgrel = 1
+	url = https://codeberg.org/wvhulle/bootvine
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	depends = systemd
+	source = bootvine::git+https://codeberg.org/wvhulle/bootvine.git
+	md5sums = SKIP
+
+pkgname = bootvine-git
