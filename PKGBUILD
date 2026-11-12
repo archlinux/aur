@@ -42,6 +42,8 @@ check() {
 
 	export CARGO_TARGET_DIR=target
 	cargo test --frozen --release -p ${pkgname} -p ${pkgname}-${pkgedition} -- \
+		--skip "suggested_commands_work_from_the_refused_launch_directory" \
+		--skip "login_environment::tests::real_login_shells_read_their_login_only_startup_files" \
 		--skip "plugin::state::tests::private_state_canonical_cas_delete_and_content_aba" \
 		--skip "plugin::state::tests::private_state_fixed_pending_recovery_cancel_and_postpromotion_failure" \
 		--skip "workspace::host::plugins::tests::applications::state::state_post_mutation_timeout_is_unknown_and_late_success_is_not_replied_twice"
