@@ -1,6 +1,6 @@
 pkgbase = arch-skm-bin
 	pkgdesc = Automated linux kernel building with Signed Kernel Modules (in-tree & out-of-tree) (prebuilt binaries)
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/sk8thing/arch-skm
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = arch-skm-bin
 	optdepends = base-devel: required to build kernels with makepkg
 	conflicts = arch-skm
 	options = !strip
-	source = arch-skm_v0.2.2_linux_amd64.tar.gz::https://github.com/sk8thing/arch-skm/releases/download/v0.2.2/arch-skm_linux_amd64.tar.gz
-	sha256sums = 2864865dc1ad082c496edb43faa6aca95a0ea928816a2ca816bdfb169d924eaa
+	source = arch-skm_v0.3.0_linux_amd64.tar.gz::https://github.com/sk8thing/arch-skm/releases/download/v0.3.0/arch-skm_linux_amd64.tar.gz
+	sha256sums = e5d56bf715efcfd0187794188ba6be8a245310f3dca92df9541146298b6f0840
 
 pkgname = arch-skm-bin

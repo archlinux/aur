@@ -2,7 +2,7 @@
 
 pkgname=arch-skm-bin
 _pkgname=arch-skm
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Automated linux kernel building with Signed Kernel Modules (in-tree & out-of-tree) (prebuilt binaries)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ _asset="${_pkgname}_${_arch}.tar.gz"
 _archive="${_pkgname}_v${pkgver}_${_arch}.tar.gz"
 _dir="${_pkgname}_${_arch}" 
 source=("${_archive}::${url}/releases/download/v${pkgver}/${_asset}")
-sha256sums=('2864865dc1ad082c496edb43faa6aca95a0ea928816a2ca816bdfb169d924eaa')
+sha256sums=('e5d56bf715efcfd0187794188ba6be8a245310f3dca92df9541146298b6f0840')
 
 package() {
   cd "${srcdir}/${_dir}"
