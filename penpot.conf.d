@@ -20,10 +20,10 @@
 ## You can read more about all available flags and other
 ## environment variables for the backend here:
 ## https://help.penpot.app/technical-guide/configuration/#advanced-configuration
-PENPOT_FLAGS="enable-registration enable-login-with-password disable-email-verification enable-smtp enable-prepl-server disable-telemetry"
+PENPOT_FLAGS="enable-registration enable-login-with-password disable-email-verification enable-smtp enable-prepl-server disable-telemetry disable-onboarding disable-admin-console"
 
 # run penpot-update-flags.sh after changing
-PENPOT_FRONTEND_FLAGS="enable-login-with-password enable-registration"
+PENPOT_FRONTEND_FLAGS="enable-login-with-password enable-registration disable-onboarding disable-admin-console disable-subscriptions"
 
 ## Penpot SECRET KEY. It serves as a master key from which other keys for subsystems
 ## (eg http sessions, or invitations) are derived.
