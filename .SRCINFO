@@ -1,0 +1,17 @@
+pkgbase = kubernetes-mcp-server
+	pkgdesc = Model Context Protocol (MCP) server for Kubernetes and OpenShift
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/containers/kubernetes-mcp-server
+	arch = x86_64
+	arch = aarch64
+	arch = powerpc64le
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = kubernetes-mcp-server-0.1.2.tar.gz::https://github.com/containers/kubernetes-mcp-server/archive/refs/tags/v0.1.2.tar.gz
+	source = demo.kubeconfig
+	sha256sums = 3e54fdd971727f1ff319ce3e4d93b7aacc7f4159a8bc0812334ec0830e551f7b
+	sha256sums = 0ecdac7bcbde044afbf603e049b0493bb2eda037eed1fd3e63fc72f638bcd1b8
+
+pkgname = kubernetes-mcp-server
