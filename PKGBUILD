@@ -7,7 +7,7 @@
 pkgbase=pidgin
 pkgname=('libpurple' 'finch')
 pkgver=2.14.14
-pkgrel=5
+pkgrel=5.1
 arch=('x86_64')
 url="https://pidgin.im/"
 license=('GPL')
@@ -18,11 +18,13 @@ options=('!emptydirs')
 source=(https://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/$pkgbase-$pkgver.tar.bz2{,.asc}
         libpurple-fix-media-manager-gst-device-reference.patch
         libpurple-unref-gst-devices-from-messages.patch
+        finch-no-gnt-disable-deprecated.patch
 )
 sha256sums=('0ffc9994def10260f98a55cd132deefa8dc4a9835451cc0e982747bd458e2356'
             'SKIP'
             '7ac937705681460e42028e6ad2d3609b8d21108d534547c87991753c74a8fb5f'
-            'd02eb86645d1692b51ed570c83069daee9f31ead481581906c771ee46e248889')
+            'd02eb86645d1692b51ed570c83069daee9f31ead481581906c771ee46e248889'
+            'de41e318fdaaedcb8ddbd00e6b1dec878bccfbbc9b1a10373d2f561b84ab8aba')
 validpgpkeys=('40DE1DC7288FE3F50AB938C548F66AFFD9BDB729') # Gary Kramlich <grim@reaperworld.com>
 
 prepare() {
@@ -30,6 +32,7 @@ prepare() {
 
   patch -Np1 -i ../libpurple-fix-media-manager-gst-device-reference.patch
   patch -Np1 -i ../libpurple-unref-gst-devices-from-messages.patch
+  patch -Np1 -i ../finch-no-gnt-disable-deprecated.patch
 }
 
 build() {
