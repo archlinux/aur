@@ -2,4 +2,4 @@
 !.SRCINFO
 !PKGBUILD
 
-!test-ssh-libssh-algos.patch
+!indexed-gzip-fix.patch

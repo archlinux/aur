@@ -1,6 +1,6 @@
 pkgbase = nbdkit-git
 	pkgdesc = NBD server toolkit
-	pkgver = r4859.42f73ac8
+	pkgver = r4865.0614f178
 	pkgrel = 1
 	url = https://gitlab.com/nbdkit/nbdkit/
 	arch = x86_64
@@ -32,8 +32,8 @@ pkgbase = nbdkit-git
 	provides = nbdkit
 	conflicts = nbdkit
 	source = nbdkit-git::git+https://gitlab.com/nbdkit/nbdkit.git
-	source = test-ssh-libssh-algos.patch
+	source = indexed-gzip-fix.patch
 	sha256sums = SKIP
-	sha256sums = d4867774c73c3fc1039b9a0e8aa42f478bf6c3a55ba16205a993ecb97cb76bef
+	sha256sums = ff8db2d363a7a5af73fdada2f8a756f2f4adb804c74b675dd96dcf6ceb64f62d
 
 pkgname = nbdkit-git

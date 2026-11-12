@@ -1,0 +1,17 @@
+--- a/filters/indexed-gzip/ig_zran.c
++++ b/filters/indexed-gzip/ig_zran.c
+@@ -288,6 +288,8 @@
+-    ret = inflateSetDictionary(&index->strm, point->window, point->dict);
+-    if (ret != Z_OK) {
+-        nbdkit_debug("ig_deflate_index_extract: "
+-                     "inflateSetDictionary returned %d",
+-                     ret);
+-        return ret;
++    if (point->dict > 0) {
++        ret = inflateSetDictionary(&index->strm, point->window, point->dict);
++        if (ret != Z_OK) {
++            nbdkit_debug("ig_deflate_index_extract: "
++                         "inflateSetDictionary returned %d",
++                         ret);
++            return ret;
++        }

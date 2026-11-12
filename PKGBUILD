@@ -3,7 +3,7 @@
 
 pkgname=nbdkit-git
 _pkgname=nbdkit
-pkgver=r4859.42f73ac8
+pkgver=r4865.0614f178
 pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('x86_64')
@@ -40,7 +40,7 @@ checkdepends=('qemu')
 makedepends=(git)
 source=(
   "${pkgname}::git+https://gitlab.com/nbdkit/nbdkit.git"
-  "test-ssh-libssh-algos.patch"
+  'indexed-gzip-fix.patch'
 )
 conflicts=($_pkgname)
 provides=("$_pkgname")
@@ -58,10 +58,7 @@ prepare() {
   # tests then try to load even though torrent is now disabled.
   git clean -fdxq
 
-  # test-ssh.sh probes localhost with OpenSSH, but the plugin uses libssh,
-  # which lacks e.g. ML-DSA keys. Probe with libssh-supported algorithms
-  # only, so the test is skipped instead of failing on such hosts.
-  patch -Np1 -i "${srcdir}/test-ssh-libssh-algos.patch"
+  patch -Np1 -i "${srcdir}/indexed-gzip-fix.patch"
 }
 
 build() {
@@ -90,4 +87,4 @@ check() {
   make check
 }
 sha256sums=('SKIP'
-            'd4867774c73c3fc1039b9a0e8aa42f478bf6c3a55ba16205a993ecb97cb76bef')
+            'ff8db2d363a7a5af73fdada2f8a756f2f4adb804c74b675dd96dcf6ceb64f62d')
