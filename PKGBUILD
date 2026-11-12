@@ -1,9 +1,9 @@
 # Maintainer: Emiliano Gandini Outeda <e@emiliano-go.com>
 
 pkgname=trustsight
-pkgver=0.28.1
+pkgver=0.28.2
 pkgrel=1
-pkgdesc='Audits AUR PKGBUILD updates before install: structure, commands, novelty'
+pkgdesc='Security analysis and intelligence platform for the AUR ecosystem'
 arch=('any')
 url='https://github.com/emiliano-go/trustsight'
 license=('MIT')
@@ -47,8 +47,8 @@ validpgpkeys=('F759D6D49B0A395AB922414A5CC3B4C50D37E793')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.sig")
 
-sha256sums=('008347a66d73dac0a756cbc98b89c2351a6ffe6de1bc4f2c09710a1bb0eb57c1'
-            '1efa1b9cc494863565b29aa2e4eb74648c0ea7c55011e519c1a7a3672036ed59')
+sha256sums=('bd2757abff814f40b730097820155d945683b64a1e9cb63c21ab6ef4dd810856'
+            'a296c61b4da5c5596d9b1fcad9e7f28126df52a711ebcfd5180462e96b27193b')
 
 build() {
   cd "$pkgname-$pkgver"
