@@ -1,6 +1,6 @@
 # Maintainer: KADHIRAVANEG <kadhiravanegk@gmail.com>
 pkgname=nodewipe
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Find and reclaim disk space from stray dev artifacts (node_modules, Python venvs, Rust/Java/JS build caches, and more)"
 arch=('x86_64')
