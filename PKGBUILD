@@ -2,7 +2,7 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname='downjack-bin'
-pkgver=0.2.12
+pkgver=0.2.13
 pkgrel=1
 pkgdesc='Set up your gitignore and license files like using a lumberjack'
 url='https://github.com/chardoncs/downjack'
@@ -13,21 +13,23 @@ conflicts=('downjack')
 optdepends=('git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chardoncs/downjack/releases/download/v${pkgver}/downjack_Linux_arm64.tar.gz")
-sha256sums_aarch64=('77cccf7c79b1aa69b394b4101e9dab3f34ad77c38590afc5a27561b8e2f89447')
+sha256sums_aarch64=('b885da74b0a2c59b0c96ec1886daa095f6041612fe0bc4933f30bf72664290b3')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/chardoncs/downjack/releases/download/v${pkgver}/downjack_Linux_armv7.tar.gz")
-sha256sums_armv7h=('90f53be49a52db708cbdf7ed81259d82789acb07c673ba94d782dfacda58e105')
+sha256sums_armv7h=('d76b692173d02b67c1f318e2a8872d53c3c9c60830973a34802df1b5edc59ea0')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/chardoncs/downjack/releases/download/v${pkgver}/downjack_Linux_i386.tar.gz")
-sha256sums_i686=('74401590f6c87ef87e072b31e98433ff8aabbd842337b00942a5dc3d74ef7b12')
+sha256sums_i686=('2fb1798064f5bb40001313c77005798289836b5c766cbaacef886071ecc99991')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chardoncs/downjack/releases/download/v${pkgver}/downjack_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('522b0c8eb4a3ae3cdbd956ba9027bb02e59d924a38034782d58745e57c52cdc8')
+sha256sums_x86_64=('cd45a94a53020e8f4e216475212cad3a38e2eb6e305b57a08b7bba2b8c9da784')
 
 package() {
   cd "${srcdir}/downjack_Linux_${CARCH}"
   # bin
   install -Dm755 "./downjack" "${pkgdir}/usr/bin/downjack"
+  # man page
+  install -Dm644 "./docs/downjack.1" "${pkgdir}/usr/share/man/man1/downjack.1"
   # license
   mkdir -p "${pkgdir}/usr/share/licenses/downjack/"
   install -Dm644 ./LICENSE* "${pkgdir}/usr/share/licenses/downjack/"
