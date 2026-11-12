@@ -230,6 +230,9 @@ EOF
 			s6-db-reload
 			s6-rc -u change /run/service/alsabeep
 			;;
+		(nitro) 
+			nsm enable alsabeep
+			;;
 		(*) unknown_init;;
 	esac
 	echo "users need to be in the input group for alsabeep to work properly
@@ -263,6 +266,9 @@ remove(){
 			rm -f /etc/s6/adminsv/default/contents.d/alsabeep
 			s6-db-reload
 			;;
+		(nitro)
+			nsm disable alsabeep
+			;;
 		(*) unknown_init;;
 	esac
 	stop
@@ -270,6 +276,7 @@ remove(){
 			/etc/runit/sv/alsabeep \
 			/etc/init.d/alsabeep \
 			/etc/dinit.d/alsabeep \
+			/etc/nitro/sv/alsabeep \
 			/etc/s6/*/*/*/alsabeep \
 			|| true
 }
