@@ -1,0 +1,34 @@
+pkgbase = clipsync-bin
+	pkgdesc = Clipboard sync between trusted Mac and Linux computers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lancekrogers/clipsync
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libcrypto.so=3-64
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxrender
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	depends = libglvnd
+	depends = hicolor-icon-theme
+	provides = clipsync
+	conflicts = clipsync
+	options = !strip
+	options = !debug
+	source = clipsync-bin-0.1.0-LICENSE-MIT::https://raw.githubusercontent.com/lancekrogers/clipsync/v0.1.0/LICENSE-MIT
+	source = clipsync-bin-0.1.0-LICENSE-APACHE::https://raw.githubusercontent.com/lancekrogers/clipsync/v0.1.0/LICENSE-APACHE
+	sha256sums = 135672e0a7da10ee13c40de654e8752cdab3e0be687d65bc0b6142c1ac3a2b16
+	sha256sums = e9ef22dcb805f2a6bf5ef1078cf78e58ef3d1374ecdf834c69385b87d6e96d03
+	source_x86_64 = https://github.com/lancekrogers/clipsync/releases/download/v0.1.0/clipsync-0.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 12bf772ddc47e07870a492fa142ab1fda2f8b0744f52cb21ed733f0ed6538225
+	source_aarch64 = https://github.com/lancekrogers/clipsync/releases/download/v0.1.0/clipsync-0.1.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = fb9e0d50776faf6f52ac60a3cbf4916d0444905c9596d186ea2a1e1ba448d6ed
+
+pkgname = clipsync-bin
