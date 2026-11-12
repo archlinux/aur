@@ -1,46 +1,30 @@
 # Maintainer: João Pedro Oliveira <oliveira.joao@unifesp.br>
-
 pkgname=wiredpanda
-pkgver=5.1.2
+pkgver=5.2.2
 pkgrel=1
 pkgdesc="Software designed to help students learn about logic circuits and simulate them in an easy and friendly way"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://gibis-unifesp.github.io/wiRedPanda/"
 license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-multimedia' 'qt6-svg')
-makedepends=('cmake' 'ninja')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/GIBIS-UNIFESP/wiRedPanda/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+makedepends=('cmake' 'ninja' 'git' 'qt6-tools')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/GIBIS-UNIFESP/wiRedPanda/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('f099a92d7ac4e7babce79b293076946e78eb53830e90a6be26184f368d2ea398')
 
 build() {
     cd "wiRedPanda-${pkgver}"
-    cmake --preset release
+    cmake --preset release -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build --preset release
+}
+
+check() {
+    cd "wiRedPanda-${pkgver}"
+    export QT_QPA_PLATFORM=offscreen
+    ctest --preset release --output-on-failure -LE gui
 }
 
 package() {
     cd "wiRedPanda-${pkgver}"
-    
-    # Install main executable
-    install -Dm755 build/wiredpanda "$pkgdir/usr/bin/wiredpanda"
-
-    # Install application icon
-    install -Dm644 App/Resources/Assets/Logos/wpanda.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/wiredpanda.svg"
-
-    # Install license file
+    DESTDIR="$pkgdir" cmake --install build-release
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    # Install desktop entry
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/wiredpanda.desktop" <<EOF
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=wiRedPanda
-Comment=$pkgdesc
-Exec=wiredpanda %F
-Icon=wiredpanda
-Terminal=false
-Categories=Education;Electronics;Science;
-MimeType=application/x-wiredpanda;
-EOF
 }
