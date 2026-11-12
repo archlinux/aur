@@ -3,8 +3,8 @@
 
 _pkgname=libjxl
 pkgname=$_pkgname-metrics
-pkgver=0.12.0
-pkgrel=5
+pkgver=0.13.0
+pkgrel=1
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics'
 arch=(
   x86_64
@@ -31,9 +31,9 @@ makedepends=(
 )
 provides=(
   $_pkgname
-  libjxl.so=0.12
-  libjxl_cms.so=0.12
-  libjxl_threads.so=0.12
+  libjxl.so=0.13
+  libjxl_cms.so=0.13
+  libjxl_threads.so=0.13
   butteraugli
   ssimulacra
   ssimulacra2
@@ -50,7 +50,7 @@ optdepends=(
 source=(
   git+https://github.com/libjxl/$_pkgname.git#tag=v$pkgver
   git+https://skia.googlesource.com/skcms.git#commit=96d9171c94b937a1b5f0293de7309ac16311b722
-  git+https://github.com/webmproject/sjpeg.git#commit=94e0df6d0f8b44228de5be0ff35efb9f946a13c9
+  git+https://github.com/webmproject/sjpeg.git#commit=dd4d9857c58a25713711a46d37385ad23ca2177e
 )
 sha256sums=(
   SKIP
@@ -85,4 +85,5 @@ package() {
     -t "$pkgdir"/usr/share/licenses/$pkgname
   ln -s /usr/bin/butteraugli_main "$pkgdir"/usr/bin/butteraugli
   ln -s /usr/bin/ssimulacra_main "$pkgdir"/usr/bin/ssimulacra
+  rm -f "$pkgdir"/usr/bin/djxl_fuzzer_corpus
 }
