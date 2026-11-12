@@ -19,7 +19,10 @@ makedepends=(
   jq
 )
 # Azure's test proxy, which the tests start, is an ASP.NET Core application
-checkdepends=("aspnet-runtime-$_dotnetsdkver")
+checkdepends=(
+  "aspnet-runtime-$_dotnetsdkver"
+  procps-ng # pkill, which stops the test proxy after the tests
+)
 # The commit the package was published from (tag Azure.Core_1.64.0), and the official build of it,
 # see the file version 1.6400.26.52605 of its assemblies (encoding the date and build number)
 _commit="8523f10892616eea21961bae699420ddd2366b6a"
@@ -211,7 +214,7 @@ check() {
   _feed=$(sed -n -E 's|.*<add key="([^"]+)" value="(https[^"]+)".*|\1=\2|p' NuGet.Config.upstream)
   # Microsoft's packages from nuget.org, as upstream's feed only has the versions upstream's builds
   # saved there, not e.g. the ones of the installed runtime (see below)
-  _nuget_config "$_feed" 'Microsoft.AspNetCore.*' 'Microsoft.Bcl.*' 'Microsoft.Extensions.*' 'System.*'
+  _nuget_config "$_feed" 'Microsoft.AspNetCore.*' 'Microsoft.Bcl.*' 'Microsoft.Extensions.*' 'Microsoft.Net.Http.Headers' 'System.*'
   # The tests take Microsoft's runtime packages in the version of its installed runtime, as the
   # source-built ones come in the version of the artifacts, instead of the servicing version of .NET
   # upstream pins them to at this commit (as the version of System.Text.Json, and of others in
@@ -225,6 +228,17 @@ check() {
     _pinned=$(sed -n -E 's/.*<PackageVersion Include="System\.Text\.Json" Version="('"${_dotnetsdkver//./\\.}"'\.[0-9]+)".*/\1/p' \
       eng/centralpackagemanagement/Directory.Packages.props)
     [[ -z "$_pinned" ]] || sed -i -E 's/([">])'"${_pinned//./\\.}"'(["<])/\1'"$_runtimever"'\2/g' eng/centralpackagemanagement/*.props
+  fi
+  # The test framework's ASP.NET Core 2.3 brings Microsoft.AspNetCore.WebUtilities 2.3.0, which has a
+  # known vulnerability (CVE-2026-118750, GHSA-6527-9fp8-r4x6), and the audit's warning fails the
+  # restore: the fixed 2.3.14 instead, which no package of ASP.NET Core 2.3 depends on yet
+  # (Microsoft.AspNetCore.Http 2.3.14 still takes 2.3.13), so as a direct reference of the test
+  # framework, its version raised in the test framework's own overrides; drop once upstream updates them
+  if ! grep -q 'Microsoft.AspNetCore.WebUtilities' sdk/core/Azure.Core.TestFramework/src/Azure.Core.TestFramework.csproj; then
+    sed -i 's|<PackageReference Include="Microsoft.AspNetCore.Http" />|&\n    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" />|' \
+      sdk/core/Azure.Core.TestFramework/src/Azure.Core.TestFramework.csproj
+    sed -i '0,/<ItemGroup>/s||&\n    <PackageVersion Update="Microsoft.AspNetCore.WebUtilities" Version="2.3.14" />|' \
+      eng/centralpackagemanagement/overrides/Azure.Core.TestFramework.Packages.props
   fi
   # Like upstream's CI (eng/pipelines/templates/jobs/ci.tests.yml), without the tests that need user
   # interaction or Azure. Only on the .NET runtime that's installed, the tests target older ones, too.
