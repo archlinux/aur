@@ -14,7 +14,7 @@
 # build()).
 pkgbase=nimdow-wl-git
 pkgname=(nimdow-wl-git nimdow-wl-desktop-git)
-pkgver=0.7.41.r555.g5ba42e9
+pkgver=0.7.41.r558.gb48ca85
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/Vyrnexis/nimdow-wl'
