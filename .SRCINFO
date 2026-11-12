@@ -1,6 +1,6 @@
 pkgbase = nimdow-wl-status-git
 	pkgdesc = Event-driven status bar feeder for the nimdow-wl window manager
-	pkgver = 0.3.0.r12.gf04820a
+	pkgver = 0.3.0.r16.g41e85cd
 	pkgrel = 1
 	url = https://github.com/Vyrnexis/nimdow-wl-status
 	arch = x86_64

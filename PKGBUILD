@@ -6,7 +6,7 @@
 # The only Nim dependency (parsetoml) is a pinned source tarball, so nothing
 # but the sources below is downloaded at build time.
 pkgname=nimdow-wl-status-git
-pkgver=0.3.0.r12.gf04820a
+pkgver=0.3.0.r16.g41e85cd
 pkgrel=1
 pkgdesc='Event-driven status bar feeder for the nimdow-wl window manager'
 arch=('x86_64' 'aarch64')
