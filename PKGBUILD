@@ -17,7 +17,7 @@
 # not a race against upstream.
 pkgname=ue4ss-experimental
 pkgver=3.0.1_1208_g6f8dc3cc
-pkgrel=1
+pkgrel=2
 pkgdesc="Lua/C++ mod loader DLLs for Win64 Unreal Engine 4/5 games (experimental)"
 arch=('any')
 url="https://docs.ue4ss.com/"
@@ -32,7 +32,7 @@ _verstr="${pkgver//_/-}"
 source=("ue4ss-${pkgver}.zip::https://github.com/UE4SS-RE/RE-UE4SS/releases/download/experimental/UE4SS_v${_verstr}.zip"
         "ue4ss-install")
 sha256sums=('899b6dbe84539c0b19d5ef08eb3a6e99e2195ebc0706baf24fe5799e3a6888f8'
-            'd5ae8372ecdc7171c7a6179511bf9dd8fe1905a83eac03abf7ae1292fe780cb0')
+            '4b8f23e80ab84888d75200987bf7aa315a21c53b956cdc51d6ee689031996f0b')
 
 latestver() {
     # The archival `experimental` tag holds every build, so pick the newest by
