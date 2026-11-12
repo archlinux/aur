@@ -5,7 +5,7 @@
 
 pkgname=kimi-code-intl-bin
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 _appname='Kimi Code'
 _prefix='/opt/kimi-code-intl'
 pkgdesc='Kimi Code Desktop, international build pinned to the global API'
@@ -46,7 +46,7 @@ noextract=("KimiCode-${pkgver}-linux-amd64.deb")
 sha256sums=(
   'a4804317888ab08982c0206672f73a9e0ae2e0ba00fe6fd37ad7afbb2a96dec4'
   '0ae14e3358d32ed99d1651a0455f0c449f05de2a77f62ada6f3156886900d1e3'
-  'ab395aa009b442d4a30a2c682fe3ce07930abdf814b2fae59a41f20d032c9c55'
+  'c33b7ade90a82ea460cecc733cbdfedd8fd59e5ddc8cb01474a4c69f2a99d2c2'
   'c2ce2c7e3267701aa192cae428bf9aebb356402c5bb04131c1d89a361d5f1457'
   'dd64d29089377b6718b81eeb2e63c83c8e31d3f817d3893a3439c445b3b8d47f'
   'dacb9f0687f7003444c2587716ae89eb9fb81a4f933934162880289f9a5d2da8'
