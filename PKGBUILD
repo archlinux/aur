@@ -10,7 +10,7 @@ pkgdesc='自用维护：非官方 UU 远程 Linux 被控端 + 实验性控制端
 arch=('x86_64' 'aarch64')
 url='https://github.com/VallierDev/uu-remote-linux'
 license=('GPL3')
-depends=('gtk3' 'gdk-pixbuf2' 'libcairo' 'glib2' 'pango' 'gcc-libs'
+depends=('gtk3' 'gdk-pixbuf2' 'cairo' 'glib2' 'pango' 'gcc-libs'
          'libx11' 'libxext' 'libxfixes' 'libxtst' 'ffmpeg')
 optdepends=('sdl2: 控制端画面渲染'
             'wayland: Wayland 原生支持'
