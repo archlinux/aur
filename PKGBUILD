@@ -1,7 +1,7 @@
 # Maintainer: Javier Tia <floss@jetm.me>
 _pkgauthor=avocado-linux
 pkgname=avocado-cli
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Command line interface for Avocado Linux'
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('avocado')
 # (undefined aws_lc_* symbols). Disabling LTO keeps aws-lc's C symbols real.
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('6268b9c11434873d4f28c22b1b38e9d922e528437eb879e97010b717e7802f2c')
+sha256sums=('6644e657d7566349fab28d1760b25601c8651a9e430007ab5ca6cb998aebc8c1')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
