@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=c6-git
-pkgver=r359.8ffdb1f
+pkgver=r361.95d45d2
 pkgrel=1
 pkgdesc="c6 — TinyCC with language extensions"
 arch=($CARCH)
@@ -48,4 +48,5 @@ package() {
     cd "${srcdir}/${pkgname%-git}/tcc"
     make DESTDIR="${pkgdir}" install
     install -vDm0644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    ln -sf /usr/bin/c6 ${pkgdir}/usr/bin/tcc
 }
