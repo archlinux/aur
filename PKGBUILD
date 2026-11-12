@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=anicraft
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -15,7 +15,7 @@ depends=(alsa-lib
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('e9ecd6c0705746e95a651e711c3799c950a843be247a5e20f33c6a691406809c')
+sha256sums=('af9a49e30bfae2c2dbdb04472b29a0acd2854eb043936bc7bbc1fbee08ac2f59')
 
 _srcenv() {
 	cd "$_archive"
