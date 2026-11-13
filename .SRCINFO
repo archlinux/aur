@@ -1,26 +1,23 @@
 pkgbase = backend-ai-desktop-bin
 	pkgdesc = Provides a convenient environment for users, while allowing various commands to be executed without CLI. It also provides some visual features that are not provided by the CLI, such as dashboards and statistics.
-	pkgver = 26.9.7
+	pkgver = 26.9.8
 	pkgrel = 1
 	url = https://www.backend.ai/
 	arch = aarch64
 	arch = x86_64
 	license = LGPL-3.0-or-later
-	makedepends = gendesk
-	depends = electron39
-	provides = backend-ai-desktop=26.9.7
+	depends = electron41
+	provides = backend-ai-desktop=26.9.8
 	conflicts = backend-ai-desktop
 	conflicts = backend.ai
 	conflicts = backend.ai-desktop
-	source = backend-ai-desktop-26.9.7.png::https://raw.githubusercontent.com/lablup/backend.ai-webui/v26.9.7/manifest/backend-ai.iconset/icon_512x512%401x.png
 	source = backend-ai-desktop.js
 	source = backend-ai-desktop.sh
-	sha256sums = c54209c33c387908bfaae40a9c5f6c96bacaa52684f2546068e2b4441f4a53b3
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
-	source_aarch64 = backend-ai-desktop-26.9.7-aarch64.zip::https://github.com/lablup/backend.ai-webui/releases/download/v26.9.7/backend.ai-desktop-26.9.7-linux-arm64.zip
-	sha256sums_aarch64 = d749ee9e025cda04de21fe9c5265c98d977b0487b809e22c1377930c8b888a3a
-	source_x86_64 = backend-ai-desktop-26.9.7-x86_64.zip::https://github.com/lablup/backend.ai-webui/releases/download/v26.9.7/backend.ai-desktop-26.9.7-linux-x64.zip
-	sha256sums_x86_64 = beabbadecff95772f1971427287295969aef513e9df799805d5699c63a76dc30
+	source_aarch64 = backend-ai-desktop-26.9.8-aarch64.deb::https://github.com/lablup/backend.ai-webui/releases/download/v26.9.8/backend.ai-desktop-26.9.8-linux-arm64.deb
+	sha256sums_aarch64 = 4ce17d17516472ad76c783dcc50b52659558302ae99ae467b7b15598f384d180
+	source_x86_64 = backend-ai-desktop-26.9.8-x86_64.deb::https://github.com/lablup/backend.ai-webui/releases/download/v26.9.8/backend.ai-desktop-26.9.8-linux-x64.deb
+	sha256sums_x86_64 = 260b004b8123283673f4375b7b8cebc8d30e798c0741e53791219654b572bc0d
 
 pkgname = backend-ai-desktop-bin
