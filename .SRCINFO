@@ -1,6 +1,6 @@
 pkgbase = lanlink
 	pkgdesc = A small KDE Connect alternative: daemon and TUI in one Rust binary
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/adelmonte/lanlink
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lanlink
 	optdepends = wl-clipboard: clipboard sending and receiving on Wayland
 	optdepends = xclip: clipboard sending and receiving on X11
 	options = !lto
-	source = lanlink-0.2.0.tar.gz::https://github.com/adelmonte/lanlink/archive/v0.2.0.tar.gz
-	sha256sums = d9923a9ae452c9ea713a860ad826b788fc5673bee9beda32391dd6156128fb14
+	source = lanlink-0.2.1.tar.gz::https://github.com/adelmonte/lanlink/archive/v0.2.1.tar.gz
+	sha256sums = 1f78ab527eae7b74f1dab97f44183ab1d7a8edefd6229670797809cf56941eca
 
 pkgname = lanlink
