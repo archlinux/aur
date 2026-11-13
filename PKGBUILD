@@ -1,7 +1,7 @@
 # Maintainer: blazebsc <blakeisfruity@proton.me>
 # Maintainer: ofatrii <pub@oftr.me>
 pkgname=froststrap-git
-pkgver=2.0.6.beta.6.r2.gf4079a5c
+pkgver=2.0.8.r0.g06f7a389
 pkgrel=1
 pkgdesc="A fork of Fishstrap/Bloxstrap, focused on performance and customization"
 arch=('x86_64')
