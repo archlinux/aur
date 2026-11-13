@@ -2,13 +2,13 @@
 
 _pkgname=hare-sqlite
 pkgname=hare-sqlite-git
-pkgver=r19.2792eeb
+pkgver=r28.0d92339
 pkgrel=1
 pkgdesc='SQLite support for Hare'
 arch=('any')
 url="https://git.sr.ht/~blainsmith/${_pkgname}"
 license=('MIT')
-depends=('hare' 'sqlite')
+depends=('hare' 'hare-sql' 'sqlite')
 makedepends=('git')
 provides=('hare-sqlite')
 conflicts=('hare-sqlite')
