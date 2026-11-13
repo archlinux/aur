@@ -1,7 +1,7 @@
 # Maintainer: Bryan Childs <godeater[at]gmail[dot]com>
 
 pkgname=cfnrain
-pkgver=1.26.0_beta.2
+pkgver=1.26.0_beta.3
 pkgrel=1
 pkgdesc='A development workflow tool for working with AWS CloudFormation'
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/awesome-foundation/cfnrain"
 license=('Apache-2.0')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
-sha512sums=('3bbc924420c02cf22dae1d7be33a6846f79552f0e87c22b4fd75323d2c12d482a771e964338e7006330bf9e535bd8ac8f554dd2365065e064b07f12290008897')
-b2sums=('348c6ce7decd13d1cb2baf0332a778a96307864798d4458dc8ce2a8b3130061942c2dc08e93e56400d381812286413a0588ff943b6406c82eea1f096d4856c9a')
+sha512sums=('afae144a9896f296d4f99365ee65352bf69dcef53b463d6872486da39268945f63c3fc1e4339fd9acea7184a3ea7043e314af45a9326f18d3c870aec87243fe4')
+b2sums=('b5d5e7d1b823e9b95d53596761f2196915d34cdb2e18fff47385f33ae1f09b9094615acc4eb04507cfb2f72db1606d840071c5454429b21a96994686c1d938f7')
 
 prepare(){
   cd "$pkgname-${pkgver//_/-}"
