@@ -7,6 +7,7 @@ pkgdesc="Beszel monitoring agent"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'mips64' 'riscv64')
 url="https://github.com/henrygd/beszel"
 license=('MIT')
+depends_x86_64=('glibc')
 optdepends=(
   'rocm-smi-lib: AMD GPU metrics via rocm-smi'
   'intel-gpu-tools: Intel i915 driver GPU metrics via intel_gpu_top'
