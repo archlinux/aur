@@ -3,7 +3,7 @@
 pkgname=claude-cage-bin
 pkgver=0.1.7rc.1
 _upver=0.1.7-rc.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Isolated Claude development workspace with a local virtual machine'
 arch=('x86_64')
 options=('!debug')
@@ -21,6 +21,8 @@ optdepends=(
   'zenity: file dialogs outside GTK desktops'
   'kdialog: file dialogs on KDE'
 )
+provides=("claude-cage=$pkgver")
+conflicts=('claude-cage')
 source=("Cage-${_upver}-linux-amd64.deb::${url}/releases/download/v${_upver}/Cage-${_upver}-linux-amd64.deb")
 sha256sums=('eced2a3b448559c75a349b3d09792bcca955d0885f1a9aaed87f65fe451bbf96')
 
