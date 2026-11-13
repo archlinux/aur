@@ -1,6 +1,6 @@
 pkgbase = pila-git
 	pkgdesc = A stacking Wayland compositor built on Smithay
-	pkgver = 0.5.1.r417.g5a0bc32
+	pkgver = 0.5.2.r452.gb4dea82
 	pkgrel = 1
 	url = https://github.com/igalmarino/pila
 	arch = x86_64
