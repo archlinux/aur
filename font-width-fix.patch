@@ -1,8 +1,8 @@
---- src/rxvtfont.C.bukind	2007-11-30 14:36:33.000000000 +0600
-+++ src/rxvtfont.C	2007-11-30 14:39:29.000000000 +0600
-@@ -1171,12 +1171,21 @@
+--- src/rxvtfont.C.orig	2026-05-14 16:20:20.000000000 -0400
++++ src/rxvtfont.C	2026-11-12 18:22:25.416032415 -0500
+@@ -1307,12 +1307,21 @@
            XGlyphInfo g;
-           XftTextExtents16 (disp, f, &ch, 1, &g);
+           XftTextExtents32 (disp, f, &ch, 1, &g);
  
 +/*  
 + * bukind: don't use g.width as a width of a character!

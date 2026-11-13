@@ -1,8 +1,8 @@
---- src/rxvtfont.C.orig	2011-07-20 22:19:29.878012201 -0300
-+++ src/rxvtfont.C	2011-07-20 22:19:33.634671723 -0300
-@@ -1237,11 +1237,22 @@
- 
-       FT_Face face = XftLockFace (f);
+--- src/rxvtfont.C.orig	2026-11-12 18:22:25.416032415 -0500
++++ src/rxvtfont.C	2026-11-12 18:24:10.531220023 -0500
+@@ -1279,11 +1279,22 @@
+           break;
+         }
  
 +/*
 + * use ascent, descent and height from XftFont *f instead of FT_Face face.
