@@ -1,17 +1,17 @@
 pkgbase = c2patool-bin
 	pkgdesc = Tool for displaying and creating C2PA manifests (prebuilt)
-	pkgver = 0.28.6
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://github.com/contentauth/c2patool
 	arch = x86_64
 	license = MIT OR Apache-2.0
 	depends = glibc
 	depends = libgcc
-	provides = c2patool=0.28.6
+	provides = c2patool=0.29.0
 	conflicts = c2patool
-	source = c2patool-0.28.6-LICENSE-MIT::https://raw.githubusercontent.com/contentauth/c2patool/v0.28.6/LICENSE-MIT
+	source = c2patool-0.29.0-LICENSE-MIT::https://raw.githubusercontent.com/contentauth/c2patool/v0.29.0/LICENSE-MIT
 	sha256sums = 89375a50de90d2dcaa04406086da832ad452ebcaf6ab402ef3d51b8401a67c71
-	source_x86_64 = c2patool-0.28.6-x86_64-unknown-linux-gnu.tar.gz::https://github.com/contentauth/c2patool/releases/download/v0.28.6/v0.28.6-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = e2dcd1cfcb872ee4f4cc4b353131615e09b608ed7cdea9f27a7f9d73d5d9af86
+	source_x86_64 = c2patool-0.29.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/contentauth/c2patool/releases/download/v0.29.0/v0.29.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = af5494722fc8c3f239980f36ceb3acf496d1481850d356a4bb34777b33b08043
 
 pkgname = c2patool-bin
