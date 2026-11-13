@@ -1,6 +1,6 @@
 pkgbase = ducter-bin
 	pkgdesc = Personal AI that dispatches work to coding agents on your own machines and reports back
-	pkgver = 0.0.44
+	pkgver = 0.0.46
 	pkgrel = 1
 	url = https://ducter.ai
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = ducter-bin
 	conflicts = ducter
 	options = !strip
 	options = !debug
-	source_x86_64 = ducter-0.0.44-linux-x64.tar.gz::https://github.com/wey-gu/ducter/releases/download/v0.0.44/ducter-0.0.44-linux-x64.tar.gz
-	source_x86_64 = LICENSE::https://github.com/wey-gu/ducter/raw/v0.0.44/LICENSE
-	sha256sums_x86_64 = c2b14a4d2d5d7485d759a28d08817fc4795e3f2d087651dbce0b7873741b4e71
+	source_x86_64 = ducter-0.0.46-linux-x64.tar.gz::https://github.com/wey-gu/ducter/releases/download/v0.0.46/ducter-0.0.46-linux-x64.tar.gz
+	source_x86_64 = LICENSE::https://github.com/wey-gu/ducter/raw/v0.0.46/LICENSE
+	sha256sums_x86_64 = 9039422ec260031af240460dc43551852997054e4ef40d6ee0adcc7f5748bec6
 	sha256sums_x86_64 = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	source_aarch64 = ducter-0.0.44-linux-arm64.tar.gz::https://github.com/wey-gu/ducter/releases/download/v0.0.44/ducter-0.0.44-linux-arm64.tar.gz
-	source_aarch64 = LICENSE::https://github.com/wey-gu/ducter/raw/v0.0.44/LICENSE
-	sha256sums_aarch64 = 858870a8c896939e2e71f1b5a52a33e960fd803adb5dfc8053666e1e73c592f2
+	source_aarch64 = ducter-0.0.46-linux-arm64.tar.gz::https://github.com/wey-gu/ducter/releases/download/v0.0.46/ducter-0.0.46-linux-arm64.tar.gz
+	source_aarch64 = LICENSE::https://github.com/wey-gu/ducter/raw/v0.0.46/LICENSE
+	sha256sums_aarch64 = 543fee9d44224259ab39c1914770c6fb5a8be06c5f8c72a4f2e08d7db86cf9a5
 	sha256sums_aarch64 = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
 
 pkgname = ducter-bin
