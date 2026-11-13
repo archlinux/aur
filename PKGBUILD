@@ -1,6 +1,6 @@
 # Maintainer: hyperpuncher
 pkgname=nemo-speech-vulkan-nightly-bin
-pkgver=20261105.163049
+pkgver=20261113.092801
 pkgrel=1
 _release=nightly
 pkgdesc='Native speech recognition, synthesis, and translation with Vulkan support (nightly)'
@@ -25,8 +25,8 @@ conflicts=('nemo-speech')
 options=('!strip' '!debug')
 source_x86_64=("nemo-speech-${pkgver}-linux-x86_64-vulkan.tar.gz::${url}/releases/download/${_release}/nemo-speech-${_release}-linux-x86_64-vulkan.tar.gz")
 source_aarch64=("nemo-speech-${pkgver}-linux-aarch64-vulkan.tar.gz::${url}/releases/download/${_release}/nemo-speech-${_release}-linux-aarch64-vulkan.tar.gz")
-sha256sums_x86_64=('7ac8c9694d62bfc37e3827172744f12e84b0d83653c9b8dc5e10b77a0d6741b5')
-sha256sums_aarch64=('4c3a8c707632a8dd9e10c2362bd211c096ecd467c087d50f38ea3255a449e11b')
+sha256sums_x86_64=('02cc349c518b6b4243667d6fc3883d0ac8d13092be2f0d831f3a97361083a555')
+sha256sums_aarch64=('0e54a982f310e996bf89fa015bec062e4232dd0ad5bfbbc165de3ce9d289addf')
 
 package() {
 	# Keep the upstream layout and private libraries together for relative RPATHs.

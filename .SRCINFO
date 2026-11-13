@@ -1,6 +1,6 @@
 pkgbase = nemo-speech-vulkan-nightly-bin
 	pkgdesc = Native speech recognition, synthesis, and translation with Vulkan support (nightly)
-	pkgver = 20261105.163049
+	pkgver = 20261113.092801
 	pkgrel = 1
 	url = https://github.com/NVIDIA/NeMo-Speech.cpp
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = nemo-speech-vulkan-nightly-bin
 	optdepends = alsa-lib: microphone capture through ALSA
 	optdepends = libpulse: microphone capture through PulseAudio
 	optdepends = jack: microphone capture through JACK
-	provides = nemo-speech=20261105.163049
+	provides = nemo-speech=20261113.092801
 	conflicts = nemo-speech
 	options = !strip
 	options = !debug
-	source_x86_64 = nemo-speech-20261105.163049-linux-x86_64-vulkan.tar.gz::https://github.com/NVIDIA/NeMo-Speech.cpp/releases/download/nightly/nemo-speech-nightly-linux-x86_64-vulkan.tar.gz
-	sha256sums_x86_64 = 7ac8c9694d62bfc37e3827172744f12e84b0d83653c9b8dc5e10b77a0d6741b5
-	source_aarch64 = nemo-speech-20261105.163049-linux-aarch64-vulkan.tar.gz::https://github.com/NVIDIA/NeMo-Speech.cpp/releases/download/nightly/nemo-speech-nightly-linux-aarch64-vulkan.tar.gz
-	sha256sums_aarch64 = 4c3a8c707632a8dd9e10c2362bd211c096ecd467c087d50f38ea3255a449e11b
+	source_x86_64 = nemo-speech-20261113.092801-linux-x86_64-vulkan.tar.gz::https://github.com/NVIDIA/NeMo-Speech.cpp/releases/download/nightly/nemo-speech-nightly-linux-x86_64-vulkan.tar.gz
+	sha256sums_x86_64 = 02cc349c518b6b4243667d6fc3883d0ac8d13092be2f0d831f3a97361083a555
+	source_aarch64 = nemo-speech-20261113.092801-linux-aarch64-vulkan.tar.gz::https://github.com/NVIDIA/NeMo-Speech.cpp/releases/download/nightly/nemo-speech-nightly-linux-aarch64-vulkan.tar.gz
+	sha256sums_aarch64 = 0e54a982f310e996bf89fa015bec062e4232dd0ad5bfbbc165de3ce9d289addf
 
 pkgname = nemo-speech-vulkan-nightly-bin
