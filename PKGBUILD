@@ -2,7 +2,7 @@
 _appname=qaxbrowser
 _pkgname="${_appname}-safe-stable"
 pkgname=qianxin-browser-stable
-pkgver=1.0.46149.7_1
+pkgver=1.0.46401.7_1
 pkgrel=1
 pkgdesc="奇安信可信浏览器国密开发者专版"
 arch=(
@@ -30,8 +30,8 @@ source=(
 )
 sha256sums=('368c8e1aff7ff8d7b5843e12222e58c6e43fee8aa8d65581b33d65ec48586a43'
             '356a40c5edf98b24ab14c456f09ffe0e5e43f3110f344db52951dae52dbce592')
-sha256sums_aarch64=('8709a6d472e0688c1552a8335508b5a36865fb9e2c43c9111e28278484854d7c')
-sha256sums_x86_64=('282aeaa93e662c4e98ead6f44255562f628bfe02a55e015ae41ba234f060b106')
+sha256sums_aarch64=('233ef4576b07a07217b6528456d92c04ac52aa85186aaf3e5fe275dc53c36710')
+sha256sums_x86_64=('96cb831a35dff461829238d1a48a788b06470d5ccd836fff5e6e5a430363b179')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
