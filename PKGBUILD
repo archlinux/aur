@@ -2,7 +2,7 @@
 # Ely Office desktop apps. Named *-app-bin because the standard ely-*-bin
 # names are already taken on AUR by another maintainer.
 pkgname=ely-mark-app-bin
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc="ElyMark - Markdown editor from the Ely Office suite"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('ely-mark' 'ely-mark-bin')
 
 options=('!strip' '!debug')
 source_x86_64=("ely-mark_${pkgver}-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v${pkgver}/ely-mark_${pkgver}-1_amd64.deb")
-sha256sums_x86_64=('5f3e7e2407d124062f6fd4c7e2b37e9642676836e775f42cc91443a39d5c3244')
+sha256sums_x86_64=('a82f8d6faa97b363bbc27de1e9583ae9c9850b0f0be20caf8096ee37acb26ec1')
 
 package() {
     local _deb="ely-mark_${pkgver}-1_amd64.deb"
