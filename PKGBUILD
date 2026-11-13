@@ -44,8 +44,9 @@ check() {
   export GOPATH="${srcdir}/gopath"
   export GOFLAGS='-buildvcs=false -mod=readonly -modcacherw'
   go test ./...
+  go build -tags debugflags -o build/maddy-debugflags ./cmd/maddy
   cd tests
-  ./run.sh
+  go test -tags integration -integration.executable "${srcdir}/${pkgname}-${pkgver}-src/build/maddy-debugflags"
 }
 
 package() {
