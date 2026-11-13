@@ -1,4 +1,5 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
+# Contributor: Dominic Radermacher <blip at mockmoon-cybernetics dot ch>
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
