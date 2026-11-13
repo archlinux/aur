@@ -1,6 +1,6 @@
-# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Maintainer: Stephan Springer <buzo+arch at Lini dot de>
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
-# Contributor: Giovanni Harting <539@idlegandalf.com>
+# Contributor: Giovanni Harting <539 at idlegandalf dot com>
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
