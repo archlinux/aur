@@ -2,14 +2,22 @@
 
 _pkgbasename=net-snmp
 pkgname=lib32-${_pkgbasename}
-pkgver=5.9.4
-pkgrel=3
+pkgver=5.9.5.2
+pkgrel=1
 pkgdesc='A suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3 using both IPv4 and IPv6 (32-bit)'
 arch=('x86_64')
-url='http://www.net-snmp.org/'
-license=('BSD')
-depends=(${_pkgbasename} 'lib32-libnsl' 'lib32-libpcap' 'lib32-lm_sensors' 'lib32-openssl' 'lib32-pciutils' 'lib32-pcre' 'lib32-pcre2')
-makedepends=('git' 'python-setuptools')
+url='https://www.net-snmp.org/'
+license=('LicenseRef-Net-SNMP')  # COPYING lists 14 BSD-like notices (CMU/UCD, NAI, Sun, ...); not a single SPDX id
+depends=(
+  "${_pkgbasename}"
+  'lib32-gcc-libs'
+  'lib32-glibc'
+  'lib32-libnl'
+  'lib32-lm_sensors'
+  'lib32-openssl'
+  'lib32-pciutils'
+)
+makedepends=('git')
 provides=('libnetsnmpagent.so'
           'libnetsnmphelpers.so'
           'libnetsnmpmibs.so'
@@ -17,23 +25,19 @@ provides=('libnetsnmpagent.so'
           'libnetsnmptrapd.so'
           'libsnmp.so')
 options=('!emptydirs' '!makeflags')
-source=("git+https://github.com/net-snmp/net-snmp.git#tag=v${pkgver}")
-sha512sums=('c88ff9d81a683dbe5ff2c34c1e8c9e579b67aef1d74153275a1dc4ff7991cdc1611d01acc2d5691ae3cf6acd980807fb1a5309f91470ae2f67fbbc175b3e34e1')
+source=("git+https://github.com/net-snmp/net-snmp.git#tag=v${pkgver}"
+        'net-snmp-5.9.5.2-under-linking.patch')
+sha512sums=('782892a7db0ca84ffb3d89f1568d93169bf8cef6d5790783fd2c8f72be2a5d22a0cb0964400046b3e8705a3efba365b7610672aee12e77693d391dc2861d311e'
+            'f722c4dd01c9b098e15dd895156755992a3f719c1c044352bab16cc8d612e9ce3bcc1a5a44a26365600b3c6b0abe1fe1ee9209aef557a0cde1884ff2d14fbd0d')
 validpgpkeys=('27CAA4A32E371383A33ED0587D5F9576E0F81533'
               '6E6718AEF1EB5C65C32D1B2A356BC0B552D53CAB'
               '8AAA779B597B405BBC329B6376CF47B8A77C5329'
               'D0F8F495DA6160C44EFFBF10F07B9D2DACB19FD6')  # Net-SNMP Administrators
 
+# The old pcre2 backports (d3e95c8, 346b6f8, e5aadf1) conflict on v5.9.5.2 and are dropped; 7fc7edf (Linux 6.7
+# /proc/net/snmp) is already in v5.9.5.2. v5.9.5.2 only supports pcre1 (pcre.h/pcre_exec), so pcre is
+# disabled with --without-pcre (same as the official net-snmp binaries, which don't link libpcre).
 _backports=(
-  # add pcre2 support
-  'd3e95c87b32397815f6d5bcfc844259f2552697a'
-  # Improve pcre2 support
-  '346b6f8959513320e5b674fd670c49ba2cd43af5'
-  # if-mib/data_access/interface.c: plug a leak with pcre2
-  'e5aadf1e78c624a8e4147d4b70a7795497a50e73'
-
-  # Add Linux 6.7 compatibility parsing /proc/net/snmp
-  '7fc7edf676c527a0cfb661f9000a3d22738cf8e6'
 )
 
 _reverts=(
@@ -53,6 +57,9 @@ prepare() {
     git log --oneline "${_l}" "${_c}"
     git revert --mainline 1 --no-commit "${_c}"
   done
+
+  # https://github.com/net-snmp/net-snmp/issues/434 (patch from Debian/official net-snmp): libnetsnmptrapd under-linking
+  patch -Np1 -i ../net-snmp-5.9.5.2-under-linking.patch
 
   autoreconf -i
 }
@@ -77,6 +84,7 @@ build() {
     --disable-embedded-perl \
     --disable-perl-cc-checks \
     --without-perl-modules \
+    --without-pcre \
     --without-python-modules \
     --with-default-snmp-version='3' \
     --with-sys-contact='root@localhost' \
