@@ -1,7 +1,7 @@
 # Maintainer: OxiRoute maintainers <https://github.com/oxiroute/oxiroute/issues>
 
 pkgname=oxiroute-bin
-pkgver=6.4.0
+pkgver=6.5.0
 pkgrel=1
 pkgdesc='Pingora-based HTTP, TCP, and RTMP proxy runtime (prebuilt, profile-guided release binaries)'
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=("oxiroute-${pkgver}-${_target}.tar.gz::${_release}/oxiroute-${pkgver}-${
         'oxiroute.kdl'
         'oxiroute.lua'
         'README.md')
-sha256sums=('0223a13bdbafa0db0e18b872798d19efc03abe239983d30410e7e6efbea54b84'
+sha256sums=('4fbdd9f8d2b6711b73fb2d4f39323d7bfefdf333059e239007c6f8f48efe94ab'
             'ffb543ff6043239bd1ceb86395a5de51a6571438485ab3f3b027893baee5884b'
             '574eab59174656b0813499ed1c9bca8be5a6e2cf69a98e8327f376e1c0b83b1b'
             'ece087105e74910e9d4a6c3551082828378ac5c62fc15e97a755a3bc93020e72'
@@ -39,7 +39,7 @@ sha256sums=('0223a13bdbafa0db0e18b872798d19efc03abe239983d30410e7e6efbea54b84'
             'd56db017915b82ad6204bb4de1aa268cc41586eafcbbf35194366b32ed02f19a'
             '57e5cb6cf58a38b6c5efd99e0b5a9a36bac3fafba438059a8396b07e9b6e80a9'
             'f55a08f56ff139b566afac6b0c9cbbc4ed08f69a7e04810128bfb8c98a0f0564'
-            'b9a65afc6e14091ee3a25ff72c0a523f90a17e22e7695edc0a9009e5c2719456')
+            '5b4438cec129dd1814e377567cb4c0b89e49c8bc27ee9403bc210682d3fa62ce')
 
 package() {
   cd "oxiroute-${pkgver}-${_target}"
