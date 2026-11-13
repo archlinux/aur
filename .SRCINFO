@@ -1,21 +1,21 @@
 pkgbase = python-materialyoucolor
 	pkgdesc = Material You color algorithms for Python!
-	pkgver = 3.0.2
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/T-Dynamos/materialyoucolor-python
 	arch = x86_64
 	license = MIT
 	makedepends = python-build
-	makedepends = python-setuptools
+	makedepends = python-setuptools>=61.0.0
 	makedepends = python-installer
 	makedepends = python-wheel
-        makedepents = pybind11
+	makedepends = pybind11>=2.11.0
 	depends = glibc
 	depends = gcc-libs
 	depends = python
 	depends = python-pillow
-        depends = pybind11
-	source = python-materialyoucolor-3.0.2.tar.gz::https://github.com/T-Dynamos/materialyoucolor-python/archive/v3.0.2.tar.gz
-	sha256sums = aa013f0faea26b87b65f35d7b67f7850c7ed4b926cf1628617d088fe9ddaa9ec
+	depends = pybind11>=2.11.0
+	source = python-materialyoucolor-3.0.4.tar.gz::https://github.com/T-Dynamos/materialyoucolor-python/archive/v3.0.4.tar.gz
+	sha256sums = 1c7c7d4e57ac39d05f0aed767e7534e9a845b288807493915c9c478203b4bae1
 
 pkgname = python-materialyoucolor
