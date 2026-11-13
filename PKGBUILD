@@ -2,7 +2,7 @@
 
 pkgname=rox-player-bin
 _pkgname=rox
-pkgver=1.34.1
+pkgver=1.34.2
 pkgrel=1
 pkgdesc="Fast, composable music player written in rust (foobar2000 for the current year) (prebuilt binary)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ provides=("rox-player=$pkgver" 'rox')
 conflicts=('rox-player' 'rox-player-git')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-x86_64.tar.gz")
-sha256sums=('28f485c36638ee7031526e28982c555dda9d8d201a103bbee302fcb08dd6a3f3')
+sha256sums=('dae41c49002532b6723ff3ea15b3d8af49f38b54729269639fa92fd5e242756e')
 
 package() {
   cd "$_pkgname-v$pkgver-linux-x86_64"
