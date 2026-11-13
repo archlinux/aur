@@ -1,16 +1,16 @@
 pkgbase = nexus-cli-bin
 	pkgdesc = Command-line client and MCP server for self-hosted Nexus personal search
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/yasen-pavlov/nexus
 	license = MIT
 	conflicts = nexus-cli
 	provides = nexus-cli
 	arch = aarch64
-	source_aarch64 = nexus-cli-bin_0.11.0_aarch64.tar.gz::https://github.com/yasen-pavlov/nexus/releases/download/v0.11.0/nexus-cli_0.11.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = fb86cf2d674e637bcd202ac1f208ab4d97bc67c39df0d69e4ae9ebf65b55a973
+	source_aarch64 = nexus-cli-bin_0.12.0_aarch64.tar.gz::https://github.com/yasen-pavlov/nexus/releases/download/v0.12.0/nexus-cli_0.12.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b6ebe34a586db4fd30f08bb65fd23c50fa33ce2ef9c4eab916cf9e93e98dd561
 	arch = x86_64
-	source_x86_64 = nexus-cli-bin_0.11.0_x86_64.tar.gz::https://github.com/yasen-pavlov/nexus/releases/download/v0.11.0/nexus-cli_0.11.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 55381782810fc08941fbbd43a3702b2fed1e9f524c094d466ce69059acc0650d
+	source_x86_64 = nexus-cli-bin_0.12.0_x86_64.tar.gz::https://github.com/yasen-pavlov/nexus/releases/download/v0.12.0/nexus-cli_0.12.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6e9d3cdc2a783ab560aa987c64d5ddaf839c31a9d88e34473117dc345df6238c
 	
 pkgname = nexus-cli-bin
