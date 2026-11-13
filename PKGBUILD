@@ -3,14 +3,14 @@
 # Contributor: kazu0617 <archlinux at kazu0617 dot net>
 srcname=VRCX
 pkgname=vrcx-git
-pkgver=2026.07.18.r112.g2acab31
+pkgver=2026.09.16.r175.g2929696
 pkgrel=1
 pkgdesc="Friendship management tool for VRChat (git version built with Electron)"
 arch=('x86_64')
 url="https://github.com/vrcx-team/VRCX"
 license=('MIT')
-depends=('dotnet-runtime-9.0' 'electron' 'gtk3' 'nss' 'libxss' 'libxrandr' 'alsa-lib')
-makedepends=('dotnet-sdk-9.0' 'git' 'nodejs' 'npm' 'imagemagick')
+depends=('dotnet-runtime-10.0' 'electron' 'gtk3' 'nss' 'libxss' 'libxrandr' 'alsa-lib')
+makedepends=('dotnet-sdk-10.0' 'git' 'nodejs' 'npm' 'imagemagick')
 conflicts=('vrcx-bin' 'vrcx')
 provides=('vrcx')
 options=(!debug !lto)
