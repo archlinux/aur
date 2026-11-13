@@ -1,3 +1,2 @@
-2.52.1-1 [2026-11-06]
-- Revamped Secure Access with self-enrollment, conditional access, automatic failover and clearer error messages.
-- Chromium engine updated to 157.0.8103.40.
+2.52.3-1 [2026-11-12]
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 157.0.8103.79.
