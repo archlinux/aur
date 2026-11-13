@@ -7,7 +7,7 @@ pkgname=${_appname}-bin
 pkgdesc="A fast, lightweight, command-line Steam launcher and library manager written in Rust"
 
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,13 @@ license=('GPL-3.0-or-later' 'MIT')
 
 provides=("${_appname}")
 conflicts=("${_appname}")
-depends=('glibc' 'libgcc' 'xz' 'bzip2' 'openssl')
+depends=('glibc' 'libgcc' 'xz' 'bzip2' 'openssl' 'vulkan-driver' 'vulkan-icd-loader')
+optdepends=('lib32-vulkan-driver: 32-bit Windows games via Proton (multilib)'
+            'lib32-vulkan-icd-loader: 32-bit Windows games via Proton (multilib)'
+            'lib32-freetype2: fonts in 32-bit Windows games (multilib)'
+            'lib32-wayland: Wayland driver for 32-bit Windows games (multilib)'
+            'steam: Steamworks bridge for games that need the Steam client')
+install=aurelia.install
 
 options=(!strip)
 
