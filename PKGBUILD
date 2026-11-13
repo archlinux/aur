@@ -2,9 +2,9 @@
 # Maintainer: Martin Wimpress <code@wimpress.io>
 
 pkgname='xfkey-wonkey-bin'
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
-pkgdesc='Configure your XFKEY One Key Max on Linux.'
+pkgdesc='Macropad configuration tool for Linux.'
 url='https://github.com/wimpysworld/WonKey'
 arch=('aarch64' 'x86_64')
 license=('BlueOak-1.0.0')
@@ -12,10 +12,10 @@ provides=('wonkey')
 conflicts=('wonkey')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/wimpysworld/WonKey/releases/download/v${pkgver}/WonKey_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('3ccf720a8b1cb29844cd8bd80fd310ba83bce9dd42cffd7641855df6729cf1c6')
+sha256sums_aarch64=('9b1501d7c360ad3ed1c4f38e14d3e6130a11c4d0f6fcdf2d1354a9ebd016ade5')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/wimpysworld/WonKey/releases/download/v${pkgver}/WonKey_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('7bb256850e1878a5d825e89d507fe35cfccc397e1398b59e471af99fa4beb800')
+sha256sums_x86_64=('5056728ce08a69db45e3414292a604121b5eff82c3d4cc11f01aade8bc8703c1')
 
 package() {
   install -Dm755 wonkey "${pkgdir}/usr/bin/wonkey"
