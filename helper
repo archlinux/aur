@@ -135,6 +135,20 @@ unknown_init(){
 	usage "unknown init '`readlink /usr/bin/init`'"
 }
 
+simple_scripts(){
+	local d=/etc/${1:-runit}/sv/alsabeep
+	mkdir -p "$d"
+	cat >"$d"/run <<\EOF
+#!/usr/bin/sh
+exec /usr/bin/alsabeep-helper start
+EOF
+	cat >"$d"/finish <<\EOF
+#!/usr/bin/sh
+exec /usr/bin/alsabeep-helper stop
+EOF
+	chmod a+x "$d"/{run,finish}
+}
+
 install(){
 	header "install"
 	rmmod pcspkr 2>/dev/null
@@ -158,16 +172,7 @@ EOF
 			systemctl daemon-reload
 			;;
 		(runit-init)
-			mkdir /etc/runit/sv/alsabeep
-			cat >/etc/runit/sv/alsabeep/run <<\EOF
-#!/usr/bin/sh
-exec /usr/bin/alsabeep-helper start
-EOF
-			cat >/etc/runit/sv/alsabeep/finish <<\EOF
-#!/usr/bin/sh
-exec /usr/bin/alsabeep-helper stop
-EOF
-			chmod a+x /etc/runit/sv/alsabeep/*
+			simple_scripts
 			ln -s ../../sv/alsabeep /run/runit/service/
 			;;
 		(openrc-init)
@@ -230,7 +235,8 @@ EOF
 			s6-db-reload
 			s6-rc -u change /run/service/alsabeep
 			;;
-		(nitro) 
+		(nitro)
+			simple_scripts nitro
 			nsm enable alsabeep
 			;;
 		(*) unknown_init;;
@@ -250,6 +256,7 @@ remove(){
 			;;
 		(runit-init)
 			rm -f /run/runit/service/alsabeep
+			rm -rf /etc/nitro/sv/alsabeep
 			;;
 		(openrc-init)
 			rc-service alsabeep stop
@@ -268,6 +275,7 @@ remove(){
 			;;
 		(nitro)
 			nsm disable alsabeep
+			rm -rf /etc/nitro/sv/alsabeep
 			;;
 		(*) unknown_init;;
 	esac
