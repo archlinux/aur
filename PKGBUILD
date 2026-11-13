@@ -2,7 +2,7 @@
 
 _name=smithy-cbor
 pkgname=python-$_name
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='CBOR serialization and deserialization support for Smithy tooling.'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-hatchling'
              'python-installer')
 checkdepends=('python-pytest')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name/v$pkgver.tar.gz")
-sha256sums=('762acdbf68035c2a150ed6b6118cfa27aaf5e0dd250536bea0ca7d0eb7a1a21c')
+sha256sums=('9403daabd7a8826d5b9f439a0af58383087819d710543ac630fcfd644c0db447')
 
 build() {
   cd "smithy-python-$_name-v$pkgver/packages/$_name"
