@@ -1,7 +1,7 @@
 # Maintainer: Atmosphera App <atmosphera-app@proton.me>
 
 pkgname=atmosphera
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 _gitname="$pkgname-$pkgver"
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell"
@@ -47,7 +47,7 @@ provides=('atmosphera' 'xdg-desktop-portal-impl')
 conflicts=('atmosphera-git')
 install=atmosphera.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('79bfb656eca4420d0a17495cf38253d4abde3da5634a58d3606e7febe62b6496')
+sha256sums=('d26b4a3fa867e4db1835b400170325ddcfc492ef47926f35a553a3cb62f8f601')
 
 package() {
   cd "$srcdir/$_gitname"
