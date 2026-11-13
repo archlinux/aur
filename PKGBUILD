@@ -1,8 +1,8 @@
-# Maintainer: Deon Spengler <deon@spengler.co.za>
+# Maintainer: Deon Spengler <deon at spengler dot co dot za>
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
-# Contributor: DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
-# Contributor: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
-# Contributor: Andre Wayand <aur-sope@awayand.sleepmail.com>
+# Contributor: DJ Lucas <dj at linuxfromscratch dot org>
+# Contributor: Steven Hiscocks <steven at hiscocks dot me dot uk>
+# Contributor: Andre Wayand <aur-sope at awayand dot sleepmail dot com>
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
