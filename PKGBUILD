@@ -12,17 +12,25 @@ pkgname=dotnet-build-deps-$_dotnetver-bin
 # The version of Microsoft's .NET SDK (dotnet-sdk-bin): the runtime version and the SDK's feature band
 # and patch. The SDK is pinned to exactly that release, so the version provided is the one installed.
 pkgver=11.0.0.sdk100
-pkgrel=1
+pkgrel=2
 pkgdesc="Build dependencies of the .NET packages from Microsoft's build of .NET $_dotnetver and nuget.org (meta package)"
 arch=(x86_64 aarch64)
 url='https://dotnet.microsoft.com/'
 license=(0BSD)
-# Microsoft's build of the current .NET
+# Microsoft's build of the current .NET. As the selector of dotnet-sdk-bin, it's the one of Microsoft's
+# current .NET (dotnet-build-deps-bin), until the AUR has the next one; the packages for older .NET
+# versions have the version in the name (dotnet-sdk-11.0-bin then).
 depends=("dotnet-sdk-bin=$pkgver")
-provides=("dotnet-build-deps-$_dotnetver=$pkgver")
+provides=(
+  "dotnet-build-deps-$_dotnetver=$pkgver"
+  "dotnet-build-deps-bin=$pkgver"
+)
+# The source-built packages of .NET $_dotnetver, once Arch Linux has it (see dotnet-build-deps-10.0-bin)
 conflicts=(
   "dotnet-build-deps-$_dotnetver"
+  "dotnet-source-build-reference-packages-$_dotnetver"
   "dotnet-source-built-artifacts-$_dotnetver"
+  "dotnet-system-io-ports-native-$_dotnetver"
 )
 source=("LICENSE")
 sha512sums=('a33658d9271e5c537ccd41bf540b463ad2a5eca4a060c80486ff42a736f0aa042d10436e7177c34d792177cb11285243dee1f31c4df54fb0bfaabbc306406930')
