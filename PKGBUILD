@@ -1,9 +1,11 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
 # Contributor: Aikawa Yataro <aikawayataro at protonmail dot com>
-# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
-# Contributor: Rikarnto Bariampa <richard1996ba@gmail.com>
-# Contributor: Kyle Sferrazza <kyle.sferrazza@gmail.com>
-# Contributor: Max Liebkies <mail@maxliebkies.de>
+# Contributor: Carl Smedstad <carl dot smedstad at protonmail dot com>
+# Contributor: Rikarnto Bariampa <richard1996ba at gmail dot com>
+# Contributor: Kyle Sferrazza <kyle dot sferrazza at gmail dot com>
+# Contributor: Max Liebkies <mail at maxliebkies dot de>
+# Contributor: Sergio Correia <sergio at correia dot cc>
+# Contributor: Grigorii Horos <horosgrisa at gmail dot com>
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
