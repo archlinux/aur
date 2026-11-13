@@ -1,7 +1,7 @@
 # Maintainer: Christian Kugler <syphdias+git at gmail dot com>
 
 pkgname=swayprofile
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Switch sway power/performance profiles (refresh rate, power-profiles-daemon, LACT GPU, DND) manually, per window or on idle"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
     'libnotify: desktop notifications'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('aeddde02e2fbbc9d57c82c2e79bbdbf1f3a111f47a357c80f6dc6d87a5622028')
+sha256sums=('2ab1f78224742dc6316c5e9e0b2a372c02d6e370822a632d035508e280d777ad')
 
 build() {
     cd "$pkgname-$pkgver"

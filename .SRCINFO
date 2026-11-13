@@ -1,6 +1,6 @@
 pkgbase = swayprofile
 	pkgdesc = Switch sway power/performance profiles (refresh rate, power-profiles-daemon, LACT GPU, DND) manually, per window or on idle
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Syphdias/swayprofile
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = swayprofile
 	optdepends = mako: do-not-disturb
 	optdepends = lact: GPU control
 	optdepends = libnotify: desktop notifications
-	source = swayprofile-0.1.1.tar.gz::https://github.com/Syphdias/swayprofile/archive/v0.1.1.tar.gz
-	sha256sums = aeddde02e2fbbc9d57c82c2e79bbdbf1f3a111f47a357c80f6dc6d87a5622028
+	source = swayprofile-0.1.2.tar.gz::https://github.com/Syphdias/swayprofile/archive/v0.1.2.tar.gz
+	sha256sums = 2ab1f78224742dc6316c5e9e0b2a372c02d6e370822a632d035508e280d777ad
 
 pkgname = swayprofile
