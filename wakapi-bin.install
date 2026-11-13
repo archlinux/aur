@@ -1,0 +1,8 @@
+post_upgrade() {
+  if [ -e /wakapi_db.db ]; then
+    echo "  wakapi.service now runs as user wakapi in /var/lib/wakapi. The database"
+    echo "  of the old service is /wakapi_db.db; stop wakapi.service, then move it:"
+    echo "  mv /wakapi_db.db* /var/lib/wakapi/"
+    echo "  chown wakapi:wakapi /var/lib/wakapi/wakapi_db.db*"
+  fi
+}
