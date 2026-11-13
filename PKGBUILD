@@ -7,7 +7,7 @@ pkgname=(
   libadwaita-yaru-docs-git
 )
 _pkgname=libadwaita-1
-pkgver=1.8.0.r221.gd2c5713  # Will be dynamically overwritten by pkgver()
+pkgver=1.10.0.r257.g2e5902d  # Will be dynamically overwritten by pkgver()
 pkgrel=1
 epoch=1
 pkgdesc="Building blocks for modern adaptive GNOME applications (with Ubuntu patches for improved Yaru theme accent color support)"
@@ -15,12 +15,12 @@ url="https://launchpad.net/ubuntu/+source/libadwaita-1/"
 arch=(x86_64)
 license=(LGPL-2.1-or-later)
 depends=(
-  appstream
   fribidi
   glib2
   glibc
   graphene
   gtk4
+  ministream
   pango
 )
 makedepends=(
@@ -28,10 +28,12 @@ makedepends=(
   git
   glib2-devel
   gobject-introspection
+  libgtk-4.so
   meson
   sassc
   vala
 )
+checkdepends=(weston)
 source=("git+https://git.launchpad.net/ubuntu/+source/libadwaita-1#branch=applied/ubuntu/devel")
 b2sums=('SKIP')
 
@@ -53,13 +55,34 @@ prepare() {
 
 build() {
   local meson_options=(
-    -D gtk_doc=true
-    -Dtests=false   # Disable tests due to unreliable Yaru resource loading in test environment
+    -D documentation=true
+    -D tests=true
   )
 
   arch-meson $_pkgname build "${meson_options[@]}"
   meson compile -C build
 }
+
+check() (
+  # Isolate the tests from the builder's desktop configuration: a user stylesheet such as
+  # ~/.config/gtk-4.0/gtk.css (e.g. one importing a Yaru resource that is not available here)
+  # or GTK_THEME makes GTK emit warnings, which are fatal in the test suite (G_DEBUG=fatal-warnings).
+  unset GTK_THEME GTK_DEBUG GTK_PATH GTK_MODULES GDK_BACKEND DISPLAY
+  export HOME="$PWD/test-home"
+  export XDG_CONFIG_HOME="$HOME/.config" XDG_DATA_HOME="$HOME/.local/share" XDG_CACHE_HOME="$HOME/.cache"
+  mkdir -p "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_CACHE_HOME"
+
+  export XDG_RUNTIME_DIR="$PWD/runtime-dir"
+  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
+
+  export WAYLAND_DISPLAY=wl-$pkgbase-$RANDOM
+  weston --backend=headless --socket=$WAYLAND_DISPLAY --idle-time=0 &
+  _w=$!
+
+  trap "kill $_w; wait" EXIT
+
+  meson test -C build --print-errorlogs
+)
 
 _pick() {
   local p="$1" f d; shift
@@ -83,7 +106,7 @@ package_libadwaita-yaru-git() {
     'yaru-icon-theme: recommended icons'
   )
 
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 
   cd "$pkgdir"
 
