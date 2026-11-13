@@ -1,6 +1,6 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
-# Maintainer: Vladislav Minakov <v@minakov.pro>
-# Contributor: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
+# Maintainer: Vladislav Minakov <v at minakov dot pro>
+# Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
