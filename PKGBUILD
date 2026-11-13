@@ -11,6 +11,7 @@ url='https://github.com/usememos/memos'
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'nodejs>=24' 'pnpm')
+install=memos.install
 backup=('etc/memos.conf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         'memos.service'
@@ -21,7 +22,7 @@ sha256sums=('067b7411c825cade8cecd9761de5d60a7cc830bf7ef8afdfeae00966be3a546e'
             '0c7d5102f95e7348c4791e2c919b3664c1124469c5174349c81153894affe2dd'
             'eaf0d053c5673176c730085493db4d63b15e212e101fc02c9f9236f8f91abf20'
             'ed17b9db8aadd8518a3da01e45b5445a819bdb0f7ccd8bc1acc9f52cc02964fc'
-            '29f519aa64fe4feb7c675aa279bc09e61b59d7a3a20d42a28140df1196a7a68a')
+            '0e0b2a4e83ecb837055a59ee19c869586b2c74abeaa3b7a43fff95c19bd34e4d')
 
 _pnpm_env() {
   export pnpm_config_pm_on_fail=ignore

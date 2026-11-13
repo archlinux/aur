@@ -1,0 +1,20 @@
+post_upgrade() {
+  if [ "$(vercmp "$2" 0.31.0)" -lt 0 ]; then
+    echo "  memos 26 does not start on a database that memos 0.31.0 has not"
+    echo "  upgraded yet. Before starting memos.service, run memos 0.31.0 once"
+    echo "  on /var/lib/memos: https://github.com/usememos/memos/releases/tag/v0.31.0"
+    echo "  /etc/memos.conf now sets port 8081, the upstream default, not 5230."
+  fi
+  if [ "$(vercmp "$2" 26.10.0)" -lt 0 ]; then
+    echo "  memos 26.10 replaced the upload size and memo length settings with usage"
+    echo "  limits and did not carry the old values over: 8 KiB per memo and 32 MiB"
+    echo "  per file until changed under Settings > Usage limits. Upgrade notes:"
+    echo "  https://github.com/usememos/memos/releases/tag/26.10.0"
+  fi
+}
+
+post_remove() {
+  echo "  Note: system user 'memos' and /var/lib/memos were not removed."
+  echo "  Remove them if no longer needed:"
+  echo "  userdel memos && rm -rf /var/lib/memos"
+}
