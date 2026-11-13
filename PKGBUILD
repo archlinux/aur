@@ -2,21 +2,20 @@
 
 pkgname=nino
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A terminal-based text editor inspired by Kilo"
 arch=("x86_64")
-url="https://evanl.in/nino-editor/"
+url="https://evanl.in/${pkgname}-editor/"
 license=("BSD-2-Clause")
 depends=("glibc")
-makedepends=("git")
-source=("git+https://github.com/evanlin96069/${pkgname}.git#tag=v${pkgver}")
-sha256sums=("8ac9fda2078b2a874841bcc02a71287a2e7a105589ba24c6bedb7dd5ece3efd3")
+source=("https://github.com/evanlin96069/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=("628b850ef47631ba1bff48a038700346de1e9a22d4bc082a5bccb57d287947d6")
 
 build() {
-	"${pkgname}/scripts/build.sh"
+	"${srcdir}/${pkgname}-${pkgver}/scripts/build.sh"
 }
 
 package() {
-	install -Dm755 "${pkgname}/build/nino" -t "${pkgdir}/usr/bin"
-	install -Dm644 "${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/build/${pkgname}" -t "${pkgdir}/usr/bin"
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

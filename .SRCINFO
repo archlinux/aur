@@ -1,13 +1,12 @@
 pkgbase = nino
 	pkgdesc = A terminal-based text editor inspired by Kilo
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://evanl.in/nino-editor/
 	arch = x86_64
 	license = BSD-2-Clause
-	makedepends = git
 	depends = glibc
-	source = git+https://github.com/evanlin96069/nino.git#tag=v0.2.1
-	sha256sums = 8ac9fda2078b2a874841bcc02a71287a2e7a105589ba24c6bedb7dd5ece3efd3
+	source = https://github.com/evanlin96069/nino/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 628b850ef47631ba1bff48a038700346de1e9a22d4bc082a5bccb57d287947d6
 
 pkgname = nino
