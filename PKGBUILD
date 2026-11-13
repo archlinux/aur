@@ -7,7 +7,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}
 pkgdesc="A fast, lightweight, command-line Steam launcher and library manager written in Rust"
 
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,7 +32,7 @@ install=aurelia.install
 options=(!strip !lto)
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_gitversion}.tar.gz")
-sha256sums=('fd6d35a23d868c119a8f63cad9a7439626beb8a49b72f37a18f73a672696c60a')
+sha256sums=('287132d6177227441f0da96997aab386125a66bf878d23923990a2526cfb95a4')
 
 
 prepare() {
