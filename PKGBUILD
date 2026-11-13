@@ -2,15 +2,20 @@
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
-pkgname=dotnet-source-build-reference-packages
+# For the current .NET of Arch Linux (dotnet-sdk) and, with the same contents, for its version
+# (dotnet-sdk-10.0), like Arch Linux's dotnet-core: dotnet-build-deps and dotnet-build-deps-10.0 depend
+# on one each. The unversioned package moves on with the next .NET, the versioned one then gets a
+# PKGBUILD of its own.
+_dotnetsdkver="10.0"
+pkgbase=dotnet-source-build-reference-packages
+pkgname=("$pkgbase" "$pkgbase-$_dotnetsdkver")
 # The version of the source-built .NET SDK whose sources (the VMR) the commit is taken from
 pkgver=10.0.114
-pkgrel=1
+pkgrel=2
 pkgdesc="Reference, targeting and text-only NuGet packages of .NET's source build (SBRP), e.g. NETStandard.Library"
 arch=(any)
 url='https://github.com/dotnet/source-build-assets'
 license=(MIT)
-_dotnetsdkver="10.0"
 # Arcade, the MSBuild SDKs and ILAsm come from the source-built .NET
 makedepends=(
   "dotnet-sdk-$_dotnetsdkver"
@@ -160,14 +165,27 @@ _check_prebuilt() {
   return "$_found"
 }
 
-package() {
-  cd "source-build-assets-$_commit" || exit
+# Installs the files of the package $1
+_package() {
+  local _src="$srcdir/source-build-assets-$_commit"
   # In a feed of their own: some reference packages have their reference assemblies in lib/ (e.g.
   # System.Collections.Immutable), which must not end up in applications, so consumers map only the
   # packages they compile against to this feed
-  install -Dm644 artifacts/packages/Release/{ReferenceOnly,Shipping}/*.nupkg \
+  install -Dm644 "$_src"/artifacts/packages/Release/{ReferenceOnly,Shipping}/*.nupkg \
     -t "$pkgdir/usr/share/nuget/dotnet-$_dotnetsdkver/reference-packages/"
-  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$_src/LICENSE.txt" -t "$pkgdir/usr/share/licenses/$1/"
 
   _check_prebuilt "$srcdir/nuget"
+}
+
+# The current .NET's, which stands in for the versioned package while it has the same version
+package_dotnet-source-build-reference-packages() {
+  provides=("$pkgbase-$_dotnetsdkver=$pkgver")
+  conflicts=("$pkgbase-$_dotnetsdkver")
+  _package "${FUNCNAME[0]#package_}"
+}
+
+package_dotnet-source-build-reference-packages-10.0() {
+  pkgdesc+=" (.NET $_dotnetsdkver)"
+  _package "${FUNCNAME[0]#package_}"
 }
