@@ -1,0 +1,44 @@
+[Unit]
+Description=SOGo 6 groupware web interface
+Documentation=https://github.com/Alinto/SOGo6-UI
+After=network.target sogo6.service
+
+[Service]
+Type=exec
+User=sogo6-ui
+Group=sogo6-ui
+Environment=NODE_ENV=production NEXT_TELEMETRY_DISABLED=1
+EnvironmentFile=/etc/sogo6/ui.conf
+WorkingDirectory=/usr/share/webapps/sogo6-ui
+ExecStart=/usr/bin/node /usr/share/webapps/sogo6-ui/server.js
+Restart=on-failure
+# The cache of Next.js (the optimised images), which .next/cache links to
+CacheDirectory=sogo6-ui
+
+# Hardening: the interface only writes its cache and its private /tmp; the rest of the system is
+# read-only to it (Node's JIT needs writable and executable memory, so no MemoryDenyWriteExecute)
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectProc=invisible
+CapabilityBoundingSet=
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+RestrictNamespaces=true
+LockPersonality=true
+RemoveIPC=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+
+[Install]
+WantedBy=multi-user.target

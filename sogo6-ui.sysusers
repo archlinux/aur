@@ -1,0 +1,2 @@
+# The user the web interface runs as, apart from the API server's sogo6: it needs none of its settings
+u sogo6-ui - "SOGo 6 groupware web interface"
