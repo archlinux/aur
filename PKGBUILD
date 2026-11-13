@@ -1,7 +1,7 @@
 # Maintainer: Samuel B <samuelb@users.noreply.github.com>
 pkgname=somad
 _binname=soma
-pkgver=0.19.1
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='A client for streaming SomaFM radio channels'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('glibc' 'alsa-lib' 'ca-certificates')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ece9167d053cf44720ba3efd70b84402e01e6ae6bf7f066594122d9cb2e2e7f6')
+sha256sums=('5d3fa6e4411ab7c37a93e2da4300903c087f2a3240c03359eb588dade4b8af0f')
 
 # As the Arch Go package guidelines ask: a PIE that takes makepkg's C and
 # linker flags (full RELRO), and no -s -w, so makepkg strips the binary
