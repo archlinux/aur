@@ -1,6 +1,6 @@
 pkgbase = librnd4-svn
 	pkgdesc = free/open source, flexible, modular two-dimensional CAD engine
-	pkgver = r38278
+	pkgver = r38279
 	pkgrel = 1
 	url = http://www.repo.hu/projects/librnd
 	arch = x86_64
