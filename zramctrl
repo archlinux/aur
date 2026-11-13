@@ -19,22 +19,22 @@ start() {
 		test "$Item" != "MemTotal:" && continue
 		# echo "|$Item|$Amount|$Multiplier|"
 		case $Multiplier in
-			kB)	RAM_TOTAL_BYTES=$((Amount * 1024)) ;;
-			mB)	RAM_TOTAL_BYTES=$((Amount * (1024**2) )) ;;
-			gB)	RAM_TOTAL_BYTES=$((Amount * (1024**3) )) ;;
-			*)	RAM_TOTAL_BYTES=$Amount ;;
+			kB) RAM_TOTAL_BYTES=$((Amount * 1024)) ;;
+			mB) RAM_TOTAL_BYTES=$((Amount * (1024 ** 2))) ;;
+			gB) RAM_TOTAL_BYTES=$((Amount * (1024 ** 3))) ;;
+			*) RAM_TOTAL_BYTES=$Amount ;;
 		esac
 		# echo "$RAM_TOTAL_BYTES $RAM_PERCENT"
-	done </proc/meminfo
+	done < /proc/meminfo
 
 	# SIZE=8
 	# Manual size config?
 	if test $SIZE -gt 0; then
 		case "${SIZE_TYPE:-GiB}" in
-			KiB)	ZRAM_SIZE_REQ=$((SIZE * 1024)) ;;
-			MiB)	ZRAM_SIZE_REQ=$((SIZE * (1024**2) )) ;;
-			GiB)	ZRAM_SIZE_REQ=$((SIZE * (1024**3) )) ;;
-			*)		ZRAM_SIZE_REQ=$SIZE ;;
+			KiB) ZRAM_SIZE_REQ=$((SIZE * 1024)) ;;
+			MiB) ZRAM_SIZE_REQ=$((SIZE * (1024 ** 2))) ;;
+			GiB) ZRAM_SIZE_REQ=$((SIZE * (1024 ** 3))) ;;
+			*) ZRAM_SIZE_REQ=$SIZE ;;
 		esac
 		if test $ZRAM_SIZE_REQ -gt $((RAM_TOTAL_BYTES * ZRAM_MAX_PERCENT / 100)); then
 			ZRAM_SIZE=$((RAM_TOTAL_BYTES * ZRAM_MAX_PERCENT / 100))
@@ -52,7 +52,7 @@ start() {
 	modprobe zram
 	if test -n "$ZRAM_COMPRESSION_ALGO"; then
 		# Iterate over available compression algorithms.
-		for AVAILABLE_ALGO in $(</sys/block/zram0/comp_algorithm); do
+		for AVAILABLE_ALGO in $(< /sys/block/zram0/comp_algorithm); do
 			# Remove brackets from active one
 			AVAILABLE_ALGO=${AVAILABLE_ALGO#[}
 			AVAILABLE_ALGO=${AVAILABLE_ALGO%]}
@@ -75,10 +75,10 @@ start() {
 }
 
 stop() {
-  swapoff /dev/zram0
-  rmmod zram
+	swapoff /dev/zram0
+	rmmod zram
 }
 
 case $1 in
-  start|stop) "$1" ;;
+	start | stop) "$1" ;;
 esac
