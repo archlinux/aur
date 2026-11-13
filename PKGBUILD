@@ -13,7 +13,7 @@ optdepends=('yt-dlp: video, HLS, and DASH downloads'
 makedepends=('rust' 'cargo' 'git' 'pkgconf')
 provides=('mini-downloader')
 conflicts=('mini-downloader' 'mini-downloader-bin')
-options=('!lto')
+options=('!lto' '!debug')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 

@@ -26,6 +26,7 @@ pkgbase = mini-downloader-git
 	conflicts = mini-downloader
 	conflicts = mini-downloader-bin
 	options = !lto
+	options = !debug
 	source = mini-downloader-git::git+https://github.com/RamazanBerk20/mini-downloader.git
 	sha256sums = SKIP
 
