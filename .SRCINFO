@@ -1,6 +1,6 @@
 pkgbase = scdr-git
 	pkgdesc = Process scheduling and priority daemon for EEVDF and sched_ext kernels (git)
-	pkgver = 0.4.0.r0.g0000000
+	pkgver = 0.4.0.r3.ga65d13b
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/scdr
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = scdr-git
 	makedepends = libbpf
 	makedepends = libelf
 	makedepends = zlib
+	makedepends = dbus
+	makedepends = systemd
 	source = scdr::git+https://github.com/asafelobotomy/scdr.git
 	sha256sums = SKIP
 

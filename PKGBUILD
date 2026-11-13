@@ -5,13 +5,13 @@
 pkgbase=scdr-git
 pkgname=('scdr-git' 'scx-devbox-git')
 _pkgname=scdr
-pkgver=0.4.0.r0.g0000000
+pkgver=0.4.0.r3.ga65d13b
 pkgrel=1
 pkgdesc="Process scheduling and priority daemon for EEVDF and sched_ext kernels (git)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/asafelobotomy/scdr"
 license=('MPL-2.0')
-makedepends=('cargo' 'git' 'clang' 'bpf' 'libbpf' 'libelf' 'zlib')
+makedepends=('cargo' 'git' 'clang' 'bpf' 'libbpf' 'libelf' 'zlib' 'dbus' 'systemd')
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
