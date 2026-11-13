@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph.fink@gmail.com>
 
 pkgname="python-geoalchemy2"
@@ -6,7 +9,7 @@ pkgdesc="Using SQLAlchemy with Spatial Databases"
 url="https://geoalchemy-2.readthedocs.io/"
 
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("MIT")
