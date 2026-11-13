@@ -1,5 +1,5 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
-# Maintainer: FirstAirBender <noblechuk5 at web dot de>
+# Contributor: FirstAirBender <noblechuk5 at web dot de>
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 pkgname=crowdsec-nginx-bouncer
