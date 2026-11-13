@@ -42,16 +42,19 @@ profile hermes-agent-hardening-$INSTANCE /opt/hermes-agent/venv/bin/python flags
 
 $EXTRA_RULES
   # Python/system shared libraries.
+  /usr/lib/ r,
   /usr/lib/** mr,
+  /lib/ r,
   /lib/** mr,
+  /lib64/ r,
   /lib64/** mr,
 
   # Hermes is intentionally a terminal agent. Child commands inherit this
   # profile via ix, retaining the filesystem restrictions above.
-  /usr/bin/** ix,
-  /bin/** ix,
-  /usr/sbin/** ix,
-  /sbin/** ix,
+  /usr/bin/** rix,
+  /bin/** rix,
+  /usr/sbin/** rix,
+  /sbin/** rix,
 
   # TTY access for interactive shell operations.
   /dev/tty rw,

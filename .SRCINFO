@@ -1,6 +1,6 @@
 pkgbase = hermes-agent-hardening
 	pkgdesc = System hardening for Hermes Agent instances
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/hermes-agent-hardening
 	install = hermes-agent-hardening.install
@@ -30,7 +30,7 @@ pkgbase = hermes-agent-hardening
 	sha256sums = ad5325226cb7ce8f6d69ad73bd6a8c364e7698d79514640eac5ff84a1b1b9106
 	sha256sums = 5f6338107b5a2d85c94169a99c91978c1731dfc86d04254be0ab6d55caf19ad9
 	sha256sums = ddb7fd9b062d5b59d36b4ce5d4980ac9bbb6acc2d786e04dfabb8997f04bf268
-	sha256sums = a48812c45da92a4e945fe604747bffe3438a75d1868f601621cea0286cfd0f53
+	sha256sums = 2ce03e152b98895264e385ce3118c2e14b18dc7d5d19109373e2d84b8eb436ab
 	sha256sums = 0e793147e5d3310a26e69f56fa75e05c44f6dc602c14e483298dc399c993d5b1
 	sha256sums = 2f99221f379bee648761f19f92e9ad565559f542a0c634bf2bcc0a06ad93de84
 	sha256sums = fe9deb6d042a1fe2b4ffef378279cf096311373f046df9879d2f45b6493ce901
