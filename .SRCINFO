@@ -1,7 +1,7 @@
 pkgbase = noctalia-git
 	pkgdesc = A sleek, customizable desktop shell crafted for Wayland
 	pkgver = 5.2.1.r5789.gb409c9016
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/noctalia-dev/noctalia
 	arch = x86_64
