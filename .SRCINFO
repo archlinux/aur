@@ -1,14 +1,14 @@
 pkgbase = winedirectalsa-bin
 	pkgdesc = Ultra-low-latency ASIO driver for Wine/Proton
-	pkgver = 1.0.0_beta.3
+	pkgver = 1.0.0_beta.4
 	pkgrel = 1
 	url = https://github.com/na1307/winedirectalsa
 	arch = x86_64
 	license = MIT
-	depends = libasound.so=2-64
-	depends = libsystemd.so=0-64
-	depends = libstdc++.so=6-64
-	depends = libgcc_s.so=1-64
+	depends = alsa-lib
+	depends = systemd-libs
+	depends = libstdc++
+	depends = libgcc
 	depends = glibc
 	optdepends = steam: steam games
 	optdepends = python-vdf: for automatic installation script
@@ -16,7 +16,7 @@ pkgbase = winedirectalsa-bin
 	optdepends = rtkit: realtime thread
 	provides = winedirectalsa
 	conflicts = winedirectalsa
-	source = https://github.com/na1307/winedirectalsa/releases/download/v1.0.0-beta.3/winedirectalsa.tar.gz
-	sha256sums = ef9aec24bdae7f11239e75489e4d47fbdcc96ebb7ebd2e6e569055a3ad3c51ae
+	source = https://github.com/na1307/winedirectalsa/releases/download/v1.0.0-beta.4/winedirectalsa.tar.gz
+	sha256sums = 62392ba11774c5bbb804fce80039f2e3cc3f1429bd28f99ad66d20c2ad7bf61d
 
 pkgname = winedirectalsa-bin
