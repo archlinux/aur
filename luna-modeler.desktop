@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Luna Modeler
+GenericName=Database Designer
+Comment=Design and document relational databases
+Exec=luna-modeler %U
+Icon=luna-modeler
+Terminal=false
+Categories=Development;Database;
+Keywords=database;erd;schema;sql;postgresql;mysql;
+StartupNotify=true
+StartupWMClass=Luna Modeler
