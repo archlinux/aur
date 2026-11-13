@@ -1,7 +1,7 @@
 # Maintainer: HITCJK <1641796967@qq.com>
 pkgname=psd2live-bin
 pkgver=3.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Turn layered PSD files into editable Live2D models (prebuilt binary release)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/tsunehimatoi/psd2live'
@@ -60,8 +60,19 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s /opt/psd2live/bin/PSD2Live "$pkgdir/usr/bin/psd2live"
 
-  install -Dm644 "$srcdir/PSD2Live/lib/PSD2Live.png" \
-    "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/psd2live.png"
+  # The icon bundled in the app image (lib/PSD2Live.png) is Kotlin's default
+  # placeholder. The real logo ships inside the application jar.
+  local jar
+  jar=$(find "$srcdir/PSD2Live/lib/app" -maxdepth 1 -name "psd2live-$pkgver-*.jar" -print -quit)
+  bsdtar -xOf "$jar" icons/psd2live.png > "$srcdir/psd2live.png"
+
+  # 1024x1024 is not listed in hicolor's index.theme; 512x512 is, so strict
+  # icon-theme lookups (Qt/Quickshell/Noctalia etc.) can find it.
+  install -Dm644 "$srcdir/psd2live.png" \
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/psd2live.png"
+  install -Dm644 "$srcdir/psd2live.png" "$pkgdir/usr/share/pixmaps/psd2live.png"
+  # Keep the app directory's icon consistent with the real logo as well.
+  install -Dm644 "$srcdir/psd2live.png" "$pkgdir/opt/psd2live/lib/PSD2Live.png"
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/psd2live.desktop" <<'EOF'
 [Desktop Entry]
