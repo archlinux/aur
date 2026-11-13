@@ -1,6 +1,6 @@
 # Maintainer: RamazanBerk20 <119219364+RamazanBerk20@users.noreply.github.com>
 pkgname=swiftsim-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Fast SPICE circuit simulator with a schematic editor and waveform viewer (LTspice alternative; prebuilt)'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('vulkan-icd-loader: Vulkan rendering (OpenGL is used otherwise)'
 provides=('swiftsim')
 conflicts=('swiftsim')
 source=("swiftsim-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/swiftsim-linux-x86_64.tar.gz")
-sha256sums=('fab3bb48878c69e458f7f3d33872037a67aa4e061f69551f0537390fc1631ca3')
+sha256sums=('38cf625dddc54c56cabdb6e97bfc59fabe7e2144f593f2e706f952ef582ea426')
 
 package() {
   cd swiftsim-linux-x86_64
