@@ -2,7 +2,7 @@
 pkgname=podman-desktop-git
 _pkgname='Podman Desktop'
 _flatpakname="io.podman_desktop.${_pkgname// /}"
-pkgver=1.30.6.r11900.g640da0cd5
+pkgver=1.30.7.r464.g51b1014d
 _electronversion=45
 _nodeversion=24
 pkgrel=1
@@ -54,10 +54,10 @@ _get_project_dir() {
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 pkgver() {
-	cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "${srcdir:-.}/${pkgname%-git}.git")" || return 1
-	_v=$(git tag --list --sort=-v:refname | grep -m1 -E '^v?[0-9]+(\.[0-9]+)+$' | tr -d 'v')
-	_n=$(git rev-list --count HEAD); _s=$(git rev-parse --short=7 HEAD)
-	[[ -n $_v ]] && printf '%s.r%s.g%s\n' "$_v" "$_n" "$_s" || printf 'r%s.%s\n' "$_n" "$_s"
+	cd "$(_get_project_dir)" || return 1
+	local _t=$(git tag --list --sort=-v:refname | grep -m1 -E '^v?[0-9]+(\.[0-9]+)+$' || :)
+	local _n=$(git rev-list --count "${_t:+$_t..}HEAD") _s=$(git rev-parse --short=7 HEAD)
+	[[ -n $_t ]] && printf '%s.r%s.g%s\n' "${_t#v}" "$_n" "$_s" || printf 'r%s.%s\n' "$_n" "$_s"
 }
 _ensure_local_nvm() {
 	local NVM_DIR="${srcdir}/.nvm"
