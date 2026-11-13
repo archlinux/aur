@@ -28,7 +28,10 @@ pkgname = scdr-git
 	optdepends = pipewire: audio-client role (pw-dump)
 	optdepends = gamemode: game role
 	optdepends = power-profiles-daemon: per-power-profile roles
-	optdepends = uq: the Scheduling page in uQ Settings
+	optdepends = uq: the Scheduling page and bar widget in uQ
+	optdepends = plasma-workspace: the SCDR panel widget in KDE Plasma
+	optdepends = kquickcharts: live graphs in the Plasma panel widget
+	optdepends = kcmutils: settings pages of the Plasma panel widget
 	provides = scdr
 	conflicts = scdr
 

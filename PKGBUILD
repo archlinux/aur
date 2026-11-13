@@ -54,7 +54,10 @@ package_scdr-git() {
               'pipewire: audio-client role (pw-dump)'
               'gamemode: game role'
               'power-profiles-daemon: per-power-profile roles'
-              'uq: the Scheduling page in uQ Settings')
+              'uq: the Scheduling page and bar widget in uQ'
+              'plasma-workspace: the SCDR panel widget in KDE Plasma'
+              'kquickcharts: live graphs in the Plasma panel widget'
+              'kcmutils: settings pages of the Plasma panel widget')
   provides=('scdr')
   conflicts=('scdr')
 
