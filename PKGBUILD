@@ -2,7 +2,7 @@
 # Maintainer: Dylan Harkleroad <deehark87@gmail,com>
 
 pkgname=opencmr2-git
-pkgver=\1.r\2.gf1f89d8
+pkgver=1.8.7.r0.gf1f89d8
 pkgrel=1
 pkgdesc="Open-source native Linux port of Colin McRae Rally 2.0"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ pkgver() {
   cd OpenCMR2
 
   git describe --long --tags --abbrev=7 2>/dev/null \
-    | sed -E 's/^v?([^-]+)-([0-9]+)-g/\\1.r\\2.g/' \
+    | sed -E 's/^v?([^-]+)-([0-9]+)-g/\1.r\2.g/' \
     | tr '-' '_' \
     || printf "0.1.r%s.g%s" \
       "$(git rev-list --count HEAD)" \
