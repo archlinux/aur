@@ -1,8 +1,8 @@
 # Maintainer: reisub <re1sub@proton.me>
 
 pkgname=firestudio-bin
-pkgver=1.9.1
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc='A powerful open-source GUI client for Firebase Firestore'
 arch=(x86_64)
 url='https://github.com/Flowdesktech/firestudio'
@@ -11,7 +11,7 @@ provides=(firestudio)
 conflicts=(firestudio)
 options=(!strip !debug)
 source=("$url/releases/download/v$pkgver/Firestudio-$pkgver-Linux-x64.tar.gz")
-sha256sums=('a30f5664267bd08bd21e6e0cfe0c37d2c7d3d1baecdea03d1ed1b6ed95fb6dd8')
+sha256sums=('1de8f060b1a60999fa9ed8a8a2880ccf5c83b71025ae9936bb44e7cffe2b5416')
 
 package() {
   cd "$srcdir/Firestudio-$pkgver-Linux-x64"
