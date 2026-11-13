@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=thinkrail
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Lightweight IDE for vibe coding with the pi agent (desktop app and browser-based CLI)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('thinkrail-bin')
 # bun --compile appends the app to the runtime executable; strip would drop it.
 # The desktop shell is upstream's prebuilt Electrobun and Bun runtime.
 options=('!strip' '!debug')
-_commit=1bc1a9bc5b0bb9d2c029da32125fadf0bd29d544
+_commit=d32c6a13ff98109b916321113cbe08eaf2502677
 # Keep in sync with apps/desktop/package.json and electrobun.config.ts. Hutch
 # fetches these itself; build() fails unless what it used matches these files.
 _electrobun=2.0.5
@@ -30,7 +30,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 source_x86_64=("electrobun-core-$_electrobun-x64.tar.gz::https://github.com/blackboardsh/electrobun/releases/download/v$_electrobun/electrobun-core-linux-x64.tar.gz"
                "bun-$_bun-x64.zip::https://github.com/oven-sh/bun/releases/download/bun-v$_bun/bun-linux-x64.zip")
 noextract=("electrobun-core-$_electrobun-x64.tar.gz")
-sha256sums=('ff31bdf5208baef979dab6d2f92f34290f7ca546d6aebe7900d2cf8b5d523d17'
+sha256sums=('a7b981538a50cf278ef3c54e57363dbf4d7064975d8074c54d25ce4ce9b97ab2'
             '2836733fdb5683f8f1392e6871806aee1696d97444ac8bfe9249f433e6db6527'
             '2ce0adca5eb6d555e04f373cae485b106aefffbe4afa879e2a02021039d24cca'
             '76914be37000accd42d9702442cedd5a3b2a75ecca0dc1e1cc65c2e373577d2a')
