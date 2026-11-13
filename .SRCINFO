@@ -1,6 +1,6 @@
 pkgbase = jellium-desktop-bin
 	pkgdesc = An unofficial desktop client for Jellyfin
-	pkgver = 0.r1162.b60a9e9
+	pkgver = 0.r1162.96bae1c
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/andrewrabert/jellium-desktop
@@ -19,7 +19,7 @@ pkgbase = jellium-desktop-bin
 	conflicts = jellyfin-media-player
 	conflicts = jellium-desktop
 	options = !strip
-	source = jellium-desktop-bin-0.r1162.b60a9e9-x86_64.zip::https://nightly.link/andrewrabert/jellium-desktop/workflows/build-linux-appimage/main/linux-appimage-x86_64.zip
+	source = jellium-desktop-bin-0.r1162.96bae1c-x86_64.zip::https://nightly.link/andrewrabert/jellium-desktop/workflows/build-linux-appimage/main/linux-appimage-x86_64.zip
 	sha256sums = SKIP
 
 pkgname = jellium-desktop-bin
