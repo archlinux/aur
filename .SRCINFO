@@ -1,0 +1,20 @@
+pkgbase = python-pan-scm-sdk
+	pkgdesc = Python SDK for Palo Alto Networks Strata Cloud Manager (SCM)
+	pkgver = 0.15.1
+	pkgrel = 1
+	url = https://github.com/cdot65/pan-scm-sdk
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-cryptography
+	depends = python-oauthlib
+	depends = python-pydantic
+	depends = python-pyjwt
+	depends = python-requests-oauthlib
+	source = https://files.pythonhosted.org/packages/source/p/pan-scm-sdk/pan_scm_sdk-0.15.1.tar.gz
+	sha256sums = 52df0010f1704c62de68759424dfe8676bb334675d47fb54d5926a535b7608a5
+
+pkgname = python-pan-scm-sdk
