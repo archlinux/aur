@@ -2,11 +2,10 @@
 #
 # The shell drawn by WPE WebKit, inside the compositor process.
 #
-# One of nine recipes under packaging/aur: three engines — see
-# docs/shell-backends.md — each as this, a `-git` form following `main`, and a
-# `-bin` form unpacking the release. Every one of them installs a binary called
-# `viewport` and provides that name, so they conflict with each other: a machine
-# takes one engine in one form.
+# One of six recipes under packaging/aur: three engines — see
+# docs/shell-backends.md — each as this and a `-git` form following `main`.
+# Every one of them installs a binary called `viewport` and provides that name,
+# so they conflict with each other: a machine takes one engine in one form.
 #
 # This is the only variant that has an engine inside the compositor, and the
 # only one whose engine has to exist as a package: wpewebkit is in the Arch
