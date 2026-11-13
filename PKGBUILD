@@ -2,15 +2,15 @@
 
 _pkgname=panel-date-format
 pkgname=gnome-shell-extension-panel-date-format
-pkgver=24
+pkgver=25
 pkgrel=1
 pkgdesc='Allows to customize the date format on the panel'
 arch=('any')
 url="https://github.com/KEIII/gnome-shell-${_pkgname}"
 license=('MIT')
-depends=('gnome-shell')
+depends=('gnome-shell>=1:45' 'gnome-shell<1:52')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e17f2d38ed4cc5b4a35f31b6da1a0ccafdd6a8b11154d1c312d153ed76dfa969')
+sha256sums=('c78ad44f1aef58c6d57edff16b6f4f2e2cf672e3b2dedd35400ac4d1cd4989b8')
 
 package() {
     cd "gnome-shell-${_pkgname}-${pkgver}"

@@ -1,12 +1,13 @@
 pkgbase = gnome-shell-extension-panel-date-format
 	pkgdesc = Allows to customize the date format on the panel
-	pkgver = 24
+	pkgver = 25
 	pkgrel = 1
 	url = https://github.com/KEIII/gnome-shell-panel-date-format
 	arch = any
 	license = MIT
-	depends = gnome-shell
-	source = panel-date-format-24.tar.gz::https://github.com/KEIII/gnome-shell-panel-date-format/archive/v24.tar.gz
+	depends = gnome-shell>=1:45
+	depends = gnome-shell<1:52
+	source = panel-date-format-25.tar.gz::https://github.com/KEIII/gnome-shell-panel-date-format/archive/v25.tar.gz
 	sha256sums = e17f2d38ed4cc5b4a35f31b6da1a0ccafdd6a8b11154d1c312d153ed76dfa969
 
 pkgname = gnome-shell-extension-panel-date-format
