@@ -1,0 +1,19 @@
+pkgbase = nkit-git
+	pkgdesc = Command line disc image tools. Convert/extract/verify/fix (nkit). Dedupe/mount (nkds).
+	pkgver = 3
+	pkgrel = 1
+	url = https://github.com/Nanook/NKit
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = dotnet-sdk-10.0
+	provides = nkit
+	conflicts = nkit
+	options = !strip
+	options = !debug
+	source = git+https://github.com/Nanook/NKit
+	source = grindcore-20261105-230.zip::https://github.com/Nanook/GrindCore/releases/download/GrindCore-20261105-230/grindcore.zip
+	b2sums = SKIP
+	b2sums = 82c907161dc3b3d0f9d3c2febae077de3f31a1b9817ac3d81501a0c17c37ef0b5b73d816000133240716493a4c8bc7289eefca5677bb416a8d8ad0ba9015d670
+
+pkgname = nkit-git
