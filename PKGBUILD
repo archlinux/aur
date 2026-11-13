@@ -3,7 +3,7 @@
 
 pkgname=qt6-configqml
 _projname=configqml
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Layered configuration for Qt and QML"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('cmake' 'ninja')
 provides=("qt6-configqml=${pkgver}")
 conflicts=('qt6-configqml-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9961eaf5c83bb31750215eaa4a269e727f225afdd4065120603188f768568dfb')
+sha256sums=('bebaf9ac4efa578a3407d34f307ceb6064e1ef30597c011446541feb05477eaa')
 
 build() {
     cmake -B build -S "${srcdir}/${_projname}-${pkgver}" -G Ninja \
