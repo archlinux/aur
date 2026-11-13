@@ -1,7 +1,7 @@
 pkgbase = python-dpath
 	pkgdesc = Filesystem-like pathing and searching for dictionaries
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/dpath
 	arch = any
 	license = MIT

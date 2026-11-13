@@ -4,7 +4,7 @@
 _name=dpath
 pkgname=python-dpath
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Filesystem-like pathing and searching for dictionaries'
 arch=(any)
 url="https://pypi.org/project/$_name"
