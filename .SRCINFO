@@ -1,6 +1,6 @@
 pkgbase = ae-code-bin
 	pkgdesc = Desktop GUI for coding agents (fork of T3 Code), prebuilt release
-	pkgver = 2026.11.13.3
+	pkgver = 2026.11.13.4
 	pkgrel = 1
 	url = https://github.com/SelfRef/ae-code
 	arch = x86_64
@@ -40,18 +40,18 @@ pkgbase = ae-code-bin
 	depends = util-linux-libs
 	depends = xdg-utils
 	depends = zlib
-	provides = ae-code=2026.11.13.3
+	provides = ae-code=2026.11.13.4
 	conflicts = ae-code
 	conflicts = ae-code-git
-	noextract = ae-code-bin-2026.11.13.3.tar.gz
+	noextract = ae-code-bin-2026.11.13.4.tar.gz
 	options = !debug
 	options = !strip
-	source = ae-code-bin-2026.11.13.3.tar.gz::https://github.com/SelfRef/ae-code/releases/download/v2026.11.13.3/ae-code-desktop-linux-x64.tar.gz
-	source = ae-code-bin-2026.11.13.3-LICENSE::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.13.3/LICENSE
-	source = ae-code-bin-2026.11.13.3-icon.png::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.13.3/assets/dev/blueprint-universal-1024.png
-	source = ae-code-bin-2026.11.13.3-icon.svg::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.13.3/assets/dev/blueprint-linux.svg
-	source = ae-code-bin-2026.11.13.3-metainfo.xml::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.13.3/apps/desktop/resources/linux/com.t3tools.t3code.metainfo.xml
-	sha256sums = f017d7271b9744677b76f3b145e052897e5795da0175dc9b003656b85ec921c3
+	source = ae-code-bin-2026.11.13.4.tar.gz::https://github.com/SelfRef/ae-code/releases/download/v2026.11.13.4/ae-code-desktop-linux-x64.tar.gz
+	source = ae-code-bin-2026.11.13.4-LICENSE::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.13.4/LICENSE
+	source = ae-code-bin-2026.11.13.4-icon.png::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.13.4/assets/dev/blueprint-universal-1024.png
+	source = ae-code-bin-2026.11.13.4-icon.svg::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.13.4/assets/dev/blueprint-linux.svg
+	source = ae-code-bin-2026.11.13.4-metainfo.xml::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.13.4/apps/desktop/resources/linux/com.t3tools.t3code.metainfo.xml
+	sha256sums = 98a58561c2bbe0b6291d0a0e74e4fbc112fae82a99c28075e562fde31dfebc96
 	sha256sums = 935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43
 	sha256sums = 9dcf0e47af5fcf0b537b0a0428476ac5a2a0c484af64ed516989691808a1b14f
 	sha256sums = 997a4cc4d63fa5498c15ac55e34969d5a47fdae252980baf9d4ba98f9d2a5735
