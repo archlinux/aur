@@ -1,6 +1,6 @@
 pkgbase = open-chess
 	pkgdesc = Open Chess with variants, AI, LAN multiplayer and puzzles (Flutter + Rust)
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/RamazanBerk20/open-chess
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = open-chess
 	replaces = chess
 	options = !strip
 	options = !debug
-	source = open-chess-1.1.0.tar.gz::https://github.com/RamazanBerk20/open-chess/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = SKIP
+	source = open-chess-1.2.0.tar.gz::https://github.com/RamazanBerk20/open-chess/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 32cffd576a7a62d824aaee4156d72ccb8b41bfc6d883d63ac5b9ed85beeea8a2
 
 pkgname = open-chess

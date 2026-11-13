@@ -1,6 +1,6 @@
 # Maintainer: Ramazan Berk Şirin <ramazanberksirin@protonmail.com>
 pkgname=open-chess
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Open Chess with variants, AI, LAN multiplayer and puzzles (Flutter + Rust)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('chess' 'chess-bin' 'chess-git' 'open-chess-bin' 'open-chess-git')
 replaces=('chess')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('32cffd576a7a62d824aaee4156d72ccb8b41bfc6d883d63ac5b9ed85beeea8a2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -34,6 +34,6 @@ package() {
   install -Dm644 assets/icon/open-chess.png \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/open-chess.png"
   install -Dm644 installers/linux/open-chess.desktop \
-    "$pkgdir/usr/share/applications/open-chess.desktop"
+    "$pkgdir/usr/share/applications/com.ramazan.openchess.desktop"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
