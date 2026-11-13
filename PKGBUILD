@@ -6,14 +6,14 @@
 # from the git repo.
 _pkgname=flipperzero-ufbt
 pkgname="${_pkgname}-git"
-pkgver=r73.e04b34e
+pkgver=r74.4c603da
 pkgrel=1
 pkgdesc="Compact tool for building and debugging applications for Flipper Zero"
 arch=('any')
 url="https://pypi.org/project/ufbt/"
 license=('GPL-3.0-or-later')
 depends=('python' 'python-oslex')
-makedepends=('python-build')
+makedepends=('git' 'python-build' 'python-installer')
 source=("git+https://github.com/flipperdevices/${_pkgname}.git")
 sha256sums=('SKIP')
 
