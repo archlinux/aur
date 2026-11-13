@@ -1,7 +1,7 @@
 # Maintainer: Timothée Andres <andres.timothee+aur@gmail.com>
 # Contributor: Nikoloz Shvelidze <shveloo@gmail.com>
 pkgname=chronicler-bin
-pkgver=0.63.0_alpha
+pkgver=0.64.0_alpha
 pkgrel=1
 pkgdesc="The free offline worldbuilding tool for writers and GMs."
 arch=('x86_64')
@@ -11,10 +11,10 @@ provides=('chronicler')
 conflicts=()
 url="https://github.com/mak-kirkland/${pkgname%-*}"
 source=(
-    "${pkgname}_${pkgver}_amd64.deb::https://github.com/mak-kirkland/${pkgname%-*}/releases/download/v${pkgver//_/-}/Chronicler_${pkgver%_*}_amd64.deb"
+    "${pkgname}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver//_/-}/Chronicler_${pkgver%_*}_amd64.deb"
     "LICENSE-${pkgname}_${pkgver}::https://raw.githubusercontent.com/mak-kirkland/${pkgname%-*}/v${pkgver//_/-}/LICENSE"
 )
-sha256sums=('2e7e5055e23fae3337b6f18495dddbd56c9ecb84d5f21411d96cba15a5c23f38'
+sha256sums=('57e282122b0bb5ef188b9415f84c4b264f0d53945c8ee97875e4134b65120e0d'
             '4b4b7f846a2a8865f82a40eb0c475f534c9c044bd202536ad35e1060bd27dc5d')
 
 
