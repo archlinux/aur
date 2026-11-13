@@ -1,6 +1,6 @@
 _pkgname="async_mega_py"
 pkgname="python-async-mega.py"
-pkgver=2.5.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Python library and CLI app for the Mega.nz and Transfer.it API"
 arch=('any')
@@ -20,7 +20,7 @@ url="https://github.com/NTFSvolume/mega.py"
 license=('Apache-2.0')
 
 source=("https://files.pythonhosted.org/packages/source/a/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('2537d965d4e82c3a5184e67b3c330c4422a55740a872628b8a4ef6f4502cd6da')
+sha256sums=('53435870a1099468d4b80b28b23f9f52926af0a5b11f475390b129b6960969f0')
 
 build(){
     cd $_pkgname-$pkgver

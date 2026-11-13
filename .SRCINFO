@@ -1,6 +1,6 @@
 pkgbase = python-async-mega.py
 	pkgdesc = Python library and CLI app for the Mega.nz and Transfer.it API
-	pkgver = 2.5.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/NTFSvolume/mega.py
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-async-mega.py
 	depends = python-aiohttp
 	depends = python-aiolimiter
 	depends = python-pycryptodome
-	source = https://files.pythonhosted.org/packages/source/a/async_mega_py/async_mega_py-2.5.1.tar.gz
-	sha256sums = 2537d965d4e82c3a5184e67b3c330c4422a55740a872628b8a4ef6f4502cd6da
+	source = https://files.pythonhosted.org/packages/source/a/async_mega_py/async_mega_py-3.0.0.tar.gz
+	sha256sums = 53435870a1099468d4b80b28b23f9f52926af0a5b11f475390b129b6960969f0
 
 pkgname = python-async-mega.py
