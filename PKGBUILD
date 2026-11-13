@@ -7,7 +7,7 @@
 pkgname=xlibre-video-vmware
 _pkgname=xf86-video-vmware
 pkgver=25.0.0
-pkgrel=11
+pkgrel=51
 pkgdesc="XLibre vmware video driver"
 arch=('x86_64')
 url='https://github.com/X11Libre/xf86-video-vmware'
@@ -18,7 +18,7 @@ depends=(
 	'libx11'
 	'libxext'
 	'mesa'
-	'systemd-libs'
+	'libudev.so'
 	'xlibre-xserver'
 )
 makedepends=(
