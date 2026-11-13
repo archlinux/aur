@@ -1,0 +1,76 @@
+# pacman scriptlets for sirinvpn, sirinvpn-git and sirinvpn-bin.
+# They do what packaging/debian/{postinst,prerm,postrm}.sh do for the .deb.
+# Nothing is enabled here: the app enables the kill switch and reconnect units
+# only when the user turns those features on.
+
+_sirinvpn_systemd_running() {
+  [ -d /run/systemd/system ]
+}
+
+post_install() {
+  if _sirinvpn_systemd_running; then
+    # Apply the probe-interface exclusion without restarting Wi-Fi or Ethernet.
+    systemctl reload NetworkManager.service >/dev/null 2>&1 || true
+  fi
+  cat <<'EOF'
+==> SirinVPN uses systemd-resolved for VPN DNS. If it is not running yet:
+      systemctl enable --now systemd-resolved.service
+==> Updates come from pacman: the app shows a newer release but does not install it.
+EOF
+}
+
+post_upgrade() {
+  if _sirinvpn_systemd_running; then
+    systemctl daemon-reload
+    # An enabled boot kill switch moves from network-pre.target, which is not
+    # always started, to sysinit.target.
+    if systemctl is-enabled --quiet sirinvpn-killswitch.service 2>/dev/null; then
+      systemctl reenable sirinvpn-killswitch.service >/dev/null 2>&1 || true
+    fi
+    # A running supervisor would keep executing the replaced helper. Its intent,
+    # tunnel and guard persist, so a restart does not interrupt the connection.
+    systemctl try-restart sirinvpn-reconnect.service >/dev/null 2>&1 || true
+    systemctl reload NetworkManager.service >/dev/null 2>&1 || true
+  fi
+}
+
+pre_remove() {
+  # Disconnect while the installed helper and its units still exist. Without
+  # saved connection state there is nothing to restore.
+  if [ ! -e /var/lib/sirinvpn/desired-connection.json ] && [ ! -e /run/sirinvpn/client-state.json ]; then
+    return 0
+  fi
+  if [ -x /usr/lib/sirinvpn/sirinvpn-helper ] && /usr/lib/sirinvpn/sirinvpn-helper disconnect >/dev/null; then
+    return 0
+  fi
+  # dpkg keeps the package when its prerm fails; pacman removes it anyway. A
+  # removed package must not leave networking blocked, so drop the kill switch
+  # and the tunnel the helper owns, then say what was skipped.
+  if _sirinvpn_systemd_running; then
+    systemctl disable --now sirinvpn-reconnect.service sirinvpn-killswitch.service >/dev/null 2>&1 || true
+  fi
+  nft delete table inet sirinvpn_guard >/dev/null 2>&1 || true
+  ip link delete sirinvpn0 >/dev/null 2>&1 || true
+  cat >&2 <<'EOF'
+==> WARNING: SirinVPN's helper could not disconnect cleanly. Its kill switch and
+    tunnel were removed so this machine stays online, but saved connection state
+    remains in /var/lib/sirinvpn. Reinstall SirinVPN and disconnect from the app
+    to clean up fully, or remove that directory once you no longer need it.
+EOF
+}
+
+post_remove() {
+  if _sirinvpn_systemd_running; then
+    systemctl daemon-reload
+    systemctl reload NetworkManager.service >/dev/null 2>&1 || true
+  fi
+  # Debian removes these per-user Polkit grants on purge; pacman has no purge,
+  # so they go with the package rather than outliving it.
+  for rule in /etc/polkit-1/rules.d/49-sirinvpn-user-*.rules; do
+    [ -f "$rule" ] || continue
+    uid=${rule##*/49-sirinvpn-user-}
+    uid=${uid%.rules}
+    case "$uid" in ''|*[!0-9]*) continue ;; esac
+    rm -f -- "$rule"
+  done
+}
