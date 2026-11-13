@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=yank-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Native clipboard history with self-hosted sync (GTK4 client and sync server)"
 arch=('x86_64' 'aarch64')
@@ -33,8 +33,8 @@ _deb_aarch64="yank_${pkgver}_arm64.deb"
 source_x86_64=("${_deb_x86_64}::https://github.com/ca-x/yank/releases/download/v${pkgver}/${_deb_x86_64}")
 source_aarch64=("${_deb_aarch64}::https://github.com/ca-x/yank/releases/download/v${pkgver}/${_deb_aarch64}")
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
-sha256sums_x86_64=('13b84d6ff5dc08e07232b06df938074a5c8eb9208b3f917c14eefdb2c37e4dfc')
-sha256sums_aarch64=('605f6bcc247b7d45c159f91bbbeda365a30220df4764da1009cf16c016ed4a17')
+sha256sums_x86_64=('d9d1e155494b22e77b384e47b26e7ddbefee5c4daa25696cc8de1cfd91638abd')
+sha256sums_aarch64=('bf099345a6d91f12b1a0ea3876ca5b921773961d4b20e1a0f3536fa7e934e01b')
 
 package() {
     local _deb_var="_deb_${CARCH}"
