@@ -1,7 +1,7 @@
 # Maintainer: Alexander Minges <alexander dot minges at gmail dot com>
 pkgname=libghostty-vt
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='portable, high-performance C library for terminal emulation'
 arch=(x86_64 aarch64)
 url='https://lib.ghostty.org/vt/'
@@ -12,8 +12,8 @@ license=(MIT)
 makedepends=(zig)
 source=("https://release.files.ghostty.org/libghostty-vt/$pkgver/libghostty-vt-$pkgver.tar.gz"
         "https://release.files.ghostty.org/libghostty-vt/$pkgver/libghostty-vt-$pkgver-deps.tar.gz")
-sha256sums=('4a6ef758be721923e1969e7b81b443dcc92d8dd3fb5a39600c03a8817a753676'
-            '4d5ea5e448e4c7ea8fb55ccbaa8668f2a97d44f438cee831e2b7ecd162d85c29')
+sha256sums=('333dfce97641ef9b536bb9e08907ad86abaaada50e8f7417b70d9284adef37aa'
+            '91a4e10960a52bf5bf4b15aa2a2cddaff8a89d6cd903d3055bda4fd17de3356d')
 
 build() {
   cd libghostty-vt-$pkgver
