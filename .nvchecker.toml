@@ -1,0 +1,4 @@
+[gitmun]
+source = "git"
+git = "https://github.com/cst8t/gitmun.git"
+prefix = "v"
