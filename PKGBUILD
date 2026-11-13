@@ -1,4 +1,4 @@
-# Maintainer: Eternal_night <你的邮箱@example.com>
+# Maintainer: Eternal_night <learnzwk@gmail.com>
 pkgname=dsh-next-bin
 pkgver=2.0.22_next
 pkgrel=1
