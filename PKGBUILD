@@ -4,11 +4,10 @@
 # client of this compositor. Nothing here builds an engine: `webkitgtk-6.0` is
 # a package.
 #
-# One of nine recipes under packaging/aur: three engines — see
-# docs/shell-backends.md — each as this, a `-git` form following `main`, and a
-# `-bin` form unpacking the release. Every one of them installs a binary called
-# `viewport` and provides that name, so they conflict with each other: a machine
-# takes one engine in one form.
+# One of six recipes under packaging/aur: three engines — see
+# docs/shell-backends.md — each as this and a `-git` form following `main`.
+# Every one of them installs a binary called `viewport` and provides that name,
+# so they conflict with each other: a machine takes one engine in one form.
 
 pkgname=viewport-webkitgtk
 pkgver=0.6.0
