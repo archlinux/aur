@@ -2,7 +2,7 @@
 
 _name=vercel-sandbox
 pkgname=python-$_name
-pkgver=0.11.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Python SDK for Vercel Sandbox.'
 arch=('any')
@@ -25,10 +25,16 @@ checkdepends=('python-pytest'
               'python-hypothesis'
               'python-trio')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name-v$pkgver.tar.gz")
-sha256sums=('036912fe899a38e50a9fc634d0d63e4309cb6869d899d983ce67e45c80e3e652')
+sha256sums=('7f9bed1a8b786504242afb1739945bc3c8a0f30a0936d8ccd4d885dd442685bd')
+
+prepare() {
+  cd "vercel-py-$_name-v$pkgver/src/$_name"
+  # Use the hatchling version shipped by Arch
+  sed -i '/^requires = /s/"hatchling[<>=!~][^"]*"/"hatchling"/' pyproject.toml
+}
 
 build() {
-  cd "$srcdir"/vercel-py-$_name-v$pkgver/src/$_name
+  cd "vercel-py-$_name-v$pkgver/src/$_name"
   python -m build --wheel --no-isolation
 }
 
@@ -37,12 +43,12 @@ check() {
     -vv
     --disable-warnings
   )
-  cd "$srcdir"/vercel-py-$_name-v$pkgver/src/$_name
+  cd "vercel-py-$_name-v$pkgver/src/$_name"
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "$srcdir"/vercel-py-$_name-v$pkgver/src/$_name
+  cd "vercel-py-$_name-v$pkgver/src/$_name"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
