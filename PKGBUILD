@@ -1,4 +1,5 @@
 # Maintainer: Flammkuchen <aur at bbirkner dot de>
+
 _pkgname=Object-Pad
 pkgname=perl-object-pad
 pkgver=0.825
