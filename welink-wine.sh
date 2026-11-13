@@ -82,11 +82,32 @@ deploy_app() {
     msg "部署完成。"
 }
 
+# 对策 3：将 Electron 主进程的文件对话框与文件管理器调用桥接到 Linux 原生桌面 (xdg-desktop-portal)
+setup_filedlg() {
+    _asar="${APPDIR}/resources/app.asar"
+    [ -f "${_asar}" ] || return 0
+    install -Dm644 "${PKGDIR}/welink-dlg.js" "${WINEPREFIX}/drive_c/dlg.js"
+    [ -f "${APPDIR}/.welink-dlg-v1" ] && return 0
+    python3 - "${_asar}" <<'EOF' && : > "${APPDIR}/.welink-dlg-v1" || true
+import sys
+p = sys.argv[1]
+orig = b"require('./libraries/node_extends/bytenode')\n\nmodule.exports = require('./main.jsc')"
+hook = b"require('C:/dlg');require('./libraries/node_extends/bytenode');require('./main.jsc')"
+assert len(orig) == len(hook)
+with open(p, 'rb') as f:
+    d = f.read()
+if orig in d:
+    with open(p, 'wb') as f:
+        f.write(d.replace(orig, hook, 1))
+EOF
+}
+
 case "$1" in
     -r|--redeploy) rm -f "${VER_FILE}"; shift ;;
     -h|--help)
         echo "用法: welink-wine [-r|--redeploy] [-h|--help] [-- WeLink 参数]"
         echo "  -r  强制重新部署应用文件（不清除登录数据）"
+        echo "  环境变量 WELINK_NATIVE_DIALOG=0 禁用 Linux 原生文件对话框（回退到 wine 对话框）"
         echo "  环境变量 WELINK_LANG=zh 保持中文 locale 运行（会导致输入框无法打字）"
         exit 0 ;;
 esac
@@ -111,6 +132,7 @@ setup_font
 if [ ! -f "${VER_FILE}" ] || [ "$(cat "${VER_FILE}")" != "${CUR_VER}" ] || [ ! -f "${APPDIR}/WeLink.exe" ]; then
     deploy_app
 fi
+setup_filedlg
 
 # DPI：wine 默认 96；按桌面缩放写 LogPixels，让 Chromium 以对应 device scale 渲染（否则窗口很小）。
 set_dpi() {

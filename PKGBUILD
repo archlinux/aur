@@ -3,8 +3,8 @@ pkgname=welink-wine
 pkgver=7.63.2
 _build=202610132338_437_release_2026.09.1_cloud_7.63.2_636
 _fileid=66972d965a1f4a5f9bd4a1294b35b6f2
-pkgrel=1
-pkgdesc="华为云 WeLink 数字化办公平台（官方 Windows 客户端 + wine，已修复输入框无法打字）"
+pkgrel=2
+pkgdesc="华为云 WeLink 数字化办公平台（官方 Windows 客户端 + wine，已修复输入框打字并对接 Linux 原生文件对话框）"
 arch=('x86_64')
 url="https://www.huaweicloud.com/product/welink.html"
 license=('LicenseRef-proprietary')
@@ -12,6 +12,8 @@ depends=(
     'wine'
     '7zip'
     'python-fonttools'
+    'python-gobject'
+    'xdg-desktop-portal'
     'noto-fonts-cjk'
     'hicolor-icon-theme'
 )
@@ -27,8 +29,12 @@ source=(
     "${_installer}::https://welink.huaweicloud.com/appstore/file/web/free/down/${_fileid}/${_installer}"
     "${pkgname}.sh"
     "welink-mkfont.py"
+    "welink-dlg.js"
+    "welink-filedialog.py"
 )
 sha256sums=('3042e753ed7457791b59b56f9e42a49c2ea7aeba4ece9e2aa35c61d8367b8cb4'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 noextract=("${_installer}")
@@ -55,6 +61,8 @@ package() {
     install -Dm644 "${srcdir}/version" "${_p}/payload/version"
 
     install -Dm755 "${srcdir}/welink-mkfont.py" "${_p}/welink-mkfont.py"
+    install -Dm644 "${srcdir}/welink-dlg.js" "${_p}/welink-dlg.js"
+    install -Dm755 "${srcdir}/welink-filedialog.py" "${_p}/welink-filedialog.py"
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<EOF
