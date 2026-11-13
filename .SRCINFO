@@ -1,6 +1,6 @@
 pkgbase = bwlog
 	pkgdesc = Lightweight logger for network throughput, CPU utilization, and interrupt rates
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://gitlab.kit.edu/kit/tm/telematics/congestion-control/logging/bwlog
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = bwlog
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = bwlog-0.5.1.tar.gz::https://gitlab.kit.edu/kit/tm/telematics/congestion-control/logging/bwlog/-/archive/v0.5.1/v0.5.1.tar.gz
-	sha256sums = d2aba67d7b67d277c1382dcdcca30ccdfd2b30329e75ff2ee4487d2a6cb7e8da
+	source = bwlog-0.5.2.tar.gz::https://gitlab.kit.edu/kit/tm/telematics/congestion-control/logging/bwlog/-/archive/v0.5.2/v0.5.2.tar.gz
+	sha256sums = b6bd6aed8453bf68387b8cdd109064522ffe28039c1579eb7931ddfe316a4e8d
 
 pkgname = bwlog
