@@ -1,0 +1,27 @@
+pkgbase = python-flask-smorest
+	pkgdesc = Flask/Marshmallow-based REST API framework
+	pkgver = 0.47.0
+	pkgrel = 1
+	url = https://github.com/marshmallow-code/flask-smorest
+	arch = any
+	license = MIT
+	checkdepends = python-asgiref
+	checkdepends = python-packaging
+	checkdepends = python-pytest
+	checkdepends = python-yaml
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-installer
+	depends = python
+	depends = python-apispec
+	depends = python-click
+	depends = python-flask
+	depends = python-marshmallow
+	depends = python-webargs
+	depends = python-werkzeug
+	optdepends = python-yaml: for the YAML output of flask openapi print
+	source = flask-smorest-0.47.0.tar.gz::https://github.com/marshmallow-code/flask-smorest/archive/refs/tags/0.47.0.tar.gz
+	sha512sums = 3650f8071488a949988dbe0c188e8c7a070f9c67955aabdde6d1d497946fe76a8ba058915ca2c9a75a9dcb7b33a54dcaed313adf7ab2b896e9cfda28a105e0b4
+	b2sums = d45c3352f9ef349f57f22e67fada3cccb5cf79c5afdaee86e4051a18fdbd4d5649ea969ea462a7d129a2dbe94537301356faf2cf50b6811d7bebc6077857a070
+
+pkgname = python-flask-smorest

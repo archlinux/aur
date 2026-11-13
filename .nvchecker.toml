@@ -1,0 +1,5 @@
+# The releases of flask-smorest, tagged <version>
+[python-flask-smorest]
+source = "github"
+github = "marshmallow-code/flask-smorest"
+use_max_tag = true
