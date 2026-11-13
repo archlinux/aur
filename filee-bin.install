@@ -1,0 +1,8 @@
+post_install() {
+  cat <<'MSG'
+>>> Filee: Wayland gestures are experimental.
+    GNOME: enable "Filee donut at the cursor" in Extensions.
+    KDE Plasma and Hyprland: follow /opt/filee/INSTALL.txt. The KWin script
+    is already installed, the Hyprland rules are in /opt/filee/hyprland/.
+MSG
+}

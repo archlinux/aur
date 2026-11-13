@@ -4,7 +4,7 @@
 
 pkgname=filee-bin
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline file converter for images, PDF, Office, HWP, video, audio, e-books and archives (upstream binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/KnifeLemon/Filee"
@@ -25,6 +25,7 @@ optdepends=('libreoffice: Office documents'
 provides=('filee')
 conflicts=('filee')
 options=('!strip' '!debug')
+install=filee-bin.install
 
 source=("com.filee.app.desktop")
 sha256sums=('7924b339c9845b737fc76dc5f779f6d4d63a606990fcccfa40052d4e5a46b596')
@@ -56,6 +57,11 @@ package() {
   # turn it on in System Settings
   install -d "$pkgdir/usr/share/kwin/scripts"
   cp -r "$_dir/kwin/filee-donut" "$pkgdir/usr/share/kwin/scripts/"
+
+  # GNOME Shell extension for the same gesture on GNOME. The Hyprland rules
+  # need no copy: they are in /opt/filee/hyprland already.
+  install -d "$pkgdir/usr/share/gnome-shell/extensions"
+  cp -r "$_dir/gnome/filee-donut@filee.sh" "$pkgdir/usr/share/gnome-shell/extensions/"
 
   install -Dm644 "$_dir/LICENSE" "$_dir/THIRD-PARTY-NOTICES.md" \
     -t "$pkgdir/usr/share/licenses/$pkgname"

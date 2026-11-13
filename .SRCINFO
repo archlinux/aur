@@ -1,8 +1,9 @@
 pkgbase = filee-bin
 	pkgdesc = Offline file converter for images, PDF, Office, HWP, video, audio, e-books and archives (upstream binary)
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KnifeLemon/Filee
+	install = filee-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
