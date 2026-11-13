@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0.0
+Name=LISTEN.moe Desktop
+Comment=Official LISTEN.moe Desktop Client
+Exec=listen-moe
+Icon=listen-moe
+Terminal=false
+Type=Application
+Categories=Audio;

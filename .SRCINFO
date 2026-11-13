@@ -1,0 +1,16 @@
+pkgbase = listen-moe-desktop
+	pkgdesc = Official LISTEN.moe Desktop Client
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/LISTEN-moe/desktop-app
+	arch = x86_64
+	makedepends = git
+	makedepends = cargo
+	provides = listen-moe
+	options = !lto
+	source = git+https://github.com/LISTEN-moe/desktop-app#tag=1.0.0
+	source = listen-moe.desktop
+	sha256sums = 0fb108b1b6b3e20671422018e66b7bf5e22d597837737eda18db631d43a853f9
+	sha256sums = 67c99dff3d2b47ff508f11c7b9bae3c3b3bfc299887850f942e9328dbbc342e7
+
+pkgname = listen-moe-desktop
