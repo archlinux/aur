@@ -1,6 +1,6 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=liscan
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Clear, complete disk usage scanner for Linux"
 arch=('x86_64' 'aarch64')
@@ -13,23 +13,35 @@ optdepends=(
   'kio: file-manager context menu integration'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('91c8d578916d4bd43bca0f888f487f208530c5ca9740604dbaff00a0711c0612')
+sha256sums=('b62eb9729cc80c2b3d6aa67552d1c72f8196adbd34f471dfc65095a18fcd6734')
+
+prepare() {
+  cd "LiScan-$pkgver"
+  # All network fetches happen here so build() and check() work offline.
+  export CARGO_HOME="$srcdir/cargo-home"
+  local target
+  target="$(rustc -vV | sed -n 's/host: //p')"
+  pnpm install --frozen-lockfile
+  cargo fetch --locked --manifest-path src-tauri/Cargo.toml --target "$target"
+  cargo fetch --locked --manifest-path src-tauri/admin-helper/Cargo.toml --target "$target"
+}
 
 build() {
   cd "LiScan-$pkgver"
-  pnpm install --frozen-lockfile
+  export CARGO_HOME="$srcdir/cargo-home"
   pnpm build
-  cargo build --manifest-path src-tauri/Cargo.toml --release --locked --bin liscan
+  cargo build --manifest-path src-tauri/Cargo.toml --release --frozen --bin liscan
   cargo build --manifest-path src-tauri/admin-helper/Cargo.toml \
-    --target-dir src-tauri/target --release --locked
+    --target-dir src-tauri/target --release --frozen
 }
 
 check() {
   cd "LiScan-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   pnpm test
-  cargo test --manifest-path src-tauri/Cargo.toml --all-targets --release --locked
+  cargo test --manifest-path src-tauri/Cargo.toml --all-targets --release --frozen
   cargo test --manifest-path src-tauri/admin-helper/Cargo.toml \
-    --target-dir src-tauri/target --release --locked
+    --target-dir src-tauri/target --release --frozen
 }
 
 package() {
