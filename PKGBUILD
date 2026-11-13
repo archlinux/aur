@@ -3,9 +3,9 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=mongreldb-viewer
-pkgver=1.6.6
+pkgver=1.7.0
 pkgrel=1
-_ortver=1.24.2
+_ortver=1.31.0
 pkgdesc='Desktop viewer for exploring MongrelDB databases'
 arch=('x86_64')
 url='https://github.com/visorcraft/MongrelDB-Viewer'
@@ -33,11 +33,11 @@ source=(
   "onnxruntime-$_ortver-ThirdPartyNotices.txt::https://raw.githubusercontent.com/microsoft/onnxruntime/v$_ortver/ThirdPartyNotices.txt"
 )
 noextract=("onnxruntime-$_ortver-x86_64.tar.lzma2")
-sha256sums=('0755f32ff0d29b497898585576028b7278cb350dc239b59b883a1313e144fd13'
+sha256sums=('c15699de331e025a3219e69c3af9d85f294643e5a9c0f21cff563857db25106c'
             '10e74160895b60fa9efc6ee06d4ff1cec3852d940c4c0c87e60b1bd06a8bff26'
-            'acc1cba79c337594ead1d88ca72516147aa60054c84217b53399a31caa5ba671'
+            '02aac0d3b4927026292088986d7a377c657c88761b1c068be217a67b35447678'
             '2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c'
-            '0e07b95f3a8d6230037707c5c4a2b554d12c4cb67369669ac255635528ffcee2')
+            '143764b952fdb1a7c69ce653bfba74a7744d6a8a573bfb73e235fba356c83de3')
 
 prepare() {
   cd "MongrelDB-Viewer-$pkgver"
