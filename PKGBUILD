@@ -1,9 +1,10 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=liscan-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Clear, complete disk usage scanner for Linux (prebuilt)"
 arch=('x86_64')
+options=('!strip' '!debug')
 url="https://github.com/RamazanBerk20/LiScan"
 license=('GPL-3.0-or-later')
 depends=('gtk3' 'webkit2gtk-4.1' 'glib2' 'polkit')

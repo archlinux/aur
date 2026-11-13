@@ -1,7 +1,7 @@
 pkgbase = liscan-bin
 	pkgdesc = Clear, complete disk usage scanner for Linux (prebuilt)
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RamazanBerk20/LiScan
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -14,6 +14,8 @@ pkgbase = liscan-bin
 	provides = liscan=1.1.0
 	conflicts = liscan
 	noextract = LiScan_1.1.0_amd64.deb
+	options = !strip
+	options = !debug
 	source_x86_64 = LiScan_1.1.0_amd64.deb::https://github.com/RamazanBerk20/LiScan/releases/download/v1.1.0/LiScan_1.1.0_amd64.deb
 	source_x86_64 = LICENSE-1.1.0::https://raw.githubusercontent.com/RamazanBerk20/LiScan/v1.1.0/LICENSE
 	sha256sums_x86_64 = 5d857e4f91253da596cf42f60e78efdd7ef17c169004ddb3a42ee7e2fa28bf40
