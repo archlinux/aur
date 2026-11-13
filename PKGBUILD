@@ -3,15 +3,11 @@
 pkgname=obs-avip-git
 _pkgname=${pkgname%-git}
 pkgver=0.1.0.r4.g1c42ac1
-pkgrel=2
+pkgrel=3
 pkgdesc='NDI® source and output for OBS in Rust, a drop-in for DistroAV'
 arch=(x86_64)
 license=(GPL-2.0-only)
 url="https://github.com/obs-rust/${pkgname%-git}"
-provides=(distroav
-          obs-ndi)
-conflicts=(distroav
-           obs-ndi-bin)
 depends=(avahi
          glibc # libc.so libm.so
          libgcc
@@ -20,8 +16,12 @@ depends=(avahi
          sndio)
 makedepends=(cargo
              git)
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
+provides=("$_pkgname=$pkgver"
+          distroav
+          obs-ndi)
+conflicts=("$_pkgname"
+           distroav
+           obs-ndi)
 source=("git+$url.git")
 sha256sums=('SKIP')
 
