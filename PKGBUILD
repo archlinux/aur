@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 pkgname="python-cykhash"
@@ -6,7 +9,7 @@ pkgdesc="cython wrapper for khash-sets/maps, efficient implementation of isin an
 url="https://github.com/realead/cykhash/"
 
 pkgver=2.0.1
-pkgrel=5
+pkgrel=6
 
 arch=("x86_64")
 license=("MIT")
