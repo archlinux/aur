@@ -1,6 +1,6 @@
 pkgbase = eglantine-daily-pgo-bin
 	pkgdesc = The Eglantine Nintendo Switch 2 emulator AppImage (PGO build).
-	pkgver = 20261107
+	pkgver = 20261112
 	pkgrel = 1
 	url = https://github.com/Djihads80/Eglantine
 	arch = x86_64
@@ -13,10 +13,11 @@ pkgbase = eglantine-daily-pgo-bin
 	provides = eglantine
 	conflicts = eglantine
 	conflicts = eglantine-bin
+	conflicts = eglantine-pgo-bin
 	conflicts = eglantine-git
 	options = !strip
 	options = !debug
-	source_x86_64 = eglantine-daily-pgo-bin-20261107.AppImage::https://github.com/Djihads80/Eglantine/releases/download/daily-20261107/eglantine-linux-x86_64-pgo.AppImage
-	sha256sums_x86_64 = 8618540a929a8cad211e89ff024b0e2323bde3c769e250f4fa26ad275f2386c7
+	source_x86_64 = eglantine-daily-pgo-bin-20261112.AppImage::https://github.com/Djihads80/Eglantine/releases/download/daily-20261112/eglantine-linux-x86_64-pgo.AppImage
+	sha256sums_x86_64 = 181674e62a32ab48ad8fef3f77c2fab7058f21fda0c2facdebd6476f5378511d
 
 pkgname = eglantine-daily-pgo-bin

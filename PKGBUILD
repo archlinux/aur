@@ -5,7 +5,7 @@
 
 _pkgname=eglantine
 pkgname=eglantine-daily-pgo-bin
-pkgver=20261107
+pkgver=20261112
 pkgrel=1
 pkgdesc="The Eglantine Nintendo Switch 2 emulator AppImage (PGO build)."
 arch=('x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/Djihads80/Eglantine"
 license=('GPL-3.0-or-later')
 depends=('fuse2' 'hicolor-icon-theme')
 makedepends=('clang' 'curl' 'gcc')
-conflicts=('eglantine' 'eglantine-bin' 'eglantine-git')
+conflicts=('eglantine' 'eglantine-bin' 'eglantine-pgo-bin' 'eglantine-git')
 provides=('eglantine')
 options=('!strip' '!debug')
 
@@ -22,7 +22,7 @@ _source_main() {
   source_x86_64=(
     "${_appimage}::${url}/releases/download/daily-${pkgver}/eglantine-linux-x86_64-pgo.AppImage"
   )
-sha256sums_x86_64=('8618540a929a8cad211e89ff024b0e2323bde3c769e250f4fa26ad275f2386c7')
+sha256sums_x86_64=('181674e62a32ab48ad8fef3f77c2fab7058f21fda0c2facdebd6476f5378511d')
 }
 
 prepare() {
