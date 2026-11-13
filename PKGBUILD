@@ -1,7 +1,7 @@
 # Maintainer: Francesc d'Assís Requesens i Roca <francescrequesens.com>
 
 pkgname=api-calls-bin
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="A lightweight Electron-based desktop tool for sending and inspecting REST API requests."
 arch=('x86_64')
@@ -28,8 +28,8 @@ depends=(
 )
 provides=('api-calls')
 conflicts=('api-calls')
-source=("${pkgname}-${pkgver}.deb::https://github.com/elpeix/apicalls/releases/download/v0.18.0/api-calls_0.18.0_amd64.deb")
-sha256sums=('2c18cbf62164a042d2b0cf0fd31a083cfdb8f637edf32192f43359171624a56b')
+source=("${pkgname}-${pkgver}.deb::https://github.com/elpeix/apicalls/releases/download/v0.18.1/api-calls_0.18.1_amd64.deb")
+sha256sums=('c995f8342d8e2d2f7dbc9e654e1b3c85ed75d7a769a5b6a22f4f927834d6ac1a')
 
 package() {
   cd "${srcdir}"
