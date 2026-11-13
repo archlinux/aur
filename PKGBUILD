@@ -3,14 +3,14 @@
 
 pkgname=openq4-bin
 _pkgname=openq4
-pkgver=0.13.2
+pkgver=0.14.1
 _q4ver=1.4.2
 pkgrel=1
 pkgdesc="Open-source Quake 4 engine and game code replacement (binary release). You need the retail Quake 4 data to play."
 arch=('x86_64' 'aarch64')
 url="https://github.com/themuffinator/openQ4"
 license=('GPL-3.0-or-later' 'LicenseRef-Quake4-SDK' 'LicenseRef-Quake4-EULA')
-depends=('gcc-libs' 'glibc' 'libgl' 'libx11' 'libxcursor' 'libxext' 'libxi' 'libxrandr' 'openal')
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libgl' 'libx11' 'libxcursor' 'libxext' 'libxi' 'libxrandr' 'openal')
 optdepends=('quake4-data: retail Quake 4 data in /opt/quake4 (otherwise a Steam/GOG install is detected)'
             'vulkan-icd-loader: experimental Vulkan renderer (r_renderApi vulkan)'
             'wayland: native Wayland video'
@@ -27,8 +27,8 @@ source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux
 noextract=("quake4-linux-${_q4ver}.x86.run")
 sha256sums=('15423ab60c6a738fa92926d994e63c12ea71a59a7b0fd50a62283d964b882f4b'
             '9203b387b1a4075a1b9ad1eb7be32b49a88141a448d9330d9cbe1f40a145bd6a')
-sha256sums_x86_64=('04f146ee96da1a0afcf839e31223222b49be2a8bcc7cfe239ea858552f551208')
-sha256sums_aarch64=('2415cf1d4591591403d81e333da4d2441fdcacc65c80799469d4289e675a716c')
+sha256sums_x86_64=('8ff29f91fe3bbf1e8ae7ff45dfcdf7b7530d3f69a9b11f37ecb33fb9bd39aef8')
+sha256sums_aarch64=('563a437e45edf8108eeda9f90fd3497a3eb3520fe9c2c11ce36b885e507d3c80')
 
 # Upstream names its binaries and modules by architecture tag.
 case "${CARCH}" in
@@ -56,6 +56,8 @@ package() {
     install -D -m 644 -t "${pkgdir}/opt/${_pkgname}/" VERSION.txt
     install -D -m 755 -t "${pkgdir}/opt/${_pkgname}/baseoq4/" baseoq4/*.so
     install -D -m 644 -t "${pkgdir}/opt/${_pkgname}/baseoq4/" baseoq4/*.pk4 baseoq4/mod.json
+    # Startup splash, loaded relative to the working directory
+    install -D -m 644 -t "${pkgdir}/opt/${_pkgname}/assets/splash/" assets/splash/*.bmp
 
     # Install Quake 4 1.4.2 patch paks into the q4base overlay
     install -D -m 644 -t "${pkgdir}/opt/${_pkgname}/q4base/" \
@@ -84,10 +86,11 @@ package() {
 
     # Install documentation
     install -d "${pkgdir}/usr/share/doc/${_pkgname}"
-    install -m 644 README.html "${pkgdir}/usr/share/doc/${_pkgname}/"
+    install -m 644 README.html CONTRIBUTORS.md LICENSING.md "${pkgdir}/usr/share/doc/${_pkgname}/"
     cp -r --no-preserve=ownership docs "${pkgdir}/usr/share/doc/${_pkgname}/"
 
-    # Install licenses (openQ4 GPL, id Software license for the patch paks)
+    # Install licenses (openQ4 GPL, Quake 4 SDK EULA and notices, id Software license for the patch paks)
     install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}/licenses/" licenses/*
     install -D -m 644 "${_q4dir}/License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/Quake4-License.txt"
 }

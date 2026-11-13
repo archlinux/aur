@@ -1,6 +1,6 @@
 pkgbase = openq4-bin
 	pkgdesc = Open-source Quake 4 engine and game code replacement (binary release). You need the retail Quake 4 data to play.
-	pkgver = 0.13.2
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/themuffinator/openQ4
 	install = openq4-bin.install
@@ -11,6 +11,7 @@ pkgbase = openq4-bin
 	license = LicenseRef-Quake4-EULA
 	depends = gcc-libs
 	depends = glibc
+	depends = hicolor-icon-theme
 	depends = libgl
 	depends = libx11
 	depends = libxcursor
@@ -23,7 +24,7 @@ pkgbase = openq4-bin
 	optdepends = wayland: native Wayland video
 	optdepends = libxkbcommon: native Wayland keyboard input
 	optdepends = libdecor: Wayland window decorations
-	provides = openq4=0.13.2
+	provides = openq4=0.14.1
 	conflicts = openq4
 	conflicts = openq4-git
 	noextract = quake4-linux-1.4.2.x86.run
@@ -33,9 +34,9 @@ pkgbase = openq4-bin
 	source = https://aur.slashbunny.com/quake4/quake4-linux-1.4.2.x86.run
 	sha256sums = 15423ab60c6a738fa92926d994e63c12ea71a59a7b0fd50a62283d964b882f4b
 	sha256sums = 9203b387b1a4075a1b9ad1eb7be32b49a88141a448d9330d9cbe1f40a145bd6a
-	source_x86_64 = https://github.com/themuffinator/openQ4/releases/download/v0.13.2/openq4-0.13.2-linux-x64.tar.xz
-	sha256sums_x86_64 = 04f146ee96da1a0afcf839e31223222b49be2a8bcc7cfe239ea858552f551208
-	source_aarch64 = https://github.com/themuffinator/openQ4/releases/download/v0.13.2/openq4-0.13.2-linux-arm64-preview.tar.xz
-	sha256sums_aarch64 = 2415cf1d4591591403d81e333da4d2441fdcacc65c80799469d4289e675a716c
+	source_x86_64 = https://github.com/themuffinator/openQ4/releases/download/v0.14.1/openq4-0.14.1-linux-x64.tar.xz
+	sha256sums_x86_64 = 8ff29f91fe3bbf1e8ae7ff45dfcdf7b7530d3f69a9b11f37ecb33fb9bd39aef8
+	source_aarch64 = https://github.com/themuffinator/openQ4/releases/download/v0.14.1/openq4-0.14.1-linux-arm64-preview.tar.xz
+	sha256sums_aarch64 = 563a437e45edf8108eeda9f90fd3497a3eb3520fe9c2c11ce36b885e507d3c80
 
 pkgname = openq4-bin
