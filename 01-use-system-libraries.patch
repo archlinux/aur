@@ -1,86 +1,129 @@
-diff --color --unified --recursive --text inertial-sense-sdk.orig/cltool/CMakeLists.txt inertial-sense-sdk.new/cltool/CMakeLists.txt
---- inertial-sense-sdk.orig/cltool/CMakeLists.txt	2024-03-01 11:57:23.474148235 +0100
-+++ inertial-sense-sdk.new/cltool/CMakeLists.txt	2024-03-01 11:08:58.719165839 +0100
-@@ -16,7 +16,7 @@
- # Include InertialSenseSDK header files
- include_directories(
-     ${IS_SDK_DIR}/src
--    ${IS_SDK_DIR}/src/libusb/libusb
-+    /usr/include/libusb-1.0/
- )
- 
- # Link the InertialSenseSDK static library 
-diff --color --unified --recursive --text inertial-sense-sdk.orig/CMakeLists.txt inertial-sense-sdk.new/CMakeLists.txt
---- inertial-sense-sdk.orig/CMakeLists.txt	2024-03-01 11:57:23.474148235 +0100
-+++ inertial-sense-sdk.new/CMakeLists.txt	2024-03-01 12:00:25.756010207 +0100
-@@ -2,6 +2,8 @@
- 
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,6 +2,8 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.16.3)
+
  project(InertialSenseSDK)
- 
+
 +find_package(yaml-cpp REQUIRED)
 +
- file(GLOB SOURCES_SDK
- 	"src/*.c"
- 	"src/*.cpp"
-@@ -11,30 +13,8 @@
-     "src/util/*.cpp"
-     "src/util/*.h"
- 	"hw-libs/bootloader/bootloaderShared.c"
--	"src/yaml-cpp/*.cpp"
--	"src/yaml-cpp/*.h"
--	"src/yaml-cpp/contrib/*.cpp"
--	"src/yaml-cpp/contrib/*.h"
--	"src/yaml-cpp/node/*.cpp"
--	"src/yaml-cpp/node/*.h"
+ # Define LINUX variable for use in this file
+ if(UNIX AND NOT APPLE)
+ 	set(LINUX TRUE)
+@@ -47,41 +49,8 @@ file(GLOB SOURCES_SDK
+ 	"${CMAKE_CURRENT_LIST_DIR}/hw-libs/bootloader/bootloaderShared.c"
+ 	"${CMAKE_CURRENT_LIST_DIR}/tests/runtime/*.cpp"
+ 	"${CMAKE_CURRENT_LIST_DIR}/tests/runtime/*.h"
+-	"${CMAKE_CURRENT_LIST_DIR}/src/yaml-cpp/*.cpp"
+-	"${CMAKE_CURRENT_LIST_DIR}/src/yaml-cpp/*.h"
+-	"${CMAKE_CURRENT_LIST_DIR}/src/yaml-cpp/contrib/*.cpp"
+-	"${CMAKE_CURRENT_LIST_DIR}/src/yaml-cpp/contrib/*.h"
+-	"${CMAKE_CURRENT_LIST_DIR}/src/yaml-cpp/node/*.cpp"
+-	"${CMAKE_CURRENT_LIST_DIR}/src/yaml-cpp/node/*.h"
  )
- 
+
 -# Compile libusb from source
 -if(WIN32)
 -	file(GLOB SOURCES_LIB_USB
--		"src/libusb/libusb/*.h"
--		"src/libusb/libusb/*.c"
--		"src/libusb/libusb/os/*windows*"
+-		"${CMAKE_CURRENT_LIST_DIR}/src/libusb/libusb/*.h"
+-		"${CMAKE_CURRENT_LIST_DIR}/src/libusb/libusb/*.c"
+-		"${CMAKE_CURRENT_LIST_DIR}/src/libusb/libusb/os/*windows*"
+-	)
+-	# Suppress specific warnings for libusb (third-party code)
+-	if(MSVC)
+-		set_source_files_properties(${SOURCES_LIB_USB} PROPERTIES COMPILE_FLAGS "/wd5287")
+-	endif()
+-elseif(APPLE)
+-	file(GLOB SOURCES_LIB_USB
+-		"${CMAKE_CURRENT_LIST_DIR}/src/libusb/libusb/*.h"
+-		"${CMAKE_CURRENT_LIST_DIR}/src/libusb/libusb/*.c"
+-		"${CMAKE_CURRENT_LIST_DIR}/src/libusb/libusb/os/*darwin*"
+-		"${CMAKE_CURRENT_LIST_DIR}/src/libusb/libusb/os/*posix*"
 -	)
 -else()
 -	file(GLOB SOURCES_LIB_USB
--		"src/libusb/libusb/*.h"
--		"src/libusb/libusb/*.c"
--		"src/libusb/libusb/os/*linux*"
--		"src/libusb/libusb/os/*posix*"
+-		"${CMAKE_CURRENT_LIST_DIR}/src/libusb/libusb/*.h"
+-		"${CMAKE_CURRENT_LIST_DIR}/src/libusb/libusb/*.c"
+-		"${CMAKE_CURRENT_LIST_DIR}/src/libusb/libusb/os/*linux*"
+-		"${CMAKE_CURRENT_LIST_DIR}/src/libusb/libusb/os/*posix*"
 -	)
 -endif()
 -
  # Ignore bootloader files
  # list(FILTER SOURCES_SDK EXCLUDE REGEX "ISBootloader.*")
  list(FILTER SOURCES_SDK EXCLUDE REGEX "ISBootloaderSony.*")
-@@ -49,9 +29,7 @@
- 	src
- 	src/util
- 	src/protocol
--	src/libusb
--	src/libusb/libusb
--	src/yaml-cpp
-+   /usr/include/libusb-1.0/
- 	external
- )
- 
-@@ -72,11 +50,6 @@
- 	# We need to ensure windows static libs are found
- 	target_link_libraries(${PROJECT_NAME} Ws2_32.lib)
- else()
--	# Linux specific include dir 
--	target_include_directories(${PROJECT_NAME} PUBLIC
--		${CMAKE_CURRENT_LIST_DIR}/src/libusb/linux
--	)
--	
- 	# Linux compiler flags
- 	SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wno-unused-function -Wno-unused-parameter -Wno-missing-field-initializers")
- 	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-unused-function -Wno-unused-parameter -Wno-missing-field-initializers")
-@@ -85,5 +58,5 @@
- 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
- 	
- 	# Link in Linux specific packages
--	target_link_libraries(${PROJECT_NAME} udev m)
-+	target_link_libraries(${PROJECT_NAME} udev m usb-1.0 yaml-cpp)
- endif()
+@@ -100,9 +69,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
+         src
+         src/util
+         src/protocol
+-        src/libusb
+-        src/libusb/libusb
+-        src/yaml-cpp
++        /usr/include/libusb-1.0/
+         src/tl-expected   # D-10 / SN-7881 — header-only tl::expected (CC0). Resolves <tl/expected.hpp>.
+         tests/runtime
+         external
+@@ -197,26 +164,10 @@ elseif(APPLE)
+ elseif(LINUX)
+     # Linux specific include dir
+     target_include_directories(${PROJECT_NAME} PUBLIC
+-        ${CMAKE_CURRENT_LIST_DIR}/src/libusb/linux
+ 			${UDEV_INCLUDE_DIRS}
+ 			${UDEV_LIB_INCLUDE}
+     )
 
+-	add_custom_command(
+-			OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/src/version/repositoryInfo.h"
+-			COMMAND bash -c "scripts/lib/update_version_files.sh -p IS_SDK_ ${CMAKE_CURRENT_SOURCE_DIR}/src/version/"
+-			DEPENDS scripts/lib/version_tools.py
+-			WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+-	)
+-	add_custom_target(gen_files
+-			DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/version/repositoryInfo.h"
+-	)
+-	add_dependencies(${PROJECT_NAME} gen_files)
+-    set_source_files_properties(
+-        src/libusb/libusb/core.c
+-        PROPERTIES COMPILE_FLAGS "-Wno-unused-but-set-variable"
+-    )
+-
+     # Linux compiler flags
+     SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wno-unused-function -Wno-unused-parameter -Wno-missing-field-initializers")
+     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-unused-function -Wno-unused-parameter -Wno-missing-field-initializers")
+@@ -225,5 +176,5 @@ elseif(LINUX)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+
+ 	# Link in Linux specific packages
+-    target_link_libraries(${PROJECT_NAME} PUBLIC ${UDEV_LIBRARIES} m)
++    target_link_libraries(${PROJECT_NAME} PUBLIC ${UDEV_LIBRARIES} m usb-1.0 yaml-cpp::yaml-cpp)
+ endif ()
+--- a/cltool/CMakeLists.txt
++++ b/cltool/CMakeLists.txt
+@@ -12,7 +12,7 @@ include(${IS_SDK_DIR}/include_is_sdk_find_library.cmake)
+ include_directories(
+     src
+     ${IS_SDK_DIR}/src
+-    ${IS_SDK_DIR}/src/libusb/libusb
++    /usr/include/libusb-1.0/
+     ${IS_SDK_DIR}/src/tl-expected
+ )
+
+--- a/include_is_sdk_find_library.cmake
++++ b/include_is_sdk_find_library.cmake
+@@ -74,15 +74,14 @@ if(SDK_LIBRARY_PATH)
+         "${IS_SDK_DIR}/src"
+         "${IS_SDK_DIR}/src/util"
+         "${IS_SDK_DIR}/src/protocol"
+-        "${IS_SDK_DIR}/src/libusb"
+-        "${IS_SDK_DIR}/src/libusb/libusb"
+-        "${IS_SDK_DIR}/src/yaml-cpp"
++        "/usr/include/libusb-1.0/"
+         "${IS_SDK_DIR}/src/tl-expected"
+         "${IS_SDK_DIR}/tests/runtime"
+     )
+     set_target_properties(InertialSenseSDK PROPERTIES
+         IMPORTED_LOCATION "${SDK_LIBRARY_PATH}"
+         INTERFACE_INCLUDE_DIRECTORIES "${_is_sdk_interface_includes}"
++        INTERFACE_LINK_LIBRARIES "usb-1.0;yaml-cpp;udev;m"
+     )
+     message(STATUS "Using prebuilt InertialSenseSDK at: ${SDK_LIBRARY_PATH}")
+ else()
