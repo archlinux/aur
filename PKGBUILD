@@ -1,7 +1,7 @@
 # Maintainer: Nasir A. <112448715+NasirA1991@users.noreply.github.com>
 # Rendered by .github/workflows/release.yml for each v* tag.
 pkgname=atk-control
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Native GTK4/libadwaita configuration tool for ATK/VXE gaming mice"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('compx-control' 'compx-control-git' 'atk-control-git')
 replaces=('compx-control')
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NasirA1991/atk-control/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('e9c6c3c8d0a1e33ca97fe063c18a3d193091de9636dc9af30058e12a608452ae')
+sha256sums=('1242c47f201d2ab9c4cb1aefadc81be9ce2b8dbb9ff44f90eb7ed0967e84dc65')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
