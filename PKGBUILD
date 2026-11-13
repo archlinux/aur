@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=peersky-browser-bin
 _pkgname='Peersky Browser'
-pkgver=1.0.0
+pkgver=1.0.1
 _electronversion=43
 pkgrel=1
 pkgdesc="A local-first, peer-to-peer web browser for a surveillance-free internet."
@@ -31,9 +31,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.deb")
 sha256sums=('4a67a49c9cb2c0a80dcb67bb35bb7c10691b1460200398866df24cd0b8e00cab'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-sha256sums_aarch64=('ba6c58926bc20600021d598728bb48772d4f7f79a61d7e286e55a036e43f8f53')
-sha256sums_x86_64=('ce386b1e7729833e130ac21804e754cbe5c8239718fb3ad257e59c3429fa09e8')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+sha256sums_aarch64=('3906384158b4e31021823f85520bc760594bdee6dcd87da87c0854e0e038b232')
+sha256sums_x86_64=('69cf747278acd03ca14501293700821dc536b061d962b6cec9ab57fac29849fe')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
