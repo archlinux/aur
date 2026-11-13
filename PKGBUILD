@@ -7,7 +7,7 @@
 pkgname=xlibre-video-fbdev
 _pkgname=xf86-video-fbdev
 pkgver=25.0.0
-pkgrel=9
+pkgrel=51
 pkgdesc="XLibre framebuffer video driver"
 arch=('x86_64')
 license=('X11')
