@@ -7,7 +7,7 @@
 pkgname=xlibre-video-sisusb
 _pkgname=xf86-video-sisusb
 pkgver=25.0.0
-pkgrel=9
+pkgrel=51
 pkgdesc="XLibre SiS USB video driver"
 arch=('x86_64')
 url='https://github.com/X11Libre/xf86-video-sisusb'
