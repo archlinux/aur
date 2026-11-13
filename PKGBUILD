@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc='LTTng tracing control tools'
 arch=('x86_64')
 url='https://lttng.org/'
-license=('GPL2' 'LGPL2.1')
+license=('GPL-2.0-only' 'LGPL-2.1-only')
 depends=('glibc' 'kmod' 'libgcc' 'libstdc++' 'libxml2' 'liburcu' "lttng-ust>=${pkgver%.*}.0" 'popt')
 makedepends=('asciidoc' 'xmlto')
 optdepends=('babeltrace2: read traces with lttng view'
