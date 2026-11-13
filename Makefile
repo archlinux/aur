@@ -4,7 +4,13 @@ upstream := https://github.com/home-assistant/core.git
 update_check = git ls-remote --tags --refs $(upstream) | grep -Po '.*refs/tags/\K\d{4}\.\d+\.\d+$$' | sort -V | tail -n1
 VERSION = $(shell cat .version 2>/dev/null)
 
-STG_ENV = GIT_DIR=$(CURDIR)/src/stg GIT_WORK_TREE=$(CURDIR)/src/core-$(VERSION)
+QUILT_DIR = $(CURDIR)/src/core-$(VERSION)
+QUILT_PC = $(QUILT_DIR)/.pc
+QUILT = QUILT_PATCHES=$(CURDIR) \
+	QUILT_DIFF_OPTS="--show-c-function" \
+	QUILT_DIFF_ARGS="--no-timestamps --no-index -p ab" \
+	QUILT_REFRESH_ARGS="--no-timestamps --no-index -p ab" \
+	quilt --quiltrc -
 
 .PHONY: upload commit update_version patch-init patch-export
 
@@ -33,20 +39,18 @@ update_version:
 src/core-$(VERSION):
 	makepkg -o --noprepare
 
-src/stg: src/core-$(VERSION)
-	$(STG_ENV) git init && \
-	$(STG_ENV) git add -A && \
-	$(STG_ENV) git commit -m "upstream" && \
-	$(STG_ENV) stg init && \
-	for patch in *.patch; do \
-	  $(STG_ENV) stg import -n "$${patch%.patch}" -p1 "$$patch"; \
-	done
-
-patch-init: src/stg
+patch-init: src/core-$(VERSION)
+	mkdir -p $(QUILT_PC)
+	echo 2 > $(QUILT_PC)/.version
+	echo "$(CURDIR)" > $(QUILT_PC)/.quilt_patches
+	echo "series" > $(QUILT_PC)/.quilt_series
+	ls -1 *.patch 2>/dev/null > $(QUILT_PC)/series || true
+	cd $(QUILT_DIR) && $(QUILT) push -a --fuzz=3
 
 patch-export:
-	rm -f *.patch
-	$(STG_ENV) stg export --patch -t patchexport.tmpl --dir .
+	cd $(QUILT_DIR) && for p in $$($(QUILT) applied 2>/dev/null); do \
+	  $(QUILT) refresh "$$p"; \
+	done
 	$(MAKE) PKGBUILD
 
 # vim: set noexpandtab:
