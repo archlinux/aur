@@ -13,13 +13,11 @@ pkgbase = flclashx-bin
 	conflicts = flclash-bin
 	conflicts = flclash
 	conflicts = flclashx
-	conflicts = flclashx-git
-	conflicts = flclashx-git-debug
 	source = flclashx.sh
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
 	source_aarch64 = flclashx-0.5.1-aarch64.deb::https://github.com/pluralplay/FlClashX/releases/download/v0.5.1/FlClashX-linux-arm64.deb
-	sha256sums_aarch64 = b847703ded32a1048aa50dd77d53edded6453237616566d0318923f470826d3b
+	sha256sums_aarch64 = 6a305e06453820febea0b5fa0dfd34f9d5c8ea3109c23c4c913ea5c21c233d59
 	source_x86_64 = flclashx-0.5.1-x86_64.deb::https://github.com/pluralplay/FlClashX/releases/download/v0.5.1/FlClashX-linux-amd64.deb
-	sha256sums_x86_64 = f09aa75a0864ab2e7d4298f04e5ff28392d95de72043b2269630e7da15d9274c
+	sha256sums_x86_64 = 74a93a37d950d889c438f5ee5eb1990f966e71a76781dcde0cca5f80450d8c6a
 
 pkgname = flclashx-bin
