@@ -1,3 +1,5 @@
+# Maintainer: qubeck <qubeck [AT] disroot [DOT] org>
+
 pkgname=python-indra-ocr
 _name=${pkgname#python-}
 pkgver=1.1.2
