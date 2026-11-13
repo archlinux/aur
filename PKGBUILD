@@ -1,7 +1,7 @@
 # Maintainer: Damon Blais <damon.blais@gmail.com>
 
 pkgname=engined-git
-pkgver=0.2.20.r0.g86e7f1d
+pkgver=0.2.21.r0.g56a8855
 pkgrel=1
 pkgdesc="Local model door: one OpenAI-shaped endpoint that owns every inference container on the box (git)"
 arch=('any')
