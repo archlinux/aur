@@ -1,0 +1,12 @@
+pkgbase = kinoklip-bin
+	pkgdesc = Kinoklip — video editor: cut, arrange, add effects and export
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/SeniorMatt/kinoklip
+	arch = x86_64
+	license = GPL3
+	options = !strip
+	source = Kinoklip-1.7.0-x86_64.AppImage::https://github.com/SeniorMatt/kinoklip/releases/download/v1.7.0/Kinoklip-x86_64.AppImage
+	sha256sums = 75b232c85dca13863e7736cefd63be78ff9f42a6eddac8cb90d9241dbc7f1a9a
+
+pkgname = kinoklip-bin
