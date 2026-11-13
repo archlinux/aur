@@ -1,6 +1,6 @@
 pkgbase = froststrap
 	pkgdesc = A fork of Fishstrap/Bloxstrap, focused on performance and customization
-	pkgver = 2.0.5
+	pkgver = 2.0.8
 	pkgrel = 1
 	url = https://github.com/Froststrap/Froststrap
 	arch = x86_64
@@ -10,14 +10,13 @@ pkgbase = froststrap
 	makedepends = dotnet-sdk-10.0
 	makedepends = git
 	makedepends = rust
-	depends = dotnet-runtime-10.0
+	makedepends = clang
+	makedepends = zlib
 	depends = icu
+	depends = dbus
 	depends = fontconfig
 	depends = hicolor-icon-theme
-	depends = dbus
-	source = git+https://github.com/Froststrap/Froststrap.git#tag=v2.0.5
-	source = git+https://github.com/Froststrap/ColorPicker.git
-	sha256sums = SKIP
+	source = git+https://github.com/Froststrap/Froststrap.git#tag=v2.0.8
 	sha256sums = SKIP
 
 pkgname = froststrap

@@ -1,7 +1,7 @@
 # Maintainer: blazebsc <blakeisfruity at proton dot me>
 # Maintainer: ofatrii <pub@oftr.me>
 pkgname=froststrap
-_tag='v2.0.5'
+_tag='v2.0.8'
 pkgver=${_tag#v}
 pkgver=${pkgver//-/.}
 pkgrel=1
@@ -9,12 +9,10 @@ pkgdesc="A fork of Fishstrap/Bloxstrap, focused on performance and customization
 arch=('x86_64')
 url="https://github.com/Froststrap/Froststrap"
 license=('AGPL-3.0-or-later' 'MIT' 'MPL-2.0')
-depends=('dotnet-runtime-10.0' 'icu' 'fontconfig' 'hicolor-icon-theme' 'dbus')
-makedepends=('dotnet-sdk-10.0' 'git' 'rust')
-source=("git+${url}.git#tag=${_tag}"
-    "git+https://github.com/Froststrap/ColorPicker.git")
-sha256sums=('SKIP'
-            'SKIP')
+depends=('icu' 'dbus' 'fontconfig' 'hicolor-icon-theme')
+makedepends=('dotnet-sdk-10.0' 'git' 'rust' 'clang' 'zlib')
+source=("git+${url}.git#tag=${_tag}")
+sha256sums=('SKIP')
 
 prepare() {
     cd Froststrap
@@ -22,34 +20,25 @@ prepare() {
 }
 
 build() {
-    # TODO 2.0.3: switch to upstream's Fallout build system once it
-    # supports --no-installers:
-    #   dotnet run --project build -- publish --no-installers --configuration Release
+    # Upstream's official build path (NativeAOT).
+    # RUSTFLAGS="" is required: the repo's .cargo/config.toml sets
+    # "-Z threads=8", which only the nightly compiler accepts.
+    export RUSTFLAGS=""
     cd Froststrap
-    dotnet publish "$srcdir/Froststrap/Froststrap/Froststrap.csproj" \
-        -r linux-x64 \
-        -c Release \
-        --self-contained false \
-        -p:PublishSingleFile=false \
-        -p:PublishReadyToRun=false \
-        --output build/aur-release
+    cargo xtask publish --no-installers --configuration release
 }
 
 package() {
     cd Froststrap
 
-    # Install binary and libraries
-    mkdir -p "$pkgdir/usr/lib/froststrap/"
-    cp -r build/aur-release/* "$pkgdir/usr/lib/froststrap/"
-
-    # Create wrapper script
-    install -Dm755 /dev/stdin "$pkgdir/usr/bin/froststrap" <<'EOF'
-#!/bin/sh
-exec /usr/lib/froststrap/Froststrap "$@"
-EOF
+    # Install the AOT binary and native libraries (layout mirrors
+    # upstream's own packages; the app resolves /usr/lib/froststrap
+    # itself, see Froststrap/AppInitializer.cs)
+    install -Dm755 .build/publish/froststrap "$pkgdir/usr/bin/froststrap"
+    install -Dm755 .build/publish/libs/*.so -t "$pkgdir/usr/lib/froststrap/"
 
     # Install icon
-    install -Dm644 Froststrap/Froststrap.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/froststrap.png"
+    install -Dm644 build/icon512.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/froststrap.png"
 
     # Install desktop entry
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/froststrap.desktop" <<EOF
