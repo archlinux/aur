@@ -1,6 +1,6 @@
 pkgbase = pupdate
 	pkgdesc = Pupdate, a thing for updating your Analogue Pocket
-	pkgver = 5.9.2
+	pkgver = 5.10.1
 	pkgrel = 1
 	url = https://mattpannella.github.io/pupdate
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pupdate
 	depends = gcc-libs
 	depends = glibc
 	conflicts = pupdate-bin
-	source = pupdate-5.9.2.tar.gz::https://github.com/mattpannella/pupdate/archive/refs/tags/5.9.2.tar.gz
-	sha256sums = adb277c26ce2d01eb1e898e4eb518e529068400a426118bd454e76bac72eeaf7
+	source = pupdate-5.10.1.tar.gz::https://github.com/mattpannella/pupdate/archive/refs/tags/5.10.1.tar.gz
+	sha256sums = b49965866b26241a14ed9876c720f413bfc0eece6df1a91d44e42c451f925165
 
 pkgname = pupdate
