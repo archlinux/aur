@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-# makepkg-jail pre-fetch hook: traur trust scan.
+# makepkg-jail pre-fetch hook: traur trust scan with recipe hash matching.
 #
 # Runs inside the makepkg-jail sandbox with network on, the package
 # directory read-only at $1, and a private persistent home of its own.
@@ -15,34 +15,49 @@ set -euo pipefail
 
 workdir=${1:?}
 pkgbase=${MAKEPKG_JAIL_PKGBASE:?}
+installed_version=${MAKEPKG_JAIL_INSTALLED_VERSION:-}
+installed_recipe_sha256=${MAKEPKG_JAIL_INSTALLED_RECIPE_SHA256:-}
 
 if ! command -v traur >/dev/null 2>&1; then
     printf 'traur hook: traur is not installed.\n'
     exit 1
 fi
 
-# The verdict comes from the JSON tier, as in traur's own wrapper.
-# A failed scan produces no tier.
+if ! command -v jq >/dev/null 2>&1; then
+    printf 'traur hook: jq is not installed (needed to parse traur JSON).\n'
+    exit 1
+fi
+
+# Scan once, parse the result
 json=$(traur scan --dir "$workdir" --json 2>/dev/null) || true
-tier=$(sed -n 's/.*"tier"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/;T;p;q' <<< "$json")
-score=$(sed -n 's/.*"score"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/;T;p;q' <<< "$json")
-reason=$(sed -n 's/.*"reason"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/;T;p;q' <<< "$json")
+tier=$(jq -r '.tier // empty' <<< "$json")
+score=$(jq -r '.score // "?"' <<< "$json")
+scanned_version=$(jq -r '.scanned_version // empty' <<< "$json")
+scanned_recipe_sha256=$(jq -r '.scanned_recipe_sha256 // empty' <<< "$json")
 
 printf '==> traur: %s: %s (trust: %s/100)\n' \
-    "$pkgbase" "${tier:-no verdict}" "${score:-?}"
+    "$pkgbase" "${tier:-no verdict}" "$score"
+
+# If you already have this exact recipe installed (same version and hash),
+# skip the prompt. You reviewed it before.
+if [[ -n "$installed_version" && "$installed_version" == "$scanned_version" && \
+      -n "$installed_recipe_sha256" && "$installed_recipe_sha256" == "$scanned_recipe_sha256" ]]; then
+    printf '    (version %s with matching recipe already installed; skipping re-check)\n' "$scanned_version"
+    exit 0
+fi
 
 if [[ "$tier" == Trusted ]]; then
     exit 0
 fi
 
-if [[ -z "$tier" || "$tier" == Unknown ]]; then
-    printf '    traur could not conclude%s. This is not a verdict either way.\n' \
-        "${reason:+: $reason}"
+if [[ -z "$tier" ]]; then
+    printf '    traur could not conclude. This is not a verdict either way.\n'
     exit 1
 fi
 
-# Show traur's own report, so the signals behind the verdict are visible
-# before you decide. Only for display; the verdict above is what counts.
+# For Ok, Warn, Danger: show signals and hash so you know what you're accepting
 printf '    Signals reported by traur:\n'
-traur scan --dir "$workdir" 2>&1 | sed 's/^/    /' || true
+jq -r '.signals[] | "      \(.id): \(.description)"' <<< "$json" | sort || true
+printf '    scanned_version: %s\n' "$scanned_version"
+printf '    scanned_recipe_sha256: %s\n' "$scanned_recipe_sha256"
 exit 1

@@ -1,5 +1,5 @@
 pkgname=makepkg-jail-local
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc='Local bubblewrap makepkg sandbox with AppArmor and a restricted paru adapter'
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
     'bubblewrap'
     'coreutils'
     'gnupg'
+    'jq'
     'pacman'
     'util-linux'
 )
@@ -54,10 +55,10 @@ source=(
     'online-build'
 )
 
-sha256sums=('dedf2cf36d0b59f94d0cd4a45fe0109f9addd480bf647b85fcf3d6cece17a3ab'
+sha256sums=('6806d913db67d0641f692e66bf45ad098ffa7995e224b51918c5b5987c4f3aa8'
             '3da0a51a9decc3ffd9c05d194dd38baa32389d60fa76f6e1ce2457df6aa5d494'
             '66582b5f362112c1ea5bbda70334c50b00b0eea6fa20355050260ff1da6795a7'
-            'cffe63df95629b4871bc357c96b86e632cc316c3c93d7c3ab2f34314dd492f8e'
+            'ee32a356587bc08724b84613c6bf0bddfc85f9a0f2fe53cb9f8a9620d4307aee'
             'd12cc9005cc17ee410b7727da5033c0482a1d0c5a2fd0b2ea660b4962b2284eb'
             '529a615d5230dd0e42d6e76f37c4de37a9527f91ad015b0e01c53226fb0f1c87'
             'ea542fbd5da726cce8e3dc5efddc031415e3e8f799ec94c746dc5a2bbd6c5343')

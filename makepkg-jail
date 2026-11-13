@@ -230,11 +230,11 @@ run_sandboxed() {
     cleanup_dirs+=("$run")
 
     mkdir -p "$run/etc" "$run/tmp" "$run/vartmp" "$run/gnupg"
-
-    printf 'root:x:0:0:root:/root:/usr/bin/bash\nbuilder:x:%s:%s:builder:/home/build:/usr/bin/bash\n' \
+    printf 'root:x:0:0:root:/root:/usr/bin/bash\nbuilder:x:%s:%s:builder:/home/build:/usr/bin/bash\nalpm:x:944:944::/dev/null:/usr/bin/nologin\n' \
         "$(id -u)" "$(id -g)" > "$run/etc/passwd"
+    
+    printf 'root:x:0:\nbuilder:x:%s:\nalpm:x:944:\n' "$(id -g)" > "$run/etc/group"
 
-    printf 'root:x:0:\nbuilder:x:%s:\n' "$(id -g)" > "$run/etc/group"
     printf 'passwd: files\ngroup: files\nhosts: files dns\n' > "$run/etc/nsswitch.conf"
     printf '127.0.0.1 localhost\n::1 localhost\n' > "$run/etc/hosts"
 
@@ -467,6 +467,28 @@ run_prefetch_hooks() {
     [[ "$pkgbase" =~ ^[[:alnum:]@_+][[:alnum:]@._+-]*$ ]] ||
         die "Unexpected pkgbase in package metadata: ${pkgbase:-<none>}"
 
+    # Get installed version and recipe hash for hooks to compare
+    local installed_version='' installed_recipe_sha256=''
+    if command -v jq >/dev/null 2>&1 && command -v traur >/dev/null 2>&1; then
+        local pkg ver cached_dir cached_json
+        while IFS= read -r pkg; do
+            [[ "$pkg" =~ ^[[:alnum:]@_+][[:alnum:]@._+-]*$ ]] || continue
+            if ver=$(pacman -Q "$pkg" 2>/dev/null | awk '{print $2}'); then
+                installed_version="$ver"
+                for cache_base in "$HOME/.cache/paru/clone" "$HOME/.cache/yay"; do
+                    cached_dir="$cache_base/$pkgbase"
+                    if [[ -d "$cached_dir" && -f "$cached_dir/PKGBUILD" ]]; then
+                        if cached_json=$(traur scan --dir "$cached_dir" --json 2>/dev/null); then
+                            installed_recipe_sha256=$(jq -r '.scanned_recipe_sha256 // empty' <<< "$cached_json")
+                        fi
+                        break
+                    fi
+                done
+                break
+            fi
+        done < <(awk '/^pkgname = / {print $3}' <<< "$srcinfo")
+    fi
+
     local name real hook_home rel rc
     for hook in "${hooks[@]}"; do
         name=${hook##*/}
@@ -481,6 +503,8 @@ run_prefetch_hooks() {
             --ro-bind "$real" /home/build/.makepkg-jail-hook
             --setenv MAKEPKG_JAIL_PKGBASE "$pkgbase"
             --setenv MAKEPKG_JAIL_WORKDIR /work
+            --setenv MAKEPKG_JAIL_INSTALLED_VERSION "$installed_version"
+            --setenv MAKEPKG_JAIL_INSTALLED_RECIPE_SHA256 "$installed_recipe_sha256"
         )
 
         while IFS= read -r rel; do
