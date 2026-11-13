@@ -1,4 +1,7 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
+# Contributor: qwjyh <urataw421 at gmail dot com>
+# Contributor: clanger <virtualdemise at gmail dot com>
+# Contributor: Aaron Coach <aur at ezpz dot cz>
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
