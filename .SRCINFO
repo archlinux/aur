@@ -1,16 +1,16 @@
 pkgbase = xfkey-wonkey-bin
 	pkgdesc = Macropad configuration tool for Linux.
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/wimpysworld/WonKey
 	license = BlueOak-1.0.0
 	conflicts = wonkey
 	provides = wonkey
 	arch = aarch64
-	source_aarch64 = https://github.com/wimpysworld/WonKey/releases/download/v0.2.2/WonKey_0.2.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 9b1501d7c360ad3ed1c4f38e14d3e6130a11c4d0f6fcdf2d1354a9ebd016ade5
+	source_aarch64 = https://github.com/wimpysworld/WonKey/releases/download/v0.2.3/WonKey_0.2.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = bb638302553f312fe6f6ba874e7c496c2aa2036646de88fe387c5462310d94c4
 	arch = x86_64
-	source_x86_64 = https://github.com/wimpysworld/WonKey/releases/download/v0.2.2/WonKey_0.2.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5056728ce08a69db45e3414292a604121b5eff82c3d4cc11f01aade8bc8703c1
+	source_x86_64 = https://github.com/wimpysworld/WonKey/releases/download/v0.2.3/WonKey_0.2.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = eb9b6373befab733773f9a2b881ef2ad053792932db95d02f53f0f63bfc6be63
 	
 pkgname = xfkey-wonkey-bin
