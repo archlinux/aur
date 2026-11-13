@@ -5,7 +5,7 @@
 pkgbase=scdr
 pkgname=('scdr' 'scx-devbox')
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Process scheduling and priority daemon for EEVDF and sched_ext kernels"
 arch=('x86_64' 'aarch64')
 url="https://github.com/asafelobotomy/scdr"
@@ -47,7 +47,10 @@ package_scdr() {
               'pipewire: audio-client role (pw-dump)'
               'gamemode: game role'
               'power-profiles-daemon: per-power-profile roles'
-              'uq: the Scheduling page in uQ Settings')
+              'uq: the Scheduling page and bar widget in uQ'
+              'plasma-workspace: the SCDR panel widget in KDE Plasma'
+              'kquickcharts: live graphs in the Plasma panel widget'
+              'kcmutils: settings pages of the Plasma panel widget')
 
   cd "$pkgbase-$pkgver"
   ./packaging/install.sh "$pkgdir" target/release

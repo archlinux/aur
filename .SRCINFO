@@ -1,7 +1,7 @@
 pkgbase = scdr
 	pkgdesc = Process scheduling and priority daemon for EEVDF and sched_ext kernels
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asafelobotomy/scdr
 	arch = x86_64
 	arch = aarch64
@@ -27,7 +27,10 @@ pkgname = scdr
 	optdepends = pipewire: audio-client role (pw-dump)
 	optdepends = gamemode: game role
 	optdepends = power-profiles-daemon: per-power-profile roles
-	optdepends = uq: the Scheduling page in uQ Settings
+	optdepends = uq: the Scheduling page and bar widget in uQ
+	optdepends = plasma-workspace: the SCDR panel widget in KDE Plasma
+	optdepends = kquickcharts: live graphs in the Plasma panel widget
+	optdepends = kcmutils: settings pages of the Plasma panel widget
 
 pkgname = scx-devbox
 	pkgdesc = sched_ext scheduler for low-end machines doing development with LLM agent apps
