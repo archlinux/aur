@@ -1,0 +1,13 @@
+post_install() {
+    echo ":: Packaging issues? Report at: https://github.com/theorangeguo/aur-packages"
+    echo ::\ DuMate\ is\ installed\ under\ /opt/DuMate.\ Start\ it\ from\ your\ application\ menu\ or\ run:\ dumate
+    echo ::\ Upstream\ also\ ships\ an\ electron-updater\ feed.\ Update\ this\ package\ with\ pacman\;\ do\ not\ let\ the\ built-in\ updater\ replace\ packaged\ files.
+}
+
+post_upgrade() {
+    :
+}
+
+post_remove() {
+    :
+}
