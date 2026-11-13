@@ -1,7 +1,7 @@
 # Maintainer: crimist <aur at crim dot ist>
 
 pkgname=beszel-agent-bin
-pkgver=0.21.1
+pkgver=0.21.2
 pkgrel=1
 pkgdesc="Beszel monitoring agent"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'mips64' 'riscv64')
@@ -25,12 +25,12 @@ source+=(
 sha256sums=('4fbe92f62dbc1832371d69abd522ab609cb45c62a18ff48331cec60823fb3dda'
             '36386e355041676f72e55052ed02be90b1c307bfb5be9497b3e32d44e2982fac'
             'fe5029ca8180e202e814de8061c3282db5482da326ebe3775312773789fec0f2')
-sha256sums_x86_64=('19d48bd31a129d0c2b08399690e9262d4533fda551a1d46d3246ae1422e4412f')
-sha256sums_aarch64=('a6ea544976b9a74398ac88d5da5bb96813d9a2e353a37bbfdb6a903fa8ba1838')
-sha256sums_armv7h=('3f917bb1bc1f3713f9478e7f054996d75ee0f414c39dfadb5ff9b2c4a06147bc')
-sha256sums_armv6h=('3f917bb1bc1f3713f9478e7f054996d75ee0f414c39dfadb5ff9b2c4a06147bc')
-sha256sums_mips64=('748f003e859bc448521843d63a7ec35b2c9509982d1d89dbe3b5e73b5239ed76')
-sha256sums_riscv64=('4081791d6760df8222495dfa0fb10d641613687cfbedb507cf81daaf318f166c')
+sha256sums_x86_64=('55e2b860b681bbabb647b34c415580c95365e76db05ab70832ce0abd8a89f788')
+sha256sums_aarch64=('4f5dcea27c3f9e2ba30218e7d7039f4df548ded1c470df9eefe00975722aad13')
+sha256sums_armv7h=('57075d4ae419a50d5d378a23dbc40fef12cf9dedaa4fd2f3fce23620d6ca0a3f')
+sha256sums_armv6h=('57075d4ae419a50d5d378a23dbc40fef12cf9dedaa4fd2f3fce23620d6ca0a3f')
+sha256sums_mips64=('275c5c8e328e52cc1fb756ee14f0265e4b2134ebf75401b4789457dec36442ba')
+sha256sums_riscv64=('3e33574939a96f6f5a0000af4bc106c00ac8cb86febb47d3b0de3b4f89193999')
 
 source_x86_64=("beszel-agent_linux_amd64_glibc-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_amd64_glibc.tar.gz")
 source_aarch64=("beszel-agent_linux_arm64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_arm64.tar.gz")
