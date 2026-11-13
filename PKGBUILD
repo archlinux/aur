@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=dida
 pkgname="${_pkgname}365-bin"
-pkgver=8.0.20
+pkgver=8.0.30
 _electronversion=21
 pkgrel=1
 pkgdesc='Todo list, checklist and task manager app, Linux desktop application.'
@@ -17,7 +17,7 @@ conflicts=(
     "${pkgname%-bin}"
 )
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 source=(
     "LICENSE-opensource.html::${url}/license/web"

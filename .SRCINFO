@@ -1,13 +1,13 @@
 pkgbase = dida365-bin
 	pkgdesc = Todo list, checklist and task manager app, Linux desktop application.
-	pkgver = 8.0.20
+	pkgver = 8.0.30
 	pkgrel = 1
 	url = https://www.dida365.com
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = electron21
-	provides = dida365=8.0.20
+	depends = electron21-bin
+	provides = dida365=8.0.30
 	conflicts = dida
 	conflicts = dida365
 	source = LICENSE-opensource.html::https://www.dida365.com/license/web
@@ -18,9 +18,9 @@ pkgbase = dida365-bin
 	sha256sums = d80aaf6a207031ce7ed717a42fd9b3f18964d67dc02cd9d1d14eea2df92bee47
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
-	source_aarch64 = dida365-8.0.20-aarch64.rpm::https://cdn.dida365.cn/download/linux/linux_rpm_arm64/dida-8.0.20-aarch64.rpm
+	source_aarch64 = dida365-8.0.30-aarch64.rpm::https://cdn.dida365.cn/download/linux/linux_rpm_arm64/dida-8.0.30-aarch64.rpm
 	sha256sums_aarch64 = 3eede72832444fa014c7a739f60b59541613a9c6690b929f19d503c16d4b4f60
-	source_x86_64 = dida365-8.0.20-x86_64.rpm::https://cdn.dida365.cn/download/linux/linux_rpm_x64/dida-8.0.20-x86_64.rpm
+	source_x86_64 = dida365-8.0.30-x86_64.rpm::https://cdn.dida365.cn/download/linux/linux_rpm_x64/dida-8.0.30-x86_64.rpm
 	sha256sums_x86_64 = 9b97630ff5eda4156dd7237fe817ccd0165b92cf22412ff7588c38777b67bb23
 
 pkgname = dida365-bin
