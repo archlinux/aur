@@ -1,7 +1,7 @@
 # Maintainer: Damon Blais <damon.blais@gmail.com>
 
 pkgname=engined-git
-pkgver=0.2.13.r0.g8881a2e
+pkgver=0.2.18.r0.gb9b5537
 pkgrel=1
 pkgdesc="Local model door: one OpenAI-shaped endpoint that owns every inference container on the box (git)"
 arch=('any')
@@ -14,7 +14,8 @@ depends=('bun')
 makedepends=('git')
 optdepends=(
   'docker: run the inference engines and the Cursor TLS bridge'
-  'bubblewrap: read-only sandbox for the opencode engine'
+  'bubblewrap: sandbox every agentic engine runs under'
+  'passt: network namespace every agentic engine runs under'
 )
 install=engined.install
 provides=("engined=$pkgver")
@@ -60,6 +61,10 @@ LAUNCHER
     for unit in engined.service engined-configsvc.service engined-probe.service engined-probe.timer engined-tls.service; do
       render_unit_file "$unit.in" "$pkgdir/usr/lib/systemd/user/$unit"
     done
+    # Generated from the bundle being packaged, so they match its --help.
+    install_completions "$pkgdir/usr/share/bash-completion/completions" \
+      "$pkgdir/usr/share/zsh/site-functions" "$pkgdir/usr/share/fish/vendor_completions.d" \
+      "$pkgdir/usr/share/man/man1" bun dist/main.js
   )
 
   # Not under /usr/share/doc, which NoExtract commonly strips: the install
