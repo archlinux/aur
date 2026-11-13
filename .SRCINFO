@@ -1,10 +1,11 @@
 pkgbase = libbsc-cuda
 	pkgdesc = High-performance block-sorting data compressor with CUDA
 	pkgver = 3.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/IlyaGrebnov/libbsc
 	arch = x86_64
 	license = Apache-2.0
+	license = Apache-2.0 WITH LLVM-exception
 	makedepends = cccl
 	makedepends = cmake
 	makedepends = git

@@ -1,11 +1,14 @@
 # Maintainer: Inc44
 pkgname=libbsc-cuda
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="High-performance block-sorting data compressor with CUDA"
 arch=(x86_64)
 url=https://github.com/IlyaGrebnov/libbsc
-license=(Apache-2.0)
+license=(
+	Apache-2.0
+	'Apache-2.0 WITH LLVM-exception'
+)
 depends=(
 	cuda
 	glibc
@@ -40,4 +43,6 @@ package() {
 	cd "$srcdir/libbsc"
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 libbsc/bwt/libcubwt/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.libcubwt"
+	install -Dm644 libbsc/bwt/libsais/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.libsais"
 }
