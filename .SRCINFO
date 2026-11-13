@@ -1,0 +1,17 @@
+pkgbase = yubild
+	pkgdesc = C++ build system with Python configuration and a CMake backend
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zhiyuHD/yubild
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = cmake
+	depends = python
+	optdepends = gcc: 编译 C/C++ 项目
+	optdepends = clang: 替代编译器
+	source = yubild-0.1.0.tar.gz::https://static.crates.io/crates/yubild/yubild-0.1.0.crate
+	sha256sums = 24427ecead826522c9b578e407ea589a1f4d6d49e81dd7c966a1c72399909023
+
+pkgname = yubild
