@@ -1,7 +1,7 @@
 # Maintainer: MMMaellon <mmmaellon at gmail dot com>
 # Openhouse created by YusufOzmen01
 pkgname="openhouse-bin"
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Drop-in open-source replacement for SteamVR's lighthouse driver"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("$pkgname-${pkgver}.tar.gz::https://github.com/YusufOzmen01/openhouse/re
         "openhouse-install"
         "openhouse-uninstall"
         "symlink-install.patch")
-sha256sums=('3bae514ad2a88667187df6da7af309bbff08e519fdfeab63d5d17a0e65df6252'
+sha256sums=('e434d1dc4e0e011e6d3267c642b7fe6aa20fecb543668a146c79f0d93f2e182e'
             '3548c697d2060c7a5507c85d2cac7c8b75a3380c5fe551109a20da184f963052'
             'fa4e3ef11a2b7c38fd4ba6347a4648993db2b787e92d71d93eecd1c374bf9f76'
             '037c2fb60c3ee42cd7f36bb36b2921ef1486a76269dc0dd37eca7f916b08fe5c')
