@@ -1,6 +1,6 @@
 pkgbase = azion-cli
 	pkgdesc = Efficient creation and management of applications on Azion Edge Platform
-	pkgver = 4.23.0
+	pkgver = 4.26.1
 	pkgrel = 1
 	url = https://github.com/aziontech/azion
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = azion-cli
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = azion-cli-4.23.0.tar.gz::https://github.com/aziontech/azion/archive/4.23.0.tar.gz
-	sha256sums = 4131817e81e3333ff3409101b679351a3bb1068b73898ba42049c802bfb433a7
+	source = azion-cli-4.26.1.tar.gz::https://github.com/aziontech/azion/archive/4.26.1.tar.gz
+	sha256sums = b4d603743a0181966764063f4af40a11b48711177b9fb9c0c5d4e7f1cecb09af
 
 pkgname = azion-cli
