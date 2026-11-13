@@ -29,5 +29,7 @@ package() {
 	install -Dm644 ./docs/keybindings.md "$pkgdir/usr/share/doc/endcord/keybindings.md"
 	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/endcord/LICENSE"
 	install -Dm644 ./com.sparklost.endcord.desktop "$pkgdir/usr/share/applications/com.sparklost.endcord.desktop"
+	# patch the desktop file so Exec points to the correct installed binary path
+    sed -i 's/^Exec=.*/Exec=endcord/' "$pkgdir/usr/share/applications/com.sparklost.endcord.desktop"
     install -Dm644 ./endcord.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.sparklost.endcord.svg"
 }
