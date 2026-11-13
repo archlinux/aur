@@ -5,7 +5,7 @@
 # 分发包固定版本，装到 /usr/lib/yati 下，不受 extra/cef 升级影响。
 
 pkgname=yati
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='用 HTML/CSS/JS 写桌面应用，内核是 CEF（Chromium）'
 arch=('x86_64')
@@ -42,7 +42,7 @@ source=(
   "cef.tar.bz2::$_cefurl"
 )
 sha256sums=(
-  '53234d89be5a07797e279b0c133be413c206ca0275fee796b6390050cf85d90c'
+  '0e1f5e8a41a1b2edb55c4a7aeeacae20437893166f2317cb4eeb268df3054459'
   '7b53123d0628fce62c755c090b0ae52b454431d98b53b8d99fb505757f48f43a'
 )
 

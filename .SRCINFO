@@ -1,6 +1,6 @@
 pkgbase = yati
 	pkgdesc = 用 HTML/CSS/JS 写桌面应用，内核是 CEF（Chromium）
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/zhiyuHD/Yati
 	arch = x86_64
@@ -51,9 +51,9 @@ pkgbase = yati
 	optdepends = libnotify: 系统通知（notify-send）
 	optdepends = xdg-utils: 打开外部链接、在文件管理器中显示
 	options = !lto
-	source = yati-0.2.0.tar.gz::https://github.com/zhiyuHD/Yati/archive/v0.2.0.tar.gz
+	source = yati-0.3.0.tar.gz::https://github.com/zhiyuHD/Yati/archive/v0.3.0.tar.gz
 	source = cef.tar.bz2::https://cef-builds.spotifycdn.com/cef_binary_156.0.28%2Bg57389f0%2Bchromium-156.0.8078.88_linux64_minimal.tar.bz2
-	sha256sums = 53234d89be5a07797e279b0c133be413c206ca0275fee796b6390050cf85d90c
+	sha256sums = 0e1f5e8a41a1b2edb55c4a7aeeacae20437893166f2317cb4eeb268df3054459
 	sha256sums = 7b53123d0628fce62c755c090b0ae52b454431d98b53b8d99fb505757f48f43a
 
 pkgname = yati
