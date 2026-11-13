@@ -1,7 +1,7 @@
 # Maintainer: kregonia <jiangchenglu2004@gmail.com>
 
 pkgname=babry-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Smart boundary-aware screenshot tool for Linux Wayland and X11"
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('babry')
 source_x86_64=("${pkgname}-${pkgver}::https://github.com/kregonia/babry/releases/download/v${pkgver}/babry-amd64-linux-v${pkgver}")
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/kregonia/babry/v${pkgver}/LICENSE")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('c184b58729d2e28a8d4ebe100c598b8d8e8180918cd558a1fc14fb25a0323867')
+sha256sums_x86_64=('03ec493138a69b43a37f8a09f02b04bab5fd2f4b46576d3b9f8b050151334cf2')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/babry"

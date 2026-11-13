@@ -1,6 +1,6 @@
 pkgbase = babry-bin
 	pkgdesc = Smart boundary-aware screenshot tool for Linux Wayland and X11
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/kregonia/babry
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = babry-bin
 	optdepends = kdialog: save-as dialog for pinned images
 	provides = babry
 	conflicts = babry
-	source = LICENSE-0.2.0::https://raw.githubusercontent.com/kregonia/babry/v0.2.0/LICENSE
+	source = LICENSE-0.2.1::https://raw.githubusercontent.com/kregonia/babry/v0.2.1/LICENSE
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = babry-bin-0.2.0::https://github.com/kregonia/babry/releases/download/v0.2.0/babry-amd64-linux-v0.2.0
-	sha256sums_x86_64 = c184b58729d2e28a8d4ebe100c598b8d8e8180918cd558a1fc14fb25a0323867
+	source_x86_64 = babry-bin-0.2.1::https://github.com/kregonia/babry/releases/download/v0.2.1/babry-amd64-linux-v0.2.1
+	sha256sums_x86_64 = 03ec493138a69b43a37f8a09f02b04bab5fd2f4b46576d3b9f8b050151334cf2
 
 pkgname = babry-bin
