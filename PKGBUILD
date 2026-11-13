@@ -5,7 +5,7 @@
 pkgbase=scdr-git
 pkgname=('scdr-git' 'scx-devbox-git')
 _pkgname=scdr
-pkgver=0.4.1.r0.g9ef7d68
+pkgver=0.4.2.r0.g4790c91
 pkgrel=1
 pkgdesc="Process scheduling and priority daemon for EEVDF and sched_ext kernels (git)"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ pkgver() {
   if git describe --long --tags >/dev/null 2>&1; then
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   else
-    printf "0.4.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf "0.4.2.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   fi
 }
 
