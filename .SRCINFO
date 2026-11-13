@@ -1,13 +1,12 @@
 pkgbase = otf-fanwood
 	pkgdesc = A serif font based on the work of a famous Czech-American type designer of yesteryear.
 	pkgver = 20110526
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.theleagueofmoveabletype.com/fanwood
 	arch = any
 	groups = lmt-fonts
 	license = custom:OFL
 	source = otf-fanwood-20110526.zip::https://github.com/theleagueof/fanwood/archive/master.zip
-	sha256sums = 343377b57551358d8f9778ff5f3123ed34257334f25522c0f294f8c96812f5a7
+	b2sums = eb0d579d9ff0509b72600fd188babb5aaa5ff12025296ea88986962cf6a45a2e20decd67e706a2e27ad2d1451b37a9ade84c34e6c23df5ebfe092b931677b005
 
 pkgname = otf-fanwood
-
