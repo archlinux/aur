@@ -1,6 +1,6 @@
 pkgbase = over-bin
 	pkgdesc = A git-based file overlay manager (dotfiles as overlays) (prebuilt binary)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/noirbizarre/over
 	arch = x86_64
@@ -9,15 +9,15 @@ pkgbase = over-bin
 	depends = gcc-libs
 	depends = glibc
 	depends = zlib
-	provides = over=0.2.0
+	provides = over=0.2.1
 	conflicts = over
 	options = !strip
 	options = !debug
-	source = LICENSE-0.2.0::https://github.com/noirbizarre/over/raw/0.2.0/LICENSE
+	source = LICENSE-0.2.1::https://github.com/noirbizarre/over/raw/0.2.1/LICENSE
 	sha256sums = 579ef5ffa922ce743ad6dd7ec4538389c7f66a2b945b7d6284e5b3ec04da156e
-	source_x86_64 = over-bin-0.2.0-x86_64.tar.gz::https://github.com/noirbizarre/over/releases/download/0.2.0/over_0.2.0_linux-amd64.tar.gz
-	sha256sums_x86_64 = c7c9ec0d0638e607d4d03da4690129b7f7785fb4a869eb2248b40a6c477ebf84
-	source_aarch64 = over-bin-0.2.0-aarch64.tar.gz::https://github.com/noirbizarre/over/releases/download/0.2.0/over_0.2.0_linux-arm64.tar.gz
-	sha256sums_aarch64 = d36c82f2de9332ea6fd074557e40045cfc7ecdee37c7bfcee4ed28de7e418c3c
+	source_x86_64 = over-bin-0.2.1-x86_64.tar.gz::https://github.com/noirbizarre/over/releases/download/0.2.1/over_0.2.1_linux-amd64.tar.gz
+	sha256sums_x86_64 = 9d33cc5e5f784d6e8aad65bf840755eb24b7ac2366c55f9eaca96996a97917a6
+	source_aarch64 = over-bin-0.2.1-aarch64.tar.gz::https://github.com/noirbizarre/over/releases/download/0.2.1/over_0.2.1_linux-arm64.tar.gz
+	sha256sums_aarch64 = cabaca7111e30bed12c4c3b65523ded8032505eb823c878a76d659afd5b03bfe
 
 pkgname = over-bin
