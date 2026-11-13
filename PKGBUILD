@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woocommerce-pos-bin
 _pkgname=WooCommerce-POS
-pkgver=2.0.0
+pkgver=2.0.1
 _electronversion=45
 pkgrel=1
 pkgdesc="Electron Desktop App for WooCommerce POS."
@@ -19,9 +19,9 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2aadead65a34f45c998d2b3732f27adf6e1e2c7c917cd6ad8d6de05b08bed6c1'
+sha256sums=('f66d88b9583231c11c6eef42d096105e196338c648ff12a4033e24f5c62c0224'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
