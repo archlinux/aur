@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 pkgname=fasttext
@@ -5,7 +8,7 @@ pkgdesc="Library for fast text representation and classification"
 url="https://github.com/facebookresearch/fastText"
 
 pkgver=0.9.2
-pkgrel=4
+pkgrel=5
 
 arch=("x86_64")
 license=("MIT")
