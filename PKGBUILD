@@ -2,7 +2,7 @@
 # Builds MIGA desktop from source. The name "miga" on the AUR belongs to an unrelated tool
 # (a Go database migration CLI), so both the package and the command are called miga-messenger.
 pkgname=miga-messenger
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="End-to-end encrypted messenger with no account"
 arch=('x86_64')
