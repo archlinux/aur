@@ -1,0 +1,15 @@
+pkgbase = pi-ext-lens
+	pkgdesc = Real-time code feedback for the Pi coding agent: language servers, linters, formatters
+	pkgver = 4.4.12
+	pkgrel = 1
+	url = https://github.com/apmantza/pi-lens
+	install = pi-ext-lens.install
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = ast-grep
+	options = !debug
+	source = pi-lens-4.4.12.tgz::https://registry.npmjs.org/pi-lens/-/pi-lens-4.4.12.tgz
+	sha256sums = d13489654958a930a3afe136b11e70cb0693c8c05116ff4b001e31442d198fad
+
+pkgname = pi-ext-lens
