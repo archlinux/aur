@@ -1,6 +1,6 @@
 pkgbase = project-reclaimer-bin
 	pkgdesc = A rewrite of Bungie's Halo Games. Uses Master Chief Collection on Steam for game data.
-	pkgver = 0.10.1
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/ProjectReclaimer/project-reclaimer-releases
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = project-reclaimer-bin
 	optdepends = steam: Project Reclaimer requires game data from steam, and can use steam to pull maps and mods from the workshop
 	provides = project-reclaimer
 	conflicts = project-reclaimer
-	source = https://github.com/ProjectReclaimer/project-reclaimer-releases/releases/download/v0.10.1/project-reclaimer-client-v0.10.1-linux-x86_64.tar.gz
-	sha256sums = 3aaf543d9746a92acf6b1c5e767358749b509f85ac79ff7e2f51a924dc520479
+	source = https://github.com/ProjectReclaimer/project-reclaimer-releases/releases/download/v0.10.3/project-reclaimer-client-v0.10.3-linux-x86_64.tar.gz
+	sha256sums = 1b25ef4ed0e617c2e3c5ccdae5742c03e8eedcf310c8e6b32fe33e980145436b
 
 pkgname = project-reclaimer-bin
