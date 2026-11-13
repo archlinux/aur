@@ -1,6 +1,9 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph.fink@gmail.com>
 pkgname=geos-git
-pkgver=3.14.0dev.642e32dae
+pkgver=3.16.0dev.06da4f3a7
 pkgrel=1
 
 pkgdesc="C++ port of the Java Topology Suite (git version)"
@@ -12,8 +15,10 @@ makedepends=("cmake" "git")
 conflicts=("geos")
 provides=("geos")
 
-source=("${pkgname}::git+https://git.osgeo.org/gitea/geos/geos.git")
-md5sums=("SKIP")
+source=("${pkgname}::git+https://gitea.osgeo.org/geos/geos.git")
+b2sums=(
+    "SKIP"
+)
 
 pkgver() {
     cd "${pkgname}"
