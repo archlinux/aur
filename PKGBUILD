@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.163
-pkgrel=6
+pkgrel=7
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -66,6 +66,7 @@ optdepends=('bluez: org.bluez Bluetooth service (bluetooth.service) for Web Blue
             'dunst: org.freedesktop.Notifications daemon for sessions without one'
             'gnome-keyring: org.freedesktop.secrets service for session-token and password storage on GNOME and GTK desktops'
             'gnome-shell-extension-appindicator: org.kde.StatusNotifierItem tray host on GNOME'
+            'ibus: org.freedesktop.IBus.InputContext/Portal/Service input-method service probed by the payload (Avalonia IME); Arch ships it as ibus'
             'kwallet: Plasma 6 secret storage (ksecretd) and kwalletd6 wallet for session-token and password storage on KDE Plasma'
             'snixembed: StatusNotifierItem-to-XEmbed bridge for trays on minimal X11 sessions'
             'waybar: org.kde.StatusNotifierWatcher tray host on wlroots compositors'
