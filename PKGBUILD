@@ -24,7 +24,7 @@ source+=(
 )
 sha256sums=('4fbe92f62dbc1832371d69abd522ab609cb45c62a18ff48331cec60823fb3dda'
             '36386e355041676f72e55052ed02be90b1c307bfb5be9497b3e32d44e2982fac'
-            'fe5029ca8180e202e814de8061c3282db5482da326ebe3775312773789fec0f2')
+            '6e992c72a857fe49f562a6dc58a6b6c62d991bf122b43b80ae1c5ae6636ae7ce')
 sha256sums_x86_64=('55e2b860b681bbabb647b34c415580c95365e76db05ab70832ce0abd8a89f788')
 sha256sums_aarch64=('4f5dcea27c3f9e2ba30218e7d7039f4df548ded1c470df9eefe00975722aad13')
 sha256sums_armv7h=('57075d4ae419a50d5d378a23dbc40fef12cf9dedaa4fd2f3fce23620d6ca0a3f')
@@ -57,9 +57,4 @@ package() {
 
   install -Dm640 beszel-agent.conf.example "$pkgdir/etc/beszel-agent.conf"
   install -Dm644 beszel-agent.conf.example "$pkgdir/usr/share/doc/${pkgname}/beszel-agent.conf.example"
-}
-
-post_install() {
-  printf "* Configuration can be set at /etc/beszel-agent.conf (KEY, PORT, etc.)\n"
-  printf "\033[1;31m\!\033[0m Mobile NVIDIA GPUs may not be able to enter RTD3 which will reduce battery life. Consider setting NVML=true on such devices.\n"
 }
