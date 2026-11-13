@@ -17,7 +17,7 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 pkgname=hnefatafl-copenhagen
-pkgver=6.4.1
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client, engine, server and artificial intelligence"
 url="https://hnefatafl.org"
@@ -27,11 +27,13 @@ depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib" "openssl")
 makedepends=("clang" "llvm" "mold" "rustup" "wget")
 source=(
     "https://codeberg.org/dcampbell/hnefatafl/archive/v$pkgver.tar.gz"
-    "https://codeberg.org/dcampbell/hnefatafl/media/branch/main/default_nn.onnx"
+    "https://codeberg.org/dcampbell/hnefatafl/media/branch/main/copenhagen-T10-15x192-step673949.onnx"
+    "https://codeberg.org/dcampbell/hnefatafl/media/branch/main/tablut9x9.onnx"
 )
 sha256sums=(
-    "7f6e550d5ac4e80effcbc0457b8ea695a310ac4b4650e198e986601fe814d9f5"
-    "99e76fcefb00c56e3c4ff9186f745347f6d1611808281b2c4b4374160ebeb4b8"
+    "f2a3516d065c9db738c81e4ef9822a53c3daa49f668d77b0b8b2134a29b335c6"
+    "dea0f6f802825b4b5269822b4f985504bf22e2dcf3fa51663522c2f50945d4b0"
+    "c64f58e62454b38c609c7b5cba8f7a7673b6ab42ca6401b5a530a3eb862e6f22"
 )
 
 prepare() {
@@ -78,5 +80,6 @@ package() {
     install -Dm644 "hnefatafl-server.1" "$pkgdir/usr/share/man/man1/hnefatafl-server.1"
     install -Dm644 "hnefatafl-text-protocol.1" "$pkgdir/usr/share/man/man1/hnefatafl-text-protocol.1"
     install -Dm644 "packages/hnefatafl-client.desktop" "$pkgdir/usr/share/applications/hnefatafl-client.desktop"
-    install -Dm644 "default_nn.onnx" -t "$pkgdir/usr/share/taflzero"
+    install -Dm644 "copenhagen-T10-15x192-step673949.onnx" -t "$pkgdir/usr/share/taflzero"
+    install -Dm644 "tablut9x9.onnx" -t "$pkgdir/usr/share/taflzero"
 }
