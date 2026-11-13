@@ -1,0 +1,18 @@
+pkgbase = copydisk
+	pkgdesc = Make a small sparse image of a GPT disk: same GUIDs/UUIDs, shrunken ext4/LVM rootfs, no mount needed
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/miloserdev/copydisk
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	checkdepends = dosfstools
+	checkdepends = python
+	checkdepends = attr
+	makedepends = pkgconf
+	depends = util-linux-libs
+	depends = e2fsprogs
+	source = copydisk-0.1.0.tar.gz::https://github.com/miloserdev/copydisk/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 985a04b60f656bbc3c18bb61959d9dd37053b9044dc5a9329bb4381120aa656d
+
+pkgname = copydisk
