@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-nvapi-mingw-git
-pkgver=0.9.0.r8.g5fa4b3c
+pkgver=0.9.3.r0.g9c0f214
 pkgrel=1
 pkgdesc='Alternative NVAPI implementation on top of DXVK'
 arch=('x86_64')
@@ -58,14 +58,14 @@ prepare() {
 
     local cross_cflags="$CFLAGS -mcmodel=small"
     local cross_cxxflags="$CXXFLAGS -mcmodel=small"
-    sed -i build-win64.txt \
+    sed -i build-mingw-win64.txt \
         -e "s|@CARGS@|\'${cross_cflags// /\',\'}\'|g" \
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${cross_ldflags// /\',\'}\'|g"
 
     local cross_cflags="$CFLAGS -mstackrealign -mpreferred-stack-boundary=2"
     local cross_cxxflags="$CXXFLAGS -mstackrealign -mpreferred-stack-boundary=2"
-    sed -i build-win32.txt \
+    sed -i build-mingw-win32.txt \
         -e "s|@CARGS@|\'${cross_cflags// /\',\'}\'|g" \
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${cross_ldflags// /\',\'}\'|g"
@@ -73,7 +73,7 @@ prepare() {
 
 build() {
     meson setup dxvk-nvapi "build/x64" \
-        --cross-file dxvk-nvapi/build-win64.txt \
+        --cross-file dxvk-nvapi/build-mingw-win64.txt \
         --prefix "/usr/share/dxvk-nvapi/x64" \
         --bindir "" --libdir "" \
         --buildtype "plain" \
@@ -83,7 +83,7 @@ build() {
     ninja -C "build/x64" -v
 
     meson setup dxvk-nvapi "build/x32" \
-        --cross-file dxvk-nvapi/build-win32.txt \
+        --cross-file dxvk-nvapi/build-mingw-win32.txt \
         --prefix "/usr/share/dxvk-nvapi/x32" \
         --bindir "" --libdir "" \
         --buildtype "plain" \
@@ -105,6 +105,6 @@ package() {
 }
 
 sha256sums=('SKIP'
-            'dff5ecd1a35a94a4dc1fa5fd08c10b5c88703797520d6b315207124ff1adeef8'
+            '7f13c9d7ebebd7756012a0691eb6df1cbf3bded85e1b2eedf4269dfff46efae4'
             'b0f15bd2fa0f8891e230a7a6432aaa9c0fc4b15899f02737ccd1d5771223e27f'
             '1f4934c5bfcf208e288a0eda2f385f82acc9e78a4b0ac2a77b5af14c64c8e21e')
