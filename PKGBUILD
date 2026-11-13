@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=capri-desktop
-pkgver=0.8.9
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Unofficial Capri desktop companion: she sits on your windows, chats and does things for you"
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=('ollama: her brain on this computer'
             'scrot: screenshots on X11')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d946a124a82548f9f68b7f30bcd7bb53f31219435198331f3a2a32c8189fa5c9')
+sha256sums=('204822f7a524f9d5ee7e3997916b50636562fcfcb26d8a9d581d3c2991384d39')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
