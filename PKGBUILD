@@ -1,5 +1,5 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
-# Maintainer: Yuuta Liang <yuuta@yuuta.moe>
+# Contributor: Yuuta Liang <yuuta at yuuta dot moe>
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 pkgname=tlog
