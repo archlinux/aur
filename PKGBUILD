@@ -14,9 +14,9 @@ makedepends=('git' 'cmake')
 depends=('libgcc' 'libstdc++')
 
 conflicts=('libdxfrw')
-provides=("libdxfrw=${pkgver}")
+provides=("libdxfrw=$pkgver")
 
-source=("${pkgname}::git+https://github.com/LibreCAD/libdxfrw.git")
+source=("$pkgname::git+https://github.com/LibreCAD/libdxfrw.git")
 sha256sums=('SKIP')
 
 function pkgver
@@ -43,7 +43,7 @@ function build
 
 function package
 {
-  cd build || return
+  cd "$pkgname/build" || return
 
   make install DESTDIR="$pkgdir"
 }
