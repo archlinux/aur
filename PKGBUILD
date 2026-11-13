@@ -9,7 +9,7 @@ pkgver=2.16.0
 pkgrel=1
 pkgdesc='LTTng tracing control tools'
 arch=('i686' 'x86_64')
-url='http://lttng.org/'
+url='https://lttng.org/'
 license=('GPL2' 'LGPL2.1')
 depends=('popt' 'liburcu>=0.7.2' "lttng-ust>=${pkgver%.*}.0" 'linux>=2.6.27' 'libxml2>=2.7.6')
 makedepends=('asciidoc' 'xmlto')
@@ -17,8 +17,11 @@ optdepends=('lttng-modules: kernel tracing support'
             'babeltrace: view traces with `lttng view` command'
             'man-db: view man pages with the `lttng help` command')
 provides=('lttng')
-source=("http://lttng.org/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('b8b3244894e49e773d4942b8899f768057974edf75c18dbb48b65bb123c7b2c7')
+source=("https://lttng.org/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
+        "https://lttng.org/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2.asc")
+sha256sums=('b8b3244894e49e773d4942b8899f768057974edf75c18dbb48b65bb123c7b2c7'
+            'SKIP')
+validpgpkeys=('7F49314A26E0DE78427680E05F1B2A0789F12B11')
 
 build() {
   cd "${pkgname}-${pkgver}"
