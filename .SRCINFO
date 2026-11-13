@@ -1,6 +1,6 @@
 pkgbase = saber-note-bin
 	pkgdesc = The cross-platform open-source notes app built for handwriting
-	pkgver = 1.37.1
+	pkgver = 1.37.2
 	pkgrel = 1
 	url = https://saber.adil.hanney.org/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = saber-note-bin
 	conflicts = saber-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = Saber_v1.37.1_Linux_x86_64.tar.gz::https://github.com/saber-notes/saber/releases/download/v1.37.1/Saber_v1.37.1_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = cd22a650bc31cc27a217944ac03693cfb1f7ce8d9700c89d1419a61a6a4d5b84
-	source_aarch64 = Saber_v1.37.1_Linux_arm64.tar.gz::https://github.com/saber-notes/saber/releases/download/v1.37.1/Saber_v1.37.1_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 2826022ccd33d943709e16e797cac9147fb741f5e3ad7dca88c11acdc4f97325
+	source_x86_64 = Saber_v1.37.2_Linux_x86_64.tar.gz::https://github.com/saber-notes/saber/releases/download/v1.37.2/Saber_v1.37.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 24138828ad8a2988d2421203bae7a0aab7372de3fcc730acd5967a5479b3199f
+	source_aarch64 = Saber_v1.37.2_Linux_arm64.tar.gz::https://github.com/saber-notes/saber/releases/download/v1.37.2/Saber_v1.37.2_Linux_arm64.tar.gz
+	sha256sums_aarch64 = a679e44e16c76bebe400e49750bdd589bd7eca327f8fa6aace6dc34c7d903c41
 
 pkgname = saber-note-bin

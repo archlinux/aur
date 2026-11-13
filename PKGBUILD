@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=saber-note-bin
-pkgver=1.37.1
+pkgver=1.37.2
 pkgrel=1
 pkgdesc="The cross-platform open-source notes app built for handwriting"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!strip' '!debug')
 #   saber, data/, lib/, share/
 source_x86_64=("Saber_v${pkgver}_Linux_x86_64.tar.gz::https://github.com/saber-notes/saber/releases/download/v${pkgver}/Saber_v${pkgver}_Linux_x86_64.tar.gz")
 source_aarch64=("Saber_v${pkgver}_Linux_arm64.tar.gz::https://github.com/saber-notes/saber/releases/download/v${pkgver}/Saber_v${pkgver}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('cd22a650bc31cc27a217944ac03693cfb1f7ce8d9700c89d1419a61a6a4d5b84')
-sha256sums_aarch64=('2826022ccd33d943709e16e797cac9147fb741f5e3ad7dca88c11acdc4f97325')
+sha256sums_x86_64=('24138828ad8a2988d2421203bae7a0aab7372de3fcc730acd5967a5479b3199f')
+sha256sums_aarch64=('a679e44e16c76bebe400e49750bdd589bd7eca327f8fa6aace6dc34c7d903c41')
 
 package() {
     local _dir="saber-note"
