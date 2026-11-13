@@ -3,7 +3,7 @@
 
 pkgname=flclashx-bin
 _pkgname=FlClashX
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Fork of FlClash | A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free."
 arch=(
@@ -18,12 +18,15 @@ depends=(
     'libayatana-appindicator'
     'libkeybinder3'
 )
+# The Helper refuses a Core whose SHA-256 differs from manifest.json, and
+# strip or a split debug link changes it.
+options=('!strip' '!debug')
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.deb")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('5e62676ee645beac23844a63bc6a0d97c1e432fb7c2af68af53fe2898353e8b8')
-sha256sums_x86_64=('37575836bd791d06f12d2e63ff3ad754cc4a91178b00ac988c5fe83ea5537f03')
+sha256sums_aarch64=('027d31dac940c94557dc5cdbc37742607933dbeaea9a52d54c99d61cb7c89df1')
+sha256sums_x86_64=('1ecde8c31460caf6a5af81ba5c7c141728082f7ca6551e3a04ab274fdae67822')
 
 prepare() {
     sed -i -e "
