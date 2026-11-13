@@ -23,10 +23,17 @@ pkgver() {
 	)
 }
 
+prepare() {
+	cd $pkgname
+	export RUSTUP_TOOLCHAIN=stable
+	# Upstream gitignores Cargo.lock, so --locked has nothing to check against.
+	cargo fetch --target host-tuple
+}
+
 build() {
 	cd $pkgname
-	export CARGO_TARGET_DIR=target
-	cargo build --release --all-features
+	export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 package() {
