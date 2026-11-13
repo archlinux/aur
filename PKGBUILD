@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requesto-bin
 _pkgname=Requesto
-pkgver=1.14.0
+pkgver=1.15.0
 _electronversion=45
 pkgrel=1
 pkgdesc="A modern, lightweight, self-hostable API client. No accounts, no cloud, no telemetry."
@@ -31,10 +31,10 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ec23d23676b10628cb2f527ce634b82ec9806d31a7f944507ddd2c76c85d349e'
+sha256sums=('870a347a12cb16df4597e473e78779738a8dabfff66881a40efc121cfdfed729'
             'baa265fc2389eb1ac3a489bd8fdb9255614a801f0b1624faf107c5a0d0c1bd66'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
