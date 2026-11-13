@@ -1,4 +1,4 @@
-# Maintainer: liyp <liyp@users.noreply.github.com>
+# Maintainer: liyp <my@liyp.cc>
 pkgname=winc-bin
 pkgver=0.1.626
 pkgrel=1
