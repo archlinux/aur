@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zhiximind-desktop-bin
 _debname=com.zhixi.desktop
-pkgver=3.11.0.3059
+pkgver=3.12.0.3104
 _electronversion=22
 pkgrel=1
 pkgdesc="A mind mapping and mind mapping software present on all major platforms.知犀思维导图官方版"
@@ -11,7 +11,7 @@ license=('LicenseRef-Custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://www.zhixi.com/download/linux?channel=21C8B557"
@@ -20,9 +20,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('61cb0b4ee2e9ed7258d73dd43c1ec4ec16d1e18766cddad33bf4d08f4fdbc1a4'
-            '7dac374d4b743757b550f7b3dd06ca9492ace6fe312b8fdb2c30c56cda7d04a1'
+            'ffc92b36b23c296972f7ee6a26f321b9beacde730841755ce2897de2ec6bdead'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
