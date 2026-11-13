@@ -1,4 +1,4 @@
-From e2628e494ebd315b519eefbbd480bc1ab4191960 Mon Sep 17 00:00:00 2001
+From 0c871a3c3ce7effab85bfe0d255de6fb4c51e365 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <lass@mail.uni-paderborn.de>
 Date: Sat, 13 Sep 2025 20:33:21 +0200
 Subject: [PATCH] Adjust RedHat config and service files
@@ -127,5 +127,5 @@ index ac9d3c411..0a4b3bfea 100644
  
  [Install]
 -- 
-2.54.0
+2.56.1
 
