@@ -3,7 +3,7 @@
 _pkgname=opentubex
 _ghurl='https://github.com/OpenTubeX/OpenTubeX'
 pkgname=${_pkgname}-nightly-bin
-pkgver=0.37.4.nightly.3075
+pkgver=0.37.4.nightly.3117
 pkgrel=1
 # Nightlies follow the release they are numbered after, so 0.37.0.nightly.2527
 # sorts between 0.37.0 and 0.37.1. Earlier versions of this package used epoch 1.
@@ -38,5 +38,5 @@ package() {
     ln -s "/opt/OpenTubeX/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
-sha256sums_x86_64=('0e4d3b28739567ca3a8a77c90acf94025318c5c50cd3662b8e7470a6b908d53d')
-sha256sums_aarch64=('047532d04a5923aa58166b90b2698372e20191043410f4af3f0ef391ce0e8861')
+sha256sums_x86_64=('aa3fd7f1e7ed3556fe4a5f67a17b899b04d242a79757a677349f70b0486acd6c')
+sha256sums_aarch64=('83a3a3dbb1fefc5ee5cefd73234b23ddbcd36600022153d73c6da2531e8167d0')
