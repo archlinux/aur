@@ -1,0 +1,12 @@
+pkgbase = pi-ext-background
+	pkgdesc = Run long commands in the background and wake the Pi coding agent when they finish
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/Pringled/pi-extensions
+	install = pi-ext-background.install
+	arch = any
+	license = MIT
+	source = pi-background-0.4.2.tgz::https://registry.npmjs.org/pi-background/-/pi-background-0.4.2.tgz
+	sha256sums = 7f7bea3581386c8e8d75727c850b0369e43b1a4b17f1409767b45bb3de776ac1
+
+pkgname = pi-ext-background
