@@ -3,7 +3,7 @@
 
 _name=KaHIP
 pkgname=${_name,,}
-pkgver=3.26
+pkgver=3.27
 pkgrel=1
 pkgdesc="Karlsruhe HIGH Quality Partitioning"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=('cmake'
 options=(!lto)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "fix-out-of-bounds.patch")
-sha256sums=('33c0e0c57265b83f9e45bf8a9d1ef192fb26e01a77c6d69b1287dc6f43e956f7'
+sha256sums=('5c649af08b1200c9f97424a3e86c3fceb8eea0eb2d0489f09f405e080521c0e2'
             '03250c9f51c4e6391d19549263a7a501d264c5c032a8ce35dab49ea599ec65d8')
 
 prepare() {
