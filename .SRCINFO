@@ -1,19 +1,19 @@
 pkgbase = mesheryctl-bin
 	pkgdesc = Command line interface for the Meshery cloud native manager (prebuilt)
-	pkgver = 1.0.76
+	pkgver = 1.0.78
 	pkgrel = 1
 	url = https://github.com/meshery/meshery
 	arch = x86_64
 	arch = aarch64
 	arch = armv6h
 	license = Apache-2.0
-	provides = mesheryctl=1.0.76
+	provides = mesheryctl=1.0.78
 	conflicts = mesheryctl
-	source_x86_64 = https://github.com/meshery/meshery/releases/download/v1.0.76/mesheryctl_1.0.76_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = d55e7443f404c4d3e9d8820dc6bbed459b0730583b4f9d9db3204c178995dd72
-	source_aarch64 = https://github.com/meshery/meshery/releases/download/v1.0.76/mesheryctl_1.0.76_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 500d3865ba738d6df4e56faff274ff4022f6bde507dc410833fea8001f719c95
-	source_armv6h = https://github.com/meshery/meshery/releases/download/v1.0.76/mesheryctl_1.0.76_Linux_armv6.tar.gz
-	sha256sums_armv6h = 3870f79831129d1b0437cdb2112eb0d78192a0a4a0ab6e792cd2bb83e72ac496
+	source_x86_64 = https://github.com/meshery/meshery/releases/download/v1.0.78/mesheryctl_1.0.78_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = aafd04d3bd942b648704908f6c307341323a9cc7a730cc2d8b1cd0b087e18cfb
+	source_aarch64 = https://github.com/meshery/meshery/releases/download/v1.0.78/mesheryctl_1.0.78_Linux_arm64.tar.gz
+	sha256sums_aarch64 = ad3a95ce2cb99dbe55b7fced9f35683afc179fbb7bea52a5d0f023665e0e0a4f
+	source_armv6h = https://github.com/meshery/meshery/releases/download/v1.0.78/mesheryctl_1.0.78_Linux_armv6.tar.gz
+	sha256sums_armv6h = cc010889375fb5330c938e0de2796b22fd7070d1b22d40a890e9a6094a259f47
 
 pkgname = mesheryctl-bin
