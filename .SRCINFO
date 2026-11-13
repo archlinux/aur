@@ -1,6 +1,6 @@
 pkgbase = multiwfn-dev-bin
 	pkgdesc = A program for realizing electronic wavefunction analysis, dev binary version
-	pkgver = 2026.11.10
+	pkgver = 2026.11.12
 	pkgrel = 1
 	url = http://sobereva.com/multiwfn
 	install = multiwfn-dev-bin.install
@@ -11,7 +11,7 @@ pkgbase = multiwfn-dev-bin
 	provides = multiwfn
 	conflicts = multiwfn-bin
 	backup = etc/Multiwfn/settings.ini
-	source = http://sobereva.com/multiwfn/misc/Multiwfn_2026.11.10_bin_Linux.zip
-	sha256sums = f5e31bf41371b9eeeb602675642b1436368fc1a2db90c28757dc777538883e56
+	source = http://sobereva.com/multiwfn/misc/Multiwfn_2026.11.12_bin_Linux.zip
+	sha256sums = 8d1b329e7f79d028961cef5ac9f7ed627e1a04665f179ffad7ce93fa97dfe5b4
 
 pkgname = multiwfn-dev-bin
