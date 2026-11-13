@@ -11,7 +11,7 @@ _appname=${_cratename}
 pkgname=${_cratename}
 pkgdesc="Docker for headless Android emulator environments"
 
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -29,7 +29,7 @@ provides=("${_appname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('81120ea53f49cebbd0487273d8cdd777d340ea418ac1c98829e128529052a0a0')
+sha256sums=('795e480801b819691b8c43ec8085c45f43b4b06b59017f70b6f9e7c8f0095168')
 
 
 build() {
