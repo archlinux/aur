@@ -2,7 +2,7 @@
 # Maintainer: Obedience Corp <contact@obediencecorp.com>
 
 pkgname='festival-bin'
-pkgver=0.3.35
+pkgver=0.3.36
 pkgrel=1
 pkgdesc='Festival Methodology CLI suite (fest, camp, and festival) - AI-native project planning'
 url='https://fest.build'
@@ -13,10 +13,10 @@ conflicts=('fest' 'camp' 'festival')
 install=festival.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Obedience-Corp/festival/releases/download/v${pkgver}/festival-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('4a8a73042fae361372f4f4f9202d054f5440bfba41942935e61b124a93b8998d')
+sha256sums_aarch64=('9ca137de7d057669052ba74a2c428bc5fbd74cad151351d3190c4905e951f93b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Obedience-Corp/festival/releases/download/v${pkgver}/festival-${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('07b53a3742e9f847215d7f40968842147f384a41d989a45eb1b04894689d0ba1')
+sha256sums_x86_64=('5968c57531c2b03812503aaac6e0e38a037e7e3c23f6f12b0b486118e7d7c40d')
 
 package() {
   install -Dm755 "./fest" "${pkgdir}/usr/bin/fest"
