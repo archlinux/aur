@@ -1,6 +1,6 @@
 pkgbase = nemo-speech-cuda13-nightly-bin
 	pkgdesc = Native speech recognition, synthesis, and translation with CUDA 13 support (nightly)
-	pkgver = 20261105.163049
+	pkgver = 20261113.092801
 	pkgrel = 1
 	url = https://github.com/NVIDIA/NeMo-Speech.cpp
 	arch = aarch64
@@ -15,11 +15,11 @@ pkgbase = nemo-speech-cuda13-nightly-bin
 	optdepends = alsa-lib: microphone capture through ALSA
 	optdepends = libpulse: microphone capture through PulseAudio
 	optdepends = jack: microphone capture through JACK
-	provides = nemo-speech=20261105.163049
+	provides = nemo-speech=20261113.092801
 	conflicts = nemo-speech
 	options = !strip
 	options = !debug
-	source_aarch64 = nemo-speech-20261105.163049-linux-aarch64-cuda13.tar.gz::https://github.com/NVIDIA/NeMo-Speech.cpp/releases/download/nightly/nemo-speech-nightly-linux-aarch64-cuda13.tar.gz
-	sha256sums_aarch64 = 8ae4fba5a67d675aa43d6589e6f40d703474cdf8777e1742eabb1e2ac6032f4d
+	source_aarch64 = nemo-speech-20261113.092801-linux-aarch64-cuda13.tar.gz::https://github.com/NVIDIA/NeMo-Speech.cpp/releases/download/nightly/nemo-speech-nightly-linux-aarch64-cuda13.tar.gz
+	sha256sums_aarch64 = 32cad71a825d5598807315fdefdb9b3d4155b5654624dc3db0a2ad549790937e
 
 pkgname = nemo-speech-cuda13-nightly-bin

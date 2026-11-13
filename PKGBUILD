@@ -1,6 +1,6 @@
 # Maintainer: hyperpuncher
 pkgname=nemo-speech-cuda13-nightly-bin
-pkgver=20261105.163049
+pkgver=20261113.092801
 pkgrel=1
 _release=nightly
 pkgdesc='Native speech recognition, synthesis, and translation with CUDA 13 support (nightly)'
@@ -26,7 +26,7 @@ provides=("nemo-speech=${pkgver}")
 conflicts=('nemo-speech')
 options=('!strip' '!debug')
 source_aarch64=("nemo-speech-${pkgver}-linux-aarch64-cuda13.tar.gz::${url}/releases/download/${_release}/nemo-speech-${_release}-linux-aarch64-cuda13.tar.gz")
-sha256sums_aarch64=('8ae4fba5a67d675aa43d6589e6f40d703474cdf8777e1742eabb1e2ac6032f4d')
+sha256sums_aarch64=('32cad71a825d5598807315fdefdb9b3d4155b5654624dc3db0a2ad549790937e')
 
 package() {
 	# Keep the upstream layout and private libraries together for relative RPATHs.
