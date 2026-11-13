@@ -52,7 +52,7 @@ check() {
 package() {
   cd "${pkgname}-${pkgver}-src"
   ./build.sh --prefix /usr --destdir "${pkgdir}/" install
-  sed -i -e 's!/usr/local/bin!/usr/bin!' \
+  sed -i -e 's!/usr/local/bin!/usr/bin!' -e 's!^ReadOnlyPaths=/usr/lib/maddy$!ReadOnlyPaths=-/usr/lib/maddy!' \
     "${pkgdir}/usr/lib/systemd/system/maddy.service" "${pkgdir}/usr/lib/systemd/system/maddy@.service"
   install -Dm644 "${srcdir}/maddy.sysusers" "${pkgdir}/usr/lib/sysusers.d/maddy.conf"
   install -Dm644 "${srcdir}/maddy.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/maddy.conf"
