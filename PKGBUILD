@@ -2,7 +2,7 @@
 # Contributor: missing-aur project <https://github.com/Cleboost/missing-aur>
 
 pkgname=kibo-appimage
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Kibo Anime - Application for watching anime (AppImage)"
 url="https://kiboanime.app"
@@ -14,8 +14,8 @@ options=("!strip")
 license=("custom")
 
 source=("kibo-appimage-${pkgver}.AppImage::https://apk.kiboanime.app/downloadpc/Kibo-${pkgver}.AppImage" "kibo.svg::https://www.kiboanime.app/group-2.svg" "kibo.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/kibo/kibo.desktop")
-sha256sums=('374f73042f99b228b49bbeca2e4c6d50efed42f4b19344210394cba28e6c1ef4'
-            'bbe7aef71d090ed5eabc7b2933431990ce8e5253ea3123d3695cd2264434bbd6'
+sha256sums=('56463336613ee48080de73a961c015db9d534920e992c17651bc3e1ca841da30'
+            '61fbfba68ca25f9f1297c9152f324063b771c08631f10574371d0677c880d393'
             '3f3472b09fa34c77f238efa75ea8da528c969ef67e7ec062699f97f5c90533aa')
 
 prepare() {
