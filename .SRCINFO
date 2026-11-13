@@ -1,0 +1,15 @@
+pkgbase = framework-fingerprint-led-blink
+	pkgdesc = Blink the Framework Laptop power-button LED while the fingerprint reader waits for a finger
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://github.com/alejandroqh/framework-fingerprint-led-blink
+	arch = any
+	license = Apache-2.0
+	depends = python>=3.8
+	depends = fprintd>=1.92
+	depends = glib2
+	depends = systemd
+	source = framework-fingerprint-led-blink-2.5.tar.gz::https://github.com/alejandroqh/framework-fingerprint-led-blink/archive/refs/tags/v2.5.tar.gz
+	sha256sums = 5dae4a2bba16e9738fe372a405c837d441f88eb76448f934bbac4dd886d9452b
+
+pkgname = framework-fingerprint-led-blink
