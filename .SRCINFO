@@ -1,0 +1,13 @@
+pkgbase = pi-ext-rpiv-ask-user-question
+	pkgdesc = Structured multiple-choice questions the model can put to the user, for the Pi coding agent
+	pkgver = 2.15.0
+	pkgrel = 1
+	url = https://github.com/juicesharp/rpiv-mono
+	install = pi-ext-rpiv-ask-user-question.install
+	arch = any
+	license = MIT
+	makedepends = npm
+	source = rpiv-ask-user-question-2.15.0.tgz::https://registry.npmjs.org/@juicesharp/rpiv-ask-user-question/-/rpiv-ask-user-question-2.15.0.tgz
+	sha256sums = 3b3dfb5f2836e897c2884a70a80afcde2a5370af4ced8a2c927e0ed7bf8fb81f
+
+pkgname = pi-ext-rpiv-ask-user-question
