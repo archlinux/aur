@@ -1,7 +1,7 @@
 pkgbase = mini-downloader
 	pkgdesc = Lightweight native download manager (aria2 + yt-dlp, browser capture)
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RamazanBerk20/mini-downloader
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -26,6 +26,7 @@ pkgbase = mini-downloader
 	conflicts = mini-downloader-bin
 	conflicts = mini-downloader-git
 	options = !lto
+	options = !debug
 	source = mini-downloader-3.3.0.tar.gz::https://github.com/RamazanBerk20/mini-downloader/archive/refs/tags/v3.3.0.tar.gz
 	sha256sums = b776ae743e4c2beb8aafbe2155bbe85f21b4b03b39eead52b1adf4ad0e5284d7
 
