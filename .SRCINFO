@@ -1,17 +1,17 @@
 pkgbase = hfd-git
 	pkgdesc = CLI-Tool for download Huggingface models and datasets with curl/aria2/wget
-	pkgver = r42.dcc19a0
+	pkgver = r43.1e24d53
 	pkgrel = 1
 	url = https://gist.github.com/padeoe/697678ab8e528b85a2a7bddafea1fa4f
 	arch = any
-	license = unknown
+	license = LicenseRef-unknown
 	makedepends = git
 	depends = bash
 	depends = curl
 	optdepends = aria2: default download tool (4 threads x 5 concurrent, use --tool wget to use wget instead)
 	optdepends = wget: alternative download tool (--tool wget)
 	optdepends = jq: faster JSON parsing for file-list retrieval (fallback to grep/awk)
-	provides = hfd
+	provides = hfd=r43.1e24d53
 	source = hfd-git::git+https://gist.github.com/padeoe/697678ab8e528b85a2a7bddafea1fa4f.git
 	sha256sums = SKIP
 
