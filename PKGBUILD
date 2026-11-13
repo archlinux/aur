@@ -3,7 +3,7 @@
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=antigravity-ide
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc='An agentic development platform from Google, evolving the IDE into the agent-first era'
 arch=(aarch64 x86_64)
@@ -52,7 +52,7 @@ source=(antigravity-ide.sh
 # Workaround: upstream bundles @parcel/watcher 2.5.1 which triggers SIGTRAP/coredump on exit.
 # Official prebuilt 2.5.6 from npm fixes the teardown race condition (parcel-bundler/watcher#216).
 _watcher_ver=2.5.6
-_build=5526304964083712
+_build=4507555968450560
 source_x86_64=($pkgname-$pkgver-x86_64.tar.gz::https://dl.google.com/release2/j0qc3/antigravity/stable/$pkgver-$_build/linux-x64/Antigravity%20IDE.tar.gz
                watcher-x64-$_watcher_ver.tgz::https://registry.npmjs.org/@parcel/watcher-linux-x64-glibc/-/watcher-linux-x64-glibc-$_watcher_ver.tgz)
 source_aarch64=($pkgname-$pkgver-aarch64.tar.gz::https://dl.google.com/release2/j0qc3/antigravity/stable/$pkgver-$_build/linux-arm/Antigravity%20IDE.tar.gz
@@ -62,9 +62,9 @@ b2sums=('20a33a75e654ffb6535cd415d52b06559cb681da84eace78702fea50d5362ad23b478c8
         'ccd8e86e6acc9e542428377b3fadc743b8b2e7d59e6aa96c9aa21a8b743af9532aefdfdab062bb296515bdf0752e2b3208b888869bae4a55b4ddd07652d5f37f'
         '8d082784596cfe67fe48e409d780ae03f6e6c9aa999412d9b2a47bfcdb6357a08a5abf9c4fd90e2c49df5ecbd98c179c43a6bcc38e477aace24f4ba23a481a6c'
         'f6ed182fbf1463a24dc5545c71d7924b1e9b7c9832d25bfe09974a63c72385dfecbe0b609a492717348178ba6b61601f4ccea53d3f2942dd330567da40be6e95')
-b2sums_aarch64=('92da83ebea4f03c10ed495e3631e74d9103864dde6cbb18a60c11f8aaa402b34e7681a48d51f61afa4c87a96146801605b3e47ce4bd962ae501813712c491963'
+b2sums_aarch64=('8416f1031c562f7994768cc05cfde439b6f701bb02c9bd21c49e26caffdf2b15ea7cb061fb0247c3213b778546588371909b0bcb7db84b7503d8cbab050d827d'
                 '7c646a9085006c79f346b56f04e68be3708a878625aac8bf948c7bc5dccee6c7231206230be351fb2d4e6e9c58e9abcab55dd474a135484f4732738948e7a8d5')
-b2sums_x86_64=('1e931652fa5b99fe753ee2aa660f2f757b4b87612af83965fa7924231da816b5423fa033cddbbdcb99b629682d635e29b3c5233a68a25b4ce3100423326bca72'
+b2sums_x86_64=('9645759c25e0ae7004f8e65492db1ad748e8b61a0c12b9c397e260af83cc8ab586289a2f07950f0d1a8633e8bd29af0c639b7c3f1fdc94a5a03a36ca6dad3965'
                '8a1b93db2872a1eb1dc095cd913c44c52a29adb5bd9f1c608e3baa2d5504c4fd0e72e9f429cbf931fb101f325d53f6b66d954ed40219a9f3099513924891d5fe')
 
 package() {
