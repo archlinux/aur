@@ -2,7 +2,7 @@
 # Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
 
-_upstreamver='1.6'
+_upstreamver=1.7
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='clox'
@@ -19,7 +19,7 @@ depends=('python' 'python-pytz' 'python-art' 'python-pytz' 'python-jdatetime' 'p
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-pydocstyle' 'bandit' 'vulture')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('8501197eebd771696754147adbb0574314f14db51f21b12b07d970fa944ee439')
+sha256sums=('a967d30bdb03f30769919141c71cbad13fdeb1d829da80752b52983de980653d')
 
 build() {
   cd "$_pypi_package-$pkgver"
