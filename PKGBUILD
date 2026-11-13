@@ -2,7 +2,7 @@
 
 _name=smithy-http
 pkgname=python-$_name
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='HTTP components for Smithy tooling.'
 arch=('any')
@@ -19,21 +19,25 @@ checkdepends=('python-pytest'
               'python-freezegun'
               'python-awscrt'
               'python-smithy-cbor'
+              'python-smithy-json'
+              'python-smithy-aws-event-stream'
               'python-aiohttp'
               'python-yarl'
-              'python-urllib3'
-              'python-smithy-json'
-              'python-smithy-aws-event-stream')
+              'python-urllib3')
 optdepends=('python-awscrt: awscrt'
 
             'python-smithy-cbor: cbor'
+
+            'python-smithy-json: json'
+
+            'python-smithy-aws-event-stream: eventstream'
 
             'python-aiohttp: aiohttp'
             'python-yarl: aiohttp'
 
             'python-urllib3: urllib3')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name/v$pkgver.tar.gz")
-sha256sums=('78f5ade1ae0b61251eaa1892cde578ef211361a08914af9f8b2f14c240841437')
+sha256sums=('56453baa0c6156dda473c36c8eb4c0600587712b425e9dcd3e61e410b3414729')
 
 build() {
   cd "smithy-python-$_name-v$pkgver/packages/$_name"
