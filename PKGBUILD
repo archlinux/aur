@@ -1,4 +1,5 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: Drackrath <datenschutz at ai-krieger dot de>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _gitauthor=Drackrath
 _gitname=Aurelia
