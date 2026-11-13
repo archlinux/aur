@@ -1,7 +1,7 @@
 pkgbase = psd2live-bin
 	pkgdesc = Turn layered PSD files into editable Live2D models (prebuilt binary release)
 	pkgver = 3.6.7
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/tsunehimatoi/psd2live
 	arch = x86_64
 	arch = aarch64
