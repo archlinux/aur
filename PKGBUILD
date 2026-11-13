@@ -1,4 +1,4 @@
-# Maintainer: wackbyte <im@purring.fyi>
+# Maintainer: willow <willow@purring.fyi>
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=uiua
