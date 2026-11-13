@@ -1,7 +1,7 @@
 pkgbase = vexa-git
 	pkgdesc = Modern C++23 graphics/multimedia framework on top of SDL3
 	pkgver = r0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/monjaris/vexa
 	arch = x86_64
 	arch = aarch64

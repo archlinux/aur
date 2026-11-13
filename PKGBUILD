@@ -2,7 +2,7 @@
 pkgname=vexa-git
 _pkgname=vexa
 pkgver=r0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern C++23 graphics/multimedia framework on top of SDL3"
 arch=('x86_64' 'aarch64')
 url="https://github.com/monjaris/vexa"
@@ -41,7 +41,13 @@ package() {
   cd "${_pkgname}"
 
   # Install library
-  install -Dm755 "libvexa.so" "${pkgdir}/usr/lib/libvexa.so"
+  local lib
+  lib="$(find . -type f -name 'libvexa.so*' ! -path '*/.deps/*' | sort | head -n1)"
+  if [[ -z "$lib" ]]; then
+    echo "error: libvexa shared library not found" >&2
+    return 1
+  fi
+  install -Dm755 "$lib" "${pkgdir}/usr/lib/libvexa.so"
 
   # Install headers
   find include/vexa -type f -name '*.hpp' | while read -r hdr; do
