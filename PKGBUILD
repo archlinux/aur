@@ -1,7 +1,7 @@
 # Maintainer: colegeming <collegeming@outlook.com>
 
 pkgname=kimi-code-bin
-pkgver=2.5.3
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Kimi Code CLI - the starting point for next-gen agents (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -28,19 +28,19 @@ options=('!strip')
 # LICENSE comes from the repo at the release tag (see [extras] in
 # metadata.toml); its URL and checksum are filled in by the updater.
 source_x86_64=(
-    "kimi-code-${pkgver}-linux-x64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.5.3/kimi-code-linux-x64.tar.gz"
-    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.5.3/LICENSE"
+    "kimi-code-${pkgver}-linux-x64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.6.0/kimi-code-linux-x64.tar.gz"
+    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.6.0/LICENSE"
 )
 sha256sums_x86_64=(
-    'b328ec54277308b175005beda996b8a0a769edf23204ae05d05df59668418ccb'
+    '994ece99eaaa88b3bd50972cd99b66c8060ca0c8bdd01b29a458460b348b1f0d'
     '23cc68e17992e0b512ae2e80afc5787d7d8e0fbfbdb4fff54ec0245508fa400e'
 )
 source_aarch64=(
-    "kimi-code-${pkgver}-linux-arm64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.5.3/kimi-code-linux-arm64.tar.gz"
-    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.5.3/LICENSE"
+    "kimi-code-${pkgver}-linux-arm64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.6.0/kimi-code-linux-arm64.tar.gz"
+    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.6.0/LICENSE"
 )
 sha256sums_aarch64=(
-    'd61c82555bec57ec65c8d28473ed80f8d49b3410f15a27fd2c55fe2e20daa603'
+    'b79ee08fe2bf5cb6102268534bfd5ddf0112da97e5e3370b53089860866dd939'
     '23cc68e17992e0b512ae2e80afc5787d7d8e0fbfbdb4fff54ec0245508fa400e'
 )
 
