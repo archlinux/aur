@@ -22,7 +22,7 @@ if [[ -z "${_maxmind_key}" ]]; then
     _dbsource="DB-IP Lite database by DB-IP"
     _dblink="https://db-ip.com"
 else
-    url="https://dev.maxmind.com/geoip/geoip2/geolite2/"
+    url="https://www.maxmind.com/en/geolite-free-ip-geolocation-data"
     # WARNING: maxmind id and key will get exposed via ps as well as via .SRCINFO
     source="GeoLite2-Country-CSV-${_geoip_date}.zip::https://${_maxmind_id}:${_maxmind_key}@download.maxmind.com/geoip/databases/GeoLite2-Country-CSV/download?suffix=zip"
     _dbsource="GeoLite Data created by MaxMind"
