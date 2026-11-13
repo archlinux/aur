@@ -1,6 +1,6 @@
 pkgbase = pwsp
 	pkgdesc = Lets you play audio files through your microphone
-	pkgver = 1.17.1
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/arabianq/pipewire-soundpad
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = pwsp
 	depends = alsa-lib
 	depends = openssl
 	options = !lto
-	source = https://github.com/arabianq/pipewire-soundpad/archive/refs/tags/v1.17.1.tar.gz
+	source = https://github.com/arabianq/pipewire-soundpad/archive/refs/tags/v1.18.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = pwsp
