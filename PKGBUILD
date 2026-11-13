@@ -1,7 +1,7 @@
 # Maintainer: Inc44
 pkgname=libbsc
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance block-sorting data compressor"
 arch=(
 	aarch64
@@ -10,8 +10,10 @@ arch=(
 url=https://github.com/IlyaGrebnov/libbsc
 license=(Apache-2.0)
 depends=(
-	gcc-libs
 	glibc
+	libgcc
+	libgomp
+	libstdc++
 )
 makedepends=(
 	cmake
