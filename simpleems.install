@@ -1,0 +1,22 @@
+post_install() {
+  cat <<'EOF'
+
+==> simpleEMS runs on its own Python 3.13 in /opt/simpleems (system Python
+    is 3.14, which has no cadquery-ocp wheels). Your system Python is untouched.
+    Use the CLI:                        simpleems
+    Run library code with its venv:     /opt/simpleems/venv/bin/python
+
+==> The FDTD solver stack (CSXCAD + openEMS Python bindings) is NOT included:
+    simpleEMS.components and 13 other modules import CSXCAD/openEMS at module
+    level and will fail with ModuleNotFoundError. The AUR `openems` package
+    cannot help -- its bindings are built for the system Python 3.14, not 3.13.
+
+    Build the stack against the bundled interpreter (10-30 min):
+      sudo /opt/simpleems/venv/bin/simpleems install openems --prefix /opt/openEMS
+      sudo ln -s /opt/openEMS/bin/openEMS /usr/local/bin/
+
+EOF
+}
+post_upgrade() {
+  post_install
+}
