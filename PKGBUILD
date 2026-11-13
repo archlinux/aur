@@ -1,6 +1,6 @@
 # Maintainer: 37signals <support@37signals.com>
 pkgname=fizzy-cli
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="CLI for managing Fizzy boards, cards, and tasks"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go')
 provides=('fizzy')
 conflicts=('fizzy' 'fizzy-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/basecamp/fizzy-cli/archive/v$pkgver.tar.gz")
-sha256sums=('46f0ff2f2fc5e69fe2c0830edd89fb2ed1977ec31ecd9694ffa81e71d1576c16')
+sha256sums=('29367713e7ae6948e6044662f5edcc8f09b69d9a76bdc0b30ac4ddb34e8d5e94')
 options=('!debug')
 
 build() {
