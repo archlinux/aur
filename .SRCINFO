@@ -1,0 +1,25 @@
+pkgbase = winc-bin
+	pkgdesc = A lighter, faster desktop code editor (prebuilt binary from official Winc repo)
+	pkgver = 0.1.626
+	pkgrel = 1
+	url = https://winc.si
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc>=2.39
+	depends = libgcc
+	depends = fontconfig
+	depends = ttf-dejavu
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libx11
+	depends = libxcb
+	depends = libxcursor
+	depends = libxi
+	depends = libxrandr
+	depends = wayland
+	provides = winc
+	conflicts = winc
+	source = https://winc.si/releases/arch/x86_64/winc-0.1.626-1-x86_64.pkg.tar.zst
+	sha256sums = 9583e6065aa5e931e949337ed2f6f98e716d26f79b05594415596a5bfe2a3c8f
+
+pkgname = winc-bin
