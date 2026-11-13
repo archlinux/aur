@@ -1,8 +1,8 @@
 pkgbase = ghost-downloader-bin
 	pkgdesc = A multi-threading async downloader with QThread based on PyQt/PySide.多线程下载器,协程下载器
-	pkgver = 4.5.1
+	pkgver = 4.5.2
 	pkgrel = 1
-	url = https://github.com/XiaoYouChR/Ghost-Downloader-3
+	url = https://gd.xychr.com/
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
@@ -24,9 +24,9 @@ pkgbase = ghost-downloader-bin
 	conflicts = ghost-downloader
 	source = ghost-downloader.sh
 	sha256sums = 1ea8181f36e7a4b37f6fbe8c2c9bda7bd92fcc4e7934cedca97eed1826751b67
-	source_aarch64 = ghost-downloader-4.5.1-aarch64.deb::https://github.com/XiaoYouChR/Ghost-Downloader-3/releases/download/v4.5.1/Ghost-Downloader-v4.5.1-Linux-arm64.deb
-	sha256sums_aarch64 = 965fb337598f925a163b384ac2f068104bbde589a14b34fcef310642225cc469
-	source_x86_64 = ghost-downloader-4.5.1-x86_64.deb::https://github.com/XiaoYouChR/Ghost-Downloader-3/releases/download/v4.5.1/Ghost-Downloader-v4.5.1-Linux-x86_64.deb
-	sha256sums_x86_64 = e46bcac683c25bebfa9d9bd462fc1611edd8ddc0a53198bfa7efd9e1bd81fe6a
+	source_aarch64 = ghost-downloader-4.5.2-aarch64.deb::https://github.com/XiaoYouChR/Ghost-Downloader-3/releases/download/v4.5.2/Ghost-Downloader-v4.5.2-Linux-arm64.deb
+	sha256sums_aarch64 = a3096f6015809da007b3c9b3e8bbde1c03497b8620d618eb8a1e412a68904b8b
+	source_x86_64 = ghost-downloader-4.5.2-x86_64.deb::https://github.com/XiaoYouChR/Ghost-Downloader-3/releases/download/v4.5.2/Ghost-Downloader-v4.5.2-Linux-x86_64.deb
+	sha256sums_x86_64 = d2bc886a365bb68cfad16737e7ac1db65bd162828c6475f60fab3e76dfad7383
 
 pkgname = ghost-downloader-bin

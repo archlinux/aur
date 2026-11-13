@@ -2,14 +2,15 @@
 pkgname=ghost-downloader-bin
 _pkgname=Ghost-Downloader
 _debname=com.xychr.ghostdownloader
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="A multi-threading async downloader with QThread based on PyQt/PySide.多线程下载器,协程下载器"
 arch=(
     'aarch64'
     'x86_64'
 )
-url="https://github.com/XiaoYouChR/Ghost-Downloader-3"
+url="https://gd.xychr.com/"
+_ghurl="https://github.com/XiaoYouChR/Ghost-Downloader-3"
 license=('GPL-3.0-only')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
@@ -32,11 +33,11 @@ optdepends=(
     'n-m3u8dl-re'
 )
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-Linux-arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-Linux-x86_64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-Linux-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-Linux-x86_64.deb")
 sha256sums=('1ea8181f36e7a4b37f6fbe8c2c9bda7bd92fcc4e7934cedca97eed1826751b67')
-sha256sums_aarch64=('965fb337598f925a163b384ac2f068104bbde589a14b34fcef310642225cc469')
-sha256sums_x86_64=('e46bcac683c25bebfa9d9bd462fc1611edd8ddc0a53198bfa7efd9e1bd81fe6a')
+sha256sums_aarch64=('a3096f6015809da007b3c9b3e8bbde1c03497b8620d618eb8a1e412a68904b8b')
+sha256sums_x86_64=('d2bc886a365bb68cfad16737e7ac1db65bd162828c6475f60fab3e76dfad7383')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
