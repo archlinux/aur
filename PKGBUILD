@@ -2,7 +2,7 @@
 
 _name=smithy-xml
 pkgname=python-$_name
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='XML serialization and deserialization support for Smithy tooling.'
 arch=('any')
@@ -19,7 +19,7 @@ checkdepends=('python-pytest'
               'python-freezegun'
               'python-smithy-test')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name/v$pkgver.tar.gz")
-sha256sums=('a243764af57aeb4fd69964086a119693c4ed95a0257e383363580b189f11f665')
+sha256sums=('6bf6f124b5723e453fd4ee728db6d65a1f00c69b76040ae079a9b56e314c73dd')
 
 build() {
   cd "smithy-python-$_name-v$pkgver/packages/$_name"
