@@ -1,6 +1,6 @@
 pkgbase = recomplauncher-bin
 	pkgdesc = Finds, installs, updates and starts recompiled and decompiled PC games (upstream binary)
-	pkgver = 0.90.0.42
+	pkgver = 0.90.0.44
 	pkgrel = 1
 	url = https://github.com/elripalda/RecompLauncher
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = recomplauncher-bin
 	optdepends = zenity: the Winetricks window
 	provides = recomplauncher
 	conflicts = recomplauncher
-	noextract = recomplauncher-bin-0.90.0.42.deb
+	noextract = recomplauncher-bin-0.90.0.44.deb
 	options = !strip
 	options = !debug
-	source = recomplauncher-bin-0.90.0.42.deb::https://github.com/elripalda/RecompLauncher/releases/download/v0.90.0-beta.42/RecompLauncher_0.90.0-beta.42_amd64.deb
-	sha256sums = ed34a74b478823199be5698aa43c9c979dba9b7bfb19805dc78fe1e983890aaa
+	source = recomplauncher-bin-0.90.0.44.deb::https://github.com/elripalda/RecompLauncher/releases/download/v0.90.0-beta.44/RecompLauncher_0.90.0-beta.44_amd64.deb
+	sha256sums = 88b2b30415eebb7c7fdb4aefbc4eafe86c317799758371656c321d58a74096a8
 
 pkgname = recomplauncher-bin
