@@ -1,4 +1,4 @@
-# Maintainer: wackbyte <im@purring.fyi>
+# Maintainer: willow <willow@purring.fyi>
 
 pkgname=tarmac
 pkgver=0.8.2
