@@ -11,6 +11,8 @@ extend-ignore-re = [
   "(?:^|[\\s\"'(=])--?[A-Za-z][-A-Za-z0-9:]*",
   # HTTP's header
   "\\bAuthorization:",
+  # The names and addresses of the PKGBUILD's maintainers and contributors (name at domain dot tld)
+  "(?m)^# (?:Maintainer|Contributor): .*$",
   # Names: mago's and systemd's commands, a package, the SourceMod libraries (Colors, More Colors,
   # Multi-Colors), CryptPad's folders
   "\\b(?:mago[ -]|systemd-)analyze\\b",
