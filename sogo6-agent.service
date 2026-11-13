@@ -1,0 +1,47 @@
+[Unit]
+Description=SOGo 6 agent (Celery worker for imports, exports, calendar syncs and reminders)
+Documentation=https://www.sogo.nu/files/docs/v6/
+# Ordered after the services SOGo may use on the same host, if they're there
+After=network.target postgresql.service mariadb.service valkey.service redis.service slapd.service dovecot.service postfix.service
+PartOf=sogo6.service
+
+[Service]
+Type=exec
+User=sogo6
+Group=sogo6
+# The settings, as the environment: they take precedence over /etc/sogo/process.conf, which SOGo
+# reads itself, and SOGO_AES_ENC_KEY is only read from the environment
+EnvironmentFile=/etc/sogo6/process.conf
+ExecStartPre=/usr/lib/sogo6-server/check-settings
+WorkingDirectory=/var/lib/sogo6
+ExecStart=/usr/lib/sogo6-server/agent worker
+Restart=on-failure
+
+# Hardening: the server only writes its state directory (the scheduler's state) and its private
+# /tmp; the rest of the system is read-only to it
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/sogo6
+ProtectProc=invisible
+CapabilityBoundingSet=
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+RestrictNamespaces=true
+LockPersonality=true
+RemoveIPC=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+
+[Install]
+WantedBy=multi-user.target

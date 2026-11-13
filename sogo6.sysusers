@@ -1,0 +1,2 @@
+# The user the API server and its agent run as
+u sogo6 - "SOGo 6 groupware API server" /var/lib/sogo6

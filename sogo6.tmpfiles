@@ -1,0 +1,2 @@
+# The home and state directory: the state of the agent's scheduler (SOGO_P_AGENT_BEAT_SCHEDULE_PATH)
+d /var/lib/sogo6 0750 sogo6 sogo6

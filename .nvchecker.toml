@@ -1,0 +1,8 @@
+# The releases of the SOGo 6 API server, tagged v<version>, e.g. v6.0.0-alpha2 for 6.0.0alpha2
+[sogo6-server]
+source = "git"
+git = "https://github.com/Alinto/SOGo6-server.git"
+use_max_tag = true
+prefix = "v"
+from_pattern = "-(alpha|beta|rc)"
+to_pattern = '\1'
