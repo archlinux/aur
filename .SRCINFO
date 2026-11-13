@@ -1,6 +1,6 @@
 pkgbase = engined
 	pkgdesc = Local model door: one OpenAI-shaped endpoint that owns every inference container on the box
-	pkgver = 0.2.19
+	pkgver = 0.2.20
 	pkgrel = 1
 	url = https://github.com/Rethunk-Tech/engined
 	install = engined.install
@@ -12,7 +12,7 @@ pkgbase = engined
 	optdepends = passt: network namespace every agentic engine runs under
 	options = !strip
 	options = !debug
-	source = https://github.com/Rethunk-Tech/engined/releases/download/v0.2.19/engined-0.2.19.tar.gz
-	sha256sums = d0c04f9350579128aa603b65f7470505c09f3e7307e863b80e13a181242e65ad
+	source = https://github.com/Rethunk-Tech/engined/releases/download/v0.2.20/engined-0.2.20.tar.gz
+	sha256sums = 4b32053fa5488850e155ce25572b15e05fc95450ff04e8b33d53fe6b0501f293
 
 pkgname = engined
