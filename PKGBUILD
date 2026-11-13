@@ -1,7 +1,7 @@
 # Maintainer: Orion-zhen <https://github.com/Orion-zhen>
 
 pkgname=pi-web
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='Local browser UI for the pi coding agent'
 arch=('any')
@@ -24,7 +24,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/agegr/pi-web/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha256sums=('60ba463fb54478fa7b7fc06338ca97e42d22189d319c71b34ad0784d01cc8793')
+sha256sums=('9d09a1a88684402ccf35294947bf543f880084a9b6a3ccb5b76fe5b229e5fccb')
 
 build() {
   cd "${pkgname}-${pkgver}"
