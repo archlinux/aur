@@ -1,14 +1,19 @@
 pkgbase = lib32-jansson
-	pkgdesc = C library for encoding, decoding and manipulating JSON data
+	pkgdesc = C library for encoding, decoding and manipulating JSON data (32-bit)
 	pkgver = 2.15.1
-	pkgrel = 1
-	url = http://www.digip.org/jansson/
+	pkgrel = 2
+	url = https://github.com/akheron/jansson
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	depends = jansson
 	depends = lib32-glibc
-	source = git+https://github.com/akheron/jansson.git#tag=v2.15.1
-	sha256sums = e806924b678e60eb370fe6edb86e52409ad891ab5f4edda10047303934f24e10
+	provides = libjansson.so
+	source = https://github.com/akheron/jansson/releases/download/v2.15.1/jansson-2.15.1.tar.gz
+	source = https://github.com/akheron/jansson/releases/download/v2.15.1/jansson-2.15.1.tar.gz.asc
+	validpgpkeys = B5D6953E6D5059ED7ADA0F2FD3657D24D058434C
+	sha512sums = cb952d51bf0b358f316f36fb925267f3ce7529ef88faca935db73923708269e21733b9682eb64d5478a6d9a3d366b34b42d9b63dd1f510537342c4cc79345740
+	sha512sums = SKIP
+	b2sums = 690b84c8c93a6b1c3be58b5ed030445bf970ab8c8c3cc19b38e0c94df3f33f5fc1a401e5b48785ad1fa5bb534701ac0f85087d9e1ad383a735f56ce27f56fd89
+	b2sums = SKIP
 
 pkgname = lib32-jansson

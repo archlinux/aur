@@ -1,4 +1,6 @@
+# The releases of jansson. Upgrade with Arch's jansson, whose headers the 32-bit library uses.
 [lib32-jansson]
-source = "git"
-git = "https://github.com/akheron/jansson.git"
+source = "github"
+github = "akheron/jansson"
+use_latest_release = true
 prefix = "v"

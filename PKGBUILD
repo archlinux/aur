@@ -1,54 +1,44 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
-# Contributor: Kyle Keen <keenerd@gmail.com>
-# Contributor: Dave Reisner <d@falconindy.com>
+# Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
+# shellcheck disable=SC2034,SC2154
+# shellcheck shell=bash
 
 pkgname=lib32-jansson
+_name=jansson
 pkgver=2.15.1
-pkgrel=1
-pkgdesc='C library for encoding, decoding and manipulating JSON data'
+pkgrel=2
+pkgdesc="C library for encoding, decoding and manipulating JSON data (32-bit)"
 arch=(x86_64)
-url=http://www.digip.org/jansson/
+url="https://github.com/akheron/jansson"
 license=(MIT)
-depends=(
-  jansson
-  lib32-glibc
-)
-makedepends=(git)
-_tag=684e18c927e89615c2d501737e90018f4930d6c5
-source=(git+https://github.com/akheron/jansson.git#tag=v${pkgver})
-sha256sums=('e806924b678e60eb370fe6edb86e52409ad891ab5f4edda10047303934f24e10')
-
-pkgver() {
-  cd jansson
-
-  git describe --tags | sed 's/^v//'
-}
-
-prepare() {
-  cd jansson
-
-  autoreconf -fiv
-}
+# jansson: the headers
+depends=(jansson lib32-glibc)
+provides=(libjansson.so)
+source=("https://github.com/akheron/jansson/releases/download/v$pkgver/$_name-$pkgver.tar.gz"{,.asc})
+sha512sums=('cb952d51bf0b358f316f36fb925267f3ce7529ef88faca935db73923708269e21733b9682eb64d5478a6d9a3d366b34b42d9b63dd1f510537342c4cc79345740'
+  'SKIP')
+b2sums=('690b84c8c93a6b1c3be58b5ed030445bf970ab8c8c3cc19b38e0c94df3f33f5fc1a401e5b48785ad1fa5bb534701ac0f85087d9e1ad383a735f56ce27f56fd89'
+  'SKIP')
+# Petri Lehtinen <petri@digip.org>
+validpgpkeys=(B5D6953E6D5059ED7ADA0F2FD3657D24D058434C)
 
 build() {
-  cd jansson
-
-  export CC='gcc -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-
-  ./configure \
-    --prefix=/usr \
-    --libdir=/usr/lib32
+  cd "$_name-$pkgver" || exit
+  export CC="gcc -m32"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  ./configure --prefix=/usr --libdir=/usr/lib32 --disable-static
   make
 }
 
-package() {
-  make DESTDIR="${pkgdir}" -C jansson install
-  rm -rf "${pkgdir}"/usr/{share,include}
-
-  install -dm 755 "${pkgdir}"/usr/share/licenses
-  ln -s jansson "${pkgdir}"/usr/share/licenses/lib32-jansson
+check() {
+  cd "$_name-$pkgver" || exit
+  make check
 }
 
-# vim: ts=2 sw=2 et:
+package() {
+  cd "$_name-$pkgver" || exit
+  make DESTDIR="$pkgdir" install
+
+  # The headers are jansson's
+  rm -r "${pkgdir:?}/usr/include"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+}
