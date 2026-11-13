@@ -1,7 +1,7 @@
 # Maintainer: K4YT3X <aur@k4yt3x.com>
 # Maintainer: TobFromme
 pkgname=sdrtrunk-bin
-pkgver=0.6.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A cross-platform java application for decoding, monitoring, recording and streaming trunked mobile and related radio protocols using SDR'
 arch=('x86_64' 'aarch64')
@@ -17,10 +17,10 @@ source_x86_64=("${url}/releases/download/v${pkgver}/sdr-trunk-linux-x86_64-v${pk
 source_aarch64=("${url}/releases/download/v${pkgver}/sdr-trunk-linux-aarch64-v${pkgver}.zip"
                 "sdrtrunk.desktop")
 
-b2sums_x86_64=('36a1b31b18ee14cc4df0472ff04fc199864e0d69f34f86908e8e0a35d57793f2c2388e214e9b6fa29237c9b8f18f04b96d908975da8e268a3c9503ff108a1455'
+b2sums_x86_64=('ab22ba35df62849028a2f55f67c6b979351d63ddb2099261d21a2a93a43490e5a725ef1c0c1e354152b7b167a83fc262086bb9bdfe5f4d68ca5a24ae101d6f1f'
                '8e5ae51bf3acf88582913d8c1c120ce2ecc5082d0f74abe6f4cfeefc9222b1507ce18de089e5d7fd64f2cf80ce98be95cdc64629f5ebc2aaa1bbb34e9d9bf306')
 
-b2sums_aarch64=('7d67d4b5e77b649714335acdf74d76727a87ee899585c6b7038b712858ecbb779abce39ae0a25bf3d58425d2774d96572fc66f6f3009652abbb480fa31bc2cc8'
+b2sums_aarch64=('70b239edc0bd145fe52dc4ab74d3c7689d1e90a5f7c4fa34218096e69497f3f78074c1ea3d5e4aafe782f23ec729c567dcd11548d350e1901db2c4bff5d1fc3f'
                 '8e5ae51bf3acf88582913d8c1c120ce2ecc5082d0f74abe6f4cfeefc9222b1507ce18de089e5d7fd64f2cf80ce98be95cdc64629f5ebc2aaa1bbb34e9d9bf306')
 
 package() {
