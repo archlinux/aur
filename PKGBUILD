@@ -1,7 +1,7 @@
 # Maintainer: Damon Blais <damon.blais@gmail.com>
 
 pkgname=engined
-pkgver=0.2.16
+pkgver=0.2.18
 pkgrel=1
 pkgdesc="Local model door: one OpenAI-shaped endpoint that owns every inference container on the box"
 arch=('any')
@@ -14,12 +14,12 @@ depends=('bun')
 optdepends=(
   'docker: run the inference engines and the Cursor TLS bridge'
   'bubblewrap: sandbox every agentic engine runs under'
-  'passt: private network namespace for the agentic sandbox'
+  'passt: network namespace every agentic engine runs under'
 )
 install=engined.install
 # The release workflow builds this tarball once; nothing is built here.
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ab24e17a22b27425b4c6d2f32d23d2734bdfc69dbd3fe94a83acf70c829ae994')
+sha256sums=('43a33dbe1143aeaa13d7ac9b7e40036065dc0bb06724e41a6921064486a6a809')
 
 package() {
   cd "$pkgname-$pkgver"
