@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xinghuo-note-bin
 _debname=com.gitee.xinghuo.note
-pkgver=1.6.4
+pkgver=3.0.4
+_releasedata=20261110
 pkgrel=1
 pkgdesc="Note Master, a convenient note-taking tool for recording temporary information, reminders, or to-do tasks on the desktop. Beautiful interface, small size, and fast speed.(Prebuilt version)"
 arch=('x86_64')
@@ -13,11 +14,11 @@ depends=(
     'qt6-base'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_debname}_${pkgver}-20241130_amd64_Deepin23.deb"
-    "LICENSE-${pkgver}::https://gitee.com/xinghuowangluo/note/blob/v${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${_debname}_${pkgver}-${_releasedata}_amd64_Deepin25.deb"
+    "LICENSE-${pkgver}::https://gitee.com/xinghuowangluo/note/blob/${pkgver}/LICENSE"
 )
-sha256sums=('4755a3a36973a35fef5fe9450a622c7dd29b71218ed1aa8cf8b346b84a5ef319'
-            '8a9cc05fde1a7b1ea22e75ac44679619609d332cb1377dc73aaa57f68bdcc80d')
+sha256sums=('7faba3fbb8eceb91728cd2d30af41a1f7a175254c90b5d944c0a3204907d6db2'
+            '76a39d97506331162e727db73fa9047d31df8a6d09ff65bb57483546c0a09421')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
