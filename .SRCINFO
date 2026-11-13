@@ -1,0 +1,25 @@
+pkgbase = neomarker-bin
+	pkgdesc = Markdown editor with Mermaid 12, batch PDF export, dark mode and security fixes (prebuilt binary)
+	pkgver = 2026.11.15
+	pkgrel = 1
+	url = https://github.com/alfonsodg/NeoMarker
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	depends = gtksourceview4
+	depends = gtkspell3
+	depends = webkit2gtk-4.1
+	optdepends = mathjax2: alternative backend for rendering formulas
+	optdepends = pandoc: export to HTML, PDF, RTF, ODT, DOCX, LaTeX
+	optdepends = yelp: in-app help
+	provides = neomarker
+	conflicts = neomarker
+	conflicts = neomarker-git
+	conflicts = marker
+	conflicts = marker-enhanced-bin
+	conflicts = marker-enhanced-git
+	replaces = marker-enhanced-bin
+	source = https://github.com/alfonsodg/NeoMarker/releases/download/v2026.11.15/neomarker-2026.11.15-x86_64.tar.gz
+	sha256sums = e01c5553ec0a6d4f1ab6a4b18c5b2dc6823bebad493054026cbbdeadae3e1a5f
+
+pkgname = neomarker-bin
