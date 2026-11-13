@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rakazo-bin
 _pkgname=Rakazo
-pkgver=0.9.0
+pkgver=0.11.0
 _electronversion=45
 pkgrel=1
 pkgdesc="Open-source Grok Bot alternative. Choose your own model and sandbox."
@@ -19,7 +19,7 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('4af36fb4c472e5038d03d204190d6e17c660ea39c1a386131cf424a4b27abe1c'
+sha256sums=('9ebc589c7d67878d5e78140cea116eaf56d0b6ab4efb294957fda3536264239b'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
