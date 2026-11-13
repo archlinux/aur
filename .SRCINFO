@@ -1,7 +1,7 @@
 pkgbase = otf-oswald
 	pkgdesc = A reworking of the classic gothic typeface style
 	pkgver = 20171111
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.google.com/specimen/Oswald
 	arch = any
 	license = OFL
