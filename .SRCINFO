@@ -1,7 +1,7 @@
 pkgbase = python312
 	pkgdesc = Major release 3.12 of the Python programming language
 	pkgver = 3.12.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.python.org/
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = python312
 	depends = libffi
 	depends = libnsl
 	depends = libxcrypt
-	depends = openssl
+	depends = openssl-3
 	depends = zlib
 	optdepends = sqlite
 	optdepends = mpdecimal: for decimal
