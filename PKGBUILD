@@ -1,6 +1,6 @@
 # Maintainer: cjber <cjberragan at gmail dot com>
 pkgname=kiln-agents-bin
-pkgver=0.26.0
+pkgver=0.26.1
 pkgrel=1
 pkgdesc="Native Claude and Codex session launcher with a paired phone client"
 arch=('x86_64' 'aarch64')
@@ -12,11 +12,11 @@ provides=('kiln' 'kiln-agents')
 conflicts=('kiln' 'kiln-agents')
 options=('!strip')
 source=("kiln-${pkgver}.tar.gz::https://github.com/cjber/kiln/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('515f7fce3950f6e8066e9c1a88d40d4bc0bf721c0a51a2549ef5794716dad57c')
+sha256sums=('44f1bb964f2a17cf0771aa016a937476b656cd6b730c075333fb68272521d940')
 source_x86_64=("kiln-linux-x64-${pkgver}::https://github.com/cjber/kiln/releases/download/v${pkgver}/kiln-linux-x64")
-sha256sums_x86_64=('be115a9c81783209d3729a90b8c6e71cf5d7ba0a2f03c095307fe74b28b9fc8c')
+sha256sums_x86_64=('a36d7887936be95920909e006e0fcbf190a32ffbe39a3c719b97caae3822b8d8')
 source_aarch64=("kiln-linux-arm64-${pkgver}::https://github.com/cjber/kiln/releases/download/v${pkgver}/kiln-linux-arm64")
-sha256sums_aarch64=('10e5a831c8438aded44e14dd90696c9305d348bb808452027f3f7080f27bd458')
+sha256sums_aarch64=('f700af1a9e771c3c58ce265479aa6437e1c6291c331dbf387521b72e1202a683')
 
 package() {
   local binary=kiln-linux-x64
