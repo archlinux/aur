@@ -7,13 +7,13 @@
 pkgname=xlibre-input-vmmouse
 _pkgname=xf86-input-vmmouse
 pkgver=25.0.0
-pkgrel=10
+pkgrel=51
 pkgdesc="XLibre VMWare Mouse input driver"
 arch=('x86_64')
 license=('custom')
 url='https://github.com/X11Libre/xf86-input-vmmouse'
 depends=(
-	'systemd-libs'
+	'libudev.so'
 	'xlibre-xserver'
 )
 makedepends=(
@@ -34,7 +34,7 @@ build() {
 	cd ${_pkgname}-xlibre-${_pkgname}-${pkgver}
 	NOCONFIGURE=1 ./autogen.sh
 	./configure --prefix=/usr \
-	--with-udev-rules-dir=/usr/lib/udev/rules.d
+		--with-udev-rules-dir=/usr/lib/udev/rules.d
 	make
 }
 
