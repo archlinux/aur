@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clash-of-rust-bin
 _pkgname=Clash-of-Rust
-pkgver=0.6.6
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Cross-platform client side based on Rust, Slint and mihomo."
 arch=(
@@ -21,8 +21,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
-sha256sums_aarch64=('26d68f7ca7644a9e814751d515edf7c00e52da35094e0e3a75e13c672a8bb475')
-sha256sums_x86_64=('bfd95ccb45d87e7f08fc60bde537e6bc67e28ad99131be327ced8bb5987a5636')
+sha256sums_aarch64=('e1bcb783dc2a31c9847857489623201f0e38abe80eb3606a3968442781517f6d')
+sha256sums_x86_64=('613aa64ff2c86e43562896d580fc3a37d45356d7a1fba6fec3b3ff479352c6b7')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do

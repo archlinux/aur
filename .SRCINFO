@@ -1,6 +1,6 @@
 pkgbase = clash-of-rust-bin
 	pkgdesc = Cross-platform client side based on Rust, Slint and mihomo.
-	pkgver = 0.6.6
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/Fu021/Clash-of-Rust
 	arch = aarch64
@@ -11,11 +11,11 @@ pkgbase = clash-of-rust-bin
 	depends = hicolor-icon-theme
 	depends = fontconfig
 	depends = mihomo
-	provides = clash-of-rust=0.6.6
+	provides = clash-of-rust=0.7.1
 	conflicts = clash-of-rust
-	source_aarch64 = clash-of-rust-0.6.6-aarch64.deb::https://github.com/Fu021/Clash-of-Rust/releases/download/v0.6.6/Clash-of-Rust-0.6.6-linux-arm64.deb
-	sha256sums_aarch64 = 26d68f7ca7644a9e814751d515edf7c00e52da35094e0e3a75e13c672a8bb475
-	source_x86_64 = clash-of-rust-0.6.6-x86_64.deb::https://github.com/Fu021/Clash-of-Rust/releases/download/v0.6.6/Clash-of-Rust-0.6.6-linux-amd64.deb
-	sha256sums_x86_64 = bfd95ccb45d87e7f08fc60bde537e6bc67e28ad99131be327ced8bb5987a5636
+	source_aarch64 = clash-of-rust-0.7.1-aarch64.deb::https://github.com/Fu021/Clash-of-Rust/releases/download/v0.7.1/Clash-of-Rust-0.7.1-linux-arm64.deb
+	sha256sums_aarch64 = e1bcb783dc2a31c9847857489623201f0e38abe80eb3606a3968442781517f6d
+	source_x86_64 = clash-of-rust-0.7.1-x86_64.deb::https://github.com/Fu021/Clash-of-Rust/releases/download/v0.7.1/Clash-of-Rust-0.7.1-linux-amd64.deb
+	sha256sums_x86_64 = 613aa64ff2c86e43562896d580fc3a37d45356d7a1fba6fec3b3ff479352c6b7
 
 pkgname = clash-of-rust-bin
