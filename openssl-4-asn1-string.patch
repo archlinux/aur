@@ -1,0 +1,34 @@
+From 12e185c008080b091ea04c0e595fc4b9a692a62b Mon Sep 17 00:00:00 2001
+From: Christian Pfeiffer <cpfeiffer@rev-crew.info>
+Date: Thu, 12 Nov 2026 23:07:45 +0100
+Subject: [PATCH] fix(mail): use ASN1_STRING accessors for OpenSSL 4
+
+OpenSSL 4 makes ASN1_STRING opaque, so reading the data and length of
+the SMIMECapabilities sequence directly fails to compile. Use
+ASN1_STRING_get0_data() and ASN1_STRING_length(), available since
+OpenSSL 1.1.0.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ SoObjects/Mailer/NSData+SMIME.m | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/SoObjects/Mailer/NSData+SMIME.m b/SoObjects/Mailer/NSData+SMIME.m
+index ed14f20..99c3899 100644
+--- a/SoObjects/Mailer/NSData+SMIME.m
++++ b/SoObjects/Mailer/NSData+SMIME.m
+@@ -603,9 +603,9 @@ STACK_OF(X509_ALGOR) *CMS_get_smimecap(CMS_SignerInfo *si)
+     cap = X509_ATTRIBUTE_get0_type(attr, 0);
+     if (!cap || (cap->type != V_ASN1_SEQUENCE))
+        return NULL;
+-    p = cap->value.sequence->data;
++    p = ASN1_STRING_get0_data(cap->value.sequence);
+     return (STACK_OF(X509_ALGOR) *)
+-        ASN1_item_d2i(NULL, &p, cap->value.sequence->length,
++        ASN1_item_d2i(NULL, &p, ASN1_STRING_length(cap->value.sequence),
+                       ASN1_ITEM_rptr(X509_ALGORS));
+ }
+ 
+-- 
+2.56.1
+

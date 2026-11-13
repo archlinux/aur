@@ -1,0 +1,11 @@
+[Unit]
+Description=Activate and expire SOGo's vacation messages
+After=network.target sogo.service
+# The Sieve administrator's credentials (username:password), readable by sogo only
+ConditionPathExists=/etc/sogo/sieve.creds
+
+[Service]
+Type=oneshot
+User=sogo
+Group=sogo
+ExecStart=/usr/bin/sogo-tool update-autoreply -p /etc/sogo/sieve.creds

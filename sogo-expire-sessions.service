@@ -1,0 +1,11 @@
+[Unit]
+Description=Expire SOGo sessions inactive for an hour
+After=network.target sogo.service
+
+[Service]
+Type=oneshot
+User=sogo
+Group=sogo
+# The minutes of inactivity; change with a drop-in
+Environment=SOGO_SESSION_MINUTES=60
+ExecStart=/usr/bin/sogo-tool expire-sessions ${SOGO_SESSION_MINUTES}

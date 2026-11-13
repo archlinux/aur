@@ -1,0 +1,8 @@
+[Unit]
+Description=Expire inactive SOGo sessions every minute
+
+[Timer]
+OnCalendar=minutely
+
+[Install]
+WantedBy=timers.target

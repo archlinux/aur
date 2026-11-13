@@ -1,0 +1,40 @@
+From 200edad7a10a16f5cb640802d35d49b1fc7152ef Mon Sep 17 00:00:00 2001
+From: Christian Pfeiffer <cpfeiffer@rev-crew.info>
+Date: Thu, 12 Nov 2026 23:12:20 +0100
+Subject: [PATCH] fix(core): fail closed when stripping HTML injection raises
+
+stringWithoutHTMLInjection:stripAngular: returned the partially filtered
+string when one of its steps raised, so the remaining filters didn't run.
+GNUstep returns nil from -stringByReplacingMatchesInString:... when the
+result is empty, e.g. when the nested "javajavascript:script:" has been
+reduced to "javascript:" and the next pass removes all of it; the
+following +stringWithString: then raises, and "javascript:" is returned.
+Return an empty string instead, and log the reason of the exception.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ SoObjects/SOGo/NSString+Utilities.m | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/SoObjects/SOGo/NSString+Utilities.m b/SoObjects/SOGo/NSString+Utilities.m
+index 5cbc74d..3708c1c 100644
+--- a/SoObjects/SOGo/NSString+Utilities.m
++++ b/SoObjects/SOGo/NSString+Utilities.m
+@@ -1081,7 +1081,13 @@ static int cssEscapingCount;
+   }  
+   NS_HANDLER
+   {
+-    [self logWithFormat: @"Error while stripping HTML injection : %@", [localException name]];
++    // Fail closed: the filters above may not all have run, so don't return a
++    // partially sanitised string. GNUstep returns nil from
++    // -stringByReplacingMatchesInString:... when the result would be empty,
++    // e.g. for "javascript:" itself, which raises in +stringWithString:.
++    [self logWithFormat: @"Error while stripping HTML injection : %@ %@",
++          [localException name], [localException reason]];
++    result = @"";
+   }
+   NS_ENDHANDLER;
+   
+-- 
+2.56.1
+

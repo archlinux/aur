@@ -1,0 +1,4 @@
+# The user SOGo runs as. Its home directory holds the GNUstep defaults (~/GNUstep) and the backups of
+# sogo-backup.sh (~/backups). Older installations have it in /etc/sogo, which sysusers leaves as it is;
+# sogo.install says how to move it.
+u sogo - "SOGo groupware server" /var/lib/sogo

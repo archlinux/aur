@@ -1,0 +1,9 @@
+# The configuration: readable by SOGo, written by root (as Debian's package does it)
+z /etc/sogo 0750 root sogo
+z /etc/sogo/sogo.conf 0640 root sogo
+# The Sieve administrator's credentials of the vacation messages (sogo-vacation-messages.service)
+z /etc/sogo/sieve.creds 0640 root sogo
+# The home directory, the mail spool (SOGoMailSpoolPath) and log files (WOLogFile)
+d /var/lib/sogo 0750 sogo sogo
+d /var/spool/sogo 0750 sogo sogo
+d /var/log/sogo 0750 sogo sogo

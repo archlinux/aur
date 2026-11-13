@@ -1,0 +1,9 @@
+[Unit]
+Description=Send SOGo's e-mail alarms every minute
+
+[Timer]
+OnCalendar=minutely
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,40 @@
+[Unit]
+Description=SOGo groupware server
+Documentation=https://www.sogo.nu/support/documentation.html
+# Ordered after the services SOGo may use on the same host, if they're there
+After=network.target memcached.service postgresql.service mariadb.service slapd.service dovecot.service postfix.service
+
+[Service]
+# sogod forks its workers (WOWorkersCount in /etc/sogo/sogo.conf) and writes their parent's PID
+Type=forking
+User=sogo
+Group=sogo
+RuntimeDirectory=sogo
+PIDFile=/run/sogo/sogo.pid
+# The log goes to the journal; for a log file, set WOLogFile in /etc/sogo/sogo.conf and override
+# ExecStart without -WOLogFile (arguments take precedence over sogo.conf)
+ExecStart=/usr/bin/sogod -WOPidFile /run/sogo/sogo.pid -WOLogFile -
+Restart=on-failure
+
+# Hardening: SOGo only writes its runtime directory, its home directory (the GNUstep defaults), the
+# mail spool and log files; the rest of the system is read-only to it
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/sogo /var/spool/sogo /var/log/sogo
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+RestrictNamespaces=true
+LockPersonality=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target

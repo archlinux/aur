@@ -1,0 +1,6 @@
+# The releases of SOGo, tagged SOGo-<version>
+[sogo]
+source = "git"
+git = "https://github.com/Alinto/sogo.git"
+use_max_tag = true
+prefix = "SOGo-"

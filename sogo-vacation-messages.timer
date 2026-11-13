@@ -1,0 +1,8 @@
+[Unit]
+Description=Activate and expire SOGo's vacation messages every five minutes
+
+[Timer]
+OnCalendar=*:0/5
+
+[Install]
+WantedBy=timers.target

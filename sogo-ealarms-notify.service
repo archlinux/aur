@@ -1,0 +1,11 @@
+[Unit]
+Description=Send SOGo's e-mail alarms of events and tasks
+Documentation=https://www.sogo.nu/support/documentation.html
+After=network.target sogo.service
+
+[Service]
+Type=oneshot
+User=sogo
+Group=sogo
+# For SMTP authentication, add -p with a file of username:password (as for the vacation messages)
+ExecStart=/usr/bin/sogo-ealarms-notify

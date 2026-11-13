@@ -1,0 +1,23 @@
+# Older packages made /etc/sogo the home directory of the sogo user, where GNUstep keeps its defaults
+# (~/GNUstep). The service only writes /var/lib/sogo, the spool and the logs now (ProtectSystem=strict),
+# so the home directory has to move there; sysusers doesn't change an existing user.
+_sogo_home_note() {
+  [[ "$(getent passwd sogo | cut -d: -f6)" == /etc/sogo ]] || return 0
+  cat <<'MSG'
+The home directory of the sogo user is still /etc/sogo, where sogo.service can't write anymore. Move it
+to /var/lib/sogo, with the GNUstep defaults, before starting SOGo again:
+  systemctl stop sogo
+  usermod -d /var/lib/sogo sogo
+  mv /etc/sogo/GNUstep /var/lib/sogo/
+  systemctl start sogo
+/etc/sogo keeps the configuration (sogo.conf, sieve.creds), readable by the sogo group.
+MSG
+}
+
+post_install() {
+  _sogo_home_note
+}
+
+post_upgrade() {
+  _sogo_home_note
+}

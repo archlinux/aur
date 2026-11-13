@@ -1,0 +1,57 @@
+# Spell checking with typos, in British English: American spellings are reported too. Names keep their
+# spelling (see CONTRIBUTING.md), so they're left out here. Every package has a copy of this file
+# (templates/package in the repository of the packages), so it works on its own as well.
+
+[default]
+locale = "en-gb"
+extend-ignore-re = [
+  # Dotted names: namespaces, NuGet IDs and test names of .NET (System.Globalization, Pluralize.NET)
+  "\\b[A-Z][A-Za-z0-9]*(?:\\.[A-Za-z0-9]+)+",
+  # Command-line options (--enable-optimize, -PassThru, -p:RunAnalyzersDuringBuild=false)
+  "(?:^|[\\s\"'(=])--?[A-Za-z][-A-Za-z0-9:]*",
+  # HTTP's header
+  "\\bAuthorization:",
+  # Names: mago's and systemd's commands, a package, the SourceMod libraries (Colors, More Colors,
+  # Multi-Colors), CryptPad's folders
+  "\\b(?:mago[ -]|systemd-)analyze\\b",
+  "\\bdotnet-pluralize-net\\b",
+  "\\b(?:Multi-|More )?Colors\\b",
+  "\\bcustomize(?:\\.dist)?\\b",
+]
+
+[default.extend-identifiers]
+ACKNOWLEDGMENTS = "ACKNOWLEDGMENTS"
+CorePsTypeCatalog = "CorePsTypeCatalog"
+DateHumanize = "DateHumanize"
+EnumHumanizeWithCustomDescriptionPropertyNamesTests = "EnumHumanizeWithCustomDescriptionPropertyNamesTests"
+PSScriptAnalyzer = "PSScriptAnalyzer"
+RandomizedDelaySec = "RandomizedDelaySec"
+ScriptAnalyzer = "ScriptAnalyzer"
+TypeCatalogGen = "TypeCatalogGen"
+dota = "dota"
+packageid = "packageid"
+psscriptanalyzer = "psscriptanalyzer"
+quantize = "quantize"
+
+[default.extend-words]
+# The terms of software, also in British English: build artifacts, .NET's (Roslyn) analyzers, the
+# compilers' sanitizers (-fsanitize, UndefinedBehaviorSanitizer)
+analyzer = "analyzer"
+analyzers = "analyzers"
+artifact = "artifact"
+artifacts = "artifacts"
+sanitize = "sanitize"
+sanitizer = "sanitizer"
+sanitizers = "sanitizers"
+
+[files]
+extend-exclude = [
+  # Licence texts and patches of upstream code, as they are
+  "LICENSE",
+  "LICENSES/",
+  "*-sdk.txt",
+  "*.patch",
+  "*.diff",
+  # Generated from the PKGBUILD
+  ".SRCINFO",
+]
