@@ -1,6 +1,6 @@
 pkgbase = dbine-bin
 	pkgdesc = DBine - desktop manager for 130+ SQL and NoSQL databases with notebooks, schema compare and AI assistant
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://dbine.com
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = dbine-bin
 	conflicts = dbine
 	options = !strip
 	options = !debug
-	source_x86_64 = DBine_1.4.2_amd64.deb::https://github.com/addlayer-io/dbine/releases/download/v1.4.2/DBine_1.4.2_amd64.deb
-	sha256sums_x86_64 = 6f164eab5a3146a01ed69a0535a8e6d6ebee41445278109d819a5f72097bcfe5
+	source_x86_64 = DBine_1.5.0_amd64.deb::https://github.com/addlayer-io/dbine/releases/download/v1.5.0/DBine_1.5.0_amd64.deb
+	sha256sums_x86_64 = 17354c5835badd34a4271212ccb43a7d26a78cca77f7228cfc3fe63a2b775a7f
 
 pkgname = dbine-bin
