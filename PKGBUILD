@@ -1,7 +1,7 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 _pkgname=timer-rs
 pkgname="${_pkgname}-bin"
-pkgver=0.11.4
+pkgver=0.11.5
 pkgrel=1
 pkgdesc="Timer application"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("https://github.com/pando85/timer/releases/download/v${pkgver}/timer-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
-sha256sums=('020792f2bf7ec8c1756d15064458ccf20bf0783c812223ab88b6c5cdb95e0622')
+sha256sums=('3bc83368b71ba676139c3b8605ca15f49d3d6110fc019fd8220849a8519f441a')
 
 package() {
 	install -Dm755 timer "${pkgdir}/usr/bin/timer"
