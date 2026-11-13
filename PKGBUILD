@@ -4,7 +4,7 @@ _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
 _debname=com.microsoft.VSCode
-pkgver=1.145.3
+pkgver=1.146.0
 _electronversion=43
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications."
@@ -50,14 +50,17 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-arm64")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
+#source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-arm64")
+#source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf")
+#source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://update.code.visualstudio.com/${pkgver}/linux-rpm-arm64/stable")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://update.code.visualstudio.com/${pkgver}/linux-rpm-armhf/stable")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://update.code.visualstudio.com/${pkgver}/linux-rpm-x64/stable")
 sha256sums=('dc6e622af50c366f1713adfa1de690bbee9af76c8fec1d4dccddadffc9bdf2ba'
             '13fb5f66f31ced197d0e2b566daae599ffe96ab6f9eea7a0ffccbfc2eedae92f')
-sha256sums_aarch64=('8979ea2857067d97c831635866b1685b04f745e876229399649b06a779070fd2')
-sha256sums_armv7h=('d19e60d64babe26466292d9d6b5a126bbb3afe04130ca54d879367aa202c8a1a')
-sha256sums_x86_64=('b1406a627be11b7b872c844e61e769e3a3362fd580ae3f2062cd1e80f69459bb')
+sha256sums_aarch64=('125c3af9e0a04480df41b709edbeeee1c8637298e43d9a67ca87211050e54b99')
+sha256sums_armv7h=('c711134c8228a7d661968684fc8431c7ca7d4c915bc143772fc864f7a2bf829d')
+sha256sums_x86_64=('ea025e428b7364a6039beafb8f52c862d85931e858ecea5ae10063a2e4cfda54')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
