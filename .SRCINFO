@@ -1,6 +1,6 @@
 pkgbase = shelltrace-git
 	pkgdesc = Linux command impact inspector (Rust CLI and Qt6 GUI)
-	pkgver = 0.3.2.r0.g0000000
+	pkgver = 0.3.2.r52.g331faf9
 	pkgrel = 1
 	url = https://github.com/hamdyaea/ShellTrace
 	arch = x86_64
