@@ -8,7 +8,7 @@
 pkgname=xlibre-input-evdev
 _pkgname=xf86-input-evdev
 pkgver=25.0.0
-pkgrel=11
+pkgrel=51
 pkgdesc="XLibre evdev input driver"
 arch=('x86_64')
 url='https://github.com/X11Libre/xf86-input-evdev'
@@ -17,7 +17,7 @@ depends=(
 	'glibc'
 	'libevdev'
 	'mtdev'
-	'systemd-libs'
+	'libudev.so'
 	'xlibre-xserver'
 )
 makedepends=(
