@@ -1,6 +1,6 @@
 # Maintainer: remanifest
 pkgname=qamp
-pkgver=0.0.7
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='A modernized Winamp style audio player with vector and classic skins'
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=(cmake ninja)
 optdepends=('xdg-utils: make qamp the default player for audio files from its menu')
 options=(!debug)
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('f9a4308bf7cc423201d4cdcab3e38774757219c3ae859dccc3df446acd847c96')
+sha256sums=('3ae537de81df6e8bee39dd8cc90ff6571385ac0b077bab113b70740c024a1ff6')
 
 build() {
     cmake -S "$pkgname-v$pkgver" -B build -G Ninja \
