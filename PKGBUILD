@@ -14,6 +14,7 @@ depends=('glibc')
 makedepends=('git' 'go' 'nodejs>=24' 'pnpm')
 provides=('memos')
 conflicts=('memos')
+install=memos-git.install
 backup=('etc/memos.conf')
 source=("memos::git+${url}.git"
         'memos.service'
@@ -24,7 +25,7 @@ sha256sums=('SKIP'
             '0c7d5102f95e7348c4791e2c919b3664c1124469c5174349c81153894affe2dd'
             'eaf0d053c5673176c730085493db4d63b15e212e101fc02c9f9236f8f91abf20'
             'ed17b9db8aadd8518a3da01e45b5445a819bdb0f7ccd8bc1acc9f52cc02964fc'
-            '29f519aa64fe4feb7c675aa279bc09e61b59d7a3a20d42a28140df1196a7a68a')
+            '0e0b2a4e83ecb837055a59ee19c869586b2c74abeaa3b7a43fff95c19bd34e4d')
 
 pkgver() {
   cd memos

@@ -4,6 +4,7 @@ pkgbase = memos-git
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/usememos/memos
+	install = memos-git.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -24,6 +25,6 @@ pkgbase = memos-git
 	sha256sums = 0c7d5102f95e7348c4791e2c919b3664c1124469c5174349c81153894affe2dd
 	sha256sums = eaf0d053c5673176c730085493db4d63b15e212e101fc02c9f9236f8f91abf20
 	sha256sums = ed17b9db8aadd8518a3da01e45b5445a819bdb0f7ccd8bc1acc9f52cc02964fc
-	sha256sums = 29f519aa64fe4feb7c675aa279bc09e61b59d7a3a20d42a28140df1196a7a68a
+	sha256sums = 0e0b2a4e83ecb837055a59ee19c869586b2c74abeaa3b7a43fff95c19bd34e4d
 
 pkgname = memos-git
