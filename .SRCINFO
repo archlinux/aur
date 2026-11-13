@@ -1,6 +1,6 @@
 pkgbase = lttng-tools
 	pkgdesc = LTTng tracing control tools
-	pkgver = 2.13.8
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = http://lttng.org/
 	arch = i686
@@ -11,14 +11,14 @@ pkgbase = lttng-tools
 	makedepends = xmlto
 	depends = popt
 	depends = liburcu>=0.7.2
-	depends = lttng-ust>=2.13.0
+	depends = lttng-ust>=2.16.0
 	depends = linux>=2.6.27
 	depends = libxml2>=2.7.6
 	optdepends = lttng-modules: kernel tracing support
 	optdepends = babeltrace: view traces with `lttng view` command
 	optdepends = man-db: view man pages with the `lttng help` command
 	provides = lttng
-	source = http://lttng.org/files/lttng-tools/lttng-tools-2.13.8.tar.bz2
-	sha512sums = 6daafb1fd458cfbaa7e19b3a8aaafa958116bb836f389febf7ac4035e5d7884d308a9fdefb4e9063329cb7d837853a79ddae0e263d3b58db1f87519bba2dcb3b
+	source = http://lttng.org/files/lttng-tools/lttng-tools-2.16.0.tar.bz2
+	sha256sums = b8b3244894e49e773d4942b8899f768057974edf75c18dbb48b65bb123c7b2c7
 
 pkgname = lttng-tools
