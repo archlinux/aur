@@ -1,5 +1,5 @@
 pkgname=sdroxide-soapysdr
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Powerful SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (SoapySDR-enabled version)"
 arch=('x86_64')
@@ -33,9 +33,9 @@ makedepends=('rust' 'rust-wasm' 'trunk' 'wasm-bindgen' 'binaryen' 'cmake' 'clang
 provides=('sdroxide')
 conflicts=('sdroxide')
 options=('!lto')
-# vendor/rade_c, vendor/rtl_433, vendor/faad2 and vendor/xng are git
-# submodules, and GitHub's release tarballs carry no submodule contents, so all
-# four are fetched separately and put in place in prepare(). Keep in sync with
+# vendor/rade_c, vendor/rtl_433, vendor/faad2, vendor/xng, vendor/mercury and
+# vendor/data2g are git submodules, and GitHub's release tarballs carry no
+# submodule contents, so all six are fetched separately and put in place in prepare(). Keep in sync with
 # the tag:
 #   git rev-parse "v$pkgver:vendor/rade_c"
 #   git rev-parse "v$pkgver:vendor/rtl_433"
@@ -52,16 +52,26 @@ _faad2_commit=673a22a3c7c33e96e2ff7aae7c4d2bc190dfbf92
 # crates/sdroxide-hfdl) is a path dependency into this tree, so without it cargo
 # cannot even resolve the workspace, whatever features are selected.
 _xng_commit=096c805278faa0a904de7d98066bf4cf395cb6c2
+# Rhizomatica/mercury and arodland/Data2G, the two HF data modems, submodules
+# since v1.7.1 (issue #853). Data2G's archive unpacks as Data2G-<commit>.
+#   git rev-parse "v$pkgver:vendor/mercury"
+#   git rev-parse "v$pkgver:vendor/data2g"
+_mercury_commit=09f258f84a0b69cb4d8556530a25822617ea17dd
+_data2g_commit=f5388f792425d80ac4d175ff1838260e790a3433
 source=("sdroxide-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "rade_c-$_rade_commit.tar.gz::https://github.com/freedv/rade_c/archive/$_rade_commit.tar.gz"
         "rtl_433-$_rtl433_commit.tar.gz::https://github.com/merbanan/rtl_433/archive/$_rtl433_commit.tar.gz"
         "faad2-$_faad2_commit.tar.gz::https://github.com/knik0/faad2/archive/$_faad2_commit.tar.gz"
-        "xng-$_xng_commit.tar.gz::https://github.com/airframesio/xng/archive/$_xng_commit.tar.gz")
-sha256sums=('b440b91078f73358cbb4bb0053e22300f33b6bcc0df781ee4bd161dab7aa49b5'
+        "xng-$_xng_commit.tar.gz::https://github.com/airframesio/xng/archive/$_xng_commit.tar.gz"
+        "mercury-$_mercury_commit.tar.gz::https://github.com/Rhizomatica/mercury/archive/$_mercury_commit.tar.gz"
+        "data2g-$_data2g_commit.tar.gz::https://github.com/arodland/Data2G/archive/$_data2g_commit.tar.gz")
+sha256sums=('0166fa622092c32bbfbe971d07431ab6b56e606ddc958f51f535584cd8abfa98'
             'eaba2ecbe61dc48748bc62f08b2eb623bccd5b21b8228bf42dedc0e232edf7cd'
             '6e164f38216f46f1d08494c2adeaa7c72d7f3d5456e0b8c5ae424159d7051753'
             '98725cefc915771f00ffd0286901c865e7d3fd0e5ff6b98d004d6f48904776f9'
-            '2d7339ef9e89e711641838034ab2d039dbae9d5e907a786f39df1b931395aebe')
+            '2d7339ef9e89e711641838034ab2d039dbae9d5e907a786f39df1b931395aebe'
+            '48796f32d433806b073dd400eca7f7d48a06b252ad90f4539d9837f36fc36431'
+            '953355cac4a83b24c32c15f89418517c2d13f944147d0c804f458b7b38be6d71')
 
 prepare() {
   cd "sdroxide-$pkgver"
@@ -71,12 +81,14 @@ prepare() {
   # tree, and panic if they are empty; vendor/xng is a path dependency, so cargo
   # fails to load the workspace without it. vendor/dream, next to faad2, is a
   # copied tree rather than a submodule, so it does arrive in the release tarball.
-  rm -rf vendor/rade_c vendor/rtl_433 vendor/faad2 vendor/xng
+  rm -rf vendor/rade_c vendor/rtl_433 vendor/faad2 vendor/xng vendor/mercury vendor/data2g
   mkdir -p vendor
   cp -a "$srcdir/rade_c-$_rade_commit" vendor/rade_c
   cp -a "$srcdir/rtl_433-$_rtl433_commit" vendor/rtl_433
   cp -a "$srcdir/faad2-$_faad2_commit" vendor/faad2
   cp -a "$srcdir/xng-$_xng_commit" vendor/xng
+  cp -a "$srcdir/mercury-$_mercury_commit" vendor/mercury
+  cp -a "$srcdir/Data2G-$_data2g_commit" vendor/data2g
   export RUSTUP_TOOLCHAIN=stable
   # The rustup package satisfies the rust-wasm makedepend by `provides`, but it
   # only ships the targets its user has actually added -- so on a rustup box the
