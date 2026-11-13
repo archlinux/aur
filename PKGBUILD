@@ -1,16 +1,14 @@
 # Maintainer: Jonghyo Lee <na1307@outlook.kr>
 pkgname=winedirectalsa-bin
 pkgver=1.0.0_beta.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Ultra-low-latency ASIO driver for Wine/Proton'
 arch=(x86_64)
 url=https://github.com/na1307/winedirectalsa
 license=(MIT)
-depends=(alsa-lib systemd-libs libstdc++ libgcc glibc)
+depends=(alsa-lib systemd-libs libstdc++ libgcc glibc python-vdf umu-launcher)
 optdepends=(
     'steam: steam games'
-    'python-vdf: for automatic installation script'
-    'umu-launcher: for automatic installation script'
     'rtkit: realtime thread'
 )
 provides=(winedirectalsa)
