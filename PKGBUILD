@@ -2,7 +2,7 @@
 # Co-Maintainer: agony <27015 at riseup dot net>
 
 pkgname=plasma-drop
-pkgver=1.17.9
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="KDE Plasma 6 dropdown app launcher for Wayland (Yakuake-style for any app)"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc' 'libgcc' 'kwin')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('12a2ae099d59864385fcb7c6a3b18bad31d1160baec35b5a48e39e7b1e658512')
+sha256sums=('ee450f89f5daf9b3243589006400db23451469bdc41cd132c574cbf529aea0c1')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
