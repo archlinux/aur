@@ -5,7 +5,7 @@
 
 pkgbase=ime-jd-bin
 pkgname=(ime-jd-fcitx5-bin ime-jd-ibus-bin ime-jd-userdict-bin)
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='键道输入法, an independent implementation of the 键道 (xkjd) input scheme'
 arch=(x86_64 aarch64)
@@ -16,8 +16,8 @@ _assets=https://github.com/hronro/ime-jd/releases/download/v$pkgver/jd-ime-v$pkg
 source_x86_64=("$_assets-x86_64-"{fcitx5,ibus,userdict}.pkg.tar.zst)
 source_aarch64=("$_assets-arm64-"{fcitx5,ibus,userdict}.pkg.tar.zst)
 noextract=(jd-ime-v$pkgver-linux-{x86_64,arm64}-{fcitx5,ibus,userdict}.pkg.tar.zst)
-sha256sums_x86_64=( 'befe58477bd3a8aad4a666e3ae610a6cba4939e3b709d399b52c902f1135fc75' '770ac8221d0f913632789e6f5d56af59c80c111cffddc676b437619e586fedca' '2f0536a8da0240a6fee52e29d8c83717c631f50ca519eec26dbe426dc2cec2ca' )
-sha256sums_aarch64=( '39b9942566a1d7daf503ac9c2fd3e41008c746339ad5560b983085a72569753d' 'b4433f6b1d9aeb465fdc2f2b9d00d49fe6d527c179f37fa18bc79e2788661a6f' '704ac289a20e2321472d2b41ba8b1c012e5ed898518ddc4b202254da47be3600' )
+sha256sums_x86_64=( 'd529628591d8ea942b2d7940509fea8b45bdc187ec0245340cc1c8f1092029be' '0a9690c2fc6b7936ee0759ace86521d9e770379fcdf3c87b8e718ec2d56b8aaa' '7f15d92a58166f1cd8cc277fdbc894bbfbd8f278e41c5b30f88935251bc5dcb4' )
+sha256sums_aarch64=( '2edf597390c8af6d1657e4442fbb02a08c681350e73a3f4634036fe5dab1d4ab' '7a4d4dea6cfb272d64ccb0a1999a1441ad68730496e2c78011e402cbb1acafde' '4e09980f6fa9605b2540a287d346f7372f0b09959e957bec1ac2ed2d00ff82f9' )
 
 # The release's Arch package for <frontend>, without its pacman metadata.
 _unpack() {
