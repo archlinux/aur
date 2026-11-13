@@ -1,6 +1,6 @@
 # Maintainer: Arthur Simin <arthursimao312@gmail.com>
 pkgname=vanta
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Linux game launcher with Wine, Proton and OnlineFix support"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('AGPL-3.0-only')
 depends=('qt6-base' 'qt6-svg' 'zlib')
 makedepends=('cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dd9ef3d7225a0b436ffb0c5b79cd48dba7921a4e8857a72f220afd73407c35b1')
+sha256sums=('c85eaf4026164e8738cfb0a0ba14f0e79af17b1b8bcf5c2ff03304eeb363b979')
 
 build() {
     cd "Vanta-$pkgver"
