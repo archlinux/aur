@@ -1,7 +1,7 @@
 pkgbase = sogo6-server
 	pkgdesc = API server of SOGo 6, the groupware for mail, calendars and contacts (alpha, not for production)
 	pkgver = 6.0.0alpha2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Alinto/SOGo6-server
 	arch = any
 	license = GPL-3.0-or-later
@@ -32,6 +32,7 @@ pkgbase = sogo6-server
 	depends = python-yarl
 	depends = python-dateutil
 	depends = python-tzlocal
+	depends = python-typing_extensions
 	optdepends = valkey: the cache and the broker of the agent, when it runs on the same host
 	optdepends = postgresql: database server, when it runs on the same host
 	optdepends = mariadb: database server, when it runs on the same host

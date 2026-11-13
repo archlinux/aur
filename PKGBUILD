@@ -4,7 +4,7 @@
 
 pkgname=sogo6-server
 pkgver=6.0.0alpha2
-pkgrel=1
+pkgrel=2
 pkgdesc="API server of SOGo 6, the groupware for mail, calendars and contacts (alpha, not for production)"
 arch=(any)
 url="https://github.com/Alinto/SOGo6-server"
@@ -38,6 +38,8 @@ depends=(
   # celery's, which the AUR's python-celery 5.6.3-1 lacks: drop them once it has them
   python-dateutil
   python-tzlocal
+  # sievelib's, which the AUR's python-sievelib 1.5.0-1 lacks: drop it once it has it
+  python-typing_extensions
 )
 checkdepends=(python-pytest python-pytest-mock)
 optdepends=('valkey: the cache and the broker of the agent, when it runs on the same host'
