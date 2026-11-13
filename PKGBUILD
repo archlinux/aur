@@ -1,7 +1,7 @@
 _pkgname="DiagNG"
 pkgname="diagng"
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for mobile baseband Diag interfaces - Successor for QCSuper"
 arch=(
   'any'
@@ -16,6 +16,7 @@ depends=(
   'python-kaitaistruct>=0.11'
   'python-crcmod>=1.7'
   'python-pyudev>=0.24.4'
+  'python-pyusb>=1.3.1'
   'libmm-glib'
   'libadwaita>=1.8'
   'gtksourceview5'
