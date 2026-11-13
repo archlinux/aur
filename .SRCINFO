@@ -1,7 +1,7 @@
 pkgbase = bettertricks-bin
 	pkgdesc = Recovery-first Wine prefix manager and Winetricks-compatible recipe engine (binary)
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RamazanBerk20/Bettertricks
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -21,6 +21,8 @@ pkgbase = bettertricks-bin
 	provides = bettertricks
 	conflicts = bettertricks
 	noextract = Bettertricks_1.1_amd64.deb
+	options = !strip
+	options = !debug
 	source = Bettertricks_1.1_amd64.deb::https://github.com/RamazanBerk20/Bettertricks/releases/download/v1.1/Bettertricks_1.1_amd64.deb
 	source = LICENSE::https://github.com/RamazanBerk20/Bettertricks/raw/v1.1/LICENSE
 	source = bettertricks.desktop::https://github.com/RamazanBerk20/Bettertricks/raw/v1.1/packaging/linux/io.bettertricks.desktop.desktop

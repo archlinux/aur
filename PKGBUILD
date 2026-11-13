@@ -3,9 +3,10 @@
 pkgname=bettertricks-bin
 pkgver=1.1.0
 _tag=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Recovery-first Wine prefix manager and Winetricks-compatible recipe engine (binary)"
 arch=('x86_64')
+options=('!strip' '!debug')
 url="https://github.com/RamazanBerk20/Bettertricks"
 license=('LGPL-2.1-or-later')
 depends=('webkit2gtk-4.1' 'wine' 'xdg-utils' 'glib2' 'cabextract' '7zip' 'unzip' 'gzip' 'tar' 'xz' 'zstd')
