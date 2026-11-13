@@ -1,4 +1,5 @@
 # Maintainer: Flammkuchen <aur at bbirkner dot de>
+
 _pkgname=JavaScript-QuickJS
 pkgname=perl-javascript-quickjs
 pkgver=0.21
