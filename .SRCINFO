@@ -1,6 +1,6 @@
 pkgbase = python-ouroboros-ai
 	pkgdesc = Specification-first workflow engine for AI coding agents
-	pkgver = 0.59.9
+	pkgver = 0.60.0
 	pkgrel = 1
 	url = https://github.com/Q00/ouroboros
 	install = python-ouroboros-ai.install
@@ -32,9 +32,8 @@ pkgbase = python-ouroboros-ai
 	optdepends = python-idna: Internationalized hostname support for MCP network transports
 	optdepends = python-litellm: LiteLLM support for non-Claude LLM backends
 	optdepends = python-textual: TUI support (ouroboros tui)
-	optdepends = python-textual-serve: Browser-served settings TUI support (ouroboros config)
 	optdepends = python-watchdog: Live skill hot-reload support
-	source = https://files.pythonhosted.org/packages/source/o/ouroboros_ai/ouroboros_ai-0.59.9.tar.gz
-	sha256sums = 4af6c93d6bb72e4dcaa496b564086836e2a4e871b345955a0b7c479a7a674cc0
+	source = https://files.pythonhosted.org/packages/source/o/ouroboros_ai/ouroboros_ai-0.60.0.tar.gz
+	sha256sums = f13addc1e8daf2513d8ccdc792592726011aac628db60f1f8a117b8549097e88
 
 pkgname = python-ouroboros-ai
