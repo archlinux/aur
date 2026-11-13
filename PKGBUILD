@@ -1,7 +1,7 @@
 # Maintainer: wackbyte <im@purring.fyi>
 
 pkgname=foreman
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='Toolchain manager for Roblox projects'
 arch=('aarch64' 'i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('7c5a89b07dc8c32d435df219b16b4b7975e0739a51e29c824aa74ceb78273d20513056337c0cda99d93cdcfbe49c46af893c7afefdea006152357370e2966f8c')
+b2sums=('d663f3add27735b7d7ec3ef364ed07a307d5301ca562c642d5d86290ed3b3a1571f37dada7d0958f2042f0b0ca6ee524844b3888bd0a4cfbe8bf51405334d894')
 options=(!lto)
 
 prepare() {

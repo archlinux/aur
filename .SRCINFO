@@ -1,6 +1,6 @@
 pkgbase = foreman
 	pkgdesc = Toolchain manager for Roblox projects
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/Roblox/foreman
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = foreman
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = foreman-1.7.0.tar.gz::https://github.com/Roblox/foreman/archive/v1.7.0.tar.gz
-	b2sums = 7c5a89b07dc8c32d435df219b16b4b7975e0739a51e29c824aa74ceb78273d20513056337c0cda99d93cdcfbe49c46af893c7afefdea006152357370e2966f8c
+	source = foreman-1.7.1.tar.gz::https://github.com/Roblox/foreman/archive/v1.7.1.tar.gz
+	b2sums = d663f3add27735b7d7ec3ef364ed07a307d5301ca562c642d5d86290ed3b3a1571f37dada7d0958f2042f0b0ca6ee524844b3888bd0a4cfbe8bf51405334d894
 
 pkgname = foreman
