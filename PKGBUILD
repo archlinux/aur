@@ -1,14 +1,14 @@
 # Maintainer: jamezrin <mrjaime1999@gmail.com>
 pkgname=outpace-bin
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source streaming engine for public Acestream content'
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'riscv64')
 url='https://github.com/outpace-stream/outpace-engine'
 license=('AGPL-3.0-or-later')
 optdepends=('ffmpeg: audio normalization and optional media processing')
 provides=("outpace=${pkgver}")
-conflicts=('outpace')
+conflicts=('outpace' 'acestream-engine')
 backup=('etc/outpace/outpace.env')
 options=('!strip' '!debug')
 source=('outpace.service' 'outpace.env' 'outpace.sysusers')

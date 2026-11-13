@@ -1,7 +1,7 @@
 pkgbase = outpace-bin
 	pkgdesc = Open-source streaming engine for public Acestream content
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/outpace-stream/outpace-engine
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = outpace-bin
 	optdepends = ffmpeg: audio normalization and optional media processing
 	provides = outpace=1.0.1
 	conflicts = outpace
+	conflicts = acestream-engine
 	options = !strip
 	options = !debug
 	backup = etc/outpace/outpace.env
