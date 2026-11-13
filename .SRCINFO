@@ -1,0 +1,35 @@
+pkgbase = outpace-bin
+	pkgdesc = Open-source streaming engine for public Acestream content
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/outpace-stream/outpace-engine
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	arch = riscv64
+	license = AGPL-3.0-or-later
+	optdepends = ffmpeg: audio normalization and optional media processing
+	provides = outpace=1.0.1
+	conflicts = outpace
+	options = !strip
+	options = !debug
+	backup = etc/outpace/outpace.env
+	source = outpace.service
+	source = outpace.env
+	source = outpace.sysusers
+	sha256sums = 4887ef4e711cfe14c818e10b6bbed036c63340dcae51b410c236e96b12f6acd2
+	sha256sums = 361db0601e330fa257451b2d0070956cfa12fcff317e7927b29747e5d833fef5
+	sha256sums = 1c8db166cd12f6b57566cdd28d8346ffbcc182cf4c0ad941465633d5a5c4c2bf
+	source_x86_64 = https://github.com/outpace-stream/outpace-engine/releases/download/v1.0.1/outpace-1.0.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = e75ae33061213f5782787dbcb5883ddeb97f9c7b35b5054341a6b9cd5f6f8a2a
+	source_aarch64 = https://github.com/outpace-stream/outpace-engine/releases/download/v1.0.1/outpace-1.0.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = e909e59df99d93b09e9ae90c915f4b9ab7d4143dd3bb0aac40e8ad9e15e10284
+	source_armv7h = https://github.com/outpace-stream/outpace-engine/releases/download/v1.0.1/outpace-1.0.1-armv7-unknown-linux-musleabihf.tar.gz
+	sha256sums_armv7h = d619eb7ccb608f61345ecf2bc28c173703a0e9116dbbc2dd7b21a906d6062a80
+	source_armv6h = https://github.com/outpace-stream/outpace-engine/releases/download/v1.0.1/outpace-1.0.1-arm-unknown-linux-musleabihf.tar.gz
+	sha256sums_armv6h = ce956cd39e703e002608c3bfea68305c4f9b98266cce03264899abf08bcf4c48
+	source_riscv64 = https://github.com/outpace-stream/outpace-engine/releases/download/v1.0.1/outpace-1.0.1-riscv64gc-unknown-linux-musl.tar.gz
+	sha256sums_riscv64 = ba300dfb9dec270f546a82d76367385f480677e4878241a782a2f80d6ce61ea3
+
+pkgname = outpace-bin

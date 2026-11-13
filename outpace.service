@@ -1,0 +1,26 @@
+# Installed by the outpace-bin AUR package. Settings live in /etc/outpace/outpace.env.
+# Enable with: systemctl enable --now outpace
+[Unit]
+Description=Outpace streaming engine
+Documentation=https://github.com/jamezrin/outpace-stream/wiki
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=outpace
+Group=outpace
+EnvironmentFile=-/etc/outpace/outpace.env
+ExecStart=/usr/bin/outpace serve
+Restart=on-failure
+RestartSec=5
+StateDirectory=outpace
+StateDirectoryMode=0700
+TimeoutStopSec=30
+LimitNOFILE=65536
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

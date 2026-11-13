@@ -1,0 +1,7 @@
+/*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/outpace.service
+!/outpace.env
+!/outpace.sysusers
