@@ -99,7 +99,7 @@ num-attempts = 3
 
 [client-exponential-backoff.durations.max]
 nanos = 0
-secs = 3
+secs = 30
 
 [client-exponential-backoff.durations.min]
 nanos = 0
