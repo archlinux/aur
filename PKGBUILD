@@ -1,14 +1,14 @@
 # Maintainer: RamazanBerk20 <119219364+RamazanBerk20@users.noreply.github.com>
 pkgname=swiftsim
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast SPICE circuit simulator with a schematic editor and waveform viewer (LTspice alternative)'
 arch=('x86_64')
 url='https://github.com/RamazanBerk20/SwiftSim'
 license=('MIT OR Apache-2.0' 'OFL-1.1')
 depends=('gcc-libs' 'glibc' 'dbus' 'fontconfig' 'libglvnd' 'libx11' 'libxcb' 'libxcursor' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'wayland')
 makedepends=('cargo')
-options=('!lto')  # makepkg's GCC LTO objects from ring's C code can't be linked by rust-lld
+options=('!lto' '!debug')  # makepkg's GCC LTO objects from ring's C code can't be linked by rust-lld
 optdepends=('vulkan-icd-loader: Vulkan rendering (OpenGL is used otherwise)'
             'xdg-desktop-portal: Open/Save dialogs'
             'zenity: Open/Save dialogs without a desktop portal')
