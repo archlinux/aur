@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=aish-git
-pkgver=0.3.10.r6.g3840aba
+pkgver=1.0.0+r0+gc9ad99a
 pkgrel=1
 pkgdesc='Empower the Shell to think. Evolve Operations. '
 arch=($CARCH)
@@ -34,7 +34,7 @@ pkgver() {
   cd "${srcdir}/${pkgname}"
   (
       set -o pipefail
-      git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+      git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/+/g' ||
           printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
