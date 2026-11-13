@@ -1,0 +1,15 @@
+pkgbase = hare-sql-git
+	pkgdesc = High-level SQL interface for Hare
+	pkgver = r4.aece218
+	pkgrel = 1
+	url = https://git.sr.ht/~blainsmith/hare-sql
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = hare
+	provides = hare-sql
+	conflicts = hare-sql
+	source = git+https://git.sr.ht/~blainsmith/hare-sql
+	md5sums = SKIP
+
+pkgname = hare-sql-git
