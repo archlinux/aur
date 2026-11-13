@@ -1,6 +1,6 @@
 pkgbase = patchy-image-editor-bin
 	pkgdesc = PSD-oriented image editor repackaged from the upstream Flatpak bundle
-	pkgver = 1.33
+	pkgver = 1.34
 	pkgrel = 1
 	url = https://github.com/SethRobinson/Patchy
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = patchy-image-editor-bin
 	depends = qt6-svg
 	optdepends = kimageformats: additional image formats, including HEIC/HEIF
 	optdepends = libheif: HEIC/HEIF codec support
-	provides = patchy-image-editor=1.33
+	provides = patchy-image-editor=1.34
 	conflicts = patchy-image-editor-git
 	options = !debug
 	options = !strip
-	source = PatchyLinux-1.33.flatpak::https://github.com/SethRobinson/Patchy/releases/download/v1.33/PatchyLinux.flatpak
+	source = PatchyLinux-1.34.flatpak::https://github.com/SethRobinson/Patchy/releases/download/v1.34/PatchyLinux.flatpak
 	source = LICENSE
-	sha256sums = fb770fdca403ceb8ee589341b8987148256fec68b5c817df4dedc7aa0dedf1ff
+	sha256sums = 410e55b0939adbb613ad162f81fe777ff3b9482fe00cffc7ea6fb55aa5c2c844
 	sha256sums = bbc50c8c376e0e5980939be7df6769feed1a30289c7efc6391b204dfb15de88d
 
 pkgname = patchy-image-editor-bin
