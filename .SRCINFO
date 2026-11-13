@@ -1,6 +1,6 @@
 pkgbase = brisk-bin
 	pkgdesc = Ultra-fast, modern download manager for desktop.
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/AminBhst/brisk
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = brisk-bin
 	depends = libayatana-indicator
 	depends = ayatana-ido
 	depends = libayatana-appindicator
-	provides = brisk=2.4.0
+	provides = brisk=2.5.0
 	conflicts = brisk
-	noextract = brisk-2.4.0.tar.xz
-	source = brisk-2.4.0.tar.xz::https://github.com/AminBhst/brisk/releases/download/v2.4.0/Brisk-v2.4.0-linux-x86_64.tar.xz
+	noextract = brisk-2.5.0.tar.xz
+	source = brisk-2.5.0.tar.xz::https://github.com/AminBhst/brisk/releases/download/v2.5.0/Brisk-v2.5.0-linux-x86_64.tar.xz
 	source = brisk.sh
-	sha256sums = 521b233e1772d8cc55c58fb90f76b95e507d420e00677180665bac30f1e4b0a9
+	sha256sums = f68e298cb7ef11375b0104d69986dc1660be0507dac8c7396aa2dfac115ac36d
 	sha256sums = d7002fa1a9ae60749490e982fa8a4f4622f7381b02559f5b014df033c0773a3c
 
 pkgname = brisk-bin

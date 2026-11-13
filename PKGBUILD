@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=brisk-bin
 _pkgname=Brisk
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Ultra-fast, modern download manager for desktop."
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${CARCH}.tar.xz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('521b233e1772d8cc55c58fb90f76b95e507d420e00677180665bac30f1e4b0a9'
+sha256sums=('f68e298cb7ef11375b0104d69986dc1660be0507dac8c7396aa2dfac115ac36d'
             'd7002fa1a9ae60749490e982fa8a4f4622f7381b02559f5b014df033c0773a3c')
 prepare() {
     sed -i -e "
