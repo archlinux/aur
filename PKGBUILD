@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=pluely-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Privacy-first AI assistant for meetings, interviews, and conversations"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('pluely')
 source_x86_64=(
     "Pluely_${pkgver}_amd64.deb::https://github.com/iamsrikanthnani/pluely/releases/download/app-v${pkgver}/Pluely_${pkgver}_amd64.deb"
 )
-sha256sums_x86_64=('838fe0cab5b00071d19abc7a4a14290d23f8f205888154839e0c0adcb062d02a')
+sha256sums_x86_64=('817b8421b0bb7957515c8f304307e063a18b926eac1e674a41ac07f13014cf87')
 
 package() {
     local _deb="${srcdir}/Pluely_${pkgver}_amd64.deb"
