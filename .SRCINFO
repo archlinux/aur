@@ -1,18 +1,18 @@
 pkgbase = rerune-bin
 	pkgdesc = Prebuilt CLI for rerune translation workflows
-	pkgver = 1.0.20
+	pkgver = 1.0.21
 	pkgrel = 1
 	url = https://rerune.io
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = rerune=1.0.20
+	provides = rerune=1.0.21
 	conflicts = rerune
 	options = !debug
 	options = !strip
-	source_x86_64 = rerune-bin-1.0.20-x86_64.tar.gz::https://raw.githubusercontent.com/BasalBit/rerune-releases/main/v1.0.20/rerune_1.0.20_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6d24f9b53bb878ce83929bfaa2848871380bd6eca22ce30947b6db5d03e02643
-	source_aarch64 = rerune-bin-1.0.20-aarch64.tar.gz::https://raw.githubusercontent.com/BasalBit/rerune-releases/main/v1.0.20/rerune_1.0.20_linux_arm64.tar.gz
-	sha256sums_aarch64 = 91b1003d787f7e8a89a251540b5e7ee65442b3e153a108923c5b9b054f94f580
+	source_x86_64 = rerune-bin-1.0.21-x86_64.tar.gz::https://raw.githubusercontent.com/BasalBit/rerune-releases/main/v1.0.21/rerune_1.0.21_linux_amd64.tar.gz
+	sha256sums_x86_64 = 76e7984ba3c591d1664e03d0063be9bc742d7ad910a0b26ba1b8ea5e4ad5f2a6
+	source_aarch64 = rerune-bin-1.0.21-aarch64.tar.gz::https://raw.githubusercontent.com/BasalBit/rerune-releases/main/v1.0.21/rerune_1.0.21_linux_arm64.tar.gz
+	sha256sums_aarch64 = 050f4efb881a63c46a6b5df134b0124cdbf553040c45e5798c5f4b2a7550d3a0
 
 pkgname = rerune-bin
