@@ -1,6 +1,6 @@
 pkgname=nuviodesktop-bin
-_tag=0.1.35-alpha
-pkgver=0.1.35.alpha
+_tag=0.1.36-alpha
+pkgver=0.1.36.alpha
 pkgrel=1
 pkgdesc='Desktop media app for browsing, organizing and playing media from sources you add'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('nuvio')
 conflicts=('nuvio' 'nuvio-desktop' 'nuvio-desktop-bin' 'nuvio-linux-bin')
 options=('!strip')
 source=("nuviodesktop-${_tag}.deb::${url}/releases/download/${_tag}/Nuvio-Linux-x86_64-${_tag}.deb")
-sha256sums=('5b234d4012fe254bfd371dc31c6534aeea69557911735caecdb5cb1fc95918ac')
+sha256sums=('ccc0537b9c94f44d36a13c3d510b65a487d47731a83f22d8dc98a072f9591bf2')
 
 package() {
     bsdtar -xf data.tar.zst -C "$pkgdir"
