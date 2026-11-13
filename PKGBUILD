@@ -1,18 +1,23 @@
-# Maintainer: sardo <sardonimous@hotmail.com>
+# Maintainer: Mike Pento <mjpento@gmail.com>
+
 pkgname=oorexx
-pkgver=5.0.0
-pkgrel=12583
+pkgver=5.2.0
+pkgrel=13156
 pkgdesc="open source implementation of Object Rexx"
 arch=('x86_64')
 url="https://sourceforge.net/projects/oorexx/"
 license=('CPL')
-depends=('bash' 'gcc-libs-multilib')
+depends=('bash' 'gcc-libs-multilib' 'libgcc' 'glibc' 'libstdc++')
+options+=('!debug')
 optdepends=('tcsh: for C shell sample'
 	    'sh: for sh shell sample')
 provides=("rexx")
 conflicts=("oorexx-beta")
-source=(https://downloads.sourceforge.net/project/oorexx/oorexx/${pkgver}/ooRexx-${pkgver}-${pkgrel}.debian11.x86_64.deb)
-sha256sums=('72ce9135b5e05d1a9eff5cec0d9d23804cf8e4a76e2778f85bf4dba1e57ad8d6')
+
+source=(https://download.sourceforge.net/project/oorexx/oorexx/${pkgver}/oorexx-${pkgver}-${pkgrel}.debian12.${arch}.deb)
+
+sha256sums=('9129a81dc6e059a203d7736275b68d3f899751a150f9402ec1171f2018842fc6')
+
 package() {
 	echo "  -> Extracting the data.tar.xz..."
 	bsdtar -xf data.tar.gz -C "$pkgdir/"
