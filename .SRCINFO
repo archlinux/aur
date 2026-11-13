@@ -1,6 +1,6 @@
 pkgbase = bashman-bin
 	pkgdesc = Cargo plugin that helps you generate BASH completions and/or MAN pages for your Rust apps using metadata from your projects' Cargo.toml manifests
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/Blobfolio/bashman
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = bashman-bin
 	depends = gcc-libs
 	provides = cargo-bashman
 	conflicts = bashman
-	source_x86_64 = https://github.com/Blobfolio/bashman/releases/download/v0.10.2/cargo-bashman_0.10.2-1_amd64.deb
-	sha256sums_x86_64 = 090f61c46f515644a786f5f253d2520a905493a5052b106250b9e4a2751a9d27
+	source_x86_64 = https://github.com/Blobfolio/bashman/releases/download/v0.10.3/cargo-bashman_0.10.3-1_amd64.deb
+	sha256sums_x86_64 = 929d56677992d964d63d3571890f17b7f0cfd27a8e895c9b41ba5965ec1c5f02
 
 pkgname = bashman-bin
