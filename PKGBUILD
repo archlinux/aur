@@ -1,4 +1,8 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
+# Contributor: Maxime Gauduin <alucryd at archlinux dot org>
+# Contributor: Jakub Schmidtke <sjakub at gmail dot com>
+# Contributor: Kyle Keen <keenerd at gmail dot com>
+# Contributor: Dave Reisner <d at falconindy dot com>
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
