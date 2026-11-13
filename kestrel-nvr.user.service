@@ -12,6 +12,11 @@ After=network-online.target
 ExecStart=/usr/bin/kestrel serve
 Restart=on-failure
 RestartSec=5
+# Below the desktop and other services for CPU and disk, so copying
+# recordings doesn't slow them
+Nice=10
+CPUWeight=50
+IOWeight=50
 
 [Install]
 WantedBy=default.target

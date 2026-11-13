@@ -18,6 +18,11 @@ Environment=HOME=/var/lib/kestrel-nvr
 ExecStart=/usr/bin/kestrel serve
 Restart=on-failure
 RestartSec=5
+# Below other services for CPU and disk, so copying recordings doesn't slow
+# them
+Nice=10
+CPUWeight=50
+IOWeight=50
 NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
