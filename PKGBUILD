@@ -4,9 +4,9 @@
 #   ssh://aur@aur.archlinux.org/openmac-bin.git
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=openmac-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
-pkgdesc="Macintosh emulator written from scratch: Macintosh Classic, Macintosh IIfx and Quadra 650"
+pkgdesc="Macintosh emulator written from scratch: Macintosh Classic, Macintosh IIfx, Quadra 650 and Quadra 950"
 arch=('x86_64')
 url="https://github.com/codingncaffeine/OpenMac-for-Linux"
 license=('MIT')
@@ -30,9 +30,9 @@ source=("$url/releases/download/v$pkgver/OpenMac-$pkgver-linux-x64.tar.gz"
         "openmac-128.png::$_raw/icons/openmac-128.png"
         "openmac-256.png::$_raw/icons/openmac-256.png"
         "openmac-512.png::$_raw/icons/openmac-512.png")
-sha256sums=('4056907717b260b29404533f3d96f982d554b311b7f41e9a041cb971f3b8008c'
-            '1a4dc208d598c87ed93446d2c91eb95450ac40d66ee334d5d028f2fb12928627'
-            'f5fb3416e6ca23d070868d6e975dac3ec95199883520b57d38890e030de14c10'
+sha256sums=('35962cb979472458f6ec77fec90237d96486b2b26c8ecc849f582a2ce1322ed8'
+            '0cb22d82f2a893ae13be5aebc8520f508e6f58c0c53dada0d685c6bba264257e'
+            'aa362d86888047a633bb97f52b0a0e1b1126511d33c6599580fcd270554ef2bb'
             '86f5118ce3d69682d8696864564762204cc8a13cdc4db965dcbea643164d732d'
             '5911f2ab75dbae09fbe2ca94edac11bc45c656758bc13e84f441c82046d7d569'
             'b9654dbd8f947cc2e3a05edc1aeceb2bc092e38dc85343ed95cd0d33804f5860'
