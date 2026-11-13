@@ -1,12 +1,16 @@
 pkgbase = ifind-bin
 	pkgdesc = 同花顺iFinD PC版提供资讯、行情、深度资料、数据浏览器、企业库等功能,满足用户多方面的使用需求。
-	pkgver = 3.10.30.396.001
+	pkgver = 3.10.30.404.001
 	pkgrel = 1
 	url = https://www.51ifind.com/
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
+	depends = gtk3
+	depends = cairo
+	depends = pango
 	depends = nss
+	depends = hicolor-icon-theme
 	depends = alsa-lib
 	depends = libxrandr
 	depends = libxkbcommon
@@ -19,16 +23,16 @@ pkgbase = ifind-bin
 	depends = mesa
 	depends = fontconfig
 	depends = dotnet-sdk-5.0
-	provides = ifind=3.10.30.396.001
+	provides = ifind=3.10.30.404.001
 	conflicts = ifind
 	options = !strip
 	options = !emptydirs
 	options = staticlibs
 	source = ifind.sh
-	sha256sums = 936d2d4299699da4e66d836e9001e1ff43fef95c53aef61569a1c3f667283fcd
-	source_aarch64 = ifind-3.10.30.396.001-aarch64.deb::https://sp.thsi.cn/staticS3/mobileweb-upload-static-server.file/app_6/downloadcenter/com.51ifind_uos_3.10.30.396.001_arm64_signed.deb
-	sha256sums_aarch64 = d39fb36a32a769b390f2f907ef3f3fed3223268efff9b1c9fef22311791c6a7b
-	source_x86_64 = ifind-3.10.30.396.001-x86_64.deb::https://sp.thsi.cn/staticS3/mobileweb-upload-static-server.file/app_6/downloadcenter/com.51ifind_3.10.30.396.001_amd64_signed.deb
-	sha256sums_x86_64 = 568be7cf5a6a38f1ed7442fe03592cb1a180561cbf4cd5326893a8d7629dd5f0
+	sha256sums = b2c139edf36eb4d21ee90620fd9dae460cc63269afcab8eee2fb9b9cb58f2c4f
+	source_aarch64 = ifind-3.10.30.404.001-aarch64.deb::https://sp.thsi.cn/staticS3/mobileweb-upload-static-server.file/app_6/downloadcenter/com.51ifind_uos_3.10.30.404.001_arm64_signed.deb
+	sha256sums_aarch64 = 47c6d4cb9f49311fdf7b227f2ee0a3cc286c4c9170080a0720ad94bf31b56a34
+	source_x86_64 = ifind-3.10.30.404.001-x86_64.deb::https://sp.thsi.cn/staticS3/mobileweb-upload-static-server.file/app_6/downloadcenter/com.51ifind_3.10.30.404.001_amd64_signed.deb
+	sha256sums_x86_64 = 5bc34abc023b2f08c54d7d9fdc23fb9a9cc75cdc0b338996fea027c94daf0db3
 
 pkgname = ifind-bin
