@@ -1,0 +1,5 @@
+[anycode-bin]
+source = "github"
+github = "incadawr/anycode"
+use_latest_release = true
+prefix = "v"

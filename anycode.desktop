@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=AnyCode
+Comment=Desktop workspace for AI coding agents
+Exec=anycode %U
+Icon=anycode
+Terminal=false
+Type=Application
+Categories=Development;
+Keywords=AI;agent;coding;Claude;Codex;
+StartupWMClass=AnyCode
