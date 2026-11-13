@@ -7,7 +7,7 @@
 pkgname=xlibre-input-void
 _pkgname=xf86-input-void
 pkgver=25.0.0
-pkgrel=9
+pkgrel=51
 pkgdesc="XLibre void input driver"
 arch=('x86_64')
 license=('custom')
