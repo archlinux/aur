@@ -3,13 +3,13 @@ pkgbase = memos
 	pkgver = 26.11.0
 	pkgrel = 1
 	url = https://github.com/usememos/memos
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	makedepends = nodejs>=24
 	makedepends = pnpm
-	options = !strip
-	options = !debug
+	depends = glibc
 	backup = etc/memos.conf
 	source = memos-26.11.0.tar.gz::https://github.com/usememos/memos/archive/refs/tags/26.11.0.tar.gz
 	source = systemd.service
