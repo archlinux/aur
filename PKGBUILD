@@ -3,7 +3,7 @@
 _reponame="kuake_cli"
 _cmdname="kuake"
 pkgname="${_reponame//_/-}"
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Quark Cloud Drive File Management CLI Tool"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -11,7 +11,7 @@ url="https://github.com/zhangjingwei/${_reponame}"
 license=("AGPL-3.0-or-later")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e0af1919d39846ec7bc5f6bcf8b95f1987412812f776fa3f8361550c787caf7d')
+sha256sums=('eb51f879ac7e87d654298fce9b6d2d7758150224d4ddd193f077018756ed9a27')
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"

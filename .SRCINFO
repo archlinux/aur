@@ -1,6 +1,6 @@
 pkgbase = kuake-cli
 	pkgdesc = Quark Cloud Drive File Management CLI Tool
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/zhangjingwei/kuake_cli
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = kuake-cli
 	arch = riscv64
 	license = AGPL-3.0-or-later
 	makedepends = go
-	source = kuake-cli-1.5.0.tar.gz::https://github.com/zhangjingwei/kuake_cli/archive/refs/tags/v1.5.0.tar.gz
-	sha256sums = e0af1919d39846ec7bc5f6bcf8b95f1987412812f776fa3f8361550c787caf7d
+	source = kuake-cli-1.6.0.tar.gz::https://github.com/zhangjingwei/kuake_cli/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = eb51f879ac7e87d654298fce9b6d2d7758150224d4ddd193f077018756ed9a27
 
 pkgname = kuake-cli
