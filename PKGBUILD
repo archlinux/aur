@@ -3,7 +3,7 @@
 
 pkgname=qoredb-bin
 _pkgname=qoredb
-pkgver=0.1.40
+pkgver=0.1.41
 pkgrel=1
 pkgdesc="Next gen database client — lightweight alternative to DBeaver/pgAdmin (binary release)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ options=('!strip' '!debug')
 
 _deb="QoreDB_${pkgver}_amd64.deb"
 source=("${_deb}::${url}/releases/download/v${pkgver}/QoreDB_${pkgver}_amd64.deb")
-sha256sums=('388b0f2ce68f089e3aee417bb77c0680bf33f9a1b138dea1dc939a5db60ac82f')
+sha256sums=('d9aa5b9a5115acca3baab242cc746a331c2db4af7afa8072933ab303114bb43a')
 
 noextract=("${_deb}")
 
