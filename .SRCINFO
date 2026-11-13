@@ -1,18 +1,18 @@
 pkgbase = wavy-bin
 	pkgdesc = YouTube Music als Desktop-App: Equalizer, Live-Wallpaper, Karaoke-Lyrics, Discord-Status, Zusammen hören, RGB im Beat.
-	pkgver = 1.1.0
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/JedPlayYT/wavy
 	arch = x86_64
 	license = LicenseRef-unknown
 	depends = electron33-bin
 	depends = python
-	provides = wavy=1.1.0
+	provides = wavy=1.1.2
 	conflicts = wavy
-	source = wavy-1.1.0.deb::https://github.com/JedPlayYT/wavy/releases/download/v1.1.0/Wavy-1.1.0-amd64.deb
+	source = wavy-1.1.2.deb::https://github.com/JedPlayYT/wavy/releases/download/v1.1.2/Wavy-1.1.2-amd64.deb
 	source = wavy.js
 	source = wavy.sh
-	sha256sums = 9b357323e48aa78ce6198fa417a2f729700ec984a4d7bdcc96dd58d6328a81a8
+	sha256sums = 2a76ea7ce9a9269297697ad950768ed43544ae4cb11dea3377237b90890f3f46
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
