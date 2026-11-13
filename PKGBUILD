@@ -6,8 +6,8 @@
 # Maintainer: Cooky-12 cooky-12@qq.com
 pkg____=bluez
 pkgname=('bluez-ps3')
-pkgver=5.87
-pkgrel=2
+pkgver=5.88
+pkgrel=1
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('GPL-2.0-only')
@@ -17,7 +17,7 @@ source=(#https://www.kernel.org/pub/linux/bluetooth/${pkg____}-${pkgver}.tar.{xz
         "git+https://github.com/bluez/bluez.git#tag=$pkgver"
   fake-ps3.patch      
 	bluetooth.modprobe)
-b2sums=('9abcc5de17102c1307396627c87cffb5585e1c9b099cfd33d2a682d93f10e48a178fe8651c16ab9bb788d80f603f91db75e9fcadf7b627017202402d4ec396e5'
+b2sums=('debb4734eb5b59028a6194588c635652b8d170d74d2730d28cc60e0d4c01e682d594f9f65612c82a7ba2b60cc6b0fc362f4619846689fb8c24ebbece435b9637'
         'ced1c61b82027362d65e1f0f4917669ce935b4dcc8f4e88b2b3172194e215170f609804bc9eb8533290cdd7749e3f632b6375224180a1a603ac120c030acc90a'
         '0ce33d13b796d4ae2fd688b17742b3a3055663b68a352b02720dac82bcfdaa47bf2ee2a034dfb8ef4ddf3f827bc58fe80548730939c2915f64864cea39c10170')
 # validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
