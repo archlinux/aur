@@ -1,6 +1,6 @@
 pkgbase = aspire-cli
 	pkgdesc = Aspire provides tools, templates, and packages for building observable, production-ready distributed apps
-	pkgver = 13.6.4
+	pkgver = 13.6.5
 	pkgrel = 1
 	url = https://aspire.dev/
 	url = https://github.com/dotnet/aspire
@@ -13,9 +13,9 @@ pkgbase = aspire-cli
 	options = !emptydirs
 	source = LICENSE.TXT
 	sha256sums = ae48df11a335dc1a615f4f938b69cba73bcf4485c4f97af49b38efb0f216353b
-	source_x86_64 = https://github.com/microsoft/aspire/releases/download/v13.6.4/aspire-cli-linux-x64-13.6.4.tar.gz
+	source_x86_64 = https://github.com/microsoft/aspire/releases/download/v13.6.5/aspire-cli-linux-x64-13.6.5.tar.gz
 	sha256sums_x86_64 = 4d875fa954dc4385b2ef08c03fd9c3546819fda9b669d43bd96fa3354487cfb3
-	source_aarch64 = https://github.com/microsoft/aspire/releases/download/v13.6.4/aspire-cli-osx-arm64-13.6.4.tar.gz
+	source_aarch64 = https://github.com/microsoft/aspire/releases/download/v13.6.5/aspire-cli-osx-arm64-13.6.5.tar.gz
 	sha256sums_aarch64 = 7520bedd8d67d62b528358caadb8133ad1452b691a8e925086d737612746d723
 
 pkgname = aspire-cli

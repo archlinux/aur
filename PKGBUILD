@@ -3,7 +3,7 @@
 
 pkgname=aspire-cli
 _pkgname=aspire
-pkgver=13.6.4
+pkgver=13.6.5
 pkgrel=1
 pkgdesc='Aspire provides tools, templates, and packages for building observable, production-ready distributed apps'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_x86_64=("https://github.com/microsoft/$_pkgname/releases/download/v$pkgve
 source_aarch64=("https://github.com/microsoft/$_pkgname/releases/download/v$pkgver/$pkgname-linux-arm64-$pkgver.tar.gz")
 
 sha256sums=('ae48df11a335dc1a615f4f938b69cba73bcf4485c4f97af49b38efb0f216353b')
-sha256sums_x86_64=('4d875fa954dc4385b2ef08c03fd9c3546819fda9b669d43bd96fa3354487cfb3')
-sha256sums_aarch64=('7520bedd8d67d62b528358caadb8133ad1452b691a8e925086d737612746d723')
+sha256sums_x86_64=('6e22bd4daaa62d09320638246e57bfaf56ed147a3a87cdd5eafec277726ca978')
+sha256sums_aarch64=('b210c3652693ae54fb3558c75b70f90439be5fe8125acf78f92269ab96958623')
 
 package() {
     install -Dm755 aspire "$pkgdir/usr/bin/aspire"
