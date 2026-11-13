@@ -15,7 +15,7 @@ export DEBUG_CXXFLAGS="-g1"
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=7.4.2
+pkgver=7.4.3
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -91,7 +91,7 @@ source=(
   "$_pkgsrc_wallet_engine.$_pkgext"::"https://github.com/i582/wallet-engine/archive/refs/tags/v${_wallet_engine_ver}.$_pkgext"
   "$_wallet_engine_patch"::"https://github.com/desktop-app/patches/raw/$_wallet_engine_patch_commit/wallet-engine.patch"
 )
-sha256sums=('e1f282d519d976482be45890027b55c3a188cffb611099ea7bdbae1d17962f48'
+sha256sums=('827e117e54372f6d45d30f7fcbdbcb91335fa337bee0397beb11084ffcd688b0'
   'SKIP'
   '96600a6f393a27a0f84a41ad1d6d69f96014edc29e4d907c05e965666b0a66cf'
   'b40aba82c39a42d0526a85ecfa40d613baa57b1a2d6600e601a42a1576b3b822')
