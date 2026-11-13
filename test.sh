@@ -3,4 +3,4 @@ updpkgsums && \
   makepkg --printsrcinfo | tee .SRCINFO && \
   makepkg -C -f && \
   podman build . -t zim && \
-  podman run --rm -it zim /usr/bin/zsh -c 'sudo pacman --noconfirm -U zsh-zim-git-* && zsh'
+  podman run --rm -it zim /usr/bin/zsh -c 'sudo pacman --noconfirm -U zsh-zim-git-* && exec zsh'

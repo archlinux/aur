@@ -15,10 +15,20 @@ post_install() {
   echo "          with Zim, remove &>/dev/null from /etc/zsh/zshrc"
   echo "    NOTE: /etc/zsh/zlogin is not needed by this package anymore and can be removed"
   echo
+  upgrade_notice
 }
 
 post_upgrade() {
   compile_scripts
+  upgrade_notice
+}
+
+upgrade_notice() {
+  echo "    If an upgrade fails with 'exists in filesystem' under /usr/lib/zim:"
+  echo "    check ownership with pacman -Qo, back up and move only unowned files,"
+  echo "    then retry. Keep any affected module's Git history and local changes."
+  echo "    See /usr/share/doc/zsh-zim-git/README.md for the recovery steps."
+  echo
 }
 
 post_remove() {

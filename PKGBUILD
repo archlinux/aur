@@ -1,7 +1,7 @@
 # Contributor: Mateusz Galazyn <carbolymer at gmail.com>
 
 pkgrel=1
-pkgver=r682.84c59ed
+pkgver=r765.8ba1a51
 pkgname=zsh-zim-git
 pkgdesc="ZIM - Zsh IMproved"
 url="https://github.com/zimfw/zimfw"
@@ -14,12 +14,14 @@ source=('git+https://github.com/zimfw/zimfw.git'
         'git+https://github.com/zimfw/install.git'
         'zim.install'
         'zimfw.zsh.patch'
-        'zshrc')
+        'zshrc'
+        'README.md')
 md5sums=('SKIP'
          'SKIP'
-         'd63ab2a0308488aa4d7ffc817a2106d7'
-         '71ad8df0120ee595ef7330e66951f49d'
-         '0cb8764ba7f67c37c3c6452cc06751af')
+         '3ef9a8900b1fae22cd96ea71fa491b79'
+         'cd353886386df4d0a33e5aa568b0c2e6'
+         '0cb8764ba7f67c37c3c6452cc06751af'
+         '6e92026d424b6e006c17ebd3b94f5d55')
 options=('!strip')
 install='zim.install'
 _gitname='zimfw'
@@ -36,6 +38,8 @@ prepare() {
 }
 
 package() {
+  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
+  cp "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/"
   ZIM_TPL_DIR="${pkgdir}/usr/lib/zim/templates"
   mkdir -p $ZIM_TPL_DIR
 
