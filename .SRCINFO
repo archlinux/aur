@@ -1,6 +1,6 @@
 pkgbase = airi-bin
 	pkgdesc = 💖🧸 Self hosted, you owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude.
-	pkgver = 0.15.2
+	pkgver = 0.15.4
 	pkgrel = 1
 	url = https://airi.moeru.ai/docs/
 	arch = aarch64
@@ -9,19 +9,19 @@ pkgbase = airi-bin
 	depends = electron43
 	depends = libpipewire
 	depends = libxt
-	provides = airi=0.15.2
+	provides = airi=0.15.4
 	conflicts = airi
 	options = !emptydirs
 	options = !strip
-	source = LICENSE-0.15.2::https://raw.githubusercontent.com/moeru-ai/airi/v0.15.2/LICENSE
+	source = LICENSE-0.15.4::https://raw.githubusercontent.com/moeru-ai/airi/v0.15.4/LICENSE
 	source = airi.js
 	source = airi.sh
 	sha256sums = f334260edf0508041280b534ca9d0abd5a02a9626c1d2e20a556ac4eb72b07f9
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
-	source_aarch64 = airi-0.15.2-aarch64.pacman::https://github.com/moeru-ai/airi/releases/download/v0.15.2/AIRI-0.15.2-linux-aarch64.pacman
-	sha256sums_aarch64 = 12322e3f8c972cf97d72c3e3b9d67ec878b864074821ea9e5284adaa061870dd
-	source_x86_64 = airi-0.15.2-x86_64.pacman::https://github.com/moeru-ai/airi/releases/download/v0.15.2/AIRI-0.15.2-linux-x64.pacman
-	sha256sums_x86_64 = 728c5c80d13447e6887242ec4cd70663bccf9b95646e8e139a63205421060bc2
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = airi-0.15.4-aarch64.pacman::https://github.com/moeru-ai/airi/releases/download/v0.15.4/AIRI-0.15.4-linux-aarch64.pacman
+	sha256sums_aarch64 = 9a1edac587d8029b1916bbc260d060c393543096069b44e1de537046de7bbdec
+	source_x86_64 = airi-0.15.4-x86_64.pacman::https://github.com/moeru-ai/airi/releases/download/v0.15.4/AIRI-0.15.4-linux-x64.pacman
+	sha256sums_x86_64 = 9fdea51c73af6f12257df58a277474871572184dec3a617da2b3647a4ca05fd3
 
 pkgname = airi-bin
