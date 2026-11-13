@@ -1,6 +1,6 @@
 pkgbase = rclone-manager-server
 	pkgdesc = Manage Rclone from your browser (pure web server, no GUI libraries)
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/Zarestia-Dev/rclone-manager
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = rclone-manager-server
 	optdepends = fuse3: for mounting remote filesystems
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/headless-v0.3.5/server-linux-x86_64-0.3.5.zip
-	sha256sums_x86_64 = 9dc9805fedd0ed60d23e201dfb09d48f09f2fa3de14c279e5f5b2e9a1cac3abb
-	source_aarch64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/headless-v0.3.5/server-linux-aarch64-0.3.5.zip
-	sha256sums_aarch64 = ce1cbc7e96a43ef324a0b9adabfd6f4f1eface7041e6a84ff13c25af56da1925
+	source_x86_64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/headless-v0.3.6/server-linux-x86_64-0.3.6.zip
+	sha256sums_x86_64 = 184659c364ff4338c0e5b0069a25d0dfb16c4744bdf1710c2dd762a939c5ccca
+	source_aarch64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/headless-v0.3.6/server-linux-aarch64-0.3.6.zip
+	sha256sums_aarch64 = 3f76269bcef7210d41ba036ccf0180f3f4493ad334ac506af82386eb131bcaca
 
 pkgname = rclone-manager-server
