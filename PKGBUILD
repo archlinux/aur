@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=c6-git
-pkgver=r373.711f2ce
+pkgver=r482.25c6342
 pkgrel=1
 pkgdesc="c6 — TinyCC with language extensions"
 arch=($CARCH)
@@ -23,7 +23,7 @@ pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     (
         set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/+/g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
@@ -42,6 +42,13 @@ build() {
     popd >/dev/null
 
     make build
+}
+
+check() {
+    cd "${srcdir}/${pkgname%-git}"
+    export LD_LIBRARY_PATH="${srcdir}/${pkgname%-git}/tcc${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" 
+    # make -j1 test-all LD_LIBRARY_PATH="$LD_LIBRARY_PATH"
+    make test
 }
 
 package() {
