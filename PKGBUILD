@@ -2,7 +2,7 @@
 # Maintainer: Martin Wimpress <code@wimpress.io>
 
 pkgname='xfkey-wonkey-bin'
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Macropad configuration tool for Linux.'
 url='https://github.com/wimpysworld/WonKey'
@@ -11,11 +11,11 @@ license=('BlueOak-1.0.0')
 provides=('wonkey')
 conflicts=('wonkey')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/wimpysworld/WonKey/releases/download/v${pkgver}/WonKey_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('bb638302553f312fe6f6ba874e7c496c2aa2036646de88fe387c5462310d94c4')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/wimpysworld/WonKey/releases/download/v${pkgver}/WonKey_${pkgver}_arm64.tar.gz")
+sha256sums_aarch64=('e719996218fc3e8bea6fc302743efc87cbba3defaa748f22e0702a5609ef0a9a')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/wimpysworld/WonKey/releases/download/v${pkgver}/WonKey_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('eb9b6373befab733773f9a2b881ef2ad053792932db95d02f53f0f63bfc6be63')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/wimpysworld/WonKey/releases/download/v${pkgver}/WonKey_${pkgver}_amd64.tar.gz")
+sha256sums_x86_64=('be98574a3166565d3c6a81149840bcfcabbdc690ab115d5c952c3c01ef95e751')
 
 package() {
   install -Dm755 wonkey "${pkgdir}/usr/bin/wonkey"
