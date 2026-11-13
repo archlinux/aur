@@ -1,13 +1,13 @@
 # Maintainer: PapyElGringo <adrien@pesler.be>
 pkgname=veshell-git
-pkgver=v0.2.1.r0.gc57c4728
+pkgver=v0.2.2.r0.g9c359ea9
 pkgrel=1
 pkgdesc="An innovative Not-Desktop environment for Linux built with Flutter and Rust"
 arch=('x86_64')
 url="https://github.com/free-explorers/veshell"
 license=('GPL-3.0-or-later')
 depends=(
-  'fontconfig' 'ttf-roboto' 'noto-fonts' 'noto-fonts-cjk'
+  'fontconfig' 'ttf-roboto' 'noto-fonts' 'noto-fonts-cjk' 'noto-fonts-emoji'
   'libglvnd' 'mesa'
   'libinput' 'seatd' 'systemd-libs' 'libxkbcommon' 'libxkbcommon-x11'
   'libdisplay-info' 'wayland'
