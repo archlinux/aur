@@ -1,21 +1,21 @@
 # Maintainer: Thorben Günther <admin@xenrox.net>
  
 pkgname='vikunja'
-pkgver='2.7.1'
+pkgver='2.8.0'
 pkgrel=1
 pkgdesc='The Todo-app to organize your life - API & frontend'
 arch=('x86_64')
 url='https://vikunja.io/'
 license=('AGPL3')
 backup=('etc/vikunja/config.yml')
-makedepends=('git' 'go' 'mage' 'pnpm')
+makedepends=('git' 'go' 'mage' 'pnpm' 'nodejs')
 source=(
   "$pkgname::git+https://github.com/go-vikunja/vikunja#tag=v$pkgver"
   'vikunja.service'
   'vikunja.sysusers'
   'vikunja.tmpfiles'
 )
-sha256sums=('610e5a33523f4b3336346fa63699a5b24faba5e0e61cf6a83dd095503cdebad0'
+sha256sums=('5b10422b2b991f354387542fd416d3fc6850042d92d0254c3cfa7407c4714a85'
             'c12fa547366d7b604584fbb611840861790fe3cfae0be3f0b0a98f87a89076e3'
             '0a666743be3deaa16a436681d18003b11a1660b5fe7868fa25af2de11c7624f7'
             'e2facf1add86ae6d5ee0ce8c3c006a16e5d50b7d57fbd6519c17e31b9d7d75a5')
