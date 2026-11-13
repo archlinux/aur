@@ -1,6 +1,6 @@
 # Maintainer: arqueon <arqueonautis@gmail.com>
 pkgname=dankmail
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Mail notifier with triage for Linux — Go daemon + Quickshell UI (DankMaterialShell aesthetic)"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go')
 optdepends=('gnome-keyring: Secret Service storage for tokens and passwords')
 install=dankmail.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e1419f4a1c48b6da9d840471b531c0dd6c3595e79d1bf3e78931282e5839efd5')
+sha256sums=('998e53045f7a542657baf4c6b94a45590cb7fee5612ffa72dce4cd7d42acc87b')
 
 build() {
   cd "$pkgname-$pkgver"
