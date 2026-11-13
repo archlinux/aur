@@ -1,4 +1,4 @@
-# Maintainer: wackbyte <im@purring.fyi>
+# Maintainer: willow <willow@purring.fyi>
 
 pkgname=asphalt
 pkgver=2.0.2
