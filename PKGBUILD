@@ -1,9 +1,10 @@
 # Maintainer: RamazanBerk20 <119219364+RamazanBerk20@users.noreply.github.com>
 pkgname=swiftsim-bin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast SPICE circuit simulator with a schematic editor and waveform viewer (LTspice alternative; prebuilt)'
 arch=('x86_64')
+options=('!strip' '!debug')
 url='https://github.com/RamazanBerk20/SwiftSim'
 license=('MIT OR Apache-2.0' 'OFL-1.1')
 depends=('gcc-libs' 'glibc' 'dbus' 'fontconfig' 'libglvnd' 'libx11' 'libxcb' 'libxcursor' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'wayland')
