@@ -6,7 +6,7 @@
 pkgname=xlibre-video-dummy
 _pkgname=xf86-video-dummy
 pkgver=25.0.0
-pkgrel=9
+pkgrel=51
 pkgdesc="XLibre dummy video driver"
 arch=('x86_64')
 url='https://github.com/X11Libre/xf86-video-dummy'
