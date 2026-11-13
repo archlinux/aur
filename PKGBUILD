@@ -1,7 +1,7 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 pkgname=flamelens-git
 pkgver=0.1.0.r5.ge15be2f
-pkgrel=1
+pkgrel=2
 pkgdesc="Flamegraph viewer in the terminal"
 arch=('x86_64')
 url="https://github.com/YS-L/flamelens"
@@ -25,15 +25,22 @@ pkgver() {
 	)
 }
 
+prepare() {
+	cd $pkgname
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target host-tuple
+}
+
 build() {
 	cd $pkgname
-	export CARGO_TARGET_DIR=target
-	cargo build --release --all-features
+	export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 check() {
 	cd $pkgname
-	cargo test --release
+	export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
+	cargo test --frozen --release
 }
 
 package() {
