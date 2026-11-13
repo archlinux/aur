@@ -2,7 +2,7 @@
 
 pkgname=aspia-relay-bin
 _pkgname=${pkgname%-bin}
-pkgver=3.2.2
+pkgver=3.3.5
 pkgrel=1
 pkgdesc="Remote desktop control and file transfer tool (relay, official binary)"
 url="https://aspia.org/"
@@ -19,7 +19,7 @@ provides=(aspia-relay)
 conflicts=(aspia-relay)
 options=(!debug !strip)
 source_x86_64=("https://github.com/dchapyshev/aspia/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch}.deb")
-sha256sums_x86_64=('106c3cf597393a976376f2675a4d517cd1cd59e6f774f2696f7a8ce0999edee1')
+sha256sums_x86_64=('d93bedc589f092b9235c1da0aa53abbbd01d734799ee9face2d53f1f5f731c51')
 
 package() {
   cd "${srcdir}"
