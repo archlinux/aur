@@ -1,6 +1,6 @@
 # Maintainer: matt quintanilla <matt @ matt quintanilla . xyz>
 pkgname=python-disnake
-pkgver=2.12.0
+pkgver=2.12.2
 _tarname=disnake-$pkgver
 pkgrel=1
 pkgdesc="An API wrapper for Discord written in Python."
