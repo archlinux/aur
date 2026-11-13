@@ -1,6 +1,6 @@
 pkgbase = kubernetes-mcp-server-bin
 	pkgdesc = Model Context Protocol (MCP) server for Kubernetes and OpenShift (prebuilt)
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/containers/kubernetes-mcp-server
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = kubernetes-mcp-server-bin
 	arch = powerpc64le
 	license = Apache-2.0
 	depends = glibc
-	provides = kubernetes-mcp-server=0.1.2
+	provides = kubernetes-mcp-server=0.1.3
 	conflicts = kubernetes-mcp-server
-	source_x86_64 = kubernetes-mcp-server-0.1.2-linux-amd64::https://github.com/containers/kubernetes-mcp-server/releases/download/v0.1.2/kubernetes-mcp-server-linux-amd64
-	sha256sums_x86_64 = 4f599f1acaee84bc11dbee90eb6538a03410651de27ec19a49b5a97e4a30cab6
-	source_aarch64 = kubernetes-mcp-server-0.1.2-linux-arm64::https://github.com/containers/kubernetes-mcp-server/releases/download/v0.1.2/kubernetes-mcp-server-linux-arm64
-	sha256sums_aarch64 = 1fa5bf41b9f59b0fa6c8012e063c98a3900bf5eda142810a74871885ecfced8f
-	source_powerpc64le = kubernetes-mcp-server-0.1.2-linux-ppc64le::https://github.com/containers/kubernetes-mcp-server/releases/download/v0.1.2/kubernetes-mcp-server-linux-ppc64le
-	sha256sums_powerpc64le = 9bab260641e3bddc77d6a79f1feece2538c639bda8f83de42bfbe317180b35d8
+	source_x86_64 = kubernetes-mcp-server-0.1.3-linux-amd64::https://github.com/containers/kubernetes-mcp-server/releases/download/v0.1.3/kubernetes-mcp-server-linux-amd64
+	sha256sums_x86_64 = 363e43a7d865ad2d487f88a827b7d37cdd5b56b4ca6fd86affcd0e231a4104a6
+	source_aarch64 = kubernetes-mcp-server-0.1.3-linux-arm64::https://github.com/containers/kubernetes-mcp-server/releases/download/v0.1.3/kubernetes-mcp-server-linux-arm64
+	sha256sums_aarch64 = 262d3f3d7800b88574b6be30c1cb4663f81481fa12bd41e02c10d43a66069d3e
+	source_powerpc64le = kubernetes-mcp-server-0.1.3-linux-ppc64le::https://github.com/containers/kubernetes-mcp-server/releases/download/v0.1.3/kubernetes-mcp-server-linux-ppc64le
+	sha256sums_powerpc64le = 40c96c9b28fa296be7aa617a982b10b000a2b4167607eba2cf0007ca2685928e
 
 pkgname = kubernetes-mcp-server-bin
