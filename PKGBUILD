@@ -1,9 +1,9 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 _pkgname=libppd
-pkgname=$_pkgname-git
-pkgver=2.1.1.r24.g4afdca97
-pkgrel=2
+pkgname="${_pkgname}"-git
+pkgver=2.1.1.r40.g6b132075
+pkgrel=1
 pkgdesc="Legacy support library for PPD files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OpenPrinting/$_pkgname"
@@ -24,7 +24,7 @@ pkgver() {
 prepare() {
   cd ${_pkgname}
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-testppdfile --enable-ppdc-utils --enable-genstrings
 }
 
 build() {
@@ -39,6 +39,6 @@ check() {
 
 package() {
   cd ${_pkgname}
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 "${srcdir}"/$_pkgname/NOTICE "${pkgdir}"/usr/share/licenses/$pkgname/LLVM-exception
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 "${srcdir}"/${_pkgname}/NOTICE "${pkgdir}"/usr/share/licenses/${pkgname}/LLVM-exception
 }
