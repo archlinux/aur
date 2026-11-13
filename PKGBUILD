@@ -6,8 +6,8 @@
 # 通过系统 electron43 运行，与国际版、kimi-work-bin 可并存。
 
 pkgname=kimi-work-cn-bin
-pkgver=3.2.26
-pkgrel=3
+pkgver=3.2.27
+pkgrel=1
 _prefix='/opt/kimi-work-cn'
 pkgdesc='Kimi Work desktop client, mainland China build pinned to the China region'
 arch=('x86_64')
@@ -43,7 +43,7 @@ noextract=("kimi_${pkgver}.exe")
 sha256sums=(
   '85e9c4268a8ee267755f0f3faa4b7cd957db27d57d0c22d53cb2c691d34f0ec2'
   '817e0d47bca30dfb87aa2e9df40fb94ba1d3704305d2b6b0f2b4359e4ab7e304'
-  '73fc4ef5255fe978966ef37705ac99de07411c14c08f2983bff1626d1a00790e'
+  '34db2d168ba29e0468cc440dc592b5a10f8be07b29618a42a749ffc2ea106a10'
   '51c1c2a95bc83082315531565fdb240af49967614c6eb098e339ae8594782e6f'
   '45c7624addd5a291ee020b20f7f890608c9291306a9d65905371583636648e41'
   'ab973d8d007cfed09bf051378baf4fd220f545a5533ab5e9269aad8674e7f468'
@@ -56,7 +56,7 @@ sha256sums=(
   '3c7318f245a03160c859da344a39cf7f53ad7b54f452822af54e0cf3225071dd'
   '45774e46306a81675a950e940ebab249aef9128267a561874d8c531e99ce245a'
 )
-sha256sums_x86_64=('cdaf24b59918379cd7e3f539f0434fbafbf92b0497968a0baf2a22dcb7f03e39')
+sha256sums_x86_64=('91437498a5326b3d74ca98e19296ad440c0cc706392258a294f9d13a39731bac')
 
 prepare() {
   local _res="${srcdir}/payload/resources/resources"
@@ -70,12 +70,16 @@ prepare() {
   7z x -y "${srcdir}/nsis/\$PLUGINSDIR/app-64.7z" -o"${srcdir}/payload"
   asar extract "${srcdir}/payload/resources/app.asar" "${srcdir}/app"
   install -dm755 "${_daimon}"
-  tar -xzf "${_res}/daimon-bundle.tar.gz" -C "${_daimon}"
+  local _archive
+  for _archive in core git python uv; do
+    tar -xzf "${_res}/daimon-${_archive}.tar.gz" -C "${_daimon}"
+  done
 
   # Windows 可执行文件和 win32 工具链无法在 Linux 运行；依赖系统 git/python/uv。
   find "${srcdir}/app" "${_daimon}" -type f -iname '*.exe' -delete
   find "${_res}" -maxdepth 1 -type f -iname '*.exe' -delete
-  rm -f "${_res}/daimon-bundle.tar.gz" "${_res}/daimon-bundle.tar.gz.stamp"
+  # 解压后的 bundle 直接使用；组件归档只在 win32 下参考，Linux 包里是死重量。
+  rm -f "${_res}"/daimon-*.tar.gz
   find "${_res}/runtime" -maxdepth 1 -type f -iname '*.cmd' -delete
   find "${_daimon}/runtime" -type f \( \
     -iname '*.dll' -o \
@@ -110,11 +114,15 @@ prepare() {
 
   node "${srcdir}/patch-region.js" "${srcdir}/app" china kimi-desktop-cn
   grep -qF 'return "china";' "${srcdir}/app/out/main/index.js"
-  grep -qF '_0x4cdb08 = null, _0x49144b = "china";' \
+  grep -qE '_0x[0-9a-f]+ = null, _0x[0-9a-f]+ = "china";' \
     "${srcdir}/app/out/main/index.js"
-  grep -qF '"launcherEnabled": ![], "launcherShortcut": _0x1465b7' \
+  grep -qF '(process.env["KIMI_WORK_RESOURCES"] || process[' \
     "${srcdir}/app/out/main/index.js"
-  grep -qF 'const _0x1bf09b = "kimi-work-cn.desktop";' \
+  grep -qF '"launcherEnabled": ![], "launcherShortcut": ' \
+    "${srcdir}/app/out/main/index.js"
+  grep -qE '"launcherEnabled": _0x[0-9a-f]+\[_0x[0-9a-f]+\([0-9]+\)\] === !!\[\],' \
+    "${srcdir}/app/out/main/index.js"
+  grep -qF '= "kimi-work-cn.desktop";' \
     "${srcdir}/app/out/main/index.js"
 
   asar pack "${srcdir}/app" "${srcdir}/app.asar"
