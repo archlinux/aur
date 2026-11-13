@@ -6,8 +6,7 @@
 #
 # The development version: this one follows `main` rather than a tag, so what
 # it builds is whatever was pushed. `viewport-webkitgtk` is the same recipe cut
-# from the last release, and `viewport-webkitgtk-bin` is that release already
-# built — a system takes one of the three, and one engine.
+# from the last release — a system takes one of the two, and one engine.
 #
 # `pkgver()` reports the last tag, how many commits past it the checkout is,
 # and which commit — `0.1.5.r12.gdeadbee` — so an installed snapshot sorts
