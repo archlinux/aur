@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 pkgname=python-pyrosm
@@ -6,7 +9,7 @@ pkgdesc="A Python tool to parse OSM data from Protobuf format into GeoDataFrame.
 url="https://pyrosm.readthedocs.io/"
 
 pkgver=0.29.0
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64")
 license=("MIT")
