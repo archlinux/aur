@@ -1,18 +1,22 @@
 pkgbase = streaker-bin
-	pkgdesc = 🔥 GitHub contribution streak & stat tracking menu bar app.
-	pkgver = 2.6.4
+	pkgdesc = Cross-platform GitHub contribution streak and statistic tracking menu bar application with reminder notification.
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/jamieweavis/streaker
+	arch = aarch64
 	arch = x86_64
 	license = MIT
-	makedepends = asar
-	depends = electron44
-	provides = streaker=2.6.4
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	provides = streaker=3.0.0
 	conflicts = streaker
-	options = !emptydirs
-	source = streaker-2.6.4.rpm::https://github.com/jamieweavis/streaker/releases/download/v2.6.4/streaker-2.6.4-1.x86_64.rpm
-	source = streaker.sh
-	sha256sums = 1504d2a06944e643767f4af3c5efc4829beab35d84b15710347ccf636b342aa9
-	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
+	options = !strip
+	source = LICENSE-3.0.0::https://raw.githubusercontent.com/jamieweavis/streaker/v3.0.0/LICENSE
+	sha256sums = 7f918bfa66ad7a71f88c1b8773a8202e2253342a97bbced4f9951a893a95b095
+	source_aarch64 = streaker-3.0.0-aarch64.deb::https://github.com/jamieweavis/streaker/releases/download/v3.0.0/Streaker-3.0.0-linux-aarch64.deb
+	sha256sums_aarch64 = eba84569d29665cc63c4b8a24d6ede082941c8bcd062b0efcb7e2798040b65fe
+	source_x86_64 = streaker-3.0.0-x86_64.deb::https://github.com/jamieweavis/streaker/releases/download/v3.0.0/Streaker-3.0.0-linux-x86_64.deb
+	sha256sums_x86_64 = 1d306729d0366a9dd0b67351936dbf307a2dad38325ac1f6f7cd32e3e000429f
 
 pkgname = streaker-bin
