@@ -1,6 +1,6 @@
 pkgbase = mihomo-smart-bin
 	pkgdesc = Mihomo proxy kernel with the Smart policy group and the large LightGBM model (x86-64-v3)
-	pkgver = 1.19.34.alpha.smart.r4852.gf8257ce
+	pkgver = 1.19.35.alpha.smart.r4856.g3c7751b
 	pkgrel = 1
 	url = https://github.com/vernesong/mihomo
 	install = mihomo-smart-bin.install
@@ -10,13 +10,13 @@ pkgbase = mihomo-smart-bin
 	provides = clash-meta
 	conflicts = mihomo
 	conflicts = clash-meta
-	noextract = mihomo-f8257ce.pkg.tar.zst
+	noextract = mihomo-3c7751b.pkg.tar.zst
 	options = !strip
 	options = !debug
 	backup = etc/mihomo/config.yaml
-	source = mihomo-f8257ce.pkg.tar.zst::https://github.com/vernesong/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-amd64-v3-alpha-smart-f8257ce.pkg.tar.zst
-	source = Model-large-1.19.34.alpha.smart.r4852.gf8257ce-1.bin::https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin
-	sha256sums = e02049b90fe413addc7b382f5806a0a5f49eadc3487e47ff888e8aec95003012
+	source = mihomo-3c7751b.pkg.tar.zst::https://github.com/vernesong/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-amd64-v3-alpha-smart-3c7751b.pkg.tar.zst
+	source = Model-large-1.19.35.alpha.smart.r4856.g3c7751b-1.bin::https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin
+	sha256sums = 407eedfafed63ddc463bd9611f46afd3ce50b7e51d6e1e08d928eefec9407978
 	sha256sums = 832920df1290454710dd04aa4c7d4b5324edfd7816a7c9ad2272708b5d5a13a8
 
 pkgname = mihomo-smart-bin
