@@ -1,8 +1,8 @@
 pkgbase = ghost-downloader-git
 	pkgdesc = A multi-threading async downloader with QThread based on PyQt/PySide.多线程下载器 协程下载器.
-	pkgver = 4.4.7.r1.geaae7a4
+	pkgver = 4.5.2.r4.g45a60ba
 	pkgrel = 1
-	url = https://github.com/XiaoYouChR/Ghost-Downloader-3
+	url = https://gd.xychr.com/
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git

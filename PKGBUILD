@@ -1,11 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-downloader-git
 _pkgname=Ghost-Downloader
-pkgver=4.4.7.r1.geaae7a4
+pkgver=4.5.2.r4.g45a60ba
 pkgrel=1
 pkgdesc="A multi-threading async downloader with QThread based on PyQt/PySide.多线程下载器 协程下载器."
 arch=('any')
-url="https://github.com/XiaoYouChR/Ghost-Downloader-3"
+url="https://gd.xychr.com/"
+_ghurl="https://github.com/XiaoYouChR/Ghost-Downloader-3"
 license=('GPL-3.0-only')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -30,7 +31,7 @@ makedepends=(
     'uv'
 )
 source=(
-    "${pkgname%-git}.git::git+${url}"
+    "${pkgname%-git}.git::git+${_ghurl}"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
@@ -42,10 +43,10 @@ _get_project_dir() {
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 pkgver() {
-    cd "$(_get_project_dir)"
-    set -o pipefail
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$(_get_project_dir)" || return 1
+	local _t=$(git tag --list --sort=-v:refname | grep -m1 -E '^v?[0-9]+(\.[0-9]+)+$' || :)
+	local _n=$(git rev-list --count "${_t:+$_t..}HEAD") _s=$(git rev-parse --short=7 HEAD)
+	[[ -n $_t ]] && printf '%s.r%s.g%s\n' "${_t#v}" "$_n" "$_s" || printf 'r%s.%s\n' "$_n" "$_s"
 }
 _set_python_uv_build_env() {
 	export HOME="${srcdir}/.home"
@@ -87,6 +88,6 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}/plugins"
     cp -a "$(_get_project_dir)/dist/${_pkgname}-3.dist/." "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "$(_get_project_dir)/app/assets/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "$(_get_project_dir)/app/assets/logo.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-git}.png"
     install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
