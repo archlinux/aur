@@ -1,6 +1,6 @@
 pkgbase = python-amulet_pybind11_extensions
 	pkgdesc = Some useful extensions to pybind11
-	pkgver = 1.2.0a2
+	pkgver = 1.2.0a3
 	pkgrel = 1
 	url = https://github.com/Amulet-Team/Amulet-pybind11-extensions
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-amulet_pybind11_extensions
 	depends = python
 	depends = pybind11
 	optdepends = python-black
-	source = git+https://github.com/Amulet-Team/Amulet-pybind11-extensions.git#tag=1.2.0a2
-	md5sums = d73a26580fafdaf6c073e9ca8ae4ad97
+	source = git+https://github.com/Amulet-Team/Amulet-pybind11-extensions.git#tag=1.2.0a3
+	md5sums = 76e6d617156f033b13ae0e068c416178
 
 pkgname = python-amulet_pybind11_extensions
