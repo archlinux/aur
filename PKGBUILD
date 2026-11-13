@@ -1,11 +1,11 @@
 # Maintainer: XZram contributors <https://github.com/asafelobotomy/XZram>
 # AUR package source — push PKGBUILD + .SRCINFO to aur.archlinux.org/xzram.git
 #
-# Local checkout builds use the repo-root PKGBUILD (file://$startdir), not this file.
+# Local checkout builds use the repo-root PKGBUILD (it builds from the checkout), not this file.
 
 pkgbase=xzram
 pkgname=('xzram' 'xzram-gui')
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Cross-distro Linux swap management (zram, swap files, sysctl tuning)"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ _srcname=XZram
 source=("$_srcname-$pkgver.tar.gz::https://github.com/asafelobotomy/XZram/archive/refs/tags/v$pkgver.tar.gz")
 # Pinned from the published v$pkgver tag archive (release CI: scripts/ci-aur-package.sh
 # AUR_MODE=release). Re-pin on every version bump.
-sha256sums=('4bd766d08417b2ac950d6b0e25a5b14124298c5ca79d0efb759c6ea9b9bfb96e')
+sha256sums=('fd1c278450589d90618f83fa13edb2033f59917569d162a040a8f83e63478fe7')
 
 prepare() {
   cd "$_srcname-$pkgver"
@@ -64,7 +64,7 @@ package_xzram() {
 }
 
 package_xzram-gui() {
-  depends=('xzram' 'qt6-base')
+  depends=('xzram' 'qt6-base' 'hicolor-icon-theme')
   pkgdesc="Qt6 GUI for XZram swap management"
 
   cd "$_srcname-$pkgver"
