@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=kubernetes-mcp-server
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Model Context Protocol (MCP) server for Kubernetes and OpenShift'
 arch=('x86_64' 'aarch64' 'powerpc64le')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'demo.kubeconfig')
-sha256sums=('3e54fdd971727f1ff319ce3e4d93b7aacc7f4159a8bc0812334ec0830e551f7b'
+sha256sums=('536d097878e8cf27e26cdca1355431b6c7e91a18b18c5dc416e205a435e14346'
             '0ecdac7bcbde044afbf603e049b0493bb2eda037eed1fd3e63fc72f638bcd1b8')
 
 prepare() {
