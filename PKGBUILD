@@ -2,7 +2,7 @@
 
 _pkgname='typio'
 _pkgauthor='sepandhaghighi'
-pkgname="python-${_pkgname}"
+pkgname=python-${_pkgname}
 pkgver=1.4
 pkgrel=1
 pkgdesc="Make Your Terminal Type Like a Human"
@@ -11,9 +11,11 @@ arch=('any')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('MIT')
 
-optdepends=()
-depends=('python')
+provides=("${_pkgname}")
+conflicts=("python-${pkgname}")
+
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+depends=('python')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('ad36a614ce71bde68262a1df6d1e863b60a8edc028108386f28b6f255d5e8c6a')
