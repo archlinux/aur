@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chatbox-git
 _pkgname=Chatbox
-pkgver=1.24.3.r0.g27d92c9
+pkgver=1.24.4.r1886.g75bb935
 _electronversion=35
 _nodeversion=22
 pkgrel=1
@@ -42,10 +42,10 @@ _get_project_dir() {
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 pkgver() {
-	cd "$(_get_project_dir)"
-	set -o pipefail
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "${srcdir:-.}/${pkgname%-git}.git")" || return 1
+	_v=$(git tag --list --sort=-v:refname | grep -m1 -E '^v?[0-9]+(\.[0-9]+)+$' | tr -d 'v')
+	_n=$(git rev-list --count HEAD); _s=$(git rev-parse --short=7 HEAD)
+	[[ -n $_v ]] && printf '%s.r%s.g%s\n' "$_v" "$_n" "$_s" || printf 'r%s.%s\n' "$_n" "$_s"
 }
 _ensure_local_nvm() {
 	local NVM_DIR="${srcdir}/.nvm"
