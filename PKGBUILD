@@ -7,7 +7,7 @@
 pkgname=xlibre-input-elographics
 _pkgname=xf86-input-elographics
 pkgver=25.0.1
-pkgrel=4
+pkgrel=51
 pkgdesc="XLibre Elographics TouchScreen input driver"
 arch=('x86_64')
 license=('MIT')
