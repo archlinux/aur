@@ -1,0 +1,11 @@
+--- a/conf/wacom.rules
++++ b/conf/wacom.rules
+@@ -11,7 +11,7 @@
+ # comment out the next line if your distribution does not provide systemd
+ # If a /dev/ttySx device with the WACf name is detected, start the
+ # wacom-inputattach service with the kernel name as parameter
+-SUBSYSTEM=="tty|pnp", KERNEL=="ttyS[0-9]*", ATTRS{id}=="WACf*", TAG+="systemd", ENV{SYSTEMD_WANTS}+="wacom-inputattach@%k.service"
++# SUBSYSTEM=="tty|pnp", KERNEL=="ttyS[0-9]*", ATTRS{id}=="WACf*", TAG+="systemd", ENV{SYSTEMD_WANTS}+="wacom-inputattach@%k.service"
+ 
+ LABEL="wacom_end"
+ 
