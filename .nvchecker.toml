@@ -1,5 +1,0 @@
-[caire]
-source = "github"
-github = "esimov/caire"
-use_latest_release = true
-prefix = "v"

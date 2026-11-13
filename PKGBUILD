@@ -3,7 +3,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=caire
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Content aware image resize library based on Seam Carving"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 depends=('libxcursor' 'libxfixes' 'libxkbcommon' 'glibc' 'wayland' 'libxkbcommon-x11' 'libx11' 'libxcb' 'libglvnd')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/esimov/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('d63c5edff4f12bc14e787c0a8f3acb456119e1a03d4bd8bfcf70114abd44f941')
+sha256sums=('98fd9cd213b2e08abd5e9542b3149dfcb67827c8dc21fab9d3deabe1575537fe')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
