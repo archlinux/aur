@@ -14,8 +14,33 @@ setup_legion_group() {
   fi
 }
 
+notify_previous_versions() {
+  # Every version has its own directory, settings (data) and logs (log) of other versions stay there:
+  # they are not used (settings may be incompatible) and not removed (they may be still needed)
+  current="$(readlink -f /opt/LenovoLegion 2>/dev/null)"
+  found=0
+
+  for dir in /opt/lenovo-legion-linux-toolkit-*/; do
+    [ -d "$dir" ] || continue
+    dir="${dir%/}"
+    [ "$dir" = "$current" ] && continue
+
+    if [ "$found" -eq 0 ]; then
+      echo "Directories of other versions remain, their settings (data) and logs (log) are not used by this version:"
+      found=1
+    fi
+
+    echo "  $dir"
+  done
+
+  if [ "$found" -eq 1 ]; then
+    echo "Remove them when they are not needed: sudo rm -r <directory>"
+  fi
+}
+
 post_install() {
   setup_legion_group
+  notify_previous_versions
   echo "Please run 'systemctl enable lenovo-legion-daemon.service' to enable the service"
   echo "Please run 'systemctl start lenovo-legion-daemon.service' to start the service"
   echo "Please run 'systemctl status lenovo-legion-daemon.service' to check the status of the service"
@@ -23,7 +48,12 @@ post_install() {
 
 post_upgrade() {
   setup_legion_group
+  notify_previous_versions
   echo "Please run 'systemctl enable lenovo-legion-daemon.service' to enable the service"
   echo "Please run 'systemctl start lenovo-legion-daemon.service' to start the service"
   echo "Please run 'systemctl status lenovo-legion-daemon.service' to check the status of the service"
+}
+
+post_remove() {
+  notify_previous_versions
 }
