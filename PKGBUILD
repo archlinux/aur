@@ -4,7 +4,7 @@
 pkgname=wakapi-bin
 pkgver=2.18.2
 pkgrel=1
-pkgdesc='A minimalist, self-hosted WakaTime-compatible backend for coding statistics'
+pkgdesc='Minimalist, self-hosted WakaTime-compatible backend for coding statistics (prebuilt)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/muety/wakapi'
 license=('MIT')

@@ -1,5 +1,5 @@
 pkgbase = wakapi-bin
-	pkgdesc = A minimalist, self-hosted WakaTime-compatible backend for coding statistics
+	pkgdesc = Minimalist, self-hosted WakaTime-compatible backend for coding statistics (prebuilt)
 	pkgver = 2.18.2
 	pkgrel = 1
 	url = https://github.com/muety/wakapi
