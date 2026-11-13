@@ -1,6 +1,6 @@
 pkgbase = ae-code
 	pkgdesc = Desktop GUI for coding agents (fork of T3 Code), release
-	pkgver = 2026.11.13.5
+	pkgver = 2026.11.13.6
 	pkgrel = 1
 	url = https://github.com/SelfRef/ae-code
 	arch = x86_64
@@ -48,7 +48,7 @@ pkgbase = ae-code
 	conflicts = ae-code-git
 	options = !debug
 	options = !strip
-	source = ae-code-2026.11.13.5.tar.gz::https://github.com/SelfRef/ae-code/archive/refs/tags/v2026.11.13.5.tar.gz
-	sha256sums = 879d8b8eb80b495755039d0ede714c270a9e392f33fc60ac775ce391efbdcb5d
+	source = ae-code-2026.11.13.6.tar.gz::https://github.com/SelfRef/ae-code/archive/refs/tags/v2026.11.13.6.tar.gz
+	sha256sums = f07f88d14c7923fd73e8bbce7c5500c282b995098072ebba0f8d1ef522baa169
 
 pkgname = ae-code
