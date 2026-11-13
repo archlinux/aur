@@ -7,14 +7,14 @@
 
 # the source package must be downloaded manually
 # this can be done by going to the link here:
-# https://www.modartt.com/download?file=pianoteq_setup_v910.tar.xz
+# https://www.modartt.com/download?file=pianoteq_setup_v930.tar.xz
 # The downloaded files must be placed in the appropriate directory
 # - makepkg: The same directory as this PKGBUILD
 # - yay: /home/<user>/.cache/yay/pianoteq-stage
 # - paru: /home/<user>/.cache/paru/clone/pianoteq-stage/ 
 
 pkgname=pianoteq-stage
-pkgver=9.2.5
+pkgver=9.3.0
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=(x86_64 aarch64)
@@ -51,7 +51,7 @@ fi
 
 source=("local://pianoteq_setup_v${pkgver//./}.tar.xz"
   'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-b2sums=('c338e954e1df21505ac289f5f77a73d48b1396ee183a611693438e7388e19813be1cb2115a5af1f5b001733e07006f16042adcfc0062edf3bdd1c13c534ef3d3'
+b2sums=('6d938be53ea2ffcadd1e0a74b2b85134ab519c408da8f496defc2a08da27761d77992f2ead72b1c2ca8faf2fcc188bcd5e651b759747fa90102fb9a50dc6e32e'
         'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
 
 prepare() {
