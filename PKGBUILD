@@ -1,4 +1,4 @@
-# Maintainer: wackbyte <im@purring.fyi>
+# Maintainer: willow <willow@purring.fyi>
 # Contributor: telans <telans@protonmail.com>
 # Contributor: Simon Tas <simon.tas.st@gmail.com>
 
