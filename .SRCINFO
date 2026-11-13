@@ -1,14 +1,14 @@
 pkgbase = internxt-cli
 	pkgdesc = CLI tool to interact with Internxt encrypted cloud storage and WebDAV
-	pkgver = 1.6.10
+	pkgver = 1.6.11
 	pkgrel = 1
 	url = https://github.com/internxt/cli
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = npm
 	depends = nodejs>=22.13.0
-	noextract = internxt-cli-1.6.10.tgz
-	source = internxt-cli-1.6.10.tgz::https://registry.npmjs.org/@internxt/cli/-/cli-1.6.10.tgz
-	sha256sums = 0dd971e93400f7734c3026f7e5015875cb2edb37146bc6f807eaf0b2abec761e
+	noextract = internxt-cli-1.6.11.tgz
+	source = internxt-cli-1.6.11.tgz::https://registry.npmjs.org/@internxt/cli/-/cli-1.6.11.tgz
+	sha256sums = 8a05fc2e2e6c0753ae0d7fe739b1953e91c4719220a3983a4b2ecc2c6220c4bb
 
 pkgname = internxt-cli
