@@ -1,7 +1,7 @@
 pkgbase = dotnet-system-io-ports-native
 	pkgdesc = Native library of System.IO.Ports for .NET on Linux, runtime.linux-*.runtime.native.System.IO.Ports (NuGet package)
 	pkgver = 10.0.14
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dotnet/runtime
 	arch = x86_64
 	arch = aarch64
@@ -20,7 +20,12 @@ pkgbase = dotnet-system-io-ports-native
 	b2sums = 91c610080cc18e001e4559b7bda582d7fd9b31186d932a183a4f3805490b88ffab0345967c18b6d181e235b9603da6769c0d0773dde77b2693a471d179c0522b
 
 pkgname = dotnet-system-io-ports-native
+	provides = dotnet-system-io-ports-native-10.0=10.0.14
+	conflicts = dotnet-system-io-ports-native-10.0
+
+pkgname = dotnet-system-io-ports-native-10.0
+	pkgdesc = Native library of System.IO.Ports for .NET on Linux, runtime.linux-*.runtime.native.System.IO.Ports (NuGet package) (.NET 10.0)
 
 pkgname = dotnet-system-io-ports-native-debug
-	pkgdesc = Detached debugging symbols for dotnet-system-io-ports-native
+	pkgdesc = Detached debugging symbols for dotnet-system-io-ports-native and dotnet-system-io-ports-native-10.0
 	options = !strip

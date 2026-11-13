@@ -2,15 +2,19 @@
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
+# For the current .NET of Arch Linux (dotnet-sdk) and, with the same contents, for its version
+# (dotnet-sdk-10.0), like Arch Linux's dotnet-core: dotnet-build-deps and dotnet-build-deps-10.0 depend
+# on one each. The unversioned package moves on with the next .NET, the versioned one then gets a
+# PKGBUILD of its own. Both have the same library, so one debug package serves them.
+_dotnetsdkver="10.0"
 pkgbase=dotnet-system-io-ports-native
-pkgname=(dotnet-system-io-ports-native dotnet-system-io-ports-native-debug)
+pkgname=("$pkgbase" "$pkgbase-$_dotnetsdkver" "$pkgbase-debug")
 pkgver=10.0.14
-pkgrel=3
+pkgrel=4
 pkgdesc="Native library of System.IO.Ports for .NET on Linux, runtime.linux-*.runtime.native.System.IO.Ports (NuGet package)"
 arch=(x86_64 aarch64)
 url='https://github.com/dotnet/runtime'
 license=(MIT)
-_dotnetsdkver="10.0"
 makedepends=(
   "dotnet-sdk-$_dotnetsdkver"
   clang
@@ -139,17 +143,30 @@ check() {
   python -I check-serial.py "$srcdir/nupkg-src/libSystem.IO.Ports.Native.so"
 }
 
-package_dotnet-system-io-ports-native() {
+# Installs the files of the package $1
+_package() {
   # With the packages of the .NET build it belongs to, apart from libraries built from other sources
   install -Dm644 "$srcdir/nupkg/runtime.linux-$(_arch).runtime.native.System.IO.Ports.$pkgver.nupkg" \
     -t "$pkgdir/usr/share/nuget/dotnet-$_dotnetsdkver/packages/"
-  install -Dm644 "runtime-$_commit/LICENSE.TXT" -t "$pkgdir/usr/share/licenses/$pkgbase/"
+  install -Dm644 "runtime-$_commit/LICENSE.TXT" -t "$pkgdir/usr/share/licenses/$1/"
+}
+
+# The current .NET's, which stands in for the versioned package while it has the same version
+package_dotnet-system-io-ports-native() {
+  provides=("$pkgbase-$_dotnetsdkver=$pkgver")
+  conflicts=("$pkgbase-$_dotnetsdkver")
+  _package "${FUNCNAME[0]#package_}"
+}
+
+package_dotnet-system-io-ports-native-10.0() {
+  pkgdesc+=" (.NET $_dotnetsdkver)"
+  _package "${FUNCNAME[0]#package_}"
 }
 
 # The debug information of the library, under its build ID, where debuggers find it for every copy of the
 # library: the one in the NuGet package, and the ones applications ship, e.g. in $PSHOME of powershell
 package_dotnet-system-io-ports-native-debug() {
-  pkgdesc="Detached debugging symbols for dotnet-system-io-ports-native"
+  pkgdesc="Detached debugging symbols for dotnet-system-io-ports-native and dotnet-system-io-ports-native-$_dotnetsdkver"
   # makepkg would strip the debug information itself
   options=(!strip)
   local _dbg _buildid _file
