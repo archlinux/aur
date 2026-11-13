@@ -1,6 +1,6 @@
 pkgbase = scdr
 	pkgdesc = Process scheduling and priority daemon for EEVDF and sched_ext kernels
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/scdr
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = scdr
 	makedepends = libbpf
 	makedepends = libelf
 	makedepends = zlib
-	source = scdr-0.3.0.tar.gz::https://github.com/asafelobotomy/scdr/releases/download/v0.3.0/scdr-0.3.0.tar.gz
-	sha256sums = 8751f77fab604b024bb030a6600321ea4c3b0d25f5074d9c751e0e6e36acf008
+	source = scdr-0.4.0.tar.gz::https://github.com/asafelobotomy/scdr/releases/download/v0.4.0/scdr-0.4.0.tar.gz
+	sha256sums = 7b11b8a67c778cebc9e12ec51540a098e5246e9fd9b7622f881ccf2aa72f1aef
 
 pkgname = scdr
 	install = scdr.install

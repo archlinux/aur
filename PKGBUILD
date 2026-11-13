@@ -4,7 +4,7 @@
 # scheduler). Building scx-devbox needs a running kernel with sched_ext.
 pkgbase=scdr
 pkgname=('scdr' 'scx-devbox')
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Process scheduling and priority daemon for EEVDF and sched_ext kernels"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('cargo' 'clang' 'bpf' 'libbpf' 'libelf' 'zlib')
 # not GitHub's generated /archive/ tarball, whose bytes aren't guaranteed.
 # The release's `aur` artifact has this PKGBUILD with the real checksum.
 source=("$pkgbase-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgbase-$pkgver.tar.gz")
-sha256sums=('8751f77fab604b024bb030a6600321ea4c3b0d25f5074d9c751e0e6e36acf008')
+sha256sums=('7b11b8a67c778cebc9e12ec51540a098e5246e9fd9b7622f881ccf2aa72f1aef')
 
 prepare() {
   cd "$pkgbase-$pkgver"
