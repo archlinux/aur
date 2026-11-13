@@ -1,6 +1,6 @@
 # Maintainer: musqz <gummy-fang-deputy@duck.com>
 pkgname=archcanary
-pkgver=0.1.44
+pkgver=0.1.45
 pkgrel=1
 pkgdesc="Layered security detection stack for Arch Linux — malicious AUR packages, systemd/eBPF persistence, npm/bun cache poisoning, kernel module tampering"
 arch=('any')
@@ -23,7 +23,7 @@ backup=('etc/archcanary/dkms_allowlist.conf'
         'etc/archcanary/package_allowlist.conf')
 install=archcanary.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2bf1ba656abe047050e6ed013e9b2703e710f3dc63553dd556adee4d0033b4fc')
+sha256sums=('b77fce9ce39dde84fd72d98147a13cf99a2d89cd24a1b646dbc1cf7e0cef868b')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -140,7 +140,7 @@ EOF
 EOF
 
   cat > "$pkgdir/etc/archcanary/bpftool_allowlist.conf" << 'EOF'
-# eBPF loader binaries to skip during the bpftool loader and kprobe checks
+# eBPF loader binaries to skip during the bpftool loader checks
 # (--check-bpftool), system-wide allowlist. One binary basename per line.
 # Everything after # is a comment.
 # Add loaders that are known-good but not pacman-owned (a self-built or
