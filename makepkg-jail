@@ -331,6 +331,9 @@ EOF
     # Create mount targets in the staging directory before bubblewrap mounts
     # it read-only. The read-only mounts below then cover these targets.
     for path in \
+        /etc/arch-release \
+        /etc/os-release \
+        /etc/lsb-release \
         /etc/makepkg.conf \
         /etc/makepkg.conf.d \
         /etc/pacman.conf \
