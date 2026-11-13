@@ -1,8 +1,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=obs-avip-git
+_pkgname=${pkgname%-git}
 pkgver=0.1.0.r4.g1c42ac1
-pkgrel=1
+pkgrel=2
 pkgdesc='NDI® source and output for OBS in Rust, a drop-in for DistroAV'
 arch=(x86_64)
 license=(GPL-2.0-only)
@@ -19,11 +20,13 @@ depends=(avahi
          sndio)
 makedepends=(cargo
              git)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 _srcenv() {
-	cd "${pkgname%-git}"
+	cd "$_pkgname"
 	export CARGO_HOME="$srcdir"
 	if check_option debug y; then
 		export CARGO_PROFILE_RELEASE_DEBUG=2
@@ -45,7 +48,7 @@ prepare() {
 }
 
 pkgver() {
-	cd "${pkgname%-git}"
+	cd "$_pkgname"
 	git describe --long --abbrev=7 --tags --match="v*" |
 		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -57,6 +60,6 @@ build() {
 
 package() {
 	depends+=(libgcc_s.so)
-	cd "${pkgname%-git}"
+	cd "$_pkgname"
 	install -Dm0755 -t "$pkgdir/usr/lib/obs-plugins/" target/release/libobs_avip_plugin.so
 }
