@@ -1,4 +1,4 @@
-# Maintainer: wackbyte <im@purring.fyi>
+# Maintainer: willow <willow@purring.fyi>
 
 pkgname=otf-renogare
 pkgver=20170428
