@@ -1,18 +1,18 @@
 pkgbase = ipatool-bin
 	pkgdesc = Command-line tool that allows you to search for iOS, iPadOS, tvOS, visionOS, and macOS apps on the App Store, and download .ipa or macOS .pkg app packages.
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/majd/ipatool
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	provides = ipatool=2.8.0
+	provides = ipatool=2.8.1
 	conflicts = ipatool
-	source = LICENSE-2.8.0::https://raw.githubusercontent.com/majd/ipatool/v2.8.0/LICENSE
+	source = LICENSE-2.8.1::https://raw.githubusercontent.com/majd/ipatool/v2.8.1/LICENSE
 	sha256sums = 3466fcf0483597283e184031a9f1f0d142d7f41004452cf7714182742a503a95
-	source_aarch64 = ipatool-2.8.0-aarch64.tar.gz::https://github.com/majd/ipatool/releases/download/v2.8.0/ipatool-2.8.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 57ed54aee901950d46fe02d7af9bf85f83ab2c0f0ae6f121258d3c19e4d040bf
-	source_x86_64 = ipatool-2.8.0-x86_64.tar.gz::https://github.com/majd/ipatool/releases/download/v2.8.0/ipatool-2.8.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 3f837a01fb4d291f45a98713a06c77b1f5a0a9611b734c9dcd80be607ea12914
+	source_aarch64 = ipatool-2.8.1-aarch64.tar.gz::https://github.com/majd/ipatool/releases/download/v2.8.1/ipatool-2.8.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 64dc6311acbd92f8165fe382ee86852f520b23355dae65933cb0f60177357116
+	source_x86_64 = ipatool-2.8.1-x86_64.tar.gz::https://github.com/majd/ipatool/releases/download/v2.8.1/ipatool-2.8.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = c5a7d35d98a0ac41fbb9d21c19437c3e6006c6e32556f484d09ed26872f9c283
 
 pkgname = ipatool-bin
