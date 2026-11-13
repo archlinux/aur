@@ -1,0 +1,19 @@
+pkgbase = waybar-module-sysmon-git
+	pkgdesc = Waybar CFFI module showing CPU, RAM, GPU, network and disk usage as scrolling bar graphs
+	pkgver = r3.4692b93
+	pkgrel = 1
+	url = https://gitlab.com/cromfr/waybar-module-sysmon
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gtk3
+	depends = waybar
+	optdepends = nvidia-utils: NVIDIA GPU graph (libnvidia-ml)
+	provides = waybar-module-sysmon
+	conflicts = waybar-module-sysmon
+	source = waybar-module-sysmon::git+https://gitlab.com/cromfr/waybar-module-sysmon.git#branch=main
+	sha256sums = SKIP
+
+pkgname = waybar-module-sysmon-git

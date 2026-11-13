@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/waybar-module-sysmon/
+/*.pkg.tar.zst
