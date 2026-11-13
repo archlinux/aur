@@ -4,7 +4,7 @@
 # 词库已内置）。
 
 pkgname=wowtype-core
-pkgver=0.3.10
+pkgver=0.3.12
 pkgrel=1
 pkgdesc='WeChat-style pinyin input method for fcitx5, with bundled dictionaries and language model'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
   "$_pkgfile::${_gh_mirror}https://github.com/Gloridust/WowType/releases/download/v$pkgver/$_pkgfile"
 )
 # checksum 由 aur-auto-update 定期跟随 releases/latest 更新
-sha256sums=('4e8c81c4d0b3c44e650aa29168bfc1791005b57d6c18b3a5ce985680b71a6dae')
+sha256sums=('1d117ed411210f4618f3b811f0af6e63a654dbc98615a25b0f1af503f760cb3c')
 
 package() {
   # 官方 .pkg.tar.zst 已被 makepkg 自动解压到 srcdir，只把 usr/ 树收进 pkgdir
