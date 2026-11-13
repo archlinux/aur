@@ -1,6 +1,6 @@
 pkgbase = cratty-git
 	pkgdesc = Native GPU-rendered SSH client with an encrypted host vault (git version)
-	pkgver = 0.2.1.r2.gc5a4936
+	pkgver = 0.2.1.r3.g85ea4d7
 	pkgrel = 1
 	url = https://github.com/auf-gg/cratty
 	arch = x86_64
