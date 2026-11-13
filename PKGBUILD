@@ -4,8 +4,8 @@
 
 pkgname=dotnet-vs-validation
 _nugetid=Microsoft.VisualStudio.Validation
-pkgver=17.13.22
-pkgrel=2
+pkgver=18.7.19
+pkgrel=1
 pkgdesc="Common input validation and state verification utility methods, Microsoft.VisualStudio.Validation (NuGet package)"
 arch=(any)
 url='https://github.com/microsoft/vs-validation'
@@ -17,17 +17,17 @@ makedepends=(
   python
 )
 # The commit the package was published from (tag v17.13.22)
-_commit="fd7027e236db97b472614237b1453022e24ef146"
+_commit="bbf7eb3b41b076a1792f4feda04edc7ff40ad707"
 # Microsoft's internal build signs the assemblies, so they're public signed with the public key from
 # Arcade, giving them the same strong name as upstream's
 _arcadecommit="94f797268292122de4b6344d6265fad658c53703"
 source=("vs-validation-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "MSFT.snk::https://raw.githubusercontent.com/dotnet/arcade/$_arcadecommit/src/Microsoft.DotNet.Arcade.Sdk/tools/snk/MSFT.snk"
   "lcl-to-resx.py")
-sha512sums=('c3927f30bfa58d8ff777cc3b4fab257cf42c71782ed6fb0e3de850b643d5591a9def41ba7800da90af8b382f3a9ce94cf10ffd3f4b9c775c9ef5a2ce305f42e9'
+sha512sums=('435ca60c033b4a3d8aafb2cbcbfe97c31f9ab69b985c750d4af3913a801cb64c40005e4f24c5293e8f0e97857bc553f6b2ce483b67c5665562f114c95d9b8c8d'
   '98c02c09b9fed2ad77d8403efa5788053abb66a9c6c2cb8dd5d15ce49daf25e3a128b9b281fa2bc79e7cfc33adfbbfff6901b63fc9b882a890c13737892e71e1'
   'c55166dccaf9729657d5c6d639119d4bb3bc744a8e9f73f7beb7fed6fb3045ed0bf773f2ed59097ebffcc92bac1c25a933c60d1efba7cad1a5e49e90c2f5a4b4')
-b2sums=('3b5a3a05e017349eccf30484d1422c84a260f3e4ff7a6308dea96c86f6a911dd6bef78027aaceb96650744fab692b58ad9911d6ed376c565ab61b9d7c60097ae'
+b2sums=('a95be1662700a59d9d6a9389f30b6d82661769687d0a0a0fdd6a604e8453145389ce88f3279b61f126c29a4751366e1d82d65c0e71f4431359a39f21cbad0022'
   'df52cdab9f311499106f30869455797a02345bf43fd01e942fbb0312228660c88122fba00188484cb03616dfa4b234a83e73f132377c94169f2a26da175ff2ee'
   '8311ff8071a93b0fd5a8b095da0172a9817c577377007269273fe72aff8021c8fa233ad7087f40772760fff015d9827c1c13c6bf5878fba75b69f3c96b872d24')
 
@@ -59,7 +59,7 @@ _dotnet_env() {
 
 prepare() {
   cd "vs-validation-$_commit" || exit
-  # Upstream pins the .NET 9 SDK, the libraries build with newer ones just as well
+  # Upstream pins an exact SDK (10.0.302 in 18.7), the libraries build with the one installed just as well
   jq 'del(.sdk)' global.json >global.json.new
   mv global.json.new global.json
   # Nerdbank.GitVersioning needs git (see _dotnet_env for the versions), and MicroBuild is Microsoft's
@@ -105,8 +105,9 @@ check() {
   export TMPDIR="$_test_tmp"
   # The tests need packages from the feed upstream uses, which mirrors nuget.org
   _nuget_config "$(sed -n -E 's|.*<add key="([^"]+)" value="(https[^"]+)".*|\1=\2|p' nuget.config.upstream)"
-  # The test runner targets .NET 8
-  DOTNET_ROLL_FORWARD=Major dotnet test "test/$_nugetid.Tests/$_nugetid.Tests.csproj" "${_build_arguments[@]}"
+  # The tests target .NET 8. Since 18.x with xunit v3 on Microsoft.Testing.Platform (global.json's test
+  # runner), whose dotnet test takes the project by --project.
+  DOTNET_ROLL_FORWARD=Major dotnet test --project "test/$_nugetid.Tests/$_nugetid.Tests.csproj" "${_build_arguments[@]}"
   rm -rf "${_test_tmp:?}"
 }
 
