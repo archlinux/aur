@@ -1,6 +1,6 @@
 pkgbase = waveflow-bin
 	pkgdesc = Local-first music player with Hi-Res audio, AutoMix, word-synced lyrics, smart playlists, themes and plugins. No account or subscription
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/InstaZDLL/WaveFlow
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = waveflow-bin
 	conflicts = waveflow
 	options = !strip
 	options = !debug
-	source = waveflow-bin-2.0.1.deb::https://github.com/InstaZDLL/WaveFlow/releases/download/v2.0.1/WaveFlow_2.0.1_linux-x86_64.deb
-	sha256sums = 47397f53cb7424ae20899d990d4ea9f8a3e07e0f308941a7089e20653508e2c2
+	source = waveflow-bin-2.0.2.deb::https://github.com/InstaZDLL/WaveFlow/releases/download/v2.0.2/WaveFlow_2.0.2_linux-x86_64.deb
+	sha256sums = 113eb3614e021913b8a7d0cfcb0ec507bae43d2b052d7e48d786a599284f3475
 
 pkgname = waveflow-bin
