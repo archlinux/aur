@@ -1,6 +1,6 @@
 pkgbase = cordiale-bin
 	pkgdesc = Native desktop client for Grappa chat, built with Rust and Slint (official binary)
-	pkgver = 1.0.15.43226943691
+	pkgver = 1.0.17.43368124270
 	pkgrel = 1
 	url = https://github.com/Sythos/Cordiale
 	arch = x86_64
@@ -22,15 +22,15 @@ pkgbase = cordiale-bin
 	optdepends = xdg-desktop-portal: native file dialogs with a suitable desktop backend
 	optdepends = xdg-utils: open links in the default browser
 	optdepends = grappa-bin: run a local Grappa server
-	provides = cordiale=1.0.15.43226943691
+	provides = cordiale=1.0.17.43368124270
 	conflicts = cordiale
-	noextract = cordiale-bin-v1.0.15-Cordiale_Arch_rolling_x86_64.pkg.tar.zst
+	noextract = cordiale-bin-v1.0.17-Cordiale_Arch_rolling_x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = cordiale-bin-v1.0.15-Cordiale_Arch_rolling_x86_64.pkg.tar.zst::https://github.com/Sythos/Cordiale/releases/download/v1.0.15/Cordiale_Arch_rolling_x86_64.pkg.tar.zst
-	source = cordiale-v1.0.15.LICENSE::https://raw.githubusercontent.com/Sythos/Cordiale/v1.0.15/LICENSE
+	source = cordiale-bin-v1.0.17-Cordiale_Arch_rolling_x86_64.pkg.tar.zst::https://github.com/Sythos/Cordiale/releases/download/v1.0.17/Cordiale_Arch_rolling_x86_64.pkg.tar.zst
+	source = cordiale-v1.0.17.LICENSE::https://raw.githubusercontent.com/Sythos/Cordiale/v1.0.17/LICENSE
 	source = README.md
-	sha256sums = 5d12b8d3f6fc60ef8ebaef347de321255fbc9bfafeee90b2c85868252b4b9915
+	sha256sums = aacc3ec0f8e14dfe86154cdec5084cbbaae84993b0c257669308ce9a6ea603d4
 	sha256sums = 8a1f4da0b2da70ab95899a40d4cae72c4c9094edc5f95d177735fc68542b891b
 	sha256sums = f0ad2c89a6ee3cba5f4d12b02b6b1b8a5ea221e5f57730bfaae8bc1d88f46149
 

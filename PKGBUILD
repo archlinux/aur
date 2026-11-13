@@ -1,10 +1,10 @@
 # Maintainer: vash909 <iu1bot@xzgroup.net>
 
 pkgname=cordiale-bin
-pkgver=1.0.15.43226943691
+pkgver=1.0.17.43368124270
 pkgrel=1
 # Upstream appends the GitHub Actions run ID to its binary package version.
-_upstream_tag=v1.0.15
+_upstream_tag=v1.0.17
 _asset=Cordiale_Arch_rolling_x86_64.pkg.tar.zst
 pkgdesc='Native desktop client for Grappa chat, built with Rust and Slint (official binary)'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=("${pkgname}-${_upstream_tag}-${_asset}::${url}/releases/download/${_upst
         "cordiale-${_upstream_tag}.LICENSE::https://raw.githubusercontent.com/Sythos/Cordiale/${_upstream_tag}/LICENSE"
         'README.md')
 noextract=("${pkgname}-${_upstream_tag}-${_asset}")
-sha256sums=('5d12b8d3f6fc60ef8ebaef347de321255fbc9bfafeee90b2c85868252b4b9915'
+sha256sums=('aacc3ec0f8e14dfe86154cdec5084cbbaae84993b0c257669308ce9a6ea603d4'
             '8a1f4da0b2da70ab95899a40d4cae72c4c9094edc5f95d177735fc68542b891b'
             'f0ad2c89a6ee3cba5f4d12b02b6b1b8a5ea221e5f57730bfaae8bc1d88f46149')
 
