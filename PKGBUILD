@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=kio-s3-git
-pkgver=r523.98a09b5
+pkgver=r528.efed4f3
 pkgrel=1
 pkgdesc="KIO worker for Amazon S3 and compatible storage (git version)"
 arch=('x86_64')
