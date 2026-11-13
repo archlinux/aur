@@ -1,21 +1,17 @@
 pkgbase = python-smithy-json
 	pkgdesc = JSON serialization and deserialization support for Smithy tooling.
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/smithy-lang/smithy-python/tree/develop/packages/smithy-json
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
-	checkdepends = python-pytest-asyncio
-	checkdepends = python-freezegun
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = git
 	depends = python
 	depends = python-smithy-core
-	source = smithy-json::git+https://github.com/smithy-lang/smithy-python.git#tag=smithy-json/v0.5.0
-	sha256sums = aab786da291e22ddcf2fcca82cbc3aaa51615ba8bb2ddea2b24adfa73fa5145d
+	source = smithy-json-0.6.0.tar.gz::https://github.com/smithy-lang/smithy-python/archive/refs/tags/smithy-json/v0.6.0.tar.gz
+	sha256sums = c58faf9d195be4003be4e5d727f5356402a65f1de89c7c0845a91927bc355c4c
 
 pkgname = python-smithy-json
