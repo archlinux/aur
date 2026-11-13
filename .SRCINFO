@@ -1,0 +1,20 @@
+pkgbase = dsh-superagent-prototype-git
+	pkgdesc = DSH Superagent prototype — proactive GitHub/Feishu agent bundle for DeepSeek Harness (git)
+	pkgver = 0.1.0.r1.g8c32a9d
+	pkgrel = 1
+	url = https://github.com/deepseek-ai/dsh-superagent-prototype
+	arch = any
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = pnpm
+	makedepends = git
+	depends = nodejs
+	provides = dsh-superagent-prototype
+	conflicts = dsh-superagent-prototype
+	conflicts = dsh-superagent-prototype-bin
+	options = !strip
+	source = git+https://github.com/deepseek-ai/dsh-superagent-prototype.git
+	sha256sums = SKIP
+
+pkgname = dsh-superagent-prototype-git
