@@ -13,15 +13,15 @@ depends=('glibc')
 makedepends=('go' 'nodejs>=24' 'pnpm')
 backup=('etc/memos.conf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-        'systemd.service'
-        'sysusers.conf'
-        'memos.conf'
-        'tmpfiles.conf')
+        'memos.service'
+        'memos-sysusers.conf'
+        'memos-tmpfiles.conf'
+        'memos.conf')
 sha256sums=('067b7411c825cade8cecd9761de5d60a7cc830bf7ef8afdfeae00966be3a546e'
-            '956a0895ba490d7057048ed4458172d5b70b726e82127f4505cf95f9d9dcd0f3'
+            '0c7d5102f95e7348c4791e2c919b3664c1124469c5174349c81153894affe2dd'
             'eaf0d053c5673176c730085493db4d63b15e212e101fc02c9f9236f8f91abf20'
-            '29f519aa64fe4feb7c675aa279bc09e61b59d7a3a20d42a28140df1196a7a68a'
-            'ed17b9db8aadd8518a3da01e45b5445a819bdb0f7ccd8bc1acc9f52cc02964fc')
+            'ed17b9db8aadd8518a3da01e45b5445a819bdb0f7ccd8bc1acc9f52cc02964fc'
+            '29f519aa64fe4feb7c675aa279bc09e61b59d7a3a20d42a28140df1196a7a68a')
 
 _pnpm_env() {
   export pnpm_config_pm_on_fail=ignore
@@ -63,10 +63,10 @@ check() {
 }
 
 package() {
-  install -vDm644 systemd.service "$pkgdir/usr/lib/systemd/system/${pkgname}.service"
-  install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/${pkgname}.conf"
-  install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/${pkgname}.conf"
-  install -vDm644 memos.conf "$pkgdir/etc/memos.conf"
+  install -Dm644 memos.service -t "${pkgdir}/usr/lib/systemd/system"
+  install -Dm644 memos-sysusers.conf "${pkgdir}/usr/lib/sysusers.d/memos.conf"
+  install -Dm644 memos-tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/memos.conf"
+  install -Dm644 memos.conf -t "${pkgdir}/etc"
   cd "${pkgname}-${pkgver}"
   install -Dm755 memos -t "${pkgdir}/usr/bin"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"

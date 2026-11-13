@@ -12,6 +12,10 @@ RestartSec=1
 ExecStart=/usr/bin/memos
 EnvironmentFile=-/etc/memos.conf
 WorkingDirectory=/var/lib/memos
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
 ReadWritePaths=/var/lib/memos
 
 [Install]
