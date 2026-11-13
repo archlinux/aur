@@ -1,19 +1,21 @@
 pkgbase = ytdownloader-gui-bin
 	pkgdesc = A modern GUI App for downloading Videos and Audios from hundreds of sites.(Prebuilt version.Use system-wide electron)
-	pkgver = 4.0.1
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://ytdn.netlify.app/
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron30
+	depends = electron44
 	depends = nodejs
 	depends = ffmpeg
-	provides = ytdownloader-gui=4.0.1
+	provides = ytdownloader-gui=4.1.0
 	conflicts = ytdownloader-gui
 	options = !strip
-	source = ytdownloader-gui-4.0.1.rpm::https://github.com/aandrew-me/ytDownloader/releases/download/v4.0.1/YTDownloader_Linux.rpm
+	source = ytdownloader-gui-4.1.0.deb::https://github.com/aandrew-me/ytDownloader/releases/download/v4.1.0/YTDownloader_Linux.deb
+	source = ytdownloader-gui.js
 	source = ytdownloader-gui.sh
-	sha256sums = 49f8e21a0a0fe926f993562d89c601cc3af1af0bf6191543dd3154a1f0a08da4
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = b8e6dafa4745adfd3919e2451142e02842d5e907aae7d815b6a57470a894534f
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
 pkgname = ytdownloader-gui-bin
