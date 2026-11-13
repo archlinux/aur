@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=zeron-bin
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A native control plane for Claude Code, Codex, Cursor, Devin and other coding agents"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ options=('!strip' '!debug')
 
 source_x86_64=("zeron-${pkgver}-linux-x86_64.tar.gz::https://github.com/zeronsh/zeron/releases/download/v${pkgver}/zeron-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("zeron-${pkgver}-linux-aarch64.tar.gz::https://github.com/zeronsh/zeron/releases/download/v${pkgver}/zeron-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('f30e292160bed5a2e010c3ca95d6f2534ab9eff597e782be155bfd53b95722e0')
-sha256sums_aarch64=('ef0a935d2d125cb092fbde042476eafbe3566821e7b6dcbbf5a5833d61f63f12')
+sha256sums_x86_64=('eb498c608a9f0b499b260f0b6db58915458d72e4ca51a8b3098fe78898b3f956')
+sha256sums_aarch64=('6a5d4026dcca7ebaff2e9bb09f7b237be297768fe840b6aa5dbc2eed6ebce475')
 
 package() {
     local _appdir="zeron-${pkgver}-linux-${CARCH}"
