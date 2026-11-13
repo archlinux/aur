@@ -4,7 +4,7 @@
 # Contributor: 01189998819991197253 <dev.ben01189998819991197253+aur@gmail.com>
 
 pkgname=clonehero
-pkgver=1.1.0.6142_final
+pkgver=1.1.0.6161_final
 _upstream_ver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="Clone Hero is a free rhythm game, which can be played with any 5 or 6 button guitar controller, game controllers, or just your standard computer keyboard."
@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}.tar"::"https://github.com/clonehero-game/releases/
         "$pkgname"
         "LICENSE")
 
-sha256sums=('572971d93092283c5d0d52006a26b52ab8e8fb128dcfb42a3496de26c8aa231d'
+sha256sums=('873fe075b683038515e46ce43eaf21e6a21822373a560918b4333574162f6c68'
             '01125237ef90f8435523fed5ae09246a76eb562408c50e76597964b5675385cf'
             'a97d85930ac4844b3c5e90d4da8faa7a9b5267909d45be59b1fa39abc76df5fe'
             '9ec629974241b111ac33433a5971b26040ac2af749cab5760179f4af9c3298d7'
