@@ -9,14 +9,14 @@
 # you want a fully verifiable source build.
 
 pkgname=veshell-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="An innovative Not-Desktop environment for Linux built with Flutter and Rust"
 arch=('x86_64')
 url="https://github.com/free-explorers/veshell"
 license=('GPL-3.0-or-later')
 depends=(
-  'fontconfig' 'ttf-roboto' 'noto-fonts' 'noto-fonts-cjk'
+  'fontconfig' 'ttf-roboto' 'noto-fonts' 'noto-fonts-cjk' 'noto-fonts-emoji'
   'libglvnd' 'mesa'
   'libinput' 'seatd' 'systemd-libs' 'libxkbcommon' 'libxkbcommon-x11'
   'libdisplay-info' 'wayland'
@@ -37,11 +37,11 @@ backup=('etc/pam.d/veshell' 'etc/pam.d/veshell-fingerprint')
 provides=('veshell' 'wayland-compositor')
 conflicts=('veshell' 'veshell-git')
 
-source=("veshell-0.2.1-x86_64.tar.zst::https://github.com/free-explorers/veshell-packaging/releases/download/v0.2.1/veshell-0.2.1-x86_64.tar.zst")
-sha256sums=('d11345c7b700d5692ccca37f63007445b11db13eb64b311211166bb7bcb1a30c')
+source=("veshell-0.2.2-x86_64.tar.zst::https://github.com/free-explorers/veshell-packaging/releases/download/v0.2.2/veshell-0.2.2-x86_64.tar.zst")
+sha256sums=('3b94817b80081f037cd097ac8d3d16a0067d083c18e68fdb46138d9424fc986e')
 
 package() {
-  bsdtar -xf "$srcdir/veshell-0.2.1-x86_64.tar.zst" -C "$pkgdir"
+  bsdtar -xf "$srcdir/veshell-0.2.2-x86_64.tar.zst" -C "$pkgdir"
   install -Dm644 "$pkgdir/usr/share/licenses/veshell/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
 }
