@@ -1,14 +1,14 @@
 pkgbase = k6-bin
 	pkgdesc = A modern load testing tool, using Go and JavaScript (precompiled)
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://k6.io
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-or-later
-	provides = k6={2.3.0}
+	provides = k6={2.4.0}
 	options = !emptydirs
-	source_x86_64 = https://github.com/grafana/k6/releases/download/v2.3.0/k6-v2.3.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 39c3117b6af817592dcd0ce4242105c0a7af10948c2a425306f0be8f7a8a8ab1
+	source_x86_64 = https://github.com/grafana/k6/releases/download/v2.4.0/k6-v2.4.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 5a5ecf23529ccf93135bc7e5b0c1cd5126ecf5f2672e22eed1556a0ab74abb87
 
 pkgname = k6-bin
