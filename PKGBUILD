@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mogan-bin
 _pkgname='Mogan STEM'
-pkgver=2026.3.8
+pkgver=2026.3.9
 pkgrel=1
 pkgdesc="Mogan STEM Suite (based on GNU TeXmacs): Enjoy exploring science and technology!"
 arch=('x86_64')
@@ -24,6 +24,7 @@ depends=(
     'qt6-declarative'
     'libxkbcommon'
     'fcitx5-qt'
+    'hicolor-icon-theme'
 )
 options=(
     '!strip'
@@ -32,8 +33,19 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-stem-v${pkgver}-debian13-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('32ef14686cc7bcfade0ad5adbd471cbc34894b67849d81e8e8cb002c034028f9'
-            'b3e9c2ea2115387e381b4f66d286e59c0ad4a16b94eed5313b03ce05fadc8863')
+sha256sums=('9d0feeb0c678a1b9de443e71f4f8b455063399cdd492497c4577a3c569556c5f'
+            '0995ecbfb6b721d08c61ff98c05501e4f74a5cee57c2c9a3864d0c7171ea2e82')
+_install_icons() {
+	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
+	while IFS= read -r -d '' _icon; do
+		_ext="${_icon##*.}"
+		_size=$(echo "${_icon%/*}" | grep -oE '[0-9]+x[0-9]+|scalable' | head -1)
+		[[ -z "${_size}" ]] && _size=$([[ "${_ext}" == svg ]] && echo scalable || od -An -tu1 -j16 -N8 "${_icon}" 2>/dev/null | awk '{printf "%dx%d",$1*16777216+$2*65536+$3*256+$4,$5*16777216+$6*65536+$7*256+$8}')
+		[[ "${_size}" =~ ^[0-9]+x[0-9]+$ ]] || _size=scalable
+		_dest=$([[ "${_icon}" == */share/pixmaps/* ]] && echo pixmaps || echo "icons/hicolor/${_size}/apps")
+		install -Dm644 "${_icon}" "${pkgdir}/usr/share/${_dest}/${_name}.${_ext}"
+	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
+}
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
@@ -52,12 +64,7 @@ package() {
         "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -a "${srcdir}/opt/${pkgname%-bin}-stem/share/"{doc,"${pkgname%-bin}"lab} \
         "${pkgdir}/usr/lib/${pkgname%-bin}/share"
-    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
-		_extension="${_i##*.}"
-		_icon_path="${_i#*share/icons/}"
-		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
-		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
-	done
+    _install_icons
     _mime_types_size=(16x16 20x20 22x22 24x24 32x32 36x36 40x40 48x48 64x64 72x72 96x96 128x128 192x192 256x256 512x512)
     for _mt_size in "${_mime_types_size[@]}";do
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_mt_size}/mimetypes/texmacs-document.png" \
