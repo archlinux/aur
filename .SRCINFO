@@ -1,0 +1,24 @@
+pkgbase = futureboard-studio-bin
+	pkgdesc = Futureboard Studio — native Digital Audio Workstation
+	pkgver = 2026.11.1_beta2.0.0
+	pkgrel = 1
+	url = https://github.com/futureboard/futureboard-studio
+	install = futureboard-studio-bin.install
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = alsa-lib
+	depends = gtk4
+	depends = libgudev
+	depends = libxkbcommon-x11
+	depends = shared-mime-info
+	optdepends = pipewire-pulse: PipeWire audio output
+	optdepends = pulseaudio: PulseAudio audio output
+	optdepends = nvidia-utils: Vulkan driver for NVIDIA GPUs (Mesa already covers Intel/AMD)
+	provides = futureboard-studio
+	conflicts = futureboard-studio
+	options = !strip
+	options = !debug
+	source_x86_64 = Futureboard.Studio-2026.11.1-beta2.0.0-x86_64.AppImage::https://github.com/futureboard/futureboard-studio/releases/download/2026.11.1-beta2.0.0/Futureboard.Studio-2026.11.1-beta2.0.0-x86_64.AppImage
+	sha256sums_x86_64 = 57d1123c65c5519419a3732ca34faa46f098c7bd3d6029aa04de059b6a4fec50
+
+pkgname = futureboard-studio-bin
