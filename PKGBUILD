@@ -1,15 +1,17 @@
 # Maintainer: Inc44
 pkgname=libbsc-cuda
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance block-sorting data compressor with CUDA"
 arch=(x86_64)
 url=https://github.com/IlyaGrebnov/libbsc
 license=(Apache-2.0)
 depends=(
 	cuda
-	gcc-libs
 	glibc
+	libgcc
+	libgomp
+	libstdc++
 )
 makedepends=(
 	cccl
