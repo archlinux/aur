@@ -1,6 +1,6 @@
 # Maintainer: Alfonso de la Guarda <alfonsodg at gmail dot com>
 pkgname=marker-enhanced-git
-pkgver=v2026.11.13.r0.g8977400
+pkgver=v2026.11.14.r0.g8e04ef8
 pkgrel=1
 pkgdesc="Markdown editor for Linux with Mermaid 10.9, batch PDF export, dark mode, and security fixes"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/alfonsodg/Marker"
 license=('GPL-3.0-or-later')
 depends=(
   'gtk3'
-  'gtksourceview3'
+  'gtksourceview4'
   'gtkspell3'
   'webkit2gtk-4.1'
 )
