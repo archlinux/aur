@@ -1,6 +1,6 @@
 pkgbase = litellm-bin
 	pkgdesc = Library to easily interface with LLM API providers (prebuilt wheel)
-	pkgver = 1.109.0
+	pkgver = 1.109.1
 	pkgrel = 1
 	url = https://github.com/BerriAI/litellm
 	arch = x86_64
@@ -123,10 +123,10 @@ pkgbase = litellm-bin
 	provides = litellm
 	provides = python-litellm
 	conflicts = litellm
-	noextract = litellm-1.109.0-cp310-abi3-manylinux_2_28_x86_64.whl
-	source_x86_64 = https://files.pythonhosted.org/packages/cp310/l/litellm/litellm-1.109.0-cp310-abi3-manylinux_2_28_x86_64.whl
-	sha256sums_x86_64 = d9a5bf856384f962c3eced5afc82dc0724e6f2433e47df6459e7f5c322af69b0
-	source_aarch64 = https://files.pythonhosted.org/packages/cp310/l/litellm/litellm-1.109.0-cp310-abi3-manylinux_2_28_aarch64.whl
-	sha256sums_aarch64 = 4309728c770de22bb797f08c26830b2feaf91e42e14fda584ddf5fa5d5d5cfc7
+	noextract = litellm-1.109.1-cp310-abi3-manylinux_2_28_x86_64.whl
+	source_x86_64 = https://files.pythonhosted.org/packages/cp310/l/litellm/litellm-1.109.1-cp310-abi3-manylinux_2_28_x86_64.whl
+	sha256sums_x86_64 = 1c8b4dd671fa0cd0850aa751678704ff77e595fb1e6085b2dc3be39ee19bdaaf
+	source_aarch64 = https://files.pythonhosted.org/packages/cp310/l/litellm/litellm-1.109.1-cp310-abi3-manylinux_2_28_aarch64.whl
+	sha256sums_aarch64 = 1dcf31166d385e6eaaef7f5840ba88c4eac319d1aa2d3ec2787de981e07fcf11
 
 pkgname = litellm-bin
