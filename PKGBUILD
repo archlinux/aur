@@ -1,11 +1,11 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=jdk-temurin-ea-bin
-pkgver=28+22
+pkgver=28+23
 pkgrel=1
 _major=${pkgver%%+*}
 pkgdesc="Temurin ${_major} early access build, OpenJDK binaries by Adoptium"
-arch=('x86_64' 'aarch64' 'powerpc64le' 'riscv64')
+arch=('x86_64' 'powerpc64le' 'riscv64')
 url="https://adoptium.net/temurin/"
 license=('LicenseRef-Java')
 depends=('java-runtime-common>=3' 'java-environment-common=3' 'ca-certificates-utils'
@@ -57,10 +57,9 @@ sha256sums=('e269163fa682197c04252ca202f1239965dfe842173e154cf75df954edb0314f'
             'c9079bc3676873b39967861c24036074bf6d224442994b4c4ce79e888602fcd5'
             '8b2491d0b5cbc67075dcae4d29c8a92b9ab813d9eca05a2f16ee3b3efb970e65'
             'e15912c341217081f40f73a89203c765e501470ef3a01099c1995139214ff4d6')
-sha256sums_x86_64=('30415d11dce9baab5b1a16870a09d3c6313bf7576cb098d3788f1aae423441da')
-sha256sums_aarch64=('fab98ce7e5661b7b93528e5fb85bc7efd2a0eeccbbd2ff0d9b9c2726aa0b4cc2')
-sha256sums_powerpc64le=('0efa356b6f1e1c09072311a1af4c9582967674243b3d826cb24c7bd4d4064ddc')
-sha256sums_riscv64=('55ca3a1882926b2fc5c38a5ca4f24a32e0306058a1415c27709d4910c30dece3')
+sha256sums_x86_64=('2d07f2ec5f3d199ed68e83d7b46fc02672f2cfd1083588932e232f1ce340d0da')
+sha256sums_powerpc64le=('286d26cf5eca83fd89139b2f3a14c566c12e28246d8aa488e00f15cebe34d982')
+sha256sums_riscv64=('267f4c30b6e10e680f01f37983073e958c69a7c9ec1a94cf98e79796e8a56965')
 
 # No major version in the directory name, so the default set with
 # archlinux-java survives the move of the tip to a new major
