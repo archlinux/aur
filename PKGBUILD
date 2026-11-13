@@ -3,12 +3,12 @@
 # Builds from the tagged source. For the prebuilt binaries, see `lightforge-bin`.
 
 pkgname=lightforge
-pkgver=1.0.0beta.11
+pkgver=1.0.0beta.12
 pkgrel=1
 # The upstream tag. AUR versions may not contain a hyphen, so `1.0.0-beta.5`
 # becomes `1.0.0beta.5` here — which `vercmp` orders *before* `1.0.0`, so the
 # eventual stable release upgrades cleanly and needs no `epoch`.
-_tag=v1.0.0-beta.11
+_tag=v1.0.0-beta.12
 pkgdesc='Install, update and play World of Warcraft on Linux, and a home for all your other Battle.net games'
 arch=('x86_64')
 url='https://github.com/LightforgeProject/lightforge'
@@ -16,13 +16,14 @@ license=('GPL-3.0-or-later')
 # The launcher opens Vulkan, Wayland and X11 at run time rather than linking
 # them, so there is nothing to depend on but libc and libudev (gamepads) — and
 # it falls back to software rendering by itself when there is no GPU it can use.
-depends=('glibc' 'gcc-libs' 'fontconfig' 'systemd-libs' 'python')
+depends=('glibc' 'gcc-libs' 'fontconfig' 'ttf-font' 'systemd-libs' 'python')
 makedepends=('cargo')
 optdepends=(
   'lib32-gnutls: 32-bit runtime for Battle.net (needs multilib)'
   'lib32-freetype2: 32-bit runtime for Battle.net (needs multilib)'
   'lib32-vulkan-icd-loader: 32-bit runtime for Battle.net (needs multilib)'
   'mangohud: the in-game overlay Lightforge can enable per game'
+  'xdg-desktop-portal-impl: the file and folder pickers'
 )
 conflicts=('lightforge-bin')
 # `makepkg` adds `-flto=auto` to CFLAGS by default, and `ring` compiles C and
@@ -34,7 +35,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
 # Of GitHub's generated source archive for the tag, which is not
 # byte-identical to anything produced locally. Regenerate with `updpkgsums`
 # once the tag is pushed, before uploading.
-sha256sums=('f7d968c1d2fac0820cb1daf1167996ac8fe10e1fa65f9eeabe5cf2020ef66846')
+sha256sums=('8fed967cd89cbfb05021b47b4fde92ae12e88f9bb7c61026f606a5f6eb9dcb3b')
 _srcdir="$pkgname-${_tag#v}"
 
 prepare() {
