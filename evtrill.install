@@ -1,0 +1,27 @@
+# The udev rule opens /dev/uinput and Wooting hidraw nodes to the service.
+# Nodes that already exist only pick it up on a change event.
+_retrigger() {
+    udevadm trigger --action=change --subsystem-match=misc \
+        --subsystem-match=hidraw 2>/dev/null || :
+}
+
+post_install() {
+    _retrigger
+    cat <<'MSG'
+==> evtrill runs as a system service. To set it up:
+
+    1. Copy the default config and edit it:
+         sudo install -Dm644 /usr/share/evtrill/config.yaml /etc/evtrill/config.yaml
+
+    2. Start the service:
+         sudo systemctl enable --now evtrill
+
+    After editing the config: sudo systemctl restart evtrill
+    You do not need to be in the `input` group yourself.
+MSG
+}
+
+post_upgrade() {
+    _retrigger
+    echo "==> Restart the service to run the new version: sudo systemctl restart evtrill"
+}

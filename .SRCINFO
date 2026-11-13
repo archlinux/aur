@@ -1,0 +1,17 @@
+pkgbase = evtrill
+	pkgdesc = SOCD cleaner for rhythm games: a two-key trill daemon for any Linux keyboard, with Wooting analog support
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zakack/evtrill
+	install = evtrill.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	depends = libevdev
+	depends = libyaml
+	depends = systemd
+	source = evtrill-0.1.0.tar.gz::https://github.com/zakack/evtrill/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 627ae31ccedd7966e5034ccebc10d95e4b0e73a7fa30a099c64735dcf3ff0e73
+
+pkgname = evtrill
