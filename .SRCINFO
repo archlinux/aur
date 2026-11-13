@@ -1,0 +1,18 @@
+pkgbase = zestins
+	pkgdesc = LV2 plugins from ZestBay: utility, meter, EQ, gate, compressor, delay, reverb, tone generator, synth and MIDI tools
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://github.com/lemonxah/zestbay
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = MIT
+	makedepends = lv2
+	makedepends = pkgconf
+	depends = glibc
+	depends = libx11
+	optdepends = zestbay: PipeWire patchbay that hosts these plugins
+	source = zestins-1.2.7.tar.gz::https://github.com/lemonxah/zestbay/archive/refs/tags/v1.2.7.tar.gz
+	sha256sums = 74501a2556b80241cdf4d8961bc745997ef7e9251c47bec3a7bef03252183cd2
+
+pkgname = zestins
