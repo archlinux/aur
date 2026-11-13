@@ -5,21 +5,22 @@
 # `lightforge`.
 
 pkgname=lightforge-bin
-pkgver=1.0.0beta.11
+pkgver=1.0.0beta.12
 pkgrel=1
 # See the note in the `lightforge` PKGBUILD for why the version loses its
 # hyphen here.
-_tag=v1.0.0-beta.11
+_tag=v1.0.0-beta.12
 pkgdesc='Install, update and play World of Warcraft on Linux, and a home for all your other Battle.net games'
 arch=('x86_64')
 url='https://github.com/LightforgeProject/lightforge'
 license=('GPL-3.0-or-later')
-depends=('glibc' 'gcc-libs' 'fontconfig' 'systemd-libs' 'python')
+depends=('glibc' 'gcc-libs' 'fontconfig' 'ttf-font' 'systemd-libs' 'python')
 optdepends=(
   'lib32-gnutls: 32-bit runtime for Battle.net (needs multilib)'
   'lib32-freetype2: 32-bit runtime for Battle.net (needs multilib)'
   'lib32-vulkan-icd-loader: 32-bit runtime for Battle.net (needs multilib)'
   'mangohud: the in-game overlay Lightforge can enable per game'
+  'xdg-desktop-portal-impl: the file and folder pickers'
 )
 provides=("lightforge=$pkgver")
 conflicts=('lightforge')
@@ -27,9 +28,9 @@ conflicts=('lightforge')
 # builds an empty `-debug` package out of what it does not find.
 options=('!debug' '!strip')
 source=("lightforge-${_tag#v}-x86_64-linux.tar.gz::$url/releases/download/$_tag/lightforge-${_tag#v}-x86_64-linux.tar.gz")
-# Of the tarball attached to the v1.0.0-beta.11 release, as published in its
+# Of the tarball attached to the v1.0.0-beta.12 release, as published in its
 # SHA256SUMS. Regenerate with `updpkgsums` if the artifacts are ever rebuilt.
-sha256sums=('af8415f1b5b718da4b9287dc3901384e6e96ea490e635a68974625aa4a1397c9')
+sha256sums=('592eadedd99b43d300caaf22fb4550357f3be86fc54e8d170bc2d6fa0460fffa')
 _srcdir="lightforge-${_tag#v}"
 
 package() {
