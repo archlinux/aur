@@ -6,7 +6,7 @@
 # maintained by Heftig for the 'linux' package in the Arch 'Core' repo. 
 
 pkgbase=linux-stub
-pkgver=7.2.15.arch1
+pkgver=7.3.4.arch1
 pkgrel=1
 #pkgdesc
   _oldpkgdesc='Linux'
@@ -61,17 +61,17 @@ validpgpkeys=(
 )
 
 # https://www.kernel.org/pub/linux/kernel/v7.x/sha256sums.asc
-# https://gitlab.archlinux.org/packaging/packages/linux/blob/7.2.15.arch1-1/PKGBUILD
-sha256sums=('d0f6b1d7324c937ccaeb5c4ca7084bfcf71db2edb3e2d3a31f0ad83a681809ab'
+# https://gitlab.archlinux.org/packaging/packages/linux/blob/7.3.4.arch1-1/PKGBUILD
+sha256sums=('b11b6df8295e8e991ff040b71aaa4994a8b55caa23b6b092907f195b5840fd1f'
             'SKIP'
-            '58c4f43e0c1583a37774867efe8a8d7b1201d094feb304111da161791193a790'
+            '0bd7c69abfa671c377989c4795bcb3662a25904d4ec8dbda73204b5689405c2f'
             'SKIP')
-sha256sums_x86_64=('ea7fe1e206eab2458ed710db696278b51df08642a6f06de3d8358db340652528')
-b2sums=('a1d1a6572667dfd75f7dde083a8d461db98e08bbc67cdd395e2d73a422ee487bd14392ce69b9511c386b63d9c3c02255978a33149278d6e3bace35937ceda495'
+sha256sums_x86_64=('bb03d28b8af371cd47eebf18378197c57e26c951d33c872d52ae97a2690d1ec6')
+b2sums=('9b75f615d0a03d6627d7e3db4397882d602161db13cd5efd6226e0e5c5f970d1baea676d9d01edd0f09ed0b7207b6421e6340f1b8e9bd4e8152491ddddcc9021'
         'SKIP'
-        '67c3a12310872c288ee5c6681fcd3f956103da1a7cf67f97a0bc2a1c2bfea6c4d7f916250eee79088d3e5c74e2e85a6145b3a605ed7527990c95e69454a9a455'
+        'b68e45a3a00532ae7719d5febc5cf487712f7290b2bba60e5bc5fdd693b7477693823f79ea8e9a27dbc66da7bf6c0cbd6cbcfb52a1b420a8d800ec64982a9d09'
         'SKIP')
-b2sums_x86_64=('5f863771b626ec7d01692b8a2c4cf0bbb774fe334320723d0454f0f07410db58106cb56f2715d3add61ca1e2887e753806ea32d7b4b21d37bad32ae44f144ad5')
+b2sums_x86_64=('6948a9e708325cb54446530da2bd6ded6f0717a534893fff6acaa1a113bce42eed085f6cc5b3a7972f9a1aa4e6bc7d8484ab2bf74ae3253d444fb274a23beae1')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
