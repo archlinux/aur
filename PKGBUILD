@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=neoko-terminal-desktop-bin
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Native neoko-terminal client: local and remote terminal with Relay pairing (GTK 4)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=('!strip' '!debug')
 
 _deb="neoko-terminal-${pkgver}-x86_64-unknown-linux-gnu.deb"
 source_x86_64=("${_deb}::${url}/releases/download/neoko-terminal-desktop-v${pkgver}/${_deb}")
-sha256sums_x86_64=('cbd8fc6eb2a4a735d9e4c9d2052add6cf950ee9fcf8f7b59d1bd72673a8058cf')
+sha256sums_x86_64=('a77162137dd9121a2ac32beed4107efc1ac9ab844368d532c02c21355d6d4ad6')
 noextract=("${_deb}")
 
 package() {
