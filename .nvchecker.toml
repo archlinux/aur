@@ -1,0 +1,5 @@
+[runjam]
+source = "github"
+github = "peintune/runjam"
+use_latest_release = true
+prefix = "v"

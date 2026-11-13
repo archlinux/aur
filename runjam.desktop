@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=RunJam
+Comment=Desktop manager for AI coding agents
+Exec=runjam %U
+Icon=runjam
+Terminal=false
+Type=Application
+Categories=Development;
+Keywords=AI;agent;coding;Claude;Codex;Gemini;
+StartupWMClass=Runjam

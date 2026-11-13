@@ -1,0 +1,19 @@
+Arch packaging uses the distribution Node.js (depends=nodejs) instead of
+downloading and bundling a private ~100 MB runtime during the build. Keep
+upstream's download path available for its own macOS/Windows installers by
+gating it behind an opt-in environment variable.
+
+--- a/src-tauri/build.rs
++++ b/src-tauri/build.rs
+@@ -16,7 +16,10 @@
+         out_dir.join("bin").join("node")
+     };
+ 
+-    if !node_bin.exists() {
++    // Arch packaging: the package depends on the distro nodejs and does not
++    // want a private runtime downloaded at build time. Upstream keeps this
++    // for its own macOS/Windows installers.
++    if std::env::var_os("RUNJAM_BUNDLED_NODE").is_some() && !node_bin.exists() {
+         download_nodejs(&target, out_dir);
+     }
+ 

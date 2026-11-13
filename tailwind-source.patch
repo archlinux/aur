@@ -1,0 +1,15 @@
+The release tarball has no .git directory, so Tailwind's automatic content
+detection falls back to the directory containing main.css instead of the
+project root and emits no utility classes. The result is an app that runs but
+renders with no layout. Point Tailwind at the sources explicitly.
+
+--- a/src/assets/styles/main.css
++++ b/src/assets/styles/main.css
+@@ -1,4 +1,6 @@
+ @import "tailwindcss";
+ @plugin "@tailwindcss/typography";
++@source "../../../index.html";
++@source "../../../src";
+ 
+ /* Class-based dark mode: activated by <html class="dark"> */
+ @custom-variant dark (&:where(.dark, .dark *));
