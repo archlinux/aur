@@ -1,7 +1,7 @@
 # Maintainer: Kurobac <rkurobac at gmail dot com>
 
 pkgname=edgemap
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="DualSense UHID proxy — remap, combo, macro, profile auto-switching"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('opus: experimental Bluetooth speaker audio'
     'python-pyqt6: GUI config editor (edgemap-gui)'
     'pipewire-audio: Bluetooth HD haptics and experimental speaker audio (pw-cat)')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kurobac/edgemap/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2d79f0074408b59eb707f4459e5f508da3554664d8033ebb4c2d0331e34f926d')
+sha256sums=('263ee91679881a70acd1e96b170b4567323d53276e5fb0442e8d757dce6ff613')
 install=edgemap.install
 
 prepare() {

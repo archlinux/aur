@@ -1,6 +1,6 @@
 pkgbase = edgemap
 	pkgdesc = DualSense UHID proxy — remap, combo, macro, profile auto-switching
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/Kurobac/edgemap
 	install = edgemap.install
@@ -14,7 +14,7 @@ pkgbase = edgemap
 	optdepends = libnotify: desktop notifications on profile switch
 	optdepends = python-pyqt6: GUI config editor (edgemap-gui)
 	optdepends = pipewire-audio: Bluetooth HD haptics and experimental speaker audio (pw-cat)
-	source = edgemap-1.4.0.tar.gz::https://github.com/Kurobac/edgemap/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = 2d79f0074408b59eb707f4459e5f508da3554664d8033ebb4c2d0331e34f926d
+	source = edgemap-1.5.0.tar.gz::https://github.com/Kurobac/edgemap/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 263ee91679881a70acd1e96b170b4567323d53276e5fb0442e8d757dce6ff613
 
 pkgname = edgemap
