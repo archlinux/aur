@@ -5,7 +5,7 @@
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=openmac-bin
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Macintosh emulator written from scratch: Macintosh Classic, Macintosh IIfx, Quadra 650 and Quadra 950"
 arch=('x86_64')
 url="https://github.com/codingncaffeine/OpenMac-for-Linux"
@@ -20,16 +20,18 @@ depends=('glibc' 'gcc-libs' 'zlib' 'icu' 'sdl3' 'fontconfig' 'freetype2' 'libglv
 optdepends=('xdg-utils: open the drop box folder in the file manager')
 options=('!strip')   # a self-contained .NET bundle; stripping breaks it
 _raw="$url/raw/v$pkgver/packaging"
+# Every downloaded file carries the version in its name: makepkg keeps a file it already has
+# under the same name, so a name without the version fails the checksum on an upgrade.
 source=("$url/releases/download/v$pkgver/OpenMac-$pkgver-linux-x64.tar.gz"
-        "io.github.codingncaffeine.OpenMac.desktop::$_raw/io.github.codingncaffeine.OpenMac.desktop"
-        "io.github.codingncaffeine.OpenMac.metainfo.xml::$_raw/io.github.codingncaffeine.OpenMac.metainfo.xml"
-        "openmac-16.png::$_raw/icons/openmac-16.png"
-        "openmac-32.png::$_raw/icons/openmac-32.png"
-        "openmac-48.png::$_raw/icons/openmac-48.png"
-        "openmac-64.png::$_raw/icons/openmac-64.png"
-        "openmac-128.png::$_raw/icons/openmac-128.png"
-        "openmac-256.png::$_raw/icons/openmac-256.png"
-        "openmac-512.png::$_raw/icons/openmac-512.png")
+        "openmac-$pkgver.desktop::$_raw/io.github.codingncaffeine.OpenMac.desktop"
+        "openmac-$pkgver.metainfo.xml::$_raw/io.github.codingncaffeine.OpenMac.metainfo.xml"
+        "openmac-$pkgver-16.png::$_raw/icons/openmac-16.png"
+        "openmac-$pkgver-32.png::$_raw/icons/openmac-32.png"
+        "openmac-$pkgver-48.png::$_raw/icons/openmac-48.png"
+        "openmac-$pkgver-64.png::$_raw/icons/openmac-64.png"
+        "openmac-$pkgver-128.png::$_raw/icons/openmac-128.png"
+        "openmac-$pkgver-256.png::$_raw/icons/openmac-256.png"
+        "openmac-$pkgver-512.png::$_raw/icons/openmac-512.png")
 sha256sums=('35962cb979472458f6ec77fec90237d96486b2b26c8ecc849f582a2ce1322ed8'
             '0cb22d82f2a893ae13be5aebc8520f508e6f58c0c53dada0d685c6bba264257e'
             'aa362d86888047a633bb97f52b0a0e1b1126511d33c6599580fcd270554ef2bb'
@@ -71,13 +73,13 @@ package() {
     printf '#!/bin/sh\nexec /usr/lib/openmac/OpenMac "$@"\n' > "$pkgdir/usr/bin/openmac"
     chmod 755 "$pkgdir/usr/bin/openmac"
 
-    install -Dm644 "$srcdir/io.github.codingncaffeine.OpenMac.desktop" \
+    install -Dm644 "$srcdir/openmac-$pkgver.desktop" \
         "$pkgdir/usr/share/applications/io.github.codingncaffeine.OpenMac.desktop"
-    install -Dm644 "$srcdir/io.github.codingncaffeine.OpenMac.metainfo.xml" \
+    install -Dm644 "$srcdir/openmac-$pkgver.metainfo.xml" \
         "$pkgdir/usr/share/metainfo/io.github.codingncaffeine.OpenMac.metainfo.xml"
     local _size
     for _size in 16 32 48 64 128 256 512; do
-        install -Dm644 "$srcdir/openmac-$_size.png" \
+        install -Dm644 "$srcdir/openmac-$pkgver-$_size.png" \
             "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/openmac.png"
     done
     install -Dm644 "$_payload/README.txt" "$pkgdir/usr/share/doc/$pkgname/README.txt"
