@@ -1,6 +1,6 @@
 pkgbase = orca-ide
 	pkgdesc = Next-gen IDE for parallel agentic development
-	pkgver = 1.4.257
+	pkgver = 1.4.258
 	pkgrel = 1
 	url = https://github.com/stablyai/orca
 	arch = x86_64
@@ -32,9 +32,9 @@ pkgbase = orca-ide
 	options = !debug
 	source = LICENSE::https://raw.githubusercontent.com/stablyai/orca/main/LICENSE
 	b2sums = fdce4a5f4313d37ca3f4a68dc9c31a242cd7f0fb7eae5a9764b9ca79b9316d328d2374154443338f9addc9134490c95fd1973c79c307d5f228f0f37dd6e3fa45
-	source_x86_64 = https://github.com/stablyai/orca/releases/download/v1.4.257/orca-ide_1.4.257_amd64.deb
-	b2sums_x86_64 = 58ba06950e4b981e2d1df831149a57a2e2b588bb9dd892401b92b4b998f490c995c67932972ad7b3a0f511416109bab40a03b97bf679006278e4cf7d79723e67
-	source_aarch64 = https://github.com/stablyai/orca/releases/download/v1.4.257/orca-ide_1.4.257_arm64.deb
-	b2sums_aarch64 = 6e48d7b43c832fffe8c75682147d06dc5e6c72061c8759d1536f89846243689815098a0b8fe813a63570e109d016f861d595f55daad416e209434aa196cf5293
+	source_x86_64 = https://github.com/stablyai/orca/releases/download/v1.4.258/orca-ide_1.4.258_amd64.deb
+	b2sums_x86_64 = 9556c5eb54deba8247d7d232e7081c2bd36f0ef6af25a1eeb023652677d96dfea20405ac97faabae2d4a485a5a1cae7a190cfa876ba46cb021bd0657e1afefb1
+	source_aarch64 = https://github.com/stablyai/orca/releases/download/v1.4.258/orca-ide_1.4.258_arm64.deb
+	b2sums_aarch64 = 12f9948c1674f33e3e39d9571ab8a2fdaab299948fcb354dc39bda3c9e12a171e208f4c9fcbc06624b34f6da4c78273d06338ed7685ae69fa0f8dc31d28880fc
 
 pkgname = orca-ide
