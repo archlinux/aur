@@ -1,3 +1,3 @@
-!/bin/sh
+#!/usr/bin/sh
 
 /opt/appimages/nyora-desktop.AppImage "$@"

@@ -2,7 +2,7 @@
 
 pkgname=nyora-desktop-appimage
 pkgver=3.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, independent, open-source manga reader'
 url='https://nyora.xyz/'
 license=('Apache-2.0')
@@ -12,7 +12,7 @@ source=(
 	'nyora-desktop.sh'
 )
 sha256sums=('19ce0d0eb976794ec2b1605dbd28f5ee4df3a48a8d18693b518941bbbf7ab847'
-            'af6fbcec6e5f8f5c60bebd160f52b02ed8d6ad93918524db8483e88fd221cbd5')
+            'e259db91a1fd503c2b949fca7c8b5ccc80a31cbacfbac21e0ab5958807fa451e')
 options=(!strip !debug)
 _image="$(basename "${source[0]}")"
 _pkgbasename="nyora-desktop"

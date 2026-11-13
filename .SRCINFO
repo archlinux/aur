@@ -1,7 +1,7 @@
 pkgbase = nyora-desktop-appimage
 	pkgdesc = A free, independent, open-source manga reader
 	pkgver = 3.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nyora.xyz/
 	arch = x86_64
 	license = Apache-2.0
