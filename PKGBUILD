@@ -2,25 +2,34 @@
 
 pkgname=wowtype-bin
 pkgver=0.3.12
-pkgrel=1
-pkgdesc="WeType-style pinyin input method for fcitx5, with the bundled dictionary and language model"
+pkgrel=2
+pkgdesc="WeType-style pinyin input method for fcitx5, with bundled dictionaries and language model"
 arch=('x86_64')
 url="https://github.com/Gloridust/WowType"
 license=('MIT' 'Apache-2.0' 'GPL-3.0-only' 'CC-BY-SA-4.0' 'Unicode-3.0')
-# fcitx5 provides libFcitx5Core.so.7, libFcitx5Config.so.6 and libFcitx5Utils.so.2,
-# which is what the prebuilt addon links against.
-depends=('alsa-lib' 'fcitx5' 'gcc-libs' 'glibc')
+depends=(
+    'alsa-lib'
+    'fcitx5'
+    'gcc-libs'
+    'glibc'
+    # wowtype-config, the settings window, is a Python script.
+    'python'
+)
 optdepends=(
     'python-gobject: 设置界面 wowtype-config'
     'gtk4: 设置界面'
     'libadwaita: 设置界面'
+    'fcitx5-gtk: 在 GTK 程序里输入中文'
+    'fcitx5-qt: 在 Qt 程序里输入中文'
+    'fcitx5-configtool: 图形化管理输入法列表'
     'noto-fonts-emoji: 候选里的彩色 emoji'
-    'curl: 首次使用离线语音时下载模型'
+    'curl: 互译模式与离线语音模型下载'
     'unzip: 解压离线语音模型'
     'gnome-shell: 绿色主题与语音浮条用的 GNOME 扩展'
 )
 provides=('wowtype')
 conflicts=('wowtype')
+install=wowtype-bin.install
 options=('!strip' '!debug')
 
 # Upstream ships one .deb per distribution. The Ubuntu 24.04 build has the
@@ -29,7 +38,10 @@ options=('!strip' '!debug')
 _deb="wowtype_${pkgver}_ubuntu24.04_amd64.deb"
 source=(
     "${_deb}::https://github.com/Gloridust/WowType/releases/download/v${pkgver}/${_deb}"
-    'Unicode-3.0.txt::https://www.unicode.org/license.txt'
+    # Kept in the repository rather than fetched: unicode.org/license.txt is not
+    # downloadable by every helper (paru truncated it), and its copyright year
+    # changes, which would break the checksum on every update.
+    'Unicode-3.0.txt'
 )
 noextract=("${_deb}")
 sha256sums=('19adf095ebe7edc85b97a2ff3f1dfc5c392c15a737ff049b093a3283174a6ad6'

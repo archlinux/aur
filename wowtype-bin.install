@@ -1,0 +1,25 @@
+_wowtype_bin_hint() {
+  cat <<'EOF'
+==> WowType 已安装，但它是个 fcitx5 插件：没加进输入法列表之前不会生效。
+  以普通用户身份（不要用 root）运行：
+      wowtype-config --add-to-group      把「WowType 拼音」加进 fcitx5
+      wowtype-config --restart-fcitx     重启 fcitx5 让它载入
+  或者打开应用菜单里的「WowType 设置」，在第一页点「添加」；
+  也可以在 fcitx5-configtool 里手动添加「WowType 拼音」。
+==> 设置界面需要 python-gobject、gtk4、libadwaita；可用
+      wowtype-config --self-test
+    检查缺什么。
+==> 想在 GTK / Qt 程序里用 fcitx5 输入，还需要 fcitx5-gtk 和 fcitx5-qt。
+    GNOME 下建议装「Input Method Panel」扩展，否则活动概览的搜索框里
+    看不到候选框。
+==> Arch 上没有 im-config，别照 Ubuntu 的教程跑它。
+EOF
+}
+
+post_install() {
+  _wowtype_bin_hint
+}
+
+post_upgrade() {
+  _wowtype_bin_hint
+}
