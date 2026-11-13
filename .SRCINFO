@@ -1,7 +1,7 @@
 pkgbase = rg-sens
 	pkgdesc = A fast, customizable system monitoring dashboard for Linux
-	pkgver = 0.9.5
-	pkgrel = 2
+	pkgver = 0.9.6
+	pkgrel = 1
 	url = https://github.com/hilgardt-collab/rg-Sens
 	install = rg-sens.install
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = rg-sens
 	provides = rg-sens
 	conflicts = rg-sens-git
 	options = !lto
-	source = rg-sens-0.9.5.tar.gz::https://github.com/hilgardt-collab/rg-Sens/archive/v0.9.5.tar.gz
-	sha256sums = bffde9443b60f2b9f582c6018460bb0bfd0557f46911557be7343d5227563d7a
+	source = rg-sens-0.9.6.tar.gz::https://github.com/hilgardt-collab/rg-Sens/archive/v0.9.6.tar.gz
+	sha256sums = 29e8e53cd326a3244173185e76f728e4ad5cf17bf57f503813abd4ba369d05fc
 
 pkgname = rg-sens

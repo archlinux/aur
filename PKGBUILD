@@ -1,7 +1,7 @@
 # Maintainer: rg-Sens Contributors
 pkgname=rg-sens
-pkgver=0.9.5
-pkgrel=2
+pkgver=0.9.6
+pkgrel=1
 pkgdesc="A fast, customizable system monitoring dashboard for Linux"
 arch=('x86_64')
 url="https://github.com/hilgardt-collab/rg-Sens"
@@ -29,7 +29,7 @@ options=(!lto)
 provides=('rg-sens')
 conflicts=('rg-sens-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bffde9443b60f2b9f582c6018460bb0bfd0557f46911557be7343d5227563d7a')
+sha256sums=('29e8e53cd326a3244173185e76f728e4ad5cf17bf57f503813abd4ba369d05fc')
 
 build() {
     cd "rg-Sens-$pkgver"
@@ -65,7 +65,7 @@ package() {
     for f in examples/*.{html,css,js,json}; do
         [ -f "$f" ] && install -Dm644 "$f" "$pkgdir/usr/share/rg-sens/$f"
     done
-    # Fonts the Art Deco / Art Nouveau templates load from next to themselves
+    # Fonts the example templates load from next to themselves
     # (SIL Open Font License; each family carries its OFL.txt)
     cp -r examples/fonts "$pkgdir/usr/share/rg-sens/examples/"
 
