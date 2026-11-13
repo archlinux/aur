@@ -7,14 +7,14 @@ pkgver=r4946.d0c6e2a
 pkgrel=1
 epoch=1
 pkgdesc='A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts.'
-arch=('any')
+arch=('x86_64' 'aarch64')
 url='https://github.com/usememos/memos'
 license=('MIT')
+depends=('glibc')
 makedepends=('git' 'go' 'nodejs>=24' 'pnpm')
 provides=('memos')
 conflicts=('memos')
 backup=('etc/memos.conf')
-options=(!strip !debug)
 source=("memos::git+${url}.git"
         'systemd.service'
         'sysusers.conf'
@@ -55,8 +55,12 @@ build() {
   pnpm release
   cd "${srcdir}/memos"
   export GOPATH="${srcdir}/gopath"
-  export GOFLAGS='-mod=readonly -modcacherw'
-  CGO_ENABLED=0 go build -v -o memos ./cmd/memos
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
+  go build -v -ldflags=-linkmode=external -o memos ./cmd/memos
 }
 
 check() {
