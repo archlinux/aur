@@ -1,0 +1,382 @@
+diff --git a/security/certverifier/CertVerifier.cpp b/security/certverifier/CertVerifier.cpp
+index 199505ed6545..db3da3f265d3 100644
+--- a/security/certverifier/CertVerifier.cpp
++++ b/security/certverifier/CertVerifier.cpp
+@@ -66,6 +66,7 @@ CertVerifier::CertVerifier(OcspDownloadConfig odc, OcspStrictConfig osc,
+       mCertShortLifetimeInDays(certShortLifetimeInDays),
+       mCTConfig(std::move(ctConfig)),
+       mCRLiteMode(crliteMode),
++      mDaneConfig(dane_config_new()),
+       mSignatureCache(
+           signature_cache_new(
+               StaticPrefs::security_pki_cert_signature_cache_size()),
+@@ -73,6 +74,19 @@ CertVerifier::CertVerifier(OcspDownloadConfig odc, OcspStrictConfig osc,
+       mTrustCache(
+           trust_cache_new(StaticPrefs::security_pki_cert_trust_cache_size()),
+           trust_cache_free) {
++
++  if (!mDaneConfig || dane_caching_new(mDaneConfig, &mDaneCache) != 0) {
++    MOZ_LOG(gCertVerifierLog, LogLevel::Error, ("dane_caching_new failed; DANE disabled, continuing in WebPKI-only mode"));
++    mDaneCache = nullptr;
++  } else {
++    nsAutoCString doh_uri;
++    Preferences::GetCString("network.trr.uri", doh_uri);
++    uint32_t trr_mode = 0;
++    Preferences::GetUint("network.trr.mode", &trr_mode);
++    dane_firefox_trr_reconfiguration(mDaneConfig, doh_uri.get(), trr_mode);
++    refresh_tofu_file(mDaneConfig, mDaneCache);
++  }
++
+   LoadKnownCTLogs();
+   mThirdPartyCerts = thirdPartyCerts.Clone();
+   for (const auto& root : mThirdPartyCerts) {
+@@ -88,7 +102,16 @@ CertVerifier::CertVerifier(OcspDownloadConfig odc, OcspStrictConfig osc,
+   }
+ }
+ 
+-CertVerifier::~CertVerifier() = default;
++CertVerifier::~CertVerifier(){
++    if (mDaneCache) {
++        dane_caching_free(mDaneCache);
++        mDaneCache = nullptr;
++    }
++    if (mDaneConfig) {
++        dane_config_free(mDaneConfig);
++        mDaneConfig = nullptr;
++    }
++}
+ 
+ Result IsDelegatedCredentialAcceptable(const DelegatedCredentialInfo& dcInfo) {
+   bool isEcdsa = dcInfo.scheme == ssl_sig_ecdsa_secp256r1_sha256 ||
+@@ -474,7 +497,7 @@ Result CertVerifier::VerifyCertificateTransparencyPolicyInner(
+ 
+ Result CertVerifier::VerifyCert(
+     const nsTArray<uint8_t>& certBytes, VerifyUsage usage, Time time,
+-    void* pinArg, const char* hostname,
++    void* pinArg, const char* hostname, uint16_t port,
+     /*out*/ nsTArray<nsTArray<uint8_t>>& builtChain,
+     /*optional*/ const Flags flags,
+     /*optional*/ const Maybe<nsTArray<nsTArray<uint8_t>>>& extraCertificates,
+@@ -501,6 +524,16 @@ Result CertVerifier::VerifyCert(
+     return Result::FATAL_ERROR_LIBRARY_FAILURE;
+   }
+ 
++  std::vector<const uint8_t*> certs;
++  std::vector<size_t> certLens;
++  if (auto certChainPtr = const_cast<nsTArray<nsTArray<uint8_t>>*>(extraCertificates.ptrOr(nullptr))) {
++     nsTArray<nsTArray<uint8_t>>& certChain = *certChainPtr;
++    for (const auto& cert : certChain) {
++      certs.push_back(cert.Elements());
++      certLens.push_back(cert.Length());
++    }
++  }
++
+   if (evStatus) {
+     *evStatus = EVStatus::NotEV;
+   }
+@@ -569,6 +602,14 @@ Result CertVerifier::VerifyCert(
+     }
+   }
+ 
++  nsAutoCString doh_uri;
++  bool dane_enabled = Preferences::GetBool("dane_without_root.enabled", false);
++  Preferences::GetCString("network.trr.uri", doh_uri);
++  uint32_t trr_mode = 0;
++  Preferences::GetUint("network.trr.mode", &trr_mode);
++  dane_firefox_trr_reconfiguration(mDaneConfig, doh_uri.get(), trr_mode);
++
++
+   switch (usage) {
+     case VerifyUsage::TLSClient: {
+       // XXX: We don't really have a trust bit for SSL client authentication so
+@@ -621,6 +662,55 @@ Result CertVerifier::VerifyCert(
+             KeyUsage::keyAgreement,      // (EC)DH
+             KeyPurposeId::id_kp_serverAuth, evPolicy, stapledOCSPResponse,
+             ocspStaplingStatus);
++
++        if (dane_enabled && mDaneCache){
++          int dane_validated = dane_verify_certificate_validity_with_caching_without_output_cert(mDaneCache, mDaneConfig, hostname, port, 0,
++              certBytes.Elements(), certBytes.Length(), certs.data(), certLens.data(), certs.size());
++
++          if (dane_validated == 2){
++            // If "dane_validated" == 2, it means DANE failed and that we must not
++            // allow WebPKI fallback.
++            MOZ_LOG(gCertVerifierLog, LogLevel::Error, ("DANE verification failed without fallback allowed. It can means 3 things, from must probable to least probable: Network failure (nearly all the cases), website dropped dane support, or MITM attack against you. %s\n", hostname));
++            rv = Result::ERROR_UNKNOWN_ISSUER;
++            break;
++          }
++          // If "dane_validated" == 1, it means DANE failed but we should allow
++          // webpki fallback.
++          // In that case we do nothing, the rest of the code will handle that.
++
++          if(dane_validated == 0 && rv != Success){
++            // If "dane_validated" == 0, it means DANE succeeded.
++            // If webpki was already a success, we have nothing to do.
++            // But if webpki failed, we need to force the success.
++            //
++            // We accept unconditionally the leaf certificate proposed even if it
++            // was validated by a CA. We just want to avoid Firefox throwing a
++            // ERROR_UNKNOWN_ISSUER now that the trust have been validated by DANE.
++            nsTArray<mozilla::pkix::Input> inputArray;
++            inputArray.SetCapacity(1);
++            inputArray.AppendElement(certDER);
++
++          NSSCertDBTrustDomain trustDomain(
++              trustSSL, evRevCheckMode, mOCSPCache, mSignatureCache.get(),
++              mTrustCache.get(), pinArg, mOCSPTimeoutSoft, mOCSPTimeoutHard,
++              mCertShortLifetimeInDays, MIN_RSA_BITS, mCRLiteMode,
++              originAttributes, inputArray,
++              inputArray, extraCertificates, sctsFromTLSInput,
++              mCTVerifier, builtChain, pinningTelemetryInfo, hostname);
++          rv = BuildCertChainForOneKeyUsage(
++              trustDomain, certDER, time,
++              KeyUsage::digitalSignature,  // (EC)DHE
++              KeyUsage::keyEncipherment,   // RSA
++              KeyUsage::keyAgreement,      // (EC)DH
++              KeyPurposeId::id_kp_serverAuth, evPolicy, stapledOCSPResponse,
++              ocspStaplingStatus);
++            inputArray.Clear();
++            // At this point, Mozilla have all the structure it need, and we don't
++            // need to continue as DANE verification succeeded.
++            break;
++          }
++        }
++
+         if (madeOCSPRequests) {
+           *madeOCSPRequests |=
+               trustDomain.GetOCSPFetchStatus() == OCSPFetchStatus::Fetched;
+@@ -683,6 +773,47 @@ Result CertVerifier::VerifyCert(
+             KeyUsage::keyAgreement,      //(EC)DH
+             KeyPurposeId::id_kp_serverAuth, CertPolicyId::anyPolicy,
+             stapledOCSPResponse, ocspStaplingStatus);
++
++
++        if (dane_enabled && mDaneCache){
++          int dane_validated = dane_verify_certificate_validity_with_caching_without_output_cert(mDaneCache ,mDaneConfig , hostname, port, 0,
++              certBytes.Elements(), certBytes.Length(), certs.data(), certLens.data(), certs.size());
++          if (dane_validated == 2){
++            // If "dane_validated" == 2, it means DANE failed and that we must not
++            // allow WebPKI fallback.
++            MOZ_LOG(gCertVerifierLog, LogLevel::Error, ("DANE verification failed without fallback allowed. It can means 3 things, from must probable to least probable: Network failure (nearly all the cases), website dropped dane support, or MITM attack against you. %s\n", hostname));
++            rv = Result::ERROR_UNKNOWN_ISSUER;
++            break;
++          }
++          if(dane_validated == 0 && rv != Success){
++            // We accept unconditionally the leaf certificate proposed even if it
++            // was validated by a CA. We just want to avoid Firefox throwing a
++            // ERROR_UNKNOWN_ISSUER now that the trust have been validated by DANE.
++            nsTArray<mozilla::pkix::Input> inputArray;
++            inputArray.SetCapacity(1);
++            inputArray.AppendElement(certDER);
++
++            NSSCertDBTrustDomain trustDomain(
++              trustSSL, defaultRevCheckMode, mOCSPCache, mSignatureCache.get(),
++              mTrustCache.get(), pinArg, mOCSPTimeoutSoft, mOCSPTimeoutHard,
++              mCertShortLifetimeInDays, keySizeOptions[i], mCRLiteMode,
++              originAttributes, inputArray,
++              inputArray, extraCertificates, sctsFromTLSInput,
++              mCTVerifier, builtChain, pinningTelemetryInfo, hostname);
++
++            rv = BuildCertChainForOneKeyUsage(
++              trustDomain, certDER, time,
++              KeyUsage::digitalSignature,  //(EC)DHE
++              KeyUsage::keyEncipherment,   // RSA
++              KeyUsage::keyAgreement,      //(EC)DH
++              KeyPurposeId::id_kp_serverAuth, CertPolicyId::anyPolicy,
++              stapledOCSPResponse, ocspStaplingStatus);
++            inputArray.Clear();
++            // At this point, Mozilla have all the structure it need, and we don't
++            // need to continue as DANE verification succeeded.
++            break;
++          }
++        }
+         if (madeOCSPRequests) {
+           *madeOCSPRequests |=
+               trustDomain.GetOCSPFetchStatus() == OCSPFetchStatus::Fetched;
+@@ -747,6 +878,43 @@ Result CertVerifier::VerifyCert(
+       rv = BuildCertChain(trustDomain, certDER, time, EndEntityOrCA::MustBeCA,
+                           KeyUsage::keyCertSign, purpose,
+                           CertPolicyId::anyPolicy, stapledOCSPResponse);
++
++        if (dane_enabled && mDaneCache){
++          int dane_validated = dane_verify_certificate_validity_with_caching_without_output_cert(mDaneCache,mDaneConfig,hostname, port, 0,
++             certBytes.Elements(), certBytes.Length(), certs.data(), certLens.data(), certs.size());
++          if (dane_validated == 2){
++           // If "dane_validated" == 2, it means DANE failed and that we must not
++           // allow WebPKI fallback.
++           MOZ_LOG(gCertVerifierLog, LogLevel::Error, ("DANE verification failed without fallback allowed. It can means 3 things, from must probable to least probable: Network failure (nearly all the cases), website dropped dane support, or MITM attack against you. %s\n", hostname));
++           rv = Result::ERROR_UNKNOWN_ISSUER;
++           break;
++          }
++         if(dane_validated == 0 && rv != Success){
++           // We accept unconditionally the leaf certificate proposed even if it
++           // was validated by a CA. We just want to avoid Firefox throwing a
++           // ERROR_UNKNOWN_ISSUER now that the trust have been validated by DANE.
++           nsTArray<mozilla::pkix::Input> inputArray;
++           inputArray.SetCapacity(1);
++           inputArray.AppendElement(certDER);
++
++           NSSCertDBTrustDomain trustDomain(
++             trustType, defaultRevCheckMode, mOCSPCache, mSignatureCache.get(),
++             mTrustCache.get(), pinArg, mOCSPTimeoutSoft, mOCSPTimeoutHard,
++             mCertShortLifetimeInDays, MIN_RSA_BITS_WEAK, mCRLiteMode,
++             originAttributes, inputArray,
++             inputArray, extraCertificates, sctsFromTLSInput,
++             mCTVerifier, builtChain, nullptr, nullptr);
++           rv = BuildCertChain(trustDomain, certDER, time, EndEntityOrCA::MustBeCA,
++             KeyUsage::keyCertSign, purpose,
++             CertPolicyId::anyPolicy, stapledOCSPResponse);
++
++           inputArray.Clear();
++           // At this point, Mozilla have all the structure it need, and we don't
++           // need to continue as DANE verification succeeded.
++           break;
++         }
++        }
++
+       if (madeOCSPRequests) {
+         *madeOCSPRequests |=
+             trustDomain.GetOCSPFetchStatus() == OCSPFetchStatus::Fetched;
+@@ -858,6 +1026,7 @@ Result CertVerifier::VerifySSLServerCert(
+     const nsTArray<uint8_t>& peerCertBytes, Time time,
+     /*optional*/ void* pinarg, const nsACString& hostname,
+     /*out*/ nsTArray<nsTArray<uint8_t>>& builtChain,
++    uint16_t port,
+     /*optional*/ Flags flags,
+     /*optional*/ const Maybe<nsTArray<nsTArray<uint8_t>>>& extraCertificates,
+     /*optional*/ const Maybe<nsTArray<uint8_t>>& stapledOCSPResponse,
+@@ -898,7 +1067,7 @@ Result CertVerifier::VerifySSLServerCert(
+   bool isBuiltChainRootBuiltInRootLocal;
+   rv = VerifyCert(
+       peerCertBytes, VerifyUsage::TLSServer, time, pinarg,
+-      PromiseFlatCString(hostname).get(), builtChain, flags, extraCertificates,
++      PromiseFlatCString(hostname).get(), port, builtChain, flags, extraCertificates,
+       stapledOCSPResponse, sctsFromTLS, originAttributes, evStatus,
+       ocspStaplingStatus, keySizeStatus, pinningTelemetryInfo, ctInfo,
+       &isBuiltChainRootBuiltInRootLocal, madeOCSPRequests, issuerSources);
+diff --git a/security/certverifier/CertVerifier.h b/security/certverifier/CertVerifier.h
+index 7caa7ff50484..bd618de2f870 100644
+--- a/security/certverifier/CertVerifier.h
++++ b/security/certverifier/CertVerifier.h
+@@ -20,6 +20,7 @@
+ #include "nsString.h"
+ #include "signature_cache_ffi.h"
+ #include "sslt.h"
++#include "dane_without_root.h"
+ 
+ #if defined(_MSC_VER)
+ #  pragma warning(push)
+@@ -192,7 +193,7 @@ class CertVerifier {
+   // Only one usage per verification is supported.
+   mozilla::pkix::Result VerifyCert(
+       const nsTArray<uint8_t>& certBytes, VerifyUsage usage,
+-      mozilla::pkix::Time time, void* pinArg, const char* hostname,
++      mozilla::pkix::Time time, void* pinArg, const char* hostname, uint16_t port,
+       /*out*/ nsTArray<nsTArray<uint8_t>>& builtChain, Flags flags = 0,
+       /*optional in*/
+       const Maybe<nsTArray<nsTArray<uint8_t>>>& extraCertificates = Nothing(),
+@@ -214,6 +215,7 @@ class CertVerifier {
+       const nsTArray<uint8_t>& peerCert, mozilla::pkix::Time time, void* pinarg,
+       const nsACString& hostname,
+       /*out*/ nsTArray<nsTArray<uint8_t>>& builtChain,
++      uint16_t port = 443,
+       /*optional*/ Flags flags = 0,
+       /*optional*/ const Maybe<nsTArray<nsTArray<uint8_t>>>& extraCertificates =
+           Nothing(),
+@@ -273,6 +275,8 @@ class CertVerifier {
+   const uint32_t mCertShortLifetimeInDays;
+   const CertificateTransparencyConfig mCTConfig;
+   const CRLiteMode mCRLiteMode;
++  struct DaneCaching* mDaneCache = nullptr;
++  struct DaneConfig* mDaneConfig = nullptr;
+ 
+  private:
+   OCSPCache mOCSPCache;
+diff --git a/security/certverifier/moz.build b/security/certverifier/moz.build
+index e5b5d6c1577f..7be09c5c04a6 100644
+--- a/security/certverifier/moz.build
++++ b/security/certverifier/moz.build
+@@ -7,6 +7,7 @@ with Files("**"):
+ 
+ EXPORTS += [
+     "CertVerifier.h",
++    "dane_without_root.h",
+     "OCSPCache.h",
+ ]
+ 
+@@ -31,6 +32,11 @@ DIRS += [
+     "signature_cache",
+ ]
+ 
++OS_LIBS += [
++    "-L ../../../dist/bin",
++    "-ldane_without_root",
++]
++
+ COMPILE_FLAGS["WARNINGS_CXXFLAGS"] += [
+     "-Wextra",
+     "-Wunreachable-code",
+diff --git a/security/manager/ssl/SSLServerCertVerification.cpp b/security/manager/ssl/SSLServerCertVerification.cpp
+index e93f975d3226..dfc671c74e1e 100644
+--- a/security/manager/ssl/SSLServerCertVerification.cpp
++++ b/security/manager/ssl/SSLServerCertVerification.cpp
+@@ -621,7 +621,7 @@ Result AuthCertificate(
+     const Maybe<nsTArray<uint8_t>>& stapledOCSPResponse,
+     const Maybe<nsTArray<uint8_t>>& sctsFromTLSExtension,
+     const Maybe<DelegatedCredentialInfo>& dcInfo, uint32_t providerFlags,
+-    Time time, uint32_t certVerifierFlags,
++    Time time, uint16_t port, uint32_t certVerifierFlags,
+     /*out*/ nsTArray<nsTArray<uint8_t>>& builtCertChain,
+     /*out*/ EVStatus& evStatus,
+     /*out*/ CertificateTransparencyInfo& certificateTransparencyInfo,
+@@ -643,7 +643,7 @@ Result AuthCertificate(
+ 
+   IssuerSources issuerSources;
+   Result rv = certVerifier.VerifySSLServerCert(
+-      certBytes, time, aPinArg, aHostName, builtCertChain, certVerifierFlags,
++      certBytes, time, aPinArg, aHostName, builtCertChain, port, certVerifierFlags,
+       Some(std::move(peerCertsBytes)), stapledOCSPResponse,
+       sctsFromTLSExtension, dcInfo, aOriginAttributes, &evStatus,
+       &ocspStaplingStatus, &keySizeStatus, &pinningTelemetryInfo,
+@@ -658,7 +658,7 @@ Result AuthCertificate(
+ }
+ 
+ PRErrorCode AuthCertificateParseResults(
+-    uint64_t aPtrForLog, const nsACString& aHostName, int32_t aPort,
++    uint64_t aPtrForLog, const nsACString& aHostName,uint32_t aPort,
+     const OriginAttributes& aOriginAttributes,
+     const nsCOMPtr<nsIX509Cert>& aCert, mozilla::pkix::Time aTime,
+     PRErrorCode aCertVerificationError,
+@@ -802,7 +802,7 @@ SSLServerCertVerificationJob::Run() {
+   Result result = AuthCertificate(
+       *certVerifier, mPinArg, certBytes, mPeerCertChain, mHostName,
+       mOriginAttributes, mStapledOCSPResponse, mSCTsFromTLSExtension, mDCInfo,
+-      mProviderFlags, mTime, mCertVerifierFlags, builtChainBytesArray, evStatus,
++      mProviderFlags, mTime, mPort, mCertVerifierFlags, builtChainBytesArray, evStatus,
+       certificateTransparencyInfo, isCertChainRootBuiltInRoot,
+       madeOCSPRequests);
+ 
+diff --git a/security/manager/ssl/nsNSSCertificateDB.cpp b/security/manager/ssl/nsNSSCertificateDB.cpp
+index 09d1a5a652ba..f6edf06b8c8c 100644
+--- a/security/manager/ssl/nsNSSCertificateDB.cpp
++++ b/security/manager/ssl/nsNSSCertificateDB.cpp
+@@ -1241,7 +1241,8 @@ nsresult VerifyCertAtTime(nsIX509Cert* aCert, nsIX509CertDB::VerifyUsage aUsage,
+     result =
+         certVerifier->VerifySSLServerCert(certBytes, aTime,
+                                           nullptr,  // Assume no context
+-                                          aHostname, resultChain, aFlags,
++                                          // TODO replace 0 by real port
++                                          aHostname, resultChain, 0, aFlags,
+                                           Nothing(),     // extraCertificates
+                                           Nothing(),     // stapledOCSPResponse
+                                           aSctsFromTls,  // sctsFromTLSExtension
+@@ -1253,7 +1254,7 @@ nsresult VerifyCertAtTime(nsIX509Cert* aCert, nsIX509CertDB::VerifyUsage aUsage,
+     result = certVerifier->VerifyCert(
+         certBytes, vu, aTime,
+         nullptr,  // Assume no context
+-        aHostname.IsVoid() ? nullptr : flatHostname.get(), resultChain, aFlags,
++        aHostname.IsVoid() ? nullptr : flatHostname.get(), 0 /*TODO DANE replace by real port*/, resultChain, aFlags,
+         Nothing(),     // extraCertificates
+         Nothing(),     // stapledOCSPResponse
+         aSctsFromTls,  // sctsFromTLSExtension
+

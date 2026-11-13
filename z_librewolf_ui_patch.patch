@@ -1,0 +1,104 @@
+diff --git a/browser/components/preferences/config/privacy.mjs b/browser/components/preferences/config/privacy.mjs
+index cabbabbe33..1f8dd50942 100644
+--- a/browser/components/preferences/config/privacy.mjs
++++ b/browser/components/preferences/config/privacy.mjs
+@@ -564,6 +564,7 @@ if (Services.prefs.getBoolPref("browser.settings-redesign.enabled", false)) {
+       // Google safe browsing check downloads
+       //{ id: "browser.safebrowsing.downloads.enabled", type: "bool" }, //Also already added
+       { id: "librewolf.jit.enabled-by-default", type: "bool" },
++      { id: "dane_without_root.enabled", type: "bool" },
+   ]);
+ 
+   Preferences.addSetting({
+@@ -589,6 +590,13 @@ if (Services.prefs.getBoolPref("browser.settings-redesign.enabled", false)) {
+   get: (value) => value.value = !value,
+   set: (value) => value.value = !value,
+ });
++  Preferences.addSetting({
++  id: "librewolfDaneWithoutRoot",
++  pref: "dane_without_root.enabled",
++  get: (value) => value.value = value,
++  set: (value) => value.value = value,
++});
++
+ 
+   Preferences.addSetting({
+     id: "librewolfCrossOrigin",
+@@ -753,6 +761,10 @@ SettingGroupManager.registerGroups({
+         id: "librewolfIPv6",
+         l10nId: "librewolf-ipv6-checkbox2",
+       },
++      {
++        id: "librewolfDaneWithoutRoot",
++        l10nId: "librewolf-dane_without_root-checkbox2",
++      },
+       {
+         id: "librewolfCrossOrigin",
+         l10nId: "librewolf-xorigin-ref-checkbox2",
+diff --git a/browser/components/preferences/librewolf.js b/browser/components/preferences/librewolf.js
+index fd14ea33fe..e82aaa15db 100644
+--- a/browser/components/preferences/librewolf.js
++++ b/browser/components/preferences/librewolf.js
+@@ -45,6 +45,7 @@ if (!Services.prefs.getBoolPref("browser.settings-redesign.enabled", false)) {
+     { id: "toolkit.legacyUserProfileCustomizations.stylesheets", type: "bool" },
+     { id: "browser.nova.enabled", type: "bool" },
+     { id: "librewolf.jit.enabled-by-default", type: "bool" },
++    { id: "dane_without_root.enabled", type: "bool" },
+   ]);
+ }
+ 
+@@ -121,6 +122,13 @@ Preferences.addSetting({
+   pref: "toolkit.legacyUserProfileCustomizations.stylesheets",
+ });
+ 
++Preferences.addSetting({
++  id: "librewolfDaneWithoutRoot",
++  pref: "dane_without_root.enabled",
++  get: (value) => value.value = value,
++  set: (value) => value.value = value,
++});
++
+ Preferences.addSetting({
+   id: "librewolfIPv6",
+   pref: "network.dns.disableIPv6",
+diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
+index a681828424..c70a9764b2 100644
+--- a/browser/components/preferences/main.js
++++ b/browser/components/preferences/main.js
+@@ -596,6 +596,10 @@ SettingGroupManager.registerGroups({
+       {
+         id: "librewolfIPv6",
+         l10nId: "librewolf-ipv6-checkbox2",
++      },
++      {
++        id: "librewolfDaneWithoutRoot",
++        l10nId: "librewolf-dane_without_root-checkbox2",
+       }
+     ],
+   },
+diff --git a/browser/locales/en-US/browser/preferences/preferences.ftl b/browser/locales/en-US/browser/preferences/preferences.ftl
+index 20151ebf41..2e533e538b 100644
+--- a/browser/locales/en-US/browser/preferences/preferences.ftl
++++ b/browser/locales/en-US/browser/preferences/preferences.ftl
+@@ -2861,6 +2861,9 @@ librewolf-network-heading2 =
+ librewolf-ipv6-checkbox2 =
+     .label = Enable IPv6
+     .description = Allow { -brand-short-name } to connect using IPv6.
++librewolf-dane_without_root-checkbox2 =
++    .label = Enable DANE
++    .description = Allow { -brand-short-name } to use DANE for TLS trust check.
+ librewolf-privacy-heading2 =
+     .label = Privacy
+ librewolf-xorigin-ref-checkbox2 =
+diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
+index 1391383448..4dbbd17991 100644
+--- a/browser/app/profile/firefox.js
++++ b/browser/app/profile/firefox.js
+@@ -3789,3 +3789,6 @@ pref("distribution.mozillaonline.ignore", true);
+ #ifdef XP_MACOSX
+   pref("browser.macAppMenu.setAsDefaultShown", false);
+ #endif
++
++// By default, DANE validation is not enabled
++pref("dane_without_root.enabled", false);
+
