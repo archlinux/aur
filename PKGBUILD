@@ -1,8 +1,8 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=onair
-pkgver=3.9.0
-pkgrel=5
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR"
 arch=('x86_64' 'aarch64')
 url="https://github.com/adswill/OnAir"
@@ -45,7 +45,7 @@ optdepends=('codec2: FreeDV and M17 speech (dlopened at run time, searched in /u
             'libsecret: store credentials for the plugin store (dlopened at run time)')
 conflicts=('onair-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ccda2df7a715cb0ecf2cb5eca7330336b5864503d9846d86bad458a698ffbba4')
+sha256sums=('ea3076a7c28ecd21395aa95cba65d71f4465ee92f24eb41aa6fde96baa6870c0')
 
 prepare() {
     # The udev-rule / blacklist fix-it hints tell the user to run
