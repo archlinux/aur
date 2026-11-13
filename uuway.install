@@ -1,0 +1,16 @@
+post_install() {
+    printf '%s\n' \
+        'UUWay: initial setup is required for each desktop user.' \
+        'Run in a terminal inside your logged-in Plasma Wayland desktop, without sudo:' \
+        '  uuway setup --installer /path/to/uuyc.exe' \
+        'The official UU Windows installer must be obtained separately.'
+}
+
+post_upgrade() {
+    printf '%s\n' \
+        'UUWay: the package is updated, but existing user runtimes are not refreshed automatically.' \
+        'Each configured desktop user should run this in their logged-in Plasma Wayland desktop, without sudo:' \
+        '  uuway refresh --yes' \
+        'Refresh restarts remote hosting and disconnects active remote-control sessions.' \
+        'This does not upgrade the UU Windows client inside Wine.'
+}
