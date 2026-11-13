@@ -1,0 +1,15 @@
+pkgbase = hcl-tools
+	pkgdesc = Tools for parsing and formatting HCL based files (hcldec, hclfmt, hclspecsuite)
+	pkgver = 2.25.0
+	pkgrel = 1
+	url = https://github.com/hashicorp/hcl
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = git+https://github.com/hashicorp/hcl.git#tag=v2.25.0
+	sha256sums = 53689ee1205c77b9f5666f19cc277f2afd41d4a2e69b4e6612c7840315b53cce
+
+pkgname = hcl-tools

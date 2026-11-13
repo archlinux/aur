@@ -1,0 +1,4 @@
+[hcl-tools]
+source = "git"
+git = "https://github.com/hashicorp/hcl.git"
+prefix = "v"
