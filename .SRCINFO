@@ -16,6 +16,8 @@ pkgbase = dsh-next-bin
 	depends = libsecret
 	depends = mesa
 	depends = alsa-lib
+	options = !strip
+	options = !debug
 	source_x86_64 = https://github.com/anywhere-labs/dsh-desktop/releases/download/v2.0.22-next/DSH-NEXT-2.0.22-next-amd64.deb
 	sha256sums_x86_64 = 7f0ce3c85646199432e1f73a549f548fc889c6dd4e144a19315827fa11476795
 

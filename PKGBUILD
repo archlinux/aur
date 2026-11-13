@@ -4,6 +4,7 @@ pkgver=2.0.22_next
 pkgrel=1
 pkgdesc="DSH Desktop NEXT - desktop client for DeepSeek Harness"
 arch=('x86_64')
+options=('!strip' '!debug')
 url="https://github.com/anywhere-labs/dsh-desktop"
 license=('custom')
 
