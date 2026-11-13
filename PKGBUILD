@@ -1,6 +1,6 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
-# Contributor: Jason Papakostas <vithos@gmail.com>
-# Contributor: Sean Enck <enckse@gmail.com>
+# Contributor: Jason Papakostas <vithos at gmail dot com>
+# Contributor: Sean Enck <enckse at gmail dot com>
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
