@@ -1,13 +1,11 @@
 pkgbase = runjam
 	pkgdesc = Desktop manager for AI coding agents (Claude Code, Codex CLI and Gemini CLI)
 	pkgver = 1.0.103
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/peintune/runjam
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	makedepends = nodejs
-	makedepends = npm
 	depends = bzip2
 	depends = cairo
 	depends = dbus

@@ -2,7 +2,7 @@
 
 pkgname=runjam
 pkgver=1.0.103
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop manager for AI coding agents (Claude Code, Codex CLI and Gemini CLI)'
 # Upstream ships llama-server only for linux-x86_64 and its Linux code path
 # hardcodes that directory, so an aarch64 build would be missing a feature.
@@ -31,11 +31,7 @@ depends=(
   'xdg-utils'
   'xz'
 )
-makedepends=(
-  'cargo'
-  'nodejs'
-  'npm'
-)
+makedepends=('cargo')
 optdepends=(
   'gnome-keyring: store API keys in the OS keyring'
   'kwallet: store API keys in the OS keyring on KDE Plasma'
