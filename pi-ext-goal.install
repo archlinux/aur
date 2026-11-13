@@ -1,0 +1,12 @@
+post_install() {
+  cat <<'EOF'
+Pi scans no system path by itself. Add the shared extension root once and
+restart pi:
+
+  ~/.pi/agent/settings.json
+    "extensions": ["/usr/lib/pi/packages"]
+
+That one directory entry loads every Pi extension installed by pacman, this
+package included.
+EOF
+}
