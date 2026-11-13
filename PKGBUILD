@@ -19,7 +19,7 @@ makedepends=("gdb" "tk")
 optdepends=("python-pip" "python-pipx" "python-setuptools" "tk")
 options=(strip !debug !lto)
 source=(
-	https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz #{,.asc}
+	https://www.python.org/ftp/python/${pkgver%%[a-z]*}/Python-${pkgver}.tar.xz #{,.asc}
 	EXTERNALLY-MANAGED
 )
 sha256sums=(
