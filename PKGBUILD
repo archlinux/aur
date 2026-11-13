@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # https://www.hoptodesk.com/changelog
 pkgname=hoptodesk-bin
-pkgver=1.46.80
+pkgver=1.46.82
 pkgrel=1
 pkgdesc="A free remote desktop tool that allows users to share their screens and remotely control access to their computers and devices."
 arch=('x86_64')
