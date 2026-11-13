@@ -1,6 +1,6 @@
 # Maintainer: hyperpuncher
 pkgname=stuff-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='lightweight file manager'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ conflicts=('stuff')
 options=('!strip' '!debug')
 source_x86_64=("$pkgname-$pkgver-linux-x64.tar.zst::$url/releases/download/v$pkgver/stuff-linux-x64.tar.zst")
 source_aarch64=("$pkgname-$pkgver-linux-arm64.tar.zst::$url/releases/download/v$pkgver/stuff-linux-arm64.tar.zst")
-sha256sums_x86_64=('540b6dbfa8c645b18e99ab0c4b95d4ac4ba147dfb546f486601f31d4a9fc56a3')
-sha256sums_aarch64=('8190bf02257c3e2fa3eed833ddea3fe8d6ef96ee0e1684f3440e47e131a3bf48')
+sha256sums_x86_64=('0bbaab5438b0ffebb2de9a7a5577b815413e4c9b3ee26f9bc196248e2717629c')
+sha256sums_aarch64=('7d8c77818faed24b7493098ad8f5e7233067e1460550416c562d47d2a15b0e1f')
 
 package() {
 	cd "$srcdir" || return 1
