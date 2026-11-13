@@ -14,9 +14,9 @@
 # releases of one day sort in the order they were made.
 pkgname=hottyterm-bin
 _pkgname=hottyterm
-pkgver=26.11.10.r217.aeaf60b
+pkgver=26.11.13.r220.91fddb3
 pkgrel=1
-_release=26.11.10-dev.aeaf60b
+_release=26.11.13-dev.91fddb3
 pkgdesc="A fork of Ghostty with native hotty 0.7 (HTML over the TTY)"
 arch=('x86_64')
 url="https://github.com/neuroplastio/hottyterm"
@@ -29,7 +29,7 @@ conflicts=("$_pkgname")
 # debug package.
 options=('!strip' '!debug')
 source_x86_64=("hottyterm-${_release}-linux-${CARCH}.tar.gz::https://github.com/neuroplastio/hottyterm/releases/download/${_release}/hottyterm-${_release}-linux-${CARCH}.tar.gz")
-sha256sums_x86_64=('482946913847701cc022b150fef8f4e46672acca13cc23e27240d175960c5871')
+sha256sums_x86_64=('060007dfd14e9ba26e0fe197aa5013f2c552aa0f7f154c4e6303fc0d2ea3bb92')
 
 package() {
   local id=io.github.neuroplastio.hottyterm f
