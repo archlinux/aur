@@ -1,6 +1,6 @@
 # Maintainer: deddroid <deddo9412@gmail.com>
 pkgname=logitech-g435-battery
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Tray icon showing the battery level of the Logitech G435 wireless headset"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=('g435-tray')
 conflicts=('g435-tray')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6130d215bff8c939a9bbd1384804ba53534be1baf27901ae35530d0651f3c6f7')
+sha256sums=('902177ade9635fdbca426f628be80fb4722c476e853807e9ba90c098d0a01099')
 
 prepare() {
   cd "$pkgname-$pkgver"
