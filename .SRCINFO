@@ -1,0 +1,17 @@
+pkgbase = whydown-bin
+	pkgdesc = Prebuilt static read-only Linux diagnostics (CLI, TUI, Qt6 GUI)
+	pkgver = 0.12.3
+	pkgrel = 1
+	url = https://github.com/hamdyaea/WhyDown
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	optdepends = python-pyqt6: optional Qt6 graphical interface
+	provides = whydown
+	conflicts = whydown
+	source_x86_64 = https://github.com/hamdyaea/WhyDown/releases/download/v0.12.3/whydown-v0.12.3-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 30f506293953ea1976a1384c6c31b0016f619af3b8aa35269b1f2ecec9cf93b3
+	source_aarch64 = https://github.com/hamdyaea/WhyDown/releases/download/v0.12.3/whydown-v0.12.3-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 95a269a710f70faf485ae8051edc40c1e88d0a59f780ff458b814c3beb9ae7a7
+
+pkgname = whydown-bin
