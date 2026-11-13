@@ -2,11 +2,12 @@
 
 _name=langgraph-checkpoint-sqlite
 pkgname=python-$_name
-pkgver=3.1.1
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Library with a SQLite implementation of LangGraph checkpoint saver."
 arch=('any')
-url="https://github.com/langchain-ai/langgraph/tree/main/libs/checkpoint-sqlite"
+_repo='https://github.com/langchain-ai/langgraph'
+url="$_repo/tree/main/libs/checkpoint-sqlite"
 license=('MIT')
 depends=('python'
          'python-langgraph-checkpoint'
@@ -14,17 +15,18 @@ depends=('python'
          'python-sqlite-vec')
 makedepends=('python-hatchling'
              'python-build'
-             'python-installer'
-             'python-wheel')
+             'python-installer')
 checkdepends=('python-pytest'
               'python-pytest-asyncio'
               'python-pytest-mock'
               'python-pytest-retry')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('6fcb20db4c37ef7aad52f29b539eb98c38e2dad6fab7c2446a2a9db24f37a70e')
+source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/checkpointsqlite==$pkgver.tar.gz")
+sha256sums=('8f2901485a09217d83f82675afe4c1aacb1b4650bf6b8569ae6fab4280f60d76')
 
 build() {
-  cd "$srcdir"/${_name//-/_}-$pkgver
+  cd "langgraph-checkpointsqlite-$pkgver/libs/checkpoint-sqlite"
+  python -m build --wheel --no-isolation
+  cd "$srcdir"/langgraph-checkpointsqlite-$pkgver/libs/checkpoint-conformance
   python -m build --wheel --no-isolation
 }
 
@@ -34,11 +36,15 @@ check() {
     --disable-warnings
     -p "no:flaky"
   )
-  cd "$srcdir"/${_name//-/_}-$pkgver
-  PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
+  cd "langgraph-checkpointsqlite-$pkgver/libs/checkpoint-sqlite"
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m installer "$srcdir"/langgraph-checkpointsqlite-$pkgver/libs/checkpoint-conformance/dist/*.whl
+  test-env/bin/python -P -m pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "$srcdir"/${_name//-/_}-$pkgver
+  cd "langgraph-checkpointsqlite-$pkgver/libs/checkpoint-sqlite"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
