@@ -1,0 +1,19 @@
+pkgbase = dhictl-bin
+	pkgdesc = CLI for managing Docker Hardened Images (DHI)
+	pkgver = 0.0.13
+	pkgrel = 1
+	url = https://github.com/docker-hardened-images/dhictl
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Docker-Subscription-Service-Agreement
+	provides = dhictl
+	conflicts = dhictl
+	conflicts = dhictl-git
+	options = !strip
+	options = !debug
+	source_x86_64 = dhictl-0.0.13-linux-amd64::https://github.com/docker-hardened-images/dhictl/releases/download/v0.0.13/dhictl-linux-amd64
+	sha256sums_x86_64 = 50e5e5904ac24484da44070bd7607c10901b5fcbea39521abe0f5c9538c849c4
+	source_aarch64 = dhictl-0.0.13-linux-arm64::https://github.com/docker-hardened-images/dhictl/releases/download/v0.0.13/dhictl-linux-arm64
+	sha256sums_aarch64 = 31a2deb4019b1719fe72dafc3358da0c91514a4e4e10237b146fbb87f4ebabce
+
+pkgname = dhictl-bin
