@@ -1,1 +1,2 @@
 d /var/lib/wakapi 0750 wakapi wakapi -
+z /etc/wakapi/config.yml 0640 root wakapi -
