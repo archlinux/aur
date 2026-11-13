@@ -1,7 +1,7 @@
 # Contributor: mawcomw <mawcomw@gmail.com>
 _base=django-reversion
 pkgname=python-${_base}
-pkgver=6.3.0
+pkgver=6.5.2
 pkgrel=1
 arch=(any)
 url="https://github.com/etianen/${_base}"
@@ -10,7 +10,7 @@ license=('custom')
 depends=(python-django)
 makedepends=(python-setuptools)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('1679add186fa1f88db553b78770614947f64b1c284e98282b764f2e7a54afd857f47d738ea7ac92c4e3d4e1a4d13c3036b65a4c593123a5dda19ed4206ddd456')
+sha512sums=('0c3b7cf525dfd5889d7c4b363241794ed3a1f4074baa2b97fcd08f48f81d6af95e517c1fd939b5f04a898674ec1d9d75ba6afba9ee8cd065ed2b9451b3fb76c8')
 
 build() {
   cd "${_base}-${pkgver}"
