@@ -6,11 +6,11 @@ pkgname=maddy
 pkgver=0.9.7
 pkgrel=1
 pkgdesc='Composable all-in-one mail server'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/foxcpp/maddy'
 license=('GPL-3.0-or-later')
 depends=('glibc')
-makedepends=('go' 'git' 'scdoc')
+makedepends=('go' 'scdoc')
 backup=('etc/maddy/maddy.conf')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.tar.zst"
         "${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.tar.zst.sig"
@@ -22,20 +22,30 @@ sha256sums=('c66d2a561cb0f0017a78cf1df3f02a48046e1e346a432970cede516ae536f4a7'
             '656ada3e302fedacaaec4f019c368488151c6252367c41cb1c2b2068555a7026')
 validpgpkeys=('3197BBD95137E682A59717B434BB2007081396F4')
 
+prepare() {
+  cd "${pkgname}-${pkgver}-src"
+  export GOPATH="${srcdir}/gopath"
+  go mod download -x -modcacherw
+}
+
 build() {
   cd "${pkgname}-${pkgver}-src"
   export GOPATH="${srcdir}/gopath"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS='-v -buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw'
   ./build.sh --version "${pkgver}" build
-  chmod -R +w "${GOPATH}"
 }
 
 check() {
   cd "${pkgname}-${pkgver}-src"
   export GOPATH="${srcdir}/gopath"
+  export GOFLAGS='-buildvcs=false -mod=readonly -modcacherw'
   go test ./...
   cd tests
   ./run.sh
-  chmod -R +w "${GOPATH}"
 }
 
 package() {
