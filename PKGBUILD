@@ -2,7 +2,7 @@
 
 _pkgbase=ae-code
 pkgname="$_pkgbase-bin"
-pkgver=2026.11.13.4
+pkgver=2026.11.13.5
 pkgrel=1
 pkgdesc='Desktop GUI for coding agents (fork of T3 Code), prebuilt release'
 arch=('x86_64')
@@ -56,7 +56,7 @@ source=(
 	"$pkgname-$pkgver-metainfo.xml::https://raw.githubusercontent.com/SelfRef/ae-code/v$pkgver/apps/desktop/resources/linux/com.t3tools.t3code.metainfo.xml"
 )
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('98a58561c2bbe0b6291d0a0e74e4fbc112fae82a99c28075e562fde31dfebc96'
+sha256sums=('06e2a47f4c1ce699bab4e703ed1aadcd1cd507184abff8afad5e561cbfc95683'
             '935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43'
             '9dcf0e47af5fcf0b537b0a0428476ac5a2a0c484af64ed516989691808a1b14f'
             '997a4cc4d63fa5498c15ac55e34969d5a47fdae252980baf9d4ba98f9d2a5735'
