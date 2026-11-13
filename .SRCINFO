@@ -1,8 +1,8 @@
 pkgbase = haste-server-git
 	pkgdesc = Prettiest, easiest to use pastebin ever made
-	pkgver = r408.b52b394
+	pkgver = r423.2743a1a
 	pkgrel = 1
-	url = https://github.com/toptal/haste-server
+	url = https://github.com/C0rn3j/haste-server
 	arch = any
 	license = MIT
 	makedepends = git
@@ -11,7 +11,9 @@ pkgbase = haste-server-git
 	provides = haste-server
 	conflicts = haste-server
 	options = !emptydirs
-	source = git+https://github.com/toptal/haste-server.git
+	source = git+https://github.com/C0rn3j/haste-server.git
+	source = haste-server.service
 	sha256sums = SKIP
+	sha256sums = 43be29b72a580e6b6b215fe376d75de754dcfa8c6969fcec8131ec1d25cae6da
 
 pkgname = haste-server-git

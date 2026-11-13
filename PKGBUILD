@@ -2,7 +2,7 @@
 
 pkgname=haste-server-git
 _gitname=haste-server
-pkgver=r408.b52b394
+pkgver=r423.2743a1a
 pkgrel=1
 pkgdesc="Prettiest, easiest to use pastebin ever made"
 arch=('any')
@@ -13,8 +13,10 @@ makedepends=('git' 'npm')
 provides=('haste-server')
 conflicts=('haste-server')
 options=(!emptydirs)
-source=('git+https://github.com/C0rn3j/haste-server.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/C0rn3j/haste-server.git'
+	'haste-server.service')
+sha256sums=('SKIP'
+	'43be29b72a580e6b6b215fe376d75de754dcfa8c6969fcec8131ec1d25cae6da')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"
@@ -24,21 +26,19 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_gitname}"
 
-	# Adding missing files to package.json
-	sed -i '38i "config.js","about.md",' package.json
-
-	# Changing defaut storage to file
-	sed -i '36c "path": "./data","type": "file"' config.js
-
-	# Unable to run haste from /usr/bin, so removing it
-	sed -i '32,34d' package.json
-
 	# Pack the current folder
 	npm pack
 }
 
 package() {
 	cd "${srcdir}/${_gitname}"
-	install -Dm644 "../../${_gitname}.service" -t "${pkgdir}/usr/lib/systemd/system"
-	npm install --cache ../cache -g --prefix "${pkgdir}/usr" *.tgz
+	install -Dm644 "${srcdir}/${_gitname}.service" -t "${pkgdir}/usr/lib/systemd/system"
+	local _haste_tarball
+	_haste_tarball="${srcdir}/${_gitname}/$(node -p 'const {name, version} = require("./package.json"); `${name}-${version}.tgz`')"
+	npm install \
+		--allow-scripts="${_haste_tarball}" \
+		--cache ../cache \
+		-g \
+		--prefix "${pkgdir}/usr" \
+		"${_haste_tarball}"
 }
