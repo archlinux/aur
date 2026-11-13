@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop-bin
 _pkgname=NVM.Desktop
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="Node Version Manager Desktop - A desktop application to manage multiple active node.js versions."
 arch=(
@@ -25,9 +25,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.armhfp.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
 sha256sums=('29798e23122ddb11554d17646d9f90e205bdb51adc096136e0d1ee89a6279221')
-sha256sums_aarch64=('d7ab60a1136998c3b6b800867f2a5c861ffb78b6d3806083c770ff577c22b4bd')
-sha256sums_armv7h=('83598555729046324e62328453e3ad202a1a37c30fdb8f8a52918cc43c7d857e')
-sha256sums_x86_64=('f51ec602e83449d7bb1af8f14ad98df71f5e4c8fa8080460532d86546d9e40f2')
+sha256sums_aarch64=('05fa6cfef99dd1656da135ae0591dd0bb98bf74adfa8d9b1d9b2c366957bd9e6')
+sha256sums_armv7h=('06b7d007755229eb6b0a9e9464b397758dcca1921477c6fd8716d5c87d2850df')
+sha256sums_x86_64=('e47de33c89507cf9eb7957e289d45a14e86bb3b788c8e003adf8c2fa0b9f073a')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
