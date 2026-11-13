@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=deepcode-cli
-pkgver=0.5.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Terminal AI coding assistant optimized for the deepseek-v4 model (deep thinking, agent skills, MCP)"
 # 0.4.0 keeps sharp external to the JS bundle; its native addon is platform-specific.
@@ -15,7 +15,7 @@ conflicts=('deepcode-cli-bin')
 # sharp ships prebuilt native dependencies, not useful split debug sources.
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8160742ac39f6588e218d2ddf22a1469b1fd2c31fcd8f919a062b7cd735fdca3')
+sha256sums=('769bd5d4d1660e7fdacbcda86f46dc8488c35b2c6813a30430aaedf2aa36c95e')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -36,6 +36,9 @@ build() {
     # Resolve the host's esbuild optional binary; the upstream lockfile has
     # historically omitted non-macOS platform packages. Keep caches local.
     npm install --ignore-scripts --cache "${srcdir}/npm-cache" --no-audit --no-fund
+    # Upstream's postinstall (skipped by --ignore-scripts) patches ink before
+    # it is bundled; run it explicitly so the rendering fix is not lost.
+    ./node_modules/.bin/patch-package --error-on-fail
     npm run bundle
 
     # Mirror the official release's only external dependency. Install it into a
