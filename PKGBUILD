@@ -1,5 +1,5 @@
+# Maintainer: Deon Spengler <deon@spengler.co.za>
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
-# Contributor: Deon Spengler <deon@spengler.co.za>
 # Contributor: DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
 # Contributor: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
 # Contributor: Andre Wayand <aur-sope@awayand.sleepmail.com>
