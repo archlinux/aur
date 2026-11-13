@@ -2,12 +2,13 @@
 pkgname=clip-cli-nightly-bin
 conflicts=('clip' 'clip-bin' 'clip-cli-bin')
 provides=('clip')
-pkgver=3.0.1+nightly+20260930+0+g10afbd59
+pkgver=3.0.1+nightly+20261113+1+gabe72ae6
 pkgrel=1
 pkgdesc="System clipboard bridge for the terminal — nightly build (pipe content in, paste content out)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/someoneonsmile/clip"
 license=('MIT')
+options=('!strip' '!debug')
 
 _source_base="${url}/releases/download/nightly"
 
