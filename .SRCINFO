@@ -1,19 +1,19 @@
 pkgbase = xtables-geoip-db
 	pkgdesc = GeoIP Database for xtables
-	pkgver = 2.2
-	pkgrel = 17
+	pkgver = 3.0
+	pkgrel = 1
 	url = https://db-ip.com/db/download/ip-to-country-lite
 	arch = any
-	license = BSD
-	license = GPL
+	license = CC-BY-4.0
+	license = CC-BY-SA-4.0
 	makedepends = perl-text-csv-xs
 	makedepends = perl-net-cidr-lite
-	source = dbip-country-lite-2026-08.csv.gz::https://download.db-ip.com/free/dbip-country-lite-2026-08.csv.gz
+	source = dbip-country-lite-2026-11.csv.gz::https://download.db-ip.com/free/dbip-country-lite-2026-11.csv.gz
 	source = README
 	source = xt_geoip_build
 	source = mmcsv_geoip_build
 	sha256sums = SKIP
-	sha256sums = 6d14567807b8ea8c57a0cae2507f4607420e936017252d71d98124e6913c84df
+	sha256sums = 20719c2e34c5123765375b9e7c737890c53e71967ab839521989dbb82f775249
 	sha256sums = ff867e1e2769b61ba9dcc825b73de37a46fe446bb4e3eb528dd7f15e960ce76b
 	sha256sums = 2ff950f3ed0e93722bf0477a4b0bd3fdd79d94b5631f073e80bc76f10d596cc3
 

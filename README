@@ -1,7 +1,7 @@
 xtables-geoip-db
 =================
 
-xtables-geoip-db makes use of @@@DBSOURCE@@@ GeoIP data.
+xtables-geoip-db makes use of @@@DBSOURCE@@@.
 
 It creates country specific database files which can be used by iptables (using xt_geoip module provided by Xtables-addons) to block or allow access based on country of the IP.
 
@@ -16,4 +16,4 @@ For more information, see:
 
 Legal Attribution:
 ------------------
-This product includes @@@DBSOURCE@@@ database, available from @@@DBLINK@@@
+This product includes @@@DBSOURCE@@@, available from @@@DBLINK@@@
