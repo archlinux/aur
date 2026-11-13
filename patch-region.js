@@ -27,103 +27,78 @@ fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
 const mainPath = path.join(root, pkg.main);
 let source = fs.readFileSync(mainPath, 'utf8');
 
-// 1. 区域判定函数：原实现依次读取手动设置、区域标记和上次生效值。
-const marker = 'function _0x2a4383()';
-const start = source.indexOf(marker);
-if (start < 0) {
-  console.error('未找到区域判定函数 _0x2a4383');
-  process.exit(1);
-}
-
-const open = source.indexOf('{', start);
-let depth = 0;
-let end = -1;
-for (let i = open; i < source.length; i += 1) {
-  if (source[i] === '{') depth += 1;
-  if (source[i] === '}') {
-    depth -= 1;
-    if (depth === 0) {
-      end = i;
-      break;
-    }
+// 每个补丁点都要求唯一命中，上游改结构时让构建失败而不是静默跳过。
+function replaceOnce(re, replacement, label) {
+  const hits = [...source.matchAll(re)];
+  if (hits.length !== 1) {
+    console.error(`${label}补丁点数量异常: ${hits.length}`);
+    process.exit(1);
   }
-}
-if (end < 0) {
-  console.error('区域判定函数结构异常');
-  process.exit(1);
+  source = source.replace(re, replacement);
 }
 
-source =
-  source.slice(0, start) +
-  `function _0x2a4383() {\n  return "${region}";\n}` +
-  source.slice(end + 1);
+// 1. 区域判定 getter：原实现依次返回手动设置、设备区域和上次生效值。
+//    直接固定成常量，后续所有域名/环境判断都会拿到同一个区域。
+replaceOnce(
+  /function (_0x[0-9a-f]+)\(\) \{\n  if \(_0x[0-9a-f]+\) return _0x[0-9a-f]+;\n  if \(_0x[0-9a-f]+\) return _0x[0-9a-f]+;\n  return _0x[0-9a-f]+;\n\}/g,
+  (match, name) => `function ${name}() {\n  return "${region}";\n}`,
+  '区域判定函数'
+);
 
-// 2. RegionState 初始化：启动时真正决定区域的是 _0x343da5，原实现优先使用
-//    持久化的 lastEffective 和按系统 locale 推断的 seed。locale=en-US 的机器
-//    即使打了上面的补丁，初始化和 KimiEnv 域名覆盖阶段仍会判成 overseas。
-const initNeedle =
-  '_0x4cdb08 = _0x17938a["manual"], _0x49144b = _0x17938a[_0x53db3d(19484)];';
-const initHits = source.split(initNeedle).length - 1;
-if (initHits !== 1) {
-  console.error(`RegionState 初始化补丁点数量异常: ${initHits}`);
-  process.exit(1);
-}
-source = source.replace(initNeedle, `_0x4cdb08 = null, _0x49144b = "${region}";`);
+// 2. 启动时恢复 RegionState 的种子值。初始化函数会把持久化的
+//    manual/lastEffective 读进模块变量，KimiEnv 直接使用 lastEffective 选择
+//    域名，不经过上面的 getter；不覆盖这里，zh-CN 机器上的 intl 包仍会被
+//    locale 播撒成 china，en-US 机器上的 cn 包会被播撒成 overseas。
+replaceOnce(
+  /(_0x[0-9a-f]+) = _0x[0-9a-f]+\[_0x[0-9a-f]+\(\d+\)\], (_0x[0-9a-f]+) = _0x[0-9a-f]+\["lastEffective"\];/g,
+  (match, manualVar, lastVar) => `${manualVar} = null, ${lastVar} = "${region}";`,
+  '区域状态种子'
+);
 
 // 3. 默认关闭 launcher 全局快捷键：Linux/Wayland 下注册 Ctrl+Shift+Space 会
 //    触发 XDG GlobalShortcuts portal，GNOME 随即弹出 “Add Keyboard Shortcut”。
 //    用户仍可在设置里主动开启该项。
-const launcherDefault = '"launcherEnabled": !![], "launcherShortcut": _0x1465b7';
-const launcherDefaultHits = source.split(launcherDefault).length - 1;
-if (launcherDefaultHits !== 1) {
-  console.error(`launcherEnabled 默认值补丁点数量异常: ${launcherDefaultHits}`);
-  process.exit(1);
-}
-source = source.replace(
-  launcherDefault,
-  '"launcherEnabled": ![], "launcherShortcut": _0x1465b7'
+replaceOnce(
+  /"launcherEnabled": !!\[\], "launcherShortcut": /g,
+  '"launcherEnabled": ![], "launcherShortcut": ',
+  'launcherEnabled 默认值'
 );
 
 // 未写入过设置时原逻辑按 `!== false` 视为开启，必须同时改为仅在显式 true 时开启。
-const launcherPersisted =
-  '"launcherEnabled": _0x29b04e[_0x34ff6c(3738)] !== ![],';
-const launcherPersistedHits = source.split(launcherPersisted).length - 1;
-if (launcherPersistedHits !== 1) {
-  console.error(`launcherEnabled 读取逻辑补丁点数量异常: ${launcherPersistedHits}`);
-  process.exit(1);
-}
-source = source.replace(
-  launcherPersisted,
-  '"launcherEnabled": _0x29b04e[_0x34ff6c(3738)] === !![],'
+replaceOnce(
+  /"launcherEnabled": ([^,\n]+) !== !\[\],/g,
+  '"launcherEnabled": $1 === !![],',
+  'launcherEnabled 读取逻辑'
 );
 
 // 4. 资源路径：Electron 的 process.resourcesPath 指向系统 electron43，
 //    这里改为优先读取 KIMI_WORK_RESOURCES（由包装脚本指向独立的 /opt 前缀）。
-const needle = '_0x91d9c1 = process["resourcesPath"]';
-const hits = source.split(needle).length - 1;
-if (hits !== 1) {
-  console.error(`resourcesPath 补丁点数量异常: ${hits}`);
+//    24573 是 3.2.27 混淆字符串表里 "resourcesPath" 的 id。
+const resourcesPathId = '24573';
+const resourcesPathRe = new RegExp(
+  `process\\[(_0x[0-9a-f]+)\\(${resourcesPathId}\\)\\]`,
+  'g'
+);
+const resourcesPathHits = source.match(resourcesPathRe) || [];
+if (resourcesPathHits.length === 0) {
+  console.error('resourcesPath 补丁点数量异常: 0');
   process.exit(1);
 }
 source = source.replace(
-  needle,
-  '_0x91d9c1 = (process.env["KIMI_WORK_RESOURCES"] || process["resourcesPath"])'
+  resourcesPathRe,
+  `(process.env["KIMI_WORK_RESOURCES"] || process[$1(${resourcesPathId})])`
 );
 
 // 5. 窗口类名：运行时用配置里的 appId 推导 desktop 文件名并调用
 //    app.setDesktopName()，这会覆盖 package.json 的 desktopName，
 //    两版沿用同一个 appId 时任务栏会把窗口合并到同一个应用。
-const desktopNeedle = 'const _0x1bf09b = _0x1c0ac9["appId"] + ".desktop";';
-const desktopHits = source.split(desktopNeedle).length - 1;
-if (desktopHits !== 1) {
-  console.error(`desktopName 补丁点数量异常: ${desktopHits}`);
-  process.exit(1);
-}
+//    10689/12514 分别是 3.2.27 字符串表里 "appId" 与 ".desktop" 的 id。
 const desktopName =
   region === 'china' ? 'kimi-work-cn.desktop' : 'kimi-work-intl.desktop';
-source = source.replace(
-  desktopNeedle,
-  `const _0x1bf09b = "${desktopName}";`
+replaceOnce(
+  /const (_0x[0-9a-f]+) = _0x[0-9a-f]+\[_0x[0-9a-f]+\(10689\)\] \+ _0x[0-9a-f]+\(12514\);/g,
+  `const $1 = "${desktopName}";`,
+  'desktopName 运行时'
 );
 
 fs.writeFileSync(mainPath, source);
