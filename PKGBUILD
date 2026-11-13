@@ -2,7 +2,7 @@
 # Upstream: TIANLI0 <wutianli@tianli0.top>
 
 pkgname=thrm-bin
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc='Flydigi BS-series laptop cooler controller (prebuilt)'
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/TIANLI0/THRM/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '774c0355ef792ae410974ab2aba286d3f7ff0d88e61bd774f16401ce01e563ad'
+  'a3618587ecef6e935a3ff7b99e3a8cf75145207eb7f12bc87641b2b247d7c299'
   '4144920f63b10e483bcf5f69094e8ccfc1af01f76836d6785ceca3ee66e4bb28'
   'bb4f94dbe3dcfdc66e27d35cae627a73c9e8f66ec792971e569d272893b08ac6'
 )
