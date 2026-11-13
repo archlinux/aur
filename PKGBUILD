@@ -5,7 +5,7 @@ pkgname=animalinux
 # build()/package() fallan con "No such file or directory" (bug real,
 # presente desde v0.2.0, nunca se había probado con una build de verdad).
 _gitname=AnimalinuxApp
-pkgver=0.8.4.5
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Mascotas animadas para tu escritorio (Hyprland, KDE, GNOME…): reaccionan a tu PC, juegan y hasta te juegan un partido; con editor de píxeles y de animación"
 arch=('x86_64' 'aarch64')
@@ -20,17 +20,17 @@ depends=(
     'python-xlib'
     'gtk4-layer-shell'
     'libayatana-appindicator'
+    # todo lo de las funciones viene instalado (antes eran opcionales):
+    'python-onnxruntime'   # recorte de fondo con IA (el modelo se baja solo)
+    'ffmpeg'               # importar vídeos, exportar MP4 y stickers
+    'mpv'                  # sonido en el editor de animación
+    'python-vosk'          # hablarle a la mascota con la voz
+    'ollama'               # IA local para que te responda
+    'libwnck3'             # bordes de ventana y pantalla completa en X11
+    'python-pip'           # Whisper se instala solo con un clic desde la app
 )
 optdepends=(
-    'mpv: reproducción de audio en el editor de animación'
-    'ffmpeg: exportar animaciones como MP4 y stickers de Telegram'
-    'python-rembg: recorte de fondo con IA (requiere onnxruntime)'
-    'python-onnxruntime: motor IA para rembg'
-    'libwnck3: andar por bordes de ventana y pausa en pantalla completa (backend X11: GNOME/KDE/Xfce/MATE/Cinnamon)'
-    'ollama: hablar con la mascota usando IA local'
-    'ollama-cuda: la IA de la mascota en la tarjeta NVIDIA (mucho más rápida)'
-    'python-vosk: hablar con la mascota por voz («ey <nombre>» y micrófono)'
-    'python-faster-whisper: entender bien tu voz (si falta, la app lo instala sola con pip)'
+    'ollama-cuda: la IA de la mascota en la tarjeta NVIDIA (mucho más rápida; la app lo instala con un clic)'
     'pipewire: leer el micrófono con pw-record (o pulseaudio/alsa-utils)'
 )
 makedepends=(
@@ -40,7 +40,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('628fd3e3ed0ed1c53b1986d2d19dc8d621f94763905754fa6023643b50e58f66')
+sha256sums=('69eb4750403ef8f04fc3d43df40d34164b81e75a7778588aa80df7d4fcf4a6e9')
 
 build() {
     cd "$_gitname-$pkgver"
