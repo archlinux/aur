@@ -1,6 +1,6 @@
 pkgbase = pob-redux-bin
 	pkgdesc = Path of Building for Path of Exile 1 and 2, rebuilt
-	pkgver = 0.4.51
+	pkgver = 0.4.52
 	pkgrel = 1
 	url = https://pobredux.com
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = pob-redux-bin
 	conflicts = pob-redux
 	options = !strip
 	options = !debug
-	source = LICENSE-0.4.51::https://raw.githubusercontent.com/pobredux/pob-redux/v0.4.51/LICENSE
+	source = LICENSE-0.4.52::https://raw.githubusercontent.com/pobredux/pob-redux/v0.4.52/LICENSE
 	sha256sums = 1724147fdca0d7d5be9f05217865af65e595ff3d17c8bcbd58683fe23e8909f7
-	source_x86_64 = pob-redux-0.4.51-x86_64.deb::https://github.com/pobredux/pob-redux/releases/download/v0.4.51/PoB.Redux_0.4.51_amd64.deb
-	sha256sums_x86_64 = 8d6bf5d7d05ef17fb8d22295a420fed35a8a14c1856c6efcc281e86daac5fa31
-	source_aarch64 = pob-redux-0.4.51-aarch64.deb::https://github.com/pobredux/pob-redux/releases/download/v0.4.51/PoB.Redux_0.4.51_arm64.deb
-	sha256sums_aarch64 = e72f66a1b5aa95ad559fafadfaecc73633f938c0dbda8f5701fbc59c91a897c1
+	source_x86_64 = pob-redux-0.4.52-x86_64.deb::https://github.com/pobredux/pob-redux/releases/download/v0.4.52/PoB.Redux_0.4.52_amd64.deb
+	sha256sums_x86_64 = ad7644194a6237ba53e3843774db2d0e82bd9bac27ed71c30bcef268d47d2d6d
+	source_aarch64 = pob-redux-0.4.52-aarch64.deb::https://github.com/pobredux/pob-redux/releases/download/v0.4.52/PoB.Redux_0.4.52_arm64.deb
+	sha256sums_aarch64 = 7ab3f8baa601b001e174c29993cf903998682f192df5cd743caa73dde4f3d6d2
 
 pkgname = pob-redux-bin
