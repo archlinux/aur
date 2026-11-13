@@ -2,7 +2,7 @@
 
 _pkgname='samila'
 _pkgauthor='sepandhaghighi'
-pkgname="python-${_pkgname}"
+pkgname=python-${_pkgname}
 pkgver=1.6
 pkgrel=1
 pkgdesc="A Generative Art Generator"
@@ -11,9 +11,11 @@ arch=('any')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('MIT')
 
-optdepends=()
-depends=('python' 'python-art' 'python-matplotlib' 'python-pillow')
+provides=("${_pkgname}")
+conflicts=("python-${pkgname}")
+
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+depends=('python' 'python-art' 'python-matplotlib' 'python-pillow')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('b8fc75ca8204bdcc765a2e18486f2b9fe1956ca21150f52452288df09ff073cd')
