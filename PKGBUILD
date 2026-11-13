@@ -3,7 +3,7 @@
 
 pkgname=pokefinder
 pkgver=4.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross platform Pokémon RNG tool'
 arch=(x86_64)
 url='https://github.com/Admiral-Fish/PokeFinder'
@@ -23,14 +23,12 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.png"
     # Git submodules:
-    "git+https://github.com/facebook/zstd"
     "git+https://github.com/Admiral-Fish/EncounterTableGenerator"
 )
 
 sha256sums=('8a09d2f183dfdf8199ad35b5139de498e9bd688e61a6e73fe6249df6e88ffdc3'
             '505646d82b2fd54666ee7174cf36e569ec0e2b080c62ff40bb3dc62bbc2e5cd6'
             '4151b4be2d9ace17c665d1537f061a8646e995d5152fd9be0b503d4beb236d3d'
-            'SKIP'
             'SKIP')
 
 prepare() {
@@ -38,7 +36,6 @@ prepare() {
 
     # Initialize git submodules
     git submodule init
-    git config submodule."Core/External/ztsd".url "$srcdir/bzip2"
     git config submodule."Core/Resources/EncounterTables".url "$srcdir/EncounterTableGenerator"
     git -c protocol.file.allow=always submodule update
 
