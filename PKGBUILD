@@ -17,7 +17,7 @@ pkgname=herta-bin
 _appname=${pkgname%-bin}
 _electronversion=43
 _appdir="/usr/lib/${pkgname}"
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="The self that uses the agent - desktop companion (AppImage payload, system Electron)"
 arch=('x86_64')
@@ -44,7 +44,7 @@ source=(
     "${_appname}.sh"
     "herta.desktop"
 )
-sha256sums=('aef2fc00e844b84d20d81dffd6eaa7a2d7581d7d4fc279f8fe8c7e9221a3d7db'
+sha256sums=('9e077e66e8a96683c878f756c5cbcbbdc9f0311a760267dddb95eda71234c442'
             'SKIP'
             'SKIP')
 
