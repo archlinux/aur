@@ -1,0 +1,14 @@
+pkgbase = pi-ext-claude-bridge
+	pkgdesc = Claude Pro/Max subscription provider for the Pi coding agent, routed through the official Claude Code CLI
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/elidickinson/pi-claude-bridge
+	install = pi-ext-claude-bridge.install
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = claude-code
+	source = pi-claude-bridge-0.12.0.tgz::https://registry.npmjs.org/pi-claude-bridge/-/pi-claude-bridge-0.12.0.tgz
+	sha256sums = 48a8f14543887ea516f4b4201ba8f64744a71858d4cf74977c6311ed4bf0a857
+
+pkgname = pi-ext-claude-bridge

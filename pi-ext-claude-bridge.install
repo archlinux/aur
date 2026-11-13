@@ -1,0 +1,13 @@
+post_install() {
+  cat <<'EOF'
+pi-ext-claude-bridge needs two pieces of user configuration:
+
+  1. ~/.pi/agent/claude-bridge.json
+     { "provider": { "pathToClaudeCodeExecutable": "/usr/bin/claude" } }
+
+  2. ~/.pi/agent/settings.json
+     "extensions": ["/usr/lib/pi/packages"]
+
+Then sign in with `claude auth login` and pick a claude-bridge/... model in pi.
+EOF
+}
