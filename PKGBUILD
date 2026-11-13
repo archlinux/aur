@@ -4,7 +4,7 @@
 # checksum of the release tarball and writes .SRCINFO; see docs/RELEASE.md.
 pkgname=virsh-tui
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyboard-driven terminal UI for libvirt/virsh with vim keys and live graphs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SyscallBrain/virsh-tui"
@@ -16,7 +16,7 @@ optdepends=('virt-install: the new domain wizard'
 # The release profile already strips the binary: a -debug package would be empty.
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f6f287f86c326190550d404d4a5a991ed70c4a86f54d807b9a27d55f2fd31422')
+sha256sums=('9a8244552b546743a29031773b5d15b3e19c0e0971af70edf00a7c48fe475062')
 
 prepare() {
   cd "$pkgname-$pkgver"
