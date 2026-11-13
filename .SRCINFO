@@ -1,6 +1,6 @@
 pkgbase = linksy
 	pkgdesc = Your phone and your Linux computer, working as one: files, clipboard, screens, webcam
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/LinkSy-mg/linksy-desktop
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = linksy
 	makedepends = qt6-declarative
 	options = !debug
 	options = !lto
-	source = linksy-0.14.0.tar.gz::https://github.com/LinkSy-mg/linksy-desktop/archive/refs/tags/v0.14.0.tar.gz
-	sha256sums = c08196faf743933ed96aec1c5224954ff01357355629ac1a5f91661fa1874536
+	source = linksy-0.15.0.tar.gz::https://github.com/LinkSy-mg/linksy-desktop/archive/refs/tags/v0.15.0.tar.gz
+	sha256sums = f46114612757ce2b010b87c64ccecd2aa6d772638b6c5184bc3120bc504025e0
 
 pkgname = linksy-common
 	pkgdesc = Your devices, connected: the service and tools both Linksy apps share
@@ -26,11 +26,11 @@ pkgname = linksy-common
 	depends = gstreamer
 	depends = gst-plugins-base
 	depends = gst-plugins-good
+	depends = gst-plugins-bad
 	depends = gst-plugin-pipewire
 	depends = xdg-desktop-portal
-	depends = linksy-window
+	optdepends = linksy-window: a desktop client to use Linksy, linksy (GTK) or linksy-qt (KDE Plasma)
 	optdepends = gst-libav: H.264 decoding, to see screens
-	optdepends = gst-plugins-bad: H.264 encoding on the graphics card (VA-API)
 	optdepends = gst-plugins-ugly: H.264 encoding with x264
 	optdepends = wl-clipboard: shared clipboard while the window is not focused
 	optdepends = v4l2loopback-dkms: the phone as a webcam in every app
@@ -41,7 +41,7 @@ pkgname = linksy-common
 
 pkgname = linksy
 	pkgdesc = Your phone and your Linux computer, working as one (GTK app, for GNOME and most desktops)
-	depends = linksy-common=0.14.0
+	depends = linksy-common=0.15.0
 	depends = gtk4
 	depends = libadwaita
 	depends = gst-plugin-gtk4
@@ -49,8 +49,7 @@ pkgname = linksy
 
 pkgname = linksy-qt
 	pkgdesc = Your phone and your Linux computer, working as one (Qt app, for KDE Plasma)
-	depends = linksy-common=0.14.0
-	depends = gstreamer
+	depends = linksy-common=0.15.0
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = kirigami

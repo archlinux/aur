@@ -1,12 +1,12 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
 # Contributor: Dokja620 <revanamike620@gmail.com>
-# Created with assistance from Nemotron 3.5 Lightning 30B A3B.
+# Created with assistance from Qwen3.8 Flash Next.
 # Based on upstream packaging/aur/PKGBUILD.
 # One build, three packages, as Transmission splits its apps: linksy-common (the service and
 # tools), linksy (the GTK app) and linksy-qt (the Qt app, for KDE Plasma).
 pkgbase=linksy
 pkgname=(linksy-common linksy linksy-qt)
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Your phone and your Linux computer, working as one: files, clipboard, screens, webcam'
 arch=('x86_64')
@@ -17,7 +17,7 @@ license=('AGPL-3.0-or-later')
 options=(!debug !lto)
 makedepends=('cargo' 'lld' 'gtk4' 'libadwaita' 'gstreamer' 'gst-plugins-base' 'qt6-base' 'qt6-declarative')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c08196faf743933ed96aec1c5224954ff01357355629ac1a5f91661fa1874536')
+sha256sums=('f46114612757ce2b010b87c64ccecd2aa6d772638b6c5184bc3120bc504025e0')
 
 prepare() {
   cd linksy-desktop-$pkgver
@@ -56,11 +56,9 @@ _prepare_rust() {
 
 package_linksy-common() {
   pkgdesc='Your devices, connected: the service and tools both Linksy apps share'
-  depends=('dbus' 'gcc-libs' 'glibc' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugin-pipewire' 'xdg-desktop-portal')
-  # Never without a window: pacman asks which, linksy (GTK) or linksy-qt (KDE Plasma)
-  depends+=('linksy-window')
-  optdepends=('gst-libav: H.264 decoding, to see screens'
-              'gst-plugins-bad: H.264 encoding on the graphics card (VA-API)'
+  depends=('dbus' 'gcc-libs' 'glibc' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugin-pipewire' 'xdg-desktop-portal')
+  optdepends=('linksy-window: a desktop client to use Linksy, linksy (GTK) or linksy-qt (KDE Plasma)'
+              'gst-libav: H.264 decoding, to see screens'
               'gst-plugins-ugly: H.264 encoding with x264'
               'wl-clipboard: shared clipboard while the window is not focused'
               'v4l2loopback-dkms: the phone as a webcam in every app'
@@ -103,7 +101,7 @@ package_linksy() {
 
 package_linksy-qt() {
   pkgdesc='Your phone and your Linux computer, working as one (Qt app, for KDE Plasma)'
-  depends=("linksy-common=$pkgver" 'gstreamer' 'qt6-base' 'qt6-declarative' 'kirigami' 'kirigami-addons' 'qqc2-desktop-style' 'gst-plugin-qml6')
+  depends=("linksy-common=$pkgver" 'qt6-base' 'qt6-declarative' 'kirigami' 'kirigami-addons' 'qqc2-desktop-style' 'gst-plugin-qml6')
   provides=('linksy-window')
   cd linksy-desktop-$pkgver
   install -Dm755 target/release/linksy-qt "$pkgdir/usr/bin/linksy-qt"
