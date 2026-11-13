@@ -1,6 +1,6 @@
 pkgname=ibus-areca-bin
 _pkgname=ibus-areca
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Areca Vietnamese input method for IBus using the Bamboo engine'
 arch=('x86_64')
@@ -26,7 +26,7 @@ depends=(
 )
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-$pkgrel-x86_64.pkg.tar.zst")
 noextract=("$_pkgname-$pkgver-$pkgrel-x86_64.pkg.tar.zst")
-sha256sums=('a3b1951f464a11245e666f5341c513c57899291adf46bf44e210474e4d316329')
+sha256sums=('41a7bb8746278178a30ff28a8565f12cfb1277d54d1508ff077672e5a968f40e')
 options=(!debug !strip)
 
 package() {
