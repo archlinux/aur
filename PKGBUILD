@@ -6,14 +6,14 @@
 # regenerates .SRCINFO with `makepkg --printsrcinfo` on every release tag.
 # Keep the two PKGBUILDs in step by hand; the AUR one is what users see.
 pkgname=clockwork-orange-git
-pkgver=4.7.2
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="Wallpaper manager and downloader with plugin support (Wallhaven, DuckDuckGo Images) for KDE Plasma 6"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ushineko/clockwork-orange"
 license=('MIT')
-depends=('libgl' 'libx11' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libxxf86vm' 'libxkbcommon' 'wayland' 'kconfig')
-makedepends=('go' 'git' 'gcc' 'pkgconf' 'mesa' 'wayland-protocols')
+depends=('libgl' 'libx11' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libxxf86vm' 'libxkbcommon' 'wayland' 'kconfig' 'vulkan-icd-loader')
+makedepends=('go' 'git' 'gcc' 'pkgconf' 'mesa' 'wayland-protocols' 'cmake' 'vulkan-headers' 'shaderc' 'spirv-headers')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip' '!debug')
@@ -35,7 +35,19 @@ build() {
 	# VERSION explicitly: a package is the plain version, and the Makefile
 	# would otherwise stamp a -dev suffix on a checkout that is not sitting
 	# on the release tag -- which a VCS package never is.
-	make build build-gui VERSION="$(tr -d '[:space:]v' < .tag)"
+	#
+	# The Stable Diffusion library (spec 031) is built here from the pinned
+	# stable-diffusion.cpp tag and embedded in both binaries. It takes a quarter
+	# of an hour and fetches the tag with git. Built for this machine, so the
+	# glibc ceiling that protects the release builds' floor does not apply.
+	#
+	# The script is run directly, not through `make sd-lib-build`: the Makefile
+	# sets LDFLAGS to Go linker flags and make would pass them to cmake, whose
+	# C compiler check then fails to link.
+	SD_GLIBC_CEILING=99 ./scripts/build-sd-lib.sh \
+		"$(sed -n 's/^SD_VERSION?=//p' Makefile)" build/sd-lib vulkan
+	make sd-lib SD_LIB_SRC=build/sd-lib
+	make build-sd build-gui-sd VERSION="$(tr -d '[:space:]v' < .tag)"
 }
 
 check() {
