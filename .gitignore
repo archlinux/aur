@@ -3,3 +3,4 @@ grafana-alloy-bin-*.pkg.tar.zst
 grafana-alloy-bin-*.deb
 pkg/
 src/
+*.log

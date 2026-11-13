@@ -50,7 +50,7 @@ help: ## Show this help message
 .PHONY: clean
 clean: ## Clean the current workspace
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Cleaning up old package files${CC_END}"
-	rm -rf *.pkg.tar.{xz,zst} *.zip *.deb ${use_pkgname}-*
+	rm -rf *.pkg.tar.{xz,zst} *.zip *.deb ${use_pkgname}-* *.log
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Cleaning up old working directories${CC_END}"
 	rm -rf ./pkg ./src
 
@@ -106,7 +106,7 @@ sources: update-pkgbuild update-srcinfo ## Update PKGBUILD (pull/version/checksu
 .PHONY: commit
 commit: ## Commit the current PKGBUILD/.SRCINFO to the repository
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Commit the PKGBUILD and .SRCINFO files${CC_END}"
-	git add PKGBUILD .SRCINFO Makefile alloy-sysusers.conf alloy-tmpfiles.conf
+	git add PKGBUILD .SRCINFO Makefile alloy-sysusers.conf alloy-tmpfiles.conf .gitignore
 	git commit -m "Bump package to $$(
 		cat .SRCINFO \
 			| awk -F ' = ' \
