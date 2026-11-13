@@ -1,42 +1,43 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-# Contributor: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
-_base=KaHIP
-pkgname=${_base,,}
-pkgver=3.25
-pkgrel=2
+_name=KaHIP
+pkgname=${_name,,}
+pkgver=3.26
+pkgrel=1
 pkgdesc="Karlsruhe HIGH Quality Partitioning"
 arch=('x86_64')
 url="https://github.com/KaHIP/KaHIP"
-license=('MIT' 'BSD-3-Clause') # BSD-3-Clause: bundled argtable3
-depends=('glibc'
+license=('MIT' 'BSD-3-Clause')
+depends=('python'
+         'glibc'
          'gperftools'
          'libgcc'
          'libgomp'
          'libstdc++'
          'metis'
-         'openmpi'
-         'python')
+         'openmpi')
 makedepends=('cmake'
              'pybind11')
 options=(!lto)
-source=("$url/archive/v$pkgver.tar.gz"
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "fix-out-of-bounds.patch")
-sha256sums=('3abad20158887b585b4d4792c35fa9023b7fd634b2bc4494334a3951b69f4842'
+sha256sums=('33c0e0c57265b83f9e45bf8a9d1ef192fb26e01a77c6d69b1287dc6f43e956f7'
             '03250c9f51c4e6391d19549263a7a501d264c5c032a8ce35dab49ea599ec65d8')
 
 prepare() {
+  cd "$_name-$pkgver"
   # Out-of-range accesses caught by Arch's -D_GLIBCXX_ASSERTIONS:
   # compute_fill() (node_ordering, fast_node_ordering) and
   # maxNodeHeap::changeKey()/deleteNode() on nodes no longer queued (node separators)
-  patch -d ${_base}-${pkgver} -Np1 -i ../fix-out-of-bounds.patch
+  patch -Np1 -i ../fix-out-of-bounds.patch
 }
 
 build() {
+  cd "$_name-$pkgver"
   local _site_packages=$(python -c "import sysconfig; print(sysconfig.get_path('platlib'))")
-
   cmake \
-    -S $_base-$pkgver \
+    -S . \
     -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_CXX_FLAGS_NONE="-DNDEBUG" \
@@ -58,19 +59,16 @@ build() {
   cmake --build build
 }
 
-
 package() {
+  cd "$_name-$pkgver"
   DESTDIR="$pkgdir" cmake --install build
-
   local _site_packages=$(python -c "import sysconfig; print(sysconfig.get_path('platlib'))")
-  install -Dm 644 $_base-$pkgver/python/$pkgname/__init__.py -t "$pkgdir$_site_packages/$pkgname"
+  install -Dm 644 python/$pkgname/__init__.py -t "$pkgdir$_site_packages/$pkgname"
   echo "__version__ = \"$pkgver\"" > "$pkgdir$_site_packages/$pkgname/_version.py"
   python -m compileall -q -d "$_site_packages" "$pkgdir$_site_packages/$pkgname"
   python -O -m compileall -q -d "$_site_packages" "$pkgdir$_site_packages/$pkgname"
-
   rm -f "$pkgdir"/usr/lib/lib{kahip,parhip_interface}_static.a
   rm -f "$pkgdir"/usr/bin/interface_test
-
-  install -Dm 644 $_base-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 $_base-$pkgver/extern/argtable3-3.2.2/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.argtable3"
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm 644 extern/argtable3-3.2.2/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.argtable3
 }
