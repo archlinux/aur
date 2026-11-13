@@ -1,7 +1,7 @@
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
 pkgver=include(`.version')dnl
-pkgrel=2
+pkgrel=1
 epoch=1
 arch=('any')
 url='https://home-assistant.io/'
