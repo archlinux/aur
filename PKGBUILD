@@ -2,7 +2,7 @@
 
 pkgname=nyora-desktop-appimage
 pkgver=3.1.12
-pkgrel=2
+pkgrel=3
 pkgdesc='A free, independent, open-source manga reader'
 url='https://nyora.xyz/'
 license=('Apache-2.0')
@@ -20,9 +20,9 @@ _pkgbasename="nyora-desktop"
 prepare() {
 	cd "${srcdir}"
 	chmod +x "${_image}"
-	./"${_image}" --appimage-extract
+	./"${_image}" --appimage-extract >/dev/null
 	cp "squashfs-root/usr/share/icons/hicolor/512x512/apps/${_pkgbasename}.png" ./icon.png
-	sed 's/^Exec=.*/Exec=${_pkgbasename} %U/' "squashfs-root/${_pkgbasename}.desktop" >./${_pkgbasename}.desktop
+	sed "s/^Exec=.*/Exec=${_pkgbasename} %U/" "squashfs-root/${_pkgbasename}.desktop" >./${_pkgbasename}.desktop
 }
 
 package() {
