@@ -5,14 +5,14 @@
 # NOTE: the fork keeps SLIC3R_APP_KEY "OrcaSlicer", so it shares the config directory
 # ~/.config/OrcaSlicer (profiles, presets) with the regular OrcaSlicer.
 pkgname=orcaslicer-mcp-bin
-pkgver=2.4.2_mcp.13
+pkgver=2.5.0_mcp.18
 pkgrel=1
 pkgdesc="OrcaSlicer fork with a local Remote API for AI assistants (MCP)"
 arch=('x86_64')
 url="https://github.com/MaxEllis/OrcaSlicer"
 license=('AGPL-3.0-only')
 depends=('at-spi2-core' 'cairo' 'dbus' 'expat' 'fontconfig' 'gcc-libs' 'gdk-pixbuf2' 'glib2'
-	'glibc' 'glu' 'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'harfbuzz' 'hicolor-icon-theme'
+	'glibc' 'glu' 'gst-plugin-gtk' 'gst-plugins-base' 'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'harfbuzz' 'hicolor-icon-theme'
 	'libglvnd' 'libice' 'libmspack' 'libsecret' 'libsm' 'libsoup3' 'libx11' 'libxext'
 	'libxkbcommon' 'mesa' 'pango' 'wayland' 'webkit2gtk-4.1' 'xz' 'zlib')
 makedepends=('squashfs-tools')
@@ -23,7 +23,7 @@ _tag="v${pkgver//_/-}"
 _appimage="OrcaSlicer-MCP-${_tag#v}-linux-x64.AppImage"
 noextract=("${_appimage}")
 source_x86_64=("${_appimage}::${url}/releases/download/${_tag}/${_appimage}")
-sha256sums_x86_64=('7dc7b6ec93776531a151ca4942281658e60466ab282ce24d42c94f406d7b24f4')
+sha256sums_x86_64=('ec59ee2274dba23e3f8a5d2eacdcdd0c75815d1d8b9503f4a6510c1b39831766')
 
 prepare() {
 	# Squashfs payload starts right after the ELF runtime (end of section header table)
