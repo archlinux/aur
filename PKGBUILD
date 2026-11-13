@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=greenmask-git
-pkgver=r614.eec5bd5
+pkgver=r633.e14616f
 pkgrel=1
 pkgdesc='PostgreSQL dump, anonymization and restore tool (git version)'
 arch=('x86_64' 'aarch64')
