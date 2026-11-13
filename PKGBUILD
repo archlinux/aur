@@ -1,13 +1,13 @@
 # Maintainer: Ramazan Berk Şirin <ramazanberksirin at protonmail dot com>
 
 pkgname=bettertricks-git
-pkgver=1.0.r0.g70804e1
+pkgver=1.1.r2.gf591315
 pkgrel=1
 pkgdesc="Recovery-first Wine prefix manager and Winetricks-compatible recipe engine (git)"
 arch=('x86_64')
 url="https://github.com/RamazanBerk20/Bettertricks"
 license=('LGPL-2.1-or-later')
-depends=('webkit2gtk-4.1' 'wine' 'cabextract' '7zip' 'unzip' 'gzip' 'tar' 'xz' 'zstd')
+depends=('webkit2gtk-4.1' 'wine' 'xdg-utils' 'glib2' 'cabextract' '7zip' 'unzip' 'gzip' 'tar' 'xz' 'zstd')
 makedepends=('git' 'rust' 'nodejs' 'pnpm' 'libayatana-appindicator' 'librsvg')
 optdepends=('zenity: graphical prompts for compatibility-host recipes')
 provides=('bettertricks')
@@ -45,7 +45,7 @@ package() {
     "$pkgdir/usr/bin/bettertricks-desktop"
 
   install -Dm644 packaging/linux/io.bettertricks.desktop.desktop \
-    "$pkgdir/usr/share/applications/io.bettertricks.desktop.desktop"
+    "$pkgdir/usr/share/applications/Bettertricks.desktop"
   install -Dm644 packaging/linux/io.bettertricks.desktop.metainfo.xml \
     "$pkgdir/usr/share/metainfo/io.bettertricks.desktop.metainfo.xml"
 
