@@ -54,14 +54,13 @@ build() {
   cd "$_srcname" || return
   echo "${_prefix}Building detect-it-easy"
 
-  # Upstream picks Qt 6 over Qt 5 automatically (find_package(QT NAMES Qt6 Qt5))
-  # and compiles the .qm translations with find_program(lrelease). On Arch the
-  # Qt 6 lrelease is only reachable as /usr/lib/qt6/bin/lrelease (or lrelease6),
-  # so expose that directory, otherwise the translations are silently skipped.
+  # Upstream searches for the unversioned lrelease executable. Expose the
+  # Qt 6 tools directory so the .qm translations are generated on Arch.
   export PATH="/usr/lib/qt6/bin:$PATH"
 
   cmake \
     -B build \
+    -DQT_DIR=/usr/lib/cmake/Qt6 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_RUNTIME_OUTPUT_DIRECTORY="$(pwd)/build/release" \
@@ -82,6 +81,7 @@ package() {
   install -Dm 755 build/release/die -t "$pkgdir"/opt/"${_pkgname}"
   install -Dm 755 build/release/diec -t "$pkgdir"/opt/"${_pkgname}"
   install -Dm 755 build/release/diel -t "$pkgdir"/opt/"${_pkgname}"
+  install -Dm 755 build/release/die-update -t "$pkgdir"/opt/"${_pkgname}"
 
   echo "${_prefix}Copying the package files"
   install -Dm 644 build/src/translations/*.qm -t "$pkgdir"/opt/"${_pkgname}"/lang
@@ -98,6 +98,7 @@ package() {
   ln -s /opt/"${_pkgname}"/die "$pkgdir"/usr/bin/die
   ln -s /opt/"${_pkgname}"/diec "$pkgdir"/usr/bin/diec
   ln -s /opt/"${_pkgname}"/diel "$pkgdir"/usr/bin/diel
+  ln -s /opt/"${_pkgname}"/die-update "$pkgdir"/usr/bin/die-update
 
   echo "${_prefix}Setting up desktop icons"
   cp -r LINUX/hicolor "$pkgdir"/usr/share/icons
