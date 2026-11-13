@@ -1,21 +1,34 @@
-# Maintainer: Paul Spruce <paul.spruce@gmail.com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: Paul Spruce <paul.spruce@gmail.com>
 
 _pkgname=waybackurls
-pkgname=waybackurls-bin
+pkgname=$_pkgname-bin
 pkgver=0.1.0
-pkgrel=2
-pkgdesc="Fetch all the URLs that the Wayback Machine knows about for a domain"
-arch=(x86_64)
+pkgrel=3
+pkgdesc='Fetch all the URLs that the Wayback Machine knows about for a domain'
+arch=('x86_64')
 url="https://github.com/tomnomnom/waybackurls"
-license=(MIT)
-provides=(waybackurls)
-conflicts=(waybackurls)
-source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-amd64-0.1.0.tgz")
-source=("$pkgname-$pkgver-README.mkd::https://raw.githubusercontent.com/tomnomnom/waybackurls/86aeb97852707e1a6fb3bcd33e61d5433a6476c5/README.mkd")
-b2sums_x86_64=("c948fae30944b776a08ba14aeb1b677f926caaf5289b920b2ef2bf0705803425ce841038b0ad3e4a31eafd29a44c6d5be27ab826c400e8bed548b22cbc68dc7e")
-b2sums=("4a54672ef868def388278b06dc5c74ed794a454f97994a414cf485ca4d1762f9d2d433300cf68c79952a41714e9e8c37bb701475a29de13340cae32375005244")
+# Upstream ships no license file at any commit and GitHub detects no license, so
+# the MIT identifier is inherited unverified. The licenses package carries no MIT
+# text either, so no license file is installed: one cannot be added without
+# fabricating the copyright line, which is upstream's to state.
+license=('MIT')
+depends=('glibc')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+options=('!debug')
+
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-amd64-$pkgver.tgz"
+        "$pkgname-$pkgver-README.mkd::https://raw.githubusercontent.com/tomnomnom/waybackurls/v$pkgver/README.mkd")
+sha256sums=('884786132d11c8eb838fc88626dad96494207c79e436a72870a7d69f147500a6'
+            'ffdf6f50d0cab97eee8d37b6739fa49bd94708e4955cf538f59a7c7c7929b24b')
+
+latestver() {
+    gh api repos/tomnomnom/waybackurls/releases/latest --jq '.tag_name' |
+        sed -nE 's/^v([0-9]+(\.[0-9]+)*)$/\1/p'
+}
 
 package() {
-    install -Dm755 $_pkgname -t "$pkgdir/usr/bin/"
-	install -Dm644 $pkgname-$pkgver-README.mkd "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm644 "$pkgname-$pkgver-README.mkd" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
