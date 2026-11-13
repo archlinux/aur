@@ -2,7 +2,7 @@
 
 pkgname=comicrd-bin
 _pkgname=comicrd
-pkgver=2.10.3
+pkgver=2.10.5
 pkgrel=1
 pkgdesc="ComicRD desktop comic reader built with Flutter and Rust"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=(
 provides=('comicrd')
 conflicts=('comicrd')
 source=("${_pkgname}-${pkgver}-linux-x86_64.tar.gz::https://github.com/andrizan/comicRD/releases/download/v${pkgver}/comicrd-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('dd9cba020eda45316492be98df181cfc9312ac0c44334e2ebcee43acbabe2243')
+sha256sums=('7ed39ec236f0180e3d794f95dd6c22b92bbdd17331d0ee5ecc4868f9d3c1fecb')
 
 package() {
   cp -R --no-preserve=ownership "${srcdir}/comicrd-${pkgver}-linux-x86_64/opt" "${pkgdir}/"
