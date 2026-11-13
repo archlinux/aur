@@ -1,7 +1,7 @@
 pkgbase = obs-avip
 	pkgdesc = NDI® source and output for OBS in Rust, a drop-in for DistroAV
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obs-rust/obs-avip
 	arch = x86_64
 	license = GPL-2.0-only
@@ -15,7 +15,7 @@ pkgbase = obs-avip
 	provides = distroav
 	provides = obs-ndi
 	conflicts = distroav
-	conflicts = obs-ndi-bin
+	conflicts = obs-ndi
 	source = https://github.com/obs-rust/obs-avip/archive/refs/tags/v0.1.0/obs-avip-0.1.0.tar.gz
 	sha256sums = dc8b4cc2bc80046a403949b52279979adabc1208dde2ac472335dc669f80dc5c
 
