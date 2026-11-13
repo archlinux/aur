@@ -3,7 +3,7 @@ pkgname=tapauth-git
 # Placeholder only: makepkg recomputes this from the checked-out source via
 # pkgver(), and the AUR sync workflow rewrites it on every push to main so AUR
 # helpers see a new version and offer the update.
-pkgver=0.12.0.r7.gcf447a0
+pkgver=0.12.0.r8.g02910a6
 pkgrel=1
 pkgdesc="Local smartphone-based authentication framework engine (Development/Git version)"
 arch=('x86_64' 'aarch64')
