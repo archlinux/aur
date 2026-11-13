@@ -1,6 +1,6 @@
 pkgbase = swiftsim-git
 	pkgdesc = Fast SPICE circuit simulator with a schematic editor and waveform viewer (LTspice alternative; development version)
-	pkgver = 0.2.0.r0.gde1c983
+	pkgver = 0.3.0.r0.g795b02f
 	pkgrel = 1
 	url = https://github.com/RamazanBerk20/SwiftSim
 	arch = x86_64
