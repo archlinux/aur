@@ -32,6 +32,7 @@ $modules = @(
 # PowerShellGet 2.2.6 changed its HelpInfoUri to the fwlink of its documentation page
 # (https://go.microsoft.com/fwlink/?linkid=2113539); its help is still in the container of PowerShell 6's
 # modules, where 2.2.5's fwlink (https://go.microsoft.com/fwlink/?linkid=855963) leads.
+# Upstream issue: https://github.com/PowerShell/PowerShell/issues/28410
 $helpContainers = @{
     'Microsoft.PowerShell.PSResourceGet' = 'https://pshelpprod.z22.web.core.windows.net/powershellget-3.x/'
     'PowerShellGet' = 'https://pshelpprod.z22.web.core.windows.net/powershell-6/'
