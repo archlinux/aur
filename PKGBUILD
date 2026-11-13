@@ -2,8 +2,8 @@
 
 _name=vercel-headers
 pkgname=python-$_name
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='Request header helpers for Vercel Python applications.'
 arch=('any')
 _repo='https://github.com/vercel/vercel-py'
@@ -12,18 +12,23 @@ license=('MIT')
 depends=('python')
 makedepends=('python-hatchling'
              'python-build'
-             'python-installer'
-             'python-wheel'
-             'git')
-source=("$_name::git+$_repo.git#commit=afe27960819e7459114b1f1f1c91b30a076105d2")
-sha256sums=('3efb5fc41feaae1a6ac6e3108620df29dc0b202e67f7cacf53e75ceaacb5d7b1')
+             'python-installer')
+source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name-v$pkgver.tar.gz")
+sha256sums=('7f6ab0e3b1c4f936934c41802363b7b1eb398a863401746550619048a47b7944')
+
+prepare() {
+  cd "vercel-py-$_name-v$pkgver/src/$_name"
+  # Use the hatchling version shipped by Arch
+  sed -i '/^requires = /s/"hatchling[<>=!~][^"]*"/"hatchling"/' pyproject.toml
+}
 
 build() {
-  cd "$srcdir"/$_name/src/$_name
+  cd "vercel-py-$_name-v$pkgver/src/$_name"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir"/$_name/src/$_name
+  cd "vercel-py-$_name-v$pkgver/src/$_name"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
