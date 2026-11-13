@@ -29,6 +29,11 @@ build() {
   make
 }
 
+check() {
+  cd "${pkgname}-${pkgver}"
+  ./src/bin/lttng/lttng --version
+}
+
 package() {
   cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
