@@ -1,3 +1,4 @@
 #!/usr/bin/bash
 
-exec dotnet /usr/lib/watt-toolkit/Steam++.dll "$@"
+export DOTNET_ROOT=/usr/lib/watt-toolkit/dotnet
+exec /usr/lib/watt-toolkit/dotnet/dotnet /usr/lib/watt-toolkit/assemblies/Steam++.dll "$@"

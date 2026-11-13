@@ -1,10 +1,11 @@
-#Maintainer: rmbgame<rmb@rmbgame.net>
-#Maintainer: AigioL<https://github.com/AigioL>
+#Maintainer: Silvertuanzi <126318157+silvertuanzi@users.noreply.github.com>
+#Contributor: rmbgame<rmb@rmbgame.net>
+#Contributor: AigioL<https://github.com/AigioL>
 _tag=3.2.0
 pkgname=watt-toolkit-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=${_tag//-/.}
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL-3.0-only')
@@ -20,7 +21,7 @@ source_x86_64=("Steam++_${pkgver}_x86_64.tar.gz::https://github.com/BeyondDimens
 source_aarch64=("Steam++_${pkgver}_aarch64.tar.gz::https://github.com/BeyondDimension/SteamTools/releases/download/${_tag}/Steam++_v${_tag}_linux_arm64.tgz")
 sha256sums=('50cfc2d50271e97d818004f1777826cedd666a16014bd08b288cdd35e3d47fb1'
             '2dbf57bb3cfbc45f3307f2db63ae86907364044b81137f2592363cd120da4f3e'
-            '822897eafe72886f06e2d6b0911d323a5716da8f2acbeca630f36382f38b64ec'
+            'd5c6aa889c75750735c6629a8fd614af620a3dc8b073d018fb19ee7bf8dcdcd3'
             'da96b337ef8f79f170fb5976dffee4c52ecf5bc842e3dac9d8479a198887b8b1')
 sha256sums_x86_64=('56725757e5e0b30164959f28f38966a7d622ace17f10b679e0e16d71a4dadbfc')
 sha256sums_aarch64=('57addf1c84af557d8e4ff0f6f0f25250f9434c491c8c186ef21f69df1002a871')
@@ -28,41 +29,40 @@ sha256sums_aarch64=('57addf1c84af557d8e4ff0f6f0f25250f9434c491c8c186ef21f69df100
 package(){
     depends=(
         # runtime
-        'libcap' 'aspnet-runtime-11.0' 'nss' 'dotnet-runtime-11.0' 'bash' 'hicolor-icon-theme'
+        'libcap' 'nss' 'bash' 'hicolor-icon-theme'
         # e_sqlite3.so libHarfBuzzSharp.so libSkiaSharp.so
         'glibc'
-        # Steam++.Accelerator
+        # native deps of the bundled .NET runtime and Steam++.Accelerator
         'gcc-libs'
+        # other native deps of the bundled .NET runtime
+        'icu' 'krb5' 'openssl-3' 'ca-certificates'
         # libSkiaSharp.so
         'fontconfig' 'freetype2' 'expat' 'zlib' 'bzip2' 'libpng' 'harfbuzz' 'brotli' 'glib2' 'graphite' 'pcre2')
-    optdepends=('steam: need official or flatpak version of steam')
+    optdepends=(
+        'steam: need official or flatpak version of steam'
+        'lttng-ust2.12: CoreCLR tracing for the bundled .NET runtime')
 
     # See ./src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj#L8
     local -r _appid=net.steampp.app
 
-    local _arch
-    case "${CARCH}" in
-        x86_64)
-            _arch=x64
-            ;;
-        aarch64)
-            _arch=arm64
-            ;;
-        *)
-            echo "Unsupported CARCH ${CARCH}"
-            return 1
-            ;;
-    esac
-
     mkdir -p "${pkgdir}/usr/lib/watt-toolkit" "${pkgdir}/usr/bin"
+    # Keep the upstream layout: start from 3.2.0, the accelerator validates
+    # <app>/dotnet/dotnet, <app>/assemblies/Steam++.dll and
+    # <app>/modules/Accelerator/Steam++.Accelerator at startup.
     cp -a --no-preserve=ownership -t "${pkgdir}/usr/lib/watt-toolkit" \
-        "${srcdir}/assemblies/." "${srcdir}/native/linux-$_arch/." \
-        "${srcdir}/modules"
-    # Fix permission
+        "${srcdir}/assemblies" "${srcdir}/dotnet" "${srcdir}/modules" \
+        "${srcdir}/native" "${srcdir}/Icons" "${srcdir}/script"
+    # The upstream tarball ships files as 0700; normalize modes.
+    find "${pkgdir}/usr/lib/watt-toolkit" -type d -exec chmod 755 {} +
     find "${pkgdir}/usr/lib/watt-toolkit" -type f -exec chmod 644 {} +
+    # Restore the executable bit only on the files that need it.
+    chmod 755 "${pkgdir}/usr/lib/watt-toolkit/dotnet/dotnet"
+    find "${pkgdir}/usr/lib/watt-toolkit/dotnet" -maxdepth 1 -type f -name 'dnx' -exec chmod 755 {} +
+    find "${pkgdir}/usr/lib/watt-toolkit/dotnet" -type f -name 'createdump' -exec chmod 755 {} +
+    find "${pkgdir}/usr/lib/watt-toolkit/script" -type f -name '*.sh' -exec chmod 755 {} +
     find "${pkgdir}/usr/lib/watt-toolkit/modules" -type f -name 'Steam++.*' -exec chmod 755 {} +
-    # Strip binary
-    find "${pkgdir}/usr/lib/watt-toolkit" -type f -name '*.so' -exec strip $STRIP_SHARED {} +
+    # Strip only the app native libs, never the bundled runtime
+    find "${pkgdir}/usr/lib/watt-toolkit" -type f -name '*.so' ! -path '*/dotnet/*' -exec strip $STRIP_SHARED {} +
     install -Dm644 "${srcdir}/Icons/Watt-Toolkit.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_appid}.png"
     install -Dm755 "${srcdir}/environment_check.sh" "${pkgdir}/usr/lib/watt-toolkit/script/environment_check.sh"
     install -Dm644 "${srcdir}/set-cap.hook" "${pkgdir}/usr/share/libalpm/hooks/watt-toolkit-set-cap.hook"
