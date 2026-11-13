@@ -15,10 +15,10 @@ optdepends=(
   'nvtop: Generic and Intel xe driver GPU metrics via nvtop'
   'zfs-utils: ZFS pool and dataset metrics'
   'pacman-contrib: Pending package update counts via checkupdates')
-provides=('beszel-agent')
+provides=("beszel-agent=$pkgver")
 conflicts=('beszel-agent')
 backup=('etc/beszel-agent.conf')
-source+=(
+source=(
   'beszel-agent.service'
   'beszel-agent.sysusers'
   'beszel-agent.conf.example'
@@ -41,13 +41,9 @@ source_mips64=("beszel-agent_linux_mips64-${pkgver}.tar.gz::${url}/releases/down
 source_riscv64=("beszel-agent_linux_riscv64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel-agent_linux_riscv64.tar.gz")
 
 package() {
-  cd "$srcdir"
-
-  install -d "$pkgdir/opt/beszel-agent"
-  tar -xz -C "$pkgdir/opt/beszel-agent" -f beszel-agent_linux_* --strip-components=0
-  chown -R root:root "$pkgdir/opt/beszel-agent"
-  chmod 0755 "$pkgdir/opt/beszel-agent/beszel-agent"
-  install -Dm644 "$pkgdir/opt/beszel-agent/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 beszel-agent "$pkgdir/opt/beszel-agent/beszel-agent"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 readme.md "$pkgdir/usr/share/doc/$pkgname/readme.md"
 
   install -d "$pkgdir/usr/bin"
   ln -s /opt/beszel-agent/beszel-agent "$pkgdir/usr/bin/beszel-agent"

@@ -16,7 +16,7 @@ pkgbase = beszel-agent-bin
 	optdepends = nvtop: Generic and Intel xe driver GPU metrics via nvtop
 	optdepends = zfs-utils: ZFS pool and dataset metrics
 	optdepends = pacman-contrib: Pending package update counts via checkupdates
-	provides = beszel-agent
+	provides = beszel-agent=0.21.2
 	conflicts = beszel-agent
 	backup = etc/beszel-agent.conf
 	source = beszel-agent.service
