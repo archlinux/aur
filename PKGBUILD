@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=pixtuoid
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc='Terminal pixel-art office for AI coding agents'
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ optdepends=('libxkbcommon: floating window'
             'libglvnd: floating window with OpenGL')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('49a430b2b6725f788455e87de7d70feae8da2c4d9376696d37298c297242391b')
+sha256sums=('3fa152fb9e2517d4ff9c9fcb90c078d95eab9ffd40fe31d6af69cc17fbe97ab9')
 
 _home_env() {
   export HOME="${srcdir}/home"
