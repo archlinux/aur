@@ -1,6 +1,6 @@
 # Maintainer: Alfonso de la Guarda <alfonsodg at gmail dot com>
 pkgname=neomarker-git
-pkgver=v2026.11.15.r0.gcbb771c
+pkgver=v2026.11.16.r0.g464d187
 pkgrel=1
 pkgdesc="Markdown editor with Mermaid 12, batch PDF export, dark mode and security fixes"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = neomarker-git
 	pkgdesc = Markdown editor with Mermaid 12, batch PDF export, dark mode and security fixes
-	pkgver = 2026.11.15
+	pkgver = 2026.11.16
 	pkgrel = 1
 	url = https://github.com/alfonsodg/NeoMarker
 	arch = x86_64
