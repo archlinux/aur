@@ -20,7 +20,7 @@
 _pkgname=resolve
 pkgname=davinci-resolve-studio-aacfix
 pkgver=21.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition with AAC audio decode restored (resolve-aacfix), requires license key or license dongle.'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -53,7 +53,7 @@ source=("file://DaVinci_Resolve_Studio_${pkgver}_Linux.zip"
         "https://ffmpeg.org/releases/ffmpeg-${_ffmpeg_ver}.tar.xz"{,.asc}
         "resolve-aacfix-gate1-register.patch")
 # The ffmpeg tarball sum below is a placeholder: run `updpkgsums` once.
-sha256sums=('e3eb29c71ae7e83003ba6c400ddfcd0d0f4cc2b3e25b5e18adcbe6d863b66805'
+sha256sums=('6f90643d81c9db57f248d910ce1ec55247779f3e07123e719bafd84dec6c4a2d'
             'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8'
             'd09e4d046d964c80ba58b51e8fc253f1102af229dd3bd28d83197736e505d981'
             '1384cf1df809ae4429cf42ce55cefc081766a6baa5c51537dd9ef083ccebbe13'
