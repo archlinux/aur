@@ -10,7 +10,7 @@
 # keeps the build independent of raw.githubusercontent.com.
 
 pkgname=xdm-app-bin
-pkgver=9.0.9
+pkgver=9.0.10
 pkgrel=1
 # Upstream switched to v-prefixed release tags at 9.0.9 (9.0.8 was untagged).
 _tag=v$pkgver
@@ -32,8 +32,8 @@ replaces=('xdman' 'xdman_gtk')
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/subhra74/xdm/releases/download/$_tag/xdm-app-$pkgver-linux-x64.tar.gz")
 source_aarch64=("https://github.com/subhra74/xdm/releases/download/$_tag/xdm-app-$pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('e9083d90f83375c5377f21b0328edf96fea665955545869394b150330807c538')
-sha256sums_aarch64=('0f3727cea3e539e65ff83005d550682867300e4324574c7270e09b3b1c9d9ac5')
+sha256sums_x86_64=('69efc8c93c67ca9dfdd2389015e1b5305a66c2a950374159c10040fd13507d6a')
+sha256sums_aarch64=('71eb4ccd1551fec963b4d5aef479de69c934b628dc25df765f55ab363b4061a6')
 
 package() {
   install -dm755 "$pkgdir/opt" "$pkgdir/usr/bin" \
