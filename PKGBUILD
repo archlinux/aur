@@ -2,7 +2,7 @@
 
 _name=smithy-aws-event-stream
 pkgname=python-$_name
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Smithy components for Amazon Event Streams.'
 arch=('any')
@@ -16,10 +16,9 @@ makedepends=('python-hatchling'
              'python-installer')
 checkdepends=('python-pytest'
               'python-pytest-asyncio'
-              'python-freezegun'
               'python-smithy-json')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name/v$pkgver.tar.gz")
-sha256sums=('e9f4381e5021947b1ab653a4e613b13f02024894a474d16058725ad6289d10f3')
+sha256sums=('342748100aadbf0bb9251707870cb324d0b183a6efaacbc8655fe5e583cb336d')
 
 build() {
   cd "smithy-python-$_name-v$pkgver/packages/$_name"
