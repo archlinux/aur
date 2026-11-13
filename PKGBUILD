@@ -1,4 +1,4 @@
-# Maintainer: Young <young@localhost>
+# Maintainer: YoungCrescent <jy792505@mail.ustc.edu.cn>
 #
 # simpleEMS pins its whole dependency stack exactly (numpy 2.4.4, cadquery 2.8.0 ->
 # cadquery-ocp 7.9.3.1, pyvista 0.48.4, pyqt6 6.10.1, ...) and several of those are
