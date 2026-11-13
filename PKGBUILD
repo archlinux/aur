@@ -1,5 +1,5 @@
 pkgname=snout-desktop-bin
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Native desktop workbench for Rime input method schemes, models, and themes"
 arch=('x86_64')
@@ -13,11 +13,14 @@ options=('!strip' '!debug')
 source=("snout-LICENSE-${pkgver}::https://raw.githubusercontent.com/ca-x/snout/v${pkgver}/LICENSE")
 source_x86_64=("${url}/releases/download/v${pkgver}/snout-desktop-v${pkgver}-linux-x86_64-gnu.tar.gz")
 sha256sums=('7a4b84bc50888e3562c2436ed6acbd6171d92b8e91861934a89b874eba76cfbb')
-sha256sums_x86_64=('d4e80089dbc09abc5094c502391427484da563ae368fbe1bbae0b851095b37e4')
+sha256sums_x86_64=('632fecf5e6fd7abfbaa9660015e05498d622645e90ac431583f0b9e8f3be49be')
 
 package() {
   local release_dir="${srcdir}/snout-desktop-v${pkgver}-linux-${CARCH}-gnu"
   install -Dm755 "${release_dir}/bin/snout-desktop" "${pkgdir}/usr/bin/snout-desktop"
+  install -dm755 "${pkgdir}/usr/share/snout-desktop"
+  printf '%s\n' 'pacman' > "${pkgdir}/usr/share/snout-desktop/package-managed"
+  chmod 644 "${pkgdir}/usr/share/snout-desktop/package-managed"
   install -Dm644 "${release_dir}/share/applications/io.github.snout.desktop.desktop" \
     "${pkgdir}/usr/share/applications/io.github.snout.desktop.desktop"
   for size in 256 512; do
