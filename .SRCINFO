@@ -1,6 +1,6 @@
 pkgbase = apm-git
-	pkgdesc = Agent Package Manager (microsoft/apm) built from git with a placement perf patch
-	pkgver = 0.35.0.r1.g292004325
+	pkgdesc = Agent Package Manager (microsoft/apm) built from git
+	pkgver = 0.35.1.r76.g4782e389d
 	pkgrel = 1
 	url = https://github.com/microsoft/apm
 	arch = any
@@ -33,8 +33,6 @@ pkgbase = apm-git
 	provides = apm
 	conflicts = apm
 	source = apm-git::git+https://github.com/microsoft/apm.git
-	source = 0001-perf-compile-placement.patch
 	sha256sums = SKIP
-	sha256sums = 1ed40cd75fc05f8256bfc2adf8b73d04fbd96099e579e9bee002f2bf1417b00d
 
 pkgname = apm-git

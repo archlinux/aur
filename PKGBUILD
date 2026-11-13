@@ -1,8 +1,8 @@
 # Maintainer: keemcophoff
 pkgname=apm-git
-pkgver=0.35.0.r1.g292004325
+pkgver=0.35.1.r76.g4782e389d
 pkgrel=1
-pkgdesc='Agent Package Manager (microsoft/apm) built from git with a placement perf patch'
+pkgdesc='Agent Package Manager (microsoft/apm) built from git'
 arch=('any')
 url='https://github.com/microsoft/apm'
 license=('MIT')
@@ -31,24 +31,17 @@ depends=(
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=('apm')
 conflicts=('apm')
-source=("$pkgname::git+$url.git"
-        '0001-perf-compile-placement.patch')
-sha256sums=('SKIP'
-            '1ed40cd75fc05f8256bfc2adf8b73d04fbd96099e579e9bee002f2bf1417b00d')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
   git describe --long --tags --match 'v*' | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
-prepare() {
-  cd "$pkgname"
-  git checkout -- .
-  patch -Np1 -i "$srcdir/0001-perf-compile-placement.patch"
-}
-
 build() {
   cd "$pkgname"
+  rm -rf dist
   python -m build --wheel --no-isolation
 }
 
