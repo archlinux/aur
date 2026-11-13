@@ -1,16 +1,20 @@
 # Maintainer: Jacob Burgess
 pkgname=eddie-git
 _pkgname=eddie
-pkgver=r104.c5be7de
+pkgver=r151.ff8b0f7
 pkgrel=1
-pkgdesc="The editor that watches the footage for you: a native Rust video editor with Meta's models built in"
+pkgdesc="The editor that watches the footage for you: a native Rust video editor that AI agents can drive"
 arch=('x86_64')
 url="https://github.com/BurgessTG/eddie"
-license=('MIT' 'Apache-2.0')
-depends=('ffmpeg' 'gtk3' 'glib2' 'alsa-lib' 'fontconfig' 'gcc-libs' 'glibc'
-         'libxkbcommon' 'wayland' 'libx11' 'vulkan-icd-loader')
-makedepends=('git' 'cargo' 'clang' 'cmake' 'pkgconf')
+license=('MIT OR Apache-2.0')
+depends=('ffmpeg' 'gtk3' 'glib2' 'alsa-lib' 'fontconfig' 'libgcc' 'libstdc++'
+         'glibc' 'libxkbcommon' 'wayland' 'libx11' 'vulkan-icd-loader'
+         'hicolor-icon-theme')
+makedepends=('git' 'cargo' 'clang' 'cmake' 'pkgconf'
+             'vulkan-headers' 'shaderc')
 optdepends=('inter-font: the interface font Eddie is designed with'
+            'ttf-liberation: a font for titles when fontconfig finds no other'
+            'libva-nvidia-driver: hardware decode on NVIDIA (Settings, off by default)'
             'xdg-utils: Open folder after an export')
 provides=('eddie')
 conflicts=('eddie')
@@ -38,17 +42,26 @@ build() {
   # whisper.cpp and QuickJS embed __FILE__ paths.
   export CFLAGS="${CFLAGS:-} -ffile-prefix-map=$srcdir=/build"
   export CXXFLAGS="${CXXFLAGS:-} -ffile-prefix-map=$srcdir=/build"
-  cargo build --frozen --release -p openreel-app --bin eddie
+  # Commits on master, so Eddie can tell a newer preview from this one.
+  export EDDIE_BUILD="$(git rev-list --count HEAD)"
+  # Local transcription on any Vulkan GPU; it runs on the CPU where there
+  # is none. whisper.cpp's shaders need glslc (shaderc) to build.
+  cargo build --frozen --release -p openreel-app --bin eddie --features vulkan
 }
 
 package() {
   cd "$_pkgname"
   install -Dm755 target/release/eddie "$pkgdir/usr/bin/eddie"
   install -Dm644 packaging/eddie.desktop "$pkgdir/usr/share/applications/eddie.desktop"
+  # Lets a file manager open a .eddie project in Eddie.
+  install -Dm644 packaging/eddie.xml "$pkgdir/usr/share/mime/packages/eddie.xml"
   for size in 256 512; do
     install -Dm644 "packaging/eddie-$size.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/eddie.png"
   done
+  # `eddie help` and the README send agents to docs/agents.md.
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 docs/agents.md "$pkgdir/usr/share/doc/$pkgname/agents.md"
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 }
