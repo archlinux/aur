@@ -1,5 +1,7 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
 # Contributor: Vinay S Shastry <vinayshastry at gmail dot com>
+# Contributor: Brittany Figueroa <dormwear_iure at crowley dot seership dot dev>
+# Contributor: Brad Erhart <tocusso_malty at aleeas dot com>
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
