@@ -1,6 +1,6 @@
 pkgbase = gt3-revisited-bin
 	pkgdesc = Open reimplementation of the Gran Turismo 3 A-Spec engine
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/matt-pulsipher/GT3-revisited
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = gt3-revisited-bin
 	optdepends = mesa: OpenGL ES and Mesa Vulkan drivers
 	provides = gt3-revisited
 	conflicts = gt3-revisited
-	source = https://github.com/matt-pulsipher/GT3-revisited/releases/download/v0.6.5/gt3r-linux-x86_64.tar.gz
+	source = https://github.com/matt-pulsipher/GT3-revisited/releases/download/v0.6.6/gt3r-linux-x86_64.tar.gz
 	source = gt3r.png::https://raw.githubusercontent.com/sxdot/GT3-revisited/master/gt3r.png
-	sha256sums = caee22188f8738860a02c01d0880c16a2f9e7f44aa910fb0c11a530feeac851d
+	sha256sums = 3af647720340a06f40dbfc851eabde7fec46c6f15bd8fe1f618563c9d6f82889
 	sha256sums = 60736ba89a11a51688e010119ad6b87d59732cadb041da28e7424b96168f3bfa
 
 pkgname = gt3-revisited-bin
