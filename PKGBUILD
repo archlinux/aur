@@ -1,36 +1,58 @@
 # Maintainer: sim0n <aur.direction446@aleeas.com>
 pkgname=sing-box-ref1nd
 _pkgname=sing-box
-pkgver=1.13.2
+pkgver=1.14.4
 pkgrel=1
 
 pkgdesc='The universal proxy platform.'
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/reF1nd/sing-box'
-license=('GPL3 with name use or association addition')
+license=('LicenseRef-sing-box')
 
-makedepends=('go' 'mold')
+depends=('glibc' 'libgcc')
+makedepends=('go' 'clang' 'lld')
 provides=("$_pkgname")
 options=('!debug')
 
 source=("$_pkgname-$pkgver-reF1nd.tar.gz::https://github.com/reF1nd/sing-box/archive/refs/tags/v$pkgver-reF1nd.tar.gz")
-sha256sums=('2f40e2245731c5c097eed1ceeced341f82c36218ef6f24167242ad30e97f024a')
+sha256sums=('50d8688711a606a0de75d3e2e602f01e7d01921171feca5cabeeabcb706f01e2')
 
 conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$pkgname-git")
 
 backup=("etc/$_pkgname/config.json")
 
-_tags=with_utls,with_gvisor,with_quic,with_wireguard,with_clash_api,with_acme,with_dhcp,with_tailscale,with_naive_outbound
+prepare() {
+    cd "$_pkgname-$pkgver-reF1nd"
+
+    export GOPATH="$srcdir"
+    go mod download -modcacherw
+}
+
 build(){
     cd "$_pkgname-$pkgver-reF1nd"
 
     export CGO_CPPFLAGS="$CPPFLAGS"
     export CGO_CFLAGS="$CFLAGS"
     export CGO_CXXFLAGS="$CXXFLAGS"
-    export CGO_LDFLAGS="$LDFLAGS"
-    export VERSION="$pkgver"
+    export CGO_LDFLAGS="$LDFLAGS -fuse-ld=lld"
     export CGO_ENABLED=1
-    export CGO_LDFLAGS="-fuse-ld=mold"
+    export CC=clang
+    export CXX=clang++
+    export GOFLAGS='-p=2'
+
+    local _goarch
+    local _cronet_libdir
+    case "$CARCH" in
+        x86_64) _goarch=amd64 ;;
+        aarch64) _goarch=arm64 ;;
+        *) echo "Unsupported architecture: $CARCH" >&2; return 1 ;;
+    esac
+    _cronet_libdir="$(go env GOPATH)/pkg/mod/github.com/sagernet/cronet-go/lib/linux_${_goarch}@$(go list -mod=readonly -m -f '{{.Version}}' github.com/sagernet/cronet-go/lib/linux_${_goarch})"
+
+    local _tags
+    local _ldflags
+    _tags="$(<release/DEFAULT_BUILD_TAGS),with_purego"
+    _ldflags="$(<release/LDFLAGS)"
 
     go build \
         -v \
@@ -40,28 +62,33 @@ build(){
         -modcacherw \
         -tags "$_tags" \
         -ldflags "
-            -X \"github.com/sagernet/sing-box/constant.Version=$VERSION\"
-            -s -w -buildid= -linkmode=external" \
+            -X \"github.com/sagernet/sing-box/constant.Version=$pkgver\"
+            $_ldflags -s -w -buildid= -linkmode=external" \
+        -o sing-box-bin \
         ./cmd/sing-box
 
-    echo "u $_pkgname - \"Sing-box Service\" - -" > "release/config/$_pkgname.sysusers"
+    install -Dm755 "$_cronet_libdir/libcronet.so" libcronet.so
 
     install -d completions
-    go run ./cmd/sing-box completion bash   > completions/bash
-    go run ./cmd/sing-box completion fish   > completions/fish
-    go run ./cmd/sing-box completion zsh    > completions/zsh
+    ./sing-box-bin completion bash > completions/bash
+    ./sing-box-bin completion fish > completions/fish
+    ./sing-box-bin completion zsh  > completions/zsh
 }
 
 package() {
     cd "$_pkgname-$pkgver-reF1nd"
 
-    install -Dm644 LICENSE                            -t "$pkgdir/usr/share/licenses/$_pkgname"
-    install -Dm755 "$_pkgname"                         -t "$pkgdir/usr/bin"
+    install -Dm644 LICENSE                            -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm755 sing-box-bin "$pkgdir/usr/lib/$_pkgname/$_pkgname"
+    install -Dm755 libcronet.so  -t "$pkgdir/usr/lib/$_pkgname"
+    install -d "$pkgdir/usr/bin"
+    ln -s "../lib/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
     install -Dm644 "release/config/config.json"       -t "$pkgdir/etc/$_pkgname"
     install -Dm644 "release/config/$_pkgname.service"  -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "release/config/$_pkgname@.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "release/config/$_pkgname.sysusers"    "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
     install -Dm644 "release/config/sing-box.rules"       "$pkgdir/usr/share/polkit-1/rules.d/sing-box.rules"
+    install -Dm644 "release/config/sing-box-split-dns.xml" "$pkgdir/usr/share/dbus-1/system.d/sing-box-split-dns.conf"
 
     install -Dm644 completions/bash "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}.bash"
     install -Dm644 completions/fish "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
