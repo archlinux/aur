@@ -11,11 +11,11 @@ pkgdesc='LTTng tracing control tools'
 arch=('x86_64')
 url='https://lttng.org/'
 license=('GPL2' 'LGPL2.1')
-depends=('popt' 'liburcu>=0.7.2' "lttng-ust>=${pkgver%.*}.0" 'linux>=2.6.27' 'libxml2>=2.7.6')
+depends=('glibc' 'kmod' 'libgcc' 'libstdc++' 'libxml2' 'liburcu' "lttng-ust>=${pkgver%.*}.0" 'popt')
 makedepends=('asciidoc' 'xmlto')
-optdepends=('lttng-modules: kernel tracing support'
-            'babeltrace: view traces with `lttng view` command'
-            'man-db: view man pages with the `lttng help` command')
+optdepends=('babeltrace2: read traces with lttng view'
+            'lttng-modules: kernel tracing'
+            'man-db: man pages through lttng help')
 provides=('lttng')
 source=("https://lttng.org/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
         "https://lttng.org/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2.asc")
@@ -25,7 +25,7 @@ validpgpkeys=('7F49314A26E0DE78427680E05F1B2A0789F12B11')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  ./configure --prefix=/usr --sysconfdir=/etc --enable-man-pages --disable-tests
+  ./configure --prefix=/usr --sysconfdir=/etc --with-kmod --enable-man-pages --disable-tests
   make
 }
 

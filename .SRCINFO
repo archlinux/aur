@@ -8,14 +8,17 @@ pkgbase = lttng-tools
 	license = LGPL2.1
 	makedepends = asciidoc
 	makedepends = xmlto
-	depends = popt
-	depends = liburcu>=0.7.2
+	depends = glibc
+	depends = kmod
+	depends = libgcc
+	depends = libstdc++
+	depends = libxml2
+	depends = liburcu
 	depends = lttng-ust>=2.16.0
-	depends = linux>=2.6.27
-	depends = libxml2>=2.7.6
-	optdepends = lttng-modules: kernel tracing support
-	optdepends = babeltrace: view traces with `lttng view` command
-	optdepends = man-db: view man pages with the `lttng help` command
+	depends = popt
+	optdepends = babeltrace2: read traces with lttng view
+	optdepends = lttng-modules: kernel tracing
+	optdepends = man-db: man pages through lttng help
 	provides = lttng
 	source = https://lttng.org/files/lttng-tools/lttng-tools-2.16.0.tar.bz2
 	source = https://lttng.org/files/lttng-tools/lttng-tools-2.16.0.tar.bz2.asc
