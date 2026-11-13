@@ -1,0 +1,22 @@
+post_install() {
+  cat <<'EOF'
+Pi scans no system path by itself. Add the shared extension root once and
+restart pi:
+
+  ~/.pi/agent/settings.json
+    "extensions": ["/usr/lib/pi/packages"]
+
+That one directory entry loads every Pi extension installed by pacman, this
+package included.
+
+Undo history lives in a private git repository outside your project, so `git`
+must be on PATH (already pulled in as a dependency). The extension stays
+inactive in your home directory and in folders that only contain several
+repositories; to force it on, also set:
+  { "workspaceHistory": { "enabled": true } }
+
+/undo   rewind files + conversation to before the last operation
+/tree   (or double Escape) jump to any point; choose whether files follow
+/redo   reapply, /diff [n] inspect, /checkpoint save by hand
+EOF
+}

@@ -1,0 +1,14 @@
+pkgbase = pi-ext-workspace-history
+	pkgdesc = Undo and redo for the Pi coding agent: rewinds files and conversation together
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/wcldyx/pi-workspace-history
+	install = pi-ext-workspace-history.install
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = git
+	source = pi-workspace-history-0.5.2.tgz::https://registry.npmjs.org/pi-workspace-history/-/pi-workspace-history-0.5.2.tgz
+	sha256sums = 185cb2f967736d213cc4ebb77a9f66bf90882c29713ea1803fc943d72d6b1704
+
+pkgname = pi-ext-workspace-history
