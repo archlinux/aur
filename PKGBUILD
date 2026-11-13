@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=mesheryctl-bin
-pkgver=1.0.78
+pkgver=1.0.79
 pkgrel=1
 pkgdesc='Command line interface for the Meshery cloud native manager (prebuilt)'
 arch=('x86_64' 'aarch64' 'armv6h')
@@ -13,9 +13,9 @@ _release="${url}/releases/download/v${pkgver}"
 source_x86_64=("${_release}/mesheryctl_${pkgver}_Linux_x86_64.tar.gz")
 source_aarch64=("${_release}/mesheryctl_${pkgver}_Linux_arm64.tar.gz")
 source_armv6h=("${_release}/mesheryctl_${pkgver}_Linux_armv6.tar.gz")
-sha256sums_x86_64=('aafd04d3bd942b648704908f6c307341323a9cc7a730cc2d8b1cd0b087e18cfb')
-sha256sums_aarch64=('ad3a95ce2cb99dbe55b7fced9f35683afc179fbb7bea52a5d0f023665e0e0a4f')
-sha256sums_armv6h=('cc010889375fb5330c938e0de2796b22fd7070d1b22d40a890e9a6094a259f47')
+sha256sums_x86_64=('cbd0524ebe1d1f6c0d95c83042615b8df25f2555c7767c855d856aa69c88fb67')
+sha256sums_aarch64=('9a062e398e381e7aa864850d45bd7e415898527669794f05740b82c7766e5f87')
+sha256sums_armv6h=('ca9f1baa5ab1fee3928e7662464ec4c3318b7da6fb68e1e2601e5b90f70e42b6')
 
 _home_env() {
   export HOME="${srcdir}/home"
