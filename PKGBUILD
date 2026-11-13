@@ -1,4 +1,4 @@
-# Maintainer: YoungCrescent <youngcrescent@proton.me>
+# Maintainer: YoungCrescent <jy792505@mail.ustc.edu.cn>
 pkgname=opalx
 pkgver=2024.1.0
 pkgrel=1
