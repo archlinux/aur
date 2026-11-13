@@ -1,0 +1,15 @@
+pkgbase = tdu-aegix-git
+	pkgdesc = Aegix Linux's terminal disk usage: an instant device overview with chunky gruvbox bars and a one-level drill-down
+	pkgver = r9.fd46423
+	pkgrel = 1
+	url = https://github.com/aegixlinux/tdu
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = tdu
+	conflicts = tdu
+	source = tdu::git+https://github.com/aegixlinux/tdu.git
+	sha256sums = SKIP
+
+pkgname = tdu-aegix-git
