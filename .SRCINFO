@@ -1,54 +1,64 @@
 pkgbase = python-marker-pdf
 	pkgdesc = Convert documents to markdown, JSON, chunks, and HTML quickly and accurately
-	pkgver = 2.0.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/datalab-to/marker
 	arch = any
 	license = Apache-2.0
+	checkdepends = python-pytest>=8.3.3
+	checkdepends = python-pytest-mock>=3.14.0
+	checkdepends = python-datasets>=2.21.0
+	checkdepends = python-mammoth>=1.9.0
+	checkdepends = python-openpyxl>=3.1.5
+	checkdepends = python-pptx>=1.0.2
+	checkdepends = python-ebooklib>=0.18
+	checkdepends = python-weasyprint>=63.1
+	checkdepends = python-fastapi>=0.115.4
+	checkdepends = python-python-multipart>=0.0.16
+	checkdepends = python-streamlit>=1.37.1
+	checkdepends = uvicorn>=0.32.0
 	makedepends = python-build
 	makedepends = python-hatchling
 	makedepends = python-installer
-	depends = python
+	depends = python>=3.10
+	depends = python-anthropic>=0.69.0
 	depends = python-beautifulsoup4
-	depends = python-click
-	depends = python-dotenv
-	depends = python-filetype
-	depends = python-ftfy
-	depends = python-google-genai
-	depends = python-markdown2
-	depends = python-markdownify
-	depends = python-numpy
-	depends = python-openai
-	depends = python-opencv
-	depends = python-pdftext
-	depends = python-pillow
-	depends = python-psutil
-	depends = python-pydantic
-	depends = python-pydantic-settings
+	depends = python-click>=8.2.0
+	depends = python-dotenv>=1.0.0
+	depends = python-filetype>=1.2.0
+	depends = python-ftfy>=6.1.1
+	depends = python-google-genai>=1.40.0
+	depends = python-indra-ocr>=1.1.2
+	depends = python-markdown2>=2.5.2
+	depends = python-markdownify>=1.1.0
+	depends = python-openai>=2.2.0
+	depends = python-pdftext>=0.7.0
+	depends = python-pillow>=10.1.0
+	depends = python-psutil>=7.0.0
+	depends = python-pydantic>=2.4.2
+	depends = python-pydantic-settings>=2.0.3
 	depends = python-pypdfium2
-	depends = python-pytorch
-	depends = python-rapidfuzz
-	depends = python-regex
+	depends = python-pytorch>=2.7.0
+	depends = python-rapidfuzz>=3.8.1
+	depends = python-regex>=2024.4.28
 	depends = python-requests
-	depends = python-scikit-learn
-	depends = python-six
-	depends = python-surya-ocr
-	depends = python-tqdm
-	optdepends = python-ebooklib: EPUB input
-	optdepends = python-mammoth: DOCX input
-	optdepends = python-openpyxl: XLSX input
-	optdepends = python-pptx: PPTX input
-	optdepends = python-weasyprint: HTML, DOCX, XLSX, PPTX and EPUB input
-	optdepends = python-fastapi: marker_server
-	optdepends = python-python-multipart: marker_server file uploads
-	optdepends = python-streamlit: marker_gui
-	optdepends = uvicorn: marker_server
-	optdepends = ollama: local Ollama LLM service
-	optdepends = python-anthropic: Claude LLM service
-	optdepends = docker: NVIDIA vLLM inference backend
-	optdepends = llama-cpp: llama.cpp inference backend
-	optdepends = nvidia-container-toolkit: NVIDIA vLLM GPU support
-	source = marker-pdf-2.0.0.tar.gz::https://files.pythonhosted.org/packages/source/m/marker_pdf/marker_pdf-2.0.0.tar.gz
-	sha256sums = 7f6f0ebd29908f7c7c66f61cc06a9c07a9e3cd612c00732016f6e6b6fc150f7c
+	depends = python-scikit-learn>=1.6.1
+	depends = python-surya-ocr>=0.23.0
+	depends = python-tqdm>=4.66.1
+	optdepends = python-ebooklib>=0.18: EPUB input
+	optdepends = python-mammoth>=1.9.0: DOCX input
+	optdepends = python-openpyxl>=3.1.5: XLSX input
+	optdepends = python-pptx>=1.0.2: PPTX input
+	optdepends = python-weasyprint>=63.1: HTML input
+	optdepends = python-fastapi>=0.115.4: FastAPI API backend for marker_server and marker_gui
+	optdepends = python-python-multipart>=0.0.16: Multipart file uploads to the FastAPI server
+	optdepends = uvicorn>=0.32.0: ASGI server for the FastAPI backend
+	optdepends = python-streamlit>=1.37.1: Legacy Streamlit interface
+	optdepends = ollama: Local Ollama inference service for LLM-assisted conversion
+	optdepends = docker: Run the Surya vLLM inference backend in a container (NVIDIA GPU)
+	optdepends = llama-cpp: Local llama.cpp inference server (llama-server)
+	optdepends = nvidia-container-toolkit: NVIDIA GPU support for Docker-based vLLM inference
+	source = marker_pdf-2.2.0.tar.gz::https://files.pythonhosted.org/packages/source/m/marker_pdf/marker_pdf-2.2.0.tar.gz
+	sha256sums = 5c37c9f527adea5440d45aa5ec2dac11a4439964e567cf8ed2a5415904cbe6c9
 
 pkgname = python-marker-pdf
