@@ -1,0 +1,11 @@
+post_install() {
+    printf '%s\n' '╔═════════════════════════════════════════════╗'
+    printf '%s\n' '║                                             ║'
+    printf '%s\n' '║   ******** HUGE UPDATE SINCE v1.4 ********  ║'
+    printf '%s\n' '║   Complete rewrite, proper Linux support,   ║'
+    printf '%s\n' '║   Wii nkit.iso / nkit.gcz formats removed,  ║'
+    printf '%s\n' '║   new systems supported & much much more.   ║'
+    printf '%s\n' '║   Details: https://github.com/Nanook/NKit   ║'
+    printf '%s\n' '║                                             ║'
+    printf '%s\n' '╚═════════════════════════════════════════════╝'
+}
