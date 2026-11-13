@@ -3,7 +3,7 @@
 # Co-Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=detect-it-easy-git
 _pkgname=${pkgname%-git}
-pkgver=4.0.0.r21502.44209ea
+pkgver=4.1.0.r22044.b7e2fd5
 pkgrel=1
 pkgdesc='Detect It Easy (DIE) is a program for determining types of files'
 arch=('x86_64')
@@ -20,15 +20,15 @@ depends=(
   'hicolor-icon-theme'
   'icu'
   'krb5'
-  'qt5-base'
-  'qt5-script'
-  'qt5-svg'
+  'qt6-base'
+  'qt6-declarative'
+  'qt6-svg'
   'systemd-libs'
 )
 makedepends=(
   'cmake'
   'git'
-  'qt5-tools'
+  'qt6-tools'
 )
 
 _srcname="DIE-engine"
@@ -53,6 +53,12 @@ prepare() {
 build() {
   cd "$_srcname" || return
   echo "${_prefix}Building detect-it-easy"
+
+  # Upstream picks Qt 6 over Qt 5 automatically (find_package(QT NAMES Qt6 Qt5))
+  # and compiles the .qm translations with find_program(lrelease). On Arch the
+  # Qt 6 lrelease is only reachable as /usr/lib/qt6/bin/lrelease (or lrelease6),
+  # so expose that directory, otherwise the translations are silently skipped.
+  export PATH="/usr/lib/qt6/bin:$PATH"
 
   cmake \
     -B build \
