@@ -1,6 +1,6 @@
 pkgbase = slimjet
-	pkgdesc = Fast, smart and powerful browser based on Blink.(Prebuilt version)
-	pkgver = 51.0.1.0
+	pkgdesc = Fast, smart and powerful browser based on Blink.
+	pkgver = 51.0.3.0
 	pkgrel = 1
 	url = https://www.slimjet.com
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = slimjet
 	optdepends = ttf-liberation: fix fonts for some PDFs
 	options = !emptydirs
 	options = !strip
-	source = slimjet-51.0.1.0.deb::https://www.slimjetbrowser.com/release/slimjet_amd64.deb
-	sha256sums = SKIP
+	source = slimjet-51.0.3.0.deb::https://www.slimjetbrowser.com/release/slimjet_amd64.deb
+	sha256sums = 7b25788bf951419b8a36d8dfe4ef9a65d3b90e4c723f4b3cc8ae96711bfde919
 
 pkgname = slimjet

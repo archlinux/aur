@@ -5,11 +5,11 @@
 # Contributor: dalto <dalto at fastmail dot com>
 pkgname=slimjet
 _pkgname="flashpeak-${pkgname}"
-pkgver=51.0.1.0
+pkgver=51.0.3.0
 # curl -s https://nwjs.io/versions.json | jq -r 'limit(1; .versions[] | select(.components.chromium | startswith("137.")) | .version)'
 # strings src/opt/slimjet/slimjet | grep -Eo '^Chrome/([0-9]+(\.[0-9]+)+)' | head -n 1
 pkgrel=1
-pkgdesc="Fast, smart and powerful browser based on Blink.(Prebuilt version)"
+pkgdesc="Fast, smart and powerful browser based on Blink."
 arch=('x86_64')
 url="https://www.slimjet.com"
 _dlurl="https://www.slimjetbrowser.com"
@@ -46,7 +46,7 @@ source=(
     "${pkgname}-${pkgver}.deb::${_dlurl}/release/${pkgname}_amd64.deb"
     #"${pkgname}-${pkgver}.deb::${url}/release/${pkgname}_amd64.deb"
 )
-sha256sums=('SKIP')
+sha256sums=('7b25788bf951419b8a36d8dfe4ef9a65d3b90e4c723f4b3cc8ae96711bfde919')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
