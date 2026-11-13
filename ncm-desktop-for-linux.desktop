@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=NCM Desktop for Linux
+GenericName=Music Player
+GenericName[zh_CN]=音乐播放器
+Comment=A third-party NetEase Cloud Music client for Linux
+Comment[zh_CN]=Linux 上的第三方网易云音乐客户端
+Exec=ncm-desktop-for-linux
+Icon=ncm-desktop-for-linux
+Terminal=false
+Categories=AudioVideo;Audio;Player;Music;
+Keywords=music;netease;网易云;音乐;
+StartupNotify=true
+StartupWMClass=ncm-desktop-for-linux
