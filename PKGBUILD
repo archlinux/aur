@@ -3,11 +3,11 @@
 
 _pkgname=pappl
 pkgname="$_pkgname"-git
-pkgver=1.4.0.r422.g64537bb
+pkgver=1.4.0.r450.gdb9a8ae
 pkgrel=1
-pkgdesc="A simple C-based framework/library for developing CUPS Printer Applications"
+pkgdesc='A simple C-based framework/library for developing CUPS Printer Applications'
 arch=('x86_64' 'aarch64')
-url="https://www.msweet.org/pappl/"
+url="https://www.msweet.org/${_pkgname}/"
 license=('Apache-2.0' 'custom')
 depends=('libcups-git' 'libjpeg-turbo' 'libusb')
 makedepends=('git')
@@ -17,22 +17,21 @@ source=('git+https://github.com/michaelrsweet/pappl.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
+    cd "${_pkgname}"
     git describe --always | sed 's|^v||;s|-|.r|;s|-|.|'
 }
 
 build() {
-    cd "$_pkgname"
-    export DSOFLAGS=${LDFLAGS}
+    cd "${_pkgname}"
     ./configure --prefix=/usr
     make
 }
 
 package() {
-    cd "$_pkgname"
-    make DESTDIR="$pkgdir/" install
+    cd "${_pkgname}"
+    make DESTDIR="${pkgdir}/" install
 
-    install -Dm755 testsuite/testpappl -t "$pkgdir/usr/bin"
-    install -Dm644 doc/* -t "$pkgdir/usr/share/doc/$pkgname"
-    install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" {LICENSE,NOTICE}
+    install -Dm755 testsuite/testpappl -t "${pkgdir}"/usr/bin
+    install -Dm644 doc/* -t "${pkgdir}"/usr/share/doc/${pkgname}
+    install -m644 LICENSE NOTICE -Dt "${pkgdir}"/usr/share/licenses/${pkgname}
 }
