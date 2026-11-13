@@ -1,7 +1,7 @@
 # Maintainer: mensylisir <710080675@qq.com>
 
 pkgname=minimax-code-intl-bin
-pkgver=3.1.14
+pkgver=3.1.15
 pkgrel=1
 _electron=42.11.16
 pkgdesc='MiniMax Code 桌面应用（国际版），非官方 Linux 移植'
@@ -32,7 +32,7 @@ options=('!strip' '!debug' '!lto')
 # both filecdn.minimax.chat and file.cdn.minimax.io; the latter is unreachable
 # from mainland China, so the reachable official mirror is used here.
 source=(
-  "minimax-code-${pkgver}.exe::https://filecdn.minimax.chat/public/minimax-agent-prod/release/MiniMax%20Code%20Setup%20${pkgver}.exe"
+  "minimax-code-${pkgver}.exe::https://filecdn.minimax.chat/public/minimax-agent-prod/release/MiniMax%20Code%20Setup%20${pkgver}-x64.exe"
   "electron-v${_electron}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron}/electron-v${_electron}-linux-x64.zip"
   "node-v${_electron}-headers.tar.gz::https://artifacts.electronjs.org/headers/dist/v${_electron}/node-v${_electron}-headers.tar.gz"
   'node-pty-1.1.0.tgz::https://registry.npmjs.org/node-pty/-/node-pty-1.1.0.tgz'
@@ -56,7 +56,7 @@ source=(
   'minimax-code-intl-512.png'
 )
 sha256sums=(
-  '4969f347895d6a2e905351956384105452d05f7f10b19f1a099656d4d7f5c521'
+  '568eb4b4edf24ebfbfd164902bb8f713946efeebb611c2c78a01823e1e450432'
   'e27e9ec78d12edc83c817a1454b706530c000eedd217f65aed2a5d9657ec1be0'
   '4cad5a9290c681202d92bd9e991dc1708b69df4c9c3bdcfd67a9ba1e0bdb2646'
   'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
