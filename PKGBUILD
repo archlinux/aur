@@ -2,7 +2,7 @@
 # Builds the newest stable vX.Y.Z tag, rather than an untagged development commit.
 pkgname=outpace-git
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source streaming engine for public Acestream content (latest stable Git tag)'
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'riscv64')
 url='https://github.com/outpace-stream/outpace-engine'
@@ -11,7 +11,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo' 'git')
 optdepends=('ffmpeg: audio normalization and optional media processing')
 provides=("outpace=${pkgver}")
-conflicts=('outpace')
+conflicts=('outpace' 'acestream-engine')
 backup=('etc/outpace/outpace.env')
 options=('!lto' '!debug')
 source=("outpace-engine::git+${url}.git" 'outpace.sysusers')
