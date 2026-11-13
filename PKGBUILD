@@ -8,9 +8,6 @@ pkgdesc='Team workspace for the coding agents you already run'
 arch=('x86_64')
 url='https://lody.ai'
 license=('Apache-2.0')
-# libnotify, libsecret, libxss, libxtst, util-linux-libs and xdg-utils are
-# dlopen()ed by Electron at runtime, so they are not in DT_NEEDED and namcap
-# reports them as unneeded. They come from the vendor's own Depends line.
 depends=(
   'alsa-lib'
   'at-spi2-core'
@@ -40,8 +37,6 @@ prepare() {
 }
 
 package() {
-  # The vendor's /opt/Lody layout is kept as shipped, which is also what the
-  # lody and lody-bin AUR packages install, hence the conflicts line above.
   install -dm755 "${pkgdir}/opt"
   cp -a --no-preserve=ownership "${srcdir}/payload/opt/Lody" "${pkgdir}/opt/Lody"
 
