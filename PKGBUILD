@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=azion-cli-bin
-pkgver=4.23.0
+pkgver=4.26.1
 pkgrel=1
 pkgdesc="Efficient creation and management of applications on Azion Edge Platform"
 arch=(x86_64 aarch64 i686 armv7h)
@@ -14,10 +14,10 @@ source_x86_64=("$pkgname-$pkgver-x86_64.zip::$url/releases/download/$pkgver/azio
 source_aarch64=("$pkgname-$pkgver-aarch64.zip::$url/releases/download/$pkgver/azion_${pkgver}_linux_arm64.zip")
 source_i686=("$pkgname-$pkgver-i686.zip::$url/releases/download/$pkgver/azion_${pkgver}_linux_386.zip")
 source_armv7h=("$pkgname-$pkgver-armv7h.zip::$url/releases/download/$pkgver/azion_${pkgver}_linux_armv7.zip")
-sha256sums_x86_64=('563fa8a432c2c49d627855cd9709671bfc1087195f6b11664607a9db13dcb28f')
-sha256sums_aarch64=('33afe699f9329a47a97860cda63503a677c1de6b3f2700fd10c0da4735fa3b90')
-sha256sums_i686=('93ad9854eff79d7fd4ef11772de775358ffe12553aa4a61c8193dbadf195cf05')
-sha256sums_armv7h=('9bf521258ff894ae4245478b5611c782534e8b4479dd508945ebb53c1967a7d5')
+sha256sums_x86_64=('e7e12db9fa26d8e0a8e059704cfdcbb33ea85ebfd9e76f87bfdff918f013f9b6')
+sha256sums_aarch64=('2d8b9236e98d55dca9ab6ba9244f108003b1f7f5fc6d32b6e444b25ffebb28b3')
+sha256sums_i686=('5e750d13127259587c095758aa45a439bf2a2d1143c6dc704524a9e14bce0405')
+sha256sums_armv7h=('75e2bf1a6f1758e88f11551fd5ad683f3e4facacf8882abd2c5bb02d990f0b6b')
 
 package() {
     install -Dm755 azion -t "$pkgdir/usr/bin/"
