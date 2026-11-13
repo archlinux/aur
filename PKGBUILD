@@ -7,8 +7,8 @@
 # electron43's Node mode.
 
 pkgname=kimi-work-bin
-pkgver=3.2.26
-pkgrel=2
+pkgver=3.2.27
+pkgrel=1
 pkgdesc='Kimi Work desktop client, repackaged for the system Electron runtime'
 arch=('x86_64')
 url='https://www.kimi.com/products/kimi-work'
@@ -38,7 +38,7 @@ sha256sums=(
   '85e9c4268a8ee267755f0f3faa4b7cd957db27d57d0c22d53cb2c691d34f0ec2'
   '817e0d47bca30dfb87aa2e9df40fb94ba1d3704305d2b6b0f2b4359e4ab7e304'
 )
-sha256sums_x86_64=('cdaf24b59918379cd7e3f539f0434fbafbf92b0497968a0baf2a22dcb7f03e39')
+sha256sums_x86_64=('91437498a5326b3d74ca98e19296ad440c0cc706392258a294f9d13a39731bac')
 
 prepare() {
   local _res="${srcdir}/payload/resources/resources"
@@ -52,15 +52,18 @@ prepare() {
   7z x -y "${srcdir}/nsis/\$PLUGINSDIR/app-64.7z" -o"${srcdir}/payload"
   asar extract "${srcdir}/payload/resources/app.asar" "${srcdir}/app"
   install -dm755 "${_daimon}"
-  tar -xzf "${_res}/daimon-bundle.tar.gz" -C "${_daimon}"
+  local _archive
+  for _archive in core git python uv; do
+    tar -xzf "${_res}/daimon-${_archive}.tar.gz" -C "${_daimon}"
+  done
 
   # Windows executables and the bundled win32 toolchain cannot run here; the
   # package depends on the system git/python/uv instead.
   find "${srcdir}/app" "${_daimon}" -type f -iname '*.exe' -delete
   find "${_res}" -maxdepth 1 -type f -iname '*.exe' -delete
-  # The extracted bundle is used directly; the tarball is only consulted on
-  # win32, so it is dead weight here.
-  rm -f "${_res}/daimon-bundle.tar.gz" "${_res}/daimon-bundle.tar.gz.stamp"
+  # The extracted bundle is used directly; the component archives are only
+  # consulted on win32, so they are dead weight here.
+  rm -f "${_res}"/daimon-*.tar.gz
   find "${_res}/runtime" -maxdepth 1 -type f -iname '*.cmd' -delete
   find "${_daimon}/runtime" -type f \( \
     -iname '*.dll' -o \
