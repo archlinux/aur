@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=onorca-bin
-pkgver=1.4.253
+pkgver=1.4.258
 pkgrel=1
 pkgdesc="Orca - next-gen IDE for working with a fleet of parallel coding agents"
 arch=('x86_64' 'aarch64')
@@ -47,7 +47,8 @@ depends=(
     'xdotool'
     'xorg-server-xvfb'
 )
-optdepends=('libappindicator-gtk3: system tray indicator support')
+optdepends=('libappindicator-gtk3: system tray indicator support'
+            'vulkan-icd-loader: GPU (Vulkan) backend for voice transcription')
 provides=('orca-ide')
 conflicts=('orca-ide')
 # Prebuilt Electron binaries: never strip (breaks them) and skip debug pkg.
@@ -61,8 +62,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_relurl}/orca-ide_${pkgver}_a
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_relurl}/orca-ide_${pkgver}_arm64.deb")
 
 sha256sums=('ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3')
-sha256sums_x86_64=('982fc25b1805dc8be66096b9a1ebcaf0b55eec3966b5c6ee606919797263d572')
-sha256sums_aarch64=('f237b7242537442283a300380295a7b3807ee2226f88773e52f541706f7fa103')
+sha256sums_x86_64=('cc700aa5e15742b1ba2944e9d48a82632611d6e32ac053d1f54bbe81a5ff01ea')
+sha256sums_aarch64=('c20705a2287e86b15372d62ca9a89632de26206ed506986384cf359272062400')
 
 package() {
     cd "$srcdir"
