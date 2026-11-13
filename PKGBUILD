@@ -6,7 +6,7 @@
 pkgname=xlibre-video-amdgpu
 _pkgname=xf86-video-amdgpu
 pkgver=25.1.1
-pkgrel=5
+pkgrel=51
 pkgdesc="XLibre amdgpu video driver"
 arch=('x86_64')
 url='https://github.com/X11Libre/xf86-video-amdgpu'
@@ -15,12 +15,11 @@ depends=(
 	'glibc'
 	'libdrm'
 	'mesa'
-	'systemd-libs'
+	'libudev.so'
 	'xlibre-xserver'
 )
 makedepends=(
 	'meson'
-	'systemd'
 	'X-ABI-VIDEODRV_VERSION=28.0'
 	'xlibre-xserver-devel'
 )
