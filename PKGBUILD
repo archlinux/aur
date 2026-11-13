@@ -4,6 +4,7 @@ pkgver=1.1.0.r0.gdd1bb4e
 pkgrel=1
 pkgdesc="Clear, complete disk usage scanner for Linux"
 arch=('x86_64' 'aarch64')
+options=('!debug')
 url="https://github.com/RamazanBerk20/LiScan"
 license=('GPL-3.0-or-later')
 depends=('gtk3' 'webkit2gtk-4.1' 'glib2' 'polkit')
