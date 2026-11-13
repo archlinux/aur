@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/*.AppImage
+/*-LICENSE
+/*-LICENSE.details
+/*.pkg.tar.*
