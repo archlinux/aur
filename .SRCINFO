@@ -1,4 +1,4 @@
-pkgbase = sub-extractor
+pkgbase = youtube-subtitle-extractor
 	pkgdesc = Download YouTube subtitles (json3) and print them as plaintext.
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -8,9 +8,10 @@ pkgbase = sub-extractor
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-uv-build
+	makedepends = git
 	depends = python
 	depends = yt-dlp
-	source = sub-extractor::git+https://github.com/Arnob90/youtube-subtitle-extractor.git
+	source = youtube-subtitle-extractor::git+https://github.com/Arnob90/youtube-subtitle-extractor.git
 	sha256sums = SKIP
 
-pkgname = sub-extractor
+pkgname = youtube-subtitle-extractor
