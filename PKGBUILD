@@ -1,78 +1,78 @@
-# Maintainer: envolution
+# Maintainer: agony <27015 at riseup dot net>
+# Contributor: envolution
 # Contributor: Lindasy Zhou <i@lin.moe>
-# shellcheck shell=bash disable=SC2034,SC2154
 
-_pkgname="memos"
-pkgname="memos-git"
-pkgver=0.23.0+r3203+g8b65d248b
-pkgrel=2
-pkgdesc="A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts."
-url="https://github.com/usememos/memos"
-arch=("any")
+pkgname=memos-git
+pkgver=r4946.d0c6e2a
+pkgrel=1
+epoch=1
+pkgdesc='A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts.'
+arch=('any')
+url='https://github.com/usememos/memos'
 license=('MIT')
-makedepends=("go" "git" "npm" "pnpm" "nvm")
-backup=('etc/memos.conf')
-options=(!strip !debug)
+makedepends=('git' 'go' 'nodejs>=24' 'pnpm')
 provides=('memos')
 conflicts=('memos')
-source=(
-  "git+https://github.com/usememos/$_pkgname.git"
-  "systemd.service"
-  "sysusers.conf"
-  "memos.conf"
-  'tmpfiles.conf'
-)
-sha512sums=('SKIP'
-            '9c37361974d8b3beecdd8b0bf8db929a4a882623ea7b23aa51bddf37790b66042cef593d6da89b34e7dde4a9a9a1e097ea31ec713b33fee6a699448fb300d4a2'
-            '692dc4674b86b36c5464c78f493ace50091068f962d40130a32b4ed17517d77e33860333e870f5e80a5e17b6cbd5de45bf57e7de5ea7984bd4e36f95a8daf0fa'
-            '251e01c4f5fc8aea209453d91da5dde91d58397668e34b78e52a31940e30a89be5601a6ea8cdebe791a96c9324733095de3567998b45ce1542578b1d9b7a5b76'
-            'cf88b91a88825dcfda35f45461513b8a2e03b07890189fd1cf7b60aa4085c9e88d8338596b69a3d9c3e513e668093ab7cb246febbb7f6ac7796d37e1189db565')
+backup=('etc/memos.conf')
+options=(!strip !debug)
+source=("memos::git+${url}.git"
+        'systemd.service'
+        'sysusers.conf'
+        'memos.conf'
+        'tmpfiles.conf')
+sha256sums=('SKIP'
+            '956a0895ba490d7057048ed4458172d5b70b726e82127f4505cf95f9d9dcd0f3'
+            'eaf0d053c5673176c730085493db4d63b15e212e101fc02c9f9236f8f91abf20'
+            '29f519aa64fe4feb7c675aa279bc09e61b59d7a3a20d42a28140df1196a7a68a'
+            'ed17b9db8aadd8518a3da01e45b5445a819bdb0f7ccd8bc1acc9f52cc02964fc')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  _version=$(git describe --tags --abbrev=0 | tr - .)
-  _commits=$(git rev-list --count HEAD)
-  _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
+  cd memos
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-_ensure_local_nvm() {
-  export NVM_DIR="${srcdir}/.nvm"
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-  nvm install
-  nvm use
-  echo "in _ensure nvm dir = ${NVM_DIR}"
+_pnpm_env() {
+  export pnpm_config_pm_on_fail=ignore
+  export pnpm_config_update_notifier=false
+  export pnpm_config_store_dir="${srcdir}/pnpm-store"
+  export pnpm_config_cache_dir="${srcdir}/pnpm-cache"
+  export pnpm_config_state_dir="${srcdir}/pnpm-state"
+  export pnpm_config_minimum_release_age_exclude='["@usememos/*"]'
+}
+
+prepare() {
+  cd memos
+  export GOPATH="${srcdir}/gopath"
+  go mod download -x -modcacherw
+  _pnpm_env
+  cd web
+  pnpm install --frozen-lockfile
 }
 
 build() {
-  export COREPACK_ENABLE_STRICT=0
-  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
-  cd $_pkgname/web
-  # Build frontend
-  echo "lts/iron" >.nvmrc
-  _ensure_local_nvm
-  pnpm install --frozen-lockfile
-
-  pnpm build
-
-  # Set up backend build environment
-  mkdir -p "$srcdir/$_pkgname/backend_build_dir/server/router/frontend/dist/"
-  rm -rf "${srcdir}/${_pkgname}/server/router/frontend/dist"
-  cp -r "$srcdir/$_pkgname/web/dist" "$srcdir/$_pkgname/server/router/frontend/"
-
-  # Compile the backend Go binary
-  CGO_ENABLED=0 go build -o "$srcdir/${_pkgname}.bin" "$srcdir/$_pkgname/bin/memos/main.go"
+  _pnpm_env
+  cd memos/web
+  pnpm release
+  cd "${srcdir}/memos"
+  export GOPATH="${srcdir}/gopath"
+  export GOFLAGS='-mod=readonly -modcacherw'
+  CGO_ENABLED=0 go build -v -o memos ./cmd/memos
 }
+
+check() {
+  cd memos
+  export GOPATH="${srcdir}/gopath"
+  export GOFLAGS='-buildvcs=false -mod=readonly -modcacherw'
+  DRIVER=sqlite go test -short ./cmd/... ./core/... ./filter/... ./internal/... ./markdown/... ./proto/... ./provider/... ./server/... ./store/...
+  [[ "$(./memos --version)" == *"-dev.$(git rev-parse --short=7 HEAD)" ]]
+}
+
 package() {
-  install -vDm644 systemd.service "$pkgdir/usr/lib/systemd/system/${_pkgname}.service"
-  install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/${_pkgname}.conf"
-  install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/${_pkgname}.conf"
+  install -vDm644 systemd.service "$pkgdir/usr/lib/systemd/system/memos.service"
+  install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/memos.conf"
+  install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/memos.conf"
   install -vDm644 memos.conf "$pkgdir/etc/memos.conf"
-
-  pwd
-  ls -latr
-  install -Dm755 "memos.bin" "$pkgdir/usr/bin/memos"
-  install -Dm0644 "${_pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+  cd memos
+  install -Dm755 memos -t "${pkgdir}/usr/bin"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim:set ts=2 sw=2 et:
