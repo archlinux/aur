@@ -1,7 +1,7 @@
 # Maintainer: HITCJK <1641796967@qq.com>
 pkgname=psd2live-bin
 pkgver=3.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Turn layered PSD files into editable Live2D models (prebuilt binary release)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/tsunehimatoi/psd2live'
@@ -40,8 +40,14 @@ optdepends=(
 provides=('psd2live')
 conflicts=('psd2live')
 options=('!strip' '!debug')
-source=("LICENSE::https://raw.githubusercontent.com/tsunehimatoi/psd2live/v$pkgver/LICENSE")
-sha256sums=('22f65f0ba65b3fb08b8f2b681d5cefa436690fe67747fa9ad4674c75695643a4')
+source=(
+  "LICENSE::https://raw.githubusercontent.com/tsunehimatoi/psd2live/v$pkgver/LICENSE"
+  "psd2live.png"
+)
+sha256sums=(
+  '22f65f0ba65b3fb08b8f2b681d5cefa436690fe67747fa9ad4674c75695643a4'
+  'c8e3c32bd90beaa7e36d843c058164088d118c4c39c33d7bdc1d027df11a864c'
+)
 
 source_x86_64=("https://github.com/tsunehimatoi/psd2live/releases/download/v$pkgver/PSD2Live-$pkgver-linux-x64.tar.gz")
 sha256sums_x86_64=('ac788290387ca5b373d445f9f879185de3b4102373487b389e3adab0e433b686')
@@ -60,8 +66,8 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s /opt/psd2live/bin/PSD2Live "$pkgdir/usr/bin/psd2live"
 
-  install -Dm644 "$srcdir/PSD2Live/lib/PSD2Live.png" \
-    "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/psd2live.png"
+  install -Dm644 "$srcdir/psd2live.png" \
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/psd2live.png"
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/psd2live.desktop" <<'EOF'
 [Desktop Entry]
