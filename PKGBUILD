@@ -4,11 +4,10 @@
 # DevTools protocol. This links no engine at all: the browser is a runtime
 # dependency, and which Chromium it runs can change without a rebuild.
 #
-# One of nine recipes under packaging/aur: three engines — see
-# docs/shell-backends.md — each as this, a `-git` form following `main`, and a
-# `-bin` form unpacking the release. Every one of them installs a binary called
-# `viewport` and provides that name, so they conflict with each other: a machine
-# takes one engine in one form.
+# One of six recipes under packaging/aur: three engines — see
+# docs/shell-backends.md — each as this and a `-git` form following `main`.
+# Every one of them installs a binary called `viewport` and provides that name,
+# so they conflict with each other: a machine takes one engine in one form.
 
 pkgname=viewport-chromium
 pkgver=0.6.0
