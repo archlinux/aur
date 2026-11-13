@@ -1,0 +1,23 @@
+pkgbase = micdock-bin
+	pkgdesc = Manage a RØDE Wireless GO II: recordings, record mode, firmware (unofficial)
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/micdock/micdock
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	depends = libxkbcommon
+	optdepends = ffmpeg: MP3 export
+	provides = micdock
+	conflicts = micdock
+	options = !debug
+	options = !strip
+	source_x86_64 = https://github.com/micdock/micdock/releases/download/v0.12.0/micdock-0.12.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 4787bf4d172ccbb834e61beedde6f1e75fb75ac65f07f5a7e79d2ab0bd6fe00f
+	source_aarch64 = https://github.com/micdock/micdock/releases/download/v0.12.0/micdock-0.12.0-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 1a46c58d16b88da9d5596364afba94ec6707a8a145184a67363c99ff4c25178c
+
+pkgname = micdock-bin
