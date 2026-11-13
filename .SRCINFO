@@ -1,7 +1,7 @@
 pkgbase = xlibre-video-intel
 	pkgdesc = XLibre Intel i810/i830/i915/945G/G965+ video drivers
 	pkgver = 25.0.2
-	pkgrel = 10
+	pkgrel = 51
 	url = https://github.com/X11Libre/xf86-video-intel
 	install = xlibre-video-intel.install
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = xlibre-video-intel
 	depends = libxvmc
 	depends = mesa
 	depends = pixman
-	depends = systemd-libs
+	depends = libudev.so
 	depends = xcb-util>=0.3.9
 	depends = xlibre-xserver
 	optdepends = libxcursor: for intel-virtual-output

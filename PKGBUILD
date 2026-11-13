@@ -7,7 +7,7 @@
 pkgname=xlibre-video-intel
 _pkgname=xf86-video-intel
 pkgver=25.0.2
-pkgrel=10
+pkgrel=51
 arch=('x86_64')
 url='https://github.com/X11Libre/xf86-video-intel'
 license=('MIT')
@@ -27,7 +27,7 @@ depends=(
 	'libxvmc'
 	'mesa'
 	'pixman'
-	'systemd-libs'
+	'libudev.so'
 	'xcb-util>=0.3.9'
 	'xlibre-xserver'
 )
