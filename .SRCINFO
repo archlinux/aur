@@ -1,7 +1,7 @@
 pkgbase = xlibre-meta
 	pkgdesc = Meta package to install XLibre, a fork of Xorg
 	pkgver = 25.1
-	pkgrel = 1
+	pkgrel = 51
 	url = https://xlibre.net
 	arch = any
 	license = None

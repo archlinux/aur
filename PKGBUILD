@@ -2,7 +2,7 @@
 
 pkgname=xlibre-meta
 pkgver=25.1
-pkgrel=1
+pkgrel=51
 pkgdesc="Meta package to install XLibre, a fork of Xorg"
 arch=('any')
 license=('None')
