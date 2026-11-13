@@ -1,7 +1,7 @@
 # Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 
 pkgname=all-contributors-cli
-pkgver=7.0.0
+pkgver=7.0.2
 pkgrel=1
 pkgdesc="Automate acknowledging contributors to your open source projects"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-b2sums=('8fa01c78bdf5e1ed8b86c3db50b13c69a1066ccb8f79d4478f5d7bfcdccf76aba05cada0d55ac0ec6f2e27b20df8dc6eaa4a9bc10a62b61fdab447efb46b4bcf')
+b2sums=('0e3f599867236da733fc9af51a0092673959ec316a3d9b9e995c7ebd03bee1a9cfa1d1f45c2041c8fc5f057925d1445638d8535a57b4bd45ec9ff015d288ca9c')
 
 package() {
   cd "$srcdir"
