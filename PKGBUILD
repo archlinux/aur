@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deepchat-git
 _pkgname=DeepChat
-pkgver=1.1.3.r1.gbfa6d76
+pkgver=1.1.4.r0.gef05d53
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -19,6 +19,7 @@ depends=(
     'python-pillow'
     'python-yaml'
     'python-lxml'
+    'python-six'
     'nodejs'
 )
 makedepends=(
@@ -30,31 +31,48 @@ makedepends=(
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
+    "${pkgname%-git}.js"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
-pkgver() {
-    cd "$(_get_project_dir)"
-    set -o pipefail
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
 		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
-_get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+pkgver() {
+	cd "$(_get_project_dir)" || return 1
+	local _t=$(git tag --list --sort=-v:refname | grep -m1 -E '^v?[0-9]+(\.[0-9]+)+$' || :)
+	local _n=$(git rev-list --count "${_t:+$_t..}HEAD") _s=$(git rev-parse --short=7 HEAD)
+	[[ -n $_t ]] && printf '%s.r%s.g%s\n' "${_t#v}" "$_n" "$_s" || printf 'r%s.%s\n' "$_n" "$_s"
 }
-_set_build_env() {
+_ensure_local_nvm() {
+	local NVM_DIR="${srcdir}/.nvm"
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+	nvm install "${_nodeversion}"
+	nvm use "${_nodeversion}"
+}
+_get_app_dir() {
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
+}
+_get_electron_version() {
+	local _v=$(find "$(_get_project_dir)" -name package.json ! -path '*/node_modules/*' -exec jq -r '.. | (.electron? // empty) | strings' {} + 2>/dev/null | sed 's/^[^0-9]*//' | grep -E '^[0-9]' | head -1 | sed 's/\..*//')
+	_v=${_v:-$(grep -hoE 'electron[@":][^0-9]*[0-9]+\.[0-9.]+' "$(_get_project_dir)"/*lock* 2>/dev/null | grep -oE '[0-9]+\.[0-9.]+' | head -1 | sed 's/\..*//')}
+	[[ "$_v" =~ ^[0-9] ]] || return 1
+	(( ${_v} == _electronversion )) && echo -e "\033[1;32mElectron version: ${_v}\033[0m" || echo -e "\033[1;31mElectron version: ${_v} (expected ${_electronversion})\033[0m"
+}
+_set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	export ELECTRON_BUILDER_OFFLINE=true
 	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+}
+_set_pnpm_build_env() {
 	export HOME="${srcdir}/.home"
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
@@ -72,32 +90,19 @@ _set_build_env() {
 	export COREPACK_HOME="${HOME}/.corepack"
 	mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
 	export PATH="${PNPM_HOME}:${PATH}"
-	local _pnpmver=""
+	local _detected=""
 	local _pkgjson="$(_get_project_dir)/package.json"
 	if [ -f "${_pkgjson}" ]; then
-		_pnpmver="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
-		if [ -z "${_pnpmver}" ]; then
-			_pnpmver="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
+		_detected="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
+		if [ -z "${_detected}" ]; then
+			_detected="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
 		fi
 	fi
-	if [ -n "${_pnpmver}" ]; then
-		npm install -g "pnpm@${_pnpmver}" --prefix "${HOME}/.pnpm" \
+	local _ver="${_pnpmver:-${_detected}}"
+	if [ -n "${_ver}" ]; then
+		npm install -g "pnpm@${_ver}" --prefix "${HOME}/.pnpm" \
 			--registry "${COREPACK_NPM_REGISTRY}"
 	fi
-}
-_ensure_local_nvm() {
-    local NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install "${_nodeversion}"
-    nvm use "${_nodeversion}"
-}
-_get_electron_version() {
-	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
-		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
-		| grep -oE '[0-9]+' | head -1)
-	[[ -z "${_elec_ver}" ]] && return 1
-	(( _elec_ver == _electronversion )) && c=32 || c=31
-	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
 prepare() {
     cd "$(_get_project_dir)"
@@ -105,8 +110,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
-        s/@runname@/app.asar/g
-    " "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh" "${srcdir}/${pkgname%-git}.js"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
@@ -114,8 +118,8 @@ prepare() {
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
     _ensure_local_nvm
-    _set_build_env
-    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
+    _set_electron_build_env
+    _set_pnpm_build_env
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     cp .env.example .env
     export NODE_ENV=development
@@ -125,36 +129,28 @@ prepare() {
 build() {
     cd "$(_get_project_dir)"
     _ensure_local_nvm
-    _set_build_env
-    local _eb_arch
-    case "${CARCH}" in
-        aarch64) 
-            _eb_arch="arm64"
-            _armrem="x64"
-            ;;
-        x86_64)
-            _eb_arch="x64"
-            _armrem="arm"
-            ;;
-    esac
+    _set_electron_build_env
+    _set_pnpm_build_env
+    local _archbuild=$([[ "${CARCH}" == "aarch64" ]] && echo arm64 || echo x64)
+    local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
     export NODE_ENV=production
-    sed -i "s/deps.resourcesPath ?? '\/usr\/lib\/deepchat' ?? ''/deps.resourcesPath ?? '\/usr\/lib\/deepchat'/" src/main/plugin/index.ts
     pnpm run build
-    pnpm -c exec "electron-builder --linux dir --${_eb_arch} -c.electronDist=${ELECTRON_DIST} --config=electron-builder.yml"
-    local _app_dir="$(_get_app_dir)"
-    find "${_app_dir}/resources" -depth \( \
-        -name "*darwin*" -o \
-        -name "*win32*" \
-        -name "*${_armrem}*" \
-    \) -exec rm -rf {} +
+    pnpm run plugin:bundle:clean
+    pnpm run plugin:bundle -- --name cua --platform linux --arch "${_archbuild}"
+    pnpm run plugin:bundle -- --name feishu --platform linux --arch "${_archbuild}"
+    pnpm run plugin:bundle -- --name nowledge-mem --platform linux --arch "${_archbuild}"
+    pnpm run plugin:bundle -- --name memcode --platform linux --arch "${_archbuild}"
+    pnpm run installRuntime:duckdb:vss:linux:"${_archbuild}"
+    pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.yml"
+    rm -rf "$(_get_app_dir)/resources/default_app.asar"
+	find "$(_get_app_dir)" -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	local _app_dir="$(_get_app_dir)"
-	rm -rf "${_app_dir}/resources/default_app.asar"
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
-    local _src="$(_get_project_dir)"
-    install -Dm644 "${_src}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${_src}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+    install -Dm644 "$(_get_project_dir)/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
