@@ -6,7 +6,7 @@
 # Contributor: SpidFightFR <spidfight@disroot.org>
 
 pkgname=session-desktop-bin
-pkgver=1.18.3
+pkgver=1.18.4
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
@@ -18,7 +18,7 @@ provides=(session-desktop)
 conflicts=(session-desktop)
 options=(!strip)
 source=(https://github.com/session-foundation/session-desktop/releases/download/v$pkgver/session-desktop-linux-amd64-$pkgver.deb)
-sha256sums=('49c59e7ec3539fda8292352e13bfdd92416c70c8dfd5e023057840e66112ea08')
+sha256sums=('c9856d7fb7d56fafb79a285e9aa7da1e1c69e167395aaaf21562d5898aa6f39e')
 
 package() {
     tar --no-same-owner -xf "$srcdir/data.tar.xz" -C "$pkgdir"
