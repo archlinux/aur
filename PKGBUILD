@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A Wave Link replacement for Linux: a PipeWire mixer with effects and an OpenDeck plugin for any microphone, plus full control of Elgato XLR interfaces and Wave microphones"
 arch=('x86_64')
@@ -34,7 +34,7 @@ _dfver=0.5.6
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz"
         "DeepFilterNet3_onnx-$_dfver.tar.gz::https://raw.githubusercontent.com/Rikorose/DeepFilterNet/v$_dfver/models/DeepFilterNet3_onnx.tar.gz")
 noextract=("DeepFilterNet3_onnx-$_dfver.tar.gz")
-sha256sums=('034be1a51066f880191e5a51ce0f5e018ee247d929d0188bbde2b6f85dfee652'
+sha256sums=('21069c3c7abb9e62ffa5864aeba64be1f7ebd0cc728bf19a0e9c0f86c9f5630c'
             'c94d91f70911001c946e0fabb4aa9adc37045f45a03b56008cb0c8244cb63616')
 
 # DeepFilterNet's noise removal is a Rust library linked into the native
@@ -154,6 +154,7 @@ WRAP
   install -Dm644 native/vst3/LICENSE "$pkgdir/usr/share/licenses/$pkgname/vst3/LICENSE"
   install -Dm644 packaging/starter-sounds/CREDITS "$pkgdir/usr/share/licenses/$pkgname/starter-sounds/CREDITS"
   install -Dm644 src/OpenXLR.UI/Assets/Fonts/OFL.txt "$pkgdir/usr/share/licenses/$pkgname/fira-sans/OFL.txt"
+  install -Dm644 src/OpenXLR.UI/Assets/Fonts/DSEG-OFL.txt "$pkgdir/usr/share/licenses/$pkgname/dseg/OFL.txt"
 
   # Record every packaged path for openxlr doctor. Runs last, after the
   # whole payload is in place.

@@ -1,6 +1,6 @@
 pkgbase = openxlr
 	pkgdesc = A Wave Link replacement for Linux: a PipeWire mixer with effects and an OpenDeck plugin for any microphone, plus full control of Elgato XLR interfaces and Wave microphones
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/emaspa/openxlr
 	install = openxlr.install
@@ -42,9 +42,9 @@ pkgbase = openxlr
 	options = !debug
 	backup = etc/chromium/native-messaging-hosts/com.emaspa.openxlr.browser.json
 	backup = etc/opt/chrome/native-messaging-hosts/com.emaspa.openxlr.browser.json
-	source = openxlr-0.7.0.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v0.7.0.tar.gz
+	source = openxlr-0.7.1.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v0.7.1.tar.gz
 	source = DeepFilterNet3_onnx-0.5.6.tar.gz::https://raw.githubusercontent.com/Rikorose/DeepFilterNet/v0.5.6/models/DeepFilterNet3_onnx.tar.gz
-	sha256sums = 034be1a51066f880191e5a51ce0f5e018ee247d929d0188bbde2b6f85dfee652
+	sha256sums = 21069c3c7abb9e62ffa5864aeba64be1f7ebd0cc728bf19a0e9c0f86c9f5630c
 	sha256sums = c94d91f70911001c946e0fabb4aa9adc37045f45a03b56008cb0c8244cb63616
 
 pkgname = openxlr
