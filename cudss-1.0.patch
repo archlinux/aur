@@ -1,0 +1,71 @@
+diff -ru a/cpp/cmake/thirdparty/FindCUDSS.cmake b/cpp/cmake/thirdparty/FindCUDSS.cmake
+--- a/cpp/cmake/thirdparty/FindCUDSS.cmake	2026-11-13 10:35:36.223440483 +0800
++++ b/cpp/cmake/thirdparty/FindCUDSS.cmake	2026-11-13 10:35:52.853498562 +0800
+@@ -27,7 +27,7 @@
+   find_library(CUDSS_LIBRARIES cudss PATHS $ENV{CUDSS_DIR}/lib ${LIB_INSTALL_DIR})
+ 
+   set(CUDSS_LIB_FILE ${CUDSS_LIBRARIES})
+-  set(CUDSS_MT_LIB_FILE $ENV{CUDSS_DIR}/lib/libcudss_mtlayer_gomp.so.0)
++  set(CUDSS_MT_LIB_FILE $ENV{CUDSS_DIR}/lib/libcudss_mtlayer_gomp.so.1)
+ 
+   message(STATUS "Using cuDSS include   : ${CUDSS_INCLUDE}")
+   message(STATUS "Using cuDSS library   : ${CUDSS_LIBRARIES}")
+@@ -40,8 +40,8 @@
+   mark_as_advanced(CUDSS_INCLUDE CUDSS_LIBRARIES)
+ 
+ else()
+- # Request CUDSS version >= 0.7
+-  find_package(cudss 0.7 REQUIRED CONFIG)
++ # Request CUDSS version >= 1.0
++  find_package(cudss 1.0 REQUIRED CONFIG)
+ 
+   # Print all details of the cudss package
+   message(STATUS "cudss package details:")
+@@ -58,8 +58,8 @@
+   set(CUDSS_INCLUDE ${cudss_INCLUDE_DIR})
+ 
+ # Use the specific cudss library version to avoid symlink issues
+-  set(CUDSS_LIB_FILE "${cudss_LIBRARY_DIR}/libcudss.so.0")
+-  set(CUDSS_MT_LIB_FILE "${cudss_LIBRARY_DIR}/libcudss_mtlayer_gomp.so.0")
++  set(CUDSS_LIB_FILE "${cudss_LIBRARY_DIR}/libcudss.so.1")
++  set(CUDSS_MT_LIB_FILE "${cudss_LIBRARY_DIR}/libcudss_mtlayer_gomp.so.1")
+   message(STATUS "Using cudss library: ${CUDSS_LIB_FILE}")
+   message(STATUS "Using cudss MT library: ${CUDSS_MT_LIB_FILE}")
+ endif()
+diff -ru a/cpp/src/barrier/sparse_cholesky.cuh b/cpp/src/barrier/sparse_cholesky.cuh
+--- a/cpp/src/barrier/sparse_cholesky.cuh	2026-11-13 10:35:36.223956586 +0800
++++ b/cpp/src/barrier/sparse_cholesky.cuh	2026-11-13 10:36:06.134615487 +0800
+@@ -321,7 +321,7 @@
+       status,
+       "cudssConfigSet for device count");
+ 
+-#if CUDSS_VERSION_MAJOR >= 0 && CUDSS_VERSION_MINOR >= 7
++#if CUDSS_VERSION_MAJOR > 0 || (CUDSS_VERSION_MAJOR == 0 && CUDSS_VERSION_MINOR >= 7)
+     if (settings_.concurrent_halt != nullptr) {
+       CUDSS_CALL_AND_CHECK_EXIT(cudssDataSet(handle,
+                                              solverData,
+@@ -351,14 +351,18 @@
+       "cudssConfigSet for ir n steps");
+ #endif
+ 
+-#if USE_MATCHING
+-    settings_.log.printf("Using matching\n");
+-    int32_t use_matching = 1;
++    // cuDSS 1.0 chooses matching and pivoting automatically; turn matching off and use diagonal
++    // pivoting.
++    cudssMatchingAlg_t matching_alg = CUDSS_MATCHING_ALG_NONE;
+     CUDSS_CALL_AND_CHECK_EXIT(
+-      cudssConfigSet(solverConfig, CUDSS_CONFIG_USE_MATCHING, &use_matching, sizeof(int32_t)),
++      cudssConfigSet(solverConfig, CUDSS_CONFIG_MATCHING_ALG, &matching_alg, sizeof(matching_alg)),
+       status,
+-      "cudssConfigSet for use matching");
+-#endif
++      "cudssConfigSet for matching alg");
++    cudssPivotType_t pivot_type = CUDSS_PIVOT_DIAGONAL;
++    CUDSS_CALL_AND_CHECK_EXIT(
++      cudssConfigSet(solverConfig, CUDSS_CONFIG_PIVOT_TYPE, &pivot_type, sizeof(pivot_type)),
++      status,
++      "cudssConfigSet for pivot type");
+ 
+     // Device pointers
+     csr_offset_d  = nullptr;
