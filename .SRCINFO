@@ -1,6 +1,6 @@
 pkgbase = radian
 	pkgdesc = A 21st century R console
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/randy3k/radian
 	arch = any
@@ -9,14 +9,13 @@ pkgbase = radian
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	depends = python-packaging
 	depends = python-pygments
 	depends = python-prompt_toolkit<3.1
-	depends = python-rchitect>=0.5.2
-	depends = python-rchitect<0.6.0
+	depends = python-rchitect>=0.6.0
+	depends = python-rchitect<0.7.0
 	optdepends = python-jedi: Python console completion
 	optdepends = python-coverage: coverage instrumentation
-	source = radian-0.7.1.tar.gz::https://github.com/randy3k/radian/archive/v0.7.1.tar.gz
-	sha256sums = a73dc732a8965671e3420027714b9cf5ea2146563ef92adf53083939ca80a077
+	source = radian-0.8.0.tar.gz::https://github.com/randy3k/radian/archive/v0.8.0.tar.gz
+	sha256sums = ad92b7601cfd955ab1304bf40c76ccae22a88148305253a94d9ef71dbb5ae959
 
 pkgname = radian

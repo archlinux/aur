@@ -1,19 +1,19 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=radian
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A 21st century R console"
 url="https://github.com/randy3k/radian"
 arch=('any')
 license=('MIT')
-depends=('python-packaging' 'python-pygments'
+depends=('python-pygments'
          'python-prompt_toolkit<3.1'
-         'python-rchitect>=0.5.2' 'python-rchitect<0.6.0')
+         'python-rchitect>=0.6.0' 'python-rchitect<0.7.0')
 optdepends=('python-jedi: Python console completion'
             'python-coverage: coverage instrumentation')
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=($pkgname-$pkgver.tar.gz::https://github.com/randy3k/radian/archive/v$pkgver.tar.gz)
-sha256sums=('a73dc732a8965671e3420027714b9cf5ea2146563ef92adf53083939ca80a077')
+sha256sums=('ad92b7601cfd955ab1304bf40c76ccae22a88148305253a94d9ef71dbb5ae959')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
