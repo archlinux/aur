@@ -3,8 +3,8 @@ pkgname=termy-bin
 # Upstream release version (may carry a SemVer pre-release, e.g. 1.0.0-rc.1).
 # makepkg forbids '-' in pkgver, so pkgver drops it (1.0.0rc.1), which vercmp
 # sorts before the 1.0.0 release.
-_version=1.0.0-rc.10
-pkgver=1.0.0rc.10
+_version=1.0.0-rc.11
+pkgver=1.0.0rc.11
 pkgrel=1
 pkgdesc="Minimal GPUI-powered terminal (pre-compiled binary)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ b2sums=('ce3f66620d3a7da5bd6e017d3432e2f509c095aa32ee8b7ea4ccf24d879f201bf29e62b
         '0128ba93a8dc10df25286bd85db9df93ef7ad68abd077d895ba29c2b1af7eca9530dc7146f0941ff128738416e2319ed3f906ac3525f26eff2589be9369149eb'
         '846adc793544028ef1bb111802a2e61013f6a0623f86d8546e27210ded24b1ef367e73ea4cda56a15f40c85a893d2f5c8288bbde035c9d77aa53d2fd223ead90')
 source_x86_64=("termy-${pkgver}-${CARCH}.tar.gz::https://github.com/lassejlv/termy/releases/download/v${_version}/Termy-v${_version}-linux-${CARCH}.tar.gz")
-b2sums_x86_64=('6a8c464a27ac217d2ac112eeb955da5618dfaaee6fe3952932893b9e8676cf3832b8ab9f0b8825a17403d4b54ce11ef7b64fba8d296c6ba35e9cdf81a15a8b76')
+b2sums_x86_64=('8ee843072787709566310c094d9950c291d21e47774a919ca43845134ee4d561dc30e05c49e63d8f9df33c2baa026d0a0b7cbd9ec7c6c5ce00cc7553c85e7e53')
 
 package() {
   cd "$srcdir/termy"
