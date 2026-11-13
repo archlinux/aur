@@ -20,6 +20,7 @@ sha256sums=('b56535f8c234bb119b94e11b2436651531869ba0171bb10166b007588e97d69f')
 
 function prepare
 {
+  rm -R "$pkgname-$pkgver"
   mv "$pkgname-LC$pkgver" "$pkgname-$pkgver"
 }
 
