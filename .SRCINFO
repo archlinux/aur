@@ -1,6 +1,6 @@
 pkgbase = animalinux
 	pkgdesc = Mascotas animadas para tu escritorio (Hyprland, KDE, GNOME…): reaccionan a tu PC, juegan y hasta te juegan un partido; con editor de píxeles y de animación
-	pkgver = 0.8.5
+	pkgver = 0.8.5.1
 	pkgrel = 1
 	url = https://github.com/Sergi122/AnimalinuxApp
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = animalinux
 	depends = python-pip
 	optdepends = ollama-cuda: la IA de la mascota en la tarjeta NVIDIA (mucho más rápida; la app lo instala con un clic)
 	optdepends = pipewire: leer el micrófono con pw-record (o pulseaudio/alsa-utils)
-	source = animalinux-0.8.5.tar.gz::https://github.com/Sergi122/AnimalinuxApp/archive/v0.8.5.tar.gz
-	sha256sums = 69eb4750403ef8f04fc3d43df40d34164b81e75a7778588aa80df7d4fcf4a6e9
+	source = animalinux-0.8.5.1.tar.gz::https://github.com/Sergi122/AnimalinuxApp/archive/v0.8.5.1.tar.gz
+	sha256sums = 9c7c2628e90207432ada88efe89af453d49a4d848d7c37ea1f9cb80b91c07b10
 
 pkgname = animalinux
