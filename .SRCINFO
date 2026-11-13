@@ -1,7 +1,7 @@
 pkgbase = xlibre-input-libinput
 	pkgdesc = Generic input driver for the XLibre Xserver based on libinput
 	pkgver = 25.0.1
-	pkgrel = 4
+	pkgrel = 51
 	url = https://github.com/X11Libre/xf86-input-libinput
 	arch = x86_64
 	groups = xlibre-drivers

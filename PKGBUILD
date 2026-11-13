@@ -7,7 +7,7 @@
 pkgname=xlibre-input-libinput
 _pkgname=xf86-input-libinput
 pkgver=25.0.1
-pkgrel=4
+pkgrel=51
 pkgdesc="Generic input driver for the XLibre Xserver based on libinput"
 arch=('x86_64')
 license=('MIT')
@@ -36,7 +36,7 @@ sha512sums=('e11920ace1780981ee4f7c54f7da2a1fcaa78dde37e880f664fb8d8b610ce7b7900
 
 build() {
 	arch-meson ${_pkgname}-xlibre-${_pkgname}-${pkgver} build \
-	-D xorg-conf-dir=/usr/share/X11/xorg.conf.d/
+		-D xorg-conf-dir=/usr/share/X11/xorg.conf.d/
 
 	ninja -C build
 }
