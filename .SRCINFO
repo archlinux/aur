@@ -1,16 +1,16 @@
 pkgbase = baml-bin
 	pkgdesc = BAML wrapper - toolchain manager and launcher (prebuilt binary)
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/BoundaryML/baml
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	options = !strip
-	source_x86_64 = https://github.com/BoundaryML/baml/releases/download/baml-wrapper-0.3.1/baml-wrapper-no-self-update-0.3.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b3f60e6f9d4ef9f96811cf81de57db45f281d4661ea67e4984a8935792c3308c
-	source_aarch64 = https://github.com/BoundaryML/baml/releases/download/baml-wrapper-0.3.1/baml-wrapper-no-self-update-0.3.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = b2427ca6c40979806481eb92bfd5c83989b398b59cb23a04ae90957d967686ce
+	source_x86_64 = https://github.com/BoundaryML/baml/releases/download/baml-wrapper-0.4.0/baml-wrapper-no-self-update-0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ad19f8dea0edfa35dfe7ffd522a91815caa6c872f7e8a72afc5ed9d1c153353e
+	source_aarch64 = https://github.com/BoundaryML/baml/releases/download/baml-wrapper-0.4.0/baml-wrapper-no-self-update-0.4.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3a66650a9f8e6ed31ae17b018448094c9d25c5b31f3ffb915a1f7afeee838173
 	provides = baml
 	conflicts = baml
 
