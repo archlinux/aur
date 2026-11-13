@@ -2,7 +2,7 @@
 
 pkgauthor="crftwr"
 pkgname="xefm"
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="A dual-pane file manager for the desktop and the terminal"
 
@@ -23,7 +23,7 @@ depends=('python' 'python-pillow' 'python-botocore' 'python-boto3' 'python-trust
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dce40c3d2ebf05dce412ec7722c7e6478c745294d4ad78ab1de86bd0c12f5cf0')
+sha256sums=('9465b784f7d10571348e54442e0f47baf609829e3ced93c5745ca50ead15ae83')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/" || exit
