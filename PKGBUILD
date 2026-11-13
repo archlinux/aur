@@ -8,11 +8,8 @@ pkgrel=3
 pkgdesc='Fetch all the URLs that the Wayback Machine knows about for a domain'
 arch=('x86_64')
 url="https://github.com/tomnomnom/waybackurls"
-# Upstream ships no license file at any commit and GitHub detects no license, so
-# the MIT identifier is inherited unverified. The licenses package carries no MIT
-# text either, so no license file is installed: one cannot be added without
-# fabricating the copyright line, which is upstream's to state.
-license=('MIT')
+# Upstream declares no license at any commit and ships no license text, so the
+# package claims none rather than asserting a license on the author's behalf.
 depends=('glibc')
 provides=("$_pkgname")
 conflicts=("$_pkgname")

@@ -4,7 +4,6 @@ pkgbase = waybackurls-bin
 	pkgrel = 3
 	url = https://github.com/tomnomnom/waybackurls
 	arch = x86_64
-	license = MIT
 	depends = glibc
 	provides = waybackurls
 	conflicts = waybackurls
