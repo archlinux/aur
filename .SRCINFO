@@ -1,6 +1,6 @@
 pkgbase = minimax-code-bin
 	pkgdesc = MiniMax Code terminal AI coding agent (mcode CLI, prebuilt)
-	pkgver = 0.7.6
+	pkgver = 0.7.7
 	pkgrel = 1
 	url = https://agent.minimax.cn/download
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = minimax-code-bin
 	depends = libxi
 	depends = libxkbcommon
 	optdepends = git: version control features
-	provides = minimax-code=0.7.6
+	provides = minimax-code=0.7.7
 	conflicts = minimax-code
 	options = !strip
 	source = LICENSE
 	sha256sums = 9d8b53a4e5afaa1b1cae3e7e5048952cd09050722951cab6638163500e0b3579
-	source_x86_64 = code-0.7.6.tgz::https://registry.npmjs.org/@minimax-ai/code/-/code-0.7.6.tgz
+	source_x86_64 = code-0.7.7.tgz::https://registry.npmjs.org/@minimax-ai/code/-/code-0.7.7.tgz
 	source_x86_64 = ripgrep-1.18.0.tgz::https://registry.npmjs.org/@vscode/ripgrep/-/ripgrep-1.18.0.tgz
 	source_x86_64 = ripgrep-linux-x64-1.18.0.tgz::https://registry.npmjs.org/@vscode/ripgrep-linux-x64/-/ripgrep-linux-x64-1.18.0.tgz
 	source_x86_64 = clipboard-0.3.9.tgz::https://registry.npmjs.org/@mariozechner/clipboard/-/clipboard-0.3.9.tgz
@@ -31,7 +31,7 @@ pkgbase = minimax-code-bin
 	source_x86_64 = bindings-1.5.0.tgz::https://registry.npmjs.org/bindings/-/bindings-1.5.0.tgz
 	source_x86_64 = file-uri-to-path-1.0.0.tgz::https://registry.npmjs.org/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz
 	source_x86_64 = better-sqlite3-node-12.11.1-linux-x64.tar.gz::https://github.com/WiseLibs/better-sqlite3/releases/download/v12.11.1/better-sqlite3-v12.11.1-node-v147-linux-x64.tar.gz
-	sha256sums_x86_64 = 9b8f4bb69b034803126fbf760397721b08d2af0245b727e7fd1ed32ad8a98aa5
+	sha256sums_x86_64 = 0f23ff98b53bb4100a151331b048c81bf8ba4849efde2324e925945e8f40f6c0
 	sha256sums_x86_64 = 6d12c8978be61caa15721b226583b52d1a0397a3a1745296f7c7cfa387249069
 	sha256sums_x86_64 = 8cc06e25e29f9c258ee9a09eecd7707c1ea2e99d9e76151e53dbe39f8d6b4a09
 	sha256sums_x86_64 = 25986ebeecaffadf3d1dd5f9199869057e4b64c37d7069c7f31c231dd86b5639
