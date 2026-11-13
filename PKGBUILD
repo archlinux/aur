@@ -8,8 +8,7 @@
 pkgname=xlibre-video-ati
 _pkgname=xf86-video-ati
 pkgver=25.0.1
-pkgrel=5
-epoch=1
+pkgrel=51
 pkgdesc="XLibre ati video driver"
 arch=('x86_64')
 url='https://github.com/X11Libre/xf86-video-ati'
@@ -19,11 +18,10 @@ depends=(
 	'libdrm'
 	'libpciaccess'
 	'mesa'
-	'systemd-libs'
+	'libudev.so'
 	'xlibre-xserver'
 )
 makedepends=(
-	'systemd'
 	'X-ABI-VIDEODRV_VERSION=28.0'
 	'xlibre-xserver-devel'
 )
