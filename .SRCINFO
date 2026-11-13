@@ -1,0 +1,17 @@
+pkgbase = otfx-bin
+	pkgdesc = Odin port of ttfx
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/fluxin/otfx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = otfx
+	conflicts = otfx
+	options = !strip
+	source_x86_64 = otfx-x86_64-0.0.1.tgz::https://github.com/fluxin/otfx/releases/download/v0.0.1/otfx-v0.0.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e24be109723bfd186873d7c160352a69765cf85c5b6b2f5bd04997941f5ddba5
+	source_aarch64 = otfx-aarch64-0.0.1.tgz::https://github.com/fluxin/otfx/releases/download/v0.0.1/otfx-v0.0.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 5909bd6e6d96a9d836e06719b1fff24c16285d932417b647d9d60e992b4caeda
+
+pkgname = otfx-bin

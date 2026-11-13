@@ -1,0 +1,5 @@
+[otfx-bin]
+source = "github"
+github = "fluxin/otfx"
+use_latest_release = true
+prefix = "v"
