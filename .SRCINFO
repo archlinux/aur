@@ -1,6 +1,6 @@
 pkgbase = ely-table-app-bin
 	pkgdesc = ElyTable - spreadsheet app from the Ely Office suite
-	pkgver = 0.1.15
+	pkgver = 0.1.16
 	pkgrel = 1
 	url = https://office.elygpui.com
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = ely-table-app-bin
 	conflicts = ely-table-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = ely-table_0.1.15-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.15/ely-table_0.1.15-1_amd64.deb
-	sha256sums_x86_64 = 7737bccd8528a08984af0d4ee3536a7d8425fefe7cc44a4d3a2f7b6631a1cbd9
+	source_x86_64 = ely-table_0.1.16-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.16/ely-table_0.1.16-1_amd64.deb
+	sha256sums_x86_64 = 251e5be87802c5d339b87b97dbbe106b405082b941c7a713c3f4d1094c6be510
 
 pkgname = ely-table-app-bin
