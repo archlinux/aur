@@ -1,5 +1,5 @@
 pkgbase = memos-git
-	pkgdesc = A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts.
+	pkgdesc = Privacy-first, lightweight note-taking service (git version)
 	pkgver = r4946.d0c6e2a
 	pkgrel = 1
 	epoch = 1
