@@ -6,7 +6,7 @@
 #
 # Before publishing: pick a real license (the repo ships no LICENSE file).
 pkgname=sing-box-ez-gui-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="GUI client for the sing-box proxy core (prebuilt binary)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver::https://github.com/he11ah0und/sing-box-ez/releases/do
         "sing-box-ez.desktop"
         "appicon.png")
 # The first entry is refreshed by the publish workflow on every release.
-sha256sums=('2153c20f2b803aeb126e859b6d7f339ccb432ea53f1adfd54c4ce1af118418a2' 'SKIP' 'SKIP')
+sha256sums=('f99e1bed75d115a76717822e22e5c8ae0105683d8433083caa596dfc679b0cf8' 'SKIP' 'SKIP')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/bin/sing-box-ez"
