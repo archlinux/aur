@@ -2,7 +2,7 @@
 
 pkgname=anycode-bin
 pkgver=0.0.101
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop workspace for AI coding agents (Claude Code, Codex and native)'
 arch=('x86_64')
 url='https://github.com/incadawr/anycode'
@@ -24,6 +24,7 @@ optdepends=(
   'libsecret: encrypted storage for provider API keys through the OS keyring'
   'xdg-utils: open external links from the app'
 )
+makedepends=('imagemagick')
 provides=('anycode')
 conflicts=('anycode')
 options=('!strip' '!debug')
@@ -71,8 +72,19 @@ package() {
 
   install -Dm644 "${srcdir}/anycode.desktop" \
     "${pkgdir}/usr/share/applications/anycode.desktop"
-  install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/AnyCode.png" \
-    "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/anycode.png"
+
+  # The AppImage only ships the icon at 1024x1024, but Arch's hicolor
+  # index.theme stops at 512x512. A directory that is missing from the index is
+  # never scanned, so installing the 1024px file alone leaves Icon=anycode
+  # unresolvable and every desktop shows a generic placeholder. Derive the
+  # sizes the index actually lists from the upstream original.
+  local icon="${srcdir}/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/AnyCode.png"
+  local size
+  for size in 48 64 128 256 512; do
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
+    magick "${icon}" -resize "${size}x${size}" -strip \
+      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/anycode.png"
+  done
 
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${srcdir}/squashfs-root/LICENSE.electron.txt" \

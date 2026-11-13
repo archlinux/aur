@@ -1,10 +1,11 @@
 pkgbase = anycode-bin
 	pkgdesc = Desktop workspace for AI coding agents (Claude Code, Codex and native)
 	pkgver = 0.0.101
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/incadawr/anycode
 	arch = x86_64
 	license = Apache-2.0
+	makedepends = imagemagick
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = gtk3
