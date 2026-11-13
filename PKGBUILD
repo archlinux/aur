@@ -1,7 +1,7 @@
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
 pkgver=2026.11.1
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('any')
 url='https://home-assistant.io/'
@@ -21,6 +21,9 @@ depends=(
   'tzdata'
   'zlib'
 )
+optdepends=(
+  'go2rtc: WebRTC camera streaming'
+)
 makedepends=(
   'python-build'
   'python-setuptools'
@@ -32,15 +35,18 @@ source=(
   'home-assistant.service'
   'home-assistant.sysusers'
   'home-assistant.tmpfiles'
+  '01-allow-managed-go2rtc-in-non-docker.patch'
 )
 sha512sums=('5cd0bc75fc1f79905685856bca7a3f3a606768f84f3f6d8eec561154b2da1a406513a9cca710d5c003a1ab89b678bfd6f23b4bce64f6a65e94105a0b50d5cd22'
             'd97e1d3718ab89542ac6dbf7a58157a91a74cb3d0b0f1f7c0889bcfba3da5dd120567c1551e7462f51a78cd9049990dfc7aa48828a1c3d6c389f1c2a93cedf13'
             'ec05b47011adea19ee71a7793968c20a95648f45e581dab1462faec85ff31d968acd5eac35729e52c46a7eeb046a2961093283160167622d4da9773562ec8273'
-            '3e93118c84954f829767dc71ce534c5d02c1c95fc8748714c7a2df28a3a297f59962f8fb7cddf721987eb97d62feabb25acda5d38209e365646ca4a4ef4356e3')
+            '3e93118c84954f829767dc71ce534c5d02c1c95fc8748714c7a2df28a3a297f59962f8fb7cddf721987eb97d62feabb25acda5d38209e365646ca4a4ef4356e3'
+            '2c3db8e40203602344257ecc4ec38daa327d0838c6aea8ce9987095edccb41d53fa79924d66ca28666fd8abb57d73bdb0d8e316387245a30d19b2a1cb920960b')
 b2sums=('d852b80ab395168a72da92c422b3cc51f4d4ae534d1f00aba1a231bf80fb57cc3104e967e975ad49432699707f4879cf6b1ec79a7cbbd71aa81572854b5fb257'
         '4a4f548ce5b9961bba71d3e81db49da306b2b42019ba982f9123456e12cb33e9a3d50bed6fbacbecfe3c9a6cb8467f7d91948535e512361fcb125857987ea167'
         '8a023a2215712044fb5115d1b81e55fad2c74f2e836cfe7f3f1e7c3778e4903c25ba7e429aedfd74b566be542aa50ea0d486b616c6d5b0315d993a9599e454f8'
-        'c4896b5bf2ecee2eb952899e7431a19a2e49c08f414887dfa054e9827b5cbeb88f223c99ac610acc0c11e34c7bf9a7892efea67fbf6ff13c7a27fe4e03f619b9')
+        'c4896b5bf2ecee2eb952899e7431a19a2e49c08f414887dfa054e9827b5cbeb88f223c99ac610acc0c11e34c7bf9a7892efea67fbf6ff13c7a27fe4e03f619b9'
+        '8d2381a6f52f9cb2e25ef291272f424db0a89e0d7171b4894a21ca3c09ab9ade390077261b9ac18f380bccb8d84f20c485856f31f4ff827a4ee6292b70ae8717')
 
 prepare() {
   # update version in service file
