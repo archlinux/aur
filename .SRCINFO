@@ -1,8 +1,8 @@
 pkgbase = llavon-ime-fcitx5-preview-git
-	pkgdesc = Preview branch of the Fcitx5 frontend and local inference service for Llavon IME
-	pkgver = 0.11.1.r23.gdf4fdb7
+	pkgdesc = Fcitx5 frontend and local inference service for Llavon IME (preview merged into main; use llavon-ime-fcitx5-git)
+	pkgver = 0.12.0.r6.gdfc96bc
 	pkgrel = 1
-	url = https://github.com/llavon-ime/ime-unix/tree/preview
+	url = https://github.com/llavon-ime/ime-unix
 	arch = x86_64
 	arch = aarch64
 	license = BSD-2-Clause
@@ -40,7 +40,7 @@ pkgbase = llavon-ime-fcitx5-preview-git
 	conflicts = llavon-ime-fcitx5-git
 	conflicts = llavon-ime-fcitx5-git-debug
 	options = !strip
-	source = ime-unix::git+https://github.com/llavon-ime/ime-unix.git#branch=preview
+	source = ime-unix::git+https://github.com/llavon-ime/ime-unix.git#branch=main
 	source = llavon-ime-llama-250m-Q4_K_M.gguf::https://huggingface.co/tony65535/llavon-ime-llama-250m-GGUF/resolve/main/llavon-ime-llama-250m-Q4_K_M.gguf
 	sha256sums = SKIP
 	sha256sums = SKIP

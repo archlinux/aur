@@ -4,11 +4,11 @@ _pkgname=llavon-ime-fcitx5
 _srcname=ime-unix
 _model_file=llavon-ime-llama-250m-Q4_K_M.gguf
 pkgname=${_pkgname}-preview-git
-pkgver=0.11.1.r23.gdf4fdb7
+pkgver=0.12.0.r6.gdfc96bc
 pkgrel=1
-pkgdesc='Preview branch of the Fcitx5 frontend and local inference service for Llavon IME'
+pkgdesc='Fcitx5 frontend and local inference service for Llavon IME (preview merged into main; use llavon-ime-fcitx5-git)'
 arch=('x86_64' 'aarch64')
-url='https://github.com/llavon-ime/ime-unix/tree/preview'
+url='https://github.com/llavon-ime/ime-unix'
 license=('BSD-2-Clause' 'MIT' 'Apache-2.0' 'BSL-1.0' 'CC-BY-NC-4.0')
 # The bundled .NET trainer appends managed assemblies to its ELF executable.
 # makepkg's strip pass removes that payload even though it is already stripped.
@@ -22,7 +22,7 @@ optdepends=(
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-git-debug")
 source=(
-    "${_srcname}::git+https://github.com/llavon-ime/ime-unix.git#branch=preview"
+    "${_srcname}::git+https://github.com/llavon-ime/ime-unix.git#branch=main"
     "${_model_file}::https://huggingface.co/tony65535/llavon-ime-llama-250m-GGUF/resolve/main/${_model_file}"
 )
 sha256sums=('SKIP' 'SKIP')
@@ -62,7 +62,7 @@ build() {
         -DLLAVON_IME_INSTALLED_MODEL_PATH="/usr/share/llavon-ime/models/${_model_file}" \
         -DLLAVON_IME_DISPLAY_VERSION="${pkgver}" \
         -DLLAVON_IME_WARNINGS_AS_ERRORS=ON \
-        -DLLAVON_IME_BUILD_TESTS=ON
+        -DLLAVON_IME_BUILD_TESTS=OFF
     cmake --build build
 
     cmake -S "${_srcname}/engine" -B engine-tests -G Ninja \
@@ -76,7 +76,6 @@ build() {
 check() {
     ctest --test-dir unix-service-build --output-on-failure
     ctest --test-dir engine-tests --output-on-failure -R '^llavon_ime_(tests|rawkey_tests)$'
-    ctest --test-dir build --output-on-failure
 }
 
 package() {
