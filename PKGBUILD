@@ -1,6 +1,6 @@
 # Maintainer: Mészáros Zoltán <contact.mesonotes@gmail.com>
 pkgname=mesonotes-bin
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A hobby notes app built on one principle: your data is your property"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('mesonotes')
 conflicts=('mesonotes')
 options=('!strip' '!debug')
 source=("mesonotes-${pkgver}-amd64.deb::https://gitlab.com/api/v4/projects/linuxmind%2Fmesonotes/packages/generic/mesonotes/${pkgver}/mesonotes-${pkgver}-amd64.deb")
-sha256sums=('8ebbbc62b35fb26c82c349c6a97e90c4a5b9b20fc01d9883ade0bfeb19406100')
+sha256sums=('b607ce6f2bea658b4328c3fb5d95e5fc0f98a45fb33aa1a9f5995e5b8671b4a3')
 
 package() {
   bsdtar -xf data.tar.xz -C "$pkgdir"
