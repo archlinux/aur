@@ -1,6 +1,6 @@
 pkgbase = efr-code
 	pkgdesc = Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/eggfriedrice24/eggfriedrice.code
 	install = efr-code.install
@@ -15,15 +15,16 @@ pkgbase = efr-code
 	optdepends = bubblewrap: the kernel sandbox of the auto mode (also needs Linux 7.1 or newer)
 	optdepends = fzf: the live search picker of ,resume (0.46 or newer)
 	optdepends = git: project roots and the git facts of a turn
+	optdepends = ripgrep: the search that the model uses for text and file names (rg)
 	optdepends = xdg-dbus-proxy: read-only system queries in the auto mode (0.1.9 or newer)
 	optdepends = xdg-utils: let efr login openai open the browser with EFR_OPEN_BROWSER=1
 	conflicts = efr-code-bin
 	options = !lto
-	source = efr-code-0.0.8.tar.gz::https://github.com/eggfriedrice24/eggfriedrice.code/archive/refs/tags/v0.0.8.tar.gz
-	source = ghostty-521cf2c5d30bd48028ca61546c64e7913764073d.tar.gz::https://github.com/ghostty-org/ghostty/archive/521cf2c5d30bd48028ca61546c64e7913764073d.tar.gz
+	source = efr-code-0.0.9.tar.gz::https://github.com/eggfriedrice24/eggfriedrice.code/archive/refs/tags/v0.0.9.tar.gz
+	source = ghostty-0fa3d577a5614150ff8e2c152de5fb9d5c6d2dec.tar.gz::https://github.com/ghostty-org/ghostty/archive/0fa3d577a5614150ff8e2c152de5fb9d5c6d2dec.tar.gz
 	source = https://ziglang.org/download/0.17.0/zig-x86_64-linux-0.17.0.tar.xz
-	b2sums = f5f3e3cddf583c74c83a01951edb4ff5c54c5f77cafb0f6fc381f0ed4d50c4b7718e658ebac0f63f0ed08e4f22180f5137eab383a754320cdcc00dadfa4c5670
-	b2sums = 693dc989777edf1bd0bd7280bd393a93c5910409b8b9df3e57b2938954eb64b2c3d8d8e686657cbca2608ea592b8a39caabedff345ecb027033616e7c50ad692
+	b2sums = a202e00fe0339f3ba3e3152d771e1a8b0b15e49d7e589af526abc09f2e1ebfe7a1116ebec90c0fb045b9fad28d01b3ee055420942671c6dab499e44ac54e7f55
+	b2sums = 508f69a31bd5bba9f3486b83966b8f33b9cf40caa58dc0753cc28d5c022c4cd8ee272f2ffe0747d0bccd94c83a27811596c16a5ee247d8897d8107bc69c680c1
 	b2sums = 384b04872c92132ffeaee2c5201dff61ea10e00e8b3d42c6745246f79b847e54b05262ff89cd850d30e32957a82cb1b15722511e9535db6e9126912b182a3a61
 
 pkgname = efr-code

@@ -10,7 +10,7 @@
 # build. The ghostty source is the commit that the libghostty-vt pin names.
 # All downloads happen in the sources and in prepare(); build() needs no network.
 pkgname=efr-code
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state'
 arch=('x86_64')
@@ -23,6 +23,7 @@ checkdepends=('cargo-nextest' 'git')
 optdepends=('bubblewrap: the kernel sandbox of the auto mode (also needs Linux 7.1 or newer)'
             'fzf: the live search picker of ,resume (0.46 or newer)'
             'git: project roots and the git facts of a turn'
+            'ripgrep: the search that the model uses for text and file names (rg)'
             'xdg-dbus-proxy: read-only system queries in the auto mode (0.1.9 or newer)'
             'xdg-utils: let efr login openai open the browser with EFR_OPEN_BROWSER=1')
 conflicts=("$pkgname-bin")
@@ -32,7 +33,7 @@ install=efr-code.install
 options=('!lto')
 # The ghostty commit of the libghostty-vt pin, and the Zig release it needs.
 # Change them together with docs/ghostty-pin.md.
-_ghostty=521cf2c5d30bd48028ca61546c64e7913764073d
+_ghostty=0fa3d577a5614150ff8e2c152de5fb9d5c6d2dec
 _zig=0.17.0
 _src="eggfriedrice.code-$pkgver"
 _zigdir="zig-$CARCH-linux-$_zig"
@@ -44,8 +45,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 # and the Zig tarball whose SHA-256 ziglang.org publishes in
 # https://ziglang.org/download/index.json
 # (1cbe9df9f27e6b78d14ccbca43b6703a404ef79ef1c463de901d7f088d4e2026).
-b2sums=('f5f3e3cddf583c74c83a01951edb4ff5c54c5f77cafb0f6fc381f0ed4d50c4b7718e658ebac0f63f0ed08e4f22180f5137eab383a754320cdcc00dadfa4c5670'
-        '693dc989777edf1bd0bd7280bd393a93c5910409b8b9df3e57b2938954eb64b2c3d8d8e686657cbca2608ea592b8a39caabedff345ecb027033616e7c50ad692'
+b2sums=('a202e00fe0339f3ba3e3152d771e1a8b0b15e49d7e589af526abc09f2e1ebfe7a1116ebec90c0fb045b9fad28d01b3ee055420942671c6dab499e44ac54e7f55'
+        '508f69a31bd5bba9f3486b83966b8f33b9cf40caa58dc0753cc28d5c022c4cd8ee272f2ffe0747d0bccd94c83a27811596c16a5ee247d8897d8107bc69c680c1'
         '384b04872c92132ffeaee2c5201dff61ea10e00e8b3d42c6745246f79b847e54b05262ff89cd850d30e32957a82cb1b15722511e9535db6e9126912b182a3a61')
 
 # Keep debug info in the binaries so makepkg can split it into the -debug package.
