@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph+aur@christophfink.com>
 # Contributor: Liam Timms <timms5000 @ g mail dot com>
 
@@ -7,7 +10,7 @@ pkgdesc="Hierarchical Density-Based Spatial Clustering of Applications with Nois
 url="http://github.com/scikit-learn-contrib/hdbscan"
 
 pkgver=0.8.44
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64")
 license=("BSD-3-Clause")
@@ -25,7 +28,9 @@ depends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=("8d28c671aea8b62631b905bad315bcbcd9c616202d0486df2d3ed3c2f9f425b16c7d237eaefef50b58a1bb8f250d1928d14533a91ffecd710c65d2b02066806a")
+b2sums=(
+    "8d28c671aea8b62631b905bad315bcbcd9c616202d0486df2d3ed3c2f9f425b16c7d237eaefef50b58a1bb8f250d1928d14533a91ffecd710c65d2b02066806a"
+)
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
