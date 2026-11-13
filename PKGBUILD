@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph.fink@gmail.com>
 
 pkgname=kei
@@ -6,7 +9,7 @@ pkgdesc="Fast, parallel photo sync from the cloud to local storage"
 url="https://github.com/rhoopr/kei"
 
 pkgver=0.26.0
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64" "i686")
 license=("MIT")
