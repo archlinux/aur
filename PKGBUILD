@@ -1,5 +1,5 @@
 pkgname=omniorb
-pkgver=4.3.4
+pkgver=4.3.5
 pkgrel=1
 pkgdesc="A CORBA object request broker for C++ and Python."
 arch=('x86_64' 'armv7h')
@@ -8,7 +8,7 @@ license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
 depends=('python' 'zstd')
 makedepends=('pkgconfig')
 source=(http://downloads.sourceforge.net/omniorb/omniORB-${pkgver}.tar.bz2)
-sha256sums=('79720d415d23cd8da99287a4ef4da0aa1bd34d3e4c7b1530715600adc5ed3dc3')
+sha256sums=('d57c5ec43030b31eeb620b4c8e47d62bf08eab4945dbeab0e094f10c8447bf93')
 
 build() {
   cd "${srcdir}/omniORB-${pkgver}"
