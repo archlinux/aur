@@ -2,8 +2,8 @@
 # Maintainer: Dylan Harkleroad <deehark87@gmail,com>
 
 pkgname=opencmr2-git
-pkgver=1.8.7.r0.gf1f89d8
-pkgrel=1
+pkgver=1.9.0.r0.gc4ece96
+pkgrel=2
 pkgdesc="Open-source native Linux port of Colin McRae Rally 2.0"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pablocpas/OpenCMR2"
