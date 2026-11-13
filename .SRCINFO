@@ -1,0 +1,32 @@
+pkgbase = amplide-bin
+	pkgdesc = Legacy IDE for A Mathematical Programming Language
+	pkgver = 4.1.0.202412231704
+	pkgrel = 1
+	url = https://ampl.com
+	arch = x86_64
+	license = Apache-2.0
+	license = Apache-2.0 OR LGPL-2.1-only
+	license = CC-BY-3.0
+	license = GPL-2.0-only WITH Classpath-exception-2.0
+	license = LicenseRef-AMPL
+	license = SAX-PD
+	depends = alsa-lib
+	depends = ampl
+	depends = glibc
+	depends = libx11
+	depends = libxext
+	depends = libxi
+	depends = libxrender
+	depends = libxtst
+	depends = webkit2gtk-4.1
+	depends = zlib
+	provides = amplide=4.1.0.202412231704
+	conflicts = amplide
+	options = !debug
+	options = !strip
+	source = amplide-4.1.0.202412231704-x86_64.tgz::https://portal.ampl.com/dl/amplce/amplide.linux64.tgz
+	source = amplide.desktop
+	sha256sums = SKIP
+	sha256sums = 388291ee650c3e9e33ae2ae1866bf93dd085c45301b9ed22bf5286c8a00bb05a
+
+pkgname = amplide-bin

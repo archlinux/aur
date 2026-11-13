@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=AMPL IDE
+Comment=Legacy IDE for A Mathematical Programming Language
+Icon=/opt/amplide/icon.xpm
+Exec=amplide
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+StartupNotify=true
