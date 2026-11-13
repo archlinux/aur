@@ -1,7 +1,7 @@
 # Maintainer: codevski <aur.deity726@passmail.net>
 
 pkgname=ps5upload-bin
-pkgver=12.4.14
+pkgver=12.4.17
 pkgrel=1
 pkgdesc="All-in-one PS5 companion app for uploading, installing and managing games over the network (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkg
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/PS5Upload-${pkgver}-linux-arm64.deb")
 sha256sums=('d462353c1ec39604430d578dba3076833cf5af897d1542b3b052b38cfde2e2d0'
             'b6596371fc9f4da30b64d30813b798b545b08ecc754547ed1b10c923ffb84666')
-sha256sums_x86_64=('ab397068b0c00f0eddd6bf47467eda2901f19c1041bd0233874fafafed761f09')
-sha256sums_aarch64=('e58d382381b5b4fcfe1eec483d205f0b9098a265cfdb1b6c293e0e3d6c42c42a')
+sha256sums_x86_64=('d2822137d2462a57542fb50234a0c833599f22a060f23e2d15efb78a24e5b72f')
+sha256sums_aarch64=('822b867f686fe9054b2a77a5a6e8a36c4f345cdb841bdda806c6740a9c79cec3')
 
 package() {
   # makepkg unpacks the .deb into control.tar.* + data.tar.*; the data
