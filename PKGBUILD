@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph.fink@gmail.com>
 
 pkgname="python-dhash"
@@ -6,7 +9,7 @@ pkgdesc="Calculate the difference hash (perceptual hash) for an image"
 url="https://github.com/Jetsetter/dhash"
 
 pkgver=1.4
-pkgrel=6
+pkgrel=7
 
 arch=("any")
 license=("MIT")
@@ -23,7 +26,9 @@ depends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('b2a86fb8d7acb46dc3b6d37ba3d0de78c0cd0fdb387d3b6a948ced747ea07e8152e91cb46d7c6e8e305be6d6c7b96bd668c218069ef9d1e84afa96bb2b851fa1')
+b2sums=(
+    "b2a86fb8d7acb46dc3b6d37ba3d0de78c0cd0fdb387d3b6a948ced747ea07e8152e91cb46d7c6e8e305be6d6c7b96bd668c218069ef9d1e84afa96bb2b851fa1"
+)
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
