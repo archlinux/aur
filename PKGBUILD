@@ -2,7 +2,7 @@
 
 pkgname=signal-export
 pkgver=3.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Export your Signal chats to markdown files with attachments'
 arch=('any')
 url="https://github.com/carderne/$pkgname"
