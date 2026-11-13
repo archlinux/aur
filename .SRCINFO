@@ -1,6 +1,6 @@
 pkgbase = python-apify-fingerprint-datapoints
 	pkgdesc = Fingerprint datapoints files collected by Apify and originally stored at https://github.com/apify/fingerprint-suite.
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://pypi.org/project/apify-fingerprint-datapoints/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-apify-fingerprint-datapoints
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://pypi.org/packages/source/a/apify_fingerprint_datapoints/apify_fingerprint_datapoints-0.15.0.tar.gz
-	sha256sums = 5776fe73feaa3910265cae55599552b098f3a716d8872c9a0c2295ff2bb680dc
+	source = https://pypi.org/packages/source/a/apify_fingerprint_datapoints/apify_fingerprint_datapoints-0.16.0.tar.gz
+	sha256sums = 0d187bf8d24566a517f915ad8e168208e4ab47fea5e900b08e9d0e7e9ba71da8
 
 pkgname = python-apify-fingerprint-datapoints
