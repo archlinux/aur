@@ -1,0 +1,22 @@
+pkgbase = dsh-next-bin
+	pkgdesc = DSH Desktop NEXT - desktop client for DeepSeek Harness
+	pkgver = 2.0.22_next
+	pkgrel = 1
+	url = https://github.com/anywhere-labs/dsh-desktop
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = at-spi2-core
+	depends = xdg-utils
+	depends = util-linux
+	depends = libsecret
+	depends = mesa
+	depends = alsa-lib
+	source_x86_64 = https://github.com/anywhere-labs/dsh-desktop/releases/download/v2.0.22-next/DSH-NEXT-2.0.22-next-amd64.deb
+	sha256sums_x86_64 = 7f0ce3c85646199432e1f73a549f548fc889c6dd4e144a19315827fa11476795
+
+pkgname = dsh-next-bin
