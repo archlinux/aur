@@ -3,7 +3,7 @@
 # `markview` builds the same program from source. Both install the same files,
 # so they conflict with each other.
 pkgname=markview-bin
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='A fast, native Markdown reader with publication-quality typography.'
 arch=('x86_64')
@@ -43,8 +43,8 @@ source=(
 	'markview.mime.xml'
 )
 sha256sums=(
-	'e9c84a966242aad5039f9d0470931c930516efa1e37d378ac12c7c77c1bc452d'
-	'065119cece97c594512abbb840e01add451cb4999d3e4d96e5e5e13facd7a923'
+	'ce256cc939c9fb5e307902678ca2253118343646b5bfbb7a68d7f99a06a5ac42'
+	'a610e6b59619dcb9986a07e13b5472d294f968560e090ffa94ee391bbc6062f8'
 	'c2b54efc155e407495127927cabafb92b369a4ead7e1a04d8246f9939bf280b0'
 )
 
