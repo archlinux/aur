@@ -2,7 +2,7 @@
 
 _basename=htminl
 pkgname=${_basename}-bin
-pkgver=0.11.9
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="CLI tool that simplifies the task of minifying HTML in-place for production environments"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('tar')
 depends=('glibc' 'gcc-libs')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums_x86_64=('76cdfe249f9e447e986f532634ce53ab66e8389e88779f2f1b9ca9605eb88edc')
+sha256sums_x86_64=('e7a89d852f366764aedb1f34f8b4a9424a4da323c456eedb9de52e3521a05a50')
 
 package() {
     cd "${pkgdir}"
