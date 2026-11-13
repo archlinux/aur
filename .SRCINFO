@@ -1,7 +1,7 @@
 pkgbase = atrust-bin
-	pkgdesc = Sangfor ssl sdp client.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.5.16.30
-	pkgrel = 4
+	pkgdesc = Sangfor ssl sdp client.
+	pkgver = 2.5.16.41
+	pkgrel = 1
 	url = https://www.sangfor.com/
 	arch = x86_64
 	license = LicenseRef-unknown
@@ -16,15 +16,15 @@ pkgbase = atrust-bin
 	depends = alsa-lib
 	depends = libxtst
 	depends = nodejs
-	provides = atrust=2.5.16.30
+	provides = atrust=2.5.16.41
 	conflicts = atrust
 	options = !strip
 	options = !emptydirs
-	source = atrust-2.5.16.30.deb::https://atrustcdn.sangfor.com/standard/linux/2.5.16.30/uos/amd64/aTrustInstaller_amd64.deb
+	source = atrust-2.5.16.41.deb::https://atrustcdn.sangfor.com/standard/linux/2.5.16.41/uos/amd64/aTrustInstaller_amd64.deb
 	source = bsod_checker.js
 	source = atrust.sh
-	sha256sums = aa8ba93532ae250dcab3d75d3b103fb01a93b97b49cbc6d9066c5ed1f70b75a6
-	sha256sums = ae82a7e0575d2ed8778134fc7d5c9c85001c955a7d26710a13101ff2363c53e6
-	sha256sums = dcd83c90f18567cab33c5734d2b55e0a5331e58634ea224054f7a186fd8b17bd
+	sha256sums = 360c78dd8be33fc9030a039ad3bf735d0812132071c05b280115642d4be146f5
+	sha256sums = ac3ce1d29ee40bec9b5c1814a1972cd81373b1c2cce4cf3d3c66a0544186bd5d
+	sha256sums = 973355123ef18bd13920f67914737ec99890869a9d49862041e514908f03ae02
 
 pkgname = atrust-bin
