@@ -2,7 +2,7 @@
 # Contributor: David Birks <david@birks.dev>
 
 pkgname=gascity-bin
-pkgver=1.4.1
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Orchestration-builder SDK for multi-agent coding workflows'
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ conflicts=('gascity' 'graphviz')
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/gastownhall/gascity/releases/download/v${pkgver}/gascity_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/gastownhall/gascity/releases/download/v${pkgver}/gascity_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('8d8c8b511db3fc44931445aab5cb9f212509c0867105c880d6c3d0e6e5d33e42')
-sha256sums_aarch64=('6620ef51c8ba620821e5ef8b208bb1b3de090fa86ec5e0327da1edd615407e29')
+sha256sums_x86_64=('3a405a5455eb6216f7f65d4516a614e4913d83bc8964df8800e0533ab2d40044')
+sha256sums_aarch64=('e75083c01562b1a66cb1931c336139693f51effa0e48dc91c402556bddf50e72')
 
 package() {
   install -Dm755 gc "${pkgdir}/usr/bin/gc"
