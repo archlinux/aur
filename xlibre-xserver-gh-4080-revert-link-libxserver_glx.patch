@@ -1,0 +1,26 @@
+From 6f3d19537721929b639d69739bb0873fdcc0747b Mon Sep 17 00:00:00 2001
+From: Tautvis <tautvydas@tcorp.ltd>
+Date: Mon, 9 Nov 2026 14:27:08 +0200
+Subject: [PATCH] Revert "build: link libxserver_glx into Xorg to export
+ xorgGlxCreateVendor"
+
+This revert commit 2e425acb3514e637cfdd8a3f93ae140976069992. As it introduces what is fixed in https://github.com/X11Libre/xserver/pull/3213
+back.
+
+Signed-off-by: Tautvis <gtautvis@gmail.com>
+---
+ hw/xfree86/meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/hw/xfree86/meson.build b/hw/xfree86/meson.build
+index 75cd139aa1..4bf1dddaf6 100644
+--- a/hw/xfree86/meson.build
++++ b/hw/xfree86/meson.build
+@@ -58,7 +58,6 @@ srcs_xorg = [
+ xorg_link = [
+     libxserver,
+     libglxvnd,
+-    libxserver_glx,
+     xorg_common,
+     xorg_compat,
+     xorg_loader,

@@ -4,6 +4,8 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
+: "${USE_SYSTEMD:=1}"
+
 pkgbase=xlibre-xserver
 pkgname=(
 	'xlibre-xserver'
@@ -13,8 +15,8 @@ pkgname=(
 	'xlibre-xserver-xvfb'
 	'xlibre-xserver-devel' # devel last due to some checks there
 )
-pkgver=25.1.9
-pkgrel=1
+pkgver=25.1.11
+pkgrel=3
 arch=('x86_64')
 license=(
 	'BSD-3-Clause'
@@ -36,9 +38,11 @@ license=(
 groups=('xlibre')
 url="https://xlibre.net"
 makedepends=(
+	'dbus'
 	'libepoxy'
 	'libpciaccess'
 	'libunwind'
+	'libudev.so'
 	'libx11'
 	'libxaw'
 	'libxcvt'
@@ -55,7 +59,6 @@ makedepends=(
 	'mesa-libgl'
 	'meson'
 	'pixman'
-	'systemd'
 	'xcb-util'
 	'xcb-util-image'
 	'xcb-util-keysyms'
@@ -66,14 +69,30 @@ makedepends=(
 	'xorg-xkbcomp'
 	'xorgproto'
 )
+
+((USE_SYSTEMD)) && depends=('libsystemd.so')
+((USE_SYSTEMD)) || optdepends=(
+	'elogind: login1 session management'
+)
+
 source=(
 	https://github.com/X11Libre/xserver/archive/refs/tags/${pkgbase}-"${pkgver}".tar.gz
 	xvfb-run # with updates from FC master
 	xvfb-run.1
+	xlibre-xserver-gh-4080-revert-link-libxserver_glx.patch
+	xlibre-xserver-gh-4084-damage-fix-abi.patch
 )
-sha512sums=('ef3d142f1842b415ec4ee18cc8eb3d537700658717c1610e1c2ac20f35711807c140803bd36be4db719d1e40abdbd2eb3b0ca899c018361e3a3762a8b269f29a'
+sha512sums=('cc36ff54f915532abb364c1845be98136d1ebbab63f3004d0330af56dd3e7c079466059add113f408d942dc736b539e24b244b2941d3ad19b1fa7823499e791d'
             '672375cb5028ba9cda286e317d17bd8c9a9039483e7f79c21f223fd08ba07655729e9f59a082f4b8f5d8de45a77a9e9affce1002fb8c6657e26ef1a490654e49'
-            'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22')
+            'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22'
+            'f892af8f8de171a96cecab61a990bd58841ea8b89b970a59c823cfd5689d372d78aaa6d812d149663895846fb7feb34031c7eb9838530f473c361936673d1e4c'
+            'cbfa8876a8ac94aab16b84e674e179cfb541d334c01ef0f49da6d915ac595821c323ed95d4e93150d473b128fa0b92891faf01a7b95fd818a76d1e16383a5e71')
+
+prepare() {
+	cd "xserver-${pkgbase}-${pkgver}"
+	patch -Np1 < "$srcdir/xlibre-xserver-gh-4080-revert-link-libxserver_glx.patch"
+	patch -Np1 < "$srcdir/xlibre-xserver-gh-4084-damage-fix-abi.patch"
+}
 
 build() {
 	# Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
@@ -82,6 +101,9 @@ build() {
 	export CFLAGS=${CFLAGS/-fno-plt}
 	export CXXFLAGS=${CXXFLAGS/-fno-plt}
 	export LDFLAGS=${LDFLAGS/-Wl,-z,now}
+
+	local systemd_notify=false
+	((USE_SYSTEMD)) && systemd_notify=true
 
 	arch-meson "xserver-${pkgbase}-${pkgver}" build \
 		-D ipv6=true \
@@ -97,6 +119,7 @@ build() {
 		-D dtrace=false \
 		-D seatd_libseat=false \
 		-D systemd_logind=true \
+		-D systemd_notify="$systemd_notify" \
 		-D suid_wrapper=true \
 		-D linux_acpi=false \
 		-D legacy_nvidia_padding=true \
@@ -132,6 +155,7 @@ package_xlibre-xserver-common() {
 		'xorg-setxkbmap'
 		'xorg-xkbcomp'
 	)
+	optdepends=()
 	provides=('xorg-server-common')
 	conflicts=(
 		'xlibre-xserver-common-beta'
@@ -147,8 +171,8 @@ package_xlibre-xserver-common() {
 }
 
 package_xlibre-xserver() {
-	pkgdesc="XLibre X server"
-	depends=(
+	pkgdesc="XLibre Xserver"
+	depends+=(
 		'dbus'
 		'glibc'
 		'libbsd'
@@ -158,6 +182,7 @@ package_xlibre-xserver() {
 		'libpciaccess'
 		'libtirpc'
 		'libunwind'
+		'libudev.so'
 		'libxau'
 		'libxcvt' # FS#52949
 		'libxdmcp'
@@ -166,7 +191,6 @@ package_xlibre-xserver() {
 		'nettle'
 		'pixman'
 		'sh'
-		'systemd-libs'
 		'xlibre-xserver-common'
 	)
 	# see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers
@@ -178,6 +202,7 @@ package_xlibre-xserver() {
 		'x-server'
 		'xorg-server'
 	)
+	provides+=('x11win-server') # Artix only
 	conflicts=(
 		'glamor-egl'
 		'nvidia-utils<=331.20'
@@ -207,12 +232,13 @@ package_xlibre-xserver() {
 
 package_xlibre-xserver-xephyr() {
 	pkgdesc="A nested X server that runs as an X application"
-	depends=(
+	depends+=(
 		'glibc'
 		'libepoxy'
 		'libgl'
 		'libtirpc'
 		'libunwind'
+		'libudev.so'
 		'libx11'
 		'libxau'
 		'libxdmcp'
@@ -220,7 +246,6 @@ package_xlibre-xserver-xephyr() {
 		'libxshmfence'
 		'nettle'
 		'pixman'
-		'systemd-libs'
 		'xcb-util'
 		'xcb-util-image'
 		'xcb-util-keysyms'
@@ -228,6 +253,7 @@ package_xlibre-xserver-xephyr() {
 		'xcb-util-wm'
 		'xlibre-xserver-common'
 	)
+	optdepends=()
 	provides=('xorg-server-xephyr')
 	conflicts=(
 		'xlibre-xserver-xephyr-beta'
@@ -248,7 +274,7 @@ package_xlibre-xserver-xvfb() {
 		'GPL-2.0-only'
 		'MIT'
 	)
-	depends=(
+	depends+=(
 		'glibc'
 		'libgl'
 		'libtirpc'
@@ -259,10 +285,10 @@ package_xlibre-xserver-xvfb() {
 		'nettle'
 		'pixman'
 		'sh'
-		'systemd-libs'
 		'xlibre-xserver-common'
 		'xorg-xauth'
 	)
+	optdepends=()
 	provides=('xorg-server-xvfb')
 	conflicts=(
 		'xlibre-xserver-xvfb-beta'
@@ -281,7 +307,7 @@ package_xlibre-xserver-xvfb() {
 
 package_xlibre-xserver-xnest() {
 	pkgdesc="A nested X server that runs as an X application"
-	depends=(
+	depends+=(
 		'glibc'
 		'libtirpc'
 		'libunwind'
@@ -292,9 +318,9 @@ package_xlibre-xserver-xnest() {
 		'libxfont2'
 		'nettle'
 		'pixman'
-		'systemd-libs'
 		'xlibre-xserver-common'
 	)
+	optdepends=()
 	provides=('xorg-server-xnest')
 	conflicts=(
 		'xlibre-xserver-xnest-beta'
@@ -315,9 +341,10 @@ package_xlibre-xserver-devel() {
 		'mesa'
 		'pixman'
 		'xlibre-xserver'
-		'xorg-util-macros'
+		'xorg-util-macros' # not required but almost every XLibre pkg needs it
 		'xorgproto'
 	)
+	optdepends=()
 	provides=('xorg-server-devel')
 	conflicts=(
 		'xlibre-xserver-devel-beta'
