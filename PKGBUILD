@@ -1,21 +1,22 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/greeter>
 pkgname=hornero-greeter
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=5
 pkgdesc='HorneroOS SDDM greeter theme (Argentina footage, offline)'
 arch=('any')
 url='https://github.com/HorneroOS/greeter'
 license=('GPL-3.0-only')
-# Qt6 runtime: the theme imports QtQuick, QtQuick.Effects and QtMultimedia
-# (see Main.qml / components/*.qml); sddm provides SddmComponents.
+# Qt6 runtime: the theme imports QtQuick, QtQuick.Effects, QtMultimedia and
+# QtQuick.VirtualKeyboard (see Main.qml / components/*.qml); sddm provides
+# SddmComponents.
 # gst-plugins-good decodes the offline H.264 footage via the QtMultimedia
 # GStreamer backend.
-depends=('sddm' 'qt6-multimedia' 'qt6-declarative' 'gst-plugins-good' 'ttf-rubik-vf')
+depends=('sddm' 'qt6-multimedia' 'qt6-declarative' 'qt6-virtualkeyboard' 'gst-plugins-good' 'ttf-rubik-vf')
 optdepends=('hornero-greeter-media-base: Argentina video pack')
 # Named "$pkgname" so the checkout lands at "${srcdir}/$pkgname";
 # package() below only ever reads from there, so AUR chroot builds
 # behave exactly like local packaging/ builds.
-source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#commit=179a99bc637f0c9bc615c30bee3f926975da77ba")
+source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#commit=b756cae4b09684d644ba3da29c41bc3e8bc574b6")
 sha256sums=('SKIP')
 
 package() {
@@ -46,6 +47,10 @@ package() {
   # Layered SDDM snippet: selects this theme WITHOUT rewriting /etc/sddm.conf.
   install -Dm644 "$src/packaging/arch/hornero-greeter/hornero.conf" \
     "$pkgdir/etc/sddm.conf.d/10-hornero.conf"
+  # Virtual keyboard is opt-in because InputMethod changes SDDM's global
+  # greeter input context and is not supported by SDDM's Wayland greeter.
+  install -Dm644 "$src/packaging/arch/hornero-greeter/sddm-virtual-keyboard.conf.example" \
+    "$pkgdir/usr/share/doc/hornero-greeter/sddm-virtual-keyboard.conf.example"
   # sddm-readable permissions throughout.
   find "$pkgdir" -type d -exec chmod 0755 {} +
   find "$pkgdir" -type f -exec chmod 0644 {} +
