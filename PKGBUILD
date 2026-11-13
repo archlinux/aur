@@ -1,42 +1,53 @@
+# Maintainer: Monjaris <ziyanovruzlu750@gmail.com>
 pkgname=vexa-git
-pkgver=r163.g9688af4
+_pkgname=vexa
+pkgver=r0
 pkgrel=1
-pkgdesc="Modern cross-platform graphics framework in C++23"
-arch=('x86_64')
+pkgdesc="Modern C++23 graphics/multimedia framework on top of SDL3"
+arch=('x86_64' 'aarch64')
 url="https://github.com/monjaris/vexa"
 license=('MIT')
-
-makedepends=('git' 'xmake' 'cmake' 'ninja' 'pkgconf')
-depends=('gcc-libs')
-
+depends=('glibc' 'gcc-libs')
+makedepends=('git' 'xmake' 'cmake' 'ninja')
 provides=('vexa')
 conflicts=('vexa')
-
-source=("vexa::git+https://github.com/monjaris/vexa.git")
+options=(!debug)
+source=("git+https://github.com/monjaris/vexa.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "${_pkgname}"
+  # Use latest tag if available, otherwise commit count
+  if git describe --long --tags --abbrev=7 >/dev/null 2>&1; then
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  else
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  fi
+}
+
+prepare() {
+  cd "${_pkgname}"
+  # Pin xmake package repositories/config if needed; allow xmake to resolve deps.
+  :
+}
+
+build() {
+  cd "${_pkgname}"
+  xmake f -m release --lib=shared -y
+  xmake -y -v
+}
 
 package() {
-    cd "$srcdir/vexa"
+  cd "${_pkgname}"
 
-    # Shared library
-    install -Dm755 libvexa.so \
-        "$pkgdir/usr/lib/libvexa.so"
+  # Install library
+  install -Dm755 "libvexa.so" "${pkgdir}/usr/lib/libvexa.so"
 
-    # Public headers
-    install -d "$pkgdir/usr/include/vexa"
-    cp -r include/vexa/. "$pkgdir/usr/include/vexa/"
+  # Install headers
+  find include/vexa -type f -name '*.hpp' | while read -r hdr; do
+    install -Dm644 "$hdr" "${pkgdir}/usr/${hdr}"
+  done
 
-    # pkg-config
-    install -Dm644 packaging/pkgconfig/vexa.pc.in \
-        "$pkgdir/usr/lib/pkgconfig/vexa.pc"
-
-    sed -i \
-        -e 's|@PREFIX@|/usr|g' \
-        -e "s|@VERSION@|$pkgver|g" \
-        "$pkgdir/usr/lib/pkgconfig/vexa.pc"
-
-    # License
-    install -Dm644 LICENSE.txt \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # License
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

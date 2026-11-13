@@ -1,19 +1,21 @@
 pkgbase = vexa-git
-	pkgdesc = Modern cross-platform graphics framework in C++23
-	pkgver = r163.g9688af4
+	pkgdesc = Modern C++23 graphics/multimedia framework on top of SDL3
+	pkgver = r0
 	pkgrel = 1
 	url = https://github.com/monjaris/vexa
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = xmake
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = pkgconf
+	depends = glibc
 	depends = gcc-libs
 	provides = vexa
 	conflicts = vexa
-	source = vexa::git+https://github.com/monjaris/vexa.git
+	options = !debug
+	source = git+https://github.com/monjaris/vexa.git
 	sha256sums = SKIP
 
 pkgname = vexa-git
