@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orca-ide-bin
 _pkgname=Orca
-pkgver=1.4.256
+pkgver=1.4.258
 _electronversion=43
 pkgrel=1
 pkgdesc="ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription."
@@ -21,6 +21,7 @@ depends=(
     'python-gobject'
     'github-cli'
     'npm'
+    'vulkan-icd-loader'
 )
 options=(
     '!emptydirs'
@@ -31,13 +32,13 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
-sha256sums_aarch64=('0b823cc6265e64426cd351a66914b86a0ee1c34e45326272470c6f6a3aee9ff7')
-sha256sums_x86_64=('817b4019f492f48fabe3bb0f17f82495720280904f78d39f199c7cc275bde7a1')
+sha256sums_aarch64=('c20705a2287e86b15372d62ca9a89632de26206ed506986384cf359272062400')
+sha256sums_x86_64=('cc700aa5e15742b1ba2944e9d48a82632611d6e32ac053d1f54bbe81a5ff01ea')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -62,30 +63,38 @@ _install_icons() {
 	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
-    _check_electron_version
-    sed -i -e "
-        s/\/opt\/${_pkgname}\///g
-        s/Utility/Development/g
-    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    cat > "$(_get_app_dir)/resources/bin/${pkgname%-bin}" <<'SH'
+	bsdtar -xf "${srcdir}"/data.tar.* -C "${srcdir}"
+	local _appdir="$(_get_app_dir)"
+	[[ -d "${_appdir}/resources/bin" ]] || {
+		echo "Cannot locate upstream resources/bin in ${srcdir}" >&2
+		return 1
+	}
+	local _cli="${_appdir}/resources/bin/${pkgname%-bin}"
+	cat > "${_cli}" <<'SH'
 #!/usr/bin/env bash
 set -euo pipefail
 export ORCA_NODE_OPTIONS="${NODE_OPTIONS-}"
 export ORCA_NODE_REPL_EXTERNAL_MODULE="${NODE_REPL_EXTERNAL_MODULE-}"
 unset NODE_OPTIONS NODE_REPL_EXTERNAL_MODULE
-ELECTRON_RUN_AS_NODE=1 exec electron43 \
-    /usr/lib/orca-ide/app.asar.unpacked/out/cli/index.js "$@"
+ELECTRON_RUN_AS_NODE=1 exec "/usr/lib/electron@electronversion@/electron" \
+	/usr/lib/@appname@/app.asar.unpacked/out/cli/index.js "$@"
 SH
+	sed -i -e "
+		s/@electronversion@/${_electronversion}/g
+		s/@appname@/${pkgname%-bin}/g
+	" "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js" "${_cli}"
+	chmod 755 "${_cli}"
+	_check_electron_version
+	sed -i -e "
+		s/\/opt\/${_pkgname}\///g
+		s/Utility/Development/g
+	" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    _install_icons
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+	install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	_install_icons
+	install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+	install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
