@@ -1,7 +1,7 @@
 # Maintainer: Kercy <kercyding@users.noreply.github.com>
 
 pkgname=kocr-bin
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc='Offline OCR for images (prebuilt CLI)'
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source_aarch64=(
     "kocr-cli-${pkgver}-aarch64-linux.tar.gz::${url}/releases/download/v${pkgver}/kocr-cli-${pkgver}-aarch64-linux.tar.gz"
 )
 # The release workflow fills these from the release's .sha256 files.
-sha256sums_x86_64=('c14405fdec7bb63703acb35158f9d4c172415fb5e9456d66a3484565e92543ac')
-sha256sums_aarch64=('64359152f869f8ef320ebd544d121fdb2a3b9948265fd9e7c4dce0a33140bc06')
+sha256sums_x86_64=('6f667c7b292d3ea95156c1c421b283e7502b00bcd2d186750d3d3731618a944d')
+sha256sums_aarch64=('d7f37aac8da611fc8a40bc49117ce161e84bffce5de703ed64af67f9a7dfed1a')
 
 package() {
     install -Dm755 "${srcdir}/kocr" "${pkgdir}/usr/bin/kocr"
