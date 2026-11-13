@@ -1,6 +1,6 @@
 pkgbase = boxplayer-bin
 	pkgdesc = Unified cloud drive management, smart media library, media servers, and high-speed downloads.多网盘文件管理、媒体库、媒体服务器、AI Agent、音乐播放器和电子书阅读器，放在同一个跨平台桌面App里.
-	pkgver = 5.0.42
+	pkgver = 5.0.43
 	pkgrel = 1
 	url = https://www.xbyvideohub.com/
 	arch = aarch64
@@ -8,16 +8,16 @@ pkgbase = boxplayer-bin
 	license = GPL-3.0-only
 	depends = electron40
 	depends = nodejs
-	provides = boxplayer=5.0.42
+	provides = boxplayer=5.0.43
 	conflicts = boxplayer
 	options = !emptydirs
 	source = boxplayer.js
 	source = boxplayer.sh
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
-	source_aarch64 = boxplayer-5.0.42-aarch64.pacman::https://github.com/gaozhangmin/boxplayer/releases/download/v5.0.42/boxplayer-5.0.42-linux-aarch64.pacman
-	sha256sums_aarch64 = 652bf0020a0aa4ed34153e851be559c1ade8533546c9f24f0b1948abe18b9297
-	source_x86_64 = boxplayer-5.0.42-x86_64.pacman::https://github.com/gaozhangmin/boxplayer/releases/download/v5.0.42/boxplayer-5.0.42-linux-x64.pacman
-	sha256sums_x86_64 = dce9113828d6f59d4d6bf3d07e2ce800431369c9f6b5176d0a4e2d09c4a07afa
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = boxplayer-5.0.43-aarch64.pacman::https://github.com/gaozhangmin/boxplayer/releases/download/v5.0.43/boxplayer-5.0.43-linux-aarch64.pacman
+	sha256sums_aarch64 = b18a8e6420ee5b9e1668e2569a5044730136af643a8249414a5e91d0486c70be
+	source_x86_64 = boxplayer-5.0.43-x86_64.pacman::https://github.com/gaozhangmin/boxplayer/releases/download/v5.0.43/boxplayer-5.0.43-linux-x64.pacman
+	sha256sums_x86_64 = 7a45ac5487709843bc26ac07d8a14614b78f4e2fafa10aa870bb22df2eb89605
 
 pkgname = boxplayer-bin
