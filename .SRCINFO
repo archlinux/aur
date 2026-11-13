@@ -1,7 +1,7 @@
 pkgbase = larksuite-bin
 	pkgdesc = Collaboration suite service for office messaging, calendars, meetings, docs...
 	pkgver = 8.0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.larksuite.com
 	arch = x86_64
 	license = LicenseRef-Lark-User
@@ -19,7 +19,7 @@ pkgbase = larksuite-bin
 	replaces = bytedance-lark-dev-bin
 	options = !emptydirs
 	source = Lark-linux_x64-8.0.18.deb::lark+https://www.larksuite.com/api/package_info?platform=10
-	source = LICENSE-20260122.html::https://www.larksuite.com/en_us/user-terms-of-service
+	source = LICENSE-20261113.html::https://www.larksuite.com/en_us/user-terms-of-service
 	source = LICENSE-US-20260122.html::https://www.larksuite.com/en_us/user-terms-of-service-us
 	source = download-lark.sh
 	b2sums = 63101353a73cc9da6af300fbb0e7644bdb69551b7f9831f42e89e4d453e2352c7133e6ed2ec906eab3cce81cc24e54530b6fa8bb2ecc243c53a4c330f5fa494b

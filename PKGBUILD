@@ -4,11 +4,11 @@
 pkgname=larksuite-bin
 pkgver=8.0.18
 _pkgtyp=stable
-pkgrel=1
+pkgrel=2
 pkgdesc="Collaboration suite service for office messaging, calendars, meetings, docs..."
 arch=('x86_64')
 url="https://www.larksuite.com"
-_licensever=20260122
+_licensever=20261113
 _licensever_us=20260122
 license=('LicenseRef-Lark-User')
 depends=('gtk3' 'nspr' 'nss' 'libpulse' 'libmfx' 'alsa-lib')
