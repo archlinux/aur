@@ -1,6 +1,6 @@
 pkgbase = open-chess-git
 	pkgdesc = Open Chess with variants, AI, LAN multiplayer and puzzles (Flutter + Rust, latest git)
-	pkgver = 1.1.0.r0.ge5d22e7
+	pkgver = 1.2.0.r0.g68e7048
 	pkgrel = 1
 	url = https://github.com/RamazanBerk20/open-chess
 	arch = x86_64
