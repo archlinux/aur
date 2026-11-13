@@ -1,17 +1,43 @@
 # Maintainer: Maor Kadosh <maor@avocadosh.xyz>
 pkgname=sononym
-pkgver=1.6.15
+pkgver=1.6.16
 pkgrel=1
 pkgdesc="Audio sample manager and categorizer"
 arch=("x86_64")
 url="https://www.sononym.net"
-license=('custom:sononym')
+license=('LicenseRef-sononym')
+depends=('alsa-lib'
+         'at-spi2-core'
+         'cairo'
+         'dbus'
+         'expat'
+         'glib2'
+         'glibc'
+         'gtk3'
+         'hicolor-icon-theme'
+         'libcups'
+         'libdrm'
+         'libgcc'
+         'libstdc++'
+         'libx11'
+         'libxcb'
+         'libxcomposite'
+         'libxdamage'
+         'libxext'
+         'libxfixes'
+         'libxkbcommon'
+         'libxrandr'
+         'mesa'
+         'nspr'
+         'nss'
+         'pango'
+         'wayland')
 
 source=("https://www.sononym.net/download/sononym-${pkgver}.tar.bz2"
         "logo.svg"
         "sononym.desktop")
 
-sha256sums=('fc762af14503b0e780df45d86aa29690d3bbe78b7786557e28d07d4dab9d80f1'
+sha256sums=('033429ede65f2d444d2ce7611ca167b061aa2b03e5113fa3f30b7f828560f281'
             'a3e8e1f684398ab4fa8d209bee8b0d652fdd0a5f3553276ad1d0664f1a23960e'
             '92685f95c29a0b10a6ece3328b28efc6bfbd6b46fbfa0790c27915b936922249')
 
