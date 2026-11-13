@@ -5,15 +5,15 @@ post_install() {
   echo ""
   echo "You must add root and your user to the falcond group in order to add/remove/edit"
   echo "profiles and perform a full reboot:"
-  echo "sudo mkdir -p /usr/share/falcond/profiles/user"
+  echo "sudo mkdir -p /etc/falcond/profiles/user"
   # Create falcond group if it doesn't exist
   echo "sudo groupadd --system falcond"
   # Set ownership and permissions
-  # make that group own /usr/share/falcond/profiles/user
-  echo "sudo chown root:falcond /usr/share/falcond/profiles/user"
+  # make that group own /etc/falcond/profiles/user
+  echo "sudo chown root:falcond /etc/falcond/profiles/user"
   # chmod to 2775 (rwxrwsr-x) to allow group write and setgid for inheritance,
   # ensuring access for authorized users while maintaining security
-  echo "sudo chmod 2775 /usr/share/falcond/profiles/user"
+  echo "sudo chmod 2775 /etc/falcond/profiles/user"
   # Add root to the group
   echo "sudo usermod -aG falcond root"
   # Add the user to the group
@@ -22,4 +22,19 @@ post_install() {
   echo "The configuration file will be generated automatically on first run "
   echo "located at /etc/falcond/config.conf"
   echo ""
+}
+
+post_upgrade() {
+  if [[ $(vercmp "$2" 2.0.14-2) -lt 0 ]]; then
+    echo ""
+    echo "The user profiles directory has changed from /usr/share/falcond/profiles/user"
+    echo "to /etc/falcond/profiles/user"
+    echo ""
+    echo "Copy your existing profiles and set the folder permissions:"
+    echo "sudo mkdir -p /etc/falcond/profiles/user"
+    echo "sudo cp -r /usr/share/falcond/profiles/user/* /etc/falcond/profiles/user/"
+    echo "sudo chown root:falcond /etc/falcond/profiles/user"
+    echo "sudo rm -rf /usr/share/falcond/profiles/user"
+    echo ""
+  fi
 }
