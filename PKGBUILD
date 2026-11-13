@@ -5,7 +5,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=uptime-kuma
-pkgver=2.5.9
+pkgver=2.5.11
 pkgrel=1
 pkgdesc='A fancy self-hosted monitoring tool'
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ source=(
   "config.env"
 )
 
-b2sums=('3b7fbddd837122fc9f4eb4e1f3f3d1d1332fcba8077ed37a804f44ececbe42f32b0f7909d45a5ea1752b3b13b786be90537271a65bc7a61389756b8e0428e2af'
+b2sums=('b4a83e0e2f2ee3458aca1b18e6deb412bb04594432abce0265e29a2b96113514fe2ef27be4b9d9b8b43b5ce34875abd31860ae741ff569add69912bb2e173e32'
         'e47645e66b3df7fa7bd9882a38c438d09385994a8e8e8b4a8530add90da14cd4e0ea0fde6367f394ee460f861078d242b87db4cb2851adffdb727f63d9651684'
         'b335b1456591386937213f608b92fa4bf6e4431452f09583f030f0bb1edecdf5c6ce01b284e1bd3324738d565f38142339679cbbea18d19a0781806831214864'
         '05b89792c16d415e380dd0b3a2cec04e12406646531f0ce9d8c7aeff29cdd56b452ee4411aa07f404d2511bb315cc619567eee328b39c8b78f93ed88ddd9c7d6'
