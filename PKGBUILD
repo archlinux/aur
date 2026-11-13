@@ -1,23 +1,26 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
-# Maintainer: Christian Heusel <gromit@archlinux.org>
-# Maintainer: Justin Kromlinger <hashworks@archlinux.org>
+# Maintainer: Dan Fuhry <dan@fuhry.com>
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Contributor: Christian Heusel <gromit@archlinux.org>
+# Contributor: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Dhananjay Balan <mail@dbalan.in>
 
-pkgname=minio-client
-pkgver=2025.08.13
-_timever=T08-35-41Z
+pkgname=pgsty-silo-client
+pkgver=2026.11.12
+_timever=T00-00-00Z
 _pkgver="${pkgver//./-}${_timever//:/-}"
 pkgrel=1
 pkgdesc='Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage'
 arch=('x86_64')
-url='https://github.com/minio/mc'
+url='https://github.com/pgsty/mc'
 license=('AGPL-3.0-or-later')
 makedepends=('go' 'git')
 depends=('glibc')
 options=(!lto)
-install=minio-client.install
-source=(git+https://github.com/minio/mc.git#tag=RELEASE.${_pkgver})
-sha512sums=('96f4660f01a53f8393b1ccc91002185ccd265aa1ffd7fc98373ea0f1c6cff2c931dd447cd62e23de19975d3911c475b18fe6301789b9fc3e74d1efd0ac7a5776')
+provides=(minio-client)
+replaces=(minio-client)
+conflicts=(minio-client)
+install=pgsty-silo-client.install
+source=(git+https://github.com/pgsty/mc.git#tag=RELEASE.${_pkgver})
 
 build() {
   cd mc
@@ -40,3 +43,4 @@ package() {
   install -Dm755 mc/mc "$pkgdir/usr/bin/mcli"
 }
 # vim:set ts=2 sw=2 et:
+sha512sums=('ba3e687a09938469bf9cc7a164110e93b5f3dcd0b61cb33c6a711073914f01ce6a8bbb8fc9671693a4b1383283089212f7b5fd17bde0ceb8b3f8fd8117f2d98d')
