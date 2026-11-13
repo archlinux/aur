@@ -1,6 +1,6 @@
 pkgbase = python-llm
 	pkgdesc = Access large language models from the command-line
-	pkgver = 0.31.1
+	pkgver = 0.37.2
 	pkgrel = 1
 	url = https://github.com/simonw/llm
 	arch = any
@@ -13,16 +13,15 @@ pkgbase = python-llm
 	depends = python-click
 	depends = python-openai
 	depends = python-click-default-group
+	depends = python-httpx2
 	depends = python-condense-json
 	depends = sqlite-utils
-	depends = python-sqlite-migrate
 	depends = python-pydantic
 	depends = python-pyyaml
 	depends = python-pluggy
 	depends = python-ulid
 	depends = python-puremagic
-	depends = python-httpx
-	source = python-llm-0.31.1.tar.gz::https://github.com/simonw/llm/archive/refs/tags/0.31.1.tar.gz
-	sha256sums = c779e062b288e28d741297d16fc27a6fd7b1dbdd6659c4c83558a663c4aa11c9
+	source = python-llm-0.37.2.tar.gz::https://github.com/simonw/llm/archive/refs/tags/0.37.2.tar.gz
+	sha256sums = 7c4f434914be615ab232b53d11bef27a97c41e8f3f29dfd5648d6eaa8ac35d60
 
 pkgname = python-llm
