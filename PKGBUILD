@@ -2,7 +2,7 @@
 
 _name=vercel-oidc
 pkgname=python-$_name
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='OIDC helpers for Vercel Python applications.'
 arch=('any')
@@ -24,7 +24,13 @@ checkdepends=('python-pytest'
 optdepends=('python-pyjwt: verify'
             'python-cryptography: verify')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name-v$pkgver.tar.gz")
-sha256sums=('e5056423ef2c7269237eeaf31cb797156dd048ad7d28605d14a55c6c84408646')
+sha256sums=('02f2c6b38b0323e28d1ed0ebcd8a798698203543943c171423f5a967ce17d673')
+
+prepare() {
+  cd "vercel-py-$_name-v$pkgver/src/$_name"
+  # Use the hatchling version shipped by Arch
+  sed -i '/^requires = /s/"hatchling[<>=!~][^"]*"/"hatchling"/' pyproject.toml
+}
 
 build() {
   cd "vercel-py-$_name-v$pkgver/src/$_name"
