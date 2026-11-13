@@ -1,4 +1,4 @@
-# Maintainer: wackbyte <im@purring.fyi>
+# Maintainer: willow <willow@purring.fyi>
 
 pkgname=hare-toml
 pkgver=0.2.1
