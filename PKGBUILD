@@ -2,7 +2,7 @@
 
 _name=smithy-test
 pkgname=python-$_name
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Test-support helpers for generated Smithy clients.'
 arch=('any')
@@ -25,7 +25,7 @@ checkdepends=('python-pytest'
               'python-smithy-aws-event-stream'
               'python-smithy-json')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name/v$pkgver.tar.gz")
-sha256sums=('900dafa088bec1f931d787063f94dd71b53f50a5933275bc1de53b89d3a7713f')
+sha256sums=('a6a287dcd135b9c901f41e32afd13f4a927d30fb8d2cdc1fb65a17ff5ec39738')
 
 build() {
   cd "smithy-python-$_name-v$pkgver/packages/$_name"
