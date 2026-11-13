@@ -256,7 +256,6 @@ remove(){
 			;;
 		(runit-init)
 			rm -f /run/runit/service/alsabeep
-			rm -rf /etc/nitro/sv/alsabeep
 			;;
 		(openrc-init)
 			rc-service alsabeep stop
@@ -275,7 +274,6 @@ remove(){
 			;;
 		(nitro)
 			nsm disable alsabeep
-			rm -rf /etc/nitro/sv/alsabeep
 			;;
 		(*) unknown_init;;
 	esac
