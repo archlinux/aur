@@ -1,21 +1,21 @@
 pkgbase = hc-bin
 	pkgdesc = herdr-core (hc) — background server that keeps Herdr terminals and coding agents running (prebuilt, static)
-	pkgver = 0.1.20
+	pkgver = 0.1.21
 	pkgrel = 1
 	url = https://herdr.dev/core/
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	provides = herdr-core=0.1.20
+	provides = herdr-core=0.1.21
 	conflicts = herdr-core-bin
 	conflicts = herdr-core
 	options = !strip
 	options = !debug
-	source = LICENSE-0.1.20::https://raw.githubusercontent.com/herdrdev/herdr-core/v0.1.20/LICENSE
+	source = LICENSE-0.1.21::https://raw.githubusercontent.com/herdrdev/herdr-core/v0.1.21/LICENSE
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = hc-bin-0.1.20-x86_64.tar.gz::https://releases.herdr.dev/core/0.1.20/herdr-core-linux-x86_64.tar.gz
-	sha256sums_x86_64 = ac6b86890c451a37584620aaa438b71bc0d0bd430a2e7c1d7e095f052c414e74
-	source_aarch64 = hc-bin-0.1.20-aarch64.tar.gz::https://releases.herdr.dev/core/0.1.20/herdr-core-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 5f3037379d15cc76cfc72d2fd1a4262ea1c5b24df278bf7cfd8adcff7b914862
+	source_x86_64 = hc-bin-0.1.21-x86_64.tar.gz::https://releases.herdr.dev/core/0.1.21/herdr-core-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 78424755c10a40dde38a0bdb55c20ac19706e9ae05ed68fc2acf1fcff0d941c1
+	source_aarch64 = hc-bin-0.1.21-aarch64.tar.gz::https://releases.herdr.dev/core/0.1.21/herdr-core-linux-aarch64.tar.gz
+	sha256sums_aarch64 = e844a2bfab48a226097679d076bc83042fe57fccef5387ef802e5b24e78b529a
 
 pkgname = hc-bin

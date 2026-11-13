@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=hc-bin
-pkgver=0.1.20
+pkgver=0.1.21
 pkgrel=1
 pkgdesc="herdr-core (hc) — background server that keeps Herdr terminals and coding agents running (prebuilt, static)"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/herdrdev/herdr-cor
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://releases.herdr.dev/core/${pkgver}/${_pkg}-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://releases.herdr.dev/core/${pkgver}/${_pkg}-aarch64.tar.gz")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('ac6b86890c451a37584620aaa438b71bc0d0bd430a2e7c1d7e095f052c414e74')
-sha256sums_aarch64=('5f3037379d15cc76cfc72d2fd1a4262ea1c5b24df278bf7cfd8adcff7b914862')
+sha256sums_x86_64=('78424755c10a40dde38a0bdb55c20ac19706e9ae05ed68fc2acf1fcff0d941c1')
+sha256sums_aarch64=('e844a2bfab48a226097679d076bc83042fe57fccef5387ef802e5b24e78b529a')
 
 package() {
     install -Dm755 "${srcdir}/herdr-core" "${pkgdir}/usr/bin/herdr-core"
