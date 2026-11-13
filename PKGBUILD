@@ -1,42 +1,24 @@
-# Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
+# Maintainer: agony <27015 at riseup dot net>
+# Contributor: Gaoyang Zhang <gy@blurgy.xyz>
+
 pkgname=wakapi-bin
-pkgver=2.11.1
+pkgver=2.18.2
 pkgrel=1
-epoch=
-pkgdesc="A minimalist, self-hosted WakaTime-compatible backend for coding statistics"
-arch=("x86_64")
-url="https://github.com/muety/wakapi"
+pkgdesc='A minimalist, self-hosted WakaTime-compatible backend for coding statistics'
+arch=('x86_64')
+url='https://github.com/muety/wakapi'
 license=('GPL-3.0')
-groups=()
-depends=()
-makedepends=(
-  unzip
-)
-checkdepends=()
-optdepends=()
-provides=("wakapi")
-conflicts=("wakapi")
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=(
-  "wakapi-${pkgver}.zip::https://github.com/muety/wakapi/releases/download/${pkgver}/wakapi_linux_amd64.zip"
-  "https://raw.githubusercontent.com/muety/wakapi/master/LICENSE"
-)
-b2sums=(
-  '204e6720c62d84cca25130108a76578ce811877a97f6bf84cecf622532cddaaca503a20200863f409b58093ff3584f151a0efca7f8deb889fb413b719f03081b'
-  '70b100a6a08c18dd710d0ac9ae59acfb3fa9c6a02ff7090f59dfa94f41dd648a9f2e02fec6ba96cbe607c1ffcab3d9430366f45291649e033457ed436d9603fd'
-)
-noextract=()
-validpgpkeys=()
+provides=('wakapi')
+conflicts=('wakapi')
+source=('https://raw.githubusercontent.com/muety/wakapi/master/LICENSE')
+source_x86_64=("wakapi-${pkgver}-amd64.zip::${url}/releases/download/${pkgver}/wakapi_linux_amd64.zip")
+sha256sums=('852bcc033a46c62f99fb5ffd43b3241ba2c0c440c6034aa2114505f2c4f03c4a')
+sha256sums_x86_64=('a64e98f0a99ae4dd625ed3bff5b98e3b21130d2adc04184bfbbe35f21049273b')
 
 package() {
-  unzip -o "wakapi-${pkgver}.zip"
-  install -Dm755 "wakapi" "${pkgdir}/usr/bin/wakapi"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/wakapi/LICENSE"
-  install -Dm644 "config.yml" "${pkgdir}/etc/wakapi/config.yml"
+  install -Dm755 wakapi -t "${pkgdir}/usr/bin"
+  install -Dm644 config.yml -t "${pkgdir}/etc/wakapi"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/wakapi/LICENSE"
   mkdir -p "${pkgdir}/usr/lib/systemd/system"
   cat >"${pkgdir}/usr/lib/systemd/system/wakapi.service" <<EOF
 [Unit]
