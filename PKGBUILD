@@ -30,6 +30,7 @@ _pnpm_env() {
   export pnpm_config_store_dir="${srcdir}/pnpm-store"
   export pnpm_config_cache_dir="${srcdir}/pnpm-cache"
   export pnpm_config_state_dir="${srcdir}/pnpm-state"
+  export pnpm_config_minimum_release_age_exclude='["@usememos/*"]'
 }
 
 prepare() {
