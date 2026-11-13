@@ -1,6 +1,6 @@
 pkgbase = millennium
-	pkgdesc = Open-source modding framework for creating and managing Steam Client themes and plugins
-	pkgver = 3.6.3_beta.1
+	pkgdesc = Millennium is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead.
+	pkgver = 3.6.3
 	pkgrel = 1
 	url = https://github.com/SteamClientHomebrew/Millennium
 	install = millennium.install
@@ -15,6 +15,7 @@ pkgbase = millennium
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = rust
+	makedepends = openssl
 	makedepends = lib32-gcc-libs
 	makedepends = lib32-openssl
 	makedepends = lib32-libidn2
@@ -24,9 +25,18 @@ pkgbase = millennium
 	makedepends = lib32-libnghttp2
 	makedepends = lib32-libpsl
 	makedepends = libx11
+	makedepends = libxi
 	makedepends = libxtst
 	depends = steam
-	source = git+https://github.com/SteamClientHomebrew/Millennium.git#commit=3858d60a2081f612739f07386ceac9b79f68274b
+	provides = millennium=3.6.3
+	source = git+https://github.com/SteamClientHomebrew/Millennium.git#commit=ac5e1ad646b1d1dd76a04aecf32d9e5e41779201
 	sha256sums = SKIP
 
 pkgname = millennium
+	optdepends = millennium-x86: Required for legacy 32-bit Steam clients
+
+pkgname = millennium-x86
+	install = millennium-x86.install
+	depends = steam
+	depends = millennium=3.6.3
+	provides = 
