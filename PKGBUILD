@@ -2,7 +2,7 @@
 
 _name=smithy-aws-core
 pkgname=python-$_name
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Core Smithy components for AWS services and protocols.'
 arch=('any')
@@ -19,11 +19,12 @@ makedepends=('python-hatchling'
 checkdepends=('python-pytest'
               'python-pytest-asyncio'
               'python-freezegun'
-              'python-smithy-checksums'
+              'python-smithy-aws-checksums'
               'python-smithy-aws-event-stream'
               'python-smithy-json'
-              'python-smithy-xml')
-optdepends=('python-smithy-checksums: checksums'
+              'python-smithy-xml'
+              'python-smithy-cbor')
+optdepends=('python-smithy-aws-checksums: checksums'
 
             'python-smithy-aws-event-stream: eventstream'
 
@@ -31,7 +32,7 @@ optdepends=('python-smithy-checksums: checksums'
 
             'python-smithy-xml: xml')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name/v$pkgver.tar.gz")
-sha256sums=('0cd96c83945a2642899c066e48a803edf26edb76c7b38e63e97f2923153851a7')
+sha256sums=('64561e2b9852b3442dc75bd4186a0d847c8ad98379dde6228c910f0f52d5504f')
 
 build() {
   cd "smithy-python-$_name-v$pkgver/packages/$_name"
@@ -43,6 +44,7 @@ check() {
     -vv
     --disable-warnings
     --override-ini="addopts="
+    --import-mode=importlib
   )
   cd "smithy-python-$_name-v$pkgver/packages/$_name"
   PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests
