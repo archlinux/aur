@@ -1,6 +1,6 @@
 # Maintainer: wins1ey <wins1ey at wins1ey dot win>
 pkgname=libresplit
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Free speedrun timer with auto splitting and load removal."
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LibreSplit/LibreSplit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8b6cb54d14f327579003e9ade678205017a3dcf2e964614880b5c6040cb2590a')
+sha256sums=('f2d202e275fe9a7c2058ed65318337dae6fb1fb76e7776485c8a8361286a089b')
 
 build() {
     cd "LibreSplit-$pkgver"
