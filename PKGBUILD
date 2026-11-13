@@ -2,7 +2,7 @@
 
 _name=gradio
 pkgname=python-$_name
-pkgver=6.31.0
+pkgver=6.32.0
 pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('any')
@@ -42,7 +42,6 @@ makedepends=('python-hatchling'
              'python-hatch-fancy-pypi-readme'
              'python-build'
              'python-installer'
-             'python-wheel'
              'pnpm'
              'npm')
 checkdepends=('ipython'
@@ -78,15 +77,17 @@ optdepends=('python-authlib: oauth'
             'ruff: needed for custom component docs generation'
 
             'ffmpeg: audio/video processing')
-source=("$url/archive/refs/tags/$_name@$pkgver.tar.gz"
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$_name@$pkgver.tar.gz"
         'httpx2.patch'
         'mcp-v2.patch')
-sha256sums=('6fc3c6d3dd67549c2970a78c6543c0fe1cc2dd2de90875fd0c387585ab82ace3'
-            '77fa9298a3c52f78bf9da6ad244c3a1c73416b65a7bec1d3230c7bff774f2721'
-            '97f0e6a75156bf0cbf0c39d87537d0ff4e321f84f3eb117defe2f45dd5212c98')
+sha256sums=('5ba9320d4fe7ea9f8b0cfefe0b0ea67304bb14daf87e36c1f112b0e87d10df37'
+            'af9e93365e5837c24738ce795c8bebef11281b29360e1cddc2563ab1bd28a770'
+            'd280a15c450272f41a2224aafeec46ade2aaf278905686d787bbd2664dd56544')
 
 prepare(){
   cd "$_name-$_name-$pkgver"
+  # Use the hatchling and hatch plugin versions shipped by Arch
+  sed -i '/^requires = \[/,/\]/s/"\([^"<>=!~]*\)[<>=!~][^"]*"/"\1"/' pyproject.toml
   # Move from httpx to httpx2, needed by safehttpx 0.2.0 (backport of upstream eb54503, #13920)
   patch -Np1 -i ../httpx2.patch
   # Port the MCP integration and its tests to mcp 2 (backport of upstream ee4d8a8, #13921)
@@ -102,6 +103,8 @@ prepare(){
   sed -i 's/"server": server, "path": path}/"server": server, "path": path.split("?")[0], "query_string": path.partition("?")[2].encode()}/' test/test_routes.py
   # Python 3.14 reads files with a bigger buffer, so the file must be larger than it for the truncation to be seen
   sed -i 's/RangedFileResponse.chunk_size \* 4)/RangedFileResponse.chunk_size * 64)/' test/test_ranged_response.py
+  # @gradio/model3d lives in js/model3D: find the package folder case-insensitively (WorkflowCanvas template)
+  sed -i 's|Path(local_js_dir / name.split("/")\[1\] / "package.json")|Path(next(d for d in local_js_dir.iterdir() if d.name.lower() == name.split("/")[1]) / "package.json")|' gradio/cli/commands/components/_create_utils.py
 }
 
 build() {
@@ -138,9 +141,10 @@ check() {
     -vv
     --disable-warnings
     -p 'no:flaky'
-    # Need tokens
     --deselect test/test_buttons.py::TestOAuthButtons::test_login_button_warns_when_not_on_spaces
-    --deselect test/test_external.py
+    --deselect test/test_external.py::TestLoadInterface::test_multiple_spaces_one_private
+    --deselect test/test_external.py::TestLoadInterface::test_private_space_v4_sse_v1
+    --deselect test/test_history.py::test_oauth_is_available_only_on_a_space_with_a_login_button
   )
   cd "$_name-$_name-$pkgver"
   ulimit -n 16384

@@ -23,7 +23,7 @@ index 70df024..56809ff 100644
              warnings.warn(
                  f"IMPORTANT: You are using gradio version {current_pkg_version}, "
 diff --git a/gradio/blocks.py b/gradio/blocks.py
-index 9120a31..8c588b2 100644
+index 392f0db..8c15c41 100644
 --- a/gradio/blocks.py
 +++ b/gradio/blocks.py
 @@ -27,7 +27,7 @@ from urllib.parse import urlparse, urlunparse
@@ -53,7 +53,7 @@ index 9120a31..8c588b2 100644
                  proxy_urls.add(block_proxy_url)
              if (
                  _selectable := block_config["props"].pop("_selectable", None)
-@@ -3556,7 +3556,7 @@ Received inputs:
+@@ -3558,7 +3558,7 @@ Received inputs:
                      s = "* Running on local URL:  {}://{}:{}"
                      print(s.format(self.protocol, self.server_name, self.server_port))
  
@@ -270,7 +270,7 @@ index 15bcb3e..226d38d 100644
                  raise ValueError(f"Unsupported HTTP method: {endpoint_method}")
  
 diff --git a/gradio/mcp.py b/gradio/mcp.py
-index 2f1def0..e92774d 100644
+index c071bab..1047656 100644
 --- a/gradio/mcp.py
 +++ b/gradio/mcp.py
 @@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Any, Optional, cast
@@ -282,7 +282,7 @@ index 2f1def0..e92774d 100644
  from anyio.to_thread import run_sync
  from gradio_client import Client, handle_file
  from gradio_client.utils import Status, StatusUpdate
-@@ -510,7 +510,7 @@ class GradioMCPServer:
+@@ -533,7 +533,7 @@ class GradioMCPServer:
          Gets the route path of the MCP server based on the incoming request.
          Can be different depending on whether the request is coming from the MCP SSE transport or the HTTP transport.
          """
@@ -329,7 +329,7 @@ index 7b97b71..22d1f63 100644
          return False
      return False
 diff --git a/gradio/processing_utils.py b/gradio/processing_utils.py
-index cac2e01..86f4164 100644
+index 5fff005..7daed51 100644
 --- a/gradio/processing_utils.py
 +++ b/gradio/processing_utils.py
 @@ -20,7 +20,7 @@ from pathlib import Path
@@ -363,7 +363,7 @@ index cac2e01..86f4164 100644
          return None
      if (
          parsed_original_url.scheme,
-@@ -348,9 +348,9 @@ def lru_cache_async(maxsize: int = 128):
+@@ -356,9 +356,9 @@ def lru_cache_async(maxsize: int = 128):
  MAX_REDIRECTS = 20
  
  
@@ -375,7 +375,7 @@ index cac2e01..86f4164 100644
      without raising on non-2xx status (callers decide how to handle that)."""
      response = await sh.get(
          url, domain_whitelist=PUBLIC_HOSTNAME_WHITELIST, _transport=async_transport
-@@ -546,7 +546,7 @@ def move_files_to_cache(
+@@ -554,7 +554,7 @@ def move_files_to_cache(
          if (
              block.proxy_url
              and client_utils.is_http_url_like(payload.path)
@@ -384,7 +384,7 @@ index cac2e01..86f4164 100644
          ):
              url = f"{API_PREFIX}/proxy={payload.path}"
          elif block.proxy_url and not client_utils.is_http_url_like(payload.path):
-@@ -688,7 +688,7 @@ async def async_move_files_to_cache(
+@@ -696,7 +696,7 @@ async def async_move_files_to_cache(
          if (
              block.proxy_url
              and client_utils.is_http_url_like(payload.path)
@@ -394,7 +394,7 @@ index cac2e01..86f4164 100644
              url = f"{API_PREFIX}/proxy={payload.path}"
          elif block.proxy_url and not client_utils.is_http_url_like(payload.path):
 diff --git a/gradio/route_utils.py b/gradio/route_utils.py
-index 3872677..a161d81 100644
+index 246f9be..35ac92a 100644
 --- a/gradio/route_utils.py
 +++ b/gradio/route_utils.py
 @@ -39,7 +39,7 @@ from urllib.parse import quote, urlparse
@@ -440,7 +440,7 @@ index 3872677..a161d81 100644
  
      return root_url
  
-@@ -1487,7 +1487,7 @@ async def secure_url_stream_response(url: str, request: StarletteRequest):
+@@ -1493,7 +1493,7 @@ async def secure_url_stream_response(url: str, request: StarletteRequest):
      redirects = 0
      while True:
          try:
@@ -449,7 +449,7 @@ index 3872677..a161d81 100644
          except Exception as e:
              raise HTTPException(403, f"File not allowed: {url}.") from e
          if parsed.scheme not in ("http", "https") or not parsed.host:
-@@ -1498,8 +1498,8 @@ async def secure_url_stream_response(url: str, request: StarletteRequest):
+@@ -1504,8 +1504,8 @@ async def secure_url_stream_response(url: str, request: StarletteRequest):
              raise HTTPException(403, f"File not allowed: {url}.") from e
  
          transport = safehttpx.AsyncSecureTransport(verified_ip)
@@ -460,7 +460,7 @@ index 3872677..a161d81 100644
          )
          try:
              req = client.build_request(
-@@ -1517,7 +1517,7 @@ async def secure_url_stream_response(url: str, request: StarletteRequest):
+@@ -1523,7 +1523,7 @@ async def secure_url_stream_response(url: str, request: StarletteRequest):
              redirects += 1
              if redirects > _FILE_STREAM_MAX_REDIRECTS or not location:
                  raise HTTPException(502, f"Could not fetch file: {url}.")
@@ -470,7 +470,7 @@ index 3872677..a161d81 100644
  
          upstream_mime = upstream.headers.get("content-type", "").split(";")[0].strip()
 diff --git a/gradio/routes.py b/gradio/routes.py
-index a03f008..6bd7f25 100644
+index c6f3ad7..e24ceac 100644
 --- a/gradio/routes.py
 +++ b/gradio/routes.py
 @@ -32,7 +32,7 @@ from urllib.parse import urlencode
@@ -498,8 +498,8 @@ index a03f008..6bd7f25 100644
          max_connections=100,
          max_keepalive_connections=20,
      ),
-@@ -303,12 +303,12 @@ class App(FastAPI):
-         return self.blocks
+@@ -321,12 +321,12 @@ class App(FastAPI):
+         return await self.get_current_user(request) is not None
  
      def build_proxy_request(self, url_path):
 -        url = httpx.URL(route_utils.requote_proxied_url(url_path))
@@ -513,7 +513,7 @@ index a03f008..6bd7f25 100644
          )
          if not is_safe_url:
              raise PermissionError("This URL cannot be proxied.")
-@@ -320,7 +320,7 @@ class App(FastAPI):
+@@ -338,7 +338,7 @@ class App(FastAPI):
          if Context.token is not None:
              headers["Authorization"] = f"Bearer {Context.token}"
          # Build a plain request rather than `client.build_request` so that
@@ -522,7 +522,7 @@ index a03f008..6bd7f25 100644
          # across calls (see GHSA-2mr9-9r47-px2g).
          return url, headers
  
-@@ -1304,9 +1304,9 @@ class App(FastAPI):
+@@ -1331,9 +1331,9 @@ class App(FastAPI):
          async def reverse_proxy(url_path: str):
              # Adapted from: https://github.com/tiangolo/fastapi/issues/1788
              try:
@@ -534,7 +534,7 @@ index a03f008..6bd7f25 100644
                  )
                  url, headers = app.build_proxy_request(url_path)
                  rp_req = proxy_client.build_request("GET", url, headers=headers)
-@@ -2761,7 +2761,7 @@ demo.launch()
+@@ -2788,7 +2788,7 @@ demo.launch()
  
          """
      try:
@@ -625,7 +625,7 @@ index bd123b2..2cddfc4 100644
              ).is_success
          return head_request.is_success
 diff --git a/gradio/workflow.py b/gradio/workflow.py
-index 30a5a04..6615d6e 100644
+index ec6f059..aa2f3cd 100644
 --- a/gradio/workflow.py
 +++ b/gradio/workflow.py
 @@ -25,7 +25,7 @@ from concurrent.futures import ThreadPoolExecutor
@@ -651,16 +651,7 @@ index 30a5a04..6615d6e 100644
  )
  _SEARCH_POOL = ThreadPoolExecutor(max_workers=4, thread_name_prefix="hf-search")
  
-@@ -1254,7 +1254,7 @@ def call_model(
- 
-         if task == "depth-estimation":
-             headers = {"Authorization": f"Bearer {hf_token}"} if hf_token else {}
--            resp = httpx.post(
-+            resp = httpx2.post(
-                 f"https://api-inference.huggingface.co/models/{model_id}",
-                 headers=headers,
-                 json={"inputs": _sendable_ref(a0)},
-@@ -1289,7 +1289,7 @@ def call_model(
+@@ -1272,7 +1272,7 @@ def call_model(
          a1_missing = a1 is None or a1 == ""
          payload = _resolve(a0) if a1_missing else [_resolve(a0), _resolve(a1)]
          headers = {"Authorization": f"Bearer {hf_token}"} if hf_token else {}
@@ -670,7 +661,7 @@ index 30a5a04..6615d6e 100644
              headers=headers,
              json={"inputs": payload},
 diff --git a/requirements.txt b/requirements.txt
-index 7f2970d..76677e9 100644
+index 773e704..f07ae81 100644
 --- a/requirements.txt
 +++ b/requirements.txt
 @@ -5,7 +5,7 @@ fastapi>=0.115.2,<1.0
@@ -764,12 +755,12 @@ index 67b5383..37f3d7c 100644
          mock_response.status_code = 200
          mock_response.json.return_value = {"result": "success"}
 diff --git a/test/test_history.py b/test/test_history.py
-index cc6197f..5be6548 100644
+index 76908bb..90ecbd0 100644
 --- a/test/test_history.py
 +++ b/test/test_history.py
 @@ -17,7 +17,7 @@ from contextlib import contextmanager
  from dataclasses import dataclass
- from unittest.mock import AsyncMock, MagicMock, patch
+ from unittest.mock import AsyncMock, MagicMock, PropertyMock, patch
  
 -import httpx
 +import httpx2
@@ -843,6 +834,37 @@ index 1933cb1..07f62ae 100644
  
      def test_close_all(self):
          interface = Interface(lambda input: None, "textbox", "label")
+diff --git a/test/test_mcp.py b/test/test_mcp.py
+index 2542dfb..c8d11d8 100644
+--- a/test/test_mcp.py
++++ b/test/test_mcp.py
+@@ -5,7 +5,7 @@ import os
+ import tempfile
+ import time
+ 
+-import httpx
++import httpx2
+ import pytest
+ from mcp import ClientSession
+ from mcp.client.streamable_http import streamablehttp_client
+@@ -568,7 +568,7 @@ async def test_mcp_server_requires_login_when_auth_is_set():
+     mcp_url = f"{local_url}gradio_api/mcp/"
+ 
+     try:
+-        async with httpx.AsyncClient() as client:
++        async with httpx2.AsyncClient() as client:
+             # Unauthenticated requests are rejected, as they are for /gradio_api/run
+             assert (
+                 await client.post(
+@@ -628,7 +628,7 @@ async def test_mcp_server_respects_auth_dependency():
+     mcp_url = f"{local_url}gradio_api/mcp/"
+ 
+     try:
+-        async with httpx.AsyncClient(timeout=30) as client:
++        async with httpx2.AsyncClient(timeout=30) as client:
+             assert (await client.get(f"{mcp_url}schema")).status_code == 401
+             assert (
+                 await call_tool_over_http(client, mcp_url, "greet", {"greeting": "Hi"})
 diff --git a/test/test_node_proxy.py b/test/test_node_proxy.py
 index 3e17f15..0eab1ea 100644
 --- a/test/test_node_proxy.py
@@ -893,7 +915,7 @@ index 3e17f15..0eab1ea 100644
                  except OSError:
                      pass
 diff --git a/test/test_processing_utils.py b/test/test_processing_utils.py
-index 82d60bc..4aab38d 100644
+index 520ce60..383888f 100644
 --- a/test/test_processing_utils.py
 +++ b/test/test_processing_utils.py
 @@ -10,7 +10,7 @@ from contextlib import contextmanager
@@ -905,7 +927,7 @@ index 82d60bc..4aab38d 100644
  import numpy as np
  import pytest
  from gradio_client.client import Endpoint
-@@ -1154,8 +1154,8 @@ async def test_async_get_private_request_fail():
+@@ -1207,8 +1207,8 @@ async def test_async_get_private_request_fail():
  
  @pytest.mark.asyncio
  async def test_async_get_redirect_without_location_returns_response(monkeypatch):
