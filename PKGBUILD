@@ -6,7 +6,7 @@
 # Contributor: Adam Rustler
 pkgname=prepros-bin
 _pkgname=Prepros
-pkgver=7.40.4
+pkgver=7.40.5
 _electronversion=25
 pkgrel=1
 pkgdesc="Prepros compiles your files, transpiles your JavaScript, reloads your browsers and makes it really easy to develop & test your websites so you can focus on making them perfect.(Prebuilt version.Use system-wide electron)"
@@ -14,11 +14,9 @@ arch=('x86_64')
 url="https://prepros.io"
 license=('LicenseRef-custom')
 depends=(
-    "electron${_electronversion}"
-    'perl'
+    "electron${_electronversion}-bin"
+    'nodejs'
     'ruby'
-    'libva>=2.20.0'
-    '7zip'
 )
 options=('!strip')
 source=(
@@ -26,9 +24,9 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2e87baf441c850068f90970befc54af9c33d66513b6f172fe417102522c5b0b0'
+sha256sums=('30df902209295db150d3325f747ee0b5ae3e3a7e508aa7797fb949539fdc00da'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
