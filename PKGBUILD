@@ -1,6 +1,6 @@
 # Maintainer: Alfonso de la Guarda <alfonsodg at gmail dot com>
 pkgname=neomarker-bin
-pkgver=2026.11.16
+pkgver=2026.11.17
 pkgrel=1
 pkgdesc="Markdown editor with Mermaid 12, batch PDF export, dark mode and security fixes (prebuilt binary)"
 arch=('x86_64')
@@ -20,8 +20,8 @@ optdepends=(
 provides=('neomarker')
 conflicts=('neomarker' 'neomarker-git' 'marker' 'marker-enhanced-bin' 'marker-enhanced-git')
 replaces=('marker-enhanced-bin')
-source=("https://github.com/alfonsodg/NeoMarker/releases/download/v${pkgver}/neomarker-2026.11.16-x86_64.tar.gz")
-sha256sums=('18ab2d777a19e610353c876773e82119f0f3c756ff13835b85d598fc0f3c7892')
+source=("https://github.com/alfonsodg/NeoMarker/releases/download/v${pkgver}/neomarker-2026.11.17-x86_64.tar.gz")
+sha256sums=('16b3f10bab9cc8e0b1d20607fac40fd4b4c66be713e1d5cd802723d76e1d2d04')
 
 package() {
   cp -a "$srcdir/usr" "$pkgdir/usr"
