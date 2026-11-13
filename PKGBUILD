@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph.fink@gmail.com>
 
 pkgname=python-cartogram
@@ -6,7 +9,7 @@ pkgdesc="A Python library to compute continuous cartograms"
 url="https://python-cartogram.readthedocs.io/"
 
 pkgver=1.0.2
-pkgrel=1
+pkgrel=4
 
 arch=("any")
 license=("GPL-3.0-or-later")
@@ -33,7 +36,9 @@ checkdepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=("065c30ac4ff6ac893da47e5add166d98a981a590cfe0b1031f34a25c9092511c5b256c18998a9f4402f4b60564277e7bf601f990bda889b83fe5ac57f0eda435")
+b2sums=(
+    "065c30ac4ff6ac893da47e5add166d98a981a590cfe0b1031f34a25c9092511c5b256c18998a9f4402f4b60564277e7bf601f990bda889b83fe5ac57f0eda435"
+)
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
