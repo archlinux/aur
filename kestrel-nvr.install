@@ -1,0 +1,22 @@
+#!/bin/sh
+# What to do next, after installing or updating kestrel-nvr
+
+post_install() {
+  cat <<'EOF'
+Run `kestrel` for the desktop app, or `kestrel serve` for the server alone.
+For an always-on server, turn on one of its services:
+  as yourself:            systemctl --user enable --now kestrel-nvr
+  as the kestrel user:    sudo systemctl enable --now kestrel-nvr
+Then pair a device: kestrel pair (sudo -u kestrel -H kestrel pair for the
+system service).
+EOF
+}
+
+post_upgrade() {
+  # Every client must match the server's version: restart a running server
+  # so it serves the new one
+  cat <<'EOF'
+Restart a running Kestrel server so it serves this version:
+  systemctl --user restart kestrel-nvr, or sudo systemctl restart kestrel-nvr
+EOF
+}

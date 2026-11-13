@@ -1,0 +1,27 @@
+# Kestrel's server for a box with nobody logged in, as its own `kestrel`
+# user, keeping everything in /var/lib/kestrel-nvr: the config and state
+# folders in their usual places under that home, and recordings in the state
+# folder. Pair a device with `sudo -u kestrel -H kestrel pair`.
+#
+# Off until you turn it on: sudo systemctl enable --now kestrel-nvr
+[Unit]
+Description=Kestrel server
+Documentation=https://kestrel.timmo.dev/running/
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=kestrel
+Group=kestrel
+StateDirectory=kestrel-nvr
+Environment=HOME=/var/lib/kestrel-nvr
+ExecStart=/usr/bin/kestrel serve
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

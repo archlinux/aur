@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Kestrel
+Comment=Your cameras, recordings and events in one place
+Exec=/usr/bin/kestrel
+Icon=kestrel-nvr
+Type=Application
+Categories=AudioVideo;Video;
+Terminal=false
+StartupNotify=false
+StartupWMClass=Kestrel
+Keywords=camera;cctv;nvr;dvr;recorder;

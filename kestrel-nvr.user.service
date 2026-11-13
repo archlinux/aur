@@ -1,0 +1,17 @@
+# Kestrel's server as your own user, with your own config and recordings,
+# while you're logged in. Don't run it beside the desktop app, which runs its
+# own server on the same port.
+#
+# Off until you turn it on: systemctl --user enable --now kestrel-nvr
+[Unit]
+Description=Kestrel server
+Documentation=https://kestrel.timmo.dev/running/
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/kestrel serve
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

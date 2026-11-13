@@ -1,0 +1,2 @@
+# The user the system service runs Kestrel's server as
+u kestrel - "Kestrel server" /var/lib/kestrel-nvr
