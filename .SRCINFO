@@ -1,0 +1,26 @@
+pkgbase = homelab-remote
+	pkgdesc = Wake, shut down and work on your home PC from a laptop and phone over Tailscale (TUI setup wizard)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Vniverse77/homelab-remote
+	arch = any
+	license = MIT
+	depends = bash
+	depends = openssh
+	depends = python
+	depends = util-linux
+	depends = iproute2
+	optdepends = tailscale: required for every remote connection
+	optdepends = wakeonlan: pc on (wake the server)
+	optdepends = mosh: dev sessions that survive bad connections
+	optdepends = gum: nicer setup wizard
+	optdepends = qrencode: QR code for linking the phone
+	optdepends = ffmpeg: camera stream
+	optdepends = v4l-utils: camera format detection
+	optdepends = mediamtx: camera RTSP server (AUR)
+	optdepends = ufw: firewall rules for the camera port
+	conflicts = profile-cleaner
+	source = homelab-remote-0.2.1.tar.gz::https://github.com/Vniverse77/homelab-remote/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 213118d00fb74f4e037686afac0b5711aa91f340b9dc15df36d9e37173adcb0b
+
+pkgname = homelab-remote
