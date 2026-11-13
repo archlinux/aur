@@ -2,19 +2,18 @@
 # Packaged by Scuffed QA. Alpha and rc builds; the stable package is scuffed-stat-tracker-bin. Installs the prebuilt release tarball as is (no compile).
 
 pkgname=scuffed-stat-tracker-alpha-bin
-_tag=stat-tracker-v0.6.0-alpha.2.3
-pkgver=0.6.0alpha2.3
+_tag=stat-tracker-v0.6.0-alpha.3
+pkgver=0.6.0alpha3
 pkgrel=1
 pkgdesc="Overwatch personal stats tracker for Scuffed Crew (capture daemon and desktop app), alpha builds"
 arch=('x86_64')
 url="https://github.com/FrozenTear/scuffed-crew"
 license=('MIT' 'Apache-2.0')
 depends=('glibc' 'libgcc' 'libstdc++' 'zlib' 'bash' 'openssl' 'mesa' 'wayland' 'gtk3' 'glib2' 'gdk-pixbuf2'
-         'libx11' 'libxtst' 'libxinerama' 'libxkbcommon' 'xdg-desktop-portal')
+         'libx11' 'libxtst' 'libxinerama' 'libxkbcommon' 'xdg-desktop-portal' 'libayatana-appindicator')
 optdepends=(
   'wl-clipboard: Copy buttons on Wayland'
   'xclip: Copy buttons on X11'
-  'libayatana-appindicator: tray icon'
   'xdg-desktop-portal-kde: screen capture on KDE Wayland'
   'xdg-desktop-portal-gnome: screen capture on niri and GNOME'
 )
@@ -29,7 +28,7 @@ source_x86_64=("scuffed-stat-tracker-${pkgver}.tar.gz::${url}/releases/download/
 sha256sums=('976824c0c583ba2066d72eb1d5215961e7066cfc61dd7e09b700a6b446c49c15'
             'f06096d72781572a2e19344e81d3a235f99b495480d2f2f8b3be703bb286dfef'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('825eece81494e8aa3024a07235dc72e808ef1f704f4a5e27841ce262aea72419')
+sha256sums_x86_64=('a082a861f818ca8c12c4898b65a4326aae29135aa521b64670945d46b64ecf93')
 
 package() {
   cd "${srcdir}/scuffed-stat-tracker-linux-${CARCH}"
