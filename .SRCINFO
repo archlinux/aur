@@ -1,14 +1,14 @@
 pkgbase = dotnet-build-deps-10.0
 	pkgdesc = Build dependencies of the .NET packages from the source-built .NET 10.0 of Arch Linux (meta package)
 	pkgver = 10.0.14.sdk114
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dotnet/dotnet
 	arch = x86_64
 	license = 0BSD
 	depends = dotnet-sdk-10.0=10.0.14.sdk114
 	depends = dotnet-source-built-artifacts-10.0=10.0.14.sdk114
-	depends = dotnet-source-build-reference-packages=10.0.114
-	depends = dotnet-system-io-ports-native=10.0.14
+	depends = dotnet-source-build-reference-packages-10.0=10.0.114
+	depends = dotnet-system-io-ports-native-10.0=10.0.14
 	conflicts = dotnet-runtime-bin
 	conflicts = dotnet-runtime-10.0-bin
 	conflicts = dotnet-sdk-bin
