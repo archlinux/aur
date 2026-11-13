@@ -1,0 +1,21 @@
+pkgbase = shelltrace-git
+	pkgdesc = Linux command impact inspector (Rust CLI and Qt6 GUI)
+	pkgver = 0.3.2.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/hamdyaea/ShellTrace
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	makedepends = cmake
+	makedepends = gcc
+	depends = qt6-base
+	depends = strace
+	depends = bubblewrap
+	provides = shelltrace
+	conflicts = shelltrace
+	source = ShellTrace::git+https://github.com/hamdyaea/ShellTrace.git
+	sha256sums = SKIP
+
+pkgname = shelltrace-git
