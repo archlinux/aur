@@ -2,7 +2,7 @@
 
 _pkgbase=ae-code
 pkgname="$_pkgbase"
-pkgver=2026.11.13.1
+pkgver=2026.11.13.2
 pkgrel=1
 pkgdesc='Desktop GUI for coding agents (fork of T3 Code), release'
 arch=('x86_64')
@@ -48,7 +48,7 @@ makedepends=('cargo' 'imagemagick' 'nodejs' 'npm' 'pkgconf')
 conflicts=("$_pkgbase-bin" "$_pkgbase-git")
 options=('!debug' '!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d7667517a89ff39a2740c7361e7bfb7c7865765dcf5995d4970f6c35070076c6')
+sha256sums=('cf5f4c1e787e9407ef785d678c091a6454248e8ce4da4ffe4ffdb12a115564bc')
 
 build() {
 	cd "$_pkgbase-$pkgver"
