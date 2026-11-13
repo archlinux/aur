@@ -3,7 +3,7 @@ pkgname=lenovo-legion-linux-toolkit-release
 srcname=LenovoLegion
 # Development package of the current state of the repository (the release package is lenovo-legion-linux-toolkit-release
 # in the AUR, built from the tag release/<version>), version by pkgver(): <last release>.r<commits>.g<commit>
-pkgver=2.3.4
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Lenovo Legion Linux Toolkit - for Lenovo Legion laptops"
 arch=("x86_64")
