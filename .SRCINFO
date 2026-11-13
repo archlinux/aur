@@ -1,0 +1,24 @@
+pkgbase = chromecast-sink-git
+	pkgdesc = Use Google Chromecast and Nest devices as a PipeWire audio output
+	pkgver = 0.0.1.r2.g0d1fdae
+	pkgrel = 1
+	url = https://github.com/Nerahikada/chromecast-sink
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = libpipewire
+	depends = opus
+	depends = pipewire
+	optdepends = wireplumber: PipeWire session management when not provided by the desktop
+	provides = chromecast-sink=0.0.1.r2.g0d1fdae
+	conflicts = chromecast-sink
+	options = !lto
+	options = !debug
+	source = chromecast-sink::git+https://github.com/Nerahikada/chromecast-sink.git#branch=master
+	sha256sums = SKIP
+
+pkgname = chromecast-sink-git

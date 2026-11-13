@@ -1,0 +1,6 @@
+/chromecast-sink/
+/src/
+/pkg/
+/*.pkg.tar.*
+/*.src.tar.*
+/*.log
