@@ -1,9 +1,9 @@
 # Maintainer: lubuoren <luboren123@outlook.com>
 
 pkgname=wowtype
-pkgver=0.3.10
+pkgver=0.3.12
 pkgrel=1
-_dataver=2026.10.31.2
+_dataver=2026.11.11.3
 _datafile="wowtype-data-rime-ice-$_dataver.tar.gz"
 pkgdesc='WeType 风格的拼音输入法：fcitx5 插件 + Rust 引擎（长句、半成品输入、纠错、学习）'
 arch=('x86_64')
@@ -33,8 +33,8 @@ source=(
 noextract=("$_datafile")
 sha256sums=(
   'SKIP'
-  'e3c031eae278d49b5bfa83dc8c3509a1f367c04f8d11e5f24625483249a3b534'
-  '29df09b0e3a67ef2131393cf8203ae28b272ba8ac4ea1ecd2cc2d57f0f0d7616'
+  'ea07c3e8cf66cbf7d0ebc23ab95cc96384e6f3808fd0cdee1f87905322e51d7c'
+  '20dc3a5c30e74fdc77aedc7de3b2e977610118f7abf3443e32c9deab4343daa6'
   '28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5'
   'e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96'
 )
@@ -73,7 +73,7 @@ check() {
   cd "$srcdir/$pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR="$srcdir/$pkgname/target"
-  cargo test --frozen -p wowtype-core --lib
+  cargo test --frozen -p wowtype-core --lib --test session_keys
 }
 
 package() {

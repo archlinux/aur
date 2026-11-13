@@ -1,6 +1,6 @@
 pkgbase = wowtype
 	pkgdesc = WeType 风格的拼音输入法：fcitx5 插件 + Rust 引擎（长句、半成品输入、纠错、学习）
-	pkgver = 0.3.10
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = https://github.com/Gloridust/WowType
 	install = wowtype.install
@@ -26,16 +26,16 @@ pkgbase = wowtype
 	optdepends = noto-fonts-emoji: 候选里的彩色 emoji
 	optdepends = curl: 互译模式与首次使用离线语音时下载模型
 	optdepends = unzip: 解压离线语音模型
-	noextract = wowtype-data-rime-ice-2026.10.31.2.tar.gz
+	noextract = wowtype-data-rime-ice-2026.11.11.3.tar.gz
 	options = !lto
-	source = wowtype::git+https://github.com/Gloridust/WowType.git#tag=v0.3.10
-	source = wowtype-data-rime-ice-2026.10.31.2.tar.gz::https://github.com/Gloridust/WowType/releases/download/v0.3.10/wowtype-data-rime-ice-2026.10.31.2.tar.gz
+	source = wowtype::git+https://github.com/Gloridust/WowType.git#tag=v0.3.12
+	source = wowtype-data-rime-ice-2026.11.11.3.tar.gz::https://github.com/Gloridust/WowType/releases/download/v0.3.12/wowtype-data-rime-ice-2026.11.11.3.tar.gz
 	source = wowtype-config-pacman.patch
 	source = CC-BY-SA-4.0.txt::https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt
 	source = Unicode-3.0.txt::https://www.unicode.org/license.txt
 	sha256sums = SKIP
-	sha256sums = e3c031eae278d49b5bfa83dc8c3509a1f367c04f8d11e5f24625483249a3b534
-	sha256sums = 29df09b0e3a67ef2131393cf8203ae28b272ba8ac4ea1ecd2cc2d57f0f0d7616
+	sha256sums = ea07c3e8cf66cbf7d0ebc23ab95cc96384e6f3808fd0cdee1f87905322e51d7c
+	sha256sums = 20dc3a5c30e74fdc77aedc7de3b2e977610118f7abf3443e32c9deab4343daa6
 	sha256sums = 28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5
 	sha256sums = e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96
 
