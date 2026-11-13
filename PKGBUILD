@@ -11,7 +11,7 @@ optdepends=('libva-mesa-driver: VAAPI decoding on AMD'
             'intel-media-driver: VAAPI decoding on Intel'
             'nvidia-utils: NVDEC decoding on NVIDIA')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a5f2d5a15970c1c889d3a8a7c12af2542354ca6cb597fba88dbb735d49d20074')
+sha256sums=('5043081ca4d073907a53acf555e1b32f3b63f587f306f982f0d7b19ef134460f')
 
 build() {
   cd "$pkgname-$pkgver"

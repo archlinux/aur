@@ -14,6 +14,6 @@ pkgbase = switch-frame-tap
 	optdepends = intel-media-driver: VAAPI decoding on Intel
 	optdepends = nvidia-utils: NVDEC decoding on NVIDIA
 	source = switch-frame-tap-0.7.22.tar.gz::https://github.com/TomasUribe/switch-frame-tap/archive/refs/tags/v0.7.22.tar.gz
-	sha256sums = a5f2d5a15970c1c889d3a8a7c12af2542354ca6cb597fba88dbb735d49d20074
+	sha256sums = 5043081ca4d073907a53acf555e1b32f3b63f587f306f982f0d7b19ef134460f
 
 pkgname = switch-frame-tap
