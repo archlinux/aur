@@ -2,23 +2,19 @@
 
 pkgbase=pappl-retrofit
 pkgname=($pkgbase 'legacy-printer-app')
-pkgver=1.0b2
-pkgrel=2
+pkgver=1.0b3
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/OpenPrinting/pappl-retrofit"
 license=('Apache-2.0')
 makedepends=('git' 'libcups' 'libcupsfilters' 'libppd' 'pappl')
-# the latest release doesn't build against recent CUPS anymore, so pick a commit close to it for the time being
-_commit=eebb36724a6296d1e6491440f954e8fd8b816839
-source=("${pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz")
-#source=("${url}/releases/download/${pkgver}/${pkgbase}-${pkgver}.tar.xz")
-b2sums=('5095b908b13988b04a46cb0bca696051018982d9400cde186dc5cb28bf99cdcb04b6f3c910af3225c2b3cc5cb249af6a163a618aaab2cbd7b416b770359fa30e')
+source=("${url}/releases/download/${pkgver}/${pkgbase}-${pkgver}.tar.gz")
+b2sums=('59cb24c305e3d60bf060b077d40db293e484e7c6f4d9c90deea53ab44797f27722880e95c32afc7a29f06b28c80bf16dd6179cdfc7c2a8a7b18aee85b2b4216d')
 
 prepare() {
-  mv ${pkgbase}-{${_commit},${pkgver}}
   cd ${pkgbase}-${pkgver}
   ./autogen.sh
-  ./configure --prefix=/usr --sbindir=/usr/bin --localstatedir=/var --enable-legacy-printer-app-as-daemon
+  ./configure --enable-year2038 --prefix=/usr --sbindir=/usr/bin --localstatedir=/var --enable-legacy-printer-app-as-daemon
 }
 
 build() {

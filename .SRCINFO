@@ -1,6 +1,6 @@
 pkgbase = pappl-retrofit
-	pkgver = 1.0b2
-	pkgrel = 2
+	pkgver = 1.0b3
+	pkgrel = 1
 	url = https://github.com/OpenPrinting/pappl-retrofit
 	arch = x86_64
 	arch = aarch64
@@ -10,8 +10,8 @@ pkgbase = pappl-retrofit
 	makedepends = libcupsfilters
 	makedepends = libppd
 	makedepends = pappl
-	source = pappl-retrofit-eebb36724a6296d1e6491440f954e8fd8b816839.tar.gz::https://github.com/OpenPrinting/pappl-retrofit/archive/eebb36724a6296d1e6491440f954e8fd8b816839.tar.gz
-	b2sums = 5095b908b13988b04a46cb0bca696051018982d9400cde186dc5cb28bf99cdcb04b6f3c910af3225c2b3cc5cb249af6a163a618aaab2cbd7b416b770359fa30e
+	source = https://github.com/OpenPrinting/pappl-retrofit/releases/download/1.0b3/pappl-retrofit-1.0b3.tar.gz
+	b2sums = 59cb24c305e3d60bf060b077d40db293e484e7c6f4d9c90deea53ab44797f27722880e95c32afc7a29f06b28c80bf16dd6179cdfc7c2a8a7b18aee85b2b4216d
 
 pkgname = pappl-retrofit
 	pkgdesc = PPD/Classic CUPS driver retro-fit Printer Application Library
