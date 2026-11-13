@@ -1,8 +1,8 @@
 pkgbase = kakemono-bin
 	pkgdesc = Wallpaper manager with a tray app, a picker and many image sources
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
-	url = https://github.com/RielJ/kakemono
+	url = https://kakemono.rielj.xyz
 	arch = x86_64
 	license = MIT
 	depends = gtk3
@@ -12,9 +12,9 @@ pkgbase = kakemono-bin
 	conflicts = kakemono
 	options = !debug
 	options = !strip
-	source = kakemono-0.3.1.deb::https://github.com/RielJ/kakemono/releases/download/v0.3.1/kakemono-linux-x64.deb
-	source = LICENSE-0.3.1::https://raw.githubusercontent.com/RielJ/kakemono/v0.3.1/LICENSE
-	sha256sums = e19d6ed08edcc13255ba7004cc6a13498cf20dbd6c4f10811b4d9f47ed39926a
+	source = kakemono-0.3.2.deb::https://kakemono.rielj.xyz/releases/download/v0.3.2/kakemono-linux-x64.deb
+	source = LICENSE-0.3.2::https://raw.githubusercontent.com/RielJ/kakemono/v0.3.2/LICENSE
+	sha256sums = dea95573004906f98f49798313a64dffc7c4aafc012103fc4c4c6678c2274497
 	sha256sums = d5b406f9747a94536e794ad30ed830fad4831051d2d6294cac6462d32c3d3864
 
 pkgname = kakemono-bin
