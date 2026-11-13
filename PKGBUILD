@@ -5,7 +5,7 @@
 # $pkgver-$_tarball: two releases otherwise land on the same file name in a
 # local build directory and the second build fails on a stale checksum.
 pkgname=thinkwatch-core-bin
-pkgver=0.94.0
+pkgver=0.96.0
 pkgrel=1
 pkgdesc="Gateway engine for Claude Code, Codex and other AI clients (server build of twcore)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!debug')
 depends=('glibc' 'gcc-libs')
 _tarball="twcore-x86_64-unknown-linux-gnu.tar.gz"
 source=("$pkgver-$_tarball::https://github.com/ThinkWatchProject/ThinkWatch-Core/releases/download/v$pkgver/$_tarball")
-sha256sums=('6c3f5eebfcff6bead3fd8decb61e96d20daa010f24efa0abc9346ef174f9ed89')
+sha256sums=('47447c569456dbc101a5114c44de52ebd3660e3c3f0a6fd4ea68c830c1929ff7')
 
 package() {
   cd "$srcdir/twcore-x86_64-unknown-linux-gnu"
