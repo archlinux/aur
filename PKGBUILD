@@ -2,7 +2,7 @@
 
 _pkgname="matlab-mpm-input"
 pkgname="${_pkgname}-git"
-pkgver=R2026b+r161.gdd2f09b+R2017b
+pkgver=R2026b+r167.gcf86745+R2017b
 _latest="${pkgver%%+*}"
 _oldest="${pkgver##*+}"
 _pkgver="${_latest}+${_oldest}"
@@ -66,10 +66,7 @@ pkgver() {
 package() {
   cd "${srcdir}/${_pkgsrc}/mpm-input-files"
   for _release in "${_releases[@]}"; do
-    _input="${_release}/mpm_input_${_release,,}.txt"
-    [[ -f "${_input}" ]] || _input="${_release}/mpm_input_${_release}.txt"
-
-    install -vDm644 "${_input}" \
+    install -vDm644 "${_release}/mpm-input-${_release,,}.txt" \
       "${pkgdir}/usr/share/matlab-mpm/input/${_release}.txt"
   done
 
