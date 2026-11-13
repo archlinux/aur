@@ -5,7 +5,7 @@ _name=materialyoucolor-python
 pkgver=3.0.4
 pkgrel=1
 pkgdesc="Material You color algorithms for Python!"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/T-Dynamos/materialyoucolor-python"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'python' 'python-pillow' 'pybind11>=2.11.0')

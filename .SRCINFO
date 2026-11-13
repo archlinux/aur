@@ -3,7 +3,7 @@ pkgbase = python-materialyoucolor
 	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/T-Dynamos/materialyoucolor-python
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-setuptools>=61.0.0
