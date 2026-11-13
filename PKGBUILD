@@ -3,14 +3,14 @@
 
 pkgname=python313
 pkgver=3.13.18
-pkgrel=1
+pkgrel=2
 _pybasever=3.13
 _pymajver=3
 pkgdesc="Major release 3.13 of the Python programming language"
 arch=('i686' 'x86_64' 'aarch64')
 license=('PSF-2.0')
 url="https://www.python.org/"
-depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib' 'tzdata')
+depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl-3' 'zlib' 'tzdata')
 makedepends=('bluez-libs' 'mpdecimal' 'gdb')
 optdepends=('sqlite' 'mpdecimal: for decimal' 'xz: for lzma' 'tk: for tkinter')
 source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
@@ -39,6 +39,7 @@ build() {
   export CFLAGS_NODIST="${CFLAGS_NODIST} -fno-semantic-interposition"
   export LDFLAGS_NODIST="${LDFLAGS_NODIST} -fno-semantic-interposition"
 
+  PKG_CONFIG_PATH=/usr/lib/openssl-3/pkgconfig \
   ./configure --prefix=/usr \
               --enable-shared \
               --with-computed-gotos \
