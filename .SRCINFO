@@ -3,7 +3,6 @@ pkgbase = lttng-tools
 	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://lttng.org/
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	license = LGPL2.1

@@ -8,7 +8,7 @@ pkgname=lttng-tools
 pkgver=2.16.0
 pkgrel=1
 pkgdesc='LTTng tracing control tools'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://lttng.org/'
 license=('GPL2' 'LGPL2.1')
 depends=('popt' 'liburcu>=0.7.2' "lttng-ust>=${pkgver%.*}.0" 'linux>=2.6.27' 'libxml2>=2.7.6')
