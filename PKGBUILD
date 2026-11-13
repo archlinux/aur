@@ -2,9 +2,9 @@
 pkgname=horizon-launcher-bin
 # Upstream reset 0.17.0 to 0.2.x with the launcher@ tag scheme.
 epoch=1
-pkgver=0.2.62
+pkgver=0.2.63
 pkgrel=1
-_tag=launcher@0.2.62
+_tag=launcher@0.2.63
 pkgdesc='Horizon is Minecraft Java Edition rewritten in Rust'
 arch=('x86_64')
 url='https://github.com/horizon-rust/horizon'
@@ -29,7 +29,7 @@ source=("horizon-launcher-${pkgver}-linux-x86_64.tar.gz::${url}/releases/downloa
         'OFL-Geist.txt'
         'LICENSE')
 sha256sums=(
-    '69c7ac25593d7137c8fc70a779dc137535bfc8426396778aada3c75fa50cdde1'
+    'bc19d6ce2c406d10092714f2107cbabf26b6282a4331eb0694e4e4f9f97331f6'
     '7f92a543eba884aa862eca36639790437f2d1bc41ae2d24b0556dd6aa2cc3287'
     'fb11867fdefb560a12d0edd06555ded73c520e7e72cf6f3959a074a4a13d3c90'
     '2eb5834d6d0b1189bef3f3f73139ca2fee7f5c837a4aaeb0df744005303b6a54'
