@@ -9,7 +9,7 @@
 # branch, and pkgver() below derives the version from git, so no checksums or
 # `updpkgsums` step is needed.
 pkgname=deadband-git
-pkgver=r181.370d3a8
+pkgver=0.2.0dev
 pkgrel=1
 pkgdesc="Configure game controller lighting, sticks, triggers and buttons on Linux"
 arch=('any')
@@ -49,6 +49,7 @@ package() {
   cp -r vendors "$share"/
   find "$share/vendors" -name '__pycache__' -type d -prune -exec rm -rf {} +
   cp -r qml "$share"/
+  cp -r translations "$share"/
   # media-key descriptor fixup, installed by the user with udev-hid-bpf (Manual)
   install -Dm644 -t "$share/hid-bpf" packaging/hid-bpf/*.bpf.o
   install -d "$share/assets"
