@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop-git
 _pkgname='NVM Desktop'
-pkgver=4.5.0.r0.g809e35c
+pkgver=4.5.2.r0.ge611adb
 _nodeversion=24
 pkgrel=1
 pkgdesc="A version management desktop client for the Nodejs."
@@ -31,7 +31,8 @@ source=(
     "${pkgname%-git}.git::git+${url}"
     "nvmd.git::git+${_nvmdurl}"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 _get_project_dir() {
     find "${srcdir}" -name "src-tauri" -type d ! -path "*/node_modules/*" 2>/dev/null | \
         while read -r tauri_dir; do
@@ -44,10 +45,10 @@ _get_project_dir() {
         done
 }
 pkgver() {
-    cd "$(_get_project_dir)"
-    set -o pipefail
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$(_get_project_dir)" || return 1
+	local _t=$(git tag --list --sort=-v:refname | grep -m1 -E '^v?[0-9]+(\.[0-9]+)+$' || :)
+	local _n=$(git rev-list --count "${_t:+$_t..}HEAD") _s=$(git rev-parse --short=7 HEAD)
+	[[ -n $_t ]] && printf '%s.r%s.g%s\n' "${_t#v}" "$_n" "$_s" || printf 'r%s.%s\n' "$_n" "$_s"
 }
 _get_nvmd_dir() {
     find "${srcdir}" -type d -name "crates" \
