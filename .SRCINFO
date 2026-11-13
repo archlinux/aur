@@ -1,7 +1,7 @@
 pkgbase = mbtiles
 	pkgdesc = Examine, copy, validate vector tile sets
 	pkgver = 0.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://maplibre.org/martin/mbtiles.html
 	arch = x86_64
 	arch = i686

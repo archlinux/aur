@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph.fink@gmail.com>
 
 pkgname="mbtiles"
@@ -5,7 +8,7 @@ pkgdesc="Examine, copy, validate vector tile sets"
 url="https://maplibre.org/martin/mbtiles.html"
 
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 
 _pkgbase=martin
 _git_organisation=maplibre
