@@ -6,9 +6,9 @@
 #   1. 下载上游 OneMessage2.0.deb, 从 deb 的 control 信息中读取版本号
 #   2. 与 PKGBUILD 中的 pkgver 比较, 有新版本时更新 pkgver / pkgrel / sha256sums
 #   3. 重新生成 .SRCINFO
-#   4. 提交更改, 可选推送到 AUR
+#   4. 提交更改并推送到 AUR (默认), 可用 --no-push 仅本地提交
 #
-# 用法: ./update.sh [--push] [--check] [--build] [--help]
+# 用法: ./update.sh [--no-push] [--check] [--build] [--help]
 
 set -euo pipefail
 
@@ -23,7 +23,7 @@ cd "$SCRIPT_DIR"
 exec 9<"${BASH_SOURCE[0]}"
 flock -n 9 || { echo "错误: 已有另一个更新进程正在运行" >&2; exit 1; }
 
-PUSH=0
+PUSH=1
 CHECK_ONLY=0
 BUILD=0
 
@@ -36,24 +36,25 @@ usage() {
 用法: $(basename "$0") [选项]
 
 选项:
-  -p, --push    更新并提交后推送到 AUR (默认仅本地提交)
+  -n, --no-push 只本地提交, 不推送到 AUR
   -c, --check   只检查是否有新版本, 不修改任何文件
   -b, --build   更新后运行 makepkg 构建验证 (构建产物会被清理)
   -h, --help    显示本帮助
 
 示例:
-  $(basename "$0")            # 检查并更新到本地仓库 (自动提交)
-  $(basename "$0") --push     # 检查并更新, 提交后推送到 AUR
-  $(basename "$0") --check    # 只检查新版本
+  $(basename "$0")              # 检查、更新、提交并推送到 AUR (默认)
+  $(basename "$0") --no-push    # 只更新并在本地提交
+  $(basename "$0") --check      # 只检查新版本
 
 定时任务示例 (每天 9:00 自动更新并推送):
-  0 9 * * * cd $SCRIPT_DIR && ./update.sh --push >> update.log 2>&1
+  0 9 * * * cd $SCRIPT_DIR && ./update.sh >> update.log 2>&1
 EOF
 }
 
 while (($#)); do
     case "$1" in
         -p | --push) PUSH=1 ;;
+        -n | --no-push) PUSH=0 ;;
         -c | --check) CHECK_ONLY=1 ;;
         -b | --build) BUILD=1 ;;
         -h | --help)
@@ -182,5 +183,5 @@ if ((PUSH)); then
     git push origin HEAD
     log "完成: 已更新并推送 $NEW_VER-$NEW_REL"
 else
-    log "完成: 已在本地提交 $NEW_VER-$NEW_REL (使用 --push 可推送到 AUR)"
+    log "完成: 已在本地提交 $NEW_VER-$NEW_REL (未推送, 可稍后手动 git push)"
 fi
