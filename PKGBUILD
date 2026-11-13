@@ -17,7 +17,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/dsh-superagent-prototype"
-  printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  local _ver
+  _ver=$(node -p "require('./package.json').version" 2>/dev/null || echo 0.1.0)
+  printf "%s.r%s.g%s" "$_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
