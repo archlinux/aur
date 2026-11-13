@@ -1,5 +1,5 @@
 pkgname=neodisk-bin
-pkgver=2.83.2
+pkgver=2.91.0
 pkgrel=1
 pkgdesc="Disk space visualizer with treemap and sunburst views (upstream binary)"
 arch=('x86_64' 'aarch64')
@@ -25,10 +25,10 @@ conflicts=('neodisk' 'neodisk-git')
 options=('!debug' '!strip')
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/tkslucas/Neodisk/v${pkgver}/LICENSE")
 sha256sums=('49f51e89dd0718b6df57c50b4148336512ab72905b14bd17334b4aaf4e60322f')
+sha256sums_x86_64=('aa8f5e2fad538ef690d7328623c428964dc38f9789e56ff9aba3f640b1415ff0')
+sha256sums_aarch64=('3fbdada5f561261f7238fe14c1679a01eea4604e298b7dc5f90676cfed812f2b')
 source_x86_64=("${url}/releases/download/v${pkgver}/neodisk-${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('2f82d4219ecc2c6a21a3a696b1d828db33c51afd43109a45a127bf9d2fe7b079')
 source_aarch64=("${url}/releases/download/v${pkgver}/neodisk-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_aarch64=('01dd82949a0dccb7aa7cdef79078be6a1e80825f0a914965b8c572df43b576b4')
 
 prepare() {
   patchelf --remove-rpath bin/neodisk
