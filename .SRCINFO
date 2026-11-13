@@ -26,6 +26,7 @@ pkgbase = swiftsim-git
 	provides = swiftsim
 	conflicts = swiftsim
 	options = !lto
+	options = !debug
 	source = swiftsim-git::git+https://github.com/RamazanBerk20/SwiftSim.git
 	sha256sums = SKIP
 

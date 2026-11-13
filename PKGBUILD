@@ -8,7 +8,7 @@ url='https://github.com/RamazanBerk20/SwiftSim'
 license=('MIT OR Apache-2.0' 'OFL-1.1')
 depends=('gcc-libs' 'glibc' 'dbus' 'fontconfig' 'libglvnd' 'libx11' 'libxcb' 'libxcursor' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'wayland')
 makedepends=('cargo' 'git')
-options=('!lto')  # makepkg's GCC LTO objects from ring's C code can't be linked by rust-lld
+options=('!lto' '!debug')  # makepkg's GCC LTO objects from ring's C code can't be linked by rust-lld
 optdepends=('vulkan-icd-loader: Vulkan rendering (OpenGL is used otherwise)'
             'xdg-desktop-portal: Open/Save dialogs'
             'zenity: Open/Save dialogs without a desktop portal')
