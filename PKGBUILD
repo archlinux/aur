@@ -12,7 +12,7 @@ makedepends=('git' 'rust' 'nodejs' 'pnpm' 'libayatana-appindicator' 'librsvg')
 optdepends=('zenity: graphical prompts for compatibility-host recipes')
 provides=('bettertricks')
 conflicts=('bettertricks')
-options=('!lto')
+options=('!lto' '!debug')
 source=("Bettertricks::git+$url.git")
 sha256sums=('SKIP')
 

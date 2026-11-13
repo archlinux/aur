@@ -26,6 +26,7 @@ pkgbase = bettertricks-git
 	provides = bettertricks
 	conflicts = bettertricks
 	options = !lto
+	options = !debug
 	source = Bettertricks::git+https://github.com/RamazanBerk20/Bettertricks.git
 	sha256sums = SKIP
 
