@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 pkgname=python-pandarm
@@ -6,7 +9,7 @@ pkgdesc="Python library for network analysis that uses contraction hierarchies."
 url="https://oturns.github.io/pandarm/"
 
 pkgver=0.0.7.post1
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64")
 license=("AGPL-3.0-only")
@@ -38,7 +41,9 @@ checkdepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=("40c1d699fd83d5bab4eb48805888afc6a1cc2549e88f963eb98bd28094f9d471aedc6ac74e78c676ca28f6164c003208ce54cb414ac4a9b6ca607a5bb389714d")
+b2sums=(
+    "40c1d699fd83d5bab4eb48805888afc6a1cc2549e88f963eb98bd28094f9d471aedc6ac74e78c676ca28f6164c003208ce54cb414ac4a9b6ca607a5bb389714d"
+)
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
