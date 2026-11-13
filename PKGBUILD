@@ -1,7 +1,7 @@
 # Maintainer: ghollisjr <ghollisjr@gmail.com>
 
 pkgname=quickkey
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Hotkey menu of commands whose output goes to the clipboard'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   'xorg-xrandr: place the window on the monitor under the pointer'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bf7ce1350163dfbccc85b3e4c128993d927c598d1432d7e35622c0451306c049')
+sha256sums=('1ef83da5d4569b08f44e2d775235e6116119191f3d7262502f4f579ef1fc3f0f')
 
 check() {
   cd "$pkgname-$pkgver"
