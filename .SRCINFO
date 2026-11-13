@@ -1,6 +1,6 @@
 pkgbase = cratty-bin
 	pkgdesc = Native GPU-rendered SSH client with an encrypted host vault (release binaries)
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/auf-gg/cratty
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = cratty-bin
 	provides = cratty
 	conflicts = cratty
 	conflicts = cratty-git
-	source_x86_64 = https://github.com/auf-gg/cratty/releases/download/v0.2.1/cratty-0.2.1-x86_64-linux.tar.gz
-	sha256sums_x86_64 = e50a440815af983d22f7f90fdf859714d717af9c61fed3fa76ac3502078830c7
-	source_aarch64 = https://github.com/auf-gg/cratty/releases/download/v0.2.1/cratty-0.2.1-aarch64-linux.tar.gz
-	sha256sums_aarch64 = e75de1498c9417169c4299db924cf7bf1389f9735457ebd168df58f14b05118b
+	source_x86_64 = https://github.com/auf-gg/cratty/releases/download/v0.3.0/cratty-0.3.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 241258c8ee58e221590860b2338ffc3110c6fb9d9d2554f2328cb39ee9979db9
+	source_aarch64 = https://github.com/auf-gg/cratty/releases/download/v0.3.0/cratty-0.3.0-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 2559989bbc791ad4068a31fb8d5bdf7f490b8926cc4481c58b1db8816f25f226
 
 pkgname = cratty-bin
