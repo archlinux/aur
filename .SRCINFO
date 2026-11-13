@@ -1,6 +1,6 @@
 pkgbase = nvm-desktop
 	pkgdesc = Node Version Manager Desktop - A desktop application to manage multiple active node.js versions.
-	pkgver = 4.5.1
+	pkgver = 4.5.2
 	pkgrel = 1
 	url = https://github.com/1111mp/nvm-desktop
 	arch = aarch64
@@ -20,7 +20,9 @@ pkgbase = nvm-desktop
 	depends = libayatana-indicator
 	depends = libappindicator
 	conflicts = nvm-desktop
-	source = nvm-desktop-4.5.1.tar.gz::https://github.com/1111mp/nvm-desktop/archive/refs/tags/v4.5.1.tar.gz
-	sha256sums = 20ab1afdfb64252625544689685a4fad844330f5537958631496c5795f141dbd
+	source = nvm-desktop-4.5.2.tar.gz::https://github.com/1111mp/nvm-desktop/archive/refs/tags/v4.5.2.tar.gz
+	source = nvmd-4.5.2.tar.gz::https://github.com/1111mp/nvmd-command/archive/refs/tags/v4.5.2.tar.gz
+	sha256sums = 33b34c90973033d4e2cd1452d2b2edd5afc0c46368265a3886b81401680077dc
+	sha256sums = 9c208570cbd33be12eb78181e2b0a229413ccee3716abcf67faed943f2bd2427
 
 pkgname = nvm-desktop

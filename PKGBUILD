@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
 _pkgname=NVM-Desktop
-pkgver=4.5.1
+pkgver=4.5.2
 _nodeversion=24
 pkgrel=1
 pkgdesc="Node Version Manager Desktop - A desktop application to manage multiple active node.js versions."
@@ -30,8 +30,12 @@ makedepends=(
     'patchelf'
     'git'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('20ab1afdfb64252625544689685a4fad844330f5537958631496c5795f141dbd')
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "nvmd-${pkgver}.tar.gz::${_nvmdurl}/archive/refs/tags/v${pkgver}.tar.gz"
+)
+sha256sums=('33b34c90973033d4e2cd1452d2b2edd5afc0c46368265a3886b81401680077dc'
+            '9c208570cbd33be12eb78181e2b0a229413ccee3716abcf67faed943f2bd2427')
 _get_project_dir() {
 	find "${srcdir}" -name "src-tauri" -type d ! -path "*/node_modules/*" 2>/dev/null | \
 		while read -r tauri_dir; do
@@ -104,8 +108,6 @@ prepare() {
         --categories="Development" \
         --name="${pkgname}" \
         --exec="${pkgname} %U"
-    wget -c "${_nvmdurl}/archive/refs/tags/v${pkgver}.tar.gz" -O nvmd.tar.gz
-    bsdtar -xf nvmd.tar.gz
     _ensure_local_nvm
     _set_rust_build_env
     _set_pnpm_build_env
