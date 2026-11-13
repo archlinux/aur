@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/ci.yml` republish.
 pkgname=infr-bin
 _pkgname=infr
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Pure-Rust LLM inference engine with an OpenAI-compatible server (binary release)"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ conflicts=("$_pkgname")
 
 source_x86_64=("infr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/infr/releases/download/v${pkgver}/infr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("infr-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/infr/releases/download/v${pkgver}/infr-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('399010bee45b1035ee43f568492cd6aef9581c29d7e263d1d334bb9b9f6d0850')
-sha256sums_aarch64=('e6fd322b84872f807b0e3e9491c4eeb6a2ee6c0a261e4a8393529c3e7612856e')
+sha256sums_x86_64=('d74d4281cf857180f564cc7012b4d6dfc8c08adfa94e07b566f08a3d0c1e1671')
+sha256sums_aarch64=('a8457c916e6e00085bed4471d1906a57388a99593269fad75aa2dade26fc6b3e')
 
 package() {
     install -Dm755 "$srcdir/infr" "$pkgdir/usr/bin/infr"
