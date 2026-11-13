@@ -17,18 +17,18 @@ dirname=extest-$pkgver
 prepare() {
   cd "$srcdir/$dirname"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked
+  cargo fetch --locked --target "x86_64-unknown-linux-gnu" # force 64-bit build
 }
 
 build () {
   cd "$srcdir/$dirname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release --all-features  --target "x86_64-unknown-linux-gnu" # force 64-bit build
 }
 
 package() {
   cd "$srcdir/$dirname"
-  install -Dm755 target/release/libextest.so "${pkgdir}/usr/lib/libextest.so"
+  install -Dm755 target/x86_64-unknown-linux-gnu/release/libextest.so "${pkgdir}/usr/lib/libextest.so"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
