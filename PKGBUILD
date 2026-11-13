@@ -18,7 +18,7 @@ depends=(
     'python-markdown<4.0'
     'python-typer>=0.16.0'
     'python-pycryptodome>=3.20'
-    'python-pycryptodome<4.0'
+    'python-pycryptodome<5.0'
     'python-sqlcipher3>=0.5.4'
     'python-filetype>=1.2.0'
 )
