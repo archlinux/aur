@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=calmly-writer-bin
 _pkgname=CalmlyWriter
-pkgver=3.0.8
-_electronversion=41
+pkgver=3.0.9
+_electronversion=42
 pkgrel=1
 pkgdesc="An editor designed to focus on what you want to tell, with a simple, unobtrusive and ease-to-use user interface."
 arch=(
@@ -24,11 +24,11 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('eae42c5c4e04399d0a95a177b4a0e4652da78b80ac2e56d32b6777445a8a8d51'
+sha256sums=('e711cd1065ca7a5908db10e92d31b16cedf81995c3c4b9316ea995ffc851a20c'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-sha256sums_aarch64=('07584463e3b5feb493edbc9412ce36e0ac664c87cad491de2e494923673f1b28')
-sha256sums_x86_64=('24f2bbae58d48faa8b0adab3cdfdfcd35a20a012b396be35a537e854259b51b1')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+sha256sums_aarch64=('3db9362106ea77b28bb4dcffbff9733bccc28add346b41430d85e7f92c5cb5c4')
+sha256sums_x86_64=('93e60b39ed278395bcf8dd2622941906f100bcff6a91fbb9bf54ba6e1bc50711')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
