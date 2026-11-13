@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Dadroit JSON Viewer
+GenericName=JSON Viewer
+Comment=View and search very large JSON files
+Exec=dadroit-json-viewer %F
+Icon=dadroit-json-viewer
+Terminal=false
+Categories=Development;
+MimeType=application/json;
+Keywords=json;jsonl;ndjson;viewer;
+StartupNotify=true
+StartupWMClass=DadroitViewer

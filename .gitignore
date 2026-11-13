@@ -1,0 +1,7 @@
+# Only track packaging files; ignore sources, build dirs and built packages
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!dadroit-json-viewer.desktop
+!LICENSE
