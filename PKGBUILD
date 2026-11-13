@@ -2,7 +2,7 @@
 
 pkgname='jsinflator-vst3'
 pkgver='2.0.3.2'
-pkgrel=3
+pkgrel=4
 pkgdesc='Open source copy of Sonox Inflator'
 arch=('x86_64')
 url='https://github.com/Kiriki-liszt/JS_Inflator'
@@ -15,7 +15,6 @@ makedepends=(
   'cmake'
   'make'
   'vst3sdk'
-  'wayland-protocols'
 )
 
 _r8brainver='version-6.5'
@@ -40,7 +39,7 @@ build() {
   cmake -B Builds \
     -DSMTG_LINUX=ON \
     -DSMTG_RUN_VST_VALIDATOR=OFF \
-    -DSMTG_ENABLE_WAYLAND_SUPPORT=ON \
+    -DSMTG_ENABLE_WAYLAND_SUPPORT=OFF \
     -DSMTG_CREATE_PLUGIN_LINK=OFF \
     -DSMTG_ENABLE_VST3_PLUGIN_EXAMPLES=OFF \
     -DSMTG_ENABLE_VST3_HOSTING_EXAMPLES=OFF \
