@@ -1,9 +1,8 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 
 pkgname=claude-cage-bin
-pkgver=0.1.7rc.1
-_upver=0.1.7-rc.1
-pkgrel=3
+pkgver=0.1.7
+pkgrel=1
 pkgdesc='Isolated Claude development workspace with a local virtual machine'
 arch=('x86_64')
 options=('!debug')
@@ -23,11 +22,11 @@ optdepends=(
 )
 provides=("claude-cage=$pkgver")
 conflicts=('claude-cage')
-source=("Cage-${_upver}-linux-amd64.deb::${url}/releases/download/v${_upver}/Cage-${_upver}-linux-amd64.deb")
-sha256sums=('eced2a3b448559c75a349b3d09792bcca955d0885f1a9aaed87f65fe451bbf96')
+source=("Cage-${pkgver}-linux-amd64.deb::${url}/releases/download/v${pkgver}/Cage-${pkgver}-linux-amd64.deb")
+sha256sums=('1d1fd030d901be08d72d0dbee12607512922d437374792606cdc3cd07db05188')
 
 prepare() {
-  bsdtar -xf "Cage-${_upver}-linux-amd64.deb" -C "$srcdir" 'data.tar.*'
+  bsdtar -xf "Cage-${pkgver}-linux-amd64.deb" -C "$srcdir" 'data.tar.*'
   install -dm755 "$srcdir/payload"
   bsdtar -xf "$srcdir"/data.tar.* -C "$srcdir/payload"
 }
