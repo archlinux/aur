@@ -1,11 +1,12 @@
 pkgbase = libbsc
 	pkgdesc = High-performance block-sorting data compressor
 	pkgver = 3.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/IlyaGrebnov/libbsc
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
+	license = Apache-2.0 WITH LLVM-exception
 	makedepends = cmake
 	makedepends = git
 	depends = glibc
