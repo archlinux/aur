@@ -2,7 +2,7 @@
 # Ex-Maintainer: Varakh <varakh@varakh.de>
 # Ex-Maintainer: Ray Del Rosario <michael@raydelrosario.com>
 pkgname='grype-bin'
-pkgver=0.121.1
+pkgver=0.121.3
 pkgrel=1
 pkgdesc='A vulnerability scanner for container images and filesystems.'
 url='https://github.com/anchore/grype'
@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('Apache-2.0')
 source=("https://github.com/anchore/grype/releases/download/v${pkgver}/grype_${pkgver}_linux_amd64.tar.gz")
 makedepends=('grype-db-bin')
-sha256sums=('bc3ea3f9e6fd56ac781c08c6c5e614271b79f438200757f6932085c19b0a4657')
+sha256sums=('e9da18cc1429e786722e32161288103600efffd8e483c90761f90485bd1bec85')
 package() {
   "$srcdir/grype" completion zsh > "$srcdir/zsh_grype"
   "$srcdir/grype" completion fish > "${srcdir}/fish_grype"
