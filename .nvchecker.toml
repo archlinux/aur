@@ -1,0 +1,6 @@
+# The releases of SOPE, tagged SOPE-<version> like SOGo's
+[sope]
+source = "git"
+git = "https://github.com/Alinto/sope.git"
+use_max_tag = true
+prefix = "SOPE-"

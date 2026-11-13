@@ -1,0 +1,25 @@
+pkgbase = sope
+	pkgdesc = Application server and libraries of SOGo, the groupware server
+	pkgver = 5.12.13
+	pkgrel = 1
+	url = https://github.com/Alinto/sope
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.0-or-later
+	makedepends = gcc-objc
+	makedepends = gnustep-make
+	depends = glibc
+	depends = libgcc
+	depends = libobjc
+	depends = gnustep-base
+	depends = libldap
+	depends = libxml2
+	depends = mariadb-libs
+	depends = openssl
+	depends = postgresql-libs
+	depends = zlib
+	source = sope-5.12.13.tar.gz::https://github.com/Alinto/sope/archive/refs/tags/SOPE-5.12.13.tar.gz
+	sha512sums = fbd065abade5a928f648e0079ff536c7c2b8a06669ce86b4228256448113bcbfdb56fbec6342ef1a67cf4443732348a49d87a87332a960588bc0cba6020a3b4b
+	b2sums = f5a64d74543182ca4a30e88660b7c2297b91ca6519b94638cece8166dfcf3e5f1c1451299ed7877f2da9d3f3bf34d07a8f7a2d14c1e148b7c4fc834c931601c3
+
+pkgname = sope
