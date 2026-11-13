@@ -1,0 +1,37 @@
+pkgbase = remya-screen-capture
+	pkgdesc = Screen capture, recording and editing for Hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/remyhuang03/remya-screen-capture
+	arch = x86_64
+	license = LicenseRef-PolyForm-Noncommercial-1.0.0
+	makedepends = clang
+	makedepends = cmake
+	makedepends = fvm
+	makedepends = ninja
+	makedepends = rustup
+	makedepends = wayland-protocols
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = wayland
+	depends = hyprland
+	depends = grim>=1.5
+	depends = wl-clipboard
+	depends = fontconfig
+	depends = inter-font
+	depends = gpu-screen-recorder
+	depends = ffmpeg
+	depends = mpv
+	depends = libepoxy
+	depends = xdg-utils
+	depends = glibc
+	depends = gcc-libs
+	conflicts = remya-screen-capture-bin
+	conflicts = remya-screen-capture-git
+	options = !strip
+	source = remya-screen-capture-0.1.0.tar.gz::https://github.com/remyhuang03/remya-screen-capture/archive/refs/tags/v0.1.0.tar.gz
+	source = remya-settings-0.1.0-dev.20261113.0.tar.gz::https://github.com/remyhuang03/remya-settings/archive/refs/tags/v0.1.0-dev.20261113.0.tar.gz
+	sha256sums = e967beb4a1154d406621419625c637252f271373b2e7377756011248e1ffe4d4
+	sha256sums = 96921bb1f5327bfe87259fb01790bc24411b5e6dc0a3cceef5ab54c63043e8c0
+
+pkgname = remya-screen-capture
