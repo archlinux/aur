@@ -1,0 +1,20 @@
+pkgbase = nsc-bin
+	pkgdesc = Tool for creating NATS operator, account and user access configurations (prebuilt binary)
+	pkgver = 2.15.0
+	pkgrel = 1
+	url = https://github.com/nats-io/nsc
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache-2.0
+	provides = nsc=2.15.0
+	conflicts = nsc
+	options = !debug
+	source_x86_64 = nsc-2.15.0-amd64.zip::https://github.com/nats-io/nsc/releases/download/v2.15.0/nsc-linux-amd64.zip
+	sha256sums_x86_64 = 7d55eda757dc9f233675a3038fcf8779bcda99753b1603f7009fc8537e126b7e
+	source_aarch64 = nsc-2.15.0-arm64.zip::https://github.com/nats-io/nsc/releases/download/v2.15.0/nsc-linux-arm64.zip
+	sha256sums_aarch64 = 4556613503e2d3e91c970e2c78f17b3f369a3b987c00aa4ffe95d08ea5059a0c
+	source_armv7h = nsc-2.15.0-armv7.zip::https://github.com/nats-io/nsc/releases/download/v2.15.0/nsc-linux-armv7.zip
+	sha256sums_armv7h = 1ae3dfc8f3852127e19e51c892d19db550fbbf91088c88e891a1a69eb492f7f0
+
+pkgname = nsc-bin
