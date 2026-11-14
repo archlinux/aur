@@ -16,7 +16,7 @@
 # packaging; the license field stays NOASSERTION until upstream adds one.
 
 pkgname=agents-anywhere
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Open-source cross-device AI agent workbench desktop app (built from source)'
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'libsecret' 'libappindicator
 makedepends=('nodejs' 'curl')
 options=('!strip' '!debug')
 source=("Agents-Anywhere-${pkgver}.tar.gz::https://github.com/anywhere-labs/Agents-Anywhere/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('82e5fcc01fdc20fe1f184bb955afb2a4bb17487dd4546162f5dbcbe9cc1720a4')
+sha256sums=('fe7f6675115212f8d7943d50fbb502e2be97622eb1156d1c9887c7de7968c00b')
 
 # 多处构建步骤要从 GitHub 下载文件且直连易失速；官方地址优先，失败走
 # 镜像，事后全部按官方校验和文件验证
@@ -74,7 +74,7 @@ aa_verified() {
 }
 
 build() {
-  cd "${srcdir}/Agents-Anywhere-2.1.0/desktop-workbench"
+  cd "${srcdir}/Agents-Anywhere-2.2.0/desktop-workbench"
 
   # corepack 从 registry 拉 yarn 4 时不要交互确认
   export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
@@ -216,7 +216,7 @@ NODEJS
 }
 
 package() {
-  local app_dir="${srcdir}/Agents-Anywhere-2.1.0/desktop-workbench/release/linux-unpacked"
+  local app_dir="${srcdir}/Agents-Anywhere-2.2.0/desktop-workbench/release/linux-unpacked"
 
   install -dm755 "${pkgdir}/opt/agents-anywhere"
   cp -a "${app_dir}/." "${pkgdir}/opt/agents-anywhere/"
