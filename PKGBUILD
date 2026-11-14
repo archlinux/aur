@@ -1,6 +1,6 @@
 # Maintainer: Cristo Cola <hello@argyrolabs.com>
 pkgname=fast-folder-bin
-pkgver=3.20.0
+pkgver=3.20.1
 pkgrel=1
 pkgdesc="Template-driven project folder generator with a guided TUI and CLI (fastf) — prebuilt binary"
 arch=(x86_64)
@@ -10,7 +10,7 @@ provides=(fast-folder)
 conflicts=(fast-folder)
 # Static musl build from the GitHub release — no runtime deps.
 source=("$url/releases/download/v$pkgver/fastf-v$pkgver-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=('cd85e2d21cda0db26408c5c5be76f2d68c21ba72808d622d78db9f7b0deb7ed4')
+sha256sums=('32587940e716a5e4a158ebfdaae7133aa87140ccbe7726890760f4ddea5fdbe8')
 
 package() {
   cd "fastf-v$pkgver-x86_64-unknown-linux-musl"
