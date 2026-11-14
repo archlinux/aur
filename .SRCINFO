@@ -1,6 +1,6 @@
 pkgbase = cecilia-bin
 	pkgdesc = Keyboard-first editor and player for guitar tab, standard notation and Gregorian chant (prebuilt binary)
-	pkgver = 0.49.0
+	pkgver = 0.49.1
 	pkgrel = 1
 	url = https://github.com/kjmcnamara1/cecilia
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = cecilia-bin
 	optdepends = wayland: Wayland window
 	optdepends = libx11: X11 window
 	optdepends = libxcursor: X11 mouse cursors
-	provides = cecilia=0.49.0
+	provides = cecilia=0.49.1
 	conflicts = cecilia
 	options = !debug
-	source = https://github.com/kjmcnamara1/cecilia/releases/download/v0.49.0/cecilia-v0.49.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 2b5c034a73fdd346a24f6f96a93ed2486444f4ccc71948c008cad2b90ef5583e
+	source = https://github.com/kjmcnamara1/cecilia/releases/download/v0.49.1/cecilia-v0.49.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = a5f09b0aa5f97df6729fb46f3b060b4e53fef816124b87036c73f57ba5a63938
 
 pkgname = cecilia-bin

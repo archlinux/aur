@@ -1,7 +1,7 @@
 # Maintainer: Kevin McNamara (github.com/kjmcnamara1)
 pkgname=cecilia-bin
 _name=cecilia
-pkgver=0.49.0
+pkgver=0.49.1
 pkgrel=1
 pkgdesc='Keyboard-first editor and player for guitar tab, standard notation and Gregorian chant (prebuilt binary)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=("$_name=$pkgver")
 conflicts=("$_name")
 options=('!debug')
 source=("$url/releases/download/v$pkgver/$_name-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('2b5c034a73fdd346a24f6f96a93ed2486444f4ccc71948c008cad2b90ef5583e')
+sha256sums=('a5f09b0aa5f97df6729fb46f3b060b4e53fef816124b87036c73f57ba5a63938')
 
 package() {
   cd "$_name-v$pkgver-x86_64-unknown-linux-gnu"
