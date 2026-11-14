@@ -1,0 +1,14 @@
+--- a/qoaplay.c
++++ b/qoaplay.c
+@@ -177,10 +177,8 @@ void qoaplay_seek_frame(qoaplay_desc *qp, int frame) {
+ #if defined(_WIN32)
+ 	#include <conio.h>
+ #else
+-	#if defined(__APPLE__)
+-		#include <unistd.h>
+-	#endif
+ 	#include <termios.h>
++	#include <unistd.h>
+ 	int getch(void) {
+ 		struct termios oldattr, newattr;
+ 		int ch;

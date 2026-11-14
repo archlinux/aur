@@ -1,6 +1,6 @@
 pkgbase = qoa-git
 	pkgdesc = Quite OK Audio (QOA) format and codec (git version)
-	pkgver = r84.fb57da0
+	pkgver = r97.93b0680
 	pkgrel = 1
 	url = https://qoaformat.org/
 	arch = x86_64
@@ -14,7 +14,9 @@ pkgbase = qoa-git
 	conflicts = qoa
 	source = git+https://github.com/phoboslab/qoa.git
 	source = 010-qoa-use-arch-flags.patch
+	source = 020-qoa-gcc14-fix.patch
 	sha256sums = SKIP
 	sha256sums = e7ef5040b3221cc4d7bea4a2efbc9f70a4b76260f419b3c9c4a97cd266cb8d2e
+	sha256sums = becc65cf15c73b4e97fde0dd745a3ffd52c29d7ef7e6868d05e2195b83ee21af
 
 pkgname = qoa-git
