@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 _UpstreamPkgName=NVEnc
 pkgname=${_UpstreamPkgName,,}
-pkgver=9.40
+pkgver=9.41
 pkgrel=1
 pkgdesc="NVIDIA Video Codec based command line encoder"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('cuda>=10' 'ffmpeg' 'libass' 'vapoursynth' 'libdovi' 'onnxruntime-opt-cuda')
 makedepends=('git' 'gcc' 'cargo-c' 'meson' 'ninja')
 source=(git+${url}.git#tag=${pkgver} onnxruntime-find.patch)
-sha256sums=('c5c934465383a0bf1bd2fc5d92a6aefdab0306cf7296ced3e1600ebe2963efd9'
+sha256sums=('b00ef693055941de07e85b1c64af615bfb6e544df5fc852307bd67b3e97be719'
             '206794b06a69ee057638efeaa124e1ca92282ce8a2efa8799cfd4094b4819bd5')
 
 build() {
