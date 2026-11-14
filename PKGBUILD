@@ -6,7 +6,7 @@
 _pkgname='languagetool'
 pkgname="${_pkgname}-snapshot"
 _revision='6.9'
-_date='20261113'
+_date='20261114'
 pkgver="${_revision}.${_date}"
 pkgrel=1
 pkgdesc='Grammar and style checker (daily snapshot)'
@@ -29,7 +29,7 @@ source=(
 )
 noextract=("LanguageTool-${_date}-snapshot.zip")
 b2sums=(
-	'033f8d7b71da4b61c42755af42b25a6382abe9d0e200f266eb2decc9563303c8ff4e4428d2e42e67a6875d22d9a2d78e25b9da740099efe818f7d3f62bea6954'
+	'a2c11ff2ea01169803fa5e2ec7600414760cb23e420e8337796036a95d6a3913a9959e62a7a6c2146acbf39e13eaced251be45e1a31cbe44f3e04bd57c678ade'
 	'3f8367e3e6e2c95741824804f061d1ce5a8267567576db4005c7e2538ccd793c79e5ea70b4e74cfb34f1fca7a175eb5de264542431ac4cc91f5f5a33bc9d4aa3'
 	'78d16d615b5af43eb50f49e91dfc4089432a6af6f9892c1e623ca596e27aa12a2375c705351750f89f99477e6478d5fa39e92b33c9e8dac1c86ab37a616a98da'
 )
