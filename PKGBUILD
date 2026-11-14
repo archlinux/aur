@@ -10,17 +10,17 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=autotrace-git
-pkgver=0.31.10.r157.g84f93a9
+pkgver=0.31.11.r1.g22faea6
 pkgrel=1
 pkgdesc='A program for converting bitmap to vector graphics (git version)'
 arch=('x86_64')
 url='https://github.com/autotrace/autotrace/'
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 depends=(
-    'gcc-libs'
     'glib2'
     'glibc'
     'imagemagick'
+    'libgcc'
     'libpng'
     'pstoedit')
 makedepends=(
@@ -52,7 +52,6 @@ build() {
         --with-png \
         --with-pstoedit
     make
-    sed -i "s|@MAGICK_LIBS@|$(pkg-config --libs ImageMagick)|" autotrace.pc
 }
 
 check() {
