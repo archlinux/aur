@@ -1,6 +1,6 @@
 # Maintainer: Kostiantyn Kushnir <chpock@gmail.com>
 pkgname=gen-commit-msg
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Generate git commit message candidates from staged changes"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=(
 provides=("$pkgname=$pkgver")
 conflicts=('gen-commit-msg-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chpock/gen-commit-msg/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e675aeb3001a72386973fe910055a35fd589a32729b4f4a69a63a48e72e2bb98')
+sha256sums=('52f7278e66d8339e20a0482788f0954eeb65836e801177a8bd8880feabc9925a')
 
 build() {
     cd "$pkgname-$pkgver"
