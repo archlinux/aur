@@ -2,7 +2,7 @@
 
 pkgname=pattn
 _name=PattN
-pkgver=7.25.6.P40
+pkgver=7.25.6.P42
 pkgrel=1
 pkgdesc="A GUI client for Windows, Linux and macOS, support Xray and sing-box and others"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("git+${url}#tag=${pkgver//.P/-P}"
         "sing-box-rules-geoip::git+https://github.com/2dust/sing-box-rules.git#branch=rule-set-geoip"
         "sing-box-rules-geosite::git+https://github.com/2dust/sing-box-rules.git#branch=rule-set-geosite"
         "${pkgname}.sh")
-sha256sums=('d5ef8abcfad67b9eb18750cd550fd7af71e9246b286a85711cb3089d8b489337'
+sha256sums=('c73f58acaaa048b0bcb82cf1845fdf9462ced82e1253d80e6dd2752de0c28d41'
             'SKIP'
             'SKIP'
             'SKIP'
