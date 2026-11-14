@@ -1,2 +1,3 @@
-d /run/wmbusmeters 0700 wmbusmeters wmbusmeters - -
 d /var/lib/wmbusmeters 0700 wmbusmeters wmbusmeters - -
+d /var/lib/wmbusmeters/meter_readings 0755 wmbusmeters wmbusmeters - -
+d /var/lib/wmbusmeters/wmbusmeters.drivers.d 0755 wmbusmeters wmbusmeters - -

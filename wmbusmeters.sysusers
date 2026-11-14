@@ -1,2 +1,3 @@
 u wmbusmeters - - /var/lib/wmbusmeters
 m wmbusmeters uucp
+m wmbusmeters rtlsdr
