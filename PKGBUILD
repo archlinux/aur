@@ -4,7 +4,7 @@
 _name="jsoncpp"
 pkgname="lib32-$_name"
 pkgver=1.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library for interacting with JSON (32-bit)"
 arch=('x86_64')
 url="https://github.com/open-source-parsers/$_name"
@@ -27,8 +27,8 @@ prepare() {
 }
 
 build() {
-  export CFLAGS+=" -m32"
-  export CXXFLAGS+=" -m32"
+  export CFLAGS+=" -m32 -mfpmath=sse"
+  export CXXFLAGS+=" -m32 -mfpmath=sse"
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
