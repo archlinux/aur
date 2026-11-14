@@ -1,6 +1,6 @@
 # Maintainer: OpenSourceGuy <osguy@duck.com>
 pkgname=brokkr-flash-appimage
-pkgver=2.4.12
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Samsung device flashing utility (Odin alternative) — AppImage release"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ install=brokkr-flash-appimage.install
 _upstream_tag=${pkgver/.beta/-beta}
 source_x86_64=("https://github.com/Gabriel2392/brokkr-flash/releases/download/v${_upstream_tag}/Brokkr-${_upstream_tag}-linux-x86_64.AppImage")
 source_aarch64=("https://github.com/Gabriel2392/brokkr-flash/releases/download/v${_upstream_tag}/Brokkr-${_upstream_tag}-linux-arm64.AppImage")
-sha256sums_x86_64=('7291f28fb8c92b41422572cab07b6005c32df7bb1e0f677b8203eb9ef2a48ed6')
-sha256sums_aarch64=('b05d54d5831c47f4c87db3591c04943aeda3ed9dc9ac4db12f49bbb90725acfe')
+sha256sums_x86_64=('a72f46b66ac9b963063300db9d481df0d32a0eec535e24a29179dca149b0810a')
+sha256sums_aarch64=('1374947bdd5a7fe65bee134c126084dedcb0332cc03b304ee507e9d2ed18a787')
 
 prepare() {
   local _appimg
