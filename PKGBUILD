@@ -10,7 +10,7 @@
 # Keep pkgver in step with debian/changelog: it names the tarball.
 
 pkgname=mx-user
-pkgver=26.11
+pkgver=26.11.1
 pkgrel=1
 pkgdesc="Simple user configuration tool"
 arch=('x86_64')
@@ -18,12 +18,12 @@ url="https://github.com/MX-Linux/mx-user"
 license=('GPL3')
 depends=('qt6-base' 'polkit' 'rsync' 'shadow')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/mx-user/archive/refs/tags/26.11.tar.gz")
-sha256sums=('b84449b85c0e82cf6bdeb899b3da922a9764cc7b4a3fea725b90e83165fbc309')
+source=("https://github.com/MX-Linux/mx-user/archive/refs/tags/26.11.1.tar.gz")
+sha256sums=('0a617e8c8edf546511ea1f39d00b982559c326c1598e947a082055bc2d421472')
 
 # dpkg-source packed this tarball from a directory called "src", so that - not
 # ${pkgname}-${pkgver} - is what it unpacks to.
-_srcdir="mx-user-26.11"
+_srcdir="mx-user-26.11.1"
 
 build() {
     cd "${srcdir}/${_srcdir}"
