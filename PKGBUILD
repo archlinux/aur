@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.163
-pkgrel=7
+pkgrel=8
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -63,6 +63,7 @@ optdepends=('bluez: org.bluez Bluetooth service (bluetooth.service) for Web Blue
             'xdg-desktop-portal-hyprland: window and region screen share plus portal global shortcuts on Hyprland'
             'pipewire: PipeWire daemon that feeds the portal ScreenCast capture'
             'pipewire-pulse: PulseAudio-compatible server for voice and audio devices'
+            'pipewire-alsa: ALSA client bridge to the PipeWire audio server for voice and audio devices'
             'dunst: org.freedesktop.Notifications daemon for sessions without one'
             'gnome-keyring: org.freedesktop.secrets service for session-token and password storage on GNOME and GTK desktops'
             'gnome-shell-extension-appindicator: org.kde.StatusNotifierItem tray host on GNOME'
