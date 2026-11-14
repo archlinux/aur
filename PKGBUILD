@@ -2,8 +2,8 @@
 # Issues and fixes: https://github.com/shbernal/aur-packages
 
 pkgname=freehire-cli
-pkgver=0.30.0
-pkgrel=2
+pkgver=0.30.1
+pkgrel=1
 pkgdesc='CLI over the freehire job API for agents'
 arch=('x86_64' 'aarch64')
 url='https://github.com/strelov1/freehire-cli'
@@ -13,7 +13,7 @@ makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "disable-self-update.patch"
         "relay-test-teardown.patch")
-sha256sums=('1bf5ecd87224faf77d0940acd68dc83100c9ab43705c6bf620b67cf8d56291e9'
+sha256sums=('b2b5e7b745816ad00b70a9e4999b6fef3a912a411377df565f2d5961b030f845'
             '864a3c11939dfcd48fbe994d3771aa2a4f9d3e7332daa2e92b53fe02de212087'
             '1a3190f99472b662095b658fb80a3e5f668ff53790b6119c114e547593677e6b')
 
