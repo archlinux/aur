@@ -1,5 +1,5 @@
 pkgname=astap
-pkgver=2026.09.19
+pkgver=2026.11.12
 pkgrel=1
 pkgdesc="Astrometric (plate) solver, stacking of images, photometry and FITS viewer (build from source). Qt5 version."
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPL')
 makedepends=('lazarus')
 depends=('qt5-base' 'qt5-x11extras' 'qt5pas')
 source=("https://www.hnsky.org/astap_source.zip")
-sha256sums=('c3387fefe8eb6999725e5b8e0a1133f6c20f9e6d94b80267e97c87d40bf4f583')
+sha256sums=('3c1a251519aff79fa696c119c33c6827ea996cf718ebb35ccd2838510017928d')
 optdepends=('hyperleda-galaxy-db-astap: 25MB database of 1.3m galaxies and 171k other non-star objects'
   'w08-star-db-astap: 250KB database of stars up to magnitude 8, reliable above 20° FOV'
   'd05-star-db-astap: 100MB database of 500 stars per square degree, reliable with 0.6-10° FOV'
