@@ -1,6 +1,6 @@
 pkgbase = larpercord-bin
 	pkgdesc = Native Discord client in Zig, with SDL3 and Dear ImGui
-	pkgver = 0.6.4
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/RshaCuDeVidro/larperCord
 	arch = x86_64
@@ -18,12 +18,12 @@ pkgbase = larpercord-bin
 	conflicts = larpercord
 	options = !strip
 	options = !debug
-	source = larpercord-0.6.4::https://github.com/RshaCuDeVidro/larperCord/releases/download/v0.6.4/larpercord-linux-x86_64
-	source = larpercord-0.6.4.png::https://raw.githubusercontent.com/RshaCuDeVidro/larperCord/v0.6.4/docs/assets/icon-180.png
-	source = LICENSE-0.6.4::https://raw.githubusercontent.com/RshaCuDeVidro/larperCord/v0.6.4/LICENSE
+	source = larpercord-0.6.6::https://github.com/RshaCuDeVidro/larperCord/releases/download/v0.6.6/larpercord-linux-x86_64
+	source = larpercord-0.6.6.png::https://raw.githubusercontent.com/RshaCuDeVidro/larperCord/v0.6.6/docs/assets/icon-180.png
+	source = LICENSE-0.6.6::https://raw.githubusercontent.com/RshaCuDeVidro/larperCord/v0.6.6/LICENSE
 	source = dev.larpercord.desktop
-	sha256sums = 3d4de9a3b9fd36bd3354fcb79d6b450acd6d77bcb612ecab3cc57ba2a9ccfcd4
-	sha256sums = 85c76329481345dd68891aab3b05a7a27037e81df87897154fb814f6260a9452
+	sha256sums = efd9040714bbe805144de3e4defe07960d895d9ccb8520b9b5337cf3c85f825e
+	sha256sums = 115c2cc459d72c0945bbebfc4f15beee66279d0d9bcba23319e7eb59f00cc7c2
 	sha256sums = fb981668c18a279e285fc4d83fba1e836cc84dd4daa73c9697d3cfd2d8aca6e0
 	sha256sums = 7052c78361f69d6ff2b837204d3c1fbd255accb36e03dd078947240f05c1c045
 

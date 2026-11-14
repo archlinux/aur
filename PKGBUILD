@@ -1,6 +1,6 @@
 # Maintainer: RshaCuDeVidro
 pkgname=larpercord-bin
-pkgver=0.6.4
+pkgver=0.6.6
 pkgrel=1
 pkgdesc='Native Discord client in Zig, with SDL3 and Dear ImGui'
 arch=('x86_64')
@@ -18,8 +18,8 @@ source=("larpercord-$pkgver::$url/releases/download/v$pkgver/larpercord-linux-x8
         "LICENSE-$pkgver::https://raw.githubusercontent.com/RshaCuDeVidro/larperCord/v$pkgver/LICENSE"
         'dev.larpercord.desktop')
 # Filled in at release time from the published files (updpkgsums).
-sha256sums=('3d4de9a3b9fd36bd3354fcb79d6b450acd6d77bcb612ecab3cc57ba2a9ccfcd4'
-            '85c76329481345dd68891aab3b05a7a27037e81df87897154fb814f6260a9452'
+sha256sums=('efd9040714bbe805144de3e4defe07960d895d9ccb8520b9b5337cf3c85f825e'
+            '115c2cc459d72c0945bbebfc4f15beee66279d0d9bcba23319e7eb59f00cc7c2'
             'fb981668c18a279e285fc4d83fba1e836cc84dd4daa73c9697d3cfd2d8aca6e0'
             '7052c78361f69d6ff2b837204d3c1fbd255accb36e03dd078947240f05c1c045')
 
