@@ -6,7 +6,7 @@
 _module="diffusers"
 _pkgname="python-$_module"
 pkgname="$_pkgname"
-pkgver=0.42.1
+pkgver=0.43.0
 pkgrel=1
 pkgdesc='Pretrained diffusion models for image and audio generation in PyTorch'
 url='https://github.com/huggingface/diffusers'
@@ -17,9 +17,12 @@ depends=(
   'python'
   'python-filelock'
   'python-importlib-metadata'
-  'python-huggingface-hub>=1:1.32'
-  # Arch carries epoch 1; Hub 2.x compatibility is exercised below.
-  'python-huggingface-hub<1:3'
+  # Preserve Hub's Python API interval in the early shipped runtime guard.
+  'python-huggingface-hub'
+  # Current public Hub Git needs these for its CLI build and Xet runtime.
+  'python-httpx2'
+  'python-hf-xet'
+  'python-packaging'
   'python-numpy'
   'python-pillow'
   'python-regex'
@@ -57,13 +60,18 @@ checkdepends=(
 
 _pkgsrc="$_module-$pkgver"
 _pkgext="tar.gz"
-source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('f1b2c0ddfb114c544b8a60d2fe2b14937fd9428620d4fe14081991a9ee3ad549')
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext"
+        'hub-runtime-version.patch'
+        'check-hub-runtime.py')
+sha256sums=('2495f24d19c2d06944eb238738deb1bd57d7be53caf3679d001ea053b13f43af'
+            '89ca2d19bd361e4d11bb333ba282a2bde4509761ee04be14aa85f766aec98498'
+            'a74ea1a3cfe011bcbbca4c7e47f8627fdcb79336c9e2a19344aeed37a162d4ab')
 
 prepare() {
   cd "$_pkgsrc"
   sed -i '/License :: OSI Approved/d' setup.py
   sed -i 's/license=.*,/license="Apache-2.0",/' setup.py
+  patch -Np1 -i "$srcdir/hub-runtime-version.patch"
 }
 
 build() {
@@ -115,6 +123,9 @@ result = scheduler.step(noise, 7, noisy).prev_sample
 assert result.shape == sample.shape
 assert torch.isfinite(result).all()
 PY
+
+  TEST_ROOT="$_check" PYTHONPATH="$_check$_site" \
+    python -P "$srcdir/check-hub-runtime.py"
 }
 
 package() {

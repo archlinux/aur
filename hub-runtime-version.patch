@@ -1,0 +1,25 @@
+--- a/src/diffusers/utils/__init__.py
++++ b/src/diffusers/utils/__init__.py
+@@ -14,8 +14,22 @@
+ 
+ 
+ import os
++from importlib.metadata import version as _distribution_version
+ 
+ from packaging import version
++from packaging.requirements import Requirement as _Requirement
++
++from ..dependency_versions_table import deps as _dependency_versions
++
++
++# Validate the Python distribution version before importing Hub-dependent utilities.
++_hub_requirement = _Requirement(_dependency_versions["huggingface-hub"])
++_hub_version = _distribution_version(_hub_requirement.name)
++if not _hub_requirement.specifier.contains(_hub_version, prereleases=True):
++    raise ImportError(
++        f"diffusers requires {_hub_requirement}, found huggingface-hub {_hub_version}"
++    )
++del _distribution_version, _Requirement, _dependency_versions, _hub_requirement, _hub_version
+ 
+ from .. import __version__
+ from .constants import (
