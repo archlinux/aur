@@ -2,15 +2,18 @@
 __='
 
 Description/features:
-    A wrapper for pacman (such as yay or paru), it transparently handles all cache operations
-    within `/tmp` (which is a `tmpfs` residing in RAM).
-    This reduces wear on your SSD and increases package installation speeds.
-    It automatically cleans up caches, makes no changes to your system,
-    and requires no configuration, it is ready to use immediately.
-    There are no changes to how you interact with your package manager’s commands.
-    If sudo or doas are not present on the system, it uses systemd run0 for privilege escalation.
-    When redirecting to stdout (e.g., yay > /tmp/out.txt), it adds no extraneous information to the output.
-    Autocompletion work.
+    *  A wrapper for pacman (such as yay or paru), it transparently handles all cache operations
+       within `/tmp` (which is a `tmpfs` residing in RAM).
+       This reduces wear on your SSD and increases package installation speeds.
+       It automatically cleans up caches, makes no changes to your system,
+       and requires no configuration, it is ready to use immediately.
+    *  Using system /etc/{pacman.conf,makepkg.conf} with no changes except Color and VerbosePkgLists
+       options for greater informativeness.
+       Dont forget to disable debug packages in /etc/makepkg.conf if you dont need them!
+    *  There are no changes to how you interact with your package manager’s commands.
+    *  If sudo or doas are not present on the system, it uses systemd run0 for privilege escalation.
+    *  When redirecting to stdout (e.g., yay > /tmp/out.txt), it adds no extraneous information to the output.
+    *  Autocompletion work.
 
 Installing:
     yay -S pacman-tmpfs
@@ -42,7 +45,7 @@ Usage:
 #---------------------------------------------------------------------------------------------
 
 pkgname=pacman-tmpfs
-pkgver=2026.11.10
+pkgver=2026.11.14
 pkgrel=1
 
 pkgdesc='Wrapper for pacman, yay, paru using tmpfs for caches and auto cleaning.'
@@ -58,7 +61,7 @@ options=('!debug')
 source=(
     pacman-tmpfs.sh     # хранится в git aur. в source пересчитывает sha256sums
 )
-sha256sums=('0eaede6a64ee7523fc5bb12f90140fbde36547945ff951a97acb9adc8329603f')
+sha256sums=('47b9a539c345bc0f91992cd3f695b753420e8005145edd87c4f5af975eac1c18')
 
 #---------------------------------------------------------------------------------------------
 package() {

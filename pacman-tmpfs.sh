@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# v38 новая логика
+# v39
+#    /etc/{makepkg.conf,pacman.conf} используется без измений кроме Color, VerbosePkgLists
+#    новая логика:
 #    если есть в  аргументах --default то
 #       main: удаляем слово --default из аргументов
 #       _run_packer: получаем sudo method удаляем ссылки /usr/local/bin/<links to pacman-tmpfs.sh>
@@ -37,9 +39,9 @@ PACMAN_CONF_OPTIONS_ARRAY=(
 )
 
 MAKEPKG_CONF_OPTIONS='
-MAKEFLAGS="-j$(nproc)"
+#MAKEFLAGS="-j$(nproc)"
 # disable creating debug packages
-OPTIONS+=(!debug)
+#OPTIONS+=(!debug)
 # disable compression entirely. see: man makepkg.conf
 PKGEXT=".pkg.tar"
 SRCEXT=".src.tar"
@@ -236,6 +238,7 @@ function _run_packer ()
         _remove_packagers_links
         sync
         ${PACKER_BIN} ${SCRIPT_ARGS}
+        # _restore_packagers_links <- в _cleanup
     else
         env MAKEPKG_CONF=${TMP_MAKEPKG_CONF_PATH} ${ENV_FOLDERS_KEY_VALUE_STR} ${PACKER_BIN} ${_aur_helper_addon} ${PACMAN_CMD_OPTIONS_ARRAY[*]} ${SCRIPT_ARGS}
     fi
