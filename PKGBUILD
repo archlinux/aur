@@ -1,6 +1,6 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=sweetbg-bin
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Small, lightweight and static Wayland wallpaper daemon"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('wayland' 'libpng' 'libjpeg-turbo' 'libwebp')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/sweetbg-$pkgver-x86_64-linux.tar.gz"
 )
-sha256sums=('8ac961b6c921b7b9e59bac01723eb97fef67c1a96c3c14e2c4d395f59ee16183')
+sha256sums=('1e548c6ea435327ebbd25daf9652cbeac6ceea88ea9b00736daf763b5da6d473')
 
 package() {
   cd "sweetbg-$pkgver-x86_64-linux"
