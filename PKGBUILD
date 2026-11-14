@@ -5,7 +5,7 @@
 pkgname=waylyrics-layer-shell-git
 _pkgname=waylyrics
 _appname="io.github.waylyrics.Waylyrics"
-pkgver=0.4.7.r1.gc3dd538b
+pkgver=0.4.7.r12.g0918ef40
 pkgrel=1
 pkgdesc="the furry way to show desktop lyrics (git version, with layer-shell feature enabled)"
 url="https://github.com/waylyrics/waylyrics"
