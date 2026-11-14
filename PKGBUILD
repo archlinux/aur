@@ -1,7 +1,7 @@
 # Maintainer: AndyHazz <andyhazz at proton dot me>
 # Contributor: sem.z <sem.z at protonmail dot com>
 
-pkgname="orca-slicer-unstable-bin"
+pkgname="orca-slicer-latest-bin"
 pkgver=2.5.1
 _pkgver=2.5.1
 pkgrel=1
@@ -11,7 +11,8 @@ url="https://github.com/OrcaSlicer/OrcaSlicer"
 license=('AGPL-3.0-only')
 depends=('libmspack' 'glu' 'cairo' 'gtk3' 'webkit2gtk-4.1' 'gstreamer' 'wayland' 'gst-plugins-base' 'gst-libav' 'ttf-nanum' 'gst-plugins-good')
 provides=("orca-slicer")
-conflicts=("orca-slicer")
+conflicts=("orca-slicer" "orca-slicer-unstable-bin")
+replaces=("orca-slicer-unstable-bin")
 source=("https://github.com/OrcaSlicer/OrcaSlicer/releases/download/v${_pkgver}/OrcaSlicer_Linux_AppImage_Ubuntu2404_V${_pkgver}.AppImage")
 sha512sums=('156048a5be67edea2da0bae2875bbb2cdcbe1f395c45166bb4e619c66143028df30dd351294534bf4fb0b4305468c7fa2891328f0e898d8263d1c58a90f00a42')
 options=('!strip' '!debug')
