@@ -2,7 +2,7 @@
 
 pkgbase=zfs-assistant
 pkgname=(zfs-assistant zfs-assistant-cli)
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Manage OpenZFS pools, datasets, snapshots and backups'
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ url='https://gitlab.com/zfs-assistant/zfs-assistant'
 license=(GPL-3.0-or-later)
 makedepends=(cargo cmake pkgconf qt6-base qt6-svg qt6-tools)
 source=("$pkgbase-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgbase-$pkgver.tar.gz")
-sha256sums=('e9d5b43fca8f89c1299c35ccbd742d16b54d1001e3d56df61d52c4299a94401d')
+sha256sums=('22d4c41b4449e686c8ccfce24158fe1468e7f10dceaf85cf8eec10563fbc8b74')
 
 prepare() {
     cd "$pkgbase-$pkgver"
@@ -30,7 +30,7 @@ build() {
 package_zfs-assistant-cli() {
     pkgdesc+=' (helper and command line tool)'
     depends=(zfs-utils util-linux)
-    optdepends=('cron: scheduled snapshots, scrubs and trims on systems without systemd (cronie provides it)'
+    optdepends=('cron: scheduled snapshots, scrubs and trims on systems without systemd'
                 'openssh: copying snapshots to other machines')
     backup=(etc/zfs-assistant/zfs-assistant.toml)
 
