@@ -2,7 +2,7 @@
 # Contributor: ThePirate42 <aur at thepirate42 dot org>
 
 pkgname=datamodel-code-generator
-pkgver=0.92.0
+pkgver=0.96.0
 pkgrel=1
 pkgdesc='Generate Python models from JSON Schema, OpenAPI, JSON, and YAML'
 arch=('any')
@@ -19,7 +19,8 @@ makedepends=('git' 'python-build' 'python-installer' 'python-wheel'
              'python-hatchling' 'python-hatch-vcs')
 checkdepends=('python-pytest' 'python-pytest-mock' 'python-time-machine'
               'python-inline-snapshot' 'python-msgspec' 'python-packaging'
-              'python-httpx' 'python-jsonschema' 'python-coverage' 'python-hypothesis')
+              'python-httpx' 'python-jsonschema' 'python-coverage' 'python-hypothesis'
+              'python-rich')
 optdepends=(
   'python-graphql-core: GraphQL input'
   'python-httpx: remote schema retrieval'
@@ -30,7 +31,7 @@ optdepends=(
   'python-openapi-spec-validator: optional OpenAPI validation'
   'python-prance: optional OpenAPI validation'
 )
-_commit=b9e468d848d5d30cdd8ba9db7070973f7718c734
+_commit=2c0111e2c46bda51d02f30af2f7fb81c630614b2
 source=("source::git+${url}.git#commit=$_commit")
 sha256sums=('SKIP')
 
