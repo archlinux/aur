@@ -1,7 +1,7 @@
 # Maintainer: KlapkiSzatana
 pkgname=budget-app-bin
 _pkgname=budget-app
-pkgver=1.3.8
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Zarządzanie Budżetem Domowym"
 arch=('x86_64')
@@ -13,7 +13,7 @@ replaces=("${_pkgname}")
 options=('!strip' '!debug')
 
 source=("https://github.com/KlapkiSzatana/budget-app/releases/download/v${pkgver}/BudgetApp_linux.tar.gz")
-sha256sums=('c42998a835b4ba6de9b818691c2e1832a1bbbaf4d60955f3f6ae0a0b93f15147')
+sha256sums=('8c6d30d9eeec75d231cbc0066e1504a875a8b6e4b4f812aed743db646cb491e5')
 
 package() {
     cd "$srcdir/linux-package"
@@ -39,7 +39,7 @@ EOF
     cat <<EOF > "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 [Desktop Entry]
 Name=Home Budget
-Name[pl]=Budżet Domowy
+Name[pl]=Kajet
 Comment=Home Budget Management
 Comment[pl]=Zarządzanie Budżetem Domowym
 Exec=/usr/bin/${_pkgname}
