@@ -3,14 +3,14 @@
 pkgname=perl-net-ftpssl
 _dist=Net-FTPSSL
 pkgver=0.42
-pkgrel=1
+pkgrel=2
 pkgdesc='NET::FTPSSL perl module'
 arch=(any)
 url="https://metacpan.org/release/$_dist"
-license=(GPL-1.0-or-later Artistic-1.0)
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(perl perl-net-ssleay perl-io-socket-ssl)
 options=(!emptydirs purge)
-source=("http://search.cpan.org/CPAN/authors/id/C/CL/CLEACH/$_dist-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/C/CL/CLEACH/$_dist-$pkgver.tar.gz")
 b2sums=('266b9502576b9054dd330182f636da62af54436f7d4844fecfc15840b66ec07215d29c02f70c745a70867bbd74b0aa28862a989c32f52be78ceb56aa86605f0a')
 
 build() {
