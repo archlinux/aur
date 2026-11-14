@@ -1,0 +1,21 @@
+pkgbase = llama.cpp-rocm-stable-bin
+	pkgdesc = llama.cpp official stable release prebuilt binaries with the ROCm backend
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ggml-org/llama.cpp
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl-3
+	depends = hip-runtime-amd
+	depends = hipblas
+	depends = rocblas
+	provides = llama.cpp
+	conflicts = llama.cpp
+	options = !strip
+	options = !debug
+	source = llama.cpp-rocm-stable-bin-1.0.0.tar.gz::https://github.com/ggml-org/llama.cpp/releases/download/b12359/llama-b12359-bin-ubuntu-rocm-10.0-x64.tar.gz
+	sha256sums = 2d934c367e613ec67a5f78dffa450ee30bc3a6024f559b70c207896ee4bc9108
+
+pkgname = llama.cpp-rocm-stable-bin
