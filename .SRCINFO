@@ -1,7 +1,7 @@
 pkgbase = libinput-epp
 	pkgdesc = Replaces Adaptive acceleration with Windows' Enhance Pointer Precision
-	pkgver = 1.31.3
-	pkgrel = 2
+	pkgver = 1.32.0
+	pkgrel = 1
 	url = https://gitlab.freedesktop.org/tehabstract/libinput-epp
 	arch = x86_64
 	license = MIT
@@ -25,12 +25,12 @@ pkgbase = libinput-epp
 	depends = lua54
 	depends = mtdev
 	depends = systemd-libs
-	source = libinput-epp-1.31.3.tar.gz::https://gitlab.freedesktop.org/tehabstract/libinput-epp/-/archive/1.31.3/libinput-epp-1.31.3.tar.gz
-	sha256sums = 73e4f7430e97aff268980cb8d669b750e9cc2e2f4b863007a7e51af99e975b03
+	source = libinput-epp-1.32.0.tar.gz::https://gitlab.freedesktop.org/tehabstract/libinput-epp/-/archive/1.32.0/libinput-epp-1.32.0.tar.gz
+	sha256sums = cb656162767e5ef5c3eaf882b62e8b482753962eb8f73794f38c1a1f591324a9
 
 pkgname = libinput-epp
 	optdepends = libinput-epp-tools: debug utilities
-	provides = libinput=1.31.3
+	provides = libinput=1.32.0
 	provides = libinput
 	provides = libinput.so
 	conflicts = libinput
@@ -51,6 +51,6 @@ pkgname = libinput-epp-tools
 	depends = python-yaml
 	depends = systemd-libs
 	depends = wayland
-	provides = libinput-tools=1.31.3
+	provides = libinput-tools=1.32.0
 	provides = libinput-tools
 	conflicts = libinput-tools

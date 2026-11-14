@@ -5,8 +5,8 @@ pkgname=(
   libinput-epp
   libinput-epp-tools
 )
-pkgver=1.31.3
-pkgrel=2
+pkgver=1.32.0
+pkgrel=1
 pkgdesc="Replaces Adaptive acceleration with Windows' Enhance Pointer Precision"
 url="https://gitlab.freedesktop.org/tehabstract/libinput-epp"
 arch=(x86_64)
@@ -37,7 +37,7 @@ makedepends=(
 checkdepends=(python-pytest)
 
 source=("libinput-epp-${pkgver}.tar.gz::https://gitlab.freedesktop.org/tehabstract/libinput-epp/-/archive/${pkgver}/libinput-epp-${pkgver}.tar.gz")
-sha256sums=('73e4f7430e97aff268980cb8d669b750e9cc2e2f4b863007a7e51af99e975b03')
+sha256sums=('cb656162767e5ef5c3eaf882b62e8b482753962eb8f73794f38c1a1f591324a9')
 
 build() {
   local meson_options=(
