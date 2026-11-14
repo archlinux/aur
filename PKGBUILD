@@ -2,10 +2,12 @@
 
 pkgname=python-transformer-engine
 _pkgname=TransformerEngine
-pkgver=2.20.2
+pkgver=2.21.0
 pkgrel=1
 pkgdesc='NVIDIA Transformer Engine: accelerated transformer training/inference with FP8 on Hopper+ GPUs (PyTorch backend)'
 arch=('x86_64')
+# Preserve the native wheel payload hashes recorded in dist-info/RECORD.
+options=('!strip')
 url='https://github.com/NVIDIA/TransformerEngine'
 license=('Apache-2.0')
 depends=(
@@ -20,13 +22,13 @@ depends=(
   'python-nvdlfw-inspect'
   'python-triton'
   'python-einops'
-  'python-cudnn-frontend>=1.28.0'
+  'python-cudnn-frontend>=1.29.0'
   'glibc'
   'libgcc'
   'libstdc++'
   'cuda>=12.1'
-  'cudnn>=9.3'
-  'nccl>=2.30.4'
+  'cudnn>=9.12'
+  'nccl'
   'nvidia-utils'
 )
 makedepends=(
@@ -34,12 +36,12 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-setuptools>=61.0'
-  'cmake>=3.21'
+  'cmake'
   'ninja'
   'pybind11'
   'gcc15'
   'git'
-  'cudnn-frontend>=1.28.0'
+  'cudnn-frontend>=1.29.0'
 )
 checkdepends=('python-pytest>=8.2.1')
 # Git sources: main repo at the release tag plus every pinned submodule. The
@@ -48,7 +50,7 @@ source=(
   "git+https://github.com/NVIDIA/TransformerEngine.git#tag=v${pkgver}"
   "te-cutlass::git+https://github.com/NVIDIA/cutlass.git#commit=cdcf8d86daa9b417840fd99875a1b1af685d389d"
   "te-googletest::git+https://github.com/google/googletest.git#commit=f8d7d77c06936315286eb55f8de22cd23c188571"
-  "te-nccl::git+https://github.com/NVIDIA/nccl-extensions.git#commit=a9f207c2263b4af1622a1d902b3e608fe17be0eb"
+  "te-nccl::git+https://github.com/NVIDIA/nccl-extensions.git#commit=998d9223e00c20ee515ceeccf4f0f086ee8038cd"
   'nccl-ep-nvcc-ldflags.patch'
 )
 sha256sums=('SKIP'
@@ -164,7 +166,7 @@ from importlib.metadata import version
 
 from transformer_engine.common.recipe import DelayedScaling, Format
 
-assert version("transformer_engine") == "2.20.2"
+assert version("transformer_engine") == "2.21.0"
 
 recipe = DelayedScaling(
     margin=2,
