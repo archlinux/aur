@@ -1,7 +1,7 @@
 pkgbase = wiredpanda
 	pkgdesc = Software designed to help students learn about logic circuits and simulate them in an easy and friendly way
 	pkgver = 5.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gibis-unifesp.github.io/wiRedPanda/
 	arch = x86_64
 	arch = aarch64

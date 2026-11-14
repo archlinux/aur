@@ -1,7 +1,7 @@
 # Maintainer: João Pedro Oliveira <oliveira.joao@unifesp.br>
 pkgname=wiredpanda
 pkgver=5.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Software designed to help students learn about logic circuits and simulate them in an easy and friendly way"
 arch=('x86_64' 'aarch64')
 url="https://gibis-unifesp.github.io/wiRedPanda/"
@@ -19,6 +19,7 @@ build() {
 
 check() {
     cd "wiRedPanda-${pkgver}"
+    export HOME="$(mktemp -d)"
     export QT_QPA_PLATFORM=offscreen
     ctest --preset release --output-on-failure -LE gui
 }
