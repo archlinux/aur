@@ -1,0 +1,8 @@
+post_install() {
+    printf '%s\n' \
+        'To enable idle/session integration from your graphical session:' \
+        '  systemctl --user enable --now aerial-idle.service' \
+        'No inactivity timeout is enabled by default. For a five-minute example,' \
+        'see /usr/share/aerial-lock/examples/idle.json and merge its idle object' \
+        'into your config. Lock-on-suspend and logind lock/unlock default to on.'
+}
