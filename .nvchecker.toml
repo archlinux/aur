@@ -1,0 +1,3 @@
+[alhp-keyring]
+source = "git"
+git = "https://somegit.dev/ALHP/alhp-keyring.git"
