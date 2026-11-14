@@ -1,6 +1,6 @@
 pkgbase = youtube-video-downloader
 	pkgdesc = Fast desktop front-end for yt-dlp with a download queue (Tauri)
-	pkgver = 2.0.2
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/RamazanBerk20/youtube-video-downloader
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = youtube-video-downloader
 	optdepends = xdg-utils: open the output folder and links in the default handler
 	options = !debug
 	options = !lto
-	source = youtube-video-downloader-2.0.2.tar.gz::https://github.com/RamazanBerk20/youtube-video-downloader/archive/refs/tags/v2.0.2.tar.gz
-	sha256sums = 0fab228cce7705199b51eed130adad907dcc9bd99d37a51e4c5709b9be218bef
+	source = youtube-video-downloader-2.1.0.tar.gz::https://github.com/RamazanBerk20/youtube-video-downloader/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = e5a0e75c430a09257d26f5129e5150fb83a215043933e1133ba57279d5da8920
 
 pkgname = youtube-video-downloader
