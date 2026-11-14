@@ -3,7 +3,7 @@
 # Contributor: Lindasy Zhou <i@lin.moe>
 
 pkgname=memos-git
-pkgver=r4946.d0c6e2a
+pkgver=r4947.063fafb
 pkgrel=1
 epoch=1
 pkgdesc='Privacy-first, lightweight note-taking service (git version)'

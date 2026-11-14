@@ -1,6 +1,6 @@
 pkgbase = memos-git
 	pkgdesc = Privacy-first, lightweight note-taking service (git version)
-	pkgver = r4946.d0c6e2a
+	pkgver = r4947.063fafb
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/usememos/memos
