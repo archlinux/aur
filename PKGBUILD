@@ -3,7 +3,7 @@
 # Package for installing the Wazuh agent but it is built from scratch instead
 # of copying files from the official RPM/DEB packages.
 pkgname=wazuh-agent-src
-pkgver=4.14.8
+pkgver=4.14.10
 pkgrel=1
 pkgdesc="Wazuh agent for endpoints providing threat prevention, detection, and response capabilities"
 arch=('x86_64')
@@ -44,7 +44,7 @@ source=(
   ossec.conf
 )
 sha512sums=(
-  '5d09ac784ad2bbca9bc21c4bded967187430bb5eb8bb8399728faeb48f50a7f631855346656ae3d7f4c965c18f66e4aeb06c09b92fe0c32ea180eebaa622d0f2'
+  'b8a6b7234bca91f3cf359c448189a41b9653279fb82a1b1c5ee02a61dbf3e18b494d19a074e1403d7e11cfcb6cf8cf94883df9a1d92d92b8e4ee992bd1ef21ba'
   '13e8779f5e54fc444124d29d3c26f8ceda11bfd40c4ff995a68492a8ebd6cc3ecf906e7f109bf9860bef1e8dff390fb0a3e2c61e4c597f47dc9f0f36b39f1099'
   '1a4e31e0a18371dc4fec65a388b3a8c54d3e69e2413c1584394a1c2108ade261d81e63a31dff081003a3e8913b461b0aa18c4d9f070ea2fe5921f3372238b3fd'
   'e239572016b45a1514b0b35cbb7c3525de62c4395069277c7568616acda082c83a40f5760fef70dded262a1d611b65965037a0ec3884e0142c758424016e3563'
