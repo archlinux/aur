@@ -18,9 +18,8 @@ SKYENV=${SKYENV:-/etc/skywire.conf}
 #   "develop"         = latest develop branch commit (default, source-build)
 #   "latest"          = latest tagged release version (source-build)
 #   "<commit-hash>"   = pin to a specific commit (source-build)
-#   "binary"          = download prebuilt binary for BINARY_BRANCH (default develop)
+#   "binary"          = download the prebuilt develop-latest binary
 #   "binary-develop"  = download prebuilt binary from the develop-latest release
-#   "binary-master"   = download prebuilt binary from the master-latest release
 #
 # NOTE: the old "stable" channel (resolve a CI-promoted SHA from the
 # skywire-commit branch via `go run .../cmd/skywire-commit@skywire-commit`) was
@@ -38,11 +37,6 @@ UPDATE_CHANNEL=${UPDATE_CHANNEL:-develop}
 #   "direct"    = only fetch directly from git
 #   "proxy"     = only use the default proxy (never direct)
 GOPROXY_MODE=${GOPROXY_MODE:-}
-
-# BINARY_BRANCH selects which rolling pre-release the binary channel pulls
-# from: "develop" -> develop-latest (default), "master" -> master-latest.
-# UPDATE_CHANNEL=binary-develop / binary-master override this per-run.
-BINARY_BRANCH=${BINARY_BRANCH:-develop}
 
 # WASM_MODULE_UPDATE=true keeps the js/wasm module beside the binary
 # (/opt/skywire/bin/skywire.wasm.gz) at the rolling release's on every run of
@@ -153,9 +147,9 @@ post_install() {
 # Binary channel: download a prebuilt binary from the rolling CI pre-release
 # instead of compiling from source. Needs no Go toolchain and no build user.
 # Assets are published by skycoin/skywire CI (.github/workflows/publish-binary.yml)
-# to the develop-latest / master-latest pre-release tags on every merge:
-#   https://github.com/skycoin/skywire/releases/download/<branch>-latest/skywire-linux-<arch>.zst
-#   https://github.com/skycoin/skywire/releases/download/<branch>-latest/SHA256SUMS
+# to the develop-latest pre-release tag on every merge to develop:
+#   https://github.com/skycoin/skywire/releases/download/develop-latest/skywire-linux-<arch>.zst
+#   https://github.com/skycoin/skywire/releases/download/develop-latest/SHA256SUMS
 # install_wasm_module brings the js/wasm module beside the binary up to the
 # one published at $1, checked against the sha256 in its manifest.
 install_wasm_module() {
@@ -196,12 +190,7 @@ install_binary() {
         *) fail "unsupported architecture '$_uarch' — no prebuilt binary asset (use a source-build channel instead)" ;;
     esac
 
-    # Resolve the rolling tag. BINARY_BRANCH is the default; the
-    # binary-develop / binary-master channel names override it per-run.
-    local _branch="$BINARY_BRANCH"
-    [ "$UPDATE_CHANNEL" = "binary-develop" ] && _branch="develop"
-    [ "$UPDATE_CHANNEL" = "binary-master" ] && _branch="master"
-    local _tag="${_branch}-latest"
+    local _tag="develop-latest"
     local _base="https://github.com/skycoin/skywire/releases/download/${_tag}"
     local _asset="skywire-linux-${_arch}.zst"
 
@@ -298,7 +287,7 @@ install_binary() {
 # no build user, no Go toolchain, no cache pruning.
 # ---------------------------------------------------------------------------
 case "$UPDATE_CHANNEL" in
-  binary|binary-develop|binary-master)
+  binary|binary-develop)
     install_binary
     exit 0
     ;;
