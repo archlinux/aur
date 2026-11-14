@@ -2,7 +2,7 @@
 # Contributor: abcabc0330 <liqiang0330@gmail.com>
 
 pkgname=dsh-gtk
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Native GTK3 + WebKitGTK window for the dsh web UI with StatusNotifierItem tray residency"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('pkg-config')
 provides=('dsh-gtk')
 conflicts=('dsh-gtk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/abcabc0330/dsh-gtk/archive/v$pkgver.tar.gz")
-sha256sums=('7eade0304178646f8a4b00b62f1eb26d31ab7e93d077ca8199e106980f8212a9')
+sha256sums=('1ebac49d034fe20283a8dc837a0358f89bfad9ac4ef4e8d30c01300327c638e4')
 
 
 prepare() {
