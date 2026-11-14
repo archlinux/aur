@@ -2,7 +2,7 @@
 
 _name=livekit-api
 pkgname=python-$_name
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Python Server API for LiveKit.'
 arch=('any')
@@ -21,10 +21,10 @@ makedepends=('python-hatchling'
              'python-installer')
 checkdepends=('python-pytest')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/api-v$pkgver.tar.gz")
-sha256sums=('cf106221fdacf0eeed270b90aef27420c509dd69428f38ed5b0198945b7d62eb')
+sha256sums=('86d393b465bb828121418787e4c2d7024ea4152e849212f7d9e015ab1395144d')
 
 build() {
-  cd "$srcdir"/python-sdks-${_name//livekit-/}-v$pkgver
+  cd "python-sdks-${_name//livekit-/}-v$pkgver"
   python -m build --wheel --no-isolation $_name
 }
 
@@ -33,11 +33,11 @@ check() {
     -vv
     --disable-warnings
   )
-  cd "$srcdir"/python-sdks-${_name//livekit-/}-v$pkgver
+  cd "python-sdks-${_name//livekit-/}-v$pkgver"
   PYTHONPATH=$PWD/$_name pytest "${pytest_options[@]}" tests/${_name//livekit-/}
 }
 
 package() {
-  cd "$srcdir"/python-sdks-${_name//livekit-/}-v$pkgver
+  cd "python-sdks-${_name//livekit-/}-v$pkgver"
   python -m installer --destdir="$pkgdir" $_name/dist/*.whl
 }
