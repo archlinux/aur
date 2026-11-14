@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=system-monitoring-center
-pkgver=3.4.1
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="Multi-featured system monitor"
 arch=('any')
 url="https://github.com/hakandundar34coding/system-monitoring-center"
@@ -22,6 +22,7 @@ depends=(
 )
 makedepends=('meson')
 checkdepends=(
+  'appstream'
   # 'appstream-glib'  ## test commented out in data/meson.build
   'desktop-file-utils'
 )
@@ -31,7 +32,14 @@ optdepends=(
   'xorg-xrandr: for more accurate screen resolution and refresh rate detection'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('abe601aaa8f6a3beea2874292931d8b0bf43ecb17a75f605feb8b4b08b4708e5')
+sha256sums=('5f81f1b8f0a6b12a4e7179b7545d1f7a164923f480263d72091fecde3d7e90d4')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  # Use metainfo instead of deprecated appdata directory
+  sed -i "s/('datadir'), 'appdata')/('datadir'), 'metainfo')/g" data/meson.build
+}
 
 build() {
   arch-meson "$pkgname-$pkgver" build
@@ -40,6 +48,8 @@ build() {
 
 check() {
   meson test -C build --no-rebuild --print-errorlogs
+
+  appstreamcli validate --no-net build/data/*.appdata.xml
 }
 
 package() {

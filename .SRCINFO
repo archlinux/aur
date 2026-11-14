@@ -1,10 +1,11 @@
 pkgbase = system-monitoring-center
 	pkgdesc = Multi-featured system monitor
-	pkgver = 3.4.1
-	pkgrel = 2
+	pkgver = 3.5.0
+	pkgrel = 1
 	url = https://github.com/hakandundar34coding/system-monitoring-center
 	arch = any
 	license = GPL-3.0-or-later
+	checkdepends = appstream
 	checkdepends = desktop-file-utils
 	makedepends = meson
 	depends = dmidecode
@@ -22,7 +23,7 @@ pkgbase = system-monitoring-center
 	optdepends = amdgpu_top: for video engine load on GPU tab and per-process GPU usage, GPU memory columns on Processes tab
 	optdepends = raspberrypi-utils: for physical RAM size, GPU frequency and video memory information on Raspberry Pi devices
 	optdepends = xorg-xrandr: for more accurate screen resolution and refresh rate detection
-	source = system-monitoring-center-3.4.1.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v3.4.1.tar.gz
-	sha256sums = abe601aaa8f6a3beea2874292931d8b0bf43ecb17a75f605feb8b4b08b4708e5
+	source = system-monitoring-center-3.5.0.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v3.5.0.tar.gz
+	sha256sums = 5f81f1b8f0a6b12a4e7179b7545d1f7a164923f480263d72091fecde3d7e90d4
 
 pkgname = system-monitoring-center
