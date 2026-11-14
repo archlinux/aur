@@ -1,15 +1,16 @@
 # Maintainer: Remy Huang <me@remya.top>
 pkgname=remya-bar-bin
 _app_id=remya_bar
-_upstream_ver=0.1.0-dev.20261111.0
-pkgver=0.1.0_dev.20261111.0
+_upstream_ver=0.1.0
+pkgver=0.1.0
 pkgrel=1
+epoch=1
 pkgdesc="A Material Design 3 Expressive desktop bar for Hyprland on Linux"
 arch=('x86_64')
 url="https://github.com/remyhuang03/remya-bar"
 license=('LicenseRef-PolyForm-Noncommercial-1.0.0')
 depends=(
-  'remya-settings-bin'
+  'remya-core'
   'gtk3'
   'gtk-layer-shell>=0.6'
   'inter-font'
@@ -21,11 +22,11 @@ depends=(
   'gcc-libs'
 )
 provides=("remya-bar=${pkgver}")
-conflicts=('remya-bar')
+conflicts=('remya-bar' 'remya-bar-git')
 optdepends=('nvidia-utils: NVIDIA GPU metrics' 'noto-fonts-cjk: CJK font coverage')
 options=('!strip')
 source=("${_app_id}-${_upstream_ver}-linux-x86_64.tar.zst::${url}/releases/download/v${_upstream_ver}/${_app_id}-${_upstream_ver}-linux-x86_64.tar.zst")
-sha256sums=('79bfe3d7a05f89d7cddb498df771411ab5a4bd7b3a6e8a464cc970e428f088df')
+sha256sums=('39f9e2dd60e154e2002460299def5f04b0efa1e8714cb61501b11d2792858067')
 
 package() {
   cd "${srcdir}/${_app_id}-${_upstream_ver}-linux-x86_64"
@@ -40,7 +41,8 @@ package() {
 
   install -Dm644 "linux/packaging/top.remya.bar.desktop" \
     "${pkgdir}/usr/share/applications/top.remya.bar.desktop"
-  install -Dm644 "assets/icons/bar.svg" \
+  install -Dm644 "linux/packaging/remya-bar.json" "${pkgdir}/usr/share/remya/apps/remya-bar.json"
+  install -Dm644 "assets/icons/app_icon.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/top.remya.bar.svg"
 
   install -d "${pkgdir}/usr/lib/systemd/user"
@@ -49,8 +51,8 @@ package() {
 Description=Remy'a Bar
 PartOf=graphical-session.target
 After=graphical-session.target
-Wants=top.remya.settings.service
-After=top.remya.settings.service
+Wants=top.remya.core.service
+After=top.remya.core.service
 
 [Service]
 ExecStart=/usr/bin/remya_bar

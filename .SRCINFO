@@ -1,11 +1,12 @@
 pkgbase = remya-bar-bin
 	pkgdesc = A Material Design 3 Expressive desktop bar for Hyprland on Linux
-	pkgver = 0.1.0_dev.20261111.0
+	pkgver = 0.1.0
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/remyhuang03/remya-bar
 	arch = x86_64
 	license = LicenseRef-PolyForm-Noncommercial-1.0.0
-	depends = remya-settings-bin
+	depends = remya-core
 	depends = gtk3
 	depends = gtk-layer-shell>=0.6
 	depends = inter-font
@@ -17,10 +18,11 @@ pkgbase = remya-bar-bin
 	depends = gcc-libs
 	optdepends = nvidia-utils: NVIDIA GPU metrics
 	optdepends = noto-fonts-cjk: CJK font coverage
-	provides = remya-bar=0.1.0_dev.20261111.0
+	provides = remya-bar=0.1.0
 	conflicts = remya-bar
+	conflicts = remya-bar-git
 	options = !strip
-	source = remya_bar-0.1.0-dev.20261111.0-linux-x86_64.tar.zst::https://github.com/remyhuang03/remya-bar/releases/download/v0.1.0-dev.20261111.0/remya_bar-0.1.0-dev.20261111.0-linux-x86_64.tar.zst
-	sha256sums = 79bfe3d7a05f89d7cddb498df771411ab5a4bd7b3a6e8a464cc970e428f088df
+	source = remya_bar-0.1.0-linux-x86_64.tar.zst::https://github.com/remyhuang03/remya-bar/releases/download/v0.1.0/remya_bar-0.1.0-linux-x86_64.tar.zst
+	sha256sums = 39f9e2dd60e154e2002460299def5f04b0efa1e8714cb61501b11d2792858067
 
 pkgname = remya-bar-bin
