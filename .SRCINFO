@@ -1,6 +1,6 @@
 pkgbase = jukebox-cli
 	pkgdesc = Music player that lives in the terminal. Local music, YouTube search and live radio in one queue. Download only when you choose.
-	pkgver = 1.8.2
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/funstuie-bit/JukeboxCli
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = jukebox-cli
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = jukebox-cli-1.8.2.tgz::https://github.com/funstuie-bit/JukeboxCli/archive/v1.8.2.tar.gz
-	b2sums = f085f85c126468053ef079253baa637b6cd46e2cb6adee171b508f662e3f4f4193803c8a80f4c31ae485836388a36ed0609dd3c02f9dedd3c70558b9fcaa7ba7
+	source = jukebox-cli-1.9.0.tgz::https://github.com/funstuie-bit/JukeboxCli/archive/v1.9.0.tar.gz
+	b2sums = aa7480155c61efb557fc1e24f407b7f5d0625f78b9105e888b40ad72647e433145a80481e008f5448df054a8c70ad1b8b7a91c478b51d54688bac8ff834315b4
 
 pkgname = jukebox-cli
