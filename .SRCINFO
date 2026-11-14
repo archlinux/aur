@@ -1,0 +1,16 @@
+pkgbase = jfsh-git
+	pkgdesc = Terminal client for Jellyfin, plays videos through mpv
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/hacel/jfsh
+	arch = x86_64
+	license = Unlicense
+	makedepends = go
+	makedepends = git
+	depends = mpv
+	provides = jfsh
+	conflicts = jfsh
+	source = jfsh-git::git+https://github.com/hacel/jfsh.git
+	sha256sums = SKIP
+
+pkgname = jfsh-git
