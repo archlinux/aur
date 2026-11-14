@@ -3,20 +3,25 @@
 pkgname=python-pyssim
 _name=${pkgname#python-}
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Module for computing Structured Similarity Image Metric (SSIM) in Python'
 arch=(any)
 url='https://github.com/jterrace/pyssim'
 license=(MIT)
-depends=(python python-pillow python-scipy python-numpy)
+depends=(python python-pillow python-scipy python-numpy python-pywavelets)
 makedepends=(python-build python-installer python-wheel python-setuptools)
-checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('06b07a0bb10fd4e0c556b3f0f2d3eda9fdbcc49b9a0e519b1acbddee01f1e670c4233c4a6b8766eeff3d0682a52d4518174f749ef965ce32fbe434ab5b0c32f8')
 
 build() {
   cd $_name-$pkgver
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd $_name-$pkgver
+  # there is no test suite; like upstream CI, compare an image with itself
+  python -m ssim test-images/test1-1.png test-images/test1-1.png | grep -qx 1
 }
 
 package() {
