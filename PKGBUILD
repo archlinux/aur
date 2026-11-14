@@ -1,25 +1,28 @@
-# Maintainer: Koolaid <hasoy678@gmail.com>
+# Maintainer: Koolaid <hasoy678 at gmail dot com>
 
 pkgname=metrolist-desktop-bin
 pkgver=14.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="YouTube Music client for desktop"
 arch=('x86_64')
 url="https://github.com/MetrolistGroup/Metrolist"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 depends=('fuse2')
 options=('!strip')
+noextract=("metrolist-${pkgver}.AppImage")
 source=(
   "metrolist-${pkgver}.AppImage::https://github.com/MetrolistGroup/Metrolist/releases/download/v${pkgver}/metrolist-desktop-linux-x64-${pkgver}.AppImage"
   'metrolist'
   'metrolist.desktop'
   'LICENSE'
+  'metrolist.png'
 )
 sha256sums=(
   '0e75981e7a805ce669290edfb5537b96a4ac8951c2c3e6a50f00ed2b7896045f'
   '7e3493f95a180616ce9520273676af5849de2c912471e3e24ae8da08b3391c9e'
-  '5cf901097170fa63b0d5a10bb9ec12adb93a084654724b84dbbec708e35fcf56'
+  'b708baf8e479d2b0d94604dfa3f0c977416f9b09255da857c5b10686c703aedd'
   '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+  'f0d70d56d2362c5f567ae732ffcd67a7376f7902b79ca2b60f95e08166ffa367'
 )
 
 package() {
@@ -31,4 +34,6 @@ package() {
     "$pkgdir/usr/share/applications/metrolist.desktop"
   install -Dm644 "$srcdir/LICENSE" \
     "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "$srcdir/metrolist.png" \
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/metrolist.png"
 }
