@@ -1,0 +1,20 @@
+pkgbase = llama.cpp-cuda-bin
+	pkgdesc = llama.cpp upstream prebuilt binaries with the CUDA backend
+	pkgver = b12380
+	pkgrel = 1
+	url = https://github.com/ggml-org/llama.cpp
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl-3
+	depends = cuda
+	depends = nvidia-utils
+	provides = llama.cpp
+	conflicts = llama.cpp
+	options = !strip
+	options = !debug
+	source = https://github.com/ggml-org/llama.cpp/releases/download/b12380/llama-b12380-bin-ubuntu-cuda-13.5-x64.tar.gz
+	sha256sums = 65218bdd9a5658d55ac66377087e2eb382d94ae1075bc3c245e8f063f85ec89e
+
+pkgname = llama.cpp-cuda-bin
