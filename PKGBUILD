@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=oasdiff-bin
-pkgver=1.37.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Diff and breaking changes for OpenAPI specifications (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('oasdiff')
 _release="${url}/releases/download/v${pkgver}"
 source_x86_64=("${_release}/oasdiff_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${_release}/oasdiff_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('eac87307d31d08c36800c58a409c247f1c5db37fbb72e2544402f22a87cbca3c')
-sha256sums_aarch64=('072a425ac647ecf2808721e91293fd644cee7935d2b32e650b3158539b2c7898')
+sha256sums_x86_64=('613037fd6a1d3362a1b742d6d86c338c0eb5ab3511f4942ce3948e78720ea2da')
+sha256sums_aarch64=('a5ebb16d90f729f6b436a92d3054c11ba5633ddfb639dfdfb64b0023cd03680c')
 
 build() {
   for shell in bash fish zsh; do
