@@ -1,37 +1,30 @@
-# Maintainer: gameslayer
-# Co-Maintainer: Felitendo
-# This PKGBUILD is updated automatically:
-# https://github.com/Felitendo/PKGBUILDS
-
-pkgname=recomplauncher-bin
-pkgver=0.90.0.44
+pkgname="recomplauncher-bin"
+pkgver=0.90.0.45
 pkgrel=1
-pkgdesc="Finds, installs, updates and starts recompiled and decompiled PC games (upstream binary)"
+pkgdesc="PC recomps, all in one place. Find, install, update and play PC recomps from one launcher."
 arch=('x86_64')
 url="https://github.com/elripalda/RecompLauncher"
-license=('GPL-3.0-or-later')
-# What the binary links (readelf -d), plus what it loads at run time:
-# the tray library and libudev for controllers.
-depends=('cairo' 'dbus' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme'
-         'libayatana-appindicator' 'libgcc' 'libsoup3' 'libstdc++' 'systemd-libs'
-         'webkit2gtk-4.1')
-optdepends=('umu-launcher: run Windows games with Proton through umu-run'
-            'xdg-utils: open links and folders'
-            'zenity: the Winetricks window')
-provides=('recomplauncher')
-conflicts=('recomplauncher')
-options=('!strip' '!debug')
-# Upstream tags betas as v0.90.0-beta.42. pkgver keeps the form the AUR
-# package already had (0.90.0.42); pkg.sh keeps _tag in sync.
-_tag="v0.90.0-beta.44"
-source=("${pkgname}-${pkgver}.deb::${url}/releases/download/${_tag}/RecompLauncher_${_tag#v}_amd64.deb")
-noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('88b2b30415eebb7c7fdb4aefbc4eafe86c317799758371656c321d58a74096a8')
+license=('GPL 3.0')
+source=("RecompLauncher.desktop" "https://github.com/elripalda/RecompLauncher/releases/download/v${pkgver%.*}-beta.${pkgver##*.}/RecompLauncher_${pkgver%.*}-beta.${pkgver##*.}_amd64.AppImage")
+sha256sums=('3e775eee4f97fccac2bc634e042ecd0337ff487c49f20a00d758adb9a06e57cd'
+            '3a66467992affe5f93bda756a7f44fb3ed8fc0355cdd293f19c845eb356bd6e7')
 
-package() {
-  bsdtar -xOf "$srcdir/${pkgname}-${pkgver}.deb" 'data.tar.*' \
-    | bsdtar -xpf - -C "$pkgdir" ./usr
+package(){
+    install -dm755 "$pkgdir/usr/bin"
+    install -dm755 "$pkgdir/usr/lib"
+    install -dm755 "$pkgdir/usr/share"
 
-  # no icon theme reads 256x256@2, and the icon in it is 256px
-  mv "$pkgdir/usr/share/icons/hicolor/256x256@2" "$pkgdir/usr/share/icons/hicolor/256x256"
+    chmod +x "$srcdir/RecompLauncher_${pkgver%.*}-beta.${pkgver##*.}_amd64.AppImage"
+    "$srcdir/RecompLauncher_${pkgver%.*}-beta.${pkgver##*.}_amd64.AppImage" --appimage-extract
+
+    install -Dm755 "$srcdir/squashfs-root/usr/bin/recomplauncher" "$pkgdir/usr/bin"
+    rm -rf "$srcdir/squashfs-root/usr/share/doc" \
+           "$srcdir/squashfs-root/usr/share/glib-2.0"
+    cp -a "$srcdir/squashfs-root/usr/share/." "$pkgdir/usr/share/"
+    find "$pkgdir/usr/share" -type d -exec chmod 755 {} +
+
+    # Desktop Entry
+    install -Dm644 "$srcdir/RecompLauncher.desktop" \
+        "$pkgdir/usr/share/applications/RecompLauncher.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/RecompLauncher.desktop"
 }
