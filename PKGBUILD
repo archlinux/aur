@@ -2,11 +2,10 @@
 # Maintainer: sukanka
 
 _pkgname=linuxqq
-_base_pkgver=3.2.34-53644
+_base_pkgver=3.2.35-54395
 _update_pkgver=${_base_pkgver}
-#_md5=08c52833
-_nt_ver=9.9.36
-_md5=9ee04bef
+_nt_ver=9.9.37
+_md5=816b3c79
 pkgname=linuxqq-nt-bwrap
 pkgver="${_update_pkgver//-/_}"
 pkgrel=1
@@ -41,9 +40,9 @@ sha256sums=('2748a351259d378ab9773000cbf1ea0448de5ae92f28bb9e366fa795e1715739'
             'bb2ec0f104da4da7422d9b0f51c71d0ab38ed2a21764a7a643ab42689e098e4b'
             'cc002ee0eb2e8702c97d16f4ce628841cd5fe10195875a075432e92248741424'
             'f1c778b5a8b23bc77fd8e5e89056fea07309794c9a44ec38134a176cf1f7b675')
-sha256sums_x86_64=('436c65e1dd28422e128a21cbddb5fe4e2e6c079d7f27fec2541e014d38cc336e')
-sha256sums_aarch64=('181b895cb573548e396e54bb0548cca92ffdc1b1a4b018fa4551bb062385fdca')
-sha256sums_loong64=('9b6c9c2a6003de9cb6bd52a58747e955119e25f0de2310ee8961033abffb454c')
+sha256sums_x86_64=('7de03862327abbd16da27130413698c9517782b27194afc593bc3abf9b55f9ac')
+sha256sums_aarch64=('5f93ea62347dd772c7be4115413c95d2a60d189f3dd81bc194834bd4d7343cf2')
+sha256sums_loong64=('e41dcfcf6729610e5db9a5090964fb01f4487f85f27858301f0c9d3eee747d58')
 
 prepare() {
     local base_ver=${_base_pkgver}
