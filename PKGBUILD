@@ -11,7 +11,7 @@ makedepends=('dotnet-sdk')
 conflicts=('openmediabridge-bin')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alexvermaning0/OpenMediaBridge/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c9926a923f933e175c220f8b3bb250271d783392f2d714f13aea94d2edbbe2f4')
+sha256sums=('f8d8c7f23ce1fc07c3da51d1a775babc3289100e02b0a7f5ae1ab5c1292b585c')
 
 build() {
     cd "${srcdir}/OpenMediaBridge-${pkgver}"
