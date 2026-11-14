@@ -2,7 +2,7 @@
 
 pkgname=ed-up-installer-bin
 pkgver=0.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc='ED Unofficial Patch (ED-UP, formerly EDVR): unofficial fixes and DLSS/FSR/XeSS upscaling for Elite Dangerous in VR and flat'
 arch=('any')
 url='https://github.com/characterecho-sean/ed-unofficial-patch'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 optdepends=('steam: Elite Dangerous runs through its Proton')
 provides=('edvr-installer-bin')
-#conflicts=('edvr-installer-bin')
+conflicts=('edvr-installer-bin')
 replaces=('edvr-installer-bin')
 install=$pkgname.install
 source=("https://github.com/characterecho-sean/ed-unofficial-patch/releases/download/v$pkgver/ed-up-installer-linux-$pkgver.zip"
