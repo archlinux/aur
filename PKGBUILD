@@ -37,7 +37,7 @@
 # The Widevine CDM is not in this package: Chromium downloads it from Google on first use.
 
 pkgname=uzumaki
-pkgver=0.1.1
+pkgver=0.2.0
 # The upstream build: 1 is tag v<version>, a rebuild of the same version is v<version>-<build>
 # (tarball uzumaki-<version>-<build>.tar.gz, still unpacking to uzumaki-<version>/).
 _build=1
@@ -87,6 +87,7 @@ depends=(
 optdepends=(
   'vulkan-driver: GPU drawing (vulkan-radeon, vulkan-intel or nvidia-utils)'
   'libsecret: Chromium can store its cookies encrypted with the keyring'
+  'ffmpeg: animated album artwork (without it the covers stay still)'
 )
 # cargo is provided by rust and by rustup (rustup users need a default toolchain). git: npm
 # fetches castLabs Electron from its git repository.
@@ -94,7 +95,7 @@ makedepends=('cargo' 'npm' 'git' 'pkgconf')
 options=('!lto')
 source=("$pkgname-$_rel.tar.gz::https://github.com/hanami117/uzumaki/releases/download/v$_rel/uzumaki-$_rel.tar.gz")
 # The tarball's sha256 (packaging/release.sh prints it; uzumaki-<version>.tar.gz.sha256 on the release).
-sha256sums=('a7e0831634566b3852343737a192c08b6213e4e761c74bec7c6c5e82d13abb02')
+sha256sums=('3fe6d067539681a4d038b45de354126a693b0fdc6a6dac75b3f8a5c37eabe8e5')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -132,7 +133,7 @@ package() {
 
   # The bridge, as install.sh copies it.
   install -dm755 "$lib/bridge"
-  install -m644 bridge/main.js bridge/preload.js bridge/signin.js bridge/package.json \
+  install -m644 bridge/main.js bridge/preload.js bridge/signin.js bridge/airplay.js bridge/package.json \
     bridge/package-lock.json bridge/.npmrc "$lib/bridge/"
   cp -a --no-preserve=ownership bridge/node_modules "$lib/bridge/"
   # Electron's zip has group-writable files (rwxrwxr-x); root-owned files shouldn't be.
