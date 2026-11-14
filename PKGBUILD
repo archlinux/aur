@@ -2,7 +2,7 @@
 # This file is rendered by .github/workflows/release.yml — pkgver and
 # sha256sums are substituted there before the package is pushed to the AUR.
 pkgname=rsusage
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Blazing fast usage reports for coding agents - a Rust rewrite of ccusage"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ conflicts=('rsusage-bin')
 # (mimalloc/sqlite) that rust-lld cannot read -> undefined mi_* symbols
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f08effee1cc2c061387857dfd7c412494e3890f61723efb807051e9855ad3dbb')
+sha256sums=('f82e44724275eca5656903b654dd77d19a024e6c862f658f45caa0e2054f3981')
 
 build() {
     cd "$pkgname-$pkgver"
