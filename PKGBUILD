@@ -1,7 +1,7 @@
 # Maintainer: Carlos Prieto Ortiz <prietus@live.com>
 
 pkgname=waymobar
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Wayland status bar written and configured in Haskell, with rivermonad widgets'
 url='https://github.com/prietus/waymobar'
@@ -9,12 +9,14 @@ arch=('x86_64' 'aarch64')
 license=('BSD-3-Clause')
 # ghc: ~/.config/waymobar/waymobar.hs is compiled at run time, against the
 # library this package also installs (like xmobar/xmonad).
-depends=('ghc' 'ghc-libs' 'haskell-network' 'cairo' 'pango' 'gdk-pixbuf2' 'libpulse')
+depends=('ghc' 'ghc-libs' 'haskell-network' 'cairo' 'pango' 'glib2' 'gdk-pixbuf2' 'libpulse')
 optdepends=('rivermonad: workspaces, layout and window title widgets'
+            'curl: weather and calendar widgets'
             'ttf-nerd-fonts-symbols: icons'
+            'ttf-material-symbols-variable: icons (the ones of rivermonad-dotfiles)'
             'libnotify: notifications when the configuration fails to compile')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('77539a0593a6a174fcfd6ab359f709a6452e0af26852256f400300f41a34d6b1')
+sha256sums=('201d0fe9b91a8523f1d325b7ab6eb0e81680cec166259b4575de785a0e30e301')
 
 build() {
   cd $pkgname-$pkgver
