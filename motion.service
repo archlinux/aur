@@ -1,17 +1,22 @@
 [Unit]
 Description=Motion daemon
-After=local-fs.target network.target
+After=local-fs.target network.target modprobe@videodev.service
+# DeviceAllow= only resolves char-video4linux while videodev is loaded
+Wants=modprobe@videodev.service
 
 [Service]
 User=motion
 ExecStart=/usr/bin/motion -n
 Type=simple
 StandardError=null
+StateDirectory=motion
+StateDirectoryMode=0700
 
 ProtectSystem=strict
 ProtectHome=true
 PrivateTmp=true
-PrivateDevices=true
+DevicePolicy=closed
+DeviceAllow=char-video4linux rw
 ProtectKernelTunables=true
 ProtectControlGroups=true
 NoNewPrivileges=true
