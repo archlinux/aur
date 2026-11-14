@@ -1,0 +1,21 @@
+pkgbase = shotlet
+	pkgdesc = Screenshot and screen recording toolbar for Wayland, modelled on the one of macOS
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/prietus/shotlet
+	arch = any
+	license = BSD-3-Clause
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = grim
+	depends = wf-recorder
+	depends = wl-clipboard
+	optdepends = swappy: annotate a screenshot from its thumbnail
+	optdepends = ffmpeg: thumbnails of recordings
+	optdepends = rivermonad: window mode (the windows on screen come from its IPC)
+	source = shotlet-0.1.0.tar.gz::https://github.com/prietus/shotlet/archive/v0.1.0.tar.gz
+	sha256sums = 948dbb787d1e4d60721640c2c3ae80089f5ba897c7f6ceb5c164f5603c69040e
+
+pkgname = shotlet
