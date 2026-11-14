@@ -1,14 +1,14 @@
-# Maintainer: Giovanni Harting
+# Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=rvpk
 _name=rust-vpk
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Extract Valve VPK (V1 & V2) archives (and create V1 archives)'
 arch=(x86_64)
 url='https://github.com/panzi/rust-vpk'
 license=(GPL-3.0-or-later)
-depends=(glibc gcc-libs fuse2)
+depends=(glibc libgcc fuse2)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('2f62758e7a702044b14a4be121c284e9ad1911195c8b20ceb08285cb56271a1d42bf7f907c1534caf8e9669a8ba49965857c359dfdcdc11bd1d0a89d286a86ae')
