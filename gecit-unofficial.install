@@ -1,0 +1,22 @@
+post_install() {
+  /usr/bin/gecit config init >/dev/null 2>&1 || true
+  systemctl daemon-reload >/dev/null 2>&1 || true
+}
+
+post_upgrade() {
+  systemctl daemon-reload >/dev/null 2>&1 || true
+  /usr/bin/gecit config init >/dev/null 2>&1 || true
+  if systemctl is-active --quiet gecit.service 2>/dev/null; then
+    systemctl restart gecit.service >/dev/null 2>&1 || true
+  fi
+}
+
+pre_remove() {
+  systemctl stop gecit.service >/dev/null 2>&1 || true
+  /usr/bin/gecit cleanup >/dev/null 2>&1 || true
+  systemctl disable gecit.service >/dev/null 2>&1 || true
+}
+
+post_remove() {
+  systemctl daemon-reload >/dev/null 2>&1 || true
+}
