@@ -2,8 +2,8 @@
 
 pkgbase=miassistanttool-git
 pkgname=miassistanttool-git
-pkgver=1.4.2.r0.gbfbad4a
-pkgrel=2
+pkgver=1.4.6.r0.gd30ca0f
+pkgrel=1
 pkgdesc="Cross-platform CLI for Xiaomi Mi Assistant mode: flash, wipe, reboot"
 arch=(any)
 url="https://github.com/MiForge/MiAssistantTool"
@@ -13,6 +13,7 @@ provides=(${pkgbase%-git})
 conflicts=(${pkgbase%-git})
 replaces=()
 _pydeps=(
+    libusb-package
     pyaes
     pyusb
     requests
