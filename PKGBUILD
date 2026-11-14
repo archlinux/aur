@@ -1,18 +1,18 @@
 # Maintainer: monsoon <29970829+monsoon235@users.noreply.github.com>
 pkgname=llama.cpp-vulkan-bin
-pkgver=b12024
+pkgver=b12378
 pkgrel=1
 pkgdesc='llama.cpp upstream prebuilt binaries with the Vulkan backend'
 arch=('x86_64')
 url='https://github.com/ggml-org/llama.cpp'
 license=('MIT')
 # Vulkan loader is the system interface; users provide a Vulkan ICD for their GPU.
-depends=('glibc' 'gcc-libs' 'openssl' 'vulkan-icd-loader')
+depends=('glibc' 'gcc-libs' 'openssl-3' 'vulkan-icd-loader')
 provides=('llama.cpp')
 conflicts=('llama.cpp')
 options=('!strip' '!debug')
 source=("https://github.com/ggml-org/llama.cpp/releases/download/${pkgver}/llama-${pkgver}-bin-ubuntu-vulkan-x64.tar.gz")
-sha256sums=('4148fac07cca21f43846edf047d8e87bf610a19d1b9e3a3bc2838188fd727b11')
+sha256sums=('a2bc82157f05f4e7a2e2bd8b1544ede906f4c725b04a6673cea7739b74ebb116')
 
 package() {
     local upstream="$srcdir/llama-$pkgver" executable
