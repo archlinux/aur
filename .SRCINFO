@@ -1,6 +1,6 @@
 pkgbase = arf-bin
 	pkgdesc = A modern R console
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/eitsupi/arf
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = arf-bin
 	depends = libgcc
 	conflicts = arf
 	options = !debug
-	source_x86_64 = arf-bin-0.7.0.tar.gz::https://github.com/eitsupi/arf/releases/download/v0.7.0/arf-console-x86_64-unknown-linux-gnu.tar.xz
-	source_x86_64 = https://raw.githubusercontent.com/eitsupi/arf/refs/tags/v0.7.0/LICENSE.md
-	provides_x86_64 = arf=0.7.0
-	sha256sums_x86_64 = 5c42b34a97d3e204d48cb57e710e4a3fe92a6ca3a92602cd44a0b28fd32d9f49
+	source_x86_64 = arf-bin-0.7.1.tar.gz::https://github.com/eitsupi/arf/releases/download/v0.7.1/arf-console-x86_64-unknown-linux-gnu.tar.xz
+	source_x86_64 = https://raw.githubusercontent.com/eitsupi/arf/refs/tags/v0.7.1/LICENSE.md
+	provides_x86_64 = arf=0.7.1
+	sha256sums_x86_64 = 05e9f4df17b6def75a6b8356e732c64d70e173ff4dee41d844d50c63b136f211
 	sha256sums_x86_64 = b9ee24794ec15953578fd5d07bb323b47a01f03b6fd206429dbe34b1c638fa0f
 
 pkgname = arf-bin
