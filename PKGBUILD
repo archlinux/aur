@@ -2,7 +2,7 @@
 
 pkgname=goose-desktop-bin
 pkgver=1.59.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Goose Desktop and CLI (prebuilt) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64')
 url="https://github.com/aaif-goose/goose"
@@ -22,7 +22,7 @@ optdepends=(
 options=(!strip)
 source=(
     "goose_${pkgver}_amd64-vulkan.deb::https://github.com/aaif-goose/goose/releases/download/v${pkgver}/goose_${pkgver}_amd64-vulkan.deb"
-    "goose-cli-${pkgver}.tar.bz2::https://github.com/aaif-goose/goose/releases/download/v${pkgver}/goose-x86_64-unknown-linux-gnu-vulkan.tar.bz2"
+    "goose-cli-${pkgver}-vulkan.tar.bz2::https://github.com/aaif-goose/goose/releases/download/v${pkgver}/goose-x86_64-unknown-linux-gnu-vulkan.tar.bz2"
 )
 b2sums=('e15234212da426fc07a14a89ca6b744cc015b892d4bf2c886f1f9f14c1566aa3238cae39ff4e705e787e15e4c820b7814e1251a42ad42e2a09ea52b96ca24491'
         'b0b6588ca0cb04caeb02deed3192b08eb07fcc22bb72b356568202979c2be97c6221fbfe11f62d99cd30f484092aa5915c2878c61ed62c14472532e56782e22a')
@@ -88,6 +88,6 @@ EOF
   fi
 
   # 6) Install the CLI binary from the second source (CLI tarball)
-  tar -xjf "${srcdir}/goose-cli-${pkgver}.tar.bz2" -C "${srcdir}"
+  tar -xjf "${srcdir}/goose-cli-${pkgver}-vulkan.tar.bz2" -C "${srcdir}"
   install -m755 "${srcdir}/goose" "${pkgdir}/usr/bin/goose"
 }
