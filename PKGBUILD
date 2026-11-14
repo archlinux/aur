@@ -8,8 +8,8 @@
 # Maintainer: venator <venator at tutamail dot com>
 
 pkgbase=skwir-git
-pkgname=(skwir-git skwir-mermaid-git skwir-mupdf-git)
-pkgver=0.4.0.r0.gdea1d2a
+pkgname=(skwir-git skwir-mermaid-git skwir-math-git skwir-mupdf-git)
+pkgver=0.5.0.r0.gd0e6c61
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents (its last commit)'
 arch=('x86_64' 'aarch64')
@@ -83,6 +83,7 @@ package_skwir-git() {
     'poppler-glib: PDFs through Poppler, beside the PDFium skwir carries'
     'djvulibre: DjVu through DjVuLibre, beside the djvu-rs reader skwir carries'
     'skwir-mermaid: Mermaid diagrams drawn in Markdown previews'
+    'skwir-math: formulas typeset in Markdown, notebooks and HTML'
     'skwir-mupdf: the MuPDF engine, PDFs and books laid out into pages'
     'bubblewrap: LibreOffice, ImageMagick and thumbnailers run isolated'
     'libreoffice-fresh: office documents shown as pages'
@@ -116,7 +117,7 @@ package_skwir-git() {
   install -Dm755 target/dist/skwir "$pkgdir/usr/bin/skwir"
   while read -r program; do
     case "$program" in
-    skwir | skwir-mermaid-worker | skwir-mupdf-worker) ;;
+    skwir | skwir-mermaid-worker | skwir-math-worker | skwir-mupdf-worker) ;;
     *) install -Dm755 "target/dist/$program" -t "$pkgdir/usr/lib/skwir/" ;;
     esac
   done < tools/package/programs
@@ -143,6 +144,17 @@ package_skwir-mermaid-git() {
   install -Dm755 target/dist/skwir-mermaid-worker -t "$pkgdir/usr/lib/skwir/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/skwir-mermaid/"
   install -Dm644 tools/package/notices/skwir-mermaid/THIRD-PARTY-NOTICES -t "$pkgdir/usr/share/licenses/skwir-mermaid/"
+}
+
+package_skwir-math-git() {
+  provides=("skwir-math=$pkgver")
+  conflicts=('skwir-math')
+  pkgdesc="Formulas typeset in skwir's Markdown, notebook and HTML previews"
+  depends=('skwir-git' 'libgcc' 'glibc')
+  cd skwir
+  install -Dm755 target/dist/skwir-math-worker -t "$pkgdir/usr/lib/skwir/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/skwir-math/"
+  install -Dm644 tools/package/notices/skwir-math/THIRD-PARTY-NOTICES -t "$pkgdir/usr/share/licenses/skwir-math/"
 }
 
 package_skwir-mupdf-git() {

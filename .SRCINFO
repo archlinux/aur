@@ -1,6 +1,6 @@
 pkgbase = skwir-git
 	pkgdesc = An augmented file manager, for humans and agents (its last commit)
-	pkgver = 0.4.0.r0.gdea1d2a
+	pkgver = 0.5.0.r0.gd0e6c61
 	pkgrel = 1
 	url = https://skwir.org
 	arch = x86_64
@@ -58,6 +58,7 @@ pkgname = skwir-git
 	optdepends = poppler-glib: PDFs through Poppler, beside the PDFium skwir carries
 	optdepends = djvulibre: DjVu through DjVuLibre, beside the djvu-rs reader skwir carries
 	optdepends = skwir-mermaid: Mermaid diagrams drawn in Markdown previews
+	optdepends = skwir-math: formulas typeset in Markdown, notebooks and HTML
 	optdepends = skwir-mupdf: the MuPDF engine, PDFs and books laid out into pages
 	optdepends = bubblewrap: LibreOffice, ImageMagick and thumbnailers run isolated
 	optdepends = libreoffice-fresh: office documents shown as pages
@@ -82,7 +83,7 @@ pkgname = skwir-git
 	optdepends = wsdd: Windows PCs nearby
 	optdepends = inter-font: skwir's own interface font, when chosen
 	optdepends = ttf-jetbrains-mono: skwir's own code font, when chosen
-	provides = skwir=0.4.0.r0.gdea1d2a
+	provides = skwir=0.5.0.r0.gd0e6c61
 	conflicts = skwir
 
 pkgname = skwir-mermaid-git
@@ -90,8 +91,16 @@ pkgname = skwir-mermaid-git
 	depends = skwir-git
 	depends = libgcc
 	depends = glibc
-	provides = skwir-mermaid=0.4.0.r0.gdea1d2a
+	provides = skwir-mermaid=0.5.0.r0.gd0e6c61
 	conflicts = skwir-mermaid
+
+pkgname = skwir-math-git
+	pkgdesc = Formulas typeset in skwir's Markdown, notebook and HTML previews
+	depends = skwir-git
+	depends = libgcc
+	depends = glibc
+	provides = skwir-math=0.5.0.r0.gd0e6c61
+	conflicts = skwir-math
 
 pkgname = skwir-mupdf-git
 	pkgdesc = skwir's MuPDF engine: PDFs, and books laid out into pages
@@ -99,5 +108,5 @@ pkgname = skwir-mupdf-git
 	depends = skwir-git
 	depends = libgcc
 	depends = glibc
-	provides = skwir-mupdf=0.4.0.r0.gdea1d2a
+	provides = skwir-mupdf=0.5.0.r0.gd0e6c61
 	conflicts = skwir-mupdf
