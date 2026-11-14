@@ -4,7 +4,7 @@
 pkgname=klogg-bin-git
 pkgver=26.10.28.1348
 _subversion=0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform GUI application that helps browse and search through long and complex log files. It is designed with programmers and system administrators in mind and can be seen as a graphical, interactive combination of grep, less, and tail"
 arch=('x86_64')
 url='https://klogg.filimonov.dev'
@@ -40,8 +40,6 @@ prepare() {
 #}
 
 package() {
-  pwd
-  ls -l ${srcdir}
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/share"
   cp -r "usr" "${pkgdir}/"
