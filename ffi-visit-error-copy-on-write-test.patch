@@ -1,0 +1,14 @@
+--- a/tests/cpp/expr_functor_test.cc
++++ b/tests/cpp/expr_functor_test.cc
+@@ -104,7 +104,10 @@
+   PairExpr pair(sum, IntImm::Int32(3));
+   auto result = mutator->MutateExpected(pair);
+   ASSERT_TRUE(result.is_err());
+-  EXPECT_TRUE(result.error().same_as(mutator->error));
++  // Current FFI annotates a shared Error copy-on-write, so the propagated error
++  // is an annotated copy of the thrown one rather than the same object.
++  EXPECT_EQ(result.error().kind(), mutator->error.kind());
++  EXPECT_EQ(result.error().message(), mutator->error.message());
+   auto context = ffi::VisitErrorContext::TryGetFromError(result.error());
+   ASSERT_TRUE(context.has_value());
+   const auto& pattern = context.value()->reverse_visit_pattern;

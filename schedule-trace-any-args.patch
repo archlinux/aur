@@ -1,0 +1,36 @@
+--- a/src/s_tir/schedule/primitive/annotate.cc
++++ b/src/s_tir/schedule/primitive/annotate.cc
+@@ -112,9 +112,8 @@
+     throw;
+   }
+ 
+-  static ffi::String UnpackedAsPython(ffi::Array<ffi::String> outputs,
+-                                      ffi::ObjectRef block_or_loop_rv, Any ann_val,
+-                                      ffi::String ann_key) {
++  static ffi::String UnpackedAsPython(ffi::Array<ffi::String> outputs, ffi::Any block_or_loop_rv,
++                                      Any ann_val, ffi::String ann_key) {
+     PythonAPICall py("annotate");
+     py.Input("block_or_loop", block_or_loop_rv);
+     py.Input("ann_key", ann_key);
+@@ -148,8 +147,8 @@
+     throw;
+   }
+ 
+-  static ffi::String UnpackedAsPython(ffi::Array<ffi::String> outputs,
+-                                      ffi::ObjectRef block_or_loop_rv, ffi::String ann_key) {
++  static ffi::String UnpackedAsPython(ffi::Array<ffi::String> outputs, ffi::Any block_or_loop_rv,
++                                      ffi::String ann_key) {
+     PythonAPICall py("unannotate");
+     py.Input("block_or_loop", block_or_loop_rv);
+     py.Input("ann_key", ann_key);
+--- a/src/s_tir/schedule/primitive/blockize_tensorize.cc
++++ b/src/s_tir/schedule/primitive/blockize_tensorize.cc
+@@ -938,7 +938,7 @@
+     TVM_FFI_UNREACHABLE();
+   }
+ 
+-  static ffi::String UnpackedAsPython(ffi::Array<ffi::String> outputs, ffi::ObjectRef target,
++  static ffi::String UnpackedAsPython(ffi::Array<ffi::String> outputs, ffi::Any target,
+                                       IntImm preserve_unit_iters) {
+     PythonAPICall py("blockize");
+     py.Input("target", target);

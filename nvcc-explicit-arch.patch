@@ -1,0 +1,11 @@
+--- a/python/tvm/support/nvcc.py
++++ b/python/tvm/support/nvcc.py
+@@ -219,8 +219,6 @@
+         *([] if os.environ.get("TVM_CUDA_NVCC_NO_FAST_MATH") else ["--use_fast_math"]),
+         f"--ptxas-options={','.join(_ptxas_option_flags())}",
+     ]
+-
+-    major, _ = parse_compute_version(get_target_compute_version(Target.current(allow_none=True)))
+ 
+     if options:
+         if isinstance(options, str):

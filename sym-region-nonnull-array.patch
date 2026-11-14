@@ -1,0 +1,11 @@
+--- a/src/sym/int_set.cc
++++ b/src/sym/int_set.cc
+@@ -1174,7 +1174,7 @@
+   }
+   AnalyzerObj* analyzer_ptr = analyzer.get();
+   int ndim = region.size();
+-  ffi::Array<IterSumExpr> iter_sum_exprs{nullptr};
++  ffi::Array<IterSumExpr> iter_sum_exprs;
+   {
+     ffi::Array<PrimExpr> affine_indices;
+     affine_indices.reserve(ndim);

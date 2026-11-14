@@ -1,0 +1,13 @@
+--- a/src/ir/type.cc
++++ b/src/ir/type.cc
+@@ -287,8 +287,8 @@
+   namespace refl = tvm::ffi::reflection;
+   PrimTypeNode::RegisterReflection();
+   refl::TypeAttrDef<PrimTypeNode>()
+-      .attr(ffi::type_attr::kAnyHash.name, reinterpret_cast<void*>(&PrimTypeAnyHash))
+-      .attr(ffi::type_attr::kAnyEqual.name, reinterpret_cast<void*>(&PrimTypeAnyEqual))
++      .native_fn_attr<&PrimTypeAnyHash>(ffi::type_attr::kAnyHash)
++      .native_fn_attr<&PrimTypeAnyEqual>(ffi::type_attr::kAnyEqual)
+       .attr(ffi::type_attr::kStructuralVisit.name, reinterpret_cast<void*>(&PrimTypeVisit))
+       .attr(ffi::type_attr::kStructuralMutate.name, reinterpret_cast<void*>(&PrimTypeMutate))
+       .attr(ffi::type_attr::kStructuralMaybeInplaceMutate.name,

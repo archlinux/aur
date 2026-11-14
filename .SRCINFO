@@ -1,6 +1,6 @@
 pkgbase = tvm
 	pkgdesc = End-to-end compiler stack for machine learning
-	pkgver = 0.26.0
+	pkgver = 0.27.0.post1
 	pkgrel = 1
 	url = https://tvm.apache.org/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = tvm
 	checkdepends = python-pytest-xdist
 	checkdepends = python-pytorch
 	checkdepends = python-tornado
-	checkdepends = python-xgboost
+	checkdepends = python-xgboost-cuda
 	makedepends = cmake
 	makedepends = git
 	makedepends = gtest
@@ -27,7 +27,7 @@ pkgbase = tvm
 	makedepends = ocl-icd
 	makedepends = openblas
 	makedepends = python
-	makedepends = python-apache-tvm-ffi>=0.1.13.post2
+	makedepends = python-apache-tvm-ffi>=0.1.16
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-ml-dtypes
@@ -37,13 +37,13 @@ pkgbase = tvm
 	makedepends = python-typing_extensions
 	makedepends = python-wheel
 	makedepends = z3>=4.16.0
-	source = tvm-0.26.0.tar.gz::https://github.com/apache/tvm/archive/refs/tags/v0.26.0.tar.gz
+	source = tvm-0.27.0.post1.tar.gz::https://github.com/apache/tvm/archive/refs/tags/v0.27.0.post1.tar.gz
 	source = OpenCL-Headers::git+https://github.com/KhronosGroup/OpenCL-Headers.git#commit=b590a6bfe034ea3a418b7b523e3490956bcb367a
 	source = cutlass::git+https://github.com/NVIDIA/cutlass.git#commit=b2dd65dc864e09688245b316ac46c4a6cd07e15c
 	source = cutlass_fpA_intB_gemm::git+https://github.com/tlc-pack/cutlass_fpA_intB_gemm#commit=96b48221df9d010c2d5b7f65d1664f198c664d28
 	source = libflash_attn::git+https://github.com/tlc-pack/libflash_attn#commit=07ba35bae96900e51b4d63ef3487ba24850da870
-	source = tvm-ffi::git+https://github.com/apache/tvm-ffi#commit=12dbf053b3d9ba4ebd9da3123b1aeca79cf74229
-	source = dlpack::git+https://github.com/dmlc/dlpack.git#commit=84d107bf416c6bab9ae68ad285876600d230490d
+	source = tvm-ffi::git+https://github.com/apache/tvm-ffi#commit=e2179b2e82d39be91076da07d840720b6e706359
+	source = dlpack::git+https://github.com/dmlc/dlpack.git#commit=6eca9e643fcf7e870b7a1c99ee7fb166c5c2c459
 	source = libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git#commit=793921876c981ce49759114d7bb89bb89b2d3a2d
 	source = system-install-paths.patch
 	source = llvm21-aarch64-vector-tests.patch
@@ -51,22 +51,42 @@ pkgbase = tvm
 	source = process-session-structlog-sync.patch
 	source = socket-session-connect-retry.patch
 	source = relax-closure-vars-python314.patch
-	source = pytorch-2.13-assert-async.patch
-	sha256sums = 4eca911bfa0c692afb86e9b7618c9c3e9a7b018e23fe2ccc100319f21e819ced
+	source = ffi-current-api-namespace.patch
+	source = ffi-raw-structural-compat.patch
+	source = ffi-native-any-hook-abi.patch
+	source = sym-region-nonnull-array.patch
+	source = array-nonnull-lifecycle.patch
+	source = socket-constructor-release-gil.patch
+	source = nvcc-explicit-arch.patch
+	source = iket-test-backend-module.patch
+	source = cpu-prefill-masked-state.patch
+	source = ffi-visit-error-copy-on-write-test.patch
+	source = schedule-trace-any-args.patch
+	sha256sums = faf97a586d8b7cba91b2fb24f9f152a527141aef88eaf9784c9a280e36d846bf
 	sha256sums = ff14e74734a3eb729f80ee97258ac1d4afabb1f30822220ab4f8dbcc64d47d38
 	sha256sums = d093d45264038b90e5b13e20e7b47002c8b18b916462968e4a044f6cf4a3660d
 	sha256sums = SKIP
 	sha256sums = 76c041efdfef9efddd88f4d8eff5a35cc8fb923e4977bbee4abbab3d693ede08
 	sha256sums = SKIP
-	sha256sums = ff2080dd8cfd9fe7db48b1d75aef12e9a0135c6fe2ee2c5ea294c9413b1df855
+	sha256sums = SKIP
 	sha256sums = a5ec02c71d913362b883e4cb3a7ca3767bde0ff2d9709b52d740f94b806e4773
 	sha256sums = c64397ac8c0c71eaa410530eba23fac7df447f8f8361d0f3b6ce34239eac2b38
-	sha256sums = 464bc481710bcddfa40fda080ea1e4a2f8c24c4ac9b7e6be13c3ecb3cb6ef499
+	sha256sums = e00e948b03fdc5d11c3102f37400f1eeff3d203c9ac10ac15fbd9c1508db0bce
 	sha256sums = 6f40f6ca40853a572e7bc53289efe36b3118f092a25e5bc645bab6db1e03be28
 	sha256sums = ebeaa5e5614c16ca19d8be2048ad5e4ceaa08c24bcd503bd4fa2b9af54f64932
 	sha256sums = 7d8c182fb6d8f44620ac14ade5848ddf1da78dae3036d04916deb5dec1d5c2ad
 	sha256sums = bc7d4569be6b58e35e8ec68e2dd6e9e40c5c1744ab9077336e050a3775476f44
-	sha256sums = 1766715b66ce934ca1828dd424b3773ecda569fd8509f03990105ddd5716f641
+	sha256sums = 97ae39d77f5e5cab1050ef8d3fe468485e6d524b9cf4c4188bd9235ac49d84d3
+	sha256sums = 557d5b9929231f28e6d788f4070bb0c27813442a734be6ec68f71ca445f60be3
+	sha256sums = 659afa3ca57a264ed1a78b97803891ad5f8766e4c6b3e47d92c0a25945db6a72
+	sha256sums = 4a3f0c3f3e037b8897e22e0d0abc6b968e2f37e47f4d96543753c14cb16f16e0
+	sha256sums = 79d690525856302daf5356a010453b78152cdc1079dceacdf876a392026d35bf
+	sha256sums = 96e7b8bb71eb56e35bbac84134142b595d4959098d21e9f72f7d982816a361e4
+	sha256sums = 35bf180131b916a91ad2ffada36bc9c10e24e09ec59a3e3fd9702b0297fbc33f
+	sha256sums = 71c70e358bbc4eec32c499b557a5b8774bfb8b6a3f024c3b6914325fa0481f20
+	sha256sums = 245b19d9b751b9698f06a07a3ac6e31724073d8b5ad3ca682d78aee658f2c962
+	sha256sums = b406923c8a127fb235ee9a64558fbd8952fa80345b8aa001559e35752e2363fe
+	sha256sums = 6adeea5f9d54cdb0cc7fa9cde540b57147b40c43aeba2a10461e53799558abbb
 
 pkgname = tvm
 	pkgdesc = Native libraries and development files for the machine-learning compiler
@@ -79,9 +99,9 @@ pkgname = tvm
 
 pkgname = python-tvm
 	pkgdesc = Python bindings for the Apache TVM deep-learning compiler
-	depends = tvm=0.26.0
+	depends = tvm=0.27.0.post1
 	depends = python
-	depends = python-apache-tvm-ffi>=0.1.13.post2
+	depends = python-apache-tvm-ffi>=0.1.16
 	depends = python-ml-dtypes
 	depends = python-numpy
 	depends = python-typing_extensions

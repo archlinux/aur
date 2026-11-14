@@ -1,0 +1,235 @@
+--- a/include/tvm/topi/nn.h
++++ b/include/tvm/topi/nn.h
+@@ -725,10 +725,10 @@
+                                    tvm::prim::MakeConst(tvm::PrimType(predictions->dtype), 0));
+         },
+         name, tag);
+-    return topi::divide(topi::sum(T, tvm::ffi::Array<int64_t>(nullptr)),
+-                        topi::sum(W, tvm::ffi::Array<int64_t>(nullptr)));
++    return topi::divide(topi::sum(T, std::nullopt),
++                        topi::sum(W, std::nullopt));
+   } else if (reduction == "sum") {
+-    return topi::sum(T, tvm::ffi::Array<int64_t>(nullptr));
++    return topi::sum(T, std::nullopt);
+   } else {  // reduction == "none"
+     return T;
+   }
+--- a/src/relax/analysis/tir_op_pattern_kind.cc
++++ b/src/relax/analysis/tir_op_pattern_kind.cc
+@@ -487,7 +487,7 @@
+         return true;
+       };
+ 
+-      ffi::Array<PrimExpr> nontrivial_indices{nullptr};
++      ffi::Optional<ffi::Array<PrimExpr>> nontrivial_indices = std::nullopt;
+       BufferVar nontrivial_buffer{nullptr};
+       if (f_is_trivial_indices(dst_buffer_, buffer_store->indices)) {
+         nontrivial_indices = buffer_load->indices;
+@@ -502,7 +502,7 @@
+           block->iter_vars.begin(), block->iter_vars.end(),
+           [this](const IterVar& v) { return this->ana_->CanProveEqual(v->dom->extent, 0); });
+ 
+-      if (nontrivial_indices.defined() && !has_zero_extent) {
++      if (nontrivial_indices.has_value() && !has_zero_extent) {
+         PrimType dtype =
+             !block->iter_vars.empty() ? block->iter_vars[0]->var.ty() : PrimType::Int(64);
+         PrimVar fused_var("fused", dtype);
+@@ -519,7 +519,7 @@
+           if (auto repl = inverse_indices_map.Get(var)) return ffi::Any(*std::move(repl));
+           return ffi::Unchanged();
+         };
+-        PrimExpr flattened_idx = f_calc_flattened_idx(nontrivial_buffer, nontrivial_indices);
++        PrimExpr flattened_idx = f_calc_flattened_idx(nontrivial_buffer, nontrivial_indices.value());
+         flattened_idx =
+             ffi::StructuralMap<ffi::WalkOrder::kPreOrder>(std::move(flattened_idx), f_substitute)
+                 .as_or_throw<PrimExpr>();
+--- a/src/s_tir/meta_schedule/search_strategy/replay_trace.cc
++++ b/src/s_tir/meta_schedule/search_strategy/replay_trace.cc
+@@ -43,7 +43,7 @@
+     int ed;
+ 
+     /*! \brief The module to be tuned. */
+-    ffi::Array<IRModule> per_thread_mod_{nullptr};
++    ffi::Array<IRModule> per_thread_mod_;
+ 
+     explicit State(ReplayTraceNode* self, ffi::Array<s_tir::Trace> design_spaces, int max_trials,
+                    int num_trials_per_iter)
+--- a/src/s_tir/meta_schedule/utils.h
++++ b/src/s_tir/meta_schedule/utils.h
+@@ -579,7 +579,7 @@
+  * \return The AutoInline schedule rule for the given target.
+  */
+ inline ScheduleRule GetDefaultAutoInline(const std::string& target_name) {
+-  ffi::Array<ScheduleRule> rules{nullptr};
++  ffi::Array<ScheduleRule> rules;
+   if (target_name == "llvm") {
+     rules = ScheduleRule::DefaultLLVM();
+   } else if (target_name == "hexagon") {
+--- a/src/s_tir/meta_schedule/schedule_rule/random_compute_location.cc
++++ b/src/s_tir/meta_schedule/schedule_rule/random_compute_location.cc
+@@ -43,20 +43,20 @@
+     // decision of Sample-Compute-Location is "compute-inline" for the input block, we can no longer
+     // access the input block. Hence we collect its producer ahead of time.
+     // - Note that only single producer is allowed in this case.
+-    ffi::Array<s_tir::SBlockRV> producers{nullptr};
++    ffi::Optional<ffi::Array<s_tir::SBlockRV>> producers = std::nullopt;
+     if (s_tir::HasAnn(sch->GetSRef(block_rv), s_tir::attr::meta_schedule_random_compute_producer,
+                       true)) {
+       producers = sch->GetProducers(block_rv);
+       sch->Unannotate(block_rv, s_tir::attr::meta_schedule_random_compute_producer);
+-      TVM_FFI_ICHECK_EQ(producers.size(), 1);
++      TVM_FFI_ICHECK_EQ(producers.value().size(), 1);
+     }
+ 
+     // Step 2. Transform the input block.
+     s_tir::Schedule res = RandomlyComputeAt(sch, block_rv);
+ 
+     // Step 3. Transform the producer block if compute-location sampling is needed.
+-    if (producers.defined()) {
+-      res = RandomlyComputeAt(res, producers[0]);
++    if (producers.has_value()) {
++      res = RandomlyComputeAt(res, producers.value()[0]);
+     }
+ 
+     return {res};
+--- a/src/s_tir/meta_schedule/measure_callback/add_to_database.cc
++++ b/src/s_tir/meta_schedule/measure_callback/add_to_database.cc
+@@ -43,7 +43,7 @@
+     for (int i = 0; i < n; ++i) {
+       RunnerResult result = runner_results[i];
+       MeasureCandidate candidate = measure_candidates[i];
+-      ffi::Array<FloatImm> run_secs{nullptr};
++      ffi::Array<FloatImm> run_secs;
+       if (result->run_secs.has_value()) {
+         run_secs = result->run_secs.value();
+       } else {
+--- a/src/s_tir/transform/lower_cross_thread_reduction.cc
++++ b/src/s_tir/transform/lower_cross_thread_reduction.cc
+@@ -423,9 +423,9 @@
+       }
+     }
+     // Step 3.2. Create the block and the block-realize.
+-    ffi::Array<IterVar> iter_vars{nullptr};
+-    ffi::Array<PrimExpr> bindings{nullptr};
+-    ffi::Array<TensorRegion> reads{nullptr};
++    ffi::Array<IterVar> iter_vars;
++    ffi::Array<PrimExpr> bindings;
++    ffi::Array<TensorRegion> reads;
+     if (it_buffers.has_value()) {
+       iter_vars = ffi::Array<IterVar>{};
+       bindings = ffi::Array<PrimExpr>{};
+@@ -723,11 +723,11 @@
+     // Condition 3. Get the identity values of the block init and the BufferStore block combiner
+     // updates of the reduction. Extract the commutative reducer, combiner lhs and combiner rhs from
+     // the reduction identities and the reduction combiner.
+-    ffi::Array<PrimExpr> init_values{nullptr};
+-    ffi::Array<BufferStore> updates{nullptr};
++    ffi::Array<PrimExpr> init_values;
++    ffi::Array<BufferStore> updates;
+     te::CommReducer reducer{nullptr};
+-    ffi::Array<PrimExpr> combiner_lhs{nullptr};
+-    ffi::Array<PrimExpr> combiner_rhs{nullptr};
++    ffi::Array<PrimExpr> combiner_lhs;
++    ffi::Array<PrimExpr> combiner_rhs;
+     std::tie(init_values, updates) =
+         GetInitValuesAndUpdatesFromReductionBlock(std::nullopt, ffi::GetRef<SBlock>(block));
+     std::tie(reducer, combiner_lhs, combiner_rhs) =
+@@ -859,9 +859,9 @@
+     // which condition the block violates.
+     int n_bound_reduction_loops = 0;
+     te::CommReducer reducer{nullptr};
+-    ffi::Array<BufferVar> reduction_buffers{nullptr};
+-    ffi::Array<PrimExpr> combiner_rhs{nullptr};
+-    ffi::Array<PrimExpr> wb_indices{nullptr};
++    ffi::Array<BufferVar> reduction_buffers;
++    ffi::Array<PrimExpr> combiner_rhs;
++    ffi::Array<PrimExpr> wb_indices;
+     std::tie(n_bound_reduction_loops, reducer, reduction_buffers, combiner_rhs, wb_indices) =
+         CheckCanApplyCrossThreadReduction(block, reduction_loops);
+     // Step 2. Before doing the cross-thread reduction, in-thread reduction is needed when
+--- a/src/s_tir/schedule/primitive/blockize_tensorize.cc
++++ b/src/s_tir/schedule/primitive/blockize_tensorize.cc
+@@ -606,8 +606,8 @@
+                              bool preserve_unit_iters) {
+   ffi::Array<Stmt> seq_body;
+   PrimExpr outer_predicate{nullptr};
+-  ffi::Array<IterVar> outer_iter_vars{nullptr};
+-  ffi::Array<PrimExpr> outer_bindings{nullptr};
++  ffi::Array<IterVar> outer_iter_vars;
++  ffi::Array<PrimExpr> outer_bindings;
+   ffi::Array<TensorRegion> read_regions;
+   ffi::Array<TensorRegion> write_regions;
+   std::string outer_block_name = "outer_";
+@@ -633,7 +633,7 @@
+         DeriveBlockBinding(block->iter_vars, division,         //
+                            &outer_iter_vars, &outer_bindings,  //
+                            &inner_iter_vars, &inner_bindings,  //
+-                           preserve_unit_iters, outer_iter_vars.defined());
++                           preserve_unit_iters, !outer_iter_vars.empty());
+     // Step 3: Do var substitution to adjust to the new block bindings
+     for (size_t i = 0; i < outer_iter_vars.size(); ++i) {
+       if (outer_bindings[i].as<Var>()) {
+--- a/src/s_tir/schedule/primitive/reduction.cc
++++ b/src/s_tir/schedule/primitive/reduction.cc
+@@ -1411,11 +1411,11 @@
+   // commutative reducer, combiner lhs and combiner rhs from the reduction identity and the
+   // reduction combiner. The lhs will be used when constructing the write-back block, and the rhs
+   // will be used when constructing the rfactor block.
+-  ffi::Array<PrimExpr> init_values{nullptr};
+-  ffi::Array<BufferStore> updates{nullptr};
++  ffi::Array<PrimExpr> init_values;
++  ffi::Array<BufferStore> updates;
+   te::CommReducer reducer{nullptr};
+-  ffi::Array<PrimExpr> combiner_lhs{nullptr};
+-  ffi::Array<PrimExpr> combiner_rhs{nullptr};
++  ffi::Array<PrimExpr> combiner_lhs;
++  ffi::Array<PrimExpr> combiner_rhs;
+   std::tie(init_values, updates) = GetInitValuesAndUpdatesFromReductionBlock(self, block);
+   std::tie(reducer, combiner_lhs, combiner_rhs) =
+       GetReducerAndCombinerLhsRhs(self, init_values, updates);
+--- a/src/s_tir/schedule/primitive/cache_read_write.cc
++++ b/src/s_tir/schedule/primitive/cache_read_write.cc
+@@ -411,10 +411,8 @@
+   // Step 3: Create the reindex block
+ 
+   // The src and the dst region and indices of the data copy
+-  Region src_region{nullptr};
+-  Region dst_region{nullptr};
+-  ffi::Array<PrimExpr> src_indices{nullptr};
+-  ffi::Array<PrimExpr> dst_indices{nullptr};
++  ffi::Array<PrimExpr> src_indices;
++  ffi::Array<PrimExpr> dst_indices;
+ 
+   if (buffer_index_type == BufferIndexType::kWrite) {
+     src_indices = reindex_indices;
+--- a/src/s_tir/schedule/primitive/compute_inline.cc
++++ b/src/s_tir/schedule/primitive/compute_inline.cc
+@@ -954,7 +954,7 @@
+   /*! \brief The indices of the consumer's BufferLoad */
+   ffi::Array<PrimExpr> buffer_load_indices_;
+   /*! \brief The IterMap representing the indices of the consumer's BufferLoad */
+-  ffi::Array<sym::IterSumExpr> buffer_load_iter_map_{nullptr};
++  ffi::Array<sym::IterSumExpr> buffer_load_iter_map_;
+   /*! \brief The producer block */
+   const SBlockNode* producer_block_{nullptr};
+   /* \brief The consumer block */
+@@ -1147,7 +1147,7 @@
+   const TensorLoadNode* reduction_buffer_load_{
+       nullptr};                                // The reduction buffer load in epilogue expression
+   BufferVar epilogue_output_buffer_{nullptr};  // Output buffer D
+-  ffi::Array<PrimExpr> epilogue_output_indices_{nullptr};  // Indices of D[vi, vj]
++  ffi::Array<PrimExpr> epilogue_output_indices_;  // Indices of D[vi, vj]
+   TensorRegion epilogue_output_region_{nullptr};           // Write region of D
+   BufferVar epilogue_addend_buffer_{nullptr};     // Additional buffer (e.g., bias buffer C)
+   TensorRegion epilogue_addend_region_{nullptr};  // Read region of additional buffer
+--- a/src/s_tir/schedule/trace.cc
++++ b/src/s_tir/schedule/trace.cc
+@@ -554,7 +554,7 @@
+     InstructionKind kind{nullptr};
+     ffi::Array<Any> inputs{nullptr};
+     ffi::Array<Any> attrs{nullptr};
+-    ffi::Array<ffi::String> outputs{ffi::ObjectPtr<ffi::Object>{nullptr}};
++    ffi::Array<ffi::String> outputs;
+     // Parse the entry
+     try {
+       const auto* arr = inst_entry.as<ffi::ArrayObj>();

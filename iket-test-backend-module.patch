@@ -1,0 +1,29 @@
+--- a/tests/python/tirx/iket/test_iket_profiler.py
++++ b/tests/python/tirx/iket/test_iket_profiler.py
+@@ -770,7 +770,7 @@
+ 
+ 
+ def test_environment_validation_is_not_process_cached(monkeypatch):
+-    from tvm.tirx.cuda import iket as _iket_official
++    _iket_official = importlib.import_module("tvm.backend.cuda.iket")
+ 
+     profile = {
+         "nvrtc_version": (13, 2),
+@@ -803,7 +803,7 @@
+     ),
+ )
+ def test_official_installation_accepts_newer_cutlass(monkeypatch, version, expected_error):
+-    from tvm.tirx.cuda import iket as _iket_official
++    _iket_official = importlib.import_module("tvm.backend.cuda.iket")
+ 
+     profile = {
+         "nvrtc_version": (13, 2),
+@@ -833,7 +833,7 @@
+ 
+ 
+ def test_injection_environment_accepts_run_iket_two_passes(tmp_path, monkeypatch):
+-    from tvm.tirx.cuda import iket as _iket_official
++    _iket_official = importlib.import_module("tvm.backend.cuda.iket")
+ 
+     injection = tmp_path / "libsmodel_injection.so"
+     injection.write_bytes(b"injection")

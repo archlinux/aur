@@ -145,7 +145,7 @@
  
  
  @pytest.mark.skipif(
-@@ -548,12 +610,24 @@
+@@ -548,12 +610,33 @@
  
      assembly = f.inspect_source("asm")
      loads = re.findall("ld1[whdb]	{ z", assembly)
@@ -161,13 +161,22 @@
 +        r"(?:not|mvn)[ \t]+z[0-9]+\.[shdb],[ \t]+p[0-9]+/[zm],[ \t]+z[0-9]+\.[shdb]",
 +        assembly,
 +    )
++    # LLVM 23 lowers an unpredicated SVE NOT as a byte-wise reverse subtract
++    # from 255, which complements every byte of the vector.
++    sve_subr_not = re.findall(
++        r"subr[ \t]+z[0-9]+\.b,[ \t]+z[0-9]+\.b,[ \t]+#255", assembly
++    )
  
 -    assert len(loads) > 1
 -    assert len(matches) > 1
-+    # LLVM 21 can choose a single non-interleaved SVE loop or a fixed-width
-+    # NEON loop.  In both cases retain a positive vector load/invert check.
++    # LLVM 21 and newer can choose a single non-interleaved SVE loop or a
++    # fixed-width NEON loop.  In every case retain a positive vector
++    # load/invert check.
 +    assert (len(loads) > 0 or len(neon_loads) > 0) and (
-+        len(matches) > 0 or len(sve_not) > 0 or len(neon_matches) > 0
++        len(matches) > 0
++        or len(sve_not) > 0
++        or len(sve_subr_not) > 0
++        or len(neon_matches) > 0
 +    ), assembly
  
  
