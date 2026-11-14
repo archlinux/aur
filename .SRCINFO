@@ -1,6 +1,6 @@
 pkgbase = tracedraw
 	pkgdesc = vibe coded clean-room reimplementation of Corel Draw
-	pkgver = 0.45.2
+	pkgver = 0.46.0
 	pkgrel = 1
 	url = https://tracedraw.github.io/tracedraw/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = tracedraw
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	source = https://github.com/tracedraw/tracedraw/archive/refs/tags/v0.45.2/tracedraw-0.45.2.tar.gz
-	sha256sums = d68a50e3dba6bec3997496abb95f2ae69960ec9e458d8d58393693162a823e5e
+	source = https://github.com/tracedraw/tracedraw/archive/refs/tags/v0.46.0/tracedraw-0.46.0.tar.gz
+	sha256sums = 48dc32e0dd48064cadec080b3b279c5fc01397ce27147ceb7da081454ae6c9a9
 
 pkgname = tracedraw
 	depends = glibc
