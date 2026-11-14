@@ -1,0 +1,17 @@
+pkgbase = neonctl
+	pkgdesc = Neon CLI: manage Neon serverless Postgres from the terminal (provides neon and neonctl)
+	pkgver = 9.5.0
+	pkgrel = 1
+	url = https://github.com/neondatabase/neon-pkgs
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = npm
+	depends = nodejs>=20.19
+	optdepends = postgresql: native psql client for the --psql flag (an embedded fallback is used otherwise)
+	optdepends = libsecret: system keyring access for stored credentials
+	noextract = neonctl-9.5.0.tgz
+	source = https://registry.npmjs.org/neonctl/-/neonctl-9.5.0.tgz
+	sha256sums = b6c5e66549b9264d7beb4ea0c674c0253a12d1ba441c2aad07f49edde71efb66
+
+pkgname = neonctl
