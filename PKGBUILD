@@ -9,7 +9,7 @@
 # ~GB) and compiles it — this downloads at build time and takes a while. The
 # extension itself ships separately via AMO.
 pkgname=castbridge
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Native Chromecast backend for the Cast browser extension (openscreen Cast Streaming)"
 arch=('x86_64')
@@ -29,13 +29,17 @@ build() {
 	cd "$srcdir/$pkgname"
 	export OPENSCREEN_DIR="$(_forkdir)"
 	export OUT_DIR="out/Default"
+	# A distributed package builds the same tree for everyone: public upstream at
+	# the pin + the versioned patch, never the private fork (owner-only access).
+	export FROM_UPSTREAM=1
+	# The DEPS-pinned ninja, not whatever happens to be on PATH.
+	export NINJA="$OPENSCREEN_DIR/third_party/ninja/ninja"
 
 	# Provision the openscreen fork (clone + pin + gclient sync + patch + gn gen).
 	bash native/integration/setup-openscreen.sh
 
 	# Build castbridge and the cast_sender mirror helper.
 	bash native/integration/build.sh
-	NINJA="$(command -v ninja || echo "$srcdir/depot_tools/ninja")"
 	(cd "$OPENSCREEN_DIR" && "$NINJA" -C "$OUT_DIR" cast/standalone_sender:cast_sender)
 }
 
