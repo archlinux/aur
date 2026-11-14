@@ -1,0 +1,42 @@
+# chrome-sandbox 是否 setuid 取决于目标机能否使用 unprivileged user namespace，
+# 与上游 deb postinst 的判定一致：userns 可用时保持 0755，否则提到 4755，
+# 否则 Electron 在沙箱初始化失败后直接退出。
+_apply_sandbox_mode() {
+  local target=/opt/DuMate/chrome-sandbox
+  local clone=/proc/sys/kernel/unprivileged_userns_clone
+  local apparmor=/proc/sys/kernel/apparmor_restrict_unprivileged_userns
+  [ -f "$target" ] || return 0
+
+  local clone_val='' apparmor_val=''
+  [ -r "$clone" ] && clone_val="$(tr -d '[:space:]' < "$clone" 2>/dev/null || true)"
+  [ -r "$apparmor" ] && apparmor_val="$(tr -d '[:space:]' < "$apparmor" 2>/dev/null || true)"
+
+  if [ "$clone_val" = '1' ] && [ "$apparmor_val" != '1' ]; then
+    chmod 0755 "$target"
+  else
+    chmod 4755 "$target"
+  fi
+}
+
+_dumate_note() {
+  echo ":: DuMate is installed under /opt/DuMate. Start it from the application"
+  echo ":: menu or run: dumate"
+  echo ":: Upstream ships an electron-updater feed. Update this package with pacman;"
+  echo ":: letting the built-in updater replace files breaks the package database."
+}
+
+post_install() {
+  update-desktop-database -q /usr/share/applications 2>/dev/null || true
+  _apply_sandbox_mode
+  _dumate_note
+}
+
+post_upgrade() {
+  update-desktop-database -q /usr/share/applications 2>/dev/null || true
+  _apply_sandbox_mode
+  _dumate_note
+}
+
+post_remove() {
+  update-desktop-database -q /usr/share/applications 2>/dev/null || true
+}
