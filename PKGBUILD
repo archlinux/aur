@@ -11,7 +11,7 @@
 _pkgname="pcsx2"
 pkgname="$_pkgname"
 pkgver=2.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-or-later')
@@ -109,6 +109,9 @@ fi
 prepare() {
   cd "$_pkgsrc"
 
+  # allow type None
+  sed -E -e '/CMAKE_BUILD_TYPE MATCHES/s&(Release)&\1|None&' -i cmake/BuildParameters.cmake
+
   # prevent march=native
   sed -E -e 's@^(\s*)(add_compile_options\(.*march=native.*\))@\1message("skip: march=native")@' \
     -i cmake/BuildParameters.cmake
@@ -122,6 +125,12 @@ prepare() {
   if [[ "${_build_ffmpeg::1}" == "t" ]]; then
     sed -E -e '/find_package\(FFMPEG/d' -i cmake/SearchForStuff.cmake
   fi
+
+  # set version
+  local _regex='/function(write_svnrev_h)/a '
+  _regex+=$(printf 'set(PCSX2_GIT_TAG "%s")\\n' "v$pkgver")
+  _regex+=$(printf 'set(PCSX2_GIT_REV "%s")\\n' "v$pkgver")
+  sed -e "${_regex}" -i cmake/Pcsx2Utils.cmake
 }
 
 build() (
@@ -162,7 +171,6 @@ build() (
     -DUSE_VULKAN=ON
     -DWAYLAND_API=ON
     -DX11_API=ON
-    -DQT_NO_PRIVATE_MODULE_WARNING=ON
   )
 
   local _deps i _source _options
@@ -214,7 +222,7 @@ package() {
 
   install -Dm644 "$_pkgsrc/bin/resources/icons/AppIconLarge.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
 
-  install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Type=Application
 Name=PCSX2
@@ -226,7 +234,7 @@ Icon=$_pkgname
 Terminal=false
 StartupNotify=true
 StartupWMClass=$_pkgname
-Categories=Game;Emulator
+Categories=Game;Emulator;
 END
 
   if [[ "${_build_pluto::1}" == t ]]; then
