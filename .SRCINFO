@@ -1,6 +1,6 @@
 pkgbase = clavirio-bin
 	pkgdesc = A terminal typing tutor built with Rust and Ratatui
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/alexylon/clavirio
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = clavirio-bin
 	provides = clavirio
 	conflicts = clavirio
 	options = !strip
-	source = README-0.4.5.md::https://raw.githubusercontent.com/alexylon/clavirio/v0.4.5/README.md
-	source = LICENSE-0.4.5::https://raw.githubusercontent.com/alexylon/clavirio/v0.4.5/LICENSE
-	sha256sums = 43190a47c2c26b9a93c2c424c771b5a4c7be4bc7dab6229da8abf3000ee921cf
+	source = README-0.4.6.md::https://raw.githubusercontent.com/alexylon/clavirio/v0.4.6/README.md
+	source = LICENSE-0.4.6::https://raw.githubusercontent.com/alexylon/clavirio/v0.4.6/LICENSE
+	sha256sums = 4ac4316fa10d5ba4104b9f9407bfcf2bc6da21326941a662962018a925727cb3
 	sha256sums = 58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd
-	source_x86_64 = clavirio-x86_64-0.4.5.tgz::https://github.com/alexylon/clavirio/releases/download/v0.4.5/clavirio-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 59039c40bc491fc3c48b79da41ae04f2b9ba9cbd6f243ddffb985c72de2d7f25
+	source_x86_64 = clavirio-x86_64-0.4.6.tgz::https://github.com/alexylon/clavirio/releases/download/v0.4.6/clavirio-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4e6e188425346035cb0217811af1e11d7de08d0acd44ae058be63a2fff99c0d4
 
 pkgname = clavirio-bin
