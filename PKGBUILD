@@ -1,7 +1,7 @@
 # Maintainer: cookie <coookieuniverse@gmail.com>
 pkgname=staruml
-pkgver=8.0.2
-pkgrel=2
+pkgver=8.1.0
+pkgrel=1
 pkgdesc="A sophisticated software modeler"
 arch=('x86_64')
 url="http://staruml.io/"
