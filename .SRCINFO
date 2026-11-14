@@ -1,6 +1,6 @@
 pkgbase = equibop
 	pkgdesc = A custom Discord desktop app with Equicord pre-installed
-	pkgver = 3.3.3
+	pkgver = 3.3.4
 	pkgrel = 1
 	url = https://github.com/Equicord/Equibop
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = equibop
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	conflicts = equibop-bin
 	options = !strip
-	source = https://github.com/Equicord/Equibop/archive/refs/tags/v3.3.3.tar.gz
+	source = https://github.com/Equicord/Equibop/archive/refs/tags/v3.3.4.tar.gz
 	source = equibop.desktop
 	source = equibop.sh
-	sha256sums = b4fcbb4ee3db745647c608d2aabb83ac9959cfbc46e56f42e542b2886227c513
+	sha256sums = c557e280b461350841efc660cff14047172615797585b0249634b1a417ebb6fc
 	sha256sums = 2df1651c56f3ac253b679db81500474f54e9887321db0daa4d3ac2a1ebad5f4d
 	sha256sums = 2b191fca6474ba8150c3f3627c83578129c6e5328effa8eb74d8f70f64f8f5ea
 
