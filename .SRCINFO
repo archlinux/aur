@@ -1,6 +1,6 @@
 pkgbase = neodisk-git
 	pkgdesc = Disk space visualizer with treemap and sunburst views (Git version)
-	pkgver = 2.83.2.r312.g1572007
+	pkgver = 2.91.0.r444.g5e896bf
 	pkgrel = 1
 	url = https://github.com/tkslucas/Neodisk
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = neodisk-git
 	makedepends = git
 	makedepends = patchelf
 	makedepends = pkgconf
+	makedepends = unzip
 	depends = cairo
 	depends = gcc-libs
 	depends = gdk-pixbuf2
@@ -22,7 +23,7 @@ pkgbase = neodisk-git
 	depends = swift-bin>=6.4
 	depends = vulkan-icd-loader
 	depends = zstd
-	provides = neodisk=2.83.2.r312.g1572007
+	provides = neodisk=2.91.0.r444.g5e896bf
 	conflicts = neodisk
 	conflicts = neodisk-bin
 	options = !debug

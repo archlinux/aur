@@ -1,5 +1,5 @@
 pkgname=neodisk-git
-pkgver=2.83.2.r312.g1572007
+pkgver=2.91.0.r444.g5e896bf
 pkgrel=1
 pkgdesc="Disk space visualizer with treemap and sunburst views (Git version)"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ depends=(
   'vulkan-icd-loader'
   'zstd'
 )
-makedepends=('git' 'patchelf' 'pkgconf')
+makedepends=('git' 'patchelf' 'pkgconf' 'unzip')
 provides=("neodisk=${pkgver}")
 conflicts=('neodisk' 'neodisk-bin')
 options=('!debug')
