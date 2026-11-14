@@ -9,5 +9,5 @@ Depends = bash
 Depends = glibc
 Depends = locale-gen
 Description = Generating the configured locale...
-Exec = /usr/bin/lc-gen --config /etc/lc.gen
+Exec = /usr/bin/lc-gen
 When = PostTransaction

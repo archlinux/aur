@@ -1,34 +1,42 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: monkfish
 #
 # Why does this package exist?
-#   See https://asciinema.org/a/3Uiq1UtbpepgCUVD.
+#   Arch's locale-gen script, which ships with the glibc package appears to not
+#   compile the C.UTF-8 locale correctly when used together with other locales.
+#
+#   This was discovered using perl's POSIX module. Installing Gentoo's locale-gen
+#   fixes the issue.
+#
+#   See:
+#     https://gist.github.com/ryoskzypu/827a6a1e041133b074ebcf19516066c7 (context)
+#     https://asciinema.org/a/3Uiq1UtbpepgCUVD (reproducing)
 #
 # NOTE:
-#   locale-gen script is renamed to lc-gen and locale.gen config to lc.gen.
+#   locale-gen script is renamed to lc-gen.
 #
 #   Rationale:
 #     locale-gen depends on glibc package for the locale stuff, therefore glibc
-#     owns /usr/bin/locale-gen and /etc/locale.gen, causing pacman to complain
-#     about conflicting files.
+#     owns /usr/bin/locale-gen, causing pacman to complain about conflicting files.
 #
-#   Do not forget to pass `-c /etc/lc.gen` to lc-gen, otherwise it will use the
-#   glibc one. Also, uncomment the desired locales in /etc/lc.gen or lc-gen will
-#   compile all supported locales. See locale.gen(5), locale-gen(8).
+#   Do not forget to uncomment the desired locales in /etc/locale.gen or lc-gen
+#   will compile all supported locales. See locale.gen(5), locale-gen(8).
 
 pkgname=locale-gen
 pkgver=3.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Generate locales based upon the config file /etc/locale.gen'
 arch=('any')
 url=https://gitweb.gentoo.org/proj/locale-gen.git/
 license=('GPL-2.0-only')
 depends=(
     'glibc'
-    'perl-file-slurper'
     'perl>=5.36'
 )
-makedepends=('git')
-backup=('etc/lc.gen')
+makedepends=(
+    'git'
+    'perl-file-slurper'
+)
 install=locale-gen.install
 source=(
     "$pkgname::git+https://gitweb.gentoo.org/proj/locale-gen.git#tag=$pkgname-$pkgver"
@@ -36,24 +44,8 @@ source=(
 )
 sha256sums=(
     '343b5395d0f4930b162a7cc9a8c19d7740a9829dec0fbacde25d2b2abb3c0a29'
-    'b275ac71afa1144b25dc210be15ebe3fbc2c4e22ec73921d2e9dd7e17913bfad'
+    '8ebea66fab929d3dd8178fbdb2bc32918ac412fd20b7651032d8ee999719cedf'
 )
-
-_mkconfig()
-{
-    cat << 'END'
-# This file defines which locales to incorporate into the glibc locale archive.
-# See the locale.gen(5) and locale-gen(8) man pages for more details.
-
-END
-
-    if [[ -e /usr/share/i18n/SUPPORTED ]]; then
-        /usr/bin/perl mkconfig
-    else
-        printf '%s\n' \
-            'Skipping the incorporation of locale.gen examples because the SUPPORTED file is absent' >&2
-    fi
-}
 
 # https://gitweb.gentoo.org/repo/gentoo.git/tree/sys-apps/locale-gen/locale-gen-3.10.ebuild
 package()
@@ -66,14 +58,16 @@ package()
     install -Dm755 locale.gen.5 -t "$pkgdir/usr/share/man/man5/"
     install -Dm644 COPYING      -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-    mkdir "$pkgdir/etc"
-
     # Override the glibc hook to prevent it from generating wrong locales.
     # https://gitlab.archlinux.org/archlinux/packaging/packages/glibc/-/blob/main/10-glibc-locale-gen.hook
-    install -vDm 644 ../10-glibc-locale-gen.hook -t "$pkgdir/etc/pacman.d/hooks/"
+    install -Dm644 ../10-glibc-locale-gen.hook -t "$pkgdir/etc/pacman.d/hooks/"
 
-    if ! _mkconfig > "$pkgdir/etc/lc.gen"; then
-        printf '%s\n' 'Failed to generate and/or install locale.gen' >&2
-        return 1
-    fi
+    # Install the simplified locale.gen config as reference.
+    { cat <<-'END' && ./mkconfig; } > locale.gen
+	# This file defines which locales to incorporate into the glibc locale archive.
+	# See the locale.gen(5) and locale-gen(8) man pages for more details.
+	
+	END
+
+    install -Dm644 locale.gen -t "$pkgdir/usr/share/doc/$pkgname/"
 }
