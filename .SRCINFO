@@ -1,0 +1,23 @@
+pkgbase = ie-bin
+	pkgdesc = Simple, fast terminal editor with sintax highlight to edit a single file without without opening a full TUI editor over the terminal
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/feraxhp/ie
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ie
+	conflicts = ie
+	options = !strip
+	source = README-0.9.2.md::https://raw.githubusercontent.com/feraxhp/ie/v0.9.2/README.md
+	source = LICENSE-0.9.2::https://raw.githubusercontent.com/feraxhp/ie/v0.9.2/LICENCE
+	sha256sums = 4f225b777874d5371f67e851c45fa7833d4a591c4317c97a0164f1d98804a4e5
+	sha256sums = 3524ac0314cb18789f90d84238751603f6ccef326a407376158e3ffcd4287a35
+	source_x86_64 = ie-x86_64-0.9.2::https://github.com/feraxhp/ie/releases/download/v0.9.2/ie-x86_64-v0.9.2
+	sha256sums_x86_64 = 7e9725e2cb9acf3e1075468680dfb6a623151a97a2ac67b124f4bcb7e2129471
+	source_aarch64 = ie-aarch64-0.9.2::https://github.com/feraxhp/ie/releases/download/v0.9.2/ie-aarch64-v0.9.2
+	sha256sums_aarch64 = f360af24d3b6ef9046f86c50c4bf0f812b8ae5ec82b20e87fe5f12156a5a606e
+
+pkgname = ie-bin
