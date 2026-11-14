@@ -1,0 +1,16 @@
+pkgbase = libcute_sound-sdl2
+	pkgdesc = Load/play/loop (with plugin)/pan WAV + OGG (stb_vorbis wrapper for OGG) in mono/stereo, high performance custom mixer, music + crossfade support (SDL2 version)
+	pkgver = r987.004c7a7
+	pkgrel = 1
+	url = https://github.com/RandyGaul/cute_headers
+	arch = any
+	license = Zlib OR Unlicense
+	makedepends = git
+	depends = sdl2
+	optdepends = stb: For OGG playback support
+	provides = libcute_sound
+	conflicts = libcute_sound-git
+	source = cute_headers::git+https://github.com/RandyGaul/cute_headers#commit=004c7a70a71eef7b14507bb747df85d96128675c
+	sha256sums = SKIP
+
+pkgname = libcute_sound-sdl2
