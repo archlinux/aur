@@ -1,6 +1,6 @@
 pkgbase = uzumaki-bin
 	pkgdesc = Native desktop client for Apple Music, GPU-rendered in Rust (needs a subscription; prebuilt)
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://getuzumaki.app
 	arch = x86_64
@@ -38,12 +38,13 @@ pkgbase = uzumaki-bin
 	depends = wayland
 	optdepends = vulkan-driver: GPU drawing (vulkan-radeon, vulkan-intel or nvidia-utils)
 	optdepends = libsecret: Chromium can store its cookies encrypted with the keyring
-	provides = uzumaki=0.1.1
+	optdepends = ffmpeg: animated album artwork (without it the covers stay still)
+	provides = uzumaki=0.2.0
 	conflicts = uzumaki
-	noextract = Uzumaki-0.1.1-x86_64.AppImage
+	noextract = Uzumaki-0.2.0-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source = Uzumaki-0.1.1-x86_64.AppImage::https://github.com/hanami117/uzumaki/releases/download/v0.1.1/Uzumaki-0.1.1-x86_64.AppImage
-	sha256sums = 3c09eaeed66d9d6b06658691732c183230cdd8abc22ec6146dbe75a5ef77d8ce
+	source = Uzumaki-0.2.0-x86_64.AppImage::https://github.com/hanami117/uzumaki/releases/download/v0.2.0/Uzumaki-0.2.0-x86_64.AppImage
+	sha256sums = 0dcb1068cd0ffc97ae586786f3ee7d441ee07231cb5b7867b7bdfdf556298348
 
 pkgname = uzumaki-bin

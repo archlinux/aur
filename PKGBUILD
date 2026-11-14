@@ -38,7 +38,7 @@
 
 pkgname=uzumaki-bin
 _name=uzumaki
-pkgver=0.1.1
+pkgver=0.2.0
 # The upstream build: 1 is tag v<version>, a rebuild of the same version is v<version>-<build>.
 _build=1
 if ((_build > 1)); then _rel=$pkgver-$_build; else _rel=$pkgver; fi
@@ -84,6 +84,7 @@ depends=(
 optdepends=(
   'vulkan-driver: GPU drawing (vulkan-radeon, vulkan-intel or nvidia-utils)'
   'libsecret: Chromium can store its cookies encrypted with the keyring'
+  'ffmpeg: animated album artwork (without it the covers stay still)'
 )
 provides=("$_name=$pkgver")
 conflicts=("$_name")
@@ -92,7 +93,7 @@ options=('!strip' '!debug')
 _appimage=Uzumaki-$_rel-x86_64.AppImage
 source=("$_appimage::https://github.com/hanami117/uzumaki/releases/download/v$_rel/$_appimage")
 noextract=("$_appimage")
-sha256sums=('3c09eaeed66d9d6b06658691732c183230cdd8abc22ec6146dbe75a5ef77d8ce')
+sha256sums=('0dcb1068cd0ffc97ae586786f3ee7d441ee07231cb5b7867b7bdfdf556298348')
 
 prepare() {
   # The AppImage's runtime unpacks its own squashfs into squashfs-root/ (no FUSE needed). Nothing
