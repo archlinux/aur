@@ -1,6 +1,6 @@
 pkgbase = rsusage-bin
 	pkgdesc = Blazing fast usage reports for coding agents - a Rust rewrite of ccusage (binary release)
-	pkgver = 0.1.r10
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Coobyk/rsusage
 	arch = x86_64
@@ -8,6 +8,6 @@ pkgbase = rsusage-bin
 	depends = gcc-libs
 	provides = rsusage
 	conflicts = rsusage
-	source = https://github.com/Coobyk/rsusage/releases/download/v0.1.r10/rsusage-linux-x86_64.tar.gz
-	sha256sums = e0eb2647b9e83a283d0ec82b25237082584a63d18f97029b058249ef1b00b66e
+	source = https://github.com/Coobyk/rsusage/releases/download/v0.2.1/rsusage-linux-x86_64.tar.gz
+	sha256sums = ea7fa7d0d1e54c31d723e24beed00e26e885da7a13a2e91ba38c901e966ef9ef
 pkgname = rsusage-bin
