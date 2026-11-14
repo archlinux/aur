@@ -1,0 +1,17 @@
+pkgbase = yksresults-git
+	pkgdesc = Native Unix TUI for tracking YKS TYT and AYT study topics
+	pkgver = 0.1.0.r5.g5769e09
+	pkgrel = 1
+	url = https://github.com/chlorine3539/yksresults
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = yksresults
+	conflicts = yksresults
+	source = yksresults-git::git+https://github.com/chlorine3539/yksresults.git
+	sha256sums = SKIP
+
+pkgname = yksresults-git
