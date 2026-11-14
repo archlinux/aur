@@ -1,6 +1,6 @@
 pkgbase = hyprdown-bin
 	pkgdesc = Close every app running under Hyprland without user input, then exit, power off, reboot or log out (prebuilt)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/TheElevatedOne/hyprdown
 	arch = x86_64
@@ -9,14 +9,14 @@ pkgbase = hyprdown-bin
 	depends = json-c
 	depends = systemd
 	depends = systemd-libs
-	provides = hyprdown=0.3.0
+	provides = hyprdown=0.3.1
 	conflicts = hyprdown
 	options = !debug
-	source = hyprdown-0.3.0-linux.tar.gz::https://github.com/TheElevatedOne/hyprdown/releases/download/0.3.0/hyprdown-0.3.0-linux.tar.gz
-	source = LICENSE-0.3.0::https://raw.githubusercontent.com/TheElevatedOne/hyprdown/refs/tags/0.3.0/LICENSE
-	source = README-0.3.0.md::https://raw.githubusercontent.com/TheElevatedOne/hyprdown/refs/tags/0.3.0/README.md
-	sha256sums = b3b0462bb5609552a049713e6aca55dbbb19ae04166f99c0cd6039a762952ce5
+	source = hyprdown-0.3.1-linux.tar.gz::https://github.com/TheElevatedOne/hyprdown/releases/download/0.3.1/hyprdown-0.3.1-linux.tar.gz
+	source = LICENSE-0.3.1::https://raw.githubusercontent.com/TheElevatedOne/hyprdown/refs/tags/0.3.1/LICENSE
+	source = README-0.3.1.md::https://raw.githubusercontent.com/TheElevatedOne/hyprdown/refs/tags/0.3.1/README.md
+	sha256sums = d798304971c154f8b9d42e102f4f1781e43c32851ebd8fab751cc71ab02a9336
 	sha256sums = 953ddedbcd7b01e88a78f928a55b83ae1edc8436e2bbbca3a25a29a0660df143
-	sha256sums = c1798914a8684604bf016ae712868d4e4344ee2f1af48bb6598c20c11ae742b6
+	sha256sums = 1b9f8ce2a48db7edafb1daced94f2c191209fd8b149466dff12843ecc7893863
 
 pkgname = hyprdown-bin

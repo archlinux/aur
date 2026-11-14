@@ -2,7 +2,7 @@
 
 pkgname=hyprdown-bin
 _pkgname=hyprdown
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Close every app running under Hyprland without user input, then exit, power off, reboot or log out (prebuilt)'
 arch=('x86_64')
@@ -23,9 +23,9 @@ source=(
   "LICENSE-$pkgver::https://raw.githubusercontent.com/TheElevatedOne/$_pkgname/refs/tags/$pkgver/LICENSE"
   "README-$pkgver.md::https://raw.githubusercontent.com/TheElevatedOne/$_pkgname/refs/tags/$pkgver/README.md"
 )
-sha256sums=('b3b0462bb5609552a049713e6aca55dbbb19ae04166f99c0cd6039a762952ce5'
+sha256sums=('d798304971c154f8b9d42e102f4f1781e43c32851ebd8fab751cc71ab02a9336'
             '953ddedbcd7b01e88a78f928a55b83ae1edc8436e2bbbca3a25a29a0660df143'
-            'c1798914a8684604bf016ae712868d4e4344ee2f1af48bb6598c20c11ae742b6')
+            '1b9f8ce2a48db7edafb1daced94f2c191209fd8b149466dff12843ecc7893863')
 
 package() {
   install -Dm755 "$_pkgname" -t "$pkgdir/usr/bin"
