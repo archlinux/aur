@@ -1,0 +1,5 @@
+[grp-bin]
+source = "github"
+github = "feraxhp/grp"
+use_latest_release = true
+prefix = "v"

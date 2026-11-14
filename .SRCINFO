@@ -1,0 +1,25 @@
+pkgbase = grp-bin
+	pkgdesc = A command line tool that helps you manage your git repositories in the cloud, for difrent platforms
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/feraxhp/grp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = zlib
+	depends = openssl-3
+	provides = grp
+	conflicts = grp
+	options = !strip
+	source = README-0.16.0.md::https://raw.githubusercontent.com/feraxhp/grp/v0.16.0/README.md
+	source = LICENSE-0.16.0::https://raw.githubusercontent.com/feraxhp/grp/v0.16.0/LICENCE
+	sha256sums = da09903a36b757673a7f782bf140289fea2347a6567f3232e03134c5c858a5b2
+	sha256sums = e0e60b9f84143eabd420c6fbd7864bfb909d3eabcf14aa923086a76cb8cfd448
+	source_x86_64 = grp-x86_64-0.16.0::https://github.com/feraxhp/grp/releases/download/v0.16.0/grp-x86_64-v0.16.0
+	sha256sums_x86_64 = 664506bf2bb291f9925d270ce43ef77924e2d1365dd4272b1cc97b5a4be2cf84
+	source_aarch64 = grp-aarch64-0.16.0::https://github.com/feraxhp/grp/releases/download/v0.16.0/grp-aarch64-v0.16.0
+	sha256sums_aarch64 = 0bd2ca53a41e0e0b3e89e51c6f4316a03338ea381debea722d427e293f460235
+
+pkgname = grp-bin
