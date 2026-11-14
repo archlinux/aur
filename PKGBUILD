@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
-pkgver=0.24.11
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Modern connection manager for SSH, RDP, VNC, SPICE and more"
 arch=('x86_64')
@@ -57,7 +57,7 @@ optdepends=(
   'waypipe: Wayland application forwarding for SSH connections'
 )
 source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7d079bd702d880dcdad5b494431bf99c099a6a881edf0001a6606cbdc3c59726')
+sha256sums=('3018e3a54637aca81ba1b1596324c45b88c53f6c00ff404cb318407d8adadabc')
 
 prepare() {
   cd "RustConn-$pkgver"
@@ -89,8 +89,9 @@ check() {
 package() {
   cd "RustConn-$pkgver"
   install -Dm755 target/release/{"$pkgname","$pkgname-cli"} -t "$pkgdir/usr/bin/"
-  install -Dm644 "$pkgname/assets/${_app_id}.desktop" -t \
-    "$pkgdir/usr/share/applications/"
+  install -d "$pkgdir/usr/share/applications"
+  msgfmt --desktop --template rustconn/assets/${_app_id}.desktop -d po -o \
+    "$pkgdir/usr/share/applications/${_app_id}.desktop"
   install -Dm644 "$pkgname/assets/${_app_id}.metainfo.xml" -t \
     "$pkgdir/usr/share/metainfo/"
   install -Dm644 "$pkgname/assets/${_app_id}"-{rdp,vv}.xml -t \
