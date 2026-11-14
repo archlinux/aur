@@ -1,7 +1,7 @@
 pkgbase = devin-desktop
 	pkgdesc = A team of agents for every engineer — Devin Desktop
 	pkgver = 3.12.59
-	pkgrel = 1
+	pkgrel = 2
 	url = https://devin.ai/desktop
 	arch = x86_64
 	license = LicenseRef-Devin Desktop

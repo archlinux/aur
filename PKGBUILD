@@ -5,7 +5,7 @@
 
 pkgname=devin-desktop
 pkgver=3.12.59
-pkgrel=1
+pkgrel=2
 pkgdesc="A team of agents for every engineer — Devin Desktop"
 arch=('x86_64')
 url="https://devin.ai/desktop"
@@ -102,7 +102,7 @@ build() {
     local _electron_major
     _electron_major=$(sed -n '/"electron":/s/.*"electron": *"\{0,1\} *\([0-9]\+\).*/\1/p' "$_installdir/resources/app/package.json" | head -1)
     if [[ -z "$_electron_major" ]]; then
-        _electron_major=$(strings "$_installdir/devin-desktop" | sed -n 's|Electron/\([0-9]\+\).*|\1|p' | head -1)
+        _electron_major=$(strings "$_installdir/devin-desktop" | sed -n 's|.*Electron/\([0-9]\+\).*|\1|p' | head -1)
     fi
     if [[ -z "$_electron_major" ]]; then
         echo "Error: Could not detect Electron version from package.json or bundled binary" >&2
@@ -151,9 +151,11 @@ package() {
     cd "$srcdir/deb-extract/data"
 
     # Replace the bundled ripgrep with the system binary. VS Code moved it to
-    # ripgrep-universal in 3.6; retain the prior layout for older releases.
+    # ripgrep-universal in 3.6 and into node_modules.asar.unpacked in 3.12;
+    # retain the prior layouts for older releases.
     local _ripgrep_binary _candidate
     for _candidate in \
+        "node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/linux-x64/rg" \
         "node_modules/@vscode/ripgrep-universal/bin/linux-x64/rg" \
         "node_modules/@vscode/ripgrep/bin/rg"; do
         if [[ -f "$pkgdir/opt/$pkgname/resources/app/$_candidate" ]]; then
