@@ -10,7 +10,7 @@
 # so they conflict with each other: a machine takes one engine in one form.
 
 pkgname=viewport-chromium
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Wayland compositor whose shell is a web page — Chromium, driven as a child process'
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ license=('GPL-3.0-or-later')
 # how many commits past it, and which one — because naming a stale tag would be
 # a lie about what was built. At a release the two say the same thing and the
 # tag is the one anybody can check.
-_tag=v0.6.0
+_tag=v0.7.0
 
 depends=(
   'wayland'
