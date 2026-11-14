@@ -6,6 +6,7 @@ pkgbase = aocl
 	arch = x86_64
 	license = custom
 	makedepends = curl
+	makedepends = sed
 	makedepends = patchelf
 	optdepends = environment-modules
 	options = staticlibs

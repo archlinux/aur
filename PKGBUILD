@@ -33,7 +33,7 @@ source=(
     "modulefile"
 )
 options=('staticlibs' '!strip')
-makedepends=('curl' 'patchelf')
+makedepends=('curl' 'sed' 'patchelf')
 optdepends=('environment-modules')
 sha256sums=(
     "${_sha256sum1}"
