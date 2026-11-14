@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-bin
-pkgver=26.35.39758.10
-_gmmver=22.10.0
+pkgver=26.40.40196.8
+_gmmver=22.10.2
 _gmmsover=12
-_igcver=2.41.5
+_igcver=2.42.6
 _lzsover=1
 _build=0
 pkgrel=1
@@ -18,10 +18,13 @@ depends=(
     'libgcc'
     'libstdc++')
 optdepends=(
-    'libdrm: for cl_intel_va_api_media_sharing'
-    'libigsc.so=0: for discrete GPU firmware enumeration through Level Zero'
-    'libnl-genl-3.so=200: for using Fabric related APIs in Level Zero'
-    'libva: for cl_intel_va_api_media_sharing')
+    'igsc<2.0.0: for discrete GPU firmware enumeration through Level Zero' # libigsc.so.1
+    'libdrm: for cl_intel_va_api_media_sharing OpenCL extension'
+    'libnl>=3.0.0: for using Fabric related APIs in Level Zero' # libnl-genl-3.so.200
+    'libnl<4.0.0: for using Fabric related APIs in Level Zero' # libnl-genl-3.so.200
+    'libva: for cl_intel_va_api_media_sharing OpenCL extension'
+    'systemd-libs: for using Sysman events API in Level Zero' # libudev.so
+)
 provides=('intel-compute-runtime' 'intel-gmmlib' 'level-zero-driver' 'opencl-driver')
 conflicts=('intel-compute-runtime' 'intel-gmmlib')
 options=('!debug' '!emptydirs' '!strip')
@@ -34,10 +37,10 @@ noextract=("intel-ocloc_${pkgver}-${_build}_amd64.deb"
            "intel-opencl-icd_${pkgver}-${_build}_amd64.deb"
            "${pkgname}-${pkgver}-level-zero-${_gmmver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb")
-sha256sums=('c64bff586edf2bd9b49f3e4c9c2be25e05c43466e4dafa2a2c3948d498c736b7'
-            '61712caaddeba3d38e4f79e2a0fb23fea25596ca2d72c3144c6eea2331ec4301'
-            'c19a641b953d55aebbf1d51bec364a84bf629f985e02fbbe6dc70224c0e88470'
-            '6031a63d6e8a12ce61c14efc15f2c8e727061286e3820b8594e6d00615e04d54'
+sha256sums=('b2868d6d7958cc5ca28fa9b48a7d39961760ee39ef07673d5b58894dd53d6b4e'
+            '96046069e94680b761df6e83ddc64244721178b826e3e1f8af3ca104cfd0c7c2'
+            'd9c86b2bb195baea6936c2708846cd1fceeadc39bc5e167f728858a5ca6fb86e'
+            '053fceadb84a1d2f9a30a0d1bc9b16424b3f1a90cc49900fcd80aadcf25c8a4d'
             '987a002c6c9eb75290d9937735641ef4f4b670591ee79e1ac8edebe16a81872e')
 
 prepare() {
@@ -55,7 +58,8 @@ package() {
     bsdtar -xf "gmmlib-${pkgver}/data.tar.zst" -C "$pkgdir"
     mv "${pkgdir}/usr/lib/${CARCH}-linux-gnu"/* "${pkgdir}/usr/lib"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s "$(find "${pkgdir}/usr/lib" -regex '.*libze_intel_gpu.so.[0-9]*' -exec basename {} \;)" "${pkgdir}/usr/lib/libze_intel_gpu.so"
+    ln -s "$(find "${pkgdir}/usr/lib" -regex ".*libigdgmm.so.${_gmmsover}" -exec basename {} \;)" "${pkgdir}/usr/lib/libigdgmm.so"
+    ln -s "$(find "${pkgdir}/usr/lib" -regex '.*libze_intel_gpu.so.[0-9]+' -exec basename {} \;)" "${pkgdir}/usr/lib/libze_intel_gpu.so"
     ln -s "$(find "${pkgdir}"/usr/bin -name 'ocloc-*' -exec basename {} \;)" "${pkgdir}/usr/bin/ocloc"
     sed -i "s|/usr/lib/${CARCH}-linux-gnu|/usr/lib|" "${pkgdir}/etc/OpenCL/vendors/intel.icd"
     rm "${pkgdir}/usr/share/doc"/{intel-{ocloc,opencl-icd},libze-intel-"gpu${_lzsover}"}/{changelog.Debian.gz,copyright}
