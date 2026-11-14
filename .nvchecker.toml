@@ -1,0 +1,4 @@
+[python-daff]
+source = "git"
+git = "https://github.com/paulfitz/daff.git"
+prefix = "v"
