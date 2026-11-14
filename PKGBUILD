@@ -2,7 +2,7 @@
 # Contributor: Lolka Team <support@lolka.app>
 
 pkgname=lolka-x-bin
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc='Lolka X - chat, voice and screen sharing desktop client'
 arch=('x86_64')
@@ -25,7 +25,7 @@ options=('!strip' '!debug')
 
 source=("lolka-x-${pkgver}-${arch[0]}.pkg.tar.zst::https://cdn.lolka.app/desktop/linux/${pkgver}/${pkgname}-${pkgver}-1-${arch[0]}.pkg.tar.zst")
 noextract=("lolka-x-${pkgver}-${arch[0]}.pkg.tar.zst")
-sha512sums=('543222ae4ea5b40270b4bd3d6449a45294d2f949ddad301a115df8eb0194ca4fa18b45444a78a7126cf6ed37b74cad6b0996e50483290f90bad4b399be07d813')
+sha512sums=('3d4653bdb71deac4a0312f20bdd56396a84f946b0e3b132b300ff3539d7dd2eb3fc19b76ae126fd5f2d534b3f5b49e9a140ecebfa1e7959d177d6b8262efdcde')
 
 package() {
     bsdtar -xf "$srcdir/lolka-x-${pkgver}-${arch[0]}.pkg.tar.zst" -C "$pkgdir" \
