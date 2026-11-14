@@ -1,6 +1,6 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=photobroom-git
-pkgver=v1.6.0.r1144.gbd58941343
+pkgver=v1.6.0.r1347.g635a7b8c16
 pkgrel=1
 pkgdesc="Photos managing tool"
 arch=('i686' 'x86_64')
@@ -23,7 +23,6 @@ source=(photobroom-git::git+https://github.com/Kicer86/photobroom.git#branch=mas
         animated_webp::git+https://github.com/Kicer86/AnimatedWebP.git#commit=6a5193130286faa8dab6a36fffcec67cbdfe224a
         nanobench::git+https://github.com/martinus/nanobench.git#commit=9f871ad520e040078597f4194080cc073a765061
         reflect-cpp::git+https://github.com/getml/reflect-cpp.git#commit=b661b6147a77415a58d6473e605de5f624106c27
-        magic_enum::git+https://github.com/Neargye/magic_enum.git#commit=1a1824df7ac798177a521eed952720681b0bf482
 )
 noextract=()
 md5sums=('SKIP'
@@ -31,8 +30,7 @@ md5sums=('SKIP'
          'eb071e34886c1b278c5d4da48f7e9b29'
          'cc1708b37764c3dd5b81f9c321770ed9'
          '3aef9cd17c8039b59d6df33da4ac7075'
-         'f2a1f51b0843332001ae9f8162a0f554'
-         '386f4a7d16d93c2fefc1a4337fd727ce')
+         'f2a1f51b0843332001ae9f8162a0f554')
 
 pkgver() {
   cd "$pkgname"
@@ -46,13 +44,11 @@ prepare()
     rm -d $pkgname/src/face_recognition/dlib_wrapper/face_recognition_models
     rm -d $pkgname/src/third_party/nanobench
     rm -d $pkgname/src/third_party/reflect-cpp
-    rm -d $pkgname/src/third_party/magic_enum
     ln -s ../cmake_modules $pkgname/cmake_modules
     ln -s ../../../../../animated_webp $pkgname/src/gui/desktop/utils/animated_webp
     ln -s ../../../../face_recognition_models $pkgname/src/face_recognition/dlib_wrapper/face_recognition_models
     ln -s ../../../nanobench $pkgname/src/third_party/nanobench
     ln -s ../../../reflect-cpp $pkgname/src/third_party/reflect-cpp
-    ln -s ../../../magic_enum $pkgname/src/third_party/magic_enum
 }
 
 build()
