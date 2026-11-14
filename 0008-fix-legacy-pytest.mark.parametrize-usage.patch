@@ -1,0 +1,25 @@
+From 57ba1388e4f439da8aae16bd2cf89c95a0136cb6 Mon Sep 17 00:00:00 2001
+From: nicolasyang <nicolasyang243@proton.me>
+Date: Sat, 14 Nov 2026 15:37:44 +0800
+Subject: [PATCH 8/8] fix legacy pytest.mark.parametrize usage
+
+---
+ test/units/module_utils/basic/test_set_mode_if_different.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/units/module_utils/basic/test_set_mode_if_different.py b/test/units/module_utils/basic/test_set_mode_if_different.py
+index 5fec331c2e..cd9107a893 100644
+--- a/test/units/module_utils/basic/test_set_mode_if_different.py
++++ b/test/units/module_utils/basic/test_set_mode_if_different.py
+@@ -157,7 +157,7 @@ def test_missing_lchmod_is_link(am, mock_stats, mocker, monkeypatch, check_mode)
+     mocker.stopall()
+ 
+ 
+-@pytest.mark.parametrize('stdin,',
++@pytest.mark.parametrize('stdin',
+                          ({},),
+                          indirect=['stdin'])
+ def test_missing_lchmod_is_link_in_sticky_dir(am, mock_stats, mocker):
+-- 
+2.56.1
+
