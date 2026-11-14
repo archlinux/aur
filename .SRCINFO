@@ -1,17 +1,17 @@
 pkgbase = elite-insights-bin
 	pkgdesc = Guild Wars 2 Elite Insights (prebuilt Linux binary)
-	pkgver = 3.31.0.0
+	pkgver = 3.32.0.0
 	pkgrel = 1
 	url = https://github.com/baaron4/GW2-Elite-Insights-Parser/releases
 	arch = x86_64
 	license = MIT
-	depends = dotnet-runtime-8.0>=8.0.31
+	depends = dotnet-runtime-10.0
 	depends = libx11
 	depends = libxcb
 	depends = libxkbcommon
 	depends = mesa
 	options = !strip
-	source = https://github.com/baaron4/GW2-Elite-Insights-Parser/releases/download/v3.31.0.0/GW2EI-linux_amd64.deb
-	sha256sums = 1caa8e80cbd66bd6bfdc6764e00e6592b7d92788be50ace47fc655616c45ecc8
+	source = https://github.com/baaron4/GW2-Elite-Insights-Parser/releases/download/v3.32.0.0/GW2EI-linux_amd64.deb
+	sha256sums = 916b53db382365029bd07991c101fb945f0d8461615e2a515c55eb38503ef690
 
 pkgname = elite-insights-bin
