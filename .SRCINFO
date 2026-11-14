@@ -1,6 +1,6 @@
 pkgbase = boomerangz
 	pkgdesc = Property-driven ZFS snapshot and replication manager
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/pdf/boomerangz
 	install = boomerangz.install
@@ -14,7 +14,7 @@ pkgbase = boomerangz
 	provides = boomerangz
 	conflicts = boomerangz-bin
 	backup = etc/boomerangz/config.toml
-	source = boomerangz_0.4.0.tar.gz::https://github.com/pdf/boomerangz/releases/download/v0.4.0/boomerangz-v0.4.0-source.tar.gz
-	sha256sums = 49f65474ba9d0d85d96a7f1654c3a6531eade8b0065259632fbeef843dae12b3
+	source = boomerangz_0.4.1.tar.gz::https://github.com/pdf/boomerangz/releases/download/v0.4.1/boomerangz-v0.4.1-source.tar.gz
+	sha256sums = 0f27eb0b5414afb8dee26cae578841482c8e710cee5e043b169d2e1cf337d540
 
 pkgname = boomerangz
