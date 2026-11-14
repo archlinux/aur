@@ -1,6 +1,6 @@
 pkgbase = solidcraft-bin
 	pkgdesc = Open-source parametric 3D CAD (binary release)
-	pkgver = 0.41.0
+	pkgver = 0.42.0
 	pkgrel = 1
 	url = https://github.com/tangency-labs/solidcraft
 	arch = x86_64
@@ -22,15 +22,15 @@ pkgbase = solidcraft-bin
 	depends = libxrandr
 	optdepends = vulkan-driver: Vulkan rendering (falls back to OpenGL/EGL without one)
 	optdepends = xdg-desktop-portal: open/save dialogs and file chooser portals on Wayland/desktop sandboxes
-	provides = solidcraft=0.41.0
+	provides = solidcraft=0.42.0
 	provides = solvecraft
 	conflicts = solidcraft
 	conflicts = solvecraft
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/tangency-labs/solidcraft/releases/download/v0.41.0/solidcraft-0.41.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = e597e4cb1be24eb14333bf4b8f54807f42443d1751e3cba263ae2e6a810cf070
-	source_aarch64 = https://github.com/tangency-labs/solidcraft/releases/download/v0.41.0/solidcraft-0.41.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 036e40898fb577624237f2cffb38b011757794f077b4112bee37cba0ecb724f4
+	source_x86_64 = https://github.com/tangency-labs/solidcraft/releases/download/v0.42.0/solidcraft-0.42.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5c05463c8ea247a49269ba63a0c23a3d6cba4d17ae713c655d2f94872fc4424b
+	source_aarch64 = https://github.com/tangency-labs/solidcraft/releases/download/v0.42.0/solidcraft-0.42.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 4c26e591df303c8339a88daa95836ad38072b3806290f0a84d5e67712ad1c634
 
 pkgname = solidcraft-bin
