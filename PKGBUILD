@@ -1,7 +1,7 @@
 # Maintainer: Smoolak <smoolak@gmail.com>
 
 pkgname=python-rnanorm
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Common RNA-seq normalization methods'
 arch=(any)
@@ -10,16 +10,9 @@ license=(Apache-2.0)
 depends=('python' 'python-click' 'python-numpy' 'python-pandas' 'python-scipy' 'python-scikit-learn>=1.6.0' 'python-pandera')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
 checkdepends=('python-pytest')
-_commit=abea2c187634465038900b64ac74715a35d871c1
+_commit=ca3d4be5f489383dd74d6c891a361d9472ee554e
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('38176d0e7d7f9b59357f882d276d0182acd596dfaaf54176b58d416b501a50eb')
-
-prepare() {
-  cd "RNAnorm-$_commit"
-  # Trial current Arch Python with the complete upstream suite.
-  # Upstream currently caps Python below 3.14 without a runtime API guard.
-  sed -i 's/>=3.9, <3.14/>=3.9, <3.15/' pyproject.toml
-}
+sha256sums=('128f7a09487b8003b84b63ca5d03f778565b415499d743119ab5faa40a0000aa')
 
 build() {
   cd "RNAnorm-$_commit"

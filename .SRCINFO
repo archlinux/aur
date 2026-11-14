@@ -1,6 +1,6 @@
 pkgbase = python-rnanorm
 	pkgdesc = Common RNA-seq normalization methods
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/genialis/RNAnorm
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-rnanorm
 	depends = python-scipy
 	depends = python-scikit-learn>=1.6.0
 	depends = python-pandera
-	source = python-rnanorm-2.2.0.tar.gz::https://github.com/genialis/RNAnorm/archive/abea2c187634465038900b64ac74715a35d871c1.tar.gz
-	sha256sums = 38176d0e7d7f9b59357f882d276d0182acd596dfaaf54176b58d416b501a50eb
+	source = python-rnanorm-2.3.0.tar.gz::https://github.com/genialis/RNAnorm/archive/ca3d4be5f489383dd74d6c891a361d9472ee554e.tar.gz
+	sha256sums = 128f7a09487b8003b84b63ca5d03f778565b415499d743119ab5faa40a0000aa
 
 pkgname = python-rnanorm
