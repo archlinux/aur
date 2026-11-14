@@ -1,15 +1,28 @@
 pkgbase = vtium-fonts
-	pkgdesc = The fonts that the frits of the vtium console packages name
-	pkgver = 0.1.0alpha.5
+	pkgdesc = vtium font sets for scripts, and the fonts the vtium font sets name
+	pkgver = 0.1.0alpha.8
 	pkgrel = 1
-	url = https://github.com/vtium/vtium-arch
+	url = https://github.com/vtium/vtium
 	arch = any
 	license = MIT
+	makedepends = git
+	depends = noto-fonts
+	depends = noto-fonts-cjk
 	depends = noto-fonts-emoji
 	depends = terminus-font
 	depends = ttf-jetbrains-mono
 	depends = ttf-nerd-fonts-symbols-mono
-	source = LICENSE
-	sha256sums = d539a3e857a06fe22834ab1308d115db5c5c0fc8080ccb46e763530bba825da7
+	backup = etc/vtium/fonts/arabic.vtfrit
+	backup = etc/vtium/fonts/hebrew.vtfrit
+	backup = etc/vtium/fonts/indic.vtfrit
+	backup = etc/vtium/fonts/thai-lao.vtfrit
+	backup = etc/vtium/fonts/vietnamese.vtfrit
+	backup = etc/vtium/fonts/cjk-sc.vtfrit
+	backup = etc/vtium/fonts/cjk-tc.vtfrit
+	backup = etc/vtium/fonts/cjk-jp.vtfrit
+	backup = etc/vtium/fonts/cjk-kr.vtfrit
+	source = vtium::git+https://github.com/vtium/vtium.git#tag=v0.1.0-alpha.8?signed
+	validpgpkeys = 33F9B54FD2A4B6A4110749B3BA464FC9847A832A
+	sha256sums = SKIP
 
 pkgname = vtium-fonts
