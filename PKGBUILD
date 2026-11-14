@@ -2,7 +2,7 @@
 
 pkgname=oxiroute-bin
 pkgver=6.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pingora-based HTTP, TCP, and RTMP proxy runtime (prebuilt, profile-guided release binaries)'
 arch=('x86_64')
 url='https://github.com/brauliobo/oxiroute'
@@ -30,7 +30,7 @@ source=("oxiroute-${pkgver}-${_target}.tar.gz::${_release}/oxiroute-${pkgver}-${
         'oxiroute.kdl'
         'oxiroute.lua'
         'README.md')
-sha256sums=('4fbdd9f8d2b6711b73fb2d4f39323d7bfefdf333059e239007c6f8f48efe94ab'
+sha256sums=('09bd6ac9f0818f4977f5627831b716f0ce690779765aaf61ae5507b9684c2cc7'
             'ffb543ff6043239bd1ceb86395a5de51a6571438485ab3f3b027893baee5884b'
             '574eab59174656b0813499ed1c9bca8be5a6e2cf69a98e8327f376e1c0b83b1b'
             'ece087105e74910e9d4a6c3551082828378ac5c62fc15e97a755a3bc93020e72'
