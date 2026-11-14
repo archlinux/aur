@@ -1,10 +1,12 @@
 pkgbase = atoms
 	pkgdesc = Easily manage Linux Chroot(s) and Containers
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AtomsDevs/Atoms
 	arch = x86_64
 	license = GPL-3.0-only
+	checkdepends = appstream
+	checkdepends = desktop-file-utils
 	checkdepends = xorg-server-xvfb
 	makedepends = git
 	makedepends = meson

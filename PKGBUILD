@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=atoms
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Easily manage Linux Chroot(s) and Containers"
 arch=('x86_64')
 url="https://github.com/AtomsDevs/Atoms"
@@ -24,7 +24,11 @@ makedepends=(
   'sassc'
   'vala'
 )
-checkdepends=('xorg-server-xvfb')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+  'xorg-server-xvfb'
+)
 provides=(
   'atoms-cli'
   'atoms-core'
