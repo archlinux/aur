@@ -4,11 +4,12 @@
 _name=minecraft-c
 pkgname="${_name}-git"
 pkgver=v1.2.r4.5f6cb39
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft Classic 0.0.30a reimplemented in C (bleeding-edge version)."
 arch=(x86_64)
 url="https://github.com/johnpayne-dev/MinecraftC"
 license=('MIT')
+conflicts=("${_name}")
 depends=('sdl3' 'sdl2-compat' 'stb' 'glu')
 makedepends=('git' 'clang' 'libcute_sound-sdl2')
 
@@ -28,8 +29,7 @@ pkgver() {
 
 build() {
   cd "${_name}"
-  # cp ../cute_sound.h External/cute_headers/
-
+  
   # Building
   mkdir -p Output
   

@@ -1,7 +1,7 @@
 pkgbase = minecraft-c-git
 	pkgdesc = Minecraft Classic 0.0.30a reimplemented in C (bleeding-edge version).
 	pkgver = v1.2.r4.5f6cb39
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/johnpayne-dev/MinecraftC
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = minecraft-c-git
 	depends = sdl2-compat
 	depends = stb
 	depends = glu
+	conflicts = minecraft-c
 	source = minecraft-c::git+https://github.com/johnpayne-dev/MinecraftC.git
 	source = minecraft-c.desktop
 	source = minecraft-c.png
