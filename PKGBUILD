@@ -89,6 +89,25 @@ package() {
   # org.meo.AI id, so existing pins open it. The older native app and the Newelle
   # engine stay installed without launchers: the live installer still runs
   # `meo-ai --live-recovery`, and AgentService uses the engine.
+  # `meo-ai` is the stable command name (Live installer, smoke checks). It starts the
+  # Rust desktop app; --live-recovery selects the Live install/repair assistant mode.
+  install -d "$pkgdir/usr/bin"
+  cat > "$pkgdir/usr/bin/meo-ai" <<'WRAPPER'
+#!/bin/sh
+args=
+for a in "$@"; do
+  case "$a" in
+    --live-recovery) export MEO_AI_LIVE_RECOVERY=1 ;;
+    --smoke)
+      test -x /usr/bin/meo-ai-desktop && test -s /usr/share/meo-ai-desktop/qml/Main.qml
+      exit $? ;;
+    *) args="$args \"$a\"" ;;
+  esac
+done
+eval "set -- $args"
+exec /usr/bin/meo-ai-desktop "$@"
+WRAPPER
+  chmod 755 "$pkgdir/usr/bin/meo-ai"
   install -Dm755 "$srcdir/cargo-target/release/meo-ai-desktop" "$pkgdir/usr/bin/meo-ai-desktop"
   install -Dm644 -t "$pkgdir/usr/share/meo-ai-desktop/qml" "$srcdir/$_srcdir/meo/desktop-rs/qml/"*.qml
   rm -f "$pkgdir/usr/share/applications/org.meo.MeoAI.desktop" \
