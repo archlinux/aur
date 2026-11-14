@@ -1,6 +1,6 @@
 # Maintainer: Rizakulov Temur <riakulovtemur0@gmail.com>
 pkgname=cmdflow
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A minimalist CLI tool written in Rust that parses shell history and renders graphs"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 install=cmdflow.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('dd5899f485b82dea3d389a72ac039e001fab623ff0f0d3d81487ae0c93595365')
+sha256sums=('85202cac0a604663a0d1c4974de18f165e60b66e343700d0337bea9f6b03e440')
 
 prepare() {
   cd "$pkgname-$pkgver"
