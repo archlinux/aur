@@ -1,14 +1,14 @@
 # Maintainer: lubuoren <luboren123@outlook.com>
 
 pkgname=wowtype
-pkgver=0.3.12
+pkgver=0.4.0
 pkgrel=1
-_dataver=2026.11.11.3
+_dataver=2026.11.11.5
 _datafile="wowtype-data-rime-ice-$_dataver.tar.gz"
 pkgdesc='WeType 风格的拼音输入法：fcitx5 插件 + Rust 引擎（长句、半成品输入、纠错、学习）'
 arch=('x86_64')
 url='https://github.com/Gloridust/WowType'
-license=('MIT OR Apache-2.0' 'Apache-2.0' 'GPL-3.0-only' 'CC-BY-SA-4.0' 'Unicode-3.0')
+license=('MIT OR Apache-2.0' 'Apache-2.0' 'GPL-3.0-only' 'CC-BY-SA-4.0' 'Unicode-3.0' 'LGPL-3.0-only' 'LicenseRef-CC-BY-2.0-FR')
 depends=('fcitx5' 'alsa-lib' 'glibc' 'gcc-libs' 'python')
 makedepends=('cargo' 'cmake' 'extra-cmake-modules' 'pkgconf' 'git')
 optdepends=(
@@ -28,15 +28,17 @@ source=(
   'wowtype-config-pacman.patch'
   'CC-BY-SA-4.0.txt::https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt'
   'Unicode-3.0.txt::https://www.unicode.org/license.txt'
+  'CC-BY-2.0-FR.html::https://creativecommons.org/licenses/by/2.0/fr/legalcode.fr'
 )
 # The upstream data archive is flat, not a versioned top-level directory.
 noextract=("$_datafile")
 sha256sums=(
   'SKIP'
-  'ea07c3e8cf66cbf7d0ebc23ab95cc96384e6f3808fd0cdee1f87905322e51d7c'
+  'a00c2c01fde827aa03be0e494baf83cdaf3e124011402acf55bb7b5ce19f5000'
   '20dc3a5c30e74fdc77aedc7de3b2e977610118f7abf3443e32c9deab4343daa6'
   '28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5'
   'e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96'
+  '597d4c64f6606c64da65ba6c079e5cc87e4cce2b5187eda908c939b538e7ab9b'
 )
 
 prepare() {
@@ -88,9 +90,11 @@ package() {
 
   local data="$srcdir/data"
   install -Dm644 -t "$pkgdir/usr/share/wowtype" \
-    "$data/lexicon.tsv" "$data/english.txt" "$data/words.lm"
+    "$data/lexicon.tsv" "$data/english.txt" "$data/words.lm" "$data/wubi86.tsv"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "$data/SOURCE.txt" "$pkgdir/usr/share/doc/$pkgname/DATA-SOURCE.txt"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    "$data/WUBI-SOURCE.txt" "$data/WUBI-AUTHORS"
   printf '%s\n' "$_dataver" >"$pkgdir/usr/share/doc/$pkgname/DATA-VERSION"
 
   # Preserve upstream licensing/attribution, including the embedded CLDR data.
@@ -98,6 +102,9 @@ package() {
   install -Dm644 voice/src/wtlocal/NOTICE.md "$pkgdir/usr/share/licenses/$pkgname/NOTICE.voicekey.md"
   install -Dm644 "$data/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rime-ice"
   install -Dm644 "$data/SOURCE.txt" "$pkgdir/usr/share/licenses/$pkgname/DATA-SOURCE.txt"
+  install -Dm644 "$data/WUBI-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rime-wubi"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
-    "$srcdir/CC-BY-SA-4.0.txt" "$srcdir/Unicode-3.0.txt"
+    "$data/WUBI-SOURCE.txt" "$data/WUBI-AUTHORS" core/data/OPENCC-LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    "$srcdir/CC-BY-SA-4.0.txt" "$srcdir/Unicode-3.0.txt" "$srcdir/CC-BY-2.0-FR.html"
 }
