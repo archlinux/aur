@@ -2,7 +2,7 @@
 
 pkgname=ttypo-bin
 _pkgname=ttypo
-pkgver=0.1.22
+pkgver=0.1.24
 pkgrel=1
 pkgdesc="Terminal-based typing test (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source_x86_64=("$_release_url/$_pkgname-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("$_release_url/$_pkgname-aarch64-unknown-linux-gnu.tar.xz")
 
 # Populate via `updpkgsums` after each release.
-sha256sums_x86_64=('1c28567045aa9adc61efbb4491036fbdbaa7fd9f0a388907390072bf9c9b9709')
-sha256sums_aarch64=('d21b33cae110db069860540858935a2c4068608c83a4dc665fec33dcc5fdfd5c')
+sha256sums_x86_64=('47869f7059a922b0c620bbaa4450f9f7b9fb331f646dca23be486d8b61636c52')
+sha256sums_aarch64=('cad701f6b9253264c9c774f9fa307c6c6a3ac1d81ef03326faf587b4678831ed')
 
 package() {
     local _dir="$_pkgname-$CARCH-unknown-linux-gnu"
