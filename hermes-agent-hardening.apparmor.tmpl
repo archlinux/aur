@@ -1,6 +1,6 @@
 #include <tunables/global>
 
-profile hermes-agent-hardening-$INSTANCE /opt/hermes-agent/venv/bin/python flags=(attach_disconnected$MODE_FLAGS) {
+profile hermes-agent-hardening-$INSTANCE flags=(attach_disconnected$MODE_FLAGS) {
   # Core runtime support.
   #include <abstractions/base>
   #include <abstractions/nameservice>

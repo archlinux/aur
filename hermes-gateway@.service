@@ -40,6 +40,8 @@ ProtectKernelLogs=yes
 ProtectControlGroups=yes
 ProtectClock=yes
 ProtectHostname=yes
+PrivatePIDs=yes
+PrivateIPC=yes
 ProtectProc=invisible
 ProcSubset=pid
 
