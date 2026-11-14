@@ -2,7 +2,7 @@
 # Contributor: Nicolas Bizzozzéro <nicolas.bizzozzero@protonmail.com>
 
 pkgname=python-river
-pkgver=0.26.1
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="Online machine learning in Python"
 arch=("x86_64")
@@ -27,7 +27,7 @@ optdepends=(
   python-sqlalchemy
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/online-ml/river/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b5a6e618a9eb436307ed801eb75c82699ad542a7c18c050477364e21b48633c2')
+sha256sums=('62ed8cb95dafdb75545f8e377b99a8b2bed870bd1e5931f632dc833f913af8df')
 
 build() {
   cd "river-$pkgver"
