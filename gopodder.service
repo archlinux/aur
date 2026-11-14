@@ -1,0 +1,31 @@
+[Unit]
+Description=goPodder gPodder-compatible podcast sync server
+Documentation=https://github.com/cbrgm/gopodder
+After=network.target
+
+[Service]
+# Override with a drop-in (systemctl edit gopodder), for example:
+#   [Service]
+#   Environment=GOPODDER_LISTEN_ADDRESS=127.0.0.1:8094
+Environment=GOPODDER_LISTEN_ADDRESS=127.0.0.1:8080
+Environment=GOPODDER_DB_PATH=/var/lib/gopodder/gopodder.db
+ExecStart=/usr/bin/gopodder serve
+DynamicUser=yes
+StateDirectory=gopodder
+StateDirectoryMode=0700
+UMask=0077
+ProtectHome=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

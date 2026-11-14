@@ -1,0 +1,17 @@
+pkgbase = gopodder
+	pkgdesc = gPodder-compatible podcast synchronization server
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://github.com/cbrgm/gopodder
+	install = gopodder.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = gopodder-1.4.3.tar.gz::https://github.com/cbrgm/gopodder/archive/refs/tags/v1.4.3.tar.gz
+	source = gopodder.service
+	sha256sums = b636a49049beffb7a6ae0e03f5c5585547b375fe970e3adec4d1310e3e9727e7
+	sha256sums = 510a4591d5688bf07ef4f491175413e2ce381cee63a43e6b02ffbb2b1e194ece
+
+pkgname = gopodder

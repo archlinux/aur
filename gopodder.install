@@ -1,0 +1,11 @@
+post_install() {
+  echo '==> Start it with: systemctl enable --now gopodder.service'
+  echo '==> It listens on 127.0.0.1:8080. The first visitor of /setup becomes admin,'
+  echo '==> so create the admin account before exposing it, e.g. through'
+  echo '==> ssh -L 8080:127.0.0.1:8080 <this host>, then put a TLS reverse proxy in front.'
+  echo '==> Change address or database with: systemctl edit gopodder (see the unit file).'
+}
+
+post_upgrade() {
+  echo '==> Restart to run the new version: systemctl try-restart gopodder.service'
+}
