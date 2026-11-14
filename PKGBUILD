@@ -14,6 +14,12 @@ checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 b2sums=('8d600e1c1e1e2948c31e7dbec907d87bd3590dfdecb22ee22a3f75ca65f22d50bc204fd0751327ac8ca22856d84f2ee7ddc1b42710f956e9c22b3e72d6047a65')
 
+prepare() {
+  cd $_name-$pkgver
+  # pytest refuses to collect nose-style generator tests; call the assertions directly
+  sed -Ei 's/^(\s+)yield (\w+), (.+)$/\1\2(\3)/' tests/*.py tests/types/*.py
+}
+
 build() {
   cd $_name-$pkgver
   python -m build --wheel --no-isolation
