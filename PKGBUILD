@@ -1,7 +1,7 @@
 # Maintainer: ViniciusPHDU20
 pkgname=archshield-pro
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Sovereign Linux Cyber Deception, Ring 0 Kernel Sentry & Intrusion Prevention System"
 arch=('x86_64')
 url="https://github.com/ViniciusPHDU20/ArchShield"
