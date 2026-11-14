@@ -1,14 +1,14 @@
 pkgbase = nekokolpa2
 	pkgdesc = Cross-platform eSIM management app for working with local eUICCs, external readers, and remote reader endpoints
-	pkgver = 2.2.6
-	pkgrel = 588
+	pkgver = 2.5.0
+	pkgrel = 606
 	url = https://github.com/iebb/NekokoLPA2
 	arch = x86_64
 	license = MIT
 	depends = bubblewrap
 	depends = gtk3
 	options = !debug
-	source = https://github.com/iebb/NekokoLPA2/releases/download/v2.2.6%2B588/ee.nekoko.nlpa2.linux-2.2.6-588-x64.tar.gz
-	sha256sums = 68728ed6de131eb14593cf6a58c0ad4909739c04ca84ed45d1b9dcd77bf89ad0
+	source = https://github.com/iebb/NekokoLPA2/releases/download/v2.5.0%2B606/ee.nekoko.nlpa2.linux-2.5.0-606-x64.tar.gz
+	sha256sums = ceeaba80abffa735572c157c395e92d2c7410d5fc450e01c0f5ff8ef5044d3cd
 
 pkgname = nekokolpa2
