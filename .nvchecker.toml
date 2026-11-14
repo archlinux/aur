@@ -2,3 +2,4 @@
 source = "github"
 github = "uglymike17/basic256"
 use_latest_release = true
+prefix = "v"
