@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=rockpass
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc='A small and ultrasecure Lesspass database server written in Rust'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('rust')
 backup=("etc/${pkgname}.toml")
 source=("https://gitlab.com/ogarcia/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
         "${pkgname}.service")
-b2sums=('fbd4a113ecfde7b59f93a3ebf6a35accd59c13d12a64bbac55190c4a6cb7e0ead4e482cc15c38b442f357eea5e39474381c8ca9ebae654d5ecc73eab1774cc00'
+b2sums=('23acc673e4b5fb4466188c16227cac6268aa13c39e90812e62f8911dbd76be4b619c92317956c3fdf9a8a24c6b5c6f4c6026184875be099416481ed302c41e3b'
         '0fa53a8afb3e842cfce314cbc580c3e2a89441f8b1155307df164ca50028e88d30212a29d847c40026105fb4a735e19863ed07fca8aeb86f51d3a8f096d8860a')
 
 build() {
