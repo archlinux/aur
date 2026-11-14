@@ -3,8 +3,7 @@
 _pkgname=Equibop
 pkgname=equibop-bin
 _appname=equibop-desktop
-pkgver=3.3.2
-_electronversion=43
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="A custom Discord desktop app with Equicord pre-installed (binary release)"
 arch=(
@@ -22,30 +21,24 @@ conflicts=(
     "${_appname}"
 )
 depends=(
-    "electron${_electronversion}"
+    'alsa-lib'
+    'gtk3'
+    'nss'
 )
 options=('!strip')
 source=("${pkgname%-bin}.sh"
         "icon.png::https://raw.githubusercontent.com/Equicord/Equibop/v${pkgver}/static/icon.png")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.tar.gz")
-sha256sums=('28e852632bc479a8c9bb84c2d9b629c35a621618448fbc1e0bbea21dfaef19a1'
+sha256sums=('2b191fca6474ba8150c3f3627c83578129c6e5328effa8eb74d8f70f64f8f5ea'
             '280156676d268d80f65ea3e592bacdd0df5bd78e69872211c624fa07ea062cb8')
-sha256sums_aarch64=('c128addaef4fd728ada5a8a57b5c10eb2bdd5ce1fec0f6e7288b988432a4222e')
-sha256sums_x86_64=('1e52689b966ef32d5ae800861a13c651a477fd2d97d9bcbbe39a470cb4e55638')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-}
+sha256sums_aarch64=('ffc7174efe609aa5d753582c1f6e9190fe4e692f574a002a144f3c190b94a3b4')
+sha256sums_x86_64=('a74357f9078aa8fb60aca6404148e9a8f5cdf73114b8257f07959e469e66bd27')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
 
-    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}/resources/app-update.yml" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/${pkgname%-bin}-${pkgver}/resources/arrpc" "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    install -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -R "${srcdir}/${pkgname%-bin}-${pkgver}/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
 
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 
