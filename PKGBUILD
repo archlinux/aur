@@ -2,7 +2,7 @@
 # The release workflow sets pkgver and publishes this file to the AUR on every
 # release tag, so the AUR version never falls behind the latest tag.
 pkgname=neferwl-git
-pkgver=0.14.0.r0.g1785a8b
+pkgver=0.15.0.r0.ge4226fa
 pkgrel=1
 pkgdesc='A Wayland compositor that spends its frames on your apps, not on itself (git version)'
 arch=('x86_64' 'aarch64')
@@ -56,6 +56,7 @@ package() {
 	install -Dm755 neferwl "$pkgdir/usr/bin/neferwl"
 	install -Dm755 packaging/neferwl-session "$pkgdir/usr/bin/neferwl-session"
 	install -Dm644 packaging/neferwl.service "$pkgdir/usr/lib/systemd/user/neferwl.service"
+	install -Dm644 packaging/neferwl-server.service "$pkgdir/usr/lib/systemd/user/neferwl-server.service"
 	install -Dm644 packaging/neferwl-shutdown.target "$pkgdir/usr/lib/systemd/user/neferwl-shutdown.target"
 	install -Dm644 packaging/neferwl.desktop "$pkgdir/usr/share/wayland-sessions/neferwl.desktop"
 	install -Dm644 packaging/neferwl-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/neferwl-portals.conf"
