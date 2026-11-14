@@ -1,6 +1,6 @@
 pkgbase = opencrabs-bin
 	pkgdesc = Autonomous, self-improving AI agent in a single Rust binary (prebuilt)
-	pkgver = 0.5.15
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/opencrabs/opencrabs
 	install = opencrabs.install
@@ -13,13 +13,13 @@ pkgbase = opencrabs-bin
 	depends = libstdc++
 	depends = openssl-3
 	optdepends = rtk: filter shell command output to save tokens
-	provides = opencrabs=0.5.15
+	provides = opencrabs=0.6.0
 	conflicts = opencrabs
-	source = opencrabs-0.5.15-LICENSE.md::https://raw.githubusercontent.com/opencrabs/opencrabs/v0.5.15/LICENSE.md
+	source = opencrabs-0.6.0-LICENSE.md::https://raw.githubusercontent.com/opencrabs/opencrabs/v0.6.0/LICENSE.md
 	sha256sums = f996b971825089bcd77a5dedda20ecfe7f0bd44f73238caa8467a21c1ed4e44c
-	source_x86_64 = https://github.com/opencrabs/opencrabs/releases/download/v0.5.15/opencrabs-v0.5.15-linux-amd64.tar.gz
-	sha256sums_x86_64 = 5b261d86e06c281862029fe797d851a6b60f4f6a5a775e9b1d994ce5ba5cd7e4
-	source_aarch64 = https://github.com/opencrabs/opencrabs/releases/download/v0.5.15/opencrabs-v0.5.15-linux-arm64.tar.gz
-	sha256sums_aarch64 = ae0a5d3db06b51071e06fd8f15477245d2b4c241f67b58e51d57b62e41ebdeeb
+	source_x86_64 = https://github.com/opencrabs/opencrabs/releases/download/v0.6.0/opencrabs-v0.6.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = f88e9cd59f45b7ba615c6bb9c131c9ad15feeaa4e6443e6897dac93646d866c0
+	source_aarch64 = https://github.com/opencrabs/opencrabs/releases/download/v0.6.0/opencrabs-v0.6.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 2daf8fb12c909e857309daff8a86a80abdcb437840824b4e68ccd6cf374afdfd
 
 pkgname = opencrabs-bin

@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=opencrabs-bin
-pkgver=0.5.15
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Autonomous, self-improving AI agent in a single Rust binary (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source=("opencrabs-${pkgver}-LICENSE.md::https://raw.githubusercontent.com/openc
 source_x86_64=("${_release}/opencrabs-v${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_release}/opencrabs-v${pkgver}-linux-arm64.tar.gz")
 sha256sums=('f996b971825089bcd77a5dedda20ecfe7f0bd44f73238caa8467a21c1ed4e44c')
-sha256sums_x86_64=('5b261d86e06c281862029fe797d851a6b60f4f6a5a775e9b1d994ce5ba5cd7e4')
-sha256sums_aarch64=('ae0a5d3db06b51071e06fd8f15477245d2b4c241f67b58e51d57b62e41ebdeeb')
+sha256sums_x86_64=('f88e9cd59f45b7ba615c6bb9c131c9ad15feeaa4e6443e6897dac93646d866c0')
+sha256sums_aarch64=('2daf8fb12c909e857309daff8a86a80abdcb437840824b4e68ccd6cf374afdfd')
 
 _home_env() {
   export HOME="${srcdir}/home"
