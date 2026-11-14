@@ -1,6 +1,6 @@
 pkgbase = fluxa-desktop-bin
 	pkgdesc = Cross-platform media center for streaming and managing your media library
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/FluxaMedia/fluxa
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fluxa-desktop-bin
 	provides = fluxa-desktop
 	conflicts = fluxa-desktop
 	options = !strip
-	source = fluxa-desktop-0.3.7.deb::https://github.com/FluxaMedia/fluxa/releases/download/v0.3.7/fluxa-0.3.7-linux-amd64.deb
-	sha256sums = dfedaaadbf6b04a4cc4116ed265063052df33c569f9d5c5924c130cb6628f626
+	source = fluxa-desktop-0.3.8.deb::https://github.com/FluxaMedia/fluxa/releases/download/v0.3.8/fluxa-0.3.8-linux-amd64.deb
+	sha256sums = acb1b067e039b2a8d1f8e379da6c824eed13cb45573329af33fcf5483576624b
 
 pkgname = fluxa-desktop-bin
