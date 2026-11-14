@@ -1,0 +1,14 @@
+# The same steps as the .deb and the .rpm: device access at once, and the driver registered with SteamVR for everyone
+# logged in (later logins: the autostart entry and the udev rule). On removal it is unregistered again.
+
+post_install() {
+	/usr/lib/riftlinux/after-install.sh
+}
+
+post_upgrade() {
+	/usr/lib/riftlinux/after-install.sh
+}
+
+pre_remove() {
+	/usr/lib/riftlinux/before-remove.sh
+}
