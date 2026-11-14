@@ -1,6 +1,6 @@
 pkgbase = opp-bin
 	pkgdesc = An all-in-one osu! toolkit
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/osuplusplus/OPP
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = opp-bin
 	optdepends = osu: Wine 下的 osu! Stable 客户端
 	provides = opp
 	conflicts = opp
-	noextract = OPP_0.6.0_linux_amd64.deb
-	source = https://github.com/osuplusplus/OPP/releases/download/v0.6.0/OPP_0.6.0_linux_amd64.deb
+	noextract = OPP_0.6.1_linux_amd64.deb
+	source = https://github.com/osuplusplus/OPP/releases/download/v0.6.1/OPP_0.6.1_linux_amd64.deb
 	source = LICENSE
-	sha256sums = 8a54248302f514e802ee91ba72ac76c47bd61e951a5788a24343beb556546ff1
+	sha256sums = 41d75540dd9f3b280a2d6e416620654b585782ab438a896bb1dfd907a6a364d7
 	sha256sums = 90e042cc6b2fdeb48c52142ffec83ce6f7706a664fef3bb11d65eb7a68d80039
 
 pkgname = opp-bin

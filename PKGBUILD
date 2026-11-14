@@ -1,4 +1,4 @@
-# Maintainer: fantasyzhjk <fantasyzhjk at aur dot archlinux dot org>
+# Maintainer: fantasyzhjk
 # Upstream: https://github.com/osuplusplus/OPP
 #
 # opp-bin：官方 GitHub Release deb 的重打包。AUR 只承载配方，
@@ -6,7 +6,7 @@
 # 发新版本时仅需更新 pkgver 与第一个 sha256sums（可由 .github/workflows/AUR.yml 代办）。
 
 pkgname=opp-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='An all-in-one osu! toolkit'
 url='https://github.com/osuplusplus/OPP'
@@ -37,7 +37,7 @@ conflicts=(opp)
 source=("https://github.com/osuplusplus/OPP/releases/download/v${pkgver}/OPP_${pkgver}_linux_amd64.deb"
         'LICENSE')
 noextract=("OPP_${pkgver}_linux_amd64.deb")
-sha256sums=('8a54248302f514e802ee91ba72ac76c47bd61e951a5788a24343beb556546ff1'
+sha256sums=('41d75540dd9f3b280a2d6e416620654b585782ab438a896bb1dfd907a6a364d7'
             '90e042cc6b2fdeb48c52142ffec83ce6f7706a664fef3bb11d65eb7a68d80039')
 
 package() {
