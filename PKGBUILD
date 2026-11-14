@@ -3,7 +3,7 @@
 pkgbase=dosr
 pkgname=('dosr')
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A better alternative to sudo(-rs)/su • Fast • Memory-safe • Security-oriented'
 url='https://lechatp.github.io/RootAsRole/'
 license=('LGPL-3.0-or-later')
@@ -12,7 +12,8 @@ options=('!debug')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/LeChatP/RootAsRole/archive/v${pkgver}.tar.gz")
 sha256sums=('7d7553c89999d593662366ea13cba917b505f06a90b17cce422eadf70f604bb3')
 depends=('pcre2' 'pam' 'libseccomp' 'glibc' 'gcc-libs' 'e2fsprogs')
-makedepends=('cargo' 'libcap' 'pandoc')
+makedepends=('cargo' 'libcap')
+optdepends=('pandoc: for building man pages')
 validpgpkeys=('74F43C5774BE1F3527DEFA4835C155EA0525104D')
 install=rootasrole.install
 backup=('etc/pam.d/dosr')
@@ -36,9 +37,11 @@ build() {
     cargo build --release --bin chsr --features editor
 
     # Man pages (same sources as the Debian package)
-    mkdir -p man/{en,fr}
-    pandoc -s -t man resources/man/en_US.md -o man/en/dosr.8
-    pandoc -s -t man resources/man/fr_FR.md -o man/fr/dosr.8
+    if command -v pandoc >/dev/null 2>&1; then
+        mkdir -p man/{en,fr}
+        pandoc -s -t man resources/man/en_US.md -o man/en/dosr.8
+        pandoc -s -t man resources/man/fr_FR.md -o man/fr/dosr.8
+    fi
 }
 
 check() {
@@ -86,11 +89,13 @@ EOF
         "$pkgdir/usr/share/rootasrole/rootasrole.json"
 
     # Man pages (chsr shares the dosr page, as in Debian's dosr.links)
-    gzip -9nf 'man/en/dosr.8' 'man/fr/dosr.8'
-    install -Dm644 'man/en/dosr.8.gz' -t "$pkgdir/usr/share/man/man8"
-    ln -s dosr.8.gz "$pkgdir/usr/share/man/man8/chsr.8.gz"
-    install -Dm644 'man/fr/dosr.8.gz' -t "$pkgdir/usr/share/man/fr/man8"
-    ln -s dosr.8.gz "$pkgdir/usr/share/man/fr/man8/chsr.8.gz"
+    if [ -f man/en/dosr.8 ]; then
+        gzip -9nf 'man/en/dosr.8' 'man/fr/dosr.8'
+        install -Dm644 'man/en/dosr.8.gz' -t "$pkgdir/usr/share/man/man8"
+        ln -s dosr.8.gz "$pkgdir/usr/share/man/man8/chsr.8.gz"
+        install -Dm644 'man/fr/dosr.8.gz' -t "$pkgdir/usr/share/man/fr/man8"
+        ln -s dosr.8.gz "$pkgdir/usr/share/man/fr/man8/chsr.8.gz"
+    fi
 
     setcap '=p' "$pkgdir/usr/bin/dosr"
 }
