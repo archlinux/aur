@@ -1,6 +1,6 @@
 pkgbase = explorenova-bin
 	pkgdesc = Terminal file manager: git-annotated tree, previews, fuzzy search, vim keys (prebuilt)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Novaturiente/explorenova
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = explorenova-bin
 	optdepends = xclip: copy paths under X11
 	provides = explorenova
 	conflicts = explorenova
-	source = https://github.com/Novaturiente/explorenova/releases/download/v0.2.0/explorenova-0.2.0-x86_64-linux.tar.gz
-	sha256sums = f0e32c9a71c6e55e453788458a897fc64bba858f7b915ef1d80a814b7c4c0841
+	source = https://github.com/Novaturiente/explorenova/releases/download/v0.2.1/explorenova-0.2.1-x86_64-linux.tar.gz
+	sha256sums = 9f5b128c76c37cf77e103f3a3006213c8ff3e6b12e714886d857bfc850531f78
 
 pkgname = explorenova-bin

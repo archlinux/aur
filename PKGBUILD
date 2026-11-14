@@ -2,7 +2,7 @@
 
 pkgname=explorenova-bin
 _pkgname=explorenova
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Terminal file manager: git-annotated tree, previews, fuzzy search, vim keys (prebuilt)'
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-linux.tar.gz")
-sha256sums=('f0e32c9a71c6e55e453788458a897fc64bba858f7b915ef1d80a814b7c4c0841')
+sha256sums=('9f5b128c76c37cf77e103f3a3006213c8ff3e6b12e714886d857bfc850531f78')
 
 package() {
   cd "$_pkgname-$pkgver-x86_64-linux"
