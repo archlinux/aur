@@ -4,8 +4,8 @@
 # Contributor: Dct Mei <dctxmei@yandex.com>
 
 pkgname=hath
-pkgver=1.6.5
-pkgrel=2
+pkgver=1.6.6
+pkgrel=1
 pkgdesc="Open-source Peer-2-Peer gallery distribution system"
 arch=('any')
 url="https://ehwiki.org/wiki/Hentai@Home"
@@ -18,7 +18,7 @@ source=("https://repo.e-hentai.org/hath/HentaiAtHome_${pkgver}_src.zip"
         "hath.sh"
         "hath.sysusers"
         "hath.tmpfiles")
-sha256sums=('d2aab9bf9029c59b2f4a6e2ea8e8e1a0a4db66d22109c03aea57df58a6b8619d'
+sha256sums=('5b27e3002e1de8e1d368a294d24a0b69cf3dc1cbc9721c65c92b750e65281a87'
             '029681a77400b5e30dcb3bb82eead49cf933d96199dc51e81c3dfb77655177aa'
             '80064d7e31085b56ad5b41863f51b25c33a20328a7f49cd88f80dfed281c439a'
             '0c3a1a6c26cec616bc44274acbf5908e736581ae30cdf0af7508d4bfcad3a81e'
