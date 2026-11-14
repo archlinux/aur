@@ -1,0 +1,39 @@
+--- a/src/lerobot/__init__.py
++++ b/src/lerobot/__init__.py
+@@ -31,6 +31,36 @@
+     pip install 'lerobot[all]'           # everything
+ """
+ 
++from importlib import metadata as _metadata
++
++from packaging.requirements import Requirement as _Requirement
++from packaging.version import InvalidVersion as _InvalidVersion
++
++
++def _check_hub_dependency():
++    # Use the installed upstream requirement, independent of package epochs.
++    requirements = [
++        _Requirement(item) for item in (_metadata.requires("lerobot") or [])
++    ]
++    hub = [item for item in requirements if item.name.lower().replace("_", "-") == "huggingface-hub"]
++    if len(hub) != 1:
++        raise ImportError("LeRobot requires exactly one Hugging Face Hub requirement in its metadata")
++    required = hub[0]
++    try:
++        actual = _metadata.version(required.name)
++    except _metadata.PackageNotFoundError as error:
++        raise ImportError(f"LeRobot requires {required}, but Hugging Face Hub is not installed") from error
++    try:
++        compatible = required.specifier.contains(actual, prereleases=True)
++    except _InvalidVersion as error:
++        raise ImportError(f"LeRobot requires {required}, but found an invalid Hub version: {actual}") from error
++    if not compatible:
++        raise ImportError(f"LeRobot requires {required}, but found Hugging Face Hub {actual}")
++
++
++_check_hub_dependency()
++del _check_hub_dependency
++
+ from lerobot.__version__ import __version__
+ 
+ # Maps optional extras to the CLI entry-points they unlock.

@@ -1,0 +1,25 @@
+--- a/src/lerobot/datasets/pyav_utils.py
++++ b/src/lerobot/datasets/pyav_utils.py
+@@ -75,7 +75,12 @@
+     codec = get_codec(vcodec)
+     if codec is None:
+         return {}
+-    return {opt.name: opt for opt in codec.descriptor.options}
++    descriptor = getattr(codec, "descriptor", None)
++    if descriptor is not None:
++        return {opt.name: opt for opt in descriptor.options}
++    # PyAV 16 and later no longer expose Codec.descriptor. A codec context
++    # lists the same codec-private AVOptions with the same attributes.
++    return {opt.name: opt for opt in codec.create().supported_options.private}
+ 
+ 
+ @functools.cache
+@@ -107,7 +112,7 @@
+ 
+ def _check_option_value(vcodec: str, label: str, value: Any, opt: av.option.Option) -> None:
+     """Range-check numeric *value* and choice-check string *value* against *opt*."""
+-    type_name = opt.type.name
++    type_name = getattr(opt.type, "name", None)
+     if type_name in FFMPEG_NUMERIC_OPTION_TYPES:
+         if isinstance(value, bool):
+             raise ValueError(

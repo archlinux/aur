@@ -1,15 +1,19 @@
 pkgbase = python-lerobot
 	pkgdesc = State-of-the-art machine learning for real-world robotics
-	pkgver = 0.6.1
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://github.com/huggingface/lerobot
 	arch = any
 	license = Apache-2.0
+	checkdepends = python-av
+	checkdepends = python-datasets
 	checkdepends = python-httpx
+	checkdepends = python-jsonlines
 	checkdepends = python-pandas
 	checkdepends = python-pyarrow
 	checkdepends = python-pytest
 	checkdepends = python-pytest-timeout
+	checkdepends = python-torchcodec
 	makedepends = git
 	makedepends = git-lfs
 	makedepends = python-build
@@ -20,7 +24,10 @@ pkgbase = python-lerobot
 	depends = python-draccus>=0.11.6
 	depends = python-einops>=0.8.0
 	depends = python-gymnasium>=1.1.1
-	depends = python-huggingface-hub>=1:1.6.0
+	depends = python-huggingface-hub
+	depends = python-filelock>=4.0.10
+	depends = python-filelock<5.0.0
+	depends = python-fsspec>=2023.5.0
 	depends = python-numpy>=2.0.0
 	depends = python-opencv>=4.9.0
 	depends = python-packaging>=24.2
@@ -40,7 +47,6 @@ pkgbase = python-lerobot
 	optdepends = python-datasets: Hugging Face dataset integration
 	optdepends = python-deepdiff: dataset metadata comparisons
 	optdepends = python-diffusers: diffusion, Groot, and multi-task policies
-	optdepends = python-fsspec: dataset video filesystems
 	optdepends = python-grpcio: asynchronous inference
 	optdepends = python-hidapi: gamepad teleoperation
 	optdepends = python-httpx: remote Hugging Face training jobs
@@ -59,6 +65,7 @@ pkgbase = python-lerobot
 	optdepends = python-pynput: keyboard teleoperation
 	optdepends = python-pydantic: SARM reward model configuration
 	optdepends = python-pyserial: serial hardware controllers
+	optdepends = python-pytest: docstring example runner (lerobot.utils.doctest_utils)
 	optdepends = python-pyzmq: LeKiwi, Unitree, and asynchronous transport
 	optdepends = python-scipy: scientific policy and simulation routines
 	optdepends = python-timm: Groot vision models
@@ -70,9 +77,17 @@ pkgbase = python-lerobot
 	conflicts = python-torchvision-cuda<0.22.0
 	conflicts = python-torchvision-cuda12.9<0.22.0
 	conflicts = python-torchvision-git<0.22.0
-	source = python-lerobot::git+https://github.com/huggingface/lerobot.git#tag=v0.6.1
+	source = python-lerobot::git+https://github.com/huggingface/lerobot.git#tag=v0.7.0
 	source = arch-rolling-dependencies.patch
+	source = hub-runtime-version.patch
+	source = check-hub-runtime.py
+	source = filelock-tested-floor.patch
+	source = pyav-codec-options.patch
 	sha256sums = SKIP
-	sha256sums = 4141b0ffb9d597d931c41c226285c44e31eb6e5df8bf4253b33beb2a1f6e10ea
+	sha256sums = 61d3faa094038e86d012737f574487fb6741829828cd3ecc34eabacd76c71f10
+	sha256sums = 96accce82714445db1f9f4a5b9334a52e49261a43456bcb009442635adc16019
+	sha256sums = c201a04001ef9965dac6fdf8e796d3555fa0eea16dca89bf47462743f8e7ac79
+	sha256sums = d140923e55e0965418037cde9f6c11d6cc0798fb5f006812d0c3140ba058e9c4
+	sha256sums = 3534f13365494964395366f90d5579e5183327e02e2768c3cab27a9105a94499
 
 pkgname = python-lerobot
