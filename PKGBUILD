@@ -1,7 +1,7 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=sirinvpn
-# 1.0.0-rc.1 in SemVer: pkgver cannot hold a hyphen, and 1.0.0rc1 sorts before 1.0.0.
-pkgver=1.0.0rc1
+# 1.0.0-rc.2 in SemVer: pkgver cannot hold a hyphen, and 1.0.0rc2 sorts before 1.0.0.
+pkgver=1.0.0rc2
 pkgrel=1
 _tag="v${pkgver/rc/-rc.}"
 _srcname="SirinVPN-${_tag#v}"
@@ -28,9 +28,9 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz"
         "sirinvpn-server-x86_64-$pkgver::$url/releases/download/$_tag/sirinvpn-server-x86_64"
         "sirinvpn-server-aarch64-$pkgver::$url/releases/download/$_tag/sirinvpn-server-aarch64")
 # Filled from the published release by scripts/update-aur-checksums.sh.
-sha256sums=('b8c6025d8ad13c1a5e5dc512a098c21fce500a0ad28174eec5851f6649a3b860'
-            'c4e55d4c80550c2ec8887f416c2c0f7306c6f568d59d88288eb94e892bf76063'
-            'a57bb04e72c441f88517998f1d2f5a0e906fc6a53c226de0e472de6b213f5550')
+sha256sums=('fc4a69668b5db4d747d50be7eb63795c138c3d8aa3f63cdaaaf7be040fdaebce'
+            '833d79c1988c7346af9bcab989e0b12ff6190bce70c274dc118fb9e5f719de71'
+            '2f4ed867dad10c6e0c74b9dc451e4f4486d1012ba5ace2379a907df873d7bd90')
 
 prepare() {
   cd "$_srcname"
