@@ -1,7 +1,7 @@
 # Maintainer: Kostiantyn Kushnir <chpock@gmail.com>
 
 pkgname=repowise
-pkgver=0.60.1
+pkgver=0.61.0
 pkgrel=1
 pkgdesc='Codebase intelligence, CLI, MCP server and web dashboard for AI coding agents'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         'system-install.patch'
         'numpy-override.txt'
         'collect-web-licenses.py')
-sha256sums=('b40084756ccb47a940e916774d72ba6b366d91c2431a3d6941964ddeb144ad99'
+sha256sums=('441c8f2035e4d1a96953f344d0184f5d47f24699e859a527c20ec0a339e163cd'
             'ab2496ba49c9f55eac941f70f392ba821e8747d677b809f1c7e936d55826799f'
             '38d150a56e1f1c4d011b91f167656e2093e872123d1dbb44ce6795bd985f2f74'
             'b8eb4bfabc15976ccac077c97a7d3be8b03edc52ff7636c8c6fd13d10d03deda')
