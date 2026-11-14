@@ -7,7 +7,7 @@ pkgver=2.1.0
 pkgrel=1
 pkgdesc="Builds a native PC port of Ocarina of Time (Switch 2) from your own copy of the game (upstream AppImage)"
 arch=('x86_64')
-url="https://github.com/NotRexed/Hookshot"
+url="https://git.notrexed.dev/Hookshot/Hookshot"
 license=('GPL-3.0-or-later')
 # the AppImage brings Python with Tk, clang, lld, a glibc sysroot, FFmpeg and
 # SDL2; these are what its files link to outside the bundle (readelf -d).
@@ -23,7 +23,7 @@ conflicts=('hookshot')
 options=('!strip' '!debug' 'staticlibs')
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Hookshot-v${pkgver}-x86_64.AppImage")
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha256sums=('c0b2e958ae00dc560072154f890b9be422724abd9bb522d6afd9922788b86e02')
+sha256sums=('e99f599b143c76a6d1af135c2c29ac76843ebfa317095541d0b4f48a119eea1e')
 
 prepare() {
   chmod +x "$srcdir/${pkgname}-${pkgver}.AppImage"
