@@ -17,7 +17,14 @@ post_install() {
        dsh web                          # serves http://127.0.0.1:3080/
 
    Then launch dsh-gtk. It opens that URL in a tray-resident
-   window (F8 toggles show/hide).
+   window (F8 inside the window toggles show/hide).
+
+   For a global shortcut, let the compositor run:
+
+       dsh-gtk --toggle                 # hide / show / start
+
+       sway:     bindsym --no-repeat F8 exec dsh-gtk --toggle
+       Hyprland: bind = , F8, exec, dsh-gtk --toggle
 
    Without a running `dsh web`, the window shows a blank page.
 

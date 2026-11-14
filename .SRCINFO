@@ -1,7 +1,7 @@
 pkgbase = dsh-gtk
 	pkgdesc = GTK3+WebKitGTK tray shell for the dsh web UI (front-end window only; install dsh backend separately, e.g. deepseek-harness-bin)
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.1.3
+	pkgrel = 1
 	url = https://github.com/abcabc0330/dsh-gtk
 	install = dsh-gtk.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = dsh-gtk
 	depends = libayatana-appindicator
 	provides = dsh-gtk
 	conflicts = dsh-gtk
-	source = dsh-gtk-0.1.2.tar.gz::https://github.com/abcabc0330/dsh-gtk/archive/v0.1.2.tar.gz
-	sha256sums = 5f2c59b4db3d7c5280f665d24a19183f579de99579b81ad73d23594ad2a96610
+	source = dsh-gtk-0.1.3.tar.gz::https://github.com/abcabc0330/dsh-gtk/archive/v0.1.3.tar.gz
+	sha256sums = 5ff2cd194e7667ba4a52247007642534eb2d30cd139f7e227e881c9fa073cd9d
 
 pkgname = dsh-gtk

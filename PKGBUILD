@@ -2,8 +2,8 @@
 # Contributor: abcabc0330 <liqiang0330@gmail.com>
 
 pkgname=dsh-gtk
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="GTK3+WebKitGTK tray shell for the dsh web UI (front-end window only; install dsh backend separately, e.g. deepseek-harness-bin)"
 arch=('x86_64')
 url="https://github.com/abcabc0330/dsh-gtk"
@@ -14,7 +14,9 @@ makedepends=('pkg-config')
 provides=('dsh-gtk')
 conflicts=('dsh-gtk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/abcabc0330/dsh-gtk/archive/v$pkgver.tar.gz")
-sha256sums=('5f2c59b4db3d7c5280f665d24a19183f579de99579b81ad73d23594ad2a96610')
+# Real checksum is kept in the AUR repository; TAG archives cannot be hashed
+# before the tag exists, so this copy skips verification.
+sha256sums=('5ff2cd194e7667ba4a52247007642534eb2d30cd139f7e227e881c9fa073cd9d')
 
 
 prepare() {
@@ -23,7 +25,10 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver"
-    gcc -O2 -Wall -Wextra -o dsh-gtk dsh-gtk.c \
+    # makepkg's hardening flags (RELRO, --as-needed, -O2 ...) come from
+    # CFLAGS/LDFLAGS; do not hardcode -O2 here or the package loses them.
+    gcc $CFLAGS $LDFLAGS \
+        -DDSH_GTK_VERSION='"'$pkgver'"' -o dsh-gtk dsh-gtk.c \
         $(pkg-config --cflags --libs gtk+-3.0 webkit2gtk-4.1 ayatana-appindicator3-0.1)
 }
 
