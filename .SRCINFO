@@ -1,6 +1,6 @@
 pkgbase = nuvio-desktop-git
 	pkgdesc = A modern media hub desktop application (built from git source)
-	pkgver = 0.1.35_alpha
+	pkgver = 0.1.36_alpha
 	pkgrel = 1
 	url = https://github.com/NuvioMedia/NuvioDesktop
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = nuvio-desktop-git
 	conflicts = nuvio-desktop-bin
 	conflicts = nuvio
 	conflicts = nuvio-desktop
-	source = nuvio-desktop-git::git+https://github.com/NuvioMedia/NuvioDesktop.git#tag=0.1.35-alpha
+	source = nuvio-desktop-git::git+https://github.com/NuvioMedia/NuvioDesktop.git#tag=0.1.36-alpha
 	sha256sums = SKIP
 
 pkgname = nuvio-desktop-git
