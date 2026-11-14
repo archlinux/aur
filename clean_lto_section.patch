@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 29afafa59bf..2a65fb929b5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -574,6 +574,7 @@ rdpdecoder: rustup-toolchain-warning
+ ifeq ("$(with_rdpclient)", "yes")
+ 	$(RDPCLIENT_ENV) \
+ 		cargo build -p rdp-decoder --release --locked $(CARGO_TARGET)
++		find target -name 'librdp_decoder*.a' -exec objcopy --remove-section=.llvmbc --remove-section=.llvmcmd {} \;
+ endif
+ 
+ define ironrdp_package_json
+
