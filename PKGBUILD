@@ -2,7 +2,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 
 pkgname=klogg-git
-pkgver=26.10.21.1343.0721ca7
+pkgver=26.10.28.1348.0721ca7
 pkgrel=1
 pkgdesc="A multi-platform GUI application that helps browse and search through long and complex log files. It is designed with programmers and system administrators in mind and can be seen as a graphical, interactive combination of grep, less, and tail"
 arch=('x86_64')
@@ -31,16 +31,17 @@ makedepends=('cmake' 'git' 'qt6-tools' )
 source=("klogg-${pkgver}-src.tar.gz::${_activefork}/archive/refs/tags/continuous.tar.gz")
 sha256sums=('6ece81da1681836477d6386d3b5cbeb9bacb558aac7d3184996fd29923c8f6ea')
 
-pkgver() {
+# continuous tags are not consistent, so we use manual update of the version for now
+# pkgver() {
   # retrieve latest tag version
-  local _latestver=$(git ls-remote --tags ${_activefork}.git | awk '{print $2}' | sed 's|refs/tags/||' | sort -V | tail -1 | sed 's/^v//')
+#  local _latestver=$(git ls-remote --tags ${_activefork}.git | awk '{print $2}' | sed 's|refs/tags/||' | sort -V | tail -1 | sed 's/^v//')
   
   # retrieve latest commit hash
-  local _latesthash=$(git ls-remote ${_activefork}.git HEAD | awk '{print substr($1,1,7)}')
+#  local _latesthash=$(git ls-remote ${_activefork}.git HEAD | awk '{print substr($1,1,7)}')
   
   # combine them into the version string
-  echo "${_latestver}.${_latesthash}"
-}
+#  echo "${_latestver}.${_latesthash}"
+# }
 
 build() {
     KLOGG_VERSION=${pkgver} \
@@ -63,6 +64,24 @@ build() {
 }
 
 package() {
-    make -C "klogg-continuous/build" DESTDIR="$pkgdir" install
-    install -D -m644 "klogg-continuous/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    # make -C "klogg-continuous/build" DESTDIR="$pkgdir" install
+    install -D -m755 "klogg-continuous/build/output/klogg" -t "${pkgdir}/usr/bin"
+    install -D -m644 "klogg-continuous/packaging/linux/klogg.desktop" -t "${pkgdir}/usr/share/applications"
+    
+    pushd "klogg-continuous/src/app/images/hicolor"
+
+    install -D -m644 scalable/klogg.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/klogg.svg"
+    
+    for i in 16x16 32x32 48x48; do
+        install -D -m644 $i/klogg.png "${pkgdir}/usr/share/icons/hicolor/$i/apps/klogg.png"
+    done
+    
+    popd
+    
+    install -D -m644 "klogg-continuous/src/app/images/hicolor/" -d "${pkgdir}/usr/share/icons"
+    install -D -m644 "klogg-continuous/NOTICE" -t "${pkgdir}/usr/share/doc/klogg"
+    install -D -m644 "klogg-continuous/README.md" -t "${pkgdir}/usr/share/doc/klogg"
+    install -D -m644 "klogg-continuous/build/generated/documentation.html" -t "${pkgdir}/usr/share/doc/klogg"
+    install -D -m644 "klogg-continuous/DOCUMENTATION.md" -t "${pkgdir}/usr/share/doc/klogg"
+    install -D -m644 "klogg-continuous/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname%-git}"
 }

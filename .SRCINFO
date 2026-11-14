@@ -1,6 +1,6 @@
 pkgbase = klogg-git
 	pkgdesc = A multi-platform GUI application that helps browse and search through long and complex log files. It is designed with programmers and system administrators in mind and can be seen as a graphical, interactive combination of grep, less, and tail
-	pkgver = 26.10.21.1343.0721ca7
+	pkgver = 26.10.28.1348.0721ca7
 	pkgrel = 1
 	url = https://klogg.filimonov.dev
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = klogg-git
 	depends = tbb
 	provides = klogg
 	conflicts = klogg
-	source = klogg-26.10.21.1343.0721ca7-src.tar.gz::https://github.com/ZEACENT/klogg/archive/refs/tags/continuous.tar.gz
+	source = klogg-26.10.28.1348.0721ca7-src.tar.gz::https://github.com/ZEACENT/klogg/archive/refs/tags/continuous.tar.gz
 	sha256sums = 6ece81da1681836477d6386d3b5cbeb9bacb558aac7d3184996fd29923c8f6ea
 
 pkgname = klogg-git
