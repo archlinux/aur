@@ -1,6 +1,6 @@
 # Maintainer: Kostiantyn Kushnir <chpock@gmail.com>
 pkgname=gen-commit-msg-git
-pkgver=0.1.0.r156.g61c70d2
+pkgver=0.2.0.r162.g2c56103
 pkgrel=1
 pkgdesc="Generate git commit message candidates from staged changes (git version)"
 arch=('x86_64' 'aarch64')

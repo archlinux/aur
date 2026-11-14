@@ -1,6 +1,6 @@
 pkgbase = gen-commit-msg-git
 	pkgdesc = Generate git commit message candidates from staged changes (git version)
-	pkgver = 0.1.0.r156.g61c70d2
+	pkgver = 0.2.0.r162.g2c56103
 	pkgrel = 1
 	url = https://github.com/chpock/gen-commit-msg
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gen-commit-msg-git
 	optdepends = git: collect staged change context
 	optdepends = pi-coding-agent-bin>=1.4.0: generate commit messages with Pi
 	optdepends = opencode: generate commit messages with OpenCode
-	provides = gen-commit-msg=0.1.0.r156.g61c70d2
+	provides = gen-commit-msg=0.2.0.r162.g2c56103
 	conflicts = gen-commit-msg
 	source = git+https://github.com/chpock/gen-commit-msg.git
 	sha256sums = SKIP
