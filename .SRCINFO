@@ -1,6 +1,6 @@
 pkgbase = chipass-git
 	pkgdesc = Modern, secure, and open-source password manager (fork of KeePassXC)
-	pkgver = r4866.ge466fe6
+	pkgver = r4947.g387a12b
 	pkgrel = 1
 	url = https://chipass.org/
 	arch = i686
@@ -34,7 +34,7 @@ pkgbase = chipass-git
 	depends = shared-mime-info
 	depends = zlib
 	provides = org.freedesktop.secrets
-	provides = chipass=r4866.ge466fe6
+	provides = chipass=r4947.g387a12b
 	conflicts = chipass
 	conflicts = keepassxc
 	conflicts = keepassxc-git
