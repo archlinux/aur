@@ -1,7 +1,7 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 
 pkgname=ya-claude
-pkgver=5.11492.2
+pkgver=5.11492.5
 pkgrel=1
 pkgdesc="Claude Desktop from Anthropic's official Debian build, verified at build time against their signed apt index"
 arch=('x86_64')
@@ -61,7 +61,7 @@ source=("${_deb}::${_apt}/pool/main/c/claude-desktop/${_deb}"
 # release, so no fixed hash exists; prepare() authenticates them by signature
 # instead. The .deb hash is pinned and additionally re-derived from the signed
 # index, so a wrong value fails twice.
-sha256sums=('d10944fa5663b997400cf66c5c7738fd6acf654f8aaeaca5b994eb147aa6b35f'
+sha256sums=('b96208b207e450b740f7dbe304f6077fed80e7f3d37ddd545991c4e8201564cf'
             'SKIP'
             'SKIP'
             'bd70a5e4a268002704024ceba7f8446024114e94f3f0bdd11c23a9e592be81c6')
