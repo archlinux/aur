@@ -1,6 +1,6 @@
 # Maintainer: Smoolak <smoolak@gmail.com>
 pkgname=python-transfer-queue
-pkgver=0.1.10
+pkgver=0.1.12
 pkgrel=1
 pkgdesc='Asynchronous streaming tensor data management for distributed training'
 arch=('any')
@@ -9,6 +9,8 @@ license=('Apache-2.0')
 depends=(
     'python' 'python-cloudpickle' 'python-hydra-core' 'python-msgspec'
     'python-numpy' 'python-omegaconf' 'python-prometheus_client>=0.20.0'
+    # Public Hydra imports Packaging at runtime from hydra.version.
+    'python-packaging'
     'python-psutil' 'python-pytorch' 'python-pyzmq' 'python-ray'
     'python-tensordict>=0.10.0'
     # The upstream ray[default] requirement, using packaged providers.
@@ -16,12 +18,15 @@ depends=(
     'python-opencensus' 'python-opentelemetry-sdk'
     'python-opentelemetry-exporter-prometheus' 'python-smart-open'
     'python-virtualenv' 'py-spy'
+    # The public py-spy binary links libunwind but declares it only for building.
+    'libunwind'
 )
-makedepends=('python-build' 'python-installer' 'python-setuptools>=61' 'python-wheel')
+# Public Hydra imports pkg_resources while building. Pyvers uses pip.
+makedepends=('python-pkg-resources' 'python-pip' 'python-build' 'python-installer' 'python-setuptools>=61' 'python-wheel')
 checkdepends=('python-pytest>=7' 'python-pytest-asyncio>=0.20' 'python-pytest-mock')
 optdepends=('python-netifaces: network interface discovery for Yuanrong storage')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a5cede1751c278974c0911821ef6941fc382b7cf9fd8a7b9e3763706d68662f4')
+sha256sums=('cf232dbc9630b2c74dbb1c9d0de54c240c6e5d7fa29deacabdc7d842240eef89')
 
 prepare() {
     cd "TransferQueue-$pkgver"

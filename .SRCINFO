@@ -1,6 +1,6 @@
 pkgbase = python-transfer-queue
 	pkgdesc = Asynchronous streaming tensor data management for distributed training
-	pkgver = 0.1.10
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/Ascend/TransferQueue
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = python-transfer-queue
 	checkdepends = python-pytest>=7
 	checkdepends = python-pytest-asyncio>=0.20
 	checkdepends = python-pytest-mock
+	makedepends = python-pkg-resources
+	makedepends = python-pip
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools>=61
@@ -19,6 +21,7 @@ pkgbase = python-transfer-queue
 	depends = python-numpy
 	depends = python-omegaconf
 	depends = python-prometheus_client>=0.20.0
+	depends = python-packaging
 	depends = python-psutil
 	depends = python-pytorch
 	depends = python-pyzmq
@@ -34,8 +37,9 @@ pkgbase = python-transfer-queue
 	depends = python-smart-open
 	depends = python-virtualenv
 	depends = py-spy
+	depends = libunwind
 	optdepends = python-netifaces: network interface discovery for Yuanrong storage
-	source = python-transfer-queue-0.1.10.tar.gz::https://github.com/Ascend/TransferQueue/archive/refs/tags/v0.1.10.tar.gz
-	sha256sums = a5cede1751c278974c0911821ef6941fc382b7cf9fd8a7b9e3763706d68662f4
+	source = python-transfer-queue-0.1.12.tar.gz::https://github.com/Ascend/TransferQueue/archive/refs/tags/v0.1.12.tar.gz
+	sha256sums = cf232dbc9630b2c74dbb1c9d0de54c240c6e5d7fa29deacabdc7d842240eef89
 
 pkgname = python-transfer-queue
