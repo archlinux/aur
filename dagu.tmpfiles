@@ -1,0 +1,3 @@
+d /var/lib/dagu 0750 dagu dagu -
+d /var/cache/dagu 0755 dagu dagu -
+d /etc/dagu 0750 root dagu -

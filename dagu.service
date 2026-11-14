@@ -1,15 +1,23 @@
 [Unit]
-Description=Cron alternative with a Web UI
-Documentation=https://github.com/dagu-dev/dagu
+Description=Dagu Workflow Engine
+Documentation=https://github.com/dagucloud/dagu
 After=network.target
+Wants=network-online.target
 
 [Service]
-TimeoutStopSec=7s
-KillMode=mixed
-KillSignal=SIGTERM
-Restart=on-failure
-RestartPreventExitStatus=2
+Type=simple
+User=dagu
+Group=dagu
+WorkingDirectory=/var/lib/dagu
+StateDirectory=dagu
+CacheDirectory=dagu
+Environment=DAGU_HOME=/var/lib/dagu
+Environment=XDG_CACHE_HOME=/var/cache/dagu
+Environment=DAGU_DEFAULT_SHELL=/bin/bash
 ExecStart=/usr/bin/dagu start-all
+EnvironmentFile=-/etc/dagu/dagu.env
+Restart=always
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target

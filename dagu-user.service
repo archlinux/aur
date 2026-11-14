@@ -1,0 +1,15 @@
+[Unit]
+Description=Dagu Workflow Engine
+Documentation=https://github.com/dagucloud/dagu
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dagu start-all
+EnvironmentFile=-%h/.config/dagu/dagu.env
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,24 @@
+[Unit]
+Description=Dagu Workflow Engine
+Documentation=https://github.com/dagucloud/dagu
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ifelse(SCOPE, `system', `User=dagu
+Group=dagu
+WorkingDirectory=/var/lib/dagu
+StateDirectory=dagu
+CacheDirectory=dagu
+Environment=DAGU_HOME=/var/lib/dagu
+Environment=XDG_CACHE_HOME=/var/cache/dagu
+Environment=DAGU_DEFAULT_SHELL=/bin/bash
+')dnl
+ExecStart=/usr/bin/dagu start-all
+EnvironmentFile=-ifelse(SCOPE, `user', `%h/.config/dagu/dagu.env', `/etc/dagu/dagu.env')
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=ifelse(SCOPE, `user', `default.target', `multi-user.target')

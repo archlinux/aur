@@ -1,0 +1,7 @@
+.version
+*.tar.*
+*.tar
+*.pkg.tar.*
+*.part
+/src/
+/pkg/

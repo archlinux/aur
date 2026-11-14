@@ -1,0 +1,58 @@
+pkgname=dagu
+pkgver=include(`.version')dnl
+pkgrel=1
+pkgdesc='Compact, portable, and language-agnostic workflow engine'
+arch=('x86_64' 'aarch64')
+url='https://github.com/dagucloud/dagu'
+license=('GPL-3.0-or-later')
+depends=('glibc')
+makedepends=(
+  'go'
+  'pnpm'
+)
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/dagucloud/dagu/archive/refs/tags/v${pkgver}.tar.gz"
+  'dagu.service'
+  'dagu-user.service'
+  'dagu.sysusers'
+  'dagu.tmpfiles'
+)
+b2sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
+
+prepare() {
+  sed -i "s|@import 'tailwindcss';|@import 'tailwindcss' source('..');|" "${pkgname}-${pkgver}/ui/src/styles/global.css"
+}
+
+build() {
+  pushd "${pkgname}-${pkgver}/ui"
+  pnpm install --frozen-lockfile
+  pnpm build
+  rm -f ../internal/service/frontend/assets/*
+  cp dist/* ../internal/service/frontend/assets/
+
+  popd
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go build -ldflags="-linkmode=external -X main.version=${pkgver}" -o "${pkgname}" ./cmd
+}
+
+package() {
+  install -Dm 644 dagu.service "${pkgdir}/usr/lib/systemd/system/dagu.service"
+  install -Dm 644 dagu-user.service "${pkgdir}/usr/lib/systemd/user/dagu.service"
+  install -Dm 644 dagu.sysusers "${pkgdir}/usr/lib/sysusers.d/dagu.conf"
+  install -Dm 644 dagu.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/dagu.conf"
+
+  pushd "${pkgname}-${pkgver}"
+  install -Dm 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+}
+
+# vim: ts=2 sw=2 et:
