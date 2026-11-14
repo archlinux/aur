@@ -1,0 +1,27 @@
+pkgbase = youtube-video-downloader-bin
+	pkgdesc = Fast desktop front-end for yt-dlp with a download queue (prebuilt)
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/RamazanBerk20/youtube-video-downloader
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = glib2
+	depends = dbus
+	depends = ffmpeg
+	optdepends = deno: JavaScript runtime for the YouTube challenge solver (nodejs or bun also work)
+	optdepends = nodejs: JavaScript runtime for the YouTube challenge solver (alternative to deno)
+	optdepends = gnome-keyring: secret service that stores the anyIP proxy password (kwallet also works)
+	optdepends = xdg-utils: open the output folder and links in the default handler
+	provides = youtube-video-downloader=2.0.1
+	conflicts = youtube-video-downloader
+	noextract = YouTube-Downloader_2.0.1_amd64.deb
+	options = !strip
+	options = !debug
+	source_x86_64 = YouTube-Downloader_2.0.1_amd64.deb::https://github.com/RamazanBerk20/youtube-video-downloader/releases/download/v2.0.1/YouTube-Downloader_2.0.1_amd64.deb
+	source_x86_64 = LICENSE-2.0.1::https://raw.githubusercontent.com/RamazanBerk20/youtube-video-downloader/v2.0.1/LICENSE
+	sha256sums_x86_64 = 967d4c542921c5da207f47595ebb9374d435ae64769efa873ead862f888ddb32
+	sha256sums_x86_64 = 677d6af767d3fbcb5c70a3ce556021ce00bb6101cc4bf4ea8d54252fbe9b531b
+
+pkgname = youtube-video-downloader-bin
