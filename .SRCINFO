@@ -1,6 +1,6 @@
 pkgbase = mdcat
 	pkgdesc = Sophisticated Markdown rendering for the terminal
-	pkgver = 2.20.0
+	pkgver = 2.20.1
 	pkgrel = 1
 	url = https://github.com/BIRSAx2/mdcat
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = mdcat
 	optdepends = less: for mdless
 	optdepends = fzf: for mdpick
 	options = !lto
-	source = mdcat-2.20.0.tar.gz::https://github.com/BIRSAx2/mdcat/archive/mdcat-2.20.0.tar.gz
-	sha256sums = 3436d183cf55d628245b30e605f14a4d7b3b129a457e34eac029828e2c2a07e6
+	source = mdcat-2.20.1.tar.gz::https://github.com/BIRSAx2/mdcat/archive/mdcat-2.20.1.tar.gz
+	sha256sums = 1e6e3a533bdfd5854272cd9f54143ddbd879f4e7699a0b2e7ac469fcaa9799f2
 
 pkgname = mdcat
