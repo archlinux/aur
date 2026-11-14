@@ -2,12 +2,13 @@
 pkgname=stow-cm-nightly-bin
 conflicts=('stow-cm' 'stow-cm-bin')
 provides=('stow-cm')
-pkgver=0.29.0+nightly+20260929+0+g73bfd227
+pkgver=0.29.0+nightly+20261114+2+g493acb39
 pkgrel=1
 pkgdesc="Config manager (gnu-stow like) — nightly build"
 arch=('x86_64' 'aarch64')
 url="https://github.com/someoneonsmile/stow-cm"
 license=('GPL2')
+options=('!strip' '!debug')
 
 _source_base="${url}/releases/download/nightly"
 
