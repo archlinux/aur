@@ -1,6 +1,5 @@
 pkg
 src
-*.patch
 *.sign
 *.tar.xz
 *.tar.zst
