@@ -1,6 +1,6 @@
 # Maintainer: arqueon <arqueonautis@gmail.com>
 pkgname=dux-mail
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Mail notifier, triage controller, and MCP server for Linux — Go daemon + Quickshell UI (Dux Shell aesthetic)"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ conflicts=('dankmail')
 replaces=('dankmail')
 install=dux-mail.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ee95f331c3119fbd56f9bf2673ee916e2b11942227552cb3da9b9fc5bc492077')
+sha256sums=('a5a24f892f897e72a662985ca0ce2add6315d2dfd9db3c29cea3646d29d198cc')
 
 build() {
   cd "$pkgname-$pkgver"

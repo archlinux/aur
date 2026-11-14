@@ -1,6 +1,6 @@
 pkgbase = dux-mail
 	pkgdesc = Mail notifier, triage controller, and MCP server for Linux — Go daemon + Quickshell UI (Dux Shell aesthetic)
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/arqueon/dux-mail
 	install = dux-mail.install
@@ -11,10 +11,10 @@ pkgbase = dux-mail
 	depends = quickshell
 	depends = xdg-utils
 	optdepends = gnome-keyring: Secret Service storage for tokens and passwords
-	provides = dankmail=0.5.0
+	provides = dankmail=0.5.1
 	conflicts = dankmail
 	replaces = dankmail
-	source = dux-mail-0.5.0.tar.gz::https://github.com/arqueon/dux-mail/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = ee95f331c3119fbd56f9bf2673ee916e2b11942227552cb3da9b9fc5bc492077
+	source = dux-mail-0.5.1.tar.gz::https://github.com/arqueon/dux-mail/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = a5a24f892f897e72a662985ca0ce2add6315d2dfd9db3c29cea3646d29d198cc
 
 pkgname = dux-mail
