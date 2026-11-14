@@ -1,5 +1,6 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=netpol-analyzer
+_pkgname=k8snetpolicy
 # renovate: datasource=github-releases depName=np-guard/netpol-analyzer
 pkgver=1.4.4
 pkgrel=2
@@ -11,6 +12,7 @@ sha256sums=('5d7bd27a145d2875bc2b219dc88e139bfca2e00354ec7bd918573dc50f1bcba2')
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go-pie' 'git')
+provides=('k8snetpolicy')
 
 build() {
   _commit=$(bsdcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
@@ -18,6 +20,7 @@ build() {
     Date="$(date -u +%Y%m%d.%H%M%S)"
     Commit="${_commit:?}"
     Version="v${pkgver}"
+    Name="${pkgname}"
   )
 
   export CGO_ENABLED=1
@@ -44,12 +47,20 @@ package() {
   cd "${pkgname}-${pkgver}"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm0755 bin/netpolicy "${pkgdir}/usr/bin/${pkgname}"
-  bin/netpolicy completion bash \
+  ln -snf "${pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+  bin/netpolicy completion bash | sed -e "s/${_pkgname}/${pkgname}/g" \
     | install -Dpm0644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  bin/netpolicy completion zsh \
+  bin/netpolicy completion zsh | sed -e "s/_${_pkgname}/_${pkgname//-/_}/g" -e "s/ ${_pkgname}/ ${pkgname}/g" \
     | install -Dpm0644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  bin/netpolicy completion fish \
+  bin/netpolicy completion fish | sed -e "s/${_pkgname}/${pkgname}/g" \
     | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  bin/netpolicy completion bash \
+    | install -Dpm0644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  bin/netpolicy completion zsh \
+    | install -Dpm0644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  bin/netpolicy completion fish \
+    | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
   for _file in *.md
   do
     install -Dm644 "${_file}" "${pkgdir}/usr/share/doc/${pkgname}/$(basename ${_file})"
