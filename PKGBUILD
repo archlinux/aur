@@ -3,7 +3,7 @@
 # Maintainer: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.76.0
+pkgver=1.77.0
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
@@ -60,10 +60,12 @@ prepare() {
   bash make-package-json.sh "${pkgver/.next./-next.}" | \
   grep -vE "@theia/(ai-vercel-ai|getting-started|git|notebook|plugin[-0-9_a-z]*|preview|scm-extra|test)\b" | \
   jq '.dependencies."fs-extra" = "^9.1.0" |
-      .dependencies."react" = "^19.2.8" |
-      .dependencies."react-dom" = "^19.2.8" |
-      .devDependencies."@types/react" = "^19.2.18" |
-      .devDependencies."@types/react-dom" = "^19.2.7"' >package.json
+      .dependencies."react" = "^19.3.0" |
+      .dependencies."react-dom" = "^19.3.0" |
+      .devDependencies."@types/react" = "^19.3.0" |
+      .devDependencies."@types/react-dom" = "^19.3.0" |
+      .overrides."minimatch" = "^10.2.6" |
+      .resolutions."**/minimatch" = "^10.2.6"' >package.json
 }
 
 build() {
