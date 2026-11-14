@@ -1,7 +1,7 @@
 pkgbase = dearsql
 	pkgdesc = Cross-platform SQL database client
 	pkgver = 0.7.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dunkbing/dearsql
 	arch = x86_64
 	license = LicenseRef-FSL
@@ -19,6 +19,7 @@ pkgbase = dearsql
 	makedepends = pkgconf
 	makedepends = python
 	makedepends = unzip
+	makedepends = gperf
 	makedepends = zip
 	depends = freetds
 	depends = gtk4
@@ -27,10 +28,10 @@ pkgbase = dearsql
 	depends = libx11
 	options = !lto
 	options = !debug
-	source = dearsql::git+https://github.com/dunkbing/dearsql.git#commit=944826a0fcb92c2ae453f71ba751d3b08e19c630
+	source = dearsql::git+https://github.com/dunkbing/dearsql.git#commit=c18588c6b40d322e990bdcf8e79eb2396cc8c8cf
 	source = vcpkg-77df67cfff9c12ccfdb52284e07c87c75092f723.tar.gz::https://github.com/microsoft/vcpkg/archive/77df67cfff9c12ccfdb52284e07c87c75092f723.tar.gz
 	source = mongo-cmake-4.4.patch::https://raw.githubusercontent.com/microsoft/vcpkg/bd93b56711a393a3c498991e023f94b7542832bb/ports/mongo-c-driver/cmake-4.4.patch
-	sha256sums = ec3e94f92059699f2651dfd0ba914972e7e9fab62807092036687fcf5859c561
+	sha256sums = 29d7fb7ab771bfd7adc93483d1128b5234bcbf2a7f05252535e464c60fb16fd9
 	sha256sums = 0edebdc4f04b88ec608b1a35bff67132d4686e4059bb06a528c2664a5436937e
 	sha256sums = 138092b6f9a01ea46325fa55813350578719cf901c56e69166d7466ef2d03d84
 

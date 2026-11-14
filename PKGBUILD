@@ -1,12 +1,12 @@
 # Maintainer: Kazoku <k4zoku@pm.me>
 
 _pkgbase=dearsql
-_tag=944826a0fcb92c2ae453f71ba751d3b08e19c630
+_tag=c18588c6b40d322e990bdcf8e79eb2396cc8c8cf
 _vcpkg_commit=77df67cfff9c12ccfdb52284e07c87c75092f723
 _mongo_patch_commit=bd93b56711a393a3c498991e023f94b7542832bb
 pkgname=${_pkgbase}
 pkgver=0.7.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform SQL database client"
 arch=('x86_64')
 url="https://github.com/dunkbing/dearsql"
@@ -27,6 +27,7 @@ makedepends=(
     'pkgconf'
     'python'
     'unzip'
+    'gperf'
     'zip'
 )
 options=('!lto' '!debug')
@@ -35,7 +36,7 @@ source=(
     "vcpkg-${_vcpkg_commit}.tar.gz::https://github.com/microsoft/vcpkg/archive/${_vcpkg_commit}.tar.gz"
     "mongo-cmake-4.4.patch::https://raw.githubusercontent.com/microsoft/vcpkg/${_mongo_patch_commit}/ports/mongo-c-driver/cmake-4.4.patch"
 )
-sha256sums=('ec3e94f92059699f2651dfd0ba914972e7e9fab62807092036687fcf5859c561'
+sha256sums=('29d7fb7ab771bfd7adc93483d1128b5234bcbf2a7f05252535e464c60fb16fd9'
             '0edebdc4f04b88ec608b1a35bff67132d4686e4059bb06a528c2664a5436937e'
             '138092b6f9a01ea46325fa55813350578719cf901c56e69166d7466ef2d03d84')
 
@@ -56,6 +57,11 @@ prepare() {
     sed -i \
         '/remove_abs_patch.cmake/a\        mongo-cmake-4.4.patch' \
         vcpkg-overlay/mongo-c-driver/portfile.cmake
+    sed -i \
+        '/-DOPENSSL_USE_STATIC_LIBS=ON/a\            -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.so\
+            -DZLIB_LIBRARY_DEBUG=/usr/lib/libz.so\
+            -DHAVE_BIO_GET_DATA=1' \
+        "${_pkgbase}/external/libdearsql/cmake/FreeTDS.cmake"
 
     ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
 }
