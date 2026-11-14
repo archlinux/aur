@@ -1,7 +1,7 @@
 # Maintainer: BasalBit GmbH <info@basalbit.com>
 
 pkgname=rerune-bin
-pkgver=1.0.21
+pkgver=1.0.22
 pkgrel=1
 pkgdesc='Prebuilt CLI for rerune translation workflows'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=('!debug' '!strip')
 
 source_x86_64=("rerune-bin-${pkgver}-x86_64.tar.gz::https://raw.githubusercontent.com/BasalBit/rerune-releases/main/v${pkgver}/rerune_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("rerune-bin-${pkgver}-aarch64.tar.gz::https://raw.githubusercontent.com/BasalBit/rerune-releases/main/v${pkgver}/rerune_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('76e7984ba3c591d1664e03d0063be9bc742d7ad910a0b26ba1b8ea5e4ad5f2a6')
-sha256sums_aarch64=('050f4efb881a63c46a6b5df134b0124cdbf553040c45e5798c5f4b2a7550d3a0')
+sha256sums_x86_64=('02f4a46e78c1f94dfc8f44b44ea0b1b449a67069e333cbbc6a0c54b0b0089dab')
+sha256sums_aarch64=('fb4dfa164e5cc2090d093360540de18c6f4d9e8b90058390da88530118d9185f')
 
 package() {
   local archive_dir
