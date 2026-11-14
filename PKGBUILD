@@ -3,14 +3,14 @@
 
 pkgname='dynfilefs'
 pkgdesc='Fuse filesystem for dynamically-enlarged file (to be mounted as loop)'
-pkgver=4.04
+pkgver=5.01
 pkgrel=1
 url='https://github.com/Tomas-M/dynfilefs'
 arch=('x86_64')
 license=('GPL3')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Tomas-M/dynfilefs/archive/refs/tags/dynfilefs-v${pkgver}.tar.gz")
-sha256sums=('e29baac14439113d12839327c1f9fec27a7d36ac7e2b27580572aec6de5a0a03')
+sha256sums=('cf178bba0e82da7e2b8119fa846c38fea16b7819ae2305ec84e5dde051c28f76')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
