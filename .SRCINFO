@@ -1,0 +1,22 @@
+pkgbase = pashly-bin
+	pkgdesc = Password generation, hashing, and verification CLI for IAM/CIAM migrations.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/cerberauth/pashly
+	license = MIT
+	conflicts = pashly
+	provides = pashly
+	arch = aarch64
+	source_aarch64 = pashly-bin_0.1.1_aarch64.tar.gz::https://github.com/cerberauth/pashly/releases/download/v0.1.1/pashly_Linux_arm64.tar.gz
+	sha256sums_aarch64 = c3b32475957d1778f089823d2318544495856efbb19c4494825eb9086ea75568
+	arch = armv7h
+	source_armv7h = pashly-bin_0.1.1_armv7h.tar.gz::https://github.com/cerberauth/pashly/releases/download/v0.1.1/pashly_Linux_armv7.tar.gz
+	sha256sums_armv7h = 091de9bfa724a0b2c1a650959da6e89d285226b851f1ec6934ac93c1d1a21a97
+	arch = i686
+	source_i686 = pashly-bin_0.1.1_i686.tar.gz::https://github.com/cerberauth/pashly/releases/download/v0.1.1/pashly_Linux_i386.tar.gz
+	sha256sums_i686 = aad41763b2f9043611f9e4e64a2d50b11c49dde5dcb4787fb951d7e41cf2cab8
+	arch = x86_64
+	source_x86_64 = pashly-bin_0.1.1_x86_64.tar.gz::https://github.com/cerberauth/pashly/releases/download/v0.1.1/pashly_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 639e9e70e96de5b9fd03aefbaee12821f24e3be24825811114466e7c5275abbf
+	
+pkgname = pashly-bin
