@@ -23,3 +23,10 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "clean_lto_section.patch",
+]
+SPDX-FileCopyrightText = "teleport-client contributors"
+SPDX-License-Identifier = "AGPL-3.0-only"
