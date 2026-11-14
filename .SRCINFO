@@ -1,0 +1,20 @@
+pkgbase = notekpr-desktop-bin
+	pkgdesc = notekpr, the desktop app for end-to-end encrypted Markdown notes
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://notekpr.md
+	license = AGPL-3.0-or-later
+	depends = glibc
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = xdg-utils
+	conflicts = notekpr-desktop
+	provides = notekpr-desktop
+	arch = aarch64
+	source_aarch64 = notekpr-desktop-bin_0.17.0_aarch64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v0.17.0/notekpr-desktop_0.17.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b6566aad3112f07a45498b913854a9a7b18cdb73fd92a24c026f3b84a55eaf01
+	arch = x86_64
+	source_x86_64 = notekpr-desktop-bin_0.17.0_x86_64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v0.17.0/notekpr-desktop_0.17.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 708a14066390386d5aced181c00ea2e6f57bd25e5b7a683a7641a585ac4ca830
+	
+pkgname = notekpr-desktop-bin
