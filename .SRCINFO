@@ -1,6 +1,6 @@
 pkgbase = python-sardana
 	pkgdesc = Instrument control and data acquisition system
-	pkgver = 3.7.1
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://gitlab.com/sardana-org/sardana
 	arch = any
@@ -22,9 +22,9 @@ pkgbase = python-sardana
 	depends = python-gobject
 	optdepends = python-matplotlib: pylab/pyplot plotting from macros
 	optdepends = python-pytest: running the bundled tests
-	source = sardana-3.7.1.tar.gz::https://gitlab.com/sardana-org/sardana/-/archive/3.7.1/sardana-3.7.1.tar.gz
+	source = sardana-3.8.0.tar.gz::https://gitlab.com/sardana-org/sardana/-/archive/3.8.0/sardana-3.8.0.tar.gz
 	source = importlib-entry-points-resources.patch
-	sha256sums = 512cd852534b6731786e230a6f3c7daf3231a49cffc2d1312e5041e5e88e9a37
+	sha256sums = 627a94eb79db1e8ded0b87a23d931887d3af9bcf54bee01a95c9d2bd20f3ff9a
 	sha256sums = a629fdee4fc4eee33ffa770cac09f675aca0ee406579d11ec56b447ba8c8c881
 
 pkgname = python-sardana

@@ -2,7 +2,7 @@
 
 _name=sardana
 pkgname=python-${_name}
-pkgver=3.7.1
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Instrument control and data acquisition system"
 arch=("any")
@@ -22,7 +22,7 @@ source=(
   "${_name}-${pkgver}.tar.gz::https://gitlab.com/sardana-org/${_name}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz"
   "importlib-entry-points-resources.patch"
 )
-sha256sums=('512cd852534b6731786e230a6f3c7daf3231a49cffc2d1312e5041e5e88e9a37'
+sha256sums=('627a94eb79db1e8ded0b87a23d931887d3af9bcf54bee01a95c9d2bd20f3ff9a'
             'a629fdee4fc4eee33ffa770cac09f675aca0ee406579d11ec56b447ba8c8c881')
 
 prepare() {
