@@ -1,6 +1,6 @@
 pkgbase = ely-show-app-bin
 	pkgdesc = ElyShow - presentation app from the Ely Office suite
-	pkgver = 0.1.15
+	pkgver = 0.1.16
 	pkgrel = 1
 	url = https://office.elygpui.com
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = ely-show-app-bin
 	conflicts = ely-show-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = ely-show_0.1.15-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.15/ely-show_0.1.15-1_amd64.deb
-	sha256sums_x86_64 = c0d9aae7be498ade92ab02a2f32a9b3244809515301bfc15611e5b3f69ee9705
+	source_x86_64 = ely-show_0.1.16-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.16/ely-show_0.1.16-1_amd64.deb
+	sha256sums_x86_64 = cef495f6fd276eda68e3beb209951fcd0bc971cf7ea51af7c956e3dcb4c851ce
 
 pkgname = ely-show-app-bin
