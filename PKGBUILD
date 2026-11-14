@@ -3,8 +3,8 @@
 
 pkgname=lolka-x-bin
 pkgver=2.0.7
-pkgrel=1
-pkgdesc='Lolka X - chat, voice and screen sharing desktop client'
+pkgrel=2
+pkgdesc='Native desktop client for lolka.app - chat and voice with friends'
 arch=('x86_64')
 url='https://lolka.app'
 license=('LicenseRef-LolkaX')
