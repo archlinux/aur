@@ -1,0 +1,40 @@
+# dsh-gtk post-install notice
+#
+# dsh-gtk is a front-end shell only. The dsh backend is NOT bundled;
+# the user must install and run it separately.
+
+post_install() {
+    cat <<'EOF'
+
+  ============================================================
+   dsh-gtk is ONLY a shell (front-end window).
+  ============================================================
+
+   It does NOT include the dsh backend. Install and run the
+   dsh web server yourself, for example:
+
+       yay -S deepseek-harness-bin     # or: npm i -g @deepseek-ai/dsh
+       dsh web                          # serves http://127.0.0.1:3080/
+
+   Then launch dsh-gtk. It opens that URL in a tray-resident
+   window (F8 toggles show/hide).
+
+   Without a running `dsh web`, the window shows a blank page.
+
+   Docs: /usr/share/doc/dsh-gtk/README.md
+
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    cat <<'EOF'
+
+  dsh-gtk removed. Its backend (dsh web / deepseek-harness-bin)
+  was not touched and is still installed if you added it.
+
+EOF
+}

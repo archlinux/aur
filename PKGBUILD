@@ -3,11 +3,12 @@
 
 pkgname=dsh-gtk
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK3+WebKitGTK tray shell for the dsh web UI (front-end window only; install dsh backend separately, e.g. deepseek-harness-bin)"
 arch=('x86_64')
 url="https://github.com/abcabc0330/dsh-gtk"
 license=('MIT')
+install='dsh-gtk.install'
 depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator')
 makedepends=('pkg-config')
 provides=('dsh-gtk')
