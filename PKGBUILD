@@ -1,11 +1,9 @@
 pkgname=wanpipe
-pkgver=7.0.38
-pkgrel=10
+pkgver=7.0.39
+pkgrel=1
 pkgdesc='Sangoma WANPIPE drivers and utilities for DAHDI'
 arch=(x86_64)
-# ftp.sangoma.com no longer serves the tarballs (default Apache page, broken TLS);
-# it is only preserved by the Wayback Machine as of 2026-05-09.
-url=https://sangomakb.atlassian.net/wiki/spaces/DASD/pages/13107814
+url=https://ftp.sangoma.com/linux/current_wanpipe/
 license=(GPL-2.0-or-later)
 makedepends=(
   autoconf
@@ -18,13 +16,13 @@ makedepends=(
 )
 backup=(etc/wanpipe/wanrouter.rc)
 source=(
-  "https://web.archive.org/web/20260509182526id_/https://ftp.sangoma.com/linux/current_wanpipe/${pkgname}-${pkgver}.tgz"
+  "https://ftp.sangoma.com/linux/current_wanpipe/${pkgname}-${pkgver}.tgz"
   arch-kernel-compat.patch
   wanpipe.service
 )
 sha256sums=(
-  95266edd83bd8bb427f47f7a39365795936acc0d6e2e3a1e482bd015bba90fa2
-  4b1fabab743cd59a60f4dd8bca1a8dc36264c875ed9090515594281187cb1588
+  a466ccd214806f2c807d21fcd3c95392044d5b846608fa2085d083c867618644
+  89a8ed9b828908ea776d71604a4ed0662891aab09dff738ba350ec78a993ccfc
   59b6f271556eadc0a4f71454ab3ec015478cbf3b81cf0446d9bb9cba62d2e0d6
 )
 

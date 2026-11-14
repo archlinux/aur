@@ -67,11 +67,6 @@
  #endif
  	va_end(args);
  }
-@@ -166,4 +166,3 @@
- #endif
- 
- #endif	/* _LIBSNAGOMA_PVT_H */
--
 --- a/patches/kdrivers/include/wanpipe_common.h
 +++ b/patches/kdrivers/include/wanpipe_common.h
 @@ -1150,7 +1150,7 @@
@@ -114,11 +109,6 @@
  #  include <linux/kmod.h>
  #  include <net/ip.h>
  #  include <net/protocol.h>
-@@ -408,4 +427,3 @@
- #endif
- 
- #endif	/* __WANPIPE_INCLUDES_H	*/
--
 --- a/patches/kdrivers/src/net/Makefile
 +++ b/patches/kdrivers/src/net/Makefile
 @@ -7,7 +7,7 @@
@@ -157,65 +147,3 @@
  
  wanec-y := $(WANECDIR)/wanec_iface.o $(WANECDIR)/wanec_cmd.o $(WANECDIR)/wanec_utils.o $(WANECDIR)/wanec_dev.o 
  wanec-y += $(BTDIR)/octapi_bt0.o $(LARGMATHDIR)/octapi_largmath.o 
-@@ -81,4 +81,3 @@
- wan_aften-objs := ../wan_aften/wan_aften_src.o ../wan_aften/wanpipe_linux_iface.o
- 
- obj-m += $(WAN_MODULES)      
--
---- a/patches/kdrivers/src/net/wanpipe_cdev_linux.c
-+++ b/patches/kdrivers/src/net/wanpipe_cdev_linux.c
-@@ -194,7 +194,7 @@
- 		return err;
- 	}
- 
--	wp_cdev_class = class_create(THIS_MODULE, "wanpipe");
-+	wp_cdev_class = class_create("wanpipe");
- 
- #else
- 
-@@ -211,7 +211,7 @@
- 		return -EINVAL;
- 	}
- 
--	wp_cdev_class = class_create(THIS_MODULE, "wanpipe");
-+	wp_cdev_class = class_create("wanpipe");
- 	if (IS_ERR(wp_cdev_class)) {
- 		DEBUG_ERROR("%s(): Error creating class!\n",__FUNCTION__);
- 		cdev_del(&wp_cdev_dev);
-@@ -1024,5 +1024,4 @@
- EXPORT_SYMBOL(wanpipe_cdev_cfg_ctrl_create);
- EXPORT_SYMBOL(wanpipe_cdev_timer_create);
- EXPORT_SYMBOL(wanpipe_cdev_logger_create);
--
- 
---- a/patches/kdrivers/wanec/wanec_dev.c
-+++ b/patches/kdrivers/wanec/wanec_dev.c
-@@ -139,7 +139,7 @@
- 
- 	DEBUG_EVENT("%s: Registering Wanpipe ECDEV Device!\n",__FUNCTION__);
- #ifdef WP_ECDEV_UDEV
--	wanec_dev_class = class_create(THIS_MODULE, "wp_ec");
-+	wanec_dev_class = class_create("wp_ec");
- #endif
- 
- #ifdef WP_CONFIG_DEVFS_FS
---- a/util/Makefile
-+++ b/util/Makefile
-@@ -23,8 +23,6 @@
- 	make -C wanconfig all CC=$(CC) SYSINC=$(SYSINC) EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
- 	make -C wanec_client all CC=$(CC)  SYSINC=$(SYSINC) WANINCDIR=$(WANINCDIR) EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
- 	make -C wan_plxctrl all CC=$(CC)  SYSINC=$(SYSINC) EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
--	make -C wanpipemon all  CC=$(CC) SYSINC=$(SYSINC) PROTOCOL_DEFS="$(PROTOCOL_DEFS)" ENABLE_WANPIPEMON_ZAP=$(ENABLE_WANPIPEMON_ZAP) EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
--	make -C wanpipemon_legacy all CC=$(CC) SYSINC=$(SYSINC) PROTOCOL_DEFS="$(PROTOCOL_DEFS)" EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
- 	make -C bwm all SYSINC=$(SYSINC) CC=$(CC) PROTOCOL_DEFS="$(PROTOCOL_DEFS)" EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
- 	make -C wan_aftup all CC=$(CC) SYSINC=$(SYSINC) PROTOCOL_DEFS="$(PROTOCOL_DEFS)" EXTRA_FLAGS="$(EXTRA_FLAGS)" ARCH=$(ARCH)
- 
-@@ -40,8 +38,6 @@
- 	make -C wanconfig install WAN_VIRTUAL=$(WAN_VIRTUAL)
- 	make -C wanec_client install WAN_VIRTUAL=$(WAN_VIRTUAL)
- 	make -C wan_plxctrl install WAN_VIRTUAL=$(WAN_VIRTUAL) 
--	make -C wanpipemon install WAN_VIRTUAL=$(WAN_VIRTUAL)
--	make -C wanpipemon_legacy install WAN_VIRTUAL=$(WAN_VIRTUAL)
- 	make -C wan_aftup install WAN_VIRTUAL=$(WAN_VIRTUAL) 
- 	make -C bwm install WAN_VIRTUAL=$(WAN_VIRTUAL)
- 	make -C wancfg_zaptel install WAN_VIRTUAL=$(WAN_VIRTUAL)
