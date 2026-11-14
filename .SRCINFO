@@ -1,13 +1,13 @@
 pkgbase = mp3-browser
 	pkgdesc = A Browser of MP3. A Linux-GJS replica on an MP3-Explorer from early 2000-s.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/nestoris/mp3-browser
 	arch = any
 	license = GPL
 	depends = gjs
 	depends = gtk3
-	source = mp3-browser-1.0.0.tar.gz::https://github.com/nestoris/mp3-browser/archive/v1.0.0.tar.gz
-	sha256sums = ff83aacbd6f2e89b34de2d7aa8300a0f94727cd1365aa59e9a1974872f75883d
+	source = mp3-browser-1.0.1.tar.gz::https://github.com/nestoris/mp3-browser/archive/v1.0.1.tar.gz
+	sha256sums = 434f274a5d9f039e75c69cef14edfc6583ed58f5c7a386c1e76ee4da371f0d82
 
 pkgname = mp3-browser
