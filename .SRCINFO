@@ -1,0 +1,23 @@
+pkgbase = mca-selector-rs-git
+	pkgdesc = A faithful Rust + GPUI port of MCA Selector (latest git)
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Coobyk/mca-selector-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = cmake
+	depends = fontconfig
+	depends = libxcb
+	depends = libxkbcommon
+	depends = wayland
+	depends = alsa-lib
+	provides = mca-selector
+	conflicts = mca-selector
+	source = git+https://github.com/Coobyk/mca-selector-rs.git
+	sha256sums = SKIP
+
+pkgname = mca-selector-rs-git
