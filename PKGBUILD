@@ -2,7 +2,7 @@
 
 pkgname=python-apache-tvm-ffi
 _pkgname=tvm-ffi
-pkgver=0.1.15.post2
+pkgver=0.1.16
 _srcver=${pkgver/.post/-post}
 pkgrel=1
 pkgdesc="TVM Foreign Function Interface - core bindings for Apache TVM"
@@ -45,16 +45,14 @@ optdepends=(
 )
 source=(
     "$_pkgname-$pkgver.tar.gz::https://github.com/apache/$_pkgname/archive/refs/tags/v$_srcver.tar.gz"
-    "dlpack::git+https://github.com/dmlc/dlpack.git#commit=84d107bf416c6bab9ae68ad285876600d230490d"
+    "dlpack::git+https://github.com/dmlc/dlpack.git#commit=6eca9e643fcf7e870b7a1c99ee7fb166c5c2c459"
     "libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git#commit=793921876c981ce49759114d7bb89bb89b2d3a2d"
     'use-system-gtest.patch'
-    'cxx20-json-test-literals.patch'
 )
-sha256sums=('139e04a26310423a8d1c3d2b6546620d4f0c208fa6035f26059dc7eb30f70fb3'
+sha256sums=('1f490fac1c42e369186507dbfb5371aba95a0f3e9708f66521ee56e3f914de28'
             'SKIP'
             'SKIP'
-            '382afb7a81168c122b4ae869d99a139d93919aa020dfb74ebc56f11c1bba1059'
-            'b03426b908d6dc865e9505922f6bf0fe73a217a36a3fbd5cb87ebb5839072bf7')
+            '382afb7a81168c122b4ae869d99a139d93919aa020dfb74ebc56f11c1bba1059')
 
 prepare() {
     cd "$_pkgname-$_srcver"
@@ -67,9 +65,6 @@ prepare() {
     # The upstream C++ suite fetches GoogleTest during configuration.
     # Use Arch's packaged copy so check() stays fully offline.
     patch -Np1 -i "$srcdir/use-system-gtest.patch"
-    # System GoogleTest selects C++20. Preserve the UTF-8 test values as char
-    # strings, matching the TVM string API, instead of C++20 char8_t strings.
-    patch -Np1 -i "$srcdir/cxx20-json-test-literals.patch"
 }
 
 build() {

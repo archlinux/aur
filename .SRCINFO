@@ -1,6 +1,6 @@
 pkgbase = python-apache-tvm-ffi
 	pkgdesc = TVM Foreign Function Interface - core bindings for Apache TVM
-	pkgver = 0.1.15.post2
+	pkgver = 0.1.16
 	pkgrel = 1
 	url = https://github.com/apache/tvm-ffi
 	arch = x86_64
@@ -30,15 +30,13 @@ pkgbase = python-apache-tvm-ffi
 	optdepends = python-pytest: tvm_ffi.testing helpers
 	optdepends = python-pytorch: PyTorch tensor and stream interoperability
 	options = !strip
-	source = tvm-ffi-0.1.15.post2.tar.gz::https://github.com/apache/tvm-ffi/archive/refs/tags/v0.1.15-post2.tar.gz
-	source = dlpack::git+https://github.com/dmlc/dlpack.git#commit=84d107bf416c6bab9ae68ad285876600d230490d
+	source = tvm-ffi-0.1.16.tar.gz::https://github.com/apache/tvm-ffi/archive/refs/tags/v0.1.16.tar.gz
+	source = dlpack::git+https://github.com/dmlc/dlpack.git#commit=6eca9e643fcf7e870b7a1c99ee7fb166c5c2c459
 	source = libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git#commit=793921876c981ce49759114d7bb89bb89b2d3a2d
 	source = use-system-gtest.patch
-	source = cxx20-json-test-literals.patch
-	sha256sums = 139e04a26310423a8d1c3d2b6546620d4f0c208fa6035f26059dc7eb30f70fb3
+	sha256sums = 1f490fac1c42e369186507dbfb5371aba95a0f3e9708f66521ee56e3f914de28
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 382afb7a81168c122b4ae869d99a139d93919aa020dfb74ebc56f11c1bba1059
-	sha256sums = b03426b908d6dc865e9505922f6bf0fe73a217a36a3fbd5cb87ebb5839072bf7
 
 pkgname = python-apache-tvm-ffi
