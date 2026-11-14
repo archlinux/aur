@@ -6,3 +6,5 @@
 *.log
 .nvchecker.toml
 update-package.sh
+/opengrep_linux_x86_v*
+/opengrep_linux_aarch64_v*
