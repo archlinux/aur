@@ -1,10 +1,10 @@
 # Maintainer: juacker
 # Auto-updated by .github/workflows/aur.yml on each release.
-# 26.11.8 and 2cc71a7dab1ce19e581543abb68b7bf91da9f034f3c59e57b1cdb3527d60a281 are replaced by CI; to build locally, fill them in
+# 26.11.14 and d8117464d2a3d7b634a725b193e0f77e12066b7ac0b521f276d3960e18b8fa52 are replaced by CI; to build locally, fill them in
 # (sha256 of the release .deb) or run: makepkg -g
 
 pkgname=clai-desktop-bin
-pkgver=26.11.8
+pkgver=26.11.14
 pkgrel=1
 pkgdesc="Desktop app for building, running, and supervising teams of AI agents"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('clai')
 options=('!strip' '!debug')
 source=("${url}/releases/download/v${pkgver}/clai_${pkgver}_amd64.deb"
         "${url}/raw/v${pkgver}/LICENSE")
-sha256sums=('2cc71a7dab1ce19e581543abb68b7bf91da9f034f3c59e57b1cdb3527d60a281'
+sha256sums=('d8117464d2a3d7b634a725b193e0f77e12066b7ac0b521f276d3960e18b8fa52'
             'SKIP')
 
 package() {
