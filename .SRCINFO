@@ -1,0 +1,22 @@
+pkgbase = lib32-reshade-linux-bin
+	pkgdesc = crosire's ReShade post-processing injector as a native Vulkan layer (32-bit) (prebuilt)
+	pkgver = 6.8.0.1
+	pkgrel = 1
+	url = https://github.com/TheElevatedOne/reshade-linux
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = reshade-linux
+	depends = lib32-glibc
+	depends = lib32-libxcb
+	depends = lib32-libxkbcommon
+	depends = lib32-wayland
+	depends = lib32-dbus
+	depends = lib32-vulkan-icd-loader
+	provides = lib32-reshade-linux=6.8.0.1
+	conflicts = lib32-reshade-linux
+	options = !debug
+	options = !strip
+	source = https://github.com/TheElevatedOne/reshade-linux/releases/download/6.8.0.1/reshade-linux-6.8.0.1-x86.tar.gz
+	sha256sums = b6b471aa213a835917beeaf329c9ffecfb3c4b45e19e369264ba44d4b9a64c8e
+
+pkgname = lib32-reshade-linux-bin
