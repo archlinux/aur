@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Turnkey llama.cpp on the Intel Arc GPU (SYCL backend).
+#
+# Usage:  llama-sycl [tool] [args...]
+#   Default tool is `server`. Pass any llama-* tool name as the first arg:
+#     llama-sycl                    -> llama-server (all layers on GPU)
+#     llama-sycl cli   -m model.gguf -p "hi"
+#     llama-sycl bench -m model.gguf
+#
+# The oneAPI runtime (SYCL, MKL, oneDNN, TBB, ...) is bundled in BIN_DIR, so no
+# system oneAPI installation is needed and it is never sourced. Our directory goes
+# first so it wins over any oneAPI libraries already on LD_LIBRARY_PATH.
+set -eo pipefail
+
+BIN_DIR=/usr/lib/llama-sycl
+export LD_LIBRARY_PATH="$BIN_DIR${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+
+tool=server
+if [[ $# -gt 0 && -x "$BIN_DIR/llama-$1" ]]; then
+  tool=$1; shift
+fi
+
+# -ngl 999 offloads all layers to the GPU; override by passing your own -ngl.
+exec "$BIN_DIR/llama-$tool" -ngl 999 "$@"
