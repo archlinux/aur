@@ -1,50 +1,39 @@
+# Maintainer: ViniciusPHDU20
 pkgname=archshield-pro
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="Enterprise-grade Network Intrusion Detection and Prevention System (IDS/IPS)"
-arch=("x86_64")
+pkgdesc="Sovereign Linux Cyber Deception, Ring 0 Kernel Sentry & Intrusion Prevention System"
+arch=('x86_64')
 url="https://github.com/ViniciusPHDU20/ArchShield"
-license=("GPL3")
-depends=("python" "python-scapy" "python-scikit-learn" "python-fastapi" "python-uvicorn" "python-pyjwt" "python-pydantic-settings" "python-httpx" "python-joblib" "python-numpy" "whois" "iptables")
-source=("git+https://github.com/ViniciusPHDU20/ArchShield.git#branch=master")
-sha256sums=("SKIP")
+license=('GPL-3.0-or-later')
+depends=('nftables' 'systemd' 'curl' 'python' 'python-pyqt6' 'python-pyqt6-webengine')
+makedepends=('cargo' 'git')
+source=("git+https://github.com/ViniciusPHDU20/ArchShield.git#branch=main")
+sha256sums=('SKIP')
+
+build() {
+  cd "ArchShield"
+  cargo build --release
+}
 
 package() {
-  cd ArchShield
+  cd "ArchShield"
 
-  # Diretório de instalação do projeto
-  install -d "$pkgdir/opt/$pkgname"
-  
-  # Copiando os arquivos vitais
-  cp -r api core utils templates main.py "$pkgdir/opt/$pkgname/"
-  
-  # Configurando permissões
-  chmod 755 "$pkgdir/opt/$pkgname/main.py"
+  # 1. Binarios nativos em Rust
+  install -Dm755 "target/release/archshield-daemon" "$pkgdir/usr/bin/archshield-daemon"
+  install -Dm755 "target/release/archshield-ctl" "$pkgdir/usr/bin/archshield-ctl"
+  install -Dm755 "archshield-panel" "$pkgdir/usr/bin/archshield-panel"
 
-  # Criando link simbólico para execução global
-  install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/main.py" "$pkgdir/usr/bin/archshield-pro"
+  # 2. Painel Desktop e templates
+  install -d "$pkgdir/usr/share/archshield"
+  install -Dm644 "panel.py" "$pkgdir/usr/share/archshield/panel.py"
+  cp -r "templates" "$pkgdir/usr/share/archshield/"
 
-  # Criando diretório de dados
-  install -d "$pkgdir/opt/$pkgname/data"
-  chmod 777 "$pkgdir/opt/$pkgname/data"
-  
-  # Serviço Systemd
-  install -d "$pkgdir/usr/lib/systemd/system"
-  cat <<EOF > "$pkgdir/usr/lib/systemd/system/archshield.service"
-[Unit]
-Description=ArchShield PRO - Sovereign IDS/IPS
-After=network.target
+  # 3. Assets de Sistema (Desktop, Icone, Servico)
+  install -Dm644 "assets/archshield.desktop" "$pkgdir/usr/share/applications/archshield.desktop"
+  install -Dm644 "assets/archshield.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/archshield.svg"
+  install -Dm644 "assets/archshield.service" "$pkgdir/usr/lib/systemd/system/archshield.service"
 
-[Service]
-Type=simple
-User=root
-WorkingDirectory=/opt/$pkgname
-ExecStart=/usr/bin/python3 /opt/$pkgname/main.py
-Restart=on-failure
-RestartSec=5
-
-[Install]
-WantedBy=multi-user.target
-EOF
+  # 4. Diretorio de persistencia
+  install -dm755 "$pkgdir/var/lib/archshield"
 }

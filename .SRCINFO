@@ -1,23 +1,19 @@
 pkgbase = archshield-pro
-	pkgdesc = Enterprise-grade Network Intrusion Detection and Prevention System (IDS/IPS)
-	pkgver = 2.0.0
+	pkgdesc = Sovereign Linux Cyber Deception, Ring 0 Kernel Sentry & Intrusion Prevention System
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/ViniciusPHDU20/ArchShield
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = nftables
+	depends = systemd
+	depends = curl
 	depends = python
-	depends = python-scapy
-	depends = python-scikit-learn
-	depends = python-fastapi
-	depends = python-uvicorn
-	depends = python-pyjwt
-	depends = python-pydantic-settings
-	depends = python-httpx
-	depends = python-joblib
-	depends = python-numpy
-	depends = whois
-	depends = iptables
-	source = git+https://github.com/ViniciusPHDU20/ArchShield.git#branch=master
+	depends = python-pyqt6
+	depends = python-pyqt6-webengine
+	source = git+https://github.com/ViniciusPHDU20/ArchShield.git#branch=main
 	sha256sums = SKIP
 
 pkgname = archshield-pro
