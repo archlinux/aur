@@ -1,24 +1,26 @@
 pkgbase = banchoxterm
 	pkgdesc = Multi-protocol terminal emulator and remote session manager
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/Gargadon/banchoxterm
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = qt6-tools
+	makedepends = qt6-tools>=6.12.0
 	makedepends = desktop-file-utils
 	makedepends = pkgconf
-	depends = qt6-base
-	depends = qt6-serialport
+	makedepends = git
+	depends = qt6-base>=6.12.0
+	depends = qt6-serialport>=6.12.0
 	depends = freerdp
-	source = banchoxterm-1.4.1.tar.gz::https://github.com/Gargadon/banchoxterm/archive/refs/tags/v1.4.1.tar.gz
-	source = qtermwidget::git+https://github.com/Gargadon/qtermwidget.git
+	depends = kwindowsystem
+	source = banchoxterm-1.5.0.tar.gz::https://github.com/Gargadon/banchoxterm/archive/refs/tags/v1.5.0.tar.gz
+	source = qtermwidget::git+https://github.com/Gargadon/qtermwidget.git#commit=481b1f7deaa75268cf74c6e4e516b30211f6c73c
 	source = libssh2::git+https://github.com/libssh2/libssh2.git#tag=libssh2-1.11.1
-	source = libsodium::git+https://github.com/jedisct1/libsodium.git
-	source = libvncserver::git+https://github.com/LibVNC/libvncserver.git
-	sha256sums = 148b6cfc87a6b8016c9e28b8552061da1052e92bea9733809379a6ff2fcc3a63
+	source = libsodium::git+https://github.com/jedisct1/libsodium.git#tag=1.0.20-RELEASE
+	source = libvncserver::git+https://github.com/LibVNC/libvncserver.git#tag=LibVNCServer-0.9.14
+	sha256sums = a2478c8d1720ad44621921e9e8bbca1dd34264d548368a53ba1bf5296236d387
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

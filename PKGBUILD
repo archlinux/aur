@@ -1,21 +1,21 @@
 pkgname=banchoxterm
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Multi-protocol terminal emulator and remote session manager'
 arch=('x86_64')
 url='https://github.com/Gargadon/banchoxterm'
 license=('GPL-2.0-or-later')
-depends=('qt6-base' 'qt6-serialport' 'freerdp')
-makedepends=('cmake' 'ninja' 'qt6-tools' 'desktop-file-utils' 'pkgconf')
+depends=('qt6-base>=6.12.0' 'qt6-serialport>=6.12.0' 'freerdp' 'kwindowsystem')
+makedepends=('cmake' 'ninja' 'qt6-tools>=6.12.0' 'desktop-file-utils' 'pkgconf' 'git')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/Gargadon/banchoxterm/archive/refs/tags/v${pkgver}.tar.gz"
-  'qtermwidget::git+https://github.com/Gargadon/qtermwidget.git'
+  'qtermwidget::git+https://github.com/Gargadon/qtermwidget.git#commit=481b1f7deaa75268cf74c6e4e516b30211f6c73c'
   # The SSH BREAK adapter uses private APIs from this upstream-pinned version.
   'libssh2::git+https://github.com/libssh2/libssh2.git#tag=libssh2-1.11.1'
-  'libsodium::git+https://github.com/jedisct1/libsodium.git'
-  'libvncserver::git+https://github.com/LibVNC/libvncserver.git'
+  'libsodium::git+https://github.com/jedisct1/libsodium.git#tag=1.0.20-RELEASE'
+  'libvncserver::git+https://github.com/LibVNC/libvncserver.git#tag=LibVNCServer-0.9.14'
 )
-sha256sums=('148b6cfc87a6b8016c9e28b8552061da1052e92bea9733809379a6ff2fcc3a63'
+sha256sums=('a2478c8d1720ad44621921e9e8bbca1dd34264d548368a53ba1bf5296236d387'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -37,19 +37,10 @@ EOF
   rm -rf "${srcdir}/${pkgname}-${pkgver}/third_party/qtermwidget"
   cp -a "${srcdir}/qtermwidget" "${srcdir}/${pkgname}-${pkgver}/third_party/qtermwidget"
 
-  # Recent libvncserver revisions keep the public headers under include/rfb,
-  # while BanchoXterm's VNC target uses the legacy source-root include path.
-  if [[ -d "${srcdir}/libvncserver/include/rfb" ]]; then
-    mkdir -p "${srcdir}/libvncserver/rfb"
-    cp -a "${srcdir}/libvncserver/include/rfb/." \
-      "${srcdir}/libvncserver/rfb/"
-  fi
-
   sed -i \
     -e 's|KB_LAYOUT_DIR="${QTQ_LIB}/kb-layouts"|KB_LAYOUT_DIR="/usr/lib/banchoxterm/kb-layouts"|' \
     -e 's|COLORSCHEMES_DIR="${QTQ_LIB}/color-schemes"|COLORSCHEMES_DIR="/usr/lib/banchoxterm/color-schemes"|' \
     -e 's|TRANSLATIONS_DIR="${QTQ_LIB}/translations"|TRANSLATIONS_DIR="/usr/lib/banchoxterm/translations"|' \
-    -e '/\${libvncserver_BINARY_DIR}/a\        ${libvncserver_BINARY_DIR}/include' \
     "${srcdir}/${pkgname}-${pkgver}/CMakeLists.txt"
 }
 
