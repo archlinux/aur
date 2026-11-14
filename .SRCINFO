@@ -1,7 +1,7 @@
 pkgbase = rovyl-bin
 	pkgdesc = Rovyl radial launcher (prebuilt AppImage)
 	pkgver = 1.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YahyaZekry/rovyl-linux
 	arch = x86_64
 	license = GPL-3.0-or-later

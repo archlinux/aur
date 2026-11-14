@@ -2,7 +2,7 @@
 pkgname=rovyl-bin
 _pkgname=rovyl
 pkgver=1.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Rovyl radial launcher (prebuilt AppImage)"
 arch=('x86_64')
 url="https://github.com/YahyaZekry/rovyl-linux"
@@ -22,6 +22,7 @@ package() {
 
   install -dm755 "$pkgdir/opt/Rovyl"
   cp -a squashfs-root/. "$pkgdir/opt/Rovyl/"
+  chmod -R a+rX "$pkgdir/opt/Rovyl"
 
   # icon
   install -Dm644 squashfs-root/rovyl.png \
