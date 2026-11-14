@@ -1,0 +1,18 @@
+pkgbase = python-pytest-rng
+	pkgdesc = Pytest fixtures for seeding tests and making randomness reproducible
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nengo/pytest-rng
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = python-pytest
+	source = pytest-rng-1.0.0.tar.gz::https://github.com/nengo/pytest-rng/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 91cf52a53cac5b20c0495d1b8a1544f1c88b39b587c26cf2e6af9849e27c5c5f
+
+pkgname = python-pytest-rng
