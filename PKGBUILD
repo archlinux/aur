@@ -1,12 +1,12 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.163
-pkgrel=8
+pkgrel=9
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
 license=('LicenseRef-proprietary')
-# deps re-derived from payload 2026-11-11 (DT_NEEDED union + ASCII/UTF-16 dlopen probes vs live core/extra .files indexes; libvlc, libspeechd.so.2, libcurl.so.4, liblivekit_ffi GPU probes all confirmed in shipped binaries)
+# deps re-derived from payload 2026-11-14 (DT_NEEDED union + ASCII/UTF-16 dlopen probes vs live core/extra .files indexes; libvlc, libspeechd.so.2, libcurl.so.4, liblivekit_ffi GPU probes all confirmed in shipped binaries)
 depends=('alsa-lib'
          'at-spi2-core'
          'ca-certificates-mozilla'
@@ -14,6 +14,7 @@ depends=('alsa-lib'
          'dbus'
          'expat'
          'fontconfig'
+         'gdk-pixbuf2'
          'glib2'
          'gtk3'
          'hicolor-icon-theme'
@@ -55,6 +56,7 @@ depends=('alsa-lib'
 provides=('rootapp')
 conflicts=('rootapp')
 optdepends=('bluez: org.bluez Bluetooth service (bluetooth.service) for Web Bluetooth peripherals'
+            'cups: org.cups.cupsd printing service (socket-activated cups.socket) for the Chromium portal Print interface and the libcups.so.2 client'
             'xdg-desktop-portal: file-picker and screen-share dialogs'
             'xdg-desktop-portal-gnome: file-picker, settings and screen-share backend on GNOME'
             'xdg-desktop-portal-gtk: file-picker and settings backend on GTK desktops'
