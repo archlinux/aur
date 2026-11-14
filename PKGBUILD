@@ -8,7 +8,7 @@ url="https://github.com/nestoris/mp3-browser"
 license=('GPL')
 depends=('gjs' 'gtk3')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('17ce10624b725085edfcc30026bf756d5c17447b2c8e45355e28140118fb3d07')
+sha256sums=('3eb9484e4b06cccd5dde578d8222c513392f591c1892305ec7e8a21d933d3626')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
