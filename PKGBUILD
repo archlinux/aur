@@ -1,7 +1,7 @@
 # Maintainer: duanluan <duanluan@outlook.com>
 
 pkgname=uu-remote-linux-bin
-pkgver=0.2.58
+pkgver=0.2.59
 pkgrel=1
 pkgdesc='Unofficial Linux host and viewer for NetEase UU Remote (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -49,8 +49,8 @@ sha256sums=(
   '1bba2b6ada40e980c23c4a78188d694e8c8bc39c3d39e9ffb8a41947501da48e'
   'df21d14e39e6912261e9ecdc2422d242612053beb2cbc3a8755938020abf3e6f'
 )
-sha256sums_x86_64=('bbf3bc7bb45e8cc93397b046bcbf5b24ef8c1c1420b4e2129acd8bf5273a6157')
-sha256sums_aarch64=('0754217ff14980247c202aa3522dadb902c9e048793fb76a201dfb81814bb356')
+sha256sums_x86_64=('8f3a959aebb7dd175894a41045e61f64a8db9025e5f93590d668fbaf0cc8339c')
+sha256sums_aarch64=('def9a1327c4d82ffb5c4602efb40e263675ddf3f07b6418779f9e59498a978de')
 
 package() {
   local _dir="uu-remote-linux-v${pkgver}-${CARCH}-linux"
