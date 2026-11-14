@@ -2,7 +2,7 @@
 
 _pkgname=wish-agent
 pkgname=$_pkgname-git
-pkgver=0.2.7.r0.g99761c7
+pkgver=0.2.8.r0.gf135f86
 pkgrel=1
 pkgdesc="Self-hosted AI agent server and web app: long-lived sessions, shell tools and many model providers"
 arch=('x86_64' 'aarch64')
