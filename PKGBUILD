@@ -2,7 +2,7 @@
 
 _pkgname=quaver-music
 pkgname=${_pkgname}-appimage
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Third-party QQ Music client built with Electron (AppImage)"
 arch=('x86_64')
@@ -47,7 +47,7 @@ options=('!strip' '!debug')
 
 _asset="Quaver-${pkgver}-x86_64.AppImage"
 source=("${_asset}::${url}/releases/download/v${pkgver}/${_asset}")
-sha256sums=('d6bd31eae385976169a808553895c3714a27fb187694aa4940339a5b56128d9d')
+sha256sums=('e937af7d0a517fc83c012504dd5ddfcd27fb3d77cc274cc2b73e260f14e0ff20')
 
 prepare() {
   cd "$srcdir"
