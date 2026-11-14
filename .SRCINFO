@@ -1,6 +1,6 @@
 pkgbase = stable-diffusion.cpp-rocm-bin
 	pkgdesc = stable-diffusion.cpp upstream Linux x86_64 prebuilt binaries with the ROCm backend
-	pkgver = master_1031_c6dfa9d
+	pkgver = master_1098_b521db4
 	pkgrel = 1
 	url = https://github.com/leejet/stable-diffusion.cpp
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = stable-diffusion.cpp-rocm-bin
 	depends = gcc-libs
 	depends = hip-runtime-amd
 	depends = hipblas
+	depends = hipblaslt
 	depends = rocblas
 	provides = stable-diffusion.cpp
 	conflicts = stable-diffusion.cpp
@@ -16,7 +17,7 @@ pkgbase = stable-diffusion.cpp-rocm-bin
 	conflicts = stable-diffusion.cpp-vulkan-bin
 	options = !strip
 	options = !debug
-	source = stable-diffusion.cpp-rocm-bin-master_1031_c6dfa9d.zip::https://github.com/leejet/stable-diffusion.cpp/releases/download/master-1031-c6dfa9d/sd-master-c6dfa9d-bin-Linux-Ubuntu-24.04-x86_64-rocm-10.1.0.zip
-	sha256sums = c6785c3c961a1ddb02fcddc6edbd42b6aad6b001ddc8c4b915f545da8151b495
+	source = stable-diffusion.cpp-rocm-bin-master_1098_b521db4.zip::https://github.com/leejet/stable-diffusion.cpp/releases/download/master-1098-b521db4/sd-master-b521db4-bin-Linux-Ubuntu-24.04-x86_64-rocm-10.1.0.zip
+	sha256sums = fb58c475ef787d3c27a06826901045a594c02409c9f5b9a49f7aaaa469f8156f
 
 pkgname = stable-diffusion.cpp-rocm-bin
