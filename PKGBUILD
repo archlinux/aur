@@ -4,7 +4,7 @@ _pyname=oauthenticator
 
 pkgname="python-jupyterhub-${_pyname}"
 pkgdesc="JupyterHub Authenticator for OAuth providers"
-pkgver=17.4.0
+pkgver=17.5.0
 pkgrel=1
 url="https://github.com/jupyterhub/oauthenticator"
 arch=('any')
@@ -40,7 +40,7 @@ checkdepends=(
 )
 
 source=("${_pyname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-b2sums=('0aa1b227ef921c34780f17f6a04d00625b019a97f531fc1b11c27ba2e127d09fc3918d6672c7c5fd0acbf392045f0f881e576077cee29c0283ad2ef4aa9b632c')
+b2sums=('c85f40d1a98562787d8b4c13f9d011c2316c33be61825cf238b61d68e0021a46622dcd0668ce6f87659c5b9deaa7588bd12a91f1219ea2dd442cb95fd8b0e1a2')
 
 build() {
   cd "$_pyname-$pkgver"
