@@ -4,20 +4,18 @@
 
 pkgname=libfm-qt-git
 _pkgname=${pkgname%-git}
-pkgver=2.1.0
+pkgver=2.5.0.r3.gec989ee
 pkgrel=1
 pkgdesc='Qt port of libfm, a library providing components to build desktop file managers'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://lxqt-project.org'
 license=('LGPL-2.1-only')
 depends=(
-  gcc-libs
   glib2
   glibc
   libexif
   libxcb
   lxqt-menu-data-git
-  menu-cache
   qt6-base
 )
 makedepends=(
