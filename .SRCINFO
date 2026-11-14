@@ -1,17 +1,18 @@
 pkgbase = cksk
 	pkgdesc = Server-monitor boards for a clck kiosk display
-	pkgver = 0.1.14
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/corbet-labs/cksk
+	url = https://git.corbet.ch/corbet-fsl/cksk
 	arch = x86_64
 	license = LicenseRef-FSL-1.1-ALv2
 	makedepends = cargo
+	makedepends = git
 	provides = cksk
 	conflicts = cksk-bin
 	replaces = nixwatch-bin
 	replaces = nixwatch
 	options = !lto
-	source = https://static.crates.io/crates/cksk/cksk-0.1.14.crate
-	sha256sums = 0560a17f8e1cf213316d418b738eeca09626e659b2d7e54e13721aaa47149edc
+	source = cksk::git+https://git.corbet.ch/corbet-fsl/cksk.git#tag=v0.2.0
+	sha256sums = SKIP
 
 pkgname = cksk
