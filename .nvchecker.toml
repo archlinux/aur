@@ -1,0 +1,3 @@
+[python-clox]
+source = "pypi"
+pypi = "clox"

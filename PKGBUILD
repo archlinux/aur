@@ -1,34 +1,44 @@
-# Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
-# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-
-_upstreamver=1.7
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='pypi-releases'
-_pypi_package='clox'
-
-
-pkgname="python-${_pypi_package}"
-pkgver="${_upstreamver}"
+_pkgname='clox'
+_pkgauthor='sepandhaghighi'
+pkgname=python-${_pkgname}
+pkgver=1.7
 pkgrel=1
 pkgdesc="A Geeky Clock for Terminal Enthusiasts"
+
 arch=('any')
-url='https://github.com/sepandhaghighi/clox'
+url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('MIT')
-depends=('python' 'python-pytz' 'python-art' 'python-pytz' 'python-jdatetime' 'python-jalali-core')
-optdepends=()
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-pydocstyle' 'bandit' 'vulture')
-source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('a967d30bdb03f30769919141c71cbad13fdeb1d829da80752b52983de980653d')
+
+provides=("${_pkgname}")
+conflicts=("python-${pkgname}")
+
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+depends=('python' 'ipython' 'python-colorama' 'python-pytz' 'python-art' 'python-pytz' 'python-jdatetime' 'python-jalali-core')
+
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('76304098aa6c313cac511e968961ed7d56d23fea1a414b6d6fa271cfeae5a1ca')
+
+_pypi_package=${_pkgname}
+_pypi_version=${pkgver}
+
 
 build() {
-  cd "$_pypi_package-$pkgver"
-  python -m build --wheel --no-isolation
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
+
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pypi_package-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  cd ..
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
+
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "AUTHORS.md" "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS.md"
+    install -Dm644 "SECURITY.md" "${pkgdir}/usr/share/doc/${pkgname}/SECURITY.md"
+    install -Dm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 }
