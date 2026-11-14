@@ -1,7 +1,7 @@
 # Maintainer: tuklu
 # The CI release binary, so installing needs no Go and no GTK binding compile.
 pkgname=nzlauncher-bin
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Launcher for Hyprland that learns how you use it (prebuilt)"
 arch=('x86_64')
@@ -29,8 +29,8 @@ source=("nzlauncher-$pkgver::$url/releases/download/v$pkgver/nzlauncher-linux-am
         "nzlauncher-gtk-$pkgver::$url/releases/download/v$pkgver/nzlauncher-gtk-linux-amd64"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/tuklu/nZlauncher/v$pkgver/LICENSE"
         "nzlauncher-$pkgver.service::https://raw.githubusercontent.com/tuklu/nZlauncher/v$pkgver/packaging/systemd/nzlauncher.service")
-sha256sums=('65cb2f3d8c9d36b3b8a54ed714def910c33e3340282ee266174bb7f5da9a56f4'
-            '81ec7a6aa2588c7ef00587cdf18eeefd92b64d97b7a4845b6fac23edf4c691de'
+sha256sums=('9ddf6281e873ddbcc0c4f2f21b8f70d3bca8011fb9639830ff2226865f336e00'
+            '1366ab2f762620cb64449b83b5f075f3c367897c391c5355f8c6fca01f36d30f'
             'cffff6a257a267deefebc1866d636e5f1bd098550007dcd75e8de8fbb38375dc'
             '0a66c4572ddf8c6759815f211d3838a5bdb91da3f971cda0ddfe7b6fcb9b1c9d')
 
@@ -39,4 +39,13 @@ package() {
   install -Dm755 "nzlauncher-gtk-$pkgver" "$pkgdir/usr/bin/nzlauncher-gtk"
   install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "nzlauncher-$pkgver.service" "$pkgdir/usr/lib/systemd/user/nzlauncher.service"
+
+  # the manual and completions are built into the binary
+  local bin="$pkgdir/usr/bin/nzlauncher"
+  install -d "$pkgdir/usr/share/man/man1" "$pkgdir/usr/share/zsh/site-functions" \
+    "$pkgdir/usr/share/bash-completion/completions" "$pkgdir/usr/share/fish/vendor_completions.d"
+  "$bin" man > "$pkgdir/usr/share/man/man1/nzlauncher.1"
+  "$bin" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_nzlauncher"
+  "$bin" completion bash > "$pkgdir/usr/share/bash-completion/completions/nzlauncher"
+  "$bin" completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/nzlauncher.fish"
 }
