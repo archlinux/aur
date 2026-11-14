@@ -20,14 +20,14 @@ install=sirinvpn.install
 options=('!lto' '!strip' '!debug')
 # The VPS server payloads come from the newest signed release (see the sirinvpn
 # package): they need Debian Bookworm's glibc. Raise _payload_tag with each release.
-_payload_tag=v1.0.0-rc.2
+_payload_tag=v1.0.0-rc.3
 source=("sirinvpn::git+$url.git#branch=main"
         "sirinvpn-server-x86_64-$_payload_tag::$url/releases/download/$_payload_tag/sirinvpn-server-x86_64"
         "sirinvpn-server-aarch64-$_payload_tag::$url/releases/download/$_payload_tag/sirinvpn-server-aarch64")
 # The payload sums are filled from that release by scripts/update-aur-checksums.sh.
 sha256sums=('SKIP'
-            '833d79c1988c7346af9bcab989e0b12ff6190bce70c274dc118fb9e5f719de71'
-            '2f4ed867dad10c6e0c74b9dc451e4f4486d1012ba5ace2379a907df873d7bd90')
+            'f38ab9351f03e2b7624659ac783db4f5a446cda6f6fd17f8a962ac7099df34c8'
+            '1d68af4c623470f836c1c26b408e7896453c4110880cc09016446c6195b3ffbf')
 
 pkgver() {
   cd sirinvpn
