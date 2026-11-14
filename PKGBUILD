@@ -1,17 +1,17 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=steamdepotdownloadergui
 _pkgname=SteamDepotDownloaderGUI
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Downgrade Steam games to older versions with ease using DepotDownloader"
 arch=('x86_64')
 url="https://github.com/mmvanheusden/SteamDepotDownloaderGUI"
 license=('GPL-3.0-only')
-depends=('glibc' 'webkit2gtk-4.1' 'libgcc' 'gtk3' 'cairo' 'libsoup3' 'bzip2' 'openssl' 'gdk-pixbuf2' 'hicolor-icon-theme' 'glib2' 'pango'
+depends=('glibc' 'webkit2gtk-4.1' 'libgcc' 'gtk3' 'cairo' 'libsoup3' 'gdk-pixbuf2' 'hicolor-icon-theme' 'glib2'
 	 'bash' 'dbus')
 makedepends=('cargo' 'pnpm' 'cargo-tauri')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('603878856f8365f53514c93bad4b67871166680419461c67b7a50f7c230c24c9')
+sha256sums=('0d1cd5c74e9ed13d642df2616da107ed3ba80162cb5dcdf7429f6ee665318e1d')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
