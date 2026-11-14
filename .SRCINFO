@@ -1,5 +1,5 @@
 pkgbase = python-sbom
-	pkgdesc = A high level archive handler for Python
+	pkgdesc = SBOMs for Python distributions: write PEP 770 CycloneDX SBOMs into wheels
 	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/tox-dev/python-sbom

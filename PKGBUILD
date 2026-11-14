@@ -6,7 +6,7 @@ _appname="python-sbom"
 pkgname=${_appname}
 pkgver=0.3.1
 pkgrel=1
-pkgdesc="A high level archive handler for Python"
+pkgdesc="SBOMs for Python distributions: write PEP 770 CycloneDX SBOMs into wheels"
 
 _pypi_package=${pkgname}
 _pypi_version=${pkgver}
