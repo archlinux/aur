@@ -1,6 +1,6 @@
 pkgbase = max-bin
 	pkgdesc = MAX messenger.
-	pkgver = 26.39.0.82726
+	pkgver = 26.40.2.83257
 	pkgrel = 1
 	url = https://max.ru
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = max-bin
 	conflicts = max
 	options = !strip
 	options = !debug
-	source_x86_64 = https://download.max.ru/linux/rpm/el/9/x86_64/MAX-26.39.0.82726.rpm
-	sha256sums_x86_64 = ec329271d7ed09712771b4cf5e176705ebb035fbc054c5ca879d401be1734836
+	source_x86_64 = https://download.max.ru/linux/rpm/el/9/x86_64/MAX-26.40.2.83257.rpm
+	sha256sums_x86_64 = 86cb9f13c4e2cd0996ffe314cf29ec86eda37765346b806ab3eaefe823ca9b72
 
 pkgname = max-bin
