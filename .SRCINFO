@@ -1,6 +1,6 @@
 pkgbase = lumina-code-bin
 	pkgdesc = A Tauri + React desktop GUI for OpenCode, bundling its own pinned server binary
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/iewnfod/lumina-code
 	arch = x86_64
@@ -11,14 +11,14 @@ pkgbase = lumina-code-bin
 	depends = libayatana-appindicator
 	depends = hicolor-icon-theme
 	optdepends = xdg-utils: open files/URLs from the app
-	provides = lumina-code=0.9.0
+	provides = lumina-code=0.9.1
 	conflicts = lumina-code
-	noextract = lumina-code-bin-0.9.0-*.deb
+	noextract = lumina-code-bin-0.9.1-*.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = lumina-code-bin-0.9.0-amd64.deb::https://github.com/iewnfod/lumina-code/releases/download/v0.9.0/Lumina.Code_0.9.0_amd64.deb
-	sha256sums_x86_64 = 1b15bf51be023686e6d6eca5379f45c948fa84d94a061b3d9f5362e28f674cb5
-	source_aarch64 = lumina-code-bin-0.9.0-arm64.deb::https://github.com/iewnfod/lumina-code/releases/download/v0.9.0/Lumina.Code_0.9.0_arm64.deb
-	sha256sums_aarch64 = ef9a796622810158560d06d773a8c6c647f1eb7e148b4dd837ec63fb64265fc8
+	source_x86_64 = lumina-code-bin-0.9.1-amd64.deb::https://github.com/iewnfod/lumina-code/releases/download/v0.9.1/Lumina.Code_0.9.1_amd64.deb
+	sha256sums_x86_64 = f14a513d3e3c2e5924d6644a6596a1adcaff38f6d02414b71018c7572d159377
+	source_aarch64 = lumina-code-bin-0.9.1-arm64.deb::https://github.com/iewnfod/lumina-code/releases/download/v0.9.1/Lumina.Code_0.9.1_arm64.deb
+	sha256sums_aarch64 = 6f1b2075bd05574d2f95db0133045840a5fa796e44e8a5c0b37c43587a7bb22f
 
 pkgname = lumina-code-bin
