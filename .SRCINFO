@@ -1,10 +1,9 @@
 pkgbase = edvr-installer-bin
 	pkgdesc = Transitional package: EDVR is now ED-UP, install ed-up-installer-bin
 	pkgver = 0.21.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/characterecho-sean/ed-unofficial-patch
 	arch = any
 	license = MIT
-	depends = ed-up-installer-bin
 
 pkgname = edvr-installer-bin
