@@ -1,6 +1,6 @@
 pkgbase = karukan-git
 	pkgdesc = Japanese Input Method System for Linux, Neural Kana-Kanji Conversion Engine + fcitx5 IME
-	pkgver = 0.1.0.r54.g91d053c
+	pkgver = 0.1.0.r103.g4ed2450
 	pkgrel = 1
 	url = https://github.com/togatoga/karukan
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = karukan-git
 	makedepends = extra-cmake-modules
 	makedepends = rust
 	makedepends = libxkbcommon
-	makedepends = patchelf
 	makedepends = clang
 	makedepends = git
 	depends = fcitx5
