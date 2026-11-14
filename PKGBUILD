@@ -1,5 +1,5 @@
 pkgname=lufux-git
-pkgver=1.4.2
+pkgver=1.4.2.r1.g7024388
 pkgrel=1
 pkgdesc="Create bootable USB drives on Linux, including Windows To Go"
 arch=('any')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/-stable//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
