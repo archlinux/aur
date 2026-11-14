@@ -6,8 +6,8 @@ _appname=MatLivre
 pkgname=${_appname,,}-bin
 pkgdesc="A fast live script editor and runtime for MATLAB code."
 
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.1.8
+pkgrel=1
 _gitversion=v${pkgver}
 
 arch=('x86_64')
@@ -35,10 +35,10 @@ source=("LAUNCHER-${pkgver}.desktop::${_ghurlraw}/tools/linux/${_appname,,}.desk
 		"${_appname,,}.xml")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.AppImage::${_ghurl}/releases/download/${_gitversion}/${_appname,,}.AppImage")
 sha256sums=('8ed74d1b1a66388fbf7574362b6d285e611ac13c9e03d06a808c5c78cf83fea6'
-            '3288b47285918889ce0d5a2024993db1111d922376798bbbe30c57fa53e7730d'
+            'fda80bfa882dcbb5e75593c993897eae7ae415f9feaed2b69c0bd95119a658ed'
             '63d91bd964e2a05a54f39d2f70ba9f5f9308146e858382f90bc7486bca3e5d7b'
             'dce2978f4a1507f4307b59f2946c491e2441c33a4524e5ae6078888cf9460681')
-sha256sums_x86_64=('dc0e66bef6e1cabcabb6f7e0c8de7847b762e0b874bd2f233a7a5c4ece610934')
+sha256sums_x86_64=('6ae9845f3eac9c251b4f715b485fbbe864511d8a66e78e27a898af7e957e816b')
 
 _appimagefile="${_appname}-${CARCH}-${pkgver}.AppImage"
 _root='squashfs-root'
