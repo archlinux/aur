@@ -5,6 +5,7 @@ pkgbase = pcmanfm-qt-git
 	url = https://lxqt-project.org
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-only
 	makedepends = cmake
 	makedepends = git
