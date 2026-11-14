@@ -2,7 +2,7 @@
 pkgname=mp3-browser
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="GJS-браузер MP3 с поддержкой ID3-тегов"
+pkgdesc="A Browser of MP3. A Linux-GJS replica on an MP3-Explorer from early 2000-s."
 arch=('any')
 url="https://github.com/nestoris/mp3-browser"
 license=('GPL')

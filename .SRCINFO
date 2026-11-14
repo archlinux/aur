@@ -1,5 +1,5 @@
 pkgbase = mp3-browser
-	pkgdesc = GJS-браузер MP3 с поддержкой ID3-тегов
+	pkgdesc = A Browser of MP3. A Linux-GJS replica on an MP3-Explorer from early 2000-s.
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/nestoris/mp3-browser
