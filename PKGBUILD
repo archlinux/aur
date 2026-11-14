@@ -1,6 +1,6 @@
 # Maintainer: Ramazan Berk Şirin <ramazanberksirin@protonmail.com>
 pkgname=open-chess
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Open Chess with variants, AI, LAN multiplayer and puzzles (Flutter + Rust)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('chess' 'chess-bin' 'chess-git' 'open-chess-bin' 'open-chess-git')
 replaces=('chess')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('32cffd576a7a62d824aaee4156d72ccb8b41bfc6d883d63ac5b9ed85beeea8a2')
+sha256sums=('ffa5e5d4fa9a1ee135c3b05810ee0ad3a87104832e7d10f6ca5ffdcdbd09819d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
