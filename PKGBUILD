@@ -6,14 +6,14 @@
 _pkgname=opentubex
 _ghurl='https://github.com/OpenTubeX/OpenTubeX'
 pkgname=${_pkgname}-bin
-pkgver=0.37.4
-pkgrel=2
+pkgver=0.38.0
+pkgrel=1
 pkgdesc="A highly customizable, privacy-focused desktop YouTube client"
 arch=('x86_64' 'aarch64')
 url='https://opentubex.org'
 license=('AGPL-3.0-or-later')
 options=('!strip')
-depends=('alsa-lib' 'at-spi2-core' 'gtk3' 'libnotify' 'libsecret' 'libxss'
+depends=('ttf-liberation' 'alsa-lib' 'at-spi2-core' 'gtk3' 'libnotify' 'libsecret' 'libxss'
          'libxtst' 'nss' 'util-linux-libs' 'xdg-utils')
 optdepends=('ffmpeg: Use the system FFmpeg when installed before first launch; configurable later in Settings'
             'yt-dlp: Use the system yt-dlp when installed before first launch; configurable later in Settings')
@@ -32,5 +32,5 @@ package() {
     ln -s "/opt/OpenTubeX/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
-sha256sums_x86_64=('aa3ddf26362e6a996b9d37f87448e1da29b19b8feebb01f1a649048e4f67b56d')
-sha256sums_aarch64=('f87074411b2abe4b9c2de319f01e0df447f558955bf47c79ea17331e699a8ee8')
+sha256sums_x86_64=('ff4ea41cddfce2d70150b4201fb08dd889b48d904e8a93a88ea4032e38cb690d')
+sha256sums_aarch64=('08eb1b78af5b1b8dc952c6ed08326b782f0fb1813b4f79cfd64c35a7d79c1710')
