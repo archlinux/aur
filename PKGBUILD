@@ -2,7 +2,7 @@
 
 pkgname=mark-shot-arch-bin
 pkgver=0.1.62
-pkgrel=5
+pkgrel=6
 pkgdesc='Qt 6 Wayland screenshot selection and annotation tool (built against Arch/ALARM)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jswysnemc/mark-shot'
@@ -24,9 +24,9 @@ options=('!strip' '!debug')
 # They are prebuilt packages, so there is nothing to compile here: unpacking the
 # .pkg.tar.zst's payload into $pkgdir is the whole install.
 source_x86_64=("mark-shot-arch-bin-${pkgver}-1-x86_64.pkg.tar.zst::https://github.com/collegeming/aur-release/releases/download/aur-built-latest/mark-shot-arch-bin-0.1.62-1-x86_64.pkg.tar.zst")
-sha256sums_x86_64=('963ffd4d767be76a8675bc6679953d4bc1fc216ddf588e2c1d7d3a582be66617')
+sha256sums_x86_64=('571e1b713417f726d195941dcf14143549b85da5c546fe513f50afb5b01d0c89')
 source_aarch64=("mark-shot-arch-bin-${pkgver}-1-aarch64.pkg.tar.zst::https://github.com/collegeming/aur-release/releases/download/aur-built-latest/mark-shot-arch-bin-0.1.62-1-aarch64.pkg.tar.zst")
-sha256sums_aarch64=('08325021fe3097e673c75886b1f6257a1ca64e2416b3f9966af43f8f8942f56c')
+sha256sums_aarch64=('6d519046a8c74de2c319632e58625c716a0b6eb09b0d4266a0cea6f369c57de6')
 
 package() {
     # A .pkg.tar.zst is just a zstd-compressed tarball whose first member is
