@@ -1,6 +1,6 @@
 pkgbase = tauritavern-canary-bin
 	pkgdesc = A Tauri-based frontend for SillyTavern
-	pkgver = 20261114
+	pkgver = 20261115
 	pkgrel = 1
 	url = https://github.com/Darkatse/TauriTavern
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = tauritavern-canary-bin
 	provides = tauritavern
 	conflicts = tauritavern
 	options = !debug
-	source = https://github.com/Darkatse/TauriTavern/releases/download/Canary/TauriTavern-20261114-canary-linux-x64.deb
-	sha256sums = 63f191ca3cc423a5e518fef6521a0345fbf4de604be3383441603d46cd623e7c
+	source = https://github.com/Darkatse/TauriTavern/releases/download/Canary/TauriTavern-20261115-canary-linux-x64.deb
+	sha256sums = 6ba1242627c4396b28c0ba1b71026fad8d4afbfde6ca40677ea352e88b3938b1
 
 pkgname = tauritavern-canary-bin
