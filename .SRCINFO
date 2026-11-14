@@ -1,7 +1,7 @@
 pkgbase = devin-desktop-next
 	pkgdesc = Devin Desktop (next channel) - AI-powered editor (formerly Windsurf Editor)
 	pkgver = 3.12.1059_next.0122b42e15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.devin.ai
 	arch = x86_64
 	license = custom:Proprietary
