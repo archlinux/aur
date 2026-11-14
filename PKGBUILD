@@ -1,7 +1,7 @@
 #  Maintainer: ToKiNoBug <tokinobug@163.com>
 _pkgname=slopecraft
 pkgname=${_pkgname}
-pkgver=5.5.0
+pkgver=5.5.2
 pkgrel=1
 pkgdesc="Map Pixel Art Generator for Minecraft"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -29,8 +29,8 @@ optdepends=(
 	'vulkan-intel: Intel GPU acceleration'
 	'nvidia-utils: Nvidia GPU acceleration'
 )
-source=(https://github.com/SlopeCraft/SlopeCraft/archive/refs/tags/v5.5.0.tar.gz)
-sha512sums=('9f13058fc68e82db705e8e757d7279361a21ebc23df418c59dcedc3a645fed3e6e3064aa638cdcead9344210e13133667670a3572f845f60e222ddfe03cfd647')
+source=(https://github.com/SlopeCraft/SlopeCraft/archive/refs/tags/v5.5.2.tar.gz)
+sha512sums=('16719bf39201984ae32c509cc2f90820184d8683de649e3f82df0ed407f4fcfe30370544137af328cfb051b3c901df662b813e45faa0aa8c2e2fdde4761f2659')
 
 # STRONGLY suggested to use clang and lld because it's cool. Widely tested under linux+clang
 build() {
