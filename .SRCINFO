@@ -1,6 +1,6 @@
 pkgbase = python-crewai-cli
 	pkgdesc = CLI for CrewAI: scaffold, run, deploy and manage AI agent crews
-	pkgver = 1.15.34
+	pkgver = 1.15.41
 	pkgrel = 1
 	url = https://github.com/crewAIInc/crewAI
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-crewai-cli
 	makedepends = python-hatchling
 	makedepends = python-wheel
 	depends = python
-	depends = python-crewai-core=1.15.34
+	depends = python-crewai-core=1.15.41
 	depends = python-click>=8.1.7
 	depends = python-click<9
 	depends = python-pydantic>=2.11.9
@@ -26,9 +26,19 @@ pkgbase = python-crewai-cli
 	depends = python-packaging>=23
 	depends = python-dotenv>=1.2.2
 	depends = uv>=0.13.4
-	depends = python-textual>=7.5
+	depends = python-textual
+	depends = python-markdown-it-py
+	depends = python-mdit_py_plugins
+	depends = python-linkify-it-py
+	depends = python-platformdirs
+	depends = python-pygments
+	depends = python-typing_extensions
 	depends = python-certifi>=2026.10.18
-	source = python-crewai-cli-1.15.34.tar.gz::https://github.com/crewAIInc/crewAI/archive/refs/tags/1.15.34.tar.gz
-	sha256sums = 620adcd897459067187c89d6e11c5666ff4a9d00aa12d6b7cdb085f3863dab3c
+	source = python-crewai-cli-1.15.41.tar.gz::https://github.com/crewAIInc/crewAI/archive/refs/tags/1.15.41.tar.gz
+	source = textual-runtime.patch
+	source = check-textual-runtime.py
+	sha256sums = 2ecab5b30e37b021adaafbe5c430a158daa288a49a99608bcea82d65edfd860e
+	sha256sums = 41159a296fb35c0a567bff73edbb76a4c8b6315fb92c6a126604d2a782841965
+	sha256sums = fa7e5b5bbd68aebaa49fc2dd15d731c467a2adc46a4ca2bd17fda47400ea8585
 
 pkgname = python-crewai-cli

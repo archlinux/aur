@@ -1,0 +1,34 @@
+--- a/src/crewai_cli/__init__.py
++++ b/src/crewai_cli/__init__.py
+@@ -1 +1,31 @@
++def _check_textual_runtime():
++    # AUR VCS providers may expose an unversioned capability. Validate the
++    # upstream semantic minimum and Textual's installed base dependencies.
++    from importlib import metadata
++    from packaging.requirements import Requirement
++    from packaging.version import InvalidVersion, Version
++
++    try:
++        installed = metadata.version("textual")
++        if Version(installed) < Version("7.5.0"):
++            raise ImportError(f"CrewAI CLI requires textual>=7.5.0, found {installed}")
++        requirements = metadata.requires("textual")
++        if requirements is None:
++            raise ImportError("CrewAI CLI requires Textual dependency metadata")
++        for value in requirements:
++            requirement = Requirement(value)
++            if requirement.marker and not requirement.marker.evaluate({"extra": ""}):
++                continue
++            actual = metadata.version(requirement.name)
++            if not requirement.specifier.contains(actual, prereleases=True):
++                raise ImportError(
++                    f"Textual requires {requirement}, found {requirement.name}=={actual}"
++                )
++    except (metadata.PackageNotFoundError, InvalidVersion) as error:
++        raise ImportError(f"CrewAI CLI Textual dependency is missing or invalid: {error}") from error
++
++
++_check_textual_runtime()
++del _check_textual_runtime
++
+ __version__ = "1.15.41"
