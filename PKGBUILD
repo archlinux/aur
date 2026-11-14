@@ -2,7 +2,7 @@
 
 pkgname=codeg-server-bin
 _pkgname=codeg-server
-pkgver=0.43.0
+pkgver=0.44.0
 pkgrel=1
 pkgdesc='Standalone server of Codeg, a collaborative multi-agent AI coding workspace (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/xintaofei/codeg/v$
 source_x86_64=("codeg-server-linux-x64.tar.gz::https://github.com/xintaofei/codeg/releases/download/v${pkgver}/codeg-server-linux-x64.tar.gz")
 source_aarch64=("codeg-server-linux-arm64.tar.gz::https://github.com/xintaofei/codeg/releases/download/v${pkgver}/codeg-server-linux-arm64.tar.gz")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('ad7924285ece4c3e5f7bd91f8f36ab812cbbf4c5f8b6cec552aa55b00777ce0a')
-sha256sums_aarch64=('d0725fac139ccc7a97661ee9bfa03c52f022e8eac440307e7156dad27fac9130')
+sha256sums_x86_64=('44287ce5d9550f9d44e8091dea2709c36e2c66cf1007dea3ac9925e01e46cd54')
+sha256sums_aarch64=('07e830d0e097951f7e2f7e2962a5d0065acffcd601ec340da82af0f13c19f1bc')
 
 package() {
   local tar_root
