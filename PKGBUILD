@@ -39,9 +39,7 @@ pkgver() {
 }
 
 build() {
-  cd ${_pkgname}
-
-  cmake -S . -B build \
+  cmake -S ${_pkgname} -B build \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='lib' \
@@ -50,8 +48,6 @@ build() {
 }
 
 package() {
-  cd ${_pkgname}
-
   DESTDIR="${pkgdir}" cmake --install build
 
   # CMake installs empty folders unexpectedly
