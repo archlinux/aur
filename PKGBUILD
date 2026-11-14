@@ -3,20 +3,27 @@
 pkgname=python-libthumbor
 _name=${pkgname#python-}
 pkgver=2.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Python extensions to thumbor'
 arch=(any)
 url='https://github.com/thumbor/libthumbor'
 license=(MIT)
 depends=(python python-six)
-makedepends=(python-build python-installer python-poetry python-poetry-core)
+makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest python-preggy python-django)
+optdepends=('python-django: view that generates signed thumbor URLs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 b2sums=('7682aeff1b7ea0cb026d08c16e73ffed2f3b9d59aa2329ca7d3fcb910860c9f495de53cfb17b651402af5e7166043634c1df334b8a8cc2c912a352b9e36157a1')
 
+prepare() {
+  cd $_name-$pkgver
+  # upstream's poetry build backend only re-exports poetry-core's, so build with poetry-core
+  sed -i 's/"poetry>=0.12"/"poetry-core"/; s/poetry\.masonry\.api/poetry.core.masonry.api/' pyproject.toml
+}
+
 build() {
   cd $_name-$pkgver
-  python -m build --wheel --no-isolation --skip-dependency-check
+  python -m build --wheel --no-isolation
 }
 
 check() {
