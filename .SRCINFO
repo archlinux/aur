@@ -1,6 +1,6 @@
 pkgbase = colibri-social-beta
 	pkgdesc = Call, chat, and hang out on a platform built for you! (spaces version)
-	pkgver = 0.6.0_spaces.22
+	pkgver = 0.6.0_spaces.25
 	pkgrel = 1
 	url = https://github.com/colibri-social/colibri.social
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = colibri-social-beta
 	conflicts = colibri-social
 	conflicts = colibri-social-beta-bin
 	options = !lto
-	source = colibri-social-beta-0.6.0-spaces.22.tar.gz::https://github.com/colibri-social/colibri.social/archive/refs/tags/v0.6.0-spaces.22.tar.gz
-	source = LICENSE_0.6.0_spaces.22::https://raw.githubusercontent.com/colibri-social/colibri.social/refs/tags/v0.6.0-spaces.22/LICENSE
-	sha256sums = 7bc793fe8a080d693daa0671e6a76a59c5356137bc716bd4a72c182316f127d4
+	source = colibri-social-beta-0.6.0-spaces.25.tar.gz::https://github.com/colibri-social/colibri.social/archive/refs/tags/v0.6.0-spaces.25.tar.gz
+	source = LICENSE_0.6.0_spaces.25::https://raw.githubusercontent.com/colibri-social/colibri.social/refs/tags/v0.6.0-spaces.25/LICENSE
+	sha256sums = 3c20ad33a6c6876066106f80286bcdedcba4ab11c735eafb1c4a1023ad4cd2a2
 	sha256sums = SKIP
 
 pkgname = colibri-social-beta
