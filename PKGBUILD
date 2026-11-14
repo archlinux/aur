@@ -1,5 +1,5 @@
 # Maintainer: MeoArch <https://github.com/QwQdoge>
-_srcdir=meo-kde-b2adf3e7238c624006cf7a52629ac97258c390cc
+_srcdir=meo-kde-502136a475d2e9794040af822b827d6520169fc6
 pkgname=meo-desktop-beta
 pkgver=0.4.0
 pkgrel=25
@@ -33,8 +33,8 @@ install=meo-desktop.install
 # pacman writes the reviewed package payload as .pacnew and the install hook
 # below atomically adopts it during the same transaction.
 backup=('usr/lib/qt6/plugins/org.kde.kdecoration3/org.meo.decoration.so')
-source=('meo-kde-b2adf3e7238c624006cf7a52629ac97258c390cc.tar.gz::https://codeload.github.com/QwQdoge/meo-kde/tar.gz/b2adf3e7238c624006cf7a52629ac97258c390cc')
-sha256sums=('30a4b1779eba81404379f319ed5fe00be315fa15ef64e3cee208f7cd3d5f3268')
+source=('meo-kde-502136a475d2e9794040af822b827d6520169fc6.tar.gz::https://codeload.github.com/QwQdoge/meo-kde/tar.gz/502136a475d2e9794040af822b827d6520169fc6')
+sha256sums=('80d114994612a3a9ed0690de51ec79b91e1928115d091bcbea21da92a79e9ba4')
 
 # The release renderer supplies a pinned source tree as $srcdir/$_srcdir. This
 # recipe intentionally never reads a developer sibling checkout.
