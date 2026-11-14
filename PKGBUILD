@@ -2,12 +2,13 @@
 pkgname=subview-nightly-bin
 provides=('subview')
 conflicts=('subview' 'subview-bin')
-pkgver=0.2.0+nightly+20261111+1+g3770ea00
+pkgver=0.2.0+nightly+20261114+3+g38d81a3b
 pkgrel=1
 pkgdesc="Display a subtitle stream from stdin as a desktop overlay — nightly build"
 arch=('x86_64' 'aarch64')
 url="https://github.com/someoneonsmile/subview"
 license=('MIT')
+options=('!strip' '!debug')
 
 _source_base="${url}/releases/download/nightly"
 
