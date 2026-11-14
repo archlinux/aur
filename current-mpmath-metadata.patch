@@ -1,0 +1,11 @@
+--- a/setup.py
++++ b/setup.py
+@@ -1149,7 +1149,7 @@
+         torch_requirement = f"torch=={importlib.metadata.version('torch')}"
+     return [
+         "flatbuffers",
+-        "mpmath==1.3.0",
++        "mpmath",
+         "numpy>=2.0.0; python_version >= '3.10'",
+         "packaging",
+         "pandas>=2.2.2; python_version >= '3.10'",
