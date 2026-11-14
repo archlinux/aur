@@ -1,10 +1,11 @@
 pkgbase = qps-git
 	pkgdesc = Qt process manager
-	pkgver = 2.9.0
+	pkgver = 2.13.0.r5.gd98a5cf
 	pkgrel = 1
 	url = https://lxqt-project.org
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-only
 	makedepends = git
 	makedepends = cmake
