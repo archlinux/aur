@@ -1,6 +1,6 @@
 pkgbase = discord-canary-prerelease-patched-electron-bin
 	pkgdesc = Discord Canary with patched Electron and Linux fixes (AVX2 required)
-	pkgver = 20261108.175432
+	pkgver = 20261114.035333
 	pkgrel = 1
 	url = https://github.com/discord-patched-electron/discord-patched-electron
 	install = discord.install
@@ -37,13 +37,15 @@ pkgbase = discord-canary-prerelease-patched-electron-bin
 	optdepends = xdg-desktop-portal: desktop screen selection
 	optdepends = wireplumber: PipeWire session management
 	optdepends = kdotool: KDE Plasma window labels
+	optdepends = python-dbus: automatic PiP placement on KDE Wayland
+	optdepends = python-gobject: automatic PiP placement on KDE Wayland
 	optdepends = polkit: authorize DPE direct screen capture
 	provides = discord-canary
 	conflicts = discord-canary
 	conflicts = discord-canary-electron-bin
 	options = !strip
 	options = !debug
-	source = discord-canary-prerelease-patched-electron-bin-20261108.175432.tar.gz::https://github.com/discord-patched-electron/discord-patched-electron/releases/download/v20261108175432.0.0-canary.d5345fab13cb8632/discord-canary-prerelease-patched-electron-bin-linux-x86_64.tar.gz
-	sha256sums = b53deebaab5848f769045f1a4ee281817eda2068972bbb2f6503152486b13f4e
+	source = discord-canary-prerelease-patched-electron-bin-20261114.035333.tar.gz::https://github.com/discord-patched-electron/discord-patched-electron/releases/download/v20261114035333.0.0-canary.93704cacad66d0b7/discord-canary-prerelease-patched-electron-bin-linux-x86_64.tar.gz
+	sha256sums = 2b2dc24561fb3456ac34b9b6e45ad1e5e0139925b873c62d0cd9a482e7470f83
 
 pkgname = discord-canary-prerelease-patched-electron-bin
