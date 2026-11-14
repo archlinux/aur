@@ -1,6 +1,6 @@
 pkgname=zz-beta-bin
-_version=0.23.0
-pkgver=0.23.0
+_version=0.24.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='Terminal, browser, and agent workspace'
 arch=('x86_64' 'aarch64')
@@ -40,8 +40,8 @@ conflicts=('zz' 'zz-bin')
 options=('!debug' '!strip')
 source_x86_64=("$url/releases/download/v$_version/zz-$_version-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$_version/zz-$_version-linux-aarch64.tar.gz")
-sha256sums_x86_64=('3bc2d54f1acb215bfb6e9035cdf6237d708945043d7685d2537ac6a873e12a41')
-sha256sums_aarch64=('c5fb6d993bac19ee40176e86a72841671b067d6389e31c25be1a1cee5a5a7f57')
+sha256sums_x86_64=('eb8ae1a9b42e115a1835cf0e345b937dc518b9881fc0b9ece340251f4c256e09')
+sha256sums_aarch64=('b57edc189318ab39afd83cdcb363d7c06d50359d8683d627b22eb4e10183fa14')
 
 package() {
     install -d "$pkgdir/usr"
