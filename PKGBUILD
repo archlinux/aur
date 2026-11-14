@@ -2,7 +2,7 @@ pkgname=sdroxide
 pkgver=1.7.2
 pkgrel=1
 pkgdesc="Powerful SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (native RTL-SDR/RX-888/CAT/etc backends, no SoapySDR)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/dividebysandwich/sdroxide"
 license=('GPL-3.0-or-later')
 # Runtime: alsa-lib + opus are directly linked; the wgpu/winit GUI dlopens the
@@ -16,11 +16,17 @@ optdepends=('nrsc5: HD Radio (NRSC-5) reception')
 # the web client; wasm-bindgen + binaryen(wasm-opt) are trunk's post-processors.
 # (The rustup package satisfies all of rust/cargo/rust-wasm by `provides`,
 # but only carries the targets its user added -- see prepare().)
+# Arch Linux ARM ships no rust-wasm, so on aarch64 the wasm32 standard library
+# can only come from rustup. Naming rustup there outright matters: left to pick
+# a provider for rust-wasm, yay installs rustup next to the rust it chose for
+# `rust`, and the two packages conflict.
 # cmake drives the vendored RADE and rtl_433 C builds, clang supplies the
 # libclang that bindgen loads for its headers; neither is part of base-devel.
 # RADE's own CMake autotools-builds a patched Opus, which needs
 # autoconf/automake/libtool from base-devel.
-makedepends=('rust' 'rust-wasm' 'trunk' 'wasm-bindgen' 'binaryen' 'cmake' 'clang')
+makedepends=('trunk' 'binaryen' 'cmake' 'clang')
+makedepends_x86_64=('rust' 'rust-wasm')
+makedepends_aarch64=('rustup')
 # Same /usr/bin/sdroxide as the SoapySDR-enabled build.
 conflicts=('sdroxide-soapysdr')
 options=('!lto')
@@ -49,6 +55,13 @@ _xng_commit=096c805278faa0a904de7d98066bf4cf395cb6c2
 #   git rev-parse "v$pkgver:vendor/data2g"
 _mercury_commit=09f258f84a0b69cb4d8556530a25822617ea17dd
 _data2g_commit=f5388f792425d80ac4d175ff1838260e790a3433
+# wasm-bindgen's CLI must be exactly the version of the wasm-bindgen crate in
+# Cargo.lock; trunk otherwise downloads a matching one from inside build().
+# Arch's wasm-bindgen package rarely matches, and Arch Linux ARM has none, so
+# the upstream release binary is pinned here instead. On a version bump:
+#   grep -A1 '^name = "wasm-bindgen"$' Cargo.lock
+# (prepare() stops if the two disagree.)
+_wasm_bindgen_ver=0.2.127
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "rade_c-$_rade_commit.tar.gz::https://github.com/freedv/rade_c/archive/$_rade_commit.tar.gz"
         "rtl_433-$_rtl433_commit.tar.gz::https://github.com/merbanan/rtl_433/archive/$_rtl433_commit.tar.gz"
@@ -63,6 +76,11 @@ sha256sums=('0166fa622092c32bbfbe971d07431ab6b56e606ddc958f51f535584cd8abfa98'
             '2d7339ef9e89e711641838034ab2d039dbae9d5e907a786f39df1b931395aebe'
             '48796f32d433806b073dd400eca7f7d48a06b252ad90f4539d9837f36fc36431'
             '953355cac4a83b24c32c15f89418517c2d13f944147d0c804f458b7b38be6d71')
+
+source_x86_64=("https://github.com/wasm-bindgen/wasm-bindgen/releases/download/$_wasm_bindgen_ver/wasm-bindgen-$_wasm_bindgen_ver-x86_64-unknown-linux-musl.tar.gz")
+source_aarch64=("https://github.com/wasm-bindgen/wasm-bindgen/releases/download/$_wasm_bindgen_ver/wasm-bindgen-$_wasm_bindgen_ver-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('61d4a7dc85acfa0d2354ccc0b8361928c7e52a746d17f28ebaa795ed3dc1614a')
+sha256sums_aarch64=('1ce0ebd74e378d989651091f93c917bd7700996945d4c5ce37ec9507f149225c')
 
 prepare() {
   cd "sdroxide-$pkgver"
@@ -80,6 +98,13 @@ prepare() {
   cp -a "$srcdir/xng-$_xng_commit" vendor/xng
   cp -a "$srcdir/mercury-$_mercury_commit" vendor/mercury
   cp -a "$srcdir/Data2G-$_data2g_commit" vendor/data2g
+  local _lock_wb
+  _lock_wb="$(sed -n '/^name = "wasm-bindgen"$/{n;s/^version = "\(.*\)"$/\1/p;q}' Cargo.lock)"
+  if [[ $_lock_wb != "$_wasm_bindgen_ver" ]]; then
+    echo "ERROR: Cargo.lock wants wasm-bindgen $_lock_wb, the PKGBUILD pins" >&2
+    echo "       $_wasm_bindgen_ver: update _wasm_bindgen_ver and its checksums." >&2
+    return 1
+  fi
   export RUSTUP_TOOLCHAIN=stable
   # The rustup package satisfies the rust-wasm makedepend by `provides`, but it
   # only ships the targets its user has actually added -- so on a rustup box the
@@ -123,10 +148,16 @@ build() {
   #
   # Naming the binaryen already in makedepends also keeps trunk from downloading
   # its own wasm-opt into ~/.cache/trunk from inside build().
+  #
+  # The pinned wasm-bindgen goes first on PATH, where trunk finds it, sees the
+  # version Cargo.lock asks for, and does not download its own.
+  local _wb_triple=x86_64-unknown-linux-musl
+  [[ $CARCH == aarch64 ]] && _wb_triple=aarch64-unknown-linux-gnu
+  local _wb_dir="$srcdir/wasm-bindgen-$_wasm_bindgen_ver-$_wb_triple"
   local _wasm_opt_ver
   _wasm_opt_ver="$(wasm-opt --version | sed -n 's/.*version \([0-9]\+\).*/\1/p')"
   ( cd crates/sdroxide-web
-    env -u CARGO_ENCODED_RUSTFLAGS RUSTFLAGS= \
+    env -u CARGO_ENCODED_RUSTFLAGS RUSTFLAGS= PATH="$_wb_dir:$PATH" \
       ${_wasm_opt_ver:+TRUNK_TOOLS_WASM_OPT="version_$_wasm_opt_ver"} \
       trunk build --release )
   # CAT/USB-audio backend only: no SoapySDR link, so it builds and runs on a
