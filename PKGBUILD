@@ -3,12 +3,12 @@
 pkgname=openmouse-bridge-bin
 _pkgname=openmouse-bridge
 # scripts/update.sh keeps _tag, _nodehid, pkgver and the sums in sync.
-_tag=v1.0.0
+_tag=v1.0.1
 # The full package; the unsuffixed linux-x64.zip is a stub for old self-updaters.
 _asset=openmouse-bridge-linux-x64-full.zip
 # node-hid version bundled in the release; see package().
 _nodehid=3.4.0
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Background service for OpenMouse: device communication, app detection and automatic profile switching'
 arch=('x86_64')
@@ -52,7 +52,7 @@ source=(
   "node-hid-${_nodehid}.tgz::https://registry.npmjs.org/node-hid/-/node-hid-${_nodehid}.tgz"
 )
 noextract=("node-hid-${_nodehid}.tgz")
-sha256sums=('230473911849b0562eab6d153e5555144b226c99012e20c6e82e9bcceae8c9b8'
+sha256sums=('ea8142e4c733f58669f323c71f83b72ad8e76d6d58dd2fea3aaa5867ab69d448'
             '9eeb9ed4c885c9d03b1f33f8464554cf37d7bceff4c6f3dee4e1efa3d53bb572'
             '4c545088fa6181494f60941789528c9403f1e0bccf8e1f50af5b7dba77d5c8e0'
             '0c2d21427ef804794eb32690dc5e71532d651905ebb7a95730336ae2d33baf84'
