@@ -2,7 +2,7 @@
 
 pkgname=oxiroute
 pkgver=6.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pingora-based HTTP, TCP, and RTMP proxy runtime'
 arch=('x86_64')
 url='https://github.com/brauliobo/oxiroute'
@@ -24,7 +24,7 @@ source=("oxiroute-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/oxiroute
         'oxiroute.kdl'
         'oxiroute.lua'
         'README.md')
-sha256sums=('9bb163d899f1340dc756537736712c0d4097ca956f351b253d4f303adfc7ac34'
+sha256sums=('e034e61e74618edc7938b83490129965c9b366fc73d891bb451e20c415a5d069'
              '574eab59174656b0813499ed1c9bca8be5a6e2cf69a98e8327f376e1c0b83b1b'
             'ece087105e74910e9d4a6c3551082828378ac5c62fc15e97a755a3bc93020e72'
              '502dbc96a4f316ff7375cf90da32457b6003723a744825f04cec8a624974a356'
@@ -39,7 +39,32 @@ prepare() {
   cargo fetch --locked --target "${_target}"
 }
 
+# Copy of scripts/lib/reject-isa-flags.sh (the pinned release archive predates it; scripts/test-verify-baseline-isa.sh
+# runs the same cases on both). The binary must stay generic x86-64 and pick AVX at run time, so a CPU target in
+# RUSTFLAGS or CFLAGS (makepkg.conf of x86-64-v3 distributions) fails the build; set generic flags in ~/.makepkg.conf.
+isa_rust_re='^((-C|--codegen)=?)?target-(cpu|feature)'
+isa_c_re='^-(march=|mtune=|m(avx|sse3|ssse3|sse4|bmi|fma|popcnt|lzcnt|movbe|f16c|aes|pclmul|sha|vaes|vpclmulqdq|gfni|adx|xop|tbm|evex512))'
+isa_ok_re='^-(march=x86-64(-v1)?|mtune=generic)$'
+reject_isa_flags() {
+  local name flag re tokens
+  for name in $(compgen -v); do
+    case ${name} in
+      RUSTFLAGS | CARGO_ENCODED_RUSTFLAGS | CARGO_BUILD_RUSTFLAGS | CARGO_TARGET_*_RUSTFLAGS) re=${isa_rust_re} ;;
+      CC | CXX | CFLAGS | CXXFLAGS | CPPFLAGS | ASFLAGS | HOST_C*FLAGS | TARGET_C*FLAGS | CC_* | CXX_* | CFLAGS_* | CXXFLAGS_*)
+        re=${isa_c_re} ;;
+      *) continue ;;
+    esac
+    read -ra tokens <<<"${!name//$'\x1f'/ }"
+    for flag in "${tokens[@]}"; do
+      [[ ${flag} =~ ${re} && ! ${flag} =~ ${isa_ok_re} ]] || continue
+      printf 'build refused: %s carries %s; release binaries stay generic x86-64 and pick AVX at run time\n' "${name}" "${flag}" >&2
+      return 1
+    done
+  done
+}
+
 build() {
+  reject_isa_flags
   cd "oxiroute-${pkgver}"
   export CARGO_NET_OFFLINE=true
   export OPENSSL_NO_VENDOR=1
