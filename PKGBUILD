@@ -4,7 +4,7 @@
 
 pkgname=libdxfrw
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library to read/write DXF files in binary and ASCII form and to read DWG files from r14 to v2015"
 url="https://github.com/LibreCAD/libdxfrw"
 license=('GPL-2.0-only')
@@ -20,7 +20,12 @@ sha256sums=('b56535f8c234bb119b94e11b2436651531869ba0171bb10166b007588e97d69f')
 
 function prepare
 {
-  rm -R "$pkgname-$pkgver"
+  # Le dossier extrait de l'archive ne prend pas en compte le renommage de cette
+  # dernière. Il est donc renommé à son tour.
+  #
+  # Lors d'une reconstruction, l'ancien dossier doit être supprimé de manière
+  # sécurisée.
+  rm -Rf "$pkgdir/$pkgname-$pkgver"
   mv "$pkgname-LC$pkgver" "$pkgname-$pkgver"
 }
 
@@ -28,6 +33,11 @@ function build
 {
   cd "$pkgname-$pkgver" || return
 
+  # La constrution est configurée dans un dossier *build*.
+  #
+  # TODO Supprimer le contournement suivant lorsque cela est possible.
+  # La version de CMake minimale demandée n'est pas en adéquation avec celle
+  # du système. Elle est donc forcée.
   cmake -DCMAKE_INSTALL_PREFIX="/usr" \
       -DCMAKE_INSTALL_LIBDIR="lib" \
       -S . \
@@ -35,6 +45,7 @@ function build
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
+ # Le logiciel est contruit dans le dossier *build*.
   cd build || return
 
   make all
@@ -44,5 +55,6 @@ function package
 {
   cd "$pkgname-$pkgver/build" || return
 
+ # Le logiciel est installé selon les spécifications du développeur.
   make install DESTDIR="$pkgdir"
 }
