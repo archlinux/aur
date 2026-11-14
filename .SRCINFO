@@ -1,6 +1,6 @@
 pkgbase = tailport
 	pkgdesc = TUI to share local ports on your tailnet or publicly (Funnel, Caddy, Cloudflare)
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/gruen/tailport
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tailport
 	depends = glibc
 	depends = tailscale
 	depends = iproute2
-	source = tailport-0.3.6.tar.gz::https://github.com/gruen/tailport/archive/refs/tags/v0.3.6.tar.gz
-	sha256sums = 67d66f1690815f4c404647d7f0ae4ad6b65c7ab8bf125c3c879faecc79617e98
+	source = tailport-0.3.7.tar.gz::https://github.com/gruen/tailport/archive/refs/tags/v0.3.7.tar.gz
+	sha256sums = 3785271abd7ca4c88b6b4635469dad8d3b2214010bf50bd21704214d2fac816c
 
 pkgname = tailport

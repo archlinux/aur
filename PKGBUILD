@@ -1,6 +1,6 @@
 # Maintainer: Michael E. Gruen <contact@michaelgruen.com>
 pkgname=tailport
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="TUI to share local ports on your tailnet or publicly (Funnel, Caddy, Cloudflare)"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ depends=('glibc' 'tailscale' 'iproute2')
 # any current Arch `go` satisfies comfortably.
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gruen/tailport/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('67d66f1690815f4c404647d7f0ae4ad6b65c7ab8bf125c3c879faecc79617e98')
+sha256sums=('3785271abd7ca4c88b6b4635469dad8d3b2214010bf50bd21704214d2fac816c')
 
 build() {
   cd "$pkgname-$pkgver"
