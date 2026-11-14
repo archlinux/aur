@@ -1,18 +1,8 @@
-## Changes
-
-- Docker and Podman containers now show how long they have been running or how long ago they exited,
-  along with their health status if a health check is configured. The uptime is now automatically adjusted,
-  so it doesn't need an explicit refresh anymore.
-- Docker compose services now also show their uptime and health status
-- The available shells scan is no longer preselected in the scan dialog, and the SSH config scan is only preselected for the local machine
-- The Claude Code MCP setup command in the settings now also shows how to add the server for all directories
-
-## Fixes
-
-- Fix Docker containers not showing the standard system information like other connections
-- Fix the daemon connection failures when external API requests are enabled on macOS
-- Fix special characters in file paths being mangled for pure SFTP connections
-- Fix dragging a category onto itself or one of its subcategories causing errors
-- Fix old <v24 categories without a saved order not being reorderable relative to each other (this might reorder categories from old vaults once)
-- Fix categories with an empty name breaking the MCP tools
-- Fix various NullPointers
+- Fix startup being slow with many multi identities
+- Fix multi identities being moved to a different category when not all of their identities are accessible
+- Fix shell sessions and tunnels occasionally being stopped or restarted incorrectly when used from multiple places at the same time
+- Fix local Windows shells breaking when the PATH contains quotes or is very long
+- Fix the file browser overview flickering while loading
+- Fix the window opening with a broken size when no proper monitor information is available
+- Fix Proxmox webtop deployments being allowed on PVE 9.0, which does not support OCI containers yet
+- Fix various NullPointers and small synchronization issues
