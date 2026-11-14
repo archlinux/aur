@@ -1,0 +1,16 @@
+pkgbase = hyprtab
+	pkgdesc = Alt-Tab style window switcher for Hyprland (Qt6/QML overlay)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nagnagi/hyprtab
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt6-base
+	depends = hyprland
+	depends = qt6-declarative
+	source = hyprtab-0.1.0.tar.gz::https://github.com/nagnagi/hyprtab/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = hyprtab
