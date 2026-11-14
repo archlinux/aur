@@ -56,7 +56,6 @@ package()
     install -Dm755 lc-gen       -t "$pkgdir/usr/bin/"
     install -Dm755 locale-gen.8 -t "$pkgdir/usr/share/man/man8/"
     install -Dm755 locale.gen.5 -t "$pkgdir/usr/share/man/man5/"
-    install -Dm644 COPYING      -t "$pkgdir/usr/share/licenses/$pkgname/"
 
     # Override the glibc hook to prevent it from generating wrong locales.
     # https://gitlab.archlinux.org/archlinux/packaging/packages/glibc/-/blob/main/10-glibc-locale-gen.hook
