@@ -8,7 +8,7 @@
 # own PKGBUILD, docs/src/guide/install.md's "Verify the tag" section, and install.sh.txt's own
 # header, which state the same limit for every checksum this project publishes).
 pkgname=prikk-bin
-pkgver=0.56.0
+pkgver=0.57.0
 pkgrel=1
 pkgdesc="A version control system, prebuilt binary (checksum proves download integrity, not provenance)"
 arch=('x86_64' 'aarch64')
@@ -18,10 +18,11 @@ provides=('prikk')
 conflicts=('prikk')
 source_x86_64=("https://github.com/prikk-vcs/prikk/releases/download/${pkgver}/prikk-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/prikk-vcs/prikk/releases/download/${pkgver}/prikk-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('2c81d75016cfac38145d240af2de2f42b83178ec49d7c8292e40b03dc1480130')
-sha256sums_aarch64=('cd7888ef1a7acca09a4f1c4d899c520eaacb8ffe88c86f660b57551e7a142920')
+sha256sums_x86_64=('4e621147c3064c1f456803c67f120df9ea35d93e40554e920c9ea55e69d3f9a8')
+sha256sums_aarch64=('6ee15270ee776f0737cddd946cf1ad56301f0aec86d2066c106b1885bb956a1a')
 
 package() {
   install -Dm755 prikk "$pkgdir/usr/bin/prikk"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/prikk/LICENSE"
+  install -Dm644 THIRD-PARTY-NOTICES "$pkgdir/usr/share/licenses/prikk/THIRD-PARTY-NOTICES"
 }
