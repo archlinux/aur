@@ -1,7 +1,7 @@
 pkgbase = hasklets
 	pkgdesc = Desktop widgets for Wayland (weather, system, media, disks, processes, calendar) in Haskell
 	pkgver = 0.1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prietus/hasklets
 	arch = x86_64
 	arch = aarch64
