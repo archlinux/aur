@@ -1,6 +1,6 @@
 # Maintainer: CastSound Team <ci@castsound.app>
 pkgname=castsound-bin
-pkgver=1.0.35
+pkgver=1.0.36
 pkgrel=1
 pkgdesc="Turn your smartphone into complete PC peripherals (speaker, mic, webcam) with ultra-low latency"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ depends=('alsa-lib' 'libpulse' 'pipewire' 'ffmpeg')
 optdepends=('pipewire-pulse: PulseAudio compatibility via PipeWire')
 source=('.managed_by_aur')
 sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
-source_x86_64=("CastSound-1.0.35-linux-x86_64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-1.0.35-linux-x86_64.tar.gz")
-source_aarch64=("CastSound-1.0.35-linux-aarch64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-1.0.35-linux-aarch64.tar.gz")
+source_x86_64=("CastSound-${pkgver}-linux-x86_64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-${pkgver}-linux-x86_64.tar.gz")
+source_aarch64=("CastSound-${pkgver}-linux-aarch64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-${pkgver}-linux-aarch64.tar.gz")
 sha256sums_x86_64=('8889ed11d5a5bf1ada895adaa0bcebd6546e1d0b999b9f5b2786c5ff8393d335')
 sha256sums_aarch64=('8c97400d36dbd0177e2ac639588f035bd043b93aa5b420418f517615696f02e7')
 
