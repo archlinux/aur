@@ -1,0 +1,44 @@
+diff -rupN fim-0.8.0/src/FbiStuffPdf.cpp fim-0.8.0b/src/FbiStuffPdf.cpp
+--- fim-0.8.0/src/FbiStuffPdf.cpp	2026-09-30 02:40:27.000000000 -0400
++++ fim-0.8.0b/src/FbiStuffPdf.cpp	2026-11-13 22:50:13.576859411 -0500
+@@ -68,6 +68,11 @@
+ #else
+ #define FIM_POPPLER_WITH_UNIQGOO 0
+ #endif
++#if ( POPPLER_VERSION_MAJOR > 26 || (POPPLER_VERSION_MAJOR==26 && (POPPLER_VERSION_MINOR>=2)) ) /* 6ef3154e 2026-01-11: SplashOutputDev lost reverseVideo */
++#define FIM_POPPLER_WITHOUT_REVERSEVIDEO 1
++#else
++#define FIM_POPPLER_WITHOUT_REVERSEVIDEO 0
++#endif
+ 
+ /*								*/
+ #define GBool gboolean
+@@ -216,7 +221,11 @@ pdf_init(FILE *fp, const fim_char_t *fil
+ 	if (!ds->od)
+ 	{
+         	GBool bitmapTopDown = gTrue;
++#if FIM_POPPLER_WITHOUT_REVERSEVIDEO
++        	ds->od = new SplashOutputDev(gSplashColorMode, /*4*/3, gBgColor, bitmapTopDown, splashThinLineDefault/*antialias*/);
++#else
+         	ds->od = new SplashOutputDev(gSplashColorMode, /*4*/3, gFalse, gBgColor, bitmapTopDown, splashThinLineDefault/*antialias*/);
++#endif
+ 	        if (ds->od)
+ #ifdef POPPLER_VERSION	/* as of 0.20.2, from poppler/poppler-config.h */
+ 			/* FIXME: this is an incomplete fix (triggered on 20120719's email on fim-devel);
+diff -rupN fim-0.8.0/src/lex.lex fim-0.8.0b/src/lex.lex
+--- fim-0.8.0/src/lex.lex	2026-09-30 02:40:28.000000000 -0400
++++ fim-0.8.0b/src/lex.lex	2026-11-13 22:50:49.251270047 -0500
+@@ -251,3 +251,13 @@ STRINGC_DQ {STRINGC}|\'
+ #if HAVE_FLEXLEXER_H
+ yyFlexLexer lexer; // better here than FlexLexer*lexer elsewhere
+ #endif /* HAVE_FLEXLEXER_H */
++
++#if defined(YY_FLEX_MINOR_VERSION) && (YY_FLEX_MINOR_VERSION > 6 || (YY_FLEX_MINOR_VERSION == 6 && YY_FLEX_SUBMINOR_VERSION >= 10))
++/* flex >= 2.6.10 declares yyread() in FlexLexer.h but does not define it when YY_INPUT is user-defined. */
++int yyFlexLexer::yyread(char *buf, size_t max_size)
++{
++       int result;
++       YY_INPUT(buf, result, max_size);
++       return result;
++}
++#endif
