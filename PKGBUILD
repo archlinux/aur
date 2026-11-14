@@ -2,7 +2,7 @@
 
 _pkgname='pyrgg'
 _pkgauthor='sepandhaghighi'
-pkgname="python-${_pkgname}"
+pkgname=python-${_pkgname}
 pkgver=2.0
 pkgrel=1
 pkgdesc="A Random Graph Generator"
@@ -11,9 +11,11 @@ arch=('any')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('MIT')
 
-optdepends=()
-depends=('python' 'python-art' 'python-yaml')
+provides=("${_pkgname}")
+conflicts=("python-${pkgname}")
+
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+depends=('python' 'python-art' 'python-yaml')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('989019b582dddb0b52baeee84417984f80d781f1211947c7f560be0af1539f4a')
