@@ -1,6 +1,6 @@
 pkgbase = agent-sessions-bin
 	pkgdesc = Desktop GUI to browse and manage agentic coding sessions (Claude Code, Codex CLI, OpenCode)
-	pkgver = 1.5.7
+	pkgver = 1.5.8
 	pkgrel = 1
 	url = https://github.com/ginkcodex/agent-sessions
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = agent-sessions-bin
 	options = !debug
 	source = LICENSE
 	sha256sums = ffcca38841adb694b6f380647e15f17c446a4d1656fed51a1e2041d064c94cc8
-	source_x86_64 = agent-sessions-1.5.7-x86_64.deb::https://github.com/ginkcodex/agent-sessions/releases/download/v1.5.7/agent-sessions_1.5.7_amd64.deb
-	sha256sums_x86_64 = dc31423143f3df9fd48d3bcfe710d9a422085eb21b91d2d214e85e0c7afd3f68
-	source_aarch64 = agent-sessions-1.5.7-aarch64.deb::https://github.com/ginkcodex/agent-sessions/releases/download/v1.5.7/agent-sessions_1.5.7_arm64.deb
-	sha256sums_aarch64 = ce127fbde6daa2aafbf787978d7a94afe24bc865b0eeb68b99f7b09df4cea624
+	source_x86_64 = agent-sessions-1.5.8-x86_64.deb::https://github.com/ginkcodex/agent-sessions/releases/download/v1.5.8/agent-sessions_1.5.8_amd64.deb
+	sha256sums_x86_64 = 90b461ed51a5c7733011a4eaa7dadd15a967c4f45e2c0ad11de16b0c61f470e7
+	source_aarch64 = agent-sessions-1.5.8-aarch64.deb::https://github.com/ginkcodex/agent-sessions/releases/download/v1.5.8/agent-sessions_1.5.8_arm64.deb
+	sha256sums_aarch64 = 5b71d65e2c6e1665ff9f3f9a51fe49e6f582518bc39603308b424422be3900fc
 
 pkgname = agent-sessions-bin
