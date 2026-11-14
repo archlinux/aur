@@ -1,6 +1,6 @@
 # Maintainer: VLDG2712 <ddutu10@gmail.com>
 pkgname=nzxt-ctl-git
-pkgver=r23.9cc6fad
+pkgver=r25.39c6b20
 pkgrel=1
 pkgdesc="Pump/fan curve control daemon and GUI for the NZXT Kraken 2023 (CAM replacement)"
 arch=('x86_64')
