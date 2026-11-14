@@ -2,7 +2,7 @@
 
 pkgname=python-flatten-dict
 _pyname=${pkgname#python-}
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A flexible utility for flattening and unflattening dict-like objects in Python'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(python-{build,installer,wheel}
 # checkdepends=(python-pytest)
 _archive="${_pyname/-/_}-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('ca89664d0bc9552d525ee756726b5a755c17f65b5bf23d0a1f07841f181428b7')
+sha256sums=('e7a9cdf79ff30ccf2ee5c9f583c02d140a802e90496898a2ca46b4ed12006a16')
 
 build() {
 	cd "$_archive"
