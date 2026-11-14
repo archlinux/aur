@@ -6,7 +6,7 @@
 # workflow fills in pkgver and the checksums. Only released versions are
 # packaged, so the server and every client match.
 pkgname=kestrel-nvr-bin
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="Your cameras, recordings and events in one place, with a server for every device (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ source=('kestrel-nvr.desktop' 'kestrel-nvr.user.service' 'kestrel-nvr.system.ser
 source_x86_64=("kestrel-nvr-${pkgver}-linux-x86_64.tar.gz::$url/releases/download/${pkgver}/kestrel-nvr-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("kestrel-nvr-${pkgver}-linux-aarch64.tar.gz::$url/releases/download/${pkgver}/kestrel-nvr-${pkgver}-linux-aarch64.tar.gz")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-sha256sums_x86_64=('ebdbc386d800c95aaa8a751e64781524c27a8e1cedafe7d086c9ead2cdedd3ac')
-sha256sums_aarch64=('816618cd2a4b156295861c7fe6247e24512361ff7e4ad5459595a05806498f4e')
+sha256sums_x86_64=('c14ed8f293fcdd492a727eb2f6636a7fa2734559f5492cb2717cf9b19fce4b77')
+sha256sums_aarch64=('34616b1efb723fdcac99c0bc441283138357f1b2a1b6bd525d424071f1bedbeb')
 
 package() {
   local bundle="kestrel-nvr-${pkgver}-linux-${CARCH}/lib/kestrel-nvr"
@@ -44,4 +44,6 @@ package() {
   install -Dm644 kestrel-nvr.sysusers "$pkgdir/usr/lib/sysusers.d/kestrel-nvr.conf"
   install -Dm644 "$bundle/Resources/app/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$bundle/Resources/app/go2rtc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/go2rtc.LICENSE"
+  install -Dm644 "$bundle/Resources/app/yt-dlp/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/yt-dlp.LICENSE"
+  install -Dm644 "$bundle/Resources/app/yt-dlp/THIRD_PARTY_LICENSES" "$pkgdir/usr/share/licenses/$pkgname/yt-dlp.THIRD_PARTY_LICENSES"
 }
