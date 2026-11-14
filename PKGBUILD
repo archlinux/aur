@@ -1,12 +1,12 @@
 # Maintainer: archix contributors <https://github.com/archix-org/archix>
 pkgname=archix-git
-pkgver=0.1.0.r63.gb8117cb
+pkgver=0.2.0.r644.g33cf42f
 pkgrel=1
 pkgdesc="Declarative, lockable, rollback-able system configuration for Arch Linux (latest commit)"
 arch=('x86_64')
 url="https://archix.dev"
 license=('MIT OR Apache-2.0')
-depends=('pacman' 'gcc-libs' 'glibc')
+depends=('pacman' 'libgcc' 'glibc')
 makedepends=('git' 'rust' 'rust-musl' 'musl')
 optdepends=(
   'git: AUR packages and recording the config commit'
@@ -34,23 +34,26 @@ pkgver() {
 }
 
 prepare() {
+  export RUSTUP_TOOLCHAIN=stable
   cd archix
   # With rustup instead of pacman's rust, the musl target comes from rustup rather than rust-musl.
   if command -v rustup >/dev/null; then
-    rustup target add x86_64-unknown-linux-musl
+    rustup target add $CARCH-unknown-linux-musl
   fi
-  cargo fetch --locked
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target $CARCH-unknown-linux-musl
 }
 
 build() {
   cd archix
-  export CARGO_TARGET_DIR=target
+  export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
   cargo build --frozen --release
   # The rescue initramfs runs archix before the root filesystem's libraries are usable, so it needs a static build.
-  CFLAGS= CXXFLAGS= LDFLAGS= cargo build --frozen --release --target x86_64-unknown-linux-musl
+  CFLAGS= CXXFLAGS= LDFLAGS= cargo build --frozen --release --target $CARCH-unknown-linux-musl
 }
 
 check() {
+  export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
   cd archix
   cargo test --frozen --release --lib
 }
@@ -59,6 +62,6 @@ package() {
   cd archix
   install -Dm755 target/release/archix "$pkgdir/usr/bin/archix"
   ln -s archix "$pkgdir/usr/bin/ax"
-  install -Dm755 target/x86_64-unknown-linux-musl/release/archix "$pkgdir/usr/lib/archix/archix-static"
+  install -Dm755 target/$CARCH-unknown-linux-musl/release/archix "$pkgdir/usr/lib/archix/archix-static"
   install -Dm644 LICENSE-MIT LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname"
 }

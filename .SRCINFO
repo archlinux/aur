@@ -1,6 +1,6 @@
 pkgbase = archix-git
 	pkgdesc = Declarative, lockable, rollback-able system configuration for Arch Linux (latest commit)
-	pkgver = 0.1.0.r63.gb8117cb
+	pkgver = 0.2.0.r644.g33cf42f
 	pkgrel = 1
 	url = https://archix.dev
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = archix-git
 	makedepends = rust-musl
 	makedepends = musl
 	depends = pacman
-	depends = gcc-libs
+	depends = libgcc
 	depends = glibc
 	optdepends = git: AUR packages and recording the config commit
 	optdepends = devtools: building AUR packages in a clean chroot
