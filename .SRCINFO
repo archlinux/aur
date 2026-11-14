@@ -1,6 +1,6 @@
 pkgbase = dsh-gtk
-	pkgdesc = Native GTK3 + WebKitGTK window for the dsh web UI with StatusNotifierItem tray residency
-	pkgver = 0.1.1
+	pkgdesc = GTK3+WebKitGTK tray shell for the dsh web UI (front-end window only; install dsh backend separately, e.g. deepseek-harness-bin)
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/abcabc0330/dsh-gtk
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dsh-gtk
 	depends = libayatana-appindicator
 	provides = dsh-gtk
 	conflicts = dsh-gtk
-	source = dsh-gtk-0.1.1.tar.gz::https://github.com/abcabc0330/dsh-gtk/archive/v0.1.1.tar.gz
-	sha256sums = 1ebac49d034fe20283a8dc837a0358f89bfad9ac4ef4e8d30c01300327c638e4
+	source = dsh-gtk-0.1.2.tar.gz::https://github.com/abcabc0330/dsh-gtk/archive/v0.1.2.tar.gz
+	sha256sums = 5f2c59b4db3d7c5280f665d24a19183f579de99579b81ad73d23594ad2a96610
 
 pkgname = dsh-gtk
