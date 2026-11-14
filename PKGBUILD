@@ -1,8 +1,8 @@
 # Maintainer: Coobyk <mail@coobyk.com>
-# CI substitutes 0.1.0.r122.g7293528 and 144f7d3c4b61529ed7535107572fab5a09ba3a3a352dcda57235d946bc83d931 for each published nightly build.
+# CI substitutes 0.1.0.r123.ge566973 and 144f7d3c4b61529ed7535107572fab5a09ba3a3a352dcda57235d946bc83d931 for each published nightly build.
 pkgname=mca-selector-rs-bin
 _pkgname=mca-selector
-pkgver=0.1.0.r122.g7293528
+pkgver=0.1.0.r123.ge566973
 pkgrel=1
 pkgdesc="A faithful Rust + GPUI port of MCA Selector (prebuilt binary)"
 arch=('x86_64')
