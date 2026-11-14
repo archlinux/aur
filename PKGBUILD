@@ -11,7 +11,7 @@
 
 pkgname=stratagram-bin
 _pkgname=stratagram
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Network diagram editor: standardized stencils and line types, quick add and auto layout (prebuilt)'
 arch=('x86_64')
@@ -23,7 +23,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!debug')
 source=("$_pkgname-$pkgver-linux-x86_64.tar.gz::https://github.com/shinsterneck/stratagram/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('006a500fe56649b5f513963ee547bca01db57fe490ec49c7c35c11f41ebd9738')
+sha256sums=('871bcdc02fa120839cafb32bcd4e00bfce274fe2c7f934d7bb176e26180f7b8e')
 
 package() {
   cd "$_pkgname-$pkgver-linux-x86_64"
