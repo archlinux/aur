@@ -1,7 +1,7 @@
 # Maintainer: Ramazan Berk Şirin <ramazanberksirin at protonmail dot com>
 
 pkgname=bettertricks-git
-pkgver=1.1.r2.gf591315
+pkgver=1.1.1.r0.gbcd1819
 pkgrel=1
 pkgdesc="Recovery-first Wine prefix manager and Winetricks-compatible recipe engine (git)"
 arch=('x86_64')
