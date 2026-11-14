@@ -3,12 +3,12 @@
 # Builds from the tagged source. For the prebuilt binaries, see `lightforge-bin`.
 
 pkgname=lightforge
-pkgver=1.0.0beta.12
+pkgver=1.0.0beta.13
 pkgrel=1
 # The upstream tag. AUR versions may not contain a hyphen, so `1.0.0-beta.5`
 # becomes `1.0.0beta.5` here — which `vercmp` orders *before* `1.0.0`, so the
 # eventual stable release upgrades cleanly and needs no `epoch`.
-_tag=v1.0.0-beta.12
+_tag=v1.0.0-beta.13
 pkgdesc='Install, update and play World of Warcraft on Linux, and a home for all your other Battle.net games'
 arch=('x86_64')
 url='https://github.com/LightforgeProject/lightforge'
@@ -35,7 +35,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
 # Of GitHub's generated source archive for the tag, which is not
 # byte-identical to anything produced locally. Regenerate with `updpkgsums`
 # once the tag is pushed, before uploading.
-sha256sums=('8fed967cd89cbfb05021b47b4fde92ae12e88f9bb7c61026f606a5f6eb9dcb3b')
+sha256sums=('7836b5c891d61780f1e648ee94abe6ff02f88596e0f1f80156704ddb2d6d7b20')
 _srcdir="$pkgname-${_tag#v}"
 
 prepare() {
