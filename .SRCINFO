@@ -1,6 +1,6 @@
 pkgbase = opal-media-player-bin
 	pkgdesc = Play everything — media player, universal search, torrent streaming, local AI (official binary)
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/debpalash/Opal
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = opal-media-player-bin
 	optdepends = streamlink: live stream resolution
 	optdepends = onnxruntime: OCR bubble detection
 	optdepends = python: voice helper scripts (STT/TTS servers)
-	provides = opal-media-player=0.9.5
+	provides = opal-media-player=0.9.6
 	conflicts = opal-media-player
-	source = https://github.com/debpalash/Opal/releases/download/v0.9.5/opal-0.9.5-linux-x86_64.tar.gz
-	sha256sums = bda8af6f906a5086472ed9a30d245464779c3b1ca3d396099ce77c9cfa0a623d
+	source = https://github.com/debpalash/Opal/releases/download/v0.9.6/opal-0.9.6-linux-x86_64.tar.gz
+	sha256sums = 551a9896c79484cbd69442e524534571fbf40dd2848fb52c5ef79fdad947cc98
 
 pkgname = opal-media-player-bin
