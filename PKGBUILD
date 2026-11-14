@@ -1,8 +1,8 @@
 # Maintainer: Muzammil Shafique <muzu@duck.com>
 _pkgname=tsuki
 pkgname="${_pkgname}-bin"
-pkgver=0.1.0
-_tag="v0.1.0"
+pkgver=0.1.1
+_tag="v0.1.1"
 _upstream_pkgrel=1
 pkgrel=1
 pkgdesc="Native Linux game launcher for Wine, Proton, and native titles (prebuilt binary)"
@@ -36,7 +36,7 @@ install=tsuki.install
 _pkgfile="${_pkgname}-${pkgver}-${_upstream_pkgrel}-x86_64.pkg.tar.zst"
 source_x86_64=("${_pkgfile}::https://github.com/muzammilshafique/tsuki/releases/download/${_tag}/${_pkgfile}")
 noextract=("${_pkgfile}")
-sha256sums_x86_64=('129e48ad51bc4132d51c44cb342847c649a88b72fcb43fa919ec8def660159be')
+sha256sums_x86_64=('5c5e6205108adffe2435e27173e4d89b7ca2740945fd6364d3ba2ebf4feec811')
 
 package() {
     bsdtar -xf "${srcdir}/${_pkgfile}" -C "${pkgdir}" usr/
