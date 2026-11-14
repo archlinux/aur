@@ -5,7 +5,7 @@ _pkgname=forge
 pkgname=kenn-${_pkgname}-bin
 pkgdesc="Local maintainer console for pull requests, issues, reviews, activity, and local workspaces."
 
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,8 +26,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
 sha256sums=('4c07730d9e434ac189e1edaece5a8ff3eb3aac7567ba289b1d3148682b1ea5ae'
             'cb03f5511781719ba3f56d474ada3f08d221f620e2ff384175690fc54122f6ba')
-sha256sums_x86_64=('050889b30200c8d24ccb6bb2ac703e7410cedd78b7b71c99c4e3dfa86b439bfb')
-sha256sums_aarch64=('9785ce4e44e01c1289965ff45758dd38f4692c6979072f233677e1c2ed53684a')
+sha256sums_x86_64=('81b3bb55cc08114793b25acc30b93603ea5f0e30efd8b112a2523d37853fb60d')
+sha256sums_aarch64=('898b89af751abf73cca7d906c09ecb7cfdc4b463003fb6bb3540088770ad8377')
 
 
 package() {
