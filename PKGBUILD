@@ -29,6 +29,9 @@ sha256sums=(
   'SKIP'
 )
 validpgpkeys=('9201A54A09675CBEBAD08647EDDA55C8236D6C88')
+# Pure repack: never strip the prebuilt binaries and never emit a -debug
+# split package (makepkg.conf enables both by default).
+options=('!strip' '!debug')
 
 # Repackage the pre-built package tree that makepkg auto-extracted into
 # $srcdir (makepkg unpacks the .pkg.tar.zst source with bsdtar). Only the
