@@ -1,11 +1,16 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
 pkgname="swayfx"
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
 makedepends=(
         "git"
+        # libscenefx-0.5.so is provided by both the extra scenefx package and
+        # the legacy AUR scenefx0.5 package. Depending on the soname instead of
+        # a package name lets users on either package build and run swayfx,
+        # avoiding a conflict when migrating from scenefx0.5 to extra/scenefx.
+        "libscenefx-0.5.so"
         "meson"
         "scdoc"
         "wayland-protocols"
@@ -16,13 +21,13 @@ depends=(
         "libevdev.so"
         "libinput"
         "libjson-c.so"
+        "libscenefx-0.5.so"
         "libudev.so"
         "libwayland-server.so"
         "libxcb"
         "libxkbcommon.so"
         "pango"
         "pcre2"
-        "scenefx"
         "ttf-font"
         "wlroots0.20"
 )
