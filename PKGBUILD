@@ -9,7 +9,7 @@
 
 pkgname=autofs
 pkgver=5.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A kernel-based automounter for Linux'
 arch=('x86_64')
 url='https://www.kernel.org/pub/linux/daemons/autofs/'
@@ -29,17 +29,17 @@ _mirror='https://mirrors.edge.kernel.org'
 _mirrorpath="${_mirror}/pub/linux/daemons/${pkgname}/v5"
 source=(${_mirrorpath}/${pkgname}-${pkgver}.tar.{xz,sign}
         autofs-arch-configuration-path.patch
-        5e30082199e3a1381af71f8022a8a28f59b3ee28.patch)
+        567b4ea211b8e429b634791337b4a3e4a0e47bf7.patch::https://git.kernel.org/pub/scm/linux/storage/autofs/autofs.git/patch/?id=567b4ea211b8e429b634791337b4a3e4a0e47bf7)
 sha256sums=('131a642acbb9fe98a41fb52b05adc979e9094e025dd18a1ae7bef00ca72351b0'
             'SKIP'
             'def52bda93a414896c41e587c2ffbefdd360767f938399767b7582d55c329a34'
-            '6003d1f01b8de6761ce49ae2b259fd128de200ea12a6cd2135b3d3094c6b8c84')
+            '94b1e745952eedaa4d4269822b0bf5962a8a23524eabd8b95130867273ef4f00')
 # gpg key for Ian Kent <raven@themaw.net>, the maintainer of autofs
 validpgpkeys=('CD0A6E3CBB6768800B0736A8E7677380F54FD8A9')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  patch --reverse --strip=1 --input=../5e30082199e3a1381af71f8022a8a28f59b3ee28.patch
+  patch --reverse --strip=1 --input=../567b4ea211b8e429b634791337b4a3e4a0e47bf7.patch
   patch --forward --strip=1 --input=../autofs-arch-configuration-path.patch
 }
 
