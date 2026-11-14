@@ -1,6 +1,6 @@
 pkgbase = hyprdown-git
 	pkgdesc = Close every app running under Hyprland without user input, then exit, power off, reboot or log out (git version)
-	pkgver = 0.3.0_r2_g1456910
+	pkgver = 0.3.1_r1_gefbb663
 	pkgrel = 1
 	url = https://github.com/TheElevatedOne/hyprdown
 	arch = x86_64
