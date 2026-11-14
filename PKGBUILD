@@ -1,5 +1,5 @@
 pkgname=neodisk
-pkgver=2.83.2
+pkgver=2.91.0
 pkgrel=1
 pkgdesc="Disk space visualizer with treemap and sunburst views"
 arch=('x86_64' 'aarch64')
@@ -20,11 +20,11 @@ depends=(
   'vulkan-icd-loader'
   'zstd'
 )
-makedepends=('patchelf' 'pkgconf')
+makedepends=('patchelf' 'pkgconf' 'unzip')
 conflicts=('neodisk-git' 'neodisk-bin')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fb6d4def632a0b9516869b07fefec1abc07bb1be005ed90c8ce8bc245e826aad')
+sha256sums=('d8c44be6be509ff4bf7c57375a35ee595ec49a1c93a22a5761561d088d5cbb4d')
 
 prepare() {
   cd "Neodisk-${pkgver}"

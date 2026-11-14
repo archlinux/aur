@@ -1,6 +1,6 @@
 pkgbase = neodisk
 	pkgdesc = Disk space visualizer with treemap and sunburst views
-	pkgver = 2.83.2
+	pkgver = 2.91.0
 	pkgrel = 1
 	url = https://github.com/tkslucas/Neodisk
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = neodisk
 	license = GPL-3.0-or-later
 	makedepends = patchelf
 	makedepends = pkgconf
+	makedepends = unzip
 	depends = cairo
 	depends = gcc-libs
 	depends = gdk-pixbuf2
@@ -24,7 +25,7 @@ pkgbase = neodisk
 	conflicts = neodisk-git
 	conflicts = neodisk-bin
 	options = !debug
-	source = neodisk-2.83.2.tar.gz::https://github.com/tkslucas/Neodisk/archive/refs/tags/v2.83.2.tar.gz
-	sha256sums = fb6d4def632a0b9516869b07fefec1abc07bb1be005ed90c8ce8bc245e826aad
+	source = neodisk-2.91.0.tar.gz::https://github.com/tkslucas/Neodisk/archive/refs/tags/v2.91.0.tar.gz
+	sha256sums = d8c44be6be509ff4bf7c57375a35ee595ec49a1c93a22a5761561d088d5cbb4d
 
 pkgname = neodisk
