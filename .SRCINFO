@@ -1,0 +1,17 @@
+pkgbase = dsh-gtk
+	pkgdesc = Native GTK3 + WebKitGTK window for the dsh web UI with StatusNotifierItem tray residency
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/abcabc0330/dsh-gtk
+	arch = x86_64
+	license = MIT
+	makedepends = pkg-config
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	provides = dsh-gtk
+	conflicts = dsh-gtk
+	source = dsh-gtk-0.1.0.tar.gz::https://github.com/abcabc0330/dsh-gtk/archive/v0.1.0.tar.gz
+	sha256sums = 7eade0304178646f8a4b00b62f1eb26d31ab7e93d077ca8199e106980f8212a9
+
+pkgname = dsh-gtk
