@@ -6,7 +6,7 @@ _appname=dn
 pkgname=${_gitname,,}-bin
 pkgdesc="A modern terminal file manager built in Rust with Turbo Vision, inspired by DOS Navigator"
 
-pkgver=1.1.11
+pkgver=1.1.13
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('f4f80427a922a03ffb9bb9cfcaaf55b6599af154040fdc5a6dd64179dd253e26')
-sha256sums_aarch64=('c52d1df60ef54f7b8982e91dd09d4bef549d036efd41bb56898c3edd5d322d7d')
+sha256sums_x86_64=('7c85a95977eb6803d7d3d3965dde9cca8c7bf91ad46150c803a75ad097afa3d4')
+sha256sums_aarch64=('68b4a1069eedc0235091042e2a9c1af6bf68ea2439618d9e7622f0fd2456bb05')
 
 
 package() {
