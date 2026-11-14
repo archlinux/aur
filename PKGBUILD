@@ -29,8 +29,8 @@
 
 pkgname=kahawai-gstreamer
 pkgver=1.28.8
-pkgrel=3
-_kahawai=0.0.25-rc.1
+pkgrel=4
+_kahawai=0.0.26-rc.1
 _prefix=/opt/kahawai-gstreamer
 pkgdesc="GStreamer with Kahawai's patches, isolated in /opt/kahawai-gstreamer"
 arch=(x86_64 aarch64)
@@ -88,7 +88,7 @@ source=(
 )
 sha256sums=('f181a8e3115326fc9e0abf132c19db7e6b71648c8c001e15d13fd9402ba61625'
             '1c0406a1b0e2e5ca71611347273fe584629cf59e874ffcea07f8b82729793b0e'
-            '703231b8e32f83f8d54edc09712fe034eb595ec369ea1c604f405317b6165df4'
+            'c29cd9440b1f3813f1f67904f27f90d87b7e0a0f54b9caeffab63a749df7cd47'
             'ae3fa961395406d8309f7d493a28c084e6350e639b009203d8bee59ef02f2086'
             'a7ca7bc1b9d22296991f993d45a10b0789cb26ed0809a4f9c32c80f044fc83b8')
 
@@ -306,7 +306,7 @@ check() {
   [[ $where = "$stage/lib/gstreamer-1.0/"* ]] ||
     die "avidemux loads from $where, not the staged tree"
 
-  "$srcdir/kahawai-$_kahawai/scripts/kahawai-gst-plugins.sh" verify \
+  "$srcdir/kahawai-$_kahawai/scripts/kahawai-gst-verify.sh" \
     --library-dir "$stage/lib" --plugin-dir "$stage/lib/gstreamer-1.0" --exclusive
 }
 
