@@ -1,6 +1,6 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=youtube-video-downloader
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Fast desktop front-end for yt-dlp with a download queue (Tauri)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 )
 makedepends=('cargo' 'pnpm' 'rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c9f2057a23b42f0c7315999d4b24e04c0da6a6b96d3677aefc5cb497c1b64206')
+sha256sums=('0fab228cce7705199b51eed130adad907dcc9bd99d37a51e4c5709b9be218bef')
 
 prepare() {
   cd "$pkgname-$pkgver"
