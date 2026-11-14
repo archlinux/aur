@@ -15,7 +15,7 @@
 #   CPPlayer/lib/CPPlayer.png 等   图标（jpackage 放置）
 
 pkgname=cpplayer-bin
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Cross-platform music player (Material 3 Expressive) - prebuilt binaries"
 arch=('x86_64')
@@ -31,8 +31,8 @@ provides=('cpplayer')
 conflicts=('cpplayer')
 # ⚠️ 下面这行被 CI 的 sed 整行重写（url、下载地址、真实 sha256）；
 # 手工构建时先跑 `updpkgsums`（或 `makepkg -g`）把 SKIP 换成真实哈希。
-source=("CPPlayer-${pkgver}-linux-x64.tar.gz::https://github.com/Aurora-Nasa-1/CPPlayer-KMP/releases/download/v1.9.1/CPPlayer-1.9.1-linux-x64.tar.gz")
-sha256sums=('6dbc69aca3bc77ab412215b87e7b3599f4334bd32faed65e448b67442eb70b8a')
+source=("CPPlayer-${pkgver}-linux-x64.tar.gz::https://github.com/Aurora-Nasa-1/CPPlayer-KMP/releases/download/v1.9.2/CPPlayer-1.9.2-linux-x64.tar.gz")
+sha256sums=('3976df0cf1c6d7b1ae282fd49730b4ff22dd7813e74150158e3bb80cc763f792')
 
 package() {
   # 应用本体进 /opt（与 google-chrome / jetbrains-toolbox 类似）。
