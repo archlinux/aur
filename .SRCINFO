@@ -1,6 +1,6 @@
 pkgbase = mihomo-tui-bin
 	pkgdesc = A TUI for Mihomo (Clash.Meta) - binary version
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/potoo0/mihomo-tui
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = mihomo-tui-bin
 	options = !debug
 	source = LICENSE::https://github.com/potoo0/mihomo-tui/raw/main/LICENSE
 	sha256sums = 0eff19db888c403ba4f5a035dbf50a64604110fe94d5b4b5365768af73bf2f0d
-	source_x86_64 = mihomo-tui-0.6.0-x86_64.tar.gz::https://github.com/potoo0/mihomo-tui/releases/download/v0.6.0/mihomo-tui-Linux-gnu-x86_64.tar.gz
-	sha256sums_x86_64 = 137deb23323c4d6c53359613bac956f11c2dae1171110863a9b96d3b0e96414c
-	source_aarch64 = mihomo-tui-0.6.0-aarch64.tar.gz::https://github.com/potoo0/mihomo-tui/releases/download/v0.6.0/mihomo-tui-Linux-gnu-arm64.tar.gz
-	sha256sums_aarch64 = 883266b517bd4eefe1402e0963dcfdfd00452529c3424a7abbdd2acf430bf192
+	source_x86_64 = mihomo-tui-0.6.1-x86_64.tar.gz::https://github.com/potoo0/mihomo-tui/releases/download/v0.6.1/mihomo-tui-Linux-gnu-x86_64.tar.gz
+	sha256sums_x86_64 = 43d7d0ee0a55692e3a3092db74faa8184e037bbe1ec7d49621a0c9271d3eb5ca
+	source_aarch64 = mihomo-tui-0.6.1-aarch64.tar.gz::https://github.com/potoo0/mihomo-tui/releases/download/v0.6.1/mihomo-tui-Linux-gnu-arm64.tar.gz
+	sha256sums_aarch64 = 3ca71fd7538d6c446a1c1d44a71aa0a3a9bff57c39fea69c226c156939d59327
 
 pkgname = mihomo-tui-bin
