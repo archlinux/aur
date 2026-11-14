@@ -8,7 +8,7 @@
 readonly _pkgname="malva"
 
 pkgname="dprint-plugin-malva"
-pkgver="0.16.0"
+pkgver="0.16.1"
 pkgrel="1"
 pkgdesc="CSS, SCSS, Sass and Less code formatting plugin for dprint."
 arch=("any")
@@ -17,7 +17,7 @@ license=("MIT")
 depends=("dprint")
 makedepends=("rust" "rust-wasm")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("e08f373e5387a1383a16e2e364268188a470a80df51237df387d10d4f0b8edb0173056bb65a3c73369042b33624465d7c29d581d51598c42a76b1aa74091d167")
+sha512sums=("6de1aaed4c805fa3e599e29ecdb90e1806023750557fe3b01926cdac28263b60cbe85675e27ee38325f80be35227dfd72f3f094b0f9196efa0cdf59fe126d318")
 
 prepare()
 {
