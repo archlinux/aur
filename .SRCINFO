@@ -15,7 +15,6 @@ pkgbase = lamax-instakid-printer-git
 	depends = cups
 	depends = cups-filters
 	depends = ghostscript
-	depends = python
 	depends = python-bleak
 	depends = python-dbus-fast
 	depends = python-pillow

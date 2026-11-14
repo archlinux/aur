@@ -8,7 +8,7 @@ pkgdesc="CUPS driver and CLI for the thermal printer of the LAMAX InstaKid2 Plus
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/jose1711/lamax-instakid-printer"
 license=('MIT')
-depends=('bluez' 'cups' 'cups-filters' 'ghostscript' 'python' 'python-bleak'
+depends=('bluez' 'cups' 'cups-filters' 'ghostscript' 'python-bleak'
          'python-dbus-fast' 'python-pillow')
 makedepends=('git' 'cups')
 provides=("${_pkgname}")
