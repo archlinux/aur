@@ -1,7 +1,7 @@
 # Maintainer: Hec <hec@heccraft.com>
 
 pkgbase=linux-ogc
-_ogcver=7.2.7-ogc1
+_ogcver=7.3.4-ogc5
 pkgver=${_ogcver/-/.}
 pkgrel=1
 pkgdesc='Linux'
@@ -39,12 +39,12 @@ source=(
   https://github.com/OpenGamingCollective/linux/releases/download/v${_ogcver}/monolithic.patch
   config
 )
-sha256sums=('4ac34c47db2540ffb2713943f8d891ff1702e0ba6934525a493b7d1cad43145a'
-            '491d3ac0d313345393794caa77f43469b097f85a8e17c4289d3ce1b25d8f4021'
-            '136f6346e97081fa61f1c661cc27d7e1da2c94d96157065aad3d3b7995a47f29')
-b2sums=('0fa304e65b0d96d6082e3040db9c974ebdbcfd54a2bc22a8841db63291787f01bf63862d882ecf77cb810f51e91db4e44ac6e27616f93f945531b868b9a1a00d'
-        '7ae001cc5523bf43a88a02526c4af94dc6c1f19584b1d6dd72192a82fc61804fef754f129287414111e76527e13e867a09cf40f137dada895effd12be978678b'
-        'd402fcdd69db748ad827103e23768c1de612da09176b96d0cacc1ec5bfead4c6e77b342b8aeb31bed69d3e82aee19f6abf161e325d46f91978ff6b043ed2c3e0')
+sha256sums=('b11b6df8295e8e991ff040b71aaa4994a8b55caa23b6b092907f195b5840fd1f'
+            'fd02cde809caf06b1d9ed7dd1df8881228d200b2aba018af563f0a98d43eda77'
+            'b8a9a90002e45e31cf607f520fca5500512d66a0a90ab628fd575c6556650b14')
+b2sums=('9b75f615d0a03d6627d7e3db4397882d602161db13cd5efd6226e0e5c5f970d1baea676d9d01edd0f09ed0b7207b6421e6340f1b8e9bd4e8152491ddddcc9021'
+        'd2af0c4499b70f8123858f97985954b3cf3dacb2ee2ef3d1e55d0bdf81cf58e6b29de8306ae66ee26fa3c1bbad6bed4985f217463fe228075d0d7efe7c111b01'
+        'fe0b163da2ca5752e26173f043de808664f2d80ab0667c018336db85f0ddc6a28a0231d64c385e6b774bec80288645723c4b032a45f06a633cbf8a114c39d347')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
