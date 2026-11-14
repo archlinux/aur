@@ -1,0 +1,22 @@
+pkgbase = pi-ui-git
+	pkgdesc = Keyboard-first minimal GUI for pi
+	pkgver = 0.65.2.r0.g533cc4f
+	pkgrel = 1
+	url = https://github.com/hyperpuncher/pi-ui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = bun>=1.4.4
+	makedepends = git
+	depends = glibc
+	depends = icu
+	provides = pi-ui=0.65.2.r0.g533cc4f
+	provides = pi-ui-server=0.65.2.r0.g533cc4f
+	conflicts = pi-ui
+	conflicts = pi-ui-server
+	options = !strip
+	options = !debug
+	source = pi-ui::git+https://github.com/hyperpuncher/pi-ui.git#branch=main
+	sha256sums = SKIP
+
+pkgname = pi-ui-git
