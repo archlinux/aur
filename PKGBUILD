@@ -1,18 +1,19 @@
 # Maintainer: YahyaZekry <YahyaZekry@users.noreply.github.com>
 pkgname=rovyl-bin
 _pkgname=rovyl
-pkgver=1.17.1
-pkgrel=2
+pkgver=1.17.2
+pkgrel=1
 pkgdesc="Rovyl radial launcher (prebuilt AppImage)"
 arch=('x86_64')
 url="https://github.com/YahyaZekry/rovyl-linux"
 license=('GPL-3.0-or-later')
 depends=('gtk3' 'libxss' 'libxtst' 'nss' 'alsa-lib' 'libxkbcommon' 'dbus')
 optdepends=()
+options=('!strip' '!debug')
 provides=('rovyl')
 conflicts=('rovyl')
 source=("rovyl-${pkgver}.AppImage::https://github.com/YahyaZekry/rovyl-linux/releases/download/v${pkgver}/Rovyl-${pkgver}-linux.AppImage")
-sha256sums=('40122ef2f0f31222844150f187b7bb4166357cd68ad292b70b463fe66ba5339d')
+sha256sums=('af379a84d429b57aba3921720cb6b5a8615c819f5c4ca08810b1297416898606')
 noextract=("rovyl-${pkgver}.AppImage")
 
 package() {
