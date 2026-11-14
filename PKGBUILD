@@ -1,7 +1,7 @@
 # Maintainer: <trahflow@proton.me>
 pkgname=com.cassidyjames.butler
 _pkgname=butler
-pkgver=1.8.3
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A Home Assistant companion app for GNOME"
 url="https://github.com/cassidyjames/butler"
@@ -19,7 +19,7 @@ makedepends=(
 	vala
 )
 source=("https://github.com/cassidyjames/butler/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=(f35f5a6436317efe5d31330abde7951bd0d7d37f2881b6245438916a5e277ebd)
+sha256sums=('7b4832f43b98b406963c18f71ec41225ae1fcee6b7ba8b7926afc4736b7363c4')
 
 prepare() {
 	cd "$_pkgname-$pkgver"

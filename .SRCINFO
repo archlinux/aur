@@ -1,6 +1,6 @@
 pkgbase = com.cassidyjames.butler
 	pkgdesc = A Home Assistant companion app for GNOME
-	pkgver = 1.8.3
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/cassidyjames/butler
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = com.cassidyjames.butler
 	depends = gtk4>=4.16.1
 	depends = libadwaita>=1.6.0
 	depends = webkitgtk-6.0>=2.46.0
-	source = https://github.com/cassidyjames/butler/archive/refs/tags/1.8.3.tar.gz
-	sha256sums = f35f5a6436317efe5d31330abde7951bd0d7d37f2881b6245438916a5e277ebd
+	source = https://github.com/cassidyjames/butler/archive/refs/tags/1.9.0.tar.gz
+	sha256sums = 7b4832f43b98b406963c18f71ec41225ae1fcee6b7ba8b7926afc4736b7363c4
 
 pkgname = com.cassidyjames.butler
