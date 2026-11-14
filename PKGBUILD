@@ -3,8 +3,8 @@
 # Five upstream release archives, no Composer network traffic during build.
 pkgbase=bacularis
 pkgname=('bacularis-common' 'bacularis-web' 'bacularis-api' 'bacularis')
-pkgver=7.0.0
-pkgrel=3
+pkgver=7.1.0
+pkgrel=1
 pkgdesc='Web interface and REST API for Bacula backup management'
 arch=('any')
 url='https://bacularis.app/'
@@ -25,20 +25,18 @@ source=(
 )
 # Initial template: CI replaces all five SKIP values with verified SHA-256 sums.
 # Before manual AUR publication: makepkg -o && updpkgsums && makepkg -s.
-sha256sums=(
-  '3fe79c7e805508bc0475f6322d89a73d1532fec67dc64a86ad767b36450f48de'
-  '219a6d819f9ddfe06723d3cc327d1d87e1793abf8b82503182d2e73c49da4f11'
-  'de769caa4c478c92feca9779695a89483df59408cb723dfb26993d65fed26427'
-  'd5a6cc516c3a02658dbfb6342c6383144873f61c5892f0d47039b41a01ec0f6d'
-  '6fec3d44ffd66572f11696c3c02366f2d0bf8b7850c21bf29b0f835439e60cec'
-  '7786e7fd29240aa58f81cc9e68d3ce4013a45138e3237cb403d898368b524113'
-  '38ba0ddfc9d152ba0acb01ae1bee69e93b64d34da1bf500082f8be9722b5898c'
-  'b98385e7d167d2136ea6da405873f9ff48bbb697b9cfbff8349f28b233a12537'
-  'c1080329df315faad9910053f49ec0c113fbf13ef86e93f94232bc74be3f491c'
-  '8c9ae1d5aee64ec68047843f1786bb947b03282ba8c0f7f15044545a3d416bd8'
-  'bbf0810f654ed6490ef8a7faf975a2d90d4ad2db91942c6a444b777d2497dc19'
-  '86149c3f5e85648a6a3594c8fe189598311cf4a28f0ac2a043fcf464b49f8c29'
-)
+sha256sums=('9204c4905a8903a85879d500f6ad2af4eb3955e54f6c8bbf5f2ea50e586279f6'
+            '874967e475fe3c1fa6462329db160ea85db2f0e6c741cac77703fb4679cec037'
+            'e378b7668d2a0adc2db534b658e5762694ca341dc13460771f25c8488e2fe26f'
+            '888107ffb97dd1af5d772de2cbde162a75bb208441acd351fe76a6d5d0fb386f'
+            'c51d28d6e593905dd352297f908f1a746772f9693fb9fb22dfc4143a3c0d76a2'
+            '7786e7fd29240aa58f81cc9e68d3ce4013a45138e3237cb403d898368b524113'
+            '38ba0ddfc9d152ba0acb01ae1bee69e93b64d34da1bf500082f8be9722b5898c'
+            'b98385e7d167d2136ea6da405873f9ff48bbb697b9cfbff8349f28b233a12537'
+            'c1080329df315faad9910053f49ec0c113fbf13ef86e93f94232bc74be3f491c'
+            '8c9ae1d5aee64ec68047843f1786bb947b03282ba8c0f7f15044545a3d416bd8'
+            'bbf0810f654ed6490ef8a7faf975a2d90d4ad2db91942c6a444b777d2497dc19'
+            '86149c3f5e85648a6a3594c8fe189598311cf4a28f0ac2a043fcf464b49f8c29')
 noextract=(
   "bacularis-app-${pkgver}.tar.gz"
   "bacularis-web-${pkgver}.tar.gz"

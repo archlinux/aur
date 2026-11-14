@@ -1,20 +1,20 @@
 pkgbase = bacularis
 	pkgdesc = Web interface and REST API for Bacula backup management
-	pkgver = 7.0.0
-	pkgrel = 3
+	pkgver = 7.1.0
+	pkgrel = 1
 	url = https://bacularis.app/
 	arch = any
 	license = AGPL-3.0-only
-	noextract = bacularis-app-7.0.0.tar.gz
-	noextract = bacularis-web-7.0.0.tar.gz
-	noextract = bacularis-api-7.0.0.tar.gz
-	noextract = bacularis-common-7.0.0.tar.gz
-	noextract = bacularis-external-7.0.0.tar.gz
-	source = bacularis-app-7.0.0.tar.gz::https://github.com/bacularis/bacularis-app/archive/refs/tags/7.0.0.tar.gz
-	source = bacularis-web-7.0.0.tar.gz::https://github.com/bacularis/bacularis-web/archive/refs/tags/7.0.0.tar.gz
-	source = bacularis-api-7.0.0.tar.gz::https://github.com/bacularis/bacularis-api/archive/refs/tags/7.0.0.tar.gz
-	source = bacularis-common-7.0.0.tar.gz::https://github.com/bacularis/bacularis-common/archive/refs/tags/7.0.0.tar.gz
-	source = bacularis-external-7.0.0.tar.gz::https://bacularis.app/downloads/bacularis-external-7.0.0.tar.gz
+	noextract = bacularis-app-7.1.0.tar.gz
+	noextract = bacularis-web-7.1.0.tar.gz
+	noextract = bacularis-api-7.1.0.tar.gz
+	noextract = bacularis-common-7.1.0.tar.gz
+	noextract = bacularis-external-7.1.0.tar.gz
+	source = bacularis-app-7.1.0.tar.gz::https://github.com/bacularis/bacularis-app/archive/refs/tags/7.1.0.tar.gz
+	source = bacularis-web-7.1.0.tar.gz::https://github.com/bacularis/bacularis-web/archive/refs/tags/7.1.0.tar.gz
+	source = bacularis-api-7.1.0.tar.gz::https://github.com/bacularis/bacularis-api/archive/refs/tags/7.1.0.tar.gz
+	source = bacularis-common-7.1.0.tar.gz::https://github.com/bacularis/bacularis-common/archive/refs/tags/7.1.0.tar.gz
+	source = bacularis-external-7.1.0.tar.gz::https://bacularis.app/downloads/bacularis-external-7.1.0.tar.gz
 	source = bacularis-common.tmpfiles
 	source = bacularis-web.tmpfiles
 	source = bacularis-api.tmpfiles
@@ -22,11 +22,11 @@ pkgbase = bacularis
 	source = bacularis-php.ini.example
 	source = bacularis-sudoers-update
 	source = bacularis-sudoers.hook
-	sha256sums = 3fe79c7e805508bc0475f6322d89a73d1532fec67dc64a86ad767b36450f48de
-	sha256sums = 219a6d819f9ddfe06723d3cc327d1d87e1793abf8b82503182d2e73c49da4f11
-	sha256sums = de769caa4c478c92feca9779695a89483df59408cb723dfb26993d65fed26427
-	sha256sums = d5a6cc516c3a02658dbfb6342c6383144873f61c5892f0d47039b41a01ec0f6d
-	sha256sums = 6fec3d44ffd66572f11696c3c02366f2d0bf8b7850c21bf29b0f835439e60cec
+	sha256sums = 9204c4905a8903a85879d500f6ad2af4eb3955e54f6c8bbf5f2ea50e586279f6
+	sha256sums = 874967e475fe3c1fa6462329db160ea85db2f0e6c741cac77703fb4679cec037
+	sha256sums = e378b7668d2a0adc2db534b658e5762694ca341dc13460771f25c8488e2fe26f
+	sha256sums = 888107ffb97dd1af5d772de2cbde162a75bb208441acd351fe76a6d5d0fb386f
+	sha256sums = c51d28d6e593905dd352297f908f1a746772f9693fb9fb22dfc4143a3c0d76a2
 	sha256sums = 7786e7fd29240aa58f81cc9e68d3ce4013a45138e3237cb403d898368b524113
 	sha256sums = 38ba0ddfc9d152ba0acb01ae1bee69e93b64d34da1bf500082f8be9722b5898c
 	sha256sums = b98385e7d167d2136ea6da405873f9ff48bbb697b9cfbff8349f28b233a12537
@@ -43,13 +43,13 @@ pkgname = bacularis-common
 
 pkgname = bacularis-web
 	pkgdesc = Bacularis Web frontend (can run without local Bacula)
-	depends = bacularis-common=7.0.0-3
+	depends = bacularis-common=7.1.0-1
 	optdepends = php-fpm: PHP FastCGI backend
 
 pkgname = bacularis-api
 	pkgdesc = Bacularis REST API and local Bacula integration with scoped sudoers
 	install = bacularis-api.install
-	depends = bacularis-common=7.0.0-3
+	depends = bacularis-common=7.1.0-1
 	depends = sudo
 	optdepends = bacula-console: bconsole access to Bacula Director
 	optdepends = php-pgsql: connect to PostgreSQL Bacula catalog
@@ -57,6 +57,6 @@ pkgname = bacularis-api
 
 pkgname = bacularis
 	pkgdesc = Bacularis Web and API together (metapackage)
-	depends = bacularis-common=7.0.0-3
-	depends = bacularis-web=7.0.0-3
-	depends = bacularis-api=7.0.0-3
+	depends = bacularis-common=7.1.0-1
+	depends = bacularis-web=7.1.0-1
+	depends = bacularis-api=7.1.0-1
