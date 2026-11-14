@@ -11,7 +11,7 @@
 pkgbase=plasma-fusion
 pkgname=(plasma-fusion plasma-fusion-decoration plasma-fusion-settings plasma-fusion-navigation plasma-fusion-quicklook
          plasma-fusion-copytext)
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Plasma Fusion desktop for KDE Plasma 6"
 arch=(x86_64)
