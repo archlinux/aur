@@ -1,0 +1,18 @@
+pkgbase = bgmonad
+	pkgdesc = Living wallpaper for Wayland, written and configured in Haskell
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/prietus/bgmonad
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	depends = ghc
+	depends = ghc-libs
+	depends = haskell-network
+	depends = gdk-pixbuf2
+	optdepends = rivermonad: wallpapers per workspace and the parallax between them
+	optdepends = libnotify: notifications when the configuration fails to compile
+	source = bgmonad-0.1.0.tar.gz::https://github.com/prietus/bgmonad/archive/v0.1.0.tar.gz
+	sha256sums = 55bbc072161bcebbc93da8d38f504f5ca468cc767b702ee450a5765623aeb504
+
+pkgname = bgmonad
