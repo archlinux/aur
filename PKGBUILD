@@ -2,7 +2,7 @@
 
 pkgname=reshade-linux-git
 _pkgname=reshade-linux
-pkgver=6.8.0.1_r3_gb14e07d0
+pkgver=6.8.0.1_r5_gea4b56e
 pkgrel=1
 pkgdesc="crosire's ReShade post-processing injector as a native Vulkan layer, enabled with RESHADE=1 (works with Proton via DXVK/VKD3D) (git version)"
 arch=('x86_64')
@@ -34,8 +34,8 @@ pkgver() {
   cd "$_pkgname"
   (
     set -o pipefail
-    git describe --long --tags --abbrev=8 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/_/g' ||
-      printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=8 HEAD)"
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/_/g' ||
+      printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
 
