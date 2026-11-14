@@ -1,0 +1,161 @@
+diff -ruN a/samples/samples/SimpleViewer/Draw.cpp b/samples/samples/SimpleViewer/Draw.cpp
+--- a/samples/samples/SimpleViewer/Draw.cpp	2022-10-11 19:54:09.000000000 +0800
++++ b/samples/samples/SimpleViewer/Draw.cpp	2026-11-13 00:03:41.137017109 +0800
+@@ -5,7 +5,6 @@
+ 
+ Draw::Draw()
+ {
+-    cvInitFont(&font, CV_FONT_HERSHEY_SIMPLEX, 0.5, 0.5, 0, 1, CV_AA);
+ }
+ 
+ 
+@@ -16,38 +15,37 @@
+ void Draw::drawText(char* textToDraw, int x, int y)
+ {
+ 
+-    cvPutText(DisplayImage, textToDraw, cvPoint(x, y), &font, cvScalar(255, 0, 255, 255));
++    cv::putText(DisplayImage, textToDraw, cv::Point(x, y), cv::FONT_HERSHEY_SIMPLEX,
++                0.5, cv::Scalar(255, 0, 255, 255), 1, cv::LINE_AA);
+ }
+ 
+ 
+ //void Draw::ShowImagesSideBySide(char* title, Vector<IplImage> images, char* text, int X_textOnWindow, int Y_textOnWindow)
+-void Draw::ShowImagesSideBySide(char* title, vector<IplImage> images, char* text, int X_textOnWindow, int Y_textOnWindow)
++void Draw::ShowImagesSideBySide(char* title, vector<cv::Mat> images, char* text, int X_textOnWindow, int Y_textOnWindow)
+ {
+-    int Ysize = images[0].height;
+-    int Xsize = images[0].width;
++    int Ysize = images[0].rows;
++    int Xsize = images[0].cols;
+ 
+     int numOfImages = images.size();
+     int row_num = numOfImages > 2 ? (numOfImages+1) / 2 : 1;
+     int col_num = numOfImages > 1 ? 2 : 1;
+ 
+ 
+-    DisplayImage = cvCreateImage(cvSize(Xsize * col_num, Ysize * row_num), 8, 3);
++    DisplayImage = cv::Mat::zeros(Ysize * row_num, Xsize * col_num, CV_8UC3);
+ 
+     int xStride = 0, yStride = 0;
+     for (int i = 0; i < numOfImages;)
+     {
+-        if (&images[i] == 0)
++        if (images[i].empty())
+         {
+             printf("Invalid arguments");
+-            cvReleaseImage(&DisplayImage);
+             return;
+         }
+ 
+         xStride = (i % 2) * Xsize;
+         yStride = (i / 2) * Ysize;
+-        cvSetImageROI(DisplayImage, cvRect(xStride, yStride, Xsize, Ysize));
+-        cvResize(&images[i], DisplayImage);
+-        cvResetImageROI(DisplayImage);
++        cv::Mat roi = DisplayImage(cv::Rect(xStride, yStride, Xsize, Ysize));
++        cv::resize(images[i], roi, roi.size());
+ 
+         i = i + 1;
+ 
+@@ -57,9 +55,7 @@
+     //cvNamedWindow(title, 1);
+ 	namedWindow(title, 1);
+     //cvShowImage(title, DisplayImage);
+-	imshow(title, cvarrToMat(DisplayImage));
+-
+-    cvReleaseImage(&DisplayImage);
++	imshow(title, DisplayImage);
+ }
+ 
+ 
+diff -ruN a/samples/samples/SimpleViewer/Draw.h b/samples/samples/SimpleViewer/Draw.h
+--- a/samples/samples/SimpleViewer/Draw.h	2022-10-11 19:54:09.000000000 +0800
++++ b/samples/samples/SimpleViewer/Draw.h	2026-11-13 00:03:26.920203840 +0800
+@@ -12,11 +12,10 @@
+ 
+ #include "opencv2/highgui.hpp"
+ #include "opencv2/opencv.hpp"
+-#include "opencv2/imgproc/imgproc_c.h"
+ #include "opencv2/core/core.hpp"
+ #include "opencv2/imgproc/imgproc.hpp"
+ #include "opencv2/highgui/highgui.hpp"
+-#include "opencv2/calib3d/calib3d.hpp"
++#include "opencv2/calib3d.hpp"
+ #include "opencv2/imgcodecs.hpp"
+ #include <vector>
+ 
+@@ -32,14 +31,11 @@
+ public:
+     void drawText(char* textToDraw, int x, int y);
+     //void ShowImagesSideBySide(char* title, Vector<IplImage> images, char* text, int X_textOnWindow, int Y_textOnWindow);
+-	void ShowImagesSideBySide(char* title, vector<IplImage> images, char* text, int X_textOnWindow, int Y_textOnWindow);
++	void ShowImagesSideBySide(char* title, vector<cv::Mat> images, char* text, int X_textOnWindow, int Y_textOnWindow);
+     void GetDepthHistogram(cv::Mat &src, cv::Mat &dst);
+ 
+ private:
+-    IplImage IplRgb, IplDepth;
+-    IplImage* DisplayImage;
+-
+-    CvFont font;
++    cv::Mat DisplayImage;
+ };
+ 
+ 
+diff -ruN a/samples/samples/SimpleViewer/main.cpp b/samples/samples/SimpleViewer/main.cpp
+--- a/samples/samples/SimpleViewer/main.cpp	2022-10-11 19:54:13.000000000 +0800
++++ b/samples/samples/SimpleViewer/main.cpp	2026-11-13 00:03:59.498775998 +0800
+@@ -207,7 +207,7 @@
+ 	char * _winTitle = "SimpleViewer";
+ 
+ 	bool rgbMode = true;
+-	IplImage IplColor, IplDepth, IplReg;
++	cv::Mat IplColor, IplDepth, IplReg;
+ 	char chrDepthColorAlpha[32] = { 0 };
+ 	char* strRegisterInfo = "";
+ 	char strRegisterType[100] = "";
+@@ -215,11 +215,8 @@
+ 	//Vector<IplImage> imgsOne(1);
+ 	//Vector<IplImage> imgsTwo(2);
+ 	//vector
+-	vector<IplImage> imgsOne(1);
+-	vector<IplImage> imgsTwo(2);
+-
+-	CvFont font;
+-	cvInitFont(&font, CV_FONT_HERSHEY_SIMPLEX, 0.5, 0.5, 0, 1, CV_AA);
++	vector<cv::Mat> imgsOne(1);
++	vector<cv::Mat> imgsTwo(2);
+ 
+ 	bool bExit = true;
+ 	uint16_t nPid = pD2CSwapper->GetDevicePid();
+@@ -349,11 +346,11 @@
+ 			IplDepth = CaliDepthHistogram;*/
+ 
+ 			//-------------------------------------------
+-			IplReg = cvIplImage(imgROI);
++			IplReg = imgROI;
+ 			imgsOne[0] = IplReg;
+ 
+-			IplColor = cvIplImage(cv_rgb);
+-			IplDepth = cvIplImage(CaliDepthHistogram);
++			IplColor = cv_rgb;
++			IplDepth = CaliDepthHistogram;
+ 			//-------------------------------------------
+ 
+ 			imgsTwo[0] = IplColor;
+@@ -361,11 +358,11 @@
+ 
+ 			// Draw info on windows
+ 
+-			cvPutText(&IplReg, strRegisterType, cvPoint(50, 400), &font, cvScalar(0, 0, 255, 255));
+-			cvPutText(&IplReg, strRegisterInfo, cvPoint(50, 430), &font, cvScalar(0, 0, 255, 255));
+-			cvPutText(&IplReg, chrDepthColorAlpha, cvPoint(10, 30), &font, cvScalar(0, 0, 255, 255));
+-			cvPutText(&IplReg, "Over", cvPoint(10, 470), &font, cvScalar(0, 0, 255, 255));
+-			cvPutText(&IplReg, d2cText.c_str(), cvPoint(10, 20), &font, cvScalar(0, 0, 255, 255));
++			cv::putText(IplReg, strRegisterType, cv::Point(50, 400), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 0, 255, 255), 1, cv::LINE_AA);
++			cv::putText(IplReg, strRegisterInfo, cv::Point(50, 430), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 0, 255, 255), 1, cv::LINE_AA);
++			cv::putText(IplReg, chrDepthColorAlpha, cv::Point(10, 30), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 0, 255, 255), 1, cv::LINE_AA);
++			cv::putText(IplReg, "Over", cv::Point(10, 470), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 0, 255, 255), 1, cv::LINE_AA);
++			cv::putText(IplReg, d2cText.c_str(), cv::Point(10, 20), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 0, 255, 255), 1, cv::LINE_AA);
+ 
+ 			mDraw.ShowImagesSideBySide(_winTitle, imgsOne, "", 10, 450);
+ 		}

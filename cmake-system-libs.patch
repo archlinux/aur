@@ -1,0 +1,93 @@
+diff -ruN a/samples/samples/CMakeLists.txt b/samples/samples/CMakeLists.txt
+--- a/samples/samples/CMakeLists.txt	2026-11-13 23:14:45.933819495 +0800
++++ b/samples/samples/CMakeLists.txt	2026-11-13 23:14:58.760009159 +0800
+@@ -4,7 +4,6 @@
+ 
+ project(Samples)
+ 
+-SET(CMAKE_BUILD_TYPE Release)
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+ #set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+ 
+diff -ruN a/samples/samples/ColorReaderUVC/CMakeLists.txt b/samples/samples/ColorReaderUVC/CMakeLists.txt
+--- a/samples/samples/ColorReaderUVC/CMakeLists.txt	2026-11-13 23:05:40.882901161 +0800
++++ b/samples/samples/ColorReaderUVC/CMakeLists.txt	2026-11-13 23:14:58.764147092 +0800
+@@ -76,5 +76,5 @@
+ 
+ add_executable(${TARGET} ${SRC})
+ 
+-target_link_libraries(${TARGET} Uvc-Swapper OpenNI2)
++target_link_libraries(${TARGET} Uvc-Swapper uvc OpenNI2)
+ 
+diff -ruN a/samples/samples/ExtendedAPI/CMakeLists.txt b/samples/samples/ExtendedAPI/CMakeLists.txt
+--- a/samples/samples/ExtendedAPI/CMakeLists.txt	2026-11-13 23:05:40.883835827 +0800
++++ b/samples/samples/ExtendedAPI/CMakeLists.txt	2026-11-13 23:14:58.765986069 +0800
+@@ -5,7 +5,6 @@
+ include_directories(
+     ../ThirdParty/Common
+     ../ThirdParty/OpenNI2/Include
+-    ../ThirdParty/GL
+ )
+ 
+ if(CMAKE_SYSTEM_NAME MATCHES "Windows")
+diff -ruN a/samples/samples/MultiDepthViewer/CMakeLists.txt b/samples/samples/MultiDepthViewer/CMakeLists.txt
+--- a/samples/samples/MultiDepthViewer/CMakeLists.txt	2026-11-13 23:05:40.884752688 +0800
++++ b/samples/samples/MultiDepthViewer/CMakeLists.txt	2026-11-13 23:14:58.767715979 +0800
+@@ -5,7 +5,6 @@
+ include_directories(
+     ../ThirdParty/Common
+     ../ThirdParty/OpenNI2/Include
+-    ../ThirdParty/GL
+ )
+ 
+ if(CMAKE_SYSTEM_NAME MATCHES "Windows")
+diff -ruN a/samples/samples/SimpleViewer/CMakeLists.txt b/samples/samples/SimpleViewer/CMakeLists.txt
+--- a/samples/samples/SimpleViewer/CMakeLists.txt	2026-11-13 23:05:40.880752333 +0800
++++ b/samples/samples/SimpleViewer/CMakeLists.txt	2026-11-13 23:14:58.762226040 +0800
+@@ -39,10 +39,9 @@
+ 	endif()
+ 
+ elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
+-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -fPIC -O3 -std=c++11 -fopenmp")
+-	include_directories(
+-		../ThirdParty/OpenCV420/Linux/include/opencv4
+-	)
++	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fopenmp")
++	find_package(OpenCV REQUIRED)
++	include_directories(${OpenCV_INCLUDE_DIRS})
+ 	add_definitions(-DPLATFORM_LINUX)
+ 	add_definitions(-DSW_LINUX)
+ 	MESSAGE(STATUS "SimpleViewer is Linux platform")
+@@ -54,7 +53,6 @@
+ 			# 64 bits
+ 			link_directories(
+ 			../ThirdParty/OpenNI2/linux/x64
+-			../ThirdParty/OpenCV420/Linux/lib
+ 			../ThirdParty/d2c/lib/x64
+ 			../ThirdParty/UvcSwapper/x64
+ 		)
+@@ -71,7 +69,6 @@
+ 		# 32 bits
+ 		link_directories(
+ 			../ThirdParty/OpenNI2/arm/Arm
+-			../ThirdParty/OpenCV420/arm-32/lib
+ 			../ThirdParty/d2c/lib/arm-32
+ 			../ThirdParty/UvcSwapper/arm-32
+ 		)
+@@ -79,7 +76,6 @@
+ 		MESSAGE(STATUS "IS aarch64")
+ 		link_directories(
+ 			../ThirdParty/OpenNI2/arm/Arm64
+-			../ThirdParty/OpenCV420/arm-64/lib
+ 			../ThirdParty/d2c/lib/arm-64
+ 			../ThirdParty/UvcSwapper/arm-64
+ 		)
+@@ -98,7 +94,7 @@
+ if(CMAKE_SYSTEM_NAME MATCHES "Windows")
+ 	target_link_libraries(${TARGET} Uvc-Swapper OpenNI2 opencv_world430 d2c)
+ elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
+-	target_link_libraries(${TARGET} Uvc-Swapper OpenNI2 opencv_core opencv_highgui opencv_imgcodecs opencv_imgproc d2c)
++	target_link_libraries(${TARGET} Uvc-Swapper uvc OpenNI2 opencv_core opencv_highgui opencv_imgcodecs opencv_imgproc d2c)
+ else()
+ 	
+ endif()

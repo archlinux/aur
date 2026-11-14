@@ -1,0 +1,9 @@
+#!/bin/sh
+# Transitional workaround for an upstream OpenCV bug: the Qt6 highgui
+# backend mis-sizes windows on Wayland. Run through XWayland (X11) until
+# that is fixed; an explicit QT_QPA_PLATFORM from the environment wins.
+if [ -n "$WAYLAND_DISPLAY" ] && [ -n "$DISPLAY" ] && [ -z "$QT_QPA_PLATFORM" ]; then
+    export QT_QPA_PLATFORM=xcb
+fi
+
+exec /usr/bin/SimpleViewer "$@"

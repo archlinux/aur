@@ -1,0 +1,11 @@
+diff -ruN a/rules/orbbec-usb.rules b/rules/orbbec-usb.rules
+--- a/rules/orbbec-usb.rules
++++ b/rules/orbbec-usb.rules
+@@ -1,6 +1,7 @@
+ SUBSYSTEM=="usb", ATTR{idProduct}=="0401", ATTR{idVendor}=="2bc5", MODE="0660", TAG+="uaccess", SYMLINK+="astra" 
+ SUBSYSTEM=="usb", ATTR{idProduct}=="0402", ATTR{idVendor}=="2bc5", MODE="0660", TAG+="uaccess", SYMLINK+="astra_s"
+ SUBSYSTEM=="usb", ATTR{idProduct}=="0403", ATTR{idVendor}=="2bc5", MODE="0660", TAG+="uaccess", SYMLINK+="astra_pro"
++SUBSYSTEM=="usb", ATTR{idProduct}=="0501", ATTR{idVendor}=="2bc5", MODE="0660", TAG+="uaccess", SYMLINK+="astra_pro_uvc"
+ SUBSYSTEM=="usb", ATTR{idProduct}=="0404", ATTR{idVendor}=="2bc5", MODE="0660", TAG+="uaccess", SYMLINK+="astra_mini"
+ SUBSYSTEM=="usb", ATTR{idProduct}=="0407", ATTR{idVendor}=="2bc5", MODE="0660", TAG+="uaccess", SYMLINK+="astra_mini_s"
+ SUBSYSTEM=="usb", ATTR{idProduct}=="0601", ATTR{idVendor}=="2bc5", MODE="0660", TAG+="uaccess", SYMLINK+="astra_NH_GLST"
