@@ -1,7 +1,7 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=sirinvpn-bin
-# 1.0.0-rc.1 in SemVer: pkgver cannot hold a hyphen, and 1.0.0rc1 sorts before 1.0.0.
-pkgver=1.0.0rc1
+# 1.0.0-rc.2 in SemVer: pkgver cannot hold a hyphen, and 1.0.0rc2 sorts before 1.0.0.
+pkgver=1.0.0rc2
 pkgrel=1
 _tag="v${pkgver/rc/-rc.}"
 pkgdesc="Self-hosted WireGuard VPN: set up your own VPS and connect your devices (prebuilt)"
@@ -24,7 +24,7 @@ source_x86_64=("$_deb::$url/releases/download/$_tag/$_deb"
                "LICENSE-$pkgver::https://raw.githubusercontent.com/RamazanBerk20/SirinVPN/$_tag/LICENSE")
 noextract=("$_deb")
 # Filled from the published release by scripts/update-aur-checksums.sh.
-sha256sums_x86_64=('1a0aa744fabba43e771f5fa7f0adc3d5141d9b2a1187dce0c9c835c937f2e30b'
+sha256sums_x86_64=('1721203e3327ce63df7edf4816f77e2654385a09e4d0309476c5ddc8589d212f'
                    'd8a6cc31abc16b6748c7a21f21611f5a1ec33f67d22ca23d7da1c19b95496bee')
 
 package() {
