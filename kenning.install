@@ -1,0 +1,73 @@
+# SPDX-FileCopyrightText: 2026 Rishon Jonathan R
+# SPDX-License-Identifier: CC0-1.0
+
+# Face models belong to the Kenning service user, which reads them for everyone
+# else. pacman creates that user only after the transaction, so make it now.
+secure_models() {
+    systemd-sysusers kenning.conf 2>/dev/null || true
+    mkdir -p /etc/kenning/models
+    chown -R -h kenning:kenning /etc/kenning/models 2>/dev/null || true
+    chmod 700 /etc/kenning/models
+    find /etc/kenning/models -type f -exec chmod 600 {} +
+}
+
+# Kenning used to be called plasma-faceunlock. pacman removes that package first
+# (keeping its edited config as config.ini.pacsave); bring its settings, face
+# models and installed themes across.
+migrate_from_faceunlock() {
+    if [[ -d /etc/faceunlock ]]; then
+        local config=/etc/faceunlock/config.ini
+        [[ -f $config.pacsave ]] && config=$config.pacsave
+        if [[ -f $config ]]; then
+            cp "$config" /etc/kenning/config.ini
+            chmod 644 /etc/kenning/config.ini
+        fi
+        if [[ -d /etc/faceunlock/models ]]; then
+            mkdir -p /etc/kenning/models
+            find /etc/faceunlock/models -maxdepth 1 -type f -name '*.dat' -exec mv -n -t /etc/kenning/models {} +
+        fi
+        rm -rf /etc/faceunlock
+        echo "  kenning: moved settings and face models from /etc/faceunlock to /etc/kenning"
+    fi
+    if [[ -f /etc/xdg/faceunlockrc && ! -e /etc/xdg/kenningrc ]]; then
+        mv /etc/xdg/faceunlockrc /etc/xdg/kenningrc
+    fi
+    if [[ -d /usr/local/share/faceunlock/themes ]]; then
+        mkdir -p /usr/local/share/kenning/themes
+        find /usr/local/share/faceunlock/themes -mindepth 1 -maxdepth 1 -exec mv -n -t /usr/local/share/kenning/themes {} +
+        rm -rf /usr/local/share/faceunlock
+    fi
+    secure_models
+    /usr/lib/kenning/pam-tidy migrate
+}
+
+# pacman reloads systemd only after the whole transaction; the socket is needed now.
+start_service() {
+    systemctl daemon-reload 2>/dev/null || true
+    systemctl start kenning.socket 2>/dev/null || true
+}
+
+post_install() {
+    /usr/lib/kenning/pam-tidy tidy
+    secure_models
+    migrate_from_faceunlock
+    start_service
+    [[ -n $(find /etc/kenning/models -name '*.dat' 2>/dev/null) ]] ||
+        echo "  Open System Settings > Face Unlock and press Set Up to start using face unlock."
+}
+
+post_upgrade() {
+    /usr/lib/kenning/pam-tidy tidy
+    secure_models
+    # Photos of failed attempts are no longer kept; delete any saved before.
+    rm -rf /var/lib/kenning/snapshots
+    rmdir /var/lib/kenning 2>/dev/null || true
+    # A running service keeps the old engine until it exits; start the new one.
+    start_service
+    systemctl try-restart kenning.service 2>/dev/null || true
+}
+
+pre_remove() {
+    /usr/lib/kenning/pam-tidy remove
+    systemctl stop kenning.socket kenning.service 2>/dev/null || true
+}
