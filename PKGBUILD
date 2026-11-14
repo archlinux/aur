@@ -2,7 +2,7 @@
 
 pkgname=python-pystac
 _pkgname=pystac
-pkgver=1.15.2
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Python library for working with SpatioTemporal Asset Catalogs (STAC)'
 arch=('any')
@@ -10,7 +10,8 @@ url='https://github.com/stac-utils/pystac'
 license=('Apache-2.0')
 depends=(
     'python'
-    'python-dateutil>=2.7'
+    'python-dateutil'
+    'python-packaging'
 )
 makedepends=(
     'python-build'
@@ -34,7 +35,7 @@ optdepends=(
     # Arch version syntax so the current 1:3.x package actually satisfies it.
     'python-jinja<1:4: HTML rendering of STAC objects'
     'python-jsonschema>=4.18: STAC object validation'
-    'python-orjson>=3.5: faster JSON (de)serialization'
+    'python-orjson: faster JSON (de)serialization (runtime requires >=3.5)'
     'python-referencing: local JSON-schema validation'
     'python-urllib3>=2.6.3: reading STAC objects from remote URLs'
 )
@@ -42,29 +43,29 @@ optdepends=(
 # distributions. They all contribute to the same pystac package namespace and
 # are bundled here so python-pystac remains a complete, installable package.
 provides=(
-    'python-pystac-core=1.15.2'
-    'python-pystac-ext-classification=2.0.0'
-    'python-pystac-ext-datacube=2.2.0'
-    'python-pystac-ext-eo=1.1.0'
-    'python-pystac-ext-file=2.1.0'
-    'python-pystac-ext-grid=1.1.0'
-    'python-pystac-ext-item-assets=1.0.0'
-    'python-pystac-ext-label=1.0.1'
-    'python-pystac-ext-mgrs=1.0.0'
-    'python-pystac-ext-mlm=1.4.0'
-    'python-pystac-ext-pointcloud=1.0.0'
-    'python-pystac-ext-projection=2.0.0'
-    'python-pystac-ext-raster=1.1.0'
-    'python-pystac-ext-render=2.0.0'
-    'python-pystac-ext-sar=1.0.0'
-    'python-pystac-ext-sat=1.0.0'
-    'python-pystac-ext-scientific=1.0.0'
-    'python-pystac-ext-storage=2.0.0'
-    'python-pystac-ext-table=1.2.0'
-    'python-pystac-ext-timestamps=1.1.0'
-    'python-pystac-ext-version=1.2.0'
-    'python-pystac-ext-view=1.0.0'
-    'python-pystac-ext-xarray-assets=1.0.0'
+    'python-pystac-core=1.16.0'
+    'python-pystac-ext-classification=2.0.2'
+    'python-pystac-ext-datacube=2.2.2'
+    'python-pystac-ext-eo=1.1.2'
+    'python-pystac-ext-file=2.1.2'
+    'python-pystac-ext-grid=1.1.2'
+    'python-pystac-ext-item-assets=1.0.2'
+    'python-pystac-ext-label=1.0.3'
+    'python-pystac-ext-mgrs=1.0.2'
+    'python-pystac-ext-mlm=1.4.2'
+    'python-pystac-ext-pointcloud=1.0.2'
+    'python-pystac-ext-projection=2.0.2'
+    'python-pystac-ext-raster=1.1.2'
+    'python-pystac-ext-render=2.0.1'
+    'python-pystac-ext-sar=1.0.2'
+    'python-pystac-ext-sat=1.0.2'
+    'python-pystac-ext-scientific=1.0.2'
+    'python-pystac-ext-storage=2.0.2'
+    'python-pystac-ext-table=1.2.2'
+    'python-pystac-ext-timestamps=1.1.2'
+    'python-pystac-ext-version=1.2.2'
+    'python-pystac-ext-view=1.0.2'
+    'python-pystac-ext-xarray-assets=1.0.2'
 )
 conflicts=(
     'python-pystac-core'
@@ -95,10 +96,18 @@ conflicts=(
 source=(
     "$_pkgname-$pkgver.tar.gz::https://github.com/stac-utils/pystac/archive/refs/tags/v$pkgver.tar.gz"
     'python-3.14-http-error-cleanup.patch'
+    'dateutil-runtime.patch'
+    'check-dateutil-runtime.py'
+    'orjson-runtime.patch'
+    'check-orjson-runtime.py'
 )
 sha256sums=(
-    'ea0538dc34356d3f3538a7d4114f9692017a688ed0b0cab3e1b43dc39c6908c7'
+    '5d01effd8565d0abbc1fe52756fe476fb6449919274d56d0dff36911b59597f3'
     'b82504d06f1992b00b60cca645072c32ed33503b7f67fb42961baa855c5982b7'
+    '4c0a1817aa55598af6fd091ab69040c19f47bcab4945bd7d1e5ab94a173411c8'
+    '14f577a5885a4eec650963f48fc87da6c4ed5739684af63a42a680a55bce7c10'
+    '77fe643cd331010be33595e03b74999317137c1bd33b363feba237b67d6797a4'
+    '0657d0211d5c4fee3caab06a47a38ebdee5a1f1fac3cab33498f3dd1346e48bc'
 )
 
 prepare() {
@@ -107,6 +116,8 @@ prepare() {
     # one only as a status sentinel leaks it and turns ResourceWarning into a
     # test/runtime failure. Preserve the public generic exception directly.
     patch -Np1 -i "$srcdir/python-3.14-http-error-cleanup.patch"
+    patch -Np1 --fuzz=0 -i "$srcdir/dateutil-runtime.patch"
+    patch -Np1 --fuzz=0 -i "$srcdir/orjson-runtime.patch"
 }
 
 build() {
@@ -166,6 +177,11 @@ staged_site = Path(os.environ["PYSTAC_STAGED_SITE"]).resolve()
 assert module_path.is_relative_to(staged_site), (module_path, staged_site)
 PY
 
+    PYSTAC_STAGED_SITE="$checkdir$site" PYTHONPATH="$checkdir$site" \
+        python -P "$srcdir/check-dateutil-runtime.py"
+    PYSTAC_STAGED_SITE="$checkdir$site" PYTHONPATH="$checkdir$site" \
+        python -P "$srcdir/check-orjson-runtime.py"
+
     # Run the complete core and extension suites. Remote interactions are
     # replayed exclusively from the cassettes shipped in the release archive.
     PYTHONPATH="$checkdir$site" python -m pytest \
@@ -192,8 +208,8 @@ extensions = (
 for extension in extensions:
     importlib.import_module(f"pystac.extensions.{extension}")
 
-assert version("pystac") == "1.15.2"
-assert version("pystac-core") == "1.15.2"
+assert version("pystac") == "1.16.0"
+assert version("pystac-core") == "1.16.0"
 
 utc = datetime.timezone.utc
 cat = pystac.Catalog(id="sensors", description="demo catalog")

@@ -1,0 +1,48 @@
+--- a/core/pystac/stac_io.py
++++ b/core/pystac/stac_io.py
+@@ -4,6 +4,7 @@
+ import os
+ from abc import ABC, abstractmethod
+ from collections.abc import Callable
++from functools import lru_cache
+ from typing import TYPE_CHECKING, Any
+ 
+ import pystac
+@@ -20,6 +21,21 @@
+     import orjson
+ except ImportError:
+     orjson = None  # type: ignore[assignment]
++
++@lru_cache(maxsize=1)
++def _check_orjson_runtime():
++    # An optional VCS provider may expose only the generic Arch capability.
++    # Enforce upstream's real minimum only when selecting that JSON backend.
++    from importlib import metadata
++    from packaging.version import InvalidVersion, Version
++
++    try:
++        installed = metadata.version("orjson")
++        if Version(installed) < Version("3.5"):
++            raise ImportError(f"PySTAC requires orjson>=3.5, found {installed}")
++    except (metadata.PackageNotFoundError, InvalidVersion) as error:
++        raise ImportError(f"PySTAC orjson metadata is missing or invalid: {error}") from error
++
+ 
+ # Is urllib3 available?
+ try:
+@@ -100,6 +116,7 @@
+         """
+         result: dict[str, Any]
+         if orjson is not None:
++            _check_orjson_runtime()
+             result = orjson.loads(txt)
+         else:
+             result = json.loads(txt, *args, **kwargs)
+@@ -119,6 +136,7 @@
+             json_dict : The dictionary to serialize
+         """
+         if orjson is not None:
++            _check_orjson_runtime()
+             return orjson.dumps(json_dict, option=orjson.OPT_INDENT_2, **kwargs).decode(
+                 "utf-8"
+             )

@@ -1,0 +1,37 @@
+--- a/core/pystac/__init__.py
++++ b/core/pystac/__init__.py
+@@ -2,6 +2,23 @@
+ """
+ PySTAC is a library for working with SpatioTemporal Asset Catalogs (STACs)
+ """
++
++def _check_dateutil_runtime():
++    # AUR VCS providers may expose an unversioned capability. Keep the real
++    # upstream semantic minimum before importing the package's public API.
++    from importlib import metadata
++    from packaging.version import InvalidVersion, Version
++
++    try:
++        installed = metadata.version("python-dateutil")
++        if Version(installed) < Version("2.7.0"):
++            raise ImportError(f"PySTAC requires python-dateutil>=2.7.0, found {installed}")
++    except (metadata.PackageNotFoundError, InvalidVersion) as error:
++        raise ImportError(f"PySTAC python-dateutil is missing or invalid: {error}") from error
++
++
++_check_dateutil_runtime()
++del _check_dateutil_runtime
+ 
+ from pkgutil import extend_path
+ 
+--- a/core/pyproject.toml
++++ b/core/pyproject.toml
+@@ -22,7 +22,7 @@
+     "Programming Language :: Python :: 3.13",
+ ]
+ requires-python = ">=3.10"
+-dependencies = ["python-dateutil>=2.7.0"]
++dependencies = ["python-dateutil>=2.7.0", "packaging"]
+ 
+ [project.urls]
+ Documentation = "https://pystac.readthedocs.io"
