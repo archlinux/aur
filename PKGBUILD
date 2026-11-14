@@ -6,8 +6,8 @@ _appname=MatLivre
 pkgname=${_appname,,}
 pkgdesc="A fast live script editor and runtime for MATLAB code."
 
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.1.8
+pkgrel=1
 _gitversion=v${pkgver}
 
 arch=('x86_64')
@@ -30,7 +30,7 @@ options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz"
 		"${_appname,,}.xml")
-sha256sums=('7f2a6f7a5df5d56588e3d958682022797ae364e05c98e6c4f6de8847ee2ad4ba'
+sha256sums=('377712d7c4ee84efe88582ad3ee9b4a06061c4ea0b4c6ce68674f6d1a1bb170f'
             'dce2978f4a1507f4307b59f2946c491e2441c33a4524e5ae6078888cf9460681')
 
 prepare() {
