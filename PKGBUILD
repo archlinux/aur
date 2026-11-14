@@ -2,7 +2,7 @@
 # makepkg reads the annotated metadata variables after sourcing this recipe.
 # Maintainer: Music Player Contributors <https://github.com/selfAnnihilator/kaze>
 pkgname=kaze
-pkgver=2.0.5
+pkgver=2.1.0
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -39,7 +39,7 @@ source=(
 )
 # shellcheck disable=SC2034
 sha256sums=(
-    'dd310d1052dd8ee5a129623333487a34cc3a67fb3275a5861e286d24f0915697'
+    '26b5e95a790a2e92ee9e6b6a8864bdd1dcf592dedf6b2bd49fffd9407a474a42'
     'eaf39dc7d4a05cefeb1543018e5a2ae84148343e3b5a8de50ba365087d43dd0c'
 )
 
@@ -93,7 +93,6 @@ package() {
     # makepkg supplies pkgdir and srcdir to package().
     # shellcheck disable=SC2154
     install -Dm755 "$bin_dir/kaze" "$pkgdir/usr/bin/kaze"
-    install -Dm755 "$bin_dir/music-player-cli" "$pkgdir/usr/bin/music-player-cli"
 
     # shellcheck disable=SC2154
     install -Dm644 "$srcdir/kaze.desktop" "$pkgdir/usr/share/applications/kaze.desktop"
