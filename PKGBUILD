@@ -2,13 +2,14 @@
 # Contributor: Dimitris Kiziridis <dkiziridis at outlook dot com>
 pkgname=blackbox-terminal
 pkgver=0.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful terminal for GNOME"
 arch=('x86_64')
 url="https://gitlab.gnome.org/raggesilver/blackbox"
 license=('GPL-3.0-or-later')
 depends=(
   'graphene'
+  'gtk4'
   'json-glib'
   'libadwaita'
   'libgee'
@@ -20,6 +21,10 @@ depends=(
 makedepends=(
   'meson'
   'vala'
+)
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
 )
 optdepends=('nautilus-python: Nautilus extension')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/blackbox-v$pkgver.tar.gz")

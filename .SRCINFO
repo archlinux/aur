@@ -1,13 +1,16 @@
 pkgbase = blackbox-terminal
 	pkgdesc = A beautiful terminal for GNOME
 	pkgver = 0.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/raggesilver/blackbox
 	arch = x86_64
 	license = GPL-3.0-or-later
+	checkdepends = appstream
+	checkdepends = desktop-file-utils
 	makedepends = meson
 	makedepends = vala
 	depends = graphene
+	depends = gtk4
 	depends = json-glib
 	depends = libadwaita
 	depends = libgee
