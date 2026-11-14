@@ -1,0 +1,5 @@
+[file-finder-bin]
+source = "github"
+github = "anthonyamaro15/file-finder-rust"
+use_latest_release = true
+prefix = "v"
