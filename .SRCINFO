@@ -1,6 +1,6 @@
 pkgbase = warnaza
 	pkgdesc = Pure pixel color extraction from wallpaper for Linux desktop theming
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/MDiaznf23/warnaza
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = warnaza
 	depends = python-pillow
 	depends = python-numpy
 	depends = feh
-	source = https://files.pythonhosted.org/packages/source/w/warnaza/warnaza-1.0.1.tar.gz
-	sha256sums = 67c925e648efa0c4185cc4987cd6d74836a4428281ec3667d23c4f824e478f9c
+	source = https://files.pythonhosted.org/packages/source/w/warnaza/warnaza-1.0.2.tar.gz
+	sha256sums = 2e6e65e2bd1a44e71a84c52e94279aa26470a37a15b45546b9ed3de41060fd35
 
 pkgname = warnaza

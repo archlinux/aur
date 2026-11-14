@@ -1,6 +1,6 @@
 # Maintainer: Diaz <muhammaddiaznurfarizki@gmail.com>
 pkgname=warnaza
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Pure pixel color extraction from wallpaper for Linux desktop theming"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-pillow' 'python-numpy' 'feh')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/w/warnaza/warnaza-$pkgver.tar.gz")
-sha256sums=('67c925e648efa0c4185cc4987cd6d74836a4428281ec3667d23c4f824e478f9c')
+sha256sums=('2e6e65e2bd1a44e71a84c52e94279aa26470a37a15b45546b9ed3de41060fd35')
 
 build() {
     cd "warnaza-$pkgver"
