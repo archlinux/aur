@@ -13,7 +13,7 @@
 
 pkgname=chipass-git
 _gitname=ChiPass
-pkgver=r4947.g387a12b
+pkgver=2026.09.0.r98.g387a12b9
 pkgrel=1
 pkgdesc="Modern, secure, and open-source password manager (fork of KeePassXC)"
 arch=('i686' 'x86_64')
@@ -65,8 +65,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${_gitname}"
-    # git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
