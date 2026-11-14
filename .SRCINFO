@@ -1,6 +1,6 @@
 pkgbase = yank-bin
 	pkgdesc = Native clipboard history with self-hosted sync (GTK4 client and sync server)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/ca-x/yank
 	arch = x86_64
@@ -21,13 +21,13 @@ pkgbase = yank-bin
 	depends = harfbuzz
 	depends = libxcb
 	depends = pango
-	noextract = yank_0.3.0_amd64.deb
-	noextract = yank_0.3.0_arm64.deb
+	noextract = yank_0.3.1_amd64.deb
+	noextract = yank_0.3.1_arm64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = yank_0.3.0_amd64.deb::https://github.com/ca-x/yank/releases/download/v0.3.0/yank_0.3.0_amd64.deb
-	sha256sums_x86_64 = d9d1e155494b22e77b384e47b26e7ddbefee5c4daa25696cc8de1cfd91638abd
-	source_aarch64 = yank_0.3.0_arm64.deb::https://github.com/ca-x/yank/releases/download/v0.3.0/yank_0.3.0_arm64.deb
-	sha256sums_aarch64 = bf099345a6d91f12b1a0ea3876ca5b921773961d4b20e1a0f3536fa7e934e01b
+	source_x86_64 = yank_0.3.1_amd64.deb::https://github.com/ca-x/yank/releases/download/v0.3.1/yank_0.3.1_amd64.deb
+	sha256sums_x86_64 = 5a4e2aabf37af8a33870b9f755d37a74534fe48735f28c6cf0fc673b7a3bf401
+	source_aarch64 = yank_0.3.1_arm64.deb::https://github.com/ca-x/yank/releases/download/v0.3.1/yank_0.3.1_arm64.deb
+	sha256sums_aarch64 = 49444c586a74bf712e871a49a90be1f6a57b1d05484df592e3b96aca37e02b77
 
 pkgname = yank-bin
