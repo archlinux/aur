@@ -2,7 +2,7 @@
 # Contributor: fossdd <fossdd@pwned.life
 # Contributor: Arkadiusz Dzięgielewski <arek.dzski@gmail.com>
 pkgname=invidious
-pkgver=2.20261103.0
+pkgver=2.20261113.0
 pkgrel=1
 pkgdesc="Alternative front-end to YouTube"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ source=(https://github.com/iv-org/invidious/archive/refs/tags/v$pkgver.tar.gz
 	"invidious.sysusers"
 )
 sha512sums=(
-	 ccba4b6efe7bf3a6d2620ec8d000e9ce58fcd1505d9f055a269df53dde96e001dd7448fc9adbda5048b62019a696ace49ebd1f89dcb909020eaa6c123cfc92f8
+	 9715e35031e38cb5e7e0e549e28a6ae4d4e9280deb8b66715a6f36ec3a5e2c2b8eb7d78cdbf5f85279f416c38e5b2464b35255e0a8a7ccef91793dc4070b1b77
          3264d23c374ce3fa59e2c97c0db5c9a4ce860ebaf44c21e83922054d1da60415cb8a41e8fa24111204f30f11ac44cc7ba6e27f229d81f9d6ab1381867e03c1d6
  )
 
