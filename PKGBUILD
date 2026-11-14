@@ -1,6 +1,6 @@
 # Maintainer: YOUNES-2-wq <YOUNES-2-wq@users.noreply.github.com>
 pkgname=cachymonitor
-pkgver=1.4.4
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Gaming-oriented system monitor: FPS, 1% low, frametime, CPU/GPU/RAM/VRAM via MangoHud"
 arch=('any')
@@ -12,13 +12,15 @@ optdepends=('mangohud: in-game stats (FPS, 1% low, frametime)'
             'pciutils: GPU marketing name via lspci'
             'dmidecode: RAM type and speed (requires root)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('798273a3861242543485685655d4bf3905a2ce8d5e45f4e3eefc8859eea01c7a')
+sha256sums=('b94fa336eebc911185e59bb14f851df834954aa6c568ed84135f1bf09538cdc9')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
     # Application (le .py cherche son icone a cote de lui : on l'y installe aussi)
     install -Dm644 cachymonitor.py "$pkgdir/usr/share/cachymonitor/cachymonitor.py"
+    # Le code est reparti entre cachymonitor.py et le dossier cachymon/
+    install -Dm644 cachymon/*.py -t "$pkgdir/usr/share/cachymonitor/cachymon/"
     install -Dm644 cachymonitor.svg "$pkgdir/usr/share/cachymonitor/cachymonitor.svg"
 
     # Lanceur en ligne de commande
