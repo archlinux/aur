@@ -1,17 +1,17 @@
 # Maintainer: aeneby <aaron (at) sowry (dot) nz>
 
 pkgname=beansprout
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A DWM-style tiling window manager with built-in wallpaper and a clock/bar"
 arch=(x86_64)
 url="https://codeberg.org/beansprout/beansprout"
 license=(0BSD CC-BY-4.0 CC0-1.0 GPL-3.0-only HPND MIT Unlicense)
 conflicts=($pkgname-git)
-makedepends=(scdoc wayland-protocols zig)
+makedepends=(scdoc tllist wayland-protocols zig)
 depends=(fcft wayland libxkbcommon pixman)
 source=("https://codeberg.org/beansprout/beansprout/archive/v${pkgver}.tar.gz")
-sha256sums=('e30686b3074a47bdcfa5116fb6da782c0def87c38b51ed64a55a2c23c711a151')
+sha256sums=('610797fa4268e8d7725a6c523dd55f4552eff166ca02c7c31a9bbcc95e6d3704')
 
 build() {
     cd "$srcdir/$pkgname"
