@@ -1,7 +1,7 @@
 pkgbase = linsight
 	pkgdesc = Fast Linux system-monitoring dashboard with multi-GPU support
-	pkgver = 1.20.5
-	pkgrel = 3
+	pkgver = 1.20.6
+	pkgrel = 1
 	url = https://github.com/visorcraft/LinSight
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,7 +14,7 @@ pkgbase = linsight
 	depends = hicolor-icon-theme
 	optdepends = nvidia-utils: NVIDIA GPU monitoring via NVML
 	options = !lto
-	source = linsight-1.20.5.tar.gz::https://github.com/visorcraft/LinSight/archive/refs/tags/v1.20.5.tar.gz
-	sha256sums = 9cc005bb63702dc72fb900dc1dcd4777f96cd537c68d79d2e1ff6af41146b0c7
+	source = linsight-1.20.6.tar.gz::https://github.com/visorcraft/LinSight/archive/refs/tags/v1.20.6.tar.gz
+	sha256sums = 103a2cc81cfe426132ba57b455804a9ec6f6dd00ad126a82e792d292379b7452
 
 pkgname = linsight

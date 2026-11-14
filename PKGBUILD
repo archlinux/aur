@@ -1,8 +1,8 @@
 # Maintainer: VisorCraft LLC <packages@visorcraft.com>
 
 pkgname=linsight
-pkgver=1.20.5
-pkgrel=3
+pkgver=1.20.6
+pkgrel=1
 pkgdesc='Fast Linux system-monitoring dashboard with multi-GPU support'
 arch=('x86_64')
 url='https://github.com/visorcraft/LinSight'
@@ -12,7 +12,7 @@ makedepends=('cargo' 'qt6-tools' 'clang')
 optdepends=('nvidia-utils: NVIDIA GPU monitoring via NVML')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9cc005bb63702dc72fb900dc1dcd4777f96cd537c68d79d2e1ff6af41146b0c7')
+sha256sums=('103a2cc81cfe426132ba57b455804a9ec6f6dd00ad126a82e792d292379b7452')
 
 prepare() {
   cd "LinSight-$pkgver"
