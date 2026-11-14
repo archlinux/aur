@@ -54,10 +54,6 @@ prepare() {
 }
 
 build() {
-  cmake -S "$srcdir/$_srcdir/meo" -B native-build -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
-    -DMEO_UI_ROOT="$srcdir/meoui" -DBUILD_TESTING=OFF
-  cmake --build native-build --parallel 2
   meson setup engine-build "$srcdir/$_srcdir" --prefix=/usr --libdir=lib -Dprofile=release
   meson compile -C engine-build
   # The cloud desktop app (desktop-rs) pins its crates, including the qtbridge git
@@ -74,8 +70,6 @@ build() {
 }
 
 package() {
-  # Do not install the add_subdirectory MeoUI dependency a second time.
-  DESTDIR="$pkgdir" cmake -DCMAKE_INSTALL_LOCAL_ONLY=TRUE -P native-build/cmake_install.cmake
   DESTDIR="$pkgdir" meson install -C engine-build --no-rebuild
   # These three pure-Python modules are absent from Arch's repositories.
   # Stage their immutable upstream hashes, build offline, and keep them
