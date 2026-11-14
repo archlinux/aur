@@ -1,0 +1,447 @@
+diff --git a/browser-app.cpp b/browser-app.cpp
+index 2f47f3c..f2a676c 100644
+--- a/browser-app.cpp
++++ b/browser-app.cpp
+@@ -115,6 +115,10 @@ void BrowserApp::OnBeforeChildProcessLaunch(CefRefPtr<CefCommandLine> command_li
+ #ifdef _WIN32
+ 	std::string pid = std::to_string(GetCurrentProcessId());
+ 	command_line->AppendSwitchWithValue("parent_pid", pid);
++#elif !defined(__APPLE__)
++	if (gbm_no_linear) {
++		command_line->AppendSwitch("obs-gbm-no-linear");
++	}
+ #else
+ 	(void)command_line;
+ #endif
+@@ -126,6 +130,12 @@ void BrowserApp::OnBeforeCommandLineProcessing(const CefString &, CefRefPtr<CefC
+ 		bool enableGPU = command_line->HasSwitch("enable-gpu");
+ 		CefString type = command_line->GetSwitchValue("type");
+ 
++#if !defined(_WIN32) && !defined(__APPLE__)
++		/* GPU frame copy mode: the page is still rasterized and composited by the GPU process, CEF reads
++		 * each finished frame back and hands it to OnPaint. */
++		enableGPU = enableGPU || gpu_frame_copy;
++#endif
++
+ 		if (!enableGPU && type.empty()) {
+ 			command_line->AppendSwitch("disable-gpu-compositing");
+ 		}
+@@ -170,6 +180,9 @@ void BrowserApp::OnBeforeCommandLineProcessing(const CefString &, CefRefPtr<CefC
+ 	command_line->AppendSwitch("use-mock-keychain");
+ #elif !defined(_WIN32)
+ 	command_line->AppendSwitchWithValue("ozone-platform", wayland ? "wayland" : "x11");
++	if (angle_gl_egl && !wayland && !command_line->HasSwitch("use-angle")) {
++		command_line->AppendSwitchWithValue("use-angle", "gl-egl");
++	}
+ #endif
+ }
+ 
+diff --git a/browser-app.hpp b/browser-app.hpp
+index 0694d0c..2d13629 100644
+--- a/browser-app.hpp
++++ b/browser-app.hpp
+@@ -71,15 +71,25 @@ class BrowserApp : public CefApp, public CefRenderProcessHandler, public CefBrow
+ 	int callbackId;
+ #if !defined(__APPLE__) && !defined(_WIN32)
+ 	bool wayland;
++	/* Keep GPU compositing enabled although frames are delivered through OnPaint (no shared texture) */
++	bool gpu_frame_copy;
++	/* Run ANGLE on the system EGL instead of GLX (needed to share textures with the NVIDIA driver on X11) */
++	bool angle_gl_egl;
++	/* Tell the helper processes to request renderable GBM buffers instead of linear ones (NVIDIA driver) */
++	bool gbm_no_linear;
+ #endif
+ 
+ public:
+ #if defined(__APPLE__) || defined(_WIN32)
+ 	inline BrowserApp(bool shared_texture_available_ = false) : shared_texture_available(shared_texture_available_)
+ #else
+-	inline BrowserApp(bool shared_texture_available_ = false, bool wayland_ = false)
++	inline BrowserApp(bool shared_texture_available_ = false, bool wayland_ = false, bool gpu_frame_copy_ = false,
++			  bool angle_gl_egl_ = false, bool gbm_no_linear_ = false)
+ 		: shared_texture_available(shared_texture_available_),
+-		  wayland(wayland_)
++		  wayland(wayland_),
++		  gpu_frame_copy(gpu_frame_copy_),
++		  angle_gl_egl(angle_gl_egl_),
++		  gbm_no_linear(gbm_no_linear_)
+ #endif
+ 	{
+ 	}
+diff --git a/browser-client.cpp b/browser-client.cpp
+index de4587e..8c7ec36 100644
+--- a/browser-client.cpp
++++ b/browser-client.cpp
+@@ -424,10 +424,18 @@ void BrowserClient::OnAcceleratedPaint(CefRefPtr<CefBrowser>, PaintElementType t
+ 		return;
+ 	}
+ 
+-	uint32_t *strides = (uint32_t *)alloca(info.plane_count * sizeof(uint32_t));
+-	uint32_t *offsets = (uint32_t *)alloca(info.plane_count * sizeof(uint32_t));
+-	uint64_t *modifiers = (uint64_t *)alloca(info.plane_count * sizeof(uint64_t));
+-	int *fds = (int *)alloca(info.plane_count * sizeof(int));
++	/* The arrays hold every plane CEF can describe. They used to be sized by info.plane_count while the loop
++	 * below filled kAcceleratedPaintMaxPlanes entries, so with a single plane the writes ran past the end and
++	 * the modifier values landed on top of offsets[0]. That stayed invisible as long as the modifier was
++	 * DRM_FORMAT_MOD_LINEAR (zero), and made eglCreateImage fail for any other buffer layout. */
++	uint32_t strides[kAcceleratedPaintMaxPlanes] = {};
++	uint32_t offsets[kAcceleratedPaintMaxPlanes] = {};
++	uint64_t modifiers[kAcceleratedPaintMaxPlanes] = {};
++	int fds[kAcceleratedPaintMaxPlanes] = {};
++
++	if (info.plane_count > kAcceleratedPaintMaxPlanes) {
++		return;
++	}
+ 
+ 	/* NOTE: This a workaround under X11 where the modifier is always invalid where it can mean "no modifier" in
+ 	 * Chromium's code. */
+@@ -435,7 +443,7 @@ void BrowserClient::OnAcceleratedPaint(CefRefPtr<CefBrowser>, PaintElementType t
+ 		modifier = DRM_FORMAT_MOD_LINEAR;
+ 	}
+ 
+-	for (size_t i = 0; i < kAcceleratedPaintMaxPlanes; i++) {
++	for (size_t i = 0; i < (size_t)info.plane_count; i++) {
+ 		auto *plane = &info.planes[i];
+ 
+ 		strides[i] = plane->stride;
+diff --git a/cmake/os-linux.cmake b/cmake/os-linux.cmake
+index 4e636e0..cb6bd29 100644
+--- a/cmake/os-linux.cmake
++++ b/cmake/os-linux.cmake
+@@ -23,6 +23,16 @@ target_include_directories(browser-helper PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/d
+ target_compile_features(browser-helper PRIVATE cxx_std_20)
+ target_link_libraries(browser-helper PRIVATE CEF::Wrapper CEF::Library)
+ 
++# NVIDIA driver: the helper overrides a few libgbm entry points for Chromium's GPU process (see the source file).
++# Its symbols must be visible to the dynamic linker so that libcef resolves them to the helper.
++find_path(GBM_INCLUDE_DIR NAMES gbm.h REQUIRED)
++if(GBM_INCLUDE_DIR)
++  target_sources(browser-helper PRIVATE obs-browser-page/gbm-no-linear.c)
++  target_include_directories(browser-helper PRIVATE "${GBM_INCLUDE_DIR}")
++  target_link_libraries(browser-helper PRIVATE ${CMAKE_DL_LIBS})
++  set_target_properties(browser-helper PROPERTIES ENABLE_EXPORTS ON)
++endif()
++
+ target_sources(obs-browser PRIVATE deps/ip-string-posix.cpp)
+ 
+ set(OBS_EXECUTABLE_DESTINATION "${OBS_PLUGIN_DESTINATION}")
+diff --git a/obs-browser-page/gbm-no-linear.c b/obs-browser-page/gbm-no-linear.c
+new file mode 100644
+index 0000000..7a8aec4
+--- /dev/null
++++ b/obs-browser-page/gbm-no-linear.c
+@@ -0,0 +1,186 @@
++/******************************************************************************
++ NVIDIA driver: let Chromium's GPU process allocate buffers it can render to.
++
++ For shared texture rendering CEF asks Chromium for CPU-mappable shared images
++ (every CEF release up to 154, and newer ones where that default was restored).
++ On Linux Chromium turns that request into linear GBM buffers. The NVIDIA driver
++ cannot render into linear buffers, so every texture handed to
++ OnAcceleratedPaint stays empty.
++
++ Nothing maps these buffers on the CPU: the page is drawn into them by the GPU
++ process and OBS imports them as DMA-BUF textures. Asking the driver for a
++ renderable buffer in its own layout is therefore enough to make it work, and
++ the DRM format modifier Chromium reports then describes that real layout.
++
++ The functions below have the same names as the libgbm entry points. They live
++ in the executable, which comes first in the dynamic linker's lookup order, so
++ libcef calls them instead of libgbm's and they forward to the real ones. They
++ only change a request when the browser process started this helper with
++ --obs-gbm-no-linear, which obs-browser does for the NVIDIA driver only.
++
++ This program is free software: you can redistribute it and/or modify
++ it under the terms of the GNU General Public License as published by
++ the Free Software Foundation, either version 2 of the License, or
++ (at your option) any later version.
++ ******************************************************************************/
++
++#define _GNU_SOURCE
++#include <dlfcn.h>
++#include <stdint.h>
++#include <stdio.h>
++#include <string.h>
++
++#include <gbm.h>
++
++#ifndef DRM_FORMAT_MOD_LINEAR
++#define DRM_FORMAT_MOD_LINEAR 0ULL
++#endif
++
++#define SHIM_EXPORT __attribute__((visibility("default"), used))
++
++static const char switch_name[] = "--obs-gbm-no-linear";
++
++static int no_linear(void)
++{
++	static int enabled = -1;
++
++	if (enabled < 0) {
++		char buf[16384];
++		size_t len = 0;
++		FILE *f = fopen("/proc/self/cmdline", "rb");
++
++		enabled = 0;
++		if (f) {
++			len = fread(buf, 1, sizeof(buf) - 1, f);
++			fclose(f);
++		}
++		buf[len] = 0;
++
++		/* Chromium rewrites its argument area as one space separated string, so accept both separators. */
++		for (size_t i = 0; i < len; i++) {
++			if (buf[i] == 0) {
++				buf[i] = ' ';
++			}
++		}
++
++		for (const char *hit = strstr(buf, switch_name); hit; hit = strstr(hit + 1, switch_name)) {
++			const char end = hit[sizeof(switch_name) - 1];
++			if ((hit == buf || hit[-1] == ' ') && (end == 0 || end == ' ')) {
++				enabled = 1;
++				break;
++			}
++		}
++	}
++
++	return enabled;
++}
++
++static void report_once(void)
++{
++	static int reported = 0;
++
++	if (!reported) {
++		reported = 1;
++		fprintf(stderr,
++			"[obs-browser-page] NVIDIA: requesting renderable GBM buffers instead of linear ones\n");
++	}
++}
++
++static uint32_t renderable(uint32_t flags)
++{
++	return (flags & ~(uint32_t)GBM_BO_USE_LINEAR) | GBM_BO_USE_RENDERING;
++}
++
++SHIM_EXPORT struct gbm_bo *gbm_bo_create(struct gbm_device *gbm, uint32_t width, uint32_t height, uint32_t format,
++					 uint32_t flags)
++{
++	static struct gbm_bo *(*real)(struct gbm_device *, uint32_t, uint32_t, uint32_t, uint32_t) = NULL;
++
++	if (!real) {
++		real = dlsym(RTLD_NEXT, "gbm_bo_create");
++	}
++	if (!real) {
++		return NULL;
++	}
++
++	if ((flags & GBM_BO_USE_LINEAR) && no_linear()) {
++		struct gbm_bo *bo = real(gbm, width, height, format, renderable(flags));
++		if (bo) {
++			report_once();
++			return bo;
++		}
++	}
++
++	return real(gbm, width, height, format, flags);
++}
++
++SHIM_EXPORT struct gbm_bo *gbm_bo_create_with_modifiers(struct gbm_device *gbm, uint32_t width, uint32_t height,
++							uint32_t format, const uint64_t *modifiers,
++							const unsigned int count)
++{
++	static struct gbm_bo *(*real)(struct gbm_device *, uint32_t, uint32_t, uint32_t, const uint64_t *,
++				      const unsigned int) = NULL;
++
++	if (!real) {
++		real = dlsym(RTLD_NEXT, "gbm_bo_create_with_modifiers");
++	}
++	if (!real) {
++		return NULL;
++	}
++
++	/* Chromium narrows the list to the linear modifier when it wants a CPU-mappable buffer. */
++	if (count == 1 && modifiers && modifiers[0] == DRM_FORMAT_MOD_LINEAR && no_linear()) {
++		struct gbm_bo *bo = gbm_bo_create(gbm, width, height, format,
++						  GBM_BO_USE_LINEAR | GBM_BO_USE_SCANOUT);
++		if (bo) {
++			return bo;
++		}
++	}
++
++	return real(gbm, width, height, format, modifiers, count);
++}
++
++SHIM_EXPORT struct gbm_bo *gbm_bo_create_with_modifiers2(struct gbm_device *gbm, uint32_t width, uint32_t height,
++							 uint32_t format, const uint64_t *modifiers,
++							 const unsigned int count, uint32_t flags)
++{
++	static struct gbm_bo *(*real)(struct gbm_device *, uint32_t, uint32_t, uint32_t, const uint64_t *,
++				      const unsigned int, uint32_t) = NULL;
++
++	if (!real) {
++		real = dlsym(RTLD_NEXT, "gbm_bo_create_with_modifiers2");
++	}
++	if (!real) {
++		return NULL;
++	}
++
++	if (count == 1 && modifiers && modifiers[0] == DRM_FORMAT_MOD_LINEAR && no_linear()) {
++		struct gbm_bo *bo = gbm_bo_create(gbm, width, height, format, flags | GBM_BO_USE_LINEAR);
++		if (bo) {
++			return bo;
++		}
++	}
++
++	return real(gbm, width, height, format, modifiers, count, flags);
++}
++
++SHIM_EXPORT struct gbm_bo *gbm_bo_import(struct gbm_device *gbm, uint32_t type, void *buffer, uint32_t flags)
++{
++	static struct gbm_bo *(*real)(struct gbm_device *, uint32_t, void *, uint32_t) = NULL;
++
++	if (!real) {
++		real = dlsym(RTLD_NEXT, "gbm_bo_import");
++	}
++	if (!real) {
++		return NULL;
++	}
++
++	if ((flags & GBM_BO_USE_LINEAR) && no_linear()) {
++		struct gbm_bo *bo = real(gbm, type, buffer, renderable(flags));
++		if (bo) {
++			return bo;
++		}
++	}
++
++	return real(gbm, type, buffer, flags);
++}
+diff --git a/obs-browser-plugin.cpp b/obs-browser-plugin.cpp
+index 3c6f163..3b2a4f8 100644
+--- a/obs-browser-plugin.cpp
++++ b/obs-browser-plugin.cpp
+@@ -23,6 +23,8 @@
+ #include <util/dstr.hpp>
+ #include <obs-module.h>
+ #include <obs.hpp>
++#include <cstdlib>
++#include <cstring>
+ #include <functional>
+ #include <sstream>
+ #include <thread>
+@@ -79,6 +81,16 @@ static std::wstring deviceId;
+ 
+ bool hwaccel = false;
+ 
++#if !defined(_WIN32) && !defined(__APPLE__)
++/* Linux: how browser sources use the GPU when hardware acceleration is enabled in the OBS settings.
++ *  - zero copy:  CEF shares its frames with OBS as DMA-BUF textures (hwaccel == true)
++ *  - frame copy: the page is still rendered by the GPU, but each finished frame is read back and
++ *                delivered through OnPaint (gpu_frame_copy == true, hwaccel == false)
++ *  - software:   the page is rendered on the CPU (both false) */
++static bool gpu_frame_copy = false;
++static bool nvidia_driver = false;
++#endif
++
+ namespace {
+ // Naive conversions between char* (Ex. from libobs) and filesystem::path using the platform codepage.
+ std::filesystem::path pathFromUtf8(const char *path)
+@@ -377,15 +389,32 @@ static void BrowserInit(void)
+ 		hwaccel = tex_sharing_avail = gs_shared_texture_available();
+ #else
+ 		hwaccel = tex_sharing_avail = obs_cef_all_drm_formats_supported();
++
++		if (!hwaccel && nvidia_driver) {
++			gpu_frame_copy = true;
++			blog(LOG_INFO, "[obs-browser]: DMA-BUF texture sharing is not available with this "
++				       "NVIDIA driver, falling back to GPU rendering with frame copy.");
++		}
+ #endif
+ 		obs_leave_graphics();
+ 	}
+ #endif
+ 
+-#if defined(__APPLE__) || defined(_WIN32) || !defined(ENABLE_WAYLAND)
++#if defined(__APPLE__) || defined(_WIN32)
+ 	app = new BrowserApp(tex_sharing_avail);
+ #else
+-	app = new BrowserApp(tex_sharing_avail, obs_get_nix_platform() == OBS_NIX_PLATFORM_WAYLAND);
++	bool wayland = false;
++#ifdef ENABLE_WAYLAND
++	wayland = obs_get_nix_platform() == OBS_NIX_PLATFORM_WAYLAND;
++#endif
++	/* Zero copy with the NVIDIA driver needs two adjustments: ANGLE on the system EGL under X11, and
++	 * renderable buffers instead of the linear ones Chromium asks for (see obs-browser-page/gbm-no-linear.c).
++	 * OBS_BROWSER_NVIDIA_GBM_FIX=0 turns the second one off. */
++	const bool nvidia_zero_copy = nvidia_driver && tex_sharing_avail;
++	const char *gbm_fix = getenv("OBS_BROWSER_NVIDIA_GBM_FIX");
++	const bool gbm_no_linear = nvidia_zero_copy && !(gbm_fix && strcmp(gbm_fix, "0") == 0);
++
++	app = new BrowserApp(tex_sharing_avail, wayland, gpu_frame_copy, nvidia_zero_copy, gbm_no_linear);
+ #endif
+ 
+ #ifdef _WIN32
+@@ -726,16 +755,57 @@ static void check_hwaccel_support(void)
+ 	glVersion = gs_get_driver_version();
+ 	obs_leave_graphics();
+ 
+-	if (!glVersion) {
+-		return;
++	nvidia_driver = glVersion && strstr(glVersion, "NVIDIA") != NULL;
++
++	/* The NVIDIA driver cannot be trusted with DMA-BUF texture sharing: it needs DRI3 under X11 (only in the
++	 * 595 driver series and later, so never for the cards limited to the 580 or 470 series) and a CEF build
++	 * that allocates the shared buffers in a way the driver can render to. Rather than dropping to CPU
++	 * rendering as upstream does, keep the GPU for rasterization and compositing and let CEF copy the
++	 * finished frames to OBS.
++	 *
++	 * OBS_BROWSER_GPU_MODE overrides the choice:
++	 *   zerocopy  share frames as DMA-BUF textures (default, except with the NVIDIA driver)
++	 *   copy      GPU rendering, frames copied to OBS (default with the NVIDIA driver)
++	 *   software  CPU rendering */
++	enum class Mode { ZeroCopy, Copy, Software };
++	Mode mode = nvidia_driver ? Mode::Copy : Mode::ZeroCopy;
++	const char *source = "default";
++
++	const char *env = getenv("OBS_BROWSER_GPU_MODE");
++	if (env && *env && strcmp(env, "auto") != 0) {
++		source = "OBS_BROWSER_GPU_MODE";
++		if (strcmp(env, "zerocopy") == 0) {
++			mode = Mode::ZeroCopy;
++		} else if (strcmp(env, "copy") == 0) {
++			mode = Mode::Copy;
++		} else if (strcmp(env, "software") == 0) {
++			mode = Mode::Software;
++		} else {
++			source = "default";
++			blog(LOG_WARNING,
++			     "[obs-browser]: Ignoring unknown OBS_BROWSER_GPU_MODE '%s' "
++			     "(expected zerocopy, copy or software).",
++			     env);
++		}
+ 	}
+ 
+-	if (strstr(glVersion, "NVIDIA") != NULL) {
++	switch (mode) {
++	case Mode::ZeroCopy:
++		blog(LOG_INFO, "[obs-browser]: GPU mode: zero copy, frames shared as DMA-BUF textures (%s%s).",
++		     source, nvidia_driver ? ", NVIDIA driver: experimental" : "");
++		break;
++	case Mode::Copy:
+ 		hwaccel = false;
++		gpu_frame_copy = true;
+ 		blog(LOG_INFO,
+-		     "[obs-browser]: Blacklisted driver detected, disabling browser source hardware acceleration.");
++		     "[obs-browser]: GPU mode: frame copy, pages rendered by the GPU and frames copied to OBS (%s%s).",
++		     source, nvidia_driver ? ", NVIDIA driver" : "");
++		break;
++	case Mode::Software:
++		hwaccel = false;
++		blog(LOG_INFO, "[obs-browser]: GPU mode: software, pages rendered on the CPU (%s).", source);
++		break;
+ 	}
+-	return;
+ }
+ #else
+ static void check_hwaccel_support(void)

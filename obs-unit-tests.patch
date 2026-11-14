@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,4 +34,9 @@ add_subdirectory(test/test-input)
+ 
+ add_subdirectory(frontend)
+ 
++include(CTest)
++if(BUILD_TESTING)
++  add_subdirectory(test/cmocka)
++endif()
++
+ message_configuration()
