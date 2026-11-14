@@ -1,7 +1,7 @@
 # Maintainer: Ramazan Berk Şirin <ramazanberksirin at protonmail dot com>
 
 pkgname=bettertricks
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Recovery-first Wine prefix manager and Winetricks-compatible recipe engine"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('rust' 'nodejs' 'pnpm' 'libayatana-appindicator' 'librsvg')
 optdepends=('zenity: graphical prompts for compatibility-host recipes')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('01b159818e1cf7b7ff27dfa97291cfd0d338eef10c7e3810da9fa3215c0cde38')
+sha256sums=('e8c60af34b50fb194147e401210d4774df8318e8665d8ed254514cc67f324323')
 
 prepare() {
   cd "Bettertricks-$pkgver"
