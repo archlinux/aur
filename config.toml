@@ -1,0 +1,17 @@
+# crw configuration.
+# pacman backup file: package upgrades will not overwrite your changes.
+# Full reference: https://github.com/fastcrw/crw/blob/master/config.default.toml
+# Any key can also be overridden by an environment variable: CRW_<SECTION>__<KEY>
+#   e.g. to enable /v1/search, point CRW_SEARCH__SEARXNG_URL at a SearXNG instance
+#        to enable JS rendering, point CRW_RENDERER__CHROME__WS_URL at a CDP endpoint
+
+[server]
+host = "127.0.0.1"       # bind address; use 0.0.0.0 to expose the API on the network
+port = 3000              # Firecrawl-compatible API port
+rate_limit_rps = 0       # global requests/second cap; 0 = unlimited
+
+[request]
+deadline_ms_default = 15000
+
+[renderer]
+mode = "auto"            # auto | lightpanda | playwright | chrome | camoufox | none

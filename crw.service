@@ -1,0 +1,29 @@
+[Unit]
+Description=crw web scraper API（Firecrawl 兼容）
+Documentation=https://github.com/fastcrw/crw
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/crw-server
+Environment=CRW_USER_CONFIG_DIR=/etc/crw
+Restart=always
+RestartSec=2
+
+# 用 systemd 沙箱替代容器的隔离
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryMax=1G
+TasksMax=256
+
+[Install]
+WantedBy=default.target
