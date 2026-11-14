@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A TUI server monitoring and management dashboard for Linux. Real-time metrics, logs, and remote control from your terminal"
 
-pkgver=0.0.48
+pkgver=0.0.49
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,11 +30,11 @@ source=("WIDGETS-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/widge
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('22344c612b2dca52a2abf29515d4c0d1068e27fd9ff404e5a9110f3bc1c6ce65'
+sha256sums=('f1ae73346671816069834cf6503741249b8ba7d4d59ddc5bb2f478ba2908ba4e'
             '48c9224eaad0665d4e645c25e8f571c31706eab1009ad7a6d388a1ed7cd30e87'
             '2c10c21061c318db599bce29e1a1ed265f1e91bb7a84c6a852e39b359b24539f')
-sha256sums_x86_64=('87dd6ec42b45da177b923a7db47a0a9f1134f4c5360e6546b5e3cb4bf4047c9f')
-sha256sums_aarch64=('9d7ff3232e49b42ea1d7a97d0a7fbb6af223c102340543955809692edc4a4159')
+sha256sums_x86_64=('55f2240f37221876675f0237c4c5c74a2e06f46888d377e1ffb943d0687fa60f')
+sha256sums_aarch64=('77770d53c8247b6917aa667e006f6a48daad9303e1db0df8112fdef9c8b383b2')
 
 
 package() {
