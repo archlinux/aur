@@ -16,8 +16,8 @@ pkgbase = castsound-bin
 	source = .managed_by_aur
 	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 	source_x86_64 = CastSound-1.0.36-linux-x86_64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v1.0.36/CastSound-1.0.36-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 8889ed11d5a5bf1ada895adaa0bcebd6546e1d0b999b9f5b2786c5ff8393d335
+	sha256sums_x86_64 = d13b114b97baed6b9ecd801c2036ed20dd8d81d363aa20cba19584b9c16aca03
 	source_aarch64 = CastSound-1.0.36-linux-aarch64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v1.0.36/CastSound-1.0.36-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 8c97400d36dbd0177e2ac639588f035bd043b93aa5b420418f517615696f02e7
+	sha256sums_aarch64 = ed25d8a888b71a013f23c63d05f2961413955ef991ee5db818523e7df0aed043
 
 pkgname = castsound-bin
