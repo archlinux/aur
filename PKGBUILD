@@ -1,5 +1,5 @@
 pkgname=sdroxide-soapysdr
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Powerful SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (SoapySDR-enabled version)"
 arch=('x86_64' 'aarch64')
@@ -78,18 +78,18 @@ source=("sdroxide-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "xng-$_xng_commit.tar.gz::https://github.com/airframesio/xng/archive/$_xng_commit.tar.gz"
         "mercury-$_mercury_commit.tar.gz::https://github.com/Rhizomatica/mercury/archive/$_mercury_commit.tar.gz"
         "data2g-$_data2g_commit.tar.gz::https://github.com/arodland/Data2G/archive/$_data2g_commit.tar.gz")
-sha256sums=('0166fa622092c32bbfbe971d07431ab6b56e606ddc958f51f535584cd8abfa98'
+sha256sums=('2d2d66c0004bbd34c11960e16216bc6475c5d9ee96a702e7e8bfa273d66b1f94'
             'eaba2ecbe61dc48748bc62f08b2eb623bccd5b21b8228bf42dedc0e232edf7cd'
             '6e164f38216f46f1d08494c2adeaa7c72d7f3d5456e0b8c5ae424159d7051753'
             '98725cefc915771f00ffd0286901c865e7d3fd0e5ff6b98d004d6f48904776f9'
             '2d7339ef9e89e711641838034ab2d039dbae9d5e907a786f39df1b931395aebe'
             '48796f32d433806b073dd400eca7f7d48a06b252ad90f4539d9837f36fc36431'
             '953355cac4a83b24c32c15f89418517c2d13f944147d0c804f458b7b38be6d71')
+sha256sums_x86_64=('61d4a7dc85acfa0d2354ccc0b8361928c7e52a746d17f28ebaa795ed3dc1614a')
+sha256sums_aarch64=('1ce0ebd74e378d989651091f93c917bd7700996945d4c5ce37ec9507f149225c')
 
 source_x86_64=("https://github.com/wasm-bindgen/wasm-bindgen/releases/download/$_wasm_bindgen_ver/wasm-bindgen-$_wasm_bindgen_ver-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("https://github.com/wasm-bindgen/wasm-bindgen/releases/download/$_wasm_bindgen_ver/wasm-bindgen-$_wasm_bindgen_ver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('61d4a7dc85acfa0d2354ccc0b8361928c7e52a746d17f28ebaa795ed3dc1614a')
-sha256sums_aarch64=('1ce0ebd74e378d989651091f93c917bd7700996945d4c5ce37ec9507f149225c')
 
 prepare() {
   cd "sdroxide-$pkgver"
