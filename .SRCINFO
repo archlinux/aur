@@ -1,6 +1,6 @@
 pkgbase = mandible-bin
 	pkgdesc = A TUI manual viewer for every command-line tool you have
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/AS-FOSS/mandible
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = mandible-bin
 	provides = mandible
 	conflicts = mandible
 	options = !strip
-	source_x86_64 = mandible-x86_64-0.9.0.tgz::https://github.com/AS-FOSS/mandible/releases/download/v0.9.0/mandible-v0.9.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 7da89343b7e7f7a4263a1362760770cda11c57ea08265387054cdfb9ffe3a2b7
-	source_aarch64 = mandible-aarch64-0.9.0.tgz::https://github.com/AS-FOSS/mandible/releases/download/v0.9.0/mandible-v0.9.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = e7186adef0ae4107b2a903f1ddf0ec4052f5151e233b3395deb10f455b614372
+	source_x86_64 = mandible-x86_64-0.9.1.tgz::https://github.com/AS-FOSS/mandible/releases/download/v0.9.1/mandible-v0.9.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 09ac325aaf12d38524bd5887c670fbb939d5338dedba72d2e6bb2405e5a0a25d
+	source_aarch64 = mandible-aarch64-0.9.1.tgz::https://github.com/AS-FOSS/mandible/releases/download/v0.9.1/mandible-v0.9.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d7feb37599e5bb6675b73cd220e430c0cd2710cbc60a4d527ea0b4e65693df55
 
 pkgname = mandible-bin
