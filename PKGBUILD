@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=imsprog-git
-pkgver=1.9.1.r99.gc6dccb6
+pkgver=1.9.2.r0.gf74c84a
 pkgrel=1
 pkgdesc="I2C, MicroWire and SPI EEPROM/Flash chip Programmer - is a program to read, write EEPROM chips use the CH341A programmer device and CH347T programmer device"
 arch=($CARCH)
@@ -11,6 +11,7 @@ provides=(${pkgname%-git} imsprog-programmer imsprog-editor imsprog-database-upd
 conflicts=(${pkgname%-git} imsprog-programmer imsprog-editor imsprog-database-update)
 _qt=qt6
 depends=(
+  hicolor-icon-theme
   libgcc_s.so
   libstdc++.so
   libftdi

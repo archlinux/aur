@@ -1,6 +1,6 @@
 pkgbase = imsprog-git
 	pkgdesc = I2C, MicroWire and SPI EEPROM/Flash chip Programmer - is a program to read, write EEPROM chips use the CH341A programmer device and CH347T programmer device
-	pkgver = 1.9.1.r99.gc6dccb6
+	pkgver = 1.9.2.r0.gf74c84a
 	pkgrel = 1
 	url = https://github.com/bigbigmdm/IMSProg
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = imsprog-git
 	makedepends = git
 	makedepends = ninja
 	makedepends = qt6-tools
+	depends = hicolor-icon-theme
 	depends = libgcc_s.so
 	depends = libstdc++.so
 	depends = libftdi
