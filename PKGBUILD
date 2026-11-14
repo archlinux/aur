@@ -10,30 +10,28 @@ pkgname=(
   waterfox-multi-account-containers-lite
 )
 
-pkgver=8.4.1000
+pkgver=8.4000.0
 pkgrel=1
 pkgdesc="Debranded Multi-Account-Containers fork from Konform Browser for separate installation"
 arch=('any')
 license=('MPL-2.0')
 groups=('firefox-addons')
-makedepends=('git' 'node-gyp' 'npm' 'pnpm' 'strip-nondeterminism' 'zip')
+makedepends=('git' 'node-gyp' 'pnpm' 'strip-nondeterminism' 'zip')
 url=https://codeberg.org/Konsortium/multi-account-containers-lite
-_commit=61cf6128d1b60a964661b3518d2230b1127bc978
+_commit=218f7a49d4a9b4ba4119a6e008fa87d98642108d
 source=(
   "mac::git+${url}#commit=$_commit"
-  "0001-test-nyc-18.patch"
-  "0002-test-priming.patch"
+  "0001-test-priming.patch"
 )
-sha512sums=('3672488bba7c2daaf25ee8767a6a8a8c2d7cc25f1c46f8439c828cc4d5869dc1b32e9dc04ccccf8ca859720cc8b0a038df000af48ddab106c50a0b98b277cc72'
-            '35690941f17e3960571e748e0752a8413d7117e7488c9f982c97b3a1f843f747a4eda7a865e46e2b1f5c3209ae6f4cc7beb0525987c529077bda388ceda4ffe3'
+sha512sums=('1c446e0635b44d72a048befe46b8d53a12545607fa9ea7ee55722537ac7025d6690ba826de61081b041955bff253d66e3046cf6459310b6c7b84b95fd9ceb8a8'
             '0de8914b79d0de4467dc6e139dd2be43296db2fc87e27140813d8af30d6126bc9567e6867a07f68fef1d421b435dd8c8b1c04fa126f6ff9e16a642b2b561eac3')
 
 prepare() {
   cd "mac"
   git submodule update --init --recursive
-  patch -p1 < ../0001-test-nyc-18.patch
-  patch -p1 < ../0002-test-priming.patch
-  pnpm i
+  patch -p1 < ../0001-test-priming.patch
+  sed -i 's,^npx ,./node_modules/.bin/,' bin/*.sh
+  pnpm install --ignore-scripts --no-hoist --frozen-lockfile # --no-runtime -y
 }
 
 build() {
