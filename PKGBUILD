@@ -3,13 +3,13 @@
 _pkgname='pavucontrol-qt'
 pkgname="${_pkgname}-git"
 pkgver=2.5.1.r1.g8006d3e
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt port of pavucontrol'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/lxqt/${_pkgname}"
 license=('GPL-2.0-only')
 depends=('libpulse' 'qt6-base')
-optdepends=('pulseaudio')
+optdepends=('pulseaudio: Use PulseAudio server running on the same host as pavucontrol-qt.')
 makedepends=('git' 'cmake' 'qt6-tools' 'lxqt-build-tools-git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
