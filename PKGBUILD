@@ -1,19 +1,19 @@
 # Maintainer: monsoon <29970829+monsoon235@users.noreply.github.com>
 pkgname=llama.cpp-rocm-bin
-pkgver=b12024
+pkgver=b12378
 pkgrel=1
 pkgdesc='llama.cpp upstream prebuilt binaries with the ROCm backend'
 arch=('x86_64')
 url='https://github.com/ggml-org/llama.cpp'
 license=('MIT')
 # Initial dependency candidates. Confirm with scripts/docker-check.sh before publishing.
-depends=('glibc' 'gcc-libs' 'openssl' 'hip-runtime-amd' 'hipblas' 'rocblas')
+depends=('glibc' 'gcc-libs' 'openssl-3' 'hip-runtime-amd' 'hipblas' 'rocblas')
 provides=('llama.cpp')
 conflicts=('llama.cpp')
 options=('!strip' '!debug')
 _rocmver=10.0
 source=("https://github.com/ggml-org/llama.cpp/releases/download/${pkgver}/llama-${pkgver}-bin-ubuntu-rocm-${_rocmver}-x64.tar.gz")
-sha256sums=('de7db2963fc9ee333fec190e016798ee97adc581be45aa9f57b88317b73651e2')
+sha256sums=('783734f02359b9add530247d20d6d31a27f593130773417703075204904c2fd5')
 
 package() {
     local upstream="$srcdir/llama-$pkgver" executable
