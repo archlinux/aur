@@ -1,13 +1,16 @@
 pkgbase = cockpit-caddy
 	pkgdesc = Caddy reverse proxy management plugin for Cockpit
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/RXTX4816/cockpit-caddy
 	arch = any
+	license = AGPL-3.0-only
 	license = MIT
+	license = 0BSD
+	license = OFL-1.1
 	depends = cockpit
 	optdepends = caddy: the reverse proxy server this plugin manages
-	source = cockpit-caddy-0.8.0.tar.gz::https://github.com/RXTX4816/cockpit-caddy/releases/download/v0.8.0/cockpit-caddy-0.8.0.tar.gz
-	sha256sums = 3fb4401361a63045f19810b5af5747acb24ef4e0e82fd6d6b2b4e6e352a6379b
+	source = cockpit-caddy-0.9.0.tar.gz::https://github.com/RXTX4816/cockpit-caddy/releases/download/v0.9.0/cockpit-caddy-0.9.0.tar.gz
+	sha256sums = 62c8f7011e71005e5e786eb51aed9ba0ec16d634b96f025346fa9a216b708dae
 
 pkgname = cockpit-caddy
