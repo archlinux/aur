@@ -4,7 +4,7 @@
 
 pkgname=libdxfrw
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ library to read/write DXF files in binary and ASCII form and to read DWG files from r14 to v2015"
 url="https://github.com/LibreCAD/libdxfrw"
 license=('GPL-2.0-only')
@@ -25,7 +25,7 @@ function prepare
   #
   # Lors d'une reconstruction, l'ancien dossier doit être supprimé de manière
   # sécurisée.
-  rm -Rf "$pkgdir/$pkgname-$pkgver"
+  rm -Rf "$srcdir/$pkgname-$pkgver"
   mv "$pkgname-LC$pkgver" "$pkgname-$pkgver"
 }
 
@@ -35,9 +35,8 @@ function build
 
   # La constrution est configurée dans un dossier *build*.
   #
-  # TODO Supprimer le contournement suivant lorsque cela est possible.
-  # La version de CMake minimale demandée n'est pas en adéquation avec celle
-  # du système. Elle est donc forcée.
+  # HACK: La version de CMake minimale demandée n'est pas en adéquation avec
+  # celle du système. Elle est donc forcée.
   cmake -DCMAKE_INSTALL_PREFIX="/usr" \
       -DCMAKE_INSTALL_LIBDIR="lib" \
       -S . \

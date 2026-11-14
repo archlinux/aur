@@ -1,7 +1,7 @@
 pkgbase = libdxfrw
 	pkgdesc = C++ library to read/write DXF files in binary and ASCII form and to read DWG files from r14 to v2015
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/LibreCAD/libdxfrw
 	arch = x86_64
 	license = GPL-2.0-only
