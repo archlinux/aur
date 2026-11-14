@@ -8,8 +8,8 @@
 # The stress test plugin is not built or packaged.
 
 pkgname=veiland
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Wayland screen locker with process-isolated GPU plugins"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sylflo/veiland"
@@ -38,9 +38,13 @@ depends=('pam' 'libglvnd' 'mesa' 'libdrm' 'wayland' 'libxkbcommon'
 # build scripts find the libraries above.
 makedepends=('rust' 'cargo' 'pkgconf')
 
+# Fingerprint unlock ([fingerprint] enabled = true) needs fprintd, which
+# also ships the pam_fprintd module /etc/pam.d/veiland-fingerprint loads.
+optdepends=('fprintd: fingerprint unlock')
+
 # /etc/pam.d/veiland is config: never clobber a user's edited copy on
 # upgrade (Arch analog of a Debian conffile / rpm %config(noreplace)).
-backup=('etc/pam.d/veiland')
+backup=('etc/pam.d/veiland' 'etc/pam.d/veiland-fingerprint')
 
 # Built from the GitHub release tarball (this is what the AUR copy of
 # this file needs). CI still builds the checked-out tree: packages.yml
@@ -49,7 +53,7 @@ backup=('etc/pam.d/veiland')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # sha256 of the v$pkgver GitHub release tarball. Regenerate on each bump:
 #   curl -sL "$url/archive/refs/tags/v$pkgver.tar.gz" | sha256sum
-sha256sums=('bfb4c406582d9a3d310685951490712c0a4c335fd0f3cfd394541fdbdcb957fc')
+sha256sums=('dcab2996bf1f9e31625f9b84f4ec6b764d555c25aecd69f3c395680da5f297d5')
 
 # The real set, as -p flags shared by build() and check().
 _crates=(
@@ -156,6 +160,8 @@ package() {
   # PAM service (Arch uses the system-auth variant).
   install -Dm644 "packaging/pam/veiland.system-auth" \
     "$pkgdir/etc/pam.d/veiland"
+  install -Dm644 "packaging/pam/veiland-fingerprint" \
+    "$pkgdir/etc/pam.d/veiland-fingerprint"
 
   # Example config the user copies into ~/.config/veiland/.
   install -Dm644 "packaging/veiland.example.toml" \
