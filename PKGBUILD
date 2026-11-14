@@ -1,6 +1,6 @@
 # Maintainer: Ramazan Berk Şirin <ramazanberksirin@protonmail.com>
 pkgname=open-chess-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Open Chess with variants, AI, LAN multiplayer and puzzles (Flutter + Rust)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip' '!debug')
 source=("open-chess-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/open-chess-$pkgver-linux-x86_64.tar.gz"
         "open-chess-$pkgver.png::$url/raw/v$pkgver/assets/icon/open-chess.png"
         "LICENSE-$pkgver::$url/raw/v$pkgver/LICENSE")
-sha256sums=('73a0d7451bb54e1dad3acf6790b5afdad72f9384c2d244e8b492d3c7649a7af2'
+sha256sums=('415d2c1700c140e07582027296d26fca5c260a8308b9411f1e427b1913d70188'
             '9efa459a11c5871c9d7a93ae64ad27554003b1aff89697ef2bb15db49abfb2a2'
             '6eb2f4b140c36afd8d7ea0a4e96e96cfaaaa691e9ad7c291bcc3b64766f178c4')
 
