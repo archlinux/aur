@@ -4,12 +4,16 @@
 # Contributor: Jesse R Codling <codling@umich.edu>
 
 url="https://www.amd.com/en/developer/aocl.html"
-_major=5-2
-pkgver=5.2.0
+_major=6-0
+pkgver=6.0.0
+_sha256sum1=''
+_sha256sum2=''
 
-_fetch_data=$(curl -sA "Mozilla" "${url}") && {
-    pkgver=$(echo "${_fetch_data}" | grep -oP 'aocl-linux-aocc-\K[\d.]+(?=\.tar\.gz)' | head -1)
-    _major=$(echo "${_fetch_data}" | grep -oP 'aocl-\K\d+-\d+(?=-eula)' | head -1)
+_fetch_data=$(curl -sA 'Mozilla' "${url}") && {
+    _major=$(echo      "${_fetch_data}" | sed -n '/aocl-linux-aocc.*\.tar\.gz/s/.*aocl-\([0-9]\+-[0-9]\+\)-eula.*/\1/p'                 | head -1)
+    pkgver=$(echo      "${_fetch_data}" | sed -n '/aocl-linux-aocc.*\.tar\.gz/s/.*aocl-linux-aocc-\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p' | head -1)
+    _sha256sum1=$(echo "${_fetch_data}" | sed -n '/aocl-linux-aocc.*\.tar\.gz/s/.*| \([a-f0-9]\{64\}\) |.*/\1/p'                        | head -1)
+    _sha256sum2=$(echo "${_fetch_data}" | sed -n '/aocl-linux-gcc.*\.tar\.gz/s/.*| \([a-f0-9]\{64\}\) |.*/\1/p'                         | head -1)
 }
 
 pkgbase=aocl
@@ -31,13 +35,13 @@ source=(
 options=('staticlibs' '!strip')
 makedepends=('curl' 'patchelf')
 optdepends=('environment-modules')
-_sha256sum1=$(echo "${_fetch_data}" | grep --perl-regexp '\w{64}(?=\<\/td\>)' --only-matching | sed -n '1 p')
-_sha256sum2=$(echo "${_fetch_data}" | grep --perl-regexp '\w{64}(?=\<\/td\>)' --only-matching | sed -n '4 p')
-sha256sums=("${_sha256sum1}"
-            "${_sha256sum2}"
-            '4f58524e1948b2cb470b856546b87656b2fbce0b98b0d43d345fcedb101f1295'
-            'fe5245a7b34253a67105ee5e6bb868bbb69ebf318af32dc81e1cdd7d7277b639'
-            'bbf75a4d30aa4f8c4eb46d3c6193c011c43683352266fa56314f16212e409965')
+sha256sums=(
+    "${_sha256sum1}"
+    "${_sha256sum2}"
+    '4f58524e1948b2cb470b856546b87656b2fbce0b98b0d43d345fcedb101f1295'
+    'fe5245a7b34253a67105ee5e6bb868bbb69ebf318af32dc81e1cdd7d7277b639'
+    'bbf75a4d30aa4f8c4eb46d3c6193c011c43683352266fa56314f16212e409965'
+)
 # NB: I should've made my checksum variable lambdas such that they will find all
 # sums, even if AMD change their website, but if they remove the `</td>` tag from
 # the table (perhaps on some other browser environments this may happen) this may
