@@ -1,7 +1,7 @@
 pkgbase = misterdownloadmanager-private-bin
 	pkgdesc = 自用维护：多线程/断点续传/浏览器接管/BT 下载管理器，上游 anefzaoui/misterdownloadmanager
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anefzaoui/misterdownloadmanager
 	arch = x86_64
 	license = GPL-3.0-only

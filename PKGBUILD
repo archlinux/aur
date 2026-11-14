@@ -9,7 +9,7 @@ _upstream=anefzaoui/misterdownloadmanager
 _distname=MisterDownloadManager
 _iconrev=8d68f9bf6dc7a84d16a0b7088d916a7ca16368b7
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='自用维护：多线程/断点续传/浏览器接管/BT 下载管理器，上游 anefzaoui/misterdownloadmanager'
 arch=('x86_64')
 url="https://github.com/${_upstream}"
@@ -51,7 +51,7 @@ Type=Application
 Name=Mister Download Manager
 GenericName=Download Manager
 Comment=Download manager
-Exec=misterdownloadmanager %U
+Exec=env WINIT_X11_SCALE_FACTOR=1.5 misterdownloadmanager %U
 Icon=misterdownloadmanager
 Terminal=false
 Categories=Network;FileTransfer;
