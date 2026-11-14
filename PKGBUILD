@@ -2,11 +2,11 @@
 
 pkgname=mmdbinspect
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='look up records for one or more IPs/networks in one or more .mmdb databases'
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/maxmind/mmdbinspect"
-license=(Apache-2.0)
+license=('Apache-2.0 OR MIT')
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -33,6 +33,7 @@ build() {
 package() {
   cd $pkgname-$pkgver
   install -Dm755 -t "$pkgdir"/usr/bin $pkgname
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE-MIT
 }
 
 # vim:set ts=2 sw=2 et:
