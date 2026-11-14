@@ -19,6 +19,6 @@ pkgbase = dosr
 	backup = usr/share/rootasrole/default.json
 	source = dosr-4.0.1.tar.gz::https://github.com/LeChatP/RootAsRole/archive/v4.0.1.tar.gz
 	validpgpkeys = 74F43C5774BE1F3527DEFA4835C155EA0525104D
-	sha256sums = 127d1a1691b8aec3f17b47bca0f1588f24525d2854508360034ee3b6d5299a0f
+	sha256sums = 7d7553c89999d593662366ea13cba917b505f06a90b17cce422eadf70f604bb3
 
 pkgname = dosr

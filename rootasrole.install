@@ -1,198 +1,194 @@
 CONF_PATH="/etc/security/rootasrole.json"
-POLICY_FOLDER="/etc/security/rootasrole.d/"
+POLICY_FOLDER="/etc/security/rootasrole.d"
 POLICY_PATH="$POLICY_FOLDER/default.json"
+DEFAULT_CONF_PATH="/usr/share/rootasrole/rootasrole.json"
 DEFAULT_POLICY_PATH="/usr/share/rootasrole/default.json"
 
-DEFAULT_CONF="{
-  \"version\": \"4.0.0\",
-  \"storage\": {
-    \"method\": \"json\",
-    \"settings\": {
-      \"immutable\": true,
-      \"path\": \"/etc/security/rootasrole.d/\"
-    }
-  }
-}"
-
 log() {
-    echo "RootAsRole: $1"
+    echo "RootAsRole: $1" >&2
 }
 
-can_immutable() {
-    FS_TYPE=$(df -T "$1" | awk 'NR==2 {print $2}')
+is_immutable_supported() {
+    FS_TYPE=$(df -T "$1" 2>/dev/null | awk 'NR==2 {print $2}')
     case "$FS_TYPE" in
     ext2 | ext3 | ext4 | xfs | btrfs | ocfs2 | jfs | reiserfs)
-        echo 0
+        return 0
         ;;
     *)
-        echo 1
+        return 1
         ;;
     esac
 }
 
-configure_immutable() {
-    if [ $(can_immutable "$1") -eq 0 ]; then
-        sed -i 's/"immutable": false/"immutable": true/' "$CONF_PATH"
-    else
-        sed -i 's/"immutable": true/"immutable": false/' "$CONF_PATH"
-        sed -i "s;\"CAP_LINUX_IMMUTABLE\";;g" "$POLICY_PATH"
+clear_immutable_flags() {
+    chattr -i "$CONF_PATH" 2>/dev/null || true
+    for file in "$POLICY_FOLDER"/*; do
+        [ -e "$file" ] || continue
+        chattr -i "$file" 2>/dev/null || true
+    done
+    chattr -i "$POLICY_FOLDER" 2>/dev/null || true
+}
+
+enable_immutable() {
+    if ! grep -q '"immutable": true' "$CONF_PATH" 2>/dev/null; then
+        sed -i 's/"immutable": false/"immutable": true/' "$CONF_PATH" 2>/dev/null || true
     fi
 }
 
-toggle_immutable() {
-    # Supported file systems for immutable flag
-    # It may not work on all file systems, but it is supported on the most common ones.
-    if [ $(can_immutable "$1") -eq 0 ] && ! chattr +i "$1" >/dev/null 2>&1; then
-        log "Failed to set the immutable flag on $1. We disable immutable enforcement in the configuration."
-        sed -i 's/"immutable": true/"immutable": false/' "$CONF_PATH"
-        sed -i "s;\"CAP_LINUX_IMMUTABLE\";;g" "$POLICY_PATH"
+disable_immutable() {
+    clear_immutable_flags
+    sed -i 's/"immutable": true/"immutable": false/' "$CONF_PATH" 2>/dev/null || true
+    sed -i 's;"CAP_LINUX_IMMUTABLE";;g' "$POLICY_PATH" 2>/dev/null || true
+}
+
+check_immutable() {
+    if ! is_immutable_supported "$1"; then
+        log "The file system used at $1 does not support the immutable flag."
+        return 1
+    fi
+    if ! chattr +i "$1" >/dev/null 2>&1; then
+        log "Failed to set the immutable flag on $1."
+        return 1
     fi
 }
 
+flag_policy() {
+    check_immutable "$CONF_PATH" || return 1
+    for file in "$POLICY_FOLDER"/*; do
+        [ -f "$file" ] || continue
+        check_immutable "$file" || return 1
+    done
+    check_immutable "$POLICY_FOLDER"
+}
 
 get_invoking_user() {
-    current_user=$(id -un 2>/dev/null)
-    # If SUDO_USER is set, use it
+    current_user=$(id -un 2>/dev/null || true)
     if [ -n "$current_user" ] && [ "$current_user" != "root" ] && [ "$current_user" != "0" ]; then
-        echo "\"$current_user\""
+        echo "$current_user"
         return
     elif [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
-        echo "\"$SUDO_USER\""
+        echo "$SUDO_USER"
         return
     elif [ -n "$USER" ] && [ "$USER" != "root" ]; then
-        echo "\"$USER\""
+        echo "$USER"
         return
     elif [ -n "$LOGNAME" ] && [ "$LOGNAME" != "root" ]; then
-        echo "\"$LOGNAME\""
+        echo "$LOGNAME"
         return
     elif [ -n "$USERNAME" ] && [ "$USERNAME" != "root" ]; then
-        echo "\"$USERNAME\""
-        return
-    elif [ -n "$SUDO_UID" ] && [ "$SUDO_UID" != "0" ]; then
-        echo "$SUDO_UID"
-        return
-    elif [ -n "$RAR_USER" ] && [ "$RAR_USER" != "root" ]; then
-        echo "\"$RAR_USER\""
-        return
-    elif [ -n "$RAR_UID" ] && [ "$RAR_UID" != "0" ]; then
-        echo "$RAR_UID"
+        echo "$USERNAME"
         return
     fi
 
     # Otherwise walk the process tree upwards
     pid=$PPID
     while [ "$pid" -gt 1 ]; do
-        # Get UID and CMD for this process using POSIX-compatible approach
         if ps_output=$(ps -o uid=,user= -p "$pid" 2>/dev/null); then
             uid=$(echo "$ps_output" | awk '{print $1}')
             user=$(echo "$ps_output" | awk '{print $2}')
-            if [ "$uid" != "0" ]; then
+            if [ "$uid" != "0" ] && [ -n "$uid" ]; then
                 if [ -n "$user" ]; then
-                    echo "\"$user\""
-                    return
+                    echo "$user"
                 else
                     echo "$uid"
-                    return
                 fi
+                return
             fi
         fi
         pid=$(ps -o ppid= -p "$pid" 2>/dev/null | tr -d ' ') || break
     done
-
-    # If we got here, it's root
     echo "root"
 }
 
-
 setadmin() {
-    if grep -q '"ROOTADMINISTRATOR"' "$POLICY_PATH"; then
+    TARGET_PATH="$1"
+    if [ -f "$TARGET_PATH" ] && grep -q '"ROOTADMINISTRATOR"' "$TARGET_PATH"; then
         ADMIN_USER=$(get_invoking_user)
-        sed -i "s/\"ROOTADMINISTRATOR\"/$ADMIN_USER/g" "$POLICY_PATH"
+        sed -i -e "s/\"ROOTADMINISTRATOR\"/\"$ADMIN_USER\"/g" "$TARGET_PATH"
         log "The user $ADMIN_USER is now the administrator."
     fi
 }
 
+# $1: previous version (empty on a fresh install)
+configure() {
+    old_version="$1"
 
-post_install() {
-    if [ ! -f "$CONF_PATH" ]; then
-        if echo "$DEFAULT_CONF" > "$CONF_PATH"; then
-            configure_immutable "$CONF_PATH"
-            toggle_immutable "$CONF_PATH"
-            log "Created default configuration file at $CONF_PATH"
-        else
-            log "Failed to create the default configuration file at $CONF_PATH"
-            exit 1
-        fi
-    else 
-        log "The configuration file $CONF_PATH already exists."
-        # Lock down the fallback folder to prevent hijacking
-        if [ ! -d "$POLICY_FOLDER" ]; then
-            mkdir -p "$POLICY_FOLDER"
-            chmod 000 "$POLICY_FOLDER"
-            toggle_immutable "$POLICY_FOLDER"
-            log "Locked down the fallback policy folder at $POLICY_FOLDER to prevent hijacking."
-        fi
-        exit 0
+    if ! mkdir -p "$(dirname "$CONF_PATH")"; then
+        log "Failed to create the configuration directory."
+        return 1
     fi
 
-    if [ ! -d "$POLICY_FOLDER" ]; then
-        if mkdir -p "$POLICY_FOLDER"; then
-            log "Created policy folder at $POLICY_FOLDER"
-        else
-            log "Failed to create the policy folder at $POLICY_FOLDER"
-            exit 1
+    if [ ! -f "$CONF_PATH" ]; then
+        if ! install -m 0600 "$DEFAULT_CONF_PATH" "$CONF_PATH"; then
+            log "Failed to create the default configuration file at $CONF_PATH"
+            return 1
         fi
-        
-        if [ ! -f "$POLICY_PATH" ]; then
-            if cp "$DEFAULT_POLICY_PATH" "$POLICY_PATH"; then
-                setadmin
-                toggle_immutable "$POLICY_PATH"
-            else
-                log "Failed to copy the default configuration file to $POLICY_PATH"
-                exit 1
-            fi
-        else 
-            log "The configuration file $POLICY_PATH already exists. Skipping the post-installation process."
-            exit 0
+        log "Created default configuration file at $CONF_PATH"
+    fi
+
+    if ! mkdir -p "$POLICY_FOLDER"; then
+        log "Failed to create the policy folder at $POLICY_FOLDER"
+        return 1
+    fi
+    chmod 0700 "$POLICY_FOLDER" 2>/dev/null || true
+
+    if [ ! -f "$POLICY_PATH" ]; then
+        if ! install -m 0600 "$DEFAULT_POLICY_PATH" "$POLICY_PATH"; then
+            log "Failed to copy the default policy to $POLICY_PATH"
+            return 1
         fi
-        
-        toggle_immutable "$POLICY_FOLDER"
+    fi
+    setadmin "$POLICY_PATH"
+
+    # Configuration must not be readable by other users
+    for file in "$CONF_PATH" "$POLICY_FOLDER"/*; do
+        [ -f "$file" ] || continue
+        case $(stat -c %a "$file") in
+        *0) ;;
+        *) chmod o-rwx "$file" || log "Failed to make $file unreadable by other users" ;;
+        esac
+    done
+
+    if ! command -v chattr >/dev/null 2>&1 || ! is_immutable_supported "$CONF_PATH"; then
+        sed -i 's/"immutable": true/"immutable": false/' "$CONF_PATH" 2>/dev/null || true
+        sed -i 's;"CAP_LINUX_IMMUTABLE";;g' "$POLICY_PATH" 2>/dev/null || true
+    fi
+
+    if [ -n "$old_version" ] && ! chsr upgrade; then
+        log "chsr upgrade failed: run 'dosr chsr upgrade' manually"
+    fi
+
+    enable_immutable
+    flag_policy || disable_immutable
+}
+
+ensure_caps() {
+    if [ -z "$(getcap /usr/bin/dosr 2>/dev/null)" ]; then
+        setcap '=p' /usr/bin/dosr 2>/dev/null || log "Failed to set capabilities on /usr/bin/dosr"
     fi
 }
 
-pre_remove() {
-    # Remove immutable flag if present, ignore errors
-    if [ -d "$POLICY_FOLDER" ]; then
-        for file in "$POLICY_FOLDER"/*; do
-            [ -e "$file" ] || continue   # Skip if no match/empty directory
-            chattr -i "$file" 2>/dev/null || true
-        done
-    fi
-    chattr -i "$POLICY_FOLDER" 2>/dev/null || true
-    if [ -f "$CONF_PATH" ]; then
-        chattr -i "$CONF_PATH" 2>/dev/null || true
-    fi
+post_install() {
+    configure ""
+    ensure_caps
+}
+
+# Immutable flags must be dropped before pacman replaces files and before 'chsr upgrade'
+pre_upgrade() {
+    clear_immutable_flags
 }
 
 post_upgrade() {
-    setcap '=p' /usr/bin/dosr
+    configure "$2"
+    ensure_caps
+}
 
-    if [ -f "$CONF_PATH" ]; then
-        if [ ! -d "$POLICY_FOLDER" ]; then
-            mkdir -p "$POLICY_FOLDER"
-            check_immutable "$POLICY_FOLDER"
-            log "Locked down the fallback policy folder at $POLICY_FOLDER."
-        fi
-    fi
+pre_remove() {
+    clear_immutable_flags
 }
 
 post_remove() {
-    if [ -f "$CONF_PATH" ]; then
-        rm -f "$CONF_PATH"
-        log "Removed $CONF_PATH"
-    fi
-    if [ -d "$POLICY_FOLDER" ]; then
-        rm -rf "$POLICY_FOLDER"
-        log "Removed $POLICY_FOLDER"
+    if [ -f "$CONF_PATH" ] || [ -d "$POLICY_FOLDER" ]; then
+        log "Configuration kept in $CONF_PATH and $POLICY_FOLDER (remove manually to purge)."
     fi
 }
