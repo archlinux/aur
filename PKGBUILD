@@ -6,13 +6,13 @@
 # workflow fills in pkgver and the checksums. Only released versions are
 # packaged, so the server and every client match.
 pkgname=kestrel-nvr-bin
-pkgver=0.5.13
+pkgver=0.5.14
 pkgrel=1
 pkgdesc="Your cameras, recordings and events in one place, with a server for every device (prebuilt)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/timmo001/kestrel"
 license=('Apache-2.0' 'MIT')
-depends=('glibc')
+depends=('glibc' 'gcc-libs')
 optdepends=('webkit2gtk-4.1: the desktop app'
             'gtk3: the desktop app'
             'libayatana-appindicator: the desktop app in the tray'
@@ -26,8 +26,8 @@ source=('kestrel-nvr.desktop' 'kestrel-nvr.user.service' 'kestrel-nvr.system.ser
 source_x86_64=("kestrel-nvr-${pkgver}-linux-x86_64.tar.gz::$url/releases/download/${pkgver}/kestrel-nvr-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("kestrel-nvr-${pkgver}-linux-aarch64.tar.gz::$url/releases/download/${pkgver}/kestrel-nvr-${pkgver}-linux-aarch64.tar.gz")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-sha256sums_x86_64=('903e4cb59002cce0ff063027acd2256d30e46f4954224e45f36d8a9db1a44688')
-sha256sums_aarch64=('3110784fcf50d05bc9a6f0db1eb8cc17206ded87a8f27e4cf987771e62d098ac')
+sha256sums_x86_64=('1745c5d916b8150dbdb682fc7cd42648758d2aa9692b19bba4dc33bf4b3f5dba')
+sha256sums_aarch64=('5f6151d88cd6363be57b30a588f7d8fd35e8fb0773a706f6d8c8877f0a05d7a3')
 
 package() {
   local bundle="kestrel-nvr-${pkgver}-linux-${CARCH}/lib/kestrel-nvr"
@@ -46,4 +46,5 @@ package() {
   install -Dm644 "$bundle/Resources/app/go2rtc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/go2rtc.LICENSE"
   install -Dm644 "$bundle/Resources/app/yt-dlp/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/yt-dlp.LICENSE"
   install -Dm644 "$bundle/Resources/app/yt-dlp/THIRD_PARTY_LICENSES" "$pkgdir/usr/share/licenses/$pkgname/yt-dlp.THIRD_PARTY_LICENSES"
+  install -Dm644 "$bundle/Resources/app/node/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/node.LICENSE"
 }
