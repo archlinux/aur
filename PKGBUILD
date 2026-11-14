@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=opencrabs
-pkgver=0.5.15
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Autonomous, self-improving AI agent in a single Rust binary'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('rtk: filter shell command output to save tokens')
 options=('!lto')
 install=opencrabs.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d9cda6b6a28e60026e76a3a66dbf6850fe536300b11a410867c960eab1088b1c')
+sha256sums=('41da3faafe9579f884e9ee20961436cfe35fc6048a3baf1614fbc346a89746b2')
 
 _home_env() {
   export HOME="${srcdir}/home"

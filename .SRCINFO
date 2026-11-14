@@ -1,6 +1,6 @@
 pkgbase = opencrabs
 	pkgdesc = Autonomous, self-improving AI agent in a single Rust binary
-	pkgver = 0.5.15
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/opencrabs/opencrabs
 	install = opencrabs.install
@@ -18,7 +18,7 @@ pkgbase = opencrabs
 	depends = openssl
 	optdepends = rtk: filter shell command output to save tokens
 	options = !lto
-	source = opencrabs-0.5.15.tar.gz::https://github.com/opencrabs/opencrabs/archive/refs/tags/v0.5.15.tar.gz
-	sha256sums = d9cda6b6a28e60026e76a3a66dbf6850fe536300b11a410867c960eab1088b1c
+	source = opencrabs-0.6.0.tar.gz::https://github.com/opencrabs/opencrabs/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 41da3faafe9579f884e9ee20961436cfe35fc6048a3baf1614fbc346a89746b2
 
 pkgname = opencrabs
