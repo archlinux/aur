@@ -1,6 +1,6 @@
 # Maintainer: Arnob90 <arnob8066@gmail.com>
 pkgname=youtube-subtitle-extractor
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Download YouTube subtitles (json3) and print them as plaintext."
 arch=("any")
