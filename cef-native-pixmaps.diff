@@ -1,0 +1,136 @@
+From 8c4140c541943fcb3fb7af85b264ff0eae4bc062 Mon Sep 17 00:00:00 2001
+From: Kristof Imeri <kristof@lanth.me>
+Date: Wed, 11 Nov 2026 02:49:06 +0100
+Subject: [PATCH] media: Accept native pixmaps with auxiliary planes in WrapMappableSharedImage
+
+Since crrev.com/c/8220427 the frame-sink video capturer allocates
+SCANOUT buffers for kPreferSharedImageWithNativeHandle on Linux, which
+are no longer forced to be linear. On AMD, GBM then picks a DCC
+modifier, and those buffers carry one or two extra planes for the
+compression metadata even though BGRA_8888 has a single plane.
+
+WrapMappableSharedImage() required the NativePixmapHandle to have
+exactly as many planes as the format, so it rejected every such buffer.
+The capturer couldn't reserve a frame, logged "Unable to allocate frame
+for first frame capture: OOM?" and stopped, which left CEF's GPU
+off-screen rendering with blank output on AMD.
+
+Accept handles with more planes than the format when they have an
+explicit modifier, and build the frame layout from the format's planes.
+The handle itself isn't changed, so consumers that import the frame
+still get every plane along with the modifier. Extra planes without a
+modifier are still rejected.
+
+Bug: 428022619
+Change-Id: Ic5467eb40691004fcfa8000b8a481e1b4ef1ecbf
+---
+
+diff --git a/media/base/video_frame.cc b/media/base/video_frame.cc
+index e492c234..5458d3ce 100644
+--- a/media/base/video_frame.cc
++++ b/media/base/video_frame.cc
+@@ -530,7 +530,14 @@
+     }
+     const gfx::NativePixmapHandle& native_pixmap_handle =
+         gmb_handle.native_pixmap_handle();
+-    if (native_pixmap_handle.planes.size() != num_planes) {
++    // Buffers with a format modifier may have auxiliary planes after the
++    // format's planes, e.g. for compression metadata. They stay in the handle
++    // for consumers that import the buffer, but aren't part of the layout.
++    const bool has_auxiliary_planes =
++        native_pixmap_handle.planes.size() > num_planes &&
++        native_pixmap_handle.modifier != gfx::NativePixmapHandle::kNoModifier;
++    if (native_pixmap_handle.planes.size() != num_planes &&
++        !has_auxiliary_planes) {
+       DLOG(ERROR) << "Invalid number of planes="
+                   << native_pixmap_handle.planes.size()
+                   << ", expected num_planes=" << num_planes;
+diff --git a/media/base/video_frame_unittest.cc b/media/base/video_frame_unittest.cc
+index 30d6ee0..c02438e 100644
+--- a/media/base/video_frame_unittest.cc
++++ b/media/base/video_frame_unittest.cc
+@@ -30,6 +30,10 @@
+ #include "third_party/libyuv/include/libyuv.h"
+ #include "third_party/skia/include/core/SkYUVAPixmaps.h"
+ 
++#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
++#include <sys/mman.h>
++#endif
++
+ namespace {
+ // Creates the backing storage for a frame suitable for WrapExternalData. Note
+ // that this is currently used only to test frame creation and tear-down, and so
+@@ -634,6 +638,73 @@
+     ASSERT_EQ(wrapped_frame->GetDmabufFd(i), wrapped_frame2->GetDmabufFd(i));
+   }
+ }
++
++namespace {
++
++// An AMD DCC modifier, whose BGRA buffers have compression metadata planes
++// after the color plane.
++constexpr uint64_t kDccModifier = 0x020000001046bb04;
++
++scoped_refptr<gpu::ClientSharedImage> CreateScanoutSharedImage(
++    gpu::TestSharedImageInterface& sii,
++    const gfx::Size& size,
++    size_t num_handle_planes,
++    uint64_t modifier) {
++  const uint32_t stride = size.width() * 4;
++  const uint64_t plane_size = stride * size.height();
++  gfx::NativePixmapHandle handle;
++  handle.modifier = modifier;
++  for (size_t i = 0; i < num_handle_planes; ++i) {
++    base::ScopedFD fd(memfd_create("VideoFrameTest", MFD_CLOEXEC));
++    CHECK(fd.is_valid());
++    handle.planes.emplace_back(stride, i * plane_size, plane_size,
++                               std::move(fd));
++  }
++  return sii.CreateSharedImage(
++      {viz::SinglePlaneFormat::kBGRA_8888, size, gfx::ColorSpace(),
++       gpu::SharedImageUsageSet(gpu::SHARED_IMAGE_USAGE_SCANOUT |
++                                gpu::SHARED_IMAGE_USAGE_DISPLAY_READ),
++       "VideoFrameTest"},
++      gpu::kNullSurfaceHandle, gfx::BufferUsage::SCANOUT,
++      gfx::GpuMemoryBufferHandle(std::move(handle)));
++}
++
++}  // namespace
++
++TEST(VideoFrame, WrapMappableSharedImageWithAuxiliaryPlanes) {
++  const gfx::Size coded_size(256, 256);
++  auto test_sii = base::MakeRefCounted<gpu::TestSharedImageInterface>();
++
++  auto frame = VideoFrame::WrapMappableSharedImage(
++      CreateScanoutSharedImage(*test_sii, coded_size, /*num_handle_planes=*/3,
++                               kDccModifier),
++      test_sii->GenVerifiedSyncToken(), base::DoNothing(),
++      gfx::Rect(coded_size), coded_size, base::Milliseconds(1));
++
++  ASSERT_TRUE(frame);
++  EXPECT_EQ(frame->format(), PIXEL_FORMAT_ARGB);
++  EXPECT_EQ(frame->layout().num_planes(), 1u);
++  EXPECT_EQ(frame->layout().planes()[0].stride,
++            static_cast<size_t>(coded_size.width() * 4));
++  EXPECT_EQ(frame->layout().modifier(), kDccModifier);
++
++  const gfx::GpuMemoryBufferHandle handle = frame->GetGpuMemoryBufferHandle();
++  EXPECT_EQ(handle.native_pixmap_handle().planes.size(), 3u);
++  EXPECT_EQ(handle.native_pixmap_handle().modifier, kDccModifier);
++}
++
++TEST(VideoFrame, WrapMappableSharedImageRejectsExtraPlanesWithoutModifier) {
++  const gfx::Size coded_size(256, 256);
++  auto test_sii = base::MakeRefCounted<gpu::TestSharedImageInterface>();
++
++  auto frame = VideoFrame::WrapMappableSharedImage(
++      CreateScanoutSharedImage(*test_sii, coded_size, /*num_handle_planes=*/3,
++                               gfx::NativePixmapHandle::kNoModifier),
++      test_sii->GenVerifiedSyncToken(), base::DoNothing(),
++      gfx::Rect(coded_size), coded_size, base::Milliseconds(1));
++
++  EXPECT_FALSE(frame);
++}
+ #endif
+ 
+ // Ensure each frame is properly sized and allocated.  Will trigger OOB reads
