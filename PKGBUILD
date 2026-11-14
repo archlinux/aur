@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=linsync
-pkgver=1.16.6
+pkgver=1.16.7
 pkgrel=1
 pkgdesc="Linux-native visual file and folder comparison built on Rust and Qt 6"
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=('dolphin: KDE service-menu integration')
 conflicts=('linsync-bin' 'linsync-git')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('334ffa43f27eb84f56be9adfc45183e31106e8e19e19f7ba47ab64ae1e32c05d')
+sha256sums=('d3f658436eac90c24394565a016e7aed9e377ad54bfadaaa4fc2bc127521d51a')
 
 prepare() {
   cd "LinSync-$pkgver"
