@@ -9,6 +9,24 @@ If this project saves you or your company time, consider [sponsoring](https://gi
 
 <!-- ## [Unreleased] -->
 
+## [2.25.0] - 2026-11-13
+
+### Added
+- Delete Unit File option [Issue 84](https://github.com/plrigaux/sysd-manager/issues/84)
+- More option in the browser popup menu
+- Polish translation
+
+### Changed
+- Russian translation
+
+### Fixed
+- Provide a Flatpak workaround regading the no unit returned issues
+
+## [2.24.6] - 2026-10-30
+
+### Fixed
+- Provide a Flatpak workaround regading the no unit returned issues
+
 ## [2.24.5] - 2026-10-28
 
 ### Added
