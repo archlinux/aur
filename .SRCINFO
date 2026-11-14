@@ -1,0 +1,19 @@
+pkgbase = locale-gen
+	pkgdesc = Generate locales based upon the config file /etc/locale.gen
+	pkgver = 3.10
+	pkgrel = 1
+	url = https://gitweb.gentoo.org/proj/locale-gen.git/
+	install = locale-gen.install
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = glibc
+	depends = perl-file-slurper
+	depends = perl>=5.36
+	backup = etc/lc.gen
+	source = locale-gen::git+https://gitweb.gentoo.org/proj/locale-gen.git#tag=locale-gen-3.10
+	source = 10-glibc-locale-gen.hook
+	sha256sums = 343b5395d0f4930b162a7cc9a8c19d7740a9829dec0fbacde25d2b2abb3c0a29
+	sha256sums = b275ac71afa1144b25dc210be15ebe3fbc2c4e22ec73921d2e9dd7e17913bfad
+
+pkgname = locale-gen

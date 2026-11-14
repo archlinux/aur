@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Target = glibc
+Type = Package
+
+[Action]
+Depends = bash
+Depends = glibc
+Depends = locale-gen
+Description = Generating the configured locale...
+Exec = /usr/bin/lc-gen --config /etc/lc.gen
+When = PostTransaction

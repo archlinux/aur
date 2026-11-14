@@ -1,0 +1,13 @@
+# https://gitweb.gentoo.org/repo/gentoo.git/tree/sys-apps/locale-gen/locale-gen-3.10.ebuild#n63
+post_install()
+{
+    cat >&2 << 'END'
+As of version 3.10, the locale.gen(5) config file grammar has been
+simplified. For instance, "en_US.UTF-8 UTF-8" may instead be written as
+"en_US UTF-8", or even "en_US". The grammar remains backward compatible with
+version 3.9, so there is no requirement to update the /etc/locale.gen file.
+
+locale-gen script is renamed to lc-gen and locale.gen config to lc.gen.
+See NOTE in PKGBUILD for details.
+END
+}
