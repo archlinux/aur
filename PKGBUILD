@@ -4,13 +4,13 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="TorrentNG Engine: native Rust BitTorrent client with the shared WebUI/API"
 arch=("x86_64")
-url="https://github.com/snapetech/TorrentNG"
+url="https://github.com/snapetech-org/TorrentNG"
 license=("GPL-3.0-or-later")
 depends=("gcc-libs" "sqlite")
 makedepends=("cargo" "git" "npm")
 backup=("etc/torrentngd/config.toml")
 source=(
-  "git+https://github.com/snapetech/TorrentNG.git"
+  "git+https://github.com/snapetech-org/TorrentNG.git"
   "torrentngd.service"
   "torrentngd.sysusers"
   "torrentngd.tmpfiles"

@@ -1,6 +1,6 @@
 [Unit]
 Description=TorrentNG Engine native Rust BitTorrent client daemon
-Documentation=https://github.com/snapetech/TorrentNG
+Documentation=https://github.com/snapetech-org/TorrentNG
 After=network-online.target
 Wants=network-online.target
 
