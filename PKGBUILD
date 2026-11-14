@@ -1,7 +1,7 @@
 # Maintainer: Boris Brock <gabrielborisbrock@gmail.com>
 pkgname=soundhive-bin
 _appname=SoundHive
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Fast browser for large sound effect libraries: search, audition, tag and drag sounds (prebuilt binary)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('soundhive')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/${_appname}_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/BorisBrock/SoundHive/v$pkgver/LICENSE")
-sha256sums=('71234811a0483ca7dfd2999dba764b93e01a632b4daa13c903d80b520a5466a3'
+sha256sums=('c63c87a2d83e0e6711acb2b369527c0483a727e94c94eaa0d0d28a56b2083691'
             '90bc9218c32fb04e7384d8acbbeac4ea255d0823d3c53fec70a3b6679ef604ae')
 
 package() {

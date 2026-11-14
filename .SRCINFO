@@ -1,6 +1,6 @@
 pkgbase = soundhive-bin
 	pkgdesc = Fast browser for large sound effect libraries: search, audition, tag and drag sounds (prebuilt binary)
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/BorisBrock/SoundHive
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = soundhive-bin
 	conflicts = soundhive
 	options = !strip
 	options = !debug
-	source = soundhive-bin-1.3.0.deb::https://github.com/BorisBrock/SoundHive/releases/download/v1.3.0/SoundHive_1.3.0_amd64.deb
-	source = LICENSE-1.3.0::https://raw.githubusercontent.com/BorisBrock/SoundHive/v1.3.0/LICENSE
-	sha256sums = 71234811a0483ca7dfd2999dba764b93e01a632b4daa13c903d80b520a5466a3
+	source = soundhive-bin-1.3.1.deb::https://github.com/BorisBrock/SoundHive/releases/download/v1.3.1/SoundHive_1.3.1_amd64.deb
+	source = LICENSE-1.3.1::https://raw.githubusercontent.com/BorisBrock/SoundHive/v1.3.1/LICENSE
+	sha256sums = c63c87a2d83e0e6711acb2b369527c0483a727e94c94eaa0d0d28a56b2083691
 	sha256sums = 90bc9218c32fb04e7384d8acbbeac4ea255d0823d3c53fec70a3b6679ef604ae
 
 pkgname = soundhive-bin
