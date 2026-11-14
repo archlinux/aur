@@ -1,6 +1,6 @@
 pkgbase = superxterminal-bin
 	pkgdesc = A terminal and session manager for teams who look after a lot of servers and network devices together.
-	pkgver = 0.8.7
+	pkgver = 0.8.8
 	pkgrel = 1
 	url = https://github.com/waukeerules/SuperXTerminal
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = superxterminal-bin
 	conflicts = superxterminal
 	options = !emptydirs
 	options = !strip
-	source = README-0.8.7.md::https://raw.githubusercontent.com/waukeerules/SuperXTerminal/v0.8.7/README.md
-	source = LICENSE-0.8.7::https://raw.githubusercontent.com/waukeerules/SuperXTerminal/v0.8.7/LICENSE
+	source = README-0.8.8.md::https://raw.githubusercontent.com/waukeerules/SuperXTerminal/v0.8.8/README.md
+	source = LICENSE-0.8.8::https://raw.githubusercontent.com/waukeerules/SuperXTerminal/v0.8.8/LICENSE
 	sha256sums = 27ce36bf0cbe63795554e3f93df3bff9c87a5cb90bd9f03668eb6bd75ace9d74
 	sha256sums = 01a7f589f25b2f1a3421e9aaf9c239e4a72fd04b0157ad62099c0bc85b330d25
-	source_x86_64 = superxterminal-x86_64-0.8.7.deb::https://github.com/waukeerules/SuperXTerminal/releases/download/v0.8.7/SuperXTerminal-0.8.7-Linux-x64.deb
-	sha256sums_x86_64 = c87bf8a279c97640500c57960fbb54e6293cb6b97b125b4f223f7f84cce4a80a
+	source_x86_64 = superxterminal-x86_64-0.8.8.deb::https://github.com/waukeerules/SuperXTerminal/releases/download/v0.8.8/SuperXTerminal-0.8.8-Linux-x64.deb
+	sha256sums_x86_64 = 1cc7f475183572662812c85ca36160dac2dcaa7e3624f9c391bfa065fb349ede
 
 pkgname = superxterminal-bin
