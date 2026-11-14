@@ -1,7 +1,7 @@
 # Contributor: Hy Goldsher <hyness-at-freshlegacycode-dot-org>
 pkgname=retrofe
 pkgver=0.10.31
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform frontend designed for MAME cabinets/game centers/etc. with a focus on simplicity and customization"
 arch=('i686' 'x86_64')
 url="http://retrofe.nl"
@@ -19,7 +19,8 @@ _gitproject=RetroFE
 
 build() {
 	cd $_gitproject
-	cmake RetroFE/Source -BRetroFE/Build -DVERSION_MAJOR=0 -DVERSION_MINOR=0 -DVERSION_BUILD=0
+	cmake RetroFE/Source -BRetroFE/Build -DVERSION_MAJOR=0 -DVERSION_MINOR=0 -DVERSION_BUILD=0 \
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	cmake --build RetroFE/Build
 	python Scripts/Package.py --os=linux --build=full
 }
