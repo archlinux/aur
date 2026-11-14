@@ -1,6 +1,6 @@
 pkgbase = sirinvpn
 	pkgdesc = Self-hosted WireGuard VPN: set up your own VPS and connect your devices
-	pkgver = 1.0.0rc2
+	pkgver = 1.0.0rc3
 	pkgrel = 1
 	url = https://github.com/RamazanBerk20/SirinVPN
 	install = sirinvpn.install
@@ -40,11 +40,11 @@ pkgbase = sirinvpn
 	options = !lto
 	options = !strip
 	options = !debug
-	source = sirinvpn-1.0.0rc2.tar.gz::https://github.com/RamazanBerk20/SirinVPN/archive/refs/tags/v1.0.0-rc.2.tar.gz
-	source = sirinvpn-server-x86_64-1.0.0rc2::https://github.com/RamazanBerk20/SirinVPN/releases/download/v1.0.0-rc.2/sirinvpn-server-x86_64
-	source = sirinvpn-server-aarch64-1.0.0rc2::https://github.com/RamazanBerk20/SirinVPN/releases/download/v1.0.0-rc.2/sirinvpn-server-aarch64
-	sha256sums = fc4a69668b5db4d747d50be7eb63795c138c3d8aa3f63cdaaaf7be040fdaebce
-	sha256sums = 833d79c1988c7346af9bcab989e0b12ff6190bce70c274dc118fb9e5f719de71
-	sha256sums = 2f4ed867dad10c6e0c74b9dc451e4f4486d1012ba5ace2379a907df873d7bd90
+	source = sirinvpn-1.0.0rc3.tar.gz::https://github.com/RamazanBerk20/SirinVPN/archive/refs/tags/v1.0.0-rc.3.tar.gz
+	source = sirinvpn-server-x86_64-1.0.0rc3::https://github.com/RamazanBerk20/SirinVPN/releases/download/v1.0.0-rc.3/sirinvpn-server-x86_64
+	source = sirinvpn-server-aarch64-1.0.0rc3::https://github.com/RamazanBerk20/SirinVPN/releases/download/v1.0.0-rc.3/sirinvpn-server-aarch64
+	sha256sums = 16bb8a320347865cdc5ed1589cdf43c2467429b50404c04c9051c5813ac4e016
+	sha256sums = f38ab9351f03e2b7624659ac783db4f5a446cda6f6fd17f8a962ac7099df34c8
+	sha256sums = 1d68af4c623470f836c1c26b408e7896453c4110880cc09016446c6195b3ffbf
 
 pkgname = sirinvpn
