@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.0.0"
+VERSION="1.0.2"
 DEFAULT_MODE="area"
 DEFAULT_PREFIX="Screenshot"
 DEFAULT_LOCATION="$HOME/Screenshots"
@@ -27,6 +27,14 @@ PREFIX="$DEFAULT_PREFIX"
 FILENAME_OVERRIDE=""
 SOUND_ENABLED="true"
 QUIET="false"
+
+# === Emoji / Notification Icon Check ===
+EMOJI_CAM=""
+EMOJI_ERR=""
+if command -v fc-list >/dev/null 2>&1 && [[ -n "$(fc-list :charset=1f4f8 2>/dev/null || true)" ]]; then
+  EMOJI_CAM="📸 "
+  EMOJI_ERR="❌ "
+fi
 
 # === Dependency check ===
 REQUIRED_COMMANDS=(grim slurp wl-copy hyprctl jq notify-send canberra-gtk-play)
@@ -92,11 +100,11 @@ case "$MODE" in
   area)
     GEOM=$(slurp)
     if [[ -z "$GEOM" ]]; then
-      [[ "$QUIET" == "false" ]] && notify-send -u critical -a Screenshot "❌ Screenshot cancelled" "No area selected"
+      [[ "$QUIET" == "false" ]] && notify-send -u critical -a Screenshot -i dialog-error "${EMOJI_ERR}Screenshot cancelled" "No area selected"
       exit 1
     fi
     if ! echo "$GEOM" | grep -Eq '[0-9]+,[0-9]+ [1-9][0-9]*x[1-9][0-9]*'; then
-      [[ "$QUIET" == "false" ]] && notify-send -u critical -a Screenshot "❌ Invalid region" "$GEOM"
+      [[ "$QUIET" == "false" ]] && notify-send -u critical -a Screenshot -i dialog-error "${EMOJI_ERR}Invalid region" "$GEOM"
       exit 1
     fi
     grim -g "$GEOM" - | tee "$FILENAME" | wl-copy
@@ -116,19 +124,25 @@ case "$MODE" in
     wl-copy < "$FILENAME"
     ;;
   *)
-    [[ "$QUIET" == "false" ]] && notify-send -u critical -a Screenshot "❌ Invalid screenshot mode: $MODE"
+    [[ "$QUIET" == "false" ]] && notify-send -u critical -a Screenshot -i dialog-error "${EMOJI_ERR}Invalid screenshot mode: $MODE"
     exit 1
     ;;
 esac
 
 # === Notification ===
 if [[ "$QUIET" == "false" && -f "$FILENAME" ]]; then
-  notify-send -u normal -a Screenshot -i "$FILENAME" \
-    --action=open:"Open Image" \
-    --action=folder:"Show Folder" \
-    "📸 Screenshot ($MODE) saved!" "$(basename "$FILENAME")" &>/dev/null &
+  (
+    action=$(notify-send -u normal -a Screenshot -i "$FILENAME" \
+      --action=open="Open Image" \
+      --action=folder="Show Folder" \
+      "${EMOJI_CAM}Screenshot ($MODE) saved!" "$(basename "$FILENAME")")
+    case "$action" in
+      open)   xdg-open "$FILENAME" ;;
+      folder) xdg-open "$(dirname "$FILENAME")" ;;
+    esac
+  ) &>/dev/null &
 elif [[ "$QUIET" == "false" ]]; then
-  notify-send -u critical -a Screenshot "❌ Screenshot failed" "No file created"
+  notify-send -u critical -a Screenshot -i dialog-error "${EMOJI_ERR}Screenshot failed" "No file created"
   exit 1
 fi
 
