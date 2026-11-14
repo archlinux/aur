@@ -1,0 +1,8 @@
+pkg/
+src/
+
+# Source files
+outline-client_amd64_*.deb
+
+# Compressed package
+outline-client-bin-*-*-*.pkg.tar.zst
