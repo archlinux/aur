@@ -2,12 +2,12 @@
 # Contributor: Lolka Team <support@lolka.app>
 
 pkgname=lolka-x-bin
-pkgver=2.0.0
+pkgver=2.0.6
 pkgrel=1
 pkgdesc='Lolka X - chat, voice and screen sharing desktop client'
 arch=('x86_64')
 url='https://lolka.app'
-license=('custom')
+license=('LicenseRef-LolkaX')
 # Qt and FFmpeg are bundled; list only external runtime requirements here.
 depends=(
     'glibc' 'gcc-libs' 'glib2' 'dbus' 'gtk3'
@@ -23,22 +23,12 @@ conflicts=('lolka-x' 'lolka' 'lolka-bin')
 # Preserve upstream's prebuilt libraries and avoid generating a debug package.
 options=('!strip' '!debug')
 
-source=("https://cdn.lolka.app/desktop/linux/${pkgver}/lolka-x_${pkgver}_amd64.deb")
-sha256sums=('dc91b08a359ed0cb777dd81d3de9857d30670a4003af54a2886fc9324577021d')
-
-prepare() {
-    bsdtar -xf "$srcdir/data.tar.xz" -C "$srcdir"
-}
+source=("lolka-x-${pkgver}-${arch[0]}.pkg.tar.zst::https://cdn.lolka.app/desktop/linux/${pkgver}/${pkgname}-${pkgver}-1-${arch[0]}.pkg.tar.zst")
+noextract=("lolka-x-${pkgver}-${arch[0]}.pkg.tar.zst")
+sha512sums=('543222ae4ea5b40270b4bd3d6449a45294d2f949ddad301a115df8eb0194ca4fa18b45444a78a7126cf6ed37b74cad6b0996e50483290f90bad4b399be07d813')
 
 package() {
-    cp -a --no-preserve=ownership "$srcdir/opt" "$srcdir/usr" "$pkgdir/"
-
-    # Package the launcher link directly; Debian's update-alternatives is unused.
-    install -dm755 "$pkgdir/usr/bin"
-    ln -s /opt/lolka-x/bin/lolka-x "$pkgdir/usr/bin/lolka-x"
-
-    # Keep bundled dependency notices accessible through the standard location.
-    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-    cp -a --no-preserve=ownership "$srcdir/opt/lolka-x/share/doc/LolkaDesktop/licenses/." \
-        "$pkgdir/usr/share/licenses/$pkgname/"
+    bsdtar -xf "$srcdir/lolka-x-${pkgver}-${arch[0]}.pkg.tar.zst" -C "$pkgdir" \
+        --exclude='.BUILDINFO' --exclude='.MTREE' --exclude='.PKGINFO' \
+        --exclude='.INSTALL' --exclude='.CHANGELOG'
 }
