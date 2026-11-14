@@ -1,5 +1,5 @@
 pkgname=kde-material-you-colors
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Automatic Material You Colors Generator from your wallpaper for the Plasma Desktop"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPL3')
 makedepends=('extra-cmake-modules' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'libplasma')
 depends=('python' 'python-dbus' 'python-numpy' 'python-materialyoucolor' 'plasma5support' 'python-pillow' 'python-pywal16' 'python-magic')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('91e5951a63a14f7e8bad8087a10782557f47086378bc86d70c52447661130400')
+sha256sums=('c0a8f123b7dab273d50fdc57ac34979efef176f7a9c19af7568e6aeb964487f8')
 
 build() {
   cd "${srcdir}/${pkgname}-$pkgver"
