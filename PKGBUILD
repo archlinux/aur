@@ -1,6 +1,6 @@
 # Maintainer: itzlassejlv <hello@lassejlv.dk>
 pkgname=arego
-_version=0.1.41
+_version=0.1.42
 pkgver=${_version//-/_}
 pkgrel=1
 pkgdesc="Design with HTML and CSS on a native canvas"
@@ -14,9 +14,9 @@ optdepends=('vulkan-driver: GPU rendering (mesa provides one)'
             'org.freedesktop.secrets: remember your key (gnome-keyring, kwallet, keepassxc)')
 options=('!strip' '!debug')
 source_x86_64=("Arego-$_version-linux-x86_64.tar.gz::https://releases.arego.design/v$_version/Arego-$_version-linux-x86_64.tar.gz")
-sha256sums_x86_64=('e52da1d23c80681948efbb6f8de4c5eef86628ea89ba0d285792e5f37dae8f73')
+sha256sums_x86_64=('d0b4ee9a0a8b5498bb97d96b52367276aeb5430e115baf595e8125c5ca039aa5')
 source_aarch64=("Arego-$_version-linux-arm64.tar.gz::https://releases.arego.design/v$_version/Arego-$_version-linux-arm64.tar.gz")
-sha256sums_aarch64=('5e7d1494256e36a6ed882822ffbc987092f7af32707613d24d2fed11150379de')
+sha256sums_aarch64=('4051e4330c866530573b82492d0bf16c6d6cd4cb9ee406aee6490fc38696f982')
 
 package() {
     case "$CARCH" in
