@@ -1,6 +1,6 @@
 pkgbase = lean-ctx
 	pkgdesc = LeanCTX Engine — open-source Context Gateway for AI Systems. Context selection, supported controls, and evidence through local integration paths.
-	pkgver = 3.12.4
+	pkgver = 3.12.5
 	pkgrel = 1
 	url = https://leanctx.com
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lean-ctx
 	makedepends = gcc
 	depends = gcc-libs
 	depends = onnxruntime
-	source = lean-ctx-3.12.4.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.12.4/lean-ctx-3.12.4-source.tar.gz
-	sha256sums = 748dc85ade919090b297d5e23fd4bb4b3a99d967533e8f6ea8069f115014cbdb
+	source = lean-ctx-3.12.5.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.12.5/lean-ctx-3.12.5-source.tar.gz
+	sha256sums = 2cb849ddbb2623e20033b69331807aa4dc359d49015e184cfc4e4e2060f09daf
 
 pkgname = lean-ctx
