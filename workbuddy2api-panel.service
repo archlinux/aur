@@ -1,0 +1,15 @@
+[Unit]
+Description=WorkBuddy2API Panel
+Documentation=https://github.com/misakano7545/workbuddy2api-panel
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=workbuddy2api-panel
+Restart=on-failure
+WorkingDirectory=/var/lib/workbuddy2api-panel
+ExecStartPre=/usr/bin/sh -c 'if [ ! -f config.json ]; then cp /usr/share/doc/workbuddy2api-panel/config.example.json config.json; fi'
+ExecStart=/usr/bin/workbuddy2api-panel
+
+[Install]
+WantedBy=multi-user.target

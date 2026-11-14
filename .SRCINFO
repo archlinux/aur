@@ -1,0 +1,25 @@
+pkgbase = workbuddy2api-panel
+	pkgdesc = 把腾讯WorkBuddy账号变成 OpenAI 兼容 API 的多账号网关，同时自动完成任务中心全部任务，附 Web 管理面板（账号池可视化 / 积分任务 / 配置热更新）
+	pkgver = 2026.11.12.1729
+	pkgrel = 1
+	url = https://github.com/misakano7545/workbuddy2api-panel
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = go
+	source = workbuddy2api-panel-2026.11.12.1729.tar.gz::https://github.com/misakano7545/workbuddy2api-panel/archive/refs/tags/v2026.11.12.1729.tar.gz
+	source = workbuddy2api-panel.service
+	source = workbuddy2api-panel.sysusers
+	source = workbuddy2api-panel.tmpfiles
+	sha256sums = 4d07853bdcc4b811a720d44abf74f58f1db2f99a336acc9f2cbf477291c1fdc4
+	sha256sums = 180aeebcbe93072875e4637c29878dda9efab7c2bd0d9f566b0fbb461d1707e5
+	sha256sums = e576f876660bd5428c5210b2ed6472a86e0c6454ce93d4cdfd13eb79b9580c25
+	sha256sums = 0c1be5bab0af9077c9ad01181c8a0e75d1fc9fb1eccc02bc812e3a308b3b5c49
+
+pkgname = workbuddy2api-panel
