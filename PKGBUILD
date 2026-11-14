@@ -15,5 +15,6 @@ package() {
     install -Dm755 "${startdir}/nlpa2.sh" "${pkgdir}/usr/bin/nlpa2"
     install -Dm644 "${startdir}/nlpa2.desktop" "${pkgdir}/usr/share/applications/nlpa2.desktop"
     install -Dm755 "${srcdir}/nlpa2" "${pkgdir}/usr/share/nlpa2/nlpa2"
+    install -Dm644 "${startdir}/LICENSES/MIT.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cp -rp "${srcdir}"/{data,lib} "${pkgdir}/usr/share/nlpa2/"
 }
