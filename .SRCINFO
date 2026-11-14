@@ -8,6 +8,6 @@ pkgbase = mp3-browser
 	depends = gjs
 	depends = gtk3
 	source = mp3-browser-1.0.0.tar.gz::https://github.com/nestoris/mp3-browser/archive/v1.0.0.tar.gz
-	sha256sums = 3eb9484e4b06cccd5dde578d8222c513392f591c1892305ec7e8a21d933d3626
+	sha256sums = ff83aacbd6f2e89b34de2d7aa8300a0f94727cd1365aa59e9a1974872f75883d
 
 pkgname = mp3-browser
