@@ -1,6 +1,6 @@
 pkgbase = rivermonad
 	pkgdesc = xmonad-style tiling window manager for the river Wayland compositor
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/prietus/rivermonad
 	arch = x86_64
@@ -15,7 +15,42 @@ pkgbase = rivermonad
 	optdepends = fuzzel: the default launcher (mod-p)
 	optdepends = kanshi: monitor resolution and scale, started by the session
 	optdepends = libnotify: notifications when the configuration fails to compile
-	source = rivermonad-0.1.0.tar.gz::https://github.com/prietus/rivermonad/archive/v0.1.0.tar.gz
-	sha256sums = 4012a2147c8b20c8cefcb0c9ba041b54005549b670582bc2173215cc370ca003
+	source = rivermonad-0.2.0.tar.gz::https://github.com/prietus/rivermonad/archive/v0.2.0.tar.gz
+	sha256sums = 73dda2ea9441ebcb2089e02c998192a5af8c745e8470fe81d249fa64087c6ac6
 
 pkgname = rivermonad
+	optdepends = foot: the default terminal
+	optdepends = fuzzel: the default launcher (mod-p)
+	optdepends = kanshi: monitor resolution and scale, started by the session
+	optdepends = libnotify: notifications when the configuration fails to compile
+	optdepends = rivermonad-dotfiles: a complete desktop configuration (run rivermonad-setup)
+
+pkgname = rivermonad-dotfiles
+	pkgdesc = A complete river + rivermonad desktop: bar, living wallpaper, widgets, launcher, screenshots
+	arch = any
+	depends = rivermonad=0.2.0
+	depends = waymobar>=0.2.0
+	depends = bgmonad
+	depends = hasklets
+	depends = shotlet
+	depends = foot
+	depends = fuzzel
+	depends = mako
+	depends = kanshi
+	depends = libnotify
+	depends = grim
+	depends = slurp
+	depends = swappy
+	depends = wl-clipboard
+	depends = wf-recorder
+	depends = wtype
+	depends = unicode-emoji
+	depends = wireplumber
+	depends = xdg-desktop-portal-wlr
+	depends = xdg-desktop-portal-gtk
+	depends = inter-font
+	depends = noto-fonts-emoji
+	depends = ttf-material-symbols-variable
+	optdepends = powerline-fonts: Ubuntu Mono derivative Powerline, the font of foot.ini
+	optdepends = firefox: the browser on Super+B
+	optdepends = waybar: the alternative bar (needs the rivermonad modules, see contrib/waybar)
