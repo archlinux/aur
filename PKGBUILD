@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=c6-git
-pkgver=r482.25c6342
+pkgver=0.1.0+r0+gf72a870
 pkgrel=1
 pkgdesc="c6 — TinyCC with language extensions"
 arch=($CARCH)
@@ -13,7 +13,12 @@ depends=(
     'glibc'
 )
 makedepends=(
+    'cmake'
     'git'
+)
+checkdepends=(
+    'go'
+    'rust'
 )
 options=('docs' 'staticlibs' '!lto')
 source=("${pkgname%-git}::git+${url}.git")
@@ -34,26 +39,20 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    pushd tcc >/dev/null 
-    ./configure \
-        --prefix=/usr \
-        --docdir=/usr/share/doc/tcc \
-        --disable-static
-    popd >/dev/null
-
-    make build
+    cmake -S . \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DC6_TCC_SHARED_LIBTCC=ON \
+        -B build 
+    cmake --build build --parallel
 }
 
 check() {
     cd "${srcdir}/${pkgname%-git}"
-    export LD_LIBRARY_PATH="${srcdir}/${pkgname%-git}/tcc${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" 
-    # make -j1 test-all LD_LIBRARY_PATH="$LD_LIBRARY_PATH"
-    make test
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
-    cd "${srcdir}/${pkgname%-git}/tcc"
-    make DESTDIR="${pkgdir}" install
-    install -vDm0644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-    ln -sf /usr/bin/c6 ${pkgdir}/usr/bin/tcc
+    cd "${srcdir}/${pkgname%-git}"
+    DESTDIR="${pkgdir}" cmake --install build
+    install -vDm0644 tcc/COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
