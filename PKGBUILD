@@ -1,5 +1,5 @@
 pkgname=hyperhdr-git
-pkgver=v22.0.0.0.r20.4ecd855b
+pkgver=v22.0.0.0.r24.b1451f28
 pkgrel=1
 pkgdesc="Highly optimized open source ambient lighting implementation based on modern digital video and audio stream analysis"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,12 +12,10 @@ provides=('hyperhdr')
 conflicts=('hyperhdr' 'hyperhdr-git')
 source=("git+https://github.com/awawa-dev/${pkgname%-git}"
         "hyperhdr.systemd-user"
-        "hyperhdr-x11.systemd-user"
-        "fix-build.patch")
+        "hyperhdr-x11.systemd-user")
 sha512sums=('SKIP'
             'fdfcf998d1f41a061976f76bcc51da8c70c8b3e23bc959bc0267e86a348a0cda3e24f8cbb82e8938b81df8165697b624cc77df86118d64557aaf3128d9ec5ef7'
-            '54594711d4c13476eb4278195f91c03aa6ee308a72a969e03a98539681becb1d0b0d0a3a1a23c8b055ccf8732b7aa8a4853ad7dda6e4390a2a38af3b63365008'
-            '6d91b7e97a6c81dad593fcd26d6bd935ade97c151eb0bf7890ecd4aa518d7a5d536b151f78769dd9e6ffbed7877087fd12028ea663fb86659f2da0e8a8301378')
+            '54594711d4c13476eb4278195f91c03aa6ee308a72a969e03a98539681becb1d0b0d0a3a1a23c8b055ccf8732b7aa8a4853ad7dda6e4390a2a38af3b63365008')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -27,8 +25,6 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname%-git}"
   git submodule update --init --recursive
-
-  patch -Np1 < "../fix-build.patch"
 }
 
 build() {
