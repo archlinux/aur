@@ -4,7 +4,7 @@
 
 pkgbase=ptui
 pkgname=ptui-bin
-pkgver=2.7.3
+pkgver=2.7.4
 pkgrel=1
 pkgdesc="Picture TUI - terminal image viewer with a file browser and live previews"
 url="https://github.com/narbs/ptui"
@@ -14,7 +14,7 @@ provides=("ptui")
 conflicts=("ptui")
 depends=("chafa" "imagemagick" "jp2a")
 source=("https://github.com/narbs/ptui/releases/download/v$pkgver/ptui-$pkgver-x86_64.tar.gz")
-sha256sums=("fab6b08164eab95d0372724ceb5f0bb7a0631c89a9856f3a075e873e1dc03061")
+sha256sums=("336c67a0b9a5b5e4849368f8ad301f15f93b22f489c9a70240df583fe499ef01")
 
 package() {
     install -Dm755 ptui -t "$pkgdir/usr/bin"
