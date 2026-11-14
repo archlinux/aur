@@ -2,7 +2,7 @@
 # Maintainer: Emmanuel Gautier <emmanuel@cerberauth.com>
 
 pkgname='jwtop-bin'
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='JWT operations CLI - decode, verify, create, sign, and exploit JWTs.'
 url='https://github.com/cerberauth/jwtop'
@@ -12,16 +12,16 @@ provides=('jwtop')
 conflicts=('jwtop')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cerberauth/jwtop/releases/download/v${pkgver}/jwtop_Linux_arm64.tar.gz")
-sha256sums_aarch64=('0e4da0d954306016f33b71e4d27de02549f20103211ae56102bc979b1f64771a')
+sha256sums_aarch64=('8715544b05de26916984852fc6192f97937b93cbe688c10499b7c354340c5a23')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/cerberauth/jwtop/releases/download/v${pkgver}/jwtop_Linux_armv7.tar.gz")
-sha256sums_armv7h=('d70d712b428cedc7cc17ecc5c3eab1a0563e9c8b3c0be4527ac1d3bc457257ae')
+sha256sums_armv7h=('367edfd187fd974a4dde3d335d0d4f1f96b5ed8175d676ac06c8e5bc657c4c55')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/cerberauth/jwtop/releases/download/v${pkgver}/jwtop_Linux_i386.tar.gz")
-sha256sums_i686=('f1f64220ed4c03f3ee7d23d0529899a47705515b270f05aae14f98b21d9205bf')
+sha256sums_i686=('01386b1658ec6af4d708ec973c5b67ed3064a936262a8919c7d75150c18f937a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cerberauth/jwtop/releases/download/v${pkgver}/jwtop_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('e41226955e3c3c696076196545badcc1f97ba55a2ffdacef764e538b3e94cc7e')
+sha256sums_x86_64=('4644c48a9e5b9caabe3e3aa776c8f9b81fed4b51f4320a31ad5a9d54066b85a6')
 
 package() {
   install -Dm755 "./jwtop" "${pkgdir}/usr/bin/jwtop"
