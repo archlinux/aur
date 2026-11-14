@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="CLI / TUI that lists listening TCP/UDP ports"
 
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ provides=("${_appname}")
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('25117f42705801040ea63bf09cf6396a063d54c0087a7ce6a57554195b5f17ae')
+sha256sums=('d6acf3cace6fce7d56e02c3310023fb9bebf82d8a99ff672f1c4270141c25641')
 
 
 prepare() {
