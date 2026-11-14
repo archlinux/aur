@@ -1,7 +1,7 @@
 pkgbase = libcute_headers-git
 	pkgdesc = Collection of cross-platform one-file C/C++ libraries with no dependencies, primarily used for games (bleeding edge)
 	pkgver = r996.476d688
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RandyGaul/cute_headers
 	arch = any
 	license = Zlib OR Unlicense
@@ -10,37 +10,46 @@ pkgbase = libcute_headers-git
 	sha256sums = SKIP
 
 pkgname = libcute_c2-git
+	depends = 
 	provides = libcute_c2
 	conflicts = libcute_c2
 
 pkgname = libcute_net-git
+	depends = 
 	provides = libcute_net
 	conflicts = libcute_net
 
 pkgname = libcute_tiled-git
+	depends = 
 	provides = libcute_tiled
 	conflicts = libcute_tiled
 
 pkgname = libcute_aseprite-git
+	depends = 
 	provides = libcute_aseprite
 	conflicts = libcute_aseprite
 
 pkgname = libcute_sound-git
+	depends = sdl3
 	provides = libcute_sound
 	conflicts = libcute_sound
 
 pkgname = libcute_png-git
+	depends = 
 	provides = libcute_png
 	conflicts = libcute_png
 
 pkgname = libcute_spritebatch-git
+	depends = 
 	provides = libcute_spritebatch
 	conflicts = libcute_spritebatch
 
 pkgname = libcute_sync-git
+	depends = 
 	provides = libcute_sync
 	conflicts = libcute_sync
 
 pkgname = libcute_tls-git
+	depends = 
 	provides = libcute_tls
 	conflicts = libcute_tls

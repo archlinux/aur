@@ -2,12 +2,12 @@
 
 _base=cute
 _name="${_base}_headers"
-_items=(c2 net tiled aseprite sound png spritebatch sync tls)
+_items=('c2:' 'net:' 'tiled:' 'aseprite:' 'sound:sdl3' 'png:' 'spritebatch:' 'sync:' 'tls:')
 
 pkgbase="lib${_name}-git"
-pkgname=($(for i in ${_items[@]}; do echo "lib${_base}_$i-git"; done))
+pkgname=($(for i in ${_items[@]}; do echo "lib${_base}_${i%:*}-git"; done))
 pkgver=r996.476d688
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of cross-platform one-file C/C++ libraries with no dependencies, primarily used for games (bleeding edge)"
 arch=('any')
 url="https://github.com/RandyGaul/${_name}"
@@ -26,13 +26,18 @@ pkgver() {
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=tesseract-data-git&id=543a8d393c3bbd7afd31284835677d162b14a4e1
 
 for i in ${_items[@]}; do
+  pkg="${i%:*}"
+  localdeps="${i##*:}"
+
   eval "
-package_lib${_base}_$i-git() {
-  provides=('lib${_base}_$i')
-  conflicts=('lib${_base}_$i')
+package_lib${_base}_$pkg-git() {
+  provides=('lib${_base}_$pkg')
+  conflicts=('lib${_base}_$pkg')
+
+  depends=($(for d in $(echo "$localdeps" | tr ',' ' '); do echo "$d"; done))
 
   cd \"\$srcdir/${_name}\"
-  install -Dm644 \"${_base}_$i.h\" \"\$pkgdir/usr/include/${_base}_$i.h\"
+  install -Dm644 \"${_base}_$pkg.h\" \"\$pkgdir/usr/include/${_base}_$pkg.h\"
 
   install -Dm644 LICENSE \"\$pkgdir/usr/share/licenses/\$pkgname/LICENSE\"
 }
