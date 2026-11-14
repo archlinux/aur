@@ -7,7 +7,7 @@ pkgname=(
   "${pkgbase}"
   "anyzls"
 )
-pkgver=2026_11_03
+pkgver=2026_11_12
 pkgrel=1
 pkgdesc="One zig to rule them all"
 arch=(
@@ -31,7 +31,7 @@ _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('24ea84cba4ab4e55f853c26d3b1916e105a5b321d2bbfbd970b4253dcbd62e678504eb921e54874687fe5fdc24b8cb9487cd011c1a1afe46225a73753e93180b')
+b2sums=('1dcc373b03a19fe75554ff91d6ab9fe41586ff6041ed9c5bde8a076f9479633fb10c405c20e8a76f8cfe5db62e148bc00b62c47534c6586da528287b46458a9f')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"

@@ -1,6 +1,6 @@
 pkgbase = anyzig
 	pkgdesc = One zig to rule them all
-	pkgver = 2026_11_03
+	pkgver = 2026_11_12
 	pkgrel = 1
 	url = https://marler8997.github.io/anyzig/
 	arch = aarch64
@@ -11,8 +11,8 @@ pkgbase = anyzig
 	arch = x86_64
 	license = MIT
 	makedepends = zig>=0.17
-	source = https://github.com/marler8997/anyzig/archive/refs/tags/v2026_11_03/anyzig-2026_11_03.tar.gz
-	b2sums = 24ea84cba4ab4e55f853c26d3b1916e105a5b321d2bbfbd970b4253dcbd62e678504eb921e54874687fe5fdc24b8cb9487cd011c1a1afe46225a73753e93180b
+	source = https://github.com/marler8997/anyzig/archive/refs/tags/v2026_11_12/anyzig-2026_11_12.tar.gz
+	b2sums = 1dcc373b03a19fe75554ff91d6ab9fe41586ff6041ed9c5bde8a076f9479633fb10c405c20e8a76f8cfe5db62e148bc00b62c47534c6586da528287b46458a9f
 
 pkgname = anyzig-common
 	pkgdesc = One zig to rule them all (common files)
@@ -20,8 +20,8 @@ pkgname = anyzig-common
 	conflicts = anyzig<2026_10_23
 
 pkgname = anyzig
-	depends = anyzig-common>=2026_11_03-1
+	depends = anyzig-common>=2026_11_12-1
 
 pkgname = anyzls
 	pkgdesc = One zig to rule them all (ZLS)
-	depends = anyzig-common>=2026_11_03-1
+	depends = anyzig-common>=2026_11_12-1
