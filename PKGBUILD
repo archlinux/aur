@@ -12,7 +12,7 @@ _appname=${_pkgprefix}-${_pkgname}
 pkgname=${_cratename}
 pkgdesc="Interactive TUI debugger, line profiler, and time-travel inspector for Bash scripts"
 
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -29,7 +29,7 @@ options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download"
 		"fix_readme.patch")
-sha256sums=('0a2fbf02d62518aece04b86538b7fdec0911c74d419559f2db4f74f90a92c15b'
+sha256sums=('ea6d00bfb041eba181b23700dabe73ec1523c77ff172f5edf94ff1d5dd50d869'
             '11b19c79ed526efaf9483a651e8031b51767257c538291276011f07e104887e5')
 
 prepare() {
