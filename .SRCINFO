@@ -1,0 +1,19 @@
+pkgbase = llama.cpp-vulkan-stable-bin
+	pkgdesc = llama.cpp official stable release prebuilt binaries with the Vulkan backend
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ggml-org/llama.cpp
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl-3
+	depends = vulkan-icd-loader
+	provides = llama.cpp
+	conflicts = llama.cpp
+	options = !strip
+	options = !debug
+	source = llama.cpp-vulkan-stable-bin-1.0.0.tar.gz::https://github.com/ggml-org/llama.cpp/releases/download/b12359/llama-b12359-bin-ubuntu-vulkan-x64.tar.gz
+	sha256sums = 19b60f00395a3f4954e46a5037695bc1d843404fc9d3124f82a612ecd8fbe9f0
+
+pkgname = llama.cpp-vulkan-stable-bin
