@@ -3,7 +3,7 @@
 pkgname=pilinara
 _pkgname=pilinara
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 url="https://github.com/Starfallan/PiliNara"
 pkgdesc="PiliPlus 的第三方Fork版本，做了一些自用改动"
 arch=('x86_64')
@@ -48,7 +48,8 @@ prepare() {
                   null_safety_for_selectable_region selectable_region
                   editable_text text_field scroll_position scrollable
                   scrollable_gesture draggable_scrollable_sheet scaffold
-                  text text_painter sliver refresh_indicator double_tap_gesture)
+                  text text_painter sliver refresh_indicator double_tap_gesture
+                  media_query)
 
   printf "正在应用 Flutter 引擎补丁...\n"
   git -C "${_sdk}" reset --hard HEAD
