@@ -1,0 +1,17 @@
+Zakon Text
+Copyright (c) 2026 Олексій Чекаль (Oleksii Chekal), Геннадій Заречнюк
+(Henadii Zarechniuk), Дмитро Растворцев (Dmytro Rastvortsev),
+Андрій Шевченко (Andrij Shevchenko)
+
+No formal license text is distributed with the font. The fonts' embedded
+license URL points to https://mincult.gov.ua, and the Ministry of Culture
+of Ukraine's Zakon page (https://mincult.gov.ua/zakon/) states:
+
+  "Zakon Text ... відкрита для вільного використання необмеженого кола осіб"
+  (Zakon Text is open for free use by an unlimited circle of persons.)
+
+The companion faces Zakon Decor and Zakon Letterpress are under a closed
+license and are NOT included in this package.
+
+This package does not redistribute the font files; they are downloaded
+from the Ministry's official Google Drive at build time.
