@@ -1,6 +1,6 @@
 pkgbase = kobito-bin
 	pkgdesc = Autonomous coding agent orchestrator — works while you sleep, like the elves in the shoemaker's tale
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/unhappychoice/kobito
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = kobito-bin
 	depends = libgcc
 	provides = kobito
 	conflicts = kobito
-	source = LICENSE-0.3.2::https://raw.githubusercontent.com/unhappychoice/kobito/v0.3.2/LICENSE
-	source = README-0.3.2.md::https://raw.githubusercontent.com/unhappychoice/kobito/v0.3.2/README.md
+	source = LICENSE-0.3.3::https://raw.githubusercontent.com/unhappychoice/kobito/v0.3.3/LICENSE
+	source = README-0.3.3.md::https://raw.githubusercontent.com/unhappychoice/kobito/v0.3.3/README.md
 	sha256sums = a2a2a62cb5a85d7dbb63900d66b87756a9cb01654f3142d9471c0e27d9dfba86
 	sha256sums = b1bb22815a7468053c92d6701f34db6f7ce4090e9d7e1efd60830d4ead4ee611
-	source_x86_64 = kobito-x86_64-0.3.2.tgz::https://github.com/unhappychoice/kobito/releases/download/v0.3.2/kobito-v0.3.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = f9ac08193900873882c012454af0d391296cc7005b0e50d4d548cee3e71ca33a
-	source_aarch64 = kobito-aarch64-0.3.2.tgz::https://github.com/unhappychoice/kobito/releases/download/v0.3.2/kobito-v0.3.2-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = b3b88fae13bf8a07c9f8926ca90d172d044d67cd2e53cf0d77e7e2b651c79490
+	source_x86_64 = kobito-x86_64-0.3.3.tgz::https://github.com/unhappychoice/kobito/releases/download/v0.3.3/kobito-v0.3.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d4c9533c40e297600f9e2dcdda60010084aa6e17ad0b53ff20bd292857d05c18
+	source_aarch64 = kobito-aarch64-0.3.3.tgz::https://github.com/unhappychoice/kobito/releases/download/v0.3.3/kobito-v0.3.3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0837fa16b787494f0c3ea0fb10439858d93ee97d98532261a01845d55fc07ed8
 
 pkgname = kobito-bin
