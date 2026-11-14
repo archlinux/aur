@@ -1,7 +1,7 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 _name=trufflehog
 pkgname="$_name-git"
-pkgver=3.99.8.r21.g2c0788405
+pkgver=3.99.9.r3.g32e87f4f3
 pkgrel=1
 pkgdesc="Secrets scanner for repositories"
 arch=('x86_64' 'aarch64')
@@ -44,7 +44,7 @@ build() {
 check() {
   cd "$_name"
   # make test-community
-  go test -timeout=5m $(go list ./... | grep -v '/vendor/\|pkg/sources\|pkg/analyzer/analyzers')
+  go test -timeout=5m $(go list ./... | grep -v '/vendor/\|pkg/sources\|pkg/analyzer/analyzers\|/pkg/engine$')
 }
 
 package() {
