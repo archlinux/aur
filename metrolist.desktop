@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Metrolist
+Comment=YouTube Music client for desktop
+Exec=metrolist
+Icon=audio-x-generic
+Terminal=false
+Categories=AudioVideo;Audio;Player;
+StartupNotify=true

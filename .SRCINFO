@@ -1,0 +1,19 @@
+pkgbase = metrolist-desktop-bin
+	pkgdesc = YouTube Music client for desktop
+	pkgver = 14.0.0
+	pkgrel = 1
+	url = https://github.com/MetrolistGroup/Metrolist
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = fuse2
+	options = !strip
+	source = metrolist-14.0.0.AppImage::https://github.com/MetrolistGroup/Metrolist/releases/download/v14.0.0/metrolist-desktop-linux-x64-14.0.0.AppImage
+	source = metrolist
+	source = metrolist.desktop
+	source = LICENSE
+	sha256sums = 0e75981e7a805ce669290edfb5537b96a4ac8951c2c3e6a50f00ed2b7896045f
+	sha256sums = 7e3493f95a180616ce9520273676af5849de2c912471e3e24ae8da08b3391c9e
+	sha256sums = 5cf901097170fa63b0d5a10bb9ec12adb93a084654724b84dbbec708e35fcf56
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = metrolist-desktop-bin
