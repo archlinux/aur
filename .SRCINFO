@@ -1,6 +1,6 @@
 pkgbase = studyplan-git
 	pkgdesc = Turn YouTube course playlists into a daily study to-do list, with a terminal UI
-	pkgver = 0.1.0.r1.g5a2c6bd
+	pkgver = 0.1.0.r4.g542d960
 	pkgrel = 1
 	url = https://github.com/chlorine3539/studyplan
 	arch = x86_64

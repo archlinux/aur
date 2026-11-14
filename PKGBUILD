@@ -5,7 +5,7 @@
 
 pkgname=studyplan-git
 # Placeholder only: pkgver() computes the real version on every build.
-pkgver=0.1.0.r1.g5a2c6bd
+pkgver=0.1.0.r4.g542d960
 pkgrel=1
 pkgdesc='Turn YouTube course playlists into a daily study to-do list, with a terminal UI'
 arch=('x86_64' 'aarch64')
