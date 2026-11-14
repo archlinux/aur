@@ -1,7 +1,7 @@
 # Maintainer: Andrew Arendt <andrewarendt at gmail dot com>
 
 pkgname=ttypo
-pkgver=0.1.22
+pkgver=0.1.24
 pkgrel=1
 pkgdesc="Terminal-based typing test"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('00369197967abae7767050eb372c775775912a2bc778f6a7ad0c0c45e97d2131')
+sha256sums=('22f3af94ab728477270c0fe6ad1bf2083a3d300096cb4ce52e572f94727c62bf')
 
 prepare() {
     cd "$pkgname-$pkgver"

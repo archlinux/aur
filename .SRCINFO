@@ -1,6 +1,6 @@
 pkgbase = ttypo
 	pkgdesc = Terminal-based typing test
-	pkgver = 0.1.22
+	pkgver = 0.1.24
 	pkgrel = 1
 	url = https://github.com/drewja/ttypo
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ttypo
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = ttypo-0.1.22.tar.gz::https://github.com/drewja/ttypo/archive/v0.1.22.tar.gz
-	sha256sums = 00369197967abae7767050eb372c775775912a2bc778f6a7ad0c0c45e97d2131
+	source = ttypo-0.1.24.tar.gz::https://github.com/drewja/ttypo/archive/v0.1.24.tar.gz
+	sha256sums = 22f3af94ab728477270c0fe6ad1bf2083a3d300096cb4ce52e572f94727c62bf
 
 pkgname = ttypo
