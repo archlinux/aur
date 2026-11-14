@@ -1,11 +1,11 @@
 pkgbase = alcom
 	pkgdesc = A fast open-source alternative of VRChat Creator Companion (VCC)
 	pkgver = 1.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vrc-get/vrc-get
 	arch = x86_64
 	arch = aarch64
-	license = MPL-2.0
+	license = MIT
 	makedepends = cargo
 	makedepends = nodejs
 	makedepends = npm
