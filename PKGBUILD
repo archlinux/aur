@@ -1,7 +1,7 @@
 # Maintainer: Eli Fereira <eli@fereira.net>
 
 pkgname=colibri-social-beta-bin
-pkgver=0.6.0_spaces.22
+pkgver=0.6.0_spaces.25
 pkgrel=1
 pkgdesc="Call, chat, and hang out on a platform built for you! (spaces version)"
 url="https://github.com/colibri-social/colibri.social"
@@ -35,7 +35,7 @@ source=(
   "LICENSE_$pkgver::$_rawurl/LICENSE"
 )
 sha256sums=(
-  'f25b8e110b232e3de2551efe70159dfe5adef82d8407e560b5fc0fe479ffec30'
+  '3df7489512e51bdc0e3c42750595ae8a12dde39005f3d3def7a9beae9acabb58'
   'SKIP'
 )
 
