@@ -9,7 +9,7 @@
 #   https://downloads.cursor.com/grokbot/stable/<commit>/linux/x64/grok-bot_<version>_amd64.deb
 
 pkgname=grok-bot-cursor
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Grok Bot desktop agent'
 arch=('x86_64')
@@ -39,13 +39,13 @@ provides=('grok-bot' 'sand')
 conflicts=('grok-bot' 'grok-bot-bin' 'sand' 'grokbot-linux-port' 'grokbot-linux-port-bin')
 replaces=('grok-bot' 'grok-bot-bin')
 options=('!strip' '!debug')
-_commit=be8eaf76ba888db05a6a8950922f5fc8bb4d14e9
+_commit=83d46d618ef4c12afa17edd8e3c29d6caf046d17
 source=(
     "grok-bot_${pkgver}_amd64.deb::https://downloads.cursor.com/grokbot/stable/${_commit}/linux/x64/grok-bot_${pkgver}_amd64.deb"
     grok-bot.sh
 )
 sha256sums=(
-    'ef90d8171fe207f39b887753c1ff492c6684a1a9f910d6e1dfa0303889fcf8f0'
+    '5b02fb215103eded94ec9f381a790d71f6727f017681c7edd1b56f2b8cfa572d'
     '9b3cccfada1dbe44ce794177181515aaf328603484327ef72a914234544bfbf8'
 )
 noextract=("grok-bot_${pkgver}_amd64.deb")
