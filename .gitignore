@@ -1,6 +1,7 @@
 /src
 /pkg
 /memprof-limits
+/memtrace
 /ocaml-tree-sitter-core
 /opengrep
 /opengrep-crystal

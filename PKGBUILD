@@ -1,94 +1,76 @@
 # Maintainer: Julian Houba <info@craftingdragon.ch>
 pkgname=opengrep
-pkgver=1.33.1
+pkgver=2.0.0
 pkgrel=1
 _memprof_limits_commit=c2cced325a93d2271379f0712db85867b29dbee1
 _visitors_commit=e18a7a67150a54a3aef51661e0317cacc313d764
-_semgrep_interfaces_commit=5e705660dc7381d4c4c247fa83c4c5860e61d555
-_semgrep_apex_commit=024974494b1042141388e1efda11cd5dbcc273e3
-_semgrep_bash_commit=aa7d8eec0714a1e1492a1dcbac32c883a58bb6da
-_semgrep_cairo_commit=a8e2d5d5dcf8345735b15268b76b24377103a188
-_semgrep_circom_commit=a6084cd52d1dbae28365635934279c0100e89762
-_semgrep_cpp_commit=eddec4922e67e757c546cdec7e640a6e7b0ecba4
+_semgrep_apex_commit=f2a235f997379033a8c64f0962d5ef1252629a0a
+_semgrep_bash_commit=e6f3944f59b684b212a37bdec6b113621a1ad9ea
+_semgrep_cairo_commit=3e4d0ded8fc62dbb03232193721bf6bb376bfc62
+_semgrep_circom_commit=66a0ff265c38a31240162d0011190b5bdd85efd5
+_semgrep_cpp_commit=8625a5341aebb93c62eb953f6a66fc1083dffe84
 _opengrep_crystal_commit=f279484792c259278c4e135e8f1048bbcea7c358
-_semgrep_c_sharp_commit=75c7277df0202ad6f8f8db968c38733ecdb9ea4e
-_semgrep_dart_commit=8e04531936bca9f508692e97646019abfd4c2774
-_semgrep_dockerfile_commit=783ee02353d0da80c03e74598394b2fb84745deb
-_semgrep_elixir_commit=dc48d05492c8d2020698f832ec43974bdd9aae15
-_semgrep_go_commit=51ff7be525c452c0201b3969b3117f7bf8e588dc
-_semgrep_hack_commit=d803e5719874de90ba9a0db9c6f7ba08314c50be
-_semgrep_html_commit=0b0f69e7d12ba20625b3af5223aa3ca9767d38bd
-_semgrep_java_commit=8b9830231a447945d7af372d29720496e3058782
-_semgrep_jsonnet_commit=fde344cc44f2787f8afd9b28c4b70f04ced32c41
-_semgrep_julia_commit=885a1421f27e20c36e18eadb18c8f79cb8d54298
-_semgrep_kotlin_commit=a7d508fe9b623fb9d5c9e90b47a1eba704908110
-_semgrep_clojure_commit=754ea8a63c06e16984b9c7b4e2713bc160667c87
-_semgrep_lua_commit=6fe7090fe8c1dd2193211af0443fa902e16bba74
-_semgrep_move_on_aptos_commit=257a384fca87ce6831670b4aac5296a382cf6974
-_semgrep_move_on_sui_commit=4fe01c06c24ada6a9b0a99d49cc488964fa11046
-_semgrep_ocaml_commit=9ba9be79844df3e560da2d2c77e160b3f827a8ce
-_semgrep_php_commit=0b2ef9bc28ae87200af5cd85ff5e53fc5306cbef
-_semgrep_promql_commit=5e9ca596499c5730a0bc687bd806ca28f5a99a46
-_semgrep_proto_commit=9e169500bdfadb93cbf6ec92094581e88b1369a6
-_semgrep_python_commit=0a623865209259662df6606946805756997c0074
-_semgrep_ql_commit=55749f3c2124dfe1661453ab0790042035a16d41
-_semgrep_r_commit=06fa8af03dca9aa293efd603ba107faf7e82a3c3
-_semgrep_ruby_commit=a824639aeb646c03b5bbc74c3fc5844ed691e7b7
-_semgrep_rust_commit=fa0ae954dfd2c62c4aba9781e5f0fcc584c4a248
-_semgrep_solidity_commit=968fd0d7096720e72c9870933ae7afa58221278f
-_semgrep_swift_commit=7214b8436dd77d5dede681b05905009bb14c64a9
-_semgrep_hcl_commit=546b85986d1965450ba942eea71cc80f55ea39ee
-_semgrep_tsx_commit=4293c1bc21f441ccfa3b0fa4306a9978ee9ec0b7
-_semgrep_typescript_commit=08a13a2a846e6d64dc859435be5f0214dff2d72c
+_semgrep_c_sharp_commit=32e780f56df16c12bf726996564c9d80bf54d02c
+_semgrep_dart_commit=cb3c48321fdab5485d2c1f92c99c78425543e59d
+_semgrep_dockerfile_commit=e3a773f20c7fee9558529e6442e164c2cced9fb9
+_semgrep_elixir_commit=681f90052720f4bc1c2fd2c2547771f6029917f0
+_semgrep_go_commit=b36632089866c9223ce5bd31a0353627a48f50f9
+_semgrep_hack_commit=f1adb0ae2b0e77a5181de5a98f55055435b0aa57
+_semgrep_html_commit=827d34d593016cd34324f3a3b46248022cf613b6
+_semgrep_java_commit=7b6cb9d41b74a6f21133cc9a9cc0a2e60ff2af6f
+_semgrep_jsonnet_commit=a9e8d4c35acfa457e6649f4f54c467f5575e6777
+_semgrep_julia_commit=31bcd2dcaa9beb1580f60c81a133037f7fad0a40
+_semgrep_kotlin_commit=97203482e0aa1a88f25bfe4880fc05230524eb5a
+_semgrep_clojure_commit=0c4985d4f26c019ca15ff5ea7b8b525f4128e0df
+_semgrep_lua_commit=073f283a0fa4144f941199e869fd787d8e3ce338
+_semgrep_move_on_aptos_commit=74276d40735ccb584d341144308f84c31b0384f9
+_semgrep_move_on_sui_commit=f1fc8f468c21e26d0c3dfafdea7e9888bdfb97e8
+_semgrep_ocaml_commit=ee015c07fc8b99250875d796da5aec0888eaa8fe
+_semgrep_php_commit=0b9dd47725c12481017485d9882e375fda26e142
+_semgrep_promql_commit=a6ac8bf5a35e2078b50098cbb5f64bf259c31875
+_semgrep_proto_commit=25bae8f9d0b9f56f4914fd3d2adcee754fd241d8
+_semgrep_python_commit=444327263390b07b66bb13c0a91848c7767d9af2
+_semgrep_ql_commit=853a990a50b71f0ca24e3732dccff5c8c54e874d
+_semgrep_r_commit=2c556b67422a627e0325589f71fc1394b5750c98
+_semgrep_ruby_commit=bf09252137a27dc29a8d9da82d4d5a4527bda46b
+_semgrep_rust_commit=fb6c73fbe4f34592fbbd0ce0f825e224533d47e7
+_semgrep_solidity_commit=e101c0c6c8c86bd5ff02f1d3a737cb3e3bebe498
+_semgrep_swift_commit=61d1550d1b4aee70f7e00457d3121e4f1d3c0d47
+_semgrep_hcl_commit=e42e9d924de848c784e4ab46c571bff5145d245e
+_semgrep_tsx_commit=0cf98e6a7175475f7d197a376e0debcb3c9b5adc
+_semgrep_typescript_commit=e51e5adad9d7bc73fc89766b8830637ce2624645
 _ocaml_tree_sitter_core_commit=1392efc21e60d5acde72d0d1c6586f5692fedace
-_pcre2_ocaml_commit=2633911369201dd7e2b58dc479940924b443578b
-_testo_commit=634c978b8c03f02f8f172820fed4554aff721313
-_semgrep_rules_commit=16b9e6d45f10649f6a531ec4838ed9924372c3bc
-_opam_switch_stamp=4
+_pcre2_ocaml_commit=4e0a44486bb518b7a24ca11286c4b03a8d51e17e
+_testo_commit=99a0d4f08d9cbabc87d10da94a534ce8a1220cd9
+_semgrep_rules_commit=f0a382de1184139c5a356eb64ccd9bdfcc8ce526
+_memtrace_commit=874e70b283cf8bd7734d5c598dc176d0eb2547f3
+_opam_switch_stamp=6
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep"
 arch=('x86_64' 'aarch64')
 url="https://github.com/opengrep/opengrep"
 license=('LGPL-2.1-only')
 
 depends=(
+  'glibc'
+  'gcc-libs'
+  'zstd'
+  'git'
+  'ca-certificates'
   'gmp'
   'libev'
-  'pcre'
-  'pcre2'
-  'python'
-  'python-attrs'
-  'python-boltons'
-  'python-click-option-group'
-  'python-click'
-  'python-colorama'
-  'python-glom'
-  'python-jsonschema'
-  'python-packaging'
-  'python-peewee'
-  'python-requests'
-  'python-rich'
-  'python-ruamel-yaml'
-  'python-typing_extensions'
-  'python-urllib3'
-  'python-wcmatch'
+  'pcre2>=10.43'
   'tree-sitter'
 )
 makedepends=(
   'dune'
-  'git'
-  'ocaml'
+  'ocaml>=5.3.0'
   'ocamlbuild'
   'opam'
   'pkgconf'
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel'
   'rsync'
 )
 
 _submodules=(
-  "OSS/cli/src/semgrep/semgrep_interfaces|cli/src/semgrep/semgrep_interfaces|semgrep-interfaces|https://github.com/opengrep/semgrep-interfaces.git|${_semgrep_interfaces_commit}"
   "languages/apex/tree-sitter/semgrep-apex|languages/apex/tree-sitter/semgrep-apex|semgrep-apex|https://github.com/opengrep/semgrep-apex.git|${_semgrep_apex_commit}"
   "OSS/languages/bash/tree-sitter/semgrep-bash|languages/bash/tree-sitter/semgrep-bash|semgrep-bash|https://github.com/opengrep/semgrep-bash|${_semgrep_bash_commit}"
   "OSS/languages/cairo/tree-sitter/semgrep-cairo|languages/cairo/tree-sitter/semgrep-cairo|semgrep-cairo|https://github.com/opengrep/semgrep-cairo|${_semgrep_cairo_commit}"
@@ -133,10 +115,12 @@ _submodules=(
 source=(
   "${pkgname}::git+https://github.com/opengrep/opengrep.git#tag=v${pkgver}"
   "memprof-limits::git+https://gitlab.com/dimitris-m/memprof-limits.git#commit=${_memprof_limits_commit}"
+  "memtrace::git+https://github.com/opengrep/memtrace.git#commit=${_memtrace_commit}"
   "visitors::git+https://github.com/opengrep/visitors.git#commit=${_visitors_commit}"
 )
 
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -165,7 +149,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update --init --force "${_submodule_paths[@]}"
 
   sed -i \
-    '/^# Remove all symbols with GNU strip/,/^\tstrip bin\/opengrep-core$(EXE)$/d' \
+    '/^# Remove all symbols with GNU strip/,/^\tstrip bin\/opengrep$(EXE)$/d' \
     Makefile
 
   cd libs/ocaml-tree-sitter-core
@@ -174,6 +158,14 @@ prepare() {
     -e 's|^PATH := .*|PATH := $(PATH):$(TREESITTER_BINDIR)|' \
     -e 's|^PATH=.*|PATH=$PATH:$TREESITTER_BINDIR|' \
     tree-sitter-config.mk tree-sitter-config.sh
+}
+
+_fake_system_package_for_opam() {
+  local _package="$1"
+
+  if ! opam list --switch="${pkgname}" --installed --short "${_package}" | grep -Fxq "${_package}"; then
+    opam install --switch="${pkgname}" --fake "${_package}"
+  fi
 }
 
 build() {
@@ -206,14 +198,15 @@ build() {
 
   export OCAMLPATH="${OPAMROOT}/${pkgname}/lib"
 
-  if ! opam list --switch="${pkgname}" --installed --short ocamlbuild | grep -Fxq ocamlbuild; then
-    opam install --switch="${pkgname}" --fake ocamlbuild
-  fi
+  _fake_system_package_for_opam dune
+  _fake_system_package_for_opam ocamlbuild
 
   opam pin --switch="${pkgname}" add -n -k path \
     memprof-limits.dev "${srcdir}/memprof-limits"
   opam pin --switch="${pkgname}" add -n -k path \
     visitors.dev "${srcdir}/visitors"
+
+  opam pin --switch="${pkgname}" add -n -k path memtrace.dev "${srcdir}/memtrace"
 
   LDFLAGS= OPAMSOLVERTIMEOUT=1200 opam install --switch="${pkgname}" \
     --assume-depexts \
@@ -225,13 +218,6 @@ build() {
   printf '%s\n' "${_opam_switch_stamp}" > "${OPAMROOT}/${pkgname}/.opengrep-package-switch"
 
   opam exec --switch="${pkgname}" -- make core
-
-  install -Dm755 bin/opengrep-core \
-    cli/src/semgrep/bin/opengrep-core
-
-  cd cli
-  rm -rf dist
-  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -245,7 +231,8 @@ check() {
   export OCAMLPATH="${OPAMROOT}/${pkgname}/lib"
   export LANG=C # Needed for e2e and git tests to pass
 
-  if opam exec --switch="${pkgname}" -- make core-test; then
+  # Keep Git's non-repository diagnostic stable across filesystem boundaries.
+  if GIT_DISCOVERY_ACROSS_FILESYSTEM=1 opam exec --switch="${pkgname}" -- make core-test; then
     _status=0
   else
     _status=$?
@@ -261,18 +248,7 @@ check() {
 }
 
 package() {
-  cd "${pkgname}/cli"
-
-  local -a _wheels
-  shopt -s nullglob
-  _wheels=(dist/*.whl)
-  if (( ${#_wheels[@]} != 1 )); then
-    error "Expected exactly one wheel in cli/dist, found ${#_wheels[@]}"
-    return 1
-  fi
-
-  python -m installer --destdir="${pkgdir}" "${_wheels[0]}"
-
-  cd ..
+  cd "${pkgname}"
+  install -Dm755 bin/opengrep "${pkgdir}/usr/bin/opengrep"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
