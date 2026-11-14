@@ -1,7 +1,7 @@
 pkgbase = gopodder
 	pkgdesc = gPodder-compatible podcast synchronization server
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cbrgm/gopodder
 	install = gopodder.install
 	arch = x86_64

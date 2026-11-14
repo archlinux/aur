@@ -3,7 +3,7 @@
 
 pkgname=gopodder
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='gPodder-compatible podcast synchronization server'
 arch=('x86_64' 'aarch64')
 url='https://github.com/cbrgm/gopodder'
@@ -30,7 +30,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOPATH="${srcdir}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -buildvcs=false"
   go build -o build -ldflags "-linkmode=external -X main.Version=${pkgver}" ./cmd/...
 }
 
