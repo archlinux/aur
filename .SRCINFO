@@ -1,5 +1,5 @@
 pkgbase = yksresults-git
-	pkgdesc = Native Unix TUI for tracking YKS TYT and AYT study topics
+	pkgdesc = Native cross-platform TUI for tracking YKS TYT and AYT study results
 	pkgver = 0.1.0.r5.g5769e09
 	pkgrel = 1
 	url = https://github.com/chlorine3539/yksresults
