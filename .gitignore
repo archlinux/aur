@@ -3,3 +3,5 @@
 /*.deb
 /*.tar.zst
 goose/
+/*.tar.bz2
+/*.tar.gz

@@ -38,7 +38,7 @@ fi
 
 ASSETS=(
     "goose_${LATEST_VERSION}_amd64-vulkan.deb"
-    "goose-x86_64-unknown-linux-gnu.tar.bz2"
+    "goose-x86_64-unknown-linux-gnu-vulkan.tar.bz2"
 )
 
 echo -e "${GREEN}Checking upstream assets exist...${NC}"
