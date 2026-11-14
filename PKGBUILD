@@ -1,7 +1,7 @@
 # Maintainer: LJ <aur.lj at munally.com>
 pkgname="bootvine-git"
 _name="bootvine"
-pkgver=0.1.3.ga7e33b4
+pkgver=0.1.4.g7aafdef
 pkgrel=1
 pkgdesc=" A boot animation showing stages of systemd as a tree "
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 source=(
   "${pkgname%-*}::git+https://codeberg.org/wvhulle/bootvine.git"
 )
-makedepends=('rust')
+makedepends=('rust' 'git')
 depends=('systemd' 'mkinitcpio')
 md5sums=('SKIP')
 
