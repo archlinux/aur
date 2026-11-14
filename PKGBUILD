@@ -1,10 +1,10 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
-# Maintainer: Damien Flament <damien dot flament at zoho dot com>
+# Maintainer: Damien Flament <damien dot flament at gmx dot com>
 
 pkgname='tine-outliner'
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, local, Logseq-compatible outliner"
 url='https://tine.page/'
 license=('AGPL-3.0-only')
@@ -18,16 +18,12 @@ conflicts=('tine-outliner-bin' 'tine-outliner-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/martinkoutecky/tine/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('544aa1e02b84fca834a9edb260b6aa945e7ace6a3e6246363aa2eeb0f46ac37e')
 
-function prepare {
+function build {
   cd "tine-${pkgver}" || return
 
   rustup toolchain install --no-self-update
 
   npm ci
-}
-
-function build {
-  cd "tine-${pkgver}" || return
 
   export CFLAGS
 
