@@ -1,7 +1,7 @@
 # Maintainer: Simone Camito <zibo.camito@gmail.com>
 
 pkgname=ashell
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A ready to go Wayland status bar for Hyprland and Niri"
 url="https://github.com/MalpenZibo/${pkgname}"
@@ -31,7 +31,7 @@ source=(
   "${pkgname}.service"
 )
 sha512sums=(
-  '8076405478bca4cb1e9e40f79e935e6da165cb68eb3601423cc4120fbfe576e7b0248f4a83577176e3b98cda1b2f17b5407147dce883f046cc45574c10028d34'
+  '6c499d7f3796f2b0a653694f953e0af4bfbec4a9d6004ae0fb72d7fc29952b07f94ab39a6e312bed9a4b1f8d906663365ca79d3a3cdcbf1e4b251673a4aa1a1c'
   'd66d30f7ce7d3d8b8c0fbba35f1d6723abaa881b6a91a335b18d557ee1eb6f6d56abc40de3c7dc08af4385b2d99e7068f4acecb40e579ff355d18352a0c051a1'
 )
 
