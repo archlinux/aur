@@ -39,6 +39,7 @@ path = [
   "geoip-libmaxminddb.patch",
   "sourcemod-delete-noexcept.patch",
   "sourcemod-gamebin-executable-path.patch",
+  "sourcemod-kv-delete-root.patch",
   "sourcemod-unaligned-access.patch",
 ]
 SPDX-FileCopyrightText = "AlliedModders LLC"
