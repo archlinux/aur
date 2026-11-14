@@ -1,0 +1,9 @@
+ODA Drawings Explorer is proprietary freeware by the Open Design Alliance
+(ODA), built with the ODA SDK. This package repackages the official Linux
+build, unmodified apart from using the system Qt runtime, as published at:
+
+  https://www.opendesign.com/guestfiles/oda_drawings_explorer
+
+ODA ships no license text with the download. Use and redistribution are
+governed by ODA's terms; see https://www.opendesign.com for details.
+This notice is not a license grant.

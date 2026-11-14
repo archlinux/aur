@@ -1,9 +1,11 @@
 [Desktop Entry]
 Type=Application
 Name=ODA Drawings Explorer
-Comment=View and manage DWG/DXF files
-Exec=/usr/bin/odadrawingsexplorer
+GenericName=CAD Drawing Viewer
+Comment=View DWG, DXF and DGN drawings
+Exec=odadrawingsexplorer %F
 Icon=odadrawingsexplorer
 Terminal=false
 Categories=Graphics;Viewer;Engineering;
-MimeType=application/vnd.dwg;application/vnd.dxf;
+MimeType=image/vnd.dwg;image/vnd.dxf;
+StartupWMClass=ODA Drawings Explorer
