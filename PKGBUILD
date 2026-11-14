@@ -2,7 +2,7 @@
 
 pkgname=hasklets
 pkgver=0.1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Desktop widgets for Wayland (weather, system, media, disks, processes, calendar) in Haskell'
 url='https://github.com/prietus/hasklets'
 arch=('x86_64' 'aarch64')
@@ -15,6 +15,8 @@ optdepends=('curl: weather, calendars and cover art served over HTTP')
 # gi-gtk4-layer-shell). So the Haskell libraries come from Hackage and are
 # linked statically (ghc-static); only the C libraries are shared.
 makedepends=('ghc' 'ghc-static' 'cabal-install' 'gobject-introspection')
+# The C parts of the libraries end up in archives that GHC links, without LTO.
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('b8725f1504582d1f92680b66c4048f7066d64cc6dd9e2d147f74462127e53174')
 
@@ -32,6 +34,20 @@ _cabal_build() {
     name=$(sed -n 's/^name: *//p' "$conf")
     [[ -n $name ]] && constraints+=("--constraint=any.$name source")
   done
+
+  # Arch's GHC links with gold (`ghc --info`), and cabal hands that choice to
+  # the configure scripts of the libraries (network...) together with
+  # makepkg's LDFLAGS, which are written for the default linker: the test
+  # program does not link and configure stops with "C compiler cannot create
+  # executables". Those LDFLAGS are not needed, GHC does the real linking.
+  unset LDFLAGS
+  # Where binutils no longer ships gold, the default linker stands in for it.
+  if [[ $(ghc --info) == *-fuse-ld=gold* ]] && ! command -v ld.gold >/dev/null; then
+    mkdir -p "$srcdir/ld"
+    ln -sf "$(command -v ld.bfd || command -v ld)" "$srcdir/ld/ld.gold"
+    export PATH="$srcdir/ld:$PATH"
+  fi
+
   cabal build "${constraints[@]}" "$@"
 }
 
