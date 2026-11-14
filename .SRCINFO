@@ -46,10 +46,3 @@ pkgname = qdre-desktop-git
 	optdepends = xfce4-terminal: default terminal
 	optdepends = engrampa: archive support
 	optdepends = zensu: run as administrator
-
-pkgname = qdre-viewer-git
-	pkgdesc = Lightweight image viewer
-	depends = qdre-gui-git
-	depends = exiv2
-	optdepends = qt6-imageformats: more image formats
-	optdepends = kimageformats: more image formats

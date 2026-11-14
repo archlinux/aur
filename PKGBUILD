@@ -9,7 +9,6 @@ pkgname=(
     qdre-compositor-git
     qdre-compositor-autostart
     qdre-desktop-git
-    qdre-viewer-git
 )
 pkgver=0.0.0.r105.ca63c24
 pkgrel=1
@@ -43,7 +42,7 @@ build() {
         -DBUILD_TESTS=OFF \
         -DGIO_X11_STARTUP_INFO=OFF \
         -DAPPS_QDRE_Desktop=ON \
-        -DAPPS_QDRE_Viewer=ON \
+        -DAPPS_QDRE_Viewer=OFF \
         -DAPPS_QDRE_Compositor=ON \
         -DADDITIONS_QDRE_Applets=OFF \
         -DCMAKE_BUILD_TYPE=Release
@@ -88,12 +87,4 @@ package_qdre-desktop-git() {
     install='qdre-desktop.install'
     DESTDIR="${pkgdir}" ninja -C build qdre-desktop/install
     DESTDIR="${pkgdir}" ninja -C build qdre-io-extensions/install
-}
-
-package_qdre-viewer-git() {
-    pkgdesc='Lightweight image viewer'
-    depends=('qdre-gui-git' 'exiv2')
-    optdepends=('qt6-imageformats: more image formats'
-                'kimageformats: more image formats')
-    DESTDIR="${pkgdir}" ninja -C build qdre-viewer/install
 }
