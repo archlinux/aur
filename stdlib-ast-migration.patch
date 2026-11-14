@@ -1,0 +1,39 @@
+--- a/malt/pyct/static_analysis/activity.py
++++ b/malt/pyct/static_analysis/activity.py
+@@ -266,7 +266,10 @@
+ 
+   def visit_arg(self, node):
+     """Mark function parameter (ast.arg) in scope. Requires QnResolver has run."""
+-    node = self.generic_visit(node)
++    # The stdlib ast keeps the annotation on ast.arg, gast kept it on a Name.
++    # Process it as an annotation, like visit_Name did for gast parameters.
++    if node.annotation:
++      node.annotation = self._process_annotation(node.annotation)
+     if not anno.hasanno(node, anno.Basic.QN):
+       return node
+     qn = anno.getanno(node, anno.Basic.QN)
+@@ -703,7 +706,11 @@
+     # try/except oddity: as expected, it leaks any names you defined inside the
+     # except block, but not the name of the exception variable.
+     if node.name is not None:
+-      self.scope.isolated_names.add(anno.getanno(node.name, anno.Basic.QN))
++      # The stdlib ast stores the exception variable as a str, not a Name.
++      if isinstance(node.name, str):
++        self.scope.isolated_names.add(qual_names.QN(node.name))
++      else:
++        self.scope.isolated_names.add(anno.getanno(node.name, anno.Basic.QN))
+     node = self.generic_visit(node)
+     self._exit_scope()
+     return node
+--- a/malt/pyct/cfg.py
++++ b/malt/pyct/cfg.py
+@@ -905,7 +905,8 @@
+ 
+     if node.type is not None:
+       self.visit(node.type)
+-    if node.name is not None:
++    # The stdlib ast stores the exception variable as a str, not a Name.
++    if node.name is not None and not isinstance(node.name, str):
+       self.visit(node.name)
+ 
+     for stmt in node.body:

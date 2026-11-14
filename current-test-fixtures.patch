@@ -1,0 +1,32 @@
+--- a/tests/core/converter_testing.py
++++ b/tests/core/converter_testing.py
+@@ -58,7 +58,7 @@
+     del frame
+ 
+ 
+-class TestingTranspiler(api.PyToTF):
++class TestingTranspiler(api.PyToPy):
+   """Testing version that only applies given transformations."""
+ 
+   def __init__(self, converters, ag_overrides):
+--- a/tests/pyct/testing/codegen_test.py
++++ b/tests/pyct/testing/codegen_test.py
+@@ -16,7 +16,7 @@
+ 
+ import numpy as np
+ 
+-from malt.pyct import compiler
++from malt.pyct import loader
+ from . import codegen
+ from tensorflow.python.platform import test
+ 
+@@ -27,7 +27,8 @@
+     np.random.seed(0)
+     for _ in range(1000):
+       node = codegen.generate_random_functiondef()
+-      fn = compiler.ast_to_object(node)
++      module, _, _ = loader.load_ast(node)
++      fn = getattr(module, node.name)
+       self.assertIsNotNone(
+           fn, 'Generated invalid AST that could not convert to source.')
+ 

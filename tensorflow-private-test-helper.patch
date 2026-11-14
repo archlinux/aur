@@ -1,0 +1,24 @@
+--- a/tests/impl/api_test.py
++++ b/tests/impl/api_test.py
+@@ -41,7 +41,11 @@
+ from malt.utils import ag_logging
+ from tensorflow.python.data.ops import dataset_ops
+ from tensorflow.python.eager import def_function
+-from tensorflow.python.framework import _errors_test_helper
++try:
++  from tensorflow.python.framework import _errors_test_helper
++except ImportError:
++  # The official TensorFlow package does not ship this private test module.
++  _errors_test_helper = None
+ from tensorflow.python.framework import constant_op
+ from tensorflow.python.framework import errors as tf_errors
+ from tensorflow.python.framework import ops
+@@ -1253,6 +1257,8 @@
+     self.assertEqual(5, tc.two_args(2))
+ 
+   def test_raise_from_func_graph(self):
++    if _errors_test_helper is None:
++      self.skipTest('needs the private TensorFlow _errors_test_helper module')
+ 
+     @def_function.function
+     def raise_from_tf_function(n):

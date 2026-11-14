@@ -1,0 +1,13 @@
+--- a/malt/operators/exceptions.py
++++ b/malt/operators/exceptions.py
+@@ -44,7 +44,9 @@
+   if not callable(expression2):
+     raise ValueError('{} must be a callable'.format(expression2))
+   # (dime10) replacement for tf_inspect.getargspec
+-  args, _, keywords, _ = inspect.getargspec(expression2)
++  # inspect.getargspec was removed in Python 3.11.
++  spec = inspect.getfullargspec(expression2)
++  args, keywords = spec.args, spec.varkw
+   if args or keywords:
+     raise ValueError('{} may not have any arguments'.format(expression2))
+ 
