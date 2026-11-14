@@ -1,18 +1,24 @@
 pkgbase = qdre-viewer-git
-	pkgdesc = Lightweight Qt image viewer
-	pkgver = 0.0.0.r74.g0fa5c11
+	pkgdesc = Simple image viewer with wide-gamut and 10-bit support
+	pkgver = 2.0.g26588a5
 	pkgrel = 1
-	url = https://gitlab.com/zaps166/qdre
+	url = https://github.com/zaps166/qdre-viewer
 	arch = x86_64
-	groups = qdre
-	license = MIT
-	makedepends = cmake
+	license = BSD-3-Clause
+	makedepends = ninja
+	makedepends = clang
+	makedepends = llvm
 	makedepends = git
+	makedepends = qt6-tools
+	makedepends = cmake
 	depends = qt6-base
-	depends = glib2
+	depends = qt6-declarative
 	depends = exiv2
-	conflicts = qdre-git
-	source = git+https://gitlab.com/zaps166/qdre.git#branch=master
-	sha1sums = SKIP
+	optdepends = qt6-imageformats: more image formats
+	optdepends = kimageformats: more image formats
+	options = !lto
+	options = !debug
+	source = git+https://github.com/zaps166/qdre-viewer.git
+	sha256sums = SKIP
 
 pkgname = qdre-viewer-git

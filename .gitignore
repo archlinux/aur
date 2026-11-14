@@ -1,4 +1,4 @@
-pkg/
-qdre/
-src/
-*.tar*
+src/*
+pkg/*
+qdre-viewer/*
+*.tar.zst

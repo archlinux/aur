@@ -1,41 +1,33 @@
-# Maintainer: zaps166 <spaz16 at wp dot pl>
-
-pkgname=qdre-viewer-git
-pkgver=0.0.0.r74.g0fa5c11
+_pkgname=qdre-viewer
+pkgname=${_pkgname}-git
+pkgver=2.0.g26588a5
 pkgrel=1
-pkgdesc='Lightweight Qt image viewer'
+pkgdesc='Simple image viewer with wide-gamut and 10-bit support'
 arch=('x86_64')
-url='https://gitlab.com/zaps166/qdre'
-license=('MIT')
-groups=('qdre')
-depends=('qt6-base' 'glib2' 'exiv2')
-makedepends=('cmake' 'git')
-conflicts=('qdre-git')
-source=("git+https://gitlab.com/zaps166/qdre.git#branch=master")
-sha1sums=('SKIP')
-
-prepare() {
-    mkdir -p build
-}
+url='https://github.com/zaps166/qdre-viewer'
+license=('BSD-3-Clause')
+depends=('qt6-base' 'qt6-declarative' 'exiv2')
+makedepends=('ninja' 'clang' 'llvm' 'git' 'qt6-tools' 'cmake')
+optdepends=('qt6-imageformats: more image formats'
+            'kimageformats: more image formats')
+source=("git+${url}.git")
+sha256sums=('SKIP')
+options=(!lto !debug)
 
 pkgver() {
-    cd qdre
-    echo -n "0.0.0.r$(git rev-list --all --count).g$(git rev-parse --short HEAD)"
+  cd ${_pkgname}
+  printf "%s.g%s" "$(sed -n '/^project(/,/^)/s/^    VERSION \([0-9.]*\)$/\1/p' CMakeLists.txt)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd build
-    cmake ../qdre \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DAPPS_QDRE_Compositor=OFF
-    make
+  cmake -B "build" -S "${_pkgname}" \
+    -G Ninja \
+    -DCMAKE_CXX_COMPILER=clang++ \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  time cmake --build build
 }
 
 package() {
-    cd build
-    make DESTDIR="${pkgdir}" install
-    rm -r "${pkgdir}/usr/include"
-    rm -r "${pkgdir}/usr/lib"
+  DESTDIR="${pkgdir}" cmake --install build
 }
