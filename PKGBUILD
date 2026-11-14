@@ -1,9 +1,8 @@
 # Maintainer: Ramazan Berk Şirin <ramazanberksirin at protonmail dot com>
 
 pkgname=bettertricks
-pkgver=1.1.0
-_tag=1.1
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Recovery-first Wine prefix manager and Winetricks-compatible recipe engine"
 arch=('x86_64')
 url="https://github.com/RamazanBerk20/Bettertricks"
@@ -12,18 +11,18 @@ depends=('webkit2gtk-4.1' 'wine' 'xdg-utils' 'glib2' 'cabextract' '7zip' 'unzip'
 makedepends=('rust' 'nodejs' 'pnpm' 'libayatana-appindicator' 'librsvg')
 optdepends=('zenity: graphical prompts for compatibility-host recipes')
 options=('!lto' '!debug')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_tag.tar.gz")
-sha256sums=('3df606a6a284492c3e3523342d6ea91a45d8e2453380af7a268ece8a04d010fe')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('01b159818e1cf7b7ff27dfa97291cfd0d338eef10c7e3810da9fa3215c0cde38')
 
 prepare() {
-  cd "Bettertricks-$_tag"
+  cd "Bettertricks-$pkgver"
   export CARGO_HOME="$srcdir/cargo-home"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
   pnpm install --frozen-lockfile
 }
 
 build() {
-  cd "Bettertricks-$_tag"
+  cd "Bettertricks-$pkgver"
   export CARGO_HOME="$srcdir/cargo-home"
   export CARGO_TARGET_DIR="$srcdir/cargo-target"
   pnpm build:web
@@ -31,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "Bettertricks-$_tag"
+  cd "Bettertricks-$pkgver"
 
   install -Dm755 "$srcdir/cargo-target/release/bettertricks" \
     "$pkgdir/usr/bin/bettertricks"
