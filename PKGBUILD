@@ -35,14 +35,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-
   git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
-  cd "${_pkgname}"
-
-  cmake -S . -B build \
+  cmake -S ${_pkgname} -B build \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='lib' \
@@ -51,6 +48,5 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}"
   DESTDIR="${pkgdir}" cmake --install build
 }
