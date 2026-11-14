@@ -1,6 +1,6 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=youtube-video-downloader-git
-pkgver=2.0.0.r0.g0000000
+pkgver=2.1.0.r0.geea16d1
 pkgrel=1
 pkgdesc="Fast desktop front-end for yt-dlp with a download queue (Tauri, git)"
 arch=('x86_64')
@@ -57,23 +57,16 @@ check() {
 package() {
   cd "youtube-video-downloader"
   install -Dm755 src-tauri/target/release/youtube-downloader "$pkgdir/usr/bin/youtube-downloader"
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/youtube-downloader.desktop" <<'DESKTOP'
-[Desktop Entry]
-Categories=Utility;
-Comment=Download videos and audio with yt-dlp
-Exec=youtube-downloader
-StartupWMClass=youtube-downloader
-Icon=youtube-downloader
-Name=YouTube Downloader
-Terminal=false
-Type=Application
-DESKTOP
+  install -Dm644 src-tauri/linux/youtube-downloader.desktop \
+    "$pkgdir/usr/share/applications/youtube-downloader.desktop"
   local size
-  for size in 32 64 128; do
+  for size in 16 24 32 48 64 128 256; do
     install -Dm644 "src-tauri/icons/${size}x${size}.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/youtube-downloader.png"
   done
-  install -Dm644 "src-tauri/icons/128x128@2x.png" \
-    "$pkgdir/usr/share/icons/hicolor/256x256/apps/youtube-downloader.png"
+  install -Dm644 src-tauri/icons/icon.png \
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/youtube-downloader.png"
+  install -Dm644 src-tauri/icons/icon.svg \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/youtube-downloader.svg"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
