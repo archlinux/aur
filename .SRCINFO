@@ -1,0 +1,19 @@
+pkgbase = himalaya-tui-git
+	pkgdesc = TUI to manage emails, from the Pimalaya project
+	pkgver = 0.1.0.r71.g4c2af0f
+	pkgrel = 1
+	url = https://github.com/pimalaya/himalaya-tui
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = himalaya-tui
+	conflicts = himalaya-tui
+	options = !lto
+	source = himalaya-tui-git::git+https://github.com/pimalaya/himalaya-tui.git
+	sha256sums = SKIP
+
+pkgname = himalaya-tui-git
