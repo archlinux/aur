@@ -1,7 +1,7 @@
 # Maintainer: Ethan Stokes <erstokes10@gmail.com>
 
 pkgname=blockwork
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='A Qt 6/QML app to visually create and run automation.'
 url='https://github.com/Blockworked/blockwork'
@@ -15,7 +15,7 @@ depends=(
 conflicts=('blockwork-git' 'macros')
 provides=('macros')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Blockworked/blockwork/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('26b3a61bacbc877c3cd15ec28ad276b9d87e1206fb56a081a00d595d7d0a5358')
+sha256sums=('c69f677e108b1fc92d35a12f798799fbff3899d12ae33c824daee81a6d771499')
 options=('!lto')
 
 prepare() {
