@@ -2,7 +2,7 @@
 # Maintainer: Martin Wimpress <code@wimpress.io>
 
 pkgname='xfkey-wonkey-bin'
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='Macropad configuration tool for Linux.'
 url='https://github.com/wimpysworld/WonKey'
@@ -12,10 +12,10 @@ provides=('wonkey')
 conflicts=('wonkey')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/wimpysworld/WonKey/releases/download/v${pkgver}/WonKey_${pkgver}_arm64.tar.gz")
-sha256sums_aarch64=('e719996218fc3e8bea6fc302743efc87cbba3defaa748f22e0702a5609ef0a9a')
+sha256sums_aarch64=('15513aca56eb33946cbd9aa82c84cad59e3744bc6fc2c9d22c69bcb7629e907e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/wimpysworld/WonKey/releases/download/v${pkgver}/WonKey_${pkgver}_amd64.tar.gz")
-sha256sums_x86_64=('be98574a3166565d3c6a81149840bcfcabbdc690ab115d5c952c3c01ef95e751')
+sha256sums_x86_64=('8d3fd5f9efba5109b7811c82185d3caf7df3af939b28ded53e1c2c7e3cefc1f7')
 
 package() {
   install -Dm755 wonkey "${pkgdir}/usr/bin/wonkey"
