@@ -1,6 +1,6 @@
 pkgbase = sing-box-ez-gui-bin
 	pkgdesc = GUI client for the sing-box proxy core (prebuilt binary)
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/he11ah0und/sing-box-ez
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = sing-box-ez-gui-bin
 	provides = sing-box-ez
 	conflicts = sing-box-ez-gui
 	conflicts = sing-box-ez
-	source = sing-box-ez-gui-bin-0.1.6::https://github.com/he11ah0und/sing-box-ez/releases/download/v0.1.6/sing-box-ez-amd64-linux-gcc-gui-aur
+	source = sing-box-ez-gui-bin-0.1.7::https://github.com/he11ah0und/sing-box-ez/releases/download/v0.1.7/sing-box-ez-amd64-linux-gcc-gui-aur
 	source = sing-box-ez.desktop
 	source = appicon.png
-	sha256sums = f99e1bed75d115a76717822e22e5c8ae0105683d8433083caa596dfc679b0cf8
+	sha256sums = 6e06cc2c5e2df4bf5aa95235e1e7033df4fef3fabd28c39b6490098da65eab1c
 	sha256sums = SKIP
 	sha256sums = SKIP
 
