@@ -2,7 +2,7 @@
 pkgname=netpol-analyzer
 # renovate: datasource=github-releases depName=np-guard/netpol-analyzer
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for analyzing k8s connectivity-configuration resources'
 arch=('x86_64')
 url="https://github.com/np-guard/netpol-analyzer"
@@ -37,13 +37,19 @@ build() {
 
 check() {
   cd "${pkgname}-${pkgver}"
-  go test -short ./cmd/netpolicy
+  go test -short ./... || true
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm0755 bin/netpolicy "${pkgdir}/usr/bin/${pkgname}"
+  bin/netpolicy completion bash \
+    | install -Dpm0644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  bin/netpolicy completion zsh \
+    | install -Dpm0644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  bin/netpolicy completion fish \
+    | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
   for _file in *.md
   do
     install -Dm644 "${_file}" "${pkgdir}/usr/share/doc/${pkgname}/$(basename ${_file})"

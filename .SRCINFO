@@ -1,7 +1,7 @@
 pkgbase = netpol-analyzer
 	pkgdesc = CLI for analyzing k8s connectivity-configuration resources
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/np-guard/netpol-analyzer
 	arch = x86_64
 	license = Apache-2.0
