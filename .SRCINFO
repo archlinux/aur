@@ -1,6 +1,6 @@
 pkgbase = agent-glovebox
 	pkgdesc = Hardware-isolated, allowlist-firewalled sandbox for running Claude Code
-	pkgver = 0.104.0
+	pkgver = 0.104.1
 	pkgrel = 1
 	url = https://github.com/AlexanderMattTurner/agent-glovebox
 	install = agent-glovebox.install
@@ -16,7 +16,7 @@ pkgbase = agent-glovebox
 	optdepends = docker-buildx: the build plugin that local sandbox image build runs through
 	optdepends = nodejs: runtime backing pnpm and the in-image install
 	optdepends = npm: package manager backing the in-image install
-	source = agent-glovebox-0.104.0.tar.gz::https://github.com/AlexanderMattTurner/agent-glovebox/releases/download/v0.104.0/agent-glovebox-0.104.0.tar.gz
-	sha256sums = 192d98fc131c41b176ea1f845f7f16e026a2b4fc79b6a74b65c0a3db75379bf0
+	source = agent-glovebox-0.104.1.tar.gz::https://github.com/AlexanderMattTurner/agent-glovebox/releases/download/v0.104.1/agent-glovebox-0.104.1.tar.gz
+	sha256sums = 2a7d262b29f2cdb058153dcc42116376937f26ebd01d89f2a5d96097d409ef8f
 
 pkgname = agent-glovebox
