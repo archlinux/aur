@@ -4,7 +4,7 @@
 pkgname=aurascan
 pkgver=0.18.0
 pkgrel=1
-pkgdesc="AI-assisted safety and recovery layer for Arch-family systems"
+pkgdesc="Arch/AUR package scanner: deterministic checks, optional AI reviewer, recovery"
 arch=('any')
 url="https://github.com/crizzler/AuraScan"
 license=('MIT')
