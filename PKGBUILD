@@ -1,3 +1,4 @@
+# Maintainer: Gergely Imreh <gergely@imreh.net>
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Thom Wiggers <pkgbuild@thomwiggers.nl>
 # Contributor: Sirat18 <aur@sirat8.de>
