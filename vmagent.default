@@ -1,0 +1,2 @@
+# vmagent exits at startup unless ARGS has at least one -remoteWrite.url
+ARGS=""

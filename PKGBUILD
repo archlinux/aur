@@ -4,20 +4,24 @@
 pkgname=victoriametrics
 _name=VictoriaMetrics
 pkgver=1.156.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, cost-effective and scalable time series database'
 arch=(x86_64)
 url='https://victoriametrics.github.io'
 license=(Apache-2.0)
 depends=(glibc)
 makedepends=(go)
-backup=('etc/default/victoriametrics')
+backup=('etc/default/victoriametrics' 'etc/default/vmagent')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/VictoriaMetrics/VictoriaMetrics/archive/refs/tags/v$pkgver.tar.gz"
   'victoriametrics.service'
-  'victoriametrics.default')
+  'victoriametrics.default'
+  'vmagent.service'
+  'vmagent.default')
 b2sums=('699a9b3c19b23c36110767c255489efa22b85601f7f552bc02e9b98ac7597f815db2daf9861cd9aece777d82b30223369062a604e4e3597619f9d83b8827070b'
         '82b1c2b55b3c9f3d4deee12753820247ba1f4ac28a94cf16dad31ce091306875d392f7a7a0a56029d88101d7e75f7fefec392ac50d2447276850476f773d147d'
-        '4405dc19795d2cbfa515e4750a2cad77c13611293176ff5aeec597f9905494902bd4496c1e90f1efe2d484e383adb39d034167673b9fe7de8b307b8cedf17b7f')
+        '4405dc19795d2cbfa515e4750a2cad77c13611293176ff5aeec597f9905494902bd4496c1e90f1efe2d484e383adb39d034167673b9fe7de8b307b8cedf17b7f'
+        '2f4e9fb19a0775dd965365a5b3f88e57f4f78e3141f71f627ad1019a5ac6405f72c4420c89381299b9ebc9e0cb1e30313a3996ed14477f3865c2c84311655fbd'
+        '17a860f6faab1e6bbb478efbfb8b52976a0c35e287c50dc74955398a074a404fb87f4f0178c97feb9a1b13d1137d62038a2fe0d5c2521e34535606f41bd8d7dc')
 
 _vmapps=(victoria-metrics vmagent vmalert vmalert-tool vmauth vmbackup vmctl vmrestore)
 
@@ -46,8 +50,9 @@ package() {
   for app in ${_vmapps[@]}; do
     install -Dm 755 $_name-$pkgver/bin/$app -t "$pkgdir"/usr/bin/
   done
-  install -Dm 644 victoriametrics.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -Dm 644 victoriametrics.service vmagent.service -t "$pkgdir"/usr/lib/systemd/system/
   install -Dm 644 victoriametrics.default "$pkgdir"/etc/default/victoriametrics
+  install -Dm 644 vmagent.default "$pkgdir"/etc/default/vmagent
 }
 
 # vim:set ts=2 sw=2 et:

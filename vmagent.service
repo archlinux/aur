@@ -1,0 +1,27 @@
+[Unit]
+Description=Metrics collection agent for VictoriaMetrics
+Documentation=https://docs.victoriametrics.com/victoriametrics/vmagent/
+After=network.target
+
+[Service]
+DynamicUser=true
+StateDirectory=vmagent
+
+AmbientCapabilities=
+CapabilityBoundingSet=
+LockPersonality=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectHome=true
+PrivateDevices=true
+NoNewPrivileges=true
+MemoryDenyWriteExecute=true
+
+EnvironmentFile=/etc/default/vmagent
+ExecStart=/usr/bin/vmagent -remoteWrite.tmpDataPath=/var/lib/vmagent $ARGS
+LimitNOFILE=65536
+LimitNPROC=32000
+
+[Install]
+WantedBy=multi-user.target
