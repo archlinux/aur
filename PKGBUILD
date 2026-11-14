@@ -1,7 +1,7 @@
 # Maintainer: xmengnet <my@liyp.cc>
 
 pkgname=mygo-music
-pkgver=0.1.24
+pkgver=0.1.25
 pkgrel=1
 pkgdesc='MyGo Music - 原生桌面音乐播放器，播放本地文件与插件内容，不使用 WebView'
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ makedepends=('go' 'gcc' 'git' 'nodejs')
 options=('!debug')
 
 source=("git+https://github.com/egoist/mygo-music.git#tag=v${pkgver}")
-sha256sums=('d2b42d071ea496d9b2dc2b10f8b25812da2925faead2067b43fe7d1d8a9ca2ad')
+sha256sums=('3219c3dd830085d0548c46b7ed56560326d40b0c3abf242efcbf0857a6bfa07d')
 
 _srcname=mygo-music
 
