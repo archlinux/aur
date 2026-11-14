@@ -1,0 +1,5 @@
+[locale-gen]
+source = "git"
+git = "https://gitweb.gentoo.org/proj/locale-gen.git"
+from_pattern = '\Alocale-gen-([0-9]+\.[0-9]+)\z'
+to_pattern = '\1'
