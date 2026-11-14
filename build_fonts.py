@@ -23,6 +23,9 @@ import io
 import lzma
 import struct
 import urllib.error
+import json
+import ssl
+import base64
 from collections import defaultdict
 import xml.etree.ElementTree as ET
 
@@ -464,14 +467,14 @@ def unpack(cache, output):
 
 
 # --- extract sequoia ota ---
-OTA_URL = "https://updates.cdn-apple.com/2026FallFCS/ad22d07e-0d68-4679-9375-99a5c4fc95ae/com_apple_MobileAsset_MacSoftwareUpdate/a30f5f5e5659a0760382124bee535d7ac33cb51f.zip"
-OTA_SIZE = 15640056810
+OTA_URL = "https://updates.cdn-apple.com/2026FallFCS/2db371bc-ae91-458f-a169-2ea575bb2b7e/com_apple_MobileAsset_MacSoftwareUpdate/d0016a40184caa9a22a8c0bfb155556c288fb28d.zip"
+OTA_SIZE = 15642867282
 BLOCK = 8 * 1024 * 1024
 
 
 class HTTPRangeFile(io.RawIOBase):
     """Seekable, bounded-memory HTTP range reader for Python's zipfile module."""
-    def __init__(self, url):
+    def __init__(self, url, expected_size=None):
         self.url = url
         self.position = 0
         self.cache_start = -1
@@ -487,8 +490,9 @@ class HTTPRangeFile(io.RawIOBase):
                 raise RuntimeError(f"Invalid Content-Range from Apple CDN: {content_range!r}") from exc
             if response.read(1) != b"P":
                 raise RuntimeError("Unexpected OTA ZIP header")
-        if self.size != OTA_SIZE:
-            raise RuntimeError(f"OTA size changed: expected {OTA_SIZE}, got {self.size}")
+        expected_size = OTA_SIZE if expected_size is None else expected_size
+        if self.size != expected_size:
+            raise RuntimeError(f"OTA size changed: expected {expected_size}, got {self.size}")
 
     def readable(self):
         return True
@@ -578,8 +582,8 @@ def decode_pbzx(source, destination):
 
 
 def extract_system_fonts(output, extractor, local_archive=None):
-    # Font-bearing members of the fixed 15.8.1 / 24H32 OTA build.
-    payloads = (4, 7, 11, 12, 16, 21, 23, 26, 30, 31, 34, 35, 37, 39, 40, 41, 42, 43, 44)
+    # Font-bearing members of the fixed 15.8.3 / 24H241 OTA build (`update-ota` regenerates these).
+    payloads = (4, 7, 11, 12, 16, 21, 23, 26, 30, 31, 34, 35, 37, 38, 39, 40, 41, 42, 43, 44)
     output.mkdir(parents=True, exist_ok=True)
     if local_archive:
         archive = zipfile.ZipFile(local_archive)
@@ -612,6 +616,149 @@ def extract_system_fonts(output, extractor, local_archive=None):
     finally:
         archive.close()
     print("Finished extracting Sequoia system-image fonts", flush=True)
+
+
+# --- maintenance: locate the newest Sequoia OTA and its font-bearing payloads ---
+APPLE_ROOT_URL = "https://www.apple.com/appleca/AppleIncRootCertificate.cer"
+APPLE_ROOT_SHA256 = "b0b1730ecbc7ff4505142c49f1295e6eda6bcaed7e2c68c5be91b5a11001f024"
+PALLAS_URL = "https://gdmf.apple.com/v2/assets"
+MACOS_RELEASE_AUDIENCE = "60b55e25-a8ed-4f45-826c-c1495a4ccc65"  # public macOS release audience (ipsw audiences.gz)
+# AppleArchive header field sub-types: (kind, size); 'P' is a string with a uint16 length prefix.
+AA_FIELDS = {'*': ('flag', 0), '1': ('uint', 1), '2': ('uint', 2), '4': ('uint', 4), '8': ('uint', 8),
+             'A': ('blob', 2), 'B': ('blob', 4), 'C': ('blob', 8), 'F': ('hash', 4), 'G': ('hash', 20),
+             'H': ('hash', 32), 'I': ('hash', 48), 'J': ('hash', 64), 'S': ('time', 8), 'T': ('time', 12)}
+FONT_PREFIXES = ("System/Library/Fonts/",
+                 "System/Library/PrivateFrameworks/FontServices.framework/Versions/A/Resources/Fonts/ApplicationSupport/")
+
+
+def query_newest_sequoia_ota():
+    """Ask Apple's Pallas service for the newest macOS 15.x MacSoftwareUpdate OTA asset.
+
+    gdmf.apple.com chains to Apple Root CA, which system trust stores usually lack. The root is fetched
+    from apple.com and pinned by SHA-256; TLS verification is never disabled. The JWS signature of the
+    response is not verified.
+    """
+    with urllib.request.urlopen(APPLE_ROOT_URL, timeout=60) as response:
+        der = response.read()
+    if hashlib.sha256(der).hexdigest() != APPLE_ROOT_SHA256:
+        raise RuntimeError("Apple Root CA fingerprint mismatch")
+    context = ssl.create_default_context(cadata=der)
+    body = json.dumps({
+        "ClientVersion": 2, "AssetType": "com.apple.MobileAsset.MacSoftwareUpdate",
+        "AssetAudience": MACOS_RELEASE_AUDIENCE, "CertIssuanceDay": "2023-12-10",
+        "ProductVersion": "0", "BuildVersion": "0", "ProductType": "MacBookPro15,1",
+        "HWModelStr": "J132AP", "CompatibilityVersion": 20,
+    }).encode()
+    request = urllib.request.Request(PALLAS_URL, body, {"Content-Type": "application/json"})
+    with urllib.request.urlopen(request, timeout=60, context=context) as response:
+        token = response.read().decode().strip()
+    payload = token.split(".")[1]
+    assets = json.loads(base64.urlsafe_b64decode(payload + "=" * (-len(payload) % 4)))["Assets"]
+    sequoia = [a for a in assets if a["OSVersion"].split(".")[0] == "15"]
+    if not sequoia:
+        raise RuntimeError("Pallas returned no macOS 15 asset")
+    best = max(sequoia, key=lambda a: tuple(int(part) for part in a["OSVersion"].split(".")))
+    url = best["__BaseURL"] + best["__RelativePath"]
+    if not url.startswith("https://updates.cdn-apple.com/") or not url.endswith(".zip"):
+        raise RuntimeError(f"Unexpected OTA URL: {url}")
+    return best["OSVersion"], best["Build"], url, int(best["_DownloadSize"])
+
+
+def scan_payload_fonts(url, size, number):
+    """Stream one payload and return its font files, using the same rules as extract_font_files.c."""
+    archive = zipfile.ZipFile(HTTPRangeFile(url, size))
+    fonts = []
+    with archive.open(f"AssetData/payloadv2/payload.{number:03d}") as member:
+        if member.read(12)[:4] != b"pbzx":
+            raise RuntimeError(f"payload.{number:03d}: invalid PBZX header")
+        buffer, finished = bytearray(), False
+
+        def take(count, keep):
+            nonlocal finished
+            out = bytearray()
+            while count:
+                if not buffer and not finished:
+                    header = member.read(16)
+                    raw_size, compressed_size = struct.unpack(">QQ", header) if len(header) == 16 else (0, 0)
+                    if raw_size == compressed_size == 0:
+                        finished = True
+                        break
+                    block = member.read(compressed_size)
+                    buffer.extend(block if compressed_size == raw_size else lzma.decompress(block, format=lzma.FORMAT_XZ))
+                if not buffer:
+                    break
+                chunk = bytes(buffer[:count])
+                del buffer[:len(chunk)]
+                count -= len(chunk)
+                if keep:
+                    out.extend(chunk)
+            return bytes(out)
+
+        while True:
+            head = take(6, True)
+            if len(head) < 6:
+                break
+            if head[:4] != b"YAA1":
+                raise RuntimeError(f"payload.{number:03d}: unexpected archive entry header")
+            fields = take(struct.unpack("<H", head[4:6])[0] - 6, True)
+            position, path, kind_of, blob_bytes = 0, None, None, 0
+            while position < len(fields):
+                key, sub = fields[position:position + 3].decode("latin1"), chr(fields[position + 3])
+                position += 4
+                if sub == "P":
+                    length = struct.unpack("<H", fields[position:position + 2])[0]
+                    text = fields[position + 2:position + 2 + length].decode("utf-8", "replace")
+                    position += 2 + length
+                    if key == "PAT":
+                        path = text
+                    continue
+                kind, width = AA_FIELDS[sub]
+                value = int.from_bytes(fields[position:position + width], "little")
+                position += width
+                if kind == "uint" and key == "TYP":
+                    kind_of = chr(value)
+                elif kind == "blob":
+                    blob_bytes += value
+            if (kind_of == "F" and path and path.startswith(FONT_PREFIXES) and ".." not in path.split("/")
+                    and PurePosixPath(path).suffix.casefold() in FONT_EXTENSIONS):
+                fonts.append(path)
+            take(blob_bytes, False)
+    return number, fonts
+
+
+def update_ota(write):
+    version, build, url, size = query_newest_sequoia_ota()
+    print(f"Newest macOS Sequoia OTA: {version} / {build}\n  {url}\n  {size} bytes", flush=True)
+    members = zipfile.ZipFile(HTTPRangeFile(url, size)).namelist()
+    count = len({m for m in members if re.fullmatch(r"AssetData/payloadv2/payload\.\d{3}", m)})
+    print(f"Scanning {count} payloads over HTTP Range (several GB of traffic)...", flush=True)
+    found = {}
+    with concurrent.futures.ThreadPoolExecutor(6) as pool:
+        for number, fonts in pool.map(lambda n: scan_payload_fonts(url, size, n), range(count)):
+            if fonts:
+                found[number] = len(fonts)
+                print(f"payload.{number:03d}: {len(fonts)} font files", flush=True)
+    payloads = tuple(sorted(found))
+    print(f"\nOTA_URL = {url!r}\nOTA_SIZE = {size}\npayloads = {payloads}  # {sum(found.values())} font files")
+    if not write:
+        print("Re-run with --write to patch build_fonts.py and PKGBUILD.")
+        return
+    here = Path(__file__).resolve()
+    text = here.read_text()
+    text = re.sub(r'^OTA_URL = ".*"$', f'OTA_URL = "{url}"', text, count=1, flags=re.M)
+    text = re.sub(r'^OTA_SIZE = \d+$', f'OTA_SIZE = {size}', text, count=1, flags=re.M)
+    text = re.sub(r'# Font-bearing members of the fixed .* OTA build.*', f'# Font-bearing members of the fixed {version} / {build} OTA build (`update-ota` regenerates these).', text, count=1)
+    text = re.sub(r'^(\s+payloads = )\(.*\)$', lambda m: f'{m[1]}{payloads}', text, count=1, flags=re.M)
+    here.write_text(text)
+    pkgbuild = here.with_name("PKGBUILD")
+    if pkgbuild.exists():
+        recipe = pkgbuild.read_text()
+        old = re.search(r"^pkgver=(.+)$", recipe, re.M)[1]
+        release = 1 if old != version else int(re.search(r"^pkgrel=(\d+)$", recipe, re.M)[1]) + 1
+        recipe = re.sub(r"^pkgver=.*$", f"pkgver={version}", recipe, count=1, flags=re.M)
+        recipe = re.sub(r"^pkgrel=.*$", f"pkgrel={release}", recipe, count=1, flags=re.M)
+        pkgbuild.write_text(recipe)
+    print("Patched build_fonts.py and PKGBUILD. Update the version in README.md, run `makepkg --printsrcinfo > .SRCINFO`, then build and validate.")
 
 
 # --- filter fonts ---
@@ -1352,6 +1499,8 @@ def main():
     validate_parser.add_argument('--source-reference', type=Path, required=True)
     audit_parser = commands.add_parser('audit', help='Check Apple website font coverage')
     audit_parser.add_argument('root', type=Path)
+    ota_parser = commands.add_parser('update-ota', help='Find the newest Sequoia OTA and its font-bearing payloads')
+    ota_parser.add_argument('--write', action='store_true', help='Patch OTA constants and PKGBUILD in place')
     args = parser.parse_args()
     if args.command == 'build':
         build_fonts(args.srcdir)
@@ -1359,6 +1508,8 @@ def main():
         generate_config(args.root, '/usr/share/fonts/macos-sequoia', args.output, args.font7_report)
     elif args.command == 'validate':
         validate_package(args.root, args.source_reference)
+    elif args.command == 'update-ota':
+        update_ota(args.write)
     else:
         audit_fonts(args.root)
 

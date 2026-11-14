@@ -1,7 +1,7 @@
 # Maintainer: monsoon <29970829+monsoon235@users.noreply.github.com>
 pkgname=macos-sequoia-fonts
-pkgver=15.8.1
-pkgrel=2
+pkgver=15.8.3
+pkgrel=1
 pkgdesc='Apple macOS Sequoia fonts from system directories, website-selected Font7, and official Apple Fonts'
 arch=('any')
 url='https://support.apple.com/en-eg/120414'
