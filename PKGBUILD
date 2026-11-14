@@ -2,8 +2,8 @@
 
 _gemname=rubocop-yard
 pkgname=ruby-$_gemname
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="A RuboCop plugin to check YARDoc format"
 arch=(any)
 url="https://github.com/ksss/rubocop-yard"
@@ -23,8 +23,8 @@ checkdepends=(
   ruby-rubocop-rspec
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3ec9c1cc713c4866fd0a3cc5d9fda853fdf22ba3ebc6da431ee6e5c94ae7fc5e')
-b2sums=('0847822d8f218d302bfcce4f7767db5379c81a608e7a35a0a0d4f0ff1c43d8eb8e9ca663f31e5b477b464274f579a3c5f8c75b8223298a157940a9dfd786fd7e')
+sha256sums=('c8f5c6f196edf70f23a6bd84fe166d6f38b50d94ab6e68a27c5e5f3e5ff15d42')
+b2sums=('580b84233a6004f1dd96712932bdaa8585fc49a7c1698471c8e949704a241b794af124a51fed4a4bd7ab39918592c00108eb7ed1c53eb3dd22f2cfbf89aeb13a')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
