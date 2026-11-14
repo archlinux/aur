@@ -1,6 +1,6 @@
 pkgbase = digikam-quickfilter-git
 	pkgdesc = An advanced digital photo management application - quickfilter fork (git build)
-	pkgver = 9.2.0.r69180.d3e6144
+	pkgver = 9.2.0.r69929.5220db4
 	pkgrel = 1
 	url = https://www.digikam.org/
 	arch = x86_64
@@ -72,9 +72,7 @@ pkgbase = digikam-quickfilter-git
 	optdepends = rawtherapee: RAW import
 	provides = digikam
 	conflicts = digikam
-	source = opencv5-version-cap.patch
 	source = git+https://invent.kde.org/gruber/digikam.git#branch=quickfilter
-	sha256sums = e752c0d4240453eca298a07e33ab319519c2b2b3672776bf968f05dfb5201aa6
 	sha256sums = SKIP
 
 pkgname = digikam-quickfilter-git

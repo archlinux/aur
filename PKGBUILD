@@ -3,12 +3,12 @@
 # Hosted on the maintainer's KDE invent fork: GitHub rejects the history
 # (legacy bundled DNN weights exceed its 100 MB blob limit).
 #
-# opencv5-version-cap.patch: upstream carries the OpenCV 5 port (bug 522887)
-# but still rejects 5.x at configure time; the cap is lifted here. Same
-# approach as extra/digikam's opencv-5.patch.
+# Upstream carries the OpenCV 5 port (bug 522887) but still rejects 5.x at
+# configure time; prepare() lifts the cap, as extra/digikam's opencv-5.patch
+# does. A sed rather than a patch: the comments around the line change.
 
 pkgname=digikam-quickfilter-git
-pkgver=9.2.0.r69180.d3e6144
+pkgver=9.2.0.r69929.5220db4
 pkgrel=1
 pkgdesc='An advanced digital photo management application - quickfilter fork (git build)'
 arch=(x86_64)
@@ -81,14 +81,14 @@ optdepends=('darktable: RAW import'
             'rawtherapee: RAW import')
 provides=(digikam)
 conflicts=(digikam)
-source=(opencv5-version-cap.patch
-        git+https://invent.kde.org/gruber/digikam.git#branch=quickfilter)
-sha256sums=('e752c0d4240453eca298a07e33ab319519c2b2b3672776bf968f05dfb5201aa6'
-            'SKIP')
+source=(git+https://invent.kde.org/gruber/digikam.git#branch=quickfilter)
+sha256sums=('SKIP')
 
 prepare() {
   cd digikam
-  patch -Np1 -i "${srcdir}/opencv5-version-cap.patch"
+  sed -i -E 's/^(set\(OPENCV_MAX_VERSION\s+)"4\.99\.0"/\1"5.99.0"/' core/CMakeLists.txt
+  # Fails once upstream drops the cap; then drop this too.
+  grep -q '^set(OPENCV_MAX_VERSION *"5.99.0"' core/CMakeLists.txt
 }
 
 pkgver() {
