@@ -1,4 +1,4 @@
 [python-derpconf]
 source = "git"
-git = "https://github.com/globocom/derpconf.git"
+git = "https://github.com/thumbor/derpconf.git"
 prefix = "v"
