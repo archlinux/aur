@@ -1,7 +1,7 @@
 pkgbase = liscan
 	pkgdesc = Clear, complete disk usage scanner for Linux
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/RamazanBerk20/LiScan
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = liscan
 	optdepends = gvfs: scan remote locations
 	optdepends = kio: file-manager context menu integration
 	options = !debug
-	source = liscan-1.1.0.tar.gz::https://github.com/RamazanBerk20/LiScan/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = b62eb9729cc80c2b3d6aa67552d1c72f8196adbd34f471dfc65095a18fcd6734
+	source = liscan-1.2.0.tar.gz::https://github.com/RamazanBerk20/LiScan/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 7b78900063d3fdb429a62fa165e28d796968611f68cf37439787878411a04967
 
 pkgname = liscan

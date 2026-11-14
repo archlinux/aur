@@ -1,7 +1,7 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=liscan
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Clear, complete disk usage scanner for Linux"
 arch=('x86_64' 'aarch64')
 options=('!debug')
@@ -14,7 +14,7 @@ optdepends=(
   'kio: file-manager context menu integration'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b62eb9729cc80c2b3d6aa67552d1c72f8196adbd34f471dfc65095a18fcd6734')
+sha256sums=('7b78900063d3fdb429a62fa165e28d796968611f68cf37439787878411a04967')
 
 prepare() {
   cd "LiScan-$pkgver"
