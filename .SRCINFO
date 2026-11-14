@@ -1,6 +1,6 @@
 pkgbase = mmdbinspect
 	pkgdesc = look up records for one or more IPs/networks in one or more .mmdb databases
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/maxmind/mmdbinspect
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mmdbinspect
 	license = Apache-2.0
 	makedepends = go
 	depends = glibc
-	source = mmdbinspect-2.0.0.tar.gz::https://github.com/maxmind/mmdbinspect/archive/refs/tags/v2.0.0.tar.gz
-	b2sums = b33744bdc991553f52563521e6804447b107178e1f0d21cb73827b4b52ca31a14029aae080779bdd5eb6d3014e97d984bc8e2068642e7e55721384a8193ed458
+	source = mmdbinspect-2.1.0.tar.gz::https://github.com/maxmind/mmdbinspect/archive/refs/tags/v2.1.0.tar.gz
+	b2sums = 7019ae8d0856a62a6bf6eb54efbd813a0c4b23c8ea650033d9e803f2a70d224f22bdd98eca8140a4401700995bced328f4a741e80aacbafd87b87c92cf755e04
 
 pkgname = mmdbinspect
