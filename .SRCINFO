@@ -1,22 +1,22 @@
 pkgbase = omnidotdev-fractal-cli-bin
 	pkgdesc = CLI for Fractal, the Omni deployment platform (pre-built)
 	pkgver = 0.1.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fractal.omni.dev
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
 	provides = omnidotdev-fractal-cli
 	conflicts = omnidotdev-fractal-cli
 	conflicts = fractal
 	options = !debug
 	source = omnidotdev-fractal-cli-bin-0.1.0.11-LICENSE.md::https://raw.githubusercontent.com/omnidotdev/fractal-cli/cli-v11/LICENSE.md
 	sha256sums = 64d90764a9baac9d5f0797d6d9a7dfb26823396df09c872557e971cf76cc0a92
-	source_x86_64 = omnidotdev-fractal-cli-bin-0.1.0.11-x86_64::https://github.com/omnidotdev/fractal-cli/releases/download/cli-v11/fractal-linux-amd64
+	source_x86_64 = omnidotdev-fractal-cli-bin-0.1.0.11::https://github.com/omnidotdev/fractal-cli/releases/download/cli-v11/fractal-linux-amd64
 	sha256sums_x86_64 = 10171632eceb0c5e90e86644d75625cc52aad5f0130d8eb1b6dd8eaa7f7d2a48
-	source_aarch64 = omnidotdev-fractal-cli-bin-0.1.0.11-aarch64::https://github.com/omnidotdev/fractal-cli/releases/download/cli-v11/fractal-linux-arm64
+	source_aarch64 = omnidotdev-fractal-cli-bin-0.1.0.11::https://github.com/omnidotdev/fractal-cli/releases/download/cli-v11/fractal-linux-arm64
 	sha256sums_aarch64 = 10be337091a2a2df49a9ef6b556841c6b15ec953f3df134fa974cf2cb911a051
 
 pkgname = omnidotdev-fractal-cli-bin
