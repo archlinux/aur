@@ -1,7 +1,7 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=mini-downloader-bin
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="Lightweight native download manager (aria2 + yt-dlp, browser capture) — binary release"
 arch=('x86_64')
 options=('!strip' '!debug')
@@ -16,7 +16,7 @@ conflicts=('mini-downloader' 'mini-downloader-git')
 source=("$url/releases/download/v$pkgver/Mini.Downloader_${pkgver}_linux-x86_64.tar.gz")
 noextract=("Mini.Downloader_${pkgver}_linux-x86_64.tar.gz")
 # Replace with updpkgsums after the release asset is published.
-sha256sums=('95b1d5bd43bdc8200beac170242c147fb3df6fbd35c44db04ff8dcd2b99be920')
+sha256sums=('765d340426860c5ce8d4bcff17861cfdd52fa8a080cf5d889d3304b82ac36aca')
 
 package() {
   bsdtar -xf "$srcdir/Mini.Downloader_${pkgver}_linux-x86_64.tar.gz" \
