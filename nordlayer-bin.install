@@ -4,7 +4,6 @@ NORDLAYER_RESOLVCONF=/usr/libexec/nordlayer/nordlayer-resolvconf
 post_install() {
   # Allow the daemon executable to bind to port 500 and administer network
   [ -f /usr/sbin/nordlayerd ] && /usr/libexec/nordlayer/nordlayer-setcap CAP_NET_BIND_SERVICE,CAP_NET_ADMIN,CAP_NET_RAW,CAP_IPC_LOCK+eip /usr/sbin/nordlayerd
-  [ -f /usr/libexec/nordlayer/nordlayer-charon ] && /usr/libexec/nordlayer/nordlayer-setcap CAP_NET_BIND_SERVICE,CAP_NET_ADMIN,CAP_NET_RAW+eip /usr/libexec/nordlayer/nordlayer-charon
   [ -f /usr/libexec/nordlayer/nordlayer-openvpn ] && /usr/libexec/nordlayer/nordlayer-setcap CAP_NET_BIND_SERVICE,CAP_NET_ADMIN,CAP_NET_RAW+eip /usr/libexec/nordlayer/nordlayer-openvpn
   [ -f /usr/bin/nordlayer ] && /usr/libexec/nordlayer/nordlayer-setcap CAP_IPC_LOCK+eip /usr/bin/nordlayer
 
