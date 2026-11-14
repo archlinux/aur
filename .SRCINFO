@@ -1,10 +1,11 @@
 pkgbase = pavucontrol-qt-git
 	pkgdesc = Qt port of pavucontrol
-	pkgver = 2.0.0
+	pkgver = 2.5.1.r1.g8006d3e
 	pkgrel = 1
 	url = https://github.com/lxqt/pavucontrol-qt
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-only
 	makedepends = git
 	makedepends = cmake
