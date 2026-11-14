@@ -11,7 +11,6 @@ pkgbase = mullvad-browser-bin
 	depends = bash
 	depends = cairo
 	depends = dbus
-	depends = ffmpeg4.4
 	depends = fontconfig
 	depends = freetype2
 	depends = libgcc
