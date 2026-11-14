@@ -1,6 +1,6 @@
 pkgbase = anvil-manager
 	pkgdesc = A self-hosted pacman GUI
-	pkgver = 0.7.18
+	pkgver = 0.7.19
 	pkgrel = 1
 	url = https://github.com/Hamza-b93/anvil
 	arch = any
@@ -17,9 +17,12 @@ pkgbase = anvil-manager
 	depends = polkit
 	optdepends = yay: AUR search/install/remove support
 	optdepends = rate-mirrors: refreshing the Arch and Chaotic-AUR mirror lists
+	optdepends = flatpak: Flatpak application support
+	optdepends = nix: Nix package manager support
+	optdepends = homebrew: Homebrew package manager support
 	provides = anvil
 	conflicts = anvil
-	source = anvil-manager-0.7.18.tar.gz::https://github.com/Hamza-b93/anvil/archive/refs/tags/v0.7.18.tar.gz
-	sha256sums = ee8b71216e301342ec33ec7cf248c854c00f3188692c15bdefff74a0c3f6f4a1
+	source = anvil-manager-0.7.19.tar.gz::https://github.com/Hamza-b93/anvil/archive/refs/tags/v0.7.19.tar.gz
+	sha256sums = e516be4089713727fc635532effe6961b1dc46e6f9ace5dcca42df84b6e53e19
 
 pkgname = anvil-manager
