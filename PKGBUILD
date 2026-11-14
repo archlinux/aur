@@ -1,6 +1,6 @@
 # Maintainer: Matthew Anderson <mpa.business@pm.me>
 pkgname=moonfin
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Jellyfin & Emby media client for Linux. Use this package for non-systemd distros'
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip' '!debug')
 _flutter_min=3.47.0
 _flutter_pin=3.47.2
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3ed47f17b824898390f675acdbfec1ab792100b150ef7d15327ef6e2d064f986')
+sha256sums=('bf5495479c2c0ad6cb2e3f85044221bfb6ca3832f4832ee53fc4a5d825d793b8')
 
 _find_flutter() {
   local c v
