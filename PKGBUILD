@@ -1,6 +1,6 @@
 # Maintainer: HAHWUL <hahwul@gmail.com>
 pkgname=doma
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Directory tag manager — put your directories on the cutting board (Crystal CLI)."
 arch=('x86_64')
