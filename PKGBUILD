@@ -2,7 +2,7 @@
 
 _pkgname=pavucontrol
 pkgname="${_pkgname}"-git
-pkgver=5.0.r73.g44f9848
+pkgver=6.2.r7.g27980e1
 pkgrel=1
 pkgdesc='A GTK volume control for PulseAudio'
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url='https://freedesktop.org/software/pulseaudio/pavucontrol/'
 license=('GPL-2.0-or-later')
 depends=('gtkmm-4.0' 'libpulse' 'libcanberra')
 optdepends=('pulseaudio: audio output')
-makedepends=('git' 'meson' 'libsigc++' 'lynx')
+makedepends=('git' 'meson' 'lynx')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://gitlab.freedesktop.org/pulseaudio/${_pkgname}.git")
