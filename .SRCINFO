@@ -1,0 +1,27 @@
+pkgbase = remya-core-bin
+	pkgdesc = Shared Remya daemon, updater and CLI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/remyhuang03/remya-core
+	install = remya-core.install
+	arch = x86_64
+	license = LicenseRef-PolyForm-Noncommercial-1.0.0
+	depends = networkmanager
+	depends = bluez
+	depends = libpulse
+	depends = pipewire
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = polkit
+	depends = pacman-contrib
+	depends = sqlite
+	depends = glibc
+	depends = gcc-libs
+	provides = remya-core=0.1.0
+	conflicts = remya-core
+	conflicts = remya-core-git
+	options = !strip
+	source = remya_core-0.1.0-linux-x86_64.tar.zst::https://github.com/remyhuang03/remya-core/releases/download/v0.1.0/remya_core-0.1.0-linux-x86_64.tar.zst
+	sha256sums = c94c06823abda121f675fc1a524fc97469726a7ec9d868541c8f321601406e18
+
+pkgname = remya-core-bin
