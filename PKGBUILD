@@ -1,14 +1,14 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=mesen
 pkgver=2.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS) for Windows, Linux and macOS"
 arch=('x86_64')
 url="https://github.com/SourMesen/Mesen2"
 license=('GPL-3.0-or-later')
 depends=(sdl2 fontconfig libevdev glibc libx11 libgcc libstdc++ zlib dotnet-runtime-8.0
 	libxcb libxau libxdmcp freetype2 expat zlib bzip2 libpng brotli)
-makedepends=(dotnet-sdk meson ninja clang lld zip unzip)
+makedepends=(dotnet-sdk-8.0 meson ninja clang lld zip unzip)
 checkdepends=()
 optdepends=()
 provides=('mesen2')

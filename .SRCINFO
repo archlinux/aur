@@ -1,12 +1,12 @@
 pkgbase = mesen
 	pkgdesc = Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS) for Windows, Linux and macOS
 	pkgver = 2.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/SourMesen/Mesen2
 	install = mesen.install
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = dotnet-sdk
+	makedepends = dotnet-sdk-8.0
 	makedepends = meson
 	makedepends = ninja
 	makedepends = clang
