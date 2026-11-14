@@ -1,15 +1,15 @@
 # Maintainer: Siiire <siiire@pm.me>
 pkgname=jellium-desktop-bin
 pkgver=0.r1173.4c1843b
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An unofficial desktop client for Jellyfin"
 arch=('x86_64')
 url="https://github.com/andrewrabert/jellium-desktop"
 license=('GPL-2.0-only')
-depends=('glibc' 'gcc-libs' 'hicolor-icon-theme' 'libglvnd' 'mesa' 'vulkan-icd-loader' 'libpulse')
+depends=('glibc' 'gcc-libs' 'libglvnd' 'mesa' 'vulkan-icd-loader' 'libpulse' 'hicolor-icon-theme')
 provides=('jellyfin-desktop' 'jellium-desktop')
-conflicts=('jellyfin-desktop' 'jellyfin-media-player' 'jellium-desktop')
+conflicts=('jellyfin-desktop' 'jellyfin-media-player' 'jellyfin-desktop-bin' 'jellyfin-desktop-git' 'jellyfin-desktop-cef-git' 'jellium-desktop' 'jellyfin-desktop-git-bin' 'jellium-desktop-git')
 options=('!strip')
 source=("${pkgname}-${pkgver}-${CARCH}.zip::https://nightly.link/andrewrabert/jellium-desktop/workflows/build-linux-appimage/main/linux-appimage-${CARCH}.zip")
 sha256sums=('SKIP')
@@ -23,9 +23,12 @@ prepare() {
     # Normalize broken 700 directory permissions from upstream AppImage
     chmod -R u+rwX,go+rX,go-w "${srcdir}/squashfs-root"
 
-# Use Arch's native dynamic linker and system libraries first so host GPU/EGL/Vulkan drivers work
+    # Use Arch's native dynamic linker and system libraries first so host GPU/EGL/Vulkan drivers work
     sed -i 's|ln -sf "${HERE}/usr/lib/${LD_SONAME}"|ln -sf "/usr/lib/${LD_SONAME}"|' "${srcdir}/squashfs-root/AppRun"
     sed -i 's|export LD_LIBRARY_PATH="|export LD_LIBRARY_PATH="/usr/lib:/usr/lib/pulseaudio:|' "${srcdir}/squashfs-root/AppRun"
+
+    # Work around CEF 156 compressed CCS dmabuf modifier failure on Intel GPUs under Wayland
+    sed -i '/^export LD_LIBRARY_PATH=/a export INTEL_DEBUG="${INTEL_DEBUG:+${INTEL_DEBUG},}noccs"' "${srcdir}/squashfs-root/AppRun"
 }
 
 package() {
