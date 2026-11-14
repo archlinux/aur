@@ -4,7 +4,7 @@ pkgbase=115-life-bin
 pkgname=115-life-bin
 _pkgname=115Life
 pkgver=37.3.3
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 options=(!strip !debug)
 depends=(
@@ -43,7 +43,7 @@ source=(
 source_x86_64=(
     "${pkgname}-${pkgver}.deb::https://down.115.com/client/115pc/lin/${_pkgname}_${pkgver}.deb"
 )
-sha256sums=('7a1c438a53cd10ad78b9ea150521f12e6d97e10cf07f07d38d4f0a65f22cafcf'
+sha256sums=('2dcc2bd1b8b7894470a72bfc9c2e617bb80591425b6f2823599fcdeae6d41a94'
             'cfe25e4d5d8236b3b68089fbc4b56aaa7db1d0a560905f1faf004bc5e4534245')
 sha256sums_x86_64=('15f2aa665ac3e45ba530cdee71f0a83b1e06b982d84b0e45f0cf79278555b158')
 noextract=("${pkgname}-${pkgver}.deb")
