@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=addwater
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Installer for the Firefox GNOME theme"
 arch=('any')
 url="https://github.com/largestgithubuseronearth/addwater"
@@ -16,6 +16,10 @@ depends=(
   'python-requests'
 )
 makedepends=('meson')
+checkdepends=(
+  'desktop-file-utils'
+  'appstream'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('9684a65533cfeb50ec99ea5cdc9e80283fc1738313147aaee72287bd32b782a6')
 
