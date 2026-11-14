@@ -5,7 +5,7 @@ _pkgname=caire
 pkgname=${_pkgname}-bin
 pkgdesc="Content aware image resize library based on Seam Carving"
 
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,7 +24,7 @@ depends=('glibc' 'libxcursor' 'libxfixes' 'libxkbcommon' 'wayland' 'libxkbcommon
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}.tar.gz")
 sha256sums=('b33c6f418a5c2407c24250ea0ce13af06b9050c695bdeae81badcbbfe688a8c5')
-sha256sums_x86_64=('b723221defae71ca7fe44c9007a0583568a0e1ac4436e696cc0b80c7be697fa4')
+sha256sums_x86_64=('ed0eb0107e17d01428c970bbb6842f74c6d268b31b8e2d9fa23b153073850ba8')
 
 case ${CARCH} in
   ${arch[0]})
