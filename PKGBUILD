@@ -1,8 +1,8 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=teleport-client
-pkgver=18.11.1
-pkgrel=3
+pkgver=18.11.10
+pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure - Client-only (tsh, tctl)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
@@ -14,17 +14,14 @@ provides=(teleport-client tctl tsh)
 conflicts=(teleport teleport-client-bin tctl tsh)
 source=(
   "${pkgname%-*}-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-  strcase_v0.0.6.patch
-  govulncheck.patch
+  clean_lto_section.patch
 )
-sha256sums=('a95bddd445dc3f93d91493b48e73d39959bbc4d4d00cd93fea34b3d02c3ba1da'
-            '66788f0103ddf6d30c71892fab18833392d294c6666fd50020c48a023d108b4e'
-            'e32b04f57cd4cf56c0ef402f928a045bcc0b86651c9693e2083c7fa639d1df8c')
+sha256sums=('59462f339440cda54cef30e554e0e1322a05eadbff84d062d1085e4a8ed7eb6d'
+            '264ab7109f42db54b6c3dbb472069902961cede06c3e832f7ed6d1de0879a3da')
 
 prepare() {
   cd "${pkgname%-*}-${pkgver}"
-  patch -p1 < ../strcase_v0.0.6.patch
-  patch -p1 < ../govulncheck.patch
+  patch -p1 < ../clean_lto_section.patch
   rustup toolchain install
 }
 
@@ -36,7 +33,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export ADDFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export ADDFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   make build/tsh build/tctl
 
