@@ -14,8 +14,8 @@
 # Maintainer: venator <venator at tutamail dot com>
 
 pkgbase=skwir
-pkgname=(skwir skwir-mermaid skwir-mupdf)
-pkgver=0.4.0
+pkgname=(skwir skwir-mermaid skwir-math skwir-mupdf)
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents'
 arch=('x86_64' 'aarch64')
@@ -39,7 +39,7 @@ source_x86_64=("pdfium-linux-x64-$_pdfium.tgz::https://github.com/bblanchon/pdfi
 source_aarch64=("pdfium-linux-arm64-$_pdfium.tgz::https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F$_pdfium/pdfium-linux-arm64.tgz")
 # skwir's: filled by aur-prepare after the release tag is pushed; PDFium's: as
 # tools/package/pdfium.lock pins them.
-sha256sums=('a3613f8b77f88a507165129ee7e0bd9684fbd95bc3188bdd2bcb6b71c52006f0')
+sha256sums=('ec77215ba669c0398bf278cdd57f49a25958c92cb7619ded8705f503b4122d29')
 sha256sums_x86_64=('e1c3ce6e270cb5e0c20816b379ad9f2c1309972697c505f508de92bf5e7d6659')
 sha256sums_aarch64=('8b8818f2ec57d1b213d952ca6d7f0ffeca9d0110487d0e20ad83ba918bc92efa')
 
@@ -76,6 +76,7 @@ package_skwir() {
     'poppler-glib: PDFs through Poppler, beside the PDFium skwir carries'
     'djvulibre: DjVu through DjVuLibre, beside the djvu-rs reader skwir carries'
     'skwir-mermaid: Mermaid diagrams drawn in Markdown previews'
+    'skwir-math: formulas typeset in Markdown, notebooks and HTML'
     'skwir-mupdf: the MuPDF engine, PDFs and books laid out into pages'
     'bubblewrap: LibreOffice, ImageMagick and thumbnailers run isolated'
     'libreoffice-fresh: office documents shown as pages'
@@ -109,7 +110,7 @@ package_skwir() {
   install -Dm755 target/dist/skwir "$pkgdir/usr/bin/skwir"
   while read -r program; do
     case "$program" in
-    skwir | skwir-mermaid-worker | skwir-mupdf-worker) ;;
+    skwir | skwir-mermaid-worker | skwir-math-worker | skwir-mupdf-worker) ;;
     *) install -Dm755 "target/dist/$program" -t "$pkgdir/usr/lib/skwir/" ;;
     esac
   done < tools/package/programs
@@ -134,6 +135,15 @@ package_skwir-mermaid() {
   install -Dm755 target/dist/skwir-mermaid-worker -t "$pkgdir/usr/lib/skwir/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/skwir-mermaid/"
   install -Dm644 tools/package/notices/skwir-mermaid/THIRD-PARTY-NOTICES -t "$pkgdir/usr/share/licenses/skwir-mermaid/"
+}
+
+package_skwir-math() {
+  pkgdesc="Formulas typeset in skwir's Markdown, notebook and HTML previews"
+  depends=('skwir' 'libgcc' 'glibc')
+  cd "$pkgbase-$pkgver"
+  install -Dm755 target/dist/skwir-math-worker -t "$pkgdir/usr/lib/skwir/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/skwir-math/"
+  install -Dm644 tools/package/notices/skwir-math/THIRD-PARTY-NOTICES -t "$pkgdir/usr/share/licenses/skwir-math/"
 }
 
 package_skwir-mupdf() {
