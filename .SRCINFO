@@ -1,6 +1,6 @@
 pkgbase = bulwarkctl
 	pkgdesc = Linux host security and misconfiguration scanner (CLI)
-	pkgver = 0.16.0
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://github.com/vietanhdev/bulwark
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = bulwarkctl
 	optdepends = curl: Telegram and e-mail alerts (bulwarkctl notify)
 	optdepends = git: skipping gitignored files in the AI-assistant scan (bulwarkctl ai scan)
 	options = !lto
-	source = bulwarkctl-0.16.0.tar.gz::https://github.com/vietanhdev/bulwark/archive/refs/tags/v0.16.0.tar.gz
-	sha256sums = c5a757e1dda0d9dad2a59cefbe929b5704c53f3314f5ce638c966137c0ea4b74
+	source = bulwarkctl-0.16.1.tar.gz::https://github.com/vietanhdev/bulwark/archive/refs/tags/v0.16.1.tar.gz
+	sha256sums = 4f18a29886a672343036b20e9f29f1f3fbfe52da28650b9f40ce3860dbd0bcef
 
 pkgname = bulwarkctl
