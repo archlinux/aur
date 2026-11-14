@@ -2,12 +2,13 @@
 pkgname=deref-nightly-bin
 provides=('deref')
 conflicts=('deref' 'deref-bin')
-pkgver=0.1.1+nightly+20260930+0+g5a6ce9be
+pkgver=0.1.1+nightly+20261114+2+g68d393dd
 pkgrel=1
 pkgdesc="Replace symbolic links with real files / directories — nightly build"
 arch=('x86_64' 'aarch64')
 url="https://github.com/someoneonsmile/deref"
 license=('MIT')
+options=('!strip' '!debug')
 
 _source_base="${url}/releases/download/nightly"
 
