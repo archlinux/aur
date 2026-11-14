@@ -1,6 +1,6 @@
 # Maintainer: Nitro Cao <nitro@oixcloud.com>
 pkgname=flclash-oixcloud
-pkgver=0.9.3+2026110711
+pkgver=0.9.3+2026111321
 pkgrel=1
 pkgdesc="A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free (oixcloud custom build)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=(
     'f6577f73105a095767c9fc645ce4ab9e1436138685b981feb4e17f9c87eca9a1'
-    '8631122c7c61a653783c49d3c839eb33253ecc4f30155ed1a60c2da5620501a3'
+    'a491af9718b3fb108e9b183544c89f93709b60f0813f41a0ce54bb2747814533'
 )
 
 prepare() {
