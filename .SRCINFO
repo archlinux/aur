@@ -1,6 +1,6 @@
 pkgbase = euro-office-bin
 	pkgdesc = Office suite for documents, spreadsheets, presentations and PDFs, forked from ONLYOFFICE (upstream binary)
-	pkgver = 9.3.6
+	pkgver = 9.3.8
 	pkgrel = 1
 	url = https://github.com/Euro-Office/DesktopEditors
 	arch = x86_64
@@ -59,18 +59,18 @@ pkgbase = euro-office-bin
 	depends = zstd
 	optdepends = ttf-ms-fonts: Microsoft fonts
 	optdepends = xdg-user-dirs: --new-document-templates
-	provides = euro-office=9.3.6
+	provides = euro-office=9.3.8
 	provides = euro-office-desktopeditors
 	conflicts = euro-office
 	conflicts = euro-office-desktopeditors
-	noextract = euro-office-bin-9.3.6-x86_64.deb
-	noextract = euro-office-bin-9.3.6-aarch64.deb
+	noextract = euro-office-bin-9.3.8-x86_64.deb
+	noextract = euro-office-bin-9.3.8-aarch64.deb
 	options = !strip
 	options = !debug
 	options = !emptydirs
-	source_x86_64 = euro-office-bin-9.3.6-x86_64.deb::https://github.com/Euro-Office/DesktopEditors/releases/download/v9.3.6/euro-office-euro-office_9.3.6-0_amd64.deb
-	sha256sums_x86_64 = f80599f40ac912810460188b9165688b08ac7bee33725ff65bb5ceb97c5acb81
-	source_aarch64 = euro-office-bin-9.3.6-aarch64.deb::https://github.com/Euro-Office/DesktopEditors/releases/download/v9.3.6/euro-office-euro-office_9.3.6-0_arm64.deb
-	sha256sums_aarch64 = 72739cc3c475c0dcd4e49545968fcd3010680038b3560dc51166380939c6a8f3
+	source_x86_64 = euro-office-bin-9.3.8-x86_64.deb::https://github.com/Euro-Office/DesktopEditors/releases/download/v9.3.8/euro-office-euro-office_9.3.8-0_amd64.deb
+	sha256sums_x86_64 = 1816c4cd5d5806b757468c3dc57ec76c23acd1ea0852d441e50d6a549d217da1
+	source_aarch64 = euro-office-bin-9.3.8-aarch64.deb::https://github.com/Euro-Office/DesktopEditors/releases/download/v9.3.8/euro-office-euro-office_9.3.8-0_arm64.deb
+	sha256sums_aarch64 = 6b1eb3cfa0f35b31312b64cac4e56eea8c4cfce5d0349ce2888813fccfa08836
 
 pkgname = euro-office-bin
