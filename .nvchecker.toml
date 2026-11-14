@@ -1,0 +1,5 @@
+[duckscript-bin]
+source = "github"
+github = "sagiegurari/duckscript"
+use_latest_release = true
+prefix = "v"

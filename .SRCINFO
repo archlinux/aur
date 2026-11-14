@@ -1,0 +1,14 @@
+pkgbase = duckscript-bin
+	pkgdesc = Simple, extendable and embeddable scripting language.
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/sagiegurari/duckscript
+	arch = x86_64
+	license = Apache-2.0
+	provides = duck
+	conflicts = duckscript
+	options = !strip
+	source_x86_64 = duck-x86_64-0.11.1.zip::https://github.com/sagiegurari/duckscript/releases/download/0.11.1/duckscript-v0.11.1-x86_64-unknown-linux-musl.zip
+	sha256sums_x86_64 = 8943ab3b6507e62e201578aa4a991dd19a4c583cbaed7173b0599a3501bb214d
+
+pkgname = duckscript-bin
