@@ -1,6 +1,6 @@
 pkgbase = kyber-launcher-unofficial-appimage
 	pkgdesc = Native binary build of the Kyber V2 mod launcher for Star Wars Battlefront II (2017). Not endorsed by the Kyber team.
-	pkgver = 7.0.4_beta10
+	pkgver = 7.0.5_beta10
 	pkgrel = 1
 	url = https://github.com/simonlinuxcraft/kyber-linuxport-unofficial
 	install = kyber-launcher-unofficial-appimage.install
@@ -21,10 +21,11 @@ pkgbase = kyber-launcher-unofficial-appimage
 	depends = glib2
 	depends = tinysparql
 	depends = glycin
+	depends = xdg-user-dirs
 	conflicts = kyber-launcher-inofficial-appimage
 	replaces = kyber-launcher-inofficial-appimage
 	options = !debug
-	source = kyber-launcher-unofficial-appimage-7.0.4_beta10.tar.xz::https://github.com/simonlinuxcraft/kyber-linuxport-unofficial/releases/download/v7.0.4-beta10/7.0.4_beta10.tar.xz
-	sha256sums = a2a5bd610a187065b54f1cb6a0c57e275b096dfca307c85abde47e2d602e74be
+	source = kyber-launcher-unofficial-appimage-7.0.5_beta10.tar.xz::https://github.com/simonlinuxcraft/kyber-linuxport-unofficial/releases/download/v7.0.5-beta10/7.0.5_beta10.tar.xz
+	sha256sums = be429eba0f2367d8794c8b389a25d789ce1c312339019a5c537f93444f9a9b33
 
 pkgname = kyber-launcher-unofficial-appimage
