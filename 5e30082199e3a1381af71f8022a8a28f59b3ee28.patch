@@ -1,0 +1,43 @@
+From 5e30082199e3a1381af71f8022a8a28f59b3ee28 Mon Sep 17 00:00:00 2001
+From: Ian Kent <raven@themaw.net>
+Date: Thu, 23 Apr 2026 09:49:44 +0800
+Subject: autofs-5.1.9 - don't open code negative update in lookup
+
+The negative cache timeout is updated in the top level lookup code and
+uses identical code to the function cache_update_negative().
+
+Signed-off-by: Ian Kent <raven@themaw.net>
+---
+ CHANGELOG       |  1 +
+ daemon/lookup.c | 14 +-------------
+ 2 files changed, 2 insertions(+), 13 deletions(-)
+
+diff --git a/daemon/lookup.c b/daemon/lookup.c
+index 3791aa75..6678c772 100644
+--- a/daemon/lookup.c
++++ b/daemon/lookup.c
+@@ -1147,20 +1147,8 @@ static void update_negative_cache(struct autofs_point *ap, struct map_source *so
+ 		else
+ 			map = lookup_get_map_source(entry);
+ 		if (map) {
+-			time_t now = monotonic_time(NULL);
+-			int rv = CHE_FAIL;
+-
+ 			cache_writelock(map->mc);
+-			me = cache_lookup_distinct(map->mc, name);
+-			if (me)
+-				rv = cache_push_mapent(me, NULL);
+-			else
+-				rv = cache_update(map->mc, map, name, NULL, now);
+-			if (rv != CHE_FAIL) {
+-				me = cache_lookup_distinct(map->mc, name);
+-				if (me)
+-					me->status = now + ap->negative_timeout;
+-			}
++			cache_update_negative(map->mc, map, name, ap->negative_timeout);
+ 			cache_unlock(map->mc);
+ 		}
+ 	}
+--
+cgit 1.3.1-korg
+

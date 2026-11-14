@@ -1,7 +1,7 @@
 pkgbase = autofs
 	pkgdesc = A kernel-based automounter for Linux
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/pub/linux/daemons/autofs/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -27,9 +27,11 @@ pkgbase = autofs
 	source = https://mirrors.edge.kernel.org/pub/linux/daemons/autofs/v5/autofs-5.2.0.tar.xz
 	source = https://mirrors.edge.kernel.org/pub/linux/daemons/autofs/v5/autofs-5.2.0.tar.sign
 	source = autofs-arch-configuration-path.patch
+	source = 5e30082199e3a1381af71f8022a8a28f59b3ee28.patch
 	validpgpkeys = CD0A6E3CBB6768800B0736A8E7677380F54FD8A9
 	sha256sums = 131a642acbb9fe98a41fb52b05adc979e9094e025dd18a1ae7bef00ca72351b0
 	sha256sums = SKIP
 	sha256sums = def52bda93a414896c41e587c2ffbefdd360767f938399767b7582d55c329a34
+	sha256sums = 6003d1f01b8de6761ce49ae2b259fd128de200ea12a6cd2135b3d3094c6b8c84
 
 pkgname = autofs
