@@ -25,32 +25,24 @@ _renderer=gles
 
 pkgbase=kodi-stable-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r73885.991f18b116a
+pkgver=r73887.67ad2ea9dd1
 pkgrel=1
-arch=('x86_64')
+arch=(x86_64)
 url="https://kodi.tv"
-license=('GPL-2.0-or-later')
+license=(GPL-2.0-or-later)
 makedepends=(
-  'bluez-libs' 'cmake' 'curl' 'dav1d' 'doxygen' 'git' 'glew'
-  'gperf' 'hicolor-icon-theme' 'java-runtime<21' 'fmt' 'libass'
-  'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
-  'libmodplug' 'libmpeg2' 'libnfs' 'libpulse' 'libva'
-  'libvdpau' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
-  'pipewire' 'python-pycryptodomex' 'python-pillow' 'python-pybluez'
-  'python-simplejson' 'smbclient' 'sndio' 'spdlog' 'taglib'
-  'tinyxml' 'swig' 'upower' 'giflib' 'nlohmann-json' 'ghostscript' 'meson' 'gtest'
-  'graphviz' 'pcre2' 'tinyxml2' 'libdisplay-info' 'exiv2'
-  # cmake/scripts/linux/Install.cmake calls distutils
-  # python 3.12 does no longer come with distutils on board
-  'python-setuptools'
-  # wayland
-  'wayland-protocols' 'waylandpp' 'libxkbcommon'
-  # gbm
-  'libinput'
+  avahi bluez-libs cmake curl dav1d doxygen exiv2 fmt ghostscript giflib
+  git glew gperf graphviz gtest hicolor-icon-theme libass libbluray libcdio
+  libcec libdisplay-info libgl libinput libmicrohttpd libmodplug libmpeg2
+  libnfs libpulse libva libxkbcommon libxrandr libxslt lirc lzo
+  mariadb-libs mesa meson nasm nlohmann-json pcre2 pipewire python-pillow
+  python-pybluez python-pycryptodomex python-setuptools python-simplejson
+  smbclient sndio spdlog swig taglib tinyxml tinyxml2 upower
+  wayland-protocols waylandpp
 )
-options=(!lto)
 
-[[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
+[[ -n "$_clangbuild" ]] && makedepends+=(clang lld llvm)
+[[ "$_renderer" == gl ]] && makedepends+=(libvdpau)
 
 _gitname=xbmc
 _codename=Piers
@@ -125,16 +117,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
-    -DENABLE_SSE=ON
-    -DENABLE_SSE2=ON
-    -DENABLE_SSE3=ON
-    -DENABLE_SSSE3=ON
-    -DENABLE_SSE4_1=ON
-    -DENABLE_SSE4_2=ON
-    -DENABLE_AVX=ON
-    -DENABLE_AVX2=ON
     -DUSE_LTO=$(nproc)
-    -DENABLE_LDGOLD=OFF
     -DENABLE_AIRTUNES=OFF
     -DENABLE_PLIST=OFF
     -DENABLE_AVAHI=ON
@@ -155,7 +138,6 @@ build() {
     -DENABLE_VDPAU=ON
     -DENABLE_XSLT=ON
     -DENABLE_LIRCCLIENT=ON
-    -DENABLE_INTERNAL_RapidJSON=OFF
     -DENABLE_INTERNAL_FFMPEG=ON
     -DENABLE_INTERNAL_CROSSGUID=ON
     -DENABLE_INTERNAL_FSTRCMP=ON
@@ -173,6 +155,11 @@ build() {
     -DAPP_RENDER_SYSTEM=$_renderer
   )
 
+  _args+=(
+    -DENABLE_SSE=ON -DENABLE_SSE2=ON -DENABLE_SSE3=ON -DENABLE_SSSE3=ON
+    -DENABLE_SSE4_1=ON -DENABLE_SSE4_2=ON -DENABLE_AVX=ON -DENABLE_AVX2=ON
+  )
+
   echo "building kodi"
   cmake "${_args[@]}" ../"$_gitname"
   make
@@ -181,17 +168,17 @@ build() {
 # kodi
 # components: kodi
 package_kodi-stable-git() {
-  pkgdesc="A software media player and entertainment hub for digital media (Omega branch, $_renderer renderer)"
+  pkgdesc="A software media player and entertainment hub for digital media (Piers branch, $_renderer renderer)"
   depends=(
-  'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme' 'fmt'
-  'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
-  'libpulse' 'libva' 'libvdpau' 'libxslt' 'lirc' 'lzo'
-  'mariadb-libs' 'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
-  'python-simplejson' 'smbclient' 'sndio' 'spdlog' 'sqlite'
-  'tinyxml' 'taglib' 'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
-  'pcre' 'tinyxml2' 'libdisplay-info' 'exiv2'
+  avahi bluez-libs curl dav1d exiv2 fmt hicolor-icon-theme
+  lcms2 libass libbluray libcdio libcec libdisplay-info libinput
+  libmicrohttpd libnfs libpipewire libpulse libva libxkbcommon
+  libxrandr libxslt lirc lzo mariadb-libs mesa pcre2 python-pillow
+  python-pycryptodomex python-simplejson smbclient sndio spdlog sqlite
+  taglib tinyxml tinyxml2 waylandpp
 )
-  [[ -n "$_clangbuild" ]] && depends+=('glu')
+  [[ -n "$_clangbuild" ]] && depends+=(glu)
+  [[ "$_renderer" == gl ]] && depends+=(libvdpau)
 
   optdepends=(
     'bluez: Blutooth support'
@@ -200,12 +187,12 @@ package_kodi-stable-git() {
     'pipewire: PipeWire support'
     'upower: Display battery level'
   )
-  provides=("kodi-common=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
-  conflicts=('kodi' 'kodi-gles' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  provides=("kodi-common=${pkgver}" kodi-x11 kodi-wayland kodi-gbm)
+  conflicts=(kodi kodi-gles kodi-x11 kodi-wayland kodi-gbm)
 
   _components=(
-    'kodi'
-    'kodi-bin'
+    kodi
+    kodi-bin
   )
 
   cd kodi-build
@@ -228,18 +215,18 @@ package_kodi-stable-git() {
 # kodi-eventclients
 # components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-kodi-send
 package_kodi-stable-git-eventclients() {
-  pkgdesc="Kodi Event Clients (Omega branch)"
+  pkgdesc="Kodi Event Clients (Piers branch)"
   provides=("kodi-eventclients=${pkgver}")
-  conflicts=('kodi-eventclients')
+  conflicts=(kodi-eventclients)
   optdepends=(
     'kodi: local machine eventclient use'
     'python: most eventclients are implemented in python'
   )
 
   _components=(
-    'kodi-eventclients-common'
-    'kodi-eventclients-ps3'
-    'kodi-eventclients-kodi-send'
+    kodi-eventclients-common
+    kodi-eventclients-ps3
+    kodi-eventclients-kodi-send
   )
 
   cd kodi-build
@@ -253,13 +240,13 @@ package_kodi-stable-git-eventclients() {
 # kodi-tools-texturepacker
 # components: kodi-tools-texturepacker
 package_kodi-stable-git-tools-texturepacker() {
-  pkgdesc="Kodi Texturepacker tool (Omega branch)"
+  pkgdesc="Kodi Texturepacker tool (Piers branch)"
   provides=("kodi-tools-texturepacker=${pkgver}")
-  conflicts=('kodi-tools-texturepacker')
-  depends=('libpng' 'giflib' 'libjpeg-turbo' 'lzo')
+  conflicts=(kodi-tools-texturepacker)
+  depends=(giflib libjpeg-turbo libpng lzo)
 
   _components=(
-    'kodi-tools-texturepacker'
+    kodi-tools-texturepacker
   )
 
   cd kodi-build
@@ -273,14 +260,14 @@ package_kodi-stable-git-tools-texturepacker() {
 # kodi-dev
 # components: kodi-addon-dev kodi-eventclients-dev
 package_kodi-stable-git-dev() {
-  pkgdesc="Kodi dev files (Omega branch)"
-  depends=('kodi-stable-git')
+  pkgdesc="Kodi dev files (Piers branch)"
+  depends=(kodi-stable-git)
   provides=("kodi-dev=${pkgver}")
-  conflicts=('kodi-dev')
+  conflicts=(kodi-dev)
 
   _components=(
-    'kodi-addon-dev'
-    'kodi-eventclients-dev'
+    kodi-addon-dev
+    kodi-eventclients-dev
   )
 
   cd kodi-build
