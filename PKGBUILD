@@ -1,8 +1,8 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 
 pkgname=uu-remote-linux
-pkgver=0.2.58
-pkgrel=2
+pkgver=0.2.59
+pkgrel=1
 pkgdesc='Unofficial Linux host for NetEase UU Remote (remote desktop)'
 arch=('x86_64')
 url='https://github.com/VallierDev/uu-remote-linux'
@@ -41,17 +41,14 @@ optdepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'uuremote-native.service'
-        '60-uu-remote-linux-uinput.rules'
-        '0001-portal-lock-screen.patch')
-sha256sums=('2ed8660675f9269c35abba8fb363cf8df8904a39599698b1742baef3cbec738d'
+        '60-uu-remote-linux-uinput.rules')
+sha256sums=('665284c56248312cd95d26837ab16cb828965cc61acc2a7384a80f296c66047b'
             '3cff7ebb654c1f9a2434bc80ce4442d5fd0b0e6ff79462f7e3a20271d05d3c98'
-            '2752412c9c2ddbffa4d5882be06a2f10d7ee590c3d1f3b16bf37ea5c1b8d1f34'
-            'd505ef982a931074817b617b2e1f55c0215b1e26896b7d4c4e1795137ee5432f')
+            '2752412c9c2ddbffa4d5882be06a2f10d7ee590c3d1f3b16bf37ea5c1b8d1f34')
 options=('!lto')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/0001-portal-lock-screen.patch"
   cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
