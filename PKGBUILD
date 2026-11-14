@@ -1,7 +1,7 @@
 # Maintainer: Happilli <https://github.com/happilli>
 pkgname=ryu-bin
 _pkgname=ryu
-pkgver=0.0.53
+pkgver=0.0.54
 pkgrel=1
 pkgdesc="Collection of Qt6 QML plugins for ryu.. (prebuilt)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip' '!debug')
 conflicts=("$_pkgname")
 source=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/Happilli/ryu/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/Happilli/ryu/v$pkgver/LICENSE")
-sha256sums=('2ffae64f2e27ea1728cd19691f6d8154b416083a66db3775d83d27b7a87855df'
+sha256sums=('852a8bed1412ad5316a612e6340e988f194fd22ae0b0b3409eb134f01c3f6623'
             '47eb383c5eadf7ad1499b981bd842679d7a73275801c83a24035b7e09e7c5b83')
 
 package() {
