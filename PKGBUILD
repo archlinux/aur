@@ -6,11 +6,11 @@ pkgname=(
     'python-pyvideokit-cli'
     'python-pyvideokit-gui'
 )
-pkgver=0.4.3
-pkgrel=3
+pkgver=0.4.4
+pkgrel=1
 pkgdesc="FFmpeg-based video processing tools"
 arch=('any')
-url="https://github.com/Evilchuck666"
+url="https://github.com/Evilchuck666/PyVideoKit"
 license=('GPL-3.0-only')
 makedepends=(
     'git'
@@ -19,27 +19,17 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
 )
-source=(
-    "PyVideoKit-Libs::git+https://github.com/Evilchuck666/PyVideoKit-Libs.git"
-    "PyVideoKit-CLI::git+https://github.com/Evilchuck666/PyVideoKit-CLI.git"
-    "PyVideoKit-GUI::git+https://github.com/Evilchuck666/PyVideoKit-GUI.git"
-)
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
-
-pkgver() {
-    python -c "import tomllib; f=open('$srcdir/PyVideoKit-Libs/pyproject.toml','rb'); print(tomllib.load(f)['project']['version'])"
-}
+source=("PyVideoKit::git+https://github.com/Evilchuck666/PyVideoKit.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/PyVideoKit-Libs"
+    cd "$srcdir/PyVideoKit/packages/libs"
     python -m build --wheel --no-isolation
 
-    cd "$srcdir/PyVideoKit-CLI"
+    cd "$srcdir/PyVideoKit/packages/cli"
     python -m build --wheel --no-isolation
 
-    cd "$srcdir/PyVideoKit-GUI"
+    cd "$srcdir/PyVideoKit/packages/gui"
     python -m build --wheel --no-isolation
 }
 
@@ -50,7 +40,7 @@ package_python-pyvideokit() {
         'python-pyvideokit-cli'
         'python-pyvideokit-gui'
     )
-    install -Dm644 "$srcdir/PyVideoKit-Libs/LICENSE" \
+    install -Dm644 "$srcdir/PyVideoKit/LICENSE" \
         "$pkgdir/usr/share/licenses/python-pyvideokit/LICENSE"
 }
 
@@ -62,7 +52,7 @@ package_python-pyvideokit-libs() {
         'sox'
     )
 
-    cd "$srcdir/PyVideoKit-Libs"
+    cd "$srcdir/PyVideoKit/packages/libs"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/python-pyvideokit-libs/LICENSE"
 }
@@ -76,7 +66,7 @@ package_python-pyvideokit-cli() {
         'python-pyvideokit-libs'
     )
 
-    cd "$srcdir/PyVideoKit-CLI"
+    cd "$srcdir/PyVideoKit/packages/cli"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/python-pyvideokit-cli/LICENSE"
 }
@@ -89,7 +79,7 @@ package_python-pyvideokit-gui() {
         'python-pyvideokit-libs'
     )
 
-    cd "$srcdir/PyVideoKit-GUI"
+    cd "$srcdir/PyVideoKit/packages/gui"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/python-pyvideokit-gui/LICENSE"
 

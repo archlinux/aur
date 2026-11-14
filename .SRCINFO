@@ -1,8 +1,8 @@
 pkgbase = pyvideokit
 	pkgdesc = FFmpeg-based video processing tools
-	pkgver = 0.4.3
-	pkgrel = 3
-	url = https://github.com/Evilchuck666
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/Evilchuck666/PyVideoKit
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
@@ -10,11 +10,7 @@ pkgbase = pyvideokit
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = PyVideoKit-Libs::git+https://github.com/Evilchuck666/PyVideoKit-Libs.git
-	source = PyVideoKit-CLI::git+https://github.com/Evilchuck666/PyVideoKit-CLI.git
-	source = PyVideoKit-GUI::git+https://github.com/Evilchuck666/PyVideoKit-GUI.git
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = PyVideoKit::git+https://github.com/Evilchuck666/PyVideoKit.git#tag=v0.4.4
 	sha256sums = SKIP
 
 pkgname = python-pyvideokit
