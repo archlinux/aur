@@ -2,7 +2,7 @@
 
 pkgname=thumbor
 pkgver=7.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='open-source photo thumbnail service'
 arch=(x86_64)
 url='https://github.com/thumbor/thumbor'
@@ -22,9 +22,14 @@ depends=(
   python-jpegiptc
   python-pillow
   python-numpy
+  python-pytz
 )
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest python-preggy python-pyssim python-pytz python-sentry_sdk python-redis python-pytest-asyncio)
+optdepends=(
+  'python-pillow-heif: HEIF support'
+  'python-sentry_sdk: Sentry error handler'
+  'python-statsd: statsd metrics'
+)
 backup=('etc/thumbor.conf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'thumbor.service'
@@ -40,18 +45,7 @@ prepare() {
   patch -p1 < ../arch-config.patch
 }
 
-# tests are disabled for now
-# many of them are failing or require whole new dependency chains
-#check(){
-#  cd $pkgname-$pkgver
-#  pytest -vvs \
-#    --ignore=tests/detectors/test_queued_detector.py \
-#    --ignore=tests/optimizers/test_gifv.py \
-#    --ignore=tests/handlers/test_base_handler_with_gifv.py \
-#    --ignore=tests/metrics/test_statsd_metrics.py \
-#    --ignore=tests/handlers/test_base_handler_with_result_storage.py
-#    --deselect integration_tests/pil_test.py::PILTest::test_single_params
-#}
+# no check(): many tests fail or need whole new dependency chains
 
 build() {
   cd $pkgname-$pkgver
