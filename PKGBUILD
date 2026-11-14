@@ -9,8 +9,8 @@ _system_xray=1
 # pkgver: Arch-compliant form (no dashes allowed).
 # _tag:   the actual upstream release tag on GitHub (used only for the tarball URL).
 #         For v1.34.1-build276 upstream: pkgver=1.34.1.b276, _tag=1.34.1-build276.
-pkgver=1.34.1.b276
-_tag=1.34.1-build276
+pkgver=1.34.2.b285
+_tag=1.34.2-build285
 pkgrel=1
 pkgdesc='Nova Client, a Flutter proxy/VPN client built on sing-box, Xray, Psiphon, MasterDNS and WARP'
 arch=('x86_64')
@@ -20,7 +20,8 @@ depends=('glibc' 'libgcc' 'libstdc++'
          'gtk3' 'glib2' 'cairo' 'pango' 'harfbuzz' 'fontconfig' 'libepoxy'
          'at-spi2-core' 'gdk-pixbuf2' 'hicolor-icon-theme'
          'libsecret'
-         'libayatana-appindicator' 'libayatana-indicator' 'ayatana-ido' 'libdbusmenu-glib')
+         'libayatana-appindicator' 'libayatana-indicator' 'ayatana-ido' 'libdbusmenu-glib'
+         'python')
 if (( _system_xray )); then
   depends+=('xray')
 fi
@@ -39,7 +40,7 @@ source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/v$_tag/Nova-Linux.tar.
         "LICENSE"
         "$_appid.desktop")
 # Filled by updpkgsums (or ./update.sh).
-sha256sums=('95a8840289c627ffe16af1af52886a60f95ad058bc07ae67dfcbdc22609741c6'
+sha256sums=('464bf6abbc12d7e048c2721cb6a48386c9d95eb9fe475cba8a89b6c3e42d0410'
             'c99c6d75494458d52a049db0898c204eaa525346da1a8e13b260fb369f344ad0'
             '0b2ccf4d89dcad6cd8fed4b0fcbae24975933449e6944a79f166601252dae890')
 
