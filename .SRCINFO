@@ -1,7 +1,7 @@
 pkgbase = filee-bin
 	pkgdesc = Offline file converter for images, PDF, Office, HWP, video, audio, e-books and archives (upstream binary)
-	pkgver = 2.4.0
-	pkgrel = 2
+	pkgver = 2.4.1
+	pkgrel = 1
 	url = https://github.com/KnifeLemon/Filee
 	install = filee-bin.install
 	arch = x86_64
@@ -39,9 +39,9 @@ pkgbase = filee-bin
 	options = !debug
 	source = com.filee.app.desktop
 	sha256sums = 7924b339c9845b737fc76dc5f779f6d4d63a606990fcccfa40052d4e5a46b596
-	source_x86_64 = https://github.com/KnifeLemon/Filee/releases/download/v2.4.0/Filee-2.4.0-linux-x64.tar.gz
-	sha256sums_x86_64 = bd62499c837a80216ec4a06bb8cb72ef39600338872a86e1585fb4347106c7b0
-	source_aarch64 = https://github.com/KnifeLemon/Filee/releases/download/v2.4.0/Filee-2.4.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = af345020b10912d21c40bb058860fc2e87ea4eb863d6e74c771f23174b4f7a9e
+	source_x86_64 = https://github.com/KnifeLemon/Filee/releases/download/v2.4.1/Filee-2.4.1-linux-x64.tar.gz
+	sha256sums_x86_64 = 2d4fd69e9227a640befed7fb5b39a00d3bbef2d73d96806d2a37ec47cd4574ea
+	source_aarch64 = https://github.com/KnifeLemon/Filee/releases/download/v2.4.1/Filee-2.4.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = dd50ac64b87146edc7939582c28f16d65c063fe559560278756789c03097ea95
 
 pkgname = filee-bin
