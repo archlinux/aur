@@ -1,6 +1,6 @@
 pkgbase = nono-ai-bin
 	pkgdesc = Secure, kernel-enforced sandbox for AI agents, MCP servers and LLM workloads using Landlock (pre-built binary)
-	pkgver = 0.81.0
+	pkgver = 0.82.0
 	pkgrel = 1
 	url = https://github.com/nolabs-ai/nono
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = nono-ai-bin
 	conflicts = nono-ai-git
 	options = !strip
 	options = !debug
-	source = LICENSE-0.81.0::https://raw.githubusercontent.com/nolabs-ai/nono/v0.81.0/LICENSE
-	source = README-0.81.0.md::https://raw.githubusercontent.com/nolabs-ai/nono/v0.81.0/README.md
+	source = LICENSE-0.82.0::https://raw.githubusercontent.com/nolabs-ai/nono/v0.82.0/LICENSE
+	source = README-0.82.0.md::https://raw.githubusercontent.com/nolabs-ai/nono/v0.82.0/README.md
 	sha256sums = 7310e9389f298b89bb2f90ac4b6081ed5b6a1c4a7b8547df5d52966a57cb0929
 	sha256sums = 2dbc355b4d9a378d9de9909c108899f92497242e024fa4a5dc00d56c286225ff
-	source_x86_64 = nono-0.81.0-x86_64.tar.gz::https://github.com/nolabs-ai/nono/releases/download/v0.81.0/nono-v0.81.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 7ecc33ff9c349bdfa84b4496e7a7555f67bcc33f1e125c7df9efb653c6c4e569
-	source_aarch64 = nono-0.81.0-aarch64.tar.gz::https://github.com/nolabs-ai/nono/releases/download/v0.81.0/nono-v0.81.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a4d87ddb0917ef96224bcc41a2587318d7d0e92441e7ff454696e5980c9f7924
+	source_x86_64 = nono-0.82.0-x86_64.tar.gz::https://github.com/nolabs-ai/nono/releases/download/v0.82.0/nono-v0.82.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 81d7a5616622dcf68ca0ed2b7e6b3af08c1216fb0c42dc6d7ecfbd2bbf2d3f50
+	source_aarch64 = nono-0.82.0-aarch64.tar.gz::https://github.com/nolabs-ai/nono/releases/download/v0.82.0/nono-v0.82.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = de16b663f1941b4ff8500f75f34d10a497ef1d1934281573888fb9e808dab53e
 
 pkgname = nono-ai-bin
