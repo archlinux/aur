@@ -1,0 +1,22 @@
+pkgbase = localfly-linux-git
+	pkgdesc = Your localhost, on the internet — bore tunnels with an Adwaita window + tray
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/9M2PJU/localfly-linux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = curl
+	depends = hicolor-icon-theme
+	provides = localfly-linux
+	conflicts = localfly-linux
+	conflicts = localfly-linux-bin
+	source = git+https://github.com/9M2PJU/localfly-linux.git
+	sha256sums = SKIP
+
+pkgname = localfly-linux-git
