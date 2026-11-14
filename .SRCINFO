@@ -1,39 +1,88 @@
 pkgbase = python-nvidia-modelopt
 	pkgdesc = NVIDIA Model Optimizer: a unified model optimization and deployment toolkit
-	pkgver = 0.44.0
+	pkgver = 0.48.0
 	pkgrel = 1
 	url = https://github.com/NVIDIA/Model-Optimizer
 	arch = any
 	license = Apache-2.0
+	license = MIT
+	checkdepends = nltk-data
+	checkdepends = python-datasets
+	checkdepends = python-defusedxml
+	checkdepends = python-fire
+	checkdepends = python-hydra-core
+	checkdepends = python-immutabledict
+	checkdepends = python-lru-dict
+	checkdepends = python-pandas
+	checkdepends = python-typeguard
+	checkdepends = python-nltk
+	checkdepends = python-onnx
+	checkdepends = python-peft>=0.17.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-timeout
+	checkdepends = python-timm
+	checkdepends = python-torchprofile
+	checkdepends = python-torchvision
+	checkdepends = python-wonderwords
+	makedepends = python-pkg-resources
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
-	makedepends = cython
 	depends = python
-	depends = python-ninja
+	depends = python-huggingface-hub>=0.24.0
+	depends = python-pydantic-core
+	depends = python-requests
+	depends = python-typing_extensions
+	depends = ninja
 	depends = python-numpy
+	depends = python-nvidia-ml-py>=12
 	depends = python-packaging
-	depends = python-pydantic
-	depends = python-nvidia-ml-py
-	depends = python-rich
-	depends = python-scipy
+	depends = python-setuptools>=80
+	depends = python-pytorch>=2.8
 	depends = python-tqdm
-	depends = python-pulp
+	depends = python-yaml>=6.0
+	depends = python-omegaconf>=2.3.0
+	depends = python-pulp<4.0
+	depends = python-pydantic>=2.0
 	depends = python-regex
+	depends = python-rich
 	depends = python-safetensors
-	depends = python-pytorch
-	depends = python-yaml
-	depends = python-omegaconf
-	depends = python-setuptools
+	depends = python-scipy
+	optdepends = python-pillow: vision-language calibration datasets
 	optdepends = python-torchprofile: for FastNAS pruning on computer vision models
-	optdepends = python-accelerate: for Hugging Face integration
-	optdepends = python-transformers: for Hugging Face integration
-	optdepends = python-diffusers: for diffusion model optimization
-	optdepends = python-onnx: for ONNX export
-	optdepends = python-onnxruntime: for ONNX runtime support
-	source = python-nvidia-modelopt-0.44.0.tar.gz::https://github.com/NVIDIA/Model-Optimizer/archive/refs/tags/0.44.0.tar.gz
-	sha256sums = e69de4f56ec7eaf77b9508c53a9c6127fcd9200549ef478a57357c271062ba7e
+	optdepends = python-torch-geometric: PyTorch Geometric quantization support
+	optdepends = python-cppimport: ONNX native extension support
+	optdepends = python-cupy: ONNX CUDA array support
+	optdepends = python-ml-dtypes: ONNX data type support
+	optdepends = python-onnx: ONNX export and optimization (upstream requires the 1.21 series)
+	optdepends = python-onnxconverter-common: ONNX converter support
+	optdepends = python-onnxruntime: ONNX Runtime support (upstream supports 1.29 through 1.30 on Linux x86_64)
+	optdepends = python-onnxscript: ONNX script support
+	optdepends = python-accelerate>=1.0.0: Hugging Face integration
+	optdepends = python-datasets>=3.0.0: Hugging Face datasets
+	optdepends = python-deepspeed>=0.9.6: Hugging Face distributed training integration
+	optdepends = python-diffusers>=0.32.2: diffusion model optimization
+	optdepends = python-nltk: Hugging Face text processing
+	optdepends = nltk-data: RULER calibration corpus generation
+	optdepends = python-wonderwords: RULER calibration random-word generation
+	optdepends = python-peft>=0.17.0: parameter-efficient fine-tuning integration
+	optdepends = sentencepiece>=0.2.1: Hugging Face tokenizer support
+	optdepends = python-tiktoken: Hugging Face tokenizer support
+	optdepends = python-transformers>=5.5: Hugging Face integration (upstream supports versions below 5.19)
+	optdepends = python-fire: Puzzletron command-line interfaces
+	optdepends = python-hydra-core: Puzzletron configuration
+	optdepends = python-immutabledict: Puzzletron immutable mappings
+	optdepends = python-lru-dict: Puzzletron caches
+	optdepends = python-pandas: Puzzletron data processing
+	optdepends = python-typeguard: Puzzletron runtime type checking
+	source = python-nvidia-modelopt-0.48.0.tar.gz::https://github.com/NVIDIA/Model-Optimizer/archive/refs/tags/0.48.0.tar.gz
+	source = torchprofile-0.1.patch
+	source = transformers-rotary-device.patch
+	source = fla-LICENSE::https://raw.githubusercontent.com/fla-org/flash-linear-attention/516143e31fce09925e6c39ac37148444bad176c4/LICENSE
+	sha256sums = 75082846e60b27a8a2a2d1709888d35bf5a894da04e10e9e51924b5570ea5f8e
+	sha256sums = 19b0e7b6f1a55dffba4e69b4c75f61be4a37f904ce83fd62670de55e9a6bcd84
+	sha256sums = b57e5b3c9561b97c75b75572c69ea49874bbea22506c1f01f7f9846bfd787c49
+	sha256sums = 41a83c8187efc1e3ccc21909e806a9e52338e69448554d9754706c3d1cd610e7
 
 pkgname = python-nvidia-modelopt

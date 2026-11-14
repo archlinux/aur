@@ -1,0 +1,50 @@
+--- a/modelopt/torch/speculative/plugins/modeling_dflash.py
++++ b/modelopt/torch/speculative/plugins/modeling_dflash.py
+@@ -41,6 +41,7 @@
+ The draft architecture is independent of the target model.
+ """
+ 
++import inspect
+ from dataclasses import dataclass
+ 
+ import torch
+@@ -424,7 +425,13 @@
+         preventing the meta-tensor inv_freq issue on checkpoint resume.
+         """
+         if not hasattr(self, "rotary_emb"):
+-            self.rotary_emb = _ROTARY_CLS(config=self._rotary_config, device=device)
++            # transformers 5.2x dropped the device argument of rotary embeddings.
++            if "device" in inspect.signature(_ROTARY_CLS.__init__).parameters:
++                self.rotary_emb = _ROTARY_CLS(config=self._rotary_config, device=device)
++            else:
++                self.rotary_emb = _ROTARY_CLS(config=self._rotary_config)
++                if device is not None:
++                    self.rotary_emb.to(device)
+ 
+     def _init_weights(self, config):
+         """Initialize weights matching HF PreTrainedModel._init_weights."""
+--- a/modelopt/torch/speculative/plugins/modeling_eagle.py
++++ b/modelopt/torch/speculative/plugins/modeling_eagle.py
+@@ -15,6 +15,7 @@
+ 
+ """EAGLE draft model architecture (EagleModule) and related data structures."""
+ 
++import inspect
+ from dataclasses import dataclass
+ 
+ import torch
+@@ -81,7 +82,13 @@
+ 
+     def _maybe_init_rope(self, device=None):
+         if self.config.eagle_decoder_type == "llama" and not hasattr(self, "rotary_emb"):
+-            self.rotary_emb = LlamaRotaryEmbedding(config=self.config, device=device)
++            # transformers 5.2x dropped the device argument of rotary embeddings.
++            if "device" in inspect.signature(LlamaRotaryEmbedding.__init__).parameters:
++                self.rotary_emb = LlamaRotaryEmbedding(config=self.config, device=device)
++            else:
++                self.rotary_emb = LlamaRotaryEmbedding(config=self.config)
++                if device is not None:
++                    self.rotary_emb.to(device)
+ 
+     def _expand_first_attn_in_dim(self, first_layer_attn):
+         """Modify qkv projection in first layer to accept 2h hidden size."""

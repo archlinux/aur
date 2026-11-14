@@ -1,0 +1,48 @@
+diff --git a/modelopt/torch/nas/utils.py b/modelopt/torch/nas/utils.py
+index d1d3eec..d674c3b 100644
+--- a/modelopt/torch/nas/utils.py
++++ b/modelopt/torch/nas/utils.py
+@@ -65,17 +65,32 @@ __all__ = [  # noqa: RUF022
+ def batch_norm_ignored_flops():
+     import torchprofile.profile as profile
+ 
+-    handlers_bck = profile.handlers
+-    handlers_new = []
+-    for op_names, op in profile.handlers:
+-        if "aten::batch_norm" in op_names:
+-            op_names_new = [op_name for op_name in op_names if op_name != "aten::batch_norm"]
+-            handlers_new.append((tuple(op_names_new), op))
+-        else:
+-            handlers_new.append((op_names, op))
+-    profile.handlers = tuple(handlers_new)
+-    yield
+-    profile.handlers = handlers_bck
++    # torchprofile 0.1 replaced the public tuple of handler groups with a
++    # mutable operator-to-handler map. Support both APIs so current Arch and
++    # the 0.0.4 version used by older upstream environments behave identically.
++    if hasattr(profile, "HANDLER_MAP"):
++        handler_bck = profile.HANDLER_MAP["aten::batch_norm"]
++        profile.HANDLER_MAP["aten::batch_norm"] = None
++        try:
++            yield
++        finally:
++            profile.HANDLER_MAP["aten::batch_norm"] = handler_bck
++    else:
++        handlers_bck = profile.handlers
++        handlers_new = []
++        for op_names, op in profile.handlers:
++            if "aten::batch_norm" in op_names:
++                op_names_new = [
++                    op_name for op_name in op_names if op_name != "aten::batch_norm"
++                ]
++                handlers_new.append((tuple(op_names_new), op))
++            else:
++                handlers_new.append((op_names, op))
++        profile.handlers = tuple(handlers_new)
++        try:
++            yield
++        finally:
++            profile.handlers = handlers_bck
+ 
+ 
+ def inference_flops(
