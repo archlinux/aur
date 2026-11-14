@@ -2,7 +2,7 @@
 # Contributor: Daniel Alejandro <dalejan051@gmail.com>
 
 pkgname=simpmusic-bin
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A simple free music player app based on YouTube Music"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('simpmusic')
 conflicts=('simpmusic')
 _appimage="SimpMusic-x86_64.AppImage"
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('5b3b826c1f49875a85dc4af6818940c67a8cacbaaebdf63522ba684b232987c8')
+sha256sums=('ecb2124021460fa267fc496f090c57360fca9faf366593a0d84e85291b5be581')
 
 prepare() {
     chmod +x "${pkgname}-${pkgver}.AppImage"
