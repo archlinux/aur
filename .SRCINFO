@@ -5,6 +5,7 @@ pkgbase = libfm-qt-git
 	url = https://lxqt-project.org
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = LGPL-2.1-only
 	makedepends = cmake
 	makedepends = git
