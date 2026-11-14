@@ -3,7 +3,7 @@
 
 pkgname=flclashx-bin
 _pkgname=FlClashX
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Fork of FlClash | A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free."
 arch=(
@@ -25,8 +25,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.deb")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('c370ee5dc4be87a544b463afd50c4b1076bd215456dd8cfac056513771d94b0d')
-sha256sums_x86_64=('f2c071d16596572c8777aaee7c87a5d7502f33db907ddb35c1e33d12af6b86e7')
+sha256sums_aarch64=('43477fc024c6dfe5cfec1deda7ebd425b83a83677347b052724dd6fe971595d9')
+sha256sums_x86_64=('528999cabca501aed90977658a88040078ab1964ff0a31129decedfcadb506dd')
 
 prepare() {
     sed -i -e "
