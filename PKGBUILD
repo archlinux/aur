@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Fast, zero-daemon terminal companion and git workspace dashboard"
 
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ conflicts=("${pkgname%-bin}")
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('9e3cc120dad2bb733a602669c1f0fd235b2d9338fc0ea151c6c083c1473cd9ad')
+sha256sums_x86_64=('d13206d8179b3b07a154e1c741a658c2a168d55f4ebca1aa2b38526e6628a914')
 
 
 case ${CARCH} in
