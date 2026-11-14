@@ -2,8 +2,8 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='libstoragemgmt'
-pkgver='1.11.0'
-pkgrel='2'
+pkgver='1.12.0'
+pkgrel='1'
 pkgdesc='A library for storage management'
 arch=('x86_64' 'aarch64')
 _uri="github.com/libstorage/${pkgname}"
@@ -15,7 +15,7 @@ checkdepends=('check' 'valgrind')
 optdepends=('arcconf: support for Microsemi (Adaptec) controllers'
 	    'storcli: support for Broadcom (LSI) controllers')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/tar.gz/refs/tags/${pkgver}")
-sha256sums=('9abd55b76b99bafac5448eb1b57166d2ec633ff76c929db1473c85efb900dbab')
+sha256sums=('f1197ce316d2a562f0e28ca288472b1626eefe7274fd8ebb70e082530c50fb01')
 
 build() {
   cd "${pkgname}-${pkgver}"
