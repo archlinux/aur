@@ -1,7 +1,7 @@
 # Maintainer: Adrian Grzeca <adrian@grzeca.me>
 
 pkgname=data2g
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='HF data modem on the SSTVAE OFDM waveform (VARA-compatible host ports, KISS): host, GUI and tools'
 arch=(x86_64 aarch64)
@@ -9,8 +9,9 @@ url='https://github.com/arodland/Data2G'
 license=(Artistic-2.0 Apache-2.0)
 depends=(glibc libgcc libstdc++ hamlib qt6-base qt6-multimedia qt6-websockets zlib)
 makedepends=(cmake ninja)
+optdepends=('rtkit: real-time priority for the audio threads without extra permissions')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7769338c6c7f6229e3635b4ad96639b9108e42614e52cbe2df91de0146b1e75b')
+sha256sums=('11dc7b4e7e8afc60e08fceb5de2fcf7389cd8afe55d5beb8ef5c88e4d65018ea')
 
 build() {
     # System Hamlib (the same version upstream pins in native/cmake/hamlib.cmake),
@@ -52,6 +53,6 @@ EOF
     done
     install -Dm644 "$p/data2g.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.cleverdomain.data2g.svg"
 
-    install -Dm644 Data2G-$pkgver/LICENSE Data2G-$pkgver/LICENSE_ion -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 Data2G-$pkgver/LICENSE Data2G-$pkgver/LICENSE_exception Data2G-$pkgver/LICENSE_ion -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 Data2G-$pkgver/README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
