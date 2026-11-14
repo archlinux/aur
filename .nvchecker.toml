@@ -1,0 +1,5 @@
+[borg-commander-bin]
+source = "github"
+github = "0xcd21h/borg-commander"
+use_latest_release = true
+prefix = "v"

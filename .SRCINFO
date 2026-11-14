@@ -1,0 +1,27 @@
+pkgbase = borg-commander-bin
+	pkgdesc = Midnight Commander + Yazi + Terminal multiplexer
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/0xcd21h/borg-commander
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	conflicts = borg-commander
+	options = !strip
+	source = GUIDE-0.11.0.md::https://raw.githubusercontent.com/0xcd21h/borg-commander/v0.11.0/docs/GUIDE.md
+	sha256sums = e31bc7a90f60cf6ccc3732d921dea2c81c848d5eaf058bfce112ff9f59fcc04d
+	source_x86_64 = borg-x86_64-0.11.0.tgz::https://github.com/0xcd21h/borg-commander/releases/download/v0.11.0/borg-0.11.0-x86_64-unknown-linux-musl.tar.gz
+	source_x86_64 = borg-relay-x86_64-0.11.0.tgz::https://github.com/0xcd21h/borg-commander/releases/download/v0.11.0/borg-relay-0.11.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = ff7fd368764d5459e588eb24762872f0ec10480d8d081b4b96b6249e3d2b1173
+	sha256sums_x86_64 = 8f2f3942eb296afd13fb753fd6a2a34ae8532443dca9c73f594e5ee90f1588b4
+	source_aarch64 = borg-aarch64-0.11.0.tgz::https://github.com/0xcd21h/borg-commander/releases/download/v0.11.0/borg-0.11.0-aarch64-unknown-linux-musl.tar.gz
+	source_aarch64 = borg-relay-aarch64-0.11.0.tgz::https://github.com/0xcd21h/borg-commander/releases/download/v0.11.0/borg-relay-0.11.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 4f406d4dabb0bc34ab0cc285b579d1ef4e5e38da9c8cacebae74773c03f65b0b
+	sha256sums_aarch64 = 07d137c1edcfab57cf67a0e488b500461ce5b3644000e3d7c5172577dcbd45bd
+
+pkgname = borg-commander-bin
+	provides = borg
+
+pkgname = borg-commander-relay-bin
+	provides = borg-relay
