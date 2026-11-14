@@ -1,0 +1,21 @@
+pkgbase = python-torch-einops-utils
+	pkgdesc = PyTorch and einops tensor utilities used by lucidrains' model libraries
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://codeberg.org/lucidrains/torch-einops-utils
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python
+	depends = python-einops>=0.8.1
+	depends = python-numpy
+	depends = python-packaging
+	depends = python-pytorch>=2.5
+	source = python-torch-einops-utils-4e720ee5cc66d653ba573d22cc87a11bde39f791.tar.gz::https://codeberg.org/lucidrains/torch-einops-utils/archive/4e720ee5cc66d653ba573d22cc87a11bde39f791.tar.gz
+	sha256sums = 06104f85babd5ebcb3d6abb40f131c0d39bfb7da2474eb31eaa6a68fabbc0f63
+
+pkgname = python-torch-einops-utils
