@@ -1,7 +1,7 @@
 pkgbase = python-open-clip-torch
 	pkgdesc = Open source implementation of OpenAI's CLIP (Contrastive Language-Image Pre-training)
-	pkgver = 3.3.0
-	pkgrel = 2
+	pkgver = 4.2.2
+	pkgrel = 1
 	url = https://github.com/mlfoundations/open_clip
 	arch = any
 	license = MIT
@@ -13,14 +13,12 @@ pkgbase = python-open-clip-torch
 	checkdepends = python-requests
 	checkdepends = python-transformers
 	checkdepends = python-webdataset>=0.2.86
-	checkdepends = python-webdataset<0.3
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-pdm-backend
-	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	depends = python-pytorch
+	depends = python-pytorch>=2.6
 	depends = python-torchvision
 	depends = python-regex
 	depends = python-ftfy
@@ -28,14 +26,15 @@ pkgbase = python-open-clip-torch
 	depends = python-huggingface-hub
 	depends = python-numpy
 	depends = python-safetensors
-	depends = python-timm
+	depends = python-timm>=1.0.30
+	depends = python-tiktoken
 	optdepends = python-pandas: for training functionality
 	optdepends = python-webdataset: for training with webdataset
 	optdepends = python-transformers: for training with transformers models
 	optdepends = python-fsspec: for remote filesystem support in training
-	source = python-open-clip-torch-3.3.0.tar.gz::https://github.com/mlfoundations/open_clip/archive/refs/tags/v3.3.0.tar.gz
+	source = python-open-clip-torch-4.2.2.tar.gz::https://github.com/mlfoundations/open_clip/archive/refs/tags/v4.2.2.tar.gz
 	source = webdataset-url-list.patch
-	sha256sums = 5b72b5ea0a5bb4581a95d75487983fa20ebcf18b60261cc126e127f1eb1abffa
+	sha256sums = 7852a3d6e4d4d54593f56d38c66ea09570b0d25f3a43f811ab9addaa00405832
 	sha256sums = 201c7ffb1ed633b590c21eb1556b8d5d01060927fc19b67494924701f9b0eec7
 
 pkgname = python-open-clip-torch

@@ -3,15 +3,15 @@
 
 pkgname=python-open-clip-torch
 _pkgname=open_clip
-pkgver=3.3.0
-pkgrel=2
+pkgver=4.2.2
+pkgrel=1
 pkgdesc="Open source implementation of OpenAI's CLIP (Contrastive Language-Image Pre-training)"
 arch=('any')
 url="https://github.com/mlfoundations/open_clip"
 license=('MIT')
 depends=(
     'python'
-    'python-pytorch'
+    'python-pytorch>=2.6'
     'python-torchvision'
     'python-regex'
     'python-ftfy'
@@ -19,14 +19,13 @@ depends=(
     'python-huggingface-hub'
     'python-numpy'
     'python-safetensors'
-    'python-timm'
+    'python-timm>=1.0.30'
+    'python-tiktoken'
 )
 makedepends=(
     'python-build'
     'python-installer'
     'python-pdm-backend'
-    # The public WebDataset recipe uses setuptools without declaring it.
-    'python-setuptools'
     'python-wheel'
 )
 checkdepends=(
@@ -37,9 +36,9 @@ checkdepends=(
     'python-pytest'
     'python-requests'
     'python-transformers'
-    # Trial the public 0.2 series with the retained shard and training tests.
+    # Upstream pins training to webdataset<=0.2.86. The retained shard and
+    # training tests exercise the current WebDataset with the URL-list patch.
     'python-webdataset>=0.2.86'
-    'python-webdataset<0.3'
 )
 optdepends=(
     'python-pandas: for training functionality'
@@ -49,7 +48,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mlfoundations/open_clip/archive/refs/tags/v$pkgver.tar.gz"
         'webdataset-url-list.patch')
-sha256sums=('5b72b5ea0a5bb4581a95d75487983fa20ebcf18b60261cc126e127f1eb1abffa'
+sha256sums=('7852a3d6e4d4d54593f56d38c66ea09570b0d25f3a43f811ab9addaa00405832'
             '201c7ffb1ed633b590c21eb1556b8d5d01060927fc19b67494924701f9b0eec7')
 
 prepare() {
@@ -82,16 +81,24 @@ check() {
     # four live model configurations and pretrained checkpoints.
     pytest -v tests/test_hf_model.py::test_poolers
 
+    # Loss and tokenizer suites cover the 4.2.2 changes. The two TikToken
+    # cases download BPE encodings from openaipublic at first use.
+    pytest -v tests/test_loss.py tests/test_tokenizer.py \
+        --deselect=tests/test_tokenizer.py::test_tiktoken_special_token_controls \
+        --deselect=tests/test_tokenizer.py::test_tiktoken_native_specials_and_gap_ids
+
     # Upstream regression inference requires unpublished expected-output files,
     # while inference_simple downloads multi-gigabyte pretrained checkpoints.
-    # Exercise every remaining self-contained suite. MT5 training alone fetches
-    # a live Hugging Face tokenizer/model; the other training tests are synthetic.
+    # Exercise every remaining self-contained suite. MT5 training fetches a live
+    # Hugging Face tokenizer/model and the MaMMUT2 moderntext case downloads the
+    # r50k_base TikToken encoding; the other training tests are synthetic.
     # Python 3.14 changed POSIX multiprocessing from fork to forkserver. These
     # upstream tests intentionally use local lambda preprocessors and were
     # authored for fork, so select it explicitly for the test process.
     python -c 'import multiprocessing as mp, pytest, sys; mp.set_start_method("fork"); raise SystemExit(pytest.main(sys.argv[1:]))' \
         -v tests/test_num_shards.py tests/test_training_simple.py tests/test_wds.py \
-        --deselect=tests/test_training_simple.py::test_training_mt5
+        --deselect=tests/test_training_simple.py::test_training_mt5 \
+        '--deselect=tests/test_training_simple.py::test_training_mammut[mammut2-moderntext_ViT-B-32]'
 
     python - <<'PY'
 import torch
