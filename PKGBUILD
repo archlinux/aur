@@ -1,6 +1,6 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=liscan-git
-pkgver=1.1.0.r0.gdd1bb4e
+pkgver=1.2.0.r0.gc647a36
 pkgrel=1
 pkgdesc="Clear, complete disk usage scanner for Linux"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ pkgver() {
   cd liscan
   git describe --long --tags --abbrev=7 2>/dev/null |
     sed 's/^v//;s/-/.r/;s/-/./' ||
-    printf '1.1.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf '1.2.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
