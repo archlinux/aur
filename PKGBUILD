@@ -1,7 +1,7 @@
 # Maintainer: Hiroyuki Ikegami <ikegam@pplc.co>
 # Version and checksum are filled in by packaging/update.sh on release.
 pkgname=plamo-trans
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Local translation as a Unix filter: PLaMo 3 Translate on llama.cpp, no server"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ conflicts=('trs-git')
 options=('!lto')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7277d2afac442705c797ded9226f5dff5a034b5e5f74d75f43999182572105c7')
+sha256sums=('e8a6102857b4b1b124bd981607151a8217d0f4461729f08f24877fcdbe41e383')
 
 prepare() {
     cd "$pkgname-$pkgver"

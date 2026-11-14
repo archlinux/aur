@@ -1,6 +1,6 @@
 pkgbase = plamo-trans
 	pkgdesc = Local translation as a Unix filter: PLaMo 3 Translate on llama.cpp, no server
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/ikegam/plamo-trans
 	install = plamo-trans.install
@@ -15,7 +15,7 @@ pkgbase = plamo-trans
 	depends = curl
 	conflicts = trs-git
 	options = !lto
-	source = plamo-trans-0.1.0.tar.gz::https://github.com/ikegam/plamo-trans/releases/download/v0.1.0/plamo-trans-0.1.0.tar.gz
-	sha256sums = 7277d2afac442705c797ded9226f5dff5a034b5e5f74d75f43999182572105c7
+	source = plamo-trans-0.1.1.tar.gz::https://github.com/ikegam/plamo-trans/releases/download/v0.1.1/plamo-trans-0.1.1.tar.gz
+	sha256sums = e8a6102857b4b1b124bd981607151a8217d0f4461729f08f24877fcdbe41e383
 
 pkgname = plamo-trans
