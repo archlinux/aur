@@ -1,12 +1,12 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.163
-pkgrel=9
+pkgrel=10
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
 license=('LicenseRef-proprietary')
-# deps re-derived from payload 2026-11-14 (DT_NEEDED union + ASCII/UTF-16 dlopen probes vs live core/extra .files indexes; libvlc, libspeechd.so.2, libcurl.so.4, liblivekit_ffi GPU probes all confirmed in shipped binaries)
+# deps re-derived from payload 2026-11-14 (DT_NEEDED union + ASCII/UTF-16 dlopen probes vs live core/extra .files indexes; libvlc, libspeechd.so.2, libcurl.so.4, liblivekit_ffi GPU probes all confirmed in shipped binaries); UpdateNix dropped 2026-11-14 (no payload references; Velopack logs 'not installed via Velopack, skipping update checks'; /opt is root-owned so the in-place updater cannot run)
 depends=('alsa-lib'
          'at-spi2-core'
          'ca-certificates-mozilla'
@@ -101,6 +101,7 @@ package() {
     chmod 755 "${pkgdir}/opt/${pkgname}/AppRun"
 
     rm -f "${pkgdir}/opt/${pkgname}/usr/bin/Root.dbg"
+    rm -f "${pkgdir}/opt/${pkgname}/usr/bin/UpdateNix"
 
     if [ ! -x "${pkgdir}/opt/${pkgname}/usr/bin/Root" ]; then
         printf 'payload has no executable usr/bin/Root, the wrapper would exec nothing\n' >&2
