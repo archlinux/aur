@@ -1,27 +1,27 @@
 # Maintainer: qwlp <https://github.com/qwlp>
 pkgname=omapdf-bin
-pkgver=0.0.1alpha
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Native Wayland PDF and EPUB reader built with GPUI and MuPDF (portable binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/qwlp/omapdf'
 license=('GPL-3.0-or-later' 'AGPL-3.0-only')
-depends=('vulkan-icd-loader' 'fontconfig')
+depends=('glibc>=2.39' 'gcc-libs' 'vulkan-icd-loader' 'fontconfig')
 optdepends=('xdg-desktop-portal: desktop file chooser integration')
 provides=("omapdf=$pkgver")
 conflicts=('omapdf')
 options=('!strip' '!debug')
-source=("omapdf-${pkgver}.tar.gz::$url/archive/refs/tags/v0.0.1-alpha.tar.gz")
-sha256sums=('4a264df9d2d512f7f019061cf259b1ba4502b5f12fd7215018ba898f2cfdb1ed')
-source_x86_64=("omapdf-${pkgver}-x86_64::$url/releases/download/v0.0.1-alpha/omapdf-linux-x86_64")
-sha256sums_x86_64=('0e78a00499f6ddc4bf5a7798189442c0f36cf4b85f5477d49479a1d249a060f9')
-source_aarch64=("omapdf-${pkgver}-aarch64::$url/releases/download/v0.0.1-alpha/omapdf-linux-aarch64")
-sha256sums_aarch64=('0e0e3b1fcabb4c3121ca95e708f78a4fee56116abd5e3210d8c82adab876118f')
+source=("omapdf-${pkgver}.tar.gz::$url/archive/refs/tags/v0.0.2.tar.gz")
+sha256sums=('235e4311844d35ef8d7f4bfe23a2ce59ba0a2a5abb1e5486897b4c49747f2849')
+source_x86_64=("omapdf-${pkgver}-x86_64::$url/releases/download/v0.0.2/omapdf-linux-x86_64")
+sha256sums_x86_64=('82df0bd5adf6e4644e2ce24d7d3853e5f99ebd6272510ffb7dfc224cf0f20fed')
+source_aarch64=("omapdf-${pkgver}-aarch64::$url/releases/download/v0.0.2/omapdf-linux-aarch64")
+sha256sums_aarch64=('a01602ddd727456e5ab349aa65ea70c98ae1ca60116795ee59ef7f89114e8a78')
 noextract=("omapdf-${pkgver}-x86_64" "omapdf-${pkgver}-aarch64")
 
 package() {
   install -Dm755 "omapdf-${pkgver}-${CARCH}" "$pkgdir/usr/bin/omapdf"
-  cd omapdf-0.0.1-alpha
+  cd omapdf-0.0.2
   install -Dm644 assets/io.omapdf.desktop "$pkgdir/usr/share/applications/io.omapdf.desktop"
   sed -i 's|Exec=omapdf %f|Exec=/usr/bin/omapdf %f|; s|TryExec=omapdf|TryExec=/usr/bin/omapdf|' \
     "$pkgdir/usr/share/applications/io.omapdf.desktop"
