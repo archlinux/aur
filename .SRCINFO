@@ -1,0 +1,14 @@
+pkgbase = netpol-analyzer
+	pkgdesc = CLI for analyzing k8s connectivity-configuration resources
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://github.com/np-guard/netpol-analyzer
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go-pie
+	makedepends = git
+	depends = glibc
+	source = netpol-analyzer-1.4.4.tar.gz::https://github.com/np-guard/netpol-analyzer/archive/refs/tags/v1.4.4.tar.gz
+	sha256sums = 5d7bd27a145d2875bc2b219dc88e139bfca2e00354ec7bd918573dc50f1bcba2
+
+pkgname = netpol-analyzer
