@@ -7,7 +7,7 @@ _appalias=(mdless mdpick)
 pkgname=${_gitname}-bin
 pkgdesc="Fancy 'cat' for Markdown"
 
-pkgver=2.20.0
+pkgver=2.20.1
 pkgrel=1
 _gitversion=mdcat-${pkgver}
 
@@ -27,7 +27,7 @@ conflicts=("${pkgname%-bin}")
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('11cd85cd9a8d9a34991d2e3c26f401b4219268708d5a6786e824d7baf3354f1c')
+sha256sums_x86_64=('e11926a8f5b4937224dd535bd34811b6b2c9db64b1c2db09be2a6a6b8a0076c1')
 
 
 case ${CARCH} in
@@ -45,8 +45,14 @@ prepare() {
 
 	for alias in "${_appalias[@]}"; do
 		ln -sf "./${_appname}" "./${alias}"
+	done
 
-		ln -sf "./${_appname}.1" "./${_appname}.1/${alias}.1"
+	mkdir -p manpages
+
+	mv "./${_appname}.1" "manpages/"
+
+	for alias in "${_appalias[@]}"; do
+		ln -rsf "./manpages/${_appname}.1" "./manpages/${alias}.1"
 	done
 }
 
@@ -85,10 +91,10 @@ package() {
 		install -Dm644 "completions/${alias}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${alias}.fish"
 	done
 
-	install -Dm644 "${_appname}.1/${_appname}.1" "${pkgdir}/usr/share/man/man1/${_appname}.1"
+	install -Dm644 "manpages/${_appname}.1" "${pkgdir}/usr/share/man/man1/${_appname}.1"
 
 	for alias in "${_appalias[@]}"; do
-		cp -P "${_appname}.1/${alias}.1" "${pkgdir}/usr/share/man/man1/${alias}.1"
+		cp -P "manpages/${alias}.1" "${pkgdir}/usr/share/man/man1/${alias}.1"
 	done
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
