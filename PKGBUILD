@@ -8,10 +8,10 @@
 
 pkgname=aurcache-cli
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Typed CLI for the AURCache API"
 arch=(x86_64 aarch64 armv7h)
-url="https://github.com/gyscos/AURCache"
+url="https://github.com/Lukas-Heiligenbrunner/AURCache"
 license=(GPL-3.0-or-later)
 # The TLS stack is rustls over aws-lc-rs/ring (see aurcache-server), so
 # nothing links libssl; gcc-libs is what the binary actually links (`ldd` on
@@ -30,7 +30,7 @@ makedepends=(cargo git)
 # then own for no reason.
 options=(!strip !lto !debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4fb8c1563b226dc9a4e3d9e13da2d6ebb92205a7582c99848bbaafacfc0b8935')
+sha256sums=('a9acb44acf00bfbb98dabec4d99355e7af6e4851c1b5cfbd9cecc0b890e8bd8c')
 
 _srcdir="AURCache-$pkgver"
 
