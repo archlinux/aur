@@ -1,6 +1,6 @@
 pkgbase = pitwall-bin
 	pkgdesc = A desktop terminal for running several coding agents at once, with a sidebar that shows what each one is doing right now
-	pkgver = 0.2.10
+	pkgver = 0.2.11
 	pkgrel = 1
 	url = https://github.com/quanticstudios/pitwall
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = pitwall-bin
 	provides = pitwall
 	conflicts = pitwall
 	options = !strip
-	source = README-0.2.10.md::https://raw.githubusercontent.com/quanticstudios/pitwall/v0.2.10/README.md
+	source = README-0.2.11.md::https://raw.githubusercontent.com/quanticstudios/pitwall/v0.2.11/README.md
 	sha256sums = effc2f0ae5725d90e0b46b670b45498b85281e0e3494cc1f78907c8e98798fe1
-	source_x86_64 = pitwall-x86_64-0.2.10.tgz::https://github.com/quanticstudios/pitwall/releases/download/v0.2.10/pitwall_linux_amd64.tar.gz
-	sha256sums_x86_64 = 0de06e8a19adf6c4df273207ca9b72f1584e4af4f1c3146baa49b2cc8b0155f9
-	source_aarch64 = pitwall-aarch64-0.2.10.tgz::https://github.com/quanticstudios/pitwall/releases/download/v0.2.10/pitwall_linux_arm64.tar.gz
-	sha256sums_aarch64 = fcceaf5ae5670f23f3d55161f0e9c026dabd9ef2b2b213b458cb63df4c56111b
+	source_x86_64 = pitwall-x86_64-0.2.11.tgz::https://github.com/quanticstudios/pitwall/releases/download/v0.2.11/pitwall_linux_amd64.tar.gz
+	sha256sums_x86_64 = 14ffacda035f5fe8c2854ca2c6f9e206430048a4c75f7ce22fb787da71c69242
+	source_aarch64 = pitwall-aarch64-0.2.11.tgz::https://github.com/quanticstudios/pitwall/releases/download/v0.2.11/pitwall_linux_arm64.tar.gz
+	sha256sums_aarch64 = a882904b9878da07f7fd9c01fa1fe75b3ab9e2da7b0f8de13b407eb5bddc9a13
 
 pkgname = pitwall-bin
