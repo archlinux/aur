@@ -2,7 +2,7 @@
 # Ely Office desktop apps. Named *-app-bin because the standard ely-*-bin
 # names are already taken on AUR by another maintainer.
 pkgname=ely-pdf-app-bin
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc="ElyPDF - PDF viewer from the Ely Office suite"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('ely-pdf' 'ely-pdf-bin')
 
 options=('!strip' '!debug')
 source_x86_64=("ely-pdf_${pkgver}-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v${pkgver}/ely-pdf_${pkgver}-1_amd64.deb")
-sha256sums_x86_64=('f6b6408984393e387036e293f788ef5cefe68cf07d247169821f78113cb7b50b')
+sha256sums_x86_64=('56abb58df168db10fa8e173d69452bc79db929c6bf5989db37c74b27f32c663d')
 
 package() {
     local _deb="ely-pdf_${pkgver}-1_amd64.deb"
