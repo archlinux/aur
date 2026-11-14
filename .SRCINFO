@@ -1,7 +1,7 @@
 pkgbase = liscan-bin
 	pkgdesc = Clear, complete disk usage scanner for Linux (prebuilt)
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/RamazanBerk20/LiScan
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -11,14 +11,14 @@ pkgbase = liscan-bin
 	depends = polkit
 	optdepends = gvfs: scan remote locations
 	optdepends = kio: file-manager context menu integration
-	provides = liscan=1.1.0
+	provides = liscan=1.2.0
 	conflicts = liscan
-	noextract = LiScan_1.1.0_amd64.deb
+	noextract = LiScan_1.2.0_amd64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = LiScan_1.1.0_amd64.deb::https://github.com/RamazanBerk20/LiScan/releases/download/v1.1.0/LiScan_1.1.0_amd64.deb
-	source_x86_64 = LICENSE-1.1.0::https://raw.githubusercontent.com/RamazanBerk20/LiScan/v1.1.0/LICENSE
-	sha256sums_x86_64 = 5d857e4f91253da596cf42f60e78efdd7ef17c169004ddb3a42ee7e2fa28bf40
+	source_x86_64 = LiScan_1.2.0_amd64.deb::https://github.com/RamazanBerk20/LiScan/releases/download/v1.2.0/LiScan_1.2.0_amd64.deb
+	source_x86_64 = LICENSE-1.2.0::https://raw.githubusercontent.com/RamazanBerk20/LiScan/v1.2.0/LICENSE
+	sha256sums_x86_64 = d2072016cf717f1b4be6baf411681e7b7a74951dd141626876302244635ca582
 	sha256sums_x86_64 = fb981668c18a279e285fc4d83fba1e836cc84dd4daa73c9697d3cfd2d8aca6e0
 
 pkgname = liscan-bin

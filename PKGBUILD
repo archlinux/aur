@@ -1,7 +1,7 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=liscan-bin
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Clear, complete disk usage scanner for Linux (prebuilt)"
 arch=('x86_64')
 options=('!strip' '!debug')
@@ -20,7 +20,7 @@ source_x86_64=(
   "LICENSE-$pkgver::https://raw.githubusercontent.com/RamazanBerk20/LiScan/v$pkgver/LICENSE"
 )
 noextract=("$_deb")
-sha256sums_x86_64=('5d857e4f91253da596cf42f60e78efdd7ef17c169004ddb3a42ee7e2fa28bf40'
+sha256sums_x86_64=('d2072016cf717f1b4be6baf411681e7b7a74951dd141626876302244635ca582'
                    'fb981668c18a279e285fc4d83fba1e836cc84dd4daa73c9697d3cfd2d8aca6e0')
 
 package() {
