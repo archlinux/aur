@@ -3,8 +3,10 @@
 # Repackages the official upstream SYCL FP16 binaries and the oneDNN runtime
 # they need. The launcher loads the installed split oneAPI runtime environment.
 pkgname=llama.cpp-sycl-bin
-pkgver=b12024
+pkgver=b12243
 pkgrel=1
+# Pinned to b12243: from b12244 upstream builds against oneAPI 2026.2, whose libsycl
+# is not yet in Arch (2026.0); those binaries fail with an undefined sycl symbol.
 pkgdesc='llama.cpp upstream prebuilt binaries with the SYCL backend'
 arch=('x86_64')
 url='https://github.com/ggml-org/llama.cpp'
@@ -12,7 +14,7 @@ license=('MIT' 'Apache-2.0')
 depends=(
   'glibc'
   'gcc-libs'
-  'openssl'
+  'openssl-3'
   'curl'
   'intel-oneapi-compiler-dpcpp-cpp-runtime-libs'
   'intel-oneapi-mkl-sycl'
@@ -36,7 +38,7 @@ source=(
 )
 noextract=("${_llamasrc}" "${_onednnfile}")
 sha256sums=(
-  'e91866025e7800ed4cea50ed9d213969ba45b35c87e089d2bb306854200a1562'
+  'ca215180659251202d1b58233a173fb1ae1e068cdd7eba1c6fb1545912f2962a'
   '4b0f7e23415a695f204f8080328977225759534158d813c2225403f8851433e8'
   'SKIP'
 )
