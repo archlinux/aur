@@ -1,0 +1,17 @@
+# Removes the root updater that source installs of remya-settings placed
+# outside the package tree; remya-core ships its own updater and polkit rule.
+_remove_settings_updater() {
+  local rule=/etc/polkit-1/rules.d/50-top.remya.settings.update.rules
+  if [ -f "$rule" ] && grep -q '^// Installed by remya_settings tool/install_system_updater.py' "$rule"; then
+    rm -f "$rule" /usr/local/libexec/remya-settings-update
+    echo "Removed the old Remya Settings system updater."
+  fi
+}
+
+post_install() {
+  _remove_settings_updater
+}
+
+post_upgrade() {
+  _remove_settings_updater
+}
