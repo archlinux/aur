@@ -4,7 +4,7 @@
 # checksum of the release tarball and writes .SRCINFO; see docs/release.md.
 pkgname=lazybw
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A keyboard-first terminal UI for the Bitwarden vault"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SyscallBrain/lazybw"
@@ -16,7 +16,7 @@ makedepends=('cargo')
 # The release profile already strips the binary: a -debug package would be empty.
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('63944095d5cb152bed1aa9e7e1286db6f003b3f422c1f26864106c56eb0ff8e8')
+sha256sums=('10fc919e8e188afc9743b02034bd2d8678c02828f3e4ab26016bb0a9a3f3797f')
 
 prepare() {
   cd "$pkgname-$pkgver"
