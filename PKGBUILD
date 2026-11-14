@@ -4,7 +4,7 @@
 
 pkgname=enpasscli
 _pkgname=enpass-cli
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="Enpass commandline client"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ url="https://github.com/hazcod/enpass-cli"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='76beaa9ddce13f74a4f7aa1e3002ef90e05ba1d6'
+_commit='c2886455fe38c9704cd95a0e7800b6c13ef51077'
 source=("git+https://github.com/hazcod/enpass-cli.git#commit=$_commit")
 sha256sums=('SKIP')
 
