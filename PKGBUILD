@@ -5,7 +5,7 @@
 
 pkgname=straitbible-git
 _pkgname=straitbible
-pkgver=6.0.r0.g0000000
+pkgver=6.2.r0.g0000000
 pkgrel=1
 pkgdesc='Free multilingual Bible reader (based on Unbound Bible)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf '6.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf '6.2.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

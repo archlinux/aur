@@ -1,6 +1,6 @@
 pkgbase = straitbible-git
 	pkgdesc = Free multilingual Bible reader (based on Unbound Bible)
-	pkgver = 6.0.r0.g0000000
+	pkgver = 6.2.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/doonoo/straitbible
 	arch = x86_64
