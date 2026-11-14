@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=swiftdl-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Fast, resumable download manager with many connections per file and a browser extension"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source_x86_64=(
     "LICENSE::https://github.com/harshsinghsv/swiftdl/raw/v${pkgver}/LICENSE"
 )
 noextract=("${_deb}")
-sha256sums_x86_64=('e1f9d24917250d7356151c5217a9a30eff820a72294977be3492da1b21f83bda'
+sha256sums_x86_64=('49021dd5d0f6c018f510012ac21410f37962ebc94b39b20b94404f5a91843c36'
                    '669f8a60b1d27d4ce0065972731ffcc7b5b7c26d28ba48f1f9e0cab035465cf7')
 
 package() {

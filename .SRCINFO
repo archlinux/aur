@@ -1,6 +1,6 @@
 pkgbase = swiftdl-bin
 	pkgdesc = Fast, resumable download manager with many connections per file and a browser extension
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/harshsinghsv/swiftdl
 	arch = x86_64
@@ -18,12 +18,12 @@ pkgbase = swiftdl-bin
 	depends = webkit2gtk-4.1
 	provides = swiftdl
 	conflicts = swiftdl
-	noextract = SwiftDL_0.4.0_amd64.deb
+	noextract = SwiftDL_0.4.1_amd64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = SwiftDL_0.4.0_amd64.deb::https://github.com/harshsinghsv/swiftdl/releases/download/v0.4.0/SwiftDL_0.4.0_amd64.deb
-	source_x86_64 = LICENSE::https://github.com/harshsinghsv/swiftdl/raw/v0.4.0/LICENSE
-	sha256sums_x86_64 = e1f9d24917250d7356151c5217a9a30eff820a72294977be3492da1b21f83bda
+	source_x86_64 = SwiftDL_0.4.1_amd64.deb::https://github.com/harshsinghsv/swiftdl/releases/download/v0.4.1/SwiftDL_0.4.1_amd64.deb
+	source_x86_64 = LICENSE::https://github.com/harshsinghsv/swiftdl/raw/v0.4.1/LICENSE
+	sha256sums_x86_64 = 49021dd5d0f6c018f510012ac21410f37962ebc94b39b20b94404f5a91843c36
 	sha256sums_x86_64 = 669f8a60b1d27d4ce0065972731ffcc7b5b7c26d28ba48f1f9e0cab035465cf7
 
 pkgname = swiftdl-bin
