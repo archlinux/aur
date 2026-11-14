@@ -1,6 +1,6 @@
 pkgbase = remya-settings-git
 	pkgdesc = A Material Design 3 Expressive system settings application for Hyprland on Linux (git)
-	pkgver = 0.1.0_dev.20261113.0.r124.gc824006
+	pkgver = 0.1.0_dev.20261114.0.r134.g246b906
 	pkgrel = 1
 	url = https://github.com/remyhuang03/remya-settings
 	arch = x86_64
@@ -12,16 +12,10 @@ pkgbase = remya-settings-git
 	makedepends = ninja
 	makedepends = python
 	makedepends = rust
+	depends = remya-core
 	depends = gtk3
-	depends = networkmanager
-	depends = bluez
-	depends = libpulse
-	depends = pipewire
 	depends = gstreamer
 	depends = gst-plugins-base-libs
-	depends = polkit
-	depends = pacman-contrib
-	depends = sqlite
 	depends = glibc
 	depends = gcc-libs
 	provides = remya-settings
@@ -30,6 +24,8 @@ pkgbase = remya-settings-git
 	options = !strip
 	options = !lto
 	source = git+https://github.com/remyhuang03/remya-settings.git
+	source = git+https://github.com/remyhuang03/remya-core.git#tag=v0.1.0
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = remya-settings-git
