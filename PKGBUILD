@@ -1,6 +1,6 @@
 # Maintainer: c0m4r <https://github.com/c0m4r>
 pkgname=kula
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Lightweight, self-contained monitoring tool"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('AGPL-3.0')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/c0m4r/kula/archive/${pkgver}.tar.gz")
-sha256sums=('cae704d30dd7be680dd80b6e7dc5f7cb2d625428beda2a0862cf7595f9da4063')
+sha256sums=('c5adffc7d4c7ef1295e8779958ac16d914f289c441b7780095eec8536c58062b')
 install='kula.install'
 
 check() {
@@ -34,7 +34,8 @@ package() {
   # Install systemd service
   install -Dm644 addons/init/systemd/kula.service "$pkgdir/usr/lib/systemd/system/kula.service"
 
-  # Install example config
+  # Install example config (post_install gives /etc/kula to group kula)
+  install -dm750 "$pkgdir/etc/kula"
   install -Dm640 config.example.yaml "$pkgdir/etc/kula/config.example.yaml"
 
   # Create data directory
@@ -53,8 +54,10 @@ package() {
       install -Dm644 addons/kula.1 "$pkgdir/usr/share/man/man1/kula.1"
   fi
 
-  # Copy scripts directory
+  # Copy scripts directory (into /usr/share/kula/scripts: without the parent
+  # directory, cp -r would make the scripts themselves /usr/share/kula)
   if [ -d "scripts" ]; then
+      install -dm755 "$pkgdir/usr/share/kula"
       cp -r scripts "$pkgdir/usr/share/kula/"
   fi
 
