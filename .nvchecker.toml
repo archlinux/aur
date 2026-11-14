@@ -1,0 +1,4 @@
+[gopodder]
+source = "git"
+git = "https://github.com/cbrgm/gopodder.git"
+prefix = "v"
