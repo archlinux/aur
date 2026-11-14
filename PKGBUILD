@@ -4,22 +4,20 @@
 _name=outline-client
 pkgname=${_name}-appimage
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
-conflicts=('outline-client-appimage-wayland' 'outline-client-appimage-git')
+conflicts=('outline-client-bin' 'outline-client-appimage-git')
 url="https://getoutline.org"
 license=("Apache-2.0")
 
 _appimage="Outline-Client_${pkgver}.AppImage"
-source=("${_appimage}::https://s3.amazonaws.com/outline-releases/client/linux/${pkgver}/1/Outline-Client.AppImage"
-        "${pkgname}.install")
+source=("${_appimage}::https://s3.amazonaws.com/outline-releases/client/linux/${pkgver}/1/Outline-Client.AppImage")
 options=('!strip' '!debug')
 depends=('fuse2' 'nss')
 install=${pkgname}.install
 
-sha512sums=('cb385e59b4fdf617a86210362c978224e50fe13364eeeb2a2503fa84b11e690e8c7c8fdd8c493d7ff1cb1f1211b7e72565f89a090b5cbf1701d421b21d0118ec'
-            'a1704e707b0b0a927fae068647eccb426bb51ad2081d27ee18e8991949e9135d28fe502d1a1dba27d333025edd235614b195758d14be2d0eeb97172bea851ddd')
+sha512sums=('cb385e59b4fdf617a86210362c978224e50fe13364eeeb2a2503fa84b11e690e8c7c8fdd8c493d7ff1cb1f1211b7e72565f89a090b5cbf1701d421b21d0118ec')
 
 prepare() {
   chmod +x "${_appimage}"
@@ -57,4 +55,3 @@ package() {
   # Symlink perl shasum
   ln --symbolic "/usr/bin/core_perl/shasum" "${pkgdir}/usr/bin/shasum"
 }
-

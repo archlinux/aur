@@ -1,3 +1,29 @@
+_notice() {
+    printf '\n\033[32;1m%s\033[1;37m%s\033[0m\n' "==>" " NOTICE: Consider switching to the DEB-based package!"
+
+    cat <<'EOF'
+
+    Outline Foundation has discontinued official AppImage builds
+    of Outline Client. The latest available AppImage is version 1.19,
+    and no further updates are expected.
+
+    For the latest version and continued updates, switch to the
+    DEB-based AUR package:
+
+    https://aur.archlinux.org/packages/outline-client-bin
+
+    Thank you for using Outline Client!
+
+EOF
+}
+
+post_install() {
+    _notice
+}
+
+post_upgrade() {
+    _notice
+}
 
 post_remove() {
     # stop outline_proxy_controller
