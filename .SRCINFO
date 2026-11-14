@@ -1,6 +1,6 @@
 pkgbase = vtium-git
 	pkgdesc = Terminal for the Linux console, drawn through KMS/DRM (git main)
-	pkgver = 0.1.0alpha.5.r0.g2f54fa7
+	pkgver = 0.1.0alpha.8.r0.gfc6ccc6
 	pkgrel = 1
 	url = https://github.com/vtium/vtium
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgname = vtium-git
 	optdepends = vtium-fonts: the fonts the shipped frits name
 	optdepends = kbd: console fonts, which vtium draws when no frit is set
 	optdepends = kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon
-	provides = vtium=0.1.0alpha.5.r0.g2f54fa7
+	provides = vtium=0.1.0alpha.8.r0.gfc6ccc6
 	conflicts = vtium
 	backup = etc/pam.d/vtium
 	backup = etc/vtium/fonts/desktop.vtfrit
