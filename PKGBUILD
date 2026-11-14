@@ -2,7 +2,7 @@
 
 pkgname=easyshot
 _repo=mah3uz/easyshot
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Screenshot, annotation and screen-recording app for Linux/Wayland'
 install=easyshot.install
@@ -12,13 +12,16 @@ license=('MIT')
 depends=(
   'glibc' 'gcc-libs' 'wayland' 'libxkbcommon' 'libxkbcommon-x11' 'libxcb'
   'vulkan-icd-loader' 'fontconfig' 'freetype2' 'dbus' 'alsa-lib' 'hicolor-icon-theme'
-  'gstreamer' 'gst-plugins-base-libs'
+  'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-good' 'gst-libav'
 )
 makedepends=('rustup')
 optdepends=(
   'gpu-screen-recorder: fastest screen recording'
   'wf-recorder: screen recording on wlroots compositors'
   'ffmpeg: video export and trimming'
+  'gst-plugins-bad-libs: recording a window from its own picture (H.264 parser, NVENC encoder)'
+  'gst-plugins-ugly: recording a window from its own picture (x264 encoder)'
+  'gst-plugins-base: sound in a window recording (Opus encoder)'
   'tesseract: text capture (OCR) and smart redaction'
   'tesseract-data-eng: English text recognition'
   'xdg-desktop-portal: screen-cast recording and file dialogs'
@@ -27,7 +30,7 @@ provides=('easyshot')
 conflicts=('easyshot-bin')
 options=('!lto' '!strip' '!debug')
 source=("$pkgname-$pkgver.tar.zst::https://github.com/$_repo/releases/download/v$pkgver/$pkgname-$pkgver-vendored.tar.zst")
-sha256sums=('182cde67e322655b6d16638981e7a222177373400b600be88be07b1b1d46539d')
+sha256sums=('ada502f4b6babfa9cbf4f31fa7ed4bdaccb7d462c657b6328d759ad1323dbfee')
 
 _toolchain() { sed -n 's/^channel = "\(.*\)"/\1/p' rust-toolchain.toml; }
 
