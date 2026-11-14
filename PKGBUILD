@@ -2,10 +2,11 @@
 
 pkgname=python-unsloth
 _pkgname=unsloth
-pkgver=2026.11.1
-# No upstream tag matches this version. Pin its exact version-bump commit.
-# unsloth/_version.py supplies setuptools' dynamic version.
-_commit=bbee0dc04fb3c3c8485fc02c0e88da48d2c4dc7b
+pkgver=2026.11.4
+# Upstream tags releases with the Studio version. v0.1.917-beta carries
+# unsloth/_version.py 2026.11.4 and was published with the 2026.11.4 release.
+# Pin the commit of that annotated tag.
+_commit=475ceee98d8d141423201193c9cf2be2da30e600
 _source="${_pkgname}-${_commit}"
 pkgrel=1
 pkgdesc="2-5x faster LLM fine-tuning with 70% less memory"
@@ -22,7 +23,7 @@ depends=(
     'glibc'
     'gcc-libs'
     'python'
-    'python-unsloth-zoo>=2026.11.1'
+    'python-unsloth-zoo>=2026.11.4'
     'python-pytorch>=2.4'
     'python-pytorch<2.16'
     'python-torchvision'
@@ -199,7 +200,7 @@ source=(
     'oxc-notice-c71d239df91726fc519c.txt::https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/LICENSE-sonic'
 )
 sha256sums=(
-    '75b1902bcbb06d28111200d10af9ca1d8b1c968c6940d0a8a1263e67d7980792'
+    'c957fbaef2727e90f07b7c3047495b3d017b7dc48afb14e1fc8bce9386e3f59a'
     '25fd9c2f251904b0ff5547c3b6023b22295028ebb33d436f2070dc395965fe1a'
     '7a6a453af08875e984ef1addb673122b0232bf3979c282435a96111e1183aa3f'
     '6f76ab18ae09ee637f89058bedafcf3c031f31e289922e78e23d83af9c3b4fba'
@@ -287,7 +288,12 @@ prepare() {
     # Validate the retained compatibility suites against Arch's current stack.
     # These widened bounds are a candidate compatibility trial, never proof by
     # metadata alone. CPU and real GPU functional gates are required.
-    sed -i 's/<=5.17.0/<6/g; s/<5.0.0/<6/g; s/torch>=2.4.0,<2.15.0/torch>=2.4.0,<2.16.0/g' pyproject.toml
+    sed -i 's/<=5.17.0/<6/g; s/<5.0.0/<6/g' pyproject.toml
+    # Upstream caps Typer below 0.29 only because its Windows setup command
+    # keeps pydantic_core's extension open while re-pinning Pydantic. Arch
+    # packages Pydantic separately. check() runs the CLI with Arch's Typer.
+    grep -Fq '"typer>=0.19.0,<0.29",' pyproject.toml
+    sed -i 's/"typer>=0.19.0,<0.29",/"typer>=0.19.0",/' pyproject.toml
     # The upstream TRL tuple-availability correction now includes the former
     # local trl-import-utils-compat.patch implementation.
     cp "$srcdir/frontend-runtime-inventory.ts" "$srcdir/frontend-vite.config.ts" studio/frontend/
@@ -341,7 +347,7 @@ check() {
 from pathlib import Path
 import hashlib, sys
 root = Path(sys.argv[1])
-changes = [{'path': 'studio/frontend/tests/helpers/vite-env-loader.mjs', 'before_sha256': 'b69f78749189e7b45584a2c1a6aef2e9a63208607079f7fc0985eaeee793c813', 'after_sha256': '305f8ac561f583c9f52f9b0ed11ae9a9396252d134d4a33e3e30ab4b2fa120b4', 'changes': [{'before': 'export async function load(url, context, next) {', 'after': 'const sourceRoot = new URL("../../src/", import.meta.url).href;\n\nexport async function load(url, context, next) {'}, {'before': 'if (!url.includes("/src/") || result.source === undefined) return result;', 'after': 'if (!url.startsWith(sourceRoot) || result.source == null) return result;'}], 'test_declarations_unchanged': 0, 'assertion_calls_unchanged': 0}, {'path': 'studio/frontend/tests/desktop-stop-intent.test.ts', 'before_sha256': 'aa7aac7a25f4a895d602d806db75118be1c990cb1950ec664f1de7c342b3ae95', 'after_sha256': '0af55024e9a30c1a8f2c894851a700a14228c5f58d13ded9cbfc811bc7c84ab6', 'changes': [{'before': 'owners.map((f) => f.slice(f.indexOf("/src/"))),', 'after': 'owners.map((f) => "/src/" + f.slice(new URL("../src/", import.meta.url).pathname.length)),'}], 'test_declarations_unchanged': 12, 'assertion_calls_unchanged': 27}, {'path': 'studio/frontend/tests/low-disk-cache-notice.test.ts', 'before_sha256': '51fffa97cddf70d389cd6ee009c11d942d370e8629a24d1545884cd4e15aa1a7', 'after_sha256': '0a77c6778ceca9255c80f03fc9706e1b8422a4fa4ebb226afee6aa39b3714538', 'changes': [{'before': 'callers.map((file) => file.pathname.split("/src/")[1]),', 'after': 'callers.map((file) => file.pathname.slice(new URL("../src/", import.meta.url).pathname.length)),'}], 'test_declarations_unchanged': 26, 'assertion_calls_unchanged': 80}]
+changes = [{'path': 'studio/frontend/tests/helpers/vite-env-loader.mjs', 'before_sha256': 'b69f78749189e7b45584a2c1a6aef2e9a63208607079f7fc0985eaeee793c813', 'after_sha256': '305f8ac561f583c9f52f9b0ed11ae9a9396252d134d4a33e3e30ab4b2fa120b4', 'changes': [{'before': 'export async function load(url, context, next) {', 'after': 'const sourceRoot = new URL("../../src/", import.meta.url).href;\n\nexport async function load(url, context, next) {'}, {'before': 'if (!url.includes("/src/") || result.source === undefined) return result;', 'after': 'if (!url.startsWith(sourceRoot) || result.source == null) return result;'}], 'test_declarations_unchanged': 0, 'assertion_calls_unchanged': 0}, {'path': 'studio/frontend/tests/desktop-stop-intent.test.ts', 'before_sha256': '31f95cc3fa405571b010e75cba855cada79bb4d8e583b69648e4f998a05dcec1', 'after_sha256': 'f205f9ede5b6dd66c98896529ae993918e81190c5ec5ec740b84eebce788026b', 'changes': [{'before': 'owners.map((f) => f.slice(f.indexOf("/src/"))),', 'after': 'owners.map((f) => "/src/" + f.slice(new URL("../src/", import.meta.url).pathname.length)),'}], 'test_declarations_unchanged': 15, 'assertion_calls_unchanged': 33}, {'path': 'studio/frontend/tests/low-disk-cache-notice.test.ts', 'before_sha256': '51fffa97cddf70d389cd6ee009c11d942d370e8629a24d1545884cd4e15aa1a7', 'after_sha256': '0a77c6778ceca9255c80f03fc9706e1b8422a4fa4ebb226afee6aa39b3714538', 'changes': [{'before': 'callers.map((file) => file.pathname.split("/src/")[1]),', 'after': 'callers.map((file) => file.pathname.slice(new URL("../src/", import.meta.url).pathname.length)),'}], 'test_declarations_unchanged': 26, 'assertion_calls_unchanged': 80}]
 for row in changes:
     path = root / row['path']
     data = path.read_text()
@@ -537,6 +543,8 @@ package() {
         "$pkgdir/usr/share/licenses/$pkgname/truststore-LICENSE"
     install -Dm644 studio/backend/vendor/LICENSE.laya \
         "$pkgdir/usr/share/licenses/$pkgname/laya-LICENSE"
+    install -Dm644 studio/backend/vendor/LICENSE.diffusers \
+        "$pkgdir/usr/share/licenses/$pkgname/diffusers-LICENSE"
     local notice
     for notice in studio/backend/assets/docs_ui/LICENSE.* \
                   studio/backend/assets/docs_ui/NOTICE.* \

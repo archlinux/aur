@@ -1,6 +1,6 @@
 pkgbase = python-unsloth
 	pkgdesc = 2-5x faster LLM fine-tuning with 70% less memory
-	pkgver = 2026.11.1
+	pkgver = 2026.11.4
 	pkgrel = 1
 	url = https://github.com/unslothai/unsloth
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = python-unsloth
 	depends = glibc
 	depends = gcc-libs
 	depends = python
-	depends = python-unsloth-zoo>=2026.11.1
+	depends = python-unsloth-zoo>=2026.11.4
 	depends = python-pytorch>=2.4
 	depends = python-pytorch<2.16
 	depends = python-torchvision
@@ -113,7 +113,7 @@ pkgbase = python-unsloth
 	options = !strip
 	options = !debug
 	options = !lto
-	source = unsloth-bbee0dc04fb3c3c8485fc02c0e88da48d2c4dc7b.tar.gz::https://github.com/unslothai/unsloth/archive/bbee0dc04fb3c3c8485fc02c0e88da48d2c4dc7b.tar.gz
+	source = unsloth-475ceee98d8d141423201193c9cf2be2da30e600.tar.gz::https://github.com/unslothai/unsloth/archive/475ceee98d8d141423201193c9cf2be2da30e600.tar.gz
 	source = frontend-runtime-inventory.ts
 	source = frontend-vite.config.ts
 	source = arch-torchvision-pair.patch
@@ -184,7 +184,7 @@ pkgbase = python-unsloth
 	source = oxc-notice-95ced5ecf1133fbf41d4.txt::https://raw.githubusercontent.com/oxc-project/oxc-index-vec/8e09fe324eb6df02f56e4eacdfac958930300380/LICENSE
 	source = oxc-notice-b05785f9f18e6716bab6.txt::https://raw.githubusercontent.com/spdx/license-list-data/d46e94e2c78ceede1cfc63cfa0396472d2798d4c/text/MIT.txt
 	source = oxc-notice-c71d239df91726fc519c.txt::https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/LICENSE-sonic
-	sha256sums = 75b1902bcbb06d28111200d10af9ca1d8b1c968c6940d0a8a1263e67d7980792
+	sha256sums = c957fbaef2727e90f07b7c3047495b3d017b7dc48afb14e1fc8bce9386e3f59a
 	sha256sums = 25fd9c2f251904b0ff5547c3b6023b22295028ebb33d436f2070dc395965fe1a
 	sha256sums = 7a6a453af08875e984ef1addb673122b0232bf3979c282435a96111e1183aa3f
 	sha256sums = 6f76ab18ae09ee637f89058bedafcf3c031f31e289922e78e23d83af9c3b4fba
