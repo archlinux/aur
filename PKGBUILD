@@ -1,7 +1,7 @@
 # Maintainer: Boris Brock <gabrielborisbrock@gmail.com>
 pkgname=soundhive
 _appname=SoundHive
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Fast browser for large sound effect libraries: search, audition, tag and drag sounds'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('alsa-lib' 'cairo' 'dbus' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk
 makedepends=('cargo' 'nodejs' 'npm')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ca7c1c1cc63871ad0a18c82e8ebbf5addda918df5c66f80e2ed188ee5c288c59')
+sha256sums=('af305758cad873aeaf499b41e9c09e00fb53a86f03fb6fa509385cffed8600b8')
 
 prepare() {
   cd "$_appname-$pkgver"

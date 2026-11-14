@@ -1,6 +1,6 @@
 pkgbase = soundhive
 	pkgdesc = Fast browser for large sound effect libraries: search, audition, tag and drag sounds
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/BorisBrock/SoundHive
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = soundhive
 	depends = libsoup3
 	depends = webkit2gtk-4.1
 	options = !lto
-	source = soundhive-1.3.0.tar.gz::https://github.com/BorisBrock/SoundHive/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = ca7c1c1cc63871ad0a18c82e8ebbf5addda918df5c66f80e2ed188ee5c288c59
+	source = soundhive-1.3.1.tar.gz::https://github.com/BorisBrock/SoundHive/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = af305758cad873aeaf499b41e9c09e00fb53a86f03fb6fa509385cffed8600b8
 
 pkgname = soundhive
