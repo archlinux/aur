@@ -1,7 +1,7 @@
 pkgbase = archshield-pro
 	pkgdesc = Sovereign Linux Cyber Deception, Ring 0 Kernel Sentry & Intrusion Prevention System
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ViniciusPHDU20/ArchShield
 	arch = x86_64
 	license = GPL-3.0-or-later
