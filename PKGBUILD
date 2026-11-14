@@ -3,12 +3,14 @@
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 
 url="https://www.amd.com/en/developer/aocc.html"
-_major=5-2
-pkgver=5.2.0
+_major=6-0
+pkgver=6.0.0
+_sha256sum=''
 
 _fetch_data=$(curl -sA 'Mozilla' "${url}") && {
-    _major=$(echo "${_fetch_data}" | grep -oP 'aocc-\K\d+-\d+(?=-eula)' -- | head -1)
-    pkgver=$(echo "${_fetch_data}" | grep -oP 'aocc-compiler-\K\d+\.\d+\.\d+' -- | head -1)
+    _major=$(echo     "${_fetch_data}" | sed -n '/aocc-compiler.*\.tar/s/.*aocc-\([0-9]\+-[0-9]\+\).*/\1/p'                    | head -1)
+    pkgver=$(echo     "${_fetch_data}" | sed -n '/aocc-compiler.*\.tar/s/.*aocc-compiler-\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p' | head -1)
+    _sha256sum=$(echo "${_fetch_data}" | sed -n '/aocc-compiler.*\.tar/s/.*| \([a-f0-9]\{64\}\) |.*/\1/p'                      | head -1)
 }
 
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
@@ -17,7 +19,7 @@ pkgrel=1
 pkgdesc="AMD Optimizing C/C++ Compiler"
 arch=('x86_64')
 license=('custom')
-makedepends=('curl')
+makedepends=('curl' 'sed')
 options=('staticlibs' '!strip' 'libtool')
 optdepends=('environment-modules')
 source=(
@@ -26,7 +28,7 @@ source=(
 )
 install=aocc.install
 sha256sums=(
-    "$(echo "${_fetch_data}" | grep -oP '\w{64}(?=</td>)' | sed -n '1p')"
+    "${_sha256sum}"
     '1740216760f755dc031d54f06c29333bca73f728d89a706f405b41e737bfc56f'
 )
 # Default compiler flags
