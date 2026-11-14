@@ -14,6 +14,6 @@ pkgbase = tong
 	source = http://tong.nongnu.org/tong-1.3.tar.gz
 	source = tong.desktop
 	md5sums = a9d70c7b2f637e9d95e6fbdf6d22782d
-	md5sums = 4c99f05484e5c60708fd14272af2e357
+	md5sums = 70ac9a2e894d844d313cc74d4baac199
 
 pkgname = tong
