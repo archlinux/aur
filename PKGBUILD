@@ -2,26 +2,22 @@
 # https://github.com/rolki-png/nordlayer-latest/tree/master
 pkgname=nordlayer
 pkgver=3.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Proprietary secure network access client for Linux"
 arch=('x86_64')
 url="https://nordlayer.com"
 license=('custom:commercial')
 replaces=('nordvpnteams-bin')
 conflicts=('nordvpnteams-bin' 'nordlayer-bin')
-depends=('bash' 'libgcrypt' 'libgpg-error' 'libcap' 'hicolor-icon-theme' 'gmp' 'strongswan')
+depends=('bash' 'hicolor-icon-theme' 'libcap' 'libcap-ng')
+backup=('etc/default/nordlayer' 'etc/nordlayer/config.hcl')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://downloads.nordlayer.com/linux/latest/debian/pool/main/nordlayer_${pkgver}_amd64.deb")
-sha512sums_x86_64=('b45605d31dabdf90ce3432614acda69de7d8eaeb21f7ff2bce627cc8e6ffcdc4604dca9a417dda3caa730f4b3d4878b09adc66936a64a95c180485314ab04f3a')
+sha256sums_x86_64=('037ff798826c3a453bd77b2ccd1e811c280a4205347a4a41a4f97791c3a3a9d2')
 
 package() {
-    cd "${srcdir}"
-    # Extract the control and data tarballs from the .deb file
-    ar x "${srcdir}/nordlayer_${pkgver}_amd64.deb"
-
-    # Extract the data.tar.gz into the pkgdir
-    tar -xzf data.tar.gz -C "${pkgdir}"
+    bsdtar -xf "${srcdir}"/data.tar.* -C "${pkgdir}"
 
     # Move sbin binaries to bin
     if [ -d "${pkgdir}/usr/sbin" ]; then
@@ -31,4 +27,12 @@ package() {
         # Remove the now-empty sbin directory
         rm -r "${pkgdir}/usr/sbin"
     fi
+
+    # NordLayer's postinst installs this drop-in only on systemd >= 255.
+    # Every Arch system qualifies, so the package ships it as an owned file.
+    install -Dm644 "${pkgdir}/usr/libexec/nordlayer/nordlayerd-seccomp.conf" \
+        "${pkgdir}/usr/lib/systemd/system/nordlayer.service.d/10-seccomp.conf"
+
+    # Debian's apt source and signing key do nothing on Arch.
+    rm -rf "${pkgdir}/etc/apt" "${pkgdir}/usr/share/keyrings"
 }
