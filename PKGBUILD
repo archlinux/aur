@@ -3,8 +3,8 @@
 # Contributor: lukpod
 
 pkgname=amule-git
-pkgver=3.1.0.r243.5c5cdd9f8
-pkgrel=2
+pkgver=3.2.0.r326.3d6462c2b
+pkgrel=1
 pkgdesc="Client for the eD2k and Kad networks"
 arch=(x86_64)
 url="https://github.com/amule-org/amule"
@@ -21,7 +21,7 @@ depends=(
     libayatana-appindicator
     libgcc
     libmaxminddb # IP2COUNTRY
-    libpng
+    #libpng
     libstdc++
     libupnp
     readline
@@ -59,21 +59,22 @@ pkgver() {
 
 build() {
   local _flags=(
-    -DBUILD_ALCC=ON
-    -DBUILD_ALC=ON
-    -DBUILD_AMULEAPI=ON
-    -DBUILD_AMULECMD=ON
-    -DBUILD_CAS=ON
-    -DBUILD_DAEMON=ON
-    -DBUILD_FILEVIEW=ON
-    -DBUILD_REMOTEGUI=ON
-    -DBUILD_TESTING=ON
-    -DBUILD_WEBSERVER=ON
-    -DBUILD_WXCAS=ON
-    -DENABLE_IP2COUNTRY=ON
-    -DENABLE_NLS=ON
-    -DENABLE_UPNP=ON
     -DBUILD_EVERYTHING=ON
+    #-DBUILD_ALCC=ON
+    #-DBUILD_ALC=ON
+    #-DBUILD_AMULEAPI=ON
+    #-DBUILD_AMULECMD=ON
+    #-DBUILD_CAS=ON
+    #-DBUILD_DAEMON=ON
+    #-DBUILD_FILEVIEW=ON
+    #-DBUILD_REMOTEGUI=ON
+    #-DBUILD_TESTING=ON
+    #-DBUILD_WEBSERVER=ON
+    #-DBUILD_WXCAS=ON
+    #-DENABLE_IP2COUNTRY=ON
+    #-DENABLE_NLS=ON
+    #-DENABLE_UPNP=ON
+    -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib
   )
 
   cmake -B build -S amule -Wno-author \

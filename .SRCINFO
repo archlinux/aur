@@ -1,7 +1,7 @@
 pkgbase = amule-git
 	pkgdesc = Client for the eD2k and Kad networks
-	pkgver = 3.1.0.r243.5c5cdd9f8
-	pkgrel = 2
+	pkgver = 3.2.0.r326.3d6462c2b
+	pkgrel = 1
 	url = https://github.com/amule-org/amule
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -20,7 +20,6 @@ pkgbase = amule-git
 	depends = libayatana-appindicator
 	depends = libgcc
 	depends = libmaxminddb
-	depends = libpng
 	depends = libstdc++
 	depends = libupnp
 	depends = readline
