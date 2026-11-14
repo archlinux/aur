@@ -5,7 +5,7 @@
 # .SRCINFO; see docs/RELEASE.md.
 pkgname=virsh-tui-bin
 _pkgname=virsh-tui
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Keyboard-driven terminal UI for libvirt/virsh with vim keys and live graphs (static binary)"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('aa1537800fbcae6765b27ce22d09ea14338f4fcf22b56f95b25dcd9012fb7251')
-sha256sums_aarch64=('de4c73e8d304865622daef67f24c356fac9e13aaf1a2baa9d92883ea39a1ac00')
+sha256sums_x86_64=('9dccc9a2eb4e34daf5bfae870862c3e734f98f31e0aee48d4f5a44f2dd97eee5')
+sha256sums_aarch64=('21bae3f24347885a9c9319dfbb1e782118c144b6b91958dd13afa9b8d706d8f9')
 
 package() {
   cd "$_pkgname-$pkgver-$CARCH-unknown-linux-musl"
