@@ -1,0 +1,30 @@
+pkgbase = meo-settings-beta
+	pkgdesc = Meo Settings application for MeoArch (Beta channel)
+	pkgver = 0.2.0beta5
+	pkgrel = 6
+	url = https://github.com/QwQdoge/MeoSettings
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = extra-cmake-modules
+	depends = meo-account
+	depends = meo-icon-studio>=0.1.0
+	depends = meoui-qml>=1.0.4beta1
+	depends = meo-kde-runtime>=0.4.0beta3-7
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-multimedia
+	depends = kservice
+	depends = libkscreen>=6.8
+	depends = kconfig
+	depends = kcoreaddons
+	depends = ki18n
+	depends = solid
+	provides = meo-settings=0.2.0beta5
+	conflicts = meo-settings
+	source = MeoSettings-13048c7fcf9572eb0a4588378f06c160b4aaa5e3.tar.gz::https://codeload.github.com/QwQdoge/MeoSettings/tar.gz/13048c7fcf9572eb0a4588378f06c160b4aaa5e3
+	sha256sums = 108e17ca3fe9495ce91d7e40d7f66a0d115f2a773a16d85fe941e11bf17cd5fa
+
+pkgname = meo-settings-beta
