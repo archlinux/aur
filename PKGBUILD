@@ -1,6 +1,6 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=youtube-video-downloader-bin
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Fast desktop front-end for yt-dlp with a download queue (prebuilt)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source_x86_64=(
   "LICENSE-$pkgver::https://raw.githubusercontent.com/RamazanBerk20/youtube-video-downloader/v$pkgver/LICENSE"
 )
 noextract=("$_deb")
-sha256sums_x86_64=('967d4c542921c5da207f47595ebb9374d435ae64769efa873ead862f888ddb32'
+sha256sums_x86_64=('3c79826edca9f4a1ad75025bf8c4a8d5b5091ed6329044e4162bb2d8b640c764'
                    '677d6af767d3fbcb5c70a3ce556021ce00bb6101cc4bf4ea8d54252fbe9b531b')
 
 package() {
