@@ -2,8 +2,8 @@
 
 _product=voiden
 pkgname=${_product}-beta-bin
-_betaver=beta.2
-pkgver=2.4.0
+_betaver=beta.1
+pkgver=2.4.1
 pkgrel=0.1
 pkgdesc='The offline, Git-native API workspace'
 arch=(x86_64)
@@ -53,7 +53,7 @@ source_x86_64=(
 	"${pkgname}-${pkgver}${_betaver}.deb::https://github.com/VoidenHQ/${_product}/releases/download/v${pkgver}-${_betaver}/${_product}_${pkgver}.${_betaver}_amd64.deb"
 	"LICENSE-${pkgver}::https://raw.githubusercontent.com/VoidenHQ/${_product}/refs/heads/main/LICENSE"
 )
-b2sums_x86_64=('a2f4ee464a896dd571e8490cc6dd7cdcec471e01c025d166941736d3334b4a2c571cda06e0c3d76d60ef83c2a2013365513faeb4fd0c5ef74121b70a104495c4'
+b2sums_x86_64=('25c6ba517e38a707bca7f46cf420e917e4c2ca9cbc85b7b62cffe7d0dd7a66ab1733f129a26525a92124c4022b2f05e2fe64b0b79032df3dbbfeaa222c1061ab'
                'c95549a7a4e388e7ad7855f2f9bdd58f2931212ae63f9b7247e4cca8b0824941df12e93c940d52efabfb592079f13bb056bcd1335a8cc91902b2d969106577c2')
 
 prepare() {
