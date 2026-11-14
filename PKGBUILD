@@ -14,7 +14,7 @@
 # PKGBUILD(5) ("Using VCS Sources") documents SKIP as the correct sha256sums entry for a signature-
 # verified VCS source.
 pkgname=prikk
-pkgver=0.56.0
+pkgver=0.57.0
 pkgrel=1
 pkgdesc="A version control system, built from the signed source tag"
 arch=('x86_64' 'aarch64')
@@ -39,4 +39,5 @@ package() {
   cd "$pkgname"
   install -Dm755 target/release/prikk "$pkgdir/usr/bin/prikk"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/prikk/LICENSE"
+  install -Dm644 THIRD-PARTY-NOTICES "$pkgdir/usr/share/licenses/prikk/THIRD-PARTY-NOTICES"
 }
