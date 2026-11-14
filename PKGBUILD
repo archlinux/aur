@@ -4,7 +4,7 @@
 # tagged release at github.com/sarrietav-dev/sift. Copy this file, and the
 # .SRCINFO generated next to it, into the AUR git repository.
 pkgname=sift-reader
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Read the web, aloud, with Kokoro'
 arch=('x86_64' 'aarch64')
