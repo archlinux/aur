@@ -2,7 +2,7 @@
 # Contributor: Lucki
 
 pkgname="asf-ui-git"
-pkgver=r1262.6e7611d
+pkgver=r3500.4d6be465
 pkgrel=1
 pkgdesc="Standalone web interface for ASF."
 arch=('any')
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
     cd asf-ui
-    npm ci
+    npm ci --no-audit --no-fund --no-progress --prefer-offline
     npm run-script deploy
 }
 
