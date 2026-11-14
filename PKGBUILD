@@ -1,6 +1,6 @@
 # Maintainer: Ramazan Berk Şirin <ramazanberksirin@protonmail.com>
 pkgname=open-chess-git
-pkgver=1.2.0.r0.g68e7048
+pkgver=1.3.0.r0.gc16ed5f
 pkgrel=1
 pkgdesc="Open Chess with variants, AI, LAN multiplayer and puzzles (Flutter + Rust, latest git)"
 arch=('x86_64')
