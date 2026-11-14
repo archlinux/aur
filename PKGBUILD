@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=keep-sorted
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Language-agnostic formatter that sorts lines between two markers in a larger file'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('9149a3485f922fc5bf5a3d26db2330b5fad01fd008f172bdc24c535af53f8732')
+sha256sums=('97f37f8d4fb677fd06422e141a11471e12ce4410cff7d3b0b142dfcfa8bd6a4c')
 
 prepare() {
   cd "${pkgname}"
