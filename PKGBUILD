@@ -4,7 +4,7 @@ _pkgname=dwproton
 pkgname=${_pkgname}-bin
 _srcver=11.0-17
 pkgver=${_srcver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Proton builds with the latest Dawn Winery fixes for gacha games, based on Proton-CachyOS."
 arch=('x86_64')
@@ -27,13 +27,24 @@ depends=(
   gdk-pixbuf2
   glibc
   hicolor-icon-theme
+  jsoncpp
+  lapack
+  libogg
+  libpulse
+  libvdpau
+  libvorbis
   libxcrypt
   libxcrypt-compat
   libxkbcommon-x11
   lsb-release
   lsof
+  mpg123
+  nettle3
   nss
+  ntsync-autoload
+  opus
   python
+  rtkit
   ttf-font
   usbutils
   vulkan-driver
@@ -41,62 +52,45 @@ depends=(
   xdg-user-dirs
   xorg-xrandr
   xz
-  zenity
-  mpg123
-  libpulse
-  libpcap
-  openxr
-  libvdpau
-  nettle3
-  libvorbis
-  opus
-  python-filelock
-  libogg
-  jsoncpp
-  ffmpeg4.4
-  lapack
-  ntsync-autoload
 )
 depends_x86_64=(
   lib32-alsa-plugins
+  lib32-cairo
   lib32-fontconfig
   lib32-gcc-libs
   lib32-glibc
+  lib32-lcms2
   lib32-libgl
   lib32-libgpg-error
+  lib32-libgudev
   lib32-libnm
-  lib32-libvdpau
-  lib32-pango
+  lib32-libogg
+  lib32-libpulse
+  lib32-libsndfile
+  lib32-libusb
   lib32-libva
+  lib32-libvdpau
+  lib32-libvorbis
   lib32-libx11
   lib32-libxcrypt
   lib32-libxcrypt-compat
-  lib32-lcms2
   lib32-libxinerama
   lib32-libxss
+  lib32-mpg123
   lib32-nss
-  lib32-libxkbcommon
+  lib32-opus
+  lib32-pango
   lib32-pipewire
   lib32-systemd
   lib32-vulkan-driver
   lib32-vulkan-icd-loader
-  lib32-libgudev
-  lib32-libusb
-  lib32-libpulse
-  lib32-libsndfile
-  lib32-mpg123
-  lib32-orc
-  lib32-opus
-  lib32-cairo
-  lib32-libvorbis
-  lib32-libwebp
-  lib32-libogg
 )
 optdepends=(
   steam
   lutris
   heroic-games-launcher
   umu-launcher
+  faugus-launcher
   dmemcg-booster
   gamescope
   plasma-foreground-booster
