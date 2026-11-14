@@ -1,0 +1,24 @@
+[endpoint]
+name = "OAAT endpoint"
+port = 9740
+# audio_device = "default"
+
+[capabilities]
+pcm_max_rate = 384000
+pcm_max_bits = 32
+channels_max = 2
+dsd = true
+flac = true
+
+[dac]
+# Use hardware volume control via ALSA mixer (recommended for I2S DACs)
+hardware_volume = true
+# ALSA card number
+card = 0
+# FIR filter type for ESS 9038Q2M
+# Options: "brick wall", "corrected minimum phase fast", "minimum phase slow",
+#          "minimum phase fast", "linear phase slow", "linear phase fast", "apodizing fast"
+fir_filter = "minimum phase slow"
+
+[logging]
+level = "info"

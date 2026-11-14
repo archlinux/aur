@@ -1,0 +1,14 @@
+post_install () {
+systemd-sysusers
+chown -R tune:tune /opt/tune-bridge
+}
+
+post_upgrade() {
+chown -R tune:tune /opt/tune-bridge
+}
+
+post_remove() {
+rm /usr/lib/tmpfiles.d/tune-bridge.conf
+rm /usr/lib/sysusers.d/tune-bridge.conf
+systemd-sysusers
+}
