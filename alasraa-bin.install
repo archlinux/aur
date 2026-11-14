@@ -1,0 +1,16 @@
+post_install() {
+  echo ""
+  echo "  Alasraa installed. Run it from a terminal:  alasraa"
+  echo ""
+  echo "  Alasraa is a fast, OpenGL terminal emulator for Linux."
+  echo "  Config lives in ~/.config/alasraa/alasraa.toml."
+  echo ""
+  echo "  Features: true color, Unicode, kitty image previews,"
+  echo "  scrollback search, clickable hyperlinks, Arabic shaping,"
+  echo "  and auto theme detection (window.auto_theme = true)."
+  echo ""
+}
+
+post_upgrade() {
+  echo "  Alasraa updated to $1. Your config in ~/.config/alasraa/ is untouched."
+}
