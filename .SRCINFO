@@ -1,7 +1,7 @@
 pkgbase = ente-cli-bin
 	pkgdesc = CLI for ente Photos, Auth, and Locker
 	pkgver = 0.4.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ente/ente/tree/main/cli
 	arch = x86_64
 	arch = aarch64
@@ -9,9 +9,9 @@ pkgbase = ente-cli-bin
 	provides = ente-cli=0.4.4
 	conflicts = ente-cli
 	options = !strip
-	source_x86_64 = ente-cli-v0.4.4-linux-x86_64.tar.gz::https://github.com/ente/ente/releases/download/{ente-cli}-v0.4.4/ente-cli-v0.4.4-linux-amd64.tar.gz
+	source_x86_64 = ente-cli-v0.4.4-linux-x86_64.tar.gz::https://github.com/ente/ente/releases/download/ente-cli-v0.4.4/ente-cli-v0.4.4-linux-amd64.tar.gz
 	sha256sums_x86_64 = 719834d6b65e9e48a4a1d4e3e577247633f0e8a5eb2bae30278ec6c6fc536f17
-	source_aarch64 = ente-cli-v0.4.4-linux-aarch64.tar.gz::https://github.com/ente/ente/releases/download/{ente-cli}-v0.4.4/ente-cli-v0.4.4-linux-arm64.tar.gz
+	source_aarch64 = ente-cli-v0.4.4-linux-aarch64.tar.gz::https://github.com/ente/ente/releases/download/ente-cli-v0.4.4/ente-cli-v0.4.4-linux-arm64.tar.gz
 	sha256sums_aarch64 = c51e5ece5617ad7bb4cf6148c6a58b4364db448f7b1594c00b250efc88e40735
 
 pkgname = ente-cli-bin
