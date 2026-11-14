@@ -4,7 +4,7 @@ pkgname=yksresults-git
 # Placeholder only: pkgver() computes the real version on every build.
 pkgver=0.1.0.r5.g5769e09
 pkgrel=1
-pkgdesc='Native cross-platform TUI for tracking YKS TYT and AYT study results'
+pkgdesc='Cross-platform TUI for tracking YKS TYT and AYT study results'
 arch=('x86_64' 'aarch64')
 url='https://github.com/chlorine3539/yksresults'
 license=('MIT')
