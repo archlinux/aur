@@ -1,0 +1,16 @@
+post_install() {
+  echo "==> Restart CUPS so it picks up the new backend:  systemctl restart cups"
+  echo "==> Create the print queue (camera on, not connected to the phone):"
+  echo "      lpadmin -p InstaKid2 -E -v instakid://BQ95B \\"
+  echo "              -P /usr/share/cups/model/instakid2.ppd -o media=48x50mm"
+  echo "==> The paper is 48 mm wide: set your document page width to 48 mm."
+  echo "==> Command line:  instakid-print print image.png"
+}
+
+post_upgrade() {
+  echo "==> Restart CUPS to reload the backend/filter:  systemctl restart cups"
+}
+
+post_remove() {
+  echo "==> Remove the print queue if you created one:  lpadmin -x InstaKid2"
+}

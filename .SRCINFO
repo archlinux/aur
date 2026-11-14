@@ -1,0 +1,27 @@
+pkgbase = lamax-instakid-printer-git
+	pkgdesc = CUPS driver and CLI for the thermal printer of the LAMAX InstaKid2 Plus camera (Bluetooth LE)
+	pkgver = r4.dae8429
+	pkgrel = 1
+	url = https://github.com/jose1711/lamax-instakid-printer
+	install = lamax-instakid-printer.install
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = cups
+	depends = bluez
+	depends = cups
+	depends = cups-filters
+	depends = ghostscript
+	depends = python
+	depends = python-bleak
+	depends = python-dbus-fast
+	depends = python-pillow
+	provides = lamax-instakid-printer
+	conflicts = lamax-instakid-printer
+	source = git+https://github.com/jose1711/lamax-instakid-printer.git
+	sha256sums = SKIP
+
+pkgname = lamax-instakid-printer-git
