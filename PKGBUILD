@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="neofetch for Steam - Display your Steam stats in terminal"
 
-pkgver=0.5.6
+pkgver=0.5.8
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,7 +27,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
 sha256sums=('6cb601bf02e765d2ebed2dd123913c684ebb257244193dfa2084a6f2835a5aa5'
             'd79de4d903e4f449e4d3ced2c7b406cd024c971740ea1e95d7b8535a114083d9')
-sha256sums_x86_64=('380522aee663fa559cf8bd5b612115bd38d99f140268af884a41dfb2fce1b2ab')
+sha256sums_x86_64=('b593028ea5048d4f97e72ff9a2f74412ef8a8df82db84089993349634e952079')
 
 
 package() {
