@@ -2,14 +2,14 @@
 
 pkgname=pla-util
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A power line adapter utility for Linux'
 arch=(x86_64)
 url='https://github.com/serock/pla-util'
 license=(GPL-3.0-or-later)
-depends=(glibc gcc-libs libpcap gcc-ada)
+depends=(glibc libgcc libpcap gcc-ada)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('77fdf30023ffa81ee3046bd26337ce24852680d16373a9848c64e413ca7d3c85f171e3b5a7de5998a24fafe9dd973eda4a73d3f198759fe10b6fda2ad00b9c3c')
+b2sums=('92fb26ce38eb2d5a7af484aabf80f1a1b1ae7d77af64c599743fa863e7c7749e7f4146fddb566026e58643313570c698326adb7a34eb9622c98c0bfa0feb434e')
 
 build() {
   cd $pkgname-$pkgver
