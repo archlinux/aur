@@ -1,6 +1,6 @@
 pkgbase = ww-manager
 	pkgdesc = ww-manager (A Wuthering Waves CLI Manager)
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/timetetng/wutheringwaves-cli-manager
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ww-manager
 	depends = python-certifi
 	depends = python-typing_extensions
 	depends = python-prompt_toolkit
-	source = ww-manager-2.4.1.tar.gz::https://github.com/timetetng/wutheringwaves-cli-manager/archive/refs/tags/v2.4.1.tar.gz
-	sha256sums = 8f32b4b2cf7d3279a3aadb4e6b1213c1498767e00f964019734ee52567736027
+	source = ww-manager-2.4.2.tar.gz::https://github.com/timetetng/wutheringwaves-cli-manager/archive/refs/tags/v2.4.2.tar.gz
+	sha256sums = 92b2e94c0b4341d949febcbc24826f309996207aa5dc6acc6bd067804f046aa2
 
 pkgname = ww-manager
