@@ -1,7 +1,7 @@
 # Maintainer: Michał Gawron <mgawron@metacode.pl>
 
 pkgname=eveconsole-bin
-pkgver=0.9.18
+pkgver=0.9.19
 pkgrel=2
 pkgdesc='Cross-platform EVE Online companion for industry, trading and character management'
 arch=('x86_64')
@@ -28,6 +28,7 @@ depends=(
   'zlib'
 )
 optdepends=(
+  'systemd: restart an active user worker service after installation or upgrade'
   'vlc: alarm sounds and speech playback'
   'jack: microphone recording through the bundled PortAudio library'
   'vulkan-icd-loader: GPU acceleration for local Whisper speech recognition'
@@ -35,6 +36,7 @@ optdepends=(
 provides=('eveconsole')
 conflicts=('eveconsole')
 options=('!strip' '!debug')
+install=eveconsole.install
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/EveConsole-linux-x64.tar.gz"
   "eveconsole-${pkgver}.png::https://raw.githubusercontent.com/kernoeve/EveConsole/v${pkgver}/Assets/logo_mark.png"
@@ -42,7 +44,7 @@ source=(
 )
 noextract=("${pkgname}-${pkgver}.tar.gz")
 sha256sums=(
-  '9f27d9b0d41ef67c89a6f56dac643c799c862f9d76ec93a8c68efa94748aeb82'
+  'd992fc414ef80b02ba9195653b1780b613e3255fd61e8855ad498838abe7b1ee'
   'f17faca48b302dfe46444c4252c8b7b6b62038d39a1d0a79d83b3ee964359922'
   '2d2d974b1ee8e933c63a05d9ef7d163ee9eb8c0b7494f9bb5e519f1ec3129f3b'
 )

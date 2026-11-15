@@ -1,0 +1,18 @@
+post_install() {
+  test -d /run/systemd/system || return 0
+  command -v loginctl >/dev/null 2>&1 || return 0
+  command -v systemctl >/dev/null 2>&1 || return 0
+
+  local uid rest
+  loginctl list-users --no-legend 2>/dev/null | while read -r uid rest; do
+    if systemctl --user --machine="${uid}@.host" is-active --quiet eveconsole-worker.service 2>/dev/null; then
+      # try-restart avoids starting a worker stopped after the active check.
+      systemctl --user --machine="${uid}@.host" try-restart eveconsole-worker.service ||
+        printf 'Warning: could not restart eveconsole-worker.service for UID %s\n' "$uid" >&2
+    fi
+  done
+}
+
+post_upgrade() {
+  post_install
+}
