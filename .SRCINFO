@@ -1,0 +1,32 @@
+pkgbase = sweetlock-git
+	pkgdesc = Screen locker for Wayland (git)
+	pkgver = 0.1.0.r0.g5cb2225
+	pkgrel = 1
+	url = https://github.com/sweetwm/sweetlock
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = wayland-protocols
+	makedepends = scdoc
+	depends = glibc
+	depends = wayland
+	depends = libxkbcommon
+	depends = pam
+	depends = cairo
+	depends = pango
+	depends = glib2
+	depends = libjpeg-turbo
+	optdepends = noto-fonts: the default font
+	optdepends = fprintd: fingerprint unlock
+	optdepends = pam-u2f: security key unlock
+	provides = sweetlock=0.1.0.r0.g5cb2225
+	conflicts = sweetlock
+	options = !debug
+	backup = etc/pam.d/sweetlock
+	source = sweetlock::git+https://github.com/sweetwm/sweetlock.git
+	sha256sums = SKIP
+
+pkgname = sweetlock-git
