@@ -1,6 +1,6 @@
 pkgbase = leaf-reader-bin
 	pkgdesc = Read PDFs, markdown files and web articles in the terminal
-	pkgver = 0.16.1
+	pkgver = 0.16.2
 	pkgrel = 1
 	url = https://github.com/DeepanshuMishraa/leaf
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = leaf-reader-bin
 	depends = glibc
 	depends = gcc-libs
 	depends = alsa-lib
-	source = leaf.zsh::https://raw.githubusercontent.com/DeepanshuMishraa/leaf/v0.16.1/completions/_leaf
-	source = leaf.fish::https://raw.githubusercontent.com/DeepanshuMishraa/leaf/v0.16.1/completions/leaf.fish
+	source = leaf.zsh::https://raw.githubusercontent.com/DeepanshuMishraa/leaf/v0.16.2/completions/_leaf
+	source = leaf.fish::https://raw.githubusercontent.com/DeepanshuMishraa/leaf/v0.16.2/completions/leaf.fish
 	sha256sums = 123787a91b78b35721c7fd06971875a30dfbd392027ba8cb137d3c4734c0822d
 	sha256sums = 5f1a20f1e044ae6079e3d55bba8576be556faf560ce53aee1bfc13ca79da96bd
-	source_x86_64 = leaf-reader-bin-0.16.1-x86_64.tar.gz::https://github.com/DeepanshuMishraa/leaf/releases/download/v0.16.1/leaf-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 3d8539eea2a2a84f394cda80d5b2acc92116c6f3c6ee4b8f229bcafc55963322
-	source_aarch64 = leaf-reader-bin-0.16.1-aarch64.tar.gz::https://github.com/DeepanshuMishraa/leaf/releases/download/v0.16.1/leaf-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 4034943bb49836246ba2543dd6dc5d560d929ad58291f8a442edcc0400292ea4
+	source_x86_64 = leaf-reader-bin-0.16.2-x86_64.tar.gz::https://github.com/DeepanshuMishraa/leaf/releases/download/v0.16.2/leaf-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6c15e39753df1c4aeb85c2db246ed612ee042951586d923cd10e91d45167c1bf
+	source_aarch64 = leaf-reader-bin-0.16.2-aarch64.tar.gz::https://github.com/DeepanshuMishraa/leaf/releases/download/v0.16.2/leaf-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a61edb00d513324f7d5ecfe50666ac705ad2a67df37b4123ce0e40063c80176e
 
 pkgname = leaf-reader-bin
