@@ -2,8 +2,8 @@
 
 pkgname=aerial-lock-git
 _project=aerial-lock
-pkgver=0.1.0.r0.g2f00ea1
-pkgrel=2
+pkgver=0.1.4.r0.g2675185
+pkgrel=3
 pkgdesc='Wayland session lock with video backgrounds and an idle/session companion'
 arch=('x86_64')
 url='https://github.com/atmosphera-dev/aerial-lock'
@@ -35,10 +35,10 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_project}"
-    make PREFIX=/usr DEBUG_DISMISS=0 DEBUG_VERBOSE=0
+    make PREFIX=/usr LIBEXECDIR=/usr/lib/aerial-lock DEBUG_DISMISS=0 DEBUG_VERBOSE=0
 }
 
 package() {
     cd "${srcdir}/${_project}"
-    make install DESTDIR="$pkgdir" PREFIX=/usr DEBUG_DISMISS=0 DEBUG_VERBOSE=0
+    make install DESTDIR="$pkgdir" PREFIX=/usr LIBEXECDIR=/usr/lib/aerial-lock DEBUG_DISMISS=0 DEBUG_VERBOSE=0
 }
