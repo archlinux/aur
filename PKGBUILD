@@ -1,6 +1,6 @@
 # Maintainer: Eloreden <luca.morleschi@outlook.it>
 pkgname=protonaut-git
-pkgver=r18.815e9c1
+pkgver=0.1.7.r0.g6db8a87
 pkgrel=1
 pkgdesc="A desktop companion dashboard for your Steam/Proton library on Linux, built with Wails (Go + React)"
 arch=('x86_64')
@@ -17,9 +17,10 @@ conflicts=('protonaut')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
+# Versione dai tag git: v0.1.6 -> 0.1.6.r0.g815e9c1 (r<commit dopo il tag>.g<hash>).
 pkgver() {
     cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -30,9 +31,14 @@ build() {
     npm run build
     cd ..
 
+    # Nel binario va la versione semver del tag (es. v0.1.6 o v0.1.6-2-gabc1234),
+    # non il pkgver: l'updater la confronta con il tag dell'ultima release GitHub.
+    local appver
+    appver="$(git describe --tags --abbrev=7)"
+
     export CGO_ENABLED=1
     go build -trimpath -tags webkit2_41,desktop,production \
-        -ldflags "-w -s -X main.Version=$pkgver" \
+        -ldflags "-w -s -X main.Version=$appver" \
         -o protonaut .
 }
 
