@@ -1,6 +1,6 @@
 pkgbase = openrig-git
 	pkgdesc = Guitar multi-effects pedalboard.
-	pkgver = r103.dbb2761
+	pkgver = r172.0dde333
 	pkgrel = 1
 	url = https://github.com/Siryu6/openrig
 	arch = x86_64
@@ -13,9 +13,12 @@ pkgbase = openrig-git
 	depends = lilv
 	provides = openrig
 	conflicts = openrig
+	options = !lto
 	source = git+https://github.com/Siryu6/openrig.git
 	source = openrig.desktop
+	source = fix-na-cmake.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = eb2acb2f52d7a46760f1cbf68f7bc5e01d07bacbccf7b288497626d9fb621deb
+	sha256sums = 3686fe854e4ef92263b2a6e0da9f6c210066e92311c15acef878535eedf9a7c5
 
 pkgname = openrig-git

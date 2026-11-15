@@ -1,7 +1,7 @@
 # Maintainer: Adam Wahab <awahab@adhoc.tools>
 _name=openrig
 pkgname=$_name-git
-pkgver=r107.e15c209
+pkgver=r172.0dde333
 pkgrel=1
 pkgdesc="Guitar multi-effects pedalboard."
 arch=(x86_64 aarch64)
@@ -16,13 +16,18 @@ options=(!lto)
 provides=($_name)
 conflicts=($_name)
 source=("git+$url.git"
-        "$_name.desktop")
+        "$_name.desktop"
+        "fix-na-cmake.patch")
 sha256sums=('SKIP'
-            'eb2acb2f52d7a46760f1cbf68f7bc5e01d07bacbccf7b288497626d9fb621deb')
+            'eb2acb2f52d7a46760f1cbf68f7bc5e01d07bacbccf7b288497626d9fb621deb'
+            '3686fe854e4ef92263b2a6e0da9f6c210066e92311c15acef878535eedf9a7c5')
 
 prepare() {
   cd "$srcdir/$_name"
   git submodule update --init --recursive
+  pushd third_party/NeuralAudio
+  patch -Np1 -i "$srcdir/fix-na-cmake.patch"
+  popd
   cargo fetch --locked --target host-tuple
 }
 
