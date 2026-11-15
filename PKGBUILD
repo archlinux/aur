@@ -3,7 +3,7 @@
 
 pkgname=qt6-opcua
 pkgver=6.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt 6 wrapper for existing OPC UA stacks'
 arch=('x86_64' 'aarch64')
 url='https://www.qt.io'
@@ -20,8 +20,14 @@ depends=('qt6-base' 'openssl')
 makedepends=('git' 'cmake' 'ninja' 'qt6-declarative')
 groups=('qt6')
 _pkgfqn=qtopcua
-source=("https://github.com/qt/$_pkgfqn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c4eefbe575f9d8ae6402749d45c3a534c7cc3a5c4c7bf4d76dbcd78ed19891f4')
+source=("https://github.com/qt/$_pkgfqn/archive/refs/tags/v$pkgver.tar.gz"
+        'openssl-4-compat.patch')
+sha256sums=('c4eefbe575f9d8ae6402749d45c3a534c7cc3a5c4c7bf4d76dbcd78ed19891f4'
+            '0a244ab47551ac75de85378fa5887b49fd89e4bb51be6758eb40e17e79ca1579')
+
+prepare() {
+  patch -d "$_pkgfqn-$pkgver" -Np1 -i "$srcdir/openssl-4-compat.patch"
+}
 
 build() {
   cmake -B build -S "$_pkgfqn-$pkgver" -G Ninja \

@@ -1,0 +1,193 @@
+--- a/src/opcua/x509/openssl_symbols_p.h
++++ b/src/opcua/x509/openssl_symbols_p.h
+@@ -209,6 +209,13 @@
+
+ #endif // !defined QT_LINKED_OPENSSL
+
++// OpenSSL 4 makes certificate-name getters const-correct.
++#if OPENSSL_VERSION_NUMBER >= 0x40000000L
++#  define QT_OPCUA_OPENSSL_CONST const
++#else
++#  define QT_OPCUA_OPENSSL_CONST
++#endif
++
+ namespace QtOpcUaSsl {
+
+ BIO *q_BIO_new(const BIO_METHOD *a);
+@@ -254,7 +261,11 @@
+ int q_X509_EXTENSION_set_critical(X509_EXTENSION *ex, int crit);
+ ASN1_INTEGER *q_ASN1_INTEGER_dup(const ASN1_INTEGER *x);
+
+-X509_NAME *q_X509_REQ_get_subject_name(X509_REQ *req);
++QT_OPCUA_OPENSSL_CONST X509_NAME *q_X509_REQ_get_subject_name(QT_OPCUA_OPENSSL_CONST X509_REQ *req);
++void q_X509_NAME_free(X509_NAME *name);
++int q_X509_REQ_set_subject_name(X509_REQ *req, const X509_NAME *name);
++int q_X509_set_subject_name(X509 *x, const X509_NAME *name);
++int q_X509_set_issuer_name(X509 *x, const X509_NAME *name);
+ int q_ERR_load_crypto_strings();
+
+ int q_X509_NAME_add_entry_by_OBJ(X509_NAME *name, const ASN1_OBJECT *obj, int type, const unsigned char *bytes, int len, int loc, int set);
+@@ -278,8 +289,8 @@
+ ASN1_TIME *q_X509_gmtime_adj(ASN1_TIME *s, long adj);
+ void *q_X509_get_ext_d2i(X509 *a, int b, int *c, int *d);
+ void q_AUTHORITY_KEYID_free(AUTHORITY_KEYID *a);
+-X509_NAME *q_X509_get_issuer_name(X509 *a);
+-X509_NAME *q_X509_get_subject_name(X509 *a);
++QT_OPCUA_OPENSSL_CONST X509_NAME *q_X509_get_issuer_name(QT_OPCUA_OPENSSL_CONST X509 *a);
++QT_OPCUA_OPENSSL_CONST X509_NAME *q_X509_get_subject_name(QT_OPCUA_OPENSSL_CONST X509 *a);
+ ASN1_INTEGER *q_X509_get_serialNumber(X509 *a);
+ int q_PEM_write_bio_X509(BIO *bp, X509 *x);
+ X509 *q_X509_new();
+@@ -296,7 +307,7 @@
+ ASN1_INTEGER *q_ASN1_INTEGER_new();
+ GENERAL_NAMES *q_GENERAL_NAMES_new();
+ GENERAL_NAME *q_GENERAL_NAME_new();
+-X509_NAME *q_X509_NAME_dup(X509_NAME *xn);
++X509_NAME *q_X509_NAME_dup(const X509_NAME *xn);
+ int q_X509_set_serialNumber(X509 *x, ASN1_INTEGER *serial);
+ AUTHORITY_KEYID *q_AUTHORITY_KEYID_new();
+ void q_ASN1_INTEGER_free(ASN1_INTEGER *a);
+--- a/src/opcua/x509/openssl_symbols.cpp
++++ b/src/opcua/x509/openssl_symbols.cpp
+@@ -135,12 +135,12 @@
+ DEFINEFUNC2(ASN1_TIME *, X509_gmtime_adj, ASN1_TIME *s, s, long adj, adj, return nullptr, return)
+ DEFINEFUNC4(void *, X509_get_ext_d2i, X509 *a, a, int b, b, int *c, c, int *d, d, return nullptr, return)
+ DEFINEFUNC(void, AUTHORITY_KEYID_free, AUTHORITY_KEYID *a, a, return, DUMMYARG)
+-DEFINEFUNC(X509_NAME *, X509_get_issuer_name, X509 *a, a, return nullptr, return)
+-DEFINEFUNC(X509_NAME *, X509_get_subject_name, X509 *a, a, return nullptr, return)
++DEFINEFUNC(QT_OPCUA_OPENSSL_CONST X509_NAME *, X509_get_issuer_name, QT_OPCUA_OPENSSL_CONST X509 *a, a, return nullptr, return)
++DEFINEFUNC(QT_OPCUA_OPENSSL_CONST X509_NAME *, X509_get_subject_name, QT_OPCUA_OPENSSL_CONST X509 *a, a, return nullptr, return)
+ DEFINEFUNC(ASN1_INTEGER *, X509_get_serialNumber, X509 *a, a, return nullptr, return)
+ DEFINEFUNC(X509_REQ*, X509_REQ_new, void, DUMMYARG, return NULL, return);
+ DEFINEFUNC(void, X509_REQ_free, X509_REQ *req, req, return, return);
+-DEFINEFUNC(X509_NAME*, X509_REQ_get_subject_name, X509_REQ *req, req, return NULL, return);
++DEFINEFUNC(QT_OPCUA_OPENSSL_CONST X509_NAME *, X509_REQ_get_subject_name, QT_OPCUA_OPENSSL_CONST X509_REQ *req, req, return nullptr, return)
+ DEFINEFUNC2(EVP_PKEY_CTX*, EVP_PKEY_CTX_new_id, int id, id, ENGINE *e, e, return NULL, return);
+ DEFINEFUNC(void, EVP_PKEY_CTX_free, EVP_PKEY_CTX *ctx, ctx, return, return);
+ DEFINEFUNC(int, EVP_PKEY_keygen_init, EVP_PKEY_CTX *ctx, ctx, return 0, return);
+@@ -169,7 +169,14 @@
+ DEFINEFUNC(ASN1_INTEGER *, ASN1_INTEGER_new, void, DUMMYARG, return NULL, return)
+ DEFINEFUNC(GENERAL_NAMES *, GENERAL_NAMES_new, void, DUMMYARG, return NULL, return)
+ DEFINEFUNC(GENERAL_NAME *, GENERAL_NAME_new, void, DUMMYARG, return NULL, return)
+-DEFINEFUNC(X509_NAME *, X509_NAME_dup, X509_NAME *xn, xn, return NULL, return)
++DEFINEFUNC(X509_NAME *, X509_NAME_dup, const X509_NAME *xn, xn, return NULL, return)
++DEFINEFUNC(void, X509_NAME_free, X509_NAME *name, name, return, DUMMYARG)
++DEFINEFUNC2(int, X509_REQ_set_subject_name, X509_REQ *req, req, const X509_NAME *name, name, return 0, return)
++DEFINEFUNC2(int, X509_set_subject_name, X509 *x, x, const X509_NAME *name, name, return 0, return)
++DEFINEFUNC2(int, X509_set_issuer_name, X509 *x, x, const X509_NAME *name, name, return 0, return)
++DEFINEFUNC(int, ASN1_STRING_length, const ASN1_STRING *s, s, return 0, return)
++DEFINEFUNC(int, ASN1_STRING_type, const ASN1_STRING *s, s, return 0, return)
++DEFINEFUNC(const unsigned char *, ASN1_STRING_get0_data, const ASN1_STRING *s, s, return nullptr, return)
+ DEFINEFUNC2(int, X509_set_serialNumber, X509 *x, x, ASN1_INTEGER *serial, serial, return 0, return)
+ DEFINEFUNC(AUTHORITY_KEYID *, AUTHORITY_KEYID_new, void, DUMMYARG, return NULL, return)
+ DEFINEFUNC(ASN1_INTEGER *, ASN1_INTEGER_dup, const ASN1_INTEGER *x, x, return NULL, return)
+@@ -609,6 +616,13 @@
+     RESOLVEFUNC(GENERAL_NAMES_new)
+     RESOLVEFUNC(GENERAL_NAME_new)
+     RESOLVEFUNC(X509_NAME_dup)
++    RESOLVEFUNC(X509_NAME_free)
++    RESOLVEFUNC(X509_REQ_set_subject_name)
++    RESOLVEFUNC(X509_set_subject_name)
++    RESOLVEFUNC(X509_set_issuer_name)
++    RESOLVEFUNC(ASN1_STRING_length)
++    RESOLVEFUNC(ASN1_STRING_type)
++    RESOLVEFUNC(ASN1_STRING_get0_data)
+     RESOLVEFUNC(X509_set_serialNumber)
+     RESOLVEFUNC(AUTHORITY_KEYID_new)
+     RESOLVEFUNC(ASN1_INTEGER_dup)
+@@ -638,10 +652,10 @@
+ //==============================================================================
+ QDateTime q_getTimeFromASN1(const ASN1_TIME *aTime)
+ {
+-    size_t lTimeLength = aTime->length;
+-    char *pString = (char *) aTime->data;
+-
+-    if (aTime->type == V_ASN1_UTCTIME) {
++    size_t lTimeLength = q_ASN1_STRING_length(aTime);
++    const char *pString = reinterpret_cast<const char *>(q_ASN1_STRING_get0_data(aTime));
++
++    if (q_ASN1_STRING_type(aTime) == V_ASN1_UTCTIME) {
+
+         char lBuffer[24];
+         char *pBuffer = lBuffer;
+@@ -701,7 +715,7 @@
+         result = result.addSecs(lSecondsFromUCT);
+         return result;
+
+-    } else if (aTime->type == V_ASN1_GENERALIZEDTIME) {
++    } else if (q_ASN1_STRING_type(aTime) == V_ASN1_GENERALIZEDTIME) {
+
+         if (lTimeLength < 15)
+             return QDateTime(); // hopefully never triggered
+--- a/src/opcua/x509/qopcuax509certificatesigningrequest_openssl.cpp
++++ b/src/opcua/x509/qopcuax509certificatesigningrequest_openssl.cpp
+@@ -214,13 +214,15 @@
+         return QByteArray();
+     }
+
+-    X509_NAME *subj = QtOpcUaSsl::q_X509_REQ_get_subject_name(req);
++    X509_NAME *subj = QtOpcUaSsl::q_X509_NAME_dup(QtOpcUaSsl::q_X509_REQ_get_subject_name(req));
+     if (!subj) {
+         qCWarning(lcOpcUaSsl) << "Invalid subject pointer";
+         return QByteArray();
+     }
+
+-    if (!setSubjectName(subj, m_subject)) {
++    Deleter<X509_NAME> subjDeleter(subj, QtOpcUaSsl::q_X509_NAME_free);
++    if (!setSubjectName(subj, m_subject)
++        || !QtOpcUaSsl::q_X509_REQ_set_subject_name(req, subj)) {
+         qCWarning(lcOpcUaSsl) << "Failed to set subject";
+         return QByteArray();
+     }
+@@ -312,24 +314,28 @@
+         return QByteArray();
+     }
+
+-    X509_NAME *subj = QtOpcUaSsl::q_X509_get_subject_name(x509);
++    X509_NAME *subj = QtOpcUaSsl::q_X509_NAME_dup(QtOpcUaSsl::q_X509_get_subject_name(x509));
+     if (!subj) {
+         qCWarning(lcOpcUaSsl) << "Invalid subject pointer";
+         return QByteArray();
+     }
+
+-    if (!setSubjectName(subj, m_subject)) {
++    Deleter<X509_NAME> subjDeleter(subj, QtOpcUaSsl::q_X509_NAME_free);
++    if (!setSubjectName(subj, m_subject)
++        || !QtOpcUaSsl::q_X509_set_subject_name(x509, subj)) {
+         qCWarning(lcOpcUaSsl) << "Failed to set subject";
+         return QByteArray();
+     }
+
+-    X509_NAME *issuer = QtOpcUaSsl::q_X509_get_issuer_name(x509);
++    X509_NAME *issuer = QtOpcUaSsl::q_X509_NAME_dup(QtOpcUaSsl::q_X509_get_issuer_name(x509));
+     if (!issuer) {
+         qCWarning(lcOpcUaSsl) << "Invalid issuer pointer";
+         return QByteArray();
+     }
+
+-    if (!setSubjectName(issuer, m_subject)) {
++    Deleter<X509_NAME> issuerDeleter(issuer, QtOpcUaSsl::q_X509_NAME_free);
++    if (!setSubjectName(issuer, m_subject)
++        || !QtOpcUaSsl::q_X509_set_issuer_name(x509, issuer)) {
+         qCWarning(lcOpcUaSsl) << "Failed to set issuer";
+         return QByteArray();
+     }
+--- a/src/3rdparty/open62541/open62541.c
++++ b/src/3rdparty/open62541/open62541.c
+@@ -175558,14 +175558,14 @@
+     for(int i = 0; i < sk_GENERAL_NAME_num(pNames); i++) {
+         GENERAL_NAME *value = sk_GENERAL_NAME_value(pNames, i);
+         if(value->type == GEN_URI) {
+-            subjectURI.length = (size_t) (value->d.ia5->length);
++            subjectURI.length = (size_t) ASN1_STRING_length(value->d.ia5);
+             subjectURI.data = (UA_Byte*)UA_malloc(subjectURI.length);
+             if(!subjectURI.data) {
+                 X509_free(certificateX509);
+                 sk_GENERAL_NAME_pop_free(pNames, GENERAL_NAME_free);
+                 return UA_STATUSCODE_BADSECURITYCHECKSFAILED;
+             }
+-            (void)memcpy(subjectURI.data, value->d.ia5->data, subjectURI.length);
++            (void)memcpy(subjectURI.data, ASN1_STRING_get0_data(value->d.ia5), subjectURI.length);
+             break;
+         }
+     }
