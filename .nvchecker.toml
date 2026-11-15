@@ -1,0 +1,4 @@
+[phpstan-bin]
+source = "github"
+github = "phpstan/phpstan"
+use_latest_release = true
