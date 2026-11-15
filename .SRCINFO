@@ -1,6 +1,6 @@
 pkgbase = lucid-spell
 	pkgdesc = LLM-powered desktop translator.
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/l1ngus/lucid-spell
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = lucid-spell
 	options = !strip
 	options = !debug
 	options = !lto
-	source = lucid-spell-1.3.0.tar.gz::https://github.com/l1ngus/lucid-spell/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = 449ea70ca1580b9360470b6e2c452686687a7bdb6a4fcc21dd6619ceb7d0e023
+	source = lucid-spell-1.3.1.tar.gz::https://github.com/l1ngus/lucid-spell/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = fa04eb8575c488af7927005cc3c9c1c259e76930a10f5d49e6ebdfb26acd80e6
 
 pkgname = lucid-spell
