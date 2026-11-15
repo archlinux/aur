@@ -1,0 +1,164 @@
+pkgbase = onnxruntime-split
+	pkgdesc = Cross-platform inference engine for ONNX models: the C and C++ library with the CPU execution provider
+	pkgver = 1.29.0
+	pkgrel = 5
+	url = https://github.com/microsoft/onnxruntime
+	arch = x86_64
+	license = MIT AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MPL-2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = patchelf
+	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-numpy
+	makedepends = cuda
+	makedepends = cudnn
+	makedepends = openvino
+	makedepends = tensorrt
+	noextract = ortf-dep-abseil_cpp.zip
+	noextract = ortf-dep-re2.zip
+	noextract = ortf-dep-protobuf.zip
+	noextract = ortf-dep-date.zip
+	noextract = ortf-dep-mp11.zip
+	noextract = ortf-dep-json.zip
+	noextract = ortf-dep-pytorch_cpuinfo.zip
+	noextract = ortf-dep-microsoft_gsl.zip
+	noextract = ortf-dep-safeint.zip
+	noextract = ortf-dep-flatbuffers.zip
+	noextract = ortf-dep-onnx.zip
+	noextract = ortf-dep-eigen.zip
+	noextract = ortf-dep-dlpack.zip
+	noextract = ortf-dep-pybind11.zip
+	noextract = ortf-dep-cutlass.zip
+	noextract = ortf-dep-cudnn_frontend.zip
+	options = !lto
+	options = !debug
+	source = onnxruntime::git+https://github.com/microsoft/onnxruntime.git#tag=v1.29.0
+	source = ortf-dep-abseil_cpp.zip::https://github.com/abseil/abseil-cpp/archive/refs/tags/20250814.0.zip
+	source = ortf-dep-re2.zip::https://github.com/google/re2/archive/refs/tags/2024-07-02.zip
+	source = ortf-dep-protobuf.zip::https://github.com/protocolbuffers/protobuf/archive/refs/tags/v21.12.zip
+	source = ortf-dep-date.zip::https://github.com/HowardHinnant/date/archive/refs/tags/v3.0.1.zip
+	source = ortf-dep-mp11.zip::https://github.com/boostorg/mp11/archive/refs/tags/boost-1.82.0.zip
+	source = ortf-dep-json.zip::https://github.com/nlohmann/json/archive/refs/tags/v3.11.3.zip
+	source = ortf-dep-pytorch_cpuinfo.zip::https://github.com/pytorch/cpuinfo/archive/4628dc060ce4e82345dc166bbac875609db4ff69.zip
+	source = ortf-dep-microsoft_gsl.zip::https://github.com/microsoft/GSL/archive/refs/tags/v4.2.1.zip
+	source = ortf-dep-safeint.zip::https://github.com/dcleblanc/SafeInt/archive/refs/tags/3.0.28.zip
+	source = ortf-dep-flatbuffers.zip::https://github.com/google/flatbuffers/archive/refs/tags/v23.5.26.zip
+	source = ortf-dep-onnx.zip::https://github.com/onnx/onnx/archive/refs/tags/v1.22.0.zip
+	source = ortf-dep-eigen.zip::https://github.com/eigen-mirror/eigen/archive/1d8b82b0740839c0de7f1242a3585e3390ff5f33/eigen-1d8b82b0740839c0de7f1242a3585e3390ff5f33.zip
+	source = ortf-dep-dlpack.zip::https://github.com/dmlc/dlpack/archive/5c210da409e7f1e51ddf445134a4376fdbd70d7d.zip
+	source = ortf-dep-pybind11.zip::https://github.com/pybind/pybind11/archive/refs/tags/v3.0.2.zip
+	source = ortf-dep-cutlass.zip::https://github.com/NVIDIA/cutlass/archive/refs/tags/v4.4.2.zip
+	source = ortf-dep-cudnn_frontend.zip::https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v1.24.0.zip
+	b2sums = 8fdc31605d139480199860fc303a537bf67635bf60eb1d40e850b0270b422b070855cf416e9ca774889b9fba0c52fa40ad6fde0bdaf074013e2aaba89b53e054
+	b2sums = a6ef9897d1557f06991cdd6afe73fce31bcf6dc3e971a7fb03eb4bd9db4379e98aea4fff0ac612e26638d0e0a835124e0d52611d560a27c85a9ca30f5210fee1
+	b2sums = 544f24a306b7b7adb924073e4319eae017bc82875cdfb20b668997ed212b343261f6c568b24ca945a69858ac9527fa22befac09138d38c9e5be1856bc11da8fd
+	b2sums = ecfb8890aea094c90f76062ca3eb88b24df467b2f1e9bd0531a8a1d66113869db02bff6f52f73a1dde8f7288914d5ca6345dfe395440baaf386028742981f4ea
+	b2sums = 106ac66f778987096fb612039f7f51411a1181d94006dfd0b13dd5e8f5308a1ccce4c95cff128c2de7ba5622466964c0c3ec2df92a74bc30531fb048bd00c4e1
+	b2sums = 16d225b759ac5888ca19c703a85e0b34385b7b92ed18e6cff5739e0574e6eac16c52e3091b6e0d85fd92fef0c22693266a5dd347d8d78fd9fdcac0ba0064f039
+	b2sums = f3f4ee76689cdd6316154e428ff8dd7d9f3b62e3b13bdc12ae6f961a3586ca14d31ec78a4d127f2c54691f9316843efaf9ec35f86036c2ac9483a7ee66cc5eb4
+	b2sums = 9242835f01a1bd6db049088b4e60d73a72701b6247b34a9b13fbba4c87b42cfa7e8613e34709dece6343491fa9b7f1315ee7fe03546f0ed3250c5f2c2e1fca7f
+	b2sums = 7700b80996ae6c9d670eef50804f0cba18c88e2b54d85689f0294ec92fe83f16695f31238d5f430978adf42b1dad392c6e505a6fde5dca8e5a5a95a110130aa6
+	b2sums = 4e6450048af44f7d3cab2b09a946a6fc9eaac4f83c7ece88d1133caee125b36aee37c45659ae560b3bb3f94c7e88846c949db7e77465975a46f4760b2b634442
+	b2sums = b249e3979ba44f9f6fcb5e9666d3a40777522b98c33ac615bedd7b12605b2361e9d4f22178100fa0b5aa3d18b434ec9d76df3cbbfae72c0877f30afcb68a5f66
+	b2sums = 641e6e8768d9360b1be3252463efc68755d1786b50314d14caad24da9af47a3fd4a8e5fb74bd6d1dc631571a718495cfcc8dfc3d30aa5cec6d329962b0c0f754
+	b2sums = ff96fe2aaf92286db1f73a8bbba94c97ce35e302572f32935ad0ec764c55cdf12a3913649b2d065adf7f93f41421612a1b9a2a763cdbd493c442fbc831179688
+	b2sums = d7c961047f7daad71e73f718c354b6ee40abb925835b9ae6441d0aafd948d2b34dea55c7555814bd65c910c7b52185d6b8820e544ae5d30c273e45a3e106c83b
+	b2sums = 3e79515d5b312775a5cc09ce8c98530f6c25e59e3be0c4745572f5a6dbf1849c912563b1ff1fad74f2ae2b294776da57c4b8412e300bbb93fbcb5ec483fb4635
+	b2sums = 3b3f79303cc113b4044b2f3d472060a3d90270882b4180d31eac07cf317b41abd3ab5bedabfa5116401669b85cce1fad83d5fd4bbf9a43020fa20f0ce748d0b5
+	b2sums = 3c12cf8c6de687744a13e889bcdd569cff2f390df4725885af255059f012de9f5a1e7c89541a26b70daffce546cad403f7907b003152918aca337b1d0dceffc2
+
+pkgname = onnxruntime-core
+	pkgdesc = Cross-platform inference engine for ONNX models: the C and C++ library with the CPU execution provider
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	optdepends = onnxruntime-provider-cuda: the CUDA execution provider
+	optdepends = onnxruntime-provider-tensorrt: the TensorRT execution provider
+	optdepends = onnxruntime-provider-openvino: the OpenVINO execution provider (Intel CPU, GPU and NPU)
+	optdepends = onnxruntime-provider-migraphx: the MIGraphX execution provider (AMD GPUs, untested)
+	provides = onnxruntime=1.29.0
+	provides = libonnxruntime.so
+	conflicts = onnxruntime
+	conflicts = onnxruntime-cpu
+	conflicts = onnxruntime-cuda
+	conflicts = onnxruntime-opt-cuda
+	conflicts = onnxruntime-rocm
+	conflicts = onnxruntime-opt-rocm
+	conflicts = onnxruntime-git
+	conflicts = onnxruntime-full
+	replaces = onnxruntime-full
+
+pkgname = onnxruntime-provider-cuda13-rtx
+	pkgdesc = The CUDA execution provider of ONNX Runtime, for onnxruntime-core (NVIDIA GPUs)
+	depends = onnxruntime-core=1.29.0-5
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = cuda
+	depends = cudnn
+	depends = nvidia-utils
+	provides = onnxruntime-provider-cuda=1.29.0
+	provides = onnxruntime-provider-cuda13=1.29.0
+	conflicts = onnxruntime-provider-cuda
+	conflicts = onnxruntime-provider-cuda13
+
+pkgname = onnxruntime-provider-tensorrt-cuda13
+	pkgdesc = The TensorRT execution provider of ONNX Runtime, for onnxruntime-core (NVIDIA GPUs)
+	depends = onnxruntime-core=1.29.0-5
+	depends = onnxruntime-provider-cuda13=1.29.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = cuda
+	depends = cudnn
+	depends = nvidia-utils
+	provides = onnxruntime-provider-tensorrt=1.29.0
+	conflicts = onnxruntime-provider-tensorrt
+
+pkgname = onnxruntime-provider-openvino
+	pkgdesc = The OpenVINO execution provider of ONNX Runtime, for onnxruntime-core (Intel CPU, GPU and NPU)
+	depends = onnxruntime-core=1.29.0-5
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = openvino
+	optdepends = openvino-intel-gpu-plugin: the OpenVINO GPU device (Intel graphics)
+	optdepends = openvino-intel-npu-plugin: the OpenVINO NPU device (Intel NPU)
+	optdepends = intel-compute-runtime: Intel graphics compute runtime (OpenVINO GPU device)
+	optdepends = level-zero-loader: oneAPI Level Zero loader (OpenVINO GPU and NPU devices)
+	optdepends = intel-npu-driver: Intel NPU user-space driver (OpenVINO NPU device)
+
+pkgname = python-onnxruntime-core
+	pkgdesc = The Python module of ONNX Runtime, the cross-platform inference engine for ONNX models (onnxruntime-core)
+	depends = onnxruntime-core=1.29.0-5
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = python
+	depends = python-numpy
+	depends = python-flatbuffers
+	depends = python-packaging
+	depends = python-protobuf
+	optdepends = onnxruntime-provider-cuda: the CUDA execution provider
+	optdepends = onnxruntime-provider-tensorrt: the TensorRT execution provider
+	optdepends = onnxruntime-provider-openvino: the OpenVINO execution provider (Intel CPU, GPU and NPU)
+	optdepends = onnxruntime-provider-migraphx: the MIGraphX execution provider (AMD GPUs, untested)
+	optdepends = python-onnx: the quantization, transformers optimisation and model tools
+	optdepends = python-ml-dtypes: 4-bit and float8 quantization (the wheel's quantization extra)
+	optdepends = python-sympy: symbolic shape inference (onnxruntime.tools)
+	optdepends = python-psutil: the transformers optimisation and benchmark tools
+	optdepends = python-py-cpuinfo: the transformers optimisation and benchmark tools
+	provides = python-onnxruntime=1.29.0
+	conflicts = python-onnxruntime
+	conflicts = python-onnxruntime-cpu
+	conflicts = python-onnxruntime-cuda
+	conflicts = python-onnxruntime-opt-cuda
+	conflicts = python-onnxruntime-rocm
+	conflicts = python-onnxruntime-opt-rocm
+	conflicts = python-onnxruntime-full
+	replaces = python-onnxruntime-full
