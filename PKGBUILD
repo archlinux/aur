@@ -6,8 +6,8 @@ pkgbase=metamod-source
 pkgname=(metamod-source metamod-source-src)
 # Metamod:Source's version: the stable branch's tag, <version>.<build>, the build being the number of
 # commits, which its versioning counts with git
-pkgver=1.12.0.1229
-pkgrel=2
+pkgver=1.12.0.1230
+pkgrel=1
 pkgdesc="Metamod:Source, the plugin loader of SourceMod, for Source engine game servers, for the games of hl2sdk with Linux servers (the addons folder of a server)"
 arch=(x86_64)
 url="https://www.metamodsource.net"
@@ -21,12 +21,12 @@ source=("git+https://github.com/alliedmodders/metamod-source.git#tag=$pkgver"
   "git+https://github.com/alliedmodders/hl2sdk-manifests.git"
   metamod-ubsan.patch
   source-sdk.txt)
-sha512sums=('b0cd1b9fae5f7e6e463775748a5cf9b3c1ded6f9a5442e1d27af175cea664cc96fbff41ffab4782ce684528e7e4a26ae680cf896b3c3475b23485295cd2bb60c'
+sha512sums=('ba6d2370526eb4ea5d48f8c0179c3114aedfa0c52b81bd9cecd4a43fdaa22a76939fcf442860b94d32289eb92cda4d1654ff1fb2b97c5887dfb373753be16fdf'
   'SKIP'
   'SKIP'
   '3dec8a576592e58891b1b2d3eacfa6b62822c501d828b459c1b8e1e4dcd8e2770fd3b95e4fc67468963f63ae782f0caa0acb57829ca77292d2c989907193e3a1'
   'f427709e7137dd0249070ffa3aedaf9c04b434172d56d8d453ada2d0c439c2b31a9c82551da5c993468fc286edba756d86073268894394ba5190fc1475ca09b3')
-b2sums=('e9bd2d1442d3cca1df7a42394d07d3117de790f1ce72651c579da12b9f6fbaaba12ece78b13a069ecc168436edaf9b00adb5e2acb86da63e4c2457c11115d5bf'
+b2sums=('456fb2e53379e4a26c09695d4b7914c387a07d35f1461a2e55a69338ba0ba763f1989d2bb9fe392f416097b65b4e6117e69be37a57c391d1ba4e101b6791a8b5'
   'SKIP'
   'SKIP'
   'a05c033d5fe6580d545d7caaf3333bfb78d87b023e1ce02303b7aa929c8426e4f8eb3267d6221c46b38cdbbf85318f346c1066b4166b7cb168c50b3772c8288e'
