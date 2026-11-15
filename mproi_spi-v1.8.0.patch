@@ -1,0 +1,674 @@
+From cbfab6569faedde58826c915c8476a5934ec5703 Mon Sep 17 00:00:00 2001
+From: hockinglee <hockinglee@gmail.com>
+Date: Sun, 15 Nov 2026 21:48:55 +0800
+Subject: [PATCH] mproi_spi: Add Mini-Pro-I (MinproI) USB programmer driver
+
+Add a driver for the Mini-Pro-I (MinproI) USB SPI programmer,
+USB ID 1fc8:300b ("www.zhifengsoft.com" / "WinUSBComm").
+
+The vendor firmware offers a raw full-duplex SPI transfer command with
+flags for asserting and releasing CS#, so a transaction can span several
+64-byte USB packets. This allows arbitrary flashrom SPI commands,
+including 4-byte addressing. The optional "spispeed" parameter selects
+the firmware's SPI clock divider index (0 = fastest, default, to 7).
+
+Unit tests emulate the firmware and an SPI flash to cover init/shutdown,
+parameter parsing, probing and a full chip read spanning many packets.
+
+Tested on hardware with a GD25Q16: probe, read, write, erase, verify.
+
+Change-Id: I164c7f2e688308b4f025369433f8cc2b02332448
+Signed-off-by: hockinglee <hockinglee@gmail.com>
+---
+ doc/classic_cli_manpage.rst |  15 ++-
+ include/programmer.h        |   1 +
+ meson.build                 |   7 +
+ meson_options.txt           |   2 +-
+ programmer_table.c          |   4 +
+ programmers/mproi_spi.c     | 242 ++++++++++++++++++++++++++++++++++
+ tests/mproi_spi.c           | 252 ++++++++++++++++++++++++++++++++++++
+ tests/tests.c               |   5 +
+ tests/tests.h               |   5 +
+ 9 files changed, 531 insertions(+), 2 deletions(-)
+ create mode 100644 programmers/mproi_spi.c
+ create mode 100644 tests/mproi_spi.c
+
+diff --git a/doc/classic_cli_manpage.rst b/doc/classic_cli_manpage.rst
+index 236b0d09..7559fd79 100644
+--- a/doc/classic_cli_manpage.rst
++++ b/doc/classic_cli_manpage.rst
+@@ -371,6 +371,7 @@ All operations involving any chip access (probe/read/write/...) require the ``-p
+         * ``parade_lspcon``       (for SPI flash ROMs attached to Parade Technologies LSPCONs (PS175))
+         * ``mediatek_i2c_spi``    (for SPI flash ROMs attached to some Mediatek display devices accessible over I2C)
+         * ``dirtyjtag_spi``       (for SPI flash ROMs attached to DirtyJTAG-compatible devices)
++        * ``mproi_spi``           (for SPI flash ROMs attached to a Mini-Pro-I (MinproI) USB programmer)
+         * ``asm106x``             (for SPI flash ROMs attached to asm106x PCI SATA controllers)
+         * ``spidriver``           (for SPI flash ROMs attached to an Excamera Labs SPIDriver)
+         * ``nv_sma_spi``          (for SPI flash ROMs attached to an Nvidia System Management Agent)
+@@ -1420,6 +1421,18 @@ where ``spispeed`` can be any value in hertz, kilohertz or megahertz supported b
+ The default is a frequency of 100 KHz.
+ 
+ 
++mproi_spi programmer
++^^^^^^^^^^^^^^^^^^^^
++
++Supports the Mini-Pro-I (MinproI) USB programmer, USB ID ``1fc8:300b``. An optional ``spispeed``
++parameter selects the SPI clock divider index of the programmer firmware. Syntax is::
++
++        flashrom -p mproi_spi:spispeed=index
++
++where ``index`` is ``0`` (fastest, default) to ``7`` (slowest). Throughput is limited by USB round
++trips (about 90 KiB/s for reads), so lowering the speed is only useful for marginal connections.
++
++
+ jlink_spi programmer
+ ^^^^^^^^^^^^^^^^^^^^
+ 
+@@ -1707,7 +1720,7 @@ REQUIREMENTS
+         * have to be run as superuser/root
+         * need raw access permission
+ 
+-* serprog, buspirate_spi, dediprog, usbblaster_spi, ft2232_spi, pickit2_spi, ch341a_spi, digilent_spi, dirtyjtag_spi, spidriver
++* serprog, buspirate_spi, dediprog, usbblaster_spi, ft2232_spi, pickit2_spi, ch341a_spi, digilent_spi, dirtyjtag_spi, mproi_spi, spidriver
+ 
+         * can be run as normal user on most operating systems if appropriate device permissions are set
+ 
+diff --git a/include/programmer.h b/include/programmer.h
+index 3a219dd6..66ef7635 100644
+--- a/include/programmer.h
++++ b/include/programmer.h
+@@ -94,6 +94,7 @@ extern const struct programmer_entry programmer_spidriver;
+ extern const struct programmer_entry programmer_stlinkv3_spi;
+ extern const struct programmer_entry programmer_usbblaster_spi;
+ extern const struct programmer_entry programmer_dirtyjtag_spi;
++extern const struct programmer_entry programmer_mproi_spi;
+ 
+ int programmer_init(const struct programmer_entry *prog, const char *param);
+ int programmer_shutdown(void);
+diff --git a/meson.build b/meson.build
+index 876ecd97..3a99c631 100644
+--- a/meson.build
++++ b/meson.build
+@@ -301,6 +301,13 @@ programmer = {
+     'srcs'    : files('programmers/drkaiser.c', 'pcidev.c'),
+     'flags'   : [ '-DCONFIG_DRKAISER=1' ],
+   },
++  'mproi_spi' : {
++    'deps'    : [ libusb1 ],
++    'groups'  : [ group_usb, group_external ],
++    'srcs'    : files('programmers/mproi_spi.c'),
++    'test_srcs' : files('tests/mproi_spi.c'),
++    'flags'   : [ '-DCONFIG_MPROI_SPI=1' ],
++  },
+   'dummy'     : {
+     'srcs'    : files('programmers/dummyflasher.c'),
+     'test_srcs' : files('tests/dummyflasher.c'),
+diff --git a/meson_options.txt b/meson_options.txt
+index bb09014d..832ab974 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -10,7 +10,7 @@ option('programmer', type : 'array', value : ['auto'], choices : [
+         'group_internal', 'group_external',
+         'group_ftdi', 'group_i2c', 'group_jlink', 'group_pci', 'group_serial', 'group_usb',
+         'asm106x', 'atahpt', 'atapromise', 'atavia', 'buspirate_spi', 'ch341a_spi', 'ch347_spi','dediprog',
+-        'developerbox_spi', 'digilent_spi', 'dirtyjtag_spi', 'drkaiser', 'dummy', 'fault', 'ft2232_spi',
++        'developerbox_spi', 'digilent_spi', 'dirtyjtag_spi', 'mproi_spi', 'drkaiser', 'dummy', 'fault', 'ft2232_spi',
+         'gfxnvidia', 'internal', 'it8212', 'jlink_spi', 'linux_mtd', 'linux_spi', 'mediatek_i2c_spi',
+         'mstarddc_spi', 'ni845x_spi', 'nic3com', 'nicintel', 'nicintel_eeprom', 'nicintel_spi', 'nicnatsemi',
+         'nicrealtek', 'nv_sma_spi', 'ogp_spi', 'parade_lspcon', 'pickit2_spi', 'pony_spi', 'raiden_debug_spi',
+diff --git a/programmer_table.c b/programmer_table.c
+index b8f5a28c..9a9dd1c5 100644
+--- a/programmer_table.c
++++ b/programmer_table.c
+@@ -176,6 +176,10 @@ const struct programmer_entry *const programmer_table[] = {
+     &programmer_dirtyjtag_spi,
+ #endif
+ 
++#if CONFIG_MPROI_SPI == 1
++    &programmer_mproi_spi,
++#endif
++
+ #if CONFIG_SPIDRIVER == 1
+     &programmer_spidriver,
+ #endif
+diff --git a/programmers/mproi_spi.c b/programmers/mproi_spi.c
+new file mode 100644
+index 00000000..cd86d2d1
+--- /dev/null
++++ b/programmers/mproi_spi.c
+@@ -0,0 +1,242 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * SPDX-FileCopyrightText: 2026 hockinglee <hockinglee@gmail.com>
++ *
++ * Driver for the "Mini-Pro-I" / "MinproI" USB SPI programmer
++ * (Yaojie electronics, USB ID 1fc8:300b, strings "www.zhifengsoft.com" / "WinUSBComm").
++ *
++ * The protocol was reverse engineered from the vendor Windows tool (MinproI V1.1.3) and
++ * verified on real hardware.  The device exposes one vendor-specific interface with three bulk
++ * endpoints: EP 0x02 OUT (commands), EP 0x82 IN (responses / streamed data) and EP 0x01 OUT
++ * (streamed data for the vendor's chip-specific write mode, unused here).
++ *
++ * Every command is a 64 byte packet sent to EP 0x02:
++ *   byte 0: 0 = a response is expected, 1 = no response
++ *   byte 1: opcode
++ * Opcodes used by this driver:
++ *   0x07  set up chip parameters and power up the target (bytes 2.. hold chip parameters,
++ *         byte 16 is the SPI clock divider index, 0 = fastest).  The firmware needs some time
++ *         after this command before SPI transfers are executed, otherwise they are dropped.
++ *   0x08  end of operation / power down the target, no response.
++ *   0x0b  raw full-duplex SPI transfer:
++ *           byte 2 = flags: bit 0 = assert CS# before, bit 1 = release CS# after
++ *           byte 3 = number of bytes (1..60)
++ *           bytes 4.. = MOSI data
++ *         The response (read from EP 0x82) holds the MISO bytes starting at offset 0.
++ *         Clearing both flags allows a transaction to span several packets.
++ *
++ * The response buffer has no handshake: EP 0x82 always returns the current buffer, so commands
++ * must be strictly sequential (write one packet, read one packet).
++ */
++
++#include <stdlib.h>
++#include <string.h>
++#include <errno.h>
++#include <libusb.h>
++#include "flash.h"
++#include "programmer.h"
++#include "spi.h"
++#include "usb_device.h"
++#include "helpers.h"
++#include "platform/udelay.h"
++
++#define MPROI_VID		0x1fc8
++#define MPROI_PID		0x300b
++
++#define MPROI_EP_CMD_OUT	0x02
++#define MPROI_EP_IN		0x82
++#define MPROI_PKT_SIZE		64
++#define MPROI_TIMEOUT_MS	5000
++
++#define MPROI_CMD_SETUP		0x07
++#define MPROI_CMD_END		0x08
++#define MPROI_CMD_SPI		0x0b
++
++#define MPROI_SPI_CS_ASSERT	0x01
++#define MPROI_SPI_CS_RELEASE	0x02
++#define MPROI_SPI_MAX_CHUNK	60
++
++#define MPROI_MAX_SPEED_IDX	7
++#define MPROI_POWERUP_DELAY_US	100000
++
++static const struct dev_entry devs_mproi_spi[] = {
++	{MPROI_VID, MPROI_PID, OK, "Yaojie (zhifengsoft)", "Mini-Pro-I (MinproI) programmer"},
++	{0},
++};
++
++struct mproi_spi_data {
++	libusb_context *ctx;
++	libusb_device_handle *handle;
++};
++
++static int mproi_xfer(struct mproi_spi_data *data, const uint8_t *pkt, uint8_t *resp)
++{
++	int transferred, ret;
++
++	ret = libusb_bulk_transfer(data->handle, MPROI_EP_CMD_OUT, (uint8_t *)pkt, MPROI_PKT_SIZE,
++				   &transferred, MPROI_TIMEOUT_MS);
++	if (ret != 0 || transferred != MPROI_PKT_SIZE) {
++		msg_perr("%s: OUT transfer failed: %s (%d/%d bytes)\n", __func__,
++			 libusb_error_name(ret), transferred, MPROI_PKT_SIZE);
++		return -1;
++	}
++	if (!resp)
++		return 0;
++
++	ret = libusb_bulk_transfer(data->handle, MPROI_EP_IN, resp, MPROI_PKT_SIZE,
++				   &transferred, MPROI_TIMEOUT_MS);
++	if (ret != 0 || transferred < MPROI_SPI_MAX_CHUNK) {
++		msg_perr("%s: IN transfer failed: %s (%d bytes)\n", __func__,
++			 libusb_error_name(ret), transferred);
++		return -1;
++	}
++	return 0;
++}
++
++static int mproi_spi_send_command(const struct flashctx *flash, unsigned int writecnt,
++				  unsigned int readcnt, const unsigned char *writearr,
++				  unsigned char *readarr)
++{
++	struct mproi_spi_data *data = flash->mst->spi.data;
++	const unsigned int total = writecnt + readcnt;
++	uint8_t pkt[MPROI_PKT_SIZE];
++	uint8_t resp[MPROI_PKT_SIZE];
++	unsigned int pos = 0;
++
++	if (total == 0)
++		return 0;
++
++	while (pos < total) {
++		const unsigned int n = min(total - pos, MPROI_SPI_MAX_CHUNK);
++		unsigned int i;
++
++		memset(pkt, 0, sizeof(pkt));
++		pkt[0] = 0;
++		pkt[1] = MPROI_CMD_SPI;
++		pkt[2] = (pos == 0 ? MPROI_SPI_CS_ASSERT : 0) |
++			 (pos + n == total ? MPROI_SPI_CS_RELEASE : 0);
++		pkt[3] = n;
++		for (i = 0; i < n; i++)
++			pkt[4 + i] = (pos + i < writecnt) ? writearr[pos + i] : 0xff;
++
++		if (mproi_xfer(data, pkt, resp))
++			return SPI_GENERIC_ERROR;
++
++		for (i = 0; i < n; i++)
++			if (pos + i >= writecnt)
++				readarr[pos + i - writecnt] = resp[i];
++		pos += n;
++	}
++	return 0;
++}
++
++static int mproi_end(struct mproi_spi_data *data)
++{
++	uint8_t pkt[MPROI_PKT_SIZE] = { 1, MPROI_CMD_END };
++	return mproi_xfer(data, pkt, NULL);
++}
++
++static int mproi_spi_shutdown(void *opaque)
++{
++	struct mproi_spi_data *data = opaque;
++
++	mproi_end(data);
++	libusb_release_interface(data->handle, 0);
++	libusb_attach_kernel_driver(data->handle, 0);
++	libusb_close(data->handle);
++	libusb_exit(data->ctx);
++	free(data);
++	return 0;
++}
++
++static const struct spi_master spi_master_mproi = {
++	.features	= SPI_MASTER_4BA,
++	.max_data_read	= 64 * KiB,
++	.max_data_write	= 256,
++	.command	= mproi_spi_send_command,
++	.read		= default_spi_read,
++	.write_256	= default_spi_write_256,
++	.write_aai	= default_spi_write_aai,
++	.shutdown	= mproi_spi_shutdown,
++};
++
++static int mproi_spi_init(const struct programmer_cfg *cfg)
++{
++	struct mproi_spi_data *data;
++	unsigned long speed = 0;
++	uint8_t pkt[MPROI_PKT_SIZE];
++	uint8_t resp[MPROI_PKT_SIZE];
++	char *arg;
++	int ret;
++
++	arg = extract_programmer_param_str(cfg, "spispeed");
++	if (arg) {
++		char *end;
++		errno = 0;
++		speed = strtoul(arg, &end, 0);
++		if (errno || *end || speed > MPROI_MAX_SPEED_IDX) {
++			msg_perr("Invalid spispeed \"%s\": must be a clock divider index 0..%d "
++				 "(0 = fastest, default).\n", arg, MPROI_MAX_SPEED_IDX);
++			free(arg);
++			return 1;
++		}
++	}
++	free(arg);
++
++	data = calloc(1, sizeof(*data));
++	if (!data) {
++		msg_perr("Out of memory!\n");
++		return ERROR_OOM;
++	}
++
++	ret = libusb_init(&data->ctx);
++	if (ret < 0) {
++		msg_perr("Could not initialize libusb: %s\n", libusb_error_name(ret));
++		goto err_free;
++	}
++	libusb_set_option(data->ctx, LIBUSB_OPTION_LOG_LEVEL, LIBUSB_LOG_LEVEL_INFO);
++
++	data->handle = libusb_open_device_with_vid_pid(data->ctx, MPROI_VID, MPROI_PID);
++	if (!data->handle) {
++		msg_perr("Could not open Mini-Pro-I programmer (%04x:%04x). Check that it is "
++			 "connected and that you have access rights (udev rule).\n",
++			 MPROI_VID, MPROI_PID);
++		goto err_exit;
++	}
++
++	if (usb_dev_claim_and_describe(data->handle, 0) != 0)
++		goto err_close;
++
++	/* Set up SPI mode with the selected clock and power the target. Chip specific fields
++	 * (type, size, page size, ID) are only used by the vendor's high level commands. */
++	memset(pkt, 0, sizeof(pkt));
++	pkt[0] = 0;
++	pkt[1] = MPROI_CMD_SETUP;
++	pkt[2] = 0;		/* chip type: 0 = SPI flash */
++	pkt[16] = speed;
++	if (mproi_xfer(data, pkt, resp))
++		goto err_release;
++	/* Raw SPI transfers issued too early after setup are silently dropped. */
++	default_delay(MPROI_POWERUP_DELAY_US);
++
++	msg_pdbg("%s: Mini-Pro-I initialized, SPI clock index %lu.\n", __func__, speed);
++	return register_spi_master(&spi_master_mproi, data);
++
++err_release:
++	libusb_release_interface(data->handle, 0);
++err_close:
++	libusb_attach_kernel_driver(data->handle, 0);
++	libusb_close(data->handle);
++err_exit:
++	libusb_exit(data->ctx);
++err_free:
++	free(data);
++	return 1;
++}
++
++const struct programmer_entry programmer_mproi_spi = {
++	.name		= "mproi_spi",
++	.type		= USB,
++	.devs.dev	= devs_mproi_spi,
++	.init		= mproi_spi_init,
++};
+diff --git a/tests/mproi_spi.c b/tests/mproi_spi.c
+new file mode 100644
+index 00000000..6e7c55f9
+--- /dev/null
++++ b/tests/mproi_spi.c
+@@ -0,0 +1,252 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-only
++ * SPDX-FileCopyrightText: 2026 hockinglee <hockinglee@gmail.com>
++ */
++
++#include "lifecycle.h"
++
++#include <stdlib.h>
++#include <string.h>
++
++#if CONFIG_MPROI_SPI == 1
++
++/* Same values as in the mproi_spi programmer. */
++#define MPROI_EP_CMD_OUT	0x02
++#define MPROI_EP_IN		0x82
++#define MPROI_PKT_SIZE		64
++#define MPROI_CMD_SETUP		0x07
++#define MPROI_CMD_END		0x08
++#define MPROI_CMD_SPI		0x0b
++#define MPROI_SPI_CS_ASSERT	0x01
++#define MPROI_SPI_CS_RELEASE	0x02
++#define MPROI_SPI_MAX_CHUNK	60
++
++/* Emulated chip: Winbond W25X10 (128 KiB), contents are a function of the address. */
++#define EMU_SIZE		(128 * 1024)
++#define EMU_DATA(addr)		((uint8_t)(((addr) & 0xff) ^ ((addr) >> 8) ^ 0x5a))
++
++/*
++ * The emulator mirrors the firmware: command packets arrive on EP 0x02, the
++ * response buffer is returned on EP 0x82. Raw SPI packets (0x0b) carry CS flags,
++ * so a transaction may span several packets; we keep the SPI state machine
++ * across packets and check that CS is only asserted/released where expected.
++ */
++struct mproi_spi_io_state {
++	uint8_t resp[MPROI_PKT_SIZE];
++	int resp_valid;
++
++	int setup_done;
++	int end_done;
++	uint8_t speed;
++
++	int cs_active;
++	unsigned int pos;	/* byte position within the current CS# transaction */
++	uint8_t opcode;
++	uint32_t addr;
++	unsigned int packets;
++	unsigned int multi_packet_transactions;
++	unsigned int packets_in_transaction;
++};
++
++static uint8_t emu_spi_byte(struct mproi_spi_io_state *s, uint8_t mosi)
++{
++	uint8_t miso = 0xff;
++	const unsigned int pos = s->pos++;
++
++	if (pos == 0) {
++		s->opcode = mosi;
++		s->addr = 0;
++		return miso;
++	}
++
++	switch (s->opcode) {
++	case 0x9f: /* RDID */
++		if (pos == 1)
++			miso = 0xef; /* WINBOND_NEX_ID */
++		else if (pos == 2)
++			miso = 0x30; /* W25X10 high */
++		else if (pos == 3)
++			miso = 0x11; /* W25X10 low */
++		break;
++	case 0x03: /* READ */
++		if (pos <= 3) {
++			s->addr = (s->addr << 8) | mosi;
++		} else {
++			const uint32_t a = (s->addr + pos - 4) % EMU_SIZE;
++			miso = EMU_DATA(a);
++		}
++		break;
++	case 0x05: /* RDSR */
++		miso = 0x00;
++		break;
++	default:
++		break;
++	}
++	return miso;
++}
++
++static void emu_handle_packet(struct mproi_spi_io_state *s, const uint8_t *pkt)
++{
++	switch (pkt[1]) {
++	case MPROI_CMD_SETUP:
++		assert_int_equal(0, pkt[0]);
++		assert_int_equal(0, pkt[2]); /* chip type: SPI */
++		s->setup_done = 1;
++		s->speed = pkt[16];
++		s->resp_valid = 1;
++		break;
++	case MPROI_CMD_END:
++		assert_int_equal(1, pkt[0]); /* no response expected */
++		s->end_done = 1;
++		s->resp_valid = 0;
++		break;
++	case MPROI_CMD_SPI: {
++		const uint8_t flags = pkt[2];
++		const unsigned int n = pkt[3];
++
++		assert_true(s->setup_done);
++		assert_true(n >= 1 && n <= MPROI_SPI_MAX_CHUNK);
++		/* CS# must be asserted exactly once at the start of a transaction. */
++		if (flags & MPROI_SPI_CS_ASSERT) {
++			assert_false(s->cs_active);
++			s->cs_active = 1;
++			s->pos = 0;
++			s->packets_in_transaction = 0;
++		}
++		assert_true(s->cs_active);
++		s->packets_in_transaction++;
++
++		memset(s->resp, 0, sizeof(s->resp));
++		for (unsigned int i = 0; i < n; i++)
++			s->resp[i] = emu_spi_byte(s, pkt[4 + i]);
++
++		if (flags & MPROI_SPI_CS_RELEASE) {
++			s->cs_active = 0;
++			if (s->packets_in_transaction > 1)
++				s->multi_packet_transactions++;
++		}
++		s->packets++;
++		s->resp_valid = 1;
++		break;
++	}
++	default:
++		fail_msg("unexpected command 0x%02x", pkt[1]);
++	}
++}
++
++static int mproi_spi_libusb_bulk_transfer(void *state, libusb_device_handle *devh,
++		unsigned char endpoint, unsigned char *data, int length, int *actual_length,
++		unsigned int timeout)
++{
++	struct mproi_spi_io_state *s = state;
++
++	if (endpoint == MPROI_EP_CMD_OUT) {
++		assert_int_equal(MPROI_PKT_SIZE, length);
++		emu_handle_packet(s, data);
++		*actual_length = length;
++		return 0;
++	}
++
++	assert_int_equal(MPROI_EP_IN, endpoint);
++	assert_true(s->resp_valid);
++	assert_true(length >= MPROI_PKT_SIZE);
++	memcpy(data, s->resp, MPROI_PKT_SIZE);
++	*actual_length = MPROI_PKT_SIZE;
++	return 0;
++}
++
++static struct io_mock_fallback_open_state mproi_spi_fallback_open_state = {
++	.noc = 0,
++	.paths = { NULL },
++};
++
++#define MPROI_SPI_IO(st) {						\
++	.state = (st),							\
++	.libusb_bulk_transfer = &mproi_spi_libusb_bulk_transfer,	\
++	.fallback_open_state = &mproi_spi_fallback_open_state,		\
++}
++
++void mproi_spi_basic_lifecycle_test_success(void **state)
++{
++	struct mproi_spi_io_state st = { 0 };
++	const struct io_mock io = MPROI_SPI_IO(&st);
++
++	run_basic_lifecycle(state, &io, &programmer_mproi_spi, "");
++
++	assert_true(st.setup_done);
++	assert_true(st.end_done);
++	assert_int_equal(0, st.speed);
++}
++
++void mproi_spi_spispeed_test_success(void **state)
++{
++	struct mproi_spi_io_state st = { 0 };
++	const struct io_mock io = MPROI_SPI_IO(&st);
++
++	run_basic_lifecycle(state, &io, &programmer_mproi_spi, "spispeed=3");
++
++	assert_int_equal(3, st.speed);
++}
++
++void mproi_spi_invalid_spispeed_test_success(void **state)
++{
++	struct mproi_spi_io_state st = { 0 };
++	const struct io_mock io = MPROI_SPI_IO(&st);
++
++	run_init_error_path(state, &io, &programmer_mproi_spi, "spispeed=8", 1);
++	run_init_error_path(state, &io, &programmer_mproi_spi, "spispeed=fast", 1);
++}
++
++void mproi_spi_probe_lifecycle_test_success(void **state)
++{
++	struct mproi_spi_io_state st = { 0 };
++	const struct io_mock io = MPROI_SPI_IO(&st);
++	const char *expected_matched_names[1] = {"W25X10"};
++
++	run_probe_v2_lifecycle(state, &io, &programmer_mproi_spi, "", "W25X10",
++				expected_matched_names, 1);
++}
++
++void mproi_spi_read_test_success(void **state)
++{
++	struct mproi_spi_io_state st = { 0 };
++	const struct io_mock io = MPROI_SPI_IO(&st);
++	struct flashrom_programmer *flashprog;
++	struct flashrom_flashctx *flashctx;
++	const char **matched_names = NULL;
++	uint8_t *buf;
++
++	(void)state;
++	io_mock_register(&io);
++	clear_spi_id_cache();
++
++	assert_int_equal(0, flashrom_programmer_init(&flashprog, "mproi_spi", ""));
++	assert_int_equal(0, flashrom_create_context(&flashctx));
++	assert_int_equal(1, flashrom_flash_probe_v2(flashctx, &matched_names, flashprog, "W25X10"));
++	flashrom_data_free(matched_names);
++
++	assert_int_equal(EMU_SIZE, flashrom_flash_getsize(flashctx));
++	buf = malloc(EMU_SIZE);
++	assert_non_null(buf);
++	assert_int_equal(0, flashrom_image_read(flashctx, buf, EMU_SIZE));
++	for (uint32_t a = 0; a < EMU_SIZE; a++)
++		assert_int_equal(EMU_DATA(a), buf[a]);
++
++	/* A full read must have been split into many packets with CS# held between them. */
++	assert_true(st.multi_packet_transactions > 0);
++	assert_false(st.cs_active);
++
++	free(buf);
++	flashrom_flash_release(flashctx);
++	assert_int_equal(0, flashrom_programmer_shutdown(flashprog));
++	assert_true(st.end_done);
++	io_mock_register(NULL);
++}
++
++#else
++	SKIP_TEST(mproi_spi_basic_lifecycle_test_success)
++	SKIP_TEST(mproi_spi_spispeed_test_success)
++	SKIP_TEST(mproi_spi_invalid_spispeed_test_success)
++	SKIP_TEST(mproi_spi_probe_lifecycle_test_success)
++	SKIP_TEST(mproi_spi_read_test_success)
++#endif /* CONFIG_MPROI_SPI */
+diff --git a/tests/tests.c b/tests/tests.c
+index c7ce137c..9b063fa9 100644
+--- a/tests/tests.c
++++ b/tests/tests.c
+@@ -555,6 +555,11 @@ int main(int argc, char *argv[])
+ 		cmocka_unit_test(ch347_spi_probe_lifecycle_test_success),
+ 		cmocka_unit_test(ch347_spi_fault_wrapped_basic_test_success),
+ 		cmocka_unit_test(ch347_spi_fault_wrapped_probe_test_success),
++		cmocka_unit_test(mproi_spi_basic_lifecycle_test_success),
++		cmocka_unit_test(mproi_spi_spispeed_test_success),
++		cmocka_unit_test(mproi_spi_invalid_spispeed_test_success),
++		cmocka_unit_test(mproi_spi_probe_lifecycle_test_success),
++		cmocka_unit_test(mproi_spi_read_test_success),
+ 		cmocka_unit_test(spidriver_probe_lifecycle_test_success),
+ 		cmocka_unit_test(nv_sma_spi_basic_lifecycle_test_success),
+ 		cmocka_unit_test(fault_basic_lifecycle_test_success),
+diff --git a/tests/tests.h b/tests/tests.h
+index b48ec4ca..ea91fcb8 100644
+--- a/tests/tests.h
++++ b/tests/tests.h
+@@ -100,6 +100,11 @@ void ch347_spi_basic_lifecycle_test_success(void **state);
+ void ch347_spi_probe_lifecycle_test_success(void **state);
+ void ch347_spi_fault_wrapped_basic_test_success(void **state);
+ void ch347_spi_fault_wrapped_probe_test_success(void **state);
++void mproi_spi_basic_lifecycle_test_success(void **state);
++void mproi_spi_spispeed_test_success(void **state);
++void mproi_spi_invalid_spispeed_test_success(void **state);
++void mproi_spi_probe_lifecycle_test_success(void **state);
++void mproi_spi_read_test_success(void **state);
+ void spidriver_probe_lifecycle_test_success(void **state);
+ void nv_sma_spi_basic_lifecycle_test_success(void **state);
+ void fault_basic_lifecycle_test_success(void **state);
+-- 
+2.56.0
+
