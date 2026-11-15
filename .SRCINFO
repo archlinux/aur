@@ -1,12 +1,12 @@
 pkgbase = kinoklip-bin
 	pkgdesc = Kinoklip — video editor: cut, arrange, add effects and export
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/SeniorMatt/kinoklip
 	arch = x86_64
 	license = GPL3
 	options = !strip
-	source = Kinoklip-1.8.0-x86_64.AppImage::https://github.com/SeniorMatt/kinoklip/releases/download/v1.8.0/Kinoklip-x86_64.AppImage
-	sha256sums = 92f032a3d88865330e1218ab0734a5c4ca157cbb1a0c10eef004b43bd7183aaa
+	source = Kinoklip-1.8.1-x86_64.AppImage::https://github.com/SeniorMatt/kinoklip/releases/download/v1.8.1/Kinoklip-x86_64.AppImage
+	sha256sums = 526812dab4efcac8dff7e992b53ebf6f7688684e467af993c3165f5969e96fbf
 
 pkgname = kinoklip-bin
