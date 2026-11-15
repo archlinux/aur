@@ -1,0 +1,20 @@
+pkgbase = stroke-bin
+	pkgdesc = Native database client for PostgreSQL, MySQL, SQLite, MongoDB, Redis and more, with an AI agent and an MCP server
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://stroke.click
+	arch = x86_64
+	license = LicenseRef-Stroke
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = hicolor-icon-theme
+	provides = stroke
+	conflicts = stroke
+	options = !strip
+	options = !debug
+	source = stroke-2.3.0.deb::https://github.com/stroke-app/stroke/releases/download/v2.3.0/stroke_2.3.0_amd64.deb
+	source = LICENSE-2.3.0::https://raw.githubusercontent.com/stroke-app/stroke/v2.3.0/LICENSE
+	sha256sums = 625f6de9489b59b9e5b1a482ec9f564c9b6a0b293a9a7c0ffe94cc1cfaa09a6d
+	sha256sums = SKIP
+
+pkgname = stroke-bin
