@@ -1,0 +1,4 @@
+pkg/
+src/
+parallel-dc/
+*.pkg.tar.*

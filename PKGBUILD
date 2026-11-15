@@ -3,7 +3,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-parallel-dc
 pkgname=$_pkgname-git
-pkgver=r7.rc1.r4338.gcc3fe2c
+pkgver=r7.rc1.r4340.g8250825
 pkgrel=1
 pkgdesc="Sega Dreamcast, NAOMI, NAOMI 2, Atomiswave and System SP core (Derived from Flycast by flyinghead)"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -17,11 +17,9 @@ makedepends=(
 	'glm'
 	'libgcc'
 	'libgl'
-	'libgomp'
 	'libstdc++'
 	'libzip'
 	'miniupnpc'
-	'vulkan-memory-allocator'
 	'xxhash'
 	'zlib'
 )
