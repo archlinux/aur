@@ -13,7 +13,7 @@ license=('GPL-3.0-or-later' 'Zlib' 'MIT' 'BSD-3-Clause' 'BSL-1.0' 'Unlicense')
 depends=('curl' 'expat' 'ffmpeg' 'flac' 'freetype2' 'glibc' 'hicolor-icon-theme'
          'libarchive' 'libdrm' 'libgcc' 'libglvnd' 'libstdc++' 'libvorbis' 'libx11'
          'libxcursor' 'libxi' 'libxinerama' 'libxrandr' 'mesa' 'systemd-libs' 'zlib')
-makedepends=('cmake')
+makedepends=('cmake' 'glu' 'openal')  # linked by the Makefile, dropped by --as-needed
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('51ecce34e7a7550a5af8d3544d0bb448768dce02970583a995ed153a97e3026d')
 
