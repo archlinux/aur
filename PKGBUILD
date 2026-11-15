@@ -1,6 +1,6 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname=('cpp_ws_backend')
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 options=(!debug)
 pkgdesc='High-performance FastCGI web backend library in C++'
@@ -20,7 +20,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/bokic/$pkgname/archive/refs/tags/${pkgver}.tar.gz"
 )
 
-sha512sums=('e1de1f9da5323baf0880e0284d1f24bf93bd2456782e5d8b52bad4a7baec0a082a9fd3088316b8a4d3279fde90842ae3c440adf059095de61e96fd939fbb6aef')
+sha512sums=('5f5b3aa72229b414b2c35d5827f75241c15aef0c1947cf75419c6fae52d85683abb94f66608aac1b846f785bd4f75b8484a2c5374fffc0bdc9290ec7308af41b')
 
 build() {
     cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release -DBUILD_DEMOS=OFF -B"build" "$srcdir/$pkgname-$pkgver"
