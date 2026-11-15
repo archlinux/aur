@@ -1,6 +1,6 @@
 pkgbase = notav
 	pkgdesc = Notes and a journal kept in your Nextcloud
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/AperteDev/notav
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = notav
 	optdepends = gnome-online-accounts: sign in with a GNOME Online Accounts account
 	optdepends = org.freedesktop.secrets: keep the passwords in the system keyring
 	options = !lto
-	source = notav-0.7.1.tar.gz::https://github.com/AperteDev/notav/archive/refs/tags/v0.7.1.tar.gz
-	sha256sums = 41c01936520a810aa85d233ba2e719b2f22d034d65ac91d86e25d683a41fae5b
+	source = notav-0.7.2.tar.gz::https://github.com/AperteDev/notav/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = 677386662cf30453e022aa2c81d3d0db0e83894d51f07df41314f93a1b1cfe8d
 
 pkgname = notav
