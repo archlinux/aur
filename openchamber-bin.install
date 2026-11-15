@@ -1,11 +1,12 @@
 
 _configure_sandbox() {
-  local sandbox='/opt/OpenChamber/chrome-sandbox'
+  local sandbox='/opt/openchamber/chrome-sandbox'
 
   [[ -x "$sandbox" ]] || return 0
 
-  # Follow upstream Debian sandbox configuration.
-  if [[ -L /proc/self/ns/user ]] && unshare --user true 2>/dev/null; then
+  # Root can always unshare; probe user namespaces as an unprivileged user.
+  if setpriv --reuid=nobody --regid=nobody --clear-groups \
+      unshare --user true 2>/dev/null; then
     chmod 0755 "$sandbox"
   else
     chmod 4755 "$sandbox"

@@ -28,7 +28,7 @@ The built-in application updater is not supported. Updates are distributed throu
 
 - **Source:** Official upstream `.deb` release
 - **Architecture:** x86_64
-- **Install location:** `/opt/OpenChamber`
+- **Install location:** `/opt/openchamber`
 - **License:** MIT
 
 The package includes desktop integration, an application launcher, and Chromium sandbox configuration.
