@@ -3,7 +3,7 @@
 
 _pkgname=squawk
 pkgname="${_pkgname}-cli"
-pkgver=2.72.0
+pkgver=2.73.0
 pkgrel=1
 pkgdesc="Linter for PostgreSQL, focused on migrations"
 arch=(x86_64)
@@ -24,7 +24,7 @@ source=(
 	prevent-rebuild.patch
 	use-system-openssl.patch
 )
-sha256sums=('386e4a1b7c11273321aafba2b1597b40f5920edd43d8d9921d458c5513b7380b'
+sha256sums=('d228174e0b4c4adc157f6ec2b66fd0136d01fe664440174d3d4d369e3164d78a'
             'e63a32b66331fe4b8952b6e4e9153cb3c8789a5e1229353e7c25f1271bd4d14e'
             'd524c128516732626fa14acff4ce74de3fcb275405a89130a0d5857d23b3c447')
 
@@ -45,7 +45,7 @@ _list_packages_for_removal() {
 		"$@" |
 		tail -n +2 |
 		cut -d " " -f 1 |
-		grep -Fvx snapbox
+		grep -Fvx -e snapbox -e tempfile
 }
 
 _remove_packages() {
