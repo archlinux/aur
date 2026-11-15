@@ -1,6 +1,6 @@
 pkgbase = xefm
 	pkgdesc = A dual-pane file manager for the desktop and the terminal
-	pkgver = 1.15.1
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/crftwr/xefm
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = xefm
 	depends = python-puikit
 	provides = xefm
 	conflicts = python-xefm
-	source = xefm-1.15.1.tar.gz::https://github.com/crftwr/xefm/archive/refs/tags/v1.15.1.tar.gz
-	sha256sums = 9465b784f7d10571348e54442e0f47baf609829e3ced93c5745ca50ead15ae83
+	source = xefm-1.16.0.tar.gz::https://github.com/crftwr/xefm/archive/refs/tags/v1.16.0.tar.gz
+	sha256sums = b0cdce8ebb8865f09f00899f1ccb18c532b4cefa901949c7e9ef9bafbcdb82ce
 
 pkgname = xefm
