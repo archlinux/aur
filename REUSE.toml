@@ -1,0 +1,30 @@
+version = 1
+SPDX-PackageName = dektec-dtepc
+SPDX-PackageSupplier = Nikos Toutountzoglou
+SPDX-PackageDownloadLocation = https://aur.archlinux.org/packages/dektec-dtepc
+
+[[annotations]]
+path = PKGBUILD
+precedence = override
+SPDX-ID = 0BSD
+
+[[annotations]]
+path = .SRCINFO
+precedence = override
+SPDX-ID = 0BSD
+
+[[annotations]]
+path = .gitignore
+precedence = override
+SPDX-ID = 0BSD
+
+[[annotations]]
+path = REUSE.toml
+precedence = override
+SPDX-ID = 0BSD
+
+# Vendored DekTec SDK license text (upstream file LinuxSDK/License)
+[[annotations]]
+path = LICENSE.DekTec
+precedence = override
+SPDX-ID = LicenseRef-custom

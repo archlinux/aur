@@ -1,0 +1,17 @@
+pkgbase = dektec-dtepc
+	pkgdesc = DekTec firmware update tool (DtEpc)
+	pkgver = 2.13.1
+	pkgrel = 1
+	url = https://www.dektec.com/downloads/utilities/
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = dektec-drivers-dkms
+	conflicts = dektec-utilities
+	options = !strip
+	options = !debug
+	source = https://www.dektec.com/products/applications/DtEpc/downloads/DtEpc-2.13.1.zip
+	source = LICENSE.DekTec
+	sha256sums = 4fbbfe09d55b3528a6a45bc6a2effce3ba0431d7ac141bf190423accc7c4a435
+	sha256sums = e79e2afd3b10c50fb8c136dd43e6abf9dbf8c2e588f08e632d3c29d7e7228a0e
+
+pkgname = dektec-dtepc
