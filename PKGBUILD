@@ -2,7 +2,7 @@
 # https://github.com/AshBuk/dabri
 
 pkgname=dabri
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Offline speech-to-text desktop application using Whisper and Parakeet"
 arch=('x86_64' 'aarch64')
@@ -14,6 +14,10 @@ depends=(
     'dbus'
     'alsa-utils'
     'libnotify'
+    # CBLAS for the transcribe.cpp decoder
+    'openblas'
+    # libdabri-transcribe links the Vulkan loader directly; without a GPU it runs on CPU
+    'vulkan-icd-loader'
     # Clipboard: X11 + Wayland
     'xsel'
     'wl-clipboard'
@@ -24,7 +28,6 @@ depends=(
 optdepends=(
     'ydotool: Alternative Wayland text input (better for GNOME)'
     'ffmpeg: Alternative audio recording'
-    'vulkan-icd-loader: GPU acceleration via Vulkan (falls back to CPU if unavailable)'
 )
 makedepends=(
     'go>=1.21'
@@ -33,7 +36,6 @@ makedepends=(
     'git'
     # Vulkan SDK for GPU acceleration
     'vulkan-headers'
-    'vulkan-icd-loader'
     'shaderc'
     # SPIRV-Headers cmake config - required by whisper.cpp >= v1.8.5 Vulkan backend
     'spirv-headers'
@@ -41,14 +43,18 @@ makedepends=(
 options=('!lto')
 # Whisper.cpp version (pinned for reproducibility)
 _whisper_version=1.9.5
+# transcribe.cpp version, the engine for Parakeet Ultra
+_transcribe_version=0.4.2
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/AshBuk/dabri/archive/refs/tags/v${pkgver}.tar.gz"
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
+    "transcribe-cpp-${_transcribe_version}.tar.gz::https://github.com/handy-computer/transcribe.cpp/archive/refs/tags/v${_transcribe_version}.tar.gz"
 )
 sha256sums=(
-    '205e27fc8e8562389bc22c73a8bdecc7633bd23f7da15ebd960c9fbbffef7f7d'
+    'd7712e5bb73f88ddb81edd3598eed871a3a73d4efa584e91673ca6ef029606d2'
     'ff1a9053feb509ff9d7729703355541ae9690073a6b1c40eb692c962e0dc1720'
+    '5455374e18adaa0d79ff48104b13109d15dd6002edda999eda1179a86ea09c5b'
 )
 
 prepare() {
@@ -57,6 +63,7 @@ prepare() {
     # Setup whisper.cpp
     mkdir -p build
     ln -sf "${srcdir}/whisper.cpp-${_whisper_version}" build/whisper.cpp
+    ln -sf "${srcdir}/transcribe.cpp-${_transcribe_version}" build/transcribe.cpp
 
     # Vendor Go dependencies
     export GOFLAGS="-mod=mod"
@@ -78,7 +85,7 @@ build() {
         -DGGML_BACKEND_DL=ON \
         -DGGML_CPU_ALL_VARIANTS=ON \
         -DGGML_BACKEND_DIR="/usr/lib/${pkgname}"
-    cmake --build build --parallel
+    cmake --build build --parallel "$(nproc)"
     popd
 
     # Prepare lib directory for Go build
@@ -90,6 +97,9 @@ build() {
     cp build/whisper.cpp/build/bin/libggml*.so* lib/
     # The Go bindings link -lggml-cpu, which is a runtime module with GGML_CPU_ALL_VARIANTS
     ar rcs lib/libggml-cpu.a
+
+    # transcribe.cpp as one private library with its own ggml hidden inside
+    bash-scripts/build-transcribe.sh build/transcribe.cpp lib
 
     # Build Go binary with systray support
     export CGO_ENABLED=1
@@ -123,7 +133,7 @@ package() {
     # Install only versioned .so files and create symlinks to avoid duplicating large binaries
     install -dm755 "${pkgdir}/usr/lib/${pkgname}"
 
-    for lib in lib/libwhisper.so lib/libparakeet.so lib/libggml.so lib/libggml-base.so lib/libggml-cpu-*.so lib/libggml-vulkan.so; do
+    for lib in lib/libwhisper.so lib/libparakeet.so lib/libggml.so lib/libggml-base.so lib/libggml-cpu-*.so lib/libggml-vulkan.so lib/libdabri-transcribe.so; do
         [[ ! -f "$lib" ]] && continue
         base=$(basename "$lib" .so)
         # Find the fully versioned file (e.g., libwhisper.so.1.8.3)
