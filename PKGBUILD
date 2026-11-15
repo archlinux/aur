@@ -11,7 +11,7 @@
 # hyprland-builds, sha256sums and pkgrel. A Hyprland build that it verifies later bumps pkgrel.
 
 pkgname=hyprmasq-plugin-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Hyprland plugin of hyprmasq: per-window screenshots and input, prebuilt for the Hyprland of Arch and Omarchy'
 arch=(x86_64)
@@ -19,7 +19,9 @@ url='https://github.com/nyrda/hyprmasq'
 license=(MIT)
 depends=(glibc hyprland libei libgcc libglvnd libpng libstdc++ libxcb libxkbcommon)
 provides=("hyprmasq-plugin=$pkgver")
-conflicts=(hyprmasq-plugin)
+# A build of hyprmasq from a clone installs the plugin and the loader too: from 0.3.0 on it provides hyprmasq-plugin,
+# and before that it did not, so pacman offers to remove it rather than stopping at the loader that both have.
+conflicts=(hyprmasq-plugin 'hyprmasq<0.3.0')
 options=(!debug !strip)
 # The Hyprland version of the build that each plugin was compiled against.
 _plugins=(0.56.2 0.57.2)
@@ -30,8 +32,8 @@ done
 sha256sums=('7043d16d50140d7429c7377cba81a72aa00aff055afe201adf73cf32b1021892'
             'dd7b29118e7671e24e3adc50f50fd186e0b3df971d96a35072bde52d6f012547'
             '0b338958047a8d42649c764ea82411c99c366b5d935c90f2465732afef950156'
-            '69bf4a8c4dca53cedec5a043fa59f1e66a6686bbb822e23618894a338781bb47'
-            '865e06c73e35d479720498a483e30dae43a51f24dea8dee47d968a387068ffe0')
+            '6ae892b3ae0d42b6e9a9acaba1e1f61ade6446dec09908ab98e96b48f5a313e3'
+            'af3cfa870cd3a3ce0d5d9726a4a576f7ee03c0f2a789be7b90177380b4611712')
 
 package() {
   local plugin abi label version how
