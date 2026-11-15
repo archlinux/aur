@@ -3,7 +3,7 @@
 # Contributor: Adria Arrufat <swiftscythe at gmail _dot_com>
 
 pkgname=cronopete
-pkgver=5.1.1
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="A graphical backup utility based on Apple Time Machine idea."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('gtk3' 'libayatana-appindicator' 'libgee' 'libnotify' 'rsync' 'udisks2')
 makedepends=('gettext' 'intltool' 'meson' 'vala')
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/rastersoft/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('657825403bf5fa1af17582512012ec95a53dfbf0a49ed0b9d644b0ed73ceaa17af4b65468802c2e0a508621420ad37eb95a760edc3a5c329890dbc0a5d668d49')
+sha512sums=('b1e8c12267949f8f6d42106ac2f5a6eb4934796083ab15523e88790ffbea047d5fdc25f161b9fc1dd95a1e02e6281ba569246036f17accbfcffd3815b4a95a1a')
 
 latestver() {
     git ls-remote --refs --tags "${url}.git" |
