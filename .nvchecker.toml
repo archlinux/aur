@@ -1,0 +1,4 @@
+[php-mago-bin]
+source = "github"
+github = "carthage-software/mago"
+use_latest_release = true
