@@ -85,6 +85,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_MUSL=OFF \
+    -DASCIICHAT_ENABLE_ANALYZERS=OFF \
     -DASCIICHAT_LLVM_CONFIG_EXECUTABLE=/usr/bin/llvm-config \
     -DASCIICHAT_CLANG_EXECUTABLE=/usr/bin/clang \
     -DASCIICHAT_CLANG_PLUS_PLUS_EXECUTABLE=/usr/bin/clang++ \
