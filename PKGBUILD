@@ -1,6 +1,11 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=snmpb
+# NOTE: Upstream (git.code.sf.net/p/snmpb/code) stopped development at the
+# release-0.8 tag (git master untouched since 2021) and never published a
+# 1.0 release; this pkgver is the maintainer version for the packaged git
+# snapshot. The build bundles libsmi 0.5.0, libtomcrypt 1.18.2 and qwt
+# 6.3.0, plus a local gcc-15 build fix.
 pkgver=1.0
 pkgrel=11
 pkgdesc="SNMP browser and MIB editor written in Qt"
