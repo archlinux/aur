@@ -2,17 +2,18 @@
 
 pkgname=simple64-git
 pkgver=2024.12.1.r5.gd8c969c
-pkgrel=1
+pkgrel=2
 pkgdesc='Nintendo64 emulator based on Mupen64Plus (git version)'
 arch=('x86_64')
 url='https://simple64.github.io/'
 license=('GPL-3.0-only')
 depends=(
-    'gcc-libs'
     'glibc'
     'hicolor-icon-theme'
     'hidapi'
+    'libgcc'
     'libpng'
+    'libstdc++'
     'qt6-base'
     'qt6-websockets'
     'sdl2'
@@ -35,8 +36,8 @@ makedepends=(
 provides=('simple64' 'm64p-git')
 conflicts=('simple64' 'm64p-git' 'mupen64plus')
 replaces=('m64p-git')
-source=('git+https://github.com/simple64/simple64.git'
-        'simple64-cheat-parser'::'git+https://github.com/simple64/cheat-parser.git#commit=3b46bfc6cf12468d8766da3f2f46635111ff0505'
+source=('git+https://github.com/dbermond/simple64.git'
+        'gopher64-cheat-parser'::'git+https://github.com/gopher64/cheat-parser.git#commit=3b46bfc6cf12468d8766da3f2f46635111ff0505'
         '010-simple64-remove-bundled-discord-and-vosk.patch'
         '020-simple64-fix-paths.patch'
         'simple64.desktop')
@@ -51,7 +52,7 @@ prepare() {
     patch -d simple64 -Np1 -i "${srcdir}/010-simple64-remove-bundled-discord-and-vosk.patch"
     patch -d simple64 -Np1 -i "${srcdir}/020-simple64-fix-paths.patch"
     rm -rf simple64/simple64-{gui/discord,input-qt/vosk}
-    cp -af simple64-cheat-parser/cheats.json simple64
+    cp -af gopher64-cheat-parser/cheats.json simple64
 }
 
 pkgver() {

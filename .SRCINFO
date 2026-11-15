@@ -1,7 +1,7 @@
 pkgbase = simple64-git
 	pkgdesc = Nintendo64 emulator based on Mupen64Plus (git version)
 	pkgver = 2024.12.1.r5.gd8c969c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://simple64.github.io/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -13,11 +13,12 @@ pkgbase = simple64-git
 	makedepends = vosk-api
 	makedepends = vulkan-headers
 	makedepends = zip
-	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = hidapi
+	depends = libgcc
 	depends = libpng
+	depends = libstdc++
 	depends = qt6-base
 	depends = qt6-websockets
 	depends = sdl2
@@ -33,8 +34,8 @@ pkgbase = simple64-git
 	conflicts = m64p-git
 	conflicts = mupen64plus
 	replaces = m64p-git
-	source = git+https://github.com/simple64/simple64.git
-	source = simple64-cheat-parser::git+https://github.com/simple64/cheat-parser.git#commit=3b46bfc6cf12468d8766da3f2f46635111ff0505
+	source = git+https://github.com/dbermond/simple64.git
+	source = gopher64-cheat-parser::git+https://github.com/gopher64/cheat-parser.git#commit=3b46bfc6cf12468d8766da3f2f46635111ff0505
 	source = 010-simple64-remove-bundled-discord-and-vosk.patch
 	source = 020-simple64-fix-paths.patch
 	source = simple64.desktop
