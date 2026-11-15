@@ -1,7 +1,7 @@
 # Maintainer: Laurent Carlier <lcarlier@archlinux.org>
 
 pkgname=zx_go
-pkgver=1.12.5
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="A ZX Spectrum emulator written in Go"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/conorarmstrong/zx_go"
 license=('MIT')
 options=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d8d80768a5214c4044b3a2a73056f734f6b83ddda361cca5e3b7b1867be2d3c6')
+sha256sums=('139564f71fa0ae6e2320b4028f9be76655444a071b4f8e6b4686bb3c4915c1b0')
 
 build() {
    cd ${pkgname}-${pkgver}
