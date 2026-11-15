@@ -2,7 +2,7 @@
 # Contributor: abcabc0330 <liqiang0330@gmail.com>
 
 pkgname=dsh-gtk
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="GTK3+WebKitGTK tray shell for the dsh web UI (front-end window only; install dsh backend separately, e.g. deepseek-harness-bin)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('dsh-gtk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/abcabc0330/dsh-gtk/archive/v$pkgver.tar.gz")
 # Real checksum is kept in the AUR repository; TAG archives cannot be hashed
 # before the tag exists, so this copy skips verification.
-sha256sums=('5ff2cd194e7667ba4a52247007642534eb2d30cd139f7e227e881c9fa073cd9d')
+sha256sums=('1c9f63988515433dc9518ec830c59628492c34aff22688eb257509e97179e275')
 
 
 prepare() {
