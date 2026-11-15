@@ -1,6 +1,6 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 pkgname=handymkv
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Tool to simplify use of MakeMKV and the HandBrakeCLI tool"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/dmars8047/$pkgname"
 license=('MIT')
 makedepends=('git' 'go')
 source=(git+${url}.git#tag=v${pkgver})
-sha256sums=('876941e47b0e33dd0c4aa24e4a7e47e2f68f3cb5a9c77453fcc2d44206e72259')
+sha256sums=('aab0e92de21143fa8346d8b3c41cd859534878afdadce62bfecf532783c7f93d')
 
 build() {
     cd ${pkgname}
