@@ -1,23 +1,24 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-bin
-pkgver=0.16.1
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
 license=('BSD-2-Clause')
 depends=(
+	expat
 	gcc-libs
 	glibc
 	libdrm
 	libevdev
-	expat
 	libffi
 	libxkbcommon
 	mesa
 	opus
 	wayland
+	xorg-xwayland
 )
 provides=(moonshine)
 conflicts=(moonshine)
@@ -25,7 +26,7 @@ conflicts=(moonshine)
 source=(
 	"https://github.com/hgaiser/moonshine/releases/download/v$pkgver/moonshine-v$pkgver-linux-amd64.tar.zst"
 )
-sha256sums=('14051d0f080e1d77ed6fb9e289bcd1fc0132e41f50f2a35f488fa8592ea0b9c7')
+sha256sums=('8ef35bf88dd217f370622996054cfe4fa91585b5caad3d54778e6ce0ee5e0ec1')
 
 package() {
 	cd "$srcdir/moonshine"
@@ -35,8 +36,9 @@ package() {
 	install -Dm755 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 share/moonshine/moonshine@.service "$pkgdir/usr/lib/systemd/system/moonshine@.service"
 	install -Dm644 share/moonshine/60-moonshine.rules "$pkgdir/usr/lib/udev/rules.d/60-moonshine.rules"
-	install -Dm644 share/moonshine/VkLayer_moonshine_wsi.json "$pkgdir/usr/share/vulkan/implicit_layer.d/VkLayer_moonshine_wsi.json"
-	install -Dm755 lib/moonshine/vulkan-layers/libmoonshine_wsi.so "$pkgdir/usr/lib/moonshine/vulkan-layers/libmoonshine_wsi.so"
+	install -Dm755 lib/ferriscope/libferriscope_wsi.so "$pkgdir/usr/lib/ferriscope/libferriscope_wsi.so"
+	install -Dm644 share/vulkan/implicit_layer.d/VkLayer_FERRISCOPE_wsi.x86_64.json \
+		"$pkgdir/usr/share/vulkan/implicit_layer.d/VkLayer_FERRISCOPE_wsi.x86_64.json"
 	install -Dm644 share/moonshine/moonshine-modules.conf "$pkgdir/usr/lib/modules-load.d/moonshine.conf"
 
 	install -Dm644 share/moonshine/50-moonshine-inhibit-sleep.rules "$pkgdir/usr/share/polkit-1/rules.d/50-moonshine-inhibit-sleep.rules"
