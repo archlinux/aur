@@ -1,6 +1,6 @@
 pkgbase = warewoolf-bin
 	pkgdesc = A novel-writing system/rich text editor designed to be usable without a mouse.
-	pkgver = 2.0.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/brsloan/warewoolf
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = warewoolf-bin
 	depends = libdrm
 	depends = libxcb
 	depends = trash-cli
-	source = https://github.com/brsloan/warewoolf/releases/download/v2.0.0/warewoolf_2.0.0_amd64.deb
-	sha256sums = b44b86e0881cb4d32a103e925baaece4abd455d07e3d1e21b79bcbda0e80c16c
+	source = https://github.com/brsloan/warewoolf/releases/download/v3.1.1/warewoolf_3.1.1_amd64.deb
+	sha256sums = e26891be8b654a137b71abb104de4efcfcf75af384d9e8a10d1de3cdbf000ee0
 
 pkgname = warewoolf-bin
