@@ -1,14 +1,14 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync-git"
 _pkgname="limine-snapper-sync"
-pkgver=r694.275bfe3
+pkgver=r704.7e874db
 pkgrel=1
 pkgdesc="Automatically syncs Limine snapshot entries with Snapper snapshots."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Zesko/limine-snapper-sync"
 source=("${_pkgname}::git+${url}.git")
-source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.4.4.1.1/graalvm-community-jdk-25i4-25.0.4.1.1_linux-x64_bin.tar.gz")
-source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.4.4.1.1/graalvm-community-jdk-25i4-25.0.4.1.1_linux-aarch64_bin.tar.gz")
+source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.5.5.0.3/graalvm-community-jdk-25i5-25.0.5.0.3_linux-x64_bin.tar.gz")
+source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.5.5.0.3/graalvm-community-jdk-25i5-25.0.5.0.3_linux-aarch64_bin.tar.gz")
 license=("GPL3")
 options=(!debug !strip)
 _graalvm_version=graalvm_ce_jdk25
@@ -28,8 +28,8 @@ optdepends=(
 )
 makedepends=('git' 'gradle' 'gettext')
 sha256sums=('SKIP')
-sha256sums_x86_64=('05ccbbe783210b6886ff7b08fcd0b061c5dce4852b05db87284fc0e24abb08e2')
-sha256sums_aarch64=('e5f5e2f59643cf96765c741dc00b206f86c69c8c1bf843fe26050c871e0e2dbc')
+sha256sums_x86_64=('c6438dee6c3ade2220d40b7ccdcad24b512d30e233e61bb4fc70519522de34ef')
+sha256sums_aarch64=('41741c0650ae7564a78335f9e4fc353a902e6ff1d4140f2e4fabd1c55d5cce66')
 backup=(etc/limine-snapper-sync.conf)
 conflicts=('limine-snapper-sync')
 
