@@ -1,12 +1,12 @@
 # Maintainer: Jussi Eloranta <eloranta@aa6kj.hopto.org>
 pkgname=acom2000-git
 pkgver=r24.457dcd6
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control software for ACOM 2000A linear amplifier."
 arch=('x86_64' 'aarch64')
 url="https://github.com/jmeloranta/acom2000"
 license=('GPL-3.0-or-later')
-depends=('base-devel' 'pkgconf' 'gtk4' 'glibc' 'graphene' 'pango' 'glib2' 'harfbuzz' 'vulkan-icd-loader' 'cairo')
+depends=('base-devel' 'pkgconf' 'gtk4' 'glibc' 'graphene' 'pango' 'glib2' 'harfbuzz' 'vulkan-icd-loader' 'cairo' 'libserialport')
 makedepends=('git')
 sha256sums=('SKIP')
 source=(git+"https://github.com/jmeloranta/acom2000.git")
