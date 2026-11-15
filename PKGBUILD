@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 pkgname=xerahs-git
-pkgver=0.34.1.r5219.gc5dfc42a
+pkgver=0.34.1.r5223.gc6e7c77a
 pkgrel=1
 pkgdesc='Cross-platform screen capture and sharing tool'
 arch=('x86_64')
