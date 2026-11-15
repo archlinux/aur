@@ -1,0 +1,518 @@
+From 4500af9a7152e1999af9f24250e38867c7fd5b56 Mon Sep 17 00:00:00 2001
+From: Scott <158021536+nathawatc@users.noreply.github.com>
+Date: Sun, 15 Nov 2026 09:48:39 +0700
+Subject: [PATCH] fix(vision): pin DNN engine by OpenCV version and filter
+ target warning (#21)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+## What
+
+- Pin the DNN engine by OpenCV version. 5.1 removed the Classic engine
+and renumbered the engine enum, so `OPENCV_FORCE_DNN_ENGINE=2` now
+selects ONNX Runtime. Howdy now sets `ENGINE_NEW` on 5.0 and
+`ENGINE_OPENCV` on 5.1+, with the value taken from the enum.
+- Filter OpenCV's false-positive warning "Targets are not supported by
+the new graph engine for now" on OpenCV 5.0.0 through 5.1.0.
+opencv/opencv#29457 fixed it, but opencv/opencv#29286 brought it back
+for builds without CUDA before 5.1.0 was tagged. The upstream fix for
+that regression, opencv/opencv#30808, is under review; if merged, it
+should ship in the next OpenCV release after 5.1.0. The filter drops
+only that exact message; every other OpenCV log message still prints
+unchanged. It stays permanently for 5.0.0 through 5.1.0, since those
+releases always print the warning.
+- Docs: `howdy/src/vision/AGENTS.md` records the SFace drift between 5.0
+and 5.1 and points to #2 for upstream status instead of duplicating it.
+
+## Validation
+
+- Real YuNet/SFace models, 5.0 vs 5.1: preprocessing and YuNet detection
+are bit-identical. SFace embeddings differ (cosine 0.988–0.998 for the
+same input); match scores moved by at most 0.03 with no threshold
+crossings.
+- End to end on 5.0.0 and 5.1.0: the target warning is gone, and other
+OpenCV warnings (`imread`, ONNX Runtime fallback) still print.
+- Local debug build on OpenCV 5.0.0: 109/109.
+
+## Notes
+
+- Split from #17, which was closed when its branch was renamed. The Nix
+OpenCV 5.1.0 bump moved to a separate draft PR so NixOS users are not
+moved to 5.1 before a hardware test.
+- Nix stays on OpenCV 5.0.0 and CI image `ci-nix:2.35.3-1`.
+
+Refs #2
+---
+ howdy/include/vision/face_model.hpp          |   3 +-
+ howdy/include/vision/face_model/internal.hpp |  35 ++++
+ howdy/src/vision/AGENTS.md                   |  24 ++-
+ howdy/src/vision/face_model.cpp              |  92 +++++++++-
+ howdy/tests/vision/face_model_test.cpp       | 181 ++++++++++++++++++-
+ 5 files changed, 322 insertions(+), 13 deletions(-)
+
+diff --git a/howdy/include/vision/face_model.hpp b/howdy/include/vision/face_model.hpp
+index 42f3995..3d28dac 100644
+--- a/howdy/include/vision/face_model.hpp
++++ b/howdy/include/vision/face_model.hpp
+@@ -13,7 +13,8 @@
+ #include <opencv2/objdetect/face.hpp>
+ 
+ namespace howdy::native {
+-	// Call before starting parallel model and camera initialization.
++	// Pins the OpenCV DNN engine and installs the OpenCV log filter. Call before starting
++	// parallel model and camera initialization.
+ 	[[nodiscard]] auto ConfigureFaceModelEnvironment() -> bool;
+ 
+ 	inline constexpr auto kFaceModelNotInitializedMessage = "Face model was not initialized";
+diff --git a/howdy/include/vision/face_model/internal.hpp b/howdy/include/vision/face_model/internal.hpp
+index 3e709ea..4fe58df 100644
+--- a/howdy/include/vision/face_model/internal.hpp
++++ b/howdy/include/vision/face_model/internal.hpp
+@@ -7,8 +7,43 @@
+ #include <functional>
+ #include <string>
+ 
++#include <opencv2/core/utils/logger.defines.hpp>
++#include <opencv2/core/version.hpp>
++
+ namespace howdy::native {
+ 
++	// OpenCV 5.0.0 through 5.1.0 log a false-positive warning when YuNet and SFace request the
++	// default CPU target on the New graph engine. opencv/opencv#29457 silenced it, but
++	// opencv/opencv#29286 reintroduced it for builds without CUDA before 5.1.0 was tagged.
++#if CV_VERSION_MAJOR == 5 &&                                                                       \
++    (CV_VERSION_MINOR == 0 || (CV_VERSION_MINOR == 1 && CV_VERSION_REVISION == 0))
++	inline constexpr bool kFiltersOpenCvTargetWarning = true;
++#else
++	inline constexpr bool kFiltersOpenCvTargetWarning = false;
++#endif
++
++	// One OpenCV log record as passed to writeLogMessageEx(); any pointer may be null.
++	struct OpenCvLogRecord {
++		cv::utils::logging::LogLevel level   = cv::utils::logging::LOG_LEVEL_SILENT;
++		const char                  *file    = nullptr;
++		const char                  *func    = nullptr;
++		const char                  *message = nullptr;
++	};
++
++	// True only for that exact warning: level, source file, function, and message must all match,
++	// and only on the affected OpenCV versions.
++	[[nodiscard]] auto IsFilteredOpenCvLogMessage(const OpenCvLogRecord &record) -> bool;
++
++	// Routes OpenCV log output through a filter that drops IsFilteredOpenCvLogMessage() records
++	// and forwards every other record with OpenCV's own formatting. No-op on unaffected versions.
++	void InstallOpenCvLogFilter();
++
++	// OPENCV_FORCE_DNN_ENGINE value that selects the New DNN graph engine for the OpenCV
++	// version Howdy was built against: ENGINE_NEW on 5.0, ENGINE_OPENCV on 5.1+. OpenCV 5.1
++	// removed the Classic engine and renamed ENGINE_NEW to ENGINE_OPENCV; its value 2 now means
++	// ENGINE_ORT (ONNX Runtime), so do not hard-code it.
++	[[nodiscard]] auto ForcedDnnEngine() -> const char *;
++
+ 	struct FaceModel::Backend {
+ 		std::function<OpenCvModelReadiness(const std::filesystem::path &)> check_readiness;
+ 		std::function<cv::Ptr<cv::FaceDetectorYN>(const std::string &, const cv::Size &, float,
+diff --git a/howdy/src/vision/AGENTS.md b/howdy/src/vision/AGENTS.md
+index 1caa95e..9eae20b 100644
+--- a/howdy/src/vision/AGENTS.md
++++ b/howdy/src/vision/AGENTS.md
+@@ -6,12 +6,28 @@ Read [`../../AGENTS.md`](../../AGENTS.md) first.
+ 
+ ## Model Baseline
+ 
+-Current production inference uses OpenCV 5 DNN with `OPENCV_FORCE_DNN_ENGINE=2`. The packaged pair
+-is YuNet `face_detection_yunet_2026may.onnx` and SFace `face_recognition_sface_2021dec_int8.onnx`.
++Current production inference uses the OpenCV 5 New DNN graph engine, pinned through
++`OPENCV_FORCE_DNN_ENGINE` (`ForcedDnnEngine()`: `ENGINE_NEW` on OpenCV 5.0, `ENGINE_OPENCV` on 5.1+
++after the engine enum was renumbered and the Classic engine removed). The packaged pair is YuNet
++`face_detection_yunet_2026may.onnx` and SFace `face_recognition_sface_2021dec_int8.onnx`.
+ 
+ Do not add model combinations or runtime model-path overrides without fresh OpenCV 5 validation.
+-OpenCV versions before 5.1 may print an upstream `setPreferableTarget` warning with the new graph
+-engine; do not add a local workaround for that warning.
++
++OpenCV 5.0.0 and 5.1.0 print a cosmetic upstream `setPreferableTarget` warning ("Targets are not
++supported by the new graph engine for now") when YuNet and SFace load; inference still runs on the
++New graph engine. Upstream status, history, and the remaining work live in
++[issue #2](https://github.com/nathawatc/howdy-next/issues/2); do not duplicate them here.
++
++`ConfigureFaceModelEnvironment()` installs `InstallOpenCvLogFilter()`, which drops only that record
++(level, source file, function, and message must all match) on OpenCV 5.0.0 through 5.1.0
++(`kFiltersOpenCvTargetWarning`) and forwards every other OpenCV log record with OpenCV's own
++formatting. Keep the filter for 5.0.0 through 5.1.0 even after upstream ships a fix: those releases
++always print the warning. Extend the version range only after confirming a newer release still
++prints the warning. Do not broaden it into log level changes or other message suppression.
++
++OpenCV 5.1 SFace embeddings differ slightly from 5.0 (cosine about 0.99 for the same input), while
++YuNet detections and the preprocessing pipeline are bit-identical. Enrollments made on 5.0 remain
++usable on 5.1; scores sitting right at `sface_threshold` may move by a few hundredths.
+ 
+ ## Ownership
+ 
+diff --git a/howdy/src/vision/face_model.cpp b/howdy/src/vision/face_model.cpp
+index 788fef3..4f8d1ca 100644
+--- a/howdy/src/vision/face_model.cpp
++++ b/howdy/src/vision/face_model.cpp
+@@ -11,6 +11,7 @@
+ #include "vision/face_model/internal.hpp"
+ #include "vision/frame_validation.hpp"
+ 
++#include <array>
+ #include <exception>
+ #include <filesystem>
+ #include <memory>
+@@ -25,6 +26,10 @@
+ #include <opencv2/core/hal/interface.h>
+ #include <opencv2/core/mat.hpp>
+ #include <opencv2/core/types.hpp>
++#include <opencv2/core/utils/logger.defines.hpp>
++#include <opencv2/core/utils/logger.hpp>
++#include <opencv2/core/version.hpp>
++#include <opencv2/dnn/dnn.hpp>
+ #include <opencv2/imgproc.hpp>
+ #include <opencv2/objdetect/face.hpp>
+ 
+@@ -47,16 +52,97 @@ namespace howdy::native {
+ 		void ExtractFeature(void *context, const cv::Mat &aligned, cv::Mat &feature) {
+ 			static_cast<cv::FaceRecognizerSF *>(context)->feature(aligned, feature);
+ 		}
++
++		// Per-version mapping is documented at ForcedDnnEngine() in vision/face_model/internal.hpp.
++#if CV_VERSION_MAJOR == 5 && CV_VERSION_MINOR == 0
++		constexpr int kForcedEngine = cv::dnn::ENGINE_NEW;
++#else
++		constexpr int kForcedEngine = cv::dnn::ENGINE_OPENCV;
++#endif
++		static_assert(kForcedEngine > 0 && kForcedEngine <= 9,
++		              "OPENCV_FORCE_DNN_ENGINE value must be a single digit");
++		constexpr std::array<char, 2> kForcedEngineValue{
++		    static_cast<char>('0' + kForcedEngine),
++		    '\0',
++		};
++
++		constexpr std::string_view kTargetWarningFile     = "net_impl_backend.cpp";
++		constexpr std::string_view kTargetWarningFunction = "setPreferableTarget";
++		constexpr std::string_view kTargetWarningMessage =
++		    "Targets are not supported by the new graph engine for now";
++
++		// Mirrors OpenCV's stripSourceFilePathPrefix(): keep the full path when it ends in a
++		// separator.
++		auto SourceFileName(std::string_view file) -> std::string_view {
++			const auto separator = file.find_last_of("/\\");
++			if (separator == std::string_view::npos || separator + 1 == file.size()) {
++				return file;
++			}
++			return file.substr(separator + 1);
++		}
++
++		// Signature fixed by cv::utils::logging::WriteLogMessageExFuncType.
++		// NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
++		void WriteFilteredOpenCvLogMessage(cv::utils::logging::LogLevel level, const char *tag,
++		                                   const char *file, int line, const char *func,
++		                                   const char *message) {
++			if (IsFilteredOpenCvLogMessage(
++			        {.level = level, .file = file, .func = func, .message = message})) {
++				return;
++			}
++			// Same layout as OpenCV's default writeLogMessageEx(); writeLogMessage() then adds
++			// the level/thread prefix and selects the output stream.
++			std::string text;
++			if (tag != nullptr) {
++				text.append(tag).push_back(' ');
++			}
++			if (file != nullptr) {
++				text.append(SourceFileName(file));
++				if (line > 0) {
++					text.append(":").append(std::to_string(line));
++				}
++				text.push_back(' ');
++			}
++			if (func != nullptr) {
++				text.append(func).push_back(' ');
++			}
++			if (message != nullptr) {
++				text.append(message);
++			}
++			cv::utils::logging::internal::writeLogMessage(level, text.c_str());
++		}
+ 	}  // namespace
+ 
++	auto ForcedDnnEngine() -> const char * {
++		return kForcedEngineValue.data();
++	}
++
++	auto IsFilteredOpenCvLogMessage(const OpenCvLogRecord &record) -> bool {
++		if (!kFiltersOpenCvTargetWarning || record.level != cv::utils::logging::LOG_LEVEL_WARNING ||
++		    record.file == nullptr || record.func == nullptr || record.message == nullptr) {
++			return false;
++		}
++		return SourceFileName(record.file) == kTargetWarningFile &&
++		       record.func == kTargetWarningFunction && record.message == kTargetWarningMessage;
++	}
++
++	void InstallOpenCvLogFilter() {
++		if constexpr (kFiltersOpenCvTargetWarning) {
++			// Atomic in OpenCV and idempotent, so repeated calls from parallel init are safe.
++			cv::utils::logging::internal::replaceWriteLogMessageEx(&WriteFilteredOpenCvLogMessage);
++		}
++	}
++
+ 	auto ConfigureFaceModelEnvironment() -> bool {
++		InstallOpenCvLogFilter();
+ 		// Avoid environment mutation when compare has configured it before its worker starts.
+ 		const auto *engine = getenv("OPENCV_FORCE_DNN_ENGINE");
+-		if (engine != nullptr && std::string_view(engine) == "2") {
++		if (engine != nullptr && std::string_view(engine) == ForcedDnnEngine()) {
+ 			return true;
+ 		}
+-		// Temporary OpenCV 5 workaround: forbid Classic-engine fallback for our ONNX models.
+-		return setenv("OPENCV_FORCE_DNN_ENGINE", "2", 1) == 0;
++		// Pin the intended engine: OpenCV 5.0 would otherwise fall back to the Classic engine,
++		// and an inherited value could select another engine such as ONNX Runtime.
++		return setenv("OPENCV_FORCE_DNN_ENGINE", ForcedDnnEngine(), 1) == 0;
+ 	}
+ 
+ 	FaceModel::FaceModel(const FaceConfig &config)
+diff --git a/howdy/tests/vision/face_model_test.cpp b/howdy/tests/vision/face_model_test.cpp
+index da34be0..d12e9c2 100644
+--- a/howdy/tests/vision/face_model_test.cpp
++++ b/howdy/tests/vision/face_model_test.cpp
+@@ -7,15 +7,20 @@
+ #include "vision/face_encoding.hpp"
+ #include "vision/face_inference.hpp"
+ #include "vision/face_model.hpp"
++#include "vision/face_model/internal.hpp"
+ #include "vision/face_model_test_access.hpp"
+ 
+ #include <array>
+ #include <cstdint>
+ #include <cstdlib>
+ #include <filesystem>
++#include <iostream>
+ #include <memory>
+ #include <optional>
++#include <ranges>
++#include <sstream>
+ #include <stdexcept>
++#include <streambuf>
+ #include <string>
+ #include <utility>
+ 
+@@ -26,6 +31,10 @@
+ #include <opencv2/core/hal/interface.h>
+ #include <opencv2/core/mat.hpp>
+ #include <opencv2/core/types.hpp>
++#include <opencv2/core/utils/logger.defines.hpp>
++#include <opencv2/core/utils/logger.hpp>
++#include <opencv2/core/version.hpp>
++#include <opencv2/dnn/dnn.hpp>
+ #include <opencv2/objdetect/face.hpp>
+ 
+ namespace {
+@@ -461,11 +470,140 @@ namespace {
+ 		return ok;
+ 	}
+ 
+-	auto TestDnnEngineEnvironment() -> bool {
++	constexpr auto kTargetWarningPath     = "/build/opencv/modules/dnn/src/net_impl_backend.cpp";
++	constexpr auto kTargetWarningFunction = "setPreferableTarget";
++	constexpr auto kTargetWarningMessage =
++	    "Targets are not supported by the new graph engine for now";
++
++	auto TestOpenCvLogFilterPredicate() -> bool {
++		using howdy::native::IsFilteredOpenCvLogMessage;
++		using howdy::native::OpenCvLogRecord;
++		namespace logging        = cv::utils::logging;
++		bool                  ok = true;
++		const OpenCvLogRecord target{
++		    .level   = logging::LOG_LEVEL_WARNING,
++		    .file    = kTargetWarningPath,
++		    .func    = kTargetWarningFunction,
++		    .message = kTargetWarningMessage,
++		};
++		ok &=
++		    Expect(IsFilteredOpenCvLogMessage(target) == howdy::native::kFiltersOpenCvTargetWarning,
++			       "target warning is filtered only on affected OpenCV versions");
++
++		auto other_level   = target;
++		other_level.level  = logging::LOG_LEVEL_ERROR;
++		auto other_file    = target;
++		other_file.file    = "/build/opencv/modules/dnn/src/net_impl.cpp";
++		auto other_func    = target;
++		other_func.func    = "setPreferableBackend";
++		auto other_text    = target;
++		other_text.message = "Targets are not supported by the new graph engine";
++		auto null_file     = target;
++		null_file.file     = nullptr;
++		auto null_func     = target;
++		null_func.func     = nullptr;
++		auto null_text     = target;
++		null_text.message  = nullptr;
++		for (const auto &record :
++		     {other_level, other_file, other_func, other_text, null_file, null_func, null_text}) {
++			ok &= Expect(!IsFilteredOpenCvLogMessage(record),
++			             "log filter keeps records that differ from the target warning");
++		}
++		return ok;
++	}
++
++	// Removes the "<thread>@<time>" part of OpenCV's "[ WARN:<thread>@<time>] " prefix, which
++	// differs between calls.
++	auto NormalizeOpenCvLogLine(const std::string &line) -> std::string {
++		const auto colon   = line.find(':');
++		const auto bracket = line.find("] ");
++		if (colon == std::string::npos || bracket == std::string::npos || bracket < colon) {
++			return line;
++		}
++		return line.substr(0, colon) + line.substr(bracket);
++	}
++
++	// Restores std::cerr's buffer even if the logging call throws.
++	class ScopedStderrCapture {
++	public:
++		ScopedStderrCapture()
++		    : previous_(std::cerr.rdbuf(captured_.rdbuf())) {}
++
++		~ScopedStderrCapture() {
++			std::cerr.rdbuf(previous_);
++		}
++
++		ScopedStderrCapture(const ScopedStderrCapture &)                     = delete;
++		ScopedStderrCapture(ScopedStderrCapture &&)                          = delete;
++		auto operator=(const ScopedStderrCapture &) -> ScopedStderrCapture & = delete;
++		auto operator=(ScopedStderrCapture &&) -> ScopedStderrCapture &      = delete;
++
++		[[nodiscard]] auto Text() const -> std::string {
++			return captured_.str();
++		}
++
++	private:
++		std::ostringstream captured_;
++		std::streambuf    *previous_;
++	};
++
++	auto CaptureOpenCvLog(cv::utils::logging::LogLevel level, const char *tag, const char *file,
++	                      const char *func, const char *message) -> std::string {
++		const ScopedStderrCapture capture;
++		cv::utils::logging::internal::writeLogMessageEx(level, tag, file, 42, func, message);
++		return NormalizeOpenCvLogLine(capture.Text());
++	}
++
++	auto TestOpenCvLogFilterOutput() -> bool {
++		namespace logging         = cv::utils::logging;
++		bool       ok             = true;
++		const auto capture_target = [] -> std::string {
++			return CaptureOpenCvLog(logging::LOG_LEVEL_WARNING, "global", kTargetWarningPath,
++			                        kTargetWarningFunction, kTargetWarningMessage);
++		};
++		const auto capture_others = [] -> std::array<std::string, 4> {
++			return {
++			    CaptureOpenCvLog(logging::LOG_LEVEL_WARNING, "global", kTargetWarningPath,
++				                 kTargetWarningFunction, "Targets are not supported for OpenCL"),
++			    CaptureOpenCvLog(logging::LOG_LEVEL_ERROR, "global",
++				                 "/build/opencv/modules/dnn/src/onnx/onnx_importer.cpp",
++				                 "readNetFromONNX", "DNN/ONNX: failed to load model"),
++			    CaptureOpenCvLog(logging::LOG_LEVEL_WARNING, nullptr, nullptr, nullptr,
++				                 "untagged warning"),
++			    CaptureOpenCvLog(logging::LOG_LEVEL_WARNING, "global", "/", "", "edge path"),
++			};
++		};
++
++		logging::internal::replaceWriteLogMessageEx(nullptr);
++		const auto unfiltered_target = capture_target();
++		const auto unfiltered_others = capture_others();
++		howdy::native::InstallOpenCvLogFilter();
++		const auto filtered_target = capture_target();
++		const auto filtered_others = capture_others();
++		logging::internal::replaceWriteLogMessageEx(nullptr);
++
++		ok &= Expect(unfiltered_target.starts_with("[ WARN] global net_impl_backend.cpp:42 "
++		                                           "setPreferableTarget Targets are not supported"),
++		             "default OpenCV writer prints the target warning");
++		if constexpr (howdy::native::kFiltersOpenCvTargetWarning) {
++			ok &= Expect(filtered_target.empty(), "log filter drops the target warning");
++		} else {
++			ok &= Expect(filtered_target == unfiltered_target,
++			             "log filter is not installed on unaffected OpenCV versions");
++		}
++		for (const auto &[before, after] : std::views::zip(unfiltered_others, filtered_others)) {
++			ok &= Expect(!before.empty() && after == before,
++			             "log filter forwards other records with OpenCV formatting");
++		}
++		return ok;
++	}
++
++	auto TestDnnEngineOverride(const std::string &forced_engine,
++	                           const std::string &conflicting_engine) -> bool {
+ 		bool ok = true;
+ 		for (const bool preconfigure : {false, true}) {
+ 			const ScopedEnvironment environment(kDnnEngineEnv);
+-			setenv(kDnnEngineEnv, "1", 1);
++			setenv(kDnnEngineEnv, conflicting_engine.c_str(), 1);
+ 			if (preconfigure) {
+ 				ok &= Expect(howdy::native::ConfigureFaceModelEnvironment(),
+ 				             "DNN engine can be configured before parallel initialization");
+@@ -496,16 +634,47 @@ namespace {
+ 			    howdy::native::DefaultFaceConfig(), std::move(backend));
+ 			ok &= Expect(model.Ok(), "engine override model initializes");
+ 			const auto *engine = std::getenv(kDnnEngineEnv);
+-			ok &= Expect(engine != nullptr && std::string(engine) == "2",
++			ok &= Expect(engine != nullptr && engine == forced_engine,
+ 			             "New DNN graph engine overrides conflicting environment");
+-			ok &= Expect(readiness_engine == (preconfigure ? "2" : "1"),
++			ok &= Expect(readiness_engine == (preconfigure ? forced_engine : conflicting_engine),
+ 			             "readiness checks preserve the preconfigured DNN engine");
+-			ok &= Expect(detector_engine == "2",
++			ok &= Expect(detector_engine == forced_engine,
+ 			             "New DNN graph engine is forced before factory call");
+ 		}
+ 		return ok;
+ 	}
+ 
++	auto TestDnnEngineEnvironment() -> bool {
++		bool              ok = true;
++		const std::string forced_engine(howdy::native::ForcedDnnEngine());
++		// Pin the expected value independently of production so a renumbered enum or a wrong
++		// version branch fails here. Every other engine an inherited value could select must be
++		// overridden.
++#if CV_VERSION_MAJOR == 5 && CV_VERSION_MINOR == 0
++		constexpr auto   expected_engine = "2";  // ENGINE_NEW
++		const std::array conflicting_engines{
++		    cv::dnn::ENGINE_CLASSIC,
++		    cv::dnn::ENGINE_AUTO,
++		    cv::dnn::ENGINE_ORT,
++		};
++#else
++		constexpr auto   expected_engine = "1";  // ENGINE_OPENCV
++		const std::array conflicting_engines{
++		    cv::dnn::ENGINE_AUTO,
++		    cv::dnn::ENGINE_ORT,
++		};
++#endif
++		ok &= Expect(forced_engine == expected_engine,
++		             "forced DNN engine selects the New graph engine for this OpenCV version");
++		for (const auto conflicting : conflicting_engines) {
++			const std::string conflicting_engine = std::to_string(conflicting);
++			ok &= Expect(conflicting_engine != forced_engine,
++			             "conflicting DNN engine differs from the forced engine");
++			ok &= TestDnnEngineOverride(forced_engine, conflicting_engine);
++		}
++		return ok;
++	}
++
+ }  // namespace
+ 
+ auto main() -> int {
+@@ -541,6 +710,8 @@ auto main() -> int {
+ 	}
+ 
+ 	ok &= TestDnnEngineEnvironment();
++	ok &= TestOpenCvLogFilterPredicate();
++	ok &= TestOpenCvLogFilterOutput();
+ 
+ 	{
+ 		auto backend            = SuccessfulBackend();
+-- 
+2.56.1
+
