@@ -1,11 +1,12 @@
 From: hockinglee <hockinglee@gmail.com>
 Subject: cli_classic: Add --ignore-size to write/verify images smaller than the flash
 
-Adds --ignore-size (-w/-v with images smaller than the flash) and
---read-size (-r of only the first N bytes) to the classic CLI.
+Adds --ignore-size (-w/-v with images smaller than the flash; writes
+read and verify only the image range) and --read-size (-r of only the
+first N bytes) to the classic CLI.
 
 diff --git a/cli_classic.c b/cli_classic.c
-index 19d401f5..04c48748 100644
+index 19d401f5..acc4a8a4 100644
 --- a/cli_classic.c
 +++ b/cli_classic.c
 @@ -49,6 +49,8 @@ enum {
@@ -26,19 +27,20 @@ index 19d401f5..04c48748 100644
  
  #if CONFIG_RPMC_ENABLED == 1
  	bool rpmc_read_data;
-@@ -145,6 +149,11 @@ static void cli_classic_usage(const char *name)
+@@ -145,6 +149,12 @@ static void cli_classic_usage(const char *name)
  	       "      --image <region>[:<file>]     deprecated, please use --include\n"
  	       " -o | --output <logfile>            log output to <logfile>\n"
  	       "      --flash-contents <ref-file>   assume flash contents to be <ref-file>\n"
 +	       "      --ignore-size                 with -w/-v: accept an image smaller than the\n"
 +	       "                                    flash; only the first <image size> bytes are\n"
-+	       "                                    written/verified, the rest is left untouched\n"
++	       "                                    written/verified, the rest is neither read\n"
++	       "                                    nor touched (implies -N for writes)\n"
 +	       "      --read-size <size>            with -r: read only the first <size> bytes of the\n"
 +	       "                                    flash (decimal, 0x hex, optional K/M suffix)\n"
  	       " -L | --list-supported              print supported devices\n"
  	       "      --progress                    show progress percentage on the standard output\n"
  	       "      --sacrifice-ratio <ratio>     Fraction (as a percentage, 0-50) of an erase block\n"
-@@ -671,8 +680,35 @@ static int do_read_repeated(struct flashctx *const flash, int count, const char
+@@ -671,8 +681,35 @@ static int do_read_repeated(struct flashctx *const flash, int count, const char
  	return ret;
  }
  
@@ -75,7 +77,7 @@ index 19d401f5..04c48748 100644
  	int ret;
  
  	unsigned long size = flashrom_flash_getsize(flash);
-@@ -680,7 +716,23 @@ static int do_read(struct flashctx *const flash, const char *const filename)
+@@ -680,7 +717,23 @@ static int do_read(struct flashctx *const flash, const char *const filename)
  	if (!buf)
  		return 1;
  
@@ -100,7 +102,7 @@ index 19d401f5..04c48748 100644
  	if (ret > 0)
  		goto free_out;
  
-@@ -692,6 +744,7 @@ static int do_read(struct flashctx *const flash, const char *const filename)
+@@ -692,6 +745,7 @@ static int do_read(struct flashctx *const flash, const char *const filename)
  		ret = write_buf_to_file(buf, size, filename);
  
  free_out:
@@ -108,7 +110,7 @@ index 19d401f5..04c48748 100644
  	free(buf);
  	return ret;
  }
-@@ -699,12 +752,70 @@ free_out:
+@@ -699,12 +753,70 @@ free_out:
  static int do_extract(struct flashctx *const flash)
  {
  	prepare_layout_for_extraction(flash);
@@ -181,7 +183,7 @@ index 19d401f5..04c48748 100644
  	int ret = 1;
  
  	uint8_t *const newcontents = alloc_flashsize_buf(flash);
-@@ -714,7 +825,10 @@ static int do_write(struct flashctx *const flash, const char *const filename, co
+@@ -714,7 +826,16 @@ static int do_write(struct flashctx *const flash, const char *const filename, co
  		goto _free_ret;
  
  	/* Read '-w' argument first... */
@@ -189,11 +191,17 @@ index 19d401f5..04c48748 100644
 +	if (filename && ignore_size) {
 +		if (read_partial_image(flash, newcontents, flash_size, filename, &partial_layout))
 +			goto _free_ret;
++		/*
++		 * Only the image range changes: don't read and verify the whole chip
++		 * (like -N). Partially covered erase blocks are still read and restored.
++		 */
++		if (partial_layout)
++			flashrom_flag_set(flash, FLASHROM_FLAG_VERIFY_WHOLE_CHIP, false);
 +	} else if (filename) {
  		if (read_buf_from_file(newcontents, flash_size, filename))
  			goto _free_ret;
  	}
-@@ -733,14 +847,16 @@ static int do_write(struct flashctx *const flash, const char *const filename, co
+@@ -733,14 +854,16 @@ static int do_write(struct flashctx *const flash, const char *const filename, co
  	ret = flashrom_image_write(flash, newcontents, flash_size, refcontents);
  
  _free_ret:
@@ -211,7 +219,7 @@ index 19d401f5..04c48748 100644
  	int ret = 1;
  
  	uint8_t *const newcontents = alloc_flashsize_buf(flash);
-@@ -748,7 +864,10 @@ static int do_verify(struct flashctx *const flash, const char *const filename)
+@@ -748,7 +871,10 @@ static int do_verify(struct flashctx *const flash, const char *const filename)
  		goto _free_ret;
  
  	/* Read '-v' argument first... */
@@ -223,7 +231,7 @@ index 19d401f5..04c48748 100644
  		if (read_buf_from_file(newcontents, flash_size, filename))
  			goto _free_ret;
  	}
-@@ -762,6 +881,7 @@ static int do_verify(struct flashctx *const flash, const char *const filename)
+@@ -762,6 +888,7 @@ static int do_verify(struct flashctx *const flash, const char *const filename)
  	ret = flashrom_image_verify(flash, newcontents, flash_size);
  
  _free_ret:
@@ -231,7 +239,7 @@ index 19d401f5..04c48748 100644
  	free(newcontents);
  	return ret;
  }
-@@ -1037,6 +1157,30 @@ static void parse_options(int argc, char **argv, const char *optstring,
+@@ -1037,6 +1164,30 @@ static void parse_options(int argc, char **argv, const char *optstring,
  			/* It is okay to convert invalid input to 0. */
  			options->sacrifice_ratio = atoi(optarg);
  			break;
@@ -262,7 +270,7 @@ index 19d401f5..04c48748 100644
  		case OPTION_READ_REPEATED:
  			cli_classic_validate_singleop(&operation_specified);
  			if (optarg) {
-@@ -1087,6 +1231,24 @@ static void parse_options(int argc, char **argv, const char *optstring,
+@@ -1087,6 +1238,24 @@ static void parse_options(int argc, char **argv, const char *optstring,
  
  	if (optind < argc)
  		cli_classic_abort_usage("Error: Extra parameter found.\n");
@@ -287,7 +295,7 @@ index 19d401f5..04c48748 100644
  }
  
  static void free_options(struct cli_options *options)
-@@ -1157,6 +1319,8 @@ int main(int argc, char *argv[])
+@@ -1157,6 +1326,8 @@ int main(int argc, char *argv[])
  		{"progress",		0, NULL, OPTION_PROGRESS},
  		{"sacrifice-ratio",	1, NULL, OPTION_SACRIFICE_RATIO},
  		{"read-repeated",	2, NULL, OPTION_READ_REPEATED},
@@ -296,7 +304,7 @@ index 19d401f5..04c48748 100644
  #if CONFIG_RPMC_ENABLED == 1
  		{"get-rpmc-status",	0, NULL, OPTION_RPMC_READ_DATA},
  		{"write-root-key",	0, NULL, OPTION_RPMC_WRITE_ROOT_KEY},
-@@ -1338,7 +1502,7 @@ int main(int argc, char *argv[])
+@@ -1338,7 +1509,7 @@ int main(int argc, char *argv[])
  			}
  			msg_cinfo("Please note that forced reads most likely contain garbage.\n");
  			flashrom_flag_set(context, FLASHROM_FLAG_FORCE, options.force);
@@ -305,7 +313,7 @@ index 19d401f5..04c48748 100644
  			free(context->chip);
  			goto out_shutdown;
  		}
-@@ -1617,16 +1781,16 @@ int main(int argc, char *argv[])
+@@ -1617,16 +1788,16 @@ int main(int argc, char *argv[])
  	if (options.read_repeated > 0)
  		ret = do_read_repeated(context, options.read_repeated, options.filename);
  	else if (options.read_it)
@@ -326,10 +334,10 @@ index 19d401f5..04c48748 100644
  #if CONFIG_RPMC_ENABLED == 1
  	if (any_rpmc_op && ret == 0) {
 diff --git a/doc/classic_cli_manpage.rst b/doc/classic_cli_manpage.rst
-index 7559fd79..07357f52 100644
+index 7559fd79..ed18f8db 100644
 --- a/doc/classic_cli_manpage.rst
 +++ b/doc/classic_cli_manpage.rst
-@@ -316,6 +316,31 @@ All operations involving any chip access (probe/read/write/...) require the ``-p
+@@ -316,6 +316,33 @@ All operations involving any chip access (probe/read/write/...) require the ``-p
          Be careful, if the provided data doesn't actually match the flash contents, results are undefined.
  
  
@@ -338,6 +346,8 @@ index 7559fd79..07357f52 100644
 +        of failing with "Image size doesn't match the expected size". Only the first *<image size>* bytes of
 +        the flash are written or verified, starting at offset 0; the rest of the chip is left untouched
 +        (erase blocks that are only partially covered are restored to their previous contents).
++        When writing, only the image range is read beforehand and verified afterwards, as with **-N**;
++        the rest of the chip is not read at all.
 +        Images larger than the flash chip are still rejected.
 +
 +        This option creates its own layout internally and can not be combined with **-l**, **--ifd**,
