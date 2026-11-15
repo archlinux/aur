@@ -1,7 +1,7 @@
 pkgbase = pi-ext-commandcode
 	pkgdesc = Command Code provider for the Pi coding agent (unofficial community integration)
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/patlux/pi-commandcode-provider
 	install = pi-ext-commandcode.install
 	arch = any

@@ -2,14 +2,14 @@
 
 pkgname=pi-ext-commandcode
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Command Code provider for the Pi coding agent (unofficial community integration)'
 arch=('any')
 url='https://github.com/patlux/pi-commandcode-provider'
 license=('MIT')
 install="${pkgname}.install"
 
-_pi_pkgroot=/usr/lib/pi/packages
+_pi_pkgroot=/usr/share/pi/extensions
 _piname=pi-commandcode-provider
 _npmname=pi-commandcode-provider
 
