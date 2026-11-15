@@ -2,7 +2,7 @@
 
 _pkgname='opensuse'
 pkgname='libvirt-iso-opensuse-tumbleweed-bin'
-pkgver=20261107
+pkgver=20261111
 pkgrel=1
 pkgdesc='Official openSUSE Tumbleweed network installation ISO for libvirt'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
 )
 noextract=("${_archive}")
 sha256sums=(
-	'24f030bc950d6dd2c057821e69342ebf9216f19fd98a6e71aa95ede34cfa5ba1'
+	'8cf4356064dfcc4c199fef95c3eff16c270f41a934e75896363768753de800ea'
 	'SKIP'
 	'SKIP'
 	'SKIP'
