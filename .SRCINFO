@@ -1,0 +1,23 @@
+pkgbase = venture-bin
+	pkgdesc = Meta Quest emulator for PC VR (prebuilt release)
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://venture-emu.org/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc>=2.35
+	depends = gcc-libs
+	depends = vulkan-icd-loader
+	optdepends = libsecret: keep sign-ins in the desktop keyring
+	optdepends = fontconfig: system fonts in the launcher
+	optdepends = monado: OpenXR runtime
+	optdepends = wivrn-server: OpenXR runtime for streaming to a standalone headset
+	provides = venture
+	conflicts = venture
+	conflicts = venture-git
+	options = !strip
+	options = !debug
+	source = Venture-0.2.4-linux-x86_64.tar.gz::https://github.com/Villagers654/Venture/releases/download/v0.2.4/Venture-0.2.4-linux-x86_64.tar.gz
+	sha256sums = 98ce67a320e4edbbaab7062c424a4dfa0333bd57e962740cf3a5fda104591a78
+
+pkgname = venture-bin
