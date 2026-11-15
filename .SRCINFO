@@ -1,7 +1,7 @@
 pkgbase = pi-ext-workspace-history
 	pkgdesc = Undo and redo for the Pi coding agent: rewinds files and conversation together
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wcldyx/pi-workspace-history
 	install = pi-ext-workspace-history.install
 	arch = any
