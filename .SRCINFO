@@ -1,0 +1,17 @@
+pkgbase = kwin-type
+	pkgdesc = Autotype text from stdin on KDE's KWin Wayland compositor
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://git.zx2c4.com/kwin-type
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dbus
+	depends = glibc
+	depends = kwin
+	depends = libei
+	source = git+https://git.zx2c4.com/kwin-type#tag=v0.2?signed
+	validpgpkeys = AB9942E6D4A4CFC3412620A749FC7012A5DE03AE
+	sha256sums = 57cc4ae2d4ef6ad741d6089a2afcdf941cbc91abb61f4df9b521afa850fe8e21
+
+pkgname = kwin-type
