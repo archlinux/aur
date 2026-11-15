@@ -2,41 +2,38 @@
 
 pkgname=genoffice-arch-bin
 pkgver=0.13.18
-pkgrel=1
-pkgdesc='Free, open-source AI office suite: docs, sheets, slides, PDF and markdown editors (official .deb repackaged)'
-arch=('x86_64')
+pkgrel=2
+pkgdesc='Free, open-source AI office suite: docs, sheets, slides, PDF and markdown editors (built from source)'
+arch=('x86_64' 'aarch64')
 url='https://genoffice.ai/'
 license=('Apache-2.0')
 # Electron runtime dependencies: the deb's Depends (mapped to Arch names) plus
-# libasound, which the Electron binary links directly. nodejs is NOT needed --
-# the CLI runs through the bundled Electron binary with
-# ELECTRON_RUN_AS_NODE=1. libappindicator is dlopen'ed for the tray icon.
+# libasound, which the Electron binary links directly. The tray icon library is
+# dlopen'ed, so it stays optional. The bundled CLI runs through the packaged
+# Electron binary with ELECTRON_RUN_AS_NODE=1 -- no system nodejs is needed.
 depends=('alsa-lib' 'at-spi2-core' 'gtk3' 'libcups' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nss' 'util-linux-libs' 'xdg-utils')
 optdepends=('libappindicator: tray icon support')
 provides=('genoffice')
 conflicts=('genoffice' 'genoffice-bin')
 options=('!strip' '!debug')
 
-# The payload is the upstream .deb; only the license text comes from the repo
-# at the release tag (see [extras.license] in metadata.toml).
-source=("genoffice_${pkgver}_amd64.deb::https://github.com/genspark-ai/genoffice/releases/download/v${pkgver}/genoffice_0.13.18_amd64.deb"
-        "LICENSE::https://raw.githubusercontent.com/genspark-ai/genoffice/v0.13.18/LICENSE")
-sha256sums=('29766e49a73a18444e939200fbff9b5acc38d6f24d606f41a7a1b7b7bfa0ba88'
-            '68e32334df324ef4fc79fad3a26487e5abac36055a484bb6c8d7ecf9d8350885')
+# Built by this repository's build workflow on Arch (x86_64) and a native arm64
+# runner (aarch64); see [build] in metadata.toml. Installing needs no toolchain.
+source_x86_64=("genoffice-arch-bin-${pkgver}-1-x86_64.pkg.tar.zst::https://github.com/collegeming/aur-release/releases/download/aur-built-latest/genoffice-arch-bin-0.13.18-1-x86_64.pkg.tar.zst")
+sha256sums_x86_64=('d91ae6b09223c36d92f1634b9716a7fc540b974dbf2da0035fca78f6201fa4e9')
+source_aarch64=("genoffice-arch-bin-${pkgver}-1-aarch64.pkg.tar.zst::https://github.com/collegeming/aur-release/releases/download/aur-built-latest/genoffice-arch-bin-0.13.18-1-aarch64.pkg.tar.zst")
+sha256sums_aarch64=('f1baa046cc78259e8a8854dad62a97ad29275c52210c6f76c5755adb48624bd9')
 
 package() {
-    cd "${srcdir}"
+    local pkg
+    case "${CARCH}" in
+        x86_64)  pkg="genoffice-arch-bin-${pkgver}-1-x86_64.pkg.tar.zst" ;;
+        aarch64) pkg="genoffice-arch-bin-${pkgver}-1-aarch64.pkg.tar.zst" ;;
+    esac
 
-    # A .deb is an ar container (debian-binary, control.tar.*, data.tar.*).
-    # libarchive reads the container but does not recurse into its members, so
-    # unpack it once and then extract the payload tarball into $pkgdir. The deb
-    # layout (/opt/GenOffice plus usr/share icons/desktop/mime) is what the
-    # Electron binary and its desktop entry expect.
-    bsdtar -xf "genoffice_${pkgver}_amd64.deb" data.tar.*
-    bsdtar -xf data.tar.* -C "${pkgdir}"
-
-    mkdir -p "${pkgdir}/usr/bin"
-    ln -s /opt/GenOffice/genoffice "${pkgdir}/usr/bin/genoffice"
-
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # The source is already a pacman package: unpack its payload (minus the
+    # metadata files) straight into $pkgdir -- /opt/GenOffice, usr/bin, the
+    # desktop entry, icons and mime data all land in the right places.
+    bsdtar -xf "${srcdir}/${pkg}" -C "${pkgdir}" --exclude '.PKGINFO' --exclude '.BUILDINFO' --exclude '.MTREE'
+    chmod -R u=rwX,go=rX "${pkgdir}"
 }

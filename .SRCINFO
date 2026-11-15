@@ -1,9 +1,10 @@
 pkgbase = genoffice-arch-bin
-	pkgdesc = Free, open-source AI office suite: docs, sheets, slides, PDF and markdown editors (official .deb repackaged)
+	pkgdesc = Free, open-source AI office suite: docs, sheets, slides, PDF and markdown editors (built from source)
 	pkgver = 0.13.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://genoffice.ai/
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	depends = alsa-lib
 	depends = at-spi2-core
@@ -22,9 +23,9 @@ pkgbase = genoffice-arch-bin
 	conflicts = genoffice-bin
 	options = !strip
 	options = !debug
-	source = genoffice_0.13.18_amd64.deb::https://github.com/genspark-ai/genoffice/releases/download/v0.13.18/genoffice_0.13.18_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/genspark-ai/genoffice/v0.13.18/LICENSE
-	sha256sums = 29766e49a73a18444e939200fbff9b5acc38d6f24d606f41a7a1b7b7bfa0ba88
-	sha256sums = 68e32334df324ef4fc79fad3a26487e5abac36055a484bb6c8d7ecf9d8350885
+	source_x86_64 = genoffice-arch-bin-0.13.18-1-x86_64.pkg.tar.zst::https://github.com/collegeming/aur-release/releases/download/aur-built-latest/genoffice-arch-bin-0.13.18-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = d91ae6b09223c36d92f1634b9716a7fc540b974dbf2da0035fca78f6201fa4e9
+	source_aarch64 = genoffice-arch-bin-0.13.18-1-aarch64.pkg.tar.zst::https://github.com/collegeming/aur-release/releases/download/aur-built-latest/genoffice-arch-bin-0.13.18-1-aarch64.pkg.tar.zst
+	sha256sums_aarch64 = f1baa046cc78259e8a8854dad62a97ad29275c52210c6f76c5755adb48624bd9
 
 pkgname = genoffice-arch-bin
