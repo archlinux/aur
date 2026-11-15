@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pear-desktop-bin
 _app_id=com.github.th-ch.youtube-music
-pkgver=3.12.0
+pkgver=3.12.1
 pkgrel=1
 pkgdesc="YouTube Music Desktop App - including custom plugins"
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=('x86_64' 'aarch64')
 url="https://github.com/pear-devs/pear-desktop"
 license=('MIT')
 depends=(
@@ -19,12 +19,10 @@ source=( "license-$pkgver::https://github.com/pear-devs/pear-desktop/raw/v$pkgve
         'youtube-music.sh')
 source_x86_64=("https://github.com/pear-devs/pear-desktop/releases/download/v$pkgver/youtube-music_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/pear-devs/pear-desktop/releases/download/v$pkgver/youtube-music_${pkgver}_arm64.deb")
-source_armv7h=("https://github.com/pear-devs/pear-desktop/releases/download/v$pkgver/youtube-music_${pkgver}_armv7l.deb")
 sha256sums=('abc6a246b20c0106c9bbe9c31e65f10f5e2b2d28d7a72349b4f5095e86c22524'
             '3769e2d994ad011e8481f3ed448557cd9e5b5f1a805d84b4944639c807440d8c')
-sha256sums_x86_64=('cbf8996f565cbe01cd3a37cc9df0e52da3dcc3b889541117b512be7e4f2afde3')
-sha256sums_aarch64=('02427b3e1cec7aab24dbc653b3a12a0efa77fc8e5147b13e1f012bfa5e535ce8')
-sha256sums_armv7h=('ba41327129a34edc72f8457acd6de037608d7cb65ad49a9e22a32df1cfc412e6')
+sha256sums_x86_64=('be08b48dd9d43c8c468e06890dc84cce2950f93d38b4b854d5ccaf0e4127b2d6')
+sha256sums_aarch64=('3987bad0b7c1b5aedb5f5b7965fd41cd3ea714de6ee6d6b78bd3ebe7d09f82a1')
 
 package() {
   bsdtar xfv data.tar.xz -C "$pkgdir"
