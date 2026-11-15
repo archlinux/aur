@@ -1,14 +1,20 @@
 pkgbase = blimp-bin
-	pkgdesc = CLI for Kelda's Blimp (Docker Compose for the Cloud)
-	pkgver = 0.13.35
+	pkgdesc = Customizable terminal UI for monitoring weather information, application status, network latency, and more
+	pkgver = 0.4.0
 	pkgrel = 1
-	url = https://kelda.io/blimp
+	url = https://github.com/merlinfuchs/blimp
 	arch = x86_64
-	license = Apache
-	optdepends = docker: support for locally building custom images
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = blimp
+	conflicts = blimp
 	options = !strip
-	source = https://blimp-releases.s3-us-west-1.amazonaws.com/blimp-linux-0.13.35
-	sha256sums = 73ace559f0ced2e120366260211d14dbb4ed5710b0faf85cbe6e0ad09da7952e
+	source_x86_64 = blimp-x86_64-0.4.0.tgz::https://github.com/merlinfuchs/blimp/releases/download/v0.4.0/blimp_0.4.0_linux_amd64.tar.gz
+	b2sums_x86_64 = 0a2d6f8645247160084837f6355f1528f58ca063b5fe8661ba27b3314ad8f9084ebecdf370c8adfa392a829a4167407634844ee7ab0829d6bb129b6bfc544052
+	source_i686 = blimp-i686-0.4.0.tgz::https://github.com/merlinfuchs/blimp/releases/download/v0.4.0/blimp_0.4.0_linux_386.tar.gz
+	b2sums_i686 = ca7c4c0793c2df1feab4c94cd7d96d7eaaef66a1d03996077547908dee1ba3eb3431f314c60c140789d59c9c4241b859e5e8ec70fec42457b49ad43b7f341c90
+	source_aarch64 = blimp-aarch64-0.4.0.tgz::https://github.com/merlinfuchs/blimp/releases/download/v0.4.0/blimp_0.4.0_linux_arm64.tar.gz
+	b2sums_aarch64 = 69d98ee8d3104db08adb9222d59985b836328d1732fa1f6a432310e4ccb79d60465c8c7f6b9169470ff7c6e872e2f19b848b64975c8d4b3721989e3ce6a86c82
 
 pkgname = blimp-bin
-

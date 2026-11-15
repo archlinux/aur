@@ -1,0 +1,5 @@
+[blimp-bin]
+source = "github"
+github = "merlinfuchs/blimp"
+use_latest_release = true
+prefix = "v"
