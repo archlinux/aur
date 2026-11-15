@@ -1,12 +1,14 @@
 pkgbase = wg-portal
 	pkgdesc = Web-based WireGuard VPN configuration portal with user management
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/h44z/wg-portal
+	install = wg-portal.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
+	makedepends = git
 	makedepends = pnpm
 	makedepends = nodejs
 	depends = wireguard-tools
@@ -17,8 +19,10 @@ pkgbase = wg-portal
 	source = wg-portal-2.3.1.tar.gz::https://github.com/h44z/wg-portal/archive/refs/tags/v2.3.1.tar.gz
 	source = wg-portal.service
 	source = config.yml
+	source = wg-portal.install
 	b2sums = fc371b540a91797a83261952655b585655f095a853451da554a986de1f13a847533864a33e4526a06811a5146e6606c91ffb1db4e76f5133a9309b428d098199
 	b2sums = 894b53b5e5a059f49340c7e470f3b4a1355c1545b7fe1bb86e2a026fcbf81802fdae6ba24200c3154a168c9899b498e3375730f5412f65e9967c020c908e604a
 	b2sums = 560839a9344c23531d5e94faeb40cb793275254175c43b5f66e2d980ce7a3a2cd7a26df8f62e6353496ceca6dd7dd4dbde7be9daaa085094b61b9f6fee91d849
+	b2sums = 51d851c79614336c50394914b1993ab88eafe1cdfe92966bbcf4b3a1a46e2b91e7c218e694d1990b40b23486bcb5f93a6f7626abbfd61cb9422bbb9d6b3a3a1c
 
 pkgname = wg-portal

@@ -1,39 +1,50 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Qwen 3.6 (Alibaba).
-
+# Created with assistance from Qwen3.8 Flash Next.
 pkgname=wg-portal
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Web-based WireGuard VPN configuration portal with user management"
 arch=('x86_64' 'aarch64')
 url="https://github.com/h44z/wg-portal"
 license=('MIT')
+# runtime: wg-quick/wg are exec'd by the local backend; iptables/nftables for NAT
+# (namcap cannot see exec'd helpers and flags this as unused)
 depends=('wireguard-tools')
-makedepends=('go' 'pnpm' 'nodejs')
+makedepends=('go' 'git' 'pnpm' 'nodejs')
 optdepends=(
     'iptables: for NAT/firewall rules'
     'nftables: for NAT/firewall rules (alternative to iptables)'
 )
 options=('!debug')
 backup=('etc/wg-portal/config.yml')
+install=wg-portal.install
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/h44z/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.service"
     "config.yml"
+    "${pkgname}.install"
 )
 b2sums=(
     'fc371b540a91797a83261952655b585655f095a853451da554a986de1f13a847533864a33e4526a06811a5146e6606c91ffb1db4e76f5133a9309b428d098199'
     '894b53b5e5a059f49340c7e470f3b4a1355c1545b7fe1bb86e2a026fcbf81802fdae6ba24200c3154a168c9899b498e3375730f5412f65e9967c020c908e604a'
     '560839a9344c23531d5e94faeb40cb793275254175c43b5f66e2d980ce7a3a2cd7a26df8f62e6353496ceca6dd7dd4dbde7be9daaa085094b61b9f6fee91d849'
+    '51d851c79614336c50394914b1993ab88eafe1cdfe92966bbcf4b3a1a46e2b91e7c218e694d1990b40b23486bcb5f93a6f7626abbfd61cb9422bbb9d6b3a3a1c'
 )
 
 prepare() {
     cd "${pkgname}-${pkgver}"
 
-    # Build frontend assets
+    # Build frontend assets.
+    # Upstream ships only package-lock.json (npm), no pnpm lockfile, and the
+    # locked "vue-prism-component" entry is a git+ssh dependency that npm ci
+    # refuses to fetch, so pnpm is the working installer here.
+    # pnpm 10+ blocks dependency build scripts and aborts the whole install
+    # with ERR_PNPM_IGNORED_BUILDS (e.g. @parcel/watcher). Vite only needs the
+    # prebuilt binaries that come as optional dependencies, so skip the
+    # scripts instead of approving them.
     cd frontend
-    pnpm install --no-frozen-lockfile
+    pnpm install --no-frozen-lockfile --ignore-scripts
     pnpm build
     cd ..
 
@@ -70,18 +81,4 @@ package() {
     # systemd service
     install -Dm644 "${srcdir}/${pkgname}.service" \
         "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-}
-
-post_install() {
-    echo ""
-    echo "  WireGuard Portal installed."
-    echo ""
-    echo "  REQUIRED: edit /etc/wg-portal/config.yml before starting:"
-    echo "    - core.admin_password  (minimum 16 characters)"
-    echo "    - web.external_url     (your server's public URL)"
-    echo ""
-    echo "  Generate a strong password:  openssl rand -base64 16"
-    echo ""
-    echo "  Then:  systemctl enable --now wg-portal"
-    echo ""
 }

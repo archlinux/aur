@@ -1,0 +1,17 @@
+post_install() {
+    echo ""
+    echo "  WireGuard Portal installed."
+    echo ""
+    echo "  REQUIRED: edit /etc/wg-portal/config.yml before starting:"
+    echo "    - core.admin_password  (minimum 16 characters)"
+    echo "    - web.external_url     (your server's public URL)"
+    echo ""
+    echo "  Generate a strong password:  openssl rand -base64 16"
+    echo ""
+    echo "  Then:  systemctl enable --now wg-portal"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
