@@ -1,0 +1,16 @@
+pkgbase = foremkacad-bin
+	pkgdesc = Foremka CAD - 3D parametric CAD/CAM application
+	pkgver = 0.3.67
+	pkgrel = 1
+	url = https://foremkacad.pl
+	arch = x86_64
+	license = custom
+	makedepends = libarchive
+	depends = glibc
+	provides = foremkacad
+	conflicts = foremkacad
+	options = !strip
+	source = Foremka-0.3.67-linux-amd64.deb::https://foremkacad.pl/desktop/Foremka-0.3.67-linux-amd64.deb
+	sha256sums = 16289579d0285d9aa0f85c431a77d23edd56c794a7275384dc8844563c975db0
+
+pkgname = foremkacad-bin
