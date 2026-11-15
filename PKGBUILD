@@ -2,7 +2,7 @@
 # Created with assistance from Nemotron 3.5 Lightning 30B A3B.
 
 pkgname=b4-bin
-pkgver=1.90.1
+pkgver=1.91.0
 pkgrel=2
 pkgdesc="Network packet processor with a friendly UI for circumventing Deep Packet Inspection (DPI) systems"
 arch=('x86_64' 'i686' 'aarch64' 'riscv64' 'loong64' 'ppc64' 'ppc64le' 's390x')
@@ -28,14 +28,14 @@ source_ppc64=("${pkgname}-${pkgver}-ppc64.tar.gz::${_baseurl}/b4-linux-ppc64.tar
 source_ppc64le=("${pkgname}-${pkgver}-ppc64le.tar.gz::${_baseurl}/b4-linux-ppc64le.tar.gz")
 source_s390x=("${pkgname}-${pkgver}-s390x.tar.gz::${_baseurl}/b4-linux-s390x.tar.gz")
 
-sha256sums_x86_64=('6f41945cb32fdd275d4a3c2239d7d18f7a8413e3282fb1115957ecefacfb7fd2')
-sha256sums_i686=('2ba389157ce7d8a45d2abbe0a913a62c6d72f445f11d78c106585a84c7b12af7')
-sha256sums_aarch64=('1b8321c7eca61a36f323057539e6033ea1cb7a0fa4a0ee13ea1c24f042ffbe4f')
-sha256sums_riscv64=('2150c8b0bcc310533e25f0a658cf8b9fd98408af62901f47a166013e0140c47a')
-sha256sums_loong64=('2785704f6739ddea0154645e8b8ec74a220d6eed8df72a087c7e5bc8f8674c7a')
-sha256sums_ppc64=('047826df67caefe4dba21ffa6cc1ab30e941e2356355178d7a46630c0dc3d3e2')
-sha256sums_ppc64le=('1e566c2c269a93157e0206b2dc80d8b25a4c3f6f424a46991d2052a360cc7917')
-sha256sums_s390x=('d63fd5f81bb4f5946bc37cb98defaee2e56977c98f7e0796ecf25a2b070d7205')
+sha256sums_x86_64=('7f12c2f4dd2782997088512efa4877a6e1aa17f8b89000d761b738006e7bd1e2')
+sha256sums_i686=('7ddf82415f31fcfe73018eeb879bc9dde1c243deba8633fe828bc6b09aa42282')
+sha256sums_aarch64=('288f3448ec1afb9bdbe43fc787f84152217b99e6069f640ba348a294c8b0e2ca')
+sha256sums_riscv64=('0acc1bf40b39c94d075a6653f64de2bcbb8a5ae00455c39a66a0ea1777e2de43')
+sha256sums_loong64=('26ecb49060773edc58625b281c9d041c364d5d3619b6aedad092a6ae29227d3f')
+sha256sums_ppc64=('07b75282a078f303e00f20fb0f0c2c87e441387a8b7bfeb365e5e4fafbaa914b')
+sha256sums_ppc64le=('51686177abde0d5dc7aa7d02de1c5247c649c1e9cb299e19f00a97967abf23de')
+sha256sums_s390x=('943800ad57b274bdda1cd718e90af30ca6dd1892f96f20d87cfb72c99f3b21c5')
 
 package() {
     case "$CARCH" in
