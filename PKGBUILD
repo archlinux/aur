@@ -7,7 +7,7 @@ _pkgname=openssl
 _ver=1.1.1w
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=13
+pkgrel=14
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('aarch64' 'x86_64')
 url='https://www.openssl.org'
@@ -61,9 +61,12 @@ source=(
 	CVE-2026-45447-1.patch
 	CVE-2026-45447-2.patch
 	# https://git.almalinux.org/rpms/openssl/src/branch/c8s
+	CVE-2026-35189.patch
+	CVE-2026-54872.patch
+	CVE-2026-63072.patch
 	CVE-2025-69419-1.patch
 	CVE-2025-69419-2.patch
-	CVE-2026-63072.patch
+	CVE-2026-75806.patch
 	CVE-2026-84782.patch
 )
 sha256sums=('cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8'
@@ -110,9 +113,12 @@ sha256sums=('cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8'
             'b03d53705375794da859dbd1287b9356a750fd3f669b74403d3f4619d494eab8'
             'f5689d1652045fe14c70e6eb68b080b1a26ad1c49d5308cd7212b417e10f2afc'
             '4fe62fbbce088325f5b62fab3edfe59d4d9a8108ddfd06cf2a53fa1bd758c5b3'
+            '6b39f01ffb5502c7a88b8d5f64743d8fc5b888ff4dcf81535336d2726f2acf57'
+            '9ee83143e426c801638ad773b7e995b69677b097713c48fd26cbaeb65ef63d67'
+            'd13b969c692af11b5531c76b25f7e8c21fee79f2fca694f53ba1c6754d1ade3f'
             'd89423836be0cb5ca076e173ea373c4deeef3d6ffa17085ca8a0850b364d7d3b'
             '933c61f15a81ac9c50f66f8c6c059d09f94a116d7b4c4d534a41b1c8f0140160'
-            'd13b969c692af11b5531c76b25f7e8c21fee79f2fca694f53ba1c6754d1ade3f'
+            '8579d2180e189eed3891fc10e7ff43ac00dc009e58c6c3e783fa181d3b185f4d'
             'f41abfd62f213e489afcc3d4608b034e1c71a8cecc10b2bb81fc3a8ece31cc21')
 validpgpkeys=(
 	'EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'
