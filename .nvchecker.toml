@@ -1,0 +1,5 @@
+[glinet-cli]
+source = "github"
+github = "antavik/glinet-cli"
+prefix = "v"
+use_latest_release = true
