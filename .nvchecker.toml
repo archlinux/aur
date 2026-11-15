@@ -1,0 +1,5 @@
+[plusalator]
+source = "github"
+github = "Mark44928/Plusalator"
+use_max_tag = true
+prefix = "v"

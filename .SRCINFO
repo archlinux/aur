@@ -1,0 +1,19 @@
+pkgbase = plusalator
+	pkgdesc = Fancy interactive C++17 calculator REPL
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com//plusalator
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = make
+	makedepends = clang
+	makedepends = figlet
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = plusalator
+	source = plusalator-1.2.0.tgz::https://github.com/Mark44928/Plusalator/archive/v1.2.0.tar.gz
+	sha256sums = b1f11090a92fe4358141bf5d700aa8ae9bf01d9bc75a5257504851facfe883a1
+
+pkgname = plusalator
