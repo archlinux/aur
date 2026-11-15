@@ -1,6 +1,6 @@
 pkgname=mcpelauncher-ui-bin
 pkgver=1.8.7.40934284323.1~bookworm
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft Bedrock Launcher for Linux"
 arch=('x86_64')
 url="https://minecraft-linux.github.io"
@@ -23,5 +23,5 @@ package() {
 	install -Dm755 "${srcdir}"/usr/bin/* -t "${pkgdir}"/opt/mcpelauncher-bin/bin/
 	cp "${pkgdir}"/opt/mcpelauncher-bin/share/pixmaps/mcpelauncher-ui-qt.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/mcpelauncher-ui-qt.svg
 	cp "${pkgdir}"/opt/mcpelauncher-bin/share/applications/mcpelauncher-ui-qt.desktop "${pkgdir}"/usr/share/applications
-	ln -s "${pkgdir}"/opt/mcpelauncher-bin/bin "${pkgdir}"/usr/bin
+	ln -s "${pkgdir}"/opt/mcpelauncher-bin/bin/* "${pkgdir}"/usr/bin
 }
