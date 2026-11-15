@@ -1,8 +1,8 @@
 # Maintainer: username227 [gfrank227 [at] gmail [dot] com
 
 pkgname=viper4linux-re
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='ViPERDSP audio effects for PipeWire with a Qt6 interface'
 arch=('x86_64')
 url='https://github.com/username227/viper4linux-re'
@@ -11,15 +11,8 @@ depends=('glibc' 'gcc-libs' 'qt6-base' 'pipewire' 'ladspa' 'python' 'libx11')
 makedepends=('cmake' 'pkgconf')
 conflicts=('viper4linux-re-git' 'viper4linux' 'viper4linux-git')
 options=('!debug')
-source=("https://github.com/username227/viper4linux-re/releases/download/v${pkgver}/viper4linux-re-${pkgver}-unified-source.tar.xz"
-		"viper4linux-re-1.1.3-log-retention-test.patch")
-sha256sums=('3cc2880487eb2fcf1aba5903fd1baf6a714da5771e4fb7da8d3dad4ad821d75a'
-            '99d806314aa54d538be6098785c915dd47421a454dacb7563cc11e8200a86ad1')
-
-prepare() {
-	cd $srcdir/$pkgname-$pkgver
-	patch -p1 < $srcdir/viper4linux-re-1.1.3-log-retention-test.patch
-}
+source=("https://github.com/username227/viper4linux-re/releases/download/v${pkgver}/viper4linux-re-${pkgver}-unified-source.tar.xz")
+sha256sums=('459cbc8d7213fe42085a210e7d321cf6b485e1051a72f3877538e88eee1f756f')
 
 build() {
     local tree="$srcdir/viper4linux-re-$pkgver"
