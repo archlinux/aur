@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=azion-cli
-pkgver=4.26.1
+pkgver=4.26.2
 pkgrel=1
 pkgdesc="Efficient creation and management of applications on Azion Edge Platform"
 arch=(x86_64 aarch64 i686 armv7h)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('b4d603743a0181966764063f4af40a11b48711177b9fb9c0c5d4e7f1cecb09af')
+sha256sums=('ed3da22048d5add0433863ba5de6340e5ecf2bc5bffc6d9c70736ffccc1d0447')
 
 prepare() {
     export GOPATH="$srcdir"
