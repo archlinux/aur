@@ -12,7 +12,7 @@
 
 _pkgname=resolve
 pkgname=davinci-resolve-studio
-pkgver=21.1.1
+pkgver=21.2
 pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 source=("file://DaVinci_Resolve_Studio_${pkgver}_Linux.zip"
         "davinci-control-panels-setup.sh")
-sha256sums=('d4f87af1a28a283bba7d824684402b7447f922e5b8f68d56d131732ea12790a5'
+sha256sums=('6f90643d81c9db57f248d910ce1ec55247779f3e07123e719bafd84dec6c4a2d'
             'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8')
 install="${pkgname}.install"
 options=('!strip')
@@ -77,8 +77,11 @@ prepare() {
   done
   while IFS= read -r -d '' _file; do
     [[ -f "${_file}" && $(od -t x1 -N 4 "${_file}") == *"7f 45 4c 46"* ]] || continue
+    echo "Running patchelf for ${_file}"
     patchelf --set-rpath "$(IFS=":"; echo "${_patchelf_paths[*]}:\$ORIGIN")" "${_file}"
-  done < <(find "squashfs-root" -type f -size -32M -print0)
+    # Avoid to patch chrome-sandbox
+    # patchelf: cannot normalize PT_NOTE segment: non-contiguous SHT_NOTE sections
+  done < <(find "squashfs-root" -type f -size -32M ! -name chrome-sandbox -print0)
 
   while IFS= read -r -d '' _file; do
     sed -i "s|RESOLVE_INSTALL_LOCATION|/opt/${_pkgname}|g" "${_file}"
