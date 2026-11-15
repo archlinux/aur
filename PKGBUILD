@@ -1,6 +1,6 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=kwybars-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Desktop audio visualizer for Wayland that renders real-time audio bars on screen"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/naurissteins/Kwybars/releases/download/$pkgver/kwybars-$pkgver-x86_64-linux.tar.gz"
 )
 # run updpkgsums once the release tarball exists
-sha256sums=('575c672394756c7b0aac3635438ff39fde9b7c8dbf56bf0cfc0bbf8e5f590cc0')
+sha256sums=('97ef63a93e02cc0944240273b86b2a9bb8f1f2dfa96a864a1143406318a1ef1c')
 
 package() {
   cd "kwybars-$pkgver-x86_64-linux"
