@@ -1,0 +1,21 @@
+pkgbase = ssmcp-git
+	pkgdesc = Expose a local terminal as MCP through an SSH public-key connection
+	pkgver = 0.1.0.r3.g3d5e2d3
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/ssmcp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = openssh
+	provides = ssmcp
+	conflicts = ssmcp
+	backup = etc/ssmcpd/ssmcpd.env
+	source = ssmcp::git+https://github.com/LIghtJUNction/ssmcp.git
+	sha256sums = SKIP
+
+pkgname = ssmcp-git
