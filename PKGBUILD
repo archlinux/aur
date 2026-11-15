@@ -1,5 +1,6 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
-# Contributor: micleh https://github.com/legymhueck/kyocera-cups/blob/main/PKGBUILD
+# Contributor: micleh
+# Contributor: nursoda (10.1: new dependencies, checksums)
 # Contributor: MadPhysicist <jfoxrabinovitz at gmail dot com>
 
 # UTAX TA Triumph Adler printers TALinuxPackages-20141229.tar.gz are no longer included from 8.1404 to 8.1601
@@ -29,7 +30,8 @@ pkgname='kyocera-cups'
 #_pkgver='9.2-0'; _rev='20220928'
 #_pkgver='9.3-0'; _rev='20230720'
 #_pkgver='9.4-0'; _rev='20240521'
-_pkgver='10.0-0'; _rev='20260223' _revfake='20240521'
+#_pkgver='10.0-0'; _rev='20260223' _revfake='20240521'
+_pkgver='10.1-0'; _rev='20260709' _revfake='20240521' # _rev: file date in the tarball, no official release date
 #https://www.kyoceradocumentsolutions.us/content/dam/download-center-americas-cf/us/drivers/drivers/KyoceraLinuxPackages_20240521_tar_gz.download.gz
 pkgver="${_pkgver//-/.}.${_rev}"
 pkgrel='1'
@@ -40,8 +42,8 @@ arch=('i686' 'x86_64')
 url='https://www.kyoceradocumentsolutions.us/en/support/downloads.html' # select ECOSYS FS-4200dn
 license=('custom')
 depends=('glibc' 'gcc-libs' 'zlib' 'python' 'dbus' 'libcups' 'cups')
-depends+=('python-reportlab' 'python-setuptools') # 'python-pdf3'
-depends+=('libstdc++' 'libgcc' 'python-pkg_resources')
+depends+=('python-reportlab' 'python-pypdf') # kyofilter_pre_X (10.1 uses pypdf, no longer PyPDF3 or pkg_resources)
+depends+=('libstdc++' 'libgcc')
 optdepends=(
   'qt5-base: knmd'
 )
@@ -55,9 +57,9 @@ _srcdir="KyoceraLinuxPackages_${_rev}.tar.gz"
 _srcdirfake="KyoceraLinuxPackages_${_revfake}.tar.gz"
 source=("${_srcdir}::https://www.kyoceradocumentsolutions.us/content/dam/download-center-americas-cf/us/drivers/drivers/${_srcdirfake//./_}.download.gz")
 #source=("https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/Kyocera_Linux_PPD_Ver_${pkgver}.tar.gz")
-md5sums=('b6daeaf9383fc1f9928044d830a6426c'
+md5sums=('ba85e411a0f150ba31be567bee4f705a'
          'd3e7d0fe76377b0b058a9fb497cdfafa')
-sha256sums=('20f7c978db123007a3a6c6688698b49061ab69cdd7ec065b6728bd77d9a900e7'
+sha256sums=('14235a8e4dbe9f2fdff481252e2cc64431f59a7dcf2497ef54852fb30211568f'
             'c0ca7dba26542a9b75b51300da289e753cfaa0f43b09c9230041ab5c728b49a4')
 
 source+=('repack.sh')
