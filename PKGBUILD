@@ -3,7 +3,7 @@
 # AUR package of a released version of Strait Bible. The "-git" package in ../PKGBUILD builds the latest commit.
 
 pkgname=straitbible
-pkgver=6.2
+pkgver=6.3
 pkgrel=1
 pkgdesc='Free multilingual Bible reader (based on Unbound Bible)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('git' 'fpc' 'lazarus')
 conflicts=('straitbible-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'zeoslib::git+https://github.com/marsupilami79/zeoslib.git#branch=7.2.14-stable')
-sha256sums=('7d5005264f996c6b8f5c52641210201b2a794b3db0206879cb8624e4fa507447'
+sha256sums=('771b27d0e3ce896cc5c2df4f71f6830db2a77f1b18095af8fa13d9b1310a3de5'
             'SKIP')
 
 build() {
