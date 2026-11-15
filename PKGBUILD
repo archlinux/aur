@@ -1,8 +1,8 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=pi-ext-commandcode
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.8.4
+pkgrel=1
 pkgdesc='Command Code provider for the Pi coding agent (unofficial community integration)'
 arch=('any')
 url='https://github.com/patlux/pi-commandcode-provider'
@@ -14,7 +14,7 @@ _piname=pi-commandcode-provider
 _npmname=pi-commandcode-provider
 
 source=("${_npmname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
-sha256sums=('6eaeb1d60b173d70ba395ec0031b5ab421c3fddeb3d3306e94fb23c66432127c')
+sha256sums=('1e31cc91ca278e339c5b84302d2a4d3ecd20068ae59fba81ee3ed56bf6bd782f')
 
 latestver() {
   curl -fsSL "https://registry.npmjs.org/${_npmname}/latest" | jq -r '.version'
