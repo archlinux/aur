@@ -1,0 +1,3 @@
+# Grant members of powercap-readers read access to the powercap energy counters.
+# See https://tmog.org/linux.html
+SUBSYSTEM=="powercap", ACTION=="add|change", RUN+="/bin/sh -c 'chgrp powercap-readers /sys%p/energy_uj && chmod 0440 /sys%p/energy_uj'"

@@ -1,0 +1,3 @@
+# Groups granting read access for TMOG without root, see https://tmog.org/linux.html
+g powercap-readers -
+g dmi-readers -

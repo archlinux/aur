@@ -1,0 +1,21 @@
+_apply() {
+    systemd-sysusers tmog-noroot-config.conf
+    systemd-tmpfiles --create dmi-readers.conf 2>/dev/null || true
+    udevadm control --reload 2>/dev/null || true
+    udevadm trigger --action=add --subsystem-match=powercap 2>/dev/null || true
+}
+
+post_install() {
+    _apply
+    cat <<'MSG'
+==> To let a user read CPU power and memory module details in TMOG, add them
+==> to the groups and log in again:
+==>     sudo usermod -aG powercap-readers,dmi-readers <user>
+==> Note: group members can read the energy side channel and the SMBIOS table
+==> (including serial numbers and the machine UUID).
+MSG
+}
+
+post_upgrade() {
+    _apply
+}

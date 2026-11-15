@@ -1,0 +1,18 @@
+pkgbase = tmog-noroot-config
+	pkgdesc = add groups and config according to https://tmog.org/linux.html
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://tmog.org/linux.html
+	install = tmog-noroot-config.install
+	arch = any
+	license = GPL-2.0-or-later
+	depends = tmog-task-manager
+	depends = systemd
+	source = tmog-noroot-config.sysusers
+	source = 90-powercap-readers.rules
+	source = dmi-readers.conf
+	sha256sums = 57488f9bb10037edf6e27b8dd80b9d46a78f20166d052af73927a78bdf608c5d
+	sha256sums = 8168097cabffaf692e5e2d46b89fd5a293f0e93d91bc0b543e3215e488f9b26b
+	sha256sums = 0d5d3e09c013502aa47fa90f62bd435565cb183189f7435e997e2e6d9992d41f
+
+pkgname = tmog-noroot-config
