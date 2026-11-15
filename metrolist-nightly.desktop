@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Metrolist (nightly)
+Comment=YouTube Music client for desktop (nightly)
+Exec=metrolist-nightly %u
+Icon=metrolist-nightly
+Terminal=false
+Categories=AudioVideo;Audio;Player;
+StartupNotify=true
+MimeType=x-scheme-handler/metrolist;x-scheme-handler/metrolist-auth;

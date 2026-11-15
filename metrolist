@@ -1,2 +1,0 @@
-#!/bin/sh
-exec /opt/metrolist-desktop-bin/metrolist.AppImage "$@"
