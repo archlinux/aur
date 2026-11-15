@@ -6,7 +6,7 @@
 # Contributor: "donaldtrump" [AUR]
 pkgname=osu-lazer
 _pkgname=osu
-pkgver=2026.1005.0
+pkgver=2026.1115.0
 pkgrel=1
 pkgdesc="A free-to-win rhythm game. Rhythm is just a *click* away!"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=("https://github.com/ppy/osu/archive/${pkgver}-lazer.tar.gz"
         "osu-lazer.sh"
         "osu-lazer.desktop"
         "osu-lazer.xml")
-sha256sums=('88b239e74a4d4ffc3eec74e0d4537ddb66f4e20788507ecc248bef3ae8e97212'
+sha256sums=('a613dd8c83563f47c1825fc41f78a7b39b77d564779cb7ff6533ac438e6e3927'
             '488b52f62445054d0615c334b6bd81ffa70d00964e91384a9cad92c54b216b3d'
             'c22099222c01f33979e17ec0575b864f018f5f416919f9ed1b2b99584a5d37d6'
             'e01a156e7c9bb11ad5b1e1698b029378cb971c29469fc3dceca9421e9a81f3e8')
