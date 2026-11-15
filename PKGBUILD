@@ -2,7 +2,7 @@
 
 pkgname=pi-ext-lens
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Real-time code feedback for the Pi coding agent: language servers, linters, formatters'
 arch=('x86_64')
 url='https://github.com/apmantza/pi-lens'
@@ -16,7 +16,7 @@ install="${pkgname}.install"
 # could only hold a debuglink stub for somebody else's binary.
 options=('!debug')
 
-_pi_pkgroot=/usr/lib/pi/packages
+_pi_pkgroot=/usr/share/pi/extensions
 _piname=pi-lens
 _npmname=pi-lens
 
