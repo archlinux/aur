@@ -1,6 +1,6 @@
 # Maintainer: Kaylin Aurora <kaylin@cmdly.dev>
 pkgname=aria-fm-bin
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Native Spotify desktop client — Go + Electron (Chromium) + librespot, FFI-first transport"
 arch=('x86_64' 'aarch64')
@@ -37,12 +37,12 @@ options=('!strip')
 # fails when the user runs it.
 source_x86_64=("aria-fm-${pkgver}-x86_64.tar.gz::https://gitlab.com/api/v4/projects/cmdly%2Faria.fm/packages/generic/aria-fm/v${pkgver}/aria-fm-v${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("aria-fm-${pkgver}-aarch64.tar.gz::https://gitlab.com/api/v4/projects/cmdly%2Faria.fm/packages/generic/aria-fm/v${pkgver}/aria-fm-v${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('905b6c2031676a48f4984a464c18ea34192a445e51ddc00adfa3fb64cfc77694')
+sha256sums_x86_64=('3272a39db0ccb33d5beae0523c81d667ec66d16a996f915aa41fde02f9ec24b7')
 # Both sums are written by scripts/bump-aur.sh from the PUBLISHED tarballs, not
 # from a local build — the bytes users fetch are the bytes that must be pinned.
 # Never 'SKIP' here: that disables verification entirely, so a truncated or
 # wrong-arch download would build silently. A stale hash fails loudly instead.
-sha256sums_aarch64=('3eec46654f493c9d06209fda2788c5e9f09217c8e1b2a9bc2981f0017d07f5f8')
+sha256sums_aarch64=('d848f07d08f2f75703260daf7ba3ed9cb9c451b64ddfbf31e95806b0b1ee0ca2')
 
 package() {
   cd "${srcdir}/aria-fm-v${pkgver}-linux-${CARCH}"
