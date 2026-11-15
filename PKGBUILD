@@ -6,7 +6,7 @@
 # values here are the release this copy was last checked against.
 
 # pacman sorts a prerelease such as 0.3.0rc.1 before 0.3.0 only without the `-`.
-_version=0.25.0
+_version=0.26.0-beta.1
 # The beta channel's wikistow-desktop-beta-bin is this package, renamed and
 # with _channel=beta, which the app reads to offer betas (docs/releasing.md).
 _channel=beta
@@ -21,7 +21,8 @@ pkgname=wikistow-desktop-beta-bin
 pkgver=${_version//-/}
 pkgrel=1
 pkgdesc="Desktop app for your family's encrypted wiki (beta channel)"
-# The app itself is JavaScript; the system Electron it runs on is x86_64 only.
+# The app itself is JavaScript, and its web clipper's helper an x86_64
+# binary; the system Electron it runs on is x86_64 only.
 arch=('x86_64')
 url="https://github.com/skint007/wikistow"
 license=('MIT')
@@ -31,15 +32,22 @@ license=('MIT')
 depends=('electron44' 'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
 optdepends=('gnome-keyring: keep the sign-in and a remembered unlock between launches'
             'kwallet: keep the sign-in and a remembered unlock between launches')
+# The helper is installed as CI built and tested it, already stripped.
+options=('!strip' '!debug')
 provides=("$_app")
 conflicts=("$_app")
 source=("https://github.com/skint007/wikistow/releases/download/v$_version/wikistow-desktop-$_version.tar.gz")
-sha256sums=('fb99883486a8d16ccec2a8d630cee4e937c543adb4d4f7633a7de6cfb2de37f2')
+sha256sums=('16c41c002b6126b1888e8af3200bf88a48abff417478e875414e44879c010d88')
 
 package() {
     cd "wikistow-desktop-$_version"
     # The app knows it is the beta from its folder (apps/desktop/src/install.ts).
     install -Dm644 app.asar "$pkgdir/usr/lib/$_app/app.asar"
+    # The browser starts it beside the app, which tells the beta by its folder
+    # too. Archives from before the web clipper have none.
+    if [[ -f wikistow-clip-host ]]; then
+        install -Dm755 wikistow-clip-host "$pkgdir/usr/lib/$_app/wikistow-clip-host"
+    fi
     # How the app was installed, for the app to read (docs/desktop.md).
     echo aur > "$pkgdir/usr/lib/$_app/install-source"
     echo "$_channel" > "$pkgdir/usr/lib/$_app/channel"
