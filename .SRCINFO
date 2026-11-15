@@ -1,0 +1,24 @@
+pkgbase = nivterm-bin
+	pkgdesc = SSH and SFTP client with an encrypted vault and optional self-hosted sync
+	pkgver = 0.1.0beta1
+	pkgrel = 1
+	url = https://github.com/niho2/nivterm
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = nivterm
+	conflicts = nivterm
+	noextract = nivterm-0.1.0-beta.1.deb
+	options = !strip
+	options = !debug
+	source = nivterm-0.1.0-beta.1.deb::https://github.com/niho2/nivterm/releases/download/v0.1.0-beta.1/Nivterm_0.1.0-beta.1_amd64.deb
+	source = LICENSE-0.1.0-beta.1::https://raw.githubusercontent.com/niho2/nivterm/v0.1.0-beta.1/LICENSE
+	sha256sums = 5ae31e21a0420c34b21c4d4d27869719495ce1f33558ec876a7adca01965a679
+	sha256sums = 1a8dfe466950498e4c9de69af240110d140ee4864a017876dad56608b19d5ab8
+
+pkgname = nivterm-bin
