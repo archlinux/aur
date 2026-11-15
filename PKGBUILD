@@ -1,7 +1,7 @@
 # Maintainer: Alex Indigo <iam@alexindigo.com>
 
 pkgname=aerial-lock
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Wayland session lock with video backgrounds and an idle/session companion'
 arch=('x86_64')
@@ -22,14 +22,14 @@ conflicts=('aerial-lock-git')
 backup=('etc/pam.d/aerial-lock')
 install=aerial-lock.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('389099bef99510608fa98f2f7e94d8cfba5564c25e8d5c5ce042defb43436ffd')
+sha256sums=('b5907ccba9ee8d61b51c7890cf8417ad4fda6f871acd1ded295d22902ed37c19')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    make PREFIX=/usr DEBUG_DISMISS=0 DEBUG_VERBOSE=0
+    make PREFIX=/usr LIBEXECDIR=/usr/lib/aerial-lock DEBUG_DISMISS=0 DEBUG_VERBOSE=0
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    make install DESTDIR="$pkgdir" PREFIX=/usr DEBUG_DISMISS=0 DEBUG_VERBOSE=0
+    make install DESTDIR="$pkgdir" PREFIX=/usr LIBEXECDIR=/usr/lib/aerial-lock DEBUG_DISMISS=0 DEBUG_VERBOSE=0
 }
