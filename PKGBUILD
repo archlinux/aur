@@ -2,7 +2,7 @@
 
 pkgbase=cadet-core
 pkgname=(cadet-core cadet-core-docs)
-pkgver=5.1.0
+pkgver=5.1.2
 pkgrel=1
 pkgdesc='Modeling and simulation framework for biotechnology processes – simulation backend'
 arch=(aarch64 x86_64)
@@ -14,7 +14,7 @@ makedepends=(cmake eigen git python-sphinx-sitemap python-sphinxcontrib-bibtex p
 optdepends=('cadet-python: low-level python interface'
             'cadet-process: high-level python interface')
 source=("git+https://github.com/cadet/$pkgname#tag=v$pkgver")
-sha256sums=('ca119f9bb63d3a3dcfc90f92d17210a7a1a0ef2e8620940367d27aa3e00a3853')
+sha256sums=('d8556abde460d5e15286772ae4c47e50c87167c88e35704bd9e2b9301eada3b9')
 
 build() {
   cmake -B build-$pkgbase \
