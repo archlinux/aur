@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=gitmun
-pkgver=0.14.3
+pkgver=0.14.4
 pkgrel=1
 _commit=bf47c70
 pkgdesc="A cross-platform Git GUI built with Tauri"

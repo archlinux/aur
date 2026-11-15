@@ -1,6 +1,6 @@
 pkgbase = gitmun
 	pkgdesc = A cross-platform Git GUI built with Tauri
-	pkgver = 0.14.3
+	pkgver = 0.14.4
 	pkgrel = 1
 	url = https://github.com/cst8t/gitmun
 	arch = x86_64
