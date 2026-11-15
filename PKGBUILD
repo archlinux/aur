@@ -1,7 +1,8 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=DankDown10256
-pkgname=procsnap
+_pkgname=procsnap
+pkgname=${_pkgname}
 pkgver=1.0.9
 pkgrel=1
 pkgdesc="A lightweight Linux process profiler written in C"
@@ -23,6 +24,7 @@ prepare() {
 
 	sed -e '1i PREFIX?=/usr/local\n' -e 's|/usr/local/|${PREFIX}/|g' -e 's|install -m.755|install -Dm755|g' -i "Makefile"
 }
+
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
 
