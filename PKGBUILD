@@ -1,6 +1,6 @@
 # Maintainer: Matthias Schabhüttl <matthias@matthiasschabhuettl.com>
 pkgname=bentwire
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Desktop characters (Microsoft Agent and Office Assistant formats) for Wayland'
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=(alsa-lib glibc libgcc libxkbcommon)
 makedepends=(cargo pkgconf)
 checkdepends=(dbus)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('f0a2bf39c86da083bc2ccb26f8463484f528f00896a4cfda5f6159b8a6fe7ca9')
+sha256sums=('513185563d42bf8fb774f4060fd46e31a12e1b63db5558812fb305bafbbe91f0')
 
 prepare() {
   cd "$pkgname-$pkgver"
