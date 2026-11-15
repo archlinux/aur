@@ -1,6 +1,6 @@
 pkgname=xerabora
-pkgver=1.1.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Desktop RetroAchievements client with live tracking for a real PlayStation 2 through a patched Open PS2 Loader"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hacan359/xerabora"
@@ -16,7 +16,7 @@ source=("git+https://github.com/hacan359/xerabora.git#tag=v$pkgver"
         "git+https://github.com/RetroAchievements/rcheevos.git"
         "xerabora.service"
         "xerabora.desktop")
-sha256sums=('ae4e9458cdbf8243bce85107f71125fb7c799d714ff2d4c607bf15bf54b8e817'
+sha256sums=('a579a864acda396f6b5d59e11482482863f7bb98a94bc1f96838132bc9edbb4e'
             'SKIP'
             '10893d77fcac28ab2e90729d7fd22e652cb24669bed101f67d95ed7a9a492772'
             'de1f8e91560ee89b6ed3e259fbd1119cbab9daccf10c543e2078fbb6637ad673')
