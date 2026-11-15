@@ -1,7 +1,7 @@
 pkgbase = dux-mail-git
 	pkgdesc = Mail notifier, triage controller, and MCP server for Linux — Go daemon + Quickshell UI (git version)
 	pkgver = r126.edb1e01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arqueon/dux-mail
 	install = dux-mail.install
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = dux-mail-git
 	provides = dux-mail
 	provides = dankmail
 	conflicts = dux-mail
-	conflicts = dankmail
-	conflicts = dankmail-git
-	replaces = dankmail-git
+	conflicts = dankmail<0.5.1
+	conflicts = dankmail-git<r999
+	replaces = dankmail-git<r999
 	source = dux-mail::git+https://github.com/arqueon/dux-mail.git
 	sha256sums = SKIP
 

@@ -1,7 +1,7 @@
 # Maintainer: arqueon <arqueonautis@gmail.com>
 pkgname=dux-mail-git
 pkgver=r126.edb1e01
-pkgrel=1
+pkgrel=2
 pkgdesc="Mail notifier, triage controller, and MCP server for Linux — Go daemon + Quickshell UI (git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/arqueon/dux-mail"
@@ -10,8 +10,8 @@ depends=('quickshell' 'xdg-utils')
 makedepends=('go' 'git')
 optdepends=('gnome-keyring: Secret Service storage for tokens and passwords')
 provides=('dux-mail' 'dankmail')
-conflicts=('dux-mail' 'dankmail' 'dankmail-git')
-replaces=('dankmail-git')
+conflicts=('dux-mail' 'dankmail<0.5.1' 'dankmail-git<r999')
+replaces=('dankmail-git<r999')
 install=dux-mail.install
 source=("dux-mail::git+$url.git")
 sha256sums=('SKIP')
