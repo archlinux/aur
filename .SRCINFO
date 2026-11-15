@@ -1,6 +1,6 @@
 pkgbase = tidra
 	pkgdesc = Keep every project you maintain up to date from one desktop app
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/yusifaliyevpro/tidra-app
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = tidra
 	optdepends = bun: manage Bun projects
 	optdepends = github-cli: import an existing GitHub CLI authentication token
 	options = !lto
-	source = tidra-1.0.8.tar.gz::https://github.com/yusifaliyevpro/tidra-app/archive/refs/tags/v1.0.8.tar.gz
-	sha256sums = 13007f6a9eb49ec75d1fbb29831c91e0a587d005487948f42a92df0e3086fb1e
+	source = tidra-1.0.9.tar.gz::https://github.com/yusifaliyevpro/tidra-app/archive/refs/tags/v1.0.9.tar.gz
+	sha256sums = 6bd7f290fb9299480c1b5548e07076b83ef0e154030404eaa5589c952b2ba8ac
 
 pkgname = tidra
