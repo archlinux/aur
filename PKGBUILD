@@ -1,7 +1,7 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-git
-pkgver=r822.8e34700
+pkgver=r913.c1210da
 pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
@@ -36,7 +36,7 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	cargo build --release --workspace
-	# ferriscope's WSI layer, from the ferriscope revision in Cargo.lock.
+	# ferriscope's WSI layer, from the ferriscope version in Cargo.lock.
 	DESTDIR="$srcdir/wsi" dist/install-wsi.sh
 }
 
