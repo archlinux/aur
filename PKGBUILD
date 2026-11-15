@@ -2,7 +2,7 @@
 
 pkgname=arkha-git
 _pkgname=arkha
-pkgver=1.0.2.r178.ga7ff5ac
+pkgver=1.0.3.r183.gd34e5f0
 pkgrel=1
 pkgdesc='A fast graphical file manager (development version from master)'
 arch=('x86_64' 'aarch64')
