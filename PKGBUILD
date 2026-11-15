@@ -1,30 +1,16 @@
 # Maintainer: arqueon <arqueonautis@gmail.com>
+# Transitional package: dankmail was renamed to dux-mail.
+# Upgrading this package pulls in dux-mail, which takes over the files of the old dankmail.
 pkgname=dankmail
-pkgver=0.4.1
+pkgver=0.5.1
 pkgrel=1
-pkgdesc="Mail notifier with triage for Linux — Go daemon + Quickshell UI (DankMaterialShell aesthetic)"
-arch=('x86_64' 'aarch64')
-url="https://github.com/arqueon/dankmail"
+pkgdesc="Transitional package — DankMail is now dux-mail (safe to remove)"
+arch=('any')
+url="https://github.com/arqueon/dux-mail"
 license=('GPL-3.0-or-later')
-depends=('quickshell' 'xdg-utils')
-makedepends=('go')
-optdepends=('gnome-keyring: Secret Service storage for tokens and passwords')
+depends=('dux-mail')
 install=dankmail.install
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('998e53045f7a542657baf4c6b94a45590cb7fee5612ffa72dce4cd7d42acc87b')
-
-build() {
-  cd "$pkgname-$pkgver"
-  export CGO_ENABLED=0
-  # Release archives have no Git metadata; version information is supplied below.
-  export GOFLAGS="-trimpath -mod=readonly -modcacherw -buildvcs=false"
-  make -C core build VERSION="v$pkgver" COMMIT="release"
-}
 
 package() {
-  cd "$pkgname-$pkgver"
-  make install PREFIX=/usr DESTDIR="$pkgdir"
-  install -Dm644 assets/systemd/dmail.service "$pkgdir/usr/lib/systemd/user/dmail.service"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 quickshell/NOTICE "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
+  :
 }

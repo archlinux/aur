@@ -1,4 +1,9 @@
+post_install() {
+  echo ':: dankmail has been renamed to dux-mail, which is now installed.'
+  echo ':: Your settings, cache and keyring entries are kept.'
+  echo ':: This transitional package can be removed: pacman -R dankmail'
+}
+
 post_upgrade() {
-  echo ':: dankmail updated — restart the daemon to pick up the new binary:'
-  echo ':: systemctl --user restart dmail  (or: dmail restart)'
+  post_install
 }
