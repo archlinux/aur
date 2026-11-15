@@ -2,7 +2,7 @@
 
 pkgname=workdaddy-bin
 pkgver=1.2.22
-pkgrel=4
+pkgrel=5
 pkgdesc='WorkBuddy desktop enhancement assistant (WorkDaddy, official Linux DEB repack)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/babygoton/WorkDaddy'
@@ -16,14 +16,10 @@ provides=('workdaddy')
 conflicts=('workdaddy')
 options=('!strip' '!debug')
 _dl='https://github.com/babygoton/WorkDaddy/releases/download'
-source=('LICENSE.upstream'
-        'workdaddy-default-icon.patch'
-        'workdaddy-exit-guard.patch')
+source=('LICENSE.upstream')
 source_x86_64=("WorkDaddy_${pkgver}_amd64.deb::${_dl}/${pkgver}/WorkDaddy_${pkgver}_amd64.deb")
 source_aarch64=("WorkDaddy_${pkgver}_arm64.deb::${_dl}/${pkgver}/WorkDaddy_${pkgver}_arm64.deb")
-sha256sums=('5e28b0607630f125776a775a76e4c96453d593451a0c65be832ef1282b89c4b5'
-            '7d33fc3be1f964ff0f6a8211d3873d71728a3c207b0ceb659639c74803e1f1bd'
-            '9164ee958960f743ad849f3f55678cd69d99c970d264e1783295ea45bac572ec')
+sha256sums=('5e28b0607630f125776a775a76e4c96453d593451a0c65be832ef1282b89c4b5')
 sha256sums_x86_64=('5b2fe8a44ce5ca1bd869bd1e27701f0a89f951719b0e29d80d826f5918b7b39c')
 sha256sums_aarch64=('adb63b440c29d23dfc36c453ece6477735c3a4efcbc428e21bd8e5831c211428')
 
@@ -38,14 +34,56 @@ package() {
   bsdtar -xf "$srcdir/$_deb" -C "$srcdir" data.tar.xz
   bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
 
-  # AUR patches:
-  # 1) default icon: launcher desktop entries fall back to the bundled
-  #    hicolor icon (upstream falls back to "workbuddy", which is absent
-  #    when workbuddy-agent provides the client binary)
-  # 2) exit guard: daemon quits when WorkBuddy quits (WORKDADDY_EXIT_GUARD=0
-  #    disables; thresholds via WORKDADDY_EXIT_GUARD_GRACE_MS / _INTERVAL_MS)
-  patch -d "$pkgdir/opt/workdaddy/scripts" -p1 < "$srcdir/workdaddy-default-icon.patch"
-  patch -d "$pkgdir/opt/workdaddy/scripts" -p1 < "$srcdir/workdaddy-exit-guard.patch"
+  # Two small in-tree tweaks, applied with sed only (no `patch` executable /
+  # base-devel dependency, no extra source files to verify).
+  #
+  # 1) Default icon: upstream install-desktop-linux.sh falls back to the icon
+  #    name "workbuddy", which is absent when workbuddy-agent provides the
+  #    client binary. Point it at the bundled hicolor "workdaddy" icon instead.
+  local _launcher="$pkgdir/opt/workdaddy/scripts/install-desktop-linux.sh"
+  sed -i \
+    -e 's|# 图标：优先用自带 PNG；缺失时退回系统已有的 workbuddy 图标名|# 图标：优先用自带 PNG；缺失时退回系统 hicolor 中的 workdaddy 图标（由官方 DEB 提供）|' \
+    -e 's|ICON_VALUE="workbuddy"|ICON_VALUE="workdaddy"|' \
+    "$_launcher"
+
+  # 2) Exit guard: upstream daemon is started with setsid nohup and keeps
+  #    running after WorkBuddy exits. Insert a guard next to the existing
+  #    startClientRunningMonitor() call that reuses clientRunningState.
+  local _snippet="$srcdir/workdaddy-exit-guard.snippet"
+  cat > "$_snippet" << 'GUARD'
+// [AUR tweak: exit-guard] WorkBuddy 退出后 daemon 完全退出。
+// 复用 clientRunningState（由 startClientRunningMonitor 周期探测 WorkBuddy 进程）：
+//   - 宽限期内不判定：给「先启动后台服务、稍后打开应用」与官方自动更新器的
+//     自行重启留出时间，避免把正常启动窗口误判为退出
+//   - 连续 EXIT_GUARD_CONFIRM 次 false 才退出，单次误报不会触发
+//   - value=null（探测失败/未就绪）不计数；value=true 立即清零
+//   - 退出走 SIGTERM，复用下方统一的清理流程（unwatchFile / 释放锁）
+// 环境变量：WORKDADDY_EXIT_GUARD=0 关闭守卫；
+//   WORKDADDY_EXIT_GUARD_GRACE_MS / WORKDADDY_EXIT_GUARD_INTERVAL_MS 调整阈值。
+if (process.env.WORKDADDY_EXIT_GUARD !== '0') {
+  const EXIT_GUARD_GRACE_MS = Number(process.env.WORKDADDY_EXIT_GUARD_GRACE_MS) || 300000;
+  const EXIT_GUARD_INTERVAL_MS = Number(process.env.WORKDADDY_EXIT_GUARD_INTERVAL_MS) || 15000;
+  const EXIT_GUARD_CONFIRM = 4;
+  const EXIT_GUARD_STALE_MS = EXIT_GUARD_INTERVAL_MS * 4;
+  const exitGuardStartedAt = Date.now();
+  let exitGuardMisses = 0;
+  const exitGuardTimer = setInterval(() => {
+    const { value, checkedAt } = clientRunningState;
+    if (value === true) { exitGuardMisses = 0; return; }
+    if (value !== false) return; // null = 未知（探测失败/未就绪），不判定
+    if (Date.now() - checkedAt > EXIT_GUARD_STALE_MS) return; // 探测数据过旧，不判定
+    if (Date.now() - exitGuardStartedAt < EXIT_GUARD_GRACE_MS) return; // 宽限期内不判定
+    exitGuardMisses += 1;
+    if (exitGuardMisses >= EXIT_GUARD_CONFIRM) {
+      log(`[exit-guard] WorkBuddy 已退出（连续 ${EXIT_GUARD_CONFIRM} 次探测确认），WorkDaddy 守护进程随之退出`);
+      try { process.kill(process.pid, 'SIGTERM'); } catch (_) { process.exit(0); }
+    }
+  }, EXIT_GUARD_INTERVAL_MS);
+  if (exitGuardTimer && typeof exitGuardTimer.unref === 'function') exitGuardTimer.unref();
+}
+GUARD
+  sed -i -e "/^startClientRunningMonitor();$/r $_snippet" \
+    "$pkgdir/opt/workdaddy/scripts/daemon.js"
 
   install -Dm644 "$srcdir/LICENSE.upstream" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
