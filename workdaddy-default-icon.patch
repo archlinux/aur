@@ -1,0 +1,15 @@
+--- a/install-desktop-linux.sh	2026-11-15 15:27:52.493869152 +0800
++++ b/install-desktop-linux.sh	2026-11-15 15:28:04.158621224 +0800
+@@ -79,9 +79,10 @@
+ 
+ mkdir -p "$APP_DIR"
+ 
+-# 图标：优先用自带 PNG；缺失时退回系统已有的 workbuddy 图标名
++# 图标：优先用自带 PNG；缺失时退回系统 hicolor 中的 workdaddy 图标
++# （AUR workdaddy-bin 由官方 DEB 装入 /usr/share/icons/hicolor/1024x1024/apps/workdaddy.png）
+ ICON_VALUE="$ICON_PNG"
+-[ -f "$ICON_PNG" ] || ICON_VALUE="workbuddy"
++[ -f "$ICON_PNG" ] || ICON_VALUE="workdaddy"
+ 
+ entry_body "WorkDaddy 启动器" "选择渠道启动 WorkBuddy（国内版 / 国际版）" "" "$ICON_VALUE" "workdaddy;workbuddy;启动器;切换器;" > "$APP_DIR/workdaddy-launcher.desktop"
+ 
