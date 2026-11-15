@@ -1,19 +1,19 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=renpy
-pkgver=8.5.3.26051504
-pkgrel=2
+pkgver=8.6.0.26111403
+pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs"
 arch=('i686' 'x86_64')
 license=('MIT')
 url='http://www.renpy.org'
 depends=(
 	'glibc' 'ffmpeg' 'fribidi' 'harfbuzz' 'freetype2' 'libpng'
-	'python-pygame-sdl2' 'sdl2' 'sdl2_image' 'sdl2_mixer'
+	'python-pygame-sdl2' 'sdl2' 'sdl3_image' 'sdl2_mixer'
 	'sdl2_gfx' 'sdl2_ttf' 'python-ecdsa' 'python-legacy-cgi' 'assimp' 'ftgl')
 makedepends=(
 	'cython' 'python-setuptools-scm' 'python-sphinx_rtd_dark_mode'
-	'python-sphinx_rtd_theme' 'git') # 'python-build' 'python-installer' 'python-wheel'
+	'python-sphinx_rtd_theme' 'git' 'python-pkgconfig') # 'python-build' 'python-installer' 'python-wheel'
 provides=('python-renpy')
 replaces=('renpy64')
 install='renpy.install'
@@ -21,7 +21,7 @@ install='renpy.install'
 source=("git+https://github.com/${pkgname}/${pkgname}.git#tag=${pkgver}"
         "${pkgname}.desktop"
         "${pkgname}-launcher.sh")
-sha256sums=('f50a690cdf1bc5aee999b9c05373b6830c060956605f2ddb8342117b2b152504'
+sha256sums=('cbbd5df5193cb3dbce39e7fd252b11ac736a89d42d90a015806734aad87a1eb7'
             'b58efcc42526c4de15e8963b02991e558b5e3d15d720b3777b791ac13fc815e6'
             '1fc31125ce1a6be454e2e5995da1ba4860db6da687dbfffbca80a06f64aba43c')
 
