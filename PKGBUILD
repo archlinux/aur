@@ -1,6 +1,6 @@
 # Maintainer: sgtaziz <sgtaziz013 at gmail dot com>
 pkgname=lianli-linux
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="Open-source Linux replacement for L-Connect 3 for Lian Li devices"
 arch=('x86_64')
@@ -17,7 +17,7 @@ _hdiffpatch=3b9dca715ca492873bf2c49e22e5d5b7d2a78620
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "tinyuz-$_tinyuz.tar.gz::https://github.com/sisong/tinyuz/archive/$_tinyuz.tar.gz"
         "HDiffPatch-$_hdiffpatch.tar.gz::https://github.com/sisong/HDiffPatch/archive/$_hdiffpatch.tar.gz")
-sha256sums=('f91d9d9e580c3a66822c6f7fd7a197ad43b928bd03f14fc47afd09e4c6451893'
+sha256sums=('4810e910cc3b987bdfc89a6233556d9a8f6d609a35875c43037ce173f7aa30a0'
             '307558ad57549d8ad55ba77add19cfca2e384c0857dfd4b6c2ff82b95172a033'
             '62378965f548feaf5d5c3e1e2e65e985fae33ff4c87432cb42e60250d7e0d670')
 options=('!lto' '!debug')
