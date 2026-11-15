@@ -2,7 +2,7 @@
 
 pkgname=faceform-wrap
 pkgver=2025.11.14
-pkgrel=2
+pkgrel=3
 # Opaque path component of the versioned download URL; updated with pkgver.
 _download_id=9f99598ca4cd3b373d0b26a450d9a47d
 pkgdesc='Topology transfer tool that fits a base mesh to 3D scans'
@@ -53,7 +53,7 @@ source=(
 )
 sha256sums=('42402bf790adb1f8e39635da9772db1c7c5987bde7fbbc3413d2c1c29b64ed98'
             '15ff8592cec9b6169440a428ffe0603d26dc820ea88aaee0ba77a09fd397914e'
-            'a75835cccf390623638be69309638966ce1a0317c0be9d3157882963b1e8af78')
+            '9dd85365f5b960563ed2834f9b4d5393dabe266b104c95f78f5753e1c1a2f212')
 
 prepare() {
   local file rpath entry kept
@@ -101,8 +101,8 @@ package() {
     chmod 755 "${pkgdir}/usr/lib/${pkgname}/${binary}.sh"
   done
   install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/${pkgname}/Wrap.sh" "${pkgdir}/usr/bin/${pkgname}"
-  ln -s "/usr/lib/${pkgname}/WrapCmd.sh" "${pkgdir}/usr/bin/${pkgname}-cmd"
+  ln -s "/usr/lib/${pkgname}/Wrap.sh" "${pkgdir}/usr/bin/Wrap.sh"
+  ln -s "/usr/lib/${pkgname}/WrapCmd.sh" "${pkgdir}/usr/bin/WrapCmd.sh"
 
   install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 "${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"

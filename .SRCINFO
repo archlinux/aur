@@ -1,7 +1,7 @@
 pkgbase = faceform-wrap
 	pkgdesc = Topology transfer tool that fits a base mesh to 3D scans
 	pkgver = 2025.11.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://faceform.com/wrap/
 	arch = x86_64
 	license = LicenseRef-Faceform-Wrap-EULA
@@ -46,6 +46,6 @@ pkgbase = faceform-wrap
 	source = faceform-wrap.desktop
 	sha256sums = 42402bf790adb1f8e39635da9772db1c7c5987bde7fbbc3413d2c1c29b64ed98
 	sha256sums = 15ff8592cec9b6169440a428ffe0603d26dc820ea88aaee0ba77a09fd397914e
-	sha256sums = a75835cccf390623638be69309638966ce1a0317c0be9d3157882963b1e8af78
+	sha256sums = 9dd85365f5b960563ed2834f9b4d5393dabe266b104c95f78f5753e1c1a2f212
 
 pkgname = faceform-wrap
