@@ -1,9 +1,9 @@
 post_install() {
-  echo ':: Enable Dankmail Unread in DMS Settings > Plugins, then add it to the bar.'
-  echo ':: An existing user copy in ~/.config/DankMaterialShell/plugins takes precedence.'
-  echo ':: To use this package, move that user copy out of the plugins directory first.'
+  echo ':: dms-shell-plugin-dankmail has been renamed to dms-shell-plugin-dux-mail, which is now installed.'
+  echo ':: Your settings, cache and keyring entries are kept.'
+  echo ':: This transitional package can be removed: pacman -R dms-shell-plugin-dankmail'
 }
 
 post_upgrade() {
-  echo ':: Reload Dankmail Unread in DMS Settings > Plugins to use the updated companion.'
+  post_install
 }
