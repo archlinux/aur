@@ -4,17 +4,34 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=flightgear-git
-pkgver=2024.2.0r16435.1851728cf
-pkgrel=5
+pkgver=2024.2.0r16908.635b247f9
+pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=('x86_64')
-url="https://www.flightgear.org/"
-license=('GPL')
-depends=('libxmu' 'libxi' 'zlib' 'flightgear-openscenegraph-git' 'libxrandr' 'glu' 'openal' 'osgxr')
-makedepends=('boost' 'cmake' 'git' 'mesa' 'sharutils' 'simgear-git' 'qt5-base' 'qt5-declarative' 'qt5-svg')
-optdepends=('qt5-base: fgfs --launcher'
-            'qt5-declarative: fgfs --launcher'
-            'flightgear-data')
+url="https://www.flightgear.org"
+license=('GPL-2.0-or-later')
+depends=('dbus'
+         'glibc'
+         'gsm'
+         'hicolor-icon-theme'
+         'libevent'
+         'libgcc'
+         'libglvnd'
+         'libstdc++'
+         'libx11'
+         'openal'
+         'flightgear-openscenegraph-git'
+         'qt6-base'
+         'qt6-declarative'
+         'simgear-git'
+         'speex'
+         'speexdsp'
+         'sqlite'
+         'systemd-libs'
+         'zlib')
+makedepends=('boost' 'cmake' 'git' 'plib' 'qt6-svg' 'qt6-tools')
+optdepends=('flightgear-data: Base data package'
+            'osgxr: VR support')
 provides=("flightgear=${pkgver}")
 conflicts=('flightgear')
 source=("flightgear::git+https://gitlab.com/flightgear/flightgear.git")
@@ -30,26 +47,25 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"/flightgear
-  sed -i 's|Exec=.*|Exec=fgfs --fg-root=/usr/share/flightgear/data|' package/org.flightgear.FlightGear.desktop.in
+  sed -i 's|Exec=\(.*\)|Exec=\1 --fg-root=/usr/share/flightgear/data|' package/org.flightgear.FlightGear.desktop.in
 }
 
 build() {
-  mkdir -p "$srcdir"/fgbuild
-  cd "$srcdir"/fgbuild
-  cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DFG_DATA_DIR:STRING="/usr/share/flightgear/data" \
-    ../flightgear
-  make
+  local cmake_options=(
+    -B build
+    -D CMAKE_BUILD_TYPE=Release
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D CHECK_FOR_QT5=OFF
+    -D ENABLE_CCACHE=ON
+    -D FG_DATA_DIR=/usr/share/flightgear/data
+    -D SYSTEM_SQLITE=ON
+    -S flightgear
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir"/fgbuild
-  make DESTDIR="$pkgdir" install
-
-  cd "$srcdir"/flightgear
-  install -Dm0644 package/flightgear.ico "$pkgdir"/usr/share/icons/flightgear.ico
-  install -Dm0644 scripts/completion/fg-completion.bash "$pkgdir"/usr/share/bash-completion/completions/fgfs
-  install -Dm0644 scripts/completion/fg-completion.zsh "$pkgdir"/usr/share/zsh/site-functions/_fgfs
-  ln -sf flightgear "$pkgdir"/usr/share/FlightGear
+  DESTDIR="${pkgdir}" cmake --install build
+  rm -rf "${pkgdir}/usr/appdir"
 }
