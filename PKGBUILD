@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=hyprfm-git
-pkgver=r732.gf4319c9
+pkgver=r736.g20e9c78
 pkgrel=1
 pkgdesc="A lightweight Qt6/QML file manager for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -70,29 +70,13 @@ build() {
 }
 
 package() {
-    # Install the compiled binary
-    install -Dm755 "build/src/hyprfm" "${pkgdir}/usr/bin/hyprfm"
+    # Everything CMake installs: the binary, the file chooser portal backend
+    # (with its .portal, D-Bus and systemd user files), themes, the QML module,
+    # desktop entry, icon and metainfo. A hand-kept list here fell behind and
+    # shipped without the portal.
+    DESTDIR="${pkgdir}" cmake --install build
 
-    # Install themes — loaded via applicationDirPath()/../themes → /usr/share/hyprfm/themes
-    install -dm755 "${pkgdir}/usr/share/hyprfm/themes"
-    install -Dm644 "${pkgname}/themes/"*.toml \
-        -t "${pkgdir}/usr/share/hyprfm/themes/"
-
-    # Install QML module metadata (needed for loadFromModule to find HyprFM)
-    install -Dm644 "build/src/HyprFM/qmldir" \
-        "${pkgdir}/usr/share/hyprfm/HyprFM/qmldir"
-    install -Dm644 "build/src/HyprFM/hyprfm.qmltypes" \
-        "${pkgdir}/usr/share/hyprfm/HyprFM/hyprfm.qmltypes" 2>/dev/null || true
-
-    # Install desktop entry, icon and AppStream metainfo
-    install -Dm644 "${pkgname}/dist/io.github.soyeb_jim285.HyprFM.desktop" \
-        "${pkgdir}/usr/share/applications/io.github.soyeb_jim285.HyprFM.desktop"
-    install -Dm644 "${pkgname}/dist/io.github.soyeb_jim285.HyprFM.svg" \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.soyeb_jim285.HyprFM.svg"
-    install -Dm644 "${pkgname}/dist/io.github.soyeb_jim285.HyprFM.metainfo.xml" \
-        "${pkgdir}/usr/share/metainfo/io.github.soyeb_jim285.HyprFM.metainfo.xml"
-
-    # Install license
     install -Dm644 "${pkgname}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
