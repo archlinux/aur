@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64
-pkgver=1.1.42
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='A Nintendo64 emulator'
 arch=('x86_64')
@@ -56,7 +56,7 @@ source=("git+https://github.com/gopher64/gopher64.git#tag=v${pkgver}"
         'parallel-rdp-standalone-gopher64'::'git+https://github.com/gopher64/parallel-rdp-standalone.git'
         'git+https://github.com/RetroAchievements/rcheevos.git'
         'gopher64.desktop')
-sha256sums=('6d6df327b605cd1758f09c038b9316154034328b685b809b347cd015196c2dc6'
+sha256sums=('d6b06099ddc82158708eec7438219adbb6ac30e2fcc7da9d43734013d1a4bfef'
             'SKIP'
             'SKIP'
             '9a3c01d2064095b83261bf931aad101bddc94ae66d621e7233f7337d44a01f10')
@@ -69,7 +69,7 @@ prepare() {
     git -C gopher64 config --local submodule.libadrenotools.update none
     git -C gopher64 -c protocol.file.allow='always' submodule update
     
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path='gopher64/Cargo.toml'
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path='gopher64/Cargo.toml'
 }
 
 build() {
