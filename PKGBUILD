@@ -1,6 +1,6 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=vortex
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 epoch=1
 pkgdesc="Nexus Mods' mod manager - native Linux build"
@@ -8,17 +8,16 @@ arch=('x86_64')
 url="https://github.com/Nexus-Mods/Vortex"
 license=('GPL-3.0-or-later')
 
-depends=('gtk3' 'nss' 'libxss' 'libnotify' 'libappindicator-gtk3' 'libsecret' 'nodejs' 'dotnet-runtime-9.0')
+depends=('gtk3' 'nss' 'xdg-utils' 'libxss' 'libnotify' 'libappindicator-gtk3' 'libsecret' 'nodejs' 'dotnet-runtime-9.0')
 makedepends=('git' 'corepack' 'npm' 'python' 'python-setuptools' 'dotnet-sdk-9.0')
 
 conflicts=('vortex-git')
-install=vortex.install
 
 source=("git+https://github.com/Nexus-Mods/Vortex.git#tag=v${pkgver}"
   "vortex.desktop"
   "vortex.sh")
 
-sha256sums=('60ce6cd3e1f523bc383373b9be3fe3d4285434ac498aac8bcbf1362cee822c3f'
+sha256sums=('6b04587d0960cb195cf057b409c99e233d79dfe7fd690021bffda5c3eb8cb36e'
             '7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5'
             'b75e3826dd3c0658b9d69ea700e9262609753b2dcb3459c26c1265273338dc1e')
 
@@ -104,6 +103,6 @@ package() {
 
   chmod 4755 "$pkgdir/opt/Vortex/chrome-sandbox"
   install -Dm755 "$srcdir/vortex.sh" "$pkgdir/usr/bin/vortex"
-  install -Dm644 "$srcdir/vortex.desktop" "$pkgdir/usr/share/applications/vortex.desktop"
+  install -Dm644 "$srcdir/vortex.desktop" "$pkgdir/usr/share/applications/com.nexusmods.vortex.desktop"
   install -Dm644 "$srcdir/Vortex/assets/images/vortex.png" "$pkgdir/usr/share/pixmaps/vortex.png"
 }
