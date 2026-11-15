@@ -16,6 +16,7 @@ license=('none')
 depends=(
     'glibc>=2.36'
     'alsa-lib'
+    'lib32-alsa-lib'
     'vulkan-icd-loader'
     'hicolor-icon-theme'
 )

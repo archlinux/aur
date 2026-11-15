@@ -7,6 +7,7 @@ pkgbase = project-reclaimer-bin
 	license = none
 	depends = glibc>=2.36
 	depends = alsa-lib
+	depends = lib32-alsa-lib
 	depends = vulkan-icd-loader
 	depends = hicolor-icon-theme
 	optdepends = vulkan-radeon: Vulkan support for AMD GPUs
