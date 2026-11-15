@@ -1,0 +1,32 @@
+pkgbase = hyprmasq-plugin-bin
+	pkgdesc = Hyprland plugin of hyprmasq: per-window screenshots and input, prebuilt for the Hyprland of Arch and Omarchy
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/nyrda/hyprmasq
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = hyprland
+	depends = libei
+	depends = libgcc
+	depends = libglvnd
+	depends = libpng
+	depends = libstdc++
+	depends = libxcb
+	depends = libxkbcommon
+	provides = hyprmasq-plugin=0.3.0
+	conflicts = hyprmasq-plugin
+	options = !debug
+	options = !strip
+	source = hyprland-builds
+	source = hyprmasq_plugin.lua
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/nyrda/hyprmasq/v0.3.0/LICENSE
+	source = hyprmasq-0.3.0-hyprland-0.56.2.so::https://github.com/nyrda/hyprmasq/releases/download/v0.3.0/hyprmasq-0.3.0-hyprland-0.56.2.so
+	source = hyprmasq-0.3.0-hyprland-0.57.2.so::https://github.com/nyrda/hyprmasq/releases/download/v0.3.0/hyprmasq-0.3.0-hyprland-0.57.2.so
+	sha256sums = 7043d16d50140d7429c7377cba81a72aa00aff055afe201adf73cf32b1021892
+	sha256sums = dd7b29118e7671e24e3adc50f50fd186e0b3df971d96a35072bde52d6f012547
+	sha256sums = 0b338958047a8d42649c764ea82411c99c366b5d935c90f2465732afef950156
+	sha256sums = 69bf4a8c4dca53cedec5a043fa59f1e66a6686bbb822e23618894a338781bb47
+	sha256sums = 865e06c73e35d479720498a483e30dae43a51f24dea8dee47d968a387068ffe0
+
+pkgname = hyprmasq-plugin-bin
