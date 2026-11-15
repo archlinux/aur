@@ -1,0 +1,20 @@
+pkgbase = upcloud-cli-community-bin
+	pkgdesc = Community fork of upctl, the UpCloud command line client
+	pkgver = 3.37.1.community
+	pkgrel = 1
+	url = https://github.com/upcloud-tools/upcloud-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = ca-certificates
+	provides = upcloud-cli
+	conflicts = upcloud-cli
+	conflicts = upcloud-cli-git
+	options = !strip
+	options = !debug
+	source_x86_64 = upcloud-cli-3.37.1.community-linux-x86_64.tar.gz::https://github.com/upcloud-tools/upcloud-cli/releases/download/v3.37.1-community/upcloud-cli_3.37.1-community_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 280d0899baacb6e45c9068bdaf856394ed891330b504cacf1a63d9cae2a381d8
+	source_aarch64 = upcloud-cli-3.37.1.community-linux-arm64.tar.gz::https://github.com/upcloud-tools/upcloud-cli/releases/download/v3.37.1-community/upcloud-cli_3.37.1-community_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9210513e15ec7745170e5e47daf40060446fe7f06fb4643c658c1f426880bc7d
+
+pkgname = upcloud-cli-community-bin
