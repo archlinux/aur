@@ -1,0 +1,17 @@
+pkgbase = crain-bin
+	pkgdesc = the worst storm this side of the silicon (terminal-based rain)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/mazylol/crain
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = curl
+	makedepends = unzip
+	makedepends = zstd
+	depends = ncurses
+	provides = crain
+	conflicts = crain
+	conflicts = crain-git
+	options = !strip
+
+pkgname = crain-bin
