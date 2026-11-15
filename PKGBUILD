@@ -1,6 +1,6 @@
 # Maintainer: ognrdrch <https://github.com/ognrdrch>
 pkgname=rauri
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A minimal AUR helper written in Rust"
 arch=('x86_64')
@@ -8,8 +8,9 @@ url="https://github.com/ognrdrch/rauri"
 license=('MIT')
 depends=('pacman' 'git' 'sudo' 'util-linux')
 makedepends=('cargo' 'rust')
+options=('!lto')  # ring's C code must not be built as GCC LTO objects
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ognrdrch/rauri/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9da2c0d46011e165878373a8f5edfeda651070538495b549072298d308ab2ace')
+sha256sums=('4dcdcc85c3f3b343cc062a8d6b2e136657582434194fdb05c69987a9c4299e61')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
