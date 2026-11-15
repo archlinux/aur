@@ -2,7 +2,7 @@
 
 pkgname=cosmic-applet-arch
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='COSMIC applet to display Arch Linux package status'
 arch=(x86_64)
 url=https://github.com/nick42d/cosmic-applet-arch
@@ -29,12 +29,14 @@ options=('!lto')
 
 prepare() {
   cd cosmic-applet-arch
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked
   sed 's/lto = "fat"/lto = "thin"/' -i Cargo.toml
 }
 
 build() {
   cd cosmic-applet-arch
+  export RUSTUP_TOOLCHAIN=stable
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
   just build-release --frozen
 }
