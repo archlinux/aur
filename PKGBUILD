@@ -1,11 +1,12 @@
 # Maintainer: adogecheems <adogecheems@outlook.com>
 #
-# AUR source-build package for the 2.4.x series. Read MAINTENANCE.md at the
-# repository root before submitting. The source is pinned to the v2.4.0 release tag.
+# AUR source-build package for the 2.5.x series. Read MAINTENANCE.md at the
+# repository root before submitting. The default source follows the version tag;
+# published rebuild recipes pin the exact build commit instead.
 # The package is published on AUR as panasonic-posture-manager.
 
 pkgname=panasonic-posture-manager
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Posture management and screen orientation for convertible Linux 2-in-1 laptops'
 arch=('x86_64')
@@ -37,9 +38,9 @@ optdepends=(
 makedepends=('git' 'gcc' 'gettext' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 install="${pkgname}.install"
 
-# Build directly from the tagged upstream source. This is a VCS source, so
-# SKIP is the correct checksum entry; the tag pins the release revision.
-source=("${pkgname}::git+https://github.com/adogecheems/${pkgname}.git#tag=v${pkgver}")
+# This is a VCS source, so SKIP is the correct checksum entry. The version tag
+# pins normal builds; release exports substitute the verified build commit.
+source=("${pkgname}::git+https://github.com/adogecheems/${pkgname}.git#commit=3f89d71d57dd8607b4dc74d1d779b2fd78132169")
 sha256sums=('SKIP')
 
 build() {
@@ -47,7 +48,7 @@ build() {
 
   # Never ship prebuilt artifacts: rebuild the C relay and the gettext catalog
   # from source, then build the Python wheel with the distribution toolchain.
-  rm -f backend/relay backend/*.gch
+  rm -f backend/linux/relay backend/linux/*.gch
   rm -f locale/zh_CN/LC_MESSAGES/panasonic-posture-manager.mo
   rm -rf dist build src/*.egg-info
   make
@@ -79,21 +80,24 @@ package() {
   # Posture illustrations and model profiles: data-only files
   # that intentionally live outside the Python package.
   while IFS= read -r -d '' file; do
-    install -Dm644 "${file}" "${datadir}/${file#data/}"
-  done < <(find data -type f -print0)
+    install -Dm644 "${file}" "${datadir}/profiles/${file#data/profiles/}"
+  done < <(find data/profiles -type f -print0)
+  while IFS= read -r -d '' file; do
+    install -Dm644 "${file}" "${datadir}/assets/${file#data/assets/linux/}"
+  done < <(find data/assets/linux -type f -print0)
 
   # The desktop entry and notifications resolve the application icon by ID
   # from the standard hicolor theme, separately from the data-directory copy
   # used by the Python window when running from a source checkout.
-  install -Dm644 data/assets/work.mmoe.panasonic.PostureManager.png \
+  install -Dm644 data/assets/linux/work.mmoe.panasonic.PostureManager.png \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/work.mmoe.panasonic.PostureManager.png"
 
-  # Privileged actuator built from backend/*.c by make.
-  if [[ ! -x backend/relay ]]; then
-    echo "error: backend/relay was not built by make" >&2
+  # Privileged actuator built from backend/linux/*.c by make.
+  if [[ ! -x backend/linux/relay ]]; then
+    echo "error: backend/linux/relay was not built by make" >&2
     return 1
   fi
-  install -Dm755 backend/relay "${libdir}/relay"
+  install -Dm755 backend/linux/relay "${libdir}/relay"
 
   # gettext catalogs follow the system locale layout.
   while IFS= read -r -d '' file; do
@@ -102,19 +106,19 @@ package() {
 
   # systemd units (system + user), D-Bus policy/activation, polkit action,
   # desktop entry and the uinput module requested at boot.
-  install -Dm644 packaging/systemd/panasonic-posture-manager.service \
+  install -Dm644 packaging/linux/systemd/panasonic-posture-manager.service \
     "${pkgdir}/usr/lib/systemd/system/panasonic-posture-manager.service"
-  install -Dm644 packaging/systemd/user/panasonic-posture-manager-session.service \
+  install -Dm644 packaging/linux/systemd/user/panasonic-posture-manager-session.service \
     "${pkgdir}/usr/lib/systemd/user/panasonic-posture-manager-session.service"
-  install -Dm644 packaging/modules-load.d/uinput.conf \
+  install -Dm644 packaging/linux/modules-load.d/uinput.conf \
     "${pkgdir}/usr/lib/modules-load.d/panasonic-posture-manager.conf"
-  install -Dm644 packaging/dbus/work.mmoe.panasonic.Posture.conf \
+  install -Dm644 packaging/linux/dbus/work.mmoe.panasonic.Posture.conf \
     "${pkgdir}/usr/share/dbus-1/system.d/work.mmoe.panasonic.Posture.conf"
-  install -Dm644 packaging/dbus/work.mmoe.panasonic.Posture.service \
+  install -Dm644 packaging/linux/dbus/work.mmoe.panasonic.Posture.service \
     "${pkgdir}/usr/share/dbus-1/system-services/work.mmoe.panasonic.Posture.service"
-  install -Dm644 packaging/polkit/work.mmoe.panasonic.Posture.policy \
+  install -Dm644 packaging/linux/polkit/work.mmoe.panasonic.Posture.policy \
     "${pkgdir}/usr/share/polkit-1/actions/work.mmoe.panasonic.Posture.policy"
-  install -Dm644 packaging/desktop/work.mmoe.panasonic.PostureManager.desktop \
+  install -Dm644 packaging/linux/desktop/work.mmoe.panasonic.PostureManager.desktop \
     "${pkgdir}/usr/share/applications/work.mmoe.panasonic.PostureManager.desktop"
 
   # Only install a license file if upstream ships one. Do not fabricate a
