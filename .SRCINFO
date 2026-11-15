@@ -1,6 +1,6 @@
 pkgbase = panasonic-posture-manager
 	pkgdesc = Posture management and screen orientation for convertible Linux 2-in-1 laptops
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/adogecheems/panasonic-posture-manager
 	install = panasonic-posture-manager.install
@@ -27,7 +27,7 @@ pkgbase = panasonic-posture-manager
 	optdepends = gnome-settings-daemon: touchscreen orientation-lock GSettings schema on GNOME
 	optdepends = kscreen: display rotation and auto-rotate policy on Plasma 6.8+ (kscreenctl)
 	optdepends = libkscreen: display rotation and auto-rotate policy on Plasma 6.0-6.7 (kscreen-doctor)
-	source = panasonic-posture-manager::git+https://github.com/adogecheems/panasonic-posture-manager.git#commit=e745bbc606ac90c4ae675c4b70654f1844be7809
+	source = panasonic-posture-manager::git+https://github.com/adogecheems/panasonic-posture-manager.git#commit=97ec37353bef760c0dc85c95186aeb026f067415
 	sha256sums = SKIP
 
 pkgname = panasonic-posture-manager

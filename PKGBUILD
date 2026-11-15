@@ -1,12 +1,12 @@
 # Maintainer: adogecheems <adogecheems@outlook.com>
 #
-# AUR source-build package for the 2.5.x series. Read MAINTENANCE.md at the
+# AUR source-build package. Read MAINTENANCE.md at the
 # repository root before submitting. The default source follows the version tag;
 # published rebuild recipes pin the exact build commit instead.
 # The package is published on AUR as panasonic-posture-manager.
 
 pkgname=panasonic-posture-manager
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Posture management and screen orientation for convertible Linux 2-in-1 laptops'
 arch=('x86_64')
@@ -40,7 +40,7 @@ install="${pkgname}.install"
 
 # This is a VCS source, so SKIP is the correct checksum entry. The version tag
 # pins normal builds; release exports substitute the verified build commit.
-source=("${pkgname}::git+https://github.com/adogecheems/${pkgname}.git#commit=e745bbc606ac90c4ae675c4b70654f1844be7809")
+source=("${pkgname}::git+https://github.com/adogecheems/${pkgname}.git#commit=97ec37353bef760c0dc85c95186aeb026f067415")
 sha256sums=('SKIP')
 
 build() {
