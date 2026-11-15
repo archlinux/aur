@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=zsh-patina
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='A blazingly fast Zsh syntax highlighter'
 url='https://github.com/michel-kraemer/zsh-patina'
@@ -13,7 +13,7 @@ makedepends=(git cargo clang)
 license=('MIT')
 
 source=("git+$url.git#tag=$pkgver")
-b2sums=('27b87b7c45327c6351b65110decab3a4cedcac3bc56c2b5f188b1136de2f51ec9dbe44cba37740a6bced2faae0bcb4a478cb7b218636a706a47be6fc4689b21d')
+b2sums=('0920ac846e41f5011658a8d1c5f2c49df31ce42fc9c9ca1fc092fa6181d6011f4ea19de9ded47883d0c8637f47c87680a42685b079957cc6fde88558df154928')
 
 prepare() {
 	cd "$pkgname"
