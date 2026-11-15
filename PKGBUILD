@@ -27,9 +27,9 @@ validpgpkeys=('E915CDC402AFAF8E745680978E6974F15334285D')
 sha256sums=('e695ce6a4f1171f46efcc4824e2dffff3c1fbf33eb8dbfd0cbe05abb35dfd6fe'
             'a54e6c954b22aa2529cd54abc21c7e3fc0675257e5e2ee50fa784c5fc2ca4115'
             'abc6f48872ecbc10205fe61b4b6abc59ab22d4ba484478ec3fbd2f0b95669af9')
-sha256sums_x86_64=('caf4c9a4c6e316a7ee174b4aaa7a3588bf375e50034bee40a6e96a056ad05a82'
+sha256sums_x86_64=('c70d3dac834cfe4578c5b60d39c46db0632330084f6a86d1159c16f28966e5e7'
                    'SKIP')
-sha256sums_aarch64=('161f23a308d9b7447649e385f93a744b8f6f62d134beb52108aed286742373d7'
+sha256sums_aarch64=('8f4ec7a476836cd711d3f310737a0b1a894b12791a1acb080efa4dda43f31cde'
                     'SKIP')
 
 package() {
