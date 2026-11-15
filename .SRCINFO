@@ -1,0 +1,23 @@
+pkgbase = paseo-bun-bin
+	pkgdesc = Paseo native Bun AOT desktop and daemon with Elysia, Tauri v2 and UI performance patches (release binaries)
+	pkgver = 0.16.0beta2
+	pkgrel = 3
+	url = https://github.com/maci0/paseo-bun
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc>=2.39
+	depends = gcc-libs
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = openssl
+	depends = zlib
+	depends = git
+	optdepends = openssh: SSH connections and Git remotes
+	provides = paseo-bun=0.16.0beta2
+	conflicts = paseo-bun
+	options = !strip
+	options = !debug
+	source = paseo-bun-desktop-0.16.0-beta.2-linux-x64-aot.tar.gz::https://github.com/maci0/paseo-bun/releases/download/bun-aot-v0.16.0-beta.2-3/paseo-bun-desktop-0.16.0-beta.2-linux-x64-aot.tar.gz
+	sha256sums = 03335fe77e073fb617c47ad0cc281130df1d956b5b7a0c8b54859c67376568fd
+
+pkgname = paseo-bun-bin
