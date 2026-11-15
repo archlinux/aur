@@ -1,6 +1,6 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=paseo-desktop-git
-pkgver=0.13.0.r437.g7f3967d28
+pkgver=0.13.0.r453.g7286d3ef8
 pkgrel=2
 # Publish targets: aur + Arch release + Debian release (opt-in per format).
 _publish_targets="aur github-arch github-deb"
@@ -57,6 +57,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/paseo"
+	export NODE_OPTIONS="${NODE_OPTIONS:-} --max-old-space-size=8192"
 	# dir feeds package() (linux-unpacked); tar.gz + AppImage are standalone
 	# release assets uploaded as-is (--linux takes a target array).
 	npm run build:desktop -- --publish never --linux dir tar.gz AppImage --x64
