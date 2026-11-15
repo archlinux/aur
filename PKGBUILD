@@ -2,7 +2,7 @@
 
 _name=azure-cognitiveservices-speech
 pkgname=python-$_name
-pkgver=1.53.0
+pkgver=1.53.1
 pkgrel=1
 pkgdesc='Microsoft Cognitive Services Speech SDK for Python.'
 arch=('x86_64' 'aarch64')
@@ -30,8 +30,8 @@ source_x86_64=("https://files.pythonhosted.org/packages/py3/${_name:0:1}/$_name/
 source_aarch64=("https://files.pythonhosted.org/packages/py3/${_name:0:1}/$_name/${_name//-/_}-$pkgver-py3-none-manylinux2014_aarch64.whl")
 noextract=("${_name//-/_}-$pkgver-py3-none-manylinux1_x86_64.whl"
            "${_name//-/_}-$pkgver-py3-none-manylinux2014_aarch64.whl")
-sha256sums_x86_64=('e41a909b3480f6e12337c96f3f8cc6c8ea18cf263fee500158e49fd7b5eaa65c')
-sha256sums_aarch64=('688badb3efbb7d424aba67996225adf8762be32bbeb1e27dda87fdbd26b192de')
+sha256sums_x86_64=('64b6b4ea96646066dfb53b56e50ce8229ac6d22e8e188a73827ccb50136d2a78')
+sha256sums_aarch64=('51d437cf90f7f838e494111e391c2e6fd35b5be3d3020b13f0edf5932b617236')
 
 package() {
   python -m installer --destdir="$pkgdir" *.whl
