@@ -4,16 +4,16 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=uq
-pkgver=0.3.0rc2
+pkgver=0.3.0rc5
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
 pkgdesc="Themeable Hyprland desktop: shell, theme and layout daemon, CLI and base config"
 arch=(x86_64)
 url="https://github.com/asafelobotomy/uq"
 license=(MIT)
-depends=(uq-hyprland-pin dbus glib2 qt6ct gcc-libs 'quickshell>=0.3.1' 'quickshell<0.4' brightnessctl upower systemd noto-fonts-emoji
-  kirigami qqc2-desktop-style qt6-declarative kvantum polkit)
-makedepends=(cargo qt6-base qt6-declarative)
+depends=(uq-hyprland-pin dbus glib2 qt6ct gcc-libs 'quickshell>=0.3.1' 'quickshell<0.4' brightnessctl upower systemd noto-fonts-emoji gnome-keyring
+  kirigami qqc2-desktop-style qt6-declarative kvantum polkit kcolorscheme kconfig)
+makedepends=(cargo qt6-base qt6-declarative kcolorscheme kconfig)
 checkdepends=(lua qt6-declarative)
 optdepends=(
   'kitty: default terminal (SUPER+Return)'
@@ -38,15 +38,20 @@ optdepends=(
   'networkmanager-openvpn: OpenVPN connections on the Network settings page'
   'sound-theme-freedesktop: the test sound on the Sound settings page'
   'xorg-xrandr: tells X11 apps which display is the main one'
+  'grim: screenshots (Print)'
+  'satty: mark up a screenshot before saving it (Print)'
+  'slurp: pick an area for a screenshot when satty is missing'
+  'wl-clipboard: copy screenshots to the clipboard'
+  'kate: KWrite, a plain text editor'
 )
 # Keep !lto: rustc links with lld, and makepkg's LTO flags make the cxx-qt C++ objects unreadable to it.
 options=(!lto)
-backup=(etc/pam.d/uq-lock etc/pam.d/uq-lock-fingerprint etc/uq/greetd.toml etc/uq/greeter.toml)
+backup=(etc/pam.d/uq-greetd etc/pam.d/uq-greeter etc/pam.d/uq-lock etc/pam.d/uq-lock-fingerprint etc/uq/greetd.toml etc/uq/greeter.toml)
 # The release asset, not GitHub's /archive/ tarball: that one is generated on demand and its bytes
 # (so its checksum) can change. The release workflow uploads exactly this file and prints its sum.
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
 # The release asset's sha256 for this tag; update it with pkgver at each release (docs/releasing.md).
-sha256sums=('e2e93b51e1029dacefc0c78755c8ae5e89e727ede820545f9e337742632023dd')
+sha256sums=('f514343e1af179c80119cc3adca219cf12089e99773ba8fec918208ad0f8ce75')
 
 prepare() {
   cd "$srcdir/$pkgname-$_tag"
@@ -84,6 +89,8 @@ package() {
   install -Dm755 scripts/uq-dev "$pkgdir/usr/bin/uq-dev"
   # The uQ session entry: runs `uqctl setup` on first login, then Hyprland.
   install -Dm755 packaging/uq-session "$pkgdir/usr/bin/uq-session"
+  install -Dm755 packaging/uq-screenshot "$pkgdir/usr/bin/uq-screenshot"
+  install -Dm644 packaging/org.uq.Screenshot.desktop "$pkgdir/usr/share/applications/org.uq.Screenshot.desktop"
   install -Dm644 packaging/uq.desktop "$pkgdir/usr/share/wayland-sessions/uq.desktop"
   install -Dm644 config/hypr/base.lua "$pkgdir/usr/share/uq/hypr/base.lua"
   install -dm755 "$pkgdir/usr/share/uq"
@@ -131,6 +138,8 @@ package() {
   install -Dm644 packaging/uq-shell.service "$pkgdir/usr/lib/systemd/user/uq-shell.service"
   install -Dm644 packaging/uq-lock.service "$pkgdir/usr/lib/systemd/user/uq-lock.service"
   install -Dm755 packaging/uq-lock-run "$pkgdir/usr/lib/uq/uq-lock-run"
+  install -Dm644 packaging/pam/uq-greetd "$pkgdir/etc/pam.d/uq-greetd"
+  install -Dm644 packaging/pam/uq-greeter "$pkgdir/etc/pam.d/uq-greeter"
   install -Dm644 packaging/pam/uq-lock "$pkgdir/etc/pam.d/uq-lock"
   install -Dm644 packaging/pam/uq-lock-fingerprint "$pkgdir/etc/pam.d/uq-lock-fingerprint"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
