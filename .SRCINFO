@@ -1,0 +1,13 @@
+pkgbase = reverse-proxy-middleware
+	pkgdesc = A reverse proxy blocking bot requests.
+	pkgver = 0.0.147
+	pkgrel = 1
+	url = https://tsickert.com/reverse-proxy-middleware
+	arch = any
+	license = CC-BY-4.0
+	depends = docker
+	backup = srv/http/reverse-proxy-middleware/configuration.json
+	source = https://github.com/thaibault/reverse-proxy-middleware/archive/refs/tags/v0.0.147.tar.gz
+	sha256sums = 45bf5acba14832fcac3bb5d7d57e067deff3c4896625b757245682dddb420f73
+
+pkgname = reverse-proxy-middleware
