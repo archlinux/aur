@@ -26,7 +26,7 @@ depends=(
 )
 makedepends=('cargo' 'git' 'meson' 'ninja')
 source=("git+${url}.git#tag=${pkgver}")
-sha256sums=('e2b52add8e57185163249126168aa3879f41da7e9100fa8a5bc7f24b26c76a34')
+sha256sums=('f713c5b1e1c9a8081501fd32b3585fcd9cec185a003432e04170cbf32d71b978')
 
 build() {
 	export CFLAGS+=" -ffat-lto-objects"
