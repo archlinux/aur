@@ -1,7 +1,7 @@
 # Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 
 pkgname=stamp-git
-pkgver=0r300+9f9777b
+pkgver=0r436+b60f940
 pkgrel=1
 pkgdesc="A modern personal information management application"
 url="https://gitlab.gnome.org/jbrummer/stamp"
@@ -12,7 +12,8 @@ arch=(
 license=(GPL-3.0-or-later)
 depends=(
   dconf
-  evolution-data-server
+  evolution-data-server-git
+  evolution-ews-git
   gdk-pixbuf2
   glib2
   glibc

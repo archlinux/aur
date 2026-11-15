@@ -1,6 +1,6 @@
 pkgbase = stamp-git
 	pkgdesc = A modern personal information management application
-	pkgver = 0r300+9f9777b
+	pkgver = 0r436+b60f940
 	pkgrel = 1
 	url = https://gitlab.gnome.org/jbrummer/stamp
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = stamp-git
 	makedepends = glib2-devel
 	makedepends = meson
 	depends = dconf
-	depends = evolution-data-server
+	depends = evolution-data-server-git
+	depends = evolution-ews-git
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
