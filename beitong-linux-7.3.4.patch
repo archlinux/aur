@@ -1,5 +1,5 @@
---- xpad.c	2026-07-23 01:20:34.193648960 +0800
-+++ xpad.c	2026-07-23 01:10:02.961977997 +0800
+--- xpad.c
++++ xpad.c
 @@ -72,6 +72,7 @@
  #define PKT_XBE2_FW_5_11    4
  
@@ -8,10 +8,12 @@
  
  static bool dpad_to_buttons;
  module_param(dpad_to_buttons, bool, S_IRUGO);
-@@ -332,6 +333,34 @@
+@@ -341,8 +342,34 @@
  	{ 0x1bad, 0xfd00, "Razer Onza TE", 0, XTYPE_XBOX360 },
  	{ 0x1bad, 0xfd01, "Razer Onza", 0, XTYPE_XBOX360 },
  	{ 0x1ee9, 0x1590, "ZOTAC Gaming Zone", 0, XTYPE_XBOX360 },
+-	{ 0x20bc, 0x5134, "BETOP BTP-KP50B Xinput Dongle", 0, XTYPE_XBOX360 },
+-	{ 0x20bc, 0x514a, "BETOP BTP-KP50C Xinput Dongle", 0, XTYPE_XBOX360 },
 +	{ 0x20bc, 0x5125, "Beitong KP20A/KP40A Controller", 0, XTYPE_XBOX360, FLAG_FORCE_INIT },
 +	{ 0x20bc, 0x5126, "Beitong KP20A Controller", 0, XTYPE_XBOX360, FLAG_FORCE_INIT },
 +	{ 0x20bc, 0x5127, "Beitong KP20A/KP40A Controller", 0, XTYPE_XBOX360, FLAG_FORCE_INIT },
@@ -40,10 +42,10 @@
 +	{ 0x20bc, 0x5160, "Beitong KP70A Controller", 0, XTYPE_XBOX360, FLAG_FORCE_INIT },
 +	{ 0x20bc, 0x5169, "Beitong KP40F Controller (Black)", 0, XTYPE_XBOX360, FLAG_FORCE_INIT },
 +	{ 0x20bc, 0x516a, "Beitong KP40F Controller (Black)", 0, XTYPE_XBOX360, FLAG_FORCE_INIT },
- 	{ 0x20bc, 0x5134, "BETOP BTP-KP50B Xinput Dongle", 0, XTYPE_XBOX360 },
- 	{ 0x20bc, 0x514a, "BETOP BTP-KP50C Xinput Dongle", 0, XTYPE_XBOX360 },
  	{ 0x20d6, 0x2001, "BDA Xbox Series X Wired Controller", 0, XTYPE_XBOXONE },
-@@ -703,6 +732,15 @@
+ 	{ 0x20d6, 0x2009, "PowerA Enhanced Wired Controller for Xbox Series X|S", 0, XTYPE_XBOXONE },
+ 	{ 0x20d6, 0x2064, "PowerA Wired Controller for Xbox", MAP_SHARE_BUTTON, XTYPE_XBOXONE },
+@@ -718,6 +745,15 @@
  };
  
  /*
@@ -59,7 +61,7 @@
   * This specifies the selection of init packets that a gamepad
   * will be sent on init *and* the order in which they will be
   * sent. The correct sequence number will be added when the
-@@ -717,6 +755,10 @@
+@@ -732,6 +768,10 @@
  	XBOXONE_INIT_PKT(0x045e, 0x0b00, extra_input_packet_init),
  	XBOXONE_INIT_PKT(0x0000, 0x0000, xboxone_led_on),
  	XBOXONE_INIT_PKT(0x0000, 0x0000, xboxone_auth_done),
@@ -70,7 +72,7 @@
  	XBOXONE_INIT_PKT(0x24c6, 0x541a, xboxone_rumblebegin_init),
  	XBOXONE_INIT_PKT(0x24c6, 0x542a, xboxone_rumblebegin_init),
  	XBOXONE_INIT_PKT(0x24c6, 0x543a, xboxone_rumblebegin_init),
-@@ -778,6 +820,7 @@
+@@ -793,6 +833,7 @@
  	time64_t mode_btn_down_ts;
  	bool delay_init;		/* init packets should be delayed */
  	bool delayed_init_done;
@@ -78,7 +80,7 @@
  };
  
  static int xpad_init_input(struct usb_xpad *xpad);
-@@ -1253,7 +1296,7 @@
+@@ -1268,7 +1309,7 @@
  {
  	const struct xboxone_init_packet *init_packet;
  
@@ -87,10 +89,11 @@
  		return false;
  
  	/*
-@@ -1787,6 +1830,15 @@
+@@ -1801,6 +1842,15 @@
+ 		}
  	}
  	if (xpad->xtype == XTYPE_XBOX360) {
- 		/*
++		/*
 +		 * Some third-party Xbox 360-style controllers
 +		 * require sending Xbox One messages to finish initialization.
 +		 */
@@ -99,11 +102,10 @@
 +			xpad_prepare_next_init_packet(xpad);
 +		}
 +
-+		/*
+ 		/*
  		 * Some third-party controllers Xbox 360-style controllers
  		 * require this message to finish initialization.
- 		 */
-@@ -2082,6 +2134,8 @@
+@@ -2097,6 +2147,8 @@
  	xpad->name = xpad_device[i].name;
  	if (xpad_device[i].flags & FLAG_DELAY_INIT)
  		xpad->delay_init = true;

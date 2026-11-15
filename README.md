@@ -1,86 +1,19 @@
-# xpad-beitong-dkms
+# xpad-beitong-dkms 1.4-1
 
-**Temporary** DKMS module for patched `xpad` with Beitong KP-series 2.4G gamepad fix. Will be deprecated once the patch is merged upstream (expected Linux 7.3 or later).
+Source-only DKMS packaging of the existing Beitong GIP initialization workaround. Original patch: Zixing Liu; GCC/source acquisition bug reports: ilevnn (upstream PRs #3/#4). The independent successor fixes those paths without executing the contributor recipes. See SOURCES.md for immutable sources, signatures, checksums and attribution.
 
-## Problem
+Supported exact x86_64 target releases:
 
-Beitong (北通) KP-series gamepads (KP20A, KP40A, KP50B, etc.) disconnect every ~1s when using the 2.4G wireless receiver on Linux. The firmware detects the host OS and power-cycles the USB connection if it doesn't receive specific Xbox One GIP (Game Input Protocol) initialization packets.
+- Official Arch linux: 7.3.4-arch1-2
+- Official Arch linux-zen: 7.3.4-zen2-2-zen
+- CachyOS: 7.3.4-1-cachyos, 6.18.60-2-cachyos-lts
+- Previously validated CachyOS: 7.3.3-1-cachyos (not freshly rebuilt after its headers were removed)
 
-**Symptoms:** USB device `20bc:5127` cycles connect/disconnect continuously; Bluetooth and USB-wired modes work fine.
+Kernel headers and their matching compiler are required. Target .config selects GCC or Clang; explicit overrides remain available. Unknown releases are deliberately refused rather than compiled from an older/mismatched snapshot. Do not upgrade expecting the Beitong workaround on an unlisted kernel; ask for review/testing of that exact release first. A stock fallback is not equivalent to the workaround.
 
-## Fix
+The package contains only source/configuration/provenance under /usr/src. There is no prebuilt .ko or .INSTALL. Standard Arch DKMS hooks own the package lifecycle; signing follows DKMS framework policy. No script explicitly reloads a live module. Review transaction logs and DKMS state; a pacman exit code alone does not prove every hook succeeded.
 
-This package applies [Zixing Liu's patch](https://lore.kernel.org/linux-input/20260102030154.197749-2-liushuyu@aosc.io) to `xpad.c`, adding `FLAG_FORCE_INIT` which sends GIP acknowledge and announce packets during controller probing. The firmware recognizes these packets and stays in XINPUT mode.
+Official linux/linux-zen inputs and source tags were verified with the existing Arch keyring. Controlled-root actual install, upgrade, legacy 1.0-1 migration and removal passed on the four currently available targets; stock files restored exactly. This is not a live kernel-load test, production Secure Boot/signature acceptance test or full physical-controller test. KP70C1 support remains unverified; no new device ID/quirk was guessed.
 
-The patch has been submitted upstream (v3, 2026-07-17) and is pending review. Once merged into the kernel, this DKMS package is no longer needed.
-
-## Installation
-
-### From AUR
-
-```bash
-yay -S xpad-beitong-dkms
-# or
-paru -S xpad-beitong-dkms
-```
-
-### From source
-
-```bash
-git clone https://github.com/675076143/xpad-beitong-dkms.git
-cd xpad-beitong-dkms
-makepkg -si
-```
-
-After installation, reboot or run:
-
-```bash
-sudo modprobe -r xpad && sudo modprobe xpad
-```
-
-## Requirements
-
-- `dkms` package
-- Kernel headers for your running kernel (e.g., `linux-headers`, `linux-zen-headers`, `linux-cachyos-rc-headers`, etc.)
-
-## How it works
-
-1. Copies `xpad.c` from the running kernel's headers
-2. Applies the GIP init patch
-3. Registers with DKMS for automatic rebuilds on kernel updates
-4. Blacklists the in-kernel `xpad` module to ensure the patched one loads
-
-## Compatible Devices
-
-The following VID:PID combinations are recognized:
-
-| VID | PID | Device |
-|-----|-----|--------|
-| 20bc | 5125-5128 | KP20A/KP40A |
-| 20bc | 512f-5130 | KP70A |
-| 20bc | 5133-5134 | KP50B |
-| 20bc | 5145-5146 | KP40A/KP40B |
-| 20bc | 5149-514a | KP50C |
-| 20bc | 5150-5151 | KP50D |
-| 20bc | 5152-5153 | KP50E |
-| 20bc | 5154-5155 | KP40D |
-| 20bc | 5158-5159 | KP20D |
-| 20bc | 515b-515c | KP40D (White) |
-| 20bc | 515d-515e | KP40F (White) |
-| 20bc | 515f-5160 | KP70A |
-| 20bc | 5169-516a | KP40F (Black) |
-
-## Upstream Status
-
-| Item | Status |
-|------|--------|
-| Patch author | Zixing Liu |
-| Submitted | v3, 2026-07-17 |
-| Target | Mainline Linux (expected 7.3 or later) |
-| This DKMS | Deprecated after upstream merge |
-
-## Links
-
-- [Wiki page with full investigation log](https://github.com/675076143/notes/wiki/beitong-btp-kp40a-linux-usb-disconnect)
-- [Upstream patch discussion (linux-input)](https://lore.kernel.org/linux-input/20260102030154.197749-2-liushuyu@aosc.io/)
-- [Arch Wiki - Gamepad (ShanWan section)](https://wiki.archlinux.org/title/Gamepad)
+Upstream project: https://github.com/675076143/xpad-beitong-dkms
+Candidate implementation: af6f96e33fa18700a695a5a4e98d7a26ea373ed6
