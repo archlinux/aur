@@ -1,7 +1,7 @@
 pkgbase = rauthy
 	pkgdesc = Single Sign-On Identity & Access Management via OpenID Connect, OAuth 2, and PAM
 	pkgver = 0.37.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sebadob/rauthy
 	install = rauthy.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = rauthy
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
+	options = !debug
 	source = rauthy-0.37.2.tar.gz::https://github.com/sebadob/rauthy/archive/refs/tags/v0.37.2.tar.gz
 	source = rauthy.service
 	source = rauthy.sysusers
