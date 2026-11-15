@@ -1,6 +1,6 @@
 pkgbase = iscsi-util-bin
 	pkgdesc = A simple and modern GUI for managing iSCSI.
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://github.com/mijocecr/iscsi-util
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = iscsi-util-bin
 	depends = cifs-utils
 	options = !debug
 	options = !strip
-	source = https://github.com/mijocecr/iscsi-util/releases/download/iscsi-util_5.0/ISCSI-Util.tar.gz
-	sha256sums = 8abe8f8f77dc0371eef4fecfea8b65a4bfcb5ef442097658645ece920dce5ecb
+	source = https://github.com/mijocecr/iscsi-util/releases/download/iscsi-util_5.0.1/ISCSI-Util.tar.gz
+	sha256sums = eddb51874d22669b7fdb95ac38fc8a30264a26736e4de2b6749e31965d7b18ae
 
 pkgname = iscsi-util-bin
