@@ -1,6 +1,6 @@
 pkgbase = rtl8852-eco4-dkms
-	pkgdesc = Bluetooth driver for RTL8852 ECO Version 4 (DKMS)
-	pkgver = 7.2.7
+	pkgdesc = Bluetooth driver for RTL8852BE ECO Version 4 (DKMS)
+	pkgver = 7.3.4
 	pkgrel = 1
 	url = https://github.com/q234rty/rtl8852be-eco4-dkms
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = rtl8852-eco4-dkms
 	makedepends = git
 	makedepends = innoextract
 	depends = dkms
-	source = rtl8852-eco4::git+https://github.com/q234rty/rtl8852be-eco4-dkms.git#tag=7.2.7
+	source = rtl8852-eco4::git+https://github.com/q234rty/rtl8852be-eco4-dkms.git#tag=7.3.4
 	source = https://download.lenovo.com/consumer/mobiles/50s5010fpm3t3cj0.exe
-	sha256sums = 2c9c0f75f5d9fcf06157f5ece97692c94a4cf7ddab850a478f3c86083ec72d6c
+	sha256sums = 839153bea6de6be76dbde3f04c4704447d61d61e02a8e9b75496fe0606835b9a
 	sha256sums = 1cbafaf1e2b224271ad05aacd0229929a2aadfb996a5e3ee6e1649d8a24a4c1e
 
 pkgname = rtl8852-eco4-dkms
