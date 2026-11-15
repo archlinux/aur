@@ -1,6 +1,6 @@
 pkgbase = speshell-git
 	pkgdesc = A desktop shell built with Quickshell: a bar and its panels, a launcher, and animated themes
-	pkgver = r23.g10196ac
+	pkgver = r24.gc7abc04
 	pkgrel = 1
 	url = https://github.com/vcoscrato/speshell
 	arch = any
@@ -24,7 +24,6 @@ pkgbase = speshell-git
 	depends = systemd
 	depends = upower
 	depends = util-linux
-	depends = which
 	depends = wireplumber
 	optdepends = hyprland: workspaces in the bar and the Displays panel
 	optdepends = curl: downloading the dictation model

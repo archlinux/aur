@@ -1,7 +1,7 @@
 # Maintainer: Victor Coscrato <vcoscrato@users.noreply.github.com>
 
 pkgname=speshell-git
-pkgver=r23.g10196ac
+pkgver=r24.gc7abc04
 pkgrel=1
 pkgdesc="A desktop shell built with Quickshell: a bar and its panels, a launcher, and animated themes"
 arch=('any')
@@ -24,7 +24,6 @@ depends=(
   'systemd'
   'upower'
   'util-linux'
-  'which'
   'wireplumber'
 )
 makedepends=('git' 'just' 'qt6-shadertools')
