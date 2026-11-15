@@ -1,7 +1,7 @@
 pkgbase = dump1090-fa-git
 	pkgdesc = FlightAware/Mutability fork of dump1090, a simple Mode S decoder for RTLSDR devices.
 	pkgver = 11.1.r1.g465e0633
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/flightaware/dump1090
 	install = dump1090-fa.install
@@ -30,6 +30,6 @@ pkgbase = dump1090-fa-git
 	md5sums = SKIP
 	md5sums = 8e2bfa87e94587b6d995480ad85afa98
 	md5sums = c650e2c7ae3950099d4eabab0b2910a4
-	md5sums = e6c6130752777e3b1a8b97dc6713d76d
+	md5sums = 2fa6439650ca12dc3da3efdaad85da05
 
 pkgname = dump1090-fa-git
