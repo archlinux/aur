@@ -5,7 +5,7 @@
 
 pkgname=metrolist-desktop-nightly-bin
 _pkgver=14.0.0+2623ab7
-pkgver=14.0.0+2623ab7
+pkgver=20261115.r56.g2623ab7
 pkgrel=1
 pkgdesc="YouTube Music client for desktop (nightly)"
 arch=('x86_64')

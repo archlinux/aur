@@ -1,6 +1,6 @@
 pkgbase = metrolist-desktop-nightly-bin
 	pkgdesc = YouTube Music client for desktop (nightly)
-	pkgver = 14.0.0+2623ab7
+	pkgver = 20261115.r56.g2623ab7
 	pkgrel = 1
 	url = https://github.com/MetrolistGroup/Metrolist
 	arch = x86_64
