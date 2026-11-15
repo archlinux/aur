@@ -2,7 +2,7 @@
 # Contributor: Kimiblock Moe
 
 pkgname=clash-rs
-pkgver=0.10.11
+pkgver=0.10.12
 pkgrel=1
 pkgdesc="custom protocol network proxy"
 arch=(x86_64 armv7h aarch64 i686)
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         clash-rs.service
         clash-rs@.service
         config.yaml)
-sha256sums=('0538964441d7d7320e9c041b4678392781a9b3e17d17246d3222dd182d69c8aa'
+sha256sums=('13bdd72b423ae851e9d93a418120991009e2c5478a16a240cfdc60aaafa4a6ba'
             '64c1b08fe40af101b5a113212e28aec7e91f63424bec85d50efc5b0fc9ce62ce'
             'c1629d3f5b48053616141076ad8d21031fbca84a352b123d9e3c5bad6406f4a7'
             'd6f1782c0a57591ef6b8c4c898fc7a883363ec45742ae41eee8b91eb68d90f05')
