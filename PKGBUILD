@@ -1,12 +1,12 @@
 # Maintainer: Kaleb <vitor.guttler@edu.pucrs.br>
 pkgname=cognito-local-git
 pkgver=5.3.0.r0.g0b0e5f6
-pkgrel=1
+pkgrel=2
 pkgdesc="Local emulator for Amazon Cognito (git version)"
 arch=('x86_64')
 url="https://github.com/jagregory/cognito-local"
 license=('MIT')
-depends=('nodejs' 'npm')
+depends=('nodejs')
 makedepends=('git' 'npm')
 provides=('cognito-local')
 conflicts=('cognito-local')
