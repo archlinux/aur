@@ -4,7 +4,7 @@
 pkgname=piaware-git
 _gitname=piaware
 pkgver=11.1.r0.g8480286
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Client-side package and programs for forwarding ADS-B data to FlightAware"
 
@@ -20,7 +20,7 @@ source=('piaware::git+https://github.com/flightaware/piaware'
         'piaware.conf'
         'rehash.patch')
 md5sums=('SKIP'
-         'fc8d49cd7b2ba136a097501647ed105b'
+         '4c5dbdb485b85ed3fb12165d3ee4249d'
          '0da90971dd0b5836bd416c18fcdb984f')
 install=piaware-git.install
 backup=('etc/piaware.conf')
@@ -47,7 +47,10 @@ package() {
   install -dm755 "${pkgdir}"/var/cache/piaware
   install -dm750 "${pkgdir}"/etc/sudoers.d/
   install -Dm644 etc/piaware.sudoers "${pkgdir}"/etc/sudoers.d/01piaware
-  install -Dm640 "${srcdir}"/piaware.conf "${pkgdir}"/etc/piaware.conf
+  install -Dm644 "${srcdir}"/piaware.conf "${pkgdir}"/etc/piaware.conf
   chmod -x "${pkgdir}/usr/lib/systemd/system/piaware.service"
   install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
+md5sums=('SKIP'
+         '4c5dbdb485b85ed3fb12165d3ee4249d'
+         '0da90971dd0b5836bd416c18fcdb984f')
