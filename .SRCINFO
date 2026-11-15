@@ -1,6 +1,6 @@
 pkgbase = xpcog
 	pkgdesc = Audio player for the formats other players do not open
-	pkgver = 4.0.2
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://cog.losno.co/xpcog
 	arch = x86_64
@@ -35,9 +35,9 @@ pkgbase = xpcog
 	depends = libmpcdec
 	depends = libsidplayfp
 	depends = hicolor-icon-theme
-	source = xpcog-4.0.2.tar.gz::https://github.com/losnoco/XPCog/archive/refs/tags/v4.0.2.tar.gz
+	source = xpcog-4.2.0.tar.gz::https://github.com/losnoco/XPCog/archive/refs/tags/v4.2.0.tar.gz
 	source = vcpkg::git+https://github.com/microsoft/vcpkg.git#commit=17f35ad2418007a895ced8a4cece4ab34068a58d
-	sha256sums = 4f8aa5e2e5301fe28a08af723fc2f44133c719acb620cb0138b5d01cda27cbc5
+	sha256sums = 9370ca16865ed2a79dde2aca300920de10f7ad1795133415d597aa5573d18ac2
 	sha256sums = SKIP
 
 pkgname = xpcog
