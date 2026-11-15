@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+# region header
+# Copyright Torben Sickert (info["~at~"]tsickert.com) 16.12.2012
+
+# License
+# -------
+
+# This library written by Torben Sickert stands under a creative commons naming
+# 4.0 international license.
+# See https://creativecommons.org/licenses/by/4.0/deed.de
+# endregion
+[Unit]
+Description=Base service handler
+After=docker.service
+BindsTo=docker.service
+Conflicts=shutdown.target reboot.target halt.target
+
+[Service]
+Environment=hostname=%H
+ExecStartPre=-/usr/bin/env docker compose --file serviceHandler/base.yaml kill $APP
+ExecStartPre=-/usr/bin/env docker compose --file serviceHandler/base.yaml rm --force $APP
+ExecStart=/usr/bin/env docker compose --file serviceHandler/base.yaml up --force-recreate --no-build --no-deps $APP
+ExecStop=/usr/bin/env docker compose --file serviceHandler/base.yaml stop $APP
+NotifyAccess=all
+# NOTE: Will be handled by docker.
+#Restart=always
+#RestartSec=10
+User=root
+WorkingDirectory=/root/application
+
+[Install]
+WantedBy=multi-user.target
