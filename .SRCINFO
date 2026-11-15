@@ -1,0 +1,14 @@
+pkgbase = florarium
+	pkgdesc = Fullscreen terminal gallery of ASCII flowers in vases and pots
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/6e6f303216/florarium
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = coreutils
+	source = florarium-1.0.0.tar.gz::https://github.com/6e6f303216/florarium/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = f1b9612830341f1cd8d733caa6926de98609033fab744480e06b16faea891ee5
+
+pkgname = florarium
