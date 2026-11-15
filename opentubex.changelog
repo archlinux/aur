@@ -1,236 +1,69 @@
-opentubex (0.38.0) stable; urgency=medium
-
-  [ Highlights ]
-  * Follow channels on Twitch, SoundCloud, PeerTube, Rumble and Odysee without
-    an account. Their uploads appear in a Platforms tab and the New feed, their
-    channels and playlists open in the app, search covers these platforms, and
-    you can be notified when a Twitch channel goes live.
+opentubex (0.38.1) stable; urgency=medium
 
   [ New features ]
-  * A new Auto Load Comments setting controls whether comments load
-    automatically, separately from Auto Load Next Page for feeds and other
-    lists.
-  * Double-click the mini player to return to the full player.
-  * A new Font Size setting in Appearance and Quick Settings makes text larger
-    or smaller without zooming the rest of the interface.
-  * Links in descriptions, comments, and elsewhere are now underlined only on
-    hover. To always or never underline them, change Link Underlines in
-    Appearance settings.
-  * A new "Show seek bar filmstrip" setting in Player Settings brings back the
-    single thumbnail when you drag the seek bar or swipe to seek.
-  * Channel pages have a switch to hide watched videos, shorts, and live
-    streams.
-  * The Custom Theme Editor can now change the background of thumbnail badges,
-    like the duration and Watched labels, so you can make them lighter or
-    transparent and see more of the thumbnail.
-  * A new Distraction Free setting, Hide Playlist Stats, hides the video count,
-    last updated date, and total duration on playlist pages.
-  * Digital Wellbeing's grayscale can now apply to videos and images only, so
-    the interface keeps its colors.
-  * Rewind on Resume in Player Settings jumps back a few seconds when you resume
-    a paused video, so you don't lose track of what was happening. You can also
-    make it skip short pauses.
-  * You can now sign in to a self-hosted sync server through its single sign-on
-    (OIDC) provider, such as Authelia, if the server is set up for it.
-  * Notifications you read, remove, or clear now sync between your devices.
-    Reading one in the app also removes it from the system's notifications, and
-    opening or swiping away a system notification marks it read.
-  * Playlists can be pinned to the top of the Playlists page from their context
-    menu. Pinned playlists stay above the others, whichever sort order you
-    choose.
-  * Storage settings have a clearer layout with a usage bar. Watch history
-    retention moved to Privacy settings, where saved searches can now also be
-    removed automatically after a set number of days.
-  * The tray icon has a new monochrome style that turns white or black to match
-    your taskbar, menu bar, or panel.
-  * Scrolling down a video page now pins the full-size player to the top when
-    there's room, such as on phones in portrait or on vertical monitors, and
-    shows the mini player otherwise. Two choices, "When scrolling down" and
-    "When leaving a video", replace the three mini player switches.
-  * Playlists have a new option to remove each video once you watch it from the
-    playlist, using your watched percentage threshold.
-  * To darken the app behind dialogs and menus without blurring it, which is
-    lighter on less powerful devices, change Dialog Background in Appearance
+  * Follow conferences on media.ccc.de, search its talks, and watch them like
+    media from the other supported platforms. Conference links open their page
+    in the app.
+  * Subscription imports can sort channels into groups, from group names after
+    the channel title in a .csv file or from the folders of an .opml file. The
+    group editor can also select or clear all channels matching a search.
+  * The player can take timestamp notes once you enable them in the player
+    settings: press N or use the player menu to write a note that links to the
+    current moment, then copy it as Markdown or add it to an Obsidian vault on
+    desktop.
+  * The app font setting now includes Libron, a serif font designed for
+    comfortable reading.
+  * Any video comment can now be watched for replies with the bell button next
+    to it, also without a YouTube account, and comments you post are watched
+    automatically. The comment settings list the watched comments, and selecting
+    one opens it highlighted.
+  * The extra thumbnail action button can now play a video next, add it to the
+    queue, open it in a background tab, or mark it as seen.
+  * Playlists that remove videos once watched can use their own removal
+    threshold instead of the watched percentage threshold from the Privacy
     settings.
-  * Pasting a video link into the search bar now shows the video's thumbnail,
-    title, channel, and length before you open it, and channel links and handles
-    show the channel's avatar and name. Links are no longer sent to the search
-    suggestion service.
-  * Focus settings can blur videos, playlists, channels, and posts matched by
-    your block lists instead of hiding them. Click a blurred item to show it.
-  * Videos loaded with the Local API that are louder than most now play at a
-    lower volume, reducing volume differences between videos. Turn this off with
-    Normalize Loudness in Player Settings.
-  * A new experimental Faster Subscription Refresh setting in the Subscription
-    settings skips reloading channels without new uploads. In exchange, view
-    counts and other details of those channels update less often.
-  * A new Always show DeArrow badge setting keeps the DeArrow button visible on
-    videos whose title or thumbnail DeArrow changed, so you can spot them at a
-    glance. The button now shows the DeArrow logo.
-  * You can now host the OpenTubeX web app yourself with Docker Compose, with
-    its own Invidious server or without one. The new OpenTubeX Local API browser
-    extension lets the web app, including the web demo, load videos straight
-    from YouTube.
-  * Click Scrollbar Track to Scroll, a new Appearance setting, scrolls about a
-    page when you click a scrollbar outside its handle.
-  * Once a video or other item in a feed or result list has focus, the arrow
-    keys move between items. M marks a new item as seen, or toggles watched on
-    an item already seen. You can change the M shortcut in Keyboard Shortcuts.
-  * The Profile Manager has a search field for a profile's channels, and
-    profiles with many subscriptions open without freezing.
-  * You can now sign in with a YouTube account to like videos, comment, keep
-    your subscriptions and playlists in sync with YouTube, and see your YouTube
-    recommendations on Home. Google can restrict accounts that use unofficial
-    apps, so only use an account you can afford to lose.
 
   [ Improvements ]
-  * OpenTubeX now checks for updates every few hours while it runs, not only at
-    startup.
-  * Deleting items in the app, such as the last video of a playlist, no longer
-    stops sync to ask for confirmation. When sync does stop to prevent data
-    loss, Sync settings now shows the affected items right away and offers to
-    keep them instead of deleting them.
-  * Channel tabs that don't fit on one row now open from a More tab instead of
-    scrolling sideways. On phones, the channel search button sits next to
-    Subscribe.
-  * The Picture-in-Picture window now reopens where you left it and at the same
-    size, even after restarting OpenTubeX. On Linux, this needs KDE Plasma.
-  * Copying a playlist opens the playlist picker right away. Copying, adding
-    missing videos from the source playlist, and removing unavailable videos
-    keep running after you leave the playlist, show their progress, and report
-    when they finish.
-  * While a video page waits to reach YouTube or your API server again, it now
-    says so and offers a Retry now button instead of showing only the loading
-    placeholder. A playing video that loses YouTube resumes where it stopped
-    instead of reloading the page.
-  * The buttons in the middle of the player no longer sit on dark circles. With
-    "Display Play Button In Video Player" on, desktop players also show Previous
-    and Next beside play/pause when a playlist or queue has a video before or
-    after the current one.
-  * Changing the search filters on a search results page now searches again with
-    the new filters, so you no longer have to repeat the search.
-  * Channel pages, the Channels page, and Channel Settings show each channel's
-    handle, and searching your channels, Channel Settings, and subscription
-    groups also finds channels by handle.
-  * Live streams now play in up to 4K with both playback engines, instead of
-    stopping at 1080p, and the built-in engine can rewind them and premieres.
-  * The playlist picker lists playlists as compact rows on phones and when Video
-    View Type is set to List, so several fit on screen at once. On phones, the
-    search options sit behind a filter button.
-  * Download file name templates now have to stay inside the download folder.
-    Absolute paths, "..", "~", "$", and raw yt-dlp "%(...)" fields are rejected;
-    use the {title}, {author}, and other listed fields instead.
-  * The first time the external player starts with new custom arguments,
-    OpenTubeX shows them and asks before running it.
-  * Paths to yt-dlp, FFmpeg, the external player, the IP block recovery script,
-    the cookie file, and the download folder are now chosen with Browse and can
-    no longer be typed or pasted. Browser profiles still accept a name; choose a
-    profile folder with Browse.
-  * Additional yt-dlp arguments no longer accept --parse-metadata,
-    --replace-in-metadata, --metadata-from-title, --compat-options, or
-    --trim-filenames, which could move downloads out of the download folder or
-    turn off yt-dlp's file type checks.
-  * Themes are now chosen on one page that previews each theme: pick System
-    default, Light, or Dark, then the light and dark themes, with the color and
-    accent settings alongside.
-  * Saved playlists now sort by when their channel last updated them, and a new
-    button on the Playlists page refreshes them all at once.
-  * A live stream reminder that came due less than an hour before you opened the
-    app now notifies you instead of disappearing.
-  * The tutorial for new users now offers to import your data first, lets you
-    pick a theme, start page, region, and playback and privacy options, and can
-    be replayed from About.
-  * Settings sync now carries each playlist's options, such as adding new videos
-    to the top and shuffling by default, so a playlist plays the same way on all
-    your devices.
-  * Playlist downloads now show which video is downloading, such as "Video 3 of
-    12", with its title.
-  * Titles in lists and grids can now be limited to one, two, or three lines, or
-    shown in full, instead of only switching the two-line limit on or off.
-  * Hold to Double Playback Speed is now Hold to Speed Up, where you choose how
-    much holding Space or the player speeds up playback, or turn it off.
-  * Moving and resizing the Settings, Downloads, and About windows is smoother,
-    especially on slower computers.
-  * Videos start playing sooner, including the first one you watch, and no
-    longer wait behind a countdown before they start. Their description details,
-    comments, and recommendations fill in right after, and Auto can be the
-    default quality again.
-  * The startup screen has a Material 3 Expressive look in your theme's colors.
-    The logo sits on a turning shape above a wavy progress indicator, and the
-    shape opens up to reveal the app.
-  * Scrolling the chapters list now keeps it where you left it instead of
-    jumping back to the current chapter, and a Sync to video time button brings
-    it back.
-  * Tally Light and Tally Dark, which match the OpenTubeX website, are the new
-    default themes. If you never picked a theme, the app switches to them; to
-    keep the previous look, choose Light and Dark in Appearance settings.
-  * With "Prefer untranslated video text" set to Entire App, channel pages now
-    show the channel's original name and description when YouTube translates
-    them.
-  * Large libraries load faster at startup, long playlists open faster, and
-    unloaded tabs keep their back and forward history.
-  * Refreshing all subscription feeds now also refreshes your RSS feeds, and its
-    confirmation for profiles with many subscriptions has a "Never ask again"
-    option.
-  * You can now drag the edge of the side panels in fullscreen and full window
-    to make them wider or narrower. The width is remembered, and double-clicking
-    the edge restores the default.
-  * Channels that could not be refreshed, including in background refreshes, now
-    appear once each in a box above the subscription feeds instead of a dialog.
-    Open a channel from there, unsubscribe from channels that no longer exist,
-    or retry the others.
-  * The app menu now uses the app's language, and the app, tray, and dock menus
-    switch right away when you change the language.
-  * You can now drag sections in Customize Home to reorder them, and the list
-    shows them in one column in the order Home uses.
-  * The app font list has a search field, shows a spinner while it loads your
-    installed fonts, and no longer stalls the app when they appear.
-  * Videos taller than 16:9 now fit in the window on the watch page, and use the
-    extra height on phones and tall screens instead of shrinking into a 16:9
-    frame.
-  * Videos from other sites now appear in your watch history like YouTube
-    videos, with their progress and the same actions to mark them as watched or
-    remove them. They also show up under Continue Watching on Home.
-  * Remove Duplicate Videos now always appears in the More menu of your
-    playlists that have videos, even when they have no duplicates yet.
-  * Twitch livestreams can now be rewound to the start of the broadcast when the
-    channel keeps its videos. Clicking the time next to the play button returns
-    to live.
+  * With autoplay on, the next and previous buttons and media controls,
+    including Bluetooth and car controls, now skip between recommended videos
+    outside a playlist.
+  * Searching for the address of a Twitch, SoundCloud, Odysee, Rumble, or
+    PeerTube channel now opens its channel page instead of playing it. Links to
+    Twitch, SoundCloud, Odysee, and Rumble channels in About tabs and
+    descriptions open the channel page too.
+  * Number fields have − and + buttons that work the same in every browser when
+    you use a mouse. Firefox no longer treats letters typed into number fields
+    as an empty value.
+  * Long comment sections below a video no longer slow down each time you load
+    more comments.
+  * Tapping outside the open search on phones now just closes it, instead of
+    also opening whatever was underneath.
+  * yt-dlp now ignores its configuration files, so a file in the download folder
+    can no longer change what it does. Set download options in Additional yt-dlp
+    arguments instead.
+  * The mini player now has previous and next buttons and a progress bar you can
+    click or drag to seek.
+  * Channel pages from platforms other than YouTube open faster, and going back
+    to one shows it right away, where you left off. Refreshing followed PeerTube
+    channels no longer waits for slow instances.
 
   [ Fixed bugs ]
-  * The deb, rpm, and pacman packages no longer install program files that every
-    user on the computer can modify.
-  * With Invidious or a Yattee server, OpenTubeX no longer contacts YouTube for
-    the avatars and channels of collaboration videos or for the image shown when
-    a video can't be loaded.
-  * Casting to a DLNA device no longer bypasses your proxy and reveals your IP
-    address. Like other cast types, it now refuses to stream while a proxy is
-    set.
-  * Background subscription refresh no longer shows HTTP 404 errors for
-    subscribed channels that have no videos at all.
-  * Playlist downloads with members-only or other unavailable videos now
-    complete with the videos that could be downloaded, instead of being marked
-    as failed.
-  * Your saved proxy username and password are now only sent to the proxy you
-    configured, not to other proxies such as a system proxy after you turn yours
-    off.
-  * Downloaded FFmpeg builds are now checked against their published checksums
-    before they're installed, and checking for FFmpeg updates on Linux and macOS
-    no longer fails most of the time.
-  * Pausing a download now also pauses FFmpeg, so downloads with a time range
-    stop transferring, and canceled downloads free their slot right away.
-  * Videos no longer take much longer to start while your subscriptions refresh
-    or other tabs load videos in the background.
-  * The next video in a playlist or the queue now starts in the mini player, in
-    automatic Picture-in-Picture, and on a locked Android screen. Videos you
-    queued also play at bedtime, when only autoplay stops.
-  * Comment translations from Hindi, Thai, and other languages whose scripts use
-    vowel signs are accurate again, and words on separate lines no longer run
-    together.
-  * Twitch streams and other media from other sites keep playing in the mini
-    player when you leave them, like YouTube videos. They also follow the Hide
-    Chapters setting and, on desktop, the default viewing mode.
-  * Sync no longer fails with "Watch history changed during sync" while you
-    watch a video.
+  * Importing a file of the wrong kind no longer freezes the app. Choosing
+    FreeTube's subscription cache as a subscriptions file now explains which
+    file to pick instead.
+  * The queue keeps playing the next video while the window is minimized.
+  * The Picture-in-Picture window now stays above other windows and shows on all
+    virtual desktops on KDE Plasma Wayland, without a window rule.
+  * High-quality videos no longer stop with a playback error after playing for a
+    while.
+  * Videos in background tabs, such as ones you open in the background or tabs
+    restored at startup, load about twice as fast again, and use much less CPU
+    while you watch something else.
+  * Clicking a tab switches to it again when the custom title bar is turned on.
+  * Subscription Shorts keep loading, in date order, while YouTube's RSS feeds
+    are down or rate limited, instead of listing channels that could not be
+    refreshed.
+  * The Share Video button next to a Short now opens the full share menu instead
+    of a cut-off panel.
 
- -- OpenTubeX contributors <info@opentubex.org>  Sat, 14 Nov 2026 01:40:21 +0000
+ -- OpenTubeX contributors <info@opentubex.org>  Sun, 15 Nov 2026 22:08:01 +0000
