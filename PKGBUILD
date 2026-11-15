@@ -7,7 +7,7 @@ pkgname=(
   bisq-cli
   bisq-daemon
 )
-pkgver=1.10.10
+pkgver=1.10.11
 pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
@@ -18,15 +18,17 @@ makedepends=('jdk21-openjdk' 'git')
 # The release tag is PGP-signed by the Bisq release manager; makepkg
 # verifies it against validpgpkeys (?signed). Import the key first:
 #   curl -fsSL https://bisq.network/pubkey/E222AA02.asc | gpg --import
-# bitcoind (Bisq's node-integration modules, a gradle includeBuild) is a
-# git submodule that release tarballs don't ship, so it is a second git
-# source and prepare() points the submodule at the local clone. The
-# revision to check out comes from the signed tag itself.
+# bitcoind (Bisq's node-integration modules) and tor (since 1.10.11) are
+# gradle includeBuild git submodules that release tarballs don't ship, so
+# they are extra git sources and prepare() points each submodule at its
+# local clone. The revisions to check out come from the signed tag itself.
 source=("git+https://github.com/bisq-network/bisq.git#tag=v${pkgver}?signed"
   "git+https://github.com/bisq-network/bitcoind.git"
+  "git+https://github.com/bisq-network/tor.git"
   "bisq.desktop"
   "bisq-desktop-launcher")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             '9f2ee38c5089f5a929f978a0fd0adabba6bd7e42fd89864dcf2e0bfa0dcd90d2'
             '59029081b943f51e0e3efe4a82abbf5bd3c0a33b49117837cd30e25ec48cb7bd')
@@ -34,8 +36,11 @@ validpgpkeys=('B493319106CC3D1F252E19CBF806F422E222AA02') # Alejandro García <a
 
 prepare() {
   cd "${srcdir}/bisq"
-  git config submodule.bitcoind.url "${srcdir}/bitcoind"
-  git -c protocol.file.allow=always submodule update --init bitcoind
+  local sm
+  for sm in bitcoind tor; do
+    git config submodule.$sm.url "${srcdir}/$sm"
+  done
+  git -c protocol.file.allow=always submodule update --init bitcoind tor
 }
 
 build() {
