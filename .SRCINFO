@@ -1,0 +1,22 @@
+pkgbase = puzzle-timer-git
+	pkgdesc = Native GTK4/libadwaita speedcubing timer (git version)
+	pkgver = 0.4.0.r13.gd745f10
+	pkgrel = 1
+	url = https://github.com/xlucn/puzzle-timer
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = meson
+	makedepends = git
+	makedepends = gettext
+	makedepends = blueprint-compiler
+	depends = gtk4
+	depends = libadwaita
+	depends = webkitgtk-6.0
+	provides = puzzle-timer
+	conflicts = puzzle-timer
+	source = puzzle-timer-git::git+https://github.com/xlucn/puzzle-timer.git#branch=main
+	sha256sums = SKIP
+
+pkgname = puzzle-timer-git
