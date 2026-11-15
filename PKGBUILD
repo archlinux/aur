@@ -4,7 +4,7 @@
 
 _pkgname="RapidRAW"
 pkgname="${_pkgname,,}-bin"
-pkgver=1.6.9
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="GPU-accelerated RAW image editor"
 
@@ -30,8 +30,8 @@ _debfile="03_RapidRAW_v${pkgver}_ubuntu-${_ubuntuver}"
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.deb"::"$url/releases/download/v${pkgver}/${_debfile}_amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}.deb"::"$url/releases/download/v${pkgver}/${_debfile}-arm_arm64.deb")
 
-sha256sums_x86_64=('a7396b25f7f18b514d216c86140ed4b81776ebb688a9b80396127de3691a5833')
-sha256sums_aarch64=('811b30131f6e5279b035bd04943348e43ac4e2bba40996ee3765ff0a7f988bc7')
+sha256sums_x86_64=('c6ebb6c90b137212e56646c6f415d41d92d58266486937a5d8b8f5b4873796ee')
+sha256sums_aarch64=('369017c045f2284ef7c494204d32eaf401e99f4b07ebdb557008e55980294211')
 
 package() {
 	bsdtar -xf data.tar.* -C "$pkgdir" usr
