@@ -8,7 +8,7 @@ _name=metamod-source
 # Metamod:Source's development builds: the tags of master's builds (2.0, released by upstream as
 # prereleases), <version>.<build>, the build being the number of commits, which its versioning
 # counts with git
-pkgver=2.0.0.1490
+pkgver=2.0.0.1491
 pkgrel=1
 pkgdesc="Metamod:Source, a plugin loader for Source engine game servers (development builds)"
 arch=(x86_64)
@@ -31,7 +31,7 @@ source=("git+https://github.com/alliedmodders/metamod-source.git#tag=$pkgver"
   "git+https://github.com/zyantific/zycore-c.git"
   loader-test-khook.patch
   source-sdk.txt)
-sha512sums=('752a8557d98b738d7e4167914f712a3fa62d69f832af3de7069b721e475444493cf9fcb89e8c575584ab94e83bf18868da0482568792218ac372e9ce20ade289'
+sha512sums=('574c7d585e847007f57c03a0dcfb37d8f053acb26a49067156767a93290d63325ee6c231050507cb0a202ff0c8af6f9c7fa7fc90f8baf08527fd5cb27414db60'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -40,7 +40,7 @@ sha512sums=('752a8557d98b738d7e4167914f712a3fa62d69f832af3de7069b721e475444493cf
   'SKIP'
   'a32501433e60802869ad970419ea1f73ba7af90aa6825299576184e6e43f06858a51727291a837129553af078354e150cb1265a85aa4528772ae018d21666e61'
   'f427709e7137dd0249070ffa3aedaf9c04b434172d56d8d453ada2d0c439c2b31a9c82551da5c993468fc286edba756d86073268894394ba5190fc1475ca09b3')
-b2sums=('db0fcd0edb527a29a3889ef826f12d335663d09a54943589b3cac5d4b4ad29039e8b690653c8e328b18e5833d161de557ab8c8f9b5468c3e69fe5212f30774d7'
+b2sums=('b26613a7ab96339d1bd8c4a96bb58f8b2c59f92a7991e938aff576f1a96fb3d77290781c2ad6f11f15b885631cb5752a247cb0d55bd16f6baffa1e7d7322114a'
   'SKIP'
   'SKIP'
   'SKIP'
