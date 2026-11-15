@@ -9,7 +9,7 @@
 # to its archive of the tools, and pkgrel.
 
 pkgname=hyprmasq-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Computer use for Hyprland: an MCP server and tools for per-window screenshots and input, prebuilt'
 arch=(x86_64)
@@ -20,7 +20,7 @@ provides=("hyprmasq=$pkgver")
 conflicts=(hyprmasq)
 options=(!debug !strip)
 source=("hyprmasq-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/hyprmasq-$pkgver-x86_64.tar.gz")
-sha256sums=('a58499bfb3c46bc167011b947f500c4e57aa16e44bfd08eec6c2c382ba2c9f37')
+sha256sums=('4a5b0f3a743e82deea9c6c51e8069ff8edddb658d59649004584c82a646cd58a')
 
 package() {
   cd "hyprmasq-$pkgver-x86_64"
