@@ -1,0 +1,18 @@
+pkgbase = ratclone
+	pkgdesc = A keyboard-driven terminal UI for rclone
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SyscallBrain/ratclone
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = rclone
+	optdepends = ttf-nerd-fonts-symbols: icons (or set icons = "ascii")
+	options = !debug
+	source = ratclone-0.1.0.tar.gz::https://github.com/SyscallBrain/ratclone/archive/v0.1.0.tar.gz
+	sha256sums = 2025b2552e1434517a2c40b81090d79482a588d3ddca4c5484bb58347291b9f9
+
+pkgname = ratclone
