@@ -1,0 +1,8 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE
+!LICENSE-MIT
+!README.md
+!openchamber-bin.install
