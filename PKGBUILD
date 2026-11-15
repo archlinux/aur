@@ -1,6 +1,6 @@
 # Maintainer: 3m44n <notximan@proton.me>
 pkgname=islet
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Dynamic Island / Floating Media HUD for wlroots and Smithay Wayland compositors"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('islet')
 conflicts=('islet-git' 'islet-bin')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/islet-v$pkgver-x86_64-linux.tar.gz")
-sha256sums=('251fbbee8f79c6c95a08dd52e06075315c6f8dce329d346243d49085d15cf20e')
+sha256sums=('044c15366545cbf7e4c9203b78974b6fa4446adee85dffe7933befe252ca1f52')
 
 package() {
   cd "$srcdir"
