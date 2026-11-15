@@ -1,6 +1,6 @@
 pkgbase = cecil-bin
 	pkgdesc = Static site generator
-	pkgver = 9.28.0
+	pkgver = 9.30.0
 	pkgrel = 1
 	url = https://cecil.app/
 	install = cecil-bin.install
@@ -10,7 +10,7 @@ pkgbase = cecil-bin
 	depends = php-gd
 	options = !strip
 	options = staticlibs
-	source = cecil-9.28.0.phar::https://cecil.app/download/9.28.0/cecil.phar
-	sha256sums = e4867865bf0847e4bd35687c03c218ef2c503c3dfb068ddd3f13edf1a7f2618e
+	source = cecil-9.30.0.phar::https://cecil.app/download/9.30.0/cecil.phar
+	sha256sums = b0a86cd17a926f8fd871a3a223ae38a7af8bb6e02c5b00dbb9309598941f608a
 
 pkgname = cecil-bin
