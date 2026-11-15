@@ -11,7 +11,7 @@
 # See https://creativecommons.org/licenses/by/4.0/deed.de
 # endregion
 pkgname=reverse-proxy-middleware
-pkgver=0.0.147
+pkgver=0.0.148
 pkgrel=1
 pkgdesc='A reverse proxy blocking bot requests.'
 arch=(any)
@@ -22,7 +22,7 @@ backup=(srv/http/reverse-proxy-middleware/configuration.json)
 # NOTE: Only the service file is needed, the image is pulled from the
 # registry.
 source=("https://github.com/thaibault/reverse-proxy-middleware/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=(45bf5acba14832fcac3bb5d7d57e067deff3c4896625b757245682dddb420f73)
+sha256sums=('6b0a2704310098499157518c4812a8b3f854fe995b4e68d13cf84388c64e688b')
 copy_to_aur=true
 
 package() {
