@@ -1,7 +1,7 @@
 # Maintainer: Max <max at swk-web.com>
 
 pkgname=brows3
-pkgver=0.2.46
+pkgver=0.2.108
 pkgrel=1
 pkgdesc="Super fast open-source S3 browser, S3 explorer, and desktop client for Amazon S3, MinIO, Cloudflare R2, Wasabi, and other S3-compatible storage"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ makedepends=(
   'rust'
   'cargo'
   'nodejs'
-  'pnpm'
+  'pnpm>=10.26.0'
   'patchelf'
   'cmake'
   'nasm'
@@ -26,10 +26,19 @@ makedepends=(
 )
 options=('!lto' '!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rgcsekaraa/brows3/archive/refs/tags/app-v${pkgver}.tar.gz")
-sha256sums=('a212b491f3459842a010784b731bc59e327a40831d802f251625d8df97ed37e1')
+sha256sums=('df6b7709bdc342efe7adc4996cd30f9d0c489dfee137a213079ce39975d6de6f')
 
 prepare() {
   cd "$pkgname-app-v$pkgver"
+
+  # Preserve upstream's skipped scripts using pnpm's current build policy format.
+  cat > pnpm-workspace.yaml << 'WORKSPACE'
+packages:
+  - .
+allowBuilds:
+  sharp: false
+  unrs-resolver: false
+WORKSPACE
 
   # Disable updater artifact creation; pacman manages updates for AUR packages.
   local conf=src-tauri/tauri.conf.json
@@ -47,7 +56,8 @@ build() {
   export CARGO_HOME="$srcdir/cargo-home"
   export NODE_ENV=production
 
-  pnpm install --frozen-lockfile
+  # Install devDependencies needed to build, even with NODE_ENV=production.
+  pnpm install --frozen-lockfile --prod=false
   pnpm tauri build --bundles deb
 }
 
