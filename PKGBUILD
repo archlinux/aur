@@ -1,8 +1,8 @@
 # Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=mp3cat
-pkgver=4.2.2
-pkgrel=3
+pkgver=4.3.0
+pkgrel=1
 pkgdesc="A command line utility for joining MP3 files."
 arch=('x86_64')
 url="https://www.dmulholl.com/dev/mp3cat.html"
@@ -10,7 +10,7 @@ license=('Unlicense')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dmulholl/mp3cat/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('457e680e5b05e8a5a50a8b557372e23bf797026f43253efdff14b8137f214470')
+sha256sums=('5d5aa1ec4a2050d81b8be5a7ad0f02912cfa024210fbb3cdbfe976ba8ab01f70')
 
 build() {
   cd "${pkgname}-${pkgver}"
