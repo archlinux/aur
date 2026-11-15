@@ -1,0 +1,39 @@
+pkgbase = yt-music-gpui-bin
+	pkgdesc = Native YouTube Music client built with GPUI (release binary)
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/AksharP5/yt-music-gpui
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	license = ISC
+	license = OFL-1.1
+	license = BSD-3-Clause
+	license = Unlicense
+	depends = glibc>=2.39
+	depends = gcc-libs
+	depends = mpv>=0.38
+	depends = libglvnd
+	depends = wayland
+	depends = libx11
+	depends = libxext
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = fontconfig
+	depends = freetype2
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	depends = python>=3.10
+	depends = libsecret
+	depends = xdg-utils
+	optdepends = gnome-keyring: Secret Service provider for saving sign-in credentials
+	optdepends = kwallet: alternative Secret Service provider
+	provides = yt-music-gpui=0.2.2
+	conflicts = yt-music-gpui
+	options = !strip
+	options = !debug
+	source = https://github.com/AksharP5/yt-music-gpui/releases/download/v0.2.2/yt-music-gpui_0.2.2-1_amd64.deb
+	sha256sums = 30eca142348201068fbf6bfa4932b18d9b53a9f90e7ae4276737eadd3543c2b2
+
+pkgname = yt-music-gpui-bin
