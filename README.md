@@ -1,9 +1,11 @@
 # Cornelsen Offline Lernen
 
-Cornelsen Offfline Lernen ist eine Electron App, die es ermöglicht, digitale Lerninhalte von Cornelsen auch ohne Internetverbindung zu nutzen. Die App bietet eine benutzerfreundliche Oberfläche und unterstützt verschiedene Lernmaterialien, die von Cornelsen bereitgestellt werden.
+Cornelsen Offline Lernen ist eine Electron App, die es ermöglicht, digitale Lerninhalte von Cornelsen auch ohne Internetverbindung zu nutzen. Die App bietet eine benutzerfreundliche Oberfläche und unterstützt verschiedene Lernmaterialien, die von Cornelsen bereitgestellt werden.
 
-Die letzte Version der App ist 2026.8.1, veröffentlicht am 07.05.2026.
+Die aktuelle Version der App ist 2026.21.1 (Electron 44, Stand 15.11.2026).
 
-## Neue Funktionen in Version 2026.8.1
+## Paket
 
-- Verweise auf den digitalen Selbstlernkurs zum Unterrichtsmanager ermöglichen nun den schnellen Zugriff auf die Inhalte in der Fobithek.
+- `pkgver` ist die Electron-Version, mit der Cornelsen die App ausliefert; das Paket nutzt das passende `electronNN` aus extra.
+- Cornelsen lädt jede neue Version unter derselben Adresse hoch. Schlägt die Prüfsumme fehl, gibt es eine neue Version: Electron-Version prüfen, `pkgver`/`depends` anpassen, `updpkgsums`.
+- `prepare()` patcht die App, damit ein 401 der Kompatibilitätsprüfung die Synchronisierung nicht blockiert. Die minifizierten RxJS-Namen werden beim Bauen gesucht; `CORNELSEN_PATCH_STRICT=1` lässt den Bau fehlschlagen, wenn der Patch nicht greift.

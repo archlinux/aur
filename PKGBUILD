@@ -1,22 +1,22 @@
 # Maintainer: MicLeh <micleh at proton dot me>
 pkgname=cornelsen-offline-lernen-bin
-pkgver=37.10.2
-# App version 2026.8.1 from 2026-05-07
-pkgrel=10
+pkgver=44.0.0
+# App version 2026.21.1 (Electron 44.0.0), checked 2026-11-15
+pkgrel=1
 pkgdesc="Cornelsen Offline Lernen Electron App"
 arch=('x86_64')
 url="https://www.cornelsen.de"
 license=('custom')
-depends=('electron37')
-makedepends=('npm')
+depends=('electron44')
+makedepends=('asar' 'nodejs')
 source=("${pkgname}-${pkgver}.zip::https://ebook.cornelsen.de/uma20/public/v2/uma/offline/win"
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "icon16.png"
         "icon32.png"
         "icon96.png")
-b2sums=('80a1762e20039c727ee433c559cc0a64f21cf2a33b7e2039e6cc3944b0bcd61724a5f89ae7d7935d41ad40a2d31018f0ea9c039442767e638b8bc669ecf49193'
-        '9be125c58666538ccd056253a32daa1d55ce38ae72a97e1f5deebaef6c729e8b0a548f8478fa0b1f5b11d7759bc98b4cdd21db07d3b93dfea7cf4e2d760fc8e6'
+b2sums=('929c3cb2fc550d2e7f7ade888e65a0153028a1c351f66e0eb5f89252200bc5062d81044217a17f3045302f36ea0a9ebf854634e2c16332f743b94fd502cf69c5'
+        'afc1954a7e84a27b50976fbb702523f114905189032ae914cb659ff58c2054bd2935680015f63644f81d79b8c5d48ec8610a29652b9c326841df5373a203348e'
         '8157b061d35da630252a8c402a98fb978fcad59fcfa813eb8b67dfeaae7e467051d659201e55b5d1811ae15eca49e47189a5a9840277f09876cf1d7021cfc1da'
         '8dd68d9cd90347b954da9280d2133bc45706eec1e74261bdf19f53b61150ee5168db20a0f217643230c4dc66fb840f9ef61fce5f6aff5853b1bebae4bc9f4c65'
         'b326c7f468c3cecb0e2618bae56092b7c6c5fa7e8f43f499645df01c2b468e74052bef51d48b36a8a7ade2fa12f9612591eaf38819998868271ec23abd366ad5'
@@ -48,161 +48,57 @@ _find_asar_path() {
 }
 
 prepare() {
-    local _asar_path
-    _asar_path="$(_find_asar_path || true)"
+    local _asar_path _tmp_dir
+    _asar_path="$(_find_asar_path)" || { echo "ERROR: source app.asar not found in extracted zip"; exit 1; }
+    _tmp_dir="$(mktemp -d "${TMPDIR:-/var/tmp}/${pkgname}.asar.XXXXXX")"
 
-    if [ -z "$_asar_path" ] || [ ! -f "$_asar_path" ]; then
-                echo "ERROR: source app.asar not found in extracted zip"
-                exit 1
-        fi
+    asar extract "$_asar_path" "$_tmp_dir"
 
-        local _tmp_base _tmp_dir
-        _tmp_base="${TMPDIR:-/var/tmp}"
-        if [ ! -w "$_tmp_base" ]; then
-            _tmp_base="$PWD"
-        fi
-        _tmp_dir="$(mktemp -d "$_tmp_base/${pkgname}.asar.XXXXXX")"
-
-        npx --yes @electron/asar extract "$_asar_path" "$_tmp_dir"
-
-        node - "$_tmp_dir" <<'NODE'
+    # Patch: the offline client asks the sync API whether it is still
+    # compatible; without a valid session that request fails with 401 and the
+    # app blocks synchronization ("incompatible with online"). The patch treats
+    # 401 as compatible. The code is minified and the RxJS operator names
+    # change with every release, so catchError, of and throwError are found by
+    # their implementation instead of being hard-coded.
+    node - "$_tmp_dir/dist" <<'NODE'
 const fs = require('fs');
 const path = require('path');
-const root = process.argv[2];
-
-function collectJsFiles(dir, out = []) {
-    for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
-        const p = path.join(dir, ent.name);
-        if (ent.isDirectory()) {
-            collectJsFiles(p, out);
-        } else if (ent.isFile() && ent.name.endsWith('.js')) {
-            out.push(p);
-        }
-    }
-    return out;
-}
-
-const distDir = path.join(root, 'dist');
-if (!fs.existsSync(distDir)) {
-    console.error('ERROR: unpacked asar does not contain a dist directory');
-    process.exit(1);
-}
-
-const jsFiles = collectJsFiles(distDir);
-
-const verbose = process.env.CORNELSEN_PATCH_VERBOSE === '1';
+const dist = process.argv[2];
 const strict = process.env.CORNELSEN_PATCH_STRICT === '1';
+const id = '[\\w$]+';
 
-const patches = [
-    {
-        name: 'annotations-404-fallback',
-        regex: /getProductAnnotations\(r,s=!1\)\{return this\.http\.get\(`\$\{s\?os\.getSyncApiBaseUrl\(\):os\.getApiBaseUrl\(\)\}\/pspdf\/annotations\/\$\{r\}`\)\.pipe\(/g,
-        replaceWith: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?os.getSyncApiBaseUrl():os.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(ip(y=>s&&y.status===404?hs({}):r0(()=>y)),',
-        from: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?os.getSyncApiBaseUrl():os.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(ip(y=>r0(()=>y)),Jl(y=>this.mapOfflinePdfIds(y)))}',
-        fromAlt: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?ls.getSyncApiBaseUrl():ls.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(nc(y=>this.mapOfflinePdfIds(y)))}',
-        toAlt: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?ls.getSyncApiBaseUrl():ls.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(op(y=>s&&y.status===404?fs({}):r0(()=>y)),nc(y=>this.mapOfflinePdfIds(y)))}',
-        fromAlt2: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?cs.getSyncApiBaseUrl():cs.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(nc(y=>this.mapOfflinePdfIds(y)))}',
-        toAlt2: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?cs.getSyncApiBaseUrl():cs.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(op(y=>s&&y.status===404?Es({}):r0(()=>y)),nc(y=>this.mapOfflinePdfIds(y)))}',
-        fromAlt3: 'getProductAnnotations(i,s=!1){return this.http.get(`${s?cs.getSyncApiBaseUrl():cs.getApiBaseUrl()}/pspdf/annotations/${i}`).pipe(nc(y=>this.mapOfflinePdfIds(y)))}',
-        toAlt3: 'getProductAnnotations(i,s=!1){return this.http.get(`${s?cs.getSyncApiBaseUrl():cs.getApiBaseUrl()}/pspdf/annotations/${i}`).pipe(dp(y=>s&&y.status===404?ws({}):Q1(()=>y)),nc(y=>this.mapOfflinePdfIds(y)))}',
-        fromAlt4: 'getProductAnnotations(t,r=!1){return this.http.get(`${r?ps.getSyncApiBaseUrl():ps.getApiBaseUrl()}/pspdf/annotations/${t}`).pipe(zl(d=>this.mapOfflinePdfIds(d)))}',
-        toAlt4: 'getProductAnnotations(t,r=!1){return this.http.get(`${r?ps.getSyncApiBaseUrl():ps.getApiBaseUrl()}/pspdf/annotations/${t}`).pipe(dp(y=>r&&y.status===404?ws({}):Q1(()=>y)),zl(d=>this.mapOfflinePdfIds(d)))}',
-        to: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?os.getSyncApiBaseUrl():os.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(dp(y=>s&&y.status===404?ws({}):Q1(()=>y)),Jl(y=>this.mapOfflinePdfIds(y)))}',
-        alreadyMarker: 's&&y.status===404?ws({}):Q1(()=>y)',
-        alreadyMarker2: 's&&y.status===404?ws({}):Q1(()=>y)',
-        alreadyMarker3: 's&&y.status===404?ws({}):Q1(()=>y)',
-        alreadyMarker4: 'r&&y.status===404?ws({}):Q1(()=>y)',
-        required: false
-    },
-    {
-        name: 'compatibility-401-fallback',
-        from: 'isCompatibleWithOnline$(){return this.http.get(`${os.getSyncApiBaseUrl()}/compatibility/offlineClients/${GE}`).pipe(sa(r=>r.isCompatible))}',
-        fromAlt: 'isCompatibleWithOnline$(){return this.http.get(`${ls.getSyncApiBaseUrl()}/compatibility/offlineClients/${qE}`).pipe(sa(r=>r.isCompatible))}',
-        toAlt: 'isCompatibleWithOnline$(){return this.http.get(`${ls.getSyncApiBaseUrl()}/compatibility/offlineClients/${qE}`).pipe(sa(r=>r.isCompatible),op(r=>r.status===401?fs(!0):r0(()=>r)))}',
-        fromAlt2: 'isCompatibleWithOnline$(){return this.http.get(`${cs.getSyncApiBaseUrl()}/compatibility/offlineClients/${ZE}`).pipe(sa(r=>r.isCompatible))}',
-        toAlt2: 'isCompatibleWithOnline$(){return this.http.get(`${cs.getSyncApiBaseUrl()}/compatibility/offlineClients/${ZE}`).pipe(sa(r=>r.isCompatible),op(r=>r.status===401?Es(!0):r0(()=>r)))}',
-        fromAlt3: 'isCompatibleWithOnline$(){return this.http.get(`${cs.getSyncApiBaseUrl()}/compatibility/offlineClients/${QE}`).pipe(ta(i=>i.isCompatible))}',
-        toAlt3: 'isCompatibleWithOnline$(){return this.http.get(`${cs.getSyncApiBaseUrl()}/compatibility/offlineClients/${QE}`).pipe(ta(i=>i.isCompatible),dp(r=>r.status===401?ws(!0):Q1(()=>r)))}',
-        fromAlt4: 'isCompatibleWithOnline$(){return this.http.get(`${ps.getSyncApiBaseUrl()}/compatibility/offlineClients/${UE}`).pipe(Ea(t=>t.isCompatible))}',
-        toAlt4: 'isCompatibleWithOnline$(){return this.http.get(`${ps.getSyncApiBaseUrl()}/compatibility/offlineClients/${UE}`).pipe(Ea(t=>t.isCompatible),dp(s=>s.status===401?ws(!0):Q1(()=>s)))}',
-        to: 'isCompatibleWithOnline$(){return this.http.get(`${os.getSyncApiBaseUrl()}/compatibility/offlineClients/${GE}`).pipe(sa(r=>r.isCompatible),dp(r=>r.status===401?ws(!0):Q1(()=>r)))}',
-        alreadyMarker: 'r.status===401?ws(!0):Q1(()=>r)',
-        alreadyMarker2: 'r.status===401?ws(!0):Q1(()=>r)',
-        alreadyMarker3: 'r.status===401?ws(!0):Q1(()=>r)',
-        alreadyMarker4: 's.status===401?ws(!0):Q1(()=>s)',
-        required: false
-    }
-];
+const target = /(isCompatibleWithOnline\$\(\)\{return this\.http\.get\(`[^`]*`\)\.pipe\()(.*?\.isCompatible\)+)\)\}/;
+const ops = {
+    catchError: new RegExp(`function (${id})\\((${id})\\)\\{return ${id}\\(\\((${id}),(${id})\\)=>\\{let (${id})=null,(${id})=!1,(${id});\\5=\\3\\.subscribe`),
+    of: new RegExp(`function (${id})\\(\\.\\.\\.(${id})\\)\\{return (${id})\\(\\2,(${id})\\(\\2\\)\\)\\}`),
+    throwError: new RegExp(`function (${id})\\((${id}),(${id})\\)\\{let (${id})=${id}\\(\\2\\)\\?\\2:\\(\\)=>\\2,(${id})=(${id})=>\\6\\.error\\(\\4\\(\\)\\)`),
+};
 
-for (const p of patches) {
-    let patched = false;
-
-    for (const filePath of jsFiles) {
-        let txt = fs.readFileSync(filePath, 'utf8');
-
-        if (txt.includes(p.to) || (p.toAlt && txt.includes(p.toAlt)) || (p.toAlt2 && txt.includes(p.toAlt2)) || (p.toAlt3 && txt.includes(p.toAlt3)) || (p.toAlt4 && txt.includes(p.toAlt4)) || txt.includes(p.alreadyMarker) || (p.alreadyMarker2 && txt.includes(p.alreadyMarker2)) || (p.alreadyMarker3 && txt.includes(p.alreadyMarker3)) || (p.alreadyMarker4 && txt.includes(p.alreadyMarker4))) {
-            patched = true;
-            break;
-        }
-
-        if (p.regex && p.regex.test(txt)) {
-            txt = txt.replace(p.regex, p.replaceWith);
-            fs.writeFileSync(filePath, txt);
-            patched = true;
-            break;
-        }
-
-        if (txt.includes(p.from)) {
-            txt = txt.replace(p.from, p.to);
-            fs.writeFileSync(filePath, txt);
-            patched = true;
-            break;
-        }
-
-        if (p.fromAlt && p.toAlt && txt.includes(p.fromAlt)) {
-            txt = txt.replace(p.fromAlt, p.toAlt);
-            fs.writeFileSync(filePath, txt);
-            patched = true;
-            break;
-        }
-
-        if (p.fromAlt2 && p.toAlt2 && txt.includes(p.fromAlt2)) {
-            txt = txt.replace(p.fromAlt2, p.toAlt2);
-            fs.writeFileSync(filePath, txt);
-            patched = true;
-            break;
-        }
-
-        if (p.fromAlt3 && p.toAlt3 && txt.includes(p.fromAlt3)) {
-            txt = txt.replace(p.fromAlt3, p.toAlt3);
-            fs.writeFileSync(filePath, txt);
-            patched = true;
-            break;
-        }
-
-        if (p.fromAlt4 && p.toAlt4 && txt.includes(p.fromAlt4)) {
-            txt = txt.replace(p.fromAlt4, p.toAlt4);
-            fs.writeFileSync(filePath, txt);
-            patched = true;
-            break;
-        }
-    }
-
-    if (!patched) {
-        if (p.required || strict) {
-            console.error(`ERROR: required patch target not found: ${p.name}`);
-            process.exit(1);
-        }
-
-        if (verbose) {
-            console.warn(`INFO: optional patch target not found: ${p.name} (continuing)`);
-        }
-    }
+function fail(msg) {
+    console.error(`${strict ? 'ERROR' : 'WARNING'}: ${msg}`);
+    process.exit(strict ? 1 : 0);
 }
+
+const file = fs.readdirSync(dist).filter(f => f.endsWith('.js')).map(f => path.join(dist, f))
+    .find(f => target.test(fs.readFileSync(f, 'utf8')));
+if (!file) fail('compatibility-401-fallback: isCompatibleWithOnline$ not found, app not patched');
+
+let js = fs.readFileSync(file, 'utf8');
+const names = {};
+for (const [op, re] of Object.entries(ops)) {
+    const m = js.match(re);
+    if (!m) fail(`compatibility-401-fallback: RxJS ${op} not found in ${path.basename(file)}, app not patched`);
+    names[op] = m[1];
+}
+js = js.replace(target, (_, head, body) =>
+    `${head}${body},${names.catchError}(e=>e.status===401?${names.of}(!0):${names.throwError}(()=>e)))}`);
+fs.writeFileSync(file, js);
+console.log(`patched compatibility-401-fallback in ${path.basename(file)} ` +
+    `(catchError=${names.catchError}, of=${names.of}, throwError=${names.throwError})`);
 NODE
 
-        npx --yes @electron/asar pack "$_tmp_dir" "$_asar_path"
-        rm -rf "$_tmp_dir"
+    asar pack "$_tmp_dir" "$_asar_path"
+    rm -rf "$_tmp_dir"
 }
 
 package() {
