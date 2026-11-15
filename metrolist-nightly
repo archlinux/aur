@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /opt/metrolist-desktop-nightly-bin/metrolist-nightly.AppImage "$@"
+exec /opt/metrolist-desktop-nightly-bin/bin/Metrolist "$@"

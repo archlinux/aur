@@ -4,37 +4,64 @@
 
 
 pkgname=metrolist-desktop-nightly-bin
-pkgver=20261115.r74.g29e3a8c
-pkgrel=1
-pkgdesc="YouTube Music client for desktop (nightly)"
+pkgver=20261115.r56.g2623ab7
+pkgrel=2
+pkgdesc="YouTube Music client for desktop (Nightly)"
 arch=('x86_64')
 url="https://github.com/MetrolistGroup/Metrolist"
 license=('GPL-3.0-or-later')
-depends=('fuse2')
-options=('!debug' '!strip')
+depends=(
+  'alsa-lib'
+  'bash'
+  'freetype2'
+  'glibc'
+  'hicolor-icon-theme'
+  'libx11'
+  'libxext'
+  'libxi'
+  'libxrender'
+  'libxtst'
+  'zlib-ng-compat'
+)
+optdepends=(
+  'gtk3: YouTube login'
+  'webkit2gtk-4.1: YouTube login'
+)
+options=('!strip' '!debug')
 noextract=("metrolist-nightly.AppImage")
 source=(
-  "metrolist-nightly.AppImage::https://github.com/MetrolistGroup/Metrolist/releases/download/nightly/metrolist-desktop-linux-x64.AppImage"
+  "metrolist-nightly.AppImage::${url}/releases/download/nightly/metrolist-desktop-linux-x64.AppImage"
   'metrolist-nightly'
-  'metrolist-nightly.desktop'
   'LICENSE'
-  'metrolist-nightly.png'
 )
-sha256sums=('571c7fb99946c20681e9c13392f74a7fd13646ed8ebb46fb853618646d825cf7'
-            '145d0f22f04a8919f200a2e955aebcd9e030b35d398681cf38537d382f802972'
-            'ea6e0ddcf16aa42cefeb1eae530375af2730e9c0f0d4797f18b407cd6ab3fc00'
-            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'f0d70d56d2362c5f567ae732ffcd67a7376f7902b79ca2b60f95e08166ffa367')
+sha256sums=('c0a78f8527a1f38e7760b7dcd0d49062cd1bb58a18f8824c9310d644a3ca8de4'
+            'e2f611b2a3ea170c12d38e42016e2abb0d2212e62c3946615a50aad6c97643bd'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
+
+
+prepare() {
+  chmod +x metrolist-nightly.AppImage
+  ./metrolist-nightly.AppImage --appimage-extract
+
+  sed -i \
+    -e 's/^Name=.*/Name=Metrolist (nightly)/' \
+    -e 's/^Exec=.*/Exec=metrolist-nightly %u/' \
+    -e 's/^Icon=.*/Icon=metrolist-nightly/' \
+    squashfs-root/Metrolist.desktop
+
+  chmod -R u+rwX,go+rX squashfs-root
+  rm -f squashfs-root/{AppRun,.DirIcon,resources}
+}
 
 package() {
-  install -Dm755 "$srcdir/metrolist-nightly.AppImage" \
-    "$pkgdir/opt/${pkgname}/metrolist-nightly.AppImage"
+  install -dm755 "$pkgdir/opt/${pkgname}"
+  cp -a squashfs-root/bin squashfs-root/lib "$pkgdir/opt/${pkgname}/"
   install -Dm755 "$srcdir/metrolist-nightly" \
     "$pkgdir/usr/bin/metrolist-nightly"
-  install -Dm644 "$srcdir/metrolist-nightly.desktop" \
+  install -Dm644 squashfs-root/Metrolist.desktop \
     "$pkgdir/usr/share/applications/metrolist-nightly.desktop"
   install -Dm644 "$srcdir/LICENSE" \
     "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "$srcdir/metrolist-nightly.png" \
+  install -Dm644 squashfs-root/Metrolist.png \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/metrolist-nightly.png"
 }
