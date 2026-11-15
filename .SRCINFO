@@ -1,6 +1,6 @@
 pkgbase = lazybw-bin
 	pkgdesc = A keyboard-first terminal UI for the Bitwarden vault (static binary)
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/SyscallBrain/lazybw
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = lazybw-bin
 	conflicts = lazybw
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/SyscallBrain/lazybw/releases/download/v1.2.1/lazybw-1.2.1-x86_64-unknown-linux-musl.tar.gz
+	source_x86_64 = https://github.com/SyscallBrain/lazybw/releases/download/v1.2.2/lazybw-1.2.2-x86_64-unknown-linux-musl.tar.gz
 	depends_x86_64 = bitwarden-cli
-	sha256sums_x86_64 = 121aebd540dae42b3b9aa71ed54ede28aa79fc8316a0556abadee84a07c0511b
-	source_aarch64 = https://github.com/SyscallBrain/lazybw/releases/download/v1.2.1/lazybw-1.2.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = fa396e8e9881678978343f0c26bb4a8cb7fdbd9c71bdc60184ac57cafc81300f
+	source_aarch64 = https://github.com/SyscallBrain/lazybw/releases/download/v1.2.2/lazybw-1.2.2-aarch64-unknown-linux-musl.tar.gz
 	optdepends_aarch64 = bitwarden-cli: the Bitwarden CLI that lazybw drives (or npm i -g @bitwarden/cli)
-	sha256sums_aarch64 = 6eb2d101543445b473cf0402428eb05f3f576b3d658daf56be972e3a31509395
+	sha256sums_aarch64 = d3b9f83a4f92dde2eec84a2761dfa10118cad18bc74e013f8b59fa778469c0e2
 
 pkgname = lazybw-bin
