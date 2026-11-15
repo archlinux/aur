@@ -1,9 +1,8 @@
 pkgbase = supermariowar-git
 	pkgdesc = Super Mario War multiplayer game.
-	pkgver = r1777.1971b11c
+	pkgver = r1833.0f36b6fc
 	pkgrel = 1
 	url = https://github.com/mmatyas/supermariowar
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
