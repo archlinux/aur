@@ -1,7 +1,7 @@
 pkgbase = workdaddy-bin
 	pkgdesc = WorkBuddy desktop enhancement assistant (WorkDaddy, official Linux DEB repack)
 	pkgver = 1.2.22
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/babygoton/WorkDaddy
 	arch = x86_64
 	arch = aarch64

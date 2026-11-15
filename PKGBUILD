@@ -2,7 +2,7 @@
 
 pkgname=workdaddy-bin
 pkgver=1.2.22
-pkgrel=5
+pkgrel=6
 pkgdesc='WorkBuddy desktop enhancement assistant (WorkDaddy, official Linux DEB repack)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/babygoton/WorkDaddy'
@@ -38,8 +38,9 @@ package() {
   # base-devel dependency, no extra source files to verify).
   #
   # 1) Default icon: upstream install-desktop-linux.sh falls back to the icon
-  #    name "workbuddy", which is absent when workbuddy-agent provides the
-  #    client binary. Point it at the bundled hicolor "workdaddy" icon instead.
+  #    name "workbuddy" (WorkBuddy's own icon). Point it at "workdaddy" so the
+  #    launcher shows WorkDaddy's own artwork, matching the system .desktop.
+  #    Step 3 below installs that name into indexed hicolor directories.
   local _launcher="$pkgdir/opt/workdaddy/scripts/install-desktop-linux.sh"
   sed -i \
     -e 's|# 图标：优先用自带 PNG；缺失时退回系统已有的 workbuddy 图标名|# 图标：优先用自带 PNG；缺失时退回系统 hicolor 中的 workdaddy 图标（由官方 DEB 提供）|' \
@@ -84,6 +85,17 @@ if (process.env.WORKDADDY_EXIT_GUARD !== '0') {
 GUARD
   sed -i -e "/^startClientRunningMonitor();$/r $_snippet" \
     "$pkgdir/opt/workdaddy/scripts/daemon.js"
+
+  # 3) Make the "workdaddy" icon name actually resolvable. The official DEB
+  #    ships ONLY 1024x1024/apps/workdaddy.png, but hicolor's index.theme does
+  #    not declare a 1024x1024 directory (it ends at 512x512 + scalable), so
+  #    Icon=workdaddy resolves to nothing on KDE/Gtk. Reuse the artwork already
+  #    inside the payload in indexed locations -- pure file copies, no image
+  #    tooling and no new makedepends.
+  install -Dm644 "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/workdaddy.png" \
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/workdaddy.png"
+  install -Dm644 "$pkgdir/opt/workdaddy/scripts/assets/workdaddy-app-icon-source.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/workdaddy.svg"
 
   install -Dm644 "$srcdir/LICENSE.upstream" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
