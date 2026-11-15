@@ -1,0 +1,13 @@
+--- a/tests/test_log_retention.py
++++ b/tests/test_log_retention.py
+@@ -97,7 +97,9 @@
+ 
+ 
+     def test_stream_writer_combines_backend_and_monitor_records(self):
+-        line = b"[2026-11-08T09:00:00-05:00] [backend pid=4] diagnostic\n"
++        # Streaming applies retention immediately; avoid an expiring fixture.
++        timestamp = datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
++        line = f"[{timestamp}] [backend pid=4] diagnostic\n".encode("utf-8")
+         result = subprocess.run(
+             [sys.executable, str(ROOT / "src/viper_log_retention.py"),
+              "stream", "backend"],
