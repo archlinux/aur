@@ -1,0 +1,10 @@
+# Track only the package files; build output (src/, pkg/, zip, *.pkg.tar.zst) stays untracked.
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!README.md
+!patch-asar.js
+!cornelsen-offline-lernen-bin.sh
+!cornelsen-offline-lernen-bin.desktop
+!icon*.png

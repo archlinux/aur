@@ -2,25 +2,27 @@
 pkgname=cornelsen-offline-lernen-bin
 pkgver=44.0.0
 # App version 2026.21.1 (Electron 44.0.0), checked 2026-11-15
-pkgrel=1
+pkgrel=2
 pkgdesc="Cornelsen Offline Lernen Electron App"
-arch=('x86_64')
+arch=('any')
 url="https://www.cornelsen.de"
-license=('custom')
-depends=('electron44')
+license=('LicenseRef-Cornelsen')
+depends=('electron44' 'bash' 'hicolor-icon-theme')
 makedepends=('asar' 'nodejs')
 source=("${pkgname}-${pkgver}.zip::https://ebook.cornelsen.de/uma20/public/v2/uma/offline/win"
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "icon16.png"
         "icon32.png"
-        "icon96.png")
+        "icon96.png"
+        "patch-asar.js")
 b2sums=('929c3cb2fc550d2e7f7ade888e65a0153028a1c351f66e0eb5f89252200bc5062d81044217a17f3045302f36ea0a9ebf854634e2c16332f743b94fd502cf69c5'
         'afc1954a7e84a27b50976fbb702523f114905189032ae914cb659ff58c2054bd2935680015f63644f81d79b8c5d48ec8610a29652b9c326841df5373a203348e'
         '8157b061d35da630252a8c402a98fb978fcad59fcfa813eb8b67dfeaae7e467051d659201e55b5d1811ae15eca49e47189a5a9840277f09876cf1d7021cfc1da'
         '8dd68d9cd90347b954da9280d2133bc45706eec1e74261bdf19f53b61150ee5168db20a0f217643230c4dc66fb840f9ef61fce5f6aff5853b1bebae4bc9f4c65'
         'b326c7f468c3cecb0e2618bae56092b7c6c5fa7e8f43f499645df01c2b468e74052bef51d48b36a8a7ade2fa12f9612591eaf38819998868271ec23abd366ad5'
-        '302bef8514b991cb6903d2def32abf348329a1cf104009b3c50c0e83e44b15103b89f669fb2012894df0c7d6ab926151f09e0cf61aff4102296be7071f66f794')
+        '302bef8514b991cb6903d2def32abf348329a1cf104009b3c50c0e83e44b15103b89f669fb2012894df0c7d6ab926151f09e0cf61aff4102296be7071f66f794'
+        '61b8b08b9b579f8f78e2ac4c9ffdac09c06f43d76e1f1f035620fd17a8da22caca5eb91edfc6a0e7491924d1b62f9488f905195cf541aca6b3263b8dd7665aee')
 
 _find_asar_path() {
     local _path
@@ -54,48 +56,8 @@ prepare() {
 
     asar extract "$_asar_path" "$_tmp_dir"
 
-    # Patch: the offline client asks the sync API whether it is still
-    # compatible; without a valid session that request fails with 401 and the
-    # app blocks synchronization ("incompatible with online"). The patch treats
-    # 401 as compatible. The code is minified and the RxJS operator names
-    # change with every release, so catchError, of and throwError are found by
-    # their implementation instead of being hard-coded.
-    node - "$_tmp_dir/dist" <<'NODE'
-const fs = require('fs');
-const path = require('path');
-const dist = process.argv[2];
-const strict = process.env.CORNELSEN_PATCH_STRICT === '1';
-const id = '[\\w$]+';
-
-const target = /(isCompatibleWithOnline\$\(\)\{return this\.http\.get\(`[^`]*`\)\.pipe\()(.*?\.isCompatible\)+)\)\}/;
-const ops = {
-    catchError: new RegExp(`function (${id})\\((${id})\\)\\{return ${id}\\(\\((${id}),(${id})\\)=>\\{let (${id})=null,(${id})=!1,(${id});\\5=\\3\\.subscribe`),
-    of: new RegExp(`function (${id})\\(\\.\\.\\.(${id})\\)\\{return (${id})\\(\\2,(${id})\\(\\2\\)\\)\\}`),
-    throwError: new RegExp(`function (${id})\\((${id}),(${id})\\)\\{let (${id})=${id}\\(\\2\\)\\?\\2:\\(\\)=>\\2,(${id})=(${id})=>\\6\\.error\\(\\4\\(\\)\\)`),
-};
-
-function fail(msg) {
-    console.error(`${strict ? 'ERROR' : 'WARNING'}: ${msg}`);
-    process.exit(strict ? 1 : 0);
-}
-
-const file = fs.readdirSync(dist).filter(f => f.endsWith('.js')).map(f => path.join(dist, f))
-    .find(f => target.test(fs.readFileSync(f, 'utf8')));
-if (!file) fail('compatibility-401-fallback: isCompatibleWithOnline$ not found, app not patched');
-
-let js = fs.readFileSync(file, 'utf8');
-const names = {};
-for (const [op, re] of Object.entries(ops)) {
-    const m = js.match(re);
-    if (!m) fail(`compatibility-401-fallback: RxJS ${op} not found in ${path.basename(file)}, app not patched`);
-    names[op] = m[1];
-}
-js = js.replace(target, (_, head, body) =>
-    `${head}${body},${names.catchError}(e=>e.status===401?${names.of}(!0):${names.throwError}(()=>e)))}`);
-fs.writeFileSync(file, js);
-console.log(`patched compatibility-401-fallback in ${path.basename(file)} ` +
-    `(catchError=${names.catchError}, of=${names.of}, throwError=${names.throwError})`);
-NODE
+    # 401/404 fallbacks, see patch-asar.js (same file as in the nixos repo)
+    node "$srcdir/patch-asar.js" "$_tmp_dir"
 
     asar pack "$_tmp_dir" "$_asar_path"
     rm -rf "$_tmp_dir"
