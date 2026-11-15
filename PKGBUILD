@@ -2,7 +2,7 @@
 # Maintainer: Graphixa <https://github.com/Graphixa>
 
 pkgname='fontget'
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc='A tiny, cross-platform CLI tool to install and manage fonts from the command line'
 url='https://github.com/Graphixa/FontGet'
@@ -13,7 +13,7 @@ conflicts=('fontget')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/Graphixa/FontGet/releases/download/v${pkgver}/fontget-${pkgver}.tar.gz")
-sha256sums=('b5c425aedce652268a5202473b7dc2b0d5f4cd6a265e802b16a5e43daa2b81b7')
+sha256sums=('4bddd6b46065b964fb38c272f14d5059e5abd5e432824bb252b284097e4776e6')
 prepare() {
   cd "${srcdir}" || exit 1
   if [ ! -f "go.mod" ]; then
