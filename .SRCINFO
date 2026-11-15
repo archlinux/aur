@@ -1,0 +1,26 @@
+pkgbase = gapcode-bin
+	pkgdesc = GapGPT AI coding agent for the terminal (unofficial package)
+	pkgver = 0.164.3
+	pkgrel = 1
+	url = https://gapgpt.app
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-gapgpt
+	license = LicenseRef-claude-code
+	license = MIT
+	license = Unlicense
+	license = LGPL-2.0-or-later
+	license = MIT-Modern-Variant
+	depends = glibc
+	optdepends = git: work with repositories
+	provides = gapcode
+	conflicts = gapcode
+	conflicts = gapgpt
+	options = !strip
+	options = !debug
+	source_x86_64 = gapcode-bin-0.164.3-x86_64.tar.gz::https://gapgpt.ir/releases/app/gapcode/releases/v0.164.3/gapcode-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 1a6fbda9bddd7a9645d07bad0c75df72bcf0f2b202a834c8e2b388e812eed1d6
+	source_aarch64 = gapcode-bin-0.164.3-aarch64.tar.gz::https://gapgpt.ir/releases/app/gapcode/releases/v0.164.3/gapcode-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = cd5eb63971db34a8884feeac829d9e8f9815c8313f5a04c33e1c85eb3d387983
+
+pkgname = gapcode-bin
