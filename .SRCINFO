@@ -1,6 +1,6 @@
 pkgbase = arkha
 	pkgdesc = A fast graphical file manager
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/dekart811/arkha
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = arkha
 	optdepends = xarchiver: creating and extracting archives
 	optdepends = xterm: Open in Terminal, if no other terminal is installed
 	options = !debug
-	source = arkha-1.0.2.tar.gz::https://github.com/dekart811/arkha/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 3b617bc3a9ec0025ad88e83566f4b5d0f9f8ae7b24ff1bb941fad9493a53e63d
+	source = arkha-1.0.3.tar.gz::https://github.com/dekart811/arkha/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = cf00ff38f58932fb53fdd661ab1bf6777bf772545d26bb3a877caa3930178fce
 
 pkgname = arkha

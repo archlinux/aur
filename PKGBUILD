@@ -1,7 +1,7 @@
 # Maintainer: dekart811 <mail@dekart811.net>
 
 pkgname=arkha
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='A fast graphical file manager'
 arch=('x86_64' 'aarch64')
@@ -37,7 +37,7 @@ options=('!debug')
 # The release's sources, as GitHub packs the tag v$pkgver. The checksum is
 # set for each release (updpkgsums, then makepkg --printsrcinfo > .SRCINFO).
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3b617bc3a9ec0025ad88e83566f4b5d0f9f8ae7b24ff1bb941fad9493a53e63d')
+sha256sums=('cf00ff38f58932fb53fdd661ab1bf6777bf772545d26bb3a877caa3930178fce')
 
 prepare() {
   cd "$pkgname-$pkgver"
