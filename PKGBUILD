@@ -1,51 +1,106 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=vortex-git
-pkgver=1.16.0.beta.5.r134.gbdec40633
+pkgver=2.11.0.beta.4.r15897.g41273312b
 pkgrel=1
 pkgdesc="Nexus Mods' mod manager - native Linux build (Git Master)"
 arch=('x86_64')
 url="https://github.com/Nexus-Mods/Vortex"
 license=('GPL-3.0-or-later')
-depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libvpx' 'libxslt' 'libxss'
-  'minizip' 'libnotify' 'libappindicator-gtk3' 'nss' 'libsecret')
-makedepends=('git' 'yarn' 'npm' 'nodejs' 'python' 'python-setuptools' 'dotnet-sdk-9.0')
+
+depends=('gtk3' 'nss' 'xdg-utils' 'libxss' 'libnotify' 'libappindicator-gtk3' 'libsecret' 'nodejs' 'dotnet-runtime-9.0')
+makedepends=('git' 'corepack' 'npm' 'python' 'python-setuptools' 'dotnet-sdk-9.0')
+
 provides=('vortex')
 conflicts=('vortex')
-install=vortex.install
+
 source=("git+https://github.com/Nexus-Mods/Vortex.git#branch=master"
   "vortex.desktop"
-  "vortex-handler.desktop")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+  "vortex.sh")
 
-options=('!strip' '!debug')
+sha256sums=('SKIP'
+            '7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5'
+            'b75e3826dd3c0658b9d69ea700e9262609753b2dcb3459c26c1265273338dc1e')
+
+# Release tags live on release branches, not master: use the newest release tag
+# overall plus master's total commit count so versions always increase.
+_latest_tag() {
+  git -C "$srcdir/Vortex" -c versionsort.suffix=- tag --list 'v[0-9]*' --sort=-v:refname | head -n1 | sed 's/^v//'
+}
 
 pkgver() {
   cd "$srcdir/Vortex"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "%s.r%s.g%s" "$(_latest_tag | tr '-' '.')" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short=9 HEAD)"
 }
+
+options=('!strip' '!debug')
 
 prepare() {
   cd "$srcdir/Vortex"
-  _node_ver=$(node -v | sed 's/v//')
-  sed -i "s/\"node\": \"[0-9.]*\"/\"node\": \">=$_node_ver\"/" package.json
 
-  yarn install
+  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+  export pnpm_config_verify_deps_before_run=false
+
+  mkdir -p .bin
+  corepack enable --install-directory "$srcdir/Vortex/.bin" pnpm
+  export PATH="$srcdir/Vortex/.bin:$PATH"
+
+  msg2 "Patching package metadata..."
+  node -e "
+    const fs = require('fs');
+    let pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+    pkg.engines.node = '>=22.0.0';
+    delete pkg.devEngines;
+    fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+
+    let main = JSON.parse(fs.readFileSync('src/main/package.json', 'utf8'));
+    main.version = '$(_latest_tag)';
+    fs.writeFileSync('src/main/package.json', JSON.stringify(main, null, 2) + '\n');
+
+    const ebPath = 'src/main/electron-builder.config.json';
+    let eb = JSON.parse(fs.readFileSync(ebPath, 'utf8'));
+    // Windows-only redist runtimes are not part of the Linux packaging
+    eb.extraResources = eb.extraResources.filter(
+      (e) => typeof e !== 'string' || !e.startsWith('./temp/')
+    );
+    fs.writeFileSync(ebPath, JSON.stringify(eb, null, 2) + '\n');
+  "
+
+  sed -i 's/engineStrict: true/engineStrict: false/g' pnpm-workspace.yaml
+
+  msg2 "Installing dependencies (pnpm $(pnpm --version))..."
+  pnpm install --frozen-lockfile
+
+  msg2 "Downloading Electron runtime..."
+  (cd src/main && pnpm exec install-electron)
 }
 
 build() {
   cd "$srcdir/Vortex"
 
-  msg2 "Running pre-distribution setup..."
-  yarn run predist
+  export PATH="$srcdir/Vortex/.bin:$PATH"
+  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+  export pnpm_config_verify_deps_before_run=false
+  export NODE_ENV=production
+  export NO_PARALLEL=1
 
-  msg2 "Compiling Webpack bundles..."
-  yarn run build_dist
+  msg2 "Building workspace..."
+  pnpm nx run @vortex/main:build
 
-  cp assets/dotnetprobe app/assets/
-  chmod +x app/assets/dotnetprobe
+  msg2 "Deploying dist package..."
+  export VORTEX_ELECTRON_REBUILD=skip
+  pnpm nx run @vortex/main:publish
+
+  msg2 "Removing Windows-only native modules from dist..."
+  rm -rf src/main/dist/node_modules/winapi-bindings
 
   msg2 "Packaging Electron application..."
-  ./node_modules/.bin/electron-builder --linux dir --x64 --config electron-builder-config.json
+  cd src/main/dist
+  ./node_modules/.bin/electron-builder --config ./electron-builder.config.json \
+    --publish never \
+    --linux dir \
+    --x64 \
+    -c.compression=store
 }
 
 package() {
@@ -55,17 +110,11 @@ package() {
   cp -a . "$pkgdir/opt/Vortex/"
 
   install -dm755 "$pkgdir/opt/Vortex/resources/app.asar.unpacked/assets"
-  install -Dm755 "$srcdir/Vortex/assets/dotnetprobe" \
+  install -Dm755 "$srcdir/Vortex/src/main/build/assets/dotnetprobe" \
     "$pkgdir/opt/Vortex/resources/app.asar.unpacked/assets/dotnetprobe"
 
   chmod 4755 "$pkgdir/opt/Vortex/chrome-sandbox"
-
-  install -dm755 "$pkgdir/usr/bin"
-  ln -sf /opt/Vortex/vortex "$pkgdir/usr/bin/vortex"
-
-  install -Dm644 "$srcdir/vortex.desktop" "$pkgdir/usr/share/applications/vortex.desktop"
-
-  install -Dm644 "$srcdir/vortex-handler.desktop" "$pkgdir/usr/share/applications/vortex-handler.desktop"
-
+  install -Dm755 "$srcdir/vortex.sh" "$pkgdir/usr/bin/vortex"
+  install -Dm644 "$srcdir/vortex.desktop" "$pkgdir/usr/share/applications/com.nexusmods.vortex.desktop"
   install -Dm644 "$srcdir/Vortex/assets/images/vortex.png" "$pkgdir/usr/share/pixmaps/vortex.png"
 }
