@@ -1,19 +1,19 @@
 pkgbase = carapace-man-bin
 	pkgdesc = A multi-shell completion man companion
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/carapace-sh/carapace-man
 	license = MIT
 	conflicts = carapace-man
 	provides = carapace-man
 	arch = aarch64
-	source_aarch64 = carapace-man-bin_0.0.7_aarch64.tar.gz::https://github.com/carapace-sh/carapace-man/releases/download/v0.0.7/carapace-man_0.0.7_linux_arm64.tar.gz
-	sha256sums_aarch64 = a895f692b7da6bbf9170cdc732002d1e0b321279d48fcf5fbff932ec2e17a883
+	source_aarch64 = carapace-man-bin_0.0.8_aarch64.tar.gz::https://github.com/carapace-sh/carapace-man/releases/download/v0.0.8/carapace-man_0.0.8_linux_arm64.tar.gz
+	sha256sums_aarch64 = e67942c6013d90b4990508f1f41cd31cb0c0998e5c8220aaff4a3a40181ae00a
 	arch = i686
-	source_i686 = carapace-man-bin_0.0.7_i686.tar.gz::https://github.com/carapace-sh/carapace-man/releases/download/v0.0.7/carapace-man_0.0.7_linux_386.tar.gz
-	sha256sums_i686 = fc69a413c5512102dc5fee32797cde0b0b731bdc6a59922df14af5c7ca2eb0cb
+	source_i686 = carapace-man-bin_0.0.8_i686.tar.gz::https://github.com/carapace-sh/carapace-man/releases/download/v0.0.8/carapace-man_0.0.8_linux_386.tar.gz
+	sha256sums_i686 = 2224c639a9f7c28657658c6a5c332c2a96d910044a780f51364ef9513bf6e784
 	arch = x86_64
-	source_x86_64 = carapace-man-bin_0.0.7_x86_64.tar.gz::https://github.com/carapace-sh/carapace-man/releases/download/v0.0.7/carapace-man_0.0.7_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5d922d168b6e480c881147d3270e901ebe17bb3e5c028cc87c7f89a22b009a99
+	source_x86_64 = carapace-man-bin_0.0.8_x86_64.tar.gz::https://github.com/carapace-sh/carapace-man/releases/download/v0.0.8/carapace-man_0.0.8_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2b76edb80e9f6a3d14a803529096419fb956790aa1f06c768580db66678ffde4
 	
 pkgname = carapace-man-bin
