@@ -1,0 +1,17 @@
+pkgbase = dektec-dtinfocl
+	pkgdesc = DekTec command-line hardware information tool (DtInfoCL)
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://www.dektec.com/downloads/utilities/
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = dektec-drivers-dkms
+	conflicts = dektec-utilities
+	options = !strip
+	options = !debug
+	source = https://www.dektec.com/products/applications/DtInfoCL/downloads/DtInfoCL_v1.7.1.zip
+	source = LICENSE.DekTec
+	sha256sums = df45c1330fc76f08576c6f8af4bad2c0a2ab872d3c325a356ac0eaf446c06d93
+	sha256sums = e79e2afd3b10c50fb8c136dd43e6abf9dbf8c2e588f08e632d3c29d7e7228a0e
+
+pkgname = dektec-dtinfocl
