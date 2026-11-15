@@ -1,0 +1,9 @@
+post_install() {
+  echo "==> To teach your coding agent to use raea, run as your user:"
+  echo "==>   raea skills install --agent claude    (or codex, gemini, kimi)"
+}
+
+post_upgrade() {
+  echo "==> Refresh your agent's raea skills for this version:"
+  echo "==>   raea skills install --agent claude    (or codex, gemini, kimi)"
+}
