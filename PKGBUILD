@@ -5,8 +5,8 @@
 _name=Ratatouille.lv2
 pkgbase=ratatouille
 pkgname=(ratatouille ratatouille-{clap,docs,lv2,standalone,vst})
-pkgver=0.9.11
-pkgrel=3
+pkgver=0.9.12
+pkgrel=1
 pkgdesc='Guitar amp neural model and impulse response loader and mixer'
 arch=(aarch64 x86_64)
 url="https://github.com/brummer10/$_name"
@@ -16,7 +16,7 @@ depends=(glibc gcc-libs libx11)
 makedepends=(cairo jack libsndfile lv2 portaudio xxd)
 checkdepends=(lv2lint)
 source=("https://github.com/brummer10/$_name/releases/download/v$pkgver/$_name-v$pkgver-src.tar.xz")
-sha256sums=('9a8134a056b6ba62144dd49ba73b1acc9ae1015868d735ba2da4b94feeb707a1')
+sha256sums=('a62200828a75d794ffc9fab13934d1b5cd8f9a9e873d72c05749ab63a4a8d304')
 _plugin_uri="urn:brummer:ratatouille"
 
 _pick() {
@@ -38,7 +38,21 @@ build() {
 
 check() {
   cd $_name-v$pkgver
-  lv2lint -M pack -s '_Z*' -I bin/$_name "$_plugin_uri"
+
+  local lv2specs=(
+    atom buf-size core data-access dynmanifest event instance-access log midi
+    morph options parameters patch port-groups port-props resize-port schemas
+    state time ui units uri-map urid worker kx-programs kx-properties)
+
+  mkdir -p .lv2
+
+  for spec in ${lv2specs[@]}; do
+    ln -vsf /usr/lib/lv2/$spec.lv2 .lv2
+  done
+
+  echo "Checking $pkgbase.lv2 with lv2lint ..."
+  ln -vsf "../bin/$_name" .lv2
+  LV2_PATH="${PWD}/.lv2" lv2lint -M pack -s '_Z*' "$_plugin_uri"
 }
 
 package_ratatouille() {
