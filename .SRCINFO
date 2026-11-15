@@ -1,0 +1,17 @@
+pkgbase = toon-mcp
+	pkgdesc = Pure Python FastMCP Server and PTY paste wrapper for Token-Optimized Object Notation (TOON) payload compression
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Vikyek/toon-mcp
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-mcp
+	depends = python-setuptools
+	source = toon-mcp-1.0.0.tar.gz::https://github.com/Vikyek/toon-mcp/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = toon-mcp
