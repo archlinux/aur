@@ -20,9 +20,11 @@ latestver() {
         | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+'
 }
 
-pkgrel=1
+pkgrel=2
 pkgdesc="Lossless file size optimizer supporting multiple formats"
-arch=('x86_64')
+# Upstream ships Windows binaries only; the rest of the payload is a wrapper
+# script, icons and a desktop file, so nothing is built for a host architecture.
+arch=('any')
 url="https://nikkhokkho.sourceforge.io/?page=FileOptimizer"
 license=('AGPL-3.0-only OR AGPL-3.0-or-later')
 depends=('wine' 'wine-mono' 'wine-gecko')

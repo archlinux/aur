@@ -1,9 +1,9 @@
 pkgbase = fileoptimizer-bin
 	pkgdesc = Lossless file size optimizer supporting multiple formats
 	pkgver = 18.10.2904
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nikkhokkho.sourceforge.io/?page=FileOptimizer
-	arch = x86_64
+	arch = any
 	license = AGPL-3.0-only OR AGPL-3.0-or-later
 	makedepends = icoutils
 	makedepends = imagemagick
