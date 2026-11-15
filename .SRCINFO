@@ -1,0 +1,18 @@
+pkgbase = lotion-fonts-git
+	pkgdesc = A free monospace font for programming!
+	pkgver = r16.eca92f3
+	pkgrel = 1
+	url = https://font.nina.coffee/
+	arch = any
+	license = OFL-1.1
+	makedepends = git
+	source = git+https://gitlab.com/nefertiti/lotion-dist.git
+	sha256sums = SKIP
+
+pkgname = ttf-lotion-git
+	provides = ttf-lotion
+	conflicts = ttf-lotion
+
+pkgname = woff2-lotion-git
+	provides = woff2-lotion
+	conflicts = woff2-lotion
