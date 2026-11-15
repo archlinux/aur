@@ -1,6 +1,6 @@
 # Maintainer: Adrin Jalali <adrin.jalali@gmail.com>
 pkgname=aur-cooldown
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Delay AUR upgrades until they have aged, so malicious pushes are caught before they land"
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=('yay: yay -Syu cooldown hook, wired by "aur-cooldown setup"'
             'zsh: staleness reminder snippet')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('eb9215a8f5578e09504282f875821a275b3eee1888cd252eb6fdbc45f41c790d')
+sha256sums=('be395dd3730ddd6804b2365bd803d54fb19fb37c9a23e3c4398ded20f2daf124')
 
 package() {
   cd "$pkgname-$pkgver"
