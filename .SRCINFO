@@ -1,6 +1,6 @@
 pkgbase = qwen-code-bin
 	pkgdesc = Open-source AI agent originally based on Gemini CLI by QwenLM
-	pkgver = 0.27.3
+	pkgver = 0.27.4
 	pkgrel = 1
 	url = https://github.com/QwenLM/qwen-code
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = qwen-code-bin
 	provides = qwen
 	conflicts = qwen-code
 	conflicts = qwen
-	source_x86_64 = qwen-code-0.27.3-linux-x64.tar.gz::https://github.com/QwenLM/qwen-code/releases/download/v0.27.3/qwen-code-linux-x64.tar.gz
+	source_x86_64 = qwen-code-0.27.4-linux-x64.tar.gz::https://github.com/QwenLM/qwen-code/releases/download/v0.27.4/qwen-code-linux-x64.tar.gz
 	source_x86_64 = system-defaults.json
-	b2sums_x86_64 = 09ce620a6127bfa792d2db236d3d8a00e971f501c02d1ef157075929458d483416f17a23fbc9906b41476b28e8f6ff18ce2180ab7c23198dc29ca8b2a473cd16
+	b2sums_x86_64 = 91d529c3a756b0d610994d0212ccd134c87b0561a5bde4766d85c02fef1d1ddb7179498e2ce4ac306957693822e19b240c32073d23e2b08fcdf9a6a3f40abd82
 	b2sums_x86_64 = 30c86151e58bd11bd1d39238646aae2dd8bc743ca2a03b64371a9dc36eae81c3acade6f39fe0235b0e7f8b059c7181d04ae5d134a3a316e0f9b3815b8f197bee
-	source_aarch64 = qwen-code-0.27.3-linux-arm64.tar.gz::https://github.com/QwenLM/qwen-code/releases/download/v0.27.3/qwen-code-linux-arm64.tar.gz
+	source_aarch64 = qwen-code-0.27.4-linux-arm64.tar.gz::https://github.com/QwenLM/qwen-code/releases/download/v0.27.4/qwen-code-linux-arm64.tar.gz
 	source_aarch64 = system-defaults.json
-	b2sums_aarch64 = ce3836c632766c9031ec20a57cb831182d5c1314984de07ed46f6357c29f302f59786dcadaac75515ed629adc0ff473f97b47d395d3437c8017b08e122539c02
+	b2sums_aarch64 = 9d8713215b572499c490956c4108a24a36b36601fd98f35f3824bf08c3fffdbda0404043d70a94bab91d8ef7564bdd62eeaba666763e3daecdfc782ac730c1ca
 	b2sums_aarch64 = 30c86151e58bd11bd1d39238646aae2dd8bc743ca2a03b64371a9dc36eae81c3acade6f39fe0235b0e7f8b059c7181d04ae5d134a3a316e0f9b3815b8f197bee
 
 pkgname = qwen-code-bin
