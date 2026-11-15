@@ -5,13 +5,13 @@
 
 pkgname=metrolist-desktop-nightly-bin
 pkgver=20261115.r56.g2623ab7
-pkgrel=1
+pkgrel=2
 pkgdesc="YouTube Music client for desktop (nightly)"
 arch=('x86_64')
 url="https://github.com/MetrolistGroup/Metrolist"
 license=('GPL-3.0-or-later')
 depends=('fuse2')
-options=('!strip')
+options=('!debug' '!strip')
 noextract=("metrolist-nightly.AppImage")
 source=(
   "metrolist-nightly.AppImage::https://github.com/MetrolistGroup/Metrolist/releases/download/nightly/metrolist-desktop-linux-x64.AppImage"
