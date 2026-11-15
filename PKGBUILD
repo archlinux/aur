@@ -1,7 +1,7 @@
 # Maintainer: chadsr <git at ross dot ch>
 
 pkgname=herdr-app
-pkgver=0.1.15 # renovate: datasource=github-tags depName=herdrdev/herdr-app
+pkgver=0.1.16 # renovate: datasource=github-tags depName=herdrdev/herdr-app
 pkgrel=1
 pkgdesc="Native desktop workspace for terminals and coding agents that keep running"
 arch=('x86_64' 'aarch64')
@@ -42,7 +42,7 @@ source=(
 	"ghostty-$_ghostty_sha1.tar.gz::https://github.com/ghostty-org/ghostty/archive/$_ghostty_sha1.tar.gz"
 	"herdr-app.desktop"
 )
-b2sums=('e03dd3ea9889f6107db78a97e669713ff13c2e8f8fb3ca0ebd5ec04cb18ca115328d7d1bd14eae8239fb416b79adb78be9404fcea7d36d186ec26628c5c4d05f'
+b2sums=('510cc43fdcf9d45764f64e09502a30403117b1dace0cea080a52b549408f1aca43ef7042b564825d7337141e51e20a30c41954629af7abd352f68ae71ba2a013'
 	'62450cf71d7015f092b6fea0e725fbced508107df5b068f2203145a63521ad11a73923182c7db4decbd0548729dfb064276a3edeec051a9841cb8889d6f6ebd0'
 	'3753c41a94a9e11021016006cfa2b6f61655d9feddbec72174550db4898bb2b9e311b19e5d8d276a580dc354d8f866021ec78e5f2fe62ebe52aaafda99bbba70')
 
