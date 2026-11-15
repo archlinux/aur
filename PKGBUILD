@@ -1,8 +1,8 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Nemotron 3.5 Lightning 30B A3B.
+# Created with assistance from Qwen3.8 Flash Next.
 
 pkgname=pake-cli
-pkgver=3.18.0
+pkgver=3.19.0
 pkgrel=1
 pkgdesc="Turn any webpage into a desktop app with one command (Tauri/Rust-based CLI)"
 arch=('any')
@@ -19,7 +19,7 @@ options=('!debug')
 _pkgname=pake-cli
 
 source=("https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
-b2sums=('c2b24101126b2301ecb0c495ffbd7d6145324b3193f90f142c9a8c34a93d2fabc19ddee9335e0a93d52e7288c82070808027edf5cd01dc0fc1cb07a8debaef0b')
+b2sums=('5f3c38e3993babd69f7fda6555df3da9ae0f30ea52945e59fe0329c04cb73b9cbc3513a8a1a2c4d9599cfc408c3d30d42feddf604e3ede5c29b92bd1030a5d86')
 
 prepare() {
     bsdtar -xf "${_pkgname}-${pkgver}.tgz"
