@@ -25,3 +25,30 @@ pkgbase = project-reclaimer-bin
 	sha256sums = 1b25ef4ed0e617c2e3c5ccdae5742c03e8eedcf310c8e6b32fe33e980145436b
 
 pkgname = project-reclaimer-bin
+pkgbase = project-reclaimer-bin
+	pkgdesc = A rewrite of Bungie's Halo Games. Uses Master Chief Collection on Steam for game data.
+	pkgver = 0.10.4
+	pkgrel = 1
+	url = https://github.com/ProjectReclaimer/project-reclaimer-releases
+	arch = x86_64
+	license = none
+	depends = glibc>=2.36
+	depends = alsa-lib
+	depends = vulkan-icd-loader
+	depends = hicolor-icon-theme
+	optdepends = vulkan-radeon: Vulkan support for AMD GPUs
+	optdepends = vulkan-intel: Vulkan support for Intel GPUs
+	optdepends = nvidia-utils: Vulkan support for NVIDIA GPUs
+	optdepends = pipewire-alsa: Sound through PipeWire
+	optdepends = pulseaudio-alsa: Sound through PulseAudio
+	optdepends = wayland: Native Wayland window support
+	optdepends = libxkbcommon: Keyboard input for native Wayland
+	optdepends = libdecor: Client-side window decorations on Wayland
+	optdepends = xdg-utils: Opening invite links
+	optdepends = steam: Project Reclaimer requires game data from steam, and can use steam to pull maps and mods from the workshop
+	provides = project-reclaimer
+	conflicts = project-reclaimer
+	source = https://github.com/ProjectReclaimer/project-reclaimer-releases/releases/download/v0.10.4/project-reclaimer-client-v0.10.4-linux-x86_64.tar.gz
+	sha256sums = 7b01d8bf677d66250cf7c5fafb976d5e9b542356e5bd79b7d0d0be908c04aee1
+
+pkgname = project-reclaimer-bin
