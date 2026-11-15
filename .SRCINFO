@@ -1,6 +1,6 @@
 pkgbase = qoder-cn
 	pkgdesc = Qoder CN desktop app, an agentic coding workbench from Alibaba
-	pkgver = 0.5.11
+	pkgver = 0.5.12
 	pkgrel = 1
 	url = https://qoder.cn/
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = qoder-cn
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: system tray icon support
 	conflicts = qoder-cn-bin
-	noextract = Qoder-CN-linux-0.5.11-amd64.deb
+	noextract = Qoder-CN-linux-0.5.12-amd64.deb
 	options = !strip
-	source_x86_64 = Qoder-CN-linux-0.5.11-amd64.deb::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/0.5.11/Qoder-CN-linux-amd64.deb
-	sha256sums_x86_64 = 92545622fa7b6165bc8410c43fe0aa1eaf43d689929e52b2eea9c4b6256661d6
+	source_x86_64 = Qoder-CN-linux-0.5.12-amd64.deb::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/0.5.12/Qoder-CN-linux-amd64.deb
+	sha256sums_x86_64 = 79316fa55afedc05d4bb2c35d289e4986fa2e06455aa43b465533e353703906e
 
 pkgname = qoder-cn
