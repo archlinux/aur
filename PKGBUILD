@@ -1,12 +1,12 @@
 # Maintainer: Surya Vamsi <25237999+suryavamsi6@users.noreply.github.com>
 # AUR recipe: fetches the tagged source archive from GitHub by checksum.
 pkgname=bluet
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Native Bluetooth device manager using the system BlueZ service'
 arch=('x86_64')
 url='https://github.com/suryavamsi6/bluet'
-license=('custom:unlicensed')
+license=('MIT OR Apache-2.0')
 depends=('bluez' 'dbus' 'fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'libxcb'
          'libxkbcommon' 'libxkbcommon-x11' 'libglvnd' 'libpulse' 'vulkan-icd-loader'
          'wayland' 'libx11' 'libxcursor' 'libxi' 'libxrandr')
@@ -17,7 +17,7 @@ optdepends=('vulkan-driver: a Vulkan driver for your graphics hardware')
 # lived inside the executable, which no longer applies.
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5693a7c07a0d80941980c5ef6c58c74d3813381973157599b2a5ff8babb447aa')
+sha256sums=('36327571d239804295fecc1b3ccc2439380c3c95dd677e60aea05e292c4a3a12')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -43,8 +43,7 @@ package() {
   install -Dm644 packaging/linux/dev.bluet.manager.svg \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/dev.bluet.manager.svg"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/bluet/README.md"
-  install -Dm644 packaging/linux/PROJECT-LICENSE-NOTICE \
-    "${pkgdir}/usr/share/licenses/bluet/PROJECT-LICENSE-NOTICE"
+  install -Dm644 LICENSE-MIT LICENSE-APACHE -t "${pkgdir}/usr/share/licenses/bluet/"
   install -dm755 "${pkgdir}/usr/share/licenses/bluet/third-party"
   install -m644 assets/licenses/* "${pkgdir}/usr/share/licenses/bluet/third-party/"
 }
