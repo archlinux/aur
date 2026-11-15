@@ -2,8 +2,8 @@
 
 pkgbase=lagrange
 pkgname=(lagrange lagrange-common clagrange)
-pkgrel=2
-pkgver=2.0.2
+pkgrel=1
+pkgver=2.0.3
 pkgdesc='Beautiful Gemini Client'
 url="https://git.skyjake.fi/skyjake/lagrange"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -81,4 +81,4 @@ package_clagrange() {
     DESTDIR="$pkgdir" cmake --install . --prefix /usr --component tui
 }
 
-sha256sums=('7994b41daa6000dfe479a8f5328c36010dba53c873f2399274a029763a77a7a7')
+sha256sums=('45461159d3cb0ba09d0ba78cd34ca32728bfd8a91cff48c7d2ca4e9a135e1864')
