@@ -36,12 +36,10 @@ pkgbase = sonarr-develop-bin
 	source = sonarr.service
 	source = sonarr.sysusers
 	source = sonarr.tmpfiles
-	source = sonarr.install
 	sha256sums = 1a609451c6de4fe0f03c8019e2232b04a552bea98e5863f7e49bba9f00ed05ba
 	sha256sums = a5fc162aeafb2c6322176db736a503047a39f2740eea4dead05438ed47187fbd
 	sha256sums = 00141d4cbf34daa6d91b26179d4847ec970e2767382e18fdf9af2ec84a0ff43e
 	sha256sums = d6b18a83dd9c213470d984f71ddcefcd64d12bb87f68225cc4ebf5fa4a831703
-	sha256sums = 044abaa63b7882bedf64d57fccc72819cd701c5bf040c5630c82da8e29ab6d22
 	source_x86_64 = Sonarr.develop.5.0.0.2941.linux-x64.tar.gz::https://services.sonarr.tv/v1/update/develop/download?version=5.0.0.2941&os=linux&runtime=netcore&arch=x64
 	sha256sums_x86_64 = 07ffb7bc6ae2f55892984785a4051bc123fa96479a01c5d96f0836bb79c3ba59
 	source_aarch64 = Sonarr.develop.5.0.0.2941.linux-arm64.tar.gz::https://services.sonarr.tv/v1/update/develop/download?version=5.0.0.2941&os=linux&runtime=netcore&arch=arm64
