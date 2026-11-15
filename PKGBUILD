@@ -5,7 +5,7 @@ _mvzrver=0.3.9
 _zigwlver=0.6.0
 _xkbver=0.4.0
 _clapver=0.12.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Kewuaa's input manager for River"
 arch=('x86_64')
 url="https://github.com/kewuaa/kwim"
@@ -23,7 +23,9 @@ sha256sums=('39816660349e61f017a78b1725929e3d04198260be9a6ebfa964196347a8dc5a'
             '9ff3bf408bee528889a9dd3059235cb5611c8e38e80e2af880187c00f387ac78'
             '7d4145fbf3062c891254b60c02cd9f45675b867338b3c251b6428291abbaccc1'
             'ee15320d050ba9c676d5e0eda5eb907a834ff04a140f442c93e86efe51d9ffee')
-makedepends=('zig' 'git')
+makedepends=('zig=0.16.0'
+	     'git'
+	    )
 noextract=("${source[@]}")
 
 build() {

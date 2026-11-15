@@ -1,11 +1,11 @@
 pkgbase = kwim
 	pkgdesc = Kewuaa's input manager for River
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kewuaa/kwim
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = zig
+	makedepends = zig=0.16.0
 	makedepends = git
 	depends = wayland
 	depends = libxkbcommon
