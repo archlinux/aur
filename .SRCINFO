@@ -1,7 +1,7 @@
 pkgbase = b4-bin
 	pkgdesc = Network packet processor with a friendly UI for circumventing Deep Packet Inspection (DPI) systems
 	pkgver = 1.91.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/DanielLavrushin/b4
 	arch = x86_64
 	arch = i686

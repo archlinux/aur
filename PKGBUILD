@@ -3,7 +3,7 @@
 
 pkgname=b4-bin
 pkgver=1.91.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Network packet processor with a friendly UI for circumventing Deep Packet Inspection (DPI) systems"
 arch=('x86_64' 'i686' 'aarch64' 'riscv64' 'loong64' 'ppc64' 'ppc64le' 's390x')
 url="https://github.com/DanielLavrushin/b4"
