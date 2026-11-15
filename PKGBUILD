@@ -9,18 +9,20 @@
 # to its archive of the tools, and pkgrel.
 
 pkgname=hyprmasq-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Computer use for Hyprland: an MCP server and tools for per-window screenshots and input, prebuilt'
 arch=(x86_64)
 url='https://github.com/nyrda/hyprmasq'
 license=(MIT)
-depends=(ffmpeg glibc "hyprmasq-plugin=$pkgver" jq libei libxkbcommon sh)
+# The plugin of this release or a newer one: yay installs the new hyprmasq-plugin-bin before it builds this package, while
+# the old one is still installed, and makepkg checks this before it builds.
+depends=(ffmpeg glibc "hyprmasq-plugin>=$pkgver" jq libei libxkbcommon sh)
 provides=("hyprmasq=$pkgver")
 conflicts=(hyprmasq)
 options=(!debug !strip)
 source=("hyprmasq-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/hyprmasq-$pkgver-x86_64.tar.gz")
-sha256sums=('4a5b0f3a743e82deea9c6c51e8069ff8edddb658d59649004584c82a646cd58a')
+sha256sums=('57f07b9891575343ad71f76cb99cd816c8cb4993aea625ec5c5976e95b68c9f1')
 
 package() {
   cd "hyprmasq-$pkgver-x86_64"
