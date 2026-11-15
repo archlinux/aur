@@ -1,6 +1,6 @@
 pkgbase = bimcraft-bin
 	pkgdesc = Open-source building information modeling: plans, sections, 3D, schedules and IFC (prebuilt binaries)
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/IPedrax/BIMCraft
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = bimcraft-bin
 	optdepends = mesa: OpenGL drivers
 	optdepends = xdg-desktop-portal: file dialogs
 	optdepends = dbus: file dialogs through the portal
-	provides = bimcraft=0.11.0
+	provides = bimcraft=0.12.0
 	conflicts = bimcraft
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/IPedrax/BIMCraft/releases/download/v0.11.0/bimcraft-0.11.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 932a7c6c16bc3328b508b723f664760814bb23e03603f05a46da68eeef1e2341
-	source_aarch64 = https://github.com/IPedrax/BIMCraft/releases/download/v0.11.0/bimcraft-0.11.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = a94d598d821b1da3366e6655147d318991a5a542c298da263f1fb97cc704d4c1
+	source_x86_64 = https://github.com/IPedrax/BIMCraft/releases/download/v0.12.0/bimcraft-0.12.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 3775413dace9d631532938023bded538f85ef6acafa9cb5ca15e216e944e51bf
+	source_aarch64 = https://github.com/IPedrax/BIMCraft/releases/download/v0.12.0/bimcraft-0.12.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 71dc0cd34ac2bfa5c5b75a622a23263b34ad70042bf560014a0179ea74715f32
 
 pkgname = bimcraft-bin
