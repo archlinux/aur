@@ -1,6 +1,6 @@
 # Maintainer: Carlos Prieto Ortiz <prietus@live.com>
 pkgname=irkt-git
-pkgver=0.1.0
+pkgver=0.3.20.r1.gadaed07
 pkgrel=1
 pkgdesc="Modern terminal IRC client: full IRCv3, SASL/CertFP, inline images (Kitty/iTerm2/Sixel)"
 arch=('x86_64' 'aarch64')

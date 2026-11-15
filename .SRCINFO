@@ -1,6 +1,6 @@
 pkgbase = irkt-git
 	pkgdesc = Modern terminal IRC client: full IRCv3, SASL/CertFP, inline images (Kitty/iTerm2/Sixel)
-	pkgver = 0.1.0
+	pkgver = 0.3.20.r1.gadaed07
 	pkgrel = 1
 	url = https://github.com/prietus/irkt
 	arch = x86_64
