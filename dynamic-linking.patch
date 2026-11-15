@@ -2,7 +2,7 @@
 +++ Cargo.toml	2026-03-06 13:50:40.807472888 +0100
 @@ -37,5 +37,6 @@
  [dependencies.libbpf-rs]
- version = "0.24"
+ version = "0.26"
 +default-features = false
 
  [dependencies.libc]
