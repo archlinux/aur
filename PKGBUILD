@@ -1,19 +1,18 @@
 # Maintainer: Tim Falken <tim@timfalken.com>
 pkgname=bluegit-backup
-pkgver=20261115135704
+pkgver=20261115211250
 pkgrel=1
 pkgdesc='Backup server for a BlueGit instance: incremental copy, archives, rollback'
 arch=('x86_64' 'aarch64')
 url='https://git.timfalken.com/timfa/bluegit-backup'
 license=('MIT')
-depends=('curl')
 makedepends=('go')
 backup=('etc/bluegit-backup/config.yml')
 options=('!debug')
 install=bluegit-backup.install
-_commit=04234ca37b53a9bd293f4ac0aae81c1268cfed01
+_commit=28d60e5d3b112092b40772bd7e67f9022ba40e85
 source=("bluegit-backup-${_commit}.tar.gz::https://git.timfalken.com/timfa/bluegit-backup/-/archive/${_commit}/bluegit-backup-${_commit}.tar.gz")
-sha256sums=('ee18a8c0bae22d26ef7868b2835ca92fa990f4acab1ab02895cd003a29cc3bab')
+sha256sums=('d31faa992a642adc0069f725f0fefd276c8f27c206f27bd3cc8d0261893b6d28')
 
 build() {
   cd "$srcdir/bluegit-backup-${_commit}"
@@ -32,8 +31,5 @@ package() {
   install -Dm644 packaging/config.yml "$pkgdir/etc/bluegit-backup/config.yml"
   install -Dm644 packaging/sysusers.conf "$pkgdir/usr/lib/sysusers.d/bluegit-backup.conf"
   install -Dm644 packaging/tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/bluegit-backup.conf"
-  install -Dm755 packaging/bluegit-backup-update.sh "$pkgdir/usr/lib/bluegit-backup/update"
-  install -Dm644 packaging/bluegit-backup-update.service "$pkgdir/usr/lib/systemd/system/bluegit-backup-update.service"
-  install -Dm644 packaging/bluegit-backup-update.rules "$pkgdir/usr/share/polkit-1/rules.d/49-bluegit-backup-update.rules"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
