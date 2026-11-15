@@ -1,10 +1,10 @@
 pkgbase = beammp-launcher
 	pkgdesc = Multiplayer Launcher/Client for BeamMP, providing multiplayer for BeamNG.drive
 	pkgver = 2.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/BeamMP/BeamMP-Launcher
 	arch = x86_64
-	license = LGPL3
+	license = AGPL-3.0-only
 	makedepends = cmake
 	makedepends = vcpkg
 	makedepends = ninja
