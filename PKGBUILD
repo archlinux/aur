@@ -3,7 +3,7 @@
 # Contributor: Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 
 pkgname=ffmpeg-normalize
-pkgver=1.43.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Normalize loudness of audio and video files using FFmpeg'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ffmpeg python-colorlog python-ffmpeg-progress-yield python-mutagen pyth
 checkdepends=(git python-pytest uv)
 makedepends=(git python-installer python-uv-build uv)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha512sums=('e0d4fa5f732773636208d047292698a69e52a7ae1a2e8dc86794b53d90ff830c7aae4fed3dfafefd07a90d42cdbb80f12ebf6de7b38947ee90e3ebe1dacbf71b')
+sha512sums=('7845af4f522d7600984e8026ad89e76d2701a72b59ceb44515dddf96db3afb75349ac22c703cd60d8226247ef430eff575a8a1034eb5f875e57856804efb9e56')
 
 #prepare() {
 #  rm -rf $pkgname-$pkgver/dist
@@ -29,7 +29,10 @@ build() {
 #  cd $pkgname-$pkgver
 #  uv venv --no-managed-python --system-site-packages
 #  uv --no-cache --no-managed-python --offline pip install --link-mode=copy --no-deps dist/*.whl
-#  PATH=".venv/bin:$PATH" ./.venv/bin/python -m pytest tests
+#  # Patch: disable test failing with ffmpeg 9
+#  #PATH=".venv/bin:$PATH" ./.venv/bin/python -m pytest tests
+#  PATH=".venv/bin:$PATH" ./.venv/bin/python -m pytest tests \
+#    --deselect 'tests/test_verification.py::test_ebu_effective_targets[options1--5-1.0]'
 #}
 
 package() {
