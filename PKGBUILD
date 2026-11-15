@@ -1,9 +1,9 @@
 # Maintainer: Marcel W. Wysocki <maci.stgn@gmail.com>
 pkgname=tmog-bin
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Task Manager TMOG, a native system monitor and task manager (precompiled binary)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://tmog.org"
 license=('LicenseRef-proprietary')
 depends=(
@@ -16,12 +16,14 @@ optdepends=(
 )
 provides=('tmog-task-manager')
 conflicts=('tmog-task-manager')
-source=("https://tmog.org/rtm/downloads/TaskManagerOG-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('38480031482ca1ca9d98953bcccad64de547b8adc4bc4bb679cb71767db9c1b0')
+source_x86_64=("https://tmog.org/rtm/downloads/TaskManagerOG-${pkgver}-linux-x86_64.tar.gz")
+sha256sums_x86_64=('38480031482ca1ca9d98953bcccad64de547b8adc4bc4bb679cb71767db9c1b0')
+source_aarch64=("https://tmog.org/rtm/downloads/TaskManagerOG-${pkgver}-linux-aarch64.tar.gz")
+sha256sums_aarch64=('9a789694f3ec3b6c1aeda60f3f0e516913666bf8148595a2d86ee5d047665b08')
 options=('!strip')
 
 package() {
-  cd "TaskManagerOG-${pkgver}-linux-x86_64"
+  cd "TaskManagerOG-${pkgver}-linux-${CARCH}"
 
   install -Dm755 bin/tmog-task-manager "${pkgdir}/usr/bin/tmog-task-manager"
 
