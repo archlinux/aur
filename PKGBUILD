@@ -1,6 +1,6 @@
 # Maintainer: Eloreden <luca.morleschi@outlook.it>
 pkgname=protonaut-git
-pkgver=0.1.7.r0.g6db8a87
+pkgver=0.1.8.r0.g06bf892
 pkgrel=1
 pkgdesc="A desktop companion dashboard for your Steam/Proton library on Linux, built with Wails (Go + React)"
 arch=('x86_64')
