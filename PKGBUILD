@@ -2,7 +2,7 @@
 
 pkgname=snd-hdspe-dkms-git
 _pkgname=snd-hdspe
-pkgver=r289.abf9146
+pkgver=r309.172ccfe
 pkgrel=1
 pkgdesc='A linux kernel module for RME HDSPe sound cards and extension modules (development branch)'
 url='https://github.com/Schroedingers-Cat/snd-hdspe'
