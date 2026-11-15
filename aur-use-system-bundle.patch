@@ -1,0 +1,37 @@
+diff --git a/wowup-shell/src/bootstrap.ts b/wowup-shell/src/bootstrap.ts
+index 49bf1cdd..b1d1a976 100644
+--- a/wowup-shell/src/bootstrap.ts
++++ b/wowup-shell/src/bootstrap.ts
+@@ -39,7 +39,7 @@ if (!app.requestSingleInstanceLock()) {
+ } else {
+   const shellRoot = app.getAppPath();
+   // Before registering the protocol handler, which re-uses --bundle-dir once it's been made absolute
+-  const bundle = app.isPackaged ? selectInstalledBundle() : getDevBundle();
++  const bundle = useSystemPackageManagerBundle();
+ 
+   if (bundle === undefined) {
+     refuseToStart();
+@@ -75,6 +75,23 @@ interface StartingBundle {
+   updates: ShellUpdates;
+ }
+ 
++function useSystemPackageManagerBundle(): StartingBundle {
++  // <install>/resources/bundle (electron-builder extraResources), managed by pacman
++  const root = join(process.resourcesPath, "bundle");
++  return {
++    root,
++    info: { version: readDevVersion(root), channel: "dev", source: "dev" },
++    markHealthy: () => {},
++    // Nothing to update to: the bundle folder is managed by system package manager
++    updates: {
++      setChannel: () => {},
++      checkNow: () => Promise.resolve(),
++      onReady: () => {},
++      restart,
++    },
++  };
++}
++
+ /**
+  * The newest downloaded or built-in bundle that passes its checks (signature, flavor, shell API, file hashes)
+  * and hasn't been set aside for failing to start. See src/bundle-loader.ts.
