@@ -1,7 +1,7 @@
 # Maintainer: Marco Ziliani (rylos)
 # AUR: rynas-agent (built from source). Copy to PKGBUILD in the AUR repository.
 pkgname=rynas-agent
-pkgver=0.8.10
+pkgver=0.8.11
 pkgrel=1
 pkgdesc="rynas PC backup agent: file backups to a rynas NAS and bare-metal restore from any live Linux"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=('btrfs-progs: btrfs snapshots and restores'
             'dosfstools: restoring an ESP'
             'cryptsetup: restoring LUKS volumes')
 source=("rynas-${pkgver}.tar.gz::https://github.com/rylos/rynas/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('14614f2274d8320559bce97a3e5693d2aba89bc1911ed5d4d8149e84f1f60a7d')
+sha256sums=('defde4c794d6e810b3330ff3ce0718c9cffdcc58998ed788fb6181e346f77c6f')
 
 prepare() {
   cd "rynas-${pkgver}/crates/rynas-agent"
