@@ -3,7 +3,7 @@
 _pkgname='pixora-icons'
 pkgname="$_pkgname-git"
 pkgdesc='16-bit icons theme for Linux desktops. (GIT version)'
-pkgver=1.0.0.r582.g75b3153
+pkgver=1.0.0.r583.g5fa28ec
 pkgrel=1
 url='https://github.com/tsora1603/pixora-icons'
 arch=('any')
