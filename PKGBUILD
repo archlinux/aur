@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=fallow-bin
-pkgver=3.43.0
+pkgver=3.43.1
 pkgrel=1
 pkgdesc='Codebase intelligence for TypeScript and JavaScript (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source_x86_64=("fallow-${pkgver}-x86_64.tar.gz::${_release}/fallow-x86_64-unknow
 source_aarch64=("fallow-${pkgver}-aarch64.tar.gz::${_release}/fallow-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('b291c8e1e0cac7a3646cd5539d7c728f2ce425678eedd1afeeea3c35838c29a9'
             'efd3a4139905e009f1f321ab6b38b73b7b6ec2ed655d12f68df69472e4dd1981')
-sha256sums_x86_64=('54e9681d478118e218bde0effd058097f89e9fed488a7f00c8d2d4af6948aeec')
-sha256sums_aarch64=('41c52345c694ebd0c0dd0798c222a24287988c4f403108ef80eed5752fde533f')
+sha256sums_x86_64=('f2135f2e9d80ea571cecf8aef268091e3945edf1e64e71ea26cbf23dc90c0004')
+sha256sums_aarch64=('1a27b3466638557245cc98c8c9fc5e6472d4659302ddaf2c64e5ab1ad77079e4')
 
 package() {
   install -Dm755 fallow fallow-lsp fallow-mcp fallow-similar-code -t "${pkgdir}/usr/bin"
