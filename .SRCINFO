@@ -1,0 +1,27 @@
+pkgbase = paseo-bun
+	pkgdesc = Paseo desktop and daemon with native Bun AOT, Elysia, Tauri v2 and UI performance patches
+	pkgver = 0.16.0beta2
+	pkgrel = 3
+	url = https://github.com/maci0/paseo-bun
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = bun
+	makedepends = nodejs>=24
+	makedepends = npm
+	makedepends = rust
+	makedepends = pkgconf
+	depends = glibc
+	depends = gcc-libs
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = openssl
+	depends = zlib
+	depends = git
+	optdepends = openssh: SSH connections and Git remotes
+	conflicts = paseo-bun-bin
+	options = !strip
+	options = !debug
+	source = paseo-bun-source::git+https://github.com/maci0/paseo-bun.git#commit=8fd3343919561f99d5ff144f5c8daed422d92aff
+	sha256sums = SKIP
+
+pkgname = paseo-bun
