@@ -1,6 +1,6 @@
 # Maintainer: ognrdrch <https://github.com/ognrdrch>
 pkgname=rauri-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A minimal AUR helper written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('pacman' 'git' 'sudo' 'util-linux')
 conflicts=('rauri')
 provides=('rauri')
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/ognrdrch/rauri/releases/download/v${pkgver}/rauri-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('2e7a0c2b56cefe528db1f28f3d532828763487e5bcaea70fa9417365ec348777')
+sha256sums_x86_64=('6db0e35b0ae5f1a4abfde4dc7fd01ffff9848fd83fe74fdcb0b0977075222dba')
 
 package() {
   cd "$srcdir"
