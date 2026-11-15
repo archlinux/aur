@@ -1,6 +1,6 @@
 pkgbase = syspass-cli
 	pkgdesc = CLI client for sysPass
-	pkgver = 0.10.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/ggnosh/syspass-cli
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = syspass-cli
 	depends = libgcc
 	depends = openssl
 	options = !lto
-	source = syspass-cli-0.10.0.tar.gz::https://github.com/ggnosh/syspass-cli/archive/refs/tags/v0.10.0.tar.gz
-	sha256sums = 70b8feb10be5362627ec3078a4819277cb6e38917685e771dbc2a6cbceff155c
+	source = syspass-cli-0.11.1.tar.gz::https://github.com/ggnosh/syspass-cli/archive/refs/tags/v0.11.1.tar.gz
+	sha256sums = 77902be0cec3fc8fbac2f59f7bd49b9df343eaf831d9ae49c9643c979dbc0bc4
 
 pkgname = syspass-cli
