@@ -2,7 +2,7 @@
 
 pkgname=pi-ext-rpiv-todo
 pkgver=2.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Model-facing todo list rendered as a live overlay, for the Pi coding agent'
 arch=('any')
 url='https://github.com/juicesharp/rpiv-mono'
@@ -10,7 +10,7 @@ license=('MIT')
 install="${pkgname}.install"
 makedepends=('npm')
 
-_pi_pkgroot=/usr/lib/pi/packages
+_pi_pkgroot=/usr/share/pi/extensions
 _piname=rpiv-todo
 _npmname=@juicesharp/rpiv-todo
 _tarball=rpiv-todo

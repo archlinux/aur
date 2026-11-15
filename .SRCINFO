@@ -1,7 +1,7 @@
 pkgbase = pi-ext-rpiv-todo
 	pkgdesc = Model-facing todo list rendered as a live overlay, for the Pi coding agent
 	pkgver = 2.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/juicesharp/rpiv-mono
 	install = pi-ext-rpiv-todo.install
 	arch = any
