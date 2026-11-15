@@ -4,7 +4,7 @@ _electron=electron43
 
 _pkgname=WowUp
 pkgname=${_pkgname,,}-native
-_pkgver=2.23.1
+_pkgver=2.25.5
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='World of Warcraft addon updater (system Electron)'
@@ -18,18 +18,19 @@ depends=(
 makedepends=(
     'nodejs-lts-krypton' # may fail with latest nodejs, use lts
     'npm'
-    'asar'
     'imagemagick'
 )
 source=(
     "$_pkgname-$_pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz"
     aur-disable-updater.patch
+    aur-use-system-bundle.patch
     wago-fix.js
     wowup-native.desktop
     run_wowup-native.sh
 )
-sha256sums=('ca21738124d883a8d6643de63d713b73c7cf21ab347c8f2f4155b91fda79d88c'
+sha256sums=('329fd33cc7767ecfce5f43eb5675c2af504221d86a9eca4e41be15dd2334454d'
             '6492656d15dc74254189767f92a3d6d73ee21d2de952ae8586a40330dc0b6ef3'
+            '750fa6ea170aa408845fb20b775e9088a3c007d86d8f1d87c06c241fa2e7b950'
             '371d0e19917b031911ac5503e01e19170988230fb793f68e42eb15e4d1cfb97c'
             '76ebf12e022e15075a6a3824731a8288acbc6a4e1f69f6bd0fa3591d6f658656'
             '96b62f48ab60f289a375b93eef8ccbd67be818e1043f450da706894b2c958356')
@@ -40,15 +41,14 @@ prepare() {
 
     cd "$_pkgname-$_pkgver/"
 
-    # set legacy peer deps in .npmrc file to dependency conflict since npm 7
-    echo "legacy-peer-deps=true" >>wowup-electron/.npmrc
-
     # overwolf is impossible with system electron
-    sed -i -E '/^\s*"@overwolf\// d' wowup-electron/package.json
-    sed -i -E '/^\s*"postinstall":/ s/ow-electron-builder install-app-deps/true/' wowup-electron/package.json
+    sed -i -E '/^\s*"@overwolf\// d' wowup-electron/package.json wowup-shell/package.json
 
     # disable built-in updater (package manager handles it)
     patch --forward --strip=1 --input="${srcdir}/aur-disable-updater.patch"
+
+    # disable built-in / self-updated UI bundle selection
+    patch --forward --strip=1 --input="${srcdir}/aur-use-system-bundle.patch"
 
     # intergient.com refuse to provide service to users in some country/region
     # add a workaround that extracts the key manually
@@ -56,33 +56,19 @@ prepare() {
 }
 
 build() {
-    _electronver=$(</usr/lib/$_electron/version)
-
     cd "$srcdir/$_pkgname-$_pkgver/wowup-lib"
+
+    npm install
+    npm run build
+
+    cd "$srcdir/$_pkgname-$_pkgver/wowup-shell"
 
     npm install
 
     cd "$srcdir/$_pkgname-$_pkgver/wowup-electron"
 
-    # Angular may ask for sharing anonymous usage data during `npm install`.
-    # Say “no” to it.
-    npm install electron@$_electronver <<<"N"
-
-    # or use miorrors
-    # export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-    # npm --registry https://registry.npmmirror.com/ install electron@$_electronver <<<"N"
-
-    # electron-builder with `nodeGypRebuild=true` will fetch headers from electronjs.org,
-    # which may lead to a 404 error. Explicitly call node-gyp-rebuild to avoid it.
-    ./node_modules/.bin/electron-builder node-gyp-rebuild
-
+    npm install
     npm run build:prod
-    ./node_modules/.bin/electron-builder \
-        --linux dir \
-        -c electron-build/electron-builder.json \
-        -c.nodeGypRebuild=false \
-        -c.electronDist="/usr/lib/$_electron" \
-        -c.electronVersion="$_electronver"
 }
 
 package() {
@@ -90,9 +76,17 @@ package() {
     install -Dm644 wowup-native.desktop -t "$pkgdir/usr/share/applications/"
 
     _dest="$pkgdir/usr/lib/$pkgname"
-    asar e "$srcdir/$_pkgname-$_pkgver/wowup-electron/release/linux-unpacked/resources/app.asar" "$_dest"
 
-    cd "$srcdir/$_pkgname-$_pkgver/wowup-electron/"
+    cd "$srcdir/$_pkgname-$_pkgver/wowup-shell"
+    npm prune --omit=dev
+    install -Dm644 package.json "$_dest/package.json"
+    cp -a dist build "$_dest/"
+    cp -a node_modules "$_dest/node_modules"
+
+    cd "$srcdir/$_pkgname-$_pkgver/wowup-electron"
+    cp -a app-build/packed/bundle "$_dest/bundle"
+    install -Dm644 app-build/bundle-build.json "$_dest/bundle-build.json"
+
     install -Dm644 assets/wowup_logo_512np.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
     for size in 16 24 32 48 64 72 128 256; do
         target="$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
