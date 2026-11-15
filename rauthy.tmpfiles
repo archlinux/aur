@@ -1,0 +1,2 @@
+d /etc/rauthy 0750 root rauthy -
+d /var/lib/rauthy 0750 rauthy rauthy -

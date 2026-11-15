@@ -1,0 +1,28 @@
+[Unit]
+Description=Rauthy Identity & Access Management
+Documentation=https://sebadob.github.io/rauthy/
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=rauthy
+Group=rauthy
+WorkingDirectory=/var/lib/rauthy
+StateDirectory=rauthy
+ExecStart=/usr/bin/rauthy serve --config-file /etc/rauthy/config.toml --secrets-file /etc/rauthy/secrets.toml
+Environment=MALLOC_CONF=abort_conf:true,narenas:8,tcache_max:4096,dirty_decay_ms:5000,muzzy_decay_ms:5000
+Restart=on-failure
+
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+ReadWritePaths=/var/lib/rauthy
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,86 @@
+generate_admin_password() {
+  local password=
+  until [[ $password =~ [a-z] && $password =~ [A-Z] && $password =~ [0-9] ]]; do
+    password=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 24)
+  done
+  printf '%s' "$password"
+}
+
+hash_password() {
+  local salt
+  salt=$(head -c 16 /dev/urandom | base64 | tr -dc 'A-Za-z0-9')
+  printf '%s' "$1" | argon2 "$salt" -id -t 4 -m 17 -p 8 -e
+}
+
+detect_domain() {
+  local host fqdn
+  host=$(uname -n)
+  fqdn=$(getent hosts "$host" | awk '{ for (i = 2; i <= NF; i++) if ($i ~ /\./) { print $i; exit } }')
+  printf '%s' "${fqdn:-$host}"
+}
+
+write_config() {
+  local password_hash=$1 domain=$2
+  cat <<EOF
+## Full reference: https://sebadob.github.io/rauthy/config/config.html
+
+[bootstrap]
+admin_email = 'admin@localhost'
+password_argon2id = '$password_hash'
+EOF
+  rauthy generate-secrets
+  cat <<EOF
+node_id = 1
+nodes = ['1 localhost:8100 localhost:8200']
+EOF
+  rauthy generate-enc-key
+  cat <<EOF
+
+[server]
+# TLS terminated by reverse proxy
+scheme = 'http'
+listen_address = '127.0.0.1'
+port_http = 8080
+# Public domain, no scheme. Add port if not 443.
+pub_url = '$domain'
+proxy_mode = true
+trusted_proxies = ['127.0.0.1/32', '::1/128']
+
+[webauthn]
+# Changing later breaks registered passkeys
+rp_id = '$domain'
+# Port mandatory
+rp_origin = 'https://$domain:443'
+rp_name = 'Rauthy'
+EOF
+}
+
+post_install() {
+  systemd-sysusers rauthy.conf
+  systemd-tmpfiles --create rauthy.conf
+
+  local config=/etc/rauthy/config.toml
+  [[ -e $config ]] && return 0
+
+  local password domain
+  password=$(generate_admin_password)
+  domain="auth.$(detect_domain)"
+  install -m 640 -o root -g rauthy /dev/null "$config"
+  write_config "$(hash_password "$password")" "$domain" >"$config"
+
+  cat <<EOF
+
+==> Generated $config
+|    Bootstrap admin password: $password
+|    Shown only once. Change it after the first login: https://$domain/auth/v1/account
+|
+|    Before the first start, check $config:
+|      [bootstrap] admin_email  your admin address (only applied on first start)
+|      [server]    pub_url      public domain, preset to $domain
+|      [webauthn]  rp_id        same domain (changing it later breaks passkeys)
+|      [webauthn]  rp_origin    https://<domain>:443
+|    Rauthy listens on 127.0.0.1:8080 and expects a TLS reverse proxy in front.
+==> Then: systemctl enable --now rauthy
+
+EOF
+}

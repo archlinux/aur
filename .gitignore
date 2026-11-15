@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!rauthy.install
+!rauthy.service
+!rauthy.sysusers
+!rauthy.tmpfiles
