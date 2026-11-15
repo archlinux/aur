@@ -2,13 +2,13 @@
 # Prebuilt binary from the upstream GitHub release. The archive carries
 # baseline-x86-64 code (TRANSCRIBE_X86_CONSERVATIVE), not -march=native.
 pkgname=littera-bin
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Local voice dictation for Linux/Wayland (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/RouHim/littera"
 license=('MIT')
-depends=('glibc>=2.44' 'alsa-lib' 'vulkan-icd-loader' 'blas' 'cblas')
+depends=('glibc>=2.44' 'alsa-lib' 'vulkan-icd-loader' 'blas' 'cblas' 'wayland' 'libxkbcommon')
 optdepends=(
     'xdg-desktop-portal: bind the hotkey through the GlobalShortcuts portal'
     'pipewire: microphone capture through the ALSA plugin'
@@ -19,7 +19,7 @@ conflicts=('littera')
 install=littera-bin.install
 options=(!strip)
 source_x86_64=("$url/releases/download/v$pkgver/littera-$pkgver-x86_64.tar.gz")
-sha256sums_x86_64=('f089996c65c334028cb81bbb8f877a6b1f022732ea8467efedd47f72b1d4beb3')
+sha256sums_x86_64=('6f461aafb17aee7e2930a7b691685aa15ea8e501690e3d87aa9205a4795acbdf')
 
 package() {
     local src="$srcdir/littera-$pkgver-x86_64"
