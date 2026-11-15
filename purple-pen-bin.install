@@ -1,0 +1,21 @@
+# Install scriptlet for purple-pen-bin. Runs desktop/icon/MIME database updates
+# so the application and its .ppen file association appear immediately after
+# installation, and cleans up caches on removal.
+
+post_install() {
+    update-desktop-database -q >/dev/null 2>&1 || true
+    gtk-update-icon-cache -q -f /usr/share/icons/hicolor >/dev/null 2>&1 || true
+    update-mime-database -q /usr/share/mime >/dev/null 2>&1 || true
+    true
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    update-desktop-database -q >/dev/null 2>&1 || true
+    gtk-update-icon-cache -q -f /usr/share/icons/hicolor >/dev/null 2>&1 || true
+    update-mime-database -q /usr/share/mime >/dev/null 2>&1 || true
+    true
+}
