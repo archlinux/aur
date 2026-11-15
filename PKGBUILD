@@ -7,7 +7,7 @@
 
 pkgname=slate-bin
 _pkgname=slate
-pkgver=0.3.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Minimal, keyboard-first terminal note-taking scratchpad (prebuilt binary)"
 # The Release workflow publishes one Linux binary, and it is x86-64.
@@ -22,8 +22,8 @@ conflicts=('slate' 'slate-git')
 # the release asset is the binary on its own.
 source=("$_pkgname-$pkgver-linux-x86_64::$url/releases/download/v$pkgver/slate-linux-x86_64"
   "$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('480375acefb279183146d65f2cf3c6fb03311618ee9636b6c0bed72cdaa37f7a'
-            'ba7ce5b1caa0513dcd9d1025b2efc922bb670a3bf4f17c7b4c17643275e9b5fe')
+sha256sums=('11ed9d77d374dc967d68ad674034dfbc202696783face2e79412657ee1bf578a'
+            '00f03c0e0a8403578a64adf31d3f5c39bd135cddc306d3f773847a753c274667')
 
 package() {
   install -Dm755 "$srcdir/$_pkgname-$pkgver-linux-x86_64" "$pkgdir/usr/bin/$_pkgname"

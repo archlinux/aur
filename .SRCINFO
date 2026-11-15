@@ -1,6 +1,6 @@
 pkgbase = slate-bin
 	pkgdesc = Minimal, keyboard-first terminal note-taking scratchpad (prebuilt binary)
-	pkgver = 0.3.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/dborovcanin/slate
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = slate-bin
 	conflicts = slate
 	conflicts = slate-git
 	options = !debug
-	source = slate-0.3.0-linux-x86_64::https://github.com/dborovcanin/slate/releases/download/v0.3.0/slate-linux-x86_64
-	source = slate-0.3.0.tar.gz::https://github.com/dborovcanin/slate/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 480375acefb279183146d65f2cf3c6fb03311618ee9636b6c0bed72cdaa37f7a
-	sha256sums = ba7ce5b1caa0513dcd9d1025b2efc922bb670a3bf4f17c7b4c17643275e9b5fe
+	source = slate-0.8.1-linux-x86_64::https://github.com/dborovcanin/slate/releases/download/v0.8.1/slate-linux-x86_64
+	source = slate-0.8.1.tar.gz::https://github.com/dborovcanin/slate/archive/refs/tags/v0.8.1.tar.gz
+	sha256sums = 11ed9d77d374dc967d68ad674034dfbc202696783face2e79412657ee1bf578a
+	sha256sums = 00f03c0e0a8403578a64adf31d3f5c39bd135cddc306d3f773847a753c274667
 
 pkgname = slate-bin
