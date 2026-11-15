@@ -8,6 +8,7 @@ pkgbase = flightgear-git
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git
+	makedepends = nlohmann-json
 	makedepends = plib
 	makedepends = qt6-svg
 	makedepends = qt6-tools

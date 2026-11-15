@@ -29,7 +29,7 @@ depends=('dbus'
          'sqlite'
          'systemd-libs'
          'zlib')
-makedepends=('boost' 'cmake' 'git' 'plib' 'qt6-svg' 'qt6-tools')
+makedepends=('boost' 'cmake' 'git' 'nlohmann-json' 'plib' 'qt6-svg' 'qt6-tools')
 optdepends=('flightgear-data: Base data package'
             'osgxr: VR support')
 provides=("flightgear=${pkgver}")
