@@ -3,7 +3,7 @@
 # https://github.com/brokenpip3/my-pkgbuilds
 
 pkgname=falcosidekick
-pkgver=2.35.0
+pkgver=2.35.1
 pkgrel=4
 pkgdesc="Connect Falco to your ecosystem"
 backup=('etc/falcosidekick/config.yaml')
@@ -16,7 +16,7 @@ source_x86_64=(
     "config.yaml"
     "falcosidekick.service"
     )
-sha256sums_x86_64=('36ba9b9bd21268c82e597af2ce5c19dc6803634b1be8a5f370b20e0d32368329'
+sha256sums_x86_64=('3c4a89e8422c459c5e2af158ec7bfba4740ae1141b61a42b056b7fcc5b26df1a'
                    'd88456b95bd443c40ee6db866cb0784efb706c865caa4d8dc4f2ea982f9711b4'
                    'ff1b7c4485115b17d90751ddc8d548718dfe7a575bcfd75268493656196746d5')
 
