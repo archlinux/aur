@@ -1,0 +1,11 @@
+--- package/Makefile.orig	2026-11-15 09:56:53.429972681 -0800
++++ package/Makefile	2026-11-15 09:57:20.050476296 -0800
+@@ -14,7 +14,7 @@
+ 	install -d $(DESTDIR)$(LIB) $(DESTDIR)$(LIB)/ca
+ 	install $(FILES) pkgIndex.tcl $(DESTDIR)$(LIB)
+ 	install ca/*.pem $(DESTDIR)$(LIB)/ca
+-	c_rehash $(DESTDIR)$(LIB)/ca
++	openssl rehash $(DESTDIR)$(LIB)/ca
+ 	$(MAKE) -C helpers install
+ 	$(MAKE) -C fa_adept_codec install
+ 
