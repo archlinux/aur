@@ -8,11 +8,9 @@ arch=('any')
 url="https://github.com/husam212/microcontrol"
 license=('GPL-3.0-or-later')
 depends=(
-    'gtk3' 'networkmanager' 'bluez' 'bluez-utils' 'pipewire-pulse' 'brightnessctl'
-    'python' 'python-gobject' 'python-dbus'
-    'python-qrcode' 'python-setproctitle' 'python-pillow' 'python-psutil'
-    'power-profiles-daemon' 'gammastep'
-    'kanshi' 'wl-mirror'
+    'gtk3' 'networkmanager' 'bluez' 'bluez-utils' 'pipewire-pulse' 'brightnessctl' 'python'
+    'python-gobject' 'python-dbus' 'python-qrcode' 'python-setproctitle' 'power-profiles-daemon'
+    'python-psutil' 'python-pillow' 'python-pywayland' 'gammastep' 'wl-mirror'
 )
 makedepends=('git')
 provides=('microcontrol')
@@ -41,5 +39,5 @@ package() {
     install -Dm644 src/microcontrol.desktop "$pkgdir/usr/share/applications/microcontrol.desktop"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    install -Dm644 package/systemd/microcontrol-kanshi.service "$pkgdir/usr/lib/systemd/user/microcontrol-kanshi.service"
+    install -Dm644 package/systemd/microcontrol.service "$pkgdir/usr/lib/systemd/user/microcontrol.service"
 }
