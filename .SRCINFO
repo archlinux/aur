@@ -1,6 +1,6 @@
 pkgbase = venera-prime-bin
 	pkgdesc = A comic reader that support reading local and network comics. (Prime)
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/venera-app/venera-prime
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = venera-prime-bin
 	conflicts = venera
 	conflicts = venera-bin
 	options = !debug
-	source = https://github.com/venera-app/venera-prime/releases/download/v2.8.0/venera_2.8.0_amd64.deb
-	sha256sums = d25ae4088d4383a5132484c4d746131d46be73598ab0c2729bca23a29fd85983
+	source = https://github.com/venera-app/venera-prime/releases/download/v2.8.1/venera_2.8.1_amd64.deb
+	sha256sums = a86183e16d7b4afaf59d7576e02029f69eeff98f7eb069369e4388c550924e32
 
 pkgname = venera-prime-bin

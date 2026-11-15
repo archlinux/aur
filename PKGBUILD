@@ -2,7 +2,7 @@
 
 pkgname=venera-prime-bin
 pkgdesc="A comic reader that support reading local and network comics. (Prime)"
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/venera-app/venera-prime"
@@ -11,7 +11,7 @@ depends=('at-spi2-core' 'cairo' 'fontconfig' 'gcc-libs' 'glib2' 'glibc' 'gdk-pix
 conflicts=('venera' 'venera-bin')
 options=('!debug')
 source=("${url}/releases/download/v${pkgver}/venera_${pkgver}_amd64.deb")
-sha256sums=('d25ae4088d4383a5132484c4d746131d46be73598ab0c2729bca23a29fd85983')
+sha256sums=('a86183e16d7b4afaf59d7576e02029f69eeff98f7eb069369e4388c550924e32')
 
 package() {
     tar -I zstd -xf data.tar.zst --numeric-owner -C "${pkgdir}/"
