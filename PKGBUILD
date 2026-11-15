@@ -1,16 +1,18 @@
 # Maintainer: Omar Roth <roth@omar.yt>
 pkgname=doubletake-git
-pkgver=0.5.0.r0.ge18f85d
+pkgver=0.6.0.r0.gbe27776
 pkgrel=1
 pkgdesc='AirPlay mirroring sender for Linux (latest git commit)'
 arch=('x86_64')
 url='https://github.com/omarroth/doubletake'
 license=('LGPL-3.0-or-later')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'libfdk-aac')
 depends=(
+  'glib2'
   'glibc'
   'gstreamer'
   'gst-plugins-base'
+  'gst-plugins-base-libs'
   'gst-plugins-good'
   'gst-plugins-bad'
   'gst-plugins-ugly'
@@ -18,7 +20,9 @@ depends=(
   'libpulse'
 )
 optdepends=(
+  'libfdk-aac: AAC-ELD audio support'
   'gst-plugin-pipewire: Wayland screen and audio capture'
+  'gst-plugin-va: VA-API hardware encoding on AMD and Intel GPUs'
   'xdg-desktop-portal: Wayland capture portal integration'
 )
 provides=('doubletake')
@@ -26,10 +30,8 @@ conflicts=('doubletake' 'doubletake-bin')
 install='doubletake-git.install'
 source=(
   'git+https://github.com/omarroth/doubletake.git'
-  'doubletake.service'
 )
-sha256sums=('SKIP'
-            'bb51bea22f4a5a6264a509eea126fce8b7dd0de8f5127e77e6bee13a96193c84')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/doubletake"
@@ -44,7 +46,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOPATH="${srcdir}"
-  export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
+  export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
 
   make all
 }
@@ -54,10 +56,8 @@ package() {
 
   install -Dm755 bin/doubletake "${pkgdir}/usr/bin/doubletake"
   install -Dm755 bin/doubletake-ctl "${pkgdir}/usr/bin/doubletake-ctl"
-  install -Dm755 bin/doubletake-test-receiver "${pkgdir}/usr/bin/doubletake-test-receiver"
   install -Dm644 man/man1/doubletake.1 "${pkgdir}/usr/share/man/man1/doubletake.1"
   install -Dm644 man/man1/doubletake-ctl.1 "${pkgdir}/usr/share/man/man1/doubletake-ctl.1"
-  install -Dm644 man/man1/doubletake-test-receiver.1 "${pkgdir}/usr/share/man/man1/doubletake-test-receiver.1"
-  install -Dm644 "${srcdir}/doubletake.service" "${pkgdir}/usr/lib/systemd/user/doubletake.service"
+  make DESTDIR="${pkgdir}" PREFIX=/usr SYSTEMDUSERDIR=/usr/lib/systemd/user install-systemd
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
