@@ -1,12 +1,15 @@
 # Maintainer: Zachary Fogg <me@zfo.gg>
 pkgname=libasciichat
-pkgver=0.6.0
+pkgver=0.16.30
 pkgrel=1
 pkgdesc="Development libraries and documentation for ascii-chat"
 arch=('x86_64' 'aarch64')
 url="https://ascii-chat.com"
 license=('MIT')
-depends=('libsodium' 'mimalloc' 'opus' 'portaudio' 'sqlite3' 'zstd')
+depends=('ffmpeg' 'fontconfig' 'freetype2' 'fftw' 'icu' 'libsodium'
+         'libnghttp2' 'libnghttp3' 'libngtcp2' 'libuv' 'libutf8proc'
+         'libwebsockets' 'mimalloc' 'openssl' 'opus' 'pcre2' 'portaudio'
+         'sqlite3' 'zstd')
 makedepends=('tar')
 optdepends=(
   'ascii-chat: ascii-chat runtime'
@@ -23,10 +26,10 @@ source_x86_64=("$pkgname-$pkgver-Linux-amd64.tar.gz::https://github.com/zfogg/as
                "$pkgname-$pkgver-Linux-amd64.tar.gz.asc::https://github.com/zfogg/ascii-chat/releases/download/v$pkgver/$pkgname-$pkgver-Linux-amd64.tar.gz.asc")
 source_aarch64=("$pkgname-$pkgver-Linux-arm64.tar.gz::https://github.com/zfogg/ascii-chat/releases/download/v$pkgver/$pkgname-$pkgver-Linux-arm64.tar.gz"
                 "$pkgname-$pkgver-Linux-arm64.tar.gz.asc::https://github.com/zfogg/ascii-chat/releases/download/v$pkgver/$pkgname-$pkgver-Linux-arm64.tar.gz.asc")
-sha256sums_x86_64=('3f6beaa4d140481b7b04bdff875e815d12189ecbfa4a44518d472b98aefbcb5e'
-                   'e35baf0410d849bdfc1d857b7c0c2d5e159db1d3f495fdc537411192c066f9fb')
-sha256sums_aarch64=('3788f856ffaa11720a0083909c45234be632643a230c3c25a8dfa017b1083606'
-                    '0a532a6fe3f5d909d427e74567fa6c36775f28772778a5e3b3ee98d14fba60f4')
+sha256sums_x86_64=('03de704b784f39a9e66fbf9950ac624c37824738be9d27bb8b45cbb32a04f449'
+                   '9da269d658fd87eae59792a8aaa31b66e989abb96d59840501fc490e9fc4ec61')
+sha256sums_aarch64=('6685a147a3ea3b0b8e6dc8495cdd20030c2ea78ad7887dafdb7d88416d3a5911'
+                    'b2f691ab213ca841115498870739f83620319de279986f802730c392ee767a9b')
 
 package() {
   # Create directory structure
