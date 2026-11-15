@@ -1,13 +1,13 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine
-pkgver=0.16.1
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
 license=('BSD-2-Clause')
-makedepends=(clang cmake git libc++ rust)
+makedepends=(clang cmake git jq libc++ rust)
 depends=(
 	gcc-libs
 	glibc
@@ -16,6 +16,7 @@ depends=(
 	mesa
 	opus
 	wayland
+	xorg-xwayland
 )
 provides=(moonshine)
 conflicts=(moonshine)
@@ -24,11 +25,14 @@ options=(!lto)
 source=(
 	"https://github.com/hgaiser/moonshine/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('d991a15aeec19129b040cd3f4dabe6f48ead56b5123e6c70e23ac225e8bf3387')
+sha256sums=('31510bf66e097c0773d4c448d5db6347c63d16f04263da830eda3fc05f8dbba6')
 
 build() {
 	cd "$srcdir/moonshine-$pkgver"
 	cargo build --release --workspace
+	# ferriscope's WSI layer, built from the ferriscope version in Cargo.lock
+	# (the script clones its git tag; the layer is not on crates.io).
+	DESTDIR="$srcdir/wsi" dist/install-wsi.sh
 }
 
 package() {
@@ -38,11 +42,8 @@ package() {
 	install -Dm755 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 dist/moonshine@.service "$pkgdir/usr/lib/systemd/system/moonshine@.service"
 	install -Dm644 dist/60-moonshine.rules "$pkgdir/usr/lib/udev/rules.d/60-moonshine.rules"
-	install -Dm644 dist/VkLayer_moonshine_wsi.json "$pkgdir/usr/share/vulkan/implicit_layer.d/VkLayer_moonshine_wsi.json"
-	install -Dm755 target/release/libmoonshine_wsi.so "$pkgdir/usr/lib/moonshine/vulkan-layers/libmoonshine_wsi.so"
 	install -Dm644 dist/moonshine-modules.conf "$pkgdir/usr/lib/modules-load.d/moonshine.conf"
 	install -Dm644 dist/50-moonshine-inhibit-sleep.rules "$pkgdir/usr/share/polkit-1/rules.d/50-moonshine-inhibit-sleep.rules"
 	install -Dm644 dist/moonshine-sysusers.conf "$pkgdir/usr/lib/sysusers.d/moonshine.conf"
-	install -Dm644 dist/VkLayer_moonshine_wsi.json "$pkgdir/usr/share/vulkan/implicit_layer.d/VkLayer_moonshine_wsi.json"
-	install -Dm755 target/release/libmoonshine_wsi.so "$pkgdir/usr/lib/moonshine/vulkan-layers/libmoonshine_wsi.so"
+	cp -a "$srcdir/wsi/usr" "$pkgdir/"
 }
