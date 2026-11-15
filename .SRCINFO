@@ -1,6 +1,6 @@
 pkgbase = virsh-tui-bin
 	pkgdesc = Keyboard-driven terminal UI for libvirt/virsh with vim keys and live graphs (static binary)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/SyscallBrain/virsh-tui
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = virsh-tui-bin
 	conflicts = virsh-tui
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/SyscallBrain/virsh-tui/releases/download/v0.3.0/virsh-tui-0.3.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 9dccc9a2eb4e34daf5bfae870862c3e734f98f31e0aee48d4f5a44f2dd97eee5
-	source_aarch64 = https://github.com/SyscallBrain/virsh-tui/releases/download/v0.3.0/virsh-tui-0.3.0-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 21bae3f24347885a9c9319dfbb1e782118c144b6b91958dd13afa9b8d706d8f9
+	source_x86_64 = https://github.com/SyscallBrain/virsh-tui/releases/download/v0.3.1/virsh-tui-0.3.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 6be33c058260ac0d186ad0a49e22663c8351ca87a30a204253cc244905d3051a
+	source_aarch64 = https://github.com/SyscallBrain/virsh-tui/releases/download/v0.3.1/virsh-tui-0.3.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = e91ee879d5f3c47a11383c02ec8eb9c6d44efd1e78560779b537d583ee1332c7
 
 pkgname = virsh-tui-bin
