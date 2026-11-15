@@ -22,7 +22,7 @@ done
 release_version() {
     # Keep the upstream string unchanged; reject versions invalid for makepkg.
     jq -er '
-    linuxApp.version
+    .linuxApp.version
     | select(type == "string")
     | select(test("^[A-Za-z0-9_+][A-Za-z0-9._+]*$"))
   ' "$@"
