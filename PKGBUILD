@@ -10,12 +10,12 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${pkgname}"
 license=('GPL-2.0')
 
-provides=("${pkgname}")
+provides=("${_pkgname}")
 
 makedepends=('make' 'gcc')
 depends=('glibc')
 
-source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${_pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('4d6eb16618178fbd79c0eeceed31606c512d9528f852ff39b16e03eea1d2561b')
 
 
