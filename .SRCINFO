@@ -1,0 +1,15 @@
+pkgbase = tuigram
+	pkgdesc = Terminal UI client for Telegram
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/leonid-shutov/tuigram
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=26.4.0
+	noextract = tuigram-1.4.1.tgz
+	source = https://registry.npmjs.org/tuigram/-/tuigram-1.4.1.tgz
+	sha256sums = fe47c67636fa52e00a7d9edffdf68f647fb82933e0dcbd6f434ac74bf354bf33
+
+pkgname = tuigram
