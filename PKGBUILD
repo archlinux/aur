@@ -4,14 +4,14 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=simgear-git
-pkgver=2024.2.0r6571.a630ad75
+pkgver=2024.2.0r6866.428f484c
 pkgrel=1
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
 arch=('x86_64')
-url="https://www.flightgear.org/"
-license=('GPL')
-depends=('glu' 'glut' 'freealut' 'plib' 'openscenegraph')
-makedepends=('boost' 'cmake' 'git' 'mesa')
+url="https://gitlab.com/flightgear/simgear"
+license=('LGPL-2.0-only')
+depends=('c-ares' 'curl' 'expat' 'ffmpeg' 'glibc' 'libgcc' 'libglvnd' 'libstdc++' 'openal' 'flightgear-openscenegraph-git' 'xz' 'zlib')
+makedepends=('boost' 'boost-libs' 'cmake' 'git')
 provides=("simgear=${pkgver}")
 conflicts=('simgear')
 source=("simgear::git+https://gitlab.com/flightgear/simgear.git")
@@ -26,24 +26,19 @@ pkgver() {
 }
 
 build() {
-  mkdir -p "$srcdir"/sgbuild
-  cd "$srcdir"/sgbuild
-  cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DSIMGEAR_SHARED=ON \
-    -DENABLE_TESTS=OFF \
-    ../simgear
-  make
-}
-
-prepare() {
-  cd simgear
-  # patch -p1 < ../../simgear-osg.patch # Fix build with openscenegraph 3.6.5
-  patch -p1 < ../../0001-remove_boost_lexical.patch
-  patch -p1 < ../../0002-remove_boost_containers.patch
+  local cmake_options=(
+    -B build
+    -D CMAKE_BUILD_TYPE=Release
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D ENABLE_TESTS=OFF
+    -D SIMGEAR_SHARED=ON
+    -D SYSTEM_EXPAT=ON
+    -S simgear
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir"/sgbuild
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
