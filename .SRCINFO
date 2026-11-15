@@ -1,0 +1,22 @@
+pkgbase = whatsatui
+	pkgdesc = Personal WhatsApp terminal client with a cyan Ratatui interface
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/wuzi/whatsatui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	optdepends = mpv: voice-message and video playback
+	optdepends = ffmpeg: GIF previews
+	optdepends = xdg-utils: open links and downloaded files
+	optdepends = wl-clipboard: Wayland copy/paste
+	optdepends = xclip: X11 copy/paste
+	optdepends = xsel: X11 copy/paste alternative
+	source = whatsatui-0.2.0.tar.gz::https://github.com/9M2PJU/whatsatui/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = b28743cfc831f781e82cbf84858ee481af9e4222e7032301fdbf250f5314b337
+
+pkgname = whatsatui
