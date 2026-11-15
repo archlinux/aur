@@ -1,0 +1,69 @@
+# Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
+# Unofficial package of GapGPT desktop (with the bundled GapCode agent)
+# GapGPT all rights reserved ©
+
+pkgname=gapgpt-desktop-bin
+pkgver=1.3.22
+pkgrel=1
+pkgdesc="GapGPT desktop AI workspace with a local GapCode agent server (unofficial package)"
+arch=('x86_64' 'aarch64')
+url="https://gapgpt.app"
+# The app is proprietary (metainfo: LicenseRef-proprietary); Electron is MIT.
+license=('LicenseRef-gapgpt' 'MIT')
+# Direct ELF dependencies of the Electron binary and the bundled node, plus
+# bubblewrap (GapCode sandboxes the commands it runs) and libsecret
+# (Electron safeStorage).
+depends=(
+  'alsa-lib' 'at-spi2-core' 'bubblewrap' 'cairo' 'dbus' 'expat' 'glib2' 'glibc'
+  'gtk3' 'libcups' 'libgcc' 'libsecret' 'libstdc++' 'libx11' 'libxcb'
+  'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon'
+  'libxrandr' 'mesa' 'nspr' 'nss' 'pango' 'systemd-libs'
+)
+optdepends=(
+  'python-gobject: computer use (desktop accessibility via AT-SPI)'
+  'xdotool: computer use on X11'
+  'libappindicator-gtk3: tray icon'
+  'xdg-utils: open links in the default browser'
+)
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+# Prebuilt Electron app: nothing to strip, no debug info.
+options=('!strip' '!debug')
+# https://gapgpt.app/releases/gapgpt-desktop.deb always points at the latest
+# build, so use the versioned files listed in the updater feeds instead:
+#   curl -s https://gapgpt.ir/releases/app/desktop/latest-linux.yml
+#   curl -s https://gapgpt.ir/releases/app/desktop/latest-linux-arm64.yml
+# Those feeds publish sha512 (base64); convert with: base64 -d | xxd -p -c64
+_base=https://gapgpt.ir/releases/app/desktop
+source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_base}/linux/${pkgver}/GapGPT_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_base}/linux-arm64/${pkgver}/GapGPT_${pkgver}_arm64.deb")
+sha512sums_x86_64=('fa4a2f93e072752c26e1797ad5eb461fea626cf22b959b26eef8ffaa42ab12eea007231d771d04aa33a85d88922351019acbba0f4cbf5cab51b0f9ef7720e512')
+sha512sums_aarch64=('54e0852965fc25d564ac267d458d9ca24aadf941f144f26f20817eef61d51d084730969aa0e9a81ab19051a53316f2dfd71c20402ac03eb9b798e75f5254824d')
+noextract=("${pkgname}-${pkgver}-${CARCH}.deb")
+
+package() {
+  bsdtar -xOf "${pkgname}-${pkgver}-${CARCH}.deb" data.tar.gz | bsdtar -xpf - -C "$pkgdir"
+
+  local _app=/opt/GapGPT _res=/opt/GapGPT/resources
+
+  # The .deb ships group-writable dirs and a world-writable chrome-sandbox.
+  find "$pkgdir" -type d -exec chmod 755 {} +
+  chmod -R go-w "$pkgdir"
+  # The vendor's postinst makes chrome-sandbox setuid root. Arch kernels allow
+  # unprivileged user namespaces, which Chromium's sandbox uses instead.
+  chmod 755 "$pkgdir$_app/chrome-sandbox"
+
+  # "deb" makes electron-updater try to install updates with dpkg/apt. Without
+  # it, the native updater stays off; update through pacman instead.
+  rm -f "$pkgdir$_res/package-type"
+
+  # Debian-only changelog.
+  rm -rf "$pkgdir/usr/share/doc"
+
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s "$_app/gapgpt" "$pkgdir/usr/bin/gapgpt"
+
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "$_app/LICENSE.electron.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.electron.txt"
+  ln -s "$_app/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
+}
