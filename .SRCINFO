@@ -1,28 +1,19 @@
 pkgbase = percolator-git
-	pkgdesc = Software for postprocessing of shotgun proteomics data + format converters
-	pkgver = 3.07
-	pkgrel = 1
-	url = http://percolator.ms/
+	pkgdesc = Percolator and qvality, two post processors for shotgun proteomics data
+	pkgver = 3.08.r264.ga90106b
+	pkgrel = 2
+	url = https://percolator.ms/
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
-	makedepends = xsd
-	makedepends = libxsd
 	makedepends = cmake
-	makedepends = zlib
-	depends = xerces-c
-	depends = sqlite
-	depends = libtirpc-compat
-	depends = boost
-	source = source::git+https://github.com/percolator/percolator
-	md5sums = SKIP
+	depends = gcc-libs
+	depends = libgomp
+	provides = percolator
+	conflicts = percolator
+	conflicts = percolator-converters
+	conflicts = percolator-converters-git
+	source = percolator-git::git+https://github.com/percolator/percolator#branch=master
+	sha256sums = SKIP
 
 pkgname = percolator-git
-	pkgdesc = Percolator and qvality, two post processors for shotgun proteomics data.
-	provides = percolator-converters-git
-	conflicts = percolator-converters-git
-
-pkgname = percolator-converters-git
-	pkgdesc = Parsers of different database search engines to percolator input format.
-	provides = percolator-converters-git
-	conflicts = percolator-converters-git
