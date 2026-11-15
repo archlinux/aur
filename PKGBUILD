@@ -2,7 +2,7 @@
 
 pkgname=pi-ext-claude-bridge
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Claude Pro/Max subscription provider for the Pi coding agent, routed through the official Claude Code CLI'
 arch=('any')
 url='https://github.com/elidickinson/pi-claude-bridge'
@@ -14,7 +14,7 @@ install="${pkgname}.install"
 # Pi loads a directory's subdirectories only when that directory is itself listed
 # in settings.json, so every pacman-installed extension shares this one root and
 # the user writes the line once.
-_pi_pkgroot=/usr/lib/pi/packages
+_pi_pkgroot=/usr/share/pi/extensions
 _piname=pi-claude-bridge
 _npmname=pi-claude-bridge
 
