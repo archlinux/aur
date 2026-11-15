@@ -5,7 +5,7 @@
 
 pkgname=pob-redux-bin
 _pkgname=pob-redux
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="Path of Building for Path of Exile 1 and 2, rebuilt"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source=("LICENSE-$pkgver::https://raw.githubusercontent.com/pobredux/pob-redux/v
 source_x86_64=("$_pkgname-$pkgver-x86_64.deb::https://github.com/pobredux/pob-redux/releases/download/v$pkgver/PoB.Redux_${pkgver}_amd64.deb")
 source_aarch64=("$_pkgname-$pkgver-aarch64.deb::https://github.com/pobredux/pob-redux/releases/download/v$pkgver/PoB.Redux_${pkgver}_arm64.deb")
 sha256sums=('1724147fdca0d7d5be9f05217865af65e595ff3d17c8bcbd58683fe23e8909f7')
-sha256sums_x86_64=('f5a5e96e8fee3d492490b0e608a30307285eb451402539bed74709b6f638e721')
-sha256sums_aarch64=('14dc52e8de0d7b4ce64262e0da560ca7f3b53fd95b011a1db6d400aab358b389')
+sha256sums_x86_64=('ef285fc94dfa1590715cee1e381a5b868fd11f9cf4b648fa83ecbf78ec17175a')
+sha256sums_aarch64=('66bd1f915b5fe8f560768e9c60e8faf3d177cc04d5195c7ff98b824ccf534de5')
 
 package() {
   bsdtar -xf data.tar.* -C "$pkgdir"
