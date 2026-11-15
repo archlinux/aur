@@ -2,7 +2,7 @@
 
 pkgname=iptvorg-epg-git
 _pkgname=iptvorg-epg
-pkgver=2026.06.27.g148cbabaf
+pkgver=2026.11.15.g6530f23d3
 pkgrel=1
 pkgdesc="Utilities for downloading the Electronic Program Guide for thousands of TV channels from hundreds of sources (git version)"
 arch=('x86_64')
