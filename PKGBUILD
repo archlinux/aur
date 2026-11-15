@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=onair-bin
 _pkgname="${pkgname%-bin}"
-pkgver=4.1.0 # renovate: datasource=github-releases depName=adswill/OnAir
+pkgver=4.2.0 # renovate: datasource=github-releases depName=adswill/OnAir
 pkgrel=1
 pkgdesc="SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR"
 arch=('x86_64' 'aarch64')
@@ -36,5 +36,5 @@ package() {
   find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
-sha256sums_x86_64=('ff9b852bd2339eafd8009748f995315bb28915b7c807fb36c46861b4b161892f')
-sha256sums_aarch64=('01ab6a364d01c209fa5efc0ee765adcc265b9582e03c9496af2318e0fe516ecc')
+sha256sums_x86_64=('a675ec26c26aa106126208eaec91534b792f8c577a90ad9cf947a67c3b61d13e')
+sha256sums_aarch64=('6860d8a9d09bcfbf270b8e0d0d93db238dafd3647d52eeaf012c22dbadf4dd50')
