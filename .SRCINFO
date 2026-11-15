@@ -1,6 +1,6 @@
 pkgbase = omnidb-bin
 	pkgdesc = OmniDB Desktop Application
-	pkgver = 5.5.0
+	pkgver = 5.5.1
 	pkgrel = 1
 	url = https://www.omnidb.net/
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = omnidb-bin
 	conflicts = omnidb-server-bin
 	options = !strip
 	options = !debug
-	source = omnidb-bin-5.5.0.tar.gz::https://github.com/heptau/omnidb/releases/download/v5.5.0/OmniDB-linux-x64.tar.gz
+	source = omnidb-bin-5.5.1.tar.gz::https://github.com/heptau/omnidb/releases/download/v5.5.1/OmniDB-linux-x64.tar.gz
 	source = omnidb-bin-LICENSE::https://raw.githubusercontent.com/heptau/omnidb/refs/heads/master/LICENSE
 	source = omnidb.png::https://raw.githubusercontent.com/heptau/omnidb/master/wails-app/build/appicon.png
-	sha256sums = d894a9f8b921ce63fd142683cc0d82d49ac614517cbdb0eab0bdf2dc9c6cc5fa
+	sha256sums = 0f8e298db59a3c5f2804165589cfda922892a95e3bce14c26a4733b5c1841ef5
 	sha256sums = f0d93a9344e68bfd296783b282d1fec6971a063ce44ced52f7dbd426ec68e4b6
 	sha256sums = 3e4202f15cda411ca517f31bcdbdc95530c28fc9f398ae3c0d22112ca1cece69
 
