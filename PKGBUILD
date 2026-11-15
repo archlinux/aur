@@ -1,7 +1,7 @@
 # Maintainer: Dwi Asmoro Bangun <dwiaceromo@gmail.com>
 _pkgname=cwc
 pkgname="$_pkgname-git"
-pkgver=r269.8f44ca9
+pkgver=r283.dee9daf
 pkgrel=1
 pkgdesc='Extensible Wayland compositor with dynamic window management'
 arch=('x86_64')
@@ -35,7 +35,7 @@ makedepends=(
 optdepends=(
   'brightnessctl: Default brightness controller in the configuration'
   'copyq: Default clipboard manager'
-  'rofi-wayland: Default application launcher'
+  'rofi: Default application launcher'
   'playerctl: Default media player controller'
   'swaybg: Default wallpaper'
   'swayidle: Default idle daemon'
