@@ -5,7 +5,7 @@
 # Contributor: chenx_dust <chenx_dust@outlook.com>
 
 pkgname=clash-rs-bin
-pkgver=0.10.11
+pkgver=0.10.12
 pkgrel=1
 pkgdesc="A custom protocol, rule based network proxy software"
 arch=(x86_64 armv7h aarch64 i686)
@@ -27,10 +27,10 @@ source_i686=("${pkgname}-i686-${pkgver}::${url}/releases/download/v${pkgver}/cla
 sha256sums=('64c1b08fe40af101b5a113212e28aec7e91f63424bec85d50efc5b0fc9ce62ce'
             'c1629d3f5b48053616141076ad8d21031fbca84a352b123d9e3c5bad6406f4a7'
             'd6f1782c0a57591ef6b8c4c898fc7a883363ec45742ae41eee8b91eb68d90f05')
-sha256sums_x86_64=('0d9347a34906f9722787e6ef93b479e31c353c7d09e2e33235a5ecd2c6f605ca')
-sha256sums_armv7h=('1ff28beab6e05f98ecdf92cd00f0a88a377433fa2a152a1f35539bb97d9696d7')
-sha256sums_aarch64=('3a369b6e3cb99bc4fdceb273a2509527a0717d21221c3e8389ee8b820435eeef')
-sha256sums_i686=('a260a4b41c58ad8b6e8f0eed24e1fa1cf381fcdc20753dff416ed211e148075a')
+sha256sums_x86_64=('1df38d5ba091b09054e8676fde5d6d155252fd15a37f67a0cf13cea36b1b8a21')
+sha256sums_armv7h=('ada28f604cabad993f01d62e2d9cf619cdb1a04877edbc73433fb5b8c0dbf124')
+sha256sums_aarch64=('63560bdd279544b8715ef669b381ecedeb2c5694cb2ec2584d3beeb7490c8567')
+sha256sums_i686=('5f303a13c28a1222a0850d1151380476a33be9b5d4f1047eddf7b887ecc78d80')
 
 package() {
     install -Dm755 "${pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/clash-rs"
