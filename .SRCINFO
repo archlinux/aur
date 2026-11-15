@@ -1,7 +1,7 @@
 pkgbase = purple-pen-bin
 	pkgdesc = Course setting program for orienteering races (prebuilt AppImage, 4.0.0 beta 2)
 	pkgver = 4.0.0.beta2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://purple-pen.org
 	install = purple-pen-bin.install
 	arch = x86_64

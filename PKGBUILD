@@ -12,7 +12,7 @@
 
 pkgname=purple-pen-bin
 pkgver=4.0.0.beta2
-pkgrel=1
+pkgrel=2
 pkgdesc="Course setting program for orienteering races (prebuilt AppImage, 4.0.0 beta 2)"
 arch=(x86_64)
 url="https://purple-pen.org"
@@ -62,7 +62,14 @@ package() {
     cp -a "$_root/usr/share/pixmaps" "$pkgdir/usr/share/"
 
     # --- Desktop entry ---
-    install -Dm644 "$_root/usr/share/applications/$_prefix.desktop" \
+    # The AppImage's copy carries an X-AppImage-Version= key that upstream adds
+    # only to the AppDir side (EXTRA_DESKTOP_KEYS) and not to the .deb/.rpm
+    # install, so it is blanked to leave the desktop entry byte-identical to the
+    # source-built purple-pen / purple-pen-git packages (which render it from
+    # upstream's purplepen.desktop.template, leaving an empty line there).
+    sed 's|^X-AppImage-Version=.*$||' "$_root/usr/share/applications/$_prefix.desktop" \
+        >"$srcdir/$_prefix.desktop"
+    install -Dm644 "$srcdir/$_prefix.desktop" \
         "$pkgdir/usr/share/applications/$_prefix.desktop"
 
     # --- AppStream metainfo (AppImage names it *.appdata.xml) ---
