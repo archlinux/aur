@@ -1,0 +1,39 @@
+pkgbase = jiralike
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bokic/jiralike
+	arch = x86_64
+	arch = i686
+	license = LGPL-3.0-only
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = fcgi
+	makedepends = json-c
+	makedepends = sqlite
+	makedepends = cpp_ws_backend
+	options = !debug
+	source = jiralike-0.1.0.tar.gz::https://github.com/bokic/jiralike/archive/refs/tags/0.1.0.tar.gz
+	sha512sums = 380210ab54a610e0dc6e9d6d48147e0d0031da148b8bddb53d3d9f936cc59b9039edbcb6a78ffc7704e213eb6f7be33148a6281590d54600c6c2ad575058843a
+
+pkgname = jiralike
+	pkgdesc = Jira-like project management FastCGI backend written in C++23 with automatic SQLite migrations
+	depends = glibc
+	depends = libstdc++
+	depends = libgcc
+	depends = fcgi
+	depends = json-c
+	depends = sqlite
+	depends = cpp_ws_backend
+
+pkgname = jiralike-config-nginx
+	pkgdesc = Nginx configuration for jiralike Angular SPA and FastCGI backend
+	arch = any
+	depends = nginx
+	depends = jiralike-fe
+
+pkgname = jiralike-fe
+	pkgdesc = JiraLike Angular Single-Page Application frontend
+	arch = any
+	depends = jiralike
