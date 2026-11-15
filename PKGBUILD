@@ -2,8 +2,8 @@
 
 pkgname=metrolist-desktop-bin
 pkgver=14.0.0
-pkgrel=2
-pkgdesc="YouTube Music client for desktop"
+pkgrel=3
+pkgdesc="YouTube Music client for desktop (Stable)"
 arch=('x86_64')
 url="https://github.com/MetrolistGroup/Metrolist"
 license=('GPL-3.0-or-later')
