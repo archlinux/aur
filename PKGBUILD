@@ -2,7 +2,7 @@
 # Maintainer: Gaurav Gosain <itsgauravgosain@gmail.com>
 
 pkgname='tuios-bin'
-pkgver=0.12.1
+pkgver=0.13.1
 pkgrel=1
 pkgdesc='Terminal UI Operating System - A terminal-based window manager with tmux-style keybindings'
 url='https://github.com/Gaurav-Gosain/tuios'
@@ -12,16 +12,16 @@ provides=('tuios')
 conflicts=('tuios')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('4f1b39c2ec58c057f7bc6298d558f690336031fc564d80ee38d950f1ecbd2753')
+sha256sums_aarch64=('5b17a102285614102136c21c1b43d39b2a85606900676576eeb9f5e68bde548f')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('09ca44438631a99fe511fed3d87caf8a3b99db80defc02fad4fa90307ad43368')
+sha256sums_armv7h=('a11db614ab5ca7738f9ac39f595d254453cbaa6af33f5d771f713c2f642bc40f')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios_${pkgver}_Linux_i386.tar.gz")
-sha256sums_i686=('0eb75571d118e0185dbe6e8a64c0bed4d6461d25538d45564de6abe7d9abe93d')
+sha256sums_i686=('1e95402a736574d7126a0d26c1acaefb463acc2baf93b9c46b050d43164c1311')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('4f68bac6e05d826b8c59b671b565c61b859dacedcb5d889160ba6d8624589b50')
+sha256sums_x86_64=('c2cd5a5b9a025f9c94d0192547718e088849a8fc94ad4cfd2c382bcf5714bf6b')
 
 package() {
   # bin
