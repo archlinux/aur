@@ -1,6 +1,6 @@
 # Maintainer: Qiusheng Wu <giswqs at gmail dot com>
 pkgname=terrio-bin
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Pure-Rust geospatial raster and vector data I/O: the terrio command (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('terrio')
 conflicts=('terrio')
 source_x86_64=("https://github.com/opengeos/terrio/releases/download/v${pkgver}/terrio-cli-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("https://github.com/opengeos/terrio/releases/download/v${pkgver}/terrio-cli-v${pkgver}-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('25955b9789c00af0a0566f01256575993cc02374224a608a33840046a8548ec6')
-sha256sums_aarch64=('ba60c0682a5b8beb7939e1ab02b13ae5afb231575f4e7f5be2d256d7e8b01f8b')
+sha256sums_x86_64=('b0ffbb78b21e648fa310d6555c18f0fd4df28ebdddc0f2b77db8333d02124c9d')
+sha256sums_aarch64=('5895ac80e54e2d503f6ef510236a57c1d2afafaa76841e791816685ae70a2010')
 
 package() {
   cd "terrio-cli-v${pkgver}-${CARCH}-unknown-linux-musl"
