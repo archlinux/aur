@@ -1,6 +1,6 @@
 pkgbase = manifold-steam
 	pkgdesc = Bulk-manage Steam launch options and Proton compatibility
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/yasen-pavlov/manifold
 	install = manifold-steam.install
@@ -13,7 +13,7 @@ pkgbase = manifold-steam
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libayatana-appindicator
-	source = manifold-steam-0.4.0.tar.gz::https://github.com/yasen-pavlov/manifold/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = fd354ab7ddbb881a892d94bba3bb8e5369e04830394f0d75309c8a8816243b0a
+	source = manifold-steam-0.4.1.tar.gz::https://github.com/yasen-pavlov/manifold/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 452465f711f05c28cf546e9a6fff802f69cf68420bba312743649ca8a0a916dd
 
 pkgname = manifold-steam
