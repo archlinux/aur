@@ -3,7 +3,7 @@
 _pkgname=celestia
 pkgname=${_pkgname}-bin
 pkgver=1.7.0
-pkgrel=42
+pkgrel=43
 pkgdesc="Real-time space simulation"
 arch=('x86_64')
 url="https://celestiaproject.space/"
@@ -19,7 +19,7 @@ _archive_extension="pkg.tar.zst"
 _celestia_ui="qt6"
 
 _version_cspice="67-8.1"
-_version_celestia_app="git20261111+7b1a8da-1.1"
+_version_celestia_app="git20261114+43e0bf5-2.1"
 _version_celestia_data="git20261108+457e4ee-2.1"
 
 source=(
@@ -39,9 +39,9 @@ sha256sums=('641798f5720e7a9164978105cdabf109f40f0711a60cef1b944a2f0a56a1728c'
             '861ac7a3171e25b72f8d82b450783f920176994a916d456b22a3b64f26e7676e'
             '86a9a28ee035e248bba82c44988e62d0d12d91c9033323f9161afd7a6d09a0e1'
             'b60e1be6ebea01bf914fb4d3f8a392c256509d038a22c90abbd264d94e86b8a5')
-sha256sums_x86_64=('62607749b0fbca83bae8a4dfe1999046a639fe8614b2cb0b9352664fb3d31a07'
-                   '2cf1eacf719488b7dcae14bf02459202117bad79cd27cfbf95adb9cad20e3248'
-                   '329a0bec22b5d9b32154b1ea9103c4d30e4a779987eb59b9a80ad22c2a00fc54'
+sha256sums_x86_64=('eaa370148610ca655c1a4df30476c5898065e3a057942606edc1a24a37b24ae6'
+                   'fa665df79fb0652d9dd9857c43c976acc53db5f8af97dafa29ae515660c7b74f'
+                   '40c706693650442e1176f5fe469d75437cd1e03a3db8497dfb6cfae314dee3a5'
                    'e3eb5183d0d37f169567f3f7e1a2b1c8a2c5d31d1878bfc9eb356420345c0eaa')
 
 
