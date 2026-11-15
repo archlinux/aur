@@ -2,7 +2,7 @@
 
 _name=livekit-api
 pkgname=python-$_name
-pkgver=1.2.3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Python Server API for LiveKit.'
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=('python-hatchling'
              'python-installer')
 checkdepends=('python-pytest')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/api-v$pkgver.tar.gz")
-sha256sums=('86d393b465bb828121418787e4c2d7024ea4152e849212f7d9e015ab1395144d')
+sha256sums=('a31236663cf6b6bb6731c42e49688d4c4a77afe51386c18579669dd614d8f6bf')
 
 build() {
   cd "python-sdks-${_name//livekit-/}-v$pkgver"
