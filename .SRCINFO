@@ -1,7 +1,7 @@
 pkgbase = manggo
 	pkgdesc = Desktop translation and screenshot OCR assistant
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://manggo.pylogmon.cn/
 	arch = x86_64
 	arch = aarch64
@@ -25,7 +25,7 @@ pkgbase = manggo
 	depends = libxkbcommon-x11
 	depends = libxrandr
 	depends = mesa
-	depends = openssl
+	depends = openssl-3
 	depends = shared-mime-info
 	depends = wayland
 	depends = xcb-util

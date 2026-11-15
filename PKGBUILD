@@ -4,7 +4,7 @@
 
 pkgname=manggo
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop translation and screenshot OCR assistant'
 arch=('x86_64' 'aarch64')
 url='https://manggo.pylogmon.cn/'
@@ -28,7 +28,7 @@ depends=(
   'libxkbcommon-x11'
   'libxrandr'
   'mesa'
-  'openssl'
+  'openssl-3'
   'shared-mime-info'
   'wayland'
   'xcb-util'
