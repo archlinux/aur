@@ -1,7 +1,7 @@
 pkgbase = pi-ext-goal
 	pkgdesc = Autonomous goal loop for the Pi coding agent: keeps working until the goal is verified complete
 	pkgver = 0.55.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/narumiruna/pi-extensions
 	install = pi-ext-goal.install
 	arch = any

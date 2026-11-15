@@ -2,7 +2,7 @@
 
 pkgname=pi-ext-goal
 pkgver=0.55.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Autonomous goal loop for the Pi coding agent: keeps working until the goal is verified complete'
 arch=('any')
 url='https://github.com/narumiruna/pi-extensions'
@@ -10,7 +10,7 @@ license=('MIT')
 install="${pkgname}.install"
 makedepends=('npm')
 
-_pi_pkgroot=/usr/lib/pi/packages
+_pi_pkgroot=/usr/share/pi/extensions
 _piname=pi-goal
 _npmname=@narumitw/pi-goal
 _tarball=pi-goal
