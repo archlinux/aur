@@ -3,7 +3,7 @@
 _pkgname=qmp3gain
 pkgname="${_pkgname}-git"
 _gitname="${_pkgname}"
-pkgver=0.9.5+36.r167.20260221.fd087e9
+pkgver=0.9.7.r153.20261030.542fc68
 pkgrel=1
 pkgdesc='User interface front end supporting famous MP3Gain engine which analyzes and losslessly adjusts MP3 files to a specified target volume.'
 url='https://sourceforge.net/projects/qmp3gain/ '
@@ -20,7 +20,6 @@ depends=(
 makedepends=(
   'git'
   'make'
-  'zopflipng-parallel'
   'qt5-base'  # For `qmake-qt5`
   'qt5-tools' # For `qhelpgenerator`
 )
@@ -81,8 +80,6 @@ build() {
 
   qmake-qt5
   make
-
-  zopflipng-parallel -m -- "resources/linux/icons/hicolor"/*/*.png
 }
 
 package() {

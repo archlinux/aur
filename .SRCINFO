@@ -1,6 +1,6 @@
 pkgbase = qmp3gain-git
 	pkgdesc = User interface front end supporting famous MP3Gain engine which analyzes and losslessly adjusts MP3 files to a specified target volume.
-	pkgver = 0.9.5+36.r167.20260221.fd087e9
+	pkgver = 0.9.7.r153.20261030.542fc68
 	pkgrel = 1
 	url = https://sourceforge.net/projects/qmp3gain/
 	arch = i686
@@ -13,7 +13,6 @@ pkgbase = qmp3gain-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = make
-	makedepends = zopflipng-parallel
 	makedepends = qt5-base
 	makedepends = qt5-tools
 	depends = gcc-libs
@@ -22,9 +21,9 @@ pkgbase = qmp3gain-git
 	depends = qt5-base
 	depends = qt5-multimedia
 	optdepends = qt5-tools: To view Qt5 help files with `assistant <helpfile>`.
-	provides = qmp3gain=0.9.5+36.r167.20260221.fd087e9
-	provides = qmp3gain-doc=0.9.5+36.r167.20260221.fd087e9
-	provides = qmp3gain-doc-git=0.9.5+36.r167.20260221.fd087e9
+	provides = qmp3gain=0.9.7.r153.20261030.542fc68
+	provides = qmp3gain-doc=0.9.7.r153.20261030.542fc68
+	provides = qmp3gain-doc-git=0.9.7.r153.20261030.542fc68
 	conflicts = qmp3gain
 	conflicts = qmp3gain-doc
 	source = qmp3gain::git+git://git.code.sf.net/p/qmp3gain/code
