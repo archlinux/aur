@@ -2,7 +2,7 @@
 pkgname=cornelsen-offline-lernen-bin
 pkgver=44.0.0
 # App version 2026.21.1 (Electron 44.0.0), checked 2026-11-15
-pkgrel=2
+pkgrel=3
 pkgdesc="Cornelsen Offline Lernen Electron App"
 arch=('any')
 url="https://www.cornelsen.de"
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.zip::https://ebook.cornelsen.de/uma20/public/v2/um
         "icon96.png"
         "patch-asar.js")
 b2sums=('929c3cb2fc550d2e7f7ade888e65a0153028a1c351f66e0eb5f89252200bc5062d81044217a17f3045302f36ea0a9ebf854634e2c16332f743b94fd502cf69c5'
-        'afc1954a7e84a27b50976fbb702523f114905189032ae914cb659ff58c2054bd2935680015f63644f81d79b8c5d48ec8610a29652b9c326841df5373a203348e'
+        '67ad13214ea8447967b1e0a12d3131bda33c510a1decc151ac3ed2aaa052652ebfd3159f53c8c4c1e6f35842e5530c8028774ac9000886a6810fef2cdc2d1b4b'
         '8157b061d35da630252a8c402a98fb978fcad59fcfa813eb8b67dfeaae7e467051d659201e55b5d1811ae15eca49e47189a5a9840277f09876cf1d7021cfc1da'
         '8dd68d9cd90347b954da9280d2133bc45706eec1e74261bdf19f53b61150ee5168db20a0f217643230c4dc66fb840f9ef61fce5f6aff5853b1bebae4bc9f4c65'
         'b326c7f468c3cecb0e2618bae56092b7c6c5fa7e8f43f499645df01c2b468e74052bef51d48b36a8a7ade2fa12f9612591eaf38819998868271ec23abd366ad5'
