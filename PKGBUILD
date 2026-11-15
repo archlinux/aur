@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-stamina
-pkgver=26.1.0
+pkgver=26.2.0
 pkgrel=1
 pkgdesc="Production-grade retries for Python"
 arch=(any)
@@ -21,7 +21,7 @@ checkdepends=(python-pytest python-anyio python-dirty-equals)
 changelog=CHANGELOG.md
 source=("$pkgname::git+$url#tag=$pkgver"
         hynek.keys)
-sha256sums=('e37285285704ef432bdd219d9d724c8fff9cbfa5c8c2950c4c460dc5d995a6b4'
+sha256sums=('3aaf2fd9f5e61a841ea55986929a9e339d15bb2221aa42870221f81b6a5b6832'
             'f846ad74efb3f65ae1619540b598f8a9fbe00da43509281b4b0756a885263da8')
 
 prepare() {
