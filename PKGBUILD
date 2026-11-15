@@ -2,7 +2,7 @@
 # Maintainer: Gaurav Gosain <itsgauravgosain@gmail.com>
 
 pkgname='tuios-plot-bin'
-pkgver=0.12.1
+pkgver=0.13.1
 pkgrel=1
 pkgdesc='Draw charts in the terminal from CSV, TSV or JSON'
 url='https://tuios.dev/'
@@ -12,10 +12,10 @@ provides=('tplot')
 conflicts=('tplot')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tplot_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('84174fc009974b5717d6db60f93e7e1d69ae94e3c6fcab247a29144059398fa0')
+sha256sums_aarch64=('5719348b0eacea58c9216228419d459832fad35e4f7567d0b7248b86f55f50a2')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tplot_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('923e2260961bfabc0ac6758751de391ba64fda6f0365b0015c26762751152a7f')
+sha256sums_x86_64=('afdf8b2cab7ebe266dced1fbd74b8b61eba5a109e0697a19a4ca58fd62c5b928')
 
 package() {
   install -Dm755 "./tplot" "${pkgdir}/usr/bin/tplot"
