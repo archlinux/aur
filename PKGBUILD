@@ -1,6 +1,6 @@
 # Maintainer: Bendik Aagaard Lynghaug <bendik.lynghaug@gmail.com>
 pkgname=gpupaper
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Wayland layer-surface wallpaper runner powered by GLSL/WGSL fragment shaders (wgpu)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ provides=('gpupaper')
 conflicts=('gpupaper-git' 'gpupaper-bin')
 source_x86_64=("gpupaper-v${pkgver}-x86_64.tar.gz::https://project.uhhm.no/bl/gpupaper/releases/download/v${pkgver}/gpupaper-v${pkgver}-x86_64.tar.gz")
 source_aarch64=("gpupaper-v${pkgver}-aarch64.tar.gz::https://project.uhhm.no/bl/gpupaper/releases/download/v${pkgver}/gpupaper-v${pkgver}-aarch64.tar.gz")
-sha256sums_x86_64=('306ca18380da9b844fe9281b93d618c35cb135953202ab13fbb95e94b3cde0f6')
-sha256sums_aarch64=('f5b73ec933a347568e064da49276a58839216a5d0a87b13cb06e9686118c44c0')
+sha256sums_x86_64=('e6f09ba7cddf387504c07af5840dc9dac84c4d471f2db42a45219aeb5fe2b983')
+sha256sums_aarch64=('ab6d9bfa60f218931382788cff601c60f46e45fe9ee680d8fa226a2adc168779')
 
 package() {
     install -Dm755 gpupaper "$pkgdir/usr/bin/gpupaper"

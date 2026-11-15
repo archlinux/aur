@@ -1,6 +1,6 @@
 pkgbase = gpupaper
 	pkgdesc = Wayland layer-surface wallpaper runner powered by GLSL/WGSL fragment shaders (wgpu)
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://project.uhhm.no/bl/gpupaper
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = gpupaper
 	conflicts = gpupaper-git
 	conflicts = gpupaper-bin
 	options = !strip
-	source_x86_64 = gpupaper-v0.1.5-x86_64.tar.gz::https://project.uhhm.no/bl/gpupaper/releases/download/v0.1.5/gpupaper-v0.1.5-x86_64.tar.gz
-	sha256sums_x86_64 = 306ca18380da9b844fe9281b93d618c35cb135953202ab13fbb95e94b3cde0f6
-	source_aarch64 = gpupaper-v0.1.5-aarch64.tar.gz::https://project.uhhm.no/bl/gpupaper/releases/download/v0.1.5/gpupaper-v0.1.5-aarch64.tar.gz
-	sha256sums_aarch64 = f5b73ec933a347568e064da49276a58839216a5d0a87b13cb06e9686118c44c0
+	source_x86_64 = gpupaper-v0.1.6-x86_64.tar.gz::https://project.uhhm.no/bl/gpupaper/releases/download/v0.1.6/gpupaper-v0.1.6-x86_64.tar.gz
+	sha256sums_x86_64 = e6f09ba7cddf387504c07af5840dc9dac84c4d471f2db42a45219aeb5fe2b983
+	source_aarch64 = gpupaper-v0.1.6-aarch64.tar.gz::https://project.uhhm.no/bl/gpupaper/releases/download/v0.1.6/gpupaper-v0.1.6-aarch64.tar.gz
+	sha256sums_aarch64 = ab6d9bfa60f218931382788cff601c60f46e45fe9ee680d8fa226a2adc168779
 
 pkgname = gpupaper
