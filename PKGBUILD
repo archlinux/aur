@@ -1,7 +1,7 @@
 # Maintainer: BlackFuffey <fluffistical@gmail.com>
 
 pkgname=(sable-web)
-pkgver=2.3.8
+pkgver=2.3.9
 pkgrel=1
 pkgdesc='A Matrix client built to enhance user experience'
 url='https://git.sable.moe/SableClient/sable-next'
@@ -13,7 +13,7 @@ depends=()
 makedepends=(mise)
 
 source=(sable-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('c2c32801c8cc9cab7f180111b2cce41b30eb95a28d46343ce36602af4db8f247bf25edaeeabdf54c3dfdf08a0665c75fa899a98c38737a92ec5258a10cf4c8f5')
+sha512sums=('5bc10ef991897fd95517d83c490f958cad07b7f31b3049ed7313ed748e7baba88f603d7c865515ccce6543e352fef2d6266780de424f24e503abf2a71c64a283')
 
 prepare() {
         cd "${srcdir}"/"sable-next"
