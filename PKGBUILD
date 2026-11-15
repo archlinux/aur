@@ -2,7 +2,7 @@
 
 pkgname=tantrix
 pkgver=20261106.1011
-pkgrel=1
+pkgrel=2
 pkgdesc='Abstract strategy board game'
 arch=(any)
 url='https://www.tantrix.com/'
@@ -10,14 +10,15 @@ license=(unknown)
 depends=(java-runtime)
 makedepends=()
 _base='https://www.tantrix.com/Tantrix/TGame'
-source=("Launcher.$pkgver.jar::$_base/jws/Launcher.jar"
-        "OnlineLobby.$pkgver.jar::$_base/jws/OnlineLobby.jar"
-        "OnlineGame.$pkgver.jar::$_base/jws/OnlineGame.jar"
-        "Sounds.$pkgver.jar::$_base/jws/Sounds.jar"
-        "jzlib.$pkgver.jar::$_base/jws/jzlib.jar"
-        "Monte.$pkgver.jar::$_base/jws/Monte.jar"
-        "Oliver.$pkgver.jar::$_base/jws/Oliver.jar"
-        "Darwin.$pkgver.jar::$_base/jws/Darwin.jar"
+_sver='TGv2.16' # curl https://tantrix.com/cgi-bin/gs_AppletTag.cgi
+source=("Launcher.$pkgver.jar::$_base/$_sver/Launcher.jar"
+        "OnlineLobby.$pkgver.jar::$_base/$_sver/OnlineLobby.jar"
+        "OnlineGame.$pkgver.jar::$_base/$_sver/OnlineGame.jar"
+        "Sounds.$pkgver.jar::$_base/$_sver/Sounds.jar"
+        "jzlib.$pkgver.jar::$_base/$_sver/jzlib.jar"
+        "Monte.$pkgver.jar::$_base/$_sver/Monte.jar"
+        "Oliver.$pkgver.jar::$_base/$_sver/Oliver.jar"
+        "Darwin.$pkgver.jar::$_base/$_sver/Darwin.jar"
         "tantrix.png::$_base/smalltile.png"
         'tantrix'
         'tantrix.desktop'
