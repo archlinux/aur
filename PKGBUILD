@@ -1,6 +1,6 @@
 # Maintainer: Joaquim Madureira <joca at jocadbz dot xyz>
 pkgname=tinywiibackupmanager-bin
-pkgver=6.0.8
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="A tiny game backup and homebrew app manager for the Wii"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ noextract=(
     "TinyWiiBackupManager-${pkgver}-linux-aarch64.AppImage"
 )
 
-sha256sums_x86_64=('bf0b208639b6afc1612a34b2c4183ffc0375d8eeeac0b679b8dbbf9dd974582a')
-sha256sums_aarch64=('0508af1d7fcf9c423a9ec82f083daf9df017f8cc73d4fcb86a12459ab05f2c6b')
+sha256sums_x86_64=('c07af8ada9391bee5c082c63cb0b3ffd427015fd6d831a453f4b73d598a44d05')
+sha256sums_aarch64=('709b492f1cf9714d7ee0593d0a507846f462ca3e5b8a5fec95f98325ff1b658e')
 
 package() {
     cd "$srcdir"
