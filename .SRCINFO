@@ -1,6 +1,6 @@
 pkgbase = notav-bin
 	pkgdesc = Notes and a journal kept in your Nextcloud
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/AperteDev/notav
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = notav-bin
 	optdepends = org.freedesktop.secrets: keep the passwords in the system keyring
 	provides = notav
 	conflicts = notav
-	noextract = notav-0.7.1-x86_64.tar.gz
-	source_x86_64 = notav-0.7.1-x86_64.tar.gz::https://github.com/AperteDev/notav/releases/download/v0.7.1/notav-0.7.1-x86_64.tar.gz
-	sha256sums_x86_64 = 60fb002234d21e112f7e76dc2ee4d9543ac08c1b66827e5b0d2a2e9196e49713
+	noextract = notav-0.7.2-x86_64.tar.gz
+	source_x86_64 = notav-0.7.2-x86_64.tar.gz::https://github.com/AperteDev/notav/releases/download/v0.7.2/notav-0.7.2-x86_64.tar.gz
+	sha256sums_x86_64 = 731b5c7f8cf748537dc005ca2087257e03ecaea640d11efbae80f591d6c7282f
 
 pkgname = notav-bin
