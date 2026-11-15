@@ -1,7 +1,7 @@
 # Maintainer: Keon Cachia <keonfarrugia@gmail.com>
 pkgname=rill
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist scrolling window manager for River"
 arch=('x86_64')
 _zigwlver=0.6.0
@@ -9,7 +9,9 @@ _xkbver=0.4.0
 url="https://codeberg.org/lzj15/rill"
 license=('MIT')
 depends=('wayland' 'river' 'libxkbcommon')
-makedepends=('wayland-protocols' 'zig')
+makedepends=('wayland-protocols'
+	     'zig=0.16.0'
+	    )
 install=rill.install
 source=(
   # Checksums keep failing for the archive so this will do
@@ -32,7 +34,6 @@ build() {
     --summary all \
     --prefix /usr \
     --search-prefix /usr \
-    --global-cache-dir ../zig-global-cache \
     --build-id=sha1 \
     -Dtarget=native-linux.6.6-gnu.2.40 \
     -Dcpu=baseline \
