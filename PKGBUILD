@@ -1,6 +1,6 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=pipette-desktop-keychron-bin
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Pipette — Vial-compatible keyboard configurator (AppImage). Keychron fork"
 arch=("x86_64")
@@ -15,7 +15,7 @@ optdepends=('dfu-util: flash Keychron firmware')
 options=('!strip' '!debug')
 _appimage="${pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::https://github.com/Tymon3310/pipette-desktop/releases/download/v${pkgver}/Pipette-linux-x86_64.AppImage")
-sha256sums=('0adc9e302fdd5f8e70850237daf79908b1645b9555b81de3d5a6bf0acb1848b2')
+sha256sums=('ef15336f08d5f5ea48b9b9637a1d44553988570f0af988e01b967ab9af79f751')
 
 prepare() {
   cd "$srcdir"
@@ -27,7 +27,7 @@ prepare() {
 package() {
   cd "$srcdir/squashfs-root"
   install -Dm755 usr/bin/pipette "$pkgdir/usr/bin/pipette-desktop"
-  install -Dm644 usr/lib/Pipette/udev/99-vial.rules "$pkgdir/usr/lib/udev/rules.d/70-pipette-desktop.rules"
+  install -Dm644 usr/lib/Pipette/udev/59-vial.rules "$pkgdir/usr/lib/udev/rules.d/70-pipette-desktop.rules"
   install -Dm644 usr/share/icons/hicolor/1024x1024/apps/pipette.png \
     "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/pipette-desktop.png"
 
