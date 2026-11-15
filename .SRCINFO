@@ -1,16 +1,16 @@
 pkgbase = tuios-tml-bin
 	pkgdesc = Show TML documents in the terminal
-	pkgver = 0.12.1
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://tuios.dev/
 	license = MIT
 	conflicts = tml
 	provides = tml
 	arch = aarch64
-	source_aarch64 = tuios-tml-bin_0.12.1_aarch64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.12.1/tml_0.12.1_Linux_arm64.tar.gz
-	sha256sums_aarch64 = a9795c57888f85eebb26f42730def628572d5587c6e355d4d732efb4801c68e0
+	source_aarch64 = tuios-tml-bin_0.13.1_aarch64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.13.1/tml_0.13.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 19d4d3bff45980472f1ef96eb8722601ae4dd6dc10ef15dcfc2d79917e21db7f
 	arch = x86_64
-	source_x86_64 = tuios-tml-bin_0.12.1_x86_64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.12.1/tml_0.12.1_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = d707804b447936ff7cc7cf8898a290643fc5686eb3317d7fa080f4123fadf6b0
+	source_x86_64 = tuios-tml-bin_0.13.1_x86_64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.13.1/tml_0.13.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0c4e49cfd242a2317374d758c59edfd02c35201e2a60dbc388fefe3287bc216c
 	
 pkgname = tuios-tml-bin
