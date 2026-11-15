@@ -1,6 +1,6 @@
 pkgbase = emposium
 	pkgdesc = Anime, manga and community in one application
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://emposium.ru
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = emposium
 	depends = gst-libav
 	optdepends = gnome-keyring: Secret Service for secure session storage
 	options = !strip
-	source = emposium-0.7.0.tar.gz::https://api.mpsm.app/v1/releases/0.7.0/downloads/linux-tar
-	sha256sums = 802146a863c7b72fad51883cde6a5c095b645c4b4bf36692a55877939294e977
+	source = emposium-0.7.1.tar.gz::https://api.mpsm.app/v1/releases/0.7.1/downloads/linux-tar
+	sha256sums = edecee6c6bc9eb21413e65dc72158771de6741d3343778027a9137d67e4f66e6
 
 pkgname = emposium
