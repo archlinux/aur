@@ -56,6 +56,17 @@ prepare() {
 
   sed -i 's/engineStrict: true/engineStrict: false/g' pnpm-workspace.yaml
 
+  # dotnetprobe targets net9.0; without this, a newer SDK (e.g. .NET 10) gets picked and the build fails
+  cat > global.json <<'JSON'
+{
+  "sdk": {
+    "version": "9.0.100",
+    "rollForward": "latestFeature",
+    "allowPrerelease": false
+  }
+}
+JSON
+
   msg2 "Installing dependencies (pnpm $(pnpm --version))..."
   pnpm install --frozen-lockfile
 
