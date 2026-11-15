@@ -2,7 +2,7 @@
 
 _pkgname=eglantine
 pkgname="eglantine-pgo-bin"
-pkgver=0.1.0_rc3
+pkgver=0.1.0_rc4
 _tag="v${pkgver//_/-}"
 pkgrel=1
 pkgdesc="The Eglantine Nintendo Switch 2 emulator AppImage (PGO build)."
@@ -18,7 +18,7 @@ _appimage="${_pkgname}-linux-x86_64-pgo.AppImage"
 source_x86_64=(
     "${_appimage}::https://github.com/Eglantine-Community/Eglantine/releases/download/${_tag}/${_appimage}"
 )
-sha256sums_x86_64=('bda2b1bc32e9fd9273477a265b49d5d11829a6f8fec71b6d53f617bd27d5185a')
+sha256sums_x86_64=('e5993d0e9e7aba3aeee693906838f43ec537e4793280dd572f3712f74abaf283')
 
 prepare() {
   chmod +x "${_appimage}"
