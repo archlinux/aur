@@ -1,16 +1,17 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=soveran
-pkgname=map
+_pkgname=map
+pkgname=${_pkgname}
 pkgver=0.1.1
 pkgrel=1
 pkgdesc="Map lines from stdin to commands"
 
-url="https://github.com/${_pkgauthor}/${pkgname}"
+url="https://github.com/${_pkgauthor}/${_pkgname}"
 arch=('x86_64' 'aarch64')
 license=('BSD')
 
-provides=("${pkgname}")
+provides=("${_pkgname}")
 
 makedepends=('gzip' 'make' 'gcc')
 depends=('glibc')
