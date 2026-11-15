@@ -2,8 +2,8 @@
 
 pkgname=python-jieba3
 _name=${pkgname#python-}
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 epoch=
 pkgdesc="jieba 3 Chinese Word Segmentation: Building the Best Modern Python 3 Chinese Word Segmentation Component"
 arch=('any')
@@ -19,6 +19,7 @@ depends=(
 makedepends=(
     git
     python-flit-core
+    python-uv-build
     python-build
     python-installer
     python-wheel
@@ -28,7 +29,7 @@ optdepends=()
 options=('!strip' '!debug')
 source=("${_name}::git+${url}.git#tag=${pkgver}")
 noextract=()
-sha256sums=('eac23c0ec601bbaa40b4a2c050ac3589d45c8de45c7c23e6dae688518836a3df')
+sha256sums=('272ed7770e0f065f0b544cdfd5f8836f48b02989c3df2bc9fd02bd49dd71d3fe')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
