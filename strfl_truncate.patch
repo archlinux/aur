@@ -1,0 +1,11 @@
+--- interactive.c.orig	2026-11-15 11:27:23.451453358 -0800
++++ interactive.c	2026-11-15 11:29:22.598028206 -0800
+@@ -187,7 +187,7 @@
+             && (Modes.interactive_callsign_filter == NULL || a->callsign_matched
+             || regexec(&callsign_filter_regex, a->callsign, 0, NULL, 0) == 0)) {
+             char strSquawk[5] = " ";
+-            char strFl[7]     = " ";
++            char strFl[16]     = " ";
+             char strTt[5]     = " ";
+             char strGs[5]     = " ";
+             int msgs  = a->messages;
