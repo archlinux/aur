@@ -1,0 +1,13 @@
+pkgbase = calibre-zen
+	pkgdesc = Modernized Calibre ebook library manager
+	pkgver = 0.5.0
+	pkgrel = 5
+	url = https://github.com/purplecandy/calibre-zen
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	options = !strip
+	source = https://github.com/purplecandy/calibre-zen/releases/download/v0.5.0/calibre-zen-0.5.0-linux-x86_64.txz
+	sha256sums = 7a707f47f1462d3a77fc14df3a7e2a7bd858fe019c9deaa45dc3f582cbfe66a1
+
+pkgname = calibre-zen
