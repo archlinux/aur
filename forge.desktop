@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Forge
+GenericName=IDE
+Comment=PHPStorm-style IDE for PHP, web and Lua
+Exec=forge %F
+Icon=forge
+Terminal=false
+Categories=Development;IDE;
+MimeType=x-scheme-handler/forge;
+StartupWMClass=forge
