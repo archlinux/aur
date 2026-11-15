@@ -4,7 +4,7 @@
 pkgname="orca-slicer-latest-bin"
 pkgver=2.5.1
 _pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="G-code generator for 3D printers (all published versions - alpha/beta/release candidates and stable)"
 arch=('x86_64')
 url="https://github.com/OrcaSlicer/OrcaSlicer"
@@ -23,6 +23,11 @@ prepare() {
 
 	sed -i 's|Exec=.*|Exec=/usr/bin/orca-slicer %U|g' \
 		squashfs-root/*.desktop
+
+	# The window's Wayland app_id is "orca-slicer", which doesn't match the
+	# desktop file name, so compositors show a generic icon without this
+	grep -q '^StartupWMClass=' squashfs-root/*.desktop ||
+		sed -i '/^\[Desktop Entry\]/a StartupWMClass=orca-slicer' squashfs-root/*.desktop
 }
 
 package() {
