@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 
 pkgname=udon
-pkgver=0.062
+pkgver=0.063
 pkgrel=1
 epoch=1
 pkgdesc="Minimalistic CLI based End to End Encrypted (E2EE) message passing tool/service."
@@ -21,9 +21,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/treedavies/udon/archive/refs/tags/udon-v0.062.tar.gz")
+source=("https://github.com/treedavies/udon/archive/refs/tags/udon-v0.063.tar.gz")
 noextract=()
-sha256sums=("ea42a99bc6f88f14858b3aa89e991eddf310b5db86893b76ec26122806d48aab")
+sha256sums=("e2c53d3f0d5ed6d603b765e437f7b8c4e9f3a3317975978add4a2afa79557ccf")
 validpgpkeys=()
 
 package() {
@@ -38,7 +38,6 @@ package() {
 	install -m 755 -o root src/libudon.py "$pkgdir"/usr/bin/udon.d
 	install -m 755 -o root src/test_libudon.py "$pkgdir"/usr/bin/udon.d
 	install -m 755 -o root src/udon_init.py "$pkgdir"/usr/bin/udon.d
-	cp -r src/modules "$pkgdir"/usr/bin/udon.d
 	install -m 755 -o root src/udon.proto "$pkgdir"/usr/bin/udon.d
 
 	# BUILD PROTOBUFFERS	
