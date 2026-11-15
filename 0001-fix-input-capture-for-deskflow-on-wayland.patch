@@ -1,24 +1,13 @@
-From 92cc3ffe97c2ce760fa2ef929a5e9ab0c49fa1cb Mon Sep 17 00:00:00 2001
 From: Raj Vengalil <avranju@nerdworks.dev>
 Date: Mon, 21 Sep 2026 14:02:50 +0530
 Subject: [PATCH] fix input capture for Deskflow on Wayland
 
----
- data/xdg-desktop-portal-generic.service |   1 -
- src/dbus/input_capture.rs               |  87 +++++-
- src/lib.rs                              |  64 +++++
- src/services/input/eis_backend.rs       | 219 ++++++++++++++-
- src/services/input/eis_bridge.rs        |  13 +
- src/services/input/mod.rs               |  16 ++
- src/wayland/dispatch.rs                 |  76 ++++--
- src/wayland/input_capture.rs            | 343 ++++++++++++++++++++++--
- src/wayland/mod.rs                      |  15 +-
- 9 files changed, 762 insertions(+), 72 deletions(-)
+Refreshed for upstream 1.2.0 (zbus 6 OwnedVariant/Variant and let-chain
+on_relative_motion). Keeps the original Deskflow InputCapture behavior.
 
-diff --git a/data/xdg-desktop-portal-generic.service b/data/xdg-desktop-portal-generic.service
-index f8ea23c..e4e4867 100644
---- a/data/xdg-desktop-portal-generic.service
-+++ b/data/xdg-desktop-portal-generic.service
+diff -Naur a/data/xdg-desktop-portal-generic.service b/data/xdg-desktop-portal-generic.service
+--- a/data/xdg-desktop-portal-generic.service	2026-11-07 13:34:59.000000000 +0800
++++ b/data/xdg-desktop-portal-generic.service	2026-11-09 09:54:14.228023600 +0800
 @@ -1,7 +1,6 @@
  [Unit]
  Description=Generic XDG Desktop Portal Backend for Wayland Compositors
@@ -27,22 +16,21 @@ index f8ea23c..e4e4867 100644
  
  [Service]
  Type=dbus
-diff --git a/src/dbus/input_capture.rs b/src/dbus/input_capture.rs
-index 384d7ca..c97f53c 100644
---- a/src/dbus/input_capture.rs
-+++ b/src/dbus/input_capture.rs
-@@ -246,6 +246,25 @@ impl InputCaptureInterface {
+diff -Naur a/src/dbus/input_capture.rs b/src/dbus/input_capture.rs
+--- a/src/dbus/input_capture.rs	2026-11-07 13:34:59.000000000 +0800
++++ b/src/dbus/input_capture.rs	2026-11-09 09:54:38.272553579 +0800
+@@ -242,6 +242,25 @@
          Some((x1, y1, x2, y2))
      }
  
 +    /// Extract a `(f64, f64)` tuple from an options-style value.
 +    fn get_option_f64_tuple2(
-+        options: &HashMap<String, OwnedValue>,
++        options: &HashMap<String, OwnedVariant>,
 +        key: &str,
 +    ) -> Option<(f64, f64)> {
 +        let v = options.get(key)?;
-+        let value: &Value<'_> = v.downcast_ref().ok()?;
-+        let Value::Structure(s) = value else {
++        let value: &Variant<'_> = v.downcast_ref().ok()?;
++        let Variant::Structure(s) = value else {
 +            return None;
 +        };
 +        let fields = s.fields();
@@ -57,7 +45,7 @@ index 384d7ca..c97f53c 100644
      /// Validate that a session exists, belongs to the caller, and was
      /// created via `InputCapture` (not `RemoteDesktop`/`ScreenCast`).
      fn validate_input_capture_session(
-@@ -801,6 +820,22 @@ impl InputCaptureInterface {
+@@ -797,6 +816,22 @@
  
          let cursor_position = self.current_cursor_position(&session_handle.to_string());
  
@@ -80,9 +68,9 @@ index 384d7ca..c97f53c 100644
          if let Some(tx) = &self.input_capture_tx {
              let _ = tx.send(InputCaptureCommand::DestroySession {
                  session_id: session_handle.to_string(),
-@@ -842,9 +877,7 @@ impl InputCaptureInterface {
+@@ -838,9 +873,7 @@
          app_id: &str,
-         options: HashMap<String, OwnedValue>,
+         options: HashMap<String, OwnedVariant>,
          #[zbus(header)] header: zbus::message::Header<'_>,
 -        #[zbus(signal_emitter)] emitter: SignalEmitter<'_>,
      ) -> zbus::fdo::Result<()> {
@@ -90,7 +78,7 @@ index 384d7ca..c97f53c 100644
          let sender = header
              .sender()
              .ok_or_else(|| zbus::fdo::Error::Failed("Missing sender".to_string()))?
-@@ -859,24 +892,42 @@ impl InputCaptureInterface {
+@@ -855,24 +888,42 @@
          let activation_id = session.end_input_capture_activation();
          drop(manager);
  
@@ -144,28 +132,27 @@ index 384d7ca..c97f53c 100644
          Ok(())
      }
  
-@@ -1210,6 +1261,16 @@ mod tests {
-         assert_eq!(parsed, None);
+@@ -1213,6 +1264,16 @@
      }
  
-+    #[test]
+     #[test]
 +    fn test_get_option_f64_tuple2_roundtrip() {
 +        let mut options = HashMap::new();
-+        let value: OwnedValue = Value::from((12.5f64, 42.25f64)).try_into().unwrap();
++        let value: OwnedVariant = Variant::from((12.5f64, 42.25f64)).try_into().unwrap();
 +        options.insert("cursor_position".to_string(), value);
 +
 +        let parsed = InputCaptureInterface::get_option_f64_tuple2(&options, "cursor_position");
 +        assert_eq!(parsed, Some((12.5, 42.25)));
 +    }
 +
-     #[test]
++    #[test]
      fn test_build_zones_results() {
          let zones = vec![InputCaptureZone {
-diff --git a/src/lib.rs b/src/lib.rs
-index 3985c47..e9ef67e 100644
---- a/src/lib.rs
-+++ b/src/lib.rs
-@@ -344,17 +344,29 @@ impl PortalBackend {
+             width: 1920,
+diff -Naur a/src/lib.rs b/src/lib.rs
+--- a/src/lib.rs	2026-11-07 13:34:59.000000000 +0800
++++ b/src/lib.rs	2026-11-09 09:54:14.228023600 +0800
+@@ -344,17 +344,29 @@
              let session_manager = Arc::clone(&self.session_manager);
              let input_backend = Arc::clone(&self.input_backend);
              let dbus_conn = connection.clone();
@@ -195,7 +182,7 @@ index 3985c47..e9ef67e 100644
          // Spawn periodic session cleanup task
          let session_manager = Arc::clone(&self.session_manager);
          tokio::spawn(async move {
-@@ -704,6 +716,7 @@ impl PortalBackend {
+@@ -705,6 +717,7 @@
          connection: zbus::Connection,
          session_manager: Arc<Mutex<SessionManager>>,
          input_backend: Arc<Mutex<Box<dyn InputBackend>>>,
@@ -203,7 +190,7 @@ index 3985c47..e9ef67e 100644
          mut activation_rx: tokio::sync::mpsc::UnboundedReceiver<
              wayland::InputCaptureActivationEvent,
          >,
-@@ -715,6 +728,7 @@ impl PortalBackend {
+@@ -716,6 +729,7 @@
                  &connection,
                  &session_manager,
                  &input_backend,
@@ -211,7 +198,7 @@ index 3985c47..e9ef67e 100644
                  event,
              )
              .await;
-@@ -729,6 +743,7 @@ impl PortalBackend {
+@@ -730,6 +744,7 @@
          connection: &zbus::Connection,
          session_manager: &Arc<Mutex<SessionManager>>,
          input_backend: &Arc<Mutex<Box<dyn InputBackend>>>,
@@ -219,7 +206,7 @@ index 3985c47..e9ef67e 100644
          event: wayland::InputCaptureActivationEvent,
      ) {
          use wayland::InputCaptureActivationEvent;
-@@ -743,6 +758,7 @@ impl PortalBackend {
+@@ -744,6 +759,7 @@
                      connection,
                      session_manager,
                      input_backend,
@@ -227,7 +214,7 @@ index 3985c47..e9ef67e 100644
                      session_id,
                      barrier_id,
                      cursor_position,
-@@ -760,6 +776,21 @@ impl PortalBackend {
+@@ -761,6 +777,21 @@
                      backend.forward_captured_pointer_motion(&session_id, dx, dy, time_usec);
                  Self::log_forward_error(&session_id, "pointer motion", result);
              }
@@ -249,7 +236,7 @@ index 3985c47..e9ef67e 100644
              InputCaptureActivationEvent::Key {
                  session_id,
                  keycode,
-@@ -836,6 +867,7 @@ impl PortalBackend {
+@@ -837,6 +868,7 @@
          connection: &zbus::Connection,
          session_manager: &Arc<Mutex<SessionManager>>,
          input_backend: &Arc<Mutex<Box<dyn InputBackend>>>,
@@ -257,7 +244,7 @@ index 3985c47..e9ef67e 100644
          session_id: String,
          barrier_id: u32,
          cursor_position: Option<(f64, f64)>,
-@@ -875,6 +907,16 @@ impl PortalBackend {
+@@ -876,6 +908,16 @@
              if let Some(session) = manager.get_session_mut(&handle) {
                  let _ = session.end_input_capture_activation();
              }
@@ -274,7 +261,7 @@ index 3985c47..e9ef67e 100644
              return;
          }
  
-@@ -902,6 +944,28 @@ impl PortalBackend {
+@@ -903,6 +945,28 @@
          );
      }
  
@@ -303,11 +290,10 @@ index 3985c47..e9ef67e 100644
      /// Handle a `Deactivated` event: end the session's activation (if one
      /// is still open -- `None` means `Disable()`/`Release()` already ended
      /// it synchronously, so this skips emitting a duplicate signal), tell
-diff --git a/src/services/input/eis_backend.rs b/src/services/input/eis_backend.rs
-index 0e1a912..cd7ced3 100644
---- a/src/services/input/eis_backend.rs
-+++ b/src/services/input/eis_backend.rs
-@@ -38,7 +38,7 @@ use reis::{
+diff -Naur a/src/services/input/eis_backend.rs b/src/services/input/eis_backend.rs
+--- a/src/services/input/eis_backend.rs	2026-11-07 13:34:59.000000000 +0800
++++ b/src/services/input/eis_backend.rs	2026-11-09 09:54:14.228023600 +0800
+@@ -38,7 +38,7 @@
  
  use crate::{
      error::{PortalError, Result},
@@ -316,7 +302,7 @@ index 0e1a912..cd7ced3 100644
  };
  
  /// Per-session EIS state.
-@@ -60,12 +60,15 @@ pub struct EisSession {
+@@ -60,12 +60,15 @@
      /// forward the cached compositor keymap into a receiver-context
      /// keyboard device.
      shared_wayland_state: Option<Arc<std::sync::Mutex<crate::wayland::SharedWaylandState>>>,
@@ -337,7 +323,7 @@ index 0e1a912..cd7ced3 100644
      pointer_regions: Vec<PointerRegion>,
      /// Leftover, not-yet-a-full-click fraction of `ei_scroll.scroll_discrete`'s
      /// wire value (which the libei protocol defines as "fractions or multiples
-@@ -123,6 +126,16 @@ impl EisSession {
+@@ -123,6 +126,16 @@
              PortalError::EisCreationFailed(format!("Failed to create socket pair: {e}"))
          })?;
  
@@ -354,7 +340,7 @@ index 0e1a912..cd7ced3 100644
          let eis_context = eis::Context::new(server_socket).map_err(|e| {
              PortalError::EisCreationFailed(format!("Failed to create EIS context: {e}"))
          })?;
-@@ -256,6 +269,35 @@ impl EisSession {
+@@ -256,6 +269,35 @@
          Ok(vec![])
      }
  
@@ -390,7 +376,7 @@ index 0e1a912..cd7ced3 100644
      /// Transition from handshake to active phase.
      ///
      /// Creates the request converter, adds a seat with the requested capabilities,
-@@ -291,13 +333,21 @@ impl EisSession {
+@@ -291,13 +333,21 @@
          // keymap degrades gracefully (the client just gets raw keycodes
          // with no defined interpretation), it never fails the handshake.
          let shared_wayland_state = self.shared_wayland_state.clone();
@@ -414,7 +400,7 @@ index 0e1a912..cd7ced3 100644
          let device = seat.add_device(
              Some("portal-device"),
              eis::device::DeviceType::Virtual,
-@@ -510,6 +560,36 @@ impl EisSession {
+@@ -510,6 +560,36 @@
          Ok(())
      }
  
@@ -451,7 +437,7 @@ index 0e1a912..cd7ced3 100644
      /// Send one key press/release to the client.
      ///
      /// # Errors
-@@ -628,6 +708,37 @@ impl EisSession {
+@@ -628,6 +708,37 @@
      }
  }
  
@@ -489,11 +475,10 @@ index 0e1a912..cd7ced3 100644
  /// `ei_text.utf8`'s wire cap: 255 bytes including the NUL terminator, so
  /// 254 usable bytes per request.
  const EI_TEXT_MAX_BYTES: usize = 254;
-@@ -762,6 +873,97 @@ mod tests {
-         assert!(!session.is_receiver());
+@@ -763,6 +874,97 @@
      }
  
-+    #[test]
+     #[test]
 +    fn test_input_capture_regions_use_get_zones_logical_geometry() {
 +        let regions = input_capture_pointer_regions(&[InputCaptureZone {
 +            width: 2560,
@@ -584,10 +569,11 @@ index 0e1a912..cd7ced3 100644
 +        );
 +    }
 +
-     #[test]
++    #[test]
      fn test_accumulate_scroll_discrete_single_click_is_immediate() {
          let (mut session, _fd) = EisSession::new(DeviceTypes::all(), None, Vec::new()).unwrap();
-@@ -814,6 +1016,7 @@ mod tests {
+         // One full wheel click on each axis, per the libei wire convention
+@@ -814,6 +1016,7 @@
          assert!(session.start_emulating().is_err());
          assert!(session.stop_emulating().is_err());
          assert!(session.send_pointer_motion(1.0, 2.0, 0).is_err());
@@ -595,11 +581,10 @@ index 0e1a912..cd7ced3 100644
          assert!(session.send_key(30, true, 0).is_err());
          assert!(session.send_modifiers(0, 0, 0, 0).is_err());
          assert!(session.send_text_utf8("hello").is_err());
-diff --git a/src/services/input/eis_bridge.rs b/src/services/input/eis_bridge.rs
-index 822591e..e370071 100644
---- a/src/services/input/eis_bridge.rs
-+++ b/src/services/input/eis_bridge.rs
-@@ -722,6 +722,19 @@ impl InputBackend for EisBridgeBackend {
+diff -Naur a/src/services/input/eis_bridge.rs b/src/services/input/eis_bridge.rs
+--- a/src/services/input/eis_bridge.rs	2026-11-07 13:34:59.000000000 +0800
++++ b/src/services/input/eis_bridge.rs	2026-11-09 09:54:14.228023600 +0800
+@@ -721,6 +721,19 @@
              .send_pointer_motion(dx, dy, time_usec)
      }
  
@@ -619,11 +604,10 @@ index 822591e..e370071 100644
      fn stop_input_capture(&mut self, session_id: &str) -> Result<()> {
          self.sessions
              .get_mut(session_id)
-diff --git a/src/services/input/mod.rs b/src/services/input/mod.rs
-index 1b08160..a541ef4 100644
---- a/src/services/input/mod.rs
-+++ b/src/services/input/mod.rs
-@@ -231,6 +231,22 @@ pub trait InputBackend: Send + Sync {
+diff -Naur a/src/services/input/mod.rs b/src/services/input/mod.rs
+--- a/src/services/input/mod.rs	2026-11-07 13:34:59.000000000 +0800
++++ b/src/services/input/mod.rs	2026-11-09 09:54:14.228023600 +0800
+@@ -231,6 +231,22 @@
          })
      }
  
@@ -646,11 +630,10 @@ index 1b08160..a541ef4 100644
      /// Notify the connected EIS client for `session_id` that captured
      /// input has stopped (`InputCapture.Deactivated`). Same default-error
      /// rationale as [`Self::start_input_capture`].
-diff --git a/src/wayland/dispatch.rs b/src/wayland/dispatch.rs
-index e46d7a3..aeea447 100644
---- a/src/wayland/dispatch.rs
-+++ b/src/wayland/dispatch.rs
-@@ -154,6 +154,27 @@ impl OutputInfo {
+diff -Naur a/src/wayland/dispatch.rs b/src/wayland/dispatch.rs
+--- a/src/wayland/dispatch.rs	2026-11-07 13:34:59.000000000 +0800
++++ b/src/wayland/dispatch.rs	2026-11-09 09:54:14.228023600 +0800
+@@ -145,6 +145,27 @@
              source_type: crate::types::SourceType::Monitor,
          }
      }
@@ -678,7 +661,7 @@ index e46d7a3..aeea447 100644
  }
  
  /// Shared Wayland state holding all bound globals and protocol objects.
-@@ -231,12 +252,7 @@ impl WaylandState {
+@@ -226,12 +247,7 @@
              .filter_map(|(_, info)| {
                  let info = info.lock().ok()?;
                  if info.done && info.width > 0 && info.height > 0 {
@@ -692,7 +675,7 @@ index e46d7a3..aeea447 100644
                  } else {
                      None
                  }
-@@ -257,15 +273,7 @@ impl WaylandState {
+@@ -252,15 +268,7 @@
              .filter_map(|(_, info)| {
                  let info = info.lock().ok()?;
                  if info.done && info.width > 0 && info.height > 0 {
@@ -709,7 +692,7 @@ index e46d7a3..aeea447 100644
                  } else {
                      None
                  }
-@@ -392,6 +400,18 @@ impl Dispatch<WlPointer, ()> for WaylandState {
+@@ -390,6 +398,18 @@
              Event::Leave { surface, .. } => {
                  state.input_capture.on_pointer_leave(&surface);
              }
@@ -728,7 +711,7 @@ index e46d7a3..aeea447 100644
              _ => {}
          }
      }
-@@ -1358,15 +1378,29 @@ mod tests {
+@@ -1239,15 +1259,29 @@
              done: true,
              ..Default::default()
          };
@@ -764,10 +747,9 @@ index e46d7a3..aeea447 100644
 +        assert_eq!(zone.y, 0);
 +    }
  }
-diff --git a/src/wayland/input_capture.rs b/src/wayland/input_capture.rs
-index 69776c6..535304a 100644
---- a/src/wayland/input_capture.rs
-+++ b/src/wayland/input_capture.rs
+diff -Naur a/src/wayland/input_capture.rs b/src/wayland/input_capture.rs
+--- a/src/wayland/input_capture.rs	2026-11-07 13:34:59.000000000 +0800
++++ b/src/wayland/input_capture.rs	2026-11-09 09:54:38.272553579 +0800
 @@ -3,8 +3,8 @@
  //! Creates invisible `wlr-layer-shell-v1` surfaces positioned at each
  //! accepted [`PointerBarrier`], drives the `configure -> ack_configure ->
@@ -779,7 +761,7 @@ index 69776c6..535304a 100644
  //! (`zwp_pointer_constraints_v1`), reads relative motion once locked
  //! (`zwp_relative_pointer_v1`), and reports activation/motion/deactivation
  //! to the async D-Bus/EIS bridge task over [`InputCaptureActivationEvent`]
-@@ -82,6 +82,17 @@ pub enum InputCaptureActivationEvent {
+@@ -82,6 +82,17 @@
          /// Event timestamp in microseconds.
          time_usec: u64,
      },
@@ -797,7 +779,7 @@ index 69776c6..535304a 100644
      /// A key was pressed or released while a lock is active.
      Key {
          /// Session handle (as a string).
-@@ -152,6 +163,54 @@ pub struct CachedKeymap {
+@@ -152,6 +163,54 @@
  /// events at all.
  const BARRIER_STRIP_THICKNESS_PX: u32 = 2;
  
@@ -852,7 +834,7 @@ index 69776c6..535304a 100644
  /// A barrier's computed layer-shell surface placement.
  ///
  /// Output of the pure [`barrier_to_layer_geometry`] function, kept separate
-@@ -308,6 +367,15 @@ pub struct BarrierSurface {
+@@ -308,6 +367,15 @@
      /// Live relative-pointer object, present only once the lock has
      /// actually activated (`Locked`).
      pub relative_pointer: Option<ZwpRelativePointerV1>,
@@ -868,7 +850,7 @@ index 69776c6..535304a 100644
      /// Whether entering this barrier should also grab exclusive keyboard
      /// focus (the session negotiated `KEYBOARD` capability).
      pub grab_keyboard: bool,
-@@ -318,6 +386,11 @@ pub struct BarrierSurface {
+@@ -318,6 +386,11 @@
      /// `wl_pointer.Enter`'s surface-local coordinates plus `origin`, then
      /// accumulated by each relative-motion sample while locked.
      pub last_cursor_position: Option<(f64, f64)>,
@@ -880,7 +862,7 @@ index 69776c6..535304a 100644
      /// Live `zwp_text_input_v3` object, present only while this surface
      /// holds real keyboard focus and `text_input_manager` is bound (see
      /// [`InputCaptureBarrierState::on_keyboard_enter`]).
-@@ -431,6 +504,11 @@ impl InputCaptureBarrierState {
+@@ -431,6 +504,11 @@
              );
              return;
          };
@@ -892,7 +874,7 @@ index 69776c6..535304a 100644
  
          for barrier in barriers {
              let Some(geometry) = barrier_to_layer_geometry(barrier, zones) else {
-@@ -490,9 +568,33 @@ impl InputCaptureBarrierState {
+@@ -490,9 +568,33 @@
                      shm_buffer: None,
                      locked_pointer: None,
                      relative_pointer: None,
@@ -926,7 +908,7 @@ index 69776c6..535304a 100644
                      text_input: None,
                      text_commit_buffer: TextCommitBuffer::default(),
                  },
-@@ -602,12 +704,29 @@ impl InputCaptureBarrierState {
+@@ -602,12 +704,29 @@
      /// mapped so they can re-trigger later. Distinct from `destroy_session`
      /// (`Disable`/close), which tears the surfaces down entirely --
      /// `Release` per spec ends only the current activation.
@@ -958,7 +940,7 @@ index 69776c6..535304a 100644
      }
  
      /// Find the barrier a `wl_pointer` `Enter`/`Leave` event landed on, by
-@@ -672,6 +791,16 @@ impl InputCaptureBarrierState {
+@@ -672,6 +791,16 @@
              (session_id.clone(), barrier_id),
          );
          barrier_surface.locked_pointer = Some(locked);
@@ -975,10 +957,10 @@ index 69776c6..535304a 100644
          tracing::debug!(session_id = %session_id, barrier_id, "Pointer lock requested");
      }
  
-@@ -689,6 +818,12 @@ impl InputCaptureBarrierState {
-             if let Some(locked) = barrier_surface.locked_pointer.take() {
-                 locked.destroy();
-             }
+@@ -689,6 +818,12 @@
+             && let Some(locked) = barrier_surface.locked_pointer.take()
+         {
+             locked.destroy();
 +            if barrier_surface.grab_keyboard {
 +                barrier_surface
 +                    .layer_surface
@@ -988,7 +970,7 @@ index 69776c6..535304a 100644
          }
      }
  
-@@ -717,6 +852,7 @@ impl InputCaptureBarrierState {
+@@ -717,6 +852,7 @@
          let relative_pointer =
              relative_pointer_manager.get_relative_pointer(pointer, qh, key.clone());
          barrier_surface.relative_pointer = Some(relative_pointer);
@@ -996,7 +978,7 @@ index 69776c6..535304a 100644
  
          if barrier_surface.grab_keyboard {
              barrier_surface.layer_surface.set_keyboard_interactivity(
-@@ -724,7 +860,15 @@ impl InputCaptureBarrierState {
+@@ -724,7 +860,15 @@
              );
              barrier_surface.wl_surface.commit();
          }
@@ -1013,7 +995,7 @@ index 69776c6..535304a 100644
  
          tracing::info!(session_id = %session_id, barrier_id, "InputCapture barrier activated");
          self.send_activation_event(InputCaptureActivationEvent::Activated {
-@@ -739,21 +883,28 @@ impl InputCaptureBarrierState {
+@@ -739,21 +883,28 @@
      /// objects and report `Deactivated`.
      pub fn on_unlocked(&mut self, session_id: &str, barrier_id: u32) {
          let mut cursor_position = None;
@@ -1049,12 +1031,15 @@ index 69776c6..535304a 100644
      }
  
      /// Handle `zwp_relative_pointer_v1.RelativeMotion`: accumulate onto the
-@@ -766,17 +917,95 @@ impl InputCaptureBarrierState {
+@@ -766,16 +917,95 @@
          dy: f64,
          time_usec: u64,
      ) {
 -        if let Some(barrier_surface) = self.surfaces.get_mut(&(session_id.to_string(), barrier_id))
+-            && let Some((x, y)) = &mut barrier_surface.last_cursor_position
 -        {
+-            *x += dx;
+-            *y += dy;
 +        let key = (session_id.to_string(), barrier_id);
 +        let mut reactivate_at = None;
 +        let mut forward_motion = false;
@@ -1065,10 +1050,10 @@ index 69776c6..535304a 100644
 +                return;
 +            }
 +
-             if let Some((x, y)) = &mut barrier_surface.last_cursor_position {
-                 *x += dx;
-                 *y += dy;
-             }
++            if let Some((x, y)) = &mut barrier_surface.last_cursor_position {
++                *x += dx;
++                *y += dy;
++            }
 +
 +            if barrier_surface.capture_active {
 +                forward_motion = true;
@@ -1151,7 +1136,7 @@ index 69776c6..535304a 100644
              time_usec,
          });
      }
-@@ -849,6 +1078,10 @@ impl InputCaptureBarrierState {
+@@ -848,6 +1078,10 @@
          let Some(barrier_surface) = self.surfaces.get_mut(&key) else {
              return;
          };
@@ -1162,7 +1147,7 @@ index 69776c6..535304a 100644
          let Some(text) = barrier_surface.text_commit_buffer.on_done() else {
              return;
          };
-@@ -860,11 +1093,11 @@ impl InputCaptureBarrierState {
+@@ -859,11 +1093,11 @@
  
      /// Handle `wl_keyboard.Key` while a barrier surface holds focus.
      pub fn on_keyboard_key(&self, keycode: u32, pressed: bool, time_usec: u64) {
@@ -1176,7 +1161,7 @@ index 69776c6..535304a 100644
              keycode,
              pressed,
              time_usec,
-@@ -873,11 +1106,11 @@ impl InputCaptureBarrierState {
+@@ -872,11 +1106,11 @@
  
      /// Handle `wl_keyboard.Modifiers` while a barrier surface holds focus.
      pub fn on_keyboard_modifiers(&self, depressed: u32, latched: u32, locked: u32, group: u32) {
@@ -1190,7 +1175,7 @@ index 69776c6..535304a 100644
              depressed,
              latched,
              locked,
-@@ -885,6 +1118,22 @@ impl InputCaptureBarrierState {
+@@ -884,6 +1118,22 @@
          });
      }
  
@@ -1213,7 +1198,7 @@ index 69776c6..535304a 100644
      /// Send an activation-lifecycle event to the async bridge task, if one
      /// is configured. `UnboundedSender::send` is non-blocking and safe to
      /// call from this `!Send`, synchronous Wayland-thread dispatch context
-@@ -901,16 +1150,20 @@ impl InputCaptureBarrierState {
+@@ -900,16 +1150,20 @@
  /// Wayland protocol object hygiene only -- callers handle any
  /// D-Bus-visible deactivation separately.
  fn destroy_lock_objects_mut(surface: &mut BarrierSurface) {
@@ -1238,7 +1223,7 @@ index 69776c6..535304a 100644
      if was_active && surface.grab_keyboard {
          surface
              .layer_surface
-@@ -983,6 +1236,44 @@ mod tests {
+@@ -982,6 +1236,44 @@
          assert_eq!(buf.on_done(), None);
      }
  
@@ -1283,11 +1268,10 @@ index 69776c6..535304a 100644
      fn zone(x: i32, y: i32, width: u32, height: u32) -> InputCaptureZone {
          InputCaptureZone {
              width,
-diff --git a/src/wayland/mod.rs b/src/wayland/mod.rs
-index 3e773f0..30c5e71 100644
---- a/src/wayland/mod.rs
-+++ b/src/wayland/mod.rs
-@@ -179,6 +179,10 @@ pub enum InputCaptureCommand {
+diff -Naur a/src/wayland/mod.rs b/src/wayland/mod.rs
+--- a/src/wayland/mod.rs	2026-11-07 13:34:59.000000000 +0800
++++ b/src/wayland/mod.rs	2026-11-09 09:54:14.228023600 +0800
+@@ -175,6 +175,10 @@
      ReleaseActiveLock {
          /// Session handle.
          session_id: String,
@@ -1298,7 +1282,7 @@ index 3e773f0..30c5e71 100644
      },
  }
  
-@@ -747,7 +751,7 @@ impl WaylandConnection {
+@@ -726,7 +730,7 @@
                  .input_capture
                  .surfaces
                  .values()
@@ -1307,7 +1291,7 @@ index 3e773f0..30c5e71 100644
                  .and_then(|s| {
                      s.last_cursor_position
                          .map(|(x, y)| (s.session_id.clone(), x, y))
-@@ -1073,8 +1077,13 @@ impl WaylandConnection {
+@@ -1029,8 +1033,13 @@
                  InputCaptureCommand::DestroySession { session_id } => {
                      self.state.input_capture.destroy_session(&session_id);
                  }
@@ -1323,6 +1307,3 @@ index 3e773f0..30c5e71 100644
                  }
              }
          }
--- 
-2.55.0
-
