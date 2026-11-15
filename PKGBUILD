@@ -2,17 +2,16 @@
 pkgname=librewolf-extension-kagisearch-bin
 _extname=kagisearch
 # renovate: datasource=custom.amo depName=kagisearch
-pkgver=0.7.6
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="Kagi Search browser extension for LibreWolf"
 arch=('any')
 url="https://kagi.com/search"
 license=('custom')
 depends=('librewolf')
-makedepends=('unzip')
 _file_id="kagisearch-${pkgver}.xpi"
-source=("${_file_id}::https://addons.mozilla.org/firefox/downloads/file/4429158/kagisearch-${pkgver}.xpi")
-sha256sums=('51cac0f2f57e3d7671d502df66a6019a8ed3a280e690249f09dcda0fb570990f')
+source=("${_file_id}::https://addons.mozilla.org/firefox/downloads/file/5244301/kagisearch-${pkgver}.xpi")
+sha256sums=('8ef7beb36edecbac778cfb20cb630ce4fb28e67661db0367a06b6726759e9430')
 noextract=("${_file_id}")
 
 package() {
