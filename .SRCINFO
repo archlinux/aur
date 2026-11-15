@@ -1,6 +1,6 @@
 pkgbase = arkha-bin
 	pkgdesc = A fast graphical file manager (prebuilt binary)
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/dekart811/arkha
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = arkha-bin
 	provides = arkha
 	conflicts = arkha
 	options = !debug
-	source_x86_64 = https://github.com/dekart811/arkha/releases/download/v1.0.2/arkha-1.0.2-x86_64.tar.gz
-	sha256sums_x86_64 = db12fbc07feba0a7ce858b92bb85228f3e255f3cd361e83336fd373ab77930f0
+	source_x86_64 = https://github.com/dekart811/arkha/releases/download/v1.0.3/arkha-1.0.3-x86_64.tar.gz
+	sha256sums_x86_64 = 71c329e826895ba4c8cc7f494d9b9f13eb48c2c102ef1a586f91e94e417f9e12
 
 pkgname = arkha-bin

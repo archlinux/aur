@@ -2,7 +2,7 @@
 
 pkgname=arkha-bin
 _pkgname=arkha
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='A fast graphical file manager (prebuilt binary)'
 arch=('x86_64')
@@ -41,7 +41,7 @@ options=('!debug')
 # locale/, LICENSE and README.md. The checksum is set for each release (updpkgsums, then
 # makepkg --printsrcinfo > .SRCINFO).
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
-sha256sums_x86_64=('db12fbc07feba0a7ce858b92bb85228f3e255f3cd361e83336fd373ab77930f0')
+sha256sums_x86_64=('71c329e826895ba4c8cc7f494d9b9f13eb48c2c102ef1a586f91e94e417f9e12')
 
 package() {
   cd "$_pkgname-$pkgver-$CARCH"
