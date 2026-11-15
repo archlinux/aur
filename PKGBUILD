@@ -2,7 +2,7 @@
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Bastien Dejean <nihilhill@gmail.com>
 pkgname=bspwm-git
-pkgver=0.9.12.r1508.c5cf7d3
+pkgver=0.9.12.r1509.e11eff4
 pkgrel=1
 pkgdesc='A tiling window manager based on binary space partitioning'
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd $srcdir/$pkgname
 	printf "%s.r%s.%s" \
-		"$(git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g')" \
+		"$(git describe --tags | sed -E 's/-.*//')" \
 		"$(git rev-list --count HEAD)" \
 		"$(git rev-parse --short HEAD)"
 }
