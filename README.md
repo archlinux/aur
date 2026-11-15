@@ -9,7 +9,7 @@
 paru -S rustmusic
 ```
 
-当前仅提供 x86_64：上游暂只发布 `amd64` deb。arm64 版本待上游跟进。
+支持 x86_64 与 aarch64。
 
 ## Feedback
 

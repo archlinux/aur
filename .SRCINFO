@@ -4,6 +4,7 @@ pkgbase = rustmusic
 	pkgrel = 1
 	url = https://github.com/LingyunStudio/RustMusic
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	depends = alsa-lib
 	depends = cairo
@@ -20,5 +21,7 @@ pkgbase = rustmusic
 	b2sums = 5c150ef6311a8c820b2a1e29315c03569adf9fc25072f65d2e3110262455eb49ea0cff7d13862abe596c82644a99586559ff89a47deee438518d8081e6c351cc
 	source_x86_64 = https://github.com/LingyunStudio/RustMusic/releases/download/v0.7.4/RustMusic_0.7.4_amd64.deb
 	b2sums_x86_64 = 2cb3a7ec144fe60578c4674c1eedbc0bda38af3902aef15405d6926de87c52a45bdebc4faca32776524fecc43bb968849ddf4141c7c7831f424594d6a5279bfd
+	source_aarch64 = https://github.com/LingyunStudio/RustMusic/releases/download/v0.7.4/RustMusic_0.7.4_arm64.deb
+	b2sums_aarch64 = 96ca03f0fe2986fc878c7ae165a275fd63fa8ff200f9b5ecc211c3a7af5eab29051b53072127f9771c1b00934d27de7c65cf80ea0722c44c7523f2a60c72b41a
 
 pkgname = rustmusic

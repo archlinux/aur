@@ -4,7 +4,7 @@ pkgname=rustmusic
 pkgver=0.7.4
 pkgrel=1
 pkgdesc="A high-performance music player built with Rust and Tauri"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/LingyunStudio/RustMusic"
 license=('Apache-2.0')
 # 按二进制的 NEEDED 逐条列出；libsoup3 由 webkit2gtk-4.1 传递引入但也被直接链接，
@@ -19,8 +19,10 @@ source=("LICENSE::https://raw.githubusercontent.com/LingyunStudio/RustMusic/main
 # （pkgbuild_editor._update_source_field），用 ${pkgver} 模板会让
 # update_source_url 静默失效。上游文件名含版本号，SRCDEST 不会命中旧缓存
 source_x86_64=("https://github.com/LingyunStudio/RustMusic/releases/download/v0.7.4/RustMusic_0.7.4_amd64.deb")
+source_aarch64=("https://github.com/LingyunStudio/RustMusic/releases/download/v0.7.4/RustMusic_0.7.4_arm64.deb")
 b2sums=('5c150ef6311a8c820b2a1e29315c03569adf9fc25072f65d2e3110262455eb49ea0cff7d13862abe596c82644a99586559ff89a47deee438518d8081e6c351cc')
 b2sums_x86_64=('2cb3a7ec144fe60578c4674c1eedbc0bda38af3902aef15405d6926de87c52a45bdebc4faca32776524fecc43bb968849ddf4141c7c7831f424594d6a5279bfd')
+b2sums_aarch64=('96ca03f0fe2986fc878c7ae165a275fd63fa8ff200f9b5ecc211c3a7af5eab29051b53072127f9771c1b00934d27de7c65cf80ea0722c44c7523f2a60c72b41a')
 
 package() {
     # 数据层是 data.tar.gz（非 xz），按解包后实际出现的文件名取
