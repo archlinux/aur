@@ -1,6 +1,6 @@
 pkgbase = cyberdropdownloader
 	pkgdesc = Bulk asynchronous downloader for multiple file hosts
-	pkgver = 10.15.3
+	pkgver = 10.16.0
 	pkgrel = 1
 	url = https://github.com/Cyberdrop-DL/cyberdrop-dl
 	arch = any
@@ -44,7 +44,7 @@ pkgbase = cyberdropdownloader
 	optdepends = python-lxml: Faster HTML parsing
 	conflicts = cyberdrop-dl
 	conflicts = cyberdrop-dl-git
-	source = https://files.pythonhosted.org/packages/source/c/cyberdrop_dl_patched/cyberdrop_dl_patched-10.15.3.tar.gz
-	sha256sums = 8f72e256c243902a5b6674323036907f85180872168ba282e21293d71ae5281d
+	source = https://files.pythonhosted.org/packages/source/c/cyberdrop_dl_patched/cyberdrop_dl_patched-10.16.0.tar.gz
+	sha256sums = 1d66714f4b3ee847feed1b197a1d574e3b242250ffb5c0d7ee0e42823ade59dd
 
 pkgname = cyberdropdownloader
