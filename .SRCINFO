@@ -1,0 +1,26 @@
+pkgbase = goatty-bin
+	pkgdesc = GPU-rendered terminal with persistent sessions
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/goatty-dev/goatty
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libstdc++
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = zsh: the managed shell (without it goatty starts your login shell)
+	provides = goatty
+	conflicts = goatty
+	options = !strip
+	options = !debug
+	source = https://github.com/goatty-dev/goatty/releases/download/v0.1.0/goatty-0.1.0-x86_64-linux.tar.gz
+	sha256sums = 1df7aa5b08f4b4f50d343048d06c844f06901643ef6f2d0aae438f0a1aeacc87
+
+pkgname = goatty-bin
