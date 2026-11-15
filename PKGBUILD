@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=apkscope
-pkgver=0.9.2
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="Android APK decompiler, xrefs, API recon and MCP server, with native viewer"
 arch=('x86_64')
 url="https://github.com/suffixing/apkscope"
@@ -23,7 +23,7 @@ makedepends=('cargo')
 # Cargo.toml's own `lto = true` still applies to the Rust code.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('05406efd6dca5f967fd22d846fe21e32046d79c5132b976cf14a49ef0b15033c')
+sha256sums=('0dc7a355be2e331f3d40868bd636785f2faa476b388eb7ca3e2e34f0ae4e20ba')
 
 # glutin's sys crates generate their bindings into target/ during the build and
 # rustc records the generated file's path in panic metadata, so the binary ships
