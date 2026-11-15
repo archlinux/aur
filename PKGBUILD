@@ -1,6 +1,6 @@
 # Maintainer: WgpArch <wgparch@riseup.net>
 pkgname=aur-security-dashboard
-pkgver=1.3.5
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="A forensic-grade, local SIEM dashboard for Arch Linux to monitor system integrity, audit AUR packages, and hunt anomalies."
 arch=('any')
@@ -10,7 +10,6 @@ depends=('python' 'python-gobject' 'gtk4')
 makedepends=('git')
 source=("git+https://github.com/WgpArch/aur-security-dashboard.git#tag=v${pkgver}")
 sha256sums=('SKIP')
-options=('!git')
 
 package() {
     cd "$srcdir/$pkgname"
