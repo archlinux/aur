@@ -1,0 +1,20 @@
+pkgbase = vlfstatus-git
+	pkgdesc = Lightweight, feature-packed bash status bar generator for i3bar and swaybar with live AI agent quota tracking
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Vikyek/vlfstatus
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = networkmanager
+	depends = libpulse
+	optdepends = python: For live AI quota tracking daemon (fetch_quota.py)
+	optdepends = python-secretstorage: For reading tokens from system keyring
+	optdepends = agy-cli: For checking/displaying Google Cloud Code quota
+	provides = vlfstatus
+	conflicts = vlfstatus
+	source = vlfstatus-git::git+https://github.com/Vikyek/vlfstatus.git
+	sha256sums = SKIP
+
+pkgname = vlfstatus-git
