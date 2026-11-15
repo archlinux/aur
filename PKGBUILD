@@ -9,7 +9,7 @@
 # sha256sums to its archive, and pkgrel.
 
 pkgname=hyprmasq
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Computer use for Hyprland: an MCP server and tools for per-window screenshots and input'
 arch=(x86_64)
@@ -18,7 +18,7 @@ license=(MIT)
 depends=(ffmpeg glibc "hyprmasq-plugin=$pkgver" jq libei libxkbcommon sh)
 makedepends=(go)
 source=("hyprmasq-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5f80b641f5347f805f8cfdc9b9685cfce9413452a264e3de83552f5ba25bc2ae')
+sha256sums=('32df18ed130fdf2e4f37fdd61874709648d4755806a4686a8416812f98ae052b')
 
 # Keeps the modules in $srcdir, uses the installed Go only, and passes makepkg's flags.
 _go() {
