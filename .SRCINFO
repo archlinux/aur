@@ -1,7 +1,7 @@
 pkgbase = pi-ext-background
 	pkgdesc = Run long commands in the background and wake the Pi coding agent when they finish
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Pringled/pi-extensions
 	install = pi-ext-background.install
 	arch = any

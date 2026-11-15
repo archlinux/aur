@@ -2,14 +2,14 @@
 
 pkgname=pi-ext-background
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Run long commands in the background and wake the Pi coding agent when they finish'
 arch=('any')
 url='https://github.com/Pringled/pi-extensions'
 license=('MIT')
 install="${pkgname}.install"
 
-_pi_pkgroot=/usr/lib/pi/packages
+_pi_pkgroot=/usr/share/pi/extensions
 _piname=pi-background
 _npmname=pi-background
 
