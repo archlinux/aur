@@ -11,6 +11,7 @@ license=('custom')
 depends=(
     'alsa-lib' 'fontconfig' 'gcc-libs' 'glibc' 'libglvnd' 'libx11'
     'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'openssl' 'wayland'
+    'gst-plugins-base' 'gst-plugins-good' 'gst-libav'
 )
 makedepends=('curl' 'jq')
 provides=('argon-chat')
