@@ -1,0 +1,26 @@
+pkgbase = waypointer-bin
+	pkgdesc = A tiny hand on a stick that points at things on your screen (upstream binary)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Felitendo/waypointer
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = kwin: shortcuts, Alt and Shift, and panels that stay usable on KDE Plasma
+	optdepends = xdg-desktop-portal: picking the picture for your own hand
+	provides = waypointer
+	conflicts = waypointer
+	noextract = waypointer-0.1.1-arch-x86_64.tar.zst
+	options = !debug
+	source = waypointer-0.1.1-arch-x86_64.tar.zst::https://github.com/Felitendo/waypointer/releases/download/v0.1.1/waypointer-0.1.1-arch-x86_64.tar.zst
+	sha256sums = 9b9355b8e7fc3688a24a047f80867b7b0a3ea0501a05fd1ee8a5a19cb5e41b99
+
+pkgname = waypointer-bin
