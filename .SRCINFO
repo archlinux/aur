@@ -1,6 +1,6 @@
 pkgbase = virsh-tui
 	pkgdesc = Keyboard-driven terminal UI for libvirt/virsh with vim keys and live graphs
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/SyscallBrain/virsh-tui
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = virsh-tui
 	optdepends = virt-install: the new domain wizard
 	optdepends = virt-viewer: the graphical viewer
 	options = !debug
-	source = virsh-tui-0.3.0.tar.gz::https://github.com/SyscallBrain/virsh-tui/archive/v0.3.0.tar.gz
-	sha256sums = 347e01e8a08f15c82c933fe009597a722f2dd3ec99f1e0da89dc500300157e8d
+	source = virsh-tui-0.3.1.tar.gz::https://github.com/SyscallBrain/virsh-tui/archive/v0.3.1.tar.gz
+	sha256sums = e6a1f1b4dc1fb55ec6a95e1b2fa457f990a90ced586f490941edb650fae403db
 
 pkgname = virsh-tui

@@ -3,7 +3,7 @@
 # AUR package built from source. scripts/aur.sh fills in pkgver and the
 # checksum of the release tarball and writes .SRCINFO; see docs/RELEASE.md.
 pkgname=virsh-tui
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Keyboard-driven terminal UI for libvirt/virsh with vim keys and live graphs"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=('virt-install: the new domain wizard'
 # The release profile already strips the binary: a -debug package would be empty.
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('347e01e8a08f15c82c933fe009597a722f2dd3ec99f1e0da89dc500300157e8d')
+sha256sums=('e6a1f1b4dc1fb55ec6a95e1b2fa457f990a90ced586f490941edb650fae403db')
 
 prepare() {
   cd "$pkgname-$pkgver"
