@@ -1,6 +1,6 @@
 pkgbase = kestrel-nvr-bin
 	pkgdesc = Your cameras, recordings and events in one place, with a server for every device (prebuilt)
-	pkgver = 0.5.37
+	pkgver = 0.5.38
 	pkgrel = 1
 	url = https://github.com/timmo001/kestrel
 	install = kestrel-nvr.install
@@ -29,9 +29,9 @@ pkgbase = kestrel-nvr-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = kestrel-nvr-0.5.37-linux-x86_64.tar.gz::https://github.com/timmo001/kestrel/releases/download/0.5.37/kestrel-nvr-0.5.37-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 2c358f607f47404aba7b32bf580156db34cdabc65f9bb0dd862f9a09219915b6
-	source_aarch64 = kestrel-nvr-0.5.37-linux-aarch64.tar.gz::https://github.com/timmo001/kestrel/releases/download/0.5.37/kestrel-nvr-0.5.37-linux-aarch64.tar.gz
-	sha256sums_aarch64 = ee81f232ac8a133524fb1f9dbeea905d5d21c1b8ed1d22b5c5ae8e2eca436759
+	source_x86_64 = kestrel-nvr-0.5.38-linux-x86_64.tar.gz::https://github.com/timmo001/kestrel/releases/download/0.5.38/kestrel-nvr-0.5.38-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 60118bd3206b3fa410bd4f9f79391b0041f952470a77e70c203f679c493b31aa
+	source_aarch64 = kestrel-nvr-0.5.38-linux-aarch64.tar.gz::https://github.com/timmo001/kestrel/releases/download/0.5.38/kestrel-nvr-0.5.38-linux-aarch64.tar.gz
+	sha256sums_aarch64 = e582af5a531d778be35b0d937ee464a4ad1121fbca2343a1a714e71229971a1b
 
 pkgname = kestrel-nvr-bin
