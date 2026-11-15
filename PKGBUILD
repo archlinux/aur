@@ -1,6 +1,6 @@
 # Maintainer: Zachary Fogg <me@zfo.gg>
 pkgname=ascii-chat
-pkgver=0.6.0
+pkgver=0.16.30
 pkgrel=1
 pkgdesc="Video chat in your terminal"
 arch=('x86_64' 'aarch64')
@@ -22,10 +22,10 @@ source_x86_64=("$pkgname-$pkgver-Linux-amd64.tar.gz::https://github.com/zfogg/$p
                "$pkgname-$pkgver-Linux-amd64.tar.gz.asc::https://github.com/zfogg/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-Linux-amd64.tar.gz.asc")
 source_aarch64=("$pkgname-$pkgver-Linux-arm64.tar.gz::https://github.com/zfogg/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-Linux-arm64.tar.gz"
                 "$pkgname-$pkgver-Linux-arm64.tar.gz.asc::https://github.com/zfogg/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-Linux-arm64.tar.gz.asc")
-sha256sums_x86_64=('0f90e6279d2474629c0f3849aca29e6d319f1286204b91fa7f63b149d5780c4f'
-                   '53853711f453f428ea7521ceb866064e2296db6a369294a6dfbbebf5844c6da8')
-sha256sums_aarch64=('de404f0f8cd02abc3456ab4ecdcfd1fe318705c47be7409329f05fac1a50efa5'
-                    '22e370cc446ac539f30962edbdea048f62f7072600ac3be9177fe844acd1149e')
+sha256sums_x86_64=('72a647a3b0dd6d6ab68a23268085ca4c672799dc8f97b92388f1c5b2f6703e14'
+                   'd2e513aa98c74dec6b4c58b58e36bae70555f873336d4f36a7808827bf9214a5')
+sha256sums_aarch64=('5f4a8e7ae4617bcb4ed8eedea38987965b695651fbca22e8191cf219939186bf'
+                    '5d1194124e7e26c6318a21dabe53f47ffb7abdde06351eec8415561751c7eda2')
 
 package() {
   # Create directory structure
