@@ -1,12 +1,12 @@
-# Maintainer: Ackerman
+# rootapp-bin
 pkgname=rootapp-bin
 pkgver=0.9.163
-pkgrel=10
+pkgrel=11
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
 license=('LicenseRef-proprietary')
-# deps re-derived from payload 2026-11-14 (DT_NEEDED union + ASCII/UTF-16 dlopen probes vs live core/extra .files indexes; libvlc, libspeechd.so.2, libcurl.so.4, liblivekit_ffi GPU probes all confirmed in shipped binaries); UpdateNix dropped 2026-11-14 (no payload references; Velopack logs 'not installed via Velopack, skipping update checks'; /opt is root-owned so the in-place updater cannot run)
+# deps payload 2026-11-15
 depends=('alsa-lib'
          'at-spi2-core'
          'ca-certificates-mozilla'
