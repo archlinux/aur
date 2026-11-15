@@ -1,7 +1,7 @@
 pkgbase = faketty
 	pkgdesc = Wrapper to exec a command in a pty, even if redirecting the output
-	pkgver = 1.0.20
-	pkgrel = 2
+	pkgver = 1.0.21
+	pkgrel = 1
 	url = https://crates.io/crates/faketty
 	arch = aarch64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = faketty
 	makedepends = cargo
 	makedepends = cargo-auditable
 	depends = libgcc
-	source = faketty-1.0.20.tar.gz::https://static.crates.io/crates/faketty/1.0.20/download
-	sha512sums = b58962a1968a72e3949b5de19db85b9b14e95e9f47666614a453ff464d2d96c8ec99d166e880e61bfd63129ddb65ae6fef1b67aad8195261a3e9025841b5a393
+	source = faketty-1.0.21.tar.gz::https://static.crates.io/crates/faketty/1.0.21/download
+	sha512sums = fc996e7eab621682c17625abf1b0e82029681d9f17100ae9f7266d34bc329c173329fbde5d4fafe98ce6d59db762b513d2bca82d19c2ba0dffedec81177662c3
 
 pkgname = faketty

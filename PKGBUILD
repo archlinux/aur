@@ -2,10 +2,10 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 _crate="faketty"
-_cratever="1.0.20"
+_cratever="1.0.21"
 pkgname="faketty"
-pkgver=1.0.20
-pkgrel=2
+pkgver=1.0.21
+pkgrel=1
 pkgdesc='Wrapper to exec a command in a pty, even if redirecting the output'
 url='https://crates.io/crates/faketty'
 license=('Apache-2.0' 'MIT')
@@ -13,8 +13,8 @@ license=('Apache-2.0' 'MIT')
 depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
-source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/faketty/1.0.20/download")
-sha512sums=('b58962a1968a72e3949b5de19db85b9b14e95e9f47666614a453ff464d2d96c8ec99d166e880e61bfd63129ddb65ae6fef1b67aad8195261a3e9025841b5a393')
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/faketty/1.0.21/download")
+sha512sums=('fc996e7eab621682c17625abf1b0e82029681d9f17100ae9f7266d34bc329c173329fbde5d4fafe98ce6d59db762b513d2bca82d19c2ba0dffedec81177662c3')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_crate-$_cratever"
-	
+
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	CFLAGS+=" -ffat-lto-objects"
