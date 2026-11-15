@@ -4,12 +4,12 @@
 : ${_use_sodeps:=false}
 
 # separate submodule paths with :
-: ${_broken_modules=supportlibs/jni.hpp}
+: ${_broken_submodules=}
 
 _pkgname="retroshare"
 pkgname="$_pkgname-git"
-pkgver=0.6.7.3.r1028.gc11ae6b07
-pkgrel=1
+pkgver=0.6.7.3.r1127.gceac16fd3
+pkgrel=2
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail"
 url="https://github.com/retroshare/retroshare"
 license=('AGPL-3.0-only')
@@ -20,6 +20,7 @@ depends=(
   'json-c'
   'libxss'
   'miniupnpc'
+  'openssl-3'
   'qt6-5compat'
   'qt6-base'
   'qt6-multimedia'
@@ -44,10 +45,10 @@ prepare() {
   cd "$_pkgsrc"
 
   # fix submodules
-  local _module
-  for _module in ${_broken_modules//:/ }; do
-    local _url=$(git config -f .gitmodules "submodule.${_module}.url")
-    local _hash=$(git ls-remote "${_url}" master | awk '{print $1}')
+  local _module _url _hash
+  for _module in ${_broken_submodules//:/ }; do
+    _url=$(git config -f .gitmodules "submodule.${_module}.url")
+    _hash=$(git ls-remote "${_url}" master | awk '{print $1}')
     git update-index --add --cacheinfo 160000 "$_hash" "$_module"
   done
 
@@ -73,7 +74,8 @@ pkgver() {
 }
 
 build() {
-  export CXXFLAGS+=" -include cstring"
+  export CXXFLAGS+=" -include cstring -I/usr/include/openssl-3"
+  export LDFLAGS+=" -L/usr/lib/openssl-3"
 
   local _qmake_options=(
     CONFIG+=release
@@ -94,10 +96,10 @@ package() {
   if [[ "${_use_sodeps::1}" == "t" ]]; then
     eval "depends+=(
       'libbz2.so'    # bzip2
-      'libcrypto.so' # openssl
+      'libcrypto.so' # openssl-3
       'libjson-c.so' # json-c
       'libminiupnpc.so'
-      'libssl.so'    # openssl
+      'libssl.so'    # openssl-3
       'libz.so'      # zlib
     )"
   fi
