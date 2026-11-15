@@ -4,7 +4,7 @@ _pkgname=eglantine
 pkgname="eglantine-pgo-bin"
 pkgver=0.1.0_rc4
 _tag="v${pkgver//_/-}"
-pkgrel=2
+pkgrel=3
 pkgdesc="The Eglantine Nintendo Switch 2 emulator binary (PGO build)."
 arch=('x86_64')
 url="https://github.com/Eglantine-Community/Eglantine"
@@ -16,12 +16,20 @@ provides=('eglantine')
 options=(!strip)
 
 _archive="${_pkgname}-linux-x86_64-pgo.tar.gz"
-source=("${_archive}::https://github.com/Eglantine-Community/Eglantine/releases/download/${_tag}/${_archive}")
-sha256sums=('6751dc2a5fab9ffd43b7c70e38b592662ad95c53b67b12110635041a4b7827df')
+source=(
+    "${_archive}::https://github.com/Eglantine-Community/Eglantine/releases/download/${_tag}/${_archive}"
+    "dev.eglantine.eglantine.desktop::https://raw.githubusercontent.com/Eglantine-Community/Eglantine/nx2/dist/dev.eglantine.eglantine.desktop"
+    "dev.eden_emu.eden.svg::https://raw.githubusercontent.com/Eglantine-Community/Eglantine/nx2/dist/dev.eden_emu.eden.svg"
+)
+sha256sums=('6751dc2a5fab9ffd43b7c70e38b592662ad95c53b67b12110635041a4b7827df'
+            'fc112e7ab1d405045c72ea8ea748c781ab570c82016a733fbd9ccaebf43214b7'
+            'cfb13fb470acc7b45bc8708ff2839c9ff85dbf711166b3009d1c3d716b3f8c5a')
 
 package() {
   install -dm755 "${pkgdir}/opt/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/applications"
+  install -dm755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 
   install -Dm755 "${srcdir}/eglantine" "${pkgdir}/opt/${pkgname}/eglantine"
   if [ -f "${srcdir}/eden-cli" ]; then
@@ -35,6 +43,11 @@ package() {
   fi
 
   ln -s "/opt/${pkgname}/eglantine" "${pkgdir}/usr/bin/${_pkgname}"
+
+  install -Dm644 "${srcdir}/dev.eglantine.eglantine.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  sed -i "s|^Exec=.*|Exec=/usr/bin/${_pkgname} %U|" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+  install -Dm644 "${srcdir}/dev.eden_emu.eden.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/dev.eden_emu.eden.svg"
 }
 
 post_install() {
