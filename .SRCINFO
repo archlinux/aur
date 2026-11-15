@@ -1,6 +1,6 @@
 pkgbase = fontget
 	pkgdesc = A tiny, cross-platform CLI tool to install and manage fonts from the command line
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/Graphixa/FontGet
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = fontget
 	conflicts = fontget
 	provides = fontget
 	
-	source = fontget_2.7.0.tar.gz::https://github.com/Graphixa/FontGet/releases/download/v2.7.0/fontget-2.7.0.tar.gz
-	sha256sums = 98c7ffdea1256c59853ed7189c6a9834c759cd76bc03c29bb4e2053863201c96
+	source = fontget_2.8.0.tar.gz::https://github.com/Graphixa/FontGet/releases/download/v2.8.0/fontget-2.8.0.tar.gz
+	sha256sums = b5c425aedce652268a5202473b7dc2b0d5f4cd6a265e802b16a5e43daa2b81b7
 	
 pkgname = fontget
