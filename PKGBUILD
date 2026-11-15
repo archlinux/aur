@@ -1,5 +1,5 @@
 pkgname=music-tui
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A keyboard and mouse-driven terminal music player built with ratatui"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('yt-dlp: the Spotify and Explore tabs (finding and downloading songs
 options=('!lto')
 install=music-tui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d61fc10ed6e8929d1773a648a23895519db9bd8969c9284ef6706928c4307e38')
+sha256sums=('2801737c53eb65676b41236102e2a23e030fdc7dbbd107ca3955ff58e49b0293')
 
 build() {
     cd "$pkgname-$pkgver"
