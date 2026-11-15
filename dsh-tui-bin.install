@@ -20,8 +20,11 @@ sync_profile() {
     [ -n "$user" ] || return 0
     home="$(getent passwd "$user" | cut -d: -f6)"
     [ -n "$home" ] && [ -d "$home" ] || return 0
-    if ! timeout 300 runuser -u "$user" -- /usr/bin/dsh-tui update; then
+    if ! timeout 300 runuser -u "$user" -- env \
+        DSH_TUI_UPDATE_ENGINE=0 \
+        DSH_TUI_UPDATE_LAUNCHER=0 \
+        /usr/bin/dsh-tui update; then
         echo "dsh-tui: profile bootstrap failed; retry as $user with:" >&2
-        echo "  dsh-tui update" >&2
+        echo "env DSH_TUI_UPDATE_ENGINE=0 DSH_TUI_UPDATE_LAUNCHER=0 dsh-tui update" >&2
     fi
 }
