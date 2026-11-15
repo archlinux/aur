@@ -1,6 +1,6 @@
 pkgbase = pd2-trade-bin
 	pkgdesc = Project Diablo 2 app for price checking
-	pkgver = 0.11.2
+	pkgver = 0.11.3
 	pkgrel = 1
 	url = https://github.com/errolgr/pd2-trade
 	install = pd2-trade-bin.install
@@ -19,7 +19,7 @@ pkgbase = pd2-trade-bin
 	depends = less
 	options = !strip
 	options = !debug
-	source_x86_64 = PD2.Trader_0.11.2_amd64.deb::https://github.com/errolgr/pd2-trade/releases/download/app-v0.11.2/PD2.Trader_0.11.2_amd64.deb
-	sha256sums_x86_64 = a79d77f72709984f9f1e230a9eaa8b90dcb2cce089582cd0ecebe6631014350e
+	source_x86_64 = PD2.Trader_0.11.3_amd64.deb::https://github.com/errolgr/pd2-trade/releases/download/app-v0.11.3/PD2.Trader_0.11.3_amd64.deb
+	sha256sums_x86_64 = 25eadbbdde80e0aa65dbbade1b8edb3050efaec41a4817880f8845b70c955a46
 
 pkgname = pd2-trade-bin
