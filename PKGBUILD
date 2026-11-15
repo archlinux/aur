@@ -1,7 +1,7 @@
 # Maintainer: Ateles
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=sdrtop-bin
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc='Terminal monitor for SDR hardware'
 arch=('x86_64')
@@ -24,7 +24,7 @@ conflicts=('sdrtop')
 
 source_x86_64=("https://github.com/musithang/sdrtop/releases/download/v${pkgver}/sdrtop-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('5f9f06fc66d58b04e128a73eb1140a55f37f4ff4f42c1579724803a67e8b87c9')
+sha256sums_x86_64=('e9f5e041f4ebdeae604b2036e7877461fbf5799138a67ebaa87869ed7d96884b')
 
 package() {
     install -Dm755 "$srcdir/sdrtop-${pkgver}-x86_64-unknown-linux-gnu/sdrtop"    "$pkgdir/usr/bin/sdrtop"
