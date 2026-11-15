@@ -1,0 +1,39 @@
+# System-unit met User=bluegit-backup, config in /etc/bluegit-backup/config.yml
+# en gegevens in /var/lib/bluegit-backup. post_upgrade herstart de dienst.
+# backup= in de PKGBUILD laat een bestaande config.yml staan.
+
+_bb_run() {
+  if ! command -v systemctl >/dev/null 2>&1 || [[ ! -d /run/systemd/system ]]; then
+    echo "bluegit-backup: systemd draait niet (chroot of container). De service is niet aangepast."
+    return 0
+  fi
+  systemctl "$@" || true
+}
+
+post_install() {
+  systemd-sysusers bluegit-backup.conf || true
+  systemd-tmpfiles --create bluegit-backup.conf || true
+  _bb_run daemon-reload
+  cat <<'MSG'
+bluegit-backup: zet public_url in /etc/bluegit-backup/config.yml (het adres waarop
+BlueGit deze server bereikt) en start de dienst:
+  systemctl enable --now bluegit-backup.service
+Maak daarna in BlueGit onder Beheer > Backup een Backupserver-Key en koppel:
+  sudo -u bluegit-backup BLUEGIT_BACKUP_KEY=bgbk_… bluegit-backup connect --url https://git.example.com
+MSG
+}
+
+post_upgrade() {
+  systemd-sysusers bluegit-backup.conf || true
+  systemd-tmpfiles --create bluegit-backup.conf || true
+  _bb_run daemon-reload
+  _bb_run try-restart bluegit-backup.service
+}
+
+pre_remove() {
+  _bb_run disable --now bluegit-backup.service
+}
+
+post_remove() {
+  _bb_run daemon-reload
+}
