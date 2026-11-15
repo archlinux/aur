@@ -2,10 +2,10 @@
 
 pkgname=simple64
 pkgver=2024.12.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Nintendo64 emulator based on Mupen64Plus'
 arch=('x86_64')
-url='https://simple64.github.io/'
+url='https://github.com/dbermond/simple64/'
 license=('GPL-3.0-only')
 depends=(
     'glibc'

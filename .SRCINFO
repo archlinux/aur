@@ -1,8 +1,8 @@
 pkgbase = simple64
 	pkgdesc = Nintendo64 emulator based on Mupen64Plus
 	pkgver = 2024.12.1
-	pkgrel = 3
-	url = https://simple64.github.io/
+	pkgrel = 4
+	url = https://github.com/dbermond/simple64/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cmake
