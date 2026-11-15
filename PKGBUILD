@@ -16,7 +16,7 @@ optdepends=('mpv: voice-message and video playback'
 provides=('whatsatui')
 conflicts=('whatsatui')
 source=("whatsatui-$pkgver-x86_64.tar.gz::https://github.com/9M2PJU/whatsatui/releases/download/v$pkgver/whatsatui-$pkgver-x86_64.tar.gz")
-sha256sums=('359df0f77dd50b862b87c5e347c620b5dba3d2292c2c48e62db1a5f06adcc825')
+sha256sums=('b7d3123c7acf5dfe12e7138790b6c4baea43d86711f5510492262d3c4a9b768b')
 
 package() {
   install -Dm755 whatsapp-tui "$pkgdir/usr/bin/whatsapp-tui"
