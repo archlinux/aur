@@ -1,7 +1,7 @@
 # Maintainer: P6g9YHK6 <https://github.com/P6g9YHK6>
 pkgname=openpilot-cabana
-pkgver=2.0.20261024.gf2f9d5d420
-pkgrel=3
+pkgver=2.0.202611152031.g20536fb45d
+pkgrel=1
 epoch=1
 pkgdesc="CAN bus visualizer and DBC editor from comma.ai openpilot"
 arch=("x86_64")
@@ -29,7 +29,7 @@ conflicts=("openpilot-cabana-git")
 # Vendored FFmpeg and Python extension modules must stay as shipped.
 options=("!strip" "!debug" "!lto" "!buildflags")
 
-_commit=f2f9d5d4202def666d6fb446c32605bc6d2b8dd7
+_commit=20536fb45d0ecd4f058450c3727d893a4a3ddb32
 _root=/opt/openpilot-cabana
 source=("cabana.sh"
         "cabana.desktop"
