@@ -1,7 +1,7 @@
 # Maintainer: chadsr <git at ross dot ch>
 
 pkgname=sheprd
-pkgver=20261109.1 # renovate: datasource=github-releases depName=sheprd-labs/sheprd
+pkgver=20261115.1 # renovate: datasource=github-releases depName=sheprd-labs/sheprd
 pkgrel=1
 pkgdesc="Native GPUI client for an installed Herdr daemon (formerly herdr-gpui)"
 arch=('x86_64' 'aarch64')
@@ -34,7 +34,7 @@ conflicts=('herdr-gpui' "$pkgname-bin")
 replaces=('herdr-gpui')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('05c95cb0dd50028597305d7dd0cc88cf2593b13b3a05a8c7380a0a97261cbbbf223e31e49f7fc0f78c18061115022fa8980db631a523d0885e2f06b2292062ca')
+b2sums=('3453e6de35262d05f98853c577f87e01dfe5b86b57e238d6dc677f26bd78e66ed3b132c60dee9a45c42cbf559cc97daa112ea88142b5155b6af9e90d43be5d36')
 
 prepare() {
 	cd "$pkgname-$pkgver"
