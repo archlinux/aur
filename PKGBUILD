@@ -3,7 +3,7 @@
 
 pkgname=piaware-git
 _gitname=piaware
-pkgver=10.0.r0.g1557679
+pkgver=11.1.r0.g8480286
 pkgrel=1
 
 pkgdesc="Client-side package and programs for forwarding ADS-B data to FlightAware"
@@ -17,9 +17,11 @@ makedepends=('git' 'autoconf' 'tcl' 'python' 'tcllauncher')
 optdepends=('mlat-client: M-LAT support' 'net-tools')
 
 source=('piaware::git+https://github.com/flightaware/piaware'
-        'piaware.conf')
+        'piaware.conf'
+        'rehash.patch')
 md5sums=('SKIP'
-         'fc8d49cd7b2ba136a097501647ed105b')
+         'fc8d49cd7b2ba136a097501647ed105b'
+         '0da90971dd0b5836bd416c18fcdb984f')
 install=piaware-git.install
 backup=('etc/piaware.conf')
 
@@ -32,7 +34,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_gitname}"
-  #patch -Np0 < ../fixtclver.patch
+  patch -Np0 < ../rehash.patch
 }
 
 package() {
