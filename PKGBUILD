@@ -2,7 +2,7 @@
 
 pkgname=mailcraft-bin
 _pkgname=mailcraft
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Open-source native mail, calendar, contacts and tasks app, Outlook alternative (binary release)'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,8 @@ url='https://github.com/UCS-Care-Group/mailcraft'
 # crate that offers MIT or Apache-2.0 adds nothing; only the other
 # terms are listed. Left out: webpki-root-certs (CDLA-Permissive-2.0,
 # browser and Android builds only), clipboard-win and error-code
-# (BSL-1.0, Windows only), colored (MPL-2.0, test tooling only).
+# (BSL-1.0, Windows only), colored (MPL-2.0, test tooling only), the
+# uniffi crates (MPL-2.0, mobile app only).
 license=(
   # MailCraft
   'MIT OR Apache-2.0'
@@ -32,6 +33,8 @@ license=(
   'ISC'
   # foldhash (hashbrown, glifo)
   'Zlib'
+  # ksni (system tray icon)
+  'Unlicense'
   # Windows time zone names restated from the Unicode CLDR (crates/time);
   # yoke and zerofrom (read-fonts)
   'Unicode-3.0'
@@ -47,6 +50,7 @@ license=(
 # list follows the library names found in the binaries (same on x86_64
 # and aarch64). No libXrandr among them, unlike upstream's nfpm.yaml.
 depends=(
+  'ca-certificates'  # TLS roots, and the roots trusted for mail (S/MIME)
   'dbus'
   'glibc'
   'hicolor-icon-theme'
@@ -93,8 +97,8 @@ sha256sums=('24cae84af9daaafda42a085ebdbbfcd33e14b713b6449e312a018e32c2d3e07a'
             '56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             'cfc1cc505827f4c23eedc297975a0fd038268d41293f389dd8ff3b574aefab19')
-sha256sums_x86_64=('7fc41da4bf5a16e4e4535e9e34fe1e2df075c43e09e95dedfa03570aac8fb692')
-sha256sums_aarch64=('589c990c25f498f1cfde1d4077c60cd11d09c0e91fac3aa99ad66df2d7f17ae4')
+sha256sums_x86_64=('8f4f9aea71712b964a08031d6138bc2a295a25a78614f1fffca57a69784dfc69')
+sha256sums_aarch64=('5a14c55f199b15025934f8e793307959037ce2aa8e6598e9081cefed58ecd340')
 
 package() {
   cd "$_pkgname-$pkgver-linux-$CARCH"
