@@ -1,6 +1,6 @@
 pkgbase = librepaper
 	pkgdesc = A free collaborative writing, editing, and commenting platform
-	pkgver = 0.0.76
+	pkgver = 0.0.77
 	pkgrel = 1
 	url = https://github.com/LibrePaper/librepaper
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = librepaper
 	conflicts = librepaper-bin
 	options = !lto
 	options = !debug
-	source = librepaper-0.0.76.tar.gz::https://github.com/LibrePaper/librepaper/archive/v0.0.76.tar.gz
-	sha512sums = 4c076b8d5a42d8806e842c08fbad8e81c366826d9efe9bc9e1c39f0ca98e616d1f20d4efa8af405695c566d560fc04553283bd8718dfef2eba5eecdaf57c23b3
+	source = librepaper-0.0.77.tar.gz::https://github.com/LibrePaper/librepaper/archive/v0.0.77.tar.gz
+	sha512sums = 6dda706a1869f7af6b1f52cf8f2e2cb59d95c4685a756b932bd9c06eaa64efb7d9bb23560ada76d495b14a61eb8a739f3289524d3787d1f3ca9f05743087bf0e
 
 pkgname = librepaper
