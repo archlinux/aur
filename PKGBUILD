@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=11.0.beta3.r0.g93682d1f51a
+pkgver=11.0.beta7.r0.g8de8dad7bcb
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -115,7 +115,6 @@ optdepends=('benzene: for generating fusenes and benzenoids'
             'python-pycosat: picosat SAT solver'
             'python-pynormaliz: Normaliz backend for polyhedral computations'
             'python-pyscipopt: SCIP mixed integer linear programming backend'
-            'python-sphinx: to print documentation in HTML format'
             'regina: some methods related to low-dimensional topology'
             'rubiks: Rubiks cube algorithms'
             'sage-data-cunningham_tables: list of prime numbers in the Cunningham table'
@@ -143,12 +142,18 @@ makedepends=(bliss
 checkdepends=(python-pytest)
 conflicts=(sagemath)
 provides=(sagemath)
-source=(git+https://github.com/sagemath/sage#branch=develop
-        latte-count.patch
-        maxima-5.50.patch)
+source=(
+  git+https://github.com/sagemath/sage#branch=develop
+  latte-count.patch
+  maxima-5.50.patch
+  eclib-20261021.patch
+  highs-1.16.patch
+)
 sha256sums=('SKIP'
             'c3aa0243de70fe9c58772c83e748510b7af6950f98d01b3a819e6f8d1232c797'
-            'f13a81d59d5de3d2e1dbcd7127b7e2605d74a47e60a43d05867e8248a7577fb7')
+            'f13a81d59d5de3d2e1dbcd7127b7e2605d74a47e60a43d05867e8248a7577fb7'
+            '41679cfe9df3a6bd1dd05ff008c3c8b538885942759bf88b253a6e78ebd09906'
+            'fd04ad142992bdbbd2044c85d1af5352f3343100e4d011bbc5bc248538874649')
 
 pkgver() {
   cd sage
@@ -162,6 +167,10 @@ prepare(){
   patch -p1 -i ../latte-count.patch
 # fix tests with maxima 5.50
   patch -p1 -i ../maxima-5.50.patch
+# allow eclib 20261021
+  patch -p1 -i ../eclib-20261021.patch
+# support HiGHS 1.16
+  patch -p1 -i ../highs-1.16.patch
 }
 
 build() {
