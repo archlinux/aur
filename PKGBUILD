@@ -2,12 +2,12 @@
 pkgbase='jiralike'
 pkgname=('jiralike' 'jiralike-config-nginx' 'jiralike-fe')
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 options=(!debug)
 arch=('x86_64' 'i686')
 url='https://github.com/bokic/jiralike'
 license=('LGPL-3.0-only')
-makedepends=('cmake' 'gcc' 'nodejs' 'npm' 'fcgi' 'json-c' 'sqlite' 'cpp_ws_backend')
+makedepends=('cmake' 'gcc' 'nodejs' 'npm' 'fcgi' 'json-c' 'sqlite' 'cpp_ws_backend>=0.2.0')
 
 source=(
     "${pkgbase}-${pkgver}.tar.gz::https://github.com/bokic/${pkgbase}/archive/refs/tags/${pkgver}.tar.gz"
@@ -26,7 +26,7 @@ build() {
 
 package_jiralike() {
     pkgdesc='Jira-like project management FastCGI backend written in C++23 with automatic SQLite migrations'
-    depends=('glibc' 'libstdc++' 'libgcc' 'fcgi' 'json-c' 'sqlite' 'cpp_ws_backend')
+    depends=('glibc' 'libstdc++' 'libgcc' 'fcgi' 'json-c' 'sqlite' 'cpp_ws_backend>=0.2.0')
 
     install -Dm755 "$srcdir/$pkgbase-$pkgver/jiralike" "$pkgdir/opt/jiralike/jiralike"
     install -Dm644 "$srcdir/$pkgbase-$pkgver/jiralike.service" "$pkgdir/usr/lib/systemd/system/jiralike.service"
