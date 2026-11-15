@@ -1,0 +1,469 @@
+From 9cd8d1b03e6544f3d1040e08b5a9833731164c9a Mon Sep 17 00:00:00 2001
+From: Scott <158021536+nathawatc@users.noreply.github.com>
+Date: Fri, 13 Nov 2026 23:07:30 +0700
+Subject: [PATCH] fix(build): fail configure on unresolvable pkg-config
+ Requires (#16)
+
+## What
+
+- Add `howdy_pkg_check_modules()` (`cmake/howdy_pkg_config.cmake`) and
+use it for all pkg-config dependencies instead of `pkg_check_modules()`.
+- Before the lookup it runs the same `pkg-config --cflags --libs` query,
+using FindPkgConfig's `CMAKE_PREFIX_PATH` search paths, and fails
+configure if that query fails.
+- It re-queries once per build tree, so results that an unpatched CMake
+4.5 configure cached with empty flags are replaced.
+
+## Why
+
+Since CMake 4.5 (!12204), `pkg_check_modules(REQUIRED)` uses
+`--modversion`, which pkgconf answers without resolving `Requires`. It
+also ignores failing `--cflags`/`--libs` queries, so a package with a
+missing dependency is reported as found with empty flags.
+`native-cross-pkg-config-isolation` fails on CMake 4.5.0 because of
+this.
+
+It's unclear whether CMake intends this, so we carry the check
+ourselves. See #15.
+
+## Tests
+
+- New native cases: missing `Requires`, resolved `Requires`, packages
+found only through `CMAKE_PREFIX_PATH`, reconfigure after a failure, and
+a build tree cached before this change.
+- Expected-failure cases now check their error message.
+- The harness passes every per-run setting on every run. Previously a
+seeded `-D` value stayed in the build cache, so the second
+`stale-cache-isolation` configure never ran its checks.
+
+Results:
+- CMake 4.5.0 on the host: 109/109
+- Arch CI (CMake 4.4.5): 109/109
+- Nix CI (freedesktop.org pkg-config 0.29.2): 108/108
+
+Refs #15
+---
+ AGENTS.md                                     |   5 +
+ CMakeLists.txt                                |  15 +-
+ cmake/howdy_pkg_config.cmake                  |  91 ++++++++++
+ tests/cmake/pkg_config_fixture/CMakeLists.txt |  16 +-
+ tests/cmake/pkg_config_isolation_test.cmake   | 171 +++++++++++++++---
+ 5 files changed, 261 insertions(+), 37 deletions(-)
+ create mode 100644 cmake/howdy_pkg_config.cmake
+
+diff --git a/AGENTS.md b/AGENTS.md
+index 6ce67a9..8e2ed7d 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -28,6 +28,11 @@ cmake --build --preset debug --parallel "$(nproc)"
+ ctest --preset debug
+ ```
+ 
++Look up pkg-config dependencies with `howdy_pkg_check_modules()` (`cmake/howdy_pkg_config.cmake`),
++not `pkg_check_modules()` directly. Since CMake 4.5, `pkg_check_modules(REQUIRED)` accepts a package
++whose `Requires` cannot be resolved (issue #15); the wrapper first runs the same
++`pkg-config --cflags --libs` query and fails configure when it fails.
++
+ Use focused tests while iterating, then run the full relevant preset before closing a change. A
+ CTest suite may span several translation units; inspect CMake source lists before assuming one test
+ file owns the suite.
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 02909bd..590c305 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -30,6 +30,7 @@ include(CheckPIESupported)
+ include(CheckCXXSourceCompiles)
+ include(CMakePushCheckState)
+ find_package(PkgConfig REQUIRED)
++include(cmake/howdy_pkg_config.cmake)
+ set(howdy_pkg_config_prefixes OPENCV5 INIREADER YYJSON LIBCURL OPENSSL LIBEVDEV LIBACL)
+ howdy_isolate_cross_pkg_config(${howdy_pkg_config_prefixes})
+ find_package(Threads REQUIRED)
+@@ -145,13 +146,13 @@ add_link_options(
+  "LINKER:--as-needed"
+ )
+ 
+-pkg_check_modules(OPENCV5 REQUIRED IMPORTED_TARGET opencv5>=5.0.0)
+-pkg_check_modules(INIREADER REQUIRED IMPORTED_TARGET INIReader>=59)
+-pkg_check_modules(YYJSON REQUIRED IMPORTED_TARGET yyjson>=0.12.0)
+-pkg_check_modules(LIBCURL REQUIRED IMPORTED_TARGET libcurl>=7.85.0)
+-pkg_check_modules(OPENSSL REQUIRED IMPORTED_TARGET openssl)
+-pkg_check_modules(LIBEVDEV REQUIRED IMPORTED_TARGET libevdev)
+-pkg_check_modules(LIBACL REQUIRED IMPORTED_TARGET libacl)
++howdy_pkg_check_modules(OPENCV5 IMPORTED_TARGET opencv5>=5.0.0)
++howdy_pkg_check_modules(INIREADER IMPORTED_TARGET INIReader>=59)
++howdy_pkg_check_modules(YYJSON IMPORTED_TARGET yyjson>=0.12.0)
++howdy_pkg_check_modules(LIBCURL IMPORTED_TARGET libcurl>=7.85.0)
++howdy_pkg_check_modules(OPENSSL IMPORTED_TARGET openssl)
++howdy_pkg_check_modules(LIBEVDEV IMPORTED_TARGET libevdev)
++howdy_pkg_check_modules(LIBACL IMPORTED_TARGET libacl)
+ 
+ find_path(PAM_INCLUDE_DIR NAMES security/pam_modules.h REQUIRED)
+ find_library(PAM_LIBRARY NAMES pam REQUIRED)
+diff --git a/cmake/howdy_pkg_config.cmake b/cmake/howdy_pkg_config.cmake
+new file mode 100644
+index 0000000..cee3400
+--- /dev/null
++++ b/cmake/howdy_pkg_config.cmake
+@@ -0,0 +1,91 @@
++# Fail-closed pkg-config lookups.
++#
++# CMake 4.5 checks module existence with `pkg-config --modversion`, which pkgconf answers without
++# resolving `Requires`, and then ignores failing --cflags/--libs queries.
++# pkg_check_modules(REQUIRED) can therefore succeed with empty flags for a package whose
++# dependencies are missing (issue #15).
++# howdy_pkg_check_modules() first runs `pkg-config --cflags --libs` on the modules, failing
++# configure when that query fails, and then runs pkg_check_modules() for the results.
++
++# Mirrors the module-spec split in FindPkgConfig: "name", "name>=1.0", "name >= 1.0".
++function(_howdy_pkg_config_query out spec)
++  if(spec MATCHES "(.*[^>< \t])[ \t]*(=|[><]=?)[ \t]*(.*)")
++    set(query "${CMAKE_MATCH_1} ${CMAKE_MATCH_2} ${CMAKE_MATCH_3}")
++  else()
++    set(query "${spec}")
++  endif()
++  set(${out} "${query}" PARENT_SCOPE)
++endfunction()
++
++function(_howdy_require_pkg_config_resolvable prefix)
++  # FindPkgConfig's path helpers read these two names (stable since CMake 3.1).
++  set(_no_cmake_path 0)
++  set(_no_cmake_environment_path 0)
++  if(DEFINED PKG_CONFIG_USE_CMAKE_PREFIX_PATH AND NOT PKG_CONFIG_USE_CMAKE_PREFIX_PATH)
++    set(_no_cmake_path 1)
++    set(_no_cmake_environment_path 1)
++  endif()
++
++  set(queries)
++  foreach(arg IN LISTS ARGN)
++    if(arg STREQUAL "NO_CMAKE_PATH")
++      set(_no_cmake_path 1)
++    elseif(arg STREQUAL "NO_CMAKE_ENVIRONMENT_PATH")
++      set(_no_cmake_environment_path 1)
++    elseif(NOT arg MATCHES "^(REQUIRED|QUIET|IMPORTED_TARGET|GLOBAL)$")
++      _howdy_pkg_config_query(query "${arg}")
++      list(APPEND queries "${query}")
++    endif()
++  endforeach()
++
++  # Search the same CMAKE_PREFIX_PATH-derived directories as pkg_check_modules().
++  set(use_find_pkg_config_paths FALSE)
++  if(COMMAND _pkg_set_path_internal AND COMMAND _pkg_restore_path_internal)
++    set(use_find_pkg_config_paths TRUE)
++    _pkg_set_path_internal()
++  elseif(NOT (_no_cmake_path AND _no_cmake_environment_path))
++    message(
++      WARNING
++      "FindPkgConfig path helpers are unavailable; the pkg-config check for ${prefix} does not "
++      "search CMAKE_PREFIX_PATH"
++    )
++  endif()
++
++  # The same flag query pkg_check_modules() runs, for all modules at once; FindPkgConfig 4.5
++  # ignores its failure, so check it here.
++  execute_process(
++    COMMAND ${PKG_CONFIG_EXECUTABLE} ${PKG_CONFIG_ARGN} --print-errors --short-errors --cflags
++            --libs ${queries}
++    RESULT_VARIABLE result
++    OUTPUT_QUIET
++    ERROR_VARIABLE error
++    ERROR_STRIP_TRAILING_WHITESPACE
++  )
++
++  if(use_find_pkg_config_paths)
++    _pkg_restore_path_internal()
++  endif()
++
++  if(NOT result EQUAL 0)
++    list(JOIN queries ", " modules)
++    message(
++      FATAL_ERROR
++      "pkg-config cannot resolve the modules required for ${prefix} (${modules}):\n${error}"
++    )
++  endif()
++endfunction()
++
++# howdy_pkg_check_modules(<prefix> [IMPORTED_TARGET [GLOBAL]] [NO_CMAKE_PATH]
++#                         [NO_CMAKE_ENVIRONMENT_PATH] <module-spec>...)
++# Same as pkg_check_modules(<prefix> REQUIRED ...), but fails before the lookup when the modules'
++# Requires cannot be resolved. A macro keeps pkg_check_modules() results in the caller's scope.
++macro(howdy_pkg_check_modules prefix)
++  _howdy_require_pkg_config_resolvable(${prefix} ${ARGN})
++  # A build tree configured by plain pkg_check_modules() on CMake 4.5 may have cached a lookup
++  # with empty flags. Re-query once per build tree; later configures use FindPkgConfig's cache.
++  if(NOT _howdy_pkg_config_checked_${prefix})
++    unset(__pkg_config_checked_${prefix} CACHE)
++  endif()
++  pkg_check_modules(${prefix} REQUIRED ${ARGN})
++  set(_howdy_pkg_config_checked_${prefix} TRUE CACHE INTERNAL "")
++endmacro()
+diff --git a/tests/cmake/pkg_config_fixture/CMakeLists.txt b/tests/cmake/pkg_config_fixture/CMakeLists.txt
+index e089306..ec03ee8 100644
+--- a/tests/cmake/pkg_config_fixture/CMakeLists.txt
++++ b/tests/cmake/pkg_config_fixture/CMakeLists.txt
+@@ -3,25 +3,35 @@ project(howdy_pkg_config_fixture LANGUAGES NONE)
+ 
+ include("${HOWDY_SOURCE_DIR}/cmake/howdy_cross_compilation.cmake")
+ find_package(PkgConfig REQUIRED)
++include("${HOWDY_SOURCE_DIR}/cmake/howdy_pkg_config.cmake")
+ 
+ set(query "howdy-test-main>=1.0")
+ if(DEFINED HOWDY_TEST_QUERY)
+   set(query "${HOWDY_TEST_QUERY}")
+ endif()
+ 
++if(HOWDY_TEST_PLAIN_LOOKUP)
++  # Cache written by plain pkg_check_modules(), as before howdy_pkg_check_modules() existed
++  pkg_check_modules(HOWDY_TEST_MAIN REQUIRED ${query})
++  return()
++endif()
++
+ if(HOWDY_SEED_HOST_CACHE)
+   # Pre-seed cache with initial pkg-config lookup
+-  pkg_check_modules(HOWDY_TEST_MAIN REQUIRED ${query})
++  howdy_pkg_check_modules(HOWDY_TEST_MAIN ${query})
+   return()
+ endif()
+ 
+ howdy_isolate_cross_pkg_config(HOWDY_TEST_MAIN)
+-pkg_check_modules(HOWDY_TEST_MAIN REQUIRED ${query})
++howdy_pkg_check_modules(HOWDY_TEST_MAIN ${query})
+ 
+ if(DEFINED EXPECTED_VERSION AND NOT HOWDY_TEST_MAIN_VERSION STREQUAL EXPECTED_VERSION)
+   message(FATAL_ERROR "Expected version ${EXPECTED_VERSION}, got ${HOWDY_TEST_MAIN_VERSION}")
+ endif()
+ 
+ if(DEFINED EXPECTED_INCLUDE_DIR AND NOT HOWDY_TEST_MAIN_INCLUDE_DIRS STREQUAL EXPECTED_INCLUDE_DIR)
+-  message(FATAL_ERROR "Expected include dir ${EXPECTED_INCLUDE_DIR}, got ${HOWDY_TEST_MAIN_INCLUDE_DIRS}")
++  message(
++    FATAL_ERROR
++    "Expected include dir ${EXPECTED_INCLUDE_DIR}, got ${HOWDY_TEST_MAIN_INCLUDE_DIRS}"
++  )
+ endif()
+diff --git a/tests/cmake/pkg_config_isolation_test.cmake b/tests/cmake/pkg_config_isolation_test.cmake
+index 96c71f9..372b737 100644
+--- a/tests/cmake/pkg_config_isolation_test.cmake
++++ b/tests/cmake/pkg_config_isolation_test.cmake
+@@ -34,33 +34,66 @@ Version: 9.0
+ ]=])
+ 
+ function(run_configure name)
+-  cmake_parse_arguments(ARG "EXPECT_FAILURE;SEED" "LIBDIR;SYSROOT;CMAKE_SYSROOT;EXPECTED_VERSION;EXPECTED_INCLUDE_DIR;QUERY" "ROOTS" ${ARGN})
++  set(options EXPECT_FAILURE SEED NATIVE PLAIN)
++  set(
++    one_value_args
++    LIBDIR
++    SYSROOT
++    CMAKE_SYSROOT
++    EXPECTED_VERSION
++    EXPECTED_INCLUDE_DIR
++    QUERY
++    EXPECTED_ERROR
++    PKG_PATH
++    PREFIX_PATH
++  )
++  cmake_parse_arguments(ARG "${options}" "${one_value_args}" "ROOTS" ${ARGN})
++
++  set(pkg_path "${host_pc_dir}")
++  if(DEFINED ARG_PKG_PATH)
++    set(pkg_path "${ARG_PKG_PATH}")
++  endif()
+ 
+-  set(cmd "${CMAKE_COMMAND}")
++  set(env "PKG_CONFIG_PATH=${pkg_path}" "PKG_CONFIG_SYSROOT_DIR=${ARG_SYSROOT}")
+   if(DEFINED ARG_LIBDIR)
+-    set(cmd "${CMAKE_COMMAND}" -E env "PKG_CONFIG_LIBDIR=${ARG_LIBDIR}" "PKG_CONFIG_PATH=${host_pc_dir}" "PKG_CONFIG_SYSROOT_DIR=${ARG_SYSROOT}" "${CMAKE_COMMAND}")
+-  else()
+-    set(cmd "${CMAKE_COMMAND}" -E env "PKG_CONFIG_PATH=${host_pc_dir}" "PKG_CONFIG_SYSROOT_DIR=${ARG_SYSROOT}" "${CMAKE_COMMAND}")
++    list(PREPEND env "PKG_CONFIG_LIBDIR=${ARG_LIBDIR}")
+   endif()
++  set(cmd "${CMAKE_COMMAND}" -E env ${env} "${CMAKE_COMMAND}")
+ 
++  # Pass every per-run setting on every run: a -D value stays in the build tree's cache, so a
++  # later run in the same directory would otherwise inherit it (for example the SEED early return).
+   set(extra_args)
+-  if(DEFINED ARG_CMAKE_SYSROOT)
+-    list(APPEND extra_args "-DCMAKE_SYSROOT=${ARG_CMAKE_SYSROOT}")
+-  endif()
+-  if(DEFINED ARG_ROOTS)
+-    list(APPEND extra_args "-DCMAKE_FIND_ROOT_PATH=${ARG_ROOTS}")
+-  endif()
+-  if(DEFINED ARG_EXPECTED_VERSION)
+-    list(APPEND extra_args "-DEXPECTED_VERSION=${ARG_EXPECTED_VERSION}")
+-  endif()
+-  if(DEFINED ARG_EXPECTED_INCLUDE_DIR)
+-    list(APPEND extra_args "-DEXPECTED_INCLUDE_DIR=${ARG_EXPECTED_INCLUDE_DIR}")
+-  endif()
+-  if(DEFINED ARG_QUERY)
+-    list(APPEND extra_args "-DHOWDY_TEST_QUERY=${ARG_QUERY}")
+-  endif()
+-  if(ARG_SEED)
+-    list(APPEND extra_args "-DHOWDY_SEED_HOST_CACHE=TRUE")
++  set(
++    settings
++    CMAKE_SYSROOT
++    CMAKE_SYSROOT
++    CMAKE_FIND_ROOT_PATH
++    ROOTS
++    CMAKE_PREFIX_PATH
++    PREFIX_PATH
++    EXPECTED_VERSION
++    EXPECTED_VERSION
++    EXPECTED_INCLUDE_DIR
++    EXPECTED_INCLUDE_DIR
++    HOWDY_TEST_QUERY
++    QUERY
++  )
++  while(settings)
++    list(POP_FRONT settings variable argument)
++    if(DEFINED ARG_${argument})
++      list(APPEND extra_args "-D${variable}=${ARG_${argument}}")
++    else()
++      list(APPEND extra_args "-U${variable}")
++    endif()
++  endwhile()
++  list(
++    APPEND
++    extra_args
++    "-DHOWDY_TEST_PLAIN_LOOKUP=${ARG_PLAIN}"
++    "-DHOWDY_SEED_HOST_CACHE=${ARG_SEED}"
++  )
++  if(NOT ARG_NATIVE)
++    list(APPEND extra_args -DCMAKE_SYSTEM_NAME=Linux)
+   endif()
+ 
+   execute_process(
+@@ -68,7 +101,6 @@ function(run_configure name)
+       -S "${HOWDY_SOURCE_DIR}/tests/cmake/pkg_config_fixture"
+       -B "${HOWDY_TEST_ROOT}/${name}"
+       -G "${HOWDY_CMAKE_GENERATOR}"
+-      -DCMAKE_SYSTEM_NAME=Linux
+       "-DHOWDY_SOURCE_DIR=${HOWDY_SOURCE_DIR}"
+       ${extra_args}
+     RESULT_VARIABLE result
+@@ -78,7 +110,26 @@ function(run_configure name)
+ 
+   if(ARG_EXPECT_FAILURE)
+     if(result EQUAL 0)
+-      message(FATAL_ERROR "Case '${name}' expected configure failure, but succeeded:\n${output}\n${error}")
++      message(
++        FATAL_ERROR
++        "Case '${name}' expected configure failure, but succeeded:\n"
++        "${output}\n${error}"
++      )
++    endif()
++    # Require the intended failure, not any configure error. CMake wraps long messages, so
++    # compare with whitespace collapsed.
++    if(NOT DEFINED ARG_EXPECTED_ERROR)
++      message(FATAL_ERROR "Case '${name}' expects failure but sets no EXPECTED_ERROR")
++    endif()
++    string(REGEX REPLACE "[ \t\r\n]+" " " actual "${output} ${error}")
++    string(REGEX REPLACE "[ \t\r\n]+" " " expected "${ARG_EXPECTED_ERROR}")
++    string(FIND "${actual}" "${expected}" position)
++    if(position EQUAL -1)
++      message(
++        FATAL_ERROR
++        "Case '${name}' failed without the expected error '${ARG_EXPECTED_ERROR}':\n"
++        "${output}\n${error}"
++      )
+     endif()
+   else()
+     if(NOT result EQUAL 0)
+@@ -87,8 +138,21 @@ function(run_configure name)
+   endif()
+ endfunction()
+ 
++# Native lookup fails when a required package's Requires cannot be resolved
++set(empty_pc_dir "${HOWDY_TEST_ROOT}/empty")
++file(MAKE_DIRECTORY "${empty_pc_dir}")
++run_configure(native-missing-requires
++  NATIVE
++  LIBDIR "${target_pc_dir}"
++  PKG_PATH "${empty_pc_dir}"
++  EXPECT_FAILURE
++  EXPECTED_ERROR "pkg-config cannot resolve the modules required for HOWDY_TEST_MAIN")
++
+ # Hostile host PKG_CONFIG_PATH cannot supply missing target transitive dependency
+-run_configure(hostile-host-override LIBDIR "${target_pc_dir}" EXPECT_FAILURE)
++run_configure(hostile-host-override
++  LIBDIR "${target_pc_dir}"
++  EXPECT_FAILURE
++  EXPECTED_ERROR "pkg-config cannot resolve the modules required for HOWDY_TEST_MAIN")
+ 
+ # Supply valid target transitive dependency
+ file(WRITE "${target_pc_dir}/howdy-test-transitive.pc" [=[
+@@ -97,6 +161,56 @@ Description: target transitive package
+ Version: 2.0
+ ]=])
+ 
++# Native lookup succeeds once Requires resolve
++run_configure(native-resolved-requires
++  NATIVE
++  LIBDIR "${target_pc_dir}"
++  PKG_PATH "${empty_pc_dir}"
++  EXPECTED_VERSION "1.0")
++
++# After a failed configure, the same build tree configures with the real flags once the missing
++# dependency appears
++run_configure(native-missing-requires
++  NATIVE
++  LIBDIR "${target_pc_dir}"
++  PKG_PATH "${empty_pc_dir}"
++  EXPECTED_VERSION "1.0"
++  EXPECTED_INCLUDE_DIR "/usr/include")
++
++# Native lookup resolves packages and Requires found only through CMAKE_PREFIX_PATH
++run_configure(native-cmake-prefix-path
++  NATIVE
++  LIBDIR "${empty_pc_dir}"
++  PKG_PATH "${empty_pc_dir}"
++  PREFIX_PATH "${target_root}/usr"
++  EXPECTED_VERSION "1.0")
++
++# A build tree first configured by plain pkg_check_modules() is re-queried once by the wrapper;
++# later configures keep FindPkgConfig's cached result
++set(refresh_pc_dir "${HOWDY_TEST_ROOT}/refresh")
++file(MAKE_DIRECTORY "${refresh_pc_dir}")
++function(write_refresh_pc include_dir)
++  file(
++    WRITE "${refresh_pc_dir}/howdy-test-main.pc"
++    "Name: howdy-test-main\nDescription: refreshed package\nVersion: 1.0\n"
++    "Cflags: -I${include_dir}\n"
++  )
++endfunction()
++write_refresh_pc(/opt/old/include)
++run_configure(native-refresh NATIVE PLAIN LIBDIR "${refresh_pc_dir}" PKG_PATH "${empty_pc_dir}")
++write_refresh_pc(/opt/new/include)
++run_configure(native-refresh
++  NATIVE
++  LIBDIR "${refresh_pc_dir}"
++  PKG_PATH "${empty_pc_dir}"
++  EXPECTED_INCLUDE_DIR "/opt/new/include")
++write_refresh_pc(/opt/newer/include)
++run_configure(native-refresh
++  NATIVE
++  LIBDIR "${refresh_pc_dir}"
++  PKG_PATH "${empty_pc_dir}"
++  EXPECTED_INCLUDE_DIR "/opt/new/include")
++
+ # Valid target PKG_CONFIG_LIBDIR resolves target package metadata
+ run_configure(valid-target-libdir LIBDIR "${target_pc_dir}" EXPECTED_VERSION "1.0")
+ 
+@@ -117,9 +231,12 @@ file(MAKE_DIRECTORY "${empty_target_root}")
+ run_configure(empty-root-no-host-fallback
+   ROOTS "${empty_target_root}"
+   QUERY "libcurl"
+-  EXPECT_FAILURE)
++  EXPECT_FAILURE
++  EXPECTED_ERROR "pkg-config cannot resolve the modules required for HOWDY_TEST_MAIN")
+ 
+ # Missing target configuration (no LIBDIR, no sysroot/find root) fails explicitly
+-run_configure(missing-target-configuration EXPECT_FAILURE)
++run_configure(missing-target-configuration
++  EXPECT_FAILURE
++  EXPECTED_ERROR "Cross-compiling requires CMAKE_SYSROOT")
+ 
+ file(REMOVE_RECURSE "${HOWDY_TEST_ROOT}")
+-- 
+2.56.1
+
