@@ -26,7 +26,7 @@ pkgbase = cfait-bin
 	replaces = fairouille
 	options = !strip
 	options = !emptydirs
-	source = https://git.disroot.org/trougnouf/cfait/releases/download/v1.2.1/cfait-linux-v1.2.1.tar.xz
-	sha256sums = f169ac4ba00be36ad1a949d059b32c50aae085a7e3a96f81005a7b1fd6898c0c
+	source = https://github.com/trougnouf/cfait/releases/download/v1.2.1/cfait-linux-v1.2.1.tar.gz
+	sha256sums = 019b8f46a061c2e040e2ffcc1eb2356a80c3e1219a312756677abdce5303dacd
 
 pkgname = cfait-bin

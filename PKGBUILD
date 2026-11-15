@@ -27,14 +27,14 @@ optdepends=(
 )
 
 options=('!strip' '!emptydirs')
-source=("${url}/releases/download/v${pkgver}/cfait-linux-v${pkgver}.tar.xz")
-sha256sums=('f169ac4ba00be36ad1a949d059b32c50aae085a7e3a96f81005a7b1fd6898c0c')
+source=("https://github.com/trougnouf/cfait/releases/download/v${pkgver}/cfait-linux-v${pkgver}.tar.gz")
+sha256sums=('019b8f46a061c2e040e2ffcc1eb2356a80c3e1219a312756677abdce5303dacd')
 replaces=('rustycal' 'rustache' 'fairouille')
 provides=('cfait' 'cfait-gui')
 conflicts=('cfait')
 
 package() {
-    cd "cfait-linux-${pkgver}"
+    cd "cfait-v${pkgver}"
 
     install -Dm755 cfait -t "${pkgdir}/usr/bin/"
     install -Dm755 cfait-gui -t "${pkgdir}/usr/bin/"
