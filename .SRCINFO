@@ -1,6 +1,6 @@
 pkgbase = pindock-bin
 	pkgdesc = Pin and update Docker image digests in Dockerfiles and compose files
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/deadnews/pindock
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = pindock-bin
 	provides = pindock
 	conflicts = pindock
 	options = !strip
-	source_x86_64 = pindock_1.1.3_linux_amd64.tar.gz::https://github.com/deadnews/pindock/releases/download/v1.1.3/pindock_1.1.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7ef2653b5279751c91791bbe7adbcf312a1a21f8893884eccc36b5da3039bfb4
-	source_aarch64 = pindock_1.1.3_linux_arm64.tar.gz::https://github.com/deadnews/pindock/releases/download/v1.1.3/pindock_1.1.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = 61da5e0f8d10ce02303f335492efe347979429b31fdb5252f797a5a970cd59b1
+	source_x86_64 = pindock_1.1.4_linux_amd64.tar.gz::https://github.com/deadnews/pindock/releases/download/v1.1.4/pindock_1.1.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 114a91c141c96b44ddf73d32a17b20e2dc8bb809ee353f3e68ec932e2ff8bea8
+	source_aarch64 = pindock_1.1.4_linux_arm64.tar.gz::https://github.com/deadnews/pindock/releases/download/v1.1.4/pindock_1.1.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1aa00262b4814ae237b0ca784a6826d5a5a3e1895155fb0747b8249a7c8376a0
 
 pkgname = pindock-bin
