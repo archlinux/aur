@@ -3,8 +3,8 @@
 # Contributor: jmf <jmf at mesecons dot net>
 
 pkgname=flightgear-openscenegraph-git
-pkgver=3.6.5.r186.g94cf6995c
-pkgrel=3
+pkgver=3.6.5.r206.g9090931c7
+pkgrel=5
 pkgdesc="An open source, high performance real-time graphics toolkit"
 arch=(x86_64)
 url="https://gitlab.com/flightgear/openscenegraph"
@@ -21,7 +21,7 @@ makedepends=(git cmake fontconfig gdal gst-plugins-base-libs jasper librsvg libv
 # automagick deps: gtk2 gtkglext dcmtk coin (INVENTOR) sdl12-compat
 
 optdepends=(gdal gst-plugins-base-libs jasper librsvg libvncserver openexr poppler-glib)
-provides=(openscenegraph openthreads)
+provides=(openscenegraph=${pkgver} openthreads=${pkgver})
 conflicts=(openscenegraph openthreads)
 source=("flightgear-openscenegraph::git+https://gitlab.com/flightgear/openscenegraph.git#branch=next"
         "openscenegraph-ffmpeg4.4.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/openscenegraph/-/raw/main/ffmpeg4.4.patch"
@@ -44,10 +44,17 @@ prepare() {
 
 build() {
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
+  # OSG's LINK_CORELIB_DEFAULT links ${OPENGL_gl_LIBRARY}, which FindOpenGL
+  # leaves empty under the GLVND preference, so libosgViewer ends up with
+  # undefined glX symbols. Force the legacy GL library so it is linked.
+  # Keep OSG's default GLCORE profile: the next branch no longer uses legacy
+  # GL, and forcing GL2 makes FlightGear crash on startup.
   cmake -B build -S "flightgear-openscenegraph" -Wno-dev \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DOpenGL_GL_PREFERENCE=LEGACY \
+    -DOPENGL_PROFILE=GLCORE
 
   cmake --build build
 }

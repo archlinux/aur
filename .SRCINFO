@@ -1,7 +1,7 @@
 pkgbase = flightgear-openscenegraph-git
 	pkgdesc = An open source, high performance real-time graphics toolkit
-	pkgver = 3.6.5.r108.g925270d90
-	pkgrel = 3
+	pkgver = 3.6.5.r206.g9090931c7
+	pkgrel = 5
 	url = https://gitlab.com/flightgear/openscenegraph
 	arch = x86_64
 	license = custom:OSGPL
@@ -27,11 +27,11 @@ pkgbase = flightgear-openscenegraph-git
 	optdepends = libvncserver
 	optdepends = openexr
 	optdepends = poppler-glib
-	provides = openscenegraph
-	provides = openthreads
+	provides = openscenegraph=3.6.5.r206.g9090931c7
+	provides = openthreads=3.6.5.r206.g9090931c7
 	conflicts = openscenegraph
 	conflicts = openthreads
-	source = openscenegraph::git+https://gitlab.com/flightgear/openscenegraph.git
+	source = flightgear-openscenegraph::git+https://gitlab.com/flightgear/openscenegraph.git#branch=next
 	source = openscenegraph-ffmpeg4.4.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/openscenegraph/-/raw/main/ffmpeg4.4.patch
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/openscenegraph/-/raw/main/openscenegraph-openexr3.patch
 	sha256sums = SKIP
