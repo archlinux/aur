@@ -1,6 +1,6 @@
 # Maintainer: qwlp <https://github.com/qwlp>
 pkgname=omapdf-bin
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='Native Wayland PDF and EPUB reader built with GPUI and MuPDF (portable binary)'
 arch=('x86_64' 'aarch64')
@@ -11,17 +11,17 @@ optdepends=('xdg-desktop-portal: desktop file chooser integration')
 provides=("omapdf=$pkgver")
 conflicts=('omapdf')
 options=('!strip' '!debug')
-source=("omapdf-${pkgver}.tar.gz::$url/archive/refs/tags/v0.0.3.tar.gz")
-sha256sums=('ece3299f10485cdf9d1ffaaf405c89b54509a3d75b90ac7bbaa85c249081510d')
-source_x86_64=("omapdf-${pkgver}-x86_64::$url/releases/download/v0.0.3/omapdf-linux-x86_64")
-sha256sums_x86_64=('ecbd90761b85cb8a24ea0619763f22cfaffb7a3596cd9897a95ef3c653085d20')
-source_aarch64=("omapdf-${pkgver}-aarch64::$url/releases/download/v0.0.3/omapdf-linux-aarch64")
-sha256sums_aarch64=('492ca88310c0da22e9c4e3134e4f17dc4daa70d4ac84fb5d871a613ec1c3f012')
+source=("omapdf-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('09ed7b0c733e1254d1bae7cd1bf6c4ace813d53b0600b5a338f76de7170e5d8b')
+source_x86_64=("omapdf-${pkgver}-x86_64::$url/releases/download/v${pkgver}/omapdf-linux-x86_64")
+sha256sums_x86_64=('344eac36d59ecade68bdf45295fbcd616f05e58e0450024f46b231d4c03d01eb')
+source_aarch64=("omapdf-${pkgver}-aarch64::$url/releases/download/v${pkgver}/omapdf-linux-aarch64")
+sha256sums_aarch64=('faa222884cc1164516977935ba747e0628961505c9905d5c6b347787d551a4a2')
 noextract=("omapdf-${pkgver}-x86_64" "omapdf-${pkgver}-aarch64")
 
 package() {
   install -Dm755 "omapdf-${pkgver}-${CARCH}" "$pkgdir/usr/bin/omapdf"
-  cd omapdf-0.0.3
+  cd "omapdf-${pkgver}"
   install -Dm644 assets/io.omapdf.desktop "$pkgdir/usr/share/applications/io.omapdf.desktop"
   sed -i 's|Exec=omapdf %f|Exec=/usr/bin/omapdf %f|; s|TryExec=omapdf|TryExec=/usr/bin/omapdf|' \
     "$pkgdir/usr/share/applications/io.omapdf.desktop"
