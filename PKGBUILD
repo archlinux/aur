@@ -12,7 +12,7 @@
 
 _pkgname=resolve
 pkgname=davinci-resolve
-pkgver=21.1.1
+pkgver=21.2
 pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 source=("file://DaVinci_Resolve_${pkgver}_Linux.zip"
         "davinci-control-panels-setup.sh")
-sha256sums=('3135921e197ce3469ad1bc82768d4073059bda43ffdc9b43bed41d61a3efb12a'
+sha256sums=('45343f41c34d80c661efd054741403a2bc365a65b1e0ef29b2789121226e8bf1'
             'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8')
 install="${pkgname}.install"
 options=('!strip')
@@ -78,7 +78,9 @@ prepare() {
   while IFS= read -r -d '' _file; do
     [[ -f "${_file}" && $(od -t x1 -N 4 "${_file}") == *"7f 45 4c 46"* ]] || continue
     patchelf --set-rpath "$(IFS=":"; echo "${_patchelf_paths[*]}:\$ORIGIN")" "${_file}"
-  done < <(find "squashfs-root" -type f -size -32M -print0)
+    # Avoid to patch chrome-sandbox
+    # patchelf: cannot normalize PT_NOTE segment: non-contiguous SHT_NOTE sections
+  done < <(find "squashfs-root" -type f -size -32M ! -name chrome-sandbox -print0)
 
   while IFS= read -r -d '' _file; do
     sed -i "s|RESOLVE_INSTALL_LOCATION|/opt/${_pkgname}|g" "${_file}"
