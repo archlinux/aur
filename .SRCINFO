@@ -1,0 +1,20 @@
+pkgbase = bashlink
+	pkgdesc = A high reliable bash library.
+	pkgver = 1.0.296
+	pkgrel = 1
+	url = https://tsickert.com/bashlink
+	arch = any
+	license = CC-BY-4.0
+	depends = bash
+	depends = coreutils
+	depends = diffutils
+	depends = grep
+	depends = sed
+	optdepends = pv: for advanced filesystem operations and process visualization
+	provides = bashlink
+	provides = bashlink-doctest
+	provides = bashlink-document
+	source = https://registry.npmjs.org/bashlink/-/bashlink-1.0.296.tgz
+	sha256sums = 70657e9cc4cd63c464aeb41b4d36e4bcf43e50f51b4766757efe95a2fc368a16
+
+pkgname = bashlink
