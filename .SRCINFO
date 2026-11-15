@@ -1,6 +1,6 @@
 pkgbase = ionix-link-git
 	pkgdesc = Ionix Link desktop daemon: pair a phone for notifications, media, commands and remote input (git)
-	pkgver = r10.580e4ca
+	pkgver = r11.f4985b8
 	pkgrel = 1
 	url = https://github.com/LucasionGS/ionix-link
 	arch = any
@@ -18,7 +18,8 @@ pkgbase = ionix-link-git
 	optdepends = wtype: typing from the phone keyboard
 	optdepends = grim: screen view
 	optdepends = wf-recorder: video in the screen view (H.264)
-	optdepends = hyprland: list monitors for the screen view
+	optdepends = hyprland: list monitors for the screen view, and the phone desktop
+	optdepends = awww: the wallpaper on the phone desktop
 	optdepends = wlr-randr: list monitors on other wlroots compositors
 	optdepends = imagemagick: cover art and the wallpaper on the phone (ffmpeg works too)
 	optdepends = xdg-utils: open shared links and files, and find the download folder

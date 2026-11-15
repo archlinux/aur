@@ -4,7 +4,7 @@ pkgname=ionix-link-git
 _pkgname=ionix-link
 # Placeholder: aur-publish.sh patches this to the real r<count>.<hash> before
 # generating .SRCINFO. Keep it in the r-scheme.
-pkgver=r10.580e4ca
+pkgver=r11.f4985b8
 pkgrel=1
 pkgdesc="Ionix Link desktop daemon: pair a phone for notifications, media, commands and remote input (git)"
 arch=('any')
@@ -26,7 +26,8 @@ optdepends=(
     'wtype: typing from the phone keyboard'
     'grim: screen view'
     'wf-recorder: video in the screen view (H.264)'
-    'hyprland: list monitors for the screen view'
+    'hyprland: list monitors for the screen view, and the phone desktop'
+    'awww: the wallpaper on the phone desktop'
     'wlr-randr: list monitors on other wlroots compositors'
     'imagemagick: cover art and the wallpaper on the phone (ffmpeg works too)'
     'xdg-utils: open shared links and files, and find the download folder'
