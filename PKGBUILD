@@ -1,24 +1,50 @@
+# Maintainer: Vikyek
+
 pkgname=paru-wrapper
-pkgver=1.0.0
-pkgrel=5
-pkgdesc="A wrapper around paru that implements dependency-aware orphan cleaning and automatic local repository DB updates"
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="Custom paru wrapper providing automatic local AUR repo management and --gittinator VCS migrations"
 arch=('any')
 url="https://github.com/Vikyek/paru-wrapper"
-license=('GPL')
-depends=('paru' 'bash' 'sudo')
-install=paru-wrapper.install
-source=(
-    "paru-wrapper"
-    "update_mkvpkg_aur.py"
-    "pacman-wrapper"
+license=('GPL-3.0-only')
+depends=(
+    'paru'
+    'bash'
+    'python'
+    'jq'
+    'curl'
+    'git'
+    'sudo'
+    'coreutils'
 )
-sha256sums=('b677fa3cbf8acebd428bc7de21c53b2d7f0cdc568c50006d45e4f2373c30a2a9'
-            'a83f6524575cc1ed34e5fa9aabfbb0279cffe67f7c4c7ee098f06b23eb982479'
-            'ee973ee92b46451d187db5e6d0998bcd5d0917409c3e7774c36f4eb97478eb68')
+optdepends=(
+    'pacman: Arch Linux package manager'
+    'make: System build tools'
+    'snapper: For pre/post btrfs snapshots'
+    'rebuild-check: Check for packages needing rebuild'
+    'paru-completion-hook: For automatic paru bash/zsh/fish completion cache generation'
+    'anneal: Marking/unmarking packages in anneal queue'
+)
+install=paru-wrapper.install
+
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+)
+
+sha256sums=(
+    'SKIP'
+)
 
 package() {
-    # Install paru wrapper
-    install -Dm755 "${srcdir}/paru-wrapper" "${pkgdir}/usr/bin/paru-wrapper"
-    install -Dm755 "${srcdir}/update_mkvpkg_aur.py" "${pkgdir}/usr/bin/update_mkvpkg_aur.py"
-    install -Dm755 "${srcdir}/pacman-wrapper" "${pkgdir}/usr/bin/pacman-wrapper"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+
+    install -Dm755 paru-wrapper "${pkgdir}/usr/bin/paru-wrapper"
+    install -Dm755 paru-wrapper-gittinator "${pkgdir}/usr/lib/paru-wrapper/paru-wrapper-gittinator"
+    install -Dm755 paru-wrapper-gittinator-impl "${pkgdir}/usr/lib/paru-wrapper/paru-wrapper-gittinator-impl"
+    install -Dm755 pacman-wrapper "${pkgdir}/usr/bin/pacman-wrapper"
+    install -Dm755 update_mkvpkg_aur.py "${pkgdir}/usr/bin/update_mkvpkg_aur.py"
+    install -Dm644 man1/paru-wrapper.1 "${pkgdir}/usr/share/man/man1/paru-wrapper.1"
+    install -d "${pkgdir}/usr/lib/paru-wrapper/plugins.d"
+    install -Dm755 default-plugins/*.sh "${pkgdir}/usr/lib/paru-wrapper/plugins.d/"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
