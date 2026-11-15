@@ -1,7 +1,7 @@
 # Maintainer: p741633 <p741633@hotmail.com>
 
 pkgname=sonictree-bin
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Folder-based music player (AppImage binary)"
 provides=('sonictree')
@@ -19,7 +19,7 @@ source=(
     "LICENSE::https://downloads.sourceforge.net/sonictree/${pkgver}/LICENSE"
 )
 
-sha256sums=('bbb709b061d958b361839d5ca82896849b8eb780af68ae869ff66986e6a378e6'
+sha256sums=('9dbe0477cf1803fbda7ef7df409779e98223c53cf571781a44eb3c34f753497f'
             '7bbf82020c64143dc28a86ef0c7ba1182305a4a04fc07e081f077d92cf703558'
 )
 
