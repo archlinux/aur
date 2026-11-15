@@ -2,7 +2,7 @@
 
 _pkgname=crosspoint-sync
 pkgname=${_pkgname}
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Lightweight KoSync Server for Syncing Crosspoint/CrossInk stats & progress"
 arch=("any")
@@ -20,7 +20,7 @@ source=(
 	'sysusers.conf'
 	'tmpfiles.conf'
 )
-sha256sums=('5cb4866f3fbfc7126ea0c5aa6d384f12f62e3b173c063ab171ca5a4702020b9b'
+sha256sums=('d5a8481a61399ab27e17868d8c2cfa1a0bc5fa008c10e1bb3c9c6c3470d72d5b'
             'ce0f26820cb42766ca720ff8c1c5ec7cfda4e491189c861cc3b7af6ab2772df3'
             'bbdd8040565e60573327c6adcbdbab2e1ea1294353f511a89b9ade66399229fe'
             '497f0708a4465f8426a45d33c63f9a73930d31985411c03d57abb7266e3b2c98'
