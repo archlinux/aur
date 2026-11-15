@@ -1,6 +1,6 @@
 # Maintainer: Zachary Fogg <me@zfo.gg>
 pkgname=ascii-chat-git
-pkgver=0.5.51.r242.g4d678975
+pkgver=0.16.34.r3.gd266f978f
 pkgrel=1
 pkgdesc="Video chat in your terminal - runtime binary (development version)"
 arch=('x86_64' 'aarch64')
@@ -22,6 +22,19 @@ makedepends=(
   'libc++abi'
   'musl'
   'mimalloc'
+  'fftw'
+  'icu'
+  'libnghttp2'
+  'libnghttp3'
+  'libngtcp2'
+  'libuv'
+  'libutf8proc'
+  'libwebsockets'
+  'ffmpeg'
+  'fontconfig'
+  'freetype2'
+  'openssl'
+  'pcre2'
   'zstd'
   'zlib'
   'libsodium'
@@ -71,7 +84,7 @@ build() {
   cmake -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_MUSL=ON \
+    -DUSE_MUSL=OFF \
     -DASCIICHAT_LLVM_CONFIG_EXECUTABLE=/usr/bin/llvm-config \
     -DASCIICHAT_CLANG_EXECUTABLE=/usr/bin/clang \
     -DASCIICHAT_CLANG_PLUS_PLUS_EXECUTABLE=/usr/bin/clang++ \
