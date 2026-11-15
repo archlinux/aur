@@ -1,0 +1,12 @@
+pkgbase = polyfill-bundler
+	pkgdesc = Polyfill service.
+	pkgver = 1.0.137
+	pkgrel = 1
+	url = https://tsickert.com/polyfill-bundler
+	arch = any
+	license = CC-BY-4.0
+	depends = docker
+	source = https://github.com/thaibault/polyfill-bundler/archive/refs/tags/v1.0.137.tar.gz
+	sha256sums = ca37585eb69ccebbbe52ef6c8e84e3e8d7a8f80b5ae95b0bc7ac05221afdc8a5
+
+pkgname = polyfill-bundler
