@@ -2,7 +2,7 @@
 
 pkgname=featherwallet-bin
 _pkgname=featherwallet
-pkgver=2.8.1
+pkgver=2.9.1
 pkgrel=1
 pkgdesc='A free, open-source Monero light wallet.'
 url='https://featherwallet.org'
@@ -12,8 +12,8 @@ provides=('featherwallet' 'feather-wallet')
 conflicts=('featherwallet' 'featherwallet-appimage' 'feather-wallet' 'monero-feather' 'monero-feather-git' 'monero-feather-bin' 'monero-feather-appimage')
 source=("$url/files/releases/linux/feather-$pkgver-linux.zip"
         "LICENSE-$pkgver-$pkgrel::https://raw.githubusercontent.com/feather-wallet/feather/master/LICENSE")
-sha512sums=('88e012d95130b39c87d37385b58dcb3821f4480f66fe37f9c1826986689a8302f9aff8cd447eba18436471370338bfa376f23a2f04b1e1ce1e1b8e0a3c6f5d16'
-            'dc6652639f2b223a44d7c67807a36749ee0d1807d70c7d3e9b27a53566fe5a32f44b121c0deb2df466491b223f5a7aa87880d3544681d5ee308752f87da12406')
+sha512sums=('3896498397826563659b347827f8981feaf1cd5ea6d582959a78044b935c5260e343afd7e632f74c00e6cc31c986b4627288670e18cae9c00faf5073ec67eedc'
+            'a539d3639473eb197a374dc48c8f0096e389a8b5afb6c16a45a93dce44d701c0aeae5091f6e671738f2fff9b92ebe90447c5f974912f52527b0ed08c3613926d')
 
 package() {
   install -Dm644 "${srcdir}/LICENSE-$pkgver-$pkgrel" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
