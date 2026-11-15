@@ -9,7 +9,7 @@ _clapver=0.11.0
 _fcftver=2.0.0
 _pixmanver=0.3.0
 _zigwlver=0.6.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/kewuaa/kwm"
 license=('GPL-3.0-only')
@@ -22,7 +22,7 @@ depends=('wayland'
 optdepends=('swaybg: Default wallpaper manager'
 	    'foot: Default terminal emulator'
 	    'wmenu: Default launcher')
-makedepends=('zig'
+makedepends=('zig=0.16.0'
 	     'wayland-protocols')
 install=kwm.install
 source=($pkgname-$pkgver::"$url"/archive/refs/tags/v$pkgver.tar.gz

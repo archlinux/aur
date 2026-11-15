@@ -1,12 +1,12 @@
 pkgbase = kwm
 	pkgdesc = Kewuaa's window manager for the River compositor
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kewuaa/kwm
 	install = kwm.install
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = zig
+	makedepends = zig=0.16.0
 	makedepends = wayland-protocols
 	depends = wayland
 	depends = kwim
