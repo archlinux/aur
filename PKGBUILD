@@ -5,7 +5,7 @@ pkgname=("${pkgbase}-captain-ce"
          "${pkgbase}-salto-ce"
          "${pkgbase}-twig-ce"
          "${pkgbase}-hoof-ce")
-pkgver=2026.2.1
+pkgver=2026.2.2
 pkgrel=1
 pkgdesc='SIP3 monitoring system'
 arch=('any')
@@ -46,7 +46,7 @@ source=(
   "settings.xml"
 )
 b2sums=(
-  '326904eab81aff6f512d932acd3d6ff6bf907679a4f3d80b9a0deec8bb559674bde7c587368aa2d72d8ddda452c3c863a119eb98833fc2e9fe69e39cbfea8ca2'
+  'f2eba0feba773f19f764be41aeacf9b6b28910266e820e688761d99d51f5a7c836fa4c8882d4a62ab1aa19f68cf2c464ac85158caa8f6b5f3dcbbb3b8229e8a9'
   'SKIP'
   'SKIP'
   'SKIP'
