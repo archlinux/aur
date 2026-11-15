@@ -2,8 +2,8 @@
 # Contributor: Lolka Team <support@lolka.app>
 
 pkgname=lolka-x-bin
-pkgver=2.0.7
-pkgrel=2
+pkgver=2.0.8
+pkgrel=1
 pkgdesc='Native desktop client for lolka.app - chat and voice with friends'
 arch=('x86_64')
 url='https://lolka.app'
@@ -25,7 +25,7 @@ options=('!strip' '!debug')
 
 source=("lolka-x-${pkgver}-${arch[0]}.pkg.tar.zst::https://cdn.lolka.app/desktop/linux/${pkgver}/${pkgname}-${pkgver}-1-${arch[0]}.pkg.tar.zst")
 noextract=("lolka-x-${pkgver}-${arch[0]}.pkg.tar.zst")
-sha512sums=('3d4653bdb71deac4a0312f20bdd56396a84f946b0e3b132b300ff3539d7dd2eb3fc19b76ae126fd5f2d534b3f5b49e9a140ecebfa1e7959d177d6b8262efdcde')
+sha512sums=('8b612ead18316cab9ffa2914c63b7fe404c8647a11b2468f4bf9f1456042f0eb7d9ec3b55b8b7e3b38b843d6d451e397fc454ca3428e05a6ec37ff53cb28caad')
 
 package() {
     bsdtar -xf "$srcdir/lolka-x-${pkgver}-${arch[0]}.pkg.tar.zst" -C "$pkgdir" \
