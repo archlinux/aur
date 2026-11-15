@@ -1,6 +1,6 @@
 pkgbase = python-pytango
 	pkgdesc = A python binding for the Tango control system
-	pkgver = 10.3.1
+	pkgver = 10.3.2
 	pkgrel = 1
 	url = https://gitlab.com/tango-controls/pytango
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = python-pytango
 	optdepends = python-opentelemetry-api: to add telemetry
 	optdepends = python-opentelemetry-exporter-otlp-proto-grpc: to add telemetry
 	optdepends = python-opentelemetry-exporter-otlp-proto-http: to add telemetry
-	source = https://gitlab.com/tango-controls/pytango/-/releases/v10.3.1/downloads/pytango-with-submodules-v10.3.1.tar.gz
-	sha256sums = 4090c85e4534a53d88f160fd949e857b16944788cba0252eeda366466185e5c8
+	source = https://gitlab.com/tango-controls/pytango/-/releases/v10.3.2/downloads/pytango-with-submodules-v10.3.2.tar.gz
+	sha256sums = 14985a2200aae469dc420acf30c694951a1c8b00931f44d2e6a3c644dce02f33
 
 pkgname = python-pytango
