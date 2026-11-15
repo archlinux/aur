@@ -1,6 +1,6 @@
 # Maintainer: Ron Brand <ronb1964@gmail.com>
 pkgname=tuxtalk-appimage
-pkgver=0.23.0
+pkgver=0.23.1
 pkgrel=1
 pkgdesc="Voice dictation for Linux: hold a key, talk, and your words are typed for you"
 arch=('x86_64')
@@ -28,7 +28,7 @@ options=('!strip')
 install=tuxtalk-appimage.install
 source=("TuxTalk-v${pkgver}-x86_64.AppImage::https://github.com/ronb1964/TuxTalk/releases/download/v${pkgver}/TuxTalk-v${pkgver}-x86_64.AppImage"
         "tuxtalk.desktop")
-sha256sums=('dd9f2d4f9eba141366add0505da8838c336b36095f50a744b1d99dd471ea0ccf'
+sha256sums=('05ddd811a296bf3741cbc9e6c71d1e2f92a73f3934290087291d61d687e686c7'
             'SKIP')
 noextract=("TuxTalk-v${pkgver}-x86_64.AppImage")
 
