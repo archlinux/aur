@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn@gmail.com>
 
 pkgname=libpdfium-nojs
-pkgver=8059.r3.39f0ed4a65
+pkgver=8103.r2.a4d199fba7
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -86,6 +86,9 @@ prepare() {
   mkdir -p "$srcdir/pdfium/third_party/icu"
   ln -sf "$srcdir/build/linux/unbundle/icu.gn" "$srcdir/pdfium/third_party/icu/BUILD.gn"
 
+  # Fix jpeg headers
+  sed -i '/public_deps +=.*libjpeg_headers/s/^/# /' $srcdir/pdfium/core/fxcodec/BUILD.gn
+
   # Download and decode shim header script needed to unbundle icu (gittiles is weird)
   mkdir -p "$srcdir/pdfium/tools/generate_shim_headers/"
   echo "Downloading generate_shim_headers script from Chromium."
@@ -126,6 +129,7 @@ build() {
       'is_component_build = true'
       'pdf_use_partition_alloc = false'
       'use_system_harfbuzz = true'
+      'pdf_use_libyuv=false'
   )
   
   gn gen out/Release --args="${_flags[*]}" --script-executable=python3
