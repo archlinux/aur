@@ -1,8 +1,8 @@
 # Maintainer: Cyridge cyridge@proton.me
 pkgname=rsv-ng
-pkgver=135
+pkgver=136
 pkgrel=1
-_commit=1a3850293c4630198af8297c5a702b5baab0917a
+_commit=ff45024c22b403ed9cc7be299a3e822ef12df7a7
 pkgdesc="A runit service manager with smart completions, scaffolding, and more"
 arch=('any')
 url="https://gitlab.com/runit-rsv/rsv-main"
@@ -14,7 +14,7 @@ optdepends=('sudo: privilege escalation'
 provides=('rsv-ng')
 conflicts=('rsv')
 source=("$pkgname-$_commit.tar.gz::$url/-/archive/$_commit/rsv-main-$_commit.tar.gz")
-sha256sums=('40aa0c8161b7471810c4b0ed96aa41b3faeeb540675cd28fe57be21854cdf18d')
+sha256sums=('b05f3fa3be23dcb5b98ba289ad2584817fb50d0e777d669ed13594f9c388afc6')
 
 package() {
   cd "rsv-main-$_commit"
