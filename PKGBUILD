@@ -3,7 +3,7 @@
 # canonical forge repository is the source, so this recipe and the crates.io crate (cksk) are built
 # from the same commit.
 pkgname=cksk
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Server-monitor boards for a clck kiosk display"
 arch=('x86_64')
@@ -11,14 +11,14 @@ arch=('x86_64')
 # those objects mislink (undefined ring_core_* symbols) -- same class as cfetch's
 # sqlite3 case. The crate's own release profile already sets opt-level.
 options=('!lto')
-url="https://git.corbet.ch/corbet-fsl/cksk"
-license=('LicenseRef-FSL-1.1-ALv2')
+url="https://git.corbet.ch/corbet-libre/cksk"
+license=('LGPL-3.0-only WITH LGPL-3.0-linking-exception')
 depends=()
 makedepends=('cargo' 'git')
 provides=('cksk')
 conflicts=('cksk-bin')
 replaces=('nixwatch-bin' 'nixwatch')
-source=("$pkgname::git+https://git.corbet.ch/corbet-fsl/cksk.git#tag=v$pkgver")
+source=("$pkgname::git+https://git.corbet.ch/corbet-libre/cksk.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
