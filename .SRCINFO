@@ -1,6 +1,6 @@
 pkgbase = bypass
 	pkgdesc = Modern terminal secrets manager compatible with KeePass vaults
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/yaroshevych/bypass
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = bypass
 	depends = keepassxc
 	provides = bypass
 	options = !strip
-	source = bypass-0.3.1.tgz::https://github.com/yaroshevych/bypass/archive/v0.3.1.tar.gz
-	sha256sums = d79a88addb3229856295ccfd24e2922cc5fddb4c419f703044194c9f27f450d3
+	source = bypass-0.3.2.tgz::https://github.com/yaroshevych/bypass/archive/v0.3.2.tar.gz
+	sha256sums = 6ba8076985b87d1725777335cba3be3a27692dadce416acac4b860d3c94ab58e
 
 pkgname = bypass
