@@ -1,7 +1,7 @@
 pkgbase = python-netmiko
 	pkgdesc = Multi-vendor library to simplify CLI connections to network devices
 	pkgver = 4.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ktbyers/netmiko
 	arch = any
 	license = MIT
@@ -13,6 +13,6 @@ pkgbase = python-netmiko
 	depends = python-textfsm
 	depends = python-scp
 	source = https://files.pythonhosted.org/packages/source/n/netmiko/netmiko-4.8.0.tar.gz
-	sha256sums = 68efbe7a36c15a8772d3cd3e7e7b289debe8c6b0f1a94a719cea75820c8d68ad
+	sha256sums = 6264cf8afcbd9c10efb832bacabb9a89370452d522f6c20532d2ad0fefcbdd69
 
 pkgname = python-netmiko
