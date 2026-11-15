@@ -1,6 +1,6 @@
 # Maintainer: Kaleb <vitor.guttler@edu.pucrs.br>
 pkgname=localstack-cli-bin
-pkgver=2026.8.0
+pkgver=2026.8.2
 pkgrel=1
 pkgdesc="LocalStack CLI - Command-line interface for LocalStack"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('localstack-cli')
 options=(!strip)
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/localstack/localstack-cli/releases/download/v${pkgver}/localstack-cli-${pkgver}-linux-amd64-onefile.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/localstack/localstack-cli/releases/download/v${pkgver}/localstack-cli-${pkgver}-linux-arm64-onefile.tar.gz")
-sha256sums_x86_64=('59304bb5901f6240cdb3e94c9e616bebbcda28ead01436536f356ba8d4ce7676')
-sha256sums_aarch64=('f71b901b1ce2f1567d691059ee585a50c76412820394c96f3d8bcc315a5ba2f5')
+sha256sums_x86_64=('6067f6140c9ef6d7010be7ede6308dea9f288fc1bb82be1aa76927faf0603863')
+sha256sums_aarch64=('1ea90128c95035f13d286061a20c04b821640fffca309ca038038e70e69520a0')
 
 package() {
     # Install the binary
