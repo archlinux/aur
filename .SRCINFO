@@ -1,6 +1,6 @@
 pkgbase = pear-desktop
 	pkgdesc = YouTube Music Desktop App - including custom plugins
-	pkgver = 3.12.0
+	pkgver = 3.12.1
 	pkgrel = 1
 	url = https://github.com/pear-devs/pear-desktop
 	install = pear-desktop.install
@@ -9,13 +9,13 @@ pkgbase = pear-desktop
 	makedepends = imagemagick
 	makedepends = nvm
 	makedepends = pnpm
-	depends = electron42
+	depends = electron45
 	depends = libsecret
 	conflicts = youtube-music
-	source = pear-desktop-3.12.0.tar.gz::https://github.com/pear-devs/pear-desktop/archive/refs/tags/v3.12.0.tar.gz
+	source = pear-desktop-3.12.1.tar.gz::https://github.com/pear-devs/pear-desktop/archive/refs/tags/v3.12.1.tar.gz
 	source = pear-desktop.sh
 	source = com.github.th-ch.youtube-music.desktop
-	sha256sums = 2f6a4948ba3c8c00ed43a6c014cd18430f2f1509ea4115dd6a8d538c45eb3107
+	sha256sums = 06a3cead59a5db35bb0ae6fc99dccfdf72dbc5f7d4e598c3b7fd9a80dcb1c8f0
 	sha256sums = bf77b9390f6657d6b58613600cc76178da9ffa97cce55b8d0ba50b4c2ab7f996
 	sha256sums = dd4bcc23a6c9b76223b35f035b85dd38db409633ab596d46a0c6f7517ecfe7cf
 
