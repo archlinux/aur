@@ -1,6 +1,6 @@
 pkgbase = rauri
 	pkgdesc = A minimal AUR helper written in Rust
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/ognrdrch/rauri
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rauri
 	depends = sudo
 	depends = util-linux
 	options = !lto
-	source = rauri-0.4.1.tar.gz::https://github.com/ognrdrch/rauri/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = a1b0f2169b117ceaeec40acc9ac0490e5115f923190f578a7a76c5f86492a266
+	source = rauri-0.5.0.tar.gz::https://github.com/ognrdrch/rauri/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 849cb4d329349cbdcf23c7c2ea68e99a4a433d214949b5de99bda607d6dc2148
 
 pkgname = rauri
