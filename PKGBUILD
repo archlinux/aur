@@ -1,6 +1,6 @@
 # Maintainer: umceko <support@stockimg.ai>
 pkgname=hush-mic
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="NVIDIA Maxine AI noise-suppression virtual microphone (built from source)"
 arch=('x86_64')
