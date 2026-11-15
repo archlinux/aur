@@ -1,0 +1,5 @@
+[sandbox-runtime]
+source = "github"
+github = "anthropics/sandbox-runtime"
+prefix = "v"
+use_latest_release = true

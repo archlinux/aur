@@ -1,0 +1,21 @@
+pkgbase = sandbox-runtime
+	pkgdesc = Tool for enforcing filesystem and network restrictions on arbitrary processes
+	pkgver = 0.0.83
+	pkgrel = 1
+	url = https://github.com/anthropics/sandbox-runtime
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = gcc
+	makedepends = jdk21-openjdk
+	makedepends = libseccomp
+	makedepends = npm
+	depends = bubblewrap
+	depends = nodejs>=22.12.0
+	depends = ripgrep
+	depends = socat
+	optdepends = java-runtime: JVM proxy support inside the sandbox
+	source = sandbox-runtime-0.0.83.tar.gz::https://github.com/anthropics/sandbox-runtime/archive/refs/tags/v0.0.83.tar.gz
+	sha256sums = 9bb4cab0985daaf33d9f227539a2e58da4073100d0a71bb9a278b2ec71523190
+
+pkgname = sandbox-runtime
