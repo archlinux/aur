@@ -3,7 +3,7 @@
 _pkgname=crain
 pkgname="${_pkgname}-bin"
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="the worst storm this side of the silicon (terminal-based rain)"
 url="https://codeberg.org/mazylol/crain"
 arch=('x86_64')
