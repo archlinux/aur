@@ -5,7 +5,7 @@
 
 pkgbase=jamulus
 pkgname=(jamulus jamulus-headless)
-pkgver=3.12.5
+pkgver=3.12.6
 pkgrel=1
 pkgdesc="Internet jam session software"
 arch=(aarch64 x86_64)
@@ -19,7 +19,7 @@ groups=(pro-audio)
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/jamulussoftware/$pkgbase/archive/r${pkgver//./_}.tar.gz"
   'jamulus.service'
   'jamulus.sysusers')
-sha256sums=('623782a9b816fdacdf233db43476c3e1d0ec066639d8d9389108ad8c230dde7f'
+sha256sums=('b073bd204a94a9899a679524c7f42e7c6a1bd1fce192c66fb78c33d38c59a7da'
             '98e45f7f877dbc9f8113d63b6e009ff1025e73e1cce86f671b57474a4764e11f'
             '4117ad3a93b3211f679f93794b308ad292d1799a86f85a6b353cfdff8515e2f9')
 _pkgsrc=$pkgbase-r${pkgver//./_}
