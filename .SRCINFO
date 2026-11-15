@@ -1,6 +1,6 @@
 pkgbase = liquidsoap-bin
 	pkgdesc = Audio and video streaming language (prebuilt)
-	pkgver = 2.5.0rc1
+	pkgver = 2.5.0rc2
 	pkgrel = 1
 	url = https://www.liquidsoap.info/
 	install = liquidsoap-bin.install
@@ -34,7 +34,7 @@ pkgbase = liquidsoap-bin
 	depends = sqlite
 	optdepends = bubblewrap: sandbox for external processes
 	optdepends = frei0r-plugins: frei0r video effects
-	provides = liquidsoap=2.5.0rc1
+	provides = liquidsoap=2.5.0rc2
 	conflicts = liquidsoap
 	options = !strip
 	options = !debug
@@ -44,9 +44,9 @@ pkgbase = liquidsoap-bin
 	sha256sums = a8a759a71362cd405d12381effc4d41a9f70dcfb3b039b7a6236ab82e363c6d0
 	sha256sums = 8ea34e0054bcb937c86121abd8b230801a73ca1874ac5769708a049f699a6522
 	sha256sums = 95ec80da40b4af12ad4c4f3158c9cfb80f2479f3246e4260cb600827cc8c7836
-	source_x86_64 = liquidsoap-2.5.0rc1-2.5.0-debian-forky-ocaml5.5.1-1-amd64.deb::https://github.com/savonet/liquidsoap/releases/download/v2.5.0-rc1/liquidsoap_2.5.0-debian-forky-ocaml5.5.1-1_amd64.deb
-	sha256sums_x86_64 = 4d9b2290cb90864b1859d543b65f1c847810d7e1aa3cbbeee35b57a3f423aa56
-	source_aarch64 = liquidsoap-2.5.0rc1-2.5.0-debian-forky-ocaml5.5.1-1-arm64.deb::https://github.com/savonet/liquidsoap/releases/download/v2.5.0-rc1/liquidsoap_2.5.0-debian-forky-ocaml5.5.1-1_arm64.deb
-	sha256sums_aarch64 = c6651cae0d58619e79c3e937d6e013e32b8d22a83fa08c8e6ace9cbe29499325
+	source_x86_64 = liquidsoap-2.5.0rc2-2.5.0-debian-forky-ocaml5.5.2-1-amd64.deb::https://github.com/savonet/liquidsoap/releases/download/v2.5.0-rc2/liquidsoap_2.5.0-debian-forky-ocaml5.5.2-1_amd64.deb
+	sha256sums_x86_64 = 95837f46c8bcd424fd80eaaaaa7057279c134cea2c5a712ea94639ade1449a6b
+	source_aarch64 = liquidsoap-2.5.0rc2-2.5.0-debian-forky-ocaml5.5.2-1-arm64.deb::https://github.com/savonet/liquidsoap/releases/download/v2.5.0-rc2/liquidsoap_2.5.0-debian-forky-ocaml5.5.2-1_arm64.deb
+	sha256sums_aarch64 = 6d4e4d94a5255998efec5c64fa03929e9ce778a262cf1f1b57079b6ab80a48ee
 
 pkgname = liquidsoap-bin

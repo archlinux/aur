@@ -1,8 +1,8 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=liquidsoap-bin
-pkgver=2.5.0rc1
-_deb=2.5.0-debian-forky-ocaml5.5.1-1
+pkgver=2.5.0rc2
+_deb=2.5.0-debian-forky-ocaml5.5.2-1
 pkgrel=1
 pkgdesc='Audio and video streaming language (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -57,8 +57,8 @@ source_aarch64=("liquidsoap-${pkgver}-${_deb}-arm64.deb::${_release}/liquidsoap_
 sha256sums=('a8a759a71362cd405d12381effc4d41a9f70dcfb3b039b7a6236ab82e363c6d0'
             '8ea34e0054bcb937c86121abd8b230801a73ca1874ac5769708a049f699a6522'
             '95ec80da40b4af12ad4c4f3158c9cfb80f2479f3246e4260cb600827cc8c7836')
-sha256sums_x86_64=('4d9b2290cb90864b1859d543b65f1c847810d7e1aa3cbbeee35b57a3f423aa56')
-sha256sums_aarch64=('c6651cae0d58619e79c3e937d6e013e32b8d22a83fa08c8e6ace9cbe29499325')
+sha256sums_x86_64=('95837f46c8bcd424fd80eaaaaa7057279c134cea2c5a712ea94639ade1449a6b')
+sha256sums_aarch64=('6d4e4d94a5255998efec5c64fa03929e9ce778a262cf1f1b57079b6ab80a48ee')
 
 prepare() {
   bsdtar -xf data.tar.xz ./etc/bash_completion.d/liquidsoap
