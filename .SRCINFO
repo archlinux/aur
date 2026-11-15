@@ -1,6 +1,6 @@
 pkgbase = python-nihtest
 	pkgdesc = A testing tool for command line utilities
-	pkgver = 1.11.1
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/nih-at/nihtest/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-nihtest
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/nih-at/nihtest/archive/v1.11.1/python-nihtest-1.11.1.tar.gz
-	sha256sums = 0ed23b2238a80870557e3d13b72efa179c6cf71531c0618711e0bc82442015bc
+	source = https://github.com/nih-at/nihtest/archive/v1.12.0/python-nihtest-1.12.0.tar.gz
+	sha256sums = a890cd28e2ce5197d7b67b804c0275dcd6e76f4ba88d8813dddd89799516f626
 
 pkgname = python-nihtest

@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=python-nihtest
-pkgver=1.11.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='A testing tool for command line utilities'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(
     'python-setuptools'
     'python-wheel')
 source=("https://github.com/nih-at/nihtest/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0ed23b2238a80870557e3d13b72efa179c6cf71531c0618711e0bc82442015bc')
+sha256sums=('a890cd28e2ce5197d7b67b804c0275dcd6e76f4ba88d8813dddd89799516f626')
 
 build() {
     cd "nihtest-${pkgver}"
