@@ -2,7 +2,7 @@
 
 _pkgname=crain
 pkgname="${_pkgname}-git"
-pkgver=r21.eb8edab
+pkgver=r30.004bcb1
 pkgrel=1
 pkgdesc="the worst storm this side of the silicon (terminal-based rain)"
 url="https://codeberg.org/mazylol/crain"

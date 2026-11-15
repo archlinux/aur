@@ -1,6 +1,6 @@
 pkgbase = crain-git
 	pkgdesc = the worst storm this side of the silicon (terminal-based rain)
-	pkgver = r21.eb8edab
+	pkgver = r30.004bcb1
 	pkgrel = 1
 	url = https://codeberg.org/mazylol/crain
 	arch = x86_64
