@@ -3,8 +3,8 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='lwt_log'
 pkgname="ocaml-$_projectname"
-pkgver='1.1.2'
-pkgrel='5'
+pkgver='1.1.3'
+pkgrel='1'
 pkgdesc='Lwt-friendly logger'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
@@ -12,19 +12,10 @@ license=('LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception AND BSD-3-Clause')
 depends=('ocaml>=4.03.0' 'ocaml-lwt>=4.0.0')
 makedepends=('dune>=1.0.0')
 options=('!strip')
-source=(
-	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-	"0000-fix-exit-hooks.patch"
-)
-b2sums=('d555b2e54b327ddbb68d8fcf1f669eb8b74709673da8c0f0dc32ee5d58c5055ebda52c2f13d39ac37e0fda724e02c057872147b88921ed15dbed73b58c59962d'
-        '63a3f4fb77244fbf7464ec0d5ca29e62440eb3062fe90830778789f3a102a41b78cd927362c1f58ce663c76f7370efdf96214fe132d4b1c7644acd0370e737b5')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('ad832daad0fe3aecec740deafde28226fdde4c5cdfc58dd6ec5964a93ac21f09b5b9b5769129873ea403b180306d08622999984546a96bd2f9e3cc33f9dd5a7c')
 
 _sourcedirectory="$_projectname-$pkgver"
-
-prepare() {
-	cd "$srcdir/$_sourcedirectory/"
-	patch --forward -p1 < ../0000-fix-exit-hooks.patch
-}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"

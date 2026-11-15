@@ -1,7 +1,7 @@
 pkgbase = ocaml-lwt_log
 	pkgdesc = Lwt-friendly logger
-	pkgver = 1.1.2
-	pkgrel = 5
+	pkgver = 1.1.3
+	pkgrel = 1
 	url = https://github.com/ocsigen/lwt_log
 	arch = x86_64
 	arch = aarch64
@@ -10,9 +10,7 @@ pkgbase = ocaml-lwt_log
 	depends = ocaml>=4.03.0
 	depends = ocaml-lwt>=4.0.0
 	options = !strip
-	source = ocaml-lwt_log-1.1.2.tar.gz::https://github.com/ocsigen/lwt_log/archive/1.1.2.tar.gz
-	source = 0000-fix-exit-hooks.patch
-	b2sums = d555b2e54b327ddbb68d8fcf1f669eb8b74709673da8c0f0dc32ee5d58c5055ebda52c2f13d39ac37e0fda724e02c057872147b88921ed15dbed73b58c59962d
-	b2sums = 32a4f8f081d60be656367e269c81c3083a61e0bf3bcb137921ba017e6ec819a25ff4900b4780b4f627cce86af30c5a1b6c3dcc1fe44a83de785a555f707fe4b4
+	source = ocaml-lwt_log-1.1.3.tar.gz::https://github.com/ocsigen/lwt_log/archive/1.1.3.tar.gz
+	b2sums = ad832daad0fe3aecec740deafde28226fdde4c5cdfc58dd6ec5964a93ac21f09b5b9b5769129873ea403b180306d08622999984546a96bd2f9e3cc33f9dd5a7c
 
 pkgname = ocaml-lwt_log
