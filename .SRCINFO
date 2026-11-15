@@ -1,20 +1,11 @@
 pkgbase = dankmail-git
-	pkgdesc = Mail notifier with triage for Linux — Go daemon + Quickshell UI (git version)
-	pkgver = r123.3a27793
+	pkgdesc = Transitional package — DankMail (git) is now dux-mail-git (safe to remove)
+	pkgver = r999
 	pkgrel = 1
-	url = https://github.com/arqueon/dankmail
-	install = dankmail.install
-	arch = x86_64
-	arch = aarch64
+	url = https://github.com/arqueon/dux-mail
+	install = dankmail-git.install
+	arch = any
 	license = GPL-3.0-or-later
-	makedepends = go
-	makedepends = git
-	depends = quickshell
-	depends = xdg-utils
-	optdepends = gnome-keyring: Secret Service storage for tokens and passwords
-	provides = dankmail
-	conflicts = dankmail
-	source = dankmail::git+https://github.com/arqueon/dankmail.git
-	sha256sums = SKIP
+	depends = dux-mail-git
 
 pkgname = dankmail-git

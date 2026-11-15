@@ -1,4 +1,0 @@
-post_upgrade() {
-  echo ':: dankmail updated — restart the daemon to pick up the new binary:'
-  echo ':: systemctl --user restart dmail  (or: dmail restart)'
-}

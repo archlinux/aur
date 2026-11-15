@@ -1,0 +1,9 @@
+post_install() {
+  echo ":: dankmail-git has been renamed to dux-mail-git, which is now installed."
+  echo ":: Your settings, cache and keyring entries are kept."
+  echo ":: This transitional package can be removed: pacman -R dankmail-git"
+}
+
+post_upgrade() {
+  post_install
+}
