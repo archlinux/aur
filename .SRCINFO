@@ -1,0 +1,22 @@
+pkgbase = qvampeditor
+	pkgdesc = Editor and librarian for the Behringer V-AMP 2 guitar amp modeler
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://gitlab.com/rossettidesignsw/musicutility/qvampeditor
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = qt6-base
+	depends = rtmidi
+	optdepends = qt6-svg: sharp application icon in the windows (otherwise 64 px)
+	source = qvampeditor-0.2.1.tar.gz::https://gitlab.com/rossettidesignsw/musicutility/qvampeditor/-/archive/v0.2.1/qvampeditor-v0.2.1.tar.gz
+	source = qrtmidi-0.4.1.tar.gz::https://gitlab.com/rossettidesignsw/musicutility/qrtmidi/-/archive/v0.4.1/qrtmidi-v0.4.1.tar.gz
+	sha256sums = 27f64f49b0c769177c9b5d9638c85dfffe72949d3ccaae4657e99e408b981546
+	sha256sums = a5077f36c9ee0537c40fc024d22dadf69b7d94cf2f71a4e3d2474ed817c3bd27
+
+pkgname = qvampeditor
