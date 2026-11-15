@@ -1,6 +1,6 @@
 
 pkgname=innex
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="Extract Inno Setup installers"
 url=https://github.com/russellbanks/inno
@@ -9,7 +9,7 @@ arch=('x86_64')
 depends=(libgcc glibc)
 makedepends=(rust)
 source=("inno-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('6d27e176390b82def79a6da0a7d0d5de82527f5fad1a3d6e1e710f5247cc6c7b8ffb5577e7926bd145b95caef65f16248705bb820827d7f1f519c06c59f8aba9')
+b2sums=('1ce5d7b4bc526332bfdbf2e06074151db23df751a5843d45478e6997963766623ffa1558aed6102823e2e241cbbd0e88254f10d4565317a0db1d75badb542dd2')
 
 prepare(){
   cd inno-$pkgver/core
