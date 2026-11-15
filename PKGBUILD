@@ -1,14 +1,16 @@
 # Maintainer:
 
+# prevent excessive memory usage
+export DEBUG_CFLAGS="-g1"
+export DEBUG_CXXFLAGS="-g1"
+
 ## options
 : ${_use_sodeps:=false}
 : ${_build_tg_owt:=false}
 
-: ${_commit=}
-
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=7.2.7.r4.g365a9fc
+pkgver=7.4.4.r0.gbf4f714
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -49,6 +51,7 @@ depends=(
 makedepends=(
   boost
   boost-libs # static link
+  cargo      # for wallet-engine
   cmake
   extra-cmake-modules
   fmt
@@ -57,6 +60,7 @@ makedepends=(
   gobject-introspection
   gperf    # for tde2e
   jemalloc # gio error when absent
+  just     # for wallet-engine
   libtg_owt
   ninja
   qt6-shadertools
@@ -76,12 +80,18 @@ options=('!lto')
 
 _pkgsrc="$_pkgname"
 _pkgsrc_tdlib="telegram-tdlib"
+_pkgsrc_wallet_engine="wallet-engine"
+_wallet_engine_patch="wallet-engine-$(\date "+%Y%m%d").patch"
 
 source=(
-  "$_pkgsrc"::"git+$url.git${_commit:+#commit=$_commit}"
+  "$_pkgsrc"::"git+$url.git"
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
+  "$_pkgsrc_wallet_engine"::"git+https://github.com/i582/wallet-engine.git"
+  "$_wallet_engine_patch"::"https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch"
 )
 sha256sums=(
+  'SKIP'
+  'SKIP'
   'SKIP'
   'SKIP'
 )
@@ -134,6 +144,9 @@ _source_tg_owt
 prepare() {
   _prepare_tg_owt
 
+  # wallet-engine
+  patch -d "$_pkgsrc_wallet_engine" -Np1 -F100 -i "$srcdir/$_wallet_engine_patch"
+
   echo "Preparing telegram..."
   cd "$_pkgsrc"
   git rm -r 'Telegram/ThirdParty/hunspell'
@@ -141,17 +154,6 @@ prepare() {
   git rm -r 'Telegram/ThirdParty/lz4'
   git rm -r 'Telegram/ThirdParty/range-v3'
   git submodule update --init --recursive --depth=1
-
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    src="${src%.zst}"
-    if [[ $src == *.patch ]]; then
-      printf '\nApplying patch: %s\n' "$src"
-      patch -Np1 -F100 -i "${srcdir:?}/$src"
-    fi
-  done
 }
 
 pkgver() {
@@ -162,6 +164,14 @@ pkgver() {
 
 build() {
   _build_tg_owt
+
+  echo "Building wallet engine..."
+  pushd "$_pkgsrc_wallet_engine" &> /dev/null
+  just build
+  just bindings-cpp
+  install -Dm644 target/release/libwallet_engine.a -t "$srcdir/deps/usr/lib/"
+  install -Dm644 bindings/cpp-experimental/* -t "$srcdir/deps/usr/include/wallet_engine/"
+  popd &> /dev/null
 
   echo "Building tde2e..."
   local _cmake_tde2e=(
