@@ -6,12 +6,12 @@
 # separate submodule paths with :
 : ${_broken_submodules=}
 
-: ${_commit:=50b8967eccbee2642b4d37c20c9a36b2e13e6f4f} # 0.6.7.3.r883
+: ${_commit:=ceac16fd3f6ca0a565a738e022279b432a25be1b} # 0.6.7.3.r1127
 
 _pkgname="retroshare"
 pkgname="$_pkgname"
 pkgver=0.6.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail"
 url="https://github.com/retroshare/retroshare"
 license=('AGPL-3.0-only')
@@ -22,6 +22,7 @@ depends=(
   'json-c'
   'libxss'
   'miniupnpc'
+  'openssl-3'
   'qt6-5compat'
   'qt6-base'
   'qt6-multimedia'
@@ -66,7 +67,8 @@ prepare() {
 }
 
 build() {
-  export CXXFLAGS+=" -include cstring"
+  export CXXFLAGS+=" -include cstring -I/usr/include/openssl-3"
+  export LDFLAGS+=" -L/usr/lib/openssl-3"
 
   local _qmake_options=(
     CONFIG+=release
@@ -87,10 +89,10 @@ package() {
   if [[ "${_use_sodeps::1}" == "t" ]]; then
     eval "depends+=(
       'libbz2.so'    # bzip2
-      'libcrypto.so' # openssl
+      'libcrypto.so' # openssl-3
       'libjson-c.so' # json-c
       'libminiupnpc.so'
-      'libssl.so'    # openssl
+      'libssl.so'    # openssl-3
       'libz.so'      # zlib
     )"
   fi

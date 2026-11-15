@@ -1,7 +1,7 @@
 pkgbase = retroshare
 	pkgdesc = Serverless encrypted instant messenger with filesharing, chatgroups, e-mail
 	pkgver = 0.6.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/retroshare/retroshare
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -14,11 +14,12 @@ pkgbase = retroshare
 	depends = json-c
 	depends = libxss
 	depends = miniupnpc
+	depends = openssl-3
 	depends = qt6-5compat
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = sqlcipher
-	source = retroshare::git+https://github.com/retroshare/retroshare.git#commit=50b8967eccbee2642b4d37c20c9a36b2e13e6f4f
+	source = retroshare::git+https://github.com/retroshare/retroshare.git#commit=ceac16fd3f6ca0a565a738e022279b432a25be1b
 	sha256sums = SKIP
 
 pkgname = retroshare
