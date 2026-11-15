@@ -5,7 +5,8 @@ post_install() {
     echo "On first launch open the Settings tab (the last one), set your music"
     echo "directory (e), then scan it (r)."
     echo
-    echo "For the Spotify and Explore tabs, install yt-dlp and ffmpeg."
+    echo "For the Spotify and Explore tabs, install yt-dlp and ffmpeg; Radio"
+    echo "and Podcasts need ffmpeg."
     echo
     echo "Optional, for full visuals:"
     echo "  - a Nerd Font for the transport icons"
@@ -16,4 +17,6 @@ post_install() {
 
 post_upgrade() {
     echo "==> music-tui upgraded. Restart the app to pick up the new version."
+    echo "    New in 0.3: sync between devices with 'music-tui serve' (see the"
+    echo "    README's Sync section; the user unit is music-tui-sync.service)."
 }

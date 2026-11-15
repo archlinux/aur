@@ -1,6 +1,6 @@
 pkgbase = music-tui
 	pkgdesc = A keyboard and mouse-driven terminal music player built with ratatui
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/adelmonte/music-tui
 	install = music-tui.install
@@ -10,9 +10,9 @@ pkgbase = music-tui
 	makedepends = cmake
 	depends = alsa-lib
 	optdepends = yt-dlp: the Spotify and Explore tabs (finding and downloading songs)
-	optdepends = ffmpeg: the Spotify and Explore tabs (playing songs as they download)
+	optdepends = ffmpeg: playing songs as they download, and the Radio and Podcasts tabs
 	options = !lto
-	source = music-tui-0.2.2.tar.gz::https://github.com/adelmonte/music-tui/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 9ca1b8b13a8dc259affab154efc60ba02027dfd8233a9148239aa2c158bf9909
+	source = music-tui-0.3.0.tar.gz::https://github.com/adelmonte/music-tui/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = d61fc10ed6e8929d1773a648a23895519db9bd8969c9284ef6706928c4307e38
 
 pkgname = music-tui
