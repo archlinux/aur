@@ -32,10 +32,11 @@ whoisthat_init_services() {
 }
 
 post_install() {
-    setcap cap_net_admin,cap_net_raw,cap_setpcap=+ep /usr/bin/whoisthat-core 2>/dev/null || {
-        echo ":: WARNING: Could not set capabilities on whoisthat-core."
-        echo "   TUN mode requires: sudo setcap cap_net_admin,cap_net_raw,cap_setpcap=+ep /usr/bin/whoisthat-core"
-    }
+    if [ -x /usr/lib/whoisthat/authorize-core ] && [ -n "${SUDO_USER:-}" ] && [ "${SUDO_USER}" != root ]; then
+        /usr/lib/whoisthat/authorize-core --add "$SUDO_USER" >/dev/null 2>&1 || true
+    else
+        echo ":: Authorize your user with: sudo /usr/lib/whoisthat/authorize-core --add <user>"
+    fi
     whoisthat_init_services
 }
 
@@ -44,6 +45,9 @@ post_upgrade() {
 }
 
 pre_remove() {
+    if [ -x /usr/lib/whoisthat/authorize-core ]; then
+        /usr/lib/whoisthat/authorize-core --remove-all >/dev/null 2>&1 || true
+    fi
     [ -x /usr/lib/whoisthat/install-init ] &&
         /usr/lib/whoisthat/install-init remove >/dev/null 2>&1 || true
 }

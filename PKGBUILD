@@ -1,6 +1,6 @@
 # Maintainer: kvunoff <kvunoff@proton.me>
 pkgname=whoisthat
-pkgver=0.19.2
+pkgver=0.19.3
 pkgrel=1
 pkgdesc="Modern terminal-based VPN client with Xray-core backend"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ install=whoisthat.install
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kvunoff/whoisthat/archive/refs/tags/v${pkgver}.tar.gz")
 # The "Publish to AUR" workflow pins the real released-tag digest.
-sha256sums=('02fdf80bdaecc65201fa0ccad2ca623b5b98a887026067cdfe3ef0c833efb32a')
+sha256sums=('6d901404ab7d6e1ce710407149c4e22ab7eccc410871bdda94f643285671325f')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -45,6 +45,7 @@ package() {
     install -Dm755 scripts/run-runner   "${pkgdir}/usr/lib/whoisthat/run-runner"
     install -Dm755 scripts/run-core     "${pkgdir}/usr/lib/whoisthat/run-core"
     install -Dm755 scripts/install-init "${pkgdir}/usr/lib/whoisthat/install-init"
+    install -Dm755 scripts/authorize-core "${pkgdir}/usr/lib/whoisthat/authorize-core"
     install -Dm755 scripts/init-hook    "${pkgdir}/usr/lib/whoisthat/init-hook"
     install -d "${pkgdir}/usr/lib/whoisthat/init"
     cp -R pkg/init/. "${pkgdir}/usr/lib/whoisthat/init/"
