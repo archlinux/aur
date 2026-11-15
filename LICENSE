@@ -1,0 +1,150 @@
+# AxisForge — Terms of Service
+
+**Version 1.0 — Effective: June 2026**
+
+> *This English text is the authoritative version of the Terms of Service.
+> The surrounding application UI is translated as a convenience; in the
+> event of any inconsistency between a translation and this English text,
+> the English text controls.*
+
+---
+
+## 1. Acceptance of Terms
+
+By downloading, installing, or using AxisForge ("the Software"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, do not use the Software.
+
+These Terms apply to both the free version and the Pro subscription tier. Use of the Pro tier is additionally governed by the Paddle subscription agreement presented at checkout.
+
+---
+
+## 2. Description of Software
+
+AxisForge is a Linux joystick remapping tool that reads input from physical HID devices and emits remapped input to virtual joystick devices via the Linux kernel's UHID subsystem. It includes an optional AI profile assistant, audio playback, and a hosted Pro tier.
+
+---
+
+## 3. License Grant
+
+AxisForge is proprietary software. All rights, title, and interest in and to the Software, including all intellectual property rights, are and shall remain the exclusive property of the AxisForge developer. The Software is licensed to you, not sold.
+
+Subject to your compliance with these Terms, you are granted a limited, non-exclusive, non-transferable, revocable license to install and use the Software for your own personal, non-commercial use on devices you own or control. You may not:
+
+- Copy, redistribute, sublicense, rent, lease, sell, or otherwise transfer the Software or any part of it to any third party
+- Modify, adapt, translate, decompile, reverse engineer, disassemble, or attempt to derive the source code of the Software, except to the extent such activity is expressly permitted by applicable law notwithstanding this restriction
+- Remove, alter, or obscure any copyright, trademark, or other proprietary notices included in the Software
+- Use the Software to develop, train, or improve any product that competes with AxisForge
+- Use the Software in any way that would breach these Terms or applicable law
+
+Any rights not expressly granted to you in these Terms are reserved by the AxisForge developer. This license terminates automatically if you breach any of these Terms; on termination you must cease all use of the Software and uninstall it.
+
+---
+
+## 4. Game Compatibility and Anti-Cheat
+
+**YOU ARE SOLELY RESPONSIBLE FOR ENSURING YOUR USE OF AXISFORGE COMPLIES WITH THE TERMS OF SERVICE OF ANY GAME OR APPLICATION YOU USE IT WITH.**
+
+Many online games deploy anti-cheat software (including but not limited to Valve Anti-Cheat, Easy Anti-Cheat, BattlEye, and proprietary systems). Input remapping software may be detected by, or violate the terms of, such systems. Possible consequences include:
+
+- Temporary or permanent bans from games or online services
+- Loss of in-game items, currency, or progress
+- Account suspension
+
+**AxisForge and its developers are not responsible for any game bans, account suspensions, item losses, or any other consequences resulting from your use of this Software with any game or online service.**
+
+It is your responsibility to verify that input remapping is permitted by the relevant game's Terms of Service before use in any online or competitive context.
+
+---
+
+## 5. AI Assistant Disclaimer
+
+AxisForge includes an AI profile assistant that generates TOML configuration suggestions. You acknowledge that:
+
+- AI-generated outputs may be incorrect, incomplete, or unsuitable for your use case
+- All AI suggestions must be reviewed by you before being applied to your profile
+- AxisForge makes no warranty that AI-generated configurations will function as described or produce any particular result
+- The AI assistant uses third-party API providers (Anthropic, OpenAI, or user-configured endpoints); AxisForge is not responsible for the availability, accuracy, or content of responses from those providers
+- When using the hosted Pro tier, your messages are proxied through AxisForge's servers to the AI provider; no message content is stored beyond the duration of the API call
+
+---
+
+## 6. Audio and Voice Content
+
+AxisForge allows you to import and play audio files. You are solely responsible for:
+
+- Ensuring you have the legal right to use, play, and distribute any audio files you import
+- Compliance with applicable copyright law regarding any audio content
+- Any consequences arising from the use of unlicensed audio content
+
+AxisForge does not supply, distribute, or endorse any third-party audio content. The voice pack import feature is a generic file browser; compatibility with any specific commercial voice pack is not warranted.
+
+---
+
+## 7. Pro Subscription
+
+Pro subscriptions are processed by Paddle, who acts as the Merchant of Record. By subscribing you also agree to Paddle's terms and conditions.
+
+- Subscriptions auto-renew until cancelled
+- Cancellation takes effect at the end of the current billing period
+- Refunds are governed by Paddle's refund policy; as a general policy, refunds may be requested within 14 days of purchase if the hosted AI tier has not been used
+- Free trials, where offered, convert to paid subscriptions automatically unless cancelled before the trial period ends
+- AxisForge reserves the right to modify Pro tier pricing and features with 30 days' notice to subscribers
+
+---
+
+## 8. Privacy
+
+AxisForge collects no personal data from free-tier users. The Software operates entirely on your local machine.
+
+For Pro subscribers:
+- Your Paddle license key is stored locally in `~/.config/axisforge/config.toml`
+- AI chat messages are transmitted to our proxy server solely for the purpose of forwarding to the AI provider; they are not stored or logged
+- No usage data, profile contents, or device information is transmitted to AxisForge servers without your explicit action
+
+---
+
+## 9. Disclaimer of Warranties
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+
+AXISFORGE DOES NOT WARRANT THAT THE SOFTWARE WILL OPERATE WITHOUT INTERRUPTION OR ERROR, THAT DEFECTS WILL BE CORRECTED, OR THAT THE SOFTWARE IS FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.
+
+---
+
+## 10. Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL AXISFORGE OR ITS DEVELOPERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO LOSS OF DATA, LOSS OF PROFITS, GAME ACCOUNT BANS, HARDWARE DAMAGE, OR BUSINESS INTERRUPTION) ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF THE SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+IN NO EVENT SHALL AXISFORGE'S TOTAL LIABILITY TO YOU EXCEED THE AMOUNT YOU PAID FOR THE SOFTWARE IN THE TWELVE MONTHS PRECEDING THE CLAIM.
+
+---
+
+## 11. Indemnification
+
+You agree to indemnify, defend, and hold harmless AxisForge and its developers from any claims, damages, losses, liabilities, costs, and expenses (including reasonable legal fees) arising from your use of the Software, your violation of these Terms, or your violation of any third party's rights.
+
+---
+
+## 12. Prohibited Uses
+
+You may not use AxisForge to:
+- Circumvent anti-cheat systems in violation of a game's Terms of Service where such circumvention is unlawful
+- Automate gameplay in any manner prohibited by applicable law or a game's Terms of Service
+- Transmit malicious code or interfere with other users' systems
+
+---
+
+## 13. Changes to Terms
+
+AxisForge reserves the right to update these Terms at any time. When material changes are made, the Software will prompt you to review and accept the updated Terms on next launch. Continued use after acceptance constitutes agreement to the revised Terms.
+
+---
+
+## 14. Governing Law
+
+These Terms are governed by and construed in accordance with the laws of Japan, without regard to its conflict of law principles. Any dispute arising out of or in connection with these Terms or your use of the Software shall be submitted to the exclusive jurisdiction of the courts of Tokyo, Japan, except where mandatory consumer-protection law in your country of residence grants you additional non-waivable rights.
+
+---
+
+## 15. Contact
+
+For questions regarding these Terms, contact: hello@axisforge.app

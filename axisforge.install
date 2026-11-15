@@ -48,7 +48,7 @@ If this is your first install:
 
   4. (Optional, for Wine / Proton games) Whitelist AxisForge's VID:PID in
      winebus so games inside the Wine prefix can see the virtual sticks. See:
-       https://github.com/silentcid/stickforge/blob/main/features.md#wine--proton-compatibility--enablehidraw-allowlist
+       https://www.axisforge.app#wine
 ================================================================================
 
 EOF
