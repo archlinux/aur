@@ -1,0 +1,16 @@
+pkgbase = ovr
+	pkgdesc = Pipe any input through a chain of text transformations, with a CLI and a GUI front end
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/akhenakh/ovr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.27
+	optdepends = mesa: GPU rendering for ovrui (falls back to the software renderer)
+	optdepends = libxkbcommon: keyboard layout support for ovrui
+	optdepends = alsa-lib: sound playback for ovrui
+	source = ovr-0.7.tar.gz::https://github.com/akhenakh/ovr/archive/refs/tags/v0.7.tar.gz
+	sha256sums = 75831c6c4e1d3ae660f482e9526914599ead816e0ef5e45f4ea90a98b3b6a724
+
+pkgname = ovr
