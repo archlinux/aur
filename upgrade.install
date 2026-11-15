@@ -17,4 +17,7 @@ post_upgrade() {
         echo "Other AUR packages are now only upgraded if /etc/upgrade.toml sets upgrade_aur = true."
         echo "upgrade still updates itself from the AUR."
     fi
+    if (( $(vercmp "$2" 0.5.0) < 0 )); then
+        echo "autoremove and clearpkgcache are now upgrade autoremove and upgrade clean."
+    fi
 }
