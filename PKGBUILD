@@ -1,7 +1,7 @@
 # Maintainer: crux <crrvx@outlook.com>
 
 pkgname=dsh-bin
-pkgver=0.0.0
+pkgver=0.2.2_rc.3
 pkgrel=1
 pkgdesc='DeepSeek Harness: Everything is a Plugin'
 arch=('x86_64' 'aarch64')
