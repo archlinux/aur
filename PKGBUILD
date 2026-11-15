@@ -1,7 +1,7 @@
 # Maintainer: acceleration3 <acceleration23 at gmail dot com>
 
 pkgname=lsw-bin
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Linux Subsystem for Windows: Windows applications as native windows, from a KVM guest with a paravirtual GPU"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('lsw')
 depends=(
     'qt6-base>=6.12' 'libvirt' 'libisofs' 'libvncserver' 'wimlib' 'hivex'
     'spdlog' 'fmt' 'zlib' 'wayland' 'libxkbcommon' 'libdrm'
-    'vulkan-icd-loader' 'ocl-icd' 'libglvnd' 'libpipewire'
+    'vulkan-icd-loader' 'ocl-icd' 'libglvnd' 'libpipewire' 'spirv-tools'
     'glib2' 'pixman' 'gnutls' 'libpng' 'libjpeg-turbo' 'libsasl' 'snappy' 'lzo'
     'zstd' 'numactl' 'keyutils' 'libslirp' 'libbpf'
     'libelf' 'libcbor' 'systemd-libs' 'libseccomp' 'dtc' 'pam' 'fuse3'
@@ -32,7 +32,7 @@ optdepends=(
 install=lsw-bin.install
 options=('!strip' '!debug')
 source=("https://github.com/acceleration3/linux-subsystem-windows/releases/download/v${pkgver}/lsw-${pkgver}-${CARCH}.tar.zst")
-sha256sums=('e091f5ece29fb100a3a4cf95f620e18dbb7116a267dffcbc481eeed7dce24e8e')
+sha256sums=('cf748d462136c85b5de676a9ba79b05ac2bcd8a4ceb6d837e3e2500a1d57f474')
 
 package() {
     cp -a --no-preserve=ownership "${srcdir}/usr" "${pkgdir}/"
