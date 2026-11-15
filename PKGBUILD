@@ -2,7 +2,7 @@
 # Repackages the release's .deb (built on Ubuntu 22.04, glibc 2.35+).
 pkgname=xtermium-bin
 _pkgname=xtermium
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Cross-platform terminal and session manager with web/file browsers and AI'
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source=("https://github.com/xtermium/xtermium/releases/download/v$pkgver/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('a2a461a751bd8a5d4630b65f8c1c24454ef20a4ac72b93ae182ef7808ea80384')
+sha256sums=('926fbbf131b682eb2e9cb8d1e020c1870efab4037dfeb2a60ee65025cca49fdc')
 
 package() {
   bsdtar -xf data.tar.gz -C "$pkgdir"

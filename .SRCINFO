@@ -1,6 +1,6 @@
 pkgbase = xtermium-bin
 	pkgdesc = Cross-platform terminal and session manager with web/file browsers and AI
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://xtermium.com
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = xtermium-bin
 	conflicts = xtermium
 	options = !strip
 	options = !debug
-	source = https://github.com/xtermium/xtermium/releases/download/v0.9.0/xtermium_0.9.0_amd64.deb
-	sha256sums = a2a461a751bd8a5d4630b65f8c1c24454ef20a4ac72b93ae182ef7808ea80384
+	source = https://github.com/xtermium/xtermium/releases/download/v0.10.0/xtermium_0.10.0_amd64.deb
+	sha256sums = 926fbbf131b682eb2e9cb8d1e020c1870efab4037dfeb2a60ee65025cca49fdc
 
 pkgname = xtermium-bin
