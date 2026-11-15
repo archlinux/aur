@@ -1,11 +1,12 @@
 pkgname=cognito-local
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Local emulator for Amazon Cognito"
 arch=('x86_64')
 url="https://github.com/jagregory/cognito-local"
 license=('MIT')
-depends=('nodejs' 'npm')
+depends=('nodejs')
+makedepends=('npm')
 provides=('cognito-local')
 conflicts=('cognito-local-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jagregory/cognito-local/archive/refs/tags/v$pkgver.tar.gz")
