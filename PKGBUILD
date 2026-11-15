@@ -5,9 +5,9 @@
 
 pkgname=sonora-nightly-bin
 _pkgname=sonora
-pkgver=0.49.1.nightly.20261114
+pkgver=0.49.1.nightly.20261115
 pkgrel=1
-_commit=5ee03cb01d25c9d48c398e4c89303e2632b28bde
+_commit=cf394e9fed20afd07d0684d4fed25cab732def5f
 pkgdesc='A native, familiar music streaming client (nightly build of main)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sonorahq/sonora'
@@ -27,9 +27,9 @@ source=("${_pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz"
         "sonora-build-${pkgver}.json::${url}/releases/download/nightly/sonora-build.json")
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/nightly/sonora-nightly-x86_64-unknown-linux-gnu")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/nightly/sonora-nightly-aarch64-unknown-linux-gnu")
-sha256sums=('96e78bcaa60b3fa1c9b1f8f0013c50e8a63490a64586f39af98ddfb36b906814' '9486700afb2feeb9450a3c509a7f67103511757de9cf6c68ac08948e9d5ef1da')
-sha256sums_x86_64=('16cad4c09f56f07aaa4e6f3c69843daf1dc3cb71c13b740c8f9623ae682e0400')
-sha256sums_aarch64=('c0b9212c2fac3aff8fb30a9966c0711f5b772712f2da1aa957982d2140727c7a')
+sha256sums=('d119ed5c8b33120fb733991ad4681caa3cb33528600834264bf767279a21765c' 'e1825d0f430758765efd892f3935b468ffd6f215c675f595cd959315f539d3af')
+sha256sums_x86_64=('b3cfaadf05312f188985ecc4c3d963e22dc151480bfcc1be098b178fe31f4fe5')
+sha256sums_aarch64=('0bbff2b0840051bec4545738ad597907bed283260f5574a3bb6acd7376066380')
 
 package() {
   cd "${_pkgname}-${_commit}"
