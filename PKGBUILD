@@ -1,6 +1,6 @@
 # Maintainer: he3als <he3als@users.noreply.github.com>
 pkgname=discord-canary-prerelease-patched-electron-bin
-pkgver=20261115.170956
+pkgver=20261115.194528
 pkgrel=1
 pkgdesc='Discord Canary with patched Electron and Linux fixes (AVX2 required)'
 arch=('x86_64')
@@ -12,8 +12,8 @@ options=('!strip' '!debug')
 provides=('discord-canary')
 conflicts=(discord-canary discord-canary-electron-bin)
 install=discord.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/discord-patched-electron/discord-patched-electron/releases/download/v20261115170956.0.0-canary.efc038d615ce5713/discord-canary-prerelease-patched-electron-bin-linux-x86_64.tar.gz")
-sha256sums=('35a7405c893b1bb2ed44b627bb2885e215c2754718118195a591e9d1f8b5bfaa')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/discord-patched-electron/discord-patched-electron/releases/download/v20261115194528.0.0-canary.3c0a9f36b78c0494/discord-canary-prerelease-patched-electron-bin-linux-x86_64.tar.gz")
+sha256sums=('52b5209f080f8fb42d5e88535c7edeac86150b14c5f12850ee1c89bb340581a4')
 
 package() {
   install -dm755 "$pkgdir/opt" "$pkgdir/usr/bin"
