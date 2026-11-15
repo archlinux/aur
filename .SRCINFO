@@ -1,7 +1,7 @@
 pkgbase = gapcode-bin
 	pkgdesc = GapGPT AI coding agent for the terminal (unofficial package)
 	pkgver = 0.164.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gapgpt.app
 	arch = x86_64
 	arch = aarch64
@@ -18,6 +18,8 @@ pkgbase = gapcode-bin
 	conflicts = gapgpt
 	options = !strip
 	options = !debug
+	source = gapcode.sh
+	sha256sums = 3203fb595e7f449264b017d2602483785fe974e2c9ce5552c4c0d0e7fa558fe4
 	source_x86_64 = gapcode-bin-0.164.3-x86_64.tar.gz::https://gapgpt.ir/releases/app/gapcode/releases/v0.164.3/gapcode-x86_64-unknown-linux-musl.tar.gz
 	sha256sums_x86_64 = 1a6fbda9bddd7a9645d07bad0c75df72bcf0f2b202a834c8e2b388e812eed1d6
 	source_aarch64 = gapcode-bin-0.164.3-aarch64.tar.gz::https://gapgpt.ir/releases/app/gapcode/releases/v0.164.3/gapcode-aarch64-unknown-linux-musl.tar.gz

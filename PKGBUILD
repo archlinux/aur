@@ -4,7 +4,7 @@
 
 pkgname=gapcode-bin
 pkgver=0.164.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GapGPT AI coding agent for the terminal (unofficial package)"
 arch=('x86_64' 'aarch64')
 url="https://gapgpt.app"
@@ -21,6 +21,8 @@ provides=("${pkgname%-bin}")
 options=('!strip' '!debug')
 # Upstream checksums:
 #   curl -s https://gapgpt.ir/releases/app/gapcode/releases/v${pkgver}/SHA256SUMS
+source=('gapcode.sh')
+sha256sums=('3203fb595e7f449264b017d2602483785fe974e2c9ce5552c4c0d0e7fa558fe4')
 _base="https://gapgpt.ir/releases/app/gapcode/releases/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_base}/gapcode-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_base}/gapcode-aarch64-unknown-linux-musl.tar.gz")
@@ -36,6 +38,7 @@ package() {
   cp -a bin codex-package.json codex-path codex-resources "$pkgdir$_app/"
   find "$pkgdir$_app" -type d -exec chmod 755 {} +
 
-  install -dm755 "$pkgdir/usr/bin"
-  ln -s "$_app/bin/codex" "$pkgdir/usr/bin/gapcode"
+  # Wrapper instead of a plain symlink: it also sets up the per-user
+  # app-server daemon link upstream's installer would normally create.
+  install -Dm755 gapcode.sh "$pkgdir/usr/bin/gapcode"
 }
