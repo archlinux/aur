@@ -1,6 +1,6 @@
 pkgbase = panasonic-posture-manager-bin
 	pkgdesc = Prebuilt posture management and screen orientation for convertible Linux 2-in-1 laptops
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/adogecheems/panasonic-posture-manager
 	install = panasonic-posture-manager-bin.install
@@ -24,7 +24,7 @@ pkgbase = panasonic-posture-manager-bin
 	conflicts = panasonic-posture-manager
 	options = !strip
 	options = !debug
-	source = panasonic-posture-manager-2.4.0-1-x86_64.pkg.tar.zst::https://github.com/adogecheems/panasonic-posture-manager/releases/download/v2.4.0/panasonic-posture-manager-2.4.0-1-x86_64.pkg.tar.zst
-	sha256sums = fe47af8c15d9f34da64aa767347d65f2802e950a84f43171c3963ff39ca051ab
+	source = panasonic-posture-manager-2.5.0-1-x86_64.pkg.tar.zst::https://github.com/adogecheems/panasonic-posture-manager/releases/download/v2.5.0/panasonic-posture-manager-2.5.0-1-x86_64.pkg.tar.zst
+	sha256sums = 28aba685f46a6133387db4c801cb2e8c2ea39ade6802790a935e5c2903b14bd4
 
 pkgname = panasonic-posture-manager-bin
