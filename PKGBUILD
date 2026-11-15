@@ -4,7 +4,7 @@
 # kernel module and the userspace daemon share a kernel/userspace ABI, so both
 # PKGBUILDs must always be bumped to the same pkgver.
 pkgname=rtpengine-kernel-dkms
-pkgver=26.3.1.1
+pkgver=26.3.1.3
 pkgrel=1
 pkgdesc="Kernel module for Sipwise rtpengine media proxy (DKMS)"
 url="https://github.com/sipwise/rtpengine"
@@ -14,7 +14,7 @@ depends=('dkms')
 provides=("rtpengine-kernel-module=${pkgver}")
 conflicts=('rtpengine-kernel-module')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/mr${pkgver}.tar.gz")
-sha256sums=('a279fe141907ba868d8acfff333de4822ae7a31935bd29da942ac0e79a2f8107')
+sha256sums=('a7b8d9261fc84422ff99db49795e81fbf7485a20e6aacdf5a7e7231572eab040')
 
 prepare() {
   cd "rtpengine-mr${pkgver}"
