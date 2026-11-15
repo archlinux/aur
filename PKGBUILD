@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=librepaper-bin
-pkgver=0.0.76 # renovate: datasource=github-releases depName=LibrePaper/librepaper
+pkgver=0.0.77 # renovate: datasource=github-releases depName=LibrePaper/librepaper
 pkgrel=1
 pkgdesc="A free collaborative writing, editing, and commenting platform"
 arch=('x86_64')
@@ -34,4 +34,4 @@ package() {
 }
 
 sha256sums=('24e8fce6a0afd334944a8982e1f388dab3e208beb33acaecc4a490819918add0')
-sha256sums_x86_64=('74e924c10fefb69bfde2ea1e7eb3d34f6249a36215fe1b4bc70156d61106ddfa')
+sha256sums_x86_64=('292111100a67759a424554ba0850679774902dad85c18574d030baeb4f5780bf')
