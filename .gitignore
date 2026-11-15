@@ -1,0 +1,17 @@
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+
+# RFC66
+!60-kernel-install-remove.hook
+!85-mkinitcpio-rebuild.hook
+!90-kernel-install-add.hook
+!kernel-install-dispatch
+
+# Raspberry Pi
+!10-raspberrypi.conf
+!52-rpi-initrd.install
+!60-rpi-boot.install
+!cmdline.txt

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-2.0-only
+# Based on /usr/lib/kernel/install.d/50-mkinitcpio.install
+
+COMMAND="${1:?}"
+# shellcheck disable=SC2034
+KERNEL_VERSION="${2:?}"
+# shellcheck disable=SC2034
+ENTRY_DIR_ABS="$3"
+KERNEL_IMAGE="$4"
+
+[[ "${KERNEL_INSTALL_LAYOUT:-}" == 'raspberrypi' ]] || exit 0
+[[ "${KERNEL_INSTALL_INITRD_GENERATOR:-mkinitcpio}" == 'mkinitcpio' ]] || exit 0
+[[ "$COMMAND" == "add" ]] || exit 0
+[[ -n "$KERNEL_IMAGE" ]] || exit 0
+
+GENERATOR_CMD=(mkinitcpio --nopost -k "$KERNEL_IMAGE")
+GENERATOR_CMD+=(-g "$KERNEL_INSTALL_STAGING_AREA/initrd")
+(( KERNEL_INSTALL_VERBOSE )) && GENERATOR_CMD+=("-v")
+
+(( KERNEL_INSTALL_VERBOSE )) && printf "+ %s\n" "${GENERATOR_CMD[*]}"
+"${GENERATOR_CMD[@]}"
+
+# vim: set ft=sh ts=4 sw=4 et:

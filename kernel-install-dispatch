@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-2.0-only
+set -euo pipefail
+
+# Dispatches calls to kernel-install add or remove based on libalpm hooks.
+# Trigger paths are passed through stdin
+
+COMMAND=${1:?usage: kernel-install-dispatch add|remove}
+if [[ $COMMAND != 'add' && $COMMAND != 'remove' ]]; then
+    printf '%s: unknown command %s\n' "${0##*/}" "$COMMAND" >&2
+    exit 1
+fi
+
+while read -r TARGET; do
+    if [[ $TARGET != usr/lib/modules/*/vmlinuz ]]; then
+        continue
+    fi
+
+    KVER=${TARGET#usr/lib/modules/}
+    KVER=${KVER%/vmlinuz}
+    if [[ -z $KVER ]]; then
+        continue
+    fi
+
+    kernel-install "$COMMAND" "$KVER" "/usr/lib/modules/$KVER/vmlinuz"
+done

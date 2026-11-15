@@ -1,0 +1,10 @@
+# Default kernel command line for Raspberry Pi systems using
+# bootchain-rpi, fallback when /etc/kernel/cmdline does not exist.
+#
+# Do NOT edit cmdline.txt on the boot partition, it is regenerated from
+# those files on every kernel deployment.
+#
+# After creating or changing either file, re-render the boot partition:
+#   kernel-install add-all
+
+rw rootwait console=serial0,115200 console=tty1 fsck.repair=yes

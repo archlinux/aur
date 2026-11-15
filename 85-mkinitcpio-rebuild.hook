@@ -1,0 +1,29 @@
+# SPDX-License-Identifier: GPL-2.0-only
+# Trigger paths are copied from mkinitcpio's 90-mkinitcpio-install.hook
+# The original is masked in the PKGBUILD
+# https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio/-/blob/master/libalpm/hooks/90-mkinitcpio-install.hook
+
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/initcpio/*
+Target = usr/lib/firmware/*
+Target = usr/lib/modules/*/extramodules/
+Target = usr/src/*/dkms.conf
+Target = usr/lib/systemd/systemd
+Target = usr/lib/systemd/systemd-udevd
+Target = usr/bin/cryptsetup
+Target = usr/bin/lvm
+Target = usr/bin/mdadm
+Target = usr/bin/pdata_tools
+Target = usr/lib/libcryptsetup.so
+Target = usr/lib/libp11-kit.so
+Target = usr/lib/libpcsclite.so
+Target = usr/lib/modprobe.d/
+
+[Action]
+Description = Rebuilding initramfs and re-deploying kernels via kernel-install (bootchain-rpi)...
+When = PostTransaction
+Exec = /usr/bin/kernel-install add-all

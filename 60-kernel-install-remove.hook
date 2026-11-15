@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: GPL-2.0-only
+[Trigger]
+Type = Path
+Operation = Remove
+Target = usr/lib/modules/*/vmlinuz
+
+[Action]
+Description = Removing kernel boot files via kernel-install (bootchain-rpi)...
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/kernel-install-dispatch remove
+NeedsTargets

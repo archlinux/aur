@@ -1,0 +1,142 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-2.0-only
+set -euo pipefail
+
+_KERNEL_NAME='kernel8.img'
+_INITRD_NAME='initramfs8'
+_CMDLINE_NAME='cmdline.txt'
+
+main() {
+    PROGRAM="${0##*/}"
+    COMMAND="${1}"
+    KERNEL_VERSION="${2}"
+
+    if [[ "${KERNEL_INSTALL_LAYOUT:-raspberrypi}" != 'raspberrypi' ]]; then
+        exit 0
+    fi
+    case "$COMMAND" in
+        add|remove) ;;
+        *) exit 0 ;;
+    esac
+
+    # Safety checks
+    if [[ -z "$KERNEL_INSTALL_BOOT_ROOT" ]]; then
+        exit_code 1 'KERNEL_INSTALL_BOOT_ROOT must be set'
+    fi
+    if [[ ! -d "$KERNEL_INSTALL_BOOT_ROOT" ]]; then
+        exit_code 1 '%s (KERNEL_INSTALL_BOOT_ROOT) is not a valid directory' "$KERNEL_INSTALL_BOOT_ROOT"
+    fi
+
+    # Resolve kernel package name and image path
+    MODULES_DIR="/usr/lib/modules/$KERNEL_VERSION"
+    VMLINUZ_PATH="$MODULES_DIR/vmlinuz"
+    KERNEL_PACKAGE="$(pacman -Qqo "$VMLINUZ_PATH" 2>/dev/null || true)"
+    if [[ -z "$KERNEL_PACKAGE" ]]; then
+        exit_code 1 'Could not resolve package for %s' "$VMLINUZ_PATH"
+    fi
+    SLOT_DIR="$KERNEL_INSTALL_BOOT_ROOT/$KERNEL_PACKAGE"
+
+    # Resolve initrd path
+    INITRD_PATH="$KERNEL_INSTALL_STAGING_AREA/initrd"
+
+    # Resolve device tree and overlay paths
+    DTB_PATH="$MODULES_DIR/dtb"
+    OVERLAY_PATH="$DTB_PATH/overlays"
+
+    # Install or remove
+    if [[ "$COMMAND" == 'add' ]]; then
+        kernel_add
+    elif [[ "$COMMAND" == 'remove' ]]; then
+        kernel_remove
+    fi
+}
+
+kernel_add() {
+    mkdir -p "$SLOT_DIR"
+
+    # Kernel image
+    if [[ ! -f "$VMLINUZ_PATH" ]]; then
+        exit_code 1 'Kernel image not found at %s' "$VMLINUZ_PATH"
+    fi
+    install_copy_and_rename 644 "$VMLINUZ_PATH" "$SLOT_DIR/$_KERNEL_NAME"
+
+    # Initrd
+    if [[ ! -f "$INITRD_PATH" ]]; then
+        exit_code 1 'Initrd not found at %s' "$INITRD_PATH"
+    fi
+    install_copy_and_rename 644 "$INITRD_PATH" "$SLOT_DIR/$_INITRD_NAME"
+
+    # Cmdline
+    cmdline_found=0
+    cmdline_str=""
+    for cmdline_path in /etc/kernel/cmdline /usr/lib/kernel/cmdline; do
+        if [[ -f "$cmdline_path" ]]; then
+            cmdline_found=1
+            cmdline_str=$(sed '/^[[:space:]]*#/d' "$cmdline_path" | tr '\n' ' ' | tr -s '[:space:]' ' ' | sed 's/^ *//; s/ *$//')
+            break
+        fi
+    done
+    if [[ $cmdline_found -ne 1 ]]; then
+        exit_code 1 'cmdline not found'
+    fi
+    echo "$cmdline_str" | install_copy_and_rename 644 /dev/stdin "$SLOT_DIR/$_CMDLINE_NAME"
+
+    # Device trees: flattened to the slot root, where the VC firmware's
+    # automatic device tree discovery looks for bcm27xx-rpi-*.dtb under
+    # ${os_prefix}.
+    if [[ ! -d "$DTB_PATH" ]]; then
+        exit_code 1 'Device trees not found at %s' "$DTB_PATH"
+    fi
+    while read -rd '' dtb; do
+        install_copy_and_rename 644 "$dtb" "$SLOT_DIR/${dtb##*/}"
+    done < <(find "$DTB_PATH" -type f -name '*.dtb' -print0)
+
+    # Overlays; the firmware only loads overlays from
+    # ${os_prefix}${overlay_prefix} when README exists
+    # https://www.raspberrypi.com/documentation/computers/config_txt.html#os_prefix
+    if [[ ! -d "$OVERLAY_PATH" ]]; then
+        exit_code 1 'Overlays not found at %s' "$OVERLAY_PATH"
+    fi
+    mkdir -p "$SLOT_DIR/overlays"
+    while read -rd '' dtbo; do
+        install_copy_and_rename 644 "$dtbo" "$SLOT_DIR/overlays/${dtbo##*/}"
+    done < <(find "$OVERLAY_PATH" -maxdepth 1 -type f -name '*.dtbo' -print0)
+    echo 'bootchain-rpi: marker file so the firmware loads overlays from this boot slot' \
+        | install_copy_and_rename 644 /dev/stdin "$SLOT_DIR/overlays/README"
+
+    printf '%s: boot slot %s is ready for kernel %s; config.txt must select it with os_prefix=%s/\n' \
+        "$PROGRAM" "$SLOT_DIR" "$KERNEL_VERSION" "$KERNEL_PACKAGE"
+}
+
+kernel_remove() {
+    FILES=(
+        "$SLOT_DIR/$_KERNEL_NAME"
+        "$SLOT_DIR/$_INITRD_NAME"
+        "$SLOT_DIR/$_CMDLINE_NAME"
+        "$SLOT_DIR/overlays"
+    )
+    rm -rf "${FILES[@]}"
+    find "$SLOT_DIR" -maxdepth 1 -name '*.dtb' -delete
+    rmdir "$SLOT_DIR" 2>/dev/null || true
+    exit_code 0 'Removed kernel and related files from %s' "$SLOT_DIR"
+}
+
+install_copy_and_rename() {
+    local perms="$1" orig="$2" dest="$3"
+    install -m "$perms" "$orig" "$dest.new"
+    sync -f "$dest.new"
+    mv -f "$dest.new" "$dest"
+    sync -f "$dest"
+}
+
+exit_code() {
+    local code="$1" fmt="$2"
+    shift 2
+    if [[ -n "$fmt" ]]; then
+        # shellcheck disable=SC2059
+        printf "${fmt%\\n}\\n" "$@" >&2
+    fi
+    exit "$code"
+}
+
+main "$@"

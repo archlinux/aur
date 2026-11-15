@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: GPL-2.0-only
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modules/*/vmlinuz
+
+[Action]
+Description = Installing kernel boot files via kernel-install (bootchain-rpi)...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/kernel-install-dispatch add
+NeedsTargets
