@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Selfwork
+Comment=Selfwork desktop app
+Exec=selfwork %U
+Icon=selfwork
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;
+StartupWMClass=Selfwork
