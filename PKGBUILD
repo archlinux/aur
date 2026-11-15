@@ -4,7 +4,7 @@
 # PRs welcome at: https://github.com/ActivityWatch/aur-activitywatch-bin
 
 pkgname=activitywatch-bin
-pkgver='0.14.2'
+pkgver='0.14.3'
 pkgrel=1
 epoch=
 pkgdesc="Track how you spend time on your computer. Simple, extensible, no third parties."
@@ -20,7 +20,7 @@ depends=(
     #'openssl-1.0'
 )
 source=("https://github.com/ActivityWatch/activitywatch/releases/download/v${pkgver}/activitywatch-v${pkgver}-linux-x86_64.zip")
-md5sums=('609f33bcaf8052dbf7ec0dc3b1aec508')
+md5sums=('d4b117a65f8f5eb5e7649ff6220c079b')
 
 package() {
     # Install into /opt/activitywatch
