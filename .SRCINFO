@@ -1,0 +1,25 @@
+pkgbase = purple-pen
+	pkgdesc = Course setting program for orienteering races (4.0.0 beta 2)
+	pkgver = 4.0.0.beta2
+	pkgrel = 1
+	url = https://purple-pen.org
+	install = purple-pen.install
+	arch = x86_64
+	license = BSD
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	depends = icu
+	depends = libx11
+	depends = libice
+	depends = libsm
+	depends = fontconfig
+	depends = xdg-utils
+	provides = purplepen=4.0.0.beta2
+	conflicts = purplepen
+	options = !strip
+	source = purple-pen-4.0.0.beta2.tar.gz::https://github.com/petergolde/PurplePen/archive/refs/tags/v400beta2.tar.gz
+	source = purple-pen-no-gitversion.patch
+	sha256sums = 06d4843e3cee0d1b21bda264f86c44d021694a3647c9daa03c7bbafd52d55240
+	sha256sums = b3fe4e5a44b18c1a7fb6fae9ec4a7eea145ed978490c545b646cb0f99e0ac202
+
+pkgname = purple-pen

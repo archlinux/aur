@@ -1,0 +1,79 @@
+--- a/src/MapModel/PDFsharp/src/foundation/src/shared/src/PdfSharp.Shared/Internal/PdfSharpGitVersionInformation.cs
++++ b/src/MapModel/PDFsharp/src/foundation/src/shared/src/PdfSharp.Shared/Internal/PdfSharpGitVersionInformation.cs
+@@ -1,56 +1,64 @@
+ ﻿// PDFsharp - A .NET library for processing PDF
+ // See the LICENSE file in the solution root for more information.
++//
++// PurplePen AUR packaging: this file was rewritten by the
++// purple-pen-no-gitversion.patch. Upstream derives these values at build time
++// from a git repository through GitVersion.MsBuild (see gitversion.yml); a
++// source tarball has no git history, so we supply the values GitVersion
++// reports when there is no version tag (PDFsharp documents this fallback as
++// 0.1.0 in its README). The values feed cosmetic product/PDF-creator metadata
++// only.
+ 
+ namespace PdfSharp.Internal
+ {
+     /// <summary>
+-    /// Product version information from git version tool.
++    /// Product version information from the version tool.
+     /// </summary>
+     public static class PdfSharpGitVersionInformation
+     {
+         /// <summary>
+         /// The major version number of the product.
+         /// </summary>
+-        public static string Major = global::GitVersionInformation.Major;
++        public static string Major = "0";
+ 
+         /// <summary>
+         /// The minor version number of the product.
+         /// </summary>
+-        public static string Minor = global::GitVersionInformation.Minor;
++        public static string Minor = "1";
+ 
+         /// <summary>
+         /// The patch number of the product.
+         /// </summary>
+-        public static string Patch = global::GitVersionInformation.Patch;
++        public static string Patch = "0";
+ 
+         /// <summary>
+         /// The Version pre-release string for NuGet.
+         /// </summary>
+-        public static string PreReleaseLabel =  global::GitVersionInformation.PreReleaseLabel;
++        public static string PreReleaseLabel = "";
+ 
+         /// <summary>
+         /// The full version number.
+         /// </summary>
+-        public static string MajorMinorPatch = global::GitVersionInformation.MajorMinorPatch;
++        public static string MajorMinorPatch = "0.1.0";
+ 
+         /// <summary>
+-        /// The full semantic version number created by GitVersion.
++        /// The full semantic version number.
+         /// </summary>
+-        public static string SemVer = global::GitVersionInformation.SemVer;
++        public static string SemVer = "0.1.0";
+ 
+         /// <summary>
+-        /// The full informational version number created by GitVersion.
++        /// The full informational version number.
+         /// </summary>
+-        public static string InformationalVersion =  global::GitVersionInformation.InformationalVersion;
++        public static string InformationalVersion = "0.1.0";
+ 
+         /// <summary>
+         /// The branch name of the product.
+         /// </summary>
+-        public static string BranchName = global::GitVersionInformation.BranchName;
++        public static string BranchName = "master";
+ 
+         /// <summary>
+         /// The commit date of the product.
+         /// </summary>
+-        public static string CommitDate = global::GitVersionInformation.CommitDate;
++        public static string CommitDate = "";
+     }
+ }
