@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=waypointer
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A tiny hand on a stick that points at things on your screen"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=('kwin: shortcuts, Alt and Shift, and panels that stay usable on KDE 
             'xdg-desktop-portal: picking the picture for your own hand')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d7e33c2b4521b6fecda8237f2f57c50b049cf767a33ccb590a856f293c12fef3')
+sha256sums=('278cdfb56fa5bf718aa6cc7aac81df519e22544fa674e380f74ca70943b52328')
 
 prepare() {
   cd "$pkgname-$pkgver"

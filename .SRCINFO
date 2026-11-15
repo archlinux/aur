@@ -1,6 +1,6 @@
 pkgbase = waypointer
 	pkgdesc = A tiny hand on a stick that points at things on your screen
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Felitendo/waypointer
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = waypointer
 	depends = wayland
 	optdepends = kwin: shortcuts, Alt and Shift, and panels that stay usable on KDE Plasma
 	optdepends = xdg-desktop-portal: picking the picture for your own hand
-	source = waypointer-0.1.0.tar.gz::https://github.com/Felitendo/waypointer/archive/v0.1.0.tar.gz
-	sha256sums = d7e33c2b4521b6fecda8237f2f57c50b049cf767a33ccb590a856f293c12fef3
+	source = waypointer-0.1.1.tar.gz::https://github.com/Felitendo/waypointer/archive/v0.1.1.tar.gz
+	sha256sums = 278cdfb56fa5bf718aa6cc7aac81df519e22544fa674e380f74ca70943b52328
 
 pkgname = waypointer
