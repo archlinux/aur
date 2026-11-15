@@ -1,5 +1,5 @@
 pkgname=mcpelauncher-ui-bin
-pkgver=1.8.4.35236987803.1~bookworm
+pkgver=1.8.7.40934284323.1~bookworm
 pkgrel=1
 pkgdesc="Minecraft Bedrock Launcher for Linux"
 arch=('x86_64')
@@ -11,16 +11,17 @@ depends=(curl glibc hicolor-icon-theme libgcc libstdc++ libzip mcpelauncher-clie
 makedepends=(imagemagick)
 
 source=("https://minecraft-linux.github.io/pkg/deb/pool/bookworm/main/m/mcpelauncher-ui-manifest/mcpelauncher-ui-manifest_${pkgver}_amd64.deb")
-b2sums=('SKIP')
+b2sums=('d5c6491aa584ad1500ed7241e05934cceddf8bffe98e59317af975180cc019a672dde90837e81aed44173dfa4edd45fc62787adfae7473aca9e5b0dac699e816')
 noextract=("mcpelauncher-ui-manifest_${pkgver}_amd64.deb")
 
 package() {
-        ar vx "${srcdir}/mcpelauncher-ui-manifest_${pkgver}_amd64.deb" data.tar.gz 1>/dev/null
-        tar -xzf data.tar.gz -C "${srcdir}"
-	mkdir -p "${pkgdir}"/{usr/share/{applications,icons/hicolor/scalable/apps},opt/mcpelauncher-bin/{bin,share}}
+    ar vx "${srcdir}/mcpelauncher-ui-manifest_${pkgver}_amd64.deb" data.tar.gz 1>/dev/null
+    tar -xzf data.tar.gz -C "${srcdir}"
+	mkdir -p "${pkgdir}"/{bin,usr/share/{applications,icons/hicolor/scalable/apps},opt/mcpelauncher-bin/{bin,share}}
 	cp -r "${srcdir}"/usr/share "${pkgdir}"/opt/mcpelauncher-bin
 	sed -i 's/libzip.so.4/libzip.so.5/' "${srcdir}"/usr/bin/*	
 	install -Dm755 "${srcdir}"/usr/bin/* -t "${pkgdir}"/opt/mcpelauncher-bin/bin/
 	cp "${pkgdir}"/opt/mcpelauncher-bin/share/pixmaps/mcpelauncher-ui-qt.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/mcpelauncher-ui-qt.svg
 	cp "${pkgdir}"/opt/mcpelauncher-bin/share/applications/mcpelauncher-ui-qt.desktop "${pkgdir}"/usr/share/applications
+	ln -s "${pkgdir}"/opt/mcpelauncher-bin/bin "${pkgdir}"/bin
 }
