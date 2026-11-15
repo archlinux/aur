@@ -1,6 +1,6 @@
 pkgbase = lynx-share-bin
 	pkgdesc = A lightweight DAW with the FL Studio workflow (prebuilt binaries)
-	pkgver = 0.1.27alpha
+	pkgver = 0.1.28alpha
 	pkgrel = 1
 	url = https://github.com/Ka1-S/LYNX
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = lynx-share-bin
 	conflicts = lynx-share
 	options = !strip
 	options = !debug
-	source = https://github.com/Ka1-S/LYNX/releases/download/v0.1.27-alpha/LYNX-0.1.27-alpha-linux-x86_64.tar.gz
-	sha256sums = 85d0cbfdec44670dd2e9dce94d9d73bc4eed3b023ccbe6c5aa95057a74e5f941
+	source = https://github.com/Ka1-S/LYNX/releases/download/v0.1.28-alpha/LYNX-0.1.28-alpha-linux-x86_64.tar.gz
+	sha256sums = b2e777205dd1bff461aadb8942f234d9c42ad73af57457278b6b8d9af773f2fb
 
 pkgname = lynx-share-bin
