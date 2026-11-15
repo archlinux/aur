@@ -1,0 +1,24 @@
+pkgbase = neje-bin
+	pkgdesc = Free software for the NEJE DK-8-KZ laser engraver: pictures, text and G-code, print modes, CLI and GUI (prebuilt)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/deddroid/neje-rs
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = hicolor-icon-theme
+	optdepends = wayland: native Wayland window
+	optdepends = libx11: X11 window
+	optdepends = xdg-desktop-portal: file dialogs of the window
+	provides = neje
+	conflicts = neje
+	options = !lto
+	options = !strip
+	options = !debug
+	source = https://github.com/deddroid/neje-rs/releases/download/v0.1.0/neje-0.1.0-linux-x86_64.tar.gz
+	sha256sums = 3d62c51cf4a3731576dc94466d3cfa49a79e10240ee32fee6c023c022a77464a
+
+pkgname = neje-bin
