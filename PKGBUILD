@@ -2,7 +2,7 @@
 pkgname=zonylrctoolsx-bin
 _execname="ZonyLrcTools.Cli"
 _pkgname="zonylrctoolsx"
-pkgver=2026010879
+pkgver=2026111086
 pkgrel=1
 pkgdesc="A command line tool to download lyric (.lrc) files for local songs from online music services."
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::https://github.com/real-zony
 noextract=("${_pkgname}-${pkgver}-x86_64.zip" "${_pkgname}-${pkgver}-aarch64.zip")
 
 sha256sums=('7c5d030183eb7f40e71af7248e69d88d5876f5521cdab187248aa489b812b1d0')
-sha256sums_x86_64=('b1778845c09275b1214628dda11fddceadf8dc2724f99ed4b7660ad7f9c3110c')
-sha256sums_aarch64=('2da6ee5bb4bea8f68b21bfe7a09842ed089ba8c6b707955930fa7536823cb4a7')
+sha256sums_x86_64=('93e9bb3e43aa7a8719141244696a81e917bdda653657289de8789a380567c362')
+sha256sums_aarch64=('e71561e85c8b8466ca9a4d95f1936aefcaae20d5bc9d73379629b12ef2fa8065')
 
 prepare() {
         cd "$srcdir"
