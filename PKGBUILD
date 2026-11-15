@@ -37,16 +37,16 @@ conflicts=(
 options=('!strip')
 source=('studio-one-8.sh')
 source_x86_64=(
-  "studiopro8-${pkgver}.deb::https://studioone-content-r2.presonusmusic.com/studiopro/821RC1IMP8CT/studiopro8-x86_64.deb"
-  'ffmpeg8-8.1.2-10-x86_64.pkg.tar.zst::https://archive.archlinux.org/packages/f/ffmpeg/ffmpeg-2%3A8.1.2-10-x86_64.pkg.tar.zst'
-  'x265-4.2-2-x86_64.pkg.tar.zst::https://archive.archlinux.org/packages/x/x265/x265-4.2-2-x86_64.pkg.tar.zst'
-  'libbluray-1.4.1-1-x86_64.pkg.tar.zst::https://archive.archlinux.org/packages/l/libbluray/libbluray-1.4.1-1-x86_64.pkg.tar.zst'
+  "studiopro8-${pkgver}.deb::https://studioone-content-r2.presonusmusic.com/studiopro/821RC1IMP8CT/studiopro8-${CARCH}.deb"
+  "ffmpeg8-8.1.2-10-${CARCH}.pkg.tar.zst::https://archive.archlinux.org/packages/f/ffmpeg/ffmpeg-2%3A8.1.2-10-${CARCH}.pkg.tar.zst"
+  "x265-4.2-2-${CARCH}.pkg.tar.zst::https://archive.archlinux.org/packages/x/x265/x265-4.2-2-${CARCH}.pkg.tar.zst"
+  "libbluray-1.4.1-1-${CARCH}.pkg.tar.zst::https://archive.archlinux.org/packages/l/libbluray/libbluray-1.4.1-1-${CARCH}.pkg.tar.zst"
 )
 noextract=(
   "studiopro8-${pkgver}.deb"
-  'ffmpeg8-8.1.2-10-x86_64.pkg.tar.zst'
-  'x265-4.2-2-x86_64.pkg.tar.zst'
-  'libbluray-1.4.1-1-x86_64.pkg.tar.zst'
+  "ffmpeg8-8.1.2-10-${CARCH}.pkg.tar.zst"
+  "x265-4.2-2-${CARCH}.pkg.tar.zst"
+  "libbluray-1.4.1-1-${CARCH}.pkg.tar.zst"
 )
 sha256sums=('1840eafebe28cb020c14ccf7d6947ba75559a72d9da5abe793ffc0e5539032c2')
 sha256sums_x86_64=(
@@ -63,7 +63,7 @@ prepare() {
   bsdtar -xf "$srcdir/studiopro8-${pkgver}.deb" -C "$srcdir/deb-container"
   bsdtar -xf "$srcdir/deb-container/data.tar.gz" -C "$srcdir/deb-data"
 
-  bsdtar -xf "$srcdir/ffmpeg8-8.1.2-10-x86_64.pkg.tar.zst" \
+  bsdtar -xf "$srcdir/ffmpeg8-8.1.2-10-${CARCH}.pkg.tar.zst" \
     -C "$srcdir/compat-libs" \
     'usr/lib/libavcodec.so.62*' \
     'usr/lib/libavformat.so.62*' \
@@ -71,11 +71,11 @@ prepare() {
     'usr/lib/libswresample.so.6*' \
     'usr/lib/libswscale.so.9*'
 
-  bsdtar -xf "$srcdir/x265-4.2-2-x86_64.pkg.tar.zst" \
+  bsdtar -xf "$srcdir/x265-4.2-2-${CARCH}.pkg.tar.zst" \
     -C "$srcdir/compat-libs" \
     'usr/lib/libx265.so.216'
 
-  bsdtar -xf "$srcdir/libbluray-1.4.1-1-x86_64.pkg.tar.zst" \
+  bsdtar -xf "$srcdir/libbluray-1.4.1-1-${CARCH}.pkg.tar.zst" \
     -C "$srcdir/compat-libs" \
     'usr/lib/libbluray.so.3' \
     'usr/lib/libbluray.so.3.1.0'
