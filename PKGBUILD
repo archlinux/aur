@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=lakekeeper-bin
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc='Apache Iceberg REST catalog (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("lakekeeper-${pkgver}-NOTICE::https://raw.githubusercontent.com/lakekeep
 source_x86_64=("lakekeeper-${pkgver}-x86_64.tar.gz::${_release}/lakekeeper-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("lakekeeper-${pkgver}-aarch64.tar.gz::${_release}/lakekeeper-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('13d28577ff9b20b8c7c31ce33c00168b83f84a87c06fa15a6c7ee17985a48a1b')
-sha256sums_x86_64=('c7efe8c71dae5d0f68c1f56d7a2dc18638976ae1d05cbd54df0a97ba2e35d049')
-sha256sums_aarch64=('7106969df7bfa7edc13bb71ef38c4a24c2747e2518e212578c06df34b040adc5')
+sha256sums_x86_64=('450da6b37afce87a6e40ee94467def0664b5e879f5a8a2296b43c5a3e1796c33')
+sha256sums_aarch64=('75ae321291e114ef3a11bc5b67e3899c38051b648d6b26994477aa16b14a81e6')
 
 package() {
   install -Dm755 lakekeeper -t "${pkgdir}/usr/bin"
