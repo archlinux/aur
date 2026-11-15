@@ -9,7 +9,7 @@ _pkgname=fileoptimizer
 # bare MAJOR.MINOR, read the build number from
 # https://sourceforge.net/projects/nikkhokkho/files/FileOptimizer/ in a
 # browser and set pkgver to MAJOR.MINOR.BUILD.
-pkgver=18.00.2889
+pkgver=18.10.2904
 
 # SourceForge's own best_release.json is the authoritative single source:
 # release.filename embeds the full MAJOR.MINOR.BUILD path of the current
@@ -33,7 +33,7 @@ conflicts=("${_pkgname}")
 # the file directly. ?viasf=1 marks the request as SourceForge-originated.
 source=("$_pkgname-$pkgver.7z.exe::https://master.dl.sourceforge.net/project/nikkhokkho/FileOptimizer/${pkgver}/FileOptimizerFull.7z.exe?viasf=1"
         "$_pkgname.desktop")
-sha256sums=('09cd006b98f1870fd7896f9fec756e67161e13d17a4bb86bea7bcb8f6c17840d'
+sha256sums=('9813d98e5c868aadd717a487b106906064948483e9394e545fa7cc412d6f1397'
             'a84498b533c5acff60d98cd413df3c63f4408fddd9eb235e6c25c58931655ff5')
 options=(!strip !debug)
 
