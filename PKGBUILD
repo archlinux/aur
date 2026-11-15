@@ -4,8 +4,8 @@
 _pkgname=flashrom
 pkgname=flashrom-minproi
 pkgver=1.8.0
-pkgrel=1
-pkgdesc="Utility for reading, writing, erasing and verifying flash ROM chips, with Mini-Pro-I (MinproI, 1fc8:300b) programmer support"
+pkgrel=2
+pkgdesc="Utility for reading, writing, erasing and verifying flash ROM chips, with Mini-Pro-I (MinproI, 1fc8:300b) programmer support, --ignore-size and --read-size"
 arch=(x86_64)
 url="https://review.coreboot.org/c/flashrom/+/97442"
 license=(GPL-2.0-or-later)
@@ -28,14 +28,18 @@ conflicts=("${_pkgname}")
 source=(
   "git+https://github.com/flashrom/flashrom.git#tag=v${pkgver}"
   "mproi_spi-v${pkgver}.patch"
+  "partial-size-v${pkgver}.patch"
 )
 sha256sums=('c370c329b6cec5e84320c40931fa6200cd72f4e16b6bb2a83e57dcbeb7bd0f54'
-            '8b4e0dcc80d9cd240d0f0f17556d0cbfd5e61f0ac0170c6f0e7f88f0bf28ab94')
+            '8b4e0dcc80d9cd240d0f0f17556d0cbfd5e61f0ac0170c6f0e7f88f0bf28ab94'
+            '45b7f1a895ced67c15995cff3e57ff2b66c3d6aadd88a64b132be7a7baeb0033')
 
 prepare() {
   cd ${_pkgname}
   # Mini-Pro-I driver, submitted upstream as https://review.coreboot.org/c/flashrom/+/97442
   git apply "${srcdir}/mproi_spi-v${pkgver}.patch"
+  # --ignore-size (-w/-v of images smaller than the flash) and --read-size (-r of a prefix)
+  git apply "${srcdir}/partial-size-v${pkgver}.patch"
   # udev rule for the Mini-Pro-I programmer
   sed -i '/^# Olimex ARM-USB-OCD$/i # Mini-Pro-I (MinproI)\nATTRS{idVendor}=="1fc8", ATTRS{idProduct}=="300b", MODE="664", GROUP="plugdev"\n' \
     util/flashrom_udev.rules

@@ -1,0 +1,363 @@
+From: hockinglee <hockinglee@gmail.com>
+Subject: cli_classic: Add --ignore-size to write/verify images smaller than the flash
+
+Adds --ignore-size (-w/-v with images smaller than the flash) and
+--read-size (-r of only the first N bytes) to the classic CLI.
+
+diff --git a/cli_classic.c b/cli_classic.c
+index 19d401f5..04c48748 100644
+--- a/cli_classic.c
++++ b/cli_classic.c
+@@ -49,6 +49,8 @@ enum {
+ 	OPTION_PROGRESS,
+ 	OPTION_SACRIFICE_RATIO,
+ 	OPTION_READ_REPEATED,
++	OPTION_IGNORE_SIZE,
++	OPTION_READ_SIZE,
+ #if CONFIG_RPMC_ENABLED == 1
+ 	OPTION_RPMC_READ_DATA,
+ 	OPTION_RPMC_WRITE_ROOT_KEY,
+@@ -89,6 +91,8 @@ struct cli_options {
+ 	const char *chip_to_probe;
+ 	int sacrifice_ratio;
+ 	int read_repeated;
++	bool ignore_size;
++	size_t read_size;
+ 
+ #if CONFIG_RPMC_ENABLED == 1
+ 	bool rpmc_read_data;
+@@ -145,6 +149,11 @@ static void cli_classic_usage(const char *name)
+ 	       "      --image <region>[:<file>]     deprecated, please use --include\n"
+ 	       " -o | --output <logfile>            log output to <logfile>\n"
+ 	       "      --flash-contents <ref-file>   assume flash contents to be <ref-file>\n"
++	       "      --ignore-size                 with -w/-v: accept an image smaller than the\n"
++	       "                                    flash; only the first <image size> bytes are\n"
++	       "                                    written/verified, the rest is left untouched\n"
++	       "      --read-size <size>            with -r: read only the first <size> bytes of the\n"
++	       "                                    flash (decimal, 0x hex, optional K/M suffix)\n"
+ 	       " -L | --list-supported              print supported devices\n"
+ 	       "      --progress                    show progress percentage on the standard output\n"
+ 	       "      --sacrifice-ratio <ratio>     Fraction (as a percentage, 0-50) of an erase block\n"
+@@ -671,8 +680,35 @@ static int do_read_repeated(struct flashctx *const flash, int count, const char
+ 	return ret;
+ }
+ 
+-static int do_read(struct flashctx *const flash, const char *const filename)
++/**
++ * @brief Install a layout with a single included region [0, len) (for --read-size/--ignore-size).
++ *
++ * @return 0 on success, 1 on error.
++ */
++static int set_prefix_layout(struct flashctx *const flash, const size_t len, struct flashrom_layout **const layout)
+ {
++	if (flashrom_layout_new(layout) ||
++	    flashrom_layout_add_region(*layout, 0, len - 1, "prefix") ||
++	    flashrom_layout_include_region(*layout, "prefix")) {
++		flashrom_layout_release(*layout);
++		*layout = NULL;
++		return 1;
++	}
++	flashrom_layout_set(flash, *layout);
++	return 0;
++}
++
++static void release_partial_layout(struct flashctx *const flash, struct flashrom_layout *const layout)
++{
++	if (!layout)
++		return;
++	flashrom_layout_set(flash, NULL);
++	flashrom_layout_release(layout);
++}
++
++static int do_read(struct flashctx *const flash, const char *const filename, const size_t read_size)
++{
++	struct flashrom_layout *partial_layout = NULL;
+ 	int ret;
+ 
+ 	unsigned long size = flashrom_flash_getsize(flash);
+@@ -680,7 +716,23 @@ static int do_read(struct flashctx *const flash, const char *const filename)
+ 	if (!buf)
+ 		return 1;
+ 
+-	ret = flashrom_image_read(flash, buf, size);
++	if (read_size && read_size != size) {
++		if (read_size > size) {
++			msg_gerr("Error: --read-size %zu B is larger than the flash chip (%lu B)!\n",
++				 read_size, size);
++			ret = 1;
++			goto free_out;
++		}
++		if (set_prefix_layout(flash, read_size, &partial_layout)) {
++			ret = 1;
++			goto free_out;
++		}
++		msg_ginfo("Reading only the first %zu B of %lu B (0x000000-0x%06zx).\n",
++			  read_size, size, read_size - 1);
++		size = read_size;
++	}
++
++	ret = flashrom_image_read(flash, buf, flashrom_flash_getsize(flash));
+ 	if (ret > 0)
+ 		goto free_out;
+ 
+@@ -692,6 +744,7 @@ static int do_read(struct flashctx *const flash, const char *const filename)
+ 		ret = write_buf_to_file(buf, size, filename);
+ 
+ free_out:
++	release_partial_layout(flash, partial_layout);
+ 	free(buf);
+ 	return ret;
+ }
+@@ -699,12 +752,70 @@ free_out:
+ static int do_extract(struct flashctx *const flash)
+ {
+ 	prepare_layout_for_extraction(flash);
+-	return do_read(flash, NULL);
++	return do_read(flash, NULL, 0);
+ }
+ 
+-static int do_write(struct flashctx *const flash, const char *const filename, const char *const referencefile)
++/**
++ * @brief Read an image that may be smaller than the flash (--ignore-size).
++ *
++ * The image is placed at offset 0 of @p buf (the remainder is left as is). If it
++ * is smaller than the flash, a layout with a single included region covering
++ * the image is installed, so that only that part of the flash is written or
++ * verified and the rest of the chip stays untouched.
++ *
++ * @param flash      Flash context.
++ * @param buf        Flash-sized buffer to fill.
++ * @param flash_size Size of the flash and of @p buf.
++ * @param filename   Image file, or "-" for standard input.
++ * @param layout     On success, set to the installed layout (NULL if the image
++ *                   covers the whole flash). Release it with
++ *                   release_partial_layout() when done.
++ * @return 0 on success, 1 on error.
++ */
++static int read_partial_image(struct flashctx *const flash, uint8_t *const buf, const size_t flash_size,
++			      const char *const filename, struct flashrom_layout **const layout)
++{
++	const bool from_stdin = !strcmp(filename, "-");
++	FILE *const image = from_stdin ? fdopen(fileno(stdin), "rb") : fopen(filename, "rb");
++	size_t len;
++
++	*layout = NULL;
++	if (!image) {
++		msg_gerr("Error: opening file \"%s\" failed: %s\n", filename, strerror(errno));
++		return 1;
++	}
++	len = fread(buf, 1, flash_size, image);
++	if (ferror(image)) {
++		msg_gerr("Error: reading file \"%s\" failed: %s\n", filename, strerror(errno));
++		(void)fclose(image);
++		return 1;
++	}
++	if (len == flash_size && fgetc(image) != EOF) {
++		msg_gerr("Error: Image is larger than the flash chip (%zu B)!\n", flash_size);
++		(void)fclose(image);
++		return 1;
++	}
++	(void)fclose(image);
++
++	if (len == 0) {
++		msg_gerr("Error: Image \"%s\" is empty!\n", filename);
++		return 1;
++	}
++	if (len == flash_size)
++		return 0;
++
++	if (set_prefix_layout(flash, len, layout))
++		return 1;
++	msg_ginfo("Ignoring image size: using %zu B of %zu B (0x%06x-0x%06zx), "
++		  "the rest of the flash is left untouched.\n", len, flash_size, 0, len - 1);
++	return 0;
++}
++
++static int do_write(struct flashctx *const flash, const char *const filename, const char *const referencefile,
++		    const bool ignore_size)
+ {
+ 	const size_t flash_size = flashrom_flash_getsize(flash);
++	struct flashrom_layout *partial_layout = NULL;
+ 	int ret = 1;
+ 
+ 	uint8_t *const newcontents = alloc_flashsize_buf(flash);
+@@ -714,7 +825,10 @@ static int do_write(struct flashctx *const flash, const char *const filename, co
+ 		goto _free_ret;
+ 
+ 	/* Read '-w' argument first... */
+-	if (filename) {
++	if (filename && ignore_size) {
++		if (read_partial_image(flash, newcontents, flash_size, filename, &partial_layout))
++			goto _free_ret;
++	} else if (filename) {
+ 		if (read_buf_from_file(newcontents, flash_size, filename))
+ 			goto _free_ret;
+ 	}
+@@ -733,14 +847,16 @@ static int do_write(struct flashctx *const flash, const char *const filename, co
+ 	ret = flashrom_image_write(flash, newcontents, flash_size, refcontents);
+ 
+ _free_ret:
++	release_partial_layout(flash, partial_layout);
+ 	free(refcontents);
+ 	free(newcontents);
+ 	return ret;
+ }
+ 
+-static int do_verify(struct flashctx *const flash, const char *const filename)
++static int do_verify(struct flashctx *const flash, const char *const filename, const bool ignore_size)
+ {
+ 	const size_t flash_size = flashrom_flash_getsize(flash);
++	struct flashrom_layout *partial_layout = NULL;
+ 	int ret = 1;
+ 
+ 	uint8_t *const newcontents = alloc_flashsize_buf(flash);
+@@ -748,7 +864,10 @@ static int do_verify(struct flashctx *const flash, const char *const filename)
+ 		goto _free_ret;
+ 
+ 	/* Read '-v' argument first... */
+-	if (filename) {
++	if (filename && ignore_size) {
++		if (read_partial_image(flash, newcontents, flash_size, filename, &partial_layout))
++			goto _free_ret;
++	} else if (filename) {
+ 		if (read_buf_from_file(newcontents, flash_size, filename))
+ 			goto _free_ret;
+ 	}
+@@ -762,6 +881,7 @@ static int do_verify(struct flashctx *const flash, const char *const filename)
+ 	ret = flashrom_image_verify(flash, newcontents, flash_size);
+ 
+ _free_ret:
++	release_partial_layout(flash, partial_layout);
+ 	free(newcontents);
+ 	return ret;
+ }
+@@ -1037,6 +1157,30 @@ static void parse_options(int argc, char **argv, const char *optstring,
+ 			/* It is okay to convert invalid input to 0. */
+ 			options->sacrifice_ratio = atoi(optarg);
+ 			break;
++		case OPTION_IGNORE_SIZE:
++			options->ignore_size = true;
++			break;
++		case OPTION_READ_SIZE: {
++			char *end;
++			unsigned long long val;
++
++			errno = 0;
++			val = strtoull(optarg, &end, 0);
++			if (*end == 'k' || *end == 'K') {
++				val *= KiB;
++				end++;
++			} else if (*end == 'm' || *end == 'M') {
++				val *= MiB;
++				end++;
++			}
++			if (errno || end == optarg || *end != '\0' || val == 0 || val > SIZE_MAX) {
++				msg_gerr("Error: Invalid --read-size \"%s\". Use e.g. 4096, 0x1000, 64K or 1M.\n",
++					 optarg);
++				cli_classic_abort_usage(NULL);
++			}
++			options->read_size = (size_t)val;
++			break;
++		}
+ 		case OPTION_READ_REPEATED:
+ 			cli_classic_validate_singleop(&operation_specified);
+ 			if (optarg) {
+@@ -1087,6 +1231,24 @@ static void parse_options(int argc, char **argv, const char *optstring,
+ 
+ 	if (optind < argc)
+ 		cli_classic_abort_usage("Error: Extra parameter found.\n");
++
++	if (options->read_size) {
++		if (!options->read_it)
++			cli_classic_abort_usage("Error: --read-size requires -r. Aborting.\n");
++		if (options->layoutfile || options->ifd || options->fmap || options->fmapfile ||
++		    options->include_args)
++			cli_classic_abort_usage("Error: --read-size can not be combined with a layout "
++						"(-l, --ifd, --fmap, --fmap-file, -i). Aborting.\n");
++	}
++
++	if (options->ignore_size) {
++		if (!options->write_it && !options->verify_it)
++			cli_classic_abort_usage("Error: --ignore-size requires -w or -v. Aborting.\n");
++		if (options->layoutfile || options->ifd || options->fmap || options->fmapfile ||
++		    options->include_args)
++			cli_classic_abort_usage("Error: --ignore-size can not be combined with a layout "
++						"(-l, --ifd, --fmap, --fmap-file, -i). Aborting.\n");
++	}
+ }
+ 
+ static void free_options(struct cli_options *options)
+@@ -1157,6 +1319,8 @@ int main(int argc, char *argv[])
+ 		{"progress",		0, NULL, OPTION_PROGRESS},
+ 		{"sacrifice-ratio",	1, NULL, OPTION_SACRIFICE_RATIO},
+ 		{"read-repeated",	2, NULL, OPTION_READ_REPEATED},
++		{"ignore-size",		0, NULL, OPTION_IGNORE_SIZE},
++		{"read-size",		1, NULL, OPTION_READ_SIZE},
+ #if CONFIG_RPMC_ENABLED == 1
+ 		{"get-rpmc-status",	0, NULL, OPTION_RPMC_READ_DATA},
+ 		{"write-root-key",	0, NULL, OPTION_RPMC_WRITE_ROOT_KEY},
+@@ -1338,7 +1502,7 @@ int main(int argc, char *argv[])
+ 			}
+ 			msg_cinfo("Please note that forced reads most likely contain garbage.\n");
+ 			flashrom_flag_set(context, FLASHROM_FLAG_FORCE, options.force);
+-			ret = do_read(context, options.filename);
++			ret = do_read(context, options.filename, options.read_size);
+ 			free(context->chip);
+ 			goto out_shutdown;
+ 		}
+@@ -1617,16 +1781,16 @@ int main(int argc, char *argv[])
+ 	if (options.read_repeated > 0)
+ 		ret = do_read_repeated(context, options.read_repeated, options.filename);
+ 	else if (options.read_it)
+-		ret = do_read(context, options.filename);
++		ret = do_read(context, options.filename, options.read_size);
+ 	else if (options.extract_it)
+ 		ret = do_extract(context);
+ 	else if (options.erase_it) {
+ 		ret = flashrom_flash_erase(context);
+ 	}
+ 	else if (options.write_it)
+-		ret = do_write(context, options.filename, options.referencefile);
++		ret = do_write(context, options.filename, options.referencefile, options.ignore_size);
+ 	else if (options.verify_it)
+-		ret = do_verify(context, options.filename);
++		ret = do_verify(context, options.filename, options.ignore_size);
+ 
+ #if CONFIG_RPMC_ENABLED == 1
+ 	if (any_rpmc_op && ret == 0) {
+diff --git a/doc/classic_cli_manpage.rst b/doc/classic_cli_manpage.rst
+index 7559fd79..07357f52 100644
+--- a/doc/classic_cli_manpage.rst
++++ b/doc/classic_cli_manpage.rst
+@@ -316,6 +316,31 @@ All operations involving any chip access (probe/read/write/...) require the ``-p
+         Be careful, if the provided data doesn't actually match the flash contents, results are undefined.
+ 
+ 
++**--ignore-size**
++        Used together with **-w** or **-v**: accept an image file that is smaller than the flash chip instead
++        of failing with "Image size doesn't match the expected size". Only the first *<image size>* bytes of
++        the flash are written or verified, starting at offset 0; the rest of the chip is left untouched
++        (erase blocks that are only partially covered are restored to their previous contents).
++        Images larger than the flash chip are still rejected.
++
++        This option creates its own layout internally and can not be combined with **-l**, **--ifd**,
++        **--fmap**, **--fmap-file** or **-i**. Example::
++
++                flashrom -p mproi_spi --ignore-size -w bootloader.bin
++
++
++**--read-size <size>**
++        Used together with **-r**: read only the first **<size>** bytes of the flash chip (starting at offset 0)
++        and write a file of exactly that size, instead of reading the whole chip. **<size>** may be given in
++        decimal, in hexadecimal with a ``0x`` prefix, or with a ``K`` (KiB) or ``M`` (MiB) suffix. It must not be
++        larger than the flash chip.
++
++        Like **--ignore-size**, this option can not be combined with **-l**, **--ifd**, **--fmap**,
++        **--fmap-file** or **-i**. Example::
++
++                flashrom -p mproi_spi --read-size 64K -r head.bin
++
++
+ **-L, --list-supported**
+         List the flash chips, chipsets, mainboards, and external programmers (including PCI, USB, parallel port, and serial port based devices)
+         supported by **flashrom**.
