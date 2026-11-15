@@ -1,14 +1,16 @@
 pkgname=lwe-git
-pkgver=0.9.11.beta.225.93e669e
+pkgver=0.9.11.beta.226.fd2d96d
 pkgrel=1
 pkgdesc="Linux dynamic wallpaper shell for Wallpaper Engine content"
 arch=('x86_64' 'aarch64')
 url="https://github.com/YangYuS8/lwe"
 license=('Apache-2.0')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'mpv' 'pango' 'webkit2gtk-4.1')
-makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'cargo-tauri' 'pnpm' 'nodejs')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libsoup3' 'mpv' 'pango' 'webkit2gtk-4.1')
+makedepends=('git' 'openssl' 'appmenu-gtk-module' 'librsvg' 'cargo' 'cargo-tauri' 'pnpm' 'nodejs')
 provides=('lwe')
 conflicts=('lwe')
+# Keep GCC LTO objects out of Rust's LLD link.
+options=('!lto')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
