@@ -1,0 +1,14 @@
+pkgbase = truenas-mcp
+	pkgdesc = Model Context Protocol (MCP) server for TrueNAS
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/truenas/truenas-mcp
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go
+	depends = glibc
+	source = truenas-mcp-1.0.0.tar.gz::https://github.com/truenas/truenas-mcp/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 100e70f8ad9fe98524a7de3eb602f8a882bbce9aa5c3ea58f3852bf85dff4f5c
+
+pkgname = truenas-mcp

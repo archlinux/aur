@@ -1,0 +1,6 @@
+# Ignore everything, then force-add the files that belong in the AUR repo.
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE
