@@ -1,0 +1,5 @@
+[trusttunnel-client]
+source = "git"
+git = "https://github.com/TrustTunnel/TrustTunnelClient.git"
+prefix = "v"
+exclude_regex = ".*(alpha|beta|rc).*"

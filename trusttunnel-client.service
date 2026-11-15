@@ -1,0 +1,19 @@
+[Unit]
+Description=Trust Tunnel Client
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/trusttunnel-client -c /etc/trusttunnel/trusttunnel_client.toml
+ProtectHome=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+PrivateTmp=true
+MountFlags=private
+NoNewPrivileges=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target
