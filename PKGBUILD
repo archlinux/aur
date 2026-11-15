@@ -5,47 +5,36 @@ pkgname="eglantine-pgo-bin"
 pkgver=0.1.0_rc4
 _tag="v${pkgver//_/-}"
 pkgrel=1
-pkgdesc="The Eglantine Nintendo Switch 2 emulator AppImage (PGO build)."
+pkgdesc="The Eglantine Nintendo Switch 2 emulator binary (PGO build)."
 arch=('x86_64')
 url="https://github.com/Eglantine-Community/Eglantine"
 license=('GPL-3.0-or-later')
-depends=('hicolor-icon-theme' 'fuse2')
-conflicts=('eglantine' 'eglantine-bin' 'eglantine-git')
+depends=('alsa-lib' 'hicolor-icon-theme' 'libdrm' 'libpulse' 'libusb' 'libva' 'libvdpau' 'libxkbcommon' 'libx11' 'opus' 'qt6-base' 'qt6-charts' 'vulkan-icd-loader' 'xcb-util-cursor' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm')
+makedepends=('boost' 'cmake' 'git' 'glslang' 'nasm' 'ninja' 'patchelf' 'pkgconf' 'qt6-tools' 'spirv-headers' 'spirv-tools' 'vulkan-headers')
+conflicts=('eglantine' 'eglantine-bin' 'eglantine-daily-pgo-bin' 'eglantine-git')
 provides=('eglantine')
 options=(!strip)
 
-_appimage="${_pkgname}-linux-x86_64-pgo.AppImage"
-source_x86_64=(
-    "${_appimage}::https://github.com/Eglantine-Community/Eglantine/releases/download/${_tag}/${_appimage}"
-)
-sha256sums_x86_64=('e5993d0e9e7aba3aeee693906838f43ec537e4793280dd572f3712f74abaf283')
-
-prepare() {
-  chmod +x "${_appimage}"
-  ./"${_appimage}" --appimage-extract
-}
+_archive="${_pkgname}-linux-x86_64-pgo.tar.gz"
+source=("${_archive}::https://github.com/Eglantine-Community/Eglantine/releases/download/${_tag}/${_archive}")
+sha256sums=('6751dc2a5fab9ffd43b7c70e38b592662ad95c53b67b12110635041a4b7827df')
 
 package() {
-  install -Dm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-
-  local desktop_file=$(find squashfs-root -maxdepth 1 -name "*.desktop" | head -n 1)
-  local icon_file=$(find squashfs-root -maxdepth 1 \( -name "*.svg" -o -name "*.png" \) | head -n 1)
-
-  if [ -n "$desktop_file" ]; then
-    sed -i \
-      -e "s|^Exec=.*|Exec=/usr/bin/${_pkgname} %U|" \
-      -e "s|^Icon=.*|Icon=${_pkgname}|" \
-      "$desktop_file"
-    install -Dm644 "$desktop_file" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  fi
-
-  if [ -n "$icon_file" ]; then
-    local ext="${icon_file##*.}"
-    install -Dm644 "$icon_file" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.${ext}"
-  fi
-
+  install -dm755 "${pkgdir}/opt/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+
+  install -Dm755 "${srcdir}/eglantine" "${pkgdir}/opt/${pkgname}/eglantine"
+  if [ -f "${srcdir}/eden-cli" ]; then
+    install -Dm755 "${srcdir}/eden-cli" "${pkgdir}/opt/${pkgname}/eden-cli"
+  fi
+
+  # Fix upstream hardcoded GitHub runner RPATH so it looks in system libraries
+  if command -v patchelf &>/dev/null; then
+    patchelf --set-rpath '/usr/lib' "${pkgdir}/opt/${pkgname}/eglantine"
+    [ -f "${pkgdir}/opt/${pkgname}/eden-cli" ] && patchelf --set-rpath '/usr/lib' "${pkgdir}/opt/${pkgname}/eden-cli"
+  fi
+
+  ln -s "/opt/${pkgname}/eglantine" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
 post_install() {
