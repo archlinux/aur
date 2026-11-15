@@ -8,7 +8,7 @@ url="https://github.com/mengh04/shotori"
 license=('MIT')
 depends=('gcc-libs' 'libxcb' 'libxau' 'libxdmcp' 'libxkbcommon')
 source=("shotori-${pkgver}-x86_64.tar.gz::https://github.com/mengh04/shotori/releases/download/v${pkgver}/shotori-v${pkgver}-x86_64.tar.gz")
-sha256sums=('7c2663aedadd1e2cee80fe9e9c90c05731012359d8bfb2d1bb3694070b4925f8')
+sha256sums=('7a8d03b2f7462a7b2d7802d1653b40acf90a8f33c0a9e549afa0b75e8b2d08f9')
 
 package() {
     install -Dm0755 shotori -t "$pkgdir/usr/bin/"
