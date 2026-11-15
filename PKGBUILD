@@ -4,18 +4,19 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=flightgear-data-git
-pkgver=2024.2.0r10907.462fd76a7
+pkgver=2024.2.0r11194.79d6c9f5a
 pkgrel=1
 pkgdesc="Base data for the flightgear flight simulator."
 arch=('any')
-url="https://www.flightgear.org/"
-options=(!strip)
-license=('GPL')
+url="https://gitlab.com/flightgear/fgdata"
+license=('GPL-2.0-or-later')
+depends=('bash' 'perl' 'python')
 makedepends=('git')
 provides=("flightgear-data=${pkgver}")
 conflicts=('flightgear-data')
+options=(!strip)
 source=("flightgear-data::git+https://gitlab.com/flightgear/fgdata.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/flightgear-data
@@ -26,6 +27,8 @@ pkgver() {
 }
 
 package() {
-  mkdir -p "$pkgdir"/usr/share/flightgear
-  mv "$srcdir"/flightgear-data "$pkgdir"/usr/share/flightgear/data
+  install -d "$pkgdir"/usr/share/flightgear/data
+  # Copy the working tree but not the .git directory.
+  cp -r "$srcdir"/flightgear-data/. "$pkgdir"/usr/share/flightgear/data/
+  rm -rf "$pkgdir"/usr/share/flightgear/data/.git
 }

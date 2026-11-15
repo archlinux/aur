@@ -1,15 +1,18 @@
 pkgbase = flightgear-data-git
 	pkgdesc = Base data for the flightgear flight simulator.
-	pkgver = 2024.2.0r10907.462fd76a7
+	pkgver = 2024.2.0r11194.79d6c9f5a
 	pkgrel = 1
-	url = https://www.flightgear.org
+	url = https://gitlab.com/flightgear/fgdata
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
-	provides = flightgear-data=2024.2.0r10907.462fd76a7
+	depends = bash
+	depends = perl
+	depends = python
+	provides = flightgear-data=2024.2.0r11194.79d6c9f5a
 	conflicts = flightgear-data
 	options = !strip
 	source = flightgear-data::git+https://gitlab.com/flightgear/fgdata.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = flightgear-data-git
