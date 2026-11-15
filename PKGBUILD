@@ -2,7 +2,7 @@
 
 pkgname=python-demangle
 _pkgname=demangle
-pkgver=0.7.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Read mangled symbol names in pure Python"
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0162062adceb24445304fec80697658326d58dea29585795ae1f14e339bff702')
+sha256sums=('1ee10feabe786cdf1ff57c5ac97ec894da701a6893fbd472ed316b298beeb8a8')
 
 build() {
     cd "$_pkgname-$pkgver"
