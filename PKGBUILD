@@ -1,8 +1,8 @@
 # Maintainer: Neko_Rikka <yjzyl9008 at gmail dot com>
 
 pkgname=python-spookyhash-git
-pkgver=r50.0278a00
-pkgrel=2
+pkgver=r75.2857aea
+pkgrel=1
 pkgdesc="A Python wrapper for SpookyHash version 2."
 arch=('x86_64')
 url="https://github.com/buhanec/spookyhash"
@@ -12,15 +12,9 @@ conflicts=('python-spookyhash')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 checkdepends=('python-pytest' 'python-psutil')
 depends=('python')
-source=("git+https://github.com/buhanec/spookyhash.git"
-        "fix-numpy-default-int.patch")
-md5sums=('SKIP'
-    '39f81e3f9930dd3fbfe0c574ff61ac69')
+source=("git+https://github.com/buhanec/spookyhash.git")
+md5sums=('SKIP')
 
-prepare() {
-  cd spookyhash
-  patch -Np1 -i "${srcdir}/fix-numpy-default-int.patch"
-}
 
 pkgver() {
   cd spookyhash
