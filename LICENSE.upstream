@@ -1,0 +1,31 @@
+                    GNU AFFERO GENERAL PUBLIC LICENSE
+                       Version 3, 19 November 2007
+
+ Copyright (C) 2024-2026 WorkDaddy Contributors
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+ SPDX-License-Identifier: AGPL-3.0-or-later
+
+--------------------------------------------------------------------
+
+WorkDaddy 通过 Chrome DevTools Protocol（CDP）连接本地 WorkBuddy
+桌面应用，仅向渲染进程注入界面与样式补丁；不修改、不重签名、不重新打包
+WorkBuddy 官方安装包，不读取/修改/上传 WorkBuddy 的私有服务器协议。
+
+WorkBuddy 与其商标、官方资源归其权利人所有；WorkDaddy 与 WorkBuddy
+无官方隶属关系。
+
+完整 GNU Affero General Public License v3 全文：
+https://www.gnu.org/licenses/agpl-3.0.txt
