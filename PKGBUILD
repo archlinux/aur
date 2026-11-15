@@ -1,5 +1,5 @@
 pkgname=umsfuse
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="FUSE driver and programs for UMSDOS"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('fuse3')
 makedepends=('texinfo')
 checkdepends=('python')
 source=("${url}/tarball/version-${pkgver}/umsfuse-${pkgver}.tar.gz")
-b2sums=('082cd7de9072cbb764ed8229b43df073a95fbfe6bed3c14fbe4d2829ea1486158845f7f8dbb3325e9f05c7ae7a3e84e28a0a16aa46eaadf2abce9a347a441c4f')
+b2sums=('2bcb5c48c9c9f3782b2ced143989f7a2eb198b3e3032a2fd228d4e8041fd74b80a9a812171b1ebd065d2a1b22016e73eea38cdede2d52c7e1cb02067accd5a93')
 
 build() {
 	cd "$pkgname-$pkgver"
