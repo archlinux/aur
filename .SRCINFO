@@ -1,6 +1,6 @@
 pkgbase = crucible-server-bin
 	pkgdesc = Companion to Plex for Crucible: skips, Previously On and answers from a model you choose
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/guitaripod/Crucible/tree/master/server
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = crucible-server-bin
 	depends = ffmpeg
 	provides = crucible-server
 	conflicts = crucible-server
-	source_x86_64 = crucible-server-0.6.2-linux-x86_64.tar.gz::https://github.com/guitaripod/Crucible/releases/download/server-v0.6.2/crucible-server-0.6.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = af171c8e6d2f6ae9a9df31b95f9595adad1003ee9062e61ed744df8ef0f056b6
-	source_aarch64 = crucible-server-0.6.2-linux-aarch64.tar.gz::https://github.com/guitaripod/Crucible/releases/download/server-v0.6.2/crucible-server-0.6.2-linux-aarch64.tar.gz
-	sha256sums_aarch64 = ba7b34e026d819fb0070a645c8855c21bd6416a890925ac7f44f19c6e4a3b3a1
+	source_x86_64 = crucible-server-0.6.3-linux-x86_64.tar.gz::https://github.com/guitaripod/Crucible/releases/download/server-v0.6.3/crucible-server-0.6.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 9b8a0dcb460f826fee75d5aeb7395e68facbd3ca5172d80483a99735d180143c
+	source_aarch64 = crucible-server-0.6.3-linux-aarch64.tar.gz::https://github.com/guitaripod/Crucible/releases/download/server-v0.6.3/crucible-server-0.6.3-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 7281a6c3c92fcda24c4a3eefc8524c04344698a3a568ace905092867cb8cfade
 
 pkgname = crucible-server-bin
