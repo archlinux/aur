@@ -1,15 +1,15 @@
 # Maintainer: arqueon <arqueonautis@gmail.com>
 pkgname=dms-shell-plugin-dux-mail
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dux Mail Unread companion for Dux Shell / DankMaterialShell (unread counts and mail triage)"
 arch=('any')
 url="https://github.com/arqueon/dux-mail"
 license=('GPL-3.0-or-later')
 depends=('dux-mail' 'dms-shell')
 provides=("dms-shell-plugin-dankmail=$pkgver")
-conflicts=('dms-shell-plugin-dankmail')
-replaces=('dms-shell-plugin-dankmail')
+conflicts=('dms-shell-plugin-dankmail<0.5.1')
+replaces=('dms-shell-plugin-dankmail<0.5.1')
 install=dms-shell-plugin-dux-mail.install
 source=("dux-mail-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('a5a24f892f897e72a662985ca0ce2add6315d2dfd9db3c29cea3646d29d198cc')
