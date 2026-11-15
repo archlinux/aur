@@ -3,11 +3,11 @@
 # (e.g. v1.4.0-rc.6). Upstream publishes no .deb for these, only an AppImage.
 pkgname=limusic-bin-prerelease
 _pkgname=limusic
-pkgver=1.4.0rc.8
+pkgver=1.4.0rc.9
 pkgrel=1
 # Upstream tag without the leading "v"; pkgver drops the hyphen because Arch
 # forbids it (and 1.4.0rc.6 correctly sorts before 1.4.0).
-_tag=1.4.0-rc.8
+_tag=1.4.0-rc.9
 pkgdesc="Feature rich, native desktop, YouTube Music client (prerelease channel). Tauri + Rust + SvelteKit, ad-free playback through libmpv, Last.fm scrobbling and Discord Rich Presence, no Electron."
 arch=("x86_64")
 url="https://github.com/SimoHypers/limusic"
@@ -22,7 +22,7 @@ provides=("${_pkgname}" "${_pkgname}-prerelease")
 conflicts=("${_pkgname}" "limusic-bin")
 
 source=("limusic_${_tag}_amd64.AppImage::https://github.com/SimoHypers/limusic/releases/download/v${_tag}/limusic_${_tag}_amd64.AppImage")
-sha256sums=('0be25082007503d22e0b22e86ced2a07b1a2841189145d3fa3d5b5011f7ab1a7')
+sha256sums=('c56a434c2b49a1487550e2881e18e120fcc8fc733f52bb2882f23c03c4c701ea')
 
 prepare() {
   chmod +x "${srcdir}/limusic_${_tag}_amd64.AppImage"
