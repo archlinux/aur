@@ -1,14 +1,14 @@
 # Maintainer: Axel H. <noirbizarre@gmail.com>
 #
-# Prebuilt binary package. `0.3.0`, `f7a74e8752827b4f09c12414ac8d3b1c3d8f15dcaae9bf60c0d4cefc9c6b6b32` and
-# `be169f3d667007a97a01ef423a8f756de6d5c7a8964e5d2dc512a7358442b893` are substituted by .github/workflows/aur.yaml from the
+# Prebuilt binary package. `0.4.0`, `c53e8bc4d0f93182ae1ed5c0a5fcb831531f323c870621d5cd2f15f09ff04484` and
+# `e29c4e33808e4809b00b597a5056540c65c65426bb8b01e333cb702d7583daba` are substituted by .github/workflows/aur.yaml from the
 # published release assets, and the result is pushed to the AUR. Edit this
 # template, never the PKGBUILD in the AUR repository: that one is
 # regenerated at every release.
 
 pkgname=over-bin
 _pkgname=over
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A git-based file overlay manager (dotfiles as overlays) (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -33,8 +33,8 @@ options=('!strip' '!debug')
 # and the musl build exists for the systems that are not this one.
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/$pkgver/over_${pkgver}_linux-amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/$pkgver/over_${pkgver}_linux-arm64.tar.gz")
-sha256sums_x86_64=('f7a74e8752827b4f09c12414ac8d3b1c3d8f15dcaae9bf60c0d4cefc9c6b6b32')
-sha256sums_aarch64=('be169f3d667007a97a01ef423a8f756de6d5c7a8964e5d2dc512a7358442b893')
+sha256sums_x86_64=('c53e8bc4d0f93182ae1ed5c0a5fcb831531f323c870621d5cd2f15f09ff04484')
+sha256sums_aarch64=('e29c4e33808e4809b00b597a5056540c65c65426bb8b01e333cb702d7583daba')
 
 # Fetched separately because the release archive carries no licence file, and
 # MIT is not one of the licences Arch keeps in /usr/share/licenses/common —
