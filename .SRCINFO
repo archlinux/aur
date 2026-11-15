@@ -1,0 +1,18 @@
+pkgbase = dektec-dtplay
+	pkgdesc = DekTec command-line transport stream player and generator (DtPlay)
+	pkgver = 4.19.2
+	pkgrel = 1
+	url = https://www.dektec.com/downloads/utilities/
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = gcc-libs
+	depends = glibc
+	depends = dektec-drivers-dkms
+	conflicts = dektec-utilities
+	options = !debug
+	source = https://www.dektec.com/products/applications/DtPlay/downloads/DtPlay_v4.19.2.zip
+	source = https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v2026.09.0.tar.gz
+	sha256sums = 3024e7d4e543be3c013b7fa828a06f888c9bbde045dc51ef7f5d3efc435cb2e5
+	sha256sums = f7bdf97421b39047efa379cfffbd208114bf0f3cb37c3565d709e46f3157fdf3
+
+pkgname = dektec-dtplay
