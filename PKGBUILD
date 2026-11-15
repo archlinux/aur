@@ -1,13 +1,13 @@
 pkgname=rauthy
 pkgver=0.37.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Single Sign-On Identity & Access Management via OpenID Connect, OAuth 2, and PAM"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sebadob/rauthy"
 license=('Apache-2.0')
 depends=('argon2' 'gcc-libs' 'glibc')
 makedepends=('cargo' 'cmake' 'perl')
-options=('!lto')
+options=('!lto' '!debug')
 install=rauthy.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'rauthy.service'
