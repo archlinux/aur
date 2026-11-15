@@ -1,6 +1,6 @@
 pkgbase = whatsatui-bin
 	pkgdesc = Personal WhatsApp terminal client with a cyan Ratatui interface (prebuilt binary)
-	pkgver = 0.2.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/9M2PJU/whatsatui
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = whatsatui-bin
 	optdepends = xsel: X11 copy/paste alternative
 	provides = whatsatui
 	conflicts = whatsatui
-	source = whatsatui-0.2.1-x86_64.tar.gz::https://github.com/9M2PJU/whatsatui/releases/download/v0.2.1/whatsatui-0.2.1-x86_64.tar.gz
-	sha256sums = 9f6d4102ce59d7df2b58a59cfa3a58e2b6313acd80deba222ac802f58051832a
+	source = whatsatui-0.3.2-x86_64.tar.gz::https://github.com/9M2PJU/whatsatui/releases/download/v0.3.2/whatsatui-0.3.2-x86_64.tar.gz
+	sha256sums = 80e1a486d64c35257875a595a37f5729eb598e72a3c14d33c2ee1360c90f03cc
 
 pkgname = whatsatui-bin

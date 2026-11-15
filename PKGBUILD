@@ -1,6 +1,6 @@
 # Maintainer: 9M2PJU <9m2pju@gmail.com>
 pkgname=whatsatui-bin
-pkgver=0.2.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Personal WhatsApp terminal client with a cyan Ratatui interface (prebuilt binary)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('mpv: voice-message and video playback'
 provides=('whatsatui')
 conflicts=('whatsatui')
 source=("whatsatui-$pkgver-x86_64.tar.gz::https://github.com/9M2PJU/whatsatui/releases/download/v$pkgver/whatsatui-$pkgver-x86_64.tar.gz")
-sha256sums=('9f6d4102ce59d7df2b58a59cfa3a58e2b6313acd80deba222ac802f58051832a')
+sha256sums=('80e1a486d64c35257875a595a37f5729eb598e72a3c14d33c2ee1360c90f03cc')
 
 package() {
   install -Dm755 whatsapp-tui "$pkgdir/usr/bin/whatsapp-tui"
