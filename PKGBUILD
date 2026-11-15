@@ -3,11 +3,12 @@
 
 pkgname='librewolf-extension-cookie-autodelete'
 pkgver=3.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Librewolf extension that automatically deletes cookies."
 license=('MIT')
 arch=('any')
 groups=('librewolf-addons')
+depends=('librewolf')
 makedepends=('npm')
 url="https://github.com/Cookie-AutoDelete/Cookie-AutoDelete"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Cookie-AutoDelete/Cookie-AutoDelete/archive/v$pkgver.tar.gz")
@@ -15,9 +16,6 @@ b2sums=('07b643fa8ed7af27ce89751c1a8ca1829336f09706ee1d3b59a44823cf0af31dd9bc977
 
 prepare() {
     npm --silent -C "Cookie-AutoDelete-$pkgver" install
-
-    # Fix possible vulnerabilities in npm dependencies
-    npm --silent -C "Cookie-AutoDelete-$pkgver" audit fix
 
     # Force to build release for $pkgver
     sed -i "s/let versionTag = process.env.GITHUB_REF || process.env.TRAVIS_TAG || '';/let versionTag = '$pkgver'/"  "Cookie-AutoDelete-$pkgver/tools/buildFilesDev.js"
