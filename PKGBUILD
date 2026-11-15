@@ -51,7 +51,7 @@ build() {
 package() {
   cd "pipette-desktop"
   install -Dm755 src-tauri/target/release/pipette "$pkgdir/usr/bin/pipette-desktop"
-  install -Dm644 scripts/99-vial.rules "$pkgdir/usr/lib/udev/rules.d/70-pipette-desktop.rules"
+  install -Dm644 scripts/59-vial.rules "$pkgdir/usr/lib/udev/rules.d/70-pipette-desktop.rules"
   install -Dm644 build/icon.png "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/pipette-desktop.png"
 
   install -dm755 "$pkgdir/usr/share/applications"
