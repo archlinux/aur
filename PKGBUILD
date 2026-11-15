@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A zero-allocation reverse proxy and load balancer in Zig ⚡"
 
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -38,8 +38,8 @@ sha256sums=('a9e7a0b2ca0bb923c316c0cc1b9f60e8407ebbeb974467cea6b808644b5dd611'
             '82ac9f8dddc005e71c740ad98dcae068317d6788485ce6760283bd75d7382303'
             'ef10bbdfbb5f0601d6e6e9eaf699c4b882564267ba5743bb9359fb9f89d2a60b'
             'c55c039964ee2e56685d8ad29fe1aafec67d0358d4ae971c6a3bf913f1323b25')
-sha256sums_x86_64=('4520e0737bdabf1885daa130613fb740c1922e39e4edc637f079257cae12ebb1')
-sha256sums_aarch64=('cc704f3e6bb1a783c243aa0f26bbbc75f28760900487af4eec42ccd5bac1bdb2')
+sha256sums_x86_64=('e809a99e7a792fc615f8cc64181efd518369c497873b9062a62a2019f1a65b46')
+sha256sums_aarch64=('b7ed1fdfdc1ce4798188c6a8aa7449e2b9736febc8d17c118a57c4c814709e17')
 
 
 package() {
