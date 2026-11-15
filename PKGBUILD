@@ -14,7 +14,7 @@
 # Publication target: aur.archlinux.org/packages/dot-cli-git
 
 pkgname=dot-cli-git
-pkgver=0.2.545
+pkgver=0.2.546
 pkgrel=1
 pkgdesc='Declarative dotfiles CLI for macOS, Linux, WSL, and PowerShell'
 arch=('any')
@@ -31,7 +31,7 @@ makedepends=('make')
 provides=('dot' 'dotfiles')
 conflicts=('dot' 'dotfiles')
 source=("dot-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/dot-${pkgver}.tar.gz")
-sha256sums=('0fb1ad53cb365adda08193fbfc6f2f7297fd560f5078dbe7580aff400b1f811a')
+sha256sums=('dacda44d2c97a27ae77b2d78d6bbd7d15c943c1cf42279e1a5547beae41feaa0')
 
 package() {
   cd "${srcdir}/dot-${pkgver}" || return 1
