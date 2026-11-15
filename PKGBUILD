@@ -1,49 +1,23 @@
-# Maintainer: jswysnemc <snemc@qq.com>
-# Binary package: downloads prebuilt pacman package from GitHub Release.
-# Source package mark-shot builds from source; mark-shot-bin installs prebuilt binary.
+# 【原生发布】【AUR二进制包】只使用对应原生标签中已经验证的两种架构资产
 pkgname=mark-shot-bin
-pkgver=0.1.62
+pkgver=0.2.0
 pkgrel=1
-pkgdesc='Qt 6 Wayland screenshot selection and annotation tool (prebuilt binary)'
+pkgdesc='Native screenshot, annotation and recording tool (prebuilt binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jswysnemc/mark-shot'
-license=('MIT')
-# FFmpeg 大版本升级时 soname 整体 +1（libavformat.so.62 -> .so.63），
-# 只写 'ffmpeg' 会让针对旧 FFmpeg 编译的预编译包通过依赖检查却无法加载库。
-# 这里列出 .so 名，makepkg 会扫描 package() 解压出的二进制并展开为
-# libavformat.so=62-64 形式，库代际不匹配时 pacman 直接拒绝安装。
-depends=('qt6-base' 'qt6-svg' 'qt6-wayland' 'pipewire' 'grim' 'wl-clipboard' 'hicolor-icon-theme' 'python'
-         'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libavfilter.so' 'libswresample.so' 'libswscale.so')
-# x86_64：Arch 容器编译，声明 layer-shell-qt
-# aarch64：当前 CI 在 Ubuntu 24.04-arm 预编译，so 代际可能与 Arch aarch64 不一致；
-#          aarch64 用户优先安装源码包 mark-shot 在本机构建
-# depends_x86_64 在 depends 基础上追加，不是替换
-depends_x86_64=('layer-shell-qt')
-optdepends=(
-    'xdg-desktop-portal: portal-based screenshot and screencast backend'
-    'xclip: X11 clipboard backend'
-    'python-rapidocr: preferred OCR backend'
-    'python-pillow: image processing for code scanning'
-    'python-zxing-cpp: preferred QR/barcode scanning backend'
-    'tesseract: fallback OCR backend'
-)
-provides=('mark-shot')
+license=('MIT' 'Apache-2.0')
+depends=('glibc' 'fontconfig' 'libxkbcommon' 'libxkbcommon-x11' 'libxcb' 'openssl' 'pipewire' 'libpulse' 'libva' 'libdrm' 'mesa')
+optdepends=('noto-fonts: fallback fonts' 'noto-fonts-cjk: CJK fonts' 'xdg-desktop-portal: portal capture' 'mark-shot: source build if Arch ARM library versions differ')
+provides=("mark-shot=$pkgver")
 conflicts=('mark-shot')
-
-# Release 资产命名规则: mark-shot-bin-${pkgver}-1-${arch}.pkg.tar.zst
-# noextract 阻止 makepkg 自动解压 .pkg.tar.zst，package() 里手动 bsdtar 解压
-source_x86_64=("https://github.com/jswysnemc/mark-shot/releases/download/v${pkgver}/mark-shot-bin-${pkgver}-1-x86_64.pkg.tar.zst")
-source_aarch64=("https://github.com/jswysnemc/mark-shot/releases/download/v${pkgver}/mark-shot-bin-${pkgver}-1-aarch64.pkg.tar.zst")
-noextract=("mark-shot-bin-${pkgver}-1-x86_64.pkg.tar.zst" "mark-shot-bin-${pkgver}-1-aarch64.pkg.tar.zst")
-sha256sums_x86_64=('f7f1dfd27002caccb9705237115dc4998fc83d47747f2286c609e1afa6358e82')
-sha256sums_aarch64=('6f3b17ab6df66a3ae7db779bf8fa23f617c65fcc614f04ae6128ac81ecfbc48f')
 options=('!strip')
+# 【原生发布】【下载文件】使用独立文件名，避免 makepkg 将下载资产误认为已构建的输出包
+source_x86_64=("mark-shot-prebuilt-0.2.0-x86_64.pkg.tar.zst::https://github.com/jswysnemc/mark-shot/releases/download/v0.2.0/mark-shot-bin-0.2.0-1-x86_64.pkg.tar.zst")
+source_aarch64=("mark-shot-prebuilt-0.2.0-aarch64.pkg.tar.zst::https://github.com/jswysnemc/mark-shot/releases/download/v0.2.0/mark-shot-bin-0.2.0-1-aarch64.pkg.tar.zst")
+sha256sums_x86_64=('38ba68d76229152cd566ac607f1a64a2bb4938300099b1f261adab5d96782f87')
+sha256sums_aarch64=('9a2a987e6ee8c1f3f3141db547bce9d4200790982d84df9db0357d9ef43ce12c')
 
-# 解压预编译 pacman 包到 pkgdir，排除包元数据文件
-# $CARCH 由 makepkg 设置为当前目标架构（x86_64 或 aarch64）
+# 【原生发布】【安装方法】无传参，将经摘要校验的 usr 安装树复制到 pkgdir，无返回值
 package() {
-    bsdtar -xf "${srcdir}/mark-shot-bin-${pkgver}-1-${CARCH}.pkg.tar.zst" -C "${pkgdir}" \
-        --exclude='.PKGINFO' \
-        --exclude='.MTREE' \
-        --exclude='.BUILDINFO'
+  cp -a "$srcdir/usr" "$pkgdir/"
 }
