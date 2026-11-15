@@ -1,6 +1,6 @@
 pkgbase = phpunit
 	pkgdesc = A programmer-oriented testing framework for PHP
-	pkgver = 13.2.0
+	pkgver = 13.4.7
 	pkgrel = 1
 	url = https://phpunit.de
 	install = phpunit.install
@@ -11,7 +11,7 @@ pkgbase = phpunit
 	makedepends = composer
 	depends = php>=8.3.0
 	conflicts = phpunit-bin
-	source = git+https://github.com/sebastianbergmann/phpunit.git#tag=13.2.0
-	sha256sums = SKIP
+	source = git+https://github.com/sebastianbergmann/phpunit.git#tag=13.4.7
+	sha256sums = 8f86936db02587604dfbd7e570d154ecc23df79754bdabfeaaa5c65066d49d78
 
 pkgname = phpunit

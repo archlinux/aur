@@ -5,7 +5,7 @@
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 
 pkgname=phpunit
-pkgver=13.2.0
+pkgver=13.4.7
 pkgrel=1
 pkgdesc="A programmer-oriented testing framework for PHP"
 conflicts=('phpunit-bin')
@@ -16,7 +16,7 @@ depends=("php>=8.3.0")
 makedepends=('ant' 'git' 'composer')
 install="${pkgname}.install"
 source=("git+https://github.com/sebastianbergmann/phpunit.git#tag=${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('8f86936db02587604dfbd7e570d154ecc23df79754bdabfeaaa5c65066d49d78')
 
 prepare() {
   cd ${pkgname}
