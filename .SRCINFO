@@ -1,7 +1,8 @@
 pkgbase = dektec-avfifo-examples
 	pkgdesc = Code examples demonstrating the AvFifo API for receiving and transmitting SMPTE 2110 streams
-	pkgver = 2025.12
-	pkgrel = 4
+	pkgver = 2025.06
+	pkgrel = 1
+	epoch = 1
 	url = https://www.dektec.com/downloads/SDK/#linux
 	arch = x86_64
 	license = LicenseRef-custom

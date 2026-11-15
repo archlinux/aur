@@ -1,8 +1,18 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=dektec-avfifo-examples
-pkgver=2025.12
-pkgrel=4
+# Versioning scheme (per Arch package guidelines):
+#   pkgver = the upstream version of AvFifoExamples, which DekTec publishes as
+#            a release date only ("June 2025" on https://www.dektec.com/downloads/SDK/)
+#   pkgrel = rebuilds of the same examples source against a newer LinuxSDK
+#            (_sdkver); reset to 1 whenever pkgver changes
+# The previous pkgver (2025.12) was a historical mix-up with LinuxSDK
+# 2025.12.0; upstream never released a "December 2025" examples tarball
+# (the tarball is unchanged since 2025-06-04). The epoch corrects the
+# versioning scheme, which requires a downgrade in pure pkgver terms.
+epoch=1
+pkgver=2025.06
+pkgrel=1
 _sdkver=2026.09.0
 pkgdesc='Code examples demonstrating the AvFifo API for receiving and transmitting SMPTE 2110 streams'
 arch=('x86_64')
