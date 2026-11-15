@@ -1,3 +1,5 @@
+diff --git a/src/inline_hook.cpp b/src/inline_hook.cpp
+index 4fd2093..9f4df05 100644
 --- a/src/inline_hook.cpp
 +++ b/src/inline_hook.cpp
 @@ -1,9 +1,11 @@
@@ -6,8 +8,8 @@
 -#if __has_include("Zydis/Zydis.h")
 -#include "Zydis/Zydis.h"
 -#elif __has_include("Zydis.h")
-+// The amalgamated Zydis.h next to the Zydis.c that is built with it first, so that a Zydis of the
-+// system's include path, whose structures may differ, doesn't take its place
++// The amalgamated Zydis.h first: the AMBuild build compiles the Zydis.c next to it, and a Zydis of
++// the include path (e.g. the system's) may be another version, whose structures differ.
 +#if __has_include("Zydis.h")
  #include "Zydis.h"
 +#elif __has_include("Zydis/Zydis.h")

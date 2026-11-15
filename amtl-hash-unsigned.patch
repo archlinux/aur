@@ -1,6 +1,8 @@
+diff --git a/amtl/am-hashtable.h b/amtl/am-hashtable.h
+index 51a384b..4d3230b 100644
 --- a/amtl/am-hashtable.h
 +++ b/amtl/am-hashtable.h
-@@ -602,7 +602,7 @@
+@@ -602,7 +602,7 @@ FastHashCharSequence(const char* s, size_t length)
  
  // From http://burtleburtle.net/bob/hash/integer.html
  static inline uint32_t
@@ -9,7 +11,7 @@
  {
      a = (a ^ 61) ^ (a >> 16);
      a = a + (a << 3);
-@@ -614,7 +614,7 @@
+@@ -614,14 +614,14 @@ HashInt32(int32_t a)
  
  // From http://www.cris.com/~Ttwang/tech/inthash.htm
  static inline uint32_t
@@ -17,4 +19,14 @@
 +HashInt64(uint64_t key)
  {
      key = (~key) + (key << 18); // key = (key << 18) - key - 1;
-     key = key ^ (uint64_t(key) >> 31);
+-    key = key ^ (uint64_t(key) >> 31);
++    key = key ^ (key >> 31);
+     key = key * 21; // key = (key + (key << 2)) + (key << 4);
+-    key = key ^ (uint64_t(key) >> 11);
++    key = key ^ (key >> 11);
+     key = key + (key << 6);
+-    key = key ^ (uint64_t(key) >> 22);
++    key = key ^ (key >> 22);
+     return uint32_t(key);
+ }
+ 
