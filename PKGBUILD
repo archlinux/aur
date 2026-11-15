@@ -3,7 +3,7 @@
 # To package the committed HEAD of this checkout instead, run: cd packaging && makepkg -p PKGBUILD.local -f
 pkgname=pg_sift
 pkgver=4.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast analytics for PostgreSQL: just add an index, plus BM25 full-text search'
 arch=('x86_64')
 url='https://github.com/brauliobo/pg_sift'
