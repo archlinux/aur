@@ -33,6 +33,22 @@ source=("source-build-assets-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
 sha512sums=('e0401152c8710f551d33865e0126172bd1a9f508e8b5f32536eaf190bc0f6bb9a182ccc5f431e1b9efc685ae7073a6015d97471a3bd70404bb5a3aab68fca129')
 b2sums=('c8fbe8aa05b9a6b6721b61c2e091e3017296c92e4e6344a6afb1cc4d171bf5b3a6617d8835acb6c044dbf884de96b6eeaf45eb4b298010906e0e6aa41d1f924b')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -86,7 +102,7 @@ prepare() {
   cd "source-build-assets-$_commit" || exit
   # The installed SDK and the Arcade of the source-built .NET, instead of the versions upstream pins
   local _sdkver _arcadever
-  _sdkver=$(dotnet --version)
+  _sdkver=$(_dotnet_sdk)
   _arcadever=$(find "$srcdir/nuget-local" -name 'Microsoft.DotNet.Arcade.Sdk.*.nupkg' -printf '%f\n' |
     sed -E 's/^Microsoft\.DotNet\.Arcade\.Sdk\.(.*)\.nupkg$/\1/')
   sed -i -E \
