@@ -3,7 +3,7 @@
 
 pkgname=salamlang
 _pkgname=salam
-pkgver=0.6.2
+pkgver=0.6.16
 pkgrel=1
 pkgdesc="General-purpose systems programming language with a built-in DSL"
 arch=('x86_64' 'aarch64')
@@ -16,16 +16,16 @@ conflicts=('salam-bin')
 options=('!strip' '!debug')
 
 # Salam's compiler is written in Salam, so the build needs an existing Salam.
-_seedver=0.6.1
+_seedver=0.6.12
 _rel="${url}/releases/download"
 
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3700b29a082579b197f1d345d19678a9b09e6dea6e780ea1c17ab518ab8f536e')
+sha256sums=('9a3f7d2c7e8bdda61b67fa68ae1aaac7e1bab0838f5423a65a9ee8a74da4c781')
 
 source_x86_64=("salam-seed-${_seedver}-x86_64.tar.gz::${_rel}/v${_seedver}/salam-${_seedver}-linux-x86_64.tar.gz")
 source_aarch64=("salam-seed-${_seedver}-aarch64.tar.gz::${_rel}/v${_seedver}/salam-${_seedver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('3424588039a3afce357bf1cba52c22fa289d7ce993ec73511f7e56cf4269b40a')
-sha256sums_aarch64=('f639529c3aa4c55132b2aa74786328bd0f282db03c8a1974a365c14cba641daf')
+sha256sums_x86_64=('88d3915ea91c6ee54bc1a92a9ba0d6a0855c0ca4f90e8a6d17cf00d31b138b38')
+sha256sums_aarch64=('a112e9ec1c80d0afe61f017ae6c1a422f0f63a17d4101ab125f734943c0e5420')
 
 _seeddir() {
     case "$CARCH" in
