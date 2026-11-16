@@ -3,14 +3,14 @@
 _pkgbase='black-magic-debug'
 pkgbase="${_pkgbase}-git"
 pkgname=(black-magic-debug-app-git black-magic-debug-udev-git)
-pkgver=2.0.0.r43.gefce8f5a
-pkgrel=2
+pkgver=2.1.0.r41.g3424d0a02
+pkgrel=1
 pkgdesc='In-application debugger for ARM Cortex and RISC-V processors'
 arch=('any')
 url='https://black-magic.org'
 license=('GPL' 'BSD' 'MIT')
 makedepends=('git' 'hidapi' 'python')
-source=("git+https://github.com/blackmagic-debug/blackmagic.git")
+source=("git+https://codeberg.org/blackmagic-debug/blackmagic.git")
 sha256sums=('SKIP')
 
 pkgver() {
