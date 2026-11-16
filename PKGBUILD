@@ -23,10 +23,10 @@ conflicts=('recomplauncher')
 options=('!strip' '!debug')
 # Upstream tags betas as v0.90.0-beta.42. pkgver keeps the form the AUR
 # package already had (0.90.0.42); pkg.sh keeps _tag in sync.
-_tag="v0.90.0-beta.56"
+_tag="v0.90.0-beta.57"
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/${_tag}/RecompLauncher_${_tag#v}_amd64.deb")
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('783466475b97e7a06e2df7c5bbeffa676214cb4067d82e54a93baa566c6881e7')
+sha256sums=('ad313839e669c59f91f7a0daa86c5591bf761cfc48a3c4e44bba814a6c19104c')
 
 package() {
   bsdtar -xOf "$srcdir/${pkgname}-${pkgver}.deb" 'data.tar.*' \
