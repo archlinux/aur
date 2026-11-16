@@ -1,36 +1,36 @@
 # Maintainer: Sosthène Guédon <sosthene@guedon.gdn>
 pkgname=sfil
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Convert between serialization format and filter elements'
-url='https://gitlab.com/sgued/sfil'
+url='https://codeberg.org/sgued/sfil'
 arch=('x86_64')
 license=('AGPL-3.0-only')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
-source=("https://gitlab.com/sgued/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('ead862b989cfdb0ac97d89b60936efe18f95147d589c5438902d340ebe9b5f08bada2a45af3c6cd16b43fc09d3d392c4752875eb599f9bd6cc4b6a5ab773dc45')
-b2sums=('7b69406aede258855ea29ca897075e8ae73a8adab251dca51ef896a7353b5e3658730044e1756789a7bfafb6f2b1fe9ac4f39418488a3559e7c53e7e485fd65a')
+source=("https://codeberg.org/sgued/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('0195f1c8c3c30fcb4c215a38a46e8891e21b904ca7506529003a1681b473b8da3b1005a336ce283c46f430ffc5bfb648113068ddbca6045a6dfc33e9fcf4410b')
+b2sums=('539a75133ac5325efd5be93fe86fc6cee81677052b6d98137e41733d4c10feab90b44747071087be81610ffc0a0810a67ab55cf62802cd65ff1140f03a0e1a0f')
 
 prepare() {
-  cd $pkgname-v$pkgver
+  cd $pkgname
   cargo fetch --frozen
   cargo fetch --frozen
 }
 
 check() {
-  cd $pkgname-v$pkgver
+  cd $pkgname
   cargo t --all-targets --all-features
 }
 
 build() {
-  cd $pkgname-v$pkgver
+  cd $pkgname
   cargo build --frozen --release -p "sfil-cli" --features all_formats
   cargo run -p sfil-packager --features sfil-cli/all_formats
 }
 
 package() {
-  cd $pkgname-v$pkgver
+  cd $pkgname
   install -Dm755 target/release/sfil-cli ${pkgdir}/usr/bin/sfil
   install -Dm644 completons/sfil.bash $pkgdir/usr/share/bash-completion/completions/sfil
 }
