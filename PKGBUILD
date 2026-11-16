@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=jam-cli-bin
-pkgver=1.35.0
+pkgver=1.39.0
 pkgrel=1
 pkgdesc="CLI for reading and creating Jam bug reports (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ source=('LICENSE')
 source_x86_64=("$pkgname-$pkgver-x86_64::https://native.jam.dev/download/linux/x64?version=$pkgver")
 source_aarch64=("$pkgname-$pkgver-aarch64::https://native.jam.dev/download/linux/arm64?version=$pkgver")
 sha256sums=('e43a27568e11ed5a4f72ab661e3380e8a3366e023a7296874a71211ccc4a5af8')
-sha256sums_x86_64=('eb495cd9f7f9035bf3eb5dfa499274080bb25c36129eb3ee73711439e1291647')
-sha256sums_aarch64=('ffe2538cac01f8c4e2fe74184f85cb0d87109ce46ba2e47a2e480becd0e7e08b')
+sha256sums_x86_64=('f9989da425b3fadcd7dc888a0f305a9c558df63bf5b4e3751dd0f3554be20a90')
+sha256sums_aarch64=('b71d92a905858f0162ad0a41ef87046fe1fca8a1cd945f5963ca4795f794adf8')
 
 package() {
   install -Dm755 "$pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/jam"
