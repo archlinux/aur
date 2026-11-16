@@ -18,13 +18,13 @@ pkgbase = metrolist-desktop-nightly-bin
 	depends = zlib-ng-compat
 	optdepends = gtk3: YouTube login
 	optdepends = webkit2gtk-4.1: YouTube login
-	noextract = metrolist-nightly.AppImage
+	noextract = metrolist-desktop-nightly-bin-20261116.r122.gab28f4a.AppImage
 	options = !strip
 	options = !debug
-	source = metrolist-nightly.AppImage::https://github.com/MetrolistGroup/Metrolist/releases/download/nightly/metrolist-desktop-linux-x64.AppImage
+	source = metrolist-desktop-nightly-bin-20261116.r122.gab28f4a.AppImage::https://github.com/MetrolistGroup/Metrolist/releases/download/nightly/metrolist-desktop-linux-x64.AppImage
 	source = metrolist-nightly
 	source = LICENSE
-	sha256sums = 9006c0ea92b4ac62078f39b40c4eee66df1f345d7b46f0558921b4f5db8da13f
+	sha256sums = 34a2cdb2dd22a30c69dc17601c0773fd6afbe736a648beb1e26287684aa006f7
 	sha256sums = e2f611b2a3ea170c12d38e42016e2abb0d2212e62c3946615a50aad6c97643bd
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 

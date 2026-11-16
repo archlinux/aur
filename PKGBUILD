@@ -28,20 +28,21 @@ optdepends=(
   'webkit2gtk-4.1: YouTube login'
 )
 options=('!strip' '!debug')
-noextract=("metrolist-nightly.AppImage")
+_appimage="${pkgname}-${pkgver}.AppImage"
+noextract=("${_appimage}")
 source=(
-  "metrolist-nightly.AppImage::${url}/releases/download/nightly/metrolist-desktop-linux-x64.AppImage"
+  "${_appimage}::${url}/releases/download/nightly/metrolist-desktop-linux-x64.AppImage"
   'metrolist-nightly'
   'LICENSE'
 )
-sha256sums=('9006c0ea92b4ac62078f39b40c4eee66df1f345d7b46f0558921b4f5db8da13f'
+sha256sums=('34a2cdb2dd22a30c69dc17601c0773fd6afbe736a648beb1e26287684aa006f7'
             'e2f611b2a3ea170c12d38e42016e2abb0d2212e62c3946615a50aad6c97643bd'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 
 prepare() {
-  chmod +x metrolist-nightly.AppImage
-  ./metrolist-nightly.AppImage --appimage-extract
+  chmod +x "${_appimage}"
+  ./"${_appimage}" --appimage-extract
 
   sed -i \
     -e 's/^Name=.*/Name=Metrolist (nightly)/' \
