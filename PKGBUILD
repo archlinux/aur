@@ -2,7 +2,7 @@
 
 _name=smithy-http
 pkgname=python-$_name
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='HTTP components for Smithy tooling.'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=('python-awscrt: awscrt'
 
             'python-urllib3: urllib3')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name/v$pkgver.tar.gz")
-sha256sums=('c0a9976128f4974a92c942dccbbcf2b6cd427761fc16e1be5f727c52b0191fb2')
+sha256sums=('02f40425063423118776cbf466ef35f1f6740f2f7974d70bca20d20520ec85c5')
 
 build() {
   cd "smithy-python-$_name-v$pkgver/packages/$_name"
