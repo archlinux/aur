@@ -2,7 +2,7 @@
 # Maintainer: Kirill Salnikov <salnikov.k54 at gmail dot com>
 
 pkgname='monlux-bin'
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Control external monitor brightness over DDC/CI on Linux (prebuilt binary)'
 url='https://github.com/ubiqel/monlux'
@@ -13,10 +13,10 @@ conflicts=('monlux')
 install=monlux.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ubiqel/monlux/releases/download/v${pkgver}/monlux_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('07e0d44ffcb9f350d6982a61b7089a54d37cd4e9cb871788161fce7c8c754404')
+sha256sums_aarch64=('178933e81c0ba4f8c5c3daa52d05ed1b716146fa17696c4874a57bc2ce1c4670')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ubiqel/monlux/releases/download/v${pkgver}/monlux_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('03ccb22dad4953225873543e0896e320be08096bb2dda99e8bf6964795a89e57')
+sha256sums_x86_64=('8c05b2c25e59942cfea49c0b52c03bb5aaffaa849101d3637052ba01f0bd1c17')
 
 package() {
   install -Dm755 ./monlux "${pkgdir}/usr/bin/monlux"

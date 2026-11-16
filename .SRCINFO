@@ -1,6 +1,6 @@
 pkgbase = monlux-bin
 	pkgdesc = Control external monitor brightness over DDC/CI on Linux (prebuilt binary)
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/ubiqel/monlux
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = monlux-bin
 	provides = monlux
 	install = monlux.install
 	arch = aarch64
-	source_aarch64 = monlux-bin_0.2.2_aarch64.tar.gz::https://github.com/ubiqel/monlux/releases/download/v0.2.2/monlux_0.2.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 07e0d44ffcb9f350d6982a61b7089a54d37cd4e9cb871788161fce7c8c754404
+	source_aarch64 = monlux-bin_0.2.3_aarch64.tar.gz::https://github.com/ubiqel/monlux/releases/download/v0.2.3/monlux_0.2.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 178933e81c0ba4f8c5c3daa52d05ed1b716146fa17696c4874a57bc2ce1c4670
 	arch = x86_64
-	source_x86_64 = monlux-bin_0.2.2_x86_64.tar.gz::https://github.com/ubiqel/monlux/releases/download/v0.2.2/monlux_0.2.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 03ccb22dad4953225873543e0896e320be08096bb2dda99e8bf6964795a89e57
+	source_x86_64 = monlux-bin_0.2.3_x86_64.tar.gz::https://github.com/ubiqel/monlux/releases/download/v0.2.3/monlux_0.2.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8c05b2c25e59942cfea49c0b52c03bb5aaffaa849101d3637052ba01f0bd1c17
 	
 pkgname = monlux-bin
