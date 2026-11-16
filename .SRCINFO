@@ -1,5 +1,5 @@
 pkgbase = spaceknife-bin
-	pkgdesc = A modern, cross-platform disk usage analyzer: a live treemap that shows what fills your drives.现代化的跨平台硬盘占用分析工具，实时树图
+	pkgdesc = A modern cross-platform disk usage analyzer with a live treemap.现代化的跨平台硬盘占用分析工具，实时树图
 	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://spaceknife.kaltsit.dev
@@ -7,19 +7,21 @@ pkgbase = spaceknife-bin
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	depends = electron44
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = libayatana-indicator
+	depends = libappindicator
 	provides = spaceknife=0.3.6
 	conflicts = spaceknife
 	options = !emptydirs
 	source = spaceknife-0.3.6.png::https://raw.githubusercontent.com/DuskXi/SpaceKnife/v0.3.6/site/public/icon-512.png
-	source = spaceknife.js
 	source = spaceknife.sh
 	sha256sums = fe565afa07a5cc5977f66594f3942f9019b19edcddd94f3984b00cd3dfd607bc
-	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
-	source_aarch64 = spaceknife-0.3.6-aarch64.tar.gz::https://github.com/DuskXi/SpaceKnife/releases/download/v0.3.6/SpaceKnife-0.3.6-linux-arm64-portable.tar.gz
-	sha256sums_aarch64 = 177c9289e16ee85bf508b8229d999c99e0fa076c4f2e2945f05b9bae7fcefa9f
-	source_x86_64 = spaceknife-0.3.6-x86_64.tar.gz::https://github.com/DuskXi/SpaceKnife/releases/download/v0.3.6/SpaceKnife-0.3.6-linux-x64-portable.tar.gz
-	sha256sums_x86_64 = d5c721d3a666292aed3aa79677c0e6ab3cc9263843d45e87c5dde9ff33ba2091
+	sha256sums = ce404a41eba50acbb5f4907faea65314f909695b14e81e20aad4e5691dd79e8a
+	source_aarch64 = spaceknife-0.3.6-aarch64.tar.gz::https://github.com/DuskXi/SpaceKnife/releases/download/v0.3.6/SpaceKnife-0.3.6-linux-arm64-tauri.tar.gz
+	sha256sums_aarch64 = f9b962972727a74e2e2ba8ac121cd9fc16f47a4c54965ae6cf39f82a33c666a4
+	source_x86_64 = spaceknife-0.3.6-x86_64.tar.gz::https://github.com/DuskXi/SpaceKnife/releases/download/v0.3.6/SpaceKnife-0.3.6-linux-x64-tauri.tar.gz
+	sha256sums_x86_64 = 68c83643c99383ea9da6e05001baa8fe8db02e3c889916c92522d16f1e4c7cd5
 
 pkgname = spaceknife-bin
