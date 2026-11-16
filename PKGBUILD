@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qcalc-bin
 _pkgname=Q.Calc
-pkgver=0.13.6
+pkgver=0.13.7
 pkgrel=1
 pkgdesc="A modern, cross-platform calculator built for productivity."
 arch=('x86_64')
@@ -18,24 +18,29 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname//./}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/from104/qcalc/v${pkgver}/LICENSE"
 )
-sha256sums=('dd3c5e29db5526b511b59dd9025a0c40e28bec8965310898f18f51b250e583ff'
+sha256sums=('5fc7fd1d7e0c0015745c580d8a8a66bfef55d0c7f9334755fdf219eaba37c011'
             '3987b48fb3c79907511fb74614201dbf40f9bff0cc691d4f2dbcad754cba519b')
+_install_icons() {
+	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
+	while IFS= read -r -d '' _icon; do
+		_ext="${_icon##*.}"
+		_size=$(echo "${_icon%/*}" | grep -oE '[0-9]+x[0-9]+|scalable' | head -1)
+		[[ -z "${_size}" ]] && _size=$([[ "${_ext}" == svg ]] && echo scalable || od -An -tu1 -j16 -N8 "${_icon}" 2>/dev/null | awk '{printf "%dx%d",$1*16777216+$2*65536+$3*256+$4,$5*16777216+$6*65536+$7*256+$8}')
+		[[ "${_size}" =~ ^[0-9]+x[0-9]+$ ]] || _size=scalable
+		_dest=$([[ "${_icon}" == */share/pixmaps/* ]] && echo pixmaps || echo "icons/hicolor/${_size}/apps")
+		install -Dm644 "${_icon}" "${pkgdir}/usr/share/${_dest}/${_name}.${_ext}"
+	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
+}
 prepare() {
     sed -i -e "
         s/Exec=app/Exec=${pkgname%-bin}/g
         s/StartupWMClass=app/StartupWMClass=${_pkgname}/g
         s/Icon=app/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname//./}.desktop"
-    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
-		_extension="${_i##*.}"
-		_icon_path="${_i#*share/icons/}"
-		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
-		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
-	done
+    _install_icons
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname//./}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
