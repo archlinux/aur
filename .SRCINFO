@@ -1,6 +1,6 @@
 pkgbase = hornero-shell
 	pkgdesc = Hornero OS desktop shell, built with Quickshell, QML and Qt for Wayland
-	pkgver = 1.2.75
+	pkgver = 1.2.76
 	pkgrel = 1
 	url = https://github.com/HorneroOS/shell
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = hornero-shell
 	optdepends = networkmanager: network status via nmcli
 	optdepends = swappy: screenshot annotation
 	optdepends = wl-clipboard: clipboard integration via wl-copy
-	source = hornero-shell::git+https://github.com/HorneroOS/shell.git#commit=987aa6c5f3dc6258f090a0cb9082aeefb6a38b72
+	source = hornero-shell::git+https://github.com/HorneroOS/shell.git#commit=c12dca7715535f412bc56b015f6e30024b43100d
 	sha256sums = SKIP
 
 pkgname = hornero-shell
