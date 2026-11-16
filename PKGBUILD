@@ -4,7 +4,7 @@
 # Contributor: Jaime Martínez Rincón <jaime@jamezrin.name>
 
 pkgname=notion-app-electron
-pkgver=7.42.3
+pkgver=7.44.0
 _bettersqlite3ver=13.0.1
 _bufferutilver=4.0.9
 _pipewirever=1.1.0
@@ -39,7 +39,7 @@ source=(
 	notion.desktop
 	notion.png
 )
-sha256sums=('52c4875994573f179b21a27475be3ea99af10ff188a4e7f23aa7343e9f88c869'
+sha256sums=('2b158f35d4e7aed8e6c9dec164a7fc681edd67bee99e56d11b472a69fb375d9c'
             '92935ff8280f933aff78f87e04eb718a21af003aec4e5bd0076f287aa1709da4'
             '2139aae79c5a4fd4d07467bd9b7872ea109483aa43b3dfd6c8d3725ccba009be'
             'ed7425c2f287df8e192656f89b5c6645f67837aaaba64692e493dc8e8e0d55fe'
@@ -120,8 +120,8 @@ prepare() {
 		'($$$PRE,function(){$$$INIT}(),0)' \
 		'($$$PRE,function(){$$$INIT}())'
 	sg_patch_select ternary_expression \
-		'"win32"===process.platform?function($E,$T){$$$A}($E,$T):$ALT' \
-		'"linux"===process.platform?function($E,$T){$$$A}($E,$T):$ALT'
+		'"win32"===process.platform?[$F($E,$T)]:$ALT' \
+		'"linux"===process.platform?[$F($E,$T)]:$ALT'
 	# this can disable app menu when the options won't work. disbled in the current version because it's working now, but it's here for future reference
 	# sed -i 's|Menu.setApplicationMenu(p(e))|Menu.setApplicationMenu(null)|g' "$srcdir/asar_patched/.webpack/main/index.js"
 	# repacking asar with all the patches
