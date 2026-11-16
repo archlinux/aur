@@ -1,6 +1,6 @@
 pkgbase = mbv
 	pkgdesc = mpv/Emby and Audiobookshelf front-end
-	pkgver = 0.27.0
+	pkgver = 0.27.1
 	pkgrel = 1
 	url = https://github.com/slatkin/mbv
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = mbv
 	depends = fontconfig
 	depends = vulkan-icd-loader
 	optdepends = pinwin>=0.4.1: pinned panel support
-	source = mbv-0.27.0-linux-x86_64.tar.gz::https://github.com/slatkin/mbv/releases/download/v0.27.0/mbv-0.27.0-linux-x86_64.tar.gz
-	sha256sums = 403aca707f7fb4011a6dfaa774b2cb89b7dbc6153aafbb0ffc7daca8b40adda8
+	source = mbv-0.27.1-linux-x86_64.tar.gz::https://github.com/slatkin/mbv/releases/download/v0.27.1/mbv-0.27.1-linux-x86_64.tar.gz
+	sha256sums = 9cb37d91b6d2104984cb64e7b1437694ac145c6f4513775d9160bda66f8a87e3
 
 pkgname = mbv
