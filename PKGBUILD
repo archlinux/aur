@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=momentum-git
-pkgver=0.1.0.r206.g0c37824
+pkgver=0.1.0.r209.g6bec368
 pkgrel=1
 pkgdesc="CLI for Sennheiser Momentum 4 headphones (git version)"
 arch=('x86_64' 'aarch64')
