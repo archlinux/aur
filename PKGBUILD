@@ -2,7 +2,7 @@
 
 pkgname=epsxe-appimage
 pkgver=2.0.5
-pkgrel=5
+pkgrel=6
 pkgdesc="ePSXe PS1 emulator for 64-bit Linux (self-built AppImage)"
 arch=('x86_64')
 url="https://github.com/Twilight0/epsxe-appimage"
@@ -21,7 +21,7 @@ options=('!strip' '!debug')
 # a fixed name breaks every client that already cached it, because the file
 # name stays the same and the download is skipped.
 source=("ePSXe-$pkgver-$pkgrel-x86_64.AppImage::https://github.com/Twilight0/epsxe-appimage/releases/download/v$pkgver-$pkgrel/ePSXe-$pkgver-$pkgrel-x86_64.AppImage")
-sha256sums=('47d07dd0a7474495ce24b1cd70e1af4b26b1fb66d01ab7ac47b89ceb79b32543')
+sha256sums=('59ad14ef4b581d2e5f9d3ba20ab90fa7184fa1a8a1b940130e28ee7938ff62d9')
 
 package() {
   # Unpack the AppImage once: the icon and the documented settings come
@@ -66,6 +66,38 @@ if [ -z "${SDL_VIDEODRIVER:-}" ] && [ -n "${DISPLAY:-}" ]; then
 fi
 
 exec /opt/epsxe/ePSXe.AppImage "$@"
+EOF
+
+  # Standalone quit helper: ePSXe 2.0.5's Linux port never connects
+  # WM_DELETE_WINDOW, so the window's close button does nothing.
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/epsxe-quit" <<'EOF'
+#!/bin/sh
+# Ask a running ePSXe to close.
+#
+# SIGTERM first (ePSXe saves its memory cards on exit), SIGKILL only if it
+# ignores that.
+_pids="$(pgrep -f 'epsxe_x64' || true)"
+if [ -z "$_pids" ]; then
+  echo "epsxe is not running" >&2
+  exit 1
+fi
+for _p in $_pids; do kill -TERM "$_p" 2>/dev/null || true; done
+sleep 2
+for _p in $(pgrep -f 'epsxe_x64' || true); do kill -KILL "$_p" 2>/dev/null || true; done
+echo "epsxe closed"
+EOF
+
+  # A menu entry to close ePSXe, since the window's own close button does
+  # not work.
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/epsxe-quit.desktop" <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=Quit ePSXe
+Comment=Close a running ePSXe emulator
+Icon=epsxe
+Exec=epsxe-quit
+Terminal=false
+Categories=Game;Emulator;
 EOF
 
   # Documented settings.
