@@ -2,7 +2,7 @@
 
 pkgname=onon
 pkgver=0.14.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A quiet reader for the keyboard, built on MuPDF and configured with Lua"
 arch=('x86_64')
 url="https://github.com/Aethar01/onon"
@@ -28,7 +28,7 @@ build() {
 	export CGO_CXXFLAGS="$CXXFLAGS"
 	export CGO_LDFLAGS="$LDFLAGS"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-	go build -ldflags "-linkmode=external -X onon/internal/config.Version=$pkgver" -o onon .
+	go build -ldflags "-linkmode=external -X onon/internal/config.Version=$pkgver -X onon/internal/config.InstallMethod=aur" -o onon .
 }
 
 package() {
