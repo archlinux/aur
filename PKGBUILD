@@ -5,9 +5,9 @@
 # After editing, regenerate .SRCINFO: makepkg --printsrcinfo > .SRCINFO
 
 pkgname=scale_tail
-# TODO(release): the first release that has uq/ in its tree. Set pkgver to that tag (without the
-# leading v), and replace SKIP below with the tarball's sha256 (updpkgsums), then regenerate .SRCINFO.
-pkgver=0.6.0
+# For a release: set pkgver to the tag (without the leading v), run updpkgsums for the tarball's
+# sha256, then regenerate .SRCINFO and copy both files to the AUR repository.
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='System-tray control centre for the Tailscale CLI'
 arch=(x86_64 aarch64)
@@ -23,7 +23,7 @@ optdepends=('libnotify: notifications (notify-send)'
             'uq: Tailscale tile in uQ quick settings instead of the tray')
 options=(!lto !debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('72b72b5b1e097c225d72437b1e964711db05c3c656e3625f9b2e06b4aa7dbefa')
+sha256sums=('d09e5bfef3d8bea44746b96f74a1654374a3910da7c1edaf919c2559833dca0b')
 
 prepare() {
   cd "$pkgname-$pkgver"
