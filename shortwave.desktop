@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Shortwave
+GenericName=Email Client
+Comment=AI-native email for teams
+Exec=shortwave %U
+Icon=shortwave
+Terminal=false
+Type=Application
+Categories=Network;Email;
+MimeType=x-scheme-handler/shortwave;x-scheme-handler/mailto;
+StartupWMClass=Shortwave

@@ -1,0 +1,89 @@
+diff -ru app/package.json app/package.json
+--- app/package.json	2026-11-17 05:00:25.968053600 +0900
++++ app/package.json	2026-11-17 05:03:23.347844169 +0900
+@@ -2,6 +2,7 @@
+   "name": "desktop_app",
+   "version": "2026.11.1",
+   "productName": "Shortwave",
++  "desktopName": "shortwave.desktop",
+   "main": ".vite/index.js",
+   "scripts": {
+     "filegen": "npm run filegen:local",
+diff -ru app/.vite/index.js app/.vite/index.js
+--- app/.vite/index.js	2026-11-17 05:00:25.966599318 +0900
++++ app/.vite/index.js	2026-11-17 05:03:23.347359769 +0900
+@@ -21911,6 +21911,7 @@
+   let platform;
+   switch (process.platform) {
+     case "win32":
++    case "linux":
+       platform = "win32";
+       break;
+     case "darwin":
+@@ -21937,6 +21938,10 @@
+         [SupportedPlatform.Windows]: `${config.desktopPublishConfig.publishUrl}/win32/x64`,
+         [SupportedPlatform.MacOS]: `${config.desktopPublishConfig.publishUrl}/darwin/universal/RELEASES.json`
+       });
++      if (process.platform === "linux") {
++        this.logger.info("Auto updates are handled by the system package manager on Linux. Skipping auto updater setup.");
++        return;
++      }
+       if (!electron$1.app.isPackaged) {
+         this.logger.info("Running app in un-packaged mode. Skipping auto updater setup.");
+         return;
+@@ -22207,29 +22212,44 @@
+     // This needs to happen at the top level of the app before it emits the ready event
+     static setup(logger2) {
+       const gotTheLock = electron$1.app.requestSingleInstanceLock();
+-      if (!gotTheLock) electron$1.app.quit();
+-      for (const protocol of APP_SCHEMES) {
++      if (!gotTheLock) {
++        electron$1.app.quit();
++        process.exit(0);
++      }
++      for (const protocol of process.platform === "linux" ? [] : APP_SCHEMES) {
+         const set2 = electron$1.app.setAsDefaultProtocolClient(protocol);
+         if (!set2) {
+           logger2.warn(`Failed to set as default protocol client for protocol "${protocol}"`);
+         }
+       }
+       const deepLinks2 = new DeepLinksService(logger2);
++      const findUrlInArgv = (argv) => {
++        for (let i = argv.length - 1; i >= 1; i--) {
++          const arg = argv[i];
++          if (typeof arg !== "string" || arg.startsWith("-")) continue;
++          let u;
++          try {
++            u = new URL(arg);
++          } catch (_2) {
++            continue;
++          }
++          if (SUPPORTED_SCHEMES.some((protocol) => u.protocol === `${protocol}:`)) return u;
++        }
++        return null;
++      };
+       electron$1.app.on("second-instance", (event, commandLine) => {
+         logger2.info("Received second-instance event");
+-        let url2;
+-        try {
+-          const urlString = commandLine[commandLine.length - 1];
+-          url2 = new URL(urlString);
+-        } catch (_2) {
+-          return;
+-        }
+-        if (!SUPPORTED_SCHEMES.some((protocol) => url2.protocol === `${protocol}:`)) {
+-          logger2.info(`Command line argument is not a supported protocol (scheme: ${url2.protocol})`);
++        const url2 = findUrlInArgv(commandLine);
++        if (!url2) {
++          logger2.info("No supported URL in command line arguments");
+           return;
+         }
+         deepLinks2.handleDeepLinkUrl(url2);
+       });
++      if (process.platform !== "darwin") {
++        const initialUrl = findUrlInArgv(process.argv);
++        if (initialUrl) deepLinks2.handleDeepLinkUrl(initialUrl);
++      }
+       electron$1.app.on("open-url", (event, url2) => {
+         logger2.info("Received open-url event");
+         const parsed2 = new URL(url2);

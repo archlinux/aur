@@ -1,0 +1,9 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!shortwave-linux.patch
+!shortwave.sh
+!shortwave.desktop
+!shortwave.png
+!LICENSE
