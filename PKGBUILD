@@ -1,15 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=omniget-bin
 _pkgname=OmniGet
-pkgver=0.15.1
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Open-source download manager for courses (Udemy/Hotmart), YouTube, music & 1,800+ sites."
-arch=(
-    'aarch64'
-    'x86_64'
-)
-url="https://t.me/OpenSelena"
-_ghurl="https://github.com/OpenSelena/omniget"
+pkgdesc="A local MCP server that gives your coding agent a desktop toolbox: downloads from YouTube, torrents and every site yt-dlp supports, media conversion, files, chats and system cleanup. One line connects Claude Code, Codex, Cursor or Gemini CLI, and sensitive actions wait for your click. Free and open source."
+arch=('x86_64')
+url="https://getomniget.com"
+_ghurl="https://github.com/tonhowtf/omniget"
 license=('GPL-3.0-or-later')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -17,14 +14,14 @@ depends=(
     'gtk3'
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
-    'alsa-lib'
     'libayatana-indicator'
     'libappindicator'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums_aarch64=('93eec2b6606e0e7d5cd7b5526adf2499e2f87cb77b071a5136272707abb13567')
-sha256sums_x86_64=('ef61cdb27720ac5b76b43077e526c74c29a94d6d8a9605d05102c15c04d6119f')
+makedepends=(
+    'gendesk'
+)
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/dl/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+sha256sums=('93021a0f34c850c90b308e52436d0aaf46c93c6f8055f8c117b2e1c6a738fac5')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
@@ -38,10 +35,16 @@ _install_icons() {
 }
 prepare() {
     bsdtar -xf "${srcdir}/data."*
+    gendesk -q -f -n \
+		--pkgname="${pkgname%-bin}" \
+		--pkgdesc="${pkgdesc}" \
+		--categories="Network" \
+		--name="${_pkgname}" \
+		--exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
     _install_icons
-    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }

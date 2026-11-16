@@ -1,22 +1,19 @@
 pkgbase = omniget-bin
-	pkgdesc = Open-source download manager for courses (Udemy/Hotmart), YouTube, music & 1,800+ sites.
-	pkgver = 0.15.1
+	pkgdesc = A local MCP server that gives your coding agent a desktop toolbox: downloads from YouTube, torrents and every site yt-dlp supports, media conversion, files, chats and system cleanup. One line connects Claude Code, Codex, Cursor or Gemini CLI, and sensitive actions wait for your click. Free and open source.
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://t.me/OpenSelena
-	arch = aarch64
+	url = https://getomniget.com
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = gendesk
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	depends = alsa-lib
 	depends = libayatana-indicator
 	depends = libappindicator
-	provides = omniget=0.15.1
+	provides = omniget=1.0.0
 	conflicts = omniget
-	source_aarch64 = omniget-0.15.1-aarch64.deb::https://github.com/OpenSelena/omniget/releases/download/v0.15.1/OmniGet_0.15.1_arm64.deb
-	sha256sums_aarch64 = 93eec2b6606e0e7d5cd7b5526adf2499e2f87cb77b071a5136272707abb13567
-	source_x86_64 = omniget-0.15.1-x86_64.deb::https://github.com/OpenSelena/omniget/releases/download/v0.15.1/OmniGet_0.15.1_amd64.deb
-	sha256sums_x86_64 = ef61cdb27720ac5b76b43077e526c74c29a94d6d8a9605d05102c15c04d6119f
+	source = omniget-1.0.0.deb::https://getomniget.com/dl/v1.0.0/omniget_1.0.0_amd64.deb
+	sha256sums = 93021a0f34c850c90b308e52436d0aaf46c93c6f8055f8c117b2e1c6a738fac5
 
 pkgname = omniget-bin
