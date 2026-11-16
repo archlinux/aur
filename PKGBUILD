@@ -3,7 +3,7 @@
 
 pkgname=altair-ai-studio
 pkgver=2026.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Altair AI Studio (RapidMiner Studio rebranded). Data science tool anyone can use to design and prototype highly explainable AI and machine learning models that help build trust throughout your organization"
 DLAGENTS=('https::/usr/bin/aria2c %u -o %o --continue --max-connection-per-server=16 --min-split-size=1M --split=16 --console-log-level=warn --summary-interval=0')
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('unzip' 'gendesk' 'aria2')
 source=('https://releases.rapidminer.com/latest/rapidminer-studio/rapidminer-studio.zip'
         'altair-ai-studio.sh')
 sha256sums=('cf28f16d6b15cf813df3df5724bd49413d965e792c5369407e0caf806d092203'
-            'e69a78eacd0e1a8e66fe0c44150efcb299a3133ef5cce81a5a092c6f43345cfc')
+            'faa97b8c062c750ea7cdd21d8e5eb1e0d68a1927b708c8abe5b063cb5dfba932')
 
 prepare() {
     echo "[${pkgname}] Generating desktop file..."

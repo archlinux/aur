@@ -4,6 +4,15 @@ set -euo pipefail
 APPDIR=/opt/altair-ai-studio
 export RAPIDMINER_HOME="$APPDIR"
 
+# The bundled JxBrowser 8.12.0 crashes on startup when Chromium picks the
+# Wayland backend (fixed upstream in 8.12.2, not shipped by 2026.1.1): every
+# HTML5 panel dies with a segfault, so Results -> Visualizations stays blank.
+# The Swing GUI itself runs as an X11/XWayland client, so keep Chromium on X11.
+if [ -n "${DISPLAY:-}" ]; then
+  unset WAYLAND_DISPLAY
+  export XDG_SESSION_TYPE=x11
+fi
+
 # Candidate JRE 17 locations on Arch
 CANDIDATES=(
   "/usr/lib/jvm/java-17-openjdk"
