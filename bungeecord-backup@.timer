@@ -1,5 +1,5 @@
 [Unit]
-Description=Daily BungeeCord Server Backup
+Description=Daily BungeeCord Server (%I) Backup
 
 [Timer]
 OnCalendar=daily
@@ -7,4 +7,4 @@ AccuracySec=5min
 Persistent=true
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=timers.target

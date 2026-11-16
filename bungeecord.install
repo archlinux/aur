@@ -3,34 +3,24 @@ _user="bungeecord"
 _server_root="/srv/bungeecord"
 
 post_install() {
-	getent group "${_user}" &>/dev/null
-	if [ $? -ne 0 ]; then
-		echo "Adding ${_user} system group..."
-		groupadd -r ${_user} 1>/dev/null
-	fi
-
-	getent passwd "${_user}" &>/dev/null
-	if [ $? -ne 0 ]; then
-		echo "Adding ${_user} system user..."
-		useradd -r -g ${_user} -d "${_server_root}" ${_user} 1>/dev/null
-	fi
-
-	chown -R ${_user}:${_user} "${_server_root}"
-
-	echo "The server data is stored under ${_server_root} and the server runs as ${_user} user to increase security."
-	echo "Use the ${_game} script under /usr/bin/${_game} to start, stop or backup each individual server, specifying its name."
-	echo "Adjust the global configuration file under /etc/conf.d/${_game} to your liking."
-        echo "You can create as many servers as you want. Just create a servername folder and servername.conf under ${_server_root}/servers for each one, tweak the configuration to your liking and put whichever server software you need (spigot, paper, etc)."
-        echo "By default, ${_game} is installed as subserver proxy, under ${_server_root}/servers/proxy"
-        echo "You can start it by using ${_game} proxy start"
+  echo "The server data is stored under ${_server_root} and the server runs as ${_user} user to increase security."
+  echo "Use the ${_game} script under /usr/bin/${_game} to start, stop or backup each individual server, specifying its name."
+  echo "Adjust the global configuration file under /etc/conf.d/${_game} to your liking."
+  echo "You can create as many servers as you want. For each one, create servername.conf under ${_server_root}/servers as root and a servername folder owned by ${_user} (install -d -o ${_user} -g ${_user} ${_server_root}/servers/servername), tweak the configuration to your liking and put whichever server software you need (spigot, paper, etc)."
+  echo "By default, ${_game} is installed as subserver proxy, under ${_server_root}/servers/proxy"
+  echo "You can start it by using ${_game} proxy start"
 }
 
 post_upgrade() {
-	chown -R ${_user}:${_user} "${_server_root}"
+  if (( $(vercmp "$2" 2111-1) < 0 )); then
+    echo "${_server_root}, ${_server_root}/servers and the .conf files in it now belong to root, because ${_game} sources them as the user who runs it. Edit them as root, only the subserver folders belong to ${_user}."
+    echo "The jar moved to /usr/share/java/${_game}/BungeeCord.jar, ${_server_root}/servers/proxy/server.jar links to it."
+    echo "Backups are enabled per subserver now: systemctl enable --now ${_game}-backup@servername.timer"
+    echo "proxy.conf now backs up config.yml and plugins, merge ${_server_root}/servers/proxy.conf.pacnew if pacman created one."
+  fi
 }
 
 post_remove() {
-	# Notifying the user of kept dirs
-	[[ -d "${_server_root}" ]] && echo "Game saves in ${_server_root} were kept on your system."
-	echo "The ${_user} user was preserved on your system."
+  [[ -d "${_server_root}" ]] && echo "Game saves in ${_server_root} were kept on your system."
+  echo "The ${_user} user was preserved on your system."
 }

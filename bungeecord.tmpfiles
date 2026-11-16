@@ -1,0 +1,5 @@
+d /srv/bungeecord 0755 root root -
+d /srv/bungeecord/servers 0755 root root -
+z /srv/bungeecord/servers/*.conf - root root -
+d /srv/bungeecord/servers/proxy - bungeecord bungeecord -
+L /srv/bungeecord/servers/proxy/server.jar - - - - /usr/share/java/bungeecord/BungeeCord.jar
