@@ -39,6 +39,22 @@ _dotnet_sdk() {
   fi
 }
 
+# The release of .NET $_dotnetsdkver the SDK of _dotnet_sdk builds for, the latest one it knows
+# (LatestRuntimeFrameworkVersion of its bundled versions), whose runtime and crossgen2 packs it restores:
+# the version of the packages of .NET the packages reference. For the source-built SDK, its own
+# runtime, whose artifacts have them; Microsoft's may know a newer one than the runtime installed.
+_dotnet_runtime() {
+  awk -v tfm="net$_dotnetsdkver" '
+    /<KnownFrameworkReference Include="Microsoft\.NETCore\.App"/ { framework = 1; target = 0 }
+    framework && index($0, "TargetFramework=\"" tfm "\"") { target = 1 }
+    framework && target && match($0, /LatestRuntimeFrameworkVersion="[^"]+"/) {
+      print substr($0, RSTART + 31, RLENGTH - 32)
+      exit
+    }
+    framework && /\/>/ { framework = 0 }
+  ' "/usr/share/dotnet/sdk/$(_dotnet_sdk)/Microsoft.NETCoreSdk.BundledVersions.props"
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -195,8 +211,7 @@ check() {
   # artifacts.
   if [[ ! -f "$srcdir/runtime-packages" ]]; then
     local _runtimever _pinned
-    _runtimever=$(dotnet --list-runtimes |
-      sed -n -E 's/^Microsoft\.NETCore\.App ('"${_dotnetsdkver//./\\.}"'\.[^ ]+) .*/\1/p' | sort -V | tail -1)
+    _runtimever=$(_dotnet_runtime)
     _pinned=$(sed -n -E 's/.*<PackageVersion Include="System\.Text\.Json" Version="('"${_dotnetsdkver//./\\.}"'\.[0-9]+)".*/\1/p' \
       eng/centralpackagemanagement/Directory.Packages.props)
     [[ -z "$_pinned" ]] || sed -i -E 's/([">])'"${_pinned//./\\.}"'(["<])/\1'"$_runtimever"'\2/g' eng/centralpackagemanagement/*.props
