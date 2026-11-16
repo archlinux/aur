@@ -16,10 +16,6 @@ license=(GPL-3.0-only)
 # The plugins and extensions it uses, whose include files it's compiled with
 depends=(sourcemod sourcemod-smjansson sourcemod-sourcebans-pp sourcemod-steamworks)
 makedepends=(sourcemod-scripting)
-# Where ./aur-packages commits reads the pins from: the commit pkgver names
-_pins_lookup() {
-  echo "_commit $(curl -fsSL "https://api.github.com/repos/sbpp/discord-forward/commits/${pkgver##*.g}" | jq -r .sha)"
-}
 source=("$_name-$_commit.tar.gz::https://github.com/sbpp/discord-forward/archive/$_commit.tar.gz")
 sha512sums=('3faa4e13e99c8168a8040bc46f0712406f60464f517849d378f46bb9404a4e785a2885467365de61e91070ee231cc8a9bc1fef490a03617c3c3b728f46656f97')
 b2sums=('d209413904e8701a74bba38bb281217298834c929c851f6667d822f350ce0e777cefc8f345cc64bfcb40e022a1eb5a92a1c78da06bcf8de33d5f04132e649c1c')
