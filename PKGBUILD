@@ -1,7 +1,7 @@
 pkgname=md-viewer-git
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=2
-pkgdesc="Fast, lightweight markdown viewer for Linux with tabs, file explorer, and live reload"
+pkgdesc="Fast, lightweight markdown viewer with LaTeX math, mermaid diagrams, tabs, file explorer and live reload"
 arch=('x86_64')
 url="https://github.com/aydiler/md-viewer"
 license=('MIT')
