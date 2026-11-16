@@ -42,9 +42,11 @@ backup=("etc/$pkgname/ircd.yaml"
 
 prepare() {
   cd "$srcdir/$_upstream_pkgname" || exit
+  # upstream: none, Arch's paths in the default configuration
   patch --backup <../config.patch
 
   cd "$srcdir/$_upstream_pkgname/distrib/systemd" || exit
+  # upstream: none, Arch's paths and user in the systemd unit
   patch --backup <../../../systemd-service-unit.patch
 }
 
