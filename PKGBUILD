@@ -2,7 +2,7 @@
 
 _name=livekit-protocol
 pkgname=python-$_name
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Python protocol stubs for LiveKit.'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-hatchling'
              'python-build'
              'python-installer')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/protocol-v$pkgver.tar.gz")
-sha256sums=('30ddd16011d44ee978a09b5c9d136be8a037436e5ba2b6922356e74b188b508d')
+sha256sums=('0b032c67b3cfbba4b59ff6f3ee5b386f39dda80531330385b8c2af352eeb446a')
 
 build() {
   cd "python-sdks-protocol-v$pkgver"
