@@ -2,7 +2,7 @@
 pkgname=portable
 epoch=1
 pkgver=20.2
-pkgrel=1
+pkgrel=3
 epoch=1
 pkgdesc="Fast, private, efficient sandbox for Linux desktop."
 arch=('x86_64' 'aarch64' 'loongarch64')
@@ -14,18 +14,12 @@ options=()
 
 depends=(
 	libseccomp
-	"libnotify"
-	pipewire
-	"coreutils"
 	"zenity"
 	"xdg-dbus-proxy"
 	"bubblewrap"
-	"util-linux"
 	"glibc"
-	"dbus"
-	"bash"
 	"xdg-desktop-portal-impl"
-	"grep"
+	libgcc
 	"systemd-libs"
 )
 
