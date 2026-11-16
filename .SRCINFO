@@ -1,6 +1,6 @@
 pkgbase = f3d-git
 	pkgdesc = A fast and minimalist 3D viewer
-	pkgver = 3.1.0.r140.g041870f
+	pkgver = 4.0.1.r70.g707b6b4
 	pkgrel = 1
 	url = https://github.com/f3d-app/f3d
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = f3d-git
 	depends = python
 	depends = vtk
 	optdepends = java-runtime
-	provides = f3d=3.1.0.r140
+	provides = f3d=4.0.1.r70
 	conflicts = f3d
 	source = f3d::git+https://github.com/f3d-app/f3d.git
 	sha256sums = SKIP

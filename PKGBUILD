@@ -9,7 +9,7 @@ export GIT_LFS_SKIP_SMUDGE=1
 
 _pkgname="f3d"
 pkgname="$_pkgname-git"
-pkgver=3.1.0.r140.g041870f
+pkgver=4.0.1.r70.g707b6b4
 pkgrel=1
 pkgdesc='A fast and minimalist 3D viewer'
 url="https://github.com/f3d-app/f3d"
@@ -74,11 +74,14 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DBUILD_TESTING=OFF
+    -Wno-author
+
     -DF3D_BINDINGS_JAVA=ON
     -DF3D_BINDINGS_PYTHON=ON
     -DF3D_LINUX_GENERATE_MAN=ON
-    -DF3D_MODULE_RAYTRACING=ON
     -DF3D_MODULE_EXR=ON
+    -DF3D_MODULE_RAYTRACING=ON
     -DF3D_PLUGINS_STATIC_BUILD=ON
     -DF3D_PLUGIN_BUILD_ALEMBIC=ON
     -DF3D_PLUGIN_BUILD_ASSIMP=ON
@@ -87,8 +90,6 @@ build() {
     -DF3D_PLUGIN_BUILD_OCCT=ON
     -DF3D_PLUGIN_BUILD_USD=${_build_usd}
     -DF3D_PLUGIN_BUILD_VDB=ON
-    -DBUILD_TESTING=OFF
-    -Wno-dev
   )
 
   cmake "${_cmake_options[@]}"
