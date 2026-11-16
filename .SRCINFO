@@ -1,6 +1,6 @@
 pkgbase = lynmusic-bin
-	pkgdesc = A cross-platform local music player,built with Kotlin Multiplatform. (Prebuilt version)
-	pkgver = 1.1.1
+	pkgdesc = A cross-platform local music player,built with Kotlin Multiplatform.
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/wesley666/LynMusic
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = lynmusic-bin
 	depends = alsa-lib
 	depends = vlc
 	depends = libxtst
-	provides = lynmusic=1.1.1
+	provides = lynmusic=1.1.5
 	conflicts = lynmusic
-	source = lynmusic-1.1.1.deb::https://github.com/wesley666/LynMusic/releases/download/v1.1.1/lynmusic_1.1.1_amd64.deb
+	source = lynmusic-1.1.5.deb::https://github.com/wesley666/LynMusic/releases/download/v1.1.5/lynmusic_1.1.5_amd64.deb
 	source = lynmusic.sh
-	sha256sums = 6a727c9b75c2a9a00879829430733ceee4d3cac3ced884f58647a9ea975daf64
-	sha256sums = 81266c37f90d6eef62471250c3c906d0dec1f1c3041f22b7b45f7a3be612f9c1
+	sha256sums = 1a742609bbc347d957c81a92d3d6f8fd5ad872778e06b04f00a2fb0f1f6e39ee
+	sha256sums = 2c64a84f19252c8210eb87aac43ce8441ddaca754b8c788f74d898d244032173
 
 pkgname = lynmusic-bin
