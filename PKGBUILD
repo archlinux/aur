@@ -88,6 +88,7 @@ prepare() {
   cd "$pkgname-SOGo-$pkgver" || exit
   # OpenSSL 4 makes ASN1_STRING opaque, the S/MIME code read its fields directly
   # Upstream fix: https://github.com/Alinto/sogo/pull/430
+  # upstream: pending Alinto/sogo#430
   patch -Np1 -i "$srcdir/openssl-4-asn1-string.patch"
 
   # The HTML injection filter returned a partially filtered string when one of its steps raised.
@@ -96,6 +97,7 @@ prepare() {
   # released yet: https://github.com/gnustep/libs-base/issues/800), so "javajavascript:script:"
   # came out as "javascript:". It returns an empty string instead now.
   # Upstream fix: https://github.com/Alinto/sogo/pull/431
+  # upstream: pending Alinto/sogo#431
   patch -Np1 -i "$srcdir/html-injection-fail-closed.patch"
 
   # Left out of the unit tests (renamed, so the runner doesn't take it for a test): the expected
