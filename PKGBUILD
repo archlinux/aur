@@ -2,7 +2,7 @@
 
 pkgname=python-ntc-templates
 _name=ntc_templates
-pkgver=8.1.0
+pkgver=9.3.0
 pkgrel=1
 pkgdesc="TextFSM templates for parsing show commands of network devices"
 url="https://github.com/networktocode/ntc-templates"
@@ -14,11 +14,10 @@ depends=(
 makedepends=(
     python-build
     python-installer
-    python-wheel
-    python-poetry
+    python-poetry-core
 )
 source=("https://github.com/networktocode/ntc-templates/releases/download/v${pkgver}/${_name}-${pkgver}.tar.gz")
-sha512sums=('1b32fc87239591adaddc301d52153e298d860f57dbe8531fb07d85a2a9ed080a302b607d6fdf53e8a0fe63f5787c4b0f6a34d1ecf0f5e99d5c4ec3b841d54957')
+sha512sums=('6678c79d4ddb368d865d7a48d6fbb15fa7036990f36721d3b97e6fc9c0387ef0da1abc04de407c225cf8c10a89c66d21d728fb496fb8d5852749fa4a19e0e4bf')
 
 build() {
     cd $_name-$pkgver
