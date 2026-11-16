@@ -8,7 +8,7 @@
 pkgname=quadrahq-git
 _name=Quadra
 pkgver=0.50.2.r4.g52a8adf
-pkgrel=3
+pkgrel=4
 pkgdesc="Bootstrapper for the macOS Roblox client on Linux through Rosemary"
 arch=('x86_64')
 url="https://quadrahq.org"
@@ -17,9 +17,7 @@ license=('GPL-3.0-only' 'MIT' 'ISC' 'OFL-1.1')
 depends=('gtk4' 'libadwaita' 'pango' 'cairo' 'glib2'
          'hicolor-icon-theme' 'shared-mime-info' 'desktop-file-utils')
 makedepends=('git' 'cargo' 'rust' 'clang' 'lld' 'pkgconf')
-optdepends=('darling: regular Darling runtime'
-            'ciderdarling-bin: QuadraHQ Darling runtime'
-            'mangohud: performance overlay'
+optdepends=('mangohud: performance overlay'
             'mesa: Mesa EGL and Zink for the Vulkan renderer'
             'vulkan-driver: hardware Vulkan driver for the Vulkan renderer'
             'pipewire-audio: native PipeWire audio playback')

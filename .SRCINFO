@@ -1,7 +1,7 @@
 pkgbase = quadrahq-git
 	pkgdesc = Bootstrapper for the macOS Roblox client on Linux through Rosemary
 	pkgver = 0.50.2.r4.g52a8adf
-	pkgrel = 3
+	pkgrel = 4
 	url = https://quadrahq.org
 	arch = x86_64
 	license = GPL-3.0-only
@@ -22,8 +22,6 @@ pkgbase = quadrahq-git
 	depends = hicolor-icon-theme
 	depends = shared-mime-info
 	depends = desktop-file-utils
-	optdepends = darling: regular Darling runtime
-	optdepends = ciderdarling-bin: QuadraHQ Darling runtime
 	optdepends = mangohud: performance overlay
 	optdepends = mesa: Mesa EGL and Zink for the Vulkan renderer
 	optdepends = vulkan-driver: hardware Vulkan driver for the Vulkan renderer
