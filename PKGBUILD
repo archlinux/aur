@@ -1,6 +1,6 @@
 # Maintainer: Phorcys <aur@phorcys.net>
 pkgname=coder-bin
-pkgver=2.39.1
+pkgver=2.39.4
 pkgrel=1
 pkgdesc="Remote development environments on your infrastructure provisioned with Terraform"
 arch=("x86_64" "aarch64" "armv7h")
@@ -18,6 +18,6 @@ package() {
 
 	install -Dm755 coder "${pkgdir}/usr/bin/coder"
 }
-sha256sums_x86_64=('1251f499f617d765cadaadf11fa6d55c6f022cf1f0828d10cde376c10b460ada')
-sha256sums_aarch64=('23e79b6db13f9ed2663d43219eee49d5dd5199cf34df1daef41666ffbd9694b6')
-sha256sums_armv7h=('291bfc52c70d4f00ecd6e6ddaa7ab1b352a47e1fc2e77028f28940a5be1958ce')
+sha256sums_x86_64=('b6ea29c51854447e7534b43ab19eccd37e3ce1f66393a67c4ac4257f7bdff7bf')
+sha256sums_aarch64=('884385b1fc5dd5caad8ba7568c6395bfddf8f74a6fb9015a410a2f9851a3b2cf')
+sha256sums_armv7h=('d9218cad806871bcc920a562241a7d223cf81355eb756036becebb1b09b1cc4b')
