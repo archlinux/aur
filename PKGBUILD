@@ -1,6 +1,6 @@
 # Maintainer: Vaishnav Sabari Girish <vaishnav.sabari.girish@gmail.com>
 pkgname=tmail
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='A fast terminal email client with a spatial conversation map (IMAP/SMTP, Maildir)'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=('gnupg: message signing and encryption'
   'foot: inline images in HTML mail')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f02f4ad6b00acb3da3ec6ba8d4f78cd5cd4915fcecad5c6862eb4acfbb09a8fd')
+sha256sums=('9cb0337781ec383454fb227b6ff6b105ffbe72a007b5a4e1d26363a3091294d4')
 
 prepare() {
   cd "$pkgname-$pkgver"
