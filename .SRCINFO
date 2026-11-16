@@ -1,6 +1,6 @@
 pkgbase = sober-bin
 	pkgdesc = Local-first repository governance and code review with native core grammars
-	pkgver = 2026.11.7
+	pkgver = 2026.11.8
 	pkgrel = 1
 	url = https://sober-dev.app
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = sober-bin
 	depends = tree-sitter<0.27
 	provides = sober
 	conflicts = sober
-	noextract = sober-grammars_v2026.11.7_linux_amd64.tar.gz
-	source = https://pkg.sober-dev.app/ce/sober_v2026.11.7_linux_amd64
+	noextract = sober-grammars_v2026.11.8_linux_amd64.tar.gz
+	source = https://pkg.sober-dev.app/ce/sober_v2026.11.8_linux_amd64
 	source = https://pkg.sober-dev.app/ce/SHA256SUMS
-	source = https://pkg.sober-dev.app/ce/sober-grammars_v2026.11.7_linux_amd64.tar.gz
-	sha256sums = d8499bfc33d57fd014d4748a33224adfc7bc56fbe37345a7cf8351280bef7109
+	source = https://pkg.sober-dev.app/ce/sober-grammars_v2026.11.8_linux_amd64.tar.gz
+	sha256sums = 9e97b4e19eb0631ff8baf5305aaa7c2aebe2350d64ebfead201a0860f9fd6308
 	sha256sums = SKIP
 	sha256sums = 4cc4d4bb004dc374defa21a1f097f6ebb62acf22fff2d283946b6e30517f9978
 
