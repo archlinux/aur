@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-si
 	pkgdesc = Sinhala language pack for Firefox Nightly
-	pkgver = 162.0a1.20261115.092657
+	pkgver = 162.0a1.20261115.213519
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-si
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-si-162.0a1.20261115.092657.xpi
-	source = firefox-nightly-i18n-si-162.0a1.20261115.092657.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-162.0a1.si.langpack.xpi
-	sha256sums = d43e7e91f879e04fa90deddf3d5498c1b6647a7ef5612bce16cc5061d9d70fed
+	noextract = firefox-nightly-i18n-si-162.0a1.20261115.213519.xpi
+	source = firefox-nightly-i18n-si-162.0a1.20261115.213519.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-162.0a1.si.langpack.xpi
+	sha256sums = 6049fa552a3e854694b1ac2a9af3aa2a43c6a237dc8c5e7730e0284c756eca3d
 
 pkgname = firefox-nightly-i18n-si
