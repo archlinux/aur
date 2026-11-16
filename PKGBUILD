@@ -110,8 +110,10 @@ prepare() {
   sed -i 's/\r$//' Functions/Output.ps1 Functions/TestResults.Tests.ps1
   # Exception messages on PowerShell 7 include the parameter name, which the failure output shows on
   # a line of its own (upstream fix after 4.10.1, released in 4.10.2-beta1)
+  # upstream: backport pester/Pester#1475
   patch -Np1 -i "$srcdir/pester-failure-lines-core.patch"
   # Tests: New-TimeSpan -mi is ambiguous on PowerShell 7 (-Milliseconds), upstream fix after 4.10.1
+  # upstream: backport pester/Pester#2919
   patch -Np1 -i "$srcdir/pester-tests-new-timespan.patch"
 }
 
