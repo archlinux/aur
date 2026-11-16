@@ -1,0 +1,22 @@
+pkgbase = panic-button-bin
+	pkgdesc = Staff panic alarm: call colleagues for help from this computer (desktop app)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ohtf/panic-button
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	license = LicenseRef-PanicButton-app-store-exception
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = alsa-lib
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	provides = panic-button
+	conflicts = panic-button
+	noextract = panic-button-desktop_0.1.0_amd64.deb
+	source = panic-button-desktop_0.1.0_amd64.deb::https://github.com/ohtf/panic-button/releases/download/v0.1.0/panic-button-desktop_0.1.0_amd64.deb
+	source = LICENSE-EXCEPTIONS-0.1.0.md::https://raw.githubusercontent.com/ohtf/panic-button/v0.1.0/LICENSE-EXCEPTIONS.md
+	sha256sums = b3daf95f15eac9c03548f547a35e7c0ac5ef96bbf5a8c55d8e21e539660ec68b
+	sha256sums = 7de16be1774008ece12e623cd2f2711bfb11063db7b7d875cd15ffc375b7e0f3
+
+pkgname = panic-button-bin
