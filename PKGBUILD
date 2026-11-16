@@ -1,8 +1,11 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: Sam L. Yes <samlukeyes123 at gmail dot com>
 
 pkgname=surface-uefi-firmware-git
 _repo=surface-uefi-firmware
-pkgver=r52.47a687f
+pkgver=r54.950ab5c
 pkgrel=1
 pkgdesc="Scripts to prepare UEFI firmware updates for Microsoft Surface"
 arch=('any')
@@ -13,7 +16,9 @@ depends=(gcab msitools dos2unix)
 optdepends=()
 provides=('surface-uefi-firmware')
 source=("git+${url}.git")
-b2sums=(SKIP)
+b2sums=(
+    "SKIP"
+)
 
 prepare() {
     sed -i "s/DIR=\$(readlink -f \$(dirname \$0))/DIR=\/usr\/share\/$_repo/" ${srcdir}/$_repo/repack.sh

@@ -1,6 +1,6 @@
 pkgbase = surface-uefi-firmware-git
 	pkgdesc = Scripts to prepare UEFI firmware updates for Microsoft Surface
-	pkgver = r52.47a687f
+	pkgver = r54.950ab5c
 	pkgrel = 1
 	url = https://github.com/linux-surface/surface-uefi-firmware
 	arch = any
