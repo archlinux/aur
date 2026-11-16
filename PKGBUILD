@@ -2,7 +2,7 @@
 
 _npmscope=agentmemory
 pkgname=agentmemory
-pkgver=0.9.32
+pkgver=0.9.33
 pkgrel=1
 pkgdesc="Persistent memory for AI coding agents based on real-world benchmarks"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@$_npmscope/$pkgname/-/$pkgname-$pkgver.tgz"
         "LICENSE-$pkgname-$pkgver::https://raw.githubusercontent.com/rohitg00/agentmemory/v$pkgver/LICENSE")
 noextract=("$pkgname-$pkgver.tgz")
-sha1sums=('cedfdb39acce20b77e92b35fac83ce3ae7b34397'
+sha1sums=('1753da5aca55ccd09e36b065a96f1dfe44189023'
           '828dcdad822eadebbf9b29e4412b2e7e4b1f68b4')
 
 # npm runs in build(), outside fakeroot: under fakeroot, npm's worker threads and
