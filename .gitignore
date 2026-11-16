@@ -3,6 +3,7 @@ pkg/
 src/
 *.pkg.tar.zst
 *.rpm
+*.deb
 *.tar.gz
 *.log
 

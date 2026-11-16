@@ -2,8 +2,8 @@
 
 pkgname=netron-with-mime-bin
 _pkgname=Netron
-pkgver=9.3.4
-_electronversion=44
+pkgver=9.3.6
+_electronversion=45
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models (Prebuilt, system-wide electron, with MIME file associations)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 conflicts=('netron-bin' 'netron')
 provides=('netron' 'netron-bin')
 depends=(
-    "electron${_electronversion}"
+    'electron45-bin'
     'shared-mime-info'
     'hicolor-icon-theme'
 )
@@ -26,7 +26,7 @@ source_x86_64=("netron-${pkgver}-amd64.deb::${_ghurl}/releases/download/v${pkgve
 sha256sums=('535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d'
             'b65f75c354a52e15610c45d5e92359ee7af2c919ff6af204badaa2ead7833e2b')
-sha256sums_x86_64=('9d8edc87fc05542fce7b5fd2689e91403e49440b1578cc522e34212723d1f90e')
+sha256sums_x86_64=('6f6a12f440529888bb76934840566234477d8c24bd217080b9bf55a81db7c1e2')
 
 _check_electron_version() {
     echo "Verifying Electron version..."
