@@ -5,6 +5,7 @@ pkgbase = tlog
 	url = https://scribery.github.io/tlog/
 	install = tlog.install
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-or-later
 	depends = curl
 	depends = json-c
