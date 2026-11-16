@@ -1,21 +1,24 @@
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: Felipe BF <fprgw32 at gmail dot com>
+# Contributor: Jameson Pugh <imntreal@gmail.com>
 
-pkgname=python-petname
-pkgver=2.0
-pkgrel=2
+_name=petname
+pkgname="python-${_name}"
 epoch=1
+pkgver=2.14
+pkgrel=1
 pkgdesc="Generate human-readable, random object names."
 arch=(any)
-url="https://pypi.python.org/pypi/petname"
-license=('apache')
+url="https://github.com/dustinkirkland/${pkgname}"
+license=('Apache-2.0')
 depends=('python')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=('https://pypi.python.org/packages/d9/a7/aab8825075230b706b58d59fa23171cfa066ca62507242ff91270bb33fca/petname-2.0.tar.gz#md5=411d5f8b92a25610bc56c32e74c4463a')
-sha256sums=('28a1af453ed004e1a17eea9cd97b9bdd1d9fead6e770a6b1f0bd46541042fed0')
+
+source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('ea97222f42e2f7ed835c011fc1f09ef3b69aa59d5f0c39a6e9216ff9e44b9845')
 
 package() {
-  cd "${srcdir}/petname-${pkgver}"  
+  cd "${srcdir}/${pkgname}-${pkgver}"  
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
