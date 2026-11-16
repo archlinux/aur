@@ -1,0 +1,15 @@
+pkgbase = database-lab
+	pkgdesc = Database branching and thin cloning for any Postgres database, client tools
+	pkgver = 4.2.2
+	pkgrel = 1
+	url = https://gitlab.com/postgres-ai/database-lab
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	conflicts = dblab
+	source = database-lab-4.2.2.tar.gz::https://gitlab.com/postgres-ai/database-lab/-/archive/v4.2.2/database-lab-v4.2.2.tar.gz
+	sha256sums = 33a0cbbbdc02006606b6fe3e81da4d9bda3a3223b44d6798c1a0da07b2fd65b7
+
+pkgname = database-lab
