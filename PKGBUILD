@@ -1,7 +1,7 @@
 _gitname="keshiki"
 pkgname="${_gitname}-git"
 pkgver="1.3_c45a1e7e"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Animated wallpaper manager for X11"
 arch=("x86_64")
 url="https://github.com/Konqi0139/Keshiki"
@@ -16,6 +16,8 @@ sha256sums=("SKIP")
 
 prepare(){
   cd "${srcdir}/${pkgname}" || return 1
+  mkdir -p "${pkgdir}/usr/share/applications"
+  mkdir -p "${pkgdir}/usr/bin"
 }
 
 package() {
@@ -26,8 +28,6 @@ package() {
   rm -rf "$INSTALL_DIR"
   mkdir -p "$INSTALL_DIR"
   mkdir -p "$INSTALL_DIR/bin"
-  mkdir -p "${pkgdir}/usr/share/applications"
-  mkdir -p "${pkgdir}/usr/bin"
   cp -rf * "$INSTALL_DIR"
   rm -f "$INSTALL_DIR/install.sh"
   rm -f "$INSTALL_DIR/README.md"
@@ -58,5 +58,5 @@ StartupWMClass=Keshiki
 Keywords=wallpaper;utility;live;background;
 EOF
 
-  install -Dm755 -v "${srcdir}/${pkgname}/keshiki.desktop" "${pkgdir}/usr/share/applications/keshiki.desktop"
+  install -Dm755 "${srcdir}/${pkgname}/keshiki.desktop" "${pkgdir}/usr/share/applications/keshiki.desktop"
 }
