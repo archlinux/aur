@@ -1,0 +1,4 @@
+[losslesscut]
+source = "git"
+git = "https://github.com/mifi/lossless-cut.git"
+prefix = "v"

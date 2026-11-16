@@ -1,26 +1,20 @@
 pkgbase = losslesscut
 	pkgdesc = The swiss army knife of lossless video/audio editing
-	pkgver = 3.69.0
-	pkgrel = 3
+	pkgver = 3.70.2
+	pkgrel = 1
 	url = https://losslesscut.app/
-	arch = x86_64
+	arch = any
 	license = GPL-2.0-only
 	makedepends = git
-	makedepends = nodejs-lts-jod
 	makedepends = npm
 	makedepends = yarn
-	makedepends = node-gyp
-	makedepends = librsvg
+	depends = bash
 	depends = electron42
 	depends = ffmpeg
-	depends = bash
-	depends = hicolor-icon-theme
-	source = losslesscut::git+https://github.com/mifi/lossless-cut.git?signed#tag=v3.69.0
-	source = fix-wayland-icon.patch
+	source = losslesscut::git+https://github.com/mifi/lossless-cut.git?signed#tag=v3.70.2
 	source = losslesscut.sh
 	validpgpkeys = 1DB3130F9B5EEF992F2742C125AB36E3E81CBC26
-	sha256sums = 8c0d0443f98eecdaea64f3002acc86cc57f1d5bec2f30a7066994ddc6e38c12a
-	sha256sums = 305ce3d79e36b8a13fe03d8e64caa05270f6f0b81ae5cb7ed0ebd2b56d7c0e95
-	sha256sums = 49e9e2aa088c35d7fdb8b5328914c3ef9694c43e3bcbba2c86384e2a140d0576
+	sha256sums = 0e64ce8ba69b5597e8bf81207e2fc81fe7362365bd14d88f8da3ea6588711cc7
+	sha256sums = d346f7a04c70af53c1b6c71d5213c1f7f491444209a23e4e947a5b93ec5596a0
 
 pkgname = losslesscut
