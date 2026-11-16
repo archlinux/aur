@@ -22,6 +22,22 @@ source=("roslyn-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
 sha512sums=('58d53e2044cfe0f04dae4b787b4c5f1464f13b3b600bb706e23ba76bda49dd5acad846ebf665dd62d32446f740eeb0b55e9d215f612462190648dfade2c9ab2f')
 b2sums=('ae907f665c45881fe126fb0cbeec9a0de8e8fcb80c33bed6f5fdfb286e5b59c881f9d91127ae5ac6fd2cdd75ee0cd96b701b81941eade5da6a1d18bc68772818')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -103,7 +119,7 @@ prepare() {
   # one of another feature band (e.g. Microsoft's 10.0.4xx with dotnet-build-deps-10.0-bin). dotnet
   # only works outside the repository until its global.json is updated.
   local _sdkver
-  _sdkver=$(dotnet --version)
+  _sdkver=$(_dotnet_sdk)
 
   cd "roslyn-$_commit" || exit
   # Upstream's NuGet.config, which has all of Microsoft's feeds the tests need
