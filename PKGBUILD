@@ -1,19 +1,19 @@
-# Maintainer: Ye Jingchen <ye[dot]jingchen[at]gmail[dot]com>
+# Maintainer: Mike Pento <mjpento@gmail.com> 
 
-_pkgname=edgar
+_pkgname=enlightenment-module-edgar
 pkgname=edgar-git
-pkgver=r72.250957a
-pkgrel=1
+pkgver=r73.3be11c2
+pkgrel=2
 pkgdesc="Load Python gadgets in Enlightenment"
 arch=('x86_64' 'i686')
 url="https://phab.enlightenment.org/w/emodules/edgar/"
-license=('GPL3' 'LGPL3')
-depends=('enlightenment>=0.24' 'python>=3.5' 'python-efl>=1.11' 'python-dbus'
-         'python-psutil')
+license=('GPL-3.0-only')
+depends=('glibc' 'efl' 'enlightenment>=0.24' 'python>=3.5' 'python-dbus' 'python-efl>=1.11')
 makedepends=('git' 'meson')
 provides=(edgar)
 conflicts=(edgar)
-source=("git+https://git.enlightenment.org/enlightenment/modules/$_pkgname.git")
+options+=('!debug')
+source=("git+https://git.enlightenment.org/enlightenment/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
