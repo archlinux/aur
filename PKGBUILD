@@ -12,7 +12,7 @@ depends=('fuse2' 'hicolor-icon-theme')
 options=('!strip')
 
 source=(
-  "AutoSubSync-linux-amd64.AppImage::https://github.com/denizsafak/AutoSubSync/releases/download/v${pkgver}/AutoSubSync-linux-amd64.AppImage"
+  "AutoSubSync-${pkgver}-linux-amd64.AppImage::https://github.com/denizsafak/AutoSubSync/releases/download/v${pkgver}/AutoSubSync-linux-amd64.AppImage"
   "autosubsync.desktop"
 )
 
@@ -23,7 +23,7 @@ sha256sums=(
 
 package() {
   # Install AppImage to /opt (correct location for large self-contained packages)
-  install -Dm755 "${srcdir}/AutoSubSync-linux-amd64.AppImage" "${pkgdir}/opt/autosubsync/AutoSubSync.AppImage"
+  install -Dm755 "${srcdir}/AutoSubSync-${pkgver}-linux-amd64.AppImage" "${pkgdir}/opt/autosubsync/AutoSubSync.AppImage"
   
   # Create wrapper script in /usr/bin (preferred over symlink)
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/assy" <<'EOF'
@@ -36,8 +36,8 @@ EOF
   
   # Extract and install icon from AppImage
   cd "${srcdir}"
-  chmod +x "AutoSubSync-linux-amd64.AppImage"
-  ./AutoSubSync-linux-amd64.AppImage --appimage-extract autosubsync.png > /dev/null 2>&1 || true
+  chmod +x "AutoSubSync-${pkgver}-linux-amd64.AppImage"
+  ./AutoSubSync-${pkgver}-linux-amd64.AppImage --appimage-extract autosubsync.png > /dev/null 2>&1 || true
   if [[ -f "squashfs-root/autosubsync.png" ]]; then
     install -Dm644 "squashfs-root/autosubsync.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/autosubsync.png"
   fi
