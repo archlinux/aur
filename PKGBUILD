@@ -8,12 +8,11 @@
 # arch=any: the DLLs are x86_64 PE *guest* code, not host binaries.
 pkgname=ue4ss
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Lua/C++ mod loader DLLs for Win64 Unreal Engine 4/5 games (stable)"
 arch=('any')
 url="https://docs.ue4ss.com/"
 license=('MIT')
-depends=('bash')
 optdepends=('wine: run Windows Unreal Engine games under Wine/Proton to mod them')
 options=('!strip' '!debug')
 source=("ue4ss-${pkgver}.zip::https://github.com/UE4SS-RE/RE-UE4SS/releases/download/v${pkgver}/UE4SS_v${pkgver}.zip"
