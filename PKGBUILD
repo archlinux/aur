@@ -1,5 +1,5 @@
 pkgname=jayjay-appimage
-pkgver=0.3.22
+pkgver=0.3.23
 pkgrel=1
 pkgdesc="Native desktop client for Jujutsu version control"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source_x86_64=("jayjay-gpui-x86_64.AppImage::https://github.com/hewigovens/jayja
 source_aarch64=("jayjay-gpui-aarch64.AppImage::https://github.com/hewigovens/jayjay/releases/download/v${pkgver}/jayjay-gpui-aarch64.AppImage")
 noextract=('jayjay-gpui-x86_64.AppImage' 'jayjay-gpui-aarch64.AppImage')
 sha256sums=('5450f4b263bbbfc9b90e843051f739a20b1484d142a1ea7a7a2d37899d6e2578')
-sha256sums_x86_64=('dd4e5c2b15708fa2d70174865a862fd2b1d864bf40342f37fe4c5b35a2f46df6')
-sha256sums_aarch64=('07adc6b04a450b4af6e5fe010ca25218e5ba865f07174c26167fd9e77749102f')
+sha256sums_x86_64=('7808ea2caa7369a9c635bdb4a2d926c338c11ab835f818eef9a20ad39683d101')
+sha256sums_aarch64=('34fdd8435816e00e841a899a76b8866503c3ae88536df4ea84e2fe965f88a798')
 
 prepare() {
   local _appimage="jayjay-gpui-${CARCH}.AppImage"
