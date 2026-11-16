@@ -1,16 +1,16 @@
 pkgbase = dmarc-report-viewer-bin
 	pkgdesc = Standalone DMARC and SMTP TLS report viewer with embedded HTTP server
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://github.com/cry-inc/dmarc-report-viewer
 	install = dmarc-report-viewer-bin.install
 	arch = x86_64
 	license = MIT
-	source = https://github.com/cry-inc/dmarc-report-viewer/releases/download/2.7.1/linux-x86_64.zip
+	source = https://github.com/cry-inc/dmarc-report-viewer/releases/download/2.7.2/linux-x86_64.zip
 	source = LICENSE
-	sha256sums = 95aa3f576db39e06efec87dcee8212d5bd7c8c977c63aab3f1656ec6e1dc67bf
+	sha256sums = ec777396ed3138cb67f24048914c3b469bacf08b3f4d9194415296f527ea94ed
 	sha256sums = d535da0d08dad6a00ce7a905f72aa497682409916005dea60e940ae454138d66
-	b2sums = 82f67b4a29538b34d367caf7a5ced9e78689465eb591aae30402e6962da89a9ea92100b70de8ddf6b15924436e8a0ca79f655d9a59dc2181d0d06d4aecdf3fb0
+	b2sums = 5535c328e60e1f78692448a9fbe434c26c3074ffaa75fd1b236cb659f68d13dcb641131a4c1a97c7338000d587187afa2e8d6d18ed0c89fb4f47f4190b36efbb
 	b2sums = 6ce77c7aa5aa6136c651ce6256de2c18ef66fa00e55f8347857787e3f3fb8430b18a0ced8f1a78fe141e48f05669fa9ce326e62c8cf241818ac6e7765c73658d
 
 pkgname = dmarc-report-viewer-bin
