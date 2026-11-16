@@ -1,36 +1,34 @@
-# Maintainer: GreenRaccoon23 <GreenRaccoon a t gmail d o t com>
+# Maintainer: Felipe BF <fprgw32 at gmail dot com>
+# Contributor: GreenRaccoon23 <GreenRaccoon a t gmail d o t com>
 
 pkgname=snzip
-pkgver=20120803
+epoch=1
+pkgver=1.0.5
 pkgrel=1
-pkgdesc="Snappy compression console utilite"
-arch=(i686 x86_64)
-url="https://github.com/kubo/snzip"
-license=(bsd)
-depends=(snappy)
-makedepends=(git)
+pkgdesc="A compression/decompression tool based on snappy"
+arch=("i686" "x86_64")
+url="https://github.com/kubo/$pkgname"
+license=("BSD-2-Clause")
+depends=('snappy')
+makedepends=('git')
 
-_gitroot="https://github.com/kubo/snzip.git"
-_gitname="snzip"
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('fbb6b816619628f385b62f44a00a1603be157fba6ed2d30de490b0c5e645bff8')
 
-build(){
-  cd $srcdir
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname"
-    git reset --hard
-    git clean -dxf
-    git pull 
-  else
-    git clone "$_gitroot" "$_gitname"
-    cd "$_gitname"
-  fi
-
-  ./autogen.sh
+prepare() {
+  cd $srcdir/$pkgname-$pkgver
   ./configure --prefix=/usr
+}
+
+build() {
+  cd $srcdir/$pkgname-$pkgver
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  make install DESTDIR="$pkgdir" || true
-} 
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
+
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
