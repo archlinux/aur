@@ -1,6 +1,6 @@
 pkgbase = headway-bin
 	pkgdesc = A fast, friendly native Git client with workspaces
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/cnu/headway
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = headway-bin
 	depends = hicolor-icon-theme
 	provides = headway
 	conflicts = headway
-	source = headway-0.2.0.desktop::https://raw.githubusercontent.com/cnu/headway/v0.2.0/assets/linux/headway.desktop
-	source = headway-0.2.0.svg::https://raw.githubusercontent.com/cnu/headway/v0.2.0/assets/icon/headway.svg
+	source = headway-0.3.0.desktop::https://raw.githubusercontent.com/cnu/headway/v0.3.0/assets/linux/headway.desktop
+	source = headway-0.3.0.svg::https://raw.githubusercontent.com/cnu/headway/v0.3.0/assets/icon/headway.svg
 	sha256sums = c7f480f783074265e3555de4f1ac75cde361b1632c8262c884e4b2b1672a8299
 	sha256sums = 8839ea0fed13bef6715aab079d88000ab4848d9800ef7b32228c66c3889e04ca
-	source_x86_64 = headway-0.2.0-x86_64.tar.gz::https://github.com/cnu/headway/releases/download/v0.2.0/headway_0.2.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 3e455e78c51f142e24f7b050c30703ceb7e9a1318aa0977e3a4e10889369057c
-	source_aarch64 = headway-0.2.0-aarch64.tar.gz::https://github.com/cnu/headway/releases/download/v0.2.0/headway_0.2.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = d439795e9d6306f462c0c443f8a466802b42085f6bded75405881d267f6991bb
+	source_x86_64 = headway-0.3.0-x86_64.tar.gz::https://github.com/cnu/headway/releases/download/v0.3.0/headway_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 788ab3a1368fb2279fc848abcf272897cff1c0d93adc3cf6a1cb7c5a3d44a442
+	source_aarch64 = headway-0.3.0-aarch64.tar.gz::https://github.com/cnu/headway/releases/download/v0.3.0/headway_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 79100fb87ce7cd4e7d5c7fe3eac84f1e2fd529676c4c9a2e60fb07a3ab835bc2
 
 pkgname = headway-bin
