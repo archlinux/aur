@@ -1,7 +1,7 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 
 pkgname=proton-drive-for-linux-bin
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Unofficial Proton Drive client: FUSE files-on-demand mount, CLI, GTK4 app, tray (binaries)"
 arch=('x86_64')
@@ -25,46 +25,37 @@ options=('!strip' '!debug')
 # Stops the running daemon before removal, so the mount stops mirroring deletes.
 install=proton-drive.install
 _tag="v$pkgver"
-_raw="https://raw.githubusercontent.com/narrrl/proton-drive-linux/$_tag"
-# The release tarball holds the four binaries only, so the desktop integration
-# files come straight from the tagged tree. Every one carries $pkgver in its
-# name: makepkg reuses a cached file of the same name, so an unversioned name
-# keeps the old copy after upstream changes it and fails the checksum.
-source=("proton-drive-linux-$pkgver-x86_64.tar.gz::$_repo/releases/download/$_tag/proton-drive-linux-$pkgver-x86_64.tar.gz"
-        "io.narl.proton-drive-linux-$pkgver.desktop::$_raw/packaging/io.narl.proton-drive-linux.desktop"
-        "io.narl.proton-drive-linux-tray-$pkgver.desktop::$_raw/packaging/io.narl.proton-drive-linux-tray.desktop"
-        "io.narl.proton-drive-linux-$pkgver.svg::$_raw/packaging/io.narl.proton-drive-linux.svg"
-        "proton-drive-$pkgver.service::$_raw/packaging/proton-drive.service"
-        "LICENSE-$pkgver::$_raw/LICENSE")
-sha256sums=('3f0d16c19b10b30e3f181e3c7fb439f0a8c38980e8ab7a4a96ae6596b349787c'
-            'd190d6771fff0b975271fb62fd3fb0fa8bbf17d7278c10853c18557855b0c123'
-            '1d95e250370220e3bb6aead6ce34d1d6cc759f42c4803b75f1667e78ff47c6c0'
-            'e598a93c2715c3a9fdc7fb937902083d4a1135e8fbdfe6fe7e37f0383ebbd828'
-            '44c25dca6e759c46fca50b58099aa6194abe78293dee07d971bbbce0ff3ca58f'
-            '02c419e7f9af08dda720e4f852f3e57cf5a69e192605440f750e9d244fa2817c')
+# The release tarball holds the binaries and everything installed around them
+# (desktop files, icon, user service, translations, completions) in a /usr-like
+# tree under one directory.
+source=("proton-drive-linux-$pkgver-x86_64.tar.gz::$_repo/releases/download/$_tag/proton-drive-linux-$pkgver-x86_64.tar.gz")
+sha256sums=('99348fbf9121624701ae43e52776e5d1c469ff5cd5e52cd216bf8cb969e0bab2')
 
 package() {
-  install -Dm755 "$srcdir/pdfs"        "$pkgdir/usr/bin/pdfs"
-  install -Dm755 "$srcdir/pdfs-tray"   "$pkgdir/usr/bin/pdfs-tray"
-  install -Dm755 "$srcdir/pdfs-app"    "$pkgdir/usr/bin/pdfs-app"
-  install -Dm755 "$srcdir/pdfs-prompt" "$pkgdir/usr/bin/pdfs-prompt"
+  cd "$srcdir/proton-drive-linux-$pkgver-x86_64"
+  local exe
+  for exe in pdfs pdfs-tray pdfs-app pdfs-prompt; do
+    install -Dm755 "bin/$exe" "$pkgdir/usr/bin/$exe"
+  done
 
-  install -Dm644 "$srcdir/io.narl.proton-drive-linux-$pkgver.desktop" \
+  install -Dm644 share/applications/io.narl.proton-drive-linux.desktop \
     "$pkgdir/usr/share/applications/io.narl.proton-drive-linux.desktop"
-  install -Dm644 "$srcdir/io.narl.proton-drive-linux-tray-$pkgver.desktop" \
+  install -Dm644 etc/xdg/autostart/io.narl.proton-drive-linux-tray.desktop \
     "$pkgdir/etc/xdg/autostart/io.narl.proton-drive-linux-tray.desktop"
-  install -Dm644 "$srcdir/io.narl.proton-drive-linux-$pkgver.svg" \
+  install -Dm644 share/icons/hicolor/scalable/apps/io.narl.proton-drive-linux.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.narl.proton-drive-linux.svg"
 
   # systemd user unit for the auto-mount daemon; enabled per user, not by pacman.
-  install -Dm644 "$srcdir/proton-drive-$pkgver.service" \
+  install -Dm644 lib/systemd/user/proton-drive.service \
     "$pkgdir/usr/lib/systemd/user/proton-drive.service"
 
-  # Translations ship precompiled in the release tarball.
+  # Translations and shell completion for bash, zsh and fish.
   install -dm755 "$pkgdir/usr/share"
-  cp -r --no-preserve=ownership "$srcdir/locale" "$pkgdir/usr/share/locale"
+  cp -r --no-preserve=ownership share/locale share/bash-completion share/zsh share/fish \
+    "$pkgdir/usr/share/"
 
-  install -Dm644 "$srcdir/LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 share/licenses/proton-drive-linux/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # pacman brings new releases, so the app never checks for them itself.
   install -Dm644 /dev/null "$pkgdir/usr/share/proton-drive-linux/managed-updates"
