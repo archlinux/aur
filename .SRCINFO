@@ -1,0 +1,21 @@
+pkgbase = libreget-bin
+	pkgdesc = Open-source download manager for courses (Udemy/Hotmart), YouTube, music & 1,800+ sites.
+	pkgver = 0.16.6
+	pkgrel = 1
+	url = https://t.me/OpenSelena
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = libayatana-indicator
+	depends = libappindicator
+	provides = libreget=0.16.6
+	conflicts = libreget
+	source_aarch64 = libreget-0.16.6-aarch64.deb::https://github.com/OpenSelena/libreget/releases/download/v0.16.6/OmniGet_0.16.6_arm64.deb
+	sha256sums_aarch64 = 256298549f8421c75764399871179bb58c88a85440149468f5297b8c2a30e58d
+	source_x86_64 = libreget-0.16.6-x86_64.deb::https://github.com/OpenSelena/libreget/releases/download/v0.16.6/OmniGet_0.16.6_amd64.deb
+	sha256sums_x86_64 = 3710b73a51511db291d1268f4ebb162caf823e599a8969841a1e71d26dd9a52a
+
+pkgname = libreget-bin
