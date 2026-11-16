@@ -1,5 +1,5 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Qwen 3.6 (Alibaba).
+# Created with assistance from GLM 5.3 Flash.
 
 pkgname=retrom-bin
 pkgver=0.8.4
