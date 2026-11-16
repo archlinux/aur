@@ -1,6 +1,6 @@
 pkgbase = key-echo-bin
 	pkgdesc = Listen to Mechanical Keyboard Sounds with Every Keystroke - It's Fast.
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://keyecho.app/
 	arch = aarch64
@@ -10,11 +10,13 @@ pkgbase = key-echo-bin
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	depends = alsa-lib
-	provides = key-echo=1.1.1
+	depends = libayatana-indicator
+	depends = libappindicator
+	provides = key-echo=1.2.0
 	conflicts = key-echo
-	source_aarch64 = key-echo-1.1.1-aarch64.rpm::https://github.com/ZacharyL2/KeyEcho/releases/download/v1.1.1/KeyEcho-1.1.1-1.aarch64.rpm
-	sha256sums_aarch64 = c5102e47443b408e23d030df10329a4fe90c0ffc0b933ae7a8a5029f3ffe4305
-	source_x86_64 = key-echo-1.1.1-x86_64.rpm::https://github.com/ZacharyL2/KeyEcho/releases/download/v1.1.1/KeyEcho-1.1.1-1.x86_64.rpm
-	sha256sums_x86_64 = 1a70d5192818b4d7c54631d2ca9b9cb430f1bfa835144260abdf378f403e90f3
+	source_aarch64 = key-echo-1.2.0-aarch64.deb::https://github.com/ZacharyL2/KeyEcho/releases/download/v1.2.0/KeyEcho_1.2.0_arm64.deb
+	sha256sums_aarch64 = 7530c5899aead3797d155e736d6136e8074a2a8a3b6be49e82f5f6c326f48580
+	source_x86_64 = key-echo-1.2.0-x86_64.deb::https://github.com/ZacharyL2/KeyEcho/releases/download/v1.2.0/KeyEcho_1.2.0_amd64.deb
+	sha256sums_x86_64 = 439ffa374fe777ffe5f53dbd8cf72318732ae993d571cc2ab5dda6f8cddde15c
 
 pkgname = key-echo-bin
