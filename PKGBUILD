@@ -1,7 +1,7 @@
 # Maintainer: Polyfrost <contact@atmofrost.org>
 pkgname=oneclient-bin
 _appname=OneClient
-pkgver=2.10.2
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Next-generation open source Minecraft launcher (prebuilt)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=('oneclient')
 options=('!strip')
 _debfile="${_appname}_${pkgver}_linux_x86_64.deb"
 source=("${_debfile}::${url}/releases/download/oneclient-${pkgver}/${_debfile}")
-sha256sums=('9e73e8acbb756ac2f55f9e4efd1b0ad5fd668a9b62c6aa61a2f1cdd48a335880')
+sha256sums=('4251bce057123f62d27507588a7ed2764a17bfce17fd95a35e24c15cd83b47d3')
 
 package() {
   cd "$pkgdir"
