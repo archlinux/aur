@@ -1,2 +1,1 @@
-# Users in this group can reach /run/kiri/docker.sock (root-equivalent, like the docker group).
 g kiri - -
