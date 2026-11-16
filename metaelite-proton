@@ -4,4 +4,5 @@ cd /opt/metaelite-proton || exit 1
 # Use sed for path replacement (convert / to \)
 WINE_HOME="Z:$(echo "$HOME" | sed 's|/|\\\\|g')"
 
+export SteamAppId=metaelite-proton
 exec protontricks-launch --appid 359320 MetaElite.exe "$@"

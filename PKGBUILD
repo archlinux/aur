@@ -1,7 +1,7 @@
 # Maintainer: Alexander Mot <alexander@amot.dev>
 pkgname=metaelite-proton
 pkgver=1.02
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Role playing environment for stories in Elite Dangerous. Runs in ED's Proton-GE prefix"
 arch=('any')
@@ -26,7 +26,7 @@ source=("https://cdn.raxxla.org/install/MetaElite-${pkgver}.msi"
         "metaelite-proton"
 		"metaelite-proton.desktop")
 md5sums=('312d80d06abc0a95f56baa69d43d87d5'
-         'afe5965bc05c378cf362ff515d287203'
+         '1e7d97c5af0265935c95ff4cce2fc072'
          'e039e8c693ba247fb0bd2186d4ad5831')
 noextract=()
 validpgpkeys=()

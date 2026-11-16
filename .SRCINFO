@@ -1,7 +1,7 @@
 pkgbase = metaelite-proton
 	pkgdesc = Role playing environment for stories in Elite Dangerous. Runs in ED's Proton-GE prefix
 	pkgver = 1.02
-	pkgrel = 3
+	pkgrel = 4
 	url = https://raxxla.org
 	install = metaelite-proton.install
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = metaelite-proton
 	source = metaelite-proton
 	source = metaelite-proton.desktop
 	md5sums = 312d80d06abc0a95f56baa69d43d87d5
-	md5sums = afe5965bc05c378cf362ff515d287203
+	md5sums = 1e7d97c5af0265935c95ff4cce2fc072
 	md5sums = e039e8c693ba247fb0bd2186d4ad5831
 
 pkgname = metaelite-proton
