@@ -1,0 +1,48 @@
+pkgbase = omarchy-onnx-models
+	pkgdesc = ONNX person-segmentation models (MediaPipe, PP-HumanSeg, MODNet), one package per model
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/rsd/omarchy-onnx-models
+	arch = any
+	options = !strip
+	options = !debug
+	source = mediapipe-landscape-1.0.0-selfie_segmentation_landscape.onnx::https://github.com/rsd/omarchy-onnx-models/releases/download/v1.0.0/selfie_segmentation_landscape.onnx
+	source = mediapipe-landscape-1.0.0-LICENSE::https://raw.githubusercontent.com/rsd/omarchy-onnx-models/v1.0.0/licenses/mediapipe-landscape/LICENSE
+	source = mediapipe-landscape-1.0.0-NOTICE::https://raw.githubusercontent.com/rsd/omarchy-onnx-models/v1.0.0/licenses/mediapipe-landscape/NOTICE
+	source = pphumanseg-v2-mobile-1.0.0-pp_humansegv2_mobile_192x192.onnx::https://github.com/rsd/omarchy-onnx-models/releases/download/v1.0.0/pp_humansegv2_mobile_192x192.onnx
+	source = pphumanseg-v2-mobile-1.0.0-LICENSE::https://raw.githubusercontent.com/rsd/omarchy-onnx-models/v1.0.0/licenses/pphumanseg-v2-mobile/LICENSE
+	source = pphumanseg-v2-mobile-1.0.0-NOTICE::https://raw.githubusercontent.com/rsd/omarchy-onnx-models/v1.0.0/licenses/pphumanseg-v2-mobile/NOTICE
+	source = pphumanseg-v2-lite-1.0.0-pp_humansegv2_lite_192x192.onnx::https://github.com/rsd/omarchy-onnx-models/releases/download/v1.0.0/pp_humansegv2_lite_192x192.onnx
+	source = pphumanseg-v2-lite-1.0.0-LICENSE::https://raw.githubusercontent.com/rsd/omarchy-onnx-models/v1.0.0/licenses/pphumanseg-v2-lite/LICENSE
+	source = pphumanseg-v2-lite-1.0.0-NOTICE::https://raw.githubusercontent.com/rsd/omarchy-onnx-models/v1.0.0/licenses/pphumanseg-v2-lite/NOTICE
+	source = modnet-1.0.0-modnet_photographic.onnx::https://github.com/rsd/omarchy-onnx-models/releases/download/v1.0.0/modnet_photographic.onnx
+	source = modnet-1.0.0-LICENSE::https://raw.githubusercontent.com/rsd/omarchy-onnx-models/v1.0.0/licenses/modnet/LICENSE
+	source = modnet-1.0.0-NOTICE::https://raw.githubusercontent.com/rsd/omarchy-onnx-models/v1.0.0/licenses/modnet/NOTICE
+	sha256sums = fa02222275c455638fa1190493b659d25ad31e86f1b6459f17bd501f02cbe43d
+	sha256sums = 62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a
+	sha256sums = 5d8b13c7a4fbdaa33a29a853d174f2bdd4e7e9a393773c2885b61d31e97fe991
+	sha256sums = 2bca11ec1f2a662146147d97523d613f5ef4ebf2a89803a95a0cbabfe2bd70a9
+	sha256sums = 62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a
+	sha256sums = 81a00729b9979a30202bdf9b5d660f7894748ba05855642a9151f156859dd88c
+	sha256sums = ca96b4436f1ce6a76059e8902e20a9617f6829fb11f6c6c9e876563e6352e6b4
+	sha256sums = 62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a
+	sha256sums = 34811509d661942b69999895d2cbf32203d3812d5058475e37161a07b3e15550
+	sha256sums = 07c308cf0fc7e6e8b2065a12ed7fc07e1de8febb7dc7839d7b7f15dd66584df9
+	sha256sums = 62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a
+	sha256sums = 68c8768794a9da6dc1fae00fac63e59c231d6718845000c77e61d9116f4cf1b4
+
+pkgname = omarchy-onnx-model-mediapipe-landscape
+	pkgdesc = MediaPipe Selfie Segmentation (landscape) person-segmentation model, as an ONNX file
+	license = Apache-2.0
+
+pkgname = omarchy-onnx-model-pphumanseg-v2-mobile
+	pkgdesc = PP-HumanSeg v2 mobile (192x192) person-segmentation model, as an ONNX file
+	license = Apache-2.0
+
+pkgname = omarchy-onnx-model-pphumanseg-v2-lite
+	pkgdesc = PP-HumanSeg v2 lite (192x192) person-segmentation model, as an ONNX file
+	license = Apache-2.0
+
+pkgname = omarchy-onnx-model-modnet
+	pkgdesc = MODNet (photographic) portrait-matting model, as an ONNX file
+	license = Apache-2.0
