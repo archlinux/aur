@@ -1,0 +1,17 @@
+pkgbase = dsh-hyprland
+	pkgdesc = Hyprland/NVIDIA launcher for DeepSeek Harness: Rust orchestration, Electron WebView
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/shenli306/dsh-hyprland
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = deepseek-harness-desktop
+	depends = electron42
+	options = !strip
+	options = !debug
+	source = dsh-hyprland::git+https://github.com/shenli306/dsh-hyprland.git#commit=c8c7b1cadee94047fcdd8a8ea4d00a223d72bbf7
+	sha256sums = SKIP
+
+pkgname = dsh-hyprland
