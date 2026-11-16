@@ -1,7 +1,7 @@
 # Maintainer: Paulo Fino <somepaulo@duck.com>
 
 pkgname=scribe-bin
-pkgver=0.3.45
+pkgver=0.3.50
 pkgrel=1
 pkgdesc='A native GNOME Markdown editor that renders your document as you type (upstream binary)'
 arch=('x86_64')
@@ -29,7 +29,7 @@ _debrel=1
 _debfile="scribe_${pkgver}-${_debrel}_amd64.deb"
 source=("https://github.com/gnacho/scribe/releases/download/v${pkgver}/${_debfile}")
 noextract=("$_debfile")
-sha256sums=('823ba58239f5f3afd673c2cfdaf268f6b31a51354f17205a08c203d04343b715')
+sha256sums=('c0b35de0311e4d7d04555d3bf9ca1bd14184b4241143f56982ee6264135f24d0')
 
 package() {
   bsdtar -xf "$srcdir/$_debfile" -C "$srcdir" data.tar.xz
