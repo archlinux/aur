@@ -37,28 +37,6 @@ _commit_orangebox=88bc34abdd51421afed7bd120d457cbdc372ccfa
 _commit_pvkii=f65b48326a73aafe9f15eb238c2fe3fe4c82d0d1
 _commit_sdk2013=7c5bfe038ec70f11814b5d15c4ca9b6403e97b05
 _commit_tf2=631a7b6c0cbbb6941cf22e434620911a0bdfd478
-# Where ./aur-packages commits reads the pins from: the head of each SDK's branch, and the version
-# from the newest commit's date (or the next pkgrel for older commits)
-_pins_lookup() {
-  local sdk head ref var date ver=$pkgver changed=false
-  local -A heads
-  while read -r head ref; do
-    heads[${ref#refs/heads/}]=$head
-  done < <(git ls-remote --heads https://github.com/alliedmodders/hl2sdk.git)
-  for sdk in "${_sdks[@]}"; do
-    var=_commit_$sdk
-    echo "$var ${heads[$sdk]-}"
-    [[ -n "${heads[$sdk]-}" && "${heads[$sdk]}" != "${!var}" ]] || continue
-    changed=true
-    date=$(curl -fsSL "https://api.github.com/repos/alliedmodders/hl2sdk/commits/${heads[$sdk]}" |
-      jq -r .commit.committer.date)
-    date=${date:0:10}
-    date=${date//-/}
-    if [[ "$date" =~ ^[0-9]{8}$ ]] && ((date > ver)); then ver=$date; fi
-  done
-  echo "pkgver $ver"
-  if [[ "$changed" == true && "$ver" == "$pkgver" ]]; then echo "pkgrel $((pkgrel + 1))"; fi
-}
 # Protocol Buffers of csgo and blade (2.5.0), and mcv (3.2.0), whose generated code their SDKs have
 _protobufvers=(2.5.0 3.2.0)
 source=("https://github.com/protocolbuffers/protobuf/releases/download/v2.5.0/protobuf-2.5.0.tar.bz2"
