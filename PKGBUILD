@@ -52,15 +52,17 @@ prepare() {
 
   # The legacy global classes of includes/ out of the PSR-4 classmap, which the optimised autoloader
   # warned about (https://github.com/sbpp/sourcebans-pp/pull/1621)
+  # upstream: pending sbpp/sourcebans-pp#1621
   patch -Np1 -i "$srcdir/composer-exclude-legacy-classes.patch"
 
   # sm_addban and sm_unban check SteamIDs and find bans of either universe, so that sm_unban
   # STEAM_1:0:Z lifts a ban the panel stored as STEAM_0:0:Z, and every duplicate
-  # (https://github.com/sbpp/sourcebans-pp/pull/1623)
+  # upstream: pending sbpp/sourcebans-pp#1623
   patch -Np1 -i "$srcdir/plugin-validate-steamid.patch"
 
   # The tests' release check against a refused port rather than api.github.com, which check() can't
   # reach (https://github.com/sbpp/sourcebans-pp/pull/1624)
+  # upstream: pending sbpp/sourcebans-pp#1624
   patch -Np1 -i "$srcdir/tests-offline-release-check.patch"
 
   # maxmind-db/reader 1.14.0 instead of the lock's 1.13.1: its decoder limits the time and memory a
