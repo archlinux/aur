@@ -2,7 +2,7 @@
 
 pkgname=project-reclaimer-bin
 _pkgname=project-reclaimer
-pkgver=0.10.4
+pkgver=0.10.5
 _commit=c0b3fe02fd6c1bf64c7cdfd16eb7013c7352c3b5
 pkgrel=1
 pkgdesc="A rewrite of Bungie's Halo Games. Uses Master Chief Collection on Steam for game data."
@@ -39,7 +39,7 @@ conflicts=("$_pkgname")
 source=(
     "${url}/releases/download/v${pkgver}/project-reclaimer-client-v${pkgver}-linux-x86_64.tar.gz"
 )
-sha256sums=('7b01d8bf677d66250cf7c5fafb976d5e9b542356e5bd79b7d0d0be908c04aee1')
+sha256sums=('7faf341b6a7a81274b377a8c9b654794a293dae77a46c85402b4cd0727581cb5')
 
 package() {
     local appdir
