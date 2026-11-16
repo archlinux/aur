@@ -3,7 +3,7 @@
 ---
 >   find_package(PkgConfig)
 >   pkg_check_modules(Backtrace IMPORTED_TARGET libbacktrace)
-149,152c150,153
+148,151c149,152
 < if (TARGET libbacktrace)
 <   target_link_libraries(tvm_ffi_objs PRIVATE libbacktrace)
 <   target_link_libraries(tvm_ffi_shared PRIVATE libbacktrace)
@@ -13,10 +13,11 @@
 >   target_link_libraries(tvm_ffi_objs PRIVATE PkgConfig::Backtrace)
 >   target_link_libraries(tvm_ffi_shared PRIVATE PkgConfig::Backtrace)
 >   target_link_libraries(tvm_ffi_static PRIVATE PkgConfig::Backtrace)
-344,350d344
+345,352d345
 <   install(
 <     DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/libbacktrace/
 <     DESTINATION 3rdparty/libbacktrace/
+<     COMPONENT tvm_ffi
 <     PATTERN ".git" EXCLUDE
 <     PATTERN ".git*" EXCLUDE
 <     PATTERN "*.tmp" EXCLUDE
