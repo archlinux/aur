@@ -1,16 +1,16 @@
 pkgbase = tuios-sketch-bin
 	pkgdesc = Draw Mermaid diagrams in the terminal, or as SVG or PNG
-	pkgver = 0.13.2
+	pkgver = 0.13.3
 	pkgrel = 1
 	url = https://tuios.dev/
 	license = MIT
 	conflicts = sketch
 	provides = sketch
 	arch = aarch64
-	source_aarch64 = tuios-sketch-bin_0.13.2_aarch64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.13.2/sketch_0.13.2_Linux_arm64.tar.gz
-	sha256sums_aarch64 = aca1798db6ae12e838bf612398b99049fa62e1c2e609e5ac67f0b5832b24af68
+	source_aarch64 = tuios-sketch-bin_0.13.3_aarch64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.13.3/sketch_0.13.3_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d2c20ed7f5d6ccad112a1d8bddfefa0bb2d118006d661b818f7a8a1308ffeb98
 	arch = x86_64
-	source_x86_64 = tuios-sketch-bin_0.13.2_x86_64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.13.2/sketch_0.13.2_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 44fff275647afcf94af181c075e86fbe93ccaad278f782d014dce22dd92c6798
+	source_x86_64 = tuios-sketch-bin_0.13.3_x86_64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.13.3/sketch_0.13.3_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = aa942a40b870c890f37c70a3c691fa8587274a754af4013a890b0427deef825a
 	
 pkgname = tuios-sketch-bin
