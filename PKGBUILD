@@ -2,7 +2,7 @@
 
 pkgname=epsxe-appimage
 pkgver=2.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="ePSXe PS1 emulator for 64-bit Linux (self-built AppImage)"
 arch=('x86_64')
 url="https://github.com/Twilight0/epsxe-appimage"
@@ -18,7 +18,7 @@ options=('!strip' '!debug')
 # bundled libssl.so.1.1 / libunistring.so.2). This one carries a working
 # runtime and 64-bit plugins built from PCSX-Reloaded 1.9.95.
 source=("ePSXe-2.0.5-x86_64.AppImage::https://github.com/Twilight0/epsxe-appimage/releases/download/v$pkgver/ePSXe-$pkgver-x86_64.AppImage")
-sha256sums=('0240428963ea4c586503fae717a45142712ea1cc5af3b13d13a68443195ddd5c')
+sha256sums=('47d07dd0a7474495ce24b1cd70e1af4b26b1fb66d01ab7ac47b89ceb79b32543')
 
 package() {
   # Unpack the AppImage once: the icon and the documented settings come
@@ -70,6 +70,10 @@ EOF
     "$pkgdir/usr/share/doc/epsxe-appimage/config.example"
   install -Dm644 "$srcdir/squashfs-root/usr/share/epsxe/config.example" \
     "$pkgdir/etc/epsxe.conf.example"
+  # The readability stylesheet, applied by default on top of the desktop's
+  # own user.css. EPSXE_GTK_CSS=none disables it.
+  install -Dm644 "$srcdir/squashfs-root/usr/share/epsxe/epsxe.css" \
+    "$pkgdir/usr/share/doc/epsxe-appimage/epsxe.css"
 
   # A desktop entry that starts ePSXe with the input fix applied, so the
   # fixes also hold for a menu launch (which inherits no shell environment).
