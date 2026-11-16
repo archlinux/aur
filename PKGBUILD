@@ -1,12 +1,11 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=kiri-desktop-lite-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Tiny, fast container runtime speaking the Docker API (engine only)"
 arch=('x86_64' 'aarch64')
 url="https://runkiri.com"
-_gh="https://github.com/libracoder/kiri"
 license=('Apache-2.0')
 # kiri and kiri-init are static (musl) binaries.
 depends=('glibc')
@@ -20,14 +19,19 @@ conflicts=('kiri-git' 'kiri-bin' 'kiri-lite-bin' 'kiri-desktop-bin')
 install=kiri-desktop-lite-bin.install
 options=('!strip' '!debug')
 
+# download.runkiri.com is the download host the release notes link to, and the
+# one place with every .deb: the GitHub release for 0.2.1 shipped no checksum
+# file at all and no kiri (full) .deb, while every file both hosts carry is
+# identical. www.runkiri.com/releases/ lists these very URLs.
+_dl="https://download.runkiri.com"
 source_x86_64=(
-  "kiri-lite-${pkgver}-x86_64.deb::${_gh}/releases/download/v${pkgver}/kiri-lite_${pkgver}_amd64.deb"
+  "kiri-lite-${pkgver}-x86_64.deb::${_dl}/kiri-lite_${pkgver}_amd64.deb"
 )
 source_aarch64=(
-  "kiri-lite-${pkgver}-aarch64.deb::${_gh}/releases/download/v${pkgver}/kiri-lite_${pkgver}_arm64.deb"
+  "kiri-lite-${pkgver}-aarch64.deb::${_dl}/kiri-lite_${pkgver}_arm64.deb"
 )
-sha256sums_x86_64=('274fbb272a5ec7673ea82ef1917630fb4a30720d2eff46560c1393d44684bc52')
-sha256sums_aarch64=('4ed50d79b86bb5d5332efc376b2f93db0c6984c5b5198b4f2833520e665a05ee')
+sha256sums_x86_64=('5e7b1f6d8239aa590b314fd2ccc8f1472ba1427f414b35efa86ccedd6a6571b2')
+sha256sums_aarch64=('76fe00facf4d61aefe90fbb0e44774942b1507e810c4e7b47ea34fddafe0193d')
 # makepkg would unpack the .deb into srcdir; _unpack_deb does it here.
 noextract=("kiri-lite-${pkgver}-x86_64.deb" "kiri-lite-${pkgver}-aarch64.deb")
 
