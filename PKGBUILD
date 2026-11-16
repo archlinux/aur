@@ -4,7 +4,7 @@ pkgname=gitify-bin
 _pkgname=Gitify
 pkgver=8.1.0
 _electronversion=45
-pkgrel=1
+pkgrel=2
 pkgdesc="GitHub notifications on your menu bar."
 arch=('x86_64')
 url="https://www.gitify.io/"
@@ -22,7 +22,7 @@ source=(
 sha256sums=('36ac1d47d2345029a0a516362705f92e61015d77ddded879bdf5f5e49e49d522'
             'e3583a920d79b28287ca8bf4b021c6cbeba746a75073c0c68b0aa64ff0b38961'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
