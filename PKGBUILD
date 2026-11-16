@@ -1,7 +1,7 @@
 # rootapp-bin
 pkgname=rootapp-bin
 pkgver=0.9.163
-pkgrel=11
+pkgrel=12
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -64,6 +64,7 @@ optdepends=('bluez: org.bluez Bluetooth service (bluetooth.service) for Web Blue
             'xdg-desktop-portal-wlr: screen-share backend on wlroots compositors'
             'xdg-desktop-portal-hyprland: window and region screen share plus portal global shortcuts on Hyprland'
             'pipewire: PipeWire daemon that feeds the portal ScreenCast capture'
+            'wireplumber: PipeWire session and policy manager for voice and audio devices'
             'pipewire-pulse: PulseAudio-compatible server for voice and audio devices'
             'pipewire-alsa: ALSA client bridge to the PipeWire audio server for voice and audio devices'
             'dunst: org.freedesktop.Notifications daemon for sessions without one'
