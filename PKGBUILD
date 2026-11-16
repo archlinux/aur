@@ -1,7 +1,7 @@
 # Maintainer: Novaturiente
 # pkgver and sha256sums are filled in by packaging/release.sh
 pkgname=novabrowser-webkit
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 pkgdesc="Keyboard-driven browser on WebKitGTK 6.0, configured in TypeScript"
 arch=(x86_64)
@@ -21,7 +21,7 @@ optdepends=('webkitgtk-6.0-nova-bin: our WebKitGTK build (Chromium-like dark mod
 conflicts=(novabrowser-webkit-bin novabrowser-webkit-git)
 options=(strip !lto !debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('400d8e51181347d002bb26aa5e3a0751ec84cbece2cd70fc2412ee0575dc8a8d')
+sha256sums=('ebd143093d4c1b6188e46ff4ef58fb633a1c30683bb2f14233e86445ac343a18')
 _src=$pkgname-$pkgver
 
 prepare() {
