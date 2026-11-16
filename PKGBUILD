@@ -4,7 +4,7 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=vendir-bin
-pkgver=0.46.3
+pkgver=0.47.0
 pkgrel=1
 pkgdesc='Easy way to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively'
 url='https://carvel.dev/vendir'
@@ -13,10 +13,10 @@ license=(apache-2.0)
 install=''
 conflicts=(vendir)
 provides=(vendir)
-source_x86_64=(vendir-v0.46.3::https://github.com/carvel-dev/vendir/releases/download/v0.46.3/vendir-linux-amd64)
-source_aarch64=(vendir-v0.46.3::https://github.com/carvel-dev/vendir/releases/download/v0.46.3/vendir-linux-arm64)
-sha256sums_x86_64=(5af8823ecc67b3ce2359bb0b70e72a5dbd765135722ca0ff42c16bc4d7409847)
-sha256sums_aarch64=(821a9da837a017270743597a2e9b796d2d256385ad85450d6c5d89f05dd5aac9)
+source_x86_64=(vendir-v0.47.0::https://github.com/carvel-dev/vendir/releases/download/v0.47.0/vendir-linux-amd64)
+source_aarch64=(vendir-v0.47.0::https://github.com/carvel-dev/vendir/releases/download/v0.47.0/vendir-linux-arm64)
+sha256sums_x86_64=(9d1099f48f04882a716934178bb9ba8f2373c96b0bea536540106757bc4081e3)
+sha256sums_aarch64=(60b5331f0f68e374df3e283744ca7b28b69015d388c432a4dbd14d3202ec6fce)
 package () 
 { 
     set -eo pipefail;
