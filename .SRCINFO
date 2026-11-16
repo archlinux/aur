@@ -1,6 +1,6 @@
 pkgbase = qn-bin
 	pkgdesc = Command-line interface for the Quicknode SDK
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/quicknode/cli
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = qn-bin
 	depends = glibc
 	provides = qn
 	conflicts = qn
-	source_x86_64 = qn-bin-0.7.0-x86_64.tar.xz::https://github.com/quicknode/cli/releases/download/v0.7.0/quicknode-cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 16543dc2d9cd40a887695c39c4cd33d8d9ca31084fabba8c15a86a1e22d0b938
-	source_aarch64 = qn-bin-0.7.0-aarch64.tar.xz::https://github.com/quicknode/cli/releases/download/v0.7.0/quicknode-cli-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 08fabbdfa2be5ef8def5aee0fd2aaed8b6442fef12213de3d44102ba7b81aa09
+	source_x86_64 = qn-bin-0.8.0-x86_64.tar.xz::https://github.com/quicknode/cli/releases/download/v0.8.0/quicknode-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = e3a73e23ca656c09fe318562ee746be64820458f2fb42296ae40e900075403cf
+	source_aarch64 = qn-bin-0.8.0-aarch64.tar.xz::https://github.com/quicknode/cli/releases/download/v0.8.0/quicknode-cli-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 238d49a58ab37b7b08e21038e5ca064ffa97792067ef8406f1eb9de476363f84
 
 pkgname = qn-bin
