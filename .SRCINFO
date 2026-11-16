@@ -1,6 +1,6 @@
 pkgbase = radarr-bin
 	pkgdesc = Movie organizer/manager for usenet and torrent users
-	pkgver = 6.4.4.10685
+	pkgver = 7.0.3.10918
 	pkgrel = 1
 	url = https://radarr.video
 	install = radarr.install
@@ -40,11 +40,11 @@ pkgbase = radarr-bin
 	sha256sums = 25637c6496aa59673aada6acc6cf41025a5f12a844025ee41d8a6cc66b84b5c0
 	sha256sums = bb73e0c55711d7ddbf74140b3beb39cb8674ae92be8387c3dd8109bcd53faca8
 	sha256sums = c68efcb3778cb497d7c256dc97df7413ce09f07ea341e4d2683e7fee321cbcbb
-	source_x86_64 = Radarr.master.6.4.4.10685.linux-core-x64.tar.gz::https://radarr.servarr.com/v1/update/master/updatefile?version=6.4.4.10685&os=linux&runtime=netcore&arch=x64
-	sha256sums_x86_64 = a1d726129535e739d4efaf93b5fdd771bb1c78349f55ceac70e365e37b5a12a3
-	source_aarch64 = Radarr.master.6.4.4.10685.linux-core-arm64.tar.gz::https://radarr.servarr.com/v1/update/master/updatefile?version=6.4.4.10685&os=linux&runtime=netcore&arch=arm64
-	sha256sums_aarch64 = 8bf3c336ebe03acb061a6162fa36499268095ea5e5140362faf49701588dca96
-	source_armv7h = Radarr.master.6.4.4.10685.linux-core-arm.tar.gz::https://radarr.servarr.com/v1/update/master/updatefile?version=6.4.4.10685&os=linux&runtime=netcore&arch=arm
-	sha256sums_armv7h = 547a00fbd14211d531733c75c0016d9a85fea69eb2b1924f82d24e55ac958641
+	source_x86_64 = Radarr.master.7.0.3.10918.linux-core-x64.tar.gz::https://radarr.servarr.com/v1/update/master/updatefile?version=7.0.3.10918&os=linux&runtime=netcore&arch=x64
+	sha256sums_x86_64 = 1737e72150ea991c8f224fcf529c419b7e6c567ba672cbf27a61f11c9a51fe8e
+	source_aarch64 = Radarr.master.7.0.3.10918.linux-core-arm64.tar.gz::https://radarr.servarr.com/v1/update/master/updatefile?version=7.0.3.10918&os=linux&runtime=netcore&arch=arm64
+	sha256sums_aarch64 = 79c97999edd13bd34ee0f2cdb82de659f09daffda3be7548e07aedda56204538
+	source_armv7h = Radarr.master.7.0.3.10918.linux-core-arm.tar.gz::https://radarr.servarr.com/v1/update/master/updatefile?version=7.0.3.10918&os=linux&runtime=netcore&arch=arm
+	sha256sums_armv7h = 61e8cb7f8c0d9051cdbb7649cfb05f10f025869cf08b61544be8fbc97ed365dd
 
 pkgname = radarr-bin
