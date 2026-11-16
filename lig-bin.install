@@ -1,0 +1,22 @@
+_lig_bin_shell_hint() {
+  cat <<'EOF'
+==> The popup is off until your shell is set up: run
+==>
+==>   lig install
+==>
+==> as your own user (not with sudo). It backs up and then edits ~/.zshrc,
+==> ~/.bashrc or ~/.config/fish/config.fish, so open a new terminal afterwards.
+==> `lig doctor` reports what is still missing.
+==>
+==> Upgrade lig with pacman rather than `lig update`, which would install
+==> outside the package manager.
+EOF
+}
+
+post_install() {
+  _lig_bin_shell_hint
+}
+
+post_upgrade() {
+  _lig_bin_shell_hint
+}
