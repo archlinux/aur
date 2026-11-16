@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=webgal-terre-bin
 _appname=WebGAL_Terre
-pkgver=4.6.6
+pkgver=4.6.7
 _electronversion=29
 pkgrel=1
 pkgdesc="Galgame Editing. Redefined / 视觉小说编辑，再进化"
@@ -36,9 +36,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
-            'd51d809af628cc8292bd430a4847adb4adefa9d4b0aee00a55a84ff9630e167c')
-sha256sums_aarch64=('617cc184c17cdd747ef436185df038d5ff74fa3a17ee79ce247e9dbd22ef7fb9')
-sha256sums_x86_64=('547d3148b1034354c60dd4e2ff5fe1a9aac730a3d78024b24d6de40a12520bef')
+            '26f4ffbf3e43a801d26becc3603f02b8c3630da29b538990f3c7838f3c7be80b')
+sha256sums_aarch64=('edb4a5468317a3203e8a67815cca9cc9b6cc09c75be8fa98a62c13b0b62b43ae')
+sha256sums_x86_64=('40911824793f7d119ff5874df40d286e5cfabffee14f388bf1c609d80ce39394')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
