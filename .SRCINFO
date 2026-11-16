@@ -1,6 +1,6 @@
 pkgbase = strata-files
 	pkgdesc = A fast, keyboard-first file manager for Linux
-	pkgver = 1.1.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://stratafiles.io/
 	arch = i686
@@ -31,7 +31,7 @@ pkgbase = strata-files
 	optdepends = xdg-desktop-portal: use Strata for Open/Save file chooser dialogs
 	optdepends = udiskie: unlock encrypted volumes with Strata
 	options = !lto
-	source = https://github.com/lgse/strata/archive/refs/tags/v1.1.1.tar.gz
-	sha256sums = 1a65e931a53cc83182d7b7138b8fd5f5697387f31e5f104f6671e245107a9665
+	source = https://github.com/lgse/strata/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = 007dfa3e8185206a2da45b509626ec9205fce9629c93c243485a383c54c36b19
 
 pkgname = strata-files

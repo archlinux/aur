@@ -1,7 +1,7 @@
 # Maintainer: D Basso <dbas.so@poul.org>
 
 pkgname=strata-files
-pkgver=1.1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='A fast, keyboard-first file manager for Linux'
 url='https://stratafiles.io/ '
@@ -35,7 +35,7 @@ optdepends=(
 )
 arch=('i686' 'x86_64')
 source=("https://github.com/lgse/strata/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1a65e931a53cc83182d7b7138b8fd5f5697387f31e5f104f6671e245107a9665')
+sha256sums=('007dfa3e8185206a2da45b509626ec9205fce9629c93c243485a383c54c36b19')
 
 options=(!lto)
 
@@ -62,7 +62,7 @@ check() {
 
 package() {
     cd strata-$pkgver
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/strata"
     # for custom license, e.g. MIT
     # install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   # install -Dm755 strata "$pkgdir/usr/bin/strata"
