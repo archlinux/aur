@@ -1,7 +1,7 @@
 # Maintainer: Umar Alfarouk <medrivia@gmail.com>
 
 pkgname=hashline
-pkgver=0.9.22
+pkgver=0.9.24
 pkgrel=1
 pkgdesc="Hash-anchored line editing for AI coding agents — O(1) line addressing via content-hashed anchors and drift-safe surgical patches"
 arch=('x86_64' 'aarch64')
