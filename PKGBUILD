@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A Wave Link replacement for Linux: a PipeWire mixer with effects and an OpenDeck plugin for any microphone, plus full control of Elgato XLR interfaces and Wave microphones"
 arch=('x86_64')
@@ -34,7 +34,7 @@ _dfver=0.5.6
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz"
         "DeepFilterNet3_onnx-$_dfver.tar.gz::https://raw.githubusercontent.com/Rikorose/DeepFilterNet/v$_dfver/models/DeepFilterNet3_onnx.tar.gz")
 noextract=("DeepFilterNet3_onnx-$_dfver.tar.gz")
-sha256sums=('1edf2dbfc24381b2b93e809b8ab6216de4fc5685b89932924c67d7140b7d3fcd'
+sha256sums=('a9ce075d4487ce71eb207b63ff41d1ab65afcb998fdf5a7257f532d50750892c'
             'c94d91f70911001c946e0fabb4aa9adc37045f45a03b56008cb0c8244cb63616')
 
 # DeepFilterNet's noise removal is a Rust library linked into the native
@@ -119,6 +119,10 @@ WRAP
   # inherits systemd's 1024 open files; raise it for the PulseAudio server.
   install -Dm644 packaging/pipewire-pulse-openxlr.conf \
     "$pkgdir/usr/lib/systemd/user/pipewire-pulse.service.d/openxlr.conf"
+  # PipeWire itself holds a buffer and an event descriptor per node and port;
+  # a WirePlumber restart near its 1024 open files leaves every stream unlinked.
+  install -Dm644 packaging/pipewire-openxlr.conf \
+    "$pkgdir/usr/lib/systemd/user/pipewire.service.d/openxlr.conf"
 
   install -Dm644 packaging/openxlr.desktop "$pkgdir/usr/share/applications/openxlr.desktop"
   for size in 16 32 48 64 128 256; do

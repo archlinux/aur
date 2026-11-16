@@ -10,6 +10,15 @@ MSG
 }
 post_upgrade() {
   udevadm control --reload || true
+  if (( $(vercmp "$2" 0.9.0) < 0 )); then
+    cat <<'MSG'
+==> OpenXLR: this version also raises PipeWire's own open-file limit, with a
+==> drop-in under /usr/lib/systemd/user/pipewire.service.d, so a WirePlumber
+==> restart no longer leaves every stream unlinked. It applies at your next
+==> login, or now (this restarts every audio service for a moment):
+==>   systemctl --user daemon-reload && systemctl --user restart pipewire
+MSG
+  fi
   if (( $(vercmp "$2" 0.1.25) < 0 )); then
     cat <<'MSG'
 ==> OpenXLR: this version raises pipewire-pulse's open-file limit with a
