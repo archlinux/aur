@@ -4,7 +4,7 @@
 
 pkgname=untix-git
 pkgver=4.3.2.r31.g48ce032
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK4 + LibAdwaita client for WebUntis (git)"
 arch=('any')
 url="https://codeberg.org/ostfriese4/untix"
@@ -27,12 +27,6 @@ pkgver() {
   cd "$pkgname"
   git describe --long --abbrev=7 --tags --match 'v[0-9]*' \
     | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
-}
-
-prepare() {
-  # The About dialog reads the version from src/api.py, which upstream only
-  # sets when it tags a release.
-  sed -i "s/^version = \"[^\"]*\"/version = \"$pkgver\"/" "$pkgname/src/api.py"
 }
 
 build() {

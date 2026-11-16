@@ -1,7 +1,7 @@
 pkgbase = untix-git
 	pkgdesc = GTK4 + LibAdwaita client for WebUntis (git)
 	pkgver = 4.3.2.r31.g48ce032
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/ostfriese4/untix
 	arch = any
 	license = GPL-3.0-or-later
