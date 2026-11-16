@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bettersoundcloud
 _pkgname=BetterSoundCloud
-pkgver=0.8.0
+pkgver=0.9.0
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -27,9 +27,9 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('4221d11815ed2a4a2bbc9c5fbfc59822f17dc2ea79d942478b1b22d16dbddbff'
+sha256sums=('0c623c9c041b22638f7b424f873b0f44abe1c37eaf782d44a5e1a32e671f6e28'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
