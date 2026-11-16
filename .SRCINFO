@@ -1,0 +1,24 @@
+pkgbase = obiplayer-git
+	pkgdesc = MPD client for people who care about editions, pressings and sound quality (GTK4/libadwaita)
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/prietus/obiplayer
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = ffmpeg
+	depends = glib2
+	depends = gcc-libs
+	depends = glibc
+	optdepends = mpd: local music server
+	provides = obiplayer
+	conflicts = obiplayer
+	options = !lto
+	source = obiplayer::git+https://github.com/prietus/obiplayer.git
+	sha256sums = SKIP
+
+pkgname = obiplayer-git
