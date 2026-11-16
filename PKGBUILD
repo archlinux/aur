@@ -2,7 +2,7 @@
 _base=torchquad
 pkgname=python-${_base}
 pkgdesc="Package providing torch-based numerical integration methods"
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 arch=(any)
 url="https://github.com/esa/${_base}"
@@ -10,7 +10,7 @@ license=(GPL-3.0-or-later)
 depends=(python-loguru python-scipy python-autoray)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('959c9eff443d9ac8482edddc31dbcf760a37e9a214e2f2e04dcf4dc1d3ad00f8b0c0b0d7b7337a2b04ab08de5a9ee2443aee729c6a3250aea7071fbc3812e459')
+sha512sums=('22fc04f1dff11151da18bdd22549320e28256eec001c32441a39a69e0506b55745ed9f5d0d08de85b3b923658c68685c6ff1f23f1a38b29a423c0c874b4ba74c')
 
 build() {
   cd ${_base}-${pkgver}
