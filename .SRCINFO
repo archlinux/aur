@@ -1,5 +1,5 @@
 pkgbase = ancient
-	pkgdesc = Modern decompressor for old data compression formats
+	pkgdesc = Modern decompressor for old data (archive) compression formats
 	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/temisu/ancient
