@@ -1,6 +1,6 @@
 pkgbase = unifly-bin
 	pkgdesc = CLI + TUI for managing UniFi network controllers
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/hyperb1iss/unifly
 	install = unifly-bin.install
@@ -12,9 +12,9 @@ pkgbase = unifly-bin
 	depends = dbus
 	provides = unifly
 	conflicts = unifly
-	source_x86_64 = unifly-bin-0.14.0-x86_64::https://github.com/hyperb1iss/unifly/releases/download/v0.14.0/unifly-linux-amd64
-	sha256sums_x86_64 = 6746d9d15ef6f3d3f951a9a7306cff03c761f88b425b95f502c6e87d3d3e1718
-	source_aarch64 = unifly-bin-0.14.0-aarch64::https://github.com/hyperb1iss/unifly/releases/download/v0.14.0/unifly-linux-arm64
-	sha256sums_aarch64 = 628ee95794d7d836237c280c110dfe8993c35e56e7a3c3a91695a11dbfcce974
+	source_x86_64 = unifly-bin-0.15.0-x86_64::https://github.com/hyperb1iss/unifly/releases/download/v0.15.0/unifly-linux-amd64
+	sha256sums_x86_64 = 499c37fec104f906433859bddeb86c1674f89a054a00ca28c5de4371f28f5e54
+	source_aarch64 = unifly-bin-0.15.0-aarch64::https://github.com/hyperb1iss/unifly/releases/download/v0.15.0/unifly-linux-arm64
+	sha256sums_aarch64 = 5ba533deb1e3f9e660dbe0543fc8d4d1f4fbaf5a193284b79e6228a7cb03c731
 
 pkgname = unifly-bin
