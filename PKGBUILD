@@ -1,4 +1,5 @@
-# Maintainer: William Gathoye <william + aur at gathoye dot be>
+# Maintainer: Max Roder <maxroder at mailbox dot org>
+# Contributor: William Gathoye <william + aur at gathoye dot be>
 
 pkgname=orthanc-plugin-web-viewer
 pkgver=2.10
