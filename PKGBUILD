@@ -3,11 +3,15 @@
 
 pkgname=altair-ai-studio
 pkgver=2026.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Altair AI Studio (RapidMiner Studio rebranded). Data science tool anyone can use to design and prototype highly explainable AI and machine learning models that help build trust throughout your organization"
 DLAGENTS=('https::/usr/bin/aria2c %u -o %o --continue --max-connection-per-server=16 --min-split-size=1M --split=16 --console-log-level=warn --summary-interval=0')
 arch=('any')
 url="https://rapidminer.com"
+# JxBrowser verifies byte sizes of the bundled Chromium binaries; stripping
+# them makes the check fail ("Failed to check integrity of the Chromium
+# binaries") and HTML5 visualizations stop working.
+options=('!strip')
 depends=('java-runtime')
 makedepends=('unzip' 'gendesk' 'aria2')
 source=('https://releases.rapidminer.com/latest/rapidminer-studio/rapidminer-studio.zip'
