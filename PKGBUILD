@@ -9,7 +9,7 @@
 # branch, and pkgver() below derives the version from git, so no checksums or
 # `updpkgsums` step is needed.
 pkgname=deadband-git
-pkgver=0.2.0dev
+pkgver=0.7.0.r1.g2c853bf
 pkgrel=1
 pkgdesc="Configure game controller lighting, sticks, triggers and buttons on Linux"
 arch=('any')
@@ -31,7 +31,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Include the latest release tag, commits since it, and the commit hash.
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
