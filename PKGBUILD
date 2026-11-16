@@ -90,6 +90,7 @@ prepare() {
   # (3.4.0-preview.3): drop this with 3.4.0.
   # Upstream issue: https://github.com/PowerShell/DSC/issues/1777
   # Upstream fix: https://github.com/PowerShell/DSC/pull/1778
+  # upstream: backport PowerShell/DSC#1778
   patch -Np1 -i "$srcdir/osinfo-rolling-release.patch"
   # pwsh expands wildcards in unquoted arguments of native commands outside Windows, so the adapter
   # filter Test* became the folder tests/ of the working directory: dsc rejected it, and the test,
