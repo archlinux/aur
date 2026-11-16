@@ -1,6 +1,6 @@
 pkgbase = friendly
 	pkgdesc = Spotlight-style overlay that rewrites a dictated/typed message in a chosen tone via Claude Code (claude -p), then copies it to the clipboard
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/KannarFr/friendly
 	arch = any
@@ -13,14 +13,14 @@ pkgbase = friendly
 	depends = wl-clipboard
 	depends = hicolor-icon-theme
 	optdepends = claude-code: LLM backend — friendly calls `claude -p` (REQUIRED at runtime; AUR, or `npm i -g @anthropic-ai/claude-code`)
-	optdepends = wofi: Spotlight-style menu/launcher (recommended; falls back to rofi/zenity)
+	optdepends = wofi: fallback menus when the compositor lacks layer-shell
 	optdepends = libnotify: desktop notifications (result + progress)
-	optdepends = rofi: fallback launcher if wofi is missing
+	optdepends = rofi: fallback menus if wofi is missing too
 	optdepends = zenity: last-resort fallback dialogs
 	optdepends = handy: speech-to-text backend for built-in dictation, --dictate (AUR: handy or handy-bin)
 	optdepends = whisper.cpp-git: alternative speech-to-text backend, --stt whisper (AUR; plus a ggml model)
 	optdepends = pipewire-audio: mic recording for --dictate (pw-record; falls back to parecord/arecord)
-	source = friendly-0.3.1.tar.gz::https://github.com/KannarFr/friendly/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = de3d78f0ea74d315ec319dffdafcd11ea92ac72a156a8ca3bd5672c94357039c
+	source = friendly-0.3.2.tar.gz::https://github.com/KannarFr/friendly/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = 3c7d8ed01631a55b66985a903f916cae54fbea6339b9d4cb7166bef92dca0c4c
 
 pkgname = friendly

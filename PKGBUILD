@@ -1,6 +1,6 @@
 # Maintainer: KannarFr <kannarfr@gmail.com>
 pkgname=friendly
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Spotlight-style overlay that rewrites a dictated/typed message in a chosen tone via Claude Code (claude -p), then copies it to the clipboard"
 arch=('any')
@@ -17,9 +17,9 @@ depends=(
 )
 optdepends=(
   'claude-code: LLM backend — friendly calls `claude -p` (REQUIRED at runtime; AUR, or `npm i -g @anthropic-ai/claude-code`)'
-  'wofi: Spotlight-style menu/launcher (recommended; falls back to rofi/zenity)'
+  'wofi: fallback menus when the compositor lacks layer-shell'
   'libnotify: desktop notifications (result + progress)'
-  'rofi: fallback launcher if wofi is missing'
+  'rofi: fallback menus if wofi is missing too'
   'zenity: last-resort fallback dialogs'
   'handy: speech-to-text backend for built-in dictation, --dictate (AUR: handy or handy-bin)'
   'whisper.cpp-git: alternative speech-to-text backend, --stt whisper (AUR; plus a ggml model)'
@@ -27,7 +27,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Refreshed by CI on each release (updpkgsums); placeholder for manual builds.
-sha256sums=('de3d78f0ea74d315ec319dffdafcd11ea92ac72a156a8ca3bd5672c94357039c')
+sha256sums=('3c7d8ed01631a55b66985a903f916cae54fbea6339b9d4cb7166bef92dca0c4c')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
