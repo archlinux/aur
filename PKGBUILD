@@ -2,7 +2,7 @@
 pkgname=mootool-next-bin
 _pkgname=MooTool-Next-Electron
 _debname=com.rememberber.mootool.next.electron
-pkgver=1.3.6
+pkgver=1.3.7
 _electronversion=43
 pkgrel=1
 pkgdesc="Handy tool set for developers."
@@ -25,10 +25,10 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b259ac005248444803a3123863a7c572a49504a862892d2ede56ef29b627a9ec'
+sha256sums=('d5c8ae44b6dabd840069450f360ff50c8535e5bafc9e8eeec27e69f3ddab7482'
             '91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
