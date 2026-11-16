@@ -1,0 +1,8 @@
+[tcos-pkcs11]
+# Telekom Security has no repository: the version is in the file name of the Linux SDK on its
+# downloads page, with dashes (libpkcs11tcos_Linux_PCSC_1-20-1_x86x64.zip)
+source = "regex"
+url = "https://www.telesec.de/de/service/downloads/produkte-und-loesungen"
+regex = 'libpkcs11tcos_Linux_PCSC_([0-9]+(?:-[0-9]+)+)_x86x64\.zip'
+from_pattern = "-"
+to_pattern = "."
