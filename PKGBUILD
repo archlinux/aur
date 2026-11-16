@@ -12,9 +12,11 @@ url="https://github.com/ergochat/ergo-ldap"
 license=(Apache-2.0)
 depends=(glibc)
 makedepends=(go git)
-source=("git+$url#tag=v$pkgver")
+source=("git+$url#tag=v$pkgver?signed")
 sha512sums=('b32286e9a0323f862182c73826f2e1c71ac128db241485fd7860a394a9879b69597e3a539793dcf1e4d7ef8e543826e6d7aebef0db4eae84dc2d6c41bf6f5066')
 b2sums=('79faf75babf85f7bcee3bfbb96e4379a8d798059b28b671feb9958f08ac3b8a2ab71f456dac3df9ca95a08bee3a7f37cd17abbeae671ceedbacf6fa2fdecc154')
+# Shivaram Lingamneni <slingamn@cs.stanford.edu>, who signs the tags
+validpgpkeys=(740FC947B135E7627D4D00F21996B89DF018DCAB)
 backup=(etc/ergochat/ldap-config.yaml)
 
 build() {
