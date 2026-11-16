@@ -2,7 +2,7 @@
 
 pkgname=tapes-git
 _pkgname=tapes
-pkgver=0.1.6beta.r8.gf6c0144
+pkgver=0.1.10beta.r1.gab530e4
 pkgrel=1
 pkgdesc='Atomic dotfiles switcher for Linux and ricing (git version)'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags --abbrev=7 \
+  # Derived from the newest commit on every build, so the package always
+  # tracks upstream HEAD instead of being pinned to the value above.
+  git describe --long --tags --always --abbrev=7 \
     | sed -E 's/^v//; s/-([0-9]+)-g([0-9a-f]+)$/.r\1.g\2/; s/-beta/beta/'
 }
 

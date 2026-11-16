@@ -1,6 +1,6 @@
 pkgbase = tapes-git
 	pkgdesc = Atomic dotfiles switcher for Linux and ricing (git version)
-	pkgver = 0.1.6beta.r8.gf6c0144
+	pkgver = 0.1.10beta.r1.gab530e4
 	pkgrel = 1
 	url = https://github.com/futurekismo-oss/tapes
 	arch = x86_64
