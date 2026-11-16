@@ -1,0 +1,25 @@
+pkgbase = libdigidocpp-git
+	pkgdesc = Library for creating, signing and verification of digitally signed documents, according to XAdES and XML-DSIG standards (git master)
+	pkgver = 4.6.0.r868.g974bf38
+	pkgrel = 1
+	url = https://github.com/open-eid/libdigidocpp
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libxml2
+	depends = libxslt
+	depends = minizip
+	depends = openssl
+	depends = xmlsec
+	depends = zlib
+	provides = libdigidocpp=4.6.0
+	conflicts = libdigidocpp
+	backup = etc/digidocpp/digidocpp.conf
+	source = libdigidocpp::git+https://github.com/open-eid/libdigidocpp.git
+	sha256sums = SKIP
+
+pkgname = libdigidocpp-git
