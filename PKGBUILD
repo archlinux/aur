@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 _pkgname=xjtutoolbox
 pkgname=xjtutoolbox-git
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="仙交百宝箱：西安交通大学一站式校园服务工具（Git 最新源码版）"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=("${_pkgname}" "${_pkgname}-bin")
 
 # 1. 官方仓库与 AUR 依赖 (混合依赖)
 depends=(
-    'python>=3.10'
+    'python>=3.11'
     'python-pyqt5'
     'python-requests'
     'python-urllib3'
@@ -25,7 +25,7 @@ depends=(
     'python-pyjwt'
     'python-beautifulsoup4'
     'python-lxml'
-    'python-pillow'
+    'python-pillow>=13.0.0'
     'python-keyring'
     'python-numpy'
     'python-icalendar'

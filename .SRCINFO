@@ -1,13 +1,13 @@
 pkgbase = xjtutoolbox-git
 	pkgdesc = 仙交百宝箱：西安交通大学一站式校园服务工具（Git 最新源码版）
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/yan-xiaoo/XJTUToolBox
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = python-pip
-	depends = python>=3.10
+	depends = python>=3.11
 	depends = python-pyqt5
 	depends = python-requests
 	depends = python-urllib3
@@ -19,7 +19,7 @@ pkgbase = xjtutoolbox-git
 	depends = python-pyjwt
 	depends = python-beautifulsoup4
 	depends = python-lxml
-	depends = python-pillow
+	depends = python-pillow>=13.0.0
 	depends = python-keyring
 	depends = python-numpy
 	depends = python-icalendar
