@@ -3,7 +3,7 @@
 _pkgname=firedragon
 __pkgname=$_pkgname
 _rdns=org.garudalinux.$__pkgname
-_pkgver=13.12.0
+_pkgver=13.12.1
 _branding=dr460nized
 _gentoo=firefox-160-patches-02.tar.xz
 _gentoo_exclude=(0014-bgo-940031-wasm-support-firefox-155.patch)
@@ -84,7 +84,7 @@ install=$_pkgname.install
 noextract=($_gentoo)
 source=($_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
   https://dev.gentoo.org/~juippis/mozilla/patchsets/$_gentoo)
-sha256sums=('16444c9b55fc9c3e1aad036a3fc0fddd86d38dad2c2955fd7400e8cce17f0fa3'
+sha256sums=('e26653ce09c309f1cb45a8e390476a58ef7ed5df10086b441479a62d29210a15'
   '97eecbcc2ffa265402f5cb2ae42d46007c17ce2f37fa57523037002b6a1b13f2')
 
 prepare() {
