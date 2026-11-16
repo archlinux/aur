@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kunyin-desktop-bin
 _pkgname="坤音"
-pkgver=1.0.8
+pkgver=1.0.9
 _electronversion=44
 pkgrel=1
 pkgdesc="A desktop music player that aggregates multi-platform audio sources.聚合多平台音源的桌面音乐播放器"
@@ -21,10 +21,10 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6d43654ceadc566760a27a274b6aabe8cadc53e151540c184dfa879ef6a3376d'
+sha256sums=('e3746719c7f701b42335d90d2c2bd4df035c24942d0c6b9f7c5d9e6c24a6aed3'
             '1b19fe707eab955d1070c99dfed63f5984b1deee79b57c161979eefcf0b61763'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
