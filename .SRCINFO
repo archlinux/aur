@@ -1,15 +1,16 @@
 pkgbase = miniupnpc-git
 	pkgdesc = A small UPnP client library/tool to access Internet Gateway Devices (git)
-	pkgver = 2.2.4.r30.ge439318
+	pkgver = 2.3.4.r8.g8e082a64
 	pkgrel = 1
 	url = http://miniupnp.free.fr
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	depends = glibc
-	depends = sh
-	provides = miniupnpc=2.2.4.r30.ge439318
+	optdepends = sh
+	provides = miniupnpc=2.3.4.r8.g8e082a64
+	provides = libminiupnpc.so
 	conflicts = miniupnpc
 	options = staticlibs
 	source = git+https://github.com/miniupnp/miniupnp.git
