@@ -1,0 +1,4 @@
+[shadowrecomp-bin]
+source = "git"
+git = "https://github.com/FoxWorkshop/ShadowRecomp.git"
+prefix = "v"
