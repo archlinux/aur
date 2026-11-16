@@ -17,7 +17,7 @@
 # repository's docs/measure.md for the method.
 
 pkgname=dsh-hyprland
-pkgver=0.1.0.r3.gc8c7b1c
+pkgver=0.1.0.r4.g0dab232
 pkgrel=1
 pkgdesc='Hyprland/NVIDIA launcher for DeepSeek Harness: Rust orchestration, Electron WebView'
 arch=('x86_64')
@@ -26,7 +26,7 @@ license=('MIT')
 depends=('deepseek-harness-desktop' 'electron42')
 makedepends=('cargo' 'git')
 options=('!strip' '!debug')
-source=("$pkgname::git+https://github.com/shenli306/dsh-hyprland.git#commit=c8c7b1cadee94047fcdd8a8ea4d00a223d72bbf7")
+source=("$pkgname::git+https://github.com/shenli306/dsh-hyprland.git#commit=0dab2320e78320c8170db1d5fe6a76d59701bcdb")
 sha256sums=('SKIP')
 
 # The version lives in shell/Cargo.toml; AUR rejects a PKGBUILD whose .SRCINFO
