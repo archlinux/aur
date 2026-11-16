@@ -1,6 +1,6 @@
 pkgbase = lyricade-bin
 	pkgdesc = A Linux desktop application for fetching and managing lyrics in your local music library. It will scan your music and download missing lyrics, in either synchronised LRC or plain text format, at your preference.
-	pkgver = 0.6.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/weiteck/lyricade
 	arch = x86_64
@@ -10,9 +10,13 @@ pkgbase = lyricade-bin
 	depends = alsa-lib
 	depends = libayatana-indicator
 	depends = libappindicator
-	provides = lyricade=0.6.0
+	depends = libheif
+	provides = lyricade=0.7.1
 	conflicts = lyricade
-	source = lyricade-0.6.0-x86_64.AppImage::https://github.com/weiteck/lyricade/releases/download/v0.6.0/lyricade-v0.6.0-x86_64.AppImage
-	sha256sums = c1577c86c476c9cf92705b41430b21d9250324e5badf2832a3d37123a1d25355
+	options = !strip
+	source = lyricade-0.7.1-x86_64.AppImage::https://github.com/weiteck/lyricade/releases/download/v0.7.1/lyricade-v0.7.1-x86_64.AppImage
+	source = lyricade.sh
+	sha256sums = 898833553550f5fee03be03fe55b39d7af3fdd0b41926915d24773659713d31d
+	sha256sums = 4ced1d6c43351b9daa0a4e34a6447d6166c00073faba4a18900ae9c53755c814
 
 pkgname = lyricade-bin
