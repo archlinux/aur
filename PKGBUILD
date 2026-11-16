@@ -2,7 +2,7 @@
 
 _name=smithy-json
 pkgname=python-$_name
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='JSON serialization and deserialization support for Smithy tooling.'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-hatchling'
              'python-installer')
 checkdepends=('python-pytest')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name/v$pkgver.tar.gz")
-sha256sums=('c58faf9d195be4003be4e5d727f5356402a65f1de89c7c0845a91927bc355c4c')
+sha256sums=('52dd75edd726ce157e8094e8418768c0a3139fc6c8bdee5b135e1680c26cab71')
 
 build() {
   cd "smithy-python-$_name-v$pkgver/packages/$_name"
