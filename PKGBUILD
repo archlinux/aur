@@ -1,3 +1,4 @@
+# Maintainer: Seraphim Pardee <me at srp dot life>
 pkgname=rlshim-bin
 pkgver=1.5.1
 pkgrel=1
