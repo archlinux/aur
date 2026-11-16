@@ -1,17 +1,17 @@
 pkgbase = python-cobble
-	pkgdesc = Create Python data objects
+	pkgdesc = Python library for easy creation of data objects
 	pkgver = 0.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mwilliamson/python-cobble
 	arch = any
 	license = BSD-2-Clause
 	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = python
-	source = python-cobble-0.1.4.tar.gz::https://github.com/mwilliamson/python-cobble/archive/refs/tags/0.1.4.tar.gz
-	sha256sums = dc17120629977f6816503fc8ee281d64c685cc261b6bb2ee919a074da9ffc0ce
+	source = cobble::git+https://github.com/mwilliamson/python-cobble.git#tag=0.1.4
+	sha256sums = f5f2fdcb44db24a3f4036d8c0d99d6eff1e7e5501632faad43c2eabaeb2cb966
 
 pkgname = python-cobble

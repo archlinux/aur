@@ -1,44 +1,56 @@
-# Maintainer: envolution
-# shellcheck shell=bash disable=SC2034,SC2154
+# Maintainer: qubeck <qubeck (AT) disroot (DOT) org>
+# Contributor: envolution
 
 pkgname=python-cobble
+_name=${pkgname#python-}
 pkgver=0.1.4
-pkgrel=2
-pkgdesc="Create Python data objects"
+pkgrel=3
+pkgdesc='Python library for easy creation of data objects'
 arch=(any)
-url="https://github.com/mwilliamson/python-cobble"
+url='https://github.com/mwilliamson/python-cobble'
 license=(BSD-2-Clause)
 depends=(
   python
 )
 makedepends=(
+  git
   python-build
   python-installer
   python-setuptools
-  python-wheel
 )
 checkdepends=(
   python-pytest
 )
-depends=(python)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mwilliamson/python-cobble/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('dc17120629977f6816503fc8ee281d64c685cc261b6bb2ee919a074da9ffc0ce')
+source=("${_name}::git+${url}.git#tag=${pkgver}")
+sha256sums=('f5f2fdcb44db24a3f4036d8c0d99d6eff1e7e5501632faad43c2eabaeb2cb966')
+
+prepare() {
+  cd "${_name}"
+
+  # CPython 3.14 changed ABCMeta's TypeError wording; these tests compare it verbatim.
+  sed -i '1a import pytest' tests.py
+  sed -i '/^def test_error_if_visitor_is_missing_methods():/i @pytest.mark.skipif(sys.version_info >= (3, 14), reason="CPython 3.14+ changed ABCMeta TypeError wording")' tests.py
+  sed -i '/^def test_sub_sub_classes_are_included_in_abc():/i @pytest.mark.skipif(sys.version_info >= (3, 14), reason="CPython 3.14+ changed ABCMeta TypeError wording")' tests.py
+}
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${_name}"
+
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$pkgname-$pkgver"
-  #  python -m pytest tests.py
-  python -m pytest -k "not test_error_if_visitor_is_missing_methods and not test_sub_sub_classes_are_included_in_abc" tests.py
+  cd "${_name}"
+
+  pytest -vv tests.py
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${_name}"
 
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 README.rst "${pkgdir}"/usr/share/doc/${pkgname}/README.rst
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s /usr/share/licenses/common/BSD-2-Clause \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-# vim:set ts=2 sw=2 et:
