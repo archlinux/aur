@@ -1,11 +1,11 @@
 pkgbase = xfetch-git
 	pkgdesc = Custom system information tool for X (Rust)
-	pkgver = r186.280a964
+	pkgver = r197.2fd95ff
 	pkgrel = 1
 	url = https://github.com/xfetch-cli/xfetch
 	arch = x86_64
 	arch = aarch64
-	license = MIT
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs
