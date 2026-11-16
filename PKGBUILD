@@ -6,25 +6,31 @@
 #   4. Build and test (run: makepkg -sf)
 _pkgname=radiance-inference
 pkgname=${_pkgname}-git
-pkgver=1.17.0.r58
+pkgver=2.1.0.r939
 pkgrel=1
 pkgdesc="C++20 LLM inference server for AMD GPUs (primarily gfx1201) with OpenAI-compatible HTTP API (git HEAD)"
 arch=('x86_64')
 url="https://codeberg.org/StillDeadcode/radiance"
 license=('Apache-2.0')
-depends=('gcc-libs' 'glibc' 'ffmpeg' 'rocm-gfx120x-bin')
-makedepends=('git' 'cmake' 'ninja')
+depends=('gcc-libs' 'glibc' 'ffmpeg' 'rocm-gfx120x-bin' 'openblas')
+makedepends=('git' 'cmake' 'ninja' 'openblas')
+optdepends=('curl: hfget.sh model-download helper (/usr/libexec/radiance/hfget.sh)'
+            'jq: hfget.sh'
+            'python3: rad-export tool (/usr/bin/rad-export)')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-backup=('etc/radiance/radiance.conf')
+backup=('etc/radiance/radiance.yaml'
+        'etc/radiance/radiance.env')
 install=${pkgname}.install
 options=('!lto' '!debug')
 source=("${_pkgname}::git+${url}.git#branch=main"
         radiance.service
-        radiance.conf)
+        radiance.yaml
+        radiance.env)
 sha256sums=('SKIP'
-            'a80ff0180ef8646558d80998815c59ec5855f1bfde1e47d21d89d657ff7542ea'
-            '6c6d78815ba851d8747f2e7c75f665e8dfce0aa7037d6938a340d68176e97bf0')
+            'c903669f221faea09545b70525f780001d73648c66cfc472ac9b23df23956400'
+            'f03e9c85f9540527b2d1a756238fb3dd25c1e4718c78b48eb0e0ef8b3313c9e5'
+            'a0310c047f107a493c275e5e92b896785238f8dbcc5319efca86ac537885c3ac')
 
 # Edit for other hardware: run `offload-arch`.
 _hip_archs='gfx1201'
@@ -33,12 +39,12 @@ _rad_vopd='ON'
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  if _ver=$(git describe --long --tags --match 'v[0-9]*' 2>/dev/null); then
-    echo "${_ver}" | sed 's/^v//;s/-\([0-9]\+\)-g.*/.r\1/'
-  else
-    _basever=$(grep -m1 '^project(' CMakeLists.txt | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
-    printf "%s.r%s" "${_basever}" "$(git rev-list --count HEAD)"
-  fi
+  # Upstream tags are stale (newest is v1.3.0; releases are "radiance X.Y.Z" commits),
+  # so git describe regresses below the 1.x pkgver shipped pre-2.0.0 (v1.3.0-843 at
+  # the 2.0.0 commit reads as a downgrade). Derive from the project() version, which
+  # upstream bumps per release (2.0.0 at ddcb9c6), plus the commit count.
+  _basever=$(grep -m1 '^project(' CMakeLists.txt | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+  printf "%s.r%s" "${_basever}" "$(git rev-list --count HEAD)"
 }
 
 build() {
@@ -75,17 +81,26 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   DESTDIR="${pkgdir}" cmake --install build
-  # upstream install rules miss data/recipes/*.recipe (Dockerfile lines 113-114 replicate this)
+  # upstream install rules miss data/recipes/*.recipe (Dockerfile lines 204-205 replicate this)
   install -d "${pkgdir}/usr/share/radiance/recipes"
   install -m644 data/recipes/*.recipe -t "${pkgdir}/usr/share/radiance/recipes/"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 
   install -Dm644 "${srcdir}/radiance.service" "${pkgdir}/usr/lib/systemd/system/radiance.service"
-  # The conf is the only place a --api-key can live (the server reads no key env var), so
-  # ship it root-only: 0644 leaks the key to every local user. The unit has no User= and
-  # PID 1 reads EnvironmentFile as root, so 0600 costs the service nothing. -D would create
-  # /etc/radiance 0755; create it first at 0750 so the directory is not traversable either.
+  # 2.0.0: the server reads all settings from radiance.yaml (CLI flags are refused).
+  # The YAML ships 0644 - with server.api-key-env it carries no secret. radiance.env
+  # is the single 0600 EnvironmentFile: the API key plus the optional engine knobs,
+  # so it ships root-only: 0644 would leak the key to every local user. The unit has
+  # no User= and PID 1 reads EnvironmentFile as root, so 0600 costs nothing. -D would
+  # create /etc/radiance 0755; create it first at 0750 so the directory is not
+  # traversable either.
   install -d -m750 "${pkgdir}/etc/radiance"
-  install -Dm600 "${srcdir}/radiance.conf"    "${pkgdir}/etc/radiance/radiance.conf"
+  install -Dm644 "${srcdir}/radiance.yaml"    "${pkgdir}/etc/radiance/radiance.yaml"
+  install -Dm600 "${srcdir}/radiance.env"     "${pkgdir}/etc/radiance/radiance.env"
+  # /srv/models/rad: our server.download-dir and upstream's model dir (README:77).
+  # ReadWritePaths= needs it to exist (it does not create paths); hfget.sh mkdir -p's
+  # below it. The service runs as root (no User=), so root:root; 0755 - published
+  # weights are public and UMask=0077 makes fetched files root-only anyway.
+  install -d -m755 "${pkgdir}/srv/models/rad"
 }

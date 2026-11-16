@@ -1,0 +1,210 @@
+# radiance 2.0.0+ server configuration, read by radiance.service:
+#   /usr/bin/radiance --config /etc/radiance/radiance.yaml
+# Edit, validate without serving, then restart:
+#   sudo radiance --config /etc/radiance/radiance.yaml --check
+#   sudo systemctl restart radiance
+# Every key with its level and meaning:  radiance --help   (docs/GUIDE.md: the guide)
+#
+# The API key is NOT stored in this file. The server reads it from the environment
+# variable named by `api-key-env` below (server.api-key-env); that variable is set
+# only in /etc/radiance/radiance.env, the 0600 root:root EnvironmentFile the unit
+# reads. A key written as server.api-key here would leak to `systemctl show`
+# readers only via backups, and api-key-env keeps it out of this file entirely.
+
+server:
+  # The engine default is 0.0.0.0 with no TLS and no auth; keep localhost unless a
+  # TLS-terminating proxy sits in front (docs/GUIDE.md). Use "::" for IPv6+IPv4.
+  host: 127.0.0.1
+  port: 8000
+  # Where `model: <owner/name>` repo ids are fetched to (server-level key; default
+  # $XDG_CACHE_HOME/radiance/hf). Files land at <download-dir>/<owner>/<name>/...
+  # Needs ReadWritePaths=/srv/models/rad in radiance.service (ProtectSystem=strict
+  # makes /srv read-only) and the dir shipped by the package. docs/GUIDE.md 3.1.
+  download-dir: /srv/models/rad
+  # Uncomment to require Authorization: Bearer <key>, with the key coming from
+  # RADIANCE_API_KEY in /etc/radiance/radiance.env (0600 root:root). An unset or
+  # empty RADIANCE_API_KEY refuses startup, same as an empty server.api-key.
+  #api-key-env: RADIANCE_API_KEY
+
+memory:
+  # Per-card headroom left free (was the per-model --gpu-headroom-mib flag; it is
+  # now ONE process-wide key). The examples below used 96; the bf16 disk-streamed
+  # reference used 768, MiniCPM5 160.
+  gpu-headroom-mib: 96
+
+# Each entry under models: is one served model, and the entry's name IS the model
+# id: what a request names in `model` and what /v1/models lists. Required per
+# entry: model - a .rad container, or a plain Hugging Face checkpoint directory.
+# A model: value may also be a Hugging Face repo id (owner/name), fetched at load
+# into server.download-dir (unpinned entries fetch at FIRST REQUEST - add
+# `pin: true` for a boot-time fetch); the example blocks below use repo ids for the
+# published containers.
+# The shipped main: entry fetches the flagship container on first start (113 GiB
+# into server.download-dir); serve your own model by pointing model: at it. Flags
+# became keys one-for-one: `--max-num-seqs 8` is `max-num-seqs: 8`.
+#
+# 2.0.0 QUANT CHANGES (README.md "Not served by this version", rad_fp8.h):
+# - Block FP8, MXFP4, M2XFP4 and ParoQuant containers are REFUSED at startup,
+#   naming the weight. IQ8R / IQR-V4 (int8) replaced them as whole-model formats.
+#   Re-convert affected checkpoints with 2.0.0's rad-convert + an int8 recipe
+#   (data/recipes/, shipped at /usr/share/radiance/recipes/). bf16 and int8
+#   containers from 1.17.0 load unchanged (.rad format version 2 in both).
+# - kv-cache-dtype: bf16 (default) | i8 | fp8 - `fp8` is GLM-5.3-Flash's latent
+#   cache ONLY; `i8` is the 8-bit cache for every other model (fp8_v4/k6_v4 gone).
+# - host-pool-mib is IN-ALL now (the N ranks of a model pin N shares together),
+#   was per-rank in 1.17: old 12288 at tp 2 -> 24576 here.
+models:
+  main:
+    # Flagship: qwen3.8-next-flash-iqr-v4.rad (113 GiB), fetched at startup into
+    # /srv/models/rad/StillDeadcode/qwen3.8-next-flash-iqr-v4/. Every start re-checks
+    # the hub; an unreachable hub serves the last complete fetch (GUIDE 3.1).
+    # Pinned: the repo has no tags, so model-revision names the full commit sha.
+    model: StillDeadcode/qwen3.8-next-flash-iqr-v4
+    model-revision: 679c943216e5a33da5f458b5da378586219e874b
+
+  # --- Per-model examples (uncomment one block; the old README "Run without
+  #     Docker" flag lines, converted to YAML). Published containers use their HF
+  #     repo ids; where a block keeps a local path there is no container repo
+  #     (bf16 conversions, EmbeddingGemma, the IQR-V4 family) - point `model:`
+  #     at your own container. ---
+
+  # --- Qwen3.8-Flash-Next (qwen3.8-next-flash-iqr-v4.rad: int8 trunk + IQR-V4
+  #     experts; the old fp8-iq4r-moe container is refused by 2.0.0) ---
+  #flashnext:
+  #  model: StillDeadcode/qwen3.8-next-flash-iqr-v4
+  #  model-revision: 679c943216e5a33da5f458b5da378586219e874b
+  #  tp: 2
+  #  tp-wire: wht6
+  #  max-num-seqs: 8
+  #  max-model-len: 200000
+  #  placement: expert_tiered
+  #  host-pool-mib: 24576
+  #  kv-cache-dtype: i8
+  #  num-speculative-tokens: 3
+  #  max-num-batched-tokens: 2048
+
+  # --- Qwen3.8-Flash-Next, four ranks ---
+  #flashnext-tp4:
+  #  model: StillDeadcode/qwen3.8-next-flash-iqr-v4
+  #  model-revision: 679c943216e5a33da5f458b5da378586219e874b
+  #  tp: 4
+  #  max-num-seqs: 8
+  #  max-model-len: 200000
+  #  placement: expert_tiered
+  #  host-pool-mib: 49152
+  #  kv-cache-dtype: i8
+  #  num-speculative-tokens: 3
+  #  max-num-batched-tokens: 2048
+
+  # --- Qwen3.8-Flash-Next, three ranks (docs/TP3.md) ---
+  #flashnext-tp3:
+  #  model: StillDeadcode/qwen3.8-next-flash-iqr-v4
+  #  model-revision: 679c943216e5a33da5f458b5da378586219e874b
+  #  tp: 3
+  #  max-num-seqs: 8
+  #  max-model-len: 200000
+  #  placement: expert_tiered
+  #  host-pool-mib: 24576
+  #  kv-cache-dtype: i8
+  #  num-speculative-tokens: 3
+  #  max-num-batched-tokens: 2048
+
+  # --- Qwen3.8-Flash-Next bf16 (disk-streamed reference; also set
+  #     memory.gpu-headroom-mib: 768 above) ---
+  #     No published bf16 container repo (README: convert from the
+  #     checkpoint); keep a local path.
+  #flashnext-bf16:
+  #  model: /srv/models/rad/CHANGE_ME-bf16.rad
+  #  tp: 2
+  #  max-model-len: 32768
+  #  placement: expert_tiered
+  #  weights-disk-tier: true
+  #  host-pool-mib: 24576
+  #  deterministic: true
+  #  max-num-seqs: 32
+  #  max-num-batched-tokens: 32768
+  #  num-speculative-tokens: 0
+
+  # --- Qwen3.8-27B IQ8R / Qwen3.6-35B-A3B IQ8R / Qwen3.8-27B IQR-V4
+  #     (FP8 and MXFP4 containers are refused by 2.0.0; the shipped
+  #     replacements are qwen3.8-27b-iq8r-dflash.rad, qwen3.6-35b-a3b-iq8r.rad
+  #     and the iq2r..iq8r-v4 family) ---
+  #qwen-iq8r:
+  #  model: StillDeadcode/qwen3.8-27b-iq8r-dflash
+  #  model-revision: c127a34140e4cbc5c7c1a1925810f323b3f10920
+  #  tp: 2
+  #  max-num-seqs: 32
+  #  max-model-len: 200000
+  #  kv-cache-dtype: i8
+
+  # --- Qwen3.6-35B-A3B IQ8R (repo id, single container) ---
+  #qwen36-35b:
+  #  model: StillDeadcode/qwen3.6-35b-a3b-iq8r
+  #  model-revision: 38301fafc3e711759dfd207b995cddda874a54b9
+  #  tp: 2
+  #  max-num-seqs: 32
+  #  max-model-len: 200000
+  #  kv-cache-dtype: i8
+
+  # --- Qwen3.8-27B bf16 ---
+  #qwen27b-bf16:
+  #  model: /srv/models/rad/CHANGE_ME-bf16.rad
+  #  tp: 2
+  #  max-num-seqs: 8
+  #  max-model-len: 200000
+  #  kv-cache-dtype: i8
+
+  # --- MiniCPM5-2B IQ8R (FP8 container refused by 2.0.0; with the bf16
+  #     container add num-speculative-tokens: 0 - its drafter is block-FP8.
+  #     Also set memory.gpu-headroom-mib: 160 above.) ---
+  #minicpm5:
+  #  model: StillDeadcode/minicpm5-2b-iq8r
+  #  model-revision: 5fdbcc99560829da68659bf4fa6cbf1f356ccfc1
+  #  tp: 2
+  #  max-num-seqs: 32
+  #  max-model-len: 131072
+  #  kv-cache-dtype: i8
+  #  max-num-batched-tokens: 512
+
+  # --- MiniCPM5-2B bf16 (repo id; serves without its block-FP8 drafter) ---
+  #minicpm5-bf16:
+  #  model: StillDeadcode/minicpm5-2b-bf16
+  #  model-revision: ef5a0073e182d2a68ea41a4f1725052764a3b888
+  #  tp: 2
+  #  max-num-seqs: 32
+  #  max-model-len: 131072
+  #  num-speculative-tokens: 0
+  #  max-num-batched-tokens: 512
+
+  # --- Qwen3.8-27B IQR-V4 family: NO repo-id fetch. StillDeadcode/qwen3.8-27b-iqr-v4
+  #     holds 15 .rad containers; a repo-id model: fetches all ~290 GiB and is then
+  #     refused as ambiguous. Pre-fetch one file, then point at it:
+  #     sudo /usr/libexec/radiance/hfget.sh StillDeadcode/qwen3.8-27b-iqr-v4 \
+  #          /srv/models/rad/StillDeadcode/qwen3.8-27b-iqr-v4
+  #qwen27b-iqr:
+  #  model: /srv/models/rad/StillDeadcode/qwen3.8-27b-iqr-v4/qwen3.8-27b-iq4r-l-v4.rad
+  #  tp: 2
+  #  max-num-seqs: 32
+  #  max-model-len: 200000
+  #  kv-cache-dtype: i8
+
+  # --- EmbeddingGemma 2 bf16 (one card) ---
+  #     No radiance container repo for it exists (convert from Google's
+  #     checkpoint, README); keep a local path.
+  #embeddinggemma:
+  #  model: /srv/models/rad/CHANGE_ME.rad
+  #  tp: 1
+  #  max-num-seqs: 64
+  #  max-num-batched-tokens: 8192
+
+# Optional model keys worth knowing (radiance --help lists every one):
+#   prefill-interleave: N   decode-only steps scheduled between prefill chunks. The
+#                           2.0.0 default auto:1 sizes them from measured step times
+#                           (a decode that used to wait behind a 64K prompt runs
+#                           12.3 -> 40.9 tok/s; GUIDE.md 4.x). 0 restores the old
+#                           schedule; N pins the share.
+#   prefix-cache-mib: N     keeps finished conversations in RAM, UNENCRYPTED
+#   prefix-cache-ttl: S     how long a prefix entry stays (GUIDE.md 4.8)
+#   deterministic: true     reproducible scheduling (disables the lending cache)
+#   debug-graph: true       prints op->kernel resolution and exits (diagnostic,
+#                           not for serving)

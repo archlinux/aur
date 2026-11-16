@@ -3,5 +3,6 @@
 !.SRCINFO
 !.gitignore
 !radiance-inference-git.install
-!radiance.conf
+!radiance.env
 !radiance.service
+!radiance.yaml

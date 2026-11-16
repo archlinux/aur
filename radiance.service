@@ -1,5 +1,4 @@
-# Installed verbatim by the radiance-inference-git PKGBUILD (install -Dm644):
-# the ${...} below belong to systemd at runtime, not to the packaging shell.
+# Installed verbatim by the radiance-inference-git PKGBUILD (install -Dm644).
 [Unit]
 Description=radiance LLM inference server (OpenAI-compatible HTTP API)
 Documentation=https://codeberg.org/StillDeadcode/radiance
@@ -8,25 +7,17 @@ Wants=network-online.target
 
 [Service]
 Type=exec
-# 0600 root:root - it is the only place a --api-key can go. PID 1 reads EnvironmentFile as
-# root, so the unit needs no access beyond that. Adding User= below would mean making this
-# file group-readable for that user, which widens the secret's audience: keep the key here
-# (0600), or move it to its own 0600 file via a `systemctl edit radiance` drop-in that adds
-# EnvironmentFile= - and note that a drop-in ExecStart must escape \$RADIANCE_EXTRA_ARGS,
-# since escaping moves the expansion into the service shell.
-EnvironmentFile=/etc/radiance/radiance.conf
+# The server reads its settings from /etc/radiance/radiance.yaml (radiance 2.0.0+
+# accepts only --help/--check/--config FILE). The API key travels through the
+# environment: the YAML names it with server.api-key-env, and radiance.env (0600
+# root:root, optional, in backup=) supplies it. PID 1 reads it as root, so the
+# unit needs no access beyond that; adding User= below would mean making the file
+# group-readable for that user, widening the secret's audience.
+EnvironmentFile=-/etc/radiance/radiance.env
 # The HIP runtime caps one allocation and the heap below what the placement plan
 # hands out (Dockerfile ENV, docs/DOCKER.md).
 Environment=GPU_MAX_ALLOC_PERCENT=100 GPU_MAX_HEAP_SIZE=100
-# systemd expansion (verified empirically on systemd 262, not from docs):
-#   $VAR    -> value SPLIT on whitespace into zero-or-more arguments; an empty or
-#              unset value contributes ZERO arguments.
-#   ${VAR}  -> exactly ONE argument, spaces included; empty/unset contributes one
-#              EMPTY argument (radiance rejects it: "unknown option ''").
-# So the flag bag MUST be the bare $RADIANCE_EXTRA_ARGS form; ${...} is kept on
-# model/host/port where a single argument is what we want. Quotes in the conf are
-# irrelevant: EnvironmentFile strips them before expansion either way.
-ExecStart=/usr/bin/radiance --model ${RADIANCE_MODEL} --host ${RADIANCE_HOST} --port ${RADIANCE_PORT} $RADIANCE_EXTRA_ARGS
+ExecStart=/usr/bin/radiance --config /etc/radiance/radiance.yaml
 
 Restart=on-failure
 RestartSec=15
@@ -37,10 +28,14 @@ TimeoutStopSec=90
 # mbind/set_mempolicy refusal stops model serving (docs/DOCKER.md).
 NoNewPrivileges=yes
 ProtectSystem=strict
+# model: <owner/name> fetches (hfget.sh) write under the server.download-dir.
+# ProtectSystem=strict mounts the whole hierarchy, /srv included, read-only
+# (systemd.exec(5)); without this the fetch dies EROFS and startup fails.
+ReadWritePaths=/srv/models/rad
 ProtectHome=read-only
 PrivateTmp=yes
 UMask=0077
-# --host-pool-mib pins host memory; Arch defaults to 8 MiB. Required for GPU host tiers.
+# host-pool-mib pins host memory; Arch defaults to 8 MiB. Required for GPU host tiers.
 LimitMEMLOCK=infinity
 
 [Install]
