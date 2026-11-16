@@ -4,7 +4,7 @@
 
 pkgname=filee-bin
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline file converter for images, PDF, Office, HWP, video, audio, e-books and archives (upstream binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/KnifeLemon/Filee"
@@ -41,10 +41,12 @@ package() {
   [[ $CARCH == aarch64 ]] && _dir="$srcdir/Filee-${pkgver}-linux-arm64"
 
   # upstream's self-contained bundle, without its scripts that copy it into
-  # the home directory
+  # the home directory. The filee.portable marker would make it keep its data
+  # in the read-only /opt/filee/data, so it goes too, as in upstream's install.sh.
   install -d "$pkgdir/opt/filee"
   cp -a "$_dir/." "$pkgdir/opt/filee/"
   rm "$pkgdir/opt/filee/"{install,uninstall}.sh
+  rm -rf "$pkgdir/opt/filee/"{filee.portable,data}
 
   # same command name as upstream's install.sh gives the CLI
   install -d "$pkgdir/usr/bin"
