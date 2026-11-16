@@ -1,6 +1,6 @@
 pkgbase = libasciichat-git
 	pkgdesc = Development libraries and documentation for ascii-chat
-	pkgver = 0.4.12.r29.ga8971483
+	pkgver = 0.16.34.r4.ga6221f2ad
 	pkgrel = 1
 	url = https://github.com/zfogg/ascii-chat
 	arch = x86_64
