@@ -2,7 +2,7 @@
 _appname=compressO
 pkgname="${_appname//O/o}-bin"
 _pkgname=CompressO
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="A free and open-sourced cross-platform video compression app powered by FFmpeg."
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
     'ffmpeg'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('67cd467b7a6ec20865478f8dac6b98ad6b86f8ae5e904558cb500f1ea6d2aa87')
+sha256sums=('9ef6023e712dc9de17d0b543bacf801142ba0bd28dfcb7cc3cefd058e2c4128e')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
