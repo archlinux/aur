@@ -6,9 +6,9 @@
 # .github/scripts/generate_aur_files.sh --package zenith-bar-bin.
 pkgname=zenith-bar-bin
 _pkgname=zenith-bar
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
-pkgdesc="The lightest beautiful status bar for Wayland (prebuilt binary)"
+pkgdesc="The lightest beautiful status bar for Wayland: GTK4 glass themes at zero idle CPU, for Hyprland, Sway, niri and river (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/CPT-Dawn/Zenith"
 license=('MIT')
@@ -19,6 +19,7 @@ depends=(
   'graphene'
   'gtk4>=1:4.22'
   'gtk4-layer-shell'
+  'libsoup3'
   'pango'
 )
 optdepends=('ttf-inter: the recommended UI font'
@@ -29,7 +30,7 @@ conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 install="${_pkgname}.install"
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.tar.gz")
-sha256sums_x86_64=('559550d1ed66fd09f8fa789840a58ae84d7061190e8e90b046db36eb8195c273')
+sha256sums_x86_64=('b5e77139a9403adeef41f8be4614b185bdcd57c22758dc06109e97c7c25420ee')
 
 package() {
   cd "${_pkgname}-${pkgver}-x86_64"
