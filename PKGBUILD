@@ -4,7 +4,7 @@ _pkgexec=mdedup
 _pkgauthor=kdeldycke
 _pkgname=mail-deduplicate
 pkgname=${_pkgname}-bin
-pkgver=9.6.0
+pkgver=9.7.0
 pkgrel=1
 pkgdesc='CLI to deduplicate mails from mail boxes'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -18,18 +18,18 @@ options=('!strip')
 source=("LICENSE-${pkgver}::${_urlraw}/license"
         "README-${pkgver}.md::${_urlraw}/readme.md"
         "CHANGELOG-${pkgver}.md::${_urlraw}/changelog.md")
-source_x86_64=("${_pkgexec}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgexec}-linux-x64.bin")
-source_aarch64=("${_pkgexec}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgexec}-linux-arm64.bin")
+source_x86_64=("${_pkgexec}-${pkgver}-${arch[0]}::${url}/releases/download/v${pkgver}/${_pkgexec}-linux-x64.bin")
+source_aarch64=("${_pkgexec}-${pkgver}-${arch[1]}::${url}/releases/download/v${pkgver}/${_pkgexec}-linux-arm64.bin")
 sha256sums=('8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643'
             'c25019e1a51096a8dff4eb096f1d78d1edd750e053b870d9fd3b71b46b06b6d2'
-            'd5c495fb97b9fc02f59a0c75f6f513cfb3e86220435f80174652929fa7140939')
-sha256sums_x86_64=('8964564c8246fb3721f9356ddd28da01169f6179db1726c7e50e55b921527440')
-sha256sums_aarch64=('8964564c8246fb3721f9356ddd28da01169f6179db1726c7e50e55b921527440')
+            'bde59b1bca604b29d5094770fd7aaa026a36903eae1ca461b4e6b4e94f9c4a8b')
+sha256sums_x86_64=('d7edc1559b09cd904a412e99592d8a1f70814d3ea100498107ac5d2b2e5d951c')
+sha256sums_aarch64=('f6ccf6cf17500f802a93e4beaca9a98f89a07f64ea4b60ce578663c13d6ab3d0')
 
 package() {
   cd "${srcdir}/" || exit
 
-  install -Dm755 "${_pkgexec}-${pkgver}" "${pkgdir}/usr/bin/${_pkgexec}"
+  install -Dm755 "${_pkgexec}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${_pkgexec}"
 
   install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
