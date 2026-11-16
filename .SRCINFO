@@ -1,6 +1,6 @@
 pkgbase = dsh-hyprland
 	pkgdesc = DeepSeek Harness desktop (upstream payload) with the dsh-hyprland launcher shell
-	pkgver = 0.2.2.rc.2.g1d4c1b0
+	pkgver = 0.2.2.rc.2.gf01a3cb
 	pkgrel = 1
 	url = https://github.com/shenli306/dsh-hyprland
 	arch = x86_64
@@ -40,8 +40,8 @@ pkgbase = dsh-hyprland
 	options = !strip
 	options = !debug
 	source = https://codeload.github.com/deepseek-ai/deepseek-harness/tar.gz/refs/tags/dsh-v0.2.2-rc.2
-	source = https://codeload.github.com/shenli306/dsh-hyprland/tar.gz/1d4c1b05680678b7d8854f4cd549708c962d0331
+	source = https://codeload.github.com/shenli306/dsh-hyprland/tar.gz/f01a3cb9aa6c862b0393cf9f3d7cfc797c9f9d30
 	sha256sums = d376fe64ec4b7c9b5837fb1155ed3a48e7e0e5f5b0aae0b91d9fb836daa8c20e
-	sha256sums = b06654c96c571ce530980ec64c8083c1d3dd592aefcb99a0cad4a214467f46c3
+	sha256sums = fb324676d0de6b990e99d346f0e24305dd557427cc555be8bb971ef6ceee7b7f
 
 pkgname = dsh-hyprland
