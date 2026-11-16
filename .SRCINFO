@@ -65,10 +65,8 @@ pkgbase = mesa-kraid-git
 	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main
 	source = mesa-kraid.sh
 	source = 60-mesa-kraid.conf
-	source = kraid-meson-sandbox.patch
 	sha256sums = SKIP
 	sha256sums = bc1d1878130a64d1c8006fec6455418256c1cf259ec9cc09209868d3b4f4e97f
 	sha256sums = c009ee43740dacad9fd350f6595a5b6cc941e2f138e989d541c3b0831c4bdd52
-	sha256sums = 34ec69be39064e8d7acc94f6529bf4042ab1059aab9ef0495233527d390b06d5
 
 pkgname = mesa-kraid-git

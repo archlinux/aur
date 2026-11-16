@@ -24,12 +24,10 @@ backup=('etc/profile.d/mesa-kraid.sh')
 options=('!lto')
 source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main"
         'mesa-kraid.sh'
-        '60-mesa-kraid.conf'
-        'kraid-meson-sandbox.patch')
+        '60-mesa-kraid.conf')
 sha256sums=('SKIP'
             'bc1d1878130a64d1c8006fec6455418256c1cf259ec9cc09209868d3b4f4e97f'
-            'c009ee43740dacad9fd350f6595a5b6cc941e2f138e989d541c3b0831c4bdd52'
-            '34ec69be39064e8d7acc94f6529bf4042ab1059aab9ef0495233527d390b06d5')
+            'c009ee43740dacad9fd350f6595a5b6cc941e2f138e989d541c3b0831c4bdd52')
 
 pkgver() {
   cd "$srcdir/mesa"
@@ -53,12 +51,8 @@ prepare() {
     echo "this Mesa revision has no -Dpanfrost-rust option (KRAID not present)" >&2
     return 1
   }
-  git -C "$srcdir/mesa" apply --check "$srcdir/kraid-meson-sandbox.patch" || {
-    echo "kraid-meson-sandbox.patch no longer applies: check whether upstream fixed the bindings'" >&2
-    echo "include_directories in src/compiler/rust and src/panfrost/compiler/kraid, then update or drop it" >&2
-    return 1
-  }
-  git -C "$srcdir/mesa" apply "$srcdir/kraid-meson-sandbox.patch"
+  # (kraid-meson-sandbox.patch dropped 2026-11-15: main @6c09d07c567 builds the bindings' include_directories
+  #  unpatched with meson 1.12.1-2; it is in git history if a sandbox violation comes back)
 
   # KRAID's Rust crates (meson wraps with their hashes) fetched here, so build() runs offline: every *-rs wrap,
   # which keeps up with main without a list to maintain (~5 MB); the other wraps are system libraries
