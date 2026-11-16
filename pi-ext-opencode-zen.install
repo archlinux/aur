@@ -7,9 +7,8 @@ restart pi:
     "extensions": ["/usr/share/pi/extensions"]
 
 That one directory entry loads every Pi extension installed by pacman, this
-package included. On this machine the entry already exists, so a fresh
-pacman -U needs only a pi restart: the provider registers as "opencode-zen"
-and pi-bolt --list-models lists its models.
+package included. The provider registers as "opencode-zen"; pick its models
+in pi's /model menu.
 
 Other Pi extensions packaged by other maintainers install into the same root, so
 one entry covers those too.
