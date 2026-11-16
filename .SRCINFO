@@ -1,26 +1,31 @@
 pkgbase = wluma-git
 	pkgdesc = Automatic brightness adjustment based on screen contents and ALS
-	pkgver = 4.4.0.r3.g8df0b8e
+	pkgver = 5.0.4.r6.gba70dbb
 	pkgrel = 1
-	url = https://github.com/maximbaz/wluma
+	url = https://github.com/max-baz/wluma
 	arch = x86_64
 	arch = aarch64
 	license = ISC
-	makedepends = git
 	makedepends = cargo
 	makedepends = clang
-	makedepends = systemd
-	makedepends = marked-man
-	depends = vulkan-icd-loader
-	depends = systemd-libs
+	makedepends = git
+	depends = dbus
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
+	depends = libpipewire
+	depends = systemd-libs
 	depends = v4l-utils
-	optdepends = vulkan-driver: for using capturer=wlroots in config.toml
-	optdepends = wayland: for using capturer=wlroots in config.toml
-	provides = wluma
+	depends = vulkan-icd-loader
+	optdepends = vulkan-driver: screen content analysis
+	optdepends = wayland: Wayland screen capture and idle detection
+	optdepends = xdg-desktop-portal: PipeWire screen capture through the ScreenCast portal
+	optdepends = iio-sensor-proxy: ambient light sensor access over D-Bus
+	optdepends = upower: separate idle dimming settings on AC and battery
+	optdepends = ddcutil-service: preferred DDC/CI backend for external monitors
+	provides = wluma=5.0.4
 	conflicts = wluma
-	source = git+https://github.com/maximbaz/wluma.git
+	options = !lto
+	source = git+https://github.com/max-baz/wluma.git
 	sha256sums = SKIP
 
 pkgname = wluma-git
