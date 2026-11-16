@@ -1,6 +1,6 @@
 pkgbase = profer-git
 	pkgdesc = General AI Agent desktop application based on Claude Agent SDK and Pi runtime: multi-model access, collaborative sub-agent, timed task automation, tablet remote access, and team workspace.
-	pkgver = 0.16.22.r1.g424a9df
+	pkgver = 0.16.26.r2.gbe2de2b
 	pkgrel = 1
 	url = https://profer.cn
 	arch = any
@@ -18,13 +18,13 @@ pkgbase = profer-git
 	depends = python-yaml
 	depends = python-pillow
 	depends = python-defusedxml
-	provides = profer=0.16.22
+	provides = profer=0.16.26
 	conflicts = profer
 	source = profer.git::git+https://github.com/Yuan-lai-ru-ci/ProferAI.git
 	source = profer.js
 	source = profer.sh
 	sha256sums = SKIP
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
 pkgname = profer-git
