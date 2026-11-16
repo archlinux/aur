@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spaceknife-bin
 _pkgname=SpaceKnife
-pkgver=0.3.4
+pkgver=0.3.6
 _electronversion=44
 pkgrel=1
 pkgdesc=" A modern, cross-platform disk usage analyzer: a live treemap that shows what fills your drives.现代化的跨平台硬盘占用分析工具，实时树图"
@@ -33,8 +33,8 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/down
 sha256sums=('fe565afa07a5cc5977f66594f3942f9019b19edcddd94f3984b00cd3dfd607bc'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
-sha256sums_aarch64=('28f3368cce1964fffab79ef9800e77a4d2b0fe70fc7b3b1130161523ff9c83ff')
-sha256sums_x86_64=('c0fa2e138d978bed80bd57682cc3dd85941ceb722614aa33daa9ca33ffa3d64f')
+sha256sums_aarch64=('177c9289e16ee85bf508b8229d999c99e0fa076c4f2e2945f05b9bae7fcefa9f')
+sha256sums_x86_64=('d5c721d3a666292aed3aa79677c0e6ab3cc9263843d45e87c5dde9ff33ba2091')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
