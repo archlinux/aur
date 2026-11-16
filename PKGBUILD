@@ -4,7 +4,7 @@
 _pkgauthor=yamafaktory
 _pkgname=jql
 pkgname=${_pkgname}-bin
-pkgver=9.0.4
+pkgver=9.0.5
 _pkgvername=jql-v${pkgver}
 pkgrel=1
 pkgdesc='A JSON Query Language CLI tool'
@@ -24,12 +24,12 @@ source=("PERFORMANCE-${pkgver}.md::${_urlraw}/PERFORMANCE.md"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgvername}-${_barch[0]}-unknown-linux-musl.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgvername}-${_barch[1]}-unknown-linux-musl.tar.gz")
 
-sha256sums=('7710b8ed63ac0e702e46065c6c1aaae3465dee1c514158986b9efd71410e4f96'
+sha256sums=('de6ce715b44970a71d6ae7d476bfe9ab8e6c3c512b88a2af3ca5da4da89848d5'
             '9c838d764df73a54555ceca5d5b4ee92be4e3ed846af876b0d992dd1f1694ada'
             'a2d0e76cc3e9053d72ab5372728ae01c3c323848db4d3c40d713f9de62be30cc'
             '2282729282450a05a4908270ed7685dfc6aa0c3e86f2352cf4daa252c4cf6bf8')
-sha256sums_x86_64=('0ee9bc20ddc53dd13e3f8d84adbb4ff446a275d20f1c7fde83859382f307e7f0')
-sha256sums_aarch64=('b10c29e3aa8790e7dbcf998e4c290a8a90c8c4a75354f630065eac7c24974a96')
+sha256sums_x86_64=('6fcee875408f325503f65c84fe7d4175b6702fa8e551c4b29ab38fba13a96aa2')
+sha256sums_aarch64=('2f4d893c65c9d3e95da0429676da700d2a678a7e21702e3db120a53c36e42d82')
 
 package() {
     cd "${srcdir}" || exit 1
