@@ -1,7 +1,7 @@
 # Maintainer: Alex S. <shantanna_at_hotmail_dot_com>
 
 pkgname=kinoklip-bin
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Kinoklip — video editor: cut, arrange, add effects and export'
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=(!strip)
 _appimage="Kinoklip-${pkgver}-x86_64.AppImage"
 
 source=("${_appimage}::https://github.com/SeniorMatt/kinoklip/releases/download/v${pkgver}/Kinoklip-x86_64.AppImage")
-sha256sums=('526812dab4efcac8dff7e992b53ebf6f7688684e467af993c3165f5969e96fbf')
+sha256sums=('5c4b3f182b225216640fa61094d00eb72f839f88deb3592cb7a32df177eed5b6')
 prepare() {
   cd "${srcdir}"
   chmod +x "${_appimage}"
