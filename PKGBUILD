@@ -1,7 +1,7 @@
 # Maintainer: Julianmb <julianmboruta@gmail.com>
 # Generate .SRCINFO file: makepkg --printsrcinfo > .SRCINFO
 pkgname=autosubsync-bin
-pkgver=6.6
+pkgver=6.7
 pkgrel=1
 pkgdesc="Automatic subtitle synchronization tool."
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
 )
 
 sha256sums=(
-  '9c8660e6e61482a8e44c7f62830b41763eaa13ad3f7aacef48170770f56fb84e'
+  'db7d0d852d7b4c4fab6e208f1209c572a439d527dd93f75324046cf46aafd72a'
   'b27664fad5e07c71d39b91234e8cd9d5127788e73b907bd9b78f2331ad5ee9fc'
 )
 
