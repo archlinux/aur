@@ -15,7 +15,7 @@ conflicts=("${_basename}")
 provides=("${_basename}")
 
 makedepends=('tar')
-depends=('glibc' 'libgcc' 'gtk4' 'glib2' 'git' 'python' 'gdk-pixbuf2' 'pango' 'graphene' 'hicolor-icon-theme')
+depends=('electron' 'nodejs' 'python' 'glibc' 'libgcc' 'gtk4' 'glib2' 'git' 'python' 'gdk-pixbuf2' 'pango' 'graphene' 'hicolor-icon-theme')
 optdepends=('bubblewrap: Sandbox for non-TypeScript extensions'
             'gtk4-layer-shell: Overlay on wlroots compositors'
             'wl-clipboard: Clipboard history on Wayland'
