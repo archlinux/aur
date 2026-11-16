@@ -1,6 +1,6 @@
 pkgbase = zig-analyzer-bin
 	pkgdesc = Zig language server with compiler diagnostics and comptime-aware analysis
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/jinzhongjia/zig-analyzer
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = zig-analyzer-bin
 	conflicts = zig-analyzer
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/jinzhongjia/zig-analyzer/releases/download/v0.1.1/zig-analyzer-v0.1.1-x86_64-linux-ReleaseSafe.tar.gz
-	sha256sums_x86_64 = 250eb46f0d0c772b4e6133cc9498fabd3cd748eaf964db2b86a6d7d45bb8ad2e
-	source_aarch64 = https://github.com/jinzhongjia/zig-analyzer/releases/download/v0.1.1/zig-analyzer-v0.1.1-aarch64-linux-ReleaseSafe.tar.gz
-	sha256sums_aarch64 = df76986485fbd4b9f4ad7077c65e6fc8acb09a2ce419cfbf5798bfd599bb2b0f
+	source_x86_64 = https://github.com/jinzhongjia/zig-analyzer/releases/download/v0.1.2/zig-analyzer-v0.1.2-x86_64-linux-ReleaseSafe.tar.gz
+	sha256sums_x86_64 = 1522a44a6d8ded64e8e4d9465eaac98a733fe5026d5d8901aceaca73bb5e861d
+	source_aarch64 = https://github.com/jinzhongjia/zig-analyzer/releases/download/v0.1.2/zig-analyzer-v0.1.2-aarch64-linux-ReleaseSafe.tar.gz
+	sha256sums_aarch64 = 5c7997e05631648e2521eb8c77f9ce8515ba1671f3253771ebd0e21916750e98
 
 pkgname = zig-analyzer-bin
