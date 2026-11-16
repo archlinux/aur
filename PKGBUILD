@@ -1,8 +1,8 @@
 # Maintainer: Ash <xash at riseup d0t net>
 # Contributor: kryksyh <kryksyh@gmail.com>
 pkgname=audacity4-bin
-pkgver=4.0.1
-pkgrel=2
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="Audacity 4, the next generation of the popular multi-track audio editor"
 arch=('x86_64')
 url="https://github.com/audacity/audacity"
@@ -12,7 +12,7 @@ provides=('audacity4')
 _appimage="audacity-linux-${pkgver}-$CARCH.AppImage"
 source=("${_appimage}::https://github.com/audacity/audacity/releases/download/Audacity-${pkgver}/${_appimage}")
 noextract=("${_appimage}")
-sha256sums=('ca2f04f172124d1f18ac608749854c5d31f04ab266a758c348190c05d9b2087c')
+sha256sums=('a5f8787aa13cdb500a60fc013403b986776876b960cca962bc6e7fff066172f3')
 
 prepare() {
 	cd "$srcdir"
