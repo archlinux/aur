@@ -54,6 +54,7 @@ b2sums=('c1d8c7bcc5b7e3fef65297d1712d7fc0d17b22cf12fa32ab94fdb29ddd1da46c96d6984
 prepare() {
   cd "$_name-$pkgver" || exit
   # The server's socket folder of Arch's postgresql, as in postgresql-libs
+  # upstream: none, the socket folder of Arch's postgresql
   patch -Np1 -i "$srcdir/0001-Set-DEFAULT_PGSOCKET_DIR-to-run-postgresql.patch"
 }
 
