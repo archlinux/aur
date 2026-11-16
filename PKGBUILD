@@ -44,11 +44,12 @@ prepare() {
   # Test_Deherit()'s parameter marked as unused, so the test plugin compiles without warnings,
   # merged upstream after v2.15.1-1 (https://github.com/davenonymous/SMJansson/pull/16)
   patch -Np1 -i "$srcdir/smjansson-test-deherit-unused.patch"
-  # --system-jansson, which links the installed jansson instead of building the bundled one
-  # (https://github.com/davenonymous/SMJansson/pull/18)
+  # --system-jansson, which links the installed jansson instead of building the bundled one,
+  # merged upstream after v2.15.1-1 (https://github.com/davenonymous/SMJansson/pull/18)
   patch -Np1 -i "$srcdir/smjansson-system-jansson.patch"
   # The scripting files copied again when the build is configured again, as in a build without -C,
-  # instead of removed (https://github.com/davenonymous/SMJansson/pull/19)
+  # instead of removed, merged upstream after v2.15.1-1
+  # (https://github.com/davenonymous/SMJansson/pull/19)
   patch -Np1 -i "$srcdir/smjansson-packagescript-always-copy.patch"
 
   # Nothing prebuilt or bundled: the test plugin, jansson's sources and its configuration headers
