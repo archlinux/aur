@@ -22,8 +22,8 @@ pkgbase = opencie-pkcs11
 	depends = libtiff
 	depends = zlib
 	source = opencie-pkcs11-1.4.0.tar.gz::https://github.com/M0Rf30/opencie-pkcs11/archive/refs/tags/1.4.0.tar.gz
-	source = podofo-1.1.2.tar.gz::https://github.com/podofo/podofo/archive/refs/tags/1.1.2.tar.gz
+	source = podofo-1.1.3.tar.gz::https://github.com/podofo/podofo/archive/refs/tags/1.1.3.tar.gz
 	sha256sums = 7a4554866a5342b37291e53ab4d034f4801f980d9d46bd97ff586964b7e75a58
-	sha256sums = d6ffe6fc173ac6d6e5b00f5cb9db01990cab1bdf7cc03bdeffce3013bc9ec63a
+	sha256sums = 9fe13b87148cd9691dc7f5b40dca9ce789576c131fe65e90a09e163a4fb25c31
 
 pkgname = opencie-pkcs11
