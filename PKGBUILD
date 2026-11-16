@@ -15,7 +15,7 @@ source=(
   "https://github.com/COMBINE-lab/oarfish/releases/download/v${pkgver}/oarfish-x86_64-unknown-linux-gnu.tar.xz"
   "https://raw.githubusercontent.com/COMBINE-lab/oarfish/v${pkgver}/LICENSE"
 )
-sha256sums=('133c83072529f5f77e1666130719ac7d8f6c0aa7b34393b4c3a188be39702089'
+sha256sums=('259f913da9efa85c7ea26ed301bd1965bcac5adfce6ea237652406251a3f36a6'
             '54e1dcacaa7246fa5e4decdfce6462843d5a09ac2e2d5a846c02b40f15027d9f')
 
 package() {
