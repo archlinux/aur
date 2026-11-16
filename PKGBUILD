@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-ansilogs
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 epoch=
 pkgdesc="Colored, single-line log output for command-line tools: a dependency-free coloredlogs.install() replacement"
