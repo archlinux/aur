@@ -40,6 +40,22 @@ b2sums=('7533a4ed44964bcb3878e8a968c86cce9eb6e77a663bf08dee0acbc4ad66d144e76153a
   '1c6d0dd9a35c57922f1ee7d746785106cb16666106b806a787c80e2a9e18c3523a241e68b6c0d964ff8378ef1c41a4875bb3ecb3366a21ff0e54b833c4e7d8a4'
   '70d2e695a116fb5d4fecf52bf79f16f4c6c7db64c0244ce04b5de0a185f1ef7c77b5c71f892199f7e531936b8d51f619ac5469cbfc8a31089d5a6861ec7beed5')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -64,6 +80,8 @@ _dotnet_env() {
 }
 
 prepare() {
+  # The SDK to build with (_dotnet_sdk), for dotnet anywhere in $srcdir
+  printf '{ "sdk": { "version": "%s", "rollForward": "latestPatch" } }\n' "$(_dotnet_sdk)" >"$srcdir/global.json"
   cd "Pester-$pkgver" || exit
   # The Gherkin parser comes from dotnet-gherkin-5 instead of the prebuilt one. The one for Windows
   # PowerShell (legacy) isn't needed, as PowerShell loads the one for .NET (core).
