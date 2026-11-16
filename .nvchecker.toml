@@ -1,0 +1,3 @@
+[python-desktop-notifier]
+source = "pypi"
+pypi = "desktop-notifier"
