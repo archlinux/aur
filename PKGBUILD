@@ -2,7 +2,7 @@
 
 pkgname=bettertricks-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Recovery-first Wine prefix manager and Winetricks-compatible recipe engine (binary)"
 arch=('x86_64')
 options=('!strip' '!debug')
@@ -14,11 +14,12 @@ optdepends=('zenity: graphical prompts for compatibility-host recipes')
 provides=('bettertricks')
 conflicts=('bettertricks')
 _debname="Bettertricks_1.2_amd64.deb"  # release files drop a zero patch version
+# Versioned names: AUR helpers reuse a cached file with the same name.
 source=(
   "$_debname::$url/releases/download/v$pkgver/$_debname"
-  "LICENSE::$url/raw/v$pkgver/LICENSE"
-  "bettertricks.desktop::$url/raw/v$pkgver/packaging/linux/io.bettertricks.desktop.desktop"
-  "bettertricks.metainfo.xml::$url/raw/v$pkgver/packaging/linux/io.bettertricks.desktop.metainfo.xml"
+  "LICENSE-$pkgver::$url/raw/v$pkgver/LICENSE"
+  "bettertricks-$pkgver.desktop::$url/raw/v$pkgver/packaging/linux/io.bettertricks.desktop.desktop"
+  "bettertricks-$pkgver.metainfo.xml::$url/raw/v$pkgver/packaging/linux/io.bettertricks.desktop.metainfo.xml"
 )
 noextract=("$_debname")
 sha256sums=('5eda3f27bf96d054cae265d6c4aa59296fdc87b889377142674e887264ad71a6'
@@ -30,9 +31,9 @@ package() {
   bsdtar -xOf "$srcdir/$_debname" data.tar.gz | bsdtar -xf - -C "$pkgdir"
 
   rm "$pkgdir/usr/share/applications/Bettertricks.desktop"
-  install -Dm644 "$srcdir/bettertricks.desktop" \
+  install -Dm644 "$srcdir/bettertricks-$pkgver.desktop" \
     "$pkgdir/usr/share/applications/Bettertricks.desktop"
-  install -Dm644 "$srcdir/bettertricks.metainfo.xml" \
+  install -Dm644 "$srcdir/bettertricks-$pkgver.metainfo.xml" \
     "$pkgdir/usr/share/metainfo/io.bettertricks.desktop.metainfo.xml"
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
