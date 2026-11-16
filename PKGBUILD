@@ -1,30 +1,31 @@
-# Maintainer: Keil Miller Jr <keilmillerjr@outlook.com>
-pkgname="endlines"
-pkgver=1.9.2
-pkgrel=3
-pkgdesc="Endlines smartly converts text files line endings."
-arch=("x86_64")
-url="https://github.com/mdolidon/endlines"
-license=('Apache License 2.0')
-source=("https://github.com/mdolidon/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('d164148541ece2dccc481ae81dd7b543')
+# Maintainer: Keil <keilmillerjr@outlook.com>
 
-prepare() {
-    cd "$pkgname-$pkgver"
-	patch -p2 < ../../package.diff
-}
+pkgname=endlines
+pkgver=1.9.2
+pkgrel=4
+pkgdesc='Convert text files between LF, CRLF and CR line endings'
+arch=('x86_64')
+url='https://github.com/mdolidon/endlines'
+license=('Apache-2.0')
+depends=('glibc')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('574702640e014197bc80fb9f80dc433c99db0f6c792ab86274a4dd1f4b936cdf')
 
 build() {
-	cd "$pkgname-$pkgver"
-	make
+  cd "$pkgname-$pkgver"
+  # The Makefile hardcodes CFLAGS and LDFLAGS; passing them on the command line
+  # replaces its values with Arch's flags (plus the C standard it needs)
+  make CFLAGS="$CPPFLAGS $CFLAGS -std=c99" LDFLAGS="$LDFLAGS"
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	make test
+  cd "$pkgname-$pkgver/test"
+  bash runtest.sh
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "$pkgname-$pkgver"
+  # Upstream's install target moves the binary into /usr/local/bin
+  install -Dm755 endlines -t "$pkgdir/usr/bin"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }

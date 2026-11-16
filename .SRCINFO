@@ -1,12 +1,12 @@
 pkgbase = endlines
-	pkgdesc = Endlines smartly converts text files line endings.
+	pkgdesc = Convert text files between LF, CRLF and CR line endings
 	pkgver = 1.9.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mdolidon/endlines
 	arch = x86_64
-	license = Apache License 2.0
-	source = https://github.com/mdolidon/endlines/archive/1.9.2.tar.gz
-	md5sums = d164148541ece2dccc481ae81dd7b543
+	license = Apache-2.0
+	depends = glibc
+	source = endlines-1.9.2.tar.gz::https://github.com/mdolidon/endlines/archive/1.9.2.tar.gz
+	sha256sums = 574702640e014197bc80fb9f80dc433c99db0f6c792ab86274a4dd1f4b936cdf
 
 pkgname = endlines
-
