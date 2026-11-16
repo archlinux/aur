@@ -1,0 +1,19 @@
+pkgbase = epsxe-appimage
+	pkgdesc = ePSXe PS1 emulator for 64-bit Linux (AppImage)
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/amirzaim/epsxe-appimage
+	arch = x86_64
+	license = unknown
+	makedepends = imagemagick
+	depends = fuse2
+	depends = glibc
+	provides = epsxe
+	conflicts = epsxe
+	conflicts = epsxe-git
+	options = !strip
+	options = !debug
+	source = ePSXe_PS1_Emulator-x86_64.AppImage::https://github.com/amirzaim/epsxe-appimage/releases/download/epsxe/ePSXe_PS1_Emulator-x86_64.AppImage
+	sha256sums = 222174291b5216920bd58ed4ec41ceec5f6bcab5bbf87a3c524aca5fda7f5b5b
+
+pkgname = epsxe-appimage
