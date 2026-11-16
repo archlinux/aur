@@ -1,8 +1,8 @@
 # Maintainer: Emeric Grange <emeric.grange@gmail.com>
 
 pkgname=toolblex
-pkgver=0.17
-pkgrel=2
+pkgver=0.18
+pkgrel=1
 pkgdesc="A Bluetooth Low Energy device scanner and analyzer"
 url="https://github.com/emericg/toolBLEx"
 arch=("x86_64" "i686")
@@ -17,7 +17,7 @@ optdepends=("soapyrtlsdr-git: Sub 2.2 GHz spectrum analyzer with RtlSdr compatib
 optdepends=("rtl_power_fftw-git: Sub 2.2 GHz spectrum analyzer with RtlSdr compatible hardware (rtl_power_fftw backend)")
 
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/emericg/toolBLEx/archive/v${pkgver}.tar.gz")
-sha256sums=('6cde3277bb9001e82531d61a55d6e5073d58d221e97824e7297e4eca4e2451de')
+sha256sums=('d2cc9bdecd497294f2c2e6dffb4a000fe087d3b143aae8d8995244946cb95739')
 
 build() {
   cd "toolBLEx-${pkgver}"
