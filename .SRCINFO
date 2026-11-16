@@ -1,0 +1,19 @@
+pkgbase = tascs
+	pkgdesc = Personal sticky-note canvas: an infinite board of notes, local-first
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://tascs.borys.app
+	arch = x86_64
+	license = LicenseRef-Tascs
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = at-spi2-core
+	noextract = Tascs-0.8.0.AppImage
+	options = !strip
+	source = Tascs-0.8.0.AppImage::https://tascs.borys.app/dl/Tascs-0.8.0.AppImage
+	source = LICENSE
+	sha256sums = b0b03877456d94d9e9bb5e55ef7f27309699cebb26bb08cf7c1deed8c2f6b81b
+	sha256sums = SKIP
+
+pkgname = tascs

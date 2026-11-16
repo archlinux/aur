@@ -1,0 +1,27 @@
+Tascs — End User Licence Agreement
+Copyright (c) 2026 Borys Kharchenko. All rights reserved.
+
+1. Licence. You may install and use Tascs free of charge, on any number of your
+   own devices, for personal or professional purposes.
+
+2. Restrictions. You may not modify, decompile, disassemble or reverse engineer
+   Tascs, sell, rent, sublicense or redistribute it, or bypass or share any
+   licence key or paid feature, except where applicable law gives you these
+   rights regardless of this agreement. Linux distributions may publish
+   packaging scripts that download Tascs from https://tascs.borys.app.
+
+3. Your data. Notes you create are yours. Tascs stores them on your device and,
+   if you choose, in the storage you connect; the author does not receive them.
+
+4. Third-party components. Tascs bundles Electron, Chromium and other open
+   source software under their own licences; see LICENSE.electron.txt and
+   LICENSES.chromium.html in the installation directory.
+
+5. No warranty. Tascs is provided "as is", without warranty of any kind. The
+   author is not liable for any damages arising from its use, to the extent
+   permitted by law.
+
+6. Ending. This licence ends if you break its terms; then you must stop using
+   Tascs and delete your copies.
+
+Contact: https://tascs.borys.app
