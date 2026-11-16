@@ -1,0 +1,36 @@
+pkgbase = python-vulners
+	pkgdesc = Official Python SDK for the Vulners vulnerability-intelligence API
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = https://github.com/vulnersCom/api
+	arch = any
+	license = MIT
+	checkdepends = python-coverage>=7
+	checkdepends = python-pytest>=8.3
+	checkdepends = python-pytest-asyncio>=0.24
+	checkdepends = python-pytest-codspeed>=2.2.1
+	checkdepends = python-pytest-cov>=5
+	checkdepends = python-pytest-xdist>=3.6
+	checkdepends = python-respx>=0.21
+	checkdepends = python-uv
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	depends = python
+	depends = python-brotli
+	depends = python-h2
+	depends = python-httpx
+	depends = python-ijson
+	depends = python-isal
+	depends = python-orjson
+	depends = python-pydantic
+	depends = python-stream-unzip
+	depends = python-typing-inspection
+	depends = python-typing_extensions
+	depends = python-zstandard
+	optdepends = python-fastmcp: MCP server support
+	optdepends = python-opentelemetry-api: OpenTelemetry tracing support
+	source = python-vulners-4.5.0.tar.gz::https://github.com/vulnersCom/api/archive/v4.5.0.tar.gz
+	sha256sums = 4d7c5a6cf82b63dd4f5f12a4a8c5f620c67314829e8ba56c1e0a075e1ae21dc7
+
+pkgname = python-vulners

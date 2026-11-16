@@ -1,0 +1,4 @@
+[python-vulners]
+source = "git"
+git = "https://github.com/vulnersCom/api.git"
+prefix = "v"
