@@ -2,7 +2,7 @@
 # Created with assistance from GLM 5.3 Flash.
 
 pkgname=slint-viewer-bin
-pkgver=1.18.1
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Viewer for Slint UI files (prebuilt binary)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('slint-viewer')
 options=('!debug' '!strip')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/slint-ui/slint/releases/download/v${pkgver}/slint-viewer-linux.tar.gz")
-sha256sums=('86b260e661cdc24dcadaf63266b034f3281cbec542afc26545a72a986fe42a13')
+sha256sums=('1ca32aeb95667d2ab22fd6e1e25e70793c0c0d9f16ba900cf6cb6619f9bc20db')
 
 package() {
     install -Dm755 "${srcdir}/slint-viewer/slint-viewer" "${pkgdir}/usr/bin/slint-viewer"
