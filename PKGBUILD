@@ -1,6 +1,6 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=decent-sampler-bin
-pkgver=1.42.1
+pkgver=1.43.0
 pkgrel=1
 pkgdesc="a sampling plugin that allows you to play samples in the Decent Sampler format"
 arch=(x86_64)
@@ -9,8 +9,8 @@ url="https://www.decentsamples.com/product/decent-sampler-plugin/"
 license=('nonfree')
 depends=('alsa-lib' 'freetype2')
 provides=('decent-sampler')
-source=("https://cdn.decentsamples.com/production/builds/ds/1.42.1/Decent_Sampler-1.42.1-Linux-Static-x86_64.tar.gz" "decent-sampler.png" "decent-sampler.desktop" "application-decent-sampler.xml")
-sha256sums=('8dbcb6d7ec446c1e4b214e4ee53376cdf3ea504c6956d25306e51ccc143ce61c' 'f2eb1d90eb08cf725a139b2c05c48a3b40b245aa8c92aea34c5ec6f35630e31b' '23420f5a6839ce70c3f28fe8e3abd45b47b722be9805ebfbf5630bd4cda17ca1' 'f45eefe4e35d6973e55af2ff3a07d392273b2141dc8ff025c0f86597bbb90bb8')
+source=("https://cdn.decentsamples.com/production/builds/ds/1.43.0/Decent_Sampler-1.43.0-Linux-Static-x86_64.tar.gz" "decent-sampler.png" "decent-sampler.desktop" "application-decent-sampler.xml")
+sha256sums=('a10f8766c1d5a3aa6ee9a879ead18b1fabd056327e201d3b0ac2421e4fe5c630' 'f2eb1d90eb08cf725a139b2c05c48a3b40b245aa8c92aea34c5ec6f35630e31b' '23420f5a6839ce70c3f28fe8e3abd45b47b722be9805ebfbf5630bd4cda17ca1' 'f45eefe4e35d6973e55af2ff3a07d392273b2141dc8ff025c0f86597bbb90bb8')
 
 package() {
 	cd "Decent_Sampler-${pkgver}-Linux-Static-x86_64"
