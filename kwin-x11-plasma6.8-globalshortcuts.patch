@@ -1,0 +1,252 @@
+From 51081647d9d7eee92eb0048a9fd2ec3e22ecc1e7 Mon Sep 17 00:00:00 2001
+From: guiodic <guido.iodice@gmail.com>
+Date: Tue, 20 Oct 2026 20:03:16 +0200
+Subject: [PATCH] Port global shortcuts to KGlobalAccelD API in Plasma 6.8
+
+---
+ src/globalshortcuts.cpp | 55 +++++++++++------------------------------
+ 1 file changed, 15 insertions(+), 40 deletions(-)
+
+diff --git a/src/globalshortcuts.cpp b/src/globalshortcuts.cpp
+index b42fc0db00..0f33ce66bb 100644
+--- a/src/globalshortcuts.cpp
++++ b/src/globalshortcuts.cpp
+@@ -17,7 +17,6 @@
+ #include "utils/common.h"
+ // KDE
+ #if KWIN_BUILD_GLOBALSHORTCUTS
+-#include <kglobalaccel_interface.h>
+ #include <kglobalacceld.h>
+ #endif
+ // Qt
+@@ -106,7 +105,6 @@ void GlobalShortcutsManager::init()
+             qCDebug(KWIN_CORE) << "Init of kglobalaccel failed";
+             m_kglobalAccel.reset();
+         } else {
+-            m_kglobalAccelInterface = m_kglobalAccel->interface();
+             qCDebug(KWIN_CORE) << "KGlobalAcceld inited";
+         }
+     }
+@@ -195,34 +193,17 @@ void GlobalShortcutsManager::forceRegisterTouchscreenSwipe(SwipeDirection direct
+ bool GlobalShortcutsManager::processKey(Qt::KeyboardModifiers mods, int keyQt, KeyboardKeyState state)
+ {
+ #if KWIN_BUILD_GLOBALSHORTCUTS
+-    if (m_kglobalAccelInterface) {
+-        auto check = [this](Qt::KeyboardModifiers mods, int keyQt, KeyboardKeyState keyState) {
+-            bool retVal = false;
+-            QMetaObject::invokeMethod(m_kglobalAccelInterface,
+-                                      "checkKeyPressed",
+-                                      Qt::DirectConnection,
+-                                      Q_RETURN_ARG(bool, retVal),
+-                                      Q_ARG(int, int(mods) | keyQt),
+-                                      Q_ARG(KeyboardKeyState, keyState));
+-            return retVal;
+-        };
+-        if (check(mods, keyQt, state)) {
+-            return true;
+-        } else if (keyQt == Qt::Key_Backtab) {
+-            // KGlobalAccel on X11 has some workaround for Backtab
+-            // see kglobalaccel/src/runtime/plugins/xcb/kglobalccel_x11.cpp method x11KeyPress
+-            // Apparently KKeySequenceWidget captures Shift+Tab instead of Backtab
+-            // thus if the key is backtab we should adjust to add shift again and use tab
+-            // in addition KWin registers the shortcut incorrectly as Alt+Shift+Backtab
+-            // this should be changed to either Alt+Backtab or Alt+Shift+Tab to match KKeySequenceWidget
+-            // trying the variants
+-            if (check(mods | Qt::ShiftModifier, keyQt, state)) {
+-                return true;
+-            }
+-            if (check(mods | Qt::ShiftModifier, Qt::Key_Tab, state)) {
+-                return true;
+-            }
+-        }
++    if (!m_kglobalAccel) {
++        return false;
++    }
++
++    switch (state) {
++    case KWin::KeyboardKeyState::Pressed:
++        return m_kglobalAccel->keyEvent(int(mods) | keyQt, ShortcutKeyState::Pressed);
++    case KWin::KeyboardKeyState::Repeated:
++        return m_kglobalAccel->keyEvent(int(mods) | keyQt, ShortcutKeyState::Repeated);
++    case KWin::KeyboardKeyState::Released:
++        return m_kglobalAccel->keyEvent(int(mods) | keyQt, ShortcutKeyState::Released);
+     }
+ #endif
+     return false;
+@@ -248,11 +229,8 @@ bool GlobalShortcutsManager::processPointerPressed(Qt::KeyboardModifiers mods, Q
+ #if KWIN_BUILD_GLOBALSHORTCUTS
+     // currently only used to better support modifier only shortcuts
+     // modifier-only shortcuts are not triggered if a pointer button is pressed
+-    if (m_kglobalAccelInterface) {
+-        QMetaObject::invokeMethod(m_kglobalAccelInterface,
+-                                  "checkPointerPressed",
+-                                  Qt::DirectConnection,
+-                                  Q_ARG(Qt::MouseButtons, pointerButtons));
++    if (m_kglobalAccel) {
++        m_kglobalAccel->pointerPressed(pointerButtons);
+     }
+ #endif
+     return match<PointerButtonShortcut>(m_shortcuts, mods, pointerButtons);
+@@ -263,11 +241,8 @@ bool GlobalShortcutsManager::processAxis(Qt::KeyboardModifiers mods, PointerAxis
+ #if KWIN_BUILD_GLOBALSHORTCUTS
+     // currently only used to better support modifier only shortcuts
+     // modifier-only shortcuts are not triggered if a pointer axis is used
+-    if (m_kglobalAccelInterface) {
+-        QMetaObject::invokeMethod(m_kglobalAccelInterface,
+-                                  "checkAxisTriggered",
+-                                  Qt::DirectConnection,
+-                                  Q_ARG(int, axis));
++    if (m_kglobalAccel) {
++        m_kglobalAccel->axisTriggered(axis);
+     }
+ #endif
+     return match<PointerAxisShortcut>(m_shortcuts, mods, axis);
+From fd25b50dcc59c20e8c6b9676fa4425be79846315 Mon Sep 17 00:00:00 2001
+From: guiodic <guido.iodice@gmail.com>
+Date: Tue, 20 Oct 2026 20:03:19 +0200
+Subject: [PATCH] Remove obsolete KGlobalAccelInterface declaration
+
+---
+ src/globalshortcuts.h | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/globalshortcuts.h b/src/globalshortcuts.h
+index b577ed5c1a..bf23e50494 100644
+--- a/src/globalshortcuts.h
++++ b/src/globalshortcuts.h
+@@ -19,7 +19,6 @@
+ class QAction;
+ #if KWIN_BUILD_GLOBALSHORTCUTS
+ class KGlobalAccelD;
+-class KGlobalAccelInterface;
+ #endif
+ namespace KWin
+ {
+@@ -119,7 +118,6 @@ class GlobalShortcutsManager : public QObject
+ 
+ #if KWIN_BUILD_GLOBALSHORTCUTS
+     std::unique_ptr<KGlobalAccelD> m_kglobalAccel;
+-    KGlobalAccelInterface *m_kglobalAccelInterface = nullptr;
+ #endif
+     std::unique_ptr<GestureRecognizer> m_touchpadGestureRecognizer;
+     std::unique_ptr<GestureRecognizer> m_touchscreenGestureRecognizer;
+From 280fcb2294ebde5863438e79420930c230a6107c Mon Sep 17 00:00:00 2001
+From: guiodic <guido.iodice@gmail.com>
+Date: Tue, 20 Oct 2026 20:07:49 +0200
+Subject: [PATCH] Adapt screen locker API for Plasma 6.8
+
+---
+ src/wayland_server.cpp | 34 ++--------------------------------
+ 1 file changed, 2 insertions(+), 32 deletions(-)
+
+diff --git a/src/wayland_server.cpp b/src/wayland_server.cpp
+index 432f21e437..7c756f6a90 100644
+--- a/src/wayland_server.cpp
++++ b/src/wayland_server.cpp
+@@ -618,10 +618,6 @@ void WaylandServer::initScreenLocker()
+ 
+     ScreenLocker::KSldApp::self()->setGreeterEnvironment(kwinApp()->processStartupEnvironment());
+ 
+-    connect(ScreenLocker::KSldApp::self(), &ScreenLocker::KSldApp::aboutToLock, this, [this]() {
+-        new LockScreenPresentationWatcher(this);
+-    });
+-
+     connect(ScreenLocker::KSldApp::self(), &ScreenLocker::KSldApp::aboutToStartGreeter, this, [this]() {
+         if (m_screenLockerClientConnection) {
+             m_screenLockerClientConnection->destroy();
+@@ -773,7 +769,7 @@ bool WaylandServer::isScreenLocked() const
+     if (!kwinApp()->supportsLockScreen()) {
+         return false;
+     }
+-    return ScreenLocker::KSldApp::self()->lockState() == ScreenLocker::KSldApp::Locked || ScreenLocker::KSldApp::self()->lockState() == ScreenLocker::KSldApp::AcquiringLock;
++    return ScreenLocker::KSldApp::self()->lockState() == ScreenLocker::KSldApp::Locked;
+ #else
+     return false;
+ #endif
+@@ -836,33 +832,7 @@ void WaylandServer::setRenderBackend(RenderBackend *backend)
+     }
+ }
+ 
+-#if KWIN_BUILD_SCREENLOCKER
+-WaylandServer::LockScreenPresentationWatcher::LockScreenPresentationWatcher(WaylandServer *server)
+-{
+-    connect(ScreenLocker::KSldApp::self(), &ScreenLocker::KSldApp::unlocked, this, [this] {
+-        delete this;
+-    });
+-    connect(server, &WaylandServer::windowAdded, this, [this](Window *window) {
+-        if (window->isLockScreen()) {
+-            // only signal lockScreenShown once all outputs have been presented at least once
+-            connect(window->output()->renderLoop(), &RenderLoop::framePresented, this, [this, windowGuard = QPointer(window)]() {
+-                // window might be destroyed before a frame is presented, so it's wrapped in QPointer
+-                if (windowGuard) {
+-                    m_signaledOutputs << windowGuard->output();
+-                    if (m_signaledOutputs.size() == workspace()->outputs().size()) {
+-                        ScreenLocker::KSldApp::self()->lockScreenShown();
+-                        delete this;
+-                    }
+-                }
+-            });
+-        }
+-    });
+-    QTimer::singleShot(1000, this, [this]() {
+-        ScreenLocker::KSldApp::self()->lockScreenShown();
+-        delete this;
+-    });
+-}
+-#endif
++
+ }
+ 
+ #include "moc_wayland_server.cpp"
+From eca8d24138b709c8ed1e4437d830172022414e90 Mon Sep 17 00:00:00 2001
+From: guiodic <guido.iodice@gmail.com>
+Date: Tue, 20 Oct 2026 20:07:51 +0200
+Subject: [PATCH] Remove obsolete lock screen presentation watcher
+
+---
+ src/wayland_server.h | 9 ---------
+ 1 file changed, 9 deletions(-)
+
+diff --git a/src/wayland_server.h b/src/wayland_server.h
+index 4d3571938d..40df75280c 100644
+--- a/src/wayland_server.h
++++ b/src/wayland_server.h
+@@ -242,15 +242,6 @@ class KWIN_EXPORT WaylandServer : public QObject
+     void handleOutputEnabled(Output *output);
+     void handleOutputDisabled(Output *output);
+ 
+-    class LockScreenPresentationWatcher : public QObject
+-    {
+-    public:
+-        LockScreenPresentationWatcher(WaylandServer *server);
+-
+-    private:
+-        QSet<Output *> m_signaledOutputs;
+-    };
+-
+     Display *m_display = nullptr;
+     CompositorInterface *m_compositor = nullptr;
+     SeatInterface *m_seat = nullptr;
+From 0bca04665383e75bcbadaae96544d49d1bf0a1a2 Mon Sep 17 00:00:00 2001
+From: guiodic <guido.iodice@gmail.com>
+Date: Tue, 20 Oct 2026 20:15:00 +0200
+Subject: [PATCH] Remove obsolete KGlobalAccel plugin from build
+
+---
+ src/plugins/CMakeLists.txt | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/plugins/CMakeLists.txt b/src/plugins/CMakeLists.txt
+index 1213f72563..ec51a255ec 100644
+--- a/src/plugins/CMakeLists.txt
++++ b/src/plugins/CMakeLists.txt
+@@ -108,9 +108,6 @@ add_subdirectory(zoom)
+ if (KWIN_BUILD_RUNNERS)
+     add_subdirectory(krunner-integration)
+ endif()
+-if(TARGET K::KGlobalAccelD)
+-    add_subdirectory(kglobalaccel)
+-endif()
+ if (KWIN_BUILD_NIGHTLIGHT)
+     add_subdirectory(nightlight)
+ endif()
