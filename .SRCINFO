@@ -1,6 +1,6 @@
 pkgbase = straitbible
 	pkgdesc = Free multilingual Bible reader (based on Unbound Bible)
-	pkgver = 6.3
+	pkgver = 6.4
 	pkgrel = 1
 	url = https://github.com/doonoo/straitbible
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = straitbible
 	depends = sqlite
 	depends = hicolor-icon-theme
 	conflicts = straitbible-git
-	source = straitbible-6.3.tar.gz::https://github.com/doonoo/straitbible/archive/refs/tags/v6.3.tar.gz
+	source = straitbible-6.4.tar.gz::https://github.com/doonoo/straitbible/archive/refs/tags/v6.4.tar.gz
 	source = zeoslib::git+https://github.com/marsupilami79/zeoslib.git#branch=7.2.14-stable
-	sha256sums = 771b27d0e3ce896cc5c2df4f71f6830db2a77f1b18095af8fa13d9b1310a3de5
+	sha256sums = c985f41eaeb39ffc950499342e7f1eee311df6e1c62a223bfad2f3a47383ca19
 	sha256sums = SKIP
 
 pkgname = straitbible
