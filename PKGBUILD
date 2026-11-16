@@ -1,8 +1,8 @@
 # Maintainer: duanluan <duanluan@outlook.com>
 
 pkgname=qoder-cn
-pkgver=0.5.12
-pkgrel=2
+pkgver=0.5.13
+pkgrel=1
 pkgdesc='Qoder CN desktop app, an agentic coding workbench from Alibaba'
 arch=('x86_64' 'aarch64')
 url='https://qoder.cn/'
@@ -36,10 +36,10 @@ noextract=(
   "Qoder-CN-linux-${pkgver}-arm64.deb"
 )
 sha256sums_x86_64=(
-  '79316fa55afedc05d4bb2c35d289e4986fa2e06455aa43b465533e353703906e'
+  '13ea9a91b9475572fe10538d87b632ee0a91e7c0f666f72d40c90a2f6706dd78'
 )
 sha256sums_aarch64=(
-  '8d0d7b40f4411e4e284c4e674a3b71723defea226eefb957c5117283bf4aedf4'
+  'bf2943f1584e88e5ddaaf52283073182b10ce10296e43dfc75c3ae4ee78cc15f'
 )
 
 package() {
