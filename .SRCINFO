@@ -1,7 +1,7 @@
 pkgbase = mcpelauncher-ui-bin
 	pkgdesc = Minecraft Bedrock Launcher for Linux
 	pkgver = 1.8.7.40934284323.1~bookworm
-	pkgrel = 3
+	pkgrel = 4
 	url = https://minecraft-linux.github.io
 	arch = x86_64
 	license = GPL-3.0-only
