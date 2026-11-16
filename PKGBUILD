@@ -14,10 +14,6 @@ arch=(any)
 url="https://github.com/Bara/Multi-Colors"
 license=(GPL-3.0-only)
 depends=(sourcemod-scripting)
-# Where ./aur-packages commits reads the pins from: the commit pkgver names
-_pins_lookup() {
-  echo "_commit $(curl -fsSL "https://api.github.com/repos/Bara/Multi-Colors/commits/${pkgver##*.g}" | jq -r .sha)"
-}
 source=("$_name-$_commit.tar.gz::https://github.com/Bara/Multi-Colors/archive/$_commit.tar.gz")
 sha512sums=('36fdc4205e49318209687f816de7a97966d1358f96875bae11d8561322a4bcaba358dd5ed3440beac72e11017651a0a02fb3001e87ecd19f64e811d38e23191a')
 b2sums=('50a8a2036289318492b0300bc0d2a12117a16e3a9276d8accf351c050d202cca93a21cc9ca5764a7c01e192e6b64a2cca748471e17e0f2d4283bc3b60a163891')
