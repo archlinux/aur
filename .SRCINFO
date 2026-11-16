@@ -1,0 +1,15 @@
+pkgbase = ancient
+	pkgdesc = Modern decompressor for old data compression formats
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/temisu/ancient
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	source = ancient.tar.gz::https://github.com/temisu/ancient/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = 5d1d71f0fb8c69955bb4ec01ed9ffd2b5bf546b10463030dda85d949ea422bc9
+
+pkgname = ancient
