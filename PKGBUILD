@@ -75,6 +75,22 @@ _dotnet_sdk() {
   fi
 }
 
+# The release of .NET $_dotnetsdkver the SDK of _dotnet_sdk builds for, the latest one it knows
+# (LatestRuntimeFrameworkVersion of its bundled versions), whose runtime and crossgen2 packs it restores:
+# the version of the packages of .NET the packages reference. For the source-built SDK, its own
+# runtime, whose artifacts have them; Microsoft's may know a newer one than the runtime installed.
+_dotnet_runtime() {
+  awk -v tfm="net$_dotnetsdkver" '
+    /<KnownFrameworkReference Include="Microsoft\.NETCore\.App"/ { framework = 1; target = 0 }
+    framework && index($0, "TargetFramework=\"" tfm "\"") { target = 1 }
+    framework && target && match($0, /LatestRuntimeFrameworkVersion="[^"]+"/) {
+      print substr($0, RSTART + 31, RLENGTH - 32)
+      exit
+    }
+    framework && /\/>/ { framework = 0 }
+  ' "/usr/share/dotnet/sdk/$(_dotnet_sdk)/Microsoft.NETCoreSdk.BundledVersions.props"
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   # Keep the .NET CLI state out of the builder's home
@@ -97,7 +113,7 @@ _dotnet_env() {
   else
     _rid="linux-$_arch"
   fi
-  _runtimever=$(dotnet --list-runtimes | grep -F "NETCore.App $_dotnetsdkver" | sed -E "s/[[:alnum:]\.]+ ([[:digit:]\.]+) .*/\1/")
+  _runtimever=$(_dotnet_runtime)
 
   # Framework-dependent ReadyToRun images, see crossgen2-pack.targets. Code style isn't checked, the
   # newer .NET SDK has rules upstream's doesn't follow. The packages from the source-built artifacts
