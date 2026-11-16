@@ -1,6 +1,6 @@
 pkgbase = kation-bin
 	pkgdesc = Unofficial Proton Drive client for KDE Plasma
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/hleroy/kation
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = kation-bin
 	conflicts = kation
 	options = !debug
 	options = !strip
-	source = kation-bin-0.3.0.tar.zst::https://github.com/hleroy/kation/releases/download/v0.3.0/kation-0.3.0-1-x86_64.pkg.tar.zst
-	sha256sums = c14ddbf07de79f72df509d3ebc96e9e363dbdb8803e96b80f284e0e6d10fb8c6
+	source = kation-bin-0.4.0.tar.zst::https://github.com/hleroy/kation/releases/download/v0.4.0/kation-0.4.0-1-x86_64.pkg.tar.zst
+	sha256sums = 68caf0f4b5c7bff9ebffab01419ab47db9badb2f702a7b04933c4c35f9a2f90c
 
 pkgname = kation-bin

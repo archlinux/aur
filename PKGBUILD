@@ -1,7 +1,7 @@
 # Maintainer: Pavel Dobiáš <git at paveldobias dot eu>
 
 pkgname=kation-bin
-pkgver=0.3.0
+pkgver=0.4.0
 _pkgver_rel=1
 pkgrel=1
 pkgdesc="Unofficial Proton Drive client for KDE Plasma"
@@ -33,7 +33,7 @@ provides=("kation")
 conflicts=("kation")
 options=(!debug !strip)
 source=("${pkgname}-${pkgver}.tar.zst::${url}/releases/download/v${pkgver}/kation-${pkgver}-${_pkgver_rel}-x86_64.pkg.tar.zst")
-sha256sums=('c14ddbf07de79f72df509d3ebc96e9e363dbdb8803e96b80f284e0e6d10fb8c6')
+sha256sums=('68caf0f4b5c7bff9ebffab01419ab47db9badb2f702a7b04933c4c35f9a2f90c')
 
 package() {
     cp -r "${srcdir}/usr" "${pkgdir}/usr"
