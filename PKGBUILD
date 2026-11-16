@@ -1,8 +1,9 @@
-# Maintainer: Alex Hirzel <alex at hirzel period us>
+# Maintainer: Felipe BF <fprgw32 at gmail dot com>
+# Contributor: Alex Hirzel <alex at hirzel period us>
 
-pkgname=datasette
-_name=$pkgname
-pkgver=0.64.8
+_name=datasette
+pkgname="${_name}"
+pkgver=0.65.6
 pkgrel=1
 pkgdesc="An open source multi-tool for exploring and publishing data"
 arch=("any")
@@ -30,11 +31,21 @@ depends=(
 
 	python-rich
 	python-importlib-metadata
+
+    # Namcap detection
+    python
+    python-babel
+    python-flexparser
+    python-platformdirs
+    python-flexcache
+    python-markupsafe
+    python-typing_extensions
 )
 makedepends=(python-build python-installer python-wheel)
 conflicts=("datasette")
-source=("https://pypi.io/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ee54d87152b2e3e6d4552f157e3431918f5fa929c17afd0548b0d04becbd4c97')
+
+source=("${_name}-$pkgver.tar.gz::https://github.com/simonw/${_name}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('eaf4f0be261f9221dfb6b54249d98b7463e0fe74ebd691becfe65d5105e24d68')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
@@ -46,3 +57,4 @@ package() {
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname"
 }
+

@@ -1,6 +1,6 @@
 pkgbase = datasette
 	pkgdesc = An open source multi-tool for exploring and publishing data
-	pkgver = 0.64.8
+	pkgver = 0.65.6
 	pkgrel = 1
 	url = https://datasette.io
 	arch = any
@@ -26,8 +26,15 @@ pkgbase = datasette
 	depends = python-setuptools
 	depends = python-rich
 	depends = python-importlib-metadata
+	depends = python
+	depends = python-babel
+	depends = python-flexparser
+	depends = python-platformdirs
+	depends = python-flexcache
+	depends = python-markupsafe
+	depends = python-typing_extensions
 	conflicts = datasette
-	source = https://pypi.io/packages/source/d/datasette/datasette-0.64.8.tar.gz
-	sha256sums = ee54d87152b2e3e6d4552f157e3431918f5fa929c17afd0548b0d04becbd4c97
+	source = datasette-0.65.6.tar.gz::https://github.com/simonw/datasette/archive/refs/tags/0.65.6.tar.gz
+	sha256sums = eaf4f0be261f9221dfb6b54249d98b7463e0fe74ebd691becfe65d5105e24d68
 
 pkgname = datasette
