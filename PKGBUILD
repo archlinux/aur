@@ -23,6 +23,22 @@ source=("git+$url.git#commit=$_commit")
 sha512sums=('e06ea3440792c4c7ad1cffa48cfff9f11434edc88344b200b1f4aa828d2fd0a81e5ff57f9b20f22838e74cec8997f23a88c559adc07ca355443b37e5fe3b447d')
 b2sums=('88d59ba95cf513d89e59dab0a1e7869c2dd7f28e8073160335689c5f685325be210039875504f992778a00fef531b6fc00d8b2744e6ff8b3ab5c4289e15433c1')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -39,6 +55,8 @@ _dotnet_env() {
 }
 
 prepare() {
+  # The SDK to build with (_dotnet_sdk), for dotnet anywhere in $srcdir
+  printf '{ "sdk": { "version": "%s", "rollForward": "latestPatch" } }\n' "$(_dotnet_sdk)" >"$srcdir/global.json"
   cd PowerShellStandard || exit
   # NETStandard.Library and the System.* reference packages come from the .NET
   # dotnet-build-deps-10.0 chooses: the reference packages of .NET's source build
