@@ -1,6 +1,6 @@
 # Maintainer: Seraphim Pardee <me at srp dot life>
 pkgname=rlshim-bin
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A lightweight, native Linux launcher for RuneLite. (binary)"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('rlshim')
 conflicts=('rlshim')
 source_x86_64=("https://github.com/RdrSeraphim/rlshim/releases/download/v$pkgver/rlshim-$pkgver-x86_64-gnu.tar.gz")
 source_aarch64=("https://github.com/RdrSeraphim/rlshim/releases/download/v$pkgver/rlshim-$pkgver-aarch64-gnu.tar.gz")
-sha256sums_x86_64=('eb498e06cd74864b0a994b10223f86f19be4408a53e98b49a7552d35d2ee37e9')
-sha256sums_aarch64=('dcb789ea9fd1b15178ba795609ebf6ecf4ed9672852f568e135f7d8ea0850e8c')
+sha256sums_x86_64=('28d492718eda962afac7631658db5fc67d32f45017b6f814a7fb7367110c76c4')
+sha256sums_aarch64=('a90a31d2b4b8f9f2e45d580aad8befd45aa75a0dad88ba76db535b08d6629f12')
 
 package() {
     if [[ "$CARCH" == "x86_64" ]]; then
