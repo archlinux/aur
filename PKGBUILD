@@ -2,7 +2,7 @@
 # AUR package built from the tagged source on GitHub (penates-bin installs the prebuilt release instead).
 # pkgver and sha256sums are updated by scripts/publish-release.py for each release.
 pkgname=penates
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Turn websites into desktop apps with their own window, icon and login"
 arch=('x86_64' 'aarch64')
@@ -14,12 +14,13 @@ optdepends=('xdg-utils: open links and downloads in your browser')
 conflicts=('penates-bin')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Natetronn/penates/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e658cb20d26442eae8f45b3585252ab7f63248190512536f8e62254bffed207d')
+sha256sums=('451edffb94791f12d90e290abc050fb6e3c6d9601b3814a9ce79ba2439d8ec55')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  # Downloads the crates pinned in Cargo.lock, so build() needs no network.
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
