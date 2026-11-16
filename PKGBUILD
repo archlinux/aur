@@ -3,7 +3,7 @@
 _prgname=redumper-gui
 pkgname=redumper-gui-bin
 epoch=
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A cross-platform digital fidget spinner and GUI for redumper.'
 arch=(x86_64)
