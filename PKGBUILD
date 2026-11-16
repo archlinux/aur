@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph.fink@gmail.com>
 
 pkgname="python-topojson"
@@ -6,7 +9,7 @@ pkgdesc="Encode spatial data as topology in Python"
 url="https://mattijn.github.io/topojson/"
 
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("BSD-3-Clause")
