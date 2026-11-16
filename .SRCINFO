@@ -1,6 +1,6 @@
 pkgbase = uzumaki
 	pkgdesc = Native desktop client for Apple Music, GPU-rendered in Rust (needs a subscription)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://getuzumaki.app
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = uzumaki
 	optdepends = libsecret: Chromium can store its cookies encrypted with the keyring
 	optdepends = ffmpeg: animated album artwork (without it the covers stay still)
 	options = !lto
-	source = uzumaki-0.2.1.tar.gz::https://github.com/hanami117/uzumaki/releases/download/v0.2.1/uzumaki-0.2.1.tar.gz
-	sha256sums = e3ad830e070248b1cbe744eed60dc18abdfd1eb07dda70d0784ed1db42bc18bb
+	source = uzumaki-0.2.2.tar.gz::https://github.com/hanami117/uzumaki/releases/download/v0.2.2/uzumaki-0.2.2.tar.gz
+	sha256sums = 0e45b0b068b50d16961ca4f6c6cd42923d5721ce16e2f07c7eeca79c4d06e6e0
 
 pkgname = uzumaki
