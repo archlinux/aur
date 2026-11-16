@@ -238,6 +238,22 @@ _dotnet_sdk() {
   fi
 }
 
+# The release of .NET $_dotnetsdkver the SDK of _dotnet_sdk builds for, the latest one it knows
+# (LatestRuntimeFrameworkVersion of its bundled versions), whose runtime and crossgen2 packs it restores:
+# the version of the packages of .NET the packages reference. For the source-built SDK, its own
+# runtime, whose artifacts have them; Microsoft's may know a newer one than the runtime installed.
+_dotnet_runtime() {
+  awk -v tfm="net$_dotnetsdkver" '
+    /<KnownFrameworkReference Include="Microsoft\.NETCore\.App"/ { framework = 1; target = 0 }
+    framework && index($0, "TargetFramework=\"" tfm "\"") { target = 1 }
+    framework && target && match($0, /LatestRuntimeFrameworkVersion="[^"]+"/) {
+      print substr($0, RSTART + 31, RLENGTH - 32)
+      exit
+    }
+    framework && /\/>/ { framework = 0 }
+  ' "/usr/share/dotnet/sdk/$(_dotnet_sdk)/Microsoft.NETCoreSdk.BundledVersions.props"
+}
+
 _dotnet_env() {
   _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
   export NUGET_PACKAGES="$srcdir/PowerShell/nuget"
@@ -543,8 +559,9 @@ prepare() {
   # We first determine the exact SDK and runtime versions for later usage
   local _sdkver _runtimever _runtimepath
   _sdkver=$(_dotnet_sdk)
-  _runtimever=$(dotnet --list-runtimes | grep -F "NETCore.App $_dotnetsdkver" | sed -E "s/[[:alnum:]\.]+ ([[:digit:]\.]+) .*/\1/")
-  _runtimepath="/usr/share/dotnet/shared/Microsoft.NETCore.App/$_runtimever"
+  _runtimever=$(_dotnet_runtime)
+  # The installed runtime, whose libraries are part of .NET rather than packages
+  _runtimepath=$(find /usr/share/dotnet/shared/Microsoft.NETCore.App -mindepth 1 -maxdepth 1 -name "$_dotnetsdkver.*" | sort -V | tail -n 1)
 
   # Update global.json to match with the current SDK
   # The old one has to go first, dotnet refuses to run with an SDK it doesn't know
@@ -696,6 +713,7 @@ build() {
     -c Release \
     -f "net$_dotnetsdkver" \
     -r "$_host_rid" \
+    -- \
     ../System.Management.Automation/CoreCLR/CorePsTypeCatalog.cs \
     "$_inc_file"
 
@@ -719,9 +737,11 @@ build() {
   # libpsl-native, built from PowerShell-Native
   install -Dm755 "$srcdir"/PowerShell-Native/src/powershell-unix/libpsl-native.so -t "$_publish_path"
 
-  # Add-Type compiles against the reference assemblies of .NET in $PSHOME/ref
+  # Add-Type compiles against the reference assemblies of .NET in $PSHOME/ref: those of its targeting
+  # pack, installed with the SDK (packs/Microsoft.NETCore.App.Ref), or from nuget.org in the NuGet cache
+  # (microsoft.netcore.app.ref) where the SDK is of a later .NET
   mkdir -p "$_publish_path/ref"
-  grep 'Microsoft.NETCore.App' "$_inc_file" | sed 's/;$//' | xargs -d '\n' cp -t "$_publish_path/ref"
+  grep -iE '/microsoft\.netcore\.app\.ref/' "$_inc_file" | sed 's/;$//' | xargs -d '\n' cp -t "$_publish_path/ref"
 
   # The PowerShell for the build host of a cross build, without ReadyToRun, as it only runs here
   if [[ "$_rid" != "$_host_rid" ]]; then
