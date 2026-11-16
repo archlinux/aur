@@ -1,0 +1,22 @@
+pkgbase = lumen-journal-bin
+	pkgdesc = Private, encrypted Markdown journal (prebuilt binary)
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://github.com/Crazygiscool/Lumen
+	arch = x86_64
+	license = custom:Lumen Non-Commercial Software License v1.0
+	depends = gtk3
+	depends = libsecret
+	depends = glib2
+	depends = gcc-libs
+	depends = xz
+	provides = lumen
+	conflicts = lumen
+	source = https://github.com/Crazygiscool/Lumen/releases/download/v4.0.1/Lumen-linux-v4.0.1.tar.gz
+	source = lumen.desktop
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = b03658f40f4862e8aa5f85a3a7c9ee82755dd404cb8a13d67d18d27ef27fe386
+	sha256sums = 803e636ca4e95c03158b850c4b1621ba8f1fe620331e38dadc3a46f3d1d1064b
+
+pkgname = lumen-journal-bin

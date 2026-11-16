@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Lumen
+GenericName=Encrypted Journal
+Comment=A private, encrypted Markdown journal
+Exec=lumen %U
+Icon=lumen
+Terminal=false
+Categories=Office;
+Keywords=journal;diary;notes;markdown;encrypted;private;
+StartupNotify=true
+StartupWMClass=Lumen.Lumen
