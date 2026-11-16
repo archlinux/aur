@@ -1,7 +1,7 @@
 pkgbase = attractplus-git
 	pkgdesc = Graphical frontend for MAME and other command-line emulators
 	pkgver = 3.2.3.r46.gd13b6d3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oomek/attractplus
 	arch = x86_64
 	license = GPL-3.0-or-later

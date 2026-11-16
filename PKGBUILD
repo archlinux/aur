@@ -3,7 +3,7 @@
 pkgname=attractplus-git
 _pkgname=attractplus
 pkgver=3.2.3.r46.gd13b6d3
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical frontend for MAME and other command-line emulators'
 arch=('x86_64')
 url='https://github.com/oomek/attractplus'
@@ -38,6 +38,7 @@ build() {
     EXTRA_CFLAGS="$CXXFLAGS $CPPFLAGS $LDFLAGS"
     FE_HWACCEL_VAAPI=1
     FE_HWACCEL_VDPAU=1
+    STRIP=true  # makepkg strips, keeping the symbols for the -debug package
     GITHUB_RUN_NUMBER="${_commits%%.*}"
   )
 
