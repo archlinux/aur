@@ -1,6 +1,6 @@
 pkgbase = wacli
 	pkgdesc = WhatsApp CLI
-	pkgver = 0.26.0
+	pkgver = 0.26.1
 	pkgrel = 1
 	url = https://github.com/openclaw/wacli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = wacli
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/openclaw/wacli.git#commit=535a8b969cc83c3aad57f66be77e8fd4a7fcaaa3
+	source = git+https://github.com/openclaw/wacli.git#commit=83869f1e16c4e5224b6eca7c470d2afa7ff5595b
 	sha256sums = SKIP
 
 pkgname = wacli
