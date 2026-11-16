@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="libcoraza"
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="OWASP Coraza C connector"
 arch=("x86_64" "aarch64")
@@ -10,7 +10,7 @@ license=("Apache-2.0")
 depends=("glibc")
 makedepends=("go")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f303f65d3bbd97e90aef5c26d2251949f4a8c7a4d8615a2d78c87455b0fa148c')
+sha256sums=('2dd29dfeaff7d22452ef395fc47ec347305e4796b78b1c669a35ef5545014094')
 
 build(){
  cd "$pkgname-$pkgver"
