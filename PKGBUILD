@@ -1,28 +1,43 @@
-# Maintainer: CPT-Dawn <dawnsp0456@gmail.com>
+# Maintainer: CPT-Dawn <ping@cptdawn.dev>
 pkgname=voidlink
-_reponame=VoidLink
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="A blazing-fast, memory-safe Bluetooth TUI manager for Linux"
+pkgdesc="Keyboard-first Bluetooth manager for the terminal (TUI for BlueZ)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/CPT-Dawn/VoidLink"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'bluez' 'dbus')
+depends=('bluez' 'dbus' 'glibc' 'libgcc')
 makedepends=('cargo')
-provides=("voidlink")
-source=("https://github.com/CPT-Dawn/VoidLink/archive/refs/tags/v1.0.0.tar.gz")
-sha256sums=('479beda6bfee3a2290521d0bab36ede9a9368f78395f03fa2de36ce7b92baadf')
+optdepends=('ttf-nerd-fonts-symbols-mono: device and status icons (or run with --no-nerd-font)'
+            'pipewire-audio: connect Bluetooth headphones and speakers'
+            'bluez-utils: bluetoothctl for troubleshooting')
+install=voidlink.install
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('dbf11f46787dd26646bb28650c842ce5efc87c4bb5963a9c51dfddd6895ace66')
+
+prepare() {
+  cd "VoidLink-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
-  cd "${_reponame}-${pkgver}"
-  export CARGO_TARGET_DIR="target"
-  cargo build --release --locked
+  cd "VoidLink-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
+}
+
+check() {
+  cd "VoidLink-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --release
 }
 
 package() {
-  cd "${_reponame}-${pkgver}"
-
-  install -Dm755 "target/release/voidlink" "${pkgdir}/usr/bin/voidlink"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  cd "VoidLink-$pkgver"
+  install -Dm755 target/release/voidlink "$pkgdir/usr/bin/voidlink"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 default_config.toml "$pkgdir/usr/share/doc/$pkgname/config.toml"
 }
