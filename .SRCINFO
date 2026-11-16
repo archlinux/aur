@@ -1,0 +1,36 @@
+pkgbase = romforge-bin
+	pkgdesc = Identify, tidy and play your ROM collection
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/asafelobotomy/romforge
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib2
+	depends = libsoup3
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = dbus
+	depends = hicolor-icon-theme
+	depends = glibc
+	depends = libgcc
+	depends = systemd-libs
+	depends = libayatana-appindicator
+	optdepends = retroarch: play games (with its cores)
+	optdepends = libretro-scummvm: ScummVM games in RetroArch
+	optdepends = scummvm: ScummVM games, and naming them
+	optdepends = mame: Arcade, FM-7 and FM Towns games
+	optdepends = flatpak: DOSBox Staging or DOSBox-X from Flathub
+	optdepends = gtk-layer-shell: the radial menu over a fullscreen game
+	optdepends = gst-plugins-good: music in the fullscreen mode (MP3, FLAC, WAV)
+	optdepends = gst-libav: music in M4A/AAC
+	optdepends = uq: your games in look=see>do_ on uQ, its game-mode window rule and its theme
+	provides = romforge
+	conflicts = romforge
+	source = romforge-bin-0.17.0.deb::https://github.com/asafelobotomy/romforge/releases/download/v0.17.0/romforge_0.17.0_amd64.deb
+	source = LICENSE-0.17.0::https://raw.githubusercontent.com/asafelobotomy/romforge/v0.17.0/LICENSE
+	sha256sums = 16edd7cfc10e0117cf878d0df1668142902b52b7c432841a6d88e6202c61a0c8
+	sha256sums = b96b5a0ecb11e311dab94d71fe36add411fd2110b624d336a6e54cc74aba3e4b
+
+pkgname = romforge-bin
