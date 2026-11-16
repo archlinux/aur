@@ -1,26 +1,26 @@
 # Maintainer: Pierre <votre_email@exemple.com>
 pkgname=gamevox-git
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="A smart screen reader for Linux gaming (Wayland/Hyprland) with local neural TTS."
 arch=('any')
-url="https://github.com/Djkawada/GameReader"
+url="https://github.com/Djkawada/GameVox"
 license=('MIT')
 depends=('python' 'tesseract' 'tesseract-data-fra' 'grim' 'slurp' 'libpulse' 'libevdev')
 makedepends=('git' 'python-setuptools')
 optdepends=('piper-tts: for local neural voice (recommended, installed manually or via script)')
 provides=('gamevox')
 conflicts=('gamevox')
-source=("git+https://github.com/Djkawada/GameReader.git")
+source=("git+https://github.com/Djkawada/GameVox.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "GameReader"
+    cd "GameVox"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "GameReader"
+    cd "GameVox"
     
     # Install application files to /opt/gamevox
     install -d "$pkgdir/opt/gamevox"
