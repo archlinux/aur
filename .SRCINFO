@@ -1,7 +1,7 @@
 pkgbase = onnxruntime-split
 	pkgdesc = Cross-platform inference engine for ONNX models: the C and C++ library with the CPU execution provider
 	pkgver = 1.29.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/microsoft/onnxruntime
 	arch = x86_64
 	license = MIT AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MPL-2.0
@@ -80,7 +80,6 @@ pkgname = onnxruntime-core
 	optdepends = onnxruntime-provider-cuda: the CUDA execution provider
 	optdepends = onnxruntime-provider-tensorrt: the TensorRT execution provider
 	optdepends = onnxruntime-provider-openvino: the OpenVINO execution provider (Intel CPU, GPU and NPU)
-	optdepends = onnxruntime-provider-migraphx: the MIGraphX execution provider (AMD GPUs, untested)
 	provides = onnxruntime=1.29.0
 	provides = libonnxruntime.so
 	conflicts = onnxruntime
@@ -95,7 +94,7 @@ pkgname = onnxruntime-core
 
 pkgname = onnxruntime-provider-cuda13-rtx
 	pkgdesc = The CUDA execution provider of ONNX Runtime, for onnxruntime-core (NVIDIA GPUs)
-	depends = onnxruntime-core=1.29.0-5
+	depends = onnxruntime-core=1.29.0-6
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
@@ -109,7 +108,7 @@ pkgname = onnxruntime-provider-cuda13-rtx
 
 pkgname = onnxruntime-provider-tensorrt-cuda13
 	pkgdesc = The TensorRT execution provider of ONNX Runtime, for onnxruntime-core (NVIDIA GPUs)
-	depends = onnxruntime-core=1.29.0-5
+	depends = onnxruntime-core=1.29.0-6
 	depends = onnxruntime-provider-cuda13=1.29.0
 	depends = glibc
 	depends = libgcc
@@ -122,7 +121,7 @@ pkgname = onnxruntime-provider-tensorrt-cuda13
 
 pkgname = onnxruntime-provider-openvino
 	pkgdesc = The OpenVINO execution provider of ONNX Runtime, for onnxruntime-core (Intel CPU, GPU and NPU)
-	depends = onnxruntime-core=1.29.0-5
+	depends = onnxruntime-core=1.29.0-6
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
@@ -135,7 +134,7 @@ pkgname = onnxruntime-provider-openvino
 
 pkgname = python-onnxruntime-core
 	pkgdesc = The Python module of ONNX Runtime, the cross-platform inference engine for ONNX models (onnxruntime-core)
-	depends = onnxruntime-core=1.29.0-5
+	depends = onnxruntime-core=1.29.0-6
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
@@ -147,7 +146,6 @@ pkgname = python-onnxruntime-core
 	optdepends = onnxruntime-provider-cuda: the CUDA execution provider
 	optdepends = onnxruntime-provider-tensorrt: the TensorRT execution provider
 	optdepends = onnxruntime-provider-openvino: the OpenVINO execution provider (Intel CPU, GPU and NPU)
-	optdepends = onnxruntime-provider-migraphx: the MIGraphX execution provider (AMD GPUs, untested)
 	optdepends = python-onnx: the quantization, transformers optimisation and model tools
 	optdepends = python-ml-dtypes: 4-bit and float8 quantization (the wheel's quantization extra)
 	optdepends = python-sympy: symbolic shape inference (onnxruntime.tools)

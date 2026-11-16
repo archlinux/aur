@@ -53,7 +53,7 @@
 # package: <name>-bin provides <name>=<pkgver>-<pkgrel> and conflicts with
 # <name>, and provides (and conflicts with) the plain virtual names <name>
 # provides, at the same versions (onnxruntime-provider-cuda13-rtx-bin:
-# provides onnxruntime-provider-cuda13-rtx=1.29.0-5,
+# provides onnxruntime-provider-cuda13-rtx=1.29.0-6,
 # onnxruntime-provider-cuda=1.29.0 and onnxruntime-provider-cuda13=1.29.0).
 # Every dependency between the packages is therefore on a name such a
 # package provides: on onnxruntime-core=<pkgver>-<pkgrel> (the providers
@@ -95,7 +95,8 @@
 # builds may be redistributed, never bundled with or alongside vendor
 # libraries. The CUDA package also carries the licence of cudnn-frontend
 # (MIT, NVIDIA's header-only cuDNN C++ API, compiled into the CUDA provider),
-# which ThirdPartyNotices.txt does not list.
+# which ThirdPartyNotices.txt does not list; every package also carries
+# cpuinfo's and protobuf's licences (see license=()).
 #
 # AMD GPUs: ONNX Runtime removed its ROCm provider in 1.23; MIGraphX is its
 # AMD GPU provider. migraphx in ORTF_EPS builds it, alone or beside cuda,
@@ -127,8 +128,10 @@
 # `makepkg -e` or `-R` with another environment, or after a CUDA upgrade),
 # and says what to pass.
 # Every other field of `makepkg --printsrcinfo` is the same for any inputs,
-# but makedepends: with tensorrt in ORTF_EPS it has tensorrt, with migraphx
-# migraphx and hip-runtime-amd (no other build pulls in ROCm).
+# but makedepends and two optdepends: with tensorrt in ORTF_EPS makedepends
+# has tensorrt, with migraphx migraphx and hip-runtime-amd (no other build
+# pulls in ROCm), and onnxruntime-core's and python-onnxruntime-core's
+# optdepends name onnxruntime-provider-migraphx.
 #   ORTF_EPS           execution providers, space- or comma-separated, from
 #                      cuda, tensorrt, openvino, migraphx; or `cpu` alone for
 #                      a CPU-only build (default: "cuda tensorrt openvino",
@@ -232,20 +235,20 @@
 # A clean chroot has no TensorRT package in its repositories: the AUR's
 # tensorrt is built first and handed over (makechrootpkg -I).
 # Install the packages of one build with one pacman transaction, naming
-# its files: a glob such as ./*onnxruntime-*-1.29.0-5-* also picks up the
+# its files: a glob such as ./*onnxruntime-*-1.29.0-6-* also picks up the
 # packages an earlier build with other inputs left in this directory (e.g.
 # onnxruntime-provider-cuda13-sm120 beside -cuda13-rtx, which conflict, and
 # the transaction fails). makepkg writes them as
-# <name>-1.29.0-5-x86_64<PKGEXT>, PKGEXT from /etc/makepkg.conf
+# <name>-1.29.0-6-x86_64<PKGEXT>, PKGEXT from /etc/makepkg.conf
 # (.pkg.tar.zst on Arch); PKGDEST=/an/empty/directory makepkg ... keeps one
 # build's packages apart. For the default build:
-#   sudo pacman -U onnxruntime-core-1.29.0-5-x86_64.pkg.tar.zst \
-#     onnxruntime-provider-cuda13-rtx-1.29.0-5-x86_64.pkg.tar.zst \
-#     onnxruntime-provider-tensorrt-cuda13-1.29.0-5-x86_64.pkg.tar.zst \
-#     onnxruntime-provider-openvino-1.29.0-5-x86_64.pkg.tar.zst \
-#     python-onnxruntime-core-1.29.0-5-x86_64.pkg.tar.zst
+#   sudo pacman -U onnxruntime-core-1.29.0-6-x86_64.pkg.tar.zst \
+#     onnxruntime-provider-cuda13-rtx-1.29.0-6-x86_64.pkg.tar.zst \
+#     onnxruntime-provider-tensorrt-cuda13-1.29.0-6-x86_64.pkg.tar.zst \
+#     onnxruntime-provider-openvino-1.29.0-6-x86_64.pkg.tar.zst \
+#     python-onnxruntime-core-1.29.0-6-x86_64.pkg.tar.zst
 # (with migraphx in ORTF_EPS, also
-# onnxruntime-provider-migraphx-1.29.0-5-x86_64.pkg.tar.zst).
+# onnxruntime-provider-migraphx-1.29.0-6-x86_64.pkg.tar.zst).
 # Upgrading from 1.29.0-1, the single onnxruntime-full (and its
 # python-onnxruntime-full) of this recipe's first, unsplit version:
 # onnxruntime-core has replaces=(onnxruntime-full) and
@@ -447,7 +450,13 @@ pkgver=1.29.0
 # provider; ORTF_CUDA_ARCHS defaults to the rtx preset (was 120); the CUDA
 # package ships cudnn-frontend's licence; the input defaults are
 # _ortf_default_* lines of this file, for clean-chroot builds.
-pkgrel=5
+# 6: onnxruntime-core's and python-onnxruntime-core's optdepends name
+# onnxruntime-provider-migraphx only in a build that makes it; every
+# package's licence directory also has cpuinfo's (BSD-2-Clause) and
+# protobuf's (BSD-3-Clause) licence; a dependency with version bounds
+# (cuda, cudnn, openvino, python, migraphx, hip-runtime-amd) is no longer
+# listed bare as well.
+pkgrel=6
 # Each package sets its own; this one is the pkgbase's (and onnxruntime-core's).
 pkgdesc='Cross-platform inference engine for ONNX models: the C and C++ library with the CPU execution provider'
 arch=('x86_64')
@@ -458,7 +467,12 @@ url='https://github.com/microsoft/onnxruntime'
 # (BSL-1.0); Eigen, built MPL2-only (MPL-2.0); date, nlohmann json, GSL,
 # SafeInt, cudnn-frontend (MIT). Their notices are in ThirdPartyNotices.txt,
 # but cudnn-frontend's, which the CUDA package carries itself
-# (_ortf_cudnn_frontend_license).
+# (_ortf_cudnn_frontend_license). Every package's licence directory also
+# holds one licence text of each identifier here that Arch does not ship in
+# /usr/share/licenses/spdx (namcap's licensepkg rule wants a file for each
+# of MIT, BSD-2-Clause and BSD-3-Clause): ONNX Runtime's LICENSE (MIT),
+# cpuinfo's (BSD-2-Clause) and protobuf's (BSD-3-Clause), from their source
+# archives (_ortf_licenses).
 # No vendor runtime is contained (see the top of the file).
 license=('MIT AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MPL-2.0')
 # Every build input, whatever ORTF_EPS selects; TensorRT and ROCm below,
@@ -487,6 +501,21 @@ makedepends=(
 # checks the headers and library, and warns when no installed package
 # provides tensorrt.
 [[ " ${_ortf_pkgname[*]} " != *" onnxruntime-provider-tensorrt-cuda$_ortf_cuda_major "* ]] || makedepends+=('tensorrt')
+# The provider packages, by the names they provide (whatever their CUDA
+# architectures), for onnxruntime-core's and python-onnxruntime-core's
+# optdepends. onnxruntime-provider-migraphx only when the names (as for
+# ROCm above) have it: nothing else provides it (it is never prebuilt), so
+# the AUR would list a default build's optdepend on it as one no package
+# meets. A variable at the top level, not a test in the package functions:
+# makepkg --printsrcinfo takes every optdepends= line of a function's body
+# as it stands, whatever condition it sits under.
+_ortf_provider_optdepends=(
+  'onnxruntime-provider-cuda: the CUDA execution provider'
+  'onnxruntime-provider-tensorrt: the TensorRT execution provider'
+  'onnxruntime-provider-openvino: the OpenVINO execution provider (Intel CPU, GPU and NPU)'
+)
+[[ " ${_ortf_pkgname[*]} " != *' onnxruntime-provider-migraphx '* ]] ||
+  _ortf_provider_optdepends+=('onnxruntime-provider-migraphx: the MIGraphX execution provider (AMD GPUs, untested)')
 # !lto: link-time optimisation of the CUDA provider costs hours and many
 # GiB of RAM (upstream's releases are not LTO builds); !debug: the CUDA
 # provider's debug information alone runs to GiB.
@@ -1428,8 +1457,9 @@ build() {
     # The C++ compiler is nvcc's host compiler, so that host code compiled
     # by nvcc and by the C++ compiler agrees.
     cxx=$host_cxx cc=${host_cxx/g++/gcc}
-    # The C++ sources of the CUDA provider include CUDA's CCCL headers.
-    CXXFLAGS+=" -I$_ortf_cuda_home/targets/x86_64-linux/include"
+    # The C++ sources of the CUDA provider include CUDA's CCCL headers
+    # (targets/x86_64-linux: $CARCH, this recipe's one arch).
+    CXXFLAGS+=" -I$_ortf_cuda_home/targets/$CARCH-linux/include"
     args+=(
       -Donnxruntime_USE_CUDA=ON
       -Donnxruntime_CUDA_HOME="$_ortf_cuda_home"
@@ -1490,44 +1520,81 @@ build() {
 # In a package function, makepkg's loop over the packages has set
 # pkgname[0], and only that element, to the package being written.
 
-# _ortf_licenses: ONNX Runtime's licence and the bundled dependencies'
-# notices, in every package's own licence directory.
+# _ortf_licenses: ONNX Runtime's licence (MIT) and the bundled
+# dependencies' notices, and the licences of cpuinfo (BSD-2-Clause) and
+# protobuf (BSD-3-Clause), both compiled into libonnxruntime.so, as
+# cpuinfo-LICENSE and protobuf-LICENSE, in every package's own licence
+# directory: one text of each identifier of license=() that Arch does not
+# ship in /usr/share/licenses/spdx, as namcap's licensepkg rule counts them
+# (MIT, BSD-2-Clause, BSD-3-Clause: three files at least). Fails when a
+# source archive or its licence entry is missing (_ortf_dep_license).
 _ortf_licenses() {
   install -Dm644 -t "$pkgdir/usr/share/licenses/${pkgname[0]}" \
     "$srcdir/onnxruntime/LICENSE" "$srcdir/onnxruntime/ThirdPartyNotices.txt"
+  _ortf_dep_license pytorch_cpuinfo LICENSE cpuinfo-LICENSE || return 1
+  _ortf_dep_license protobuf LICENSE protobuf-LICENSE || return 1
 }
 
 # _ortf_cudnn_frontend_license: cudnn-frontend's licence (MIT), in the CUDA
 # package's licence directory as cudnn-frontend-LICENSE.txt. The CUDA
 # provider compiles in this header-only library (ortf-dep-cudnn_frontend),
-# which ThirdPartyNotices.txt has no entry for. The file is the LICENSE.txt
-# of the mirrored source archive ($srcdir/ortf-dep-cudnn_frontend.zip, the
-# one the build tree is fed from; entry <top directory>/LICENSE.txt), not
-# of FetchContent's copy; fails when the archive is missing or has not
-# exactly one such entry.
+# which ThirdPartyNotices.txt has no entry for.
 _ortf_cudnn_frontend_license() {
-  local zip=$srcdir/ortf-dep-cudnn_frontend.zip entries dest
+  _ortf_dep_license cudnn_frontend LICENSE.txt cudnn-frontend-LICENSE.txt
+}
+
+# _ortf_dep_license <dependency> <entry> <file>: the licence file <entry>
+# at the top of the mirrored source archive of <dependency>
+# ($srcdir/ortf-dep-<dependency>.zip, the one the build tree is fed from;
+# entry <top directory>/<entry>), not FetchContent's copy, installed as
+# <file> in the licence directory of the package being written. Fails when
+# the archive is missing, has not exactly one such entry, or the extracted
+# file is empty.
+_ortf_dep_license() {
+  local zip=$srcdir/ortf-dep-$1.zip entry=$2 entries dest
   local -a found
   if [[ ! -f $zip ]]; then
-    echo "$zip not found: cudnn-frontend's licence, which the CUDA package must carry, is read from it" >&2
+    echo "$zip not found: $1's licence, which ${pkgname[0]} must carry, is read from it" >&2
     return 1
   fi
   if ! entries=$(bsdtar -tf "$zip"); then
     echo "$zip: cannot list it" >&2
     return 1
   fi
-  mapfile -t found < <(grep -E '^[^/]+/LICENSE\.txt$' <<<"$entries" || true)
+  mapfile -t found < <(grep -xF -- "${entries%%/*}/$entry" <<<"$entries" || true)
   if ((${#found[@]} != 1)); then
-    echo "$zip: ${#found[@]} entries match */LICENSE.txt, want exactly one" >&2
+    echo "$zip: ${#found[@]} entries are <top directory>/$entry, want exactly one" >&2
     return 1
   fi
-  dest=$pkgdir/usr/share/licenses/${pkgname[0]}/cudnn-frontend-LICENSE.txt
+  dest=$pkgdir/usr/share/licenses/${pkgname[0]}/$3
   install -dm755 -- "${dest%/*}"
   if ! bsdtar -xOf "$zip" "${found[0]}" >"$dest" || [[ ! -s $dest ]]; then
     echo "$zip: cannot extract ${found[0]}" >&2
     return 1
   fi
   chmod 644 -- "$dest"
+}
+
+# _ortf_drop_bare_depends: removes from depends (the caller's array) each
+# entry without a version (cuda) that a bounded entry of the same name
+# (cuda>=13, cuda<14) also lists: pacman needs the bounds alone, and the
+# package's .PKGINFO then lists each such dependency once, by its bounds.
+# Run last, after _ortf_check_libs and the recorded bounds, which find the
+# vendor packages by their bare names. The bare names stay in the package
+# functions' bodies, so .SRCINFO (whose depends carry no bounds) has them.
+_ortf_drop_bare_depends() {
+  local d e keep
+  local -a kept=()
+  for d in "${depends[@]}"; do
+    keep=1
+    if [[ $d != *[\<\>=]* ]]; then
+      for e in "${depends[@]}"; do
+        if [[ $e == "$d"[\<\>=]* ]]; then keep=0; fi
+      done
+    fi
+    ((keep == 0)) || kept+=("$d")
+  done
+  depends=("${kept[@]}")
 }
 
 # _ortf_check_libs [<tensorrt package>]: checks the DT_NEEDED entries of
@@ -1610,14 +1677,8 @@ package_onnxruntime-core() {
   # libz, and a libz in its DT_NEEDED entries in a future release fails the
   # check rather than going unnoticed.
   depends=('glibc' 'libgcc' 'libstdc++')
-  # The provider packages by the names they provide, whatever their CUDA
-  # architectures.
-  optdepends=(
-    'onnxruntime-provider-cuda: the CUDA execution provider'
-    'onnxruntime-provider-tensorrt: the TensorRT execution provider'
-    'onnxruntime-provider-openvino: the OpenVINO execution provider (Intel CPU, GPU and NPU)'
-    'onnxruntime-provider-migraphx: the MIGraphX execution provider (AMD GPUs, untested)'
-  )
+  # The provider packages of this build's inputs (_ortf_provider_optdepends).
+  optdepends=("${_ortf_provider_optdepends[@]}")
   # libonnxruntime.so: makepkg turns a listed soname into the versioned
   # provide (libonnxruntime.so=1-64 in the .PKGINFO); it adds none unlisted.
   provides=("onnxruntime=$pkgver" 'libonnxruntime.so')
@@ -1758,6 +1819,7 @@ _ortf_package_provider() {
       fi
     done
   fi
+  _ortf_drop_bare_depends
   echo "${pkgname[0]} depends: ${depends[*]}"
 
   _ortf_licenses
@@ -1857,12 +1919,10 @@ package_python-onnxruntime-core() {
   # module is built for, at package time.
   depends=("onnxruntime-core=$pkgver-$pkgrel" 'glibc' 'libgcc' 'libstdc++'
     'python' 'python-numpy' 'python-flatbuffers' 'python-packaging' 'python-protobuf')
-  # Imported only by the tools that need them, not by import onnxruntime.
-  optdepends=(
-    'onnxruntime-provider-cuda: the CUDA execution provider'
-    'onnxruntime-provider-tensorrt: the TensorRT execution provider'
-    'onnxruntime-provider-openvino: the OpenVINO execution provider (Intel CPU, GPU and NPU)'
-    'onnxruntime-provider-migraphx: the MIGraphX execution provider (AMD GPUs, untested)'
+  # The provider packages (_ortf_provider_optdepends), then the Python
+  # modules imported only by the tools that need them, not by import
+  # onnxruntime.
+  optdepends=("${_ortf_provider_optdepends[@]}"
     'python-onnx: the quantization, transformers optimisation and model tools'
     'python-ml-dtypes: 4-bit and float8 quantization (the wheel'"'"'s quantization extra)'
     'python-sympy: symbolic shape inference (onnxruntime.tools)'
@@ -1949,6 +2009,7 @@ package_python-onnxruntime-core() {
   _ortf_check_libs || return 1
   bounds=$(_ortf_recorded_bounds ORTF_PYTHON_VERSION python) || return 1
   mapfile -t -O "${#depends[@]}" depends <<<"$bounds"
+  _ortf_drop_bare_depends
   echo "${pkgname[0]} depends: ${depends[*]}"
 
   _ortf_licenses
