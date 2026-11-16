@@ -1,7 +1,7 @@
 pkgbase = kotora
 	pkgdesc = Anime tracker for MyAnimeList: recognises the episode in your player and asks before it records it
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kotora.moe
 	arch = x86_64
 	arch = aarch64

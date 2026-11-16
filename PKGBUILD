@@ -17,7 +17,7 @@
 
 pkgname=kotora
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 _build=1
 if ((_build > 1)); then _rel=$pkgver-$_build; else _rel=$pkgver; fi
 pkgdesc='Anime tracker for MyAnimeList: recognises the episode in your player and asks before it records it'
@@ -65,6 +65,9 @@ build() {
   export CARGO_TARGET_DIR=target
   # The update check says "update with your AUR helper" and offers no download.
   export KOTORA_CHANNEL=aur
+  # A source tarball has no .git: keep git from finding the AUR helper's clone above $srcdir, or
+  # `kot --version` would show that clone's branch and hash.
+  export GIT_CEILING_DIRECTORIES="$srcdir"
   cargo build --frozen --release -p kotora -p kotora-ctl
 }
 
