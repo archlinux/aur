@@ -1,0 +1,15 @@
+pkgbase = ancient-git
+	pkgdesc = Modern decompressor for old data (archive) compression formats
+	pkgver = v2.3.0.r6.g1491a35
+	pkgrel = 1
+	url = https://github.com/temisu/ancient
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	source = ancient-git::git+https://github.com/temisu/ancient.git
+	sha256sums = SKIP
+
+pkgname = ancient-git
