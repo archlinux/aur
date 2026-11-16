@@ -7,7 +7,7 @@ pkgbase=${_gitname}-bin
 pkgname=(${_gitname}-bin ${_gitname}-relay-bin)
 pkgdesc="Midnight Commander + Yazi + Terminal multiplexer"
 
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,11 +29,11 @@ source_x86_64=("${_appname[0]}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/down
 			   "${_appname[1]}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname[1]}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname[0]}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname[0]}-${pkgver}-${_barch[1]}.tar.gz"
 				"${_appname[1]}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname[1]}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums=('d2d0fd36dab0aea4ebe2d4dfec6d03d1b092abcb9cf072ecc54e81b7bbb7bab8')
-sha256sums_x86_64=('0888f2ae35ed334088a1c9d2b5efe750a1bc561f43d19365e7a00bd12e58fe86'
-                   'd1f212c7f3f9a53310ed7750d98f1b612b0bc97d60043dba291e333eec29f98c')
-sha256sums_aarch64=('a8fb7b6c5bbe9eed4dacc2cb189d39d459cd76d592bcc15986599ce047a34b86'
-                    'f34be32a1fd2810628fc3f1b78f99ab422b9fb5f10e0236b7431add51cdb392d')
+sha256sums=('f77e4b713998cfd18f2e5940679e212c353a22f99a69cb02dde188f9f9de838b')
+sha256sums_x86_64=('8b7dead6b79a43cca74c28c08306fbb7afaf602d385c1d4adb2be30b53e0686b'
+                   '38767582df35553b5619e7d28c0488f0296c3858175ab93f14108adf1602670b')
+sha256sums_aarch64=('0937df1ffaf948e1eaee6087da8923ffab002de6b1ff15decee60082015a73e4'
+                    '78382a8a25498f72fc7f8cdfc4b438bdfe0fd90574ad4141794120f23fdcc82c')
 
 
 case ${CARCH} in
