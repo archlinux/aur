@@ -1,15 +1,13 @@
 pkgbase = kirc
-	pkgdesc = A tiny IRC client written in POSIX C99
-	pkgver = 0.3.2
+	pkgdesc = KISS for IRC, an IRC client written in POSIX C99
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/mcpcpc/kirc
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = glibc
-	source = kirc::git+https://github.com/mcpcpc/kirc.git#commit=3bb2b8d81000176ce9793de1983f33420b885673
-	source = skip-clean.patch
+	source = kirc::git+https://github.com/mcpcpc/kirc.git#tag=1.2.2
 	b2sums = SKIP
-	b2sums = 6c909b297b1c7d397d64f5c33332b16de8d2a166997b7467332de9e9b08e6159aff49e94a820790f482700c58174b7cd715c2eec2f313438cd38f1093e393655
 
 pkgname = kirc
