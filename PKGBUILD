@@ -3,7 +3,7 @@
 # Helpful URL: https://prowlarr.servarr.com/v1/update/nightly?version=0.0.0.0&os=linux&runtime=netcore&arch=x64&includeMajorVersion=true
 
 pkgname=prowlarr-nightly-bin
-pkgver=3.0.2.5777
+pkgver=3.1.0.5785
 pkgrel=1
 pkgdesc='Indexer manager/proxy for usenet and torrent users (nightly builds)'
 arch=(x86_64 aarch64 armv7h)
@@ -57,9 +57,9 @@ sha256sums=('5cb90253a2c8c42a98ad8b7573d6905ad478b877dffbe50b9f7667f28cdbd806'
             '0c9d7cda701395a8ddb708c111de58437543485702de23e23a0164a162a53bbc'
             'ee61f5621eae6ab932fb093a4f75a0ab11bf9e3ca829f0d34c25014f68aeff7d'
             '75591d19518bafc60862c60848ecad84f92c7f2b47b2b4eeafcbbbd650a43043')
-sha256sums_x86_64=('a815e5c170ebbd83be4cd73ced8953718f868ab84cf701919c5a4d394ba10310')
-sha256sums_aarch64=('98d499710a8a5916b1574da6285c841d72554c38b4c15c5abe89192955faac0d')
-sha256sums_armv7h=('475a0557340207f6bad43c5b207c4b61f7dee0dc48a8863040105a4270bcbac3')
+sha256sums_x86_64=('b952c5bf2967ec5a508fba393621b6c195545de24bbe412e30ff61ca6d7b9f56')
+sha256sums_aarch64=('fac8c4b6fb80d94074968d8d141b7680b144b8f59d047c0f8d7994c5bf5bf3a9')
+sha256sums_armv7h=('1b0416e3eb6a5ea8f8ac355a36b2d5399d46d31a83ed89049feaf257561cc144')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/prowlarr/bin"
