@@ -17,18 +17,21 @@ options=('!strip' '!debug')
 # ncurses 5 libraries lack the symbol version node ePSXe needs, and it never
 # bundled libssl.so.1.1 / libunistring.so.2). This one carries a working
 # runtime and 64-bit plugins built from PCSX-Reloaded 1.9.95.
-source=("ePSXe-2.0.5-x86_64.AppImage::https://github.com/Twilight0/epsxe-appimage/releases/download/v$pkgver/ePSXe-$pkgver-x86_64.AppImage")
+# One release per build (tag v<version>-<pkgrel>): replacing an asset under
+# a fixed name breaks every client that already cached it, because the file
+# name stays the same and the download is skipped.
+source=("ePSXe-$pkgver-$pkgrel-x86_64.AppImage::https://github.com/Twilight0/epsxe-appimage/releases/download/v$pkgver-$pkgrel/ePSXe-$pkgver-$pkgrel-x86_64.AppImage")
 sha256sums=('47d07dd0a7474495ce24b1cd70e1af4b26b1fb66d01ab7ac47b89ceb79b32543')
 
 package() {
   # Unpack the AppImage once: the icon and the documented settings come
   # from it.
   cd "$srcdir"
-  chmod +x "ePSXe-$pkgver-x86_64.AppImage"
-  "./ePSXe-$pkgver-x86_64.AppImage" --appimage-extract >/dev/null 2>&1 || true
+  chmod +x "ePSXe-$pkgver-$pkgrel-x86_64.AppImage"
+  "./ePSXe-$pkgver-$pkgrel-x86_64.AppImage" --appimage-extract >/dev/null 2>&1 || true
 
-  install -Dm755 "$srcdir/ePSXe-$pkgver-x86_64.AppImage" \
-    "$pkgdir/opt/epsxe/ePSXe-$pkgver-x86_64.AppImage"
+  install -Dm755 "$srcdir/ePSXe-$pkgver-$pkgrel-x86_64.AppImage" \
+    "$pkgdir/opt/epsxe/ePSXe.AppImage"
 
   # Launcher. The AppImage's own AppRun reads /etc/epsxe.conf and
   # ~/.config/epsxe/config, so the settings below also apply to desktop
@@ -62,7 +65,7 @@ if [ -z "${SDL_VIDEODRIVER:-}" ] && [ -n "${DISPLAY:-}" ]; then
   export SDL_VIDEODRIVER
 fi
 
-exec /opt/epsxe/ePSXe-2.0.5-x86_64.AppImage "$@"
+exec /opt/epsxe/ePSXe.AppImage "$@"
 EOF
 
   # Documented settings.
@@ -91,8 +94,8 @@ EOF
 
   # Icon from the AppImage itself, scaled to a regular 256x256.
   cd "$srcdir"
-  chmod +x "ePSXe-$pkgver-x86_64.AppImage"
-  "./ePSXe-$pkgver-x86_64.AppImage" --appimage-extract >/dev/null 2>&1 || true
+  chmod +x "ePSXe-$pkgver-$pkgrel-x86_64.AppImage"
+  "./ePSXe-$pkgver-$pkgrel-x86_64.AppImage" --appimage-extract >/dev/null 2>&1 || true
   if [ -f squashfs-root/epsxe.png ]; then
     convert squashfs-root/epsxe.png -background none -resize 256x256 \
       -gravity center -extent 256x256 "$srcdir/epsxe-256.png"
