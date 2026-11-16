@@ -15,7 +15,7 @@ optdepends=('uv: generate client configurations that install on demand with uvx'
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'validate-before-request.patch')
 sha256sums=('e1de1fecc84d85440166ef2e49d859767b877ac7f7b322319ce73acd7042f98f'
-            '190c18a8e7fdc2d117fa6a9084e385c97ed7cd905888b441e0bc82888707b3a0')
+            '7325d21b12a94b4dc255ed66804e8fa128e7373624c49b6f9674c89dacf52ddb')
 
 prepare() {
     cd "$_pkgname-$pkgver"

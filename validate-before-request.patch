@@ -12,16 +12,6 @@
          raise ValueError(f"{name} must contain 1-{maximum} characters without control characters")
      return value
  
---- a/servers/bgee_mcp/api.py
-+++ b/servers/bgee_mcp/api.py
-@@ -35,6 +35,7 @@
- 
- 
- async def _query(select: str, where: str, limit: int, offset: int) -> dict:
-+    page(limit, offset)
-     query = f"{PREFIXES}SELECT DISTINCT {select} WHERE {{ {where} }} LIMIT {limit} OFFSET {offset}"
-     data, source = await json_response(
-         ENDPOINT, {"query": query, "format": "application/sparql-results+json"})
 --- a/servers/bigg_mcp/api.py
 +++ b/servers/bigg_mcp/api.py
 @@ -28,6 +28,7 @@

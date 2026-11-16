@@ -19,6 +19,6 @@ pkgbase = bioinformatics-mcp
 	source = bioinformatics-mcp-0.2.1.tar.gz::https://github.com/imjiaoyuan/bioinformatics-mcp/archive/v0.2.1.tar.gz
 	source = validate-before-request.patch
 	sha256sums = e1de1fecc84d85440166ef2e49d859767b877ac7f7b322319ce73acd7042f98f
-	sha256sums = 190c18a8e7fdc2d117fa6a9084e385c97ed7cd905888b441e0bc82888707b3a0
+	sha256sums = 7325d21b12a94b4dc255ed66804e8fa128e7373624c49b6f9674c89dacf52ddb
 
 pkgname = bioinformatics-mcp
