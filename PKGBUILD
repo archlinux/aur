@@ -1,8 +1,8 @@
 # Maintainer: deeadly at Discord
 
 pkgname=tapes-bin
-pkgver=0.1.6beta
-_tag=v0.1.6-beta
+pkgver=0.1.10beta
+_tag=v0.1.10-beta
 pkgrel=1
 pkgdesc='Atomic dotfiles switcher for Linux and ricing (prebuilt binary)'
 arch=('x86_64')
@@ -17,9 +17,9 @@ source=(
   "LICENSE::$url/raw/$_tag/LICENSE"
   "README.md::$url/raw/$_tag/README.md"
 )
-sha256sums=('14e4bc48ef2e31d74dbfeeea616d15e3d7c9d646d121a2fd77a7b60ee18e996d'
-            '33958a9cac02e9b9796325e4e8ba4c48e28761b51f0044affe4e688aca861f7c'
-            '41e1ae4e1b806de1f7cd45929dae9f5096ae842c03c720478b8fb6c909d6c3cb')
+sha256sums=('98bfb866102d425fa85e80e69097c2cce241a1e8a86ce7c42e4f8ef781355359'
+            '04154dcce2885d2508d938917eb3f4c3b506ddc8715e3c500bc8b0a78f54922a'
+            '33e39668e0c6b0e2df2399094cedf222e1dfde1ce8b83bc7c2365aae98b6e4f5')
 
 package() {
   install -Dm755 "$srcdir/tapes-x86_64-unknown-linux-gnu-$_tag/tapes" "$pkgdir/usr/bin/tapes"
