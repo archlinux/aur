@@ -38,7 +38,6 @@ path = [
   "webternet-curl.patch",
   "sqlite-system.patch",
   "geoip-libmaxminddb.patch",
-  "sourcemod-delete-noexcept.patch",
 ]
 SPDX-FileCopyrightText = "AlliedModders LLC"
 SPDX-License-Identifier = "GPL-3.0-only"

@@ -7,7 +7,7 @@ pkgname=(sourcemod-dev-scripting sourcemod-dev sourcemod-dev-src)
 # SourceMod's development builds: the tags of master's builds (1.13, released by upstream as
 # prereleases), <version>.<build>, the build being the number of commits, which SourceMod's
 # versioning counts with git
-pkgver=1.13.0.7492
+pkgver=1.13.0.7493
 pkgrel=1
 pkgdesc="SourceMod, the scripting and administration platform for Source engine game servers (development builds)"
 arch=(x86_64 aarch64)
@@ -62,11 +62,10 @@ source=("git+https://github.com/alliedmodders/sourcemod.git#tag=$_tag"
   sourcepawn-source-date-epoch.patch
   sourcepawn-jitdump-timestamp.patch
   zydis-amalgamate-paths.patch
-  sourcemod-delete-noexcept.patch
   geoip-libmaxminddb.patch
   source-sdk.txt
   spcomp.sh)
-sha512sums=('916d9ae13d19c50f20386fc494ef373eb2354919a3e5606852e78bb212e9573b5bc775dfa545910efa10192e587119567cc355f0c9001f5cc1cdde3e021db60d'
+sha512sums=('e40c47cfd95e508cbe7596d50c291b1d7d42ab3c807536cb55e723d84f0bcfa5e4a9dd5dc1320f8f0928aa60603d07a3ae223fc93869dbd4bad5e86696228e75'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -87,11 +86,10 @@ sha512sums=('916d9ae13d19c50f20386fc494ef373eb2354919a3e5606852e78bb212e9573b5bc
   'dbd37e95a9e553e1fed22651222e9efb53fc2b5b6652f7f11dcf04a5a0bd489427caecacf1aa940a75693832d9e2c1b97c16cbf76ad9f5705247ca6f142850bd'
   '5bdadff7eaa28ec3735118e3574b959519fe6ad49c3028555c5711e2939d1beaddd398bb24ce286bd980ad60c82850bc843c8ae8b9e4a3f1aa29c6f7cf5a90c4'
   '54c1386ffdc6c6efdbedccdaddffedc78e3e7c31f7b4de7cec0561a28f5364123cb776216efc39cadec5292488d06a8a49ed9d65ed244f4b1d724215ca8283ab'
-  '5634114e3418e894506206b30030af9a4465fdb2d4c8f15e5e81eaadb086c7fdce8c54835309548d42b7776ee1803c638fc2e2aa23f3363cfc395ffffd741a3e'
   '084afa36685393c0806165c8c897553c0df876e6aaa86d28020064f40f3cc25d0ad69163d3abe183c898df6fc92f5ff4685969bb7a9cdf477efbb4b8eb986cda'
   'f427709e7137dd0249070ffa3aedaf9c04b434172d56d8d453ada2d0c439c2b31a9c82551da5c993468fc286edba756d86073268894394ba5190fc1475ca09b3'
   '3a4c60a485304553ee1ca87ac0e96ba636cb8f0a311c71a0a73b3926964a3ff700c7cca6d24ddef04547dd90bd58f6dec26d137da6286d1c409ebcd6e6ed2bf2')
-b2sums=('46384751e442a96fd77937d7afa4d2c9c9699611d8b26bf1a73972fc926cac595c12f4d91f8c003711e3cc04e652516c9d6d997509c02df2f86b2f136d40d249'
+b2sums=('4ee440dadca69bfedb6125a8db56d5bce2d2d6eadb88f970a652f25cc1b896024357fb46680d7dc0348bdb8244607b13c8f4c320dad8ed2060795b9db27f408c'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -112,7 +110,6 @@ b2sums=('46384751e442a96fd77937d7afa4d2c9c9699611d8b26bf1a73972fc926cac595c12f4d
   '2bdd4ad7f2888971c76ccfff3293acc8669be619014096c7430827807f3dd04c9d8610c4edb91a8c7c6da0afaf21fc39b503cb29ddefbe88b726120ae56ada1f'
   '0dea4ce7355bcb962727eb1664769d3ce8ab3913f00f0ec817d1f296c927faee93e833da35d7e3c1d96cbbcaa0431a03c3d79512f74f9a78231c82fbcc016a43'
   'e8f46cfa4744c5ea62c28369a7c81a9027a389dbb6573495279b084ff99b6a39d114097788278c2be84237da7b7986c310bd6a6069fe3896cb234784181bcf68'
-  'f86955655433526c10e56495e57ac546620a5fe7fe9e804669a80823bf7a782667907276ed06bd4905a05b640f947f6cad7a8b087acd26bbd7d191cb90ebe457'
   '6a7a7c578f22af05c0a6617a621c36add3f6f287f73d64d127dc91952acf5a1c71c619b3513fdb8ab4bb5767c57dee81fbbcd616f4f6c9163189f9d6002f8fad'
   'b856088fc19f7c921a5e2b3320a776e27b10a8d3d77c21041cb59348b2efde62491163c57227080c0091eb77e74c0d1fc2c0b72a01e0770df27777dc077ad600'
   '670fb582edac8bdef05a3842edbef464c5238861df80fbf5e788fe2752275db395826c0b6eb90d5c9fd725b2a368b8d7884aea9de6d89adde6032c481a6311b8')
@@ -189,10 +186,6 @@ prepare() {
   # only on x86: aarch64 doesn't build otherwise (https://github.com/alliedmodders/sourcepawn/pull/1205,
   # merged as alliedmodders/sourcepawn@0e3f7dbc: drop this once SourceMod's sourcepawn submodule has it)
   patch -Np1 -i "$srcdir/sourcepawn-jitdump-timestamp.patch"
-  # The replacement operator delete of extensions and logic.so declared noexcept, like the
-  # standard's (implicitly so already; GCC warns about the different exception specifier)
-  # (https://github.com/alliedmodders/sourcemod/pull/2607)
-  patch -Np1 -i "$srcdir/sourcemod-delete-noexcept.patch"
   # The GeoIP extension with the system's libmaxminddb, linked dynamically, instead of the bundled
   # 1.5.2
   patch -Np1 -i "$srcdir/geoip-libmaxminddb.patch"
