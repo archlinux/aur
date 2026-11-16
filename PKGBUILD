@@ -1,8 +1,8 @@
 # Maintainer: deeadly at Discord
 
 pkgname=tapes
-pkgver=0.1.6beta
-_tag=v0.1.6-beta
+pkgver=0.1.10beta
+_tag=v0.1.10-beta
 pkgrel=1
 pkgdesc='Atomic dotfiles switcher for Linux and ricing'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 conflicts=('tapes-bin' 'tapes-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('e53c12790d318b363298369f071ad721ea629a6316efe576261b7bd343a5ca44')
+sha256sums=('3fd5d35896b0b3f155b1fcf511c16f85b7015f54afbc60dc38e4d70491556b8c')
 
 prepare() {
   cd "$pkgname-${_tag#v}"
