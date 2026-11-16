@@ -1,12 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wavy-bin
 _pkgname=Wavy
-pkgver=1.1.3
+pkgver=1.1.4
 _electronversion=33
 pkgrel=1
 pkgdesc="YouTube Music als Desktop-App: Equalizer, Live-Wallpaper, Karaoke-Lyrics, Discord-Status, Zusammen hören, RGB im Beat."
 arch=('x86_64')
-url="https://github.com/JedPlayYT/wavy"
+url="https://jedplayyt.github.io/wavy/"
+_ghurl="https://github.com/JedPlayYT/wavy"
 license=('LicenseRef-unknown')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -15,11 +16,11 @@ depends=(
     'python'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-amd64.deb"
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('99716c2e8c7a77d784110b3100c6d540d46b1faa6d9ff8ca0432dbd17132183e'
+sha256sums=('6231fa2cf8c3a97a662d3941ba192a120a215d16178b4ceac8f5465bbfaf8d9e'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
