@@ -1,0 +1,24 @@
+pkgbase = antigravity-acp-bin
+	pkgdesc = Official standalone Google Antigravity Agent Client Protocol (ACP) server
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://antigravity.google/docs/ide/extensions/acp
+	arch = x86_64
+	arch = aarch64
+	license = custom:proprietary
+	depends = glibc
+	depends = gcc-libs
+	provides = antigravity-acp
+	conflicts = antigravity-acp
+	options = !strip
+	options = !debug
+	source = LICENSE
+	source = antigravity-acp
+	sha256sums = ddba908629d9685f434b27342d2747d0d8a69e270517e56e4dd7b65bf2edaa93
+	sha256sums = 7c828934a34651521f3663035f114e5ec65075be7fa9101e880a633c117d45ae
+	source_x86_64 = antigravity-acp-bin-1.5.0-x86_64.zip::https://dl.google.com/agy-extensions/releases/linux/agy-acp-server-1.5.0-linux-x86_64.zip
+	sha256sums_x86_64 = 36f373e8948edf1727b39c7d62b5722d6a4474bdfd72b04ad3d6def571808c9f
+	source_aarch64 = antigravity-acp-bin-1.5.0-aarch64.zip::https://dl.google.com/agy-extensions/releases/linux/agy-acp-server-1.5.0-linux-arm64.zip
+	sha256sums_aarch64 = 1e184f439477b54138e94440056b26a78c0a8075a8fd2ffda637ec31267c6459
+
+pkgname = antigravity-acp-bin

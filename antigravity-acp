@@ -1,0 +1,7 @@
+#!/bin/sh
+# Launch the standalone Google ACP server from the directory where its
+# localharness_external companion is installed. Keep the caller's working dir.
+case "${1-}" in
+    --uid=*) exec /opt/antigravity-acp/agy_acp_server.par "$@" ;;
+    *) exec /opt/antigravity-acp/agy_acp_server.par --uid= "$@" ;;
+esac
