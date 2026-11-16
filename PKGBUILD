@@ -8,10 +8,6 @@ pkgname=ambuild
 pkgver=2.2.r84.g5b0aa72
 _commit=5b0aa725beef33c9cf6a1b00659a010c3d9120d3
 pkgrel=1
-# Where ./aur-packages commits reads _commit from: the commit pkgver names
-_commit_lookup() {
-  curl -fsSL "https://api.github.com/repos/alliedmodders/ambuild/commits/${pkgver##*.g}" | jq -r .sha
-}
 pkgdesc="AlliedModders' build system, used by SourceMod, SourcePawn and Metamod:Source"
 arch=(any)
 url="https://github.com/alliedmodders/ambuild"
