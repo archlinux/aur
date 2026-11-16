@@ -1,17 +1,20 @@
+# Maintainer: JasonLandbridge
 # Contributor: diplomat
-# Maintainer: Julian Xhokaxhiu <https://julianxhokaxhiu.com>
+# Contributor: Julian Xhokaxhiu <https://julianxhokaxhiu.com>
 
 pkgname=open-webui
-pkgver=0.11.4
+pkgver=0.13.3 # renovate: datasource=github-releases depName=open-webui/open-webui
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
-license=('BSD-3-Clause')
+license=('custom:Open-WebUI' 'BSD-3-Clause' 'MIT')
 depends=('uv' 'ollama')
 optdepends=('tika-server')
 conflicts=('open-webui-uv' 'open-webui-git' 'open-webui-openrc' 'open-webui-no-venv' 'open-webui-dinit')
 source=("LICENSE::https://raw.githubusercontent.com/open-webui/open-webui/refs/tags/v$pkgver/LICENSE"
+        "LICENSE_HISTORY::https://raw.githubusercontent.com/open-webui/open-webui/refs/tags/v$pkgver/LICENSE_HISTORY"
+        "LICENSE_NOTICE::https://raw.githubusercontent.com/open-webui/open-webui/refs/tags/v$pkgver/LICENSE_NOTICE"
         "${pkgname}.env"
         "${pkgname}.override"
         "${pkgname}.service"
@@ -19,6 +22,8 @@ source=("LICENSE::https://raw.githubusercontent.com/open-webui/open-webui/refs/t
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 sha256sums=('5f1bd74c48bf13ab0f82e177ad9e637313b92533d20ead2593d49347a47fc232'
+            'b1567cc9763241a41569e01f08272a167dac57273f717b95b31ba7b5ec935e17'
+            '9de72254becbb9a317410a459447be7e8f042b911a846c58307319c77e50df00'
             'ae29c92ae8f30565aa686e39cd05cd178266e3a6461ecbafe291829f675d6700'
             '576562a1788303dbdf9e3df4239ea0c43cdab39276e48542f1550f6346dae8f1'
             '8cde3e05a807e73f85d9c20183dd82dcfef7d2400d8bf3303bfef33641598b45'
@@ -27,9 +32,6 @@ sha256sums=('5f1bd74c48bf13ab0f82e177ad9e637313b92533d20ead2593d49347a47fc232'
             '7ee594b5c323a55851ff79b9addbf303f1e263f68ca66538e20e72694ae2a467')
 options=(!strip !debug)
 install="${pkgname}.install"
-
-_appprefix="/opt"
-_appdataprefix="/var/opt"
 
 prepare() {
 cat > "${srcdir}/${pkgname}.sh" << EOF
@@ -61,5 +63,7 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
   # License
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/LICENSE_HISTORY" "$pkgdir/usr/share/licenses/$pkgname/LICENSE_HISTORY"
+  install -Dm644 "$srcdir/LICENSE_NOTICE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE_NOTICE"
 }
