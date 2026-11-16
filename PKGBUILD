@@ -2,7 +2,7 @@
 
 _name=livekit
 pkgname=python-$_name
-pkgver=1.2.1
+pkgver=1.2.2
 _livekit_ffi_ver=0.13.2
 pkgrel=1
 pkgdesc="Python Real-time SDK for LiveKit."
@@ -23,17 +23,15 @@ makedepends=('python-setuptools'
              'python-installer')
 checkdepends=('python-pytest'
               'python-pytest-asyncio'
-              'python-matplotlib'
-              'python-pydantic'
               'python-livekit-api')
-source=("$_repo/archive/refs/tags/rtc-v$pkgver.tar.gz"
+source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/rtc-v$pkgver.tar.gz"
         "$_repo/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures/test_audio.wav"
         "$_repo/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures/test_echo_capture.wav"
         "$_repo/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures/test_echo_render.wav"
         "$_repo/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures/test_processed.wav")
 source_x86_64=("https://github.com/livekit/rust-sdks/releases/download/livekit-ffi/v$_livekit_ffi_ver/ffi-linux-x86_64.zip")
 source_aarch64=("https://github.com/livekit/rust-sdks/releases/download/livekit-ffi/v$_livekit_ffi_ver/ffi-linux-arm64.zip")
-sha256sums=('ea12ddca5b748a8941cad3e2091ef3ebd33f7a2b7e161b130d71066d6efdcbf5'
+sha256sums=('e3fc729e9142e2a5f9dcd9a8f191e163e0da83bcfd13fe6c6edd1e6d257ded25'
             'ac5cba8b2477ab55c9bc5f95faffcd3d9b9ad4e6a01d79308fbe6eeef733ce80'
             '90626c2c532dfb8313ae52501a9500f1c90235570aab8ff1367e7f91fb697a7e'
             'cf50f57f00fa941ab612c57c24a28811b93c878d3c98edcb4a8f21508aa8e566'
@@ -43,6 +41,8 @@ sha256sums_aarch64=('df550ece8cfd912f2fa21f7191e88b81a1ae6cad5c3a7ccffba20a779bd
 
 prepare(){
   cd "python-sdks-rtc-v$pkgver"
+  # Use the setuptools version shipped by Arch
+  sed -i '/^requires = \[/,/\]/s/"setuptools[<>=!~][^"]*"/"setuptools"/' $_name-rtc/pyproject.toml
   cp -f "$srcdir"/test_audio.wav tests/rtc/fixtures/test_audio.wav
   cp -f "$srcdir"/test_echo_capture.wav tests/rtc/fixtures/test_echo_capture.wav
   cp -f "$srcdir"/test_echo_render.wav tests/rtc/fixtures/test_echo_render.wav
