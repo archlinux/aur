@@ -1,5 +1,5 @@
 pkgname=dcr-bin
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Cargo-like utility to manage C/C++ projects (pre-compiled musl binary)"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h' 'riscv64')
@@ -11,16 +11,16 @@ optdepends=(
   'gcc: build C/C++ projects with GCC'
   'clang: build C/C++ projects with Clang'
 )
-source_x86_64=("dcr-$pkgver::https://github.com/dexoron/dcr/releases/download/v0.9.5/dcr-x86_64-unknown-linux-musl-0.9.5")
-sha256sums_x86_64=('1f37490ce0fa425bb7ea55a930f8ad1e873d816aa1e699ecd761bc4b81b0f3b4')
-source_aarch64=("dcr-$pkgver::https://github.com/dexoron/dcr/releases/download/v0.9.5/dcr-aarch64-unknown-linux-musl-0.9.5")
-sha256sums_aarch64=('86289f1a2cc3aea6bd4c4ee6a81ede36b3e5ae0e833f69f4e1b99efdfabc80cd')
-source_i686=("dcr-$pkgver::https://github.com/dexoron/dcr/releases/download/v0.9.5/dcr-i686-unknown-linux-musl-0.9.5")
-sha256sums_i686=('3e9b98b16c54243a127895bac1c9545222e40f4b5ab707c589582892d836d02a')
-source_armv7h=("dcr-$pkgver::https://github.com/dexoron/dcr/releases/download/v0.9.5/dcr-armv7-unknown-linux-musleabihf-0.9.5")
-sha256sums_armv7h=('04fbe9042f9a853464cc375b6b6213ff9dbbe7133d061244e71686716a45c32e')
-source_riscv64=("dcr-$pkgver::https://github.com/dexoron/dcr/releases/download/v0.9.5/dcr-riscv64gc-unknown-linux-musl-0.9.5")
-sha256sums_riscv64=('ccc9841000a2298963a455e3c714a1edc923b66d7f9524b85c2b43de54f00d53')
+source_x86_64=("dcr-$pkgver::https://github.com/dexoron/dcr/releases/download/v0.9.6/dcr-x86_64-unknown-linux-musl-0.9.6")
+sha256sums_x86_64=('cdb7a5c74c2066eca0657c5eee3946af72bf22d7c10a68345c1fe6b0dcfc961e')
+source_aarch64=("dcr-$pkgver::https://github.com/dexoron/dcr/releases/download/v0.9.6/dcr-aarch64-unknown-linux-musl-0.9.6")
+sha256sums_aarch64=('8c6bb8f61ae60c34162e4aeaf44b73516a4b0bed176af9bc4c9d1712815ccb4b')
+source_i686=("dcr-$pkgver::https://github.com/dexoron/dcr/releases/download/v0.9.6/dcr-i686-unknown-linux-musl-0.9.6")
+sha256sums_i686=('62f2de8f230c297fc8ce516473bbec521b03db48a90f2afdaafe6e6b1c3442a4')
+source_armv7h=("dcr-$pkgver::https://github.com/dexoron/dcr/releases/download/v0.9.6/dcr-armv7-unknown-linux-musleabihf-0.9.6")
+sha256sums_armv7h=('f4d8ae65522831b440b8c8376ef0a27c5ed84843a16e28ae3426134c71eeb37c')
+source_riscv64=("dcr-$pkgver::https://github.com/dexoron/dcr/releases/download/v0.9.6/dcr-riscv64gc-unknown-linux-musl-0.9.6")
+sha256sums_riscv64=('a33f006ecfb3f2cc13fda536ec55674ed9b8eebe93f42c6ea639887af1ed295c')
 
 package() {
   install -Dm755 "$srcdir/dcr-$pkgver" "$pkgdir/usr/bin/dcr"
