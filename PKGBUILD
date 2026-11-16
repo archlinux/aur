@@ -7,7 +7,7 @@
 pkgname=python-desktop-notifier
 pkgdesc='Python library for cross-platform desktop notifications'
 pkgver=6.1.1
-pkgrel=1
+pkgrel=2
 url='https://github.com/SamSchott/desktop-notifier'
 arch=(any)
 license=('MIT')
@@ -36,7 +36,7 @@ build() {
   cd "desktop-notifier-${pkgver}"
 
   python -m build --wheel --no-isolation
-  sphinx-build -b man docs docs/_build/man
+  sphinx-build -b html docs docs/_build/html
 }
 
 package() {
@@ -44,7 +44,9 @@ package() {
 
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  install -vD -t "${pkgdir}/usr/share/doc/${pkgname}/" -m644 README.md
-  install -vD -m644 docs/_build/man/desktop-notifier.1 -T "${pkgdir}/usr/share/man/man1/${pkgname}.1"
   install -vD -t "${pkgdir}/usr/share/licenses/${pkgname}/" -m644 LICENSE
+
+  cd docs/_build/html
+  find . -type f -not -path '*/.*' \
+    -exec install -vD -m644 {} -T "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
 }
