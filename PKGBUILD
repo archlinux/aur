@@ -10,6 +10,10 @@ url="https://github.com/Eddie02345/seuil"
 license=('GPL-3.0-or-later')
 depends=('bluez' 'bluez-utils' 'bluez-deprecated-tools' 'dbus' 'pipewire' 'pipewire-pulse' 'libpulse' 'playerctl')
 makedepends=('cargo' 'git' 'rust')
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname" "$_pkgname-bin")
+
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
