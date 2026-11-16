@@ -25,6 +25,22 @@ source=("json-everything::git+$url.git#commit=$_commit")
 sha512sums=('b7ec594e732d53e73beb3f957abab14ed0e2a6866bc08d682c00c8de6b3cb508cc43051fb91191fa09365e85f6b511fd75715ec72ec622268316bdf6321010b5')
 b2sums=('533f4c089f938eb943c38c6bbe60e3fad78b0830c069aab2903c078e6646af41a3a204215574c919cdeaf0dfd683b9f25b9ebf52bd790f96e5d93b357d3e7c09')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -33,6 +49,8 @@ _dotnet_env() {
 }
 
 prepare() {
+  # The SDK to build with (_dotnet_sdk), for dotnet anywhere in $srcdir
+  printf '{ "sdk": { "version": "%s", "rollForward": "latestPatch" } }\n' "$(_dotnet_sdk)" >"$srcdir/global.json"
   cd json-everything || exit
   # Source link isn't needed for this build
   find src -name '*.csproj' -exec sed -i '/Microsoft.SourceLink.GitHub/d' {} +
