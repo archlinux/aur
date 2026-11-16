@@ -1,6 +1,6 @@
 pkgname=rime-kaomoji
-pkgver=0.0.0.20230825
-_commit=e2b64996bf26e409466a1de8a904364b634e6307
+pkgver=0.0.0.20261116
+_commit=94426b5476ae066a9efa8853823797eb2666e00f
 pkgrel=1
 pkgdesc="Kaomoji support for rime"
 arch=('any')

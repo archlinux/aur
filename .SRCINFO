@@ -1,12 +1,12 @@
 pkgbase = rime-kaomoji
 	pkgdesc = Kaomoji support for rime
-	pkgver = 0.0.0.20230825
+	pkgver = 0.0.0.20261116
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/rime-kaomoji
 	arch = any
 	license = LGPL
 	makedepends = git
-	source = git+https://github.com/rime/rime-kaomoji.git#commit=e2b64996bf26e409466a1de8a904364b634e6307
+	source = git+https://github.com/Freed-Wu/rime-kaomoji#commit=94426b5476ae066a9efa8853823797eb2666e00f
 	sha512sums = SKIP
 
 pkgname = rime-kaomoji
