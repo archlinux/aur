@@ -2,7 +2,7 @@
 
 pkgname=oarfish-bin
 _pkgname=oarfish
-pkgver=0.11.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Suite of tools for working with long-read transcriptome data (RNA-seq) from PacBio and Oxford Nanopore"
 arch=('x86_64')
