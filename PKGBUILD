@@ -72,8 +72,8 @@ prepare() {
   git -C third_party/khook -c protocol.file.allow=always submodule update --force third_party/safetyhook
 
   # The loader's tests with KHook's headers, which the loader's sources include, like the loader,
-  # and without SourceHook's, which is gone. Upstream wants to rework the tests for the move to KHook
-  # instead (https://github.com/alliedmodders/metamod-source/pull/293)
+  # and without SourceHook's, which is gone
+  # (https://github.com/alliedmodders/metamod-source/pull/296)
   patch -Np1 -i "$srcdir/loader-test-khook.patch"
 
   # SafetyHook's Zydis, amalgamated from Zydis and Zycore at the release's commits by Zydis's
