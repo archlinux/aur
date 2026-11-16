@@ -1,6 +1,6 @@
 pkgbase = pixum-fotowelt
 	pkgdesc = an offline client for creating photobooks and other photo products and ordering them from Pixum
-	pkgver = 8.0.2
+	pkgver = 8.1.3
 	pkgrel = 1
 	url = https://www.pixum.de/
 	install = pixum-fotowelt.install
@@ -10,7 +10,7 @@ pkgbase = pixum-fotowelt
 	makedepends = unzip
 	makedepends = xdg-utils
 	depends = libx11
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = curl
 	depends = wget
 	depends = snappy
@@ -23,7 +23,7 @@ pkgbase = pixum-fotowelt
 	options = !strip
 	source = https://dls.photoprintit.com/download/Data/1291-de_DE/hps/setup_Pixum_Fotowelt.tgz
 	source = updater.pl
-	md5sums = 838058aae62a2d64a6ce68df5e5823bd
+	md5sums = e07584af42a9ab4d6f3ea2ff6a536830
 	md5sums = 6dbb622ce7c602a6a42e808a05f1561a
 
 pkgname = pixum-fotowelt

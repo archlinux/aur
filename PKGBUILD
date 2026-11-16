@@ -1,8 +1,9 @@
-# Maintainer: NoNickKnown <nonickknown at gmail dot com>
+# Maintainer: kodiak
 #  forked from cewe-fotobuch, originally created by contributors listed below:
 # Contributor: DonJaime
 # Contributor: Jozef Riha <jose1711 at gmail dot com>
 # Contributor: Manuel Conzelmann
+# Contributor: NoNickKnown <nonickknown at gmail dot com>
 
 # to package a different version, change this line to _productVariant=<one of the words after '_prams_' below>
 # or download a setup file from a local CEWE site, put it in the same folder as this file, and run:
@@ -24,8 +25,10 @@ _scriptTailMd5sums[7.3]=8cf896344365958462902bfb340201cd
 _scriptTailMd5sums[7.4]=b9878ccca286ec7faa4d230633294853
 _scriptTailMd5sums[7.4a]=6f987a683f17b3595cc5993c1b1375ed
 _scriptTailMd5sums[8.0]=e53bd9e7beabb2eb1c6857bea61ccdde
+_scriptTailMd5sums[8.1]=d11ac711b0859d242fe9064c2c63deee
 
 # locale, key account, original name, version, (optional) replacement name
+_prams_PixumAT=(de_AT 6279 'Pixum Fotowelt' 7.3.3 'Pixum Fotowelt')
 _prams_Austria=(de_AT 29762 'CEWE Fotowelt' 7.1.4)
 _prams_Belgie=(nl_BE 28049 'CEWE Photoservice' 7.1.4)
 _prams_Belgique=(fr_BE 28049 'CEWE Photoservice' 7.1.4)
@@ -35,7 +38,7 @@ _prams_Fnac=(fr_FR 18455 'Atelier Photo Fnac' 7.1.3)
 _prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 8.0.2 'CEWE Fotobuch')
 _prams_Fotowelt=(de_DE 6822 'CEWE Fotowelt' 7.4.0)
 _prams_Germany=(de_DE 24441 'CEWE Fotowelt' 8.0.2)
-_prams_Pixum=(de_DE 1291 'Pixum Fotowelt' 8.0.2)
+_prams_Pixum=(de_DE 1291 'Pixum Fotowelt' 8.1.3)
 _prams_Italy=(it_IT 19991 'CEWE.IT Foto World' 7.1.5)
 _prams_Luxemburg=(de_LU 32905 'CEWE Photoservice' 7.1.5)
 _prams_Luxembourg=(fr_LU 32905 'CEWE Photoservice' 7.1.4)
@@ -90,11 +93,11 @@ pkgver=${_prams[3]}
 
 url="https://www.pixum.de/"
 license=("custom:eula")
-depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
+depends=('libx11' 'libjpeg-turbo' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
 makedepends=('unzip' 'xdg-utils')
 arch=('i686' 'x86_64')
 source=($source 'updater.pl')
-md5sums=('838058aae62a2d64a6ce68df5e5823bd'
+md5sums=('e07584af42a9ab4d6f3ea2ff6a536830'
          '6dbb622ce7c602a6a42e808a05f1561a')
 install="$pkgname.install"
 
