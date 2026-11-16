@@ -1,6 +1,6 @@
 pkgbase = tufw
 	pkgdesc = Terminal UI for ufw
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/peltho/tufw
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tufw
 	depends = ufw
 	provides = tufw
 	conflicts = tufw
-	source = tufw-0.2.7.tar.gz::https://github.com/peltho/tufw/archive/refs/tags/v0.2.7.tar.gz
-	sha256sums = 8f9be04ac4422dafe0d2fddfbe29e27ee44616387c8b6c6ce24cc00e5124aa84
+	source = tufw-0.2.8.tar.gz::https://github.com/peltho/tufw/archive/refs/tags/v0.2.8.tar.gz
+	sha256sums = ad4693be3ddd0e27d4329401ad1e10f66188c7388688b05fa62c71324efdd009
 
 pkgname = tufw
