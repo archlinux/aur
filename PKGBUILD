@@ -1,7 +1,7 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Qwen3.8 Flash Next.
+# Created with assistance from GLM 5.3 Flash.
 pkgname=opencadstudio
-pkgver=2026.45.0
+pkgver=2026.46.0
 pkgrel=1
 pkgdesc="A CAD application built with Rust — 2D/3D drawing, DWG/DXF support, and GPU-accelerated rendering"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=(
 options=(!debug !lto)
 # The tag drops the trailing .0: pkgver 2026.44.0 -> tag v2026.44 -> extracts to OpenCADStudio-2026.44
 source=("$pkgname-$pkgver.tar.gz::https://github.com/HakanSeven12/OpenCADStudio/archive/refs/tags/v${pkgver%.*}.tar.gz")
-sha256sums=('ee14cd2c72e4b5cc4e5e85d821279a4fc46613348831406078d07382d6baa276')
+sha256sums=('8ba3b7ad9f8fdc53fc0416d2b32b88b13b9e73e6612c51303a372f5039a96615')
 
 _pkgdir="OpenCADStudio-${pkgver%.*}"
 
@@ -44,8 +44,11 @@ package() {
   if [ -f LICENSE ]; then
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   fi
-  # Install desktop file if present
-  if [ -f OpenCADStudio.desktop ]; then
-    install -Dm644 OpenCADStudio.desktop "$pkgdir/usr/share/applications/opencadstudio.desktop"
-  fi
+  # Install desktop file if present (2026.46 moved it into packaging/)
+  for _desktop in packaging/OpenCADStudio.desktop OpenCADStudio.desktop; do
+    if [ -f "$_desktop" ]; then
+      install -Dm644 "$_desktop" "$pkgdir/usr/share/applications/opencadstudio.desktop"
+      break
+    fi
+  done
 }
