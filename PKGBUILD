@@ -1,9 +1,8 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 
 pkgname=claude-cage-bin
-pkgver=0.1.8rc
-# pkgver cannot contain the hyphen upstream uses in prerelease tags.
-_tag=0.1.8-rc
+pkgver=0.1.8
+_tag=$pkgver
 pkgrel=1
 pkgdesc='Isolated Claude development workspace with a local virtual machine'
 arch=('x86_64')
@@ -25,7 +24,7 @@ optdepends=(
 provides=("claude-cage=$pkgver")
 conflicts=('claude-cage')
 source=("Cage-${_tag}-linux-amd64.deb::${url}/releases/download/v${_tag}/Cage-${_tag}-linux-amd64.deb")
-sha256sums=('bad2b0e4422df5a5594aec04703ee643d13217a6d30750013ba2fa754e97e07c')
+sha256sums=('7eb68b00dd94c26c3b2b3408c33d1e047eafa08a10bb6ca8c85118896345e018')
 
 prepare() {
   bsdtar -xf "Cage-${_tag}-linux-amd64.deb" -C "$srcdir" 'data.tar.*'

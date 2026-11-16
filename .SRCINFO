@@ -1,6 +1,6 @@
 pkgbase = claude-cage-bin
 	pkgdesc = Isolated Claude development workspace with a local virtual machine
-	pkgver = 0.1.8rc
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/Lee-xeo/Claude-Cage
 	arch = x86_64
@@ -28,10 +28,10 @@ pkgbase = claude-cage-bin
 	optdepends = libnotify: desktop notifications
 	optdepends = zenity: file dialogs outside GTK desktops
 	optdepends = kdialog: file dialogs on KDE
-	provides = claude-cage=0.1.8rc
+	provides = claude-cage=0.1.8
 	conflicts = claude-cage
 	options = !debug
-	source = Cage-0.1.8-rc-linux-amd64.deb::https://github.com/Lee-xeo/Claude-Cage/releases/download/v0.1.8-rc/Cage-0.1.8-rc-linux-amd64.deb
-	sha256sums = bad2b0e4422df5a5594aec04703ee643d13217a6d30750013ba2fa754e97e07c
+	source = Cage-0.1.8-linux-amd64.deb::https://github.com/Lee-xeo/Claude-Cage/releases/download/v0.1.8/Cage-0.1.8-linux-amd64.deb
+	sha256sums = 7eb68b00dd94c26c3b2b3408c33d1e047eafa08a10bb6ca8c85118896345e018
 
 pkgname = claude-cage-bin
