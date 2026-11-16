@@ -1,0 +1,11 @@
+--- getsploit-3.0.1/pyproject.toml.old	2026-09-27 20:44:52.407566299 +0200
++++ getsploit-3.0.1/pyproject.toml	2026-09-27 20:45:02.328049932 +0200
+@@ -79,7 +79,7 @@
+ ]
+ 
+ [build-system]
+-requires = ["uv_build>=0.11.29,<0.12"]
++requires = ["uv_build>=0.11.29"]
+ build-backend = "uv_build"
+ 
+ [tool.pytest.ini_options]
