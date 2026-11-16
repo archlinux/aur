@@ -2,7 +2,7 @@
 # Maintainer: G-grbz <gkhn.gurbuz@hotmail.com>
 
 pkgname=lurviko
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Qt Quick file manager with media libraries, cloud storage and an encrypted vault'
 arch=('x86_64')
@@ -47,11 +47,12 @@ optdepends=(
   'kio-extras: additional network and filesystem protocols'
   'kio-admin: authenticated administrator locations'
   'polkit: administrator authentication for file ownership and permissions'
+  'xdg-desktop-portal: optional system-wide native Open/Save dialogs'
 )
 install=lurviko.install
 source=("Lurviko-${pkgver}-${pkgrel}.tar::${url}/releases/download/v${pkgver}/Lurviko-${pkgver}.tar")
-# SHA-256 of the reproducible v1.6.1 source archive.
-sha256sums=('8c2a0c4e45e7483e1484e7423bf6fbf5736782067215e05bf1392ebf2da7f313')
+# SHA-256 of the reproducible v1.6.2 source archive.
+sha256sums=('3d455c257cc02bb2483dd7e103e683de2923e3c39abd1d166fed6c70344e904b')
 
 prepare() {
   # Installed workers are found in /usr/share/Lurviko. Do not embed the
@@ -74,6 +75,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib/lurviko \
     -DCMAKE_SKIP_INSTALL_RPATH=ON \
+    -DLURVIKO_INSTALL_SYSTEM_FILEMANAGER1=OFF \
     -DLURVIKO_LAUNCH_PROFILE=default
   cmake --build build
 }
@@ -87,14 +89,10 @@ check() {
 package() {
   DESTDIR="${pkgdir}" cmake --install build
 
-  # The generic FileManager1 filename is owned by other file managers.
-  # Keep an opt-in template; users can enable it in their own XDG data directory.
-  install -Dm644 "${pkgdir}/usr/share/dbus-1/services/org.freedesktop.FileManager1.service" \
-    "${pkgdir}/usr/share/Lurviko/dbus-1/services/org.freedesktop.FileManager1.service"
+  # CMake installs FileManager1 as an opt-in template (not a global service).
+  # Keep the separate Lurviko FileChooser portal activation service installed.
   sed -i 's|^Exec=.*|Exec=/usr/bin/lurviko --filemanager1|' \
     "${pkgdir}/usr/share/Lurviko/dbus-1/services/org.freedesktop.FileManager1.service"
-  rm "${pkgdir}/usr/share/dbus-1/services/org.freedesktop.FileManager1.service"
-  rmdir "${pkgdir}/usr/share/dbus-1/services" "${pkgdir}/usr/share/dbus-1"
 
   install -Dm644 "Lurviko-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "Lurviko-${pkgver}/assets/LICENSE-FluentUI.txt" \
