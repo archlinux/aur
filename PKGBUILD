@@ -1,6 +1,6 @@
 # Maintainer: Grimish <grimish@protonmail.com>
 pkgname=mesa-kraid-git
-pkgver=27.0.0_devel.r232329.ga0ef4c88056
+pkgver=27.0.0_devel.r233404.gd3c007c5dce
 pkgrel=1
 pkgdesc="Mesa (git main): Panfrost OpenGL + PanVK Vulkan with the KRAID shader compiler, for Arm Mali Valhall (RK3588 / Mali-G610)"
 arch=('aarch64')
@@ -14,10 +14,12 @@ optdepends=('python: mesa-overlay-control.py for the overlay layer')
 makedepends=('git' 'meson' 'ninja' 'python-mako' 'python-yaml' 'python-packaging' 'python-ply'
              'bison' 'flex' 'glslang' 'wayland-protocols' 'llvm' 'clang' 'libclc'
              'spirv-llvm-translator' 'rust' 'rust-bindgen' 'cbindgen')
+# (zink's VA-API driver, /usr/lib/dri/zink_drv_video.so, is in it too: as Arch's mesa, libva-mesa-driver and libva-driver)
 provides=("mesa=1:${pkgver%%_*}" "vulkan-panfrost=1:${pkgver%%_*}"
           "vulkan-mesa-layers=1:${pkgver%%_*}" "vulkan-mesa-implicit-layers=1:${pkgver%%_*}"
-          "mesa-libgl=1:${pkgver%%_*}" 'opengl-driver' 'vulkan-driver')
-conflicts=('mesa' 'vulkan-panfrost' 'mesa-git' 'vulkan-mesa-layers' 'vulkan-mesa-implicit-layers')
+          "mesa-libgl=1:${pkgver%%_*}" "libva-mesa-driver=1:${pkgver%%_*}"
+          'opengl-driver' 'vulkan-driver' 'libva-driver')
+conflicts=('mesa' 'vulkan-panfrost' 'mesa-git' 'vulkan-mesa-layers' 'vulkan-mesa-implicit-layers' 'libva-mesa-driver')
 backup=('etc/profile.d/mesa-kraid.sh')
 options=('!lto')
 source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main"
@@ -51,8 +53,19 @@ prepare() {
     echo "this Mesa revision has no -Dpanfrost-rust option (KRAID not present)" >&2
     return 1
   }
-  git -C "$srcdir/mesa" apply --check "$srcdir/kraid-meson-sandbox.patch" &&
+  git -C "$srcdir/mesa" apply --check "$srcdir/kraid-meson-sandbox.patch" || {
+    echo "kraid-meson-sandbox.patch no longer applies: check whether upstream fixed the bindings'" >&2
+    echo "include_directories in src/compiler/rust and src/panfrost/compiler/kraid, then update or drop it" >&2
+    return 1
+  }
   git -C "$srcdir/mesa" apply "$srcdir/kraid-meson-sandbox.patch"
+
+  # KRAID's Rust crates (meson wraps with their hashes) fetched here, so build() runs offline: every *-rs wrap,
+  # which keeps up with main without a list to maintain (~5 MB); the other wraps are system libraries
+  cd "$srcdir/mesa"
+  local wraps=(subprojects/*-rs.wrap)
+  wraps=("${wraps[@]##*/}")
+  meson subprojects download "${wraps[@]%.wrap}"
 }
 
 build() {
@@ -69,7 +82,8 @@ build() {
     -Dpanfrost-rust=true
     -Dvalgrind=disabled -Dlibunwind=disabled
   )
-  meson setup build mesa "${meson_opts[@]}"
+  # (--reconfigure: a makepkg run without -C keeps the earlier build/)
+  meson setup --reconfigure --wrap-mode=nodownload build mesa "${meson_opts[@]}"
   meson compile -C build
 }
 
