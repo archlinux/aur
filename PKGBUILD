@@ -2,14 +2,15 @@
 
 _pkgname='bmputil'
 pkgname="${_pkgname}-git"
-pkgver=r404.66efc79
+pkgver=r643.72e1718
 pkgrel=1
 pkgdesc='A tool for managing and flashing Black Magic Probe firmware'
 arch=('any')
-url='https://github.com/blackmagic-debug/bmputil'
+url='https://codeberg.org/blackmagic-debug/bmputil'
 license=('MIT OR Apache-2.0')
 makedepends=('git' 'rust' 'cargo')
-source=("git+https://github.com/blackmagic-debug/bmputil.git")
+options=('!lto') # aws-lc-sys C objects built with GCC LTO cannot be linked by rust-lld
+source=("git+https://codeberg.org/blackmagic-debug/bmputil.git")
 b2sums=('SKIP')
 
 pkgver() {
@@ -33,13 +34,12 @@ build() {
   cargo build --frozen --release --all-features
 }
 
-# Tests are failing to build on latest upstream
-# check() {
-#   cd "${_pkgname}"
+check() {
+  cd "${_pkgname}"
 
-#   export RUSTUP_TOOLCHAIN=stable
-#   cargo test --frozen --all-features
-# }
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features
+}
 
 package() {
   cd "${_pkgname}"
