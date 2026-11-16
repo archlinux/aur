@@ -1,6 +1,6 @@
 pkgbase = speshell-git
 	pkgdesc = A desktop shell built with Quickshell: a bar and its panels, a launcher, and animated themes
-	pkgver = r24.gc7abc04
+	pkgver = r25.gcf6b1e3
 	pkgrel = 1
 	url = https://github.com/vcoscrato/speshell
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Victor Coscrato <vcoscrato@users.noreply.github.com>
 
 pkgname=speshell-git
-pkgver=r24.gc7abc04
+pkgver=r25.gcf6b1e3
 pkgrel=1
 pkgdesc="A desktop shell built with Quickshell: a bar and its panels, a launcher, and animated themes"
 arch=('any')
@@ -86,9 +86,15 @@ package() {
   install -Dm644 shell/icons/tabler/LICENSE \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.tabler-icons"
 
-  # The desktop entry, the units that copy a user's theme for the login screen, and
-  # the login screen's directories under /var/lib/speshell.
+  # The desktop entry; the user unit that runs Speshell and restarts it if it crashes;
+  # the units that copy a user's theme for the login screen, with the generator that
+  # finds their home; and the login screen's account and directories under
+  # /var/lib/speshell.
   install -Dm644 packaging/speshell.desktop "$pkgdir/usr/share/applications/speshell.desktop"
+  install -Dm644 packaging/speshell.service "$pkgdir/usr/lib/systemd/user/speshell.service"
   install -Dm644 -t "$pkgdir/usr/lib/systemd/system" packaging/speshell-greeter-theme@.{path,service}
+  install -Dm755 packaging/speshell-greeter-theme.generator \
+    "$pkgdir/usr/lib/systemd/system-generators/speshell-greeter-theme"
+  install -Dm644 packaging/sysusers.conf "$pkgdir/usr/lib/sysusers.d/speshell.conf"
   install -Dm644 packaging/tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/speshell.conf"
 }
