@@ -7,7 +7,7 @@ pkgname=photon-studio
 pkgver=0.1.76
 pkgrel=1
 pkgdesc='Offline image editor with Photoshop-equivalent capabilities and native PSD support'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://tenzen.studio/photon/'
 license=('LicenseRef-Proprietary')
 depends=(
@@ -47,23 +47,31 @@ provides=("photon-studio-bin=${pkgver}")
 conflicts=('photon-studio-bin')
 options=('!strip' '!lto')
 source=(
-  "photon-studio-${pkgver}-x86_64.AppImage::https://downloads.tenzen.studio/photon/stable/linux/${pkgver}/Photon-Studio-${pkgver}-linux-x64.AppImage"
   'photon-studio.desktop'
   'photon-studio.sh'
   'photon-studio.png'
 )
+source_x86_64=(
+  "photon-studio-${pkgver}-x86_64.AppImage::https://downloads.tenzen.studio/photon/stable/linux/${pkgver}/Photon-Studio-${pkgver}-linux-x64.AppImage"
+)
+source_aarch64=(
+  "photon-studio-${pkgver}-aarch64.AppImage::https://downloads.tenzen.studio/photon/stable/linux/${pkgver}/Photon-Studio-${pkgver}-linux-arm64.AppImage"
+)
 sha256sums=(
-  '7387f403f7203223485e4d6e09c17f7dcd98edd9e633c8e85bc9108a8abdc525'
   '29ec994ac0ffd028dbc0a86e4a1df1d25dc0de8988458cb0f579a1330ffd5f5d'
   '3dbdf2ebbc5979699219a3d332245a19ab0409f21185a886efd92f8bcdc65969'
   'd49bb3c106257c1f75995fa793737113dc87418be5bec19388e6a523ffaafc18'
 )
+sha256sums_x86_64=('7387f403f7203223485e4d6e09c17f7dcd98edd9e633c8e85bc9108a8abdc525')
+sha256sums_aarch64=('4e0586bb1406e96af0850e139db69d74dcaf8c906658fcf6a77c8088686dbe9d')
 
 package() {
   cd "${srcdir}"
 
-  chmod +x "${srcdir}/photon-studio-${pkgver}-x86_64.AppImage"
-  "${srcdir}/photon-studio-${pkgver}-x86_64.AppImage" --appimage-extract >/dev/null
+  local appimage="photon-studio-${pkgver}-${CARCH}.AppImage"
+  rm -rf "${srcdir}/squashfs-root"
+  chmod +x "${srcdir}/${appimage}"
+  "${srcdir}/${appimage}" --appimage-extract >/dev/null
 
   local approot="${srcdir}/squashfs-root"
   for required_path in \
