@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-rpc
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Small RPC server made from endcord parts. Provides Rich Presence and game detection only."
 arch=('any')
