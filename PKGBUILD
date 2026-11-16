@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=skykeep
-pkgver=0.1.25
+pkgver=0.1.26
 pkgrel=1
 pkgdesc="Native iCloud apps: Notes, Reminders, Calendar, Contacts, Drive and Photos, offline and in sync"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=('org.freedesktop.secrets: stay signed in'
 # bitcode that links to nothing. !debug: the release profile strips symbols.
 options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7dd1647df3874ae5d99158081ab05493d08e1f2c8837dbfa09dc5d410e4e0946')
+sha256sums=('6b5b5946cbecc9300ecf6f7065a99e4f1cc6c37cd6b0469478722337d8790639')
 
 prepare() {
   cd "Skykeep-${pkgver}"
