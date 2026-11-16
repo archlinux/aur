@@ -2,21 +2,21 @@
 
 pkgname=elecwhat-bin
 _pkgname=elecwhat
-pkgver=1.14.0
-pkgrel=2
+pkgver=1.16.0
+pkgrel=1
 pkgdesc="Simple desktop Whatsapp client"
 arch=('x86_64')
 url="https://github.com/piec/elecwhat/"
 license=('GPL-3.0-only')
-depends=('electron40')
+depends=('electron44')
 conflicts=('elecwhat')
 options=(!strip)
 source=(
   elecwhat
   "https://github.com/piec/elecwhat/releases/download/v${pkgver}/elecwhat-${pkgver}.pacman"
 )
-sha256sums=('34b1d1327b5f454b6c23a068691c1fe84fe04b11b87d974bee21c50c1da29f26'
-            '19c41d28294f4048195a6858160a66ca91a187fa626e3d5d4763e9bcd1b6caac')
+sha256sums=('ebe1f501f57cc6567de2f41a52c92545cc9b2695efda3dbcb7502959adba58e5'
+            '4187375375b33bed46f8a20ee868366f1fa51d156f8e9fab07b24e36d5c8d2b9')
 
 package() {
   cd "$srcdir"
