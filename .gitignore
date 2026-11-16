@@ -4,3 +4,6 @@
 src/
 pkg/
 build.log
+
+# 上游 LICENSE 的本地副本（PKGBUILD 构建时从上游下载）
+LICENSE
