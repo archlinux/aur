@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=tldraw-offline-bin
-pkgver=1.23.1
+pkgver=1.24.1
 pkgrel=1
 pkgdesc="A local whiteboard for you and your agents"
 arch=('x86_64' 'aarch64')
@@ -22,38 +22,46 @@ optdepends=('libappindicator-gtk3: system tray icon support')
 provides=('tldraw-offline')
 conflicts=('tldraw-offline')
 options=('!strip' '!debug')
-source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/tldraw/tldraw-offline/releases/download/v${pkgver}/tldraw-offline-linux-amd64.deb")
-source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::https://github.com/tldraw/tldraw-offline/releases/download/v${pkgver}/tldraw-offline-linux-arm64.AppImage")
-sha256sums_x86_64=('0b2dc8b3349119b7af8e9f939810b6ef617aeb1e9760c50be00ed55efb30fe23')
-sha256sums_aarch64=('6ef8b8639a722b0e5ab70f8f0799a614f6ef52c71e53483519f79adf6b6f4218')
+# The release assets are named "tldraw-office-*" since 1.24.0, even though the
+# product still installs itself as tldraw-offline (binary, desktop file, icons).
+source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/tldraw/tldraw-offline/releases/download/v${pkgver}/tldraw-office-linux-amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::https://github.com/tldraw/tldraw-offline/releases/download/v${pkgver}/tldraw-office-linux-arm64.AppImage")
+sha256sums_x86_64=('a34e7af8b31cedb7a7e8d07d59e433f014957fc1d2e22b23e1a577bd1f3b5ce8')
+sha256sums_aarch64=('ffe195d982b9b3799a34c096b9f04c3df007eaf4a2fafb0d3b723c36e98497ad')
 noextract=(
     "${pkgname}-${pkgver}-x86_64.deb"
     "${pkgname}-${pkgver}-aarch64.AppImage"
 )
 
 package() {
+    # Upstream renames the product directory from time to time (1.24.0:
+    # /opt/tldraw offline -> /opt/tldraw office). The deb carries the current
+    # name; the AppImage has no /opt directory of its own, so it follows the
+    # same convention.
+    local _optname='tldraw office'
     case "$CARCH" in
         x86_64)
             bsdtar -xOf "${srcdir}/${pkgname}-${pkgver}-x86_64.deb" data.tar.xz |
                 bsdtar -xJf - -C "${pkgdir}"
             rm -rf "${pkgdir}/usr/share/doc"
+            _optname=$(cd "${pkgdir}/opt" && ls -d -- */ | sed 's:/$::' | head -n1)
+            [[ -n "${_optname}" ]] || { echo "no product directory under opt/" >&2; return 1; }
             ;;
         aarch64)
             local _appimage="${pkgname}-${pkgver}-aarch64.AppImage"
-            local _appdir="${pkgdir}/opt/tldraw offline"
 
             chmod +x "${srcdir}/${_appimage}"
             cd "${srcdir}"
             rm -rf squashfs-root
             "${srcdir}/${_appimage}" --appimage-extract >/dev/null
 
-            install -dm755 "${_appdir}"
+            install -dm755 "${pkgdir}/opt/${_optname}"
             local _entry
             for _entry in squashfs-root/*; do
                 case "$(basename "${_entry}")" in
                     AppRun|usr|tldraw-offline.desktop|tldraw-offline.png) continue ;;
                 esac
-                cp -a "${_entry}" "${_appdir}/"
+                cp -a "${_entry}" "${pkgdir}/opt/${_optname}/"
             done
 
             install -Dm644 squashfs-root/tldraw-offline.desktop \
@@ -69,10 +77,10 @@ package() {
         "${pkgdir}/usr/share/applications/tldraw-offline.desktop"
 
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s '/opt/tldraw offline/tldraw-offline' "${pkgdir}/usr/bin/tldraw-offline"
+    ln -s "/opt/${_optname}/tldraw-offline" "${pkgdir}/usr/bin/tldraw-offline"
 
-    install -Dm644 "${pkgdir}/opt/tldraw offline/LICENSE.electron.txt" \
+    install -Dm644 "${pkgdir}/opt/${_optname}/LICENSE.electron.txt" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
-    install -Dm644 "${pkgdir}/opt/tldraw offline/LICENSES.chromium.html" \
+    install -Dm644 "${pkgdir}/opt/${_optname}/LICENSES.chromium.html" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
 }
