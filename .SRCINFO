@@ -1,6 +1,6 @@
 pkgbase = metrolist-desktop-nightly-bin
 	pkgdesc = YouTube Music client for desktop (Nightly)
-	pkgver = 20261116.r164.g94eb4dc
+	pkgver = 20261116.r166.g8eb3e99
 	pkgrel = 1
 	url = https://github.com/MetrolistGroup/Metrolist
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = metrolist-desktop-nightly-bin
 	depends = zlib-ng-compat
 	optdepends = gtk3: YouTube login
 	optdepends = webkit2gtk-4.1: YouTube login
-	noextract = metrolist-desktop-nightly-bin-20261116.r164.g94eb4dc.AppImage
+	noextract = metrolist-desktop-nightly-bin-20261116.r166.g8eb3e99.AppImage
 	options = !strip
 	options = !debug
-	source = metrolist-desktop-nightly-bin-20261116.r164.g94eb4dc.AppImage::https://github.com/MetrolistGroup/Metrolist/releases/download/nightly/metrolist-desktop-linux-x64.AppImage
+	source = metrolist-desktop-nightly-bin-20261116.r166.g8eb3e99.AppImage::https://github.com/MetrolistGroup/Metrolist/releases/download/nightly/metrolist-desktop-linux-x64.AppImage
 	source = metrolist-nightly
 	source = LICENSE
-	sha256sums = 3eeadb5c0c559d8bf2537e85c55857f5bc4589074fdd959fd8bbd1ed22b56825
+	sha256sums = 82d7931082e7e46080a074b9c03d6d46fbd6854168447f509ca9aa9a329b2c7f
 	sha256sums = e2f611b2a3ea170c12d38e42016e2abb0d2212e62c3946615a50aad6c97643bd
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
