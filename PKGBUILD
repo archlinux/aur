@@ -34,7 +34,7 @@ _venv=$_prefix/venv
 
 pkgname=openviking-bin
 pkgver=0.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Self-evolving context database for AI agents (upstream wheel with a private virtualenv)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/volcengine/OpenViking"

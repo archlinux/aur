@@ -1,17 +1,27 @@
 post_install() {
 	cat <<'EOF'
-==> OpenViking is installed into a private virtualenv at /opt/openviking/venv.
-    Available commands: openviking, openviking-server, ov, vikingbot
+==> OpenViking 安装到 /opt/openviking（私有 venv），本包不提供 systemd 单元。
 
-==> A configuration file is required before the service can start; create either
-      /etc/openviking/ov.conf                   (system wide), or
-      /var/lib/openviking/.openviking/ov.conf   (service user, takes precedence)
-    e.g.  sudo -u openviking -H openviking-server init
+==> 可用命令：openviking / openviking-server / ov / vikingbot
 
-==> Then start it with:
-      systemctl enable --now openviking
+==> 首次使用，生成你自己的配置（写入 ~/.openviking/ov.conf）：
+      openviking-server init
 
-==> This package must be rebuilt after every Python minor version upgrade.
+==> 启动服务（以你自己的身份在前台运行，不注册任何守护进程）：
+      openviking-server
+    · 配置自动读取 ~/.openviking/ov.conf，也可用 --config 指定别的路径
+    · 监听地址/端口由 ov.conf 的 server.host / server.port 决定（默认 127.0.0.1:1933）
+    · 数据落在 storage.workspace，建议设为 ~/.openviking/data
+
+==> 需要开机自启，自行创建用户级单元（本包不代管）：
+      ~/.config/systemd/user/openviking.service
+        [Unit] Description=OpenViking
+        [Service] ExecStart=/usr/bin/openviking-server
+        [Install] WantedBy=default.target
+      systemctl --user enable --now openviking
+      loginctl enable-linger "$USER"    # 未登录也要常驻时才需要
+
+==> 本包必须在每次 Python 次版本升级后重建，例如：paru -S openviking-bin
 EOF
 }
 
