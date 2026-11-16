@@ -2,12 +2,12 @@
 
 pkgname=pi-web
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Local browser UI for the pi coding agent'
 arch=('any')
 url='https://github.com/agegr/pi-web'
 license=('MIT')
-
+options=(!debug !strip) # 缩短构建时间
 depends=(
   'nodejs>=22.19.0'
 )
