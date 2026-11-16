@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-ai-usagebar
 _uuid=ai-usagebar@wilfison
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Show AI plan usage (Claude, Codex, OpenRouter and more) in the GNOME Shell top panel"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('gnome-shell>=1:47' 'libsoup3' 'libadwaita')
 makedepends=('gettext' 'glib2')
 checkdepends=('gjs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7cf5271cd2fda6a678c83b0e3811a1d1d9a0143e9d5c2808cd91709b93af889c')
+sha256sums=('7bf014172ed7aea5faac1598abecab554278c8e7238d9f8d0b7c88dacd8b4593')
 
 build() {
   cd "ai-usagebar-${pkgver}"
@@ -39,7 +39,7 @@ package() {
 
   install -d "$dest"
   install -m644 -t "$dest" extension.js prefs.js metadata.json stylesheet.css
-  cp -r --no-preserve=mode,ownership lib ui icons schemas locale "$dest/"
+  cp -r --no-preserve=mode,ownership lib ui prefs icons schemas locale "$dest/"
   rm -f "$dest/icons/README.md"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
