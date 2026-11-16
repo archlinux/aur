@@ -16,8 +16,8 @@
 # SQLite is bundled (rusqlite "bundled"), so there is no sqlite dependency.
 
 pkgname=kotora
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 _build=1
 if ((_build > 1)); then _rel=$pkgver-$_build; else _rel=$pkgver; fi
 pkgdesc='Anime tracker for MyAnimeList: recognises the episode in your player and asks before it records it'
@@ -51,7 +51,7 @@ optdepends=(
 makedepends=('cargo' 'pkgconf')
 options=('!lto')
 source=("$pkgname-$_rel.tar.gz::https://github.com/hanami117/kotora/releases/download/v$_rel/kotora-$_rel.tar.gz")
-sha256sums=('4479507ecbb2790fc63a317152f13857fa564c9242a3145ee2c0bca874fa82ac')
+sha256sums=('5bdc70173be3dc97055d542b639b5b92ba278d75cfa4fdc3623648c0e3d03912')
 
 prepare() {
   cd "$pkgname-$pkgver"
