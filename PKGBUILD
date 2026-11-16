@@ -5,7 +5,7 @@
 # GitHub release; nothing is built here. sift-reader is the package that builds
 # from source.
 pkgname=sift-reader-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Read the web, aloud, with Kokoro (prebuilt)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('sift-reader')
 conflicts=('sift' 'sift-bin' 'sift-git' 'sift-reader')
 options=('!debug' '!strip')
 source=("sift-${pkgver}-${CARCH}.tar.zst::${url}/releases/download/v${pkgver}/sift-${pkgver}-${CARCH}.tar.zst")
-sha256sums=('e421decdfcc890d863a1ba0284b42f418654a967f1ea0f1978ecc06dfb5397b3')
+sha256sums=('747db79c05a0f30fb6b9f29df9c22cf00b8366da38c55e1c15100df833ab0955')
 
 package() {
   cd "sift-${pkgver}-${CARCH}"
