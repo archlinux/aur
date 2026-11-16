@@ -4,6 +4,7 @@ pkgbase = fortitude
 	pkgrel = 1
 	url = https://github.com/PlasmaFAIR/fortitude
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	checkdepends = cargo-nextest
 	makedepends = git
