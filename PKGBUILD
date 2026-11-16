@@ -1,27 +1,21 @@
-# Maintainer:
+# Maintainer: Felipe BF <fprgw32 at gmail dot com>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
-_pkgname="jpeg2png"
-pkgname="$_pkgname-git"
-pkgver=1.01.r5.g7ae6e42
-pkgrel=2
+_name="jpeg2png"
+pkgname="$_name-git"
+pkgver=1.02.r3.g0f86100
+pkgrel=1
 pkgdesc='Silky smooth JPEG decoder'
-url="https://github.com/ImageProcessing-ElectronicPublications/jpeg2png"
+url="https://github.com/ThioJoe/jpeg2png"
 license=('GPL-3.0-or-later')
 arch=('x86_64' 'i686')
 
-depends=(
-  'libjpeg-turbo'
-  'libpng'
-)
-makedepends=(
-  'git'
-)
+depends=('gcc-libs' 'libjpeg-turbo' 'libpng' 'libgomp')
+makedepends=('git')
+provides=("$_name")
+conflicts=("$_name")
 
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-
-_pkgsrc="jpeg2png.ipep"
+_pkgsrc="$_name"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
@@ -39,3 +33,4 @@ package() {
   cd "$_pkgsrc"
   make DESTDIR="$pkgdir" install
 }
+
