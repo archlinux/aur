@@ -4,7 +4,7 @@
 # Contributor: Guillaume Dollé <dolle dot guillaume at gmail dot com >
 _pkgname=MUMPS
 pkgname=${_pkgname,,}-seq
-pkgver=5.9.1
+pkgver=5.9.2
 pkgrel=1
 pkgdesc="Sparse solver library using Gaussian elimination (sequential version)"
 url="https://${_pkgname,,}-solver.org"
@@ -17,7 +17,7 @@ arch=('i686' 'x86_64')
 source=(${url}/${_pkgname}_${pkgver}.tar.gz
   Makefile.inc
   makefile_version.patch)
-sha512sums=('1984b1d4b9b7ba4d48f90975c3ae864c1afc487ef1864e972ea7f4fdcba0ee174611f31384d2472bc9dbe5a6ccbdc3995800a13800e1e9bb1ba2426d1f93aad5'
+sha512sums=('0e3268062f73ce6763d08f50ef6140a0e05db85c67a39565909f2281e52a2fb0a064343898e7a05bb8c30af175625fc3fd2bc75f522e626cc9ccbe27fff37fde'
             'd7f076defe93704bf503612d0844f71698e2ca84b50ce551748c3b1bc972a2232c735a1ba02c038bf3468fe1eeac0411e66ed436339cb50978a3e2679c813364'
             '6719a8fcb1c553514fc9b2c2c0389ac082ff69c86c0cf5b3e3a0d601ee27c32c1eb644b9419fbc600d3a81ccf38fafe1684d566328b9cd90771e651245c75424')
 
