@@ -5,7 +5,7 @@
 
 pkgname=radarr
 _pkgname=Radarr
-pkgver=6.4.4.10685
+pkgver=7.0.3.10918
 pkgrel=1
 pkgdesc='Movie organizer/manager for usenet and torrent users'
 arch=(x86_64 aarch64 armv7h)
@@ -13,12 +13,16 @@ url='https://radarr.video'
 license=('GPL-3.0-or-later')
 groups=(servarr)
 depends=(
-  aspnet-runtime-8.0
+  aspnet-runtime-10.0
   gcc-libs
   glibc
   sqlite
 )
-makedepends=(dotnet-sdk-8.0 yarn)
+makedepends=(
+  dotnet-sdk-10.0
+  aspnet-targeting-pack-10.0
+  yarn
+)
 optdepends=(
   'postgresql: postgresql database'
   'sabnzbd: usenet downloader'
@@ -45,7 +49,7 @@ source=(
   radarr.sysusers
   radarr.tmpfiles
 )
-sha256sums=('dde505a58408cb6a88172a226a3e238cbdc7e18304134aaf20d9435ad4718aeb'
+sha256sums=('d551d2936d87f02e39f067e03efa7673ecf98a5c3f3cb4797b0df8ae25f8b263'
             '1868e8df575bfda008cc82f92440c2a0465de28b7a032bf46fc2745d760b3fba'
             '25637c6496aa59673aada6acc6cf41025a5f12a844025ee41d8a6cc66b84b5c0'
             'bb73e0c55711d7ddbf74140b3beb39cb8674ae92be8387c3dd8109bcd53faca8'
@@ -57,7 +61,7 @@ case ${CARCH} in
   armv7h) _CARCH='arm' ;;
 esac
 
-_framework='net8.0'
+_framework='net10.0'
 _runtime="linux-${_CARCH}"
 _output='_output'
 _artifacts="${_output}/${_framework}/${_runtime}/publish"
@@ -66,16 +70,13 @@ _branch='master'
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
-  # Fix  CVE-2026-41319
-  sed 's/MailKit" Version="4\.15\.1"/MailKit" Version="4\.16\.0"/' -i src/NzbDrone.Core/Radarr.Core.csproj
-
   # Remove upstream dotnet version
   rm global.json
 
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_NOLOGO=1
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
-  dotnet new globaljson --sdk-version 8.0.127 --roll-forward latestFeature
+  dotnet new globaljson --sdk-version 10.0.113 --roll-forward latestFeature
 
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
@@ -107,7 +108,7 @@ build() {
     && dotnet build-server shutdown # Build servers do not terminate automatically
 
   # Build frontend
-  yarn run build --env production
+  yarn run build
 }
 
 package() {
