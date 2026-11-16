@@ -2,7 +2,7 @@
 
 pkgname=crum-bs-bin
 _pkgname=crumbs
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Find and remove app leftovers, caches and system bloat (static binary)"
 arch=('x86_64')
@@ -18,8 +18,8 @@ options=('!strip' '!debug')
 # unpacks it to $_pkgname-$pkgver/, so the binary has a different name.
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz")
 source_x86_64=("$_pkgname-$pkgver-$CARCH-linux-musl::$url/releases/download/v$pkgver/$_pkgname-$pkgver-$CARCH-linux-musl")
-sha256sums=('d6a81ab2349af06ed27d77e58e47ca06e5dbd6b51ad486d8b10c50fe4879f40a')
-sha256sums_x86_64=('7c538bb3778448e3a6b6ab46b3de0efb91af12990d7735d910552ffdd9d86c7d')
+sha256sums=('d02765628811d90f9f157fd439705d41a8dbe4e0d6ab28afdedad16ffdf31313')
+sha256sums_x86_64=('a3aefce7e3b1128d56cdff91bc6fd73f6a709d1d1ddb0ec94b09dfb260525c7a')
 
 package() {
     install -Dm755 "$_pkgname-$pkgver-$CARCH-linux-musl" "$pkgdir/usr/bin/$_pkgname"
