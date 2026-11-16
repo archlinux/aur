@@ -1,5 +1,5 @@
-# Maintainer: Your Name <your@email.com>
-# Created with assistance from Claude (Anthropic)
+# Maintainer: guglovich <guglovich164@gmail.com>
+# Created with assistance from GLM 5.3 Flash.
 
 pkgname=smp-server
 pkgver=6.5.0
