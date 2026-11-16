@@ -1,6 +1,6 @@
 # Maintainer: Matthias Braun <me@matthiasbraun.eu>
 pkgname=way-magnitator-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Magnifies the screen area around the mouse cursor on Sway and other wlroots-based Wayland compositors"
 arch=(x86_64)
@@ -22,9 +22,9 @@ source=(
     "LICENSE-${pkgver}::https://gitlab.com/bullbytes/way-magnitator/-/raw/v${pkgver}/LICENSE"
     "way-magnitator-${pkgver}.1::https://gitlab.com/bullbytes/way-magnitator/-/raw/v${pkgver}/man/way-magnitator.1"
 )
-b2sums=('21232b3c33df12c6839b2a1cdcf4321ed94e3494f17a901e30735997907108698eeaeef845f9e45fbd0f6fb85c958a4ba56afe65ebddda8446e0de80d4731d40'
+b2sums=('7c27353daf9ca6835aa899e02858f1051826d19cc2c44fe8e8c67173b87d8180fb1e7cab5670a0fb05d929f39f14caaeb004975319747947087328fb59dd0618'
         'b6829320f725e3e45c4807ef5deb4738a691fb3ab146d8531b81fdbccd8376a826c8ec76165985cdf37d534f68e395652c96841ba7636c4bd34c49b7c7b3a9ec'
-        '42ba9ad6d5797d1f00ba34cf394dca2cd37962667dd730637f9e7663cca8822952fc509afef7e4823ca56e0d27d8d273418d4cef6ca5ea2068fe56c9efcc6ff2')
+        '2c39638abd5cb50ed360119a21487cdbb60e1d99b14b0d382fcf290bb3bf9dc29b3560af09ec1de2a4348b19ad94113c1f5ac95b783ce0f06a2720e14557ef4e')
 
 package() {
     install -Dm755 "way-magnitator-${pkgver}-x86_64" "$pkgdir/usr/bin/way-magnitator"
