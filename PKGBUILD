@@ -6,7 +6,7 @@
 pkgname=browseros-neo-bin
 _pkgname=browserclaw
 pkgver=0.52.0
-pkgrel=1
+pkgrel=2
 pkgdesc="BrowserOS neo — AI browser for agents (Chromium 151, binary from browserclaw/* tags, auto-rolling)"
 arch=('x86_64')
 url="https://github.com/browseros-ai/BrowserOS"
@@ -57,11 +57,30 @@ pkgver() {
 }
 
 prepare() {
-  _deb="BrowserOS_neo_v${pkgver}_amd64.deb"
-  # The API lookup is best-effort only: it can be rate-limited. The direct
-  # download URLs below always work and are tried first when the API fails.
+  # Do NOT construct the asset name from the tag. Upstream tags a release
+  # browserclaw/v0.52.0 while shipping BrowserOS_neo_v0.52.1.1_amd64.deb, so
+  # the constructed name 404s and the build dies before any download. The
+  # asset list is the only authority on what a release actually contains.
+  #
+  # expanded_assets is an unauthenticated HTML partial, so it costs no API
+  # quota (the REST API allows 60 req/hr per IP and rate-limits silently).
+  # Fall back to the API for releases whose expanded_assets page the CDN
+  # has not cached.
   _hdr=()
   [[ -n "${GH_TOKEN:-}" ]] && _hdr=(-H "Authorization: Bearer $GH_TOKEN")
+  _deb=$(curl -fsSL "https://github.com/browseros-ai/BrowserOS/releases/expanded_assets/browserclaw/v${pkgver}" 2>/dev/null \
+    | grep -oE 'BrowserOS_neo_v[A-Za-z0-9._]*_amd64\.deb' | sort -V | tail -n1)
+  if [[ -z "$_deb" ]]; then
+    _deb=$(curl -fsSL "${_hdr[@]}" "https://api.github.com/repos/browseros-ai/BrowserOS/releases/tags/browserclaw%2Fv${pkgver}" 2>/dev/null \
+      | jq -r '.assets[].name' 2>/dev/null | grep -E '^BrowserOS_neo_v[A-Za-z0-9._]*_amd64\.deb$' | sort -V | tail -n1)
+  fi
+  if [[ -z "$_deb" ]]; then
+    echo "ERROR: could not resolve the amd64 deb asset for browserclaw/v${pkgver}" >&2
+    exit 1
+  fi
+  echo "==> resolved asset: $_deb"
+  # The API lookup is best-effort only: it can be rate-limited. The direct
+  # download URLs below always work and are tried first when the API fails.
   _url_api=$(curl -fsSL "${_hdr[@]}" "https://api.github.com/repos/browseros-ai/BrowserOS/releases/tags/browserclaw%2Fv${pkgver}" \
     | jq -r '.assets[] | select(.name=="'"$_deb"'") | .browser_download_url' 2>/dev/null)
   _urls=()
