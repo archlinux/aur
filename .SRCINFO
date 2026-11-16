@@ -1,5 +1,5 @@
 pkgbase = omniget-bin
-	pkgdesc = A local MCP server that gives your coding agent a desktop toolbox: downloads from YouTube, torrents and every site yt-dlp supports, media conversion, files, chats and system cleanup. One line connects Claude Code, Codex, Cursor or Gemini CLI, and sensitive actions wait for your click. Free and open source.
+	pkgdesc = A local MCP server that gives your coding agent a desktop toolbox: downloads from YouTube, torrents and every site yt-dlp supports, media conversion, files, chats and system cleanup.
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://getomniget.com
