@@ -1,13 +1,13 @@
 # Maintainer: sumerjakhar78 (AUR), sumerchoudhary78 (GitHub)
 pkgname=hyprlume
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Glass command shell and local English voice companion for Hyprland, powered by HyprPilot'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sumerchoudhary78/hyprlume'
 license=('MIT' 'Apache-2.0')
 depends=('glibc' 'gcc-libs' 'systemd' 'quickshell' 'qt6-declarative' 'qt6-wayland' 'qt6-quick3d>=6.9' 'hyprland' 'pipewire-audio' 'wireplumber' 'python')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'qt6-shadertools')
 optdepends=('espeak-ng: phonemization for local Piper speech output'
             'inter-font: shell sans-serif font'
             'ttf-jetbrains-mono: shell monospace font')
@@ -34,6 +34,8 @@ build() {
   export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
   export SHERPA_ONNX_ARCHIVE_DIR="$srcdir"
   cd "$srcdir/hyprlume"
+  python scripts/build-shaders.py
+  python scripts/build-shaders.py --check
   cargo build --release --frozen
 }
 
