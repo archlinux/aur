@@ -1,7 +1,8 @@
 # Maintainer: tippkraft <impressum@tippkraft.com>
 pkgname=tippkraft-bin
 pkgver=0.1.22
-pkgrel=1
+pkgrel=2
+options=('!debug' '!strip')
 pkgdesc='Text expander for Linux on Wayland and X11 (desktop client, snippets sync through a tippkraft account)'
 arch=('x86_64')
 url='https://tippkraft.com'
