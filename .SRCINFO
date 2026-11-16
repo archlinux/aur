@@ -1,0 +1,13 @@
+pkgbase = pi-ext-opencode-zen
+	pkgdesc = OpenCode Zen provider for the Pi coding agent: fetches the live model catalog and serves OpenCode free models
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/ravshansbox/pi-opencode-zen
+	install = pi-ext-opencode-zen.install
+	arch = any
+	license = MIT
+	makedepends = npm
+	source = pi-opencode-zen-0.5.1.tgz::https://registry.npmjs.org/@ravshansbox/pi-opencode-zen/-/pi-opencode-zen-0.5.1.tgz
+	sha256sums = 8428b8f2452f8bbb16a64f3149083b3f9d7085272fd3f93503cf8fb0dd2406dd
+
+pkgname = pi-ext-opencode-zen
