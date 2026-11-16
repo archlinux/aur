@@ -2,7 +2,7 @@
 
 pkgbase=computer-use-linux
 pkgname=('computer-use-linux' 'gnome-shell-extension-computer-use-linux')
-pkgver=0.7.53
+pkgver=0.7.54
 pkgrel=1
 pkgdesc="Control a real Linux desktop from any MCP host (AT-SPI, portals, multi-compositor window targeting)"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 checkdepends=('dbus' 'python-gobject')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'gnome-indicator-test.patch')
-sha256sums=('e9cb60987c06b559d32c38e57f9d370629a059c6ab0e2875121c15ab57966723'
+sha256sums=('27bf8f5a993345e494e08c5860c01ad7de0d10e80ecc03bd1b8c5c226a32d21e'
             '3ee3fdbc16683dff37f012ae0f2a73954db3da3c67a226a1ee3776a811e1bf0d')
 
 _uuid=computer-use-linux@avifenesh.dev
@@ -55,6 +55,7 @@ check() {
 package_computer-use-linux() {
     depends=('at-spi2-core' 'gcc-libs' 'glibc')
     optdepends=(
+        'fontconfig: text in the on-screen indicator'
         'gnome-screenshot: screenshot fallback for background sessions'
         'gnome-shell-extension-computer-use-linux: window targeting on GNOME'
         'hyprland: window targeting on Hyprland'
@@ -72,6 +73,7 @@ package_computer-use-linux() {
     cd "${pkgbase}-${pkgver}"
     install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 "target/release/${pkgname}-cosmic" "${pkgdir}/usr/bin/${pkgname}-cosmic"
+    install -Dm755 "target/release/${pkgname}-indicator" "${pkgdir}/usr/bin/${pkgname}-indicator"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
