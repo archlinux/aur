@@ -2,7 +2,7 @@
 # AUR package built from the release tarball (prebuilt binaries).
 # pkgver and sha256sums are updated by scripts/publish-release.py for each release.
 pkgname=penates-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Turn websites into desktop apps with their own window, icon and login"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('penates')
 conflicts=('penates')
 options=('!debug')   # prebuilt binaries: a debug package would be empty
 source=("https://github.com/Natetronn/penates/releases/download/v${pkgver}/penates-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('6b6e2df3203fcd6968931e8d708c43caac620afb94944336b6e420cab99727c1')
+sha256sums=('f55ddb42738d7d7ce1cc65ffa81d5878414e58142ebe3044b14a5275b762b14a')
 
 package() {
   cd "penates-${pkgver}-x86_64-unknown-linux-gnu"
