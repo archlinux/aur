@@ -31,6 +31,22 @@ b2sums=('a95be1662700a59d9d6a9389f30b6d82661769687d0a0a0fdd6a604e8453145389ce88f
   'df52cdab9f311499106f30869455797a02345bf43fd01e942fbb0312228660c88122fba00188484cb03616dfa4b234a83e73f132377c94169f2a26da175ff2ee'
   '8311ff8071a93b0fd5a8b095da0172a9817c577377007269273fe72aff8021c8fa233ad7087f40772760fff015d9827c1c13c6bf5878fba75b69f3c96b872d24')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -59,8 +75,8 @@ _dotnet_env() {
 
 prepare() {
   cd "vs-validation-$_commit" || exit
-  # Upstream pins an exact SDK (10.0.302 in 18.7), the libraries build with the one installed just as well
-  jq 'del(.sdk)' global.json >global.json.new
+  # Upstream pins an exact SDK (10.0.302 in 18.7); the libraries build just as well with the one we build with
+  jq --arg sdk "$(_dotnet_sdk)" '.sdk = { version: $sdk, rollForward: "latestPatch" }' global.json >global.json.new
   mv global.json.new global.json
   # Nerdbank.GitVersioning needs git (see _dotnet_env for the versions), and MicroBuild is Microsoft's
   # internal signing and localisation
