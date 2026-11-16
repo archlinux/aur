@@ -1,10 +1,10 @@
 pkgbase = url-eater-git
 	pkgdesc = Clean unnecessary parameters from URLs copied to clipboard
-	pkgver = r24.21be820
-	pkgrel = 2
+	pkgver = r38.5ff5f40
+	pkgrel = 1
 	url = https://github.com/AgathaSorceress/url-eater
-	arch = any
-	license = custom: NVL
+	arch = x86_64
+	license = LicenseRef-NVL
 	makedepends = cargo
 	makedepends = git
 	depends = systemd
