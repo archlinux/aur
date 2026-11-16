@@ -1,0 +1,4 @@
+pcsx-redux-manifest.json
+src/
+pkg/
+*.pkg.tar.zst
