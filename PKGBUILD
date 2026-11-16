@@ -4,7 +4,7 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=vendir
-pkgver=0.46.3
+pkgver=0.47.0
 pkgrel=1
 pkgdesc='Easy way to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively'
 url='https://carvel.dev/vendir'
@@ -13,7 +13,7 @@ license=(apache-2.0)
 install=''
 makedepends=(bash go)
 provides=(vendir)
-source=(vendir-0.46.3::https://github.com/carvel-dev/vendir/archive/v0.46.3.tar.gz)
+source=(vendir-0.47.0::https://github.com/carvel-dev/vendir/archive/v0.47.0.tar.gz)
 build () 
 { 
     set -eo pipefail;
@@ -39,4 +39,4 @@ package ()
     ./$BIN completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$BIN.fish";
     ./$BIN completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$BIN"
 }
-sha256sums=('c6c05cd812842c07d01f67c448396cf3eb96c2fb3df428d6793e8cd9396ad4a8')
+sha256sums=('a6c316b747279ccad708dd1c89bc5b077aa525a50fe6ff7221c6aef5a7cd9bbe')
