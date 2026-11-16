@@ -3,7 +3,7 @@
 pkgname=evebox-bin
 _pkgname=evebox
 pkgver=0.31.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Web based Suricata EVE event viewer and alert management (static upstream binary)"
 arch=('x86_64' 'aarch64')
 url="https://evebox.org"
@@ -63,8 +63,9 @@ package() {
 
   # Configuration (permissions on these are fixed up by tmpfiles, since the
   # evebox group does not exist at build time)
-  install -Dm644 evebox.yaml "${pkgdir}/etc/evebox/evebox.yaml"
-  install -Dm644 agent.yaml  "${pkgdir}/etc/evebox/agent.yaml"
+  install -dm750 "$pkgdir/etc/evebox"
+  install -Dm640 evebox.yaml "${pkgdir}/etc/evebox/evebox.yaml"
+  install -Dm640 agent.yaml  "${pkgdir}/etc/evebox/agent.yaml"
 
   # systemd integration
   install -Dm644 evebox.service       "${pkgdir}/usr/lib/systemd/system/evebox.service"
