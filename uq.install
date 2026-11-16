@@ -1,0 +1,7 @@
+# pacman runs these as root, so they can't set up anyone's session: they say what to do.
+
+post_upgrade() {
+    # uqd and the shell keep running the old version until the session restarts; asking the old
+    # uqd to re-render (`uqctl reload`) would mix its code with the new templates.
+    echo ":: uQ was updated. Log out and back in to start the new version."
+}

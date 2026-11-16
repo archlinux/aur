@@ -1,8 +1,9 @@
 pkgbase = uq
 	pkgdesc = Themeable Hyprland desktop: shell, theme and layout daemon, CLI and base config
-	pkgver = 0.3.0rc5
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/uq
+	install = uq.install
 	arch = x86_64
 	license = MIT
 	checkdepends = lua
@@ -12,7 +13,7 @@ pkgbase = uq
 	makedepends = qt6-declarative
 	makedepends = kcolorscheme
 	makedepends = kconfig
-	depends = uq-hyprland-pin
+	depends = uq-hyprland-pin>=0.56.2
 	depends = dbus
 	depends = glib2
 	depends = qt6ct
@@ -50,6 +51,7 @@ pkgbase = uq
 	optdepends = xzram: the Memory and swap page in Settings
 	optdepends = scale_tail: the Tailscale page and quick-settings tile
 	optdepends = greetd: the uQ login screen (run0 uqctl greeter enable)
+	optdepends = kwallet-pam: unlock KDE Wallet at the uQ login screen
 	optdepends = networkmanager-openvpn: OpenVPN connections on the Network settings page
 	optdepends = sound-theme-freedesktop: the test sound on the Sound settings page
 	optdepends = xorg-xrandr: tells X11 apps which display is the main one
@@ -65,7 +67,7 @@ pkgbase = uq
 	backup = etc/pam.d/uq-lock-fingerprint
 	backup = etc/uq/greetd.toml
 	backup = etc/uq/greeter.toml
-	source = uq-0.3.0-rc.5.tar.gz::https://github.com/asafelobotomy/uq/releases/download/v0.3.0-rc.5/uq-0.3.0-rc.5.tar.gz
-	sha256sums = f514343e1af179c80119cc3adca219cf12089e99773ba8fec918208ad0f8ce75
+	source = uq-0.3.0.tar.gz::https://github.com/asafelobotomy/uq/releases/download/v0.3.0/uq-0.3.0.tar.gz
+	sha256sums = c6373c3553d50ea8d6c380e1011c07d65f0fc4e6b30ef94d8bba11121994815d
 
 pkgname = uq

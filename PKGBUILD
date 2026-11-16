@@ -4,15 +4,20 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=uq
-pkgver=0.3.0rc5
+pkgver=0.3.0
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
+# The uq-hyprland-pin this release's config/hypr/base.lua is tested with: equal to
+# packaging/uq-hyprland-pin's pkgver (tests/shell/version_test.sh checks). A versioned dependency
+# keeps an updated uq from installing beside an older pin that allows a Hyprland it doesn't support.
+_pin=0.56.2
 pkgdesc="Themeable Hyprland desktop: shell, theme and layout daemon, CLI and base config"
 arch=(x86_64)
 url="https://github.com/asafelobotomy/uq"
 license=(MIT)
-depends=(uq-hyprland-pin dbus glib2 qt6ct gcc-libs 'quickshell>=0.3.1' 'quickshell<0.4' brightnessctl upower systemd noto-fonts-emoji gnome-keyring
+depends=("uq-hyprland-pin>=$_pin" dbus glib2 qt6ct gcc-libs 'quickshell>=0.3.1' 'quickshell<0.4' brightnessctl upower systemd noto-fonts-emoji gnome-keyring
   kirigami qqc2-desktop-style qt6-declarative kvantum polkit kcolorscheme kconfig)
+install=uq.install
 makedepends=(cargo qt6-base qt6-declarative kcolorscheme kconfig)
 checkdepends=(lua qt6-declarative)
 optdepends=(
@@ -35,6 +40,7 @@ optdepends=(
   'xzram: the Memory and swap page in Settings'
   'scale_tail: the Tailscale page and quick-settings tile'
   'greetd: the uQ login screen (run0 uqctl greeter enable)'
+  'kwallet-pam: unlock KDE Wallet at the uQ login screen'
   'networkmanager-openvpn: OpenVPN connections on the Network settings page'
   'sound-theme-freedesktop: the test sound on the Sound settings page'
   'xorg-xrandr: tells X11 apps which display is the main one'
@@ -51,7 +57,7 @@ backup=(etc/pam.d/uq-greetd etc/pam.d/uq-greeter etc/pam.d/uq-lock etc/pam.d/uq-
 # (so its checksum) can change. The release workflow uploads exactly this file and prints its sum.
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
 # The release asset's sha256 for this tag; update it with pkgver at each release (docs/releasing.md).
-sha256sums=('f514343e1af179c80119cc3adca219cf12089e99773ba8fec918208ad0f8ce75')
+sha256sums=('c6373c3553d50ea8d6c380e1011c07d65f0fc4e6b30ef94d8bba11121994815d')
 
 prepare() {
   cd "$srcdir/$pkgname-$_tag"
