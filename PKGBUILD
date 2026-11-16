@@ -2,7 +2,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=sentry-relay
-pkgver=26.10.1
+pkgver=26.11.0
 pkgrel=1
 pkgdesc="Sentry relay"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('zlib' 'gcc-libs')
 makedepends=('cargo' 'git' 'cmake')
 source=("git+https://github.com/getsentry/relay/#tag=$pkgver"
 	"sentry-relay.service")
-sha512sums=('a9a1e7c03a4d6ab980133938aaf615c1302c5cdaa4d548eb1ad1cee1276f674775f76a2696aba28027325d4701ec88c3de2371b6856badf1c24a1f6032189c64'
+sha512sums=('e01f4c41c446a6d6496f3c08f92306dfaef55a5b0ed52ca1a7427505d2ed047afe403f6a4e290b0a7bf244289db8a3e7812bb2668b8a54e5d11df19e7887b491'
             '849b2fd41dad7f89b47fdba2729e83d92a6bfa63e9bd5507607d7c4cf498e051a14f07597f2cc6f415297ecb94a8619d21f370d2f38d04c5fa993e5c5d691cb6')
 
 prepare() {
