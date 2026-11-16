@@ -2,7 +2,7 @@
 
 pkgname=headroom-ai-bin
 _pyname=headroom_ai
-pkgver=0.42.0
+pkgver=0.44.0
 pkgrel=1
 pkgdesc="Context optimization layer for LLM applications - cut token costs by 50-90% (binary wheel, Python 3.12)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ _pytag=cp310-abi3-manylinux_2_28_x86_64
 _wheel="$_pyname-$pkgver-$_pytag.whl"
 source=("$_wheel::https://files.pythonhosted.org/packages/${_pytag%%-*}/${_pyname:0:1}/$_pyname/$_wheel")
 noextract=("$_wheel")
-sha256sums=('fbb3ceb8f6c3f208edcc3aad43c0e03e0db45636d9d2061525ad0d0a166da146')
+sha256sums=('3b5c7fd289e7d227dcd9b896615541ea9d3d37388bd97b3257fc8769c4b7ef70')
 
 build() {
   rm -rf venv
