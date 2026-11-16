@@ -1,0 +1,13 @@
+pkgbase = layaair-cli
+	pkgdesc = LayaAir command-line tool (official runtime)
+	pkgver = 3.4.3
+	pkgrel = 3
+	url = https://github.com/layabox/layaair-cli
+	arch = x86_64
+	license = custom
+	depends = nodejs>=22.12.0
+	options = !strip
+	source = layaair-cli-3.4.3-3.zip::https://ldc-1251285021.file.myqcloud.com/layaair3/layaair-3.4/cli/layaair-cli-3.4.3-linux-x64.zip
+	sha256sums = f2b83ca96e56512861b276bf96996c321f9ad9ee1c11e1b502c66922eb5d9358
+
+pkgname = layaair-cli
