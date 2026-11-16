@@ -54,6 +54,8 @@ extend-exclude = [
   "*-sdk.txt",
   "*.patch",
   "*.diff",
+  # The PGP keys of the sources (validpgpkeys), armoured
+  "**/keys/pgp/",
   # Generated from the PKGBUILD
   ".SRCINFO",
 ]
