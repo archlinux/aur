@@ -1,0 +1,17 @@
+pkgbase = python-ghidra-stubs
+	pkgdesc = PEP 561 type stubs of the Ghidra API, from the ghidra package
+	pkgver = 12.2
+	pkgrel = 1
+	url = https://github.com/NationalSecurityAgency/ghidra
+	arch = any
+	license = Apache-2.0
+	makedepends = ghidra>=12.2
+	makedepends = ghidra<12.3
+	makedepends = python-installer
+	depends = python
+	depends = ghidra>=12.2
+	depends = ghidra<12.3
+	optdepends = python-pyghidra: to use the Ghidra API from Python
+	conflicts = python-ghidra-stubs-bin
+
+pkgname = python-ghidra-stubs
