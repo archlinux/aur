@@ -1,7 +1,7 @@
 # Maintainer: Igor Kalicinski <igorkalicinski@gmail.com>
 # Updated by .github/workflows/release.yml: pkgver and sha256sums are filled in per release.
 pkgname=openmasterhub-bin
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Service and desktop app for the Cooler Master MasterHUB modular controller"
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=('openmasterhub')
 conflicts=('openmasterhub' 'openmasterhub-git')
 install=openmasterhub.install
 source=("openmasterhub-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/openmasterhub-${pkgver}-x86_64.tar.gz")
-sha256sums=('5371eef09dc3140882bb5029dd5e5e87b79628bc813e9da349740cefda217fc2')
+sha256sums=('70b62c72d0afeaa5ad70ccade40bacbe564553c105271c7f2a5202bd513efd5a')
 
 package() {
   cd "openmasterhub-${pkgver}-x86_64"
