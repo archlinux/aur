@@ -7,16 +7,26 @@ pkgver=44.240.0
 pkgrel=1
 pkgdesc="Automated dependency update tool"
 arch=('any')
-depends=('nodejs-lts-krypton')
-makedepends=('git' 'pnpm')
+depends=('nodejs>=24.11.0' 'nodejs<27')
+makedepends=('git' 'pnpm' 'semver')
 url="https://github.com/renovatebot/renovate"
 license=('AGPL-3.0-only')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('c40ce113435a42df540ef9b483c29d63c98539962c2e97de1c0c5d8c29163ee8')
 
+_check_node() {
+  current_node="$(node -v)"
+  expected_node="$(pnpm pkg get engines.node --loglevel=error)"
+  if ! semver -r "${expected_node}" "${current_node}" > /dev/null; then
+    echo -e "Using the wrong version of Node.js! Expected '\e[32m${expected_node}\e[0m' but using '\e[31m${current_node}\e[0m'."
+    exit 1
+  fi
+}
+
 prepare() {
   cd "${pkgname}-${pkgver}"
 
+  _check_node
   sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"${pkgver}\"/" package.json
 }
 

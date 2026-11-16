@@ -7,7 +7,9 @@ pkgbase = renovate
 	license = AGPL-3.0-only
 	makedepends = git
 	makedepends = pnpm
-	depends = nodejs-lts-krypton
+	makedepends = semver
+	depends = nodejs>=24.11.0
+	depends = nodejs<27
 	source = renovate-44.240.0.tar.gz::https://github.com/renovatebot/renovate/archive/44.240.0.tar.gz
 	sha256sums = c40ce113435a42df540ef9b483c29d63c98539962c2e97de1c0c5d8c29163ee8
 
