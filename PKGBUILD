@@ -493,9 +493,11 @@ prepare() {
   # On Unix, PackageManagement used /tmp/Microsoft.PackageManagement for all users,
   # making it unusable for everyone but the first user running it
   # Upstream discussion: https://github.com/PowerShell/PowerShell/issues/15330
+  # upstream: none, OneGet hasn't changed since 2024 and PowerShell/PowerShell#15330 was closed without a fix
   patch -Np1 -i "$srcdir/oneget-user-temp-folder.patch"
   # Builds for .NET 10 instead of .NET Standard 2.0, see Build-PackageManagementModule in
   # powershell-modules.psm1
+  # upstream: none, built for .NET from source rather than from nuget.org
   patch -Np1 -i "$srcdir/oneget-net10.patch"
 
   cd "$srcdir"/PowerShell || exit
@@ -506,6 +508,7 @@ prepare() {
   # Fixed upstream in 7.7 by https://github.com/PowerShell/PowerShell/pull/26565, which isn't
   # backported to 7.6, so drop this patch with 7.7
   # Fix for 7.6 requested: https://github.com/PowerShell/PowerShell/issues/28306
+  # upstream: backport PowerShell/PowerShell#26565
   patch -Np1 -i "$srcdir/psmodulepath-combined-paths.patch"
 
   # CIM (Microsoft.Management.Infrastructure, MMI) is only usable on Windows, and only free on Linux:
@@ -527,18 +530,21 @@ prepare() {
   # to read .psd1 files, so it moves out of CimDSCParser.cs into its own file. A stub of DscClassCache
   # stays for modules built against PowerShell with MMI, e.g. PSScriptAnalyzer from the PowerShell
   # Gallery.
+  # upstream: none, MMI isn't free on Windows and doesn't work on Linux
   patch -Np1 -i "$srcdir/mmi-optional.patch"
 
   # PowerShell sends telemetry with Application Insights unless POWERSHELL_TELEMETRY_OPTOUT is set. The
   # patch adds a build property, UseTelemetry=false (see _dotnet_env), which builds an empty version of
   # ApplicationInsightsTelemetry with the same members instead, without Microsoft.ApplicationInsights.
   # Built normally, nothing changes. The telemetry tests are skipped in builds without telemetry.
+  # upstream: none, a build without telemetry
   patch -Np1 -i "$srcdir/telemetry-optional.patch"
 
   # Get-Help keeps loading the help file it found first, even after Update-Help installed help that
   # takes precedence or the UI culture changed, as the full path stays in the HelpFile of the command
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/28274
   # Upstream fix: https://github.com/PowerShell/PowerShell/pull/28294
+  # upstream: pending PowerShell/PowerShell#28294
   patch -Np1 -i "$srcdir/help-cache-reset.patch"
 
   # Get-Clipboard and Set-Clipboard only use xclip, which on Wayland only reaches the clipboard through
@@ -547,6 +553,7 @@ prepare() {
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/17561
   # Upstream PR: https://github.com/PowerShell/PowerShell/pull/24049, which adds a variable to configure
   # the tools as well; this is only the detection and the use of wl-clipboard
+  # upstream: backport PowerShell/PowerShell#24049
   patch -Np1 -i "$srcdir/wayland-clipboard.patch"
 
   # System.Drawing.Common only supports Windows since .NET 6, see
@@ -554,6 +561,7 @@ prepare() {
   # (the switch to enable it elsewhere is gone since .NET 7). It's only used by Out-Printer, which is
   # only available on Windows, so don't ship it either. Microsoft.Windows.Compatibility would bring it
   # in as dependency, so it's pruned from the restores (PowerShell.Common.props, test/Test.Common.props).
+  # upstream: none, System.Drawing.Common only supports Windows
   patch -Np1 -i "$srcdir/system-drawing-windows-only.patch"
 
   # We first determine the exact SDK and runtime versions for later usage
@@ -635,6 +643,7 @@ prepare() {
   # dependencies, all prebuilt from nuget.org. It's built for .NET instead, against NuGet.Client 7 and
   # the other packages of the source-built .NET where they're available.
   cd "$srcdir"/PSResourceGet || exit
+  # upstream: none, built for .NET from source rather than from nuget.org
   patch -Np1 -i "$srcdir/psresourceget-net10.patch"
   _nuget_feeds "$_runtimever" \
     NuGet.Commands NuGet.Common NuGet.Configuration NuGet.Credentials NuGet.DependencyResolver.Core \
