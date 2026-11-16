@@ -3,8 +3,7 @@
 
 pkgname=gdbuspp
 pkgver=3
-pkgrel=2
-pkgdesc='GDBus++ - a glib2 D-Bus wrapper for C++ '
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/OpenVPN/${pkgname}"
 license=('AGPL-3.0-only')
@@ -29,7 +28,8 @@ prepare() {
 }
 
 build() {
-  arch-meson "gdbuspp-${pkgver}" _builddir
+  CXXFLAGS="$CXXFLAGS -Wno-error=free-nonheap-object" \
+    arch-meson "gdbuspp-${pkgver}" _builddir
   meson compile -C _builddir
 }
 
