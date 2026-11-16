@@ -1,7 +1,7 @@
 pkgbase = dsh-tauri-desktop-appimage
 	pkgdesc = Native desktop application for DeepSeek Harness (official AppImage repack)
 	pkgver = 0.31.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dsh-tauri/deepseek-harness-desktop
 	arch = x86_64
 	license = LicenseRef-MIT-with-additional-terms

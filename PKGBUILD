@@ -8,7 +8,7 @@
 
 pkgname=dsh-tauri-desktop-appimage
 pkgver=0.31.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Native desktop application for DeepSeek Harness (official AppImage repack)'
 arch=('x86_64')
 url='https://github.com/dsh-tauri/deepseek-harness-desktop'
@@ -90,12 +90,18 @@ package() {
   # 无法对 AppDir 里的属主执行 chown，且包内本来就应记为 root:root）。
   cp -a --no-preserve=ownership "${srcdir}/squashfs-root/." "${pkgdir}/opt/${pkgname}/"
 
-  # AppRun 用 `dirname "$0"` 推导自身目录，直接软链到 /usr/bin 会算错路径，
-  # 因此这里放一个转发脚本，让 $0 落到 /opt 下的 AppRun。
+  # 不经过 AppDir 自带的 AppRun.wrapped：那个 trampoline 会注入 PYTHONHOME、
+  # PYTHONPATH（指向 AppDir 里并不存在的 Python，等于让所有 python3 失效）、
+  # 以及 QT_PERL 等变量，污染 Harness 及其派生的终端/工具进程。
+  # 这里只取 GTK 运行钩子和库路径，再直接 exec 真正的程序。
   install -dm755 "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/deepseek-harness-desktop" <<'EOF'
-#!/bin/sh
-exec /opt/dsh-tauri-desktop-appimage/AppRun "$@"
+#!/bin/bash
+APPDIR=/opt/dsh-tauri-desktop-appimage
+export APPDIR
+. "$APPDIR/apprun-hooks/linuxdeploy-plugin-gtk.sh"
+export LD_LIBRARY_PATH="$APPDIR/usr/lib/:$APPDIR/usr/lib/x86_64-linux-gnu/:${LD_LIBRARY_PATH}"
+exec "$APPDIR/usr/bin/deepseek-harness-desktop" "$@"
 EOF
   chmod 755 "${pkgdir}/usr/bin/deepseek-harness-desktop"
 
