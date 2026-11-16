@@ -3,7 +3,7 @@
 _Name="SatisfactoryModManager"
 _pkgname="satisfactory-mod-manager"
 pkgname="${_pkgname}-bin"
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A mod manager for easy installation of mods and modloader for Satisfactory"
 arch=(
@@ -48,7 +48,7 @@ sha256sums=('175aca78da7ce83d3480ac7fad95d1978bfa09e7dfc5ce4667be93aaa4e64f9c'
             '23cc56f60c02bee1ddebd9f02290bdb18ae52f1a2b9827fdc1d220ef6023c70a'
             '0694a6dccd4407c5fee4aa3afa7d1cfc2f658afe204e642f6abd84c4f716bf77'
             '549a0ecef95c7468296df7e55b968c00851b3a51b46d063f76f9eb2aeda40d59')
-sha256sums_x86_64=('c9a191a68ecf733cc5c37b5b14f0c0f086190559a7aaffa93c6047cc0a27a4de')
+sha256sums_x86_64=('fb07d22bc571ff7bc5382d64d3478e8a4573c9a071f80da7725273cd720a6d24')
 
 declare -rg _sizes="16 32 64 128 256 512"
 for _size in $_sizes; do
