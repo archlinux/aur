@@ -1,6 +1,6 @@
 pkgbase = black-magic-debug
 	pkgdesc = In-application debugger for ARM Cortex and RISC-V processors
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://black-magic.org
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = black-magic-debug
 	makedepends = git
 	makedepends = hidapi
 	makedepends = python
-	source = https://github.com/blackmagic-debug/blackmagic/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 81ba56b002bb4f10e65bcd2adc8a4da3cd17af5bdd5964130c67eaa2d3d530c0
+	source = blackmagic-2.1.0.tar.gz::https://codeberg.org/blackmagic-debug/blackmagic/archive/v2.1.0.tar.gz
+	sha256sums = 704c070e636a5eac21d784da8704c2fd10a436ac0069ce585b90834c4c2395b9
 
 pkgname = black-magic-debug-app
 	depends = libusb
