@@ -271,10 +271,12 @@ prepare() {
   cd "$srcdir"/PSScriptAnalyzer || exit
   # CIM (Microsoft.Management.Infrastructure) is only supported on Windows, and powershell doesn't
   # ship it elsewhere. Without this, the module fails to load, see powershell's PKGBUILD.
+  # upstream: none, powershell is built without CIM
   patch -Np1 -i "$srcdir/pssa-cim-windows-only.patch"
   # Export-ModuleMember's parameters are resolved through the CommandInfo of the analyzer's runspace
   # pool, from the rules running in parallel. That races and fails or hangs intermittently, see
   # https://github.com/PowerShell/PSScriptAnalyzer/issues/2229
+  # upstream: workaround PowerShell/PSScriptAnalyzer#2229
   patch -Np1 -i "$srcdir/pssa-exported-function-race.patch"
   # Only the build for PowerShell 7, for the installed .NET. It's compiled against the PowerShell it
   # runs on instead of the System.Management.Automation package of PowerShell 7.4.
@@ -301,6 +303,7 @@ prepare() {
   # MediatR 8 comes from nuget.org.
   local _omnisharp=(/usr/share/nuget/packages/OmniSharp.Extensions.JsonRpc.*.nupkg)
   if [[ -f "${_omnisharp[0]}" ]]; then
+    # upstream: none, our OmniSharp is built with MediatR 12
     patch -Np1 -i "$srcdir/pses-mediatr-12.patch"
   fi
   rm global.json
