@@ -86,14 +86,16 @@ prepare() {
 
   cd "$pkgname" || exit
   # Microsoft/OSInfo can't compare non-numeric versions like Arch's "Rolling Release" and reported a
-  # requested codename as in the desired state although Arch has none. Fixed upstream on main.
+  # requested codename as in the desired state although Arch has none. Fixed upstream in 3.4
+  # (3.4.0-preview.3): drop this with 3.4.0.
   # Upstream issue: https://github.com/PowerShell/DSC/issues/1777
   # Upstream fix: https://github.com/PowerShell/DSC/pull/1778
   patch -Np1 -i "$srcdir/osinfo-rolling-release.patch"
   # pwsh expands wildcards in unquoted arguments of native commands outside Windows, so the adapter
   # filter Test* became the folder tests/ of the working directory: dsc rejected it, and the test,
   # which only checks the resources found, passed without any
-  # Upstream fix: https://github.com/PowerShell/DSC/pull/1784
+  # Upstream fix: https://github.com/PowerShell/DSC/pull/1784, in 3.4 (3.4.0-preview.3): drop
+  # this with 3.4.0
   sed -i "s/ -a Test\* -o json/ -a 'Test*' -o json/" dsc/tests/dsc_args.tests.ps1
 
   _cargo_env
