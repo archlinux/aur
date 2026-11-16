@@ -2,7 +2,7 @@
 pkgname=python-xisf-fits-utils
 _name=${pkgname#python-}
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple command line utilities for conversion and keyword manipulation of FITS and XISF files"
 arch=('any')
 url="https://github.com/GuLinux/xifs-fits-python-utils"
