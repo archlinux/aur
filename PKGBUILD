@@ -2,7 +2,7 @@
 # Maintainer: Viktor Tiulpin <viktor.tiulpin@jetbrains.com>
 
 pkgname='teamcity-bin'
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='A command-line interface for TeamCity CI/CD server'
 url='https://github.com/JetBrains/teamcity-cli'
@@ -12,10 +12,10 @@ provides=('teamcity')
 conflicts=('teamcity')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/JetBrains/teamcity-cli/releases/download/v${pkgver}/teamcity_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('3601b50d6a41cabf2c49044506eed2f0c416a3edc273ed887c66956feab3e02a')
+sha256sums_aarch64=('7683166ea842de919ae65de2f372d22664b07caf356dc78597a7caffe5f82030')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/JetBrains/teamcity-cli/releases/download/v${pkgver}/teamcity_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('55fb30edcd7737700a1b3ea4c72aac04a6e99b7d263dc6c46d22eb04f61970ba')
+sha256sums_x86_64=('c97148e5f54ee23f4b80e690340de2c779a4b3b0f918c64876602fb17ea3d87c')
 
 package() {
   install -Dm755 "./teamcity" "${pkgdir}/usr/bin/teamcity"
