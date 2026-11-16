@@ -1,25 +1,36 @@
 pkgbase = ragtime
 	pkgdesc = Chat and file transfer over HF with Data2G
-	pkgver = 0.2.0beta
+	pkgver = 0.3.1beta
 	pkgrel = 1
 	url = https://github.com/baitisj/ragtime
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	license = LGPL-2.1-or-later
+	license = BSD-3-Clause
 	makedepends = cmake
+	makedepends = git
 	makedepends = ninja
+	makedepends = patchelf
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
 	depends = glib2
 	depends = gtk3
 	depends = hamlib
+	depends = libheif
 	depends = libpipewire
+	depends = libwebp
+	depends = openjpeg2
 	depends = pango
 	depends = wxwidgets-common
 	depends = wxwidgets-gtk3
 	optdepends = data2g: data2g-host, the modem Ragtime talks to (can also run on another machine)
-	source = ragtime-0.2.0beta.tar.gz::https://github.com/baitisj/ragtime/archive/refs/tags/v0.2.0-beta.tar.gz
-	sha256sums = 13452092555fbf840970a0b61e141b0be0167cf48b8d6d74af6bc3a8bf47192f
+	source = ragtime-0.3.1beta.tar.gz::https://github.com/baitisj/ragtime/archive/refs/tags/v0.3.1-beta.tar.gz
+	source = git+https://github.com/baitisj/sotto.git#commit=aa44cdb69e30fe5feb5666db3bde4ab3a5d1e031
+	source = git+https://github.com/xiph/rnnoise.git#commit=6cbfd53eb348a8d394e0757b4025c6ded34eb2b6
+	sha256sums = 365c4630c53cc86cec4c61fbeefbc370d084424056ad6b084ad912729478f876
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ragtime
