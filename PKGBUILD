@@ -2,7 +2,7 @@
 
 pkgname=epsxe-appimage
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="ePSXe PS1 emulator for 64-bit Linux (self-built AppImage)"
 arch=('x86_64')
 url="https://github.com/Twilight0/epsxe-appimage"
@@ -18,7 +18,7 @@ options=('!strip' '!debug')
 # bundled libssl.so.1.1 / libunistring.so.2). This one carries a working
 # runtime and 64-bit plugins built from PCSX-Reloaded 1.9.95.
 source=("ePSXe-2.0.5-x86_64.AppImage::https://github.com/Twilight0/epsxe-appimage/releases/download/v$pkgver/ePSXe-$pkgver-x86_64.AppImage")
-sha256sums=('12bc8a77d792e5798622265ea1fae1512116ac3e7b25646813abe30bf385ace1')
+sha256sums=('9891b27d0f31b25735cf73b15483ec83e572646f6a8fec325b23d8d1ddf71724')
 
 package() {
   install -Dm755 "$srcdir/ePSXe-$pkgver-x86_64.AppImage" \
