@@ -17,6 +17,8 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    ".gitignore",
+    "boost-fixes.patch",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
