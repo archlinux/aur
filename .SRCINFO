@@ -1,0 +1,14 @@
+pkgbase = eckly-git
+	pkgdesc = TUI client for Readeck
+	pkgver = r19.448efcf
+	pkgrel = 1
+	url = https://github.com/gollyhatch/eckly
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	provides = eckly
+	source = eckly::git+https://github.com/gollyhatch/eckly.git
+	sha256sums = SKIP
+
+pkgname = eckly-git
