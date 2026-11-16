@@ -1,6 +1,6 @@
 pkgbase = openmasterhub-bin
 	pkgdesc = Service and desktop app for the Cooler Master MasterHUB modular controller
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/hoxton314/openmasterhub
 	install = openmasterhub.install
@@ -18,7 +18,7 @@ pkgbase = openmasterhub-bin
 	provides = openmasterhub
 	conflicts = openmasterhub
 	conflicts = openmasterhub-git
-	source = openmasterhub-0.6.0-x86_64.tar.gz::https://github.com/hoxton314/openmasterhub/releases/download/v0.6.0/openmasterhub-0.6.0-x86_64.tar.gz
-	sha256sums = 898da045a9841f21340d44e654b18a294fd420975ab98d4675d811fc80a2ae2a
+	source = openmasterhub-0.6.1-x86_64.tar.gz::https://github.com/hoxton314/openmasterhub/releases/download/v0.6.1/openmasterhub-0.6.1-x86_64.tar.gz
+	sha256sums = 5371eef09dc3140882bb5029dd5e5e87b79628bc813e9da349740cefda217fc2
 
 pkgname = openmasterhub-bin
