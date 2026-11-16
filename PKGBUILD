@@ -6,8 +6,8 @@
 
 pkgname=python-desktop-notifier
 pkgdesc='Python library for cross-platform desktop notifications'
-pkgver=6.1.1
-pkgrel=2
+pkgver=6.2.0
+pkgrel=1
 url='https://github.com/SamSchott/desktop-notifier'
 arch=(any)
 license=('MIT')
@@ -30,7 +30,7 @@ depends=(
   'python-packaging'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('04837aa94c32b7cb869272791ae14790c92f7b3f83f9442be793e05e7dcc7dba627e1ec36442488080c2d8c8987b3acf1a4b7f3e10453756157f832daf46ebae')
+b2sums=('06089ff50acfc46d82a8c2c33d91e24d1c3ab22c1c76d1e312e08f4f22d5d44a51f92dd0eebc17757cc54d4f8acbef1b00d5341d99fea0ffe3a0d8b7b44066dc')
 
 build() {
   cd "desktop-notifier-${pkgver}"
