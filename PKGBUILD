@@ -4,7 +4,7 @@
 
 pkgname=cqli-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="A chess query facility for PGN databases"
 arch=(x86_64)
@@ -15,7 +15,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 source=("$_pkgname-$pkgver.zip::$url/downloads/$_pkgname-$pkgver-linux.zip")
-sha256sums=('03937bf2c2672f8ba52b86d7867de09756f3b2bd94feb175ea3409d762c9b67f')
+sha256sums=('ec634cf307c76f3df17258c85f4521df7ea3c3e0dce9b8bfc5094c4ba0395f37')
 
 package() {
   cd "$srcdir"
