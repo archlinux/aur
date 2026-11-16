@@ -25,6 +25,22 @@ sha512sums=('6773243e2746c67f4e22d64bdc59d07a168e2796a641e9d97b8040be40d79c05e9b
 b2sums=('c1807d526f5cad588137b145d83cf803e92b44d4fe46be0dee00d2b66d1ad4a027c7674caa1e49a47eb915f4c0b51814381df385b0f234e1cfa9ed25e8397b14'
   'a80f1e89f7e3728a308f74f080794fa5df388c818b8901aca0ccde825c21528fc19f04c20666315b5c26bf104dc64b75402dfc1b8487aaaf23705a3dfe221cbf')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -54,6 +70,8 @@ _dotnet_env() {
 }
 
 prepare() {
+  # The SDK to build with (_dotnet_sdk), for dotnet anywhere in $srcdir
+  printf '{ "sdk": { "version": "%s", "rollForward": "latestPatch" } }\n' "$(_dotnet_sdk)" >"$srcdir/global.json"
   cd Newtonsoft.Json || exit
   # Pins an SDK we don't have
   rm Src/global.json
