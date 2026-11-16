@@ -1,13 +1,13 @@
 pkgbase = python-smbus2
 	pkgdesc = A drop-in replacement for smbus-cffi/smbus-python
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/kplindegaard/smbus2
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/kplindegaard/smbus2/archive/refs/tags/0.6.0.tar.gz
-	sha256sums = a602790a98c21ac4de9afd49d3d771e942c39257a7e670f807516248ec7a5e7b
+	source = https://github.com/kplindegaard/smbus2/archive/refs/tags/0.6.1.tar.gz
+	sha256sums = 05bf3f16390f5ddecfd6f391e3d6c84c92fbc60a328f3395437311cc9eecf8d5
 
 pkgname = python-smbus2
