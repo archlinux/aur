@@ -1,6 +1,6 @@
 pkgbase = zl-equalizer
 	pkgdesc = Parametric, dynamic equalizer plugin by ZL Audio
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://zl-audio.github.io/plugins/zlequalizer2/
 	arch = x86_64
@@ -27,11 +27,11 @@ pkgbase = zl-equalizer
 	depends = libpng
 	depends = brotli
 	depends = alsa-lib
-	source = git+https://github.com/ZL-Audio/ZLEqualizer#tag=1.4.1
-	source = https://github.com/ZL-Audio/JUCE/archive/e66b82515320d92a2224651f8ecc1c888a8ec3d8.zip
+	source = git+https://github.com/ZL-Audio/ZLEqualizer#tag=1.4.2
+	source = https://github.com/ZL-Audio/JUCE/archive/68492e3382af69761ade554dcd9de73861f914b6.zip
 	source = git+https://github.com/ZL-Audio/zldsp_fft.git#tag=b741fb7
-	sha256sums = c342214e24b9221ddc088c63e5fed392eb4d46e4ee6631c03cbea99d58bda7e8
-	sha256sums = 6a4189e1f3fc77ca9ff067966690f7a17ffaaee605e6711074fa6b72ef144cfd
+	sha256sums = fff4adc7ba6eb75a1e55b5de22f6dab890e9ed418c01f70535110afe83a334e3
+	sha256sums = dc31e6c12e54e53c1701c0a28f25bf7506ad59dfc4b20dc9072feaeb57cbab06
 	sha256sums = 121d7bfe65321c7d0e8f55522470c13263ea24717b657fc57313de20ca266ff1
 
 pkgname = zl-equalizer-vst3
