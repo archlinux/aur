@@ -2,15 +2,18 @@
 
 pkgname=audirvana-studio
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Audirvana Studio audio player"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://audirvana.com/"
 license=('custom')
 depends=('glibc' 'gcc-libs' 'alsa-lib' 'avahi' 'curl' 'libxml2')
-source=("https://audirvana.com/delivery/linux/apt-repo/pool/non-free/audirvana-studio/audirvana-studio_"$pkgver"_amd64.deb" 'audirvanaStudio.service')
-sha256sums=('a974c85a931ac6fa5255d769ec315492a64774f88a5eb47d1c95dae5d7d2fcd9' 
-'c677a4e78cd0f752babe89943f85f3e7a915f4657e7529abfc0a95ab5e26b5bd')
+source_x86_64=("https://audirvana.com/delivery/linux/apt-repo/pool/non-free/audirvana-studio/audirvana-studio_"$pkgver"_amd64.deb")
+source_aarch64=("https://audirvana.com/delivery/linux/apt-repo/pool/non-free/audirvana-studio/audirvana-studio_"$pkgver"_arm64.deb")
+source=('audirvanaStudio.service')
+sha256sums=('c677a4e78cd0f752babe89943f85f3e7a915f4657e7529abfc0a95ab5e26b5bd')
+sha256sums_x86_64=('a974c85a931ac6fa5255d769ec315492a64774f88a5eb47d1c95dae5d7d2fcd9')
+sha256sums_aarch64=('0ef7f32d321b55cfac06ab6c060d80db0303ba4fd30fb02e6dbb639a995bf301')
 install=${pkgname}.install
 
 package() {
