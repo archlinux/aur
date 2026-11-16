@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Openworld
+Comment=Installs and launches Openworld
+Exec=openworld
+Icon=openworld
+Terminal=false
+Type=Application
+Categories=Game;
+StartupWMClass=com.pascard.openworld.updater

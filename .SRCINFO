@@ -1,0 +1,27 @@
+pkgbase = openworld-bin
+	pkgdesc = Voxel sandbox game on a whole round planet (updater, downloads the game)
+	pkgver = 9
+	pkgrel = 1
+	url = https://www.play-openworld.com
+	arch = x86_64
+	license = LicenseRef-Openworld
+	depends = curl
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = vulkan-icd-loader
+	depends = zlib
+	optdepends = zenity: file dialogs
+	provides = openworld
+	conflicts = openworld
+	options = !strip
+	options = !debug
+	source = openworld-updater-9-linux-x64.tar.gz::https://ow-bucket.s3.eu-west-par.io.cloud.ovh.net/releases/updater/01a0fee7-c824-7981-b766-e6c08ed50bbf/Openworld-linux-x64.tar.gz
+	source = openworld-9.png::https://www.play-openworld.com/assets/img/icon-256.png
+	source = openworld.desktop
+	source = LICENSE
+	sha256sums = 1bcbe974d96550d7c01cdbe8fc056889bae93cdf940bf4c0e9a040eb2bb6df28
+	sha256sums = 3ffdb01d73684b13ecd8f868a1eaa62c739700de00cf9ad2bd42e0b393fd226f
+	sha256sums = 71584a73b4113cca7a4af315249fca5ef6bb3b9855a1a2fbdb9be8e1b22754b0
+	sha256sums = c2477d71534430c051161a560888e172381b654d42edc41c888c25bb8c7ab30e
+
+pkgname = openworld-bin

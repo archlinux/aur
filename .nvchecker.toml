@@ -1,0 +1,4 @@
+[openworld-bin]
+source = "jq"
+url = "https://core.openworld.pascard.com/manifest.json"
+filter = ".updater.build | tostring"
