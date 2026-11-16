@@ -1,7 +1,7 @@
 # Maintainer: Yusuf Aktepe <yusuf@yusufaktepe.com>
 
 pkgname=leaf-reader-bin
-pkgver=0.16.2
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Read PDFs, markdown files and web articles in the terminal"
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ source_aarch64=(
 
 sha256sums=('123787a91b78b35721c7fd06971875a30dfbd392027ba8cb137d3c4734c0822d'
             '5f1a20f1e044ae6079e3d55bba8576be556faf560ce53aee1bfc13ca79da96bd')
-sha256sums_x86_64=('6c15e39753df1c4aeb85c2db246ed612ee042951586d923cd10e91d45167c1bf')
-sha256sums_aarch64=('a61edb00d513324f7d5ecfe50666ac705ad2a67df37b4123ce0e40063c80176e')
+sha256sums_x86_64=('8d302ed3d90649e29cc8063efec2a50f869a13479cde6ff28edb51ab9e40af30')
+sha256sums_aarch64=('9f4b5fc9dc44c040a24a8f679e86e689cb039372cfed392987eb6f7f52f139af')
 
 package() {
     install -Dm755 "$srcdir/leaf" "$pkgdir/usr/bin/leaf"
