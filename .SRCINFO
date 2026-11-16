@@ -1,18 +1,19 @@
 pkgbase = sound-of-sorting-git
 	pkgdesc = Visualization and "Audibilization" of Sorting Algorithms
-	pkgver = 0.6.5.r13.05db428
+	pkgver = 0.6.5.r28.5cfcaf7
 	pkgrel = 1
 	url = https://panthema.net/2013/sound-of-sorting/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
-	depends = wxgtk
-	depends = sdl
+	depends = gcc-libs
+	depends = wxwidgets-common
+	depends = wxwidgets-gtk3
+	depends = sdl2
 	provides = sound-of-sorting-git
 	conflicts = sound-of-sorting-git
 	source = sound-of-sorting-git::git+https://github.com/bingmann/sound-of-sorting.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = sound-of-sorting-git
-
