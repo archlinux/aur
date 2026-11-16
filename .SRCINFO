@@ -1,17 +1,18 @@
 pkgbase = gle-te
-	pkgdesc = a library of C functions that draw extruded surfaces, including surfaces of revolution, sweeps, tubes, polycones, polycylinders and helicoids.
+	pkgdesc = A library of C functions that draw extruded surfaces, including surfaces of revolution, sweeps, tubes, polycones, polycylinders and helicoids.
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.linas.org/gle/index.html
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only OR (LicenseRef-IBM-sample AND Artistic-1.0)
 	makedepends = gcc
 	makedepends = glut
 	depends = libgl
 	options = !libtool
 	source = http://downloads.sourceforge.net/gle/gle-3.1.0.tar.gz
-	md5sums = da5b45c6906343d4a3672c3de35513ad
+	source = fix-glu-callbacks.patch
+	sha256sums = dc8a74b5632b2c3fc84d33c2bf6ee43210b71b8ddf0a3166a25aeb46620bfa27
+	sha256sums = 5894d4dda6bf7adf2d0ddf75c8cbae79ff61ec97d437ad060266762a16815a49
 
 pkgname = gle-te
-

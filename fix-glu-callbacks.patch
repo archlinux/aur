@@ -1,0 +1,78 @@
+diff --git a/src/ex_angle.c b/src/ex_angle.c
+index 6354c1b..61d02d8 100644
+--- a/src/ex_angle.c
++++ b/src/ex_angle.c
+@@ -111,8 +111,8 @@ void draw_angle_style_front_cap (int ncp,	/* number of contour points */
+    N3F(bi);
+ 
+    tobj = gluNewTess ();
+-   gluTessCallback (tobj, GLU_BEGIN, glBegin);
+-   gluTessCallback (tobj, GLU_VERTEX, glVertex3dv);
++   gluTessCallback (tobj, GLU_BEGIN, (_GLUfuncptr) glBegin);
++   gluTessCallback (tobj, GLU_VERTEX, (_GLUfuncptr) glVertex3dv);
+    gluTessCallback (tobj, GLU_END, glEnd);
+ 
+ #ifdef LENIENT_TESSELATOR 
+@@ -190,8 +190,8 @@ void draw_angle_style_back_cap (int ncp,	/* number of contour points */
+    N3F (bi);
+ 
+    tobj = gluNewTess ();
+-   gluTessCallback (tobj, GLU_BEGIN, glBegin);
+-   gluTessCallback (tobj, GLU_VERTEX, glVertex3dv);
++   gluTessCallback (tobj, GLU_BEGIN, (_GLUfuncptr) glBegin);
++   gluTessCallback (tobj, GLU_VERTEX, (_GLUfuncptr) glVertex3dv);
+    gluTessCallback (tobj, GLU_END, glEnd);
+ 
+ #ifdef LENIENT_TESSELATOR 
+diff --git a/src/ex_cut_round.c b/src/ex_cut_round.c
+index f5e714e..6dbe33f 100644
+--- a/src/ex_cut_round.c
++++ b/src/ex_cut_round.c
+@@ -132,8 +132,8 @@ draw_cut_style_cap_callback (int iloop,
+ #ifdef OPENGL_10
+    GLUtriangulatorObj *tobj;
+    tobj = gluNewTess ();
+-   gluTessCallback (tobj, GLU_BEGIN, glBegin);
+-   gluTessCallback (tobj, GLU_VERTEX, glVertex3dv);
++   gluTessCallback (tobj, GLU_BEGIN, (_GLUfuncptr) glBegin);
++   gluTessCallback (tobj, GLU_VERTEX, (_GLUfuncptr) glVertex3dv);
+    gluTessCallback (tobj, GLU_END, glEnd);
+ #endif /* OPENGL_10 */
+ 
+diff --git a/src/ex_raw.c b/src/ex_raw.c
+index 916eeae..d75b773 100644
+--- a/src/ex_raw.c
++++ b/src/ex_raw.c
+@@ -149,8 +149,8 @@ void draw_raw_style_end_cap (int ncp,		/* number of contour points */
+    /* malloc the @#$%^&* array that OpenGL wants ! */
+    pts = (double *) malloc (3*ncp*sizeof(double));
+    tobj = gluNewTess ();
+-   gluTessCallback (tobj, GLU_BEGIN, glBegin);
+-   gluTessCallback (tobj, GLU_VERTEX, glVertex3dv);
++   gluTessCallback (tobj, GLU_BEGIN, (_GLUfuncptr) glBegin);
++   gluTessCallback (tobj, GLU_VERTEX, (_GLUfuncptr) glVertex3dv);
+    gluTessCallback (tobj, GLU_END, glEnd);
+    gluBeginPolygon (tobj);
+ 
+@@ -209,8 +209,8 @@ draw_front_contour_cap (int ncp,	/* number of contour points */
+ 
+ #ifdef OPENGL_10
+    tobj = gluNewTess ();
+-   gluTessCallback (tobj, GLU_BEGIN, glBegin);
+-   gluTessCallback (tobj, GLU_VERTEX, glVertex3dv);
++   gluTessCallback (tobj, GLU_BEGIN, (_GLUfuncptr) glBegin);
++   gluTessCallback (tobj, GLU_VERTEX, (_GLUfuncptr) glVertex3dv);
+    gluTessCallback (tobj, GLU_END, glEnd);
+    gluBeginPolygon (tobj);
+ 
+@@ -255,8 +255,8 @@ draw_back_contour_cap (int ncp,	/* number of contour points */
+ 
+ #ifdef OPENGL_10
+    tobj = gluNewTess ();
+-   gluTessCallback (tobj, GLU_BEGIN, glBegin);
+-   gluTessCallback (tobj, GLU_VERTEX, glVertex3dv);
++   gluTessCallback (tobj, GLU_BEGIN, (_GLUfuncptr) glBegin);
++   gluTessCallback (tobj, GLU_VERTEX, (_GLUfuncptr) glVertex3dv);
+    gluTessCallback (tobj, GLU_END, glEnd);
+    gluBeginPolygon (tobj);
+ 
