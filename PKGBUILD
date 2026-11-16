@@ -1,7 +1,7 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=prettier-plugin-java
-pkgver=2.11.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='Prettier Java Plugin'
 arch=(any)
@@ -11,7 +11,7 @@ depends=(prettier nodejs)
 makedepends=(npm)
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('8948889699f98f6364513d2e6e7bcf4c9ff14b1a52f5c72dfef4344cbda784ff')
+sha256sums=('40735b09f9b082f8e63e9789977e42968ef96075a0e064a65c3e0047d97beffa')
 
 package() {
     npm install -g --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" \
