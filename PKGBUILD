@@ -1,13 +1,13 @@
 # Maintainer: Novaturiente
 # pkgver and sha256sums are filled in by packaging/release.sh
 pkgname=novabrowser-webkit
-pkgver=0.1.17
+pkgver=0.1.18
 pkgrel=1
 pkgdesc="Keyboard-driven browser on WebKitGTK 6.0, configured in TypeScript"
 arch=(x86_64)
 url="https://github.com/Novaturiente/novabrowser-webkit"
-license=(GPL-3.0-or-later)
-depends=(libwebkitgtk-6.0.so gtk4 glib2 sqlite curl gst-plugins-base gst-plugins-good)
+license=(GPL-3.0-or-later MPL-2.0)  # MPL: vendored webauthn-authenticator-rs (passkeys)
+depends=(libwebkitgtk-6.0.so gtk4 glib2 sqlite curl gst-plugins-base gst-plugins-good openssl dbus)
 makedepends=(cargo)
 optdepends=('webkitgtk-6.0-nova-bin: our WebKitGTK build (Chromium-like dark mode, PGO, AVX2 CPUs)'
             'gst-libav: H.264/AAC and most web video'
@@ -17,11 +17,12 @@ optdepends=('webkitgtk-6.0-nova-bin: our WebKitGTK build (Chromium-like dark mod
             'rbw: Bitwarden passwords'
             'pass: password-store passwords'
             'bitwarden-cli: Bitwarden passwords (bw)'
-            'xdg-utils: download-open and default-browser setup')
+            'xdg-utils: download-open and default-browser setup'
+            'bluez: passkeys from your phone (Bluetooth)')
 conflicts=(novabrowser-webkit-bin novabrowser-webkit-git)
 options=(strip !lto !debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ebd143093d4c1b6188e46ff4ef58fb633a1c30683bb2f14233e86445ac343a18')
+sha256sums=('761c6e7a2d76ef2f041f345719975f1b87409be06c7cfb5c33d914365c8e3a0d')
 _src=$pkgname-$pkgver
 
 prepare() {
@@ -62,4 +63,5 @@ package() {
   install -Dm644 README.md "$pkgdir/usr/share/doc/novabrowser-webkit/README.md"
   cp -r docs "$pkgdir/usr/share/doc/novabrowser-webkit/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 vendor/webauthn-authenticator-rs/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/MPL-2.0-webauthn-authenticator-rs"
 }
