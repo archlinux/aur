@@ -1,7 +1,7 @@
 pkgbase = python-click-extra
 	pkgdesc = Drop-in replacement for Click to make user-friendly and colorful CLI.
 	pkgver = 10.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kdeldycke/click-extra
 	arch = any
 	license = GPL-2.0-or-later
@@ -12,25 +12,21 @@ pkgbase = python-click-extra
 	checkdepends = python-pytest
 	checkdepends = python-pytest-httpserver
 	checkdepends = python-requests
-	checkdepends = python-tomlkit
-	checkdepends = python-xmltodict
+	checkdepends = python-tomlrt
 	checkdepends = python-yaml
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-uv-build
 	depends = python
-	depends = python-boltons
-	depends = python-click>=8.4.1
+	depends = python-click>=8.5
 	depends = python-cloup
-	depends = python-deepmerge
 	depends = python-extra-platforms
 	depends = python-tabulate
 	depends = python-wcmatch
 	depends = python-wcwidth
 	optdepends = python-hjson: HJSON configuration files and table format
 	optdepends = python-json5: JSON5 configuration files
-	optdepends = python-tomlkit: TOML table format
-	optdepends = python-xmltodict: XML configuration files and table format
+	optdepends = python-tomlrt: TOML table format and configuration export
 	optdepends = python-yaml: YAML configuration files and table format
 	optdepends = python-pygments: ANSI formatter, filter and lexers for Pygments
 	optdepends = python-sphinx: click:source and click:run directives for Sphinx
