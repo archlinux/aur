@@ -1,0 +1,31 @@
+pkgbase = kotora-bin
+	pkgdesc = Anime tracker for MyAnimeList: recognises the episode in your player and asks before it records it (prebuilt)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://kotora.moe
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxrandr
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = vulkan-driver: GPU drawing (vulkan-radeon, vulkan-intel or nvidia-utils)
+	optdepends = mpv: a supported player
+	optdepends = vlc: a supported player
+	optdepends = mpc-qt: a supported player
+	provides = kotora=0.1.2
+	conflicts = kotora
+	options = !strip
+	options = !debug
+	source = kotora-bin-0.1.2.tar.gz::https://github.com/hanami117/kotora/releases/download/v0.1.2/kotora-0.1.2-linux-x86_64.tar.gz
+	sha256sums = 8171a1d867846e946ebe2eda88643c87b4b378a70a7bd3dc9acd228422c89e71
+
+pkgname = kotora-bin
