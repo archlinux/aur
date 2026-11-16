@@ -1,6 +1,6 @@
 # Maintainer: Bolt J Woofson <bolt@boop.no>
 pkgname=brum-bin
-pkgver=1.23.1
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="Multi-Pane Web Environment (File Commander/Manager) - By Woofson (Pre-compiled standalone binary)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('brum' 'commanderdog' 'commanderdog-bin')
 depends=('glibc' 'sqlite' 'libssh2' 'openssl' 'ca-certificates')
 optdepends=('proton-drive-cli-bin: Proton Drive (Brum can also install it in Settings)')
 source=("brum-v${pkgver}-linux-${arch}.tar.gz::https://github.com/Woofson/brum/releases/download/v${pkgver}/brum-v${pkgver}-linux-${arch}.tar.gz")
-sha256sums=('6862b96103d29acc42db27123a5619ba5f09940822fd272df4f0f6cfe16ff642')
+sha256sums=('f506f2a3f5af7786cb51275e3e51a5d5bfd6cc195bbaef1cf33346edc901abe5')
 
 package() {
     cd "$srcdir/brum-v${pkgver}-linux-${arch}"
