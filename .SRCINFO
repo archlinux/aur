@@ -1,6 +1,6 @@
 pkgbase = sift-context-bin
 	pkgdesc = Sift a codebase into an LLM-friendly context document
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/bethropolis/sift
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = sift-context-bin
 	conflicts = sift
 	provides = sift
 	arch = aarch64
-	source_aarch64 = sift-context-bin_1.8.0_aarch64.tar.gz::https://github.com/bethropolis/sift/releases/download/v1.8.0/sift_1.8.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = fb7a33f24f3b76be36a327fb068a3db32742a953d0ceb4c4131d2acf347a367b
+	source_aarch64 = sift-context-bin_1.8.1_aarch64.tar.gz::https://github.com/bethropolis/sift/releases/download/v1.8.1/sift_1.8.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = dd1423ab4146528b2aa9203cb50ea89f00c11d6eb5325ad188714bae6e8bd5c7
 	arch = x86_64
-	source_x86_64 = sift-context-bin_1.8.0_x86_64.tar.gz::https://github.com/bethropolis/sift/releases/download/v1.8.0/sift_1.8.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 69d8568bc2464404c09d3b9aa113abe02063b5c4b0fc7d6108cce6f684b313d3
+	source_x86_64 = sift-context-bin_1.8.1_x86_64.tar.gz::https://github.com/bethropolis/sift/releases/download/v1.8.1/sift_1.8.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0d125482017613ad2f4cf757cdd9dcee2772f040507d058172821e406a4485cb
 	
 pkgname = sift-context-bin
