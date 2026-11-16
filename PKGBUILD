@@ -1,20 +1,24 @@
-# Maintainer: aubree.wtf <https://aubree.wtf/>
+# Maintainer: MapleProjects <https://github.com/MapleProjects>
+# Empaquetado original de aubree.wtf <https://aubree.wtf/>
+#
+# Quadra 0.50.x es una reescritura en Rust: el launcher Python
+# (launcher/quadra/core.py) y los scripts build_debug_shim.sh /
+# packaging/build-metal.sh ya no existen en el repositorio upstream.
+# build() y package() siguen el layout actual (Cargo + data/ + flatpak/).
 pkgname=quadrahq-git
 _name=Quadra
 pkgver=0.50.2.r4.g52a8adf
-pkgrel=2
-pkgdesc="Run the macOS Roblox client on Linux through Darling"
+pkgrel=3
+pkgdesc="Bootstrapper for the macOS Roblox client on Linux through Rosemary"
 arch=('x86_64')
 url="https://quadrahq.org"
 _repo="https://github.com/QuadraHQ/Quadra"
 license=('GPL-3.0-only' 'MIT' 'ISC' 'OFL-1.1')
-depends=('unzip' 'python' 'python-gobject' 'python-cairo'
-         'gtk4>=4.14' 'libadwaita>=1.5' 'webkitgtk-6.0' 'sdl2' 'wayland'
-         'libpulse' 'libglvnd' 'vulkan-icd-loader' 'llvm-libs>=15' 'libx11' 'libxext' 'libxfixes' 'libxi' 'libxcursor' 'gcc-libs')
-depends+=('hicolor-icon-theme' 'shared-mime-info' 'desktop-file-utils')
-makedepends=('git' 'clang' 'lld' 'pkgconf' 'vulkan-headers' 'rust>=1.98')
+depends=('gtk4' 'libadwaita' 'pango' 'cairo' 'glib2'
+         'hicolor-icon-theme' 'shared-mime-info' 'desktop-file-utils')
+makedepends=('git' 'cargo' 'rust' 'clang' 'lld' 'pkgconf')
 optdepends=('darling: regular Darling runtime'
-            'ciderdarling-bin: QuadraHQ Darling runtime (also available from the launcher)'
+            'ciderdarling-bin: QuadraHQ Darling runtime'
             'mangohud: performance overlay'
             'mesa: Mesa EGL and Zink for the Vulkan renderer'
             'vulkan-driver: hardware Vulkan driver for the Vulkan renderer'
@@ -24,6 +28,10 @@ conflicts=('quadrahq' 'ciderhq' 'ciderhq-git' 'macoblox' 'macoblox-git')
 replaces=('ciderhq-git' 'macoblox-git')
 source=("$_name::git+$_repo.git")
 sha256sums=('SKIP')
+# El crate ring compila objetos C/asm pregenerados; con -flto (opcion lto de
+# makepkg) esos objetos quedan en bitcode y el enlace de Rust falla con
+# "undefined symbol: ring_core_0_17_14__*". Se desactiva LTO para este paquete.
+options=('!lto')
 
 pkgver() {
   cd "$_name"
@@ -32,27 +40,21 @@ pkgver() {
     sed 's/^v//;s/^\([0-9][0-9.]*[0-9]\)\.\{0,1\}p\([0-9][0-9]*\)/\1.\2/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$_name"
-  # Prevenir cierre prematuro de RobloxCrashHandler antes del handshake de Crashpad
-  sed -i 's/time\.sleep(2)/time.sleep(15)/' launcher/quadra/core.py
-  sed -i 's/time\.monotonic() - self\.started_at > 3/time.monotonic() - self.started_at > 20/' launcher/quadra/core.py
-
-  # Activar watchdog thread kicks por defecto para evitar congelamientos en CiderDarling (QUADRA_KICK=1)
-  sed -i 's/"cider_thread_kicks": False/"cider_thread_kicks": True/' launcher/quadra/core.py
-
-  # Fallback a shim precompilado del sistema si no se exporto la variable de entorno
-  sed -i 's/PREBUILT_SHIM = os\.environ\.get("QUADRA_PREBUILT_SHIM")/PREBUILT_SHIM = os.environ.get("QUADRA_PREBUILT_SHIM") or ("\/usr\/lib\/quadrahq\/shim" if os.path.exists("\/usr\/lib\/quadrahq\/shim\/libQuadraShims.dylib") else None)/' launcher/quadra/core.py
-}
-
 build() {
   cd "$_name"
-  QUADRA_BUILD_DIR="$srcdir/native-build" ./build_debug_shim.sh
-  QUADRA_BUILD_DIR="$srcdir/native-build" bash packaging/build-metal.sh
+  cargo build --release --locked
 }
 
 package() {
   cd "$_name"
-  bash packaging/install-payload.sh "$PWD" "$srcdir/native-build" "$pkgdir" /usr/lib
-  python -m compileall -q -d /usr/share/quadrahq/launcher "$pkgdir/usr/share/quadrahq/launcher"
+  install -Dm755 target/release/quadra "$pkgdir/usr/bin/quadra"
+  install -Dm644 data/org.quadrahq.Quadra.desktop \
+    "$pkgdir/usr/share/applications/org.quadrahq.Quadra.desktop"
+  install -Dm644 data/org.quadrahq.Quadra.xml \
+    "$pkgdir/usr/share/mime/packages/org.quadrahq.Quadra.xml"
+  install -Dm644 flatpak/org.quadrahq.Quadra.metainfo.xml \
+    "$pkgdir/usr/share/metainfo/org.quadrahq.Quadra.metainfo.xml"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -d "$pkgdir/usr/share/icons"
+  cp -r data/icons/hicolor "$pkgdir/usr/share/icons/"
 }
