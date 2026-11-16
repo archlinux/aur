@@ -15,6 +15,7 @@ pkgbase = arcane-launcher-git
 	depends = curl
 	depends = openssl
 	depends = libzip
+	depends = python
 	depends = hicolor-icon-theme
 	optdepends = umu-launcher: launch games under Proton (recommended backend)
 	provides = arcane-launcher
