@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vidbee-bin
 _pkgname=VidBee
-pkgver=2.3.0
+pkgver=2.4.0
 _electronversion=43
 pkgrel=1
 pkgdesc="A free, open-source desktop app that turns video and audio into an organized, searchable library. Download media from 1000+ supported sites or import local files."
@@ -28,10 +28,10 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d3e92e988080fe7c8722b2f152436e8b9e820b60e3a4cf0b8be80e2250e53797'
+sha256sums=('afb28a20d7f7acc9be35cf9c0f44e4665f6df0ba5f7c151c9f2aac12bb415e9b'
             '5cde322cd1fd10c409c8597eed127a08baa6c73b9430312de1aeb05f1dbb4953'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
 }
