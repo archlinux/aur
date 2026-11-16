@@ -1,0 +1,4 @@
+[python-stream-inflate]
+source = "git"
+git = "https://github.com/michalc/stream-inflate.git"
+prefix = "v"

@@ -1,0 +1,20 @@
+pkgbase = python-stream-inflate
+	pkgdesc = Uncompress Deflate and Deflate64 streams in pure Python (albeit compiled with Cython
+	pkgver = 0.0.43
+	pkgrel = 1
+	url = https://github.com/michalc/stream-inflate
+	arch = x86_64
+	license = MIT
+	checkdepends = python-coverage>=7
+	checkdepends = python-pytest>=8.3
+	checkdepends = python-pytest-cov>=5
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = glibc
+	depends = python
+	source = python-stream-inflate-0.0.43.tar.gz::https://github.com/michalc/stream-inflate/archive/v0.0.43.tar.gz
+	sha256sums = 2ce2de0fee73d17da6ed722c855dc7717d2fd7292741d70ea32e55cb0641bbfa
+
+pkgname = python-stream-inflate
