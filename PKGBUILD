@@ -2,13 +2,14 @@
 
 pkgname=openkermit
 pkgver=11.1.518
-pkgrel=1
+pkgrel=2
 pkgdesc='Portable network and serial communication and automation software'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/OpenKermit/ckermit'
 license=('BSD-3-Clause')
 depends=('glibc' 'ncurses' 'openssl' 'pam')
 checkdepends=('check')
+conflicts=('ckermit')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('25a349adbdd37ce79de003a9f0b1ac16e5a3c61a55e9d03bd6e54df5a2292087')
 
