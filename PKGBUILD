@@ -231,6 +231,22 @@ b2sums=('5da84aba00a5af8e12ae666d153ac1d7787a3c6e2f26f9de3085d052b7c46c3d9c393d3
   '3134c64cb38acb323df88be7634d95981c0c46d01d86912c1bb9d9c4ff3da42573299f365368d6d3fb8ebafdf0624203315ae90eb8da79ca33c736abca51f8e1')
 
 # Sets up the environment shared by prepare(), build() and check()
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
   export NUGET_PACKAGES="$srcdir/PowerShell/nuget"
@@ -427,6 +443,8 @@ EOF
 }
 
 prepare() {
+  # The SDK to build with (_dotnet_sdk), for dotnet anywhere in $srcdir
+  printf '{ "sdk": { "version": "%s", "rollForward": "latestPatch" } }\n' "$(_dotnet_sdk)" >"$srcdir/global.json"
   _dotnet_env
 
   # makepkg reuses $srcdir unless it's run with -C: it resets the files of the git checkouts, but keeps
@@ -529,7 +547,7 @@ prepare() {
 
   # We first determine the exact SDK and runtime versions for later usage
   local _sdkver _runtimever _runtimepath
-  _sdkver=$(dotnet --list-sdks | grep -F "$_dotnetsdkver" | sed "s/ .*$//")
+  _sdkver=$(_dotnet_sdk)
   # The runtime version of a prerelease has its label, e.g. 11.0.0-rc.3.26522.148
   _runtimever=$(dotnet --list-runtimes | grep -F "NETCore.App $_dotnetsdkver" | sed -E "s/[[:alnum:]\.]+ ([^ ]+) .*/\1/")
   _runtimepath="/usr/share/dotnet/shared/Microsoft.NETCore.App/$_runtimever"
