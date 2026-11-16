@@ -86,7 +86,7 @@
 # comments below.
 
 pkgname=ramsleuth
-pkgver=2.4.34   # FIXED — taken from the git tag v$pkgver (no pkgver())
+pkgver=2.4.35   # FIXED — taken from the git tag v$pkgver (no pkgver())
 pkgrel=1
 pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients"
 arch=(x86_64)
@@ -95,14 +95,14 @@ license=(MIT GPL-2.0-only)
 # git-commit source: makepkg clones the repo and checks out the pinned
 # immutable v$pkgver release commit via the #commit= fragment.
 # The "$pkgname::" rename extracts to $srcdir/ramsleuth (see header note above).
-source=("$pkgname::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=b60ffabf07952bc094d391e3d2f6e5cd997d26a8")
+source=("$pkgname::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=33857e63baa54e5d6400c74a1b50495434083805")
 # Content-addressed VCS pin: the sha256 of `git archive --format tar
 # <commit>` for the immutable #commit= ref above — exactly what makepkg
 # 7.x generates for tag/commit-pinned git sources (makepkg -g) and what
 # its integrity gate verifies (a *sums entry per source; '-' fails the
 # gate on 7.x, and SKIP passes only as a no-op — not the form 7.x
 # generates for #commit fragments).
-sha256sums=('fe4b0f89516daaa15df2dad09502d79cc05d483ca875492a00a7353b5d23b891')
+sha256sums=('556a9c4c056903929328cfc4a19075f1b7ef07b2527adcadbf37a7fefbf70329')
 install=ramsleuth.install
 # The in-repo ramsleuth_intel DKMS source ships bundled (package() step (12))
 # and would file-conflict with the standalone ramsleuth-intel-dkms extra, so the
