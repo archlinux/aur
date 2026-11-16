@@ -2,7 +2,7 @@
 
 pkgname=gnotes-gtk
 _appid=com.erisdor.Gnotes
-pkgver=1.8.0
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Native GNOME client for Gnotes, self-hosted Markdown notes with live shared editing"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('glib2' 'glibc' 'graphene' 'gst-plugins-base' 'gst-plugins-base-libs' '
 makedepends=('cargo')
 options=(!lto)
 source=("gnotes-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('44172ac8dc6a6f5a61794d050534e9dfdd5acfc034574a6120ad3d1effbffb0f')
+sha256sums=('347c1fa3d2fd60a2ded876a2893be13564c118c75f498e0eaa593c2c708c3498')
 
 prepare() {
   cd "gnotes-$pkgver"
