@@ -3,7 +3,7 @@
 # 依赖 AUR 的 zcode 包提供 ZCode 桌面版本体。
 
 pkgname=zcode-pro
-pkgver=1.7.0
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="ZCode Pro — ZCode 桌面版增强启动器（壁纸引擎、皮肤主题等，不修改客户端文件）"
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=('nodejs>=22: 使用系统 Node 运行启动器（缺省复用 ZCode 
 makedepends=()
 url="https://github.com/duanluan/zcode-pro"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=(769a11bfe6a15246455742613304b0cfaee92e3683b74b4bd3b1c71e757f14cc)
+sha256sums=('211b2290e9e23a8d43a40067a435517cf2dbd2b5d4344f6a9c3223b2913ffa43')
 install=zcode-pro.install  # 装后检测并提示清理 ~/.local 下的手动安装残留
 options=('!strip')
 
@@ -23,6 +23,8 @@ package() {
   install -Dm644 cli.mjs              "${pkgdir}/usr/lib/${pkgname}/cli.mjs"
   install -Dm644 dist/inject.js       "${pkgdir}/usr/lib/${pkgname}/dist/inject.js"
   install -Dm644 src/host/*.mjs       -t "${pkgdir}/usr/lib/${pkgname}/src/host/"
+  # helper.mjs 静态 import 这个子目录，缺了启动即报 ERR_MODULE_NOT_FOUND
+  install -Dm644 src/host/session-import/*.mjs -t "${pkgdir}/usr/lib/${pkgname}/src/host/session-import/"
   install -Dm644 LICENSE              "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${pkgname}/bin/zcode-pro" "${pkgdir}/usr/bin/zcode-pro"
