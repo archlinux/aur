@@ -1,6 +1,6 @@
 # Maintainer: Bink
 pkgname=memerist
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="A simple and modern meme editor"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ makedepends=(
   'ninja'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('ba7ceddc455100c899b219066584fc83e379456646ae379d9c022ee08608f8aa6997fce27bf03c31409c1e87d377bcd2e2b003e7a400678aaff595ed5885d5a3')
+b2sums=('30cbca36b452382ad7cb39251b2b99de93a86e715adf49458530e001dc4fc137c3be9aff64a33b2d77dc72fca7711aea85ea3ae016c5696cc7306b6500f84fe5')
 
 build() {
   cd "${pkgname}-${pkgver}" || exit
