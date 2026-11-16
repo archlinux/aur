@@ -1,42 +1,56 @@
-pkgname=backslash
-pkgver=0.2.1
-pkgrel=1
-pkgdesc="A lightning-fast command launcher that helps you launch commands, run apps, and streamline your workflow—all while embracing the quirky spirit of Linux!"
-arch=('x86_64')
-url="https://github.com/backslash-app"
-license=('MIT')
-depends=('electron' 'nodejs')
-makedepends=('yarn' 'git')
-options=(!strip !debug)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/backslash-app/backslash/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('748a1287a4d32b6539a8dc08b8a06d5d89326912d50f76d47829df64d777fcc8')
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-prepare() {
-  cd "$pkgname-$pkgver"
-  yarn install --frozen-lockfile
-}
+_author=backslash-app
+_basename=backslash
+pkgname=${_basename}
+pkgver=0.7.0
+pkgrel=2
+pkgdesc="A fast, extensible launcher for Linux"
+
+license=('MIT')
+arch=('x86_64' 'aarch64')
+url="https://github.com/backslash-app/backslash"
+
+provides=("${_basename}")
+
+makedepends=('cargo' 'python' 'deno')
+depends=('electron' 'nodejs' 'python' 'glibc' 'libgcc' 'gtk4' 'glib2' 'git' 'python' 'gdk-pixbuf2' 'pango' 'graphene' 'hicolor-icon-theme')
+optdepends=('bubblewrap: Sandbox for non-TypeScript extensions'
+            'gtk4-layer-shell: Overlay on wlroots compositors'
+            'wl-clipboard: Clipboard history on Wayland'
+            'libsecret: Keyring for extension secrets'
+            'wmctrl: Window switcher on X11'
+            'fd: Faster file search')
+
+options=('!strip' '!debug')
+
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('aae2a7da83ba31871f4517e218924939fc648f838b088ea1e97344484045c3f3')
 
 build() {
-  cd "$pkgname-$pkgver"
-  yarn build
-	yarn run postinstall
+    cd "${pkgname}-${pkgver}"
+
+    make all
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+    cd "${pkgname}-${pkgver}"
 
-  # Install the app
-  install -d "$pkgdir/usr/lib/$pkgname"
-	cp -r out/* "$pkgdir/usr/lib/$pkgname"
-  cp -r node_modules "$pkgdir/usr/lib/$pkgname"
+    make DESTDIR=${pkgdir} PREFIX="/usr" install
 
-  # Create a launcher script
-  install -d "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/$pkgname" <<EOF
-#!/bin/sh
-exec electron /usr/lib/$pkgname/main/index.js
-EOF
-  chmod +x "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
-  install -Dm644 "$srcdir/$pkgname-$pkgver/resources/icon.png" "$pkgdir/usr/share/pixmaps/backslash.png"
+#     # Install the app
+#     install -d "${pkgdir}/usr/lib/${_basename}"
+#     cp -r out/* "${pkgdir}/usr/lib/${_basename}"
+#     cp -r node_modules "${pkgdir}/usr/lib/${_basename}"
+#
+#     # Create a launcher script
+#     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_basename}" <<EOF
+# #!/usr/bin/sh
+#
+# exec electron /usr/lib/${_basename}/main/index.js
+# EOF
+#
+#     install -Dm644 "resources/icon.png" "${pkgdir}/usr/share/pixmaps/${_basename}.png"
 }

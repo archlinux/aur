@@ -1,0 +1,5 @@
+[backslash]
+source = "github"
+github = "backslash-app/backslash"
+use_latest_release = true
+prefix = "v"
