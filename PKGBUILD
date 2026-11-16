@@ -2,7 +2,7 @@
 
 pkgname=autocycler-bin
 _pkgname=autocycler
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Tool for combining multiple long-read assemblies into a consensus"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "https://github.com/rrwick/Autocycler/releases/download/v${pkgver}/autocycler-linux-x86_64-musl-v${pkgver}.tar.gz"
   "https://raw.githubusercontent.com/rrwick/Autocycler/v${pkgver}/LICENSE"
 )
-sha256sums=('3236a0029c4085e97c27c1f6cdf960879a95071d168b638bfc866223b1fe42a4'
+sha256sums=('9ee429adc844396f9e47eb0ab210f13c0a5e0a6ff64350fbc65adb7b3d09ba38'
             '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
 
 package() {
