@@ -14,7 +14,7 @@ _watch=(
 
 pkgname=realvnc-vnc-viewer
 pkgver=8.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='RealVNC Connect Viewer remote desktop client'
 arch=('x86_64')
 url='https://www.realvnc.com/'
