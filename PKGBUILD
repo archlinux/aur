@@ -22,11 +22,6 @@ checkdepends=(sourcemod-scripting)
 # The Steamworks SDK upstream builds with (STEAMWORKS_SDK_COMMIT of its CI), 1.32: the extension is
 # written against its API and looks up the newer interfaces it uses itself
 _sdkcommit=3aa76d12fa787eec528e404fb7d9268bb02eaf28
-# Where ./aur-packages commits reads the pins from: the SDK of the release's CI
-_pins_lookup() {
-  echo "_sdkcommit $(curl -fsSL "https://raw.githubusercontent.com/alliedmodders/SM-SteamWorks/v$pkgver/.github/workflows/ci.yml" |
-    sed -n -E 's/^ *STEAMWORKS_SDK_COMMIT: *([0-9a-f]{40}).*/\1/p')"
-}
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "SteamworksSDK-$_sdkcommit.tar.gz::https://github.com/rlabrecque/SteamworksSDK/archive/$_sdkcommit.tar.gz"
   steamworks-sdk.txt)
