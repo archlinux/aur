@@ -3,3 +3,7 @@ pkg/
 *.pkg.tar*
 *.src.tar*
 *.log
+
+# 上游下载的源码文件
+/*.AppImage
+/LICENSE.txt

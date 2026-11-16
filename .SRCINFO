@@ -1,7 +1,7 @@
 pkgbase = linuxdeploy-plugin-qt
 	pkgdesc = Qt plugin for linuxdeploy, bundling Qt resources, plugins, QML files and a lot more
 	pkgver = 1_alpha_20250213_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxdeploy/linuxdeploy-plugin-qt
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,8 @@ pkgbase = linuxdeploy-plugin-qt
 	depends = linuxdeploy
 	noextract = linuxdeploy-plugin-qt-*.AppImage
 	options = !strip
+	source = LICENSE.txt::https://github.com/linuxdeploy/linuxdeploy-plugin-qt/raw/1-alpha-20250213-1/LICENSE.txt
+	sha256sums = 1edb41ae7601854ae15d113c3700beebd0ea3ed05b85e3786a94a72bb9916091
 	source_x86_64 = linuxdeploy-plugin-qt-x86_64.AppImage::https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/1-alpha-20250213-1/linuxdeploy-plugin-qt-x86_64.AppImage
 	sha256sums_x86_64 = 15106be885c1c48a021198e7e1e9a48ce9d02a86dd0a1848f00bdbf3c1c92724
 	source_aarch64 = linuxdeploy-plugin-qt-aarch64.AppImage::https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/1-alpha-20250213-1/linuxdeploy-plugin-qt-aarch64.AppImage
