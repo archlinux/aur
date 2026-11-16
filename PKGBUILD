@@ -8,8 +8,8 @@
 
 pkgbase=linux-wsl
 install=$pkgbase.install
-pkgver=7.2.6.arch2
-pkgrel=1
+pkgver=7.3.4.arch1
+pkgrel=2
 pkgdesc='Linux (WSL without Microsoft out-of-tree patches)'
 url='https://github.com/archlinux/linux'
 arch=(
@@ -62,16 +62,16 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('039aef84f2b0994aeda3f4fcfc3d02ec9d7a9bbb9020ea264c43f446c860f606'
+sha256sums=('b11b6df8295e8e991ff040b71aaa4994a8b55caa23b6b092907f195b5840fd1f'
             'SKIP'
-            '366b1efc1a4fa6e39713ae89e006d99b9f790682358b8bc84c784754a9d70b94'
+            '0bd7c69abfa671c377989c4795bcb3662a25904d4ec8dbda73204b5689405c2f'
             'SKIP')
-sha256sums_x86_64=('c4457a12f0dc15cbfdfba8a769b5c7d41eccfad29b1d94b8eacdb962e952d9ea')
-b2sums=('bbbb558b48b65cf544fe74652437f4aab6578fbb523f4bfef401cecfed8ea94fc939dbab73f2d30216b0729165b8f4a33e23993b082ca9285f259535e7441688'
+sha256sums_x86_64=('1e4341646266d0810067680dee9e6c2ee4a7742908ba150036aece0d3202945c')
+b2sums=('9b75f615d0a03d6627d7e3db4397882d602161db13cd5efd6226e0e5c5f970d1baea676d9d01edd0f09ed0b7207b6421e6340f1b8e9bd4e8152491ddddcc9021'
         'SKIP'
-        'a7659929bcae0182e6dd55774b5217c490850669314c3c3cd1e20589f41e86618b892da130708885877f4083be0eec6578c1840a8e6a02eb871b769fe4e9b30a'
+        'b68e45a3a00532ae7719d5febc5cf487712f7290b2bba60e5bc5fdd693b7477693823f79ea8e9a27dbc66da7bf6c0cbd6cbcfb52a1b420a8d800ec64982a9d09'
         'SKIP')
-b2sums_x86_64=('586aa6c26c0ff51ebdf6df763df16b0ddb27b01bd430782e91fc7ee14ebb5b6119372bc0b749e954137eaa35ccffb2f210f612e515ece0859bbf5aa2c13e0e5a')
+b2sums_x86_64=('e2bf7e074ad39e2a30d98749030fc8a520f17d1c4b9f06ef1e0c93e1adcceb37d19919bcc2e2f1e7a5eaff33606c04107aecaccfb101098401339a8fbb92c588')
 
 # https://www.kernel.org/pub/linux/kernel/v7.x/sha256sums.asc
 
