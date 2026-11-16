@@ -1,6 +1,6 @@
 pkgbase = ttyper-git
 	pkgdesc = Terminal-based typing test
-	pkgver = 1.6.0.r2.g6d34398
+	pkgver = 1.6.0.r15.ge218bad
 	pkgrel = 1
 	url = https://github.com/max-niederman/ttyper
 	arch = x86_64

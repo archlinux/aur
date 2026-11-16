@@ -1,20 +1,22 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: Felipe BF <fprgw32 at gmail dot com>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 # Contributor: Max Niederman <max@maxniederman.com>
 
-_pkgname="ttyper"
-pkgname="${_pkgname}-git"
-pkgver=1.6.0.r2.g6d34398
+_name="ttyper"
+pkgname="${_name}-git"
+pkgver=1.6.0.r15.ge218bad
 pkgrel=1
 pkgdesc="Terminal-based typing test"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
-url="https://github.com/max-niederman/${_pkgname}"
+url="https://github.com/max-niederman/${_name}"
 license=("MIT")
+provides=("${_name}=${pkgver%%.r*}")
+conflicts=("${_name}")
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
-provides=("${_pkgname}=${pkgver%%.r*}")
-conflicts=("${_pkgname}")
-_pkgsrc="${_pkgname}"
+
+_pkgsrc="${_name}"
 source=("${_pkgsrc}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -44,7 +46,8 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
+  install -vDm755 "target/release/${_name}" "${pkgdir}/usr/bin/${_name}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_name}/README.md"
+  install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE.md"
 }
+
