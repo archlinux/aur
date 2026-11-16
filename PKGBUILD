@@ -1,16 +1,17 @@
 # Maintainer: Agil Mammadov <mammadovagil@proton.me>
+# Maintainer: Kevin Deldycke <kevin at deldycke dot com>>
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=meta-package-manager
 _pkgname=${pkgname//-/_}
 pkgver=8.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A wrapper around all package managers'
-url='https://kdeldycke.github.io/meta-package-manager/'
+url='https://mpm.run/'
 makedepends=(python-build python-installer python-uv-build)
-depends=(python python-boltons python-click-extra python-extra-platforms python-packageurl python-tomli-w python-xmltodict)
-checkdepends=(python-pytest python-pytest-cov python-pytest-randomly python-pytest-xdist)
+depends=(python python-click-extra python-extra-platforms python-tomli-w)
+checkdepends=(python-pytest python-pytest-cov python-pytest-randomly python-pytest-xdist python-yaml)
 optdepends=('apt: support for apt packages'
             'rust: support for Rust packages'
             'composer: support for PHP composer packages'
@@ -27,6 +28,7 @@ optdepends=('apt: support for apt packages'
             'python-pipx: support for Python pipx packages'
             'python-cyclonedx-lib: SBOM CycloneDX output (mpm sbom)'
             'python-spdx-tools: SBOM SPDX output (mpm sbom)'
+            'python-packageurl: SBOM output (mpm sbom)'
             'snapd: support for Snap packages'
             'steamcmd: support for Steam games'
             'uv: support for Python packages'
@@ -36,8 +38,8 @@ optdepends=('apt: support for apt packages'
             'zypper: support for RPM packages')
 license=('GPL-2.0-or-later')
 arch=('any')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/79/ce/1b608ea6ce77d657fd1dc40681cec7dee6deceb5cb83d19be6a0fdd6881e/meta_package_manager-8.0.0.tar.gz")
-sha512sums=('47c2e85f40378c80b81229b79c484119d0fa61c1edf8ff25a2d62da4e46aac3d01b8dd258503496f60a50f46dfee86bf546c136be95fe52852a5dca0ff0face5')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('4436cf879b033e9bbc19b5021a33b9c6b02f6b10fb5658726e2e6cfedc9d7c41b7bfb7a35cd8bde0963e6e4147aee920b312c52b4115344db5a4d58c321cae47')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
@@ -46,7 +48,9 @@ build() {
 
 check() {
     cd "$srcdir/$_pkgname-$pkgver"
-    pytest -m "not integration"
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    test-env/bin/python -m pytest -m "not integration"
 }
 
 package() {
