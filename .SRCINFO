@@ -1,6 +1,6 @@
 pkgbase = penates
 	pkgdesc = Turn websites into desktop apps with their own window, icon and login
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/Natetronn/penates
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = penates
 	optdepends = xdg-utils: open links and downloads in your browser
 	conflicts = penates-bin
 	options = !lto
-	source = penates-0.1.2.tar.gz::https://github.com/Natetronn/penates/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 451edffb94791f12d90e290abc050fb6e3c6d9601b3814a9ce79ba2439d8ec55
+	source = penates-0.1.3.tar.gz::https://github.com/Natetronn/penates/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 6916edf6f4b92f5b03f9fd1301a73a60b75a3019af028f9892032b5c502a8536
 
 pkgname = penates
