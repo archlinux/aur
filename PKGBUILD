@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=peersky-browser-bin
 _pkgname='Peersky Browser'
-pkgver=1.0.1
+pkgver=1.0.2
 _electronversion=43
 pkgrel=1
 pkgdesc="A local-first, peer-to-peer web browser for a surveillance-free internet."
@@ -32,8 +32,8 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/downloa
 sha256sums=('4a67a49c9cb2c0a80dcb67bb35bb7c10691b1460200398866df24cd0b8e00cab'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
-sha256sums_aarch64=('3906384158b4e31021823f85520bc760594bdee6dcd87da87c0854e0e038b232')
-sha256sums_x86_64=('69cf747278acd03ca14501293700821dc536b061d962b6cec9ab57fac29849fe')
+sha256sums_aarch64=('3f882b13b7f48de056ae8e9fd969db1db153e034ed16aac8aa3b56f01d601dcf')
+sha256sums_x86_64=('fb4eca4a7413751ee3caf5418ba93ee9a36f1607b22be710cb22c45124ef914f')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
