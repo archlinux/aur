@@ -1,27 +1,48 @@
-# Maintainer: Borhaneddine GUEMIDI <guemidiborhane at gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Borhaneddine GUEMIDI <guemidiborhane at gmail.com>
 
-_pkgname="tufw"
-pkgname="$_pkgname-bin"
-pkgver=0.2.7
+_gitauthor=peltho
+_gitname=tufw
+_appname=${_gitname}
+pkgname=${_appname}-bin
+pkgdesc="Terminal UI for ufw"
+
+pkgver=0.2.8
 pkgrel=1
-pkgdesc='Terminal UI for ufw'
-url='https://github.com/peltho/tufw'
-arch=('aarch64' 'i686' 'x86_64')
+_gitversion=v${pkgver}
+
+arch=('x86_64' 'i686' 'aarch64')
+_barch=('linux_arm64' 'linux_386' 'linux_amd64')
+
+_ghurl="https://github.com/${_gitauthor}/${_gitname}"
+_ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
+url=${_ghurl}
+
 license=('MIT')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+
+provides=("${_appname}")
+conflicts=("${pkgname%-bin}")
+
 depends=('ufw')
 
-source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
-source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_386.tar.gz")
-source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
+options=('!strip')
 
-sha256sums_aarch64=('95f9949505b6686297b5218f95fcfc5cfadaf46ae1dd74d5595d81877f3c8742')
-sha256sums_i686=('352e1f4d1d055c69036d3659c7f7d0577b789228e3b9025d4251000cefa05471')
-sha256sums_x86_64=('fba191536cc928b0482de67784a821d3f1af3f388a8df258c749ac36d5614f3f')
+source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE.txt")
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
+source_i686=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
+source_aarch64=("${_appname}-${arch[2]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[2]}.tar.gz")
+sha256sums=('ec499bd869094e1f570e3481d6f59c2866a16358193eaa2f256e33aab60c16d3')
+sha256sums_x86_64=('4c556333f3c3bbecf259a245abf895f3dc2a2d6abc330ee99476e043a1f805f8')
+sha256sums_i686=('e47ad3a4fbc9f73da577a6290da744b3bc5147d6625863719e4536aac8954081')
+sha256sums_aarch64=('e4e4efcd64649e0e5ce69c8ec61b6db3372a6e3c85f17a245bf18977655c1fe2')
+
 
 package() {
-  install -Dm755 tufw "${pkgdir}/usr/bin/tufw"
-  mkdir -p "${pkgdir}/usr/share/doc/${_pkgname}"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/"
+	cd "${srcdir}/" || exit
+
+	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

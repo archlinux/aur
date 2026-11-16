@@ -1,0 +1,5 @@
+[tufw-bin]
+source = "github"
+github = "peltho/tufw"
+use_latest_release = true
+prefix = "v"
