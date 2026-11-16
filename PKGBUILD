@@ -165,75 +165,86 @@ prepare() {
 
   # --scripting-only builds SafetyHook as well, which only the extensions use and which doesn't
   # support aarch64, and doesn't allow aarch64 on Linux, only on macOS
-  # (https://github.com/alliedmodders/sourcemod/pull/2608)
+  # upstream: pending alliedmodders/sourcemod#2608
   patch -Np1 -i "$srcdir/scripting-only.patch"
   # The MySQL extension with MariaDB Connector/C, linked dynamically, instead of a static MySQL 5.5
   # (without the latter's internal headers)
+  # upstream: none, the system's library instead of a bundled one
   patch -Np1 -i "$srcdir/mysql-mariadb.patch"
   # The PostgreSQL extension with the system's libpq, linked dynamically, instead of a static 9.6
+  # upstream: none, the system's library instead of a bundled one
   patch -Np1 -i "$srcdir/pgsql-libpq.patch"
   # The regex extension with the system's PCRE2, linked dynamically, instead of a static PCRE 8.44
   # (PCRE 1, end of life): translates regex.inc's PCRE flags and error codes. Without PCRE's limit of
   # 20 groups and matches, empty matches of MatchAll advance, and GetSubString keeps to maxlen.
+  # upstream: workaround alliedmodders/sourcemod#2570
   patch -Np1 -i "$srcdir/regex-pcre2.patch"
   # The webternet extension, which the updater downloads with, with the system's libcurl, linked
   # dynamically, instead of a static curl 7.19 without TLS; the update server over HTTPS
+  # upstream: none, the system's library instead of a bundled one
   patch -Np1 -i "$srcdir/webternet-curl.patch"
   # The SQLite extension with the system's SQLite 3, linked dynamically, instead of the bundled
   # amalgamation (3.38); SourcePawn (the VM and the compiler) with the system's zlib
+  # upstream: none, the system's library instead of a bundled one
   patch -Np1 -i "$srcdir/sqlite-system.patch"
+  # upstream: none, the system's library instead of a bundled one
   patch -Np1 -i "$srcdir/sourcepawn-zlib.patch"
   # spcomp's __DATE__ and __TIME__, which every plugin has in its version info (core.inc), from
   # SOURCE_DATE_EPOCH in UTC if it's set, so that plugins build reproducibly
   # (https://github.com/alliedmodders/sourcepawn/pull/1204, merged for SourcePawn 1.13 as
   # alliedmodders/sourcepawn@36252599)
+  # upstream: pending alliedmodders/sourcepawn#1204
   patch -Np1 -i "$srcdir/sourcepawn-source-date-epoch.patch"
   # spshell and the verifier, which include the VM's environment.h, with the VM's SP_HAS_JIT, so
   # that its Environment class is the same in them as in the VM library they link (GCC's LTO
   # reports the ODR violation). Upstream fixed it for 1.13 (alliedmodders/sourcepawn@bfdd959).
+  # upstream: backport alliedmodders/sourcepawn@bfdd959
   patch -Np1 -i "$srcdir/sourcepawn-shell-jit-define.patch"
   # The JIT's writes of displacements and addresses into its code buffer, which are rarely aligned,
   # with memcpy instead of a cast to an int32_t or pointer, and no memcpy from a null pointer for a
   # function without any instructions: both undefined behaviour, which UBSan reports on every start
   # (memcpy compiles to the same moves)
-  # (https://github.com/alliedmodders/sourcepawn/pull/1214)
+  # upstream: pending alliedmodders/sourcepawn#1214
   patch -Np1 -i "$srcdir/sourcepawn-jit-unaligned.patch"
   # spcomp's number literals and the negation of constants in unsigned arithmetic, so that they wrap
   # around like the VM's (0xFFFFFFFF, -(-2147483648)) instead of overflowing, which is undefined.
   # SourcePawn 1.13's compiler doesn't have this code anymore.
+  # upstream: none, SourcePawn 1.13's compiler no longer has this code
   patch -Np1 -i "$srcdir/sourcepawn-compiler-overflow.patch"
   # spcomp's byte buffer, which it writes .smx files with, stores values with memcpy instead of
   # unaligned casts, and passes no null pointer to memcpy for an empty section (no public
   # variables, no natives): both undefined behaviour, which UBSan reports in SourcePawn's tests
+  # upstream: none, SourcePawn 1.12's compiler; master's is still to be proposed
   patch -Np1 -i "$srcdir/sourcepawn-byte-buffer.patch"
   # The replacement operator delete of extensions and logic.so declared noexcept, like the
   # standard's (implicitly so already; GCC warns about the different exception specifier)
-  # (https://github.com/alliedmodders/sourcemod/pull/2607)
+  # upstream: pending alliedmodders/sourcemod#2607
   patch -Np1 -i "$srcdir/sourcemod-delete-noexcept.patch"
   # No unaligned accesses, which are undefined behaviour and which UBSan reports on every start: the
   # memory tables (BaseMemTable, behind the phrases, the admin cache and others) align their blocks
   # like malloc does, as callers keep structures in them; the string tables' hash reads its bytes one
   # by one; the JIT helpers of extensions (JitWriter) write with memcpy
-  # (https://github.com/alliedmodders/sourcemod/pull/2612)
+  # upstream: pending alliedmodders/sourcemod#2612
   patch -Np1 -i "$srcdir/sourcemod-unaligned-access.patch"
   # AMTL's integer hashes (HashInt32, HashInt64, behind every hash table with integer or pointer keys)
   # computed in unsigned arithmetic: in signed, their multiplications and shifts overflow, which is
   # undefined. Clang with LTO folds such a hash differently where a key is a constant, so a table
   # doesn't find an entry it added: DHooks never called detours' pre-callbacks (CHook's handlers by
   # HOOKTYPE_PRE). The hash values change, which only matters within a process.
-  # (https://github.com/alliedmodders/amtl/pull/142)
+  # upstream: pending alliedmodders/amtl#142
   patch -Np1 -d public/amtl -i "$srcdir/amtl-hash-unsigned.patch"
   # Gamedata of the engine's library ("library" "engine") on some games, e.g. Day of Infamy: their
   # dedicated servers' EXECUTABLE_PATH is the server's root, not bin/ with engine_srv.so, so SourceMod
   # searches bin/ under it as well.
-  # (https://github.com/alliedmodders/sourcemod/pull/2611)
+  # upstream: pending alliedmodders/sourcemod#2611
   patch -Np1 -i "$srcdir/sourcemod-gamebin-executable-path.patch"
   # KvDeleteKey and KvGetNameSymbol at the root of a KeyValues: they did nothing there, as they checked
   # for a parent the root doesn't need. From 1.13.
-  # (https://github.com/alliedmodders/sourcemod/pull/2388)
+  # upstream: backport alliedmodders/sourcemod#2388
   patch -Np1 -i "$srcdir/sourcemod-kv-delete-root.patch"
   # The GeoIP extension with the system's libmaxminddb, linked dynamically, instead of the bundled
   # 1.5.2
+  # upstream: none, the system's library instead of a bundled one
   patch -Np1 -i "$srcdir/geoip-libmaxminddb.patch"
   # Without the gamedata updates from SourceMod's update server (the updater extension isn't loaded):
   # a newer SourceMod comes as a whole with this package
@@ -253,11 +264,12 @@ prepare() {
   # SafetyHook's inline hooks with the amalgamated Zydis.h of the Zydis.c built with it, rather than
   # one of the system's include path: their ZydisDecoder differs between Zydis 4.0 and 4.1, and the
   # decoder overwrote SafetyHook's stack, which crashed SourceMod 1.13's SDKTools at start
-  # (https://github.com/alliedmodders/safetyhook/pull/12)
+  # upstream: pending alliedmodders/safetyhook#12
   patch -Np1 -d public/safetyhook -i "$srcdir/safetyhook-zydis-header.patch"
   # The rel32 of a call to a PIC thunk, at the start of a hooked function, read and written with
   # byte copies instead of unaligned int32_t accesses, which are undefined behaviour. SafetyHook's
   # main rewrote it without them (alliedmodders/safetyhook@e519cea), which SourceMod doesn't use yet.
+  # upstream: backport alliedmodders/safetyhook@e519cea
   patch -Np1 -d public/safetyhook -i "$srcdir/safetyhook-thunk-unaligned.patch"
 
   # SafetyHook's Zydis, amalgamated from Zydis and Zycore at the release's commits by Zydis's
@@ -270,6 +282,7 @@ prepare() {
   # The script names each source file with its path relative to Zydis's rather than its absolute
   # one, so the source doesn't depend on where it was built, and its pattern as a raw string, which
   # Python warns about otherwise (https://github.com/zyantific/zydis/pull/661)
+  # upstream: pending zyantific/zydis#661
   patch -Np1 -i "$srcdir/zydis-amalgamate-paths.patch"
   python assets/amalgamate.py >/dev/null
   local _zydis="$srcdir/sourcemod/public/safetyhook/zydis"
