@@ -1,6 +1,6 @@
 pkgbase = lolka-x-bin
 	pkgdesc = Native desktop client for lolka.app - chat and voice with friends
-	pkgver = 2.0.8
+	pkgver = 2.0.11
 	pkgrel = 1
 	url = https://lolka.app
 	arch = x86_64
@@ -34,10 +34,10 @@ pkgbase = lolka-x-bin
 	conflicts = lolka-x
 	conflicts = lolka
 	conflicts = lolka-bin
-	noextract = lolka-x-2.0.8-x86_64.pkg.tar.zst
+	noextract = lolka-x-2.0.11-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = lolka-x-2.0.8-x86_64.pkg.tar.zst::https://cdn.lolka.app/desktop/linux/2.0.8/lolka-x-bin-2.0.8-1-x86_64.pkg.tar.zst
-	sha512sums = 8b612ead18316cab9ffa2914c63b7fe404c8647a11b2468f4bf9f1456042f0eb7d9ec3b55b8b7e3b38b843d6d451e397fc454ca3428e05a6ec37ff53cb28caad
+	source = lolka-x-2.0.11-x86_64.pkg.tar.zst::https://cdn.lolka.app/desktop/linux/2.0.11/lolka-x-bin-2.0.11-1-x86_64.pkg.tar.zst
+	sha512sums = 632383034ad9d420022b7a99eb4b53d7b9ae86ddf19981ea5267421280f50357be23fce2c26aefad19d1573330c6cbbc79f66bc5c9cf1ea9efbaf9e89490007d
 
 pkgname = lolka-x-bin
