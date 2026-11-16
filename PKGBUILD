@@ -1,6 +1,6 @@
 # Maintainer: RamazanBerk20 <119219364+RamazanBerk20 at users dot noreply dot github dot com>
 pkgname=heaphook-git
-pkgver=1.0.0rc1.r1.g3e5f3ea
+pkgver=1.0.0rc2.r0.g518f9cb
 pkgrel=1
 pkgdesc="Memory scanner and debugger in the spirit of Cheat Engine (git version)"
 arch=('x86_64')
