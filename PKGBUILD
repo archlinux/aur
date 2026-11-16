@@ -1,7 +1,7 @@
 # Maintainer: RamazanBerk20 <119219364+RamazanBerk20 at users dot noreply dot github dot com>
 pkgname=heaphook-bin
-pkgver=1.0.0rc1
-_tag=1.0.0-rc.1
+pkgver=1.0.0rc2
+_tag=1.0.0-rc.2
 pkgrel=1
 pkgdesc="Memory scanner and debugger in the spirit of Cheat Engine (prebuilt)"
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=("$url/releases/download/v$_tag/heaphook-$_tag-linux-x86_64.deb"
         "hh-server-$_tag::$url/releases/download/v$_tag/hh-server-$_tag-linux-x86_64"
         "LICENSE-$_tag::https://raw.githubusercontent.com/RamazanBerk20/HeapHook/v$_tag/LICENSE")
 noextract=("heaphook-$_tag-linux-x86_64.deb")
-sha256sums=('d44e98eae003ddf3bb6877fd70d59cc69b9dc471dd48b009b48ac89ce793753b'
-            'aa62a5e3507d65450a4bde622af15b28bd67aee18c5bc130d70acc28ed43690b'
+sha256sums=('dbfa6219f63feec909f61dbdfb5944cd0d744bf6bd6ededdc7b2c7f4becc2a73'
+            'bb0cf884c68b8718d5aa869de7c2ce013cfc933b6b91f423d62e72b233e90840'
             '074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff')
 
 package() {
