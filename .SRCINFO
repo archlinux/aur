@@ -1,6 +1,6 @@
 pkgbase = mtr085
 	pkgdesc = Work-in-progress mtr v0.85 fork for testing extra features
-	pkgver = 0.85.r339.c18b187
+	pkgver = 0.85.r347.76e53c4
 	pkgrel = 1
 	url = https://github.com/yvs2014/mtr085
 	arch = x86_64
