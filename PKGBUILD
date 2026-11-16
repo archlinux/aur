@@ -11,8 +11,8 @@ arch=(x86_64 aarch64)
 url='https://github.com/igalmarino/pila'
 license=(GPL-3.0-or-later)
 # The libraries Pila links (readelf -d), EGL (loaded at runtime through
-# libglvnd), Xwayland, which Pila starts for X11 apps, and bash for
-# pila-session and pila-report.
+# libglvnd) and bash for pila-session and pila-report. Xwayland, which Pila
+# starts for X11 apps, is optional: without it, there are none.
 depends=(
     bash
     glibc
@@ -23,10 +23,10 @@ depends=(
     mesa
     seatd
     systemd-libs
-    xorg-xwayland
 )
 makedepends=(cargo git pkgconf)
 optdepends=(
+    'xorg-xwayland: X11 apps (games, older programs)'
     'kitty: the default terminal (or foot, alacritty, ...)'
     'xdg-desktop-portal-wlr: screen sharing'
     'grim: screenshots'
