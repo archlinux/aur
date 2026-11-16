@@ -13,7 +13,7 @@ pkgname=genoffice-electron
 _pkgname=genoffice
 _dist_name="GenOffice"
 _electronversion=43
-pkgver=0.12.446
+pkgver=0.13.18
 pkgrel=1
 pkgdesc="Free, open-source AI office suite by Genspark — docs, sheets, slides, PDF and Markdown (system Electron)"
 arch=('x86_64')
@@ -28,8 +28,8 @@ options=('!strip' '!emptydirs')
 source_x86_64=("https://github.com/genspark-ai/genoffice/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 source=("${_pkgname}.sh")
 
-sha256sums=('67b5d78fb2ecdc193068957df2cf90cd96352f854b7dbf1bd882e69fbe8907b6')
-sha256sums_x86_64=('1cf5b88e16f8edecfb2f26ffded2898bf623c8ce7c9ebeb8392e3c2a94fa185a')
+sha256sums=('bffa2b6d0873567ad1a911e775e9a7edc062de4f7caa9e5ef6593976aeec858f')
+sha256sums_x86_64=('29766e49a73a18444e939200fbff9b5acc38d6f24d606f41a7a1b7b7bfa0ba88')
 
 prepare() {
     # 解压 deb 数据归档
@@ -37,6 +37,9 @@ prepare() {
         bsdtar -xf "${srcdir}/data.tar.xz"
     elif [ -f "${srcdir}/data.tar.zst" ]; then
         bsdtar -xf "${srcdir}/data.tar.zst"
+    else
+        error "未找到 deb 的 data.tar.xz/data.tar.zst"
+        return 1
     fi
 
     local _res_path="/usr/lib/${_pkgname}"

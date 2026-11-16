@@ -37,10 +37,15 @@ if [[ "${_WAYLAND_OPTION}" == true ]]; then
     flags+=("--enable-features=UseOzonePlatform,WaylandWindowDecorations,VaapiVideoDecodeLinuxGL" "--ozone-platform=wayland")
 fi
 
+_opts=()
+if [[ -n "${_OPTIONS}" ]]; then
+    _opts=("${_OPTIONS}")
+fi
+
 cd "${_APPDIR}"
 
 if [[ "${EUID}" -ne 0 ]] || [[ "${ELECTRON_RUN_AS_NODE}" ]]; then
-    exec electron@electronversion@ "${_RUNNAME}" "${_OPTIONS}" "${flags[@]}" "$@"
+    exec electron@electronversion@ "${_RUNNAME}" "${_opts[@]}" "${flags[@]}" "$@"
 else
-    exec electron@electronversion@ "${_RUNNAME}" "${_OPTIONS}" --no-sandbox "${flags[@]}" "$@"
+    exec electron@electronversion@ "${_RUNNAME}" "${_opts[@]}" --no-sandbox "${flags[@]}" "$@"
 fi
