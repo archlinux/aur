@@ -28,6 +28,22 @@ sha512sums=('fff5fdff9affeb9172611082a857effbe234158a0e64ca97d5fcf99a31ca742fa76
 b2sums=('40555daef5ebad0070a1dbb62a172509ce2cf6274853368638cf03bc00dd4a4f8e6eb2edca4b839a8d526a2e298e6feaceb3c8419330b0515c704a0fb1bc234e'
   '7f2cda90be668caed1410eaa5c7df29ca3eea644fac278f6740b47ec0116f10e6bd3478f391ced4ad9671897d27196fa49c8a7cf910b464b712292c9fc629fd5')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -123,8 +139,8 @@ prepare() {
   # The submodule's empty folder, or the link of a previous build, which -n replaces
   [[ -L ext/MessagePack ]] || rmdir ext/MessagePack
   ln -sfn "$srcdir/MessagePack-CSharp-$_messagepackcommit" ext/MessagePack
-  # Upstream pins a newer feature band of the .NET SDK, which isn't needed
-  jq 'del(.sdk)' global.json >global.json.new
+  # Upstream pins a newer feature band of the .NET SDK, which isn't needed: the one we build with
+  jq --arg sdk "$(_dotnet_sdk)" '.sdk = { version: $sdk, rollForward: "latestPatch" }' global.json >global.json.new
   mv global.json.new global.json
   # Nerdbank.GitVersioning needs git, see _dotnet_env for the versions
   sed -i '/GlobalPackageReference Include="Nerdbank.GitVersioning"/d' Directory.Packages.props
