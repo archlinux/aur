@@ -5,7 +5,7 @@
 # Contributor: Panagiotis Mavrogiorgos <pmav99@gmail.com>
 
 pkgname=nuitka
-pkgver=4.3.4
+pkgver=4.3.5
 pkgrel=1
 pkgdesc='Python compiler with full language support and CPython compatibility'
 arch=(any)
@@ -45,7 +45,7 @@ source=(
   "https://github.com/Nuitka/Nuitka/archive/refs/tags/${pkgver}.tar.gz"
   https://patch-diff.githubusercontent.com/raw/Nuitka/Nuitka/pull/3938.patch
 )
-sha256sums=('d92881de46e07c1a7d0a778d90f143a06309412febcdbda2a83925492ea28b31'
+sha256sums=('7ada180eba319305c6e4fc4502876ba117b1c17929e80bb880dd4e83d2963680'
             '69c0a2c8e5b73cb78ae2650c0f1236a10d732481da363fd2f49a847e76c8c0d0')
 
 prepare() {
