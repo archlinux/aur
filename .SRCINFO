@@ -4,12 +4,15 @@ pkgbase = wuyou-toolkit
 	pkgrel = 1
 	url = https://github.com/duanluan/wuyou-toolkit-releases
 	arch = x86_64
+	arch = aarch64
 	license = NOASSERTION
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	provides = wuyou-toolkit-bin=0.6.0
 	options = !strip
-	source = wuyou-toolkit_0.6.0_amd64.deb::https://github.com/duanluan/wuyou-toolkit-releases/releases/download/v0.6.0/wuyou-toolkit_0.6.0_amd64.deb
-	sha256sums = c37d7091cf707066002d2832c30d6b63c7083c5994a64b7caa0d0f6bf8252aaf
+	source_x86_64 = wuyou-toolkit_0.6.0_amd64.deb::https://github.com/duanluan/wuyou-toolkit-releases/releases/download/v0.6.0/wuyou-toolkit_0.6.0_amd64.deb
+	sha256sums_x86_64 = c37d7091cf707066002d2832c30d6b63c7083c5994a64b7caa0d0f6bf8252aaf
+	source_aarch64 = wuyou-toolkit_0.6.0_arm64.deb::https://github.com/duanluan/wuyou-toolkit-releases/releases/download/v0.6.0/wuyou-toolkit_0.6.0_arm64.deb
+	sha256sums_aarch64 = c201808657e6f91fcc66c9cc177a2036c03d256c7e1be1082e4d8264640da4af
 
 pkgname = wuyou-toolkit
