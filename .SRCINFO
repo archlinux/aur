@@ -1,25 +1,23 @@
 pkgbase = python-mammoth
-	pkgdesc = Convert Word documents (.docx files) to HTML
-	pkgver = 1.11.0
+	pkgdesc = Convert DOCX documents to clean HTML
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/mwilliamson/python-mammoth
 	arch = any
-	license = MIT
-	checkdepends = python-funk
+	license = BSD-2-Clause
 	checkdepends = python-pytest
+	checkdepends = python-funk
 	checkdepends = python-precisely
-	checkdepends = python-pyflakes
 	checkdepends = python-spur
 	checkdepends = python-tempman
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	depends = python-cobble
-	provides = mammoth
-	conflicts = mammoth
-	source = python-mammoth-1.11.0.tar.gz::https://github.com/mwilliamson/python-mammoth/archive/refs/tags/1.11.0.tar.gz
-	sha256sums = c89a093800e89be86e4c4d635bccf616f62e94072c8036c730a67f042f888429
+	source = mammoth::git+https://github.com/mwilliamson/python-mammoth.git#tag=1.13.0
+	sha256sums = d1fdfa56d939e6662ca1ba4f3f6cb5b063ed83e89f488ce3fd32ebaa533f1a6c
 
 pkgname = python-mammoth

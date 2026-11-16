@@ -1,65 +1,61 @@
-# Maintainer: envolution
-# shellcheck shell=bash disable=SC2034,SC2154
+# Maintainer: qubeck <qubeck (AT) disroot (DOT) org>
+# Contributor: envolution
 
 pkgname=python-mammoth
-pkgver=1.11.0
+_name=${pkgname#python-}
+pkgver=1.13.0
 pkgrel=1
-pkgdesc="Convert Word documents (.docx files) to HTML"
+pkgdesc='Convert DOCX documents to clean HTML'
 arch=(any)
-url="https://github.com/mwilliamson/python-mammoth"
-license=(MIT)
-provides=(mammoth)
-conflicts=(mammoth)
+url='https://github.com/mwilliamson/python-mammoth'
+license=(BSD-2-Clause)
 depends=(
   python
   python-cobble
 )
 makedepends=(
+  git
   python-build
   python-installer
   python-setuptools
   python-wheel
 )
 checkdepends=(
-  python-funk
   python-pytest
+  python-funk
   python-precisely
-  python-pyflakes
   python-spur
   python-tempman
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mwilliamson/python-mammoth/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c89a093800e89be86e4c4d635bccf616f62e94072c8036c730a67f042f888429')
+source=("${_name}::git+${url}.git#tag=${pkgver}")
+sha256sums=('d1fdfa56d939e6662ca1ba4f3f6cb5b063ed83e89f488ce3fd32ebaa533f1a6c')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  cp README.md README
+  cd "${_name}"
 
+  ln -s README.md README
 }
+
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${_name}"
+
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$pkgname-$pkgver"
-  # wrap the cli portion to avoid needing to install just for testing
-  mkdir -p "$srcdir/fake-bin"
-  cat > "$srcdir/fake-bin/mammoth" <<EOF
-#!/usr/bin/env python3
-from mammoth.cli import main
-main()
-EOF
-  chmod +x "$srcdir/fake-bin/mammoth"
-  export PATH="$srcdir/fake-bin:$PATH"
-  PYTHONPATH="$PWD" python -m pytest
+  cd "${_name}"
+
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  PATH="${PWD}/test-env/bin:${PATH}" \
+    test-env/bin/python -P -m pytest
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${_name}"
 
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 LICENSE \
+    -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-# vim:set ts=2 sw=2 et:
