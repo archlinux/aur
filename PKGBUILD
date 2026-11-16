@@ -2,7 +2,7 @@
 _appname=weread
 pkgname="${_appname}-pake"
 _pkgname=WeRead
-pkgver=3.17.6
+pkgver=3.19.0
 pkgrel=1
 pkgdesc="Use Pake to package WeRead.微信读书是广州腾讯科技有限公司推出的阅读软件.为用户推荐合适的书籍，并可查看微信好友的读书动态、与好友讨论正在阅读的书籍等."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${pkgver}/LICENSE"
 )
-sha256sums=('3bbaa3b771fe1dda5008e129087c2f59f1515f0f715d74b820205605cb7cf010'
+sha256sums=('70a0ae24c861b42fb0920bdb441d88d19e76da5f0898c0b804b6e9089cbaceb9'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
