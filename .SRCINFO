@@ -1,0 +1,14 @@
+pkgbase = kwinctl
+	pkgdesc = List and control KDE Plasma 6 windows from the command line
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dayvster/kwinctl
+	arch = x86_64
+	license = MIT
+	makedepends = zig>=0.17
+	depends = kwin
+	options = !debug
+	source = kwinctl-0.1.0.tar.gz::https://github.com/dayvster/kwinctl/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = f5d7d39af5d7b565a62deae4729526cef53cfc5ef3378e4188807dc244b425ef
+
+pkgname = kwinctl
