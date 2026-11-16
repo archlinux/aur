@@ -1,0 +1,104 @@
+pkgbase = omarchy-broadcast-git
+	pkgdesc = GPU virtual camera daemon for v4l2loopback, with a D-Bus API and a CLI
+	pkgver = 0.55.1
+	pkgrel = 1
+	url = https://github.com/rsd/omarchy-broadcast
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	license = BSD-3-Clause
+	license = ISC
+	checkdepends = dbus
+	checkdepends = pipewire
+	makedepends = cargo
+	makedepends = git
+	makedepends = clang
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = gst-plugins-bad-libs
+	depends = cuda
+	depends = nvidia-utils
+	depends = V4L2LOOPBACK-MODULE
+	depends = libpipewire
+	depends = alsa-lib
+	optdepends = omarchy: the Omarchy shell, for the bar widget in the separate omarchy-broadcast-plugin repository
+	optdepends = v4l2loopback-utils: runtime-only loopback setup without modprobe.d
+	optdepends = pipewire: the optional PipeWire camera node ([pipewire] enabled in config.toml), the optional noise-removed microphone (ADR 0014) and the microphone host with its audio worker (omarchy-broadcast-mic.service, omarchy-broadcast-audiod)
+	optdepends = noise-suppression-for-voice: RNNoise engine for the noise-removed microphone (default)
+	optdepends = deepfilternet-ladspa: DeepFilterNet engine for the noise-removed microphone
+	optdepends = omarchy-broadcast-maxine-vfx-git: NVIDIA Maxine video effects module (background blur and replacement, video noise removal)
+	optdepends = omarchy-broadcast-maxine-ar-git: NVIDIA Maxine AR effects module (eye contact)
+	optdepends = omarchy-broadcast-maxine-afx-git: NVIDIA Maxine audio effects module for the microphone
+	optdepends = omarchy-broadcast-onnx-git: open-model cut-out module (background blur and replacement with ONNX Runtime)
+	optdepends = gst-plugins-bad: WebP background and away images (webpdec)
+	optdepends = ffmpeg: animated imports and posters of video backgrounds
+	options = !lto
+	source = omarchy-broadcast::git+https://github.com/rsd/omarchy-broadcast.git
+	sha256sums = SKIP
+
+pkgname = omarchy-broadcast-git
+	provides = omarchy-broadcast
+	provides = omarchy-broadcast-module-abi=1.6
+	conflicts = omarchy-broadcast
+
+pkgname = omarchy-broadcast-maxine-vfx-git
+	pkgdesc = NVIDIA Maxine video effects module for omarchy-broadcast: background blur and replacement, video noise removal
+	license = MIT OR Apache-2.0
+	license = ISC
+	depends = omarchy-broadcast-module-abi>=1.6
+	depends = omarchy-broadcast-module-abi<2
+	depends = libgcc
+	depends = glibc
+	depends = maxine-vfx-sdk-local
+	optdepends = 
+	provides = omarchy-broadcast-maxine-vfx
+	conflicts = omarchy-broadcast-maxine-vfx
+
+pkgname = omarchy-broadcast-maxine-ar-git
+	pkgdesc = NVIDIA Maxine AR effects module for omarchy-broadcast: eye contact
+	license = MIT OR Apache-2.0
+	license = ISC
+	depends = omarchy-broadcast-module-abi>=1.6
+	depends = omarchy-broadcast-module-abi<2
+	depends = libgcc
+	depends = glibc
+	depends = maxine-ar-sdk-local
+	optdepends = 
+	provides = omarchy-broadcast-maxine-ar
+	conflicts = omarchy-broadcast-maxine-ar
+
+pkgname = omarchy-broadcast-maxine-afx-git
+	pkgdesc = NVIDIA Maxine audio effects module for the omarchy-broadcast microphone: noise and room echo removal, studio voice
+	license = MIT OR Apache-2.0
+	license = ISC
+	depends = omarchy-broadcast-module-abi>=1.6
+	depends = omarchy-broadcast-module-abi<2
+	depends = libgcc
+	depends = glibc
+	depends = maxine-afx-sdk-local
+	optdepends = 
+	provides = omarchy-broadcast-maxine-afx
+	conflicts = omarchy-broadcast-maxine-afx
+
+pkgname = omarchy-broadcast-onnx-git
+	pkgdesc = Open-model cut-out (ONNX Runtime) module for omarchy-broadcast: background blur and replacement
+	license = MIT OR Apache-2.0
+	license = ISC
+	depends = omarchy-broadcast-module-abi>=1.6
+	depends = omarchy-broadcast-module-abi<2
+	depends = libgcc
+	depends = glibc
+	depends = onnxruntime>=1.29
+	depends = omarchy-onnx-model-mediapipe-landscape
+	optdepends = omarchy-onnx-model-pphumanseg-v2-mobile: the PP-HumanSeg v2 mobile model
+	optdepends = omarchy-onnx-model-pphumanseg-v2-lite: the PP-HumanSeg v2 lite model
+	optdepends = omarchy-onnx-model-modnet: the MODNet model
+	optdepends = onnxruntime-core: ONNX Runtime with the CPU engine (or any Arch onnxruntime-* variant)
+	optdepends = onnxruntime-provider-cuda: the CUDA engine (onnxruntime-provider-cuda13-<preset> from omarchy-onnxruntime; or Arch onnxruntime-opt-cuda, with cudnn)
+	optdepends = onnxruntime-provider-tensorrt: the TensorRT engine (omarchy-onnxruntime)
+	optdepends = onnxruntime-provider-openvino: the OpenVINO engines (Intel CPU, GPU, NPU; omarchy-onnxruntime)
+	provides = omarchy-broadcast-onnx
+	conflicts = omarchy-broadcast-onnx
