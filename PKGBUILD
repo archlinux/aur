@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph.fink@gmail.com>
 
 pkgname=python-types-mock
@@ -7,7 +10,7 @@ pkgdesc="Typing stubs for mock"
 url="https://github.com/python/typeshed"
 
 pkgver=5.2.0.20250924
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 license=("Apache-2.0")
@@ -23,7 +26,9 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('7ab500eaaa3244d5144967c46f59a7971884001689ad683acdfe0fcc7d8a9f8c17dc7b5282d20927e2e038c548c6035ff02a7392ff5e1a4d96708d55d172ca8b')
+b2sums=(
+    "7ab500eaaa3244d5144967c46f59a7971884001689ad683acdfe0fcc7d8a9f8c17dc7b5282d20927e2e038c548c6035ff02a7392ff5e1a4d96708d55d172ca8b"
+)
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
