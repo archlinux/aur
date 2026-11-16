@@ -1,20 +1,25 @@
 #!/usr/bin/env node
 /**
- * Build-time fixes to installed dependencies (node_modules only; upstream
- * source is untouched). Each fix is guarded: if the code no longer matches,
- * it is skipped with a warning, never a failure.
+ * Build-time fixes applied to installed dependencies and packaged profile
+ * patches (upstream source is untouched). Each fix is guarded: if the code no
+ * longer matches it is skipped with a warning, never a failure.
  *
- * Vendored from ethanrise/dsh-desktop (linux/patch-deps.mjs, MIT, Copyright (c) 2026 DataElement; see LICENSE.ethanrise) so the AUR
- * build does not depend on network access to GitHub.
+ * Vendored from ethanrise/dsh-desktop (linux/patch-deps.mjs, MIT, Copyright (c)
+ * 2026 DataElement; see LICENSE.ethanrise).
  *
- * libreoffice-kit: on Linux it is meant to fall back to its WASM engine when
- * no native engine package is installed. Its "is the package present" probe
+ * libreoffice-kit: on Linux it is meant to fall back to its WASM engine when no
+ * native engine package is installed. Its "is the package present" probe
  * compares `lstatSync(p, { throwIfNoEntry: false }) !== undefined`, but
  * Electron's asar fs returns `null` for a missing path inside app.asar, so the
- * missing native package is reported as "installed but incomplete" and the
- * WASM fallback is never reached. Compare with `!= null` instead.
+ * missing native package is reported as "installed but incomplete" and the WASM
+ * fallback is never reached. Compare with `!= null` instead.
  *
- * Usage: node patch-deps.mjs <upstream checkout>
+ * Profile patch: this package ships no Office payload, but upstream's
+ * build/dsh-desktop.patch.yml always inserts the dsh-desktop-office composition
+ * entry, whose activation fails with ENOENT and aborts Harness boot. Drop that
+ * insert block (Safe Mode omits it too).
+ *
+ * Usage: node dsh-linux-patch-deps.mjs <upstream checkout>
  */
 import { readFile, writeFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
@@ -34,11 +39,6 @@ for (const file of ['cli.js', 'index.js']) {
   console.log(`libreoffice-kit ${file}: patched asar package probe`)
 }
 
-/** Linux has no Office runtime; the profile must not require the plugin.
- *  `dsh-desktop-office` is inserted as a profile composition entry and fails
- *  activation with ENOENT when the payload is absent, aborting Harness boot.
- *  Drop that insert block (it is optional by design; Safe Mode omits it too).
- */
 async function patchProfilePatch() {
   const path = join(project, 'build/dsh-desktop.patch.yml')
   let source

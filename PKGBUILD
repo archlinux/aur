@@ -3,51 +3,34 @@
 #
 # dsh-desktop-git — DeepSeek Harness 的桌面客户端（从源码构建，Arch 原生打包）
 # ===========================================================================
-# 上游 Linux 说明：dataelement/dsh-desktop 只发布 macOS/Windows 安装包，README
-# 明确标注 Linux“Not currently supported”。自 v0.11.0 起，构建链中的 Office
-# 运行时准备（office:prepare）与打包后校验（afterPack）只接受 macOS/Windows，
-# 直接 `npm run build` 会在 Linux 上报：
-#   Office runtime: unsupported native target linux/x64
-#
-# 本 PKGBUILD 因此不执行上游 `npm run build`，而是分步执行，并附加三个辅助脚本
-# （随包提供）：
-#   - dsh-linux-patch-deps.mjs（社区 ethanrise/dsh-desktop，MIT）：修复
-#     libreoffice-kit 在 asar 下的探测，让 Linux 能走 WASM 回退；
-#   - dsh-linux-after-pack.cjs（同上）：替换上游 afterPack，跳过 Office 运行时校验；
-#   - dsh-linux-about-menu.mjs（本包自带）：上游只在 macOS 应用菜单里放“关于”，
-#     Linux 的 Harness 菜单只有“检查更新…”，看不到版本号。该脚本在构建前给
-#     src/main/index.ts 的非 darwin 菜单补入“关于 DSH Desktop”，复用上游
-#     showAbout() 显示桌面端与内置 Harness 版本；同时隐藏关于面板里的“版本切换”
-#     按钮（上游版本目录只含 macOS/Windows 产物，Linux 上无法使用）。两处改动
-#     都只在源码匹配时生效，不匹配则自动跳过并告警。
-#
-# 由于上游未提供 Linux 版 Office Python 载荷，本包**不包含 Office 运行时**，
-# DOCX/PPTX/XLSX 技能不可用；PPT 编辑/渲染仍可用。
-#
-# 版本策略：跟随上游最新 release tag（v 前缀，如 v0.12.0），排除带 - 后缀的
-# test/rc/preview/beta 等预发布 tag；
-# 构建时 prepare() 检出该 tag，保证打出的包与版本号严格对应同一份源码。
+# 上游 Linux 状态：v0.14.0 的 README 仍写明 Linux“当前不支持”，Release 只发
+# macOS/Windows，CI 也没有 Linux 作业；仓库里的 Linux 目标（package:linux:x64、
+# electron-builder.linux.cjs、office linux-x64 载荷、sherpa 重编译）属于未发布、
+# 未验证的路径。因此本包继续走 AUR 精简构建：不打包 Office 运行时。
 #
 # 构建流程：
-#   1. npm ci                安装依赖；postinstall 完成补丁、品牌资源注入
-#                            与 Electron 43 二进制下载
+#   1. npm ci                安装依赖；postinstall 完成补丁、品牌注入与 Electron 下载
 #   2. ppt:build             electron-vite 构建前的模板/运行时就绪
 #   3. electron-vite build   编译主进程、preload、renderer 与插件
 #   4. electron-builder --linux dir => dist/linux-unpacked/
-#   5. package()             安装 linux-unpacked 到 /opt/dsh-desktop，
-#                             写入 /usr/bin 软链、.desktop、hicolor 图标
+#   5. package()             安装到 /opt/dsh-desktop，写软链、.desktop、图标
 #
-# 依赖锁定在仓库的 package-lock.json（resolved 指向 npmmirror，公开镜像全球可访问），
-# 直接按 lockfile 安装即可。注意：不要用 replace-registry-host=always 强改 registry，
-# 否则 file: 本地依赖的路径会被误改写成 registry URL 导致 404。
+# 辅助脚本（随包提供）：
+#   - dsh-linux-patch-deps.mjs（社区 ethanrise/dsh-desktop，MIT）：修复
+#     libreoffice-kit 在 asar 下的探测（WASM 回退），并从 dsh-desktop.patch.yml
+#     移除 dsh-desktop-office 组合项（本包无 Office 载荷，保留会让启动 ENOENT）；
+#   - dsh-linux-after-pack.cjs：替换上游 afterPack。上游强制校验 Office 载荷，
+#     本机没有，故只跑 asar 布局（硬校验）与 PPT 运行时（软校验），跳过 Office；
+#   - dsh-linux-about-menu.mjs：隐藏关于面板的“版本切换”（Arch 由 pacman 管版本）。
 #
-# 中国大陆加速：_geo_is_cn 通过 https://api.ip.sb/geoip 的 country_code 判断地区，
-# 命中 CN 时切换 npm（registry.npmmirror.com）与 Electron 预编译包（npmmirror）
-
-
+# 本包**不包含 Office 运行时**，DOCX/PPTX/XLSX 技能不可用；PPT 编辑/渲染仍可用。
+#
+# 版本策略：跟随上游最新 release tag（v 前缀），排除带 - 的预发布 tag；
+# prepare() 检出该 tag，保证打出的包与版本号严格对应同一份源码。
+#
 pkgname=dsh-desktop-git
-pkgver=0.13.2
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 pkgdesc='Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation (Linux build without the bundled Office runtime)'
 arch=('x86_64')
 url='https://github.com/dataelement/dsh-desktop'
@@ -97,6 +80,14 @@ conflicts=('dsh-desktop')
 # Electron/Chromium 二进制不能被 strip，否则可能无法启动
 options=('!strip')
 
+# 中国大陆加速：_geo_is_cn 用 https://api.ip.sb/geoip 的 country_code 判断地区，
+# 命中 CN 时自动把 npm registry 与 Electron 预编译包切到 npmmirror（结果缓存
+# 24 小时，接口失败按非 CN 处理）。开关：
+#   DSH_NO_MIRROR=1         强制官方源
+#   DSH_FORCE_CN=1          跳过检测，按 CN 处理
+#   DSH_GIT_PROXY=<url>     git 拉源码走代理（如 http://127.0.0.1:10808）
+#   DSH_GITHUB_MIRROR=<url> git 层 GitHub 镜像前缀（默认不启用）
+#
 # ── 区域自适应镜像（见文件头说明）─────────────────────────────────────────────
 _geo_cache="${XDG_CACHE_HOME:-$HOME/.cache}/dsh-desktop-git-geo.v2"
 _geo_is_cn() {
@@ -129,9 +120,9 @@ source=("$pkgname::git+https://github.com/dataelement/dsh-desktop.git"
         'dsh-linux-about-menu.mjs')
 sha256sums=('SKIP'
             'e61601b9dff6b609c097bc1af53c7c9b684472cb382ff840200040f0e355dfea'
-            '8683aefb28c9a23f29acc58dd9269b4cbc288ff754315b507a7d9120574aafb6'
-            'cdddf8134576a201f8cdca2f4b707b95bed0859a5891b9690e013cab5272d806'
-            'eb956d34d87bfc331dcb7ecc1a960a7d1594a5ae8fbd599a1d73f65259aa7f2a')
+            '0a10de6f7f2edc9f1c573d2980bae6345f56bc425a14c4cfe49b1f3bc3ee7310'
+            '1e5da34c75be24e1495dd87df09a1ac6e26985b5ebfe757503fee67b48ce75d8'
+            '932328d53f9c39aec5f32eee79bd28af4d08b330292cdb2765530958d119c995')
 
 # 最新 v 前缀 release tag（按版本号降序取第一个）
 _latest_tag() {
@@ -172,18 +163,18 @@ build() {
   # 这里同样处理，避免应用内版本号落后于包版本
   npm version --no-git-tag-version --allow-same-version "$pkgver"
 
-  # 上游 office:prepare / afterPack 仅支持 macOS/Windows，见文件头说明。
+  # 修复 libreoffice-kit 的 asar 探测（见文件头）
   node "$srcdir/dsh-linux-patch-deps.mjs" .
 
-  # Linux 菜单补“关于”并隐藏关于面板的“版本切换”，见文件头说明
+  # Linux 菜单/关于面板：隐藏“版本切换”（见文件头）
   node "$srcdir/dsh-linux-about-menu.mjs" .
 
-  # 不打包 Office 运行时（上游无 Linux 载荷）；空目录用于满足 extraResources
+  # 不打包 Office 运行时；空目录用于满足 extraResources
   rm -rf .build/office-runtime
   mkdir -p .build/office-runtime
   export LINUX_NO_OFFICE_RUNTIME=1
 
-  # 依次执行上游 `npm run build` 的各步骤，跳过 office:prepare
+  # 依次执行上游 `npm run build` 的步骤，跳过 office:prepare
   npm run --if-present ppt:build
   npx electron-vite build
 
@@ -221,8 +212,3 @@ package() {
   # 许可证
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums=('SKIP'
-            'e61601b9dff6b609c097bc1af53c7c9b684472cb382ff840200040f0e355dfea'
-            '8683aefb28c9a23f29acc58dd9269b4cbc288ff754315b507a7d9120574aafb6'
-            'cdddf8134576a201f8cdca2f4b707b95bed0859a5891b9690e013cab5272d806'
-            'eb956d34d87bfc331dcb7ecc1a960a7d1594a5ae8fbd599a1d73f65259aa7f2a')
