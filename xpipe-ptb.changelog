@@ -1,8 +1,114 @@
-- Fix startup being slow with many multi identities
-- Fix shell sessions and tunnels occasionally being stopped or restarted incorrectly when used from multiple places at the same time
-- Fix multi-identities being moved to a different category when not all of their identities are accessible
-- Fix local Windows shells breaking when the PATH contains quotes or is very long
-- Fix the file browser overview flickering while loading
-- Fix the window opening with a broken size when no proper monitor information is available
-- Fix Proxmox webtop deployments being allowed on PVE 9.0, which does not support OCI containers yet
-- Fix various NullPointers and small synchronization issues
+## Agent CLI support
+
+XPipe shipped with an MCP server feature for over a year now. This feature has seen a lot of use, but getting it to work seamlessly required manual configuration and some experience.
+
+XPipe 25 comes with a full integration for all common AI agent harnesses in the terminal, which includes: Claude Code, Codex CLI, GitHub Copilot CLI, Grok CLI, Hermes Agent, Junie, OpenCode, and Qwen Code. It works out of the box and allows you to open a terminal agent session to your remote system with the click of a button. The session is preconfigured so that the agent understands it is working exclusively on the remote system. The session is also isolated to a certain system, meaning that the agent can't just connect to any other systems or do something else that is not approved.
+
+The main focus here is to provide an integration that aligns with XPipe's workflow and security principles. The integration is flexible, meaning that it can connect to your agent wherever it runs: Either on your local machine (not really recommended), or better a sandboxed environment or server, which has the only purpose of running your installed agent. XPipe will then connect your agent sandbox to your remote system that you want to open a session to. Every part is isolated from each other, so the agent can't access any important information like connection credentials, it has only access to a shell to the remote system.
+
+![](https://xpipe.io/assets/images/BlogPage/agents-terminal.png)
+
+You can enable this in the settings menu.
+
+![](https://xpipe.io/assets/images/BlogPage/agents.png)
+
+## Herdr integration
+
+There is now an integration for the new terminal multiplexer herdr. In addition to the normal terminal multiplexer features, it also comes with special support for running AI agent sessions as well.
+
+![](https://xpipe.io/assets/images/BlogPage/herdr.png)
+
+## Wireguard integration
+
+There is now support for managing your local wireguard interfaces from within XPipe. Any locally available interfaces and their configured peers are automatically listed, and you can add new interfaces or edit the config of existing ones. Wireguard interfaces can also be used as a gateway for other connections, meaning that XPipe will automatically bring up the interface when a connection requires it.
+
+![](https://xpipe.io/assets/images/BlogPage/wireguard.png)
+
+For Windows, the integration comes with special admin elevation support as managing those tunnel services require admin permissions.
+
+## Bitwarden improvements
+
+The Bitwarden integration has seen a lot of improvements, mainly because the Bitwarden CLI is very bad and requires a lot of workarounds. There are several new settings:
+
+![](https://xpipe.io/assets/images/BlogPage/bw-config.png)
+
+With offline mode, you can keep using the locally synced Bitwarden credentials without it complaining about connection errors.
+
+The cache vault items will look up all needed passwords at once to improve query times. If you are very unhappy with the bw query speeds, you might give this option a try.
+
+The config file setting allows you to change to a different config file in case you use multiple different accounts.
+
+Furthermore, the vault unlock speed for multiple roles is now improved due to parallel queries.
+
+## Multiple password managers
+
+You can now configure multiple password managers to be used in parallel if needed. You will have to assign each one a unique ID and prefix your password manager keys with the IDs to route the requests to the correct password manager. Once you have done that, everything will just work as normal.
+
+![](https://xpipe.io/assets/images/BlogPage/pwman-multi.png)
+
+## Sidebar location
+
+The technology is finally here, you can now choose whether to show the sidebar on the left or right side of the window in the display settings:
+
+![](https://xpipe.io/assets/images/BlogPage/sidebar.png)
+
+## Vault sync status
+
+There is now a sync status display for the git vault, so you can see at a glance whether your vault is up to date, has unpushed changes, the remote is not reachable, you only have read access, and more.
+
+![](https://xpipe.io/assets/images/BlogPage/sync-status.png)
+
+The git sync also now properly handles cases where the remote repository history has been overwritten, e.g. by a force push from another system. In that case, you will be asked whether you want to discard your unpushed local changes and apply the remote state.
+
+It will also handle any error state better, i.e. when your connection to the remote temporarily drops, the local side will still be updated so any changes made meanwhile still get pushed later on.
+
+## Settings rework
+
+The settings menu has been reorganized into groups. Furthermore, the various integration choices for terminals, RDP clients, password managers, terminal multiplexers, and agents now show a list of capabilities for the selected option, so you can see which features are supported by it and whether it requires some additional setup. This can make your preferred integration choice much easier: 
+
+![](https://xpipe.io/assets/images/BlogPage/prefs.png)
+
+## Hyper-V RDP enhanced sessions
+
+You can now connect to Hyper-V VMs via an RDP enhanced session through the Hyper-V host. This works without any direct access to the VM itself, only through the internal Hyper-V display that you also get when you use the Hyper-V Manager application.
+
+This also means that you don't even need to configure access credentials for VMs in order to access them via RDP now:
+
+![](https://xpipe.io/assets/images/BlogPage/hyperv-rdp.png)
+
+## Password manager identity types
+
+Password manager identities can now be configured to retrieve a username + password, a username + SSH key, or all three combined. For password managers that don't store usernames for SSH keys, you can specify the username explicitly. This removes a major roadblock when using some password managers, as they made it unnecessarily difficult to have an identity with a username + key.
+
+![](https://xpipe.io/assets/images/BlogPage/pwman-ids.png)
+
+## Custom X11 server
+
+You can now choose which local X11 server should be used for SSH X11 forwarding if no other X11 server is already running. Next to the existing options, with a specific WSL2 distribution, there is now a custom command to launch a custom server:
+
+![](https://xpipe.io/assets/images/BlogPage/x11.png)
+
+## Performance improvements
+
+A lot of memory leaks have been fixed, which reduces memory usage when XPipe runs for a longer time. The styling and font handling has also been reworked, which improves the rendering performance of the user interface. Startup performance has also been improved.
+
+## Other
+
+- The HTTP proxy system default on Windows now also uses the proxy configured in the Windows settings
+- The connection creation dialog has been restyled
+- There is now a setting to choose the date format in the file browser
+- The git vault now tags the vault version for better compatibility checks across different XPipe versions
+- The MCP server setting has been renamed to external MCP server as it is no longer needed for the agent CLI integration
+- Add integration for early access Rex terminal on macOS
+
+## Fixes
+
+- Fix slow transfer speed to remote Windows systems
+- Fix SSH config connections overriding the port configured elsewhere in the config, e.g. via wildcard hosts
+- Fix PowerShell commands failing for file paths and arguments containing quotes or trailing backslashes
+- Fix terminals for PowerShell remote session connections failing to open when a working directory or startup commands were involved
+- Fix file transfer cancellation being ignored while the connections were being reestablished
+- Fix cancelling a file transfer right after a file had finished forcing both connections to reconnect
+- Fix connection drops during file transfers being shown as an unexpected error instead of an interrupted connection
+- Fix background sessions of a host with broken streams not being restarted, causing actions to fail repeatedly
+- Fix terminal launches being delayed by several seconds on Windows as every CLI call to the daemon took a long time to complete
