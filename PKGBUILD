@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altus
 _pkgname=Altus
-pkgver=5.8.2
-_electronversion=35
-_nodeversion=22
+pkgver=5.8.3
+_electronversion=45
+_nodeversion=24
 pkgrel=1
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support."
 arch=('any')
@@ -31,9 +31,9 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('7aa77ca0b0cb711313552d7addb4051deb6211eebe39cb9ea0e2cd92515d608e'
+sha256sums=('3c957963cad6cfc5c2761f2629dbf86ebda18263815614fd0c73f71e2340d895'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
