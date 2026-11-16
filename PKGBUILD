@@ -1,7 +1,7 @@
 # Maintainer: Fangru Shao <matrixc7p@gmail.com>
 pkgname=token-monitor-bin
 _pkgname=token-monitor
-pkgver=0.93.0
+pkgver=0.93.1
 pkgrel=1
 pkgdesc="Real-time token, cost, and AI limits widget with multi-device sync for Claude Code, Codex, OpenCode and more"
 arch=('x86_64')
@@ -38,7 +38,7 @@ conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 source=("https://github.com/Javis603/token-monitor/releases/download/v${pkgver}/Token-Monitor-${pkgver}.AppImage")
 noextract=("Token-Monitor-${pkgver}.AppImage")
-sha256sums=('78cd48c5be07a54f49a15b6d223e27faa44b5a43dd3b5de6d131a30c18dcfc39')
+sha256sums=('0011b794c6bef145a3c0eae1deebc5d3033228d30438528174a9d3d82d6998f7')
 
 prepare() {
     chmod +x "Token-Monitor-${pkgver}.AppImage"
