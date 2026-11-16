@@ -1,6 +1,6 @@
 pkgbase = kotora-bin
 	pkgdesc = Anime tracker for MyAnimeList: recognises the episode in your player and asks before it records it (prebuilt)
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://kotora.moe
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = kotora-bin
 	optdepends = mpv: a supported player
 	optdepends = vlc: a supported player
 	optdepends = mpc-qt: a supported player
-	provides = kotora=0.1.2
+	provides = kotora=0.1.3
 	conflicts = kotora
 	options = !strip
 	options = !debug
-	source = kotora-bin-0.1.2.tar.gz::https://github.com/hanami117/kotora/releases/download/v0.1.2/kotora-0.1.2-linux-x86_64.tar.gz
-	sha256sums = 8171a1d867846e946ebe2eda88643c87b4b378a70a7bd3dc9acd228422c89e71
+	source = kotora-bin-0.1.3.tar.gz::https://github.com/hanami117/kotora/releases/download/v0.1.3/kotora-0.1.3-linux-x86_64.tar.gz
+	sha256sums = 2022b3e91d83ae16f12f27d32ab57a6a28121cdb7917146bb8a376673318a2c1
 
 pkgname = kotora-bin
