@@ -1,6 +1,6 @@
 pkgname=kvantum-qt4-git
 _gitname=Kvantum
-pkgver=1.1.9.r0.g7ffda1b
+pkgver=1.1.9.r2.g6ae0cc3
 pkgrel=1
 pkgdesc="SVG-based Qt4 theme engine plus a config tool and extra themes"
 arch=('x86_64')
