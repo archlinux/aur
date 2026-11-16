@@ -1,0 +1,16 @@
+_voidlink_hint() {
+  if ! systemctl is-active --quiet bluetooth.service 2>/dev/null; then
+    echo ">>> VoidLink needs the Bluetooth service. Start it with:"
+    echo ">>>   sudo systemctl enable --now bluetooth.service"
+  fi
+  echo ">>> Run 'voidlink' to start. Press ? inside for all keys."
+  echo ">>> Icons need a Nerd Font (ttf-nerd-fonts-symbols-mono) or run 'voidlink --no-nerd-font'."
+}
+
+post_install() {
+  _voidlink_hint
+}
+
+post_upgrade() {
+  _voidlink_hint
+}
