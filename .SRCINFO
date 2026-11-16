@@ -1,6 +1,6 @@
 pkgbase = geforcenow-electron-bin
 	pkgdesc = Unofficial desktop client for Nvidia GeForce NOW on Linux, delivering a native Electron-based experience with Wayland support, Steam Deck integration, and optional Discord rich presence.
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/hmlendea/gfn-electron
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = geforcenow-electron-bin
 	license = GPL-3.0-only
 	depends = electron45
 	depends = nodejs
-	provides = geforcenow-electron=3.1.0
+	provides = geforcenow-electron=3.1.1
 	conflicts = geforcenow-electron
 	source = geforcenow-electron.js
 	source = geforcenow-electron.sh
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
-	source_aarch64 = geforcenow-electron-3.1.0-aarch64.AppImage::https://github.com/hmlendea/gfn-electron/releases/download/v3.1.0/geforcenow-electron_3.1.0_linux_arm64.AppImage
-	sha256sums_aarch64 = 1f881f6b08b666d410cd229737fdc0b8fcea6634b6a51a85d7e439437e227b40
-	source_x86_64 = geforcenow-electron-3.1.0-x86_64.AppImage::https://github.com/hmlendea/gfn-electron/releases/download/v3.1.0/geforcenow-electron_3.1.0_linux_x86_64.AppImage
-	sha256sums_x86_64 = 48abfd9e8946ef25ede1910df8c27cbb925466098a37499056903b685f22d0b7
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = geforcenow-electron-3.1.1-aarch64.AppImage::https://github.com/hmlendea/gfn-electron/releases/download/v3.1.1/geforcenow-electron_3.1.1_linux_arm64.AppImage
+	sha256sums_aarch64 = c4d887d601c6561eca1e2c5b8eb394f5478241e53395f53ea447ef3ff2fed661
+	source_x86_64 = geforcenow-electron-3.1.1-x86_64.AppImage::https://github.com/hmlendea/gfn-electron/releases/download/v3.1.1/geforcenow-electron_3.1.1_linux_x86_64.AppImage
+	sha256sums_x86_64 = 8fd7829a642c1a7ece1addc11795e63e3d79c290932d6ace5ab3c77f7a73bd4f
 
 pkgname = geforcenow-electron-bin

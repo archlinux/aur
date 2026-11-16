@@ -2,7 +2,7 @@
 pkgname=geforcenow-electron-bin
 _pkgname="com.github.hmlendea.${pkgname%-bin}"
 _appname='GeForce NOW'
-pkgver=3.1.0
+pkgver=3.1.1
 _electronversion=45
 pkgrel=1
 pkgdesc="Unofficial desktop client for Nvidia GeForce NOW on Linux, delivering a native Electron-based experience with Wayland support, Steam Deck integration, and optional Discord rich presence."
@@ -25,9 +25,9 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_x86_64.AppImage")
 sha256sums=('562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-sha256sums_aarch64=('1f881f6b08b666d410cd229737fdc0b8fcea6634b6a51a85d7e439437e227b40')
-sha256sums_x86_64=('48abfd9e8946ef25ede1910df8c27cbb925466098a37499056903b685f22d0b7')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+sha256sums_aarch64=('c4d887d601c6561eca1e2c5b8eb394f5478241e53395f53ea447ef3ff2fed661')
+sha256sums_x86_64=('8fd7829a642c1a7ece1addc11795e63e3d79c290932d6ace5ab3c77f7a73bd4f')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
