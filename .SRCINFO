@@ -1,16 +1,16 @@
 pkgbase = superstack-bin
 	pkgdesc = The Superstack command line interface
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/siliconwitchery/superstack-cli
 	license = ISC
 	conflicts = superstack
 	provides = superstack
 	arch = aarch64
-	source_aarch64 = superstack-bin_0.0.5_aarch64.tar.gz::https://github.com/siliconwitchery/superstack-cli/releases/download/v0.0.5/superstack_0.0.5_linux_arm64.tar.gz
-	sha256sums_aarch64 = 30312a4edeb0e063715c673df287f014f816a57366b6966d7b15bb4e44d8a5f4
+	source_aarch64 = superstack-bin_0.0.6_aarch64.tar.gz::https://github.com/siliconwitchery/superstack-cli/releases/download/v0.0.6/superstack_0.0.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = c5b4c0bab81530d38d3dfad73d9b1b616564018ebbafee0df02171b93387030f
 	arch = x86_64
-	source_x86_64 = superstack-bin_0.0.5_x86_64.tar.gz::https://github.com/siliconwitchery/superstack-cli/releases/download/v0.0.5/superstack_0.0.5_linux_amd64.tar.gz
-	sha256sums_x86_64 = 10dc883c7b088477afcfa6b08e43a26d70555c033605c02cce99de0029629146
+	source_x86_64 = superstack-bin_0.0.6_x86_64.tar.gz::https://github.com/siliconwitchery/superstack-cli/releases/download/v0.0.6/superstack_0.0.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = c4df8ea672d3c2f07525b5d8cf98989c68a2e3e0b76b735ea33d33d6cd738c8b
 	
 pkgname = superstack-bin
