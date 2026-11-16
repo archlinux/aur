@@ -40,6 +40,22 @@ b2sums=('826bc5cd8b212060820ad4eb800de18986ee4fb776e693049cd7e11e88234bccb28e360
   '1c6d0dd9a35c57922f1ee7d746785106cb16666106b806a787c80e2a9e18c3523a241e68b6c0d964ff8378ef1c41a4875bb3ecb3366a21ff0e54b833c4e7d8a4'
   'a25a1f97ac5fd6974bc6806430b65e98113ea1d752aa83c0e31502218fafbe64cb026e4a74436889ad6b33085f35afe7ae0b71a3be0c38b99fda811ee64ca23d')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -64,6 +80,8 @@ _dotnet_env() {
 }
 
 prepare() {
+  # The SDK to build with (_dotnet_sdk), for dotnet anywhere in $srcdir
+  printf '{ "sdk": { "version": "%s", "rollForward": "latestPatch" } }\n' "$(_dotnet_sdk)" >"$srcdir/global.json"
   _dotnet_env
   # The runtime and crossgen2 packs for ReadyToRun come from the .NET dotnet-build-deps-10.0
   # chooses: the source-built artifacts with dotnet-build-deps-10.0 (see crossgen2-pack.targets),
