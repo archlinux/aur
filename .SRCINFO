@@ -5,6 +5,7 @@ pkgbase = howdy-next
 	url = https://github.com/nathawatc/howdy-next
 	install = howdy-next.install
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cmake>=3.31
 	makedepends = gettext
