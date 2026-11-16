@@ -31,7 +31,8 @@ build() {
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DARCANE_BUILD_QT=ON \
-        -DARCANE_BUILD_TESTS=OFF
+        -DARCANE_BUILD_TESTS=OFF \
+        -DARCANE_WERROR=OFF
     cmake --build build
 }
 
