@@ -1,7 +1,7 @@
 # Maintainer: ZaViBiS <igordnepr27 at gmail dot com>
 
 pkgname=gputaskman
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="A GPU task manager for Windows, Linux, and WSL: per-process VRAM, GPU activity, and LLM model/KV-cache insights (Windows AMD and NVIDIA)."
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   'nvidia-utils: NVML telemetry for NVIDIA GPUs'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7986fe5e571dc5a68a94a4adb965dbadc5bb2891aff67564fb1cad9dc5a133d2')
+sha256sums=('d589768884532de82bd72ce47348a55b77d61a4c66879c30643b80b5d8de0331')
 
 prepare() {
   cd "$pkgname-$pkgver"
