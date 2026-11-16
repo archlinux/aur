@@ -23,6 +23,22 @@ source=("git+$url.git#commit=$_commit")
 sha512sums=('1862b1d133f47bc4fdc28d00783d388853468e733c06aa2cf5c5a7dd2c4e4cbb5d8421901dc33037b2c8bcdcd4b87f1359dd9999a041a5b4f5594219cd66e640')
 b2sums=('5f1d710303399d3d1196f8ad30df6fdc89b1c111305e82663e22dab4a2cd54227aad0da722777ffd1681981038f8c1eba6a1a4dbd1c2de1998deeb1e6556306f')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -40,6 +56,8 @@ _dotnet_env() {
 }
 
 prepare() {
+  # The SDK to build with (_dotnet_sdk), for dotnet anywhere in $srcdir
+  printf '{ "sdk": { "version": "%s", "rollForward": "latestPatch" } }\n' "$(_dotnet_sdk)" >"$srcdir/global.json"
   cd Humanizer || exit
   # src/Directory.build.props, which references Nerdbank.GitVersioning (a prebuilt tool that derives
   # the version from git, passed in build() instead) and SourceLink, isn't imported: MSBuild looks for
