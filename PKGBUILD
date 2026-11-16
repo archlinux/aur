@@ -1,8 +1,8 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=karakeep
-pkgver=0.34.1
-pkgrel=1
+pkgver=0.35.0
+pkgrel=2
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
 url="https://github.com/${pkgname}-app/${pkgname}"
@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}-browser.service"
         "${pkgname}-web.service"
         "${pkgname}-workers.service")
-sha256sums=('321ebd86526af49ba106c78016262b0558cb3929e649a5e737b90e0b6513750f'
+sha256sums=('9262e5182bab93df5a26e85cc31d7c503cc480e96a1e72186fd296a81f8d8a64'
             'ce0ce4b582f5f8904b875475262ad47edb5f398517add9e6901bb5f065742d7d'
             '0b5193cdca50bf430f3387cd998f8848e1579ecafc8798400595581d961cc399'
             '9c7f0c9bd7864a95269e49d5f27eaecb1714637b5771d748c3437aa5c297d21e'
@@ -47,10 +47,17 @@ build() {
     cd "${pkgname}-${pkgver}"
     pnpm install --frozen-lockfile
 
-    # Build the db migration script
+    # Build the db migration script; upstream replaced ncc with rolldown
     cd packages/db
-    pnpm exec ncc build migrate.ts -o ../../db_migrations
+    pnpm exec rolldown migrate.ts --platform node --format cjs \
+        --external better-sqlite3 --file ../../db_migrations/index.js
     cp -R drizzle ../../db_migrations
+    # better-sqlite3 resolves its prebuilt binary through a computed path, so it
+    # cannot be bundled; ship it unbundled next to the migration script.
+    sqlite_dir=$(node -p "require('path').dirname(require.resolve('better-sqlite3/package.json'))")
+    mkdir -p ../../db_migrations/node_modules/better-sqlite3
+    cp -R "${sqlite_dir}/package.json" "${sqlite_dir}/lib" "${sqlite_dir}/prebuilds" \
+        ../../db_migrations/node_modules/better-sqlite3/
 
     # Compile the web app
     cd ../../apps/web
