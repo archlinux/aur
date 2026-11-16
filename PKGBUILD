@@ -5,21 +5,28 @@ _pkgname=wuyou-docs
 pkgver=0.8.0
 pkgrel=1
 pkgdesc='Local-first desktop document workspace (prebuilt binary)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/duanluan/wuyou-docs-releases'
 license=('NOASSERTION')
 depends=('gtk3' 'webkit2gtk-4.1')
 provides=("wuyou-docs-bin=${pkgver}")
 options=('!strip')
-source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/duanluan/wuyou-docs-releases/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('a4bda981b590349a37b8b299d4e0234dd699435a5113d3d455efc54b95e548ae')
+source_x86_64=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/duanluan/wuyou-docs-releases/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
+source_aarch64=("${_pkgname}_${pkgver}_arm64.deb::https://github.com/duanluan/wuyou-docs-releases/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
+sha256sums_x86_64=('a4bda981b590349a37b8b299d4e0234dd699435a5113d3d455efc54b95e548ae')
+sha256sums_aarch64=('95899833758a7cd869e6b972d5a65f3cb4527dc885aa9ec53e52fcb18447e2ea')
 
 package() {
-  local _app_dir _app_source _desktop_dir _desktop_file _desktop_source _extractdir
+  local _app_dir _app_source _deb_arch _desktop_dir _desktop_file _desktop_source _extractdir
   _extractdir="$(mktemp -d)"
   trap 'rm -rf "${_extractdir}"' EXIT
 
-  bsdtar -C "${_extractdir}" -xf "${srcdir}/${_pkgname}_${pkgver}_amd64.deb"
+  case "${CARCH}" in
+    x86_64) _deb_arch='amd64' ;;
+    aarch64) _deb_arch='arm64' ;;
+  esac
+
+  bsdtar -C "${_extractdir}" -xf "${srcdir}/${_pkgname}_${pkgver}_${_deb_arch}.deb"
   bsdtar -C "${pkgdir}" -xf "${_extractdir}/data.tar.gz"
 
   _app_dir="${pkgdir}/usr/lib/wuyou-docs"

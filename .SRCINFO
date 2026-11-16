@@ -4,12 +4,15 @@ pkgbase = wuyou-docs
 	pkgrel = 1
 	url = https://github.com/duanluan/wuyou-docs-releases
 	arch = x86_64
+	arch = aarch64
 	license = NOASSERTION
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	provides = wuyou-docs-bin=0.8.0
 	options = !strip
-	source = wuyou-docs_0.8.0_amd64.deb::https://github.com/duanluan/wuyou-docs-releases/releases/download/v0.8.0/wuyou-docs_0.8.0_amd64.deb
-	sha256sums = a4bda981b590349a37b8b299d4e0234dd699435a5113d3d455efc54b95e548ae
+	source_x86_64 = wuyou-docs_0.8.0_amd64.deb::https://github.com/duanluan/wuyou-docs-releases/releases/download/v0.8.0/wuyou-docs_0.8.0_amd64.deb
+	sha256sums_x86_64 = a4bda981b590349a37b8b299d4e0234dd699435a5113d3d455efc54b95e548ae
+	source_aarch64 = wuyou-docs_0.8.0_arm64.deb::https://github.com/duanluan/wuyou-docs-releases/releases/download/v0.8.0/wuyou-docs_0.8.0_arm64.deb
+	sha256sums_aarch64 = 95899833758a7cd869e6b972d5a65f3cb4527dc885aa9ec53e52fcb18447e2ea
 
 pkgname = wuyou-docs
