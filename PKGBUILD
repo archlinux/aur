@@ -20,11 +20,11 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=0ac255739cdd64e100cd6913329247421b0ec2ea} # daily-1177
+: ${_runtime_commit:=8965ffc346d426ccdf919bd18585e4d4a0c21654} # daily-1179
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.21.0
+pkgver=12.21.1
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -122,7 +122,7 @@ source=(
   "$_pkgname.desktop"
 )
 sha256sums=(
-  '572358682a80e0d4da3d785a5b7e215de67af790b66ee3e0a1c7182ee984598d' # cksum
+  '772d6cad2a72a6e70c5df2475022f4f9a3f3e5c11e243c304fcc24c131a1bc0a' # cksum
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
@@ -133,6 +133,24 @@ _deno() {
   pushd "$srcdir/$_pkgsrc_runtime/noraneko" > /dev/null || return
   deno "$@"
   popd > /dev/null || return
+}
+
+_dereference_symlinks() {
+  local dir="$1"
+  local tmp="${dir}-$RANDOM"
+
+  rsync -aL "$dir/" "$tmp/" || {
+      rm -rf "$tmp"
+      return 1
+  }
+
+  if [ ! -e "${dir}_old" ]; then
+    mv "$dir" "${dir}_old" || return 1
+  else
+    rm -rf "$dir"
+  fi
+
+  mv "$tmp" "$dir"
 }
 
 _calc_parallel_jobs() {
@@ -436,13 +454,8 @@ END
   # missing on install
   cp noraneko/_dist/buildid2 obj-artifact-build-output/dist/bin/browser
 
-  # dereference symlinks
-  rsync -aL obj-artifact-build-output/ obj-artifact-build-output_new/
-  rm -rf obj-artifact-build-output_old
-  mv obj-artifact-build-output obj-artifact-build-output_old
-  mv obj-artifact-build-output_new obj-artifact-build-output
+  _dereference_symlinks obj-artifact-build-output
 
-  # floorp post-mach
   _deno task feles-build build --phase after-mach
 
   # floorp patches 3/3
