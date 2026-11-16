@@ -1,6 +1,6 @@
 pkgbase = python-smithy-test
 	pkgdesc = Test-support helpers for generated Smithy clients.
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/smithy-lang/smithy-python/tree/develop/packages/smithy-test
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-smithy-test
 	depends = python-smithy-core
 	depends = python-smithy-http
 	depends = python-smithy-aws-core
-	source = smithy-test-0.4.0.tar.gz::https://github.com/smithy-lang/smithy-python/archive/refs/tags/smithy-test/v0.4.0.tar.gz
-	sha256sums = a6a287dcd135b9c901f41e32afd13f4a927d30fb8d2cdc1fb65a17ff5ec39738
+	source = smithy-test-0.5.0.tar.gz::https://github.com/smithy-lang/smithy-python/archive/refs/tags/smithy-test/v0.5.0.tar.gz
+	sha256sums = 78fcc64eabf8cef378790c2dd3c871baaa582791658d3f16cbaa2d91493a829d
 
 pkgname = python-smithy-test
