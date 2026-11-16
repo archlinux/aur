@@ -56,6 +56,22 @@ _dotnet_sdk() {
   fi
 }
 
+# The release of .NET $_dotnetsdkver the SDK of _dotnet_sdk builds for, the latest one it knows
+# (LatestRuntimeFrameworkVersion of its bundled versions), whose runtime and crossgen2 packs it restores:
+# the version of the packages of .NET the packages reference. For the source-built SDK, its own
+# runtime, whose artifacts have them; Microsoft's may know a newer one than the runtime installed.
+_dotnet_runtime() {
+  awk -v tfm="net$_dotnetsdkver" '
+    /<KnownFrameworkReference Include="Microsoft\.NETCore\.App"/ { framework = 1; target = 0 }
+    framework && index($0, "TargetFramework=\"" tfm "\"") { target = 1 }
+    framework && target && match($0, /LatestRuntimeFrameworkVersion="[^"]+"/) {
+      print substr($0, RSTART + 31, RLENGTH - 32)
+      exit
+    }
+    framework && /\/>/ { framework = 0 }
+  ' "/usr/share/dotnet/sdk/$(_dotnet_sdk)/Microsoft.NETCoreSdk.BundledVersions.props"
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -64,7 +80,7 @@ _dotnet_env() {
   # RID of the .NET SDK, the build host crossgen2 runs on: arch-x64 for the source-built .NET of Arch,
   # linux-arm64 for Microsoft's build
   _host_rid=$(dotnet --info | sed -n -E 's/^ *RID: *//p')
-  _runtimever=$(dotnet --list-runtimes | grep -F "NETCore.App $_dotnetsdkver" | sed -E "s/[[:alnum:]\.]+ ([[:digit:]\.]+) .*/\1/")
+  _runtimever=$(_dotnet_runtime)
   # The architecture and RID Gherkin.dll is compiled for follow the package architecture ($CARCH), like
   # powershell's: the host's RID on a native build, Microsoft's portable linux-<arch> one from nuget.org
   # on a cross build (an x86_64 host building for aarch64), which has no source-built .NET for the target
@@ -142,7 +158,10 @@ EOF
   # Like powershell's Invoke-ReadyToRunCompiler: against the .NET runtime and PowerShell, which
   # provides Newtonsoft.Json. A cross build compiles against the runtime pack of the target, which has
   # System.Private.CoreLib in native/.
-  local _runtime=("/usr/share/dotnet/shared/Microsoft.NETCore.App/$_runtimever/*.dll")
+  # The installed runtime
+  local _runtimepath
+  _runtimepath=$(find /usr/share/dotnet/shared/Microsoft.NETCore.App -mindepth 1 -maxdepth 1 -name "$_dotnetsdkver.*" | sort -V | tail -n 1)
+  local _runtime=("$_runtimepath/*.dll")
   if [[ "$_rid" != "$_host_rid" ]]; then
     _runtime=("$NUGET_PACKAGES/microsoft.netcore.app.runtime.$_rid/$_runtimever/runtimes/$_rid/"{lib/"net$_dotnetsdkver",native}/'*.dll')
   fi
