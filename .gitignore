@@ -1,0 +1,6 @@
+# 构建产物与上游 deb
+*.pkg.tar.zst
+*.deb
+src/
+pkg/
+build.log
