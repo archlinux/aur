@@ -209,6 +209,7 @@ prepare() {
   # The test framework references Azure.Identity.Broker since upstream's PR #57407, so tests that
   # expect no broker sign in through the browser and wait for it, see
   # https://github.com/Azure/azure-sdk-for-net/issues/58160. It references Azure.Core like before.
+  # upstream: workaround Azure/azure-sdk-for-net#58160
   patch -Np1 -i "$srcdir/azure-core-tests-no-broker.patch"
   # The test proxy would get the recordings with git, from the git repository it finds above the
   # sources, so it gets them from the sources instead, in their own repository
