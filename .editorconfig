@@ -1,0 +1,35 @@
+# Formatting of the AUR packages, also read by shfmt and Biome. Every package has a copy of this file
+# (templates/package in the repository of the packages), so it works on its own as well.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+# Read by shfmt only
+switch_case_indent = true
+
+# Sourced by bash, which shfmt can't tell from the file
+[{PKGBUILD,*.install}]
+shell_variant = bash
+
+# Written by makepkg --printsrcinfo
+[.SRCINFO]
+indent_style = tab
+
+[*.{ps1,psm1,psd1,py}]
+indent_size = 4
+
+# Biome's default
+[*.{js,mjs,cjs,ts,json,jsonc}]
+indent_style = tab
+
+# Patches have to stay as they are, whitespace included
+[*.{patch,diff}]
+trim_trailing_whitespace = false
+insert_final_newline = unset
+indent_style = unset
+indent_size = unset

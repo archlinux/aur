@@ -1,0 +1,19 @@
+pkgbase = python-pyghidra
+	pkgdesc = Native CPython for Ghidra, from the ghidra package
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/NationalSecurityAgency/ghidra/tree/master/Ghidra/Features/PyGhidra
+	arch = any
+	license = Apache-2.0
+	makedepends = ghidra>=12.2
+	makedepends = ghidra<12.3
+	makedepends = python-installer
+	depends = python
+	depends = ghidra>=12.2
+	depends = ghidra<12.3
+	depends = python-jpype1
+	depends = python-packaging
+	depends = python-typing_extensions
+	optdepends = python-ghidra-stubs: for type checking and completion of the Ghidra API
+
+pkgname = python-pyghidra
