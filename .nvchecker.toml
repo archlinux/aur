@@ -1,7 +1,6 @@
-# The version of Microsoft's .NET SDK 10.0 in the AUR, which this package is pinned to: dotnet-sdk-bin has
-# moved on to .NET 11, and dotnet-sdk-10.0-bin (of dotnet-core-10.0-bin) is the one for .NET 10, behind
-# this package's pin for now. Its upgrade moves depends to dotnet-sdk-10.0-bin as well.
+# The version of Microsoft's current .NET SDK in the AUR (dotnet-sdk-bin), which this package is pinned
+# to and builds the packages of .NET 10 with
 ["dotnet-build-deps-10.0-bin"]
 source = "aur"
-aur = "dotnet-sdk-10.0-bin"
+aur = "dotnet-sdk-bin"
 strip_release = true

@@ -1,13 +1,17 @@
 pkgbase = dotnet-build-deps-10.0-bin
-	pkgdesc = Build dependencies of the .NET packages from Microsoft's build of .NET 10.0 and nuget.org (meta package)
-	pkgver = 10.0.14.sdk403
-	pkgrel = 2
+	pkgdesc = Build dependencies of the .NET 10.0 packages from Microsoft's build of .NET and nuget.org (meta package)
+	pkgver = 11.0.0.sdk100
+	pkgrel = 1
 	url = https://dotnet.microsoft.com/
 	arch = x86_64
 	arch = aarch64
 	license = 0BSD
-	depends = dotnet-sdk-10.0-bin=10.0.14.sdk403
-	provides = dotnet-build-deps-10.0=10.0.14.sdk403
+	depends = dotnet-sdk-bin=11.0.0.sdk100
+	depends = dotnet-host-bin
+	depends = dotnet-runtime-10.0-bin
+	depends = aspnet-runtime-10.0-bin
+	depends = aspnet-targeting-pack-10.0-bin
+	provides = dotnet-build-deps-10.0=11.0.0.sdk100
 	conflicts = dotnet-build-deps-10.0
 	conflicts = dotnet-source-build-reference-packages-10.0
 	conflicts = dotnet-source-built-artifacts-10.0
