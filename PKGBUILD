@@ -6,7 +6,7 @@ _dist_name="Next AI Draw.io"
 pkgver=0.5.1
 _pkgver=0.5.1
 _electronversion=39
-pkgrel=1
+pkgrel=2
 pkgdesc="Next AI Powered Draw.io (Desktop version). Built for system-wide electron."
 arch=('x86_64' 'aarch64')
 url="https://github.com/DayuanJiang/next-ai-draw-io"
@@ -21,7 +21,7 @@ source_x86_64=("${url}/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_amd6
 source_aarch64=("${url}/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_arm64.deb")
 source=("${_pkgname}.sh")
 
-sha256sums=('6dec33b7b4169f695f1ff02a9e55a6ce93b421b20177f051b29223911b8d0a8a')
+sha256sums=('83c45b7af305f75c312c9cf75a08c7b997a2484ebcd31943f1f0ace20457adac')
 sha256sums_x86_64=('c7f7dc66a958938c6a2d7386b3483fe6490a0489cf23935daac7664840bf79f8')
 sha256sums_aarch64=('9a452ff5a4b0e451848d5d91cba793632e9250abede1cea74023c4fbdb94b435')
 
@@ -38,6 +38,9 @@ prepare() {
         bsdtar -xf "${srcdir}/data.tar.xz"
     elif [ -f "${srcdir}/data.tar.zst" ]; then
         bsdtar -xf "${srcdir}/data.tar.zst"
+    else
+        error "未找到 deb 的 data.tar.xz/data.tar.zst"
+        return 1
     fi
 
     # Patch the app.asar to use correct resource path
@@ -46,7 +49,10 @@ prepare() {
     # We need to point it to /usr/lib/next-ai-draw-io
     asar e "${srcdir}/opt/${_dist_name}/resources/app.asar" "${srcdir}/app-patched"
     find "${srcdir}/app-patched" -type f -name "*.js" -exec sed -i "s|process.resourcesPath|\"/usr/lib/${_pkgname}\"|g" {} +
-    asar p "${srcdir}/app-patched" "${srcdir}/app.asar"
+    # 原生模块（.node）和被它 dlopen 的 .so 必须解包到 app.asar.unpacked：
+    # 打进 asar 时 Electron 会把 .node 复制到临时目录再加载，$ORIGIN 下的 .so 找不到，
+    # 实测 sharp 会报 ERR_DLOPEN_FAILED: libvips-cpp.so 找不到。
+    asar p --unpack '*.{node,so,so.*}' "${srcdir}/app-patched" "${srcdir}/app.asar"
 
     # Fix the .desktop file
     sed -i "s|Exec=.*|Exec=${_pkgname} %U|" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
@@ -62,6 +68,9 @@ package() {
     
     # Use the patched app.asar
     install -Dm644 "${srcdir}/app.asar" "${_lib_dir}/app.asar"
+
+    # 原生模块及其依赖库（asar pack --unpack 产出的目录）
+    cp -a "${srcdir}/app.asar.unpacked" "${_lib_dir}/"
     
     # Copy other resources (standalone server, etc.)
     cp -r "${srcdir}/opt/${_dist_name}/resources/standalone" "${_lib_dir}/"
