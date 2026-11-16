@@ -2,7 +2,7 @@
 
 pkgname=strdust-bin
 _pkgname=strdust
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Tandem repeat genotyper for long reads"
 arch=('x86_64')
