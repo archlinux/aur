@@ -1,7 +1,7 @@
 pkgbase = keshiki-git
 	pkgdesc = Animated wallpaper manager for X11
-	pkgver = 1.3_c45a1e7e
-	pkgrel = 2
+	pkgver = e73773ab
+	pkgrel = 1
 	url = https://github.com/Konqi0139/Keshiki.git
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -17,7 +17,7 @@ pkgbase = keshiki-git
 	optdepends = yt-dlp: Download a video to apply it as a wallpaper.
 	optdepends = ffmpegthumbnailer: Extract thumbnails for wallpapers.
 	provides = keshiki
-	source = keshiki-git::git+https://github.com/Konqi0139/Keshiki.git#branch=main
+	source = keshiki-git::git+https://github.com/Konqi0139/Keshiki.git#commit=e73773ab81b57f6734665a9a6adba31128c5731c
 	sha256sums = SKIP
 
 pkgname = keshiki-git
