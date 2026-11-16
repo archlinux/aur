@@ -1,0 +1,16 @@
+[Unit]
+Description=Seuil Samsung Continuity daemon (Galaxy Buds Auto Switch)
+After=pipewire.service bluetooth.target
+Wants=pipewire.service
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/seuil
+Restart=on-failure
+RestartSec=5
+Environment=RUST_LOG=info
+ExecStartPre=-/usr/bin/bluetoothctl show
+
+[Install]
+WantedBy=default.target
