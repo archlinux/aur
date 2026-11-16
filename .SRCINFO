@@ -1,6 +1,6 @@
 pkgbase = karere-bin
 	pkgdesc = Native GTK4/libadwaita WhatsApp client (prebuilt from upstream releases)
-	pkgver = 4.5.0
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://github.com/tobagin/karere
 	arch = x86_64
@@ -41,13 +41,13 @@ pkgbase = karere-bin
 	depends = wayland
 	optdepends = hunspell: spell checking support
 	optdepends = libappindicator-gtk3: system tray integration
-	provides = karere=4.5.0
+	provides = karere=4.6.0
 	conflicts = karere
 	conflicts = karere-git
 	conflicts = karere-custom-css
 	options = !strip
 	options = !debug
-	source = karere-4.5.0-1-linux-x86_64.tar.zst::https://github.com/riccardomarotti/karere/releases/download/karere-bin-v4.5.0-1/karere-4.5.0-1-linux-x86_64.tar.zst
-	sha256sums = d6644f219ad48eec99626f2e3341cda47d2d19d8bbd974355a333e9e7d4fd962
+	source = karere-4.6.0-1-linux-x86_64.tar.zst::https://github.com/riccardomarotti/karere/releases/download/karere-bin-v4.6.0-1/karere-4.6.0-1-linux-x86_64.tar.zst
+	sha256sums = 964abf57c46615d9e1ee62aa815174b5da352a0528e91996bbe5db4c3e11676c
 
 pkgname = karere-bin
