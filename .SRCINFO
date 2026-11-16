@@ -1,0 +1,20 @@
+pkgbase = bettersoundcloud-bin
+	pkgdesc = A PC client of SoundCloud with improvement made using electronjs.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://alirezakj.com/bsc
+	arch = x86_64
+	license = MIT
+	depends = electron43
+	provides = bettersoundcloud=0.9.0
+	conflicts = bettersoundcloud
+	source = bettersoundcloud-0.9.0.deb::https://github.com/AlirezaKJ/BetterSoundCloud/releases/download/v0.9.0/BetterSoundCloud-0.9.0-linux-amd64.deb
+	source = LICENSE-0.9.0::https://raw.githubusercontent.com/AlirezaKJ/BetterSoundCloud/v0.9.0/LICENSE
+	source = bettersoundcloud.js
+	source = bettersoundcloud.sh
+	sha256sums = e8c09f7a1a94db040dc3626534af9b338cf70f04a098127e6b383200227c20bf
+	sha256sums = d3174e6a2d9e8691cad3faeb47b3bd503cd722bfa210c76f5b76ae5bc082f71b
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+
+pkgname = bettersoundcloud-bin
