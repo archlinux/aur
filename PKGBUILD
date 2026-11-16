@@ -2,15 +2,15 @@
 
 _pkgname='bmpflash'
 pkgname="${_pkgname}-git"
-pkgver=r268.ea1fa34
+pkgver=r271.06cde6b
 pkgrel=1
 pkgdesc='A command line utility for setting up the on-board Flash of BMP v2.3+ hardware for use in standalone mode'
 arch=('any')
-url="https://github.com/blackmagic-debug/${_pkgname}"
+url="https://codeberg.org/blackmagic-debug/${_pkgname}"
 license=('BSD-3-Clause')
 depends=('libusb')
 makedepends=('git' 'meson')
-source=("git+https://github.com/blackmagic-debug/${_pkgname}.git")
+source=("git+https://codeberg.org/blackmagic-debug/${_pkgname}.git")
 b2sums=('SKIP')
 
 pkgver() {
