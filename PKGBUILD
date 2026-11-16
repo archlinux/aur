@@ -1,42 +1,72 @@
 # Maintainer: Da Chen <dachen@connect.hku.hk>
+#
+# The copy in the Wayper repository (packaging/aur/PKGBUILD) is the source of
+# truth. The release workflow fills in pkgver and sha256sums and publishes it.
 pkgname=wayper
-pkgver=1.8.13
-pkgrel=2
-pkgdesc="Wayland-first wallpaper manager with Wallhaven integration and MCP server"
-arch=('any')
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Wayland-first wallpaper manager with Wallhaven integration"
+arch=('x86_64' 'aarch64')
 url="https://github.com/yuukidach/wayper"
 license=('MIT')
-depends=('python' 'python-click' 'python-httpx' 'python-pillow' 'awww'
-         'python-fastapi' 'uvicorn' 'python-send2trash')
-makedepends=('python-build' 'python-installer' 'python-hatchling')
+_electron=electron41
+depends=("$_electron" 'awww')
+makedepends=('npm')
 optdepends=(
     'hyprland: focused monitor detection'
-    'python-mcp: MCP server for AI assistant integration'
-    'electron: Electron GUI app (wayper-gui)'
-    'npm: install Electron dependencies'
+    'sway: focused monitor detection'
 )
+options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yuukidach/wayper/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('82f9353d8b8697c27223fe60c168a68a588df88f1c19085c096dc6e314f76b32')
+sha256sums=('11bd3cbfce7d3ced32ade2b0bbc615f66f0a9bd2b3188250c7483501620e482f')
 
 build() {
     cd "$pkgname-$pkgver"
-    python -m build --wheel --no-isolation
+    export npm_config_cache="$srcdir/npm-cache"
+    # The package runs on the system Electron and scores on the CPU.
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export ONNXRUNTIME_NODE_INSTALL_CUDA=skip
+    npm ci --no-audit --no-fund
+    npm run build
+    npm prune --omit=dev --no-audit --no-fund
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    local appdir="$pkgdir/usr/lib/$pkgname"
 
-    # Desktop entry for GUI
-    install -dm755 "$pkgdir/usr/share/applications"
-    cat > "$pkgdir/usr/share/applications/wayper.desktop" <<EOF
-[Desktop Entry]
-Name=Wayper
-Exec=wayper-gui
-Icon=preferences-desktop-wallpaper
-Type=Application
-Categories=Utility;
-Comment=Wallpaper manager with Wallhaven integration
-EOF
+    install -dm755 "$appdir"
+    cp -r dist node_modules "$appdir/"
+    install -Dm644 package.json "$appdir/package.json"
+    install -Dm644 -t "$appdir/assets" \
+        assets/icon-256.png assets/trayTemplate.png assets/trayTemplate@2x.png
+
+    # Keep only the ONNX Runtime build for this machine; the model is small
+    # enough that the browser runtime and GPU providers are never used.
+    local ortarch=x64
+    [[ "$CARCH" == aarch64 ]] && ortarch=arm64
+    local ortbin="$appdir/node_modules/onnxruntime-node/bin/napi-v3"
+    find "$ortbin" -mindepth 2 -maxdepth 2 -type d ! -path "$ortbin/linux/$ortarch" \
+        -exec rm -r {} +
+    find "$ortbin" -mindepth 1 -maxdepth 1 -type d -empty -delete
+    rm -f "$ortbin/linux/$ortarch"/libonnxruntime_providers_{cuda,tensorrt}.so
+    rm -rf "$appdir/node_modules/onnxruntime-web"
+    local hf="$appdir/node_modules/@huggingface/transformers"
+    rm -rf "$hf/src" "$hf/types"
+    rm -f "$hf"/dist/ort-wasm* "$hf"/dist/transformers.{js,min.js,web.js,web.min.js}
+    find "$appdir/node_modules" -name '*.map' -delete
+    # npm prune leaves the emptied scope directories of build-only packages.
+    find "$appdir/node_modules" -type d -empty -delete
+
+    install -Dm755 packaging/aur/wayper.sh "$pkgdir/usr/bin/wayper"
+    sed -i "s|@ELECTRON@|$_electron|g" "$pkgdir/usr/bin/wayper"
+    ln -s wayper "$pkgdir/usr/bin/wayper-gui"
+
+    install -Dm644 assets/wayper.desktop "$pkgdir/usr/share/applications/wayper.desktop"
+    local size
+    for size in 32 64 128 256 512; do
+        install -Dm644 "assets/icon-$size.png" \
+            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/wayper.png"
+    done
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
