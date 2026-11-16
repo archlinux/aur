@@ -1,26 +1,28 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 
 pkgname=kipart
-pkgver=1.4.2
+pkgver=2.8.0
 pkgrel=1
-pkgdesc="Python package for generating multi-unit schematic symbols for KiCad from a CSV file"
-url="https://github.com/devbisme/KiPart"
+pkgdesc="Utilities for converting rows of CSV pin data into KiCad symbols and back"
+url="https://github.com/devbisme/kipart"
 depends=(
 	'python'
-	'python-affine'
 	'python-openpyxl'
-	'python-pyparsing'
+	'python-pandas'
+	'python-rich'
+	'python-simp-sexp'
 )
 makedepends=(
 	'python-build'
 	'python-installer'
 	'python-setuptools'
+	'python-wheel'
 )
-optdepends=()
+optdepends=('python-fastmcp: MCP server (kipart-mcp)')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('947ca5cc2c9fcb90e3b63769e0e6603c7a93d26088c30ee3496f4291e01bff7b')
+sha256sums=('aa337f0943667c2ca16adff66bc428b3eb6de4637b5b1b9f540f9200a269765d')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -30,6 +32,7 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	# https://wiki.archlinux.org/title/Python_package_guidelines
 	rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests/
