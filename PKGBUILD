@@ -15,8 +15,8 @@ pkgname=(
   #dbus-daemon-units # Ignore for SELinux package
   dbus-docs-selinux
 )
-pkgver=1.16.2
-pkgrel=2
+pkgver=1.16.4
+pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://www.freedesktop.org/wiki/Software/dbus/"
 arch=(x86_64 aarch64)
@@ -48,7 +48,7 @@ source=(
   0001-Arch-Linux-tweaks.patch
   dbus-reload.hook
 )
-b2sums=('669cd4203fbac908db3a20c5b51355d9e84b68c9cc94f8de52e35544a636c6d5d1df8ee2bbdfd6dead53a6bd9865db547aa4af0e913bac697b138c698840d3ce'
+b2sums=('16ede293841e85770e8aaca54ac0066b25d0e3bcd18652b302ac3cf13cb7038efca0543ab4021f11c4e2501c0d9a913563eefdb7cbb49b6289fc3c4c56ad25cd'
         'fbbc5f312864d2c0e61cead42f578cf650ee8a103e9f6e21658d7406e00a9dfb2c70bc4db647f51eb959df1dad7e94ba52af078325c6a18dcd9d0d500fe15fac'
         '9ac03e4dca00b2c31dc505db4c5da5b8498da21377b01abf186800c6da00492abc6a9a2058c3e3b0f282e3b28e0e4f3318114230db0418fe9754ad2420adb4bf')
 validpgpkeys=(
