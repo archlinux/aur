@@ -1,7 +1,7 @@
 # Maintainer: RamazanBerk20 <119219364+RamazanBerk20 at users dot noreply dot github dot com>
 pkgname=heaphook
-pkgver=1.0.0rc1
-_tag=1.0.0-rc.1
+pkgver=1.0.0rc2
+_tag=1.0.0-rc.2
 pkgrel=1
 pkgdesc="Memory scanner and debugger in the spirit of Cheat Engine"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('webkit2gtk-4.1' 'gtk3')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$_tag.tar.gz::$url/archive/refs/tags/v$_tag.tar.gz")
-sha256sums=('bf5bad6b6334ec8fcc8fd625cdf7a04f96cf39594b15c3a893cde1d3e323b90f')
+sha256sums=('5e5d170d39978c1a44fb946581129846b213fd14adabcbc809de9683ce9f7208')
 _src="HeapHook-$_tag"
 
 prepare() {

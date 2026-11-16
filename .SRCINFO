@@ -1,6 +1,6 @@
 pkgbase = heaphook
 	pkgdesc = Memory scanner and debugger in the spirit of Cheat Engine
-	pkgver = 1.0.0rc1
+	pkgver = 1.0.0rc2
 	pkgrel = 1
 	url = https://github.com/RamazanBerk20/HeapHook
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = heaphook
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	options = !lto
-	source = heaphook-1.0.0-rc.1.tar.gz::https://github.com/RamazanBerk20/HeapHook/archive/refs/tags/v1.0.0-rc.1.tar.gz
-	sha256sums = bf5bad6b6334ec8fcc8fd625cdf7a04f96cf39594b15c3a893cde1d3e323b90f
+	source = heaphook-1.0.0-rc.2.tar.gz::https://github.com/RamazanBerk20/HeapHook/archive/refs/tags/v1.0.0-rc.2.tar.gz
+	sha256sums = 5e5d170d39978c1a44fb946581129846b213fd14adabcbc809de9683ce9f7208
 
 pkgname = heaphook
