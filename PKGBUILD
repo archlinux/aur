@@ -2,7 +2,8 @@
 
 _modname=nchan
 pkgname=nginx-mainline-mod-$_modname
-pkgver=1.3.8
+# renovate: datasource=github-tags depName=slact/nchan
+pkgver=1.3.9
 pkgrel=1
 
 pkgdesc='nchan nginx module'
@@ -44,4 +45,4 @@ package() {
     done
 }
 
-sha256sums=('86e40f97bf380cb81d62c279aa0f992c2d8c93ebcfe242cf0be95e5b6ade9a98')
+sha256sums=('7a7a94c92584d10c795c5980e626f54e0259a96511e637eb1bf703a915129185')
