@@ -1,6 +1,6 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=simplearchiver
-pkgver=4.3.4
+pkgver=4.3.5
 pkgrel=1
 pkgdesc="An alternative to tar"
 arch=(x86_64)
@@ -12,7 +12,7 @@ options=()
 install=
 changelog=
 source=("${pkgname}::git+https://github.com/Stephen-Seo/SimpleArchiver.git#tag=${pkgver}")
-sha256sums=('339bd89986049809f1dbc496af1a53bcf357d902cc9c3986ebeffa847452b006')
+sha256sums=('e0adae1865c56f18cee958581fbd58fd27aa5f65331324ef585528b27f02244a')
 
 prepare() {
     cd "${pkgname}"
