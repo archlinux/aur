@@ -23,6 +23,22 @@ source=("microsoft-authentication-library-for-dotnet-$_commit.tar.gz::$url/archi
 sha512sums=('36916817a43a48932081f2758ebc792f0604cbc7f1cf73ca3f7b1517d8b72fb4c1fd6e3ae642daca4fc6ddc055b225cad00102026c3a8b959a6a219b8f723913')
 b2sums=('a07b231b4684edc8f4622c21110da681973d31f40d235475255f198aa791c4c5e69e9170343909d1c55e70ff2e716783e0632ff300fbbcd8d242c727b5a17697')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -83,6 +99,8 @@ EOF
 }
 
 prepare() {
+  # The SDK to build with (_dotnet_sdk), for dotnet anywhere in $srcdir
+  printf '{ "sdk": { "version": "%s", "rollForward": "latestPatch" } }\n' "$(_dotnet_sdk)" >"$srcdir/global.json"
   # The runtime packages come from the .NET dotnet-build-deps-10.0 chooses, so the build never mixes
   # two builds of .NET: the source-built artifacts of Arch Linux (dotnet-source-built-artifacts)
   # with dotnet-build-deps-10.0, Microsoft's build from nuget.org with dotnet-build-deps-10.0-bin.
