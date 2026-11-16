@@ -45,7 +45,6 @@ build() {
         -D USE_QT6=ON
         -W no-author
     )
-    export CXXFLAGS+=" -I/usr/include/opencv4"
     cmake "${cmake_options[@]}"
     cmake --build build
 }
