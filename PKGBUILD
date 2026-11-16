@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph.fink@gmail.com>
 # Contributor: Achmad Fathoni<fathoni.id(at)gmail.com>
 
@@ -8,7 +11,7 @@ pkgdesc="Typing stubs for pytz"
 url="https://github.com/python/typeshed"
 
 pkgver=2025.2.0.20251108
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 license=("Apache-2.0")
@@ -24,7 +27,9 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('cb6486a0292802e01cad08639f1ae5163830dada705d5dd8a2d35a92d08dd7a55dc34087fbe239d909e8c2e9379c24f03ceb22c16efcaaf8910e1dd6fae3510a')
+b2sums=(
+    "cb6486a0292802e01cad08639f1ae5163830dada705d5dd8a2d35a92d08dd7a55dc34087fbe239d909e8c2e9379c24f03ceb22c16efcaaf8910e1dd6fae3510a"
+)
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
