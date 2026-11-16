@@ -3,32 +3,33 @@
 
 pkgname=qualcomm-software-center
 pkgver=1.32.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Qualcomm Software Center - Discover and download software distributions, service tasks, tools and change requests"
 arch=('x86_64')
 url="https://www.qualcomm.com/developer/software/qualcomm-software-center"
 license=('custom')
 depends=('electron41' 'hicolor-icon-theme')
-makedepends=()
 install=qualcomm-software-center.install
-provides=('qualcomm-software-center')
-conflicts=()
-backup=()
 options=('!strip' '!emptydirs')
 source=("https://softwarecenter.qualcomm.com/api/download/software/tools/Qualcomm_Software_Center/Linux/Debian/${pkgver}/QualcommSoftwareCenter${pkgver}.Linux-x86.deb"
         "qualcomm-software-center.sh"
         "qualcomm-software-center.install")
 sha256sums=('eb74ccc4bf1978d8c888db3b94bc48dafd3d20050bb3b5748aff673f94422d3a'
-            'e283d6b9e441b9ccefe986582201b1608180be379af7b519f8aca02fbf330076'
-            '10429b8404856be05897ab1b712f97ab6104cebefffc1661b6f1dcf34875479b')
+            '0fc617df91468164544287aefecc2ed2d46be6883ae391df23d56c1c00b02d44'
+            '98afada75658fbd6b03a53f0e09120b18b236b09965a8acecbf14aceead081f5')
 
 prepare() {
-    # 解压deb包
-    ar x "QualcommSoftwareCenter${pkgver}.Linux-x86.deb"
-
-    # 解压data.tar.xz
+    # makepkg 已经用 bsdtar 解开 deb（ar 归档），data.tar.* 就在 $srcdir 里；
+    # 这里只解数据归档，不再重复 ar x，并兼容 xz/zst 两种压缩。
     mkdir -p temp_extract
-    tar -xf data.tar.xz -C temp_extract
+    if [[ -f data.tar.xz ]]; then
+        bsdtar -xf data.tar.xz -C temp_extract
+    elif [[ -f data.tar.zst ]]; then
+        bsdtar -xf data.tar.zst -C temp_extract
+    else
+        error "未找到 deb 的 data.tar.xz/data.tar.zst"
+        return 1
+    fi
 
     # 修改应用代码中的资源路径（保持原deb包路径不变）
     if [[ -d "temp_extract/opt/qcom/softwarecenter/bin/resources/app" ]]; then
@@ -53,8 +54,21 @@ package() {
     local _lib_dir="${pkgdir}/opt/qcom/softwarecenter/bin"
     install -d "${_lib_dir}"
 
-    # 安装应用文件（排除原始electron二进制）
-    find temp_extract/opt/qcom/softwarecenter/bin -mindepth 1 -maxdepth 1 ! -name "softwarecenter" -exec cp -r {} "${_lib_dir}/" \;
+    # 安装应用文件：只装 QSC 自己的运行时（qik/qsc-cli/resources），
+    # 上游 deb 里附带的 Electron 运行时（二进制、*.pak、locales、swiftshader 等）
+    # 一律不要——本包用系统 electron41，装了也只会白占约 100MB。
+    local _item
+    for _item in temp_extract/opt/qcom/softwarecenter/bin/*; do
+        case "${_item##*/}" in
+            softwarecenter | locales | \
+            chrome-sandbox | chrome_crashpad_handler | chrome_*.pak | resources.pak | \
+            icudtl.dat | snapshot_blob.bin | v8_context_snapshot.bin | version | \
+            vk_swiftshader_icd.json | *.so | *.so.*)
+                continue
+                ;;
+        esac
+        cp -a "${_item}" "${_lib_dir}/"
+    done
 
     # 记录应用版本，安装脚本用它更新 QIK 组件数据库
     echo "${pkgver}" > "${pkgdir}/opt/qcom/softwarecenter/bin/qsc-version"
@@ -75,5 +89,5 @@ package() {
 
     # 清理临时文件
     rm -rf temp_extract
-    rm -f control.tar.xz data.tar.xz debian-binary
+    rm -f control.tar.xz control.tar.zst data.tar.xz data.tar.zst debian-binary
 }

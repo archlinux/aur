@@ -3,7 +3,6 @@ set -e
 
 _APPDIR="/opt/qcom/softwarecenter/bin"
 _RUNNAME="${_APPDIR}/resources/app"
-_OPTIONS=""
 
 export PATH="${_APPDIR}:${PATH}"
 export ELECTRON_IS_DEV=0
@@ -40,7 +39,7 @@ fi
 cd "${_APPDIR}"
 
 if [[ "${EUID}" -ne 0 ]] || [[ "${ELECTRON_RUN_AS_NODE}" ]]; then
-    exec electron41 "${_RUNNAME}" "${_OPTIONS}" "${flags[@]}" "$@"
+    exec electron41 "${_RUNNAME}" "${flags[@]}" "$@"
 else
-    exec electron41 "${_RUNNAME}" "${_OPTIONS}"  "${flags[@]}" "$@"
+    exec electron41 "${_RUNNAME}" --no-sandbox "${flags[@]}" "$@"
 fi
