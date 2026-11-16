@@ -2,7 +2,7 @@
 # Maintainer: bethropolis <bethropolis at gmail dot com>
 
 pkgname='sift-context-bin'
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Sift a codebase into an LLM-friendly context document'
 url='https://github.com/bethropolis/sift'
@@ -13,10 +13,10 @@ conflicts=('sift')
 optdepends=('chromium: chromeless window for sift serve --app' 'git: repository cloning with sift clone and serve --allow-clone')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bethropolis/sift/releases/download/v${pkgver}/sift_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('ba925df8fafe55f2131c5e1fed20d5035ee8cae34dbed6d7c0e9bbbed9871810')
+sha256sums_aarch64=('fb7a33f24f3b76be36a327fb068a3db32742a953d0ceb4c4131d2acf347a367b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bethropolis/sift/releases/download/v${pkgver}/sift_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('ab7a71206af72f0c70268bc90bd7973c7419877396ab0f03c218e41ff4c49b92')
+sha256sums_x86_64=('69d8568bc2464404c09d3b9aa113abe02063b5c4b0fc7d6108cce6f684b313d3')
 
 package() {
   install -Dm755 "./sift" "${pkgdir}/usr/bin/sift"
