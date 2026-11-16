@@ -1,12 +1,12 @@
 # Maintainer: sumerjakhar78 (AUR), sumerchoudhary78 (GitHub)
 pkgname=hyprlume
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Glass command shell and local English voice companion for Hyprland, powered by HyprPilot'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sumerchoudhary78/hyprlume'
 license=('MIT' 'Apache-2.0')
-depends=('glibc' 'gcc-libs' 'quickshell' 'qt6-declarative' 'qt6-wayland' 'hyprland' 'pipewire-audio' 'wireplumber' 'python')
+depends=('glibc' 'gcc-libs' 'systemd' 'quickshell' 'qt6-declarative' 'qt6-wayland' 'hyprland' 'pipewire-audio' 'wireplumber' 'python')
 makedepends=('cargo' 'git')
 optdepends=('espeak-ng: phonemization for local Piper speech output')
 # GCC LTO objects in native Cargo build dependencies cannot be linked by
