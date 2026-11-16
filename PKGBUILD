@@ -12,8 +12,8 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=openssh-selinux
-pkgver=10.6p1
-pkgrel=3
+pkgver=10.6p2
+pkgrel=1
 pkgdesc="SSH protocol implementation for remote login, command execution and file transfer, with SELinux support"
 arch=(x86_64 aarch64)
 url='https://www.openssh.com/portable.html'
@@ -55,6 +55,9 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 groups=('selinux')
 source=(
+  # Use cdn.openbsd.org rather than ftp.openbsd.org for now: the TLS stack at
+  # ftp.openbsd.org rejects the ClientHello sent by OpenSSL 4 with default
+  # settings (decode_error, alert 50).
   https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux}-${pkgver}.tar.gz{,.asc}
   99-archlinux.conf
   ${pkgname/-selinux}.tmpfiles
@@ -68,7 +71,7 @@ source=(
   sshd.pam
   LICENSE
 )
-sha256sums=('a9dc9565dffe8640f64d863cd29a32bc4a3dbdec0566a7fc44c5d6ee767d5f39'
+sha256sums=('9ae44872090cf2f06b3cf9ff147e7f16f309671340763ed2f99248398ae29d5b'
             'SKIP'
             '78b806c38bc1e246daaa941bfe7880e6eb6f53f093bea5d5868525ae6d223d30'
             'fadd31c107aee3fc6b501ca046aeb5e6fb1b0256cc5cdcade4e2c95205823a28'
@@ -81,7 +84,7 @@ sha256sums=('a9dc9565dffe8640f64d863cd29a32bc4a3dbdec0566a7fc44c5d6ee767d5f39'
             'a16492e1eb9219d47a9053f0c83cdc323bff3c6f5b573bc6509ec40e40e4d04b'
             '633e24cbfcb045ba777d3e06d5f85dfaa06d44f4727d38c7fb2187c57498221d'
             '7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3')
-b2sums=('9ccb92fde6319f00373f38d27c9fbd6802c7b94bdf881bacecbace1676ef9909213f70be99184c5f9cdda06c9192196acb56503c5965d4d50ef1c701b029d06d'
+b2sums=('be4ecff2d1b72c7836a7e324b4eb68edcd0bfb4d83b8969fed97ba437c3c72df97c44db0ed9d323677b4bec4681ebcc06935824ce399faa217148bb4b518d739'
         'SKIP'
         '1ff8cd4ae22efed2b4260f1e518de919c4b290be4e0b5edbc8e2225ffe63788678d1961e6f863b85974c4697428ee827bcbabad371cfc91cc8b36eae9402eb97'
         '57e77e55fcbd9d7b9951adbafe11ba62e4b8b7338c2a6fe3f163afe5b84458db042024cefbc55f9393cf17d97d067f1c2d9c61880516501bfa4e5c92371e494a'

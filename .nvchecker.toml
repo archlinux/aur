@@ -1,7 +1,10 @@
 [openssh]
 source = "regex"
 regex = 'openssh-\d+\.\d+p\d+\.tar.gz'
-url = "https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/"
+# Use cdn.openbsd.org rather than ftp.openbsd.org for now: the TLS stack at
+# ftp.openbsd.org rejects the ClientHello sent by OpenSSL 4 with default
+# settings (decode_error, alert 50).
+url = "https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/"
 prefix = "openssh-"
 from_pattern = '\.tar\.gz'
 to_pattern = ''
