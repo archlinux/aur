@@ -1,6 +1,6 @@
 pkgbase = python-smithy-xml
 	pkgdesc = XML serialization and deserialization support for Smithy tooling.
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/smithy-lang/smithy-python/tree/develop/packages/smithy-xml
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-smithy-xml
 	makedepends = python-installer
 	depends = python
 	depends = python-smithy-core
-	source = smithy-xml-0.5.0.tar.gz::https://github.com/smithy-lang/smithy-python/archive/refs/tags/smithy-xml/v0.5.0.tar.gz
-	sha256sums = 6bf6f124b5723e453fd4ee728db6d65a1f00c69b76040ae079a9b56e314c73dd
+	source = smithy-xml-0.6.0.tar.gz::https://github.com/smithy-lang/smithy-python/archive/refs/tags/smithy-xml/v0.6.0.tar.gz
+	sha256sums = 0d27b83fdbb0e87a1d7670997a8494e866b1e3e34ac9c5824a7e5e56eeab83c2
 
 pkgname = python-smithy-xml
