@@ -4,7 +4,7 @@ _upstream=libsmbclient-php
 pkgbase=php-smbclient
 pkgname=(php-smbclient php-legacy-smbclient)
 _extname=smbclient
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="PHP bindings for libsmbclient."
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,7 +13,7 @@ license=('BSD')
 makedepends=('php' 'php-legacy')
 depends=('smbclient')
 source=("https://github.com/eduardok/libsmbclient-php/archive/${pkgver}.tar.gz")
-b2sums=('8152ed3c92bdbbcdac59c19f77b203cb2fbaf98767d8137d3bbbc96906bb52c3bbdfacdfb5c32eecc4ccb6e44c9417b8c57e80621bd6e4d15a324f97f461984c')
+b2sums=('65d7eed8053852d2550df5a2ee0d764fb1693f6f5a32d51db81402773d49545bddd4a330b8f7ba5a1d8aa1da24429c94ea2999bf1ab9ddbd3198b9ff4843dcd5')
 
 prepare() {
   mv "${_upstream}-${pkgver}" "$pkgbase-$pkgver"
