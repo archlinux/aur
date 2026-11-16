@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph.fink@gmail.com>
 
 pkgname=python-segno
@@ -6,7 +9,7 @@ pkgdesc="Python QR Code and Micro QR Code encoder"
 url="https://segno.readthedocs.io/"
 
 pkgver=1.6.6
-pkgrel=3
+pkgrel=4
 
 arch=("any")
 license=("BSD-3-Clause")
