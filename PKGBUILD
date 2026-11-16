@@ -1,8 +1,8 @@
 # Maintainer: Gaou Piou <i.am.piou@gmail.com>
 
 pkgname=anycode-bin
-pkgver=0.0.101
-pkgrel=2
+pkgver=0.0.102
+pkgrel=1
 pkgdesc='Desktop workspace for AI coding agents (Claude Code, Codex and native)'
 arch=('x86_64')
 url='https://github.com/incadawr/anycode'
@@ -38,9 +38,9 @@ source=("AnyCode-${pkgver}.AppImage::https://github.com/incadawr/anycode/release
         'LICENSE'
         'anycode.desktop'
         'anycode.sh')
-sha256sums=('09847295f6c7fe8d6d61f5c9380ce45250728382d356e7e0777f123157357e6b'
+sha256sums=('bddf05e3ef3a8fc4f893f668bf9a367c911bde2985710eea27e9b8830317c6e7'
             'f65fd74511d34e143f022c7fdf7f8ee7d4ca9321d80e7390ce3f5147f0f94e34'
-            '3c2d00cc5435742a1cfe69d9733786934492bd0c474077c039d8c11665e8427f'
+            'eb3d3a4a865f5cff62ff2a3a3bb77f5e660ee4f0376a90a9d8e238241034df81'
             'd2173b4ad832386fdef35329734ebf7900c4910460792039992b0ebc712cde83')
 
 prepare() {
@@ -70,6 +70,14 @@ package() {
 
   install -Dm755 "${srcdir}/anycode.sh" "${pkgdir}/usr/bin/anycode"
 
+  # Electron takes the Wayland app_id / X11 WM_CLASS from the app name in
+  # package.json ("@anycode/desktop", which it sanitizes to "anycode-desktop"),
+  # not from the executable or upstream's own .desktop file. Upstream's
+  # StartupWMClass=AnyCode therefore never matches, so GNOME Shell treats the
+  # window as an unassociated app: it gets a second, icon-less entry in the
+  # shell instead of the installed icon. anycode.desktop carries the class the
+  # binary actually reports; --class=anycode is ignored by this Electron build,
+  # so the correct value has to be declared here.
   install -Dm644 "${srcdir}/anycode.desktop" \
     "${pkgdir}/usr/share/applications/anycode.desktop"
 
