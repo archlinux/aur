@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 pkgname="python-osmnet"
@@ -6,7 +9,7 @@ pkgdesc="Tools for the extraction of OpenStreetMap street network data "
 url="http://udst.github.io/osmnet/"
 
 pkgver=0.1.7
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 license=("AGPL-3.0-only")
@@ -33,7 +36,9 @@ checkdepends=(
 )
 
 source=("${_name}-${pkgver}.tar.gz::https://github.com/UDST/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=("5e047107f4836737e373da1aed549eb4227d67b5de196bda8a3de1d575e34f88c3fa7bbbf3aea15fb6cdbadadabfa8b3fe3ccc6196329ceafc7f6a05bb6e17dd")
+b2sums=(
+    "5e047107f4836737e373da1aed549eb4227d67b5de196bda8a3de1d575e34f88c3fa7bbbf3aea15fb6cdbadadabfa8b3fe3ccc6196329ceafc7f6a05bb6e17dd"
+)
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
