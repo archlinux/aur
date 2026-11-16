@@ -1,0 +1,26 @@
+pkgbase = juhradial-mx
+	pkgdesc = Beautiful radial menu for Logitech MX Master mice on Linux
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/JuhLabs/juhradial-mx
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = git
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = python-cryptography
+	depends = dbus
+	optdepends = ydotool: for cursor capture on Wayland
+	provides = juhradial-mx
+	conflicts = juhradial-mx-git
+	source = juhradial-mx-0.4.4.tar.gz::https://github.com/JuhLabs/juhradial-mx/archive/v0.4.4.tar.gz
+	sha256sums = 6157b211db5a9bc879f466b609e5bd9e28e59c7efd8762ccc7f8d9a35672edf4
+
+pkgname = juhradial-mx

@@ -1,0 +1,5 @@
+[infisical]
+source = "github"
+github = "JuhLabs/juhradial-mx"
+prefix = "v"
+use_latest_release = true
