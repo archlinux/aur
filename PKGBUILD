@@ -2,7 +2,7 @@
 pkgname=go-music-dl-bin
 _pkgname="Go Music DL"
 _rpmname=music-dl-desktop-go
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="一个基于 Go 语言的全网音乐搜索与下载工具。支持 CLI 命令行与 Web 服务双模式，内置网易云、QQ、酷狗、Bilibili、汽水音乐等 10+ 个主流平台，支持多源并发搜索与无损音质解析."
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
     'ffmpeg'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_rpmname}-linux-amd64.rpm")
-sha256sums=('e85d9837c46123ca6988768b1709cc293cc25b8622b852876666794315bb4a7e')
+sha256sums=('38249a44c3a7925115895832fbbcd5625b34c6062db8a9b7c4d349acd2801f9c')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
