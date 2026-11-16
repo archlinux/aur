@@ -6,7 +6,7 @@
 # and pushes this file to aur.archlinux.org on every release.
 
 pkgname=oynix-bin
-pkgver=5.2.4
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Fast, private web browser (Rust + QML, Qt 6.12) with Chrome/Firefox extension support (prebuilt)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=('oynix')
 options=(!strip !debug)
 noextract=("oynix-${pkgver}-1-x86_64.pkg.tar.zst")
 source=("oynix-${pkgver}-1-x86_64.pkg.tar.zst::${url}/releases/download/v${pkgver}/oynix-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('fa852c5543a109e542bfa145d0559add84e1afae4f364d56ef51f449fa520cc0')
+sha256sums=('5dd1d453883230fe3be6af49ef1e218ebab78720d7744719df39ae9937fb7b71')
 
 package() {
   bsdtar -xf "oynix-${pkgver}-1-x86_64.pkg.tar.zst" -C "$pkgdir" --exclude '.PKGINFO' --exclude '.BUILDINFO' --exclude '.MTREE' --exclude '.INSTALL'
