@@ -29,6 +29,22 @@ source=("csharp-language-server-protocol-$_commit.tar.gz::$url/archive/$_commit.
 sha512sums=('cc3e223c5dc2e0096495722e485a296c790cd88a5e55b6990e8e0ab5acfef14ae13ae499616a2e8ccc488f81ac9efaaa5e21961bd5c464d28ba11fc0e5faacfc')
 b2sums=('bc564390c993b2cd14c38c909ae485846214569130d604c6242b5e28af9c62c7954496156373fde793e4cfbfbdd0737c013deab0ba464d0f1bfbbe686246e30e')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -141,8 +157,8 @@ prepare() {
   done
 
   cd "csharp-language-server-protocol-$_commit" || exit
-  # Upstream pins a newer feature band of the .NET SDK, which isn't needed
-  jq 'del(.sdk)' global.json >global.json.new
+  # Upstream pins a newer feature band of the .NET SDK, which isn't needed: the one we build with
+  jq --arg sdk "$(_dotnet_sdk)" '.sdk = { version: $sdk, rollForward: "latestPatch" }' global.json >global.json.new
   mv global.json.new global.json
   # With the newer runtime packages, NuGet would pick System.Threading.Tasks.Extensions 4.6.0, which
   # Roslyn asks for, for the source generator, and fail as System.IO.Pipelines needs 4.6.3 (NU1605)
