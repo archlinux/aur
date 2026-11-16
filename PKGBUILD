@@ -5,8 +5,8 @@
 
 pkgbase=xzram
 pkgname=('xzram' 'xzram-gui')
-pkgver=0.6.0
-pkgrel=1
+pkgver=0.7.0
+pkgrel=2
 pkgdesc="Cross-distro Linux swap management (zram, swap files, sysctl tuning)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/asafelobotomy/XZram"
@@ -17,7 +17,7 @@ _srcname=XZram
 source=("$_srcname-$pkgver.tar.gz::https://github.com/asafelobotomy/XZram/archive/refs/tags/v$pkgver.tar.gz")
 # Pinned from the published v$pkgver tag archive (release CI: scripts/ci-aur-package.sh
 # AUR_MODE=release). Re-pin on every version bump.
-sha256sums=('fd1c278450589d90618f83fa13edb2033f59917569d162a040a8f83e63478fe7')
+sha256sums=('e6f5aaef75a280a000b68d6f0f0fc9e0c4d6645e3100bad7ef186e687686e7ce')
 
 prepare() {
   cd "$_srcname-$pkgver"
@@ -41,6 +41,7 @@ package_xzram() {
   depends=('polkit' 'systemd' 'util-linux')
   optdepends=(
     'zram-generator: zram swap via zram-generator'
+    'btrfs-progs: swapfiles on btrfs'
     'xzram-gui: Qt6 desktop GUI'
     'uq: the Memory and swap page in uQ Settings'
   )
