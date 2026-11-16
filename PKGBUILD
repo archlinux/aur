@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph.fink@gmail.com>
 
 pkgname=python-wolkenbruch
@@ -6,7 +9,7 @@ pkgdesc="Remind you to pack your rain gear when it’s forecast to rain"
 url="https://gitlab.com/christophfink/wolkenbruch/"
 
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 license=("GPL-3.0-or-later")
@@ -27,7 +30,9 @@ depends=(
 )
 
 source=("https://github.com/christophfink/${_name}/releases/download/v${pkgver}/${_name}-${pkgver}.tar.gz")
-b2sums=("026af6cbd70e487a1f022c549e52321ae0dd7b0441237e26744a0ff05e8b4a66f39521c7f5845cc36a7afe63af28737a9ddc4718cff36dded7b46784400abd11")
+b2sums=(
+    "026af6cbd70e487a1f022c549e52321ae0dd7b0441237e26744a0ff05e8b4a66f39521c7f5845cc36a7afe63af28737a9ddc4718cff36dded7b46784400abd11"
+)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
