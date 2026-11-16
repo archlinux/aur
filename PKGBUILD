@@ -17,7 +17,7 @@
 # repository's docs/measure.md for the method.
 
 pkgname=dsh-hyprland
-pkgver=0.1.0
+pkgver=0.1.0.r3.gc8c7b1c
 pkgrel=1
 pkgdesc='Hyprland/NVIDIA launcher for DeepSeek Harness: Rust orchestration, Electron WebView'
 arch=('x86_64')
@@ -28,6 +28,16 @@ makedepends=('cargo' 'git')
 options=('!strip' '!debug')
 source=("$pkgname::git+https://github.com/shenli306/dsh-hyprland.git#commit=c8c7b1cadee94047fcdd8a8ea4d00a223d72bbf7")
 sha256sums=('SKIP')
+
+# The version lives in shell/Cargo.toml; AUR rejects a PKGBUILD whose .SRCINFO
+# disagrees with it, so derive the canonical form here instead of editing two
+# files on every release. Pin `source` to a commit and the result is stable.
+pkgver() {
+  cd "$pkgname"
+  local ver
+  ver=$(sed -n 's/^version[[:space:]]*=[[:space:]]*"\([^"]*\)".*/\1/p' shell/Cargo.toml | head -1)
+  printf '%s.r%s.g%s' "${ver:-0}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "$pkgname"
