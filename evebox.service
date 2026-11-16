@@ -9,6 +9,7 @@ Type=simple
 User=evebox
 Group=evebox
 # Extra command line options, e.g. EVEBOX_OPTS="-v"
+Environment=EVEBOX_OPTS=
 EnvironmentFile=-/etc/default/evebox
 ExecStart=/usr/bin/evebox server -D /var/lib/evebox -c /etc/evebox/evebox.yaml $EVEBOX_OPTS
 Restart=on-failure

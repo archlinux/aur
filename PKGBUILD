@@ -3,7 +3,7 @@
 pkgname=evebox-bin
 _pkgname=evebox
 pkgver=0.31.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Web based Suricata EVE event viewer and alert management (static upstream binary)"
 arch=('x86_64' 'aarch64')
 url="https://evebox.org"
@@ -39,7 +39,7 @@ source_aarch64=("https://evebox.org/files/release/${pkgver}/${_pkgname}-${pkgver
 # Run `updpkgsums` before the first build: upstream publishes no checksum
 # for the zip archives, so the arch-specific SKIP entries are placeholders.
 sha256sums=('cc40a3ad6421ffc194b8cede0bfc34f1354f4345b700c2362f2e96625608f97a'
-            'eb0ff43a308d900f19c7317fcea5c58dd6cbbe0639a4f117d28489f259c30836'
+            '62eee100f53910eaebcb86ed96311fe2cf030a6db2e91b8815c9bb0f730e3176'
             '6eb35fbedd62343666fb38536975c235770482270d1853e786fedfab5fe61e45'
             'ebf1a86bf867286e1fcbbcf66ae80021bcb9aaafb3b70ff22f7c51da83f9a44b'
             'c5ec1f6e991ee4f3bedc3b4cfcdafe5b42a331da5eca515cb8506e513dd4c889'
