@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph.fink@gmail.com>
 
 pkgname=spreet
@@ -5,7 +8,7 @@ pkgdesc="Create spritesheets from SVGs"
 url="https://github.com/flother/spreet"
 
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64" "i686")
 license=("MIT")
