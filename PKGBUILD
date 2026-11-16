@@ -6,7 +6,7 @@
 pkgname=fluxer-bin
 # Upstream versions are date-based (see pkg.sh). They sort above the 0.0.x
 # scheme the package used before.
-pkgver=2026.1115.225010
+pkgver=2026.1116.21910
 pkgrel=1
 pkgdesc="Fluxer Desktop Application"
 arch=('x86_64' 'aarch64')
@@ -27,10 +27,10 @@ source=("app.fluxer.FluxerDesktop.desktop")
 sha256sums=('d14f917714dd3cb1bfe84911f973690fba79ee04b1dffb88a88d75581c38c3f7')
 
 source_x86_64=("fluxer-${pkgver}-x64.tar.gz::https://api.fluxer.app/dl/desktop/stable/linux/x64/${pkgver}/tar_gz")
-sha256sums_x86_64=('98e661a29ceecd98c905a5d27c9c8fbbfd6ff2a0fa865d5b2a008c00fc8399b7')
+sha256sums_x86_64=('6b8771ace504d5c494bf7c0be28e510fbcfcc70779347ce6c0ad2f1b8b2e84f9')
 
 source_aarch64=("fluxer-${pkgver}-arm64.tar.gz::https://api.fluxer.app/dl/desktop/stable/linux/arm64/${pkgver}/tar_gz")
-sha256sums_aarch64=('2e703318d365b9497ca19e4eaabb23532eec17508fa170fa986bcd7b0e7e8934')
+sha256sums_aarch64=('0b9c64b6f63eadbf8494e4f98084da384333b74b0f08e7dce1c9c887a6f513c0')
 
 package() {
     local _dir
