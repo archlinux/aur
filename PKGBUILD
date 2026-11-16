@@ -5,9 +5,10 @@ pkgname="${_pkgname}-git"
 pkgver=r643.72e1718
 pkgrel=1
 pkgdesc='A tool for managing and flashing Black Magic Probe firmware'
-arch=('any')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://codeberg.org/blackmagic-debug/bmputil'
 license=('MIT OR Apache-2.0')
+depends=('glibc' 'libgcc')
 makedepends=('git' 'rust' 'cargo')
 options=('!lto') # aws-lc-sys C objects built with GCC LTO cannot be linked by rust-lld
 source=("git+https://codeberg.org/blackmagic-debug/bmputil.git")
@@ -45,6 +46,6 @@ package() {
   cd "${_pkgname}"
 
   install -Dm 755 -t "${pkgdir}/usr/bin/" "target/release/${_pkgname}-cli"
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm 644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-MIT"
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
 }
