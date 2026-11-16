@@ -2,7 +2,7 @@
 _pkgname=voiden
 
 pkgname=${_pkgname}-appimage
-pkgver=2.3.4
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Voiden API Client"
 arch=('x86_64')
@@ -11,9 +11,9 @@ license=('Apache-2.0')
 options=('!strip' '!debug') # will not function if makepkg is allowed to strip chars from binary
 depends=('fuse2')
 conflicts=('voiden-beta-appimage')
-_appimage=Voiden-${pkgver}.AppImage
+_appimage=voiden-${pkgver}.AppImage
 source=("https://voiden.md/api/download/stable/linux/x64/${_appimage}")
-sha256sums=('6a7b4ede42b97874ad6215c89280917f52899b6ffccbbfc4d96c286ee63b136e')
+sha256sums=('5b866d9af465fa587c17a6ed9a1fa58ac90e9181a9d2e1cfb6c8983e1fb16d4c')
 
 # install method based on https://wiki.archlinux.org/title/User:SergeyK/AppImage_package_guidelines
 
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   # Adjust .desktop so it will work outside of AppImage container
-  sed -i -E "s|Exec=Voiden.*|Exec=/usr/bin/${pkgname}|" \
+  sed -i -E "s|^Exec=.*|Exec=/usr/bin/${pkgname}|" \
     "${srcdir}/squashfs-root/Voiden.desktop"
 }
 
