@@ -3,7 +3,7 @@
 # The computer side of SudoStamp: `sudo sudostamp setup` pairs with the phone app and adds
 # pam_rssh to sudo's PAM stack. Updated per release by scripts/update-aur.sh.
 pkgname=sudostamp
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Approve sudo with your Android phone's fingerprint (computer side: pairing and PAM setup)"
 arch=('any')
@@ -12,13 +12,13 @@ license=('MIT')
 depends=('bash' 'python' 'openssh' 'pam_rssh')
 optdepends=("fprintd: try this computer's own fingerprint reader first when at the desk")
 source=("$pkgname-v$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('45fc96af5e3b001062201a7ab2b5e298bd5b1a00290b020994d5f3f5a9b1529c')
+sha256sums=('c0a326a928ab08a980ac7d7dfd80c9093a23d724a9969332391037fe5527c941')
 
 package() {
   # GitLab names the archive's top directory <project>-<tag>-<commit>.
   cd "$srcdir"/"$pkgname"-v"$pkgver"*/
   local f
-  for f in install.sh pair.py attest.py pam_check.py sudostamp-is-local.sh sudostamp-probe.sh; do
+  for f in install.sh pair.py attest.py pam_check.py sudostamp-is-local.sh sudostamp-probe.sh sudostamp-run.sh ask.py; do
     install -Dm755 "tools/$f" "$pkgdir/usr/lib/$pkgname/$f"
   done
   # Where install.sh looks for it (patches/ beside itself): the pinned pam_rssh timeouts.
