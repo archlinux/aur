@@ -1,4 +1,4 @@
-# Maintainer: crux <a1956681558 at outlook dot com>
+# Maintainer: crux <crrvx at outlook dot com>
 # Contributor: yjun <jerrysteve1101 at gmail dot com>
 
 
@@ -15,7 +15,7 @@
 
 
 pkgname=stsw-link007
-pkgver=3.17.11
+pkgver=3.18.12
 pkgrel=1
 pkgdesc="The firmware upgrade application for ST-LINK, ST-LINK/V2, ST-LINK/V2-1, and STLINK-V3 boards through the USB port"
 arch=('x86_64')
@@ -28,20 +28,18 @@ _license_file="${license:11}_${pkgname^^}.pdf"
 _pkg_file="${pkgname}-v${pkgver//./-}.zip"
 
 source=(
-    "$_pkg_file::$url"
-    "$pkgname.sh"
-    "$pkgname.png"
-    "${_exec_file,,}.desktop"
+    "local://$_pkg_file"
+    "local://$pkgname.sh"
+    "local://$pkgname.png"
+    "local://${_exec_file,,}.desktop"
     "https://www.st.com/resource/en/license/$_license_file"
 )
 
-sha256sums=(
-    '51b76fcbf6b417d03c7cbfc9f029a2d1f463bd0200ee8f3d80764d45d735ee1c'
-    '45e42bdedd3b2c1a312388e77c86e743a5ed2bf71a1b4678acc760380c853784'
-    'a692a0956462419ba10a149c06e8be0f2e1a3e16dfb4b1ce06f9c612bf852d3c'
-    '87693fd2356ba5aa912bf58fdfa0af00a527591cf616cff19cd694f69eba4a9c'
-    'SKIP'
-)
+sha256sums=('8bc652628506b04103b0b14417b2f918c4d5696090045c82002bc557102cbe85'
+            '45e42bdedd3b2c1a312388e77c86e743a5ed2bf71a1b4678acc760380c853784'
+            'a692a0956462419ba10a149c06e8be0f2e1a3e16dfb4b1ce06f9c612bf852d3c'
+            '87693fd2356ba5aa912bf58fdfa0af00a527591cf616cff19cd694f69eba4a9c'
+            '0792ee061576afb2c9a11d80e7cdcd0ab2da6f223de6442c9bf1e0ebefd17bcd')
 
 
 prepare() {
