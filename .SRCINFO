@@ -1,0 +1,25 @@
+pkgbase = python-stream-unzip
+	pkgdesc = Python function to stream unzip all the files in a ZIP archive on the fly
+	pkgver = 0.0.101
+	pkgrel = 1
+	url = https://stream-unzip.docs.trade.gov.uk
+	arch = x86_64
+	license = MIT
+	checkdepends = mypy
+	checkdepends = python-coverage>=7
+	checkdepends = python-pytest>=8.3
+	checkdepends = python-pytest-cov>=5
+	checkdepends = python-trio
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	depends = glibc
+	depends = libgcc
+	depends = python
+	depends = python-pycryptodome
+	depends = python-stream-inflate
+	optdepends = python-trio: alternative async concurrency and I/O implementation
+	source = python-stream-unzip-0.0.101.tar.gz::https://github.com/uktrade/stream-unzip/archive/v0.0.101.tar.gz
+	sha256sums = b6eee2772cd4539fc8086157ac8d983948a2bc528537ae0f0ab9e2a1d80c1fbe
+
+pkgname = python-stream-unzip

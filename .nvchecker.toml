@@ -1,0 +1,4 @@
+[python-stream-unzip]
+source = "git"
+git = "https://github.com/uktrade/stream-unzip.git"
+prefix = "v"
