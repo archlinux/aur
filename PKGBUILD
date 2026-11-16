@@ -1,14 +1,16 @@
 # Maintainer: sumerjakhar78 (AUR), sumerchoudhary78 (GitHub)
 pkgname=hyprlume
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Glass command shell and local English voice companion for Hyprland, powered by HyprPilot'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sumerchoudhary78/hyprlume'
 license=('MIT' 'Apache-2.0')
-depends=('glibc' 'gcc-libs' 'systemd' 'quickshell' 'qt6-declarative' 'qt6-wayland' 'qt6-quick3d>=6.9' 'hyprland' 'pipewire-audio' 'wireplumber' 'python')
-makedepends=('cargo' 'git' 'qt6-shadertools')
+depends=('glibc' 'gcc-libs' 'dbus' 'systemd' 'quickshell' 'qt6-declarative' 'qt6-wayland' 'qt6-quick3d>=6.9' 'hyprland' 'pipewire-audio' 'wireplumber' 'python')
+makedepends=('cargo' 'git' 'qt6-shadertools' 'pkgconf')
 optdepends=('espeak-ng: phonemization for local Piper speech output'
+            'networkmanager: native Wi-Fi connectivity service'
+            'bluez: native Bluetooth connectivity service'
             'inter-font: shell sans-serif font'
             'ttf-jetbrains-mono: shell monospace font')
 # GCC LTO objects in native Cargo build dependencies cannot be linked by
@@ -67,5 +69,8 @@ package() {
   install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
   install -Dm644 NOTICE "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  cp -r docs/. "$pkgdir/usr/share/doc/$pkgname/"
+  cp -r docs "$pkgdir/usr/share/doc/$pkgname/"
+  install -d "$pkgdir/usr/share/doc/$pkgname/assets" "$pkgdir/usr/share/doc/$pkgname/shell"
+  install -m644 assets/hyprlume.svg assets/desktop-preview.png assets/connections-preview.png "$pkgdir/usr/share/doc/$pkgname/assets/"
+  install -m644 shell/README.md "$pkgdir/usr/share/doc/$pkgname/shell/README.md"
 }

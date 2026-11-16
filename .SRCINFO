@@ -1,6 +1,6 @@
 pkgbase = hyprlume
 	pkgdesc = Glass command shell and local English voice companion for Hyprland, powered by HyprPilot
-	pkgver = 0.3.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/sumerchoudhary78/hyprlume
 	arch = x86_64
@@ -10,8 +10,10 @@ pkgbase = hyprlume
 	makedepends = cargo
 	makedepends = git
 	makedepends = qt6-shadertools
+	makedepends = pkgconf
 	depends = glibc
 	depends = gcc-libs
+	depends = dbus
 	depends = systemd
 	depends = quickshell
 	depends = qt6-declarative
@@ -22,12 +24,14 @@ pkgbase = hyprlume
 	depends = wireplumber
 	depends = python
 	optdepends = espeak-ng: phonemization for local Piper speech output
+	optdepends = networkmanager: native Wi-Fi connectivity service
+	optdepends = bluez: native Bluetooth connectivity service
 	optdepends = inter-font: shell sans-serif font
 	optdepends = ttf-jetbrains-mono: shell monospace font
 	noextract = sherpa-onnx-v2.0.1-linux-x64-static-lib.tar.bz2
 	noextract = sherpa-onnx-v2.0.1-linux-aarch64-static-lib.tar.bz2
 	options = !lto
-	source = git+https://github.com/sumerchoudhary78/hyprlume.git#tag=v0.3.0
+	source = git+https://github.com/sumerchoudhary78/hyprlume.git#tag=v0.4.1
 	sha256sums = SKIP
 	source_x86_64 = https://github.com/k2-fsa/sherpa-onnx/releases/download/v2.0.1/sherpa-onnx-v2.0.1-linux-x64-static-lib.tar.bz2
 	sha256sums_x86_64 = 55cfadf65ba50d0afc1a802b7a337942819e51c94a5b5a384def1978f7c70871
