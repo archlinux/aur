@@ -19,6 +19,14 @@
 # into a private virtualenv under /opt.  Requires network access during build().
 #
 # NOTE: rebuild this package after every Python minor version upgrade.
+#
+# Deployment scope: upstream ships no systemd unit at all — `uv tool install` +
+# `openviking-server init` runs as the invoking user, reads ~/.openviking/ov.conf
+# and keeps its data under that user's home.  This package follows that shape:
+# binaries in /opt, no system unit, no dedicated system user.  A system daemon
+# (User=openviking + StateDirectory + ProtectHome) puts the service identity and
+# the config/data owner in two different homes, which makes every config change
+# require root and silently ignores ~/.openviking/ov.conf.
 
 _ovname=openviking
 _prefix=/opt/$_ovname
@@ -26,7 +34,7 @@ _venv=$_prefix/venv
 
 pkgname=openviking-bin
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-evolving context database for AI agents (upstream wheel with a private virtualenv)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/volcengine/OpenViking"
@@ -40,10 +48,10 @@ install="$pkgname.install"
 # Depends on $pkgver, so it must be expanded after it is set.
 _wheel=$_ovname-$pkgver-cp310-abi3-manylinux_2_31_$CARCH.whl
 
-source=("$_ovname.service"
-        "$_ovname.sysusers")
-sha256sums=('SKIP'
-            'SKIP')
+# 无本包自带的 systemd 单元：上游默认就是「用户自己起进程 + ~/.openviking 配置」，
+# 装成系统守护进程会让服务身份（openviking 用户）与数据/配置所有者（你）错位。
+source=()
+sha256sums=()
 
 source_x86_64=("openviking-0.5.5-cp310-abi3-manylinux_2_31_x86_64.whl::https://files.pythonhosted.org/packages/e8/dc/c350e3b113e61aaa4d2506e5cf4f3577f7989221c7094e960c1a831f2453/openviking-0.5.5-cp310-abi3-manylinux_2_31_x86_64.whl")
 sha256sums_x86_64=('7d0d6ad8119a47909220c723f576925f578a7ec443f0f0bea53219a5404c2cd4')
@@ -105,8 +113,4 @@ EOS
         install -Dm755 "$srcdir/$pkgname.$_cmd" "$pkgdir/usr/bin/$_cmd"
     done
 
-    install -Dm644 "$srcdir/$_ovname.service" \
-        "$pkgdir/usr/lib/systemd/system/$_ovname.service"
-    install -Dm644 "$srcdir/$_ovname.sysusers" \
-        "$pkgdir/usr/lib/sysusers.d/$_ovname.conf"
 }
