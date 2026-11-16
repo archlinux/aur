@@ -4,6 +4,7 @@
 pkgname=gdbuspp
 pkgver=3
 pkgrel=3
+pkgdesc='GDBus++ - a glib2 D-Bus wrapper for C++ '
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/OpenVPN/${pkgname}"
 license=('AGPL-3.0-only')
