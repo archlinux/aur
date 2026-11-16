@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=peersky-browser
 _pkgname='Peersky Browser'
-pkgver=1.0.1
+pkgver=1.0.2
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -33,7 +33,7 @@ options=(
     '!emptydirs'
     '!strip'
 )
-sha256sums=('cd97fad19692e1c38f1418f6f7de1cd91a606367cadd979335588c421f723ae4'
+sha256sums=('1d5d5e30fa86528264aa0264f6e03be7bf2c4193582a8fdd988d2e3b255e83b1'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
