@@ -1,21 +1,21 @@
 pkgbase = sokuji-bin
 	pkgdesc = Real-time two-way speech translation for bilingual meetings — auto-detects the spoken language and translates both directions, cloud or fully offline on-device.
-	pkgver = 0.50.2
+	pkgver = 0.50.3
 	pkgrel = 1
 	url = https://sokuji.kizuna.ai/
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = electron44
-	provides = sokuji=0.50.2
+	provides = sokuji=0.50.3
 	conflicts = sokuji
 	source = sokuji.js
 	source = sokuji.sh
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
-	source_aarch64 = sokuji-0.50.2-aarch64.deb::https://github.com/kizuna-ai-lab/sokuji/releases/download/v0.50.2/sokuji_0.50.2_arm64.deb
-	sha256sums_aarch64 = c34b56e35425175e03046dc8b26cc7a887a9e026e82819cbf5adeb1a59efc5c9
-	source_x86_64 = sokuji-0.50.2-x86_64.deb::https://github.com/kizuna-ai-lab/sokuji/releases/download/v0.50.2/sokuji_0.50.2_amd64.deb
-	sha256sums_x86_64 = d6d0d77a4178514a9104581c830c8ff0a3386eff84b60943668a35cf1dbdd072
+	source_aarch64 = sokuji-0.50.3-aarch64.deb::https://github.com/kizuna-ai-lab/sokuji/releases/download/v0.50.3/sokuji_0.50.3_arm64.deb
+	sha256sums_aarch64 = 4858108765e1555ae923634b7a5a5b1b028561eaeeffb0264da9fd5f489f0350
+	source_x86_64 = sokuji-0.50.3-x86_64.deb::https://github.com/kizuna-ai-lab/sokuji/releases/download/v0.50.3/sokuji_0.50.3_amd64.deb
+	sha256sums_x86_64 = 9b488f2db8910467ef5e52a96c0c995cb3786f691a59704a7c3faa6609251de4
 
 pkgname = sokuji-bin
