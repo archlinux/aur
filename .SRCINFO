@@ -1,0 +1,25 @@
+pkgbase = epub-byter-git
+	pkgdesc = Cross-platform eReader: multi-book EPUB library, terminal reader and SDL2 GUI (from git)
+	pkgver = 0.1.1.r0.gd20d98b
+	pkgrel = 1
+	url = https://github.com/Bytewheel/epub-byter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libxml2
+	depends = libsixel
+	depends = libzip
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = zlib
+	makedepends = cmake
+	makedepends = git
+	provides = epub-byter
+	conflicts = epub-byter
+	conflicts = epub-byter-bin
+	source = git+https://github.com/Bytewheel/epub-byter.git
+	b2sums = SKIP
+
+pkgname = epub-byter-git
