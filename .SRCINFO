@@ -1,11 +1,12 @@
 pkgbase = python-raztint
 	pkgdesc = A zero-dependency Python library for ANSI coloring and smart CLI icons
-	pkgver = 0.1.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/razbuild/raztint
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	makedepends = python-uv-build
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
@@ -14,7 +15,9 @@ pkgbase = python-raztint
 	provides = python-raztint
 	conflicts = python-raztint
 	options = !emptydirs
-	source = python-raztint-0.1.1.tar.gz::https://github.com/razbuild/raztint/archive/v0.1.1.tar.gz
-	sha256sums = ca30284163e662bb93d1a83ae049464bfea02ab00b2725ecf5ce8de90b305b6f
+	source = python-raztint-0.10.0.tar.gz::https://github.com/razbuild/raztint/archive/v0.10.0.tar.gz
+	source = uv_build-fix.patch
+	sha256sums = 1bc04b8b87d8de32844c542c09eec4a932256c875df4e54d112558865d35517a
+	sha256sums = 19c497c9b625d9ac04f5f14f53ba47dee2e5a06399eb42650a7a4b2323ecdbd7
 
 pkgname = python-raztint

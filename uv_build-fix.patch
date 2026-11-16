@@ -1,0 +1,11 @@
+diff --git a/pyproject.toml b/pyproject_amended.toml
+index e9a10fa..3fc9b4a 100644
+--- a/pyproject.toml
++++ b/pyproject_amended.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["uv_build >= 0.11.7, < 0.13.0"]
++requires = ["uv_build >= 0.11.7, < 0.14.0"]
+ build-backend = "uv_build"
+ 
+ [project]
