@@ -2,7 +2,7 @@
 
 pkgname=epsxe-appimage
 pkgver=2.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="ePSXe PS1 emulator for 64-bit Linux (self-built AppImage)"
 arch=('x86_64')
 url="https://github.com/Twilight0/epsxe-appimage"
@@ -18,18 +18,61 @@ options=('!strip' '!debug')
 # bundled libssl.so.1.1 / libunistring.so.2). This one carries a working
 # runtime and 64-bit plugins built from PCSX-Reloaded 1.9.95.
 source=("ePSXe-2.0.5-x86_64.AppImage::https://github.com/Twilight0/epsxe-appimage/releases/download/v$pkgver/ePSXe-$pkgver-x86_64.AppImage")
-sha256sums=('9891b27d0f31b25735cf73b15483ec83e572646f6a8fec325b23d8d1ddf71724')
+sha256sums=('0240428963ea4c586503fae717a45142712ea1cc5af3b13d13a68443195ddd5c')
 
 package() {
+  # Unpack the AppImage once: the icon and the documented settings come
+  # from it.
+  cd "$srcdir"
+  chmod +x "ePSXe-$pkgver-x86_64.AppImage"
+  "./ePSXe-$pkgver-x86_64.AppImage" --appimage-extract >/dev/null 2>&1 || true
+
   install -Dm755 "$srcdir/ePSXe-$pkgver-x86_64.AppImage" \
     "$pkgdir/opt/epsxe/ePSXe-$pkgver-x86_64.AppImage"
 
+  # Launcher. The AppImage's own AppRun reads /etc/epsxe.conf and
+  # ~/.config/epsxe/config, so the settings below also apply to desktop
+  # menu launches (which inherit no shell environment). The same settings
+  # are applied here so they hold regardless of the AppImage's internals.
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/epsxe" <<'EOF'
 #!/bin/sh
+# ePSXe launcher.
+#
+# Settings are read from /etc/epsxe.conf and ~/.config/epsxe/config.
+#
+#   EPSXE_GTK_THEME=Adwaita    force a theme for ePSXe only (ePSXe 2.0.5
+#                              uses stock GTK3 widgets whose labels are
+#                              unreadable under a dark desktop theme)
+#   EPSXE_GTK_DARK=1           use the dark variant of a forced theme
+#   EPSXE_GTK_CSS=/path.css    extra CSS for ePSXe only
+#   SDL_VIDEODRIVER=x11        SDL2 backend; needed on Wayland, where ePSXe
+#                              draws through X11/GLX but reads the keyboard
+#                              through SDL2, so SDL2 must use X11 too or no
+#                              key reaches the emulator
+for _f in /etc/epsxe.conf "$HOME/.config/epsxe/config"; do
+  [ -r "$_f" ] && . "$_f"
+done
+
+# ePSXe draws through X11/GLX while the input plugin reads the keyboard
+# through SDL2. Under Wayland, SDL2 defaults to its own Wayland surface and
+# never sees the keys of the X11 window ePSXe actually draws in, so ESC and
+# every other key are dead. Force the X11 backend.
+if [ -z "${SDL_VIDEODRIVER:-}" ] && [ -n "${DISPLAY:-}" ]; then
+  SDL_VIDEODRIVER=x11
+  export SDL_VIDEODRIVER
+fi
+
 exec /opt/epsxe/ePSXe-2.0.5-x86_64.AppImage "$@"
 EOF
 
-  # Desktop entry, Exec pointed at our wrapper.
+  # Documented settings.
+  install -Dm644 "$srcdir/squashfs-root/usr/share/epsxe/config.example" \
+    "$pkgdir/usr/share/doc/epsxe-appimage/config.example"
+  install -Dm644 "$srcdir/squashfs-root/usr/share/epsxe/config.example" \
+    "$pkgdir/etc/epsxe.conf.example"
+
+  # A desktop entry that starts ePSXe with the input fix applied, so the
+  # fixes also hold for a menu launch (which inherits no shell environment).
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/epsxe.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application
