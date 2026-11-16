@@ -1,0 +1,26 @@
+pkgbase = sjaudiosearch
+	pkgdesc = Lokale Suchmaschine fuer Hoerspiele, Hoerbuecher und Audiosammlungen (faster-whisper + SQLite FTS5)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.serverjonas.de/Serverjonas/sjmusicsearch
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-typer
+	depends = python-rich
+	depends = python-faster-whisper
+	depends = python-rapidfuzz
+	depends = python-mutagen
+	depends = python-av
+	optdepends = ffmpeg: Wiedergabe der Fundstellen ueber ffplay und Unterstuetzung fuer WMA
+	optdepends = mpv: alternative Wiedergabe der Fundstellen
+	optdepends = vlc: alternative Wiedergabe der Fundstellen
+	optdepends = python-ctranslate2-cuda: CUDA-Beschleunigung auf NVIDIA-GPUs
+	source = sjaudiosearch-1.0.0.tar.gz::https://git.serverjonas.de/Serverjonas/sjmusicsearch/archive/97e5c9ef4d3a9dfe9be37f839b53cd82a35d1844.tar.gz
+	sha256sums = 5b919dc66cda1ad88a9f105524abb4f728ad7a047fe34ce037b45a2da717f09f
+
+pkgname = sjaudiosearch
