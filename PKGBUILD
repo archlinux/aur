@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=genoma
-_tag=v0.1.15
-pkgver=0.1.15
+_tag=v0.1.16
+pkgver=0.1.16
 pkgrel=1
 pkgdesc="A Wayland shell toolkit: a Rust core drawing through Vulkan, interfaces written in Luau and reloaded live"
 arch=('x86_64' 'aarch64')
@@ -22,12 +22,20 @@ depends=(
     # The session lock's password (@genoma/lock).
     'pam'
 )
+optdepends=(
+    'udisks2: removable drives (@genoma/drives)'
+    'ddcutil: external monitors in @genoma/brightness'
+    'accountsservice: users and their pictures (@genoma/accounts)'
+    'xdg-desktop-portal: appearance settings, file chooser (@genoma/portal)'
+    'wl-screenrec: screen recording (@genoma/kit/record)'
+    'wf-recorder: screen recording without wl-screenrec'
+)
 makedepends=('cargo' 'clang')
 # libspa builds a small C shim that makepkg's LTO turns into bitcode, which
 # Rust's linker cannot resolve (undefined spa_format_parse_libspa_rs).
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('2e5603881b98aaf18587ea296d7da04d3a7bf85db6ff0daa248e0b0551061eb1')
+sha256sums=('b7b6443c28d5f5950030e5c521417c9c6beaaf00e70fca40284964e33b5e8249')
 
 _srcdir() {
     printf '%s/Genoma-%s' "$srcdir" "${_tag#v}"

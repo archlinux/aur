@@ -1,6 +1,6 @@
 pkgbase = genoma
 	pkgdesc = A Wayland shell toolkit: a Rust core drawing through Vulkan, interfaces written in Luau and reloaded live
-	pkgver = 0.1.15
+	pkgver = 0.1.16
 	pkgrel = 1
 	url = https://github.com/AkusenArcade/Genoma
 	arch = x86_64
@@ -16,8 +16,14 @@ pkgbase = genoma
 	depends = vulkan-driver
 	depends = libpipewire
 	depends = pam
+	optdepends = udisks2: removable drives (@genoma/drives)
+	optdepends = ddcutil: external monitors in @genoma/brightness
+	optdepends = accountsservice: users and their pictures (@genoma/accounts)
+	optdepends = xdg-desktop-portal: appearance settings, file chooser (@genoma/portal)
+	optdepends = wl-screenrec: screen recording (@genoma/kit/record)
+	optdepends = wf-recorder: screen recording without wl-screenrec
 	options = !lto
-	source = genoma-0.1.15.tar.gz::https://github.com/AkusenArcade/Genoma/archive/refs/tags/v0.1.15.tar.gz
-	sha256sums = 2e5603881b98aaf18587ea296d7da04d3a7bf85db6ff0daa248e0b0551061eb1
+	source = genoma-0.1.16.tar.gz::https://github.com/AkusenArcade/Genoma/archive/refs/tags/v0.1.16.tar.gz
+	sha256sums = b7b6443c28d5f5950030e5c521417c9c6beaaf00e70fca40284964e33b5e8249
 
 pkgname = genoma
