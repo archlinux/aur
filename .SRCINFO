@@ -1,16 +1,20 @@
 pkgbase = python-precisely
-	pkgdesc = write precise assertions so you only test the behaviour you’re really interested in
+	pkgdesc = Matcher library for Python test assertions
 	pkgver = 0.1.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mwilliamson/python-precisely
 	arch = any
 	license = BSD-2-Clause
+	checkdepends = python-pyflakes
+	checkdepends = python-pyhamcrest
+	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-build
-	makedepends = python-setuptools
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = python-precisely-0.1.9.tar.gz::https://github.com/mwilliamson/python-precisely/archive/refs/tags/0.1.9.tar.gz
-	sha256sums = 0a73036e4439ef617ab163d11c27cefa69db45082bcf60181e737d4ffe764b79
+	source = precisely::git+https://github.com/mwilliamson/python-precisely.git#tag=0.1.9
+	sha256sums = cc2e2263c730ff57ebb9f255687a4ea237ab61cb923931b59af0f0477d2c266b
 
 pkgname = python-precisely
