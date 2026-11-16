@@ -1,7 +1,7 @@
 # Maintainer: symb0l <symb0l@proton.me>
 # Release package: builds from a tagged source tarball. For the VCS package see PKGBUILD-git.
 pkgname=arcane-launcher
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Open-source, self-contained Battle.net launcher for World of Warcraft (no Battle.net client)"
 arch=('x86_64')
@@ -11,14 +11,15 @@ depends=('qt6-webengine' 'qt6-base' 'protobuf' 'curl' 'openssl' 'libzip' 'python
 makedepends=('cmake' 'ninja' 'mingw-w64-gcc')
 optdepends=('umu-launcher: launch games under Proton (recommended backend)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bd44bbada10544ec834678a6156a557f0866860dc5f086d8a815ea2a2c917ef1')
+sha256sums=('6e354ba8520c9cf56e13509a828a7e087847528bc6f930dbd8327b9e5dcd585a')
 
 build() {
     cmake -S "$srcdir/$pkgname" -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DARCANE_BUILD_QT=ON \
-        -DARCANE_BUILD_TESTS=OFF
+        -DARCANE_BUILD_TESTS=OFF \
+        -DARCANE_WERROR=OFF
     cmake --build build
 }
 
