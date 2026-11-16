@@ -1,6 +1,6 @@
 # Maintainer: Lucia <bordiyan20035@gmail.com>
 pkgname=opensourcetree-git
-pkgver=1.2.28.r0.g7ee3049
+pkgver=1.2.29.r0.gb14ac5f
 pkgrel=1
 pkgdesc="SourceTree-inspired Git GUI built with PyQt6"
 arch=('any')
@@ -48,6 +48,7 @@ package() {
 
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/opensourcetree" << 'EOF'
 #!/bin/bash
+export OPENSOURCETREE_CWD="$PWD"
 cd /usr/lib/opensourcetree/
 exec python3 main.py "$@"
 EOF

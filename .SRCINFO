@@ -1,6 +1,6 @@
 pkgbase = opensourcetree-git
 	pkgdesc = SourceTree-inspired Git GUI built with PyQt6
-	pkgver = 1.2.28.r0.g7ee3049
+	pkgver = 1.2.29.r0.gb14ac5f
 	pkgrel = 1
 	url = https://github.com/Lucia7Lunadottir/OpenSourceTree
 	arch = any
