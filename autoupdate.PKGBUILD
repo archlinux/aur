@@ -7,10 +7,11 @@ unset backup _source _desktop _icon _service _script _binarchive _release_url _b
 unset provides conflicts
 build() { true; }
 pkgname=skywire-autoupdate
-pkgdesc="Skywire auto-updater: compiles latest CI-tested commit daily and updates docker deployments"
+pkgdesc="Skywire auto-updater: installs the latest develop binary daily (or builds from source) and updates docker deployments"
 arch=('any')
-depends=('skywire-bin' 'go>=1.21' 'curl' 'zstd')
-optdepends=('docker: required for skywire-docker-update'
+depends=('skywire-bin' 'curl' 'zstd')
+optdepends=('go>=1.21: source-build channels (UPDATE_CHANNEL=develop, latest or a commit)'
+'docker: required for skywire-docker-update'
 'docker-compose: required for skywire-docker-update')
 license=('license-free')
 install=skywire-autoupdate.install
@@ -18,7 +19,7 @@ _scripts=("skywire-update" "skywire-docker-update")
 _services=("skywire-update.service" "skywire-docker-update.service")
 _timers=("skywire-update.timer" "skywire-docker-update.timer")
 source=("${_scripts[@]}" "${_services[@]}" "${_timers[@]}")
-sha256sums=('33d1ead55a9d135d2bf5eeae9f132c6d74a5c0d446dc46d9a02eec6e9f3b42ca'
+sha256sums=('aff460ee7b85b5b020f799764f52a2c8ad84314028dd945f172d391cdbbdcdbc'
             '94d7663bc790a7974e486bfe5e07a64c6851248e70c816d1310ba8c31b50c0cf'
             '2623526259755c4979fa7eefdbc0dee74cad7b4526735a14de608dafb4fe274d'
             '45c5cdd73839e6eae9fbda46377a5447353f315821de4707a004de1c52099b80'

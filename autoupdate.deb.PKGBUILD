@@ -2,7 +2,7 @@
 source PKGBUILD
 pkgname=skywire-autoupdate
 _pkgname=${pkgname}
-pkgdesc="Skywire auto-updater: compiles latest CI-tested commit daily - debian package"
+pkgdesc="Skywire auto-updater: installs the latest develop binary daily (or builds from source) - debian package"
 _pkgver=${pkgver}
 _pkgrel=${pkgrel}
 arch=('any')
@@ -10,7 +10,8 @@ _pkgarch='all'
 url="https://github.com/skycoin/skywire"
 makedepends=('dpkg')
 depends=()
-_debdeps="skywire-bin, golang, curl, zstd"
+_debdeps="skywire-bin, curl, zstd"
+_debsuggests="golang"
 
 build() {
 	#create the DEBIAN/control file
@@ -21,6 +22,7 @@ build() {
 	echo "Section: web" >> ${srcdir}/${_pkgarch}.control
 	echo "Architecture: ${_pkgarch}" >> ${srcdir}/${_pkgarch}.control
 	echo "Depends: ${_debdeps}" >> ${srcdir}/${_pkgarch}.control
+	echo "Suggests: ${_debsuggests}" >> ${srcdir}/${_pkgarch}.control
 	echo "Maintainer: Skycoin" >> ${srcdir}/${_pkgarch}.control
 	echo "Description: ${pkgdesc}" >> ${srcdir}/${_pkgarch}.control
 	cat ${srcdir}/${_pkgarch}.control

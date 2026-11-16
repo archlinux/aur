@@ -3,11 +3,14 @@
 # Skywire auto-updater: builds as unprivileged user, installs as root
 #
 # Two install strategies, selected by UPDATE_CHANNEL:
-#   source-build (default) — compiles skywire from source via `go install`.
+#   binary       (default) — downloads the prebuilt develop-latest binary from
+#                            the rolling CI GitHub pre-release, rebuilt on every
+#                            push to develop. No toolchain, no build user, no
+#                            Go caches. amd64, arm64 and arm only.
+#   source-build (opt-in)  — compiles skywire from source via `go install`.
 #                            Needs the Go toolchain, GOPROXY=direct git reach
 #                            for every dep, several GB of disk and ~2min CPU.
-#   binary       (opt-in)  — downloads a prebuilt binary from the rolling CI
-#                            GitHub pre-release. No toolchain, no build user.
+#                            The default on other architectures.
 set -eE  # -E so the ERR trap propagates into functions
 
 # Source configuration from /etc/skywire.conf if it exists
@@ -15,17 +18,22 @@ SKYENV=${SKYENV:-/etc/skywire.conf}
 [[ -f "$SKYENV" ]] && source "$SKYENV"
 
 # UPDATE_CHANNEL controls what to install:
-#   "develop"         = latest develop branch commit (default, source-build)
+#   "binary"          = download the prebuilt develop-latest binary (default)
+#   "binary-develop"  = same as "binary"
+#   "develop"         = latest develop branch commit (source-build)
 #   "latest"          = latest tagged release version (source-build)
 #   "<commit-hash>"   = pin to a specific commit (source-build)
-#   "binary"          = download the prebuilt develop-latest binary
-#   "binary-develop"  = download prebuilt binary from the develop-latest release
 #
 # NOTE: the old "stable" channel (resolve a CI-promoted SHA from the
 # skywire-commit branch via `go run .../cmd/skywire-commit@skywire-commit`) was
 # removed — it depended on a fragile repo-side branch-promotion workflow and was
-# the wrong approach. Track "develop" directly, or use the "binary" channel.
-UPDATE_CHANNEL=${UPDATE_CHANNEL:-develop}
+# the wrong approach. Track develop with "binary", or build it with "develop".
+if [[ -z "${UPDATE_CHANNEL:-}" ]]; then
+    case "$(uname -m)" in
+        x86_64|aarch64|arm64|armv7l|armv6l|armhf|arm) UPDATE_CHANNEL=binary ;;
+        *) UPDATE_CHANNEL=develop ;;
+    esac
+fi
 
 # GOPROXY_MODE pins the Go module proxy behavior for source builds. Left unset
 # (the default) the updater tries GOPROXY=direct FIRST (fresh branch-tip
@@ -294,7 +302,7 @@ case "$UPDATE_CHANNEL" in
 esac
 
 # ---------------------------------------------------------------------------
-# Source-build channels (default). Everything below compiles from source.
+# Source-build channels (develop, latest, <commit>). Everything below compiles from source.
 # ---------------------------------------------------------------------------
 BUILD_USER="skywire-build"
 BUILD_HOME="/var/lib/${BUILD_USER}"
