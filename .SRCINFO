@@ -23,11 +23,12 @@ pkgbase = ergochat
 	optdepends = hopm: HOPM proxy scanner integration
 	backup = etc/ergochat/ircd.yaml
 	backup = etc/ergochat/ircd.motd
-	source = git+https://github.com/ergochat/ergo#tag=v2.19.1
+	source = git+https://github.com/ergochat/ergo#tag=v2.19.1?signed
 	source = config.patch
 	source = systemd-service-unit.patch
 	source = ergochat.sysusers
 	source = ergochat.tmpfiles
+	validpgpkeys = 740FC947B135E7627D4D00F21996B89DF018DCAB
 	sha512sums = 147ae466ed2c08be06ce70a25c8e35702e07e78439a810194a75d719af625f87f2316cae5d4fb2350a666ce1e242b4c3b713816d2df6f1d6810e19cedc0be522
 	sha512sums = b886a78d3c1cf9c7bfbb1313577b1bb6e541c080df66ed79132eb6f2f565277e8731896f5d1ea3326fc28fec4b671e11e861a794aaade249a55f120a046fed23
 	sha512sums = dc69aa579bb294e99605c1d9f9cf325c8093e8794a15d56293d7d730fe72b3a15ae1ba2f888935d081d32181c4287427dade70058e1bcefcb77e59f5d2521241

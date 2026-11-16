@@ -22,7 +22,7 @@ optdepends=('ergochat-ldap: LDAP authentication support'
   'tor: Tor integration'
   'hopm: HOPM proxy scanner integration')
 makedepends=(go git)
-source=("git+$url#tag=v$pkgver"
+source=("git+$url#tag=v$pkgver?signed"
   "config.patch"
   "systemd-service-unit.patch"
   "ergochat.sysusers"
@@ -37,6 +37,8 @@ b2sums=('da81c6f5e90d96fa61ba4bde68f205044cd3d6fe1f61032f579fd52aa96940494153792
   '2ec758b9adf4abf9cac33dca9375334493cdb101454c907a2742248b2127b75abf9d42e7f4d696844edbc22decf1b5d245ed26a2921adc0f374ba849393f20a7'
   'fad48b41ab4465dad7e196e79ee52a0854fe8b5effe8bedf709e20409452de5f7556e0ed3fc1e69cb6a22907c5c8e14e442ce2454d9878bb46d89cf17de4aac5'
   '0d3a5fbc2e0a9a3752a5a17299e7603a5f4f1781c5d8981ecb27ef219bbd6b201d80adbe9e6a1a85be5e2635045fcf3b336b84c075da15c885a68317a30144b9')
+# Shivaram Lingamneni <slingamn@cs.stanford.edu>, who signs the tags
+validpgpkeys=(740FC947B135E7627D4D00F21996B89DF018DCAB)
 backup=("etc/$pkgname/ircd.yaml"
   "etc/$pkgname/ircd.motd")
 
