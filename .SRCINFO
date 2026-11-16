@@ -1,6 +1,6 @@
 pkgbase = bw-ssh-agent-git
-	pkgdesc = Hardened SSH agent backed by Bitwarden CLI with Polkit and Pinentry support
-	pkgver = r11.g940f710
+	pkgdesc = SSH Agent for Bitwarden CLI with Polkit support
+	pkgver = r10.g914c1e2
 	pkgrel = 1
 	url = https://github.com/Ovenoboyo/bw-cli-ssh-agent
 	arch = x86_64
