@@ -2,7 +2,7 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 
 pkgname='carapace-man-bin'
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='A multi-shell completion man companion'
 url='https://github.com/carapace-sh/carapace-man'
@@ -12,13 +12,13 @@ provides=('carapace-man')
 conflicts=('carapace-man')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/carapace-sh/carapace-man/releases/download/v${pkgver}/carapace-man_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('e67942c6013d90b4990508f1f41cd31cb0c0998e5c8220aaff4a3a40181ae00a')
+sha256sums_aarch64=('5c4e7d60525fe0def50a6f72473f77caa25d75c056e47bd62512cdab2dda7a3e')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/carapace-sh/carapace-man/releases/download/v${pkgver}/carapace-man_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('2224c639a9f7c28657658c6a5c332c2a96d910044a780f51364ef9513bf6e784')
+sha256sums_i686=('a70e2a3f5444b89018373be30f4d388309546e581b4443267eab8f0dd9897e1f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/carapace-sh/carapace-man/releases/download/v${pkgver}/carapace-man_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('2b76edb80e9f6a3d14a803529096419fb956790aa1f06c768580db66678ffde4')
+sha256sums_x86_64=('8bd17eedebfb7332191d8a11d58bee2568f1d0dbc842f0602c413e64e5dcb750')
 
 package() {
   install -Dm755 "./carapace-man" "${pkgdir}/usr/bin/carapace-man"
