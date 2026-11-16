@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=rawmakase
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 url="https://$pkgname.com/"
 _url="https://github.com/pch/$pkgname"
@@ -15,7 +15,7 @@ makedepends=(cargo)
 options=(!lto)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('da86516ab45050db4f6bdc2c1997315464a01b6d9cddf0a5833c60b80b9efb1e')
+sha256sums=('3905a192a9dbe33aef8237f420f2331f95d88f75f04262b299defacb7cb415bc')
 
 _srcenv() {
 	cd "$_archive"
