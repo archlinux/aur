@@ -21,6 +21,22 @@ source=("reactive-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
 sha512sums=('29b580b595c63a0c5ba54cc54d89651b99328d199fb3488b0c865e8a98689176229ca1d1af38eb74e0ecb0d27a40fd5d3045314ed716005b27cd06d8b9bbfd22')
 b2sums=('5da8b0350cbf0f26a95ca300b7d6011bf1e9c1a966f9e88bf5b1a0b210546478fbfb85b295e8abb887c4dd8a94cc6c1a979e82f99cbcb8254612159d5b1832b7')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -46,6 +62,8 @@ _dotnet_env() {
 }
 
 prepare() {
+  # The SDK to build with (_dotnet_sdk), for dotnet anywhere in $srcdir
+  printf '{ "sdk": { "version": "%s", "rollForward": "latestPatch" } }\n' "$(_dotnet_sdk)" >"$srcdir/global.json"
   cd "reactive-$_commit/Rx.NET/Source" || exit
   # Upstream builds on Windows, where MSBuild also finds Directory.build.props and .targets
   local _file
