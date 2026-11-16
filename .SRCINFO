@@ -1,0 +1,19 @@
+pkgbase = pcsx-redux-appimage
+	pkgdesc = PlayStation 1 emulator (upstream dev-channel rolling AppImage, x86_64)
+	pkgver = r568.b0f54520
+	pkgrel = 1
+	url = https://github.com/grumpycoders/pcsx-redux
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = curl
+	depends = fuse2
+	depends = glibc
+	provides = pcsx-redux
+	conflicts = pcsx-redux
+	conflicts = pcsx-redux-git
+	options = !strip
+	options = !debug
+	source = pcsx-redux-manifest.json::https://distrib.app/storage/manifests/pcsx-redux/dev-linux-x64/manifest.json
+	sha256sums = SKIP
+
+pkgname = pcsx-redux-appimage
