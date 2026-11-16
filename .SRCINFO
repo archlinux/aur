@@ -1,6 +1,6 @@
 pkgbase = wadsmith-bin
 	pkgdesc = Map editor for Doom, Heretic, Hexen and Strife, made for UZDoom and GZDoom
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/WadSmith
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = wadsmith-bin
 	optdepends = sdl2: an object's sound when pointing at it on the shelf
 	provides = wadsmith
 	conflicts = wadsmith
-	noextract = WadSmith-0.1.6-linux-x64.tar.gz
+	noextract = WadSmith-0.1.7-linux-x64.tar.gz
 	options = !strip
-	source = https://github.com/codingncaffeine/WadSmith/releases/download/v0.1.6/WadSmith-0.1.6-linux-x64.tar.gz
-	sha256sums = 2f42239da66088f1709d25e631cdd16fb6440a1667aa87f36bf7cd3db36d53fa
+	source = https://github.com/codingncaffeine/WadSmith/releases/download/v0.1.7/WadSmith-0.1.7-linux-x64.tar.gz
+	sha256sums = 30a571e86ee5fba2e31d28502e8a82e3f683725da7d700990e0ed7e5f425ab2d
 
 pkgname = wadsmith-bin
