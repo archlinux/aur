@@ -3,7 +3,7 @@
 # Source package - builds from source
 
 pkgname=fresh-editor
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="A lightweight, fast terminal-based text editor with LSP support and TypeScript plugins"
 url="https://sinelaw.github.io/fresh/"
@@ -20,7 +20,7 @@ conflicts=("fresh-editor-bin")
 # version coupling; Rust's own LTO (profile.release) is unaffected.
 options=('!debug' '!lto')
 source=("fresh-editor-${pkgver}-source.tar.gz::https://github.com/sinelaw/fresh/releases/download/v${pkgver}/fresh-editor-${pkgver}-source.tar.gz")
-sha256sums=("a36fa779b44a76ee589bd66a4d91a216ed9e3995ceca9f1a5811935fbb6eb5d3")
+sha256sums=("f7287cfdfc58c927cf285fce1990c383609afa837bd8ec301bb7f96c4b9911aa")
 
 prepare() {
     cd "fresh-$pkgver"
