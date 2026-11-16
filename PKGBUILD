@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=cherry-studio-desktop-bin
-pkgver=2.0.9
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="AI productivity studio with smart chat, autonomous agents, and 300+ assistants"
 arch=('x86_64' 'aarch64')
@@ -57,8 +57,10 @@ conflicts=(
 )
 options=('!debug' '!strip')
 
-_deb_x86_64="Cherry-Studio-${pkgver}-amd64.deb"
-_deb_aarch64="Cherry-Studio-${pkgver}-arm64.deb"
+# Upstream switched the Debian assets from -amd64/-arm64 to -linux-x64 and
+# -linux-arm64; the payload (opt/Cherry Studio) is unchanged.
+_deb_x86_64="Cherry-Studio-${pkgver}-linux-x64.deb"
+_deb_aarch64="Cherry-Studio-${pkgver}-linux-arm64.deb"
 source_x86_64=(
   "${_deb_x86_64}::https://github.com/CherryHQ/cherry-studio/releases/download/v${pkgver}/${_deb_x86_64}"
 )
@@ -66,8 +68,8 @@ source_aarch64=(
   "${_deb_aarch64}::https://github.com/CherryHQ/cherry-studio/releases/download/v${pkgver}/${_deb_aarch64}"
 )
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
-sha256sums_x86_64=('015dc6b548a1113424c60cb8c86ada5c033e63c964c04dde1f93751facb758d2')
-sha256sums_aarch64=('bcf2eaf1f64ce006766212435b8368a4419f3856a8a50bf4669517793fe027ca')
+sha256sums_x86_64=('b4fa17f65a01881a5fd1bca7f741b48acaa7c7911da5ea01727fa398ab82ab27')
+sha256sums_aarch64=('2fb6b76753792132ca5109ab415ca82573a0fb8da2baae77a7b33c5289e406cd')
 
 package() {
   local deb_var="_deb_${CARCH}"
