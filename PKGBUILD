@@ -2,7 +2,7 @@
 # Maintainer: Samuel Bernard <samuel.bernard@gmail.com>
 
 pkgname=funes
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Durable, searchable memory of your past AI agent sessions'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=('git: associate sessions with their Git repositories')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'system-package.patch')
-sha256sums=('57a6452685c501e739ee63664f17145c313ec49c2bce171c269cc7990aa38cfd'
+sha256sums=('6f0562ef6f8767ad871f201f8da71b1366060d3397893263e5cad4fafa4b3707'
             'ac2c6ed0df8abf27b32078b78f0819d3518f66224ccdc390f1cf80ed96e6eec8')
 
 prepare() {
