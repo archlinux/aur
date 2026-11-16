@@ -1,6 +1,6 @@
 pkgbase = qoderwake-cn-bin
 	pkgdesc = QoderWake 国内版 local CLI and daemon (official prebuilt Linux runtime)
-	pkgver = 1.2.17_cn
+	pkgver = 1.2.18_cn
 	pkgrel = 1
 	url = https://qoder.cn/
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = qoderwake-cn-bin
 	depends = glibc
 	depends = python
 	optdepends = xdg-utils: open the QoderWake console in the default browser
-	provides = qoderwake-cn=1.2.17_cn
+	provides = qoderwake-cn=1.2.18_cn
 	conflicts = qoderwake-cn
 	options = !strip
 	options = !debug
-	source_x86_64 = qoderwake-cn-1.2.17-cn-linux-amd64.tar.gz::https://ide.qoder.com.cn/qoderwake-cn/releases/1.2.17-cn/qoderwake-cn_1.2.17-cn_linux_amd64.tar.gz
-	sha256sums_x86_64 = b3fedcba3e5ad67f730491fb108152f2141f2855bb08775322e6965b3b784dfb
-	source_aarch64 = qoderwake-cn-1.2.17-cn-linux-arm64.tar.gz::https://ide.qoder.com.cn/qoderwake-cn/releases/1.2.17-cn/qoderwake-cn_1.2.17-cn_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0dd4b976233a637e09f9db10ddcb44a71b1cf0d77f74bf4e7794ce8b99f0f7b4
+	source_x86_64 = qoderwake-cn-1.2.18-cn-linux-amd64.tar.gz::https://ide.qoder.com.cn/qoderwake-cn/releases/1.2.18-cn/qoderwake-cn_1.2.18-cn_linux_amd64.tar.gz
+	sha256sums_x86_64 = 34f0d50d22f6c64bfcd1020ca41a10066853139a2d288dec2eebd4480df66ef0
+	source_aarch64 = qoderwake-cn-1.2.18-cn-linux-arm64.tar.gz::https://ide.qoder.com.cn/qoderwake-cn/releases/1.2.18-cn/qoderwake-cn_1.2.18-cn_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5849b9578774762eed5a5053339ba77bc070cf0660150c5e569201cf0b6a6e84
 
 pkgname = qoderwake-cn-bin
