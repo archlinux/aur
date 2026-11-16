@@ -1,7 +1,7 @@
 pkgbase = ns3
 	pkgdesc = Discrete-event network simulator for Internet systems
 	pkgver = 3.49
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nsnam.org/
 	arch = x86_64
 	license = GPL-2.0-only
@@ -37,6 +37,17 @@ pkgbase = ns3
 	b2sums = d8a7efeff13bbf1884502ae5e469f47be3c72a7f22a13e70c381aa02ccc94d4f41961ede107bba87a68b9144ba5f20818a40d6a20908344fad818c296a034fd3
 
 pkgname = ns3
+	depends = sqlite3
+	depends = gsl
+	depends = libxml2
+	depends = gtk3
+	depends = openflow
+	depends = boost-libs
+	depends = brite
+	depends = click-ns3
+	depends = dpdk
+	depends = libmpi.so
+	depends = ns3-nlohmann-json=3.49-2
 	optdepends = tcpdump: PCAP file reader
 	optdepends = wireshark-cli: PCAP file reader
 	optdepends = wireshark-qt: PCAP file reader
@@ -45,6 +56,15 @@ pkgname = ns3
 	optdepends = iptables: virtual machines in network
 	optdepends = python-ns3: Python bindings (broken)
 	optdepends = netanim: Animator for XML simulation data
+
+pkgname = ns3-nlohmann-json-vendor
+	depends = 
+	provides = ns3-nlohmann-json=3.49-2
+	conflicts = nlohmann-json
+
+pkgname = ns3-nlohmann-json-system
+	depends = nlohmann-json
+	provides = ns3-nlohmann-json=3.49-2
 
 pkgname = ns3-examples
 	pkgdesc = Discrete-event network simulator for Internet systems (prebuilt example applications)

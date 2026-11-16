@@ -8,6 +8,7 @@ pkgbase=ns3
 pkgname=(
     # Fully functional components
     ns3
+    ns3-nlohmann-json-{vendor,system}
     ns3-examples{,-src} # FIXME: distribute this??? Any cons?
     # python-ns3 #FIXME: There's a lot of effort to be done to have Python bindings working.
     # ns3-docs #FIXME: Doxygen output is damn large!
@@ -18,7 +19,7 @@ pkgname=(
     #^e.g. _NS3_ENABLE_WIP="ns3-docs" makepkg ...
 )
 pkgver=3.49
-pkgrel=1
+pkgrel=2
 pkgdesc='Discrete-event network simulator for Internet systems'
 arch=('x86_64')
 url='https://www.nsnam.org/'
@@ -206,6 +207,7 @@ check() {
 }
 
 package_ns3() {
+	depends+=(ns3-nlohmann-json="$pkgver-$pkgrel")
     optdepends=(
         # PCAP readers
         {tcpdump,wireshark-{cli,qt}}': PCAP file reader'
@@ -220,10 +222,27 @@ package_ns3() {
     DESTDIR="$pkgdir" ./ns3 install
     cd "$pkgdir"
 
+    # ns3-vendored nlohmann-json headers
+    _pick nlohmann usr/include/nlohmann
     # Python bindings
     if $_has_python; then
         _pick python usr/lib/python$(_pver)
     fi
+}
+
+package_ns3-nlohmann-json-vendor() {
+    description="JSON for Modern C++ - NS3 vendored release"
+    depends=()
+    conflicts=(nlohmann-json)
+    provides=(ns3-nlohmann-json="$pkgver-$pkgrel")
+    conflicts=(nlohmann-json)
+    mv nlohmann/* "$pkgdir"
+}
+
+package_ns3-nlohmann-json-system() {
+    description="JSON for Modern C++ - virtual package for NS3"
+    depends=(nlohmann-json)
+    provides=(ns3-nlohmann-json="$pkgver-$pkgrel")
 }
 
 # === ADDITIONAL COMPONENTS ===
