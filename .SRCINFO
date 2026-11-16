@@ -1,8 +1,8 @@
 pkgbase = kde-development-environment-meta
 	pkgdesc = Metapackage to install a full KDE development environment
 	pkgver = 20241108
-	pkgrel = 1
-	url = https://phabricator.kde.org/T3722
+	pkgrel = 2
+	url = https://kde.org
 	arch = any
 	license = LGPL-2.1-or-later
 	source = org.kde.development.appdata.xml
