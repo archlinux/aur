@@ -1,16 +1,14 @@
-flags: {}
-extra-package-dbs: []
+resolver: lts-24.67
 packages:
   - .
-resolver: lts-19.32
 extra-deps:
-  - ShellCheck-0.8.0
-  - colourista-0.1.0.1
-  - language-docker-12.0.0
-  - spdx-1.0.0.3
-  - hspec-2.10.6
-  - hspec-core-2.10.6
-  - hspec-discover-2.10.6
-  - stm-2.5.1.0
-ghc-options:
-  "$everything": -haddock
+  - ShellCheck-0.11.0
+  - language-docker-16.0.0
+  - optparse-applicative-0.19.0.0
+  - time-1.14
+# Match upstream cabal.project's allowance for language-docker's time upper bound.
+allow-newer: true
+allow-newer-deps:
+  - language-docker
+system-ghc: false
+install-ghc: true

@@ -1,16 +1,22 @@
 pkgbase = hadolint-git
 	pkgdesc = Dockerfile linter, validate inline bash
-	pkgver = 2.12.1.beta.r7.g7c54238
+	pkgver = 2.15.1.r51.g1d901b9
 	pkgrel = 1
 	url = https://github.com/hadolint/hadolint
-	arch = any
-	license = GPL
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = stack
+	depends = glibc
+	depends = gmp
+	depends = libffi
+	depends = zlib
 	provides = hadolint
-	source = git+https://github.com/hadolint/hadolint.git
+	conflicts = hadolint
+	source = git+https://github.com/hadolint/hadolint.git#commit=1d901b9c0b0d0445d19b1a9128d89fa55bb4604e
 	source = stack.yaml
-	sha256sums = SKIP
-	sha256sums = b020b3c470ba3f16bc7f513e82409ea9e7b5964f0f385d67c7fb6f44be8b4806
+	sha256sums = 721beb549ea40cf9facddc6dc73110a53d328ccdb6a3a6627b25792bd70ef189
+	sha256sums = 25fb7ff50356d0e3d9b29c7b6c21bf3da8aa0c5f8b9b7ddddefdb597df531a15
 
 pkgname = hadolint-git
