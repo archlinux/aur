@@ -1,6 +1,6 @@
 pkgbase = keycli
 	pkgdesc = An environment manager which stores your secrets in your OS keyring
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/Headorteil/keycli
 	install = keycli.install
@@ -11,7 +11,7 @@ pkgbase = keycli
 	depends = dbus
 	optdepends = gnome-keyring: GNOME keyring support
 	optdepends = kwallet: KDE keyring support
-	source = keycli-0.1.4.tar.gz::https://github.com/Headorteil/keycli/archive/refs/tags/v0.1.4.tar.gz
-	sha256sums = 427cdb65d88468133f43538f10dcda83abfaa8e58fbbad6a9c89f5faa57f5960
+	source = keycli-0.1.5.tar.gz::https://github.com/Headorteil/keycli/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = 30f6dd9639e3346556f94d11872ed542187d515c471fbed661818264fedf67c0
 
 pkgname = keycli
