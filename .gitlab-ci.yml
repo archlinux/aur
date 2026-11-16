@@ -13,7 +13,7 @@ update:
   image: archlinux:base-devel
   script:
     - '[ -f "$mirrorlist" ] && cat "$mirrorlist" > /etc/pacman.d/mirrorlist'
-    - pacman -Sy pacman-contrib --quiet --needed --noconfirm --noprogressbar
+    - pacman -Syyu pacman-contrib --quiet --needed --noconfirm --noprogressbar
     - useradd deploy
     - sudo -u deploy ./update
   artifacts:
