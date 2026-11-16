@@ -1,7 +1,7 @@
 # Maintainer: Sable Maintainers <https://git.sable.moe/SableClient/sable-next>
 
 pkgname=sable-bin
-pkgver=26.11.0
+pkgver=26.11.1
 pkgrel=1
 pkgdesc="A Matrix client"
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=('sable')
 options=('!strip' '!debug')
 noextract=("${pkgname}-${pkgver}-amd64.deb")
 source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v${pkgver}/sable-${pkgver}-amd64.deb")
-sha256sums_x86_64=('515b6ee4e90a5c2ad33be75ed33660339b548d45d34416266aa61e7db0b4f6e1')
+sha256sums_x86_64=('3637ee5601430f113e29bbf2b353fbda560224d50c4d121a82e06a2441b18c3d')
 
 package() {
   bsdtar -O -xf "${srcdir}/${pkgname}-${pkgver}-amd64.deb" 'data.tar*' \
