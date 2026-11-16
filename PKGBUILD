@@ -21,6 +21,22 @@ source=("Pluralize.NET-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
 sha512sums=('98e2d494147e92962c1fdf63b560e14462eda7c0cfdb7fc2cd247c5f177ce3cc7a3cb8b3ecb83494876301c5d69f371cb8d01a13ccfc25b7e8245cfb4d3dcf63')
 b2sums=('0659c39c9a86512af83405aa872571eea841472d7bc8653b42f15f2af6596b8b0a6d7096176783d87f0999005a85ac100b411f12c63cac1f9abb31683aa91061')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -38,6 +54,8 @@ _dotnet_env() {
 }
 
 prepare() {
+  # The SDK to build with (_dotnet_sdk), for dotnet anywhere in $srcdir
+  printf '{ "sdk": { "version": "%s", "rollForward": "latestPatch" } }\n' "$(_dotnet_sdk)" >"$srcdir/global.json"
   cd "Pluralize.NET-$_commit" || exit
   # The tests target .NET Core 2.0, test on the .NET runtime that's installed
   sed -i "s|<TargetFramework>netcoreapp2.0</TargetFramework>|<TargetFramework>net$_dotnetsdkver</TargetFramework>|" \
