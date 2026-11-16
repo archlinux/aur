@@ -156,38 +156,48 @@ prepare() {
 
   # --scripting-only builds SafetyHook as well, which only the extensions use and which doesn't
   # support aarch64, and doesn't allow aarch64 on Linux, only on macOS
-  # (https://github.com/alliedmodders/sourcemod/pull/2608)
+  # upstream: pending alliedmodders/sourcemod#2608
   patch -Np1 -i "$srcdir/scripting-only.patch"
   # The MySQL extension with the system's MariaDB Connector/C, linked dynamically, instead of a
   # static one with a static OpenSSL
+  # upstream: none, the system's library instead of a bundled one
   patch -Np1 -i "$srcdir/mysql-mariadb.patch"
   # Connector/C's verification of the server's certificate, which 1.13 turns off for every
   # connection (alliedmodders/sourcemod@7b2eaa5), like 1.12: connections over the network need
   # TLS with a certificate the system trusts, local ones (a UNIX socket) don't
+  # upstream: none, verifies the server's certificate, which 1.13 turned off
   patch -Np1 -i "$srcdir/mysql-tls-verify.patch"
   # The PostgreSQL extension with the system's libpq, linked dynamically, instead of a static 18.4
+  # upstream: none, the system's library instead of a bundled one
   patch -Np1 -i "$srcdir/pgsql-libpq.patch"
   # The regex extension with the system's PCRE2, linked dynamically, instead of a static PCRE 8.44
   # (PCRE 1, end of life): translates regex.inc's PCRE flags and error codes
+  # upstream: workaround alliedmodders/sourcemod#2570
   patch -Np1 -i "$srcdir/regex-pcre2.patch"
   # The webternet extension, which the updater downloads with, with the system's libcurl, linked
   # dynamically, instead of a static curl 7.19 without TLS; the update server over HTTPS
+  # upstream: none, the system's library instead of a bundled one
   patch -Np1 -i "$srcdir/webternet-curl.patch"
   # The SQLite extension with the system's SQLite 3, linked dynamically, instead of the bundled
   # amalgamation (3.38); SourcePawn (the VM and the compiler) with the system's zlib
+  # upstream: none, the system's library instead of a bundled one
   patch -Np1 -i "$srcdir/sqlite-system.patch"
+  # upstream: none, the system's library instead of a bundled one
   patch -Np1 -i "$srcdir/sourcepawn-zlib.patch"
   # spcomp's __DATE__ and __TIME__, which every plugin has in its version info (core.inc), from
   # SOURCE_DATE_EPOCH in UTC if it's set, so that plugins build reproducibly
   # (https://github.com/alliedmodders/sourcepawn/pull/1204, merged as
   # alliedmodders/sourcepawn@36252599: drop this once SourceMod's sourcepawn submodule has it)
+  # upstream: pending alliedmodders/sourcepawn#1204
   patch -Np1 -i "$srcdir/sourcepawn-source-date-epoch.patch"
   # The perf jitdump support, which is built on all Linux targets now, with x86's timestamp counter
   # only on x86: aarch64 doesn't build otherwise (https://github.com/alliedmodders/sourcepawn/pull/1205,
   # merged as alliedmodders/sourcepawn@0e3f7dbc: drop this once SourceMod's sourcepawn submodule has it)
+  # upstream: pending alliedmodders/sourcepawn#1205
   patch -Np1 -i "$srcdir/sourcepawn-jitdump-timestamp.patch"
   # The GeoIP extension with the system's libmaxminddb, linked dynamically, instead of the bundled
   # 1.5.2
+  # upstream: none, the system's library instead of a bundled one
   patch -Np1 -i "$srcdir/geoip-libmaxminddb.patch"
   # Without the gamedata updates from SourceMod's update server (the updater extension isn't loaded):
   # a newer SourceMod comes as a whole with this package
@@ -214,6 +224,7 @@ prepare() {
   # The script names each source file with its path relative to Zydis's rather than its absolute
   # one, so the source doesn't depend on where it was built, and its pattern as a raw string, which
   # Python warns about otherwise (https://github.com/zyantific/zydis/pull/661)
+  # upstream: pending zyantific/zydis#661
   patch -Np1 -i "$srcdir/zydis-amalgamate-paths.patch"
   python assets/amalgamate.py >/dev/null
   local _zydis="$srcdir/sourcemod/public/safetyhook/zydis"
