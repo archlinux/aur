@@ -3,7 +3,7 @@
 
 pkgname=onedev-tod
 _pkgname=tod
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 _pkgsrc="${_pkgname}-${pkgver}"
 pkgdesc='TheOneDev CLI: OneDev issues, pull requests, builds and CI/CD jobs against local changes'
@@ -16,7 +16,7 @@ makedepends=('go')
 conflicts=('tod')
 # The GitHub mirror carries the release tags the updater tracks.
 source=("${_pkgsrc}.tar.gz::https://github.com/theonedev/tod/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('b77f2d042d437bcbbd3b9e269a0fedeacdcf2139f430787c5799e9ebbaa54a6a24d222a2c3fb12600766e5b0f111f0bead05dd2db2652438764c792358f5fbfc')
+b2sums=('a98d50f92515daadd89ca85f8b3c53fc56c30a866c5894913898d179a2cc595cdd0c86d3b5cd493de12e5da22336e2ae3b633ab1ff839347cf7cfdf5bec1152a')
 
 prepare() {
   cd "${_pkgsrc}"
