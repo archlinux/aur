@@ -9,8 +9,8 @@ extend-ignore-re = [
   "\\b[A-Z][A-Za-z0-9]*(?:\\.[A-Za-z0-9]+)+",
   # Command-line options (--enable-optimize, -PassThru, -p:RunAnalyzersDuringBuild=false)
   "(?:^|[\\s\"'(=])--?[A-Za-z][-A-Za-z0-9:]*",
-  # HTTP's header
-  "\\bAuthorization:",
+  # HTTP's header, in a request (Authorization: Bearer …) or by its name ("Authorization")
+  "\\bAuthorization[:\"']",
   # The names and addresses of the PKGBUILD's maintainers and contributors (name at domain dot tld)
   "(?m)^# (?:Maintainer|Contributor): .*$",
   # Names: mago's and systemd's commands, a package, the SourceMod libraries (Colors, More Colors,
