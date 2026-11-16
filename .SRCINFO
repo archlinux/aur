@@ -1,7 +1,7 @@
 pkgbase = keshiki-git
 	pkgdesc = Animated wallpaper manager for X11
 	pkgver = e73773ab
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Konqi0139/Keshiki.git
 	arch = x86_64
 	license = GPL-3.0-or-later

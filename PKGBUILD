@@ -1,7 +1,7 @@
 _gitname="keshiki"
 pkgname="${_gitname}-git"
 pkgver="e73773ab"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Animated wallpaper manager for X11"
 arch=("x86_64")
 url="https://github.com/Konqi0139/Keshiki"
@@ -37,7 +37,7 @@ package() {
   chmod +x "$INSTALL_DIR/bin/mpv.bash"
   chmod +x "$INSTALL_DIR/keshiki.bash" "$INSTALL_DIR/keshiki-"*
 
-  ln -sf "$INSTALL_DIR/keshiki.bash" "${pkgdir}/usr/bin/keshiki"
+  ln -s /opt/keshiki/keshiki.bash "${pkgdir}/usr/bin/keshiki"
 
    cat << EOF > "${srcdir}/${pkgname}/keshiki.desktop"
 [Desktop Entry]
