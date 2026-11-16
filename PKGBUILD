@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=workbuddy2api-panel
-pkgver=2026.11.15.2246
+pkgver=2026.11.16.2326
 pkgrel=1
 pkgdesc="把腾讯WorkBuddy账号变成 OpenAI 兼容 API 的多账号网关，同时自动完成任务中心全部任务，附 Web 管理面板（账号池可视化 / 积分任务 / 配置热更新）"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -12,7 +12,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('054014d112f4c2abe59891b7f901f2200628d796a686c7c1c186858da4398f41'
+sha256sums=('074eba15d33c00e9abf3a9afdd49fd911841076ce131a6d00bde2834da5274be'
             '180aeebcbe93072875e4637c29878dda9efab7c2bd0d9f566b0fbb461d1707e5'
             'e576f876660bd5428c5210b2ed6472a86e0c6454ce93d4cdfd13eb79b9580c25'
             '0c1be5bab0af9077c9ad01181c8a0e75d1fc9fb1eccc02bc812e3a308b3b5c49')
