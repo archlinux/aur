@@ -15,6 +15,6 @@ pkgbase = samba-util-bin
 	options = !debug
 	options = !strip
 	source = https://github.com/mijocecr/samba-util/releases/download/samba-util_v4.3.0/SAMBA-Util.tar.gz
-	sha256sums = f394d831effb1f1b444843ae115bcb0cb4e26cb38babd31be9842987245faaca
+	sha256sums = 5b08be3cbe04465ae0bcb363fa403b5f461862ac0fe9d115c8dbbe57aaabe8ca
 
 pkgname = samba-util-bin
