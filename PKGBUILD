@@ -6,10 +6,10 @@ pkgname=(black-magic-debug-app-git black-magic-debug-udev-git)
 pkgver=2.1.0.r41.g3424d0a02
 pkgrel=1
 pkgdesc='In-application debugger for ARM Cortex and RISC-V processors'
-arch=('any')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://black-magic.org'
-license=('GPL' 'BSD' 'MIT')
-makedepends=('git' 'hidapi' 'python')
+license=('GPL-3.0-or-later' 'BSD-3-Clause' 'MIT')
+makedepends=('git' 'meson' 'python' 'hidapi' 'libftdi' 'libusb')
 source=("git+https://codeberg.org/blackmagic-debug/blackmagic.git")
 sha256sums=('SKIP')
 
@@ -28,17 +28,19 @@ build() {
 }
 
 package_black-magic-debug-udev-git() {
+  arch=('any')
   conflicts=('black-magic-udev' 'black-magic-debug-udev')
   provides=('black-magic-debug-udev')
 
   install -Dm 644 blackmagic/driver/99-blackmagic-uucp.rules "${pkgdir}/usr/lib/udev/rules.d/99-blackmagic-uucp.rules"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" blackmagic/COPYING*
 }
 
 package_black-magic-debug-app-git() {
   conflicts=('black-magic-debug-app')
   provides=('black-magic-debug-app')
-  depends=('libusb' 'libftdi' 'libhidapi-libusb.so')
+  depends=('glibc' 'libusb' 'libftdi' 'hidapi')
 
   install -Dm 755 build/blackmagic "${pkgdir}/usr/bin/blackmagic"
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgbase}" blackmagic/COPYING*
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" blackmagic/COPYING*
 }
