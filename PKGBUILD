@@ -4,7 +4,7 @@ _pkgname=eglantine
 pkgname="eglantine-pgo-bin"
 pkgver=0.1.0_rc4
 _tag="v${pkgver//_/-}"
-pkgrel=3
+pkgrel=4
 pkgdesc="The Eglantine Nintendo Switch 2 emulator binary (PGO build)."
 arch=('x86_64')
 url="https://github.com/Eglantine-Community/Eglantine"
@@ -47,7 +47,7 @@ package() {
   install -Dm644 "${srcdir}/dev.eglantine.eglantine.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   sed -i "s|^Exec=.*|Exec=/usr/bin/${_pkgname} %U|" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-  install -Dm644 "${srcdir}/dev.eden_emu.eden.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/dev.eden_emu.eden.svg"
+  install -Dm644 "${srcdir}/dev.eden_emu.eden.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/dev.eglantine.eglantine.svg"
 }
 
 post_install() {
