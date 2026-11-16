@@ -1,6 +1,6 @@
 pkgbase = dash-mpd-cli-bin
 	pkgdesc = Download media content from a DASH-MPEG or DASH-WebM MPD manifest
-	pkgver = 0.2.33
+	pkgver = 0.2.35
 	pkgrel = 1
 	url = https://github.com/emarsden/dash-mpd-cli
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = dash-mpd-cli-bin
 	optdepends = gpac
 	provides = dash-mpd-cli
 	conflicts = dash-mpd-cli
-	source_x86_64 = dash-mpd-cli-bin-0.2.33-x86_64::https://github.com/emarsden/dash-mpd-cli/releases/download/v0.2.33/dash-mpd-cli-linux-amd64
-	sha256sums_x86_64 = ae4bd21599f4a5af17e8abc101432f16e8d31409dbd74ce6f51abc1778d3e629
-	source_aarch64 = dash-mpd-cli-bin-0.2.33-aarch64::https://github.com/emarsden/dash-mpd-cli/releases/download/v0.2.33/dash-mpd-cli-linux-aarch64
-	sha256sums_aarch64 = 9ec347e35954bc78a588e6f350b409c759ac8aa93ab2edb6049943085c8ac6eb
+	source_x86_64 = dash-mpd-cli-bin-0.2.35-x86_64::https://github.com/emarsden/dash-mpd-cli/releases/download/v0.2.35/dash-mpd-cli-linux-amd64
+	sha256sums_x86_64 = e8d7c4a8c0b2de63157fe7b8a76e2e9499e30e24c8c4ed402f131815b57756f4
+	source_aarch64 = dash-mpd-cli-bin-0.2.35-aarch64::https://github.com/emarsden/dash-mpd-cli/releases/download/v0.2.35/dash-mpd-cli-linux-aarch64
+	sha256sums_aarch64 = c53fcf90803b26c017ed16e54f4378d456f112d5d106b381ca819207c0aa3565
 
 pkgname = dash-mpd-cli-bin
