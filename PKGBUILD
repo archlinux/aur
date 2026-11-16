@@ -4,7 +4,7 @@
 
 pkgname=otpclient-git
 _pkgname=OTPClient
-pkgver=5.0.5.r0.g301c1a6
+pkgver=5.3.2.r0.gee8fbf0
 pkgrel=1
 pkgdesc="easy-to-use GTK4 TOTP/HOTP client"
 arch=('x86_64')
@@ -30,21 +30,14 @@ depends=(
 makedepends=('cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url?signed"
-        0001_dont-gsettings-iconcache.patch)
-sha256sums=('SKIP'
-            'a58c264507d7ce91600c30a2fe4841aeaf7b413260058cbac1ded2cb80251758')
+source=("git+$url?signed")
+sha256sums=('SKIP')
 validpgpkeys=(
 	'060C6B7D3869F148C4C4ACD43C9BE9B64EC1EA64'  ## Paolo Stivanin
 	'5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23') ## GitHub
 
 pkgver() {
   git -C "$_pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
-}
-
-prepare() {
-  cd $_pkgname
-  patch -Np2 -i "${srcdir}"/0001_dont-gsettings-iconcache.patch
 }
 
 build() {
