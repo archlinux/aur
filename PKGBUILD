@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simpleshell-git
 _pkgname=SimpleShell
-pkgver=0.5.8.r0.g444ccc2
+pkgver=0.6.0.r0.gc1b99af
 _electronversion=40
-_nodeversion=22
+_nodeversion=24
 pkgrel=1
 pkgdesc="A modern, feature-rich SSH terminal application that combines the power of Electron's desktop capabilities with React's intuitive development experience. Designed for developers and system administrators who need efficient remote server management."
 arch=('any')
@@ -30,7 +30,7 @@ source=(
 )
 sha256sums=('SKIP'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -38,10 +38,10 @@ _get_project_dir() {
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 pkgver() {
-    cd "$(_get_project_dir)"
-    set -o pipefail
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$(_get_project_dir)" || return 1
+	local _t=$(git tag --list --sort=-v:refname | grep -m1 -E '^v?[0-9]+(\.[0-9]+)+$' || :)
+	local _n=$(git rev-list --count "${_t:+$_t..}HEAD") _s=$(git rev-parse --short=7 HEAD)
+	[[ -n $_t ]] && printf '%s.r%s.g%s\n' "${_t#v}" "$_n" "$_s" || printf 'r%s.%s\n' "$_n" "$_s"
 }
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
