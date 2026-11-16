@@ -3,7 +3,7 @@
 # Anthropic's signed apt repo, for Arch / Artix / Aegix Linux.
 pkgname=claude-desktop-aegix-bin
 _pkgname=claude-desktop
-pkgver=5.11492.2
+pkgver=5.11492.5
 pkgrel=1
 pkgdesc="Desktop application for Claude.ai (official Linux build, repackaged for Arch/Artix/Aegix)"
 arch=('x86_64' 'aarch64')
@@ -29,8 +29,8 @@ source_x86_64=("${_pkgname}_${pkgver}_amd64.deb::${_repo}/${_pkgname}_${pkgver}_
 source_aarch64=("${_pkgname}_${pkgver}_arm64.deb::${_repo}/${_pkgname}_${pkgver}_arm64.deb")
 noextract=("${_pkgname}_${pkgver}_amd64.deb" "${_pkgname}_${pkgver}_arm64.deb")
 sha256sums=('SKIP')
-sha256sums_x86_64=('d10944fa5663b997400cf66c5c7738fd6acf654f8aaeaca5b994eb147aa6b35f')
-sha256sums_aarch64=('208b637e951f53d4621d6edc1598c21bda664602ed409ad37b6735021be9840e')
+sha256sums_x86_64=('b96208b207e450b740f7dbe304f6077fed80e7f3d37ddd545991c4e8201564cf')
+sha256sums_aarch64=('fe6cd8a70f96b96eb4e6b647300cfaee6aaff4ce133a0fbbe11c2cdb775f5a6a')
 
 prepare() {
   local _debarch=amd64
