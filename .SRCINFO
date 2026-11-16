@@ -1,6 +1,6 @@
 pkgbase = quadrahq-git
 	pkgdesc = Run the macOS Roblox client on Linux through Darling
-	pkgver = 0.50.1.r13.ga7d5b1a
+	pkgver = 0.50.2.r4.g52a8adf
 	pkgrel = 2
 	url = https://quadrahq.org
 	arch = x86_64
