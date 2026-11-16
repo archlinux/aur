@@ -2,13 +2,13 @@
 
 pkgname=onon-git
 _pkgname=onon
-pkgver=0.11.3.r0.g5c95592
+pkgver=0.14.16.r0.ge809fbf
 pkgrel=1
 pkgdesc="A quiet reader for the keyboard, built on MuPDF and configured with Lua"
 arch=('x86_64')
 url="https://github.com/Aethar01/onon"
 license=('AGPL-3.0-only')
-depends=('sdl3' 'libmupdf' 'gtk3')
+depends=('sdl3' 'libmupdf' 'gtk3' 'glslang')
 makedepends=('go' 'git' 'pkgconf')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
