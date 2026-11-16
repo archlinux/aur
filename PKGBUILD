@@ -1,11 +1,12 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-x11
 pkgver=6.7.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=3
+pkgrel=4
 pkgdesc='An easy to use, but flexible, X Window Manager'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
