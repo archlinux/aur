@@ -1,6 +1,6 @@
 pkgbase = rapidraw
 	pkgdesc = GPU-accelerated RAW image editor
-	pkgver = 1.6.9
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/CyberTimon/RapidRAW
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = rapidraw
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	options = !lto
-	source = rapidraw-1.6.9.tar.gz::https://github.com/CyberTimon/RapidRAW/archive/refs/tags/v1.6.9.tar.gz
-	sha256sums = b3302f10df08dcf4bb5dfbb18505cb0a93126a185c177ec7404f8662ec2531c2
+	source = rapidraw-1.7.0.tar.gz::https://github.com/CyberTimon/RapidRAW/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = de00b7a56765878cd18afa94f80e5a62749bef23e64b75b54e4f684e37e7583b
 
 pkgname = rapidraw
