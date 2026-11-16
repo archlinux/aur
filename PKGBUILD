@@ -1,6 +1,6 @@
 pkgname=mcpelauncher-linux-bin
 pkgver=1.8.7.40934284323.1~bookworm
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft Bedrock Launcher for Linux"
 arch=('x86_64')
 url="https://minecraft-linux.github.io"
@@ -17,8 +17,9 @@ noextract=("mcpelauncher-manifest_${pkgver}_amd64.deb")
 package() {
     ar vx "${srcdir}/mcpelauncher-manifest_${pkgver}_amd64.deb" data.tar.gz 1>/dev/null
     tar -xzf data.tar.gz -C "${srcdir}"
-	mkdir -p "${pkgdir}"/{usr/bin,opt/mcpelauncher-bin/{bin,share}}
+	mkdir -p "${pkgdir}"/{etc/profile.d,opt/mcpelauncher-bin/{bin,share}}
 	cp -r "${srcdir}"/usr/share "${pkgdir}"/opt/mcpelauncher-bin
 	install -Dm755 "${srcdir}"/usr/bin/* -t "${pkgdir}"/opt/mcpelauncher-bin/bin/
-    ln -s "${pkgdir}"/opt/mcpelauncher-bin/bin/* "${pkgdir}"/usr/bin
+	echo 'export PATH="$PATH:/opt/mcpelauncher-bin/bin"' > ${pkgdir}/etc/profile.d/mcpelauncher-bin.sh
+	chmod 755 ${pkgdir}/etc/profile.d/mcpelauncher-bin.sh
 }
