@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=geetree-bin
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="GPU-rendered Git client built for very large repositories"
 arch=('x86_64')
@@ -27,7 +27,7 @@ options=('!strip' '!debug')
 _deb="geetree-${pkgver}-amd64.deb"
 source_x86_64=("${_deb}::https://github.com/cmzy/geetree/releases/download/v${pkgver}/GeeTree_amd64.deb")
 noextract=("${_deb}")
-sha256sums_x86_64=('f8726504327a6d6c916281819a9b46bc1cf98571da3dbda7c85a6947f7ce5e64')
+sha256sums_x86_64=('600cc979faa340ed411d76f41486ba4b32c2a9c0d6732165b4acbb4ba694eb40')
 
 package() {
     local _data_member
