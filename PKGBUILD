@@ -1,7 +1,7 @@
 # Maintainer: oysterAV contributors
 # shellcheck disable=SC2034
 pkgname=oysterav
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Linux security orchestrator: oyst-cli backend + oysterAV GTK4 GUI"
 arch=('any')
@@ -23,9 +23,10 @@ optdepends=(
   'rkhunter: rootkit checks'
   'chkrootkit: rootkit checks'
   'lynis: hardening audits'
+  'uq: security tile and Settings page in the uQ desktop'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3bf3eedb518bf5559f007a692c8822c42c33e17a62b44e3911c4a683805cd5ac')
+sha256sums=('4be794fb1e6501f3388e8486362a5823940fdc7c099af061fe95228e6eae680a')
 
 build() {
   cd "oysterAV-$pkgver"
@@ -37,7 +38,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm755 /dev/stdin "$pkgdir/usr/lib/oysterav/oyst-helper" <<'EOF'
-#!/usr/bin/env python3
+#!/usr/bin/python3 -I
 from oyst_core.privileged.oyst_helper import main
 main()
 EOF
@@ -50,6 +51,11 @@ EOF
     "$pkgdir/usr/share/metainfo/io.github.asafelobotomy.OysterAV.metainfo.xml"
   install -Dm644 packaging/polkit/io.github.asafelobotomy.policy \
     "$pkgdir/usr/share/polkit-1/actions/io.github.asafelobotomy.policy"
+
+  # uQ integration (inert without uQ): uq/README.md lists what each file adds.
+  install -Dm644 -t "$pkgdir/usr/share/uq/shell/widgets/oysterav" uq/widgets/oysterav/*
+  install -Dm644 -t "$pkgdir/usr/share/uq/settings/pages/oysterav-security" \
+    uq/pages/oysterav-security/*
 
   for size in 16 32 48 128 256; do
     install -Dm644 "branding/hicolor/${size}x${size}/apps/oysterav.png" \
