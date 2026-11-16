@@ -2,7 +2,7 @@
 
 pkgname=epsxe-appimage
 pkgver=2.0.5
-pkgrel=6
+pkgrel=7
 pkgdesc="ePSXe PS1 emulator for 64-bit Linux (self-built AppImage)"
 arch=('x86_64')
 url="https://github.com/Twilight0/epsxe-appimage"
@@ -21,7 +21,7 @@ options=('!strip' '!debug')
 # a fixed name breaks every client that already cached it, because the file
 # name stays the same and the download is skipped.
 source=("ePSXe-$pkgver-$pkgrel-x86_64.AppImage::https://github.com/Twilight0/epsxe-appimage/releases/download/v$pkgver-$pkgrel/ePSXe-$pkgver-$pkgrel-x86_64.AppImage")
-sha256sums=('59ad14ef4b581d2e5f9d3ba20ab90fa7184fa1a8a1b940130e28ee7938ff62d9')
+sha256sums=('21fc290ea5d00012734f41469efd9359324b116f002c88324591bbb198abd571')
 
 package() {
   # Unpack the AppImage once: the icon and the documented settings come
