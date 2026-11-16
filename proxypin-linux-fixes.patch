@@ -1,8 +1,8 @@
 diff --git a/lib/l10n/app_en.arb b/lib/l10n/app_en.arb
-index a653fc8..d14a83a 100644
+index 0ee4c27..91af6f4 100644
 --- a/lib/l10n/app_en.arb
 +++ b/lib/l10n/app_en.arb
-@@ -516,5 +516,26 @@
+@@ -520,5 +520,26 @@
    "pinnedDragSort": "Pinned (drag to reorder)",
    "pinToolsHint": "All tools (tap + to pin to toolbar)",
    "image": "Image",
@@ -31,10 +31,10 @@ index a653fc8..d14a83a 100644
 +  "noOutputHint": "Click Run to see output here"
  }
 diff --git a/lib/l10n/app_es.arb b/lib/l10n/app_es.arb
-index e4c3d8a..6c179fa 100644
+index a2597a3..4c5c5de 100644
 --- a/lib/l10n/app_es.arb
 +++ b/lib/l10n/app_es.arb
-@@ -272,5 +272,25 @@
+@@ -275,5 +275,25 @@
    "statusPaused": "En pausa",
    "pause": "Pausar",
    "resume": "Reanudar",
@@ -62,10 +62,10 @@ index e4c3d8a..6c179fa 100644
 +  "uiDensitySubtitle": "Espaciado de botones, listas y menús"
  }
 diff --git a/lib/l10n/app_id.arb b/lib/l10n/app_id.arb
-index fb88903..0bd6dd6 100644
+index 192988f..103db66 100644
 --- a/lib/l10n/app_id.arb
 +++ b/lib/l10n/app_id.arb
-@@ -272,5 +272,15 @@
+@@ -275,5 +275,15 @@
    "statusPaused": "Dijeda",
    "pause": "Jeda",
    "resume": "Lanjutkan",
@@ -82,660 +82,16 @@ index fb88903..0bd6dd6 100644
 +  "codeFontFamily": "Nama font",
 +  "codeFontSize": "Ukuran font kode"
  }
-diff --git a/lib/l10n/app_localizations.dart b/lib/l10n/app_localizations.dart
-index 1de1d33..3412045 100644
---- a/lib/l10n/app_localizations.dart
-+++ b/lib/l10n/app_localizations.dart
-@@ -2943,6 +2943,132 @@ abstract class AppLocalizations {
-   /// In en, this message translates to:
-   /// **'Filtered'**
-   String get filtered;
-+
-+  /// No description provided for @captureListDensity.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Capture list density'**
-+  String get captureListDensity;
-+
-+  /// No description provided for @captureListDensitySubtitle.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Row height of captured requests'**
-+  String get captureListDensitySubtitle;
-+
-+  /// No description provided for @densityComfortable.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Comfortable'**
-+  String get densityComfortable;
-+
-+  /// No description provided for @densityCompact.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Compact'**
-+  String get densityCompact;
-+
-+  /// No description provided for @densityDense.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Dense'**
-+  String get densityDense;
-+
-+  /// No description provided for @codeFont.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Code font'**
-+  String get codeFont;
-+
-+  /// No description provided for @codeFontSubtitle.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Font used by request/response body and script editors'**
-+  String get codeFontSubtitle;
-+
-+  /// No description provided for @codeFontFollowUi.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Follow UI font'**
-+  String get codeFontFollowUi;
-+
-+  /// No description provided for @codeFontSystemMono.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'System monospace'**
-+  String get codeFontSystemMono;
-+
-+  /// No description provided for @codeFontCustom.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Custom font…'**
-+  String get codeFontCustom;
-+
-+  /// No description provided for @codeFontFamily.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Font family'**
-+  String get codeFontFamily;
-+
-+  /// No description provided for @codeFontSize.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Code font size'**
-+  String get codeFontSize;
-+
-+  /// No description provided for @codeFontSizeSubtitle.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Font size of code editors'**
-+  String get codeFontSizeSubtitle;
-+
-+  /// No description provided for @appFont.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Interface font'**
-+  String get appFont;
-+
-+  /// No description provided for @appFontSubtitle.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Font used by the whole UI (code windows use their own setting)'**
-+  String get appFontSubtitle;
-+
-+  /// No description provided for @appFontSystem.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'System default'**
-+  String get appFontSystem;
-+
-+  /// No description provided for @appFontScale.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Interface font scale'**
-+  String get appFontScale;
-+
-+  /// No description provided for @appFontScaleSubtitle.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Scale the whole UI text up or down'**
-+  String get appFontScaleSubtitle;
-+
-+  /// No description provided for @uiDensity.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Interface density'**
-+  String get uiDensity;
-+
-+  /// No description provided for @uiDensitySubtitle.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Spacing of buttons, lists and menus'**
-+  String get uiDensitySubtitle;
-+
-+  /// No description provided for @noOutputHint.
-+  ///
-+  /// In en, this message translates to:
-+  /// **'Click Run to see output here'**
-+  String get noOutputHint;
- }
- 
- class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
-diff --git a/lib/l10n/app_localizations_en.dart b/lib/l10n/app_localizations_en.dart
-index 91aadd1..bc3146a 100644
---- a/lib/l10n/app_localizations_en.dart
-+++ b/lib/l10n/app_localizations_en.dart
-@@ -1476,4 +1476,67 @@ class AppLocalizationsEn extends AppLocalizations {
- 
-   @override
-   String get filtered => 'Filtered';
-+
-+  @override
-+  String get captureListDensity => 'Capture list density';
-+
-+  @override
-+  String get captureListDensitySubtitle => 'Row height of captured requests';
-+
-+  @override
-+  String get densityComfortable => 'Comfortable';
-+
-+  @override
-+  String get densityCompact => 'Compact';
-+
-+  @override
-+  String get densityDense => 'Dense';
-+
-+  @override
-+  String get codeFont => 'Code font';
-+
-+  @override
-+  String get codeFontSubtitle => 'Font used by request/response body and script editors';
-+
-+  @override
-+  String get codeFontFollowUi => 'Follow UI font';
-+
-+  @override
-+  String get codeFontSystemMono => 'System monospace';
-+
-+  @override
-+  String get codeFontCustom => 'Custom font…';
-+
-+  @override
-+  String get codeFontFamily => 'Font family';
-+
-+  @override
-+  String get codeFontSize => 'Code font size';
-+
-+  @override
-+  String get codeFontSizeSubtitle => 'Font size of code editors';
-+
-+  @override
-+  String get appFont => 'Interface font';
-+
-+  @override
-+  String get appFontSubtitle => 'Font used by the whole UI (code windows use their own setting)';
-+
-+  @override
-+  String get appFontSystem => 'System default';
-+
-+  @override
-+  String get appFontScale => 'Interface font scale';
-+
-+  @override
-+  String get appFontScaleSubtitle => 'Scale the whole UI text up or down';
-+
-+  @override
-+  String get uiDensity => 'Interface density';
-+
-+  @override
-+  String get uiDensitySubtitle => 'Spacing of buttons, lists and menus';
-+
-+  @override
-+  String get noOutputHint => 'Click Run to see output here';
- }
-diff --git a/lib/l10n/app_localizations_es.dart b/lib/l10n/app_localizations_es.dart
-index e88e855..3086e0f 100644
---- a/lib/l10n/app_localizations_es.dart
-+++ b/lib/l10n/app_localizations_es.dart
-@@ -1471,4 +1471,67 @@ class AppLocalizationsEs extends AppLocalizations {
- 
-   @override
-   String get filtered => 'Filtered';
-+
-+  @override
-+  String get captureListDensity => 'Densidad de la lista';
-+
-+  @override
-+  String get captureListDensitySubtitle => 'Altura de cada fila capturada';
-+
-+  @override
-+  String get densityComfortable => 'Cómoda';
-+
-+  @override
-+  String get densityCompact => 'Compacta';
-+
-+  @override
-+  String get densityDense => 'Densa';
-+
-+  @override
-+  String get codeFont => 'Fuente de código';
-+
-+  @override
-+  String get codeFontSubtitle => 'Fuente del cuerpo de petición/respuesta y editores de script';
-+
-+  @override
-+  String get codeFontFollowUi => 'Seguir la fuente de la interfaz';
-+
-+  @override
-+  String get codeFontSystemMono => 'Monoespaciada del sistema';
-+
-+  @override
-+  String get codeFontCustom => 'Fuente personalizada…';
-+
-+  @override
-+  String get codeFontFamily => 'Familia tipográfica';
-+
-+  @override
-+  String get codeFontSize => 'Tamaño de fuente del código';
-+
-+  @override
-+  String get codeFontSizeSubtitle => 'Tamaño de fuente de los editores de código';
-+
-+  @override
-+  String get appFont => 'Fuente de la interfaz';
-+
-+  @override
-+  String get appFontSubtitle => 'Fuente de toda la interfaz (las ventanas de código usan su propio ajuste)';
-+
-+  @override
-+  String get appFontSystem => 'Predeterminada del sistema';
-+
-+  @override
-+  String get appFontScale => 'Escala de fuente de la interfaz';
-+
-+  @override
-+  String get appFontScaleSubtitle => 'Escala el texto de toda la interfaz';
-+
-+  @override
-+  String get uiDensity => 'Densidad de la interfaz';
-+
-+  @override
-+  String get uiDensitySubtitle => 'Espaciado de botones, listas y menús';
-+
-+  @override
-+  String get noOutputHint => 'Click Run to see output here';
- }
-diff --git a/lib/l10n/app_localizations_id.dart b/lib/l10n/app_localizations_id.dart
-index 9cf2db2..e22f26f 100644
---- a/lib/l10n/app_localizations_id.dart
-+++ b/lib/l10n/app_localizations_id.dart
-@@ -1472,4 +1472,67 @@ class AppLocalizationsId extends AppLocalizations {
- 
-   @override
-   String get filtered => 'Filtered';
-+
-+  @override
-+  String get captureListDensity => 'Kepadatan daftar';
-+
-+  @override
-+  String get captureListDensitySubtitle => 'Row height of captured requests';
-+
-+  @override
-+  String get densityComfortable => 'Longgar';
-+
-+  @override
-+  String get densityCompact => 'Ringkas';
-+
-+  @override
-+  String get densityDense => 'Padat';
-+
-+  @override
-+  String get codeFont => 'Font kode';
-+
-+  @override
-+  String get codeFontSubtitle => 'Font used by request/response body and script editors';
-+
-+  @override
-+  String get codeFontFollowUi => 'Ikuti font antarmuka';
-+
-+  @override
-+  String get codeFontSystemMono => 'Monospace sistem';
-+
-+  @override
-+  String get codeFontCustom => 'Font khusus…';
-+
-+  @override
-+  String get codeFontFamily => 'Nama font';
-+
-+  @override
-+  String get codeFontSize => 'Ukuran font kode';
-+
-+  @override
-+  String get codeFontSizeSubtitle => 'Font size of code editors';
-+
-+  @override
-+  String get appFont => 'Interface font';
-+
-+  @override
-+  String get appFontSubtitle => 'Font used by the whole UI (code windows use their own setting)';
-+
-+  @override
-+  String get appFontSystem => 'System default';
-+
-+  @override
-+  String get appFontScale => 'Interface font scale';
-+
-+  @override
-+  String get appFontScaleSubtitle => 'Scale the whole UI text up or down';
-+
-+  @override
-+  String get uiDensity => 'Interface density';
-+
-+  @override
-+  String get uiDensitySubtitle => 'Spacing of buttons, lists and menus';
-+
-+  @override
-+  String get noOutputHint => 'Click Run to see output here';
- }
-diff --git a/lib/l10n/app_localizations_pt.dart b/lib/l10n/app_localizations_pt.dart
-index 04dc04c..bce7f1c 100644
---- a/lib/l10n/app_localizations_pt.dart
-+++ b/lib/l10n/app_localizations_pt.dart
-@@ -1476,6 +1476,69 @@ class AppLocalizationsPt extends AppLocalizations {
- 
-   @override
-   String get filtered => 'Filtered';
-+
-+  @override
-+  String get captureListDensity => 'Densidade da lista';
-+
-+  @override
-+  String get captureListDensitySubtitle => 'Row height of captured requests';
-+
-+  @override
-+  String get densityComfortable => 'Confortável';
-+
-+  @override
-+  String get densityCompact => 'Compacta';
-+
-+  @override
-+  String get densityDense => 'Densa';
-+
-+  @override
-+  String get codeFont => 'Fonte do código';
-+
-+  @override
-+  String get codeFontSubtitle => 'Font used by request/response body and script editors';
-+
-+  @override
-+  String get codeFontFollowUi => 'Seguir a fonte da interface';
-+
-+  @override
-+  String get codeFontSystemMono => 'Monoespaçada do sistema';
-+
-+  @override
-+  String get codeFontCustom => 'Fonte personalizada…';
-+
-+  @override
-+  String get codeFontFamily => 'Família da fonte';
-+
-+  @override
-+  String get codeFontSize => 'Tamanho da fonte do código';
-+
-+  @override
-+  String get codeFontSizeSubtitle => 'Font size of code editors';
-+
-+  @override
-+  String get appFont => 'Interface font';
-+
-+  @override
-+  String get appFontSubtitle => 'Font used by the whole UI (code windows use their own setting)';
-+
-+  @override
-+  String get appFontSystem => 'System default';
-+
-+  @override
-+  String get appFontScale => 'Interface font scale';
-+
-+  @override
-+  String get appFontScaleSubtitle => 'Scale the whole UI text up or down';
-+
-+  @override
-+  String get uiDensity => 'Interface density';
-+
-+  @override
-+  String get uiDensitySubtitle => 'Spacing of buttons, lists and menus';
-+
-+  @override
-+  String get noOutputHint => 'Click Run to see output here';
- }
- 
- /// The translations for Portuguese, as used in Brazil (`pt_BR`).
-diff --git a/lib/l10n/app_localizations_th.dart b/lib/l10n/app_localizations_th.dart
-index 8ec9b43..639bb7c 100644
---- a/lib/l10n/app_localizations_th.dart
-+++ b/lib/l10n/app_localizations_th.dart
-@@ -1470,4 +1470,67 @@ class AppLocalizationsTh extends AppLocalizations {
- 
-   @override
-   String get filtered => 'Filtered';
-+
-+  @override
-+  String get captureListDensity => 'ความหนาแน่นของรายการ';
-+
-+  @override
-+  String get captureListDensitySubtitle => 'Row height of captured requests';
-+
-+  @override
-+  String get densityComfortable => 'สบายตา';
-+
-+  @override
-+  String get densityCompact => 'กะทัดรัด';
-+
-+  @override
-+  String get densityDense => 'แน่น';
-+
-+  @override
-+  String get codeFont => 'ฟอนต์โค้ด';
-+
-+  @override
-+  String get codeFontSubtitle => 'Font used by request/response body and script editors';
-+
-+  @override
-+  String get codeFontFollowUi => 'ใช้ฟอนต์ของหน้าจอ';
-+
-+  @override
-+  String get codeFontSystemMono => 'ฟอนต์โมโนของระบบ';
-+
-+  @override
-+  String get codeFontCustom => 'ฟอนต์กำหนดเอง…';
-+
-+  @override
-+  String get codeFontFamily => 'ชื่อฟอนต์';
-+
-+  @override
-+  String get codeFontSize => 'ขนาดฟอนต์โค้ด';
-+
-+  @override
-+  String get codeFontSizeSubtitle => 'Font size of code editors';
-+
-+  @override
-+  String get appFont => 'Interface font';
-+
-+  @override
-+  String get appFontSubtitle => 'Font used by the whole UI (code windows use their own setting)';
-+
-+  @override
-+  String get appFontSystem => 'System default';
-+
-+  @override
-+  String get appFontScale => 'Interface font scale';
-+
-+  @override
-+  String get appFontScaleSubtitle => 'Scale the whole UI text up or down';
-+
-+  @override
-+  String get uiDensity => 'Interface density';
-+
-+  @override
-+  String get uiDensitySubtitle => 'Spacing of buttons, lists and menus';
-+
-+  @override
-+  String get noOutputHint => 'Click Run to see output here';
- }
-diff --git a/lib/l10n/app_localizations_vi.dart b/lib/l10n/app_localizations_vi.dart
-index 1880b6c..81fc172 100644
---- a/lib/l10n/app_localizations_vi.dart
-+++ b/lib/l10n/app_localizations_vi.dart
-@@ -1470,4 +1470,67 @@ class AppLocalizationsVi extends AppLocalizations {
- 
-   @override
-   String get filtered => 'Filtered';
-+
-+  @override
-+  String get captureListDensity => 'Mật độ danh sách';
-+
-+  @override
-+  String get captureListDensitySubtitle => 'Row height of captured requests';
-+
-+  @override
-+  String get densityComfortable => 'Thoáng';
-+
-+  @override
-+  String get densityCompact => 'Gọn';
-+
-+  @override
-+  String get densityDense => 'Dày';
-+
-+  @override
-+  String get codeFont => 'Phông chữ mã';
-+
-+  @override
-+  String get codeFontSubtitle => 'Font used by request/response body and script editors';
-+
-+  @override
-+  String get codeFontFollowUi => 'Theo phông giao diện';
-+
-+  @override
-+  String get codeFontSystemMono => 'Monospace hệ thống';
-+
-+  @override
-+  String get codeFontCustom => 'Phông tùy chỉnh…';
-+
-+  @override
-+  String get codeFontFamily => 'Tên phông';
-+
-+  @override
-+  String get codeFontSize => 'Cỡ chữ mã';
-+
-+  @override
-+  String get codeFontSizeSubtitle => 'Font size of code editors';
-+
-+  @override
-+  String get appFont => 'Interface font';
-+
-+  @override
-+  String get appFontSubtitle => 'Font used by the whole UI (code windows use their own setting)';
-+
-+  @override
-+  String get appFontSystem => 'System default';
-+
-+  @override
-+  String get appFontScale => 'Interface font scale';
-+
-+  @override
-+  String get appFontScaleSubtitle => 'Scale the whole UI text up or down';
-+
-+  @override
-+  String get uiDensity => 'Interface density';
-+
-+  @override
-+  String get uiDensitySubtitle => 'Spacing of buttons, lists and menus';
-+
-+  @override
-+  String get noOutputHint => 'Click Run to see output here';
- }
-diff --git a/lib/l10n/app_localizations_zh.dart b/lib/l10n/app_localizations_zh.dart
-index 2989571..bb8ec6a 100644
---- a/lib/l10n/app_localizations_zh.dart
-+++ b/lib/l10n/app_localizations_zh.dart
-@@ -1461,6 +1461,69 @@ class AppLocalizationsZh extends AppLocalizations {
- 
-   @override
-   String get filtered => '过滤';
-+
-+  @override
-+  String get captureListDensity => '抓包列表密度';
-+
-+  @override
-+  String get captureListDensitySubtitle => '抓包列表每行的高度';
-+
-+  @override
-+  String get densityComfortable => '宽松';
-+
-+  @override
-+  String get densityCompact => '紧凑';
-+
-+  @override
-+  String get densityDense => '极紧凑';
-+
-+  @override
-+  String get codeFont => '代码字体';
-+
-+  @override
-+  String get codeFontSubtitle => '请求体/响应体、脚本编辑器等代码窗口使用的字体';
-+
-+  @override
-+  String get codeFontFollowUi => '跟随界面字体';
-+
-+  @override
-+  String get codeFontSystemMono => '系统等宽';
-+
-+  @override
-+  String get codeFontCustom => '自定义字体…';
-+
-+  @override
-+  String get codeFontFamily => '字体名称';
-+
-+  @override
-+  String get codeFontSize => '代码字号';
-+
-+  @override
-+  String get codeFontSizeSubtitle => '代码编辑器字号';
-+
-+  @override
-+  String get appFont => '界面字体';
-+
-+  @override
-+  String get appFontSubtitle => '整个界面使用的字体（代码窗口用单独的「代码字体」）';
-+
-+  @override
-+  String get appFontSystem => '系统默认';
-+
-+  @override
-+  String get appFontScale => '界面字号';
-+
-+  @override
-+  String get appFontScaleSubtitle => '整体界面文字放大/缩小';
-+
-+  @override
-+  String get uiDensity => '界面密度';
-+
-+  @override
-+  String get uiDensitySubtitle => '按钮、列表与菜单的间距';
-+
-+  @override
-+  String get noOutputHint => '点「Run」运行后，输出会显示在这里';
- }
- 
- /// The translations for Chinese, using the Han script (`zh_Hant`).
 diff --git a/lib/l10n/app_pt.arb b/lib/l10n/app_pt.arb
-index a038c3e..20cc725 100644
+index 488187e..23c8107 100644
 --- a/lib/l10n/app_pt.arb
 +++ b/lib/l10n/app_pt.arb
-@@ -9,6 +9,15 @@
-   "statusPaused": "Pausado",
+@@ -10,6 +10,16 @@
    "pause": "Pausar",
    "resume": "Retomar",
--  "overview": "Visão geral"
+   "overview": "Visão geral",
+-  "mcpAuthEnabled": "Exigir token de acesso"
++  "mcpAuthEnabled": "Exigir token de acesso",
 +  "overview": "Visão geral",
 +  "captureListDensity": "Densidade da lista",
 +  "densityComfortable": "Confortável",
@@ -750,10 +106,10 @@ index a038c3e..20cc725 100644
  }
 -
 diff --git a/lib/l10n/app_th.arb b/lib/l10n/app_th.arb
-index fd963e0..202f38f 100644
+index 9ba8667..4c45864 100644
 --- a/lib/l10n/app_th.arb
 +++ b/lib/l10n/app_th.arb
-@@ -272,5 +272,15 @@
+@@ -275,5 +275,15 @@
    "statusPaused": "หยุดชั่วคราว",
    "pause": "หยุดชั่วคราว",
    "resume": "ทำงานต่อ",
@@ -771,10 +127,10 @@ index fd963e0..202f38f 100644
 +  "codeFontSize": "ขนาดฟอนต์โค้ด"
  }
 diff --git a/lib/l10n/app_vi.arb b/lib/l10n/app_vi.arb
-index b5b015d..61d1e47 100644
+index f37d639..32f7619 100644
 --- a/lib/l10n/app_vi.arb
 +++ b/lib/l10n/app_vi.arb
-@@ -272,5 +272,15 @@
+@@ -275,5 +275,15 @@
    "statusPaused": "Đã tạm dừng",
    "pause": "Tạm dừng",
    "resume": "Tiếp tục",
@@ -792,10 +148,10 @@ index b5b015d..61d1e47 100644
 +  "codeFontSize": "Cỡ chữ mã"
  }
 diff --git a/lib/l10n/app_zh.arb b/lib/l10n/app_zh.arb
-index af28f0f..e40dcfd 100644
+index d6de52d..dfbc694 100644
 --- a/lib/l10n/app_zh.arb
 +++ b/lib/l10n/app_zh.arb
-@@ -492,5 +492,26 @@
+@@ -496,5 +496,26 @@
    "pinnedDragSort": "已固定（拖拽排序）",
    "pinToolsHint": "全部功能（点 + 固定到工具栏）",
    "image": "图片",
@@ -824,17 +180,17 @@ index af28f0f..e40dcfd 100644
 +  "noOutputHint": "点「Run」运行后，输出会显示在这里"
  }
 diff --git a/lib/main.dart b/lib/main.dart
-index 2d69c27..584fef0 100644
+index 8227699..39a4031 100644
 --- a/lib/main.dart
 +++ b/lib/main.dart
-@@ -26,6 +26,7 @@ import 'package:proxypin/ui/component/chinese_font.dart';
- import 'package:proxypin/ui/component/multi_window_compat.dart';
- import 'package:proxypin/ui/component/utils.dart';
+@@ -24,6 +24,7 @@ import 'package:proxypin/network/bin/configuration.dart';
+ import 'package:proxypin/network/components/manager/environment_manager.dart';
+ import 'package:proxypin/ui/component/chinese_font.dart';
  import 'package:proxypin/ui/component/multi_window.dart';
 +import 'package:proxypin/ui/component/window_resize_border.dart';
+ import 'package:proxypin/ui/component/multi_window_compat.dart';
+ import 'package:proxypin/ui/component/utils.dart';
  import 'package:proxypin/ui/configuration.dart';
- import 'package:proxypin/ui/desktop/desktop.dart';
- import 'package:proxypin/ui/mobile/mobile.dart';
 @@ -111,6 +112,8 @@ class FluentApp extends StatelessWidget {
              locale: appConfiguration.language,
              localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -844,7 +200,7 @@ index 2d69c27..584fef0 100644
              home: home,
            );
          });
-@@ -195,7 +198,19 @@ class FluentApp extends StatelessWidget {
+@@ -201,6 +204,17 @@ class FluentApp extends StatelessWidget {
        themeData = themeData.useSystemChineseFont();
      }
  
@@ -859,11 +215,17 @@ index 2d69c27..584fef0 100644
 +          textTheme: apply(themeData.textTheme), primaryTextTheme: apply(themeData.primaryTextTheme));
 +    }
 +
+     if (useAmoled) {
+       themeData = themeData.copyWith(
+         canvasColor: Colors.black,
+@@ -220,6 +234,7 @@ class FluentApp extends StatelessWidget {
+     }
+ 
      return themeData.copyWith(
 +        visualDensity: appConfiguration.visualDensity,
-         dialogTheme:
-             themeData.dialogTheme.copyWith(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))));
-   }
+         dialogTheme: themeData.dialogTheme.copyWith(
+             backgroundColor: useAmoled ? Colors.black : null,
+             surfaceTintColor: useAmoled ? Colors.black : null,
 diff --git a/lib/network/bin/server.dart b/lib/network/bin/server.dart
 index 597278e..81b4cd3 100644
 --- a/lib/network/bin/server.dart
@@ -1933,10 +1295,10 @@ index 0000000..e988834
 +  }
 +}
 diff --git a/lib/ui/configuration.dart b/lib/ui/configuration.dart
-index 12333ce..5f0be45 100644
+index d9cc316..488bcfc 100644
 --- a/lib/ui/configuration.dart
 +++ b/lib/ui/configuration.dart
-@@ -94,6 +94,24 @@ class AppConfiguration {
+@@ -97,6 +97,24 @@ class AppConfiguration {
    /// 清空抓包前确认
    bool clearConfirm = false;
  
@@ -1961,7 +1323,7 @@ index 12333ce..5f0be45 100644
    //桌面window大小
    Size? windowSize;
  
-@@ -127,6 +145,85 @@ class AppConfiguration {
+@@ -136,6 +154,85 @@ class AppConfiguration {
  
    final ValueNotifier<List<String>> toolbarPins = ValueNotifier(defaultToolbarPins);
  
@@ -2047,7 +1409,7 @@ index 12333ce..5f0be45 100644
    AppConfiguration._();
  
    /// 单例
-@@ -235,6 +332,21 @@ class AppConfiguration {
+@@ -255,6 +352,21 @@ class AppConfiguration {
        autoReadEnabled = config['autoReadEnabled'] ?? true;
        clearConfirm = config['clearConfirm'] ?? false;
  
@@ -2069,7 +1431,7 @@ index 12333ce..5f0be45 100644
        windowSize =
            config['windowSize'] == null ? null : Size(config['windowSize']['width'], config['windowSize']['height']);
        windowPosition = config['windowPosition'] == null
-@@ -291,6 +403,12 @@ class AppConfiguration {
+@@ -314,6 +426,12 @@ class AppConfiguration {
        "headerViewMode": headerViewMode,
        "autoReadEnabled": autoReadEnabled,
        "clearConfirm": clearConfirm,
@@ -2082,7 +1444,7 @@ index 12333ce..5f0be45 100644
        if (memoryCleanupThreshold != null) 'memoryCleanupThreshold': memoryCleanupThreshold,
        if (Platforms.isMobile()) 'pipEnabled': pipEnabled.value,
        if (Platforms.isMobile()) 'pipIcon': pipIcon.value ? true : null,
-@@ -311,3 +429,45 @@ class AppConfiguration {
+@@ -336,3 +454,45 @@ class AppConfiguration {
      };
    }
  }
@@ -2302,7 +1664,7 @@ index cf624ee..0f15ce9 100644
  
    //点击事件
 diff --git a/lib/ui/desktop/preference.dart b/lib/ui/desktop/preference.dart
-index 69d20f3..1430479 100644
+index ef42068..529eeb1 100644
 --- a/lib/ui/desktop/preference.dart
 +++ b/lib/ui/desktop/preference.dart
 @@ -18,6 +18,8 @@ import 'package:flutter/services.dart';
@@ -2314,7 +1676,7 @@ index 69d20f3..1430479 100644
  import 'package:proxypin/ui/component/widgets.dart';
  import 'package:proxypin/ui/configuration.dart';
  
-@@ -158,6 +160,18 @@ class _PreferenceState extends State<Preference> {
+@@ -166,6 +168,18 @@ class _PreferenceState extends State<Preference> {
                          appConfiguration.clearConfirm = value;
                          appConfiguration.flushConfig();
                        })),
@@ -2548,7 +1910,7 @@ index b8c03ae..12b741b 100644
                  ]))));
    }
 diff --git a/lib/ui/desktop/setting/script.dart b/lib/ui/desktop/setting/script.dart
-index cd9eaf9..96c5e76 100644
+index cbb939e..02cb21d 100644
 --- a/lib/ui/desktop/setting/script.dart
 +++ b/lib/ui/desktop/setting/script.dart
 @@ -17,6 +17,7 @@
@@ -2559,7 +1921,7 @@ index cd9eaf9..96c5e76 100644
  import 'package:proxypin/ui/component/multi_window_compat.dart';
  import 'package:file_picker/file_picker.dart';
  import 'package:flutter/gestures.dart';
-@@ -670,7 +671,7 @@ class _ScriptEditState extends State<ScriptEdit> {
+@@ -674,7 +675,7 @@ class _ScriptEditState extends State<ScriptEdit> {
                                      autoFocus: true,
                                      enableGuideLines: false,
                                      finderBuilder: (c, controller) => FindPanelView(controller: controller),
