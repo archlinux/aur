@@ -1,10 +1,13 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph+aur@christophfink.com>
 # Contributor: Stefan Auditor <stefan.auditor@erdfisch.de>
 # Contributor: Yardena Cohen <yardenack at gmail dot com>
 
 _pkgname=php-ssh
 pkgname=${_pkgname}-git
-pkgver=r287.65c0da1
+pkgver=r331.e5d1333
 pkgrel=1
 pkgdesc="An SSH2 extension for PHP"
 url="http://pecl.php.net/package/ssh2"
