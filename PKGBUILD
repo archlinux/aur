@@ -5,8 +5,8 @@
 # attribution (upstream should carry a real LICENSE file).
 
 pkgname=badclip
-_tag=f8eda4c02c96def35f696411941a1a7df84cd2eb
-pkgver=20261015
+_tag=177c1d3515c7766bf66f0f7cf24c16ac4ba81951
+pkgver=20261112
 pkgrel=1
 pkgdesc="Extract breakends and structural-variant signals from long-read alignments"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/${_tag}.tar.gz")
-sha256sums=('24237945931cfc21805a0c546faf836705bf55b214ce44451ccea5c5cb10c91e')
+sha256sums=('977a32f89995cb0cdcc6f2def199e1d772885fc78a0402d2252b14b7227f4367')
 
 build() {
     cd "$srcdir/$pkgname-$_tag"
