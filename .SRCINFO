@@ -1,6 +1,6 @@
 pkgbase = quiet-md-bin
 	pkgdesc = 本地优先的富文本笔记，GPUI 绘制，兼容飞书 DocxXML（官方 AppImage 解包）
-	pkgver = 0.1.10
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://quiet.md
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = quiet-md-bin
 	optdepends = vulkan-swrast: 无硬件驱动时的软件 Vulkan（虚拟机）
 	provides = quiet-md
 	conflicts = quiet-md
-	source = quiet-md-0.1.10-x86_64.AppImage::https://github.com/s1dashu/quiet-md/releases/download/v0.1.10/quiet-md-0.1.10-x86_64.AppImage
-	sha256sums = 1a22a35263aab27833c005cb6bd4b39ace8ed1eb1147530678c39056e4bbf771
+	source = quiet-md-0.1.12-x86_64.AppImage::https://github.com/s1dashu/quiet-md/releases/download/v0.1.12/quiet-md-0.1.12-x86_64.AppImage
+	sha256sums = d8cc59cac48761b7a02cafa07c1839671bbdaed40d588a8db6f5cefbd45949d9
 
 pkgname = quiet-md-bin

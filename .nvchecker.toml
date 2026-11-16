@@ -1,0 +1,8 @@
+# nvchecker config. Section name must be the pkgbase (quiet-md-bin),
+# so pkgctl version check / nveo / nvchecker -c .nvchecker.toml find it.
+# Upstream tags are "v0.1.12"; strip the v so vercmp compares 0.1.12 vs 0.1.10.
+[quiet-md-bin]
+source = "github"
+github = "s1dashu/quiet-md"
+use_latest_release = true
+prefix = "v"
