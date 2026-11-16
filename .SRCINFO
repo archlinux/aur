@@ -1,6 +1,6 @@
 pkgbase = orcasvn
 	pkgdesc = Visual SVN Desktop client (Tauri 2)
-	pkgver = 0.6.4
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = https://github.com/wustites/OrcaSVN
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = orcasvn
 	depends = librsvg
 	depends = openssl
 	depends = mesa
-	source = orcasvn-0.6.4.tar.gz::https://github.com/wustites/OrcaSVN/archive/refs/tags/v0.6.4.tar.gz
-	sha256sums = c01bcf5db6383dfede96b0680027a7f258aa245a3a365cde6b239e3eb81b36eb
+	source = orcasvn-0.6.5.tar.gz::https://github.com/wustites/OrcaSVN/archive/refs/tags/v0.6.5.tar.gz
+	sha256sums = 5c70e7888d705bc3f6852f16e53eaf0654da3c478fdb3d841afa7ff66a1bf84c
 
 pkgname = orcasvn
