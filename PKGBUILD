@@ -1,35 +1,29 @@
 # Maintainer: Manish Khadka <manish.khadka@tutanota.com>
 
 pkgname=shellfirm-bin
-pkgorg=shellfirm
-pkgver=0.2.6
+_pkgname=shellfirm
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Intercept any risky patterns (default or defined by you) and prompt you a small challenge for double verification'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/kaplanelad/shellfirm'
-makedepends=('git' 'rust')
-license=('Apache')
-source=("$pkgorg-$pkgver.tar.gz::https://github.com/kaplanelad/shellfirm/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0dd22e933763e01e14e816ae839c54d0b48fd802ddee8ae3fe66043a47b1411b')
-
-build() {
-    cd "$srcdir/$pkgorg-$pkgver"
-    cargo build --release
-}
-
-test() {
-    cd "$srcdir/$pkgorg-$pkgver"
-    cargo test --release
-}
+license=('Apache-2.0')
+depends=('glibc' 'libgcc' 'openssl-3')
+options=('!debug')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source_x86_64=("$_pkgname-$pkgver-x86_64.tar.xz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-linux.tar.xz")
+source_aarch64=("$_pkgname-$pkgver-aarch64.tar.xz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-aarch64-linux.tar.xz")
+sha256sums=('97ba51d3428ad39856e95b52aaebe95f42b859ba7c30b3cfeb09b0bf05c4fa41')
+sha256sums_x86_64=('625a398446ec72ec1a10da7c5f8381fa91c2e48dfd9e397f381b1b0bcbaf008f')
+sha256sums_aarch64=('9142365b7ea679ccc93d2ca4e8410ca1d1a343fd350474132248b9a1a369bd23')
 
 package() {
-    cd "$srcdir/$pkgorg-$pkgver"
-    install -Dm755 target/release/shellfirm $pkgdir/usr/bin/shellfirm
-    install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgorg}"
-    install -D -m 644 ./LICENSE "${pkgdir}/usr/share/licenses/${pkgorg}"/
+    install -Dm755 "$srcdir/$_pkgname-v$pkgver-$CARCH-linux/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
-    cd docs
-    install -d -m 755 "${pkgdir}/usr/share/doc/${pkgorg}"
-    find . -type d -exec install -d {,"$pkgdir"/usr/share/doc/${pkgorg}/}{} \;
-    find . -type f -exec install -D {,"$pkgdir"/usr/share/doc/${pkgorg}/}{} \;
+    cd "$srcdir/$_pkgname-$pkgver"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+    cp -r docs/. "$pkgdir/usr/share/doc/$_pkgname/"
 }
