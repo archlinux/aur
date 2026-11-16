@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="thokr"
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A sleek typing TUI with visualized results and historical logging"
 arch=(
@@ -22,7 +22,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('8276dd099e54f3aa1da4c46f6c21c28375e3c8b8e8cc81193f016527c6a426f2')
+sha256sums=('3f36640bc08a1e4d5a9ca6aa87c65a1506efb8e59b9fe4ddeead37486b792e50')
 
 _source() {
   export CARGO_HOME="${srcdir}/.cargo"
