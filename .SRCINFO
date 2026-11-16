@@ -1,6 +1,6 @@
 pkgbase = icalingua++-bin
 	pkgdesc = A branch of deleted Icalingua, with limited support.
-	pkgver = 2.26.8
+	pkgver = 2.26.10
 	pkgrel = 1
 	url = https://github.com/Icalingua-plus-plus/Icalingua-plus-plus
 	arch = aarch64
@@ -8,16 +8,18 @@ pkgbase = icalingua++-bin
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = electron39
-	provides = icalingua++=2.26.8
+	provides = icalingua++=2.26.10
 	conflicts = icalingua++
 	conflicts = icalingua++-electron
+	source = icalingua++.js
 	source = icalingua++.sh
-	sha256sums = 5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e
-	source_aarch64 = icalingua++-2.26.8-aarch64.rpm::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.26.8/icalingua-2.26.8.aarch64.rpm
-	sha256sums_aarch64 = 6d3e9b16706943ac477682e89501b071d81586ca16594103a8b1b75c46513e76
-	source_armv7h = icalingua++-2.26.8-armv7h.rpm::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.26.8/icalingua-2.26.8.armv7l.rpm
-	sha256sums_armv7h = 05aea1b52f2b8d975740e220adf628652938c5a3d753005c25964475a75131f1
-	source_x86_64 = icalingua++-2.26.8-x86_64.rpm::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.26.8/icalingua-2.26.8.x86_64.rpm
-	sha256sums_x86_64 = fe1b80c3463d29a5dd54f3f2f10d06189f38afc635cea009133fdebd0befa412
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = icalingua++-2.26.10-aarch64.deb::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.26.10/icalingua_2.26.10_arm64.deb
+	sha256sums_aarch64 = cc34c1368890bf384994e19bba4a209d47445189278f987f3222ff9a7adbd7b3
+	source_armv7h = icalingua++-2.26.10-armv7h.deb::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.26.10/icalingua_2.26.10_armv7l.deb
+	sha256sums_armv7h = ee2fcf21b33241a7928353ca37c39f35f3f286bab9c68df91f70c8167d32023d
+	source_x86_64 = icalingua++-2.26.10-x86_64.deb::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.26.10/icalingua_2.26.10_amd64.deb
+	sha256sums_x86_64 = b535f686d6238b1151d94ff28ca4c51ef54e92d2b99b5aebe5a703b5e8b53e55
 
 pkgname = icalingua++-bin
