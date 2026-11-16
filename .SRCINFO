@@ -1,6 +1,6 @@
 pkgbase = omp-bin
 	pkgdesc = oh-my-pi (omp): AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more (release binary)
-	pkgver = 18.20.2
+	pkgver = 18.20.3
 	pkgrel = 1
 	url = https://github.com/can1357/oh-my-pi
 	arch = x86_64
@@ -10,17 +10,17 @@ pkgbase = omp-bin
 	optdepends = bash-completion: bash tab-completion for omp
 	optdepends = chromium: browser tool (headless web automation)
 	optdepends = python: persistent Python eval cells
-	provides = oh-my-pi=18.20.2
+	provides = oh-my-pi=18.20.3
 	conflicts = oh-my-pi
 	conflicts = oh-my-pi-bin
 	conflicts = omp
 	options = !strip
 	options = !debug
-	source = LICENSE-18.20.2::https://raw.githubusercontent.com/can1357/oh-my-pi/v18.20.2/LICENSE
+	source = LICENSE-18.20.3::https://raw.githubusercontent.com/can1357/oh-my-pi/v18.20.3/LICENSE
 	sha256sums = 16c45f9d667442781f03fa198914cc39abcaa48ec5ed8f644643e554ca2fbf63
-	source_x86_64 = omp-18.20.2-x86_64::https://github.com/can1357/oh-my-pi/releases/download/v18.20.2/omp-linux-x64
-	sha256sums_x86_64 = f34cfa57311ed67a45f01bb1a21519cad4d74875d181316f00fa0cd6a4abcaaa
-	source_aarch64 = omp-18.20.2-aarch64::https://github.com/can1357/oh-my-pi/releases/download/v18.20.2/omp-linux-arm64
-	sha256sums_aarch64 = 7f809e51638c2ace701244923d5ec62485bbafd74db75da742ace30c87a91ebf
+	source_x86_64 = omp-18.20.3-x86_64::https://github.com/can1357/oh-my-pi/releases/download/v18.20.3/omp-linux-x64
+	sha256sums_x86_64 = f34ec9b0f0c368f1937701e2fe111b3c29a7cf53314a642448b3c6cf2925d85a
+	source_aarch64 = omp-18.20.3-aarch64::https://github.com/can1357/oh-my-pi/releases/download/v18.20.3/omp-linux-arm64
+	sha256sums_aarch64 = eaa8c4d324b8a54835b3194ba6cb17f849393dd8142745f3a25f70e982a68aa8
 
 pkgname = omp-bin
