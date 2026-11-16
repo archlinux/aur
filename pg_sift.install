@@ -1,0 +1,20 @@
+post_install() {
+  cat <<'MSG'
+pg_sift is built for the PostgreSQL major version this package depends on (the library is per major).
+In each database, as a superuser:
+  CREATE EXTENSION pg_sift;
+For aggregate workloads, preload the library so that the first statement of a session is planned once:
+  ALTER DATABASE <database> SET session_preload_libraries = 'pg_sift';
+MSG
+}
+
+post_upgrade() {
+  cat <<'MSG'
+Finish the upgrade of pg_sift, standbys first:
+  1. restart PostgreSQL (or reconnect every session) so that the new library is loaded;
+  2. in each database, as a superuser: psql -d DATABASE -f "$(pg_config --sharedir)/extension/pg_sift_upgrade_check.sql"  -- what to look at before the update;
+  3. in each database: ALTER EXTENSION pg_sift UPDATE;
+  4. in each database: SELECT * FROM sift.upgrade_check();  SELECT * FROM sift.upgrade_commands();  -- what is left to do, if anything
+If pg_sift is not preloaded, ALTER EXTENSION UPDATE prints the command that preloads it.
+MSG
+}

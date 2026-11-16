@@ -1,14 +1,14 @@
 # Maintainer: Braulio Oliveira <brauliobo@gmail.com>
 # Release package: builds the tag v$pkgver from GitHub.
-# To package the committed HEAD of this checkout instead, run: cd packaging && makepkg -p PKGBUILD.local -f
 pkgname=pg_sift
-pkgver=4.3.7
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='Fast analytics for PostgreSQL: just add an index, plus BM25 full-text search'
 arch=('x86_64')
 url='https://github.com/brauliobo/pg_sift'
 license=('PostgreSQL')
 depends=('postgresql>=18' 'postgresql<19' 'lz4' 'zstd')
+install=pg_sift.install
 makedepends=('git' 'make' 'gcc')
 source=("pg_sift::git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
