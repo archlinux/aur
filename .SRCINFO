@@ -1,0 +1,17 @@
+pkgbase = liquid-glass-icons-git
+	pkgdesc = macOS Liquid Glass dark icon theme with Tahoe folders and dark status panel
+	pkgver = r5.da884fb
+	pkgrel = 1
+	url = https://github.com/Yhorx/Liquid-Glass-Icons
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
+	optdepends = mactahoe-icon-theme-git: MacTahoe-dark fallback for icons this theme does not cover
+	options = !strip
+	options = !debug
+	source = liquid-glass-icons-git::git+https://github.com/Yhorx/Liquid-Glass-Icons.git
+	sha256sums = SKIP
+
+pkgname = liquid-glass-icons-git
