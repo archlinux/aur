@@ -1,6 +1,6 @@
 pkgbase = kudu-bin
 	pkgdesc = A modern, open-source system cleaner for Windows, macOS, and Linux
-	pkgver = 3.10.0
+	pkgver = 3.13.0
 	pkgrel = 1
 	url = https://github.com/AdventDevInc/kudu
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = kudu-bin
 	depends = fuse2
 	provides = kudu
 	conflicts = kudu
-	noextract = kudu-bin-3.10.0.deb
+	noextract = kudu-bin-3.13.0.deb
 	options = !strip
-	source_x86_64 = kudu-bin-3.10.0.deb::https://github.com/AdventDevInc/kudu/releases/download/v3.10.0/Kudu-3.10.0-amd64.deb
-	sha256sums_x86_64 = 67ea56e06461579e2fa2cbffc5181fc66f15b282faea124168d4c3c9151b31bc
+	source_x86_64 = kudu-bin-3.13.0.deb::https://github.com/AdventDevInc/kudu/releases/download/v3.13.0/Kudu-3.13.0-amd64.deb
+	sha256sums_x86_64 = 6540a29d42f481339713a5e01d9372c619854509965fa4cc53e94310de94f84c
 
 pkgname = kudu-bin

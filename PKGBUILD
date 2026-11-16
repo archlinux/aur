@@ -1,7 +1,7 @@
 # Maintainer: Vitaliy VVS Star <vitaliy <dot> star <at> Gmail-DOT-Com>
 
 pkgname=kudu-bin
-pkgver=3.10.0
+pkgver=3.13.0
 pkgrel=1
 pkgdesc="A modern, open-source system cleaner for Windows, macOS, and Linux"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('kudu')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.deb")
 source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/AdventDevInc/kudu/releases/download/v${pkgver}/Kudu-${pkgver}-amd64.deb")
-sha256sums_x86_64=('67ea56e06461579e2fa2cbffc5181fc66f15b282faea124168d4c3c9151b31bc')
+sha256sums_x86_64=('6540a29d42f481339713a5e01d9372c619854509965fa4cc53e94310de94f84c')
 
 package() {
   bsdtar -xf "${pkgname}-${pkgver}.deb" data.tar.xz
