@@ -1,0 +1,27 @@
+pkgbase = xdg-desktop-portal-gtk4-printfix
+	pkgdesc = GTK4 backend for xdg-desktop-portal with Print portal fixes (temporary until upstream)
+	pkgver = 1.6.6
+	pkgrel = 1
+	url = https://github.com/JohnRTitor/xdg-desktop-portal-gtk4
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = cargo
+	makedepends = git
+	makedepends = make
+	makedepends = pkgconf
+	depends = xdg-desktop-portal
+	depends = gtk4
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = glibc
+	depends = libgcc
+	provides = xdg-desktop-portal-impl
+	provides = xdg-desktop-portal-gtk4
+	conflicts = xdg-desktop-portal-gtk4
+	conflicts = xdg-desktop-portal-gtk4-git
+	source = xdg-desktop-portal-gtk4-printfix-1.6.6.tar.gz::https://github.com/JohnRTitor/xdg-desktop-portal-gtk4/archive/refs/tags/v1.6.6.tar.gz
+	source = print-single-call.patch
+	sha256sums = 687f5365d641143ab343b954ec0ae334089551109bd2b023ceba781a01e0248e
+	sha256sums = da6bbdaaa09e80c59cfe523c9fa5aedbcb957dbdb5a200a76bf34f876b8f5454
+
+pkgname = xdg-desktop-portal-gtk4-printfix
