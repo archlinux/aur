@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=mindforge
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="A working agreement between you and your AI assistant that does not decay: tiered context, explicit triggers, a closeout that can't be forgotten. Any Linux distribution, no desktop needed: a terminal tool (bash)"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('github-cli: checks that a queued task'"'"'s issue is still open (ro
 checkdepends=('python')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('4fff19e2cb90eeab0f20189aa28f42273cb8b6e12cc8f06740d45f199eac75bd'
+sha256sums=('a536cfe40868641f18732dfc7f2378444a947fd095d1fc335416fdc09bfde8eb'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
@@ -25,7 +25,7 @@ validpgpkeys=('32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E')
 
 check() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    # 388 checks in a sandbox (its own HOME and state; gh stubbed, no network); the builder's files untouched
+    # 391 checks in a sandbox (its own HOME and state; gh stubbed, no network); the builder's files untouched
     bash testing/run-tests.sh
 }
 
