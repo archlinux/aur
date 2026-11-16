@@ -5,15 +5,15 @@
 
 pkgname=sonora-nightly-bin
 _pkgname=sonora
-pkgver=0.49.1.nightly.20261115
+pkgver=0.50.0.nightly.20261116
 pkgrel=1
-_commit=cf394e9fed20afd07d0684d4fed25cab732def5f
+_commit=887e3643ee3f3386787bd448720fcd99af523fd5
 pkgdesc='A native, familiar music streaming client (nightly build of main)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sonorahq/sonora'
 license=('GPL-3.0-or-later')
 depends=('glibc' 'alsa-lib' 'dbus' 'fontconfig' 'hicolor-icon-theme' 'libxcb'
-         'libxkbcommon' 'libxkbcommon-x11' 'sqlite' 'vulkan-icd-loader' 'wayland')
+         'libxkbcommon' 'libxkbcommon-x11' 'vulkan-icd-loader' 'wayland')
 optdepends=('vulkan-radeon: Vulkan driver for AMD GPUs'
             'vulkan-intel: Vulkan driver for Intel GPUs'
             'nvidia-utils: Vulkan driver for NVIDIA GPUs'
@@ -27,9 +27,9 @@ source=("${_pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz"
         "sonora-build-${pkgver}.json::${url}/releases/download/nightly/sonora-build.json")
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/nightly/sonora-nightly-x86_64-unknown-linux-gnu")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/nightly/sonora-nightly-aarch64-unknown-linux-gnu")
-sha256sums=('d119ed5c8b33120fb733991ad4681caa3cb33528600834264bf767279a21765c' 'e1825d0f430758765efd892f3935b468ffd6f215c675f595cd959315f539d3af')
-sha256sums_x86_64=('b3cfaadf05312f188985ecc4c3d963e22dc151480bfcc1be098b178fe31f4fe5')
-sha256sums_aarch64=('0bbff2b0840051bec4545738ad597907bed283260f5574a3bb6acd7376066380')
+sha256sums=('62f55d95ede0a2e3d8b60d94de5a3ddeb66b789064634ea6001383904c916aa9' '6012572301cb489ef3318293fb9b7fba2edeb6dd1f9bf9ed447f347d3264d8cb')
+sha256sums_x86_64=('9d237f02071db3184b7fcee0e08f16c9369df93cc8190af2518e33400941286c')
+sha256sums_aarch64=('f13bbb239e8b207722930b6492cd6067f83eb2c19d4c2d02075e5933285a2518')
 
 package() {
   cd "${_pkgname}-${_commit}"
