@@ -4,7 +4,7 @@
 # Contributor: Kr1ss $(tr +- .@ <<<'<kr1ss+x-yandex+com>')
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=tin
-pkgver=2.6.5
+pkgver=2.6.6
 pkgrel=1
 pkgdesc='A threaded NNTP and spool based UseNet newsreader.'
 arch=('i686' 'x86_64')
@@ -14,11 +14,11 @@ depends=('gsasl' 'icu' 'ncurses' 'pcre' 'perl')
 makedepends=('dante' 'gnupg' 'ispell' 'libidn')
 conflicts=('tin-unstable')
 source=("ftp://ftp.tin.org/pub/news/clients/tin/v${pkgver%.*}/$pkgname-$pkgver.tar.gz" 'LICENSE')
-md5sums=('8a7c9e03bc6b3108a45bbc6214d9ff7a'
+md5sums=('eb7a44947ca0de3404371303de4a6d96'
          'd11b33b8a9dd5c45c8ce290cf52fa764')
-sha1sums=('a54afbcf010ab15439caef3c454fa81fdc76b2b2'
+sha1sums=('cfb5aa09e99bb5ef57fb0cc659372baec1ea5ba6'
           '47b435e30e21815386db3123175d9a3bf9d63c76')
-sha256sums=('65d77fc19f188ed34b06228bfcadb2d164c901a495344fe29912582cb986d43a'
+sha256sums=('9c016a173b111ac40bb1bb88532fc9398de9974ea969c9d1cb089ffc258aae3e'
             'bf3c5eae73413ca2a64ef3a047ad3551a0613227b0aa99020b25cc96d9813f65')
 
 build() {
