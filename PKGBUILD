@@ -1,7 +1,7 @@
 # Maintainer: Roc Gwei <roc dot gui at foxmail dot com>
 
 pkgname=clice-bin
-pkgver=0.1.2026102007
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A next-generation C++ language server for modern C++, focused on high performance and deep code intelligence."
 url="https://github.com/clice-io/clice"
@@ -16,7 +16,7 @@ options=('!strip')
 
 source=("${url}/releases/download/v${pkgver}/clice-${pkgver}.x86_64-unknown-linux-gnu.tar.gz")
 
-sha256sums=('6b923fc59298e354d133742887fb3a09ad32624bb056732b31334a3534b111bf')
+sha256sums=('9dd181aac9c81cae76b255e953da21c9e603fc5b406447eb26c95eaf67ed969a')
 
 package() {
   install -d "$pkgdir/opt/clice"
