@@ -1,0 +1,22 @@
+pkgbase = openkermit-git
+	pkgdesc = Portable network and serial communication and automation software (git version)
+	pkgver = r795.99174cf
+	pkgrel = 1
+	url = https://github.com/OpenKermit/ckermit
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = BSD-3-Clause
+	checkdepends = check
+	makedepends = git
+	depends = glibc
+	depends = ncurses
+	depends = openssl
+	depends = pam
+	provides = openkermit
+	conflicts = openkermit
+	conflicts = ckermit
+	source = openkermit::git+https://github.com/OpenKermit/ckermit.git
+	sha256sums = SKIP
+
+pkgname = openkermit-git
