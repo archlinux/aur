@@ -1,4 +1,5 @@
 # Maintainer: Agil Mammadov <mammadovagil@proton.me>
+# Maintainer: Kevin Deldycke <kevin@deldycke.com>
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
@@ -10,6 +11,7 @@ pkgdesc='Detect platforms and group them by family'
 url='https://github.com/kdeldycke/extra-platforms'
 makedepends=(python-build python-installer python-uv-build)
 depends=(python)
+checkdepends=(python-pytest)
 license=('Apache-2.0')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
@@ -18,6 +20,12 @@ sha512sums=('d347746f49dd1edaa0082f411259ccea4af788cf4005f503e0b184fc664c89fe268
 build() {
     cd "$srcdir/$_name-$pkgver"
     python -m build --wheel --no-isolation
+}
+check() {
+    cd "$srcdir/$_name-$pkgver"
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    test-env/bin/python -m pytest -m "not network and not benchmark"
 }
 package() {
     cd "$srcdir/$_name-$pkgver"
