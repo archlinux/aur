@@ -1,7 +1,7 @@
 pkgbase = python-simplification
 	pkgdesc = Very fast Python LineString simplification using RDP or Visvalingam-Whyatt
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/urschrei/simplification
 	arch = x86_64
 	license = LicenseRef-Blue-Oak-Model-License-1.0.0

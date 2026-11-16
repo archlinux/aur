@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 # Maintainer: peippo <christoph.fink@gmail.com>
 
 pkgname="python-simplification"
@@ -6,7 +9,7 @@ pkgdesc="Very fast Python LineString simplification using RDP or Visvalingam-Why
 url="https://github.com/urschrei/simplification"
 
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64")
 license=("LicenseRef-Blue-Oak-Model-License-1.0.0")
