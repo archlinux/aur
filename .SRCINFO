@@ -1,6 +1,6 @@
 pkgbase = python-mathparse
 	pkgdesc = A Python library for evaluating natural language mathematical equations.
-	pkgver = 0.2.7
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/gunthercox/mathparse
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-mathparse
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = python-mathparse-0.2.7.tar.gz::https://github.com/gunthercox/mathparse/archive/refs/tags/0.2.7.tar.gz
-	sha512sums = 851f317f63d2d82aab01bd1992612929e86b64b05f1c8c140bc4801141abce0a6092aa06a85d22b81eedb73f0e1ba8a8297f7dbacd728de7ef10deaeeff5810b
+	source = python-mathparse-0.2.9.tar.gz::https://github.com/gunthercox/mathparse/archive/refs/tags/0.2.9.tar.gz
+	sha512sums = 9b1073c505cb0cb8320612fede2a6e232681e8ecb76e89fed4eaa93807d3b0c0732f5e3ac130577fca2d3b3a00f7b6838295ab49c59e426516b3dae5d80dd15b
 
 pkgname = python-mathparse
