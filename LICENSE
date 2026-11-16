@@ -1,0 +1,753 @@
+   REALVNC END USER LICENSE AGREEMENT
+
+   PLEASE READ CAREFULLY BEFORE DOWNLOADING, INSTALLING OR EXECUTING THE
+   SOFTWARE DOWNLOADED FROM WWW.REALVNC.COM OR WWW.REALVNC.HELP.
+   UNLESS A SPECIFIC END USER LICENSE AGREEMENT APPLIES TO THE SOFTWARE
+   YOU ARE USING, THIS EULA WILL APPLY.
+
+   THIS END USER LICENSE AGREEMENT ("AGREEMENT") IS A LEGAL AGREEMENT
+   BETWEEN YOU AND REALVNC (AS DEFINED IN CLAUSE 1 BELOW) IN RELATION TO
+   THE ACCESS AND USE OF REALVNC'S SOFTWARE.
+
+   IMPORTANT NOTICE TO ALL USERS:
+
+       • IF YOU DO NOT AGREE TO THE TERMS OF THIS AGREEMENT, YOU MUST NOT
+         CLICK TO ACCEPT THIS AGREEMENT OR CONTINUE TO DOWNLOAD OR
+         ACCESS OR USE THIS SOFTWARE OR DOCUMENTS.
+
+       • REALVNC MAY MODIFY THIS AGREEMENT AT ANY TIME.
+
+       • BY INSTALLING ANY UPDATED VERSION OF THE SOFTWARE WHICH MAY BE
+         MADE AVAILABLE, YOU ACCEPT THAT THE TERMS OF THIS AGREEMENT
+         APPLY TO SUCH UPDATED SOFTWARE.
+
+1. Definitions
+
+   In this Agreement:
+
+   "Acceptable      Use     Policy"     means     RealVNC's    policy    available    at
+   https://www.realvnc.com/wp-content/uploads/2023/01/RealVNC-Acceptable-Use-Policy-1.pdf
+   as may be updated from time to time.
+
+   "Authorized User" means you if you are an individual, or, if you are an organization, a
+   particular designated employee or independent contractor authorized by you, and where
+   applicable, employees or authorized staff of End Clients who are authorised by you, to use the
+   Software under this Agreement.
+
+   "Concurrent Session" means a remote connection made by no more than one (1) Authorized
+   User, via the Software provided under the relevant Subscription, to no more than one (1) Device
+   at a given point in time (such that: (i) where, for example, an Authorized User uses such Software
+   to make a connection to two (2) Devices concurrently, such use shall constitute two (2) Concurrent
+   Sessions; and (ii) where, for example, three (3) Authorized Users use such Software to connect
+   concurrently to one (1) Device, such use shall constitute three (3) Concurrent Sessions).
+
+   "Concurrent Session Band" means the maximum number of Concurrent Sessions permitted to
+   be made by you or your Authorized Users at any particular point of time during the period of your
+   Subscription, as agreed between the parties in writing or confirmed or requested by you via your
+   purchase of the relevant Subscription through the Website.
+
+   "Confidential Information" means all confidential or proprietary information (however recorded or
+   preserved) disclosed by one party or its employees, officers, subcontractors, representatives or
+   advisers (together “Representatives”) to the other party and the other party’s Representatives,
+   including the terms of this Agreement, the business, affairs, customers, clients, plans, intentions,
+   market opportunities, operations, processes, products, services, data, know-how, or trade secrets of
+   the disclosing party, including anything specified as being Confidential Information.
+
+
+
+
+REALVNC END USER LICENSE AGREEMENT                                                     Version April 2025
+   "Customer Data" means any commercial or proprietary data which is uploaded or otherwise
+   submitted to the Software directly by you or your Authorized Users, including any data submitted
+   into the Software indirectly via any third party application used by you, excluding any Derived
+   Data and account management data. For the avoidance of doubt, RealVNC does not process
+   Customer Data outside of the necessary processing specified in the Data Processing
+   Addendum.
+
+   "Data Processing Addendum" means the data processing addendum as may be updated
+   from time to time at https://help.realvnc.com/hc/en-us/articles/5438412949405.
+
+   “Deployment Software” means deployment tools and services available from the Website
+   including documentation, updates, modified versions and copies of the Deployment Software.
+
+   "Derived Data" means any data which is derived from your or Authorized Users' use of the
+   Services, whether for your own benefit or that of End Clients (where applicable) which shall include:
+   (i) any meta-data on your use of the Software such as the number of connections and volume of
+   data; (ii) any data which is processed and stored as mathematical constructs; and (iii) statistical
+   or aggregated data, but shall exclude any Personal Data and, for the avoidance of doubt, does
+   not include the Customer Data itself.
+
+   "Device" means the relevant computer or other device on which the relevant Software is run,
+   accessed, used, deployed, or installed.
+
+   "End Client" means a third-party organization for whose benefit you provide a Managed
+   Service.
+
+   “Free Subscription” means RealVNC's free to access subscriptions that include basic
+   functionality and is for non-commercial use only.
+
+   "Insolvency Event" means, with respect to a party, (a) entering into a composition or
+   arrangement with its creditors other than for the sole purpose of a solvent reconstruction; (b)
+   an inability to pay its debts as they become due; (c) a person becoming entitled to appoint or
+   appointing a receiver or an administrative receiver over that party’s assets; (d) a creditor or
+   encumbrancer attaches or takes possession of the whole or any part of that party's assets
+   which is not discharged within 14 days; or (e) any event occurs, or proceeding is taken, in any
+   jurisdiction that has an effect equivalent or similar to any of the events mentioned in (a) to (d)
+   above.
+
+   "License Capacity" means restrictions placed on your use of the relevant Software under your
+   license, including: (i) the number of Authorized Users; (ii) the Concurrent Session Band; (iii) the
+   types of permitted connections as set out on the Website; (iv) the number of Devices; and (v) any
+   other restrictions set out on the Website or communicated to you in writing.
+
+   "Managed Service" means a professional managed technology service delivered by you to End
+   Clients and solely for the purpose of which, and solely in connection with which, you may, subject
+   always to the terms hereof, permit Authorized Users to use and access the Software.
+
+   “RealVNC Contracting Entity” means either: (i) where expressly stated in the quotation
+   provided to you setting out your chosen Subscription or in any invoice submitted to you in
+   connection with such Subscription, RealVNC LLC, a limited liability corporation organized under
+   the laws of the State of Delaware and whose registered office is at 850 New Burton Road, Suite
+   201, Dover, DE 19904, United States; or (ii) in all other cases, RealVNC Limited, a company
+   incorporated in England and Wales with company number 0446945 at Edinburgh House, St
+   John's Innovation Park, Cowley Rd, Cambridge CB4 0DS, United Kingdom.
+
+   "Reseller" means a third-party entity that agrees to purchase a Subscription to the Software
+   from RealVNC on your behalf.
+
+REALVNC END USER LICENSE AGREEMENT                                                      Version April 2025
+   “Services” means the support services as set out on the Website.
+
+   “Software” means RealVNC's software as described on the Website including any portal used
+   to access such software and, to the extent relevant to your Subscription, any related back-end
+   services that comprise any cloud connection brokering services and subscription management
+   functionality.
+
+   “Subscription” means a subscription purchased for or by you and/or obtained from RealVNC
+   that grants certain usage rights to the Software in consideration of the relevant Subscription
+   Fee.
+
+   “Subscription Fee” means the fees payable for the relevant Subscription as set out on the
+   Website, and which is determined on the basis of the Concurrent Session Band selected or
+   requested by you at the time of entering into this Agreement.
+
+   "Third Party Software" means third party software incorporated in the Services, as listed at
+   https://help.realvnc.com/hc/en-us/articles/360002255218-RealVNC-Connect-
+   Acknowledgements.
+
+   “Viewer Software” means VNC Viewer Version 4.0 – 7.x or later of the programs available
+   from the Website including documentation, updates, modified versions and copies.
+
+   "Virus" means any thing or device (including any software, code, file or program) which may:
+   prevent, impair or otherwise adversely affect the operation of any computer software,
+   hardware, network, data, or the user experience, including worms, Trojan horses, viruses and
+   other similar things or devices.
+
+   “Website”means https://www.realvnc.com, https://manage.realvnc.com and associated web
+   applications.
+
+2. Limited Trial Period
+
+   The Software can be evaluated for a limited trial non-exclusive license period as set out on the
+   Website in accordance with the terms of this Agreement. It will perform for only a limited period
+   of time. THE LIMITED TRIAL SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY
+   WARRANTY OR LIABILITY ON REALVNC’S PART TO YOU WHATSOEVER.
+
+3. License
+
+   3.1. Subject to your paying the Subscription Fees and complying with the terms and conditions
+        of this Agreement, RealVNC hereby grants to you, subject to the relevant License Capacity
+        for your Subscription, a non-exclusive, worldwide, non-transferable license to download,
+        install and use the Software for (a) your personal use or for the internal use of your business
+        organization, or (b) where applicable, and subject to clause 5, for the purposes of providing
+        Managed Services to your End Clients. Except as permitted under a Managed Service (as
+        applicable), you are expressly prohibited from transferring or distributing the Software in
+        any format, in whole or in part, for sale, for commercial use (except as otherwise stated in
+        this Agreement), or for any unlawful purpose.
+
+   3.2. The Viewer Software is only warranted and supported to the extent it is used in conjunction
+        with a licensed copy of any Software explicitly stated to qualify for use with the Viewer
+        Software.
+
+   3.3. You hereby acknowledge and agree that the Software may only be used on your Devices
+        in object code form for the purposes set forth in clause 3.1 of this Agreement and for no
+        other use.
+
+
+REALVNC END USER LICENSE AGREEMENT                                                      Version April 2025
+   3.4. In the case of a Free Subscription, the Software may only be used for your private,
+        noncommercial purposes.
+
+   3.5. You may make as many copies of the Software as your Subscription allows and use it to
+        install the Software on your Devices.
+
+4. Access to the Software
+
+   4.1. You shall not (and shall ensure that no Authorized User or End Client shall):
+
+       a) access, store, distribute or transmit any Viruses or any material during its use of the
+          Software that is unlawful, harmful, infringing, offensive, discriminatory, or which
+          facilitates illegal activity or depicts sexually explicit images or causes damage or injury
+          to any person or property. RealVNC reserves the right, without liability or prejudice to
+          its other rights to you, to disable yours and the Authorized Users' access to any
+          material that breaches the provisions of this clause;
+
+       b) except as may be allowed by any applicable law which is incapable of exclusion by
+          agreement between the parties, and except to the extent expressly permitted under
+          this Agreement, you shall not, and shall not attempt to, copy, modify, duplicate, create
+          derivative works from, frame, mirror, republish, download, display, transmit, or
+          distribute all or any portion of the Software in any form or media or by any means, or
+          attempt to reverse compile, disassemble, reverse engineer or otherwise reduce to
+          human-perceivable form all or any part of the Software (including its object code and
+          source code);
+
+       c) access all or any part of the Software in order to build a product or service which
+          competes with the Software;
+
+       d) exceed (and you will procure that no Authorized Users will exceed), at any time during
+          your Subscription the applicable Concurrent Session Band).
+
+   4.2. You shall not at any time make the Software or any of the Services available to (or
+        otherwise provide the Software or Services to) any third party except to: (i) Authorized
+        Users as permitted under this Agreement; or (ii) End Clients as permitted under clause 5.
+
+   4.3. You agree to use all reasonable endeavors to prevent any unauthorized access to, or use
+        of, the Software and, in the event of any such unauthorized access or use, promptly notify
+        RealVNC.
+
+   4.4. You acknowledge and agree that each Authorized User must keep a secure password for
+        their use of the Software which must be kept confidential and secure against unauthorized
+        access or use (including any other Authorized User).
+
+   4.5. You shall be responsible for setting the access rights for each of your Authorized Users
+        and shall ensure that all Authorized Users' use of the Software is strictly in accordance with
+        the terms of this Agreement, including the terms in the Acceptable Use Policy available at
+        https://www.realvnc.com/realvnc-acceptable-use-policy. You shall be responsible for any
+        Authorized User's breach of this Agreement and for monitoring the number of users making
+        use of the Software to ensure you do not exceed the number of Authorized Users.
+
+   4.6. You acknowledge and agree that the Software may provide access to Third Party
+        Software. RealVNC makes no representation, warranty or commitment and shall have no
+        liability or obligation whatsoever in relation to the use of any such Third Party Software.
+
+   4.7. You are responsible for providing any dependencies (i.e. any network or connectivity
+        requirements, or back up requirements that you need to have in place in order to use the
+
+REALVNC END USER LICENSE AGREEMENT                                                     Version April 2025
+          Software) stated on the Website or otherwise outside of RealVNC’s control and shall
+          ensure that its network and systems comply with the relevant specifications provided by
+          RealVNC from time to time necessary for the operation of the Software. You shall be
+          solely responsible for procuring and maintaining all network connections and
+          telecommunications links from your systems to RealVNC’s data centers.
+
+   4.8. You shall comply with all applicable laws and regulations in the exercise of your rights and
+        the performance of your obligations pursuant to this Agreement.
+
+   4.9.     You warrant and represent that: (i) you and your End Clients (as applicable) are not
+            incorporated or organized to do business in or resident in, and are not under the control
+            of the government of, any country subject to economic or trade sanctions by the U.S.
+            State Department, the U.S. Office of Foreign Assets Control or any successor body
+            thereto ("OFAC"), the United Nations Security Council, the European Union, or the U.K.
+            government; (ii) you and your End Clients (as applicable) are not included on any list of
+            sanctioned or ineligible parties maintained by the U.S. or U.K. government or the
+            European Union, including without limitation OFAC’s lists of Specially Designated
+            Nationals and Blocked Persons. You will not (and, where applicable, will procure that
+            your End Clients will not) sell, export, re-export, transfer, use or enable the use of any
+            Software, its related technology and/or services, or any other items that RealVNC may
+            provide in connection therewith to or for any end use: (A) in or by the countries specified
+            in this clause 4.9 or any permanent residents thereof; (B) by any person or entity
+            determined by any U.S. or U.K. government agency or body or the European Union to
+            be ineligible to receive exports, including without limitation persons and/or entities
+            designated on the lists described in subsection (ii) of this clause 4.9; or (C) prohibited
+            by export or sanctions, laws, and/or regulations of the United Kingdom, the United
+            States, or the European Union. If the warranty or representation given by you in this
+            clause 4.9 is breached or the representation given by you in this clause 4.9 is or
+            becomes untrue, false, erroneous, or misleading at any time, or if you become subject
+            to any of the circumstances described in this clause 4.9, then this will constitute an
+            uncurable material breach of this Agreement by you.
+
+5. Managed Services
+
+   5.1. Where you have an explicit written agreement from RealVNC that you are authorized to
+        use the Software to deliver a Managed Service to your End Clients, or you have
+        purchased Software from one of RealVNC's authorized third party web portals, the terms
+        of this clause 5 shall apply.
+
+   5.2. You acknowledge and agree that you are solely responsible for all use of the Software
+        provided under this Agreement when providing a Managed Service, and that you are not
+        entering into this Agreement in the capacity of an agent on behalf of any particular End
+        Client. You shall ensure that End Clients fully comply with the terms and conditions of this
+        Agreement governing the use of and access to the Software (and the limitations and
+        restrictions in respect thereof) as though they applied to them and any other applicable
+        policies or guidelines provided by us in relation to the Software from time to time.
+
+   5.3. Subject to clause 11.4, RealVNC accepts no liability in connection with use of the Software
+        or Services on behalf of End Clients. You are responsible for the acts and omissions of
+        End Clients (including Authorized Users of End Clients) as if those acts and omissions
+        were your own. You agree to indemnify RealVNC against any and all claims, damages,
+        liabilities, costs, and expenses (including reasonable legal fees) arising from the acts or
+        omissions of End Clients.
+
+   5.4. You shall ensure that End Clients are aware of and comply with the terms of this
+        Agreement as they pertain to the use (and restrictions of use) of the Software. In the event
+        of any breach by an End Client, you must immediately notify us thereof in writing.
+
+REALVNC END USER LICENSE AGREEMENT                                                      Version April 2025
+6. Suspension of Service
+
+   6.1. RealVNC may suspend the access to or use of the Software by any or all of the
+        Authorized Users if RealVNC determines that use of the Services:
+
+       a) is in breach of this Agreement;
+
+       b) poses a security risk;
+
+       c) is adversely impacting or may adversely impact (as appropriate) the Services or any
+          service provided by RealVNC to a third party; or
+
+       d) where it is in the legitimate interests of RealVNC to do so, including where there is a
+          reasonable risk that you may default in the payment of the Subscription Fees,
+
+        and RealVNC shall use its reasonable endeavors to notify the affected Authorized Users
+        before the suspension takes effect and as soon as reasonably practicable thereafter, and
+        may use any reasonable means to do so.
+
+   6.2. Where RealVNC suspends access to or use of the Software under clause 6.1, the
+        Customer remains responsible for all Subscription Fees.
+
+7. Support Services
+
+   7.1. During the term of this Agreement, provided all relevant Subscription Fees which are due
+        and owing have been paid, RealVNC will provide the following Services to you in relation
+        to the Software in accordance with the terms and conditions of this Agreement:
+
+       a) provided you promptly notify RealVNC of any material defect in the Software (being
+          any corrupt download), RealVNC shall, subject to the following provisions, use its
+          reasonable endeavors to correct the problem and provide a corrected version as soon
+          as practicable after being so notified; or
+
+       b) make available any updates or improvements to the Software as published by
+          RealVNC (which shall be made available on the Website). RealVNC may at its
+          absolute discretion determine whether any updates or improvements are made
+          available within existing Subscription packages or require an enhanced Subscription
+          to access.
+
+   7.2. The Services do not include the correction of any defects due to:
+
+       a) any combination or inclusion of the Software with or in any computer program,
+          equipment or devices not on the approved list on the Website;
+
+       b) any modification of the Software not made by RealVNC;
+
+       c) you not giving RealVNC a sufficiently detailed description of the defect to enable
+          RealVNC to identify the defect and to perform the Services; or
+
+       d) any improper or unauthorized use or operation of the Software, including any use not
+          in accordance       with  the     Acceptable      Use     Policy available
+          at https://www.realvnc.com/realvnc-acceptable-use-policy.
+
+   7.3. If a defect cannot be resolved in a reasonable time your sole and exclusive remedy will
+        be for RealVNC to either, at its sole discretion:
+
+REALVNC END USER LICENSE AGREEMENT                                                 Version April 2025
+       a) replace the Software; or
+
+       b) refund to you such an amount as is equal to the Subscription Fee prorated over the
+          remaining duration of the Subscription.
+
+8. Fees
+
+   8.1. You shall pay the Subscription Fees in accordance with this clause 8 and any payment
+        terms specified by RealVNC from time to time without set-off in respect of any liability of
+        RealVNC. To the extent that your (or your Authorized Users') access or usage of the
+        Software exceeds the applicable Concurrent Session Band at any point during the period
+        of the relevant Subscription, we reserve the right to increase the Subscription Fees in
+        accordance with such excess usage by notifying you in writing, and such increase may
+        apply retrospectively (on a pro-rated basis) to the first time in which the applicable
+        Concurrent Session Band was thus exceeded.
+
+   8.2. Unless otherwise agreed with RealVNC, Subscription Fees (and any expenses or other sums)
+        payable under this Agreement are due at the start of the Subscription and shall be paid online
+        using a credit or debit card. Payment confirmation will be provided after payment has been
+        taken).
+
+   8.3. In the event you have purchased a Subscription to the Software through a Reseller and
+        the Reseller does not pay the Subscription Fees to RealVNC in accordance with this clause
+        8, you will be liable to pay the Subscription Fees to RealVNC in full, notwithstanding any
+        payment you may have made to the Reseller.
+
+   8.4. All Subscription Fees, expenses or other sums payable under this Agreement are
+        exclusive of any applicable value added tax, sales tax, or other applicable taxes or duties
+        for which you shall be additionally liable.
+
+   8.5. If any sum payable to RealVNC is not paid within 14 days after the due date, including
+        any sums payable by a Reseller for your Subscription, RealVNC may suspend
+        performance of its obligations and/or charge interest on a daily basis at the rate of the
+        lesser of: (i) 4% above the Bank of England's base rate from time to time in force,
+        compounded quarterly; or (ii) the maximum rate permitted by applicable law, from the
+        date for payment of that sum to the date of actual payment.
+
+   8.6. RealVNC shall be entitled to increase the Subscription Fees at any time upon thirty (30)
+        days' prior written notice to you before the start of a new or renewed Subscription.
+
+9. Limited Warranty
+
+   9.1. RealVNC warrants to you that the Software within your Subscription will perform
+        substantially in accordance with any documentation provided for it for 90 days from the
+        date of purchase of a Subscription (the “Warranty Period”).
+
+   9.2. You shall not benefit from the warranty set out in clause 9.1 above if: (a) you report a problem
+       a) outside of the Warranty Period; and/or (b) if the failure of the Software is the result of
+          accident, abuse, misapplication or inappropriate use of the Software or use with
+          Devices not meeting the minimum hardware and software requirements specified on
+          the Website.
+
+   9.3. Notwithstanding clause 9.1, you acknowledge that the Software may evolve over time and
+        that functionality may be added or removed from time to time.
+
+
+
+
+REALVNC END USER LICENSE AGREEMENT                                                       Version April 2025
+   9.4. RealVNC does not warrant that your use of the Software will be uninterrupted or error-free,
+        or that the Software and/or the information or results obtained by you through its use of the
+        Software will meet your requirements or those of End Clients (where applicable). Subject to
+        its obligations under Applicable Data Protection Law (as defined in the Data Processing
+        Addendum), RealVNC is not responsible for any delays, delivery failures, or any other loss
+        or damage resulting from the transfer of Customer Data over communications networks and
+        facilities, including the internet, and you acknowledge that the Software may be subject to
+        limitations, delays, and other problems inherent in the use of such communications facilities.
+
+   9.5. In the event that a problem is reported in writing to RealVNC during the Warranty Period, your
+        sole and exclusive remedy will be for RealVNC to either, at its sole discretion:
+
+       a) replace the Software; or
+
+       b) refund to you such an amount as is equal to the Subscription Fee.
+
+10. Intellectual Property Rights
+
+   10.1. All Intellectual Property Rights in and to the Software, the Services, and the Derived
+         Data, shall belong to and remain vested in (or automatically upon creation shall vest
+         in), RealVNC. Except for the license(s) granted to you in this Agreement, nothing in
+         this Agreement grants to you or to any End Client or to any Authorized User any rights
+         to or in any Intellectual Property Rights in the Software or the Services.
+
+   10.2. Without prejudice to clause 10.1, to the extent that you or any End Client's or
+         Authorized User's use of the Software results in any modifications, adaptations,
+         developments, or any derivative works of or to the Software or the Services
+         (“Improvements”), then notwithstanding any rights or remedies of RealVNC under this
+         Agreement, any and all intellectual property rights in and to such Improvements shall
+         immediately vest in and be owned by RealVNC.
+
+   10.3. RealVNC makes no representation or warranty as to the validity or enforceability of the
+         intellectual property rights in the Software.
+
+   10.4. RealVNC shall defend you against any third party claim that the use of the Software in
+         accordance with this Agreement infringes any third party Intellectual Property Right and
+         shall indemnify you for and against any amounts awarded against you in judgment or
+         settlement of such claims, provided that: (i) RealVNC is given prompt notice of such claim;
+         (ii) you provide reasonable co-operation to RealVNC in the defense and settlement of such
+         claim, at RealVNC’s expense; (iii) RealVNC is given sole authority to defend or settle the
+         claim; and (iv) you make no admission of liability or fault yourself, or on behalf of
+         RealVNC.
+
+   10.5. In the defense or settlement of any claim pursuant to clause 10.4 above, RealVNC may
+         at its sole option and expense either: (i) procure for you the right to continue using the
+         Software in the manner contemplated by this Agreement; (ii) replace or modify the
+         Software so that it becomes non-infringing; or (iii) terminate this Agreement immediately
+         by providing written notice to you, without liability to you or any End Client (as applicable).
+
+   10.6. RealVNC shall not in any circumstances have any liability (including in respect of the
+         indemnity provided under clause 10.4) if the alleged infringement is based on: (i)
+         modification of the Software by anyone other than RealVNC; or (ii) your, any End
+         Client's or any Authorized User’s use of the Software otherwise than in accordance
+         with this Agreement or in a manner contrary to the instructions given to you by
+         RealVNC; or (iii) your, any End Client's or any Authorized User’s use of the Software
+         after notice of the alleged or actual infringement from RealVNC or any appropriate
+
+REALVNC END USER LICENSE AGREEMENT                                                       Version April 2025
+           authority; or (iv) use or combination of the Software with any other software or
+           hardware, in circumstances where, but for such combination, no infringement would
+           have occurred.
+
+    10.7. You shall defend RealVNC against all or any costs, claims, damages or expenses
+          incurred by RealVNC in respect of any third party claim relating to the Customer’s or any
+          End Client's or Authorized User’s use of the Software otherwise than in accordance with
+          this Agreement, provided that: (i) you are given prompt notice of such claim; (ii) RealVNC
+          provides reasonable co-operation to you in the defense and settlement of such claim, at
+          your expense; and (iii) you are given sole authority to defend or settle the claim; and (iv)
+          RealVNC makes no admission of liability or fault itself or on behalf of you.
+
+11. Limitation on Liability
+
+    11.1. This clause 11 sets out the entire financial liability of RealVNC to you arising under this
+          Agreement, including in respect of any use made by you or the End Clients or the
+          Authorized Users of the Software and the Services.
+
+    11.2. Except as expressly and specifically provided in this Agreement, you assume sole
+          responsibility for any information or results obtained by you or the Authorized Users
+          from use of the Software and Services, and for conclusions drawn from such use.
+          RealVNC shall have no liability for any damage caused by errors or omissions in any
+          information or data, or any actions taken by RealVNC at your direction. No other party
+          is entitled to rely on the output, information or results produced by you through your
+          and the Authorized Users’ use of the Software for any purpose.
+
+    11.3. Except as expressly and specifically provided in this Agreement, all warranties,
+          representations, conditions, and all other terms of any kind whatsoever implied by
+          statute or common law are, to the fullest extent permitted by applicable law, excluded
+          from this Agreement. You acknowledge that the Software, the Services and any
+          information provided by or on behalf of RealVNC are provided to you on an 'as is' basis.
+
+    11.4. Nothing in this Agreement excludes either party's liability for death or personal injury
+          caused by its negligence, fraud or fraudulent misrepresentation or for any liabilities that
+          cannot be excluded under applicable law.
+
+    11.5. Subject to clause 11.4, RealVNC shall not be liable for any consequential, indirect, special,
+          incidental, punitive or exemplary damages, whether foreseeable or unforeseeable,
+          including loss of profit, loss of business, loss of goodwill, loss of or corruption of data, loss
+          caused or contributed to by any of your agents or Representatives, Authorized Users or
+          End Client, loss caused as a result of the Software being unavailable as a result of planned
+          downtime for the Software, as notified to you from time to time, loss arising from any failure
+          of your infrastructure and/or utilities, loss caused as a result of the Software being
+          unavailable due to a Force Majeure Event, or loss caused by the failure or delay of any
+          third party application or service or network.
+
+    11.6. Subject to the other provisions of this clause 11, RealVNC’s entire, aggregate liability to
+          you whether in contract, tort (including negligence), for breach of statutory duty or
+          otherwise arising out of or relating to this Agreement shall be limited to the total
+          Subscription Fees paid by you during the twelve (12) months immediately preceding the
+          date on which the claim arose.
+12. Confidentiality
+
+    12.1. Each party agrees to keep confidential and not use for any purpose other than the
+          performance of its obligations under this Agreement, all Confidential Information of the
+          other party.
+
+REALVNC END USER LICENSE AGREEMENT                                                          Version April 2025
+    12.2. Each party will only disclose or reveal any of the other party’s Confidential Information
+          disclosed to it to:
+
+        a) those of its personnel who are required in the course of their duties to receive it for
+           the purpose for which it is supplied (provided that each party shall ensure that any
+           such personnel to whom it discloses the other party's Confidential Information comply
+           with this clause 12); and
+
+        b) any court, governmental or administrative authority competent to require the same, or
+           as required by any applicable law, regulation, or governmental or regulatory body
+           which is lawfully entitled to require the disclosure (and in each such case, the party
+           shall, if legally permissible, notify the other party of the requirement as soon as
+           reasonably practicable and use commercially reasonable endeavors to discuss with
+           the other party and agree any possible limitations or restrictions on disclosure in
+           advance to the extent permitted by law).
+
+    12.3. The provisions of clauses 12.1 and 12.2 shall not apply to information that:
+
+        a) is or becomes generally available in the public domain otherwise than arising in
+           connection with a breach of this clause by the recipient;
+
+        b) is lawfully in the recipient's possession free of any restrictions as to its use or
+           disclosure at the time of disclosure by the disclosing Party;
+
+        c) is lawfully acquired from an independent third party who did not itself obtain it under
+           an obligation of confidentiality; or
+
+        d) is independently developed without access or reference to any information disclosed
+           by the disclosing party.
+
+    12.4. You acknowledge that the Software, including the way in which data, information, works
+          and materials are visualized when using, or are otherwise presented by, the Software
+          and the results of any performance tests of the Software, constitute RealVNC's
+          Confidential Information.
+
+    12.5. RealVNC acknowledges that the Customer Data is your Confidential Information or the
+          Confidential Information of your End Client (as applicable)..
+    12.6. The provisions of this clause 12 shall survive termination or expiry of this Agreement,
+          however arising.
+
+13. Customer Data and Derived Data
+    13.1. You or the relevant End Client(s) (as applicable) shall own all right, title and interest in
+          and to all the Customer Data and you shall have sole responsibility for the legality,
+          reliability, integrity, accuracy, and quality of the Customer Data.
+    13.2. You warrant and represent that you have the authority, including all necessary rights,
+          licenses, and permissions, to upload and use, and to permit RealVNC to process, the
+          Customer Data in accordance with this Agreement.
+    13.3. You hereby grant to RealVNC a worldwide, non-exclusive, irrevocable, royalty-free
+          license during the Term to process the Customer Data for the purpose of providing the
+          Software and the Services. For the avoidance of doubt, RealVNC does not process
+          Customer Data outside of the necessary processing specified in this Agreement or the
+          Data Processing Addendum as may be updated from time to time at
+          https://help.realvnc.com/hc/en-us/articles/5438412949405.
+    13.4. You authorize RealVNC to use the Customer Data to improve the performance and
+          functionality of the Software to develop improvements, updates, upgrades,
+
+REALVNC END USER LICENSE AGREEMENT                                                       Version April 2025
+          modifications, or derivative works thereof which shall constitute Improvements (as
+          defined in clause 10.2).
+    13.5. RealVNC may track and analyze your, End Clients', and the Authorized Users' use of
+          the Software for the purposes of security and to help RealVNC improve the Services,
+          including the Software.
+    13.6. Each Party shall comply with its obligations under the Data Processing Addendum as may
+          be       updated     from      time      to     time     at     https://help.realvnc.com/hc/en-
+          us/articles/5438412949405. The Data Processing Addendum is in addition to, and does
+          not relieve, remove, or replace, the Parties' respective obligations or rights under the Data
+          Protection Legislation.
+    13.7. You shall indemnify and hold harmless RealVNC from and against all losses, damages,
+          liabilities and claims, arising from or in relation to any third party claim that the processing
+          and use of the Customer Data in accordance with this Agreement infringes or
+          misappropriates any third party Intellectual Property Rights or breaches Data Protection
+          Legislation.
+
+14. Audit
+    14.1. RealVNC is entitled on reasonable notice from time to time to require you to permit or
+          procure the permission for a duly authorized employee, agent or representative of
+          RealVNC to audit the use of the Software, and to assess compliance with this
+          Agreement, including for this purpose to access your premises and systems, and to take
+          copies of records.
+    14.2. If any such audits reveal that you have underpaid RealVNC for your use of the Software,
+          including exceeding the number of Authorized Users or End Clients (as applicable) then,
+          without prejudice to RealVNC's other rights, you shall pay to RealVNC, in accordance
+          with clause 8.4, an amount equal to such underpayment as calculated in accordance
+          with the Subscription Fees and RealVNC's reasonable costs of conducting such audit.
+
+15. Export Control
+    15.1. The United States and other countries control the export of Software and information. You
+          are responsible for compliance with the laws of your local jurisdiction regarding the import,
+          export or re-export of the Software, and agree to comply with such restrictions and not to
+          export or re-export the Software where this is prohibited. By downloading the Software,
+          you are agreeing that you are not a person or entity to which such export is prohibited.
+
+16. Term and Termination
+    16.1. This Agreement shall continue in force for the duration of your Subscription (and any
+          subsequent renewal Subscription) (the “Term”) unless terminated in accordance with
+          this clause.
+    16.2. The Services shall continue in force for the Subscription period agreed with RealVNC
+          by being purchased through the Website or otherwise agreed in writing with RealVNC,
+          from the start of the Subscription or renewed Subscription (as the case may be) until
+          you opt out of having auto-renewed or the Subscription and this Agreement are
+          terminated on the bases set out below.
+    16.3. The Subscription will automatically renew for an additional term of twelve months at the
+          end of the then current Subscription period, and will continue to do so every twelve
+          months thereafter, unless you opt out of this by following the procedure set out at clause
+          16.5 below, in which case the Subscription will automatically terminate on the last day
+          of your then-current Subscription period.
+    16.4. RealVNC shall notify you via email at least seven days before the Subscription Fees for
+          the renewed Subscription period become due, but the automatic renewal of the
+          Subscription period is not conditional on any acceptance or other acknowledgment by
+          you of this email.
+
+REALVNC END USER LICENSE AGREEMENT                                                         Version April 2025
+    16.5. You can opt out of the automatic renewal of the Subscription, either through the Website
+          or by submitting to us an opt out request to shop@realvnc.com, in either case not later
+          than 30 days before the end of your Subscription or any renewed Subscription period.
+    16.6. You may terminate your Subscription and this Agreement at any time during the
+          Subscription period by giving thirty (30) days' prior notice in writing to RealVNC.
+          Termination of your Subscription and this Agreement by you or by RealVNC shall not
+          entitle you to any refund for any unexpired portion of your Subscription period (as
+          renewed or extended from time to time).
+    16.7. Without affecting any other right or remedy available to it, either party may terminate this
+          Agreement with immediate effect by giving written notice to the other party if:
+
+        a) the other party commits a material breach of any terms of this Agreement, which
+           breach is incurable or (if such breach is curable) fails to cure that breach within ten
+           (10) business days after being notified in writing to do so; or
+
+        b) the other party suspends, ceases, or threatens to suspend or cease carrying on its
+            business or a substantial part thereof, or suffers an Insolvency Event.
+    16.8. On termination of this Agreement for any reason:
+
+        a) all licenses granted under this Agreement shall immediately terminate;
+
+        b) all Subscription Fees which are outstanding on the date of termination shall become
+           immediately due and payable;
+
+        c) subject to the terms and conditions of this Agreement, you shall and, where
+           applicable, shall procure that each End Client shall return or destroy and make no
+           further use of any Confidential Information, equipment, property and other items (and
+           all copies of them) belonging to the other party, including in your case, and shall
+           irretrievably delete the Software from all Customer Devices and any media on which
+           the Software is stored within 5 days of termination of this Agreement and shall certify
+           to RealVNC in writing that it has complied with this clause; and
+
+        d) any rights, remedies, obligations or liabilities of the parties that have accrued up to
+           the date of termination, including the right to claim damages in respect of any breach
+           of this Agreement which existed at or before the date of termination shall not be
+           affected or prejudiced.
+
+17. General Terms
+    17.1. This Agreement constitutes the entire agreement between the parties and
+           supersedes and extinguishes all previous agreements, promises, assurances,
+           warranties, representations, and understandings between them, whether written or
+           oral, relating to its subject matter. For the avoidance of doubt, no additional terms
+           and conditions that a party includes in or with a purchase order, purchase order
+           acceptance, payment, course of dealing between the parties or otherwise, shall vary
+           the terms and conditions set forth in this Agreement except as provided by clause
+           17.7.
+    17.2. The construction, validity and performance of this Agreement, and any dispute that
+           might arise between you and RealVNC relating to the subject matter of this
+           Agreement, shall be governed in all respects by, without reference to conflict of law
+           rules, either: (i) the laws of the State of New York, solely where the contracting
+           RealVNC entity is RealVNC, LLC, and the parties agree to submit to arbitration as
+           described further below in clause 17.3and otherwise to the exclusive jurisdiction of
+           the state and federal courts located in the State of New York; or (ii) in all other cases,
+           English law, and the parties agree to submit to the exclusive jurisdiction of the English
+
+
+REALVNC END USER LICENSE AGREEMENT                                                     Version April 2025
+          courts. The United Nations Convention for the Sale of Goods does not apply to this
+          Agreement.
+   17.3. If the contracting RealVNC entity is RealVNC, LLC, disputes will be resolved by
+          binding arbitration, rather than in court, except that either party may elect to proceed
+          in small claims court if your claims qualify, and the Federal Arbitration Act and federal
+          arbitration law apply to this Agreement. There is no judge or jury in arbitration, and
+          court review of an arbitration award is limited. However, an arbitrator can award the
+          same damages and relief as a court (including injunctive and declaratory relief or
+          statutory damages), and must follow the terms of this Agreement as a court would.
+          Before you may begin an arbitration proceeding, you must send a letter notifying us
+          of your intent to pursue arbitration and describing your claim to our registered office
+          at 850 New Burton Road, Suite 201, Dover, DE 19904, United States. The arbitration
+          will be conducted by the American Arbitration Association (AAA) under its commercial
+          rules, which are available at www.adr.org or by calling 1-800-778-7879. Payment of
+          filing, administration and arbitrator fees will be governed by the AAA commercial fee
+          schedule. We and you agree that any dispute resolution proceedings will be
+          conducted only on an individual basis and not in a class, consolidated or
+          representative action. We and you further agree that the underlying award in
+          arbitration may be appealed pursuant to the AAA’s Optional Appellate Arbitration
+          Rules. If for any reason a claim proceeds in court rather than in arbitration we and
+          you waive any right to a jury trial. Notwithstanding the foregoing we and you both
+          agree that you or we may bring suit in court to enjoin infringement or other misuse of
+          intellectual property rights.
+   17.4. Neither party is responsible for failing to fulfil its obligations (other than its payment
+          obligations) under this Agreement due to causes beyond its reasonable control that
+          directly or indirectly delay or prevent timely performance (“Force Majeure Event”).
+          Any dates or times by which each party is required to render performance under this
+          Agreement shall be postponed automatically to the extent that the party is delayed or
+          prevented from meeting them by a Force Majeure Event. If the Force Majeure Event
+          prevents, hinders, or delays the affected party’s performance of its obligations for a
+          continuous period of more than 30 days, the affected party may terminate this
+          Agreement by giving 30 days’ written notice to the other party.
+   17.5. If any provision of this Agreement is found to be invalid by any court having competent
+          jurisdiction, the invalidity of such provision shall not affect the validity of the remaining
+          provisions of this Agreement, which shall remain in full force and effect.
+   17.6. Despite anything else contained in this Agreement, neither party will be liable for any
+          delay in performing its obligations under this Agreement if that delay is caused by
+          circumstances beyond its reasonable control (including, without limitation, any delay
+          caused by an act or omission of the other party) and the party affected will be entitled
+          to a reasonable extension of time for the performance of its obligations.
+   17.7. No variation of this Agreement shall be effective unless it is in writing and signed by
+          the parties (or their authorized Representatives) or offered by RealVNC by means of
+          a quote and accepted by you.
+   17.8. This Agreement does not create any third-party beneficiary rights in any person that
+          is not a party to this Agreement. A person who is not a party to this Agreement shall
+          not have any right to enforce any term of this Agreement.
+   17.9. This Agreement may be executed in any number of counterparts, each of which when
+          executed shall constitute a duplicate original, but all the counterparts shall together
+          constitute the one agreement.
+   17.10. You may not assign, subcontract, sublicense, novate, or otherwise transfer any of
+          your rights or obligations under this Agreement to any third party (for example, any
+          End Client). RealVNC may assign all or part of the benefits or all or part of its
+          obligations under this Agreement to any affiliated company.
+
+REALVNC END USER LICENSE AGREEMENT                                                      Version April 2025
+REALVNC END USER LICENSE AGREEMENT   Version April 2025
+
