@@ -1,0 +1,26 @@
+pkgbase = zenkai
+	pkgdesc = Fast application launcher with plugins, themes and window switching
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/dayvster/zenkai
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = zig>=0.17
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-svg
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	optdepends = qt6-wayland: Wayland support
+	optdepends = xdg-utils: open URLs and files
+	optdepends = wmctrl: window layout actions on X11
+	optdepends = xorg-xrandr: monitor layout actions on X11
+	optdepends = kwinctl: control KDE Plasma windows from the command line
+	provides = zenkai
+	conflicts = zenkai-bin
+	options = !debug
+	source = zenkai-1.6.tar.gz::https://github.com/dayvster/zenkai/archive/refs/tags/v1.6.tar.gz
+	sha256sums = a8894fdde353eb3498d7c18594915d9eb494c3e3a5344bcf8c573915cfa75647
+
+pkgname = zenkai
