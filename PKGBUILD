@@ -6,7 +6,7 @@ _binname=pideck
 pkgver=0.12.0
 pkgrel=1
 pkgdesc='Desktop workbench for managing local AI coding agent sessions (prebuilt binary)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/ayuayue/PiDeck'
 license=('MIT')
 depends=(
@@ -52,17 +52,28 @@ conflicts=('pideck' 'pi-desktop')
 options=('!strip')
 source=('LICENSE')
 source_x86_64=("${_appname}_${pkgver}_amd64.deb::https://github.com/ayuayue/PiDeck/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb")
-noextract=("${_appname}_${pkgver}_amd64.deb")
+source_aarch64=("${_appname}_${pkgver}_arm64.deb::https://github.com/ayuayue/PiDeck/releases/download/v${pkgver}/${_appname}_${pkgver}_arm64.deb")
+noextract=(
+  "${_appname}_${pkgver}_amd64.deb"
+  "${_appname}_${pkgver}_arm64.deb"
+)
 sha256sums=('032c3da0b36939e15b0ba21974baeecf2d0afbdf410a66bd76c2ba28e5baccab')
 sha256sums_x86_64=('bcc7a7ff27c3cee5e58ae7a7d055fa5cd4b5e63be3b8af44784cc451397acee8')
+sha256sums_aarch64=('5da9d5f689c50a8a61b5aed5f331ee4ea781715534a3e4fe6387544c768f8e50')
 
 package() {
-  local extract_dir="${srcdir}/deb-extract"
+  local deb_arch
+  local extract_dir="${srcdir}/deb-extract-${CARCH}"
   local data_archives
+
+  case "${CARCH}" in
+    x86_64) deb_arch='amd64' ;;
+    aarch64) deb_arch='arm64' ;;
+  esac
 
   rm -rf "${extract_dir}"
   install -dm755 "${extract_dir}"
-  bsdtar -C "${extract_dir}" -xf "${srcdir}/${_appname}_${pkgver}_amd64.deb"
+  bsdtar -C "${extract_dir}" -xf "${srcdir}/${_appname}_${pkgver}_${deb_arch}.deb"
 
   data_archives=("${extract_dir}"/data.tar.*)
   if (( ${#data_archives[@]} != 1 )) || [[ ! -f "${data_archives[0]}" ]]; then
