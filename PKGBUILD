@@ -3,7 +3,7 @@
 _packager="Romain Gallet <gr211 at users.noreply.github.com>"
 pkgver=0.5
 pkgname=('sabnzbd-docker' 'sabnzbd-podman')
-pkgrel=1
+pkgrel=2
 pkgdesc='Convenience launch service for Sabnzd, Nzbhydra2 and Sonarr in docker or podman'
 url="https://github.com/grumlimited/sabnzbd-docker"
 arch=('any')
@@ -35,7 +35,7 @@ md5sums=('423657768bc2d9479b1d4d94a071a2e8'
          'c6e2066c6293f33a0960376236b7d3be'
          '86c471c654c795796dbef4f8f2f4bb8f'
          '7101f988ca10464d1332268f7d5126d2'
-         '7ae799fcd90c612477ace9f39593d01f'
+         'ca3297dc289172a03393cf431cbdf723'
          'e897baedbae9c51c019ebc105e6b1bb9'
          '8a8c5c133ead1bd60bc4d1e18596b087')
 noextract=()

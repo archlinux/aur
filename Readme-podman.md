@@ -95,9 +95,17 @@ The renderer loads these files in order:
 The renderer exports the values and substitutes them into the Compose file automatically.
 Users do not need to preprocess configuration files.
 
-**Current limitation:** `.env` assigns derived paths unconditionally, so it overwrites explicit full-path overrides.
-Prefix overrides work. Full-path overrides require the pending default-value assignment fix in `docker.env`.
-Sonarr imports require access to SABnzbd's completed downloads; their default download directories are separate.
+Set prefixes for the normal directory layout. Explicit, nonempty full-path overrides take precedence over derived defaults.
+For example, use an existing downloads directory:
+
+```ini
+SABNZBD_PATH_DOWNLOADS=/data/rgallet/Downloads
+SONARR_PATH_DOWNLOADS=/data/rgallet/Downloads
+```
+
+This mounts the same host directory at `/downloads` in both applications.
+Create that directory and ensure your host account can write to it.
+Without these overrides, each application uses its own prefix's `downloads` subdirectory.
 
 Systemd creates separate private runtime directories with mode `0700`:
 
