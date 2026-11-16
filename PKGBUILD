@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=klive-ide-bin
 _pkgname='Klive IDE'
-pkgver=0.67.0
+pkgver=0.68.1
 _electronversion=45
 pkgrel=1
 pkgdesc="A retro computer emulator and IDE for Z80 lovers."
@@ -26,9 +26,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/dow
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/KliveIdeSetup-${pkgver}-x86_64.AppImage")
 sha256sums=('ad04d247c1ea46d2a869ae87c1fc1dc36c6b2feb60d0b9f6c155a4dfe7ca7f34'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
-sha256sums_aarch64=('c576f831e5e1a9824348bb67e4b138d5f470e5235a72e88556b184bca04af1a0')
-sha256sums_x86_64=('7e4bb8b17e001cf2679f1704d1518e515bf33816c2a2ca6da19a98508724044a')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+sha256sums_aarch64=('0eb06102824037ae8c93782dfa01dae1de94169428cebb46764a753e4a689ba4')
+sha256sums_x86_64=('580825e5d4a41f5be41d6e4b5250e0c6f98166d5ef2ee1515ad7cb04d7d25663')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
