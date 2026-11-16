@@ -1,6 +1,6 @@
 pkgbase = sonora
 	pkgdesc = A native, familiar music streaming client
-	pkgver = 0.49.1
+	pkgver = 0.50.0
 	pkgrel = 1
 	url = https://github.com/sonorahq/sonora
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = sonora
 	optdepends = pulseaudio-alsa: audio output through PulseAudio
 	optdepends = webkit2gtk-4.1: sign in to YouTube Music through a browser window
 	options = !lto
-	source = https://github.com/sonorahq/sonora/archive/refs/tags/v0.49.1/sonora-0.49.1.tar.gz
-	sha256sums = c346d1eccec12cf93b04169286c5b267bd42a5610c86599bb7627dfa27493f60
+	source = https://github.com/sonorahq/sonora/archive/refs/tags/v0.50.0/sonora-0.50.0.tar.gz
+	sha256sums = 149a059f27df649e81476ab6f69455c43e9d701d0da8995f6ddfbbf72fe48daa
 
 pkgname = sonora
