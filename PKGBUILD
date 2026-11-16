@@ -31,9 +31,9 @@
 
 pkgname=dsh-hyprland
 _shell=hyprland
-_shell_commit=dd46f3979a9618cb1c45d46833799cce0ccf09d1
+_shell_commit=1d4c1b05680678b7d8854f4cd549708c962d0331
 _tag=dsh-v0.2.2-rc.2
-pkgver=0.2.2.rc.2.gdd46f39
+pkgver=0.2.2.rc.2.g1d4c1b0
 pkgrel=1
 pkgdesc='DeepSeek Harness desktop (upstream payload) with the dsh-hyprland launcher shell'
 arch=('x86_64')
@@ -64,7 +64,7 @@ source=(
 # assignment to it would capture an empty string.
 sha256sums=(
   'd376fe64ec4b7c9b5837fb1155ed3a48e7e0e5f5b0aae0b91d9fb836daa8c20e'
-  '78daa52bfe946558dfa4018caa1cd493cbb865d3ad636a0656a44aa41239cc4d'
+  'b06654c96c571ce530980ec64c8083c1d3dd592aefcb99a0cad4a214467f46c3'
 )
 
 # Upstream tag plus the fork's revision count, so publishing a new shell needs no
