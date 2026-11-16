@@ -1,0 +1,21 @@
+pkgbase = duckstation-appimage
+	pkgdesc = Fast PlayStation 1 emulator (upstream rolling AppImage, non-SSE2 x86_64)
+	pkgver = 20261107
+	pkgrel = 1
+	url = https://github.com/stenzek/duckstation
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = fuse2
+	depends = glibc
+	optdepends = gtk3: Qt-free desktop integration
+	optdepends = libnotify: notifications
+	provides = duckstation
+	conflicts = duckstation
+	conflicts = duckstation-qt-bin
+	conflicts = duckstation-preview-latest-bin
+	options = !strip
+	options = !debug
+	source = DuckStation-x64.AppImage::https://github.com/stenzek/duckstation/releases/latest/download/DuckStation-x64.AppImage
+	sha256sums = SKIP
+
+pkgname = duckstation-appimage
