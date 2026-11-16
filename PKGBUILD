@@ -8,7 +8,7 @@ _appname=frecenfile
 pkgauthor=kantord
 pkgname=frecenfile
 _cratename=${pkgname}
-pkgver=0.4.1
+pkgver=0.5.0
 _version=${pkgver}
 pkgrel=1
 pkgdesc="Compute frecency scores for files in a Git repository"
@@ -23,7 +23,7 @@ makedepends=('cargo')
 provides=("${_appname}")
 
 source=("${_cratename}-${_version}.crate::https://crates.io/api/v1/crates/${_cratename}/${_version}/download")
-sha256sums=('8f25cb6d11105515e8ef7e7b09ebeb2db132a7e158bf000a563717f8836ddd82')
+sha256sums=('2e2651eca0a9317cfb3b3febdbc55bb490594112750487641e7bc7572ac63cfa')
 
 prepare() {
 	cd "${_cratename}-${_version}"
