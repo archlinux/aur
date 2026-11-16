@@ -1,6 +1,6 @@
 pkgbase = raea-bin
 	pkgdesc = Render Anything Engine: videos, motion graphics, 3D and games as React and TypeScript, rendered on your GPU
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://raea.io
 	install = raea-bin.install
@@ -24,9 +24,9 @@ pkgbase = raea-bin
 	conflicts = raea
 	options = !strip
 	options = !debug
-	source = raea-0.1.4-linux-x86_64.tar.gz::https://github.com/shinyobjectz/raea/releases/download/v0.1.4/raea-0.1.4-linux-x86_64.tar.gz
-	source = LICENSE-0.1.4::https://raw.githubusercontent.com/shinyobjectz/raea/v0.1.4/LICENSE
-	sha256sums = e675f2ef9353d02111f8689cd83bc58cf9c85286e869b0bbcbdee6ea7586af55
+	source = raea-0.1.5-linux-x86_64.tar.gz::https://github.com/shinyobjectz/raea/releases/download/v0.1.5/raea-0.1.5-linux-x86_64.tar.gz
+	source = LICENSE-0.1.5::https://raw.githubusercontent.com/shinyobjectz/raea/v0.1.5/LICENSE
+	sha256sums = 2b05071a060a42ef569038d1da08256c9e7f40201e3ebe08abff2803cd44204e
 	sha256sums = fe3ce8198545420f93b83a2fd02e6fff4a4414ffcb2309df50878adf39d1c392
 
 pkgname = raea-bin
