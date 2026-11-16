@@ -26,6 +26,22 @@ source=("gherkin-dotnet-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
 sha512sums=('923d3c712104941ed3b8d79c7d728df472611fc34a7877d405c50660519bf7a06de0f44782680f50c3f9b4ed231a590b63745808e78498481fc9c04398decd62')
 b2sums=('09724099044d2430fd257dfa7c196cc112a0b18c75538a48ae1bb7a1428abcb9d3b2c64968c26f98d2a48a7828f1355e4e4c4c31ea47b1f32326fec93f297180')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -47,6 +63,8 @@ _dotnet_env() {
 }
 
 prepare() {
+  # The SDK to build with (_dotnet_sdk), for dotnet anywhere in $srcdir
+  printf '{ "sdk": { "version": "%s", "rollForward": "latestPatch" } }\n' "$(_dotnet_sdk)" >"$srcdir/global.json"
   cd "gherkin-dotnet-$_commit" || exit
   # Newtonsoft.Json is built from source by dotnet-newtonsoft-json
   cat >NuGet.Config <<EOF
