@@ -1,7 +1,7 @@
 # Maintainer: Vitaliy VVS Star <vitaliy <dot> star <at> Gmail-DOT-Com>
 
 pkgname=nanobot-ai-bin
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Python framework for building personal AI agents with tools, memory and WebUI"
 arch=('x86_64')
@@ -12,16 +12,17 @@ provides=('nanobot-ai')
 conflicts=('nanobot-ai')
 options=('!strip' '!emptydirs')
 install="$pkgname.install"
-noextract=("nanobot_ai-${pkgver}-py3-none-any.whl")
-source=("nanobot_ai-${pkgver}-py3-none-any.whl::https://files.pythonhosted.org/packages/f6/66/27c946147a2e9d0f2e00507e475edcb19a73d09e3061dbd4ef05059f7cdf/nanobot_ai-${pkgver}-py3-none-any.whl")
-sha256sums=('fb24fa5754661a2704d3b04f592ca7536be83caff062ef2b47989e867129cbe0')
+_wheel="nanobot_ai-${pkgver}-py3-none-manylinux_2_17_x86_64.whl"
+noextract=("$_wheel")
+source=("$_wheel::https://files.pythonhosted.org/packages/27/47/972e61cfb71ed6f2393f93a0034348667973f8820a938e3cfd8a06200be0/nanobot_ai-${pkgver}-py3-none-manylinux_2_17_x86_64.whl")
+sha256sums=('5eadd2f105481965e83f37e808593bc4cc8efcf81adb646abc01598afc2fe0de')
 
 _appdir=/usr/lib/nanobot-ai
 
 build() {
     python -m venv "$srcdir/venv"
     PIP_CACHE_DIR="$srcdir/pip-cache" "$srcdir/venv/bin/pip" install --no-input \
-        "$srcdir/nanobot_ai-${pkgver}-py3-none-any.whl"
+        "$srcdir/$_wheel"
 }
 
 check() {
@@ -42,11 +43,12 @@ package() {
 
     install -dm755 "$pkgdir/usr/bin"
     ln -s "$_appdir/venv/bin/nanobot" "$pkgdir/usr/bin/nanobot"
+    ln -s "$_appdir/venv/bin/nanobot-desktop-tui" "$pkgdir/usr/bin/nanobot-desktop-tui"
 
     # License and third-party notices from the wheel
     python - <<EOF
 import pathlib, zipfile
-z = zipfile.ZipFile("$srcdir/nanobot_ai-${pkgver}-py3-none-any.whl")
+z = zipfile.ZipFile("$srcdir/$_wheel")
 out = pathlib.Path("$pkgdir/usr/share/licenses/$pkgname")
 out.mkdir(parents=True, exist_ok=True)
 (out / "LICENSE").write_bytes(z.read("nanobot_ai-${pkgver}.dist-info/licenses/LICENSE"))
