@@ -1,0 +1,5 @@
+post_install() {
+  echo "  Upstream enables telemetry by default: kirocrew sends an install ID and"
+  echo "  its version once a day to d175o3ylxqum0e.cloudfront.net."
+  echo "  Disable it with kirocrew telemetry disable."
+}
