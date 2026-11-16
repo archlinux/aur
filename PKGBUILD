@@ -38,7 +38,7 @@
 
 pkgname=uzumaki-bin
 _name=uzumaki
-pkgver=0.2.1
+pkgver=0.2.2
 # The upstream build: 1 is tag v<version>, a rebuild of the same version is v<version>-<build>.
 _build=1
 if ((_build > 1)); then _rel=$pkgver-$_build; else _rel=$pkgver; fi
@@ -93,7 +93,7 @@ options=('!strip' '!debug')
 _appimage=Uzumaki-$_rel-x86_64.AppImage
 source=("$_appimage::https://github.com/hanami117/uzumaki/releases/download/v$_rel/$_appimage")
 noextract=("$_appimage")
-sha256sums=('afc411e276ad3ef9d8ede74970ba66d1b73747e535c2fd26f330a989634e3036')
+sha256sums=('4127a24bc6276d7e857b4f4829175cf2128ae9d1cc6198e435769cbfd6e85b84')
 
 prepare() {
   # The AppImage's runtime unpacks its own squashfs into squashfs-root/ (no FUSE needed). Nothing
