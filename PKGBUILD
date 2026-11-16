@@ -7,8 +7,8 @@
 _pkgname='nullfsvfs'
 pkgname='nullfsvfs-dkms'
 pkgdesc='Virtual black hole file system that behaves like /dev/null'
-pkgver=0.27
-pkgrel=2
+pkgver=0.28
+pkgrel=1
 url='https://github.com/abbbi/nullfsvfs'
 changelog="$_pkgname.changelog"
 arch=('any')
@@ -16,7 +16,7 @@ license=('GPL-3.0-or-later')
 depends=('dkms' 'make')
 options=('!strip')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('faa9d3dc1599f443ca89725138b231b55eed408dd14a89e19ba979b09d28e83b')
+sha256sums=('bbafe9a6eec51240d3e46ad55e0af95838f34eb85f6741cbc9f2ebdfa9d81d02')
 
 prepare() {
   cd "$_pkgname-$pkgver"
