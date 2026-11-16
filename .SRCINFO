@@ -1,6 +1,6 @@
 pkgbase = open-idea-server-bin
 	pkgdesc = OpenIDEA server - headless ACP agent backend for the OpenIDEA IDE
-	pkgver = 0.1.45
+	pkgver = 0.1.46
 	pkgrel = 1
 	url = https://github.com/l0ng-ai/openidea
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = open-idea-server-bin
 	conflicts = openidea-server
 	options = !strip
 	options = !debug
-	source_x86_64 = openidea-server-linux-x86_64.gz::https://github.com/l0ng-ai/openidea/releases/download/v0.1.45/openidea-server-linux-x86_64.gz
-	sha256sums_x86_64 = 0d14aa00cb5836543cca943b7cc93ce35f05277787ec4978b66813037261f5db
-	source_aarch64 = openidea-server-linux-aarch64.gz::https://github.com/l0ng-ai/openidea/releases/download/v0.1.45/openidea-server-linux-aarch64.gz
-	sha256sums_aarch64 = 378df56f91502db31030199a0bb52f59ac65239096d5c70a9d33d982ae94b8fb
+	source_x86_64 = openidea-server-linux-x86_64.gz::https://github.com/l0ng-ai/openidea/releases/download/v0.1.46/openidea-server-linux-x86_64.gz
+	sha256sums_x86_64 = b1258d52327b34d8034d3157bce13e0f05ef22e8c69825c39b4552ceb07ecbec
+	source_aarch64 = openidea-server-linux-aarch64.gz::https://github.com/l0ng-ai/openidea/releases/download/v0.1.46/openidea-server-linux-aarch64.gz
+	sha256sums_aarch64 = 28bcc9cc972c2adc3fdeb83a8ff0879ce2501b8d0095625438ff67bc24a39354
 
 pkgname = open-idea-server-bin
