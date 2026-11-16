@@ -54,6 +54,7 @@ prepare() {
   # through unaligned pointers (on x86_64 the offset was written as 8 bytes), as does the
   # temporary detour of tier0's Error() at start. Upstream replaced SourceHook with KHook after
   # 1.12; the detour is still there.
+  # upstream: none, SourceHook is gone after 1.12; the Error() detour's fix is still to be proposed
   patch -Np1 -i "$srcdir/metamod-ubsan.patch"
 }
 
