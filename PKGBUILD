@@ -2,7 +2,7 @@
 
 pkgbase=kwin-effects-burn-my-windows
 pkgname=(kwin5-effects-burn-my-windows kwin6-effects-burn-my-windows)
-pkgver=48
+pkgver=49
 pkgrel=1
 pkgdesc='Disintegrate your windows with style.'
 arch=('any')
@@ -10,8 +10,8 @@ url='https://github.com/Schneegans/Burn-My-Windows'
 license=('GPL-3.0-or-later')
 depends=('kwin')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/Schneegans/Burn-My-Windows/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e25a91dcfd35a06a6f1acadce63ea5d92c975e9855e6d023b8f04d525d681e2d')
-b2sums=('aecf6ab5d603eec7a54f115bfc3419b3ff721e45910188861bfe20f948dc2994c1840b38851dd3a8a47efe530cbbce27b230447765a13672507c68b222eb3b79')
+sha256sums=('7f53fced0a14f6cf952774c1f64a1e97e43d63ab1171a3fd6a66c1d722e97bc5')
+b2sums=('2e6cf6d2029b607e0bfc281e947c2a95d135fba00e8e457e82c1c529bac00b1be83fc906fff1aa8c0541e96a8e4b0e390590316eca962a2ed96c74ee608d2e85')
 
 build() {
   cd "Burn-My-Windows-$pkgver/kwin"
