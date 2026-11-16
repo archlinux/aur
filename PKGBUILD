@@ -2,7 +2,7 @@
 
 pkgname=jotty-git
 _pkgname=jotty
-pkgver=2.2.0.r0.gd7c9866
+pkgver=2.3.0.r0.g69d57af
 pkgrel=1
 pkgdesc='An opinionated, Wayland-native terminal emulator that supports both CPU and GPU renderer'
 arch=('x86_64' 'aarch64')
@@ -41,6 +41,6 @@ package() {
   install -Dm644 target/terminfo/j/jotty -t "$pkgdir/usr/share/terminfo/j"
   install -Dm644 extra/jotty.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 extra/jotty.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  install -Dm644 README.md docs/*.md docs/config.example.toml -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm644 README.md docs/user/*.md docs/config.example.toml -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 LICENSE THIRD-PARTY-LICENSES -t "$pkgdir/usr/share/licenses/$pkgname"
 }
