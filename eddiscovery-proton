@@ -4,4 +4,5 @@ cd /opt/eddiscovery-proton || exit 1
 # Use sed for path replacement (convert / to \)
 WINE_HOME="Z:$(echo "$HOME" | sed 's|/|\\\\|g')"
 
+export SteamAppId=eddiscovery-proton
 exec protontricks-launch --appid 359320 EDDiscovery.exe -Appfolder "${WINE_HOME}\\.local\\share\\EDDiscovery" "$@"

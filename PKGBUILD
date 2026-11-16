@@ -1,7 +1,7 @@
 # Maintainer: Alexander Mot <alexander@amot.dev>
 pkgname=eddiscovery-proton
 pkgver=20.0.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Captains log and 3d star map for Elite Dangerous. Runs in ED's Proton-GE prefix"
 arch=('any')
@@ -27,7 +27,7 @@ source=("${pkgname}-${pkgver}.zip::${url}/releases/download/Release_${pkgver}/ED
         "eddiscovery-proton"
 		"eddiscovery-proton.desktop")
 md5sums=('a4a89240574b0ca8db2bf0c536ae42a0'
-         'e4c15c73cfd8083eb070f16757817f54'
+         '53ab58142d4a01639174d4f92f5e4086'
          'c46f498c3ad628d12b7a2692443de1ff')
 noextract=()
 validpgpkeys=()
