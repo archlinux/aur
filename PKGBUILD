@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rename-photos-bin
 _pkgname='Rename Photos'
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Bulk rename photos using EXIF data 🐶 (Prebuilt version)使用 EXIF 数据批量重命名照片."
+pkgdesc="Bulk rename photos using EXIF data 🐶. 使用 EXIF 数据批量重命名照片."
 arch=('x86_64')
 url="https://arman19941113.github.io/rename-photos/"
 _ghurl="https://github.com/Arman19941113/rename-photos"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Arman19941113/rename-photos/v${pkgver}/LICENSE"
 )
-sha256sums=('957a43db5b35bf98b388259bba259d2f7f3695c96c955c1f8fb741bd57d0d0f2'
+sha256sums=('a197ef5a5e399fbce0ea2b577f9e1887ce582da0e8fc16a77bbb59f51772c502'
             '5ad2df4d8f7256a87d9d21c5a8568a8d1d6ff63e8506f87c683612bee4877c07')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
