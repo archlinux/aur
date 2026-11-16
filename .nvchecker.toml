@@ -1,0 +1,3 @@
+[python-devtools]
+source = "pypi"
+pypi = "devtools"
