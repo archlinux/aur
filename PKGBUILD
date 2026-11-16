@@ -11,9 +11,11 @@ url="https://github.com/ergochat/ircdog"
 license=(ISC)
 depends=(glibc)
 makedepends=(go git)
-source=("git+$url#tag=v$pkgver")
+source=("git+$url#tag=v$pkgver?signed")
 sha512sums=('d42baf7125e81d3f167d013df0bbed917548a257251d630e04416d317cb9b0b60502414bb303fb5585be20db0016f3d7cfc54ae7e1f9c072eb8efca3990c31c2')
 b2sums=('dc1f357fc60a5ddc3b997adb09be8f8cbdb37685eafb0c375c91f4f9bfd6a8016fa8d68b4455a4b3cb0135c20943a5143e59c6f34f1d7ae14d81bcecf2163129')
+# Shivaram Lingamneni <slingamn@cs.stanford.edu>, who signs the tags
+validpgpkeys=(740FC947B135E7627D4D00F21996B89DF018DCAB)
 
 build() {
   export GOPATH="$srcdir/gopath"
