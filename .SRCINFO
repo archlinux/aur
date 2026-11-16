@@ -1,6 +1,6 @@
 pkgbase = chordist
 	pkgdesc = Guitar companion for KDE Plasma: live chords, tabs, lyrics and fingerings for whatever is playing
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://gitlab.com/ritwick7/chordist
 	install = chordist.install
@@ -17,7 +17,7 @@ pkgbase = chordist
 	optdepends = songrec: identify a track from its audio when its metadata is unusable
 	optdepends = pipewire-audio: record the output for songrec (pw-record)
 	optdepends = libpulse: find the default output for songrec (pactl)
-	source = chordist-2.0.1.tar.gz::https://gitlab.com/ritwick7/chordist/-/releases/v2.0.1/downloads/chordist-2.0.1.tar.gz
-	sha256sums = acc309f5497ba0f65c75da5b572399a175496b7fdcec06f3a2034af2665c87a9
+	source = chordist-2.1.0.tar.gz::https://gitlab.com/ritwick7/chordist/-/releases/v2.1.0/downloads/chordist-2.1.0.tar.gz
+	sha256sums = 484d4893f35875baa6207ee5944addecc298075cae708689e5d8410f0b928469
 
 pkgname = chordist

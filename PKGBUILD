@@ -1,7 +1,7 @@
 # Maintainer: Ritwick Verma <verma1997 at gmail dot com>
 
 pkgname=chordist
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Guitar companion for KDE Plasma: live chords, tabs, lyrics and fingerings for whatever is playing'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
 )
 install=chordist.install
 source=("$pkgname-$pkgver.tar.gz::$url/-/releases/v$pkgver/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('acc309f5497ba0f65c75da5b572399a175496b7fdcec06f3a2034af2665c87a9')
+sha256sums=('484d4893f35875baa6207ee5944addecc298075cae708689e5d8410f0b928469')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver" || exit 1
@@ -34,7 +34,7 @@ package() {
   # The widget and its icon.
   install -d "$pkgdir/usr/share/plasma/plasmoids/com.ritwick.chordist"
   cp -r applet/. "$pkgdir/usr/share/plasma/plasmoids/com.ritwick.chordist/"
-  install -Dm644 packaging/chordist.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/chordist.svg"
+  install -Dm644 applet/contents/images/guitar.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/chordist.png"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 THIRD-PARTY-NOTICES.md "$pkgdir/usr/share/licenses/$pkgname/THIRD-PARTY-NOTICES.md"
