@@ -2,7 +2,7 @@
 pkgname=lagrange-bin
 _pkgname=Lagrange
 _appname="fi.skyjake.${_pkgname}"
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A Beautiful Gemini Client."
 arch=(
@@ -34,9 +34,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
 sha256sums=('d8dd2acc4ba121ca7da3c899c8c443484ab54526ed5933e34fffae2cedb28fbe'
             '92457ec25ef4808eb5481279d86c801e9d9bc15cfbb167b5ef68a54e13b44839')
-sha256sums_aarch64=('938369a43f56db6fe62ce84d88ecc9fc5e7fd5d4fd6e259f3143e7b70a2b1ef3')
-sha256sums_armv7h=('071a54fed0ac06140f91b889a9eb5f003177a9ef148544c3d7d05f32773ce278')
-sha256sums_x86_64=('f530a8f85ae3baf8c7a084bd9a6c3013d7bb4d2414cfadf064cf783846ece9e5')
+sha256sums_aarch64=('81cfa077c09f4febe9c637100b129e0630451e9a75ce2698dea79d50fedab67d')
+sha256sums_armv7h=('b5659f30630a3be7d189cbbd8d762f043e3bf57c791a516a3bde058d4db7d951')
+sha256sums_x86_64=('0f69f4761adb916d843f94aefefc4cb7c9bd1456414b24967b1bb5062b66edf8')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
