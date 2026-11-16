@@ -1,25 +1,23 @@
 # Maintainer: Pasical <pasicalyang@gmail.com>
 # Rendered by Everywhere-AUR/scripts/sync_release.py; submit out/PKGBUILD.
 pkgname=everywhere-bin
-pkgver=0.9.0canary.20261110.31
+pkgver=0.9.0canary.20261116.28
 pkgrel=1
 pkgdesc='Context-aware AI assistant for your desktop'
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url='https://github.com/Sylinko/Everywhere'
 license=('BSL-1.1')
-depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'icu' 'fontconfig' 'libx11' 'libice' 'libsm' 'libxext' 'libxcb' 'libxrandr' 'libxrender' 'libxi' 'libxcursor' 'wayland' 'libxkbcommon' 'glib2' 'at-spi2-core' 'xdg-utils' 'desktop-file-utils')
+depends=('python' 'glibc' 'gcc-libs' 'zlib' 'openssl' 'icu' 'fontconfig' 'libx11' 'libice' 'libsm' 'libxext' 'libxcb' 'libxrandr' 'libxrender' 'libxi' 'libxcursor' 'wayland' 'libxkbcommon' 'glib2' 'at-spi2-core' 'xdg-utils' 'desktop-file-utils')
 optdepends=('grim: Hyprland screenshot capture' 'wl-clipboard: Wayland text-selection monitoring' 'libnotify: desktop notifications')
 provides=('everywhere')
 conflicts=('everywhere')
-_upstream_tag='v0.9.0-canary.20261110.31'
+_upstream_tag='v0.9.0-canary.20261116.28'
 _mirror_repository='pasical/Everywhere-AUR'
 _base="https://github.com/${_mirror_repository}/releases/download/${_upstream_tag}"
 source=("${_base}/LICENSE" "${_base}/Everywhere-icon.png")
 sha256sums=('1afb97b109ac6dc78fee57f86e854abe75bbdffb12b40d36c91084b12efa96a2' 'ef52179d078f3ee23a1eec9ded2dbb8a9529de49dd4412375fea7566f9f83c34')
-source_x86_64=("${_base}/Everywhere-Linux-x64-v0.9.0-canary.20261110.31.tar.zst")
-sha256sums_x86_64=('23e40f6f0d5cd01b35051ceac565a4b0faf364f12a2997b96be850015f585517')
-source_aarch64=("${_base}/Everywhere-Linux-arm64-v0.9.0-canary.20261110.31.tar.zst")
-sha256sums_aarch64=('04c1d82a10bd1757f28515e3fffd407fd3ad3efb31e7220f3e002ba09b3a318e')
+source_x86_64=("${_base}/Everywhere-Linux-x64-v0.9.0-canary.20261116.28.tar.zst")
+sha256sums_x86_64=('08b0b9cb07620b9ce82f676e01b0b134687768ca78535c030115d3b705654a60')
 noextract=("Everywhere-Linux-x64-${_upstream_tag}.tar.zst" "Everywhere-Linux-arm64-${_upstream_tag}.tar.zst")
 
 package() {
@@ -33,6 +31,7 @@ package() {
     bsdtar -xf "$srcdir/Everywhere-Linux-${runtime}-${_upstream_tag}.tar.zst" -C "$pkgdir/opt/Everywhere" --no-same-owner
     chmod 755 "$pkgdir/opt/Everywhere/Everywhere" "$pkgdir/opt/Everywhere/Everywhere.Watchdog"
     ln -s /opt/Everywhere/Everywhere "$pkgdir/usr/bin/Everywhere"
+    ln -s /opt/Everywhere/Everywhere "$pkgdir/usr/bin/ew"
     install -Dm644 "$srcdir/Everywhere-icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/Everywhere.png"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -d "$pkgdir/usr/share/applications"
