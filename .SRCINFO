@@ -1,6 +1,6 @@
 pkgbase = open-cad-studio-appimage
 	pkgdesc = A CAD application built with Rust — 2D/3D drawing, DWG/DXF support, and GPU-accelerated rendering (AppImage)
-	pkgver = 2026.45
+	pkgver = 2026.46
 	pkgrel = 1
 	url = https://github.com/HakanSeven12/OpenCADStudio
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = open-cad-studio-appimage
 	depends = fuse2
 	provides = open-cad-studio
 	conflicts = open-cad-studio
-	noextract = OpenCADStudio-v2026.45-linux-x86_64.AppImage
+	noextract = OpenCADStudio-v2026.46-linux-x86_64.AppImage
 	options = !strip
-	source = OpenCADStudio-v2026.45-linux-x86_64.AppImage::https://github.com/HakanSeven12/OpenCADStudio/releases/download/v2026.45/OpenCADStudio-v2026.45-linux-x86_64.AppImage
-	sha256sums = 85ee7838059eebc1c913bd2fbab42c579983f4281464cbb3b190fc06f4077ec2
+	source = OpenCADStudio-v2026.46-linux-x86_64.AppImage::https://github.com/HakanSeven12/OpenCADStudio/releases/download/v2026.46/OpenCADStudio-v2026.46-linux-x86_64.AppImage
+	sha256sums = 267adab0d5aea632e07da16404d7d3255bd0b05fecda60f6a71630b5fab0061c
 
 pkgname = open-cad-studio-appimage
