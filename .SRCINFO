@@ -1,6 +1,6 @@
 pkgbase = diskgraph-git
-	pkgdesc = Monitor for disk IO
-	pkgver = r23.a832afd
+	pkgdesc = Graphs the disk IO in a Linux terminal.
+	pkgver = r39.f024e33
 	pkgrel = 1
 	url = https://github.com/stolk/diskgraph
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = diskgraph-git
 	depends = glibc
 	provides = diskgraph
 	conflicts = diskgraph
-	source = diskgraph-git::git+https://github.com/stolk/diskgraph
+	source = diskgraph-git::git+https://github.com/stolk/diskgraph#branch=main
 	sha256sums = SKIP
 
 pkgname = diskgraph-git
-
