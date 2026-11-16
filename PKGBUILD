@@ -5,10 +5,10 @@ pkgname="${_pkgname}-git"
 pkgver=r271.06cde6b
 pkgrel=1
 pkgdesc='A command line utility for setting up the on-board Flash of BMP v2.3+ hardware for use in standalone mode'
-arch=('any')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://codeberg.org/blackmagic-debug/${_pkgname}"
 license=('BSD-3-Clause')
-depends=('libusb')
+depends=('glibc' 'libgcc' 'libstdc++' 'libusb')
 makedepends=('git' 'meson')
 source=("git+https://codeberg.org/blackmagic-debug/${_pkgname}.git")
 b2sums=('SKIP')
@@ -31,5 +31,5 @@ package() {
 	# Not currently supported by upstream
 	# meson install -C build --destdir "${pkgdir}"
 	install -Dm755 "build/src/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-	install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
