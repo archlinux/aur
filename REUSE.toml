@@ -20,6 +20,16 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "config.*"
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "jna-disable-native-jar.patch",
+    "jna-native-ldflags.patch",
+    "jna-use-system-library.patch"
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"

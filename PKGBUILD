@@ -1,27 +1,24 @@
-# Maintainer: qubeck <qubeck (AT) disroot (DOT) org>
-# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
-
-pkgname=jna
+pkgbase=jna
+pkgname=(jna jna-platform)
 pkgver=5.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Java Native Access library'
 arch=(x86_64)
 url='https://github.com/java-native-access/jna'
 license=('Apache-2.0 OR LGPL-2.1-or-later')
-depends=(
-  'glibc'
-  'java-runtime>=8'
-  'libffi.so'
-)
+_java=8
 makedepends=(
   'ant'
   'git'
-  'java-environment>=8'
+  "java-environment=${_java}"
   'libx11'
   'libxt'
   'pkgconf'
 )
-source=("${pkgname}-${pkgver}::git+${url}.git#tag=${pkgver}"
+checkdepends=(
+  'libcups'
+)
+source=("${pkgbase}-${pkgver}::git+${url}.git#tag=${pkgver}"
         'jna-disable-full-jar.patch'
         'jna-disable-native-jar.patch'
         'jna-native-ldflags.patch'
@@ -32,8 +29,15 @@ sha256sums=('fb672b61c1af3acd40b9906bb4cbf9a762a921045a4e71a8f1ff784b5948857a'
             'ada01ef35a301b4dde0076e49ab5cbc92eeb7ff201da1bd4418a2d1dc00ef3af'
             'a9aec274a697c1dc0e8b1a5fde9db514e23074731e3517d6d78553c93eee863a')
 
+_ant_opts=(
+  -Drelease=true
+  -Ddynlink.native=true
+  -Domit-jnilib=true
+  "-Dcflags_extra.native=${CPPFLAGS} ${CFLAGS}"
+)
+
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
 
   patch -Np1 -i ../jna-disable-full-jar.patch
 
@@ -48,36 +52,54 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
 
-  ant \
-    -Drelease=true \
-    -Ddynlink.native=true \
-    -Domit-jnilib=true \
-    "-Dcflags_extra.native=${CPPFLAGS} ${CFLAGS}" \
-    native jar
+  export JAVA_HOME="/usr/lib/jvm/java-${_java}-openjdk"
+  export PATH="${JAVA_HOME}/bin:${PATH}"
+  ant "${_ant_opts[@]}" native jar contrib-jars
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
 
-  ant \
-    -Drelease=true \
-    -Ddynlink.native=true \
-    -Domit-jnilib=true \
-    "-Dcflags_extra.native=${CPPFLAGS} ${CFLAGS}" \
-    test
+  export JAVA_HOME="/usr/lib/jvm/java-${_java}-openjdk"
+  export PATH="${JAVA_HOME}/bin:${PATH}"
+  ant "${_ant_opts[@]}" test
+
+  export JAVA_TOOL_OPTIONS="-Djna.boot.library.path=${PWD}/build/native-linux-x86-64"
+  ant "${_ant_opts[@]}" test-platform
 }
 
-package() {
-  cd "${pkgname}-${pkgver}/build"
+package_jna() {
+  depends=(
+    'glibc'
+    "java-runtime>=${_java}"
+    'libffi.so=8-64'
+  )
 
-  install -Dm644 jna.jar \
-    -t "${pkgdir}/usr/share/java/${pkgname}"
-  install -Dm644 jna-jpms.jar \
-    -t "${pkgdir}/usr/share/java/${pkgname}"
-  install -Dm644 headers/*.h \
-    -t "${pkgdir}/usr/include/${pkgname}"
-  install -Dm644 native-linux-x86-64/libjnidispatch.so \
-    -t "${pkgdir}/usr/lib/${pkgname}"
+  cd "${pkgbase}-${pkgver}"
+
+  install -Dm644 build/jna{.jar,-jpms.jar} \
+    -t "${pkgdir}/usr/share/java/jna"
+  install -Dm644 build/headers/*.h \
+    -t "${pkgdir}/usr/include/jna"
+  install -Dm644 build/native-linux-*/libjnidispatch.so \
+    -t "${pkgdir}/usr/lib/jna"
+
+  ln -sr "${pkgdir}"/usr/share/java/jna{/jna.jar,.jar}
+}
+
+package_jna-platform() {
+  pkgdesc='Cross-platform JNA mappings (jna-platform)'
+  arch=(any)
+  depends=(
+    "jna=${pkgver}"
+    "java-runtime>=${_java}"
+  )
+
+  cd "${pkgbase}-${pkgver}"
+
+  install -Dm644 \
+    contrib/platform/dist/jna-platform{.jar,-jpms.jar} \
+    -t "${pkgdir}/usr/share/java/jna"
 }

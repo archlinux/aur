@@ -1,19 +1,17 @@
 pkgbase = jna
 	pkgdesc = Java Native Access library
 	pkgver = 5.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/java-native-access/jna
 	arch = x86_64
 	license = Apache-2.0 OR LGPL-2.1-or-later
+	checkdepends = libcups
 	makedepends = ant
 	makedepends = git
-	makedepends = java-environment>=8
+	makedepends = java-environment=8
 	makedepends = libx11
 	makedepends = libxt
 	makedepends = pkgconf
-	depends = glibc
-	depends = java-runtime>=8
-	depends = libffi.so
 	source = jna-5.19.1::git+https://github.com/java-native-access/jna.git#tag=5.19.1
 	source = jna-disable-full-jar.patch
 	source = jna-disable-native-jar.patch
@@ -26,3 +24,12 @@ pkgbase = jna
 	sha256sums = a9aec274a697c1dc0e8b1a5fde9db514e23074731e3517d6d78553c93eee863a
 
 pkgname = jna
+	depends = glibc
+	depends = java-runtime>=8
+	depends = libffi.so=8-64
+
+pkgname = jna-platform
+	pkgdesc = Cross-platform JNA mappings (jna-platform)
+	arch = any
+	depends = jna=5.19.1
+	depends = java-runtime>=8
