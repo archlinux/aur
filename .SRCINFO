@@ -1,13 +1,14 @@
 pkgbase = bmputil
 	pkgdesc = A tool for managing and flashing Black Magic Probe firmware
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://github.com/blackmagic-debug/bmputil
+	url = https://codeberg.org/blackmagic-debug/bmputil
 	arch = any
 	license = MIT OR Apache-2.0
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/blackmagic-debug/bmputil/archive/refs/tags/v1.0.0.tar.gz
-	b2sums = SKIP
+	options = !lto
+	source = bmputil-1.2.0.tar.gz::https://codeberg.org/blackmagic-debug/bmputil/archive/v1.2.0.tar.gz
+	b2sums = 9d5f1bd52e1e65f53c0af1d8cfdd7042030ab58cbcedb7f0205db0c03b2e61d0c4401f12e59e44d18692356a5cc45586c71f0117a7ca2c821f0960971888cc4c
 
 pkgname = bmputil
