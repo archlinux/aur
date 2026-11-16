@@ -20,5 +20,5 @@ path = [
     ".gitignore",
     "boost-fixes.patch",
 ]
-SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-FileCopyrightText = "botan2 contributors"
 SPDX-License-Identifier = "0BSD"
