@@ -29,6 +29,7 @@ b2sums=('aa35f0b3bf4f284e6fb1f94c6545ae55bce0247445682a7a9e646820ed54fdfc1a5bfc7
 prepare() {
   # pygls 2's and pydantic 2's APIs, the code of
   # https://github.com/pappasam/nginx-language-server/pull/27
+  # upstream: pending pappasam/nginx-language-server#27
   patch -d "$pkgname" -Np1 -i ../pygls2-pydantic2.patch
 }
 
