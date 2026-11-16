@@ -1,0 +1,21 @@
+pkgbase = rettui-desktop-bin
+	pkgdesc = Reticulum client in a window of its own (rettui's web UI): LXMF messaging, NomadNet browsing and hosting, and RRC chat
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/zevaryx/rettui
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Reticulum
+	depends = glibc
+	depends = gcc-libs
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	provides = rettui-desktop
+	conflicts = rettui-desktop
+	source_x86_64 = https://github.com/zevaryx/rettui/releases/download/v2.0.0/rettui-desktop-v2.0.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 14135ab482cf59186733683dbfbe3ca56d6a388b88f4a5d7cf9ab172f402def5
+	source_aarch64 = https://github.com/zevaryx/rettui/releases/download/v2.0.0/rettui-desktop-v2.0.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 337ecb39660404c9a1949404ee7a6ae9f9eefd1b65071c01891b25f08137b80a
+
+pkgname = rettui-desktop-bin
