@@ -2,7 +2,7 @@
 _appname=qoder
 pkgname="${_appname}-ide"
 _pkgname='Qoder IDE'
-pkgver=1.39.2
+pkgver=1.40.1
 _electronversion=42
 pkgrel=1
 pkgdesc="AI native IDE for real-world software development."
@@ -26,13 +26,13 @@ options=(
     '!strip'
 )
 source=(
-    "qoder-ide-${pkgver}.rpm::https://download.qoder.com/release/latest/qoder-ide_${CARCH}.rpm"
+    "qoder-ide-${pkgver}.rpm::https://download.qoder.com/release/${pkgver}/qoder-ide_${CARCH}.rpm"
     "LICENSE.html"
     "qoder-ide.js"
     "qoder-ide.sh"
     "qoder-ide-512.png"
 )
-sha256sums=('478bc9c751fed409a08f19aebc57d73be23df3179131a234eb2700eb5eb06633'
+sha256sums=('1e520293f6dc684c67fef689966cc71619d63b59f0058e36540068d78c25d11f'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21'
@@ -61,7 +61,7 @@ prepare() {
         s/@runname@/qoder-ide.js/g
     " "${srcdir}/qoder-ide.sh" "${srcdir}/qoder-ide.js"
     sed -i "s/\/usr\/share\/qoder-ide\///g" "${srcdir}/usr/share/applications/qoder-ide"*.desktop
-    find "$(_get_app_dir)/resources/app" -type d \( -name "*win32*" -o -name "*darwin*" -o -name "*arm*" \) -exec rm -rf {} +
+    find "$(_get_app_dir)/resources/app" -type d \( -name "*win32*" -o -name "*darwin*" -o -name "*arm64*" \) -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/qoder-ide.sh" "${pkgdir}/usr/bin/qoder-ide"
