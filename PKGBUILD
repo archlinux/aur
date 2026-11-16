@@ -23,6 +23,22 @@ source=("maintenance-packages-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
 sha512sums=('1aaf6686b04a0ef15dc6228bfa0d8026065bc6a2bffcaac0d26754b6e27b029c1d895d84891e896545c9d6460e71f0b760cbd609f4fb54bc66b350cb2a98eb30')
 b2sums=('4aed705ecd4cad427cd7d1fd7ff1bbebcfa14cdf34d9a4ec1c9b90a1b92ed042dd244216b1599c45d92db9cee7753c7bfc73d784505dbc6e8340c42a49a4e580')
 
+# The .NET SDK to build with: the one the installed selector names (dotnet-build-deps-10.0, or its
+# -bin variant), whose version is its SDK's (10.0.14.sdk114 for 10.0.114), rather than the newest one
+# installed, which dotnet would take, e.g. a .NET 11 next to .NET 10. Without a selector (makepkg -d,
+# or a package the selectors depend on), the newest SDK of .NET $_dotnetsdkver.
+_dotnet_sdk() {
+  local _ver
+  _ver=$({ pacman -Q "dotnet-build-deps-$_dotnetsdkver" "dotnet-build-deps-$_dotnetsdkver-bin" 2>/dev/null || true; } |
+    awk '{ print $2; exit }')
+  if [[ -n "$_ver" ]]; then
+    _ver=${_ver%-*}
+    echo "${_ver%.*.sdk*}.${_ver##*.sdk}"
+  else
+    dotnet --list-sdks | sed -n -E "s/^(${_dotnetsdkver//./\\.}\.[0-9]+) .*/\1/p" | sort -V | tail -n 1
+  fi
+}
+
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
@@ -127,7 +143,7 @@ prepare() {
   # Upstream builds with the .NET 8 SDK. dotnet only works outside the repository until its
   # global.json is updated.
   local _sdkver _arcadever
-  _sdkver=$(dotnet --version)
+  _sdkver=$(_dotnet_sdk)
 
   cd "maintenance-packages-$_commit" || exit
   # Upstream's NuGet.config, which has the feeds the tests need
