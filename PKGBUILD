@@ -2,11 +2,13 @@
 
 pkgname=wowtype-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WeType-style pinyin input method for fcitx5, with bundled dictionaries and language model"
 arch=('x86_64')
 url="https://github.com/Gloridust/WowType"
-license=('MIT' 'Apache-2.0' 'GPL-3.0-only' 'CC-BY-SA-4.0' 'Unicode-3.0')
+# The Wubi table (usr/share/wowtype/wubi86.tsv, new in 0.4.0) is LGPL-3.0;
+# DATA-SOURCE.txt and WUBI-SOURCE.txt in the licence directory carry the details.
+license=('MIT' 'Apache-2.0' 'GPL-3.0-only' 'LGPL-3.0-only' 'CC-BY-SA-4.0' 'Unicode-3.0')
 depends=(
     'alsa-lib'
     'fcitx5'

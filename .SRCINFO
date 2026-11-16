@@ -1,13 +1,14 @@
 pkgbase = wowtype-bin
 	pkgdesc = WeType-style pinyin input method for fcitx5, with bundled dictionaries and language model
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Gloridust/WowType
 	install = wowtype-bin.install
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
 	license = GPL-3.0-only
+	license = LGPL-3.0-only
 	license = CC-BY-SA-4.0
 	license = Unicode-3.0
 	depends = alsa-lib
