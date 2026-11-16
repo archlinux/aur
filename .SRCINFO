@@ -1,0 +1,13 @@
+pkgbase = lexicon
+	pkgdesc = Simple terminal AI chat for quick lookups (not an agent harness)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kristyancarvalho/lexicon
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = lexicon-0.1.0.tar.gz::https://github.com/kristyancarvalho/lexicon/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = f672056fdec22f2bc0aaf4dcc069c330981f2ce2b10c22622974f6a7ac0cece7
+
+pkgname = lexicon
