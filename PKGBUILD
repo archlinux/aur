@@ -9,7 +9,7 @@
 
 pkgbase=skwir-git
 pkgname=(skwir-git skwir-mermaid-git skwir-math-git skwir-mupdf-git)
-pkgver=0.5.0.r0.gd0e6c61
+pkgver=0.5.1.r0.g361c0b9
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents (its last commit)'
 arch=('x86_64' 'aarch64')
