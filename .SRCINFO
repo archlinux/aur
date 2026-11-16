@@ -1,6 +1,6 @@
 pkgbase = mdspan
 	pkgdesc = Reference implementation of mdspan targeting C++23
-	pkgver = 0.6.0
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://github.com/kokkos/mdspan
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mdspan
 	checkdepends = gtest
 	makedepends = cmake
 	depends = bash
-	source = mdspan-0.6.0.tar.gz::https://github.com/kokkos/mdspan/archive/mdspan-0.6.0.tar.gz
-	sha512sums = d0e247b5ed5765f3ddd04634462c428b19beceb81b0b7d8221443b3f6ab122e232e85c15d56c208b244be2f6667d7e1db571848b61190b64ec110f7d31c3e0c9
+	source = mdspan-5.3.0.tar.gz::https://github.com/kokkos/mdspan/archive/5.3.0.tar.gz
+	sha512sums = ef342fe2f3630b94e1526788106a0bb69501f6dbb9336ec2c656f4b5806fdea21750e8ad960b6d67122d40671bcd8414ff2bc449e7509c9d269e9cf6d1def01f
 
 pkgname = mdspan
