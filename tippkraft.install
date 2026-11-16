@@ -1,0 +1,9 @@
+post_install() {
+  udevadm control --reload 2>/dev/null; modprobe uinput 2>/dev/null; udevadm trigger --sysname-match=uinput --action=add 2>/dev/null
+  echo 'tippkraft needs your user in the "input" group:'
+  echo '  sudo usermod -aG input "$USER"   (then log out and back in)'
+  echo 'Then run "tippkraft setup" as your user to start the service and connect your account.'
+}
+post_upgrade() {
+  echo 'Restart tippkraft to use the new version: systemctl --user restart tippkraft.service'
+}
