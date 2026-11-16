@@ -6,7 +6,7 @@
 # The package is published on AUR as panasonic-posture-manager.
 
 pkgname=panasonic-posture-manager
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='Posture management and screen orientation for convertible Linux 2-in-1 laptops'
 arch=('x86_64')
@@ -40,7 +40,7 @@ install="${pkgname}.install"
 
 # This is a VCS source, so SKIP is the correct checksum entry. The version tag
 # pins normal builds; release exports substitute the verified build commit.
-source=("${pkgname}::git+https://github.com/adogecheems/${pkgname}.git#commit=97ec37353bef760c0dc85c95186aeb026f067415")
+source=("${pkgname}::git+https://github.com/adogecheems/${pkgname}.git#commit=6dd789728949262cc53b04765ab7090791d15722")
 sha256sums=('SKIP')
 
 build() {
@@ -83,13 +83,13 @@ package() {
     install -Dm644 "${file}" "${datadir}/profiles/${file#data/profiles/}"
   done < <(find data/profiles -type f -print0)
   while IFS= read -r -d '' file; do
-    install -Dm644 "${file}" "${datadir}/assets/${file#data/assets/linux/}"
-  done < <(find data/assets/linux -type f -print0)
+    install -Dm644 "${file}" "${datadir}/assets/${file#data/assets/common/}"
+  done < <(find data/assets/common -type f -print0)
 
   # The desktop entry and notifications resolve the application icon by ID
   # from the standard hicolor theme, separately from the data-directory copy
   # used by the Python window when running from a source checkout.
-  install -Dm644 data/assets/linux/work.mmoe.panasonic.PostureManager.png \
+  install -Dm644 data/assets/common/icons/work.mmoe.panasonic.PostureManager.png \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/work.mmoe.panasonic.PostureManager.png"
 
   # Privileged actuator built from backend/linux/*.c by make.
