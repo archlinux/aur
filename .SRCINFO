@@ -1,7 +1,7 @@
 pkgbase = python-stream-inflate
-	pkgdesc = Uncompress Deflate and Deflate64 streams in pure Python (albeit compiled with Cython
+	pkgdesc = Uncompress Deflate and Deflate64 streams in pure Python (albeit compiled with Cython)
 	pkgver = 0.0.43
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/michalc/stream-inflate
 	arch = x86_64
 	license = MIT

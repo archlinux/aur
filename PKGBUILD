@@ -6,10 +6,10 @@ _pkgurl="https://github.com/${_pkgauthor}/${_pkgname}"
 
 pkgname=python-${_pkgname}
 pkgver=0.0.43
-pkgrel=1
+pkgrel=2
 _pkgver="v${pkgver}"
 
-pkgdesc="Uncompress Deflate and Deflate64 streams in pure Python (albeit compiled with Cython"
+pkgdesc="Uncompress Deflate and Deflate64 streams in pure Python (albeit compiled with Cython)"
 url="${_pkgurl}"
 
 arch=('x86_64')
@@ -57,5 +57,5 @@ package() {
 
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md CONTRIBUTING.md
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 }
