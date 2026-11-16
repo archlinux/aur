@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=ccstatus
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Customizable status line formatter for Claude Code CLI"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('git: git branch, changes and worktree widgets')
 conflicts=('ccstatus-bin')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/moond4rk/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('fa6b8ac67da8d20eda63538a5fd5aa92abdd4d99d2ea8558c68695d2e9c2e07a')
+sha256sums=('f7611ed612c879209ce68799892c1a44e04ad0ece3469e5d1b5d9058dd86af6a')
 
 prepare() {
   cd "$pkgname-$pkgver"
