@@ -1,0 +1,28 @@
+# User units are installed to /usr/lib/systemd/user but never enabled
+# or restarted here, so upgrades leave each user's service state alone.
+
+post_install() {
+  cat <<'MSG'
+==> gdrive-sync is installed but not enabled for any user.
+==> Each user who wants to sync Google Drive should run, as themselves:
+==>     gdrive-sync-setup
+MSG
+}
+
+post_upgrade() {
+  cat <<'MSG'
+==> gdrive-sync was upgraded. Running sync services were not restarted.
+==> To pick up the new version, each user can run:
+==>     systemctl --user daemon-reload
+==>     systemctl --user try-restart gdrive-sync-watch.service
+MSG
+}
+
+post_remove() {
+  cat <<'MSG'
+==> gdrive-sync removed. Users who had it enabled can delete the leftover
+==> unit links with:
+==>     rm -f ~/.config/systemd/user/*.wants/gdrive-*
+==> Config, state and synced files in home directories were kept.
+MSG
+}
