@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=serial-studio
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=($CARCH)
@@ -53,7 +53,7 @@ backup=()
 options=()
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('dbe6d562da26b2af72d75590d0e29f574bc40af5576bf6d0587ac75abffb44da')
+sha256sums=('6e3c38f4fe0b1af133db5232df8655adc62fa2022ed92b09d2639a602a53689d')
 noextract=()
 
 prepare() {
