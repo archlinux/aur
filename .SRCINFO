@@ -1,6 +1,6 @@
 pkgbase = dolphin-mpn
 	pkgdesc = A GameCube and Wii emulator optimized for Mario Party Netplay
-	pkgver = edeb50f
+	pkgver = f35958d
 	pkgrel = 1
 	url = https://github.com/tabithahanegan/Dolphin-MPN
 	arch = x86_64
@@ -31,7 +31,9 @@ pkgbase = dolphin-mpn
 	depends = zlib
 	depends = zstd
 	optdepends = pulseaudio: for PulseAudio backend
-	source = git+https://github.com/MarioPartyNetplay/Dolphin-MPN.git#tag=edeb50f
+	optdepends = dolphin-emu-tool: for dolphin-tool
+	provides = dolphin-mpn
+	source = git+https://github.com/MarioPartyNetplay/Dolphin-MPN.git#tag=f35958d
 	sha256sums = SKIP
 
 pkgname = dolphin-mpn

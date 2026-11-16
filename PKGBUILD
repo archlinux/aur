@@ -1,7 +1,7 @@
 # Maintainer: Tabitha Hanegan <info@tabithahanegan.com>
 # Contributor: Dolphin Team <team@dolphin-emu.org>
 pkgname=dolphin-mpn
-pkgver=edeb50f
+pkgver=f35958d
 pkgrel=1
 pkgdesc="A GameCube and Wii emulator optimized for Mario Party Netplay"
 arch=('x86_64' 'aarch64')
@@ -9,9 +9,9 @@ url="https://github.com/tabithahanegan/Dolphin-MPN"
 license=('GPL2')
 depends=('alsa-lib' 'bluez-libs' 'enchant' 'ffmpeg' 'fmt' 'hidapi' 'libevdev' 'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'miniupnpc' 'pugixml' 'qt6-base' 'sdl2' 'sfml' 'zlib' 'zstd')
 makedepends=('cmake' 'git' 'ninja' 'qt6-tools')
-optdepends=('pulseaudio: for PulseAudio backend')
-provides=('dolphin-emu')
-conflicts=('dolphin-emu')
+optdepends=('pulseaudio: for PulseAudio backend' 'dolphin-emu-tool: for dolphin-tool')
+provides=('dolphin-mpn')
+conflicts=()
 source=("git+https://github.com/MarioPartyNetplay/Dolphin-MPN.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
@@ -32,6 +32,7 @@ build() {
     -DUSE_SYSTEM_ICONV=ON \
     -DUSE_SYSTEM_BZIP2=ON \
     -DUSE_SYSTEM_CURL=ON \
+    -DENABLE_CLI_TOOL=OFF \
     -DDISTRIBUTOR="Mario Party Netplay" \
     -G Ninja
   cmake --build build
