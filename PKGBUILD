@@ -1,9 +1,9 @@
 # Maintainer: Ovenoboyo <your-email@example.com>
 pkgname=bw-ssh-agent-git
 _pkgname=bw-ssh-agent
-pkgver=r11.g940f710
+pkgver=r10.g914c1e2
 pkgrel=1
-pkgdesc="Hardened SSH agent backed by Bitwarden CLI with Polkit and Pinentry support"
+pkgdesc="SSH Agent for Bitwarden CLI with Polkit support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Ovenoboyo/bw-cli-ssh-agent"
 license=('MIT')
