@@ -3,7 +3,7 @@
 pkgname='sdcardformatter'
 pkgver=1.0.3
 pkgrel=1
-pkgdesc='SD Memory Card Formatter for Linux'
+pkgdesc='Official SD Memory Card Formatter for Linux'
 arch=('x86_64' 'aarch64')
 url='https://www.sdcard.org/downloads/sd-memory-card-formatter-for-linux/'
 license=('LicenseRef-sdcardformatter')
