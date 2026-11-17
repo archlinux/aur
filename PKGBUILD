@@ -1,14 +1,14 @@
 # Maintainer: rilian-la-te <ria.freelander@gmail.com>
 
-makedepends=('meson' 'gtk3' 'git')
+makedepends=('meson' 'gtk3' 'git' 'appmenu-glib-translator>=26.11')
 
 _pkgbase=vala-panel-appmenu
 pkgname=appmenu-gtk-module-git
 _path=subprojects/appmenu-gtk-module
-pkgver=24.02
-pkgrel=3
+pkgver=25.04.r128.ge196990
+pkgrel=1
 pkgdesc="Gtk module for exporting menus"
-depends=('gtk3')
+depends=('gtk3' 'appmenu-glib-translator>=26.11')
 provides=(appmenu-gtk-module)
 conflicts=(appmenu-gtk-module)
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
