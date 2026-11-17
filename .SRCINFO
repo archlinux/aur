@@ -1,6 +1,6 @@
 pkgbase = valheim-mod-manager
 	pkgdesc = A command-line tool for managing and automatically downloading Valheim mods and their dependencies
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/Endoze/valheim-mod-manager
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = valheim-mod-manager
 	license = MIT
 	makedepends = cargo
 	options = !lto
-	source = https://github.com/endoze/valheim-mod-manager/archive/refs/tags/v0.4.0.tar.gz
-	b2sums = 8395579f055f013b51a68516cf244cf334c76011366aa7e82274b8df0d7c69377118523ad3bc6aeaeb369e39346b3d09302887b4639fff43b351f7840f48dbae
+	source = https://github.com/endoze/valheim-mod-manager/archive/refs/tags/v0.4.1.tar.gz
+	b2sums = ab4ec99bd10c783aa4ce21722e6aeefebd3bc8d70056b8c843523ff09eb86b4e7fff683a85d5efbcbb047387c6805b56a784e970ef9902ce267655e030762c2c
 
 pkgname = valheim-mod-manager

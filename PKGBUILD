@@ -1,7 +1,6 @@
 # Maintainer: Biggs <biggs at sergeantbiggs dot net>
-
 pkgname=valheim-mod-manager
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='A command-line tool for managing and automatically downloading Valheim mods and their dependencies'
 url='https://github.com/Endoze/valheim-mod-manager'
@@ -10,7 +9,7 @@ makedepends=('cargo')
 depends=()
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("https://github.com/endoze/valheim-mod-manager/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('8395579f055f013b51a68516cf244cf334c76011366aa7e82274b8df0d7c69377118523ad3bc6aeaeb369e39346b3d09302887b4639fff43b351f7840f48dbae')
+b2sums=('ab4ec99bd10c783aa4ce21722e6aeefebd3bc8d70056b8c843523ff09eb86b4e7fff683a85d5efbcbb047387c6805b56a784e970ef9902ce267655e030762c2c')
 options=(!lto)
 
 prepare() {
@@ -34,5 +33,6 @@ check() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/vmm"
 }
