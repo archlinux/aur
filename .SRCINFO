@@ -1,7 +1,7 @@
 pkgbase = pi-ext-lens
 	pkgdesc = Real-time code feedback for the Pi coding agent: language servers, linters, formatters
 	pkgver = 4.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/apmantza/pi-lens
 	install = pi-ext-lens.install
 	arch = x86_64
