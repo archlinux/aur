@@ -1,6 +1,6 @@
 pkgbase = fsautocomplete
 	pkgdesc = F# language server using Language Server Protocol (LSP)
-	pkgver = 0.86.1
+	pkgver = 0.87.0
 	pkgrel = 1
 	url = https://ionide.io/Tools/fsac.html
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = fsautocomplete
 	depends = dotnet-sdk-10.0
 	depends = sh
 	conflicts = fsautocomplete-bin
-	source = fsautocomplete-0.86.1.tar.gz::https://github.com/ionide/FsAutoComplete/archive/refs/tags/v0.86.1.tar.gz
-	sha256sums = bbb3d99c9a61f00eb7548529fdb2229e64558267a82d459b6338ec96c1ffcc77
+	source = fsautocomplete-0.87.0.tar.gz::https://github.com/ionide/FsAutoComplete/archive/refs/tags/v0.87.0.tar.gz
+	sha256sums = d2a80ffe1e4fd564550d391f99fb7dc6d3f1f74a4807e092f395de8cb0f24fe8
 
 pkgname = fsautocomplete
