@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=navop-bin
 _pkgname=Navop
-pkgver=0.23.2
+pkgver=0.23.3
 pkgrel=1
 pkgdesc="A native, all-in-one workspace for databases, SSH, SFTP, terminals, remote desktop, monitoring, and AI."
 arch=(
@@ -22,8 +22,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.tar.gz")
-sha256sums_aarch64=('562889c6a54eb7632cb61c7b323275a216bca27c0b0844f16e1a5a899aa0103d')
-sha256sums_x86_64=('943afa0e3ce46e438d09491515736270b595f66bda9715cc39cd59b23cdd57cc')
+sha256sums_aarch64=('75b14702fc447bc64ec8ce42e34a82f8bb0d07d8b814c4dd14c3a2874bc957c3')
+sha256sums_x86_64=('81a08fa6faf33d03dfaf495e5607cd09320e2396f837a48345e0edf658d875cb')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
