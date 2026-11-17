@@ -3,7 +3,7 @@
 # Contributor: FlyInWind <2518509078@qq.com>
 pkgname=ynote-desktop-bin
 _zhsname='有道云笔记'
-pkgver=8.2.92
+pkgver=8.2.100
 _electronversion=22
 pkgrel=1
 pkgdesc="Netease Youdao Ynote for Linux.(Prebuilt version.Use system-wide electron)"
@@ -15,6 +15,7 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}-bin"
     'perl'
+    'nodejs'
 )
 makedepends=(
     'asar'
@@ -29,10 +30,10 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7f75315d559ba32aa98ce121d610e894978a3a5d31764c662366f1e623014e00'
+sha256sums=('ac390c550c9c1af5f89cfe074641d41171fe183e75382fe8448a265a8a1a5f4e'
             'a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
@@ -76,11 +77,13 @@ prepare() {
     grep '"version":' "${srcdir}/app.asar.unpacked/package.json" | awk -F'"version": "' '{print $2}' | awk -F',' '{print $1}' | tr -d '"' > "${srcdir}/.pkgver"
     sed -i "s/\.\.\/dll\/scholar/dll\/scholar/g" "${srcdir}/app.asar.unpacked/dist/"{main.js,scholar.js}
     asar p "${srcdir}/app.asar.unpacked" "$(_get_app_dir)/resources/app.asar"
-    rm -rf \
-        "$(_get_app_dir)/resources/app.asar.unpacked/node_modules/ffi-napi/prebuilds/"{darwin-x64,linux-arm64,win32-ia32,win32-x64} \
-        "$(_get_app_dir)/resources/app.asar.unpacked/node_modules/ref-napi/prebuilds/"{darwin-x64,linux-arm64,win32-ia32,win32-x64} \
-        "$(_get_app_dir)/resources/app.asar.unpacked/node_modules/node-screenshots-linux-x64-musl" \
-        "$(_get_app_dir)/resources/app.asar.unpacked/node_modules/koffi/build/koffi/"{*win*,*bsd*,*arm*,linux_ia32,linux_loong64,linux_riscv64d}
+    local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
