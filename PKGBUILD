@@ -2,20 +2,22 @@
 pkgname=b580-watt-freq
 pkgver=1.1
 pkgrel=2
-install='b580-watt-freq.install'
 pkgdesc="Sets Intel Arc B580 power limit and frequency without LACT, with frequency step detection and no daemon"
 arch=('any')
 url="https://aur.archlinux.org/packages/b580-watt-freq"
 license=('MIT')
 depends=('bash' 'systemd')
 backup=('etc/b580.conf')
+install='b580-watt-freq.install'
 source=('b580_watt_freq'
         'b580-detect-freq'
         'b580.conf'
         'b580-watt-freq.service'
         'b580-watt-freq-resume.service'
-        'b580-watt-freq-sleep')
+        'b580-watt-freq-sleep'
+        'b580-watt-freq.install')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
