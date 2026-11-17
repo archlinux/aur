@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-cli-bin
 pkgdesc="A cross-platform system information fetching tool written in Rust"
 
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('f5c77538b9c2b7535ab1e3457d721bc387b76b89158388dc1834c53761cb35e5')
-sha256sums_aarch64=('f447aad62e77636b3a515c30418cd57ebefca2c3fedae576bfec500123beff47')
+sha256sums_x86_64=('788dba9b36be886ebab49c3a6cfcbba4e8dcde28d9aa61cf2ada9b5559c01755')
+sha256sums_aarch64=('a3963448541b802240a8f193ebc7154f780f1d18e82a58faa8c813abae8da0c7')
 
 
 package() {
