@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=cloudflare-cf
 _npmname=cf
-pkgver=1.0.0_rc.0
+pkgver=1.0.0_rc.1
 _npmver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="Agentic command-line interface for the entire Cloudflare API"
@@ -10,7 +10,7 @@ url="https://github.com/cloudflare/cf"
 license=('MIT OR Apache-2.0')
 # workerd (via miniflare) and sharp ship prebuilt ELF files linked against
 # glibc, libgcc_s and libstdc++.
-depends=('nodejs>=22' 'glibc' 'libgcc' 'libstdc++')
+depends=('nodejs>=22.23.0' 'glibc' 'libgcc' 'libstdc++')
 makedepends=('npm')
 optdepends=('cloudflared: use the system binary for tunnels instead of a downloaded copy'
             'xdg-utils: open the browser for OAuth login')
@@ -18,7 +18,7 @@ optdepends=('cloudflared: use the system binary for tunnels instead of a downloa
 conflicts=('cloudfoundry-cli' 'cloudfoundry6-cli')
 source=("$_npmname-$_npmver.tgz::https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=('02c74e5bf1cbc528a0cf2c992f8912c392bc44c5a8c9148cc896107129035d6c')
+sha256sums=('fad1c2f2d5e47933ce974f48cfc56bfc6f34dfda0377a4d6985c70e29754c5bc')
 # Keep the bundled prebuilt workerd and sharp binaries untouched.
 options=('!strip' '!debug')
 
