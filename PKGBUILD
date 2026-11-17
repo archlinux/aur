@@ -3,13 +3,13 @@
 
 pkgname=obs-retro-effects
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of OBS filters to give your stream that retro feel"
 arch=('x86_64')
 url="https://github.com/FiniteSingularity/obs-retro-effects"
 license=('GPL-2.0-or-later')
 depends=('glibc' 'obs-studio')
-makedepends=('cmake')
+makedepends=('cmake' 'simde')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 b2sums=('3ea54858839f0fcbfe3d6cfaa9cfd2235498b091a6fc949e114f5463b0fea577452041fdecb68841e986aefd769d3c9ffc4d5a2388cfb521db5c6ce8dc98853b')
 
