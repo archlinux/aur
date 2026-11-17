@@ -1,7 +1,7 @@
 # Maintainer: javy
 
 pkgname=xtatusbar
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Configurable statusbar for Xorg server using xsetroot"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'gcc')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha512sums=('801c22c2a7008505478259ad5afed7a009a02e3995cc4ffcc857ea93f94d7e9b61b37db80318e1b103574bd2b681475f9d47a504628f3b9aef77f539348d8c60')
+sha512sums=('83c1be5c39049bba101f1f85d5837b3ecbb9c667f673d2fdb46c0c0f3bc63143c8b3a6c99699a284d92e0161aed5e433ce75c7dc64f4ada1f368888d69165cb8')
 
 build() {
   cd "$pkgname"
