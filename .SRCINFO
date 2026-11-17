@@ -1,6 +1,6 @@
 pkgbase = sping-rs-bin
 	pkgdesc = A modern, cross-platform ping with real-time diagnostics, network context, quality scoring, and multi-target monitoring
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/LambdaBytes/sping
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = sping-rs-bin
 	provides = sping
 	conflicts = sping-rs
 	options = !strip
-	source_x86_64 = sping-x86_64-1.8.0.deb::https://github.com/LambdaBytes/sping/releases/download/v1.8.0/sping_1.8.0-1_amd64.deb
-	sha256sums_x86_64 = 6efef2099c7e0e7581da158ad4f27d1ad51a0ebfff982c562c0f3db4635e8560
-	source_aarch64 = sping-aarch64-1.8.0.deb::https://github.com/LambdaBytes/sping/releases/download/v1.8.0/sping_1.8.0-1_arm64.deb
-	sha256sums_aarch64 = c42b01c227ecc6af2fde89dfd0adaa4045267d7326aa92628f7101479721a817
+	source_x86_64 = sping-x86_64-1.9.0.deb::https://github.com/LambdaBytes/sping/releases/download/v1.9.0/sping_1.9.0-1_amd64.deb
+	sha256sums_x86_64 = cdc8f276f7b5ed83b5781beba592e95c275cfd2bb0d921f3721c90a0bf2d62f6
+	source_aarch64 = sping-aarch64-1.9.0.deb::https://github.com/LambdaBytes/sping/releases/download/v1.9.0/sping_1.9.0-1_arm64.deb
+	sha256sums_aarch64 = cfbd20fb22eb3561f3cd5928d6812a5673e65a5ae8a277de8aa19965550b75b3
 
 pkgname = sping-rs-bin
