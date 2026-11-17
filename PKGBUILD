@@ -1,12 +1,12 @@
 # Maintainer: Ersin Can Karaca <canersinkaraca@gmail.com>
 pkgname=lapse-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Save the last moments of your game and trim clips (replay recorder)"
 arch=('x86_64')
 url="https://github.com/canersin/Lapse"
 license=('GPL-3.0-only')
-depends=('gcc-libs' 'glibc' 'alsa-lib' 'libglvnd' 'wayland' 'libxkbcommon' 'libx11' 'libxcursor'
+depends=('gcc-libs' 'glibc' 'alsa-lib' 'libglvnd' 'wayland' 'libxkbcommon' 'libxkbcommon-x11' 'libx11' 'libxcursor'
          'libxrandr' 'libxi' 'dbus' 'ffmpeg' 'curl' 'gpu-screen-recorder' 'hicolor-icon-theme')
 optdepends=('libnotify: notifications with buttons when a clip is saved'
             'xdg-desktop-portal: file dialogs'
@@ -15,7 +15,7 @@ provides=('lapse')
 conflicts=('lapse' 'lapse-git')
 options=('!strip' '!debug')
 source=("https://github.com/canersin/Lapse/releases/download/v${pkgver}/Lapse-${pkgver}-x86_64.tar.gz")
-sha256sums=('a65f5ba6472e2361c09c6cff5e2e3e14dda8c235583785e767597ee85bb360e1')
+sha256sums=('16c6da8f63c0c65ef078c2e4a20d718325e45b4fbfea3e0e2887a37ed8e7957c')
 
 package() {
     cd "Lapse-${pkgver}-x86_64"

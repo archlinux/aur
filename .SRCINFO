@@ -1,6 +1,6 @@
 pkgbase = lapse-bin
 	pkgdesc = Save the last moments of your game and trim clips (replay recorder)
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/canersin/Lapse
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = lapse-bin
 	depends = libglvnd
 	depends = wayland
 	depends = libxkbcommon
+	depends = libxkbcommon-x11
 	depends = libx11
 	depends = libxcursor
 	depends = libxrandr
@@ -28,7 +29,7 @@ pkgbase = lapse-bin
 	conflicts = lapse-git
 	options = !strip
 	options = !debug
-	source = https://github.com/canersin/Lapse/releases/download/v2.1.0/Lapse-2.1.0-x86_64.tar.gz
-	sha256sums = a65f5ba6472e2361c09c6cff5e2e3e14dda8c235583785e767597ee85bb360e1
+	source = https://github.com/canersin/Lapse/releases/download/v2.1.1/Lapse-2.1.1-x86_64.tar.gz
+	sha256sums = 16c6da8f63c0c65ef078c2e4a20d718325e45b4fbfea3e0e2887a37ed8e7957c
 
 pkgname = lapse-bin
