@@ -1,0 +1,18 @@
+pkgbase = yadbe-bin
+	pkgdesc = Fast, cross-platform SQL database explorer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SimonVanMello/yadbe
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = webkit2gtk-4.1
+	optdepends = org.freedesktop.secrets: keep connection passwords in the system keychain
+	provides = yadbe
+	conflicts = yadbe
+	options = !debug
+	source = yadbe-0.1.0.deb::https://github.com/SimonVanMello/yadbe/releases/download/v0.1.0/yadbe_0.1.0_amd64.deb
+	sha256sums = c162d9c74964bb371cc9916302da71d90eb0e7ae44708620b6a3119e7e4d5d8d
+
+pkgname = yadbe-bin
