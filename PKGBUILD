@@ -5,7 +5,7 @@
 # NOTE: the fork keeps SLIC3R_APP_KEY "OrcaSlicer", so it shares the config directory
 # ~/.config/OrcaSlicer (profiles, presets) with the regular OrcaSlicer.
 pkgname=orcaslicer-mcp-bin
-pkgver=2.5.0_mcp.18
+pkgver=2.5.0_mcp.19
 pkgrel=1
 pkgdesc="OrcaSlicer fork with a local Remote API for AI assistants (MCP)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ _tag="v${pkgver//_/-}"
 _appimage="OrcaSlicer-MCP-${_tag#v}-linux-x64.AppImage"
 noextract=("${_appimage}")
 source_x86_64=("${_appimage}::${url}/releases/download/${_tag}/${_appimage}")
-sha256sums_x86_64=('ec59ee2274dba23e3f8a5d2eacdcdd0c75815d1d8b9503f4a6510c1b39831766')
+sha256sums_x86_64=('dfba58437aea8729e37b7382ec1b3d95f6115936b0b410e690831782297f4725')
 
 prepare() {
 	# Squashfs payload starts right after the ELF runtime (end of section header table)
