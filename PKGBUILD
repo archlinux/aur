@@ -3,7 +3,7 @@
 pkgname=python-nvidia-modelopt
 _pkgname=Model-Optimizer
 pkgver=0.48.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA Model Optimizer: a unified model optimization and deployment toolkit"
 arch=('any')
 url="https://github.com/NVIDIA/Model-Optimizer"
@@ -93,12 +93,14 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/NVIDIA/$_pkgname/archive/refs/tags/$pkgver.tar.gz"
   'torchprofile-0.1.patch'
   'transformers-rotary-device.patch'
+  'transformers-reverse-weight-anchors.patch'
   'fla-LICENSE::https://raw.githubusercontent.com/fla-org/flash-linear-attention/516143e31fce09925e6c39ac37148444bad176c4/LICENSE'
 )
 sha256sums=(
   '75082846e60b27a8a2a2d1709888d35bf5a894da04e10e9e51924b5570ea5f8e'
   '19b0e7b6f1a55dffba4e69b4c75f61be4a37f904ce83fd62670de55e9a6bcd84'
   'b57e5b3c9561b97c75b75572c69ea49874bbea22506c1f01f7f9846bfd787c49'
+  '2cc76a23cb4c7783656f43795273006a94b7656dc717eff64583b7b15d781040'
   '41a83c8187efc1e3ccc21909e806a9e52338e69448554d9754706c3d1cd610e7'
 )
 
@@ -113,6 +115,7 @@ prepare() {
   # Arch ships transformers 5.2x, whose rotary embeddings no longer take a
   # device argument. Construct them without it when unsupported.
   patch -Np1 --fuzz=0 -i "$srcdir/transformers-rotary-device.patch"
+  patch -Np1 --fuzz=0 -i "$srcdir/transformers-reverse-weight-anchors.patch"
   # The recipe consistency tests use importlib.resources against the wheel.
   # Ship the upstream guide alongside its YAML recipes, not just in the tree.
   sed -i 's/modelopt_recipes = \["\*\*\/\*.yml", "\*\*\/\*.yaml"\]/modelopt_recipes = ["**\/*.yml", "**\/*.yaml", "*.md"]/' pyproject.toml
@@ -159,21 +162,7 @@ deselect = [
     # Expects the module name of pytest's default import mode. Importlib mode
     # is required here so that the staged wheel, not the checkout, is imported.
     "torch/nas/test_registry.py::test_register_unregister",
-    # Reproduced incompatibility with Arch transformers 5.2x. Upstream supports
-    # versions below 5.19. The reverse weight-renaming export mirrors the private
-    # WeightTransform matching of transformers, which changed. Core export stays.
-    "torch/export/test_quant_aware_conversion.py::test_scoped_vlm_conversion_keeps_tensors_and_config_aligned[model-.weight$-True]",
-    "torch/export/test_quant_aware_conversion.py::test_quantized_weight_specific_rename_keeps_scales_aligned[-resident]",
-    "torch/export/test_quant_aware_conversion.py::test_quantized_weight_specific_rename_keeps_scales_aligned[-streaming]",
-    "torch/export/test_quant_aware_conversion.py::test_quantized_weight_specific_rename_keeps_scales_aligned[vision_model-resident]",
-    "torch/export/test_quant_aware_conversion.py::test_quantized_weight_specific_rename_keeps_scales_aligned[vision_model-streaming]",
-    "torch/export/test_quant_aware_conversion.py::test_export_weight_specific_rename_keeps_config_aligned[False-resident]",
-    "torch/export/test_quant_aware_conversion.py::test_export_weight_specific_rename_keeps_config_aligned[False-streaming]",
-    "torch/export/test_quant_aware_conversion.py::test_export_weight_specific_rename_keeps_config_aligned[False-layerwise]",
-    "torch/export/test_quant_aware_conversion.py::test_export_weight_specific_rename_keeps_config_aligned[True-resident]",
-    "torch/export/test_quant_aware_conversion.py::test_export_weight_specific_rename_keeps_config_aligned[True-streaming]",
-    "torch/export/test_quant_aware_conversion.py::test_export_weight_specific_rename_keeps_config_aligned[True-layerwise]",
-    "torch/export/test_quant_aware_conversion.py::test_resident_export_merge_fallback_warns_and_keeps_names_aligned[False]",
+
 ]
 
 
@@ -199,7 +188,10 @@ class Deselect:
 if __name__ == "__main__":
     plugin = Deselect()
     status = pytest.main([
+        # The retained 60-step CPU training case can exceed upstream's 60s
+        # limit on shared-frequency cluster CPUs. Keep its assertions intact.
         "-q", "-o", "addopts=", "--import-mode=importlib",
+        "--timeout=300",
         str(unit / "deploy"),
         str(unit / "recipe"),
         str(unit / "torch"),

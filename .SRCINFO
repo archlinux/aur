@@ -1,7 +1,7 @@
 pkgbase = python-nvidia-modelopt
 	pkgdesc = NVIDIA Model Optimizer: a unified model optimization and deployment toolkit
 	pkgver = 0.48.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/Model-Optimizer
 	arch = any
 	license = Apache-2.0
@@ -79,10 +79,12 @@ pkgbase = python-nvidia-modelopt
 	source = python-nvidia-modelopt-0.48.0.tar.gz::https://github.com/NVIDIA/Model-Optimizer/archive/refs/tags/0.48.0.tar.gz
 	source = torchprofile-0.1.patch
 	source = transformers-rotary-device.patch
+	source = transformers-reverse-weight-anchors.patch
 	source = fla-LICENSE::https://raw.githubusercontent.com/fla-org/flash-linear-attention/516143e31fce09925e6c39ac37148444bad176c4/LICENSE
 	sha256sums = 75082846e60b27a8a2a2d1709888d35bf5a894da04e10e9e51924b5570ea5f8e
 	sha256sums = 19b0e7b6f1a55dffba4e69b4c75f61be4a37f904ce83fd62670de55e9a6bcd84
 	sha256sums = b57e5b3c9561b97c75b75572c69ea49874bbea22506c1f01f7f9846bfd787c49
+	sha256sums = 2cc76a23cb4c7783656f43795273006a94b7656dc717eff64583b7b15d781040
 	sha256sums = 41a83c8187efc1e3ccc21909e806a9e52338e69448554d9754706c3d1cd610e7
 
 pkgname = python-nvidia-modelopt

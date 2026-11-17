@@ -1,0 +1,19 @@
+--- a/modelopt/torch/export/quant_aware_conversion.py
++++ b/modelopt/torch/export/quant_aware_conversion.py
+@@ -780,6 +780,16 @@
+     expert_fused_leaves: list[str] = []
+     for conv in conversions:
+         rev = conv.reverse_transform()  # hub<-in-memory; reversed name patterns + ops
++        # Transformers 5.22 preserves regex end anchors in reversed targets.
++        # Normalize only replacements on this newly created reverse transform.
++        # Source regexes, captures, scopes and the original transform stay intact.
++        # Both renames and converter merges use these target name replacements.
++        for index, target in enumerate(rev.target_patterns):
++            if target.endswith("$"):
++                replacement = target[:-1]
++                escapes = len(replacement) - len(replacement.rstrip("\\"))
++                if escapes % 2 == 0:
++                    rev.target_patterns[index] = replacement
+         if isinstance(rev, WeightRenaming):
+             scope_prefixes = _scope_prefixes(rev)
+             for pattern, repl in zip(_as_list(rev.source_patterns), _as_list(rev.target_patterns)):
