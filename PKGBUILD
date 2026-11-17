@@ -1,4 +1,4 @@
-# Maintainer: TODO <TODO@example.com>   # 上传前改成你的 AUR 账号名与邮箱
+# Maintainer: YoungCrescent <jy792505@mail.ustc.edu.cn>
 #
 # AppImage 变体：与 AUR 的 dsh-tauri-desktop-bin（上游 .deb 重打包）同源同一个应用，
 # 但改为解包官方 AppImage 并安装到 /opt/dsh-tauri。AppImage 自带的 GTK/GDK-PixBuf
