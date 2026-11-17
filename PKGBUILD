@@ -4,7 +4,7 @@
 
 pkgname=python-prospector
 _name=prospector
-pkgver=1.20.0
+pkgver=1.20.1
 pkgrel=1
 pkgdesc="Python static analysis tool"
 url="https://github.com/PyCQA/prospector/"
@@ -20,7 +20,7 @@ makedepends=('python-poetry'
 license=('GPL-2.0-only')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_name}-dev/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fb9606d86b589269067bf0810b35ee231d1bef3deaf826601420f80eb6e24d35')
+sha256sums=('f1515cd13dd18e9dcb38a99a24c9fe4f7bb7118c213c7019713be42de32174ed')
 
 build() {
 	cd "$_name-$pkgver"
