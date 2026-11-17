@@ -1,5 +1,5 @@
 pkgname=bennu-bin
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='Bennu — Linux desktop file manager written in Rust and Iced'
 arch=('x86_64')
@@ -18,8 +18,8 @@ depends=(
     'xdg-utils'
 )
 optdepends=(
-    '7zip: 7z and rar preview and extraction, plus 7z creation'
-    'ffmpeg: video preview and metadata support'
+    '7zip: zip, 7z and rar preview and extraction, plus zip and 7z creation'
+    'ffmpeg: audio and video preview and metadata support'
     'ffmpegthumbnailer: video thumbnail generation'
     'gvfs: SFTP and WebDAV network locations'
     'gvfs-afc: Apple/AFC portable device support'
@@ -34,7 +34,7 @@ optdepends=(
 provides=('file-manager')
 conflicts=('file-manager')
 source_x86_64=("https://github.com/nsjsv/Bennu/releases/download/v${pkgver}/bennu-${pkgver}-x86_64.tar.xz")
-sha256sums_x86_64=('80806903b2d88cca608a1c10b96c840579670fd776aa8e4fdc666d89750600a6')
+sha256sums_x86_64=('f538522e2e4f0d21e8c3e54fd966ee12d9bbff25a2439c16b97abe25ad816552')
 
 package() {
     cp -a "${srcdir}/bennu-${pkgver}-x86_64/usr" "${pkgdir}/"
