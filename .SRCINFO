@@ -1,0 +1,14 @@
+pkgbase = cargo-bay-2000
+	pkgdesc = Cargo Bay 2000
+	pkgver = 0.1
+	pkgrel = 4
+	url = https://theisolinearchip.itch.io/cargo-bay-2000
+	arch = x86_64
+	license = unknown
+	depends = glibc
+	options = !debug
+	options = !strip
+	source = cargobay2000_v01_linux.zip::https://albertgonzalez.coffee/packages/cargo_bay_2000/cargobay2000_v01_linux.zip
+	sha256sums = 5b959d99c450f85405a97e9753884112a0522ec2c74c0ebc4ae079a1f4c19b03
+
+pkgname = cargo-bay-2000

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Cargo Bay 2000
+Comment=Gravity-based warehouse puzzle game
+Exec=cargo-bay-2000
+Terminal=false
+Categories=Game;LogicGame;
