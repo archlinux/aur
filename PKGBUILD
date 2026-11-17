@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=gallery-dl-git
-pkgver=1.32.20.r14.g0d63944
+pkgver=1.32.20.r17.g5349985
 pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites (git)'
 arch=(any)
@@ -43,9 +43,7 @@ prepare() {
 
 	# Set the git head ourselves
 	_githead=$(git rev-parse --short HEAD)
-    sed -i "/^def git_head():/,/^    return None$/c\\
-def git_head():\\
-    return \"${_githead}\"" gallery_dl/util.py
+    printf '\ngit_head = lambda: "%s"\n' "${_githead}" >> gallery_dl/util.py
 }
 
 build() {
