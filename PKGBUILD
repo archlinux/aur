@@ -1,6 +1,6 @@
 # Maintainer: Keon Cachia <keonfarrugia@gmail.com>
 pkgname=canoe
-pkgver=0.5.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Stacking window manager for River inspired by Windows 3.x"
 arch=('x86_64')
@@ -19,7 +19,7 @@ install=canoe.install
 source=(
   canoe-$pkgver::https://github.com/roblillack/canoe/archive/refs/tags/v"$pkgver".tar.gz
 )
-sha256sums=('88d9aa20d6e663b6d6efe8e51c575e3dfbbfca47f39e5553239d2a777b4fb460')
+sha256sums=('246952003f7b677b1bc443f3ac4a838ee7fd3d2d1e7c61d1f9b8f4f46cce4dcf')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
