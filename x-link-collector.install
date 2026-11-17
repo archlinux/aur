@@ -1,0 +1,17 @@
+post_install() {
+    cat <<'MSG'
+==> x-link-collector: to start the receiver at every login, as your own user:
+      systemctl --user enable --now x-link-receiver
+    then open http://127.0.0.1:9876 and load the browser extension from
+      /usr/share/x-link-collector/extension
+    (Chromium: Developer mode, Load unpacked; Firefox: the signed .xpi from
+    https://github.com/abel0x/x-link-collector/releases).
+MSG
+}
+
+post_upgrade() {
+    cat <<'MSG'
+==> x-link-collector: restart the receiver to run the new version:
+      systemctl --user restart x-link-receiver
+MSG
+}
