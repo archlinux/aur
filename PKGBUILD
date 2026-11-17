@@ -122,7 +122,7 @@
 _pkgname=chatto-desktop
 pkgname=chatto-desktop-bin
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Team and group chat desktop application'
 arch=('x86_64' 'aarch64')
 url="https://github.com/chattocorp/chatto"

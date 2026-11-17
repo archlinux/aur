@@ -1,7 +1,7 @@
 pkgbase = chatto-desktop-bin
 	pkgdesc = Team and group chat desktop application
 	pkgver = 0.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/chattocorp/chatto
 	install = chatto-desktop.install
 	arch = x86_64
