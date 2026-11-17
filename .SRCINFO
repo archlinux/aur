@@ -1,6 +1,6 @@
 pkgbase = tcpulse-bin
 	pkgdesc = A TCP/UDP load generator that provides fine-grained, flow-level control in Go
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/yuuki/tcpulse
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = tcpulse-bin
 	license = Apache-2.0
 	provides = tcpulse
 	conflicts = tcpulse
-	source_x86_64 = tcpulse-x86_64-0.9.0.tgz::https://github.com/yuuki/tcpulse/releases/download/v0.9.0/tcpulse_0.9.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 459f42f53bf2015959b51f204e3ea5dc39ca8ff201876dbeacb26eaecc7ecf40
-	source_aarch64 = tcpulse-aarch64-0.9.0.tgz::https://github.com/yuuki/tcpulse/releases/download/v0.9.0/tcpulse_0.9.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6b2f56cf9b1219ba16a956a8b54b251fdc8c4729becb2bedfab4e05a15e02a74
+	source_x86_64 = tcpulse-x86_64-0.9.1.tgz::https://github.com/yuuki/tcpulse/releases/download/v0.9.1/tcpulse_0.9.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = afce81d4fa71d384810754c73eae2b58a395bedc97daad52696c7e68b017c492
+	source_aarch64 = tcpulse-aarch64-0.9.1.tgz::https://github.com/yuuki/tcpulse/releases/download/v0.9.1/tcpulse_0.9.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5f51bbd70eb71cdd9909e044b7bb2f9574f6cf432b384ec06ab01648e0dbbc53
 
 pkgname = tcpulse-bin
