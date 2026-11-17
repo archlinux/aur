@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=openapi-bin
-pkgver=1.26.5
+pkgver=1.27.0
 pkgrel=1
 pkgdesc='CLI for working with OpenAPI, Swagger, Arazzo and Overlay documents (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('openapi')
 _release="${url}/releases/download/v${pkgver}"
 source_x86_64=("openapi-${pkgver}-x86_64.tar.gz::${_release}/openapi_Linux_x86_64.tar.gz")
 source_aarch64=("openapi-${pkgver}-aarch64.tar.gz::${_release}/openapi_Linux_arm64.tar.gz")
-sha256sums_x86_64=('1339c003a22d80742bc0f7b7474d16a23f353c024db54a7a31c0d9f09218210c')
-sha256sums_aarch64=('ef5bc86262b52da9ef5100541cbf8db9a561bcdbf9a44290471f632fbb25df89')
+sha256sums_x86_64=('db69de1229883ffc0d23503d44e8e35b6d09c8587af17bd2137e4d34c622b9ed')
+sha256sums_aarch64=('fb8710e7a2f461f48505ae9bb485a26236d002a88598b7f850bcb192889b942d')
 
 build() {
   for shell in bash fish zsh; do
