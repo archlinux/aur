@@ -2,8 +2,8 @@
 
 pkgname=mim
 _pkgname=mimir
-pkgver=0.4
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 _commit=542855790e
 pkgdesc='MimIR: a higher-order, dependently typed intermediate representation with plugins'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gcc-libs' 'glibc' 'python' 'unordered_dense')
 makedepends=('cmake' 'ninja' 'clang')
 optdepends=('clang: compile emitted LLVM IR and JIT regex matchers from Python')
 source=("https://github.com/mimir/mimir/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('978dcf1fe57da8a1970b7ff95ee12dfe548d208ca87743c510b63ecd6efc1d65')
+sha256sums=('c06df5625390990fa70c4fa5a615b2a252b3ab34a844f37aed814cfa46232e96')
 
 build() {
   # Log messages embed std::source_location paths.
