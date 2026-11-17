@@ -2,7 +2,7 @@
 # Contributor: L B <leobaldin dot 2000 at gmail dot com>
 
 pkgname=java-openjfx-bin
-pkgver=27.0.1
+pkgver=27.0.1.1
 pkgrel=1
 pkgdesc="Java OpenJFX ${pkgver} client application platform (Gluon build)."
 arch=('x86_64')
@@ -33,9 +33,9 @@ options=('!strip' '!debug')
 source=("https://download2.gluonhq.com/openjfx/${pkgver}/openjfx-${pkgver}_linux-x64_bin-sdk.zip"
         "https://download2.gluonhq.com/openjfx/${pkgver}/openjfx-${pkgver}_linux-x64_bin-jmods.zip"
         "https://download2.gluonhq.com/openjfx/${pkgver}/openjfx-${pkgver}-javadoc.zip")
-sha256sums=('732d816289e31fd59c612a0d4d6f1a5fc2749f1567d584f18b6b15e6636d9e38'
-            '323ceb45b938485f6921d7c31c994cc649adb1f75b16192580ff84a3119694ba'
-            '6d9bf6154d04bf538669412eb3925d737fec4105039eecfb27d2de5cd7fb48aa')
+sha256sums=('a5a9c196d9949355d0bee351b56783f33f9508a62dae086f8e92a910aa2aa290'
+            '1a20903dc231f98d01a29c6eafa2cf7cb98d3dca2dcd0603462ca89d9c631dcc'
+            '72a184f0f1c07c1c3046e922d1a926b128c87730a6eba2c310a448cf89b68cc8')
 
 _jvmdir=usr/lib/jvm/java-${pkgver}-openjfx
 
