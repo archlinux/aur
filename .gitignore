@@ -1,1 +1,5 @@
-version
+.version
+/pkg/
+/src/
+*.pkg.tar.*
+*.log

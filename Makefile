@@ -1,29 +1,34 @@
-.PHONY: upload
+branch_local := main
+branch_remote := master
+remote := aur
 
-remote = github
-repo = https://github.com/home-assistant/frontend
-branch = master
+upstream := https://github.com/home-assistant/frontend.git
+version_regexp := [0-9]{8}\.[0-9]+$$
+update_check = git ls-remote --tags --refs $(upstream) | grep -Po '.*refs/tags/\K$(version_regexp)' | sort -V | tail -n1
 
-all: .SRCINFO
+.PHONY: upload commit update_version
 
-fetch:
-	git remote show | grep -q "^$(remote)$$" || git remote add "$(remote)" "$(repo)"
-	git fetch "$(remote)"
+default: update_version .SRCINFO
 
-version: VERSION = $(shell git describe --tags $(remote)/$(branch) | cut -d- -f1)
-version: fetch
-	echo "$(VERSION)" > $@
-	touch -d "$(shell git -c log.showSignature=false show -s --format=%ci $(VERSION))" $@
+upload: commit
+	git push $(remote) $(branch_local):$(branch_remote)
 
-PKGBUILD: version
-%: %.in
-	m4 $< > $*
+commit: VERSION = $(shell cat .version)
+commit: .SRCINFO
+	git commit -am "$(VERSION)"
 
 .SRCINFO: PKGBUILD
 	makepkg --printsrcinfo > $@
 
-commit: .SRCINFO version
-	git diff --exit-code > /dev/null || git commit -am "`cat version`"
+PKGBUILD: PKGBUILD.in .version
+	m4 $< > $@
 
-upload: commit
-	git push
+update_version: NEW_VERSION = $(shell $(update_check))
+update_version: CURRENT_VERSION = $(shell cat .version 2>/dev/null)
+update_version:
+	@if [ "$(NEW_VERSION)" != "$(CURRENT_VERSION)" ]; then \
+	  echo "$(NEW_VERSION)" > .version; \
+	  echo "New version: $(NEW_VERSION)"; \
+	fi
+
+# vim: set noexpandtab:
