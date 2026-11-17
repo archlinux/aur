@@ -6,8 +6,8 @@
 pkgname=gamemaker-lts2026-bin
 
 # Version
-pkgver=2026.0.0.16
-pkgrel=2
+pkgver=2026.1.0.27
+pkgrel=1
 
 # Generic
 pkgdesc="Make a game with GameMaker, the best free video game engine. Perfect for beginners and professionals. For frequent updates, see gamemaker-beta-bin."
@@ -34,13 +34,13 @@ conflicts=('gamemaker-lts2026')
 options=(!strip)
 
 # Sources
-# https://gms.yoyogames.com/GameMaker-LTS2026-2026.0.0.16.deb
+# https://gms.yoyogames.com/GameMaker-LTS2026-2026.1.0.27.deb
 source=(
     "https://gms.yoyogames.com/GameMaker-LTS2026-${pkgver}.deb"
     "LICENSE.txt"    
 )
 sha256sums=(
-    '521db30a693a16baa7897005987124bea293a2bbcbe0a98edc258372ab1712b1'
+    'da1484bed5588e5565c00914bd9e9aaff85cdebb397631c4b572aa272cf225e1'
     '9ebe45546ac7bb43156c62f42947ccaf660f96cd4fcc684f42df49754aaeac51'
 )
 
