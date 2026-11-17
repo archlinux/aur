@@ -2,7 +2,7 @@
 
 _pkgname=nmrpflash
 pkgname=$_pkgname
-pkgver=0.9.27
+pkgver=0.9.28
 pkgrel=1
 pkgdesc="Netgear Unbrick Utility"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('GPL-3.0-or-later')
 depends=('libpcap' 'libnl>=3')
 makedepends=('make')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/jclehner/nmrpflash/archive/v$pkgver.tar.gz")
-sha256sums=('a9de4296ec3db91e044f6ce5412342616920c6afda1df312bbeefc9013251f00')
-b2sums=('13b4b57e3401d566fd9555ec056390a89946dbbc1114648addaf99bf4001bdb49451ec2691e151f8269c16e263c3136fdf85d67608a848f0966aaa15c6e12c0a')
+sha256sums=('8d3ec766b7f43bd060032db3cec40c500ef1edc562281f239e308595b66a4176')
+b2sums=('230656cf853199f834b2fcf32ebc5d79df1b8145c2fa0f06085e9b99876153fb576164864dd2f3d09c3db18cbf34ee6216be27b7023726108cb6e030276ff69d')
 
 build() {
   cd "$_pkgname-$pkgver"
