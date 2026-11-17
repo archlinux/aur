@@ -2,10 +2,10 @@
 # Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 pkgname=gitify
 _pkgname=Gitify
-pkgver=8.1.0
+pkgver=8.2.0
 _electronversion=45
 _nodeversion=24
-pkgrel=2
+pkgrel=1
 pkgdesc="GitHub notifications on your menu bar."
 arch=('any')
 url='https://www.gitify.io/'
@@ -28,7 +28,7 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('96302ed18107e7eeee4a84ee00ac7c760a4731ab2bed75754bc374b1a208e985'
+sha256sums=('f21688e1421d6c61aca06f6efdb130c9f746bbbd3744c1e693acc95897713174'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {

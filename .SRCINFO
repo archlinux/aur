@@ -1,7 +1,7 @@
 pkgbase = gitify
 	pkgdesc = GitHub notifications on your menu bar.
-	pkgver = 8.1.0
-	pkgrel = 2
+	pkgver = 8.2.0
+	pkgrel = 1
 	url = https://www.gitify.io/
 	arch = any
 	license = MIT
@@ -13,10 +13,10 @@ pkgbase = gitify
 	makedepends = git
 	makedepends = jq
 	depends = electron45
-	source = gitify-8.1.0.tar.gz::https://github.com/gitify-app/gitify/archive/refs/tags/v8.1.0.tar.gz
+	source = gitify-8.2.0.tar.gz::https://github.com/gitify-app/gitify/archive/refs/tags/v8.2.0.tar.gz
 	source = gitify.js
 	source = gitify.sh
-	sha256sums = 96302ed18107e7eeee4a84ee00ac7c760a4731ab2bed75754bc374b1a208e985
+	sha256sums = f21688e1421d6c61aca06f6efdb130c9f746bbbd3744c1e693acc95897713174
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
