@@ -1,0 +1,101 @@
+diff --git a/tests/tempman_tests.py b/tests/test_tempman.py
+similarity index 63%
+rename from tests/tempman_tests.py
+rename to tests/test_tempman.py
+index 00cddff..3f79933 100644
+--- a/tests/tempman_tests.py
++++ b/tests/test_tempman.py
+@@ -2,62 +2,44 @@ import os
+ import time
+ from datetime import timedelta
+ 
+-from nose.tools import istest, assert_equal
+-
+ import tempman
+ 
+-
+-@istest
+-def temporary_directory_is_initially_empty():
++def test_temporary_directory_is_initially_empty():
+     with tempman.create_temp_dir() as directory:
+-        assert_equal([], os.listdir(directory.path))
++        assert os.listdir(directory.path) == []
+ 
+ 
+-@istest
+-def temporary_directory_is_deleted_on_exit():
++def test_temporary_directory_is_deleted_on_exit():
+     with tempman.create_temp_dir() as directory:
+         pass
+         
+     assert not os.path.exists(directory.path)
+ 
+-
+-@istest
+-def temporary_directory_is_deleted_on_close():
++def test_temporary_directory_is_deleted_on_close():
+     directory = tempman.create_temp_dir()
+     directory.close()
+     assert not os.path.exists(directory.path)
+ 
+-
+-@istest
+-def dir_argument_can_be_used_to_set_parent_directory():
++def test_dir_argument_can_be_used_to_set_parent_directory():
+     with tempman.create_temp_dir() as parent_directory:
+         with tempman.create_temp_dir(dir=parent_directory.path) as directory:
+-            assert_equal([os.path.basename(directory.path)], os.listdir(parent_directory.path))
+-
++            assert os.listdir(parent_directory.path) == [os.path.basename(directory.path)]
+ 
+-@istest
+-def using_root_to_create_temporary_directories_creates_directories_under_root_path():
++def test_using_root_to_create_temporary_directories_creates_directories_under_root_path():
+     with tempman.create_temp_dir() as parent_directory:
+         root = tempman.root(parent_directory.path)
+         with root.create_temp_dir() as directory:
+-            assert_equal([os.path.basename(directory.path)], os.listdir(parent_directory.path))
++            assert os.listdir(parent_directory.path) == [os.path.basename(directory.path)]
+ 
+-
+-@istest
+-def directories_older_than_integer_timeout_are_deleted_when_cleaning_up():
++def test_directories_older_than_integer_timeout_are_deleted_when_cleaning_up():
+     _directories_older_than_timeout_are_deleted_when_cleaning_up(60)
+ 
+-
+-@istest
+-def directories_older_than_float_timeout_are_deleted_when_cleaning_up():
++def test_directories_older_than_float_timeout_are_deleted_when_cleaning_up():
+     _directories_older_than_timeout_are_deleted_when_cleaning_up(60.0)
+ 
+-
+-@istest
+-def timeout_can_be_specified_using_timedelta():
++def test_timeout_can_be_specified_using_timedelta():
+     _directories_older_than_timeout_are_deleted_when_cleaning_up(timedelta(minutes=1))
+ 
+-
+ def _directories_older_than_timeout_are_deleted_when_cleaning_up(one_minute):
+     with tempman.create_temp_dir() as parent_directory:
+         root = tempman.root(parent_directory.path, timeout=one_minute)
+@@ -73,11 +55,9 @@ def _directories_older_than_timeout_are_deleted_when_cleaning_up(one_minute):
+         
+         root.cleanup()
+         
+-        assert_equal(["two"], os.listdir(parent_directory.path))
+-
++        assert os.listdir(parent_directory.path) == ["two"]
+ 
+-@istest
+-def cleanup_occurs_when_creating_directory_under_root():
++def test_cleanup_occurs_when_creating_directory_under_root():
+     with tempman.create_temp_dir() as parent_directory:
+         root = tempman.root(parent_directory.path, timeout=60)
+         now = time.time()
+@@ -89,4 +69,4 @@ def cleanup_occurs_when_creating_directory_under_root():
+         with root.create_temp_dir() as directory:
+             pass
+             
+-        assert_equal([], os.listdir(parent_directory.path))
++        assert os.listdir(parent_directory.path) == []
