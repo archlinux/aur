@@ -14,7 +14,7 @@
 # 三者必须保持兄弟关系：主进程按 execPath 相对定位 resources/ 和 native/。
 
 pkgname=weq-bin
-pkgver=2.7.2
+pkgver=2.7.3
 pkgrel=1
 pkgdesc="QQ NT 本地聊天记录解密、导出、查看与年度报告"
 arch=('x86_64' 'aarch64')
@@ -57,8 +57,8 @@ source_aarch64=(
 )
 # sha256（GitHub Release API 的 digest），由 publish-aur.mjs 填入；
 # 本地两个辅助文件的哈希由脚本一并算好。
-sha256sums_x86_64=('b66be34d74960406bd3aae57c9972e89a10ccb88c9c717db5269e9dff0132230' 'e9df74452c972f4ba963fb5b3108cfa37646d62405fe73f8ec25782cd79a87f5' '316f4f06211ad9b0296d1d0136c39551351a34b464c9b92b91d62d8b38eafd53')
-sha256sums_aarch64=('b66be34d74960406bd3aae57c9972e89a10ccb88c9c717db5269e9dff0132230' 'e9df74452c972f4ba963fb5b3108cfa37646d62405fe73f8ec25782cd79a87f5' '54f5bb494c96b67ea6a4801a0ab6a85ec28a1a1ca79909df9191421a0aea8673')
+sha256sums_x86_64=('b66be34d74960406bd3aae57c9972e89a10ccb88c9c717db5269e9dff0132230' 'e9df74452c972f4ba963fb5b3108cfa37646d62405fe73f8ec25782cd79a87f5' 'b124c433f4a65615c7ab80f42423d99bbb7fa60a17eba850286e6ba11eb96dd5')
+sha256sums_aarch64=('b66be34d74960406bd3aae57c9972e89a10ccb88c9c717db5269e9dff0132230' 'e9df74452c972f4ba963fb5b3108cfa37646d62405fe73f8ec25782cd79a87f5' '4b3619619494322ad9042096ca616aa00400bc0693bb78408b7f133b1db9405a')
 
 package() {
   # 上游按 x86_64 / arm64 命名 tarball，这里把 Arch 的 CARCH 映射过去。
