@@ -1,6 +1,6 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=bosectl-qt
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Qt6 system tray app for controlling Bose headphones via the BMAP protocol"
 arch=('x86_64' 'aarch64')
@@ -24,13 +24,13 @@ makedepends=(
 )
 # The bosectl submodule commit that this release is pinned to.
 # Bump along with the main pkgver when updating.
-_bosectl_commit=70570b29c1d3c9ba775b08a29eaea72385de27b5
+_bosectl_commit=d712d959030cb283b15459878fdf49427c96b400
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/aaronsb/bosectl-qt/archive/v$pkgver.tar.gz"
     "bosectl::git+https://github.com/aaronsb/bosectl.git#commit=$_bosectl_commit"
 )
 sha256sums=(
-    '42ddd55d58ce72081533f063640b0952e5dee699362a77b8d127ebebce6d7c49'
+    '1eb9d0e9c81d178c971d93e5446ce81fd84a25be0b420c3d260599489542a3b2'
     'SKIP'
 )
 
