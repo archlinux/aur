@@ -2,11 +2,11 @@
 
 pkgbase=nucleistudioide
 pkgname=(nucleistudioide)
-pkgver=202510
+pkgver=202610
 pkgrel=1
 pkgdesc="Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。"
 arch=("x86_64")
-depends=('nuclei-gcc' 'nuclei-openocd' 'nuclei-qemu')
+depends=()
 optdepends=('jlink-software-and-documentation: Segger JLink software & documentation pack for Linux')
 makedepends=()
 conflicts=()
@@ -14,7 +14,7 @@ url="https://www.nucleisys.com/download.php"
 license=('LicenseRef-unknow')
 options=(!strip !debug)
 source=("https://download.nucleisys.com/upload/files/nucleistudio/NucleiStudio_IDE_${pkgver}-lin64.tgz")
-sha256sums=('22ffa4c2ae3b14be16199997a59dcb5b0513de617766a5a3286e8d701d016a63')
+sha256sums=('7740a422cb90921c1680dc5d11853b4fa66a4adfa5df8099a0150fcbcd55379e')
 
 package() {
 	cd "$srcdir"
@@ -22,11 +22,8 @@ package() {
 	msg2 'Installing Nuclei Studio IDE'
 	install -d -m755 "${pkgdir}/opt/nuclei"
 	tar zxf "NucleiStudio_IDE_${pkgver}-lin64.tgz"
-	rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/toolchain/openocd"
-	rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/toolchain/gcc"
-	rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/toolchain/qemu"
 
-	mv "${srcdir}/NucleiStudio_IDE_${pkgver}/NucleiStudio" "${pkgdir}/opt/nuclei"
+	mv "${srcdir}/NucleiStudio" "${pkgdir}/opt/nuclei"
 
 	msg2 'Instalation of binary file'
 	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
