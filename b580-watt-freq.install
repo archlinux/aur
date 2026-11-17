@@ -1,0 +1,37 @@
+post_install() {
+  local GREEN="\e[1;32m"
+  local CYAN="\e[1;36m"
+  local YELLOW="\e[1;33m"
+  local RESET="\e[0m"
+
+  echo -e "${GREEN}=== b580-watt-freq installed ===${RESET}"
+  echo ""
+  echo -e "${CYAN}1. Detect frequency steps${RESET}"
+  echo "   Not all B580 have the same steps."
+  echo "   Run: sudo b580-detect-freq"
+  echo ""
+  echo -e "${CYAN}2. Edit config with detected step${RESET}"
+  echo "   sudo nano /etc/b580.conf"
+  echo ""
+  echo -e "   ${YELLOW}Ref:${RESET}"
+  echo "   WATTS=75   - 75W light use"
+  echo "   WATTS=103  - ~50% Intel Software for Windows"
+  echo "   WATTS=113  - 55% Intel Software for Windows"
+  echo ""
+  echo "   FREQ=2650 - Common baseline, similar to Intel default, no OC"
+  echo ""
+  echo -e "${CYAN}3. Enable services${RESET}"
+  echo "   sudo systemctl enable --now b580-watt-freq.service"
+  echo "   sudo systemctl enable b580-watt-freq-resume.service"
+  echo ""
+  echo -e "${CYAN}4. Verify${RESET}"
+  echo "   systemctl status b580-watt-freq.service"
+  echo "   cat /sys/class/drm/card0/device/tile0/gt0/freq0/max_freq"
+  echo "   cat /sys/class/drm/card0/device/hwmon/hwmon1/power1_cap"
+  echo ""
+  echo "No LACT needed. Oneshot service, reapplied after suspend."
+}
+
+post_upgrade() {
+  post_install
+}
