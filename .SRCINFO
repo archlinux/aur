@@ -1,0 +1,21 @@
+pkgbase = mime-guardian-nightly
+	pkgdesc = Keeps your default applications the way you set them (nightly)
+	pkgver = 0.2.0.nightly.1
+	pkgrel = 1
+	url = https://github.com/ItzTas/mime-guardian
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = libnotify: desktop notifications when a default is put back
+	optdepends = shared-mime-info: wildcard types such as image/*
+	provides = mime-guardian=0.2.0.nightly.1
+	conflicts = mime-guardian
+	options = !lto
+	options = !debug
+	source = mime-guardian-nightly-0.2.0.nightly.1.tar.gz::https://github.com/ItzTas/mime-guardian/releases/download/v0.2.0-nightly.1/mime-guardian-0.2.0.nightly.1-src.tar.gz
+	sha256sums = 6842f61679f0a4b6d3dc4824a0f039649b0b283684fcef6749c00d4864457938
+
+pkgname = mime-guardian-nightly
