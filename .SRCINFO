@@ -1,6 +1,6 @@
 pkgbase = reels-bin
 	pkgdesc = Instagram reels in the terminal
-	pkgver = 1.4.10
+	pkgver = 1.4.11
 	pkgrel = 1
 	url = https://github.com/njyeung/reels
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = reels-bin
 	optdepends = konsole: terminal with Kitty graphics protocol
 	provides = reels
 	conflicts = reels
-	source_x86_64 = reels-1.4.10-linux-amd64::https://github.com/njyeung/reels/releases/download/v1.4.10/reels-linux-amd64
-	sha256sums_x86_64 = 3b46b412dd4fdaa3d9e6faa91b125e9127aaec00a4fde65eb5931aeb76355d21
-	source_aarch64 = reels-1.4.10-linux-arm64::https://github.com/njyeung/reels/releases/download/v1.4.10/reels-linux-arm64
-	sha256sums_aarch64 = fcea1d1db450fe09cf039365838fa79484bb9732537e2017c2944677d2daae5f
+	source_x86_64 = reels-1.4.11-linux-amd64::https://github.com/njyeung/reels/releases/download/v1.4.11/reels-linux-amd64
+	sha256sums_x86_64 = c7398a3e1335263a2f0f015ffc3a619609fab01ec78a0556d5cfd484b35f0b65
+	source_aarch64 = reels-1.4.11-linux-arm64::https://github.com/njyeung/reels/releases/download/v1.4.11/reels-linux-arm64
+	sha256sums_aarch64 = c39f0d29ebea7485e1cb66f35c02cf0a60cce03280a0fb41343ac7b0dd21cf60
 
 pkgname = reels-bin
