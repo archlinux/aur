@@ -1,0 +1,24 @@
+pkgbase = yuque-bin
+	pkgdesc = Sparrow provides excellent documentation and knowledge base tools for everyone.Third-party Linux client for YuQue.第三方语雀 Linux 客户端
+	pkgver = 4.2.1.1333
+	pkgrel = 1
+	url = https://www.yuque.com
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-yuque
+	depends = electron39
+	depends = nodejs
+	provides = yuque=4.2.1.1333
+	conflicts = yuque
+	source = LICENSE.html::https://www.yuque.com/terms
+	source = yuque.js
+	source = yuque.sh
+	sha256sums = 7f803dfcde89562c46c15f92f5d16143eb601f7aa4f3a8aa106ae8d42407aa5f
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = yuque-4.2.1.1333-aarch64.deb::https://github.com/kota-rina3/hokeshi/releases/download/yuque4.2.1.1333/com.yuque.otohime_4.2.1.1333_arm64.deb
+	sha256sums_aarch64 = b468610be0f2401570d446d8d0536aa8ec093a432a6215c990442ada9507f112
+	source_x86_64 = yuque-4.2.1.1333-x86_64.deb::https://github.com/kota-rina3/hokeshi/releases/download/yuque4.2.1.1333/com.yuque.otohime_4.2.1.1333_amd64.deb
+	sha256sums_x86_64 = 0f32140e2ecf39cf584f38e79c8c786878f4c91668cd11d4e07f3c2a36344db4
+
+pkgname = yuque-bin
