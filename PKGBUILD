@@ -1,7 +1,7 @@
 # Maintainer: oysterAV contributors
 # shellcheck disable=SC2034
 pkgname=oysterav
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Linux security orchestrator: oyst-cli backend + oysterAV GTK4 GUI"
 arch=('any')
@@ -16,17 +16,17 @@ depends=(
   'gtk4'
   'libadwaita'
   'polkit'
+  'clamav'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 optdepends=(
-  'clamav: required scanner spine'
   'rkhunter: rootkit checks'
   'chkrootkit: rootkit checks'
   'lynis: hardening audits'
   'uq: security tile and Settings page in the uQ desktop'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a3482e84efac5bc7b0100fd50ba3caef84d37f20a3c74553269e7557561309eb')
+sha256sums=('4fdedaf12537adae961c1a4105ec0bb6a526ac2f1e743ebe71f73ef932caf77f')
 
 build() {
   cd "oysterAV-$pkgver"
@@ -54,7 +54,6 @@ EOF
 
   # uQ integration (inert without uQ): uq/README.md lists what each file adds.
   install -Dm644 -t "$pkgdir/usr/share/uq/shell/widgets/oysterav" uq/widgets/oysterav/*
-  install -Dm644 -t "$pkgdir/usr/share/uq/shell/widgets/oysterav-bar" uq/widgets/oysterav-bar/*
   install -Dm644 -t "$pkgdir/usr/share/uq/settings/pages/oysterav-security" \
     uq/pages/oysterav-security/*
 
