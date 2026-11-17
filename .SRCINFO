@@ -1,6 +1,6 @@
 pkgbase = kanban4ai
 	pkgdesc = Native kanban board CLI and TUI driven by AI coding agents
-	pkgver = 0.8.21
+	pkgver = 0.8.22
 	pkgrel = 1
 	url = https://github.com/sougstron/kanban4ai
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = kanban4ai
 	optdepends = libnotify: desktop notifications through notify-send
 	optdepends = wl-clipboard: paste images under Wayland
 	optdepends = xclip: paste images under X11
-	source = kanban4ai-0.8.21.tar.gz::https://github.com/sougstron/kanban4ai/archive/refs/tags/v0.8.21.tar.gz
-	sha256sums = b4b8516c9299e54a56f2c61f781627c02ebf81bb7780d2cc3158bd3dac7882aa
+	source = kanban4ai-0.8.22.tar.gz::https://github.com/sougstron/kanban4ai/archive/refs/tags/v0.8.22.tar.gz
+	sha256sums = f3656626b5482f3247be1b65954f8625d11bd2369ee5fb9eda7902c4d837cbb3
 
 pkgname = kanban4ai
