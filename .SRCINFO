@@ -1,0 +1,13 @@
+pkgbase = ruby-qt6-rice
+	pkgdesc = Extend the Rice library with support for the Qt framework.
+	pkgver = 6.3.0
+	pkgrel = 1
+	url = https://github.com/souk4711/ruby-qt6
+	arch = x86_64
+	license = LGPL-3.0-only WITH LGPL-3.0-linking-exception
+	depends = ruby
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ruby-qt6-rice-6.3.0.gem
+	sha256sums = 16bd9593e4b3bdd0c12ee443c0f5335dd62c9f94a0fd4398b40a9de5e344372a
+
+pkgname = ruby-qt6-rice
