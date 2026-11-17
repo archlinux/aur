@@ -1,7 +1,7 @@
 # Maintainer: sunnysab <i@sunnysab.cn>
 pkgname=intel-xpu-smi-bin
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 # The build version part from the filename
 _buildver=1.24.04
 pkgdesc="Intel XPU SMI - CLI tool for Intel XPU Manager (Binary, Daemon-less)"
@@ -24,7 +24,7 @@ conflicts=('intel-xpumanager' 'intel-xpumanager-bin' 'intel-xpu-smi')
 provides=('intel-xpu-smi')
 
 source=("https://github.com/intel/xpumanager/releases/download/v${pkgver}/xpu-smi_${pkgver}-${_buildver}_amd64.deb")
-sha256sums=('eb30a37967b404c83b4b2ddd76b6a927ef8c25961d672e1ff0c0bc4633f795f0')
+sha256sums=('f952cdd1c90d784c6d9066f4de1fa9716a37c69587fa4892002da4eb56010cb3')
 
 package() {
     msg2 "Extracting data.tar.zst..."
