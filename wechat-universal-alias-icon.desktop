@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=WeChat
+Exec=/usr/lib/wechat-universal/start.sh %u
+Icon=wechat-universal
+NoDisplay=true
+X-KDE-AliasFor=wechat-universal

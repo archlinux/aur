@@ -90,8 +90,21 @@ try_start() {
         echo "Info: Generated XAUTHORITY at '${XAUTHORITY}'"
     fi
 
-    # wechat-universal only supports xcb
-    export QT_QPA_PLATFORM=xcb \
+    local WAYLAND_SOCKET=''
+    if [[ -n "${WAYLAND_DISPLAY}" ]]; then
+        WAYLAND_SOCKET="${WAYLAND_DISPLAY}"
+        [[ "${WAYLAND_SOCKET}" == /* ]] || WAYLAND_SOCKET="${XDG_RUNTIME_DIR}/${WAYLAND_SOCKET}"
+    fi
+
+    # WeChat uses native desktop notifications on Wayland.
+    if [[ -z "${QT_QPA_PLATFORM}" ]]; then
+        if [[ -S "${WAYLAND_SOCKET}" ]]; then
+            QT_QPA_PLATFORM=wayland
+        else
+            QT_QPA_PLATFORM=xcb
+        fi
+    fi
+    export QT_QPA_PLATFORM \
         QT_AUTO_SCREEN_SCALE_FACTOR=1 \
         PATH="/sandbox:${PATH}"
 
@@ -222,6 +235,15 @@ try_start() {
         --ro-bind "${DBUS_SESSION_BUS_PATH}"{,}
         --ro-bind "${XDG_RUNTIME_DIR}/pulse"{,}
     )
+
+    if [[ -S "${WAYLAND_SOCKET}" ]]; then
+        BWRAP_ARGS+=(
+            --ro-bind-try "${WAYLAND_SOCKET}"{,}
+            # Fcitx Qt draws its Wayland candidate window in the client process.
+            --ro-bind-try "${XDG_CONFIG_HOME:-${HOME}/.config}/fcitx5/conf/classicui.conf"{,}
+            --ro-bind-try "${XDG_DATA_HOME:-${HOME}/.local/share}/fcitx5/themes"{,}
+        )
+    fi
 
     case "${WECHAT_MULTIPLE_INSTANCE}" in
     '')

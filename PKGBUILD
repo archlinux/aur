@@ -5,7 +5,7 @@
 _pkgname=wechat-universal
 pkgname=${_pkgname}-bwrap
 pkgver=4.1.13.26
-pkgrel=1
+pkgrel=2
 pkgdesc="WeChat (Universal) with bwrap sandbox"
 arch=('x86_64' 'aarch64' 'loong64')
 url='https://linux.weixin.qq.com/'
@@ -52,6 +52,7 @@ _lib_uos='libuosdevicea'
 source=(
     "${_pkgname}.sh"
     "${_pkgname}.desktop"
+    "${_pkgname}-alias-icon.desktop"
     "${_lib_uos}".{c,Makefile}
     'wechat-license'
 )
@@ -67,8 +68,9 @@ source_loong64=("${_deb_prefix}loong64.deb::${_deb_url_common}LoongArch.deb")
 noextract=("${_deb_prefix}"{x86_64,aarch64,loong64}.deb )
 
 sha256sums=(
-    '7f9dc40071b1a85c54cb199f87f5a0ce2106a4d1b742735539e3bdae5248da4d'
+    '4c0b62a2d5bcaab2ff23b759801a4c22c4396fdbc95a29e6496987a4eae4860e'
     '0563472cf2c74710d1fe999d397155f560d3ed817e04fd9c35077ccb648e1880'
+    '93f5363c956b7d13e0408e14fe97abe936916da8d4adf414e74ad334e308f37c'
     'fc3ce9eb8dee3ee149233ebdb844d3733b2b2a8664422d068cf39b7fb08138f8'
     'f05f6f907898740dab9833c1762e56dbc521db3c612dd86d2e2cd4b81eb257bf'
     '898ebc397583d111db9a337e9d09aaee2f795fcd720e65cab5ce0e92efcd8f10'
@@ -153,7 +155,11 @@ package() {
 
     echo 'Installing desktop files...'
     install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-
+    if [[ "${WECHAT_ALIAS_ICON}" == 'yes' ]]; then
+        # Plasma resolves WeChat's hardcoded desktop-entry=wechat to get the app icon.
+        # This however conflicts with non-wrap version, so don't install the icon by default
+        install -Dm644 "${_pkgname}-alias-icon.desktop" "${pkgdir}/usr/share/applications/${_upstream_name}.desktop"
+    fi
     echo 'Installing license...'
     install -Dm644 {,"${pkgdir}/usr/share/licenses/${_pkgname}/"}wechat-license
 }
