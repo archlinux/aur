@@ -7,7 +7,7 @@ pkgbase=${_pkgname}-bin
 pkgname=(${_pkgname}-bin ${_pkgname}-server-bin)
 pkgdesc="Tasks, boards & notes for the command-line habitat"
 
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -39,10 +39,10 @@ sha256sums=('e49b81d6927bf77baea7a0e938a04f3992082973d83326cd7f22d4ee9880b800'
             'd1c038eac716e6909c28063b6042dc1152408d937cf68fc2f836e524cebacc0a'
             '2045fddabe0a90c3ed2bd6c34e4b02376a579ed4aa8cad204a2a3ee7308c264a'
             'b316e800f1ff5cf46477e6464c7749b214c03dadc85571c6758e4fa6584c6708')
-sha256sums_x86_64=('d2eba1d656f9664cc33916bd02df63674d6bcc87af7ba2da513b476bedfa906e'
-                   '785eba1ed911558166ac2d3d9b15fdac842fe17d0de0e540f7512abed988eb26')
-sha256sums_aarch64=('84313a87ec10955686b9a6146014c93e8f02929d8021170d7255fbf32ae2212e'
-                    'a6390f5cd9308b3708a9de4a122bbaeb6076eaf7da0fca0b31df9c722d22be81')
+sha256sums_x86_64=('0e4a56627272e70a8ca836367596acad46844680846edf4e1284f36d1ad3c241'
+                   '654bf7178059f572108ba534d11681f5ad5021a6733cec66cf1835e197df4a36')
+sha256sums_aarch64=('6bcb982eecccabb4434a6af5ae53a5fd8cb59c055311508c3ec631d4a14d6ee2'
+                    '28e59c1ee6570676f38ada303d86d79fd52e56ed96c0b7c94ef50aa4534c3e90')
 
 
 package_taskbook-bin() {
