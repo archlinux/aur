@@ -1,0 +1,20 @@
+pkgbase = ggml-aie
+	pkgdesc = Tensor library for machine learning (with AMD XDNA/AIE2 NPU backend)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/malwareslayer/ggml-aie
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = ggml>=0.29.0
+	depends = llama-cpp
+	depends = xrt=1:2.21.75
+	depends = xrt-plugin-amdxdna=1:2.21.75
+	source = ggml-aie::git+https://github.com/malwareslayer/ggml-aie.git#tag=v0.3.0
+	source = ggml-0.29.0.tar.gz::https://codeload.github.com/ggml-org/ggml/tar.gz/refs/tags/v0.29.0
+	sha256sums = SKIP
+	sha256sums = b08d30d6685c5c90908e38dc279439fcc662b3b3f5a38c7bb2b447a31642c0f6
+
+pkgname = ggml-aie
