@@ -19,11 +19,9 @@ makedepends=(
 )
 source=(
   "http://df.zweistein.cz/soundsense/soundSense_${_pkgver}.zip"
-  soundsense.install
   soundsense.tmpfiles
 )
 sha256sums=('4b8771e36b3ec6c36a7f5447b05638418636c0ae6e90049568737f999f3f0850'
-            'fe554352d1224146736ded6e3bcf3319c286291828b192c9727cd185e0bd74c6'
             'a427bbd72061139654d6e14832c0a664657d98519705fa5a5544fb2b16326c56')
 
 DEST='/opt/soundsense'
