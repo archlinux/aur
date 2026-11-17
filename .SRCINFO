@@ -5,7 +5,10 @@ pkgbase = sable-web
 	url = https://git.sable.moe/SableClient/sable-next
 	arch = any
 	license = AGPL-3.0
-	makedepends = mise
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = rust-wasm
+	makedepends = binaryen
 	source = sable-26.11.2.tar.gz::https://git.sable.moe/SableClient/sable-next/archive/v26.11.2.tar.gz
 	sha512sums = 93cf13e23d6ac4b91b83d39e5c9c2e11b41ce226a76e0cade660c2efc0e65a2490acb2a75e7ed7daf05d685064ba343466db3f637adfab206a620f28119c3f60
 
