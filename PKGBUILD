@@ -2,7 +2,7 @@
 # Contributor: Jacqueline Fisher <jcfisher@reality-overwritten.net>
 pkgname=postybirb
 _pkgname=PostyBirb
-pkgver=4.1.6
+pkgver=4.1.7
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -32,7 +32,7 @@ source=(
     "${pkgname}.js"
 	"${pkgname}.sh"
 )
-sha256sums=('a6014d8052091ce770ea9a745a80c3495610aa55ae79db5bfc5063ea1b5f7f84'
+sha256sums=('9c3e223e7aa703924554306a7e1085b7c96e97ce710cca4255b45bfd8cc0f70b'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
