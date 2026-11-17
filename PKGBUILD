@@ -3,25 +3,26 @@
 # Contributor: DeedleFake <yisszev at beckforce dot com>
 
 pkgname=srb2-legacy-data
-pkgver=2.1.25
-pkgrel=2
+pkgver=2.1.30
+pkgrel=1
 pkgdesc="Data files for Sonic Robo Blast 2 2.1 (srb2-legacy specific install directory)"
 arch=('any')
 license=('custom')
-url='https://www.srb2.org'
-makedepends=("git-lfs")
-source=("git+https://git.do.srb2.org/STJr/srb2assets-public.git#commit=5c9cab509dcc3389cf9bddf55dd168840e62e315")
-sha256sums=('96ffdd8899334e0550834d42785d5e86ca95c70461c61464f714f71d32befdf9')
+url='https://codeberg.org/srb2-preservation/assets'
+makedepends=('git' 'git-lfs')
+source=("git+https://codeberg.org/srb2-preservation/assets.git#commit=1af2863f5755481c672b7a3a35ccd2133cc80b89")
+sha256sums=('888ae746201e48951c28a00de5bb617e8d4460135c932a467e53f1b69041ce3a')
 
 prepare() {
-  cd "$srcdir"/srb2assets-public
+  cd "$srcdir"/assets
+  # the clone's origin is makepkg's local mirror, which has no LFS objects
+  git config lfs.url https://codeberg.org/srb2-preservation/assets.git/info/lfs
   git lfs install --local
-  git remote add srb2assets-public https://git.do.srb2.org/STJr/srb2assets-public.git
-  git lfs pull srb2assets-public
+  git lfs pull
 }
 
 package() {
-  cd "$srcdir"/srb2assets-public
+  cd "$srcdir"/assets
   install -d "$pkgdir"/usr/share/games/srb2-legacy
-  install -m644 {music,player,rings,zones,patch}.dta srb2.srb "$pkgdir"/usr/share/games/srb2-legacy
+  install -m644 {music,player,rings,zones,patch}.dta srb2.srb legacy.pk3 "$pkgdir"/usr/share/games/srb2-legacy
 }

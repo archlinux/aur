@@ -1,12 +1,13 @@
 pkgbase = srb2-legacy-data
 	pkgdesc = Data files for Sonic Robo Blast 2 2.1 (srb2-legacy specific install directory)
-	pkgver = 2.1.25
-	pkgrel = 2
-	url = https://www.srb2.org
+	pkgver = 2.1.30
+	pkgrel = 1
+	url = https://codeberg.org/srb2-preservation/assets
 	arch = any
 	license = custom
+	makedepends = git
 	makedepends = git-lfs
-	source = git+https://git.do.srb2.org/STJr/srb2assets-public.git#commit=5c9cab509dcc3389cf9bddf55dd168840e62e315
-	sha256sums = 96ffdd8899334e0550834d42785d5e86ca95c70461c61464f714f71d32befdf9
+	source = git+https://codeberg.org/srb2-preservation/assets.git#commit=1af2863f5755481c672b7a3a35ccd2133cc80b89
+	sha256sums = 888ae746201e48951c28a00de5bb617e8d4460135c932a467e53f1b69041ce3a
 
 pkgname = srb2-legacy-data
