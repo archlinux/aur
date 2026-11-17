@@ -1,0 +1,20 @@
+pkgbase = wechat-kages-bin
+	pkgdesc = This software supports WeChat multi-opening under the Linux system, which can be opened indefinitely.
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://bbs.deepin.org/zh/post/295083
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = wechat-bin
+	provides = wechat-kages=4.0
+	conflicts = wechat-kages
+	options = !strip
+	source_aarch64 = wechat-kages-4.0-aarch64.deb::https://github.com/kota-rina3/hokeshi/releases/download/wechat-kages-4.0/otohime.wechat.kages_4.0_arm64.deb
+	sha256sums_aarch64 = ad7c9493a8285b19b89b311cdf7b4e4357c5f56a1aa0f7404bf5de7f035230c1
+	source_x86_64 = wechat-kages-4.0-x86_64.deb::https://github.com/kota-rina3/hokeshi/releases/download/wechat-kages-4.0/otohime.wechat.kages_4.0_amd64.deb
+	sha256sums_x86_64 = be709ddbc64872ddcc2ef7041d6db9689622e58cee77db6c609c6e8e95184011
+
+pkgname = wechat-kages-bin
