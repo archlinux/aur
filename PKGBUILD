@@ -3,7 +3,7 @@
 # GapGPT all rights reserved ©
 
 pkgname=gapgpt-desktop-bin
-pkgver=1.3.22
+pkgver=1.3.25
 pkgrel=1
 pkgdesc="GapGPT desktop AI workspace with a local GapCode agent server (unofficial package)"
 arch=('x86_64' 'aarch64')
@@ -37,8 +37,8 @@ options=('!strip' '!debug')
 _base=https://gapgpt.ir/releases/app/desktop
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_base}/linux/${pkgver}/GapGPT_${pkgver}_amd64.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_base}/linux-arm64/${pkgver}/GapGPT_${pkgver}_arm64.deb")
-sha512sums_x86_64=('fa4a2f93e072752c26e1797ad5eb461fea626cf22b959b26eef8ffaa42ab12eea007231d771d04aa33a85d88922351019acbba0f4cbf5cab51b0f9ef7720e512')
-sha512sums_aarch64=('54e0852965fc25d564ac267d458d9ca24aadf941f144f26f20817eef61d51d084730969aa0e9a81ab19051a53316f2dfd71c20402ac03eb9b798e75f5254824d')
+sha512sums_x86_64=('d162ffd7cef87c19183b71f08cb7fffa60ac6e317ced15f839ad26cb05f9efaad478b96ac3504e5c7d340a97f26422c7519cdc0284d46e4b15c85e5a8363df9c')
+sha512sums_aarch64=('430a1b0094253b671e1a5db11a9bffb6898ffca36e740fb19529e136e9500da2cb1cef55cc3c6f3fdc39c81c15b1a578cf1726ef0e21aa70c7e1cd25b67a1515')
 noextract=("${pkgname}-${pkgver}-${CARCH}.deb")
 
 package() {
