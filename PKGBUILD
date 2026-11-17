@@ -119,80 +119,52 @@
 # 
 # 
 # ————————————————————————————— PKGBUILD —————————————————————————————————
+_pkgname=chatto-desktop
 pkgname=chatto-desktop-bin
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Team and group chat desktop application'
-arch=('x86_64' 'arm64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/chattocorp/chatto"
-license=('AGPL-3.0',' Apache-2.0',' MIT',' OFL',' Unicode')
-provides=('chatto-desktop')
-conflicts=('chatto-desktop')
-depends=('vulkan-icd-loader')
-source_x86_64=("https://github.com/chattocorp/chatto/releases/download/v${pkgver}/${provides}_${pkgver}_Linux_X64.tar.gz")
-source_arm64=("https://github.com/chattocorp/chatto/releases/download/v${pkgver}/${provides}_${pkgver}_Linux_ARM64.tar.gz")
-source=('chatto-desktop.desktop')
-install='chatto-desktop.install'
+license=('AGPL-3.0-or-later' 'Apache-2.0' 'MIT' 'OFL-1.1' 'Unicode-DFS-2016')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'glib2' 'glibc' 'gtk3'
+         'hicolor-icon-theme' 'libcups' 'libgcc' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext'
+         'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa' 'nspr' 'nss' 'pango'
+         'systemd-libs' 'vulkan-icd-loader')
+options=('!strip' '!debug')
+source=("${_pkgname}.desktop")
+source_x86_64=("https://github.com/chattocorp/chatto/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_X64.tar.gz")
+source_aarch64=("https://github.com/chattocorp/chatto/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_ARM64.tar.gz")
+sha256sums=('1cf89029fc7da60e0e1b5d1d9b2af120a65baf904e7d4509282d16e18a8d8b7e')
 sha256sums_x86_64=('40d01de1a3f6a230f69f6369ddb3bf03734ee9eb6547c26b4ee1163325ecebc4')
-sha256sums_arm64=('a1aaeb591ef6c3b29b9454b2b2f09cb0d72fdc88249e688f9124888361fc92ba')
-sha256sums=('43e3c9b72fc187f6c0b3c9515369513258426c0642e202982efac337e43eb84f')
+sha256sums_aarch64=('a1aaeb591ef6c3b29b9454b2b2f09cb0d72fdc88249e688f9124888361fc92ba')
 
-package() {  
-    bsdtar -C "${pkgdir}" -xf ${provides}_${pkgver}_*.tar.gz
-    _licenses=$(printf "%s\n" $(ls ${pkgdir}/${provides}/resources/LICENSES/))
-    _libvk_swiftshader="libvk_swiftshader.so"
-    _libffmpeg="libffmpeg.so"
-    _libvulkan="libvulkan.so.1"
-    _icons_dir_src="resources/build/icons"
-    _icons_dir_dst="usr/share/icons/hicolor"
+package() {
+    cd "${srcdir}/${_pkgname}"
 
-    #---------------- LIBRARIES
-    install "${pkgdir}/${provides}/${_libvk_swiftshader}" -Dm755 -t "${pkgdir}/usr/lib/${provides}/"
-    install "${pkgdir}/${provides}/${_libffmpeg}" -Dm755 -t "${pkgdir}/usr/lib/${provides}/"
+    #---------------- /OPT (app incl. libffmpeg.so, libvk_swiftshader.so and resources/build/icons)
+    install -dm755 "${pkgdir}/opt/${_pkgname}"
+    cp -r --preserve=timestamps . "${pkgdir}/opt/${_pkgname}/"
+    # use the system Vulkan loader (vulkan-icd-loader)
+    rm "${pkgdir}/opt/${_pkgname}/libvulkan.so.1"
 
     #---------------- LICENSES
-    mapfile -t _licenses_list <<< ${_licenses[0]}
-    _licenses_list=$(printf "%s\n" "${_licenses_list[*]}")
-
-    for license in ${_licenses_list[@]} ; do 
-      install "${pkgdir}/${provides}/resources/LICENSES/${license}" -Dm644 -t "${pkgdir}/usr/share/licenses/${provides}/"
-    done
-    install "${pkgdir}/${provides}/LICENSE" -m 644 "${pkgdir}/usr/share/licenses/${provides}/${provides}_license.txt"
-    install "${pkgdir}/${provides}/LICENSES.chromium.html" -Dm644 -t "${pkgdir}/usr/share/licenses/${provides}/"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" \
+        resources/LICENSES/* LICENSES.chromium.html
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/electron_license.txt"
 
     #---------------- ICONS
-    mkdir -p "${pkgdir}/$_icons_dir_dst/32x32/apps"
-    mkdir -p "${pkgdir}/$_icons_dir_dst/96x96/apps"
-    mkdir -p "${pkgdir}/$_icons_dir_dst/180x180/apps"
-    mkdir -p "${pkgdir}/$_icons_dir_dst/192x192/apps"
-    mkdir -p "${pkgdir}/$_icons_dir_dst/512x512/apps"
-    mkdir -p "${pkgdir}/$_icons_dir_dst/192x192@2/apps"
-    mkdir -p "${pkgdir}/$_icons_dir_dst/512x512@2/apps"
+    local _icons="resources/build/icons" _hicolor="${pkgdir}/usr/share/icons/hicolor"
+    install -Dm644 "${_icons}/favicon.png"            "${_hicolor}/32x32/apps/${_pkgname}.png"
+    install -Dm644 "${_icons}/notification-badge.png" "${_hicolor}/96x96/apps/${_pkgname}.png"
+    install -Dm644 "${_icons}/apple-touch-icon.png"   "${_hicolor}/180x180/apps/${_pkgname}.png"
+    install -Dm644 "${_icons}/icon-192.png"           "${_hicolor}/192x192/apps/${_pkgname}.png"
+    install -Dm644 "${_icons}/icon-512.png"           "${_hicolor}/512x512/apps/${_pkgname}.png"
 
-    install "${pkgdir}/${provides}/$_icons_dir_src/favicon.png" -m 644 "${pkgdir}/$_icons_dir_dst/32x32/apps/${provides}.png"
-    install "${pkgdir}/${provides}/$_icons_dir_src/notification-badge.png" -m 644 "${pkgdir}/$_icons_dir_dst/96x96/apps/${provides}.png"
-    install "${pkgdir}/${provides}/$_icons_dir_src/apple-touch-icon.png" -m 644 "${pkgdir}/$_icons_dir_dst/180x180/apps/${provides}.png"
-    install "${pkgdir}/${provides}/$_icons_dir_src/icon-192.png" -m 644 "${pkgdir}/$_icons_dir_dst/192x192/apps/${provides}.png"
-    install "${pkgdir}/${provides}/$_icons_dir_src/icon-512.png" -m 644 "${pkgdir}/$_icons_dir_dst/512x512/apps/${provides}.png"
-    install "${pkgdir}/${provides}/$_icons_dir_src/icon-maskable-192.png" -m 644 "${pkgdir}/$_icons_dir_dst/192x192@2/apps/${provides}.png"
-    install "${pkgdir}/${provides}/$_icons_dir_src/icon-maskable-512.png" -m 644 "${pkgdir}/$_icons_dir_dst/512x512@2/apps/${provides}.png"
-
-    #---------------- DESKTOP
-    install "${provides}.desktop" -Dm644 -t "${pkgdir}/usr/share/applications/"
-    
-    #---------------- /OPT
-    mkdir "${pkgdir}/opt/"
-    cp --preserve=timestamps -r "${pkgdir}/${provides}" "${pkgdir}/opt/"
-
-    rm "${pkgdir}/opt/${provides}/resources/NOTICE" "${pkgdir}/opt/${provides}/LICENSE" "${pkgdir}/opt/${provides}/LICENSES.chromium.html"
-    rm "${pkgdir}/opt/${provides}/resources/LICENSE" "${pkgdir}/opt/${provides}/resources/LICENSES.chromium.html"
-    rm "${pkgdir}/opt/${provides}/${_libvk_swiftshader}" "${pkgdir}/opt/${provides}/${_libffmpeg}" "${pkgdir}/opt/${provides}/${_libvulkan}"
-    rm -r "${pkgdir}/opt/${provides}/resources/LICENSES" "${pkgdir}/opt/${provides}/resources/build/icons"
-    rm -r "${pkgdir}/${provides}"
-
-
-    #---------------- SYMBOLIC LINK
-    mkdir "${pkgdir}/usr/bin"
-    ln -s "/opt/${provides}/${provides}" "${pkgdir}/usr/bin/${provides}"
-    chmod 711 "${pkgdir}/opt/${provides}"
+    #---------------- DESKTOP + LAUNCHER
+    install -Dm644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }

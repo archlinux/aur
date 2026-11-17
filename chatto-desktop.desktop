@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Chatto
-GenericName=Internet Messager
+GenericName=Internet Messenger
 Exec=/usr/bin/chatto-desktop %U
 Terminal=false
 Type=Application
