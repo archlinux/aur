@@ -1,4 +1,4 @@
-pkgbase = openrsat
+pkgbase = openrsat-qt6
 	pkgdesc = Open source RSAT alternative to manage Active Directory and Samba AD (Qt6)
 	pkgver = 0.4.519
 	pkgrel = 1
@@ -26,6 +26,8 @@ pkgbase = openrsat
 	depends = openssl
 	depends = qt6pas
 	depends = zlib
+	provides = openrsat=0.4.519
+	conflicts = openrsat
 	noextract = mormot2static-2.4-stable.tgz
 	options = !debug
 	source = git+https://github.com/tranquilit/OpenRSAT.git#tag=v0.4.519
@@ -49,4 +51,4 @@ pkgbase = openrsat
 	sha256sums = 6d34794464bcc26a71f4934c0985dc8294c95709c286de9538dcedab23a53783
 	sha256sums = 33c67911327794d36f173e205a6e287f02a7ef070ea63f909db19924325d9188
 
-pkgname = openrsat
+pkgname = openrsat-qt6

@@ -1,4 +1,4 @@
-[openrsat]
+[openrsat-qt6]
 source = "github"
 github = "tranquilit/OpenRSAT"
 use_latest_release = true

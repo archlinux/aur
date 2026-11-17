@@ -1,6 +1,7 @@
 # Maintainer: executter <executter at hotmail dot com>
 
-pkgname=openrsat
+pkgname=openrsat-qt6
+_pkgname=openrsat
 pkgver=0.4.519
 pkgrel=1
 pkgdesc='Open source RSAT alternative to manage Active Directory and Samba AD (Qt6)'
@@ -51,6 +52,8 @@ makedepends=(
   'git'
   'lazarus'
 )
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 # The upstream build mode disables debug information and strips (-Xs).
 # FPC 3.2.2 cannot produce PIE executables.
 options=('!debug')
