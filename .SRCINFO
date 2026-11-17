@@ -1,0 +1,24 @@
+pkgbase = baler-bin
+	pkgdesc = A Cargo-style package manager for {box} modules
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/baler-dev/baler
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	conflicts = baler
+	options = !debug
+	source_x86_64 = baler-bin-0.1.1-x86_64.tar.gz::https://github.com/baler-dev/baler/releases/download/v0.1.1/baler-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = LICENSE::https://raw.githubusercontent.com/baler-dev/baler/refs/tags/v0.1.1/LICENSE.md
+	provides_x86_64 = baler=0.1.1
+	sha256sums_x86_64 = da8fa994c20fd4c4d77a37d53b3c2f0e7b0476afda70042b8d7f2abd710bd8eb
+	sha256sums_x86_64 = ec04d5f03c96b3c4bd5afec05f4f73536ae26765323747e5969a0760809cdc93
+	source_aarch64 = baler-bin-0.1.1-aarch64.tar.gz::https://github.com/baler-dev/baler/releases/download/v0.1.1/baler-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = LICENSE::https://raw.githubusercontent.com/baler-dev/baler/refs/tags/v0.1.1/LICENSE.md
+	provides_aarch64 = baler=0.1.1
+	sha256sums_aarch64 = abeececfd86c93cfb1c85243da115f8f36330f783f7e0d2bb11f38dc125b12be
+	sha256sums_aarch64 = ec04d5f03c96b3c4bd5afec05f4f73536ae26765323747e5969a0760809cdc93
+
+pkgname = baler-bin
