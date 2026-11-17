@@ -1,0 +1,23 @@
+pkgbase = nvbeam-git
+	pkgdesc = Fast, native Neovim GUI client built with Qt6 and C++ (git)
+	pkgver = 0.2.10.r21.g7c2c129
+	pkgrel = 1
+	url = https://github.com/mareksamec/nvbeam
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = qt6-base
+	depends = qtermwidget
+	depends = syntax-highlighting
+	depends = neovim>=0.10
+	depends = hicolor-icon-theme
+	provides = nvbeam=0.2.10.r21.g7c2c129
+	conflicts = nvbeam
+	options = !lto
+	source = nvbeam::git+https://github.com/mareksamec/nvbeam.git
+	source = toml11-4.2.0.tar.gz::https://github.com/ToruNiina/toml11/archive/refs/tags/v4.2.0.tar.gz
+	sha256sums = SKIP
+	sha256sums = 9287971cd4a1a3992ef37e7b95a3972d1ae56410e7f8e3f300727ab1d6c79c2c
+
+pkgname = nvbeam-git
