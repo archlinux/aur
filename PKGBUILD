@@ -3,7 +3,7 @@
 # Mapleblox policy: every core, direct Vulkan, host-detected backend.
 
 pkgname=mapleblox-git
-pkgver=0.5.2.r290.g0000000
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Roblox runtime for Linux, tuned for maximum performance (Mapleblox fork)'
 arch=('x86_64')

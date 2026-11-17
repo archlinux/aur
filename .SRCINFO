@@ -1,6 +1,6 @@
 pkgbase = mapleblox-git
 	pkgdesc = Roblox runtime for Linux, tuned for maximum performance (Mapleblox fork)
-	pkgver = 0.5.2.r462.gd536d2a
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/MapleProjects/Mapleblox
 	arch = x86_64
