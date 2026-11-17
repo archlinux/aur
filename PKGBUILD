@@ -22,7 +22,7 @@ source=(
   'opentracker.service'
   'opentracker.sysusers'
   'opentracker.tmpfiles'
-  'LICENSE-opentracker'
+  'opentracker.license'
 )
 sha256sums=('fbac9eeaeb6ae81a24f89390cd09839e6e477f13b2bb9ac176e7b786003a750f'
             '6bd91237855a0ed06eeaf4182d565a9125dbf89f2dfb3e83b5607f7c9a89d00d'
@@ -50,5 +50,5 @@ package() {
   install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-  install -Dm644 "LICENSE-opentracker" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${pkgname}.license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
