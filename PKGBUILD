@@ -1,7 +1,7 @@
 # Maintainer: Viachaslau Khalikin <viachaslavic'at'outlook'dot'com>
 
 pkgname=icecat-ublock-origin
-pkgver=1.76.0
+pkgver=1.76.4
 pkgrel=1
 pkgdesc='Efficient blocker add-on for various browsers. Fast, potent, and lean'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 groups=('icecat-addons')
 makedepends=('git' 'npm' 'python' 'strip-nondeterminism' 'zip')
 source=("git+$url.git#commit=$pkgver?signed")
-b2sums=('7314dfd604a31b239d786143e0b25b313fbf7783ea1af7407fae9c78a91be294bc9cb8995e6c025ab566340aea53d9090a548d2022ff4f0679e7f8681ff8b8a5')
+b2sums=('cbc1d1a515d8406269c8257021bd72b5f8a9c083626536896c61736d00819eafd9136a46d252e97edcd6fd96a04b9709664872a47d92138cba4be68a1b89c4fc')
 validpgpkeys=('91BFC93FDEC1D00C365C061EF5630CAE62A14316')  # Raymond Hill <rhill@raymondhill.net>
 
 build() {
