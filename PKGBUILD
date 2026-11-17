@@ -2,7 +2,7 @@
 
 _pkgname=nmrpflash
 pkgname=${_pkgname}-bin
-pkgver=0.9.27
+pkgver=0.9.28
 pkgrel=1
 pkgdesc="Netgear Unbrick Utility"
 license=('GPL3')
@@ -11,9 +11,9 @@ url="https://github.com/jclehner/nmrpflash"
 depends=('libpcap' 'libnl>=3')
 source=("https://github.com/jclehner/nmrpflash/releases/download/v$pkgver/nmrpflash-$pkgver-linux-x86_64.zip"
         "LICENSE::https://raw.githubusercontent.com/jclehner/nmrpflash/v$pkgver/LICENSE")
-sha256sums=('77f4d3559284367595b63f5f7be8dada25465983e1bbde5afe182abfeb6f4095'
+sha256sums=('fbb954bee2d067ff523fe68b3633b4fa6253b50a2b3ea245d3f013c7e69b28bf'
             '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
-b2sums=('d44b1bbb3fb29fac9cdc0e32c7e6b99370e2b8eea1d45c65992f797589d7707d0edc35eb3cedcaab2055711d68b97ace822d1b2a58e65ddcefb446e620d70e84'
+b2sums=('06837c6f217b757857cf40d9c68cc050e9e1f139436473451c0d43b12bed27c783538eed676d6efc69ba3a2eaa8e84be48b5be07ae18681814ddf86fe59c0520'
         'ab7e38fc42fb6686add7393ecc3c7ec622cc0d72d0304ded3e56c2f96dc8433c584520896a30c037affa44461ecccfaf3ffa4a97a7e050e8ed0ec4c592caa45c')
 
 package() {
