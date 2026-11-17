@@ -1,7 +1,7 @@
 pkgbase = texlive-emono
 	pkgdesc = Monochrome emoji fonts for pdfTeX and LaTeX
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gitlab.com/arkades.org/emono
 	install = texlive-emono.install
 	arch = any
@@ -13,6 +13,6 @@ pkgbase = texlive-emono
 	depends = texlive-bin
 	depends = texlive-latex
 	source = emono-0.1.1.tar.gz::https://gitlab.com/arkades.org/emono/-/archive/v0.1.1/emono-v0.1.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = 7e9d197dbb3d89b40d9aeb4191e4bdcfdb9a1d6f74869f429822e46121f40be1
 
 pkgname = texlive-emono

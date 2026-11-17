@@ -3,7 +3,7 @@
 pkgname=texlive-emono
 _pkgname=emono
 pkgver=0.1.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Monochrome emoji fonts for pdfTeX and LaTeX'
 arch=('any')
 url='https://gitlab.com/arkades.org/emono'
@@ -22,7 +22,7 @@ install=texlive-emono.install
 source=(
   "${_pkgname}-${pkgver}.tar.gz::https://gitlab.com/arkades.org/emono/-/archive/v${pkgver}/emono-v${pkgver}.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('7e9d197dbb3d89b40d9aeb4191e4bdcfdb9a1d6f74869f429822e46121f40be1')
 
 build() {
   cd "${srcdir}/emono-v${pkgver}"
@@ -35,8 +35,8 @@ build() {
 package() {
   cd "${srcdir}/emono-v${pkgver}"
 
-  install -dm755 "${pkgdir}/usr/share/texmf-dist"
-  cp -a build/texmf/. "${pkgdir}/usr/share/texmf-dist/"
+  install -dm755 "${pkgdir}/usr/share/texmf"
+  cp -a build/texmf/. "${pkgdir}/usr/share/texmf/"
 
   install -dm755 "${pkgdir}/usr/share/licenses/${_pkgname}"
   if [[ -f OFL.txt ]]; then
