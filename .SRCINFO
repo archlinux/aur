@@ -1,6 +1,6 @@
 pkgbase = sweetlock-bin
 	pkgdesc = Screen locker for Wayland
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/sweetwm/sweetlock
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = sweetlock-bin
 	optdepends = noto-fonts: the default font
 	optdepends = fprintd: fingerprint unlock
 	optdepends = pam-u2f: security key unlock
-	provides = sweetlock=0.1.0
+	provides = sweetlock=0.1.1
 	conflicts = sweetlock
 	options = !debug
 	backup = etc/pam.d/sweetlock
-	source_x86_64 = sweetlock-0.1.0-x86_64-linux.tar.xz::https://github.com/sweetwm/sweetlock/releases/download/v0.1.0/sweetlock-0.1.0-x86_64-linux.tar.xz
-	sha256sums_x86_64 = a30a38fd31ea3e41348e3897b5f68667b7d40b866fb80e99ecc18f64c02ef8bc
+	source_x86_64 = sweetlock-0.1.1-x86_64-linux.tar.xz::https://github.com/sweetwm/sweetlock/releases/download/v0.1.1/sweetlock-0.1.1-x86_64-linux.tar.xz
+	sha256sums_x86_64 = b57330e4883720393c7e27a165bfd9874229b837d0dac6581704d2204f47f2c6
 
 pkgname = sweetlock-bin

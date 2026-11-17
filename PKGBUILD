@@ -1,7 +1,7 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=sweetlock-bin
 _pkgname=sweetlock
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Screen locker for Wayland"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 backup=('etc/pam.d/sweetlock')
 source_x86_64=("$_pkgname-$pkgver-$CARCH-linux.tar.xz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-$CARCH-linux.tar.xz")
-sha256sums_x86_64=('a30a38fd31ea3e41348e3897b5f68667b7d40b866fb80e99ecc18f64c02ef8bc')
+sha256sums_x86_64=('b57330e4883720393c7e27a165bfd9874229b837d0dac6581704d2204f47f2c6')
 
 package() {
   # the tarball holds usr/ and etc/pam.d
