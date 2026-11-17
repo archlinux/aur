@@ -1,0 +1,5 @@
+[bosun-bin]
+source = "github"
+github = "yetidevworks/bosun"
+use_latest_release = true
+prefix = "v"

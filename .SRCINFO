@@ -1,0 +1,24 @@
+pkgbase = bosun-bin
+	pkgdesc = Tmux-native orchestrator for AI agent sessions
+	pkgver = 2.2.13
+	pkgrel = 1
+	url = https://github.com/yetidevworks/bosun
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = git
+	provides = bosun
+	conflicts = bosun
+	options = !strip
+	source = README-2.2.13.md::https://raw.githubusercontent.com/yetidevworks/bosun/v2.2.13/README.md
+	source = LICENSE-2.2.13::https://raw.githubusercontent.com/yetidevworks/bosun/v2.2.13/LICENSE
+	sha256sums = e787167ee71b9c37e3353c09bb211d137878615a11cdf7706819e8284874c6f9
+	sha256sums = c13c90e64ceabc5dfe6450da43bb2479cd026feed99338bff3391677c65e1c6a
+	source_x86_64 = bosun-x86_64-2.2.13.tgz::https://github.com/yetidevworks/bosun/releases/download/v2.2.13/bosun-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 71b510a00caee7c0a75583ba85f3b70cd7bb8f39881972f40f7e6e1f8f0bee01
+	source_aarch64 = bosun-aarch64-2.2.13.tgz::https://github.com/yetidevworks/bosun/releases/download/v2.2.13/bosun-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 3cf04755d6b94eee04f3d5e82e1c1728aca49eb1750b1ed9e306a3160d4a564b
+
+pkgname = bosun-bin
