@@ -10,7 +10,7 @@ _system_clang=1
 #_crubit_rev=20dc640430bd60ff2f7f8dbf69c311c5f807adde
 # The commit above cannot be built successfully, use the last known good commit for stable toolchain
 _crubit_rev=25d2c01bde904c3333bb2d48201e5cbb186a1c7f
-pkgdesc="Chromium with native Wayland Vulkan rendering and Vulkan Video decoding"
+pkgdesc="Chromium with native Wayland Vulkan rendering and Vulkan Video decoding/encoding"
 arch=('x86_64')
 url="https://github.com/lumexren/vulcanium"
 license=('BSD-3-Clause')
@@ -412,6 +412,13 @@ build() {
   # https://crbug.com/957519#c122
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
+  # Portable x86_64 release builds
+  if [[ -n ${VULCANIUM_PORTABLE:-} ]]; then
+    CFLAGS=${CFLAGS//-march=native/-march=x86-64 -mtune=generic}
+    CXXFLAGS=${CXXFLAGS//-march=native/-march=x86-64 -mtune=generic}
+    RUSTFLAGS=${RUSTFLAGS//-C target-cpu=native/}
+  fi
+
   if [[ $CARCH == aarch64 ]] || [[ $CARCH == riscv64 ]]; then
     # On aarch64 and riscv64, certain files (e.g. in libvpx and libyuv) needs to
     # be compiled with additional arch features (e.g. dotprod, sve, sme, rvv)
@@ -450,6 +457,33 @@ package() {
 set -euo pipefail
 
 declare -a _flags=()
+declare -a _enable_features=()
+declare -a _disable_features=()
+
+_push_flag() {
+  local tok="$1"
+  case "$tok" in
+    --enable-features=*)
+      local IFS=, feat
+      for feat in ${tok#--enable-features=}; do
+        case "$feat" in
+          VaapiOnNvidiaGPUs|VaapiVideoDecoder|VaapiVideoEncoder|VaapiVideoDecodeLinuxGL|AcceleratedVideoDecodeLinuxGL|"")
+            ;;
+          *)
+            _enable_features+=("$feat")
+            ;;
+        esac
+      done
+      ;;
+    --disable-features=*)
+      _disable_features+=("${tok#--disable-features=}")
+      ;;
+    *)
+      _flags+=("$tok")
+      ;;
+  esac
+}
+
 _read_flags() {
   local f="$1"
   [[ -f "$f" ]] || return 0
@@ -457,16 +491,29 @@ _read_flags() {
     line="${line%%#*}"
     [[ -n "${line//[[:space:]]/}" ]] || continue
     for tok in $line; do
-      _flags+=("$tok")
+      _push_flag "$tok"
     done
   done < "$f"
 }
 
 _read_flags "/etc/vulcanium/default-flags.conf"
 _read_flags "${XDG_CONFIG_HOME:-$HOME/.config}/vulcanium-flags.conf"
+for arg in "$@"; do
+  _push_flag "$arg"
+done
 
+_disable_features+=("VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiOnNvidiaGPUs,AcceleratedVideoDecodeLinuxGL")
+
+if (( ${#_enable_features[@]} > 0 )); then
+  _flags+=("--enable-features=$(IFS=,; echo "${_enable_features[*]}")")
+fi
+if (( ${#_disable_features[@]} > 0 )); then
+  _flags+=("--disable-features=$(IFS=,; echo "${_disable_features[*]}")")
+fi
+
+export CHROME_VERSION_EXTRA="vulcanium"
 export CHROME_WRAPPER="$(readlink -f "$0")"
-exec /usr/lib/vulcanium/vulcanium "${_flags[@]}" "$@"
+exec /usr/lib/vulcanium/vulcanium "${_flags[@]}"
 EOF
   chmod 755 "$pkgdir/usr/bin/vulcanium"
 

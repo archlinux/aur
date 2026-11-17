@@ -1,5 +1,5 @@
 pkgbase = vulcanium
-	pkgdesc = Chromium with native Wayland Vulkan rendering and Vulkan Video decoding
+	pkgdesc = Chromium with native Wayland Vulkan rendering and Vulkan Video decoding/encoding
 	pkgver = 157.0.8103.78
 	pkgrel = 1
 	url = https://github.com/lumexren/vulcanium
