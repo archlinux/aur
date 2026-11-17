@@ -35,7 +35,6 @@ RestartSec=10
 TimeoutStopSec=20
 SyslogIdentifier=lidarr
 ConfigurationDirectory=lidarr
-LogsDirectory=/var/lib/lidarr/logs
 RuntimeDirectory=lidarr
 StateDirectory=lidarr
 WorkingDirectory=/var/lib/lidarr
