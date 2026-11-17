@@ -1,6 +1,6 @@
 pkgbase = sofka
 	pkgdesc = Kubernetes TUI, reimagined in Rust
-	pkgver = 0.36.0
+	pkgver = 0.37.0
 	pkgrel = 1
 	url = https://github.com/nklmilojevic/sofka
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = sofka
 	makedepends = clang
 	depends = glibc
 	depends = libgcc
-	source = sofka-0.36.0.tar.gz::https://static.crates.io/crates/sofka/sofka-0.36.0.crate
+	source = sofka-0.37.0.tar.gz::https://static.crates.io/crates/sofka/sofka-0.37.0.crate
 	source = cc-wrapper.sh
-	sha256sums = 07b542cbb2aab85acc63b16e0a56954ec972ae7faad9da41ede63be94779810e
+	sha256sums = 75ecd3f4a0c63fd5cf737b14775634c48508b91b3a2a9b96cb2db3c1297c77c3
 	sha256sums = 5cb813a99ae932d5e1273a3a4f7d109c4db9e1dd1b406512c50862a00279f1f0
 
 pkgname = sofka
