@@ -3,7 +3,7 @@
 
 pkgname=alchitry-labs-beta-bin
 _pkgname=alchitry-labs-beta
-pkgver=2.0.62
+pkgver=2.0.63
 pkgrel=1
 pkgdesc='Alchitry Labs - The Easiest Way to Program FPGAs (Beta Binary Release)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('gmp' 'alsa-lib' 'glibc' 'libxi' 'libxtst')
 options=('!strip')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alchitry/Alchitry-Labs-V2-Beta/releases/download/$pkgver/alchitry-labs-beta-$pkgver-linux-amd64.tar.gz")
-sha256sums=("9f909555bccda6dd939fe5b4ee7e7127cf2d528bf30c6608487f8ccf0240c631")
+sha256sums=("909d92b074b9e323b71c1f32dd64a9a16edf1c5c354b993f8c8974b7f287a3d5")
 
 package() {
     local _appdir="/usr/lib/alchitry/${_pkgname}"
