@@ -1,4 +1,4 @@
-# Maintainer: mortacious
+# Maintainer: Felix Igelbrink
 # Upstream: https://github.com/ProtonLumo/lumo-desktop
 #
 # Version updates:
@@ -34,6 +34,5 @@ package() {
     cd "${srcdir}"
     ar p "Lumo_${pkgver}_amd64.deb" data.tar.gz | bsdtar -x -C "${pkgdir}"
 
-    # Ensure sane permissions in case the upstream archive ships odd ones
     chmod 755 "${pkgdir}/usr/bin/lumo-desktop"
 }
