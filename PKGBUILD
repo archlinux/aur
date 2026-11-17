@@ -1,7 +1,7 @@
 # Maintainer: ezhkov <alexcez94@gmail.com>
 pkgname=voltius-bin
 _pkgname=voltius
-pkgver=0.75.1
+pkgver=0.76.1
 pkgrel=1
 pkgdesc="Local-first SSH/SFTP/Serial client with E2EE sync, plugins, and no account required (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsecret' 'h
 makedepends=('dpkg')
 source_x86_64=("$pkgname-$pkgver.deb::https://github.com/VoltiusApp/voltius/releases/download/v$pkgver/Voltius_${pkgver}_amd64.deb")
 source_aarch64=("$pkgname-$pkgver.deb::https://github.com/VoltiusApp/voltius/releases/download/v$pkgver/Voltius_${pkgver}_arm64.deb")
-sha256sums_x86_64=('59fcf7ad2d7f03dade322e25b948e393b9b0d06337722f9f425087b800d57c65')
-sha256sums_aarch64=('59fcf7ad2d7f03dade322e25b948e393b9b0d06337722f9f425087b800d57c65')
+sha256sums_x86_64=('49b67deae20e9129a5a184d42911eabee3968c354e3d4fee18622d72890af68e')
+sha256sums_aarch64=('49b67deae20e9129a5a184d42911eabee3968c354e3d4fee18622d72890af68e')
 
 package() {
   dpkg-deb -x "$pkgname-$pkgver.deb" "$pkgdir"
