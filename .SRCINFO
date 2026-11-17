@@ -1,17 +1,27 @@
 pkgbase = aurodle-git
-	pkgdesc = An AUR helper that builds packages into a local repository
-	pkgver = r307.6d45d5a
+	pkgver = r414.deafaaf
 	pkgrel = 1
 	url = https://github.com/rmarquis/aurodle
 	arch = x86_64
 	license = MIT
+	makedepends = git
+	makedepends = pacman
 	makedepends = zig
 	makedepends = scdoc
-	depends = git
-	depends = pacman
-	provides = aurodle
-	conflicts = aurodle
 	source = aurodle::git+https://github.com/rmarquis/aurodle.git
 	sha256sums = SKIP
 
 pkgname = aurodle-git
+	pkgdesc = An AUR helper that builds packages into a local repository
+	depends = git
+	depends = pacman
+	provides = aurodle
+	conflicts = aurodle
+
+pkgname = pacsaur-git
+	pkgdesc = pacman's command line for official and AUR packages, built on aurodle
+	depends = aurodle
+	depends = git
+	depends = pacman
+	provides = pacsaur
+	conflicts = pacsaur
