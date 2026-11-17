@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=open-idea-server-bin
-pkgver=0.1.46
+pkgver=0.1.47
 pkgrel=1
 pkgdesc="OpenIDEA server - headless ACP agent backend for the OpenIDEA IDE"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=('!strip' '!debug')
 # Upstream ships the server as a gzip-compressed single ELF binary, not a tarball.
 source_x86_64=("openidea-server-linux-x86_64.gz::https://github.com/l0ng-ai/openidea/releases/download/v${pkgver}/openidea-server-linux-x86_64.gz")
 source_aarch64=("openidea-server-linux-aarch64.gz::https://github.com/l0ng-ai/openidea/releases/download/v${pkgver}/openidea-server-linux-aarch64.gz")
-sha256sums_x86_64=('b1258d52327b34d8034d3157bce13e0f05ef22e8c69825c39b4552ceb07ecbec')
-sha256sums_aarch64=('28bcc9cc972c2adc3fdeb83a8ff0879ce2501b8d0095625438ff67bc24a39354')
+sha256sums_x86_64=('aa8bd9740c873cb4fc5afbd12036355580cccf2eb987fba7de51e5b95a6f95f3')
+sha256sums_aarch64=('69bad838c137fafa167d6c7209110a89ef2e81570fdbd27aef8b803c1d2c8d26')
 
 package() {
     local _gz_x86_64="openidea-server-linux-x86_64.gz"
