@@ -1,7 +1,7 @@
 # Maintainer: huza <huzaifahasif3@gmail.com>
 pkgname=datacraft-bin
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight desktop client for SQL databases (precompiled release)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/javy-fernandez/datacraft'
@@ -11,9 +11,6 @@ depends=('dbus' 'sqlite' 'vulkan-icd-loader')
 optdepends=(
   'gnome-keyring: store database passwords in the Secret Service'
   'kwallet: store database passwords in the Secret Service'
-  'vulkan-radeon: Vulkan driver for AMD GPUs'
-  'vulkan-intel: Vulkan driver for Intel GPUs'
-  'nvidia-utils: Vulkan driver for NVIDIA GPUs'
 )
 provides=('datacraft')
 conflicts=('datacraft' 'datacraft-git')
