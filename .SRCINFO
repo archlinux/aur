@@ -1,0 +1,26 @@
+pkgbase = archive-utils
+	pkgdesc = Safe, predictable archive extractor (x) and creator (c) built on bsdtar, GNU tar, 7-Zip and zip
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://src.panahifar.ir/ahp/archive-utils
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	checkdepends = 7zip
+	checkdepends = binutils
+	checkdepends = unzip
+	checkdepends = zip
+	makedepends = go
+	depends = glibc
+	depends = libarchive
+	optdepends = 7zip: x for 7z, RAR and UDF ISO images; c for 7z
+	optdepends = zip: c for zip
+	optdepends = tar: c for tar archives (GNU tar)
+	optdepends = gzip: x for .gz and .Z; c for tar.gz
+	optdepends = bzip2: x for .bz2; c for tar.bz2
+	optdepends = xz: x for .xz and .lzma; c for tar.xz
+	optdepends = zstd: x for .zst; c for tar.zst
+	source = archive-utils-1.0.0.tar.gz::https://src.panahifar.ir/ahp/archive-utils/archive/v1.0.0.tar.gz
+	sha256sums = 7cbe821459737f4cdf5740670671e56d370e09ff73a80f92df5ce2c4a419af95
+
+pkgname = archive-utils
