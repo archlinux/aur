@@ -1,0 +1,25 @@
+pkgbase = python-pyiosbackup
+	pkgdesc = A python parser for iOS backups
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/matan1008/pyiosbackup
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-bpylist2
+	depends = python-cryptography
+	depends = python-packaging
+	depends = python-construct
+	depends = python-click
+	provides = python-pyiosbackup
+	conflicts = python-pyiosbackup
+	source = python-pyiosbackup::git+https://github.com/matan1008/pyiosbackup.git
+	sha256sums = SKIP
+
+pkgname = python-pyiosbackup
