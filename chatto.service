@@ -1,0 +1,37 @@
+[Unit]
+Description=Chatto chat server
+Documentation=https://docs.chatto.run
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=chatto
+Group=chatto
+ExecStart=/usr/bin/chatto run -c /etc/chatto/chatto.toml
+WorkingDirectory=/var/lib/chatto
+StateDirectory=chatto
+StateDirectoryMode=0750
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictSUIDSGID=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+LockPersonality=yes
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target

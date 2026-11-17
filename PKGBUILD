@@ -121,23 +121,33 @@
 # ————————————————————————————— PKGBUILD —————————————————————————————————
 pkgname=chatto-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fully-featured team and group chat application that you can easily selfhost'
-arch=('x86_64' 'arm64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/chattocorp/chatto"
-license=('AGPL-3.0')
+license=('AGPL-3.0-or-later')
 provides=('chatto')
 conflicts=('chatto')
-source_x86_64=("https://github.com/chattocorp/chatto/releases/download/v${pkgver}/chatto_Linux_x86_64.tar.gz")
-source_arm64=("https://github.com/chattocorp/chatto/releases/download/v${pkgver}/chatto_Linux_arm64.tar.gz")
+optdepends=('ffmpeg: video processing for uploaded videos')
+options=('!strip' '!debug')
+source=('chatto.service' 'chatto.sysusers' 'chatto.tmpfiles')
+source_x86_64=("chatto-${pkgver}-x86_64.tar.gz::https://github.com/chattocorp/chatto/releases/download/v${pkgver}/chatto_Linux_x86_64.tar.gz")
+source_aarch64=("chatto-${pkgver}-aarch64.tar.gz::https://github.com/chattocorp/chatto/releases/download/v${pkgver}/chatto_Linux_arm64.tar.gz")
+sha256sums=('2e8c3410f6696282ec05717c2c750ee4f290bdd6eabe9739375332ca79e036fb' '2468ea54a783718006cf1b6905be254e40d002681ca9250a2ef8563281f5f2ef' '1a912741109c62a8947c72de2d428e08cf1290d4dc3fea984df8a8726ead2536')
 sha256sums_x86_64=('cc8e6c42671eece036ac121958ec80244211f49c5993e24bd72bff4329b36baa')
-sha256sums_arm64=('e99557060972529174cbdb08bfaddd30b1aa23dd87c9334c96800d6c64098d66')
+sha256sums_aarch64=('e99557060972529174cbdb08bfaddd30b1aa23dd87c9334c96800d6c64098d66')
+
+# First start:
+#   sudo chatto init -c /etc/chatto/chatto.toml
+#   sudo chown root:chatto /etc/chatto/chatto.toml && sudo chmod 640 /etc/chatto/chatto.toml
+#   (edit webserver.url / bind_address), then: sudo systemctl enable --now chatto
+# Data (embedded NATS, data_dir './data') ends up in /var/lib/chatto/data.
 
 package() {
-    bsdtar -C "${pkgdir}" -xf *.tar.gz
-    install "${pkgdir}/LICENSES/AGPL-3.0-or-later.txt" -Dm644 -t "${pkgdir}/usr/share/licenses/${provides}/"
-    install "${pkgdir}/${provides}" -Dm755 -t "${pkgdir}/usr/bin/"
-    rm "${pkgdir}/NOTICE"
-    rm "${pkgdir}/${provides}"
-    rm -r "${pkgdir}/LICENSES"
+    cd "${srcdir}"
+    install -Dm755 chatto -t "${pkgdir}/usr/bin/"
+    install -Dm644 LICENSES/AGPL-3.0-or-later.txt NOTICE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 chatto.service  "${pkgdir}/usr/lib/systemd/system/chatto.service"
+    install -Dm644 chatto.sysusers "${pkgdir}/usr/lib/sysusers.d/chatto.conf"
+    install -Dm644 chatto.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/chatto.conf"
 }
