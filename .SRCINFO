@@ -1,6 +1,6 @@
 pkgbase = python-pyiosbackup
 	pkgdesc = A python parser for iOS backups
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/matan1008/pyiosbackup
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-pyiosbackup
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 epoch=
 pkgdesc="A python parser for iOS backups"
