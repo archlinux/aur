@@ -2,7 +2,7 @@
 pkgname=novadeck-bin
 _pkgname=Novadeck
 _debname="dev.mzpk.${pkgname%-bin}"
-pkgver=1.7.56
+pkgver=1.7.57
 _electronversion=45
 pkgrel=1
 pkgdesc="Desktop terminal for running Claude Code, Codex and Antigravity side by side, with one Inbox for when they need you."
@@ -20,7 +20,7 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('5440efa4009092b2494e8d110f67580a3dc2c8fcb2a2e69a4e295615dac036ba'
+sha256sums=('2128934b3dca2803761f7330924dcff5b101c2097eac5c2a8e9e93545f7ec7e1'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
