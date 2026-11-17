@@ -1,6 +1,6 @@
 pkgbase = zero-bin
 	pkgdesc = Fast, multi-provider terminal coding agent (prebuilt)
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/Twigpine/zero
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = zero-bin
 	optdepends = git: repository info, plugin and skill installs
 	optdepends = poppler: PDF text and rendering of image-only PDFs
 	optdepends = tuistory: terminal control
-	provides = zero=0.13.0
+	provides = zero=0.14.0
 	conflicts = zero
-	source = zero-0.13.0-LICENSE::https://raw.githubusercontent.com/Twigpine/zero/v0.13.0/LICENSE
+	source = zero-0.14.0-LICENSE::https://raw.githubusercontent.com/Twigpine/zero/v0.14.0/LICENSE
 	sha256sums = 67b7a613596a56e90712dd5a8450a4507ec3cb5a6db09425cf7a72a4b0ec89b7
-	source_x86_64 = https://github.com/Twigpine/zero/releases/download/v0.13.0/zero-v0.13.0-linux-x64.tar.gz
-	sha256sums_x86_64 = 763f7ae3c5874a8e8df2335cecd99c9724ea5719f2dac7e48b4d438bbabfa2d0
-	source_aarch64 = https://github.com/Twigpine/zero/releases/download/v0.13.0/zero-v0.13.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = e2d5f48ad219b1ec08e0f8f05f77393f5d3d3fdb2d61eb82585c3fcc31cbb1c5
+	source_x86_64 = https://github.com/Twigpine/zero/releases/download/v0.14.0/zero-v0.14.0-linux-x64.tar.gz
+	sha256sums_x86_64 = 978ef4cd3aea807cb28f98067b6971e130f53b074caa83c9d8509c26684d9573
+	source_aarch64 = https://github.com/Twigpine/zero/releases/download/v0.14.0/zero-v0.14.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = cceeda4526c105aee85401eacfba545befb842974ec76c2ca7ca8676b3161448
 
 pkgname = zero-bin
