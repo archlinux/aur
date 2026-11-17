@@ -32,7 +32,7 @@ _file="Ripcord-${pkgver}-x86_64.AppImage"
 source=(
   "https://cancel.fm/dl/${_file}"{,.asc}
   'git+https://github.com/geniiii/ripcord-audio-hook#branch=linux'
-  LICENSE
+  ripcord.license
 )
 sha256sums=('e320cb3c4043b0f296b4bc1da664b29776f95c2c0b02bdbf115b4d46b1669899'
             'SKIP'
@@ -70,7 +70,7 @@ package() {
   install -Dm644 squashfs-root/Ripcord.desktop -t "${pkgdir}"/usr/share/applications
 
   # License
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 ripcord.license "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Application
   chmod 755 -R squashfs-root
