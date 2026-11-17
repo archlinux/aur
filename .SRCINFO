@@ -1,6 +1,6 @@
 pkgbase = jiku-bin
 	pkgdesc = Desktop orchestration daemon, CLI/MCP controller, and SQLite FTS5 memory companion for Koma (prebuilt release binaries)
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://komawm.org/jiku/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = jiku-bin
 	conflicts = jiku
 	options = !debug
 	options = !strip
-	source_x86_64 = jiku-0.0.1-x86_64.tar.zst::https://cdn.komawm.org/releases/jiku/v0.0.1/jiku-0.0.1-x86_64-unknown-linux-gnu.tar.zst
-	sha256sums_x86_64 = 4d0aaf5fbca73a97c359f93b132cb93a2ccd71053e5836468e365b2c7a354f97
-	source_aarch64 = jiku-0.0.1-aarch64.tar.zst::https://cdn.komawm.org/releases/jiku/v0.0.1/jiku-0.0.1-aarch64-unknown-linux-gnu.tar.zst
-	sha256sums_aarch64 = 8075978b06c975a2357671801d5d4b78a9b7a368c811fccce73a50684633cda2
+	source_x86_64 = jiku-0.0.2-x86_64.tar.zst::https://cdn.komawm.org/releases/jiku/v0.0.2/jiku-0.0.2-x86_64-unknown-linux-gnu.tar.zst
+	sha256sums_x86_64 = 8abcdb31a59be022470fe9155bc93c62611c45302898f15ba81fa494e2796d60
+	source_aarch64 = jiku-0.0.2-aarch64.tar.zst::https://cdn.komawm.org/releases/jiku/v0.0.2/jiku-0.0.2-aarch64-unknown-linux-gnu.tar.zst
+	sha256sums_aarch64 = 7cd5af0c4f06e14141bc8c804c75b48a49f0351c9c1e12983101821b6ecd62aa
 
 pkgname = jiku-bin
