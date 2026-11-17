@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=boca-git
-pkgver=1.0.7.r86.g8ffdb68
+pkgver=1.0.7.r88.g843f5d5
 pkgrel=1
 epoch=2
 pkgdesc="A component library used by the fre:ac audio converter"
@@ -10,10 +10,12 @@ license=('GPL-2.0-or-later')
 depends=(
   'alsa-lib'
   'expat'
+  'libcdio'
   'libcdio-paranoia'
   'libpulse'
   'smooth-git'
   'uriparser'
+  'zlib'
 )
 makedepends=('git')
 provides=("${pkgname%-git}" 'libboca-1.0.so=3' 'freac_cdk')
@@ -33,12 +35,13 @@ prepare() {
 
 build() {
   cd BoCA
-  make
+  make config="systemlibexpat,systemliburiparser,systemzlib"
 }
 
 package() {
   cd BoCA
-  make DESTDIR="$pkgdir/" install
+  make config="systemlibexpat,systemliburiparser,systemzlib" \
+    DESTDIR="$pkgdir/" install
 
   ln -sv "/usr/lib/libboca-${pkgver%.*.r*}.so.3" "${pkgdir}/usr/lib/libboca.so"
 }
