@@ -2,7 +2,7 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend penpot-mcp)
-pkgver=2.19.1
+pkgver=2.19.2
 pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
@@ -11,7 +11,8 @@ license=('MPL-2.0')
 # penpot is using 19, but archlinux only has 17 and 21. 17 and > 21 doesnt work
 # also jdk is needed and not only jre
 _jdkver="27"
-makedepends=('clojure' 'git' 'curl' 'npm' 'pnpm' 'rsync' 'babashka' 'rustup' 'emscripten' 'emsdk' 'jq' "java-environment>=${_jdkver}" "java-environment<=${_jdkver}")
+_emsdkver="4.0.6"
+makedepends=('clojure' 'git' 'curl' 'npm' 'pnpm' 'rsync' 'babashka' 'rustup' 'jq' "java-environment>=${_jdkver}" "java-environment<=${_jdkver}")
 source=(
   https://github.com/penpot/penpot/archive/refs/tags/$pkgver.tar.gz
   sysusers.conf
@@ -23,10 +24,11 @@ source=(
   penpot.tmpfiles.d
   penpot-update-flags.sh
   nginx.conf
+  'https://github.com/emscripten-core/emsdk/archive/refs/tags/4.0.6.tar.gz'
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  '5688b720dc70a79432e6ea9ce4edf7e0a2d600668c5e4f2e754dd717fcceb8fa'
+  '72ee3ef7f2375e870d57ea6947b065bef759a1f246fa997c4091184bd8a05ff4'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   '53f27ccf4098d59faf8fe09f5a9abedef4287281cbd9fbdeb6afdee60838f1e7'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
@@ -36,6 +38,7 @@ sha256sums=(
   'f3208349de006fc26119cd9b034958bbfa3c161bfb76a752d43d5b563df6e33d'
   'b759994786bcbba553ba50837c8f222760b344319e81655f32ea6e68097ec02a'
   '29f5cde4d5ba6d73b14d6fd88a0be930c6bcf5eff3512332cba50a30316c6621'
+  '2d3292d508b4f5477f490b080b38a34aaefed43e85258a1de72cb8dde3f8f3af'
 )
 
 build() {
@@ -44,6 +47,14 @@ build() {
   export RUST_VERSION=1.91.0
   export JAVA_HOME=/usr/lib/jvm/$(archlinux-java status | grep -o "[^ ]*-$_jdkver-[^ ]*" | head -n 1 | tr -d '[:space:]')/
   export PATH="$JAVA_HOME/bin/:/usr/lib/emscripten:$PATH"
+  export EMSDK=$PWD/emsdk-${_emsdkver}/
+
+  rustup install $RUST_VERSION
+  rustup default $RUST_VERSION
+  rustup target add wasm32-unknown-emscripten
+
+  $EMSDK/emsdk install 4.0.6
+  $EMSDK/emsdk activate 4.0.6
 
   echo "==== BUILDING MCP SERVER"
   cd "${srcdir}/${_pkgbase}-${pkgver}/mcp"
@@ -71,13 +82,9 @@ build() {
 
   pushd ../render-wasm
   sed -i '/corepack/d' ./_build_env
-  sed -i 's#/opt/emsdk/emsdk_env.sh#/usr/lib/emsdk/emsdk_env.sh#' ./build
+  sed -i "s#/opt/emsdk/emsdk_env.sh#${EMSDK}/emsdk_env.sh#" ./build
   sed -i 's#-sEXPORT_ES6=1"#-sEXPORT_ES6=1 -sDEFAULT_TO_CXX=1"#' ./_build_env
   popd
-
-  rustup install $RUST_VERSION
-  rustup default $RUST_VERSION
-  rustup target add wasm32-unknown-emscripten
 
   CURRENT_HASH=$(echo $sha256sums[0] | head -c 7) \
     ./scripts/build $pkgver
