@@ -3,6 +3,9 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !kapowarr.service
 !kapowarr.sysusers
 !kapowarr.tmpfiles
