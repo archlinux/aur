@@ -2,7 +2,7 @@
 
 pkgname=python-ansilogs
 pkgver=1.2.0
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Colored, single-line log output for command-line tools: a dependency-free coloredlogs.install() replacement"
 arch=('any')
@@ -34,9 +34,9 @@ backup=()
 options=(!debug)
 # install=
 changelog=
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('SKIP')
+sha256sums=('234b24c8c5352b49760be0bb86148f1f182209f6907873a2aa42a1b671e26733')
 #validpgpkeys=()
 
 prepare(){
