@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=python-scrap_engine
-pkgver=1.4.2
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="A 2D ascii game engine for the terminal"
 arch=('any')
@@ -10,8 +10,8 @@ license=('GPL-3.0-or-later')
 depends=('python')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-setuptools-scm')
 source=("$pkgname::git+https://github.com/lxgr-linux/scrap_engine.git#tag=$pkgver")
-sha256sums=('13279bd3cfc294e92201d48a1508222efcbd87d6065c894f497ab7297e5357bf')
-b2sums=('3ae71b3ca2f7bed21ea7d7dafe75eb8b3823722aebb052fd522d1c771a2452deda1827f89f4a9740340b76244cd25cd04ea817c187062c13317e621f2c0fc2dd')
+sha256sums=('1444a819e7f820e92a9ec3730798362eb670ca1aaad269feb4a0bf2ab7b4b00a')
+b2sums=('bcefc2d2d1490fbb9a4c3ddf584daf109a5bccb99795207674070d02133cd067e4e53b8a9ed5ffc52c19c109c91e2ca9c3ae2a2e166558bb4b3a4b962308c0f3')
 
 build() {
   cd "$pkgname"
