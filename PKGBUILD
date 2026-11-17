@@ -1,6 +1,6 @@
 # Maintainer: Sam Zuk <sam11120a@gmail.com>
 pkgname=vmpc2000xl-standalone-bin
-pkgver=0.9.13
+pkgver=0.9.20
 pkgrel=1
 pkgdesc='MPC2000XL sampler emulator (standalone)'
 arch=('x86_64')
@@ -26,14 +26,14 @@ depends=(
     'systemd-libs'  # unknown version requirement
 )
 source=(
-	"https://github.com/izzyreal/vmpc-juce/releases/download/v${pkgver}/VMPC2000XL-Ubuntu20-x86_64-Standalone.zip"
+	"https://github.com/izzyreal/vmpc-juce/releases/download/v${pkgver}/VMPC2000XL-Ubuntu20-x86_64-Standalone-v${pkgver}.zip"
 	"https://github.com/izzyreal/vmpc-juce/raw/refs/tags/v${pkgver}/README.md"
 	"https://github.com/izzyreal/vmpc-juce/raw/refs/tags/v${pkgver}/LICENSE.txt"
 	"https://vmpcdocs.izmar.nl/_static/vmpc-logo.png"
 )
 sha256sums=(
-	'7388f7dc4cde83aea1256438a544aac259c4cf0413b6d4a6c40dd698345889a1'
-	'8195bf5f0fa05983867b74afa8e0585fc6cff16f1ea0c840d42e700eef5e057a'
+    'b9eea9605814974e3f6a1a1431e18994a3c2d4d7df532bb533d0213492039c86'
+    '74d4b1d28e6c83c6a1ec1802526d89dd0c380bdfc3d352f2f5128680f03d3acb'
 	'3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
 	'28bf1de1984104bcc08ad34a52b27bde4e5989c17cf5d6b67d67160b838e5173'
 )
