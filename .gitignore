@@ -3,6 +3,9 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !whisparr-eros.service
 !whisparr-eros.sysusers
 !whisparr-eros.tmpfiles
