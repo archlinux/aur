@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=cargo-cabal
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Turn in one command a Rust crate into a Haskell Cabal library'
 url='https://github.com/yvan-sraka/cargo-cabal'
@@ -10,8 +10,8 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yvan-sraka/cargo-cabal/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('32299953cc4d6c1131fe3cad6f5374673bf92ed83f42e52188f298954eced45b')
-b2sums=('01ed53f26fbda1fce9801698d1353e7c592b5836aef0f12852dcea787873ad7b6cfb10e292d185f8faf125c602e75085c70dc0a7b6768e8a12dd34468b6a7b1c')
+sha256sums=('354a1736024d7cd969fec94d1662556b4b80a05d179cdb069b816d3b4c9001cd')
+b2sums=('57d8ee814f46ef57aeca3366ac0d8cd6a06a4bf393c1efeed4f64ec3047864b9d6ac3b43ce6f1081cc74a5ee8372a636ce7a58cc65dd2fced1ac1de38b95fb38')
 
 case $CARCH in
   x86_64|i686|aarch64)
