@@ -1,8 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=animathio-bin
 _pkgname=AniMathIO
-pkgver=1.8.3
-_electronversion=44
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="AniMathIO revolutionizes the creation of mathematical videos, tailored for educators, students, and professionals seeking to bring complex concepts to life."
 arch=('x86_64')
@@ -12,30 +11,16 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}"
+    'libxkbcommon-x11'
+    'alsa-lib'
+    'hicolor-icon-theme'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgname%-bin}-v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/AniMathIO/AniMathIO/${pkgname%-bin}-v${pkgver}/LICENSE"
-    "${pkgname%-bin}.js"
-    "${pkgname%-bin}.sh"
+    "${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/AniMathIO/AniMathIO/v${pkgver}/LICENSE"
 )
-sha256sums=('3e514509a177fe3e8f5ad71907ff80303e93231ecc03de6a9b5c9b0e11fe21ca'
-            '48f6289b2552d107a41350b2ee3339010373d1e0dd59834b4c7de5ecab96df72'
-            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-_get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
-		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
-}
-_check_electron_version() {
-	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
-		-executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)" \
-		| grep -oP 'Electron/\K[0-9]+' | head -1)
-	[[ -z "$_v" ]] && { echo -e "\033[1;33mNote: Could not check version.\033[0m"; return; }
-	(( _v == _electronversion )) && c=32 || c=31
-	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
-}
+sha256sums=('575aec8e0d09bbab7fef2ebd48a2533012fff07e04b5cad202f3667213e4a635'
+            '48f6289b2552d107a41350b2ee3339010373d1e0dd59834b4c7de5ecab96df72')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
@@ -48,23 +33,15 @@ _install_icons() {
 	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     bsdtar -xf "${srcdir}/data."*
-    _check_electron_version
-    sed -i -e "
-        s/\/opt\/${_pkgname}\/${_pkgname}/${pkgname%-bin}/g
-        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
-    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+	cp -a "${srcdir}/usr/lib/${pkgname%-bin}/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    install -Dm755 -d "${pkgdir}/usr/bin"
+    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}-cli" "${pkgdir}/usr/bin/${pkgname%-bin}-cli"
     _install_icons
-    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/usr/share/mime/packages/${_pkgname}.xml" "${pkgdir}/usr/share/mime/packages/${pkgname%-bin}.xml"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
