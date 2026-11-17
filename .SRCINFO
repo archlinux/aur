@@ -1,17 +1,19 @@
 pkgbase = barklarm-bin
-	pkgdesc = Displays the status of projects as an item in the tray menu bar.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.4.8
+	pkgdesc = Displays the status of projects as an item in the tray menu bar.
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://www.barklarm.com
+	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
-	depends = electron31
-	provides = barklarm=2.4.8
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = libayatana-indicator
+	depends = libappindicator
+	provides = barklarm=3.0.0
 	conflicts = barklarm
-	options = !emptydirs
-	source = barklarm-2.4.8.rpm::https://github.com/Barklarm/barklarm-app/releases/download/v2.4.8/barklarm-2.4.8-1.x86_64.rpm
-	source = barklarm.sh
-	sha256sums = cca9e79749ae47aa82d1c836ea81be30cc493f375e6c6301aeb5341ff140f2dc
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source = barklarm-3.0.0-x86_64.deb::https://github.com/alvarolorentedev/barklarm-app/releases/download/v3.0.0/Barklarm_3.0.0_amd64.deb
+	sha256sums = fb5fba86313a797db9a340466bde53ddef8a1c1e82edaa1ce400b4181c04a597
 
 pkgname = barklarm-bin
