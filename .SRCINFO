@@ -1,21 +1,21 @@
 pkgbase = elan-lean-bin
 	pkgdesc = Lean version manager
-	pkgver = 4.2.4
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/leanprover/elan
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
 	license = MIT
-	provides = elan-lean=4.2.4
+	provides = elan-lean=4.3.0
 	conflicts = elan-lean
 	source = https://raw.githubusercontent.com/leanprover/elan/refs/heads/master/LICENSE-APACHE
 	source = https://raw.githubusercontent.com/leanprover/elan/refs/heads/master/LICENSE-MIT
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_aarch64 = elan-lean-bin-4.2.4-aarch64.tar.gz::https://github.com/leanprover/elan/releases/download/v4.2.4/elan-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 05febd124d84ebf994b2e7479922a5650b1e950c17ae3bd1ddd776b65bb72bf9
-	source_x86_64 = elan-lean-bin-4.2.4-x86_64.tar.gz::https://github.com/leanprover/elan/releases/download/v4.2.4/elan-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 42b94d4244e8353142c456ec0e4ca6528fd898a6c604d4059f494e706e431f63
+	source_aarch64 = elan-lean-bin-4.3.0-aarch64.tar.gz::https://github.com/leanprover/elan/releases/download/v4.3.0/elan-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a1a3359c09e2a9f016bd241393ca79ad5f88eb1e4d45bb0215d799f3e55f08a3
+	source_x86_64 = elan-lean-bin-4.3.0-x86_64.tar.gz::https://github.com/leanprover/elan/releases/download/v4.3.0/elan-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0c71472fa3ac34871dc1e2539993cca222d7656b42a1469f8f8c97c22f9adab2
 
 pkgname = elan-lean-bin

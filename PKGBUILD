@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=elan-lean-bin
-pkgver=4.2.4
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Lean version manager"
 arch=('aarch64' 'x86_64')
@@ -14,8 +14,8 @@ source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/leanprover/
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/leanprover/elan/releases/download/v$pkgver/elan-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('SKIP'
             'SKIP')
-sha256sums_aarch64=('05febd124d84ebf994b2e7479922a5650b1e950c17ae3bd1ddd776b65bb72bf9')
-sha256sums_x86_64=('42b94d4244e8353142c456ec0e4ca6528fd898a6c604d4059f494e706e431f63')
+sha256sums_aarch64=('a1a3359c09e2a9f016bd241393ca79ad5f88eb1e4d45bb0215d799f3e55f08a3')
+sha256sums_x86_64=('0c71472fa3ac34871dc1e2539993cca222d7656b42a1469f8f8c97c22f9adab2')
 
 
 package() {
