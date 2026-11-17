@@ -1,0 +1,19 @@
+pkgbase = ztty
+	pkgdesc = Lightweight no_std Rust terminal emulator for X11 and XWayland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/ztty
+	arch = x86_64
+	license = MIT
+	makedepends = rustup
+	depends = gcc-libs
+	depends = glibc
+	depends = libx11
+	depends = libxft
+	depends = libxrender
+	optdepends = xdg-utils: open hyperlinks
+	optdepends = ttf-dejavu: default monospace font
+	source = https://github.com/LIghtJUNction/ztty/releases/download/v0.1.0/ztty-0.1.0.tar.gz
+	sha256sums = b3b77a1c45df7b434b59de975de3e742b17dc4e8b6644eeb4cd12616f7c58449
+
+pkgname = ztty
