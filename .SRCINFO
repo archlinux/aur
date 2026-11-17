@@ -1,6 +1,6 @@
 pkgbase = graphicle-bin
 	pkgdesc = Code graph and memory for repositories and coding agents, in one Rust program
-	pkgver = 0.1.17
+	pkgver = 0.1.18
 	pkgrel = 1
 	url = https://github.com/Graphicle-AI/graphicle
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = graphicle-bin
 	conflicts = graphicle
 	options = !strip
 	options = !debug
-	source_x86_64 = graphicle-0.1.17-x86_64.tar.gz::https://github.com/Graphicle-AI/graphicle/releases/download/v0.1.17/graphicle-0.1.17-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 5c554a44ad0f4dbfd1de9784a99912ea77c3f1e3e5fdd8bdbe50e207cf89ee22
-	source_aarch64 = graphicle-0.1.17-aarch64.tar.gz::https://github.com/Graphicle-AI/graphicle/releases/download/v0.1.17/graphicle-0.1.17-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 37577c644239a3f07f0c2a6a31529e57ec2b04a50fa65947dd165ff5f5bef502
+	source_x86_64 = graphicle-0.1.18-x86_64.tar.gz::https://github.com/Graphicle-AI/graphicle/releases/download/v0.1.18/graphicle-0.1.18-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = db99cb3fa8a3a8ee1850b14355d07090535c5f6be9a32b371a51b476a8a43159
+	source_aarch64 = graphicle-0.1.18-aarch64.tar.gz::https://github.com/Graphicle-AI/graphicle/releases/download/v0.1.18/graphicle-0.1.18-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a7c8384370d6162232586d316b29a3242807c4497bac8b81e47ac457a46853bf
 
 pkgname = graphicle-bin

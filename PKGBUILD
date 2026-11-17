@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=graphicle-bin
-pkgver=0.1.17
+pkgver=0.1.18
 pkgrel=1
 pkgdesc="Code graph and memory for repositories and coding agents, in one Rust program"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ options=('!strip' '!debug')
 
 source_x86_64=("graphicle-${pkgver}-x86_64.tar.gz::https://github.com/Graphicle-AI/graphicle/releases/download/v${pkgver}/graphicle-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("graphicle-${pkgver}-aarch64.tar.gz::https://github.com/Graphicle-AI/graphicle/releases/download/v${pkgver}/graphicle-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('5c554a44ad0f4dbfd1de9784a99912ea77c3f1e3e5fdd8bdbe50e207cf89ee22')
-sha256sums_aarch64=('37577c644239a3f07f0c2a6a31529e57ec2b04a50fa65947dd165ff5f5bef502')
+sha256sums_x86_64=('db99cb3fa8a3a8ee1850b14355d07090535c5f6be9a32b371a51b476a8a43159')
+sha256sums_aarch64=('a7c8384370d6162232586d316b29a3242807c4497bac8b81e47ac457a46853bf')
 
 latestver() {
     curl -fsSLI -o /dev/null -w '%{url_effective}\n' \
