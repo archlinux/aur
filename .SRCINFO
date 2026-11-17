@@ -13,7 +13,6 @@ pkgbase = datacraft-bin
 	optdepends = gnome-keyring: store database passwords in the Secret Service
 	optdepends = kwallet: store database passwords in the Secret Service
 	provides = datacraft
-	conflicts = datacraft
 	conflicts = datacraft-git
 	options = !strip
 	options = !debug
