@@ -14,15 +14,15 @@ post_install() {
   install -d -m0750 -o bas -g beangle /var/log/bas
   install -d -m0700 -o bas -g beangle /var/log/bas/agent
 
-  # basctl.conf 是用户配置：只在缺失时从模板生成，升级与卸载都不覆盖或删除。
-  if [ ! -f /var/lib/bas/conf/basctl.conf ]; then
-    install -m0600 -o bas -g beangle /usr/share/basctl/basctl.conf \
-      /var/lib/bas/conf/basctl.conf
+  # basctl.env 是用户配置：只在缺失时从模板生成，升级与卸载都不覆盖或删除。
+  if [ ! -f /var/lib/bas/conf/basctl.env ]; then
+    install -m0600 -o bas -g beangle /usr/share/basctl/basctl.env \
+      /var/lib/bas/conf/basctl.env
   fi
 
   chown -R bas:beangle /var/lib/bas/bin /var/lib/bas/conf 2>/dev/null || :
   chmod 0755 /var/lib/bas/bin/*.sh 2>/dev/null || :
-  chmod 0600 /var/lib/bas/conf/basctl.conf 2>/dev/null || :
+  chmod 0600 /var/lib/bas/conf/basctl.env 2>/dev/null || :
   [ -e /var/lib/bas/logs ] || ln -s /var/log/bas /var/lib/bas/logs
 
   systemctl daemon-reload 2>/dev/null || :

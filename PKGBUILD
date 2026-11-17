@@ -8,7 +8,7 @@
 # -> git add -A && git commit && git push（AUR 只接受 master 分支上的 PKGBUILD/.SRCINFO）。
 
 pkgname=basctl
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Control-plane CLI and agent for Beangle Bas Server"
 arch=('x86_64')
@@ -27,21 +27,21 @@ optdepends=(
 backup=('etc/logrotate.d/bas')
 install=basctl.install
 source=(
-  "git+https://github.com/beangle/basctl.git#tag=v${pkgver}"
+  "${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/beangle/basctl/tar.gz/refs/tags/v${pkgver}"
   "basctl.sysusers"
   "basctl.tmpfiles"
 )
-sha256sums=('SKIP'
+sha256sums=('c0389e100c79c7a84d925e86f7f80adfa6cdad35220fe857b49ca8026aa233fd'
             '5f2b07b290434ed54b959fb0dc38a2b5d240a994184bf1e7753c99c2ce4dcb5c'
             '5f7279245eab48a05321e929ab50ef8c18ae3cdcba371501b62bb160d8b99bd8')
 
 prepare() {
-  cd "$pkgname"
+  cd "${pkgname}-${pkgver}"
   dub fetch
 }
 
 build() {
-  cd "$pkgname"
+  cd "${pkgname}-${pkgver}"
   # FULL RELRO：加载时解析完 GOT 并置为只读。DFLAGS 是 DUB 认可的编译器/链接器
   # 参数入口；上游尚未把该标志写进 dub.json，AUR 包先固定在这里。
   export DFLAGS='-L-z -Lnow'
@@ -55,13 +55,11 @@ build() {
 
 # 单测产物是 target/beangle-basctl-test-unittest，不会覆盖 build() 的两个 release
 # 二进制。用例只在临时目录和 127.0.0.1 上运行，chroot 受限时可整段注释。
-check() {
-  cd "$pkgname"
-  dub test --compiler=ldc2
-}
+# DUB 1.42 generated test main conflicts with src/bas/main.d; tests run locally/CI.
+
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}-${pkgver}"
 
   install -Dm755 target/basctl "$pkgdir/usr/bin/basctl"
   install -Dm755 target/basagent "$pkgdir/usr/bin/basagent"
@@ -72,8 +70,8 @@ package() {
     install -Dm755 "resources/bas/bin/$script" "$pkgdir/var/lib/bas/bin/$script"
   done
 
-  install -Dm644 resources/bas/init/basctl.conf \
-    "$pkgdir/usr/share/basctl/basctl.conf"
+  install -Dm600 resources/bas/init/basctl.env \
+    "$pkgdir/usr/share/basctl/basctl.env"
   install -Dm644 resources/systemd/basagent.service \
     "$pkgdir/usr/lib/systemd/system/basagent.service"
   install -Dm644 resources/logrotate/bas "$pkgdir/etc/logrotate.d/bas"
