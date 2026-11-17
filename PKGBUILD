@@ -16,8 +16,8 @@
 
 pkgbase=vtium
 pkgname=vtium
-_tag=v0.1.0-alpha.8
-pkgver=0.1.0alpha.8
+_tag=v0.1.0-alpha.9
+pkgver=0.1.0alpha.9
 pkgrel=1
 pkgdesc='Terminal for the Linux console, drawn through KMS/DRM'
 arch=('x86_64')
