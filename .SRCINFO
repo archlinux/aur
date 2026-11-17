@@ -1,7 +1,7 @@
 pkgbase = bindaru
 	pkgdesc = pacman and AUR package store for uQ, with a visible AUR review gate
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asafelobotomy/bindaru
 	arch = x86_64
 	arch = aarch64
@@ -16,6 +16,7 @@ pkgbase = bindaru
 	depends = qt6-declarative
 	depends = kirigami
 	optdepends = uq: the Software page in uQ Settings
+	options = !lto
 	source = bindaru-0.1.1.tar.gz::https://github.com/asafelobotomy/bindaru/archive/refs/tags/v0.1.1.tar.gz
 	sha256sums = ce28795aedde1b1990283e838df07e641762d2fac28bdba09f201ae7a28fa90c
 
