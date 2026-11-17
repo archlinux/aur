@@ -1,6 +1,6 @@
 pkgbase = python-bytestruct
 	pkgdesc = Declarative binary records and composable codecs, using only the standard library
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/doronz88/bytestruct
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-bytestruct
 	depends = python-typing_extensions
 	provides = python-bytestruct
 	conflicts = python-bytestruct
-	source = python-bytestruct::git+https://github.com/doronz88/bytestruct.git#tag=v0.1.2
-	sha256sums = 39955153a30ec1e706cde955d94827b96b9b4308891e90b5f5e92c661c6a18af
+	source = python-bytestruct::git+https://github.com/doronz88/bytestruct.git#tag=v0.2.0
+	sha256sums = f4375f58010b5972a0836356a0c09547ac544580e1bd2dc0a14872897bea9201
 
 pkgname = python-bytestruct

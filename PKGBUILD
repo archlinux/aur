@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-bytestruct
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 epoch=
 pkgdesc="Declarative binary records and composable codecs, using only the standard library"
@@ -37,7 +37,7 @@ options=()
 changelog=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('39955153a30ec1e706cde955d94827b96b9b4308891e90b5f5e92c661c6a18af')
+sha256sums=('f4375f58010b5972a0836356a0c09547ac544580e1bd2dc0a14872897bea9201')
 #validpgpkeys=()
 
 prepare(){
