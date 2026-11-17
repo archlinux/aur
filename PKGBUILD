@@ -1,21 +1,24 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 
 _pkgname="woof-doom"
 pkgname="$_pkgname-git"
-pkgver=15.2.0.r444.g3b083e7
-pkgrel=2
+pkgver=16.0.0.r128.g7d8bef1
+pkgrel=1
 pkgdesc="Doom port remaining faithful to Lee Killough's MBF on DOS"
 arch=("x86_64")
 url="https://github.com/fabiangreffrath/woof"
 license=('GPL-2.0-or-later')
 
 depends=(
+  #'cjson'
+  'alsa-lib'
   'hicolor-icon-theme'
   'libebur128'
   'libsndfile'
   'openal'
   'sdl3'
+  'sdl3_net'
 )
 makedepends=(
   'cmake'
@@ -42,7 +45,7 @@ pkgver() {
 }
 
 build() {
-  _cmake_options=(
+  local _cmake_options=(
     -B build
     -S "$_pkgsrc"
     -G Ninja
