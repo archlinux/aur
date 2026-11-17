@@ -65,6 +65,8 @@ build() {
     echo "Section: web" >> ${srcdir}/${_pkgarch}.control
     echo "Architecture: ${_pkgarch}" >> ${srcdir}/${_pkgarch}.control
     echo "Depends: ${_debdeps}" >> ${srcdir}/${_pkgarch}.control
+    # vpn-server sets the FORWARD policy and NAT through iptables; minimal images (Armbian) ship without it.
+    echo "Recommends: iptables" >> ${srcdir}/${_pkgarch}.control
     echo "Provides: ${_pkgname}" >> ${srcdir}/${_pkgarch}.control
     [[ -n ${_debconflicts} ]] && echo "Conflicts: ${_debconflicts}" >> ${srcdir}/${_pkgarch}.control
     echo "Maintainer: ${_githuborg}" >> ${srcdir}/${_pkgarch}.control
