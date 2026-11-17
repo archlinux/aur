@@ -1,0 +1,32 @@
+pkgbase = kage-bin
+	pkgdesc = VPN and proxy client powered by Xray (binary release)
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/Rigby-Foundation/Kage
+	arch = x86_64
+	license = MPL-2.0
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = librsvg
+	depends = libsoup3
+	depends = libx11
+	depends = polkit
+	depends = systemd
+	depends = webkitgtk-6.0
+	provides = kage=3.0.0
+	conflicts = kage
+	conflicts = nuggetvpn-bin
+	noextract = Kage-v3.0.0-linux-amd64.deb
+	options = !strip
+	options = !debug
+	source = kage-icon-v3.0.0.svg::https://raw.githubusercontent.com/Rigby-Foundation/Kage/v3.0.0/build/appicon.svg
+	source = kage.desktop
+	source = LICENSE
+	sha256sums = 18d1d37f7e6426bd742c9ae47b4e768048e7190c7ce61472cf68863b685f5362
+	sha256sums = e57f3bb2a2f9b3c3eade34260dfed3d6f5c2298ed4950a6fec9af03de2b29692
+	sha256sums = 3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04
+	source_x86_64 = https://github.com/Rigby-Foundation/Kage/releases/download/v3.0.0/Kage-v3.0.0-linux-amd64.deb
+	sha256sums_x86_64 = 9362832c462eb2315b4fc2e884ea67e48b85eb16e72e21cc78cda00c27a9d5d2
+
+pkgname = kage-bin

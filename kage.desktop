@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Kage
+GenericName=VPN Client
+Comment=VPN and proxy client powered by Xray
+Exec=kage %u
+Icon=kage
+Terminal=false
+Categories=Network;Security;
+Keywords=vpn;proxy;xray;vless;
+MimeType=x-scheme-handler/kage;x-scheme-handler/nuggetvpn;
+StartupNotify=true
+StartupWMClass=Kage
