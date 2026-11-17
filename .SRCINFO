@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-dektec
 	pkgdesc = FFmpeg with DekTec SDI, DVB-ASI and SMPTE ST 2110 devices, including NMOS, on CDTAPI
-	pkgver = 9.0.2_dektec12
+	pkgver = 9.0.2_dektec13
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/dektec-com/ffmpeg-dektec
@@ -18,13 +18,13 @@ pkgbase = ffmpeg-dektec
 	depends = zlib
 	conflicts = ffmpeg-dektec-bin
 	options = !lto
-	source = ffmpeg-dektec-n9.0.2-dektec12-source.tar.xz::https://github.com/dektec-com/ffmpeg-dektec/releases/download/n9.0.2-dektec12/ffmpeg-dektec-n9.0.2-dektec12-source.tar.xz
-	source = cdtapi-6.14.14.tar.gz::https://github.com/dektec-com/cdtapi/archive/refs/tags/v6.14.14.tar.gz
-	source = dtnmos-0.5.4.tar.gz::https://github.com/dektec-com/dtnmos/archive/refs/tags/v0.5.4.tar.gz
+	source = ffmpeg-dektec-n9.0.2-dektec13-source.tar.xz::https://github.com/dektec-com/ffmpeg-dektec/releases/download/n9.0.2-dektec13/ffmpeg-dektec-n9.0.2-dektec13-source.tar.xz
+	source = cdtapi-6.14.16.tar.gz::https://github.com/dektec-com/cdtapi/archive/refs/tags/v6.14.16.tar.gz
+	source = dtnmos-0.5.5.tar.gz::https://github.com/dektec-com/dtnmos/archive/refs/tags/v0.5.5.tar.gz
 	source = civetweb-1.16.tar.gz::https://github.com/civetweb/civetweb/archive/refs/tags/v1.16.tar.gz
-	sha256sums = 3062b32a3ad9d2699e3db8468ce6a23df10ec5e7d533c4ed15ae2eebd25529f7
-	sha256sums = 4cd476f454663dad04b54b0d2ae70b937ffb76aec5d714c0532c06e1307bf781
-	sha256sums = 3d0010d1e8abea4dcae6400baab7853b83d6fbf9840e1ec5664d886912fa3caa
+	sha256sums = 43a5890db79efbc20d223e8907ff901774f0dbe9e86dba2b8114cd3eb2bba5d6
+	sha256sums = 07c39e185002c2755c2b619fa60e446f7fa56b9c86cce032d1c72080b3c3ab88
+	sha256sums = dfa46b33c7e18144be1fd30b47d972b121f09dbeaf7d3f88abec1bb0c56e6281
 	sha256sums = f0e471c1bf4e7804a6cfb41ea9d13e7d623b2bcc7bc1e2a4dd54951a24d60285
 
 pkgname = ffmpeg-dektec

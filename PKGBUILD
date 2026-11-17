@@ -1,11 +1,11 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=ffmpeg-dektec
-pkgver=9.0.2_dektec12
+pkgver=9.0.2_dektec13
 pkgrel=1
 epoch=1
-_cdtapiver=6.14.14
-_dtnmosver=0.5.4
+_cdtapiver=6.14.16
+_dtnmosver=0.5.5
 _civetwebver=1.16
 _tag="n${pkgver%%_*}-${pkgver#*_}"
 pkgdesc='FFmpeg with DekTec SDI, DVB-ASI and SMPTE ST 2110 devices, including NMOS, on CDTAPI'
@@ -32,9 +32,9 @@ source=(
   "dtnmos-${_dtnmosver}.tar.gz::https://github.com/dektec-com/dtnmos/archive/refs/tags/v${_dtnmosver}.tar.gz"
   "civetweb-${_civetwebver}.tar.gz::https://github.com/civetweb/civetweb/archive/refs/tags/v${_civetwebver}.tar.gz"
 )
-sha256sums=('3062b32a3ad9d2699e3db8468ce6a23df10ec5e7d533c4ed15ae2eebd25529f7'
-            '4cd476f454663dad04b54b0d2ae70b937ffb76aec5d714c0532c06e1307bf781'
-            '3d0010d1e8abea4dcae6400baab7853b83d6fbf9840e1ec5664d886912fa3caa'
+sha256sums=('43a5890db79efbc20d223e8907ff901774f0dbe9e86dba2b8114cd3eb2bba5d6'
+            '07c39e185002c2755c2b619fa60e446f7fa56b9c86cce032d1c72080b3c3ab88'
+            'dfa46b33c7e18144be1fd30b47d972b121f09dbeaf7d3f88abec1bb0c56e6281'
             'f0e471c1bf4e7804a6cfb41ea9d13e7d623b2bcc7bc1e2a4dd54951a24d60285')
 
 # CDTAPI, dtnmos and civetweb are not in the repositories; they are built here into a
