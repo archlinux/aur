@@ -1,12 +1,12 @@
 # Maintainer: Ersin Can Karaca <canersinkaraca@gmail.com>
 pkgname=lapse-git
-pkgver=2.1.0.r1.gbfaa62c
+pkgver=2.1.1.r2.g9ff6929
 pkgrel=1
 pkgdesc="Save the last moments of your game and trim clips (replay recorder, latest source)"
 arch=('x86_64')
 url="https://github.com/canersin/Lapse"
 license=('GPL-3.0-only')
-depends=('gcc-libs' 'glibc' 'alsa-lib' 'libglvnd' 'wayland' 'libxkbcommon' 'libx11' 'libxcursor'
+depends=('gcc-libs' 'glibc' 'alsa-lib' 'libglvnd' 'wayland' 'libxkbcommon' 'libxkbcommon-x11' 'libx11' 'libxcursor'
          'libxrandr' 'libxi' 'dbus' 'ffmpeg' 'curl' 'gpu-screen-recorder' 'hicolor-icon-theme')
 makedepends=('cargo' 'git' 'pkgconf')
 optdepends=('libnotify: notifications with buttons when a clip is saved'

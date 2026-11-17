@@ -1,6 +1,6 @@
 pkgbase = lapse-git
 	pkgdesc = Save the last moments of your game and trim clips (replay recorder, latest source)
-	pkgver = 2.1.0.r1.gbfaa62c
+	pkgver = 2.1.1.r2.g9ff6929
 	pkgrel = 1
 	url = https://github.com/canersin/Lapse
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = lapse-git
 	depends = libglvnd
 	depends = wayland
 	depends = libxkbcommon
+	depends = libxkbcommon-x11
 	depends = libx11
 	depends = libxcursor
 	depends = libxrandr
