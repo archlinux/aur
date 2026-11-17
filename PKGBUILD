@@ -3,7 +3,7 @@
 pkgname=luciole-git
 _pkgname=luciole
 pkgver=0.1.0.r0.g000000000
-pkgrel=1
+pkgrel=2
 pkgdesc='A smooth, native Wayland file manager with fast previews, tabs, split view and Miller columns'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/luciole'
@@ -29,8 +29,10 @@ depends=(
   'libglvnd'
   'libpng'
   'librsvg'
+  'libsoup3'
   'libstdc++'
   'libxkbcommon'
+  'libxml2'
   'pango'
   'shared-mime-info'
   'tomlplusplus'
@@ -52,7 +54,7 @@ optdepends=(
   'poppler: PDF thumbnails and metadata'
   '7zip: encrypted 7z archives'
   'gvfs-smb: SMB network locations'
-  'gvfs-dnssd: WebDAV network locations'
+  'gvfs-dnssd: WebDAV and DNS-SD network discovery'
   'glib-networking: secure WebDAV (TLS)'
   'xdg-terminal-exec: automatic terminal selection'
   'xdg-desktop-portal: use Luciole as the Open and Save file picker'
@@ -63,7 +65,7 @@ source=("${_pkgname}::git+${url}.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "${_pkgname}" || return 1
 
   local version
   version="$(tr -d '[:space:]' < VERSION)"
