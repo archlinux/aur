@@ -3,13 +3,13 @@
 _pkgname=svt-av1
 pkgname=lib32-svt-av1
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Scalable Video Technology AV1 encoder and decoder. (32-bits)'
 arch=('x86_64')
 url="https://gitlab.com/AOMediaCodec/SVT-AV1"
 license=(
-  'BSD'
-  'custom: Alliance for Open Media Patent License 1.0'
+  'BSD-3-Clause'
+  'LicenseRef-AOMPL-1.0'
 )
 depends=(
   # Deliberately not version-locked: this is an AUR package, so an exact pin
@@ -49,6 +49,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib32 \
     -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_APPS=OFF \
     -DNATIVE=OFF
 
   cmake --build build
@@ -57,9 +58,5 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install build
   rm -fr "${pkgdir}/usr/include"
-  (
-    cd "${pkgdir}/usr/bin"
-    mv SvtAv1EncApp SvtAv1EncApp-32
-  )
   install -Dm644 SVT-AV1/{LICENSE,PATENTS}.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
