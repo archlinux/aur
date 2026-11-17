@@ -6,7 +6,7 @@
 # Contributor: KokaKiwi <kokakiwi+aur at kokakiwi [dot] net>
 
 pkgname=tor-unstable
-pkgver=0.4.9.11
+pkgver=0.4.9.17
 pkgrel=1
 pkgdesc='Anonymizing overlay network (with alpha/beta/rc)'
 arch=('i686' 'x86_64' 'armv7h')
@@ -35,15 +35,15 @@ source=("https://dist.torproject.org/tor-${pkgver/_/-}.tar.gz"{,.sha256sum{,.asc
         'tor.service'
         'tor.sysusers'
         'tor.tmpfiles')
-sha256sums=('2e6c1720118c812acf0079fd47cf91b6bfaba5d766c321c4d3d2a28d6a11a8ed'
-            'af624e0fe775fb870d67eef69a01bba39050a935d558188c2971a83aab525f05'
+sha256sums=('ff372c41ee7013557fe5b7acd96c909950b27a7959c59fcb87c02591682fabe2'
+            '2734af35f8f246bcc00fd7e18449d1b61f6ea39aefee75943ca6b90242a8c251'
             'SKIP'
             'e450b141cbe657a152d56a931ff1eb76c6b17dbe7354b3fa188d8a5043779f11'
             '6354475c4ee4de0c1204ccc6ae20dea8e812f83f3134ee2d665592a2cfe327e5'
             '04eec05b4e61efccc58c5da657363f0c1059d7f122cb15c32331a201af2d7f94'
             '07bedb17660a3673b31b0005b6505065c90b32f2c6b28b969241da675560f926')
-b2sums=('553f18fdbfade78bf461f6abb44b2876c8ec771ddd005c77027942b396ec76ca6cb71ccae776a89495fb12be03193c4d006d43781ce7e4a15bc91f2486bcd145'
-        'd4793ae196bcac406ce785b2fc6b2215a37465dca27801e35f190eb652915d3f42a2f1cdd95befed0e9887012f7c77f736270a69f51bce93ed4b2aac1a248832'
+b2sums=('ceb7fd75252071399d37993c91b645cbe8fbfe1ad2b61693b20b364ea6d94671760994ca7cb9ead2338a6bef572a1ae8173269cb911c4b305ef9accb6c63529d'
+        'a34da89e1980e898f893bc4106f1bd5739e3810af77c13507b760bb40b9d57a2986f0770a2b2760276fb9645854278bca2b99c391bcda4e70de15ce2083a3ebb'
         'SKIP'
         '770da249c40981c3937383f17e6e4432667868505876fd673312e669f2c46a0810aab579b654a8eed4a6ea573a0844fbe79d8145f358eb47fd7bc5dd89a32554'
         '79d35290cd40e407d3102366d585d37e3b50b41e30b7046f8b1c6a7ee199137701b3c5c4e63f5967d6185b66d675b71157d1ef673648162921323732bb0546cf'
@@ -78,8 +78,7 @@ build() {
 check() {
   cd "tor-${pkgver/_/-}"
 
-  # test_bt.sh requires symbol resolution in backtraces, which fails in the build chroot
-  make check XFAIL_TESTS="src/test/test_bt.sh"
+  make check
 }
 
 package() {
