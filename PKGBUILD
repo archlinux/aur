@@ -1,6 +1,6 @@
 # Maintainer: vmvarela <vmvarela@gmail.com>
 pkgname=sql-pipe
-pkgver=0.27.0
+pkgver=0.27.1
 pkgrel=1
 pkgdesc="Read CSV via stdin, run SQL, emit CSV via stdout"
 arch=('x86_64' 'aarch64')
@@ -10,13 +10,13 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("LICENSE::https://raw.githubusercontent.com/vmvarela/sql-pipe/v${pkgver}/LICENSE")
-sha256sums=('3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04')
+sha256sums=('aa0a1ee0bc207810098f0c95dce3cd21e47dca12b9fbd642ddfaff418b199faf')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/vmvarela/sql-pipe/releases/download/v${pkgver}/sql-pipe-x86_64-linux")
-sha256sums_x86_64=('69bcf5e7d84c1195cdd90a65e88ffd7aa98de9bc2a1e72b565420f61be4baeae')
+sha256sums_x86_64=('6a230bbdf1e5ba8cd524eb90a474b6d5f7c6cb9509268744e16ef3578a8fe87d')
 
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/vmvarela/sql-pipe/releases/download/v${pkgver}/sql-pipe-aarch64-linux")
-sha256sums_aarch64=('22d5d61b2f5931dcf974367af47b86d3d16baad11a5393338faee8f14bb1d148')
+sha256sums_aarch64=('60dd0e5e48331cbe47049491f2733cd6ebaedc306365e3eb0a7470c8cdeeeb50')
 
 package() {
     install -Dm755 "${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname}"
