@@ -1,6 +1,6 @@
 pkgbase = serein-bin
 	pkgdesc = Unofficial native Discord client (prebuilt binary)
-	pkgver = 1.0.0pre.nightly.20261114.91
+	pkgver = 1.0.0pre.nightly.20261117.95
 	pkgrel = 1
 	url = https://github.com/ViceVerse-cz/Serein
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = serein-bin
 	conflicts = serein
 	options = !strip
 	options = !debug
-	source = serein-1.0.0pre.nightly.20261114.91-x86_64.pkg.tar.zst::https://github.com/ViceVerse-cz/Serein/releases/download/v1.0.0-nightly.20261114.91/serein-v1.0.0-nightly.20261114.91-Linux-arch-serein-1.0.0pre.nightly.20261114.91-1-x86_64.pkg.tar.zst
-	sha256sums = e27c7a587ee13ae694f4616417f309f9ba3e6fe9d858e7078f1b388e6a79276f
+	source = serein-1.0.0pre.nightly.20261117.95-x86_64.pkg.tar.zst::https://github.com/ViceVerse-cz/Serein/releases/download/v1.0.0-nightly.20261117.95/serein-v1.0.0-nightly.20261117.95-Linux-arch-serein-1.0.0pre.nightly.20261117.95-1-x86_64.pkg.tar.zst
+	sha256sums = d0f68682b94a4abeb630de5c16caa3e24fe957ad18be50f8d51f0f89b2acdecc
 
 pkgname = serein-bin
