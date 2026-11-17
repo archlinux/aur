@@ -1,8 +1,8 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Qwen3.8 Flash Next.
+# Created with assistance from GLM 5.3 Flash.
 
 pkgname=pake-cli
-pkgver=3.19.0
+pkgver=3.19.1
 pkgrel=1
 pkgdesc="Turn any webpage into a desktop app with one command (Tauri/Rust-based CLI)"
 arch=('any')
@@ -19,7 +19,7 @@ options=('!debug')
 _pkgname=pake-cli
 
 source=("https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
-b2sums=('5f3c38e3993babd69f7fda6555df3da9ae0f30ea52945e59fe0329c04cb73b9cbc3513a8a1a2c4d9599cfc408c3d30d42feddf604e3ede5c29b92bd1030a5d86')
+b2sums=('917f84a38056acf3220766de497bd51696c4a14f684466c560097983f0406814ab06cc4f912c0a0a12cc9a9b062f5db99a3814ee2e61976b57b0bd0ddbac615a')
 
 prepare() {
     bsdtar -xf "${_pkgname}-${pkgver}.tgz"
