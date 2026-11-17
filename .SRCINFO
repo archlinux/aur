@@ -1,0 +1,14 @@
+pkgbase = sparkcli
+	pkgdesc = C library to build CLI tools with colors, tables, trees, progress bars and more
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/antoniovazquezblanco/sparkcli
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = cmocka
+	depends = glibc
+	source = sparkcli-0.0.9.tar.gz::https://github.com/antoniovazquezblanco/sparkcli/archive/refs/tags/v0.0.9.tar.gz
+	sha256sums = 13d9ae2e18bbd72a966566ac7dc268e4d01f61e1bb90d816d95e944e618c3b34
+
+pkgname = sparkcli
