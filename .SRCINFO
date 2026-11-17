@@ -1,6 +1,6 @@
 pkgbase = ryl
 	pkgdesc = Fast YAML linter and formatter
-	pkgver = 0.29.0
+	pkgver = 0.30.0
 	pkgrel = 1
 	url = https://github.com/owenlamont/ryl
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ryl
 	depends = glibc
 	depends = libgcc
 	options = !lto
-	source = ryl-0.29.0.tar.gz::https://github.com/owenlamont/ryl/archive/refs/tags/v0.29.0.tar.gz
-	sha256sums = 125a621004b0eef0963fbb4261a335de3f4afb82fb789297efbd0ff9de8249ab
+	source = ryl-0.30.0.tar.gz::https://github.com/owenlamont/ryl/archive/refs/tags/v0.30.0.tar.gz
+	sha256sums = 6c005e39d0952dec7b937a0e9efb27a381979621a880ae6dee29777a641a94af
 
 pkgname = ryl

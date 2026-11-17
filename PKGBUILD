@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=ryl
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc='Fast YAML linter and formatter'
 arch=('x86_64' 'aarch64' 'armv7h' 'powerpc64le')
@@ -11,7 +11,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('125a621004b0eef0963fbb4261a335de3f4afb82fb789297efbd0ff9de8249ab')
+sha256sums=('6c005e39d0952dec7b937a0e9efb27a381979621a880ae6dee29777a641a94af')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
