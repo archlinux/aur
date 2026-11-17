@@ -1,0 +1,13 @@
+pkgbase = claude-mem-sync
+	pkgdesc = Team memory sharing for claude-mem - sync AI memories across developers (wraps @lopadova/claude-mem-sync)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/lopadova/claude-mem-sync
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=18
+	source = claude-mem-sync-1.2.0.tar.gz::https://github.com/lopadova/claude-mem-sync/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = a78b1924183ab78041c79234fdb627718a7bb3a00b754e19a45940ecbdcd89ef
+
+pkgname = claude-mem-sync
