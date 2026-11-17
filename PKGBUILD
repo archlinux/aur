@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=marchen-bin
 _pkgname=Marchen
-pkgver=1.1.8
+pkgver=1.1.9
 _electronversion=44
 pkgrel=1
 pkgdesc="The local video subtitle player uses the DanDanPlay API; simply drag in an anime to match subtitles.本地视频的弹幕播放器，使用弹弹play API，拖入动漫即可匹配弹幕"
@@ -26,8 +26,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 sha256sums=('562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
-sha256sums_aarch64=('d15827082d6265df53fe8553cb3dcb35a7d9d4fc3dbf088996d953740d37f4b3')
-sha256sums_x86_64=('286e2eae21ea49dfd89da3bf49e017a45bf9a7db5aa30ca3df538c7860812bb5')
+sha256sums_aarch64=('b4dd18623476c0058a9bf9c5d538f93be66414904cd782343307b5716c2b24fe')
+sha256sums_x86_64=('9ca5cdad2fc1d63c62f4ae0632f23b8d1be19fed1f4c13e701f4a686a4c034aa')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
