@@ -1,20 +1,20 @@
 pkgbase = claude-loom-bin
 	pkgdesc = Graphical shell for Claude Code CLI, Electron.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/HyotmakFin/claude-loom
 	arch = x86_64
 	license = MIT
 	depends = electron45
 	depends = claude-code
-	provides = claude-loom=0.6.0
+	provides = claude-loom=0.6.1
 	conflicts = claude-loom
 	options = !emptydirs
-	source = claude-loom-0.6.0.pacman::https://github.com/HyotmakFin/claude-loom/releases/download/v0.6.0/claude-loom-0.6.0.pacman
-	source = LICENSE-0.6.0::https://raw.githubusercontent.com/HyotmakFin/claude-loom/v0.6.0/LICENSE
+	source = claude-loom-0.6.1-x86_64.AppImage::https://github.com/HyotmakFin/claude-loom/releases/download/v0.6.1/Claude-Loom-0.6.1.AppImage
+	source = LICENSE-0.6.1::https://raw.githubusercontent.com/HyotmakFin/claude-loom/v0.6.1/LICENSE
 	source = claude-loom.js
 	source = claude-loom.sh
-	sha256sums = a1076083794cf847f1c8a8d07bc3ac719985e606f35bfebd92f9f28a8f30bdb3
+	sha256sums = b1c36153826890efefaf70a64ec77b39b1bed24087d0a041a925ed1daf3c9104
 	sha256sums = 411acb0f56828c35f9993467a27bd069a7b62607a1fb9edfdd4ab1d2a4396819
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
