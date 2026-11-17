@@ -52,14 +52,12 @@ source=(
   flaresolverr.service
   flaresolverr.sysusers
   flaresolverr.tmpfiles
-  flaresolverr.install
 )
 sha256sums=('84f6df48849b2e1742692841805c4f284118fe4e2798b49d3a78159e89a46a91'
             'c1e8bd07c81b8dfd1e7493d4d7d1f10717d156cfcd91119836e6ec36e89198ed'
             '98379aef64fb530a22bcd949ead5cefc66c745bc683e5cedb37be371ae25eab8'
             '62f114d4e559cf9dae22bfd90759eff697e42da5f700a52988e70e78f3048ae2'
-            '4a61a6d9db1a9f4ec0812d86ef524a7f575a45f272404f0ebfc79376628feeb2'
-            '8df556eb3a6c0d42419b21f6f1396f0e5f1222b7b4a187b7cb26ad3f5a0160b5')
+            '4a61a6d9db1a9f4ec0812d86ef524a7f575a45f272404f0ebfc79376628feeb2')
 
 package() {
   install -dm755 "${pkgdir}/opt/flaresolverr"
