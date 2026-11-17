@@ -1,0 +1,14 @@
+pkgbase = ttf-yunzhuanduren
+	pkgdesc = 云篆度人经开源字体：4616 个云篆字形
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Lawrence-of-AnKing/yunzhuan-duren
+	arch = any
+	license = OFL-1.1
+	makedepends = fontconfig
+	provides = ttf-yunzhuanduren
+	conflicts = ttf-yunzhuanduren
+	source = YunZhuanDuRen-v1.0.0.zip::https://github.com/Lawrence-of-AnKing/yunzhuan-duren/releases/download/v1.0.0/YunZhuanDuRen-v1.0.0.zip
+	sha256sums = fcbd4d3ffa512c92b444d48eba9b9d1428d152529dba73d74c3f971be7f93578
+
+pkgname = ttf-yunzhuanduren
