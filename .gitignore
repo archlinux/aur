@@ -1,2 +1,6 @@
 *.zip
 *.pkg.tar.zst
+/README.md
+/LICENSE
+/src/
+/pkg/
