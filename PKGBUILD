@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=convco
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='Conventional commits, changelog, versioning, validation'
 url='https://convco.github.io'
@@ -10,8 +10,8 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs')
 makedepends=('cargo' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/convco/convco/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3a9b33e41561f80eaa9252673a1ee1b4857743e2ff7b33079d0b616c772fa981')
-b2sums=('e474bee2f6423fd857f44267733dbfc9e68cb40b434b3e871903fab20ffa47e45a48759a7d6c381b71b9f274887a8029928247e598c7418c518689a7386b9a17')
+sha256sums=('b73c702e93e9e29f9b57faf497e812a94edb773e2f7d67d7b0481b03464f1b24')
+b2sums=('65857aa5d6c51806f92f9b9cfdb34fe2df6ebb0044324d13fba5bdb24e74d5605d56b8d4ef8970ed59519598ff2e76d3e9aee96ccbf2c1914ff623f2d37c341b')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
