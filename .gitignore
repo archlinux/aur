@@ -3,4 +3,7 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
-LICENSE
+!LICENSES/
+!LICENSE
+!REUSE.toml
+!overwolf.license
