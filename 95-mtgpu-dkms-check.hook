@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/src/mtgpu-s30-*/dkms.conf
+Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/modules/*/build/include/
+
+[Action]
+Description = Checking MTT S30 DKMS module availability across kernels...
+When = PostTransaction
+Exec = /usr/lib/mtgpu/mtgpu-dkms-check

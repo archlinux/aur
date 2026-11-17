@@ -1,0 +1,31 @@
+#!/bin/bash
+# SPDX-License-Identifier: MIT
+# Post-transaction pacman check: warn loudly if any installed kernel is missing mtgpu.ko.
+
+set -u
+
+missing=()
+
+for vmlinuz in /usr/lib/modules/*/vmlinuz; do
+    [ -e "$vmlinuz" ] || continue
+    kver=$(basename "$(dirname "$vmlinuz")")
+    if ! find "/usr/lib/modules/$kver" -maxdepth 4 \( -name "mtgpu.ko" -o -name "mtgpu.ko.*" \) 2>/dev/null | grep -q .; then
+        missing+=("$kver")
+    fi
+done
+
+if [ "${#missing[@]}" -gt 0 ]; then
+    echo "" >&2
+    echo "========================================================================" >&2
+    echo " [!] 警告: mtgpu-s30 DKMS 内核驱动未能为以下内核编译安装:" >&2
+    for k in "${missing[@]}"; do
+        echo "     - $k" >&2
+    done
+    echo "     请查看构建日志: /var/lib/dkms/mtgpu-s30/*/build/make.log" >&2
+    echo "     说明: 即使此刻重启进入该内核，驱动保护与自动回退机制也会确保您" >&2
+    echo "     安全进入通用桌面（不会黑屏卡死），建议修复补丁或切换 linux-lts。" >&2
+    echo "========================================================================" >&2
+    echo "" >&2
+fi
+
+exit 0

@@ -1,0 +1,151 @@
+#!/bin/bash
+# SPDX-License-Identifier: MIT
+# Kernel module safe-load wrapper for mtgpu.
+# Serializes concurrent udev probes, honors safe-mode flags, tracks unconfirmed
+# boot attempts per (kernel, dkms-version), and falls back cleanly on failures.
+
+set -u
+
+STATE_DIR="/var/lib/mtgpu"
+STATE_FILE="$STATE_DIR/watchdog.state"
+FALLBACK_FLAG="/run/mtgpu-fallback"
+FORCE_FALLBACK_FILE="/etc/mtgpu-fallback"
+LOCK_FILE="/run/mtgpu-modprobe.lock"
+
+log_kmsg() {
+    local msg="$1"
+    if [ -w /dev/kmsg ]; then
+        printf '<4>mtgpu-guard: %s\n' "$msg" > /dev/kmsg 2>/dev/null || true
+    fi
+}
+
+mark_fallback() {
+    local reason="$1"
+    umask 022
+    mkdir -p /run
+    printf '%s\n' "$reason" > "$FALLBACK_FLAG"
+    chmod 0644 "$FALLBACK_FLAG" 2>/dev/null || true
+}
+
+cmdline_requests_fallback() {
+    local tok item
+    local cmdline=""
+    [ -r /proc/cmdline ] || return 1
+    cmdline=$(cat /proc/cmdline 2>/dev/null || true)
+    for tok in $cmdline; do
+        case "$tok" in
+            nomtgpu|mtgpu.fallback=1)
+                return 0
+                ;;
+            modprobe.blacklist=*)
+                local list="${tok#modprobe.blacklist=}"
+                local OLD_IFS="$IFS"
+                IFS=','
+                for item in $list; do
+                    if [ "$item" = "mtgpu" ]; then
+                        IFS="$OLD_IFS"
+                        return 0
+                    fi
+                done
+                IFS="$OLD_IFS"
+                ;;
+        esac
+    done
+    return 1
+}
+
+read_state_field() {
+    local key="$1"
+    [ -r "$STATE_FILE" ] || return 0
+    awk -F= -v k="$key" '$1 == k { sub(/^[^=]*=/, ""); print; exit }' "$STATE_FILE" 2>/dev/null || true
+}
+
+write_state() {
+    local kver="$1" dkms_ver="$2" boot_id="$3" unconf="$4" forced="$5" reason="$6"
+    mkdir -p "$STATE_DIR" 2>/dev/null || return 0
+    local tmp="$STATE_FILE.tmp.$$"
+    {
+        printf 'KERNEL_RELEASE=%s\n' "$kver"
+        printf 'DKMS_VERSION=%s\n' "$dkms_ver"
+        printf 'LAST_BOOT_ID=%s\n' "$boot_id"
+        printf 'UNCONFIRMED_BOOTS=%s\n' "$unconf"
+        printf 'FORCED_FALLBACK=%s\n' "$forced"
+        printf 'FAIL_REASON=%s\n' "$reason"
+    } > "$tmp" 2>/dev/null || { rm -f "$tmp" 2>/dev/null; return 0; }
+    mv -f "$tmp" "$STATE_FILE" 2>/dev/null || rm -f "$tmp" 2>/dev/null
+    sync "$STATE_DIR" "$STATE_FILE" 2>/dev/null || sync 2>/dev/null || true
+}
+
+mkdir -p /run
+exec 9>"$LOCK_FILE"
+if command -v flock >/dev/null 2>&1; then
+    flock -x 9 || true
+fi
+
+# Already loaded (e.g. concurrent udev modalias for HDMI audio function).
+if [ -d /sys/module/mtgpu ]; then
+    exit 0
+fi
+
+# Explicit manual/boot fallback overrides.
+if cmdline_requests_fallback; then
+    mark_fallback "kernel_cmdline"
+    log_kmsg "fallback requested via kernel command line; skipping mtgpu load"
+    exit 0
+fi
+
+if [ -f "$FORCE_FALLBACK_FILE" ]; then
+    mark_fallback "manual_override"
+    log_kmsg "fallback active via $FORCE_FALLBACK_FILE; skipping mtgpu load"
+    exit 0
+fi
+
+if [ -f "$FALLBACK_FLAG" ]; then
+    log_kmsg "runtime fallback already active; skipping mtgpu load"
+    exit 0
+fi
+
+CURR_KVER=$(uname -r)
+CURR_BOOT=$(cat /proc/sys/kernel/random/boot_id 2>/dev/null || echo "unknown")
+CURR_DKMS=$(modinfo -F srcversion mtgpu 2>/dev/null | head -n1 || echo "unknown")
+
+STATE_KVER=$(read_state_field "KERNEL_RELEASE")
+STATE_DKMS=$(read_state_field "DKMS_VERSION")
+STATE_BOOT=$(read_state_field "LAST_BOOT_ID")
+STATE_UNCONF=$(read_state_field "UNCONFIRMED_BOOTS")
+STATE_FORCED=$(read_state_field "FORCED_FALLBACK")
+STATE_REASON=$(read_state_field "FAIL_REASON")
+
+[[ "$STATE_UNCONF" =~ ^[0-9]+$ ]] || STATE_UNCONF=0
+[[ "$STATE_FORCED" =~ ^[0-9]+$ ]] || STATE_FORCED=0
+
+# Kernel or module build changed: reset watchdog and give this combination a clean attempt.
+if [ "$STATE_KVER" != "$CURR_KVER" ] || [ "$STATE_DKMS" != "$CURR_DKMS" ]; then
+    STATE_UNCONF=0
+    STATE_FORCED=0
+    STATE_REASON=""
+fi
+
+# Guard against repeated boot freezes/crashes on the same (kernel, module) pair.
+if [ "$STATE_FORCED" -ge 1 ] || { [ "$STATE_BOOT" != "$CURR_BOOT" ] && [ "$STATE_UNCONF" -ge 1 ]; }; then
+    REASON="${STATE_REASON:-previous_boot_unconfirmed}"
+    write_state "$CURR_KVER" "$CURR_DKMS" "$CURR_BOOT" "$STATE_UNCONF" 1 "$REASON"
+    mark_fallback "$REASON"
+    log_kmsg "auto-fallback engaged ($REASON); keeping simpledrm for safe desktop"
+    exit 0
+fi
+
+if [ "$STATE_BOOT" != "$CURR_BOOT" ]; then
+    NEW_UNCONF=$((STATE_UNCONF + 1))
+    write_state "$CURR_KVER" "$CURR_DKMS" "$CURR_BOOT" "$NEW_UNCONF" 0 ""
+fi
+
+if /usr/bin/modprobe --ignore-install mtgpu "$@"; then
+    exit 0
+else
+    rc=$?
+    write_state "$CURR_KVER" "$CURR_DKMS" "$CURR_BOOT" 1 1 "modprobe_failed_${rc}"
+    mark_fallback "modprobe_failed_${rc}"
+    log_kmsg "modprobe mtgpu failed (rc=$rc); fallback desktop armed"
+    exit 0
+fi

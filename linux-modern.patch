@@ -248,7 +248,7 @@ diff -Nurp a/conftest b/conftest
  
      CONFTEST_COMPILE_PREAMBLE="
      #include \"$CONFTEST_INC\"
-@@ -2021,4 +2046,58 @@ main()
+@@ -2021,4 +2046,66 @@ main()
      fi
  }
  
@@ -306,11 +306,19 @@ diff -Nurp a/conftest b/conftest
 +#include <linux/fs.h>
 +int probe(struct inode *i, struct dentry *d) { return vfs_unlink(&nop_mnt_idmap, i, d, NULL); }
 +'
++TEST_CUSTOMS['dma fence enable sw signaling callable']='
++#include <linux/dma-fence.h>
++void probe(struct dma_fence *f) { dma_fence_enable_sw_signaling(f); }
++'
++TEST_CUSTOMS['dma fence enable signaling callable']='
++#include <linux/dma-fence.h>
++void probe(struct dma_fence *f) { dma_fence_enable_signaling(f); }
++'
  main $@
 diff -Nurp a/inc/arch_compat.h b/inc/arch_compat.h
 --- a/inc/arch_compat.h	1970-01-01 08:00:00.000000000 +0800
-+++ b/inc/arch_compat.h	2026-11-10 16:56:53.771158798 +0800
-@@ -0,0 +1,56 @@
++++ b/inc/arch_compat.h	2026-11-17 15:22:00.000000000 +0800
+@@ -0,0 +1,59 @@
 +/* Compatibility for interfaces removed after the vendor kernel range. */
 +#ifndef MT_ARCH_COMPAT_H
 +#define MT_ARCH_COMPAT_H
@@ -366,6 +374,9 @@ diff -Nurp a/inc/arch_compat.h b/inc/arch_compat.h
 +	/* The current completed timeline value is no longer exposed by dma_fence. */
 +	snprintf(buf, size, "ctx=%llu", (unsigned long long)f->context);
 +}
++#if !defined(OS_DMA_FENCE_ENABLE_SW_SIGNALING_CALLABLE) && defined(OS_DMA_FENCE_ENABLE_SIGNALING_CALLABLE)
++#define dma_fence_enable_sw_signaling dma_fence_enable_signaling
++#endif
 +#endif
 diff -Nurp a/inc/common/os-interface.h b/inc/common/os-interface.h
 --- a/inc/common/os-interface.h	2025-05-16 13:04:56.000000000 +0800
@@ -2448,28 +2459,28 @@ diff -Nurp a/src/mtgpu/mtgpu_hwmon.c b/src/mtgpu/mtgpu_hwmon.c
 +ATTRIBUTE_GROUPS(mtgpu_hwmon);
 +
 +/* Device-level attributes for DRM device (/sys/class/drm/card0/device/mem_info_vram_*) */
++static ssize_t mtgpu_format_dpm_mhz(char *buf, ssize_t ret, char *fbuf, s64 default_hz)
++{
++	s64 freq = default_hz;
++
++	if (ret > 0 && kstrtos64(strim(fbuf), 10, &freq) != 0)
++		freq = default_hz;
++
++	return scnprintf(buf, PAGE_SIZE, "0: %lluMhz *\n", div_u64(freq > 0 ? freq : default_hz, 1000000ULL));
++}
++
 +static ssize_t dev_pp_dpm_sclk_show(struct device *dev, struct device_attribute *attr, char *buf)
 +{
 +	char fbuf[32];
-+	ssize_t ret = freq1_input_show(dev, attr, fbuf);
-+	s64 freq = 1300000000LL;
 +
-+	if (ret > 0)
-+		(void)kstrtos64(strim(fbuf), 10, &freq);
-+
-+	return scnprintf(buf, PAGE_SIZE, "0: %lluMhz *\n", div_u64(freq > 0 ? freq : 1300000000LL, 1000000ULL));
++	return mtgpu_format_dpm_mhz(buf, freq1_input_show(dev, attr, fbuf), fbuf, 1300000000LL);
 +}
 +
 +static ssize_t dev_pp_dpm_mclk_show(struct device *dev, struct device_attribute *attr, char *buf)
 +{
 +	char fbuf[32];
-+	ssize_t ret = freq2_input_show(dev, attr, fbuf);
-+	s64 freq = 4250000000LL;
 +
-+	if (ret > 0)
-+		(void)kstrtos64(strim(fbuf), 10, &freq);
-+
-+	return scnprintf(buf, PAGE_SIZE, "0: %lluMhz *\n", div_u64(freq > 0 ? freq : 4250000000LL, 1000000ULL));
++	return mtgpu_format_dpm_mhz(buf, freq2_input_show(dev, attr, fbuf), fbuf, 4250000000LL);
 +}
 +
 +static struct device_attribute dev_attr_pp_dpm_sclk =

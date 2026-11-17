@@ -1,0 +1,119 @@
+#!/bin/bash
+# SPDX-License-Identifier: MIT
+# Post-boot health verifier & clean-shutdown watchdog disarm for mtgpu.
+
+set -u
+
+STATE_DIR="/var/lib/mtgpu"
+STATE_FILE="$STATE_DIR/watchdog.state"
+FALLBACK_FLAG="/run/mtgpu-fallback"
+
+read_state_field() {
+    local key="$1"
+    [ -r "$STATE_FILE" ] || return 0
+    awk -F= -v k="$key" '$1 == k { sub(/^[^=]*=/, ""); print; exit }' "$STATE_FILE" 2>/dev/null || true
+}
+
+write_state() {
+    local kver="$1" dkms_ver="$2" boot_id="$3" unconf="$4" forced="$5" reason="$6"
+    mkdir -p "$STATE_DIR" 2>/dev/null || return 0
+    local tmp="$STATE_FILE.tmp.$$"
+    {
+        printf 'KERNEL_RELEASE=%s\n' "$kver"
+        printf 'DKMS_VERSION=%s\n' "$dkms_ver"
+        printf 'LAST_BOOT_ID=%s\n' "$boot_id"
+        printf 'UNCONFIRMED_BOOTS=%s\n' "$unconf"
+        printf 'FORCED_FALLBACK=%s\n' "$forced"
+        printf 'FAIL_REASON=%s\n' "$reason"
+    } > "$tmp" 2>/dev/null || { rm -f "$tmp" 2>/dev/null; return 0; }
+    mv -f "$tmp" "$STATE_FILE" 2>/dev/null || rm -f "$tmp" 2>/dev/null
+    sync "$STATE_DIR" "$STATE_FILE" 2>/dev/null || true
+}
+
+has_mtt_pci() {
+    local f
+    for f in /sys/bus/pci/devices/*/vendor; do
+        [ -r "$f" ] || continue
+        if [ "$(cat "$f" 2>/dev/null)" = "0x1ed5" ]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+display_manager_failed() {
+    local dm_unit="display-manager.service"
+    if systemctl is-failed --quiet "$dm_unit" 2>/dev/null; then
+        return 0
+    fi
+    if systemctl list-unit-files sddm.service >/dev/null 2>&1; then
+        if journalctl -b -u sddm.service -n 60 --no-pager 2>/dev/null | grep -q "Could not start Display server"; then
+            return 0
+        fi
+    fi
+    return 1
+}
+
+cmd_start() {
+    local curr_kver curr_boot curr_dkms i
+
+    if ! has_mtt_pci; then
+        exit 0
+    fi
+
+    curr_kver=$(uname -r)
+    curr_boot=$(cat /proc/sys/kernel/random/boot_id 2>/dev/null || echo "unknown")
+    curr_dkms=$(modinfo -F srcversion mtgpu 2>/dev/null | head -n1 || echo "missing")
+
+    # Module is not loaded in kernel memory: ensure runtime fallback marker is present.
+    if [ ! -d /sys/module/mtgpu ]; then
+        if [ ! -f "$FALLBACK_FLAG" ]; then
+            if [ "$curr_dkms" = "missing" ] || [ ! -e "$(modinfo -n mtgpu 2>/dev/null || echo /nonexistent)" ]; then
+                printf 'dkms_missing_for_kernel\n' > "$FALLBACK_FLAG"
+            else
+                printf 'module_not_loaded\n' > "$FALLBACK_FLAG"
+            fi
+            chmod 0644 "$FALLBACK_FLAG" 2>/dev/null || true
+        fi
+        # Clear pending boot counter if mtgpu itself didn't run on this boot.
+        if [ "$(read_state_field FORCED_FALLBACK)" != "1" ]; then
+            write_state "$curr_kver" "$curr_dkms" "$curr_boot" 0 0 ""
+        fi
+        exit 0
+    fi
+
+    # Observe early display bring-up for 16s before clearing watchdog pending count.
+    for i in 1 2 3 4 5 6 7 8; do
+        sleep 2
+        if display_manager_failed; then
+            write_state "$curr_kver" "$curr_dkms" "$curr_boot" 1 1 "display_server_failed"
+            printf 'display_server_failed\n' > "$FALLBACK_FLAG"
+            chmod 0644 "$FALLBACK_FLAG" 2>/dev/null || true
+            logger -t mtgpu-watchdog "display server failed while mtgpu loaded; armed auto-fallback for next boot" 2>/dev/null || true
+            exit 0
+        fi
+    done
+
+    write_state "$curr_kver" "$curr_dkms" "$curr_boot" 0 0 ""
+    exit 0
+}
+
+cmd_stop() {
+    # Clean shutdown/reboot before the confirm window finishes must not trip the hang watchdog.
+    local forced reason curr_kver curr_boot curr_dkms
+    [ -r "$STATE_FILE" ] || exit 0
+    forced=$(read_state_field "FORCED_FALLBACK")
+    reason=$(read_state_field "FAIL_REASON")
+    if [ "${forced:-0}" = "0" ] && [ -z "$reason" ]; then
+        curr_kver=$(uname -r)
+        curr_boot=$(cat /proc/sys/kernel/random/boot_id 2>/dev/null || echo "unknown")
+        curr_dkms=$(modinfo -F srcversion mtgpu 2>/dev/null | head -n1 || echo "missing")
+        write_state "$curr_kver" "$curr_dkms" "$curr_boot" 0 0 ""
+    fi
+}
+
+case "${1:-}" in
+    start) cmd_start ;;
+    stop) cmd_stop ;;
+    *) exit 0 ;;
+esac

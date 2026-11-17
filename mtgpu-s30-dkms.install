@@ -1,14 +1,29 @@
 post_install() {
+    mkdir -p /var/lib/mtgpu
+    rm -f /var/lib/mtgpu/watchdog.state /run/mtgpu-fallback 2>/dev/null || true
+    systemctl daemon-reload >/dev/null 2>&1 || true
+
     cat << "MSG"
 :: Moore Threads MTT S30 DKMS module installed.
 :: DKMS will automatically build the kernel module on kernel updates.
+:: Safe-boot resilience enabled:
+::  - Boot watchdog & automatic simpledrm fallback on driver failure
+::  - Excluded from early initramfs (dracut)
+::  - Post-upgrade DKMS missing-module alert hook installed
 :: To verify the kernel module status, run:
 ::   dkms status -m mtgpu-s30
-:: In case of emergency or black screen, boot with kernel parameter:
-::   modprobe.blacklist=mtgpu
+:: Tip: Installing 'linux-lts' is recommended as an extra rolling-update backup.
+:: In case of emergency or to test fallback mode, boot with kernel parameter:
+::   nomtgpu   (or modprobe.blacklist=mtgpu)
 MSG
 }
 
 post_upgrade() {
     post_install
+}
+
+post_remove() {
+    rm -f /var/lib/mtgpu/watchdog.state /run/mtgpu-fallback /run/mtgpu-modprobe.lock 2>/dev/null || true
+    rmdir /var/lib/mtgpu 2>/dev/null || true
+    systemctl daemon-reload >/dev/null 2>&1 || true
 }

@@ -1,0 +1,12 @@
+[Unit]
+Description=Moore Threads MTT S30 Boot Health & Watchdog Verifier
+After=local-fs.target systemd-udev-settle.service display-manager.service
+
+[Service]
+Type=simple
+RemainAfterExit=yes
+ExecStart=/usr/lib/mtgpu/mtgpu-boot-confirm start
+ExecStop=/usr/lib/mtgpu/mtgpu-boot-confirm stop
+
+[Install]
+WantedBy=multi-user.target
