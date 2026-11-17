@@ -1,0 +1,16 @@
+pkgbase = shakedown-cli
+	pkgdesc = Migration rehearsal for databases
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mAmineChniti/shakedown
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	source = LICENSE::https://raw.githubusercontent.com/mAmineChniti/shakedown/v0.1.0/LICENSE
+	sha256sums = ada32f307add72348b36666c2453425f65950cc2e7247c527adad4ba1f0a7d29
+	source_x86_64 = shakedown-0.1.0::https://github.com/mAmineChniti/shakedown/releases/download/v0.1.0/shakedown_linux_amd64
+	sha256sums_x86_64 = 06ab0dc4693f6b6359ca87c9c8d12ded47f39ed5ed021163df17e3cd15e784c2
+	source_aarch64 = shakedown-0.1.0::https://github.com/mAmineChniti/shakedown/releases/download/v0.1.0/shakedown_linux_arm64
+	sha256sums_aarch64 = cd4d23a18ed2c59061dc93b6c3bb2254d29e46483d6e7e5ba9e294db865a6970
+
+pkgname = shakedown-cli
