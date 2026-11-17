@@ -1,6 +1,6 @@
 pkgbase = wizardchat-bin
 	pkgdesc = Simple, secure, magical Matrix client
-	pkgver = 26.12.3
+	pkgver = 26.12.4
 	pkgrel = 1
 	url = https://wizardchat.org
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = wizardchat-bin
 	provides = wizardchat
 	conflicts = wizardchat
 	options = !debug
-	source = https://gitlab.com/api/v4/projects/wizardchat%2Fwizardchat/packages/generic/wizardchat-desktop/v26.12.3/wizardchat-26.12.3-linux-x86_64.tar.gz
-	sha256sums = 6afccc8ab4f0634dbbfeff22b91896dc745edef2ea8158def9333a4bfc9bf206
+	source = https://gitlab.com/api/v4/projects/wizardchat%2Fwizardchat/packages/generic/wizardchat-desktop/v26.12.4/wizardchat-26.12.4-linux-x86_64.tar.gz
+	sha256sums = 0ead607fbf0f5896721551f8a0a1d738b5ca7b30661a30ba7572c4bdec253aab
 
 pkgname = wizardchat-bin
