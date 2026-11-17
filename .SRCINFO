@@ -1,6 +1,6 @@
 pkgbase = kyko
 	pkgdesc = Drop-down terminal for uQ and other Wayland desktops
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/kyko
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = kyko
 	depends = qt6-wayland
 	depends = layer-shell-qt
 	options = !lto
-	source = kyko-0.1.0.tar.gz::https://github.com/asafelobotomy/kyko/releases/download/v0.1.0/kyko-0.1.0.tar.gz
-	sha256sums = 07cd5eab9e6cfb660fdf8c264e9619883f0613aff78c56ee32ca03c705783fd6
+	source = kyko-0.2.0.tar.gz::https://github.com/asafelobotomy/kyko/releases/download/v0.2.0/kyko-0.2.0.tar.gz
+	sha256sums = 16dafce751587adc0b99f772859a4d96beaa97193b95fb8570537214befea0e3
 
 pkgname = kyko

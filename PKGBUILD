@@ -4,7 +4,7 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=kyko
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
 pkgdesc="Drop-down terminal for uQ and other Wayland desktops"
@@ -21,7 +21,7 @@ options=(!lto)
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
 # The release asset's sha256 for this tag; SKIP until the first release, then update it with
 # pkgver at each release.
-sha256sums=('07cd5eab9e6cfb660fdf8c264e9619883f0613aff78c56ee32ca03c705783fd6')
+sha256sums=('16dafce751587adc0b99f772859a4d96beaa97193b95fb8570537214befea0e3')
 
 prepare() {
   cd "$srcdir/$pkgname-$_tag"
@@ -33,7 +33,7 @@ build() {
   cd "$srcdir/$pkgname-$_tag"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release -p kyko -p kykod
+  cargo build --frozen --release -p kyko -p kykod -p kyko-prompt
 }
 
 check() {
@@ -47,6 +47,7 @@ package() {
   cd "$srcdir/$pkgname-$_tag"
   install -Dm755 target/release/kyko "$pkgdir/usr/bin/kyko"
   install -Dm755 target/release/kykod "$pkgdir/usr/bin/kykod"
+  install -Dm755 target/release/kyko-prompt "$pkgdir/usr/bin/kyko-prompt"
   # A user unit, installed but not enabled.
   install -Dm644 packaging/kykod.service "$pkgdir/usr/lib/systemd/user/kykod.service"
   install -Dm644 packaging/kyko.service "$pkgdir/usr/lib/systemd/user/kyko.service"
@@ -54,6 +55,8 @@ package() {
   install -Dm644 packaging/org.kyko.Terminal1.service "$pkgdir/usr/share/dbus-1/services/org.kyko.Terminal1.service"
   install -Dm644 packaging/org.kyko.Kyko.desktop "$pkgdir/usr/share/applications/org.kyko.Kyko.desktop"
   install -Dm644 packaging/org.kyko.Kyko.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.kyko.Kyko.svg"
+  # uQ's Spotlight lists kyko's open tabs.
+  install -Dm644 packaging/kyko.provider "$pkgdir/usr/share/uq/launcher/kyko.provider"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   # The built-in themes are uQ's; their credits and licences.
   install -Dm644 crates/kyko-core/themes/CREDITS.md "$pkgdir/usr/share/licenses/$pkgname/THEMES.md"
