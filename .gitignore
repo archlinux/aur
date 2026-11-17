@@ -3,6 +3,9 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !lazylibrarian.service
 !lazylibrarian.sysusers
 !lazylibrarian.tmpfiles
