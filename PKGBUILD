@@ -1,8 +1,8 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=wowtype-bin
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="WeType-style pinyin input method for fcitx5, with bundled dictionaries and language model"
 arch=('x86_64')
 url="https://github.com/Gloridust/WowType"
@@ -46,7 +46,7 @@ source=(
     'Unicode-3.0.txt'
 )
 noextract=("${_deb}")
-sha256sums=('3251f6d72143d54c893ee9937d282beddc2e4fb9944cb2336434770e63475587'
+sha256sums=('ef49dae5e976f3759c7a362b1e627ca10b0a07d98a8d1fa1fda73d92dad09116'
             'e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96')
 
 package() {
