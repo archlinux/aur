@@ -3,6 +3,9 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !prowlarr.service
 !prowlarr.sysusers
 !prowlarr.tmpfiles
