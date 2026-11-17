@@ -3,8 +3,8 @@
 # Repository: https://github.com/minpeter/aur-epic-games-launcher-bin
 
 pkgname=epic-games-launcher-bin
-pkgver=0.115.0
-_commit=gd6d2ef8
+pkgver=0.116.2
+_commit=gb27d165
 pkgrel=1
 pkgdesc="Official Epic Games Store launcher (Preview)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ options=('!debug' '!strip')
 _deb="EpicGamesLauncher-${pkgver}-${_commit}-x86_64.deb"
 source=("${_deb}::https://content-download-egs.distro.on.epicgames.com/Builds/EGLv2/${pkgver}%2B${_commit}/Linux/EpicGamesLauncher-x86_64.deb")
 noextract=("${_deb}")
-sha256sums=('618adc0bcc778bbb1f49738110d5c219e861ed4cb7adb72b24fb5503156a6d63')
+sha256sums=('b7f0e0ed4f516fd6f5ef43a54c5ddafba082c3a3d5b18edc40de8863ca68bc34')
 
 prepare() {
   rm -rf "${srcdir}/deb"
