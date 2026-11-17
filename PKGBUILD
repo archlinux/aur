@@ -24,7 +24,7 @@ depends=('bash' 'glibc' 'libgcc' 'xz' 'bzip2')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-options=(!strip)
+options=('!strip' 'staticlibs')
 
 source=("README-${pkgver}.md::${__ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${__ghurlraw}/LICENSE"

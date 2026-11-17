@@ -15,6 +15,7 @@ pkgbase = perry-bin
 	provides = perry
 	conflicts = perry
 	options = !strip
+	options = staticlibs
 	source = README-0.5.1665.md::https://raw.githubusercontent.com/PerryTS/perry/v0.5.1665/README.md
 	source = LICENSE-0.5.1665::https://raw.githubusercontent.com/PerryTS/perry/v0.5.1665/LICENSE
 	source = tests.patch
