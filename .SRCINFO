@@ -1,0 +1,18 @@
+pkgbase = claude-mem-sync-git
+	pkgdesc = Team memory sharing for claude-mem - H3mul fork with SSH remote support (builds from git)
+	pkgver = 1.1.9.r131.g7038652
+	pkgrel = 1
+	url = https://github.com/H3mul/claude-mem-sync
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = nodejs>=18
+	provides = claude-mem-sync
+	conflicts = claude-mem-sync
+	options = !debug
+	source = claude-mem-sync::git+https://github.com/H3mul/claude-mem-sync.git#branch=main
+	sha256sums = SKIP
+
+pkgname = claude-mem-sync-git
