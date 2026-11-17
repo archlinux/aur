@@ -14,9 +14,9 @@ makedepends=(git rust)
 provides=(coreutils)
 conflicts=({uutils-,}coreutils)
 source=("${pkgname%-git}::git+${url}.git"
-"libstdbuf-path.patch::${url}/commit/7f24de234c367354cd45d21ca61f8f910ee795f0.patch") # PR16487
+"libstdbuf-path.patch::${url}/commit/4ebcfc13052fc7e78ccd8e1f60750aafb636a0fe.patch") # PR16487
 b2sums=('SKIP'
-        '453f35ded9d9cdc2914b9ae3713fa23c162f73705a1c07271eaf4185cdaf333eb783dfdb997f699f6bc0a260ae4bbafb470c26416da0c94026889149438ac44a')
+        'd7ba18382a6a137e7b0fbda4b7538230722d7fb221cdaa19fcf5819ffe511743bc5df327925e80e252341ac6bf80a477490808f45614ed12733f9246baf03f5b')
 pkgver() {
   cd ${pkgname%-git}
   git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
