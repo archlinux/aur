@@ -3,7 +3,7 @@ pkgname=orca-ide-bin
 _pkgname=Orca
 pkgver=1.4.261
 _electronversion=43
-pkgrel=1
+pkgrel=2
 pkgdesc="ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription."
 arch=(
     'aarch64'
@@ -89,6 +89,13 @@ SH
 		s/\/opt\/${_pkgname}\///g
 		s/Utility/Development/g
 	" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*musl*" -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*musl*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

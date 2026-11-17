@@ -1,7 +1,7 @@
 pkgbase = orca-ide-bin
 	pkgdesc = ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription.
 	pkgver = 1.4.261
-	pkgrel = 1
+	pkgrel = 2
 	url = https://onorca.dev/
 	arch = aarch64
 	arch = x86_64
