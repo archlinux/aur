@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-insiders-bin
 _pkgname=visual-studio-code-insiders
-pkgver=1794902877
+pkgver=1794937006
 pkgrel=1
 pkgdesc="Visual Studio Code Insiders (vscode): Editor for building and debugging modern web and cloud applications (official binary version)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -26,13 +26,13 @@ optdepends=('glib2: Needed for move to trash functionality'
             'bubblewrap: Agent host sandboxing' 'socat: Agent host sandboxing'
             )
 source=(${_pkgname}-bin.sh)
-source_x86_64=(code_x64_1794902877.deb::https://vscode.download.prss.microsoft.com/dbazure/download/insider/8a14f0cc1b08d531eb83255ea3764ae22aa932b5/code-insiders_1.147.0-1794902877_amd64.deb)
-source_aarch64=(code_arm64_1794902875.deb::https://vscode.download.prss.microsoft.com/dbazure/download/insider/8a14f0cc1b08d531eb83255ea3764ae22aa932b5/code-insiders_1.147.0-1794902875_arm64.deb)
-source_armv7h=(code_armhf_1794902128.deb::https://vscode.download.prss.microsoft.com/dbazure/download/insider/8a14f0cc1b08d531eb83255ea3764ae22aa932b5/code-insiders_1.147.0-1794902128_armhf.deb)
+source_x86_64=(code_x64_1794937006.deb::https://vscode.download.prss.microsoft.com/dbazure/download/insider/ca70cf1a8b44ca31e91bc57595aa6054cbfcfa15/code-insiders_1.148.0-1794937006_amd64.deb)
+source_aarch64=(code_arm64_1794936937.deb::https://vscode.download.prss.microsoft.com/dbazure/download/insider/ca70cf1a8b44ca31e91bc57595aa6054cbfcfa15/code-insiders_1.148.0-1794936937_arm64.deb)
+source_armv7h=(code_armhf_1794936581.deb::https://vscode.download.prss.microsoft.com/dbazure/download/insider/ca70cf1a8b44ca31e91bc57595aa6054cbfcfa15/code-insiders_1.148.0-1794936581_armhf.deb)
 sha256sums=('bf8abef6671392bf1f11d203fd940cc44e764e9c6352be7799880535c2f15087')
-sha256sums_x86_64=('88352822b03db2caffe7e8ec917cfb7e4e1786b0534b586ee2fa90fe05982f4f')
-sha256sums_aarch64=('80c3586fd7e16c03852bb860f55c7cf69080a46a69602eb04ea46e0f7d30563d')
-sha256sums_armv7h=('de738f7988e5a29c3a0b6a21a74135c7b585146e519a70e19149ec2f40de9246')
+sha256sums_x86_64=('b414c9bd33893f587b0ff21679763db6cf8ab347fe8ef1566401e036d26a6e4a')
+sha256sums_aarch64=('0308e6f11f5fa49fcdc1e059aa4b84d17a336e916d8e312fc0a950140bdc6743')
+sha256sums_armv7h=('93a6a7814b5bcec4eb511877639b054b8fa467e56aa9309b568437d75f462e2a')
 
 package() {
   bsdtar -xf data.tar.xz -C "${pkgdir}/"
