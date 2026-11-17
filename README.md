@@ -42,7 +42,7 @@ makepkg -si            # builds and installs, asks for the sudo password once
 A prebuilt package is already in this directory, so installing is just:
 
 ```bash
-sudo pacman -U simpleems-0.4.0-1-x86_64.pkg.tar.zst
+sudo pacman -U simpleems-0.5.0-1-x86_64.pkg.tar.zst
 ```
 
 ## Solver backends (optional, needed for actual simulations)
@@ -78,12 +78,15 @@ simpleems checkhealth
 
 * The venv is tied to CPython 3.13. Moving to 3.14 needs `cadquery-ocp` cp314 wheels
   (OCP ≥ 8 / cadquery ≥ 2.9) and a corresponding `_pyver` bump.
+* Upstream has not tagged 0.5.0 yet: `source` pins commit `e74ae629a06b` (the
+  "Bump version: 0.4.0 -> 0.5.0" commit). Switch back to
+  `$url/archive/refs/tags/v$pkgver.tar.gz` once the tag appears.
 * To package git snapshots instead, use a `-git` pkgname with
   `source=("git+$url.git")`, `pkgver()` with `git describe`, and `sha256sums=('SKIP')`.
 * `.SRCINFO` is generated (`makepkg --printsrcinfo > .SRCINFO`) and ready for an AUR
   submission if you ever want to upload it.
 * Uninstall: `sudo pacman -R simpleems` (removes `/opt/simpleems` as well).
-* Rebuild from scratch: `makepkg -f` (the source tarball `v0.4.0.tar.gz` is kept here so
+* Rebuild from scratch: `makepkg -f` (the source tarball `simpleems-0.5.0.tar.gz` is kept here so
   the download can be reused).
 
 ## If this is submitted to the AUR (yay / paru)

@@ -10,7 +10,7 @@
 
 pkgname=simpleems
 _pkgname=simpleEMS
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 install=$pkgname.install
 pkgdesc="Framework on top of openEMS for designing and simulating antennas, filters, couplers and other RF/microwave structures"
@@ -38,8 +38,12 @@ optdepends=(
   'octave: openEMS post-processing helper scripts'
   'vulkan-icd-loader: GPU accelerated rendering'
 )
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4856c5f34360f85c747f27d394d535b80ae9dcc13aebfa3b00f3cd07ea570ef1')
+# 0.5.0 is not tagged upstream yet; this is the "Bump version: 0.4.0 -> 0.5.0"
+# commit (master HEAD at the time of packaging). Switch to refs/tags/v$pkgver
+# once the tag exists.
+_commit=e74ae629a06bd8bc35d577c07d98ad6951a96b2e
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
+sha256sums=('0b03bcb5b940a345601ac595bc9fffca7d0139e0c26b4c4bffd6a22d1719494d')
 # the tree is made of prebuilt wheels; a debug-info pass over them is pure waste
 options=('!debug')
 
@@ -48,7 +52,7 @@ _uvpython=3.13.18    # exact interpreter uv fetches, so rebuilds are reproducibl
 _optdir=/opt/$pkgname
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$_pkgname-$_commit"
 
   # Pin the interpreter to a uv-managed build: the system Python (3.14) has no
   # cadquery-ocp wheels, and only-managed keeps the result independent of whatever
@@ -64,7 +68,7 @@ build() {
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd "$_pkgname-$_commit"
 
   install -d "$pkgdir$_optdir"
 
@@ -103,10 +107,13 @@ EOF
   # activation helpers embed the build directory and are not needed here
   rm -f "$pkgdir$_optdir"/venv/bin/activate*
 
-  # rewrite the absolute interpreter path baked into the console scripts
+  # Rewrite the absolute interpreter path baked into the console scripts. uv emits
+  # either a plain shebang or, when the build path exceeds the 127 byte shebang
+  # limit, a /bin/sh polyglot whose second line execs the interpreter.
   local _f
   while IFS= read -r -d '' _f; do
-    sed -i "1s|^#!.*python[0-9.]*\$|#!$_optdir/venv/bin/python|" "$_f"
+    sed -i -e "1s|^#!.*python[0-9.]*\$|#!$_optdir/venv/bin/python|" \
+           -e "2s|^'''exec' '[^']*'|'''exec' '$_optdir/venv/bin/python'|" "$_f"
   done < <(find "$pkgdir$_optdir/venv/bin" -maxdepth 1 -type f -print0)
 
   install -d "$pkgdir/usr/bin"
