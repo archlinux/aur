@@ -2,11 +2,11 @@
 Name=WorkBuddy AI (International)
 GenericName=AI Office Agent
 Comment=AI Agent for everyday office work (international edition, unofficial Linux port)
-Exec=/opt/workbuddy-international/start.sh %F
+Exec=/opt/workbuddy-international/start.sh %U
 Icon=workbuddy-international
 Type=Application
 Categories=Development;IDE;Office;
 Keywords=AI;agent;office;workbuddy;codebuddy;
 StartupNotify=true
-StartupWMClass=WorkBuddy AI
-MimeType=x-scheme-handler/workbuddy-ai;
+StartupWMClass=workbuddy-international
+MimeType=x-scheme-handler/workbuddy;x-scheme-handler/buddy-app;
