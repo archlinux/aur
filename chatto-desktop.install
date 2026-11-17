@@ -1,0 +1,7 @@
+pre_upgrade () {
+    echo "Removing previously lib symbolic links..."
+    _libs=('libvk_swiftshader.so' 'libffmpeg.so')
+    for lib in "${_libs[@]}" ; do
+	[[ -L /opt/chatto-desktop/$lib ]] && unlink /opt/chatto-desktop/$lib
+    done
+}

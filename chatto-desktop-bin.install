@@ -1,0 +1,6 @@
+pre_upgrade () {
+   _libs=('libvk_swiftshader.so' 'libffmpeg.so')
+   for lib in ${_libs[@]} ; do
+   	[[ -L "/opt/chatto-desktop/$lib" ]] && unlink "/opt/chatto-desktop/$lib"
+   done
+}

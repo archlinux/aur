@@ -135,6 +135,7 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'glib2' 'glibc' 'gtk3'
          'systemd-libs' 'vulkan-icd-loader')
 options=('!strip' '!debug')
 source=("${_pkgname}.desktop")
+install=chatto-desktop.install
 source_x86_64=("https://github.com/chattocorp/chatto/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_X64.tar.gz")
 source_aarch64=("https://github.com/chattocorp/chatto/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_ARM64.tar.gz")
 sha256sums=('1cf89029fc7da60e0e1b5d1d9b2af120a65baf904e7d4509282d16e18a8d8b7e')
@@ -142,21 +143,19 @@ sha256sums_x86_64=('40d01de1a3f6a230f69f6369ddb3bf03734ee9eb6547c26b4ee1163325ec
 sha256sums_aarch64=('a1aaeb591ef6c3b29b9454b2b2f09cb0d72fdc88249e688f9124888361fc92ba')
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-
     #---------------- /OPT (app incl. libffmpeg.so, libvk_swiftshader.so and resources/build/icons)
     install -dm755 "${pkgdir}/opt/${_pkgname}"
-    cp -r --preserve=timestamps . "${pkgdir}/opt/${_pkgname}/"
+    cp -r --preserve=timestamps ${_pkgname} "${pkgdir}/opt/${_pkgname}"
     # use the system Vulkan loader (vulkan-icd-loader)
-    rm "${pkgdir}/opt/${_pkgname}/libvulkan.so.1"
+    [[ -f "${pkgdir}/opt/${_pkgname}/libvulkan.so.1" ]] && rm "${pkgdir}/opt/${_pkgname}/libvulkan.so.1"
 
     #---------------- LICENSES
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" \
-        resources/LICENSES/* LICENSES.chromium.html
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/electron_license.txt"
+	 "${_pkgname}/resources/LICENSES/"* "${_pkgname}/LICENSES.chromium.html"
+    install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/electron_license.txt"
 
     #---------------- ICONS
-    local _icons="resources/build/icons" _hicolor="${pkgdir}/usr/share/icons/hicolor"
+    local _icons="${_pkgname}/resources/build/icons" _hicolor="${pkgdir}/usr/share/icons/hicolor"
     install -Dm644 "${_icons}/favicon.png"            "${_hicolor}/32x32/apps/${_pkgname}.png"
     install -Dm644 "${_icons}/notification-badge.png" "${_hicolor}/96x96/apps/${_pkgname}.png"
     install -Dm644 "${_icons}/apple-touch-icon.png"   "${_hicolor}/180x180/apps/${_pkgname}.png"
