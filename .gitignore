@@ -1,11 +1,9 @@
-# Ignore everything
 *
-
-# But not these files...
-!.gitignore
-
-!.SRCINFO
 !PKGBUILD
-
-!ntfy.sysusers
+!.SRCINFO
+!.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
+!ntfy.sysusers
