@@ -1,6 +1,6 @@
 pkgbase = zen-browser-twilight-bin
 	pkgdesc = Zen Browser (Twilight Build) - Performance oriented Firefox-based web browser
-	pkgver = 1.25t.20261115
+	pkgver = 1.25t.20261116
 	pkgrel = 1
 	url = https://zen-browser.app/
 	install = zen-browser-twilight-bin.install
@@ -21,7 +21,7 @@ pkgbase = zen-browser-twilight-bin
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = xdg-desktop-portal: Screen sharing under Wayland
-	provides = zen-browser=1.25t.20261115
+	provides = zen-browser=1.25t.20261116
 	conflicts = zen-browser
 	conflicts = zen-browser-bin
 	conflicts = zen-browser-git
@@ -33,9 +33,9 @@ pkgbase = zen-browser-twilight-bin
 	b2sums = bc733dba0aad89145425cf6e82a22379c1115b736f0938203e80d7e78f3e0f4c6a4c6abab0ceb36d5eecb009163b77d0b8f2145ffcf6b985a8f142f6fabaec6d
 	b2sums = f75e803fa9da53ab9c263cc357f388de87137393fac90e86dfb528029de1434d887c2c25050ea167fbe9959d2eec11f81c85f28010126bd0c46884b59bb6ae41
 	b2sums = f83302f32649f214d97f2cadf41d353d7d76fc3b50b6dabc6e25256dc52b7a98aed024a14a88966d0a4f18ee5546ad8f45b4de626aa6ed38c9f8e7a99ef151c3
-	source_x86_64 = zen.linux-x86_64-1.25t.20261115-1.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-x86_64.tar.xz
-	b2sums_x86_64 = ed3bb5a995b5a5aa41662eeb74837877b19acf586b7b87b62ea60c4ff24f435ecd22f75714c17cd4e49dd6543623cff090731caa9e9edcc9676f0a658228886b
-	source_aarch64 = zen.linux-aarch64-1.25t.20261115-1.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-aarch64.tar.xz
-	b2sums_aarch64 = 19f8cd1dc3f2206a11c3c767751c34c6ba23068c7b426923f38e5d344312bcc794c26714d9065ba4480c3346c2eb012b30ab77e8194466c46a40259cbb173816
+	source_x86_64 = zen.linux-x86_64-1.25t.20261116-1.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-x86_64.tar.xz
+	b2sums_x86_64 = 24ffe0b72b4f2dabdae9359f90c019b72d33246c341580f1637b627c4e52cf73fab19d7368fbb3403328fe08cf23f553b1c52b072157617bdd3f520c557293a4
+	source_aarch64 = zen.linux-aarch64-1.25t.20261116-1.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-aarch64.tar.xz
+	b2sums_aarch64 = c2605e084cc3dd1c636efe0b139ee99025310f212953d7e77e923f74f4f55afaacfa205897190dc0db52241b4eb584559d3f94dedb9d32f7df748c813ffaf2e2
 
 pkgname = zen-browser-twilight-bin
