@@ -1,6 +1,6 @@
 # Maintainer: Mark <mark@betalupi.com>
 pkgname=beans
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="CLI accounting"
 arch=('x86_64' 'aarch64')
