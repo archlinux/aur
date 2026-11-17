@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=BankPerfect
+GenericName=Personal Finance Manager
+GenericName[fr]=Gestion de comptes
+Comment=Personal bank accounts: transactions, reconciliation, budgets, reports
+Comment[fr]=Comptes bancaires personnels : saisie, pointage, budgets, rapports
+Exec=bankperfect %f
+Icon=bankperfect
+Terminal=false
+Categories=Office;Finance;
+MimeType=application/x-bankperfect;
+Keywords=bank;accounts;budget;finance;money;
+Keywords[fr]=banque;comptes;budget;finances;argent;
+StartupWMClass=bankperfect

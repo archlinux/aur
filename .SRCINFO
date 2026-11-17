@@ -47,6 +47,10 @@ pkgbase = bankperfect
 	optdepends = zenity: file dialogs without an XDG portal backend
 	options = !lto
 	source = https://github.com/fabiochelly/bankperfect/archive/v9.11.2/bankperfect-9.11.2.tar.gz
+	source = bankperfect.desktop
+	source = bankperfect-mime.xml
 	sha256sums = 40af91e88e360d76ed09a80b9827d5c873e81fa461b5ae7f0f4d03c84096154a
+	sha256sums = a18ab3f09dfdd77e8596d6e2cb54b4b8fb440aa56eadaacfbe58d4ef744a33cc
+	sha256sums = 0f76d520ba615149f2987084ec088c71e9b930254569adf8d1e4123c5a6f0992
 
 pkgname = bankperfect

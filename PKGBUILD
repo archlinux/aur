@@ -84,8 +84,17 @@ optdepends=(
 # cc-rs builds Luau and ring with CFLAGS: with -flto their objects only
 # hold GCC bytecode, which the linker of rustc (lld) cannot read.
 options=('!lto')
-source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('40af91e88e360d76ed09a80b9827d5c873e81fa461b5ae7f0f4d03c84096154a')
+# The upstream desktop entry and MIME type description are French only:
+# ours keep English as the default and the French strings as
+# translations.
+source=(
+  "$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
+  'bankperfect.desktop'
+  'bankperfect-mime.xml'
+)
+sha256sums=('40af91e88e360d76ed09a80b9827d5c873e81fa461b5ae7f0f4d03c84096154a'
+            'a18ab3f09dfdd77e8596d6e2cb54b4b8fb440aa56eadaacfbe58d4ef744a33cc'
+            '0f76d520ba615149f2987084ec088c71e9b930254569adf8d1e4123c5a6f0992')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -122,9 +131,9 @@ package() {
   export RUSTUP_TOOLCHAIN=stable
 
   install -Dm755 target/release/bankperfect -t "$pkgdir/usr/bin"
-  install -Dm644 packaging/linux/bankperfect.desktop \
+  install -Dm644 "$srcdir/bankperfect.desktop" \
     -t "$pkgdir/usr/share/applications"
-  install -Dm644 packaging/linux/bankperfect-mime.xml \
+  install -Dm644 "$srcdir/bankperfect-mime.xml" \
     "$pkgdir/usr/share/mime/packages/bankperfect.xml"
   local _icons=crates/bp-app/assets/icon _size
   for _size in 16 32 48 64 128 256 512; do

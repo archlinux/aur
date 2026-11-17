@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-bankperfect">
+    <comment>BankPerfect accounts file</comment>
+    <comment xml:lang="fr">Fichier de comptes BankPerfect</comment>
+    <glob pattern="*.bp"/>
+    <icon name="bankperfect"/>
+  </mime-type>
+</mime-info>
