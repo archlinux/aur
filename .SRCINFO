@@ -1,0 +1,24 @@
+pkgbase = b580-watt-freq
+	pkgdesc = Fija power limit y frecuencia de Intel Arc B580 sin LACT, con deteccion de steps - local
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/b580-watt-freq
+	arch = any
+	license = MIT
+	depends = bash
+	depends = systemd
+	backup = etc/b580.conf
+	source = b580_watt_freq
+	source = b580-detect-freq
+	source = b580.conf
+	source = b580-watt-freq.service
+	source = b580-watt-freq-resume.service
+	source = b580-watt-freq-sleep
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = b580-watt-freq

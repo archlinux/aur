@@ -1,0 +1,53 @@
+#!/bin/bash
+# b580-detect-freq - detecta los steps reales de frecuencia de tu B580
+# Uso: sudo b580-detect-freq
+# No todas las B580 tienen el mismo step, depende del VBIOS y del binning
+# ASRock Challenger, Sparkle, Gunnir, etc. pueden tener steps distintos
+
+CARD="card0"
+FREQ_PATH="/sys/class/drm/$CARD/device/tile0/gt0/freq0/max_freq"
+CUR_PATH="/sys/class/drm/$CARD/device/tile0/gt0/freq0/cur_freq"
+RP0_PATH="/sys/class/drm/$CARD/device/tile0/gt0/freq0/rp0_freq"
+RPN_PATH="/sys/class/drm/$CARD/device/tile0/gt0/freq0/rpn_freq"
+
+if [ ! -f "$FREQ_PATH" ]; then
+  echo "No encontre $FREQ_PATH"
+  exit 1
+fi
+
+echo "Placa: $CARD"
+echo "rp0 max hardware: $(cat $RP0_PATH) MHz"
+echo "rpn min hardware: $(cat $RPN_PATH) MHz"
+echo "max actual: $(cat $FREQ_PATH) MHz"
+echo ""
+echo "Probando steps de 2000 a 2850 cada 50 MHz, y fino alrededor de 2670 stock Intel..."
+echo ""
+
+# Guardar valor original para restaurar
+ORIG=$(cat $FREQ_PATH)
+
+# Probar valores y ver que aplica realmente
+declare -A VISTOS
+for v in 2000 2100 2200 2300 2400 2500 2550 2600 2650 2660 2667 2670 2680 2700 2750 2800 2850; do
+  echo "$v" > "$FREQ_PATH" 2>/dev/null
+  APLICADO=$(cat "$FREQ_PATH")
+  if [ -z "${VISTOS[$APLICADO]}" ]; then
+    VISTOS[$APLICADO]=1
+    echo "pedido $v -> aplicado $APLICADO MHz"
+  else
+    echo "pedido $v -> aplicado $APLICADO MHz - ya visto, es redondeo"
+  fi
+done
+
+echo ""
+echo "Steps unicos encontrados:"
+for k in "${!VISTOS[@]}"; do echo "  $k MHz"; done | sort -n
+
+echo ""
+echo "Recomendacion:"
+echo "  Stock Intel es 2670 MHz. El step mas cercano por abajo es el mas seguro para durabilidad."
+
+# Restaurar original
+echo "$ORIG" > "$FREQ_PATH" 2>/dev/null
+echo ""
+echo "Restaurado a original: $(cat $FREQ_PATH) MHz"

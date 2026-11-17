@@ -1,0 +1,25 @@
+#!/bin/bash
+# B580 ASRock Challenger OC - fija power limit y frecuencia sin LACT
+# Lee /etc/b580.conf, si no existe usa defaults
+CARD="card0"
+if [ -f /etc/b580.conf ]; then
+  . /etc/b580.conf
+fi
+WATTS="${1:-${WATTS:-75}}"
+FREQ="${2:-${FREQ:-2650}}"
+MICRO=$((WATTS * 1000000))
+HWMON=$(ls -d /sys/class/drm/$CARD/device/hwmon/hwmon* 2>/dev/null | head -n1)
+if [ -z "$HWMON" ]; then
+  echo "No encontre hwmon en /sys/class/drm/$CARD/device/hwmon/"
+  exit 1
+fi
+echo "Placa: $CARD"
+echo "HWMON: $HWMON"
+echo "Power cap: ${WATTS}W = $MICRO uW"
+echo "Frecuencia: ${FREQ} MHz"
+echo "$MICRO" > "$HWMON/power1_cap" 2>/dev/null || echo "No pude escribir power1_cap"
+echo "power1_cap ahora: $(cat $HWMON/power1_cap) uW = $(( $(cat $HWMON/power1_cap) / 1000000 ))W"
+P0="/sys/class/drm/$CARD/device/tile0/gt0/freq0/max_freq"
+if [ -f "$P0" ]; then
+  echo "$FREQ" > "$P0" 2>/dev/null && echo "Freq puesta en gt0: $(cat $P0) MHz" || echo "No pude escribir $P0"
+fi

@@ -1,0 +1,14 @@
+[Unit]
+Description=B580 fijar power limit y frecuencia - sin LACT - lee /etc/b580.conf
+After=multi-user.target
+Wants=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/b580_watt_freq
+RemainAfterExit=yes
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
