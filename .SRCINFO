@@ -1,8 +1,8 @@
 pkgbase = sable
 	pkgdesc = An almost stable Matrix client
-	pkgver = 1.22.11
+	pkgver = 26.11.2
 	pkgrel = 1
-	url = https://github.com/SableClient/Sable
+	url = https://sable.moe/
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = cargo-tauri
@@ -17,7 +17,7 @@ pkgbase = sable
 	depends = libsoup3
 	depends = webkit2gtk-4.1
 	options = !lto
-	source = Sable-1.22.11.tar.gz::https://github.com/SableClient/Sable/archive/v1.22.11.tar.gz
-	sha256sums = d60ce0c9093ea63c970890d1f795b843f83e646856076bd3a84606a2574778e4
+	source = sable-next-26.11.2.tar.gz::https://github.com/SableClient/sable-next/archive/v26.11.2.tar.gz
+	sha256sums = ecf9e46546cb401d3397e50a28ac6f8e0ad84fde0f8995af0dacdd8d33968eab
 
 pkgname = sable
