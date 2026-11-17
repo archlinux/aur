@@ -21,19 +21,19 @@
 # CREDENTIAL_BOOTSTRAP_FAILED.
 
 pkgname=workbuddy-intl-agent
-_pkgver=5.9.4.42593613
-_build=fa0a0901
+_pkgver=5.11.4.44121853
+_build=0026dff0
 _electronver=37.10.3
 _cn_pkgver=5.6.2.40046327
 _cn_build=c7b525f3
 pkgver=${_pkgver}_${_build}
-pkgrel=4
+pkgrel=1
 pkgdesc='AI Agent for everyday office work - WorkBuddy international edition (unofficial Linux port)'
 arch=('x86_64' 'aarch64')
 url='https://www.workbuddy.ai'
 license=('NOASSERTION')
 depends=('libsecret' 'libappindicator-gtk3' 'nss' 'alsa-lib' 'gtk3' 'libxss')
-makedepends=('nodejs' 'npm' 'p7zip' 'unzip' 'python' 'imagemagick')
+makedepends=('nodejs' 'npm' '7zip' 'unzip' 'curl' 'python' 'imagemagick')
 optdepends=('gnome-shell-extension-appindicator: tray icon support')
 options=('!strip' '!debug')
 provides=('workbuddy-international-bin')
@@ -76,10 +76,10 @@ sha256sums=('a4f4bba61a2ed88da4a3e6d9e06990306d93d3053dbaed26ba3f739160549a6e'
             '43164499524650222076bae69b7cb21d3e3e4a954c7c56426474267a554a2f33'
             'aa036c1f37d070f14a551bcba2133390710da46bd91225dfd366711bb5a3b6ec'
             '631bd3aadd92f6e94797f299cfc9088149db3950e77fa99d090ccb6eff2253ee')
-sha256sums_x86_64=('57935f9578fed1ddf0ab0219a328d96f69494a45369e88aabf1f650242084e87'
+sha256sums_x86_64=('f17292ee0a9702670d739679b76d3a84a012dbd232f45c6479bf37cc00cf402c'
                    'c0b4edd6bd9858cda4cf7ab299e69a2d3ecd2e5fcca78507bc0851ba35614660'
                    '12149ad8c0cd748fd5062d8f62c7827d688d8095427ada99b1ae9e7019897523')
-sha256sums_aarch64=('754926260c0ab867b5fe1050ab5cc01724a1330451617c8f339c679ff3bbc542'
+sha256sums_aarch64=('fe5d9be52791bb10df320ff7f66a24923a279f588dfe55284911f30a64eaeef8'
                     '37a228821184136fa86a8727bec19ab400524dd7d4bca78937de5d50704592d1'
                     '561822578435d382a06d0a0b079a4b157f68b588c9fe72d589e2a88b2fd155fa')
 
