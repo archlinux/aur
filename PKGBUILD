@@ -1,6 +1,6 @@
 # Maintainer: MapleProjects <eportillo898v2@gmail.com>
 pkgname=maple-saturation-hyprland-git
-pkgver=1.0.0.r10.b8c43c3
+pkgver=1.0.0.r11.0e11d72
 pkgrel=1
 pkgdesc="Screen color saturation and contrast control for Hyprland via GLSL shaders"
 arch=('any')
