@@ -10,7 +10,7 @@
 # (grab it from the release's SHA256SUMS.txt).
 
 pkgname=nuvio-linux-bin
-pkgver=0.1.36alpha
+pkgver=0.1.37alpha
 pkgrel=1
 pkgdesc="Nuvio desktop media player — upstream source packaged for Arch Linux (binary)"
 arch=('x86_64')
@@ -21,11 +21,11 @@ install=nuvio-linux-bin.install
 provides=('nuvio-linux')
 conflicts=('nuvio-linux' 'nuvio-linux-git')
 source=(
-  "nuvio-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/JJDizz1L/NuvioLinux-unofficial/releases/download/v0.1.36alpha-1/nuvio-linux-0.1.36alpha-1-x86_64.pkg.tar.zst"
-  "nuvio-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst.sig::https://github.com/JJDizz1L/NuvioLinux-unofficial/releases/download/v0.1.36alpha-1/nuvio-linux-0.1.36alpha-1-x86_64.pkg.tar.zst.sig"
+  "nuvio-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/JJDizz1L/NuvioLinux-unofficial/releases/download/v0.1.37alpha-1/nuvio-linux-0.1.37alpha-1-x86_64.pkg.tar.zst"
+  "nuvio-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst.sig::https://github.com/JJDizz1L/NuvioLinux-unofficial/releases/download/v0.1.37alpha-1/nuvio-linux-0.1.37alpha-1-x86_64.pkg.tar.zst.sig"
 )
 sha256sums=(
-  '7e00824ff86c9a77cb3d956a6d16cf8d7ec1b31e8f039f60b281f6047ed1c715'
+  '061180e41406c8e66e07dcc523f375ecbbc44fdcd2376b2e1edbd196762d50ff'
   'SKIP'
 )
 validpgpkeys=('9201A54A09675CBEBAD08647EDDA55C8236D6C88')
