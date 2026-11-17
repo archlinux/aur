@@ -1,7 +1,7 @@
 # Maintainer: cgar <notify-cgar -AT- outlook -DOT- com>
 
 pkgname='nkit'
-pkgver='3.2.1'
+pkgver='3.2.2'
 pkgrel=1
 
 _pkgname='NKit'
@@ -17,6 +17,7 @@ url='https://github.com/Nanook/NKit'
 license=('MIT')
 
 makedepends=("dotnet-sdk-$_dotnet_sdk")
+optdepends=('nkit-ui: Graphical interface version')
 options=('!strip' '!debug')
 install='huge_update_notice.install'
 
@@ -26,7 +27,7 @@ source=(
 )
 
 b2sums=(
-  d4d39714e969cbb0270148d818c98ecb5e360d198d8f88d3ad87898fa6d35c56e88d55e5f5ed70719105f25ae4ee859e4bb5dd7d0a02e620f4d179b8fa220ff5
+  c6189dd319b1f323d3332bbfca1661e889de7f0a055e6696f900011be3bd903af53f126ee2e8df520e4acc8747062cc8660a30ac50803e95cbfa1f704fa956e7
   82c907161dc3b3d0f9d3c2febae077de3f31a1b9817ac3d81501a0c17c37ef0b5b73d816000133240716493a4c8bc7289eefca5677bb416a8d8ad0ba9015d670
 )
 
