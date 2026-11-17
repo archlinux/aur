@@ -6,7 +6,7 @@
 
 _electron=electron
 pkgname=proton-pass
-pkgver=1.43.1
+pkgver=1.44.0
 pkgrel=1
 pkgdesc="Open-source and secure identity manager"
 arch=('aarch64' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('go-yq' 'nodejs' 'pnpm' 'rust')
 conflicts=('proton-pass-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/${pkgname}@${pkgver}.tar.gz"
         "proton-pass.desktop")
-sha256sums=('cc1dfe6d567cd78d30cc3187c239c0f0de76b28a35aeec10cab2f855e946f445'
+sha256sums=('816527698ca7c5f629ab1802b2e4557c1f262eb9b3119c2ffe4e0f05ca928144'
             '1c5c6373a3e3be71e34e42fa6c7486601f04a645763496c5a808bc843456e0fc')
 
 prepare() {
@@ -45,7 +45,7 @@ prepare() {
     sed -i '/vitest-config/d' packages/{key-transparency,shared}/package.json
 
     # Remove unnecessary package patches (this is an error in pnpm)
-    sed -i -e '/web-llm/d' -e '/eslint-plugin-monorepo/d' pnpm-workspace.yaml
+    sed -i '/web-llm/d' pnpm-workspace.yaml
 
     # HACK: Patch out the resolution of problematic tpe packages
     yq -i '.packages |= with_entries(select(.key | test("@tpe/") | not))' pnpm-lock.yaml
