@@ -2,7 +2,7 @@
 
 _name=partialZipBrowser
 pkgname=${_name,,}
-pkgver=44
+pkgver=48
 pkgrel=1
 pkgdesc='Commandline tool for browsing and downloading files from zip files on remote webserver'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('LGPL-3.0-only')
 depends=('curl' 'libfragmentzip')
 makedepends=('git')
 source=("git+$url.git#tag=$pkgver")
-sha256sums=('8564fdcf22c9c3af23e7df086a0289eed4fbbc20ea84e0abd90fe9d94b90a27a')
+sha256sums=('d0156d4ee7136c3f6d8bc78d56719c26a474221b7d83fe7d14b04ac40634d9a2')
 
 build() {
   cd "$_name"
