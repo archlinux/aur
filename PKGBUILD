@@ -2,8 +2,8 @@
 
 _name=openinference-semantic-conventions
 pkgname=python-$_name
-pkgver=0.1.44
-pkgrel=2
+pkgver=0.1.46
+pkgrel=1
 pkgdesc="OpenInference Semantic Conventions."
 arch=('any')
 _repo="https://github.com/Arize-ai/openinference"
@@ -15,7 +15,7 @@ makedepends=('python-hatchling'
              'python-installer')
 checkdepends=('python-pytest')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('6e85765d42ce41be741d6a877809bc88e3ae651af5b2edddd3df0d3232a4d06c')
+sha256sums=('53b8c6c53bef220d3b6c86aecf5af00ca53f2f8dabc5905ad9b2b11a05101b35')
 
 build() {
   cd "${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//}"
