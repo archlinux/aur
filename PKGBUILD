@@ -4,7 +4,7 @@
 # Contributor: crasm <crasm@firebase-tools.aur.yooz4sio.vczf.io>
 
 pkgname=firebase-tools
-pkgver=15.34.0
+pkgver=15.36.0
 pkgrel=1
 pkgdesc='The Firebase Command Line Tools'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('jq' 'npm' 'node-gyp' 'python')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('9b62d1d317064360f5a521be91249f3df2b29441445f433b1f6ab6a58913323f')
+sha256sums=('5784ea62f0b1066a55317d51d6faf4f932fef58c226f7828f5390729c0e56e59')
 
 prepare() {
   # remove re2 override incompatible with Node.js 26
@@ -25,7 +25,7 @@ prepare() {
     "bare-events": "/dev/null",
     "bare-fs": "/dev/null",
     "node-gyp": "/usr/lib/node_modules/node-gyp",
-  } | .allowScripts += {"re2": true}' package.json > package.json.tmp
+  }' package.json > package.json.tmp
   mv package.json{.tmp,}
 }
 
