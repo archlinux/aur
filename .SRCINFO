@@ -1,15 +1,15 @@
 pkgbase = fluentci
 	pkgdesc = Set up and run your CI locally or in any CI Provider in a consistent way
-	pkgver = 0.17.7
+	pkgver = 0.17.8
 	pkgrel = 1
 	url = https://github.com/fluentci-io/fluentci
 	arch = x86_64
 	arch = aarch64
 	license = MPL-2.0
 	options = !strip
-	source_x86_64 = fluentci-0.17.7-x86_64.tar.gz::https://github.com/fluentci-io/fluentci/releases/download/v0.17.7/fluentci_v0.17.7_x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = ec5fe243e67106aea56c7be911addb66c1e5eca3c265db203d7b8cc2635eff8d
-	source_aarch64 = fluentci-0.17.7-aarch64.tar.gz::https://github.com/fluentci-io/fluentci/releases/download/v0.17.7/fluentci_v0.17.7_aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = e26a0f8b20351fe2c6b25e6cc1c490aa67908ca6d0a4f436999d83007f0a517f
+	source_x86_64 = fluentci-0.17.8-x86_64.tar.gz::https://github.com/fluentci-io/fluentci/releases/download/v0.17.8/fluentci_v0.17.8_x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d9827ac3d0d8e4e868b206c37cd621a424e1fb3812fba46c4cdc9344b0d7c322
+	source_aarch64 = fluentci-0.17.8-aarch64.tar.gz::https://github.com/fluentci-io/fluentci/releases/download/v0.17.8/fluentci_v0.17.8_aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2c7ce904330202b607d8eba8cc9671ca5b9563e3dd5c6712ed9ac6e49ce4f9cb
 
 pkgname = fluentci
