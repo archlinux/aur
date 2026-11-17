@@ -3,5 +3,7 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
-!spoofdpi.conf.d
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !spoofdpi.service
