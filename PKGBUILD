@@ -11,7 +11,7 @@
 pkgname=simpleems
 _pkgname=simpleEMS
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 install=$pkgname.install
 pkgdesc="Framework on top of openEMS for designing and simulating antennas, filters, couplers and other RF/microwave structures"
 # x86_64 only: the pinned gmsh 4.14.1 publishes wheels for macOS, Windows and
@@ -38,12 +38,18 @@ optdepends=(
   'octave: openEMS post-processing helper scripts'
   'vulkan-icd-loader: GPU accelerated rendering'
 )
-# 0.5.0 is not tagged upstream yet; this is the "Bump version: 0.4.0 -> 0.5.0"
-# commit (master HEAD at the time of packaging). Switch to refs/tags/v$pkgver
-# once the tag exists.
+# The application itself comes from PyPI -- the channel upstream documents for
+# `pip install simpleEMS` -- whose release files are immutable per version. The
+# sdist does not ship uv.lock, so the exact dependency lock is pulled from the
+# commit the 0.5.0 release was cut from (upstream has no v0.5.0 git tag yet;
+# switch that URL to refs/tags/v$pkgver/uv.lock once the tag exists).
 _commit=e74ae629a06bd8bc35d577c07d98ad6951a96b2e
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('0b03bcb5b940a345601ac595bc9fffca7d0139e0c26b4c4bffd6a22d1719494d')
+source=(
+  "$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/5c/9f/8107e3a79e0364f535e0cf9e627d52768c04d5507517a5f0a4b77a57d09f/simpleems-$pkgver.tar.gz"
+  "uv.lock::https://raw.githubusercontent.com/MohamoudAli12/simpleEMS/$_commit/uv.lock"
+)
+sha256sums=('385e47fac51058e082e0319d9e77fb200f1c501556f499f199076d2cb6ee6b47'
+            'e1c2e1398f482513a4e560cca0565b4a00d2206a52b7a2a8c440e3e4c5381ce8')
 # the tree is made of prebuilt wheels; a debug-info pass over them is pure waste
 options=('!debug')
 
@@ -52,7 +58,10 @@ _uvpython=3.13.18    # exact interpreter uv fetches, so rebuilds are reproducibl
 _optdir=/opt/$pkgname
 
 build() {
-  cd "$_pkgname-$_commit"
+  cd "$pkgname-$pkgver"
+
+  # the lock travels as a separate source file
+  cp "$srcdir/uv.lock" .
 
   # Pin the interpreter to a uv-managed build: the system Python (3.14) has no
   # cadquery-ocp wheels, and only-managed keeps the result independent of whatever
@@ -68,7 +77,7 @@ build() {
 }
 
 package() {
-  cd "$_pkgname-$_commit"
+  cd "$pkgname-$pkgver"
 
   install -d "$pkgdir$_optdir"
 

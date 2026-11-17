@@ -1,7 +1,7 @@
 pkgbase = simpleems
 	pkgdesc = Framework on top of openEMS for designing and simulating antennas, filters, couplers and other RF/microwave structures
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MohamoudAli12/simpleEMS
 	install = simpleems.install
 	arch = x86_64
@@ -40,7 +40,9 @@ pkgbase = simpleems
 	optdepends = octave: openEMS post-processing helper scripts
 	optdepends = vulkan-icd-loader: GPU accelerated rendering
 	options = !debug
-	source = simpleems-0.5.0.tar.gz::https://github.com/MohamoudAli12/simpleEMS/archive/e74ae629a06bd8bc35d577c07d98ad6951a96b2e.tar.gz
-	sha256sums = 0b03bcb5b940a345601ac595bc9fffca7d0139e0c26b4c4bffd6a22d1719494d
+	source = simpleems-0.5.0.tar.gz::https://files.pythonhosted.org/packages/5c/9f/8107e3a79e0364f535e0cf9e627d52768c04d5507517a5f0a4b77a57d09f/simpleems-0.5.0.tar.gz
+	source = uv.lock::https://raw.githubusercontent.com/MohamoudAli12/simpleEMS/e74ae629a06bd8bc35d577c07d98ad6951a96b2e/uv.lock
+	sha256sums = 385e47fac51058e082e0319d9e77fb200f1c501556f499f199076d2cb6ee6b47
+	sha256sums = e1c2e1398f482513a4e560cca0565b4a00d2206a52b7a2a8c440e3e4c5381ce8
 
 pkgname = simpleems

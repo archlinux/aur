@@ -78,9 +78,12 @@ simpleems checkhealth
 
 * The venv is tied to CPython 3.13. Moving to 3.14 needs `cadquery-ocp` cp314 wheels
   (OCP ≥ 8 / cadquery ≥ 2.9) and a corresponding `_pyver` bump.
-* Upstream has not tagged 0.5.0 yet: `source` pins commit `e74ae629a06b` (the
-  "Bump version: 0.4.0 -> 0.5.0" commit). Switch back to
-  `$url/archive/refs/tags/v$pkgver.tar.gz` once the tag appears.
+* `source` is the **PyPI sdist** (`simpleems-0.5.0.tar.gz`, sha256 `385e47fa…`), the
+  channel upstream documents for `pip install simpleEMS`; its tree is byte-identical
+  to upstream commit `e74ae62` ("Bump version: 0.4.0 -> 0.5.0"), which is also where
+  the second source file, `uv.lock`, comes from (the sdist does not ship it).
+  Upstream has no `v0.5.0` git tag yet; point the lock URL at
+  `refs/tags/v$pkgver/uv.lock` once it exists.
 * To package git snapshots instead, use a `-git` pkgname with
   `source=("git+$url.git")`, `pkgver()` with `git describe`, and `sha256sums=('SKIP')`.
 * `.SRCINFO` is generated (`makepkg --printsrcinfo > .SRCINFO`) and ready for an AUR
