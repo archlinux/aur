@@ -1,6 +1,6 @@
 pkgbase = zorite
 	pkgdesc = A local-first outliner and daily-journal note app (Logseq-style).
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/packetThrower/zorite
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = zorite
 	depends = fontconfig
 	depends = freetype2
 	options = !lto
-	source = https://github.com/packetThrower/zorite/archive/refs/tags/v0.13.0.tar.gz
-	sha256sums = 433972b45f58f7441ff5488781fbb2c5294b1bb4390c1e1de7c29a8954f9237f
+	source = https://github.com/packetThrower/zorite/archive/refs/tags/v0.14.0.tar.gz
+	sha256sums = 1b9e68984de268892831045e480d39fc7383dbe29da415adf23fdc15a6532cce
 
 pkgname = zorite
