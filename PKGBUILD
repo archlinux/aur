@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=postbird-bin
 _pkgname=Postbird
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Open source PostgreSQL GUI client."
 arch=(
@@ -23,8 +23,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/Paxa/postbird/v${p
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64.deb")
 sha256sums=('d93e84fa24bbea7e92d6cd171968d8da1f4a28047cc704f0700d17b57c7a9a9c')
-sha256sums_aarch64=('de097b53155fca2d36ef74e93cac22c0bf1772b475382cd6219ecde26304a171')
-sha256sums_x86_64=('d49c0bbe373398dbf39076810d6ef23fa66adb041c3ddd607753a5b96b019b4f')
+sha256sums_aarch64=('ac0f57d5e33b554728990ce18d10e18e49db7c55a30dd1f5e43bddec5a731085')
+sha256sums_x86_64=('c038ce1ed53f52f6e56f6f9faba9083811723b70f875f119e7523f2cff750891')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
@@ -39,6 +39,7 @@ _install_icons() {
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/Exec=\/opt\/${pkgname%-bin}\/${_pkgname}/Exec=${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+	find "${srcdir}/opt/${pkgname%-bin}" -type d \( -name "*win32*" -o -name "*darwin*" \) -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/opt/${pkgname%-bin}/bin/launcher" "${pkgdir}/usr/lib/${pkgname%-bin}/bin/${pkgname%-bin}"
