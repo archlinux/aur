@@ -3,7 +3,7 @@
 pkgname=luciole-git
 _pkgname=luciole
 pkgver=0.1.0.r0.g000000000
-pkgrel=2
+pkgrel=3
 pkgdesc='A smooth, native Wayland file manager with fast previews, tabs, split view and Miller columns'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/luciole'
@@ -13,6 +13,7 @@ depends=(
   'acl'
   'adwaita-icon-theme'
   'cairo'
+  'curl'
   'dconf'
   'fontconfig'
   'freetype2'
@@ -29,7 +30,6 @@ depends=(
   'libglvnd'
   'libpng'
   'librsvg'
-  'libsoup3'
   'libstdc++'
   'libxkbcommon'
   'libxml2'
