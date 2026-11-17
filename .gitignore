@@ -3,6 +3,9 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !readarr.service
 !readarr.sysusers
 !readarr.tmpfiles
