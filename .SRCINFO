@@ -1,0 +1,18 @@
+pkgbase = process-watch-bin
+	pkgdesc = Local process monitor to get peak CPU/RAM over time
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/danpozmanter/process-watch
+	arch = x86_64
+	license = Apache-2.0
+	provides = pw
+	conflicts = process-watch
+	options = !strip
+	source = README-0.4.0.md::https://raw.githubusercontent.com/danpozmanter/process-watch/v0.4.0/README.md
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/danpozmanter/process-watch/v0.4.0/LICENSE
+	sha256sums = 3044043993426250b519529ecec339b562cebf74ffbbc85e1e572dae13eac816
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = process-watch-x86_64-0.4.0.tgz::https://github.com/danpozmanter/process-watch/releases/download/v0.4.0/process-watch-0.4.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = d686b05000776207c128e38277799eb0bc33b6b4dcd7ad59396554ec61a14289
+
+pkgname = process-watch-bin

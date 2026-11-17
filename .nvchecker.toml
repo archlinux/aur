@@ -1,0 +1,5 @@
+[process-watch-bin]
+source = "github"
+github = "danpozmanter/process-watch"
+use_latest_release = true
+prefix = "v"
