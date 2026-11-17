@@ -2,57 +2,37 @@
 # Contributor: Adam Brenner <adam@aeb.io>
 
 pkgname=pulsar
-pkgver=4.2.1
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='Distributed pub-sub messaging system'
-arch=('any')
+arch=('x86_64' 'aarch64')
 url='https://github.com/apache/pulsar'
 license=('Apache-2.0')
+provides=('pulsar-shell')
 makedepends=('java-environment=21'
 )
 depends=('java-runtime=21' 'python')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/apache/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('accac7ca40d0a7c175614b81b3bd59d9c791bbb56f9569bde5a86dc92a5682f1')
+sha256sums=('2940a27da1f26dbac3e2cf7ef5d7c63a116bb364ad318f542d19dcf1c61d9a49')
 
 build() {
     cd ${pkgname}-${pkgver}
-    ./mvnw package -DskipTests -Daether.connector.basic.threads=12
-   #mvn package -Pcore-modules,-main -DskipTests
+    ./gradlew assemble
 }
 
 check(){
     cd ${pkgname}-${pkgver}
-    ./mvnw test
+    ./gradlew sanityCheck  
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  tar -xzf distribution/server/target/apache-${pkgname}-${pkgver}-bin.tar.gz
-  cd apache-${pkgname}-${pkgver}
-
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 NOTICE ${pkgdir}/usr/share/licenses/${pkgname}/NOTICE
+  cd ${pkgname}-${pkgver}/distribution
+  install -d ${pkgdir}/opt/${pkgname}/
   install -dm777 ${pkgdir}/opt/${pkgname}/logs
-  cp -r examples ${pkgdir}/opt/${pkgname}/examples
+  cp -r licenses/ ${pkgdir}/opt/${pkgname}
 
-  find conf -type f -exec install -D -m644 "{}" "${pkgdir}/opt/${pkgname}/{}" \;
-
-  for bin in $(ls bin -I "*.cmd"); do
-    if [ -d bin/${bin} ] ; then
-      continue
-    fi
-    install -D -m755 bin/${bin} "${pkgdir}/opt/${pkgname}/bin/${bin}"
-  done
-
-  for jar in $(ls lib); do
-    install -D -m644 lib/${jar} "${pkgdir}/opt/${pkgname}/lib/${jar}"
-  done
-
-  for inst in $(ls instances); do
-    if [ -d instances/${inst} ] ; then
-      install -d -m755 instances/${inst} "${pkgdir}/opt/${pkgname}/instances/${inst}"
-    elif [ -f instances/${inst} ] ; then
-      install -D -m644 instances/${inst} "${pkgdir}/opt/${pkgname}/instances/${inst}"
-    fi
-  done
+  tar -xzf server/build/distributions/apache-${pkgname}-${pkgver}-bin.tar.gz \
+    --strip-components=1 -C ${pkgdir}/opt/${pkgname}/
+  tar -xzf shell/build/distributions/apache-${pkgname}-shell-${pkgver}-bin.tar.gz \
+    --strip-components=1 -C ${pkgdir}/opt/${pkgname}/
 }
