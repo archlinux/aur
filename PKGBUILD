@@ -3,7 +3,7 @@
 
 _pkgname=libinput
 pkgname=libinput-noaccum
-pkgver=1.31.3
+pkgver=1.32.0
 pkgrel=1
 pkgdesc="libinput with ACC_V120_TRIGGER_THRESHOLD set to 1 for smooth high-resolution scrolling"
 url="https://wayland.freedesktop.org/libinput/doc/latest/"
@@ -45,10 +45,10 @@ conflicts=(
 source=(
   "git+https://gitlab.freedesktop.org/libinput/libinput.git#tag=$pkgver"
 )
-b2sums=('197f8c4d6be126e8b8a4825109dd37405a1205f80b25595c259d42606e317525aae5def846f4bb3c3cfad09ccd9d65b53d39d34127623ea6c47db6e8cfaf3188')
-#validpgpkeys=(
-#  3C2C43D9447D5938EF4551EBE23B7E70B467F0BF # Peter Hutterer (Who-T) <office@who-t.net>
-#)
+b2sums=('0282e8b3c5b1cd1ac68c0b5d9dba67f60c69e747d28bef5eb911e60687238b0beb7ceb2dac6cad80ad511f8eb8ee461cc58964cbbd529c57b28872ed7666dd71')
+validpgpkeys=(
+  3C2C43D9447D5938EF4551EBE23B7E70B467F0BF # Peter Hutterer (Who-T) <office@who-t.net>
+)
 
 prepare() {
   sed -i \
