@@ -3,4 +3,7 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !0001-fix-urllib3-v2-related-changes.patch
