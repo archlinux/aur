@@ -3,12 +3,13 @@
 _pkgname=hc-tui
 pkgname=hc-tui-bin
 pkgver=0.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal UI for herdr-core (hc): sidebar with live agent status, tabs, splits, local or over SSH (unofficial)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/followcat/hc-tui"
 license=('Apache-2.0')
 depends=()
+optdepends=('herdr-core: local herdr-core (hc) backend, auto-started by hc-tui (not needed for --remote SSH mode)')
 provides=("hc-tui=$pkgver")
 conflicts=('hc-tui')
 options=('!debug')
