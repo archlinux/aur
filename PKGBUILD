@@ -1,7 +1,7 @@
 # Maintainer: maria-rcks <maria at kuuro dot net>
 
 pkgname=t3code-bin
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='Desktop control surface for local coding agents'
 arch=('x86_64')
@@ -44,12 +44,13 @@ conflicts=('t3code')
 options=('!debug' '!strip')
 
 _appimage="T3-Code-${pkgver}-x86_64.AppImage"
+_asset='T3-Code-x86_64.AppImage'
 source=(
-  "$_appimage::https://github.com/pingdotgg/t3code/releases/download/v${pkgver}/$_appimage"
+  "$_appimage::https://github.com/pingdotgg/t3code/releases/download/v${pkgver}/$_asset"
   "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  'd0ab56df3e338f242848435621297fd963a33715b0d8208dbf08399659572d81' # AppImage
+  '7cded13c10757153901edddac9a2608b156f17445de506ef9ffdf73c01528d79' # AppImage
   '935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43' # upstream license
 )
 
@@ -73,7 +74,9 @@ package() {
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/t3code" <<'EOF'
 #!/bin/sh
-exec /opt/t3code-bin/AppRun "$@"
+# AppRun computes APPDIR but doesn't export it. The server's AppImage env scrub needs it
+# to keep /opt/t3code-bin/usr/lib etc. out of terminal and agent shells (#28993).
+exec env APPDIR=/opt/t3code-bin /opt/t3code-bin/AppRun "$@"
 EOF
   ln -s t3code "$pkgdir/usr/bin/t3-code-desktop"
 
@@ -94,7 +97,7 @@ TryExec=t3code
 Terminal=false
 Type=Application
 Icon=t3code
-StartupWMClass=t3code
+StartupWMClass=com.t3tools.T3Code
 Categories=Development;
 MimeType=x-scheme-handler/t3code;
 EOF
