@@ -3,5 +3,8 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !thesage.desktop
 !thesage.png
