@@ -1,0 +1,22 @@
+pkgbase = monad
+	pkgdesc = Minimalist Monero miner (GTK4/libadwaita, XMRig engine; 2% developer fee)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/numbpill3d/monad
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = libuv
+	depends = hwloc
+	depends = openssl
+	source = monad-1.0.0.tar.gz::https://github.com/numbpill3d/monad/archive/refs/tags/v1.0.0.tar.gz
+	source = xmrig-6.26.0.tar.gz::https://github.com/xmrig/xmrig/archive/refs/tags/v6.26.0.tar.gz
+	sha256sums = 1094c4d1d8b066ae6161aabad5c71be86a57f7966e28e381cbc0482bff9b5d6e
+	sha256sums = 5005144e78571f26586410c2b2ede2b0c72afe22f97f1708ea24cfb253c3939b
+
+pkgname = monad
