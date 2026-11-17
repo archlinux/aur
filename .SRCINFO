@@ -1,0 +1,20 @@
+pkgbase = infernix
+	pkgdesc = C++/CUDA inference engine serving Qwen models on RTX 50-series GPUs: CLI, server and launcher
+	pkgver = 2026.11.07
+	pkgrel = 1
+	url = https://github.com/Wallawalla47/Infernix
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = ca-certificates
+	depends = cuda
+	depends = curl
+	depends = ffmpeg
+	depends = libjpeg-turbo
+	depends = nvidia-utils
+	source = infernix-2026.11.07.tar.gz::https://github.com/Wallawalla47/Infernix/archive/refs/tags/windows-2026.11.07.tar.gz
+	sha256sums = a3a25aca535b7acde4a04f25e8e31e14efe8a4792f3d2024d0b19a0da6367f61
+
+pkgname = infernix
