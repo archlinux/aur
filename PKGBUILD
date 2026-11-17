@@ -2,27 +2,22 @@
 
 _pkgname=ryaml
 pkgname="python-${_pkgname}"
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="A simple yaml serializer and deserializer using Rust."
 arch=(x86_64)
 url="https://pypi.org/project/${_pkgname}"
 license=('MIT')
 depends=('python')
 makedepends=('maturin' 'python-pip' 'rust')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ethanhs/ryaml/archive/refs/tags/v$pkgver.tar.gz"
-        0001-Fix-pyo3-file-dependency-requirement.patch)
-sha256sums=('889373d73807367e0de4cbf538cb42096fd4a7372985bc6afa354e4ded8dfda7'
-            'dd434ec07b3746dcfb9f82efe259a4d5b346725a719808690e95c96072bd653c')
-b2sums=('6d2ae86ed682c25d39783dab36d4e59fbca72b26dc43d36b9b5eee219fab5adf74d5f5963b425a180628d5e303cbbbf2d84538cf355d57521e88dd3799cfc61f'
-        '661cc7fede1520c8614ed171e60adbda56715391a0434ecc7d25301e406a2df0bb40ce54db54f3438170f7c371384e1bb2c43435dbf42e3212f3791f0c45a6ce')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ethanhs/ryaml/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('3ee8a10c7a7da52b1ce79ba795dc695aea9bc321f0ae4c247b8605d7e01cb131')
+b2sums=('566a07ef4b00c497ad06a663279b34b863ea8329958fec8a1082b8bfb15fb4b81f5a270bd119d2c13e5a40febd415c5568472f482ae38f6afdd24981fd61563a')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
 prepare() {
   cd "$_pkgname-$pkgver"
-
-  patch -Np1 -i "$srcdir/0001-Fix-pyo3-file-dependency-requirement.patch"
 
   cargo fetch --locked
 }
@@ -30,8 +25,8 @@ prepare() {
 build() {
   cd "$_pkgname-$pkgver"
 
-  maturin build --no-sdist --release --strip \
-    --cargo-extra-args="--frozen --features=abi3"
+  maturin build --release --strip \
+    --frozen --features abi3
 }
 
 package() {
