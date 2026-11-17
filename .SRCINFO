@@ -1,6 +1,6 @@
 pkgbase = sudostamp-desktop
 	pkgdesc = SudoStamp on the desktop: tray status, sudo notifications, pause, pairing and health
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://gitlab.com/ritwick7/sudostamp
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = sudostamp-desktop
 	optdepends = libxkbcommon-x11: the window on an X11 session
 	options = !lto
 	options = !debug
-	source = sudostamp-v1.6.0.tar.gz::https://gitlab.com/ritwick7/sudostamp/-/archive/v1.6.0/sudostamp-v1.6.0.tar.gz
-	sha256sums = c0a326a928ab08a980ac7d7dfd80c9093a23d724a9969332391037fe5527c941
+	source = sudostamp-v1.7.0.tar.gz::https://gitlab.com/ritwick7/sudostamp/-/archive/v1.7.0/sudostamp-v1.7.0.tar.gz
+	sha256sums = e0e392c7a9c779f1fe4236383377892f5b058102f2288fc675942dc2aa60ab06
 
 pkgname = sudostamp-desktop

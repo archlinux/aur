@@ -5,7 +5,7 @@
 # `sudostamp` package's installer. A package of its own so a server's `sudostamp` stays arch=any
 # with no compiler. Updated per release by scripts/publish-aur.sh.
 pkgname=sudostamp-desktop
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="SudoStamp on the desktop: tray status, sudo notifications, pause, pairing and health"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ optdepends=('libx11: the window on an X11 session'
             'libxkbcommon-x11: the window on an X11 session')
 options=('!lto' '!debug')
 source=("sudostamp-v$pkgver.tar.gz::$url/-/archive/v$pkgver/sudostamp-v$pkgver.tar.gz")
-sha256sums=('c0a326a928ab08a980ac7d7dfd80c9093a23d724a9969332391037fe5527c941')
+sha256sums=('e0e392c7a9c779f1fe4236383377892f5b058102f2288fc675942dc2aa60ab06')
 
 _src() { cd "$srcdir"/sudostamp-v"$pkgver"*/desktop; }
 
