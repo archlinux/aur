@@ -1,7 +1,7 @@
 # Maintainer: xmengnet <my@liyp.cc>
 
 pkgname=quiet-md
-pkgver=0.1.11
+pkgver=0.1.13
 pkgrel=1
 pkgdesc='本地优先的富文本笔记，GPUI 绘制，兼容飞书 DocxXML，可直接编辑 Markdown 文件'
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/s1dashu/quiet-md/archive/v$
         com.s1dashu.quietmd-128.png
         com.s1dashu.quietmd-256.png
         com.s1dashu.quietmd-512.png)
-sha256sums=('78bc29d6386c7666f2398ed2b7340c74b71830f51f34e15ccd0906e471ebf37b'
+sha256sums=('c5953465c959326988d7fd14c1186c14bc63fe2988ecb5df2d3c00cd5f38e15b'
             '63b00415e37f34af5aebdb7ae5a1b27b7f2e75989e81ea3f737f618f002beff2'
             'b3063a03af3a78d542a2b978ac022754e5975611168903a92800ab92bad12fcb'
             'e9df11d99c25190983f2985209512284a7f5d91b4e4d198da3b40faf1d685b08'
@@ -37,12 +37,12 @@ sha256sums=('78bc29d6386c7666f2398ed2b7340c74b71830f51f34e15ccd0906e471ebf37b'
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked
+  cargo build --profile dist --locked
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 target/release/quiet_md "$pkgdir/usr/bin/quiet_md"
+  install -Dm755 target/dist/quiet_md "$pkgdir/usr/bin/quiet_md"
   install -Dm644 packaging/linux/com.s1dashu.quietmd.desktop \
     "$pkgdir/usr/share/applications/com.s1dashu.quietmd.desktop"
   for size in 48 64 128 256 512; do
