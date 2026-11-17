@@ -3,4 +3,6 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
-!dpitunnel.service
+!LICENSES/
+!LICENSE
+!REUSE.toml
