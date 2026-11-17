@@ -10,8 +10,6 @@ pkgbase = qbittorrent-nightwalker
 	optdepends = qbittorrent-nox: for use with qbittorrent-nox
 	options = !debug
 	source = https://github.com/CallMeBruce/nightwalker/archive/refs/tags/v0.0.2.tar.gz
-	source = qbittorrent-nightwalker.install
 	sha256sums = ad00cbccc60d05f5a60841070770d969b7c8c594e24ff253ab81b447ca28866d
-	sha256sums = e41cb7cd5693aad398e37a59ffabe0fc00833639b9e599a4c1fca0db126e52e2
 
 pkgname = qbittorrent-nightwalker

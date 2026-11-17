@@ -14,12 +14,8 @@ optdepends=(
 )
 options=(!debug)
 install="${pkgname}.install"
-source=(
-  "${url}/archive/refs/tags/v${pkgver}.tar.gz"
-  ${pkgname}.install
-)
-sha256sums=('ad00cbccc60d05f5a60841070770d969b7c8c594e24ff253ab81b447ca28866d'
-            'e41cb7cd5693aad398e37a59ffabe0fc00833639b9e599a4c1fca0db126e52e2')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('ad00cbccc60d05f5a60841070770d969b7c8c594e24ff253ab81b447ca28866d')
 
 package() {
   cd "${_pkgname}-${pkgver}"
