@@ -13,7 +13,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('13d9ae2e18bbd72a966566ac7dc268e4d01f61e1bb90d816d95e944e618c3b34')
 
 build() {
-  arch-meson "$pkgname-$pkgver" build
+  arch-meson "$pkgname-$pkgver" build \
+    -Dexamples=disabled
 }
 
 check() {
