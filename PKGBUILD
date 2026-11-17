@@ -1,14 +1,14 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=c6
-pkgver=0.1.0
+pkgver=0.6.3
 pkgrel=1
-pkgdesc="c6 — TinyCC with language extensions"
+pkgdesc="A c6 compiler that is self-booting, independent of TCC, and supports multiple backends (native x86-64 / C99 / LLVM IR)"
 arch=($CARCH)
 url="https://github.com/c6lang/c6"
 license=('LGPL-2.0-or-later')
-provides=(${pkgname} tcc)
-conflicts=(${pkgname} tcc)
+provides=(${pkgname})
+conflicts=(${pkgname})
 depends=(
     'glibc'
 )
@@ -18,11 +18,12 @@ makedepends=(
 )
 checkdepends=(
     'go'
+    'python'
     'rust'
 )
 options=('docs' 'staticlibs' '!lto')
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('975501877dffdb32e278ddd29af7d15ffd96827a99c862b027a5d8c2914b60c7')
+sha256sums=('bdf8835494a853f4b73c54e60df581532d1cbcf33bcacfcffa458a4829559ea0')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
@@ -45,5 +46,5 @@ check() {
 package() {
     cd "${srcdir}/${pkgname}"
     DESTDIR="${pkgdir}" cmake --install build
-    install -vDm0644 tcc/COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
