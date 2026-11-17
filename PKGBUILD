@@ -3,10 +3,10 @@
 _basename=coccinelle
 pkgname=$_basename-bin
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="C source code matching and transformation engine. Without spgen and Python bindings."
 arch=('x86_64')
-url="https://coccinelle.lip6.fr"
+url="https://coccinelle.gitlabpages.inria.fr/website/"
 license=('GPL-2.0-or-later')
 depends=('glibc' 'pcre2')
 conflicts=('coccinelle' 'coccinelle-git')
