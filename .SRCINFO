@@ -1,8 +1,8 @@
 pkgbase = edgar-git
 	pkgdesc = Load Python gadgets in Enlightenment
 	pkgver = r73.3be11c2
-	pkgrel = 2
-	url = https://phab.enlightenment.org/w/emodules/edgar/
+	pkgrel = 3
+	url = https://git.enlightenment.org/enlightenment/enlightenment-module-edgar
 	arch = x86_64
 	arch = i686
 	license = GPL-3.0-only

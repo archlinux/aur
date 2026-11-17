@@ -3,10 +3,10 @@
 _pkgname=enlightenment-module-edgar
 pkgname=edgar-git
 pkgver=r73.3be11c2
-pkgrel=2
+pkgrel=3
 pkgdesc="Load Python gadgets in Enlightenment"
 arch=('x86_64' 'i686')
-url="https://phab.enlightenment.org/w/emodules/edgar/"
+url="https://git.enlightenment.org/enlightenment/enlightenment-module-edgar"
 license=('GPL-3.0-only')
 depends=('glibc' 'efl' 'enlightenment>=0.24' 'python>=3.5' 'python-dbus' 'python-efl>=1.11')
 makedepends=('git' 'meson')
