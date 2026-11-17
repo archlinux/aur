@@ -1,5 +1,5 @@
 pkgbase = yidongbangong-bin
-	pkgdesc = A newly created one-stop office solution that integrates 5G communication, basic office and industry applications in order to meet the communication needs of integrated products in the 5G background.(Prebuilt version.Use system-wide electron)
+	pkgdesc = A newly created one-stop office solution that integrates 5G communication, basic office and industry applications in order to meet the communication needs of integrated products in the 5G background.
 	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://oa.cmzq-office.com/web/ydbg/hebangong

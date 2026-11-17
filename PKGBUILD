@@ -4,7 +4,7 @@ _debname="com.cmic.${pkgname%-bin}"
 pkgver=1.0.8
 _electronversion=12
 pkgrel=1
-pkgdesc="A newly created one-stop office solution that integrates 5G communication, basic office and industry applications in order to meet the communication needs of integrated products in the 5G background.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A newly created one-stop office solution that integrates 5G communication, basic office and industry applications in order to meet the communication needs of integrated products in the 5G background."
 arch=(
     'aarch64'
     'x86_64'
