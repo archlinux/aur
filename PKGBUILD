@@ -1,6 +1,6 @@
 # Maintainer: Joschka Thurner <git@joschkathurner.de>
 pkgname=docker-sbx
-pkgver=0.53.0
+pkgver=0.54.0
 pkgrel=1
 pkgdesc="Docker sandboxes - run AI coding agents in isolated microVM sandboxes"
 arch=('x86_64' 'aarch64')
@@ -16,10 +16,10 @@ optdepends=(
 provides=('sbx')
 conflicts=('sbx')
 options=('!debug')
-source_x86_64=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux-amd64.tar.gz")
-sha256sums_x86_64=('a8e171ed331e2485ff8d46978d7bf9e74929769acacb6759c15a0a665a3b7bb2')
-source_aarch64=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux-arm64.tar.gz")
-sha256sums_aarch64=('615a8045fe4d9860d5d1bb30df0189e33b5e3deb22aef820b2947d4b0697438b')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux-amd64.tar.gz")
+sha256sums_x86_64=('eded29017121a857c98d4a91cad593f6a9e00f4010e830679bd385f4a5edba4d')
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux-arm64.tar.gz")
+sha256sums_aarch64=('40498341fd6b7f67d8f6ff4b1a17c73f516811fc6184a3bd554f9b3442a91115')
 
 package() {
     # sbx locates its helper binaries at runtime via a path relative to its
