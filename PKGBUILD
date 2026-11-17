@@ -3,7 +3,7 @@
 _pkgauthor="Duecki1"
 _pkgname="CalibRaw"
 pkgname="${_pkgname,,}-bin"
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="CalibRaw is a fast, non-destructive, GPU-accelerated RAW photo editor"
 
@@ -20,8 +20,8 @@ conflicts=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v${pkgver}/${_pkgname}-${arch[0]}.AppImage")
 source_aarch64=("$url/releases/download/v${pkgver}/${_pkgname}-${arch[1]}.AppImage")
 
-sha256sums_x86_64=('cd9b663a2902c7ebfd120e676eee993dd0a3c86da995f0a1444a40cdfee06455')
-sha256sums_aarch64=('27a71b95703059ac3d952e9dddf0dbe83e3e42eb15ed5fe05d2f568eca04e934')
+sha256sums_x86_64=('96cd47fef730c46ab1aa89a16927657a8200d62954ba85797242143fcd029e3f')
+sha256sums_aarch64=('cbc8c1dd334798d99b15811b394f031d728dd5b3c9eaf88273af959cdb11d1d4')
 
 _appimagefile="${_pkgname}-${CARCH}.AppImage"
 _root='squashfs-root'
