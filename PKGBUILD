@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur [at] kokakiwi [dot] net>
 
 pkgname=go-mod-upgrade
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Update outdated Go dependencies interactively'
 url='https://github.com/oligot/go-mod-upgrade'
@@ -10,8 +10,8 @@ arch=('x86_64' 'aarch64')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/oligot/go-mod-upgrade/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7b351ee1e9a56a3fc1b8cec3bde7a1d649da94885a630f29ec91444b3b00cad6')
-b2sums=('ed0dd8977c57b10149acab0f61790ed9b43d9db0b14ff9be17d0deb6735c1c7e4ef8d812d8b27e9d74bc6fafdd8e0e17a6488a3921415e980d48e45655482e8f')
+sha256sums=('6d1542421e346b855cbe1f997eb917b47afc0d03845e6f91b604eb7855172fb1')
+b2sums=('03669ebd55ac1fb9ef9ed77e707f716b158608ffa71a6d84653b18175bc2e2b2c89a86357e9b91579410f83da6c4f11b8d6b2df96311be89a5a1fcd36c7dac74')
 
 build() {
   cd "$pkgname-$pkgver"
