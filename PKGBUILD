@@ -2,7 +2,7 @@
 pkgname=b580-watt-freq
 pkgver=1.1
 pkgrel=1
-pkgdesc="Fija power limit y frecuencia de Intel Arc B580 sin LACT, con deteccion de steps - local"
+pkgdesc="Sets Intel Arc B580 power limit and frequency without LACT, with frequency step detection and no daemon"
 arch=('any')
 url="https://aur.archlinux.org/packages/b580-watt-freq"
 license=('MIT')

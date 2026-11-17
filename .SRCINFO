@@ -1,5 +1,5 @@
 pkgbase = b580-watt-freq
-	pkgdesc = Fija power limit y frecuencia de Intel Arc B580 sin LACT, con deteccion de steps - local
+	pkgdesc = Sets Intel Arc B580 power limit and frequency without LACT, with frequency step detection and no daemon
 	pkgver = 1.1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/b580-watt-freq
