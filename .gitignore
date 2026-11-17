@@ -3,6 +3,9 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !io.github.noxworld_dev.OpenNox.desktop
 !io.github.noxworld_dev.OpenNox.HD.desktop
 !io.github.noxworld_dev.OpenNox.metainfo.xml
