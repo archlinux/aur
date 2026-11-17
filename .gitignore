@@ -1,10 +1,12 @@
 *
 !PKGBUILD
-!.SCINFO
+!.SRCINFO
 !.gitignore
 !.nvchecker.toml
 !bazarr.service
 !bazarr.sysusers
 !bazarr.tmpfiles
-!0001-strtobool.patch
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !imghdr.py
