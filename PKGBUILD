@@ -7,8 +7,8 @@
 
 pkgname=mautrix-signal-bin
 provides=('mautrix-signal')
-conflicts=('mautrix-signal')
-pkgver="0.2610.0"
+conflicts=('mautrix-signal' 'mautrix-signal-bin-nightly')
+pkgver="0.2611.0"
 pkgrel=2
 pkgdesc="A Matrix-Signal puppeting bridge (Golang version)"
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ backup=("etc/${pkgname/-bin}/config.yaml")
 sha256sums=('3384dd44aa72937047f03f4a524efdf92162029ab85e830f5c7d4747b40359d8'
             '2515ba90e73c054289c3877a86b01ae57117aaa8096348e69d4d0cbe01304a9d'
             '2582791c2210b568afcb916112299a929424c18b381ae8b6b57a2144d0f18b63')
-sha256sums_x86_64=('13867e87604464b7ca848bd0e4b6afdb013710f021cc7477007629d1585f3b5f')
-sha256sums_aarch64=('b2bafd1796866eb793f5447e15ff9a9cb6577f15279b9d7772d043cc58502739')
+sha256sums_x86_64=('ebe29141f18ff1918b68d8993f9d4a56ae2e4c1aef9785d4010a0585e79f0559')
+sha256sums_aarch64=('8d7db9dcd4d9ddb0560fe2b1fe14a906394f9e956e62c8ab3c030c457fbfbaf0')
 
 prepare() {
   cd "${srcdir}/"
