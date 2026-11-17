@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wavy-bin
 _pkgname=Wavy
-pkgver=1.1.4
-_electronversion=33
+pkgver=1.1.6
+_electronversion=45
 pkgrel=1
 pkgdesc="YouTube Music als Desktop-App: Equalizer, Live-Wallpaper, Karaoke-Lyrics, Discord-Status, Zusammen hören, RGB im Beat."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('LicenseRef-unknown')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'python'
 )
 source=(
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6231fa2cf8c3a97a662d3941ba192a120a215d16178b4ceac8f5465bbfaf8d9e'
+sha256sums=('0447aef81d7236e771ff021b7f8b2560dd84876fe2a05e961888de77ab8ed8ca'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
