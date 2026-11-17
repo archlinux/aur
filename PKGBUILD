@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A browser-based terminal manager with tmux-inspired UI"
 
-pkgver=0.0.205
+pkgver=0.0.206
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -33,13 +33,13 @@ source=("CONFIGURATION-${pkgver}.md::${_ghurlraw}/docs/configuration.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('8d76af700496dc146f70df71699a92ac60cbe993356ca785bef8ec4da8952ff5'
+sha256sums=('601f2eade01a5cc186af9bcd5622a17ef7611d2deb30c917d458bb028bc845d3'
             '66b1d41449cba2a38da669a3983f77d3ba585c0cc0f97defc9a3dcb60c3ca954'
-            '7a5f132dfd200b774b605d5996ffdaaa8d05b3f12633100934b2b3ecc9648086'
+            'd03a123c22a970aff3ceca4e5e9b3533913144fd4697a98d76e2030d67420e65'
             '9e0cd933c4371071e8f1cfe8ae03bf4a305ce201717ff5c6b1f1c32a70a4eac7'
             '6767451d6f8834c148d0403d2a55fde5d5b70984059d28fe1c614ec8f08a3250')
-sha256sums_x86_64=('30d07641e1b367e4ff5f714cf9be98d16078dd94bd6b877da071c2ddee00c378')
-sha256sums_aarch64=('91c4dee08bca126cee64fb0c997bf12a36c36f8953d5a6bc4cb5f177dc223869')
+sha256sums_x86_64=('9765d2ead5250f689e766df5521d974c6fac0dc1442590264ce2e742227c5d68')
+sha256sums_aarch64=('9ead831295699d1ad3e7f9f301b1611f26aded19288a571c1bb75ed7f08652d1')
 
 
 package() {
