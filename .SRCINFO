@@ -1,6 +1,6 @@
 pkgbase = libversion
 	pkgdesc = Advanced version string comparison library
-	pkgver = 3.0.4
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = https://github.com/repology/libversion
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = libversion
 	license = MIT
 	makedepends = cmake
 	depends = gcc-libs
-	source = libversion-3.0.4.tar.gz::https://github.com/repology/libversion/archive/3.0.4.tar.gz
-	sha256sums = 48c2a4a98b6f220dedd535979f1e9ab83f9bf869e06c0f5e7bb1be6d2e662fee
-	b2sums = 181732c6694f120893df7ba619b032ea05cdd6c7e9098b8bf6f1558cc1a014eb0f33a1c4d0b7505dce5865670244413d4856e1c3d1cab2e3ef95549ef43bbba0
+	source = libversion-3.0.5.tar.gz::https://github.com/repology/libversion/archive/3.0.5.tar.gz
+	sha256sums = b2da53a5adc8189332dbdf9bddd4f7ce897bcefac3755d8bcaf2a9a620682acd
+	b2sums = f8c46c323000fdfc127b1973f028ba15aaaec630ce9d0f542e4497d61f95ade13bb3e41fa73e2ebeb6896abc8d91ced1771d3fe20456fa02821742f7d8f24ae5
 
 pkgname = libversion
