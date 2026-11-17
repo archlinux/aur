@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jeancode-bin
 _pkgname=JeanCode
-pkgver=1.2.2
+pkgver=1.2.3
 _electronversion=33
 pkgrel=1
 pkgdesc="Open-source AI coding agent for your desktop: edits code, runs commands, checks its own errors and can operate your PC. Bring any model: Ollama, llama.cpp, LM Studio, OpenRouter, NVIDIA NIM, Groq and 28 OpenAI-compatible providers, or your own free API."
@@ -19,7 +19,7 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('52c58517608a6633ec01ce1a63f7e429688f895034536f59322598a057179084'
+sha256sums=('ab52da0b0c4e1407c2d724d65071861ba984b564514919cf8e0b326dfbd6e154'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
