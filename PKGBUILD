@@ -2,9 +2,9 @@
 # Based on grml-systemd-boot by Nicolas Stalder <n+archlinux@stalder.io>
 #
 # grml as a systemd-boot entry directly on the ESP (kernel, initrd, squashfs
-# under /boot/grml), a second "toram" entry, a custom grml-autoconfig
-# configuration under /boot/scripts (boot option "scripts") and a helper to
-# build /boot/config.tbz (boot option "config"). See the migration runbook, 1l.
+# under /boot/grml), a custom grml-autoconfig configuration under /boot/scripts
+# (boot option "scripts"), a helper to build /boot/config.tbz (boot option
+# "config") and Debian packages under /boot/debs (boot option "debs").
 #
 # The ESP needs ~1.1 GB of free space for this flavour. For the smaller
 # variant (ISO ~675 MB) see the package grml-systemd-boot-small.
