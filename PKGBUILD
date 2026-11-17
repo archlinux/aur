@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034
 # Maintainer: LIghtJUNction <https://github.com/LIghtJUNction>
 pkgname=ztty
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Lightweight no_std Rust terminal emulator for X11 and XWayland'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc' 'libx11' 'libxft' 'libxrender')
 makedepends=('rustup')
 optdepends=('xdg-utils: open hyperlinks' 'ttf-dejavu: default monospace font')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('b3b77a1c45df7b434b59de975de3e742b17dc4e8b6644eeb4cd12616f7c58449')
+sha256sums=('c9205a043bdf65b94a5f932282a4c31a60b42794e04de6912879e0fd54a08ccb')
 
 prepare() {
     cd "$pkgname-$pkgver" || return
