@@ -2,7 +2,7 @@
 
 _pkgname=xmtr
 pkgname=${_pkgname}-bin
-pkgver="0.4.0"
+pkgver="0.4.2"
 pkgrel="1"
 pkgdesc="Concurrent traceroute built on trippy that publishes routes, trace several targets at once and see every hop on a map."
 arch=(
@@ -38,17 +38,17 @@ source_s390x=("${_pkgname}-${pkgver}-s390x.tar.gz::${url}/releases/download/v${p
 source_sparc64=("${_pkgname}-${pkgver}-sparc64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-sparc64-unknown-linux-gnu.tar.gz")
 source_loongarch64=("${_pkgname}-${pkgver}-loongarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-loongarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('8668809ba210a5d5f890631d9501fc60eba74a615101ba359db16440485227d9')
-sha256sums_i686=('116a52951d7c12f95257da91e368ac2d0805873dc517c5eaee50353510346984')
-sha256sums_aarch64=('f7091604785624801c8dde097db7e10bd592a46f15b950ac14bb701b1e4252ff')
-sha256sums_armv7h=('9a366a070ede709f25dd7f403508542b342a507194f626e9cfe35462bc479c36')
-sha256sums_armv6h=('5821a02af4b2d774befd356f622d5720576b495ab8ffc239e47d8ab45c172496')
-sha256sums_riscv64=('eb9ec54f98b2c3d7e43b37f2d39733c577e3c6dd0ad3996c29cbd26b8dc578b2')
-sha256sums_ppc64le=('589f4b281379fce1887383856ff929b22c9c7d4643d06b6229bc07d97f357e36')
-sha256sums_ppc64=('32f923b3b86c50d23d866decb8e863cf0c08efca2f6426f9f4813a63d5cca5a0')
-sha256sums_s390x=('891b499943f8e49f5a5b9e64bbcfd3d488d182dddacefb5c80f6bb63b4b4f1e4')
-sha256sums_sparc64=('ed5321529ce558a5d8527da0a513cc137a2b223f7e0df021231ec73f5101ab08')
-sha256sums_loongarch64=('47c6ae8176ddf145fc3d8ec9cd296f5ef355e704c8469f76ec3df810a7e96c58')
+sha256sums_x86_64=('9d5ecadc51b8b94eb93debac761ba20c8b688c4ceb2e5a91780781f600ec787c')
+sha256sums_i686=('6b168d675b8f78e4864e13603a71ae0503f3e1853e88d00362d68a47994c5fd8')
+sha256sums_aarch64=('2b38184c6a70bc262f2c5575d610309dc6968ec266619848f8a25402b02e8628')
+sha256sums_armv7h=('e2617e737dc9b9fa19ebd51ebae082507ec52429baf928e16203f22e7dd3a8d4')
+sha256sums_armv6h=('89efc25b9182235f53d4568e335461d794c541fce55bc72dad930b42d7987bb9')
+sha256sums_riscv64=('a15349e68f26ee4f901b54d8e18502a40b462f59b609b20d022ed6f34880a487')
+sha256sums_ppc64le=('f0c4377c13a40994bf599606335ccbc576d29b234e551e13b0b92c42a699c828')
+sha256sums_ppc64=('02d825e6e8c8c0f9848932b8a99cc0adf0a1511483be4f8bea1fcba901c020ae')
+sha256sums_s390x=('a3d30cd604c95423297bf09c4469216d798c61f92f13a25f7ac64467222f3f26')
+sha256sums_sparc64=('d6b465f521fb4a7fb6aa17fc59884d8d25ffaded59cae0da3da36db3a239ae5a')
+sha256sums_loongarch64=('02448fa4585a01d8b1ad2df281d413417c7a9a8d31ff7c342124c67e4fb9e53a')
 
 package() {
     install -Dm0755 "${srcdir}/xmtr" "${pkgdir}/usr/bin/xmtr"
