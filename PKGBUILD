@@ -2,7 +2,7 @@
 
 pkgname=ntpsec
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Security-hardened Network Time Protocol implementation"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.ntpsec.org/"
@@ -46,7 +46,7 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
 
-  ./waf configure --prefix /usr --sbindir=/usr/ntpsec/bin --refclock=all \
+  ./waf configure --prefix /usr --sbindir=/usr/bin --refclock=all \
       --enable-leap-smear --enable-doc --htmldir=/usr/share/doc/ntpsec
   ./waf build
 
