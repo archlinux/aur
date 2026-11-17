@@ -4,11 +4,11 @@ makedepends=('meson' 'gobject-introspection' 'vala' 'glib2' 'git' 'glib2-devel' 
 _pkgbase=vala-panel-appmenu
 pkgname=appmenu-glib-translator-git
 _path=subprojects/appmenu-glib-translator
-pkgver=25.04.r8.gaea4ea3
+pkgver=25.04.r128.ge196990
 pkgrel=1
 pkgdesc="GLib-based library for translating DBusMenu-exported menus into GMenuModels. Used for vala-panel's system tray and all variants of vala-panel-appmenu. Can be used with GTK3 or GTK4."
 depends=('glib2')
-provides=(appmenu-glib-translator)
+provides=(appmenu-glib-translator=26.11)
 conflicts=(appmenu-glib-translator)
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ pkgver() {
 }
 
 build() {
-  meson build "${srcdir}/${_pkgbase}/${_path}" --prefix=/usr --libexecdir=lib
+  arch-meson build "${srcdir}/${_pkgbase}/${_path}"
   meson compile -C build
 }
 
