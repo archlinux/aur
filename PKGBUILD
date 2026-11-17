@@ -1,7 +1,7 @@
 # Maintainer: nth233 <fpg2012@foxmail.com>
 
 _pkgname=dida
-_version=8.0.20
+_version=8.0.30
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}"
@@ -16,7 +16,7 @@ provides=('dida')
 conflicts=('dida-bin')
 
 source=("${_pkgname}-${pkgver}-x86_64.AppImage::https://cdn.dida365.cn/download/linux/linux_appimage_x64/dida-${pkgver}-x86_64.AppImage")
-sha256sums=('17819b6f98fa11e72bf1ca05b30e3bf655a9ef6a21adda9f2ada4235d198c218')
+sha256sums=('474d3a08e1d65ca6b134cdd4702a8bb7bc707d82cebf16c145b00baede725646')
 
 _appimage="dida-${pkgver}-x86_64.AppImage"
 noextract=("${_appimage}")
