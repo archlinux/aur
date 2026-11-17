@@ -35,6 +35,6 @@ package() {
   install -Dm644 "$srcdir"/*.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail
   install -d "$pkgdir"/usr/share/fontconfig/conf.default
 
-  # To enable the included preset (sets Noto Sans Arabic as default for ar_AR locale) uncomment the followinf line
-  #ln -rs "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default
+  # To disable the included preset (sets Noto Sans Arabic UI as default for ar_AR locale) comment the following line:
+  ln -rs "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default
 }
