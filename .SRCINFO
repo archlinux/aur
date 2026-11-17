@@ -1,6 +1,6 @@
 pkgbase = agentcue-bin
 	pkgdesc = A local-first desktop companion for AI coding agents, with task monitoring, voice alerts, MCP integration, and an animated office.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/ideshun/AgentCue
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = agentcue-bin
 	optdepends = claude-code
 	optdepends = cline-cli
 	optdepends = openai-codex
-	provides = agentcue=1.0.1
+	provides = agentcue=1.0.2
 	conflicts = agentcue
-	source = agentcue-1.0.1.deb::https://github.com/ideshun/AgentCue/releases/download/v1.0.1/AgentCue_1.0.1_amd64.deb
-	source = LICENSE-1.0.1::https://raw.githubusercontent.com/ideshun/AgentCue/v1.0.1/LICENSE
-	sha256sums = 5565df8bc5ec7df4b76ad5ec80c89eee91dabab9a893816ba0049009d918ccfd
+	source = agentcue-1.0.2.deb::https://github.com/ideshun/AgentCue/releases/download/v1.0.2/AgentCue_1.0.2_amd64.deb
+	source = LICENSE-1.0.2::https://raw.githubusercontent.com/ideshun/AgentCue/v1.0.2/LICENSE
+	sha256sums = be8353ade4795492eafdd733b49b4661632e4349e027579e832351f9a66cda49
 	sha256sums = c8ee84273c8c66d93abaa7a22601295ba17e1fb6279f0c031da0a5eed40553f3
 
 pkgname = agentcue-bin
