@@ -2,7 +2,7 @@
 # Contributor: sunflsks <sudhip@nashi.us>
 
 pkgname=libgeneral
-pkgver=92
+pkgver=93
 pkgrel=1
 pkgdesc='Common library for tihmstar tools'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/tihmstar/$pkgname"
 license=('LGPL-2.1-only')
 makedepends=('git')
 source=("git+$url.git#tag=$pkgver")
-sha256sums=('8d3c8b4fcaee2d997469dfc2412701217bac6f04d402939bda4fba80dd8e5574')
+sha256sums=('4f7e62795b3a954b8b6a5c3633ff3c570bad8af088af25b8aaf62d4d22a6a966')
 
 build() {
   cd "$pkgname"
