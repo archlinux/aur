@@ -11,7 +11,7 @@ pkgbase = rsv-ng
 	optdepends = voix: privilege escalation
 	provides = rsv-ng
 	conflicts = rsv
-	source = rsv-ng-fdc9257d4f08db2b93b7cec61cdef0b2c66dab7a.tar.gz::https://gitlab.com/runit-rsv/rsv-main/-/archive/fdc9257d4f08db2b93b7cec61cdef0b2c66dab7a/rsv-main-fdc9257d4f08db2b93b7cec61cdef0b2c66dab7a.tar.gz
-	sha256sums = 1ced45ed03fb8287a28ed4e0303cad6fe4714137b4fa9901a6e2597572370ee0
+	source = rsv-ng-105d3e0a8c881984844f35071f26d5a64085bd74.tar.gz::https://gitlab.com/runit-rsv/rsv-main/-/archive/105d3e0a8c881984844f35071f26d5a64085bd74/rsv-main-105d3e0a8c881984844f35071f26d5a64085bd74.tar.gz
+	sha256sums = 15b95f60fce551fcd185a0462cc6deafc54bca77ad0cb09fb1e85eb4480d3ecc
 
 pkgname = rsv-ng
