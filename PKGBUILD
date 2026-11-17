@@ -1,6 +1,6 @@
 # Maintainer: VanillaGreen <brad@vanillagreen.com>
 pkgname=vsys-git
-pkgver=0.10.0.r674.g78dfaf9
+pkgver=0.10.0.r706.g049c9b8
 pkgrel=1
 pkgdesc="Terminal dashboard for Linux machines that run AI agents (tracks main)"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ provides=('vsys')
 conflicts=('vsys')
 makedepends=('git' 'bun')
 options=('!strip' '!debug')
-source=("${pkgname}::git+${url}.git")
+source=("vsys-git::git+https://github.com/vanillagreencom/vsys.git")
 sha256sums=('SKIP')
 
 pkgver() {
