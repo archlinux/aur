@@ -34,7 +34,7 @@ WantedBy=default.target
 EOF
 
     echo -e "\e[1;32m======================================================================\e[0m"
-    echo -e " 🚀 灵犀 AI (lingxi-ai) 核心文件已安装就绪！"
+    echo -e " 🚀 文小舟 (lingxi-ai) 核心文件已安装就绪！"
     echo -e ""
     echo -e " \e[1;36m[需要使用的用户，请在普通终端 (无需 sudo) 执行以下命令：]\e[0m"
     echo -e "   \e[1;33msystemctl --user enable --now lingxi-ai\e[0m"
