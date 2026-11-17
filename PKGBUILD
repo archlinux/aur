@@ -2,11 +2,11 @@
 # Contributor: Bruce Zhang
 pkgname=sqlark-bin
 _pkgname=SQLark
-pkgver=4.3
-_subver=116657
+pkgver=4.4
+_subver=324439
 _electronversion=40
 pkgrel=1
-pkgdesc="SQLark is a powerful SQL query tool that provides a user-friendly interface for database management and analysis."
+pkgdesc="A powerful SQL query tool that provides a user-friendly interface for database management and analysis."
 arch=(
 	'aarch64'
 	'x86_64'
@@ -23,12 +23,12 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://download.sqlark.com/fullPackage/Linux/${_subver}/${_pkgname}_V${pkgver}_linux_arm64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://download.sqlark.com/fullPackage/Linux/${_subver}/${_pkgname}_V${pkgver}_linux_x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::https://download.sqlark.com/fullPackage/Linux/${_subver}/${_pkgname}_V${pkgver}_linux_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://download.sqlark.com/fullPackage/Linux/${_subver}/${_pkgname}_V${pkgver}_linux_x86_64.deb")
 sha256sums=('562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-sha256sums_aarch64=('20687b7625cdf839095b3a08fb162f2a287201b6f9e164f1c63ac014513773f3')
-sha256sums_x86_64=('47de4f3f0913aad7ed09bd412b3d3f310dc038e536dce014d6341a3b61807bf9')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+sha256sums_aarch64=('f82d07c614795aa8151c4e3d65a6644c60f942d0bfa8458a9f818e01193ad028')
+sha256sums_x86_64=('6c6279d7f83eefdb53f9ac792740393b29b597e225bd53538e331152ae1a0a97')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -57,8 +57,9 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
+	bsdtar -xf "${srcdir}/data."*
 	_check_electron_version
-    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
