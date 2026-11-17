@@ -1,6 +1,6 @@
 # Maintainer: Rinne <aur@rinne.in>
 pkgname=your-szu-life-bin
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="泥深 - 你的SZU助手"
 arch=('x86_64')
@@ -11,9 +11,9 @@ provides=('your-szu-life')
 conflicts=('your-szu-life-git' 'your-szu-life')
 options=('!strip' '!debug')
 
-_debname="your-szu-life_linux_x64_0.16.1-release.deb"
-source_x86_64=("${_debname}::https://github.com/rinnein/your-szu-life/releases/download/canary/your-szu-life_linux_x64_0.16.1-release.deb")
-sha256sums_x86_64=('82e1ebee20bde299557b11194bb3cc1f4ad7bf2df8e4f30af33528cdd3be6523')
+_debname="your-szu-life_linux_x64_0.17.0-release.deb"
+source_x86_64=("${_debname}::https://github.com/rinnein/your-szu-life/releases/download/canary/your-szu-life_linux_x64_0.17.0-release.deb")
+sha256sums_x86_64=('bf97bc849288e6cfabb62bf174a6ab4281f5c63f2f85f67ac92d650271617808')
 
 package() {
   cd "${srcdir}"
