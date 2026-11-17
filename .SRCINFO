@@ -1,6 +1,6 @@
 pkgbase = powershell-preview-bin
 	pkgdesc = A cross-platform automation and configuration tool/framework
-	pkgver = 7.7.0preview5
+	pkgver = 7.7.0
 	pkgrel = 1
 	url = https://microsoft.com/PowerShell
 	install = powershell.install
@@ -12,17 +12,17 @@ pkgbase = powershell-preview-bin
 	depends = libgcc
 	depends = libstdc++
 	optdepends = lttng-ust2.12: CoreCLR tracing
-	provides = powershell=7.7.0preview5
-	provides = powershell-preview=7.7.0preview5
+	provides = powershell=7.7.0
+	provides = powershell-preview=7.7.0
 	conflicts = powershell
-	noextract = powershell-7.7.0-preview.5-linux-arm64.tar.gz
-	noextract = powershell-7.7.0-preview.5-linux-arm32.tar.gz
-	noextract = powershell-7.7.0-preview.5-linux-x64.tar.gz
-	source_aarch64 = https://github.com/PowerShell/PowerShell/releases/download/v7.7.0-preview.5/powershell-7.7.0-preview.5-linux-arm64.tar.gz
-	sha256sums_aarch64 = 8351d5da4a6442fc941c6bcb62000989cacc812a47ccf26ea98af663ed51891f
-	source_armv7h = https://github.com/PowerShell/PowerShell/releases/download/v7.7.0-preview.5/powershell-7.7.0-preview.5-linux-arm32.tar.gz
-	sha256sums_armv7h = da9befd61313df1c2bec47f09c4ea5dcec170fd42c4b04ab7f4654ba0896a789
-	source_x86_64 = https://github.com/PowerShell/PowerShell/releases/download/v7.7.0-preview.5/powershell-7.7.0-preview.5-linux-x64.tar.gz
-	sha256sums_x86_64 = 8f7af867391fdc90b526c28a427f0babf643f489d76bd407907ce9e236a4d5cf
+	noextract = powershell-7.7.0-linux-arm64.tar.gz
+	noextract = powershell-7.7.0-linux-arm32.tar.gz
+	noextract = powershell-7.7.0-linux-x64.tar.gz
+	source_aarch64 = https://github.com/PowerShell/PowerShell/releases/download/v7.7.0/powershell-7.7.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = e59c89776eaa59790d44b3edd14277435225ab08b6e7603763101b89de83d935
+	source_armv7h = https://github.com/PowerShell/PowerShell/releases/download/v7.7.0/powershell-7.7.0-linux-arm32.tar.gz
+	sha256sums_armv7h = d05e2bbc7b165e4db1b7194f92ccb6951e09847d4013f9cc464ead1c8804a10a
+	source_x86_64 = https://github.com/PowerShell/PowerShell/releases/download/v7.7.0/powershell-7.7.0-linux-x64.tar.gz
+	sha256sums_x86_64 = c89d9c682d2c403dfe726f3df948e359675235a5bd6fab535776de69729ca0cb
 
 pkgname = powershell-preview-bin
