@@ -3,6 +3,9 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !flaresolverr.service
 !flaresolverr.sysusers
 !flaresolverr.tmpfiles
