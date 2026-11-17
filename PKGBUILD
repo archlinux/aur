@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=php-wikidiff2
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc="A PHP module that provides the external diff engine for MediaWiki"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 url='https://www.mediawiki.org/wiki/Extension:Wikidiff2'
 depends=('php' 'libthai')
 source=("https://releases.wikimedia.org/wikidiff2/wikidiff2-$pkgver.tar.gz"{,.sig})
-sha512sums=('2c4e20197571b3c662967561e64cc1ef46ae6357e0323faa66fcfe8803b1a6f056b49e2721383bc9c1ab1cf0830627690f0cdf8c3be067b41a02a5563a3e6a0a'
+sha512sums=('f8bb46e7e819b8795e81deaf4b5b447da8b5523c11554aa464de671cfc10f49703b9e1ee49edf9756fab4c9f90bb614d913f8f03a4a521028ecf4099082ccdb7'
             'SKIP')
 validpgpkeys=(
   'F64EBF5F20996AB514F198A873F146FECF9D333C'  # Tim Starling <tstarling@wikimedia.org>
