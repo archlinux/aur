@@ -1,41 +1,49 @@
-# Maintainer: Ersin Can Karaca <[canersinkaraca@gmail.com]>
+# Maintainer: Ersin Can Karaca <canersinkaraca@gmail.com>
 pkgname=lapse-git
-pkgver=v0.1.1.r0.g2e2bf60
+pkgver=2.1.0.r1.gbfaa62c
 pkgrel=1
-pkgdesc="Native screen recording application in Rust for Wayland/X11"
+pkgdesc="Save the last moments of your game and trim clips (replay recorder, latest source)"
 arch=('x86_64')
-url="https://github.com/canersin/lapse"
-license=('custom')
-depends=('gtk3' 'wayland' 'gpu-screen-recorder' 'libappindicator-gtk3')
-makedepends=('cargo' 'git')
+url="https://github.com/canersin/Lapse"
+license=('GPL-3.0-only')
+depends=('gcc-libs' 'glibc' 'alsa-lib' 'libglvnd' 'wayland' 'libxkbcommon' 'libx11' 'libxcursor'
+         'libxrandr' 'libxi' 'dbus' 'ffmpeg' 'curl' 'gpu-screen-recorder' 'hicolor-icon-theme')
+makedepends=('cargo' 'git' 'pkgconf')
+optdepends=('libnotify: notifications with buttons when a clip is saved'
+            'xdg-desktop-portal: file dialogs'
+            'zenity: file dialogs without a portal')
+provides=('lapse')
+conflicts=('lapse' 'lapse-bin')
 options=('!lto')
-source=("git+file:///home/corvus/Lapse#branch=main")
-md5sums=('SKIP')
+source=("lapse::git+https://github.com/canersin/Lapse.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/Lapse"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd lapse
+    local version
+    version="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
+    printf '%s.r%s.g%s' "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+    cd lapse
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$srcdir/Lapse"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --release
+    cd lapse
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
 }
 
 package() {
-  cd "$srcdir/Lapse"
-  install -Dm755 "target/release/Lapse" "$pkgdir/usr/bin/lapse"
-  install -Dm644 "assets/lapse.desktop" "$pkgdir/usr/share/applications/lapse.desktop"
-  install -Dm644 "assets/icon.png" "$pkgdir/usr/share/pixmaps/lapse.png"
-  install -Dm644 "assets/shutter.ogg" "$pkgdir/usr/share/sounds/lapse/shutter.ogg"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-  
-  # Install init services
-  install -Dm644 "packaging/init/systemd/lapse.service" "$pkgdir/usr/lib/systemd/user/lapse.service"
-  install -Dm644 "packaging/init/xdg/lapse-daemon.desktop" "$pkgdir/etc/xdg/autostart/lapse-daemon.desktop"
-  install -Dm644 "packaging/init/dinit/lapse" "$pkgdir/usr/share/lapse/init/dinit/lapse"
-  install -Dm755 "packaging/init/runit/lapse/run" "$pkgdir/usr/share/lapse/init/runit/lapse/run"
+    cd lapse
+    install -Dm755 target/release/Lapse "${pkgdir}/usr/bin/lapse"
+    install -Dm644 assets/lapse.desktop "${pkgdir}/usr/share/applications/lapse.desktop"
+    install -Dm644 assets/icon.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/lapse.png"
+    install -Dm644 assets/lapse.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/lapse.svg"
+    install -Dm644 assets/lapse-symbolic.svg "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/lapse-symbolic.svg"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
