@@ -1,7 +1,7 @@
 # Prebuilt multi-arch AUR PKGBUILD template for Koma.
 # shellcheck shell=bash
 pkgname=koma-bin
-pkgver='0.0.1'
+pkgver='0.0.2'
 pkgrel=1
 pkgdesc='Wayland tiling compositor with explicit desktop automation interfaces (prebuilt release binaries)'
 arch=('x86_64' 'aarch64')
@@ -12,10 +12,10 @@ optdepends=('xwayland-satellite: X11 client support' 'xdg-desktop-portal-gnome: 
 provides=('koma')
 conflicts=('koma')
 options=('!debug' '!strip')
-source_x86_64=("koma-${pkgver}-x86_64.tar.zst::https://cdn.komawm.org/releases/koma/v0.0.1/koma-${pkgver}-x86_64-unknown-linux-gnu.tar.zst")
-source_aarch64=("koma-${pkgver}-aarch64.tar.zst::https://cdn.komawm.org/releases/koma/v0.0.1/koma-${pkgver}-aarch64-unknown-linux-gnu.tar.zst")
-sha256sums_x86_64=('13bcefd65191cbf6bb364c60c7ea53b9903f1a98a141fc283756f5557e224e0c')
-sha256sums_aarch64=('74e9d031ddc2f6a81406f9b34140ca34f8061689dc02723934a0dc0b59ff9bb6')
+source_x86_64=("koma-${pkgver}-x86_64.tar.zst::https://cdn.komawm.org/releases/koma/v0.0.2/koma-${pkgver}-x86_64-unknown-linux-gnu.tar.zst")
+source_aarch64=("koma-${pkgver}-aarch64.tar.zst::https://cdn.komawm.org/releases/koma/v0.0.2/koma-${pkgver}-aarch64-unknown-linux-gnu.tar.zst")
+sha256sums_x86_64=('941eb8d7166499f23f93a09723be14700b5f88738dd86efe57121212f16d515f')
+sha256sums_aarch64=('627429aba9dd46c4314e3ce4ee7846b321a6629a6489a9d05319fdc199cc0310')
 
 package() {
     cd "koma-${pkgver}-${CARCH}-unknown-linux-gnu" || return 1
@@ -31,4 +31,15 @@ package() {
     install -Dm644 resources/greetd-config.toml "$pkgdir/usr/share/doc/koma/examples/greetd-config.toml"
     install -Dm644 examples/init.lua "$pkgdir/usr/share/doc/koma/examples/init.lua"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/koma/LICENSE"
+    if [[ -d completions ]]; then
+        install -d "$pkgdir/usr/share/bash-completion/completions" \
+            "$pkgdir/usr/share/zsh/site-functions" \
+            "$pkgdir/usr/share/fish/vendor_completions.d"
+        install -Dm644 completions/koma.bash "$pkgdir/usr/share/bash-completion/completions/koma"
+        install -Dm644 completions/koma.zsh "$pkgdir/usr/share/zsh/site-functions/_koma"
+        install -Dm644 completions/koma.fish "$pkgdir/usr/share/fish/vendor_completions.d/koma.fish"
+        install -Dm644 completions/komactl.bash "$pkgdir/usr/share/bash-completion/completions/komactl"
+        install -Dm644 completions/komactl.zsh "$pkgdir/usr/share/zsh/site-functions/_komactl"
+        install -Dm644 completions/komactl.fish "$pkgdir/usr/share/fish/vendor_completions.d/komactl.fish"
+    fi
 }
