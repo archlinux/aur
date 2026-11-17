@@ -1,0 +1,32 @@
+pkgbase = visicasts-bin
+	pkgdesc = Native podcast player with a local library and offline listening
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://visicasts.com
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = mpv>=1:0.38
+	depends = glibc
+	depends = gcc-libs
+	depends = fontconfig
+	depends = freetype2
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	depends = libx11
+	depends = libxcb
+	depends = vulkan-icd-loader
+	depends = openssl
+	depends = alsa-lib
+	depends = glib2
+	depends = zlib
+	depends = zstd
+	optdepends = vulkan-driver: GPU driver for the GPUI renderer
+	provides = visicasts
+	conflicts = visicasts
+	options = !strip
+	options = !debug
+	source = https://downloads.visicasts.com/releases/0.1.0/visicasts-0.1.0-linux-x86_64.tar.gz
+	sha256sums = d43bc443b1318bbfa333270ade351a8d99603a9e1d9d775842092624c57dc1a8
+
+pkgname = visicasts-bin
