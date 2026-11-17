@@ -1,0 +1,12 @@
+pkgbase = libgbm
+	pkgdesc = libgbm is the Generic Buffer Management backend loader, which various packages and GBM vendors use.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/glfs-book/libgbm
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	source = https://github.com/glfs-book/libgbm/archive/refs/tags/1.1.0.zip
+	sha256sums = SKIP
+
+pkgname = libgbm
