@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=onair
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR"
 arch=('x86_64' 'aarch64')
@@ -45,7 +45,7 @@ optdepends=('codec2: FreeDV and M17 speech (dlopened at run time, searched in /u
             'libsecret: store credentials for the plugin store (dlopened at run time)')
 conflicts=('onair-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d9b940b1f9a1c6ef8c59b7a225d1101446c9c95efe6790f3db9860e5748030f7')
+sha256sums=('abbcb0866f008f3d188e9306a0a9184cda7624a6bcfae1fc7bfc8d0fbfba1ee1')
 
 prepare() {
     # The udev-rule / blacklist fix-it hints tell the user to run
@@ -57,6 +57,8 @@ prepare() {
     # touched the lines and 0.2.8 moved the files (app/fixit.cpp ->
     # app/panels/fixit.cpp), breaking the patch each release. Fails loudly if
     # dangling script references remain that we do not know how to rewrite.
+    # 4.2.0 added the Help > Hardware page (app/panels/hardware_ui.cpp) with two
+    # more of these hints; upstream adds new wording faster than we rewrite it.
     local src="OnAir-$pkgver"
     grep -rq 'install-udev-rules' "$src/app" "$src/core" --include='*.cpp' --include='*.h' || {
         echo 'onair: no dangling udev-script hints found, nothing to rewrite'
@@ -76,13 +78,19 @@ prepare() {
             -e "s|unplug and replug it after installing OnAir's blacklist file (the .deb does it), or restart the SDRplay API service|unplug and replug it (OnAir's blacklist file is already installed by the onair package), or restart the SDRplay API service|g" \
             -e "s|install OnAir's udev rules (the .deb does it, or run install-udev-rules.sh from the portable folder), then unplug and replug it|reload OnAir's udev rules (already installed by the onair package) with $cmd, then unplug and replug it|g" \
             -e "s|The udev rules (install-udev-rules.sh, done by the .deb) give it|The udev rules (already installed by the onair package) give it|g" \
+            -e "s|install the .deb, or run install-udev-rules.sh from the portable folder, then replug the radio|reload the udev rules installed by the onair package ($cmd), then replug the radio|g" \
+            -e "s|the .deb or install-udev-rules.sh installs it|the onair package installs it|g" \
             "$f"
     done < <(grep -rl 'install-udev-rules' "$src/app" "$src/core" --include='*.cpp' --include='*.h')
-    if grep -rq 'install-udev-rules' "$src/app" "$src/core" --include='*.cpp' --include='*.h'; then
-        echo 'onair: dangling install-udev-rules.sh references remain after rewrite;' >&2
-        echo 'upstream changed the hint strings, the rewrite rules need a review' >&2
-        return 1
+    if ! grep -rq 'install-udev-rules' "$src/app" "$src/core" --include='*.cpp' --include='*.h'; then
+        return 0
     fi
+    {
+        echo 'onair: dangling install-udev-rules.sh references remain after rewrite;'
+        echo 'upstream changed the hint strings, the rewrite rules need a review:'
+        grep -rn 'install-udev-rules' "$src/app" "$src/core" --include='*.cpp' --include='*.h'
+    } >&2
+    return 1
 }
 
 build() {
