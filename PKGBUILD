@@ -1,101 +1,114 @@
 # Maintainer: lzsnyy <710080675@qq.com>
 #
-# Unofficial Linux port: the WorkBuddy international edition (workbuddy.ai)
-# publishes no Linux build. This package converts the official macOS build to
-# a Linux Electron app on the user's machine. The app payload is taken from
-# that official macOS build; the session runtimes and the custom Electron
-# binary come from the official domestic-edition Linux deb (see the notes
-# below). Conversion toolchain vendored from the MIT-licensed community
-# project workbuddy-linux (see LICENSE.port-tool); see DISCLAIMER.
+# Unofficial Linux port of the WorkBuddy international edition (workbuddy.ai),
+# which publishes no Linux build.
 #
-# The node/python session runtimes are taken from the official domestic-
-# edition Linux deb (download.codebuddy.cn): the international darwin build
-# bundles macOS/Windows runtimes only, while the app expects
-# resources/runtime/{node,python} on Linux. The runtimes are edition-
-# agnostic and pinned to their own upstream version.
-#
-# The same domestic deb also provides the custom Electron runtime. The
-# upstream Electron binary carries a proprietary "workbuddyStorage" native
-# binding that credential bootstrap depends on; the official electron
-# build lacks it, which makes every conversation fail with
+# Layout: the application payload comes from the official Windows archive
+# (win32-x64). Its app.asar is platform-neutral JavaScript, and it already
+# carries the Linux builds of koffi, @lydell/node-pty and @ban-dal/os-bridge.
+# The Electron runtime, the Node/Python session runtimes and the Linux CLI
+# helpers (ripgrep, genie-trash) come from the official domestic-edition Linux
+# deb. That deb's Electron carries the proprietary "workbuddyStorage" binding
+# that sign-in depends on; stock Electron fails with
 # CREDENTIAL_BOOTSTRAP_FAILED.
+#
+# Every artifact is pinned in source=() with a sha256, so makepkg downloads
+# exactly what is audited here and the build itself runs fully offline.
+#
+# See DISCLAIMER and port.sh for the conversion steps.
 
 pkgname=workbuddy-intl-agent
 _pkgver=5.11.4.44121853
 _build=0026dff0
-_electronver=37.10.3
-_cn_pkgver=5.6.2.40046327
-_cn_build=c7b525f3
+_hostver=5.6.2.40046327
+_hostbuild=c7b525f3
+_electron=37.10.3
+_sandbox=5.11.4
+_harness=0.2.0-beta.16
 pkgver=${_pkgver}_${_build}
 pkgrel=1
 pkgdesc='AI Agent for everyday office work - WorkBuddy international edition (unofficial Linux port)'
 arch=('x86_64' 'aarch64')
 url='https://www.workbuddy.ai'
 license=('NOASSERTION')
-depends=('libsecret' 'libappindicator-gtk3' 'nss' 'alsa-lib' 'gtk3' 'libxss')
-makedepends=('nodejs' 'npm' '7zip' 'unzip' 'curl' 'python' 'imagemagick')
+depends=('libsecret' 'libappindicator-gtk3' 'nss' 'alsa-lib' 'gtk3' 'libxss' 'libnotify' 'mesa' 'xdg-utils')
+makedepends=('nodejs' 'unzip' 'libarchive' 'file')
 optdepends=('gnome-shell-extension-appindicator: tray icon support')
 options=('!strip' '!debug')
 provides=('workbuddy-international-bin')
 conflicts=('workbuddy-international')
+
+_win_archive="WorkBuddy-win32-x64-archive-${_pkgver}-${_build}.zip"
+_win_url="https://download.codebuddy.ai/workbuddy/saas/win32-x64-archive/${_win_archive}"
+
 source=(
-  'install.sh'
-  'lib-common.sh'
-  'lib-dmg.sh'
-  'lib-electron.sh'
-  'lib-native-modules.sh'
-  'lib-linux-patches.sh'
-  'lib-apply-linux-patches.js'
+  'port.sh'
+  'asar.cjs'
+  'patch.cjs'
+  'verify-native.cjs'
+  'start.sh'
   'workbuddy-international.desktop'
-  'LICENSE.port-tool'
-  'DISCLAIMER'
   'workbuddy-intl-256.png'
+  'DISCLAIMER'
 )
 source_x86_64=(
-  "WorkBuddy-darwin-x64-${_pkgver}-${_build}.zip::https://download.codebuddy.ai/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-${_pkgver}-${_build}.zip"
-  "electron-v${_electronver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electronver}/electron-v${_electronver}-linux-x64.zip"
-  "WorkBuddy-linux-x64-deb-${_cn_pkgver}-${_cn_build}.deb::https://download.codebuddy.cn/workbuddy/saas/linux-x64-deb/WorkBuddy-linux-x64-deb-${_cn_pkgver}-${_cn_build}.deb"
+  "${_win_archive}::${_win_url}"
+  "WorkBuddy-linux-x64-deb-${_hostver}-${_hostbuild}.deb::https://download.codebuddy.cn/workbuddy/saas/linux-x64-deb/WorkBuddy-linux-x64-deb-${_hostver}-${_hostbuild}.deb"
+  "sandbox-cli-linux-x64-${_sandbox}.tgz::https://registry.npmjs.org/@tencent-ai/sandbox-cli-linux-x64/-/sandbox-cli-linux-x64-${_sandbox}.tgz"
+  "agent-harness-linux-x64-${_harness}.tgz::https://registry.npmjs.org/@tencent-ai/agent-harness-linux-x64/-/agent-harness-linux-x64-${_harness}.tgz"
 )
 source_aarch64=(
-  "WorkBuddy-darwin-arm64-${_pkgver}-${_build}.zip::https://download.codebuddy.ai/workbuddy/saas/darwin-arm64/WorkBuddy-darwin-arm64-${_pkgver}-${_build}.zip"
-  "electron-v${_electronver}-linux-arm64.zip::https://github.com/electron/electron/releases/download/v${_electronver}/electron-v${_electronver}-linux-arm64.zip"
-  "WorkBuddy-linux-arm64-deb-${_cn_pkgver}-${_cn_build}.deb::https://download.codebuddy.cn/workbuddy/saas/linux-arm64-deb/WorkBuddy-linux-arm64-deb-${_cn_pkgver}-${_cn_build}.deb"
+  "${_win_archive}::${_win_url}"
+  "WorkBuddy-linux-arm64-deb-${_hostver}-${_hostbuild}.deb::https://download.codebuddy.cn/workbuddy/saas/linux-arm64-deb/WorkBuddy-linux-arm64-deb-${_hostver}-${_hostbuild}.deb"
+  "sandbox-cli-linux-arm64-${_sandbox}.tgz::https://registry.npmjs.org/@tencent-ai/sandbox-cli-linux-arm64/-/sandbox-cli-linux-arm64-${_sandbox}.tgz"
+  "agent-harness-linux-arm64-${_harness}.tgz::https://registry.npmjs.org/@tencent-ai/agent-harness-linux-arm64/-/agent-harness-linux-arm64-${_harness}.tgz"
 )
 noextract=(
-  "WorkBuddy-linux-x64-deb-${_cn_pkgver}-${_cn_build}.deb"
-  "WorkBuddy-linux-arm64-deb-${_cn_pkgver}-${_cn_build}.deb"
+  "${_win_archive}"
+  "WorkBuddy-linux-x64-deb-${_hostver}-${_hostbuild}.deb"
+  "WorkBuddy-linux-arm64-deb-${_hostver}-${_hostbuild}.deb"
+  "sandbox-cli-linux-x64-${_sandbox}.tgz"
+  "sandbox-cli-linux-arm64-${_sandbox}.tgz"
+  "agent-harness-linux-x64-${_harness}.tgz"
+  "agent-harness-linux-arm64-${_harness}.tgz"
 )
-sha256sums=('a4f4bba61a2ed88da4a3e6d9e06990306d93d3053dbaed26ba3f739160549a6e'
-            '33aeab4b44329127ce747cc3048df98db9873cb511685e666d81332d9c219c73'
-            'f263ea88a81ceb8be3b59c458fd7be15daf0dbbd2b625fc143f772ad300742fd'
-            'f207ee01cc207532c3c804ba6ff6ab4209adab06a1903d9b9f38b8d96d90d50c'
-            '6d9bf1001374d62e12941c7e98acee1329fbe4dcaf4ae809509c934b865417c1'
-            'e2c715973e9e720008bb6507f3fe31563772907eb236a6ecb804186b539485c2'
-            'f436d99d242064c905f06eb53f1a810e90e7be92a804015e4679cea1fcb62885'
-            '6fcbfa4cba8e730e603b68fcca484c7963aacdaf56a3f6c5c47ff320a5189e85'
-            '43164499524650222076bae69b7cb21d3e3e4a954c7c56426474267a554a2f33'
-            'aa036c1f37d070f14a551bcba2133390710da46bd91225dfd366711bb5a3b6ec'
-            '631bd3aadd92f6e94797f299cfc9088149db3950e77fa99d090ccb6eff2253ee')
-sha256sums_x86_64=('f17292ee0a9702670d739679b76d3a84a012dbd232f45c6479bf37cc00cf402c'
-                   'c0b4edd6bd9858cda4cf7ab299e69a2d3ecd2e5fcca78507bc0851ba35614660'
-                   '12149ad8c0cd748fd5062d8f62c7827d688d8095427ada99b1ae9e7019897523')
-sha256sums_aarch64=('fe5d9be52791bb10df320ff7f66a24923a279f588dfe55284911f30a64eaeef8'
-                    '37a228821184136fa86a8727bec19ab400524dd7d4bca78937de5d50704592d1'
-                    '561822578435d382a06d0a0b079a4b157f68b588c9fe72d589e2a88b2fd155fa')
+sha256sums=(
+  '109ee2757da34616207fc0e898a5f719b4290715eddf37f751d57e724b108fec'  # port.sh
+  '8bd1111e94ec072bf7e751ba715e96abb4313cac6f7f86768d3eee9b7016c8c2'  # asar.cjs
+  'e51c1f55b94e22ff64a5423c2172bc5ee73385592f972942c2403102966c0c42'  # patch.cjs
+  '41c68cc72516123b85d7476c86dbd3ff8d7baecd0c1235be6be06549fa2efbac'  # verify-native.cjs
+  '981f72b6ebc2a8c8acc108ae5d52819120b8b0fa5f40471375d83cc73811e0b1'  # start.sh
+  '8bb160b34485ac7bde818a029e6bd421fff7c28d9328f65372d362386ebb0624'  # desktop
+  '631bd3aadd92f6e94797f299cfc9088149db3950e77fa99d090ccb6eff2253ee'  # icon
+  '57d01c547f248e072b3824355de9a1566d0b28b99c47e36d7b467d4e945e3436'  # DISCLAIMER
+)
+sha256sums_x86_64=(
+  '0ac85622e03d1f22645519a1d73861c80badad3cdf14d884ebcd6d6b491aa8b7'
+  '12149ad8c0cd748fd5062d8f62c7827d688d8095427ada99b1ae9e7019897523'
+  '324e1e43ea2dffa711755ed5aebd7212e08561953b3e58255ff1fe59366a6b77'
+  '834fe6f1a07cecc42ffbd8ef263cc9a1eb08c515457ab1ca0121917cbb88ebe9'
+)
+sha256sums_aarch64=(
+  '0ac85622e03d1f22645519a1d73861c80badad3cdf14d884ebcd6d6b491aa8b7'
+  '561822578435d382a06d0a0b079a4b157f68b588c9fe72d589e2a88b2fd155fa'
+  'bab2dd39d01d74e07cf4148bdbfefc533491003787de4ed8267d4b77e0b87433'
+  '6651fa80faac30d822a9ee3e44f342db26f381110c5da5ef3b931eb8c7d4e704'
+)
 
 build() {
-  local darwin_zip electron_zip cn_deb app_bundle
-
+  local machine
   case "${CARCH}" in
     x86_64)
-      darwin_zip="WorkBuddy-darwin-x64-${_pkgver}-${_build}.zip"
-      electron_zip="electron-v${_electronver}-linux-x64.zip"
-      cn_deb="WorkBuddy-linux-x64-deb-${_cn_pkgver}-${_cn_build}.deb"
+      machine=x64
+      export HOST_DEB="${srcdir}/WorkBuddy-linux-x64-deb-${_hostver}-${_hostbuild}.deb"
+      export SANDBOX_TGZ="${srcdir}/sandbox-cli-linux-x64-${_sandbox}.tgz"
+      export HARNESS_TGZ="${srcdir}/agent-harness-linux-x64-${_harness}.tgz"
       ;;
     aarch64)
-      darwin_zip="WorkBuddy-darwin-arm64-${_pkgver}-${_build}.zip"
-      electron_zip="electron-v${_electronver}-linux-arm64.zip"
-      cn_deb="WorkBuddy-linux-arm64-deb-${_cn_pkgver}-${_cn_build}.deb"
+      machine=arm64
+      export HOST_DEB="${srcdir}/WorkBuddy-linux-arm64-deb-${_hostver}-${_hostbuild}.deb"
+      export SANDBOX_TGZ="${srcdir}/sandbox-cli-linux-arm64-${_sandbox}.tgz"
+      export HARNESS_TGZ="${srcdir}/agent-harness-linux-arm64-${_harness}.tgz"
       ;;
     *)
       printf 'unsupported architecture: %s\n' "${CARCH}" >&2
@@ -103,123 +116,45 @@ build() {
       ;;
   esac
 
-  rm -rf "${srcdir}/app-extract"
-  install -dm755 "${srcdir}/app-extract"
-  # __MACOSX 是 macOS 打包时混入的资源叉元数据，解包时直接排除，
-  # 避免 find 选到错误的 .app
-  unzip -q "${srcdir}/${darwin_zip}" -d "${srcdir}/app-extract" -x '__MACOSX/*'
+  export WIN_ZIP="${srcdir}/${_win_archive}"
+  export MACHINE="${machine}"
+  export EXPECTED_ELECTRON="${_electron}"
+  export EXPECTED_SANDBOX="${_sandbox}"
+  export EXPECTED_HARNESS="${_harness}"
+  export WORK_DIR="${srcdir}/build-work"
+  export OUT_DIR="${srcdir}/app-out"
+  export SCRIPT_DIR="${srcdir}"
 
-  app_bundle="$(find "${srcdir}/app-extract" -maxdepth 2 -name '*.app' -type d | sort | head -n1)"
-  [[ -n "${app_bundle}" ]] || { printf 'no .app bundle found in the darwin zip\n' >&2; return 1; }
+  bash "${srcdir}/port.sh"
 
-  WORKBUDDY_APP_ID='WorkBuddy AI' \
-  WORKBUDDY_APP_DISPLAY_NAME='WorkBuddy AI (International)' \
-  WORKBUDDY_INSTALL_DIR="${srcdir}/workbuddy-app" \
-  WORKBUDDY_ELECTRON_ZIP="${srcdir}/${electron_zip}" \
-    bash "${srcdir}/install.sh" "${app_bundle}"
-
-  # 从国内版官方 Linux deb 提取会话运行时。国际版的 darwin 包只在
-  # win32/darwin 条目下捆绑运行时，Linux 条目（node.tar.gz/python.tar.gz）
-  # 实际不存在；缺失时 daemon 反复退出并弹 "critical component" 警告。
-  # 同一个 deb 还带有定制 Electron：国际版应用的凭证 bootstrap 依赖
-  # workbuddyStorage 原生绑定，官方 electron 没有该绑定，会导致所有对话
-  # 以 CREDENTIAL_BOOTSTRAP_FAILED 失败。
-  rm -rf "${srcdir}/cn-deb-extract"
-  install -dm755 "${srcdir}/cn-deb-extract"
-  bsdtar -C "${srcdir}/cn-deb-extract" -xf "${srcdir}/${cn_deb}"
-  local cn_data
-  cn_data="$(find "${srcdir}/cn-deb-extract" -maxdepth 1 -name 'data.tar.*' -print)"
-  [[ "${cn_data}" != *$'\n'* && -f "${cn_data}" ]] || {
-    printf 'unexpected deb data archive: %s\n' "${cn_data}" >&2
-    return 1
-  }
-  bsdtar -C "${srcdir}/cn-deb-extract" -xf "${cn_data}" \
-    ./opt/WorkBuddy/workbuddy \
-    ./opt/WorkBuddy/version \
-    ./opt/WorkBuddy/chrome-sandbox \
-    ./opt/WorkBuddy/chrome_crashpad_handler \
-    ./opt/WorkBuddy/chrome_100_percent.pak \
-    ./opt/WorkBuddy/chrome_200_percent.pak \
-    ./opt/WorkBuddy/icudtl.dat \
-    ./opt/WorkBuddy/libEGL.so \
-    ./opt/WorkBuddy/libGLESv2.so \
-    ./opt/WorkBuddy/libffmpeg.so \
-    ./opt/WorkBuddy/libvk_swiftshader.so \
-    ./opt/WorkBuddy/libvulkan.so.1 \
-    ./opt/WorkBuddy/locales \
-    ./opt/WorkBuddy/resources.pak \
-    ./opt/WorkBuddy/snapshot_blob.bin \
-    ./opt/WorkBuddy/v8_context_snapshot.bin \
-    ./opt/WorkBuddy/vk_swiftshader_icd.json \
-    ./opt/WorkBuddy/LICENSE.electron.txt \
-    ./opt/WorkBuddy/LICENSES.chromium.html \
-    ./opt/WorkBuddy/resources/runtime
-
-  local cn_root="${srcdir}/cn-deb-extract/opt/WorkBuddy"
-  local cn_ver
-  cn_ver="$(cat "${cn_root}/version" 2>/dev/null)"
-  # 定制版版本形如 37.10.3-24；要求带修订号，避免 37.10.30 之类误匹配。
-  [[ "${cn_ver}" == "${_electronver}-"* ]] || {
-    printf 'unexpected domestic Electron version: %s\n' "${cn_ver}" >&2
-    return 1
-  }
-  grep -aq 'workbuddyStorage' "${cn_root}/workbuddy" || {
-    printf 'domestic deb Electron lacks the workbuddyStorage binding\n' >&2
-    return 1
-  }
-
-  # 用定制运行时替换官方 electron 二进制及其附属文件。locales 与
-  # resources.pak 属于该定制 build，必须成套替换，不能与官方包混搭。
-  install -Dm755 "${cn_root}/workbuddy" "${srcdir}/workbuddy-app/electron"
-  local _f
-  for _f in chrome-sandbox chrome_crashpad_handler chrome_100_percent.pak \
-    chrome_200_percent.pak icudtl.dat libEGL.so libGLESv2.so libffmpeg.so \
-    libvk_swiftshader.so libvulkan.so.1 resources.pak snapshot_blob.bin \
-    v8_context_snapshot.bin vk_swiftshader_icd.json version \
-    LICENSE.electron.txt LICENSES.chromium.html; do
-    cp -a "${cn_root}/${_f}" "${srcdir}/workbuddy-app/${_f}"
-  done
-  rm -rf "${srcdir}/workbuddy-app/locales"
-  cp -a "${cn_root}/locales" "${srcdir}/workbuddy-app/locales"
-
-  local runtime_dir="${cn_root}/resources/runtime"
-  [[ -x "${runtime_dir}/node/bin/node" && -x "${runtime_dir}/python/bin/python3" ]] || {
-    printf 'session runtimes missing from the domestic deb: %s\n' "${runtime_dir}" >&2
-    return 1
-  }
-  rm -rf "${srcdir}/workbuddy-app/resources/runtime"
-  cp -a "${runtime_dir}" "${srcdir}/workbuddy-app/resources/runtime"
+  # Smoke-test every native component against the runtimes we ship.
+  ELECTRON_RUN_AS_NODE=1 "${srcdir}/app-out/workbuddy" \
+    "${srcdir}/verify-native.cjs" "${srcdir}/app-out"
+  "${srcdir}/app-out/resources/runtime/node/bin/node" \
+    "${srcdir}/verify-native.cjs" "${srcdir}/app-out" --cli
 }
 
 package() {
   install -dm755 "${pkgdir}/opt/workbuddy-international"
-  cp -a "${srcdir}/workbuddy-app/." "${pkgdir}/opt/workbuddy-international/"
+  cp -a "${srcdir}/app-out/." "${pkgdir}/opt/workbuddy-international/"
+  install -Dm755 "${srcdir}/start.sh" \
+    "${pkgdir}/opt/workbuddy-international/start.sh"
 
-  # The helper desktop file written by install.sh embeds the build-time
-  # srcdir in Exec=; point it at the final install location instead.
-  sed -i "s|${srcdir}/workbuddy-app|/opt/workbuddy-international|g" \
-    "${pkgdir}/opt/workbuddy-international/.workbuddy-linux/WorkBuddy AI.desktop" 2>/dev/null || true
-
-  # Desktop entry: named exactly after the app's Wayland app_id ("WorkBuddy AI")
-  # so the task manager associates windows with this entry and its icon.
+  # Named after the window class pinned in start.sh so the task manager
+  # associates windows with this entry and its icon.
   install -Dm644 "${srcdir}/workbuddy-international.desktop" \
-    "${pkgdir}/usr/share/applications/WorkBuddy AI.desktop"
+    "${pkgdir}/usr/share/applications/workbuddy-international.desktop"
 
-  # Icons: theme-integrated hicolor entry plus pixmaps fallback
   install -Dm644 "${srcdir}/workbuddy-intl-256.png" \
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/workbuddy-international.png"
   install -Dm644 "${srcdir}/workbuddy-intl-256.png" \
     "${pkgdir}/usr/share/pixmaps/workbuddy-international.png"
 
-  # Launcher
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/workbuddy-international" <<'LAUNCHER'
-#!/usr/bin/env bash
+#!/bin/sh
 exec /opt/workbuddy-international/start.sh "$@"
 LAUNCHER
 
-  # Licenses / notices
-  install -Dm644 "${srcdir}/LICENSE.port-tool" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.port-tool"
   install -Dm644 "${srcdir}/DISCLAIMER" \
     "${pkgdir}/usr/share/licenses/${pkgname}/DISCLAIMER"
 }
