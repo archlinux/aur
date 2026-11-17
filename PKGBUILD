@@ -1,6 +1,6 @@
 pkgname=samba-util-bin
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and modern GUI for managing Samba."
 arch=('x86_64')
 url="https://github.com/mijocecr/samba-util"
@@ -23,7 +23,7 @@ options=('!debug' '!strip')
 
 source=("https://github.com/mijocecr/samba-util/releases/download/samba-util_v4.3.0/SAMBA-Util.tar.gz")
 
-sha256sums=('5b08be3cbe04465ae0bcb363fa403b5f461862ac0fe9d115c8dbbe57aaabe8ca')
+sha256sums=('5710ac5fee6cfc3f4dfaf21af33a8e2bee8492aae79fdac22a09d0dae5cab40f')
 
 package() {
   # Crear la estructura de destino en /usr/lib
