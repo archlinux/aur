@@ -1,6 +1,6 @@
 # Maintainer: drzoidberg <drzoidberg+aur@cloudblock.dev>
 pkgname=polify-git
-pkgver=1.1.1.r3.gad53004
+pkgver=1.2.0.r0.g955279d
 pkgrel=1
 pkgdesc="Cross-platform music manager with multi-source library, audio fingerprinting, and ID3 tag editing"
 arch=('x86_64' 'aarch64')
