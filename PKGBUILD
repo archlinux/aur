@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur [at] kokakiwi dot com>
 
 pkgname=edgee
-pkgver=0.2.11
+pkgver=0.18.0
 pkgrel=1
 epoch=1
 pkgdesc='AI gateway with token compression for Claude Code, Codex, and more'
@@ -11,8 +11,8 @@ license=('Apache-2.0')
 depends=('libgcc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/edgee-ai/edgee/archive/v$pkgver.tar.gz")
-sha256sums=('5c2760127cd7cc83011dcc8567bdeb8f88c23e699197b8c7bff8307650ce4fc5')
-b2sums=('0c37804f5ed7783142e5ebe6f45a232a4b9cc06274aad0bbd5df08b2867c6778f629a867a5a1af28c791444cb8c7f7f0afc02b485b3a091a3e3d2837b1f94640')
+sha256sums=('753c6c3ca6449e6380836545526578b4c73792c0365c376a253ff91e52d3271a')
+b2sums=('4f72ad94cc3d12bf73ae72106a5dde19473b5349ab0750f0b123bcf468f37ffb63c3ef9d047613e249c25599b55b7e332f2d9fa325845a89bb6ccf378aff5aa3')
 options=('!lto')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
