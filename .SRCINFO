@@ -1,6 +1,6 @@
 pkgbase = dj-usb-tkit-bin
 	pkgdesc = Local-first DJ library manager: export playlists to USB for Pioneer CDJ/XDJ, rekordbox and Engine DJ players, and repair broken USB drives
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/haivala/dj-usb-tkit
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = dj-usb-tkit-bin
 	conflicts = dj-usb-tkit
 	options = !strip
 	options = !debug
-	source = dj-usb-tkit-0.6.2.deb::https://github.com/haivala/dj-usb-tkit/releases/download/v0.6.2/DJ_USB_Tkit_0.6.2_amd64.deb
-	sha256sums = dbf24e3858df807513c6efb3f9c51c626b601a87e38e8762d71cd04179d80be8
+	source = dj-usb-tkit-0.6.3.deb::https://github.com/haivala/dj-usb-tkit/releases/download/v0.6.3/DJ_USB_Tkit_0.6.3_amd64.deb
+	sha256sums = 01f183cce4ca28ab35ec0348dcbfb5186ad1ca2adaafd1fd0ee292d1372ba994
 
 pkgname = dj-usb-tkit-bin

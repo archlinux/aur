@@ -1,7 +1,7 @@
 # Maintainer: Harri Häivälä
 #
 # Template for the AUR package dj-usb-tkit-bin. scripts/aur-release.sh fills
-# in 0.6.2, 1 and dbf24e3858df807513c6efb3f9c51c626b601a87e38e8762d71cd04179d80be8 and writes the result to the AUR clone;
+# in 0.6.3, 1 and 01f183cce4ca28ab35ec0348dcbfb5186ad1ca2adaafd1fd0ee292d1372ba994 and writes the result to the AUR clone;
 # edit this file, not the PKGBUILD there.
 #
 # Repackages the release .deb. The binary links these libraries directly
@@ -9,7 +9,7 @@
 
 pkgname=dj-usb-tkit-bin
 _appname=dj-usb-tkit
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Local-first DJ library manager: export playlists to USB for Pioneer CDJ/XDJ, rekordbox and Engine DJ players, and repair broken USB drives"
 arch=('x86_64')
@@ -31,7 +31,7 @@ provides=("${_appname}")
 conflicts=("${_appname}")
 options=('!strip' '!debug')
 source=("${_appname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/DJ_USB_Tkit_${pkgver}_amd64.deb")
-sha256sums=('dbf24e3858df807513c6efb3f9c51c626b601a87e38e8762d71cd04179d80be8')
+sha256sums=('01f183cce4ca28ab35ec0348dcbfb5186ad1ca2adaafd1fd0ee292d1372ba994')
 
 package() {
   # makepkg has already unpacked the .deb into control/data tarballs.
