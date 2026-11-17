@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=zapfast-bin
-pkgver=0.21.2
+pkgver=0.21.3
 pkgrel=1
 pkgdesc="Fast native WhatsApp client built with Rust and egui"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ options=('!debug' '!strip')
 _repo="https://github.com/crmne/zapfast"
 source_x86_64=("${_repo}/releases/download/v${pkgver}/zapfast-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_repo}/releases/download/v${pkgver}/zapfast-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('1d0f3e8d9a1cff112e556fe0420c397e7a60e1bdd98a66f4f36777d3c1a764ca')
-sha256sums_aarch64=('72da19ac34b3c28c0d8bd203e3c113fd7df5579cc63ed9e7374db8f0450a77d6')
+sha256sums_x86_64=('089dc5a6f567a3427d7bdcdc3d84781397819124b90a749202f6242dfdd259c8')
+sha256sums_aarch64=('606c49773376c44ab941cce24e2ac6897b8131649b5322542e1eb3c5575a29d6')
 
 package() {
   local target
