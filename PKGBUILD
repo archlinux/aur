@@ -1,7 +1,7 @@
 # Maintainer: yobson <aur@yobson.xyz>
 pkgname=stremio-linux-shell
 epoch=1
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A native Linux client for Stremio"
 arch=('x86_64')
@@ -27,7 +27,7 @@ provides=('stremio')
 conflicts=('stremio')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     'stremio.sh')
-sha256sums=('f50859e97a6d8de48f4f182a9f27fc42b40007d9055c8ca6e9767a18ea137cc0'
+sha256sums=('73a9b5b55127da7bc596d4882facde9ff9c3345a25ff67eb31370ab036af85c5'
             '2c92d0aa1d3d7297585e71ce49f92573682d9335190072df3d69d62777633434')
 
 prepare() {
@@ -43,6 +43,8 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export GETTEXT_DIR=target/locale
+    export STREMIO_LOCALEDIR=/usr/share/locale
 
     cargo build --release --frozen --all-features
 }
@@ -58,8 +60,8 @@ package() {
     install -Dm644 "data/com.stremio.Stremio.metainfo.xml" "$pkgdir/usr/share/metainfo/com.stremio.Stremio.metainfo.xml"
     install -Dm644 "data/com.stremio.Stremio.gschema.xml" "$pkgdir/usr/share/glib-2.0/schemas/com.stremio.Stremio.gschema.xml"
     install -Dm644 "data/icons/com.stremio.Stremio.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.stremio.Stremio.svg"
-    install -Dm644 "po/es/LC_MESSAGES/stremio.mo" "$pkgdir/usr/share/locale/es/LC_MESSAGES/stremio.mo"
-    install -Dm644 "po/fr/LC_MESSAGES/stremio.mo" "$pkgdir/usr/share/locale/fr/LC_MESSAGES/stremio.mo"
+    install -Dm644 "target/locale/es/LC_MESSAGES/stremio.mo" "$pkgdir/usr/share/locale/es/LC_MESSAGES/stremio.mo"
+    install -Dm644 "target/locale/fr/LC_MESSAGES/stremio.mo" "$pkgdir/usr/share/locale/fr/LC_MESSAGES/stremio.mo"
 
     sed -i '/^[[:space:]]*DBusActivatable[[:space:]]*=[[:space:]]*true[[:space:]]*$/d' \
         "$pkgdir/usr/share/applications/com.stremio.Stremio.desktop"
