@@ -9,6 +9,12 @@ if [[ -w "${AUTOSTART}" ]]; then
 fi
 
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}/usr/lib/whatpulse/lib"
+
+if [[ "$1" == "--collector" || "$1" == "-collector" ]]; then
+	shift
+	exec -a "$0" /usr/lib/whatpulse/whatpulse-collector "$@"
+fi
+
 until (($# == 0)); do
 	if [[ $1 =~ ^-[^-] ]]; then
 		args+=("-$1")

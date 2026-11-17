@@ -6,7 +6,7 @@
 # Contributor: Pieter Kokx <pieter $at$ kokx $dot$ .nl>
 
 pkgname=whatpulse
-pkgver=6.2.2
+pkgver=7.0
 pkgrel=1
 pkgdesc="Measures your keyboard, mouse, app usage, network traffic and uptime."
 arch=('x86_64')
@@ -19,7 +19,11 @@ depends=(
     hicolor-icon-theme qt6-base qt6-httpserver qt6-websockets qt6-charts qt6-svg qt6-5compat
 )
 makedepends=(imagemagick patchelf)
-optdepends=('libpcap: for capturing network statistics')
+optdepends=(
+    'libpcap: for capturing network statistics'
+    'qt6-wayland: for native Wayland support'
+    'qt6-imageformats: for additional image format support'
+)
 
 source=(
     "whatpulse.desktop"
@@ -28,16 +32,16 @@ source=(
 )
 source_x86_64=("${pkgname}-${pkgver}-amd64.AppImage::https://releases.whatpulse.org/latest/linux/whatpulse-linux-latest_amd64.AppImage")
 
-sha256sums=('5a4a6676a6b513824eeac8a2accd6de9e8bd2bc11b3e2967fa2b2a18d29fa35d'
-            '76cf7a5fc5b7b061733ddaaf7abaf4faf7377e1055c2c363b7d5baf8d3be06a3'
+sha256sums=('1684ff01ea3521a9a0dc3a13454c76a0085135698a602ee5ff80018b485520c8'
+            '4298c2809c78bd35e2640e2a27b4a16794d83008574c9a1fa410ee4d79455c4e'
             'cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619')
-sha256sums_x86_64=('f3fa45001e148926ffa46f48c1804db57455e6e8f0efe2c01d3bc990c80dc5be')
+sha256sums_x86_64=('caaa6eb39c10ee679f1536d991b54ca3318332a7fcdc3674c8aaf4c9a2d3c83d')
 
 prepare() {
     chmod +x "${pkgname}-${pkgver}-amd64.AppImage"
     ./"${pkgname}-${pkgver}-amd64.AppImage" --appimage-extract
     mv squashfs-root sfs
-    find sfs/usr/lib -name "libQt6*.so*" ! -name "*HttpServer*" -delete
+    find sfs/usr/lib -name "libQt6*.so*" -delete
     rm -rf sfs/usr/lib/qt6
     rm -f sfs/usr/lib/libssl.so* sfs/usr/lib/libcrypto.so*
     rm -f sfs/usr/lib/libfreetype.so* sfs/usr/lib/libfontconfig.so*
@@ -46,14 +50,20 @@ prepare() {
     rm -f sfs/usr/lib/libmount.so* sfs/usr/lib/libblkid.so* sfs/usr/lib/libselinux.so*
     rm -f sfs/usr/lib/libdbus*.so*
     rm -f sfs/usr/lib/libsystemd.so*
+    rm -f sfs/usr/lib/libicu*.so*
     patchelf --set-rpath '/usr/lib/whatpulse/lib:/usr/lib/qt6:/usr/lib' sfs/usr/bin/whatpulse
-    find sfs/usr/{lib,plugins} -type f -exec \
+    patchelf --set-rpath '/usr/lib/whatpulse/lib:/usr/lib/qt6:/usr/lib' sfs/usr/bin/whatpulse-collector
+    patchelf --set-rpath '/usr/lib/whatpulse/lib:/usr/lib/qt6:/usr/lib' sfs/usr/bin/crashpad_handler
+    find sfs/usr/lib -type f -exec \
         patchelf --set-rpath '/usr/lib/whatpulse/lib:/usr/lib/qt6:/usr/lib' '{}' + 2>/dev/null || true
 }
 
 package() {
     install -Dm755 whatpulse.sh "${pkgdir}/usr/bin/whatpulse"
     install -Dm755 sfs/usr/bin/whatpulse "${pkgdir}/usr/lib/whatpulse/whatpulse"
+    install -Dm755 sfs/usr/bin/whatpulse-collector "${pkgdir}/usr/lib/whatpulse/whatpulse-collector"
+    install -Dm755 sfs/usr/bin/crashpad_handler "${pkgdir}/usr/lib/whatpulse/crashpad_handler"
+    ln -s /usr/lib/whatpulse/whatpulse-collector "${pkgdir}/usr/bin/whatpulse-collector"
 
     if [ -d "sfs/usr/lib" ]; then
         find sfs/usr/lib -type f -name "*.so*" | while read lib; do
@@ -63,10 +73,6 @@ package() {
             install -Dm644 "$lib" "${pkgdir}/usr/lib/whatpulse/lib/$(basename "$lib")"
         done
     fi
-
-    find sfs/usr/plugins -type f | while read -r plugin; do
-        install -Dm644 "$plugin" "${pkgdir}/usr/lib/whatpulse/plugins/${plugin#sfs/usr/plugins/}"
-    done
 
     install -Dm644 whatpulse.desktop "${pkgdir}/usr/share/applications/whatpulse.desktop"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

@@ -6,3 +6,5 @@ Comment=Track & share your computer usage
 Exec=whatpulse
 Icon=whatpulse
 StartupNotify=true
+StartupWMClass=whatpulse
+Categories=Utility;

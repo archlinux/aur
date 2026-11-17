@@ -1,6 +1,6 @@
 pkgbase = whatpulse
 	pkgdesc = Measures your keyboard, mouse, app usage, network traffic and uptime.
-	pkgver = 6.2.2
+	pkgver = 7.0
 	pkgrel = 1
 	url = https://www.whatpulse.org
 	arch = x86_64
@@ -33,13 +33,15 @@ pkgbase = whatpulse
 	depends = qt6-svg
 	depends = qt6-5compat
 	optdepends = libpcap: for capturing network statistics
+	optdepends = qt6-wayland: for native Wayland support
+	optdepends = qt6-imageformats: for additional image format support
 	source = whatpulse.desktop
 	source = whatpulse.sh
 	source = LICENSE
-	sha256sums = 5a4a6676a6b513824eeac8a2accd6de9e8bd2bc11b3e2967fa2b2a18d29fa35d
-	sha256sums = 76cf7a5fc5b7b061733ddaaf7abaf4faf7377e1055c2c363b7d5baf8d3be06a3
+	sha256sums = 1684ff01ea3521a9a0dc3a13454c76a0085135698a602ee5ff80018b485520c8
+	sha256sums = 4298c2809c78bd35e2640e2a27b4a16794d83008574c9a1fa410ee4d79455c4e
 	sha256sums = cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619
-	source_x86_64 = whatpulse-6.2.2-amd64.AppImage::https://releases.whatpulse.org/latest/linux/whatpulse-linux-latest_amd64.AppImage
-	sha256sums_x86_64 = f3fa45001e148926ffa46f48c1804db57455e6e8f0efe2c01d3bc990c80dc5be
+	source_x86_64 = whatpulse-7.0-amd64.AppImage::https://releases.whatpulse.org/latest/linux/whatpulse-linux-latest_amd64.AppImage
+	sha256sums_x86_64 = caaa6eb39c10ee679f1536d991b54ca3318332a7fcdc3674c8aaf4c9a2d3c83d
 
 pkgname = whatpulse
