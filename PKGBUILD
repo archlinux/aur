@@ -8,8 +8,9 @@ pkgrel=3
 pkgdesc='Fetch all the URLs that the Wayback Machine knows about for a domain'
 arch=('x86_64')
 url="https://github.com/tomnomnom/waybackurls"
-# Upstream declares no license at any commit and ships no license text, so the
-# package claims none rather than asserting a license on the author's behalf.
+# No license is granted upstream at any commit and no license text exists to
+# install, so this names the absence of a grant rather than asserting one.
+license=('LicenseRef-proprietary')
 depends=('glibc')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
