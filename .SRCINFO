@@ -1,6 +1,6 @@
 pkgbase = nsky-gdrive-sync
 	pkgdesc = Bidirectional Google Drive sync with real-time local file watching
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/NSky/gdrive-sync
 	install = gdrive-sync.install
@@ -11,7 +11,7 @@ pkgbase = nsky-gdrive-sync
 	depends = inotify-tools
 	depends = jq
 	depends = systemd
-	source = nsky-gdrive-sync-0.2.0.tar.gz::https://github.com/NSky/gdrive-sync/archive/v0.2.0.tar.gz
-	sha256sums = 1f80c14cf03d9646f16457d66b2a535fa77753d01a6fa8a4c90a1e917a8743e9
+	source = nsky-gdrive-sync-0.2.1.tar.gz::https://github.com/NSky/gdrive-sync/archive/v0.2.1.tar.gz
+	sha256sums = c69124c6f2dc0d5dd0d5c24ed2a843665f7a19729635cb2de1ee09e0a44623c6
 
 pkgname = nsky-gdrive-sync
