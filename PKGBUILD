@@ -1,6 +1,6 @@
 # Maintainer: Ryan Gaudon <aur@gaudon.ca>
 pkgname=cursebreaker-bin
-pkgver=4.9.1
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="A CLI tool for CurseForge/WowInterface addon management (Pre-compiled Linux binary)"
 arch=('x86_64')
