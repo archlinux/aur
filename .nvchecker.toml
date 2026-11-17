@@ -1,0 +1,5 @@
+[waftty-bin]
+source = "github"
+github = "danpozmanter/waftty"
+use_latest_release = true
+prefix = "v"
