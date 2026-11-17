@@ -2,7 +2,7 @@
 
 pkgname=qmtui-bin
 _pkgname=qmtui
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Linux terminal qqmusic player (.NET 10 Native AOT pre-built package)"
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ replaces=('qqmusic-tui' 'qqmusic-tui-bin')
 
 source_x86_64=("${_pkgname}-${pkgver}-linux-x86_64.tar.gz::https://github.com/Viemean/qmtui/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-linux-aarch64.tar.gz::https://github.com/Viemean/qmtui/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('8c891fa65493b96f12c8d5b66abc0d32c83580c2388e4cd6ec061a29a2ba2796')
-sha256sums_aarch64=('7d89a6ded0113393c87c4cf440186654f499203e34f4def3c2befde8d6d52b5b')
+sha256sums_x86_64=('002fb6b5fe77b8b20429fb17f51962c0f8544400b37a74e649c9dc9af2100953')
+sha256sums_aarch64=('9d6fff1740213e057ffe3b3b2c4bacd075091887cae1d72873992f975b8ba715')
 
 package() {
     install -Dm755 "${srcdir}/qmtui" "${pkgdir}/usr/bin/qmtui"
