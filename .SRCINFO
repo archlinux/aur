@@ -1,0 +1,16 @@
+pkgbase = texlive-dirtreex
+	pkgdesc = LaTeX directory-tree rendering package built on TikZ and zref
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/CloudCauldron/dirtreex
+	arch = any
+	license = LPPL-1.3c
+	depends = texlive-bin
+	depends = texlive-latex
+	depends = texlive-latexextra
+	depends = texlive-latexrecommended
+	depends = texlive-pictures
+	source = texlive-dirtreex-1.2.zip::https://mirrors.ctan.org/macros/latex/contrib/dirtreex.zip
+	sha256sums = 5a4393cee3223c1192dede621c421fe899425ecd356ccc77588ca1d7b8009a5c
+
+pkgname = texlive-dirtreex
