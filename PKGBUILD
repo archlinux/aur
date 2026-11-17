@@ -2,7 +2,7 @@
 # X Link Collector — middle-click a tweet: the link is saved and the tab closes
 
 pkgname=x-link-collector
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Middle-click a tweet to save its link and close the tab; a local panel downloads every photo and video"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ optdepends=(
 )
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('00637baa04a23567fe6a38c619eba3c9c011b99a1977c37448b72e685417cdd7')
+sha256sums=('c3b67e449a1f5fe05b7938845f99d7136f062a7eac24bc26c7792f5349a0f789')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver/receiver"
