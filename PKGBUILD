@@ -2,7 +2,7 @@
 # Contributor:  Antonio Rojas <arojas@archlinux.org>
 
 pkgname=noto-fonts-variable-lite
-pkgver=2024.12.01
+pkgver=2026.11.01
 pkgrel=1
 epoch=1
 pkgdesc="Google Noto TTF variable fonts (lite version)"
@@ -12,20 +12,20 @@ license=(custom:SIL)
 optdepends=('noto-fonts-emoji: Emoji characters'
             'noto-fonts-variable-ar: Fonts for Arabic Script')
 provides=(ttf-font noto-fonts noto-fonts-extra)
-conflicts=(noto-fonts noto-fonts-extra)
+conflicts=(noto-fonts noto-fonts-extra noto-fonts-lite)
 _url="https://raw.githubusercontent.com/notofonts/notofonts.github.io/noto-monthly-release-${pkgver}/fonts"
-source=("${_url}/NotoSans/googlefonts/variable/NotoSans-Italic[wdth,wght].ttf"
-        "${_url}/NotoSans/googlefonts/variable/NotoSans[wdth,wght].ttf"
-        "${_url}/NotoSansMono/googlefonts/variable/NotoSansMono[wdth,wght].ttf"
-        "${_url}/NotoSerif/googlefonts/variable/NotoSerif-Italic[wdth,wght].ttf"
-        "${_url}/NotoSerif/googlefonts/variable/NotoSerif[wdth,wght].ttf"
+source=("${_url}/NotoSans/googlefonts/variable-ttf/NotoSans-Italic[wdth,wght].ttf"
+        "${_url}/NotoSans/googlefonts/variable-ttf/NotoSans[wdth,wght].ttf"
+        "${_url}/NotoSansMono/googlefonts/variable-ttf/NotoSansMono[wdth,wght].ttf"
+        "${_url}/NotoSerif/googlefonts/variable-ttf/NotoSerif-Italic[wdth,wght].ttf"
+        "${_url}/NotoSerif/googlefonts/variable-ttf/NotoSerif[wdth,wght].ttf"
         "${_url}/LICENSE"
         {46,66}-noto-{mono,serif,sans}.conf)
-sha256sums=('f2ad4b3ac7b7b04d17018d7b83ee4817f8e8e2a096b8549590574b58913b59ae'
-            'e0890ec6da515d47b9d7cdb8b4ded1d9255fc4e5254ae03f9a579da6cb354717'
-            '2cb2adb378a8f574213e23df697050b83c54c27df465a2015552740b2769a081'
-            'e87acbc6c0efd0d9a20d6a8cbbda2b266c14be3a3a6f5af8ec9d7b2460570ad1'
-            '5a49f655b847e95a499f9f5c6b1b0695d25fe38af970302ee38cd65874d7f861'
+sha256sums=('58e6e0ebd1931b29a365aa2d3e2ee9a9e831a3af7cf3ad1462d4e72154f0b291'
+            'bfb7bb691513f12e734dc346c03a03f784912432d7e3fa8e56efcf906fe86b3d'
+            'c69a3363788744927cc9f94d83a89ab5ba92c3ec9a977ce7a285bab0d593b19c'
+            'e9342c2b2debeee282a945e6dffde94612edd7e7b70fba9463abdb6e658ec724'
+            '4d8e6761424656867019081a1a01336f3cb086982682698714054fc33f782713'
             'f2095b08bed08b23a6fe26112fcd679a2bee3f002eef077eb05d215ed1051bd8'
             'f5c09b37280d7569b6c99a78511639be4ae25b8c5406464422fe0421fe13a884'
             'c94368b24506770767d003e5bcba589a8e402e489c240ee52453bf3ac7e9b5fa'
