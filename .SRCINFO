@@ -1,6 +1,6 @@
 pkgbase = gaze-gui-bin
 	pkgdesc = GTK4/Adwaita GUI for Gaze
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://gaze.gundulabs.com
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = gaze-gui-bin
 	depends = gst-plugins-good
 	depends = gtk4
 	depends = libadwaita
-	depends = opencv<5.1
-	depends = opencv>=5.0
-	provides = gaze-gui=0.5.1-1
+	depends = opencv<5.2
+	depends = opencv>=5.1
+	provides = gaze-gui=0.5.2-1
 	conflicts = gaze-gui
-	source = gaze-gui-0.5.1-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gui-0.5.1-1-x86_64.pkg.tar.zst
-	sha256sums = 93b96cb3401b99bec44afde2b7c42236b5ae629904ffeac262aa1f38e8038dcf
+	source = gaze-gui-0.5.2-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gui-0.5.2-1-x86_64.pkg.tar.zst
+	sha256sums = 4ce11d7e3af7bb9268896c1be74be58a73b7eb2edd13195d3df1520a180453f5
 
 pkgname = gaze-gui-bin
