@@ -2,7 +2,7 @@
 pkgname=stremio-linux-shell
 epoch=1
 pkgver=1.3.0
-pkgrel=1
+pkgrel=3
 pkgdesc="A native Linux client for Stremio"
 arch=('x86_64')
 url="https://github.com/Stremio/$pkgname"
@@ -28,10 +28,17 @@ conflicts=('stremio')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     'stremio.sh')
 sha256sums=('73a9b5b55127da7bc596d4882facde9ff9c3345a25ff67eb31370ab036af85c5'
-            '2c92d0aa1d3d7297585e71ce49f92573682d9335190072df3d69d62777633434')
+            'ebaa519b944b4524284b252430dd822f579e0db5b0a52d1decd9c4b0788075b7')
 
 prepare() {
     cd "$srcdir/$pkgname-${pkgver//_/-}"
+
+    # Allow the self-hosted UI selected by stremio.sh to use the streaming server.
+    sed -i 's@^            process.env.NO_CORS ||@            req.headers.origin === "http://localhost:8080" || process.env.NO_CORS ||@' data/server.js
+    if ! grep -Fq 'req.headers.origin === "http://localhost:8080" || process.env.NO_CORS ||' data/server.js; then
+        error "Could not add the self-hosted stremio-web origin to the streaming server"
+        return 1
+    fi
 
     export RUSTUP_TOOLCHAIN=stable
 
@@ -59,6 +66,7 @@ package() {
     install -Dm644 "data/com.stremio.Stremio.desktop" "$pkgdir/usr/share/applications/com.stremio.Stremio.desktop"
     install -Dm644 "data/com.stremio.Stremio.metainfo.xml" "$pkgdir/usr/share/metainfo/com.stremio.Stremio.metainfo.xml"
     install -Dm644 "data/com.stremio.Stremio.gschema.xml" "$pkgdir/usr/share/glib-2.0/schemas/com.stremio.Stremio.gschema.xml"
+    glib-compile-schemas --strict --targetdir="$pkgdir/usr/lib/stremio" "$pkgdir/usr/share/glib-2.0/schemas"
     install -Dm644 "data/icons/com.stremio.Stremio.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.stremio.Stremio.svg"
     install -Dm644 "target/locale/es/LC_MESSAGES/stremio.mo" "$pkgdir/usr/share/locale/es/LC_MESSAGES/stremio.mo"
     install -Dm644 "target/locale/fr/LC_MESSAGES/stremio.mo" "$pkgdir/usr/share/locale/fr/LC_MESSAGES/stremio.mo"

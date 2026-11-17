@@ -20,7 +20,8 @@ if command -v stremio-web >/dev/null 2>&1; then
     URL_ARG="--url http://localhost:8080"
 fi
 
-/usr/lib/stremio/stremio $URL_ARG "$@"
+# Older builds can leave a user-local schema that shadows the system schema.
+GSETTINGS_SCHEMA_DIR=/usr/lib/stremio /usr/lib/stremio/stremio $URL_ARG "$@"
 
 if [ -n "$STREMIO_WEB_PID" ]; then
     kill $STREMIO_WEB_PID

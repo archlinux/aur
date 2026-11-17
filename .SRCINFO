@@ -1,7 +1,7 @@
 pkgbase = stremio-linux-shell
 	pkgdesc = A native Linux client for Stremio
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/Stremio/stremio-linux-shell
 	arch = x86_64
@@ -23,6 +23,6 @@ pkgbase = stremio-linux-shell
 	source = stremio-linux-shell-1.3.0.tar.gz::https://github.com/Stremio/stremio-linux-shell/archive/refs/tags/v1.3.0.tar.gz
 	source = stremio.sh
 	sha256sums = 73a9b5b55127da7bc596d4882facde9ff9c3345a25ff67eb31370ab036af85c5
-	sha256sums = 2c92d0aa1d3d7297585e71ce49f92573682d9335190072df3d69d62777633434
+	sha256sums = ebaa519b944b4524284b252430dd822f579e0db5b0a52d1decd9c4b0788075b7
 
 pkgname = stremio-linux-shell
