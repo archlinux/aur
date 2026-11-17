@@ -1,15 +1,15 @@
 pkgbase = foxguard
 	pkgdesc = Security scanner as fast as a linter. 170+ built-in rules, 10 languages, sub-second scans
-	pkgver = 0.14.1
+	pkgver = 0.14.2
 	pkgrel = 1
-	url = https://github.com/PwnKit-Labs/foxguard
+	url = https://github.com/0sec-labs/foxguard
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
 	options = !lto
-	source = foxguard::git+https://github.com/PwnKit-Labs/foxguard.git
+	source = foxguard::git+https://github.com/0sec-labs/foxguard.git
 	sha256sums = SKIP
 
 pkgname = foxguard

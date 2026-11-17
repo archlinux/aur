@@ -1,15 +1,15 @@
 # Maintainer: Benny <zuiden@ilorentz.org>
 pkgname=foxguard
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc='Security scanner as fast as a linter. 170+ built-in rules, 10 languages, sub-second scans'
 arch=('x86_64')
-url='https://github.com/PwnKit-Labs/foxguard'
+url='https://github.com/0sec-labs/foxguard'
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 options=('!lto')
-source=("$pkgname::git+https://github.com/PwnKit-Labs/foxguard.git")
+source=("$pkgname::git+https://github.com/0sec-labs/foxguard.git")
 sha256sums=('SKIP')
 
 pkgver() {
