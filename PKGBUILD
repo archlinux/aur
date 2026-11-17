@@ -2,17 +2,26 @@
 
 pkgbase=sdrmm
 pkgname=(sdrmm sdrmm-app)
-pkgver=2.4.3
-pkgrel=3
+pkgver=2.4.4
+pkgrel=1
 pkgdesc="Modular, client-server software-defined radio receiver"
 arch=('x86_64' 'aarch64')
 url="https://sdrmm.com"
 license=('AGPL-3.0-or-later')
-# rust: 1.99 per rust-toolchain.toml; clang/libclang: bindgen for ffmpeg-sys and webkit;
-# nasm: FFmpeg's x86 kernels; cmake: fdk-aac and opusic-sys (vendored libopus);
-# python: scripts/build-media.py; the GTK stack is for the Tauri desktop app only.
-makedepends=('rust' 'clang' 'cmake' 'nasm' 'pkgconf' 'python'
-             'cairo' 'gdk-pixbuf2' 'gtk3' 'librsvg' 'libsoup3' 'pango' 'webkit2gtk-4.1')
+# rust: 1.99 per rust-toolchain.toml; clang/libclang: bindgen for ffmpeg-sys;
+# nasm: FFmpeg's x86 kernels; cmake+ninja: fdk-aac, opusic-sys (vendored libopus) and
+# cef-dll-sys's libcef_dll_wrapper (its cmake generator is Ninja); python:
+# scripts/build-media.py. The GTK/WebKit stack that 2.4.3 needed for Tauri is gone in
+# 2.4.4 (the desktop app is CEF now, Cargo.lock has no tauri/gtk/webkit2gtk crate).
+makedepends=('rust' 'clang' 'cmake' 'ninja' 'nasm' 'pkgconf' 'python')
+# check() runs ldd on the desktop binary, whose vendored libcef.so links the system Chromium
+# runtime (see package_sdrmm-app). makepkg --syncdeps only installs the global depends and
+# makedepends/checkdepends, never the per-package depends of a split package, so without this
+# the check runs on a chroot that has none of those libraries.
+checkdepends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'glib2'
+              'libcups' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext'
+              'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa' 'nspr' 'nss' 'pango'
+              'systemd-libs')
 # The private media libraries ship once, in sdrmm, and sdrmm-app depends on it: both binaries
 # carry $ORIGIN/../lib/sdrmm in their DT_RPATH, so one directory serves both and the desktop
 # package does not duplicate 11 MB of FFmpeg.
@@ -44,10 +53,26 @@ source=("$pkgbase-$pkgver-src.tar.gz::https://github.com/Newspicel/sdrmm/release
         "ffmpeg-$_ffmpegver.tar.xz::https://fossies.org/linux/misc/ffmpeg-$_ffmpegver.tar.xz"
         "fdk-aac-$_fdkver.tar.gz::https://github.com/mstorsjo/fdk-aac/archive/refs/tags/v$_fdkver.tar.gz"
         'sdrmm.service')
-sha256sums=('393c0ca6659a89812b992547406994bbb2b3caed48113de389e4b42344737c03'
+sha256sums=('d90b9d5cb4a665cf9f0125071652368ceb0a57225b0fb784bb207cedb7628b30'
             '8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e'
             'e25671cd96b10bad896aa42ab91a695a9e573395262baed4e4a2ff178d6a3a78'
             'e98577de4b5d4112fd2de527c73467efe6733b3dbca8f3195df239897b4070ae')
+
+# cef-dll-sys copies the fetched CEF runtime (libcef.so, *.pak, icudtl.dat, locales/) into what
+# it takes to be the target directory: its build script walks three levels up from OUT_DIR,
+# which under cargo's current layout (build/<pkg>/<hash>/out) resolves to target/release/build
+# instead of target/release (the crate still assumes the older build/<pkg>-<hash>/out). Probe
+# both, keyed on the icudtl.dat marker that apps/desktop/src/paths.rs itself uses.
+cef_runtime_dir() {
+    local cand
+    for cand in target/release target/release/build; do
+        if [[ -f $cand/icudtl.dat ]]; then
+            printf '%s\n' "$cand"
+            return 0
+        fi
+    done
+    return 1
+}
 
 prepare() {
     cd "$pkgbase-$pkgver-src"
@@ -97,7 +122,35 @@ check() {
     done
     install -d "$tree/usr/lib/sdrmm"
     cp -a "$srcdir/media/lib/"*.so* "$tree/usr/lib/sdrmm/"
-    local resolved missing
+    # The desktop app also links vendored Chromium: cef-dll-sys copies the whole CEF runtime
+    # next to the "main binary", but the directory it computes is OUT_DIR/../../.. and under
+    # cargo's current layout (build/<pkg>/<hash>/out) that is target/release/build, not
+    # target/release — the crate still assumes the older build/<pkg>-<hash>/out. Probe both,
+    # keyed on the icudtl.dat marker the app itself looks for, and stage it exactly like
+    # package_sdrmm-app installs it, or ldd cannot resolve libcef.so out of
+    # /usr/lib/sdrmm-app (DT_RPATH $ORIGIN/../lib/sdrmm-app). The file filter mirrors
+    # upstream's xtask/release/src/desktop/stage.rs is_runtime(): *.pak/*.dat/*.bin,
+    # *.json (vk_swiftshader_icd.json), CREDITS.html and the .so files, but neither
+    # archive.json (bookkeeping) nor chrome-sandbox (upstream excludes it too).
+    local cef; cef=$(cef_runtime_dir) || {
+        echo 'sdrmm: the CEF runtime (icudtl.dat) is not under target/release[-/build]' >&2
+        rm -rf "$tree"
+        return 1
+    }
+    install -d "$tree/usr/lib/sdrmm-app"
+    cp -a "$cef/locales" "$tree/usr/lib/sdrmm-app/"
+    local cef_path cef_name
+    for cef_path in "$cef"/*; do
+        cef_name=${cef_path##*/}
+        [[ -f $cef_path ]] || continue
+        case $cef_name in
+            archive.json) continue ;; # cef-dll-sys bookkeeping, not a runtime file
+            *.pak|*.dat|*.bin|*.json|CREDITS.html|*.so|*.so.*)
+                cp -a "$cef_path" "$tree/usr/lib/sdrmm-app/" ;;
+        esac
+    done
+    install -Dm755 target/release/sdrmm-desktop-helper "$tree/usr/lib/sdrmm-app/sdrmm-desktop-helper"
+    local resolved missing resolved_cef
     for bin in sdrmm sdrmm-desktop; do
         resolved=$(ldd "$tree/usr/bin/$bin" | grep -E 'lib(avcodec|avformat|swresample|swscale)\.so')
         missing=$(ldd "$tree/usr/bin/$bin" | grep 'not found' || true)
@@ -110,6 +163,14 @@ check() {
             printf '%s\n' "the media libraries of $bin did not resolve from /usr/lib/sdrmm:" "$resolved" >&2
             rm -rf "$tree"
             return 1
+        fi
+        if [[ $bin == sdrmm-desktop ]]; then
+            resolved_cef=$(ldd "$tree/usr/bin/$bin" | grep 'libcef\.so' || true)
+            if ! grep -q "lib/sdrmm-app/libcef" <<< "$resolved_cef"; then
+                printf '%s\n' "libcef of $bin did not resolve from /usr/lib/sdrmm-app:" "$resolved_cef" >&2
+                rm -rf "$tree"
+                return 1
+            fi
         fi
     done
     rm -rf "$tree"
@@ -134,7 +195,13 @@ package_sdrmm() {
 
 package_sdrmm-app() {
     pkgdesc="Modular, client-server software-defined radio receiver (desktop app)"
-    depends=('cairo' 'dbus' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libsoup3' 'sdrmm' 'webkit2gtk-4.1')
+    # libcef.so is vendored but links the system Chromium runtime deps (readelf -d on CEF
+    # 156.0.26): nss/nspr, at-spi2-core, libcups, the X libraries, libgbm, libxkbcommon,
+    # libudev (systemd-libs), alsa-lib and expat. They must be declared, or the app fails
+    # at start-up and check()'s ldd assertion trips on a headless build host.
+    depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'glibc'
+             'libcups' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes'
+             'libxkbcommon' 'libxrandr' 'mesa' 'nspr' 'nss' 'pango' 'sdrmm' 'systemd-libs')
     optdepends=('soapysdr: radios through SoapySDR modules'
                 'libsdrplay: SDRplay radios (SDRplay API, dlopened)'
                 'vulkan-icd-loader: GPU FFT (dlopened)')
@@ -147,6 +214,32 @@ package_sdrmm-app() {
     install -d "$pkgdir/usr/share/applications"
     sed -e 's|{{exec}}|sdrmm-app|g' -e 's|{{icon}}|dev.newspicel.sdrmm|g' \
         packaging/linux/sdrmm-app.desktop > "$pkgdir/usr/share/applications/sdrmm-app.desktop"
+    # Vendored Chromium runtime: cef-dll-sys downloads CEF at build time and copies the runtime
+    # files into the directory it computes for the main binary (with cargo's current layout that
+    # is target/release/build, see cef_runtime_dir). The desktop binary locates them through
+    # DT_RPATH $ORIGIN/../lib/sdrmm-app — upstream's build.rs and src/paths.rs explicitly expect
+    # Linux packages to install the runtime there (found by the icudtl.dat marker, with locales/
+    # and the subprocess helper inside), the same set its own staging
+    # (xtask/release/src/desktop/stage.rs) ships. Without this the app fails to start:
+    # libcef.so => not found.
+    local cef; cef=$(cef_runtime_dir) || {
+        echo 'sdrmm: the CEF runtime (icudtl.dat) is not under target/release[-/build]' >&2
+        return 1
+    }
+    install -d "$pkgdir/usr/lib/sdrmm-app"
+    cp -a "$cef/locales" "$pkgdir/usr/lib/sdrmm-app/"
+    local cef_path cef_name
+    for cef_path in "$cef"/*; do
+        cef_name=${cef_path##*/}
+        [[ -f $cef_path ]] || continue
+        case $cef_name in
+            archive.json) continue ;; # cef-dll-sys bookkeeping, not a runtime file
+            *.pak|*.dat|*.bin|*.json|CREDITS.html|*.so|*.so.*)
+                cp -a "$cef_path" "$pkgdir/usr/lib/sdrmm-app/" ;;
+        esac
+    done
+    install -Dm755 target/release/sdrmm-desktop-helper "$pkgdir/usr/lib/sdrmm-app/sdrmm-desktop-helper"
+    install -Dm644 "$cef/CREDITS.html" -t "$pkgdir/usr/share/licenses/sdrmm-app/"
     install -Dm644 LICENSE THIRD_PARTY_NOTICES.md -t "$pkgdir/usr/share/licenses/sdrmm-app/"
 }
 
