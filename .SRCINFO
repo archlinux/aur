@@ -1,6 +1,6 @@
 pkgbase = alchitry-labs-bin
 	pkgdesc = Alchitry Labs - The Easiest Way to Program FPGAs
-	pkgver = 2.0.57
+	pkgver = 2.0.63
 	pkgrel = 1
 	url = https://alchitry.com/alchitry-labs
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = alchitry-labs-bin
 	provides = alchitry-labs
 	conflicts = alchitry-labs
 	options = !strip
-	source = alchitry-labs-bin-2.0.57.tar.gz::https://github.com/alchitry/Alchitry-Labs-V2/releases/download/2.0.57/alchitry-labs-2.0.57-linux-amd64.tar.gz
-	sha256sums = 4faf7a8edbb38e678b3c13e5f53e65a7cd6173f231439d857f33f9e4a8855c16
+	source = alchitry-labs-bin-2.0.63.tar.gz::https://github.com/alchitry/Alchitry-Labs-V2/releases/download/2.0.63/alchitry-labs-2.0.63-linux-amd64.tar.gz
+	sha256sums = dcd0f5311421b70bdf5f1b42dfc972c5579103eb5e4037357c98dbb6f4c94210
 
 pkgname = alchitry-labs-bin
