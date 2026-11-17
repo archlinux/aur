@@ -3,7 +3,7 @@
 
 pkgname=noto-fonts-variable-lite
 pkgver=2026.11.01
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Google Noto TTF variable fonts (lite version)"
 arch=(any)
@@ -14,18 +14,18 @@ optdepends=('noto-fonts-emoji: Emoji characters'
 provides=(ttf-font noto-fonts noto-fonts-extra)
 conflicts=(noto-fonts noto-fonts-extra noto-fonts-lite)
 _url="https://raw.githubusercontent.com/notofonts/notofonts.github.io/noto-monthly-release-${pkgver}/fonts"
-source=("${_url}/NotoSans/googlefonts/variable-ttf/NotoSans-Italic[wdth,wght].ttf"
-        "${_url}/NotoSans/googlefonts/variable-ttf/NotoSans[wdth,wght].ttf"
-        "${_url}/NotoSansMono/googlefonts/variable-ttf/NotoSansMono[wdth,wght].ttf"
-        "${_url}/NotoSerif/googlefonts/variable-ttf/NotoSerif-Italic[wdth,wght].ttf"
-        "${_url}/NotoSerif/googlefonts/variable-ttf/NotoSerif[wdth,wght].ttf"
+source=("${_url}/NotoSans/unhinted/variable-ttf/NotoSans-Italic[wdth,wght].ttf"
+        "${_url}/NotoSans/unhinted/variable-ttf/NotoSans[wdth,wght].ttf"
+        "${_url}/NotoSansMono/unhinted/variable-ttf/NotoSansMono[wdth,wght].ttf"
+        "${_url}/NotoSerif/unhinted/variable-ttf/NotoSerif-Italic[wdth,wght].ttf"
+        "${_url}/NotoSerif/unhinted/variable-ttf/NotoSerif[wdth,wght].ttf"
         "${_url}/LICENSE"
         {46,66}-noto-{mono,serif,sans}.conf)
-sha256sums=('58e6e0ebd1931b29a365aa2d3e2ee9a9e831a3af7cf3ad1462d4e72154f0b291'
-            'bfb7bb691513f12e734dc346c03a03f784912432d7e3fa8e56efcf906fe86b3d'
-            'c69a3363788744927cc9f94d83a89ab5ba92c3ec9a977ce7a285bab0d593b19c'
-            'e9342c2b2debeee282a945e6dffde94612edd7e7b70fba9463abdb6e658ec724'
-            '4d8e6761424656867019081a1a01336f3cb086982682698714054fc33f782713'
+sha256sums=('0c9c7620381d710ac16269b1f1756f9ee05fa4c3bf7293ff04ef6723fcddbe9f'
+            '511cc04b442ffcc3b24d65c2cc780bdffaf482b20ba0aebdc8f27b37017ff0f5'
+            '04b1bfffc598114f998c60f313f7a64df6c911ecfed47a24e27f03b1df34bf66'
+            'e5c3ade5b59b3af8c48c24915580cab99f083bd728a81c343741fc09a0c76c9f'
+            '8918809882ffe61eb32baf3f4b3420fda6c022f2219b1b0272755d70ecabc7de'
             'f2095b08bed08b23a6fe26112fcd679a2bee3f002eef077eb05d215ed1051bd8'
             'f5c09b37280d7569b6c99a78511639be4ae25b8c5406464422fe0421fe13a884'
             'c94368b24506770767d003e5bcba589a8e402e489c240ee52453bf3ac7e9b5fa'
