@@ -1,8 +1,8 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: Garrett Stewart <zero@gr-p.com>
 pkgname=deadsync-git
 pkgdesc='ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sync (git)'
 url='https://github.com/pnn64/deadsync'
-license=('MIT')
+license=('GPL-3.0-only')
 arch=('x86_64' 'aarch64')
 provides=('deadsync')
 conflicts=('deadsync' 'deadsync-bin')
@@ -25,7 +25,7 @@ makedepends=(
 options=('!lto' '!debug' '!strip')
 install="${pkgname}.install"
 
-pkgver=0.4.2004.r48.g5f7a032    # placeholder — always overwritten by pkgver()
+pkgver=0.6.0.r2.g85a4b85    # placeholder — always overwritten by pkgver()
 pkgrel=1
 
 source=("${pkgname}::git+https://github.com/pnn64/deadsync.git")
