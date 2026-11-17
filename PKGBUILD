@@ -4,7 +4,7 @@
 _npmname=surge
 
 pkgname=surge.sh
-pkgver=0.57.0
+pkgver=0.57.1
 pkgrel=1
 pkgdesc="Publish web apps to a CDN with a single command and no setup required."
 
@@ -17,7 +17,7 @@ options=('!debug')
 source=("${_npmname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
         "LICENSE")
 noextract=("${_npmname}-${pkgver}.tgz")
-sha256sums=('0b4052491488542a86829ad46d58dd684c7ee32f5f6340c46b0093af8a7eb38b'
+sha256sums=('8d02a5a27536faa1d0bf771c3efbb3fe08f101209dc4dea72f741759e0f018c3'
             '02d2eebbd299491b3cc3c6c9186bf2fb325eabc712cfc42e3ae64d99e798cbc9')
 
 latestver() {
