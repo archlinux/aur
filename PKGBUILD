@@ -2,7 +2,7 @@
 pkgname=lotti-bin
 _pkgname=Lotti
 _debname="com.matthiasn.${pkgname%-bin}"
-pkgver=1.1.102+4492
+pkgver=1.1.105+4495
 pkgrel=1
 pkgdesc="A private logbook with a staff of personal AI assistants. Agents read what you record and propose what to do next — you approve the changes. End-to-end encrypted sync between your own devices — servers only ever see ciphertext. Local AI optional."
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/${pkgver}/linux.x64.tar.gz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bcf4c44127529b89ad102c410a231ae1e73c434ff15f414b9c93448cbd3b603a'
+sha256sums=('3bf220dc3b2d5f5394892ad751638376091acf0c3c44844ece8d4d1416cee3e6'
             'd7002fa1a9ae60749490e982fa8a4f4622f7381b02559f5b014df033c0773a3c')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
