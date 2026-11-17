@@ -3,7 +3,7 @@
 # Linux release tarball so that paru/pacman can manage it.
 
 pkgname=suzuri-bin
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='Writing environment built on Zed: Obsidian-style live preview, Typst/LaTeX preview, PDF pane'
 arch=('x86_64' 'aarch64')
@@ -41,8 +41,8 @@ conflicts=('suzuri' 'suzuri-git')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/suzuri-v${pkgver}/suzuri-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/suzuri-v${pkgver}/suzuri-linux-aarch64.tar.gz")
-sha256sums_x86_64=('215cb5adb5c79691cf97561927840d7ebb2d9277c26c1c05518191dcdf83ea52')
-sha256sums_aarch64=('2102ecc2b5c0073a439d06d1eb7674d37deac982729a83b6fd4e87916870c4a7')
+sha256sums_x86_64=('6e5dbc9e06db18b66567d2562659e20257fe84a9892411b56876a9c9747654ba')
+sha256sums_aarch64=('06be84a7444871489643e0fc9efdc0c9a60f679427d2e3a372e93c219377facc')
 
 package() {
   cd 'suzuri.app'
