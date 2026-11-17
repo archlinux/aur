@@ -1,6 +1,6 @@
 pkgbase = zource
 	pkgdesc = 2D radial tree and 3D rotating bubble repository visualizer for Kitty, Ghostty, Foot, and Wayland
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/chrisfair/zource
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = zource
 	optdepends = ffmpeg: Encode headless PPM frame streams to MP4/WebM
 	provides = zource
 	conflicts = zource
-	source = zource-0.1.1.tar.gz::https://github.com/chrisfair/zource/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = dd09814f61987eaeef794042166524d69b1cf674afbaa8f59007cd2774fff1aa
+	source = zource-0.1.2.tar.gz::https://github.com/chrisfair/zource/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 587b05f197ead115565004f654bb1645796e62e04e8c9cbc5aebda49a2f52136
 
 pkgname = zource
