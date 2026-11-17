@@ -165,5 +165,5 @@ package() {
     #---------------- DESKTOP + LAUNCHER
     install -Dm644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/opt/${_pkgname}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
