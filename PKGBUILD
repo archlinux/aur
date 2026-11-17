@@ -2,8 +2,8 @@
 
 _pkgname=hc-tui
 pkgname=hc-tui-bin
-pkgver=0.1.11
-pkgrel=2
+pkgver=0.1.12
+pkgrel=1
 pkgdesc="Terminal UI for herdr-core (hc): sidebar with live agent status, tabs, splits, local or over SSH (unofficial)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/followcat/hc-tui"
@@ -21,8 +21,8 @@ source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/followcat/$_
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::https://github.com/followcat/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64-unknown-linux-musl.tar.gz")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
             '4badbab5f95176783601d5f44a05b9a2c36e9cefd6d3b252c9591d38b0b230cb')
-sha256sums_x86_64=('ef0f9981db046b3687066024a402f823ae8800d6b65f5c905e6a72924cea32ce')
-sha256sums_aarch64=('f568b787f10738595932d3d6b2eb1f906a6f61b3e9644b2288724089d50d9e45')
+sha256sums_x86_64=('d1907a3be0d2ef0f39361f6ca70b21a7549bd0490d9593da021ad9be6b7d301a')
+sha256sums_aarch64=('e85bf70e18626457dc5e6e1d20d60a10c4801c0b6a5e777940027d17f7be3c5c')
 
 package() {
   cd "$srcdir"
