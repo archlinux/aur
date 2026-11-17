@@ -4,7 +4,7 @@
 
 pkgname=freegish-git
 _pkgname=freegish
-pkgver=1.60.409.7403066
+pkgver=1.60.413.9c0163a
 pkgrel=1
 pkgdesc="Free version of gish, a physics platformer"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ provides=('freegish')
 conflicts=('freegish')
 install=freegish.install
 
-source=("git+https://github.com/jose1711/${_pkgname}#branch=fix-modern-build")
+source=("git+https://github.com/freegish/freegish")
 
 md5sums=('SKIP')
 

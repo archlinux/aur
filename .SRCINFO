@@ -1,6 +1,6 @@
 pkgbase = freegish-git
 	pkgdesc = Free version of gish, a physics platformer
-	pkgver = 1.60.409.7403066
+	pkgver = 1.60.413.9c0163a
 	pkgrel = 1
 	url = https://github.com/freegish/freegish
 	install = freegish.install
@@ -18,7 +18,7 @@ pkgbase = freegish-git
 	depends = hicolor-icon-theme
 	provides = freegish
 	conflicts = freegish
-	source = git+https://github.com/jose1711/freegish#branch=fix-modern-build
+	source = git+https://github.com/freegish/freegish
 	md5sums = SKIP
 
 pkgname = freegish-git
