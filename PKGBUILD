@@ -3,7 +3,7 @@
 
 _pkgname=gpsoauth
 pkgname=python-$_pkgname
-pkgver=3.0.0 # renovate: datasource=github-tags depName=simon-weber/gpsoauth
+pkgver=3.0.1 # renovate: datasource=github-tags depName=simon-weber/gpsoauth
 pkgrel=1
 pkgdesc="A python client library for Google Play Services OAuth."
 url="https://github.com/simon-weber/gpsoauth"
@@ -13,7 +13,7 @@ checkdepends=('python-pytest')
 license=('MIT')
 arch=('any')
 source=("${_pkgname}-$pkgver.tar.gz::https://github.com/simon-weber/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('a03990c00ff794684eac0cd294267f8f36495a7db418300f2e2e6b0cf7fadb69')
+sha256sums=('d7b1b9003701ebf212f480225acb9305e52ce130b90ea43f2b320459e04d3eb3')
 
 build() {
   cd "${_pkgname}-${pkgver}"
