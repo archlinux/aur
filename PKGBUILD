@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=claude-loom-bin
-_pkgname=Loom
-pkgver=0.5.12
+_pkgname=Claude-Loom
+pkgver=0.6.0
 _electronversion=45
 pkgrel=1
 pkgdesc="Graphical shell for Claude Code CLI, Electron."
@@ -23,7 +23,7 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('4be7e019dee207c56ad53c2b1d8f76cd9a8e1385e26157e3421d1cb1b375b25c'
+sha256sums=('a1076083794cf847f1c8a8d07bc3ac719985e606f35bfebd92f9f28a8f30bdb3'
             '411acb0f56828c35f9993467a27bd069a7b62607a1fb9edfdd4ab1d2a4396819'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
