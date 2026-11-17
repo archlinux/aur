@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=datazen-bin
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Lightweight, open-source AI database client"
 arch=('x86_64')
@@ -33,10 +33,8 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/flyxl/datazen/v${pkgver}/LICENSE"
 )
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=(
-    'f02a9768f244c50ba67cd191adcc2fa831ba41b35534e9a0232e7c29553adfae'
-    'd8369d4fd80887d45cd647bb67f2fbf4c500c516745b96444fc07d814fe48209'
-)
+sha256sums=('dc4d39a7e69d591aefea3f0697aa8c1df1f9759e3db952e9620aa473a26b8e5e'
+            'd8369d4fd80887d45cd647bb67f2fbf4c500c516745b96444fc07d814fe48209')
 
 prepare() {
     rm -rf "${srcdir}/debroot"
@@ -51,6 +49,9 @@ package() {
     cd "${srcdir}/debroot"
 
     cp -a usr/. "${pkgdir}/usr/"
+
+    # 0.3.0 renamed the binary to datazen_desktop; keep the old command.
+    ln -s datazen_desktop "${pkgdir}/usr/bin/datazen"
 
     # Upstream leaves Categories empty, which hides the app from categorized
     # desktop menus. Keep the vendor entry otherwise unchanged.
