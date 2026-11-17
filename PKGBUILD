@@ -20,5 +20,4 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  rm "$pkgdir/usr/share/applications/dxirc-qt.desktop"
 }
