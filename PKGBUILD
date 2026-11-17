@@ -2,7 +2,7 @@
 pkgname=rustconn-ru
 _pkgname=rustconn
 _app_id=io.github.zbndev.RustConnRu
-pkgver=0.24.11
+pkgver=0.25.2
 pkgrel=1
 # A new translation of the same pkgver needs a new fork tag and pkgrel.
 _tag="v${pkgver}-ru.1"
@@ -65,7 +65,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=('rustconn' 'rustconn-appimage' 'rustconn-bin')
 
 source=("RustConn-${_tag#v}.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('73e59109ecc8b41da5fd2283050afb67cee26724ca092138dd2c0990b486faf6')
+sha256sums=('17ae0fff7c3e47dcbafc8d1902e1dc35fe0a6f2b4081c5d04f3eb7e7a69b9616')
 
 prepare() {
   cd "$_srcdir"
