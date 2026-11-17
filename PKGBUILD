@@ -3,9 +3,9 @@
 # Submit by pushing this and the generated .SRCINFO (makepkg --printsrcinfo > .SRCINFO) to
 #   ssh://aur@aur.archlinux.org/xperience-bin.git
 pkgname=xperience-bin
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
-pkgdesc="Settings and HID-BPF driver for the XPPen Artist 16 3rd pen display: keys, dials, pen, work area"
+pkgdesc="Settings and HID-BPF driver for XPPen pen tablets and pen displays: keys, dials, pen, work area"
 arch=('x86_64')
 url="https://github.com/codingncaffeine/Xperience"
 license=('GPL-3.0-or-later' 'GPL-2.0-only')
@@ -20,7 +20,7 @@ optdepends=("plasma-desktop: the pen settings Xperience reads and writes are KDE
             "libkscreen: brightness of the tablet's screen, and the list of monitors")
 options=('!strip')   # a self-contained .NET bundle: stripping breaks it
 source=("Xperience-$pkgver-linux-x64.tar.gz::$url/releases/download/v$pkgver/Xperience-$pkgver-linux-x64.tar.gz")
-sha256sums=('544c7cf451ec36eb28a2123495285afe859b79cf80dd89e5f3cb8fdd81c5365f')
+sha256sums=('60519116f15ed8fb7fcda40d46e027513080c461a935f8706cefc94be53fb9b7')
 noextract=("Xperience-$pkgver-linux-x64.tar.gz")
 
 prepare() {
@@ -39,7 +39,7 @@ package() {
     done
     rm -rf "${pkgdir:?}/usr/lib/xperience/LICENSES"
     for _f in xperience xperience.dll Xperience.Core.dll libcoreclr.so libSkiaSharp.so libHarfBuzzSharp.so \
-              0010-XPPen__Artist16_3rd.bpf.o xperience-driver-helper xperience.png; do
+              0010-XPPen__Artist16_3rd.bpf.o xperience-driver-helper xperience-probe xperience.png; do
         [[ -f "$pkgdir/usr/lib/xperience/$_f" ]] || { echo "==> ERROR: $_f is missing from the payload." >&2; return 1; }
     done
     printf '#!/bin/sh\nexec /usr/lib/xperience/xperience "$@"\n' > "$pkgdir/usr/bin/xperience"
