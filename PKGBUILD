@@ -3,7 +3,7 @@
 # AUR page: https://aur.archlinux.org/packages/rowq-bin
 
 pkgname=rowq-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Query rows in tables, documents and databases from the terminal (pre-built binary)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ _base_url="https://github.com/denisotree/rowq/releases/download/v${pkgver}"
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::${_base_url}/rowq-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::${_base_url}/rowq-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('72710e2fc6e83d297d210d08f4c5964f8e3536c50acf2dee58333d3cf41d5b50')
-sha256sums_aarch64=('13d6d75ed84fa488772fea51bcfbe0eaed7308ae5d4d90d6383858328b3885f9')
+sha256sums_x86_64=('')
+sha256sums_aarch64=('')
 
 package() {
     local _src_dir="rowq-v${pkgver}-${CARCH}-unknown-linux-gnu"
