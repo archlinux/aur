@@ -1,0 +1,23 @@
+pkgbase = omofun-bin
+	pkgdesc = Third-party Linux client for Animation Republic.第三方动漫共和国 Linux 客户端
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://dmghg.cn/
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = electron39
+	depends = nodejs
+	depends = python
+	provides = omofun=2.0.1
+	conflicts = omofun
+	source = omofun.js
+	source = omofun.sh
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = omofun-2.0.1-aarch64.deb::https://github.com/kota-rina3/hokeshi/releases/download/omofun-2.0.1/app.omoo.otohime_2.0.1_arm64.deb
+	sha256sums_aarch64 = 850a3a8b4bc1e8281491c37f10a20b51132c335d7e87bbf350325b928d0dafb2
+	source_x86_64 = omofun-2.0.1-x86_64.deb::https://github.com/kota-rina3/hokeshi/releases/download/omofun-2.0.1/app.omoo.otohime_2.0.1_amd64.deb
+	sha256sums_x86_64 = 963aa4a06c02959e08108838afa01922b8bfd258f8415f3f3f482f39ad85931f
+
+pkgname = omofun-bin
