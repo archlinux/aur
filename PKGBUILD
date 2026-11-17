@@ -2,9 +2,9 @@
 
 pkgname=python-flash-attn-rocm
 _pkgname=flash-attention
-pkgver=2.8.3
-pkgrel=2
-pkgdesc="Fast and memory-efficient exact attention"
+pkgver=2.8.3.post2
+pkgrel=1
+pkgdesc="Fast and memory-efficient exact attention (Triton backend)"
 arch=('x86_64')
 url="https://github.com/Dao-AILab/flash-attention"
 license=('BSD-3-Clause')
@@ -25,7 +25,7 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-provides=('python-flash-attn')
+provides=('python-flash-attn' 'python-flash-attention')
 source=("${_pkgname}::git+https://github.com/Dao-AILab/flash-attention.git#tag=v${pkgver}"
 )
 sha256sums=('SKIP')
