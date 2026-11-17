@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folia-major
 _pkgname=Folia
-pkgver=0.7.28
+pkgver=0.7.29
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -12,9 +12,7 @@ _ghurl="https://github.com/chthollyphile/folia-major"
 license=('AGPL-3.0-only')
 depends=(
     "electron${_electronversion}"
-    'python'
-    'python-numpy'
-    'python-psutil'
+    'nodejs'
     'ffmpeg'
 )
 makedepends=(
@@ -23,14 +21,13 @@ makedepends=(
     'git'
     'rustup'
     'jq'
-    'curl'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('f3e430262f1ce9b0beb1fb4c63851beb6871abae561de9cd5740aba94f6069d1'
+sha256sums=('dc0ddd9b08419eacae5e183aa198db7232561f691217794d3bd67abdc3467dfe'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
@@ -50,14 +47,9 @@ _get_app_dir() {
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _get_electron_version() {
-	local _v
-	_v=$(jq -r '.. | (.electron? // empty) | strings | select(test("^[0-9]"))' "$(_get_project_dir)/package.json" 2>/dev/null | head -1)
-	[[ -z "$_v" ]] && _v=$(grep -oE 'electron@[0-9.]+' "$(_get_project_dir)/pnpm-lock.yaml" 2>/dev/null | head -1 | sed 's/^electron@//')
-	[[ -z "$_v" ]] && _v=$(grep -oE 'electron@npm:[0-9.]+' "$(_get_project_dir)/yarn.lock" 2>/dev/null | head -1 | sed 's/^electron@npm://')
-	[[ -z "$_v" ]] && _v=$(jq -r '.packages["node_modules/electron"].version // empty' "$(_get_project_dir)/package-lock.json" 2>/dev/null | head -1)
-	[[ -z "$_v" ]] && _v=$(grep -oE 'electron: ?\[?"?npm:?[0-9.]+' "$(_get_project_dir)/bun.lock" 2>/dev/null | grep -oE '[0-9.]+' | head -1)
-	[[ -z "$_v" ]] && return 1
-	_v="${_v%%.*}"
+	local _v=$(find "$(_get_project_dir)" -name package.json ! -path '*/node_modules/*' -exec jq -r '.. | (.electron? // empty) | strings' {} + 2>/dev/null | sed 's/^[^0-9]*//' | grep -E '^[0-9]' | head -1 | sed 's/\..*//')
+	_v=${_v:-$(grep -hoE 'electron[@":][^0-9]*[0-9]+\.[0-9.]+' "$(_get_project_dir)"/*lock* 2>/dev/null | grep -oE '[0-9]+\.[0-9.]+' | head -1 | sed 's/\..*//')}
+	[[ "$_v" =~ ^[0-9] ]] || return 1
 	(( ${_v} == _electronversion )) && echo -e "\033[1;32mElectron version: ${_v}\033[0m" || echo -e "\033[1;31mElectron version: ${_v} (expected ${_electronversion})\033[0m"
 }
 _set_electron_build_env() {
@@ -135,7 +127,6 @@ prepare() {
     rustup default stable
     export NODE_ENV=development
     export npm_config_allow_remote=all
-    rm -rf package-lock.json
     npm install
 }
 build() {
