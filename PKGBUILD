@@ -24,9 +24,8 @@ makedepends=('cmake' 'ninja' 'qt6-declarative' 'qt6-tools')
 source=("https://github.com/MX-Linux/custom-toolbox/archive/refs/tags/26.11.tar.gz")
 sha256sums=('a3440acb099d560b16fcbb5e501d53ce952f3d3e35aeac8a9bb273e0325efd05')
 
-# dpkg-source packed this tarball from a directory called "src", so that - not
-# ${pkgname}-${pkgver} - is what it unpacks to.
-_srcdir="custom-toolbox-26.11"
+# GitHub tag archives unpack to <repo>-<tag without a leading v>.
+_srcdir="${pkgname}-${pkgver#v}"
 
 build() {
     cd "${srcdir}/${_srcdir}"
