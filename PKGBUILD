@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=ryl-bin
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc='Fast YAML linter and formatter (prebuilt)'
 arch=('x86_64' 'aarch64' 'armv7h' 'powerpc64le')
@@ -15,10 +15,10 @@ source_x86_64=("ryl-${pkgver}-x86_64.tar.gz::${_release}/ryl-x86_64-unknown-linu
 source_aarch64=("ryl-${pkgver}-aarch64.tar.gz::${_release}/ryl-aarch64-unknown-linux-gnu.tar.gz")
 source_armv7h=("ryl-${pkgver}-armv7h.tar.gz::${_release}/ryl-armv7-unknown-linux-gnueabihf.tar.gz")
 source_powerpc64le=("ryl-${pkgver}-powerpc64le.tar.gz::${_release}/ryl-powerpc64le-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('143aaca73b9684ba56c19406669e0246d3fcd7e276a51998b37b288c4c3475f1')
-sha256sums_aarch64=('46ec5176e24ddcfca8583daef642f5c22fddc93919dce63e59883941e4e72974')
-sha256sums_armv7h=('88175f71a02df7fd1976bfb00119fc9dd5f641e04836b4543c056be6538cdc4a')
-sha256sums_powerpc64le=('9c82f1fbb2f277505c7ba7e0b602a7c7c2330363244a75bd2e5ff397e1b027b6')
+sha256sums_x86_64=('37ee3c236005117886949cb413b467a9f4ec06072e2233a1727222b06e54ea3e')
+sha256sums_aarch64=('2e4a765434d63986c858678df0573349da44abc162b7b698a4395e5b586a1e10')
+sha256sums_armv7h=('06d8d81109a60b5ceb7fb212ad7a47549ffd7679fc921ee1877399e03527fdef')
+sha256sums_powerpc64le=('8d23545d924ed82343cda27ea8ba7ab9093af261796a0b1fcb01261c246ad9fb')
 
 build() {
   for shell in bash fish zsh; do
