@@ -15,8 +15,8 @@
 # 0.1.0 (vercmp).
 
 pkgname=vtium-terminfo
-_tag=v0.1.0-alpha.8
-pkgver=0.1.0alpha.8
+_tag=v0.1.0-alpha.9
+pkgver=0.1.0alpha.9
 pkgrel=1
 pkgdesc='The terminfo entry xterm-vtium, for sessions in vtium'
 arch=('any')
