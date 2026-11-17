@@ -1,7 +1,7 @@
 # Maintainer: Jason Wang <wangborong0@gmail.com>
 
 pkgname=freerouting-bin
-pkgver=2.3.0
+pkgver=2.5.0
 _pkgname=freerouting
 pkgrel=1
 pkgdesc="Advanced PCB autorouter (pre-built binary release)"
@@ -15,7 +15,7 @@ conflicts=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-zh-cn" "${_pkgname}-zh-c
 options=('!strip')
 source=("${_pkgname}-${pkgver}-linux-x64.zip::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.zip"
         "${_pkgname}.desktop")
-sha512sums=('551f6969ccfed6221c249b9037c374c1ffcc87a0e104ff28e013d15e6641859978e1fd05aad2088aebf953370ce6e028f8db9159b940bfafffe163a6e3fc20ec'
+sha512sums=('92e6968707dbf33b22a56296cfc93ae1c81e2740b0dbb415b6c603ea34312768e2e0d4251d419aa8f5d26adcfc7c5752cd7fc513af061b72a55cc79945464489'
             '04b749854ddb921bc3e6dc6a0fe56a85af7020cc57dd7c32fcab4d66c2186513fdd3949816f936cefe27a3e6372e3d9ce49d9e88f3be3775ff21d054b4ea0f30')
 
 package() {

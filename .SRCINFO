@@ -1,6 +1,6 @@
 pkgbase = freerouting-bin
 	pkgdesc = Advanced PCB autorouter (pre-built binary release)
-	pkgver = 2.3.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/freerouting/freerouting
 	arch = x86_64
@@ -9,15 +9,15 @@ pkgbase = freerouting-bin
 	depends = sh
 	depends = hicolor-icon-theme
 	optdepends = kicad: for use with PCB editor
-	provides = freerouting=2.3.0
+	provides = freerouting=2.5.0
 	conflicts = freerouting
 	conflicts = freerouting-git
 	conflicts = freerouting-zh-cn
 	conflicts = freerouting-zh-cn-git
 	options = !strip
-	source = freerouting-2.3.0-linux-x64.zip::https://github.com/freerouting/freerouting/releases/download/v2.3.0/freerouting-2.3.0-linux-x64.zip
+	source = freerouting-2.5.0-linux-x64.zip::https://github.com/freerouting/freerouting/releases/download/v2.5.0/freerouting-2.5.0-linux-x64.zip
 	source = freerouting.desktop
-	sha512sums = 551f6969ccfed6221c249b9037c374c1ffcc87a0e104ff28e013d15e6641859978e1fd05aad2088aebf953370ce6e028f8db9159b940bfafffe163a6e3fc20ec
+	sha512sums = 92e6968707dbf33b22a56296cfc93ae1c81e2740b0dbb415b6c603ea34312768e2e0d4251d419aa8f5d26adcfc7c5752cd7fc513af061b72a55cc79945464489
 	sha512sums = 04b749854ddb921bc3e6dc6a0fe56a85af7020cc57dd7c32fcab4d66c2186513fdd3949816f936cefe27a3e6372e3d9ce49d9e88f3be3775ff21d054b4ea0f30
 
 pkgname = freerouting-bin
