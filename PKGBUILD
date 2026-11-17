@@ -22,7 +22,7 @@ conflicts=(curseforge)
 options=(!strip !debug)
 source=(
   "CurseForge-${pkgver/_/-}.AppImage::https://curseforge.overwolf.com/electron/linux/CurseForge-${pkgver/_/-}.AppImage"
-  'LICENSE'
+  'overwolf.license'
 )
 sha256sums=('872d06a700ea2a2dee8c4740d5a05103f0c16c7c969f58cca22c364c4ac1023a'
             '135c7ffeb81f4a7ee95a5879651b679e0d1ef9d13c7aa7c262386ad97b48d62f')
@@ -45,7 +45,7 @@ package() {
 
   install -Dm644 "squashfs-root/curseforge.desktop" -t "${pkgdir}/usr/share/applications"
 
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/CURSEFORGE-LICENSE"
+  install -Dm644 "overwolf.license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "squashfs-root/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 "squashfs-root/LICENSES.chromium.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 

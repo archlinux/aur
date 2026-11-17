@@ -16,7 +16,7 @@ pkgbase = curseforge-appimage
 	options = !strip
 	options = !debug
 	source = CurseForge-1.326.0-42377.AppImage::https://curseforge.overwolf.com/electron/linux/CurseForge-1.326.0-42377.AppImage
-	source = LICENSE
+	source = overwolf.license
 	sha256sums = 872d06a700ea2a2dee8c4740d5a05103f0c16c7c969f58cca22c364c4ac1023a
 	sha256sums = 135c7ffeb81f4a7ee95a5879651b679e0d1ef9d13c7aa7c262386ad97b48d62f
 
