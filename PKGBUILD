@@ -13,7 +13,7 @@ optdepends=(
   'kwallet: store database passwords in the Secret Service'
 )
 provides=('datacraft')
-conflicts=('datacraft' 'datacraft-git')
+conflicts=('datacraft-git')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/javy-fernandez/datacraft/releases/download/v$pkgver/DataCraft-$pkgver-linux-x64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/javy-fernandez/datacraft/releases/download/v$pkgver/DataCraft-$pkgver-linux-arm64.tar.gz")
 sha256sums_x86_64=('32d8c70dc9117edda117d172ddaef9c29e6e202239eaa351a8a9ab506bc36243')
