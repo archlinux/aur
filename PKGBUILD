@@ -1,55 +1,50 @@
-# Maintainer: midgard <arch dot midgard "at symbol" janmaes "youknowwhat" com>
+# Maintainer: Guilhem Saurel <guilhem.saurel@laas.fr>
+# Initial maintainer: midgard <arch dot midgard "at symbol" janmaes "youknowwhat" com>
 
 pkgname=peppercarrot-fonts
-pkgver=5.2
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Fonts required to correctly view and edit Pepper&Carrot SVGs"
+pkgdesc="Open fonts used in the webcomic Pepper&Carrot"
 arch=('any')
-url="https://framagit.org/peppercarrot/webcomics/tree/master/fonts"
-license=('GPL3' 'Apache' 'Custom:OFL10' 'Custom:OFL11' 'Custom:MITX11'
-         'Custom:MplusFont' 'Custom:CCBY3')
-depends=('fontconfig' 'xorg-font-utils'
-         # Already packaged OTF fonts
-         'otf-pecita' 'otf-yanone-kaffeesatz'
-         # Already packaged TTF fonts
-         'noto-fonts' 'ttf-droid-nonlatin-ib' 'ttf-impallari-lobster-font' 'lohit-fonts')
-conflicts=('peppercarrot-fonts-git')
-provides=('peppercarrot-fonts-git')
+url="https://www.peppercarrot.com/en/fonts"
+license=("Apache-2.0" "CC-BY-3.0" "GPL-2.0-only" "GPL-3.0-only" "mplus" "OFL-1.1" "OFL-1.0")
+makedepends=('fontforge')
 
-source=("https://www.peppercarrot.com/0_sources/0ther/tools/zip/peppercarrot-fonts-$pkgver.zip")
-sha256sums=('7c745ba80e9402159a275ff8a58104e8d53f9c09aed154dc180303f82ee4e484')
+source=("https://framagit.org/peppercarrot/fonts/-/archive/v$pkgver/fonts-v$pkgver.tar.gz")
+sha256sums=('514fcda1cb70b229422834fd7bf5c4a2094c08f743b6ed4d4a2520ca546929d7')
+
+
+# function stollen from nixpkgs, MIT
+# pkgs/by-name/in/installFonts/install-fonts.sh
+installFont() {
+  if (($# != 2)); then
+    nixErrorLog "expected 2 arguments!"
+    nixErrorLog "usage: installFont fontExt outDir"
+    exit 1
+  fi
+
+  find -iname "*.$1" -print0 | xargs -0 -r install -m644 -D -t "$2"
+}
+
 
 package() {
-  local i
-  for i in "${srcdir}"/fonts/*/*; do
-    filename="${i##*/}"
+  cd ${srcdir}/fonts-v${pkgver}/Latin
 
-    case "${filename,,}" in
-      pecita*|yanonekaffeesatz*)  ;; # Already packaged OTF
-      droidkufi*|lobster*|lohit*) ;; # Already packaged TTF
+  # Some fonts are duplicated with symlinks
+  find . -type l -delete
 
-      notosanssinhala-black*|\
-        notosanssinhala-bold*|\
-        notosanssinhala-light*|\
-        notosanssinhala-medium*|\
-        notosanssinhala-regular*|\
-        notosanssinhala-thin*) ;; # Noto Sans Sinhala is partly available in extra/noto-fonts –
-                                  # the extralight, extraheavy and condensed variants are not
+  # Build those only available from source
+  fontforge -lang=ff -c 'Open("sources/Handserah.sfd"); Generate("Handserah.otf")'
+  fontforge -lang=ff -c 'Open("sources/PepperCarrot.sfd"); Generate("PepperCarrot.otf")'
 
-      *.otf)       install -Dm644 "${i}" \
-                   "${pkgdir}/usr/share/fonts/OTF/${filename}"; ;;
+  #install
+  installFont 'ttf' "$pkgdir/usr/share/fonts/TTF"
+  installFont 'ttc' "$pkgdir/usr/share/fonts/TTF"
+  installFont 'otf' "$pkgdir/usr/share/fonts/TTF"
+  installFont 'woff2' "$pkgdir/usr/share/fonts/WOFF2"
 
-      *.ttf|*.ttc) install -Dm644 "${i}" \
-                   "${pkgdir}/usr/share/fonts/TTF/${filename}"; ;;
-
-      *.copyright|*.license) install -Dm644 "$i" \
-                             "${pkgdir}/usr/share/licenses/${pkgname}/${filename}"; ;;
-    esac
-  done
+  installFont 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}"
+  installFont 'COPYRIGHT' "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set tw=80 ts=2 sw=2 et:
-
-
-
-
