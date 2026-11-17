@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=opencode-browse-bin
-pkgver=0.1.1
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="MCP server and relay that let AI agents drive your own Chromium-family browser"
 arch=('x86_64' 'aarch64')
@@ -15,9 +15,9 @@ install="$pkgname.install"
 # Upstream publishes the CLI only as npm platform packages; its GitHub releases carry the extension
 # zip, the npm launcher and checksums, no standalone binary.
 source_x86_64=("${pkgname%-bin}-x86_64-${pkgver}.tgz::https://registry.npmjs.org/@opencode/browse-linux-x64/-/browse-linux-x64-${pkgver}.tgz")
-sha256sums_x86_64=('883b5af5bbf7f7412de1eb11543d2da576c626629edcad97a58eb561feaa9de7')
+sha256sums_x86_64=('8ba73f16322a42544cad3a97490bfd14957b97b108b58f43913e6ca088a3cdd7')
+sha256sums_aarch64=('0b550e8b6623994a947bc998704b4bc5e796e307323de5f947cd4abd7c7d7dab')
 source_aarch64=("${pkgname%-bin}-aarch64-${pkgver}.tgz::https://registry.npmjs.org/@opencode/browse-linux-arm64/-/browse-linux-arm64-${pkgver}.tgz")
-sha256sums_aarch64=('2797ef0f80ba707ce96608252a3a11c409c2d1d239bf3e21beb3861a1d2d0b5f')
 
 latestver() {
   curl -fsSL https://registry.npmjs.org/@opencode/browse |
