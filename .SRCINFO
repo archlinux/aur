@@ -1,6 +1,6 @@
 pkgbase = amp-desktop-bin
 	pkgdesc = Amp, the frontier coding agent, as a desktop app
-	pkgver = 0.1.29913241
+	pkgver = 0.1.29914801
 	pkgrel = 1
 	url = https://ampcode.com
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = amp-desktop-bin
 	optdepends = bluez: passkeys on your phone
 	provides = amp-desktop
 	conflicts = amp-desktop
-	noextract = amp-desktop-0.1.29913241-x86_64.deb
-	noextract = amp-desktop-0.1.29913241-aarch64.deb
+	noextract = amp-desktop-0.1.29914801-x86_64.deb
+	noextract = amp-desktop-0.1.29914801-aarch64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = amp-desktop-0.1.29913241-x86_64.deb::https://static.ampcode.com/linux/0.1.29913241/amp-desktop-0.1.29913241-amd64.deb
-	sha256sums_x86_64 = 89c0bd4ff1e8f80e32a4164d7bcaf174fcb67eee671532effb1588e44ae06da6
-	source_aarch64 = amp-desktop-0.1.29913241-aarch64.deb::https://static.ampcode.com/linux/0.1.29913241/amp-desktop-0.1.29913241-arm64.deb
-	sha256sums_aarch64 = 8ad0feabb925a2ab0bb47bd8acd4793a2bd0523c1f2543c1cdea9b9035c93358
+	source_x86_64 = amp-desktop-0.1.29914801-x86_64.deb::https://static.ampcode.com/linux/0.1.29914801/amp-desktop-0.1.29914801-amd64.deb
+	sha256sums_x86_64 = e52226887fa2e38ebfebaa982a2d8c75b7b66275f95458bad5204ddd75359bd6
+	source_aarch64 = amp-desktop-0.1.29914801-aarch64.deb::https://static.ampcode.com/linux/0.1.29914801/amp-desktop-0.1.29914801-arm64.deb
+	sha256sums_aarch64 = f46b6cc6fec7005865cfa32a62f323a9cb0149c8834ca0a6643b3b940fa73e93
 
 pkgname = amp-desktop-bin
