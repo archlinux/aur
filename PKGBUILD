@@ -2,7 +2,7 @@
 pkgname='doors-git'
 _pkgname='doors'
 pkgver=0
-pkgrel=1
+pkgrel=3
 pkgdesc='Wayland compositor inspired by bspwm'
 arch=(x86_64)
 url='https://dawn.wine/CreeperFace/doors'
@@ -55,8 +55,9 @@ package() {
     install -Dm644 doors-session.target "$pkgdir/usr/lib/systemd/user/doors-session.target"
 
     # Convert POD documentation to man pages and install them.
-    install -d "$pkgdir/usr/share/man/man1" "$pkgdir/usr/share/man/man5"
-    pod2man -s 1 -c "doors" -r "doors" "$_pkgname/docs/doorsctl.pod" "$pkgdir/usr/share/man/man1/doorsctl.1"
-    pod2man -s 5 -c "doors" -r "doors" "$_pkgname/docs/doorshkrc.pod" "$pkgdir/usr/share/man/man5/doorshkrc.5"
-    pod2man -s 5 -c "doors" -r "doors" "$_pkgname/docs/doorsrc.pod" "$pkgdir/usr/share/man/man5/doorsrc.5"
+    install -d $out/share/man/man1 $out/share/man/man5 $out/share/man/man7
+    ${pkgs.perl}/bin/pod2man -s 1 -c "doors" -r "doors" "$src/docs/doorsctl.pod" > $out/share/man/man1/doorsctl.1
+    ${pkgs.perl}/bin/pod2man -s 5 -c "doors" -r "doors" "$src/docs/doorsrc.pod" > $out/share/man/man5/doorsrc.5
+    ${pkgs.perl}/bin/pod2man -s 5 -c "doors" -r "doors" "$src/docs/doorshkrc.pod" > $out/share/man/man5/doorshkrc.5
+    ${pkgs.perl}/bin/pod2man -s 7 -c "doors" -r "doors" "$src/docs/doors-plugins.pod" > $out/share/man/man7/doors-plugins.7
 }
