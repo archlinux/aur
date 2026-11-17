@@ -5,7 +5,7 @@
 
 pkgname=anker-launcher-bin
 _pkgname=anker-launcher
-pkgver=0.1.30
+pkgver=0.1.31
 pkgrel=1
 pkgdesc="Desktop client for AnkerGames (upstream AppImage)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('anker-launcher')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/AnkerLauncher-${pkgver}-x86_64.AppImage")
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha256sums=('8fa554f24316fe05dd156dde9094b9aba5450edaf6819187288f898fa2c07b0c')
+sha256sums=('526aa8afa5348d9bd6d6663681907930e08daf3da7bfc72b9bb13d65ae3f50e9')
 
 prepare() {
   chmod +x "$srcdir/${pkgname}-${pkgver}.AppImage"
