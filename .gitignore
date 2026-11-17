@@ -3,4 +3,7 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !linux_web_fix.patch
