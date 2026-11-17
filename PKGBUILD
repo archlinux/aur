@@ -2,8 +2,8 @@
 
 pkgname=miasma
 pkgdesc='Trap AI web scrapers in an endless poison pit.'
-pkgver=0.4.3
-pkgrel=2
+pkgver=0.4.4
+pkgrel=1
 arch=(x86_64)
 license=('GPL-3.0-or-later')
 url='https://github.com/austin-weeks/miasma'
@@ -16,7 +16,7 @@ source=(
   sysusers-file
   tmpfiles-file
   config.yaml)
-sha256sums=('2163817b6489517fa3dfd27beab9eb8429c53578a603fb984b8b05ecabd97159'
+sha256sums=('073a413fd19b695fd81b78c64e8463bc616a6c58e50e40da03e0f02d99f62a6a'
             'dcd69fb16f7e1fb223ed921b42b107e489795249723365585dd7d00ae7190a78'
             '211d658368c51a2dce6ad5f117d7159fe775516e392b7209df1304154c0a36d9'
             '42a3df35a73eb4c198367a0885ef86ea3b6b9f4dc824d74b70d77f04b5ea245b'
