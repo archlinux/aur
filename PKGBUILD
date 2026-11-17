@@ -1,7 +1,7 @@
 # Maintainer: Davi <contato@davi.zip>
 pkgname=clubin-bin
-pkgver=0.2.30
-_build=32
+pkgver=0.2.31
+_build=33
 pkgrel=1
 pkgdesc='Voice, video and screen sharing chat for groups (beta, invite only)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('clubin')
 conflicts=('clubin')
 options=('!strip' '!debug')
 source=("clubin-${pkgver}+${_build}.deb::https://dl.clubin.chat/stable/linux-x64/clubin-${pkgver}+${_build}-linux-x64.deb")
-sha256sums=('242643f6b1265edbf9a5482dcdc1fbdca84080651c2b56b05a3510c4f23af223')
+sha256sums=('1bd781c132ae88e52d00e71f514ef30a22bf2b997e052e6bac2385b90c89c25c')
 
 package() {
   bsdtar -xf data.tar.xz -C "$pkgdir"
