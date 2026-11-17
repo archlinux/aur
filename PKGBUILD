@@ -3,7 +3,7 @@
 
 pkgname=noto-fonts-variable-ar
 pkgver=2026.11.01
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Google Noto TTF variable fonts for Arabic Scripts"
 arch=(any)
