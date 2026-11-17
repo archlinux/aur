@@ -5,8 +5,8 @@
 
 pkgname=lidarr
 _pkgname=Lidarr
-pkgver=3.1.0.4875
-pkgrel=2
+pkgver=3.1.6.5079
+pkgrel=1
 pkgdesc='Music collection manager for newsgroup and torrent users.'
 arch=(x86_64 aarch64 armv7h)
 url='https://lidarr.audio'
@@ -45,7 +45,7 @@ source=(
   lidarr.tmpfiles
   package_info
 )
-sha256sums=('91bd0a5db0db45ac8cdb8a3b74696cc6f37f0e31aaf24acd5d43aa41e466e87b'
+sha256sums=('78967a09ce3b07796695e10f84f9dc5b21f17b029a55491396575e7a7ce1d74c'
             '48f4cc5040b1a51e624f5be4977078b77bf7f87b9c1fb7fa34e844da4c831401'
             '85098d47734e8087480f8a29eafec50faa453487221ef01173888155d2b06e42'
             'd71e37213ac65722e42f6f2c5772d4515c2d28a77b9f7608dc05c787d86ebaa5'
@@ -66,8 +66,7 @@ _branch='master'
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
-  # Fix  CVE-2026-41319
-  sed 's/MailKit" Version="4\.14\.0"/MailKit" Version="4\.16\.0"/' -i src/NzbDrone.Core/Lidarr.Core.csproj
+  sed -i "s#</NoWarn>#</NoWarn> <WarningsNotAsErrors>NU1902;NU1903</WarningsNotAsErrors>#" src/Directory.Build.props
 
   # Remove upstream dotnet version
   rm global.json
