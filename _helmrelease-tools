@@ -28,7 +28,11 @@ function _hr_chart_folders() {
   local originalSearchPath="${words[CURRENT]}"
   local searchPath="${originalSearchPath}"
   searchPath="$(_hr_clean_search_path "$searchPath")"
-  chartSources=( $(fd ${searchPath:+--search-path="${searchPath}"} -t f Chart.yaml -X dirname) )
+  if command -v fd &>/dev/null; then
+    chartSources=( $(fd ${searchPath:+--search-path="${searchPath}"} -t f Chart.yaml -X dirname) )
+  else
+    chartSources=( $(find "${searchPath:-.}" -type f -name Chart.yaml -exec dirname {} \;) )
+  fi
   chartSources=( $(_hr_mangle_search_results "$originalSearchPath" "${chartSources[@]}") )
   _wanted sources expl 'Helm Chart source' \
     _multi_parts -f / chartSources
@@ -39,8 +43,16 @@ function _hr_chart_tarballs() {
   local originalSearchPath="${words[CURRENT]}"
   local searchPath="${originalSearchPath}"
   searchPath="$(_hr_clean_search_path "$searchPath")"
-  chartTarballs=( $(fd ${searchPath:+--search-path="${searchPath}"} --no-ignore -t f -e tgz -e tar) )
-  chartTarballs=( $(for tarball in "${chartTarballs[@]}"; do tar --wildcards -atf "$tarball" \*/Chart.yaml &>/dev/null && echo "$tarball"; done) )
+  if command -v fd &>/dev/null; then
+    chartTarballs=( $(fd ${searchPath:+--search-path="${searchPath}"} --no-ignore -t f -e tgz -e tar) )
+  else
+    chartTarballs=( $(find "${searchPath:-.}" -type f \( -name '*.tgz' -o -name '*.tar' \)) )
+  fi
+  if command -v parallel &>/dev/null; then
+    chartTarballs=( $(parallel 'tar --wildcards -taf {} \*/Chart.yaml &>/dev/null && echo {}' ::: "${chartTarballs[@]}") )
+  else
+    chartTarballs=( $(for tarball in "${chartTarballs[@]}"; do tar --wildcards -atf "$tarball" \*/Chart.yaml &>/dev/null && echo "$tarball"; done) )
+  fi
   chartTarballs=( $(_hr_mangle_search_results "$originalSearchPath" "${chartTarballs[@]}") )
   _wanted sources expl 'Helm Chart tarballs' \
     _multi_parts -f / chartTarballs
@@ -55,7 +67,13 @@ function _hr_yamls() {
   local originalSearchPath="${words[CURRENT]}"
   local searchPath="${originalSearchPath}"
   searchPath="$(_hr_clean_search_path "$searchPath")"
-  hrs=( $(fd ${searchPath:+--search-path="${searchPath}"} -t f -e yaml -e yml -X rg '^kind: HelmRelease$' -l) )
+  local grepCmd=grep
+  command -v rg &>/dev/null && grepCmd=rg
+  if command -v fd &>/dev/null; then
+    hrs=( $(fd ${searchPath:+--search-path="${searchPath}"} -t f -e yaml -e yml -X $grepCmd '^kind: HelmRelease$' -l) )
+  else
+    hrs=( $(find "${searchPath:-.}" -type f \( -name '*.yaml' -o -name '*.yml' \) -exec $grepCmd -l '^kind: HelmRelease$' {} +) )
+  fi
   hrs=( $(_hr_mangle_search_results "$originalSearchPath" "${hrs[@]}") )
   _wanted yamls expl 'HelmRelease yaml' \
     _multi_parts -f / hrs
@@ -92,10 +110,15 @@ function _hr_helm_opts() {
   _helm
 }
 function _hr_both() {
+  [[ "${words[CURRENT]:0:1}" == "-" ]] && return 1
   _alternative 'yamls:Flux HelmRelease yaml:_hr_yamls' \
     'sources:Helm Chart source:_hr_charts'
 }
 function _hr_one() {
+  if [[ "${words[CURRENT]:0:1}" == "-" ]]; then
+    _hr_index
+    return
+  fi
   local firstParam="${words[CURRENT-1]}"
   if [[ "${firstParam:0:2}" == "~/" ]]; then
     firstParam="$HOME/${firstParam:2}"

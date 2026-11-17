@@ -2,12 +2,17 @@
 
 _pkgname=helmrelease-tools
 pkgname=$_pkgname
-pkgver=2.15.0
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="Scripts to work with flux HelmReleases"
 license=('Apache-2.0')
 arch=('x86_64')
-depends=("yq" "git" "helm" "fd" "ripgrep" "helm-diff" "zsh")
+depends=("yq" "git" "helm" "helm-diff" "zsh")
+optdepends=(
+  "fd: faster chart/yaml discovery in shell completion"
+  "ripgrep: faster HelmRelease yaml detection in shell completion"
+  "parallel: faster chart tarball scanning in shell completion"
+)
 checkdepends=("bats" "parallel")
 source=("hr" "hrDiff" "hrInstall" "hrUpgrade" "helmrelease" "hrUninstall" "_$pkgname" "helmrelease.bats")
 sha512sums=('9091b49f1c6d544be7c3d2e35c02004ef0f4b6bd2398afca89933a13776f89f6937b268c476453ae00f1e26200f664bbe014fe5d9a2359cf3fcfc7bc3727219f'
@@ -16,7 +21,7 @@ sha512sums=('9091b49f1c6d544be7c3d2e35c02004ef0f4b6bd2398afca89933a13776f89f6937
             '3e97c8eeb5455fb814ca619f34acf02e3442d467ae4704435bc2d826a1c3b098bae1a2f0be7e5b320109c4384192aafdc66a6c04bae792791ec495da1c57f446'
             '8887ee1b0a8305372d99dce2cd10439c6684927da74b9bf610bbb90f6f9931cca5c70b93d076a6a1e99e222f3be2548b94f107322b898ebee50da39f52537316'
             '016c784c97d1659f5c625c89637f9bb1fb7a74b549cb72c1104c77fa322b7c8139b9f87e4d763fffc79b68c7f1e6643d866401ac979cf3b815ad83a1d9c3363d'
-            '2ce887e0cf3e3e2d5dab1208edb37a0b89bf398b8cd453de44c91d27580d1b9b22279f5b48767fddc98196cd568f7d38dd7bea4908e25e96d32150a9eb15b322'
+            'c0ce49a1ab851b85191a3196c0465a6ac3b26ade292e838dfe9c7a7a0bac631563c9e7356c7d0f23beec4736fffe497894c1019588080413009a62973ad2beec'
             'c749542829d622b0237cfa820998994b440ef1b53420d39dee2556d28447f51af6148b3ea8ef3f6cd4825ea090c8bca4899e08fd3fde6f6d814dabae248df1d4')
 conflicts=("$_pkgname" "${_pkgname}-git")
 
