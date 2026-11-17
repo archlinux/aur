@@ -10,7 +10,7 @@ pkgbase = matedit-bin
 	conflicts = matedit
 	source = MatEdit-linux-x64-gcc-20261117-1.tar.gz::https://github.com/hgruntt/MatEdit/releases/download/nightly/MatEdit-linux-x64-gcc-20261117-1.tar.gz
 	source = icon.png::https://raw.githubusercontent.com/hgruntt/MatEdit/main/icon.png
-	sha256sums = 25ae3366c8264141cd2451108a74a78d0d863a58bc01130f8bf65bba95db90de
+	sha256sums = cbbd0321349170330323501424ea13bd57aa226456a2c06ff4db4619717c8499
 	sha256sums = SKIP
 
 pkgname = matedit-bin

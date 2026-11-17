@@ -16,7 +16,7 @@ source=(
     "icon.png::https://raw.githubusercontent.com/hgruntt/MatEdit/main/icon.png"
 )
 
-sha256sums=('25ae3366c8264141cd2451108a74a78d0d863a58bc01130f8bf65bba95db90de' 'SKIP')
+sha256sums=('cbbd0321349170330323501424ea13bd57aa226456a2c06ff4db4619717c8499' 'SKIP')
 
 prepare() {
     mkdir -p "$srcdir/matedit"
