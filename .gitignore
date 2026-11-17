@@ -3,6 +3,9 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !lidarr.service
 !lidarr.sysusers
 !lidarr.tmpfiles
