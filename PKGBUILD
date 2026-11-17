@@ -6,7 +6,7 @@
 
 pkgname=panasonic-posture-manager-bin
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Prebuilt posture management and screen orientation for convertible Linux 2-in-1 laptops'
 arch=('x86_64')
 url='https://github.com/adogecheems/panasonic-posture-manager'
@@ -34,9 +34,9 @@ conflicts=('panasonic-posture-manager')
 options=('!strip' '!debug')
 install="${pkgname}.install"
 
-_archive="panasonic-posture-manager-${pkgver}-1-x86_64.pkg.tar.zst"
+_archive="panasonic-posture-manager-${pkgver}-2-x86_64.pkg.tar.zst"
 source=("${_archive}::https://github.com/adogecheems/panasonic-posture-manager/releases/download/v${pkgver}/${_archive}")
-sha256sums=('697a75c753e7c2ba77a3b280d7a1a8232e5f0b290ccacc30dbc3477c70d85df4')
+sha256sums=('8673451cf00660dbb826f15a98172a6f760202911de0ac524defe0bd0668f638')
 
 package() {
   bsdtar -xf "${srcdir}/${_archive}" -C "${pkgdir}" usr
