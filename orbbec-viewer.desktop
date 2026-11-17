@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Orbbec Viewer
+Comment=Viewer for Orbbec depth cameras
+Exec=orbbec-viewer
+Icon=orbbec-viewer
+Terminal=false
+Categories=Utility;Science;Graphics;

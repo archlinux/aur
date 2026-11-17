@@ -1,0 +1,18 @@
+post_install() {
+  cat <<'EOF'
+Orbbec Viewer is installed under /opt/orbbec-viewer.
+
+On first start the launcher (/usr/bin/orbbec-viewer) creates a per-user
+data directory and copies the default configuration into it:
+
+  ${XDG_DATA_HOME:-$HOME/.local/share}/orbbec-viewer
+
+Settings, logs and captured output live there; res/ is symlinked to the
+package so it follows upgrades. Delete that directory to reset the viewer
+to its defaults.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
