@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=cheatengine-bin
 pkgver=7.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Memory scanner/debugger for game hacking and reverse engineering"
 arch=('x86_64')
 url="https://cheatengine.org"
@@ -45,6 +45,11 @@ package() {
     find "${pkgdir}/${_instdir}"/{autorun,Extensions,languages,badassets,lua,include} \
          -type f -name '*.so' -exec chmod 755 {} +
 
+    # The translation loader resolves Languages/<code>/, while the language scanner and
+    # the upstream archive use languages/. A case-sensitive filesystem can hold only one
+    # spelling, and without the link no translation is ever found.
+    ln -s languages "${pkgdir}/${_instdir}/Languages"
+
     # Config and data files
     install -Dm644 main.lua "${pkgdir}/${_instdir}/main.lua"
     install -Dm644 "${srcdir}/user-overlay.lua" "${pkgdir}/${_instdir}/user-overlay.lua"
@@ -63,6 +68,21 @@ package() {
 #!/bin/sh
 pkgdir=/usr/lib/cheatengine
 userdir="${XDG_DATA_HOME:-$HOME/.local/share}/cheatengine"
+
+# Cheat Engine takes the language code from -l/--LANG/--lang, else from the LANG variable,
+# and appends it verbatim to Languages/. A locale value carries a codeset (de_DE.UTF-8)
+# that never matches a folder name, so pass the stripped form when a translation for it
+# exists. An explicit language argument wins. The in-application selector cannot: it
+# writes Languages/language.ini, which this read-only install tree cannot accept.
+for arg in "$@"; do
+    case "$arg" in --LANG|--lang|-l) lang_given=1 ;; esac
+done
+if [ -z "${lang_given:-}" ]; then
+    lang="${LC_ALL:-${LC_MESSAGES:-${LANG:-}}}"
+    lang="${lang%%@*}"
+    lang="${lang%%.*}"
+    [ -n "$lang" ] && [ -d "$pkgdir/languages/$lang" ] && set -- "$@" --LANG "$lang"
+fi
 
 if mkdir -p "$userdir/autorun" 2>/dev/null; then
     # .so symlinks for CWD-relative dlopen; never touch user-placed files/links
