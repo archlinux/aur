@@ -4,9 +4,7 @@
 pkgname=cargo-bay-2000
 pkgver=0.1
 pkgrel=4
-pkgdesc="Move boxes, push buttons, change gravity and open that damn door!
-
-In Cargo Bay 2000 you control a maintenance robot that must properly place all the wooden crates from the future(TM) in more than 30 different hand-crafted levels (34, exactly!). To do that you must push boxes, open and close platforms by using pressure plates or keycards and control the gravity for the ultimate box sorting journey!"
+pkgdesc="Gravity-based puzzle game: Move boxes, push buttons, change gravity and open that damn door!"
 arch=('x86_64')
 url="https://theisolinearchip.itch.io/cargo-bay-2000"
 license=('freeware')
