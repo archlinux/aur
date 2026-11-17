@@ -1,0 +1,20 @@
+Local patch (mesa-kraid-git packaging): PanVK tried to open the render node of every DRM device. The RK3588
+display subsystem (card1) has none, so each instance creation logged
+"failed to open device '' (VK_ERROR_INCOMPATIBLE_DRIVER)" through the debug callbacks. Skip such devices quietly.
+
+diff --git a/src/panfrost/vulkan/panvk_physical_device.c b/src/panfrost/vulkan/panvk_physical_device.c
+index 3cba853..618d9ff 100644
+--- a/src/panfrost/vulkan/panvk_physical_device.c
++++ b/src/panfrost/vulkan/panvk_physical_device.c
+@@ -76,6 +76,11 @@ static VkResult
+ create_kmod_dev(struct panvk_physical_device *device,
+                 const struct panvk_instance *instance, drmDevicePtr drm_device)
+ {
++   /* Display-only DRM devices (e.g. the RK3588 display subsystem) have no
++    * render node: not ours, and not worth a warning. */
++   if (!(drm_device->available_nodes & (1 << DRM_NODE_RENDER)))
++      return VK_ERROR_INCOMPATIBLE_DRIVER;
++
+    const char *path = drm_device->nodes[DRM_NODE_RENDER];
+    int fd = open(path, O_RDWR | O_CLOEXEC);
+    if (fd < 0) {

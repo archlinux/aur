@@ -1,6 +1,6 @@
 pkgbase = mesa-kraid-git
 	pkgdesc = Mesa (git main): Panfrost OpenGL + PanVK Vulkan with the KRAID shader compiler, for Arm Mali Valhall (RK3588 / Mali-G610)
-	pkgver = 27.0.0_devel.r233926.g6c09d07c567
+	pkgver = 27.0.0_devel.r234155.g881f15ebda3
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mesa/mesa
 	arch = aarch64
@@ -65,8 +65,10 @@ pkgbase = mesa-kraid-git
 	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main
 	source = mesa-kraid.sh
 	source = 60-mesa-kraid.conf
+	source = panvk-skip-no-render-node.patch
 	sha256sums = SKIP
 	sha256sums = bc1d1878130a64d1c8006fec6455418256c1cf259ec9cc09209868d3b4f4e97f
 	sha256sums = c009ee43740dacad9fd350f6595a5b6cc941e2f138e989d541c3b0831c4bdd52
+	sha256sums = 5294e2dbaaf6685fe7cde355ae199505906db04767da0643bd93b7f63626e3d1
 
 pkgname = mesa-kraid-git

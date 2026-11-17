@@ -1,6 +1,6 @@
 # Maintainer: Grimish <grimish@protonmail.com>
 pkgname=mesa-kraid-git
-pkgver=27.0.0_devel.r234041.g93f80e51457
+pkgver=27.0.0_devel.r234155.g881f15ebda3
 pkgrel=1
 pkgdesc="Mesa (git main): Panfrost OpenGL + PanVK Vulkan with the KRAID shader compiler, for Arm Mali Valhall (RK3588 / Mali-G610)"
 arch=('aarch64')
@@ -24,10 +24,12 @@ backup=('etc/profile.d/mesa-kraid.sh')
 options=('!lto')
 source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main"
         'mesa-kraid.sh'
-        '60-mesa-kraid.conf')
+        '60-mesa-kraid.conf'
+        'panvk-skip-no-render-node.patch')
 sha256sums=('SKIP'
             'bc1d1878130a64d1c8006fec6455418256c1cf259ec9cc09209868d3b4f4e97f'
-            'c009ee43740dacad9fd350f6595a5b6cc941e2f138e989d541c3b0831c4bdd52')
+            'c009ee43740dacad9fd350f6595a5b6cc941e2f138e989d541c3b0831c4bdd52'
+            '5294e2dbaaf6685fe7cde355ae199505906db04767da0643bd93b7f63626e3d1')
 
 pkgver() {
   cd "$srcdir/mesa"
@@ -53,6 +55,9 @@ prepare() {
   }
   # (kraid-meson-sandbox.patch dropped 2026-11-15: main @6c09d07c567 builds the bindings' include_directories
   #  unpatched with meson 1.12.1-2; it is in git history if a sandbox violation comes back)
+
+  # PanVK: skip DRM devices without a render node quietly (display-only card1 logged a warning each start)
+  git -C "$srcdir/mesa" apply "$srcdir/panvk-skip-no-render-node.patch"
 
   # KRAID's Rust crates (meson wraps with their hashes) fetched here, so build() runs offline: every *-rs wrap,
   # which keeps up with main without a list to maintain (~5 MB); the other wraps are system libraries
