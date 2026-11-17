@@ -2,7 +2,7 @@
 
 _pkgname=svt-av1
 pkgname=lib32-svt-av1
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='Scalable Video Technology AV1 encoder and decoder. (32-bits)'
 arch=('x86_64')
@@ -12,7 +12,11 @@ license=(
   'custom: Alliance for Open Media Patent License 1.0'
 )
 depends=(
-  "svt-av1=${pkgver}"
+  # Deliberately not version-locked: this is an AUR package, so an exact pin
+  # makes it unbuildable whenever the repo copy of svt-av1 lags upstream.
+  # What must actually match the 64-bit package is the soname (libSvtAv1Enc.so.4);
+  # bump that in lockstep if upstream ever breaks ABI.
+  'svt-av1'
   'lib32-glibc'
   'lib32-gcc-libs'
 )
@@ -24,7 +28,7 @@ makedepends=(
 )
 provides=('libSvtAv1Enc.so')
 source=("git+https://gitlab.com/AOMediaCodec/SVT-AV1.git#tag=v${pkgver}")
-b2sums=('b217f854d8e97323bdc4327309a485c6821421e43d077be41ced99b0e4d2e4c46d4593a919afb0db8e89e35e23544bac22fe751e78996a62ef3d1ef8895509de')
+b2sums=('42c2367abb2134833c332cc93b6d3f6a202fb085adeaa1dedf2afa47fbf353a8fde42e1c884f5ec6fd37b12a26c97b435ac12cf59d65188f842ca380ac60f2bf')
 
 pkgver() {
   cd SVT-AV1
