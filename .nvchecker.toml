@@ -1,0 +1,5 @@
+[amazon-ecr-credential-helper]
+source = "github"
+github = "awslabs/amazon-ecr-credential-helper"
+use_max_tag = true
+prefix = "v"
