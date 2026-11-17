@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="A powerful time tracking tool for the command line"
 
-pkgver=2.0.9
+pkgver=2.1.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,8 +25,8 @@ options=('!strip')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_Linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_Linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('d3e8d62675a73f84b2d77a5b795a995ca6387e8ea0e7c07d6d7bfdd09bd16d00')
-sha256sums_aarch64=('025af316a8b78a60c2c59d4d59784fc658d1611f22177e8066ae3daaa3451d3a')
+sha256sums_x86_64=('49d16be097cd12df19c1a374263bc0e798e6c4b340ba64c3f20ada90b3b2a168')
+sha256sums_aarch64=('67c6cda41712a9d3c1f72df7f7ef4fb3879427f9dc76fb22647ff34bb6416ee1')
 
 
 package() {
