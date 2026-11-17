@@ -10,7 +10,7 @@ arch=(any)
 url="https://www.google.com/get/noto/"
 license=(custom:SIL)
 optdepends=('noto-fonts-emoji: Emoji characters')
-conflicts=('noto-fonts' 'noto-fonts-extra' 'noto-fonts-ar')
+conflicts=(noto-fonts noto-fonts-extra noto-fonts-ar)
 _url="https://raw.githubusercontent.com/notofonts/notofonts.github.io/noto-monthly-release-${pkgver}/fonts"
 source=("${_url}/NotoKufiArabic/unhinted/variable-ttf/NotoKufiArabic[wght].ttf"
         "${_url}/NotoNaskhArabic/unhinted/variable-ttf/NotoNaskhArabic[wght].ttf"
