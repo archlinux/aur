@@ -19,9 +19,9 @@ url=${_ghurl}
 
 license=('MIT')
 
+depends=('git')
 provides=("${_appname}")
 conflicts=("${_appname}")
-depends=('glibc' 'libgcc' 'git')
 
 options=('!strip')
 
