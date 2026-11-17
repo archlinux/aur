@@ -6,8 +6,10 @@ pkgdesc="Trilium Notes Chinese version"
 arch=('x86_64')
 url="https://github.com/Nriver/trilium-translation"
 license=('AGPL3')
+depends=('desktop-file-utils')
 source=("$pkgname-$pkgver.tar.xz::https://github.com/Nriver/trilium-translation/releases/download/v$pkgver/trilium-linux-x64-0.64.1-cn.tar.xz")
 sha256sums=('892cd35eadd98c8ecd243da78f4c2aafcd77392bffb6228f97e70d9385e0adfd')
+install="trilium-cn.install"
 
 package() {
     export destdir="$pkgdir/"
