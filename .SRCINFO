@@ -1,19 +1,19 @@
 pkgbase = rustingstrata-bin
 	pkgdesc = Pure-Rust inference engine for Qwen GGUF models. Precompiled binaries
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/RustingStudio/RustingStrata
 	arch = x86_64
 	license = RustingStrata License 1.0
 	depends = glibc
 	depends = vulkan-driver
-	provides = rustingstrata=1.2.3
+	provides = rustingstrata=1.2.4
 	conflicts = rustingstrata
-	source = README-1.2.3.md::https://raw.githubusercontent.com/RustingStudio/RustingStrata/refs/tags/v1.2.3/README.md
+	source = README-1.2.4.md::https://raw.githubusercontent.com/RustingStudio/RustingStrata/refs/tags/v1.2.4/README.md
 	source = LICENSE.md::https://raw.githubusercontent.com/RustingStudio/RustingStrata/refs/heads/main/LICENSE.md
-	sha256sums = 6175e392c4a4d8e673f9e3caa3b6079c34c337872a51394d9304231fc1a495c6
+	sha256sums = 9fbc8775386398e117591f1654b90feff81498726e4e4bdda34bc70023db6981
 	sha256sums = 4c9f9033588ba45efa888d96a6d3d7354a075300a984722acf28013b9c8c4e57
-	source_x86_64 = rustingstrata-1.2.3-1::https://github.com/RustingStudio/RustingStrata/releases/download/v1.2.3/rustingstrata-linux-x86_64
-	sha256sums_x86_64 = 6ccaf8faa5e6309724049066d84354962fba194426f3ad90beb9d86941de1afc
+	source_x86_64 = rustingstrata-1.2.4-1::https://github.com/RustingStudio/RustingStrata/releases/download/v1.2.4/rustingstrata-linux-x86_64
+	sha256sums_x86_64 = c2f19c44b5b2191bd986ce7e48ddbbaccc81f19f7916530f770f510d7182e621
 
 pkgname = rustingstrata-bin
