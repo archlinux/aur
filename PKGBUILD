@@ -3,7 +3,7 @@
 pkgname=vulcanium-bin
 pkgver=157.0.8103.78
 pkgrel=1
-pkgdesc="Chromium with native Wayland Vulkan rendering and Vulkan Video decoding (prebuilt)"
+pkgdesc="Chromium with native Wayland Vulkan rendering and Vulkan Video decoding/encoding (prebuilt)"
 arch=('x86_64')
 url="https://github.com/lumexren/vulcanium"
 license=('BSD-3-Clause')
@@ -60,7 +60,7 @@ backup=('etc/vulcanium/default-flags.conf')
 options=('!strip')
 source=("https://github.com/lumexren/vulcanium/releases/download/v${pkgver}-${pkgrel}/vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('14e9d7278917f6bedfbe68fadd0328dd15892f8dfc1d908250cfc71cd56be80d')
+sha256sums=('01cbcca7f7f03a32b7f747165195bae3f6689c5afcaa0172d7a330099d3f889f')
 
 package() {
   bsdtar -xf "${srcdir}/vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" \
