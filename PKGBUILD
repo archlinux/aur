@@ -1,7 +1,7 @@
 # Maintainer: Mohammad Ashar Khan <ashar786khan@gmail.com>
 
 pkgname=llama-recipe-manager
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A native desktop application for managing and launching llama-server with named recipes of command-line flags"
 arch=('x86_64')
@@ -12,7 +12,7 @@ install=${pkgname}.install
 
 source=("https://github.com/Llama-Recipe-Manager/llama-recipe-manager/releases/download/v${pkgver}/Llama.Recipe.Manager_${pkgver}_amd64.deb")
 
-sha256sums=('fa9c587ed75f24238332c00b809cb93d7ccb0c435a6b33c0544ed21b99373f8c')
+sha256sums=('014028a0f2ce08910938820601ab7ea70ac1a8c337d982d8cb2f8e314e2b9a28')
 
 package() {
     tar -xzf data.tar.gz -C "${pkgdir}"
