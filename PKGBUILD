@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=iron
 pkgname="srware-${_pkgname}-bin"
-pkgver=147.7750.0
+pkgver=154.0.8100
 pkgrel=1
-pkgdesc="SRWare Iron Browser is a light-weight browser,based on Chromium.(Prebuilt version)"
+pkgdesc="SRWare Iron Browser is a light-weight browser,based on Chromium."
 arch=(
     'aarch64'
     'x86_64'
@@ -26,10 +26,15 @@ source=("LICENSE.txt")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/downloads/${_pkgname}arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/downloads/${_pkgname}64.deb")
 sha256sums=('554e3955aa5a106e3e39e8bb0d47a32c117b581d425522365f69cf86a9e357bd')
-sha256sums_aarch64=('0bb875a6c2d2fc6d2ee3e993ffb532bbf9bae9a0289201010922b816bb04ef13')
-sha256sums_x86_64=('6699056bac12015a51845a6cd2b3094287b6233cc56c5cfa4615d8b1509c87af')
+sha256sums_aarch64=('SKIP')
+sha256sums_x86_64=('SKIP')
+pkgver() {
+	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
+}
 prepare() {
     bsdtar -xf "${srcdir}/data."*
+    bsdtar -xf "${srcdir}/control."*
+    grep -m1 -oP '^Version: \K[0-9.]+(?=-)' "${srcdir}/control" > "${srcdir}/.pkgver"
     sed -i -e "
         s/\/usr\/share\/${_pkgname}\/chrome-wrapper/${pkgname%-bin}/g
         s/${_pkgname}_product_logo/${pkgname%-bin}/g
@@ -44,7 +49,7 @@ prepare() {
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/usr/share/${_pkgname}/." "${pkgdir}/usr/lib/${pkgname%-bin}"
     ln -sf "/usr/lib/${pkgname%-bin}/chrome-wrapper" "${pkgdir}/usr/bin/${pkgname%-bin}"
     ln -sf "/usr/lib/${pkgname%-bin}/IronConfigBackup" "${pkgdir}/usr/bin/${pkgname%-bin}-configbackup"
     install -Dm644 "${srcdir}/usr/share/applications/"*.desktop -t "${pkgdir}/usr/share/applications"
