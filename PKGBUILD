@@ -19,7 +19,7 @@ url=${_ghurl}
 
 license=('MIT')
 
-depends=('git')
+depends=('tmux')
 provides=("${_appname}")
 conflicts=("${_appname}")
 
