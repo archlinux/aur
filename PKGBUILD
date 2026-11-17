@@ -1,14 +1,14 @@
 pkgname=lumen-journal
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Encrypted journal app built with Rust and Flutter"
 arch=('x86_64')
-url="https://github.com/crazygiscool/lumen"
-license=('custom')
-depends=('glibc' 'gcc-libs' 'gtk3' 'sqlite')
+url="https://github.com/Crazygiscool/Lumen"
+license=('custom:Lumen Non-Commercial Software License v1.0')
+depends=('gtk3' 'libsecret' 'glib2' 'gcc-libs' 'xz')
 makedepends=('git' 'cargo' 'flutter' 'cmake' 'ninja' 'pkg-config')
 
-source=("$pkgname::git+https://github.com/crazygiscool/Lumen.git#tag=v$pkgver"
+source=("$pkgname::git+https://github.com/Crazygiscool/Lumen.git#tag=v$pkgver"
         "lumen-journal.desktop"
         "lumen-journal.png"
         "lumen-journal.appdata.xml"
@@ -29,68 +29,54 @@ sha256sums=('SKIP'
 build() {
     cd "$srcdir/$pkgname"
 
-    # Ensure we are at the workspace root and build everything
-    # We use -p lumen to explicitly build the cdylib
+    # Build the Rust core (cdylib) for the Flutter FFI layer.
     cargo build --workspace --release --locked
 
-    # Find the compiled library and binary (robust against different target locations)
-    LIB_PATH=$(find target -name "liblumen_core.so" | grep -v "deps" | head -n 1)
-    TUI_PATH=$(find target -name "lumen" | grep -v "deps" | head -n 1)
+    # Stage the FFI library into the Flutter linux lib dir.
+    install -Dm755 target/release/liblumen_core.so ui/linux/lib/liblumen_core.so
 
-    if [ -z "$LIB_PATH" ]; then
-        echo "Error: liblumen_core.so not found in target directory"
-        ls -R target/release
-        exit 1
-    fi
-
-    # Copy Rust library into Flutter linux/lib
-    install -Dm755 "$LIB_PATH" ui/linux/lib/liblumen_core.so
-
-    # Build Flutter UI
+    # Build the Flutter desktop UI.
     cd ui
+    flutter config --enable-linux-desktop
     flutter build linux --release
 }
 
 package() {
     cd "$srcdir/$pkgname"
 
-    # Find binaries again for packaging
-    TUI_PATH=$(find target -name "lumen" | grep -v "deps" | head -n 1)
-
-    # Install TUI binary
-    install -Dm755 "$TUI_PATH" "$pkgdir/usr/bin/lumen-cli"
-
+    # The Flutter bundle ships a lowercase 'lumen' executable (see
+    # ui/linux/CMakeLists.txt BINARY_NAME).
     cd ui/build/linux/x64/release/bundle
 
     # Install the entire bundle to /usr/lib/lumen-journal/
     install -d "$pkgdir/usr/lib/lumen-journal"
-    cp -r Lumen lib data "$pkgdir/usr/lib/lumen-journal/"
+    cp -r lumen lib data "$pkgdir/usr/lib/lumen-journal/"
 
-    # Symlink in PATH
+    # Symlink in PATH.
     install -d "$pkgdir/usr/bin"
-    ln -s "/usr/lib/lumen-journal/Lumen" "$pkgdir/usr/bin/lumen-journal"
+    ln -s "/usr/lib/lumen-journal/lumen" "$pkgdir/usr/bin/lumen-journal"
 
-    # Install license
+    # Install license.
     install -Dm644 "$srcdir/$pkgname/LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    # Desktop file
+    # Desktop file.
     install -Dm644 "$srcdir/lumen-journal.desktop" \
         "$pkgdir/usr/share/applications/lumen-journal.desktop"
 
-    # Icon
+    # Icon.
     install -Dm644 "$srcdir/lumen-journal.png" \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/lumen-journal.png"
 
-    # AppStream metadata
+    # AppStream metadata.
     install -Dm644 "$srcdir/lumen-journal.appdata.xml" \
         "$pkgdir/usr/share/metainfo/lumen-journal.appdata.xml"
 
-    # Man page
+    # Man page.
     install -Dm644 "$srcdir/lumen-journal.1" \
         "$pkgdir/usr/share/man/man1/lumen-journal.1"
 
-    # Shell completions
+    # Shell completions.
     install -Dm644 "$srcdir/lumen-journal.bash" \
         "$pkgdir/usr/share/bash-completion/completions/lumen-journal"
 
