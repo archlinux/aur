@@ -1,0 +1,23 @@
+pkgbase = iqiyi-bin
+	pkgdesc = Third-party Linux client for iQiYi.第三方爱奇艺 Linux 客户端
+	pkgver = 14.10.0.10320
+	pkgrel = 1
+	url = https://www.iqiyi.com
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-iqiyi
+	depends = electron41
+	provides = iqiyi=14.10.0.10320
+	conflicts = iqiyi
+	source = LICENSE.html::https://www.iqiyi.com/user/register/protocol.html
+	source = iqiyi.js
+	source = iqiyi.sh
+	sha256sums = 8505c4f39f23d2fe6321039ee6b02cf2985d1d14f56a34ecb9dd80549f4e8e6e
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = iqiyi-14.10.0.10320-aarch64.deb::https://github.com/kota-rina3/hokeshi/releases/download/iqiyi14.10-fix1/com.iqiyi.otohime_14.10.0.10320_arm64.deb
+	sha256sums_aarch64 = b8db2f8967d5dd120b244916a44310429953f8ce46d78264dee015db9f057647
+	source_x86_64 = iqiyi-14.10.0.10320-x86_64.deb::https://github.com/kota-rina3/hokeshi/releases/download/iqiyi14.10-fix1/com.iqiyi.otohime_14.10.0.10320_amd64.deb
+	sha256sums_x86_64 = 16322aeb2dd2277a97d28df95a26edba5a44dd8e385353876c4bf21d0b0f5d54
+
+pkgname = iqiyi-bin
