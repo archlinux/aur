@@ -2,7 +2,7 @@
 
 _pkgname=locally-uncensored
 pkgname=locally-uncensored-bin
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Plug-and-play local AI studio — uncensored chat, image & video generation, and a coding agent"
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=("$_pkgname")
 options=('!debug')
 source=("$pkgname-$pkgver.deb::https://github.com/PurpleDoubleD/$_pkgname/releases/download/v$pkgver/Locally.Uncensored_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/PurpleDoubleD/$_pkgname/v$pkgver/LICENSE")
-sha256sums=('e9b26c3d164d37d0b3bb6f561f0be4045b7ede66cc3a8b94fac39f96fcd71708'
+sha256sums=('bf4519fb8ecb33eb0a721d0a7ffeedfaab1e48bbb29118c873480e03231614db'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
 
 package() {
