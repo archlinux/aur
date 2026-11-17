@@ -19,13 +19,14 @@ pkgbase = pdf4qt
 	depends = onetbb
 	depends = lcms2
 	depends = blend2d
-	depends = clipper2
 	depends = sane
 	optdepends = flite: Text-To-Speech using flite synthesizer
 	optdepends = libspeechd: Text-To-Speech using speechd synthesizer
 	conflicts = pdf4qt
 	options = !strip
 	source = pdf4qt-1.7.0.0.tar.gz::https://github.com/JakubMelka/PDF4QT/archive/refs/tags/v1.7.0.0.tar.gz
+	source = clipper2-2.0.1.tar.gz::https://github.com/AngusJohnson/Clipper2/archive/refs/tags/Clipper2_2.0.1.tar.gz
 	sha256sums = 01da732d172092a80a325f09cc3f64ed1298bccc76bcc2d7e108b3accccea931
+	sha256sums = 2a3693aceab4aed3e39b743e038d87701acc53cf05ed7b2013aab3e0aec5287e
 
 pkgname = pdf4qt
