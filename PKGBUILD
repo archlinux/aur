@@ -1,8 +1,8 @@
 # Maintainer: asafelobotomy
 # Source build of a tagged release. `updpkgsums` fills the checksum at release time.
 pkgname=bindaru
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc='pacman and AUR package store for uQ, with a visible AUR review gate'
 arch=('x86_64' 'aarch64')
 url='https://github.com/asafelobotomy/bindaru'
@@ -13,7 +13,7 @@ optdepends=('uq: the Software page in uQ Settings')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Keep !lto: makepkg's LTO flags make the cxx-qt C++ objects unreadable to the linker (undefined cxx_qt_init_crate_*).
 options=(!lto)
-sha256sums=('ce28795aedde1b1990283e838df07e641762d2fac28bdba09f201ae7a28fa90c')
+sha256sums=('56a363114a03d0bf0767d02596f60f88a781a1d9a09d8a12d03ffea195536ecf')
 
 build() {
   cd "$pkgname-$pkgver"
