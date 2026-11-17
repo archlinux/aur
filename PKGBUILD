@@ -1,13 +1,13 @@
 # Maintainer: Novaturiente
 # pkgver and sha256sums are filled in by packaging/release.sh
 pkgname=novabrowser-webkit
-pkgver=0.1.18
+pkgver=0.1.19
 pkgrel=1
 pkgdesc="Keyboard-driven browser on WebKitGTK 6.0, configured in TypeScript"
 arch=(x86_64)
 url="https://github.com/Novaturiente/novabrowser-webkit"
 license=(GPL-3.0-or-later MPL-2.0)  # MPL: vendored webauthn-authenticator-rs (passkeys)
-depends=(libwebkitgtk-6.0.so gtk4 glib2 sqlite curl gst-plugins-base gst-plugins-good openssl dbus)
+depends=(libwebkitgtk-6.0.so gtk4 libadwaita glib2 sqlite curl gst-plugins-base gst-plugins-good openssl dbus)
 makedepends=(cargo)
 optdepends=('webkitgtk-6.0-nova-bin: our WebKitGTK build (Chromium-like dark mode, PGO, AVX2 CPUs)'
             'gst-libav: H.264/AAC and most web video'
@@ -22,7 +22,7 @@ optdepends=('webkitgtk-6.0-nova-bin: our WebKitGTK build (Chromium-like dark mod
 conflicts=(novabrowser-webkit-bin novabrowser-webkit-git)
 options=(strip !lto !debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('761c6e7a2d76ef2f041f345719975f1b87409be06c7cfb5c33d914365c8e3a0d')
+sha256sums=('385f382ac7e2e0fe81c6c3d2dc2caae2b5d8d6a3bfca727d9562915e4b7022bf')
 _src=$pkgname-$pkgver
 
 prepare() {
