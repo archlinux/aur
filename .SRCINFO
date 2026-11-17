@@ -1,0 +1,23 @@
+pkgbase = zero-breach-toolkit-bin
+	pkgdesc = Offline checks for known mercenary spyware and other signs of compromise (upstream program build)
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/interplains/Zero-Breach-Toolkit
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = zlib
+	optdepends = android-tools: adb access for Android acquisition
+	provides = zero-breach-toolkit
+	conflicts = zero-breach-toolkit
+	options = !strip
+	options = !debug
+	source = zero-breach-toolkit-3.0.2-linux-x64.tar.gz::https://github.com/interplains/Zero-Breach-Toolkit/releases/download/v3.0.2/zero-breach-toolkit-linux-x64.tar.gz
+	source = SHA256SUMS-programs-3.0.2.txt::https://github.com/interplains/Zero-Breach-Toolkit/releases/download/v3.0.2/SHA256SUMS-programs.txt
+	source = SHA256SUMS-programs-3.0.2.txt.asc::https://github.com/interplains/Zero-Breach-Toolkit/releases/download/v3.0.2/SHA256SUMS-programs.txt.asc
+	validpgpkeys = C24EC92B12D6670A2516065F9B4D575499AFA53C
+	sha256sums = 31dc9cf01dd0334c27fac662fb6710ed48c5071e2fa66071bdc6852dd44047ab
+	sha256sums = 825b3b6099f1670995e33ea9d3aa49d331a3a73f67b9ac51a459b14f0190aac3
+	sha256sums = 7e2811f1ba48ac0ee473ea15c0f64f195f01ca82822d9708bf8e3f9cd3f8746d
+
+pkgname = zero-breach-toolkit-bin
