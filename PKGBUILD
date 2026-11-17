@@ -1,6 +1,6 @@
 # Maintainer: Sam Zuk <sam11120a@gmail.com>
 pkgname=vmpc2000xl-lv2-bin
-pkgver=0.9.13
+pkgver=0.9.20
 pkgrel=1
 pkgdesc='MPC2000XL sampler emulator (LV2)'
 arch=('x86_64')
@@ -26,13 +26,13 @@ depends=(
     'systemd-libs'  # unknown version requirement
 )
 source=(
-    "https://github.com/izzyreal/vmpc-juce/releases/download/v${pkgver}/VMPC2000XL-Ubuntu20-x86_64-LV2.zip"
+    "https://github.com/izzyreal/vmpc-juce/releases/download/v${pkgver}/VMPC2000XL-Ubuntu20-x86_64-LV2-v${pkgver}.zip"
     "https://github.com/izzyreal/vmpc-juce/raw/refs/tags/v${pkgver}/README.md"
     "https://github.com/izzyreal/vmpc-juce/raw/refs/tags/v${pkgver}/LICENSE.txt"
 )
 sha256sums=(
-    '4122752b3fdf4645fec81586e29bd01176ebf4368e5feae1fcb7176837de4506'
-    '8195bf5f0fa05983867b74afa8e0585fc6cff16f1ea0c840d42e700eef5e057a'
+    'de445835244d4c8b01c10cd182a4d485fe6723c24a7dcba3a4f3f12415013bab'
+    '74d4b1d28e6c83c6a1ec1802526d89dd0c380bdfc3d352f2f5128680f03d3acb'
     '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
 )
 
