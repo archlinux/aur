@@ -1,0 +1,2 @@
+# config.json holds the database password: readable by the service, not by everyone
+z /etc/artex/config.json 0640 root artex -

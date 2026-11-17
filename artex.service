@@ -1,0 +1,26 @@
+[Unit]
+Description=ARTEX autonomous penetration testing server
+Documentation=https://github.com/BaaRai/ARTEX
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+User=artex
+Group=artex
+Environment=ARTEX_CONFIG=/etc/artex/config.json
+Environment=ARTEX_JWT_KEY_DIR=/var/lib/artex/keys
+# Optional: ANTHROPIC_API_KEY=..., OPENAI_API_KEY=..., ARTEX_PG_DSN=...
+EnvironmentFile=-/etc/artex/artex.env
+ExecStart=/usr/lib/artex/artex -data /var/lib/artex/data
+WorkingDirectory=/var/lib/artex
+StateDirectory=artex artex/data artex/keys
+StateDirectoryMode=0750
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
