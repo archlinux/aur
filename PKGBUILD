@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawx
 _pkgname=ClawX
-pkgver=0.6.2
-_electronversion=40
+pkgver=0.7.0
+_electronversion=41
 _nodeversion=24
 pkgrel=1
 pkgdesc="A desktop app that provides a graphical interface for OpenClaw AI agents. It turns CLI-based AI orchestration into a desktop experience without using the terminal."
@@ -37,9 +37,9 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('9a75477d6a9ac0b81c536220784aaea1c6fa269cc626b78a3693e66d053390df'
+sha256sums=('fd5b43f93dee3fed2053e36a6e8ea6e5b571e58902eea755200d0b37d06252e4'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
