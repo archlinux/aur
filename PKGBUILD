@@ -2,7 +2,7 @@
 
 pkgname=qqm
 _pkgname=QQMusicApi-rs
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="go-musicfox style QQ Music terminal player with background daemon and MPRIS support"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('rust' 'cargo')
 conflicts=('qqm-bin')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('21a3cfa06176c8c91942dbe8cb1fc2e296c07b42c9047d218d38c64433a4110f')
+sha256sums=('a8603275734b77306bb823935d40c9cbb07c94f1ffb2d665382182610c9ba9b1')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
