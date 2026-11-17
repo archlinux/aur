@@ -37,9 +37,10 @@ BASALT_JOBS=2 makepkg -si               # if the CUDA compile thrashes RAM: peak
 ${AUR_HELPER} -S basalt-inference-git   # or via an AUR helper once this dir is added to it
 ```
 
-The patch applies to upstream main through `9e8fb6a8` (50 commits past v0.3.2, checked 2026-11-09), with
+The patch applies to upstream main through `08964c3b` (25 commits past v0.4.1, checked 2026-11-17), with
 no offset and no fuzz. `prepare()` says so when that stops being true, and the recipe under *When
-`prepare()` aborts* rebases it.
+`prepare()` aborts* rebases it. v0.4.1 needed one such rebase: it inserted `option(PEER_ADA …)` between
+`WERROR` and the two `set(… CACHE …)` variables, which left only the first hunk in conflict.
 
 `makepkg` prints *"Package contains reference to $srcdir"* for `basalt` and `basalt-bench`: a few
 `__FILE__`-style log strings in the ggml kernels, and bench's path to a dev program this package does
@@ -118,6 +119,11 @@ not.
 - Python deps come from [extra] (`python-numpy python-jinja python-markupsafe python-regex
   python-yaml python-tqdm python-pillow python-psutil`); `requirements.txt` pins are ignored.
 - `cuda` is a runtime dep too (`libcudart/libcublas/libcublasLt`); the driver is left to you.
+- `ffmpeg` is an **optional** runtime dep (`optdepends`): video input dlopens `libavformat` /
+  `libavcodec` / `libavutil` / `libswscale` at run time (release 6–9, nothing linked or shipped), so
+  installing it needs no rebuild. Arch's `ffmpeg` is release 9 and has NVDEC, so frames decode on the
+  GPU (Flash-Next; the 27B decodes on the CPU). Without the libraries the server runs with video off
+  and says why in its log.
 - `package()` fails the build if the patch is missing from the installed binaries, so an update can never
   silently ship a `basalt-probe` that points at a deleted build tree.
 

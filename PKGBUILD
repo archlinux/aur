@@ -3,8 +3,9 @@
 # engine this package builds - with a human driving, reviewing and running every build.
 # Tracks upstream main of https://github.com/jesdga95/basalt plus one local patch:
 #   0001-cmake-installed-runtime-tree.patch   the installed runtime tree / engine path become cmake options
-# It applies cleanly (no offset, no 3-way needed) to upstream main through 9e8fb6a8, 50 commits past
-# v0.3.2, checked 2026-11-09.
+# It applies cleanly (no offset, no 3-way needed) to upstream main through 08964c3b, 25 commits past
+# v0.4.1, checked 2026-11-17.  It was rebased once for v0.4.1, which inserted the PEER_ADA option()
+# between WERROR and where the two set() cache variables sit - the only hunk of the three that moved.
 # There is no RAM-guard patch any more: ram-guard-mib.patch died with 0.3.2's guard rewrite.  The serve
 # guard's floor is now platform::ram_reserve(), which upstream's own --ram-reserve-mib sets and 0 turns
 # off, so the flag lives in the config file instead of in a patch that has to be rebased every release.
@@ -12,7 +13,7 @@
 # aur/basalt, aur/basalt-bin (a TUI for Obsidian), the vkBasalt family and basalt-monado.  The
 # runtime tree keeps upstream's own names under /usr/lib/basalt.
 pkgname=basalt-inference-git
-pkgver=0.3.2.51.ga4685354
+pkgver=0.4.1.25.g08964c3b
 pkgrel=1
 pkgdesc='Local inference engine for Qwen3.8-Flash-Next MoE packs (NVIDIA Blackwell, sm_120)'
 arch=(x86_64)
@@ -20,6 +21,13 @@ url='https://github.com/jesdga95/basalt'
 license=(MIT)
 depends=(cuda python python-numpy python-jinja python-markupsafe
          python-regex python-yaml python-tqdm python-pillow python-psutil)
+# Video input (pictures + video in the request, `--vision`) is off unless the machine has FFmpeg: the
+# engine dlopens libavformat/libavcodec/libavutil/libswscale at run time (release 6, 7, 8 or 9) and
+# nothing is linked or built against them, so ffmpeg is neither depends nor makedepends - installing it
+# later needs no rebuild, and headers are only looked for by the ffmpeg_abi_test this package does not
+# build (BUILD_TESTING=OFF).  Arch's ffmpeg is release 9 and is an NVDEC-enabled build, so frames
+# decode on the GPU; without the libraries `basalt serve` starts with video off and logs why.
+optdepends=('ffmpeg: video input')
 makedepends=(git cmake ninja)
 # ships basalt-inference.service; the hook only prints how to enable it - a package install must not
 # decide to map tens of gigabytes and take a GPU
@@ -28,7 +36,7 @@ source=("basalt::git+https://github.com/jesdga95/basalt.git#branch=main"
         0001-cmake-installed-runtime-tree.patch
         basalt-inference.service)
 sha256sums=('SKIP'
-            '72296c351fff13205e82d00f1eea6fcd259198b98736d3425e2186cea86a6720'
+            '43d83a130ff55b212927ad2db67f5a815c650d27d8f60d18c532ec252f99ef54'
             '629c96b83a3cbd2b6aa75165c7e1c33d78a656e3c487f302d791e99b7fb88f7f')
 
 # BASALT_DEBUG=1 makepkg -si builds with -g and splits off a basalt-inference-git-debug package (gdb

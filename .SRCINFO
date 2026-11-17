@@ -1,6 +1,6 @@
 pkgbase = basalt-inference-git
 	pkgdesc = Local inference engine for Qwen3.8-Flash-Next MoE packs (NVIDIA Blackwell, sm_120)
-	pkgver = 0.3.2.51.ga4685354
+	pkgver = 0.4.1.25.g08964c3b
 	pkgrel = 1
 	url = https://github.com/jesdga95/basalt
 	install = basalt-inference.install
@@ -19,11 +19,12 @@ pkgbase = basalt-inference-git
 	depends = python-tqdm
 	depends = python-pillow
 	depends = python-psutil
+	optdepends = ffmpeg: video input
 	source = basalt::git+https://github.com/jesdga95/basalt.git#branch=main
 	source = 0001-cmake-installed-runtime-tree.patch
 	source = basalt-inference.service
 	sha256sums = SKIP
-	sha256sums = 72296c351fff13205e82d00f1eea6fcd259198b98736d3425e2186cea86a6720
+	sha256sums = 43d83a130ff55b212927ad2db67f5a815c650d27d8f60d18c532ec252f99ef54
 	sha256sums = 629c96b83a3cbd2b6aa75165c7e1c33d78a656e3c487f302d791e99b7fb88f7f
 
 pkgname = basalt-inference-git
