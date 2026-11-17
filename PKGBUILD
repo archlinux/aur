@@ -2,7 +2,7 @@
 _pkgname=butterfly
 pkgname="linwood-${_pkgname}-bin"
 _appname="dev.linwood.${_pkgname}"
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="Powerful, minimalistic, cross-platform, opensource note-taking app."
 arch=(
@@ -30,9 +30,9 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x86_64.rpm")
 sha256sums=('8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
-            '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('cc2b293fb6f5780e0390aa9eabb5ed049ede46e1f86e14d2ac35aa83627e3ca1')
-sha256sums_x86_64=('326ac323abf0abeafe4605168507f7829e98219d66b0bc479b47b79c4f61a75e')
+            'a46613b6df5ea182d243b68fa5ed3df97f307cf9d81788c9ff4c0e1d6f671dfe')
+sha256sums_aarch64=('9b1b2da62f9869d28fa1c96c6c8dc751df5aa932c7061fa56f99d64ee3d4ebb3')
+sha256sums_x86_64=('6bfd5930157a3d70a585855cf2598346dc3bbefa4aa8e22e60b9b33d6dc7d71a')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
