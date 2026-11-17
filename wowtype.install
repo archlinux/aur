@@ -4,7 +4,7 @@ post_install() {
 
   1) 把 WowType 加进 fcitx5 的输入法列表（二选一）：
      图形界面： fcitx5-configtool → 左下「添加」→「WowType 拼音」
-     命令行：   wowtype-config --add-to-group      # fcitx5 在跑时会自动重启它
+     命令行：   wowtype-config --setup           # 普通用户执行，必要时重启 fcitx5
   2) Ctrl+空格 或 Ctrl+Shift 切到 WowType，输入 nihao 试一句。
   3) 设置界面在应用菜单的「WowType 设置」（wowtype-config）。
 
@@ -19,7 +19,10 @@ EOF
 }
 
 post_upgrade() {
-  post_install
+  cat <<'EOF'
+==> WowType 已更新。
+  重启 fcitx5（或注销重新登录）后生效，WowType 设置也会提示重启。
+EOF
 }
 
 pre_remove() {

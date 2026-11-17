@@ -1,9 +1,9 @@
 # Maintainer: lubuoren <luboren123@outlook.com>
 
 pkgname=wowtype
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
-_dataver=2026.11.11.5
+_dataver=2026.11.11.7
 _datafile="wowtype-data-rime-ice-$_dataver.tar.gz"
 pkgdesc='WeType 风格的拼音输入法：fcitx5 插件 + Rust 引擎（长句、半成品输入、纠错、学习）'
 arch=('x86_64')
@@ -12,6 +12,8 @@ license=('MIT OR Apache-2.0' 'Apache-2.0' 'GPL-3.0-only' 'CC-BY-SA-4.0' 'Unicode
 depends=('fcitx5' 'alsa-lib' 'glibc' 'gcc-libs' 'python')
 makedepends=('cargo' 'cmake' 'extra-cmake-modules' 'pkgconf' 'git')
 optdepends=(
+  'fcitx5-gtk: GTK 应用输入法模块'
+  'fcitx5-qt: Qt 应用输入法模块'
   'python-gobject: 设置界面 wowtype-config'
   'gtk4: 设置界面'
   'libadwaita: 设置界面'
@@ -34,7 +36,7 @@ source=(
 noextract=("$_datafile")
 sha256sums=(
   'SKIP'
-  'a00c2c01fde827aa03be0e494baf83cdaf3e124011402acf55bb7b5ce19f5000'
+  'b35a4af76573ebb1c7b402c5285d33bbb1ce2b3244770bef9e90826c3fcfc8aa'
   '20dc3a5c30e74fdc77aedc7de3b2e977610118f7abf3443e32c9deab4343daa6'
   '28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5'
   'e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96'
@@ -75,7 +77,10 @@ check() {
   cd "$srcdir/$pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR="$srcdir/$pkgname/target"
-  cargo test --frozen -p wowtype-core --lib --test session_keys
+  WOWTYPE_WUBI="$srcdir/data/wubi86.tsv" \
+    cargo test --frozen --release -p wowtype-core --lib \
+      --test combinations --test session --test session_keys
+  cargo test --frozen --release -p wowtype-voice --lib --test pipeline
 }
 
 package() {
@@ -90,7 +95,8 @@ package() {
 
   local data="$srcdir/data"
   install -Dm644 -t "$pkgdir/usr/share/wowtype" \
-    "$data/lexicon.tsv" "$data/english.txt" "$data/words.lm" "$data/wubi86.tsv"
+    "$data/lexicon.tsv" "$data/english.txt" "$data/words.lm" "$data/wubi86.tsv" \
+    "$data/nnlm.bin" "$data/DATA-MANIFEST"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "$data/SOURCE.txt" "$pkgdir/usr/share/doc/$pkgname/DATA-SOURCE.txt"
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" \
