@@ -2,8 +2,8 @@
 
 pkgname=flectar-mail-git
 _srcname=mail
-pkgver=0.1.0alpha.5.r7.g9f062a8
-pkgrel=2
+pkgver=0.1.0alpha.7.r1179.gd2ab26d
+pkgrel=1
 pkgdesc='Native email client built with Rust and Slint'
 arch=('x86_64')
 url='https://github.com/flectar/mail'
@@ -23,7 +23,10 @@ conflicts=('flectar-mail')
 # -flto=auto while giving rustc -C linker-plugin-lto; rust-lld then cannot read
 # GCC's LTO bytecode and every symbol in those archives comes out undefined.
 # The release profile in Cargo.toml already asks for thin LTO anyway.
-options=('!lto')
+# `!debug`: makepkg's default debug option adds -C debuginfo=2, and with the
+# release profile's codegen-units=1 rustc then needs more than 16 GiB of RAM for
+# the flectar_mail crate alone (OOM-killed at 16 GiB, 2026-11-17).
+options=('!lto' '!debug')
 
 # PDFium is a pinned, checksum-verified prebuilt in upstream's own packaging
 # (scripts/stage-pdfium.py). Fetch it as a declared source instead of letting
@@ -81,8 +84,9 @@ build() {
     (( jobs > $(nproc) )) && jobs=$(nproc)
     export CARGO_BUILD_JOBS="$jobs"
     msg2 "Building with %s parallel job(s) for %s GiB of RAM" "$jobs" "$memory_gib"
-    # The same feature set upstream ships in its Linux packages
-    # (scripts/build-deb.sh): software rendering, no WGPU.
+    # Software rendering, no WGPU. Upstream's packages (scripts/build-deb.sh)
+    # have since added gpu-renderer; it is not adopted here yet. The CPU renderer
+    # is upstream's runtime default either way.
     cargo build --frozen --release --bin flectar-mail \
         --no-default-features --features remote-content
 }
@@ -115,7 +119,7 @@ package() {
 
     # Stamps the desktop entry and AppStream metainfo with the Cargo version.
     # makepkg exports SOURCE_DATE_EPOCH, so the release date stays reproducible.
-    python scripts/stage-linux-metadata.py "$pkgdir"
+    python scripts/stage-linux-metadata.py --arch "$CARCH" "$pkgdir"
 
     install -Dm644 resources/app-icon/flectar-mail-masked-512.png \
         "$pkgdir/usr/share/icons/hicolor/512x512/apps/com.flectar.mail.png"
