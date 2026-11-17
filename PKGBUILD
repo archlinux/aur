@@ -1,6 +1,5 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-# https://github.com/danpozmanter/lite-anvil/releases/download/v2.17.0/lite-anvil-2.17.0-linux-x86_64.tar.gz
 _gitauthor=danpozmanter
 _gitname=lite-anvil
 _appname=${_gitname}
