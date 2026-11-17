@@ -1,0 +1,5 @@
+[diode-bin]
+source = "github"
+github = "diode-editor/diode"
+use_latest_release = true
+prefix = "v"
