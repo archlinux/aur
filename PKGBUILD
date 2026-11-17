@@ -17,12 +17,12 @@
 
 pkgname=kotora-bin
 _name=kotora
-pkgver=0.2.0
+pkgver=0.3.1
 # The upstream build: 1 is tag v<version>, a rebuild of the same version is v<version>-<build>.
 _build=1
 if ((_build > 1)); then _rel=$pkgver-$_build; else _rel=$pkgver; fi
 pkgrel=1
-pkgdesc='Anime tracker for MyAnimeList and AniList: recognises the episode in your player and asks before it records it (prebuilt)'
+pkgdesc='Anime and manga tracker for MyAnimeList and AniList: recognises the episode in your player and asks before it records it (prebuilt)'
 arch=('x86_64')
 url='https://kotora.moe'
 license=('GPL-3.0-or-later')
@@ -55,7 +55,7 @@ conflicts=("$_name")
 options=('!strip' '!debug')
 _tarball=$_name-$_rel-linux-x86_64.tar.gz
 source=("$pkgname-$_rel.tar.gz::https://github.com/hanami117/kotora/releases/download/v$_rel/$_tarball")
-sha256sums=('0959e46a08a45aa22f1958160196eca38a7fa8ca067e7411868791214df62010')
+sha256sums=('7333667e2a9d6520e1570956c6262f10eaf564e2572e131003eb2bd88e6c1052')
 
 package() {
   cd "$_name-$pkgver-linux-x86_64"
