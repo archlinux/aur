@@ -4,7 +4,7 @@
 
 pkgname=lidarr-develop
 _pkgname=Lidarr
-pkgver=3.1.6.5078
+pkgver=3.2.1.5196
 pkgrel=1
 pkgdesc='Music collection manager for newsgroup and torrent users (develop branch)'
 arch=(x86_64 aarch64 armv7h)
@@ -46,7 +46,7 @@ source=(
   lidarr.tmpfiles
   package_info
 )
-sha256sums=('be7452eee7c089781e9d46365fe3f30d5ba3e93007c5a93e6b2c1cecc4381f8f'
+sha256sums=('14c3a8c5f33a54a7264f7a0199b1d992d2528d8906f93f307304f89372e3554a'
             '48f4cc5040b1a51e624f5be4977078b77bf7f87b9c1fb7fa34e844da4c831401'
             '85098d47734e8087480f8a29eafec50faa453487221ef01173888155d2b06e42'
             'd71e37213ac65722e42f6f2c5772d4515c2d28a77b9f7608dc05c787d86ebaa5'
@@ -67,13 +67,15 @@ _branch='develop'
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
+  sed -i "s#</NoWarn>#</NoWarn> <WarningsNotAsErrors>NU1902;NU1903</WarningsNotAsErrors>#" src/Directory.Build.props
+
   # Remove upstream dotnet version
   rm global.json
 
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_NOLOGO=1
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
-  dotnet new globaljson --sdk-version 8.0.127 --roll-forward latestFeature
+  dotnet new globaljson --sdk-version 8.0.133 --roll-forward latestFeature
 
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
