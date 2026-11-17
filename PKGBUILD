@@ -17,7 +17,7 @@
 
 pkgname=kotora-bin
 _name=kotora
-pkgver=0.3.1
+pkgver=0.3.2
 # The upstream build: 1 is tag v<version>, a rebuild of the same version is v<version>-<build>.
 _build=1
 if ((_build > 1)); then _rel=$pkgver-$_build; else _rel=$pkgver; fi
@@ -55,7 +55,7 @@ conflicts=("$_name")
 options=('!strip' '!debug')
 _tarball=$_name-$_rel-linux-x86_64.tar.gz
 source=("$pkgname-$_rel.tar.gz::https://github.com/hanami117/kotora/releases/download/v$_rel/$_tarball")
-sha256sums=('7333667e2a9d6520e1570956c6262f10eaf564e2572e131003eb2bd88e6c1052')
+sha256sums=('dd843b6ff262925f1dec90565661d0aa38c0f8e146930646c9eb397e6deebf44')
 
 package() {
   cd "$_name-$pkgver-linux-x86_64"
