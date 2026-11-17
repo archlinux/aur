@@ -1,0 +1,5 @@
+[gossamer-bin]
+source = "github"
+github = "gossamer-lang/gossamer"
+use_latest_release = true
+prefix = "v"

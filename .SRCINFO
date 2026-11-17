@@ -1,0 +1,21 @@
+pkgbase = gossamer-bin
+	pkgdesc = The Gossamer programming language and tooling
+	pkgver = 0.80.0
+	pkgrel = 1
+	url = https://github.com/gossamer-lang/gossamer
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = gos
+	conflicts = gossamer
+	options = !strip
+	options = staticlibs
+	source_x86_64 = gos-x86_64-0.80.0.tgz::https://github.com/gossamer-lang/gossamer/releases/download/v0.80.0/gos-0.80.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 860bd72e4caec2aa96412a59e91bcea4a454aa61be0443b45182c1cb4097526e
+	source_aarch64 = gos-aarch64-0.80.0.tgz::https://github.com/gossamer-lang/gossamer/releases/download/v0.80.0/gos-0.80.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = c7e3981f7ba02e735e03018535619b76609e0fdd7f8a084152fb8f5b810c5420
+
+pkgname = gossamer-bin
