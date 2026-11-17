@@ -3,7 +3,7 @@
 # Contributor: Martin Harrigan <martinharrigan at gmail.com>
 pkgname="python-llm"
 _name=${pkgname#python-}
-pkgver="0.37.2"
+pkgver="0.37.3"
 pkgrel=1
 pkgdesc="Access large language models from the command-line"
 arch=("any")
