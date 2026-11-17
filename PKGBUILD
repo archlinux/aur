@@ -12,18 +12,18 @@ license=(custom:SIL)
 optdepends=('noto-fonts-emoji: Emoji characters')
 conflicts=('noto-fonts-ar')
 _url="https://raw.githubusercontent.com/notofonts/notofonts.github.io/noto-monthly-release-${pkgver}/fonts"
-source=("${_url}/NotoKufiArabic/googlefonts/variable-ttf/NotoKufiArabic[wght].ttf"
-        "${_url}/NotoNaskhArabic/googlefonts/variable-ttf/NotoNaskhArabic[wght].ttf"
-        "${_url}/NotoNaskhArabicUI/googlefonts/variable-ttf/NotoNaskhArabicUI[wght].ttf"
-        "${_url}/NotoSansArabic/googlefonts/variable-ttf/NotoSansArabic[wdth,wght].ttf"
-        "${_url}/NotoSansArabicUI/googlefonts/variable-ttf/NotoSansArabicUI[wdth,wght].ttf"
+source=("${_url}/NotoKufiArabic/unhinted/variable-ttf/NotoKufiArabic[wght].ttf"
+        "${_url}/NotoNaskhArabic/unhinted/variable-ttf/NotoNaskhArabic[wght].ttf"
+        "${_url}/NotoNaskhArabicUI/unhinted/variable-ttf/NotoNaskhArabicUI[wght].ttf"
+        "${_url}/NotoSansArabic/unhinted/variable-ttf/NotoSansArabic[wdth,wght].ttf"
+        "${_url}/NotoSansArabicUI/unhinted/variable-ttf/NotoSansArabicUI[wdth,wght].ttf"
         "${_url}/LICENSE"
         66-noto-ar.conf)
-sha256sums=('324f09566690e8572a805bc05f32f1cda6950db410578be0fb6a40e391ed26b2'
-            '67b5a525a661b607971fbd3f96a81b89d3a768e74534fca84f18ac97e6fab72f'
-            '0090039c26cffc8e1391b6825ac79fde6e8a01fd9da149ed181fdb4386ed7027'
-            '930b71f4cb4ae3eebe1efccbd5eecda5dd0c7de642af3f62c838bbdeac7afc18'
-            'ab32083dafd79e2070a0e85944fc97bbe31d5352bd9c507e745a20ba18224ab8'
+sha256sums=('87fd80c0822d84a43a793ef34a3695ca042c2cf7c0ed932d41b30defbd977be9'
+            '7b81922a002a54457b75d6df7199fc6fda50a138a98c37b707b81422a9fe8bc1'
+            '4713198071a99afad0a596df8ab3c71b1b59da092ad4f3c27c439949a7118fc8'
+            '3b735d0b7f04ddd5c6a3d7fafba8d8216420d3cbbba93ded80f34ba37369de00'
+            'c6c786b4117a8b69eec6048f381e0a00cf0fcdb0b4c33beb28ccf58b29374a4d'
             'f2095b08bed08b23a6fe26112fcd679a2bee3f002eef077eb05d215ed1051bd8'
             'b7831b701c7c9e6feece1781d2cefb98e23e90d5f25fbe7c10e1068b6162c25f')
 
