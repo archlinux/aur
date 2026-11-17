@@ -4,7 +4,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=recomplauncher-bin
-pkgver=0.90.0.57
+pkgver=0.90.0.59
 pkgrel=1
 pkgdesc="Finds, installs, updates and starts recompiled and decompiled PC games (upstream binary)"
 arch=('x86_64')
@@ -23,10 +23,10 @@ conflicts=('recomplauncher')
 options=('!strip' '!debug')
 # Upstream tags betas as v0.90.0-beta.42. pkgver keeps the form the AUR
 # package already had (0.90.0.42); pkg.sh keeps _tag in sync.
-_tag="v0.90.0-beta.57"
+_tag="v0.90.0-beta.59"
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/${_tag}/RecompLauncher_${_tag#v}_amd64.deb")
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('ad313839e669c59f91f7a0daa86c5591bf761cfc48a3c4e44bba814a6c19104c')
+sha256sums=('f127db31cfa5f884844844ab0f1117a5fd0d9f721fe2ab478fdd2e6a194e1999')
 
 package() {
   bsdtar -xOf "$srcdir/${pkgname}-${pkgver}.deb" 'data.tar.*' \
