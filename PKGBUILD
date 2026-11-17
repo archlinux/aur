@@ -1,14 +1,14 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=c6-git
-pkgver=0.1.0+r0+gf72a870
+pkgver=0.6.2+r91+g07d73b8
 pkgrel=1
-pkgdesc="c6 — TinyCC with language extensions"
+pkgdesc="A c6 compiler that is self-booting, independent of TCC, and supports multiple backends (native x86-64 / C99 / LLVM IR)"
 arch=($CARCH)
 url="https://github.com/c6lang/c6"
 license=('LGPL-2.0-or-later')
-provides=(${pkgname%-git} tcc)
-conflicts=(${pkgname%-git} tcc)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 depends=(
     'glibc'
 )
@@ -18,6 +18,7 @@ makedepends=(
 )
 checkdepends=(
     'go'
+    'python'
     'rust'
 )
 options=('docs' 'staticlibs' '!lto')
@@ -54,5 +55,5 @@ check() {
 package() {
     cd "${srcdir}/${pkgname%-git}"
     DESTDIR="${pkgdir}" cmake --install build
-    install -vDm0644 tcc/COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
