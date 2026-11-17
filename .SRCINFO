@@ -1,6 +1,6 @@
 pkgbase = seuil-git
 	pkgdesc = Pass Galaxy Buds audio between a Samsung phone and Linux over Samsung Continuity
-	pkgver = 1.0.1.r0.g338e197
+	pkgver = 1.0.1.r3.gcd18317
 	pkgrel = 1
 	url = https://github.com/Eddie02345/seuil
 	arch = x86_64
@@ -20,6 +20,8 @@ pkgbase = seuil-git
 	conflicts = seuil
 	conflicts = seuil-bin
 	source = seuil::git+https://github.com/Eddie02345/seuil.git
+	source = seuil.service
 	sha256sums = SKIP
+	sha256sums = c6dafe60aa18090696237eb0881a7e9cec27bf37c329ba3639f57b5a158cb08c
 
 pkgname = seuil-git

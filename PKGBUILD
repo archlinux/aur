@@ -2,7 +2,7 @@
 # Contributor: Eddie02345 <Eddie02345@users.noreply.github.com>
 _pkgname="seuil"
 pkgname="$_pkgname-git"
-pkgver=1.0.1.r0.g338e197
+pkgver=1.0.1.r3.gcd18317
 pkgrel=1
 pkgdesc="Pass Galaxy Buds audio between a Samsung phone and Linux over Samsung Continuity"
 arch=('x86_64')
@@ -14,8 +14,8 @@ makedepends=('cargo' 'git' 'rust')
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname" "$_pkgname-bin")
 
-source=("$_pkgname::git+$url.git")
-sha256sums=('SKIP')
+source=("$_pkgname::git+$url.git" seuil.service)
+sha256sums=('SKIP' 'c6dafe60aa18090696237eb0881a7e9cec27bf37c329ba3639f57b5a158cb08c')
 
 pkgver() {
   cd "$_pkgname"
