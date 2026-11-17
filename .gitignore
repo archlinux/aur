@@ -3,6 +3,9 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !freedesktop-java.desktop
 !freedesktop-jconsole.desktop
 !freedesktop-jshell.desktop
