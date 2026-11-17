@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=freac-git
-pkgver=1.1.7.r108.df59fd7
+pkgver=1.1.7.r217.10d73f2
 pkgrel=1
 pkgdesc="Audio converter and CD ripper with support for various popular formats and encoders."
 arch=('x86_64')
@@ -10,6 +10,7 @@ depends=(
   'boca-git'
   'faac'
   'faad2'
+  'flac'
   'hicolor-icon-theme'
   'lame'
   'libgudev'
