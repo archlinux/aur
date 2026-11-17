@@ -1,7 +1,7 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
 # Created with assistance from GLM 5.3 Flash.
 pkgname=vykar-gui-bin
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Desktop GUI for Vykar backup — Slint-based, with system tray and scheduled backups"
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ depends=('fontconfig' 'libxkbcommon' 'libgl' 'xdotool')
 provides=('vykar-gui')
 conflicts=('vykar-gui')
 source_x86_64=("vykar-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/borgbase/vykar/releases/download/v${pkgver}/vykar-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('6cb9c6ff7b0dfa9e78c33c21077c42e8450ef85d51b3aec2f7d92be5d8bcafd6')
+sha256sums_x86_64=('a114f57bf7f611f988e2ff62e397e4bbfb30e9c1647bdad1ba4bcbfcc139a4af')
 source_aarch64=("vykar-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/borgbase/vykar/releases/download/v${pkgver}/vykar-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_aarch64=('fec1465170045c1084c84368c3bb94e9923b3f0f75b51ec7cbac66487fd13ad3')
+sha256sums_aarch64=('40ffa464fe3a3795bbb5b11f11939dc278daa117907e51405a769758b41eabfc')
 
 package() {
     cd "$srcdir"
