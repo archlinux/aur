@@ -4,9 +4,9 @@
 
 pkgname='java-openjdk-bin'
 _majorver='27'
-_fullver="${_majorver}.0.1.0.3"
-_buildver='1'
-_hash='b14170c9b2de463d9b89442c6db3e384'
+_fullver="${_majorver}.0.1.1"
+_buildver='4'
+_hash='c3a705caf5044be8aa0b09e62be69b20'
 pkgver="${_fullver}.u${_buildver}"
 pkgrel=1
 pkgdesc="Java OpenJDK ${_fullver} Oracle Build."
@@ -26,8 +26,8 @@ _sourcePrefix="https://download.java.net/java/GA/jdk${_fullver}/${_hash}/${_buil
 _sourceSuffix="_bin.tar.gz"
 source_x86_64=("${_sourcePrefix}x64${_sourceSuffix}")
 source_aarch64=("${_sourcePrefix}aarch64${_sourceSuffix}")
-sha256sums_x86_64=('256199399aaddc6d66919b5de90794b4263e4ab312aa56692cb63b70a0abef41')
-sha256sums_aarch64=('a088a727fa3e76ebeadfa76ed9c1e9fecbdfa54ec752ecb669c38a8585e058a1')
+sha256sums_x86_64=('82172b79a4e4a8546e2538c525b63e020f419922a5d30f9873bbb832ce95637b')
+sha256sums_aarch64=('7b851f4cdf55ce48dc33584349177aa271df0bbd0ff5711a6e7fcd812ef5a90a')
 _jvmdir="usr/lib/jvm/java-${_majorver}-openjdk-bin"
 
 package() {
