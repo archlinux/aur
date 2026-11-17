@@ -3,7 +3,7 @@
 _pkgname=overte
 _pkgname_addition="-nodebug"
 pkgname=${_pkgname}-appimage
-pkgver=2026.04.1
+pkgver=2026.10.1
 pkgrel=1
 pkgdesc="Overte open source virtual worlds platform. "
 arch=('x86_64')
@@ -11,9 +11,9 @@ url="https://github.com/overte-org/overte"
 license=('Apache-2.0')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://overte-public.fra1.digitaloceanspaces.com/build/overte/release/${pkgver}/Overte-${pkgver}-x86_64.AppImage")
+source_x86_64=("${_appimage}::https://overte-public.fra1.digitaloceanspaces.com/build/overte/release/${pkgver}/Overte-${pkgver}-OpenGL-x86_64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('dc39f5b4694a1c48cfb1454a8922f6a25fa4db5820bf937113ebf4086aa99145')
+sha256sums_x86_64=('cd1e61a0351f0edfae123e734a838ff9536625811d53eb1872f98f9ec65b36d2')
 
 prepare() {
     chmod +x "${_appimage}"
