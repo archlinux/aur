@@ -18,8 +18,8 @@ _base_url="https://github.com/denisotree/rowq/releases/download/v${pkgver}"
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::${_base_url}/rowq-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::${_base_url}/rowq-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('')
-sha256sums_aarch64=('')
+sha256sums_x86_64=('f75ad0655a43201e254c2748abb95f3e996b8cf20d163c066be56a0cebad5ef2')
+sha256sums_aarch64=('d9a098a2b6d4ba068399abd6d1286f9e9fedb028cf87cf51e012e91658ba8bdf')
 
 package() {
     local _src_dir="rowq-v${pkgver}-${CARCH}-unknown-linux-gnu"
