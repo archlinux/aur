@@ -1,6 +1,6 @@
 # Maintainer: Bitty Maintainers <maintainers@bitty-terminal.dev>
 pkgname=bitty
-pkgver=0.0.44
+pkgver=0.0.45
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal"
 arch=('x86_64' 'aarch64')
