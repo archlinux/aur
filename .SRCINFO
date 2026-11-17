@@ -1,0 +1,23 @@
+pkgbase = python-typer-injector
+	pkgdesc = Dependency injection for typer
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/BenjyWiener/typer-injector
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-typer
+	provides = python-typer-injector
+	conflicts = python-typer-injector
+	source = python-typer-injector::git+https://github.com/BenjyWiener/typer-injector.git
+	sha256sums = SKIP
+
+pkgname = python-typer-injector
