@@ -1,0 +1,22 @@
+pkgbase = python-bytestruct
+	pkgdesc = Declarative binary records and composable codecs, using only the standard library
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/doronz88/bytestruct
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-flit-scm
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-typing_extensions
+	provides = python-bytestruct
+	conflicts = python-bytestruct
+	source = python-bytestruct::git+https://github.com/doronz88/bytestruct.git#tag=v0.1.2
+	sha256sums = 39955153a30ec1e706cde955d94827b96b9b4308891e90b5f5e92c661c6a18af
+
+pkgname = python-bytestruct
