@@ -2,4 +2,7 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
-!.nvchecker
+!.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
