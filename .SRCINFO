@@ -1,6 +1,6 @@
 pkgbase = datarig-bin
 	pkgdesc = A full-featured database client that lives in your terminal: light, fast, and safe by default
-	pkgver = 0.41.2
+	pkgver = 0.41.3
 	pkgrel = 1
 	url = https://github.com/DokaDev/datarig
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = datarig-bin
 	provides = datarig
 	conflicts = datarig
 	options = !strip
-	source_x86_64 = datarig-x86_64-0.41.2.tgz::https://github.com/DokaDev/datarig/releases/download/v0.41.2/datarig-v0.41.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 25af2b7a40be1f638e01b386786e27339094aa445bac5251bb10d4f365d21390
-	source_aarch64 = datarig-aarch64-0.41.2.tgz::https://github.com/DokaDev/datarig/releases/download/v0.41.2/datarig-v0.41.2-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 13d1b6bd111ce7dd6c9c1e09be28a110741202117a4fc12f038282361cf739a3
+	source_x86_64 = datarig-x86_64-0.41.3.tgz::https://github.com/DokaDev/datarig/releases/download/v0.41.3/datarig-v0.41.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2d9acfe809270acccda12f467ca4b80ba39176a50480d07ae4eab60ce385372e
+	source_aarch64 = datarig-aarch64-0.41.3.tgz::https://github.com/DokaDev/datarig/releases/download/v0.41.3/datarig-v0.41.3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 55fea25cf5fcae4b57eeacf3757ae652d45da910c844c3890e7e38445ad49b0c
 
 pkgname = datarig-bin
