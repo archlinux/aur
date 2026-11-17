@@ -2,7 +2,7 @@
 
 _gemname=solargraph
 pkgname=ruby-$_gemname
-pkgver=0.62.1
+pkgver=0.62.2
 pkgrel=1
 pkgdesc="A Ruby language server"
 arch=(any)
@@ -50,18 +50,18 @@ checkdepends=(
 )
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/castwide/${_gemname}/archive/v${pkgver}.tar.gz"
-  "no-git-lsfiles-and-lower-rbs-and-rdoc-requirements.patch"
+  "gemspec-compatibility.patch"
 )
-sha256sums=('6af16b87d4a95ccd92936c5f1cfa7102d4b8280fd74efeecc42d78a446a5018e'
-            'e1d0054dd02c42efbd598d49c49d3f6a190ef234ca1b1b222c109d416f0461b6')
-b2sums=('9cd9e78c539c51a23cb9e4e055c22af383b9820b39bc4332deed927fa63dddc50fdd7585c3a094ed4f796fd74dcdb42df9c84e01f4f8506049f18c2fa7a63b09'
-        'eca592100065db2dae1028f8762ceec4ed56e42609cddf901b7b0d858445e5f3034595ee65ede9d8a56d79944f4aa568579afb7fddf775ec17e0c6579c230998')
+sha256sums=('b9b1230439353c0b2b00d5922f907daa79d503662e93f59232e5e18bb3d2f3a1'
+            'a7b453c20228bcab72939e611cb7abc6598adfafdae664a5930dbb5d7afc203c')
+b2sums=('fa47e53ce279284f3397d885c3030025cbba67413b522db094348988df7aa60770a232ad383f92287711dda1c31c391b8572efbc82ee9033b28587013d0b1fbb'
+        'abaa9f5ef3b0924596b9665389e930bbcf35f0253e8e48496f36cf7f1156da8ff8f64db93655f173b237706a4a70c912dc1024a903f5f79e1997384a5464b50b')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
 
-  # Don't use git ls-files, and lower RBS and rdoc version requirements.
-  patch --strip=0 --input="../no-git-lsfiles-and-lower-rbs-and-rdoc-requirements.patch"
+  # Use packaged files and relax gem version requirements.
+  patch --strip=0 --input="../gemspec-compatibility.patch"
 
   # Skip bundler/setup in tests; we use GEM_HOME/GEM_PATH instead.
   sed --in-place "/require 'bundler\/setup'/d" spec/spec_helper.rb
