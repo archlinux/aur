@@ -1,6 +1,6 @@
 pkgname=fcitx5-areca-bin
 _pkgname=fcitx5-areca
-pkgver=8.3.11
+pkgver=8.3.15
 pkgrel=1
 pkgdesc='Areca Vietnamese input method for Fcitx5 using the Bamboo engine'
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=(
 )
 optdepends=('fcitx5-configtool: graphical configuration tool')
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-$pkgrel-x86_64.pkg.tar.zst")
-sha256sums=('e46d3ee2042d83bdde5e2c4b50a78e60f9cca1138a314a22c86a458ece8a0694')
+sha256sums=('44c3eade0262f3503198fb2dbcbc7e8592743c25e6f6cbf6bfd56e1127bc4fc0')
 options=(!debug !strip)
 
 package() {
