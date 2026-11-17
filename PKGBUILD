@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-resource-monitor
 pkgver=30
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitor the use of system resources like cpu, ram, disk, network and display them in gnome shell top bar"
 arch=("any")
 url="https://github.com/0ry0n/Resource_Monitor/"
@@ -23,6 +23,6 @@ build() {
 package() {
 	depends+=('gnome-shell')
 
-	install -d "$pkgdir/usr/share/gnome-shell/extensions"
-	unzip "${_srcdir}/build/Resource_Monitor@Ory0n.zip" -d "$pkgdir/usr/share/gnome-shell/extensions"
+	install -d "$pkgdir/usr/share/gnome-shell/extensions/Resource_Monitor@Ory0n"
+	unzip "${_srcdir}/build/Resource_Monitor@Ory0n.zip" -d "$pkgdir/usr/share/gnome-shell/extensions/Resource_Monitor@Ory0n"
 }
