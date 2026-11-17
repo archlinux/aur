@@ -6,7 +6,7 @@ pkgname=(
   'antora-cli'
   'antora-site-generator'
 )
-pkgver=3.2.1
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="A modular site generator for documentation written in AsciiDoc."
 arch=('any')
@@ -27,8 +27,8 @@ noextract=(
   "cli-$pkgver.tgz"
   "site-generator-$pkgver.tgz"
 )
-sha256sums=('e43d5d9bdb6652791262fef1c254d8edcaec8fc97ba12f52023aab04f6102dc5'
-            'd70969d0e309db8483f4e71ed92d5aa92cb37b9ef054fe0c178e5dfdc202666b')
+sha256sums=('37fa4f8d9a121e556054d569fe0af4e897d77347c632f20751b56b84e76db359'
+            '3e23856f561767acda03568c044b35313702045eae222e172e907a70c98f96b9')
 
 _package() {
   local file="$1"
