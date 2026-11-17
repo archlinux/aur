@@ -7,6 +7,15 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
+## 20261113
+
+### Added:
+
+- AC_SERPRO_AE.crt
+- AC_SOLUTI_SSL_EV_G5.crt
+- AC_VALID_AE.crt
+- Autoridade_Certificadora_PRIMECERT_v2.crt
+
 ## 20261106
 
 ### Added:
