@@ -17,7 +17,7 @@
 
 pkgbase=vtium-git
 pkgname=vtium-git
-pkgver=0.1.0alpha.8.r0.gfc6ccc6
+pkgver=0.1.0alpha.9.r0.g4aa2eed
 pkgrel=1
 pkgdesc='Terminal for the Linux console, drawn through KMS/DRM (git main)'
 arch=('x86_64')
