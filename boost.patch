@@ -1,0 +1,12 @@
+diff --git a/deps/Boost/Boost.cmake b/deps/Boost/Boost.cmake
+--- a/deps/Boost/Boost.cmake
++++ b/deps/Boost/Boost.cmake
+@@ -54,6 +54,10 @@ orcaslicer_add_cmake_project(Boost
+         "${_context_impl_line}"
+         "${_boost_c_flags_line}"
+         "${_boost_cxx_flags_line}"
++    PATCH_COMMAND
++        sed -i
++        "/source_group(TREE.*include\\/boost\\/locale/i\\list(FILTER sources_inc EXCLUDE REGEX \"locale[.]hpp$\")"
++        libs/locale/CMakeLists.txt
+ )
