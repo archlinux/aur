@@ -9,12 +9,11 @@ Group=wyoming-openwakeword
 DynamicUser=true
 
 EnvironmentFile=/etc/conf.d/wyoming-openwakeword
-ExecStart=python3 -m wyoming_openwakeword \
-    --preload-model $MODEL \
+ExecStart=/usr/bin/wyoming-openwakeword \
     --uri $URI \
     --threshold $THRESHOLD \
-    --trigger-level $TRIGGER_LEVEL
+    --trigger-level $TRIGGER_LEVEL \
+    $EXTRA_ARGS
 
 [Install]
 WantedBy=multi-user.target
-

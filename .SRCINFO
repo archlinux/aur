@@ -1,7 +1,7 @@
 pkgbase = python-wyoming-openwakeword
 	pkgdesc = Wyoming Server for OpenWakeWord
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rhasspy/wyoming-openwakeword
 	arch = any
 	license = Apache-2.0
