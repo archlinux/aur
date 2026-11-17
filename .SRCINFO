@@ -1,15 +1,15 @@
 pkgbase = otti
 	pkgdesc = The one-time password manager for the terminal, with interactive and fancy TUI
 	pkgver = 0.2.7
-	pkgrel = 2
-	url = https://github.com/dnaka91/otti
+	pkgrel = 3
+	url = https://forge.dnaka91.rocks/dnaka91/otti
 	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = cargo
 	depends = gcc-libs
-	source = otti-0.2.7.tar.gz::https://github.com/dnaka91/otti/archive/v0.2.7.tar.gz
-	b2sums = 4dffb7c6564622a227a32cbf0dc435d20f5a5c699f5ddb0f8f46df972cbc08732f9ad91f474ba69e00b738daa9a9bd1589fd2e58ff06dbbba6000942c9f39c46
+	source = otti-0.2.7.tar.gz::https://forge.dnaka91.rocks/dnaka91/otti/archive/v0.2.7.tar.gz
+	b2sums = dc4da234e61c35ce1029300911f23a83b44d72e8870d8e17f00990c28fb549c94087c73fa645458384f6a4cf8c230cc953b9733789998a665933286f66ef3fa1
 
 pkgname = otti
