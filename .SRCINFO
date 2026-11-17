@@ -1,6 +1,6 @@
 pkgbase = pipixiv-bin
 	pkgdesc = 一个使用Compose Multiplatform开发的第三方Pixiv客户端，支持国内直连
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://github.com/darriousliu/PiPixiv
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = pipixiv-bin
 	depends = fontconfig
 	depends = mesa-utils
 	options = !debug
-	source = https://github.com/darriousliu/PiPixiv/releases/download/v2.6.0/PiPixiv-v2.6.0-linux-x86_64.tar.gz
-	sha256sums = f2f6ae786eff804267b48eab84f2b0edc93831a98ed53c4e489fc02c6876ffd6
+	source = https://github.com/darriousliu/PiPixiv/releases/download/v2.6.1/PiPixiv-v2.6.1-linux-x86_64.tar.gz
+	sha256sums = 894226c06298dc21e6e98dfe9c867fb46ea769ba344ff5bbbd6d846079f494ff
 
 pkgname = pipixiv-bin
