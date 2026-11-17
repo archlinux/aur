@@ -1,10 +1,10 @@
 pkgbase = gb4me-git
 	pkgdesc = Nintendo Game Boy / Game Boy Color emulator in C++23 (SDL3 + Vulkan)
-	pkgver = r5.730d09e
+	pkgver = r12.bac58d5
 	pkgrel = 1
 	url = https://github.com/mAmineChniti/GB4ME
 	arch = x86_64
-	license = custom:unknown
+	license = MIT
 	makedepends = cmake
 	makedepends = git
 	makedepends = shaderc
