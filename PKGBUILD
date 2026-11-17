@@ -48,14 +48,14 @@ options=(!strip !debug)
 install=flaresolverr.install
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/${__pkgname}/${__pkgname}/releases/download/v${pkgver}/${_pkgname}_linux_x64.tar.gz"
-  "https://raw.githubusercontent.com/${__pkgname}/${__pkgname}/v${pkgver}/LICENSE"
+  "flaresolverr.license::https://raw.githubusercontent.com/${__pkgname}/${__pkgname}/v${pkgver}/LICENSE"
   flaresolverr.service
   flaresolverr.sysusers
   flaresolverr.tmpfiles
   flaresolverr.install
 )
 sha256sums=('84f6df48849b2e1742692841805c4f284118fe4e2798b49d3a78159e89a46a91'
-            '822369fb1f97651e6d0b00128451987e0ce98adc3007dc886db68adbf891d2da'
+            'c1e8bd07c81b8dfd1e7493d4d7d1f10717d156cfcd91119836e6ec36e89198ed'
             '98379aef64fb530a22bcd949ead5cefc66c745bc683e5cedb37be371ae25eab8'
             '62f114d4e559cf9dae22bfd90759eff697e42da5f700a52988e70e78f3048ae2'
             '4a61a6d9db1a9f4ec0812d86ef524a7f575a45f272404f0ebfc79376628feeb2'
@@ -67,7 +67,7 @@ package() {
   cp -dr "${_pkgname}" "${pkgdir}/opt"
   rm "${pkgdir}/opt/flaresolverr/_internal/libreadline.so.8"
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 flaresolverr.license "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 flaresolverr.service "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
   install -Dm644 flaresolverr.sysusers "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
   install -Dm644 flaresolverr.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
