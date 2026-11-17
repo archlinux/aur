@@ -28,13 +28,11 @@ source=(
   ombi.service
   ombi.sysusers
   ombi.tmpfiles
-  ombi.install
 )
 sha256sums=('2b2b5833477a5451d5060c0838a52bde07db34370859bf90b2f826cc4903d8bd'
             '24f1dbe25589719e831d512624ceeb1289a7037002b74d9473719c8564a8950f'
             'd78dadc24ddb11e3ef07269a0a1c6dcf8ca8d32d39d152eaa9bffab6c32dba36'
-            '71fe8ec1810d7ab91b30d8e07b9edc6f97827034935404124cc6e428bbc7c5bf'
-            '9b1514478af3e13284214495066e6233318c25e44929947e66dcf299daa7c23c')
+            '71fe8ec1810d7ab91b30d8e07b9edc6f97827034935404124cc6e428bbc7c5bf')
 
 case ${CARCH} in
   x86_64) _CARCH='x64' ;;
