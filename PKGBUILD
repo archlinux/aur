@@ -14,7 +14,7 @@ arch=('i686' 'x86_64' 'aarch64')
 license=('GPL-2.0-or-later')
 url='https://github.com/srb2-preservation/srb2-legacy'
 depends=('sdl3' 'sdl3_mixer' 'curl' 'libpng' 'libgme' 'libopenmpt' 'zlib' "srb2-legacy-data>=$_dataver")
-makedepends=('git' 'mesa')
+makedepends=('git' 'mesa' 'shaderc' 'spirv-cross')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/srb2-preservation/srb2-legacy.git")
