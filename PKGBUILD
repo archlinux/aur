@@ -1,7 +1,7 @@
 # Maintainer: sphekes <sphekes@qq.com>
 
 pkgname=openidea-appimage
-pkgver=0.1.45
+pkgver=0.1.46
 pkgrel=1
 pkgdesc='Open-source IntelliJ IDEA-style IDE rebuilt in Rust (AppImage)'
 arch=('x86_64' 'aarch64')
@@ -52,8 +52,8 @@ sha256sums=('164afa76e861e7be17ec716f60e1d8a81f749cd130c3787515d6fbe07c9521a4'
             '2a7e8d8ae9e8facc84818546ae2a8d83aec5e9c80a675ff789acd1c338b53b3d'
             '6245ecd81789d113a600fa0e4f5f503e6d1b4f425860f6047dc945560dfcf13c'
             '05c6130cda97e7600ca91427a41e8a065efcf82365fc0293e7de80faec494c07')
-sha256sums_x86_64=('0dd6b38974b0e89362e9820a291ce3855457e826ec688d33a74162c5a11168c7')
-sha256sums_aarch64=('c3cb6ca9a6c485f70936de759a09bd4184208a8539a1d995f88b8499008f496b')
+sha256sums_x86_64=('4569be5cc87d253c212cb3649c9c8e53a3a0d2e0fde9deea78fa34e7f3e40c04')
+sha256sums_aarch64=('f6ca341ae1d9f1714deb69117671335d3d9ab58646b2254d601a4e17cb6ea1a3')
 source_x86_64=("${url}/releases/download/v${pkgver}/OpenIDEA_${pkgver}_amd64.AppImage")
 source_aarch64=("${url}/releases/download/v${pkgver}/OpenIDEA_${pkgver}_aarch64.AppImage")
 noextract=("OpenIDEA_${pkgver}_amd64.AppImage" "OpenIDEA_${pkgver}_aarch64.AppImage")
