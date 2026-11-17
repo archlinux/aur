@@ -1,6 +1,6 @@
 pkgbase = ssh-config-editor-git
-	pkgdesc = An Electron App, Manage your .ssh/config.(Use system-wide electron)
-	pkgver = 1.0.3.r0.gcc90723
+	pkgdesc = An Electron App, Manage your .ssh/config.
+	pkgver = 1.0.6.r0.g09009e1
 	pkgrel = 1
 	url = https://github.com/anchel/ssh-config-editor
 	arch = any
@@ -9,13 +9,15 @@ pkgbase = ssh-config-editor-git
 	makedepends = npm
 	makedepends = nvm
 	makedepends = git
-	makedepends = curl
-	depends = electron33
-	provides = ssh-config-editor=1.0.3
+	makedepends = jq
+	depends = electron33-bin
+	provides = ssh-config-editor=1.0.6
 	conflicts = ssh-config-editor
 	source = ssh-config-editor.git::git+https://github.com/anchel/ssh-config-editor
+	source = ssh-config-editor.js
 	source = ssh-config-editor.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
 pkgname = ssh-config-editor-git
