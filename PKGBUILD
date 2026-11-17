@@ -2,7 +2,7 @@
 # Maintainer: G-grbz <gkhn.gurbuz@hotmail.com>
 
 pkgname=lurviko
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc='Qt Quick file manager with media libraries, cloud storage and an encrypted vault'
 arch=('x86_64')
@@ -23,7 +23,7 @@ checkdepends=(
 )
 optdepends=(
   'git: repository management, synchronization and status badges'
-  'samba: authenticated folder sharing in Properties'
+  'samba: folder sharing in Properties, Samba password and share status'
   'udisks2: mounting disk images (ISO, IMG, SquashFS, ...) from the context menu'
   'qemu-img: mounting qcow2, VMDK, VDI, VHD and VHDX images (qemu-nbd)'
   'python-cryptography: standalone vault recovery tool'
@@ -44,15 +44,16 @@ optdepends=(
   'python-numpy: optional subtitle worker audio processing'
   'python-pillow: optional media worker artwork processing'
   'breeze-icons: fallback icon theme'
-  'kio-extras: additional network and filesystem protocols'
+  'kio-extras: additional network and filesystem protocols (SFTP, SMB, ...)'
+  'avahi: finding SSH/SFTP servers on the local network'
   'kio-admin: authenticated administrator locations'
-  'polkit: administrator authentication for file ownership and permissions'
+  'polkit: administrator authentication for permissions, Samba password and share status'
   'xdg-desktop-portal: optional system-wide native Open/Save dialogs'
 )
 install=lurviko.install
 source=("Lurviko-${pkgver}-${pkgrel}.tar::${url}/releases/download/v${pkgver}/Lurviko-${pkgver}.tar")
-# SHA-256 of the reproducible v1.6.2 source archive.
-sha256sums=('3d455c257cc02bb2483dd7e103e683de2923e3c39abd1d166fed6c70344e904b')
+# SHA-256 of the reproducible v1.6.3 source archive.
+sha256sums=('5d79c4f5dd83c5fa63d72cf2436c2f06bc90542899fa76590ebf3b31ef053266')
 
 prepare() {
   # Installed workers are found in /usr/share/Lurviko. Do not embed the
