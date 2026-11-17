@@ -1,0 +1,3 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/cache/pacoflexo 0750 pacoflexo pacoflexo -
+d /var/lib/pacoflexo   0750 pacoflexo pacoflexo -

@@ -1,0 +1,78 @@
+# Use `systemctl edit pacoflexo` for local changes; this file is replaced on
+# package upgrades.
+#
+# If you move cache_dir/state_dir in /etc/pacoflexo/config.toml, add them with
+# an override:
+# [Service]
+# ReadWritePaths=/srv/pacoflexo
+#
+# Seed directories ([seed] dirs in config.toml) must stay read-only to the
+# service. The host's pacman cache is listed below; ProtectSystem=strict
+# already makes everything outside ReadWritePaths read-only, and this line
+# states it explicitly. For other seed dirs add an override, e.g.:
+# [Service]
+# ReadOnlyPaths=-/srv/old-pacoloco-cache
+#
+# To listen on a port below 1024:
+# [Service]
+# AmbientCapabilities=CAP_NET_BIND_SERVICE
+# CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+[Unit]
+Description=pacoflexo caching proxy for Arch Linux package repositories
+Documentation=https://github.com/FableStream/pacoflexo
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=pacoflexo
+Group=pacoflexo
+ExecStartPre=/usr/bin/pacoflexo --config /etc/pacoflexo/config.toml --check
+ExecStart=/usr/bin/pacoflexo --config /etc/pacoflexo/config.toml
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+Environment=RUST_LOG=info,pgp=error
+LimitNOFILE=65536
+UMask=0027
+
+CacheDirectory=pacoflexo
+StateDirectory=pacoflexo
+ConfigurationDirectory=pacoflexo
+ReadWritePaths=/var/cache/pacoflexo /var/lib/pacoflexo
+# Seed dir: readable, never writable ("-": fine if it doesn't exist).
+ReadOnlyPaths=-/var/cache/pacman/pkg
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+PrivateUsers=true
+DevicePolicy=closed
+CapabilityBoundingSet=
+AmbientCapabilities=
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProcSubset=pid
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RemoveIPC=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+
+[Install]
+WantedBy=multi-user.target

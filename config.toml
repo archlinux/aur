@@ -1,0 +1,47 @@
+# pacoflexo configuration. All keys are optional; see
+# /usr/share/doc/pacoflexo/config.example.toml for every option.
+
+# 9129 serves pacoloco-style clients, 7878 flexo-style clients (both URL
+# styles work on both ports).
+listen = ["0.0.0.0:9129", "0.0.0.0:7878"]
+
+# Owned by pacoflexo alone. Never use /var/cache/pacman/pkg here.
+cache_dir = "/var/cache/pacoflexo"
+state_dir = "/var/lib/pacoflexo"
+
+pacoloco_prefixes = ["archlinux"]
+repos = ["core", "extra", "multilib"]
+arches = ["x86_64"]
+db_ttl_secs = 60
+refresh_interval_secs = 900
+startup_scan = "full"
+
+[mirrors]
+urls = ["https://geo.mirror.pkgbuild.com/"]
+use_status_json = true
+countries = []
+max_candidates = 20
+latency_rank = true
+
+[verify]
+signatures = true
+keyring = "/usr/share/pacman/keyrings/archlinux.gpg"
+revoked = "/usr/share/pacman/keyrings/archlinux-revoked"
+
+[retention]
+keep_versions = 1
+unaccessed_days = 30
+
+[prefetch]
+enabled = false
+max_age_days = 30
+
+[seed]
+# Read-only directories checked on a cache miss before going upstream. Files
+# are verified like downloads and copied into cache_dir; pacoflexo never
+# writes, renames or deletes anything here. To reuse the host's pacman cache,
+# uncomment the next line (the systemd unit already mounts it read-only):
+#dirs = ["/var/cache/pacman/pkg"]
+dirs = []
+# Import every verified current package from dirs once at startup.
+scan_on_start = false
