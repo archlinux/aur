@@ -2,7 +2,7 @@
 
 pkgname=python-pyiosbackup
 pkgver=0.2.4
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="A python parser for iOS backups"
 arch=('any')
@@ -38,9 +38,9 @@ backup=()
 options=()
 # install=
 changelog=
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('SKIP')
+sha256sums=('9617253e4de78221a0813154f02070114ee5de4020be9ab7299c802f9d77f6c1')
 #validpgpkeys=()
 
 prepare(){
