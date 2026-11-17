@@ -1,0 +1,4 @@
+[python-pyopen-wakeword]
+source = "git"
+git = "https://github.com/rhasspy/pyopen-wakeword.git"
+prefix = "v"
