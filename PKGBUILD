@@ -21,6 +21,7 @@ url="https://github.com/MX-Linux/custom-toolbox"
 license=('GPL3')
 depends=('qt6-base' 'qt6-declarative' 'polkit')
 makedepends=('cmake' 'ninja' 'qt6-declarative' 'qt6-tools')
+backup=('etc/custom-toolbox/custom-toolbox.conf')
 source=("https://github.com/MX-Linux/custom-toolbox/archive/refs/tags/26.11.tar.gz")
 sha256sums=('a3440acb099d560b16fcbb5e501d53ce952f3d3e35aeac8a9bb273e0325efd05')
 
