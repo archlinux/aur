@@ -4,15 +4,15 @@ _pkgauthor=hidehic0
 _pkgname=acc_utils
 pkgname=${_pkgname}-bin
 pkgver=0.0.8
-pkgrel=0
+pkgrel=2
 pkgdesc="A tool with enhanced functionality using files created by atcoder-cli"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('Unlicense')
 arch=('x86_64')
 depends=('bash')
 # install=acc_utils.install
-source=("${url}/releases/download/v${pkgver}-1/${_pkgname}_Linux_x86_64.tar.gz")
-sha256sums=('4ba4a00161a1e933113016ac8f909298e3667e036d2933f496b43bb68b480c4a')
+source=("${url}/releases/download/v${pkgver}-2/${_pkgname}_Linux_x86_64.tar.gz")
+sha256sums=('6335ef4120d14036aadc91fccb5a862502c72419ba8b26862bc2f44609c26e6b')
 
 build() {
 	cd "${srcdir}/" || exit
@@ -29,6 +29,10 @@ package() {
 	install -Dm755 "./${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
 	install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	install -d "${pkgdir}/usr/share/licenses/${pkgname}/third_party_licenses"
+	cp -r third_party_licenses/. ${pkgdir}/usr/share/licenses/${pkgname}/third_party_licenses
+
 	install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	install -Dm644 "./completions/bash" "${pkgdir}/usr/share/bash-completion/completions/acc_utils"
