@@ -1,6 +1,6 @@
 pkgbase = deskfleet-bin
 	pkgdesc = Manage a team's AI agents and working environments across machines
-	pkgver = 0.18.1
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://github.com/yet-another-ai/deskfleet
 	arch = x86_64
@@ -42,7 +42,7 @@ pkgbase = deskfleet-bin
 	optdepends = gst-plugin-va: remote desktop VA-API encoding with a compatible driver
 	optdepends = gst-plugin-pipewire: Wayland remote desktop capture
 	optdepends = xdg-desktop-portal: Wayland permissions with a compatible desktop portal backend
-	provides = deskfleet=0.18.1
+	provides = deskfleet=0.18.2
 	conflicts = deskfleet
 	options = !strip
 	options = !debug
@@ -56,9 +56,9 @@ pkgbase = deskfleet-bin
 	sha256sums = 4e0cede1b4c3a9c8395c0a2d908c74883966e4706ca296834844c1e88ce95201
 	sha256sums = dc1810de68504c499ce46ac842fbe4e3e324e5b76c8564c1013ade5dc997dd5e
 	sha256sums = 2b3a66be0c474a6d1af484a17184ac3fd7091bef983744f48cbdabf05533aab8
-	source_x86_64 = https://github.com/yet-another-ai/deskfleet/releases/download/v0.18.1/deskfleet-0.18.1-linux-x64.tar.gz
-	sha256sums_x86_64 = fcb0d184c046fadfc8a63d6b4f0c8197d153267265addb912db8e7f8cff353a8
-	source_aarch64 = https://github.com/yet-another-ai/deskfleet/releases/download/v0.18.1/deskfleet-0.18.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = 180d59800dfed49d0a23533af9d078025406f2e15e53b41977e32d94c33e0142
+	source_x86_64 = https://github.com/yet-another-ai/deskfleet/releases/download/v0.18.2/deskfleet-0.18.2-linux-x64.tar.gz
+	sha256sums_x86_64 = 2d198fc0581bb8bc4e3caff4f5bb34d304a542549a179152e399d912c3c88423
+	source_aarch64 = https://github.com/yet-another-ai/deskfleet/releases/download/v0.18.2/deskfleet-0.18.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = b223bf24a6b4e6cfc864101c20f530eeb9fb6c5d938657c45e19e258578b9f62
 
 pkgname = deskfleet-bin
