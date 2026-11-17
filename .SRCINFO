@@ -1,0 +1,21 @@
+pkgbase = zource
+	pkgdesc = 2D radial tree and 3D rotating bubble repository visualizer for Kitty, Ghostty, Foot, and Wayland
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/chrisfair/zource
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = zig>=0.17.0
+	depends = glibc
+	optdepends = git: Visualize Git repository commit history
+	optdepends = mercurial: Visualize Mercurial (hg) repository history
+	optdepends = wayland: Native Wayland window mode (--wayland)
+	optdepends = libglvnd: Hardware-accelerated EGL/GLES 3D bubble shaders on Wayland
+	optdepends = ffmpeg: Encode headless PPM frame streams to MP4/WebM
+	provides = zource
+	conflicts = zource
+	source = zource-0.1.1.tar.gz::https://github.com/chrisfair/zource/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = dd09814f61987eaeef794042166524d69b1cf674afbaa8f59007cd2774fff1aa
+
+pkgname = zource
