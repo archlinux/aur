@@ -1,15 +1,23 @@
 pkgbase = lexend-fonts-git
-	pkgdesc = Lexend is a variable typeface designed to improve reading fluency
+	pkgdesc = A variable font family designed to aid in reading proficiency.
 	pkgver = r114.7894f02
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://lexend.com
 	arch = any
-	license = custom:OFL-1.1
+	license = OFL-1.1-RFN
 	makedepends = git
-	provides = lexend-fonts
-	conflicts = lexend-fonts
-	source = lexend-fonts-git::git+https://github.com/googlefonts/lexend
+	source = git+https://github.com/googlefonts/lexend.git
 	sha256sums = SKIP
 
-pkgname = lexend-fonts-git
+pkgname = woff2-lexend-fonts-git
+	pkgdesc = A variable font family designed to aid in reading proficiency. - woff2 format
+	provides = woff2-lexend-fonts
+
+pkgname = ttf-lexend-fonts-git
+	pkgdesc = A variable font family designed to aid in reading proficiency. - ttf format
+	provides = ttf-lexend-fonts
+
+pkgname = ttf-lexend-fonts-variable-git
+	pkgdesc = A variable font family designed to aid in reading proficiency. - variable format
+	provides = ttf-lexend-fonts-variable
