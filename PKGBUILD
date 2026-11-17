@@ -2,7 +2,7 @@
 
 pkgbase=vcutil
 pkgname=(ipmikvm)
-pkgver=1.63 # renovate: datasource=github-tags depName=ossobv/vcutil
+pkgver=1.67 # renovate: datasource=github-tags depName=ossobv/vcutil
 pkgrel=1
 pkgdesc="Misc. simple utilities to aid version control and host maintenance."
 license=()
@@ -10,7 +10,7 @@ arch=('any')
 depends=()
 url=https://github.com/ossobv/vcutil
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('d3fff81431566e6642fcb57ad111c9e668cd9aa32d463b93d896448d3df5a5a0c897cb9d9803f4fa21b0a317c4b189b45f42c82d37edcb819be5d7585ed2fae5')
+sha512sums=('f041f76920b2e24b1a2b1df490094bbea4fbbec9021209cc53592e0a466196724d5771f0c63596132c48bffd2cf2b5754087284ee7e42e165bd8676d30a6a370')
 
 declare -A pkgdescs
 pkgdescs=([ipmikvm]="A wrapper to call the SuperMicro iKVM console bypassing Java browser plugins.")
