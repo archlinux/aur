@@ -10,7 +10,7 @@
 
 pkgname=ffmpeg-headless
 pkgver=9.0.2
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -219,7 +219,7 @@ package() {
     libharfbuzz.so
     # libjxl.so
     libopenmpt.so
-    libplacebo.so
+    # libplacebo.so
     librav1e.so
     librsvg-2.so
     librubberband.so

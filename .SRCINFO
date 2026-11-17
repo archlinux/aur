@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-headless
 	pkgdesc = Complete solution to record, convert and stream audio and video; optimised for server (headless) systems
 	pkgver = 9.0.2
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://ffmpeg.org
 	arch = i686
@@ -171,7 +171,6 @@ pkgname = ffmpeg-headless
 	depends = libfreetype.so
 	depends = libharfbuzz.so
 	depends = libopenmpt.so
-	depends = libplacebo.so
 	depends = librav1e.so
 	depends = librsvg-2.so
 	depends = librubberband.so
