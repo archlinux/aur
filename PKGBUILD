@@ -1,7 +1,7 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=('mod_tile' 'renderd')
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=("${url}/archive/v${pkgver}/mod_tile-${pkgver}.tar.gz"
         'renderd-postgresql.service'
         'renderd.sysusers'
         'renderd.tmpfiles')
-sha256sums=('909ba5c52aec27f8b6998843f5df1c4ae271e470d047952ad7ff8dc68733be1f'
+sha256sums=('a8fa86fec638d1f3a6268d1eddf6154712b539602b3f524aafcceede37809e61'
             '7bb1c67f92e9d253cecbb2f17048fba151a67e470c231fc33605937917b0567a'
             'd6c009e95380d8a9be41f0bd077638cb6adbebb74fff238a2bfc9fbbb3ed49fa'
             'cd6871cdb3e640912c95499e97fe1a2496ba95f102ec65f112bcd546ba736514'
