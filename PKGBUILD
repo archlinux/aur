@@ -1,7 +1,7 @@
 # Maintainer: Bernardo Pinto Gomes <bernardopgomes@hotmail.com>
 # shellcheck disable=all
 pkgname=full-upgrade
-pkgver=3.55.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Orquestrador Bash modular para atualizar, manter e auditar máquinas Arch Linux"
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
 )
 makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('631a696c574f0b70074a8898225f8d94d16143bd9d6623342028b133d6c8c43c')
+sha256sums=('cf4b19f52cdaffbbfdb1f400c9864e9784c70dce68f6ac9a2f8f326e9286ff18')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -63,6 +63,7 @@ package() {
 
   # Documentação e licença.
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 docs/*.md -t "${pkgdir}/usr/share/doc/${pkgname}/docs/"
   install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
