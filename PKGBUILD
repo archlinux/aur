@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=ffmpeg-dektec-bin
-pkgver=9.0.2_dektec12
+pkgver=9.0.2_dektec13
 pkgrel=1
 epoch=1
 _tag="n${pkgver%%_*}-${pkgver#*_}"
@@ -20,7 +20,7 @@ conflicts=('ffmpeg-dektec')
 # producing an empty -debug package for DekTec's already-stripped binaries.
 options=('!debug')
 source=("${pkgname}-${_tag}-linux64.tar.xz::https://github.com/dektec-com/ffmpeg-dektec/releases/download/${_tag}/ffmpeg-dektec-${_tag}-linux64.tar.xz")
-sha256sums=('e9dfbb770280eb3a443276ae9583433295e26f1e7f5c3afaf67aa281b9a5efbe')
+sha256sums=('e063646f806e43af9bd4b81397a43922a06ea72dec8d58ad583754c6c8b71217')
 
 package() {
   cd "ffmpeg-dektec-${_tag}-linux64"
