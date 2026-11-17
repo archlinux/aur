@@ -1,10 +1,10 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=chiaki-ng
-pkgver=1.10.0
+pkgver=1.10.1
 # commit IDs can be found at https://github.com/streetpea/chiaki-ng/releases
-_commit="3f8fd712cbc0becd3a5ea588340d72bf451c12b5"
-pkgrel=2
+_commit="f30da0a"
+pkgrel=1
 pkgdesc="Free and Open Source PlayStation Remote Play Client"
 arch=(i686 x86_64)
 url="https://streetpea.github.io/chiaki-ng/"
@@ -17,6 +17,7 @@ depends=(
         'hicolor-icon-theme'
         'hidapi'
         'json-c'
+        'libevent'
         'libgcc'
         'libplacebo'
         'libstdc++'
@@ -47,43 +48,31 @@ provides=('chiaki')
 conflicts=('chiaki')
 # At time of writing, the dev's public key isn't available on keyservers, import from github using, e.g.
 # curl -o - https://github.com/streetpea.gpg | gpg --import
-validpgpkeys=('FCCF693D5A9081571B90DDA2B0050C45E5804C8D')
-source=(git+"https://github.com/streetpea/${pkgname}.git?signed#commit=${_commit}"
-        Qt6GuiPrivate-fix.patch
-        https://github.com/streetpea/chiaki-ng/commit/0caf11cbdd665ec40d81d245aa4da215504ac459.patch)
-sha256sums=('2e39dcb7cd97721e7425bb04d2bb4a1e0b7fd67ce2b87787b1dd020f00f1b354'
-            '121199cce7692ac30d4353b36041004007665c92f9895175e6d0f09b86d60e0f'
-            '476046bfc77c09569b6d05e46ae7ba673a500a51ee5f48795c410c3cd3215d04')
+validpgpkeys=('609B7D18288DF6E62624B0694569A5F4961E8ED9') # NOTE: upstream changed  keys for the 1.10.1 release, re-import from github
+source=(git+"https://github.com/streetpea/${pkgname}.git?signed#commit=${_commit}")
+sha256sums=('99280fb53e88e313dda370d1590f5d10b20236572220e1d75069550a6c4dc46a')
 
 prepare() {
   cd ${pkgname}
-  mkdir -p build
-  # Remove curl submodule
-  git rm third-party/curl
-  # Fix curl lib name
-  sed -i 's:libcurl_shared:libcurl:' lib/CMakeLists.txt
-  # Patch missing CMake module
-  patch -Np1 -i "${srcdir}/Qt6GuiPrivate-fix.patch"
-  # Patch for ffmpeg9 support
-  patch -Np1 -i "${srcdir}/0caf11cbdd665ec40d81d245aa4da215504ac459.patch"
-  # Initialize remaining submodules
   git submodule update --init
 }
 
 build() {
-  cd ${pkgname}/build
-  export CFLAGS+=" -std=gnu17"
-  cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="None" \
+  cmake \
+    -B build \
+    -S ${pkgname} \
+    -Wno-author \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_BUILD_TYPE="None" \
     -DCHIAKI_USE_SYSTEM_CURL="ON"
-  make
+  cmake --build build
 }
 
 package() {
-  cd ${pkgname}/build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-  for lic in ../LICENSES/*; do
+  for lic in ${pkgname}/LICENSES/*; do
     install -m644 ${lic} "${pkgdir}/usr/share/licenses/${pkgname}/${lic##*/}"
   done
 }
