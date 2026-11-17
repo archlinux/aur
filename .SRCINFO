@@ -1,6 +1,6 @@
 pkgbase = x-link-collector
 	pkgdesc = Middle-click a tweet to save its link and close the tab; a local panel downloads every photo and video
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/abel0x/x-link-collector
 	install = x-link-collector.install
@@ -14,7 +14,7 @@ pkgbase = x-link-collector
 	optdepends = yt-dlp: download videos (otherwise the panel installs its own copy)
 	optdepends = gallery-dl: download photos (otherwise the panel installs its own copy)
 	optdepends = ffmpeg: join a video whose picture and sound X serves apart
-	source = x-link-collector-1.4.2.tar.gz::https://github.com/abel0x/x-link-collector/archive/v1.4.2.tar.gz
-	sha256sums = c3b67e449a1f5fe05b7938845f99d7136f062a7eac24bc26c7792f5349a0f789
+	source = x-link-collector-1.5.0.tar.gz::https://github.com/abel0x/x-link-collector/archive/v1.5.0.tar.gz
+	sha256sums = 1e0d8ad701fb09eb42b95b3b64342448988d74ca38b11293ff4596832b531173
 
 pkgname = x-link-collector
