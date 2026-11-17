@@ -1,11 +1,12 @@
-diff --git a/src-tauri/src/bootstrap/run.rs b/src-tauri/src/bootstrap/run.rs
---- a/src-tauri/src/bootstrap/run.rs
-+++ b/src-tauri/src/bootstrap/run.rs
-@@ -49,7 +49,7 @@ pub fn run_mcp_stdio() {
+diff --git a/crates/datazen-desktop/src/bootstrap/run.rs b/crates/datazen-desktop/src/bootstrap/run.rs
+--- a/crates/datazen-desktop/src/bootstrap/run.rs
++++ b/crates/datazen-desktop/src/bootstrap/run.rs
+@@ -53,8 +53,7 @@
                  .await
                  .expect("Failed to init store"),
          );
--        let prompts_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("resources/prompts");
+-        let prompts_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+-            .join("../../crates/datazen/resources/prompts");
 +        let prompts_dir = PathBuf::from("/usr/lib/DataZen/prompts");
          let app_state = match build_app_state(store, Some(prompts_dir)).await {
              Ok(s) => s,
