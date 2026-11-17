@@ -5,7 +5,7 @@
 pkgname=radarr-develop
 _pkgname=Radarr
 pkgver=7.0.3.10918
-pkgrel=1
+pkgrel=2
 pkgdesc='Movie organizer/manager for usenet and torrent users (develop branch)'
 arch=(x86_64 aarch64 armv7h)
 url='https://radarr.video'
@@ -109,7 +109,7 @@ build() {
     && dotnet build-server shutdown # Build servers do not terminate automatically
 
   # Build frontend
-  yarn run build
+  yarn run build --env production
 }
 
 package() {
