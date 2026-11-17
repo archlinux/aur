@@ -3,6 +3,9 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !sonarr.service
 !sonarr.sysusers
 !sonarr.tmpfiles
