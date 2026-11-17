@@ -2,19 +2,25 @@
 
 pkgname=xdg-desktop-portal-umbriel-git
 pkgver=0.1.0.r0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='xdg-desktop-portal backend for the Umbriel compositor'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/xdg-desktop-portal-umbriel'
 license=('MIT')
 depends=(
   'cairo'
+  'fontconfig'
+  'freetype2'
   'gcc-libs'
+  'glib2'
   'glibc'
-  'gtk4'
+  'harfbuzz'
   'libdrm'
+  'libglvnd'
   'libpipewire'
+  'libxkbcommon'
   'mesa'
+  'pango'
   'sdbus-cpp'
   'tomlplusplus'
   'wayland'
@@ -27,6 +33,7 @@ makedepends=(
   'ninja'
   'nlohmann-json'
   'pkgconf'
+  'stb'
   'wayland-protocols'
 )
 optdepends=(
@@ -51,7 +58,7 @@ build() {
   arch-meson "$srcdir/xdg-desktop-portal-umbriel" \
     "$srcdir/xdg-desktop-portal-umbriel/build" \
     -Db_ndebug=true \
-    -Dpicker=enabled
+    -Dpicker=true
   meson compile -C "$srcdir/xdg-desktop-portal-umbriel/build"
 }
 
