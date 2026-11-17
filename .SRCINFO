@@ -1,6 +1,6 @@
 pkgbase = zimfw
 	pkgdesc = Zsh plugin manager
-	pkgver = 1.21.0
+	pkgver = 1.21.1
 	pkgrel = 1
 	url = https://zimfw.sh
 	install = zimfw.install
@@ -8,7 +8,7 @@ pkgbase = zimfw
 	license = MIT
 	makedepends = ruby-erb
 	depends = zsh>=5.2
-	source = zimfw-1.21.0.tar.gz::https://github.com/zimfw/zimfw/archive/refs/tags/v1.21.0.tar.gz
-	sha256sums = 1772f20f893b8181a60855e988c16b24b10e6c537b1e27d859d443c20ea7be57
+	source = zimfw-1.21.1.tar.gz::https://github.com/zimfw/zimfw/archive/refs/tags/v1.21.1.tar.gz
+	sha256sums = 9f07f6a20adb958acd85b94bdc28895f17dc6773cf95fbc841fabd23eddbcb83
 
 pkgname = zimfw

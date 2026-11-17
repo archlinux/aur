@@ -1,7 +1,7 @@
 # Maintainer: Eric Nielsen <ericbn at proton dot me>
 
 pkgname=zimfw
-pkgver=1.21.0
+pkgver=1.21.1
 pkgrel=1
 pkgdesc='Zsh plugin manager'
 arch=('any')
@@ -10,12 +10,12 @@ license=('MIT')
 depends=('zsh>=5.2')
 makedepends=('ruby-erb')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zimfw/zimfw/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1772f20f893b8181a60855e988c16b24b10e6c537b1e27d859d443c20ea7be57')
+sha256sums=('9f07f6a20adb958acd85b94bdc28895f17dc6773cf95fbc841fabd23eddbcb83')
 install=zimfw.install
 
 build() {
 	cd "$pkgname-$pkgver"
-	ZIMFW_VENDOR='Arch Linux AUR' erb src/zimfw.zsh.erb > zimfw.zsh
+	ZIMFW_VENDOR='Arch Linux AUR' make -B
 }
 
 package() {
