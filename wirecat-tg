@@ -1,0 +1,4 @@
+#!/bin/sh
+# Package updates belong to pacman, not the upstream npm notifier.
+export TG_NO_UPDATE_CHECK=1
+exec /usr/bin/node /usr/lib/wirecat-tg-cli/dist/bin/tg.js "$@"
