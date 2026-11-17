@@ -1,6 +1,6 @@
 # Maintainer: Isaac Angello <isaac.angello@gmail.com>
 pkgname=waydroid-binds
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="GUI and scripts for Waydroid shared folders and firewall"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python' 'pyside6')
 makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/isaacangello/WaydroidBinds/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f74b2ad21b6a73dfbe5f74cf0324ec746a788d415499c7a2759f9cdf76b1b2da')
+sha256sums=('9d51218289bfa53ae075be5d18dbe2f52df38e376358ace06cde784def782881')
 
 _srcdir="WaydroidBinds-${pkgver}"
 
@@ -28,7 +28,7 @@ package() {
   install -dm 0755 "$pkgdir/usr/share/waydroid-binds"
   install -m 0755 waydroid-binds-gui "$pkgdir/usr/bin/waydroid-binds-gui"
   install -m 0755 setup-waydroid-binds.sh setup-waydroid-firewall.sh \
-    revert-waydroid-binds.sh copy-existing-media.sh \
+    revert-waydroid-binds.sh copy-existing-media.sh apply-binds.sh \
     "$pkgdir/usr/share/waydroid-binds/"
   cp -a gui "$pkgdir/usr/share/waydroid-binds/"
   install -dm 0755 "$pkgdir/usr/share/applications" "$pkgdir/usr/share/metainfo" "$pkgdir/usr/share/licenses/$pkgname"
