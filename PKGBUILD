@@ -7,16 +7,33 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=5.5.0.r1641.gcb0eb56851
+pkgver=5.7.0.r2302.g1c4eaea9df
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
 url=http://www.darktable.org/
 license=('GPL3')
 depends=(
-  pugixml libjpeg-turbo colord-gtk libgphoto2 openexr lensfun iso-codes zlib
-  exiv2 openjpeg2 graphicsmagick lua54 osm-gps-map libsecret openmp gmic libavif
-  jasper libjxl potrace
+  colord-gtk
+  exiv2
+  gmic
+  graphicsmagick
+  iso-codes
+  jasper
+  lensfun
+  libavif
+  libgphoto2
+  libjpeg-turbo
+  libjxl
+  libsecret
+  lua54
+  openexr
+  openjpeg2
+  openmp
+  osm-gps-map
+  potrace
+  pugixml
+  zlib
 )
 optdepends=(
   'dcraw: base curve script'
@@ -26,8 +43,19 @@ optdepends=(
   'gnuplot: noise profile script'
 )
 makedepends=(
-  git cmake intltool desktop-file-utils llvm clang portmidi
-  python-jsonschema libwebp perl-image-exiftool libxslt)
+  clang
+  cmake
+  desktop-file-utils
+  git
+  intltool
+  libwebp
+  libxslt
+  llvm
+  onnxruntime
+  perl-image-exiftool
+  portmidi
+  python-jsonschema
+)
 conflicts=(darktable)
 provides=(darktable)
 install=darktable.install
