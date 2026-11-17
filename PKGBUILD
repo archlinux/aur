@@ -2,7 +2,7 @@
 # Contributor: Jacqueline Fisher <jcfisher@reality-overwritten.net>
 pkgname=postybirb
 _pkgname=PostyBirb
-pkgver=4.1.5
+pkgver=4.1.6
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -29,10 +29,12 @@ makedepends=(
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
-    "${pkgname}.sh"
+    "${pkgname}.js"
+	"${pkgname}.sh"
 )
-sha256sums=('11a11f1461e9452f38a11bd76c9cb9890b642903e8105f28cfe171a0977f40cc'
-            'ef3b8fed44fdace077b976cc3a89a93bde368a9e445e4134efd7a44358676a27')
+sha256sums=('a6014d8052091ce770ea9a745a80c3495610aa55ae79db5bfc5063ea1b5f7f84'
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -50,12 +52,10 @@ _get_app_dir() {
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _get_electron_version() {
-	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
-		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
-		| grep -oE '[0-9]+' | head -1)
-	[[ -z "${_elec_ver}" ]] && return 1
-	(( _elec_ver == _electronversion )) && c=32 || c=31
-	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
+	local _v=$(find "$(_get_project_dir)" -name package.json ! -path '*/node_modules/*' -exec jq -r '.. | (.electron? // empty) | strings' {} + 2>/dev/null | sed 's/^[^0-9]*//' | grep -E '^[0-9]' | head -1 | sed 's/\..*//')
+	_v=${_v:-$(grep -hoE 'electron[@":][^0-9]*[0-9]+\.[0-9.]+' "$(_get_project_dir)"/*lock* 2>/dev/null | grep -oE '[0-9]+\.[0-9.]+' | head -1 | sed 's/\..*//')}
+	[[ "$_v" =~ ^[0-9] ]] || return 1
+	(( ${_v} == _electronversion )) && echo -e "\033[1;32mElectron version: ${_v}\033[0m" || echo -e "\033[1;31mElectron version: ${_v} (expected ${_electronversion})\033[0m"
 }
 _set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -120,7 +120,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
-    " "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh" "${srcdir}/${pkgname}.js"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -147,7 +147,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.js" -t "${pkgdir}/usr/lib/${pkgname}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "$(_get_project_dir)/packaging-resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "$(_get_project_dir)/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
