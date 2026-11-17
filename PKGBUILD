@@ -31,7 +31,6 @@ source=(
   ombi.service
   ombi.sysusers
   ombi.tmpfiles
-  ombi.install
 )
 source_x86_64=("${pkgname}-${pkgver}.x86_64.tar.gz::https://github.com/Ombi-app/Ombi/releases/download/v${pkgver}/linux-x64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}.aarch64.tar.gz::https://github.com/Ombi-app/Ombi/releases/download/v${pkgver}/linux-arm64.tar.gz")
@@ -43,8 +42,7 @@ noextract=(
 )
 sha256sums=('24f1dbe25589719e831d512624ceeb1289a7037002b74d9473719c8564a8950f'
             'd78dadc24ddb11e3ef07269a0a1c6dcf8ca8d32d39d152eaa9bffab6c32dba36'
-            '71fe8ec1810d7ab91b30d8e07b9edc6f97827034935404124cc6e428bbc7c5bf'
-            '9b1514478af3e13284214495066e6233318c25e44929947e66dcf299daa7c23c')
+            '71fe8ec1810d7ab91b30d8e07b9edc6f97827034935404124cc6e428bbc7c5bf')
 sha256sums_x86_64=('a1603b9a200a6beb11866d543ba5f4efb88965999159d019c2690340ace0f43f')
 sha256sums_aarch64=('965b9a9430422c20d7ebe17033885c3345dcaf34c5710e4e85e81eb9c08a8631')
 sha256sums_armv7h=('b315802f96dff5337f57526b5c83cef4d78572032f11496e4243b428e808c972')
