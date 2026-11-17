@@ -1,0 +1,22 @@
+pkgbase = mime-guardian-bin
+	pkgdesc = Keeps your default applications the way you set them (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ItzTas/mime-guardian
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	optdepends = libnotify: desktop notifications when a default is put back
+	optdepends = shared-mime-info: wildcard types such as image/*
+	provides = mime-guardian=0.1.0
+	conflicts = mime-guardian
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/ItzTas/mime-guardian/releases/download/v0.1.0/mime-guardian-0.1.0-x86_64.tar.gz
+	sha256sums_x86_64 = 91082365051e7f458aa6c5566336fd6e7f8a211f46450b87611771cb259cb394
+	source_aarch64 = https://github.com/ItzTas/mime-guardian/releases/download/v0.1.0/mime-guardian-0.1.0-aarch64.tar.gz
+	sha256sums_aarch64 = 19d9e9f266737b6000745d181bc41ceadf0e045ab3fad14dfa04a3dc889bdbbf
+
+pkgname = mime-guardian-bin
