@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gale
-pkgver=1.23.3
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="A modern mod manager for Thunderstore"
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('acaac515b3c84e69ae8e79c2d80b46ca2337db253e824c38d10a747c41295f98'
+sha256sums=('2b6f92da3a5e60e0b67bfa8deb2253a44caae9e073ca65e19cb347875b10dea2'
             '52abef25674537cd97783ae8dfa97e3569305856bea094c43862ec82d6e21360')
 
 prepare() {
@@ -41,9 +41,9 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   CFLAGS+=" -ffat-lto-objects"
+  export PNPM_HOME="$srcdir/pnpm-home"
   export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
   export ZSTD_SYS_USE_PKG_CONFIG=1
-  export PNPM_HOME="$srcdir/pnpm-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo tauri build --no-bundle -- --frozen
