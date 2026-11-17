@@ -31,6 +31,13 @@ backup=(
 	boot/scripts/grml.sh
 	etc/grml-config-update.conf
 )
+# Secure Boot: with sbctl keys installed, the .install script signs
+# /boot/grml/vmlinuz and adds it to sbctl's database. Caution with TPM2 disk
+# unlocking (systemd-cryptenroll --tpm2-device): a TPM2 policy bound only to
+# PCR 7 (the default) checks just the Secure Boot state and keys, so it also
+# unseals the LUKS key for the signed grml, which boots to a root shell
+# without a password. Bind to more than PCR 7 (signed PCR 11 policy with UKIs,
+# systemd-pcrlock), use a TPM2 PIN, or do not sign grml.
 optdepends=('sbctl: sign the grml kernel for Secure Boot')
 
 _iso=grml-$_flavour-$pkgver-amd64.iso
