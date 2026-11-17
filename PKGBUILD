@@ -13,7 +13,7 @@ _crubit_rev=25d2c01bde904c3333bb2d48201e5cbb186a1c7f
 # ungoogled chromium variables
 _uc_usr=ungoogled-software
 _uc_ver=157.0.8103.78-1
-pkgdesc="ungoogled-chromium with native Wayland Vulkan rendering and Vulkan Video decoding"
+pkgdesc="ungoogled-chromium with native Wayland Vulkan rendering and Vulkan Video decoding/encoding"
 arch=('x86_64')
 url="https://github.com/lumexren/vulcanium"
 license=('BSD-3-Clause')
@@ -417,6 +417,13 @@ build() {
   # https://crbug.com/957519#c122
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
+  # Portable x86_64 release builds
+  if [[ -n ${VULCANIUM_PORTABLE:-} ]]; then
+    CFLAGS=${CFLAGS//-march=native/-march=x86-64 -mtune=generic}
+    CXXFLAGS=${CXXFLAGS//-march=native/-march=x86-64 -mtune=generic}
+    RUSTFLAGS=${RUSTFLAGS//-C target-cpu=native/}
+  fi
+
   (
     cd ../crubit
     _rustc_libs="$_rust_sysroot/lib/rustlib/$(rustc --print host-tuple)/lib"
@@ -455,7 +462,16 @@ _push_flag() {
   local tok="$1"
   case "$tok" in
     --enable-features=*)
-      _enable_features+=("${tok#--enable-features=}")
+      local IFS=, feat
+      for feat in ${tok#--enable-features=}; do
+        case "$feat" in
+          VaapiOnNvidiaGPUs|VaapiVideoDecoder|VaapiVideoEncoder|VaapiVideoDecodeLinuxGL|AcceleratedVideoDecodeLinuxGL|"")
+            ;;
+          *)
+            _enable_features+=("$feat")
+            ;;
+        esac
+      done
       ;;
     --disable-features=*)
       _disable_features+=("${tok#--disable-features=}")
@@ -484,6 +500,8 @@ for arg in "$@"; do
   _push_flag "$arg"
 done
 
+_disable_features+=("VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiOnNvidiaGPUs,AcceleratedVideoDecodeLinuxGL")
+
 if (( ${#_enable_features[@]} > 0 )); then
   _flags+=("--enable-features=$(IFS=,; echo "${_enable_features[*]}")")
 fi
@@ -491,6 +509,7 @@ if (( ${#_disable_features[@]} > 0 )); then
   _flags+=("--disable-features=$(IFS=,; echo "${_disable_features[*]}")")
 fi
 
+export CHROME_VERSION_EXTRA="vulcanium"
 export CHROME_WRAPPER="$(readlink -f "$0")"
 exec /usr/lib/chromium/chromium "${_flags[@]}"
 EOF
