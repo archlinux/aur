@@ -7,7 +7,7 @@
 
 pkgname=evince-no-gnome
 _pkgname=evince
-pkgver=48.4
+pkgver=48.5
 pkgrel=1
 pkgdesc="Document viewer, no gnome dependencies"
 url="https://gitlab.gnome.org/GNOME/evince"
@@ -59,7 +59,7 @@ options=('!emptydirs')
 source=(
   "git+https://gitlab.gnome.org/GNOME/evince.git?signed#tag=${pkgver/[a-z]/.&}"
 )
-b2sums=('8270950b1ee6ed489b2f018a29dde676303a8ac195aae810d09f6a6ff9d3f5f44292eadc4b4d5fe59d82c333f4bdb4e69c938a1e1ff92c808ea373dd7b1d161a')
+b2sums=('c968b1c0c3a1f541d3914953063005f49beb689a53b57a302d0662a88c714ce7d7119c615706abd6e1f8d98abaa591253f5fed4987489686290b02211695216d')
 validpgpkeys=(
   3289FDCF12AC2321BB41E9EF342B349ED9FE78F0 # Germán Poo-Caamaño <gpoo@gnome.org>
 )
@@ -77,9 +77,6 @@ build() {
     -D keyring=disabled
     -D gtk_doc=false
   )
-
-  # Work around kpathsea build failure with GCC 15
-  CFLAGS+=" -DHAVE_STRING_H -DHAVE_STDLIB_H"
 
   arch-meson evince build "${meson_options[@]}"
   meson compile -C build
