@@ -1,6 +1,6 @@
 pkgbase = rsv-ng
 	pkgdesc = A runit service manager with smart completions, scaffolding, and more
-	pkgver = 138
+	pkgver = 139
 	pkgrel = 1
 	url = https://gitlab.com/runit-rsv/rsv-main
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = rsv-ng
 	optdepends = voix: privilege escalation
 	provides = rsv-ng
 	conflicts = rsv
-	source = rsv-ng-88cb2a80758577273fe86a1d055d58599e1715b4.tar.gz::https://gitlab.com/runit-rsv/rsv-main/-/archive/88cb2a80758577273fe86a1d055d58599e1715b4/rsv-main-88cb2a80758577273fe86a1d055d58599e1715b4.tar.gz
-	sha256sums = 766c5c953dbd3cd456ae2d02172c4e145e9c919bd64c73edad199d5ba65a517c
+	source = rsv-ng-92a440bbbf7f2c5c80e20cff920aadc310890caa.tar.gz::https://gitlab.com/runit-rsv/rsv-main/-/archive/92a440bbbf7f2c5c80e20cff920aadc310890caa/rsv-main-92a440bbbf7f2c5c80e20cff920aadc310890caa.tar.gz
+	sha256sums = 16cd192ba6baa4fee00bf7d07e5efbd8d14c6d1fe6ed52c383dd525bf5488bad
 
 pkgname = rsv-ng
