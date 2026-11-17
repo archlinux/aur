@@ -6,3 +6,6 @@
 !autobrr.service
 !autobrr.sysusers
 !autobrr.tmpfiles
+!LICENSES/
+!LICENSE
+!REUSE.toml
