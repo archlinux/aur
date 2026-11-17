@@ -1,4 +1,5 @@
 # Maintainer: executter <executter at hotmail dot com>
+# Co-Maintainer: mhaquila
 
 pkgname=openrsat-qt6
 _pkgname=openrsat
