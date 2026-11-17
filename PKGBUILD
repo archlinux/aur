@@ -2,7 +2,7 @@
 
 pkgname=linuxmix-git
 pkgver=0.4.4
-pkgrel=2
+pkgrel=1
 arch=(any)
 url=https://codeberg.org/Birbwell/linuxmix
 
