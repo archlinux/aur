@@ -6,7 +6,7 @@
 _name=portaudio
 pkgname=lib32-portaudio
 pkgver=19.7.0
-pkgrel=3
+pkgrel=5
 epoch=1
 pkgdesc='A free, cross-platform, open source, audio I/O library (32 bit)'
 arch=(x86_64)
@@ -28,15 +28,6 @@ provides=(
 source=($url/archive/v$pkgver/$_name-v$pkgver.tar.gz)
 sha512sums=('7e347a174109b661a685bcd617cc8fe00929c6fbf28f142fd7709a8ddbb9b5ed6e805be6647a44b4b9441b79e3474561de6f8e351b4ffc024952ed3e0e27ac1c')
 b2sums=('db16882e97e60ab47b37c6d8851aa29e16e321531f3890f70390d89364aee2c1a9b42be09e7534f38d1c9ca48dd466b512874731049e42759a674571d6054220')
-
-prepare() {
-  cd $_name-$pkgver
-  (
-    cd bindings/cpp
-    autoreconf -fiv
-  )
-  autoreconf -fiv
-}
 
 build() {
   local configure_options=(
