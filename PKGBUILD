@@ -16,7 +16,7 @@
 # Contributor: Supdrewin <supdrewin at gmail dot com>
 
 pkgbase=lib32-mesa-amdonly-gaming-git
-pkgver=26.3.0_devel.231170.745709a0004.d41d8cd
+pkgver=27.0.0_devel.234069.abb197d7545.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 
 pkgname=(
@@ -146,6 +146,7 @@ build() {
     -D vulkan-layers=device-select,overlay
     -D vulkan-beta=true
     --wrap-mode=nofallback
+    --force-fallback-for=syn,paste,rustc-hash
     --buildtype=release
   )
 
@@ -299,7 +300,6 @@ package_lib32-amdonly-gaming-mesa-git() {
     "lib32-libva-mesa-driver=$epoch:$pkgver-$pkgrel"
     "lib32-mesa-libgl=$epoch:$pkgver-$pkgrel"
     "lib32-libva-driver"
-    "lib32-opengl-driver"
     "lib32-opengl-driver"
   )
   conflicts=(
