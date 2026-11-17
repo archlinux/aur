@@ -2,7 +2,7 @@
 
 _pkgname=tdns
 pkgname="${_pkgname}-bin"
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 
 pkgdesc="A powerful, lightweight CLI to manage Technitium DNS server via HTTP API endpoint"
@@ -15,7 +15,7 @@ source=(
     "${url}/releases/download/v${pkgver}/tdns_${pkgver}_linux_amd64.tar.gz"
     "tdns-LICENSE::https://raw.githubusercontent.com/mbevc1/tdns/refs/tags/v${pkgver}/LICENSE"
 )
-sha256sums=('22740303bc4655ba9989526051d68a04ba49a2495d1a9befacc8e5322c10bd8f'
+sha256sums=('b909f11ba4938d54170713e9f14e4a604b2897b93bad6775391994801e2a08c4'
             '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5')
 
 package() {
