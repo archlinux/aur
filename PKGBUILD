@@ -6,7 +6,7 @@ _appname=${_gitname%-releases}
 pkgname=${_appname}-bin
 pkgdesc="A terminal built from the ground up to run coding agents and your own local agents"
 
-pkgver=0.31.0
+pkgver=0.32.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ depends=('glibc' 'libgcc' 'libsoup3' 'gtk3' 'gdk-pixbuf2' 'webkit2gtk-4.1' 'dbus
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname^}_${pkgver}_${_barch[0]}.deb")
-sha256sums_x86_64=('cb0fd67ec1a4292d59be6dfecad990173ce33be8759dace7637d24186889aece')
+sha256sums_x86_64=('8a3ea630e1e03dfdc2f9f4d5d59b9ee2d25a9946210d3c0c97ca5e4b3ac57c97')
 
 
 package() {
