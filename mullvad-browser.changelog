@@ -1,3 +1,10 @@
+Mullvad Browser 16.0.2 - November 16 2026
+ * All Platforms
+   * Updated Mullvad Browser Extension to 0.9.11
+   * Updated uBlock Origin to 1.76.4
+   * Bug 593: Re-Add Cloudflare as available DoH provider in about:settings [mullvad-browser]
+   * Bug 594: Update relevant neterror page when Quad9 DoH resolution fails [mullvad-browser]
+
 Mullvad Browser 16.0.1 - November 10 2026
  * All Platforms
    * Updated Firefox to 153.7.0esr
