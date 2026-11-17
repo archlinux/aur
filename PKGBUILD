@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ conflicts=('spotifast-bin' 'spotifast-git')
 # undefined ring_core_* symbols.
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/spotifast-v${pkgver}-source.tar.gz")
-sha256sums=('ec1d2ee66d3649355f8db46d9b7a7c48a7ac918084a3ee91ec5bc7d333d64b64')
+sha256sums=('761ed18013781e4fb76f3a73be45e39166d12c46231d3881800d12707eeb5eef')
 
 _source_dir() {
   printf '%s\n' "${srcdir}/spotifast-${pkgver}"
