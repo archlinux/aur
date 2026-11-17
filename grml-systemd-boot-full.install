@@ -33,6 +33,37 @@ _check_esp() {
 MSG
 }
 
+# True if any LUKS volume has a key slot enrolled with systemd-cryptenroll --tpm2-device.
+_luks_has_tpm2() {
+	command -v cryptsetup >/dev/null 2>&1 || return 1
+	local dev
+	for dev in $(lsblk -nrpo NAME,FSTYPE 2>/dev/null | awk '$2 == "crypto_LUKS" { print $1 }'); do
+		cryptsetup luksDump "$dev" 2>/dev/null | grep -q 'systemd-tpm2' && return 0
+	done
+	return 1
+}
+
+# Signing grml with the owner's key makes it indistinguishable from the host
+# kernel for a TPM2 policy bound only to PCR 7 (Secure Boot state and keys, the
+# systemd-cryptenroll default). The TPM then releases the LUKS key to grml,
+# which boots to a root shell without any password.
+_tpm2_warning() {
+	if _luks_has_tpm2; then
+		cat <<'MSG'
+==> WARNING: a LUKS volume on this system is enrolled for TPM2 unlocking.
+    The grml kernel is signed with your Secure Boot key. If the TPM2 policy is
+    bound only to PCR 7 (the systemd-cryptenroll default), the TPM unseals the
+    disk key for grml just as for your own system: anyone at the machine can
+    boot grml and unlock the disk as root, without a passphrase.
+    Bind the key to more than PCR 7 (e.g. a signed PCR 11 policy with UKIs, or
+    systemd-pcrlock), add a TPM2 PIN (--tpm2-with-pin=yes), or do not sign grml.
+MSG
+	elif [ "$1" = install ]; then
+		echo "==> Note: if you enroll TPM2 disk unlocking later, do not bind it to PCR 7 alone:"
+		echo "    a signed grml would then unlock the disk too (see the PKGBUILD comment at optdepends)."
+	fi
+}
+
 # Secure Boot: systemd-boot only loads a signed kernel when SB is enforced.
 # If sbctl is set up, sign the grml kernel and keep it in sbctl's database
 # (-s) so the sbctl pacman hook re-signs it after future upgrades.
@@ -42,6 +73,7 @@ _sign_kernel() {
 		echo "==> sbctl found but no keys installed; grml kernel not signed"; return 0; }
 	if sbctl sign -s /boot/grml/vmlinuz >/dev/null 2>&1; then
 		echo "==> Signed /boot/grml/vmlinuz with sbctl (Secure Boot)"
+		_tpm2_warning "$1"
 	else
 		echo "==> WARNING: sbctl sign /boot/grml/vmlinuz failed; grml will not boot with Secure Boot enforced"
 	fi
@@ -49,7 +81,7 @@ _sign_kernel() {
 
 post_install() {
 	_apply_keymap
-	_sign_kernel
+	_sign_kernel install
 	cat <<'MSG'
 ==> grml entry: /boot/loader/entries/grml.conf, live system under /boot/grml/.
     Boot it directly: systemctl reboot --boot-loader-entry=grml.conf
@@ -68,7 +100,7 @@ MSG
 
 post_upgrade() {
 	_apply_keymap
-	_sign_kernel
+	_sign_kernel upgrade
 	cat <<'MSG'
 ==> grml live system updated. grml*.conf, grml.sh and grml-config-update.conf are backup files:
     if modified, the new version is placed next to them as .pacnew.
