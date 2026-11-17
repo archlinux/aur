@@ -1,7 +1,7 @@
 # Maintainer: win0na <winona@winneon.moe>
 pkgname=apw-cli
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Read Apple Passwords on Linux'
 arch=('x86_64' 'aarch64')
 url='https://github.com/win0na/apw'
@@ -14,14 +14,17 @@ sha256sums=('4f98f322b5b5f42be2dae646868627eb7b298ce5eaba53b77c3a6911914e7e44')
 
 build() {
   cd "apw-$pkgver"
+  # Arch's LDFLAGS make rustc drop the aws-lc static archive, which leaves
+  # every aws_lc_* symbol undefined at link time. Clear them for cargo.
   # No --frozen: the crates are not vendored, so cargo fetches them here.
-  cargo build --release --locked
+  LDFLAGS= CFLAGS= CXXFLAGS= cargo build --release --locked
 }
 
 check() {
   cd "apw-$pkgver"
-  # build() has already populated the cargo cache.
-  cargo test --release --locked --offline
+  # Same flag problem as build(); build() does not fetch dev-dependencies,
+  # so this cannot be offline.
+  LDFLAGS= CFLAGS= CXXFLAGS= cargo test --release --locked
 }
 
 package() {

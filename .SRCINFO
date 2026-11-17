@@ -1,7 +1,7 @@
 pkgbase = apw-cli
 	pkgdesc = Read Apple Passwords on Linux
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/win0na/apw
 	arch = x86_64
 	arch = aarch64
