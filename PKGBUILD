@@ -1,8 +1,8 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=whodb-bin
-pkgver=0.138.0
-_bin=whodb-0.138.0
+pkgver=0.139.0
+_bin=whodb-0.139.0
 pkgrel=1
 pkgdesc='Database workspace with a web UI (prebuilt)'
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
@@ -28,10 +28,10 @@ sha256sums=('94de90ec29ed45fef786194d005b6011ddcdf4dff923448920cb11054f1c4055'
             'f90fb36508968f08d52f0b859bbd8a0b0a36e6258e78ed105fd7e6dd78a6ddbc'
             '907874f38c2748569413955d5722119c9c855efabbbfe30a5a8c7dec8e2e803e'
             '37540f248340b95d3a57125a8c5bda9a5a5cd332ec747d0ca15e2d7b83c5f4c0')
-sha256sums_x86_64=('e642952a7e4d8630bb9609e56325ec65842b8483470011de2ff4c5f600ab9151')
-sha256sums_aarch64=('25fb0840f8ca0bfdb03053998e1a7307de17dcfb376f91a744fadfaee0ad27fc')
-sha256sums_armv7h=('532dce733116c579bc27b36514ebe55f3241098444e3a58f112892f289445322')
-sha256sums_riscv64=('f3eb767597cded31fab7afa1e88d17ed0eef048da768e49883f6ab851bcb68e3')
+sha256sums_x86_64=('ce064842bf0829c80d36e0844324c54b94178ecc0e81feb0bcb602bf9535b60a')
+sha256sums_aarch64=('bec3651eeef487c7ffdab9ec72d61159134274eaddd7e5b61b6d16550b916728')
+sha256sums_armv7h=('943e42c18a8120c89a2fe2be0c33b78e665bbcff01bf27a3424fabcaa1d4d834')
+sha256sums_riscv64=('cad206e8f860bb4d53902c08c90d5a660d42c1674db13574703900cc67274681')
 
 package() {
   install -Dm755 "${_bin}"-linux-* "${pkgdir}/usr/bin/whodb-server"
