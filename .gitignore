@@ -3,5 +3,8 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !0001-chore-Adjust-docbook-patch-for-Arch.patch
 !trelby.xml
