@@ -1,23 +1,20 @@
 pkgbase = tufw-bin
 	pkgdesc = Terminal UI for ufw
-	pkgver = 0.2.8
+	pkgver = 0.3.0_alpha
 	pkgrel = 1
 	url = https://github.com/peltho/tufw
-	arch = x86_64
-	arch = i686
-	arch = aarch64
 	license = MIT
 	depends = ufw
-	provides = tufw
 	conflicts = tufw
-	options = !strip
-	source = LICENSE-0.2.8::https://raw.githubusercontent.com/peltho/tufw/v0.2.8/LICENSE.txt
-	sha256sums = ec499bd869094e1f570e3481d6f59c2866a16358193eaa2f256e33aab60c16d3
-	source_x86_64 = tufw-x86_64-0.2.8.tgz::https://github.com/peltho/tufw/releases/download/v0.2.8/tufw_0.2.8_linux_arm64.tar.gz
-	sha256sums_x86_64 = 4c556333f3c3bbecf259a245abf895f3dc2a2d6abc330ee99476e043a1f805f8
-	source_i686 = tufw-i686-0.2.8.tgz::https://github.com/peltho/tufw/releases/download/v0.2.8/tufw_0.2.8_linux_386.tar.gz
-	sha256sums_i686 = e47ad3a4fbc9f73da577a6290da744b3bc5147d6625863719e4536aac8954081
-	source_aarch64 = tufw-aarch64-0.2.8.tgz::https://github.com/peltho/tufw/releases/download/v0.2.8/tufw_0.2.8_linux_amd64.tar.gz
-	sha256sums_aarch64 = e4e4efcd64649e0e5ce69c8ec61b6db3372a6e3c85f17a245bf18977655c1fe2
-
+	provides = tufw
+	arch = aarch64
+	source_aarch64 = https://github.com/peltho/tufw/releases/download/v0.3.0-alpha/tufw_0.3.0-alpha_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4f4c292dfacf8ab8427b1dbe6500613a238bacbb61f9b574d2431ded4da9fe5b
+	arch = i686
+	source_i686 = https://github.com/peltho/tufw/releases/download/v0.3.0-alpha/tufw_0.3.0-alpha_linux_386.tar.gz
+	sha256sums_i686 = b469f98439e0996cec674d32c92a720d8cf0e4226f8779333eb848196e1de0d7
+	arch = x86_64
+	source_x86_64 = https://github.com/peltho/tufw/releases/download/v0.3.0-alpha/tufw_0.3.0-alpha_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1385c053a978e59eec525bbb8a95f37d29619dfb26947ea27f23ce5b3ca93367
+	
 pkgname = tufw-bin
