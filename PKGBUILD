@@ -1,6 +1,6 @@
 # Maintainer: Dwi Mulia Mokoginta <malwareslayer@users.noreply.github.com>
 pkgname=ollama-aie2
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Native GGML AIE2 backend for AMD XDNA1 NPU via XRT in Ollama'
 arch=('x86_64')

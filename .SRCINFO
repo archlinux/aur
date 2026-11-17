@@ -1,6 +1,6 @@
 pkgbase = ollama-aie2
 	pkgdesc = Native GGML AIE2 backend for AMD XDNA1 NPU via XRT in Ollama
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/malwareslayer/ollama-aie2
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ollama-aie2
 	depends = xrt=1:2.21.75
 	depends = xrt-plugin-amdxdna=1:2.21.75
 	depends = systemd
-	source = ollama-aie2::git+https://github.com/malwareslayer/ollama-aie2.git#tag=v0.2.1
+	source = ollama-aie2::git+https://github.com/malwareslayer/ollama-aie2.git#tag=v0.2.2
 	source = llama-b12177.tar.gz::https://codeload.github.com/ggml-org/llama.cpp/tar.gz/b12177
 	sha256sums = SKIP
 	sha256sums = f50a52f4ba45dd5b4b906db97cf230ce2e3b1117a0b9017411322ecba63eea13
