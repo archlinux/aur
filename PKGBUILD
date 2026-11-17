@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=zero
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Fast, multi-provider terminal coding agent'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=('agent-browser: browser control'
             'poppler: PDF text and rendering of image-only PDFs'
             'tuistory: terminal control')
 source=("zero-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6b826c0189e117c6ae4b8adfd1199fa41bf2e3a14c1d030ead18d82e22c20b65')
+sha256sums=('0a4627c78c2f11b626dfb205bd7977b9a00fa04f07d8df670ebe9d6c0f8bb3d8')
 
 _go_env() {
   export HOME="${srcdir}/home"
