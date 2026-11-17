@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=pi-ext-commandcode
-pkgver=0.8.4
+pkgver=0.8.6
 pkgrel=1
 pkgdesc='Command Code provider for the Pi coding agent (unofficial community integration)'
 arch=('any')
@@ -14,7 +14,7 @@ _piname=pi-commandcode-provider
 _npmname=pi-commandcode-provider
 
 source=("${_npmname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
-sha256sums=('1e31cc91ca278e339c5b84302d2a4d3ecd20068ae59fba81ee3ed56bf6bd782f')
+sha256sums=('f27f2c9853134c72871afdf4f0d51432d5c845d6440825c035fddae73b8ef0c0')
 
 latestver() {
   curl -fsSL "https://registry.npmjs.org/${_npmname}/latest" | jq -r '.version'
