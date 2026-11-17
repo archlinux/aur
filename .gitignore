@@ -3,7 +3,7 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
-!0001-print-help-when-no-args-provided.patch
-!LICENSES
+!LICENSES/
 !LICENSE
 !REUSE.toml
+!0001-print-help-when-no-args-provided.patch
