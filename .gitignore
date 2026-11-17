@@ -1,0 +1,9 @@
+# makepkg work directories
+/src/
+/pkg/
+
+# Downloaded upstream packages and makepkg outputs
+/talanoa_*_amd64.deb
+/*.pkg.tar.*
+/*.src.tar.*
+/*.log
