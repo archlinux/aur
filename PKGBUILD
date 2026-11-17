@@ -6,8 +6,8 @@
 # The package is published on AUR as panasonic-posture-manager.
 
 pkgname=panasonic-posture-manager
-pkgver=3.1.1
-pkgrel=2
+pkgver=3.1.2
+pkgrel=1
 pkgdesc='Posture management and screen orientation for convertible Linux 2-in-1 laptops'
 arch=('x86_64')
 url='https://github.com/adogecheems/panasonic-posture-manager'
@@ -40,7 +40,7 @@ install="${pkgname}.install"
 
 # This is a VCS source, so SKIP is the correct checksum entry. The version tag
 # pins normal builds; release exports substitute the verified build commit.
-source=("${pkgname}::git+https://github.com/adogecheems/${pkgname}.git#commit=833d68072dc758b72f0df35390e59166c040d881")
+source=("${pkgname}::git+https://github.com/adogecheems/${pkgname}.git#commit=e4a00683d928c8b1dff68eb1c83fb956f50485f5")
 sha256sums=('SKIP')
 
 build() {
