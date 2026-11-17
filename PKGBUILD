@@ -3,21 +3,26 @@
 # Contributor: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 # Contributor: tee < teeaur at duck dot com >
 
+pkgauthor=sysid
 pkgname=bkmr
 pkgver=8.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Unified CLI Tool for Bookmark, Snippet, and Knowledge Management"
-url="https://github.com/sysid/$pkgname"
-license=('BSD-3-Clause')
+
+url="https://github.com/${pkgauthor}/${pkgname}"
 arch=('x86_64' 'i686' 'aarch64' 'arm')
-depends=('gcc-libs' 'glibc' 'openssl')
+license=('BSD-3-Clause')
+
+depends=('glibc' 'libgcc' 'openssl')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e6a707660bfb64b386d82a3f481ecd4defb3f11e200e10e91e1d09b76b12ad36')
+
 options=('!lto')
 
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('e6a707660bfb64b386d82a3f481ecd4defb3f11e200e10e91e1d09b76b12ad36')
+
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
 
   case "$CARCH" in
   x86_64|i686|aarch64)
@@ -29,29 +34,30 @@ prepare() {
     exit 1 ;;
   esac
 
-  cargo fetch --manifest-path $pkgname/Cargo.toml --target "$_target"
+  cargo fetch --manifest-path ${pkgname}/Cargo.toml --target "$_target"
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
 
-  CARGO_TARGET_DIR='target' RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src" cargo build --manifest-path $pkgname/Cargo.toml --frozen --release
+  CARGO_TARGET_DIR='target' RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix ${srcdir}=src" cargo build --manifest-path ${pkgname}/Cargo.toml --frozen --release
 
-  for _shell in bash fish zsh; do
-    ./target/release/$pkgname completion "$_shell" > "_completion.$_shell" 2>/dev/null
+  for _shell in bash zsh fish nushell; do
+    ./target/release/${pkgname} completion "${_shell}" > "_completion.${_shell}" 2>/dev/null
   done
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
 
-  install -Dm0755 -t "$pkgdir/usr/bin" target/release/$pkgname
+  install -Dm0755 -t "${pkgdir}/usr/bin" target/release/${pkgname}
 
-  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 
-  install -Dm644 _completion.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  install -Dm644 _completion.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
-  install -Dm644 _completion.zsh  "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+  install -Dm644 _completion.bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm644 _completion.zsh  "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -Dm644 _completion.fish "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -Dm644 _completion.nushell  "${pkgdir}/usr/share/nushell/completions/${pkgname}.nu"
 }
