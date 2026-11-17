@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=stela-bin
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="General purpose Apple Silicon layer for x86-64 PCs: boots macOS on a PC from a USB stick"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip' '!debug')
 
 _tarball="stela-v${pkgver}-linux-x86_64.tar.gz"
 source=("${_tarball}::${url}/releases/download/v${pkgver}/${_tarball}")
-sha256sums=('d0c374d388de8d4859b7ea173f0be8599edcf943ffadd47b7d2369abfffcfa99')
+sha256sums=('6236ddffb39e52ffd6ea71ec3a763788e75497493f4de19ad9e8a35a3722ed6a')
 
 package() {
   local _src="stela-v${pkgver}-linux-x86_64"
