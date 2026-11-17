@@ -5,7 +5,7 @@
 pkgname=prowlarr-develop
 _pkgname=Prowlarr
 pkgver=3.0.2.5780
-pkgrel=1
+pkgrel=2
 pkgdesc='Indexer manager/proxy for usenet and torrent users (develop branch)'
 arch=(x86_64 aarch64 armv7h)
 url='https://prowlarr.com'
@@ -115,7 +115,7 @@ build() {
     && dotnet build-server shutdown # Build servers do not terminate automatically
 
   # Build frontend
-  yarn run build
+  yarn run build --env production
 }
 
 package() {
