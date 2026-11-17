@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=etherpad-lite-bin
-pkgver=3.3.18
+pkgver=3.3.19
 # Debian revision of the upstream .deb asset for this pkgver.
 _debrel=1
 pkgrel=1
@@ -22,8 +22,8 @@ source_x86_64=("etherpad_${pkgver}-${_debrel}_amd64.deb::https://github.com/ethe
 source_aarch64=("etherpad_${pkgver}-${_debrel}_arm64.deb::https://github.com/ether/etherpad-lite/releases/download/v${pkgver}/etherpad_${pkgver}-${_debrel}_arm64.deb")
 sha256sums=('ecb57e3ac038f09b9f593e920d73e13a9b2dd54659fdc68195e121c9da9fcf97'
             '4f5b24e9b4a1d73309d9b02ef52dd1417b26c2cda16249699280fa93453d5401')
-sha256sums_x86_64=('1cd409b2d44373eaedf3ed6bda278fb56e9f27bb14cdf9dd4d639704049322bd')
-sha256sums_aarch64=('4ef618cebcf755a736eb0d228595597c3791360f1c41d7279d3edfab79d3ed8e')
+sha256sums_x86_64=('bc9185c65fc34be6d62e8d9ee8307f6bf4dd0cb04dffd340154e0a068b5bcf01')
+sha256sums_aarch64=('0019bc37611a269ccfe4e205e869bdbb1725616bbdbae988c760bf4a62a1f17f')
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}" --no-same-owner
