@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=openrig-bin
-pkgver=0.17.0 # renovate: datasource=github-releases depName=Siryu6/OpenRig
+pkgver=0.17.1 # renovate: datasource=github-releases depName=Siryu6/OpenRig
 pkgrel=1
 pkgdesc="Open-source guitar multi-effects pedalboard: NAM, LV2 and impulse responses"
 arch=(x86_64 aarch64)
@@ -17,8 +17,8 @@ source_x86_64=("${url}/releases/download/v${pkgver}/openrig-${pkgver}-linux-x86_
 source_aarch64=("${url}/releases/download/v${pkgver}/openrig-${pkgver}-linux-aarch64.tar.gz")
 sha256sums=('7b681e71a25f758d295065fac871f1383e260105ddf8d49cefc5dfbb4497da8a'
             'cfc443010569356a4059993d93ffde9c6043d96afeddbab733338e3bcb5f5f75')
-sha256sums_x86_64=('43f6742c6b733ea9b897d76d20219d0f0fd9ec547babfa377d0b9e9f93be45d3')
-sha256sums_aarch64=('ef1d2af1f291294b06a9096a4212ccd9444e27a0a5c8c57d456ac183b51ad814')
+sha256sums_x86_64=('926c53cdb6e9ac7385c09f1ffc6fec06502856f4c955499977cd8025f2d0b48a')
+sha256sums_aarch64=('3f6460cd38df0c8c43eb8a46f3003fa0f6564ad7d4728dfade2a71882fbf975f')
 
 prepare() {
   # Crop the boot logo to the pedal glyph for a square app icon
