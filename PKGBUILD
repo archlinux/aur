@@ -1,16 +1,13 @@
 # Maintainer: Rémy Marquis <https://github.com/rmarquis>
 _pkgname=aurodle
-pkgname=$_pkgname-git
-pkgver=r307.6d45d5a
+pkgbase=$_pkgname-git
+pkgname=('aurodle-git' 'pacsaur-git')
+pkgver=r414.deafaaf
 pkgrel=1
-pkgdesc="An AUR helper that builds packages into a local repository"
 arch=('x86_64')
 url="https://github.com/rmarquis/aurodle"
 license=('MIT')
-depends=('git' 'pacman')
-makedepends=('zig' 'scdoc')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+makedepends=('git' 'pacman' 'zig' 'scdoc')
 source=("$_pkgname::git+https://github.com/rmarquis/aurodle.git")
 sha256sums=('SKIP')
 
@@ -23,23 +20,44 @@ build() {
     cd "$_pkgname"
     zig build -Doptimize=ReleaseSafe
     scdoc < man/aurodle.1.scd > aurodle.1
+    scdoc < man/pacsaur.1.scd > pacsaur.1
 }
 
-package() {
+# Install program $1: binary, man page, completions and license.
+_install_program() {
+    install -Dm755 "zig-out/bin/$1" "$pkgdir/usr/bin/$1"
+
+    install -Dm644 "$1.1" "$pkgdir/usr/share/man/man1/$1.1"
+
+    install -Dm644 "completions/$1.bash" \
+        "$pkgdir/usr/share/bash-completion/completions/$1"
+
+    install -Dm644 "completions/$1.fish" \
+        "$pkgdir/usr/share/fish/vendor_completions.d/$1.fish"
+
+    install -Dm644 "completions/$1.zsh" \
+        "$pkgdir/usr/share/zsh/site-functions/_$1"
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_aurodle-git() {
+    pkgdesc="An AUR helper that builds packages into a local repository"
+    depends=('git' 'pacman')
+    provides=('aurodle')
+    conflicts=('aurodle')
+
     cd "$_pkgname"
+    _install_program aurodle
+}
 
-    install -Dm755 "zig-out/bin/aurodle" "$pkgdir/usr/bin/aurodle"
+package_pacsaur-git() {
+    pkgdesc="pacman's command line for official and AUR packages, built on aurodle"
+    # pacsaur does not run aurodle, but its man page and setup rely on it.
+    depends=('aurodle' 'git' 'pacman')
+    provides=('pacsaur')
+    conflicts=('pacsaur')
 
-    install -Dm644 "aurodle.1" "$pkgdir/usr/share/man/man1/aurodle.1"
-
-    install -Dm644 "completions/aurodle.bash" \
-        "$pkgdir/usr/share/bash-completion/completions/aurodle"
-
-    install -Dm644 "completions/aurodle.fish" \
-        "$pkgdir/usr/share/fish/vendor_completions.d/aurodle.fish"
-
-    install -Dm644 "completions/aurodle.zsh" \
-        "$pkgdir/usr/share/zsh/site-functions/_aurodle"
-
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/aurodle/LICENSE"
+    cd "$_pkgname"
+    _install_program pacsaur
 }
