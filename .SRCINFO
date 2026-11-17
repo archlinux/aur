@@ -1,6 +1,6 @@
 pkgbase = ff-rdp-bin
 	pkgdesc = CLI for Firefox Remote Debugging Protocol
-	pkgver = 0.4.4
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/ractive/ff-rdp
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = ff-rdp-bin
 	license = MIT
 	provides = ff-rdp
 	conflicts = ff-rdp
-	source_x86_64 = https://github.com/ractive/ff-rdp/releases/download/v0.4.4/ff-rdp-v0.4.4-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = f8e417f0a44e1e86f77589653d2452aea17ec9249ac6d7834c8e7c844650cd82
-	source_aarch64 = https://github.com/ractive/ff-rdp/releases/download/v0.4.4/ff-rdp-v0.4.4-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = fad0800767ce04a4e6a7876e7d9644f7b69ba7a687ae1cbd6547897ec33895b9
+	source_x86_64 = https://github.com/ractive/ff-rdp/releases/download/v0.5.0/ff-rdp-v0.5.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 5f18790e44a3208dfaa8588b72ccad2e033a135c0b48a2ce9e49043c2fab3909
+	source_aarch64 = https://github.com/ractive/ff-rdp/releases/download/v0.5.0/ff-rdp-v0.5.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 437269fcd10b6deed0a23625d5094ba3768782d973e5b525a21c192390de04f3
 
 pkgname = ff-rdp-bin
