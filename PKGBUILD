@@ -43,7 +43,7 @@ package() {
 
 	install -Dm755 usr/bin/${_pkgname} -t ${pkgdir}/usr/bin/
 
-	install -Dm755 usr/lib/libraw.so.26 -t ${pkgdir}/usr/lib/
+	install -Dm755 usr/lib/libraw.so.27 -t ${pkgdir}/usr/lib/
 	install -Dm755 usr/lib/liblensfun.so.2 -t ${pkgdir}/usr/lib/
 
 	find usr/share/applications/ -type f -exec install -Dm644 {} ${pkgdir}/{} \;
