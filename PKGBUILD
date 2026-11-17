@@ -24,7 +24,7 @@ license=('LicenseRef-overwolf' 'MIT' 'LicenseRef-chromium-licenses')
 options=(!strip !debug)
 source=(
   "CurseForge_${pkgver/_/-}_amd64.deb::https://curseforge.overwolf.com/electron/linux/CurseForge_${pkgver/_/-}_amd64.deb"
-  'LICENSE'
+  'overwolf.license'
 )
 sha256sums=('c52bdad3d3da72b80cdab8fa26790c58fc85ccde18e2efc5a57dbca80227142b'
             '135c7ffeb81f4a7ee95a5879651b679e0d1ef9d13c7aa7c262386ad97b48d62f')
@@ -39,7 +39,7 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/CURSEFORGE-LICENSE"
+  install -Dm644 "overwolf.license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${pkgdir}/opt/${pkgname}/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 "${pkgdir}/opt/${pkgname}/LICENSES.chromium.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

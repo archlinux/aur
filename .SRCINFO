@@ -18,7 +18,7 @@ pkgbase = curseforge
 	options = !strip
 	options = !debug
 	source = CurseForge_1.326.0-42377_amd64.deb::https://curseforge.overwolf.com/electron/linux/CurseForge_1.326.0-42377_amd64.deb
-	source = LICENSE
+	source = overwolf.license
 	sha256sums = c52bdad3d3da72b80cdab8fa26790c58fc85ccde18e2efc5a57dbca80227142b
 	sha256sums = 135c7ffeb81f4a7ee95a5879651b679e0d1ef9d13c7aa7c262386ad97b48d62f
 
