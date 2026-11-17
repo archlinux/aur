@@ -1,0 +1,5 @@
+[lite-anvil-bin]
+source = "github"
+github = "danpozmanter/lite-anvil"
+use_latest_release = true
+prefix = "v"
