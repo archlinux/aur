@@ -151,6 +151,7 @@ build() {
     -D vulkan-beta=true
     --wrap-mode=nofallback
     -D sysconfdir=/etc
+    --force-fallback-for=syn,paste,rustc-hash
     --buildtype=release
   )
 
