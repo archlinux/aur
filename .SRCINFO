@@ -1,6 +1,6 @@
 pkgbase = python-typer-injector
 	pkgdesc = Dependency injection for typer
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/BenjyWiener/typer-injector
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-typer-injector
 	depends = python-typer
 	provides = python-typer-injector
 	conflicts = python-typer-injector
-	source = python-typer-injector::git+https://github.com/BenjyWiener/typer-injector.git
-	sha256sums = SKIP
+	source = python-typer-injector::git+https://github.com/BenjyWiener/typer-injector.git#tag=v0.3.0
+	sha256sums = 4e9e26449a0c5a989b02ae4aab4e1b4e88c73741b6c01397177397fb14bb74ab
 
 pkgname = python-typer-injector

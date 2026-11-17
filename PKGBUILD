@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-typer-injector
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 epoch=
 pkgdesc="Dependency injection for typer"
@@ -36,9 +36,9 @@ backup=()
 options=()
 # install=
 changelog=
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('SKIP')
+sha256sums=('4e9e26449a0c5a989b02ae4aab4e1b4e88c73741b6c01397177397fb14bb74ab')
 #validpgpkeys=()
 
 prepare(){
