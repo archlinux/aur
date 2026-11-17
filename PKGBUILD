@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=openapi
-pkgver=1.26.5
+pkgver=1.27.0
 pkgrel=1
 pkgdesc='CLI for working with OpenAPI, Swagger, Arazzo and Overlay documents'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3476076240be6696a82b0a30ee151c6fe7170db37c8688bfa521af979d9b6968')
+sha256sums=('00744adae37a51bfa30f7a63ea8c1e47368897a5af7095de435fd4808d948307')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
