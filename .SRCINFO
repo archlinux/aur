@@ -1,0 +1,16 @@
+pkgbase = ctfkit
+	pkgdesc = Run the same Terraform and OpenTofu compliance checks across your pipelines
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/compliancetf/ctfkit
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	optdepends = terraform: gate plan, verdict verify and apply
+	optdepends = opentofu: gate plan, verdict verify and apply with OpenTofu
+	source = ctfkit-0.10.0.tar.gz::https://github.com/compliancetf/ctfkit/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = 1f79aca11c43cf95e26aef7dc493f27fe983c1e947c0cf85e0d7d3e01ec6b843
+
+pkgname = ctfkit
