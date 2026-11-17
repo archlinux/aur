@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=damo
-pkgver=3.3.3
+pkgver=3.4.5
 pkgrel=1
 pkgdesc="DAMON user-space tool"
 arch=('any')
@@ -10,8 +10,8 @@ license=('GPL-2.0-only')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/damonitor/damo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6c4688ab890fc9cab46ee481594b87387f840e444bfaa9af7ff6bdde7c15464d')
-b2sums=('0dff572da27eda29a1a830f0f11a3c958aa799ea834775782ae7e90fd59ff2ef027bc7c4e4d4d78c810a83ff69b42313d1ff14786900dc25afd090ce30720005')
+sha256sums=('5f01052eafe6515e2b64a07ce5298fd940617414b5c41254be783212f05debad')
+b2sums=('82df0dc85a008918765a0b0068413610378645bb4349bdae083f3c48e4097aa028558d7a965eae658b754c7527451c15b47be4c77bb5f039d88d41cd274a34a7')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -34,5 +34,5 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
-    ../LICENSE
+    ../COPYING
 }
