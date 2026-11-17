@@ -1,0 +1,23 @@
+pkgbase = qwen-bin
+	pkgdesc = Qwen client International Edition for Linux supports login, file upload and download, and can also be linked with GitHub to manage your open-source projects.Third-party Linux client for QWen.第三方千问国际版 Linux 客户端
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://qwen.ai
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-qwen
+	depends = electron39
+	provides = qwen=1.0.3
+	conflicts = qwen
+	source = LICENSE.html::https://qwen.ai/privacypolicy
+	source = qwen.js
+	source = qwen.sh
+	sha256sums = 50512e47add5f4baca4a091d93a319100a5f8513bb03496afefe04f825c9fdf8
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = qwen-1.0.3-aarch64.deb::https://github.com/kota-rina3/hokeshi/releases/download/qwen-global-1.0.3/ai.qwen.otohime_1.0.3_arm64.deb
+	sha256sums_aarch64 = ff276718a3b048d1f8f4fd4515f45e24adc0705414b332d84182a48013db4f83
+	source_x86_64 = qwen-1.0.3-x86_64.deb::https://github.com/kota-rina3/hokeshi/releases/download/qwen-global-1.0.3/ai.qwen.otohime_1.0.3_amd64.deb
+	sha256sums_x86_64 = b20f8b1971460e4b292a76d58e0935095edbbc93d403e83ba462df3c53dff0aa
+
+pkgname = qwen-bin
