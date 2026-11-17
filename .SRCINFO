@@ -1,0 +1,21 @@
+pkgbase = nvbeam-bin
+	pkgdesc = Fast, native Neovim GUI client built with Qt6 and C++ (prebuilt)
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = https://github.com/mareksamec/nvbeam
+	arch = x86_64
+	license = MIT
+	depends = qt6-base
+	depends = qtermwidget
+	depends = syntax-highlighting
+	depends = neovim>=0.10
+	depends = hicolor-icon-theme
+	provides = nvbeam=0.2.10
+	conflicts = nvbeam
+	conflicts = nvbeam-git
+	options = !strip
+	options = !debug
+	source = nvbeam-0.2.10-1-x86_64.pkg.tar.zst::https://github.com/mareksamec/nvbeam/releases/download/v0.2.10/nvbeam-0.2.10-1-x86_64.pkg.tar.zst
+	sha256sums = a9277848c2bfb37677db353b2625fd259ecb19eeff35027f0f8db2389c030a23
+
+pkgname = nvbeam-bin
