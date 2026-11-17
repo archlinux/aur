@@ -1,0 +1,15 @@
+post_install() {
+  cat <<'EOF'
+Browse runs in two halves: this CLI and a Chromium extension.
+
+  1. Install the extension, which walks through the rest of the setup:
+     https://chromewebstore.google.com/detail/mfnicocicmmlkpjnaffgihfjhdgjkdjg
+  2. Run `browse install` to add the MCP server to the agents found on this computer and pair
+     the extension.
+
+`browse install` copies this binary to ~/.local/bin/browse and writes that path into the agent
+configurations, because that is the one location upstream keeps updated by downloading newer
+releases itself. To let pacman own the updates instead, delete ~/.local/bin/browse after step 2
+and point the `browse` command in each agent's MCP configuration at /usr/bin/browse.
+EOF
+}
