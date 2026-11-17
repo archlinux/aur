@@ -1,0 +1,13 @@
+post_install() {
+  echo ':: keep openrgb ready so applies are instant:  walrgb instant on'
+  echo ':: ram over smbus needs the i2c group:  sudo usermod -aG i2c $USER  (then log out and in)'
+  echo ':: then run walrgb apply after wal'
+}
+
+post_upgrade() {
+  echo ':: walrgb no longer watches pywal, run walrgb apply after wal:  systemctl --user disable --now walrgb.path'
+}
+
+pre_remove() {
+  echo ':: run `walrgb reset` first to give your devices their factory effects back'
+}
