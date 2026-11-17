@@ -1,0 +1,36 @@
+#!/bin/bash
+# SPDX-License-Identifier: MIT
+# Systemd user environment generator for Moore Threads MTT S30.
+# Exports desktop acceleration hints only when mtgpu is active and driving display.
+
+set -u
+
+PROBE="/usr/lib/mtgpu/mtgpu-env-probe"
+[ -x "$PROBE" ] || exit 0
+
+ACTIVE=0
+DISPLAY_PRIMARY=0
+MODULE_LOADED=0
+CARDS=""
+
+while IFS='=' read -r k v; do
+    case "$k" in
+        ACTIVE) ACTIVE="$v" ;;
+        DISPLAY_PRIMARY) DISPLAY_PRIMARY="$v" ;;
+        MODULE_LOADED) MODULE_LOADED="$v" ;;
+        CARDS) CARDS="$v" ;;
+    esac
+done < <("$PROBE")
+
+if [ "$ACTIVE" = "1" ] && [ "$DISPLAY_PRIMARY" = "1" ] && [ -n "$CARDS" ]; then
+    printf 'GBM_BACKEND=mtgpu\n'
+    printf 'KWIN_DRM_DEVICES=%s\n' "$CARDS"
+    printf 'KWIN_DISABLE_UDMABUF_IMPORT=1\n'
+    printf 'XWAYLAND_NO_GLAMOR=1\n'
+    printf 'ELECTRON_EXTRA_ARGS=--disable-features=WaylandSyncobj\n'
+    printf 'CHROMIUM_FLAGS=--disable-features=WaylandSyncobj\n'
+elif [ "$ACTIVE" = "0" ] && [ "$MODULE_LOADED" = "1" ]; then
+    # Fallback forced while mtgpu kernel module remains bound to card0:
+    # force software QPainter compositing in KWin so desktop stays usable without mtgpu EGL.
+    printf 'KWIN_COMPOSE=Q\n'
+fi

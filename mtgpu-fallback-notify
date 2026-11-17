@@ -1,0 +1,59 @@
+#!/bin/bash
+# SPDX-License-Identifier: MIT
+# Notify desktop user if MTT S30 hardware is present but running in safe fallback mode.
+
+set -u
+
+PROBE="/usr/lib/mtgpu/mtgpu-env-probe"
+[ -x "$PROBE" ] || exit 0
+
+has_mtt_pci() {
+    local f
+    for f in /sys/bus/pci/devices/*/vendor; do
+        [ -r "$f" ] || continue
+        if [ "$(cat "$f" 2>/dev/null)" = "0x1ed5" ]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+if ! has_mtt_pci; then
+    exit 0
+fi
+
+ACTIVE=0
+REASON=""
+while IFS='=' read -r k v; do
+    case "$k" in
+        ACTIVE) ACTIVE="$v" ;;
+        REASON) REASON="$v" ;;
+    esac
+done < <("$PROBE")
+
+[ "$ACTIVE" = "1" ] && exit 0
+command -v notify-send >/dev/null 2>&1 || exit 0
+
+kver=$(uname -r)
+if [ "$REASON" = "module_not_loaded" ] && [ ! -e "$(modinfo -n mtgpu 2>/dev/null || echo /nonexistent)" ]; then
+    REASON="dkms_missing_for_kernel"
+fi
+
+case "$REASON" in
+    dkms_missing_for_kernel)
+        body="当前内核 ($kver) 未找到 mtgpu 模块，常见于内核升级后 DKMS 编译失败。系统已自动安全回退至通用图形模式。运行 'mtgpu-ctl status' 查看详情。"
+        ;;
+    boot_unconfirmed|previous_boot_unconfirmed|display_server_failed|modprobe_failed_*)
+        body="系统检测到 MTT S30 驱动上次加载异常 ($REASON)，已自动进入安全回退桌面以防止卡死。修复后运行 'sudo mtgpu-ctl reset' 并重启即可恢复。"
+        ;;
+    kernel_cmdline|manual_override)
+        body="当前已根据引导参数或配置 ($REASON) 运行在 MTT S30 安全回退图形模式。"
+        ;;
+    *)
+        body="MTT S30 显卡驱动当前未激活 ($REASON)，已安全回退至通用图形渲染。运行 'mtgpu-ctl status' 查看诊断信息。"
+        ;;
+esac
+
+sleep 3
+notify-send -u normal -i dialog-warning -a "MTT S30 Driver" \
+    "MTT S30 已进入安全回退桌面" "$body" >/dev/null 2>&1 || true

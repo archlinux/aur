@@ -1,0 +1,129 @@
+#!/bin/bash
+# SPDX-License-Identifier: MIT
+# Diagnostic and safe-fallback management utility for Moore Threads MTT S30 on Arch Linux.
+
+set -u
+
+PROBE="/usr/lib/mtgpu/mtgpu-env-probe"
+STATE_FILE="/var/lib/mtgpu/watchdog.state"
+FORCE_FILE="/etc/mtgpu-fallback"
+RUNTIME_FILE="/run/mtgpu-fallback"
+
+require_root() {
+    if [ "$(id -u)" -ne 0 ]; then
+        echo "需要 root 权限，请使用 sudo 运行: sudo mtgpu-ctl $*" >&2
+        exit 1
+    fi
+}
+
+show_status() {
+    local kver
+    kver=$(uname -r)
+    echo "=== MTT S30 运行状态诊断 ==="
+    echo "当前内核 (Kernel):   $kver"
+
+    if [ -x "$PROBE" ]; then
+        echo "--- 运行态探测 (mtgpu-env-probe) ---"
+        "$PROBE"
+    fi
+
+    echo "--- DRM 设备节点 ---"
+    local c
+    for c in /sys/class/drm/card[0-9]*; do
+        [ -e "$c" ] || continue
+        local name drv
+        name=$(basename "$c")
+        [[ "$name" =~ ^card[0-9]+$ ]] || continue
+        drv=$(basename "$(readlink -f "$c/device/driver" 2>/dev/null || echo unknown)")
+        echo "  /dev/dri/$name -> driver: $drv"
+    done
+
+    echo "--- DKMS 模块状态 ---"
+    if command -v dkms >/dev/null 2>&1; then
+        dkms status -m mtgpu-s30 2>/dev/null || echo "  (未注册 mtgpu-s30)"
+    fi
+
+    if [ -r "$STATE_FILE" ]; then
+        echo "--- 启动看门狗状态 ($STATE_FILE) ---"
+        cat "$STATE_FILE"
+    fi
+}
+
+cmd_doctor() {
+    show_status
+    echo "--- 守卫动态库检查 ---"
+    local f
+    for f in \
+        /usr/lib/mthreads/egl/libEGL_mtgpu_guard.so \
+        /usr/lib/mthreads/egl/libEGL_mtt_mesa_guard.so \
+        /usr/lib/mthreads/egl/libVK_MT_guard.so \
+        /usr/share/glvnd/egl_vendor.d/00_mtgpu.json \
+        /usr/share/glvnd/egl_vendor.d/50_mtt_mesa.json \
+        /usr/share/vulkan/icd.d/musaicdconf.json; do
+        if [ -e "$f" ]; then
+            echo "  [OK] $f"
+        else
+            echo "  [MISSING] $f"
+        fi
+    done
+
+    echo "--- 失败构建日志检查 ---"
+    local log found=0
+    for log in /var/lib/dkms/mtgpu-s30/*/build/make.log /var/lib/dkms/mtgpu-s30/*/*/log/make.log; do
+        [ -e "$log" ] || continue
+        found=1
+        echo "  $log (tail 5):"
+        tail -n 5 "$log" | sed 's/^/    /'
+    done
+    [ "$found" -eq 0 ] && echo "  (无残留失败 make.log)"
+}
+
+cmd_fallback() {
+    case "${1:-}" in
+        on)
+            require_root fallback on
+            printf 'manual_override\n' > "$FORCE_FILE"
+            printf 'manual_override\n' > "$RUNTIME_FILE"
+            chmod 0644 "$FORCE_FILE" "$RUNTIME_FILE" 2>/dev/null || true
+            echo "已启用 MTT S30 安全回退模式 (将在下次重启生效; 如需立即测试请重启或执行 sudo reboot)。"
+            ;;
+        off)
+            require_root fallback off
+            rm -f "$FORCE_FILE" "$RUNTIME_FILE"
+            echo "已关闭手动回退开关 (如触发过启动看门狗锁定，请同时运行: sudo mtgpu-ctl reset)。"
+            ;;
+        *)
+            echo "用法: mtgpu-ctl fallback [on|off]" >&2
+            exit 1
+            ;;
+    esac
+}
+
+cmd_reset() {
+    require_root reset
+    rm -f "$FORCE_FILE" "$RUNTIME_FILE" "$STATE_FILE"
+    echo "已重置 MTT S30 看门狗与回退状态。下次启动将正常尝试加载 mtgpu 驱动。"
+}
+
+case "${1:-status}" in
+    status) show_status ;;
+    doctor) cmd_doctor ;;
+    fallback) cmd_fallback "${2:-}" ;;
+    reset) cmd_reset ;;
+    -h|--help|help)
+        cat <<'EOF'
+用法: mtgpu-ctl <命令>
+
+命令:
+  status          查看当前内核、DRM 绑定、DKMS 与回退看门狗状态
+  doctor          全面体检驱动文件、守卫库与 DKMS 日志
+  fallback on     强制开启安全回退桌面模式 (跳过加载 mtgpu，走 simpledrm)
+  fallback off    取消手动回退开关
+  reset           清除看门狗故障锁定状态与回退标志
+EOF
+        ;;
+    *)
+        echo "未知命令: $1 (运行 'mtgpu-ctl help' 查看帮助)" >&2
+        exit 1
+        ;;
+esac

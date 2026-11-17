@@ -1,0 +1,41 @@
+#!/bin/bash
+# SPDX-License-Identifier: MIT
+# Systemd user unit generator for Moore Threads MTT S30.
+# Generates plasmashell & ksystemstats drop-ins conditionally so fallback sessions remain pristine.
+
+set -u
+
+OUT_DIR="${1:-}"
+[ -n "$OUT_DIR" ] || exit 0
+
+PROBE="/usr/lib/mtgpu/mtgpu-env-probe"
+[ -x "$PROBE" ] || exit 0
+
+ACTIVE=0
+DISPLAY_PRIMARY=0
+MODULE_LOADED=0
+
+while IFS='=' read -r k v; do
+    case "$k" in
+        ACTIVE) ACTIVE="$v" ;;
+        DISPLAY_PRIMARY) DISPLAY_PRIMARY="$v" ;;
+        MODULE_LOADED) MODULE_LOADED="$v" ;;
+    esac
+done < <("$PROBE")
+
+if [ "$ACTIVE" = "1" ]; then
+    mkdir -p "$OUT_DIR/plasma-ksystemstats.service.d"
+    cat > "$OUT_DIR/plasma-ksystemstats.service.d/10-mtt-s30.conf" <<'EOF'
+[Service]
+Environment="QT_PLUGIN_PATH=/usr/lib/mtgpu/plugins:/usr/lib/qt6/plugins"
+EOF
+fi
+
+if { [ "$ACTIVE" = "1" ] && [ "$DISPLAY_PRIMARY" = "1" ]; } ||
+   { [ "$ACTIVE" = "0" ] && [ "$MODULE_LOADED" = "1" ]; }; then
+    mkdir -p "$OUT_DIR/plasma-plasmashell.service.d"
+    cat > "$OUT_DIR/plasma-plasmashell.service.d/10-mtt-s30.conf" <<'EOF'
+[Service]
+Environment=QT_QUICK_BACKEND=software
+EOF
+fi

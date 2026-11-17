@@ -1,0 +1,7 @@
+{
+  "file_format_version": "1.0.0",
+  "ICD": {
+    "library_path": "/usr/lib/mthreads/egl/libVK_MT_guard.so",
+    "api_version": "1.0.0"
+  }
+}

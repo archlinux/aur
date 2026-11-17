@@ -1,0 +1,120 @@
+#!/bin/bash
+# SPDX-License-Identifier: MIT
+# Runtime environment & DRM topology probe for Moore Threads MTT S30.
+# Prints KEY=VALUE lines suitable for safe field inspection.
+
+set -u
+
+cmdline_requests_fallback() {
+    local tok item cmdline=""
+    [ -r /proc/cmdline ] || return 1
+    cmdline=$(cat /proc/cmdline 2>/dev/null || true)
+    for tok in $cmdline; do
+        case "$tok" in
+            nomtgpu|mtgpu.fallback=1)
+                return 0
+                ;;
+            modprobe.blacklist=*)
+                local list="${tok#modprobe.blacklist=}"
+                local OLD_IFS="$IFS"
+                IFS=','
+                for item in $list; do
+                    if [ "$item" = "mtgpu" ]; then
+                        IFS="$OLD_IFS"
+                        return 0
+                    fi
+                done
+                IFS="$OLD_IFS"
+                ;;
+        esac
+    done
+    return 1
+}
+
+has_connected_output() {
+    local card_name="$1"
+    local status_file
+    for status_file in "/sys/class/drm/${card_name}"-*/status; do
+        [ -r "$status_file" ] || continue
+        if [ "$(cat "$status_file" 2>/dev/null)" = "connected" ]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+ACTIVE=0
+DISPLAY_PRIMARY=0
+MODULE_LOADED=0
+CARDS=""
+REASON="ok"
+
+[ -d /sys/module/mtgpu ] && MODULE_LOADED=1
+
+if [ "${MTGPU_FORCE_FALLBACK:-0}" = "1" ]; then
+    REASON="forced_env"
+elif [ -f /run/mtgpu-fallback ]; then
+    REASON=$(head -n1 /run/mtgpu-fallback 2>/dev/null | tr -cd 'A-Za-z0-9_.-')
+    [ -n "$REASON" ] || REASON="runtime_fallback"
+elif [ -f /etc/mtgpu-fallback ]; then
+    REASON="manual_override"
+elif cmdline_requests_fallback; then
+    REASON="kernel_cmdline"
+elif [ "$MODULE_LOADED" -eq 0 ]; then
+    REASON="module_not_loaded"
+else
+    mtt_cards=()
+    has_render=0
+    mtt_connected=0
+    other_hw_connected=0
+
+    for sys_entry in /sys/class/drm/card[0-9]*; do
+        [ -e "$sys_entry" ] || continue
+        name=$(basename "$sys_entry")
+        [[ "$name" =~ ^card[0-9]+$ ]] || continue
+        drv_link=$(readlink -f "$sys_entry/device/driver" 2>/dev/null || true)
+        drv_name=$(basename "$drv_link" 2>/dev/null || true)
+
+        if [ "$drv_name" = "mtgpu" ] && [ -c "/dev/dri/$name" ]; then
+            mtt_cards+=("/dev/dri/$name")
+            if has_connected_output "$name"; then
+                mtt_connected=1
+            fi
+        elif [ -n "$drv_name" ] && [ "$drv_name" != "simpledrm" ] && [ "$drv_name" != "vkms" ]; then
+            if has_connected_output "$name"; then
+                other_hw_connected=1
+            fi
+        fi
+    done
+
+    for sys_entry in /sys/class/drm/renderD[0-9]*; do
+        [ -e "$sys_entry" ] || continue
+        name=$(basename "$sys_entry")
+        [[ "$name" =~ ^renderD[0-9]+$ ]] || continue
+        drv_link=$(readlink -f "$sys_entry/device/driver" 2>/dev/null || true)
+        drv_name=$(basename "$drv_link" 2>/dev/null || true)
+        if [ "$drv_name" = "mtgpu" ] && [ -r "/dev/dri/$name" ] && [ -w "/dev/dri/$name" ]; then
+            has_render=1
+            break
+        fi
+    done
+
+    if [ "${#mtt_cards[@]}" -gt 0 ] && [ "$has_render" -eq 1 ]; then
+        ACTIVE=1
+        CARDS=$(IFS=:; echo "${mtt_cards[*]}")
+        if [ "$mtt_connected" -eq 1 ] || [ "$other_hw_connected" -eq 0 ]; then
+            DISPLAY_PRIMARY=1
+        else
+            DISPLAY_PRIMARY=0
+            REASON="secondary_compute_only"
+        fi
+    else
+        REASON="no_bound_drm_device"
+    fi
+fi
+
+printf 'ACTIVE=%s\n' "$ACTIVE"
+printf 'DISPLAY_PRIMARY=%s\n' "$DISPLAY_PRIMARY"
+printf 'MODULE_LOADED=%s\n' "$MODULE_LOADED"
+printf 'CARDS=%s\n' "$CARDS"
+printf 'REASON=%s\n' "$REASON"

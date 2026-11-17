@@ -8,11 +8,16 @@ post_install() {
     cat << "MSG"
 :: Moore Threads MTT S30 userland graphics and compute driver installed.
 :: 
-:: Tips for KDE Plasma 6 (Wayland) & Xwayland:
-::  - Desktop hints are placed in /etc/environment.d/10-mtt-s30.conf
+:: Resilience & KDE Plasma 6 features:
+::  - Dynamic environment & systemd generators automatically activate MTT S30
+::    hints when mtgpu is ready, and silently fall back to simpledrm/Mesa if absent
+::  - GLVND EGL & Vulkan ICD runtime guards prevent display-server crashes when
+::    kernel updates or modprobe blacklists disable mtgpu
 ::  - Device access rules are placed in /usr/lib/udev/rules.d/70-mtgpu.rules
 ::  - Hardware monitoring for KDE System Monitor is installed to:
 ::      /usr/lib/mtgpu/plugins/ksystemstats/ksystemstats_plugin_gpu.so
+::  - Diagnostic & fallback control utility:
+::      mtgpu-ctl status   (or mtgpu-ctl doctor)
 ::  - To verify GPU status and temperature, run:
 ::      mthreads-gmi
 ::  - Documentation and issue tracker:

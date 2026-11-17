@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=MTT S30 Fallback Status Notifier
+Comment=Alert user when MTT S30 runs in safe graphics fallback mode
+Exec=/usr/lib/mtgpu/mtgpu-fallback-notify
+NoDisplay=true
+X-KDE-StartupNotify=false
