@@ -14,8 +14,6 @@ pkgbase = uutils-coreutils-git
 	conflicts = uutils-coreutils
 	conflicts = coreutils
 	source = uutils-coreutils::git+https://github.com/uutils/coreutils.git
-	source = libstdbuf-path.patch::https://github.com/uutils/coreutils/commit/4ebcfc13052fc7e78ccd8e1f60750aafb636a0fe.patch
 	b2sums = SKIP
-	b2sums = d7ba18382a6a137e7b0fbda4b7538230722d7fb221cdaa19fcf5819ffe511743bc5df327925e80e252341ac6bf80a477490808f45614ed12733f9246baf03f5b
 
 pkgname = uutils-coreutils-git

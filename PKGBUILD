@@ -14,9 +14,10 @@ makedepends=(git rust)
 provides=(coreutils)
 conflicts=({uutils-,}coreutils)
 source=("${pkgname%-git}::git+${url}.git"
-"libstdbuf-path.patch::${url}/commit/4ebcfc13052fc7e78ccd8e1f60750aafb636a0fe.patch") # PR16487
-b2sums=('SKIP'
-        'd7ba18382a6a137e7b0fbda4b7538230722d7fb221cdaa19fcf5819ffe511743bc5df327925e80e252341ac6bf80a477490808f45614ed12733f9246baf03f5b')
+# closed-stdio-no-dev-abort.patch::https://github.com/uutils/coreutils/pull/16299.patch
+# stty-any-speed.patch::https://github.com/uutils/coreutils/pull/15299.patch
+)
+b2sums=('SKIP')
 pkgver() {
   cd ${pkgname%-git}
   git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -29,7 +30,8 @@ export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no --cfg=linux_latest" # r
 package(){
   cd ${pkgname%-git}
   export CARGOFLAGS+=" --features openssl"
-  git apply ../libstdbuf-path.patch
+  # git apply ../closed-stdio-no-dev-abort.patch
+  # git apply ../stty-any-speed.patch
   export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release MULTICALL=y MANPAGES=y COMPLETIONS=y LOCALES=y
   make install LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="arch kill more uptime hostname" #expand factor hostid unexpand pinky ptx sum shred shuf"
   make install PROG_PREFIX=uu- UTILS="arch kill more uptime hostname"
