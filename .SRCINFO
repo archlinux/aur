@@ -1,6 +1,6 @@
 pkgbase = tmail
 	pkgdesc = A fast terminal email client with a spatial conversation map (IMAP/SMTP, Maildir)
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/tuna4ll/tmail
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = tmail
 	optdepends = wezterm: inline images in HTML mail
 	optdepends = foot: inline images in HTML mail
 	options = !lto
-	source = tmail-1.0.4.tar.gz::https://github.com/tuna4ll/tmail/archive/refs/tags/v1.0.4.tar.gz
-	sha256sums = 9cb0337781ec383454fb227b6ff6b105ffbe72a007b5a4e1d26363a3091294d4
+	source = tmail-1.0.5.tar.gz::https://github.com/tuna4ll/tmail/archive/refs/tags/v1.0.5.tar.gz
+	sha256sums = 4ff1145cfc2731a1abab2649c25da0164a2e6e53cfeaf4ba90908fb62e63af64
 
 pkgname = tmail
