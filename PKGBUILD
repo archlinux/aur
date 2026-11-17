@@ -1,32 +1,24 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Conrad Hoffmann <ch@bitfehler.net>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=hare-scfg
-pkgver=r12.822eb86
+pkgver=0.25.2
 pkgrel=1
 pkgdesc='scfg implementation for Hare'
 arch=('any')
 url='https://git.sr.ht/~chrisppy/hare-scfg'
-license=('MPL2')
+license=('MPL-2.0')
 depends=('hare')
 makedepends=('git')
-_commit='822eb868ddd40df3b19e862303cdeddc33c3c1e4'
-source=("$pkgname::git+$url#commit=$_commit")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~chrisppy/${pkgname}/archive/${pkgver}.tar.gz")
+b2sums=('9d34586e98ce7388e05416c554a4194bf02009b7679953e1cf96c94b8732361263de7ef5c506adb7afd6c39c9bcfd467b856f13cbb1f9ea81b54e0885a09574f')
 
 check() {
-  cd "$pkgname"
-
-  make check
+	cd "$pkgname-$pkgver"
+	make check
 }
 
 package() {
-  cd "$pkgname"
-
-  make DESTDIR="$pkgdir" PREFIX=/usr install
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir" PREFIX=/usr install
 }

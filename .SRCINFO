@@ -1,13 +1,13 @@
 pkgbase = hare-scfg
 	pkgdesc = scfg implementation for Hare
-	pkgver = r12.822eb86
+	pkgver = 0.25.2
 	pkgrel = 1
 	url = https://git.sr.ht/~chrisppy/hare-scfg
 	arch = any
-	license = MPL2
+	license = MPL-2.0
 	makedepends = git
 	depends = hare
-	source = hare-scfg::git+https://git.sr.ht/~chrisppy/hare-scfg#commit=822eb868ddd40df3b19e862303cdeddc33c3c1e4
-	md5sums = SKIP
+	source = hare-scfg-0.25.2.tar.gz::https://git.sr.ht/~chrisppy/hare-scfg/archive/0.25.2.tar.gz
+	b2sums = 9d34586e98ce7388e05416c554a4194bf02009b7679953e1cf96c94b8732361263de7ef5c506adb7afd6c39c9bcfd467b856f13cbb1f9ea81b54e0885a09574f
 
 pkgname = hare-scfg
