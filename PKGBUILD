@@ -1,7 +1,7 @@
 # Maintainer: Dominik Kummer <admin@arkades.org>
 pkgname=texlive-mermaid
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='LaTeX packages for embedding Mermaid diagrams with pdfLaTeX, XeLaTeX, upLaTeX and LuaLaTeX'
 arch=('any')
 url='https://github.com/ryoya9826/ltMermaid'
@@ -16,7 +16,7 @@ depends=(
 )
 provides=('mermaid' 'ltmermaid')
 source=("$pkgname-$pkgver.zip::https://mirrors.ctan.org/macros/latex/contrib/ltmermaid.zip")
-sha256sums=('SKIP')
+sha256sums=('6236d8952161e75fdfc7c12de8f357bc94dcfc29e13adfc2e056663944a8a43f')
 
 package() {
   local name sty texdir docdir
