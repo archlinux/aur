@@ -1,6 +1,6 @@
 pkgbase = python-jupyter-server-proxy
 	pkgdesc = Jupyter notebook server extension to proxy web services
-	pkgver = 4.6.0
+	pkgver = 4.6.1
 	pkgrel = 1
 	url = https://jupyter-server-proxy.readthedocs.io/
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = python-jupyter-server-proxy
 	depends = python-simpervisor
 	depends = python-tornado
 	depends = python-traitlets
-	source = git+https://github.com/jupyterhub/jupyter-server-proxy.git#commit=4d49cb9
+	source = git+https://github.com/jupyterhub/jupyter-server-proxy.git#commit=d3170eb
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
-	sha256sums = 3404df3929e395c666da74f64ee5c69d56c314fe21318c8a81f66adddc0e6647
+	sha256sums = 794abeca1ee03dc7e70f1235d9a544386f09f46d94532b7946c746265f7601e5
 
 pkgname = python-jupyter-server-proxy
