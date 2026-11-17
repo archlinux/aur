@@ -4,7 +4,7 @@
 # packaging/appimage-manager-plasma-git/PKGBUILD. On a new release, update pkgver and the
 # checksum (updpkgsums) once the tag is pushed, then regenerate .SRCINFO.
 pkgname=appimage-manager-plasma
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A lightweight KDE Plasma utility for installing, managing, and removing AppImage files"
 arch=('x86_64' 'aarch64')
@@ -42,7 +42,7 @@ optdepends=(
 provides=('appimagemanager')
 conflicts=('appimage-manager-plasma-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/strandzen/AppImage-Manager/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b3a63c43856e7bd0a563cd478045c9128cb86005f4e088d55796d8343a6a9a9b')
+sha256sums=('b5b845ebcb842828e3f27a762ee8fd99ef1b20b3caaf23769a5f2c51c273fdaa')
 
 build() {
     cmake \
