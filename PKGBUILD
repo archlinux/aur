@@ -5,7 +5,7 @@ _srcname="nethlink"
 _srcmntr="NethServer"
 
 pkgname="${_pkgname}-appimage"
-pkgver="1.5.3"
+pkgver="1.6.0"
 pkgrel="1"
 pkgdesc="A tool designed to link NethServer systems and provide remote access tools."
 url="https://github.com/${_srcmntr}/${_srcname}"
@@ -23,7 +23,7 @@ conflicts=("nethlink")
 provides=("nethlink")
 
 sha256sums=(
-  "1c82f5c5539b383dbf59364cbf4a60e14045eeeca0e37b0150addf7353f661ed"
+  "0e4fcd4085824f18e5d54fb6ee47569bdb1b81121a80dab1e2976e0b1246e5b5"
   "1c5d66ad8406cb12645f26e51d5fdac5ff6ad2a90d392dd852ab027d6783aa54"
   "360ba441787829ab27c306cd0cdb8606d501c210e6d100bc767e2842fde2dc02"
 )
