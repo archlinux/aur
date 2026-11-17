@@ -1,7 +1,7 @@
 # Maintainer: Vaishnav Sabari Girish <vaishnav.sabari.girish@gmail.com>
 pkgname=tmail-bin
 _pkgname=tmail
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='A fast terminal email client with a spatial conversation map (IMAP/SMTP, Maildir) - prebuilt binary'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source=("LICENSE-$pkgver::https://raw.githubusercontent.com/tuna4ll/tmail/v$pkgv
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('43808caf40d62fe06147fce77a1825d8952cc28340a72c2c3c5164559a74a585')
-sha256sums_x86_64=('d49fb0afcb4ec0559d0c28a2bdcb9a735ffb176860baa06248d04de52a0f650d')
-sha256sums_aarch64=('208a3bda4a17b6f65fb7e38748c74573c9ddd67adbd63250096153c2494db30e')
+sha256sums_x86_64=('7b2d3245082bb45925164bd100a34412a530062bcca53cb5e1bc48fe94b2e6ee')
+sha256sums_aarch64=('b12ea9a38b5f99b54e95af57bdc89746f48c92f97583a94f58635c1c647f4877')
 
 package() {
   # The binary may sit at the archive root or in a subfolder; find it either way
