@@ -1,7 +1,7 @@
 pkgbase = bitcoin-knots
 	pkgdesc = enhanced Bitcoin node/wallet software
-	pkgver = 29.4.2.knots20260508
-	pkgrel = 2
+	pkgver = 29.5.knots20260508
+	pkgrel = 1
 	url = https://bitcoinknots.org
 	arch = x86_64
 	groups = bitcoin
@@ -16,8 +16,8 @@ pkgbase = bitcoin-knots
 	conflicts = bitcoin
 	options = !debug
 	backup = etc/bitcoin/bitcoin.conf
-	source = https://bitcoinknots.org/files/29.x/29.4.2.knots20260508/bitcoin-29.4.2.knots20260508.tar.gz
-	validpgpkeys = DAED928C727D3E613EC46635F5073C4F4882FFFC
-	sha256sums = 11c0b99a82b8b1c9c29ab76d9b0507ce1017813665741627b3f3883a4c2f7a7f
+	source = https://bitcoinknots.org/files/29.x/29.5.knots20260508/bitcoin-29.5.knots20260508.tar.gz
+	validpgpkeys = 1A3E761F19D2CC7785C5502EA291A2C45D0C504A
+	sha256sums = 66e6ea80f321bb8f207185cfc03f65ac01e080668ddd0e5927ae3aca6c46306e
 
 pkgname = bitcoin-knots
