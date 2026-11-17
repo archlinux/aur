@@ -17,7 +17,7 @@ depends=(
     'ffmpeg'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_rpmname}-linux-amd64.rpm")
-sha256sums=('a8f3eb3c05013fcfd1db65658b758fada3c30a1c1a9e021feabe494720dccaf6')
+sha256sums=('333f49496c17fb5eed25a0dc9e3ea7fd89a5c2b7e9b8317955b0476f2e77c28b')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
