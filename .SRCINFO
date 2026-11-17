@@ -1,7 +1,7 @@
 pkgbase = kwi
 	pkgdesc = Modern and fast terminal for KDE Plasma and other desktops
 	pkgver = 0.1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://invent.kde.org/utilities/kwi
 	arch = x86_64
 	license = GPL-2.0-only OR GPL-3.0-only OR LicenseRef-scancode-kde-accepted-gpl
@@ -16,6 +16,7 @@ pkgbase = kwi
 	makedepends = ninja
 	makedepends = git
 	makedepends = qt6-shadertools
+	makedepends = zig
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = kwindowsystem
@@ -36,9 +37,12 @@ pkgbase = kwi
 	depends = kirigami
 	depends = kirigami-addons
 	depends = kirigami-app-components
-	depends = ghostty
 	provides = kwi
-	source = kwi::git+https://invent.kde.org/utilities/kwi#commit=7e36a6d18441e39ede1a0c2992d1a17238e571bf
-	sha512sums = SKIP
+	source = kwi::git+https://invent.kde.org/utilities/kwi#commit=851d9a7d9252f601061dbff23db0275012a86fce
+	source = https://release.files.ghostty.org/libghostty-vt/1.0.1/libghostty-vt-1.0.1.tar.gz
+	source = https://release.files.ghostty.org/libghostty-vt/1.0.1/libghostty-vt-1.0.1-deps.tar.gz
+	sha512sums = 71eaf12421f9e69ef7abcc60b2c1cad9fe9894e582ba52318bb3ffdbd0735f7885938db0ce92dd61b3524359563b50b4a0f7620186055bfee1c03269be11c27f
+	sha512sums = 74ad5ab2d8f62ddfbf7e0904803008c2cf3769dd29de3dc700d39f1fd01cb1827b3d663ced2d365137e2cf0f0fa33abc3eaf98327e429a206a1156da59b7f688
+	sha512sums = b741c19118a800a61105750fabceef84585d404da92a3082baaab087b71f26800c24cfd2841ce18859a5f23a53d17d2f24f41231ce30be010e446752a813de9d
 
 pkgname = kwi
