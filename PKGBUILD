@@ -1,13 +1,8 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 
-# PKGBUILD for building on the Open Build Service.
+# PKGBUILD for the AUR: builds from the GitHub archive of the release tag.
 #
-# OBS build VMs have no network, so every source has to be present in the
-# package's OBS sources before the build starts. This consumes the Debian
-# native tarball that release builds commit to debs/ - it carries the complete
-# source tree - instead of fetching a GitHub tarball the way aur/PKGBUILD does.
-#
-# Keep pkgver in step with debian/changelog: it names the tarball.
+# release.sh rewrites pkgver, source and sha256sums for each tag.
 
 pkgname=mx-user
 pkgver=26.11.1
@@ -21,9 +16,9 @@ makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("https://github.com/MX-Linux/mx-user/archive/refs/tags/26.11.1.tar.gz")
 sha256sums=('0a617e8c8edf546511ea1f39d00b982559c326c1598e947a082055bc2d421472')
 
-# dpkg-source packed this tarball from a directory called "src", so that - not
-# ${pkgname}-${pkgver} - is what it unpacks to.
-_srcdir="mx-user-26.11.1"
+# GitHub tag archives unpack to <repo>-<tag>, minus any leading "v". Derived
+# from pkgver so that release.sh's version bump keeps it correct.
+_srcdir="${pkgname}-${pkgver#v}"
 
 build() {
     cd "${srcdir}/${_srcdir}"
