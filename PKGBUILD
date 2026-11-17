@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=soulm8te-bin
-pkgver=1.2.4
+pkgver=1.2.6
 _electronversion=45
 pkgrel=1
 pkgdesc="Electron browser with private sessions, tab sleeping and native Chromium tabs."
@@ -17,7 +17,7 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('4f8b878136077af2954b4a2b689da7bb60789b6b214b81be77780e9aa11a82d2'
+sha256sums=('3f095dd06bb142ed4b9184304106f8336488f41806d6dd161095559b5f2da8b0'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
