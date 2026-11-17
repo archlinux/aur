@@ -1,6 +1,6 @@
 # Maintainer: Dwi Mulia Mokoginta <malwareslayer@users.noreply.github.com>
 pkgname=ggml-aie
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Tensor library for machine learning (with AMD XDNA/AIE2 NPU backend)'
 arch=('x86_64')
