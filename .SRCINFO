@@ -1,6 +1,6 @@
 pkgbase = uq
 	pkgdesc = Themeable Hyprland desktop: shell, theme and layout daemon, CLI and base config
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/uq
 	install = uq.install
@@ -33,6 +33,7 @@ pkgbase = uq
 	depends = kcolorscheme
 	depends = kconfig
 	optdepends = kitty: default terminal (SUPER+Return)
+	optdepends = adw-gtk-theme: makes GTK 3 apps follow the uQ theme (stock Adwaita stays light)
 	optdepends = papirus-icon-theme: icon theme used by every uQ theme
 	optdepends = bibata-cursor-theme: cursor theme used by every uQ theme
 	optdepends = ttf-jetbrains-mono: monospace font
@@ -67,7 +68,7 @@ pkgbase = uq
 	backup = etc/pam.d/uq-lock-fingerprint
 	backup = etc/uq/greetd.toml
 	backup = etc/uq/greeter.toml
-	source = uq-0.3.6.tar.gz::https://github.com/asafelobotomy/uq/releases/download/v0.3.6/uq-0.3.6.tar.gz
-	sha256sums = a358456a67dedc81569031fe6f047a8e5e461a92ad3ec6d20bc381407cc789de
+	source = uq-0.3.7.tar.gz::https://github.com/asafelobotomy/uq/releases/download/v0.3.7/uq-0.3.7.tar.gz
+	sha256sums = d92597d65c705f3e529710880eb0b1899f3276003243101f0c1952f1523b2119
 
 pkgname = uq
