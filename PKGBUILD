@@ -1,4 +1,4 @@
-# Maintainer: amine <emin.chniti@esprit.tn>
+# Maintainer: mAmineChniti <emin.chniti@esprit.tn>
 pkgname=shakedown-cli
 pkgver=0.1.0
 pkgrel=1
@@ -15,6 +15,6 @@ sha256sums_x86_64=('06ab0dc4693f6b6359ca87c9c8d12ded47f39ed5ed021163df17e3cd15e7
 sha256sums_aarch64=('cd4d23a18ed2c59061dc93b6c3bb2254d29e46483d6e7e5ba9e294db865a6970')
 
 package() {
-  install -Dm755 "$srcdir/shakedown-$pkgver" "$pkgdir/usr/bin/shakedown"
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm755 "$srcdir/shakedown-$pkgver" "$pkgdir/usr/bin/shakedown"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
