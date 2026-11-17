@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=pi-ext-background
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='Run long commands in the background and wake the Pi coding agent when they finish'
 arch=('any')
@@ -14,7 +14,7 @@ _piname=pi-background
 _npmname=pi-background
 
 source=("${_npmname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
-sha256sums=('7a85b8dc5dcf9e0bb5e65e07cb99bc35eb956a380530646f2b5faf1f235722cd')
+sha256sums=('8634962a806e08417cc154a0803248b411a1ff3428086690ee17dc0382264f5d')
 
 latestver() {
   curl -fsSL "https://registry.npmjs.org/${_npmname}/latest" | jq -r '.version'
