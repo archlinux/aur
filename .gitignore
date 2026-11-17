@@ -6,5 +6,7 @@
 !bitmagnet.service
 !bitmagnet.sysusers
 !bitmagnet.tmpfiles
+!LICENSES/
+!LICENSE
+!REUSE.toml
 !config.yml
-
