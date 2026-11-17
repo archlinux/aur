@@ -1,7 +1,7 @@
 # Maintainer: Rick <RickStylesProyects>
 pkgname=maple-saturation-control-git
 _pkgname=Maple-SaturationControl-WaylandPlasma
-pkgver=1.0.0
+pkgver=1.0.0.r4.23d2558
 pkgrel=1
 pkgdesc="A screen color saturation and contrast gamma control tool for KDE Plasma Wayland sessions."
 arch=('any')
