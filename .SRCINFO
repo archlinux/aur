@@ -1,0 +1,16 @@
+pkgbase = circuitsimplusplus-bin
+	pkgdesc = Rewrite of the classic CircuitSim logic simulator used in Georgia Tech's CS 2110/2200
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/CS2200/CircuitSimPlusPlus
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = zlib
+	depends = fuse2
+	options = !strip
+	source = CircuitSim++_0.4.2_amd64.AppImage::https://github.com/CS2200/CircuitSimPlusPlus/releases/download/v0.4.2/CircuitSim++_0.4.2_amd64.AppImage
+	source = circuitsimplusplus.desktop
+	sha256sums = bd2504ddc2749b5f7fc8ddaf485a90338e9139980518ed9e674ad89d7c69c3a1
+	sha256sums = 2517681bb748f8d232ebc2f9ec2a76e234563a34f4e46ddf548a4db0730dd188
+
+pkgname = circuitsimplusplus-bin

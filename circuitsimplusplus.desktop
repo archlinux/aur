@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=CircuitSim++
+Comment=Logic circuit simulator
+Exec=circuitsimplusplus
+Icon=circuitsimplusplus
+Terminal=false
+Categories=Education;Science;
