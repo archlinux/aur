@@ -1,0 +1,21 @@
+pkgbase = lexic
+	pkgdesc = Offline-first dictionary + SM-2 flashcard desktop app for humanities study
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/Crazygiscool/Lexic
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = gtk3
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libwayland
+	depends = libasound
+	depends = libgl
+	source = https://github.com/Crazygiscool/Lexic/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = lexic
