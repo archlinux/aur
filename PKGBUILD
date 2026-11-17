@@ -25,11 +25,7 @@ conflicts=("${pkgname%-bin}")
 
 options=('!strip')
 
-source=("README-${pkgver}.md::${_ghurlraw}/README.md"
-		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
-sha256sums=('3044043993426250b519529ecec339b562cebf74ffbbc85e1e572dae13eac816'
-            'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 sha256sums_x86_64=('d686b05000776207c128e38277799eb0bc33b6b4dcd7ad59396554ec61a14289')
 
 
