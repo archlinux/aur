@@ -1,6 +1,6 @@
 pkgbase = specify-cli-bin
 	pkgdesc = Specify CLI, part of GitHub Spec Kit — bootstrap projects for Spec-Driven Development (SDD)
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/github/spec-kit
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = specify-cli-bin
 	depends = python-json5
 	provides = specify-cli
 	conflicts = specify-cli
-	source = specify_cli-1.4.0-py3-none-any.whl::https://files.pythonhosted.org/packages/92/0f/d2d0745d1c532ced23cfce717122a89b6f5d2e6fdd0ed4086cf36772c685/specify_cli-1.4.0-py3-none-any.whl
-	sha256sums = 68c691596167171ea047d88e07baf57cd2815129308c9a10792da9f9a02b95f5
+	source = specify_cli-1.4.1-py3-none-any.whl::https://files.pythonhosted.org/packages/10/2b/1f3e764cdf2abea458a4287c6922bffea9c03465d8ad083c0b3c1a228724/specify_cli-1.4.1-py3-none-any.whl
+	sha256sums = b0d1b68198b04789aaae4fcd2823f3a8da06d5d4458cd2f5629dfa352d3107c6
 
 pkgname = specify-cli-bin
