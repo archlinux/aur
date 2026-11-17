@@ -1,18 +1,18 @@
 pkgbase = surrealql-language-server-bin
 	pkgdesc = SurrealQL language server for editor integration (pre-built binary)
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/surrealdb/surrealql-language-server
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	depends = libgcc
-	provides = surrealql-language-server=0.6.3
+	provides = surrealql-language-server=0.6.4
 	conflicts = surrealql-language-server
 	options = !debug
-	source_x86_64 = surrealql-language-server-0.6.3-linux-amd64::https://github.com/surrealdb/surrealql-language-server/releases/download/v0.6.3/surrealql-language-server-linux-amd64
-	sha256sums_x86_64 = 2565ca5ee455040b1a15c9ebd266f2ff0f15daa3edd0191615712fe169734cb9
-	source_aarch64 = surrealql-language-server-0.6.3-linux-arm64::https://github.com/surrealdb/surrealql-language-server/releases/download/v0.6.3/surrealql-language-server-linux-arm64
-	sha256sums_aarch64 = fa042c1a64761b2112cc11d803349fdcc5b9cdc829e0e0d341fb046a489abe35
+	source_x86_64 = surrealql-language-server-0.6.4-linux-amd64::https://github.com/surrealdb/surrealql-language-server/releases/download/v0.6.4/surrealql-language-server-linux-amd64
+	sha256sums_x86_64 = 3010b952adeccc8c23f0ed88282fefcf041e3b271f028a370fb372905b92e09a
+	source_aarch64 = surrealql-language-server-0.6.4-linux-arm64::https://github.com/surrealdb/surrealql-language-server/releases/download/v0.6.4/surrealql-language-server-linux-arm64
+	sha256sums_aarch64 = db7d15c78bf63c4b914aab3740814f3dc00b26ed2dd80187c16b9827df378185
 
 pkgname = surrealql-language-server-bin
