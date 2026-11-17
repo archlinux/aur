@@ -1,6 +1,6 @@
 pkgbase = rowq
 	pkgdesc = Query rows in tables, documents and databases from the terminal
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/denisotree/rowq
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rowq
 	license = Apache-2.0
 	makedepends = rust
 	makedepends = cargo
-	source = rowq-1.0.2.tar.gz::https://github.com/denisotree/rowq/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = beaf32ae39d97d866c788d3605f32b58549fd41e44800b0643e0b00449168e34
+	source = rowq-1.0.3.tar.gz::https://github.com/denisotree/rowq/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = a525c060a58a8174541c65ae5a59b16b0ea0d28e684da6218e186a09dd600db2
 
 pkgname = rowq
