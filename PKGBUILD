@@ -28,7 +28,7 @@ depends=(
   python-urllib3
   tk
 )
-install=msg.install
+install=yt-spammer-purge.install
 source=(
   "yt-spammer-purge-${pkgver}.tar.gz::https://github.com/ThioJoe/YT-Spammer-Purge/archive/refs/tags/v${pkgver}.tar.gz"
   yt-spammer-purge
