@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=fallow
-pkgver=3.43.1
+pkgver=3.43.2
 pkgrel=1
 pkgdesc='Codebase intelligence for TypeScript and JavaScript'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 options=('!lto')
 install=fallow.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ba061c506159df83c52529c56444b09296f130d5543764f868aedf5ca4a1025c')
+sha256sums=('771644aa95d7df0ea6deef3e55c0610205d30190af58e976c64ed881e823d49a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
