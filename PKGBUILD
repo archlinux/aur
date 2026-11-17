@@ -2,9 +2,9 @@
 # Contributor: Ariel Abreu <facekapow@outlook.com>
 pkgname=gitify-bin
 _pkgname=Gitify
-pkgver=8.1.0
+pkgver=8.2.0
 _electronversion=45
-pkgrel=2
+pkgrel=1
 pkgdesc="GitHub notifications on your menu bar."
 arch=('x86_64')
 url="https://www.gitify.io/"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('36ac1d47d2345029a0a516362705f92e61015d77ddded879bdf5f5e49e49d522'
+sha256sums=('48ca23c9f4d31c0de2bbfa0d23d9154a56a1629febd19a0788b43e694e8100b7'
             'e3583a920d79b28287ca8bf4b021c6cbeba746a75073c0c68b0aa64ff0b38961'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
