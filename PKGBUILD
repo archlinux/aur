@@ -2,8 +2,8 @@
 
 pkgname=bodyslide
 _pkgname=BodySlide
-pkgver=5.8.2
-pkgrel=2
+pkgver=6.1.0
+pkgrel=1
 pkgdesc='BodySlide and Outfit Studio, a tool to convert, create, and customize outfits and bodies for Bethesda games.'
 arch=('x86_64')
 
@@ -22,7 +22,7 @@ makedepends=('cmake'
 optdepends=('libxml2-legacy: for autodesk fbx')
 
 backup=("opt/${_pkgname}/Config.xml")
-source=("git+https://github.com/ousnius/BodySlide-and-Outfit-Studio.git#tag=v${pkgver}"
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	'git+https://github.com/ousnius/nifly.git'
 	'BodySlide.desktop'
 	'OutfitStudio.desktop'
@@ -33,7 +33,7 @@ sha256sums=('SKIP'
             '4f7089a49204d8587284ba40ed78dd50512dd4345a7a421310481ed63ce40ada')
 
 prepare() {
-	ln -srf BodySlide-and-Outfit-Studio ${pkgname}
+	ln -srf BodySlide-and-Outfit-Studio-${pkgver} ${pkgname}
 	ln -sf ${srcdir}/nifly/* ${pkgname}/lib/nifly
 	sed -i 's|"\\"%s\\\\%s\\" %s",|"%s/%s %s",|' \
 ${pkgname}/src/program/BodySlideApp.cpp
