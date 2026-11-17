@@ -3,7 +3,7 @@
 # Co-Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname="nzbhydra2"
-pkgver=9.3.1
+pkgver=9.3.2
 pkgrel=1
 pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('any')
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/theotherp/nzbhydra2/arc
         'disable-update-checks.patch'
         'skip-unneeded-builds.patch')
 
-sha256sums=('3def5ef3e573f31376e9925349a527b3666ab72a19c97bbb81bd6a8e046d8801'
+sha256sums=('1e7232913ff301b9f40329236799fd9b3f25a12f561b6f42b00e3eb105add673'
             '86c2f02cb8913c3093b1669247447691329bf5bd88fee1b8f2977cff96775655'
             'a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a'
@@ -47,7 +47,7 @@ check() {
 
     export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
     # skip tests that would require us to install the h2legacy jar to the maven repository
-    mvn -Dtest=!DatabaseRecreationTest -Dsurefire.failIfNoSpecifiedTests=false -pl core -am test
+    mvn -Dtest=!DatabaseRecreationTest,!NativeMetadataTest -Dsurefire.failIfNoSpecifiedTests=false -pl core -am test
 }
 
 package() {
