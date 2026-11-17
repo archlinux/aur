@@ -37,14 +37,12 @@ source=(
   'git+https://github.com/morpheus65535/bazarr'
   'bazarr.service'
   'bazarr.sysusers'
-  'bazarr.install'
   'bazarr.tmpfiles'
   imghdr.py
 )
 sha256sums=('SKIP'
             '2782e250117f7a85110d62472b834316fadcf32ca1874ad01541e7dd9a54215c'
             '73a60121fd2b7b8f5bad75ec4b0f92552fcae0e29a4b9e6aaf15f86a825a88a3'
-            '573beeac951d427e980332ce4d8645ae2299082e6c9c04f96e2a41a98c3acc60'
             'e7055260d0f3554e8b628d9560d8e12a40f720d76542048df0dfc838db88357b'
             'ff4b65f15e63c66747d6ede9b9dd3d1fe3c9216e33ecfe5c6889c0a5f3e87165')
 
