@@ -1,13 +1,15 @@
 # Maintainer: Dwi Mulia Mokoginta <malwareslayer@users.noreply.github.com>
 pkgname=ggml-aie
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tensor library for machine learning (with AMD XDNA/AIE2 NPU backend)'
 arch=('x86_64')
 url='https://github.com/malwareslayer/ggml-aie'
 license=('MIT')
 depends=('ggml>=0.29.0' 'llama-cpp' 'xrt=1:2.21.75' 'xrt-plugin-amdxdna=1:2.21.75')
 makedepends=('cmake' 'ninja' 'git')
+conflicts=('ollama-aie2')
+replaces=('ollama-aie2')
 source=(
   "$pkgname::git+https://github.com/malwareslayer/ggml-aie.git#tag=v$pkgver"
   'ggml-0.29.0.tar.gz::https://codeload.github.com/ggml-org/ggml/tar.gz/refs/tags/v0.29.0'
