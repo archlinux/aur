@@ -1,7 +1,7 @@
 # Maintainer: Dwi Mulia Mokoginta <malwareslayer@users.noreply.github.com>
 pkgname=ggml-aie
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Tensor library for machine learning (with AMD XDNA/AIE2 NPU backend)'
 arch=('x86_64')
 url='https://github.com/malwareslayer/ggml-aie'
@@ -13,11 +13,11 @@ replaces=('ollama-aie2')
 source=(
   "$pkgname::git+https://github.com/malwareslayer/ggml-aie.git#tag=v$pkgver"
   'ggml-0.29.0.tar.gz::https://codeload.github.com/ggml-org/ggml/tar.gz/refs/tags/v0.29.0'
+  '90-aie.conf'
 )
-sha256sums=(
-  'SKIP'
-  'b08d30d6685c5c90908e38dc279439fcc662b3b3f5a38c7bb2b447a31642c0f6'
-)
+sha256sums=('28106b9174910475ee7afadd4090318410dfbbe68391f66b637bf4180239d498'
+            'b08d30d6685c5c90908e38dc279439fcc662b3b3f5a38c7bb2b447a31642c0f6'
+            '6628101631b1813b497f2e7f101fd9ff4ddaa65031e8c35196331dc01cb15f8b')
 
 build() {
   cmake -S "$srcdir/$pkgname" -B "$srcdir/build" -G Ninja \
@@ -38,8 +38,8 @@ check() {
 package() {
   DESTDIR="$pkgdir" cmake --install "$srcdir/build"
   local project="$srcdir/$pkgname"
-  install -Dm644 "$project/packaging/systemd/90-aie2.conf" \
-    "$pkgdir/usr/lib/systemd/system/ollama.service.d/90-aie2.conf"
+  install -Dm644 "$srcdir/90-aie.conf" \
+    "$pkgdir/usr/lib/systemd/system/llama-server.service.d/90-aie.conf"
   install -dm755 "$pkgdir/usr/share/ggml-aie/kernel"
   cp -a "$project/kernel/"* "$pkgdir/usr/share/ggml-aie/kernel/"
   install -Dm644 "$project/LICENSE" \
