@@ -2,14 +2,14 @@
 
 _pkgname=pinniped
 pkgname=$_pkgname-bin
-pkgver=0.47.0 # renovate: datasource=github-releases depName=vmware-tanzu/pinniped
+pkgver=0.48.0 # renovate: datasource=github-releases depName=vmware-tanzu/pinniped
 pkgrel=1
 pkgdesc="Pinniped provides identity services for Kubernetes clusters"
 url="https://github.com/vmware-tanzu/$_pkgname"
 license=('Apache-2.0')
 source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-cli-linux-amd64")
 arch=('x86_64')
-sha512sums=('d60720b53d87e769bedc8df9a71f5477c29f77575de81a7450e5b36409bd279b5ed40bb960f6af37727f0977858960b1d9aac5c33b9253a48b464cea2bd224cd')
+sha512sums=('18402dd1259bb14930b1bc478d744e9a8bb178924583ea25f12dcaba5b29fbfa0148df8b660f615ec8afa61e81b31fe951e22b26786430d682a6b7f84df69c6d')
 conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {
