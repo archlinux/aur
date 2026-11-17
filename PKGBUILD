@@ -1,6 +1,6 @@
 # Maintainer: MapleProjects <eportillo898v2@gmail.com>
 pkgname=maple-saturation-hyprland-git
-pkgver=1.0.0.r9.e7b3996
+pkgver=1.0.0.r10.b8c43c3
 pkgrel=1
 pkgdesc="Screen color saturation and contrast control for Hyprland via GLSL shaders"
 arch=('any')
@@ -20,7 +20,7 @@ pkgver() {
 
 package() {
   cd maple-saturation-hyprland
-  install -Dm755 maple-saturation "$pkgdir/usr/bin/maple-saturation"
-  install -Dm644 maple-saturation.desktop "$pkgdir/usr/share/applications/maple-saturation.desktop"
+  install -Dm755 maple-saturation-hyprland "$pkgdir/usr/bin/maple-saturation-hyprland"
+  install -Dm644 maple-saturation-hyprland.desktop "$pkgdir/usr/share/applications/maple-saturation-hyprland.desktop"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
