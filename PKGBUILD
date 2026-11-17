@@ -4,8 +4,8 @@
 # release workflow (scripts/linux-packages.ts pkgbuild); change the template there, not this copy.
 
 pkgname=atomic-agent-bin
-pkgver=0.7.0
-_version=0.7.0
+pkgver=0.8.0
+_version=0.8.0
 pkgrel=1
 pkgdesc='Local-first AI agent for the terminal: browses, edits files, runs approved commands, remembers (https://atomicagent.io)'
 arch=('x86_64' 'aarch64')
@@ -25,11 +25,11 @@ options=('!strip' '!debug')
 
 # The release archive of each architecture: the SEA binary and the directories the runtime resolves
 # next to it. The asset names carry no version, so the local name does (makepkg caches by it).
-_base='https://github.com/AtomicBot-ai/atomic-agent/releases/download/v0.7.0'
+_base='https://github.com/AtomicBot-ai/atomic-agent/releases/download/v0.8.0'
 source_x86_64=("atomic-agent-${_version}-linux-x64.tar.gz::${_base}/atomic-agent-linux-x64.tar.gz")
 source_aarch64=("atomic-agent-${_version}-linux-arm64.tar.gz::${_base}/atomic-agent-linux-arm64.tar.gz")
-sha256sums_x86_64=('1b908d4c726e719df33c1b0c0fd538b2eddf2e6c8c144fed3d95f4665e10ba4e')
-sha256sums_aarch64=('475c1b4234e7ebf3ba43b4db6c3312153e8d9867ecedb3c589331fc252aa82ab')
+sha256sums_x86_64=('0efb3708b49247f2e5e68167487bd894dc44f3288453892330bf36e1ad201457')
+sha256sums_aarch64=('11e2ddf704ad1f0bdaf7b444e1c5a48f6b7b0d64d81c5fd5ae13cc3ba77979bc')
 
 package() {
   local slug
