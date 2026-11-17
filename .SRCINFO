@@ -1,0 +1,21 @@
+pkgbase = reeve-bin
+	pkgdesc = A TUI based local web development stack
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/yetidevworks/reeve
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = reeve
+	conflicts = reeve
+	options = !strip
+	source = README-1.1.4.md::https://raw.githubusercontent.com/yetidevworks/reeve/v1.1.4/README.md
+	source = LICENSE-1.1.4::https://raw.githubusercontent.com/yetidevworks/reeve/v1.1.4/LICENSE
+	sha256sums = 7dfa9b7d82091bdff78dbc039cb3ec094eec739cc2af424f5c9647a2811076b5
+	sha256sums = c13c90e64ceabc5dfe6450da43bb2479cd026feed99338bff3391677c65e1c6a
+	source_x86_64 = reeve-x86_64-1.1.4.tgz::https://github.com/yetidevworks/reeve/releases/download/v1.1.4/reeve-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 7677b8a50f2879185b57f44259901046ab058958dca4f8dcf8ea277eb0806d40
+	source_aarch64 = reeve-aarch64-1.1.4.tgz::https://github.com/yetidevworks/reeve/releases/download/v1.1.4/reeve-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 11e04b3062bee5ac2e3b99a5d5d680034bc5859aebe49d980380a4529b549213
+
+pkgname = reeve-bin

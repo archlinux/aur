@@ -1,0 +1,5 @@
+[reeve-bin]
+source = "github"
+github = "yetidevworks/reeve"
+use_latest_release = true
+prefix = "v"
