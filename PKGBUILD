@@ -2,7 +2,7 @@
 pkgname=flomo-bin
 _pkgname=Flomo
 _zhsname='浮墨笔记'
-pkgver=5.26.103
+pkgver=5.26.111
 _electronversion=36
 pkgrel=1
 pkgdesc="A new generation of cloud knowledge base for personal note-taking and knowledge creation, team collaboration and knowledge accumulation.新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀"
@@ -13,7 +13,7 @@ license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
 )
 makedepends=(
     'gendesk'
@@ -27,10 +27,10 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6ae4f88b0891bb6e1399be69b3c879903b7c77e1eb8f87f3da4900f87e0ad68f'
-            '783e3941e936ce62599ea6f5881e0efe419d90248c22df732e6334d2868db806'
+sha256sums=('3a175bc1b048ea647f4f3b9e52148b0cbb04ad1c1639764e62e8772f769a7b7b'
+            'dc77c5bd78a5f5bd9cb6e0c81460012e3960c6e3e9bebd84d6ec4350d9a36681'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }

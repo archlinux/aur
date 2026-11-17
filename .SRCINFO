@@ -1,6 +1,6 @@
 pkgbase = flomo-bin
 	pkgdesc = A new generation of cloud knowledge base for personal note-taking and knowledge creation, team collaboration and knowledge accumulation.新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀
-	pkgver = 5.26.103
+	pkgver = 5.26.111
 	pkgrel = 1
 	url = https://flomoapp.com/
 	arch = x86_64
@@ -9,16 +9,16 @@ pkgbase = flomo-bin
 	makedepends = asar
 	makedepends = icoutils
 	makedepends = 7zip
-	depends = electron36
-	provides = flomo=5.26.103
+	depends = electron36-bin
+	provides = flomo=5.26.111
 	conflicts = flomo
-	source = flomo-5.26.103.exe::https://github.com/zxp19821005/My_AUR_Files/releases/download/flomo-mirrors/flomo-5.26.103-x64.exe
+	source = flomo-5.26.111.exe::https://github.com/zxp19821005/My_AUR_Files/releases/download/flomo-mirrors/flomo-5.26.111-x64.exe
 	source = LICENSE.html::https://help.flomoapp.com/legal/
 	source = flomo.js
 	source = flomo.sh
-	sha256sums = 6ae4f88b0891bb6e1399be69b3c879903b7c77e1eb8f87f3da4900f87e0ad68f
-	sha256sums = 783e3941e936ce62599ea6f5881e0efe419d90248c22df732e6334d2868db806
+	sha256sums = 3a175bc1b048ea647f4f3b9e52148b0cbb04ad1c1639764e62e8772f769a7b7b
+	sha256sums = dc77c5bd78a5f5bd9cb6e0c81460012e3960c6e3e9bebd84d6ec4350d9a36681
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
 pkgname = flomo-bin
