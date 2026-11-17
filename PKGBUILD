@@ -2,7 +2,7 @@
 
 pkgname=python-pamqp
 _pkgname=pamqp
-pkgver=5.0.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="RabbitMQ Focused AMQP low-level library"
 arch=("any")
@@ -11,7 +11,7 @@ license=('BSD-3-Clause')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('66b1d8f32a6ef7825973281419a7a6b6469ee48024caae348ca7e2aafa6b02a1894078d95f786ade54eb7ab3260e3dc34d90462a0a2ca45ff7458cc1040b87a0')
+b2sums=('b0b9d2c78e6abd67701982e8f3122c5f1cfd7086586f4efc2ca5f591e42872549914a49b39ec88486a4a3d15778c5c928c369bb0f58fb456a15d0c6ac82cffa6')
 
 build() {
   cd ${_pkgname}-${pkgver}
