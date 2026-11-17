@@ -1,5 +1,5 @@
 [homer-web]
-source = "github"
-github = "bastienwirtz/homer"
+source = 'github'
+github = 'homer-dashboard/homer'
 use_latest_release = true
-prefix = "v"
+prefix = 'v'
