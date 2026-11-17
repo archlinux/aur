@@ -1,6 +1,6 @@
 # Maintainer: ezhkov <alexcez94@gmail.com>
 pkgname=voltius
-pkgver=0.75.1
+pkgver=0.76.1
 pkgrel=1
 pkgdesc="Local-first SSH/SFTP/Serial client with E2EE sync, plugins, and no account required"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/VoltiusApp/voltius/archive/refs/tags/v$pkgver.tar.gz"
   "$pkgname.desktop"
 )
-sha256sums=('7715c652929f6f8192e5b8c3ae76d338f9d58f11ead9f2cf833948c99cefd9f4'
+sha256sums=('6dee54c969d923466853ca639294e169a023cc595851fda9eb77669f5c558137'
             '101c1683674e94e286f06627f76d0422e506afd2579620d202710bd304693f44')
 
 prepare() {
