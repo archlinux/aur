@@ -3,3 +3,9 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!LICENSES/
+!LICENSE
+!REUSE.toml
+jackett.service
+jackett.sysusers
+jackett.tmpfiles
