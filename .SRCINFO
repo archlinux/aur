@@ -1,6 +1,6 @@
 pkgbase = nkit-ui-git
 	pkgdesc = Graphical disc image tools. Convert/extract/verify/fix (NKit). Dedupe/mount (NKDS).
-	pkgver = 3.2.2.r0.g3520895
+	pkgver = 3
 	pkgrel = 1
 	url = https://github.com/Nanook/NKit
 	arch = x86_64
