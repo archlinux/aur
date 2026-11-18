@@ -1,0 +1,19 @@
+post_install() {
+  echo "=> mewline-qs installed to /usr/share/mewline-qs."
+  echo "=> Run the shell (nothing to copy — it runs in place):"
+  echo "      quickshell -p /usr/share/mewline-qs/quickshell"
+  echo "=> quickshell is the only hard dependency (install it from the AUR)."
+  echo ""
+  echo "=> bspwm users: source the autostart module from your bspwmrc:"
+  echo "      . /usr/share/mewline-qs/bspwm/default/quickshell.sh"
+  echo "   It tags the shell windows — the keyboard handover for menus"
+  echo "   (Esc, arrows) depends on those tags. picom rules:"
+  echo "   /usr/share/mewline-qs/bspwm/picom-mewline.conf"
+  echo ""
+  echo "=> Want to hack on the shell? Copy it first:"
+  echo "      cp -r /usr/share/mewline-qs/quickshell ~/.config/quickshell"
+}
+
+post_upgrade() {
+  post_install
+}
