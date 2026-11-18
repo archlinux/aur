@@ -2,13 +2,14 @@
 
 pkgname=trae-cn-ide
 pkgver=2.3.103559
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-powered IDE by ByteDance (Chinese Domestic Version)"
 arch=('x86_64' 'aarch64')
 url="https://www.trae.cn/"
 license=('LicenseRef-Trae')
 conflicts=('trae-cn' 'trae-cn-bin')
 depends=('nss' 'alsa-lib' 'gtk3' 'at-spi2-core' 'libsecret' 'libxkbfile' 'zeromq')
+makedepends=('imagemagick' 'ttf-dejavu')
 optdepends=('libappindicator-gtk3: System tray support'
             'xdg-utils: Open URLs and files with default applications'
             'python: Python extension support'
@@ -19,9 +20,38 @@ source=("trae-cn.sh" "trae-cn.desktop")
 source_x86_64=("Trae_CN-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/TRAE_CN-linux-x64.tar.gz")
 source_aarch64=("Trae_CN-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/TRAE_CN-linux-arm64.tar.gz")
 b2sums=('b16bf7b4e9a60d3f2d04fda6b7c6f2ca224009daffeae4e2b82a2b0f2f95d8821ebb45a6a2c394357b6a55b25c801181a3200f25a373202adb0c2637b7b9d5b0'
-            '02d2c5d433e4d56a958bc7766563d977d79070f06c94bfa5829d2eb3c20c50111c3ff5174109bdb6f8f20cafdf4730f053f37c3a7a03e6b0f466446981dcc407')
+            '9e0d6934891325eeea1e83c4d79db3f80cc91a2507302601c10763f08cfd55dfbcb456d3b64540e44229b821786d445cfc2d7a5424446c2a233a742c69e55450')
 b2sums_x86_64=('c3c4b4081fcd5a99bc0012d9171191a9bec938a9206e78cc6385a5e4759fff920c3b755b77a906271df3918eb00b20f5ba7e239cddefb952969833de2a6b0b2c')
 b2sums_aarch64=('26939799eb4077fe37633b90e4f8764b077ee1255e5ad447215736f0b5bc94ddbfd8aa7e13163298293c0fb7f7fa58f26dcaceacfa3e16ee7f7a6021100d0f0a')
+
+# 国内版图标与国际版同为上游 code.png，右下角合成 CN 角标以在启动器/任务栏区分。
+_badge_icon() {
+    local src="$1" dst="$2" size="$3"
+    local bw pad radius pointsize tmp
+    bw=$(( size * 38 / 100 )); [ "$bw" -lt 7 ] && bw=7
+    pad=$(( size * 6 / 100 )); [ "$pad" -lt 1 ] && pad=1
+    radius=$(( bw / 4 )); [ "$radius" -lt 1 ] && radius=1
+    pointsize=$(( bw * 40 / 100 )); [ "$pointsize" -lt 4 ] && pointsize=4
+    tmp="$(mktemp --suffix=.png)"
+    magick -size "${bw}x${bw}" xc:none \
+        -fill '#C8102E' \
+        -draw "roundrectangle 0,0 $(( bw - 1 )),$(( bw - 1 )) ${radius},${radius}" \
+        -gravity center -font DejaVu-Sans-Bold -pointsize "${pointsize}" \
+        -fill white -annotate +0+0 'CN' "${tmp}" || return 1
+    magick "${src}" -resize "${size}x${size}" \
+        "${tmp}" -gravity southeast -geometry "+${pad}+${pad}" -composite "${dst}"
+    rm -f "${tmp}"
+}
+
+prepare() {
+    local _size
+    rm -rf "${srcdir}/icons"
+    install -dm755 "${srcdir}/icons"
+    for _size in 16 24 32 48 64 128 256 512; do
+        _badge_icon "${srcdir}/resources/app/resources/linux/code.png" \
+            "${srcdir}/icons/trae-cn-${_size}.png" "${_size}"
+    done
+}
 
 package() {
     install -d "${pkgdir}/opt/trae-cn"
@@ -42,8 +72,12 @@ package() {
     # Desktop entry
     install -Dm644 "${srcdir}/trae-cn.desktop" "${pkgdir}/usr/share/applications/trae-cn.desktop"
 
-    # Icon
-    install -Dm644 "${pkgdir}/opt/trae-cn/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/trae-cn.png"
+    # Icon（国内版带 CN 角标，安装全部尺寸）
+    local _size
+    for _size in 16 24 32 48 64 128 256 512; do
+        install -Dm644 "${srcdir}/icons/trae-cn-${_size}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/trae-cn.png"
+    done
 
     # License
     install -Dm644 "${pkgdir}/opt/trae-cn/resources/app/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
