@@ -4,7 +4,7 @@
 # on every stable GitHub release. Edit dependencies and packaging here, then cut
 # a release - do not bump the version by hand.
 pkgname=mov-watch
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Terminal-based movie and TV show streaming"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 source=("https://github.com/leoallday/mov-watch/archive/refs/tags/v${pkgver}.tar.gz")
 # Replace SKIP with the real checksum before submitting to the AUR:
 #   updpkgsums
-sha256sums=('5aac07f4a5f475b61170f5d2f9f2c4be7d7d9028aadecf02e641bec5d39ed3f7')
+sha256sums=('c9100caba166bbbf974438b8f75e015bf29b7add7d55d90736b96cd71272c3ee')
 
 build() {
     cd "${pkgname}-${pkgver}"
