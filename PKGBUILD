@@ -3,7 +3,7 @@ pkgname=pdf4qt-bin
 _pkgname=PDF4QT
 _appname=Pdf4qt
 _runname=Pdf4Qt
-pkgver=1.7.0.0
+pkgver=1.7.1.0
 pkgrel=1
 pkgdesc="Open source PDF editor(Prebuilt version)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
 	'libspeechd: Text-To-Speech using speechd synthesizer'
 )
 source=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}.AppImage")
-sha256sums=('a9d170d540137701c34e6ea38db7eecd4e033de0e099d4cb93fa1747432294f2')
+sha256sums=('290c7453e349e16a99e48397ac111fcec22ca4d60a6660389f127e8d9592c5a4')
 prepare() {
     chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     rm -rf "${srcdir}/squashfs-root"
