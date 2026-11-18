@@ -13,8 +13,8 @@ _pkgname="${pkgname}"
 __pkgname=konform
 : ${_ffsrcvername:=153.7.0esr}
 : ${_ffbuild:=1}
-: ${_lwrelver:=100}
-: ${_l10n_commit=1e95d1c5f519c3fbde715345ae7beb56a2c79077}
+: ${_lwrelver:=101}
+: ${_l10n_commit=2727528d7a299d3d8f6d1b4f5cbbcb23a4c848c7}
 _ffsrcver="${_ffsrcvername%esr*}"
 if [[ "${_ffsrcver}" =~ .+\..+\..+ ]]; then
   _srcver="${_ffsrcver}"
@@ -23,7 +23,7 @@ else
 fi
 _ffsrcver="${_ffsrcver%b*}"
 pkgver="${_srcver}.${_lwrelver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -150,14 +150,13 @@ source=(
   "security-state--intermediates-${_tag}.zip::https://codeberg.org/konform-browser/source/releases/download/${_tag}/security-state--intermediates.zip"
 )
 noextract=("security-state--intermediates-${_tag}.zip")
-sha256sums=('dff62dd014e755fa20d57d3cb44cd579791d673a8c6414c201cefdd9ae3e3d43'
+sha256sums=('fb22eeadf66440e39d1a0b128450e05dee3a5363c2c20f9bc55ed81f700f73eb'
             '7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0'
             'SKIP'
-            '5cda6675c1d51c6b16395a6be861f980968ed884a404d68d465e8fea87009ef5'
+            '8c3a8581a4a5974d60afbe2d84e402da13da03a68ab66beb6eeee23f18cf68f4'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
-            'c683b93bcb843da6de51ee49dd163c6eb9889f27988357aba3ca8766abd76f2e'
-            '287b560ff3eec30a563bf365083cf818b2d257882da6891784610ec6dbec2a40')
+            'a993506db3589afbe81989cfc9ea3e500d6877faa0f65a27da41c9c69fc920ca')
 
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
