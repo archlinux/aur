@@ -1,0 +1,22 @@
+pkgbase = kicad-routing-tools
+	pkgdesc = Rust-accelerated autorouter and routing tools for KiCad (pcbnew plugin and CLI)
+	pkgver = 0.24.1
+	pkgrel = 1
+	url = https://github.com/drandyhaas/KiCadRoutingTools
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = kicad
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-shapely
+	optdepends = python-pillow: board and placement rendering
+	options = !lto
+	source = kicad-routing-tools-0.24.1.tar.gz::https://github.com/drandyhaas/KiCadRoutingTools/archive/refs/tags/v0.24.1.tar.gz
+	sha256sums = cfb6a14066d4ade82f66c557ff37dcf2feaa567459a74a6e48e3ec5c4466e298
+
+pkgname = kicad-routing-tools
