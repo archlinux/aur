@@ -1,6 +1,6 @@
 pkgbase = wikistow-cli-beta-bin
 	pkgdesc = Command-line client for your family's encrypted wiki, for people and their agents (beta channel)
-	pkgver = 0.27.3beta.1
+	pkgver = 0.28.0beta.1
 	pkgrel = 1
 	url = https://github.com/skint007/wikistow
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = wikistow-cli-beta-bin
 	conflicts = wikistow-cli-beta
 	options = !strip
 	options = !debug
-	source = LICENSE-0.27.3-beta.1::https://github.com/skint007/wikistow/releases/download/v0.27.3-beta.1/LICENSE
+	source = LICENSE-0.28.0-beta.1::https://github.com/skint007/wikistow/releases/download/v0.28.0-beta.1/LICENSE
 	sha256sums = 49e9b16003c5e96891265ca2f912087102de955704eda32482dfe2c4b8fbafd6
-	source_x86_64 = wikistow-0.27.3-beta.1-x86_64::https://github.com/skint007/wikistow/releases/download/v0.27.3-beta.1/wikistow-linux-x64
-	sha256sums_x86_64 = 6034a823f5fd56d3da041e00dfbd6f7e7b1faa6c98c390172224abee4a4d2f9d
-	source_aarch64 = wikistow-0.27.3-beta.1-aarch64::https://github.com/skint007/wikistow/releases/download/v0.27.3-beta.1/wikistow-linux-arm64
-	sha256sums_aarch64 = b8c169ca3e2590beed8a0c6fd92aedc140b55f7c5aaeea9084c16df143380d1c
+	source_x86_64 = wikistow-0.28.0-beta.1-x86_64::https://github.com/skint007/wikistow/releases/download/v0.28.0-beta.1/wikistow-linux-x64
+	sha256sums_x86_64 = 071128541e024ca85ac62a1e826851d69cd2f49d22e86c022fe96bc7a6eecfd9
+	source_aarch64 = wikistow-0.28.0-beta.1-aarch64::https://github.com/skint007/wikistow/releases/download/v0.28.0-beta.1/wikistow-linux-arm64
+	sha256sums_aarch64 = 57b0bf0459ddb1ef2535a7b86f515be0e7bcdf90f5491af5aca04955dd1fd500
 
 pkgname = wikistow-cli-beta-bin
