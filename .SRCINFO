@@ -1,0 +1,16 @@
+pkgbase = hunspell-pt_pt-git
+	pkgdesc = Portuguese (European, post-orthographic agreement) hunspell dictionaries
+	pkgver = r19.20251023
+	pkgrel = 1
+	url = https://github.com/LibreOffice/dictionaries/tree/master/pt_PT
+	arch = any
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	license = MPL-1.1
+	makedepends = git
+	makedepends = qt6-webengine
+	optdepends = hunspell: the spell checking libraries and apps
+	provides = hunspell-pt_pt
+	conflicts = hunspell-pt_pt
+
+pkgname = hunspell-pt_pt-git
