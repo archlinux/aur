@@ -1,0 +1,21 @@
+pkgbase = epixnet-bin
+	pkgdesc = Decentralized peer-to-peer web platform (official binary AppImage release)
+	pkgver = 0.6.8
+	pkgrel = 1
+	url = https://github.com/EpixZone/EpixNet
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = glibc
+	depends = zlib
+	optdepends = libayatana-appindicator: system tray icon support
+	provides = epixnet
+	conflicts = epixnet
+	conflicts = epixnet-git
+	noextract = EpixNet-0.6.8-x86_64.AppImage
+	options = !strip
+	options = !debug
+	source_x86_64 = EpixNet-0.6.8-x86_64.AppImage::https://github.com/EpixZone/EpixNet/releases/download/v0.6.8/EpixNet-0.6.8-x86_64.AppImage
+	sha256sums_x86_64 = 47e4ebe8dd93d5d2546bc1b4fdd7022681e64662f330ef18d84cd79486c36fc2
+
+pkgname = epixnet-bin

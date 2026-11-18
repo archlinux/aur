@@ -1,0 +1,8 @@
+# makepkg artifacts
+/pkg/
+/src/
+*.AppImage
+*.pkg.tar.*
+*.log
+*.log.*
+squashfs-root/
