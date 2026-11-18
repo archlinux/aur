@@ -1,21 +1,21 @@
 # Maintainer: Remy Huang <me@remya.top>
 pkgname=remya-screen-capture-bin
 _app_id=remya_screen_capture
-_upstream_ver=0.2.0
-pkgver=0.2.0
+_upstream_ver=0.3.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Screen capture, recording and editing for Hyprland"
 arch=('x86_64')
 url="https://github.com/remyhuang03/remya-screen-capture"
 license=('LicenseRef-PolyForm-Noncommercial-1.0.0')
-depends=('remya-core' 'gtk3' 'gtk-layer-shell' 'wayland' 'hyprland' 'grim>=1.5'
+depends=('remya-core>=0.2.0' 'gtk3' 'gtk-layer-shell' 'wayland' 'hyprland' 'grim>=1.5'
          'wl-clipboard' 'fontconfig' 'inter-font' 'gpu-screen-recorder'
          'ffmpeg' 'mpv' 'libepoxy' 'xdg-utils' 'glibc' 'gcc-libs')
 options=('!strip')
 provides=("remya-screen-capture=${pkgver}")
 conflicts=('remya-screen-capture' 'remya-screen-capture-git')
 source=("${_app_id}-${_upstream_ver}-linux-x86_64.tar.zst::${url}/releases/download/v${_upstream_ver}/${_app_id}-${_upstream_ver}-linux-x86_64.tar.zst")
-sha256sums=('429047e994259b85d70ddae3daa81d4e60e9f656ff2e35fe5975e0aca23fe8a2')
+sha256sums=('26af9a265167a8080b4bfa9a48952be92588667767449535456f2204b4fd53a9')
 
 package() {
   cd "${srcdir}/${_app_id}-${_upstream_ver}-linux-x86_64"
