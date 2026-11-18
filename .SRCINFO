@@ -1,6 +1,6 @@
 pkgbase = sheprd-bin
 	pkgdesc = Native GPUI client for an installed Herdr daemon (formerly herdr-gpui)
-	pkgver = 20261115.1
+	pkgver = 20261118.1
 	pkgrel = 1
 	url = https://github.com/sheprd-labs/sheprd
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = sheprd-bin
 	conflicts = sheprd
 	conflicts = herdr-gpui
 	replaces = herdr-gpui
-	source_x86_64 = Sheprd-20261115.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/sheprd-labs/sheprd/releases/download/v20261115.1/Sheprd-20261115.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = f49eab5a34a3eeb2ed4339cb5f4622e0bf4f9dfb391bc1f0ec2f6a0e1a24c236
-	source_aarch64 = Sheprd-20261115.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/sheprd-labs/sheprd/releases/download/v20261115.1/Sheprd-20261115.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 49824644eefa7a6933b641a3695efbc5a0f36387fce90f0ebdcdc97afe18d511
+	source_x86_64 = Sheprd-20261118.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/sheprd-labs/sheprd/releases/download/v20261118.1/Sheprd-20261118.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f4490d33502e088555b16689de502eb7e26c240dc9a97a7cf3610238a46acb58
+	source_aarch64 = Sheprd-20261118.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/sheprd-labs/sheprd/releases/download/v20261118.1/Sheprd-20261118.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = aedd45c4eee205f8d0835edea149227293e567abe50814709c25aee03a6c782a
 
 pkgname = sheprd-bin
