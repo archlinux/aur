@@ -1,6 +1,6 @@
 # Maintainer: Dwi Mulia Mokoginta <malwareslayer@users.noreply.github.com>
 pkgname=ollama-antigravity
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Zero-dependency Go Ollama & OpenAI /v1/ HTTP bridge backed by agy acp'
 arch=('x86_64' 'aarch64')
