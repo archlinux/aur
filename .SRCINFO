@@ -1,0 +1,39 @@
+pkgbase = runnersh-bin
+	pkgdesc = Local desktop cockpit for CLI coding agents
+	pkgver = 0.20.1
+	pkgrel = 1
+	url = https://github.com/yicheng47/runner
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	depends = fontconfig
+	depends = freetype2
+	depends = glibc>=2.35
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libglvnd
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	depends = wayland
+	depends = xcb-util-cursor
+	depends = xdg-utils
+	optdepends = git: repository status, diffs and worktree support
+	optdepends = noto-fonts-cjk: Chinese, Japanese and Korean font coverage
+	optdepends = xdg-desktop-portal: desktop integration for file dialogs
+	provides = runnersh=0.20.1
+	conflicts = runnersh
+	conflicts = runner-bin
+	options = !strip
+	options = !debug
+	source = runner-0.20.1-LICENSE::https://raw.githubusercontent.com/yicheng47/runner/v0.20.1/LICENSE
+	sha256sums = 9cd05f17e4eb355ec72bcc88306c54e0e0d19a9d701fe38ddb02604f0ea68af7
+	source_x86_64 = https://github.com/yicheng47/runner/releases/download/v0.20.1/Runner_0.20.1_linux-x64.deb
+	sha256sums_x86_64 = 19c0d4897cafa4faca3c8f08fdfc05384e71797bc122eb8968926fdd7d2be1c6
+	source_aarch64 = https://github.com/yicheng47/runner/releases/download/v0.20.1/Runner_0.20.1_linux-arm64.deb
+	sha256sums_aarch64 = 4ae22e28fa925ec52cf5f4cfc9010cd8f2edbbb291959f3039080ffa9462fa24
+
+pkgname = runnersh-bin
