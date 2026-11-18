@@ -4,7 +4,7 @@
 # copy of this file and its .SRCINFO (makepkg --printsrcinfo > .SRCINFO).
 
 pkgname=pila-git
-pkgver=0.6.1.r638.g78c6e3a
+pkgver=0.7.0.r666.g962b3f9
 pkgrel=1
 pkgdesc='A stacking Wayland compositor built on Smithay'
 arch=(x86_64 aarch64)
@@ -72,7 +72,11 @@ prepare() {
             "$need" "$have"
         return 1
     fi
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    local target
+    target="$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target "$target"
+    # pila-launcher and pila-bar: a cargo workspace of their own, with its own lock.
+    cargo fetch --locked --target "$target" --manifest-path launcher/Cargo.toml
 }
 
 build() {
@@ -80,6 +84,8 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
+    CARGO_TARGET_DIR=launcher/target cargo build --frozen --release \
+        --manifest-path launcher/Cargo.toml
 }
 
 # No check(): the tests start pila headless, which needs EGL and Xwayland and
