@@ -1,0 +1,26 @@
+pkgbase = por-cli
+	pkgdesc = A cli to browse and watch porn.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/por-cli/por-cli
+	arch = any
+	license = GPL-3.0-or-later
+	depends = bash
+	depends = curl
+	depends = fzf
+	depends = mpv
+	depends = chafa
+	depends = jq
+	depends = sed
+	depends = grep
+	depends = gawk
+	depends = coreutils
+	depends = libnotify
+	optdepends = yt-dlp: video downloading
+	optdepends = xdg-utils: opening URLs
+	optdepends = kitty: terminal video playback
+	conflicts = por-cli-git
+	source = por-cli-0.2.0.tar.gz::https://github.com/por-cli/por-cli/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = bca6a87a4e809efed8b043f17152aecaebd21b5617a9a8571cbca145ab493305
+
+pkgname = por-cli
