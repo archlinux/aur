@@ -1,6 +1,6 @@
 # Maintainer: Braulio Oliveira <brauliobo@gmail.com>
 pkgname=pg_search
-pkgver=0.26.7
+pkgver=0.26.8
 pkgrel=1
 _pgrxver=0.19.3
 pkgdesc='ParadeDB full-text search and BM25 ranking extension for PostgreSQL, powered by Tantivy'
@@ -12,7 +12,7 @@ makedepends=('rust' 'clang' 'llvm' 'lld')
 options=('!lto' '!debug')
 source=("paradedb-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "cargo-pgrx-$_pgrxver.crate::https://static.crates.io/crates/cargo-pgrx/cargo-pgrx-$_pgrxver.crate")
-sha256sums=('8f11c75cc0df0094c98043dcbfb7425cc735b77b2159a6b278ccb315836f7068'
+sha256sums=('0dbcdb37c3f5940520c2e737106f0b9c5b6604aa9e88fd8915d3fe21b5d3955f'
             '63418c536503020a9e79c20fd8a33c1b84814fbcb262f684d1b11b9adc7e628a')
 
 _env() {
