@@ -1,4 +1,7 @@
 # Maintainer: Nguyen Phi <nguyenphidt at gmail dot com>
+#
+# Kept in https://github.com/ngosen/ibus-ngosen/tree/main/packaging/aur; its release workflow fills in
+# sha256sums and pushes it here. Send changes there.
 
 pkgname=ibus-ngosen
 pkgver=1.4.0
@@ -14,7 +17,7 @@ makedepends=('cmake' 'rust')
 conflicts=('fcitx5-ngosen')
 options=('!debug')
 # The release tarball, unlike the tag archive, carries the ngosen submodule.
-source=("$url/releases/download/$pkgname-$pkgver-1/$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/releases/download/$pkgname-$pkgver-$pkgrel/$pkgname-$pkgver.tar.gz")
 sha256sums=('6a39430e3c45f3751c6b7b374674b35e635204a788cf27a24c048b1dae7a997a')
 
 build() {
