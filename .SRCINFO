@@ -1,8 +1,8 @@
 pkgbase = openchronology-desktop-bin
-	pkgdesc = Exact timelines, shared on your terms: the OpenChronology desktop app
-	pkgver = 0.29.0
+	pkgdesc = Exact timelines, shared on your terms: the Circagraph desktop app
+	pkgver = 0.30.1
 	pkgrel = 1
-	url = https://github.com/openchronology/timeline-app
+	url = https://github.com/circagraph/timeline-app
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = gmp
@@ -11,10 +11,10 @@ pkgbase = openchronology-desktop-bin
 	depends = gtk3
 	provides = openchronology-desktop
 	conflicts = openchronology-desktop
-	noextract = openchronology-desktop-0.29.0.deb
+	noextract = openchronology-desktop-0.30.1.deb
 	options = !strip
 	options = !debug
-	source = openchronology-desktop-0.29.0.deb::https://github.com/openchronology/timeline-app/releases/download/v0.29.0/openchronology-desktop-linux-amd64.deb
-	sha256sums = a6db34d9ea8bf965cbc302ee67606d215d97347789625f6088c0ac6e4380229f
+	source = openchronology-desktop-0.30.1.deb::https://github.com/circagraph/timeline-app/releases/download/v0.30.1/openchronology-desktop-linux-amd64.deb
+	sha256sums = a23442fd7244ab43cb2536f98ac15b4c5509cbf5deab3ced88bb7437a7b756c2
 
 pkgname = openchronology-desktop-bin
