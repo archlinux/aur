@@ -1,0 +1,16 @@
+pkgbase = chronytop
+	pkgdesc = TUI for chrony NTP time server monitoring
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/geerlingguy/chronytop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	conflicts = chronytop-bin
+	source = https://github.com/geerlingguy/chronytop/archive/v0.2.0/chronytop-0.2.0.tar.gz
+	sha512sums = 56a9ec459d458887c269dd50b5fb727cb3cf30f34dda49aa0343048611954d23aa51268fd7daa6fc13e59e6b6937437b12659607b6ac4c2465eaa0973cc0ba62
+	b2sums = 7ab80b28fb933b011ea895b8d9454aaa14a38fc14fbd366981f704ee79edf7996cf040a342135c8aa242d751dfe8838fea3b8ca55008bd442d3b6d9d7019a39f
+
+pkgname = chronytop
