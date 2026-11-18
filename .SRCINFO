@@ -1,6 +1,6 @@
 pkgbase = 360-media-viewer-bin
 	pkgdesc = Interactive 360° photo and video viewer for Linux, built with Electron and React.
-	pkgver = 3.8.1
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://github.com/shturnev/ubuntu-360-player
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = 360-media-viewer-bin
 	depends = electron45
 	depends = perl
 	depends = ffmpeg
-	provides = 360-media-viewer=3.8.1
+	provides = 360-media-viewer=3.9.0
 	conflicts = 360-media-viewer
-	source = 360-media-viewer-3.8.1.deb::https://github.com/shturnev/ubuntu-360-player/releases/download/v3.8.1/360-media-viewer_3.8.1_amd64.deb
-	source = LICENSE-3.8.1::https://raw.githubusercontent.com/shturnev/ubuntu-360-player/v3.8.1/LICENSE
+	source = 360-media-viewer-3.9.0.deb::https://github.com/shturnev/ubuntu-360-player/releases/download/v3.9.0/360-media-viewer_3.9.0_amd64.deb
+	source = LICENSE-3.9.0::https://raw.githubusercontent.com/shturnev/ubuntu-360-player/v3.9.0/LICENSE
 	source = 360-media-viewer.js
 	source = 360-media-viewer.sh
-	sha256sums = b15e7570ec912082bf170a68c37a4d8838e7ed5518505c8688b043906cf90d3c
+	sha256sums = f26eae2a5677261f0c5bc35f674ea7e6d27e3538f8d089be92c7298f42e42c2a
 	sha256sums = aaaf3f54a6fd39182ef8512b4cd373d3cc4703c76d099a30e8b17e8e1a9bbbfa
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
