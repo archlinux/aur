@@ -1,0 +1,20 @@
+--- a/usr/bin/wps	2022-12-14 14:42:22.494474822 +0800
++++ b/usr/bin/wps	2022-12-14 14:40:49.544596650 +0800
+@@ -61,7 +61,7 @@
+ 
+ 		gFilePath=$1
+ 		if [ ${gFilePath:0:7} = "file://" ]; then
+-			gFilePath=$(python -c 'import sys, urllib; print urllib.unquote(sys.argv[1])' "$1")
++			gFilePath=$(python -c 'import sys, urllib.parse; print(urllib.parse.unquote(sys.argv[1]))' "$1")
+ 			gFilePath=${gFilePath#file://}
+ 			gIsUrl=1
+ 		fi
+@@ -83,7 +83,7 @@
+ 		do 
+ 			gFilePath=$file
+ 			if [ ${gFilePath:0:7} = "file://" ]; then
+-				gFilePath=$(python -c 'import sys, urllib; print urllib.unquote(sys.argv[1])' "$file")
++				gFilePath=$(python -c 'import sys, urllib.parse; print(urllib.parse.unquote(sys.argv[1]))' "$file")
+ 				gFilePath=${gFilePath#file://}
+ 			else
+ 				return 0					
