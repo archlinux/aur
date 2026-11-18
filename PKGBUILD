@@ -21,6 +21,8 @@ depends=('ffmpeg' 'glibc' 'libgcc' 'libstdc++' 'glfw' 'hackrf' 'hicolor-icon-the
 makedepends=('cmake' 'pkgconf' 'rust')  # rust: core protocol/FEC/file/net layers are Rust-only since 0.2.8
 optdepends=('codec2: FreeDV and M17 speech (dlopened at run time, searched in /usr/lib)'
             'mbelib: DMR/P25/NXDN/dPMR/D-STAR voice (dlopened at run time, searched in /usr/lib)'
+            'mbelib-neo: the same voice codecs from the mbelib-neo fork (dlopened at run time; use one of the two)'
+            'hamlib: rig control (CAT) over serial or network for transceivers (dlopened at run time)'
             'zenity: file dialogs'
             'soapyrtlsdr: RTL-SDR support through SoapySDR'
             'soapyairspy: Airspy support through SoapySDR'
