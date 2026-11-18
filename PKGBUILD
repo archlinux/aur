@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.75
-pkgver=1.0.0beta75
+_tag=v1.0.0-beta.76
+pkgver=1.0.0beta76
 pkgrel=1
 pkgdesc="A desktop shell for niri, built on Genoma: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ depends=(
     # the version this release was made against, within the same minor series.
     # Never an exact pin: AUR helpers install a rebuilt dependency in its own
     # transaction, and an exact pin on the installed shell refuses it.
-    'genoma>=0.1.18'
+    'genoma>=0.1.19'
     'genoma<0.2.0'
     'python'
     # The calendar's recurrences, and the feed addresses it keeps in the
@@ -112,7 +112,7 @@ install=bioma-shell.install
 # but one switched off here must not come back with the next update.
 backup=('etc/xdg/autostart/bioma.desktop')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('fd09d42b813d7fb0c8173ca9ae26071b31c856f6708cb5232aa13eb3f6b23a4b')
+sha256sums=('60838fd0305f3171a2194255ca900b580bbef0d0a8f0d3f6af0870ca895cbf09')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
