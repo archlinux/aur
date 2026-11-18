@@ -1,6 +1,6 @@
 pkgbase = ushift
 	pkgdesc = CLI tool to manage CPU performance scaling and power profiles
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/doums/ushift
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ushift
 	conflicts = ushift
 	options = !debug
 	backup = etc/ushift/config.toml
-	source = ushift-0.3.4.tar.gz::https://github.com/doums/ushift/archive/refs/tags/v0.3.4.tar.gz
-	sha256sums = 904dd4059316e6cce0ee214557ac200768f5ddce16b6ad4fbeb744d567f1d62e
+	source = ushift-0.3.5.tar.gz::https://github.com/doums/ushift/archive/refs/tags/v0.3.5.tar.gz
+	sha256sums = 4ff5bbb1e55f59906462c8187b4b7b6ff4303f9ffd6251121763e0d7e3c63b70
 
 pkgname = ushift
