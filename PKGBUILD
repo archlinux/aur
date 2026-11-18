@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=profer-git
 _pkgname=profer
-pkgver=0.16.26.r2.gbe2de2b
+pkgver=0.16.28.r1.g6a2d6b0
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -28,6 +28,7 @@ makedepends=(
 	'nvm'
 	'gendesk'
 	'jq'
+	'bun'
 )
 source=(
 	"${pkgname//-/.}::git+${_ghurl}.git"
@@ -87,6 +88,16 @@ _set_bun_build_env() {
 	export BUN_JOBS="$(nproc)"
 	mkdir -p "${HOME}" "${BUN_INSTALL_CACHE_DIR}" "${BUN_INSTALL_GLOBAL_DIR}" "${BUN_INSTALL_BIN}"
 }
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+}
 prepare() {
 	cd "$(_get_project_dir)"
 	_get_electron_version
@@ -117,7 +128,7 @@ build() {
 	bun run build
 	bun run sync:runtime-deps
 	bunx electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config electron-builder.yml
-	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+	_delete_other_arch_files
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
