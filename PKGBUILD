@@ -1,7 +1,7 @@
 # Maintainer: Chapman <touch65536@gmail.com>
 
 pkgname=eusoft-ting-es
-pkgver=26.9.0
+pkgver=26.10.1
 pkgrel=1
 pkgdesc="Daily Spanish Listening (每日西语听力) for Linux (Community Repackage)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=(
     "LICENSE"
 )
 source_x86_64=(
-    "${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/ting_es/ting_es.deb"
+    "${pkgname}-${pkgver}.deb::https://static-asia.frdic.com/pkg/ting_es/ting_es.deb"
 )
 noextract=("${pkgname}-${pkgver}.deb")
 
@@ -43,7 +43,7 @@ sha256sums=(
     'cf9ba50ac9a100c03be7e11953e99443a5e8d26ed2f4453ecc454113778b668c'
 )
 sha256sums_x86_64=(
-    '412ac2049e2983d93e09e5e8a850e3d8efbce9236c1e12cd98fb7d975a6f0d3c'
+    'aa1010c8a0cff56ffdb8152f26802e8e652c6e00bcf65c18a77c1ddb61dc6ca1'
 )
 
 prepare() {
