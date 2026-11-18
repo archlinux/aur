@@ -3,19 +3,18 @@
 pkgname=bettbox-compatible-pre-bin
 _pkgname=Bettbox
 pkgver=1.19.8
-pkgrel=3
+pkgrel=4
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core. (Build with GOAMD64=v1)"
 arch=('x86_64')
 url="https://github.com/appshubcc/Bettbox"
 license=('GPL-3.0-or-later')
-conflicts=('bettbox' 'bettbox-compatible' 'bettbox-compatible-pre' 'bettbox-compatible-bin' 'bettbox-bin' 'bettbox-pre' 'bettbox-pre-bin')
-provides=("${pkgname%-compatible-pre-bin}=${pkgver}")
-depends=(
-    'gtk3'
-    'libayatana-appindicator'
-    'libayatana-indicator'
-    'libkeybinder3'
+conflicts=(
+	'bettbox' 'bettbox-bin' 'bettbox-compatible' 'bettbox-compatible-bin'
+	'bettbox-compatible-pre' 'bettbox-lite' 'bettbox-lite-bin'
+	'bettbox-lite-compatible' 'bettbox-lite-compatible-bin'
+	'bettbox-lite-compatible-pre' 'bettbox-lite-compatible-pre-bin'
+	'bettbox-lite-pre' 'bettbox-lite-pre-bin' 'bettbox-pre' 'bettbox-pre-bin'
 )
 optdepends=('polkit: for TUN authorization')
 options=('!debug')
