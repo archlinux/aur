@@ -1,7 +1,7 @@
 pkgbase = gpgfrontend
 	pkgdesc = A modern OpenPGP tool with a unique dual-engine core
-	pkgver = 2.2.4
-	pkgrel = 2
+	pkgver = 2.2.5
+	pkgrel = 1
 	url = https://gpgfrontend.bktus.com
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -14,7 +14,6 @@ pkgbase = gpgfrontend
 	makedepends = python
 	makedepends = qt6-tools
 	depends = gpgme
-	depends = gtest
 	depends = hicolor-icon-theme
 	depends = icu
 	depends = libarchive
@@ -25,7 +24,7 @@ pkgbase = gpgfrontend
 	depends = libstdc++
 	depends = openssl-3
 	depends = qt6-base
-	source = git+https://github.com/saturneric/GpgFrontend#tag=v2.2.4
+	source = git+https://github.com/saturneric/GpgFrontend#tag=v2.2.5
 	source = git+https://github.com/qt/qttranslations.git
 	source = git+https://github.com/saturneric/GpgFrontend-Modules.git
 	source = git+https://github.com/gpg/gpgme.git
@@ -34,7 +33,7 @@ pkgbase = gpgfrontend
 	source = git+https://github.com/corrosion-rs/corrosion.git
 	source = git+https://github.com/lua/lua.git
 	source = git+https://git.bktus.com/gpgfrontend/vmime.git
-	sha256sums = eb30b8a7e497d717daeca9550f2accc257496f2824b139415a8cec22fe97f16c
+	sha256sums = c42bf0a2f10dd14b611ccba58ef87b30196533133026e158a9600d8c36481b09
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
