@@ -6,7 +6,7 @@ _pkgname=Whisparr
 __pkgname=Whisparr-Eros
 pkgver=3.6.6.1954
 _pkgver=${pkgver%.*}-develop.${pkgver##*.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Adult movie organizer/manager for usenet and torrent users (develop branch)'
 arch=(x86_64 aarch64 armv7h)
 url='https://whisparr.com'
@@ -80,6 +80,7 @@ prepare() {
 
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
+    -p:NuGetAudit=false \
     --runtime "${_runtime}" \
     --locked-mode
 
