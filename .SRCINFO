@@ -1,0 +1,24 @@
+pkgbase = qsfexplorer
+	pkgdesc = Browse, compare and audition SoundFont (SF2, SF3) files
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/rossettidesignsw/musicutility/qsfexplorer
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = fluidsynth
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = qt6-base
+	depends = rtmidi
+	optdepends = qt6-svg: sharp application icon in the windows (otherwise 64 px)
+	optdepends = soundfont-fluid: FluidR3 General MIDI SoundFonts
+	source = qsfexplorer-0.1.0.tar.gz::https://gitlab.com/rossettidesignsw/musicutility/qsfexplorer/-/archive/v0.1.0/qsfexplorer-v0.1.0.tar.gz
+	source = qrtmidi-0.4.1.tar.gz::https://gitlab.com/rossettidesignsw/musicutility/qrtmidi/-/archive/v0.4.1/qrtmidi-v0.4.1.tar.gz
+	sha256sums = fcac4d90b9ae7e940891d9711e18f120f7b430260e228b36bd1acab2f3ab83ae
+	sha256sums = a5077f36c9ee0537c40fc024d22dadf69b7d94cf2f71a4e3d2474ed817c3bd27
+
+pkgname = qsfexplorer
