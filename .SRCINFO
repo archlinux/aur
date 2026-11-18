@@ -77,7 +77,7 @@ pkgbase = yukigram-desktop
 	source = git+https://github.com/tdlib/td.git#commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
 	source = wallet-engine-0.0.7.tar.gz::https://github.com/i582/wallet-engine/archive/refs/tags/v0.0.7.tar.gz
 	source = https://github.com/yukigram/yukigram/archive/refs/tags/v7.4.4.0.tar.gz
-	source = https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch
+	source = https://github.com/desktop-app/patches/raw/82ed0c85bc1a1399a66b75ca7a978799c507e2ba/wallet-engine.patch
 	source = 0000-Fix-Pony-fix-lang-res-file-loc.patch
 	sha512sums = fc597cf9a04edd6228fc06503ca11a37590f4bc423612137ea1a953206c01da33cc8fa8177956f5175922ce848939f64166f4a12a9e07a3824731906549088de
 	sha512sums = dd4741b3621c5e76ba7c9eee44ffd41b1e6b6c24fdb19988efd780d307aff79a9dcfd710be9ad63db6857cbbd71c273c54d82be524a5326fc22f1233d9eb6ca2

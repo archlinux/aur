@@ -90,7 +90,7 @@ source=(
   "git+https://github.com/tdlib/td.git#commit=${_td_commit}"
   wallet-engine-${_wallet_engine_ver}.tar.gz::https://github.com/i582/wallet-engine/archive/refs/tags/v${_wallet_engine_ver}.tar.gz
   "https://github.com/yukigram/yukigram/archive/refs/tags/v${pkgver}.tar.gz"
-  https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch
+  https://github.com/desktop-app/patches/raw/82ed0c85bc1a1399a66b75ca7a978799c507e2ba/wallet-engine.patch
   "0000-Fix-Pony-fix-lang-res-file-loc.patch"
 )
 
