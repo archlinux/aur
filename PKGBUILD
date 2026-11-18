@@ -22,7 +22,7 @@
 # bar can simply not run mshell; the helpers stay useful on their own.
 
 pkgname=margo-git
-pkgver=r3266.94e7a602
+pkgver=r3277.8a4030aa
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
