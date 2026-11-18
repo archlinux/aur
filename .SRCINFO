@@ -1,6 +1,6 @@
 pkgbase = ase-viewer
 	pkgdesc = ASE TECH & DESIGN Documentation Viewer — Native GTK4 Markdown renderer
-	pkgver = 00.00.36
+	pkgver = 00.00.42
 	pkgrel = 1
 	url = https://github.com/antarien/ase-client-viewer
 	arch = x86_64
@@ -47,9 +47,9 @@ pkgbase = ase-viewer
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 7ed7afc5098eeba491ec899dc4c0a2157d2786cd3665981f4b9bbc00a8e56906
-	sha256sums = 586535811845c7b7d1bb035ae52253205c7250b8071d36b40e7685bc0a2b3b39
-	sha256sums = 1f0814d89ae60ca293c3f4d14503f3720192ac6b0719ede455089d8b1f8704dd
-	sha256sums = 5023e0f8bfe19dd24eb58da1101fc8e1d7059e4d34ac2354a044f33308e015c6
+	sha256sums = 42c7784710b279a40d676c9004191225864d8aa8a90f8181cb7bb26bb04cd723
+	sha256sums = 7abb163dbcbe301c7a5ab4040ef67432166ed893e7a04815c85e0a9c02adbff1
+	sha256sums = bcbbfe2526a753445e42f40a72bffd3075a538999a8efe17295f7dc2ffd3584e
+	sha256sums = edcd0930037987e9e69f87530d79bc963aef7085e9b088ca4f457802c3fc7a5d
 
 pkgname = ase-viewer

@@ -1,14 +1,8 @@
 # Maintainer: Antarien <dev@antarien.com>
 pkgname=ase-viewer
-# 00.00.36 traegt zwei Dinge, die ein Leser merkt. Erstens die Arena, die ihre Groesse aus der
-# Eingabe nimmt (ase-markdown): eine feste Million Bytes begrenzte ein Dokument von 196.908
-# Bytes nicht, die Zuweisung gab nullptr zurueck, und der Betrachter starb im Icon-Pass. Jetzt
-# waechst die Arena bis zur Decke und jede Zuweisungsstelle prueft ihr Ergebnis. Zweitens sagt
-# die Statuszeile, wenn die Arena doch endet, statt ein abgeschnittenes Dokument wie ein ganzes
-# zu zeigen. Dazu traegt der Stand die Uebersetzbarkeit gegen die heutigen Bibliotheken:
-# LANGUAGES CXX C fuer die geholten Vorhaben, die C mitbringen, und den Header, der
-# FcFreeTypeQuery erklaert, seit fontconfig ihn aus seinem Dachheader genommen hat.
-pkgver=00.00.36
+# 00.00.42 ist der Stand der VERSION-SSOT (ASE_CLIENT_VIEWER) am 2026-11-18 und traegt die
+# nachgeholte SHA-Auslieferung (siehe die Kopien am Ende von source=).
+pkgver=00.00.42
 # pkgrel 1: der Quellstand selbst ist neu. Die Quellen werden am HEAD geholt, ein Bau bindet
 # also die heutigen Nummern der Systembibliotheken.
 pkgrel=1
@@ -79,28 +73,30 @@ source=(
     # Sichtbarkeit, nicht umgekehrt: eine Quellenliste, die auf das vorhandene Oeffentliche
     # zurechtgeschnitten wird, ergibt ein Paket, das nur auf der Maschine des Autors laeuft.
     "ase-containers::git+https://github.com/antarien/ase-containers.git"
+    # SHA-AUSLIEFERUNG: die drei Header sind Kopien aus sha-web-console/generated, icon-replacer.ts
+    # die aus ase-client-web/src/utils (beide Stand origin/main). SHA ist die SSOT, jedes Projekt
+    # traegt seine Kopie selbst — sie werden mit jeder SHA-Aenderung hier neu eingesetzt, Name
+    # UND Inhalt, danach updpkgsums. Bis 2026-11-18 lagen hier die Kopien vom April.
     "colors.hpp"
     "design_tokens.hpp"
     "ui_icons.hpp"
     "icon-replacer.ts"
 )
-sha256sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    '7ed7afc5098eeba491ec899dc4c0a2157d2786cd3665981f4b9bbc00a8e56906'
-    '586535811845c7b7d1bb035ae52253205c7250b8071d36b40e7685bc0a2b3b39'
-    '1f0814d89ae60ca293c3f4d14503f3720192ac6b0719ede455089d8b1f8704dd'
-    '5023e0f8bfe19dd24eb58da1101fc8e1d7059e4d34ac2354a044f33308e015c6'
-)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '42c7784710b279a40d676c9004191225864d8aa8a90f8181cb7bb26bb04cd723'
+            '7abb163dbcbe301c7a5ab4040ef67432166ed893e7a04815c85e0a9c02adbff1'
+            'bcbbfe2526a753445e42f40a72bffd3075a538999a8efe17295f7dc2ffd3584e'
+            'edcd0930037987e9e69f87530d79bc963aef7085e9b088ca4f457802c3fc7a5d')
 
 prepare() {
     # Reconstruct monorepo layout expected by CMakeLists.txt
