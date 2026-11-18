@@ -14,10 +14,10 @@ source_x86_64=(
 )
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}-niri/${pkgname}-${pkgver}-aarch64.tar.gz")
 sha256sums_x86_64=(
-    'e33a214998f13a020dd4c1351d65532c37b2e17fd1d58717de02e1e7ba98938b'
-    'a0c6bd33acbb7ccc1b424dd74759867925e76a35a5da51b7cb216e075ae98765'
+    '5db404228402a6a8b6e4b78b3095d91fc1b596032699b323fb96e134c7694c40'
+    '2957a54e92e8b715cd49d87611fae9053e0245178da165a399255656f1c6383c'
 )
-sha256sums_aarch64=('a653ce6010b926ea55ec2002aea4f296980659fe9577fe4b19fa847f94899864')
+sha256sums_aarch64=('037d54fda1224145834b1051fd82421750f2c0b07ed2e8a078781d84e464266a')
 
 # Both x86_64 tarballs are downloaded; prepare() extracts only the one this CPU
 # can run. Keeping both in source_x86_64 makes .SRCINFO honest (it cannot
