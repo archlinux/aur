@@ -1,7 +1,7 @@
 pkgbase = proton-pass
 	pkgdesc = Open-source and secure identity manager
 	pkgver = 1.44.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://proton.me/pass
 	arch = aarch64
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = proton-pass
 	conflicts = proton-pass-bin
 	source = proton-pass-1.44.0.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/proton-pass@1.44.0.tar.gz
 	source = proton-pass.desktop
-	sha256sums = 816527698ca7c5f629ab1802b2e4557c1f262eb9b3119c2ffe4e0f05ca928144
+	sha256sums = 6660e16afce81a32a816537d9478ea9be3e6ee0d2e878d5e99235da3476a7d76
 	sha256sums = 1c5c6373a3e3be71e34e42fa6c7486601f04a645763496c5a808bc843456e0fc
 
 pkgname = proton-pass

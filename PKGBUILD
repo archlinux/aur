@@ -7,7 +7,7 @@
 _electron=electron
 pkgname=proton-pass
 pkgver=1.44.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source and secure identity manager"
 arch=('aarch64' 'x86_64')
 url="https://proton.me/pass"
@@ -17,7 +17,7 @@ makedepends=('go-yq' 'nodejs' 'pnpm' 'rust')
 conflicts=('proton-pass-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/${pkgname}@${pkgver}.tar.gz"
         "proton-pass.desktop")
-sha256sums=('816527698ca7c5f629ab1802b2e4557c1f262eb9b3119c2ffe4e0f05ca928144'
+sha256sums=('6660e16afce81a32a816537d9478ea9be3e6ee0d2e878d5e99235da3476a7d76'
             '1c5c6373a3e3be71e34e42fa6c7486601f04a645763496c5a808bc843456e0fc')
 
 prepare() {
@@ -40,9 +40,9 @@ prepare() {
         packages/{react-redux-store,recovery-kit,redux-shared-store,redux-shared-store-types,redux-utilities}/package.json \
         packages/{shared,sieve,types,unleash,utils}/package.json
     sed -i '/oxlint-config/d' \
-        packages/{key-transparency,redux-shared-store,redux-shared-store-types,redux-utilities}/package.json
+        packages/{account-security,key-transparency,redux-shared-store,redux-shared-store-types,redux-utilities}/package.json
     sed -i '/prettier-config-proton/d' applications/pass-desktop/package.json packages/pass/package.json
-    sed -i '/vitest-config/d' packages/{key-transparency,shared}/package.json
+    sed -i '/vitest-config/d' packages/{account-security,key-transparency,shared}/package.json
 
     # Remove unnecessary package patches (this is an error in pnpm)
     sed -i '/web-llm/d' pnpm-workspace.yaml
@@ -81,6 +81,7 @@ build() {
         --workspace-packages 'applications/pass-desktop'
         --workspace-packages 'applications/pass-desktop/native'
         --workspace-packages 'packages/account'
+        --workspace-packages 'packages/account-security'
         --workspace-packages 'packages/app-context'
         --workspace-packages 'packages/atoms'
         --workspace-packages 'packages/chargebee'
