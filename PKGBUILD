@@ -7,7 +7,7 @@
 pkgname=sonarr-develop
 _pkgname=Sonarr
 pkgver=5.0.0.2997
-pkgrel=1
+pkgrel=2
 pkgdesc='Smart PVR for newsgroup and torrent users (develop branch)'
 arch=(x86_64 aarch64 armv7h)
 url='https://sonarr.tv'
@@ -80,14 +80,9 @@ prepare() {
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
   dotnet new globaljson --sdk-version 10.0.112 --roll-forward latestFeature
 
-  # Patch vulnerabilities
-  if ! grep -q -i 'System.Security.Cryptography.Pkcs' src/NzbDrone.Core/Sonarr.Core.csproj; then
-    dotnet package add System.Security.Cryptography.Pkcs --version 10.0.13 --project src/NzbDrone.Core/Sonarr.Core.csproj
-    dotnet package add Microsoft.AspNetCore.SignalR.Common --version 10.0.13 --project src/NzbDrone.Core/Sonarr.Core.csproj
-  fi
-
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
+    -p:NuGetAudit=false \
     --runtime "${_runtime}" \
     --locked-mode
 
