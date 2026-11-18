@@ -1,8 +1,8 @@
 # Maintainer: Chapman <touch65536@gmail.com>
 
 pkgname=eusoft-ting-fr
-pkgver=26.1.1
-pkgrel=2
+pkgver=26.9.0
+pkgrel=1
 pkgdesc="Daily French Listening (每日法语听力) for Linux (Community Repackage)"
 arch=('x86_64')
 url="https://www.eudic.net/v4/fr/app/ting"
@@ -33,7 +33,7 @@ source=(
     "LICENSE"
 )
 source_x86_64=(
-    "${pkgname}-${pkgver}.deb::https://static.eudic.net/pkg/ting_fr/ting_fr.deb"
+    "${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/ting_fr/ting_fr.deb"
 )
 noextract=("${pkgname}-${pkgver}.deb")
 
@@ -43,16 +43,17 @@ sha256sums=(
     'cf9ba50ac9a100c03be7e11953e99443a5e8d26ed2f4453ecc454113778b668c'
 )
 sha256sums_x86_64=(
-    '0bbe5b4b317a1f885440548328cd35845dea971fff9ab2aa6c631b5152ed3bb1'
+    '0f66747c249260bbbea73af445ec61cfa21bfaecdd646a072d1814271269a16c'
 )
 
 prepare() {
-    bsdtar -xf "${pkgname}-${pkgver}.deb" data.tar.xz
+    rm -f data.tar.*
+    bsdtar -xf "${pkgname}-${pkgver}.deb" 'data.tar.*'
 }
 
 package() {
     # Extract opt and usr hierarchies from official deb data
-    tar -xf data.tar.xz -C "${pkgdir}"
+    bsdtar -xf data.tar.* -C "${pkgdir}"
 
     # Install clean launcher script
     install -Dm755 "${srcdir}/ting-fr.sh" "${pkgdir}/usr/bin/ting-fr"
