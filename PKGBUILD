@@ -1,8 +1,8 @@
 # Maintainer: MeoArch <https://github.com/QwQdoge>
-_srcdir=meo-ai-fb9033d2dedac1cc25c030bb05196ee170f738ae
+_srcdir=meo-ai-0785643cb9a0510e52b9b6f5b82f79cf5bd6dd08
 pkgname=meo-ai
-pkgver=0.1.0beta2
-pkgrel=6
+pkgver=0.1.0beta16
+pkgrel=1
 pkgdesc="Meo AI desktop app and headless AgentService"
 arch=('x86_64')
 url='https://github.com/QwQdoge/meo-ai'
@@ -21,7 +21,7 @@ optdepends=('meo-settings: manage Meo Account and device AI connections'
             'python-pyaudio: microphone input'
             'python-mcp: external MCP tools')
 options=('!debug')
-source=('meo-ai-fb9033d2dedac1cc25c030bb05196ee170f738ae.tar.gz::https://codeload.github.com/QwQdoge/meo-ai/tar.gz/fb9033d2dedac1cc25c030bb05196ee170f738ae'
+source=('meo-ai-0785643cb9a0510e52b9b6f5b82f79cf5bd6dd08.tar.gz::https://codeload.github.com/QwQdoge/meo-ai/tar.gz/0785643cb9a0510e52b9b6f5b82f79cf5bd6dd08'
         'org.meo.AI.desktop'
         'newspaper3k-LICENSE'
         'feedfinder2-LICENSE'
@@ -31,7 +31,7 @@ source=('meo-ai-fb9033d2dedac1cc25c030bb05196ee170f738ae.tar.gz::https://codeloa
         'feedfinder2-0.0.4.tar.gz::https://files.pythonhosted.org/packages/35/82/1251fefec3bb4b03fd966c7e7f7a41c9fc2bb00d823a34c13f847fd61406/feedfinder2-0.0.4.tar.gz'
         'newspaper3k-0.2.8-py3-none-any.whl::https://files.pythonhosted.org/packages/d7/b9/51afecb35bb61b188a4b44868001de348a0e8134b4dfa00ffc191567c4b9/newspaper3k-0.2.8-py3-none-any.whl'
         'tinysegmenter-0.3.tar.gz::https://files.pythonhosted.org/packages/17/82/86982e4b6d16e4febc79c2a1d68ee3b707e8a020c5d2bc4af8052d0f136a/tinysegmenter-0.3.tar.gz')
-sha256sums=('4a3ae5e102249cf1ea7d319b9c21ff8f43d5a233ea7a179750f3d9b70d7e47ad'
+sha256sums=('0645eeb1d0dfe9ded823a6da5a12f5233b36ccf1806afb347ff6162819df4ecb'
             '330e2822261054e9cb41a802cd51f7b4e1b3696e335a8b10cd6d91552cc11e74'
             '662ea995a58f4d1138128ae1f44a91bccd4ddb114419d04446cf165442b8217c'
             'dd878f923e4dc2e4ee6a4482fc00a94a933888c2ceb51db131827939a26739af'
@@ -52,10 +52,6 @@ prepare() {
 }
 
 build() {
-  cmake -S "$srcdir/$_srcdir/meo" -B native-build -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
-    -DMEO_UI_ROOT="$srcdir/meoui" -DBUILD_TESTING=OFF
-  cmake --build native-build --parallel 2
   meson setup engine-build "$srcdir/$_srcdir" --prefix=/usr --libdir=lib -Dprofile=release
   meson compile -C engine-build
   # The cloud desktop app (desktop-rs) pins its crates, including the qtbridge git
@@ -72,8 +68,6 @@ build() {
 }
 
 package() {
-  # Do not install the add_subdirectory MeoUI dependency a second time.
-  DESTDIR="$pkgdir" cmake -DCMAKE_INSTALL_LOCAL_ONLY=TRUE -P native-build/cmake_install.cmake
   DESTDIR="$pkgdir" meson install -C engine-build --no-rebuild
   # These three pure-Python modules are absent from Arch's repositories.
   # Stage their immutable upstream hashes, build offline, and keep them
@@ -93,6 +87,31 @@ package() {
   # org.meo.AI id, so existing pins open it. The older native app and the Newelle
   # engine stay installed without launchers: the live installer still runs
   # `meo-ai --live-recovery`, and AgentService uses the engine.
+  # `meo-ai` is the stable command name (Live installer, smoke checks). It starts the
+  # Rust desktop app; --live-recovery selects the Live install/repair assistant mode.
+  install -d "$pkgdir/usr/bin"
+  cat > "$pkgdir/usr/bin/meo-ai" <<'WRAPPER'
+#!/bin/sh
+# Parse only the documented leading wrapper flags. Never reconstruct argv with eval:
+# arguments are untrusted input and must remain distinct shell positional parameters.
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --live-recovery)
+      export MEO_AI_LIVE_RECOVERY=1
+      shift
+      ;;
+    --smoke)
+      test -x /usr/bin/meo-ai-desktop && test -s /usr/share/meo-ai-desktop/qml/Main.qml
+      exit $?
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+exec /usr/bin/meo-ai-desktop "$@"
+WRAPPER
+  chmod 755 "$pkgdir/usr/bin/meo-ai"
   install -Dm755 "$srcdir/cargo-target/release/meo-ai-desktop" "$pkgdir/usr/bin/meo-ai-desktop"
   install -Dm644 -t "$pkgdir/usr/share/meo-ai-desktop/qml" "$srcdir/$_srcdir/meo/desktop-rs/qml/"*.qml
   rm -f "$pkgdir/usr/share/applications/org.meo.MeoAI.desktop" \
