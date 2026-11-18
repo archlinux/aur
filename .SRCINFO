@@ -1,6 +1,6 @@
 pkgbase = ashell-bin
 	pkgdesc = A ready to go Wayland status bar for Hyprland and Niri
-	pkgver = 0.11.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/MalpenZibo/ashell
 	install = ashell-bin.install
@@ -17,9 +17,9 @@ pkgbase = ashell-bin
 	conflicts = ashell
 	conflicts = ashell-git
 	options = !strip
-	source = ashell-0.11.0.tar.xz::https://github.com/MalpenZibo/ashell/releases/download/0.11.0/ashell-x86_64-unknown-linux-gnu.tar.xz
+	source = ashell-0.12.1.tar.xz::https://github.com/MalpenZibo/ashell/releases/download/0.12.1/ashell-x86_64-unknown-linux-gnu.tar.xz
 	source = ashell.service
-	sha512sums = 9f17734efd0aa051c6be61137d827954c36cc67b4b6da22fcd54f01da750f303cb841608aa75a0d46b0812feca8ad79880d9146c3f6e2a088aa4794355ac9866
+	sha512sums = ee51cb9ce3a1e76bf4bae3e25bf51a3a3a188ac15c3fb1bbaed26d6913b9c85da0a1754fa2df991e2afca840727bdbbd0d706f5e1cac81408e4530ed645bfa3a
 	sha512sums = dd4488aeef3bc08a82882dd69c2b470c407fa7440abb86ed79e883cc8a5e8621292861d221ee42b2ca130ecc0155660663ce41faacbf5576bbbe986189cb6287
 
 pkgname = ashell-bin
