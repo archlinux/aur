@@ -1,6 +1,6 @@
 pkgbase = uq
 	pkgdesc = Themeable Hyprland desktop: shell, theme and layout daemon, CLI and base config
-	pkgver = 0.3.11
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/uq
 	install = uq.install
@@ -67,7 +67,7 @@ pkgbase = uq
 	backup = etc/pam.d/uq-lock-fingerprint
 	backup = etc/uq/greetd.toml
 	backup = etc/uq/greeter.toml
-	source = uq-0.3.11.tar.gz::https://github.com/asafelobotomy/uq/releases/download/v0.3.11/uq-0.3.11.tar.gz
-	sha256sums = 2b30830111eabfd43e3fd9c8f9fd82f49e16576a62778294d1899236da3e65a0
+	source = uq-0.3.12.tar.gz::https://github.com/asafelobotomy/uq/releases/download/v0.3.12/uq-0.3.12.tar.gz
+	sha256sums = 7f40651fc106d0a7e820498062f67b292349709a9a81937807ebace3e31b49b5
 
 pkgname = uq
