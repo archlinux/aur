@@ -37,6 +37,7 @@ optdepends=(
     'libnotify: notifications from pila, such as an invalid config (notify-send)'
     'xdg-utils: opening links and files from programs such as kitty (xdg-open)'
     'pciutils: the GPU and its driver in pila-report (lspci)'
+    'ttf-nerd-fonts-symbols: icons in pila-bar (or otf-font-awesome, or any Nerd Font)'
 )
 provides=(pila)
 conflicts=(pila)

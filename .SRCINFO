@@ -29,6 +29,7 @@ pkgbase = pila-git
 	optdepends = libnotify: notifications from pila, such as an invalid config (notify-send)
 	optdepends = xdg-utils: opening links and files from programs such as kitty (xdg-open)
 	optdepends = pciutils: the GPU and its driver in pila-report (lspci)
+	optdepends = ttf-nerd-fonts-symbols: icons in pila-bar (or otf-font-awesome, or any Nerd Font)
 	provides = pila
 	conflicts = pila
 	options = !strip
