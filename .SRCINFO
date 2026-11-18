@@ -1,6 +1,6 @@
 pkgbase = hyprland-plus
-	pkgdesc = Hyprland 0.57.1 with Halcyon window features, app-scoped pen pressure curves and Surface touchD integration
-	pkgver = 0.57.1.p1
+	pkgdesc = Hyprland 0.57.2 with Halcyon window features, app-scoped pen pressure curves and Surface touchD integration
+	pkgver = 0.57.2.p2
 	pkgrel = 1
 	url = https://github.com/trail-b1az3r/hyprland-plus
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = hyprland-plus
 	makedepends = hyprland-protocols
 	makedepends = hyprwayland-scanner
 	makedepends = xorgproto
-	depends = aquamarine
+	depends = aquamarine>=0.16.0
 	depends = cairo
 	depends = glib2
 	depends = glslang
@@ -41,7 +41,6 @@ pkgbase = hyprland-plus
 	depends = pango
 	depends = pixman
 	depends = re2
-	depends = sdbus-cpp
 	depends = tomlplusplus
 	depends = util-linux-libs
 	depends = wayland
@@ -56,10 +55,10 @@ pkgbase = hyprland-plus
 	depends = xorg-xwayland
 	optdepends = hyprpm: build and install plugins
 	optdepends = xdg-desktop-portal-hyprland: xdg-desktop-portal backend for Hyprland
-	provides = hyprland=0.57.1
+	provides = hyprland=0.57.2
 	provides = wayland-compositor
 	conflicts = hyprland
-	source = hyprland-plus::git+https://github.com/trail-b1az3r/hyprland-plus.git#commit=36660aa97083e3727d4b7de2bbd25041aed9d595
+	source = hyprland-plus::git+https://github.com/trail-b1az3r/hyprland-plus.git#commit=89377a04631f456fc8a3f69f1b40f38d9136d6f5
 	source = udis86::git+https://github.com/canihavesomecoffee/udis86.git#commit=5336633af70f3917760a6d441ff02d93477b0c86
 	sha256sums = SKIP
 	sha256sums = SKIP

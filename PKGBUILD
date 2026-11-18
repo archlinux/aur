@@ -1,18 +1,18 @@
 # Maintainer: ray0rfire
-# Dependencies follow Nexora's tested Hyprland 0.57.1 package recipe.
+# Dependencies follow Nexora's tested Hyprland 0.57.2 package recipe.
 pkgname=hyprland-plus
-pkgver=0.57.1.p1
+pkgver=0.57.2.p2
 pkgrel=1
 _udis86=5336633af70f3917760a6d441ff02d93477b0c86
-pkgdesc="Hyprland 0.57.1 with Halcyon window features, app-scoped pen pressure curves and Surface touchD integration"
+pkgdesc="Hyprland 0.57.2 with Halcyon window features, app-scoped pen pressure curves and Surface touchD integration"
 arch=('x86_64')
 url="https://github.com/trail-b1az3r/hyprland-plus"
 license=('BSD-3-Clause')
 depends=(
-  aquamarine cairo glib2 glslang hyprcursor hyprgraphics hyprland-guiutils
+  "aquamarine>=0.16.0" cairo glib2 glslang hyprcursor hyprgraphics hyprland-guiutils
   hyprlang hyprutils hyprwire lcms2 libcanberra libdrm libei libglvnd
   libinput libx11 libxcb libxcomposite libxcursor libxfixes libxkbcommon
-  libxrender lua mesa muparser opengl-driver pango pixman re2 sdbus-cpp
+  libxrender lua mesa muparser opengl-driver pango pixman re2
   tomlplusplus util-linux-libs wayland wayland-protocols xcb-proto xcb-util
   xcb-util-errors xcb-util-image xcb-util-keysyms xcb-util-renderutil
   xcb-util-wm xorg-xwayland
@@ -25,7 +25,7 @@ optdepends=(
 provides=("hyprland=${pkgver%.p*}" wayland-compositor)
 conflicts=('hyprland')
 source=(
-  "hyprland-plus::git+https://github.com/trail-b1az3r/hyprland-plus.git#commit=36660aa97083e3727d4b7de2bbd25041aed9d595"
+  "hyprland-plus::git+https://github.com/trail-b1az3r/hyprland-plus.git#commit=89377a04631f456fc8a3f69f1b40f38d9136d6f5"
   "udis86::git+https://github.com/canihavesomecoffee/udis86.git#commit=${_udis86}"
 )
 sha256sums=('SKIP' 'SKIP')
@@ -56,4 +56,16 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 CREDITS.md "$pkgdir/usr/share/licenses/$pkgname/CREDITS.md"
   install -Dm644 subprojects/udis86/LICENSE "$pkgdir/usr/share/licenses/$pkgname/udis86/LICENSE"
+
+  # Each Hyprland library at least as new as the one this was built against: unversioned, an upgrade of this
+  # package alone left an older library in place and Hyprland could not start (libaquamarine.so.N not found).
+  local i name version
+  for i in "${!depends[@]}"; do
+    name="${depends[$i]%%[<>=]*}"
+    case "$name" in
+      aquamarine|hyprcursor|hyprgraphics|hyprlang|hyprutils|hyprwire|hyprland-guiutils)
+        version="$(pacman -Q "$name" 2>/dev/null | awk '{print $2}')"
+        [[ -n "$version" ]] && depends[$i]="$name>=${version%-*}" ;;
+    esac
+  done
 }
