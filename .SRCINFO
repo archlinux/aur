@@ -1,0 +1,15 @@
+pkgbase = hyphen-pt_pt-git
+	pkgdesc = Portuguese (European) hyphenation rules
+	pkgver = r1.20121016
+	pkgrel = 1
+	url = https://github.com/LibreOffice/dictionaries/tree/master/pt_PT
+	arch = any
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	license = MPL-1.1
+	makedepends = git
+	optdepends = hyphen: offers hyphenation library functions
+	provides = hyphen-pt_pt
+	conflicts = hyphen-pt_pt
+
+pkgname = hyphen-pt_pt-git
