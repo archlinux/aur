@@ -1,7 +1,7 @@
 pkgbase = geelark-bin
 	pkgdesc = Desktop client for GeeLark cloud phones and antidetect browser profiles
 	pkgver = 4.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.geelark.com
 	arch = x86_64
 	license = LicenseRef-GeeLark
