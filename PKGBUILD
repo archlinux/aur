@@ -6,7 +6,7 @@
 ## gpg --keyserver keyserver.ubuntu.com --recv-keys <KEY>
 
 pkgname=libredwg
-pkgver=0.13.3
+pkgver=0.14
 pkgrel=1
 pkgdesc="A free C library to handle DWG files"
 arch=('x86_64')
@@ -16,13 +16,13 @@ depends=('python' 'pcre2' 'perl' 'swig')
 provides=('python-libredwg')
 source=("$pkgname-$pkgver.tar.gz::https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.sig::https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz.sig")
-sha256sums=('6fe6c273ecbb04d4a7646e1636ede4815b51f98f974cece649dab341d24feda2'
+sha256sums=('cb6ee0b078c6d9e0f09d66f1feac33ba6342df88ae544e9f9335fab475218351'
             'SKIP')
-validpgpkeys=('2895A881D34270FABFE8F747B4F63339E65D6414') ## Reini Urban
+validpgpkeys=('38A4167B0DB69E49C5F7216CB8C28866AB27A7A2') ## Reini Urban
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
+	./configure --disable-werror --prefix=/usr
 	make
 }
 

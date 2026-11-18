@@ -1,6 +1,6 @@
 pkgbase = libredwg
 	pkgdesc = A free C library to handle DWG files
-	pkgver = 0.13.3
+	pkgver = 0.14
 	pkgrel = 1
 	url = https://gnu.org/software/libredwg/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = libredwg
 	depends = perl
 	depends = swig
 	provides = python-libredwg
-	source = libredwg-0.13.3.tar.gz::https://ftp.gnu.org/gnu/libredwg/libredwg-0.13.3.tar.gz
-	source = libredwg-0.13.3.tar.gz.sig::https://ftp.gnu.org/gnu/libredwg/libredwg-0.13.3.tar.gz.sig
-	validpgpkeys = 2895A881D34270FABFE8F747B4F63339E65D6414
-	sha256sums = 7c517bc58267fb97ae063568969b16b248b74cb0bfe4a8232eec4f751d9468ff
+	source = libredwg-0.14.tar.gz::https://ftp.gnu.org/gnu/libredwg/libredwg-0.14.tar.gz
+	source = libredwg-0.14.tar.gz.sig::https://ftp.gnu.org/gnu/libredwg/libredwg-0.14.tar.gz.sig
+	validpgpkeys = 38A4167B0DB69E49C5F7216CB8C28866AB27A7A2
+	sha256sums = cb6ee0b078c6d9e0f09d66f1feac33ba6342df88ae544e9f9335fab475218351
 	sha256sums = SKIP
 
 pkgname = libredwg
