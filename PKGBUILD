@@ -1,22 +1,24 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/greeter>
 pkgname=hornero-greeter
-pkgver=1.0.5
-pkgrel=5
-pkgdesc='HorneroOS SDDM greeter theme (Argentina footage, offline)'
+pkgver=1.1.0
+pkgrel=1
+pkgdesc='HorneroOS SDDM greeter theme on Hornero Signal (Argentina footage, offline)'
 arch=('any')
 url='https://github.com/HorneroOS/greeter'
 license=('GPL-3.0-only')
-# Qt6 runtime: the theme imports QtQuick, QtQuick.Effects, QtMultimedia and
-# QtQuick.VirtualKeyboard (see Main.qml / components/*.qml); sddm provides
-# SddmComponents.
+# Qt6 runtime: the theme imports QtQuick, QtQuick.Effects, QtQuick.Shapes,
+# QtMultimedia and QtQuick.VirtualKeyboard (see Main.qml / components/*.qml);
+# sddm provides SddmComponents. ttf-ibm-plex supplies the Hornero Signal
+# families (IBM Plex Sans, Mono and Sans Condensed); without it fontconfig
+# falls back to the default sans/mono and the greeter still renders.
 # gst-plugins-good decodes the offline H.264 footage via the QtMultimedia
 # GStreamer backend.
-depends=('sddm' 'qt6-multimedia' 'qt6-declarative' 'qt6-virtualkeyboard' 'gst-plugins-good' 'ttf-rubik-vf')
+depends=('sddm' 'qt6-multimedia' 'qt6-declarative' 'qt6-virtualkeyboard' 'gst-plugins-good' 'ttf-ibm-plex')
 optdepends=('hornero-greeter-media-base: Argentina video pack')
 # Named "$pkgname" so the checkout lands at "${srcdir}/$pkgname";
 # package() below only ever reads from there, so AUR chroot builds
 # behave exactly like local packaging/ builds.
-source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#commit=b756cae4b09684d644ba3da29c41bc3e8bc574b6")
+source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#commit=37bc22d110d853ce1e38b69cd2a0051d7b5c8f59")
 sha256sums=('SKIP')
 
 package() {
