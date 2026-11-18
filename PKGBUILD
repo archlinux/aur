@@ -3,7 +3,7 @@
 # 解包官方 AppImage，不编译
 
 pkgname=quiet-md-bin
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc='本地优先的富文本笔记，GPUI 绘制，兼容飞书 DocxXML（官方 AppImage 解包）'
 arch=('x86_64')
@@ -39,7 +39,7 @@ optdepends=(
 makedepends=('imagemagick')
 
 source=("quiet-md-$pkgver-x86_64.AppImage::https://github.com/s1dashu/quiet-md/releases/download/v$pkgver/quiet-md-$pkgver-x86_64.AppImage")
-sha256sums=('d8cc59cac48761b7a02cafa07c1839671bbdaed40d588a8db6f5cefbd45949d9')
+sha256sums=('7517a82b4dcf57430fdcb56f781062ce50421895c0c273f050d597338e1bd7d7')
 
 prepare() {
   chmod +x "$srcdir/quiet-md-$pkgver-x86_64.AppImage"
