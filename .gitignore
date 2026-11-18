@@ -6,3 +6,4 @@
 !go-ldap-admin.service
 !go-ldap-admin.sysusers
 !go-ldap-admin.tmpfiles
+!lilac.yaml
