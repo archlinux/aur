@@ -8,5 +8,5 @@ Type=Application
 StartupNotify=true
 StartupWMClass=Trae
 Categories=Development;IDE;TextEditor;
-MimeType=text/plain;inode/directory;
+MimeType=text/plain;inode/directory;x-scheme-handler/trae;
 Keywords=trae;ide;editor;code;
