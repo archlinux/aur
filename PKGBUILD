@@ -1,6 +1,6 @@
 # Maintainer: sougstron
 pkgname=kanban4ai-git
-pkgver=0.1.0.r2.gbb5d055
+pkgver=0.8.23.r1.gd19ae87
 pkgrel=1
 pkgdesc='Native kanban board CLI and TUI driven by AI coding agents (Git version)'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 optdepends=(
   'tmux: attachable background agent sessions'
-  'curl: subscription limits row for claude, grok, zai, synthetic, and yolo'
+  'curl: subscription limits row for claude, grok, zai, synthetic; update checks and self-update'
   'libnotify: desktop notifications through notify-send'
   'wl-clipboard: paste images under Wayland'
   'xclip: paste images under X11'
@@ -19,6 +19,7 @@ provides=("kanban4ai=$pkgver")
 conflicts=('kanban4ai')
 source=('kanban4ai::git+https://github.com/sougstron/kanban4ai.git')
 sha256sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd kanban4ai
@@ -56,4 +57,9 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 packaging/systemd/kanban4ai.service \
     "$pkgdir/usr/lib/systemd/user/kanban4ai.service"
+  install -Dm644 packaging/systemd/kanban4ai-serve.service \
+    "$pkgdir/usr/lib/systemd/user/kanban4ai-serve.service"
+  for hook in kanban4ai-sleep@.service kanban4ai-shutdown@.service; do
+    install -Dm644 "packaging/systemd/$hook" "$pkgdir/usr/lib/systemd/system/$hook"
+  done
 }
