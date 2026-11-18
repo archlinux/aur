@@ -4,7 +4,7 @@
 # fills in the version and checksum placeholders and pushes the result (with a
 # regenerated .SRCINFO) to the AUR on every release.
 pkgname=chatpane
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Unofficial desktop app for Facebook Messenger"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/kristofferR/Chatpa
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/kristofferR/Chatpane/releases/download/v${pkgver}/Chatpane_${pkgver}_lin_x64.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://github.com/kristofferR/Chatpane/releases/download/v${pkgver}/Chatpane_${pkgver}_lin_arm.deb")
 sha256sums=('957e3579dea42e66b0d3cdea831c3b93edaaa8a3566e4115efd11959f60c0d9d')
-sha256sums_x86_64=('0ce4ce2bc91cff1eff9ff7accc54beb8745b777e992dd1ca215694b533ec2f1d')
-sha256sums_aarch64=('f0bb3662ed4310d2db5bf68e22dc543ebeb9eca3bed4f23479e6509a9669df39')
+sha256sums_x86_64=('c256c1e4d71c2356bc67f5661f6dd8f50a82887c6600bbf6bd822c3658242bc8')
+sha256sums_aarch64=('7a86e21c0814662c6cbe527da783f51e35b9102262fc2db1e215e481c45e5b0b')
 
 package() {
     # makepkg already extracted the .deb into srcdir; unpack its payload.
