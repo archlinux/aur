@@ -1,0 +1,19 @@
+pkgbase = tcl-profiling-git
+	pkgdesc = Tcl procedure profiler using Tracy
+	pkgver = v1.2f435bf
+	pkgrel = 1
+	url = https://github.com/dautor/tcl-profiling
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = pkgconf
+	depends = tcl
+	depends = gcc-libs
+	optdepends = tk: profiling settings GUI
+	optdepends = tracy: GUI for viewing profiling capture
+	source = tcl-profiling::git+https://github.com/dautor/tcl-profiling.git#branch=master
+	source = tracy::git+https://github.com/wolfpld/tracy.git#tag=v0.15.0
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = tcl-profiling-git
