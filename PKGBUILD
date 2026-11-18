@@ -4,7 +4,7 @@ pkgname=relic-osaka-gtk-theme
 _repo=Osaka-GTK-Theme
 _commit=0faa853682a45868c9e08a5354a4761a187cf101
 _date=2025.10.23
-pkgver=2025.10.23.r21.b44e0de
+pkgver=2025.10.23.r28.cb377cd
 pkgrel=1
 # 1: 2026-10-29, pkgver counts only the fixes commits of generic/ and relic/ (r9 after r11)
 epoch=1
@@ -62,6 +62,8 @@ prepare() {
   cp "${fixes}/generic/fixes-3.0.scss" "${sass}/_fixes-3.0.scss"
   cp "${fixes}/generic/fixes-4.0.scss" "${sass}/_fixes-4.0.scss"
   cp "${fixes}/relic/fixes-variables.scss" "${sass}/_fixes-variables.scss"
+  cp "${fixes}/relic/window-radius.scss" "${sass}/_relic-window-radius.scss"
+  cp "${fixes}/relic/local-fixes-3.0.scss" "${sass}/_local-fixes-3.0.scss"
   cp "${fixes}/relic/local-fixes-4.0.scss" "${sass}/_local-fixes-4.0.scss"
   cp "${fixes}/relic/local-fixes-gnome-shell.scss" "${sass}/_local-fixes-gnome-shell.scss"
 
@@ -72,6 +74,7 @@ prepare() {
   for f in "${_repo}-${_commit}/themes/src/main/gtk-3.0/"*.scss; do
     sed -i "$(awk 'END { print NR - 1 }' "$f") a @import '../../sass/fixes-3.0';" "$f"
     sed -i "$(awk 'END { print NR - 5 }' "$f") a @import '../../sass/fixes-variables';" "$f"
+    sed -i "/@import '..\/..\/sass\/fixes-3.0';/a @import '../../sass/local-fixes-3.0';" "$f"
   done
   for f in "${_repo}-${_commit}/themes/src/main/gtk-4.0/"*.scss; do
     sed -i "$(awk 'END { print NR - 2 }' "$f") a @import '../../sass/fixes-4.0';" "$f"
