@@ -1,0 +1,23 @@
+pkgbase = bond
+	pkgdesc = Encrypted, quantum-safe and repairable backups for storage you have no reason to trust
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/patrickbergner/bond
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = LGPL-2.1-or-later
+	license = BSD-3-Clause
+	license = BSD-2-Clause
+	license = LicenseRef-unRAR
+	makedepends = go
+	noextract = 7z2606-linux-x64.tar.xz
+	noextract = 7z2606-linux-arm64.tar.xz
+	source = bond-2.2.0.tar.gz::https://github.com/patrickbergner/bond/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = e53571a33db18e3e7359549569a4474c886edf6d3023f0943518bd2a6efc2e56
+	source_x86_64 = https://github.com/ip7z/7zip/releases/download/26.06/7z2606-linux-x64.tar.xz
+	sha256sums_x86_64 = 2b539cf067b2ad48e1baa5093dbaa8818b73542d1222a0ffde9dc5f2922ea62e
+	source_aarch64 = https://github.com/ip7z/7zip/releases/download/26.06/7z2606-linux-arm64.tar.xz
+	sha256sums_aarch64 = edcc408aacce77da5223728f2eceb5e9f6dc713b8a9df934ad21e2a7f7560627
+
+pkgname = bond
