@@ -8,9 +8,9 @@
 # tarball of the local checkout, since an unreleased version has none).
 
 pkgname=arch-sense
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
-pkgdesc="Control center for Linuwu-Sense Acer laptops: thermal profiles, fans, battery and keyboard lighting"
+pkgdesc="Terminal control center for Acer Predator & Nitro laptops on Linux: thermals, fans, battery and keyboard RGB"
 arch=('x86_64')
 url="https://github.com/CPT-Dawn/Arch-Sense"
 license=('MIT')
@@ -25,7 +25,7 @@ source=(
   'arch-sense.tmpfiles'
   '71-arch-sense.rules'
 )
-sha256sums=('dfd828f89f6afeba908b4ba9ae9b48f828c4ee4b8c6da9ca84a1387bcfc3c957'
+sha256sums=('18c53d7632e8d7b1336a7b71bc39be23f36c0e90f0cca4f652f46d0dc5f03f8b'
             'c14e3915fb71c2909e30217439ca9a2a2b275c787ccc9fefbdc1e4471c4eb1d7'
             'fda5d014e6980d2ae73a42366182fb46337022c0588a6e81c7635651673c6d67'
             '3bb028afeba660ee71b8510a05ef848d2700597b6083873578488fe9742cf3c1'
