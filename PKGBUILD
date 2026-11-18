@@ -6,7 +6,7 @@
 pkgname=lidarr
 _pkgname=Lidarr
 pkgver=3.1.6.5079
-pkgrel=3
+pkgrel=4
 pkgdesc='Music collection manager for newsgroup and torrent users.'
 arch=(x86_64 aarch64 armv7h)
 url='https://lidarr.audio'
@@ -72,7 +72,7 @@ prepare() {
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_NOLOGO=1
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
-  dotnet new globaljson --sdk-version 8.0.112 --force
+  dotnet new globaljson --sdk-version 8.0.133 --roll-forward latestFeature
 
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \

@@ -1,7 +1,7 @@
 pkgbase = lidarr
 	pkgdesc = Music collection manager for newsgroup and torrent users.
 	pkgver = 3.1.6.5079
-	pkgrel = 3
+	pkgrel = 4
 	url = https://lidarr.audio
 	install = lidarr.install
 	arch = x86_64
