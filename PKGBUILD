@@ -1,7 +1,7 @@
 # Maintainer: Jonatan Jonasson <notes@madeingotland.com>
 
 pkgname=openai-codex-reasoning
-pkgver=0.169.0
+pkgver=0.169.1
 pkgrel=1
 pkgdesc="OpenAI Codex CLI with raw reasoning traces enabled by default"
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ replaces=('openai-codex-reasoning-bin')
 options=('!lto')
 
 _upstream_tag="rust-v${pkgver}"
-_upstream_commit='d32063f96c2dff1dc96af839b3952abb6acfeda4'
+_upstream_commit='c376cf7396eff83ce4c6ac61b9553df142e7a0be'
 _source_dir='codex'
 source=(
   "${_source_dir}::git+https://github.com/openai/codex.git#commit=${_upstream_commit}"
