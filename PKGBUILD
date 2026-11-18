@@ -51,7 +51,7 @@ install='install.sh'
 source=(
 	"$pkgname-$pkgver.tar.gz::https://codeberg.org/ivan-zaera/$pkgname/archive/$pkgver.tar.gz"
 )
-sha256sums=("XXX")
+sha256sums=("fdc2d79e04b90d3ab4f2e56239ff806ec920c5b31c3227b231e2dd214afeeb57")
 
 build() {
 	cd $srcdir/$pkgname
