@@ -2,3 +2,4 @@
 source = "github"
 github = "wasm-bindgen/wasm-pack"
 use_latest_release = true
+prefix = "v"
