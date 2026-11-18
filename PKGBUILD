@@ -8,7 +8,7 @@ _appname=OpenXplorer
 pkgname=${_gitname}
 pkgdesc="Windows File Explorer-inspired file manager for Linux"
 
-pkgver=2.0.19
+pkgver=2.0.20
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -39,7 +39,7 @@ optdepends=('polkit: deleting a whole folder as administrator under admin://'
 options=('!debug' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('bd9a05dc31b49c6817f265d0edd21b7a217f4d45f721d947d72080d4351382f5')
+sha256sums=('84f64241e073e1224dd1e806c0687e65f0aacc9c9d1bb30baa437076ba57085c')
 
 
 prepare() {
