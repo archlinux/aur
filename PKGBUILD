@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.3.703
+pkgver=8.3.704
 pkgrel=1
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
@@ -37,7 +37,7 @@ source=(
    "0001-pass-LDFLAGS.patch"
 )
 
-b2sums=('d881a3d376465a0e5bf5f9b2f9ff013c2dad712516d1d95e046d4d659248f69d47e1d2d9f1ad7fa2ea30b36781d5a3bbe0a5f4d0b0579dcb6cab6abf9fa8c1b9'
+b2sums=('16b7b773b4f06b9be56b1728cc4033dc470fbe7b8df473ba77bbb51400162a85f38c9e6e2e7ef920acfab60fdcf2c2f48d9b10ba1a7c90777934e721d1449e4c'
         '702bca8c771c100b050379970a40f141edfd93a16e9f321aa50c2815de5b9c3204f2141af071ed90696d8b317691893027950aa74661927643d02cbb7615ef88')
 
 options=()
