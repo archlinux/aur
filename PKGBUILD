@@ -4,7 +4,7 @@
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
 pkgname=rocm-gfx90a-bin
 pkgdesc="ROCm Core SDK - CDNA2"
-pkgver=10.1.0
+pkgver=10.2.0
 pkgrel=1
 epoch=0
 arch=('x86_64')
@@ -28,11 +28,11 @@ source=(
 
 noextract=("therock-dist-linux-gfx90a-${pkgver}.tar.gz")
 
-sha256sums=('b2abcbab59fe20ce98b5ec176a86cc5e8293ecaa07c1c940202de64bfe5bf4cd')
+sha256sums=('725ead201ccc63986aeeac758d0695194235308856b7ba8da69fbd02147c3c40')
 
 prepare() {
-    mkdir -p "${srcdir}/opt/rocm/core"
-    bsdtar xf therock-dist-linux-gfx90a-${pkgver}.tar.gz -C ${srcdir}/opt/rocm/core
+    mkdir -p "${srcdir}/opt/rocm"
+    bsdtar xf therock-dist-linux-gfx90a-${pkgver}.tar.gz -C ${srcdir}/opt/rocm
 }
 
 package() {
@@ -43,18 +43,14 @@ package() {
     ln -s /usr/share/libdrm/amdgpu.ids amdgpu.ids
 
     mkdir -p "${pkgdir}/etc/OpenCL/vendors"
-    echo /opt/rocm/core/lib/opencl/libamdocl64.so > "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd"
+    echo /opt/rocm/lib/opencl/libamdocl64.so > "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd"
 
     mkdir -p "${pkgdir}/etc/ld.so.conf.d"
-    echo /opt/rocm/core/lib >> "$pkgdir/etc/ld.so.conf.d/rocm-bin.conf"
+    echo /opt/rocm/lib >> "$pkgdir/etc/ld.so.conf.d/rocm-bin.conf"
 
     mkdir -p "${pkgdir}/opt/rocm"
     cd "${pkgdir}/opt/rocm"
-    ln -s /opt/rocm/core/lib lib
-    ln -s /opt/rocm/core/include include
-    ln -s /opt/rocm/core/bin bin
-
 
     mkdir -p "${pkgdir}/etc/profile.d"
-    echo export PATH="\${PATH}:/opt/rocm/core/bin:/opt/rocm/core/lib/llvm/bin" > "$pkgdir/etc/profile.d/rocm-bin.sh"
+    echo export PATH="\${PATH}:/opt/rocm/bin:/opt/rocm/lib/llvm/bin" > "$pkgdir/etc/profile.d/rocm-bin.sh"
 }
