@@ -1,18 +1,19 @@
+# shellcheck shell=bash
 # -*- mode: sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='miniscript-cli'
 _pkgname="${pkgname/-cli}"
 pkgdesc='Simple, elegant language for embedding or learning to program'
 pkgver=1.6.2
-pkgrel=7
+pkgrel=8
 url='https://miniscript.org/'
 _url='https://github.com/JoeStrout/miniscript'
 changelog="$pkgname.changelog"
 arch=('aarch64' 'x86_64')
-license=('MIT')  # SPDX-License-Identifier: MIT
-depends=('gcc-libs' 'glibc')
+license=('MIT')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('cmake' 'patch')
 provides=('libminiscript-cpp' 'miniscript')
 options=('staticlibs')
