@@ -1,0 +1,18 @@
+pkgbase = yopass-cli-bin
+	pkgdesc = Yopass CLI for secure sharing of secrets, passwords and files (prebuilt binary)
+	pkgver = 16.2.0
+	pkgrel = 1
+	url = https://github.com/jhaals/yopass
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = yopass
+	conflicts = yopass
+	options = !strip
+	options = !debug
+	source_x86_64 = yopass-16.2.0-linux-amd64.tar.gz::https://github.com/jhaals/yopass/releases/download/16.2.0/yopass_16.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3cc092e09a2feb97af1e7dbab60fdc0172893907e62c7e20a187e1d3185f35c1
+	source_aarch64 = yopass-16.2.0-linux-arm64.tar.gz::https://github.com/jhaals/yopass/releases/download/16.2.0/yopass_16.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6d14a5cd1de6b98097c6046f9a7e72af5172cad000e5d1af9988ed08ed6ee09d
+
+pkgname = yopass-cli-bin
