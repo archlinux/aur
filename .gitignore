@@ -3,4 +3,6 @@
 !.gitignore
 !.SRCINFO
 !update.sh
-!.gitlab-ci.yml
+!.forgejo/
+!.forgejo/workflows/
+!.forgejo/workflows/ci.yml

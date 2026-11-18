@@ -25,4 +25,9 @@ for type in source sha256sums; do
         fi
     done
 done
-sudo -u nobody makepkg --printsrcinfo > .SRCINFO
+# makepkg runs as nobody, which cannot write to the checkout (owned by the runner user): use a scratch dir
+tmpdir=$(mktemp -d)
+cp PKGBUILD "${tmpdir}/"
+chmod 777 "${tmpdir}"
+(cd "${tmpdir}" && sudo -u nobody makepkg --printsrcinfo) > .SRCINFO
+rm -rf "${tmpdir}"
