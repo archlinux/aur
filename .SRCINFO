@@ -1,6 +1,6 @@
 pkgbase = classin-bin
 	pkgdesc = Proprietary remote classroom application by EEO.
-	pkgver = 6.0.9.1897
+	pkgver = 6.0.10.2077
 	pkgrel = 1
 	url = https://www.eeo.cn/cn/classin
 	install = classin-bin.install
@@ -9,7 +9,7 @@ pkgbase = classin-bin
 	depends = alsa-lib
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = classin-6.0.9.1897.deb::https://www.eeo.cn/download/client/classin_6.0.9.1897_amd64.deb
-	sha512sums_x86_64 = 8ff9559d9e4910a6c4e9e006116a86ab348419cdb03bbf2460eebf7d03616dbfa8e00594c1daad57cb47479fd7c1517713130d57caf4a56a32754d84870dd7e5
+	source_x86_64 = classin-6.0.10.2077.deb::https://www.eeo.cn/download/client/classin_6.0.10.2077_amd64.deb
+	sha512sums_x86_64 = 1d8e3373682c62349eca2148a0ce697409bff7aa1fcb04392f92d36dc01e56ffb60bff3f49f6cc15898055e7a41936e9624e4ff8d9de92f4d7435f31569c82d4
 
 pkgname = classin-bin
