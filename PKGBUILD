@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=data-peek
 _pkgname=Data-Peek
-pkgver=0.39.0
+pkgver=0.39.1
 _electronversion=38
 _nodeversion=24
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "${pkgname}.js"
 	"${pkgname}.sh"
 )
-sha256sums=('c0aeee8467f9f27ddc173928c69d2d4e773349338f20bb751da77bfdfe859a70'
+sha256sums=('817def9d714a687ce7468e72f78842063dd2a9f2b2662c4b14413744001386c3'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
