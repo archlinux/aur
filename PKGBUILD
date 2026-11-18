@@ -25,6 +25,7 @@ optdepends=(
     'xdg-utils: opening donation links in a browser'
     'kitty: terminal video playback with -t'
 )
+conflicts=('por-cli')
 source=("por-cli::git+https://github.com/por-cli/por-cli.git")
 sha256sums=('SKIP')
 
