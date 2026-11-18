@@ -4,8 +4,8 @@
 
 _pkgname=diakonos
 pkgname="$_pkgname"-git
-pkgver=0.10.0.r42.gfe8991c
-pkgrel=3
+pkgver=0.10.0.r44.g4031344
+pkgrel=1
 pkgdesc="A Linux console text editor for the masses."
 arch=('any')
 url="https://git.sr.ht/~pistos/diakonos"
