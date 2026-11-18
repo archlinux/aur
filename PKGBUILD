@@ -1,7 +1,7 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 _pkgname=appium-safari-driver
 pkgname="nodejs-$_pkgname"
-pkgver=6.0.3
+pkgver=6.0.4
 pkgrel=1
 pkgdesc="Appium driver for Safari browser"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('b9852a2369228069f627e660fc0e2a6f6cb7a0fd6ffeee88bd7e6f9f44d6c9a8')
+sha256sums=('8e057cba5a87f917247be0c1a639c5e862990aca6d7414170c902d51c8fe5ada')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
