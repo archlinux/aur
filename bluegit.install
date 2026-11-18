@@ -75,6 +75,9 @@ Vervolg:
 2. Schrijf het clientgeheim naar /etc/bluegit/client_secret (mode 0600),
    of zet BLUEGIT_AUTH_CLIENT_SECRET in /etc/bluegit/secret.env.
    Een lege client_secret: "" in de config telt niet.
+   Na de eerste start beheer je listen, base_url, auth en de rest onder
+   Beheer → Instellingen. config.yml blijft ongewijzigd als terugval.
+   Toegangstokens maak je in Instellingen of onder Beheer → Gebruikers.
 3. Kopieer /usr/share/bluegit/storage.conf.example naar
    /etc/systemd/system/bluegit.service.d/storage.conf en zet ReadWritePaths.
 4. systemctl daemon-reload && systemctl enable --now bluegit.service
