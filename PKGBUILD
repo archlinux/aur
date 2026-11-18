@@ -2,7 +2,7 @@
 pkgbase=daxfs
 pkgname=(daxfs-dkms daxfs-utils)
 pkgver=0.1.0 # renovate: datasource=github-tags depName=multikernel/daxfs
-pkgrel=1
+pkgrel=2
 pkgdesc="DAX-based filesystem for multikernel and multi-host shared memory"
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/multikernel/daxfs"
@@ -36,4 +36,4 @@ package_daxfs-utils() {
   install -Dm755 -t "$pkgdir/usr/bin" mkdaxfs daxfs-inspect
 }
 sha256sums=('d9e0f9b5aee1f1a707f9b09bac9222a21ab34afebf10eedbbb1554ed69d970ed'
-            '9d7acd4d7792eb67645f7da6cd95d6bba38d3782fa0ed20c3f170afc750012ea')
+            '079f8b5f8636cd858fc17a0549a44004706263b430780b2ca1f42c99ef99baf8')
