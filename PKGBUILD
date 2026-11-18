@@ -1,20 +1,19 @@
+# shellcheck shell=bash
 # -*- mode: sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='atto'
-pkgver=1.6.0
-pkgrel=3
 pkgdesc='A tiny Nano wallet, focused on ease of use through simplicity'
-arch=('x86_64')
+pkgver=1.6.1
+pkgrel=1
+arch=('aarch64' 'x86_64')
 url='https://github.com/codesoap/atto'
-license=('MIT')  # SPDX-License-Identifier: MIT
+license=('MIT')
 makedepends=('go')
 depends=('glibc')
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-)
-options=('lto')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('1dd8e080a47c33969839f5ed6f67d0ba99e2f7187ef33ab2b8f9f9495039280b')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -52,17 +51,9 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm0755 atto          "$pkgdir/usr/bin/atto"
-  install -Dm0755 atto-safesign "$pkgdir/usr/bin/atto-safesign"
-  install -Dm0644 README.md     "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm0644 LICENSE       "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0755 -t "$pkgdir/usr/bin" atto{,-safesign}
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
-
-sha256sums=(
-  '6c4c5b57777487114f7b336a1fd8e501a0fe49b164e80f3e30f87ef994f3ebed'
-)
-b2sums=(
-  '677fd1adb69bc2aa604c435f96dfc24465a4f32c8dd5d75f733c4a1bc7047435445856260d42552bb7c0e10a1691596db951bdbb3ac882e7af08b7ef9efb64d4'
-)
 
 # eof
