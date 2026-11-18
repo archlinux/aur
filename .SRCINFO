@@ -1,0 +1,20 @@
+pkgbase = modelharbor-bin
+	pkgdesc = Lokale KI-Chatmodelle mit einem Klick: Hardware-Erkennung, llama.cpp-Backends (CUDA/ROCm/Vulkan/Metal/SYCL/CPU), HuggingFace-Downloads, vier Presets.
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://github.com/Goitonthefloor/modelharbor
+	arch = x86_64
+	license = LicenseRef-ModelHarbor
+	depends = electron45
+	provides = modelharbor=1.4.5
+	conflicts = modelharbor
+	source = modelharbor-1.4.5-x86_64.AppImage::https://github.com/Goitonthefloor/modelharbor/releases/download/v1.4.5/ModelHarbor-1.4.5.AppImage
+	source = LICENSE-1.4.5::https://raw.githubusercontent.com/Goitonthefloor/modelharbor/v1.4.5/LICENSE
+	source = modelharbor.js
+	source = modelharbor.sh
+	sha256sums = 73efb1357155df2f19922b2ae129b8825ee74ee503096e2a71c4dde2f309cfac
+	sha256sums = e167ae19419045aef48ea5eb6ec5685e7410b8f5fca2c8772533790391f79d90
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+
+pkgname = modelharbor-bin
