@@ -1,0 +1,25 @@
+pkgbase = dffy-bin
+	pkgdesc = Fast terminal diff viewer for git, built for large repositories: file tree and split or unified view, syntax-aware diff, watch mode, JSON output and an MCP server for coding agents
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/amalucelli/dffy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	optdepends = git: reviewing a repository, which is what dffy is for (it also diffs two files on its own)
+	optdepends = dffy-render-markdown-bin: render Markdown files, after adding "render = md:markdown" to ~/.config/dffy/config
+	optdepends = dffy-render-mermaid-bin: draw Mermaid diagrams, after adding "render = mmd:mermaid mermaid:mermaid" to ~/.config/dffy/config
+	provides = dffy
+	conflicts = dffy
+	conflicts = dffy-git
+	noextract = dffy_0.2.1_linux_amd64.tar.gz
+	noextract = dffy_0.2.1_linux_arm64.tar.gz
+	options = !strip
+	options = !debug
+	source_x86_64 = dffy_0.2.1_linux_amd64.tar.gz::https://github.com/amalucelli/dffy/releases/download/v0.2.1/dffy_linux_amd64.tar.gz
+	sha256sums_x86_64 = d6f6c6102d1ac3f87b891a00de98d83c656d59e003b80b61d8344091cc200661
+	source_aarch64 = dffy_0.2.1_linux_arm64.tar.gz::https://github.com/amalucelli/dffy/releases/download/v0.2.1/dffy_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2054e8176eeb20928f9a76cce29abc8eda10e3023c09c6bd728df636a7d60e84
+
+pkgname = dffy-bin
