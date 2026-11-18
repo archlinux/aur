@@ -1,6 +1,6 @@
 pkgbase = gety-bin
 	pkgdesc = The local file search engine for you and your AI agents, made by Listary team
-	pkgver = 0.6.5
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://gety.ai/
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = gety-bin
 	conflicts = gety
 	conflicts = gety-appimage
 	options = !strip
-	source = gety-0.6.5.deb::https://dl.gety.ai/Gety-linux-x64-0.6.5-beta.deb
+	source = gety-0.7.0.deb::https://dl.gety.ai/Gety-linux-x64-0.7.0-beta.deb
 	source = gety-license.txt
-	sha256sums = 72da381a5249bf6c83d7e634f073cf35687c68630ea22b3c0bce89e9d0660dba
+	sha256sums = 3ee736e68d5c4fd9b0da89ea9b7bba51d5c0746b80a4546f54d9d9bb501dd35c
 	sha256sums = fe5811b6741770c6dded6256176f4a71bdf2918541a1191767484984e810172e
 
 pkgname = gety-bin

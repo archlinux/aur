@@ -1,7 +1,7 @@
 # Maintainer: Alex3236 <me@alex3236.moe>
 
 pkgname=gety-bin
-pkgver=0.6.5
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="The local file search engine for you and your AI agents, made by Listary team"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
     "gety-${pkgver}.deb::https://dl.gety.ai/Gety-linux-x64-${pkgver}-beta.deb"
     "gety-license.txt"
 )
-sha256sums=('72da381a5249bf6c83d7e634f073cf35687c68630ea22b3c0bce89e9d0660dba'
+sha256sums=('3ee736e68d5c4fd9b0da89ea9b7bba51d5c0746b80a4546f54d9d9bb501dd35c'
             'fe5811b6741770c6dded6256176f4a71bdf2918541a1191767484984e810172e')
 
 package() {
