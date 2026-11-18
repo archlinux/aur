@@ -1,11 +1,14 @@
 # Maintainer: Nguyen Phi <nguyenphidt at gmail dot com>
+#
+# Kept in https://github.com/ngosen/ngosen/tree/main/packaging/aur; its release workflow fills in
+# sha256sums and pushes it here. Send changes there.
 
 pkgname=fcitx5-ngosen
 # Ngó Sen numbers its own releases from 0.5.0; the epoch keeps them above the 3.5.10 builds.
 epoch=1
 pkgver=1.12.2
 pkgrel=1
-_tag=ngosen-$pkgver-1
+_tag=ngosen-$pkgver-$pkgrel
 pkgdesc="Ngó Sen, a Vietnamese input method for fcitx5"
 arch=('x86_64')
 url="https://github.com/ngosen/ngosen"
@@ -17,7 +20,7 @@ optdepends=('python-gobject: settings window in GTK, opened on GNOME, Cinnamon a
 makedepends=('cmake' 'extra-cmake-modules' 'rust' 'librsvg')
 options=('!debug')
 install=fcitx5-ngosen.install
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
+source=("$_tag.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
 sha256sums=('ad82a995d1a2a1a2b20f54eb685a00910e18bbe8fa996c46d46acb82565d6be3')
 
 build() {

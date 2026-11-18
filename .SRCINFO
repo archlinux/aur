@@ -27,7 +27,7 @@ pkgbase = fcitx5-ngosen
 	optdepends = python-gobject: settings window in GTK, opened on GNOME, Cinnamon and Xfce
 	optdepends = libadwaita: settings window in GTK, opened on GNOME, Cinnamon and Xfce
 	options = !debug
-	source = fcitx5-ngosen-1.12.2.tar.gz::https://github.com/ngosen/ngosen/archive/refs/tags/ngosen-1.12.2-1.tar.gz
+	source = ngosen-1.12.2-1.tar.gz::https://github.com/ngosen/ngosen/archive/refs/tags/ngosen-1.12.2-1.tar.gz
 	sha256sums = ad82a995d1a2a1a2b20f54eb685a00910e18bbe8fa996c46d46acb82565d6be3
 
 pkgname = fcitx5-ngosen
