@@ -17,8 +17,10 @@ optdepends=('flatpak: install browser extensions'
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')
-source=("$_distname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_distname-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('3327ebd6b5565186c3e1286bbfdc85ffc95fa681cc2a57a51b0bc07ff42a009f')
+source=("misterdownloadmanager.png")
+sha256sums=('fc59e4d4bff9763fe526f418e5d9230d15e2d42fb368869b7163e4d8a2720f1b')
+source_x86_64=("$_distname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_distname-$pkgver-linux-x86_64.tar.gz")
+sha256sums_x86_64=('3327ebd6b5565186c3e1286bbfdc85ffc95fa681cc2a57a51b0bc07ff42a009f')
 
 package() {
 	local _root="$srcdir/$_distname-$pkgver-linux-x86_64"
@@ -26,6 +28,7 @@ package() {
 	install -Dm755 "$_root/misterdownloadmanager-cli" "$pkgdir/usr/bin/misterdownloadmanager-cli"
 	install -Dm755 "$_root/misterdownloadmanager-mcp" "$pkgdir/usr/bin/misterdownloadmanager-mcp"
 	install -Dm755 "$_root/misterdownloadmanager-nmhost" "$pkgdir/usr/bin/misterdownloadmanager-nmhost"
+	install -Dm644 "$srcdir/misterdownloadmanager.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/misterdownloadmanager.png"
 	# Upstream ships no .desktop entry; provide a minimal one so the app
 	# shows up in application menus.
 	install -d "$pkgdir/usr/share/applications"
@@ -36,6 +39,7 @@ Name=Mister Download Manager
 GenericName=Download Manager
 Comment=Download and manage files
 Exec=misterdownloadmanager %U
+Icon=misterdownloadmanager
 Terminal=false
 Categories=Network;FileTransfer;
 StartupNotify=true
