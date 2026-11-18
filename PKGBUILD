@@ -1,7 +1,7 @@
 # Maintainer: Alex Indigo <iam@alexindigo.com>
 
 pkgname=aerial-lock
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Wayland session lock with video backgrounds and an idle/session companion'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/atmosphera-dev/aerial-lock'
 license=('GPL-3.0-or-later')
 depends=('quickshell>=0.3' 'quickshell<0.4' 'qt6-mpvqml>=0.2.0'
          'qt6-5compat' 'qt6-base' 'qt6-declarative' 'pam' 'wayland'
-         'bash' 'glibc' 'libgcc' 'libstdc++')
+         'bash' 'glibc' 'libgcc' 'libstdc++' 'libxkbcommon')
 makedepends=('wayland-protocols')
 optdepends=('curl: remote video pack downloader'
             'python: remote video pack downloader'
@@ -22,7 +22,7 @@ conflicts=('aerial-lock-git')
 backup=('etc/pam.d/aerial-lock')
 install=aerial-lock.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2280405ef72572e601f30739af93f956f412961906d79f1460868d39dd5d1811')
+sha256sums=('048034cb8ecda70e945623997fcee276e9ad53d70ea8ae933020652bedc1cb5b')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
