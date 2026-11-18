@@ -3,13 +3,13 @@
 _pkgver=1.12.0
 # _tag and _appimage are rewritten by precommit.sh from the actual GitHub release,
 # because upstream tag/asset naming is inconsistent. Only bump _pkgver by hand.
-_tag="${_pkgver}"
+_tag="v${_pkgver}"
 _appimage="Bazecor-${_pkgver}-x64.AppImage"
 
 _appname="bazecor"
 pkgname="bazecor-beta"
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical configurator for Dygma keyboards"
 url="https://github.com/Dygmalab/Bazecor"
 license=("GPL-3.0-only")
