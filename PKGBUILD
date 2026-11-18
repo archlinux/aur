@@ -1,6 +1,6 @@
 # Maintainer: Ersin Can Karaca <canersinkaraca@gmail.com>
 pkgname=lapse-bin
-pkgver=2.1.1
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Save the last moments of your game and trim clips (replay recorder)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('lapse')
 conflicts=('lapse' 'lapse-git')
 options=('!strip' '!debug')
 source=("https://github.com/canersin/Lapse/releases/download/v${pkgver}/Lapse-${pkgver}-x86_64.tar.gz")
-sha256sums=('16c6da8f63c0c65ef078c2e4a20d718325e45b4fbfea3e0e2887a37ed8e7957c')
+sha256sums=('5fd100bcd409c81ff3e5a51128b7772d4cb8a05b53f7cccdd17b4f3ba3c4998b')
 
 package() {
     cd "Lapse-${pkgver}-x86_64"
