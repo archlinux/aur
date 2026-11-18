@@ -1,6 +1,6 @@
 # Maintainer: engineering <engineering@egdaemon.com>
 pkgname=egd
-pkgver=0.0.1783000586000
+pkgver=v0.0.1795011761000
 pkgrel=1
 pkgdesc='egd ci/cd/batch processing tooling'
 url='https://github.com/egdaemon/eg'
@@ -16,6 +16,7 @@ depends=(
   'bindfs'
   'acl'
   'pciutils'
+  'waypipe'
 )
 
 makedepends=(
@@ -23,7 +24,8 @@ makedepends=(
   'btrfs-progs'
 )
 
-source=("${pkgname}::git+https://github.com/egdaemon/eg.git")
+# EG_SOURCE_URL lets the ci workload build the commit being released instead of whatever is on github.
+source=("${pkgname}::${EG_SOURCE_URL:-git+https://github.com/egdaemon/eg.git}")
 sha1sums=('SKIP')
 
 build() {
