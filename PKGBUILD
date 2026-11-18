@@ -4,7 +4,7 @@
 pkgname=ombi
 _pkgname=Ombi
 pkgver=4.53.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A media request tool that automatically syncs with your media servers'
 arch=(x86_64 aarch64 armv7h)
 url='https://ombi.io'
@@ -54,7 +54,7 @@ prepare() {
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_NOLOGO=1
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
-  dotnet new globaljson --sdk-version 8.0.125 --roll-forward latestFeature
+  dotnet new globaljson --sdk-version 8.0.133 --roll-forward latestFeature
 
   # Install dotnet-setversion
   if [[ ! -f /tmp/dotnet-setversion/setversion ]]; then
