@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=senpi
-pkgver=2026.11.17
+pkgver=2026.11.17_2
 pkgrel=1
 _npmver=${pkgver//_/-}
 _gitver=2026.11.17
@@ -24,7 +24,7 @@ source=(
   "$pkgname-$_npmver-LICENSE::https://raw.githubusercontent.com/code-yeongyu/senpi/v$_gitver/LICENSE"
 )
 noextract=("$pkgname-$_npmver.tgz")
-sha256sums=('1c761d56ca7033c7d8e5cbc81e3c61d8cf781eb937fcbdc4c94cb0163f95204e'
+sha256sums=('fa970f895f4850646b7f3fbca15b1d68936b55529d53b2d6a2eff6a4f6282505'
             'b572487f123bf259487f7dab25923af16fecd08ed7a2c50964f393282dba883c')
 
 build() {
