@@ -1,24 +1,24 @@
-# Maintainer: submit as i2pchat-tui-bin on AUR (see packaging/aur/README.md)
-# Checksums: ./packaging/refresh-checksums.sh vX.Y.Z or sha256sum local zips after release.
+# Maintainer: Vade <72322348+MetanoicArmor@users.noreply.github.com>
+# Checksums: ./packaging/refresh-checksums.sh vX.Y.Z
 pkgname=i2pchat-tui-bin
-pkgver=1.5.0
+pkgver=1.6.1
 pkgrel=1
-pkgdesc="I2PChat FTXUI TUI only (official Linux TUI zip, binary)"
+pkgdesc="P2P (peer-to-peer) chat client over I2P network (TUI version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MetanoicArmor/I2PChat-ng"
 license=('AGPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'zlib')
-conflicts=()
 provides=('i2pchat-tui')
+conflicts=('i2pchat-tui' 'i2pchat-ng-tui-git')
 options=('!strip')
 _icon="icon.png::${url}/raw/v${pkgver}/icon.png"
 source_x86_64=("I2PChat-linux-x86_64-tui-v${pkgver}.zip::${url}/releases/download/v${pkgver}/I2PChat-linux-x86_64-tui-v${pkgver}.zip"
                "${_icon}")
 source_aarch64=("I2PChat-linux-aarch64-tui-v${pkgver}.zip::${url}/releases/download/v${pkgver}/I2PChat-linux-aarch64-tui-v${pkgver}.zip"
                 "${_icon}")
-sha256sums_x86_64=('9898f7af99a154bac28abd4a1318ca2e4d73e1356ed33ee6f66534e583e0ff80'
+sha256sums_x86_64=('0ce70046026457a35e865646d4e9cc5fbbeb8b70908101754d8d27c5b0be91b3'
                    '2f27e90c85949ec4eabeaac6d12bca1449f679dbb10e4e9f07925e33b7d008b8')
-sha256sums_aarch64=('2fb2391a4a427fc4fbecf27813d9180937d69806907fc39a774a779fea8c72d9'
+sha256sums_aarch64=('a6a6e6d324562b0e6beced891973ece974f9010436e08b82b11555a9a272a3a9'
                     '2f27e90c85949ec4eabeaac6d12bca1449f679dbb10e4e9f07925e33b7d008b8')
 
 package() {
@@ -34,7 +34,7 @@ package() {
 [Desktop Entry]
 Type=Application
 Name=I2P Chat (TUI)
-Comment=I2PChat terminal UI
+Comment=P2P chat over I2P (terminal)
 Exec=i2pchat-tui
 Icon=i2pchat-tui
 Terminal=true
