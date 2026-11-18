@@ -1,7 +1,7 @@
 # Maintainer: jiutong <jiutong@localhost>
 pkgname=mayoi-bin
 pkgver=0.22.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A small, fast code editor written in Go with a native GPU-drawn UI (no webview, no Electron)"
 arch=('x86_64' 'aarch64')
 url='https://github.com/sorrycc/Mayoi'
@@ -26,7 +26,7 @@ package() {
 	install -d "$pkgdir/usr/bin"
 	ln -s /usr/lib/mayoi/mayoi "$pkgdir/usr/bin/mayoi"
 
-	install -Dm644 mayoi.png "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/mayoi.png"
+	install -Dm644 mayoi.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/mayoi.png"
 	sed -e 's|^Exec=mayoi|Exec=/usr/bin/mayoi|' -e '/^Icon=mayoi/a StartupWMClass=mayoi' mayoi.desktop |
 		install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/mayoi.desktop"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

@@ -1,7 +1,7 @@
 pkgbase = mayoi-bin
 	pkgdesc = A small, fast code editor written in Go with a native GPU-drawn UI (no webview, no Electron)
 	pkgver = 0.22.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sorrycc/Mayoi
 	arch = x86_64
 	arch = aarch64
