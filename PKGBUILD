@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=palletone-git
 _pkgname=Palletone
-pkgver=r287.fcb4a90
-_electronversion=39
-_nodeversion=22
+pkgver=r315.20bd71f
+_electronversion=44
+_nodeversion=24
 pkgrel=1
 pkgdesc="Desktop color pallete builder and manager for developers and designers."
 arch=('any')
@@ -16,69 +16,84 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'bun'
+    'npm'
     'git'
     'nvm'
     'gendesk'
-    'curl'
     'jq'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
+    "${pkgname%-git}.js"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
 pkgver() {
-    cd "${srcdir}/${pkgname//-/.}"
-    set -o pipefail
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$(_get_project_dir)" || return 1
+	local _t=$(git tag --list --sort=-v:refname | grep -m1 -E '^v?[0-9]+(\.[0-9]+)+$' || :)
+	local _n=$(git rev-list --count "${_t:+$_t..}HEAD") _s=$(git rev-parse --short=7 HEAD)
+	[[ -n $_t ]] && printf '%s.r%s.g%s\n' "${_t#v}" "$_n" "$_s" || printf 'r%s.%s\n' "$_n" "$_s"
 }
 _ensure_local_nvm() {
-    local NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install "${_nodeversion}"
-    nvm use "${_nodeversion}"
+	local NVM_DIR="${srcdir}/.nvm"
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+	nvm install "${_nodeversion}"
+	nvm use "${_nodeversion}"
 }
 _get_app_dir() {
-	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
-        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
-    [[ -z "${_elec_ver}" ]] && return 1
-    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+	local _v=$(find "$(_get_project_dir)" -name package.json ! -path '*/node_modules/*' -exec jq -r '.. | (.electron? // empty) | strings' {} + 2>/dev/null | sed 's/^[^0-9]*//' | grep -E '^[0-9]' | head -1 | sed 's/\..*//')
+	_v=${_v:-$(grep -hoE 'electron[@":][^0-9]*[0-9]+\.[0-9.]+' "$(_get_project_dir)"/*lock* 2>/dev/null | grep -oE '[0-9]+\.[0-9.]+' | head -1 | sed 's/\..*//')}
+	[[ "$_v" =~ ^[0-9] ]] || return 1
+	(( ${_v} == _electronversion )) && echo -e "\033[1;32mElectron version: ${_v}\033[0m" || echo -e "\033[1;31mElectron version: ${_v} (expected ${_electronversion})\033[0m"
 }
-_set_build_env() {
+_set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	export ELECTRON_BUILDER_OFFLINE=true
 	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+}
+_set_npm_build_env() {
 	export HOME="${srcdir}/.home"
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
 	export XDG_DATA_HOME="${HOME}/.local/share"
-	export BUN_INSTALL_CACHE_DIR="${HOME}/.bun/cache"
-	export BUN_INSTALL_GLOBAL_DIR="${HOME}/.bun/global"
-	export BUN_INSTALL_BIN="${HOME}/.bun/bin"
-	export BUN_CONFIG_SKIP_SAVE_LOCKFILE=1
-    export BUN_CONFIG_SKIP_LOAD_LOCKFILE=1
-	export BUN_DISABLE_DOTENV=1
-	export DO_NOT_TRACK=1
-	export BUN_JOBS="$(nproc)"
-	mkdir -p "${HOME}" "${BUN_INSTALL_CACHE_DIR}" "${BUN_INSTALL_GLOBAL_DIR}" "${BUN_INSTALL_BIN}"
+	export npm_config_cache="${HOME}/.npm_cache"
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${HOME}/.corepack"
+	export npm_config_audit=false
+	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
+	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
+}
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 prepare() {
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "$(_get_project_dir)"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname}/g
-    " "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh" "${srcdir}/${pkgname%-git}.js"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
@@ -86,36 +101,36 @@ prepare() {
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
     _ensure_local_nvm
-    _set_build_env
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    # Fix electron-vite config: remove all outDir settings to use default separate directories (out/main, out/preload, out/renderer)
-    sed -i "/outDir.*dist/d" electron.vite.config.ts
-    sed -i 's|"main": "dist/main.js"|"main": "out/main/main.js"|g' package.json
-    # Fix electron-builder output directory conflict: change from 'out' to 'release' to avoid conflict with electron-vite output
-    sed -i "s/output: 'out',/output: 'release',/" electron-builder.ts
+    _set_electron_build_env
+    _set_npm_build_env
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
+    jq '.devDependencies.tailwindcss = "^3.4.18"' package.json > package.json.tmp && mv package.json.tmp package.json
+    sed -i "/rollupOptions: {/i\      emptyOutDir: false," electron.vite.config.ts
     export NODE_ENV=development
-    bun install
+    npm install
 }
 build() {
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "$(_get_project_dir)"
     _ensure_local_nvm
-    _set_build_env
+    _set_electron_build_env
+    _set_npm_build_env
     export NODE_ENV=production
-    bunx electron-vite build
-    bunx electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config electron-builder.ts
-    local _app_dir=$(_get_app_dir)
-    rm -rf "${_app_dir}/resources/default_app.asar"
+    npm run format
+    npm run es:lint
+    npm run ts:lint
+    npx electron-vite build
+    npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.ts"
+    _delete_other_arch_files
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+    install -Dm644 "${srcdir}/${pkgname%-git}.js" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     _icon_sizes=(192x192 256x256 384x384 512x512)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname//-/.}/public/icon-${_icons}.png" \
+        install -Dm644 "$(_get_project_dir)/public/icon-${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
