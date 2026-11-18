@@ -1,6 +1,6 @@
 pkgbase = voltius-bin
 	pkgdesc = Local-first SSH/SFTP/Serial client with E2EE sync, plugins, and no account required (prebuilt binary)
-	pkgver = 0.76.1
+	pkgver = 0.77.0
 	pkgrel = 1
 	url = https://github.com/VoltiusApp/voltius
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = voltius-bin
 	depends = hicolor-icon-theme
 	provides = voltius
 	conflicts = voltius
-	source_x86_64 = voltius-bin-0.76.1.deb::https://github.com/VoltiusApp/voltius/releases/download/v0.76.1/Voltius_0.76.1_amd64.deb
-	sha256sums_x86_64 = 49b67deae20e9129a5a184d42911eabee3968c354e3d4fee18622d72890af68e
-	source_aarch64 = voltius-bin-0.76.1.deb::https://github.com/VoltiusApp/voltius/releases/download/v0.76.1/Voltius_0.76.1_arm64.deb
-	sha256sums_aarch64 = 49b67deae20e9129a5a184d42911eabee3968c354e3d4fee18622d72890af68e
+	source_x86_64 = voltius-bin-0.77.0.deb::https://github.com/VoltiusApp/voltius/releases/download/v0.77.0/Voltius_0.77.0_amd64.deb
+	sha256sums_x86_64 = 5e4d39a863ba3a5ef115655db5563838b80bdcd2b0f5a9180eeeb02ba272589b
+	source_aarch64 = voltius-bin-0.77.0.deb::https://github.com/VoltiusApp/voltius/releases/download/v0.77.0/Voltius_0.77.0_arm64.deb
+	sha256sums_aarch64 = 5e4d39a863ba3a5ef115655db5563838b80bdcd2b0f5a9180eeeb02ba272589b
 
 pkgname = voltius-bin
