@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=DeadOxide
+Comment=Start the Project Zomboid Rust runtime, the original game, or install mods
+Exec=deadoxide-launcher
+Icon=deadoxide
+Terminal=false
+Categories=Game;

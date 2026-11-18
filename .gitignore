@@ -1,0 +1,17 @@
+# Ignore everything by default
+*
+
+# Whitelist the essentials
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+
+# Whitelist auxiliary files
+!*.install
+!*.patch
+!*.diff
+!*.desktop
+!*.conf
+!*.patched
+!*.png
+!*.svg

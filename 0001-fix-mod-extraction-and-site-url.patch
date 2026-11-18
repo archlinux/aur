@@ -1,0 +1,42 @@
+--- a/launcher/src/lib.rs
++++ b/launcher/src/lib.rs
+@@ -4,7 +4,7 @@
+ use std::io::Read;
+ use std::path::{Path, PathBuf};
+ 
+-pub const SITE: &str = "https://lakomoor.github.io/deadoxide/";
++pub const SITE: &str = "https://deadoxide-rust.github.io/deadoxide/";
+ 
+ #[derive(Deserialize, Clone, Debug)]
+ pub struct Mod {
+@@ -68,6 +68,18 @@
+     Ok(v)
+ }
+ 
++/// A relative path with no `..`, root or prefix component, i.e. one that
++/// cannot escape the directory it is joined to.
++fn safe_rel(name: &str) -> Option<PathBuf> {
++    let p = Path::new(name);
++    if p.is_absolute() {
++        return None;
++    }
++    p.components()
++        .all(|c| matches!(c, std::path::Component::Normal(_) | std::path::Component::CurDir))
++        .then(|| p.to_path_buf())
++}
++
+ /// Verify sha256, then extract. Entries that would escape `dest` (zip-slip) are rejected.
+ pub fn install(m: &Mod, base: &str, mods_dir: &Path) -> Result<PathBuf, String> {
+     let url = if m.url.contains("://") || m.url.starts_with("file:") {
+@@ -87,8 +99,9 @@
+     let mut z = zip::ZipArchive::new(std::io::Cursor::new(data)).map_err(|e| e.to_string())?;
+     for i in 0..z.len() {
+         let mut f = z.by_index(i).map_err(|e| e.to_string())?;
+-        let rel = f
+-            .enclosed_name()
++        // Archives built on Windows store `\\` as the separator, which on Linux
++        // is an ordinary file name character: normalize before using the path.
++        let rel = safe_rel(&f.name().replace('\\', "/"))
+             .ok_or_else(|| format!("unsafe path in archive: {}", f.name()))?;
+         let out = dest.join(rel);
+         if f.is_dir() {
