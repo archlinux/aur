@@ -2,9 +2,9 @@
 
 pkgname=nexus-launcher-bin
 _pkgname=nexus-launcher
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
-_appimage="Xodus-Nexus-${pkgver}-x86_64.AppImage"
+_appimage="Nexus-Launcher-${pkgver}-x86_64.AppImage"
 pkgdesc='Xbox-inspired launcher for Microsoft Store PC games on Linux, built on Xodus'
 arch=(x86_64)
 url='https://github.com/domsvoboda/nexus-launcher'
@@ -29,7 +29,7 @@ source=(
   "${_pkgname}"
 )
 noextract=("${_appimage}")
-sha256sums=('9a28294adb20345dcc5673e6085b44824d5fce105060e822867ce9d375a633ff'
+sha256sums=('82ca1de6170c67a852513fc323c2ccbcdb81462cab3fca3f61490459488c03c2'
             '639b735fd2f65779b82c4aab471f1fcdf927e10e1c21250911f75d44d136ff11'
             '241cb6a099ad271cbf99ec73b29a8f7572be72acd68d28cf23318573152ec7ea'
             'b55222463f13c4d67f81f1fc70bd4a42a7412c5fe48b4815b977633a6001777f')
