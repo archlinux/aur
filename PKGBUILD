@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.261
+pkgver=1.4.262
 pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
@@ -62,7 +62,7 @@ _electronmajor=43
 # changes the payload, so pin the peeled commit of tag v$pkgver instead.
 # Version bumps must resolve `git ls-remote $url "refs/tags/v<ver>^{}"` and
 # update _commit together with pkgver and the source checksum.
-_commit=92d4266cc4ffa945dbc1fa52850e62448d2dfc1c
+_commit=13619bc1c1f07bf10af2aba61def9a4cc532e108
 source=(
   "$pkgname-$pkgver-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "pnpm-$_pnpmver.tgz::https://registry.npmjs.org/pnpm/-/pnpm-$_pnpmver.tgz"
@@ -83,7 +83,7 @@ source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
 )
 sha256sums=(
-  '4ba050f44fe567e374c752ef3935776f7c147d3de66f2a6ba4f796cb8d1eeeb1'
+  '82ab293878e31d81742fed1035dbc403ff46379ec28e66b2d6bf4f43da5e2083'
   'ea206e35474bf87be9564a85ca70ed1c8ebdc45da55aafb0a3bf09d1ba69b179'
   'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
   '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
@@ -168,6 +168,14 @@ replacements = [
     ),
     (
         "const {\n"
+        "  ensureBundledProviderExec,\n"
+        "  finalizePackagedProviderExec\n"
+        "} = require('./provider-exec-resources.cjs')\n",
+        "const { finalizePackagedProviderExec } = "
+        "require('./provider-exec-resources.cjs')\n",
+    ),
+    (
+        "const {\n"
         "  appImageNodeRuntimeFpmArgs,\n"
         "  placeAppImageNodeRuntime,\n"
         "  verifyAppImageNodeRuntimeServesPty\n"
@@ -180,7 +188,8 @@ replacements = [
         "    context,\n"
         "    mobileWebBundleDir = MOBILE_WEB_BUNDLE_DIR,\n"
         "    ensureWaylandClipboard = ensureBundledWaylandClipboard,\n"
-        "    orcadTemplateDir = join(__dirname, '..', orcadTemplateExtraResource.from)\n"
+        "    orcadTemplateDir = join(__dirname, '..', orcadTemplateExtraResource.from),\n"
+        "    ensureProviderExec = ensureBundledProviderExec\n"
         "  ) => {",
         "  beforePack: (\n"
         "    context,\n"
@@ -191,6 +200,12 @@ replacements = [
     (
         "    if (context.electronPlatformName === 'linux') {\n"
         "      ensureWaylandClipboard(context.arch)\n"
+        "    }\n",
+        "",
+    ),
+    (
+        "    if (context.electronPlatformName !== 'win32') {\n"
+        "      ensureProviderExec(context.electronPlatformName, context.arch)\n"
         "    }\n",
         "",
     ),
@@ -209,6 +224,7 @@ end_index = data.index(end, start_index)
 after_pack_linux = (
     "    if (context.electronPlatformName === 'linux') {\n"
     "      finalizePackagedWaylandClipboard(resourcesDir)\n"
+    "      finalizePackagedProviderExec(resourcesDir, 'linux')\n"
     "    }\n"
 )
 data = data[:start_index] + after_pack_linux + data[end_index:]
