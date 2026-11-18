@@ -1,6 +1,6 @@
 pkgbase = cachydpi
 	pkgdesc = System-wide DPI bypass tool for Linux — GoodbyeDPI alternative
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://github.com/abel0x/cachydpi
 	install = cachydpi.install
@@ -16,7 +16,7 @@ pkgbase = cachydpi
 	depends = nftables
 	backup = etc/cachydpi/config.toml
 	backup = etc/cachydpi/blacklist.txt
-	source = cachydpi-1.11.0.tar.gz::https://github.com/abel0x/cachydpi/archive/v1.11.0.tar.gz
-	sha256sums = c078382abba8148b9bce5bfca3f16fd1fa6c1389c49f8911b7692808231736ee
+	source = cachydpi-1.11.1.tar.gz::https://github.com/abel0x/cachydpi/archive/v1.11.1.tar.gz
+	sha256sums = ce95e1c10d8756a92b5cd1bc13bf3721b3825b20e44b861f6a89c984f3f05981
 
 pkgname = cachydpi
