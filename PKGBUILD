@@ -10,7 +10,7 @@
 # 配置在 /etc/crw/config.toml（pacman backup 文件，升级不会覆盖你的修改）
 
 pkgname=crw-bin
-pkgver=0.46.1
+pkgver=0.46.2
 pkgrel=1
 pkgdesc="Fast, lightweight Firecrawl/Tavily alternative in Rust — web scraper, crawler & search API with MCP server"
 arch=('x86_64' 'aarch64')
@@ -39,16 +39,16 @@ source_aarch64=("$pkgname-$pkgver.tar.gz::$_rel/crw-linux-arm64.tar.gz"
                 "crw.service"
                 "config.toml")
 
-sha256sums_x86_64=('c25021c74bb56fcc7edf68a6128199e1b291658a7e06b4ca2289f854cb692acd'
-                  'a012eac14e6d4724a58796ac4d91155629f9fda6a740b6ca49a9871f171b9646'
-                  '38b36f87885af6a209c309ff7ef670b50a8b8b77262be30745cc3758e362c1c0'
+sha256sums_x86_64=('b243eef3f397294e584bfc913e458b834e326b996009017e9d164c1c47b6bfbc'
+                  'dbc8a6ad2680de871850b0f84bb692696ecbcd9db2e423ed12355979b3e613f6'
+                  'c29d79c2f87d783c3b1c3806677c6b91c9ace6bbe8ffe10b9666cbb739c7bb13'
                   '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
                   'SKIP'
                   'SKIP')
 
-sha256sums_aarch64=('61aa5e657e76d70edc4599ac7d04f7f4bd3c6a363c7d845a3146eb7112335d87'
-                   '2803af4edb854ad99e82bd4527b80ade574f7bc8dc9cbfc581bb6ff035c15791'
-                   '768c4bd6602391890d756aa93ed692bee46ef88a78248adb2a881e4f0bc37278'
+sha256sums_aarch64=('73e324f176731ec4a0662b6c035c244ed2d84afc5e7d9aa5beba7ac8a9a69afd'
+                   '1e4906435544386348adc96076feb299da6d48d20f04daf67082fee34464eb1c'
+                   'b4be3bbfa3278106cabdc509d606838784f3c57969d486ea737ed80491f8afcb'
                    '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
                    'SKIP'
                    'SKIP')
