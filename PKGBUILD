@@ -1,6 +1,6 @@
 # Maintainer: Tim Falken <tim@timfalken.com>
 pkgname=bluegit-backup
-pkgver=20261118110132
+pkgver=20261118111918
 pkgrel=1
 pkgdesc='Backup server for a BlueGit instance: incremental copy, archives, rollback'
 arch=('x86_64' 'aarch64')
@@ -9,9 +9,9 @@ license=('MIT')
 makedepends=('go')
 options=('!debug')
 install=bluegit-backup.install
-_commit=b338787d6fb3df1c83bd317668b8e973cd5ecb45
+_commit=8419cf83c0900f5a70cdbde6ee1b398f788a9e33
 source=("bluegit-${_commit}.tar.gz::https://git.timfalken.com/timfa/bluegit/-/archive/${_commit}/bluegit-${_commit}.tar.gz")
-sha256sums=('70d7475769cb10d9599466138a8f54b85ebb8405a8628c5f2861f9e3e50e44d5')
+sha256sums=('799cb5bc5cdff396ac03f28b333e407b87f4ddd6e867ea344ba23fc831652d50')
 
 build() {
   cd "$srcdir/bluegit-${_commit}"
