@@ -9,6 +9,7 @@ pkgbase = ds4u
 	makedepends = cargo
 	makedepends = clang
 	makedepends = lld
+	makedepends = alsa-lib
 	depends = hidapi
 	depends = libxkbcommon
 	depends = openssl
