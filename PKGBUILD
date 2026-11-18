@@ -1,6 +1,6 @@
 # Maintainer: Kaarel <github.com/kaareloun>
 pkgname=kanbanana
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Kanban board for your Linear issues, with Claude Code built in"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 optdepends=('xdg-desktop-portal: file picker for attaching images'
             'claude-code: Claude Code integration over MCP')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('02ebf3b3211b51321b0ed38b9852bdfa70ef6f9dcf9566533967f518550921e3')
+sha256sums=('6591cc70a881b6a9c2f9f3de773d1ae749397b797448ef07c62b7e88a1377279')
 
 prepare() {
   cd "$pkgname-$pkgver"
