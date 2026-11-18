@@ -2,7 +2,7 @@
 
 pkgname=pgbot-bin
 _pkgbin=pgbot
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Postgres intelligence for ai agents & apps"
 arch=('x86_64')
@@ -13,21 +13,21 @@ conflicts=('pgbot')
 options=('!strip' '!debug')
 
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${_pkgbin}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('adf0f08fbdd212a8c6b1e0462f872916866968c25e6e35ba1b5bba22a39841bc')
+sha256sums=('102dd639639ab7a4c2a933bf612390e21b699962ee33d9c939128657e416ae2e')
 
 package() {
-    cd "$srcdir"
+  cd "$srcdir"
 
-    install -Dm755 "$_pkgbin" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$_pkgbin" -t "$pkgdir/usr/bin/"
 
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 
-    "$_pkgbin" completion bash >"$_pkgbin".bash
-    "$_pkgbin" completion zsh >_"$_pkgbin"
-    "$_pkgbin" completion fish >"$_pkgbin".fish
+  "$_pkgbin" completion bash >"$_pkgbin".bash
+  "$_pkgbin" completion zsh >_"$_pkgbin"
+  "$_pkgbin" completion fish >"$_pkgbin".fish
 
-    install -Dm644 "${_pkgbin}.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgbin"
-    install -Dm644 "_${_pkgbin}" "$pkgdir/usr/share/zsh/site-functions/_$_pkgbin"
-    install -Dm644 "${_pkgbin}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgbin.fish"
+  install -Dm644 "${_pkgbin}.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgbin"
+  install -Dm644 "_${_pkgbin}" "$pkgdir/usr/share/zsh/site-functions/_$_pkgbin"
+  install -Dm644 "${_pkgbin}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgbin.fish"
 }
