@@ -1,7 +1,7 @@
 # Maintainer: lucas <lucaszhou007@163.com>
 pkgname=deepseek-harness-bin-autotrack
-pkgver=0.2.2~rc.4
-pkgrel=4
+pkgver=0.2.2~rc.5
+pkgrel=1
 pkgdesc='DeepSeek Harness CLI and agent harness (auto-tracked npm releases)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/deepseek-ai/deepseek-harness'
@@ -19,7 +19,7 @@ source=("dsh-${pkgver//\~/-}.tgz::https://registry.npmjs.org/@deepseek-ai/dsh/-/
         dsh-web.service
         dsh-web.sysusers
         dsh-web.confd)
-sha256sums=('5544f3d343131eb142f79a29c3f474c54fb8aa55e5389afe895d1e1c09730884'
+sha256sums=('67da5a3c458f46cd278e0eec6ad0e3a44e99fd13087c6f11a1b362268900a52c'
             '3e713da03d126f9b710a83b8c4962c9a76402cc8d15d37f706b5db3b612944e1'
             '009d6a22833c4a0d0c1837dde60353066c45c837da7f1e8d1af47030d22b96eb'
             'e2640ed12ac93aed52a82ce92b01ec7a50a675ed4a2702540a63f59d2846a9f2')
