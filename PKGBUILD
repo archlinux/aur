@@ -1,13 +1,14 @@
 # Maintainer: Friendships666 <tianfs6x6@gmail.com>
 pkgname=justaiagent
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux-native local AI agent with embedded web interface"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Friendships6666/JustAIAgent"
 license=('MIT')
 depends=('curl' 'traceroute' 'iputils')
-makedepends=('rust' 'cargo' 'nodejs' 'npm')
+makedepends=('rust' 'cargo' 'nodejs' 'npm' 'cmake')
+options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('bd9332d17b78dc153ed38fa94f53b7522924878c32e829997ecaa3e870f651c1')
 
