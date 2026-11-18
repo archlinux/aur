@@ -1,0 +1,24 @@
+pkgbase = paccor-bin
+	pkgdesc = Platform Attribute Certificate Creator: gather components, create, sign and validate TCG Platform Certificates
+	pkgver = 2.0r18
+	pkgrel = 1
+	url = https://github.com/nsacyber/paccor
+	arch = x86_64
+	license = Apache-2.0
+	depends = java-runtime-headless>=25
+	depends = bash
+	depends = gcc-libs
+	optdepends = dmidecode: component collection scripts
+	optdepends = ethtool: network component collection
+	optdepends = jq: component collection scripts
+	optdepends = lshw: component collection scripts
+	optdepends = nvme-cli: NVMe component collection
+	optdepends = tpm2-tools: read the endorsement key (get_ek.sh)
+	provides = paccor
+	conflicts = paccor
+	options = !strip
+	options = !debug
+	source = paccor-2.0r18.zip::https://github.com/nsacyber/paccor/releases/download/v2.0r18/paccor.2.0r18.linux-x64.zip
+	sha256sums = ebf13dfdc027e8bbe6953b845633a34697176e1ced386b4713333537dd76ba2a
+
+pkgname = paccor-bin
