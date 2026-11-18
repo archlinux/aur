@@ -3,6 +3,7 @@ pkgname=epixnet
 _reponame=EpixNet
 pkgver=0.6.8
 pkgrel=1
+_ffver="153.4.0esr"
 pkgdesc="Decentralized peer-to-peer web platform (node, browser launcher, and EVX worker)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/EpixZone/EpixNet"
@@ -15,6 +16,11 @@ depends=(
   'glib2'
   'glibc'
   'gtk3'
+  'libx11'
+  'libxcb'
+  'nspr'
+  'nss'
+  'pango'
   'systemd-libs'
   'zlib'
 )
@@ -23,18 +29,21 @@ makedepends=(
   'git'
   'pkgconf'
   'protobuf'
+  'python'
 )
 optdepends=(
-  'firefox-esr-bin: recommended browser allowing unsigned Epix Wallet extension'
-  'firefox: standard web browser (runs without wallet extension due to signature enforcement)'
   'libayatana-appindicator: system tray icon support (dlopened at runtime)'
 )
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-bin" "${pkgname}-git")
-options=('!lto')
+options=('!lto' '!strip')
 _archive="${_reponame}-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source_x86_64=("firefox-${_ffver}-x86_64.tar.xz::https://download-installer.cdn.mozilla.net/pub/firefox/releases/${_ffver}/linux-${CARCH}/en-US/firefox-${_ffver}.tar.xz")
+source_aarch64=("firefox-${_ffver}-aarch64.tar.xz::https://download-installer.cdn.mozilla.net/pub/firefox/releases/${_ffver}/linux-${CARCH}/en-US/firefox-${_ffver}.tar.xz")
 sha256sums=('685b4bdc106acd261d8246696fcc3005883a4344bcb383313fb1dfd0121aaefc')
+sha256sums_x86_64=('1832c20dd8c5f69cee933debe62372f5c997845413c8eff846317f6463172032')
+sha256sums_aarch64=('4939871d53f63b7c0c127986af3779e9a134fad4b6abee2b4aa9cefc0bfc5b3d')
 
 prepare() {
   cd "${srcdir}/${_archive}"
@@ -48,16 +57,20 @@ build() {
   export CARGO_TARGET_DIR=target
   export EPIX_VERSION="${pkgver}"
   cargo build --release --locked -p epix-browser -p epix-nmh -p epix-server -p evx-worker
+
+  # Prepare bundled Firefox ESR with EpixNet extensions and security policies
+  bash packaging/linux/prepare-firefox.sh "${srcdir}/firefox"
 }
 
 package() {
-  cd "${srcdir}/${_archive}"
+  # Internal directory for binaries and bundled Firefox ESR
+  install -Dm755 "${srcdir}/${_archive}/target/release/epix-browser" "${pkgdir}/usr/lib/${pkgname}/epix-browser"
+  install -Dm755 "${srcdir}/${_archive}/target/release/epix-nmh" "${pkgdir}/usr/lib/${pkgname}/epix-nmh"
+  install -Dm755 "${srcdir}/${_archive}/target/release/epix-server" "${pkgdir}/usr/lib/${pkgname}/epix-server"
+  install -Dm755 "${srcdir}/${_archive}/target/release/evx-worker" "${pkgdir}/usr/lib/${pkgname}/evx-worker"
 
-  # Internal directory for binaries
-  install -Dm755 target/release/epix-browser "${pkgdir}/usr/lib/${pkgname}/epix-browser"
-  install -Dm755 target/release/epix-nmh "${pkgdir}/usr/lib/${pkgname}/epix-nmh"
-  install -Dm755 target/release/epix-server "${pkgdir}/usr/lib/${pkgname}/epix-server"
-  install -Dm755 target/release/evx-worker "${pkgdir}/usr/lib/${pkgname}/evx-worker"
+  install -d "${pkgdir}/usr/lib/${pkgname}/firefox"
+  cp -a "${srcdir}/firefox/." "${pkgdir}/usr/lib/${pkgname}/firefox/"
 
   # Executable symlinks in /usr/bin
   install -d "${pkgdir}/usr/bin"
@@ -68,6 +81,7 @@ package() {
   ln -s "/usr/lib/${pkgname}/evx-worker" "${pkgdir}/usr/bin/evx-worker"
 
   # Desktop entry and hicolor icons
+  cd "${srcdir}/${_archive}"
   install -Dm644 packaging/linux/epix.desktop "${pkgdir}/usr/share/applications/epix.desktop"
   for s in 48 64 128 256 512; do
     install -Dm644 "packaging/linux/icons/epix-${s}.png" \

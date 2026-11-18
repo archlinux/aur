@@ -27,6 +27,20 @@ fi
 
 echo "  -> SHA256: $sha256"
 
+# Comprobar versión de Firefox ESR fijada por upstream
+ff_ver=$(curl -fsSL "https://raw.githubusercontent.com/EpixZone/EpixNet/${tag}/packaging/fetch-firefox-esr.sh" | grep -E 'VERSION=.*esr' | sed -E 's/.*:-([^}]+)\}.*/\1/' || true)
+if [[ -n "$ff_ver" ]]; then
+  current_ff=$(grep -E '^_ffver=' PKGBUILD | head -n1 | cut -d'=' -f2 | tr -d " '\"")
+  if [[ "$ff_ver" != "$current_ff" ]]; then
+    echo "  -> Nueva versión de Firefox ESR detectada: $ff_ver (anterior: $current_ff)"
+    ff_hash_x86=$(curl -fsSL "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${ff_ver}/linux-x86_64/en-US/firefox-${ff_ver}.tar.xz" | sha256sum | awk '{print $1}')
+    ff_hash_arm=$(curl -fsSL "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${ff_ver}/linux-aarch64/en-US/firefox-${ff_ver}.tar.xz" | sha256sum | awk '{print $1}')
+    sed -i -E "s/^_ffver=.*/_ffver=\"${ff_ver}\"/" PKGBUILD
+    sed -i -E "s/^sha256sums_x86_64=\('.*'\)/sha256sums_x86_64=('${ff_hash_x86}')/" PKGBUILD
+    sed -i -E "s/^sha256sums_aarch64=\('.*'\)/sha256sums_aarch64=('${ff_hash_arm}')/" PKGBUILD
+  fi
+fi
+
 # Actualizar PKGBUILD
 sed -i -E "s/^pkgver=.*/pkgver=${version}/" PKGBUILD
 sed -i -E "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
