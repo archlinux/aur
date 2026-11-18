@@ -2,7 +2,7 @@
 
 pkgname=kensaku-search-bin
 _pkgname=kensaku
-pkgver=1.0.17
+pkgver=1.0.18
 pkgrel=1
 pkgdesc="Fast local search for files, contents, documents and OCR'd images, with an MCP/CLI backend for AI agents (prebuilt)"
 arch=('x86_64')
@@ -21,8 +21,8 @@ source=("${_pkgname}-${pkgver}.deb::${_release}/${_pkgname}_${pkgver}_amd64.deb"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/yjid/kensaku/v${pkgver}/LICENSE")
 noextract=("${_pkgname}-cli-${pkgver}")
 # deb and cli from upstream SHA256SUMS
-sha256sums=('0a8f6d044f2a872a9530f74fdbcad49174873a82e618806eb0e7d5c795bb47d2'
-            '11f3871f3d8e6d025b82de555d0aed35ebf6edd616da115594b08224cefc032a'
+sha256sums=('2ea9437340abde54e690208b3152f91be0f98a3fc9561352a61c6e42ed03b09b'
+            '5fb28669770d6538f16fd846c9209ea2f407878213d4ad3286a09f14a0983c6d'
             '2af98e5c08613929549a6583dde804fe91ae9744bfac97471d7a21c4617ab93a')
 
 package() {
