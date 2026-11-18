@@ -3,7 +3,7 @@
 pkgname=bettbox
 _pkgname=Bettbox
 pkgver=1.19.8
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core."
 arch=('x86_64' 'aarch64')
 options=('!lto')
@@ -13,13 +13,12 @@ case "$CARCH" in
 esac
 url="https://github.com/appshubcc/${_pkgname}"
 license=('GPL-3.0-or-later')
-conflicts=('bettbox-compatible' 'bettbox-compatible-pre' 'bettbox-compatible-bin' 'bettbox-bin' 'bettbox-pre' 'bettbox-compatible-pre-bin' 'bettbox-pre-bin')
-provides=("${pkgname}=${pkgver}")
-depends=(
-	'gtk3'
-	'libayatana-appindicator'
-	'libayatana-indicator'
-	'libkeybinder3'
+conflicts=(
+	'bettbox-bin' 'bettbox-compatible' 'bettbox-compatible-bin'
+	'bettbox-compatible-pre' 'bettbox-compatible-pre-bin' 'bettbox-lite'
+	'bettbox-lite-bin' 'bettbox-lite-compatible' 'bettbox-lite-compatible-bin'
+	'bettbox-lite-compatible-pre' 'bettbox-lite-compatible-pre-bin'
+	'bettbox-lite-pre' 'bettbox-lite-pre-bin' 'bettbox-pre' 'bettbox-pre-bin'
 )
 makedepends=('git' 'clang' 'cmake' 'ninja' 'go' 'rustup' 'fvm' 'patchelf')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz" "restart-bettbox.hook" "bettbox.desktop" "bettbox.install")
