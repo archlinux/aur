@@ -1,0 +1,7 @@
+post_install() {
+  echo 'Enable the hook for your user with: /usr/lib/yay-ai-review/install.sh'
+}
+
+pre_remove() {
+  echo 'If enabled, disable the hook with: /usr/lib/yay-ai-review/install.sh -u'
+}

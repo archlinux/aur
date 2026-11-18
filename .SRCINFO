@@ -1,0 +1,21 @@
+pkgbase = yay-ai-review-git
+	pkgdesc = yay hook: AI review of AUR build file changes before each build
+	pkgver = r1.eaafa2f
+	pkgrel = 1
+	url = https://github.com/schuay/yay-ai-review
+	install = yay-ai-review.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = yay>=13.0.0
+	depends = bash
+	depends = git
+	depends = jq
+	optdepends = claude-code: claude backend
+	optdepends = openai-codex: codex backend
+	provides = yay-ai-review
+	conflicts = yay-ai-review
+	source = yay-ai-review-git::git+https://github.com/schuay/yay-ai-review.git
+	sha256sums = SKIP
+
+pkgname = yay-ai-review-git
