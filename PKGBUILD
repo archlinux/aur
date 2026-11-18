@@ -3,7 +3,7 @@
 # Hand-edits are fine but will be overwritten on the next tagged release.
 
 pkgname=pareto-gateway
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Pareto AI gateway: local AI model router with a spend and quality console (headless server)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ options=(!lto)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mohamadkhani/pareto-ai/archive/refs/tags/v${pkgver}.tar.gz")
 # Checksum is injected by CI from the real tag tarball (not SKIP).
-b2sums=('1ad27869b93e101ab37bb4edfd01db0e95abdeb3b77c665f0d6962e6a3ba4b1b92dc76c7f4e1ae55141a0db3e1945db703bc0f90a5383e64562d3827e18d05b9')
+b2sums=('67b0ca9f35893f4244448aceea5e09ecc646d9a7a21a00a00239b92f3085ba6f2866e339668a201537572e472ce75fa8b4e8ca82876709052f8abe9089bb47c9')
 
 build() {
   cd "$srcdir/pareto-ai-${pkgver}"
