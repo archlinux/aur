@@ -3,7 +3,7 @@
 pkgname=por-cli-git
 pkgver=r42.2edfaac
 pkgrel=1
-pkgdesc="Terminal-based video search and playback helper"
+pkgdesc="A cli to browse and watch porn."
 arch=('any')
 url="https://github.com/por-cli/por-cli"
 license=('GPL-3.0-or-later')

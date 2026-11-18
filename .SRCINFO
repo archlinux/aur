@@ -1,5 +1,5 @@
 pkgbase = por-cli-git
-	pkgdesc = Terminal-based video search and playback helper
+	pkgdesc = A cli to browse and watch porn.
 	pkgver = r42.2edfaac
 	pkgrel = 1
 	url = https://github.com/por-cli/por-cli
