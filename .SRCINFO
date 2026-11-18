@@ -1,6 +1,6 @@
 pkgbase = clockenstein
 	pkgdesc = Calendar application with local, Google and CalDAV support
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://xapp-project.org/clockenstein.html
 	arch = any
@@ -8,12 +8,13 @@ pkgbase = clockenstein
 	checkdepends = desktop-file-utils
 	makedepends = git
 	makedepends = meson
-	depends = gnome-online-accounts
+	depends = glib2
 	depends = gsound
 	depends = gtk3
 	depends = libsecret
-	depends = org.freedesktop.secrets
+	depends = pango
 	depends = python-babel
+	depends = python-cairo
 	depends = python-caldav
 	depends = python-dbus
 	depends = python-gobject
@@ -30,8 +31,10 @@ pkgbase = clockenstein
 	depends = python-xapp
 	depends = xapp
 	depends = xapp-symbolic-icons
-	optdepends = gnome-online-accounts-gtk
-	source = git+https://github.com/xapp-project/clockenstein.git#tag=2.0.3
-	sha256sums = cb70a796ee67c2a4f23bffac2036911f8b6adb62c263208c0cc07e4d3829503a
+	optdepends = org.freedesktop.secrets: Store CalDAV passwords
+	optdepends = gnome-online-accounts: Use Google accounts from Online Accounts
+	optdepends = gnome-online-accounts-gtk: Use Google accounts from Online Accounts
+	source = git+https://github.com/xapp-project/clockenstein.git#tag=2.0.4
+	sha256sums = cec17c6d5d62e5cb5d3a05939def497660cb13617f84e2b07319d2de6c7bd7b6
 
 pkgname = clockenstein

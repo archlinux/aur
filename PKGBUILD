@@ -1,18 +1,19 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=clockenstein
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Calendar application with local, Google and CalDAV support"
 arch=('any')
 url="https://xapp-project.org/clockenstein.html"
 license=('GPL-3.0-or-later')
 depends=(
-  'gnome-online-accounts'
+  'glib2'
   'gsound'
   'gtk3'
   'libsecret'
-  'org.freedesktop.secrets'
+  'pango'
   'python-babel'
+  'python-cairo'
   'python-caldav'
   'python-dbus'
   'python-gobject'
@@ -34,10 +35,14 @@ makedepends=(
   'git'
   'meson'
 )
-optdepends=('gnome-online-accounts-gtk')
+optdepends=(
+  'org.freedesktop.secrets: Store CalDAV passwords'
+  'gnome-online-accounts: Use Google accounts from Online Accounts'
+  'gnome-online-accounts-gtk: Use Google accounts from Online Accounts'
+)
 checkdepends=('desktop-file-utils')
 source=("git+https://github.com/xapp-project/clockenstein.git#tag=$pkgver")
-sha256sums=('cb70a796ee67c2a4f23bffac2036911f8b6adb62c263208c0cc07e4d3829503a')
+sha256sums=('cec17c6d5d62e5cb5d3a05939def497660cb13617f84e2b07319d2de6c7bd7b6')
 
 build() {
   arch-meson "$pkgname" build
