@@ -565,15 +565,12 @@ EOF
   cp "${toplevel_files[@]/#/out/Release/}" "$pkgdir/usr/lib/chromium/"
   install -Dvm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
 
-  for size in 24 48 64 128 256; do
-    install -Dvm644 "chrome/app/theme/chromium/product_logo_$size.png" \
+  for size in 16 24 32 48 64 128 256; do
+    install -Dvm644 "$srcdir/vulcanium/assets/icons/vulcanium/${size}.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png"
   done
-
-  for size in 16 32; do
-    install -Dvm644 "chrome/app/theme/default_100_percent/chromium/product_logo_$size.png" \
-      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png"
-  done
+  install -Dvm644 "$srcdir/vulcanium/assets/icons/vulcanium.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/chromium.svg"
 
   # chromium uses the icon name "chromium-browser" internally
   # https://github.com/chromium/chromium/blob/160.0.8155.1/chrome/browser/shell_integration_linux.cc#L604
