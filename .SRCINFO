@@ -1,16 +1,19 @@
 pkgbase = dora
 	pkgdesc = Free, open source database client for PostgreSQL, MySQL, MariaDB, CockroachDB, SQLite, libSQL/Turso, Cloudflare D1 and DuckDB (prebuilt binary release)
-	pkgver = 0.44.0
+	pkgver = 0.45.0
 	pkgrel = 1
 	url = https://github.com/remcostoeten/dora
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = libayatana-appindicator
 	depends = openssl
 	depends = libsoup3
-	source = dora-0.44.0.tar.gz::https://github.com/remcostoeten/dora/releases/download/v0.44.0/dora-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 00cb61fdec9c2c690775b22a666bd23baf89019491b832abe98a2b23c9421520
+	source_x86_64 = dora-0.45.0-x86_64.tar.gz::https://github.com/remcostoeten/dora/releases/download/v0.45.0/dora-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 5a89df1ee18380ec9144fa423813adc2b15853efaa1a55e57cd0766e03fbddcd
+	source_aarch64 = dora-0.45.0-aarch64.tar.gz::https://github.com/remcostoeten/dora/releases/download/v0.45.0/dora-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ec22526b180a06ada3681f65ea5b44eb883bd0b19bf79e69e0d1381f0bdcd4b9
 
 pkgname = dora

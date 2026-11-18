@@ -1,20 +1,20 @@
 # Maintainer: Remco Stoeten <stoetenremco.rs@gmail.com>
 
 pkgname=dora
-pkgver=0.44.0
+pkgver=0.45.0
 pkgrel=1
 pkgdesc='Free, open source database client for PostgreSQL, MySQL, MariaDB, CockroachDB, SQLite, libSQL/Turso, Cloudflare D1 and DuckDB (prebuilt binary release)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/remcostoeten/dora'
 license=('GPL3')
 depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator' 'openssl' 'libsoup3')
-source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/remcostoeten/dora/releases/download/v${pkgver}/dora-x86_64-unknown-linux-gnu.tar.gz"
-)
-sha256sums=('00cb61fdec9c2c690775b22a666bd23baf89019491b832abe98a2b23c9421520')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/remcostoeten/dora/releases/download/v${pkgver}/dora-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/remcostoeten/dora/releases/download/v${pkgver}/dora-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('5a89df1ee18380ec9144fa423813adc2b15853efaa1a55e57cd0766e03fbddcd')
+sha256sums_aarch64=('ec22526b180a06ada3681f65ea5b44eb883bd0b19bf79e69e0d1381f0bdcd4b9')
 
 package() {
-  cd "$srcdir/dora-x86_64-unknown-linux-gnu"
+  cd "$srcdir/dora-${CARCH}-unknown-linux-gnu"
 
   install -Dm755 dora "$pkgdir/usr/bin/dora"
 
