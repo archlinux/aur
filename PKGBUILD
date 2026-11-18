@@ -1,6 +1,6 @@
 pkgname=samba-util-bin
-pkgver=4.3.0
-pkgrel=2
+pkgver=4.4.0
+pkgrel=1
 pkgdesc="A simple and modern GUI for managing Samba."
 arch=('x86_64')
 url="https://github.com/mijocecr/samba-util"
@@ -8,39 +8,38 @@ license=('MIT')
 
 depends=(
   'samba'        # smbd, nmbd, testparm, smbpasswd, pdbedit
-  'smbclient'    # smbclient, rpcclient (descubrimiento de red)
-  'systemd'      # Control de servicios
-  'xdg-utils'    # xdg-open (abrir archivos y recursos compartidos)
+  'smbclient'    # smbclient, rpcclient (network discovery)
+  'systemd'      # Service control
+  'xdg-utils'    # xdg-open (open files and shared resources)
 )
 
 optdepends=(
-  'cups: impresión a través de Samba'
-  'gvfs-smb: integración con exploradores de archivos y montaje de recursos remotos'
-  'cifs-utils: utilidades CIFS para montajes manuales'
+  'cups: printing through Samba'
+  'gvfs-smb: file manager integration and mounting of remote shares'
+  'cifs-utils: CIFS utilities for manual mounts'
 )
 
 options=('!debug' '!strip')
 
-source=("https://github.com/mijocecr/samba-util/releases/download/samba-util_v4.3.0/SAMBA-Util.tar.gz")
+source=("https://github.com/mijocecr/samba-util/releases/download/samba-util_v4.4.0/SAMBA-Util.tar.gz")
 
-sha256sums=('5710ac5fee6cfc3f4dfaf21af33a8e2bee8492aae79fdac22a09d0dae5cab40f')
+sha256sums=('597052001032f23112257853ee537a3c672b814a1460686b68049af4ca440592')
 
 package() {
-  # Crear la estructura de destino en /usr/lib
+  # Create the destination tree under /usr/lib
   install -d "$pkgdir/usr/lib/samba-util"
 
-  # Copiar únicamente los archivos necesarios de la aplicación (evitando duplicar el tarball o basura)
-  # O si prefieres copiar todo el contenido filtrando el propio tar.gz:
+  # Copy only the application files needed (avoid duplicating the tarball or junk)
   find "$srcdir" -maxdepth 1 ! -name '.' ! -name '..' ! -name '*.tar.gz' -exec cp -r {} "$pkgdir/usr/lib/samba-util/" \;
 
-  # Asegurar permisos correctos de ejecución en el binario principal
+  # Make sure the main binary is executable
   chmod +x "$pkgdir/usr/lib/samba-util/SAMBA-Util"
 
-  # Crear enlace simbólico en /usr/bin para ejecución global
+  # Create a symlink in /usr/bin for global execution
   install -d "$pkgdir/usr/bin"
   ln -s /usr/lib/samba-util/SAMBA-Util "$pkgdir/usr/bin/samba-util"
 
-  # Instalar archivo desktop y icono con sus permisos estándar (644)
+  # Install the desktop file and the icon with standard permissions (644)
   install -Dm644 "$srcdir/samba-util.desktop" "$pkgdir/usr/share/applications/samba-util.desktop"
   install -Dm644 "$srcdir/samba-util.png" "$pkgdir/usr/share/pixmaps/samba-util.png"
 }
