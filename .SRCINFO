@@ -1,0 +1,24 @@
+pkgbase = dux-edit-git
+	pkgdesc = Text and document editor for Wayland from Dux Labs (git)
+	pkgver = 0.1.0.r0.g67ad782
+	pkgrel = 1
+	url = https://github.com/duxlabs-dev/dux-edit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go>=2:1.27
+	depends = libdux-qt-base.so
+	depends = qt6-declarative
+	optdepends = hunspell: spellcheck
+	optdepends = hunspell-en_us: English spellcheck dictionary
+	optdepends = polkit: save root-owned files
+	provides = dux-edit=0.1.0.r0.g67ad782
+	provides = dedit
+	conflicts = dux-edit
+	conflicts = dedit
+	conflicts = dux-edit-bin
+	source = dux-edit-git::git+https://github.com/duxlabs-dev/dux-edit.git
+	sha256sums = SKIP
+
+pkgname = dux-edit-git
