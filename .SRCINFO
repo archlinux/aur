@@ -1,19 +1,17 @@
 pkgbase = pareto-ai-bin
-	pkgdesc = Pareto AI: local AI model router with a spend and quality console (desktop app with system tray and gateway, prebuilt)
-	pkgver = 0.1.1
+	pkgdesc = Pareto AI: local AI model router with a spend and quality console (headless server, prebuilt)
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/mohamadkhani/pareto-ai
 	arch = x86_64
 	license = MIT
-	depends = webkit2gtk-4.1
-	depends = gtk3
-	depends = libayatana-appindicator
-	depends = hicolor-icon-theme
+	depends = glibc
+	depends = gcc-libs
 	provides = pareto-ai
 	conflicts = pareto-ai
-	conflicts = pareto-gateway
-	conflicts = pareto-gateway-bin
-	source_x86_64 = https://github.com/mohamadkhani/pareto-ai/releases/download/v0.1.1/pareto-ai-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
-	b2sums_x86_64 = 8976bbc89ae1a34cbce767a224a9fe05f305f589199d00c281a2941fa17fffd953eb86297d7c778137dbf2533110d601929899b386945bd1289bd5b1abeac3a5
+	conflicts = pareto-ai-desktop
+	conflicts = pareto-ai-desktop-bin
+	source_x86_64 = https://github.com/mohamadkhani/pareto-ai/releases/download/v0.1.2/pareto-ai-0.1.2-linux-x86_64.tar.gz
+	b2sums_x86_64 = c3cd1777773bd84884312d003406b19e161a65f914af73ffbc91b47d17cdda9a0876b53e0ca2a6510d04c0598e4eaa2680eaf617a0139e19396019e20ef83481
 
 pkgname = pareto-ai-bin

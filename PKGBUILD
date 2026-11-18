@@ -3,50 +3,38 @@
 # Hand-edits are fine but will be overwritten on the next tagged release.
 
 pkgname=pareto-ai-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
-pkgdesc="Pareto AI: local AI model router with a spend and quality console (desktop app with system tray and gateway, prebuilt)"
+pkgdesc="Pareto AI: local AI model router with a spend and quality console (headless server, prebuilt)"
 arch=('x86_64')
 url="https://github.com/mohamadkhani/pareto-ai"
 license=('MIT')
 depends=(
-  'webkit2gtk-4.1'
-  'gtk3'
-  'libayatana-appindicator'
-  'hicolor-icon-theme'
+  'glibc'
+  'gcc-libs'
 )
 provides=('pareto-ai')
-# The desktop bundles its own gateway copy, so the lighter server-only
-# packages cannot be co-installed (install one family at a time).
-conflicts=('pareto-ai' 'pareto-gateway' 'pareto-gateway-bin')
-source_x86_64=("https://github.com/mohamadkhani/pareto-ai/releases/download/v${pkgver}/pareto-ai-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+# The desktop family bundles its own gateway copy, so the two families cannot
+# be co-installed (install one at a time).
+conflicts=('pareto-ai' 'pareto-ai-desktop' 'pareto-ai-desktop-bin')
+source_x86_64=("https://github.com/mohamadkhani/pareto-ai/releases/download/v${pkgver}/pareto-ai-${pkgver}-linux-x86_64.tar.gz")
 # Checksum is injected by CI from the built release tarball (real b2sum, not SKIP).
-b2sums_x86_64=('8976bbc89ae1a34cbce767a224a9fe05f305f589199d00c281a2941fa17fffd953eb86297d7c778137dbf2533110d601929899b386945bd1289bd5b1abeac3a5')
+b2sums_x86_64=('c3cd1777773bd84884312d003406b19e161a65f914af73ffbc91b47d17cdda9a0876b53e0ca2a6510d04c0598e4eaa2680eaf617a0139e19396019e20ef83481')
 
 package() {
-  install -Dm755 "$srcdir/pareto-desktop" \
-    "$pkgdir/usr/bin/pareto-desktop"
+  cd "$srcdir/pareto-ai-${pkgver}-linux-x86_64"
 
-  # The shell finds the sidecar in ../lib/pareto-desktop/ next to /usr/bin
-  # (see sidecar_path() in desktop/src/main.rs).
-  install -Dm755 "$srcdir/pareto-gateway" \
-    "$pkgdir/usr/lib/pareto-desktop/pareto-gateway"
-  # ...and the same binary is on PATH, so the gateway can also run headless.
-  ln -s ../lib/pareto-desktop/pareto-gateway "$pkgdir/usr/bin/pareto-gateway"
+  install -Dm755 pareto-gateway \
+    "$pkgdir/usr/bin/pareto-gateway"
 
-  # Daemon for the gateway copy: systemctl enable --now pareto-gateway
-  install -Dm644 "$srcdir/pareto-gateway.service" \
+  # Daemon: systemctl enable --now pareto-gateway
+  install -Dm644 pareto-gateway.service \
     "$pkgdir/usr/lib/systemd/system/pareto-gateway.service"
-  install -Dm644 "$srcdir/pareto-gateway.sysusers" \
+  install -Dm644 pareto-gateway.sysusers \
     "$pkgdir/usr/lib/sysusers.d/pareto-gateway.conf"
-  install -Dm644 "$srcdir/pareto-gateway.conf" \
+  install -Dm644 pareto-gateway.conf \
     "$pkgdir/etc/pareto-gateway.conf"
 
-  install -Dm644 "$srcdir/pareto-ai.desktop" \
-    "$pkgdir/usr/share/applications/pareto-ai.desktop"
-  install -Dm644 "$srcdir/pareto-ai.png" \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/pareto-ai.png"
-
-  install -Dm644 "$srcdir/LICENSE" \
+  install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
