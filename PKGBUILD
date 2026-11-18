@@ -1,5 +1,5 @@
 pkgname=zaptide
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Native WhatsApp client built with GTK4 and libadwaita"
 arch=('x86_64' 'aarch64')
@@ -34,7 +34,7 @@ optdepends=(
 conflicts=('zaptide-bin' 'zaptide-git')
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0aa88ad9e956dc16f80d1403417b17f8968d676cad7273df1c14b5ec10edc17f')
+sha256sums=('ca1050711f1d99ce461327e9604bef70d3c736fc79865b27ec54278f4e099b70')
 
 prepare() {
   cd "zaptide-${pkgver}"
