@@ -5,7 +5,7 @@
 _force_nvutils_ver=${_force_nvutils_ver:-}
 
 pkgname=nvidia-patch
-pkgver=615.78.08
+pkgver=620.70.06
 pkgrel=1
 pkgdesc="install or reinstall to apply and update nvidia-patch by keylase, unlock nvfbc and nvenc limit"
 arch=('x86_64')
