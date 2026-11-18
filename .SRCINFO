@@ -1,6 +1,6 @@
 pkgbase = opendj-bin
 	pkgdesc = Free, open-source DJ software: decks, stems, effects and controllers
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://opendj.app
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = opendj-bin
 	optdepends = wayland: native Wayland windowing
 	provides = opendj
 	conflicts = opendj
-	noextract = opendj_0.7.0_amd64.deb
+	noextract = opendj_0.8.0_amd64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = opendj_0.7.0_amd64.deb::https://github.com/sebastian-beca/opendj/releases/download/v0.7.0/opendj_0.7.0_amd64.deb
-	sha256sums_x86_64 = 1c8a0b8953f5c2580504565b99c405fa4e1be2a419e662434a148b222d439c54
+	source_x86_64 = opendj_0.8.0_amd64.deb::https://github.com/sebastian-beca/opendj/releases/download/v0.8.0/opendj_0.8.0_amd64.deb
+	sha256sums_x86_64 = 258b2f73eab0c933f5ec10776940da4b851658ffff564f89fc4d91609b90fb2b
 
 pkgname = opendj-bin
