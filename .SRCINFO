@@ -1,19 +1,19 @@
 pkgbase = pit-bin
 	pkgdesc = Work with a directory tree of several git repositories as if it were one
-	pkgver = 2.10.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/patrickbergner/pit
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = git
-	provides = pit=2.10.0
+	provides = pit=2.12.0
 	conflicts = pit
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/patrickbergner/pit/releases/download/v2.10.0/pit-2.10.0-linux-amd64.zip
-	sha256sums_x86_64 = 96f93c17ad8a754c7b29ab876214eb664c5818285d1d842b0528c714f7f9987e
-	source_aarch64 = https://github.com/patrickbergner/pit/releases/download/v2.10.0/pit-2.10.0-linux-arm64.zip
-	sha256sums_aarch64 = 85bb93d6bc8d93e9d8c63e77d613da57d970144ad0ea9125359c8d8748de1dcd
+	source_x86_64 = https://github.com/patrickbergner/pit/releases/download/v2.12.0/pit-2.12.0-linux-amd64.zip
+	sha256sums_x86_64 = 5af4b6c6e83cb7ac7b0c0cf915f297e79d7c3a3a8a9c8d723327f478f8ce35f3
+	source_aarch64 = https://github.com/patrickbergner/pit/releases/download/v2.12.0/pit-2.12.0-linux-arm64.zip
+	sha256sums_aarch64 = b7995f2509f5025b1653decffc0fd8ce03b8ce45c43fe9274b92a35827eaebca
 
 pkgname = pit-bin
