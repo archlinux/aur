@@ -1,0 +1,13 @@
+pkgbase = jrp
+	pkgdesc = JSON formatter that lays out a document by the shape of the data
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/patrickbergner/json-really-pretty-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = jrp-1.2.0.tar.gz::https://github.com/patrickbergner/json-really-pretty-cli/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = ba451297e956745a88194df7d351aae346455e1fbd2bbfb768606b592d7c8415
+
+pkgname = jrp
