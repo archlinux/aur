@@ -26,7 +26,7 @@ _electron=37.10.3
 _sandbox=5.11.4
 _harness=0.2.0-beta.16
 pkgver=${_pkgver}_${_build}
-pkgrel=1
+pkgrel=3
 pkgdesc='AI Agent for everyday office work - WorkBuddy international edition (unofficial Linux port)'
 arch=('x86_64' 'aarch64')
 url='https://www.workbuddy.ai'
@@ -77,8 +77,8 @@ sha256sums=(
   '8bd1111e94ec072bf7e751ba715e96abb4313cac6f7f86768d3eee9b7016c8c2'  # asar.cjs
   'e51c1f55b94e22ff64a5423c2172bc5ee73385592f972942c2403102966c0c42'  # patch.cjs
   '41c68cc72516123b85d7476c86dbd3ff8d7baecd0c1235be6be06549fa2efbac'  # verify-native.cjs
-  '981f72b6ebc2a8c8acc108ae5d52819120b8b0fa5f40471375d83cc73811e0b1'  # start.sh
-  '8bb160b34485ac7bde818a029e6bd421fff7c28d9328f65372d362386ebb0624'  # desktop
+  '1aa43daf2f30f51bfdc46cc467c8d2145d9a59347b4f9caf4b42957a85c98bdf'  # start.sh
+  '5350281f314d0eb5e6666238d76eefd622a6e7cc51e9c6d3904083f7d892c23a'  # desktop
   '631bd3aadd92f6e94797f299cfc9088149db3950e77fa99d090ccb6eff2253ee'  # icon
   '57d01c547f248e072b3824355de9a1566d0b28b99c47e36d7b467d4e945e3436'  # DISCLAIMER
 )

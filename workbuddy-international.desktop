@@ -9,4 +9,4 @@ Categories=Development;IDE;Office;
 Keywords=AI;agent;office;workbuddy;codebuddy;
 StartupNotify=true
 StartupWMClass=workbuddy-international
-MimeType=x-scheme-handler/workbuddy;x-scheme-handler/buddy-app;
+MimeType=x-scheme-handler/workbuddy-ai;
