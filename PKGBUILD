@@ -1,9 +1,9 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='BASIC language cross-compiler for ColecoVision/SG1000/MSX and other 8 bit computers'
 pkgname=cvbasic
-pkgver=0.9.1
+pkgver=0.9.2
 _commit=20b0e4b7a31bea9755a8c7a32a26e29d9265259e
-pkgrel=2
+pkgrel=1
 url=https://nanochess.org/cvbasic.html
 arch=(x86_64)
 license=(BSD-2-Clause)
