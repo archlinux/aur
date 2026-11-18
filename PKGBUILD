@@ -2,7 +2,7 @@
 # Co-Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=gnome-backgrounds-git
-pkgver=51.0.r16.g1632e44
+pkgver=51.0.r17.g600c534
 pkgrel=1
 pkgdesc='Background images and data for GNOME'
 url='https://gitlab.gnome.org/GNOME/gnome-backgrounds'
