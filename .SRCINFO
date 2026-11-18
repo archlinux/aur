@@ -1,6 +1,6 @@
 pkgbase = container-desktop-bin
-	pkgdesc = Podman desktop companion.A familiar desktop graphical interface to the free and open container manager, podman!(Prebuilt version)
-	pkgver = 6.0.0
+	pkgdesc = Podman desktop companion.A familiar desktop graphical interface to the free and open container manager, podman!
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://iongion.github.io/container-desktop/
 	arch = aarch64
@@ -11,10 +11,10 @@ pkgbase = container-desktop-bin
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	provides = container-desktop
-	conflicts = container-desktop=6.0.0
-	source_aarch64 = container-desktop-6.0.0-aarch64.pacman::https://github.com/iongion/container-desktop/releases/download/6.0.0/container-desktop-linux-aarch64-6.0.0.pacman
-	sha256sums_aarch64 = c28c8f1167871bbb921df92515bdd8404f7ad4b5d93196a2bce1387e0c81902f
-	source_x86_64 = container-desktop-6.0.0-x86_64.pacman::https://github.com/iongion/container-desktop/releases/download/6.0.0/container-desktop-linux-x64-6.0.0.pacman
-	sha256sums_x86_64 = 044ae42a10fae9635d919bbddd859bd4a71bacbfc56f0e35b1435a62f01179c0
+	conflicts = container-desktop=6.1.0
+	source_aarch64 = container-desktop-6.1.0-aarch64.pacman::https://github.com/iongion/container-desktop/releases/download/6.1.0/container-desktop-linux-aarch64-6.1.0.pacman
+	sha256sums_aarch64 = 57fbce5eab100b4e94986cd2701cd5a2f5fcc6bf67fc0c7524791921e5d5b073
+	source_x86_64 = container-desktop-6.1.0-x86_64.pacman::https://github.com/iongion/container-desktop/releases/download/6.1.0/container-desktop-linux-x64-6.1.0.pacman
+	sha256sums_x86_64 = 67db89d4633d3e3dd0b23ce1d4651a1245cb18e06f26e52a7868c38c7f7fd0b6
 
 pkgname = container-desktop-bin
