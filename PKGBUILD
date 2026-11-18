@@ -5,7 +5,7 @@
 # pkgver 保持 libfprint 项目版本 1.94.5；_gxfp_srcver 记录源码所在的 gxfp 栈 tag。
 pkgname=libfprint-gxfp
 pkgver=1.94.5
-pkgrel=3
+pkgrel=4
 pkgdesc='libfprint with Goodix GXFP5130 eSPI support (SIGFM matching)'
 arch=('x86_64')
 url='https://github.com/Metrohan/gxfp5130-linux'

@@ -1,7 +1,7 @@
 pkgbase = libfprint-gxfp
 	pkgdesc = libfprint with Goodix GXFP5130 eSPI support (SIGFM matching)
 	pkgver = 1.94.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Metrohan/gxfp5130-linux
 	arch = x86_64
 	license = LGPL-2.1-or-later
