@@ -10,7 +10,7 @@
 # build. The ghostty source is the commit that the libghostty-vt pin names.
 # All downloads happen in the sources and in prepare(); build() needs no network.
 pkgname=efr-code
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc='Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state'
 arch=('x86_64')
@@ -45,7 +45,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 # and the Zig tarball whose SHA-256 ziglang.org publishes in
 # https://ziglang.org/download/index.json
 # (1cbe9df9f27e6b78d14ccbca43b6703a404ef79ef1c463de901d7f088d4e2026).
-b2sums=('e58ba88bab15b764cb749b3214a994d31de30da7273a1f762c5f1cfa839f39c6454d02e7b394b3f79f02f320d4eb5a2361cdb31db0f93b86d435e0496810d6a3'
+b2sums=('7b8588f4c841067a3e59572d91e7ec882fb29aba5f34173c4743f680ed5cbd383bd3de7966372194e9a017cba83bc71f26b6b899f4b3e72b3b8c9a022db6ef9a'
         '508f69a31bd5bba9f3486b83966b8f33b9cf40caa58dc0753cc28d5c022c4cd8ee272f2ffe0747d0bccd94c83a27811596c16a5ee247d8897d8107bc69c680c1'
         '384b04872c92132ffeaee2c5201dff61ea10e00e8b3d42c6745246f79b847e54b05262ff89cd850d30e32957a82cb1b15722511e9535db6e9126912b182a3a61')
 
