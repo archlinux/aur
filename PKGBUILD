@@ -3,8 +3,8 @@ pkgname=welink-wine
 pkgver=7.63.2
 _build=202610132338_437_release_2026.09.1_cloud_7.63.2_636
 _fileid=66972d965a1f4a5f9bd4a1294b35b6f2
-pkgrel=2
-pkgdesc="华为云 WeLink 数字化办公平台（官方 Windows 客户端 + wine，已修复输入框打字并对接 Linux 原生文件对话框）"
+pkgrel=3
+pkgdesc="华为云 WeLink 数字化办公平台（官方 Windows 客户端 + wine，已修复输入框打字、对接 Linux 原生文件对话框并启用 GPU 加速）"
 arch=('x86_64')
 url="https://www.huaweicloud.com/product/welink.html"
 license=('LicenseRef-proprietary')
@@ -18,7 +18,11 @@ depends=(
     'hicolor-icon-theme'
 )
 makedepends=('icoutils')
-optdepends=('fcitx5: 中文输入法')
+optdepends=(
+    'fcitx5: 中文输入法'
+    'lib32-mesa: 32 位 OpenGL/EGL 硬件加速驱动（AMD/Intel）'
+    'lib32-vulkan-icd-loader: 32 位 Vulkan 硬件加速支持'
+)
 conflicts=('deepin-wine-welink')
 replaces=('deepin-wine-welink')
 install="${pkgname}.install"

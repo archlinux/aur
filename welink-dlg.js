@@ -248,3 +248,35 @@ if (process.env.WELINK_NATIVE_DIALOG !== '0') {
     }
   } catch (_) {}
 }
+
+// WeLink 内部在 main.jsc 中硬编码调用了 app.disableHardwareAcceleration()，
+// 并传入了 disable-raf-throttling / disable-background-timer-throttling / disable-renderer-backgrounding，
+// 导致即使去掉命令行 --disable-gpu 也会强制退化到 SwiftShader CPU 软件渲染且后台不节流。
+// 默认拦截这些调用以启用 GPU 硬件加速（设 WELINK_DISABLE_GPU=1 可回退软件渲染）。
+if (process.env.WELINK_DISABLE_GPU !== '1') {
+  try {
+    const { app } = require('electron');
+    if (app) {
+      if (typeof app.disableHardwareAcceleration === 'function') {
+        app.disableHardwareAcceleration = function () {};
+      }
+      if (app.commandLine && typeof app.commandLine.appendSwitch === 'function') {
+        const origAppendSwitch = app.commandLine.appendSwitch.bind(app.commandLine);
+        const blockedSwitches = new Set([
+          'disable-gpu',
+          'disable-gpu-compositing',
+          'disable-raf-throttling',
+          'disable-background-timer-throttling',
+          'disable-renderer-backgrounding',
+        ]);
+        app.commandLine.appendSwitch = function (sw, ...rest) {
+          if (typeof sw === 'string' && blockedSwitches.has(sw.replace(/^--+/, ''))) {
+            return;
+          }
+          return origAppendSwitch(sw, ...rest);
+        };
+      }
+    }
+  } catch (_) {}
+}
+

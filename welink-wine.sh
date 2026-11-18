@@ -21,7 +21,9 @@ PAYLOAD="${PKGDIR}/payload"
 DATA="${XDG_DATA_HOME:-${HOME}/.local/share}/welink-wine"
 export WINEPREFIX="${DATA}/prefix"
 export WINEARCH="win64"
-export WINEDLLOVERRIDES="mscoree=,mshtml="
+# winebth.sys=d：禁用 wine 蓝牙总线驱动。周围有大量 BLE 广播设备时 winebth 会无限往
+# system.reg 写入设备枚举项，几天内就能把 system.reg 撑到 2GB+，导致 wineserver 每次刷盘都 100% 占满单核并吃掉 900MB 内存。
+export WINEDLLOVERRIDES="mscoree=,mshtml=,winebth.sys=d"
 export WINEDEBUG="${WINEDEBUG:-fixme-all}"
 
 APPDIR="${WINEPREFIX}/drive_c/Program Files/WeLink"
@@ -108,7 +110,8 @@ case "$1" in
         echo "用法: welink-wine [-r|--redeploy] [-h|--help] [-- WeLink 参数]"
         echo "  -r  强制重新部署应用文件（不清除登录数据）"
         echo "  环境变量 WELINK_NATIVE_DIALOG=0 禁用 Linux 原生文件对话框（回退到 wine 对话框）"
-        echo "  环境变量 WELINK_LANG=zh 保持中文 locale 运行（会导致输入框无法打字）"
+        echo "  环境变量 WELINK_DISABLE_GPU=1   禁用 GPU 硬件加速（回退到软件渲染）"
+        echo "  环境变量 WELINK_LANG=zh         保持中文 locale 运行（会导致输入框无法打字）"
         exit 0 ;;
 esac
 
@@ -117,12 +120,31 @@ esac
 # 本容器还有旧 wineserver 在跑，先把它杀掉，避免再起一个注定坏掉的会话。
 _wv_file="${DATA}/wine_version"; _wv_now="$(wine --version 2>/dev/null || echo unknown)"
 if [ -f "${_wv_file}" ] && [ "$(cat "${_wv_file}")" != "${_wv_now}" ]; then
-    if wineserver -k0 2>/dev/null; then :; fi   # -k0: 温和结束本容器的旧 wineserver
+    if wineserver -k 2>/dev/null; then :; fi
     msg "wine 已从 $(cat "${_wv_file}") 升级到 ${_wv_now}，已结束本容器的旧 wineserver。"
 fi
 mkdir -p "${DATA}"; printf '%s' "${_wv_now}" > "${_wv_file}"
 
 migrate_legacy
+# 若旧容器的 system.reg 因 winebth.sys 蓝牙枚举膨胀（>50MB），启动前自动清理 WINEBTH 膨胀项
+_sysreg="${WINEPREFIX}/system.reg"
+if [ -f "${_sysreg}" ] && [ "$(stat -c %s "${_sysreg}" 2>/dev/null || echo 0)" -gt 52428800 ]; then
+    msg "检测到 system.reg 因蓝牙枚举异常膨胀，正在清理 ..."
+    wineserver -k 2>/dev/null || true
+    python3 - "${_sysreg}" <<'EOF' || true
+import os, sys
+p = sys.argv[1]
+out = p + ".clean"
+with open(p, "rb") as fin, open(out, "wb") as fout:
+    skip = False
+    for line in fin:
+        if line.startswith(b"["):
+            skip = b"\\WINEBTH\\" in line or line.startswith(b"[System\\ControlSet001\\Enum\\WINEBTH") or line.startswith(b"[System\\CurrentControlSet\\Enum\\WINEBTH")
+        if not skip:
+            fout.write(line)
+os.replace(out, p)
+EOF
+fi
 if [ ! -d "${WINEPREFIX}/drive_c" ]; then
     msg "初始化 wine 容器 ${WINEPREFIX} ..."
     mkdir -p "${WINEPREFIX}"
@@ -180,4 +202,6 @@ fi
 # "A JavaScript error occurred in the main process"。统一把 stdio 指向普通文件即可。
 LOG="${DATA}/welink.log"
 mkdir -p "${DATA}"; : > "${LOG}"
-exec wine "C:/Program Files/WeLink/WeLink.exe" --no-sandbox --disable-gpu "$@" </dev/null >>"${LOG}" 2>&1
+_gpu_arg=""
+[ "${WELINK_DISABLE_GPU}" = "1" ] && _gpu_arg="--disable-gpu"
+exec wine "C:/Program Files/WeLink/WeLink.exe" --no-sandbox ${_gpu_arg} "$@" </dev/null >>"${LOG}" 2>&1
