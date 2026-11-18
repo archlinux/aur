@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A flock of birds in your terminal"
 
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}-${pkgrel}_${_barch[0]}.deb")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}-${pkgrel}_${_barch[1]}.deb")
-sha256sums=('9e506cf361ef9b8a65a8ad15aecffe306535dbb9646efe6758c95e3cf1334865'
+sha256sums=('a9751dc8bb1ef473aeb864915d47b34076e4c8911ba77a9c26e68087239ff76c'
             'ce43414abce90c24554e5a903c3a2cfa8112deb380b7842daa91b481ef33e444')
-sha256sums_x86_64=('ed83085bd148c9d0dd5ad98b32d86fb1c39b6a997b10d5dcc0877a5765bdf950')
-sha256sums_aarch64=('e130f264b59ceb3a4bc57674a5c4f46df5b052e60916acef320543c5ebce7802')
+sha256sums_x86_64=('87206198054133528736a5f99c564375cdbd4df685c676b7bbb3ea298b1e7f5f')
+sha256sums_aarch64=('313ef40dba8db08111966e43b34a2c3ee5a98578a68e7f87205891823827a614')
 
 
 package() {
