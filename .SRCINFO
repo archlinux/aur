@@ -1,7 +1,7 @@
 pkgbase = rocm-gfx103x-bin
 	pkgdesc = ROCm Core SDK - RDNA2
-	pkgver = 10.1.0
-	pkgrel = 2
+	pkgver = 10.2.0
+	pkgrel = 1
 	epoch = 0
 	url = http://www.amd.com
 	arch = x86_64
@@ -186,9 +186,9 @@ pkgbase = rocm-gfx103x-bin
 	conflicts = miopen-hip
 	conflicts = rocm-ml-libraries
 	conflicts = rocm-ml-sdk
-	noextract = therock-dist-linux-gfx103X-all-10.1.0.tar.gz
+	noextract = therock-dist-linux-gfx103X-all-10.2.0.tar.gz
 	options = !strip
-	source = https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx103X-all-10.1.0.tar.gz
-	sha256sums = 9fcf1764468bc75d2497b0b09165fef6f3e0bc01aec1fc76af7c8afd8f954d1e
+	source = https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx103X-all-10.2.0.tar.gz
+	sha256sums = e4464ed2161ff9e506fca5b090e93d0602b488866c94f292858aace34d9ba6ee
 
 pkgname = rocm-gfx103x-bin
