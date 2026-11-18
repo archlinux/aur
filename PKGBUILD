@@ -13,7 +13,7 @@
 # there and no WebKit is compiled here.
 
 pkgname=viewport-wpe
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Wayland compositor whose entire shell is a web page — the Smithay rewrite'
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ license=('GPL-3.0-or-later')
 # how many commits past it, and which one — because naming a stale tag would be
 # a lie about what was built. At a release the two say the same thing and the
 # tag is the one anybody can check.
-_tag=v0.9.0
+_tag=v0.10.0
 
 depends=(
   'wayland'
