@@ -1,6 +1,6 @@
 pkgbase = weq-bin
 	pkgdesc = QQ NT 本地聊天记录解密、导出、查看与年度报告
-	pkgver = 2.7.3
+	pkgver = 2.7.4
 	pkgrel = 1
 	url = https://github.com/weq-devs/WeQ
 	install = weq-bin.install
@@ -27,15 +27,15 @@ pkgbase = weq-bin
 	options = !debug
 	source_x86_64 = weq.sh
 	source_x86_64 = weq.desktop
-	source_x86_64 = https://github.com/weq-devs/WeQ/releases/download/v2.7.3/weQ-2.7.3-linux-x64.tar.gz
+	source_x86_64 = https://github.com/weq-devs/WeQ/releases/download/v2.7.4/weQ-2.7.4-linux-x64.tar.gz
 	sha256sums_x86_64 = b66be34d74960406bd3aae57c9972e89a10ccb88c9c717db5269e9dff0132230
 	sha256sums_x86_64 = e9df74452c972f4ba963fb5b3108cfa37646d62405fe73f8ec25782cd79a87f5
-	sha256sums_x86_64 = b124c433f4a65615c7ab80f42423d99bbb7fa60a17eba850286e6ba11eb96dd5
+	sha256sums_x86_64 = 81f02c88198dbae58c889d21eba45af981d3ecc3412ba718044592e55ecef04c
 	source_aarch64 = weq.sh
 	source_aarch64 = weq.desktop
-	source_aarch64 = https://github.com/weq-devs/WeQ/releases/download/v2.7.3/weQ-2.7.3-linux-arm64.tar.gz
+	source_aarch64 = https://github.com/weq-devs/WeQ/releases/download/v2.7.4/weQ-2.7.4-linux-arm64.tar.gz
 	sha256sums_aarch64 = b66be34d74960406bd3aae57c9972e89a10ccb88c9c717db5269e9dff0132230
 	sha256sums_aarch64 = e9df74452c972f4ba963fb5b3108cfa37646d62405fe73f8ec25782cd79a87f5
-	sha256sums_aarch64 = 4b3619619494322ad9042096ca616aa00400bc0693bb78408b7f133b1db9405a
+	sha256sums_aarch64 = 367452d1f6dff34c643175b4eb0c527cccda09894fcc61b8d18d148a39d69c5c
 
 pkgname = weq-bin
