@@ -3,7 +3,7 @@
 
 pkgname=python-pyshp
 _pkgname=pyshp
-pkgver=3.0.3
+pkgver=3.1.9
 pkgrel=1
 pkgdesc="Python read/write support for ESRI Shapefile format"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(
 )
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('82c3af78b156e080fa9c4c6b2a26c2ad434d6e3c982a42b3327c3d3ae132408bac9965d7859b7a812361e26ebdd6a9c54d4a6db281f1678d48f3bb09211cecde')
+sha512sums=('38a6f4009167c5c3d5265ebf840518b13445a7af462108ef04b9992d900ec0519fae6a1994f5c76ecfe0aa7c042f649d903a1d10e11d39340e6e257a227ca8fc')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
