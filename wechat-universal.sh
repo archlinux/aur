@@ -236,13 +236,18 @@ try_start() {
         --ro-bind "${XDG_RUNTIME_DIR}/pulse"{,}
     )
 
+    # Wayland fixups
     if [[ -S "${WAYLAND_SOCKET}" ]]; then
         BWRAP_ARGS+=(
             --ro-bind-try "${WAYLAND_SOCKET}"{,}
-            # Fcitx Qt draws its Wayland candidate window in the client process.
-            --ro-bind-try "${XDG_CONFIG_HOME:-${HOME}/.config}/fcitx5/conf/classicui.conf"{,}
-            --ro-bind-try "${XDG_DATA_HOME:-${HOME}/.local/share}/fcitx5/themes"{,}
         )
+        # Fcitx Qt draws its Wayland candidate window in the client process.
+        if [[ "${WECHAT_IME_WORKAROUND}" == 'fcitx' ]]; then
+            BWRAP_ARGS+=(
+                --ro-bind-try "${XDG_CONFIG_HOME:-${HOME}/.config}/fcitx5/conf/classicui.conf"{,}
+                --ro-bind-try "${XDG_DATA_HOME:-${HOME}/.local/share}/fcitx5/themes"{,}
+            )
+        fi
     fi
 
     case "${WECHAT_MULTIPLE_INSTANCE}" in
@@ -472,6 +477,11 @@ applet_dde() {
     return 1
 }
 
+applet_wechatappex() {
+    echo "Dummy WeChatAppEx: you should not see this"
+    return 1
+}
+
 applet="${0##*/}"
 case "${applet}" in
     'stop.sh'|'stop')
@@ -486,8 +496,11 @@ case "${applet}" in
     'pdfjsfix.sh'|'pdfjsfix')
         applet_pdfjsfix "$@"
         ;;
+    'wechatappex.sh'|'wechatappex')
+        applet_wechatappex "$@"
+        ;;
     *)
-        echo "Unknown applet '${applet}', allowed: start.sh (alias start, wechat-universal, wechat-universal.sh), stop.sh (alias stop), pdfjsfix.sh (alias pdfjsfix)"
+        echo "Unknown applet '${applet}', allowed: start.sh (alias start, wechat-universal, wechat-universal.sh), stop.sh (alias stop), pdfjsfix.sh (alias pdfjsfix), wechatappex.sh (alias wechatappex)"
         false
         ;;
 esac

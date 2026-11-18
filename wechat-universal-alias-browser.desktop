@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=WeChat Built-in Browser
+Exec=/usr/lib/wechat-universal/wechatappex.sh %u
+Icon=wechat-universal
+NoDisplay=true
+X-KDE-AliasFor=wechat-universal

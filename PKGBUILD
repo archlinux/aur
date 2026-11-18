@@ -5,7 +5,7 @@
 _pkgname=wechat-universal
 pkgname=${_pkgname}-bwrap
 pkgver=4.1.13.26
-pkgrel=2
+pkgrel=3
 pkgdesc="WeChat (Universal) with bwrap sandbox"
 arch=('x86_64' 'aarch64' 'loong64')
 url='https://linux.weixin.qq.com/'
@@ -52,6 +52,7 @@ _lib_uos='libuosdevicea'
 source=(
     "${_pkgname}.sh"
     "${_pkgname}.desktop"
+    "${_pkgname}-alias-browser.desktop"
     "${_pkgname}-alias-icon.desktop"
     "${_lib_uos}".{c,Makefile}
     'wechat-license'
@@ -68,8 +69,9 @@ source_loong64=("${_deb_prefix}loong64.deb::${_deb_url_common}LoongArch.deb")
 noextract=("${_deb_prefix}"{x86_64,aarch64,loong64}.deb )
 
 sha256sums=(
-    '4c0b62a2d5bcaab2ff23b759801a4c22c4396fdbc95a29e6496987a4eae4860e'
+    'fffa82838ce86288651862b3882a810eea079c902cb85f4a0529b3539beb35c9'
     '0563472cf2c74710d1fe999d397155f560d3ed817e04fd9c35077ccb648e1880'
+    'f4b744db5543e31e2be823129693e7b918be191cad5616c1054dd9c1e95cd734'
     '93f5363c956b7d13e0408e14fe97abe936916da8d4adf414e74ad334e308f37c'
     'fc3ce9eb8dee3ee149233ebdb844d3733b2b2a8664422d068cf39b7fb08138f8'
     'f05f6f907898740dab9833c1762e56dbc521db3c612dd86d2e2cd4b81eb257bf'
@@ -159,6 +161,15 @@ package() {
         # Plasma resolves WeChat's hardcoded desktop-entry=wechat to get the app icon.
         # This however conflicts with non-wrap version, so don't install the icon by default
         install -Dm644 "${_pkgname}-alias-icon.desktop" "${pkgdir}/usr/share/applications/${_upstream_name}.desktop"
+        # Addtional "fixup" for tray / window icon for built-in browser and official accounts
+        install -Dm644 "${_pkgname}-alias-browser.desktop" "${pkgdir}/usr/share/applications/com.tencent.wechatappex.desktop"
+        ln -s common.sh "${_wechat_root}"/wechatappex.sh
+    else # Strip out the wechatappex applet that we never need
+        sed '
+            /^applet_wechatappex() {$/,/^$/d
+            /^'"    'wechatappex.sh'|'wechatappex')"'$/,/;;/d
+            s/, wechatappex.sh (alias wechatappex)//
+        ' -i "${_wechat_root}"/common.sh
     fi
     echo 'Installing license...'
     install -Dm644 {,"${pkgdir}/usr/share/licenses/${_pkgname}/"}wechat-license
