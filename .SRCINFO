@@ -1,6 +1,6 @@
 pkgbase = eusoft-ting-en
 	pkgdesc = Daily English Listening (每日英语听力) for Linux (Community Repackage)
-	pkgver = 26.9.0
+	pkgver = 26.10.1
 	pkgrel = 1
 	url = https://www.eudic.net/v4/en/app/ting
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = eusoft-ting-en
 	provides = eusoft-ting
 	provides = eusoft-ting-en
 	conflicts = ting-en
-	noextract = eusoft-ting-en-26.9.0.deb
+	noextract = eusoft-ting-en-26.10.1.deb
 	options = !strip
 	options = !debug
 	source = ting-en.sh
@@ -30,7 +30,7 @@ pkgbase = eusoft-ting-en
 	sha256sums = cb43dcf4fb84da5a129a1966f75c28ae90f0fd4420a7b0440f208aafe80df13f
 	sha256sums = 2c9e526e8475c970ee9be671477946a5d98eeae89ed5c356f844c2058fd054da
 	sha256sums = 377ddd4aecf677aa2b0fdd264f6285118f3e01f6463eb957db972d0b8404cf69
-	source_x86_64 = eusoft-ting-en-26.9.0.deb::https://static.frdic.com/pkg/ting_en/ting_en.deb
-	sha256sums_x86_64 = bf24f5f66d2976a720b4db7a5471a3c330449f694ab1f8e6eb3060da9edac76c
+	source_x86_64 = eusoft-ting-en-26.10.1.deb::https://static-asia.frdic.com/pkg/ting_en/ting_en.deb
+	sha256sums_x86_64 = abd76cd54f53918a5639a3bfb965fb2782f6a568339b6e340e620122841d6420
 
 pkgname = eusoft-ting-en
