@@ -1,6 +1,6 @@
 pkgbase = eusoft-ting-fr
 	pkgdesc = Daily French Listening (每日法语听力) for Linux (Community Repackage)
-	pkgver = 26.9.0
+	pkgver = 26.10.1
 	pkgrel = 1
 	url = https://www.eudic.net/v4/fr/app/ting
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = eusoft-ting-fr
 	provides = ting-fr
 	provides = eusoft-ting-fr
 	conflicts = ting-fr
-	noextract = eusoft-ting-fr-26.9.0.deb
+	noextract = eusoft-ting-fr-26.10.1.deb
 	options = !strip
 	options = !debug
 	source = ting-fr.sh
@@ -29,7 +29,7 @@ pkgbase = eusoft-ting-fr
 	sha256sums = f3e4f0ff7014a872e87eacb593eabd41d22837ac93bae8e9b1baa007512fe01d
 	sha256sums = 81abe961b58303f1e374e4c491fc2450d13a39383e9f9d328a82a83fa690f2db
 	sha256sums = cf9ba50ac9a100c03be7e11953e99443a5e8d26ed2f4453ecc454113778b668c
-	source_x86_64 = eusoft-ting-fr-26.9.0.deb::https://static.frdic.com/pkg/ting_fr/ting_fr.deb
-	sha256sums_x86_64 = 0f66747c249260bbbea73af445ec61cfa21bfaecdd646a072d1814271269a16c
+	source_x86_64 = eusoft-ting-fr-26.10.1.deb::https://static-asia.frdic.com/pkg/ting_fr/ting_fr.deb
+	sha256sums_x86_64 = a51f640250a4788e8ff471f5e48e8284ea7430ecb61bfb8f5794cedd3a9460fc
 
 pkgname = eusoft-ting-fr

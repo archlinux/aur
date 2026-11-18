@@ -1,7 +1,7 @@
 # Maintainer: Chapman <touch65536@gmail.com>
 
 pkgname=eusoft-ting-fr
-pkgver=26.9.0
+pkgver=26.10.1
 pkgrel=1
 pkgdesc="Daily French Listening (每日法语听力) for Linux (Community Repackage)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=(
     "LICENSE"
 )
 source_x86_64=(
-    "${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/ting_fr/ting_fr.deb"
+    "${pkgname}-${pkgver}.deb::https://static-asia.frdic.com/pkg/ting_fr/ting_fr.deb"
 )
 noextract=("${pkgname}-${pkgver}.deb")
 
@@ -43,7 +43,7 @@ sha256sums=(
     'cf9ba50ac9a100c03be7e11953e99443a5e8d26ed2f4453ecc454113778b668c'
 )
 sha256sums_x86_64=(
-    '0f66747c249260bbbea73af445ec61cfa21bfaecdd646a072d1814271269a16c'
+    'a51f640250a4788e8ff471f5e48e8284ea7430ecb61bfb8f5794cedd3a9460fc'
 )
 
 prepare() {
