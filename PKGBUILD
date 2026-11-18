@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=alto
-pkgver=0.10.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="GUI file synchronization client that can sync with any cloud provider"
 arch=('x86_64')
@@ -41,7 +41,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bb508d7289e9e9da1ebdeb1ea69ffb8863e11ef630041b8e1cf3e61c07e33bbd')
+sha256sums=('a12ea6e1244b4d89b729e5c5c072b4798808f21dba637aa7fa26d9259cd1b59f')
 
 _get_arch() {
   local given_arch="$1"

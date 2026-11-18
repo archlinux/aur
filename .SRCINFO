@@ -1,6 +1,6 @@
 pkgbase = alto
 	pkgdesc = GUI file synchronization client that can sync with any cloud provider
-	pkgver = 0.10.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/hwittenborn/alto
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = alto
 	depends = cairo
 	depends = libcups
 	conflicts = celeste
-	source = alto-0.10.0.tar.gz::https://github.com/hwittenborn/alto/archive/refs/tags/v0.10.0.tar.gz
-	sha256sums = bb508d7289e9e9da1ebdeb1ea69ffb8863e11ef630041b8e1cf3e61c07e33bbd
+	source = alto-0.13.0.tar.gz::https://github.com/hwittenborn/alto/archive/refs/tags/v0.13.0.tar.gz
+	sha256sums = a12ea6e1244b4d89b729e5c5c072b4798808f21dba637aa7fa26d9259cd1b59f
 
 pkgname = alto
