@@ -1,6 +1,6 @@
 pkgbase = dinit
 	pkgdesc = Service monitoring / "init" system
-	pkgver = 0.22.1
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://github.com/davmac314/dinit
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = dinit
 	license = Apache
 	makedepends = linux-headers
 	depends = libcap
-	source = dinit-0.22.1.tar.xz::https://github.com/davmac314/dinit/releases/download/v0.22.1/dinit-0.22.1.tar.xz
-	sha256sums = 959b35c171452ecfbc09379b516517dadd675350eebc57ca54aebedda05d9adf
+	source = dinit-0.23.0.tar.xz::https://github.com/davmac314/dinit/releases/download/v0.23.0/dinit-0.23.0.tar.xz
+	sha256sums = b99067eb85f6e69c7e1411b6e0956ea1ae0831598bae5a4361ebef87317c326e
 
 pkgname = dinit
