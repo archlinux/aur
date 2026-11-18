@@ -24,7 +24,7 @@ depends=(
 optdepends=(
   "cava: audio visualizer in the media player module"
 )
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 options=(!lto)
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
