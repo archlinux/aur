@@ -1,13 +1,13 @@
 pkgbase = gocryptfs-standalone
 	pkgdesc = Synchronizes a gocryptfs (plaintext names) encrypted directory with a decrypted copy without needing FUSE or admin rights.
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://tsickert.com/gocryptfs-standalone
 	arch = any
 	license = CC-BY-4.0
 	depends = nodejs>=26
 	optdepends = libsecret: to store passwords of configured pairs in the keychain
-	source = https://registry.npmjs.org/gocryptfs-standalone/-/gocryptfs-standalone-0.0.7.tgz
-	sha256sums = f064574f5d27e8465fc9d2392cad97cdf47d2d1d76dabeb7adc07dc6f076cda3
+	source = https://registry.npmjs.org/gocryptfs-standalone/-/gocryptfs-standalone-0.0.8.tgz
+	sha256sums = 157da66f42f61c16d4fedb18cd1c5c0bb558349fbc918dfd83bbaabeedc6846c
 
 pkgname = gocryptfs-standalone
