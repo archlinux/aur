@@ -1,6 +1,6 @@
 pkgbase = zaptide-bin
 	pkgdesc = Native WhatsApp client built with GTK4 and libadwaita (upstream binary)
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/luminusOS/zaptide
 	arch = x86_64
@@ -26,16 +26,16 @@ pkgbase = zaptide-bin
 	optdepends = gst-libav: additional video codecs
 	optdepends = org.freedesktop.secrets: store the archive encryption key
 	optdepends = xdg-desktop-portal: desktop integration and attachment selection
-	provides = zaptide=0.8.0
+	provides = zaptide=0.9.0
 	conflicts = zaptide
 	conflicts = zaptide-git
 	options = !debug
 	options = !strip
-	source = dev.luminusos.ZapTide-0.8.0.metainfo.xml::https://raw.githubusercontent.com/luminusOS/zaptide/v0.8.0/packaging/flatpak/dev.luminusos.ZapTide.metainfo.xml
-	sha256sums = a30f301014bd59e3bcc16437a9bd3c4d118cd6d90964b3672e8ccbd10ad8dda7
-	source_x86_64 = https://github.com/luminusOS/zaptide/releases/download/v0.8.0/zaptide-v0.8.0-x86_64-linux-gnu.tar.gz
-	sha256sums_x86_64 = 6468865daf4b687ca80016fc641885358c7750bd59339be8df9e832861ad7048
-	source_aarch64 = https://github.com/luminusOS/zaptide/releases/download/v0.8.0/zaptide-v0.8.0-aarch64-linux-gnu.tar.gz
-	sha256sums_aarch64 = a4a565203e7f91d401f8def4c38d03d09ba82346c362d53c81b36a4fe7c8edfd
+	source = dev.luminusos.ZapTide-0.9.0.metainfo.xml::https://raw.githubusercontent.com/luminusOS/zaptide/v0.9.0/packaging/flatpak/dev.luminusos.ZapTide.metainfo.xml
+	sha256sums = 8e7db7728572483362cda469c928555c35798c779a7e4ab880409a4f4edd2cb5
+	source_x86_64 = https://github.com/luminusOS/zaptide/releases/download/v0.9.0/zaptide-v0.9.0-x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = dad383920de05aafe13d2a930dbb167cd2134bd3ae2dbfbd9747349d01db324b
+	source_aarch64 = https://github.com/luminusOS/zaptide/releases/download/v0.9.0/zaptide-v0.9.0-aarch64-linux-gnu.tar.gz
+	sha256sums_aarch64 = b3d904156fa43608b8942d88679b8d782bcce11d807683d16e7a6358187bf61d
 
 pkgname = zaptide-bin

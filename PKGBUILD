@@ -1,5 +1,5 @@
 pkgname=zaptide-bin
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Native WhatsApp client built with GTK4 and libadwaita (upstream binary)"
 arch=('x86_64' 'aarch64')
@@ -33,9 +33,9 @@ provides=("zaptide=${pkgver}")
 conflicts=('zaptide' 'zaptide-git')
 options=('!debug' '!strip')
 source=("dev.luminusos.ZapTide-${pkgver}.metainfo.xml::https://raw.githubusercontent.com/luminusOS/zaptide/v${pkgver}/packaging/flatpak/dev.luminusos.ZapTide.metainfo.xml")
-sha256sums=('a30f301014bd59e3bcc16437a9bd3c4d118cd6d90964b3672e8ccbd10ad8dda7')
-sha256sums_x86_64=('6468865daf4b687ca80016fc641885358c7750bd59339be8df9e832861ad7048')
-sha256sums_aarch64=('a4a565203e7f91d401f8def4c38d03d09ba82346c362d53c81b36a4fe7c8edfd')
+sha256sums=('8e7db7728572483362cda469c928555c35798c779a7e4ab880409a4f4edd2cb5')
+sha256sums_x86_64=('dad383920de05aafe13d2a930dbb167cd2134bd3ae2dbfbd9747349d01db324b')
+sha256sums_aarch64=('b3d904156fa43608b8942d88679b8d782bcce11d807683d16e7a6358187bf61d')
 source_x86_64=("${url}/releases/download/v${pkgver}/zaptide-v${pkgver}-x86_64-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/zaptide-v${pkgver}-aarch64-linux-gnu.tar.gz")
 
