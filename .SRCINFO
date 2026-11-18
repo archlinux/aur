@@ -1,11 +1,12 @@
 pkgbase = mistral-vibe
 	pkgdesc = Minimal CLI coding agent by Mistral
-	pkgver = 3.1.2
+	pkgver = 3.1.3
 	pkgrel = 1
 	url = https://github.com/mistralai/mistral-vibe
 	arch = x86_64
 	license = Apache-2.0
 	checkdepends = uv
+	makedepends = git
 	makedepends = uv
 	makedepends = rust>=1.97
 	makedepends = python-installer
@@ -23,6 +24,7 @@ pkgbase = mistral-vibe
 	depends = python-giturlparse
 	depends = python-google-auth
 	depends = python-httpx2
+	depends = python-jeepney
 	depends = python-jsonpatch
 	depends = python-jsonpointer
 	depends = python-joserfc
@@ -38,6 +40,7 @@ pkgbase = mistral-vibe
 	depends = python-pydantic
 	depends = python-pydantic-settings
 	depends = python-rfc8785
+	depends = python-secretstorage
 	depends = python-sentry_sdk
 	depends = python-setproctitle
 	depends = python-socksio
@@ -50,9 +53,9 @@ pkgbase = mistral-vibe
 	depends = python-watchfiles
 	depends = python-websockets
 	depends = python-yaml
-	source = git+https://github.com/mistralai/mistral-vibe.git#tag=v3.1.2
+	source = git+https://github.com/mistralai/mistral-vibe.git#tag=v3.1.3
 	source = stretch_e2e_timeouts_when_builder_is_loaded.patch
-	sha256sums = SKIP
-	sha256sums = 38eaabbd231af198b4184d9d5d4cdb898ddb5365d6d5080a125054e294e6633c
+	sha256sums = e1decf9d0513b9a3b276ea8e5c2d7d7284482094167b26bb93eb844758f9a16d
+	sha256sums = f6431800cea45f1a74d9786769b93190c4c9c9849f295e3ac83af5cfd2b15324
 
 pkgname = mistral-vibe

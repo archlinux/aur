@@ -2,7 +2,7 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=mistral-vibe
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
@@ -23,6 +23,7 @@ depends=(
     "python-giturlparse"
     "python-google-auth"
     "python-httpx2"
+    "python-jeepney"
     "python-jsonpatch"
     "python-jsonpointer"
     "python-joserfc"
@@ -38,6 +39,7 @@ depends=(
     "python-pydantic"
     "python-pydantic-settings"
     "python-rfc8785"
+    "python-secretstorage"
     "python-sentry_sdk"
     "python-setproctitle"
     "python-socksio"
@@ -57,6 +59,7 @@ depends=(
 # resolves the PEP 517 build requirements (maturin, ziglang) itself; rustc and
 # cargo come from the system toolchain.
 makedepends=(
+    "git"
     "uv"
     "rust>=1.97"
     "python-installer"
@@ -66,8 +69,8 @@ checkdepends=(
 )
 source=("git+${url}.git#tag=v${pkgver}"
         "stretch_e2e_timeouts_when_builder_is_loaded.patch")
-sha256sums=('SKIP'
-            '38eaabbd231af198b4184d9d5d4cdb898ddb5365d6d5080a125054e294e6633c')
+sha256sums=('e1decf9d0513b9a3b276ea8e5c2d7d7284482094167b26bb93eb844758f9a16d'
+            'f6431800cea45f1a74d9786769b93190c4c9c9849f295e3ac83af5cfd2b15324')
 
 prepare() {
     cd "$pkgname"
@@ -141,6 +144,9 @@ check() {
         --deselect tests/test_install_script.py::test_install_fails_when_vibe_not_in_uv_tool_dir
         --deselect tests/test_install_script.py::test_install_pins_the_gil_build_of_python_314
         --deselect tests/test_install_script.py::test_install_seeds_a_managed_gil_python_when_the_pinned_request_fails
+        --deselect tests/test_install_script.py::test_install_makes_uv_trust_the_system_certificate_store
+        --deselect tests/test_install_script.py::test_install_keeps_an_explicit_uv_system_certs_choice
+        --deselect tests/test_install_script.py::test_install_keeps_a_legacy_uv_native_tls_choice
     )
 
     # Run test suite in parallel, skip deselected and any e2e tests.
