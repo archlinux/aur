@@ -5,7 +5,7 @@
 
 _pkgbase=nameparser
 pkgname=python-${_pkgbase}
-pkgver=2.8.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A simple Python module for parsing human names into their individual components"
 arch=(any)
@@ -17,7 +17,7 @@ checkdepends=(python-pytest python-pytest-xdist python-pytest-timeout python-hyp
 
 _pkgdir="${pkgname}-${pkgver}"
 source=("${_pkgdir}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('b47d9a336eee93e2cf538c0f31fbdcbc6b39369585825f879226305cb328eea1430ecd23994ff9a5478769b00930f882d66c3784a216edeb062cd8381280f489')
+sha512sums=('4079b3ff99b0fb353dba5026d41b88543966215d36b203db9a7c825ca861a082dfd5a3de135a8abd0384b152c63846779e30f12471e842e59b974fa6eb53d199')
 
 build() {
     cd "${srcdir}/${_pkgdir}"
@@ -27,9 +27,7 @@ build() {
 
 check() {
     cd "${srcdir}/${_pkgdir}"
-
-    # Exclude failing tests (as explained in "https://github.com/derek73/python-nameparser/issues/949#issuecomment-6514414289")
-    pytest --deselect tests/v2/test_word_report.py::test_a_child_refuses_a_package_from_outside_its_tree
+    pytest
 }
 
 package() {
@@ -40,3 +38,4 @@ package() {
     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}"
 }
+
