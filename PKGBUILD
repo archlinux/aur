@@ -4,8 +4,8 @@
 # workflow (scripts/linux-packages.mjs pkgbuild); change the template there, not this copy.
 
 pkgname=atomic-chat-bin
-pkgver=2.4.5
-_version=2.4.5
+pkgver=2.4.6
+_version=2.4.6
 pkgrel=1
 pkgdesc='Local AI app and inference engine for agents: run open-weight LLMs locally (https://atomic.chat)'
 arch=('x86_64' 'aarch64')
@@ -26,11 +26,11 @@ options=('!strip' '!debug')
 install=atomic-chat-bin.install
 
 # The release's deb, the same files the deb and rpm install.
-_base='https://github.com/AtomicBot-ai/Atomic-Chat/releases/download/v2.4.5'
+_base='https://github.com/AtomicBot-ai/Atomic-Chat/releases/download/v2.4.6'
 source_x86_64=("atomic-chat-${_version}-x86_64.deb::${_base}/atomic-chat_${_version}_amd64.deb")
 source_aarch64=("atomic-chat-${_version}-aarch64.deb::${_base}/atomic-chat_${_version}_arm64.deb")
-sha256sums_x86_64=('df171937ba0344292e31dabb29b91d1a8ee1a69dcfded72856a5b805d4117ea5')
-sha256sums_aarch64=('a971dc239ed6246a0a52a4decdfd721603e945c77c83d0e987bdbde5929d951d')
+sha256sums_x86_64=('8e48a95f67c088317790662f7eaff9b7e41ab6643b33f6c70c28a3de6a521add')
+sha256sums_aarch64=('d3ad11bb7d19cae1e824c2c2365b50b51350d1e06edc64cf84a46fcdb867672c')
 
 package() {
   bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
