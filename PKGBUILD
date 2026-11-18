@@ -1,14 +1,21 @@
 _pkgname=rivu
 pkgname=rivu-git
-pkgver=0.2.17.r7.9e8efa4c
+pkgver=0.2.24.r1.14ef4ab3
 pkgrel=1
 pkgdesc='a lightweight, local-first linux music player'
 arch=('x86_64' 'aarch64')
 url="https://github.com/rtgiskard/${_pkgname}"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'fontconfig' 'libpipewire>=1.2' 'libxkbcommon' 'wayland' 'libglvnd' 'vulkan-icd-loader' 'ttf-nerd-fonts-symbols-mono' 'hicolor-icon-theme')
-makedepends=('git' 'rust>=1.99' 'clang' 'cmake' 'pkgconf' 'ffmpeg>=9')
-optdepends=('ffmpeg>=9: optional FFmpeg decoding' 'onnxruntime>=1.23: native ONNX speech inference' 'xdg-desktop-portal: desktop file chooser' 'python: neural audio-processing model setup' 'uv: isolated neural audio-processing Python environments')
+makedepends=('git' 'rust>=1.100.0' 'clang' 'cmake' 'pkgconf' 'ffmpeg>=9')
+optdepends=(
+	'ffmpeg>=9: optional FFmpeg decoding'
+	'soundfont-fluid: General MIDI instruments for MIDI playback'
+	'onnxruntime>=1.23: native ONNX speech inference'
+	'xdg-desktop-portal: desktop file chooser'
+	'python: neural audio-processing model setup'
+	'uv: isolated neural audio-processing Python environments'
+)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!lto')

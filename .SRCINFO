@@ -1,13 +1,13 @@
 pkgbase = rivu-git
 	pkgdesc = a lightweight, local-first linux music player
-	pkgver = 0.2.17.r7.9e8efa4c
+	pkgver = 0.2.24.r1.14ef4ab3
 	pkgrel = 1
 	url = https://github.com/rtgiskard/rivu
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = rust>=1.99
+	makedepends = rust>=1.100.0
 	makedepends = clang
 	makedepends = cmake
 	makedepends = pkgconf
@@ -23,6 +23,7 @@ pkgbase = rivu-git
 	depends = ttf-nerd-fonts-symbols-mono
 	depends = hicolor-icon-theme
 	optdepends = ffmpeg>=9: optional FFmpeg decoding
+	optdepends = soundfont-fluid: General MIDI instruments for MIDI playback
 	optdepends = onnxruntime>=1.23: native ONNX speech inference
 	optdepends = xdg-desktop-portal: desktop file chooser
 	optdepends = python: neural audio-processing model setup
