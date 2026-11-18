@@ -1,0 +1,6 @@
+pkg/
+*.pkg.tar.zst
+src/
+ssl12-ctl/
+*.tar.gz
+*.zip

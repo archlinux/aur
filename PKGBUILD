@@ -1,0 +1,49 @@
+# Maintainer: Sam Whited <sam@samwhited.com>
+
+_pkgname=ssl12-ctl
+pkgname="$_pkgname-git"
+pkgver=r5
+pkgrel=1
+pkgdesc='Control the Solid State Logic SSL 12 audio interface.'
+arch=('x86_64')
+url='https://github.com/john-baxter-dev/ssl12-ctl'
+license=('Apache-2.0' 'MIT')
+groups=(pro-audio)
+source=("git+https://github.com/john-baxter-dev/$_pkgname.git")
+sha256sums=('SKIP')
+makedepends=(
+	cargo
+	git
+)
+
+pkgver() {
+	cd $_pkgname
+	echo "r$(git log --pretty=oneline --first-parent | wc -l)"
+}
+
+prepare() {
+	cd $_pkgname
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target host-tuple
+}
+
+build() {
+	cd $_pkgname
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
+}
+
+check() {
+	cd $_pkgname
+	cargo test
+}
+
+package() {
+	install -Dm0755 -t "$pkgdir/usr/bin" "$srcdir/$_pkgname/target/release/ssl12tui"
+	install -Dm0755 -t "$pkgdir/usr/bin" "$srcdir/$_pkgname/target/release/ssl12ctl"
+	install -Dm0755 -t "$pkgdir/etc/udev/rules.d" "$srcdir/$_pkgname/packaging/70-ssl12.rules"
+	install -Dm0644 -T ${srcdir}/$_pkgname/ssl12ctl-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/ssl12ctl.png"
+}
+
+# vim:set ts=2 sw=2
