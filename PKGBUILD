@@ -93,7 +93,7 @@ package_videoduplicatefinder-webui-git() {
 
     depends=(
         "${_depends[@]}"
-        "aspnet-runtime-${_dotnetver}"
+        "aspnet-runtime=${_dotnetver}"
     )
 
     find . -type d -exec install -d -m 755 {} "${pkgdir}/opt/videoduplicatefinder-webui/{}" \;

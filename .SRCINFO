@@ -26,6 +26,6 @@ pkgname = videoduplicatefinder-webui-git
 	pkgdesc = Video Duplicate Finder is a cross-platform software to find duplicated video (and image) files on hard disk based on similiarity (WebUI)
 	depends = ffmpeg
 	depends = dotnet-runtime=11.0
-	depends = aspnet-runtime-11.0
+	depends = aspnet-runtime=11.0
 	provides = videoduplicatefinder-webui
 	conflicts = videoduplicatefinder-webui
