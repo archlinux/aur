@@ -1,6 +1,6 @@
 pkgbase = wayper
 	pkgdesc = Wayland-first wallpaper manager with Wallhaven integration
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/yuukidach/wayper
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = wayper
 	optdepends = sway: focused monitor detection
 	options = !strip
 	options = !debug
-	source = wayper-2.0.0.tar.gz::https://github.com/yuukidach/wayper/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 11bd3cbfce7d3ced32ade2b0bbc615f66f0a9bd2b3188250c7483501620e482f
+	source = wayper-2.0.1.tar.gz::https://github.com/yuukidach/wayper/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = a3896fde4132319882f818ccba4c13d4c2cbd3288a31aff9e469942fd63420e2
 
 pkgname = wayper
