@@ -1,6 +1,6 @@
 # Maintainer: amanomasato
 pkgname=emposium
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='Anime, manga and community in one application'
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('custom')
 depends=('dbus' 'webkit2gtk-4.1' 'gtk3' 'glib-networking' 'libayatana-appindicator' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-libav')
 optdepends=('gnome-keyring: Secret Service for secure session storage')
 options=('!strip')
-source=("emposium-${pkgver}.tar.gz::https://api.mpsm.app/v1/releases/0.7.1/downloads/linux-tar")
-sha256sums=('edecee6c6bc9eb21413e65dc72158771de6741d3343778027a9137d67e4f66e6')
+source=("emposium-${pkgver}.tar.gz::https://api.mpsm.app/v1/releases/0.7.2/downloads/linux-tar")
+sha256sums=('384f6f16c5c019f58feb29d47a3ccc87a8c2834264c8d69ef529131b67163b24')
 
 package() {
   install -Dm755 "$srcdir/emposium/bin/emposium" "$pkgdir/usr/lib/emposium/emposium"
