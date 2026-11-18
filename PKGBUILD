@@ -1,6 +1,6 @@
 # Maintainer: longyinstudio<1606776851@qq.com>
 pkgname=devcrate
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A fast, cross-platform developer toolkit built on Tauri."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   "devcrate.desktop"
 )
 sha256sums=(
-  '182c80339345f40c68db048beacb2ae05fca805d5ffc49011a8443ced937582b'
+  'bda8a5ef6c549c68b80eda5d01291071bb9c6a99e7f74fa405fbebde0d8d0b15'
   'c195dadca4560de368eb437776443e8935011a02772ec19828c3cbef9ecf51f6'
   '2d182e37d3dd440d5e05a10e7c061cecd8adad28aa2e6def241053d6422c2e17'
 )
