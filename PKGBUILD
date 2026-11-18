@@ -1,7 +1,7 @@
 # Maintainer: Alex S. <shantanna_at_hotmail_dot_com>
 
 pkgname=freellmapi-desktop-bin
-pkgver=0.16.32
+pkgver=0.16.34
 pkgrel=1
 pkgdesc="FreeLLMAPI menu-bar app — local OpenAI-compatible LLM router"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=(!strip)
 _appimage="FreeLLMAPI-${pkgver}.AppImage"
 
 source=("FreeLLMAPI-${pkgver}.AppImage::https://github.com/tashfeenahmed/freellmapi/releases/download/v${pkgver}/FreeLLMAPI-${pkgver}.AppImage")
-sha256sums=('6fdfb02a4f2783b4215f2d95201c0310826d49a4f51c66d7aad3bddcb9a33a2b')
+sha256sums=('f43f30024f18b370a4f93607a2b857cbc6b2888ac361d3e906ccbe94e1502930')
 prepare() {
   cd "${srcdir}"
   chmod +x "${_appimage}"
