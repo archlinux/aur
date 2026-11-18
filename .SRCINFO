@@ -1,6 +1,6 @@
 pkgbase = hyprlume
 	pkgdesc = Glass command shell and local English voice companion for Hyprland, powered by HyprPilot
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/sumerchoudhary78/hyprlume
 	arch = x86_64
@@ -11,27 +11,51 @@ pkgbase = hyprlume
 	makedepends = git
 	makedepends = qt6-shadertools
 	makedepends = pkgconf
+	makedepends = glib2-devel
 	depends = glibc
+	depends = coreutils
+	depends = gtk3
 	depends = gcc-libs
 	depends = dbus
-	depends = systemd
+	depends = polkit
+	depends = glib2
+	depends = systemd>=257
 	depends = quickshell
 	depends = qt6-declarative
 	depends = qt6-wayland
 	depends = qt6-quick3d>=6.9
-	depends = hyprland
+	depends = hyprland>=0.57
+	depends = uwsm>=0.27
+	depends = wlr-randr>=0.5
+	depends = xkeyboard-config
 	depends = pipewire-audio
 	depends = wireplumber
 	depends = python
+	optdepends = swaylock>=1.6: secure Wayland locking with PAM
+	optdepends = swayidle: opt-in Wayland idle policy and logind sleep hooks
+	optdepends = xdg-desktop-portal-hyprland: screen sharing, screenshots and app shortcuts
+	optdepends = xdg-desktop-portal-gtk: file dialogs and common desktop portals
+	optdepends = librsvg: themed SVG lock background
+	optdepends = wl-clipboard: opt-in text clipboard history
+	optdepends = grim: Wayland screenshots
+	optdepends = slurp: capture region and display selection
+	optdepends = orca: optional desktop screen reader
+	optdepends = qt6-imageformats: WebP wallpaper decoding
+	optdepends = udisks2: removable drive mounting, unlocking and safe removal
+	optdepends = gnome-keyring: Secret Service provider with PAM login integration
+	optdepends = playerctl: hardware media keys for MPRIS players
+	optdepends = wf-recorder: silent screen recording
 	optdepends = espeak-ng: phonemization for local Piper speech output
 	optdepends = networkmanager: native Wi-Fi connectivity service
 	optdepends = bluez: native Bluetooth connectivity service
+	optdepends = upower: system battery and UPS status
+	optdepends = power-profiles-daemon: native power profile selection
 	optdepends = inter-font: shell sans-serif font
 	optdepends = ttf-jetbrains-mono: shell monospace font
 	noextract = sherpa-onnx-v2.0.1-linux-x64-static-lib.tar.bz2
 	noextract = sherpa-onnx-v2.0.1-linux-aarch64-static-lib.tar.bz2
 	options = !lto
-	source = git+https://github.com/sumerchoudhary78/hyprlume.git#tag=v0.4.1
+	source = git+https://github.com/sumerchoudhary78/hyprlume.git#tag=v0.5.0
 	sha256sums = SKIP
 	source_x86_64 = https://github.com/k2-fsa/sherpa-onnx/releases/download/v2.0.1/sherpa-onnx-v2.0.1-linux-x64-static-lib.tar.bz2
 	sha256sums_x86_64 = 55cfadf65ba50d0afc1a802b7a337942819e51c94a5b5a384def1978f7c70871

@@ -1,16 +1,32 @@
 # Maintainer: sumerjakhar78 (AUR), sumerchoudhary78 (GitHub)
 pkgname=hyprlume
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Glass command shell and local English voice companion for Hyprland, powered by HyprPilot'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sumerchoudhary78/hyprlume'
 license=('MIT' 'Apache-2.0')
-depends=('glibc' 'gcc-libs' 'dbus' 'systemd' 'quickshell' 'qt6-declarative' 'qt6-wayland' 'qt6-quick3d>=6.9' 'hyprland' 'pipewire-audio' 'wireplumber' 'python')
-makedepends=('cargo' 'git' 'qt6-shadertools' 'pkgconf')
-optdepends=('espeak-ng: phonemization for local Piper speech output'
+depends=('glibc' 'coreutils' 'gtk3' 'gcc-libs' 'dbus' 'polkit' 'glib2' 'systemd>=257' 'quickshell' 'qt6-declarative' 'qt6-wayland' 'qt6-quick3d>=6.9' 'hyprland>=0.57' 'uwsm>=0.27' 'wlr-randr>=0.5' 'xkeyboard-config' 'pipewire-audio' 'wireplumber' 'python')
+makedepends=('cargo' 'git' 'qt6-shadertools' 'pkgconf' 'glib2-devel')
+optdepends=('swaylock>=1.6: secure Wayland locking with PAM'
+            'swayidle: opt-in Wayland idle policy and logind sleep hooks'
+            'xdg-desktop-portal-hyprland: screen sharing, screenshots and app shortcuts'
+            'xdg-desktop-portal-gtk: file dialogs and common desktop portals'
+            'librsvg: themed SVG lock background'
+            'wl-clipboard: opt-in text clipboard history'
+            'grim: Wayland screenshots'
+            'slurp: capture region and display selection'
+            'orca: optional desktop screen reader'
+            'qt6-imageformats: WebP wallpaper decoding'
+            'udisks2: removable drive mounting, unlocking and safe removal'
+            'gnome-keyring: Secret Service provider with PAM login integration'
+            'playerctl: hardware media keys for MPRIS players'
+            'wf-recorder: silent screen recording'
+            'espeak-ng: phonemization for local Piper speech output'
             'networkmanager: native Wi-Fi connectivity service'
             'bluez: native Bluetooth connectivity service'
+            'upower: system battery and UPS status'
+            'power-profiles-daemon: native power profile selection'
             'inter-font: shell sans-serif font'
             'ttf-jetbrains-mono: shell monospace font')
 # GCC LTO objects in native Cargo build dependencies cannot be linked by
@@ -59,12 +75,22 @@ package() {
   cp -r shell/. "$pkgdir/usr/share/hyprlume/shell/"
   # QA entries and synthetic data belong in source checkouts, not the runtime.
   rm -r "$pkgdir/usr/share/hyprlume/shell/fixtures"
-  rm "$pkgdir/usr/share/hyprlume/shell/design-preview.qml" "$pkgdir/usr/share/hyprlume/shell/ipc-test.qml"
+  rm "$pkgdir/usr/share/hyprlume/shell/design-preview.qml" "$pkgdir/usr/share/hyprlume/shell/"*-test.qml
   find "$pkgdir/usr/share/hyprlume/shell" -name '*.sh' -exec chmod 755 {} +
   install -Dm644 assets/hyprlume.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/hyprlume.svg"
   install -Dm644 packaging/io.github.sumerchoudhary78.hyprlume.desktop "$pkgdir/usr/share/applications/io.github.sumerchoudhary78.hyprlume.desktop"
   install -Dm644 packaging/systemd/hyprlume-daemon.service "$pkgdir/usr/lib/systemd/user/hyprlume-daemon.service"
   install -Dm644 packaging/systemd/hyprlume-shell.service "$pkgdir/usr/lib/systemd/user/hyprlume-shell.service"
+  install -Dm755 packaging/session/hyprlume-session "$pkgdir/usr/bin/hyprlume-session"
+  install -Dm644 packaging/session/hyprlume.desktop "$pkgdir/usr/share/wayland-sessions/hyprlume.desktop"
+  install -Dm644 packaging/session/hyprlume-services.desktop "$pkgdir/etc/xdg/autostart/hyprlume-services.desktop"
+  install -Dm644 packaging/session/hyprland.lua "$pkgdir/usr/share/hyprlume/session/hyprland.lua"
+  install -Dm644 packaging/systemd/hyprlume-session.target "$pkgdir/usr/lib/systemd/user/hyprlume-session.target"
+  install -Dm644 packaging/systemd/hyprlume-polkit.service "$pkgdir/usr/lib/systemd/user/hyprlume-polkit.service"
+  install -Dm644 packaging/portals/hyprlume-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/hyprlume-portals.conf"
+  install -Dm644 packaging/portals/hyprlume.portal "$pkgdir/usr/share/xdg-desktop-portal/portals/hyprlume.portal"
+  install -Dm644 packaging/portals/org.freedesktop.impl.portal.desktop.hyprlume.service "$pkgdir/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.hyprlume.service"
+  install -Dm644 packaging/systemd/hyprlume-portal-settings.service "$pkgdir/usr/lib/systemd/user/hyprlume-portal-settings.service"
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
   install -Dm644 NOTICE "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
