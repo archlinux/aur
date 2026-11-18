@@ -1,20 +1,21 @@
---- a/sidebarsubtitles/main.lua
-+++ b/sidebarsubtitles/main.lua
-@@ -204,7 +204,7 @@
+diff --git a/sidebarsubtitles.lua b/sidebarsubtitles.lua
+index 2665353..21b1601 100644
+--- a/sidebarsubtitles.lua
++++ b/sidebarsubtitles.lua
+@@ -315,7 +315,7 @@ local function getPath(key)
  
      local fullPath
      local isWindows = package.config:sub(1, 1) ~= '/'
 -    local seperator = isWindows and "//" or "\\"
 +    local seperator = isWindows and "\\" or "/"
-     local paths = {
  
-         hash        = nil,
-@@ -826,7 +826,12 @@
+     if key == "cache" then
+ 
+@@ -382,7 +382,11 @@ local function initSidebarWhenSubtitlesLoaded()
  
      if not os.rename(tempPath, tempPath) then
  
 -        runCommand({"powershell", "-NoProfile", "-Command", "mkdir", tempPath})
-+        local isWindows = package.config:sub(1, 1) ~= '/'
 +        if isWindows then
 +            runCommand({"powershell", "-NoProfile", "-Command", "mkdir", tempPath})
 +        else
@@ -22,4 +23,4 @@
 +        end
      end
  
-     local ok
+     local args = {}

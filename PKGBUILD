@@ -1,15 +1,18 @@
 # Maintainer: lucaszhou007@163.com>
 pkgname=mpv-sidebarsubtitles
 pkgver=1.0.8
-pkgrel=4
+pkgrel=5
 pkgdesc="Show subtitle lines in a sidebar for mpv, with uosc integration"
 arch=('any')
 url="https://github.com/magnumpv/sidebarsubtitles"
 license=('MIT')
-depends=('mpv' 'mpv-uosc' 'ffmpeg')
+depends=('mpv' 'ffmpeg')
+# mpv-uosc 在 AUR，构建 chroot 无法解析；补丁目标脚本需用户自行安装
+optdepends=('mpv-uosc: uosc 界面（apply-patch.sh 的补丁目标）')
 makedepends=('git')
+_commit='911271990bd3b5ab5319295e248c009bae24b53f'
 source=(
-    "git+https://github.com/magnumpv/sidebarsubtitles.git#commit=248a5459207795b2375fe4da56e86663481c7382"
+    "git+https://github.com/magnumpv/sidebarsubtitles.git#commit=${_commit}"
     "uosc-sidebarsubtitles.patch"
     "linux-compat.patch"
     "apply-patch.sh"
@@ -18,7 +21,7 @@ source=(
 sha256sums=(
     'SKIP'
     '372e7cd9a3318e5816bed8a0ac9ead3ee8514f23c3d526188de22db69ed72a9c'
-    'b809be6eacb80e354d26c7e88dad0dbb93d02efc9e71cdb05a1427d708f3826e'
+    '44cfd42683488de391658195d80823be14fac96781f8c1a802776f2bfb117237'
     '1d3a78fe44cc0a25417f754e575f92f2ed3a5348aa882c37b02563def38818a9'
     '05349ff8913aa6d61334fb8c4c4e2e43a3d31bc6672e7c6129363de3c53bfa16'
 )
@@ -35,9 +38,7 @@ package() {
     cd "${srcdir}/sidebarsubtitles"
 
     # Install the script to /etc/mpv/scripts/ (mpv auto-scans this dir)
-    install -d "${pkgdir}/etc/mpv/scripts/sidebarsubtitles"
-    install -m644 sidebarsubtitles/*.lua sidebarsubtitles/*.json \
-        "${pkgdir}/etc/mpv/scripts/sidebarsubtitles/"
+    install -Dm644 sidebarsubtitles.lua "${pkgdir}/etc/mpv/scripts/sidebarsubtitles.lua"
 
     # Install the uosc integration patch and the apply/revert helper script
     install -d "${pkgdir}/usr/share/${pkgname}"
