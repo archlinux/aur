@@ -2,7 +2,7 @@
 
 pkgname=python-lxmf
 _name=${pkgname#python-}
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Lightweight Extensible Message Format for Reticulum"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 url="https://reticulum.network/"
 license=('custom:reticulum')
 source=($pkgname-$pkgver::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz)
-sha256sums=('5847534a7e69768425e02ff159096baf385ac99c0919da79e9ed0100e8f46814')
+sha256sums=('f74e728197a9599a1f694cb057b82f6c896bf20ded8613eeb1b167df02bb199f')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
