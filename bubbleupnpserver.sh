@@ -1,6 +1,11 @@
 #!/bin/sh
 
-# -Xss256k: thread stack size. 256K reduces per-thread memory usage and may prevent "java.lang.OutOfMemoryError: unable to create new native thread" on some systems
-# -Djava.awt.headless=true: required for image transcoding to work on headless systems (eg no X-Window libraries)
+# The launcher resolves the server JAR relative to its working directory.
+cd /usr/share/java/bubbleupnpserver || exit 1
 
-exec java -Xss256k -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Dfile.encoding="UTF-8" -jar /usr/share/bubbleupnpserver/BubbleUPnPServerLauncher.jar $*
+# Use 384 KiB per-thread stacks to avoid the stack overflows noted upstream.
+# Headless AWT is required for image transcoding without a display server.
+exec /usr/bin/java -Xss384k -Djava.awt.headless=true \
+  -Djava.net.preferIPv4Stack=true -Dfile.encoding=UTF-8 \
+  -jar /usr/share/java/bubbleupnpserver/BubbleUPnPServerLauncher.jar \
+  -disableAutoUpdate -ffmpegDir /usr/bin -youtubeDlpDir /usr/bin "$@"
