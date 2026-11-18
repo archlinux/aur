@@ -1,9 +1,9 @@
 # Maintainer: Rasmus Moorats <xx+aur@nns.ee>
 # Maintainer: w568w <w568w at outlook dot com>
 _java=17
-_java_minor=+1.1
+_java_minor=+4.1
 pkgname="jdk${_java}-graalvm-ee-bin"
-pkgver=17.0.20.1.1
+pkgver=17.0.21.1
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${_java} version"
 arch=('x86_64'
@@ -27,8 +27,8 @@ provides=("java-runtime=${_java}"
 options=('staticlibs'
 	'!debug')
 install="$pkgname.install"
-sha256sums_x86_64=('24fe1deba281f671a96a6fbcbaa63ed61754b28a8f06de637ecd21093d69f65e')
-sha256sums_aarch64=('3291553f1e59abbeca8731ff51a0e59449ad20e4818e64ca4b929c01452f33e8')
+sha256sums_x86_64=('046d83884a00d318b78051fe7b889068acb46606d428afa2c2b52d11cb6aac62')
+sha256sums_aarch64=('da4bbc639c4b264bb256ae0baeff67b61b3633f6e43f1d06923e0b55a09409dc')
 source_x86_64=("https://archive.org/download/oracle-graalvm-jdk-${_java}/graalvm-jdk-${pkgver}_linux-x64_bin.tar.gz")
 source_aarch64=("https://archive.org/download/oracle-graalvm-jdk-${_java}/graalvm-jdk-${pkgver}_linux-aarch64_bin.tar.gz")
 package() {
