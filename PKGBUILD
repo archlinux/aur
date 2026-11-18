@@ -3,7 +3,7 @@
 _name=azure-functions-core-tools
 _pkgname=${_name}-4
 pkgname=${_pkgname}-bin
-pkgver=4.16.0 # renovate: datasource=github-tags depName=Azure/azure-functions-core-tools
+pkgver=4.16.1 # renovate: datasource=github-tags depName=Azure/azure-functions-core-tools
 pkgrel=1
 pkgdesc="Command line tools for Azure Functions (v4)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ conflicts=("${_name}" "${_name}-bin" "${_pkgname}")
 options=('!strip' 'staticlibs')
 source_x86_64=("https://github.com/Azure/${_name}/releases/download/${pkgver}/Azure.Functions.Cli.linux-x64.${pkgver}.zip")
 source_aarch64=("https://github.com/Azure/${_name}/releases/download/${pkgver}/Azure.Functions.Cli.linux-arm64.${pkgver}.zip")
-b2sums_x86_64=('a62b49688dd85eff1193d41e70ade871c10fab56c1ba527a5ca4ff339a14dba2227c1e06b63e69e9f334c27974e9743c2596b8eca73ed04bec7ec6ee4567366d')
-b2sums_aarch64=('e549e5ad5cc4ab07a3166eb2e299e0473bab1dbd13899c3cd85dccfb1cbf446aad6e8b8051208e898976d5d4977592abb1da0109c4895e39028de55060c375ef')
+b2sums_x86_64=('9f909d77d090b36b625c3f137e4f2a9cba7446738927d06c5f7db8fd602ab85cd56547b3f7e49374e586efaf9d60d2a2c4f107994449abd6a8c6297c82bf43b1')
+b2sums_aarch64=('e4bd5cf8531d63618e7ac850e824b1b460ce0210de445808938a7d167645b884bfc91daf05e49d3f77a4a58a6797c1d781c826da3f935089d687b1749e7d89cc')
 
 package() {
 	install -dm 755 "${pkgdir}/usr/lib/${_pkgname}"
