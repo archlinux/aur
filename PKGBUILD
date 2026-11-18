@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-gfx1151
 _pkgname=${pkgname%%-gfx1151}
-pkgver=b12464
+pkgver=b12498
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1151, ROCm + Vulkan)"
 arch=(x86_64)
@@ -51,7 +51,7 @@ source=(
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.sysusers"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.tmpfiles"
 )
-sha256sums=('a06f70cc96bfc0e36b25b88a4c91b2017b56468de65327bbdd67ee2cc8ab2e72'
+sha256sums=('251c104174f79d0bb308217410a14e8f35dbeb56c4f433e49e2d8266360e5c84'
             'b481dcaa07d8b912b32066da4ee48341cb521852eb16d76a6cf7a8216402e101'
             'bd43b307d55a74bc64b88d95e1f37d0b12ddd2935563fc893835a91e2b8c10b5'
             '8349878d7e61819fe3da6e8a25c46c7dd66592c9a5736a7f66eb475c7a51068c'
@@ -64,7 +64,7 @@ prepare() {
   # Tailwind v4's oxide scanner walks up looking for the nearest .git to anchor
   # .gitignore lookup. In AUR helpers (yay/paru) the parent .git is the AUR
   # clone, whose .gitignore is `*` + an allowlist for PKGBUILD/.SRCINFO. That
-  # rule ignores tools/ui/src/lib/**/*.svelte, so Tailwind scans zero files and
+  # rule ignores ui/apps/chat/src/lib/**/*.svelte, so Tailwind scans zero files and
   # the built bundle.css ships without any utility classes. An empty .git in
   # the extracted source tree stops the upward walk before that point.
   mkdir -p "${_pkgname}/.git"
@@ -73,7 +73,7 @@ prepare() {
 }
 
 build() {
-  pushd "${_pkgname}/tools/ui"
+  pushd "${_pkgname}/ui/apps/chat"
   npm ci
   npm run build
   popd
@@ -96,7 +96,7 @@ build() {
     -DBUILD_SHARED_LIBS=ON
     -DLLAMA_BUILD_TESTS=OFF
     -DLLAMA_USE_SYSTEM_GGML=OFF
-    -DLLAMA_BUILD_WEBUI=ON
+    -DLLAMA_BUILD_UI=ON
     -DGGML_ALL_WARNINGS=OFF
     -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
     -DGGML_BUILD_EXAMPLES=OFF
