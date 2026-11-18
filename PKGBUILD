@@ -7,7 +7,7 @@
 # After editing, regenerate .SRCINFO: makepkg --printsrcinfo > .SRCINFO
 
 pkgname=romforge
-pkgver=0.18.4
+pkgver=0.18.5
 pkgrel=1
 pkgdesc="Identify, tidy and play your ROM collection"
 arch=('x86_64')
@@ -29,7 +29,7 @@ conflicts=('romforge-bin')
 # Rust does its own LTO; makepkg's C flags for it break the bundled C code.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aa7194b38878a0d8fa8eb0ae261a0375cef5642c8f0fb710f99a011aab6ac85d')
+sha256sums=('3472a1f2e3948dfea74220a87a0c0ec198a14471e67345bc8c0427f9d2bb4e56')
 
 prepare() {
   cd "$pkgname-$pkgver"
