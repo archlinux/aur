@@ -1,16 +1,16 @@
 pkgbase = scry-bin
 	pkgdesc = A terminal email client with a browser viewer
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/siliconwitch/scry
 	license = MIT
 	conflicts = scry
 	provides = scry
 	arch = aarch64
-	source_aarch64 = scry-bin_0.1.0_aarch64.tar.gz::https://github.com/siliconwitch/scry/releases/download/v0.1.0/scry_0.1.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = b224f102286a17c83e16baad988ff84d75ed878a0810c9145bb50b5d289e5269
+	source_aarch64 = scry-bin_0.2.0_aarch64.tar.gz::https://github.com/siliconwitch/scry/releases/download/v0.2.0/scry_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5f2246d3b1437b245e3436666129ed732c3bd3296b9e034bf64fa4766bc90022
 	arch = x86_64
-	source_x86_64 = scry-bin_0.1.0_x86_64.tar.gz::https://github.com/siliconwitch/scry/releases/download/v0.1.0/scry_0.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = df9fff174f2fd8e7a062303b0518e352048756cfa27bc61d358019f40b6dc50e
+	source_x86_64 = scry-bin_0.2.0_x86_64.tar.gz::https://github.com/siliconwitch/scry/releases/download/v0.2.0/scry_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = be01340fe23cf4c041b4fcb3014e0c7f18f50fd6b57c094a9229303c47d3c351
 	
 pkgname = scry-bin
