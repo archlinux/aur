@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=better-vault-bin
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Open-source NotebookLM alternative: bring-your-own-model notebooks for your sources"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ _deb_x86_64="better-vault-${pkgver}-linux-amd64.deb"
 _deb_aarch64="better-vault-${pkgver}-linux-arm64.deb"
 source=("LICENSE::${_gh}/raw/v${pkgver}/LICENSE")
 sha256sums=('484eaa20650e66f9b14bc710a4a39898f47b327d05ee1f2df6264e03dbbca858')
-sha256sums_x86_64=('c52c854ddf2adaf98c74bed2821713700706ae3fffd690795fe94ee745f3af25')
-sha256sums_aarch64=('bb4d61130ed689b5189d21c624c009bc0ba4b90bf05ad3dcbc2cecd0f77f7bdf')
+sha256sums_x86_64=('26af8989ef9f90ccbd72e306f6e261e9c205cd8509c782425eb1ddb3c7079d3c')
+sha256sums_aarch64=('4fdd3c9d584b381a8af5958acfeef9ccff1a36628ff9511f6080e50a3ddc0293')
 source_x86_64=("${_deb_x86_64}::${_gh}/releases/download/v${pkgver}/${_deb_x86_64}")
 source_aarch64=("${_deb_aarch64}::${_gh}/releases/download/v${pkgver}/${_deb_aarch64}")
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
