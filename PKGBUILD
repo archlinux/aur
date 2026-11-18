@@ -2,7 +2,7 @@
 
 pkgname=ds4u
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="DualSense 4 You — DualSense controller manager for Linux"
 arch=('x86_64')
 url="https://git.yokai.digital/deadYokai/ds4u"
