@@ -5,8 +5,8 @@
 
 pkgname="python-holidays"
 _pkgname="${pkgname#python-}"
-pkgver=0.108
-pkgrel=3
+pkgver=0.109
+pkgrel=1
 pkgdesc="Generate and work with holidays in Python"
 arch=("any")
 url="https://github.com/vacanza/holidays"
@@ -15,7 +15,7 @@ makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools
 depends=("python"
 	 "python-dateutil")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-b2sums=('d4a594e8c9cb6f44b1d69e78f81cb15253f65334c3887051d1c81d80d0431bdc53b698be6db07d44081ca09ae9ac3e8cd39842db50a4a01154cdda54f48ef48b')
+b2sums=('28396ae795f85621dc20b5bd2cf503cf50beabc58e15895cba806f66c9b3ebb0865ba7c8d61606fd2b6847f79e45e904be2cece5c25d819227b56b7e8815e498')
 
 build(){
  cd ${srcdir}/${_pkgname}-${pkgver}
