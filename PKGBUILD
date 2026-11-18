@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=blanc-bin
 _pkgname=Blanc
-pkgver=1.50.0
+pkgver=1.51.0
 _electronversion=45
 pkgrel=1
 pkgdesc="Open-source desktop browser with a minimal Island interface, built-in ad and tracker blocking, private tabs."
@@ -20,7 +20,7 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('65831a90514ba0c199c40c2358ae98ededf6e6a913512127b3f42795c0161a23'
+sha256sums=('d3f3816365d7cc53d11e6d84300d4b89d377e37e63f6582483081e784f442892'
             '2ed3f1dce1cdce4260ece8e13f7bb6e367be1b9766b479624c0f4c4cf6701369'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
