@@ -1,6 +1,6 @@
 # Maintainer: Herbert Knapp
 pkgname=openarena-omega-engine-bin
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="An unofficial fork of the Quake3e engine for OpenArena"
 arch=('x86_64')
@@ -15,16 +15,14 @@ source=("https://github.com/Bishop-333/OmegA-engine/releases/download/v${pkgver}
     'openarena-omega-vulkan.desktop'
     'openarena-omega.png'
 )
-sha256sums=('53f300323df607530693b3d1f08d5887f13842ce4bd6f361b079bc060c289b1a'
+sha256sums=('806d5cd2a5dd7470fbac94cde165b30893f585fe65bf762223112033694be8ed'
     'fdbc32d33962b508728e0c52147a90dae340270efa57c421c9811d89a92b3e31'
     'a6aa64945ca74e073e48926a201e6c0ee21f7ccdf689e2a08abe981e62a11016'
     '857b5c18e37a3bbf866feb3a69c8b0461d5b50643205fd1620412c59751ed9d0'
     '942e791410a95268251a144494d09fa9f6555e847880f12ee802587aa50f4972')
 
 prepare() {
-unzip -o omega-engine-linux-x86_64.zip -d "${srcdir}/omega-engine"
 mkdir -p "${pkgdir}/usr/share/pixmaps"
-
 }
 
 package() {
