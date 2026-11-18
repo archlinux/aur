@@ -1,13 +1,10 @@
-# Mirrors the upstream Debian postinst/postrm: the sandbox helper only needs
-# the setuid bit when unprivileged user namespaces are unavailable, and the
-# bundled AppArmor profile is loaded when AppArmor is actually enabled.
+# Mirrors the upstream Debian postinst/postrm. The sandbox helper gets the
+# setuid bit unconditionally: this hook runs as root, so probing unprivileged
+# user namespaces here would always succeed and could leave the helper at 0755
+# on systems where Chromium actually needs the setuid fallback.
 
 _mimo_sandbox() {
-  if ! { [[ -L /proc/self/ns/user ]] && unshare --user true; }; then
-    chmod 4755 '/opt/Xiaomi MiMo/chrome-sandbox' || true
-  else
-    chmod 0755 '/opt/Xiaomi MiMo/chrome-sandbox' || true
-  fi
+  chmod 4755 '/opt/Xiaomi MiMo/chrome-sandbox' || true
 }
 
 _mimo_apparmor_load() {
@@ -49,5 +46,5 @@ post_remove() {
     && ! { [[ -x /usr/bin/ischroot ]] && /usr/bin/ischroot; }; then
     apparmor_parser --remove "${_target}" || true
   fi
-  rm -f "${_target}"
+  rm -f "${_target}" '/etc/apparmor.d/cache/xiaomi-mimo-desktop'
 }

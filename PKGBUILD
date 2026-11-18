@@ -10,7 +10,7 @@ pkgname=mimo-desktop-bin
 # Version from the deb control archive. A Debian revision is part of the
 # upstream release when present ("26.1107.70703-211"); Arch spells "-" as "_".
 pkgver=26.1116.161705
-pkgrel=1
+pkgrel=2
 # CDN file names omit the Debian revision.
 _srcver=26.1116.161705
 _appdir='Xiaomi MiMo'
@@ -27,6 +27,7 @@ depends=(
   'libsecret'
   'libxss'
   'libxtst'
+  'mesa'
   'nss'
   'systemd-libs'
   'util-linux-libs'
