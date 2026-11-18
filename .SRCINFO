@@ -1,7 +1,7 @@
 pkgbase = wirecat-tg-cli
 	pkgdesc = Personal-account Telegram CLI and MCP server for agents
 	pkgver = 0.133.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wirecat.dev/en/docs/tg
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = wirecat-tg-cli
 	makedepends = npm
 	makedepends = node-gyp
 	makedepends = python
-	depends = nodejs-lts-krypton
+	depends = nodejs>=22.19.0
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++.so

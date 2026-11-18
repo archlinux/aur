@@ -2,13 +2,13 @@
 pkgname=wirecat-tg-cli
 _pkgname=@wirecat/tg-cli
 pkgver=0.133.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Personal-account Telegram CLI and MCP server for agents'
 arch=('x86_64' 'aarch64')
 url='https://wirecat.dev/en/docs/tg'
 license=('Apache-2.0')
-# The compiled SQLite addon must use the same Node ABI at build and runtime.
-depends=('nodejs-lts-krypton' 'glibc' 'libgcc' 'libstdc++.so')
+# Native addons use the installed Node headers; rebuild after a Node ABI upgrade.
+depends=('nodejs>=22.19.0' 'glibc' 'libgcc' 'libstdc++.so')
 makedepends=('pnpm>=11' 'npm' 'node-gyp' 'python')
 checkdepends=('git')
 optdepends=('ffmpeg: audio and video conversion')
@@ -31,7 +31,7 @@ _pnpm() {
 
 prepare() {
     cd "tg-cli-${pkgver}"
-    _pnpm install --frozen-lockfile --ignore-scripts --store-dir "${srcdir}/pnpm-store"
+    _pnpm install --frozen-lockfile --ignore-scripts --config.engine-strict=true --store-dir "${srcdir}/pnpm-store"
 }
 
 build() {
