@@ -2,7 +2,7 @@
 pkgname=fastdownloader-bin
 _pkgname=FastDownloader
 _debname=fm.bernardo.fastDownloader
-pkgver=0.9.0
+pkgver=0.9.1
 _electronversion=45
 pkgrel=1
 pkgdesc="A fast video/audio downloader for over 1800 websites!"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('13027631d5d358380bde65b28899a151d80ee498a3259a9577d914e67b9360be'
+sha256sums=('3c495f1bf3242f9dc1cf65dcec3926126f875b7271c1790fb62cd42dfc8f5578'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
