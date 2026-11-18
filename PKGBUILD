@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Martins <gustarmartins at users dot noreply dot github dot com>
 
 pkgname=jukebox
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='Terminal music player with local FLAC/MP3 and Jellyfin streaming support'
 arch=('any')
@@ -17,7 +17,7 @@ source=(
   'jukebox'
   'nightcore'
 )
-b2sums=('bf48bcdda4bbbd13eff3e6dd34bc9fac5c2c71ec59e30d64cf3984a2828d070925b1144f7f53806fa205decea7b659d0a643766e3d16fdad57a7e935d752a37a'
+b2sums=('d71c407ef9d62972be2ecf10e090c46d20fba92eac5b05f4bc123c1ffe7780497877b6625a9f2690ce3506cdb07ea20bf8e8f50c2f82491a40d874cfbdfc7ed6'
         '99f2a576eeff2454ad61c2d0a037ed6a49c78d6c902bed270c79f5fb0fdb0f7e93dcd2a2148d2ca6410718b5c63bc456684ecddd0100693ac8a0d4bf8d21d33d'
         '9b5617920181139b3aa6762ea9e8de5cf3e7b65b5d0b949c68cf2dc6c40724959861bcbe8af4060cfa884c38de578c74c9ec7b4bd8026d0009736c9a99c9a008')
 
