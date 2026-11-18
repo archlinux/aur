@@ -1,13 +1,14 @@
 pkgbase = mimo-desktop-intl-bin
 	pkgdesc = Xiaomi MiMo AI desktop client with built-in AI assistant (official overseas Linux build)
 	pkgver = 26.1116.161705
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mimo-ai.xiaomimimo.com/desktop/
 	install = mimo-desktop-intl-bin.install
 	arch = x86_64
 	license = LicenseRef-Proprietary
 	makedepends = imagemagick
 	makedepends = libarchive
+	makedepends = ttf-dejavu
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = gtk3
