@@ -1,6 +1,6 @@
 pkgbase = openxplorer-bin
 	pkgdesc = Windows File Explorer-inspired file manager for Linux
-	pkgver = 2.0.19
+	pkgver = 2.0.20
 	pkgrel = 1
 	url = https://openxplorer.app/
 	arch = x86_64
@@ -32,13 +32,13 @@ pkgbase = openxplorer-bin
 	provides = winspace
 	conflicts = openxplorer
 	conflicts = winspace
-	noextract = openxplorer-bin-2.0.19-1-x86_64.tzst
+	noextract = openxplorer-bin-2.0.20-1-x86_64.tzst
 	options = !strip
-	source = README-2.0.19.md::https://raw.githubusercontent.com/AKolenda/openxplorer/v2.0.19/README.md
-	source = LICENSE-2.0.19::https://raw.githubusercontent.com/AKolenda/openxplorer/v2.0.19/LICENSE
-	sha256sums = 1f7b83435776117a3626559ac9b2a064556023e10eb5f13ab4532fc5151340aa
+	source = README-2.0.20.md::https://raw.githubusercontent.com/AKolenda/openxplorer/v2.0.20/README.md
+	source = LICENSE-2.0.20::https://raw.githubusercontent.com/AKolenda/openxplorer/v2.0.20/LICENSE
+	sha256sums = e34bc2c19d3d94f79c66aee4bdde544c3cc4f8118a7b9ccf5c447d57a94515d5
 	sha256sums = fa330b7ec7715da6050bb6cd8cc5ec86c61d0671da711fcc79460cf69193d260
-	source_x86_64 = openxplorer-bin-2.0.19-1-x86_64.tzst::https://github.com/AKolenda/openxplorer/releases/download/v2.0.19/openxplorer-2.0.19-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = f34b936ca439d7e3ee80259f98c477b0761c0f22e2803cbc258da1c7b62f7200
+	source_x86_64 = openxplorer-bin-2.0.20-1-x86_64.tzst::https://github.com/AKolenda/openxplorer/releases/download/v2.0.20/openxplorer-2.0.20-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 5461b65a169665056c7f45ef7f0d23c69bfff35850aedb5f70de53c9a9b03cf8
 
 pkgname = openxplorer-bin
