@@ -1,0 +1,25 @@
+pkgbase = por-cli-git
+	pkgdesc = Terminal-based video search and playback helper
+	pkgver = r42.2edfaac
+	pkgrel = 1
+	url = https://github.com/por-cli/por-cli
+	arch = any
+	license = GPL-3.0-or-later
+	depends = bash
+	depends = curl
+	depends = fzf
+	depends = mpv
+	depends = chafa
+	depends = yt-dlp
+	depends = jq
+	depends = sed
+	depends = grep
+	depends = gawk
+	depends = coreutils
+	depends = libnotify
+	optdepends = xdg-utils: opening donation links in a browser
+	optdepends = kitty: terminal video playback with -t
+	source = por-cli::git+https://github.com/por-cli/por-cli.git
+	sha256sums = SKIP
+
+pkgname = por-cli-git
