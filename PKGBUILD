@@ -2,7 +2,7 @@
 
 _pkgauthor=goplus
 pkgname=xgo
-pkgver=1.7.6
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="XGo is a programming language that reads like plain English and lets you leverage assets from C/C++, Go, Python, and JavaScript/TypeScript"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ replaces=('goplus')
 makedepends=('go')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7d6a4a40b299d4e139a7d1a748c164ddf8a72c1725820c6d222219bc26462c20')
+sha256sums=('aceb20c547645016b4feb33b7e32de79267f4796a0f26832d5b89e7329724afb')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}/" || exit 1
