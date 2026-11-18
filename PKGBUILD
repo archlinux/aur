@@ -7,7 +7,7 @@
 
 pkgname=poncho-wonky
 _upstream=patchwork
-pkgver=5.7.0
+pkgver=5.7.1
 pkgrel=1
 pkgdesc="A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB),fork of patchwork"
 arch=('x86_64')
@@ -23,9 +23,9 @@ source=(
 "${pkgname}.desktop"
 )
 
-sha256sums=('e65820fa573a3757379b63e2ade9d5bb3bce95dea140c12ce175446b61b8bd83'
+sha256sums=('197c6242ddc05fdf713f4879bc7fcee22fbf4a90cb69fdb7421fcf9619384557'
             'e1518685a1c37abd0a801d0a2872c4e05eb27434402bb9d304c5db8323f4c3a8'
-            'b77ea37cce9723d1dbd97d1aa55450b6da1cb276338087382ce06baa7ea5510e')
+            'fbf0dafa646790e92992b7cfdc5433480a8c3d5d8425d6b2220d25e02a2265c5')
 
 
 build() {
