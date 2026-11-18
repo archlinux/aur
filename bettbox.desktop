@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Bettbox
+GenericName=Bettbox
+Icon=bettbox
+Exec=bettbox %U
+Categories=Network;
+Keywords=Bettbox;Clash;ClashMeta;Mihomo;Proxy;
+StartupWMClass=com.appshub.bettbox
+StartupNotify=true
