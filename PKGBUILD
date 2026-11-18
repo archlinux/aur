@@ -1,18 +1,30 @@
-# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Contributor: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Matej Grabovsky <matej.grabovsky at gmail>
+
 _projectname='sedlex'
 pkgname="ocaml-$_projectname"
-pkgver='3.7'
+pkgver='3.8.1'
 pkgrel='1'
 pkgdesc='Unicode-friendly OCaml lexer generator'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-gen' 'ocaml-ppxlib>=0.26.0' 'zstd')
-makedepends=('dune>=3.6.0')
+depends=(
+    'glibc'
+    'ocaml>=4.11'
+    'ocaml-gen'
+    'ocaml-ppxlib>=0.26.0'
+    'zstd'
+)
+makedepends=('dune>=3.18.0')
+checkdepends=(
+	'ocaml-ppx_expect'
+	'ocaml-menhir'
+)
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('35b0a7873170822edb7a1046c4d7b7a87ded862f799d4c71f7c5fc86407e75e35749a355c94ecd4e1c5636dfacd3b1a42fb80e48bd87d19d8f4733f56019c358')
+b2sums=('ccb832ded1fd393521501e5c931b0a5af350ab83c5de9d2e89e8763d804356f60b5c3971e5195ed22271c6135703957a4a3bd9ececfb79c0ded504fb88041886')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -21,12 +33,41 @@ build() {
 	dune build --release --verbose
 }
 
-# Not running tests because of a circular dependency on this package by ocaml-ppx_expect
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	dune runtest \
+		 --release \
+		 --verbose
+}
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc/ocaml' --mandir '/usr/share/man' --release --verbose
+	DESTDIR="$pkgdir" \
+		   dune install \
+		   --prefix '/usr' \
+		   --libdir '/usr/lib/ocaml' \
+		   --docdir "/usr/share/doc" \
+		   --mandir '/usr/share/man' \
+		   --release \
+		   --verbose
 
+	# Emacs mode
+	install -Dm644 emacs/sedlex-dot.el -t $pkgdir/usr/share/emacs/site-lisp
+
+	# Samples
+	# install -Dm644 CHANGES.md -t $pkgdir/usr/share/doc/$pkgname/
+	# install -Dm644 HACKING.md -t $pkgdir/usr/share/doc/$pkgname/
+	# install -Dm644 README.md -t $pkgdir/usr/share/doc/$pkgname/
+
+	for _folder in "$pkgdir/usr/share/doc/"*; do
+		mv "$_folder" "$pkgdir/usr/share/doc/ocaml-$(basename "$_folder")"
+	done
+
+	# Documentation
+#	find examples -type d -exec install -d  $pkgdir/usr/share/doc/$pkgname/{} \;
+	find examples -type f -exec install -Dm644 {} $pkgdir/usr/share/doc/$pkgname/{} \;
+
+	# License
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/ocaml/$_projectname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
