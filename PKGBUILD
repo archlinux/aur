@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=swarm-desktop
 _pkgname='Swarm Desktop'
-pkgver=0.56.3
+pkgver=0.56.4
 _electronversion=40
 _nodeversion=24
 pkgrel=1
@@ -33,9 +33,9 @@ source=(
     "${pkgname}.js"
 	"${pkgname}.sh"
 )
-sha256sums=('4384dd9c7041da4585dd625e0e09c6763eba7fd62654fb1eaf7c1dbae2001afa'
+sha256sums=('720eaa795cf837213e566f830e2c700fc412540cab0566d8f4ec82e4d507574b'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -90,7 +90,7 @@ _set_pnpm_build_env() {
 	if [ -f "${_pkgjson}" ]; then
 		_detected="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
 		if [ -z "${_detected}" ]; then
-			_detected="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
+			_detected="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9]+' | head -n1)"
 		fi
 	fi
 	local _ver="${_pnpmver:-${_detected}}"
@@ -108,8 +108,18 @@ _use_local_electron_for_forge() {
 	( cd "${ELECTRON_DIST}" && find . \( -type f -o -type l \) -readable -print | zip -@ -0 -q -y "${_zf}" )
 	[[ -s "${_zf}" ]] || { echo "ERROR: Failed to generate electron zip (directory not readable?)"; return 1; }
 	find . -name "forge.config.*" ! -path "*/node_modules/*" -print0 | while IFS= read -r -d '' _cfg; do
-		sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," "${_cfg}"
+		sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}',\\n    overwrite: true," "${_cfg}"
 	done
+}
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 prepare() {
     cd "$(_get_project_dir)"
@@ -127,15 +137,12 @@ prepare() {
     _ensure_local_nvm
     _set_electron_build_env
 	_set_pnpm_build_env
-    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     export NODE_ENV=development
-    pnpm install
+    pnpm install --frozen-lockfile
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
+	_use_local_electron_for_forge
     cd "$(_get_project_dir)/ui"
-    if ! grep -q "^packages:" "pnpm-workspace.yaml"; then
-        sed -i '1i\packages: []' "pnpm-workspace.yaml"
-    fi
-    pnpm install
-    _use_local_electron_for_forge
+    pnpm install --frozen-lockfile
 }
 build() {
     cd "$(_get_project_dir)"
@@ -143,9 +150,12 @@ build() {
     _set_electron_build_env
 	_set_pnpm_build_env
     export NODE_ENV=production
-    pnpm run build
-    pnpm run package
-    rm -rf "$(_get_app_dir)/resources/default_app.asar"
+    pnpm run build:desktop
+	pnpm run build:ui
+	pnpm run copy:ui
+	rm -rf "$(_get_project_dir)/out"
+	pnpm run package
+    _delete_other_arch_files || return 1
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
