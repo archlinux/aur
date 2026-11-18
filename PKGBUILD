@@ -1,6 +1,6 @@
 # Maintainer: gfrank227 [at] gmail [dot] com
 pkgname=nordvpn-gui-bin
-pkgver=6.0.2
+pkgver=6.1.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc='GUI for NordVPN'
@@ -11,7 +11,7 @@ options=('!debug')
 install=daemon_restart.install
 source=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn-gui/nordvpn-gui_${pkgver}_amd64.deb"
 		"daemon_restart.install")
-sha256sums=('4b1a5ea9f9809457af31f9a70363ced9d457593cb869f948d9ddf9341fe32968'
+sha256sums=('0297496e7c1c0ee038796fcb602fc15c50e6ba6d0aea0415273ef7aa38299868'
             'b3bc3b4519769cc9c78258b16eb44765ddd8168951997d8bafdc7b8fcb73d868')
 conflicts=(nordvpn-gui)
 prepare() {
