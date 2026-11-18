@@ -4,7 +4,7 @@ pkgname=relic-catppuccin-gtk-theme
 _repo=Catppuccin-GTK-Theme
 _commit=a0f69cc33299dc97267c3507fe8a001aecc46b0f
 _date=2026.06.25
-pkgver=2026.06.25.r21.b44e0de
+pkgver=2026.06.25.r28.cb377cd
 pkgrel=1
 # 1: 2026-10-29, pkgver counts only the fixes commits of generic/ and relic/ (r9 after r11)
 epoch=1
@@ -62,9 +62,13 @@ prepare() {
   cp "${fixes}/generic/fixes-3.0.scss" "${sass}/_fixes-3.0.scss"
   cp "${fixes}/generic/fixes-4.0.scss" "${sass}/_fixes-4.0.scss"
   cp "${fixes}/relic/fixes-variables.scss" "${sass}/_fixes-variables.scss"
+  cp "${fixes}/relic/window-radius.scss" "${sass}/_relic-window-radius.scss"
+  cp "${fixes}/relic/local-fixes-3.0.scss" "${sass}/_local-fixes-3.0.scss"
   cp "${fixes}/relic/local-fixes-4.0.scss" "${sass}/_local-fixes-4.0.scss"
   cp "${fixes}/relic/local-fixes-gnome-shell.scss" "${sass}/_local-fixes-gnome-shell.scss"
-  : > "${sass}/_local-fixes-3.0.scss"
+  # the window corner of the fixes (relic/window-radius.scss) in place of upstream's $roundness one
+  sed -i "s/^\$window-radius: .*/@import 'relic-window-radius';/" "${sass}/_variables.scss"
+  grep -q "^@import 'relic-window-radius';" "${sass}/_variables.scss"
 
   local f
   for f in "${_repo}-${_commit}/themes/src/main/gtk-3.0/"*.scss; do
