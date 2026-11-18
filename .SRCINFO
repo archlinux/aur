@@ -1,13 +1,13 @@
 pkgbase = lexicmap
 	pkgdesc = Efficient sequence alignment against millions of prokaryotic and viral genomes
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/shenwei356/LexicMap
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	conflicts = lexicmap-bin
-	source = lexicmap-0.10.0.tar.gz::https://github.com/shenwei356/LexicMap/archive/v0.10.0.tar.gz
-	sha256sums = 4cb01f13d7ad964a8c0bf864f4d55ffe6f0292f4b99732dba1207deb3706ff33
+	source = lexicmap-0.10.1.tar.gz::https://github.com/shenwei356/LexicMap/archive/v0.10.1.tar.gz
+	sha256sums = 4245698c69cac3c88f2aecf4013e6626d6c8eab2dd77c7d9f08e22814db44649
 
 pkgname = lexicmap
