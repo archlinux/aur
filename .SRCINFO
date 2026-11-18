@@ -1,0 +1,26 @@
+pkgbase = kerf
+	pkgdesc = Orchestrate and manage multiple kernel instances on a single host (Multikernel Linux)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://multikernel.io
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = Apache-2.0
+	makedepends = musl
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = dtc
+	depends = python
+	depends = python-click
+	depends = python-cryptography
+	depends = python-pyudev
+	depends = python-yaml
+	optdepends = docker: boot instances from container images (kerf load --image)
+	optdepends = python-zstandard: load zstd-compressed kernel images
+	options = !debug
+	source = kerf-0.5.0.tar.gz::https://github.com/multikernel/kerf/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 0e29fe9bb09df99b38849b3c796fe620db8bd656f711cab4ba6378cfb73ca948
+
+pkgname = kerf
