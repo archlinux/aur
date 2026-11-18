@@ -3,7 +3,7 @@
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
 pkgname=rocm-bin
 pkgdesc="ROCm Core SDK - Multi Arch"
-pkgver=10.1.0
+pkgver=10.2.0
 pkgrel=1
 epoch=0
 arch=('x86_64')
@@ -20,19 +20,19 @@ conflicts=('opencl-amd' 'opencl-amd-dev' 'rocm-gfx101x-bin' 'rocm-gfx103x-bin' '
 'rocm-ml-libraries' 'rocm-ml-sdk')
 optdepends=('clinfo')
 options=('!strip')
-noextract=("therock-dist-linux-multiarch-10.1.0.tar.gz")
+noextract=("therock-dist-linux-multiarch-10.2.0.tar.gz")
 
 source=(
-"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-multiarch-10.1.0.tar.gz"
+"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-multiarch-10.2.0.tar.gz"
 )
 
 sha256sums=(
-"a95c72f0052168f2262365dff71c2259331721ad0a65da7957dc7d96ccb77021"
+"6ac0b54de1a410b9727c37607c4c2cb6b4795c3db0a9b01393bccc8d8d01e87b"
 )
 
 prepare() {
-    mkdir -p "${srcdir}/opt/rocm/core"
-    bsdtar xf therock-dist-linux-multiarch-10.1.0.tar.gz -C ${srcdir}/opt/rocm/core
+    mkdir -p "${srcdir}/opt/rocm"
+    bsdtar xf therock-dist-linux-multiarch-10.2.0.tar.gz -C ${srcdir}/opt/rocm
 }
 
 package() {
@@ -43,17 +43,14 @@ package() {
     ln -s /usr/share/libdrm/amdgpu.ids amdgpu.ids
 
     mkdir -p "${pkgdir}/etc/OpenCL/vendors"
-    echo /opt/rocm/core/lib/opencl/libamdocl64.so > "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd"
+    echo /opt/rocm/lib/opencl/libamdocl64.so > "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd"
 
     mkdir -p "${pkgdir}/etc/ld.so.conf.d"
-    echo /opt/rocm/core/lib >> "$pkgdir/etc/ld.so.conf.d/rocm-bin.conf"
+    echo /opt/rocm/lib >> "$pkgdir/etc/ld.so.conf.d/rocm-bin.conf"
 
     mkdir -p "${pkgdir}/opt/rocm"
     cd "${pkgdir}/opt/rocm"
-    ln -s /opt/rocm/core/lib lib
-    ln -s /opt/rocm/core/include include
-    ln -s /opt/rocm/core/bin bin
 
     mkdir -p "${pkgdir}/etc/profile.d"
-    echo export PATH="\${PATH}:/opt/rocm/core/bin:/opt/rocm/core/lib/llvm/bin" > "$pkgdir/etc/profile.d/rocm-bin.sh"
+    echo export PATH="\${PATH}:/opt/rocm/bin:/opt/rocm/lib/llvm/bin" > "$pkgdir/etc/profile.d/rocm-bin.sh"
 }
