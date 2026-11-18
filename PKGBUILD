@@ -1,7 +1,7 @@
 # Maintainer: sliva0 <sliva0mk at gmail dot com>
 
 pkgname=tgradish
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Telegram stickers and emoji from videos, images or pixel art'
 arch=(x86_64 aarch64)
@@ -34,7 +34,7 @@ makedepends=(cargo)
 options=(!lto)
 optdepends=('xdg-desktop-portal: file dialogues in the GUI')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4bc3e1767462e5430cd48f8bec2904d11002d9716bfb05de93919f414aa0c20a')
+sha256sums=('770e97ca02149e03b2740977ce522ee56ff8f56816bc6762f1fd9bbfcd252c96')
 
 _cargo_env() {
   export RUSTUP_TOOLCHAIN=stable
