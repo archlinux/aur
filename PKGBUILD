@@ -26,7 +26,7 @@
 # executable, and the app resolves it through its private resource dir.
 
 pkgname=lumina-code-bin
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A Tauri + React desktop GUI for OpenCode, bundling its own pinned server binary"
 arch=('x86_64' 'aarch64')
@@ -61,14 +61,14 @@ optdepends=(
 #   x86_64  -> Lumina.Code_<ver>_amd64.deb
 #   aarch64 -> Lumina.Code_<ver>_arm64.deb
 #
-# The URL's tag segment is the v0.9.1 placeholder (the release TAG verbatim,
+# The URL's tag segment is the v0.10.0 placeholder (the release TAG verbatim,
 # e.g. "v0.1.2-2"), NOT "v${pkgver}": republished releases carry a suffix in
 # the tag while the assets stay named after the plain app version — building
 # the URL from pkgver 404s (the v0.1.2-2 AUR incident).
-source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v0.9.1/Lumina.Code_${pkgver}_amd64.deb")
-source_aarch64=("${pkgname}-${pkgver}-arm64.deb::${url}/releases/download/v0.9.1/Lumina.Code_${pkgver}_arm64.deb")
-sha256sums_x86_64=('f14a513d3e3c2e5924d6644a6596a1adcaff38f6d02414b71018c7572d159377')
-sha256sums_aarch64=('6f1b2075bd05574d2f95db0133045840a5fa796e44e8a5c0b37c43587a7bb22f')
+source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v0.10.0/Lumina.Code_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}-arm64.deb::${url}/releases/download/v0.10.0/Lumina.Code_${pkgver}_arm64.deb")
+sha256sums_x86_64=('9f50416d287261fa12d18df18d3617f3319900161e37a2eae3136b79d8873d73')
+sha256sums_aarch64=('9daf79c9360b4f81583e9bd0741be4dce61d80b79f682721d3dc243eb59d49c4')
 
 # No arch-independent sources — empty arrays keep makepkg's parser happy.
 source=()
