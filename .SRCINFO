@@ -1,0 +1,27 @@
+pkgbase = terrascope-bin
+	pkgdesc = Braille-rendered terminal world map with live weather and aircraft (prebuilt binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/a-shygun/terrascope
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	provides = terrascope
+	conflicts = terrascope
+	conflicts = terrascope-git
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/a-shygun/Terrascope/v1.0.0/LICENSE
+	source = terrascope-1.0.0.desktop::https://raw.githubusercontent.com/a-shygun/Terrascope/v1.0.0/packaging/linux/terrascope.desktop
+	source = terrascope-1.0.0.png::https://raw.githubusercontent.com/a-shygun/Terrascope/v1.0.0/packaging/linux/terrascope.png
+	source = terrascope-1.0.0.svg::https://raw.githubusercontent.com/a-shygun/Terrascope/v1.0.0/packaging/linux/terrascope.svg
+	sha256sums = 6fdf6c5182fffdc9935da92ba69d45886708a8fbf3422bd7e081874402c2010e
+	sha256sums = 8e0dffd902d0b3b56719a36bbabf99ca1f97395e9ea882fd2d810c22f665bd62
+	sha256sums = 592c27ab0549b709bbf39ad531c12ca960ace849ca6c78a8cdbe5e41d712e6c2
+	sha256sums = 3e1ad74852301e30890edf221bf5c76ed7fa5899f6da0f748f9adac4ae76be43
+	source_x86_64 = terrascope-bin-1.0.0-x86_64.tar.gz::https://github.com/a-shygun/Terrascope/releases/download/v1.0.0/terrascope_1.0.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 83999c2db804015d2278ecc9aa1eba03a5fec4d63a9b225050287e6f86ed34ec
+	source_aarch64 = terrascope-bin-1.0.0-aarch64.tar.gz::https://github.com/a-shygun/Terrascope/releases/download/v1.0.0/terrascope_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ab5835b831c534b398fede6dbf52b0f8fae195eacaf1d904b7287596557c08a2
+
+pkgname = terrascope-bin
