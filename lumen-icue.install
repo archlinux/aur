@@ -1,0 +1,43 @@
+post_install() {
+  cat <<'EOF'
+==> If you built lumen by hand before (install.sh), remove that copy first.
+    Its service, udev rule and launcher in your home and /etc take priority
+    over this package's.
+    lumen 0.1:
+      systemctl --user disable --now lumend
+      rm ~/.local/bin/{lumend,lumenctl} ~/.config/systemd/user/lumend.service
+      rm ~/.local/share/applications/lumen.desktop
+      grep -aq lumen_ipc ~/.local/bin/lumen && rm ~/.local/bin/lumen
+      sudo rm /etc/udev/rules.d/70-lumen.rules
+    (The grep keeps ~/.local/bin/lumen unless it's lumen's TUI: another
+    tool, jnsahaj/lumen, uses the same name.)
+    lumen 0.2 or later:
+      systemctl --user disable --now lumen-icued
+      rm ~/.local/bin/{lumen-icued,lumenctl,lumen-tui} ~/.config/systemd/user/lumen-icued.service
+      rm ~/.local/share/applications/lumen.desktop
+      sudo rm /etc/udev/rules.d/70-lumen.rules
+    Then reload the udev rules:
+      sudo udevadm control --reload && sudo udevadm trigger
+==> Start the lumen daemon as your user (not as root):
+      systemctl --user daemon-reload
+      systemctl --user enable --now lumen-icued
+==> Then open "Lumen" from the app launcher, or run lumen-tui or lumenctl.
+==> For the Omarchy bar widget:
+      omarchy plugin add https://github.com/pxSean/omarchy-lumen.git --enable
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> If lumen-icued is running, restart it to run the new version:
+      systemctl --user restart lumen-icued
+EOF
+}
+
+post_remove() {
+  cat <<'EOF'
+==> If lumen-icued was enabled, disable it as your user:
+      systemctl --user disable lumen-icued
+==> Your settings are still in ~/.config/lumen; delete that folder to remove them.
+EOF
+}
