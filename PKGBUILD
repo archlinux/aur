@@ -2,33 +2,38 @@
 
 pkgname=garage-webui-bin
 _pkgname=garage-webui
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=2
 pkgdesc="Garage去中心化的存储服务的前端UI界面。"
 url="https://github.com/khairul169/garage-webui"
-arch=("any")
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 license=('MIT')
 conflicts=('garage-webui')
 provides=('garage-webui')
 depends=('garage')
-arches=('x86_64' 'i686' 'aarch64' 'armv7h' )
 
-source_x86_64=("$_pkgname::https://github.com/khairul169/garage-webui/releases/download/${pkgver}/garage-webui-v${pkgver}-linux-amd64")
-source_i686=("$_pkgname::https://github.com/khairul169/garage-webui/releases/download/${pkgver}/garage-webui-v${pkgver}-linux-386")
-source_aarch64=("$_pkgname::https://github.com/khairul169/garage-webui/releases/download/${pkgver}/garage-webui-v${pkgver}-linux-arm64")
-source_armv7h=("$_pkgname::https://github.com/khairul169/garage-webui/releases/download/${pkgver}/garage-webui-v${pkgver}-linux-arm")
+source_x86_64=("https://github.com/khairul169/garage-webui/releases/download/${pkgver}/garage-webui-v${pkgver}-linux-amd64")
+source_i686=("https://github.com/khairul169/garage-webui/releases/download/${pkgver}/garage-webui-v${pkgver}-linux-386")
+source_aarch64=("https://github.com/khairul169/garage-webui/releases/download/${pkgver}/garage-webui-v${pkgver}-linux-arm64")
+source_armv7h=("https://github.com/khairul169/garage-webui/releases/download/${pkgver}/garage-webui-v${pkgver}-linux-arm")
 
-sha256sums_x86_64=('46b01c5e0c306873db249613de7609b3665b2c3695596e77e98ee4a00030252f')
-sha256sums_i686=('28a25763b4a57aae59e1b4b4560615aea4b41dabd39734e9cbcbb41826935c30')
-sha256sums_aarch64=('89a9657b8cd70af731ebca4e4c643b76ae8c58dd3bcf36c77af4ab3f0e8830a2')
-sha256sums_armv7h=('4d54bd88967541143704eb35126e9b6247ba851d34b65bfe3857fa8c6445a00f')
+sha256sums=('5e5b86f12a7e58dce8af34e5a631bc0b822910f030234aa463424441841e7c39')
+sha256sums_x86_64=('180b5946957928f6cef1683c484a69d3b6c4f0ec00e132402863fc8ff824e746')
+sha256sums_i686=('46c9e0fd8b505ec29f24b38ce720e1835b3bfe2856ade96d0618d070b38e1c65')
+sha256sums_aarch64=('89c2f4502c00e8edc207612234d0ddcd96147155165b5c662dd2c71849adf42f')
+sha256sums_armv7h=('a2ff7a39893d1f40410ccb9594d543a39f3e95e25911cde81d4356c0de9d4206')
 
 source=("${_pkgname}.service")
-sha256sums=('5e5b86f12a7e58dce8af34e5a631bc0b822910f030234aa463424441841e7c39')
 
 package() {
     # 安装二进制文件
-    install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    case "$CARCH" in
+        x86_64)  _goarch=amd64 ;;
+        i686)    _goarch=386 ;;
+        aarch64) _goarch=arm64 ;;
+        armv7h)  _goarch=arm ;;
+    esac
+    install -Dm755 "${srcdir}/garage-webui-v${pkgver}-linux-${_goarch}" "${pkgdir}/usr/bin/${_pkgname}"
     # 安装服务文件
     install -Dm644 "${srcdir}/${_pkgname}.service" "${pkgdir}/etc/systemd/system/${_pkgname}.service"
 }
