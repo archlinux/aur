@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Yogurt
+Comment=AI meeting notes that stay on your computer
+Exec=yogurt
+Icon=yogurt
+Terminal=false
+StartupWMClass=yogurt
+Categories=Office;

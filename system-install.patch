@@ -1,0 +1,40 @@
+diff -Naur a/app/src/main/loginItem.ts b/app/src/main/loginItem.ts
+--- a/app/src/main/loginItem.ts
++++ b/app/src/main/loginItem.ts
+@@ -50,13 +50,13 @@
+ 
+ const os = process.platform
+ /** Only a real, installed Yogurt touches login items (a dev or test run would register Electron itself); on Linux only the AppImage */
+-const real = () => app.isPackaged && (os === 'darwin' || os === 'win32' || (os === 'linux' && !!process.env.APPIMAGE))
++const real = () => app.isPackaged
+ 
+ const file = () => autostartFile(process.env, homedir())
+ const readEntry = (): string | null => { try { return existsSync(file()) ? readFileSync(file(), 'utf8') : null } catch { return null } }
+ function writeEntry() {
+   mkdirSync(dirname(file()), { recursive: true })
+-  writeFileSync(`${file()}.tmp`, autostartEntry(process.env.APPIMAGE!))
++  writeFileSync(`${file()}.tmp`, autostartEntry('/usr/bin/yogurt'))
+   renameSync(`${file()}.tmp`, file())
+ }
+ 
+@@ -75,7 +75,7 @@
+ export function syncLoginItem(saved: boolean | undefined) {
+   if (!real()) return
+   if (os === 'linux') {
+-    const act = autostartPlan(saved, readEntry(), autostartEntry(process.env.APPIMAGE!))
++    const act = autostartPlan(saved, readEntry(), autostartEntry('/usr/bin/yogurt'))
+     if (act !== 'none') setLoginItem(act === 'write')
+     return
+   }
+diff -Naur a/app/src/main/mcp/paths.ts b/app/src/main/mcp/paths.ts
+--- a/app/src/main/mcp/paths.ts
++++ b/app/src/main/mcp/paths.ts
+@@ -24,7 +24,7 @@
+ export function launchCommand(platform: string, packaged: boolean, execPath: string, env: Record<string, string | undefined>): string | undefined {
+   if (!packaged) return undefined
+   if (platform === 'win32') return execPath
+-  if (platform === 'linux') return env.APPIMAGE || undefined
++  if (platform === 'linux') return '/usr/bin/yogurt'
+   return undefined
+ }
+ 

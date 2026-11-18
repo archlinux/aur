@@ -1,0 +1,4 @@
+[yogurt]
+source = "git"
+git = "https://github.com/FrigadeHQ/yogurt.git"
+prefix = "v"
