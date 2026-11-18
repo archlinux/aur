@@ -1,6 +1,6 @@
 pkgbase = vacuumtube-bin
 	pkgdesc = YouTube Leanback (TV UI) in Electron, with a built-in adblocker (upstream binary)
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/shy1132/VacuumTube
 	arch = x86_64
@@ -18,12 +18,12 @@ pkgbase = vacuumtube-bin
 	optdepends = libappindicator: tray icon support
 	provides = vacuumtube
 	conflicts = vacuumtube
-	noextract = vacuumtube-bin-2.1.0.deb
+	noextract = vacuumtube-bin-2.1.1.deb
 	options = !strip
 	options = !debug
-	source = vacuumtube-bin-2.1.0.deb::https://github.com/shy1132/VacuumTube/releases/download/v2.1.0/VacuumTube-amd64.deb
-	source = LICENSE-2.1.0::https://raw.githubusercontent.com/shy1132/VacuumTube/v2.1.0/LICENSE
-	sha256sums = 90651f2f18f64c515e847123341ea6aa1fc794d27cdebfdb0700ea13e3425567
+	source = vacuumtube-bin-2.1.1.deb::https://github.com/shy1132/VacuumTube/releases/download/v2.1.1/VacuumTube-amd64.deb
+	source = LICENSE-2.1.1::https://raw.githubusercontent.com/shy1132/VacuumTube/v2.1.1/LICENSE
+	sha256sums = 107dacc33ed55f953908429f38ff87e3a913df3141a0e4a6b354f3c514290710
 	sha256sums = 298749dc21f7c3747cef0f15ce93e7d2c275a47af6f860377c310858f15e315a
 
 pkgname = vacuumtube-bin

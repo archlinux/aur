@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=vacuumtube-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="YouTube Leanback (TV UI) in Electron, with a built-in adblocker (upstream binary)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::https://github.com/shy1132/VacuumTube/releases/download/v${pkgver}/VacuumTube-amd64.deb"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/shy1132/VacuumTube/v${pkgver}/LICENSE")
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('90651f2f18f64c515e847123341ea6aa1fc794d27cdebfdb0700ea13e3425567' '298749dc21f7c3747cef0f15ce93e7d2c275a47af6f860377c310858f15e315a')
+sha256sums=('107dacc33ed55f953908429f38ff87e3a913df3141a0e4a6b354f3c514290710' '298749dc21f7c3747cef0f15ce93e7d2c275a47af6f860377c310858f15e315a')
 
 package() {
   bsdtar -xOf "$srcdir/${pkgname}-${pkgver}.deb" 'data.tar.*' \
