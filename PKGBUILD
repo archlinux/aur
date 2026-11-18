@@ -1,6 +1,6 @@
 # Maintainer: Tino Gohl <tuvbunn2@googlemail.com>
 pkgname=tinox-bin
-pkgver=2.9.0
+pkgver=2.9.6
 pkgrel=1
 pkgdesc="Native, statically typed programming language with an LLVM backend, garbage collection, and concurrency support (prebuilt binary)"
 arch=('x86_64')
@@ -20,12 +20,14 @@ optdepends=(
 provides=("tinox=$pkgver")
 conflicts=('tinox')
 source=("https://github.com/subnix-work/tinox/releases/download/v${pkgver}/tinox-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('a7aba850626c5e429e83cd114322c2123befd101f58f584d0db4df5f2033e15d')
+sha256sums=('ad2a1c327faa2ca37c87d99b1bd60daed4bc3d3bddd3f9cf51cb38385a6a031a')
 
 package() {
   cd "$srcdir"
   install -Dm755 tinox "$pkgdir/usr/bin/tinox"
   install -Dm644 runtime.c "$pkgdir/usr/share/tinox/runtime.c"
+  # runtime.h: include path for [native] C sources next to runtime.c
+  install -Dm644 runtime.h "$pkgdir/usr/share/tinox/runtime.h"
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
