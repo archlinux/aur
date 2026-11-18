@@ -3,7 +3,7 @@
 # Hand-edits are fine but will be overwritten on the next tagged release.
 
 pkgname=pareto-ai-desktop-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Pareto AI: local AI model router with a spend and quality console (desktop app with system tray and gateway, prebuilt)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=('pareto-ai-desktop')
 conflicts=('pareto-ai-desktop' 'pareto-ai' 'pareto-ai-bin')
 source_x86_64=("https://github.com/mohamadkhani/pareto-ai/releases/download/v${pkgver}/pareto-ai-desktop-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 # Checksum is injected by CI from the built release tarball (real b2sum, not SKIP).
-b2sums_x86_64=('28dd425b255518424691fa93d043b81bcd63b2b53ca265a7497a3f5f405b0514601a335ae6d3353d967c0818f7a5e5e80db0748a15f2f80697300bb7e06f46fd')
+b2sums_x86_64=('c027f5403bb5afc0d156d65b4d39d7fc865865f4c512773661ff5106494856b66d53af8eea12688c6bee18cdbf37fe60cc7e4eedced783d1386ca3c9b92a049f')
 
 package() {
   install -Dm755 "$srcdir/pareto-desktop" \
