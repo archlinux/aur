@@ -1,6 +1,6 @@
 pkgbase = dream-llmchatbox
 	pkgdesc = Chat with local AI models (Ollama) - tools, folders, memory, groups, speech, German/English
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/yakuda-stack/Dream-LLMChatBox
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = dream-llmchatbox
 	optdepends = podman: run test environment commands in a container
 	optdepends = docker: run test environment commands in a container
 	options = !lto
-	source = dream-llmchatbox-0.1.3.tar.gz::https://github.com/yakuda-stack/Dream-LLMChatBox/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = dba2e8fd84de66d46abf8fe5b711831934ec6f75ebcbda07dd1f523f6e6f4088
+	source = dream-llmchatbox-0.1.4.tar.gz::https://github.com/yakuda-stack/Dream-LLMChatBox/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 25c066b92f8b1f36accd755239e014af61ee4e76b3841540a22ebb4cb8dfd91d
 
 pkgname = dream-llmchatbox
