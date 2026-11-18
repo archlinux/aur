@@ -22,7 +22,7 @@
 pkgname=qoderwake-cn-bin
 _upstreamver=1.2.20-cn
 pkgver=1.2.20_cn
-pkgrel=3
+pkgrel=5
 pkgdesc="QoderWake 国内版 local CLI and daemon (official prebuilt Linux runtime)"
 arch=('x86_64' 'aarch64')
 url='https://qoder.cn/'
@@ -46,18 +46,20 @@ sha256sums_aarch64=('25f32f74a5f677a5d4515f4971ddf154f9a71a5b705052fa30ff4d5d57e
 # 上游两版包内的位图 logo 相同；国内版右下角合成 CN 角标以便区分（console
 # 页面本身已使用 qoderwake-icon-cn.svg）。
 _badge_icon() {
-    local src="$1" dst="$2" size="$3"
-    local bw pad radius pointsize tmp
-    bw=$(( size * 38 / 100 )); [ "$bw" -lt 7 ] && bw=7
-    pad=$(( size * 6 / 100 )); [ "$pad" -lt 1 ] && pad=1
-    radius=$(( bw / 4 )); [ "$radius" -lt 1 ] && radius=1
-    pointsize=$(( bw * 40 / 100 )); [ "$pointsize" -lt 4 ] && pointsize=4
+    local src="$1" dst="$2" size="$3" label="${4:-CN}" bg="${5:-#C8102E}"
+    local bw pad ring pointsize tmp
+    bw=$(( size * 30 / 100 )); [ "$bw" -lt 7 ] && bw=7
+    pad=$(( size * 5 / 100 )); [ "$pad" -lt 1 ] && pad=1
+    ring=$(( bw / 12 )); [ "$ring" -lt 1 ] && ring=1
+    pointsize=$(( bw * 45 / 100 )); [ "${#label}" -ge 4 ] && pointsize=$(( bw * 27 / 100 ))
+    [ "$pointsize" -lt 4 ] && pointsize=4
     tmp="$(mktemp --suffix=.png)"
+    install -dm755 "$(dirname "${dst}")"
     magick -size "${bw}x${bw}" xc:none \
-        -fill '#C8102E' \
-        -draw "roundrectangle 0,0 $(( bw - 1 )),$(( bw - 1 )) ${radius},${radius}" \
+        -fill white -draw "circle $(( bw / 2 )),$(( bw / 2 )) $(( bw / 2 )),0" \
+        -fill "${bg}" -draw "circle $(( bw / 2 )),$(( bw / 2 )) $(( bw / 2 )),${ring}" \
         -gravity center -font DejaVu-Sans-Bold -pointsize "${pointsize}" \
-        -fill white -annotate +0+0 'CN' "${tmp}" || return 1
+        -fill white -annotate +0+0 "${label}" "${tmp}" || return 1
     install -dm755 "$(dirname "${dst}")"
     magick "${src}" -resize "${size}x${size}" \
         "${tmp}" -gravity southeast -geometry "+${pad}+${pad}" -composite "${dst}"
