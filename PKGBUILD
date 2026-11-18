@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname="plasticity-bin"
-pkgver=26.2.8
+pkgver=26.2.9
 pkgrel=1
 pkgdesc="3D modeling software for concept artists"
 arch=("x86_64")
@@ -58,7 +58,7 @@ source=(
   plasticity-x11.desktop
   plasticity-reset-shader-cache.desktop
 )
-sha512sums=('02e82e6b7c3273e17f78a78549c083f540d3fec133a2e98e1c1afcd173e684018a983d47546b30b08797f1742a8d891b00f92713ebbb6db232cb9da7a993b59c'
+sha512sums=('8edf0f9a1c2035bb37ffdd43a4ee29de845e2fb143c0be888d78e372d0cec807d265a208ebb83e57aab6f26eb3846459c0e63da5420b19fbb60a6c243c6c0460'
             '1fbd6b24b4022331307ee3b8266fc6eee956238b5854633071848c145a044127f6d6eadc8c07c288c4dcd16c0de10e933ff21c5d8c715c273902cdeffded4bcd'
             'ca988f29f74883d4630c07ec3dcdc194a85a2b12c533cff9229080829d5d3a8eba8bc20cd2bd313a39dec8c008bb0398a7ae6d91a2af3ab37be8a833cd32c41a'
             '2862bdf95cd4206808495c2b0846223b08923c392a35bc17b415e22f5ba90131fbc48c114e538fd9ae48ba847dec935a9f625d1ea33d7aa94bd29711dccb0ef9'
