@@ -1,6 +1,6 @@
 pkgbase = rocm-gfx908-bin
 	pkgdesc = ROCm Core SDK - CDNA1
-	pkgver = 10.1.0
+	pkgver = 10.2.0
 	pkgrel = 1
 	epoch = 0
 	url = http://www.amd.com
@@ -186,9 +186,9 @@ pkgbase = rocm-gfx908-bin
 	conflicts = miopen-hip
 	conflicts = rocm-ml-libraries
 	conflicts = rocm-ml-sdk
-	noextract = therock-dist-linux-gfx908-10.1.0.tar.gz
+	noextract = therock-dist-linux-gfx908-10.2.0.tar.gz
 	options = !strip
-	source = https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx908-10.1.0.tar.gz
-	sha256sums = 7a11eb60b42d0aed3a4a6507191dc312b0b8ba83ad84dc19f73e93b360b5a612
+	source = https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx908-10.2.0.tar.gz
+	sha256sums = e80a7fe384b8a5fd48958bfd0ada888390bdd2502120e053d421aacfedb14298
 
 pkgname = rocm-gfx908-bin
