@@ -1,12 +1,12 @@
 # Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=yogurt
-pkgver=0.3.36
+pkgver=0.3.46
 pkgrel=1
 pkgdesc='AI meeting notes that stay on your computer'
 arch=(x86_64)
 url='https://yogurt.so'
-license=(MIT Apache-2.0 BlueOak-1.0.0 BSD-3-Clause ISC OFL-1.1 Python-2.0 Unicode-3.0
+license=(MIT Apache-2.0 BlueOak-1.0.0 BSD-3-Clause ISC MPL-2.0 OFL-1.1 Python-2.0 Unicode-3.0
   LicenseRef-MIT-Commons-Clause)
 _electron=electron44
 depends=($_electron glibc hicolor-icon-theme libgcc libpulse libstdc++ opus
@@ -25,7 +25,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/FrigadeHQ/yogurt/archive/re
   system-install.patch
   yogurt.desktop
   yogurt.sh)
-b2sums=('bf13a03f9671a2ee78370f8cea35592c06e152f6bc0b9539ecc916cbbe06199bfbdb14bd3fc6cd0e30218026a048efa2052dae8c44f8a4185f224ae22ab9e1e2'
+b2sums=('aacf06e08df71424827fd3f96acf735add5754c7f0f29a5d6dfad87a171148791c75bf618fd1c5faf529fa2e5167c94d41f9f74746167eb430812a3bf3f3d792'
         '3cf4a45b6b1544b72cd7c623e206868fc9ee13d2a9608eec4092c896c1755787afbef206c9136d3b41d29c87929b077bdafb39ded96a615699df084b4a3d73b8'
         '176e7dbdb234269710a14541563bfe058e97692dbac9ab04340cf7c7ac3da6a71d990cd2129d26c7a374a3d2fcae3445b92b204fa4cbd420201b05afafd5c97e'
         '9cf9d06f5dddee12c1cdb3d906ecfc426a13d89866879d59cd826b7cf425be2941bb5e136e9e03de00b2237a615ccaa5775e244c61386b2dab0c5966f87d6556'
@@ -47,7 +47,7 @@ _pinned() {
 prepare() {
   cd $pkgname-$pkgver
 
-  # launch at login and the relaunch from AI apps are tied to $APPIMAGE upstream
+  # upstream ties launch at login and the command AI apps start Yogurt with to $APPIMAGE
   patch -Np1 -i ../system-install.patch
 
   # stop when upstream moves a pin mirrored above: its build scripts would
