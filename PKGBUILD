@@ -3,7 +3,7 @@
 pkgname=yopass-cli-bin
 _pkgname=yopass
 pkgver=16.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Yopass CLI for secure sharing of secrets, passwords and files (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jhaals/yopass"
