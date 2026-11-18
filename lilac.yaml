@@ -27,3 +27,24 @@ pre_build_script: |
 post_build_script: |
   git_pkgbuild_commit()
   update_aur_repo()
+
+  # Keep a lilac.yaml copy on AUR. lilac's sync pass deletes clone-tracked
+  # files that the repodir does not copy, exempting only .SRCINFO/.gitignore
+  # (lilac2/api.py _update_aur_repo_real), so a manually pushed lilac.yaml
+  # would vanish on the first [lilac] update. Re-add it right after each run;
+  # this also propagates edits of this file to AUR automatically.
+  import os, shutil, subprocess
+  from pathlib import Path
+  aur = Path.home() / '.lilac' / 'aur' / os.path.basename(os.getcwd())
+  if aur.is_dir():
+      _g = lambda *a: subprocess.run(['git', '-C', str(aur), *a], check=True)
+      _g('fetch', 'origin')
+      _g('reset', '--hard', 'origin/master')
+      shutil.copy2('lilac.yaml', aur / 'lilac.yaml')
+      _g('add', 'lilac.yaml')
+      if subprocess.run(['git', '-C', str(aur), 'diff-index', '--quiet',
+                         'HEAD']).returncode != 0:
+          _g('commit', '--no-gpg-sign', '-m', '[lilac] sync lilac.yaml copy')
+          env = os.environ.copy()
+          env['GIT_SSH_COMMAND'] = 'ssh -o ControlPersist=no'
+          subprocess.run(['git', '-C', str(aur), 'push'], check=True, env=env)
