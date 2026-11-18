@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly
 pkgname=('shelly' 'shelly-flatpak-backend')
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
@@ -25,7 +25,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALP
         'com.shellyorg.shelly-notifications.desktop'
         'shelly-flatpak-integrate')
 
-sha256sums=('4f21a3e593ba9c58e37652112e32892ee5c4a7185b3160f9af7887d0cb054bbd'
+sha256sums=('e63c2a2fc6a0fb29838cfea5371c26e0506e04ed8efe37c50a3d1649a7725cfb'
             '4126da205e91a3ba3b15453c2aeade92f67e16e3386a52aae32fbd3f2e4af9cc'
             '4b7cb0e42eb322de9eb616d22ca05823f91d178db5b8b67497d497ed495aca9c'
             'cf0dc0a6d1865b9010054b36941e7bf4d445c3e7549219889f07ab08283c5c0f'
@@ -60,6 +60,14 @@ build() {
     --cache-dir "${srcdir}/zig-cache" \
     -Dcpu=baseline \
     -Doptimize=small)
+
+  # Release builds look up the CLI on PATH; pin it to the packaged binary.
+  (cd Shelly.Tui && ZIG_GLOBAL_CACHE_DIR="${srcdir}/zig-global-cache" zig build --verbose \
+    --prefix "${srcdir}/${_source_dir}/out-tui" \
+    --cache-dir "${srcdir}/zig-cache" \
+    -Dshelly-bin=/usr/bin/shelly \
+    -Dcpu=baseline \
+    -Doptimize=safe)
 
    (cd Shelly.Notifications.Zig && ZIG_GLOBAL_CACHE_DIR="${srcdir}/zig-global-cache" zig build --verbose \
      --prefix "${srcdir}/${_source_dir}/out-notifications" \
@@ -97,12 +105,14 @@ check() {
     --cache-dir "${srcdir}/zig-cache")
   (cd Shelly.Cli.Zig && ZIG_GLOBAL_CACHE_DIR="${srcdir}/zig-global-cache" zig build -Dlibalpm="${_shelly_libalpm}" test \
     --cache-dir "${srcdir}/zig-cache")
+  (cd Shelly.Tui && ZIG_GLOBAL_CACHE_DIR="${srcdir}/zig-global-cache" zig build -Dshelly-bin=/usr/bin/shelly test \
+    --cache-dir "${srcdir}/zig-cache")
 }
 
 package_shelly() {
   pkgdesc="Shelly: A Modern Arch Package Manager"
-  provides=('shelly')
-  conflicts=('shelly-git' 'shelly-bin')
+  provides=('shelly' "shelly-tui=${pkgver}")
+  conflicts=('shelly-git' 'shelly-bin' 'shelly-tui' 'shelly-tui-git')
   backup=('etc/shellybuild.conf')
   depends=(
       "${_shelly_native_depends[@]}"
@@ -149,6 +159,7 @@ package_shelly() {
     return 1
   fi
   install -Dm755 out-key/bin/shelly-key "$pkgdir/usr/bin/shelly-key"
+  install -Dm755 out-tui/bin/Shelly_Tui "$pkgdir/usr/bin/shelly-tui"
   install -Dm644 "$srcdir/shellybuild.conf" "$pkgdir/etc/shellybuild.conf"
 
   # Install desktop entries
