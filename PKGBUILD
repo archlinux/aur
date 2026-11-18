@@ -18,6 +18,7 @@ optdepends=(
     'chromium: system browser for the browser tool'
     'git: repository integration and isolated task worktrees'
     'julia: Julia eval backend'
+    'libpipewire: Wayland screen capture for the computer tool'
     'libpulse: PulseAudio/PipeWire-Pulse client backend for live voice, STT, and TTS'
     "oh-my-pi-grammars-bin=${_grammar_release}: preinstalled WebAssembly grammars for AST tools"
     'python: Python 3.10+ eval backend'
@@ -59,14 +60,6 @@ sha256sums=('73f9fb46e33fe48062053749a3cefe405ab06b05f8d3b8e3c203bb8a3003d113'
             '248aad459652770b71e0f43986535ddcc932a3b6ecca8c6932d7e09e82ea0244')
 
 _variants=('baseline:x86-64-v2' 'modern:x86-64-v3')
-_cargo_features=()
-_enable_wayland_screencast=1
-
-if (( _enable_wayland_screencast )); then
-    depends+=('libpipewire')
-    makedepends+=('clang')
-    _cargo_features=(--features wayland-pipewire)
-fi
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -159,7 +152,7 @@ _build_native() {
     RUSTONIG_SYSTEM_LIBONIG=1 \
         cargo build --frozen --ignore-rust-version \
             --config "${srcdir}/system-opus.toml" \
-            --profile ci --package pi-natives "${_cargo_features[@]}"
+            --profile ci --package pi-natives
 
     # Fail loudly rather than silently shipping a statically linked libopus if
     # the [patch.crates-io] redirect above ever stops applying.
