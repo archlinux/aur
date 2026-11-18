@@ -1,9 +1,2 @@
 
-3.3.1      2024-05-11
-           Bugfix: Add path "$PREFIX/include" to pkg-config files. The
-            former "$PREFIX/include/libcanlock-3" is still present for
-            compatibility to existing code. The "libcanlock-3" directory
-            should be part of preprocessor directives (as documented)
-           Bugfix: Replace license name "MIT-like" with "ICU". Note that
-            the license terms are unchanged (only the name was fixed)
-           Add machine readable SPDX license identifiers.
+Please see https://micha.freeshell.org/libcanlock/#news for changes.

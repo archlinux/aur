@@ -1,6 +1,6 @@
 pkgbase = libcanlock
 	pkgdesc = Standalone, modern RFC 8315 Netnews Cancel-Lock implementation for Unix
-	pkgver = 3.3.1
+	pkgver = 3.3.4
 	pkgrel = 1
 	url = https://micha.freeshell.org/libcanlock/
 	changelog = libcanlock.changelog
@@ -9,11 +9,11 @@ pkgbase = libcanlock
 	arch = x86_64
 	license = BSD-3-Clause
 	license = ICU
+	license = NLPL
 	depends = glibc
 	provides = canlock
 	provides = libcanlock
-	options = lto
-	source = https://micha.freeshell.org/libcanlock/src/libcanlock-3.3.1.tar.bz2
-	sha256sums = 5acd6d59e1fdf2a8507887137cf7f3e862fec0c21cc079bba7068abf03e881d9
+	source = https://micha.freeshell.org/libcanlock/src/libcanlock-3.3.4.tar.bz2
+	sha256sums = d3ec76ae2383c39df557b1d4bb3378b3f79c048d33609e666df0b8c652f813ca
 
 pkgname = libcanlock
