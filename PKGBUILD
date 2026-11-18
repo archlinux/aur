@@ -1,7 +1,7 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/shell>
 
 pkgname=hornero-shell
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Hornero OS desktop shell, built with Quickshell, QML and Qt for Wayland"
 arch=('x86_64')
@@ -16,8 +16,8 @@ license=('GPL-3.0-or-later')
 # every orphaned-lock lifecycle issue tracked upstream in #1054.
 depends=(
   'aubio'
-  'hornero-config>=0.4.0'
-  'horneroctl-bin>=0.2.0_preview46'
+  'hornero-config>=0.4.1'
+  'horneroctl-bin>=0.2.0_preview47'
   'libcava'
   'libqalculate'
   'pipewire'
@@ -48,7 +48,7 @@ optdepends=(
   'swappy: screenshot annotation'
   'wl-clipboard: clipboard integration via wl-copy'
 )
-source=("$pkgname::git+https://github.com/HorneroOS/shell.git#commit=6e1874e65eff0f6cb50b6c7d2243e983f791bfaf")
+source=("$pkgname::git+https://github.com/HorneroOS/shell.git#commit=5a8ae86de679ba0302a0cd83b30df8596e3d50b7")
 sha256sums=('SKIP')
 
 build() {
