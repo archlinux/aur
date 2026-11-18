@@ -1,0 +1,5 @@
+[llm-visuals-bin]
+source = "github"
+github = "DingoOz/llm-visuals"
+use_latest_release = true
+prefix = "v"
