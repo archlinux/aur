@@ -1,6 +1,6 @@
 pkgbase = hyprmasq-plugin-bin
 	pkgdesc = Hyprland plugin of hyprmasq: per-window screenshots and input, prebuilt for the Hyprland of Arch and Omarchy
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/nyrda/hyprmasq
 	arch = x86_64
@@ -14,20 +14,20 @@ pkgbase = hyprmasq-plugin-bin
 	depends = libstdc++
 	depends = libxcb
 	depends = libxkbcommon
-	provides = hyprmasq-plugin=0.3.2
+	provides = hyprmasq-plugin=0.4.0
 	conflicts = hyprmasq-plugin
 	conflicts = hyprmasq<0.3.0
 	options = !debug
 	options = !strip
 	source = hyprland-builds
 	source = hyprmasq_plugin.lua
-	source = LICENSE-0.3.2::https://raw.githubusercontent.com/nyrda/hyprmasq/v0.3.2/LICENSE
-	source = hyprmasq-0.3.2-hyprland-0.56.2.so::https://github.com/nyrda/hyprmasq/releases/download/v0.3.2/hyprmasq-0.3.2-hyprland-0.56.2.so
-	source = hyprmasq-0.3.2-hyprland-0.57.2.so::https://github.com/nyrda/hyprmasq/releases/download/v0.3.2/hyprmasq-0.3.2-hyprland-0.57.2.so
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/nyrda/hyprmasq/v0.4.0/LICENSE
+	source = hyprmasq-0.4.0-hyprland-0.56.2.so::https://github.com/nyrda/hyprmasq/releases/download/v0.4.0/hyprmasq-0.4.0-hyprland-0.56.2.so
+	source = hyprmasq-0.4.0-hyprland-0.57.2.so::https://github.com/nyrda/hyprmasq/releases/download/v0.4.0/hyprmasq-0.4.0-hyprland-0.57.2.so
 	sha256sums = 7043d16d50140d7429c7377cba81a72aa00aff055afe201adf73cf32b1021892
 	sha256sums = dd7b29118e7671e24e3adc50f50fd186e0b3df971d96a35072bde52d6f012547
 	sha256sums = 0b338958047a8d42649c764ea82411c99c366b5d935c90f2465732afef950156
-	sha256sums = 85547f604d451e85046f6eb8440f7aa6d035d4e35c436a2dc4e8528a745cab2a
-	sha256sums = 2deb9c2164e97e2568a194ca6cde9e2dfa5b8a1edf68c5d7ecd1b2b4e9babd59
+	sha256sums = 017b1218e2282f8d1e1fc7c1ce7722cfe5f262516e1ad47ea66ca17d6da63669
+	sha256sums = aa4c851bac29f08cc6c4ac69f54d1fae6c09e123256e3a23e8ce5315f56171e9
 
 pkgname = hyprmasq-plugin-bin
