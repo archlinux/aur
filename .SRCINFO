@@ -1,6 +1,6 @@
 pkgbase = nym-vpn-app-bin
 	pkgdesc = NymVPN desktop client
-	pkgver = 2026.15.0
+	pkgver = 2026.16.0
 	pkgrel = 1
 	url = https://github.com/nymtech/nym-vpn-client
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = nym-vpn-app-bin
 	provides = nym-vpn-app
 	conflicts = nym-vpn-app
 	options = !debug
-	source = https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.15.0/nym-vpn_2026.15.0_linux_x64
+	source = https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.16.0/nym-vpn_2026.16.0_linux_x64
 	source = nym-vpn.desktop
 	source = nym-vpn.svg
-	sha256sums = 8ac1484cabb14eeaaf0ab03c04425fbba772c7afa065e4af206d56d922a0fb56
+	sha256sums = b2004be5a19da97fed24c65ef8cdad025c6c4bdad6d9f734bff581af5c13ff1d
 	sha256sums = 143fd3eb05ccc8d714cda55c83221ffe6c5f83d85d5cce8407c188a8e72952d8
 	sha256sums = 8058039c52c588e38285971c4c37d50fdb8e05e50bbc19d7ffeb89d662a21f1e
 

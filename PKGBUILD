@@ -1,10 +1,10 @@
 # Maintainer: Nym Technologies SA <contact@nymtech.net>
 
 pkgname=nym-vpn-app-bin
-pkgver=2026.15.0
+pkgver=2026.16.0
 # upstream version
-_pkgver=2026.15.0
-_release_tag=nym-vpn-v2026.15.0
+_pkgver=2026.16.0
+_release_tag=nym-vpn-v2026.16.0
 pkgrel=1
 pkgdesc='NymVPN desktop client'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("$url/releases/download/$_release_tag/nym-vpn_${_pkgver}_linux_x64"
     'nym-vpn.desktop'
     'nym-vpn.svg')
 sha256sums=(
-    '8ac1484cabb14eeaaf0ab03c04425fbba772c7afa065e4af206d56d922a0fb56' 
+    'b2004be5a19da97fed24c65ef8cdad025c6c4bdad6d9f734bff581af5c13ff1d' 
     '143fd3eb05ccc8d714cda55c83221ffe6c5f83d85d5cce8407c188a8e72952d8' 
     '8058039c52c588e38285971c4c37d50fdb8e05e50bbc19d7ffeb89d662a21f1e')
 
