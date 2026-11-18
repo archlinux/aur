@@ -7,7 +7,7 @@
 #   4. push PKGBUILD + .SRCINFO to ssh://aur@aur.archlinux.org/autoroute.git
 
 pkgname=autoroute
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Keeps your PipeWire routes in place when apps restart"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=('dotnet-sdk-10.0')
 # GitHub archives extract to <repo>-<pkgver>, e.g. AutoRoute-0.4.1 (not $pkgname).
 _srcdir="AutoRoute-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('762d4e27b6c313b6140c6c0cbbcf62c8ce5b283d0364c2d9e1fd9c5e4c619304')
+sha256sums=('cacc5f2dd430f185a2cf87001e53bfe6a0f945c93a1ab6a6e9c4841dfffe4736')
 options=('!strip') # .NET assemblies must not be stripped
 
 build() {

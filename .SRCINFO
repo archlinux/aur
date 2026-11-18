@@ -1,6 +1,6 @@
 pkgbase = autoroute
 	pkgdesc = Keeps your PipeWire routes in place when apps restart
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/SimplyJustJessie/AutoRoute
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = autoroute
 	depends = fontconfig
 	depends = hicolor-icon-theme
 	options = !strip
-	source = autoroute-0.5.0.tar.gz::https://github.com/SimplyJustJessie/AutoRoute/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 762d4e27b6c313b6140c6c0cbbcf62c8ce5b283d0364c2d9e1fd9c5e4c619304
+	source = autoroute-0.5.1.tar.gz::https://github.com/SimplyJustJessie/AutoRoute/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = cacc5f2dd430f185a2cf87001e53bfe6a0f945c93a1ab6a6e9c4841dfffe4736
 
 pkgname = autoroute
