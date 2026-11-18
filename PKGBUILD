@@ -1,34 +1,52 @@
-# Maintainer: Mikhail Velichko <efklid@gmail.com>
-# Contributor: Lolka Team <support@lolka.app>
+# Contributor: Lolka LLC <support@lolka.app>
 
 pkgname=lolka-x-bin
-pkgver=2.0.11
+pkgver=2.0.13
 pkgrel=1
 pkgdesc='Native desktop client for lolka.app - chat and voice with friends'
 arch=('x86_64')
 url='https://lolka.app'
 license=('LicenseRef-LolkaX')
-# Qt and FFmpeg are bundled; list only external runtime requirements here.
 depends=(
-    'glibc' 'gcc-libs' 'glib2' 'dbus' 'gtk3'
-    'fontconfig' 'freetype2' 'krb5' 'zlib'
-    'libglvnd' 'mesa' 'libpulse'
-    'libx11' 'libxi' 'libxext' 'libxtst'
-    'libxkbcommon' 'libxkbcommon-x11'
-    'xcb-util-cursor' 'xcb-util-keysyms' 'xcb-util-wm'
-    'openssl' 'xdg-utils'
+  'glibc'
+  'gcc-libs'
+  'libxcb'
+  'libx11'
+  'libxkbcommon'
+  'libxkbcommon-x11'
+  'xcb-util-cursor'
+  'xcb-util-wm'
+  'xcb-util-image'
+  'xcb-util-keysyms'
+  'xcb-util-renderutil'
+  'libglvnd'
+  'fontconfig'
+  'freetype2'
+  'dbus'
+  'glib2'
+  'libpulse'
+  'xdg-utils'
+  'libxext'
+  'libxdamage'
+  'libxfixes'
+  'libxcomposite'
+  'libxrandr'
+  'libxtst'
+  'mesa'
+  'libdrm'
+  'libsm'
+  'libice'
+  'libssl.so=3-64'
+  'hicolor-icon-theme'
 )
-provides=('lolka-x' 'lolka' 'lolka-bin')
-conflicts=('lolka-x' 'lolka' 'lolka-bin')
-# Preserve upstream's prebuilt libraries and avoid generating a debug package.
+provides=('lolka-x=2.0.13')
+conflicts=('lolka-x')
 options=('!strip' '!debug')
-
-source=("lolka-x-${pkgver}-${arch[0]}.pkg.tar.zst::https://cdn.lolka.app/desktop/linux/${pkgver}/${pkgname}-${pkgver}-1-${arch[0]}.pkg.tar.zst")
-noextract=("lolka-x-${pkgver}-${arch[0]}.pkg.tar.zst")
-sha512sums=('632383034ad9d420022b7a99eb4b53d7b9ae86ddf19981ea5267421280f50357be23fce2c26aefad19d1573330c6cbbc79f66bc5c9cf1ea9efbaf9e89490007d')
+source=('lolka-x-2.0.13-x86_64.pkg.tar.zst::https://cdn.lolka.app/desktop/linux/2.0.13/lolka-x-bin-2.0.13-1-x86_64.pkg.tar.zst')
+noextract=('lolka-x-2.0.13-x86_64.pkg.tar.zst')
+sha512sums=('d8e36ac01a9ea27fe7931a92e60d788de0f450ea261ae65cf370dc5289097246bf2c9426f634c095d900549c60413648d4d363350980a3912192a495efbf5665')
 
 package() {
-    bsdtar -xf "$srcdir/lolka-x-${pkgver}-${arch[0]}.pkg.tar.zst" -C "$pkgdir" \
-        --exclude='.BUILDINFO' --exclude='.MTREE' --exclude='.PKGINFO' \
-        --exclude='.INSTALL' --exclude='.CHANGELOG'
+  bsdtar -xpf "${srcdir}/lolka-x-2.0.13-x86_64.pkg.tar.zst" -C "${pkgdir}" \
+    --exclude='.BUILDINFO' --exclude='.MTREE' --exclude='.PKGINFO' --exclude='.INSTALL' --exclude='.CHANGELOG'
 }
