@@ -1,7 +1,7 @@
 pkgname=kwin-effects-yet-another-magic-lamp-reloaded-git
-pkgver=6.6.r23.gf6dbfcf
+pkgver=6.8.r23.gf6dbfcf
 pkgrel=1
-pkgdesc="Fork of Yet Another Magic Lamp, targeting Plasma 6.8+ with exclusive Wayland support"
+pkgdesc="Heavily extended fork of Yet Another Magic Lamp, targeting Plasma 6.6+ with exclusive Wayland support"
 arch=('x86_64')
 url="https://github.com/koryboc/kwin-effects-yet-another-magic-lamp-reloaded"
 license=('GPL-2.0-only')
