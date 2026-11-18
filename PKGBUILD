@@ -7,8 +7,8 @@
 # wasm 回退（见上游 issue #1490 / #1504）。本包只改变分发形态。
 
 pkgname=dsh-tauri-desktop-appimage
-pkgver=0.31.5
-pkgrel=2
+pkgver=0.31.7
+pkgrel=1
 pkgdesc='Native desktop application for DeepSeek Harness (official AppImage repack)'
 arch=('x86_64')
 url='https://github.com/dsh-tauri/deepseek-harness-desktop'
@@ -74,7 +74,7 @@ sha256sums=(
 )
 # 使用上游 GitHub 发布资产公布的 SHA-256 校验 AppImage。
 source_x86_64=("${url}/releases/download/v${pkgver}/Deepseek.Harness.Desktop_${pkgver}_amd64.AppImage")
-sha256sums_x86_64=('6cb9d703236f452c0a811c809b1e0570554ef6e4d0576b1659e99225703b9db6')
+sha256sums_x86_64=('40ac01fc7eca02bb630cac86e825631a21d3ffe4a7ef9b3146239f41a3b7dfe9')
 
 prepare() {
   chmod +x "${srcdir}/Deepseek.Harness.Desktop_${pkgver}_amd64.AppImage"
