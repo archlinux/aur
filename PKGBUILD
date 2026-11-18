@@ -1,7 +1,7 @@
 # Maintainer: Eduard Tolosa <edu4rdshl@pm.me>
 
 pkgname=nexus-launcher
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Xbox-inspired launcher for Microsoft Store PC games on Linux, built on Xodus'
 arch=(x86_64)
@@ -25,7 +25,7 @@ source=(
   "$pkgname.desktop"
   "$pkgname"
 )
-sha256sums=('1977922c0e0d5f1484b93207bf9f09ae8b902c594156391e035a0a368b589e3a'
+sha256sums=('9c1242e76c59479dc522f4075c2e51ec681f7d540ad38d791743ac64bf05e91a'
             '241cb6a099ad271cbf99ec73b29a8f7572be72acd68d28cf23318573152ec7ea'
             '33d6a366ea88fe8fe1a3457e91a73d43f476de04ee92437a02603af08e018ce6')
 
