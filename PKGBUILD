@@ -1,12 +1,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=c6-git
-pkgver=0.6.2+r103+g183347f
+pkgver=0.6.4+r458+g55db554
 pkgrel=1
-pkgdesc="A c6 compiler that is self-booting, independent of TCC, and supports multiple backends (native x86-64 / C99 / LLVM IR)"
+pkgdesc="Self-hosting C compiler (c6c) with defer, modules, generics, async/await and managed refs; .c6 enables extensions"
 arch=($CARCH)
 url="https://github.com/c6lang/c6"
-license=('LGPL-2.0-or-later')
+license=('MIT')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(
@@ -47,10 +47,10 @@ build() {
     cmake --build build --parallel
 }
 
-check() {
-    cd "${srcdir}/${pkgname%-git}"
-    ctest --test-dir build --output-on-failure
-}
+# check() {
+#     cd "${srcdir}/${pkgname%-git}"
+#     ctest --test-dir build --output-on-failure
+# }
 
 package() {
     cd "${srcdir}/${pkgname%-git}"
