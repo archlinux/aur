@@ -2,7 +2,7 @@
 
 pkgname=agentcore-cli-bin
 _pkgname=agentcore-cli
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Create, develop and deploy agents to Amazon Bedrock AgentCore from the terminal'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source=("LICENSE-$pkgver::https://raw.githubusercontent.com/aws/agentcore-cli/v$
 source_x86_64=("agentcore-$pkgver-x86_64::$url/releases/download/v$pkgver/agentcore-linux-x64")
 source_aarch64=("agentcore-$pkgver-aarch64::$url/releases/download/v$pkgver/agentcore-linux-arm64")
 sha256sums=('09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b')
-sha256sums_x86_64=('918fdcb7e2713064aae30b1097dfd18e045a3bd1a5eebc04f6b72802d55aee32')
-sha256sums_aarch64=('3ec28d9a52d3d4df130213591aeb7c19ec989cae6652242a6e599676396656f4')
+sha256sums_x86_64=('44fb526251c00f7e247ba6b211aa8b50869daf163e979e30fc5259151bed71ce')
+sha256sums_aarch64=('3d16fafe5863f56d5bd797406f7ae36c38754eac63b73c0edf69515600550cc2')
 
 package() {
     install -Dm755 "agentcore-$pkgver-$CARCH" "$pkgdir/usr/bin/agentcore"
