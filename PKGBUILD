@@ -1,7 +1,7 @@
 # Maintainer: Reazndev <ruby.florian@proton.me>
 
 pkgname=altersend-bin
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Private peer-to-peer file transfer application (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -12,9 +12,9 @@ provides=('altersend')
 conflicts=('altersend' 'altersend-git')
 options=('!strip')
 source_x86_64=("AlterSend-x86_64.AppImage::https://github.com/denislupookov/altersend/releases/download/v${pkgver}/AlterSend-x86_64.AppImage")
-sha256sums_x86_64=('74cb05a1cac649767c09537aa457467914c0a47a6fc214915b78c0e91a7a3dda')
+sha256sums_x86_64=('697863b20b41c270519a59bb09947b5ce6ae0a0b9d583681206cc9a755956d8a')
 source_aarch64=("AlterSend-arm64.AppImage::https://github.com/denislupookov/altersend/releases/download/v${pkgver}/AlterSend-arm64.AppImage")
-sha256sums_aarch64=('a45c0eeaa3768da6f0df3544fcc72e0da0e9739229b76df0a9b2c3ff59d9b68b')
+sha256sums_aarch64=('61fa2de7c00d7305de9253531648e878b850f4edfdbb8da15d3a63ca3f19e70c')
 
 prepare() {
   cd "$srcdir"
