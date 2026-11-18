@@ -1,6 +1,6 @@
 pkgbase = bamboo-end-store
 	pkgdesc = Console-first software store for EndeavourOS and Arch (pacman, AUR, Flatpak, AppImage), Rust and Qt
-	pkgver = 2.0.4
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/satodu/bamboo-end-store
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = bamboo-end-store
 	optdepends = fuse2: run AppImages
 	conflicts = bamboo-end-store-bin
 	options = !lto
-	source = bamboo-end-store-2.0.4.tar.gz::https://github.com/satodu/bamboo-end-store/archive/refs/tags/2.0.4.tar.gz
-	sha256sums = 37166605ba1155047b07db0c053c9d0e27cd49d276fa69459e07452ebd4620ff
+	source = bamboo-end-store-2.3.0.tar.gz::https://github.com/satodu/bamboo-end-store/archive/refs/tags/2.3.0.tar.gz
+	sha256sums = 80104d58576d5a4bc676bef1a0c605dfae19052e180de50e00a00936e4eca206
 
 pkgname = bamboo-end-store
