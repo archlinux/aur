@@ -10,7 +10,7 @@
 # "unused"/"unassigned" heuristics don't apply to a PKGBUILD.
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=agent-glovebox
-pkgver=0.105.1
+pkgver=0.106.0
 pkgrel=1
 pkgdesc='Hardware-isolated, firewalled microVM sandbox for AI agent evals and coding'
 arch=('any')
@@ -33,8 +33,8 @@ optdepends=(
 )
 
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/AlexanderMattTurner/agent-glovebox/releases/download/v0.105.1/agent-glovebox-0.105.1.tar.gz")
-sha256sums=('ff383a9ef30cfafb2089b0e211ae5ed146e9f7fab7cb69fe6a960cde06f64701')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/AlexanderMattTurner/agent-glovebox/releases/download/v0.106.0/agent-glovebox-0.106.0.tar.gz")
+sha256sums=('574f3aba91dd1bb44e8977a9b0b07558fd0ef3552ea127e91c4f1682f2cac125')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver" || exit 1
