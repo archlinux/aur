@@ -1,0 +1,22 @@
+pkgbase = mayoi-bin
+	pkgdesc = A small, fast code editor written in Go with a native GPU-drawn UI (no webview, no Electron)
+	pkgver = 0.22.3
+	pkgrel = 1
+	url = https://github.com/sorrycc/Mayoi
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libsecret
+	optdepends = gtk-layer-shell: native Wayland layer-shell support
+	source_x86_64 = https://github.com/sorrycc/Mayoi/releases/download/v0.22.3/mayoi-0.22.3-linux-amd64.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/sorrycc/Mayoi/v0.22.3/LICENSE
+	sha256sums_x86_64 = 34ffb2c9acc644c51f3e2be14096051030c903711420a8ad00d2f2c152613e0c
+	sha256sums_x86_64 = d0ab3d39f23b23a30fdfff2039f533588c766cc7624ce6a8ac414975e76652e1
+	source_aarch64 = https://github.com/sorrycc/Mayoi/releases/download/v0.22.3/mayoi-0.22.3-linux-arm64.tar.gz
+	source_aarch64 = https://raw.githubusercontent.com/sorrycc/Mayoi/v0.22.3/LICENSE
+	sha256sums_aarch64 = df53da7b938911dae6c361e393575a8d6979c260b7ad06e04bd85a8f350034c3
+	sha256sums_aarch64 = d0ab3d39f23b23a30fdfff2039f533588c766cc7624ce6a8ac414975e76652e1
+
+pkgname = mayoi-bin
