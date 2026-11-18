@@ -12,7 +12,9 @@ license=('Apache-2.0')
 provides=("${pkgname}")
 conflicts=('igop')
 replaces=('igop')
+
 makedepends=('go')
+depends=()
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('dd2b5b03be1b0a6751e90f3d6ac178ba929a2247edafb14110469a17621c5908')
@@ -43,7 +45,7 @@ package() {
 
 	install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
