@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.128.2
+pkgver=0.128.3
 _electronversion=45
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker."
@@ -30,8 +30,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_amd64.deb")
 sha256sums=('562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
-sha256sums_aarch64=('b8ae88ff3a8dadc0d14d98e9cf84a2fc91ec2f861648907807d32796b67b0866')
-sha256sums_x86_64=('7795894b2f97354e8705f9b58cc2b8eae5bc09591b6d649c1567d00f760fc080')
+sha256sums_aarch64=('4084e3a0dbd3f05869b2f87b7b6a9a5a17725e21dbbcac27befe3815beb222b6')
+sha256sums_x86_64=('8ad6b462e701e9fadc8d175d46c12805897ded5106a2fada5cd3fc38ab86316c')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
