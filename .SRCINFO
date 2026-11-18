@@ -1,0 +1,19 @@
+pkgbase = t3-code-cli-bin
+	pkgdesc = Self-contained T3 Code server and command-line interface
+	pkgver = 0.1.10
+	pkgrel = 2
+	url = https://github.com/pingdotgg/t3code
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	options = !strip
+	source = LICENSE-0.1.10::https://raw.githubusercontent.com/pingdotgg/t3code/v0.1.10/LICENSE
+	sha256sums = 935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43
+	source_x86_64 = https://github.com/pingdotgg/t3code/releases/download/v0.1.10/t3-0.1.10-linux-x64.tar.gz
+	sha256sums_x86_64 = 9bea9d36a217299a0af880e8c347b536ed6a9a2f5bf328a695d174d63628c5e8
+	source_aarch64 = https://github.com/pingdotgg/t3code/releases/download/v0.1.10/t3-0.1.10-linux-arm64.tar.gz
+	sha256sums_aarch64 = 5ffbd224f53d0f827279825347a7ebf5a7ac98ad5c1347d47409f30aa2a1e425
+
+pkgname = t3-code-cli-bin
