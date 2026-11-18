@@ -1,0 +1,24 @@
+# KWin starts fcitx5 itself there, and one started with fcitx5 -rd cannot serve Qt apps.
+_kde_wayland() {
+    pgrep -x kwin_wayland >/dev/null 2>&1
+}
+
+# install.sh says what to do next itself.
+post_install() {
+    [ -n "${NGOSEN_INSTALLER:-}" ] && return 0
+    echo "--- Cấu hình Ngó Sen ---"
+    echo "Mở 'Fcitx5 Configuration' và thêm bộ gõ Ngó Sen."
+    if _kde_wayland; then
+        echo "KDE Wayland: chọn 'Fcitx 5' trong System Settings → Virtual Keyboard."
+    fi
+}
+
+post_upgrade() {
+    [ -n "${NGOSEN_INSTALLER:-}" ] && return 0
+    echo "--- Cấu hình Ngó Sen ---"
+    if _kde_wayland; then
+        echo "Đăng xuất rồi đăng nhập lại để dùng bản mới."
+    else
+        echo "Khởi động lại fcitx5 để dùng bản mới: fcitx5 -rd"
+    fi
+}
