@@ -2,7 +2,7 @@
 
 pkgname=tgradish-static-bin
 _pkgname=tgradish
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Telegram stickers and emoji from videos, images or pixel art (ffmpeg built-in)'
 arch=(x86_64 aarch64)
@@ -38,8 +38,8 @@ options=(!strip !debug)
 # by it, so a cache of downloads, as SRCDEST, keeps versions apart
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.tar.gz")
-sha256sums_x86_64=('f53c58028c63ca79bb1956cd23fb5be0ac3b4fb96a191a0bc0676f23ea1bc533')
-sha256sums_aarch64=('21ada791ca2e23a8acf92dc7e91db485a5558f8cc453169a58f40cd68352e30a')
+sha256sums_x86_64=('8a75b7d3c9a3818e8205c62ebed38490b7131d290129a63c7794e58f69889567')
+sha256sums_aarch64=('0c9607a4b089285271c92342472bf7f25b8c46d0416d150672446082f7acf400')
 
 package() {
   cd "$_pkgname-$pkgver-linux-$CARCH"
