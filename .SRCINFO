@@ -1,6 +1,6 @@
 pkgbase = prospero-bin
 	pkgdesc = Native GUI for running and supervising AI coding agents (prebuilt binaries)
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/skeeto/prospero
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = prospero-bin
 	optdepends = libpipewire: Wayland desktop screenshots
 	optdepends = xdg-desktop-portal: Wayland desktop control
 	optdepends = openssh: remote engines over SSH
-	provides = prospero=0.19.0
+	provides = prospero=0.20.0
 	conflicts = prospero
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/skeeto/prospero/releases/download/v0.19.0/prospero-0.19.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 709b4a30b2786019bb4e7c89d05cf4fb065f65f46feda0738416d8fc98f4764d
-	source_aarch64 = https://github.com/skeeto/prospero/releases/download/v0.19.0/prospero-0.19.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 92110bf448573bc65ecaf1da0e955bf5793a99c83faab54749b160458dd40f36
+	source_x86_64 = https://github.com/skeeto/prospero/releases/download/v0.20.0/prospero-0.20.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5ad7feb9e21c896a9658f3eb8508b07aee663c4f48a1a0b878dd0d4b5445f200
+	source_aarch64 = https://github.com/skeeto/prospero/releases/download/v0.20.0/prospero-0.20.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 3201cc84b226e03f7bc4202588d22ff9087de131e1cf18c246f9b538029b8cfc
 
 pkgname = prospero-bin
