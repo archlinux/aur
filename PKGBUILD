@@ -1,8 +1,8 @@
 # Maintainer: Chapman <touch65536@gmail.com>
 
 pkgname=eusoft-ting-es
-pkgver=26.6.2
-pkgrel=2
+pkgver=26.9.0
+pkgrel=1
 pkgdesc="Daily Spanish Listening (每日西语听力) for Linux (Community Repackage)"
 arch=('x86_64')
 url="https://www.eudic.net/v4/es/app/ting"
@@ -33,7 +33,7 @@ source=(
     "LICENSE"
 )
 source_x86_64=(
-    "${pkgname}-${pkgver}.deb::https://static.eudic.net/pkg/ting_es/ting_es.deb"
+    "${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/ting_es/ting_es.deb"
 )
 noextract=("${pkgname}-${pkgver}.deb")
 
@@ -43,16 +43,17 @@ sha256sums=(
     'cf9ba50ac9a100c03be7e11953e99443a5e8d26ed2f4453ecc454113778b668c'
 )
 sha256sums_x86_64=(
-    'f60b760b359f1593aa3b143943af951003f5b042167af7b2fb3249aa5f4a7377'
+    '412ac2049e2983d93e09e5e8a850e3d8efbce9236c1e12cd98fb7d975a6f0d3c'
 )
 
 prepare() {
-    bsdtar -xf "${pkgname}-${pkgver}.deb" data.tar.xz
+    rm -f data.tar.*
+    bsdtar -xf "${pkgname}-${pkgver}.deb" 'data.tar.*'
 }
 
 package() {
     # Extract opt and usr hierarchies from official deb data
-    tar -xf data.tar.xz -C "${pkgdir}"
+    bsdtar -xf data.tar.* -C "${pkgdir}"
 
     # Install clean launcher script
     install -Dm755 "${srcdir}/ting-es.sh" "${pkgdir}/usr/bin/ting-es"
