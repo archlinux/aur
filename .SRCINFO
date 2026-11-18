@@ -1,7 +1,7 @@
 pkgbase = zcode-cn-bin
 	pkgdesc = ZCode — agentic development environment for GLM (official Linux build, BigModel defaults)
 	pkgver = 3.18.2_10443
-	pkgrel = 2
+	pkgrel = 4
 	url = https://zcode.z.ai/cn
 	install = zcode-cn-bin.install
 	arch = x86_64

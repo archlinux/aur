@@ -24,7 +24,7 @@
 
 pkgname=zcode-cn-bin
 pkgver=3.18.2_10443
-pkgrel=2
+pkgrel=4
 pkgdesc='ZCode — agentic development environment for GLM (official Linux build, BigModel defaults)'
 arch=('x86_64' 'aarch64')
 url='https://zcode.z.ai/cn'
@@ -62,18 +62,20 @@ sha256sums_aarch64=('be3de63f57b1351d921bd977a21cff212d9e5a0710e3af8eae8abcfc214
 # 上游同一份包里只有一张 zcode.png；国内版图标右下角合成 CN 角标，避免两版
 # 在启动器/任务栏里完全一样。
 _badge_icon() {
-    local src="$1" dst="$2" size="$3"
-    local bw pad radius pointsize tmp
-    bw=$(( size * 38 / 100 )); [ "$bw" -lt 7 ] && bw=7
-    pad=$(( size * 6 / 100 )); [ "$pad" -lt 1 ] && pad=1
-    radius=$(( bw / 4 )); [ "$radius" -lt 1 ] && radius=1
-    pointsize=$(( bw * 40 / 100 )); [ "$pointsize" -lt 4 ] && pointsize=4
+    local src="$1" dst="$2" size="$3" label="${4:-CN}" bg="${5:-#C8102E}"
+    local bw pad ring pointsize tmp
+    bw=$(( size * 30 / 100 )); [ "$bw" -lt 7 ] && bw=7
+    pad=$(( size * 5 / 100 )); [ "$pad" -lt 1 ] && pad=1
+    ring=$(( bw / 12 )); [ "$ring" -lt 1 ] && ring=1
+    pointsize=$(( bw * 45 / 100 )); [ "${#label}" -ge 4 ] && pointsize=$(( bw * 27 / 100 ))
+    [ "$pointsize" -lt 4 ] && pointsize=4
     tmp="$(mktemp --suffix=.png)"
+    install -dm755 "$(dirname "${dst}")"
     magick -size "${bw}x${bw}" xc:none \
-        -fill '#C8102E' \
-        -draw "roundrectangle 0,0 $(( bw - 1 )),$(( bw - 1 )) ${radius},${radius}" \
+        -fill white -draw "circle $(( bw / 2 )),$(( bw / 2 )) $(( bw / 2 )),0" \
+        -fill "${bg}" -draw "circle $(( bw / 2 )),$(( bw / 2 )) $(( bw / 2 )),${ring}" \
         -gravity center -font DejaVu-Sans-Bold -pointsize "${pointsize}" \
-        -fill white -annotate +0+0 'CN' "${tmp}" || return 1
+        -fill white -annotate +0+0 "${label}" "${tmp}" || return 1
     install -dm755 "$(dirname "${dst}")"
     magick "${src}" -resize "${size}x${size}" \
         "${tmp}" -gravity southeast -geometry "+${pad}+${pad}" -composite "${dst}"
