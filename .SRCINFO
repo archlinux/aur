@@ -1,0 +1,27 @@
+pkgbase = ptah-bin
+	pkgdesc = An Electron desktop for Claude, Codex, and the coding CLIs already on your machine.
+	pkgver = 0.1.70
+	pkgrel = 1
+	url = https://ptah.live
+	arch = x86_64
+	license = MIT
+	depends = electron40
+	depends = claude-code
+	depends = ripgrep
+	depends = openai-codex
+	depends = zsh
+	depends = ffmpeg
+	provides = ptah=0.1.70
+	conflicts = ptah
+	options = !strip
+	options = !emptydirs
+	source = ptah-0.1.70.deb::https://github.com/Hive-Academy/PtahCode/releases/download/electron-v0.1.70/ptah-desktop_0.1.70_amd64.deb
+	source = LICENSE-0.1.70.md::https://raw.githubusercontent.com/Hive-Academy/PtahCode/electron-v0.1.70/LICENSE.md
+	source = ptah.js
+	source = ptah.sh
+	sha256sums = ce14fb1eef47292ce0b1b9de7872ebd145cee8de14c1c34f5635f2559fce3c5b
+	sha256sums = 5ab364f1934f7d5fb85fc140fa353f2b319cc70a5d2a4732287e5bcd0501d636
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+
+pkgname = ptah-bin
