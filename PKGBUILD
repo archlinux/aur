@@ -7,7 +7,7 @@ url='https://github.com/iebb/NekokoLPA2'
 license=(MIT)
 depends=(bubblewrap gtk3)
 options=(!debug)
-makedepends=()
+makedepends=(imagemagick)
 source=("https://github.com/iebb/NekokoLPA2/releases/download/v${pkgver}%2B${pkgrel}/ee.nekoko.nlpa2.linux-${pkgver}-${pkgrel}-x64.tar.gz")
 sha256sums=('ceeaba80abffa735572c157c395e92d2c7410d5fc450e01c0f5ff8ef5044d3cd')
 
@@ -17,4 +17,5 @@ package() {
     install -Dm755 "${srcdir}/nlpa2" "${pkgdir}/usr/share/nlpa2/nlpa2"
     install -Dm644 "${startdir}/LICENSES/MIT.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cp -rp "${srcdir}"/{data,lib} "${pkgdir}/usr/share/nlpa2/"
+    magick mogrify -resize "128x128" -background none -gravity center -extent "128x128" "${pkgdir}/usr/share/nlpa2/data/flutter_assets/assets/logo.png"
 }
