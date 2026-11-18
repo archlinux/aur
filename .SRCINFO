@@ -1,6 +1,6 @@
 pkgbase = apiflow-bin
 	pkgdesc = A modern API workspace that works both online and offline — combining API documentation, testing, mock, and AI-powered automation in one lightweight tool.
-	pkgver = 0.9.83
+	pkgver = 0.9.84
 	pkgrel = 1
 	url = https://apiflow.cn/
 	arch = aarch64
@@ -11,13 +11,13 @@ pkgbase = apiflow-bin
 	depends = webkit2gtk-4.1
 	depends = libayatana-indicator
 	depends = libappindicator
-	provides = apiflow=0.9.83
+	provides = apiflow=0.9.84
 	conflicts = apiflow
-	source = LICENSE-0.9.83::https://raw.githubusercontent.com/trueleaf/apiflow/v0.9.83/LICENSE
+	source = LICENSE-0.9.84::https://raw.githubusercontent.com/trueleaf/apiflow/v0.9.84/LICENSE
 	sha256sums = 1c8f6daf492f059c2837ab0c8b505b81e9d9220013c094a2e9fac893399d08f5
-	source_aarch64 = apiflow-0.9.83-aarch64.rpm::https://github.com/trueleaf/apiflow/releases/download/v0.9.83/ApiFlow-0.9.83-1.aarch64.rpm
-	sha256sums_aarch64 = 293449c4d414c3bb985eec40d5c70ce3dc3fd48529a1736cbd744250447e27fc
-	source_x86_64 = apiflow-0.9.83-x86_64.rpm::https://github.com/trueleaf/apiflow/releases/download/v0.9.83/ApiFlow-0.9.83-1.x86_64.rpm
-	sha256sums_x86_64 = 8c69958f84d36febafc8f2980ff201326684b851b8bc280b9c337f78d0432c05
+	source_aarch64 = apiflow-0.9.84-aarch64.deb::https://github.com/trueleaf/apiflow/releases/download/v0.9.84/ApiFlow_0.9.84_arm64.deb
+	sha256sums_aarch64 = a5e4a9693bc5650d972ea1a09e2f0fd9cbf7924f48d5ed7c721c37643169ed3a
+	source_x86_64 = apiflow-0.9.84-x86_64.deb::https://github.com/trueleaf/apiflow/releases/download/v0.9.84/ApiFlow_0.9.84_amd64.deb
+	sha256sums_x86_64 = 89d9fa2b606dbc0fbacab01c1052693e278fbd4fe2c6b4c41010db42c72bdc88
 
 pkgname = apiflow-bin
