@@ -1,6 +1,6 @@
 pkgbase = redasm-git
 	pkgdesc = The Open Source Disassembler (git version)
-	pkgver = r2065.1615177b
+	pkgver = r2066.b0886fd1
 	pkgrel = 1
 	url = https://redasm.dev
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = redasm-git
 	depends = sqlite
 	depends = miniz
 	depends = zydis
+	optdepends = curl: networking support
 	provides = redasm
 	conflicts = redasm
 	conflicts = redasm-beta

@@ -4,7 +4,7 @@
 #
 
 pkgname=redasm-git
-pkgver=r2065.1615177b
+pkgver=r2066.b0886fd1
 pkgrel=1
 url="https://redasm.dev"
 arch=("x86_64")
@@ -12,6 +12,7 @@ pkgdesc="The Open Source Disassembler (git version)"
 license=("GPL-3.0-or-later")
 makedepends=("git" "cmake")
 depends=("qt6-base" "sqlite" "miniz" "zydis")
+optdepends=("curl: networking support")
 conflicts=("redasm" "redasm-beta")
 provides=("redasm")
 
