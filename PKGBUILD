@@ -1,6 +1,6 @@
 # Maintainer: Braulio Oliveira <brauliobo@gmail.com>
 pkgname=pgx-bm25
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Native BM25 ranked full-text index access method for PostgreSQL (bm25_native)'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('PostgreSQL')
 depends=('postgresql')
 makedepends=('make' 'gcc' 'clang' 'llvm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0720e8256ba9d391517051b4ee55656f6dc87a218f5a3015c11f039e9d636381')
+sha256sums=('5def26398e065d08da14c37c79c0cfc91c158a389bd3027e13dea46e125293c7')
 
 build() {
   cd "$pkgname-$pkgver"
