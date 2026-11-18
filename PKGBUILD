@@ -21,8 +21,8 @@ conflicts=('polify' 'polify-git')
 validpgpkeys=('EF27591A48D4B6F7C7E55F49EC8E0E98E7C13D19')
 source=("polify-${pkgver}-linux-x86_64.tar.zst::https://hut.buildr.fun/api/apps/Polify/latest/linux/x86_64/tar.zst"
         "polify-${pkgver}-linux-x86_64.tar.zst.sig::https://hut.buildr.fun/api/apps/Polify/latest/linux/x86_64/tar.zst/signature")
-sha256sums=('cb179c47c5f1a4579ed12c2e5e5b227afb37b0b9eada96fef64686f875b9940c' 'SKIP')
-b2sums=('6bf92d5bf1a6f276933f7dc4757e3f97e026a9a6ec18217dd7b6621384d6e77a210a6d9df322e86345870f706bedb36fa66c1701a2e74203a772fc69a6ae9f9f' 'SKIP')
+sha256sums=('81ac063839bc081619a68933cf4258c2ccc3a9559c030be821b3bfe22ff39839' 'SKIP')
+b2sums=('1e9215466f09980ab9e2741e15973a86b31c0b326af30ab923c66495da5f75a84b7999e58baab0e2f8f8fdcc7690403c6dc2aee9e8df6f89c27c6b0665502e3d' 'SKIP')
 
 # Expected tarball layout (from make release):
 #   bundle/          — Flutter Linux release bundle contents (includes onnxruntime libs)
