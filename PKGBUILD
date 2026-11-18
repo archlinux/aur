@@ -2,7 +2,7 @@
 
 pkgname=lexicmap-bin
 _pkgname=lexicmap
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Efficient sequence alignment against millions of prokaryotic and viral genomes"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "https://github.com/shenwei356/LexicMap/releases/download/v${pkgver}/lexicmap_linux_amd64.tar.gz"
   "https://raw.githubusercontent.com/shenwei356/LexicMap/v${pkgver}/LICENSE"
 )
-sha256sums=('7a3a53352718996ddfd5251e7ad64842c75bca5aa0f8f99d31bb585e57e80767'
+sha256sums=('8dbc39a9df8defde6b6eadbfc19ad34c8013afd9d20322f678917810446b068e'
             '5e5e14f46e2a6dff0a8ad39f2ef48fc8c0a0535ff6c141393a2a4ed465e2abb3')
 
 package() {
