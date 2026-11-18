@@ -1,20 +1,19 @@
 pkgbase = qt6-configqml
 	pkgdesc = Layered configuration for Qt and QML
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/alexindigo/configqml
 	arch = x86_64
 	license = LGPL-3.0-or-later
 	makedepends = cmake
-	makedepends = ninja
 	depends = qt6-base=6.12.0
 	depends = qt6-declarative=6.12.0
 	depends = libgcc
 	depends = libstdc++
 	depends = glibc
-	provides = qt6-configqml=0.5.0
+	provides = qt6-configqml=0.5.1
 	conflicts = qt6-configqml-git
-	source = qt6-configqml-0.5.0.tar.gz::https://github.com/alexindigo/configqml/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = bebaf9ac4efa578a3407d34f307ceb6064e1ef30597c011446541feb05477eaa
+	source = qt6-configqml-0.5.1.tar.gz::https://github.com/alexindigo/configqml/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = ff2950caea6f4e17d5ef659f6c3c17b0593095b1e2ba065f1902fec6f5b2aa48
 
 pkgname = qt6-configqml

@@ -3,21 +3,21 @@
 
 pkgname=qt6-configqml
 _projname=configqml
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Layered configuration for Qt and QML"
 arch=('x86_64')
 url="https://github.com/alexindigo/configqml"
 license=('LGPL-3.0-or-later')
 depends=('qt6-base=6.12.0' 'qt6-declarative=6.12.0' 'libgcc' 'libstdc++' 'glibc')
-makedepends=('cmake' 'ninja')
+makedepends=('cmake')
 provides=("qt6-configqml=${pkgver}")
 conflicts=('qt6-configqml-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bebaf9ac4efa578a3407d34f307ceb6064e1ef30597c011446541feb05477eaa')
+sha256sums=('ff2950caea6f4e17d5ef659f6c3c17b0593095b1e2ba065f1902fec6f5b2aa48')
 
 build() {
-    cmake -B build -S "${srcdir}/${_projname}-${pkgver}" -G Ninja \
+    cmake -B build -S "${srcdir}/${_projname}-${pkgver}" -G "Unix Makefiles" \
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_TESTING=OFF \
         -DCMAKE_SKIP_RPATH=ON \
