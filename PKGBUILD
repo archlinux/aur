@@ -1,6 +1,6 @@
 # Maintainer: Eternal_night <learnzwk@gmail.com>
 pkgname=dsh-next-bin
-pkgver=2.0.23_next
+pkgver=2.0.24_next
 pkgrel=1
 pkgdesc="DSH Desktop NEXT - desktop client for DeepSeek Harness"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'at-spi2-core' 'xdg-utils' 'util-linux' 'libsecret' 'mesa' 'alsa-lib')
 
 source_x86_64=("${url}/releases/download/v${pkgver//_/-}/DSH-NEXT-${pkgver//_/-}-amd64.deb")
-sha256sums_x86_64=('44e224d31e7f6af8f4b2b75ffcb8a88ca4657cc6a9efac085bf4a39d1372b7a2')
+sha256sums_x86_64=('f06eb77f9b94d82929d97813f085ae37fdac9d6aa93b10b1f6159b7cf3400fc2')
 
 package() {
     ar x "${srcdir}/DSH-NEXT-${pkgver//_/-}-amd64.deb"
