@@ -128,6 +128,16 @@ package() {
     "$pkgdir/usr/share/meo-desktop/session-defaults/meo-shellrc"
   install -Dm644 "$source/defaults/input-method/fcitx5/conf/classicui.conf" \
     "$pkgdir/usr/share/meo-desktop/session-defaults/fcitx5/conf/classicui.conf"
+  # KDE applications start with the hamburger menu instead of a menu bar in
+  # the Meo session only (MeoUI APP_SHELL.md section 6). Older pinned sources
+  # do not carry these files yet.
+  local app_default
+  for app_default in dolphinrc katerc okularrc arkrc konsolerc; do
+    if [ -f "$source/defaults/applications/$app_default" ]; then
+      install -Dm644 "$source/defaults/applications/$app_default" \
+        "$pkgdir/usr/share/meo-desktop/session-defaults/$app_default"
+    fi
+  done
 
   # os-release is target branding, not an overwrite of Arch filesystem's
   # package-owned symlink. The Installer applies this packaged template.
