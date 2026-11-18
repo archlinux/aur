@@ -1,0 +1,17 @@
+pkgbase = taskcat
+	pkgdesc = Test AWS CloudFormation templates by deploying them in multiple regions
+	pkgver = 0.9.58
+	pkgrel = 1
+	url = https://github.com/aws-ia/taskcat
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = python>=3.14
+	depends = python<3.15
+	depends = git
+	optdepends = docker: build Lambda packages for templates
+	noextract = taskcat-0.9.58-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/t/taskcat/taskcat-0.9.58-py3-none-any.whl
+	sha256sums = b6da1fa0e394a5cec55f119dd378666c1e0a7d5b925e5f4bbb6a154c1bbdadfe
+
+pkgname = taskcat
