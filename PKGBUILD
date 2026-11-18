@@ -2,15 +2,16 @@
 # slskdn - Unofficial slskd fork with batteries-included Soulseek features (build from source)
 pkgname=slskdn
 _pkgname=slskd
-pkgver=2026111302.slskdn.353
+pkgver=2026111723.slskdn.354
 pkgrel=7
 _archive_root="slskdN-${pkgver//.slskdn/-slskdn}"
 pkgdesc="slskdN, an unofficial batteries-included fork of slskd with SongID, Discovery Graph, multi-source downloads, DHT mesh networking, auto-replace, wishlist, and security hardening."
 arch=('x86_64' 'aarch64')
 url="https://github.com/snapetech/slskdn"
 license=('AGPL-3.0-or-later')
-depends=('dotnet-runtime-10.0' 'aspnet-runtime-10.0' 'yt-dlp')
-makedepends=('dotnet-sdk-10.0' 'dotnet-runtime-10.0' 'aspnet-runtime-10.0' 'nodejs' 'pnpm')
+depends=('gcc-libs' 'glibc' 'icu' 'krb5' 'openssl' 'zlib' 'yt-dlp')
+makedepends=('nodejs' 'pnpm')
+_dotnet_sdk_version=11.0.100
 optdepends=(
     'docker: for containerized deployment'
     'ffmpeg: for audio decoding and SongID media handling'
@@ -28,6 +29,13 @@ source=(
     "slskd.sysusers"
     "slskd.tmpfiles"
 )
+# Use a pinned SDK until the distribution can supply the required feature band.
+source_x86_64=("https://builds.dotnet.microsoft.com/dotnet/Sdk/${_dotnet_sdk_version}/dotnet-sdk-${_dotnet_sdk_version}-linux-x64.tar.gz")
+source_aarch64=("https://builds.dotnet.microsoft.com/dotnet/Sdk/${_dotnet_sdk_version}/dotnet-sdk-${_dotnet_sdk_version}-linux-arm64.tar.gz")
+sha512sums_x86_64=('1bec9cca2ec689b1e80245b84f2b53c9441d1aa6daccf2ceb27490768bffa95954fa585bd275def31069d874d543d9ba9e6591fe9ade2dbd9f34ec5c0fd0050c')
+sha512sums_aarch64=('cfa248bb1377606e868602fb5b4d66fa16b7546156593937d1982f7f2142e6ded76d71c4a26efdab99f87c46ab40c3c672ab1b57ef7fa25449efe5b140a55af4')
+noextract=("dotnet-sdk-${_dotnet_sdk_version}-linux-x64.tar.gz" "dotnet-sdk-${_dotnet_sdk_version}-linux-arm64.tar.gz")
+
 # Note: First hash is SKIP (tarball changes each release), others are static file hashes
 sha256sums=('SKIP' '123cb6af52ee33d04f308751929f662c1437221937eeca9a896a60f746074177' 'd1f8914fe41681eabfbf0c9da33202ab1079a1016dfd00fde5d36a327919c39e' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056' '949f950aeb0f24725c901ed9d73a4f679ae8eb4abdfaf108b80e62e6247b85e5')
 
@@ -48,6 +56,11 @@ build() {
             ;;
     esac
 
+    export DOTNET_ROOT="${srcdir}/dotnet-sdk"
+    mkdir -p "$DOTNET_ROOT"
+    tar -xzf "${srcdir}/dotnet-sdk-${_dotnet_sdk_version}-${_rid}.tar.gz" -C "$DOTNET_ROOT"
+    export PATH="$DOTNET_ROOT:$PATH"
+
     pnpm install --frozen-lockfile
     DISABLE_ESLINT_PLUGIN=true pnpm --filter @slskdn/web build
 
@@ -61,7 +74,7 @@ build() {
     dotnet publish src/slskd/slskd.csproj \
         -c Release \
         -o publish \
-        --self-contained false \
+        --self-contained true \
         -r "${_rid}" \
         -p:Version="$_dotnet_version" \
         -p:InformationalVersion="$_version" \
