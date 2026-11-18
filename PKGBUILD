@@ -3,8 +3,8 @@
 # CI sets pkgver, _tag and the checksum for each stable release
 # (.github/scripts/aur-build.sh); what is here is only a starting point.
 pkgname=subtitld
-pkgver=26.10.18.0124
-_tag=v26.10
+pkgver=26.11.18.0034
+_tag=v26.11
 pkgrel=1
 pkgdesc="Professional subtitle editor and dubbing application"
 arch=('any')
@@ -12,6 +12,10 @@ url="https://subtitld.org"
 license=('GPL-3.0-or-later')
 depends=(
     'ffmpeg'
+    # Live co-editing: media sent directly between collaborators.
+    'libdatachannel'
+    # Live co-editing's voice call.
+    'opus'
     'portaudio'
     'pyside6'
     'python'
@@ -31,9 +35,12 @@ depends=(
     'python-scipy'
     'python-sounddevice'
     'python-soundfile'
-    # Optional for pyside6 on Arch, but the app needs them.
+    # Optional for pyside6 on Arch, but the app needs them: QtWebEngine
+    # renders the preview's subtitles, QtWebSockets carries live co-editing.
     'qt6-multimedia'
     'qt6-svg'
+    'qt6-webengine'
+    'qt6-websockets'
     'hicolor-icon-theme'
 )
 optdepends=(
@@ -46,7 +53,7 @@ makedepends=(
     'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Subtitld/subtitld/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('282f49d3cca716a20b79a928dec13f7b2c520406a8c5e40ae29503638f10aac9')
+sha256sums=('333a7c299ad840a57dd9d66fad832e42b36d9c5685cdfcbe7cf3b56233664b3f')
 
 # GitHub drops the tag's leading "v" from the archive's top directory.
 _dir="$pkgname-${_tag#v}"
