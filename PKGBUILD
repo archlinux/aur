@@ -2,24 +2,24 @@
 
 pkgbase=videoduplicatefinder-git
 pkgname=("videoduplicatefinder-git" "videoduplicatefinder-cli-git" "videoduplicatefinder-webui-git")
-pkgver=4.1.1.r6.g4ab0e82
+pkgver=4.1.1.r21.ge2e163e
 pkgrel=1
 _pkgdesc="Video Duplicate Finder is a cross-platform software to find duplicated video (and image) files on hard disk based on similiarity"
 arch=('x86_64')
 url="https://github.com/0x90d/videoduplicatefinder"
 license=('AGPL-3.0-or-later')
-_dotnetver='10.0'
+_dotnetver='11.0'
 _depends=(
     'ffmpeg'
-    "dotnet-runtime-${_dotnetver}"
+    "dotnet-runtime=${_dotnetver}"
 )
 depends=(
     "${_depends[@]}"
 )
 makedepends=(
     'git'
-    "aspnet-targeting-pack-${_dotnetver}"
-    "dotnet-sdk-${_dotnetver}"
+    "aspnet-targeting-pack=${_dotnetver}"
+    "dotnet-sdk=${_dotnetver}"
 )
 source=("git+${url}.git")
 sha256sums=('SKIP')
