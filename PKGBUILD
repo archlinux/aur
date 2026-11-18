@@ -2,7 +2,7 @@
 
 pkgname=dbhub-mcp-server
 _npmname=@bytebase/dbhub
-pkgver=1.7.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Database MCP server for Postgres, MySQL, MariaDB, SQL Server, Oracle and SQLite"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs>=22.5.0')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${_npmname}/-/dbhub-${pkgver}.tgz")
 noextract=("dbhub-${pkgver}.tgz")
-sha256sums=('1e34352db62423a64b9664c31614591e272d0c8e56430655461f4d122632114e')
+sha256sums=('6c5abcec2fa271dc783d228ddb34768d888544483f0a70de3df33718792b80ee')
 
 package() {
   npm install -g --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" --ignore-scripts --no-audit --no-fund "${srcdir}/dbhub-${pkgver}.tgz"
