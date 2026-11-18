@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=agentcue-bin
 _pkgname=AgentCue
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A local-first desktop companion for AI coding agents, with task monitoring, voice alerts, MCP integration, and an animated office."
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ideshun/AgentCue/v${pkgver}/LICENSE"
 )
-sha256sums=('be8353ade4795492eafdd733b49b4661632e4349e027579e832351f9a66cda49'
+sha256sums=('92f4e46503d7c593c2631aa71d82baeae6962c3f387124ec4e4738b9c41c63b3'
             'c8ee84273c8c66d93abaa7a22601295ba17e1fb6279f0c031da0a5eed40553f3')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
