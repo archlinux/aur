@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=18.22.1
+pkgver=18.22.2
 pkgrel=1
 pkgdesc="Coding agent with the IDE wired in"
 arch=('x86_64')
@@ -51,7 +51,7 @@ source=(
     "relative-json-assets.patch"
     "rephrase-tool-docs-prompt.patch"
 )
-sha256sums=('18221eb58128383c1a695ba004c3fc1c81789a208e80e757f759ff8630a35a11'
+sha256sums=('17dac445f7d5af4ad5de28c0f60b29cee07ee5a7b645cf666245c7fb66a7c791'
             '33718946cc77d4032911d4efe03a66dbcbfbd2bb16c3da06aaeadcc637c32216'
             '0f4c3a662fac5dc6420d260c7439ab0399061a1501dbbc1692e8fdf3e8db1785'
             '724888738f0e886693d8a6aa6cfd5f6dba9a98122353e4636a9ca946ae1fa9e7'
