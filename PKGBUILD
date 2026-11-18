@@ -2,7 +2,7 @@
      
 pkgname=containerssh
 _pkgname=ContainerSSH
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Launch containers on demand with SSH'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url="https://containerssh.io"
 license=('Apache-2.0')
 makedepends=('go')
 source=("$pkgname-$pkgver::https://github.com/$_pkgname/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('c0e7e9b7bfe3bd3f85500ddc0a5b0f86162cfe7ff28ea852b56eb06b8c40b5b58f74ec4eaf4de89d2997d49af52f63f7089114588a1ce4a56a7538ca7460f038')
+b2sums=('2d8bdd18ad52f876079579e056ee3dbfba38502972f4d6bcfaddb8094d74b06b3c8000fff899aa93a1957343a0d2ee2eea396c57ab86958c911f49d6f39045d5')
      
 prepare(){
   cd "$_pkgname-$pkgver"
