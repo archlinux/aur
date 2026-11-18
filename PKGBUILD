@@ -3,7 +3,7 @@
 # Contributor: Julian Xhokaxhiu <https://julianxhokaxhiu.com>
 
 pkgname=open-webui
-pkgver=0.13.3 # renovate: datasource=github-releases depName=open-webui/open-webui
+pkgver=0.13.4 # renovate: datasource=github-releases depName=open-webui/open-webui versioning=semver-coerced
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
