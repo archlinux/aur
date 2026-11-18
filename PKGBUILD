@@ -16,7 +16,7 @@
 # SQLite is bundled (rusqlite "bundled"), so there is no sqlite dependency.
 
 pkgname=kotora
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 _build=1
 if ((_build > 1)); then _rel=$pkgver-$_build; else _rel=$pkgver; fi
@@ -51,7 +51,7 @@ optdepends=(
 makedepends=('cargo' 'pkgconf')
 options=('!lto')
 source=("$pkgname-$_rel.tar.gz::https://github.com/hanami117/kotora/releases/download/v$_rel/kotora-$_rel.tar.gz")
-sha256sums=('a41d6f156228414efefe212cb44c405516fbde12645a39793bc235c1872ce20c')
+sha256sums=('6d072d88f6b587d70357d8c6b65cb11421aa0eb2b87799607305be8139b92c2c')
 
 prepare() {
   cd "$pkgname-$pkgver"
