@@ -1,0 +1,24 @@
+pkgbase = prime-agent-bin
+	pkgdesc = Self-improving RLM agent for coding workflows and long-running autonomous tasks
+	pkgver = 0.10.4
+	pkgrel = 1
+	url = https://github.com/PrimeIntellect-ai/prime-agent
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = uv
+	optdepends = git: repository workflows
+	provides = prime-agent
+	conflicts = prime-agent
+	noextract = prime-agent-0.10.4-x86_64.tar.gz
+	noextract = prime-agent-0.10.4-aarch64.tar.gz
+	options = !strip
+	options = !debug
+	source_x86_64 = prime-agent-0.10.4-x86_64.tar.gz::https://github.com/PrimeIntellect-ai/prime-agent/releases/download/v0.10.4/prime-agent-0.10.4-linux-x64.tar.gz
+	sha256sums_x86_64 = cecf29b7057c2a876e2eca7355c9947b87ec5d84b4d2c71c373d69f0386c6f43
+	source_aarch64 = prime-agent-0.10.4-aarch64.tar.gz::https://github.com/PrimeIntellect-ai/prime-agent/releases/download/v0.10.4/prime-agent-0.10.4-linux-arm64.tar.gz
+	sha256sums_aarch64 = 279fe439dccc2374b40e20a8b852a16294f8032991c28207a8ff07e698143d62
+
+pkgname = prime-agent-bin
