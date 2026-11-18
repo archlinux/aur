@@ -1,6 +1,6 @@
 pkgbase = kocr-gui-bin
 	pkgdesc = Offline OCR for images (prebuilt GUI)
-	pkgver = 0.5.11
+	pkgver = 0.5.12
 	pkgrel = 1
 	url = https://github.com/KercyDing/kocr
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = kocr-gui-bin
 	provides = kocr-gui
 	conflicts = kocr-qt-bin
 	conflicts = kocr-gtk-bin
-	source_x86_64 = kocr_0.5.11-1_amd64.deb::https://github.com/KercyDing/kocr/releases/download/v0.5.11/kocr_0.5.11-1_amd64.deb
-	sha256sums_x86_64 = 414db38cc58829d086bc20dbb0e830dd7ad404ea879163907795d25dcdda0144
-	source_aarch64 = kocr_0.5.11-1_arm64.deb::https://github.com/KercyDing/kocr/releases/download/v0.5.11/kocr_0.5.11-1_arm64.deb
-	sha256sums_aarch64 = fa4c2f75148d85739b75457de7f2ee66abd36693c9fa33500a8e526cda5cf777
+	source_x86_64 = kocr_0.5.12-1_amd64.deb::https://github.com/KercyDing/kocr/releases/download/v0.5.12/kocr_0.5.12-1_amd64.deb
+	sha256sums_x86_64 = 06d5dbcd5fe5a9e10392112ad50de16801113b3b95f8e741a2651469348ab0c7
+	source_aarch64 = kocr_0.5.12-1_arm64.deb::https://github.com/KercyDing/kocr/releases/download/v0.5.12/kocr_0.5.12-1_arm64.deb
+	sha256sums_aarch64 = 4c8001d367912741a03c594d4d9cf40db2b4a9e8307a2c94e922e389acbce23f
 
 pkgname = kocr-gui-bin
