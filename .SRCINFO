@@ -1,6 +1,6 @@
 pkgbase = ollama-antigravity
-	pkgdesc = Zero-dependency Go Ollama-compatible HTTP bridge backed by agy acp
-	pkgver = 0.1.0
+	pkgdesc = Zero-dependency Go Ollama & OpenAI /v1/ HTTP bridge backed by agy acp
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/malwareslayer/ollama-antigravity
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ollama-antigravity
 	makedepends = git
 	depends = antigravity-cli
 	backup = etc/ollama-antigravity/env
-	source = ollama-antigravity::git+https://github.com/malwareslayer/ollama-antigravity.git#tag=v0.1.0
+	source = ollama-antigravity::git+https://github.com/malwareslayer/ollama-antigravity.git#tag=v0.2.0
 	sha256sums = SKIP
 
 pkgname = ollama-antigravity

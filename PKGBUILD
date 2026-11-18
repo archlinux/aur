@@ -1,8 +1,8 @@
 # Maintainer: Dwi Mulia Mokoginta <malwareslayer@users.noreply.github.com>
 pkgname=ollama-antigravity
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc='Zero-dependency Go Ollama-compatible HTTP bridge backed by agy acp'
+pkgdesc='Zero-dependency Go Ollama & OpenAI /v1/ HTTP bridge backed by agy acp'
 arch=('x86_64' 'aarch64')
 url='https://github.com/malwareslayer/ollama-antigravity'
 license=('MIT')
