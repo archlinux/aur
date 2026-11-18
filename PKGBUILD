@@ -1,7 +1,7 @@
 # Maintainer: 9M2PJU <9m2pju@gmail.com>
 # Contributor: Amir Shygun <a-shygun@users.noreply.github.com>
 pkgname=terrascope
-pkgver=0.3.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Braille-rendered terminal world map with live weather and aircraft"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python>=3.10' 'python-numpy' 'python-pillow' 'python-yaml' 'python-pyshp')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/a-shygun/Terrascope/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7ff0a052e6a122972554ce29e8eac09dc5a64fe696676f0691a8209d32d7c1c9')
+sha256sums=('1ea813231f5cadb24f22554a23acd3a7d284e178c0bd6ce84fa77153244b83a2')
 
 build() {
   cd "$srcdir/Terrascope-$pkgver"

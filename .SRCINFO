@@ -1,6 +1,6 @@
 pkgbase = terrascope
 	pkgdesc = Braille-rendered terminal world map with live weather and aircraft
-	pkgver = 0.3.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/a-shygun/terrascope
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = terrascope
 	depends = python-pillow
 	depends = python-yaml
 	depends = python-pyshp
-	source = terrascope-0.3.0.tar.gz::https://github.com/a-shygun/Terrascope/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 7ff0a052e6a122972554ce29e8eac09dc5a64fe696676f0691a8209d32d7c1c9
+	source = terrascope-1.0.0.tar.gz::https://github.com/a-shygun/Terrascope/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 1ea813231f5cadb24f22554a23acd3a7d284e178c0bd6ce84fa77153244b83a2
 
 pkgname = terrascope
