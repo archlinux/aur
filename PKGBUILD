@@ -5,7 +5,7 @@
 
 pkgname="wasm-pack-bin"
 pkgdesc="Your favorite Rust -> Wasm workflow tool"
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 arch=("x86_64" "aarch64")
 url="https://github.com/wasm-bindgen/wasm-pack"
@@ -17,8 +17,8 @@ options=(!debug)
 
 source_x86_64=("${_ghurl}/releases/download/v${pkgver}/wasm-pack-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${_ghurl}/releases/download/v${pkgver}/wasm-pack-v${pkgver}-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=("c09f971ecaed9a2efc80fdcea7a00ef6b53c7fadc8c57d1f61b53a6aa66b668a")
-sha256sums_aarch64=("e17ef0806381c3a0acb9c9ddad643a49facaa5a2ecf657a421d4d8f3357a24b7")
+sha256sums_x86_64=("410101009739b9d01c7d5affaaad6e9c9a24b4cba6791a4805db8e89b9bf7af2")
+sha256sums_aarch64=("7004853c7925ae1984033b5f25866ec604bbc921ef956d5e6c5595bc5af6d30c")
 
 optdepends=(
 	'rust: for building Rust crates'
