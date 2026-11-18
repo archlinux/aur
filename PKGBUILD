@@ -1,6 +1,6 @@
 # Maintainer: Matteo Nista <m.nista@hotmail.it>
 pkgname=gtk4-polkit-agent-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Minimal GTK4 polkit authentication agent for Wayland (prebuilt)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('gtk4-polkit-agent')
 conflicts=('gtk4-polkit-agent')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/-/releases/v$pkgver/downloads/gtk4-polkit-agent-v$pkgver-x86_64.tar.gz")
-sha256sums=('54fa6c57f3b69eeced3cd888bca6498ae675084f3d3d5524445f91a4048f679e')
+sha256sums=('ff416cf185848210ba8b0b22b3cdda90c310035644b98b5c91f96c647a6ced49')
 
 package() {
   install -Dm755 "$srcdir/gtk4-polkit-agent" "$pkgdir/usr/bin/gtk4-polkit-agent"
