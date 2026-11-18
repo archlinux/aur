@@ -1,0 +1,24 @@
+pkgbase = kanbanana
+	pkgdesc = Kanban board for your Linear issues, with Claude Code built in
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kaareloun/kanbanana
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = wayland
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxrandr
+	optdepends = xdg-desktop-portal: file picker for attaching images
+	optdepends = claude-code: Claude Code integration over MCP
+	source = kanbanana-0.1.0.tar.gz::https://github.com/kaareloun/kanbanana/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 02ebf3b3211b51321b0ed38b9852bdfa70ef6f9dcf9566533967f518550921e3
+
+pkgname = kanbanana
