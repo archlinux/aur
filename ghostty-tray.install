@@ -4,14 +4,3 @@ post_install() {
   echo "    \"Ghostty Tray\" from the application launcher."
   echo "==> Example profiles: /usr/share/doc/ghostty-tray/examples/profiles"
 }
-
-post_upgrade() {
-  # Since 0.1.2 a running tray restarts itself when /usr/bin/ghostty-tray is
-  # replaced, so upgrades need no action. Older versions can't, and ran as a
-  # systemd user service; the new version removes that service's leftover link.
-  if [ "$(vercmp "$2" 0.1.2)" -lt 0 ]; then
-    echo "==> Ghostty Tray now starts via autostart instead of a systemd service."
-    echo "    The old version keeps running until you log out; log out and back in"
-    echo "    once to switch. Later upgrades apply automatically."
-  fi
-}

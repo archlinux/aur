@@ -2,7 +2,7 @@
 
 pkgname=ghostty-tray
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE Plasma system tray launcher for Ghostty with profiles and quick terminal toggle"
 arch=('any')
 url="https://github.com/Natetronn/ghostty-tray"
