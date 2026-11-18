@@ -1,6 +1,6 @@
 # Maintainer: Patrick Bergner <aur-contact@rldn.de>
 pkgname=pit
-pkgver=2.10.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='Work with a directory tree of several git repositories as if it were one'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('git')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e29d5c2edcd3c7b7c69ed2aee861a6132f5c5471f655d6f698f643f30a220085')
+sha256sums=('638ff5aa5eaa3124640a3d4ac17ab6686dd1d22562a67fe91252ee1d7921d53a')
 
 build() {
     cd "$pkgname-$pkgver"
