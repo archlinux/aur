@@ -1,7 +1,7 @@
 # Maintainer: 1ay1 <https://github.com/1ay1>
 # Generated automatically by .github/workflows/release.yml — do not edit by hand.
 pkgname=neowall-bin
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="GPU shader wallpapers for Wayland and X11 (prebuilt binary)"
 arch=('x86_64')
@@ -11,9 +11,9 @@ depends=('wayland' 'mesa' 'libpng' 'libjpeg-turbo' 'libx11' 'libxrandr' 'libxkbc
 provides=('neowall')
 conflicts=('neowall' 'neowall-git')
 options=(!strip !debug)
-source=("neowall-$pkgver-x86_64.tar.gz::https://github.com/1ay1/neowall/releases/download/v0.10.1/neowall-linux-x86_64-arch.tar.gz"
-        "LICENSE-$pkgver::https://raw.githubusercontent.com/1ay1/neowall/v0.10.1/LICENSE")
-sha256sums=('579e82f36d7c1a8d645fb5bc769282276a3f052dfcd79d9b9650bed1c2e9f7bb'
+source=("neowall-$pkgver-x86_64.tar.gz::https://github.com/1ay1/neowall/releases/download/v0.10.2/neowall-linux-x86_64-arch.tar.gz"
+        "LICENSE-$pkgver::https://raw.githubusercontent.com/1ay1/neowall/v0.10.2/LICENSE")
+sha256sums=('54a3f8a9a38e657be472bdd5bf804ac6d414b093cbe32f4dd38c587b4fe6a745'
             'SKIP')
 
 package() {
