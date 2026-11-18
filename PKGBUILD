@@ -15,7 +15,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/mov-watch"
-  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*\)-\([^-]*\)-\(.*\)/\1+r\2.\3/' || echo "${pkgver}"
+  # Beta pre-release tags (v2.3.3-beta.4) break the describe/sed pattern, so
+  # they are excluded; stable tags keep this package's version ordering intact.
+  git describe --long --tags --exclude '*beta*' 2>/dev/null | sed 's/^v//;s/\([^-]*\)-\([^-]*\)-\(.*\)/\1+r\2.\3/' || echo "${pkgver}"
 }
 
 build() {
