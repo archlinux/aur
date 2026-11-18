@@ -1,0 +1,15 @@
+post_install() {
+  echo "==> To start Ghostty Tray now and at every login, run as your user:"
+  echo "      systemctl --user enable --now ghostty-tray.service"
+  echo "==> Example profiles: /usr/share/doc/ghostty-tray/examples/profiles"
+  echo "    Copy them to ~/.config/ghostty/profiles/ to use them."
+}
+
+post_upgrade() {
+  echo "==> Restart to use the new version:"
+  echo "      systemctl --user restart ghostty-tray.service"
+}
+
+pre_remove() {
+  echo "==> Each user should run: systemctl --user disable --now ghostty-tray.service"
+}
