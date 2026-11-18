@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-rs-bin
 pkgdesc="TUI font picker with live previews written in Rust"
 
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,8 +30,8 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('07b475e91c2a0f95b65b919be70f018c9aa4b99e5665e8e6490a61509b300914')
-sha256sums_x86_64=('5f85f0a5d6724583bf9e5aa175ac77b490dca9877493c8a0514b4986418b418e')
-sha256sums_aarch64=('3bafeec80019428b06c728183c5ca942de4327d4ac4535a47249eb228367cc8c')
+sha256sums_x86_64=('c78dd60695f811a6d2933feb294cba6cb0ab3c9ab265dc1e20f62c8e9e1a0301')
+sha256sums_aarch64=('3b68e871a5d757a5bae9bd870d2be90065cf834159ddfcf81f3516fe3478e228')
 
 
 package() {
