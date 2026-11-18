@@ -1,7 +1,7 @@
 # Maintainer: bobrik <an9rax@gmail.com>
 
 pkgname=dota2-minify-bin
-pkgver=2
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Dota 2 Mod Patcher & Toolkit — prebuilt binary"
 arch=('x86_64')
@@ -22,7 +22,7 @@ conflicts=('dota2-minify' 'dota2-minify-rc-bin')
 # https://github.com/Egezenn/dota2-minify/releases
 _tag="Minify-v${pkgver}"
 source=("${pkgname}-${pkgver}.zip::https://github.com/Egezenn/dota2-minify/releases/download/${_tag}/Minify-v${pkgver}-linux.zip")
-sha256sums=('7968db46be30a5c1a5cad122fdf6d836bd28ccf3dfb10a201128b02d8716e529')
+sha256sums=('598ce28a6b2d22c63f33260381d21946d2dde5eac2a822c3f02975b077f95b5f')
 
 noextract=("${pkgname}-${pkgver}.zip")
 
@@ -30,10 +30,9 @@ prepare() {
     cd "${srcdir}"
     rm -rf minify
     7za x -ominify "${pkgname}-${pkgver}.zip"
-    icotool -x \
-        --width=256 \
-        --height=256 \
-        -o "${srcdir}/favicon.png" \
+    rm -rf icons
+    mkdir icons
+    icotool -x -o "${srcdir}/icons" \
         "${srcdir}/minify/_internal/bin/images/favicon.ico"
 }
 
@@ -82,8 +81,13 @@ Categories=Game;
 Keywords=dota2;mod;patcher;
 EOF
 
-    install -Dm644 "${srcdir}/favicon.png" \
-        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/dota2-minify.png"
+    # The .ico set of sizes varies between releases (v2.0.1 ships only 32x32)
+    local _icon _size
+    for _icon in "${srcdir}"/icons/*.png; do
+        _size=$(basename "${_icon}" .png | awk -F_ '{print $NF}' | cut -dx -f1-2)
+        install -Dm644 "${_icon}" \
+            "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/dota2-minify.png"
+    done
 
     install -Dm644 "${pkgdir}/usr/share/dota2-minify/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
