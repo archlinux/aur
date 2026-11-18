@@ -6,7 +6,7 @@
 pkgname=radarr
 _pkgname=Radarr
 pkgver=7.0.3.10918
-pkgrel=2
+pkgrel=3
 pkgdesc='Movie organizer/manager for usenet and torrent users'
 arch=(x86_64 aarch64 armv7h)
 url='https://radarr.video'
@@ -80,6 +80,7 @@ prepare() {
 
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
+    -p:NuGetAudit=false \
     --runtime "${_runtime}" \
     --locked-mode
 
