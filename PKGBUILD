@@ -1,9 +1,8 @@
 # Maintainer: Chapman <touch65536@gmail.com>
 
 pkgname=eusoft-ting-en
-pkgver=26.6.2
-_source_ver=26.9.1
-pkgrel=2
+pkgver=26.9.0
+pkgrel=1
 pkgdesc="Daily English Listening (每日英语听力) for Linux (Community Repackage)"
 arch=('x86_64')
 url="https://www.eudic.net/v4/en/app/ting"
@@ -34,7 +33,7 @@ source=(
     "LICENSE"
 )
 source_x86_64=(
-    "${pkgname}-${pkgver}.deb::https://static.eudic.net/pkg/ting_en/ting_en.deb?v=${_source_ver}"
+    "${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/ting_en/ting_en.deb"
 )
 noextract=("${pkgname}-${pkgver}.deb")
 
@@ -44,16 +43,17 @@ sha256sums=(
     '377ddd4aecf677aa2b0fdd264f6285118f3e01f6463eb957db972d0b8404cf69'
 )
 sha256sums_x86_64=(
-    'f90beed26f9e6a834cb6055925d8d844c6290bb44a7da91d9d0b674da8b3cd5b'
+    'bf24f5f66d2976a720b4db7a5471a3c330449f694ab1f8e6eb3060da9edac76c'
 )
 
 prepare() {
-    bsdtar -xf "${pkgname}-${pkgver}.deb" data.tar.xz
+    rm -f data.tar.*
+    bsdtar -xf "${pkgname}-${pkgver}.deb" 'data.tar.*'
 }
 
 package() {
     # Extract opt and usr hierarchies from official deb data
-    tar -xf data.tar.xz -C "${pkgdir}"
+    bsdtar -xf data.tar.* -C "${pkgdir}"
 
     # Install clean launcher script
     install -Dm755 "${srcdir}/ting-en.sh" "${pkgdir}/usr/bin/ting-en"
