@@ -3,7 +3,7 @@
 pkgname=realtek-rtl8821ce-dkms-git
 _pkgbase=realtek-rtl8821ce
 pkgver=r193.g884b755
-pkgrel=1
+pkgrel=2
 pkgdesc="rtl8821CE driver with support for linux kernel 7.x+"
 arch=('i686' 'x86_64')
 url="https://github.com/sewaustav/rtl8821ce"
