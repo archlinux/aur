@@ -1,8 +1,8 @@
 # Maintainer: Remy Huang <me@remya.top>
 pkgname=remya-core-bin
 _app_id=remya_core
-_upstream_ver=0.1.0
-pkgver=0.1.0
+_upstream_ver=0.2.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Shared Remya daemon, updater and CLI"
 arch=('x86_64')
@@ -26,7 +26,7 @@ conflicts=('remya-core' 'remya-core-git')
 options=('!strip')
 install=remya-core.install
 source=("${_app_id}-${_upstream_ver}-linux-x86_64.tar.zst::${url}/releases/download/v${_upstream_ver}/${_app_id}-${_upstream_ver}-linux-x86_64.tar.zst")
-sha256sums=('c94c06823abda121f675fc1a524fc97469726a7ec9d868541c8f321601406e18')
+sha256sums=('fe4e8ac32d6ccf1a4446528550c9015257e98f712a320f71ec2a029e256879a6')
 
 package() {
   cd "${srcdir}/${_app_id}-${_upstream_ver}-linux-x86_64"
