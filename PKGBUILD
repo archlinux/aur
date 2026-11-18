@@ -1,6 +1,6 @@
 # Maintainer: earthintruders <<earthintruders at tutanota dot de>>
 pkgname=qobine-git
-pkgver=v2026.07.31.r0.ga628f39
+pkgver=v2026.11.13.r19.gb143df5
 pkgrel=1
 pkgdesc="High resolution audio player backed by Qobuz (git-version). Formaly known as qobuz-player"
 arch=('x86_64')
@@ -18,15 +18,12 @@ options=('!lto')
 pkgver() {
   cd "$pkgname"
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  cd qobuz-player-web
 }
 
 prepare() {
     cd ${pkgname}
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
-    cd web-module
-    npm install
+cargo fetch --locked --target $(rustc --print host-tuple)
 }
 
 build() {
@@ -34,18 +31,19 @@ build() {
     #refuses to work with clang
     export CC=gcc
     export CXX=g++
+
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    #Build the webUI (thanks to moystard)
-    cd web-module
-    npm run build
-    npm run build-assets
-    cd ..
-    #Build the database
+
+    # Force recompilation of web-module so rust-embed picks up assets
+    cargo clean -p web-module
+
+    # Build the database
     export DATABASE_URL="sqlite:///tmp/qobuz-player.db"
     cargo sqlx db create
     cargo sqlx migrate run --source player-module/migrations
-    #Build the program
+
+    # Build the program
     cargo build --frozen --release
 
 
