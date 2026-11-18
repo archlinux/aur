@@ -10,7 +10,7 @@ license=("MIT" "Apache-2.0")
 source=("git+https://codeberg.org/filmroellchen/uptime-miku.git")
 b2sums=("SKIP")
 
-pkgrel=1
+pkgrel=2
 pkgver=0.1.1.r65ace05
 
 provides=("${pkgname%-git}=${pkgver}")
@@ -55,11 +55,12 @@ build() {
 package() {
 	cd "${srcdir}/uptime-miku"
 	install -vD target/release/uptime-miku-server "${pkgdir}/usr/bin/uptime-miku"
-	install -vDm644 -t "${pkgdir}/usr/share/licenses/uptime-miku-git" UNLICENSE
-	install -vD assets/res/fonts/LICENSE.txt "${pkgdir}/usr/share/licenses/LICENSE-OFL"
+	install -vDm644 -t "${pkgdir}/usr/share/licenses/uptime-miku" UNLICENSE
+	install -vD assets/res/fonts/LICENSE.txt "${pkgdir}/usr/share/licenses/uptime-miku/LICENSE-OFL"
 	pushd target
 	find frontend-release -type f -exec install -vDm644 "{}" "${pkgdir}/usr/share/uptime-miku/{}" \;
 	popd
+	mv "${pkgdir}/usr/share/uptime-miku/frontend-release" "${pkgdir}/usr/share/uptime-miku/frontend"
 	install -vD etc/uptime-miku.kdl "${pkgdir}/etc/uptime-miku.kdl"
 	# TODO: systemd files
 }
