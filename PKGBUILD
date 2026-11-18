@@ -2,11 +2,13 @@
 #
 # Builds a pinned GitHub release archive for the AUR.
 #
+# `release.sh` fills in pkgver and sha256sums from the tag it just created.
+#
 # The installed binary remains `nsticky`, so this package replaces upstream
 # nsticky without changing its command, configuration, socket or systemd unit.
 
 pkgname=better-nsticky
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Sticky and staged window management for the niri Wayland compositor (drop-in nsticky)"
 arch=('x86_64')
@@ -19,7 +21,7 @@ provides=('nsticky')
 conflicts=('nsticky')
 options=('!lto') # the release profile already enables LTO
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fram446742/better-nsticky/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('540af9ab6410b6c07bf13f0d1eba982bb8232d3a628fc9d72f7e4fc4f1e04231')
+sha256sums=('61931f85c551b54183661ba4701c92bd5f0013ba492514e1aa124fb9d7ed871b')
 
 build() {
   cd "$pkgname-$pkgver"
