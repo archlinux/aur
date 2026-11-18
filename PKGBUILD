@@ -1,7 +1,7 @@
 # Maintainer: crux <crrvx@outlook.com>
 
 pkgname=dsh-bin
-pkgver=0.2.2_rc.4
+pkgver=0.2.2_rc.5
 pkgrel=1
 pkgdesc='DeepSeek Harness: Everything is a Plugin'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ options=('!strip')
 provides=('dsh')
 conflicts=('dsh' 'dsh-git' 'deepseek-harness' 'deepseek-harness-git' 'deepseek-harness-bin')
 source=("dsh-${pkgver}.tgz::https://registry.npmjs.org/@deepseek-ai/dsh/-/dsh-${pkgver//_/-}.tgz")
-sha256sums=('5544f3d343131eb142f79a29c3f474c54fb8aa55e5389afe895d1e1c09730884')
+sha256sums=('67da5a3c458f46cd278e0eec6ad0e3a44e99fd13087c6f11a1b362268900a52c')
 
 package() {
   npm install --global \
