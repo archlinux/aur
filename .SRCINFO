@@ -30,7 +30,7 @@ pkgbase = eusoft-frhelper
 	sha256sums = 257c950831da8c32d5fdd843e08ca3b7b74e4867e63d58ce0ab143ddf11e9e14
 	sha256sums = 3f2fd84ce1916c9d69fe5415ee335f366cf7fd54d77689bae17374373b1c517d
 	sha256sums = 377ddd4aecf677aa2b0fdd264f6285118f3e01f6463eb957db972d0b8404cf69
-	source_x86_64 = eusoft-frhelper-13.5.2.deb::https://static.eudic.net/pkg/frhelper.deb
+	source_x86_64 = eusoft-frhelper-13.5.2.deb::https://static.frdic.com/pkg/frhelper.deb
 	sha256sums_x86_64 = ce5fcba8f0a2ffd0bff6b62e63f658883e795577caca130698de799a8647530c
 
 pkgname = eusoft-frhelper
