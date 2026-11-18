@@ -1,0 +1,35 @@
+DISCLAIMER
+
+This package is an UNOFFICIAL community Linux port of the WorkBuddy domestic
+client (https://www.workbuddy.cn). Tencent's official Linux package still
+ships an older 5.6.x application than the current Windows release, so this
+package combines the official Windows application payload with the Electron
+runtime and Linux helper binaries from Tencent's official domestic Linux deb.
+
+- WorkBuddy, WorkBuddy AI and CodeBuddy are products/trademarks of Tencent.
+  This project is not affiliated with, endorsed by, or supported by Tencent.
+- All application content is downloaded from Tencent's official servers at
+  build time and is NOT redistributed by this package. The upstream software
+  is proprietary; use of it is governed by Tencent's own Terms of Service and
+  Privacy Policy.
+- The app payload comes from the official Windows archive. Its app.asar is
+  platform-neutral JavaScript, and this package removes the Windows/macOS
+  binaries that cannot run on Linux.
+- The Electron runtime, the bundled node/python session runtimes and the
+  Linux CLI helpers (ripgrep, genie-trash, sandbox) come from Tencent's
+  official domestic Linux deb. That Electron build carries the proprietary
+  "workbuddyStorage" binding that sign-in depends on; stock Electron fails
+  with CREDENTIAL_BOOTSTRAP_FAILED.
+- Auto-update is non-functional on Linux. Upgrade by rebuilding this package.
+- Known functional degradations versus the official Windows client:
+  enterprise IM channels (the Windows-only native backend is unavailable, so
+  the client falls back to the unavailable backend), the WeChat Pay plugin
+  (no Linux build), and the Tencent Docs deep-collaboration engine (the
+  official Linux SDK shipped by the deb is older than the Windows payload).
+- When installed alongside the international port (workbuddy-intl-agent) both
+  editions use the same ~/.workbuddy data directory and the workbuddy:// URI
+  scheme. Run one at a time, or export WORKBUDDY_CONFIG_DIR to a different
+  path for one of them, otherwise the single-instance lock and the profile
+  database are shared.
+- Do NOT report issues with this port to Tencent's official support
+  channels. File issues with the community port project instead.
