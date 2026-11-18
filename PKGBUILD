@@ -1,6 +1,7 @@
 # Maintainer: Novaturiente
 # Prebuilt WebKitGTK 6.0 for novabrowser-webkit: PGO + x86-64-v3 + ThinLTO, no
-# introspection/docs, plus novabrowser patches: colour filter (dark mode keeps dark parts dark),
+# introspection/docs, plus novabrowser patches: dark-mode colour filter with Dark Reader's
+# colour maps (MIT, github.com/darkreader/darkreader),
 # the webkitglib/2.54 branch fixes since 2.54.2 (security), a fix for a Skia self-deadlock that
 # froze pages under memory pressure, and upstream f311092c0d (AcceleratedSurface timer abort).
 # WebRTC is on (GStreamer webrtcbin + libnice) for Google Meet.
@@ -8,7 +9,7 @@
 # Upstream source: https://webkitgtk.org/releases/webkitgtk-$pkgver.tar.xz
 pkgname=webkitgtk-6.0-nova-bin
 pkgver=2.54.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Web content engine for GTK 4 (PGO + x86-64-v3 + ThinLTO build with novabrowser patches, prebuilt)"
 url="https://github.com/Novaturiente/novabrowser-webkit"
 arch=(x86_64)
@@ -29,7 +30,7 @@ conflicts=(webkitgtk-6.0 webkitgtk-6.0-nova)
 options=(!strip !debug)
 _tag=webkitgtk-6.0-nova-$pkgver-$pkgrel
 source=("$_tag-x86_64.tar.zst::$url/releases/download/$_tag/$_tag-x86_64.tar.zst")
-sha256sums=('6a393b9e8955bc5ba3f9c08b68652c91b3c167a4efbed71bf4eb56de9cade9bf')
+sha256sums=('ea414c69393da8f8920036359902e51d12238d7c30a32ee689ba148b4e62815f')
 
 prepare() {
   /lib/ld-linux-x86-64.so.2 --help 2>/dev/null | grep -q 'x86-64-v3 (supported' || {

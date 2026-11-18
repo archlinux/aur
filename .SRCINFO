@@ -1,7 +1,7 @@
 pkgbase = webkitgtk-6.0-nova-bin
 	pkgdesc = Web content engine for GTK 4 (PGO + x86-64-v3 + ThinLTO build with novabrowser patches, prebuilt)
 	pkgver = 2.54.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Novaturiente/novabrowser-webkit
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -71,7 +71,7 @@ pkgbase = webkitgtk-6.0-nova-bin
 	conflicts = webkitgtk-6.0-nova
 	options = !strip
 	options = !debug
-	source = webkitgtk-6.0-nova-2.54.2-4-x86_64.tar.zst::https://github.com/Novaturiente/novabrowser-webkit/releases/download/webkitgtk-6.0-nova-2.54.2-4/webkitgtk-6.0-nova-2.54.2-4-x86_64.tar.zst
-	sha256sums = 6a393b9e8955bc5ba3f9c08b68652c91b3c167a4efbed71bf4eb56de9cade9bf
+	source = webkitgtk-6.0-nova-2.54.2-5-x86_64.tar.zst::https://github.com/Novaturiente/novabrowser-webkit/releases/download/webkitgtk-6.0-nova-2.54.2-5/webkitgtk-6.0-nova-2.54.2-5-x86_64.tar.zst
+	sha256sums = ea414c69393da8f8920036359902e51d12238d7c30a32ee689ba148b4e62815f
 
 pkgname = webkitgtk-6.0-nova-bin
