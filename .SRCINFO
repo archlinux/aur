@@ -1,6 +1,6 @@
 pkgbase = postbird-bin
 	pkgdesc = Open source PostgreSQL GUI client.
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/Paxa/postbird
 	arch = aarch64
@@ -8,14 +8,14 @@ pkgbase = postbird-bin
 	license = MIT
 	depends = glibc
 	depends = hicolor-icon-theme
-	provides = postbird=0.9.1
+	provides = postbird=0.9.2
 	conflicts = postbird
 	options = !strip
-	source = LICENSE-0.9.1::https://raw.githubusercontent.com/Paxa/postbird/v0.9.1/LICENSE
+	source = LICENSE-0.9.2::https://raw.githubusercontent.com/Paxa/postbird/v0.9.2/LICENSE
 	sha256sums = d93e84fa24bbea7e92d6cd171968d8da1f4a28047cc704f0700d17b57c7a9a9c
-	source_aarch64 = postbird-0.9.1-aarch64.deb::https://github.com/Paxa/postbird/releases/download/v0.9.1/Postbird-linux-arm64.deb
-	sha256sums_aarch64 = ac0f57d5e33b554728990ce18d10e18e49db7c55a30dd1f5e43bddec5a731085
-	source_x86_64 = postbird-0.9.1-x86_64.deb::https://github.com/Paxa/postbird/releases/download/v0.9.1/Postbird-linux-x64.deb
-	sha256sums_x86_64 = c038ce1ed53f52f6e56f6f9faba9083811723b70f875f119e7523f2cff750891
+	source_aarch64 = postbird-0.9.2-aarch64.deb::https://github.com/Paxa/postbird/releases/download/v0.9.2/Postbird-linux-arm64.deb
+	sha256sums_aarch64 = 1970a9bf65467863f5c02d56537f4d4ea5f984383f57718aee920ff961008d44
+	source_x86_64 = postbird-0.9.2-x86_64.deb::https://github.com/Paxa/postbird/releases/download/v0.9.2/Postbird-linux-x64.deb
+	sha256sums_x86_64 = 7d02294419e95605a09e5a836569e02b9265cfe042a2f27f488407bb880a13e7
 
 pkgname = postbird-bin
