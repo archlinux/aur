@@ -7,16 +7,16 @@
 #   4. push PKGBUILD + .SRCINFO to ssh://aur@aur.archlinux.org/autoroute.git
 
 pkgname=autoroute
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="Persistent PipeWire routing manager — routing rules that survive app relaunches"
+pkgdesc="Keeps your PipeWire routes in place when apps restart"
 arch=('x86_64')
 # The GitHub mirror is the AUR source: git.bussy.cloud is a self-hosted Gitea behind
 # Cloudflare, so it is not a dependable fetch target for everyone building this package.
 url="https://github.com/SimplyJustJessie/AutoRoute"
 license=('MIT')
 # pipewire: pw-dump / pw-link / pw-mon — how AutoRoute reads and edits the graph.
-# libpulse: pactl — loads/unloads the null sinks behind app-managed virtual sinks.
+# libpulse: pactl loads the null sinks behind virtual sinks; libpulse.so drives the level meters.
 # fontconfig: Avalonia's text stack resolves fonts through it at startup.
 depends=('pipewire' 'wireplumber' 'libpulse' 'dotnet-runtime-10.0' 'fontconfig'
          'hicolor-icon-theme')
@@ -24,7 +24,7 @@ makedepends=('dotnet-sdk-10.0')
 # GitHub archives extract to <repo>-<pkgver>, e.g. AutoRoute-0.4.1 (not $pkgname).
 _srcdir="AutoRoute-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('519b41594685d185edda4a2b26970da47a1c527b638852e5bc61dd0985525ca6')
+sha256sums=('762d4e27b6c313b6140c6c0cbbcf62c8ce5b283d0364c2d9e1fd9c5e4c619304')
 options=('!strip') # .NET assemblies must not be stripped
 
 build() {
