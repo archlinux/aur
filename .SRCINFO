@@ -1,8 +1,8 @@
 pkgbase = plumero
 	pkgdesc = A command line tool to tidy up home and /etc folders.
-	pkgver = 0.0.2
+	pkgver = 0.0.4
 	pkgrel = 1
-	url = https://codeberg.org/ivan.zaera/plumero
+	url = https://codeberg.org/ivan-zaera/plumero
 	install = install.sh
 	arch = pentium4
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = plumero
 	depends = ncurses
 	depends = pacman
 	backup = etc/plumero/config
-	source = plumero-0.0.2.tar.gz::https://codeberg.org/ivan.zaera/plumero/archive/0.0.2.tar.gz
-	sha256sums = a0372299f56b6f27b231044bd7a12d492fe734f6eabbf565acff97bad17bd328
+	source = plumero-0.0.4.tar.gz::https://codeberg.org/ivan.zaera/plumero/archive/0.0.4.tar.gz
+	sha256sums = 16a2383a3e18d4173ab34e9593f0426d88e55878fdd1b82d21adb99ac9a3aa20
 
 pkgname = plumero
