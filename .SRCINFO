@@ -1,0 +1,32 @@
+pkgbase = epixnet
+	pkgdesc = Decentralized peer-to-peer web platform (node, browser launcher, and EVX worker)
+	pkgver = 0.6.8
+	pkgrel = 1
+	url = https://github.com/EpixZone/EpixNet
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = protobuf
+	depends = cairo
+	depends = dbus
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = systemd-libs
+	depends = zlib
+	optdepends = firefox-esr-bin: recommended browser allowing unsigned Epix Wallet extension
+	optdepends = firefox: standard web browser (runs without wallet extension due to signature enforcement)
+	optdepends = libayatana-appindicator: system tray icon support (dlopened at runtime)
+	provides = epixnet=0.6.8
+	conflicts = epixnet-bin
+	conflicts = epixnet-git
+	options = !lto
+	source = epixnet-0.6.8.tar.gz::https://github.com/EpixZone/EpixNet/archive/refs/tags/v0.6.8.tar.gz
+	sha256sums = 685b4bdc106acd261d8246696fcc3005883a4344bcb383313fb1dfd0121aaefc
+
+pkgname = epixnet
