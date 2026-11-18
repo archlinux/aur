@@ -1,6 +1,6 @@
 pkgbase = flux9s
 	pkgdesc = A K9s-inspired terminal UI for monitoring Flux resources in real-time
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/dgunzy/flux9s
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = flux9s
 	depends = glibc
 	depends = libgcc
 	options = !lto
-	source = flux9s-1.5.2.tar.gz::https://github.com/dgunzy/flux9s/archive/refs/tags/v1.5.2.tar.gz
-	sha256sums = 206634a4cc2af3e5e901d57a17ee718c7edf4068e161cd30840b7675f8935457
+	source = flux9s-1.5.3.tar.gz::https://github.com/dgunzy/flux9s/archive/refs/tags/v1.5.3.tar.gz
+	sha256sums = e73074ccc84790951a2f4e4ceb3aa880712010d1f5acb488e94470713957c10e
 
 pkgname = flux9s
