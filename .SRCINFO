@@ -1,6 +1,6 @@
 pkgbase = romforge
 	pkgdesc = Identify, tidy and play your ROM collection
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/romforge
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = romforge
 	optdepends = uq: your games in look=see>do_ on uQ, its game-mode window rule and its theme
 	conflicts = romforge-bin
 	options = !lto
-	source = romforge-0.18.0.tar.gz::https://github.com/asafelobotomy/romforge/archive/refs/tags/v0.18.0.tar.gz
-	sha256sums = 5bebcc6c32d5af455abd3b33aa7684f97b557d36fcbba1f834d496af3b845667
+	source = romforge-0.18.1.tar.gz::https://github.com/asafelobotomy/romforge/archive/refs/tags/v0.18.1.tar.gz
+	sha256sums = c4683502028d304b844f40177dd84557be1da6203b72812bc4d933f411e5e5a3
 
 pkgname = romforge
