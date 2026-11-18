@@ -1,0 +1,6 @@
+[richmond-council-rss]
+source = "github"
+github = "dcelasun/richmond-council-rss"
+use_max_tag = true
+prefix = "v"
+include_regex = '^v[\d.]+$'
