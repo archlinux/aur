@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=klive-ide-bin
 _pkgname='Klive IDE'
-pkgver=0.68.1
+pkgver=0.69.0
 _electronversion=45
 pkgrel=1
 pkgdesc="A retro computer emulator and IDE for Z80 lovers."
@@ -27,8 +27,8 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/downl
 sha256sums=('ad04d247c1ea46d2a869ae87c1fc1dc36c6b2feb60d0b9f6c155a4dfe7ca7f34'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
-sha256sums_aarch64=('0eb06102824037ae8c93782dfa01dae1de94169428cebb46764a753e4a689ba4')
-sha256sums_x86_64=('580825e5d4a41f5be41d6e4b5250e0c6f98166d5ef2ee1515ad7cb04d7d25663')
+sha256sums_aarch64=('ba43767012796f6588c48fbd8eb370dabda213f559e94e6f62233e127d5ff0ff')
+sha256sums_x86_64=('f793c2ea603cc9af5f1257678b678fefc822ca5ee36050280bd514c366bea380')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
