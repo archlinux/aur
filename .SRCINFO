@@ -1,6 +1,6 @@
 pkgbase = samba-util-bin
 	pkgdesc = A simple and modern GUI for managing Samba.
-	pkgver = 4.4.0
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://github.com/mijocecr/samba-util
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = samba-util-bin
 	optdepends = cifs-utils: CIFS utilities for manual mounts
 	options = !debug
 	options = !strip
-	source = https://github.com/mijocecr/samba-util/releases/download/samba-util_v4.4.0/SAMBA-Util.tar.gz
-	sha256sums = 597052001032f23112257853ee537a3c672b814a1460686b68049af4ca440592
+	source = https://github.com/mijocecr/samba-util/releases/download/samba-util_v4.5.0/SAMBA-Util.tar.gz
+	sha256sums = f1cb2c7925dc1adc2c7a0b76d7ba29814dc16c55a97bcfa4d7ecf2368e2b40cb
 
 pkgname = samba-util-bin
