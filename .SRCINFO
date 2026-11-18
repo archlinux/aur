@@ -1,6 +1,6 @@
 pkgbase = dumate-bin
 	pkgdesc = Baidu DuMate desktop AI client
-	pkgver = 1.0.92
+	pkgver = 1.0.93
 	pkgrel = 1
 	url = https://www.dumate.cn/
 	install = dumate-bin.install
@@ -41,7 +41,7 @@ pkgbase = dumate-bin
 	conflicts = dumate
 	conflicts = qianfan-desktop-app
 	options = !strip
-	source_x86_64 = dumate-bin-1.0.92-x86_64.deb::https://dumate-app-public.cdn.bcebos.com/release-info/linux-artifacts/Dumate-linux-amd64-latest.deb
-	sha256sums_x86_64 = 72995d729193a83f5d227c9d812ebdeeb27adaec9f49f288b3342cc7269774de
+	source_x86_64 = dumate-bin-1.0.93-x86_64.deb::https://dumate-app-public.cdn.bcebos.com/release-info/linux-artifacts/Dumate-linux-amd64-latest.deb
+	sha256sums_x86_64 = 4c1c55e5a0356e12408e55410c57c11d8b80118f8579059ebef3ef1ae78133f4
 
 pkgname = dumate-bin
