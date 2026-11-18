@@ -1,0 +1,7 @@
+# makepkg artifacts
+/pkg/
+/src/
+/epixnet/
+*.pkg.tar.*
+*.log
+*.log.*
