@@ -39,8 +39,6 @@ build() {
 
 package_videoduplicatefinder() {
     pkgdesc="${_pkgdesc}"
-    provides=("videoduplicatefinder")
-    conflicts=("videoduplicatefinder")
 
     install -d -m 755 "${pkgdir}/usr/bin"
     ln -s "/opt/videoduplicatefinder/VDF.GUI" "${pkgdir}/usr/bin/VDF.GUI"
@@ -68,8 +66,6 @@ package_videoduplicatefinder-cli() {
     cd "videoduplicatefinder-${pkgver}/outputCLI"
 
     pkgdesc="${_pkgdesc} (CLI)"
-    provides=("videoduplicatefinder-cli")
-    conflicts=("videoduplicatefinder-cli")
 
     find . -type d -exec install -d -m 755 {} "${pkgdir}/opt/videoduplicatefinder-cli/{}" \;
     find . -type f -exec install -m 644 {} "${pkgdir}/opt/videoduplicatefinder-cli/{}" \;
@@ -85,8 +81,6 @@ package_videoduplicatefinder-webui() {
     cd "videoduplicatefinder-${pkgver}/outputWeb"
 
     pkgdesc="${_pkgdesc} (WebUI)"
-    provides=("videoduplicatefinder-webui")
-    conflicts=("videoduplicatefinder-webui")
 
     depends=(
         "${_depends[@]}"
