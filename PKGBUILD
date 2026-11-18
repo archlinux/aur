@@ -1,7 +1,7 @@
 # Maintainer: Kercy <kercyding@users.noreply.github.com>
 
 pkgname=kocr-gui-bin
-pkgver=0.5.10
+pkgver=0.5.11
 pkgrel=1
 pkgdesc='Offline OCR for images (prebuilt GUI)'
 arch=('x86_64' 'aarch64')
@@ -22,9 +22,9 @@ source_x86_64=(
 source_aarch64=(
     "kocr_${pkgver}-1_arm64.deb::${url}/releases/download/v${pkgver}/kocr_${pkgver}-1_arm64.deb"
 )
-# The release workflow fills these from the release's .sha256 files.
-sha256sums_x86_64=('ca3cf695bcc827fba2270b461701d440f61ad2a475ce6377ee426db6a0500a89')
-sha256sums_aarch64=('5cee5de81f8df6826de83daefdfcf72f6596c935f64571144d8dbe6086f7731b')
+# The AUR workflow computes these after verifying the release signatures.
+sha256sums_x86_64=('414db38cc58829d086bc20dbb0e830dd7ad404ea879163907795d25dcdda0144')
+sha256sums_aarch64=('fa4c2f75148d85739b75457de7f2ee66abd36693c9fa33500a8e526cda5cf777')
 
 package() {
     local deb
