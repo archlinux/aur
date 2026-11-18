@@ -1,16 +1,16 @@
 pkgbase = flipt-bin
 	pkgdesc = The Git-native, enterprise-ready feature management platform that developers love.
-	pkgver = 2.14.1
+	pkgver = 2.14.2
 	pkgrel = 1
 	url = https://flipt.io
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
-	provides = flipt=2.14.1
+	provides = flipt=2.14.2
 	conflicts = flipt
-	source_aarch64 = flipt-2.14.1-aarch64.tar.gz::https://github.com/flipt-io/flipt/releases/download/v2.14.1/flipt_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 7b4faa860312f4c99225c0239864a4792f6bfa7ebe29e543cb1baa4076d11a07
-	source_x86_64 = flipt-2.14.1-x86_64.tar.gz::https://github.com/flipt-io/flipt/releases/download/v2.14.1/flipt_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 777437f40420332460b36639ae2b50a8874d3d3dd165edaff381e4d8a61b1626
+	source_aarch64 = flipt-2.14.2-aarch64.tar.gz::https://github.com/flipt-io/flipt/releases/download/v2.14.2/flipt_Linux_arm64.tar.gz
+	sha256sums_aarch64 = fd429f424eb223012794ad8503183b3d328bd165a77991f8779073ccf85e38aa
+	source_x86_64 = flipt-2.14.2-x86_64.tar.gz::https://github.com/flipt-io/flipt/releases/download/v2.14.2/flipt_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5fd81c3b3139cb1865bb901e7d3613bedb5c4cb2a3fdc7183d3e8e3f0a06e5da
 
 pkgname = flipt-bin
