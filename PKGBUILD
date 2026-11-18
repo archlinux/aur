@@ -3,7 +3,7 @@
 pkgname=bettbox-pre-bin
 _pkgname=Bettbox
 pkgver=1.19.8
-pkgrel=2
+pkgrel=3
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core."
 arch=('x86_64' 'aarch64')
@@ -25,15 +25,21 @@ source=("restart-bettbox.hook" "bettbox.install")
 # spelled out per architecture. ${arch} cannot be used here: makepkg binds it
 # to the *host* architecture while expanding per-arch arrays, so it would give
 # both entries the same cache name.
+#
+# The cache name carries the *full* pkgname: every package in a CI run shares
+# one SRCDEST, and makepkg reuses a cached file by name without validating it,
+# so a name shared with another package (bettbox-compatible-bin also asked for
+# bettbox-<ver>-x86_64.deb) makes updpkgsums hash that other package's file and
+# publish its checksum here.
 source_x86_64=(
-    "${pkgname%-pre-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${_pkgver}/${_pkgname}-${_pkgver%-pre*}-linux-amd64.deb"
+    "${pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${_pkgver}/${_pkgname}-${_pkgver%-pre*}-linux-amd64.deb"
 )
 source_aarch64=(
-    "${pkgname%-pre-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${_pkgver}/${_pkgname}-${_pkgver%-pre*}-linux-arm64.deb"
+    "${pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${_pkgver}/${_pkgname}-${_pkgver%-pre*}-linux-arm64.deb"
 )
 sha256sums=('03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2'
             'c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b')
-sha256sums_x86_64=('2d3ce9a41f3b5fa8eefa58eba5ae004902cc82a2f24b664da32b76bf07ef38a4')
+sha256sums_x86_64=('2c522c41bd7b13a320b6a329fe3c5c56864436d30025b75251fd3cf9723f0b86')
 sha256sums_aarch64=('a814e6ef74387d086c66f0b113022e60e8f8fc52ea2e25fd090c2acce2f83808')
 install=bettbox.install
 
