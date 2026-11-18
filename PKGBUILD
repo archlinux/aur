@@ -1,8 +1,8 @@
 # Maintainer: lucas007 <lucaszhou007@163.com>
 _pkg_groupname="mozhi"
-_commit_hash='095c73f04bc24f51dcb4a0155a5f10f87f768a8c'
+_commit_hash='db55666c87f4b923ed6f9658dc27980ee16a4385'
 pkgname="mozhi-git"
-pkgver=r243.095c73f
+pkgver=r265.db55666
 pkgrel=1
 provides=('mozhi')
 conflicts=('mozhi' 'mozhi-bin')
@@ -10,12 +10,13 @@ pkgdesc="Alternative frontend for multiple translation engines, a maintained for
 arch=('any')
 url="https://codeberg.org/aryak/mozhi"
 license=('GNU')
+makedepends=('git' 'go')
 source=(
 "git+https://codeberg.org/aryak/mozhi.git#commit=${_commit_hash}"
 "mozhi-server.service"
 "mozhi-server.sysusers"
 )
-sha256sums=('3b10a63e7cdeb44ece88940600abbeecbb7631fcb4a34b6c887d98889b3a6976'
+sha256sums=('SKIP'
             'b2c186227e9d3633a2313336ebdd51f5a88d56ed95db3203c0038b87706d669f'
             'da0d865d56bc7a183c0c5925f22070e12c3a5614cfcf48b5d55d5ce7a4e7279a')
 options=(!strip !debug)
