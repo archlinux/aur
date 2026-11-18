@@ -1,0 +1,23 @@
+build_prefix: extra-x86_64
+
+maintainers:
+  - github: lucaszhou007
+    email: lucaszhou007@gmail.com
+
+# Tags are "v0.6.2" but PKGBUILD pkgver drops the v (source uses
+# /releases/download/v${pkgver}/), so capture after the literal v.
+update_on:
+  - source: regex
+    url: https://github.com/opsre/go-ldap-admin/releases.atom
+    regex: 'releases/tag/v(\d+\.\d+\.\d+)'
+
+pre_build_script: |
+  if getattr(_G, 'newver', None):
+      update_pkgver_and_pkgrel(_G.newver)
+  else:
+      # forced rebuild (lilac <pkg> without a new upstream version)
+      update_pkgrel()
+
+post_build_script: |
+  git_pkgbuild_commit()
+  update_aur_repo()
