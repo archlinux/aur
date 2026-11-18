@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Raffaele Mancuso <raffaelemancuso532 at gmail dot com>
 pkgname=pdf4qt
-pkgver=1.7.0.0
+pkgver=1.7.1.0
 _clipper2ver=2.0.1
 pkgrel=1
 pkgdesc="Open source PDF editor"
@@ -38,7 +38,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "clipper2-${_clipper2ver}.tar.gz::https://github.com/AngusJohnson/Clipper2/archive/refs/tags/Clipper2_${_clipper2ver}.tar.gz"
 )
-sha256sums=('01da732d172092a80a325f09cc3f64ed1298bccc76bcc2d7e108b3accccea931'
+sha256sums=('382ce0bcae556775f4421ff83797a99fbfe15244360184f796739034bee9c5d0'
             '2a3693aceab4aed3e39b743e038d87701acc53cf05ed7b2013aab3e0aec5287e')
 _get_project_dir() {
 	local d
