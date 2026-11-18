@@ -1,6 +1,6 @@
 pkgbase = ffind-rs
 	pkgdesc = High-performance, multi-threaded file finder for Linux with gitignore support and fuzzy matching
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Sqrilizz/ffind
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ffind-rs
 	conflicts = ffind
 	conflicts = ffind-rs-bin
 	options = !lto
-	source = ffind-rs::git+https://github.com/Sqrilizz/ffind.git#tag=v0.2.0
+	source = ffind-rs::git+https://github.com/Sqrilizz/ffind.git#tag=v0.3.0
 	sha256sums = SKIP
 
 pkgname = ffind-rs

@@ -1,7 +1,7 @@
 # Maintainer: Sqrilizz <https://github.com/Sqrilizz>
 
 pkgname=ffind-rs
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="High-performance, multi-threaded file finder for Linux with gitignore support and fuzzy matching"
 arch=(x86_64)
