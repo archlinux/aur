@@ -3,7 +3,8 @@
 pkgname=slskdn-bin
 _pkgname=slskd
 pkgver=2026111723.slskdn.354
-pkgrel=4
+_release_tag=v2026111723-slskdn.354
+pkgrel=5
 pkgdesc="slskdN, an unofficial batteries-included fork of slskd with SongID, Discovery Graph, multi-source downloads, DHT mesh networking, auto-replace, wishlist, and security hardening."
 arch=('x86_64')
 url="https://github.com/snapetech/slskdn"
@@ -22,7 +23,7 @@ backup=('etc/slskd/slskd.yml')
 options=('!strip')
 install=slskd.install
 source=(
-    "slskdn-${pkgver}-main-linux-glibc-x64.zip::https://github.com/snapetech/slskdn/releases/download/${pkgver//.slskdn/-slskdn}/slskdn-main-linux-glibc-x64.zip"
+    "slskdn-${pkgver}-main-linux-glibc-x64.zip::https://github.com/snapetech/slskdn/releases/download/${_release_tag}/slskdn-main-linux-glibc-x64.zip"
     "slskd.service"
     "slskd.yml"
     "slskd.sysusers"
