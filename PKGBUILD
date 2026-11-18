@@ -1,12 +1,15 @@
 # Maintainer: Dino Hensen <dino.hensen@gmail.com>
 pkgname=whisper-dictate-git
-pkgver=r10.67c37c0
+pkgver=r16.1b49c08
 pkgrel=1
 pkgdesc='Toggle local speech-to-text dictation using whisper.cpp'
 arch=('any')
 url='https://github.com/dhensen/whisper-dictate'
 license=('MIT')
-depends=('whisper.cpp' 'ydotool' 'libnotify')
+depends=('whisper-cpp' 'ydotool' 'libnotify' 'pipewire-audio' 'curl' 'systemd')
+optdepends=('python-gobject: recording indicator with live spectrum'
+            'gtk4: recording indicator with live spectrum'
+            'gtk4-layer-shell: recording indicator with live spectrum')
 makedepends=('git')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
@@ -20,5 +23,6 @@ pkgver() {
 
 package() {
     install -Dm755 "$srcdir/$pkgname/whisper-dictate-toggle" "$pkgdir/usr/bin/whisper-dictate-toggle"
+    install -Dm755 "$srcdir/$pkgname/whisper-dictate-overlay" "$pkgdir/usr/bin/whisper-dictate-overlay"
     install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
