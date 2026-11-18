@@ -3,7 +3,7 @@
 
 _name=draco
 pkgname=${_name}-3d-git
-pkgver=1.5.9.r1.gd429de8
+pkgver=1.5.9.r5.gd6c1acf
 pkgrel=1
 pkgdesc="Draco is a library for compressing and decompressing 3D geometric meshes and point clouds. It is intended to improve the storage and transmission of 3D graphics."
 arch=('x86_64')
