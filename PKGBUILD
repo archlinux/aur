@@ -33,7 +33,7 @@ source=(
     "LICENSE"
 )
 source_x86_64=(
-    "${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/dehelper.deb"
+    "${pkgname}-${pkgver}.deb::https://static-asia.frdic.com/pkg/dehelper.deb"
 )
 noextract=("${pkgname}-${pkgver}.deb")
 

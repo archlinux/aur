@@ -30,7 +30,7 @@ pkgbase = eusoft-dehelper
 	sha256sums = f3f7d40617f96c3a20196d9a8b18b95df316cd15eee3006537e272d695a96875
 	sha256sums = 54ab59de3dc984a39143e8c2a4116d26af936121c6912e315e9b0d8a10e1f3ea
 	sha256sums = 377ddd4aecf677aa2b0fdd264f6285118f3e01f6463eb957db972d0b8404cf69
-	source_x86_64 = eusoft-dehelper-13.5.2.deb::https://static.frdic.com/pkg/dehelper.deb
+	source_x86_64 = eusoft-dehelper-13.5.2.deb::https://static-asia.frdic.com/pkg/dehelper.deb
 	sha256sums_x86_64 = fc47e56b3907522a8d3dbd906a4e4117991e0aed772c08547b0214c8b08fcccc
 
 pkgname = eusoft-dehelper
