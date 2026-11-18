@@ -21,6 +21,8 @@
 #   widens Arch's own profile (dac_override); the orchestrator they serve is
 #   not built
 # - PAM is not configured on install; the admin runs aad-tool configure-pam
+# - pkg-config sees tpm2-tss 4.2.2s as 4.2.2 while building, because the
+#   tss-esapi build script rejects the suffix (see _tss2_pkgconfig)
 # Upstream does not sign its tags, so the archive checksum is the integrity check.
 
 pkgname=himmelblau
@@ -92,6 +94,19 @@ options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('49accdf01c314b1f79618758a08aa4dd219787b957290ea512c761aca892148e')
 
+# tpm2-tss 4.2.2s (the PGP-signed re-tag of 4.2.2) installs .pc files with
+# Version: 4.2.2s, which the tss-esapi build script cannot parse as semver.
+# Point pkg-config at copies with the letter suffix dropped; a no-op once the
+# installed version is plain x.y.z again.
+_tss2_pkgconfig() {
+  local dir="$srcdir/tss2-pkgconfig" pc
+  mkdir -p "$dir"
+  for pc in /usr/lib/pkgconfig/tss2-*.pc; do
+    sed -E 's/^(Version: [0-9]+\.[0-9]+\.[0-9]+)[a-z]+$/\1/' "$pc" >"$dir/${pc##*/}"
+  done
+  export PKG_CONFIG_PATH="$dir${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+}
+
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
@@ -102,6 +117,7 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  _tss2_pkgconfig
 
   python3 src/common/scripts/gen_param_code.py \
     --gen-man --man-output man/man5/himmelblau.conf.5
@@ -129,6 +145,7 @@ check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  _tss2_pkgconfig
   # test_cache_db_account_password opens /dev/tpmrm0 when built with the tpm
   # feature, which build hosts lack. Run it against the software TPM instead.
   cargo test --frozen --no-fail-fast --workspace --features himmelblau_unix_common/tpm -- \
