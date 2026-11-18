@@ -2,7 +2,7 @@
 # Maintainer: Tuna support <info@tuna.am>
 
 pkgname='tuna.am-bin'
-pkgver=0.40.0
+pkgver=0.41.0
 pkgrel=1
 pkgdesc='Tuna - software for create HTTP/TCP/SSH tunnels to local network'
 url='https://tuna.am/'
@@ -12,13 +12,13 @@ provides=('tuna')
 conflicts=('tuna')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://releases.tuna.am/tuna/v${pkgver}/tuna_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('ca55f9fabbff96c1f364b6eb462e372cc006d925c0533a8d8806b8e2ff3627e5')
+sha256sums_aarch64=('2236d461bf07c365a027eda29da953d4d49b3389f5d4df3db7ea885d64c6b69d')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://releases.tuna.am/tuna/v${pkgver}/tuna_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('b35af674c8b59f301a4f43de2ad6b39d646ebe55784323c7cd238f757ba140b7')
+sha256sums_armv7h=('c90a0693b7a8926eac066c0c3a1b8ed973dd7b67cb05809fb3c93651d1e72a63')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://releases.tuna.am/tuna/v${pkgver}/tuna_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('5ce5cc1d040b8e66271bd4b9433d97ba50fc1ba5290561c64dd68e7f53b5e63d')
+sha256sums_x86_64=('5c97168ebc0e2c8734622810778fdf5dd1de0a0e497af07eb7096ec5b05ffd14')
 
 package() {
   # bin
