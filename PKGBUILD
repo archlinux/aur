@@ -8,7 +8,7 @@
 # own PKGBUILD, docs/src/guide/install.md's "Verify the tag" section, and install.sh.txt's own
 # header, which state the same limit for every checksum this project publishes).
 pkgname=prikk-bin
-pkgver=0.57.0
+pkgver=0.58.0
 pkgrel=1
 pkgdesc="A version control system, prebuilt binary (checksum proves download integrity, not provenance)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ provides=('prikk')
 conflicts=('prikk')
 source_x86_64=("https://github.com/prikk-vcs/prikk/releases/download/${pkgver}/prikk-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/prikk-vcs/prikk/releases/download/${pkgver}/prikk-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('4e621147c3064c1f456803c67f120df9ea35d93e40554e920c9ea55e69d3f9a8')
-sha256sums_aarch64=('6ee15270ee776f0737cddd946cf1ad56301f0aec86d2066c106b1885bb956a1a')
+sha256sums_x86_64=('0462b9a590d0b945bb6266ce09983055768cb564415837bdb8ed462b5aa10dfe')
+sha256sums_aarch64=('37cec9b257aa79ac7e17fce8391077f2656137f9ce656ed37397a9a0941b87d5')
 
 package() {
   install -Dm755 prikk "$pkgdir/usr/bin/prikk"
