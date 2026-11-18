@@ -4,7 +4,7 @@ pkgbase=python-sshfs
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2026.8.0
+pkgver=2026.11.0
 pkgrel=1
 pkgdesc="SSH Filesystem -- Async SSH/SFTP backend for fsspec"
 arch=('any')
@@ -18,12 +18,12 @@ checkdepends=('python-pytest-asyncio'
 #             'python-pytest-xdist'
               'python-fsspec'
               'python-asyncssh'
-              'python-mock-ssh-server'
-              'python-importlib-metadata')  # cryptography(<-paramiko), typing_extensions <- asyncssh
+              'python-mock-ssh-server')  # cryptography(<-paramiko), typing_extensions <- asyncssh
+#             'python-importlib-metadata'
 #             'openssh'
 #             'openbsd-netcat'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('783125f262b190bc6f5d75ff763fa265')
+md5sums=('3908b85efae97f854b409e0e67e8dd48')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -42,11 +42,12 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+#   PYTHONPATH="build/lib" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+    PYTHONPATH="." pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-sshfs() {
-    depends=('python>=3.9' 'python-fsspec>=2021.8.1' 'python-asyncssh>=2.11.0')
+    depends=('python>=3.11' 'python-fsspec>=2021.8.1' 'python-asyncssh>=2.11.0')
 #   optdepends=('python-sshfs-doc: Documentation for SSHFS')
     cd ${srcdir}/${_pyname}-${pkgver}
 
