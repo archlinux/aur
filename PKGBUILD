@@ -3,7 +3,7 @@
 # Contributor: tee < teeaur at duck dot com >
 
 pkgname=osdlyrics
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A lyric show compatible with various media players"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('gtk3' 'dbus-glib' 'curl' 'libnotify' 'libmpd' 'xmms2'
          'python-gobject' 'python-mpd2' 'libayatana-appindicator')
 makedepends=('intltool')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('9b3e826578ec2964e0f6118224d1328ec26b026bdd0efde5c992e1e9d0657007dcc3ca6bcf6bcf872e0d3b4211d6417323765973f268d369ab27a0d7c2afeee6')
+b2sums=('03a372a3e99a45f0d9ca6f63583af474575493238835a1f83298d01ff2e1f74b5b14c3a00c4de66a9454dc8bd17a9e12b89e9b675ab24dcaaaed469653a63d7b')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -30,7 +30,6 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-
   ./configure --prefix=/usr
   make
 }
