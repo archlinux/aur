@@ -1,17 +1,17 @@
 pkgbase = lightspeed-bin
 	pkgdesc = Zero-cost global network optimizer for multiplayer games - prebuilt LightSpeed CLI client and x86_64 GUI tray app
-	pkgver = 1.11.1
+	pkgver = 1.11.2
 	pkgrel = 1
 	url = https://github.com/ShibbityShwab/lightspeed
 	arch = x86_64
 	arch = aarch64
 	license = custom:LightSpeed-NC-1.1
 	options = !strip
-	source_x86_64 = https://github.com/ShibbityShwab/lightspeed/releases/download/v1.11.1/lightspeed-client-x86_64-unknown-linux-gnu.tar.xz
-	source_x86_64 = https://github.com/ShibbityShwab/lightspeed/releases/download/v1.11.1/lightspeed-gui-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = ae0fd50a33df177f48dc098af017b75107db165ff1b1ef23289d333b011299ad
-	sha256sums_x86_64 = 8d2b26d55f489a77b6f0b87f82c83f0f6a7430509207962942106408af6fd1d7
-	source_aarch64 = https://github.com/ShibbityShwab/lightspeed/releases/download/v1.11.1/lightspeed-client-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 36a823484a243d8720c2419bed7f38a66d595821f69fc21edb808b35444be08b
+	source_x86_64 = https://github.com/ShibbityShwab/lightspeed/releases/download/v1.11.2/lightspeed-client-x86_64-unknown-linux-gnu.tar.xz
+	source_x86_64 = https://github.com/ShibbityShwab/lightspeed/releases/download/v1.11.2/lightspeed-gui-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 6b7f6ae2a650c681c57f97d991de362134a20c6f504d0d282229e03826d6d167
+	sha256sums_x86_64 = 86583c9a27769daef6d337c66163d24713f8a4bde453601dbba208a9ccecd690
+	source_aarch64 = https://github.com/ShibbityShwab/lightspeed/releases/download/v1.11.2/lightspeed-client-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 0778a69c9b4bf7aff0ac2b4df600210f8932526b47ef4172f752d269f79398ac
 
 pkgname = lightspeed-bin
