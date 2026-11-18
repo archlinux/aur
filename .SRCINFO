@@ -1,0 +1,17 @@
+pkgbase = pareto-gateway-bin
+	pkgdesc = Pareto AI gateway: local AI model router with a spend and quality console (headless server, prebuilt)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mohamadkhani/pareto-ai
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = pareto-gateway
+	conflicts = pareto-gateway
+	conflicts = pareto-ai
+	conflicts = pareto-ai-bin
+	source_x86_64 = https://github.com/mohamadkhani/pareto-ai/releases/download/v0.1.0/pareto-gateway-0.1.0-linux-x86_64.tar.gz
+	b2sums_x86_64 = 28bfb142bd87c9a9b1b44c3541ec1ad48acddd5e11eeb103ee5eb58180633655a915cb5ef176c1a2e1f61867fbc93a6a522834a812ac4137d9c84818f724bf43
+
+pkgname = pareto-gateway-bin
