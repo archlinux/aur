@@ -276,7 +276,7 @@ _minor=5
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_tagrel=1
+_tagrel=2
 # Pinned to match the distro package's pkgrel (linux-cachyos 7.1.5-1) rather
 # than tracking upstream's PKGBUILD pkgrel. This fork exists to be compared
 # against the stock kernel, so the version string should differ ONLY by the
@@ -308,7 +308,7 @@ _tagrel=1
 # the same kernel version, so every build has its own `uname -r` and installs as a
 # visible upgrade. That is all it does: it does not protect the running kernel's
 # module tree, see the HAZARD above.
-pkgrel=1
+pkgrel=2
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 # Kept short: the split packages append their own suffixes to this string
 # ("... kernel and modules", "Non-stripped vmlinux file for the ..."), so a long
@@ -1250,7 +1250,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('3177ecfc191e6a90af2d0ccf3687281f32bc8b779be8ad6bf1c55a0c05b51f75b0009bf2d11833f73e45d31727c613c5aed7c68be348af8d00596c4d195f057b'
+b2sums=('34499a44a378dd7a330f2fa821ebdef10f477af461e1e40f193a85c188133627c885ddd636693c4ec895c1e22ffe6d0378948ee6c51a6d9a36dca262784f916a'
         'SKIP'
         '1c1a007862656a1cb7b1d9fa26f93628d746cf3ca697ec2dc36452c5c204aed44ad45381e5a64404d098dfd7f5b4f9a0f8b2b4606df31938c7026ebc283d8f70'
         '4103183a51f761fcc79e38dd6c48560a1bc7e7bd952bdaa5c2fbe0bf5e1ed593f896c00cfa2ce031ce720654c2078ecdb37d6c586417c75db7356569f44cb850'
