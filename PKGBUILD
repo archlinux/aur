@@ -5,8 +5,8 @@
 
 pkgauthor=sysid
 pkgname=bkmr
-pkgver=8.8.0
-pkgrel=2
+pkgver=8.9.0
+pkgrel=1
 pkgdesc="A Unified CLI Tool for Bookmark, Snippet, and Knowledge Management"
 
 url="https://github.com/${pkgauthor}/${pkgname}"
@@ -19,7 +19,7 @@ makedepends=('cargo')
 options=('!lto')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e6a707660bfb64b386d82a3f481ecd4defb3f11e200e10e91e1d09b76b12ad36')
+sha256sums=('2112fd8c1bce8ccfc41a8de21e4b0b37fa8894ee0a0cc8058c4a8bc43198299b')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
