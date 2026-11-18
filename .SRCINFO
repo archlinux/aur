@@ -1,13 +1,14 @@
 pkgbase = ntsc-rs
 	pkgdesc = Free, open-source VHS effect. Standalone application.
 	pkgver = 0.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ntsc-rs/ntsc-rs
 	arch = x86_64
 	license = Apache-2.0 AND ISC AND MIT
 	makedepends = cargo
 	makedepends = git
 	makedepends = gendesk
+	makedepends = clang
 	depends = glibc
 	depends = gst-plugins-base-libs
 	depends = libwebp
