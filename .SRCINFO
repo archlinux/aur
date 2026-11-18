@@ -11,6 +11,7 @@ pkgbase = realtek-rtl8821ce-dkms-git
 	depends = dkms
 	depends = bc
 	conflicts = rtl8821ce-dkms-git
+	options = !debug
 	source = git+https://github.com/sewaustav/rtl8821ce
 	sha256sums = SKIP
 

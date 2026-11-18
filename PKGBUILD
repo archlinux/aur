@@ -13,6 +13,7 @@ makedepends=('git' 'bc')
 conflicts=("rtl8821ce-dkms-git")
 source=("git+https://github.com/sewaustav/rtl8821ce")
 sha256sums=('SKIP')
+options=('!debug')
 
 pkgver() {
     cd ${srcdir}/rtl8821ce
