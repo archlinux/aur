@@ -3,7 +3,7 @@
 
 _hgname=zilf
 pkgname="${_hgname}-hg"
-pkgver=r1694.428d9a205a73
+pkgver=r1698.cb4aebdf35d5
 pkgrel=1
 pkgdesc="A set of tools for working with the ZIL interactive fiction language, including a compiler, assembler, disassembler, and game library. (mercurial version)"
 arch=('x86_64')
