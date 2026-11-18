@@ -23,7 +23,7 @@ depends=(
   "libpipewire"
   "libpulse"
 )
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 options=(!lto)
 source=(
   "${_pkgname}::git+${_git}"
