@@ -7,5 +7,5 @@ Exec=poncho-wonky %u
 Icon=poncho-wonky
 Terminal=false
 StartupNotify=false
-MimeType=x-scheme-handler/ssb
+MimeType=x-scheme-handler/ssb;
 Categories=Network;Application;

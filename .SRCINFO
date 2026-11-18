@@ -23,6 +23,6 @@ pkgbase = poncho-wonky
 	source = poncho-wonky.desktop
 	sha256sums = 197c6242ddc05fdf713f4879bc7fcee22fbf4a90cb69fdb7421fcf9619384557
 	sha256sums = e1518685a1c37abd0a801d0a2872c4e05eb27434402bb9d304c5db8323f4c3a8
-	sha256sums = b77ea37cce9723d1dbd97d1aa55450b6da1cb276338087382ce06baa7ea5510e
+	sha256sums = 4a2f989a64555eaea5eab06a01bdcafd2618b8ff2b69c5a14481aa71a245a95e
 
 pkgname = poncho-wonky
