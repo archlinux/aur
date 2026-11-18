@@ -1,7 +1,7 @@
 # Maintainer: Julian Houba <info@craftingdragon.ch>
 pkgname=git-xet
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Git LFS plugin that uploads and downloads using the Xet protocol'
 arch=('x86_64' 'aarch64')
 url='https://github.com/huggingface/xet-core'
@@ -15,6 +15,10 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "${pkgname}"
+
+  # Backport the OpenSSL 4-compatible bindings from upstream main.
+  cargo update --package openssl --precise 0.10.81
+  cargo update --package openssl-sys --precise 0.9.117
 
   cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }

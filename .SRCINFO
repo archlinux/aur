@@ -1,7 +1,7 @@
 pkgbase = git-xet
 	pkgdesc = Git LFS plugin that uploads and downloads using the Xet protocol
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/huggingface/xet-core
 	install = git-xet.install
 	arch = x86_64
