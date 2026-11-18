@@ -30,6 +30,8 @@ profile hermes-agent-hardening-$INSTANCE flags=(attach_disconnected$MODE_FLAGS) 
   # Hermes-owned state: config, memory, sessions, WebUI state, SSH key,
   # known_hosts, and its dedicated workspace.
   owner /var/lib/$INSTANCE/** rwkm,
+  owner /var/lib/$INSTANCE/.cache/uv/archive-v0/*/bin/semble rix,
+  owner /var/lib/$INSTANCE/.cache/uv/archive-v0/*/bin/serena rix,
   /var/lib/$INSTANCE/ r,
   # Hermes venv interpreters and entry-point scripts.
   # Glob covers all install hashes and all environment UUIDs so this
@@ -48,6 +50,8 @@ $EXTRA_RULES
   /lib/** mr,
   /lib64/ r,
   /lib64/** mr,
+  /usr/lib/git-core/git-remote-http ix,
+  /usr/lib/git-core/git-submodule ix,
 
   # Hermes is intentionally a terminal agent. Child commands inherit this
   # profile via ix, retaining the filesystem restrictions above.
