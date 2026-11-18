@@ -1,6 +1,6 @@
 pkgbase = hornero-config
-	pkgdesc = HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)
-	pkgver = 0.3.21
+	pkgdesc = HorneroOS curated desktop defaults: Hornero Signal themes, compositor, terminal, GTK/Qt, fonts, XDG handlers
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/HorneroOS/config
 	install = hornero-config.install
@@ -13,7 +13,7 @@ pkgbase = hornero-config
 	depends = git
 	depends = polkit-gnome
 	depends = python
-	depends = python-materialyoucolor
+	depends = ttf-ibm-plex
 	optdepends = hyprland: compositor defaults under /etc/xdg/hypr
 	optdepends = niri: compositor defaults in /etc/niri (fallback) and ~/.config/niri
 	optdepends = xdg-desktop-portal-gtk: default fallback portal and file chooser for Niri sessions
@@ -36,10 +36,10 @@ pkgbase = hornero-config
 	optdepends = bluez-utils: bluetoothctl for Bluetooth diagnostics
 	optdepends = wireplumber: Bluetooth audio policy under /etc/wireplumber/wireplumber.conf.d
 	optdepends = papirus-icon-theme: Papirus-Dark factory icons
-	optdepends = ttf-material-symbols-variable: Material Symbols shell icon font
-	optdepends = ttf-cascadia-code-nerd: CaskaydiaCove NF factory monospace font
 	optdepends = noto-fonts-cjk: CJK fallback for the factory fontconfig aliases
 	optdepends = noto-fonts-emoji: emoji fallback for the factory fontconfig aliases
+	optdepends = grub: themed boot menu (run hornero-boot-theme apply --grub; theme files ship inert without it)
+	optdepends = plymouth: themed boot splash (run hornero-boot-theme apply --plymouth; optional, boot is unchanged without it)
 	optdepends = zsh-autosuggestions: optional plugin sourced by the factory zshrc when installed
 	optdepends = zsh-syntax-highlighting: optional plugin sourced by the factory zshrc when installed
 	optdepends = gvfs: Thunar volume and trash integration
@@ -48,7 +48,7 @@ pkgbase = hornero-config
 	optdepends = thunar-volman: removable-media handling for Thunar
 	optdepends = nm-connection-editor: NetworkManager connection editor
 	backup = etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf
-	source = config::git+https://github.com/HorneroOS/config.git#commit=3bcbbb034a35a4eded1714f08c885f98b66be45d
+	source = config::git+https://github.com/HorneroOS/config.git#commit=fb8bd68870aadc3084991938459367fde206c736
 	sha256sums = SKIP
 
 pkgname = hornero-config

@@ -4,20 +4,22 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.3.21
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
+pkgdesc="HorneroOS curated desktop defaults: Hornero Signal themes, compositor, terminal, GTK/Qt, fonts, XDG handlers"
 arch=('any')
 url="https://github.com/HorneroOS/config"
 license=('MIT' 'CC-BY-2.0' 'CC-BY-SA-4.0')
-# python-materialyoucolor: lib/hornero/generate-m3-colors.py (theme switching via
-# `horneroctl appearance scheme regenerate`); without it every theme set rolls back.
+# python: lib/hornero/signal_theme.py + signal_render.py render every native
+# theme format from the schema-v2 roles at apply time (stdlib only).
+# ttf-ibm-plex: RFC 0001 §3.3 families (IBM Plex Sans / Mono / Sans Condensed)
+# named by GTK, Qt, Kitty, fontconfig and hyprlock defaults.
 # polkit-gnome: both compositor configs autostart its authentication agent
 # (Hyprland autostart.lua, Niri spawn-at-startup); without it no agent is
 # registered and every pkexec flow fails with "No session for cookie"
 # (hornero#366). Hard dependency so existing installs gain the agent on the
 # next hornero-config update, not only fresh installs via the catalogue.
-depends=('bash' 'git' 'polkit-gnome' 'python' 'python-materialyoucolor')
+depends=('bash' 'git' 'polkit-gnome' 'python' 'ttf-ibm-plex')
 makedepends=('librsvg')
 optdepends=(
   'hyprland: compositor defaults under /etc/xdg/hypr'
@@ -42,10 +44,10 @@ optdepends=(
   'bluez-utils: bluetoothctl for Bluetooth diagnostics'
   'wireplumber: Bluetooth audio policy under /etc/wireplumber/wireplumber.conf.d'
   'papirus-icon-theme: Papirus-Dark factory icons'
-  'ttf-material-symbols-variable: Material Symbols shell icon font'
-  'ttf-cascadia-code-nerd: CaskaydiaCove NF factory monospace font'
   'noto-fonts-cjk: CJK fallback for the factory fontconfig aliases'
   'noto-fonts-emoji: emoji fallback for the factory fontconfig aliases'
+  'grub: themed boot menu (run hornero-boot-theme apply --grub; theme files ship inert without it)'
+  'plymouth: themed boot splash (run hornero-boot-theme apply --plymouth; optional, boot is unchanged without it)'
   'zsh-autosuggestions: optional plugin sourced by the factory zshrc when installed'
   'zsh-syntax-highlighting: optional plugin sourced by the factory zshrc when installed'
   'gvfs: Thunar volume and trash integration'
@@ -59,7 +61,7 @@ optdepends=(
 # AUR chroot builds identical to local packaging/ builds.
 install=hornero-config.install
 backup=('etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf')
-source=("config::git+https://github.com/HorneroOS/config.git#commit=3bcbbb034a35a4eded1714f08c885f98b66be45d")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=fb8bd68870aadc3084991938459367fde206c736")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -216,7 +218,7 @@ package() {
 
   # Alacritty's documented system fallback uses /etc/alacritty. The user
   # config from materialize.sh stays XDG-aware for chezmoi installs.
-  for file in alacritty.toml hornero-dark.toml hornero-light.toml hornero-colors.toml; do
+  for file in alacritty.toml hornero-signal-night.toml hornero-signal-day.toml hornero-colors.toml; do
     install -Dm644 "$stage/.config/alacritty/$file" \
       "$pkgdir/etc/alacritty/$file"
   done
@@ -255,6 +257,10 @@ package() {
   cp -a "$stage/.local/bin"/hornero-* "$pkgdir/usr/share/hornero/bin/"
   mkdir -p "$pkgdir/usr/share/hornero/themes"
   cp -a "$stage/.local/share/hornero/themes/." "$pkgdir/usr/share/hornero/themes/"
+  # Hornero Chromatic: first-party app templates rendered by horneroctl
+  # (/usr/share/hornero/chromatic/templates/*.json + *.tmpl).
+  mkdir -p "$pkgdir/usr/share/hornero/chromatic"
+  cp -a "$stage/.local/share/hornero/chromatic/." "$pkgdir/usr/share/hornero/chromatic/"
   # Layout presets are authored by HorneroOS/shell and copied into this
   # package from the pinned source recorded in shell/shell-presets.source.
   # Ship them as a read-only system catalogue so horneroctl and the Shell work
@@ -272,25 +278,27 @@ package() {
   # desktop/gtk-theme* + /usr/share/themes — this block touches neither.
   mkdir -p "$pkgdir/usr/share/hornero/brand"
   cp -a "$stage/.local/share/hornero/brand/." "$pkgdir/usr/share/hornero/brand/"
-  # Real Hornero GTK themes (standard lookup path, discoverable by GTK 3+4
-  # with no extra env). Ownership: these three trees own /usr/share/themes
-  # exclusively — the recipe JSONs above own /usr/share/hornero/themes and
-  # no file is shipped twice. Dev-only sources (src/, build.sh, gallery.py)
-  # never enter the stage, so they cannot leak into the package.
-  for variant in Dark Light Pampa Nocturno FinDelMundo Ibera Iguazu Patagonia 199X Cuyo Quebrada Sierras; do
-    if [[ ! -f "$stage/.local/share/themes/Hornero-$variant/gtk-3.0/gtk.css" ]] \
-        || [[ ! -f "$stage/.local/share/themes/Hornero-$variant/gtk-4.0/gtk.css" ]] \
-        || [[ ! -f "$stage/.local/share/themes/Hornero-$variant/index.theme" ]]; then
-      echo "error: staged Hornero-$variant theme tree incomplete" >&2
+  # Hornero Signal GTK themes (standard lookup path, discoverable by GTK 3+4
+  # with no extra env). Ownership: the generated Hornero-* trees own their
+  # /usr/share/themes dirs exclusively — the recipe JSONs above own
+  # /usr/share/hornero/themes and no file is shipped twice. Dev-only sources
+  # (src/, gallery.py) never enter the stage.
+  local tree
+  for tree in "$repo_root"/desktop/gtk-theme/Hornero-*/; do
+    tree="$(basename "$tree")"
+    if [[ ! -f "$stage/.local/share/themes/$tree/gtk-3.0/gtk.css" ]] \
+        || [[ ! -f "$stage/.local/share/themes/$tree/gtk-4.0/gtk.css" ]] \
+        || [[ ! -f "$stage/.local/share/themes/$tree/index.theme" ]]; then
+      echo "error: staged $tree theme tree incomplete" >&2
       return 1
     fi
   done
   mkdir -p "$pkgdir/usr/share/themes"
   cp -a "$stage/.local/share/themes"/Hornero-* \
         "$pkgdir/usr/share/themes/"
-  # Flagship wallpaper rasters (rendered by materialize.sh from vector
+  # Hornero Signal wallpaper rasters (rendered by materialize.sh from vector
   # sources): the apply chain resolves them under hornero/wallpapers/.
-  if [[ ! -f "$stage/.local/share/hornero/wallpapers/hornero-dark/hornero-dark-01.png" ]]; then
+  if [[ ! -f "$stage/.local/share/hornero/wallpapers/hornero-signal-night/hornero-signal-night-01.png" ]]; then
     echo "error: staged flagship wallpapers missing (rsvg-convert at build time?)" >&2
     return 1
   fi
@@ -298,6 +306,17 @@ package() {
   cp -a "$stage/.local/share/hornero/wallpapers/." \
     "$pkgdir/usr/share/hornero/wallpapers/"
 
+
+  # Boot themes (GRUB menu + Plymouth splash). Shipped inert at their
+  # canonical theme paths; nothing edits boot configuration at install time.
+  # `hornero-boot-theme apply` (bin/) enables them, and only when grub /
+  # plymouth are installed. Plymouth is optional: no dependency is added.
+  bash "$repo_root/scripts/render-boot-assets.sh" --out "$srcdir/boot-assets"
+  install -dm755 "$pkgdir/usr/share/grub/themes" "$pkgdir/usr/share/plymouth/themes"
+  cp -a "$srcdir/boot-assets/grub/hornero-signal" "$pkgdir/usr/share/grub/themes/hornero-signal"
+  cp -a "$srcdir/boot-assets/plymouth/hornero-signal" "$pkgdir/usr/share/plymouth/themes/hornero-signal"
+  find "$pkgdir/usr/share/grub/themes/hornero-signal" "$pkgdir/usr/share/plymouth/themes/hornero-signal" \
+    -type d -exec chmod 755 {} + -o -type f -exec chmod 644 {} +
 
   # Profile manifests plus the resolved selection record.
   install -Dm644 "$repo_root/$profile_src" \
