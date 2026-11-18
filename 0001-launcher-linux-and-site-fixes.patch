@@ -40,3 +40,20 @@
              .ok_or_else(|| format!("unsafe path in archive: {}", f.name()))?;
          let out = dest.join(rel);
          if f.is_dir() {
+--- a/launcher/src/main.rs
++++ b/launcher/src/main.rs
+@@ -379,12 +379,12 @@
+             .child(
+                 div()
+                     .text_color(rgb(MUTED))
+-                    .child("Source: LakoMoor/deadoxide"),
++                    .child("Source: deadoxide-rust/deadoxide"),
+             )
+             .child(
+                 div()
+                     .text_color(rgb(MUTED))
+-                    .child("Website: lakomoor.github.io/deadoxide"),
++                    .child("Website: deadoxide-rust.github.io/deadoxide"),
+             )
+             .child(
+                 div()

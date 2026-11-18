@@ -1,7 +1,7 @@
 pkgbase = deadoxide
 	pkgdesc = Runtime that reads an installed copy of Project Zomboid: maps, tiles, the game's Lua and saves
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://deadoxide-rust.github.io/deadoxide
 	arch = x86_64
 	license = MIT
@@ -19,13 +19,14 @@ pkgbase = deadoxide
 	depends = xcb-util-keysyms
 	optdepends = mesa: OpenGL fallback when no Vulkan driver is installed
 	optdepends = xdg-utils: opening links and folders from the launcher
+	options = !lto
 	source = deadoxide-0.1.0.tar.gz::https://github.com/deadoxide-rust/deadoxide/archive/refs/tags/v0.1.0.tar.gz
 	source = deadoxide.desktop
 	source = Cargo.lock.patched
-	source = 0001-fix-mod-extraction-and-site-url.patch
+	source = 0001-launcher-linux-and-site-fixes.patch
 	sha256sums = b780edd4cafe6f40dee0c395bd1bc4582ce588a63f64c4b1fc76b998d64aceb5
 	sha256sums = 5c99fe88ca32fe658bdbf971a42cf48b58e12c02d043aa19200167ec6daf03b9
 	sha256sums = 4c4f27fc08db5cb1e2bd9603877f78bbb17dfa985df05d4a3b3ca6e3ed19e918
-	sha256sums = 24d54ec7004c33cd5726020c2a6d28028eddc1cf10460ba0d3a381c7f0a2554a
+	sha256sums = c84dc4713555cd13d33b10608337c4e2779eb870a65692312d9095aafc7d10cc
 
 pkgname = deadoxide
