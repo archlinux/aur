@@ -1,15 +1,17 @@
 post_install() {
-  echo "==> To start Ghostty Tray now and at every login, run as your user:"
-  echo "      systemctl --user enable --now ghostty-tray.service"
+  echo "==> Ghostty Tray starts automatically at login (turn it off in"
+  echo "    System Settings > Autostart). To start it now, open"
+  echo "    \"Ghostty Tray\" from the application launcher."
   echo "==> Example profiles: /usr/share/doc/ghostty-tray/examples/profiles"
-  echo "    Copy them to ~/.config/ghostty/profiles/ to use them."
 }
 
 post_upgrade() {
-  echo "==> Restart to use the new version:"
-  echo "      systemctl --user restart ghostty-tray.service"
-}
-
-pre_remove() {
-  echo "==> Each user should run: systemctl --user disable --now ghostty-tray.service"
+  # Since 0.1.2 a running tray restarts itself when /usr/bin/ghostty-tray is
+  # replaced, so upgrades need no action. Older versions can't, and ran as a
+  # systemd user service; the new version removes that service's leftover link.
+  if [ "$(vercmp "$2" 0.1.2)" -lt 0 ]; then
+    echo "==> Ghostty Tray now starts via autostart instead of a systemd service."
+    echo "    The old version keeps running until you log out; log out and back in"
+    echo "    once to switch. Later upgrades apply automatically."
+  fi
 }

@@ -1,6 +1,6 @@
 pkgbase = ghostty-tray
 	pkgdesc = KDE Plasma system tray launcher for Ghostty with profiles and quick terminal toggle
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Natetronn/ghostty-tray
 	install = ghostty-tray.install
@@ -10,9 +10,8 @@ pkgbase = ghostty-tray
 	depends = python
 	depends = python-dbus
 	depends = python-pyqt6
-	depends = systemd
 	optdepends = breeze-icons: monochrome tray icon that follows the panel colors
-	source = ghostty-tray-0.1.1.tar.gz::https://github.com/Natetronn/ghostty-tray/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 37ef568b294cfbc4c24a207141563d365aefd320c5b8993e9c7bf84da3e51855
+	source = ghostty-tray-0.1.2.tar.gz::https://github.com/Natetronn/ghostty-tray/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 6726291a485c42bac5e0fa54eafda6672f2f372cb4627fbdf62514273d741e21
 
 pkgname = ghostty-tray
