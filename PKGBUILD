@@ -11,7 +11,7 @@
 # See https://creativecommons.org/licenses/by/4.0/deed.de
 # endregion
 pkgname=gocryptfs-standalone
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Synchronizes a gocryptfs (plaintext names) encrypted directory with a decrypted copy without needing FUSE or admin rights.'
 arch=(any)
@@ -23,7 +23,7 @@ optdepends=(
 )
 # NOTE: The published package contains the bundled command line interface.
 source=("https://registry.npmjs.org/gocryptfs-standalone/-/gocryptfs-standalone-${pkgver}.tgz")
-sha256sums=('6a366206abbc44d529c9cab26a7ba79ff42a74a1904ded6043a358d3fb076626')
+sha256sums=('2f7389f252df475f814fdac0932e93cb993eb13a5f2398e121b3a017e3112b4b')
 copy_to_aur=true
 
 package() {
