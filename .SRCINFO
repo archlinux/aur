@@ -1,16 +1,16 @@
 pkgbase = updatecli-bin
 	pkgdesc = A declarative update policy engine.
-	pkgver = 0.123.0
+	pkgver = 0.124.0
 	pkgrel = 1
 	url = https://www.updatecli.io
 	license = Apache
 	conflicts = updatecli
 	provides = updatecli
 	arch = aarch64
-	source_aarch64 = updatecli-bin_0.123.0_aarch64.tar.gz::https://github.com/updatecli/updatecli/releases/download/v0.123.0/updatecli_Linux_arm64.tar.gz
-	sha256sums_aarch64 = b3b687844062761201f0189103dbe108089692ca77e865894b2f2b546f8daf6d
+	source_aarch64 = updatecli-bin_0.124.0_aarch64.tar.gz::https://github.com/updatecli/updatecli/releases/download/v0.124.0/updatecli_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d7b6bbee652cddc1af67ffdec90a1c32f5d368475205e7eb594f7600acd70efd
 	arch = x86_64
-	source_x86_64 = updatecli-bin_0.123.0_x86_64.tar.gz::https://github.com/updatecli/updatecli/releases/download/v0.123.0/updatecli_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = a0cc40caee73c6efb217762a94ab90ef57617b651409d0077524f13cc07e0760
+	source_x86_64 = updatecli-bin_0.124.0_x86_64.tar.gz::https://github.com/updatecli/updatecli/releases/download/v0.124.0/updatecli_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c58234ed7284a0e0b3f150ee8de244a2edb491f99081181c32b289339447bd33
 	
 pkgname = updatecli-bin
