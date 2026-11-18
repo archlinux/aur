@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A selection-first modal text editor for the terminal, scriptable in Scheme"
 
-pkgver=0.21.0
+pkgver=0.22.1
 pkgrel=1
 _gitversion=v${pkgver}
 _gitcommit=$(gh api repos/${_gitauthor}/${_gitname}/git/tags/$(gh api repos/${_gitauthor}/${_gitname}/git/ref/tags/${_gitversion} --jq '.object.sha') --jq '.object.sha[0:9]')
@@ -28,9 +28,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_gitcommit}-${_barch[0]}.tar.gz")
-sha256sums=('a91b8cbe285872ab630abd95c5a6042ea56af7d8a630343746ecc8e0cfe0a35f'
+sha256sums=('d50167744f68cd6fbf6db44921fa7f4f4e6f57f8aa2a8179c53074114afc165b'
             'e10b2e23fc9874c2f8c7ddac5d9a3f1123f5149ffed33ce598166f54febf66b2')
-sha256sums_x86_64=('9b6233e1c6759a9c89faeaf3fc723fbc0585abbcdd6b13e7837c437fb3a76cf7')
+sha256sums_x86_64=('780879f6391be495c659ee069e0a122ade3d246af473a33152666cc7127e56aa')
 
 
 case ${CARCH} in

@@ -1,6 +1,6 @@
 pkgbase = hume-bin
 	pkgdesc = A selection-first modal text editor for the terminal, scriptable in Scheme
-	pkgver = 0.21.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/cvlmtg/HUME
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = hume-bin
 	provides = hume
 	conflicts = hume
 	options = !strip
-	source = README-0.21.0.md::https://raw.githubusercontent.com/cvlmtg/HUME/v0.21.0/README.md
-	source = LICENSE-0.21.0::https://raw.githubusercontent.com/cvlmtg/HUME/v0.21.0/LICENSE
-	sha256sums = a91b8cbe285872ab630abd95c5a6042ea56af7d8a630343746ecc8e0cfe0a35f
+	source = README-0.22.1.md::https://raw.githubusercontent.com/cvlmtg/HUME/v0.22.1/README.md
+	source = LICENSE-0.22.1::https://raw.githubusercontent.com/cvlmtg/HUME/v0.22.1/LICENSE
+	sha256sums = d50167744f68cd6fbf6db44921fa7f4f4e6f57f8aa2a8179c53074114afc165b
 	sha256sums = e10b2e23fc9874c2f8c7ddac5d9a3f1123f5149ffed33ce598166f54febf66b2
-	source_x86_64 = hume-x86_64-0.21.0.tgz::https://github.com/cvlmtg/HUME/releases/download/v0.21.0/hume-0.21.0-531ae018f-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 9b6233e1c6759a9c89faeaf3fc723fbc0585abbcdd6b13e7837c437fb3a76cf7
+	source_x86_64 = hume-x86_64-0.22.1.tgz::https://github.com/cvlmtg/HUME/releases/download/v0.22.1/hume-0.22.1-20f23dc55-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 780879f6391be495c659ee069e0a122ade3d246af473a33152666cc7127e56aa
 
 pkgname = hume-bin
