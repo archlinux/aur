@@ -1,5 +1,5 @@
 pkgname=audiomuse-ai-web
-pkgver=3.7.1
+pkgver=3.7.2
 pkgrel=1
 pkgdesc='Web interface and API for AudioMuse-AI'
 arch=('x86_64')
@@ -84,7 +84,7 @@ source=(
   'web.env'
 )
 
-sha256sums=('749854810658a21797ea1415ab1e727178d7309007eb13e72b8a0c1938840e3d'
+sha256sums=('13c2562b62ab978d8f07e449275393225020b13a5f0621b072816a153e6a754d'
             'd81723cc7d14566057e8b199f2bc4ea3ea1e2ca7a79529a40f3fcd5399f976f6'
             '7b16ee06c79810664aea026e2b6d29b65db68d756d87bee88a855a1e2cffcbf6'
             'eefb4cee2ece6c81b0b37969462929156b035a66071faaafc1fcf9626dcc4b21'
