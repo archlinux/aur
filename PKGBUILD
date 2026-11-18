@@ -1,7 +1,7 @@
 # Maintainer: WeeXnes <weexnes@weexnes.dev>
 
 pkgname=beacon-git
-_commit=b4b5cd4d99ee215bf012292c355d949d0bb48dd9
+_commit=04cc2ab86f7303d0e2bbf239d25c655311104ec5
 pkgver=1.2.1.r${_commit:0:7}
 pkgrel=1
 pkgdesc="A sleek and modern Minecraft server manager built with Nuxt (cutting-edge version)"
