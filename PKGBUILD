@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults: Hornero Signal themes, compositor, terminal, GTK/Qt, fonts, XDG handlers"
 arch=('any')
@@ -40,6 +40,7 @@ optdepends=(
   'copyq: clipboard defaults under /etc/xdg/copyq'
   'handlr: default-application handler under /etc/xdg/handlr'
   'qt6ct: Qt6 platform-theme defaults under /etc/xdg/qt6ct'
+  'qt5ct: Qt5 platform-theme defaults under /etc/xdg/qt5ct'
   'bluez: Bluetooth daemon (factory main.conf template under /usr/share/hornero/bluetooth)'
   'bluez-utils: bluetoothctl for Bluetooth diagnostics'
   'wireplumber: Bluetooth audio policy under /etc/wireplumber/wireplumber.conf.d'
@@ -61,7 +62,7 @@ optdepends=(
 # AUR chroot builds identical to local packaging/ builds.
 install=hornero-config.install
 backup=('etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf')
-source=("config::git+https://github.com/HorneroOS/config.git#commit=dd68e89d2879ba1af72f7fa442204c5da3a5bd60")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=5419e40c0d30598328155f41fdf7845d2d6e6351")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone

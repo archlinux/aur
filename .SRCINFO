@@ -1,6 +1,6 @@
 pkgbase = hornero-config
 	pkgdesc = HorneroOS curated desktop defaults: Hornero Signal themes, compositor, terminal, GTK/Qt, fonts, XDG handlers
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/HorneroOS/config
 	install = hornero-config.install
@@ -32,6 +32,7 @@ pkgbase = hornero-config
 	optdepends = copyq: clipboard defaults under /etc/xdg/copyq
 	optdepends = handlr: default-application handler under /etc/xdg/handlr
 	optdepends = qt6ct: Qt6 platform-theme defaults under /etc/xdg/qt6ct
+	optdepends = qt5ct: Qt5 platform-theme defaults under /etc/xdg/qt5ct
 	optdepends = bluez: Bluetooth daemon (factory main.conf template under /usr/share/hornero/bluetooth)
 	optdepends = bluez-utils: bluetoothctl for Bluetooth diagnostics
 	optdepends = wireplumber: Bluetooth audio policy under /etc/wireplumber/wireplumber.conf.d
@@ -48,7 +49,7 @@ pkgbase = hornero-config
 	optdepends = thunar-volman: removable-media handling for Thunar
 	optdepends = nm-connection-editor: NetworkManager connection editor
 	backup = etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf
-	source = config::git+https://github.com/HorneroOS/config.git#commit=dd68e89d2879ba1af72f7fa442204c5da3a5bd60
+	source = config::git+https://github.com/HorneroOS/config.git#commit=5419e40c0d30598328155f41fdf7845d2d6e6351
 	sha256sums = SKIP
 
 pkgname = hornero-config
