@@ -2,7 +2,7 @@
 
 pkgname=trae-cn-ide
 pkgver=2.3.103559
-pkgrel=2
+pkgrel=4
 pkgdesc="AI-powered IDE by ByteDance (Chinese Domestic Version)"
 arch=('x86_64' 'aarch64')
 url="https://www.trae.cn/"
@@ -26,18 +26,20 @@ b2sums_aarch64=('26939799eb4077fe37633b90e4f8764b077ee1255e5ad447215736f0b5bc94d
 
 # 国内版图标与国际版同为上游 code.png，右下角合成 CN 角标以在启动器/任务栏区分。
 _badge_icon() {
-    local src="$1" dst="$2" size="$3"
-    local bw pad radius pointsize tmp
-    bw=$(( size * 38 / 100 )); [ "$bw" -lt 7 ] && bw=7
-    pad=$(( size * 6 / 100 )); [ "$pad" -lt 1 ] && pad=1
-    radius=$(( bw / 4 )); [ "$radius" -lt 1 ] && radius=1
-    pointsize=$(( bw * 40 / 100 )); [ "$pointsize" -lt 4 ] && pointsize=4
+    local src="$1" dst="$2" size="$3" label="${4:-CN}" bg="${5:-#C8102E}"
+    local bw pad ring pointsize tmp
+    bw=$(( size * 30 / 100 )); [ "$bw" -lt 7 ] && bw=7
+    pad=$(( size * 5 / 100 )); [ "$pad" -lt 1 ] && pad=1
+    ring=$(( bw / 12 )); [ "$ring" -lt 1 ] && ring=1
+    pointsize=$(( bw * 45 / 100 )); [ "${#label}" -ge 4 ] && pointsize=$(( bw * 27 / 100 ))
+    [ "$pointsize" -lt 4 ] && pointsize=4
     tmp="$(mktemp --suffix=.png)"
+    install -dm755 "$(dirname "${dst}")"
     magick -size "${bw}x${bw}" xc:none \
-        -fill '#C8102E' \
-        -draw "roundrectangle 0,0 $(( bw - 1 )),$(( bw - 1 )) ${radius},${radius}" \
+        -fill white -draw "circle $(( bw / 2 )),$(( bw / 2 )) $(( bw / 2 )),0" \
+        -fill "${bg}" -draw "circle $(( bw / 2 )),$(( bw / 2 )) $(( bw / 2 )),${ring}" \
         -gravity center -font DejaVu-Sans-Bold -pointsize "${pointsize}" \
-        -fill white -annotate +0+0 'CN' "${tmp}" || return 1
+        -fill white -annotate +0+0 "${label}" "${tmp}" || return 1
     magick "${src}" -resize "${size}x${size}" \
         "${tmp}" -gravity southeast -geometry "+${pad}+${pad}" -composite "${dst}"
     rm -f "${tmp}"
