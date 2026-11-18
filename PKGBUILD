@@ -1,6 +1,6 @@
 # Maintainer: Umar Alfarouk <medrivia@gmail.com>
 pkgname=mdrv-db
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Fjall durability envelope around a SQL data port and content-addressed blob store (fleet CLI)"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('libgcc')
 makedepends=('cargo')
 source=("mdrv-db-$pkgver.crate::https://static.crates.io/crates/mdrv-db/mdrv-db-$pkgver.crate")
-sha256sums=('152519217fa641b3392628d658e3b0aa04c3ea2db7f45745ae9c0787db422847')
+sha256sums=('bd8661eec178ae80b14d7e40c9e88137341b63623927af449d24ce063a1edd00')
 options=('!debug' '!lto')
 
 build() {
