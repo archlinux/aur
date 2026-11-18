@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = openssh
+
+[Action]
+Depends = systemd
+Description = Marking sshd.service for restart...
+When = PreTransaction
+Exec = /usr/bin/systemctl --runtime set-property sshd.service Markers=needs-restart

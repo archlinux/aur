@@ -1,12 +1,13 @@
 [Unit]
+After=network.target sshdgenkeys.service
+Before=ssh-access.target
 Description=OpenSSH Daemon
-Wants=sshdgenkeys.service
-After=sshdgenkeys.service
-After=network.target
+Documentation=man:sshd(8) man:sshd_config(5)
+Wants=sshdgenkeys.service ssh-access.target
 
 [Service]
+Type=notify-reload
 ExecStart=/usr/bin/sshd -D
-ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=always
 

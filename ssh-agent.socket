@@ -1,0 +1,11 @@
+[Unit]
+ConditionEnvironment=!SSH_AGENT_PID
+Description=Socket for the OpenSSH key agent
+Documentation=man:ssh-agent(1)
+
+[Socket]
+ListenStream=%t/ssh-agent.socket
+RemoveOnStop=yes
+
+[Install]
+WantedBy=sockets.target

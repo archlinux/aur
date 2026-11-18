@@ -1,0 +1,14 @@
+# This is required to prevent systemd-ssh-generator from creating a default
+# file in its place.  The main change vs. upstream is the addition of Wants=
+# for our sshgenkeys.service, which systemd otherwise doesn't know about.
+
+[Unit]
+After=network.target sshdgenkeys.service
+Description=OpenSSH Per-Connection Server Daemon
+Documentation=man:sshd(8) man:sshd_config(5)
+Wants=sshdgenkeys.service
+
+[Service]
+ExecStart=-/usr/bin/sshd -i -o "AuthorizedKeysFile ${CREDENTIALS_DIRECTORY}/ssh.ephemeral-authorized_keys-all .ssh/authorized_keys"
+ImportCredential=ssh.ephemeral-authorized_keys-all
+StandardInput=socket
