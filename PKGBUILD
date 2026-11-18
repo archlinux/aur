@@ -4,8 +4,8 @@ _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
 _debname="com.${pkgname//-/}.Nuclear"
-pkgver=1.55.0
-_nodeversion=24
+pkgver=1.56.0
+_nodeversion=26
 pkgrel=1
 pkgdesc="Streaming music player that finds free music for you."
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
     'gst-libav: FFmpeg-based codec support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/player@${pkgver}.tar.gz")
-sha256sums=('874a9fabff9f9dc723f3343dc61cbc6eb23acd5969ba8251612b0c573ca7a4c7')
+sha256sums=('da5739393877f3f8c9999f9da695bb01f58de00c77485dc6cafcf3290bc28058')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -46,7 +46,9 @@ _get_project_dir() {
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 _get_app_dir() {
-	find "$(_get_project_dir)" -type d -name "release" -exec test -d "{}/.fingerprint" -a -d "{}/deps" \; -print -quit 2>/dev/null
+	find "$(_get_project_dir)" -type d -path '*/src-tauri/target/release' \
+		-exec sh -c 'for f in "$1"/*; do [ -f "$f" ] && [ -x "$f" ] && exit 0; done; exit 1' _ {} \; \
+		-print -quit 2>/dev/null
 }
 _set_pnpm_build_env() {
 	export HOME="${srcdir}/.home"
@@ -110,6 +112,8 @@ prepare() {
     export NODE_ENV=development
     pnpm add -D node-addon-api node-gyp
     pnpm install --no-frozen-lockfile
+    ln -s ../../../node_modules/tw-animate-css packages/player/node_modules/tw-animate-css
+
 }
 build() {
     cd "$(_get_project_dir)"
