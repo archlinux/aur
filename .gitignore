@@ -1,0 +1,6 @@
+# AUR 仓库只应包含 PKGBUILD / .SRCINFO 和少量辅助文件
+*.pkg.tar*
+*.tar.gz
+src/
+pkg/
+*.py[cod]
