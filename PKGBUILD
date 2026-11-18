@@ -1,8 +1,8 @@
 # Maintainer: Marco Gulino <marco dot gulino at gmail dot com>
 pkgname=python-xisf
 _name=${pkgname#python-}
-pkgver=0.9.5
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Python library for encoding and decoding Pixinsight XISF files"
 arch=('any')
 url="https://github.com/sergio-dr/xisf"
@@ -20,7 +20,7 @@ makedepends=(
   'python-wheel'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('343d0b3d1cca575808eaeefec19ffec53986b57f11757a9feb833dc4f79bd645')
+sha256sums=('d531aade626ea0f703f8d69ca5ae65662af043e9a3e5f3c2d38cf37e596e2b53')
 
 build() {
   cd "$_name-$pkgver"
@@ -33,3 +33,4 @@ package() {
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
+

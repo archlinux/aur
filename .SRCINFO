@@ -1,7 +1,7 @@
 pkgbase = python-xisf
 	pkgdesc = Python library for encoding and decoding Pixinsight XISF files
-	pkgver = 0.9.5
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/sergio-dr/xisf
 	arch = any
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = python-xisf
 	depends = python
 	depends = python-lz4
 	depends = python-zstandard
-	source = xisf-0.9.5.tar.gz::https://github.com/sergio-dr/xisf/archive/refs/tags/v0.9.5.tar.gz
-	sha256sums = 343d0b3d1cca575808eaeefec19ffec53986b57f11757a9feb833dc4f79bd645
+	source = xisf-1.0.1.tar.gz::https://github.com/sergio-dr/xisf/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = d531aade626ea0f703f8d69ca5ae65662af043e9a3e5f3c2d38cf37e596e2b53
 
 pkgname = python-xisf
