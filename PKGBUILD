@@ -4,7 +4,7 @@
 
 pkgname=lumen-journal-bin
 _pkgname=lumen
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="Private, encrypted Markdown journal (prebuilt binary)"
 arch=('x86_64')
