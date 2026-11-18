@@ -1,14 +1,14 @@
 pkgbase = go-aws-sso
 	pkgdesc = Make working with AWS SSO on local machines an ease.
-	pkgver = 1.5.4
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/theurichde/go-aws-sso
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = https://github.com/theurichde/go-aws-sso/releases/download/v1.5.4/go-aws-sso_1.5.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = aec86c28da683d404a3c5ebedf63a448d275a52c014db9e9e824bd25b66a8c6d
-	source_aarch64 = https://github.com/theurichde/go-aws-sso/releases/download/v1.5.4/go-aws-sso_1.5.4_linux_arm64.tar.gz
-	sha256sums_aarch64 = cd6ff512af77028e1c0de85953f938fecc1fadab04c065a5387d56c110d0bdaf
+	source_x86_64 = https://github.com/theurichde/go-aws-sso/releases/download/v1.6.0/go-aws-sso_1.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 055e956d1519e454260ee6f2cf789d5d45ab879ec31a0ec99fd80991ef28f0f6
+	source_aarch64 = https://github.com/theurichde/go-aws-sso/releases/download/v1.6.0/go-aws-sso_1.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = afcbd1d96331fe43155b57c23895d54327bb3fc651e1aa7d7d6ae719efe345ea
 
 pkgname = go-aws-sso
