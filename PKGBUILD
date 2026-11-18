@@ -6,7 +6,7 @@
 # generated from the rendered file rather than tracked.
 
 pkgname=rusticprofile
-pkgver=0.2.60
+pkgver=0.2.63
 pkgrel=1
 pkgdesc="A local, per-machine scheduler and orchestrator for rustic backups"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'rustic')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cb69082ef04f350ed6100cddbef1c496b674f82a8e5905d1bdbf24f3a60f125a')
+sha256sums=('35ecc90889d63ffa064ca429430b50a41e6d50f3f2d935f267bb9fa98ff90b8f')
 
 prepare() {
   cd "$pkgname-$pkgver"
