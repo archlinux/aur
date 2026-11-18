@@ -1,6 +1,6 @@
 pkgbase = agentty-bin
 	pkgdesc = Blazing-fast Claude in your terminal — 8.8 MB static binary, sandboxed by default, one-command SSH airgap. C++26 alternative to claude-code.
-	pkgver = 0.9.57
+	pkgver = 0.9.58
 	pkgrel = 1
 	url = https://github.com/agentty-org/agentty
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = agentty-bin
 	optdepends = openssh: for `agentty airgap`
 	provides = agentty
 	conflicts = agentty
-	source_x86_64 = agentty-0.9.57-x86_64::https://github.com/agentty-org/agentty/releases/download/v0.9.57/agentty-linux-x86_64
-	sha256sums_x86_64 = f79f7adc10ab81fad466a87a2efb8a362c5c0614eebbef1e5d7ea1fd37274387
-	source_aarch64 = agentty-0.9.57-aarch64::https://github.com/agentty-org/agentty/releases/download/v0.9.57/agentty-linux-aarch64
-	sha256sums_aarch64 = 487cfa03397b34936003fb5e927a57ed50026b987979ea183547decf5996651b
+	source_x86_64 = agentty-0.9.58-x86_64::https://github.com/agentty-org/agentty/releases/download/v0.9.58/agentty-linux-x86_64
+	sha256sums_x86_64 = e05788adc56291fa123fc9461cf3967564f87c146858b10730235bc2bf058014
+	source_aarch64 = agentty-0.9.58-aarch64::https://github.com/agentty-org/agentty/releases/download/v0.9.58/agentty-linux-aarch64
+	sha256sums_aarch64 = e85f4cf05bd3a4a63b7845454d42b2023732ba41185c201adc648f2ecf88f602
 
 pkgname = agentty-bin
