@@ -1,7 +1,7 @@
 # Maintainer: chadsr <git at ross dot ch>
 
 pkgname=sheprd
-pkgver=20261115.1 # renovate: datasource=github-releases depName=sheprd-labs/sheprd
+pkgver=20261118.1 # renovate: datasource=github-releases depName=sheprd-labs/sheprd
 pkgrel=1
 pkgdesc="Native GPUI client for an installed Herdr daemon (formerly herdr-gpui)"
 arch=('x86_64' 'aarch64')
@@ -34,7 +34,7 @@ conflicts=('herdr-gpui' "$pkgname-bin")
 replaces=('herdr-gpui')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('3453e6de35262d05f98853c577f87e01dfe5b86b57e238d6dc677f26bd78e66ed3b132c60dee9a45c42cbf559cc97daa112ea88142b5155b6af9e90d43be5d36')
+b2sums=('950d23086c0bea1f9b5afe04d35b2c82f82d48448b8c7f4d6c7d22de959b0655925c98ec008e7dc69070a235c81acb4bceddd41d3a69b23381fd429d9872fdb6')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -60,6 +60,7 @@ check() {
 	cd "$pkgname-$pkgver"
 	export CARGO_TARGET_DIR=target
 	export GIT_CEILING_DIRECTORIES="$srcdir"
+	export USER="${USER:-$(id -un)}" # some test depend on USER being set
 
 	cargo test --frozen --release -p sheprd-gpui --test cli
 	cargo test --frozen --release --lib \

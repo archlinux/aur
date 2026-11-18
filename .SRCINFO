@@ -1,6 +1,6 @@
 pkgbase = sheprd
 	pkgdesc = Native GPUI client for an installed Herdr daemon (formerly herdr-gpui)
-	pkgver = 20261115.1
+	pkgver = 20261118.1
 	pkgrel = 1
 	url = https://github.com/sheprd-labs/sheprd
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = sheprd
 	conflicts = sheprd-bin
 	replaces = herdr-gpui
 	options = !lto
-	source = sheprd-20261115.1.tar.gz::https://github.com/sheprd-labs/sheprd/archive/refs/tags/v20261115.1.tar.gz
-	b2sums = 3453e6de35262d05f98853c577f87e01dfe5b86b57e238d6dc677f26bd78e66ed3b132c60dee9a45c42cbf559cc97daa112ea88142b5155b6af9e90d43be5d36
+	source = sheprd-20261118.1.tar.gz::https://github.com/sheprd-labs/sheprd/archive/refs/tags/v20261118.1.tar.gz
+	b2sums = 950d23086c0bea1f9b5afe04d35b2c82f82d48448b8c7f4d6c7d22de959b0655925c98ec008e7dc69070a235c81acb4bceddd41d3a69b23381fd429d9872fdb6
 
 pkgname = sheprd
