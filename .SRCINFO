@@ -1,0 +1,16 @@
+pkgbase = mythes-pt_pt-git
+	pkgdesc = Portuguese (European) thesaurus
+	pkgver = r1.20201029
+	pkgrel = 1
+	url = https://github.com/LibreOffice/dictionaries/tree/master/pt_PT
+	arch = any
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	license = MPL-1.1
+	makedepends = git
+	makedepends = libmythes
+	optdepends = libmythes: offers thesaurus library functions
+	provides = mythes-pt_pt
+	conflicts = mythes-pt_pt
+
+pkgname = mythes-pt_pt-git
