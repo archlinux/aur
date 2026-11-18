@@ -1,9 +1,9 @@
 # Maintainer: Chapman <touch65536@gmail.com>
 
 pkgname=tencent-qq
-_base_pkgver=3.2.33-52892
-pkgver=3.2.33_52892
-pkgrel=2
+_base_pkgver=3.2.35-54395
+pkgver=3.2.35_54395
+pkgrel=1
 pkgdesc="Tencent QQ for Linux with native Wayland auto-detection and secure Bubblewrap sandbox"
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://im.qq.com/linuxqq/"
@@ -30,7 +30,7 @@ source=(
     "LICENSE"
 )
 
-_url_prefix="https://qqdl.gtimg.cn/qqfile/QQNT/9.9.35/beta/1763096b"
+_url_prefix="https://qqdl.gtimg.cn/qqfile/QQNT/9.9.37/beta/816b3c79"
 source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${_url_prefix}/linuxqq_${_base_pkgver}_amd64.deb")
 source_aarch64=("${pkgname}-${pkgver}-arm64.deb::${_url_prefix}/linuxqq_${_base_pkgver}_arm64.deb")
 source_loong64=("${pkgname}-${pkgver}-loongarch64.deb::${_url_prefix}/linuxqq_${_base_pkgver}_loongarch64.deb")
@@ -44,13 +44,13 @@ sha256sums=(
 )
 
 sha256sums_x86_64=(
-    '502a978f2d03af9f21acefc461f9d1d1fe09b65bad620bbfcdb589a79ac53b7e'
+    '7de03862327abbd16da27130413698c9517782b27194afc593bc3abf9b55f9ac'
 )
 sha256sums_aarch64=(
-    '806e036ee1c19ffeae22f19b5f0c2e1a7789abb5f4383bd67309995a73ea26de'
+    '5f93ea62347dd772c7be4115413c95d2a60d189f3dd81bc194834bd4d7343cf2'
 )
 sha256sums_loong64=(
-    '3a26ac8bba6b1a007f34d4c007ca2ccf71565cbb2dd47814eee044861d124e43'
+    'e41dcfcf6729610e5db9a5090964fb01f4487f85f27858301f0c9d3eee747d58'
 )
 
 prepare() {
@@ -61,12 +61,13 @@ prepare() {
         loong64) _deb_arch="loongarch64" ;;
     esac
 
-    bsdtar -xf "${pkgname}-${pkgver}-${_deb_arch}.deb" data.tar.xz
+    rm -f data.tar.*
+    bsdtar -xf "${pkgname}-${pkgver}-${_deb_arch}.deb" 'data.tar.*'
 }
 
 package() {
     # Extract data from deb
-    bsdtar -xf data.tar.xz -C "${pkgdir}"
+    bsdtar -xf data.tar.* -C "${pkgdir}"
 
     # Install custom native Wayland + privacy sandbox launcher
     install -Dm755 "${srcdir}/qq.sh" "${pkgdir}/usr/bin/qq"
