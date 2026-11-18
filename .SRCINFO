@@ -1,7 +1,7 @@
 pkgbase = ombi-develop
 	pkgdesc = A media request tool that automatically syncs with your media servers
 	pkgver = 4.60.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ombi.io
 	install = ombi.install
 	arch = x86_64
