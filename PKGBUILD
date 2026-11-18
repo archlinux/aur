@@ -18,8 +18,8 @@ source=(
   extempore.sh
 )
 sha256sums=('c180fc1493816aec5ac80b4ebce20f93f6d83db6615ad09772c05638e415db6c'
-  'f4bd232731cf4d4ddc82026b26a6e08736c2f5e8770078f69a864d9a45bec070'
-  '68d567be326d523dc08e9f0359fed59e40bece6366a02165207e22d00502b276')
+            'f4bd232731cf4d4ddc82026b26a6e08736c2f5e8770078f69a864d9a45bec070'
+            'e82562f7bda1655a771805e9a53a2a2fb91cddab58116987800fc93e5c1fa529')
 
 package() {
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
