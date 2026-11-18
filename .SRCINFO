@@ -30,7 +30,7 @@ pkgbase = eusoft-eshelper
 	sha256sums = 066ec47a8580088b66d37912b35a84c84719d4fd9dc94134a689a93928308280
 	sha256sums = 91a47841b3b5572d6e8f3e3ff9dde1d36bc6ce6a3486578790117471cb2f83c7
 	sha256sums = cf9ba50ac9a100c03be7e11953e99443a5e8d26ed2f4453ecc454113778b668c
-	source_x86_64 = eusoft-eshelper-13.5.2.deb::https://static.eudic.net/pkg/eshelper.deb
+	source_x86_64 = eusoft-eshelper-13.5.2.deb::https://static.frdic.com/pkg/eshelper.deb
 	sha256sums_x86_64 = 59af3b48c1cda58220e303c479d8244257fb2d7c7be7d229b83f3e8dc23ee358
 
 pkgname = eusoft-eshelper
