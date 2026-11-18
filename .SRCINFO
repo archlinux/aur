@@ -1,7 +1,7 @@
 pkgbase = kate-bin
 	pkgdesc = Advanced text editor (KDE CI AppImage binary release)
 	pkgver = 26.12.12935
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/kate/
 	arch = x86_64
 	license = GPL-2.0-or-later

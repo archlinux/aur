@@ -5,7 +5,7 @@ pkgname=kate-bin
 _branch=26.12
 _build=12935
 pkgver=${_branch}.${_build}
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced text editor (KDE CI AppImage binary release)"
 arch=('x86_64')
 url="https://apps.kde.org/kate/"
@@ -55,16 +55,16 @@ prepare() {
 package() {
     cd "${srcdir}/squashfs-root"
 
-    install -d "${pkgdir}/opt/${pkgname}"
-    cp -a . "${pkgdir}/opt/${pkgname}/"
+    install -d "${pkgdir}/opt/${_pkgname}"
+    cp -a --no-preserve=ownership . "${pkgdir}/opt/${_pkgname}/"
 
-    chmod -R a+rX "${pkgdir}/opt/${pkgname}"
+    chmod -R a+rX "${pkgdir}/opt/${_pkgname}"
 
     # 创建启动包装脚本到 /usr/bin/kate（AppRun 使用 dirname "$0"，直接软链接会导致路径解析到 /usr/bin）
     install -d "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/${_pkgname}" <<EOF
 #!/bin/sh
-exec "/opt/${pkgname}/AppRun" "\$@"
+exec "/opt/${_pkgname}/AppRun" "\$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
 
