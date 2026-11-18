@@ -1,7 +1,7 @@
 pkgbase = sonarr-develop
 	pkgdesc = Smart PVR for newsgroup and torrent users (develop branch)
 	pkgver = 5.0.0.2997
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sonarr.tv
 	install = sonarr.install
 	arch = x86_64

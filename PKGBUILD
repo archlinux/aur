@@ -7,7 +7,7 @@
 pkgname=sonarr-develop
 _pkgname=Sonarr
 pkgver=5.0.0.2997
-pkgrel=2
+pkgrel=3
 pkgdesc='Smart PVR for newsgroup and torrent users (develop branch)'
 arch=(x86_64 aarch64 armv7h)
 url='https://sonarr.tv'
@@ -78,7 +78,7 @@ prepare() {
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_NOLOGO=1
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
-  dotnet new globaljson --sdk-version 10.0.112 --roll-forward latestFeature
+  dotnet new globaljson --sdk-version 10.0.114 --roll-forward latestFeature
 
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
