@@ -1,6 +1,6 @@
 pkgbase = nota-daw-bin
 	pkgdesc = Modern digital audio workstation (DAW) (upstream binary)
-	pkgver = 0.60.2
+	pkgver = 0.60.3
 	pkgrel = 1
 	url = https://github.com/nota-daw/nota
 	arch = x86_64
@@ -29,9 +29,9 @@ pkgbase = nota-daw-bin
 	conflicts = nota-daw
 	options = !strip
 	options = !debug
-	source = Nota-0.60.2-x86_64.AppImage::https://github.com/nota-daw/nota/releases/download/v0.60.2/Nota-0.60.2-x86_64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/nota-daw/nota/v0.60.2/LICENSE
-	sha256sums = 5e693da953da3e5eab637afd4cca1e5940b2f92045c4aab9ecce2734ba7aed10
+	source = Nota-0.60.3-x86_64.AppImage::https://github.com/nota-daw/nota/releases/download/v0.60.3/Nota-0.60.3-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/nota-daw/nota/v0.60.3/LICENSE
+	sha256sums = 4bbf3b2239db3cc31ec8b8ca8897962bacae02846d60ffd01df733bbf6f1a32e
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 
 pkgname = nota-daw-bin
