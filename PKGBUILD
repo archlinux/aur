@@ -73,12 +73,13 @@ sha256sums=(
 sha256sums_x86_64=('a0db8caeee8d1e6cfe0aa5ce58710270f8d74a90ff4920f53a3fc22aa0956fe9')
 
 prepare() {
-    bsdtar -xf "${pkgname}-${pkgver}-x86_64.deb" data.tar.xz
+    rm -f data.tar.*
+    bsdtar -xf "${pkgname}-${pkgver}-x86_64.deb" 'data.tar.*'
 }
 
 package() {
     # Extract opt and usr hierarchies from official deb data
-    bsdtar -xf data.tar.xz -C "${pkgdir}"
+    bsdtar -xf data.tar.* -C "${pkgdir}"
 
     # Install pixmap for launchers that search /usr/share/pixmaps
     install -Dm644 "${pkgdir}/usr/share/icons/hicolor/256x256/apps/wechat.png" "${pkgdir}/usr/share/pixmaps/wechat.png"
