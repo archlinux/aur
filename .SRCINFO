@@ -1,6 +1,6 @@
 pkgbase = hbuilderx-bin
 	pkgdesc = cli的用途是让开发者可以在linux服务器上调用HBuilderX cli，来实现程序化操作打包app、上传unicloud云函数。
-	pkgver = 5.15.2026070915
+	pkgver = 5.34.2026102909
 	pkgrel = 1
 	epoch = 1
 	url = https://www.dcloud.io
@@ -11,9 +11,9 @@ pkgbase = hbuilderx-bin
 	provides = HBuilderX
 	options = !strip
 	options = !debug
-	source = https://download1.dcloud.net.cn/download/HBuilderX.5.15.2026070915.linux_x64.full.tar.gz
+	source = https://download1.dcloud.net.cn/download/HBuilderX.5.34.2026102909.linux_x64.full.tar.gz
 	source = hbuilderx.service
-	sha256sums = 6c7efac3c3c298faca0e227d586fb543aec29dae0f7f8662ec55f6e90cf39aca
+	sha256sums = 60b15a471925f293ff86025b9b3462e7937797335fffe44bd964854b50425ba1
 	sha256sums = 69d7d79be0b001e495e7417c6d6a8c50951e76563e0c394cd8007618b748826b
 
 pkgname = hbuilderx-bin
