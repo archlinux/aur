@@ -1,6 +1,6 @@
 pkgbase = xmtr
 	pkgdesc = Concurrent traceroute built on trippy that publishes routes, trace several targets at once and see every hop on a map.
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/Alice39s/xmtr
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = xmtr
 	depends = glibc
 	depends = gcc-libs
 	options = !lto
-	source = xmtr-0.4.3.tar.gz::https://github.com/Alice39s/xmtr/archive/refs/tags/v0.4.3.tar.gz
-	sha256sums = f2af8ee7a4bf74aba39f54ef41612a8ff4407cdc5705ade1e38928596932e206
+	source = xmtr-0.4.4.tar.gz::https://github.com/Alice39s/xmtr/archive/refs/tags/v0.4.4.tar.gz
+	sha256sums = 67eaa812113c9aa619546ba97067626c793e6b03d92d6565507fde46d5fe578e
 
 pkgname = xmtr
