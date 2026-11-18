@@ -15,6 +15,12 @@ options=('!strip' '!debug')
 # symbols no user can obtain anyway.
 source=("samples-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('f1117aae9b0a3d042f39c9bf8049d3372ecb1a17497e1b039dcede7ca1f791eb')
+# The terms say they are provisional and will be replaced by the complete licence,
+# so these bytes can change without a version change. Pin the reviewed text: a
+# rewrite then fails the build instead of shipping under terms nobody read. This
+# covers only the file named here; a replacement arriving as a different file has
+# to be caught by reading the folder at each bump, which is what the pin forces.
+_core_terms_sum='4667f8f0304ee85939bf69db8efdf7d1c1172cbb28747a1f4e138a6f3dd936fd'
 
 _latestver() {
   gh api --paginate repos/ThinkMeta-com/ThinkMeta.ConcurrentTasks.Samples/tags --jq '.[].name' |
@@ -30,6 +36,11 @@ package() {
   # installed runtime wrong for some encoders and right for others.
   [[ $(sha256sum "${top}"/ct*/bin/linux-x64/libThinkMeta.ConcurrentTasks.Core.so.2 |
     awk '{print $1}' | sort -u | wc -l) -eq 1 ]]
+
+  if ! echo "${_core_terms_sum}  ${top}/ctDeflate/LICENSE-Core.txt" | sha256sum -c --status; then
+    error "the core licence text is not the one reviewed; read it and update _core_terms_sum if the new terms are acceptable"
+    return 1
+  fi
 
   install -Dm755 "${top}/ctDeflate/bin/linux-x64/libThinkMeta.ConcurrentTasks.Core.so.2" \
     "${pkgdir}/usr/lib/libThinkMeta.ConcurrentTasks.Core.so.2"
