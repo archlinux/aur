@@ -1,0 +1,14 @@
+[Unit]
+Description=青简输入法 Server
+Documentation=https://qingjian.app
+After=graphical-session.target
+ConditionUser=!@system
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/qingjian-linux-server
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target
