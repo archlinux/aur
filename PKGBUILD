@@ -2,7 +2,7 @@
 _pkgname=firesync
 pkgname=firesync-git
 pkgver=v1.2.0.r0.g0285236
-pkgrel=1
+pkgrel=2
 pkgdesc="A companion app for Fireshare that automatically detects and uploads new videos and screenshots."
 arch=('x86_64')
 url="https://github.com/fireshare-app/firesync"
