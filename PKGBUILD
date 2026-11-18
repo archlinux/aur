@@ -1,6 +1,6 @@
 # Release automation replaces pkgver and the archive checksum before publication.
 pkgname=trackfolio-bin
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Manage FLAC and MP3 metadata in a local music catalog'
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip' '!debug')
 source=("trackfolio-${pkgver}-linux-x64.tar.gz::${url}/releases/download/v${pkgver}/Trackfolio-linux-x64.tar.gz"
         'trackfolio.desktop' 'trackfolio.svg')
 # scripts/prepare_aur.py fills these checksums from the verified release inputs.
-sha256sums=('a689711e518104221f40092c689f03c3ae56d59cc7add4d289f6c12a09537a2b'
+sha256sums=('0a0f67c7ffe4b3d87159964ac93fec223615d9f779fbe13b33d0031090d71eb9'
             '407c8b23864edb6bc66879a5f646e6c5356f8758e08c01220ff9225c826bbb6c' '250fa792ce18d2ec3a42e616d6ffd10a0d2eb8966a8f41084f19b2abb646fc71')
 
 package() {
