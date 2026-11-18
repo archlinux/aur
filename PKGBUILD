@@ -5,7 +5,7 @@
 pkgname=prowlarr-develop
 _pkgname=Prowlarr
 pkgver=3.0.2.5780
-pkgrel=3
+pkgrel=4
 pkgdesc='Indexer manager/proxy for usenet and torrent users (develop branch)'
 arch=(x86_64 aarch64 armv7h)
 url='https://prowlarr.com'
@@ -83,7 +83,7 @@ prepare() {
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_NOLOGO=1
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
-  dotnet new globaljson --sdk-version 10.0.113 --roll-forward latestFeature
+  dotnet new globaljson --sdk-version 10.0.114 --roll-forward latestFeature
 
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
