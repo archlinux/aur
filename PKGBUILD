@@ -30,8 +30,18 @@ sha256sums_aarch64=('18acd0acdf139c5fd09498224edf22682a54c2d9b7962e08746e8ebd53c
 sha256sums_armv7h=('283b99661a7c2a5c9173f67e808168e53ecd467d37ffb4b77741047f6bef71c7')
 
 
+case ${CARCH} in
+	${arch[0]})
+		_CARCH=${_barch[0]}
+	;;
+
+	${arch[1]})
+		_CARCH=${_barch[1]}
+	;;
+esac
+
 package() {
-	cd "${srcdir}/${_pkgname}-${CARCH}-unknown-linux-gnu/" || exit
+	cd "${srcdir}/${_pkgname}-${_CARCH}/" || exit
 
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
