@@ -1,0 +1,18 @@
+pkgbase = jrp-bin
+	pkgdesc = JSON formatter that lays out a document by the shape of the data
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/patrickbergner/json-really-pretty-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = jrp=1.2.0
+	conflicts = jrp
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/patrickbergner/json-really-pretty-cli/releases/download/v1.2.0/jrp-1.2.0-linux-amd64.zip
+	sha256sums_x86_64 = 8bfb027055ac7cc955eba049b4c727c4dbf176523c3545cb93a379c381e6f961
+	source_aarch64 = https://github.com/patrickbergner/json-really-pretty-cli/releases/download/v1.2.0/jrp-1.2.0-linux-arm64.zip
+	sha256sums_aarch64 = 462e1fb66feba4d0d8c991d3615d08e3c33972ad167397185002739f8c7bee6f
+
+pkgname = jrp-bin
