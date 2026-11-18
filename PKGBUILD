@@ -5,7 +5,7 @@ _rocm_repo='https://repo.amd.com/rocm/packages-multi-arch/ubuntu2604'
 
 pkgname=opencl-amd
 pkgdesc="ROCm components repackaged from AMD's Ubuntu releases (ROCr runtime, OpenCL runtime, HIP runtime) - This package is intended to work along with the free amdgpu stack."
-pkgver=10.1.0
+pkgver=10.2.0
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -19,20 +19,20 @@ optdepends=('clinfo')
 
 source=(
 #runtime
-"https://stable.repo.amd.com/rocm/core/packages/ubuntu2604/pool/main/amdrocm-sysdeps10.1_10.1.0-3_amd64.deb"
-"https://stable.repo.amd.com/rocm/core/packages/ubuntu2604/pool/main/amdrocm-llvm10.1_10.1.0-3_amd64.deb"
-"https://stable.repo.amd.com/rocm/core/packages/ubuntu2604/pool/main/amdrocm-runtime10.1_10.1.0-3_amd64.deb"
-"https://stable.repo.amd.com/rocm/core/packages/ubuntu2604/pool/main/amdrocm-base10.1_10.1.0-3_amd64.deb"
-"https://stable.repo.amd.com/rocm/core/packages/ubuntu2604/pool/main/amdrocm-opencl10.1_10.1.0-3_amd64.deb"
+"https://stable.repo.amd.com/rocm/core/packages/ubuntu2604/pool/main/amdrocm-sysdeps10.2_10.2.0-2_amd64.deb"
+"https://stable.repo.amd.com/rocm/core/packages/ubuntu2604/pool/main/amdrocm-llvm10.2_10.2.0-2_amd64.deb"
+"https://stable.repo.amd.com/rocm/core/packages/ubuntu2604/pool/main/amdrocm-runtime10.2_10.2.0-2_amd64.deb"
+"https://stable.repo.amd.com/rocm/core/packages/ubuntu2604/pool/main/amdrocm-base10.2_10.2.0-2_amd64.deb"
+"https://stable.repo.amd.com/rocm/core/packages/ubuntu2604/pool/main/amdrocm-opencl10.2_10.2.0-2_amd64.deb"
 #dev - todo
 )
 
 sha256sums=(
-"a2493d98144a586df49489c4b4b7a7449c9eb123597515929699b1b5fccfd916"
-"6a4727102d830f6c97b911351192b15623189278afad9b4558514a6fe51ca58a"
-"2cf4fa3b82f9b37be9fc18ca6886e1791585c1b8041758ccba9e3c5dadb7c6b1"
-"a3d48032edee53c51016b28884a1fe81e2d2f84e087c2546dd20753402ad53c9"
-"d4c195a9c99bd61f9269fb61a9c396bfdbbe1db5ebea21cc3bc5657f75ca1304"
+"e81ee425b56d3c37b267480530d82a512aaa2fbf1f5b32df01ac1ef9b86a1fac"
+"f7aef5f955d375680fb7ebdbb40f245230fbd7ef303593968dec67c7366916e2"
+"987610001de42cef3c5325f9a71e26e90d56cac595765e77c1d1a5e97b650593"
+"33a4de9d3c59e74131b46bd31f0ce6694fbe62dff5ed2f6dd3fd4bd7f98c41e6"
+"30d11e37ef198ed1c79882f303378b9c0b81f1fe54cbf63b4e35ec80e03d945a"
 )
 
 package() {
@@ -50,7 +50,7 @@ package() {
     done
 
     mv "${srcdir}/opt/" "${pkgdir}/"
-    mv "${pkgdir}/opt/rocm/core-10.1" "${pkgdir}/opt/rocm/core"
+    cp -a "${pkgdir}/opt/rocm/core-10.2/." "${pkgdir}/opt/rocm/"
 
     mkdir -p "${pkgdir}/opt/amdgpu/share/libdrm"
     cd "${pkgdir}/opt/amdgpu/share/libdrm"
@@ -60,9 +60,9 @@ package() {
     echo libamdocl64.so > "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd"
 
     mkdir -p "${pkgdir}/etc/ld.so.conf.d"
-    echo /opt/rocm/core/lib >> "$pkgdir/etc/ld.so.conf.d/opencl-amd.conf"
-    echo /opt/rocm/core/lib/opencl >> "$pkgdir/etc/ld.so.conf.d/opencl-amd.conf"
+    echo /opt/rocm/lib >> "$pkgdir/etc/ld.so.conf.d/opencl-amd.conf"
+    echo /opt/rocm/lib/opencl >> "$pkgdir/etc/ld.so.conf.d/opencl-amd.conf"
 
     mkdir -p "${pkgdir}/etc/profile.d"
-    echo export PATH="\${PATH}:/opt/rocm/core/bin:/opt/rocm/core/lib/llvm/bin" > "$pkgdir/etc/profile.d/opencl-amd.sh"
+    echo export PATH="\${PATH}:/opt/rocm/bin:/opt/rocm/lib/llvm/bin" > "$pkgdir/etc/profile.d/opencl-amd.sh"
 }
