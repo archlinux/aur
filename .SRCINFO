@@ -1,16 +1,16 @@
 pkgbase = omniget-bin
 	pkgdesc = A local MCP server that gives your coding agent a desktop toolbox: downloads from YouTube, torrents and every site yt-dlp supports, media conversion, files, chats and system cleanup.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getomniget.com
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = gendesk
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	depends = libayatana-indicator
 	depends = libappindicator
+	depends = openssl-3
 	provides = omniget=1.0.0
 	conflicts = omniget
 	source = omniget-1.0.0.deb::https://getomniget.com/dl/v1.0.0/omniget_1.0.0_amd64.deb

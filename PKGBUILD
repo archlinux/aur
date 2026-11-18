@@ -2,7 +2,7 @@
 pkgname=omniget-bin
 _pkgname=OmniGet
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A local MCP server that gives your coding agent a desktop toolbox: downloads from YouTube, torrents and every site yt-dlp supports, media conversion, files, chats and system cleanup."
 arch=('x86_64')
 url="https://getomniget.com"
@@ -16,9 +16,7 @@ depends=(
     'webkit2gtk-4.1'
     'libayatana-indicator'
     'libappindicator'
-)
-makedepends=(
-    'gendesk'
+	'openssl-3'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/dl/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('93021a0f34c850c90b308e52436d0aaf46c93c6f8055f8c117b2e1c6a738fac5')
@@ -35,16 +33,10 @@ _install_icons() {
 }
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    gendesk -q -f -n \
-		--pkgname="${pkgname%-bin}" \
-		--pkgdesc="${pkgdesc}" \
-		--categories="Network" \
-		--name="${_pkgname}" \
-		--exec="${pkgname%-bin} %U"
 }
 package() {
-    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}"* -t "${pkgdir}/usr/bin"
     [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
     _install_icons
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
