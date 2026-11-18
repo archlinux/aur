@@ -33,7 +33,7 @@ source=(
     "LICENSE"
 )
 source_x86_64=(
-    "${pkgname}-${pkgver}.deb::https://static.eudic.net/pkg/eudic.deb?v=${pkgver}"
+    "${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/eudic.deb"
 )
 noextract=("${pkgname}-${pkgver}.deb")
 
@@ -47,12 +47,13 @@ sha256sums_x86_64=(
 )
 
 prepare() {
-    bsdtar -xf "${pkgname}-${pkgver}.deb" data.tar.zst
+    rm -f data.tar.*
+    bsdtar -xf "${pkgname}-${pkgver}.deb" 'data.tar.*'
 }
 
 package() {
     # Extract data hierarchy from official deb
-    bsdtar -xf data.tar.zst -C "${pkgdir}"
+    bsdtar -xf data.tar.* -C "${pkgdir}"
 
     # Remove upstream obsolete Ubuntu system libraries dumped in root dir
     rm -f "${pkgdir}/usr/share/${pkgname}"/lib*.so* 2>/dev/null || true
