@@ -1,6 +1,27 @@
-// @generated from icon-definitions.ts + icon-replacer.ts + colors.ts — DO NOT EDIT
-// Regenerate: node sha-web-console/generate-file-icons.cjs
 #pragma once
+
+/**
+ * SHA CONSOLE GENERATED HEADER
+ *
+ * @file        file_icons.hpp
+ * @brief       Generated file-icon lookup of the SHA icon and colour SSOT
+ * @description GENERATED from icon-definitions.ts, icon-replacer.ts and colors.ts - do not edit.
+ *              Regenerate: node sha-web-console/generate-file-icons.cjs
+ *              Any edit made here is lost on the next run; change the source and
+ *              run the generator.
+ *
+ * @module      ase-sha-web-console
+ * @layer       5
+ * @category    render/ui
+ * @usecase     usecase:101331 - wrap terminal lines
+ * @created     2026-04-12
+ * @modified    2026-10-18
+ * @version     1.0.0
+ *
+ * Copyright (c) Jan Ohlmann. All rights reserved.
+ * Licensed to ANTARES SIMULACAO LTDA. Use is governed by LICENSE.md and PJV.md in this repository.
+ * SPDX-License-Identifier: LicenseRef-ASE-LIC
+ */
 
 #include <cstdint>
 

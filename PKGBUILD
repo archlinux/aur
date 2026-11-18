@@ -7,13 +7,11 @@ pkgname=ase-explorer
 # (`vercmp 00.00.29-1 00.00.35-1` = -1). Mit epoch gilt wieder die SSOT allein
 # (`vercmp 1:00.00.29-1 00.00.35-1` = 1) — ab hier laufen Paket und Katalog gleich.
 epoch=1
-# 00.00.32 ist der erste Stand, in dem ein aus dem Quellbaum gestarteter Explorer die daneben
-# gebauten Werkzeuge nimmt statt der installierten, und in dem ein fehlgeschlagener
-# Dateistart eine Zeile hinterlaesst. Bei 00.00.29 stand hier genau die installierte Fassung:
-# gleiche Version heisst fuer pacman kein Update, und der Betreiber haette aktualisiert, ohne
-# etwas zu bekommen. DIE QUELLEN KOMMEN VON HEAD, nicht von einem Tag — deshalb ist die
-# Version die EINZIGE Stelle, die ueber das Anbieten entscheidet.
-pkgver=00.00.32
+# 00.00.38 ist der Stand der VERSION-SSOT (ASE_CLIENT_EXPLORER) am 2026-11-18 und traegt die
+# nachgeholte SHA-Auslieferung (siehe die vier Header in source=). DIE QUELLEN KOMMEN VON HEAD,
+# nicht von einem Tag — deshalb ist die Version die EINZIGE Stelle, die ueber das Anbieten
+# entscheidet.
+pkgver=00.00.38
 pkgrel=1
 pkgdesc='ASE Hierarchical Project Explorer with NerdFont Icons'
 arch=('x86_64')
@@ -92,32 +90,36 @@ source=(
     # im selben Baum.
     "entt::git+https://github.com/skypjack/entt.git#tag=v3.13.0"
     "spdlog::git+https://github.com/gabime/spdlog.git#tag=v1.13.0"
-    "file-icons.hpp"
+    # SHA-AUSLIEFERUNG: die vier Header sind Kopien aus sha-web-console/generated, Stand
+    # origin/main. SHA ist die SSOT, jedes Projekt traegt seine Kopie selbst — sie werden mit
+    # jeder SHA-Aenderung hier neu eingesetzt, Name UND Inhalt, danach updpkgsums.
+    # Bis 2026-11-18 lagen hier die Kopien vom 2026-04-20: f353b21 (2026-10-20) zog den Include
+    # im Explorer auf file_icons.hpp nach, die Kopie hiess weiter file-icons.hpp, und jeder Bau
+    # ab HEAD brach mit `file_icons.hpp: Datei oder Verzeichnis nicht gefunden`.
+    "file_icons.hpp"
     "colors.hpp"
     "design_tokens.hpp"
     "ui_icons.hpp"
 )
-sha256sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    '4f9e4b4b6092619b9f157c80733aee73fc274f337edc0bc07aaaf28bd745d9c9'
-    '7ed7afc5098eeba491ec899dc4c0a2157d2786cd3665981f4b9bbc00a8e56906'
-    '586535811845c7b7d1bb035ae52253205c7250b8071d36b40e7685bc0a2b3b39'
-    '1f0814d89ae60ca293c3f4d14503f3720192ac6b0719ede455089d8b1f8704dd'
-)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '8fac6707a0097a250d7778bf50c6bf04ce2b9b5e187a08bf2c07bc62093f8253'
+            '42c7784710b279a40d676c9004191225864d8aa8a90f8181cb7bb26bb04cd723'
+            '7abb163dbcbe301c7a5ab4040ef67432166ed893e7a04815c85e0a9c02adbff1'
+            'bcbbfe2526a753445e42f40a72bffd3075a538999a8efe17295f7dc2ffd3584e')
 
 prepare() {
     # Reconstruct monorepo layout expected by CMakeLists.txt
@@ -139,7 +141,7 @@ prepare() {
     mv ase-adp-libcuckoo    ase-root/adapter/
     mv ase-client-explorer  ase-root/clients/
     install -m644 -t ase-root/clients/sha-client-web/sha-web-console/generated/ \
-        "${srcdir}/file-icons.hpp" \
+        "${srcdir}/file_icons.hpp" \
         "${srcdir}/colors.hpp" \
         "${srcdir}/design_tokens.hpp" \
         "${srcdir}/ui_icons.hpp"

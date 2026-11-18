@@ -1,6 +1,27 @@
-// @generated from icon-definitions.ts + icon-replacer.ts — DO NOT EDIT
-// Regenerate: node sha-web-console/generate-ui-icons.cjs
 #pragma once
+
+/**
+ * SHA CONSOLE GENERATED HEADER
+ *
+ * @file        ui_icons.hpp
+ * @brief       Generated semantic UI icon glyphs of the SHA icon SSOT
+ * @description GENERATED from icon-definitions.ts and icon-replacer.ts - do not edit.
+ *              Regenerate: node sha-web-console/generate-ui-icons.cjs
+ *              Any edit made here is lost on the next run; change the source and
+ *              run the generator.
+ *
+ * @module      ase-sha-web-console
+ * @layer       5
+ * @category    render/ui
+ * @usecase     usecase:101331 - wrap terminal lines
+ * @created     2026-04-15
+ * @modified    2026-10-18
+ * @version     1.0.0
+ *
+ * Copyright (c) Jan Ohlmann. All rights reserved.
+ * Licensed to ANTARES SIMULACAO LTDA. Use is governed by LICENSE.md and PJV.md in this repository.
+ * SPDX-License-Identifier: LicenseRef-ASE-LIC
+ */
 
 // Semantic UI icon glyphs — every ICON_* constant from icon-definitions.ts
 // resolved to its NerdFont Unicode codepoint via icon-replacer.ts. Render
@@ -23,6 +44,10 @@ constexpr char32_t ICON_DELETE = U'\xF1F8';  // Trash bin - Delete
 constexpr char32_t ICON_CANCEL = U'\xF05E';  // Ban sign - Cancel
 constexpr char32_t ICON_CLOSE = U'\xF00D';  // X - Close
 constexpr char32_t ICON_TIMES = U'\xF00D';  // Remove icon
+constexpr char32_t ICON_CAMERA = U'\xF030';  // Camera - screenshot/capture
+constexpr char32_t ICON_CLIPBOARD_CHECK = U'\xED7A';  // Clipboard with check - verified/audit
+constexpr char32_t ICON_TRIANGLE_EXCLAMATION = U'\xF071';  // Warning triangle (fa6 name)
+constexpr char32_t ICON_VIAL = U'\xED90';  // Test vial - test/probe
 
 // -- Development --
 constexpr char32_t ICON_CODE = U'\xF121';  // nf-fa-code
@@ -70,6 +95,12 @@ constexpr char32_t ICON_DATABASE = U'\xF1C0';  // nf-fa-database
 constexpr char32_t ICON_DOCKER = U'\xE7B0';  // nf-dev-docker
 constexpr char32_t ICON_KUBERNETES = U'\xF10FE';  // nf-md-kubernetes
 constexpr char32_t ICON_DESKTOP = U'\xF07C0';  // Desktop computer icon
+
+// -- ASE Topology Node Kinds (Monitor TOPOLOGY scene) --
+constexpr char32_t ICON_EDGE_DAEMON = U'\xF061A';  // Edge daemon - customer-side inference hardware
+constexpr char32_t ICON_CLI = U'\xF07B7';  // CLI peer - operator command line
+constexpr char32_t ICON_DIST = U'\xF03D6';  // Distribution tier - artifact/deploy pipeline
+constexpr char32_t ICON_BROWSER_SESSION = U'\xF059F';  // Browser session peer - web client
 
 // -- Files & Folders --
 constexpr char32_t ICON_FILE = U'\xF016';  // nf-fa-file_o
@@ -231,7 +262,7 @@ constexpr char32_t ICON_HAMMER = U'\xEEFF';  // Build tool/hammer
 constexpr char32_t ICON_COGS = U'\xF085';  // Multiple gears/configuration
 constexpr char32_t ICON_SLIDERS = U'\xF1DE';  // Sliders/adjustments
 
-// -- Documentation Icons (wichtig für Docs Viewer!) --
+// -- Documentation Icons (important for the docs viewer!) --
 constexpr char32_t ICON_DOCS = U'\xF02D';  // nf-fa-book
 constexpr char32_t ICON_WRITE = U'\xF040';  // nf-fa-pencil
 constexpr char32_t ICON_READ = U'\xF06E';  // nf-fa-eye
@@ -877,6 +908,7 @@ constexpr char32_t ICON_MD_LAN_DISCONNECT = U'\xF0319';  // nf-md-lan_disconnect
 constexpr char32_t ICON_MD_SYNC = U'\xF04E6';  // nf-md-sync
 constexpr char32_t ICON_MD_SYNC_ALERT = U'\xF04E7';  // nf-md-sync_alert
 constexpr char32_t ICON_MD_SYNC_CIRCLE = U'\xF1378';  // nf-md-sync_circle
+constexpr char32_t ICON_MD_LOADING = U'\xF0772';  // nf-md-loading
 
 // -- Media --
 constexpr char32_t ICON_MD_PLAY = U'\xF040A';  // nf-md-play
@@ -907,7 +939,7 @@ constexpr char32_t ICON_CHAIN = U'\xF0C1';  // Chain/link
 constexpr char32_t ICON_CHESS_QUEEN = U'\xED65';  // Chess queen/strategy
 constexpr char32_t ICON_CHILD = U'\xF1AE';  // Child/person small
 constexpr char32_t ICON_CIRCLE_THIN = U'\xF1DB';  // Thin circle outline
-constexpr char32_t ICON_CLONE = U'\xF24D';  // Clone/duplicate
+constexpr char32_t ICON_CLONE = U'\xF24D';  // nf-fa-clone
 constexpr char32_t ICON_COFFEE = U'\xF0F4';  // Coffee/break/cafe
 constexpr char32_t ICON_CONNECTDEVELOP = U'\xF20E';  // Connect develop/neural network
 constexpr char32_t ICON_COPYRIGHT = U'\xF1F9';  // Copyright symbol
@@ -1068,5 +1100,31 @@ constexpr char32_t ICON_USER_TIMES = U'\xF235';  // nf-fa-user_times
 constexpr char32_t ICON_WHEELCHAIR = U'\xF193';  // nf-fa-wheelchair
 constexpr char32_t ICON_CLOCK_FA = U'\xF017';  // nf-fa-clock
 constexpr char32_t ICON_PENCIL_SQUARE_FA = U'\xF14B';  // nf-fa-pencil_square
+
+// -- Additional Font Awesome Icons (web sources — batch 3) --
+constexpr char32_t ICON_ALIGN_JUSTIFY = U'\xF039';  // nf-fa-align_justify
+constexpr char32_t ICON_ARROW_RIGHT_ARROW_LEFT = U'\xF0EC';  // nf-fa-arrow_right_arrow_left
+constexpr char32_t ICON_BATTERY_THREE_QUARTERS = U'\xF241';  // nf-fa-battery_three_quarters
+constexpr char32_t ICON_BOX = U'\xED75';  // nf-fa-box
+constexpr char32_t ICON_CHECK_DOUBLE = U'\xEE29';  // nf-fa-check_double
+constexpr char32_t ICON_CIRCLE_O_NOTCH = U'\xF1CE';  // nf-fa-circle_o_notch
+constexpr char32_t ICON_CLOCK_ROTATE_LEFT = U'\xF1DA';  // nf-fa-clock_rotate_left
+constexpr char32_t ICON_CODE_BRANCH = U'\xF126';  // nf-fa-code_branch
+constexpr char32_t ICON_COMMENT_O = U'\xF0E5';  // nf-fa-comment_o
+constexpr char32_t ICON_DIAGRAM_PROJECT = U'\xEFCE';  // nf-fa-diagram_project
+constexpr char32_t ICON_DRAW_POLYGON = U'\xEEA3';  // nf-fa-draw_polygon
+constexpr char32_t ICON_FILE_CONTRACT = U'\xEE35';  // nf-fa-file_contract
+constexpr char32_t ICON_GAUGE = U'\xEEB2';  // nf-fa-gauge
+constexpr char32_t ICON_LIST_CHECK = U'\xF0AE';  // nf-fa-list_check
+constexpr char32_t ICON_MAP_PIN = U'\xF276';  // nf-fa-map_pin
+constexpr char32_t ICON_METEOR = U'\xEF23';  // nf-fa-meteor
+constexpr char32_t ICON_OBJECT_UNGROUP = U'\xF248';  // nf-fa-object_ungroup
+constexpr char32_t ICON_RULER = U'\xEE0E';  // nf-fa-ruler
+constexpr char32_t ICON_RULER_COMBINED = U'\xEE0F';  // nf-fa-ruler_combined
+constexpr char32_t ICON_SCALE_BALANCED = U'\xF24E';  // nf-fa-scale_balanced
+constexpr char32_t ICON_SCROLL = U'\xEF0D';  // nf-fa-scroll
+constexpr char32_t ICON_SHIELD_HALVED = U'\xED25';  // nf-fa-shield_halved
+constexpr char32_t ICON_SORT_AMOUNT_DESC = U'\xF161';  // nf-fa-sort_amount_desc
+constexpr char32_t ICON_SORT_NUMERIC_ASC = U'\xF162';  // nf-fa-sort_numeric_asc
 
 }  // namespace ase::ui_icons
