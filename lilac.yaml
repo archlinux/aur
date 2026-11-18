@@ -1,0 +1,25 @@
+build_prefix: extra-x86_64
+
+maintainers:
+  - github: lucaszhou007
+    email: lucaszhou007@gmail.com
+
+# Codeberg's commit atom feed is not available here, use the commits API and
+# jq for the head sha of master. pkgver() in PKGBUILD regenerates the real
+# version at build time; lilac only moves the pinned _commit_hash forward.
+update_on:
+  - source: jq
+    url: https://codeberg.org/api/v1/repos/aryak/mozhi/commits?limit=1
+    filter: '.[0].sha'
+
+pre_build_script: |
+  if getattr(_G, 'newver', None):
+      for line in edit_file('PKGBUILD'):
+          if line.startswith('_commit_hash='):
+              line = f"_commit_hash='{_G.newver}'"
+          print(line)
+  update_pkgrel()
+
+post_build_script: |
+  git_pkgbuild_commit()
+  update_aur_repo()
