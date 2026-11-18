@@ -37,7 +37,7 @@
 # The Widevine CDM is not in this package: Chromium downloads it from Google on first use.
 
 pkgname=uzumaki
-pkgver=0.2.4
+pkgver=0.3.0
 # The upstream build: 1 is tag v<version>, a rebuild of the same version is v<version>-<build>
 # (tarball uzumaki-<version>-<build>.tar.gz, still unpacking to uzumaki-<version>/).
 _build=1
@@ -95,7 +95,7 @@ makedepends=('cargo' 'npm' 'git' 'pkgconf')
 options=('!lto')
 source=("$pkgname-$_rel.tar.gz::https://github.com/hanami117/uzumaki/releases/download/v$_rel/uzumaki-$_rel.tar.gz")
 # The tarball's sha256 (packaging/release.sh prints it; uzumaki-<version>.tar.gz.sha256 on the release).
-sha256sums=('8c7a1e2a9d38b64ef90311134c15ea363d6c781fa90b083317d2abfcd16b39e9')
+sha256sums=('5da50c1db4a7aed746783a5db7e1688846f62ea46bed8fc48e99f7903b15da84')
 
 prepare() {
   cd "$pkgname-$pkgver"
