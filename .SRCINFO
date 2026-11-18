@@ -1,6 +1,6 @@
 pkgbase = poptato-bin
 	pkgdesc = Keyboard-driven app launcher, command runner, and fuzzy menu for Linux
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/skorotkiewicz/poptato
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = poptato-bin
 	conflicts = poptato
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/skorotkiewicz/poptato/releases/download/v0.1.0/poptato-0.1.0-x86_64-linux.tar.gz
-	sha256sums_x86_64 = dabb026115509c40c367abdd486e287ed4d9b5eae1d1be9a64aafae4b27606cb
-	source_aarch64 = https://github.com/skorotkiewicz/poptato/releases/download/v0.1.0/poptato-0.1.0-aarch64-linux.tar.gz
-	sha256sums_aarch64 = 8ededddce690af31499d7a193e4953cdf71b1d52eeea3a11e98d1943820d0f94
+	source_x86_64 = https://github.com/skorotkiewicz/poptato/releases/download/v0.1.1/poptato-0.1.1-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 1bc3744ea9860033dfffc6ca7603543948706b69756ae2a11f684ef268d6fbab
+	source_aarch64 = https://github.com/skorotkiewicz/poptato/releases/download/v0.1.1/poptato-0.1.1-aarch64-linux.tar.gz
+	sha256sums_aarch64 = dd00e2814860fc3cacd3fa72410f24d80ec2d527a79dce52a1b0117844e6249e
 
 pkgname = poptato-bin
