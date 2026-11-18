@@ -1,0 +1,9 @@
+post_install() {
+  echo ">> Run 'tessera' to start the tray icon, USB host and editor (X11 session)."
+  echo ">> Serial access needs your user in the 'uucp' group:  sudo usermod -aG uucp \$USER  (then log in again)."
+  echo ">> Per-user data and a writable copy live in ~/.local/share/tessera."
+}
+
+post_upgrade() {
+  echo ">> The user copy in ~/.local/share/tessera is refreshed on the next start; your profiles are kept."
+}
