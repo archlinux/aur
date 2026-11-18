@@ -1,6 +1,6 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=jellium-desktop-git
-pkgver=0.r1069.e672351
+pkgver=0.r1196.8250364
 pkgrel=1
 license=('GPL-2.0-only')
 pkgdesc="A Jellyfin Desktop Client"
@@ -36,7 +36,6 @@ build() {
     cd jellium-desktop
     cargo xtask build \
         --cef-path /usr/lib/cef \
-        --external-mpv /usr \
         --out build
 }
 
