@@ -1,7 +1,7 @@
 # Maintainer: ezhkov <alexcez94@gmail.com>
 pkgname=voltius-git
 _pkgname=voltius
-pkgver=0.77.0.r0.gbf003e7f
+pkgver=0.78.0.r0.gcffab2cf
 pkgrel=1
 pkgdesc="Local-first SSH/SFTP/Serial client with E2EE sync, plugins, and no account required (main branch)"
 arch=('x86_64' 'aarch64')
