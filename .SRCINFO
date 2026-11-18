@@ -1,13 +1,15 @@
 pkgbase = zcode-intl-bin
 	pkgdesc = ZCode — agentic development environment for GLM (official Linux build, Z.ai defaults)
 	pkgver = 3.18.2_10443
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zcode.z.ai/
 	install = zcode-intl-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = LicenseRef-Proprietary
 	makedepends = libarchive
+	makedepends = imagemagick
+	makedepends = ttf-dejavu
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = gtk3

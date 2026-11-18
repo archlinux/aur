@@ -28,7 +28,7 @@
 
 pkgname=zcode-intl-bin
 pkgver=3.18.2_10443
-pkgrel=1
+pkgrel=2
 pkgdesc='ZCode — agentic development environment for GLM (official Linux build, Z.ai defaults)'
 arch=('x86_64' 'aarch64')
 url='https://zcode.z.ai/'
@@ -49,7 +49,7 @@ depends=(
   'xdg-utils'
 )
 optdepends=('libappindicator-gtk3: tray icon support')
-makedepends=('libarchive')
+makedepends=('libarchive' 'imagemagick' 'ttf-dejavu')
 install="${pkgname}.install"
 conflicts=('zcode' 'z-code-bin' 'zcode-bin' 'zcode-desktop-bin')
 provides=('zcode')
@@ -61,6 +61,27 @@ noextract=('ZCode-3.18.2-linux-x64.deb' 'ZCode-3.18.2-linux-arm64.deb')
 sha256sums=('ab210858bfe149fe257d70c1fb3d9690891c0d091aa0c43faf35dd61ff1c4453')
 sha256sums_x86_64=('a7e066eeb018d15e403546a14dd3692220fc9976769b1f3525a0620cfa974f73')
 sha256sums_aarch64=('be3de63f57b1351d921bd977a21cff212d9e5a0710e3af8eae8abcfc2147b714')
+
+# 国际版与国内版共用上游图标，右下角合成 INTL 角标以与国内版区分。
+_badge_icon() {
+  local src="$1" dst="$2" size="$3" label="${4:-CN}" bg="${5:-#C8102E}"
+  local bw pad ring pointsize tmp
+  bw=$(( size * 30 / 100 )); [ "$bw" -lt 7 ] && bw=7
+  pad=$(( size * 5 / 100 )); [ "$pad" -lt 1 ] && pad=1
+  ring=$(( bw / 12 )); [ "$ring" -lt 1 ] && ring=1
+  pointsize=$(( bw * 45 / 100 )); [ "${#label}" -ge 4 ] && pointsize=$(( bw * 27 / 100 ))
+  [ "$pointsize" -lt 4 ] && pointsize=4
+  tmp="$(mktemp --suffix=.png)"
+  install -dm755 "$(dirname "${dst}")"
+  magick -size "${bw}x${bw}" xc:none \
+    -fill white -draw "circle $(( bw / 2 )),$(( bw / 2 )) $(( bw / 2 )),0" \
+    -fill "${bg}" -draw "circle $(( bw / 2 )),$(( bw / 2 )) $(( bw / 2 )),${ring}" \
+    -gravity center -font DejaVu-Sans-Bold -pointsize "${pointsize}" \
+    -fill white -annotate +0+0 "${label}" "${tmp}" || return 1
+  magick "${src}" -resize "${size}x${size}" \
+    "${tmp}" -gravity southeast -geometry "+${pad}+${pad}" -composite "${dst}"
+  rm -f "${tmp}"
+}
 
 package() {
   local _extractdir _data _size _arch
@@ -94,8 +115,9 @@ package() {
     "${pkgdir}/opt/zcode/resources/apparmor-profile"
 
   for _size in 16 24 32 48 64 128 256 512 1024; do
-    install -Dm644 "${_extractdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/zcode.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/zcode.png"
+    _badge_icon "${_extractdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/zcode.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/zcode.png" \
+      "${_size}" INTL '#2C549E'
   done
 
   install -Dm644 "${_extractdir}/usr/share/applications/zcode.desktop" \
