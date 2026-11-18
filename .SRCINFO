@@ -1,0 +1,22 @@
+pkgbase = github-dorks-git
+	pkgdesc = Find leaked secrets with GitHub code search
+	pkgver = 0.1.r78.g16dc173
+	pkgrel = 1
+	url = https://github.com/techgaun/github-dorks
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-feedparser
+	depends = python-github3py
+	depends = python-requests
+	provides = github-dorks
+	conflicts = github-dorks
+	source = git+https://github.com/techgaun/github-dorks.git
+	sha256sums = SKIP
+
+pkgname = github-dorks-git
