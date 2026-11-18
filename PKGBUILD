@@ -17,7 +17,6 @@ depends=(
     "${_depends[@]}"
 )
 makedepends=(
-    'git'
     "aspnet-targeting-pack=${_dotnetver}"
     "dotnet-sdk=${_dotnetver}"
 )
