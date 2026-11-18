@@ -1,0 +1,7 @@
+# The releases of lua-nginx-module, tagged v<version>, without the release candidates (rc1, RC1)
+[nginx-mod-lua]
+source = "git"
+git = "https://github.com/openresty/lua-nginx-module.git"
+use_max_tag = true
+prefix = "v"
+exclude_regex = '.*[rR][cC]\d+$'
