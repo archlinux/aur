@@ -1,6 +1,6 @@
 pkgbase = frpc-desktop-bin
 	pkgdesc = Cross-platform desktop client for FRP, visual configuration, easily achieve intranet penetration! frp跨平台桌面客户端,可视化配置,轻松实现内网穿透!支持所有frp版本.
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://jwinks.com/p/frp/
 	arch = x86_64
@@ -8,15 +8,16 @@ pkgbase = frpc-desktop-bin
 	depends = frpc
 	depends = gtk3
 	depends = gdk-pixbuf2
+	depends = openssl-3
 	depends = webkit2gtk-4.1
 	depends = libayatana-indicator
 	depends = libappindicator
-	provides = frpc-desktop=2.0.2
+	provides = frpc-desktop=2.0.3
 	conflicts = frpc-desktop
 	options = !strip
-	source = frpc-desktop-2.0.2.deb::https://github.com/luckjiawei/frpc-desktop/releases/download/v2.0.2/Frpc-Desktop_2.0.2_amd64.deb
-	source = LICENSE-2.0.2::https://raw.githubusercontent.com/luckjiawei/frpc-desktop/v2.0.2/LICENSE
-	sha256sums = 3566ef546085d73ddfb07364d5bbcea0c0663dbab84c354f9e0c08e56012f128
+	source = frpc-desktop-2.0.3.deb::https://github.com/luckjiawei/frpc-desktop/releases/download/v2.0.3/Frpc-Desktop_2.0.3_amd64.deb
+	source = LICENSE-2.0.3::https://raw.githubusercontent.com/luckjiawei/frpc-desktop/v2.0.3/LICENSE
+	sha256sums = 3f325edacdc191f9b22c9838705547d95cd0b9154fd8df4c94137a417506a93a
 	sha256sums = 11e11a6ea4db42a2465df8f3a30f90fcf0835facb26823c4d2ce0c12a00acf8c
 
 pkgname = frpc-desktop-bin

@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=frpc-desktop-bin
 _pkgname=Frpc-Desktop
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Cross-platform desktop client for FRP, visual configuration, easily achieve intranet penetration! frp跨平台桌面客户端,可视化配置,轻松实现内网穿透!支持所有frp版本."
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=(
     'frpc'
     'gtk3'
 	'gdk-pixbuf2'
+	'openssl-3'
 	'webkit2gtk-4.1'
 	'libayatana-indicator'
 	'libappindicator'
@@ -25,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/luckjiawei/frpc-desktop/v${pkgver}/LICENSE"
 )
-sha256sums=('3566ef546085d73ddfb07364d5bbcea0c0663dbab84c354f9e0c08e56012f128'
+sha256sums=('3f325edacdc191f9b22c9838705547d95cd0b9154fd8df4c94137a417506a93a'
             '11e11a6ea4db42a2465df8f3a30f90fcf0835facb26823c4d2ce0c12a00acf8c')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
