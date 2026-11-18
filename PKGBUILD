@@ -18,9 +18,9 @@
 # QoderWake service (https://qoder.com/).
 
 pkgname=qoderwake-bin
-_upstreamver=1.2.18
-pkgver=1.2.18
-pkgrel=1
+_upstreamver=1.2.20
+pkgver=1.2.20
+pkgrel=2
 pkgdesc="QoderWake local CLI and daemon (official prebuilt Linux runtime)"
 arch=('x86_64' 'aarch64')
 url='https://qoder.com/'
@@ -37,8 +37,21 @@ source_x86_64=(
 source_aarch64=(
   "qoderwake-${_upstreamver}-linux-arm64.tar.gz::https://download.qoder.com/qoderwake/releases/${_upstreamver}/qoderwake_${_upstreamver}_linux_arm64.tar.gz"
 )
-sha256sums_x86_64=('f43c77270fca9506d9a0554558309f3b739079cb097fdac1bf1a13e33cad8329')
-sha256sums_aarch64=('d4df52e084a667abc8cf3bd6b3546c07b197d2d3fe687140790fce547adfe13f')
+sha256sums_x86_64=('ded4e94a2ddcc048c65d4c9eaed7257b03799a66aea9c3f443de5ee9b49dfa91')
+sha256sums_aarch64=('d22da484d3af7a346debd59a026775b8d7c12473cb322e9adce7b6c3dee04e81')
+
+# 区域不是由登录账号决定，而是二进制内的构建期常量：上游把区域占位符替换成
+# global/cn，再由它选择域名表（qoder.com / qoder.com.cn）、homeDir 和 binaryName。
+# 这里在构建时断言国际版确实固定为 global，上游若改动这段逻辑直接失败，避免两版
+# 静默落到同一个区域。区域值在 Bun 打包的 JS 里，仅做只读校验，不改二进制。
+check() {
+  local _bin="${srcdir}/qoderwake" _sel
+  _sel="$(grep -aoE 'return`[a-z]+`\?\.trim\(\)\.toLowerCase\(\)===`cn`\?`cn`:`global`' "${_bin}" | head -1)"
+  if [ "${_sel}" != 'return`global`?.trim().toLowerCase()===`cn`?`cn`:`global`' ]; then
+    echo "error: qoderwake region selector is not pinned to global: ${_sel:-<none>}" >&2
+    return 1
+  fi
+}
 
 package() {
   # The tarball has no top-level directory, so makepkg extracts it flat into
