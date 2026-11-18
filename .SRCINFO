@@ -1,7 +1,7 @@
 pkgbase = meo-repair
 	pkgdesc = Meo Repair diagnostics and consent-gated system repair for MeoArch
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/QwQdoge/MeoArch-os-workspace
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -15,7 +15,7 @@ pkgbase = meo-repair
 	depends = qtkeychain-qt6
 	depends = polkit-qt6
 	options = !debug
-	source = MeoArch-os-workspace-bff7e70558c525ee055284a78511f61657c67188.tar.gz::https://codeload.github.com/QwQdoge/MeoArch-os-workspace/tar.gz/bff7e70558c525ee055284a78511f61657c67188
-	sha256sums = c41c5e0dee2e69b98f0032f832a68c564169505eaabd74543df29035070e696c
+	source = MeoArch-os-workspace-fafe86ff3521586fc5ca2a2e28da24194a205de7.tar.gz::https://codeload.github.com/QwQdoge/MeoArch-os-workspace/tar.gz/fafe86ff3521586fc5ca2a2e28da24194a205de7
+	sha256sums = a3310c8a0b90074735bc9e5c632c6daf10abdb0d88b364591595cdb5bca43da2
 
 pkgname = meo-repair
