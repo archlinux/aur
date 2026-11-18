@@ -4,7 +4,7 @@
 
 _pkgname=xcb-imdkit
 pkgname=${_pkgname}-git
-pkgver=1.0.9.r1.g621048b
+pkgver=1.0.9.r2.ga1b40d5
 pkgrel=1
 pkgdesc="Input method development support for xcb"
 arch=('i686' 'x86_64')
