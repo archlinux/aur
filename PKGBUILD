@@ -2,7 +2,7 @@
 
 pkgname=epsxe-appimage
 pkgver=2.0.5
-pkgrel=7
+pkgrel=8
 pkgdesc="ePSXe PS1 emulator for 64-bit Linux (self-built AppImage)"
 arch=('x86_64')
 url="https://github.com/Twilight0/epsxe-appimage"
@@ -21,7 +21,7 @@ options=('!strip' '!debug')
 # a fixed name breaks every client that already cached it, because the file
 # name stays the same and the download is skipped.
 source=("ePSXe-$pkgver-$pkgrel-x86_64.AppImage::https://github.com/Twilight0/epsxe-appimage/releases/download/v$pkgver-$pkgrel/ePSXe-$pkgver-$pkgrel-x86_64.AppImage")
-sha256sums=('21fc290ea5d00012734f41469efd9359324b116f002c88324591bbb198abd571')
+sha256sums=('e29c60a266660db98a7a42d6fded785a6d3bafd25591ffceaab406f2d37b5ae8')
 
 package() {
   # Unpack the AppImage once: the icon and the documented settings come
@@ -41,7 +41,8 @@ package() {
 #!/bin/sh
 # ePSXe launcher.
 #
-# Settings are read from /etc/epsxe.conf and ~/.config/epsxe/config.
+# Settings are read from /etc/epsxe.conf and ~/.epsxe/epsxe.conf, so they
+# live in the same place as ePSXe's own data.
 #
 #   EPSXE_GTK_THEME=Adwaita    force a theme for ePSXe only (ePSXe 2.0.5
 #                              uses stock GTK3 widgets whose labels are
@@ -52,7 +53,7 @@ package() {
 #                              draws through X11/GLX but reads the keyboard
 #                              through SDL2, so SDL2 must use X11 too or no
 #                              key reaches the emulator
-for _f in /etc/epsxe.conf "$HOME/.config/epsxe/config"; do
+for _f in /etc/epsxe.conf "$HOME/.epsxe/epsxe.conf"; do
   [ -r "$_f" ] && . "$_f"
 done
 
