@@ -4,3 +4,4 @@
 !.gitignore
 !PKGBUILD
 !hbuilderx.service
+!lilac.yaml
