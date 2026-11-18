@@ -2,7 +2,7 @@
 
 pkgname=gogcli
 _pkgbin=gog
-pkgver=0.48.0
+pkgver=0.48.1
 pkgrel=1
 pkgdesc="Google Suite CLI: Gmail, GCal, GDrive, GContacts."
 arch=('x86_64' 'aarch64')
@@ -14,24 +14,24 @@ depends=('glibc')
 makedepends=('go' 'make')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b35008c91e52da485c031f93b87a960896de668618dbd003ef13f288feff8be9')
+sha256sums=('faec62b748b7d4d12109eb9ed28e79a592f4a8da06449fe23965a92e48562247')
 
 build() {
-    cd "$pkgname-$pkgver"
-    make
-    ./bin/"$_pkgbin" completion bash >"$_pkgbin".bash
-    ./bin/"$_pkgbin" completion zsh >_"$_pkgbin"
-    ./bin/"$_pkgbin" completion fish >"$_pkgbin".fish
+  cd "$pkgname-$pkgver"
+  make
+  ./bin/"$_pkgbin" completion bash >"$_pkgbin".bash
+  ./bin/"$_pkgbin" completion zsh >_"$_pkgbin"
+  ./bin/"$_pkgbin" completion fish >"$_pkgbin".fish
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm755 "bin/${_pkgbin}" -t "$pkgdir/usr/bin/"
+  cd "$pkgname-$pkgver"
+  install -Dm755 "bin/${_pkgbin}" -t "$pkgdir/usr/bin/"
 
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/$pkgname/"
 
-    install -Dm644 "${_pkgbin}.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgbin"
-    install -Dm644 _"${_pkgbin}" "$pkgdir/usr/share/zsh/site-functions/_$_pkgbin"
-    install -Dm644 "${_pkgbin}".fish "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgbin.fish"
+  install -Dm644 "${_pkgbin}.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgbin"
+  install -Dm644 _"${_pkgbin}" "$pkgdir/usr/share/zsh/site-functions/_$_pkgbin"
+  install -Dm644 "${_pkgbin}".fish "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgbin.fish"
 }
