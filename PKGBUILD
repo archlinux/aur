@@ -1,7 +1,7 @@
 # Maintainer: @aardbol
 pkgname=upcloud-cli-community-bin
 _pkgname=upcloud-cli
-pkgver=3.37.1.community
+pkgver=3.37.2.community
 # Upstream tags/versions carry a hyphen suffix (v3.37.1-community), which is
 # illegal in pkgver; encode it as a trailing dot segment instead. _tag_suffix
 # opts this package into suffix-aware tracking in scripts/update.sh.
@@ -20,8 +20,8 @@ options=('!strip' '!debug')
 source_x86_64=("${_pkgname}-${pkgver}-linux-x86_64.tar.gz::${url}/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_linux_x86_64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('280d0899baacb6e45c9068bdaf856394ed891330b504cacf1a63d9cae2a381d8')
-sha256sums_aarch64=('9210513e15ec7745170e5e47daf40060446fe7f06fb4643c658c1f426880bc7d')
+sha256sums_x86_64=('1ef5afab4d11b514f5cb11f9516217711349f99536f2bc1c41b137a563a6c0db')
+sha256sums_aarch64=('bfa3f9a40d0c2c3f628b45d40693a60e7efdce229ffd83d0e7601c13fd9e13f6')
 
 package() {
     install -Dm755 upctl "$pkgdir/usr/bin/upctl"
