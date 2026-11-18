@@ -1,6 +1,6 @@
 # Maintainer: Ersin Can Karaca <canersinkaraca@gmail.com>
 pkgname=lapse-git
-pkgver=2.1.1.r2.g9ff6929
+pkgver=2.2.1.r4.g060e091
 pkgrel=1
 pkgdesc="Save the last moments of your game and trim clips (replay recorder, latest source)"
 arch=('x86_64')
