@@ -1,7 +1,7 @@
 # Maintainer: RangS <rangga19sj@gmail.com>
 pkgname=linkchanger
 _repo=LinkChanger
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A simple tool to change old domain URLs to new domain URLs in your website files."
 arch=('any')
@@ -23,7 +23,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/RangS-1/${_repo}/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha256sums=('d26f7dc4f85d088eb7dc2dbb8f5477366022c580511b9539192631fccf75f335')
+sha256sums=('9e4d57afede0ddc6762affa395cc42cb1f8900aa6a426f1b40868159c673792b')
 
 build() {
     cd "$srcdir/${_repo}-${pkgver}"
