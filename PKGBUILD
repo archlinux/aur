@@ -2,15 +2,16 @@
 # Builds MIGA desktop from source. The name "miga" on the AUR belongs to an unrelated tool
 # (a Go database migration CLI), so both the package and the command are called miga-messenger.
 pkgname=miga-messenger
-pkgver=0.5.0
+pkgver=0.6.0beta1
+_tag=v0.6.0-beta.1
 pkgrel=1
 pkgdesc="End-to-end encrypted messenger with no account"
 arch=('x86_64')
 url="https://miga.vniverse77.com"
 license=('AGPL-3.0-or-later')
-depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3')
+depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3' 'libayatana-appindicator')
 makedepends=('cargo' 'nodejs' 'npm' 'git')
-source=("miga::git+https://github.com/Vniverse77/MIGA.git#tag=v$pkgver")
+source=("miga::git+https://github.com/Vniverse77/MIGA.git#tag=$_tag")
 sha256sums=('SKIP')
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = miga-messenger
 	pkgdesc = End-to-end encrypted messenger with no account
-	pkgver = 0.5.0
+	pkgver = 0.6.0beta1
 	pkgrel = 1
 	url = https://miga.vniverse77.com
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = miga-messenger
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libsoup3
-	source = miga::git+https://github.com/Vniverse77/MIGA.git#tag=v0.5.0
+	depends = libayatana-appindicator
+	source = miga::git+https://github.com/Vniverse77/MIGA.git#tag=v0.6.0-beta.1
 	sha256sums = SKIP
 
 pkgname = miga-messenger
