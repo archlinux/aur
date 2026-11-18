@@ -1,0 +1,17 @@
+pkgbase = realtek-rtl8821ce-dkms-git
+	pkgdesc = rtl8821CE driver with support for linux kernel 7.x+
+	pkgver = r193.g884b755
+	pkgrel = 1
+	url = https://github.com/sewaustav/rtl8821ce
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = bc
+	depends = dkms
+	depends = bc
+	conflicts = rtl8821ce-dkms-git
+	source = git+https://github.com/sewaustav/rtl8821ce
+	sha256sums = SKIP
+
+pkgname = realtek-rtl8821ce-dkms-git
