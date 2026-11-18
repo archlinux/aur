@@ -1,6 +1,6 @@
 pkgbase = fluent-reader-git
-	pkgdesc = A modern desktop RSS reader.
-	pkgver = 1.2.2.r3.g5813998
+	pkgdesc = Modern desktop RSS reader built with Electron, React, and Fluent UI.
+	pkgver = 1.3.2.r0.g5912070
 	pkgrel = 1
 	url = https://hyliu.me/fluent-reader/
 	arch = any
@@ -10,12 +10,14 @@ pkgbase = fluent-reader-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = jq
-	depends = electron41
-	provides = fluent-reader=1.2.2
+	depends = electron45
+	provides = fluent-reader=1.3.2
 	conflicts = fluent-reader
 	source = fluent-reader.git::git+https://github.com/yang991178/fluent-reader.git
+	source = fluent-reader.js
 	source = fluent-reader.sh
 	sha256sums = SKIP
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
 pkgname = fluent-reader-git
