@@ -10,6 +10,7 @@ license=('MIT')
 depends=(
   'cairo'
   'dbus'
+  'firefox'
   'gcc-libs'
   'gdk-pixbuf2'
   'glib2'
@@ -26,11 +27,11 @@ makedepends=(
 )
 optdepends=(
   'firefox-esr-bin: recommended browser allowing unsigned Epix Wallet extension'
-  'firefox: standard web browser (runs without wallet extension due to signature enforcement)'
   'libayatana-appindicator: system tray icon support (dlopened at runtime)'
 )
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
+options=('!lto')
 source=("${_pkgname}::git+${url}.git#branch=main")
 sha256sums=('SKIP')
 

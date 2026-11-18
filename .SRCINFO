@@ -12,6 +12,7 @@ pkgbase = epixnet-git
 	makedepends = protobuf
 	depends = cairo
 	depends = dbus
+	depends = firefox
 	depends = gcc-libs
 	depends = gdk-pixbuf2
 	depends = glib2
@@ -20,11 +21,11 @@ pkgbase = epixnet-git
 	depends = systemd-libs
 	depends = zlib
 	optdepends = firefox-esr-bin: recommended browser allowing unsigned Epix Wallet extension
-	optdepends = firefox: standard web browser (runs without wallet extension due to signature enforcement)
 	optdepends = libayatana-appindicator: system tray icon support (dlopened at runtime)
 	provides = epixnet=0.6.8.r6.gd238137
 	conflicts = epixnet
 	conflicts = epixnet-bin
+	options = !lto
 	source = epixnet::git+https://github.com/EpixZone/EpixNet.git#branch=main
 	sha256sums = SKIP
 
