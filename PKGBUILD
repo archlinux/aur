@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ez-azfw-manager-bin
 _pkgname='EZ AzFW Manager'
-pkgver=1.6.0
+pkgver=1.6.1
 _electronversion=45
 pkgrel=1
 pkgdesc="Desktop app for managing Azure Firewalls, policies, rules and IP groups with a draft, review and commit workflow."
@@ -19,7 +19,7 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('e51b09a05986c1d46631ff9af8998d390f898461021ad269f6d7c78dab42b78a'
+sha256sums=('fc6f6b4431bf2f2344932c968441f5fa6e3fa7771df85af6bd4146acf527e840'
             'e7d631bc5081fc1c974281ec790a5536b1c30a915f8c6d0c14219cd0b199b960'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')

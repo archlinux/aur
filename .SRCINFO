@@ -1,18 +1,18 @@
 pkgbase = ez-azfw-manager-bin
 	pkgdesc = Desktop app for managing Azure Firewalls, policies, rules and IP groups with a draft, review and commit workflow.
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/samsmith-MSFT/ez-azfw-manager
 	arch = x86_64
 	license = MIT
 	depends = electron45
-	provides = ez-azfw-manager=1.6.0
+	provides = ez-azfw-manager=1.6.1
 	conflicts = ez-azfw-manager
-	source = ez-azfw-manager-1.6.0-x86_64.AppImage::https://github.com/samsmith-MSFT/ez-azfw-manager/releases/download/v1.6.0/ez-azfw-manager-1.6.0-linux-x86_64.AppImage
-	source = LICENSE-1.6.0::https://raw.githubusercontent.com/samsmith-MSFT/ez-azfw-manager/v1.6.0/LICENSE
+	source = ez-azfw-manager-1.6.1-x86_64.AppImage::https://github.com/samsmith-MSFT/ez-azfw-manager/releases/download/v1.6.1/ez-azfw-manager-1.6.1-linux-x86_64.AppImage
+	source = LICENSE-1.6.1::https://raw.githubusercontent.com/samsmith-MSFT/ez-azfw-manager/v1.6.1/LICENSE
 	source = ez-azfw-manager.js
 	source = ez-azfw-manager.sh
-	sha256sums = e51b09a05986c1d46631ff9af8998d390f898461021ad269f6d7c78dab42b78a
+	sha256sums = fc6f6b4431bf2f2344932c968441f5fa6e3fa7771df85af6bd4146acf527e840
 	sha256sums = e7d631bc5081fc1c974281ec790a5536b1c30a915f8c6d0c14219cd0b199b960
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
