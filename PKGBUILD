@@ -2,7 +2,7 @@
 # Packaging repository: https://github.com/JasonLandbridge/Arch-Linux-AUR-Packages-Updater/tree/main/recompia-bin
 
 pkgname=recompia-bin
-pkgver=0.14.2 # renovate: datasource=github-releases depName=Dittobyte/Recompia versioning=semver-coerced
+pkgver=0.15.0 # renovate: datasource=github-releases depName=Dittobyte/Recompia versioning=semver-coerced
 pkgrel=1
 pkgdesc="Pokopia recompilation launcher with multiplayer support (requires game files)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!strip' '!debug')
 source=("PokopiaRecomp-${pkgver}-linux-x64.tar.gz::${url}/releases/download/v${pkgver}/PokopiaRecomp-${pkgver}-linux-x64.tar.gz"
         'recompia'
         'recompia.desktop')
-sha256sums=('d20876b32e3b3a30dfdcbdc14630b45636c318b18c29bc6633659f566aeaf37e'
+sha256sums=('04fbb87cded28a3c3209dbcd10b5f07205873818d69d0571a4c2a459432a62aa'
             'daf607e9694adffb76a967c6863c4bc959a7bb274a59e9fbbeca2a1bb44f5806'
             '9e5e3c9c8cb09a8e65b35031c3c1ab91cee072871fe1e22fa8611defeec1dbb0')
 
