@@ -4,7 +4,7 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=uq
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
 # The uq-hyprland-pin this release's config/hypr/base.lua is tested with: equal to
@@ -57,7 +57,7 @@ backup=(etc/pam.d/uq-greetd etc/pam.d/uq-greeter etc/pam.d/uq-lock etc/pam.d/uq-
 # (so its checksum) can change. The release workflow uploads exactly this file and prints its sum.
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
 # The release asset's sha256 for this tag; update it with pkgver at each release (docs/releasing.md).
-sha256sums=('1bf5b770fc666ef25fd020b684655429a4f99429246028ca1eadeca6d2736e07')
+sha256sums=('9204c4b271aa1dd2f98c5efc2a07f1f381a4b2dec7c2594ff0fcca2e38599c6d')
 
 prepare() {
   cd "$srcdir/$pkgname-$_tag"
@@ -69,7 +69,7 @@ build() {
   cd "$srcdir/$pkgname-$_tag"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release -p uqd -p uqctl -p uq-settings -p uq-settings-helper
+  cargo build --frozen --release -p uqd -p uqctl -p uqlip -p uq-settings -p uq-settings-helper
 }
 
 # The full suite (cargo plus ~950 QML tests, about a minute) runs in CI before every tag, so builds
@@ -95,6 +95,7 @@ package() {
   cd "$srcdir/$pkgname-$_tag"
   install -Dm755 target/release/uqd "$pkgdir/usr/bin/uqd"
   install -Dm755 target/release/uqctl "$pkgdir/usr/bin/uqctl"
+  install -Dm755 target/release/uqlip "$pkgdir/usr/bin/uqlip"
   install -Dm755 scripts/uq-dev "$pkgdir/usr/bin/uq-dev"
   # The uQ session entry: runs `uqctl setup` on first login, then Hyprland.
   install -Dm755 packaging/uq-session "$pkgdir/usr/bin/uq-session"
@@ -141,10 +142,13 @@ package() {
   install -Dm644 packaging/polkit/org.uq.settings.policy "$pkgdir/usr/share/polkit-1/actions/org.uq.settings.policy"
   # The helper's unit makes these writable only if they exist.
   install -dm755 "$pkgdir/etc/uq" "$pkgdir/etc/systemd/logind.conf.d"
-  # Plugin settings pages are read from here (one directory per page); none ship with uQ itself.
+  # Plugin settings pages are read from here (one directory per page); uQ ships only uqlip's.
   install -dm755 "$pkgdir/usr/share/uq/settings/pages"
+  # uqlip's own page (the clipboard history).
+  install -Dm644 -t "$pkgdir/usr/share/uq/settings/pages/uqlip" uq/pages/uqlip/*
   install -Dm644 packaging/uqd.service "$pkgdir/usr/lib/systemd/user/uqd.service"
   install -Dm644 packaging/uq-shell.service "$pkgdir/usr/lib/systemd/user/uq-shell.service"
+  install -Dm644 packaging/uqlip.service "$pkgdir/usr/lib/systemd/user/uqlip.service"
   install -Dm644 packaging/uq-lock.service "$pkgdir/usr/lib/systemd/user/uq-lock.service"
   install -Dm755 packaging/uq-lock-run "$pkgdir/usr/lib/uq/uq-lock-run"
   install -Dm644 packaging/pam/uq-greetd "$pkgdir/etc/pam.d/uq-greetd"
