@@ -8,7 +8,7 @@ url="https://github.com/hnchengzong/hn-rename-python"
 license=('MIT')
 depends=('python' 'python-natsort')
 source=("https://github.com/hnchengzong/hn-rename-python/releases/download/v$pkgver/hn-rename-python-$pkgver-$pkgrel-any.pkg.tar.zst")
-sha256sums=('da1b2c11f637a6355215ce0a0fc1a6292053e29c36e202d01b38e533926f3dc2')
+sha256sums=('a5006752a7b68cc96ee7e95ae03e0acf779a9f5ecd5775a05560a398c463060a')
 package() {
     bsdtar -xf "$srcdir/hn-rename-python-$pkgver-$pkgrel-any.pkg.tar.zst" -C "$pkgdir" --exclude='.PKGINFO' --exclude='.BUILDINFO' --exclude='.MTREE'
 }
