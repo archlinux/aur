@@ -4,7 +4,7 @@
 options=(!debug !strip)
 
 pkgname=msdfgen-git
-pkgver=1.13+new.skia.api.r0.gda07a9c
+pkgver=1.13.1.r0.gec84cd5
 pkgrel=1
 pkgdesc="Multi-channel signed distance field generator binary and library"
 url=https://github.com/Chlumsky/msdfgen
