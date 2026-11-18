@@ -1,11 +1,11 @@
 pkgbase = nekomote-assets
 	pkgdesc = Assets pack for nekomote.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/Chocola-X/NekoMoteAssets
 	arch = any
 	license = CC-BY-NC-SA-4.0
-	source = NekoMoteAssets-0.6.0.tar.gz::https://github.com/Chocola-X/NekoMoteAssets/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 4ba11db6139bd84edbf8433909860f663c8d8e50cde973a7f4f75bb6a1004a37
+	source = NekoMoteAssets-0.6.1.tar.gz::https://github.com/Chocola-X/NekoMoteAssets/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = f500d9a4f7f3e2ac85443acd0894b328f8b5b93cbc35dd2407a8573c2276d174
 
 pkgname = nekomote-assets
