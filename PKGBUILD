@@ -1,12 +1,12 @@
 # Maintainer: stelzo <stelzo@steado.de>
 pkgname=dedrunk-bin
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Kalibr IMU calibration from MCAP recordings."
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/stelzo/dedrunk"
 license=('MIT' 'Apache-2.0')
-depends=('libgcc' 'glibc')
+depends=('libgcc' 'glibc' 'fontconfig' 'freetype2' 'libglvnd' 'libx11' 'wayland')
 makedepends=()
 options=('!lto' '!strip' '!debug')
 source_x86_64=(
