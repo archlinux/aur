@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: gee
 
 _pkgname="ialauncher"
 pkgname="$_pkgname-git"
-pkgver=r138.311816c
-pkgrel=2
+pkgver=r684.d6a4370c
+pkgrel=1
 pkgdesc="Play all of the Internet Archive's MS-DOS games offline"
 url="https://github.com/rtts/ialauncher"
 license=('GPL-3.0-or-later')
@@ -14,7 +14,7 @@ depends=(
   'dosbox'
   'hicolor-icon-theme'
   'python'
-  'python-pygame'
+  'python-pygame-ce' # AUR
   'python-pyxdg'
 )
 makedepends=(
@@ -22,20 +22,23 @@ makedepends=(
   'imagemagick'
   'python-build'
   'python-installer'
-  'python-setuptools'
-  'python-wheel'
+  'python-hatchling'
 )
+
+options=('!strip')
 
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+$url.git"
   '0001-Use-FHS-and-XDG-paths.patch'
-  '0002-Add-CLI-commands.patch'
+  '0002-Drop-CLI-options-stats-build-cache.patch'
+  '0003-Add-CLI-options-list-download-start.patch'
 )
 sha256sums=(
   'SKIP'
-  '5e8e0e2b9bbcf6b1ca6a8ff746a64519ce58fdfc1ca96cddfe7f6c8eb9f6b85e'
-  'fa0fadce72ce3457d6c1af3a902b2b834ebd32a90aa08825a65618ea5f4efcf6'
+  'ba53a638bf230bb5e38ad1abe8dec2ba60421a8f36faf092b60feddc7cad9779'
+  '971cb225c27766aa5330d5fd724addec167a0e95ea489d7d5237fcb4a3b00cb8'
+  'e13e8a2b826c5ac947a4f5c8d2463acb79734fee722d14e8e165e56021d807b3'
 )
 
 prepare() {
@@ -48,9 +51,12 @@ prepare() {
     src="${src%.zst}"
     if [[ $src == *.patch ]]; then
       printf '\nApplying patch: %s\n' "$src"
-      patch -Np1 -F100 -i "${srcdir:?}/$src"
+      patch -Nfp1 -F100 -i "${srcdir:?}/$src"
     fi
   done
+
+  # convert icon
+  magick windows/ia.ico[3] "$_pkgname.png"
 }
 
 pkgver() {
@@ -67,10 +73,10 @@ package() {
   cd "$_pkgsrc"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  mkdir -p "$pkgdir/usr/share/$_pkgname"
+  mkdir -pm755 "$pkgdir/usr/share/$_pkgname"
   cp -r games/* "$pkgdir/usr/share/$_pkgname/"
 
-  install -Dm644 <(magick ia.ico[4] -) "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
+  install -Dm644 "$_pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/48x48/apps/"
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]

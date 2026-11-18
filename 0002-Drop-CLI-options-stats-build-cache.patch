@@ -1,0 +1,59 @@
+From f3b1bd6922cf42d39ff6d1de817388feac2c0fa5 Mon Sep 17 00:00:00 2001
+From: xiota <>
+Date: Wed, 18 Nov 2026 08:44:49 +0000
+Subject: [PATCH] Drop CLI options stats/build-cache
+
+---
+ ialauncher/__main__.py | 27 ---------------------------
+ 1 file changed, 27 deletions(-)
+
+diff --git a/ialauncher/__main__.py b/ialauncher/__main__.py
+index afff659..69364f1 100644
+--- a/ialauncher/__main__.py
++++ b/ialauncher/__main__.py
+@@ -7,8 +7,6 @@ import traceback
+ from collections import Counter
+ from pathlib import Path
+ 
+-import games
+-
+ from . import options
+ from .emulator import has_opengl
+ from .engine import run
+@@ -108,33 +106,8 @@ def launch() -> None:
+         action="store_true",
+         help=argparse.SUPPRESS,
+     )
+-    parser.add_argument(
+-        "--stats",
+-        action="store_true",
+-        help="Print game statistics",
+-    )
+-    parser.add_argument(
+-        "--build-cache",
+-        action="store_true",
+-        help="Build metadata cache (for faster startup!)",
+-    )
+     args = parser.parse_args()
+ 
+-    if args.build_cache:
+-        games_dir = Path(games.__file__).parent
+-        cache = {
+-            path.name: dict(Game(path).config["metadata"])
+-            for path in games_dir.iterdir()
+-            if (path / "metadata.ini").exists()
+-        }
+-        write_metadata_cache(games_dir, cache)
+-        print("Done!")
+-        return
+-
+-    if args.stats:
+-        print_stats(Path(games.__file__).parent)
+-        return
+-
+     set_options(args)
+     has_opengl()
+     if isinstance(sys.stdout, io.TextIOWrapper):
+-- 
+2.56.1
+
