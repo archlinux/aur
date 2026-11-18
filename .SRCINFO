@@ -1,0 +1,18 @@
+pkgbase = thronectl-bin
+	pkgdesc = Command-line tool and web UI for the Throne API (control Throne from scripts) (prebuilt)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/throneproj/Throne-api
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = thronectl=0.4.0
+	conflicts = thronectl
+	options = !debug
+	options = !strip
+	source_x86_64 = thronectl-0.4.0-x86_64.tar.gz::https://github.com/throneproj/Throne-api/releases/download/v0.4.0/thronectl-v0.4.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 3abe76f9c2499b4bc0a6e91ffedb2d01eb68e6317674bc7cedde1de60480553c
+	source_aarch64 = thronectl-0.4.0-aarch64.tar.gz::https://github.com/throneproj/Throne-api/releases/download/v0.4.0/thronectl-v0.4.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 3ae93f41a5c9e4ec30c9c975b8ce318bed30e1cec7e2f7e77ea14f75c956f5ca
+
+pkgname = thronectl-bin
