@@ -1,4 +1,4 @@
-# Maintainer: Daniel Nilsson <daniel.nilsson@sendify.com>
+# Maintainer: Daniel Nilsson <git@dlnilsson.se>
 
 pkgname=yopass-cli-bin
 _pkgname=yopass
