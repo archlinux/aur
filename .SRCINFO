@@ -1,6 +1,6 @@
 pkgbase = pisek
 	pkgdesc = Tool for developing tasks for programming competitions
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/piskoviste/pisek
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = pisek
 	depends = gcc
 	provides = pisek
 	conflicts = pisek
-	source = pisek-2.4.0.tar.gz::https://github.com/piskoviste/pisek/archive/refs/tags/v2.4.0.tar.gz
-	sha256sums = 144c9700d47ec3d0d1aac9fe67c6b1f1bd3f82e115a76402dc60e9b45bfc4083
+	source = pisek-2.4.1.tar.gz::https://github.com/piskoviste/pisek/archive/refs/tags/v2.4.1.tar.gz
+	sha256sums = f26e8997cd609849ecb26228337e963043cd2a3af0705e2b4c3e4b3d3f6c8359
 
 pkgname = pisek

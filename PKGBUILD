@@ -1,6 +1,6 @@
 # Maintainer: Štěpán Mikéska <stepan@nesp.im>
 pkgname=pisek
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Tool for developing tasks for programming competitions'
 url='https://github.com/piskoviste/pisek'
@@ -12,7 +12,7 @@ conflicts=("${pkgname}")
 license=('GPL-3.0-or-later')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/piskoviste/pisek/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('144c9700d47ec3d0d1aac9fe67c6b1f1bd3f82e115a76402dc60e9b45bfc4083')
+sha256sums=('f26e8997cd609849ecb26228337e963043cd2a3af0705e2b4c3e4b3d3f6c8359')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
