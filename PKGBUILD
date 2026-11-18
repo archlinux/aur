@@ -1,7 +1,7 @@
 # Maintainer: Fangru Shao <matrixc7p@gmail.com>
 pkgname=agy-switch-bin
 _pkgname=agy-switch
-pkgver=4.10.17
+pkgver=4.10.18
 pkgrel=1
 pkgdesc="AntiGravity Switch: manage Antigravity accounts, quotas and local usage on macOS, Windows and Linux"
 arch=('x86_64')
@@ -27,7 +27,7 @@ conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 source=("https://github.com/anglee0323/agy-switch/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
         "https://raw.githubusercontent.com/anglee0323/agy-switch/v${pkgver}/LICENSE")
-sha256sums=('2a90ba880c3c74eaf4974ced4973113c26a7721f6f454c102c9a38354b32697a'
+sha256sums=('1dd3f8d1174c250953bd346103688646b6e30fdede2117b777b9b7e4bc282867'
             '6f0afc78b16f446941c6201dcc0a53e1d19dcb96b9fc2ccb497b1bf029aa3512')
 
 package() {
