@@ -1,6 +1,6 @@
 pkgname=qobine
-pkgver="2026.11.03"
-_release_version="2026-11-03-1"
+pkgver="2026.11.13"
+_release_version="2026-11-13"
 pkgrel=1
 pkgdesc="High resolution audio player backed by Qobuz. Formaly known as qobuz-player"
 arch=('x86_64')
@@ -9,34 +9,32 @@ license=('GPL-3.0')
 replaces=('qobuz-player')
 conflicts=('qobine-git')
 depends=('alsa-lib' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'pango' 'gdk-pixbuf2' 'graphene')
-makedepends=('protobuf' 'cargo' 'nodejs' 'npm' 'sqlx-cli')
+makedepends=('protobuf' 'cargo' 'sqlx-cli')
 optdepends=('ttf-font-nerd: glyph support')
 source=("qobine-${_release_version}.tar.gz::https://github.com/SofusA/qobine/archive/refs/tags/v${_release_version}.tar.gz")
-sha256sums=('16e0e4da3b1e38af5bbab9e504a4af6774fc535016970f57690cd23753ef7745')
+sha256sums=('8f87b4d742487f625e897cd506a8e792f5840ccd113cb91743b6c89e7369ee1c')
 options=('!lto')
 
 prepare() {
     cd "${pkgname}-${_release_version}"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target $(rustc --print host-tuple)
-    cd web-module
-    npm install
 }
 
 build() {
     cd "${pkgname}-${_release_version}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    #Build the webUI (thanks to moystard)
-    cd web-module
-    npm run build
-    npm run build-assets
-    cd ..
-    #Build the database
+
+    # Force recompilation of web-module so rust-embed picks up assets
+    cargo clean -p web-module
+
+    # Build the database
     export DATABASE_URL="sqlite:///tmp/qobuz-player.db"
     cargo sqlx db create
     cargo sqlx migrate run --source player-module/migrations
-    #Build the program
+
+    # Build the program
     cargo build --frozen --release
 }
 
