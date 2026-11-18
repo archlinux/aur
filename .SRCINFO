@@ -1,0 +1,22 @@
+pkgbase = obsidian-anysocket-sync-server
+	pkgdesc = Self-hosted server that securely syncs Obsidian vaults with the AnySocket Sync plugin
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/lynxaegon/obsidian-anysocket-sync-server
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=20
+	backup = etc/obsidian-anysocket-sync-server/config.js
+	source = obsidian-anysocket-sync-server-1.6.1.tar.gz::https://github.com/lynxaegon/obsidian-anysocket-sync-server/archive/refs/tags/1.6.1.tar.gz
+	source = obsidian-anysocket-sync.sh
+	source = obsidian-anysocket-sync-server.service
+	source = obsidian-anysocket-sync-server.sysusers
+	source = obsidian-anysocket-sync-server.tmpfiles
+	sha256sums = d6af00670189e25aa06a9cd7ad23fc6364303f218053fa3ee20f9fec75f99a44
+	sha256sums = 901175a8abe3f85a4a36ba01be7b3e5cfa14946c847b21c3f344115152a88ffd
+	sha256sums = 78eec9519ddb28bb8ec4c30384a53cc0cead940dd344a7d75b1ace7aef7c0b40
+	sha256sums = 62e609b062c1216e88d0d574ce75bcea24e6379de550a16d17b03e67f5f5d52f
+	sha256sums = 1557a32acf7c01ce256b65b2002f14d5cee536eb5e03fe55b8ed33093193d259
+
+pkgname = obsidian-anysocket-sync-server

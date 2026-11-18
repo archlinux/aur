@@ -1,0 +1,2 @@
+# config.js holds the server password: readable by the service, not by everyone
+z /etc/obsidian-anysocket-sync-server/config.js 0640 root anysocket-sync -

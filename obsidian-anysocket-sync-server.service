@@ -1,0 +1,23 @@
+[Unit]
+Description=AnySocket sync server for Obsidian vaults
+Documentation=https://github.com/lynxaegon/obsidian-anysocket-sync-server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=anysocket-sync
+Group=anysocket-sync
+Environment=ANYSOCKET_SYNC_CONFIG=/etc/obsidian-anysocket-sync-server/config.js
+Environment=ANYSOCKET_SYNC_DATA=/var/lib/obsidian-anysocket-sync-server
+ExecStart=/usr/bin/node /usr/lib/obsidian-anysocket-sync-server/index.js
+StateDirectory=obsidian-anysocket-sync-server
+StateDirectoryMode=0750
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
