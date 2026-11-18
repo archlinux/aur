@@ -1,6 +1,6 @@
 pkgbase = coursier-bin
 	pkgdesc = Pure Scala Artifact Fetching
-	pkgver = 2.1.26
+	pkgver = 2.1.27
 	pkgrel = 1
 	url = https://github.com/coursier/coursier
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = coursier-bin
 	provides = cs
 	conflicts = coursier
 	replaces = coursier-native-bin
-	source = LICENSE-2.1.26::https://raw.githubusercontent.com/coursier/coursier/v2.1.26/LICENSE
-	source = README-2.1.26.md::https://raw.githubusercontent.com/coursier/coursier/v2.1.26/README.md
+	source = LICENSE-2.1.27::https://raw.githubusercontent.com/coursier/coursier/v2.1.27/LICENSE
+	source = README-2.1.27.md::https://raw.githubusercontent.com/coursier/coursier/v2.1.27/README.md
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	sha256sums = ee05f17ffb5b35fa4c2145159af5b47ca3a63aa5052ee4ffddce773f14a4deb2
-	source_x86_64 = coursier-2.1.26.gz::https://github.com/coursier/coursier/releases/download/v2.1.26/cs-x86_64-pc-linux.gz
-	sha256sums_x86_64 = 348e37bc2a8c706640e6b032c4551a0e055a7f1537485b4a91540e9d3598ec6d
+	sha256sums = 0652aa3cddf379c759a5a4119522ed531e909246d8a950b026bd24211a1cac0e
+	source_x86_64 = coursier-2.1.27.gz::https://github.com/coursier/coursier/releases/download/v2.1.27/cs-x86_64-pc-linux.gz
+	sha256sums_x86_64 = 9bf62b300a043260f39bc738ddb90dd02a1d2cc998931251614e1749d3231e07
 
 pkgname = coursier-bin
