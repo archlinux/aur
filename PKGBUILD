@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=streaker-bin
 _pkgname=Streaker
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Cross-platform GitHub contribution streak and statistic tracking menu bar application with reminder notification."
 arch=(
@@ -24,8 +24,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/jamieweavis/streak
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-aarch64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.deb")
 sha256sums=('7f918bfa66ad7a71f88c1b8773a8202e2253342a97bbced4f9951a893a95b095')
-sha256sums_aarch64=('eba84569d29665cc63c4b8a24d6ede082941c8bcd062b0efcb7e2798040b65fe')
-sha256sums_x86_64=('1d306729d0366a9dd0b67351936dbf307a2dad38325ac1f6f7cd32e3e000429f')
+sha256sums_aarch64=('e3c0e5aa1b8bb1ee33fc55bb80bfbd74bcfed4d443d41fcb273990d044c46948')
+sha256sums_x86_64=('bb1f81c91d839b395e0bdd18d36d8743796bb0e2188607a0dc5feedcc407f8e6')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
