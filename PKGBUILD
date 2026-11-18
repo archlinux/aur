@@ -1,7 +1,7 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/shell>
 
 pkgname=hornero-shell
-pkgver=1.2.79
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Hornero OS desktop shell, built with Quickshell, QML and Qt for Wayland"
 arch=('x86_64')
@@ -16,14 +16,16 @@ license=('GPL-3.0-or-later')
 # every orphaned-lock lifecycle issue tracked upstream in #1054.
 depends=(
   'aubio'
-  'hornero-config>=0.3.0'
-  'horneroctl-bin>=0.2.0_preview17'
+  'hornero-config>=0.4.0'
+  'horneroctl-bin>=0.2.0_preview46'
   'libcava'
   'libqalculate'
   'pipewire'
   'python'
   'qt6-base'
   'qt6-declarative'
+  # Hornero Signal typography, RFC 0001 section 3.3; glyphs ship in-tree.
+  'ttf-ibm-plex'
   'quickshell>=0.3.2'
 )
 makedepends=(
@@ -37,14 +39,16 @@ optdepends=(
   'app2unit: launch apps as systemd user units'
   'brightnessctl: laptop backlight control'
   'ddcutil: external monitor brightness control'
+  'ffmpeg: Hornero Chromatic colours from video wallpapers (one frame)'
   'fish: shell used by helper scripts'
   'hyprland: compositor integration via hyprctl'
   'lm_sensors: temperature sensor readings'
   'networkmanager: network status via nmcli'
+  'qt6-imageformats: Hornero Chromatic colours from WebP, AVIF, TIFF and more wallpaper formats'
   'swappy: screenshot annotation'
   'wl-clipboard: clipboard integration via wl-copy'
 )
-source=("$pkgname::git+https://github.com/HorneroOS/shell.git#commit=92e11e565f9fe68665e96624f22937e2a5853313")
+source=("$pkgname::git+https://github.com/HorneroOS/shell.git#commit=6e1874e65eff0f6cb50b6c7d2243e983f791bfaf")
 sha256sums=('SKIP')
 
 build() {
