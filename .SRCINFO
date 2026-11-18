@@ -1,6 +1,6 @@
 pkgbase = superlight
 	pkgdesc = System Monitor for Linux Desktops
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/xapp-project/superlight
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = superlight
 	depends = xapp
 	depends = xapp-symbolic-icons
 	optdepends = flatpak: List what is installed with Flatpak
-	source = superlight-1.0.2.tar.gz::https://github.com/xapp-project/superlight/archive/refs/tags/1.0.2.tar.gz
-	sha256sums = 0a5322ddce02ec8b676994be3156ac484306dade5cb5d5f8ffc7b3dbe1de488b
+	source = superlight-1.0.3.tar.gz::https://github.com/xapp-project/superlight/archive/refs/tags/1.0.3.tar.gz
+	sha256sums = 681c815523e8939a39ed3602e2cd4184503a78a8732b81624e3d004bef7620c0
 
 pkgname = superlight
