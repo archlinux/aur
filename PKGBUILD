@@ -6,7 +6,7 @@ _pkgname=Whisparr
 __pkgname=Whisparr-Eros
 pkgver=3.6.5.1886
 _pkgver=${pkgver%.*}-release.${pkgver##*.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Adult movie organizer/manager for usenet and torrent users'
 arch=(x86_64 aarch64 armv7h)
 url='https://whisparr.com'
@@ -67,9 +67,6 @@ _branch='eros'
 prepare() {
   cd "${__pkgname}-${_pkgver}"
 
-  # Fix  CVE-2026-41319
-  sed 's/OpenApi" Version="2\.4\.1"/OpenApi" Version="2\.7\.5"/' -i src/**/*.csproj
-
   # Remove upstream dotnet version
   rm global.json
 
@@ -79,14 +76,9 @@ prepare() {
   # Uncomment after dotnet-sdk reaches 10.0.101
   dotnet new globaljson --sdk-version 10.0.101 --roll-forward latestFeature
 
-  # Patch vulnerabilities
-  if ! grep -q -i 'System.Security.Cryptography.Pkcs' src/NzbDrone.Core/Whisparr.Core.csproj; then
-    dotnet package add System.Security.Cryptography.Pkcs --version 10.0.13 --project src/NzbDrone.Core/Whisparr.Core.csproj
-    dotnet package add Microsoft.AspNetCore.SignalR.Common --version 10.0.13 --project src/NzbDrone.Core/Whisparr.Core.csproj
-  fi
-
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
+    -p:NuGetAudit=false \
     --runtime "${_runtime}" \
     --locked-mode
 
