@@ -29,7 +29,7 @@ pkgbase = eusoft-eudic
 	sha256sums = 3e25eab799ce856d306afc89427cb3aed2a97b5671f90847d9dccb4c408e4bf4
 	sha256sums = af51836b59312a8e52c41516ec2931303e76baf2c8f67a4e088b4f1d69c14fb3
 	sha256sums = 377ddd4aecf677aa2b0fdd264f6285118f3e01f6463eb957db972d0b8404cf69
-	source_x86_64 = eusoft-eudic-26.9.1.deb::https://static.frdic.com/pkg/eudic.deb
+	source_x86_64 = eusoft-eudic-26.9.1.deb::https://static-asia.frdic.com/pkg/eudic.deb
 	sha256sums_x86_64 = dd1faab01940cbf8a019a6d813e2ef1f0b50df65ebacdc96939a4d9f0b4d2892
 
 pkgname = eusoft-eudic

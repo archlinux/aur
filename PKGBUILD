@@ -33,7 +33,7 @@ source=(
     "LICENSE"
 )
 source_x86_64=(
-    "${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/eudic.deb"
+    "${pkgname}-${pkgver}.deb::https://static-asia.frdic.com/pkg/eudic.deb"
 )
 noextract=("${pkgname}-${pkgver}.deb")
 
