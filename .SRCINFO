@@ -1,7 +1,7 @@
 pkgbase = mindustry-bin
 	pkgdesc = A sandbox tower defense game written in Java
-	pkgver = 160.7
-	pkgrel = 2
+	pkgver = 160.8
+	pkgrel = 1
 	epoch = 2
 	url = https://github.com/Anuken/Mindustry
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = mindustry-bin
 	depends = hicolor-icon-theme
 	provides = mindustry
 	conflicts = mindustry
-	noextract = mindustry-bin-160.7.jar
-	source = mindustry-bin-160.7.jar::https://github.com/Anuken/Mindustry/releases/download/v160.7/Mindustry.jar
+	noextract = mindustry-bin-160.8.jar
+	source = mindustry-bin-160.8.jar::https://github.com/Anuken/Mindustry/releases/download/v160.8/Mindustry.jar
 	source = mindustry-bin.desktop
 	source = mindustry-bin.sh
-	sha256sums = 36d94941a1639478ad1d9be25a9d802c6f77552f400c6da0338b7b019f63a0d1
+	sha256sums = 6dd6da921d5021a84823456e05b477ee8de8511990d40de850b37dd0905152f2
 	sha256sums = e5fd49ed3456c53e91b834cb388956e3f9ded4e2c880352d36cf9c2246ca0f0b
 	sha256sums = 938f5f9f636379402ba0bb9a53345de499f4f3fd50f232b31605129dcf4ea6c9
 

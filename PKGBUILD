@@ -1,8 +1,8 @@
 # Maintainer: Dmytro Meleshko <qzlgeb.zryrfuxb@tznvy.pbz(rot13)>
 _pkgname=mindustry
 pkgname="${_pkgname}-bin"
-pkgver=160.7
-pkgrel=2
+pkgver=160.8
+pkgrel=1
 epoch=2
 pkgdesc="A sandbox tower defense game written in Java"
 arch=("x86_64")
@@ -15,7 +15,7 @@ conflicts=(${_pkgname})
 source=("${pkgname}-${pkgver}.jar::https://github.com/Anuken/Mindustry/releases/download/v${pkgver}/Mindustry.jar"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('36d94941a1639478ad1d9be25a9d802c6f77552f400c6da0338b7b019f63a0d1'
+sha256sums=('6dd6da921d5021a84823456e05b477ee8de8511990d40de850b37dd0905152f2'
             'e5fd49ed3456c53e91b834cb388956e3f9ded4e2c880352d36cf9c2246ca0f0b'
             '938f5f9f636379402ba0bb9a53345de499f4f3fd50f232b31605129dcf4ea6c9')
 noextract=("${pkgname}-${pkgver}.jar")
