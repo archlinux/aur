@@ -60,7 +60,7 @@ backup=('etc/vulcanium/default-flags.conf')
 options=('!strip')
 source=("https://github.com/lumexren/vulcanium/releases/download/v${pkgver}-${pkgrel}/vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('e7431c340d35bc336912166f9503a1d18c9f41d5bb95b7c74cab9effd6629193')
+sha256sums=('55d835c2e525f509318cfc787f9c1a85168c1a96e7262f31674fabc778ceab25')
 
 package() {
   bsdtar -xf "${srcdir}/vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" \
