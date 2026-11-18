@@ -1,22 +1,24 @@
 pkgbase = stremio-enhanced-bin
 	pkgdesc = An Electron-based Stremio client with plugins and themes support. It runs the Stremio Service automatically and loads the web version of Stremio.
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://discord.gg/jDsgcehrp7
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = electron41
+	depends = electron45
 	depends = ffmpeg
-	provides = stremio-enhanced=1.2.0
+	provides = stremio-enhanced=1.2.1
 	conflicts = stremio-enhanced
-	source = LICENSE-1.2.0.md::https://raw.githubusercontent.com/REVENGE977/stremio-enhanced/v1.2.0/LICENSE.md
+	source = LICENSE-1.2.1.md::https://raw.githubusercontent.com/REVENGE977/stremio-enhanced/v1.2.1/LICENSE.md
+	source = stremio-enhanced.js
 	source = stremio-enhanced.sh
 	sha256sums = 5a3a8e170b3a5f190f50b65dccdf8629a225fd3826fc010e616eb1ec364e8d46
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = stremio-enhanced-1.2.0-aarch64.AppImage::https://github.com/REVENGE977/stremio-enhanced/releases/download/v1.2.0/Stremio.Enhanced-1.2.0-arm64.AppImage
-	sha256sums_aarch64 = 71e455afba897c58cd590ac9b4e57a5cbb3c2294e382d409d420c25dd55dd683
-	source_x86_64 = stremio-enhanced-1.2.0-x86_64.AppImage::https://github.com/REVENGE977/stremio-enhanced/releases/download/v1.2.0/Stremio.Enhanced-1.2.0.AppImage
-	sha256sums_x86_64 = 6be927c60feb77921e7784552bc1a0ef1785125a2f25a6f482ac698ecd757c05
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = stremio-enhanced-1.2.1-aarch64.AppImage::https://github.com/REVENGE977/stremio-enhanced/releases/download/v1.2.1/Stremio.Enhanced-1.2.1-arm64.AppImage
+	sha256sums_aarch64 = fefbe7d2321849bb8003805851c97477ba7ca78ff4f4ea482f370efb79fa885a
+	source_x86_64 = stremio-enhanced-1.2.1-x86_64.AppImage::https://github.com/REVENGE977/stremio-enhanced/releases/download/v1.2.1/Stremio.Enhanced-1.2.1.AppImage
+	sha256sums_x86_64 = ae4a26f77b15e8041577375dae42bf8017e637b27e8273283f5ef7f2ba5b70cf
 
 pkgname = stremio-enhanced-bin
