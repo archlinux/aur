@@ -1,6 +1,6 @@
 pkgbase = neowall-bin
 	pkgdesc = GPU shader wallpapers for Wayland and X11 (prebuilt binary)
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/1ay1/neowall
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = neowall-bin
 	conflicts = neowall-git
 	options = !strip
 	options = !debug
-	source = neowall-0.10.2-x86_64.tar.gz::https://github.com/1ay1/neowall/releases/download/v0.10.2/neowall-linux-x86_64-arch.tar.gz
-	source = LICENSE-0.10.2::https://raw.githubusercontent.com/1ay1/neowall/v0.10.2/LICENSE
-	sha256sums = 54a3f8a9a38e657be472bdd5bf804ac6d414b093cbe32f4dd38c587b4fe6a745
+	source = neowall-0.10.3-x86_64.tar.gz::https://github.com/1ay1/neowall/releases/download/v0.10.3/neowall-linux-x86_64-arch.tar.gz
+	source = LICENSE-0.10.3::https://raw.githubusercontent.com/1ay1/neowall/v0.10.3/LICENSE
+	sha256sums = 65c04bb19708e7ead538bae8c64141bd651659ad866859afd5647c73b51dc738
 	sha256sums = SKIP
 
 pkgname = neowall-bin
