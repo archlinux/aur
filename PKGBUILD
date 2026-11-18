@@ -7,7 +7,7 @@
 # Contributor: Anders Bostrom <anders.bostrom@home.se>
 
 pkgname=thunderbird-globalmenu
-pkgver=158.0.1
+pkgver=160.0
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org'
 url='https://www.thunderbird.net/'
@@ -60,7 +60,7 @@ makedepends=(
   gawk perl findutils libotr wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
 )
 options=(!emptydirs !makeflags !lto)
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/ba80c7c9f113c692579e23730dda466e30b04b16
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/b8063ab21ad84b4608dfaa2d7bb4997b96409a0f
 source=(https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}/source/thunderbird-${pkgver}.source.tar.xz{,.asc}
         $commit/clang22-wasm32-wasip1.patch
         $commit/vendor-prefs.js
@@ -187,7 +187,7 @@ END
     "$pkgdir/usr/lib/thunderbird/thunderbird-bin"
 }
 
-sha512sums=('c3dddbe70483d86be8319ad3eb17c3856586994cd37529964f17957e8401cffa68845cc05732c00a5e6e9d45a665a77ce0eb60d23c039054440c27451df4564f'
+sha512sums=('994992c3f3a82ae07a15142cc1dbdc410b71261df02b9b3d5db41dab7100225bed257f0211f0f87cf29c63bacee3d4bb861eab32dde80483c574a131fa3cbad0'
             'SKIP'
             'b7097f0d620be87047f6f11f152bd096dc144b1745fe30dc75db7d7050242c4178382f7e504cc10ad3545a3455174ca17a83fa3113443dffe660f28de006cb0e'
             '6918c0de63deeddc6f53b9ba331390556c12e0d649cf54587dfaabb98b32d6a597b63cf02809c7c58b15501720455a724d527375a8fb9d757ccca57460320734'
@@ -201,5 +201,5 @@ sha512sums=('c3dddbe70483d86be8319ad3eb17c3856586994cd37529964f17957e8401cffa688
 provides=(thunderbird)
 conflicts=(thunderbird)
 
-source+=(https://github.com/Lexi-Ewald/unity-menubar/raw/9a69a0967c32991d488f3b47bb287ecf38aa1f55/unity-menubar.patch)
-sha512sums+=(878952fe51cea206529d6e0b438c3a40e83e0318702ed2750d636bc2f05bedf0e33e664c3506a3a5f1e9f73549431bdb3ecfb3089240734f55ab26dc2d896cfc)
+source+=(https://github.com/Lexi-Ewald/unity-menubar/raw/61ed30704fab62e4d91b0773be1f3814d432e9c1/unity-menubar.patch)
+sha512sums+=(ec6cdc038918498c33a7c6e48e2d66551a7c566e47a1793b56a50b0018785d4ae1d83302c6c1f5fbb242b22faffb85aa9b511c58a1940a48c0caf2599127b3f8)
