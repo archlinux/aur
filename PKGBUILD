@@ -21,8 +21,10 @@ makedepends=(
     "aspnet-targeting-pack=${_dotnetver}"
     "dotnet-sdk=${_dotnetver}"
 )
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}.git"
+        'VDF.Web')
+sha256sums=('SKIP'
+            '01d2a2104970b78bda5833eb96a98beab574eb1e01730611c642f097e9ec7fb8')
 
 pkgver() {
     cd "videoduplicatefinder"
@@ -104,9 +106,11 @@ package_videoduplicatefinder-webui-git() {
     install -d -m 755 "${pkgdir}/usr/bin"
 
     # Need to cd to /opt/videoduplicatefinder-webui, won't run otherwise.
-    echo "#!/usr/bin/env bash" > "${pkgdir}/usr/bin/VDF.Web"
-    echo "trap 'popd > /dev/null 2>&1' EXIT" >> "${pkgdir}/usr/bin/VDF.Web"
-    echo "pushd /opt/videoduplicatefinder-webui > /dev/null 2>&1" >> "${pkgdir}/usr/bin/VDF.Web"
-    echo "./VDF.Web" >> "${pkgdir}/usr/bin/VDF.Web"
+    cat << EOF > "${pkgdir}/usr/bin/VDF.Web"
+#!/bin/sh
+cd /opt/videoduplicatefinder-webui
+exec ./VDF.Web
+EOF
+
     chmod +x "${pkgdir}/usr/bin/VDF.Web"
 }
