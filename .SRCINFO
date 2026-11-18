@@ -1,6 +1,6 @@
 pkgbase = knbud
 	pkgdesc = Scales Kubernetes workloads safely for NFS maintenance
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/dcelasun/knbud
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = knbud
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = knbud-1.0.3.tar.gz::https://github.com/dcelasun/knbud/archive/refs/tags/v1.0.3.tar.gz
-	sha256sums = 7267bf17bd7b2894d2bb31cc5c91bd060de92567d05e47904f4924968177573d
+	source = knbud-1.0.4.tar.gz::https://github.com/dcelasun/knbud/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = 873d053e0fd32621dcd9bd7deafe3162601352e8309e4b273cb13229a22e0bfe
 
 pkgname = knbud

@@ -1,0 +1,6 @@
+[knbud]
+source = "github"
+github = "dcelasun/knbud"
+use_max_tag = true
+prefix = "v"
+include_regex = '^v[\d.]+$'

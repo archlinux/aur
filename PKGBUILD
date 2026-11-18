@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 
 pkgname=knbud
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Scales Kubernetes workloads safely for NFS maintenance"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7267bf17bd7b2894d2bb31cc5c91bd060de92567d05e47904f4924968177573d')
+sha256sums=('873d053e0fd32621dcd9bd7deafe3162601352e8309e4b273cb13229a22e0bfe')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
