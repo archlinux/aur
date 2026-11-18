@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/kuznix-code/fla2anim/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha256sums=('SKIP')
+sha256sums=('4e75c0ef0362b1fb62c63d284ba6dc1ff8c543f8c9f2c936ea5fe2fa18f2bd0b')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
