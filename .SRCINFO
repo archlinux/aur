@@ -4,7 +4,7 @@ pkgbase = mov-watch
 	pkgrel = 1
 	url = https://github.com/leoallday/mov-watch
 	arch = any
-	license = MIT
+	license = GPL3
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -23,6 +23,6 @@ pkgbase = mov-watch
 	provides = mov-watch
 	conflicts = mov-watch
 	source = https://github.com/leoallday/mov-watch/archive/refs/tags/v2.3.2.tar.gz
-	sha256sums = SKIP
+	sha256sums = 5aac07f4a5f475b61170f5d2f9f2c4be7d7d9028aadecf02e641bec5d39ed3f7
 
 pkgname = mov-watch
