@@ -2,7 +2,7 @@
 
 _pkgname=zvec-grep
 pkgname=zg
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Local-first search across your workspace, built for humans and AI agents"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('nodejs>=22')
 makedepends=('npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e1de1fa02e43513abd560a1c8ccc4ed4d82abb78a1b36980ab1550f3fa6b7c39')
+sha256sums=('32c50fa2fb7113d522cfd2439c7004124d85061f849e4f20aa4ff5cd8026ee29')
 
 build() {
   cd "${_pkgname}-${pkgver}"
