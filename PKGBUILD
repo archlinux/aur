@@ -1,8 +1,8 @@
 # Maintainer: MeoArch <https://github.com/QwQdoge>
-_srcdir=MeoSettings-13048c7fcf9572eb0a4588378f06c160b4aaa5e3
+_srcdir=MeoSettings-cd4c898c15f7c88564db6692314d1062d823da97
 pkgname=meo-settings-beta
 pkgver=0.2.0beta5
-pkgrel=6
+pkgrel=7
 pkgdesc="Meo Settings application for MeoArch (Beta channel)"
 arch=('x86_64')
 conflicts=('meo-settings')
@@ -12,8 +12,8 @@ license=('GPL-3.0-or-later')
 depends=('meo-account' 'meo-icon-studio>=0.1.0' 'meoui-qml>=1.0.4beta1' 'meo-kde-runtime>=0.4.0beta3-7'
          'qt6-declarative' 'qt6-svg' 'qt6-multimedia' 'kservice' 'libkscreen>=6.8' 'kconfig' 'kcoreaddons' 'ki18n' 'solid')
 makedepends=('cmake' 'ninja' 'qt6-tools' 'extra-cmake-modules')
-source=('MeoSettings-13048c7fcf9572eb0a4588378f06c160b4aaa5e3.tar.gz::https://codeload.github.com/QwQdoge/MeoSettings/tar.gz/13048c7fcf9572eb0a4588378f06c160b4aaa5e3')
-sha256sums=('108e17ca3fe9495ce91d7e40d7f66a0d115f2a773a16d85fe941e11bf17cd5fa')
+source=('MeoSettings-cd4c898c15f7c88564db6692314d1062d823da97.tar.gz::https://codeload.github.com/QwQdoge/MeoSettings/tar.gz/cd4c898c15f7c88564db6692314d1062d823da97')
+sha256sums=('802c837593a6a46b44993e9481f353bbe6e69de3ce876b310105ff344821cc43')
 
 build() {
   cmake -S "$srcdir/$_srcdir" -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \

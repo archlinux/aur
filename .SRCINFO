@@ -1,7 +1,7 @@
 pkgbase = meo-settings-beta
 	pkgdesc = Meo Settings application for MeoArch (Beta channel)
 	pkgver = 0.2.0beta5
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/QwQdoge/MeoSettings
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -24,7 +24,7 @@ pkgbase = meo-settings-beta
 	depends = solid
 	provides = meo-settings=0.2.0beta5
 	conflicts = meo-settings
-	source = MeoSettings-13048c7fcf9572eb0a4588378f06c160b4aaa5e3.tar.gz::https://codeload.github.com/QwQdoge/MeoSettings/tar.gz/13048c7fcf9572eb0a4588378f06c160b4aaa5e3
-	sha256sums = 108e17ca3fe9495ce91d7e40d7f66a0d115f2a773a16d85fe941e11bf17cd5fa
+	source = MeoSettings-cd4c898c15f7c88564db6692314d1062d823da97.tar.gz::https://codeload.github.com/QwQdoge/MeoSettings/tar.gz/cd4c898c15f7c88564db6692314d1062d823da97
+	sha256sums = 802c837593a6a46b44993e9481f353bbe6e69de3ce876b310105ff344821cc43
 
 pkgname = meo-settings-beta
