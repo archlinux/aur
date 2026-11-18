@@ -1,0 +1,27 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".gitignore",
+    ".nvchecker.toml",
+    "lilac.yaml",
+    "*.install",
+    "*.sysusers",
+    "*sysusers.conf",
+    "*.tmpfiles",
+    "*tmpfiles.conf",
+    "*.logrotate",
+    "dsh-web.confd",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"

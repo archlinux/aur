@@ -1,0 +1,5 @@
+# makepkg leftovers
+src/
+pkg/
+*.pkg.tar.*
+*.log

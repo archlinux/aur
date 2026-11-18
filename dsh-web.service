@@ -1,0 +1,51 @@
+[Unit]
+Description=DeepSeek Harness web UI (dsh --profile web)
+Documentation=https://github.com/deepseek-ai/deepseek-harness
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+# Dedicated system user created by /usr/lib/sysusers.d/dsh-web.conf; all dsh
+# state (settings, sessions, memory) lives under $HOME/.dsh = /var/lib/dshweb.
+User=dshweb
+Group=dshweb
+WorkingDirectory=/var/lib/dshweb
+
+Environment=DSH_WEB_HOST=127.0.0.1
+Environment=DSH_WEB_PORT=3080
+Environment=XDG_RUNTIME_DIR=/run/dshweb
+# Applied last so /etc/conf.d/dsh-web overrides the defaults above.
+EnvironmentFile=-/etc/conf.d/dsh-web
+
+StateDirectory=dshweb
+StateDirectoryMode=0750
+RuntimeDirectory=dshweb
+RuntimeDirectoryMode=0750
+
+ExecStart=/usr/bin/dsh --profile web --no-open --host ${DSH_WEB_HOST} --port ${DSH_WEB_PORT}
+
+Restart=on-failure
+RestartSec=5
+
+# --- hardening ---------------------------------------------------------------
+# NoNewPrivileges/ProtectSystem/PrivateTmp are safe here; npm caches, downloads
+# and ~/.dsh all live under the state dir which ProtectSystem=strict still
+# allows through StateDirectory.
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+RestrictRealtime=yes
+# systemd >=262 renamed RestrictSUIDSGD -> RestrictSUIDSGID; older systemd
+# ignores unknown keys with a warning only.
+RestrictSUIDSGID=yes
+# Deliberately NOT set:
+#  MemoryDenyWriteExecute — Node/V8 JIT needs writable executable memory.
+#  PrivateDevices         — dsh's terminal plugin opens /dev/ptmx (PTYs).
+
+[Install]
+WantedBy=multi-user.target
