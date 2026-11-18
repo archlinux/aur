@@ -1,0 +1,15 @@
+pkgbase = thinkmeta-concurrenttasks-core
+	pkgdesc = Scheduler runtime required by the ThinkMeta concurrent-task encoders
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/ThinkMeta-com/ThinkMeta.ConcurrentTasks.Samples
+	arch = x86_64
+	license = custom:ThinkMeta
+	depends = glibc
+	provides = libThinkMeta.ConcurrentTasks.Core.so=2-64
+	options = !strip
+	options = !debug
+	source = samples-0.5.1.tar.gz::https://github.com/ThinkMeta-com/ThinkMeta.ConcurrentTasks.Samples/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = f1117aae9b0a3d042f39c9bf8049d3372ecb1a17497e1b039dcede7ca1f791eb
+
+pkgname = thinkmeta-concurrenttasks-core
