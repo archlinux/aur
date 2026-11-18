@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Digital Habits To-Do
+Exec=dh-to-do
+Icon=dh-to-do
+Terminal=false
+Categories=Office;ProjectManagement;
+X-Desktop-File-Install-Version=0.29
