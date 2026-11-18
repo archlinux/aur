@@ -1,0 +1,26 @@
+pkgbase = seendiff-git
+	pkgdesc = Local code diff viewer for large diffs that tracks which blocks you have reviewed
+	pkgver = 0.1.0.r39.g20b4dc0
+	pkgrel = 1
+	url = https://seendiff.com/
+	install = seendiff-git.install
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-httpx2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = git
+	depends = python-fastapi
+	depends = uvicorn
+	depends = python-unidiff
+	depends = python-pygments
+	provides = seendiff
+	conflicts = seendiff
+	source = git+https://github.com/acme-dot-bot/seendiff.git
+	sha256sums = SKIP
+
+pkgname = seendiff-git

@@ -1,0 +1,17 @@
+_skill_note() {
+  cat <<'MSG'
+==> seendiff ships a Claude Code skill for its walkthrough mode in
+    /usr/share/seendiff/skills/seendiff
+    To install it (or update an installed copy), run as your user:
+      mkdir -p ~/.claude/skills
+      cp -r /usr/share/seendiff/skills/seendiff ~/.claude/skills/
+MSG
+}
+
+post_install() {
+  _skill_note
+}
+
+post_upgrade() {
+  _skill_note
+}
