@@ -3,7 +3,7 @@
 pkgname=bettbox-compatible-pre-bin
 _pkgname=Bettbox
 pkgver=1.19.8
-pkgrel=2
+pkgrel=3
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core. (Build with GOAMD64=v1)"
 arch=('x86_64')
@@ -20,8 +20,11 @@ depends=(
 optdepends=('polkit: for TUN authorization')
 options=('!debug')
 source=("restart-bettbox.hook" "bettbox.install")
+# The cache name carries the full pkgname: every package in a CI run shares one
+# SRCDEST, and makepkg reuses a cached file by name without validating it, so a
+# name shared with another package would make updpkgsums publish its checksum.
 source_x86_64=(
-    "${pkgname%-pre-bin}-${pkgver}-${arch}.deb::${url}/releases/download/v${_pkgver}/${_pkgname}-${_pkgver%-pre*}-linux-amd64-compatible.deb"
+    "${pkgname}-${pkgver}-${arch}.deb::${url}/releases/download/v${_pkgver}/${_pkgname}-${_pkgver%-pre*}-linux-amd64-compatible.deb"
 )
 sha256sums=('03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2'
             'c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b')
