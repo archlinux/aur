@@ -1,8 +1,8 @@
 # Maintainer: Remy Huang <me@remya.top>
 pkgname=remya-bar-bin
 _app_id=remya_bar
-_upstream_ver=0.2.0
-pkgver=0.2.0
+_upstream_ver=0.2.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A Material Design 3 Expressive desktop bar for Hyprland on Linux"
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=('remya-bar' 'remya-bar-git')
 optdepends=('nvidia-utils: NVIDIA GPU metrics' 'noto-fonts-cjk: CJK font coverage')
 options=('!strip')
 source=("${_app_id}-${_upstream_ver}-linux-x86_64.tar.zst::${url}/releases/download/v${_upstream_ver}/${_app_id}-${_upstream_ver}-linux-x86_64.tar.zst")
-sha256sums=('58ab31f50764511adcf7fd246a911dff9384e6389cd3db3622c246b320bf781f')
+sha256sums=('116935d343384bc6ccf643c79775ceb507584cc76891d86651c32b63cc53c2ad')
 
 package() {
   cd "${srcdir}/${_app_id}-${_upstream_ver}-linux-x86_64"
