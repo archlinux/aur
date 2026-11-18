@@ -1,0 +1,20 @@
+pkgbase = qsampleman
+	pkgdesc = Browse, inspect and audition audio samples (WAV): format, loops, root key, waveform
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/rossettidesignsw/musicutility/qsampleman
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = qt6-base
+	depends = qt6-multimedia
+	optdepends = qt6-svg: sharp application icon in the windows (otherwise 64 px)
+	optdepends = audacity: default external sample editor
+	source = qsampleman-0.1.0.tar.gz::https://gitlab.com/rossettidesignsw/musicutility/qsampleman/-/archive/v0.1.0/qsampleman-v0.1.0.tar.gz
+	sha256sums = a819680d0774fb0eb479a471c88c0214adc0d07ad8888937d1d5571208ea9a69
+
+pkgname = qsampleman
