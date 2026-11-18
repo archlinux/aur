@@ -7,7 +7,7 @@
 pkgname=sonarr
 _pkgname=Sonarr
 pkgver=4.0.20.3014
-pkgrel=1
+pkgrel=2
 pkgdesc='Smart PVR for newsgroup and torrent users'
 arch=(x86_64 aarch64 armv7h)
 url='https://sonarr.tv'
@@ -77,6 +77,7 @@ prepare() {
 
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
+    -p:NuGetAudit=false \
     --runtime "${_runtime}" \
     --locked-mode
 

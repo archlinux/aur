@@ -1,7 +1,7 @@
 pkgbase = sonarr
 	pkgdesc = Smart PVR for newsgroup and torrent users
 	pkgver = 4.0.20.3014
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sonarr.tv
 	install = sonarr.install
 	arch = x86_64
