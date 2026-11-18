@@ -1,13 +1,14 @@
 pkgbase = exact-audio-copy
 	pkgdesc = A precise CD audio grabber for creating perfect quality rips using CD and DVD drives
 	pkgver = 1.8
-	pkgrel = 3
-	url = https://www.exactaudiocopy.de/en/
+	pkgrel = 4
+	url = https://www.exactaudiocopy.de/
 	arch = any
 	license = unknown
 	makedepends = imagemagick
 	makedepends = p7zip
 	depends = wine
+	depends = winetricks
 	source = eac.exe::https://www.exactaudiocopy.de/eac-1.8.exe
 	sha512sums = 89822966d57f5f89d40cb8b4bf5c1e1e169983d5b4dfdfa4559dd2b69a49dc6234e3e336452ec9220530e5ed228f656a58c346950cd2ce84d8edc200e38bad4b
 
