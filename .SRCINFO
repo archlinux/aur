@@ -1,0 +1,34 @@
+pkgbase = thinkmeta-concurrenttasks-samples-bin
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/ThinkMeta-com/ThinkMeta.ConcurrentTasks.Samples
+	arch = x86_64
+	license = MIT
+	checkdepends = python
+	depends = glibc
+	depends = thinkmeta-concurrenttasks-core
+	options = !strip
+	options = !debug
+	source = samples-0.5.1.tar.gz::https://github.com/ThinkMeta-com/ThinkMeta.ConcurrentTasks.Samples/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = f1117aae9b0a3d042f39c9bf8049d3372ecb1a17497e1b039dcede7ca1f791eb
+
+pkgname = ctdeflate-bin
+	pkgdesc = Parallel deflate compressor, bit-identical to libdeflate 1.26 gzip
+	provides = ctdeflate
+	conflicts = ctdeflate
+
+pkgname = ctlame-bin
+	pkgdesc = Parallel MP3 encoder, bit-identical to LAME 4.0
+	license = LGPL-2.0-only
+	provides = ctlame
+	conflicts = ctlame
+
+pkgname = ctopus-bin
+	pkgdesc = Parallel Opus encoder, bit-identical to opusenc
+	provides = ctopus
+	conflicts = ctopus
+
+pkgname = ctjpeg-bin
+	pkgdesc = Parallel JPEG encoder, bit-identical to cjpegli
+	provides = ctjpeg
+	conflicts = ctjpeg
