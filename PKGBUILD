@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=openwren-bin
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="Privacy-first mail app for Gmail and any IMAP account: mail stays in an encrypted database on your own computer, trackers are stripped and suspicious messages are flagged"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source_x86_64=("${_deb_x86_64}::https://github.com/VinceGHER/openwren/releases/d
 noextract=("${_deb_x86_64}")
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
             '9f38e9d63ddcf1482f7d9572efa439babff742f012940ef60eb3929589102c5c')
-sha256sums_x86_64=('ffa7a8e455027140daa516f8be249cf3b45630875e78804555cf745126f21f9a')
+sha256sums_x86_64=('5c8dd3ce7d45c5c501839dfbfa94b88ffda810417dce3dd165d10591c62bf34d')
 # The .deb carries no licence text, so take it from the release tag itself.
 source=("openwren-LICENSE::https://raw.githubusercontent.com/VinceGHER/openwren/v${pkgver}/LICENSE"
         "openwren-NOTICE::https://raw.githubusercontent.com/VinceGHER/openwren/v${pkgver}/NOTICE")
