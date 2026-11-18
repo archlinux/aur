@@ -1,0 +1,33 @@
+pkgbase = sysc-compositor-git
+	pkgdesc = A scrollable-tiling Wayland compositor built in Go (development version)
+	pkgver = 0.1.0.r0.g8fb0ee8
+	pkgrel = 1
+	url = https://github.com/Nomadcxx/sysc-compositor
+	install = sysc-compositor-git.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = go>=1.26.4
+	makedepends = wayland-protocols
+	makedepends = pkgconf
+	makedepends = git
+	depends = wlroots0.20
+	depends = scenefx
+	depends = libpipewire
+	depends = libinput
+	depends = libxkbcommon
+	depends = wayland
+	depends = pixman
+	depends = libdrm
+	depends = dbus
+	depends = xkeyboard-config
+	optdepends = xwayland-satellite: X11 applications
+	optdepends = xdg-desktop-portal-gnome: screencasting and screenshots
+	optdepends = xdg-desktop-portal-gtk: file pickers and settings
+	optdepends = sysc-shell: bar, launcher and the rest of the sysc desktop
+	provides = sysc-compositor
+	conflicts = sysc-compositor
+	source = sysc-compositor::git+https://github.com/Nomadcxx/sysc-compositor.git
+	sha256sums = SKIP
+
+pkgname = sysc-compositor-git
