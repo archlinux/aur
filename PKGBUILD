@@ -11,7 +11,7 @@
 
 pkgbase=hotaru
 pkgname=(hotaru hotaru-gui)
-pkgver=0.1.29
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='RGB lighting and AIO cooler control for Linux'
 arch=('x86_64')
@@ -24,9 +24,9 @@ makedepends=('go' 'libglvnd' 'libx11' 'libxcursor' 'libxrandr' 'libxinerama'
 # PKGBUILD to declare at the top what its packages depend on, and it is right
 # to: this is the answer to "what does installing hotaru pull in", and reading
 # it should not mean reading two shell functions.
-depends=('glibc' 'openrgb')
+depends=('glibc')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4fbaff588b7191cd3ee27e05f1fee638adac4e90b063643a45124e52f70f2ab0')
+sha256sums=('8cbe2b80af68c2dd5e341597ea34625c90045d871abc0cc8f7bf6371103014a8')
 
 _module='github.com/ushineko/hotaru'
 
@@ -57,16 +57,14 @@ build() {
 
 check() {
   cd "$pkgbase-$pkgver"
-  # No hardware, no OpenRGB, no display and no root. That is a packaging
+  # No hardware, no display and no root. That is a packaging
   # property as much as a testing one.
   go test ./...
 }
 
 package_hotaru() {
-  # namcap reports openrgb as possibly unneeded, because nothing in the
-  # binary links against it. Nothing would: it is a daemon hotaru speaks to
-  # over a socket, and it is a hard dependency on purpose -- see
-  # docs/packaging.md, "The rule that decides everything else".
+  # hotaru draws every device it supports through sanshoku, built into the
+  # binary (spec 076).
   optdepends=('nvidia-utils: GPU temperature on the dashboard'
               'hotaru-gui: the desktop window')
 
@@ -80,17 +78,15 @@ package_hotaru() {
   install -Dm644 packaging/hotaru.service \
     "$pkgdir/usr/lib/systemd/user/hotaru.service"
 
-  # Without this the service sees the cooler and cannot open it. See
+  # Without this the service finds the devices and cannot open them. See
   # packaging/60-hotaru.rules.
   install -Dm644 packaging/60-hotaru.rules \
     "$pkgdir/usr/lib/udev/rules.d/60-hotaru.rules"
 
   # Examples, not configuration: hotaru ships no rules at all and drives every
-  # device OpenRGB reports until it is told otherwise.
+  # device it finds until it is told otherwise.
   install -Dm644 examples/hotaru.yml \
     "$pkgdir/usr/share/doc/$pkgname/hotaru.yml.example"
-  install -Dm644 packaging/openrgb-enumeration.conf.example \
-    "$pkgdir/usr/share/doc/$pkgname/openrgb-enumeration.conf.example"
 
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
