@@ -2,7 +2,7 @@
 # Generated-maintenance note: scripts/aur_update.py updates pkgver, source and sha256sums.
 
 pkgname='m3u-tv-bin'
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Cross-platform TV front-end player for the M3U Editor app'
 arch=('x86_64')
@@ -19,8 +19,8 @@ provides=('m3u-tv')
 conflicts=('m3u-tv')
 options=('!strip')
 
-source=('m3u-tv-1.3.0-linux.zip::https://github.com/m3ue/m3u-tv/releases/download/v1.3.0/m3u-tv-v1.3.0-linux.zip')
-sha256sums=('5d5eaa68d51fdd76d3e6d8b540172c6d396fc8f4a407b6d5ecf34c391edd3a33')
+source=('m3u-tv-1.3.1-linux.zip::https://github.com/m3ue/m3u-tv/releases/download/v1.3.1/m3u-tv-v1.3.1-linux.zip')
+sha256sums=('11de736985a2f82f10b269881705a898292648d04b025cb10dd17397958c509f')
 
 package() {
   install -dm755 "$pkgdir/opt/m3u-tv"
