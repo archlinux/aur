@@ -4,3 +4,4 @@
 !.gitignore
 !PKGBUILD
 !garage-webui.service
+!lilac.yaml
