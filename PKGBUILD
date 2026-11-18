@@ -1,8 +1,8 @@
 # Maintainer: HamletDuFromage <https://github.com/HamletDuFromage/slippi-online-PKGBUILD/issues>
 
 pkgname="slippi-online"
-_tagname='v3.6.4'
-pkgver='v3.6.4.r0.ge7711b104'
+_tagname='v3.7.0'
+pkgver='v3.7.0.r0.g07b2d287a'
 pkgrel='3'
 pkgdesc='Super Smash Bros. Melee rollback netcode'
 arch=('x86_64')
