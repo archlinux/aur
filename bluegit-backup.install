@@ -1,6 +1,6 @@
-# System-unit met User=bluegit-backup, config in /etc/bluegit-backup/config.yml
-# en gegevens in /var/lib/bluegit-backup. post_upgrade herstart de dienst.
-# backup= in de PKGBUILD laat een bestaande config.yml staan.
+# System-unit met User=bluegit-backup en gegevens in /var/lib/bluegit-backup.
+# Instellingen staan in de webinterface (settings.yml). Een bestaande
+# /etc/bluegit-backup/config.yml wordt bij upgrade bewaard en één keer overgenomen.
 
 _bb_run() {
   if ! command -v systemctl >/dev/null 2>&1 || [[ ! -d /run/systemd/system ]]; then
@@ -10,17 +10,50 @@ _bb_run() {
   systemctl "$@" || true
 }
 
+_bb_preserve_config() {
+  local src=/etc/bluegit-backup/config.yml
+  local data=/var/lib/bluegit-backup
+  if [[ -f $src && ! -f $data/config.yml.imported ]]; then
+    mkdir -p "$data"
+    cp -a "$src" "$data/legacy-config.yml"
+    if getent passwd bluegit-backup >/dev/null 2>&1; then
+      chown bluegit-backup:bluegit-backup "$data/legacy-config.yml" 2>/dev/null || true
+    fi
+    chmod 0600 "$data/legacy-config.yml" 2>/dev/null || true
+  fi
+}
+
+_bb_hello() {
+  cat <<'MSG'
+bluegit-backup: open de webinterface op http://<deze-server>:8080
+  1. Start de dienst:
+       systemctl enable --now bluegit-backup.service
+  2. Toon het beheertoken en log daarmee in:
+       sudo -u bluegit-backup bluegit-backup token
+  3. Onder Instellingen: zet het publieke adres (een domein of een IP,
+     bijvoorbeeld http://192.168.1.50:8080) en controleer de rest.
+  4. Onder Koppeling: vul het BlueGit-adres en de Backupserver-Key in
+     (die maak je in BlueGit onder Beheer → Backup). Bij een eerdere
+     koppeling aan een andere BlueGit kies je wissen of herstellen.
+
+  Alternatief via de CLI:
+       sudo -u bluegit-backup BLUEGIT_BACKUP_KEY=bgbk_… bluegit-backup connect --url https://git.example.com
+MSG
+}
+
+pre_upgrade() {
+  _bb_preserve_config
+}
+
+pre_install() {
+  _bb_preserve_config
+}
+
 post_install() {
   systemd-sysusers bluegit-backup.conf || true
   systemd-tmpfiles --create bluegit-backup.conf || true
   _bb_run daemon-reload
-  cat <<'MSG'
-bluegit-backup: zet public_url in /etc/bluegit-backup/config.yml (het adres waarop
-BlueGit deze server bereikt) en start de dienst:
-  systemctl enable --now bluegit-backup.service
-Maak daarna in BlueGit onder Beheer > Backup een Backupserver-Key en koppel:
-  sudo -u bluegit-backup BLUEGIT_BACKUP_KEY=bgbk_… bluegit-backup connect --url https://git.example.com
-MSG
+  _bb_hello
 }
 
 post_upgrade() {
@@ -28,6 +61,9 @@ post_upgrade() {
   systemd-tmpfiles --create bluegit-backup.conf || true
   _bb_run daemon-reload
   _bb_run try-restart bluegit-backup.service
+  if [[ -f /etc/bluegit-backup/config.yml || -f /var/lib/bluegit-backup/legacy-config.yml ]]; then
+    echo "bluegit-backup: een bestaande config.yml wordt bij de (her)start één keer overgenomen in de webinterface (settings.yml)."
+  fi
 }
 
 pre_remove() {
