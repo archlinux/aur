@@ -2,7 +2,7 @@
 pkgname=openxlr-yabridge
 pkgver=5.1.1.54
 pkgrel=7
-pkgdesc="Tested Windows plugin bridge for OpenXLR, with the Wine editor input fix"
+pkgdesc="Tested Windows plugin bridge for OpenXLR, with the Wine editor input fix and the real disk identity for plugin activation"
 arch=('x86_64')
 url="https://github.com/emaspa/openxlr"
 license=('GPL-3.0-only' 'GPL-3.0-or-later')

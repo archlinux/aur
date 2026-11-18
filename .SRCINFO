@@ -1,5 +1,5 @@
 pkgbase = openxlr-yabridge
-	pkgdesc = Tested Windows plugin bridge for OpenXLR, with the Wine editor input fix
+	pkgdesc = Tested Windows plugin bridge for OpenXLR, with the Wine editor input fix and the real disk identity for plugin activation
 	pkgver = 5.1.1.54
 	pkgrel = 7
 	url = https://github.com/emaspa/openxlr
