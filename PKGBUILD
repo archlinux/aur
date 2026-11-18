@@ -2,7 +2,7 @@
 
 _name=pyvoy
 pkgname=python-$_name
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A Python application server implemented in Envoy.'
 arch=('x86_64' 'aarch64')
@@ -32,7 +32,7 @@ checkdepends=('python-anyio'
               'python-websockets')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "kosoku::git+https://github.com/curioswitch/kosoku.git")
-sha256sums=('d0e8dbbf37f0b1584c35ad952963dd2b1687eb02a3cbafe01a7e9cf4ccb1a60b'
+sha256sums=('90a65d2aca434e97c2e7f240048cbd24f2f78962ec979eacb787ac1383e09a81'
             'SKIP')
 
 prepare() {
