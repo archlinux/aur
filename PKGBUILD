@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A daemon-less command line job manager with flexible support for retries, timeouts, logging, notifications, and more..."
 
-pkgver=1.10.3
+pkgver=1.10.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,9 +31,9 @@ backup=("etc/${_appname}/${_appname}.yml")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_i686=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
 source_aarch64=("${_appname}-${arch[2]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('95e07ae4df2401af8dc0b741ea191d28b78bb144a99dcc22c47b6637e1869770')
-sha256sums_i686=('190fea7fa9d07cb2025ce78c08be89e93f84e582e7e09618ec783b5fff25ba3f')
-sha256sums_aarch64=('f83827ef36ce88395656e30988c7304423f88036e58ded6bd18dae1df007f64f')
+sha256sums_x86_64=('d9b18075253ecb315589e3c5f790a7d090b2c418b8e3263b881d163a767a1251')
+sha256sums_i686=('16b4af5ba33966e612e107d1bc9b027e10dfc6e75c3186fa1bc7f5b52ba731a9')
+sha256sums_aarch64=('3109c64f46005abaeea8a6fb3df30526462692a93f9678fe6c33d56f35d67c34')
 
 
 prepare() {
