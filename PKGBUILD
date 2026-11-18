@@ -5,7 +5,7 @@
 
 _pkgbase=cs-script
 pkgname="${_pkgbase}-bin"
-pkgver=4.14.13.0
+pkgver=4.14.14.0
 pkgrel=1
 pkgdesc="Run C# sources like scripts"
 arch=('any')
@@ -20,11 +20,9 @@ source=(
   "${url}/blob/v${pkgver}/LICENSE"
   "css.sh"
 )
-sha256sums=(
-  'bfc1bbf5ec30abf4ee9dbc9201725f1c1f71bc547ac1dda3c5dc0213c29cc51c'
-  '928781de12798316d5a103fb32bcb6db8074e7fa937c6a651adc48377d6e62d8'
-  'bf92629b6f0e1c9c3a9e217339354301493300603da54af0488d8905f5154859'
-)
+sha256sums=('9c9fb2431c1295e143cb9d201c508f39c33b5d8a222309c1cf19d257aa03575c'
+            '9d04cbe42d28096fb6f0327ff91dd4df75185089b73990fc9b077af8b9a28dff'
+            'bf92629b6f0e1c9c3a9e217339354301493300603da54af0488d8905f5154859')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/${_pkgbase}"
