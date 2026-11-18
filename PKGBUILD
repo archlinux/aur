@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yogurt-bin
 _pkgname=Yogurt
-pkgver=0.3.46
+pkgver=0.3.47
 _electronversion=44
 pkgrel=1
 pkgdesc="Private AI meeting notes that stay on your computer."
@@ -23,7 +23,7 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('cc5dc68201fec1a915689a0a0ba71f673d1380aeacc64f44289661760188e60d'
+sha256sums=('a4af1c780798cdee14184496e6e888c9aff204745530ecb508d5215933909e41'
             '5c7f0de8bbe8ee8a29540939bfdd83adf000e8c2817587d618c9637347dd34ec'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
