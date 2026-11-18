@@ -1,7 +1,7 @@
 pkgbase = whisparr-eros-develop
 	pkgdesc = Adult movie organizer/manager for usenet and torrent users (develop branch)
 	pkgver = 3.6.6.1954
-	pkgrel = 2
+	pkgrel = 3
 	url = https://whisparr.com
 	install = whisparr-eros.install
 	arch = x86_64
