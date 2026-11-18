@@ -2,7 +2,7 @@
 # Maintainer: Raj Nakarja <raj@siliconwitchery.com>
 
 pkgname='scry-bin'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A terminal email client with a browser viewer'
 url='https://github.com/siliconwitch/scry'
@@ -12,10 +12,10 @@ provides=('scry')
 conflicts=('scry')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/siliconwitch/scry/releases/download/v${pkgver}/scry_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('5f2246d3b1437b245e3436666129ed732c3bd3296b9e034bf64fa4766bc90022')
+sha256sums_aarch64=('8103b3aea83a44fdc4b18c02541fb1e8fdc8385632d0215adad9f35ef5401d2c')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/siliconwitch/scry/releases/download/v${pkgver}/scry_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('be01340fe23cf4c041b4fcb3014e0c7f18f50fd6b57c094a9229303c47d3c351')
+sha256sums_x86_64=('caabab8eda8b827d1a269527ff9736380e54c5f19a40b9ef64d3be792ec6c220')
 
 package() {
   install -Dm755 "./scry" "${pkgdir}/usr/bin/scry"
