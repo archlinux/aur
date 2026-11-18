@@ -1,6 +1,6 @@
 # Maintainer: np4abdou1
 pkgname=ani-cli-arabic
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Terminal-based anime streaming with Arabic subtitles!"
 arch=('any')
@@ -11,7 +11,7 @@ conflicts=('ani-cli-ar')
 depends=('python' 'python-rich' 'python-requests' 'python-pypresence' 'python-pycryptodome' 'python-curl-cffi' 'python-beautifulsoup4' 'python-arabic-reshaper' 'python-bidi' 'python-pillow' 'python-numpy' 'mpv')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://github.com/np4abdou1/ani-cli-arabic/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('752f98e910e6059310842b4c648358d6a4891703fa3f43e18de737fb4ee6be97')
+sha256sums=('d9ae52e8cde925d4a266e83e613a0d9e6894580f11a2322d05a93218b1b587cc')
 
 build() {
     cd "${pkgname}-${pkgver}"
