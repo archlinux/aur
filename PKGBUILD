@@ -4,7 +4,6 @@ _app_id=remya_bar
 _upstream_ver=0.2.0
 pkgver=0.2.0
 pkgrel=1
-epoch=1
 pkgdesc="A Material Design 3 Expressive desktop bar for Hyprland on Linux"
 arch=('x86_64')
 url="https://github.com/remyhuang03/remya-bar"
