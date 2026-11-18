@@ -1,0 +1,24 @@
+pkgbase = vox
+	pkgdesc = Make your microphone sound better in every app, with switchable voice profiles
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/koenhendriks/vox
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-multimedia
+	depends = qt6-svg
+	depends = qt6-wayland
+	depends = pipewire
+	depends = pipewire-pulse
+	depends = libpulse
+	depends = swh-plugins
+	depends = noise-suppression-for-voice
+	source = https://github.com/koenhendriks/vox/releases/download/v0.3.0/vox-0.3.0.tar.gz
+	sha256sums = 35c65e7612db4d36c7752b6c08f1724f5ca5cef7c8174d2068575598656ee9bc
+
+pkgname = vox
