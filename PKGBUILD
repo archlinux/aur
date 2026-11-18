@@ -3,7 +3,7 @@
 pkgbase=thinkmeta-concurrenttasks-samples-bin
 pkgname=(ctdeflate-bin ctlame-bin ctopus-bin ctjpeg-bin)
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/ThinkMeta-com/ThinkMeta.ConcurrentTasks.Samples"
 license=('MIT')
@@ -129,7 +129,9 @@ package_ctdeflate-bin() {
 
 package_ctlame-bin() {
   pkgdesc="Parallel MP3 encoder, bit-identical to LAME 4.0"
-  license=('LGPL-2.0-only')
+  # the ctLame binary is a derived work of LAME distributed under the Library GPL
+  # version 2 or any later version, not under the MIT licence of this base
+  license=('LGPL-2.0-or-later')
   provides=("${pkgname%-bin}")
   conflicts=("${pkgname%-bin}")
 

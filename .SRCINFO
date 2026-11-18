@@ -1,6 +1,6 @@
 pkgbase = thinkmeta-concurrenttasks-samples-bin
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ThinkMeta-com/ThinkMeta.ConcurrentTasks.Samples
 	arch = x86_64
 	license = MIT
@@ -19,7 +19,7 @@ pkgname = ctdeflate-bin
 
 pkgname = ctlame-bin
 	pkgdesc = Parallel MP3 encoder, bit-identical to LAME 4.0
-	license = LGPL-2.0-only
+	license = LGPL-2.0-or-later
 	provides = ctlame
 	conflicts = ctlame
 
