@@ -1,5 +1,5 @@
 pkgname=soh-bin
-pkgver=9.2.3
+pkgver=9.3.1
 pkgrel=1
 scriptver=1.3.1
 pkgdesc="Ship of Harkinian Reimplimentation engine"
@@ -9,8 +9,8 @@ license=('GPL')
 depends=('sdl2' 'sdl2_net' 'libpng' 'libzip' 'zenity' 'tinyxml2' 'spdlog' 'opusfile')
 makedepends=('unzip')
 sha256sums=('5fc9b80fef3c97e1347eb7f976786068d3ce4e4383810ea89bc4fe107a6b9b70')
-sha256sums_x86_64=('6d9d62f08e0ab6097935a2a057e56e45042642c3b82bf91cdaeb0b2ba0bf045d')
-sha256sums_aarch64=('a9ec28d86b5984afa1a4909be5c0c2c31809914afa93a98387d9f38ad1151d30')
+sha256sums_x86_64=('5b7f6d78d137f95b72ca15144fbce2487f950475ecfd9efaad32103942f5ddb1')
+sha256sums_aarch64=('2848622a11e0c96288b71d395728b62b116338943731bc6ba09fd61b1c399f14')
 source=("https://gitlab.com/linuxbombay/soh/shipwright/-/archive/$scriptver/shipwright-$scriptver.tar.bz2")
 source_x86_64=("shipwright-$pkgver-linux-x64.zip::https://gitlab.com/linuxbombay/soh/binaries/$pkgver/-/raw/main/shipwright-linux-x64.zip")
 source_aarch64=("shipwright-$pkgver-linux-arm64.zip::https://gitlab.com/linuxbombay/soh/binaries/$pkgver/-/raw/main/shipwright-linux-arm64.zip")
@@ -23,7 +23,7 @@ package() {
     install -dm644 "$pkgdir/usr/share/pixmaps"
     
     find "$srcdir" -type f \( -name "*.o2r" -o -name "*.txt" \) -exec cp -r {} "$pkgdir/usr/share/games/Shipwright" \;
-    cp -r "$srcdir/usr/lib/Shipwright" "$pkgdir/usr/lib/"
+    #cp -r "$srcdir/usr/lib/Shipwright" "$pkgdir/usr/lib/"
     cp -r "$srcdir/assets" "$pkgdir/usr/share/games/Shipwright"
     find "$srcdir" -type f -name "*.elf" -exec mv {} "$pkgdir/usr/share/games/Shipwright/soh" \;
     install -Dm755 "$srcdir/shipwright-$scriptver/soh" "$pkgdir/usr/bin/soh"
