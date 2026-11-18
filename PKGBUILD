@@ -3,7 +3,7 @@
 pkgname=bettbox
 _pkgname=Bettbox
 pkgver=1.19.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core."
 arch=('x86_64' 'aarch64')
 options=('!lto')
@@ -40,7 +40,7 @@ build () {
 	# cargokit (code_forge plugin) requires FLUTTER_ROOT for its dart
 	export FLUTTER_ROOT="$(pwd)/.fvm/flutter_sdk"
 	local app_env=stable
-	fvm dart run build_runner build -d
+	fvm dart run build_runner build
 	fvm dart ./setup.dart linux --arch "$_arch" --out core
 	fvm flutter build linux --no-pub --release --target-platform "linux-$_flutter_arch" --dart-define=APP_ENV="$app_env"
 }
@@ -57,7 +57,7 @@ build () {
 # 	cd "${_pkgname}-${pkgver}"
 # 	export FLUTTER_ROOT="$(pwd)/.fvm/flutter_sdk"
 # 	local app_env=stable
-# 	fvm dart run build_runner build -d
+# 	fvm dart run build_runner build
 # 	fvm dart ./setup.dart linux --build-only --env "$app_env"
 # }
 
