@@ -3,7 +3,7 @@
 pkgname=qmd
 _npmname="@tobilu/qmd"
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="On-device search engine for markdown files with BM25, vector, and LLM-powered search"
 arch=('x86_64')
 url="https://github.com/tobi/qmd"
@@ -64,9 +64,15 @@ package() {
     \( -name '*darwin*' -o -name '*win32*' -o -name '*win64*' -o -name '*android*' -o -name '*freebsd*' -o -name '*-musl*' \) \
     -delete 2>/dev/null || true
 
-  # Remove native prebuilds for non-target Linux architectures
+  # Remove native prebuilds for non-target Linux architectures. Upstream ships
+  # them either as directories (tree-sitter) or as flat <platform>-<arch>.node
+  # files, and better-sqlite3 loads exactly prebuilds/linux-x64.node on glibc
+  # x86_64, so the arm64 and musl variants are dead weight (~7 MB) that namcap
+  # also reports as uninstalled libc dependencies.
   find "${node_root}" -path '*/prebuilds/linux-arm64' -type d \
     -exec rm -rf {} + 2>/dev/null || true
+  rm -f "${node_root}/node_modules/better-sqlite3/prebuilds/"*arm64*.node \
+        "${node_root}/node_modules/better-sqlite3/prebuilds/"*musl*.node
 
   # Upstream llama libraries ship RUNPATH=$ORIGIN:, where the trailing empty
   # entry makes the dynamic linker search the current working directory.
@@ -88,4 +94,11 @@ package() {
 
   # Remove build obj.target hardlink duplicates
   rm -rf "${node_root}/node_modules/better-sqlite3/build/Release/obj.target"
+
+  # makepkg resolves declared soname depends only from files it finds
+  # executable, and reports an unresolved one as unused, so the shipped
+  # libraries and native addons need the executable bit (as Arch's own Python
+  # extension modules carry it) for libstdc++.so to resolve to =6-64.
+  find "${node_root}" -type f \
+    \( -name '*.so' -o -name '*.so.*' -o -name '*.node' \) -exec chmod 755 {} +
 }
