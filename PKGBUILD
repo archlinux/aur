@@ -1,11 +1,11 @@
-# Maintainer: yeah <yeah_yaojiu@163.com>
+# Maintainer: Yeah <ethanaur@yaojiu.org>
 pkgname=eudic-ting-en-bin
 _pkgname=ting-en
-pkgver=26.9.1
+pkgver=26.11.1
 pkgrel=1
 pkgdesc="Eudic Daily English Listening (欧路软件 每日听力)"
 arch=('x86_64')
-url="https://www.eudic.cn"
+url="https://www.eudic.net"
 license=('custom')
 depends=(
     'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 
