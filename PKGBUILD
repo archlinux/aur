@@ -2,12 +2,12 @@
 
 _pkgname=lyrune
 pkgname=lyrune-bin
-pkgver=1.7.4
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Fast native QQ Music desktop client built with Rust and GPUI (prebuilt binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/amtoaer/lyrune'
-license=('LicenseRef-Unknown')
+license=('GPL-3.0-only')
 options=('!debug' '!strip')
 depends=(
   'alsa-lib'
@@ -37,8 +37,8 @@ source_aarch64=(
 )
 sha256sums=('91ef70cfb609f0b32808f0cd40004f6800f43a176cb26a5819628d16c4af9f44'
             '68913e1ef3f2c4be855b046d7ec69d21371653cff22d40803a90c42cbf231abe')
-sha256sums_x86_64=('d4cb27e947456f46ea13c9c1bb4fbe88a983110517abb3e1e7915f2959b1052b')
-sha256sums_aarch64=('918971bb21a47fd636d602b0cba2b8363a982b0303047e69ec9abc6496480142')
+sha256sums_x86_64=('39f02792197e7a93a1c0ede37d0a7b232fc1ea726cb9e59acf3a2aaf8c91c181')
+sha256sums_aarch64=('7812104b53956d82bedf69c4229606bdba73a6b72c180f33c3dff0f32bf42174')
 
 package() {
   local asset_arch
@@ -56,8 +56,6 @@ package() {
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
   install -Dm644 "${archive_root}/README.md" \
     "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "${archive_root}/THIRD_PARTY_NOTICES.md" \
-    "${pkgdir}/usr/share/doc/${_pkgname}/THIRD_PARTY_NOTICES.md"
-  install -Dm644 "${archive_root}/license-unknown.txt" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/license-unknown.txt"
+  install -Dm644 "${archive_root}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
