@@ -1,0 +1,15 @@
+pkgbase = gpu-mcp-server
+	pkgdesc = MCP server exposing NVIDIA GPU utilization, memory, temperature and power metrics to AI agents
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/pmady/gpu-mcp-server
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	depends = nvidia-utils
+	source = gpu-mcp-server-0.2.0.tar.gz::https://github.com/pmady/gpu-mcp-server/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 036a48e9d14e89b31bc6a60e56e03285a8f049114ca34cd0ccb946b306decb6f
+
+pkgname = gpu-mcp-server
