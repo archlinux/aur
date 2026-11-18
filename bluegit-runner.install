@@ -1,6 +1,6 @@
 # bluegit-runner: systemd-unit met User=bluegit-runner (groep docker).
-# Na installatie draait de service zodra er een config is
-# (bluegit-runner register). Een upgrade herstart de service.
+# Na installatie start de service; koppelen gaat in de webinterface.
+# Een upgrade herstart de service.
 # Zonder draaiende systemd (chroot of container) faalt de transactie niet.
 
 _bgr_systemctl() {
@@ -16,15 +16,13 @@ post_install() {
   systemd-tmpfiles --create bluegit-runner.conf || true
   _bgr_systemctl daemon-reload
   _bgr_systemctl enable --now bluegit-runner.service
-  if [[ ! -f /etc/bluegit-runner/config.yml ]]; then
-    cat <<'MSG'
-bluegit-runner: register this machine to start the service:
-  1. In BlueGit: Settings → Runners → "New registration token"
-     (or a group's Settings → Runners).
-  2. sudo bluegit-runner register --url https://your-bluegit --token bgrr_...
-The service is enabled and starts as soon as the config exists.
+  cat <<'MSG'
+bluegit-runner: open de webinterface op http://127.0.0.1:8765
+  1. sudo -u bluegit-runner bluegit-runner ui-token --work-dir /var/lib/bluegit-runner
+  2. Meld je aan en vul onder Koppeling de BlueGit-URL en het registratietoken in
+     (Instellingen → Runners, of bij een groep).
+De CLI "bluegit-runner register" blijft een alternatief.
 MSG
-  fi
 }
 
 post_upgrade() {
