@@ -1,6 +1,6 @@
 pkgbase = rocm-gfx1152-bin
 	pkgdesc = ROCm Core SDK - Ryzen AI 300 - Krackan Point
-	pkgver = 10.1.0
+	pkgver = 10.2.0
 	pkgrel = 1
 	epoch = 0
 	url = http://www.amd.com
@@ -185,9 +185,9 @@ pkgbase = rocm-gfx1152-bin
 	conflicts = miopen-hip
 	conflicts = rocm-ml-libraries
 	conflicts = rocm-ml-sdk
-	noextract = therock-dist-linux-gfx1152-10.1.0.tar.gz
+	noextract = therock-dist-linux-gfx1152-10.2.0.tar.gz
 	options = !strip
-	source = https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx1152-10.1.0.tar.gz
-	sha256sums = ceed8714adb3db7885f6d25784060687fb772d3d9ed2449779ce7636d88827c0
+	source = https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx1152-10.2.0.tar.gz
+	sha256sums = 035060549c23d85480f2a1e5f675e4f4b4aa92fbb7359cb974cef2ae04c5097d
 
 pkgname = rocm-gfx1152-bin
