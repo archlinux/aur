@@ -1,6 +1,6 @@
 pkgbase = kocr-bin
 	pkgdesc = Offline OCR for images (prebuilt CLI)
-	pkgver = 0.5.11
+	pkgver = 0.5.12
 	pkgrel = 1
 	url = https://github.com/KercyDing/kocr
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = kocr-bin
 	depends = glibc
 	provides = kocr
 	conflicts = kocr
-	source_x86_64 = kocr-cli-0.5.11-x86_64-linux.tar.gz::https://github.com/KercyDing/kocr/releases/download/v0.5.11/kocr-cli-0.5.11-x86_64-linux.tar.gz
-	sha256sums_x86_64 = c13cdef69d149c4377033fd96b59d11fc71b5b6367eaff0d6ee74c53a58cdef4
-	source_aarch64 = kocr-cli-0.5.11-aarch64-linux.tar.gz::https://github.com/KercyDing/kocr/releases/download/v0.5.11/kocr-cli-0.5.11-aarch64-linux.tar.gz
-	sha256sums_aarch64 = 7176e27c135b7c34260340758fe60565a7a83ecfcea8038f112d5980bd6775ae
+	source_x86_64 = kocr-cli-0.5.12-x86_64-linux.tar.gz::https://github.com/KercyDing/kocr/releases/download/v0.5.12/kocr-cli-0.5.12-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 6c21abb42838230085578ccf2cc4e13250ccd4a2df04ed3312375cf52e7ecdd3
+	source_aarch64 = kocr-cli-0.5.12-aarch64-linux.tar.gz::https://github.com/KercyDing/kocr/releases/download/v0.5.12/kocr-cli-0.5.12-aarch64-linux.tar.gz
+	sha256sums_aarch64 = f7c7af5836165d8f9f6aeaeb439ed1dad21cfdc5d84f576ebcf590a2c6324e9a
 
 pkgname = kocr-bin
