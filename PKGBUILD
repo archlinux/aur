@@ -1,20 +1,21 @@
+# shellcheck shell=bash
 # -*- mode: sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='gut'
-pkgver=0.3.2
-pkgrel=2
 pkgdesc='A beginner friendly porcelain for git'
-arch=('aarch64' 'x86_64')
+pkgver=0.3.3
+pkgrel=1
 url="https://github.com/julien040/$pkgname"
-license=('MIT')  # SPDX-License-Identifier: MIT
+arch=('aarch64' 'x86_64')
+license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-options=('lto')
+sha256sums=('2e5af066ac8bcf46ef15cd9c788e57862c3dcb6119539eac100a71daee148e7d')
 
-_pkgdate='2025-04-01'
+_pkgdate='2026-06-07'
 _pkgver="$pkgver ($_pkgdate)"
 
 prepare() {
@@ -40,6 +41,7 @@ build() {
     * ) : pass ;;
   esac
 
+  export CGO_ENABLED=1
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
@@ -52,6 +54,10 @@ build() {
     -mod=readonly \
     -modcacherw \
      .
+
+  for _shell in bash fish zsh; do
+    ./gut completion "$_shell" > "_completions.$_shell"
+  done
 }
 
 check() {
@@ -64,19 +70,19 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -vDm0755 -t "$pkgdir/usr/bin" \
+  install -Dm0755 -t "$pkgdir/usr/bin" \
     "$pkgname"
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     {CONTRIBUTING,README,SECURITY,future_of_gut}.md
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
-}
 
-sha256sums=(
-  '49431ba0d24f9abf4c7cdbdf1956d2b6e70e16f955b5bbb70d8d8f4b8a5a48d1'
-)
-b2sums=(
-  'cac2e4429b629ad04c6d76e7e4aef028f64a1a7ed478a2ac9f3c23e255fe84a29c2e49b86f04d9ed2cb1c4b89e05c8f676a98f6f5ed02810595d7ffaba286929'
-)
+  install -Dm0644 _completions.bash \
+    "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm0644 _completions.fish \
+    "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+  install -Dm0644 _completions.zsh  \
+    "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+}
 
 # eof
