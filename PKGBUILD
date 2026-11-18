@@ -1,6 +1,6 @@
 # Maintainer: Grimish <grimish@protonmail.com>
 pkgname=mesa-kraid-git
-pkgver=27.0.0_devel.r234155.g881f15ebda3
+pkgver=27.0.0_devel.r234163.g58b7cd13d3b
 pkgrel=1
 pkgdesc="Mesa (git main): Panfrost OpenGL + PanVK Vulkan with the KRAID shader compiler, for Arm Mali Valhall (RK3588 / Mali-G610)"
 arch=('aarch64')
