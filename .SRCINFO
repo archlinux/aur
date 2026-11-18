@@ -1,6 +1,6 @@
 pkgbase = openvox-server
 	pkgdesc = Server automation framework and application
-	pkgver = 9.1.0
+	pkgver = 9.2.0
 	pkgrel = 1
 	url = https://github.com/OpenVoxProject/openvox-server
 	install = openvox-server.install
@@ -25,9 +25,9 @@ pkgbase = openvox-server
 	backup = etc/puppetlabs/puppetserver/logback.xml
 	backup = etc/puppetlabs/puppetserver/request-logging.xml
 	backup = etc/puppetlabs/puppetserver/services.d/ca.cfg
-	source = openvox-server-9.1.0.tar.gz::https://artifacts.voxpupuli.org/openvox-server/9.1.0/openvox-server-9.1.0.tar.gz
+	source = openvox-server-9.2.0.tar.gz::https://artifacts.voxpupuli.org/openvox-server/9.2.0/openvox-server-9.2.0.tar.gz
 	source = puppetserver.tmpfiles
-	sha512sums = 2515ef857603b85b593dee12b4b51620ba71c1d1532d7d0600433648b6e508ab04c5d1933a618a60105da4000a3c7bccce5faa05d183b10d5ae0f9bfb0dd31e5
+	sha512sums = a9a30eb84a994f714265743837d75bb67326a172f41ca259178baf8f51f0c4042d67daa9651b5e45b9df5baaaa47bc3822eac138dee18c0f264c29cd9ea40619
 	sha512sums = d6266c1f9710fd948f94e1bb085e44fbaffd9bdc2215d610071ca41fa3f8d86af08d34cd746c5f2353b4e5a3ee2adb226ca23617c49d65855078ce5077efa30c
 
 pkgname = openvox-server

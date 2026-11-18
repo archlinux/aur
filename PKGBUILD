@@ -4,7 +4,7 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=openvox-server
-pkgver=9.1.0
+pkgver=9.2.0
 pkgrel=1
 pkgdesc='Server automation framework and application'
 arch=('any')
@@ -28,7 +28,7 @@ install="${pkgname}.install"
 _hiera_eyaml_ver=5.0.1
 source=("${pkgname}-${pkgver}.tar.gz::https://artifacts.voxpupuli.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'puppetserver.tmpfiles')
-sha512sums=('2515ef857603b85b593dee12b4b51620ba71c1d1532d7d0600433648b6e508ab04c5d1933a618a60105da4000a3c7bccce5faa05d183b10d5ae0f9bfb0dd31e5'
+sha512sums=('a9a30eb84a994f714265743837d75bb67326a172f41ca259178baf8f51f0c4042d67daa9651b5e45b9df5baaaa47bc3822eac138dee18c0f264c29cd9ea40619'
             'd6266c1f9710fd948f94e1bb085e44fbaffd9bdc2215d610071ca41fa3f8d86af08d34cd746c5f2353b4e5a3ee2adb226ca23617c49d65855078ce5077efa30c')
 
 prepare() {
