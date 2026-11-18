@@ -1,0 +1,27 @@
+pkgbase = ibus-ngosen
+	pkgdesc = Ngó Sen for GNOME, a Vietnamese input method for IBus
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/ngosen/ibus-ngosen
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = LGPL-2.1-or-later
+	license = MIT
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = rust
+	depends = ibus
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = hicolor-icon-theme
+	depends = glibc
+	depends = gcc-libs
+	depends = libxcb
+	conflicts = fcitx5-ngosen
+	options = !debug
+	source = https://github.com/ngosen/ibus-ngosen/releases/download/ibus-ngosen-1.4.0-1/ibus-ngosen-1.4.0.tar.gz
+	sha256sums = 6a39430e3c45f3751c6b7b374674b35e635204a788cf27a24c048b1dae7a997a
+
+pkgname = ibus-ngosen
