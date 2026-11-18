@@ -1,7 +1,7 @@
 pkgbase = luciole-git
 	pkgdesc = A smooth, native Wayland file manager with fast previews, tabs, split view and Miller columns
 	pkgver = 0.1.0.r0.g000000000
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/noctalia-dev/luciole
 	arch = x86_64
 	arch = aarch64
@@ -23,7 +23,6 @@ pkgbase = luciole-git
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
-	depends = glycin
 	depends = gsettings-desktop-schemas
 	depends = gvfs
 	depends = harfbuzz
