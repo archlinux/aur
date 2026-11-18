@@ -5,7 +5,7 @@
 pkgname=readarr-develop
 _pkgname=Readarr
 pkgver=0.4.18.2805
-pkgrel=1
+pkgrel=2
 pkgdesc='Ebook and audiobook collection manager for newsgroup and torrent users (develop branch)'
 arch=(x86_64 aarch64 armv7h)
 url='https://readarr.com'
@@ -72,6 +72,7 @@ prepare() {
   export DOTNET_NOLOGO=1
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
   dotnet restore src/${_pkgname}.sln \
+    -p:NuGetAudit=false \
     --runtime ${_runtime} \
     --locked-mode
 
