@@ -20,12 +20,13 @@
 pkgname=qoderwake-bin
 _upstreamver=1.2.20
 pkgver=1.2.20
-pkgrel=2
+pkgrel=3
 pkgdesc="QoderWake local CLI and daemon (official prebuilt Linux runtime)"
 arch=('x86_64' 'aarch64')
 url='https://qoder.com/'
 license=('LicenseRef-custom')
 depends=('glibc' 'python')
+makedepends=('imagemagick' 'ttf-dejavu')
 optdepends=('xdg-utils: open the QoderWake console in the default browser')
 options=('!strip' '!debug')
 provides=("${pkgname%-bin}=${_upstreamver}")
@@ -39,6 +40,27 @@ source_aarch64=(
 )
 sha256sums_x86_64=('ded4e94a2ddcc048c65d4c9eaed7257b03799a66aea9c3f443de5ee9b49dfa91')
 sha256sums_aarch64=('d22da484d3af7a346debd59a026775b8d7c12473cb322e9adce7b6c3dee04e81')
+
+# 国际版与国内版共用上游 logo，右下角合成 INTL 角标以与国内版区分。
+_badge_icon() {
+  local src="$1" dst="$2" size="$3" label="${4:-CN}" bg="${5:-#C8102E}"
+  local bw pad ring pointsize tmp
+  bw=$(( size * 30 / 100 )); [ "$bw" -lt 7 ] && bw=7
+  pad=$(( size * 5 / 100 )); [ "$pad" -lt 1 ] && pad=1
+  ring=$(( bw / 12 )); [ "$ring" -lt 1 ] && ring=1
+  pointsize=$(( bw * 45 / 100 )); [ "${#label}" -ge 4 ] && pointsize=$(( bw * 27 / 100 ))
+  [ "$pointsize" -lt 4 ] && pointsize=4
+  tmp="$(mktemp --suffix=.png)"
+  install -dm755 "$(dirname "${dst}")"
+  magick -size "${bw}x${bw}" xc:none \
+    -fill white -draw "circle $(( bw / 2 )),$(( bw / 2 )) $(( bw / 2 )),0" \
+    -fill "${bg}" -draw "circle $(( bw / 2 )),$(( bw / 2 )) $(( bw / 2 )),${ring}" \
+    -gravity center -font DejaVu-Sans-Bold -pointsize "${pointsize}" \
+    -fill white -annotate +0+0 "${label}" "${tmp}" || return 1
+  magick "${src}" -resize "${size}x${size}" \
+    "${tmp}" -gravity southeast -geometry "+${pad}+${pad}" -composite "${dst}"
+  rm -f "${tmp}"
+}
 
 # 区域不是由登录账号决定，而是二进制内的构建期常量：上游把区域占位符替换成
 # global/cn，再由它选择域名表（qoder.com / qoder.com.cn）、homeDir 和 binaryName。
@@ -101,10 +123,10 @@ WRAPPER
   # Upstream ships no desktop integration; the product is a CLI plus a local
   # web console. Add a launcher that starts the daemon and opens that console,
   # using the QoderWake logo bundled in the runtime.
-  install -Dm644 "${srcdir}/resources/browser-connector/chrome-extension/qwork-logo-light.png" \
-    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/qoderwake.png"
-  install -Dm644 "${srcdir}/resources/browser-connector/chrome-extension/icons/icon-128.png" \
-    "${pkgdir}/usr/share/icons/hicolor/128x128/apps/qoderwake.png"
+  _badge_icon "${srcdir}/resources/browser-connector/chrome-extension/qwork-logo-light.png" \
+    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/qoderwake.png" 512 INTL '#2C549E'
+  _badge_icon "${srcdir}/resources/browser-connector/chrome-extension/icons/icon-128.png" \
+    "${pkgdir}/usr/share/icons/hicolor/128x128/apps/qoderwake.png" 128 INTL '#2C549E'
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/lib/qoderwake/qoderwake-console" <<'CONSOLE'
 #!/bin/sh
