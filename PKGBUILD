@@ -21,6 +21,7 @@ license=('LicenseRef-scancode-commercial-license')
 provides=(
     "${_pkgname}"
     "vs${_appname}"
+    "${_appname}"
 )
 conflicts=(
     "${pkgname%-bin}"
@@ -31,13 +32,14 @@ conflicts=(
 )
 depends=(
     "electron${_electronversion}"
-    'nodejs'
     'libx11'
     'libxkbfile'
     'webkit2gtk-4.1'
     'libsecret'
     'glibc>=2.28'
     'gcc-libs>=8.1.0'
+    'openssl-3'
+    'ripgrep'
 )
 optdepends=(
     'gvfs: For move to trash functionality'
@@ -52,12 +54,12 @@ source=(
 )
 #source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-arm64")
 #source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf")
-#source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
+#source_x86_64=("${pkgname%-bin}-${pkgver}-${CARCH}.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://update.code.visualstudio.com/${pkgver}/linux-rpm-arm64/stable")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://update.code.visualstudio.com/${pkgver}/linux-rpm-armhf/stable")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://update.code.visualstudio.com/${pkgver}/linux-rpm-x64/stable")
+source_x86_64=("${pkgname%-bin}-${pkgver}-${CARCH}.rpm::https://update.code.visualstudio.com/${pkgver}/linux-rpm-x64/stable")
 sha256sums=('dc6e622af50c366f1713adfa1de690bbee9af76c8fec1d4dccddadffc9bdf2ba'
-            '13fb5f66f31ced197d0e2b566daae599ffe96ab6f9eea7a0ffccbfc2eedae92f')
+            '7a5f4c303b1bc17cb5a4ccd2361fa7a4f1e9802eff2a29766e1b029f4714e413')
 sha256sums_aarch64=('c76c0cbe380d06ad647601bb2d4baf54d2f8e9b980e9488ffc2f7a27f4799cf9')
 sha256sums_armv7h=('07d82177347079d24a3337bf5bddbb971672aa9fc0cd9a2303b32a8b330c395e')
 sha256sums_x86_64=('f33ab68ce7db77f5b60de964e33e3c99761cf8e4ce30a8a03f25949b073865ca')
@@ -100,9 +102,17 @@ prepare() {
         s/Icon=vs${_appname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_debname}"*.desktop
     rm -rf "$(_get_app_dir)/resources/app/node-compile-cache"
+    case "${CARCH}" in
+		x86_64)  _rgdir=linux-x64   ;;
+		aarch64) _rgdir=linux-arm64 ;;
+		armv7h)  _rgdir=linux-arm   ;;
+		*) echo "Unsupported CARCH: ${CARCH}" >&2; return 1 ;;
+	esac
+    ln -sf "/usr/bin/rg" "$(_get_app_dir)/resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/${_rgdir}/rg"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    ln -s "${pkgname%-bin}" "${pkgdir}/usr/bin/${_appname}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -a "$(_get_app_dir)/resources/app/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/appdata/${_debname}.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
