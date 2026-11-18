@@ -3,7 +3,7 @@
 # Hand-edits are fine but will be overwritten on the next tagged release.
 
 pkgname=pareto-gateway-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Pareto AI gateway: local AI model router with a spend and quality console (headless server, prebuilt)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('pareto-gateway')
 conflicts=('pareto-gateway' 'pareto-ai' 'pareto-ai-bin')
 source_x86_64=("https://github.com/mohamadkhani/pareto-ai/releases/download/v${pkgver}/pareto-gateway-${pkgver}-linux-x86_64.tar.gz")
 # Checksum is injected by CI from the built release tarball (real b2sum, not SKIP).
-b2sums_x86_64=('28bfb142bd87c9a9b1b44c3541ec1ad48acddd5e11eeb103ee5eb58180633655a915cb5ef176c1a2e1f61867fbc93a6a522834a812ac4137d9c84818f724bf43')
+b2sums_x86_64=('2777bd7d39e16bd0c6dec61e76925f63bc5660709d92045b8851c8d02cca7c42c49e6d3d764631307097450f775ec253e61a61b392efc0d4a29110aac5cc273f')
 
 package() {
   cd "$srcdir/pareto-gateway-${pkgver}-linux-x86_64"
