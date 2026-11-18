@@ -2,7 +2,7 @@
 
 pkgname=honk-bin
 pkgver=0.1.0beta.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental Linux eBPF transparent proxy engine (prebuilt musl static full build)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/daeuniverse/honk'
@@ -14,7 +14,7 @@ license=('GPL-3.0-only')
 depends=('systemd' 'kmod' 'procps-ng' 'iproute2')
 optdepends=(
   'nftables: honk-check NFQUEUE leftovers, and manual rule inspection'
-  'bpftool: inspect loaded eBPF programs and pinned maps'
+  'bpf: bpftool, to inspect loaded eBPF programs and pinned maps'
   'v2ray-geoip: geoip.dat for geoip: routing rules'
   'v2ray-domain-list-community: geosite.dat for geosite: routing rules'
 )
