@@ -1,7 +1,7 @@
 # Maintainer: Friendships666 <tianfs6x6@gmail.com>
 pkgname=justaiagent
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux-native local AI agent with embedded web interface"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Friendships6666/JustAIAgent"
@@ -29,4 +29,5 @@ build() {
 package() {
   cd "${srcdir}/JustAIAgent-${pkgver}"
   install -Dm755 target/release/justaiagent "${pkgdir}/usr/bin/justaiagent"
+  ln -s justaiagent "${pkgdir}/usr/bin/jja"
 }
