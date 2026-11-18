@@ -6,7 +6,7 @@
 pkgname=lidarr
 _pkgname=Lidarr
 pkgver=3.1.6.5079
-pkgrel=2
+pkgrel=3
 pkgdesc='Music collection manager for newsgroup and torrent users.'
 arch=(x86_64 aarch64 armv7h)
 url='https://lidarr.audio'
@@ -66,8 +66,6 @@ _branch='master'
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
-  sed -i "s#</NoWarn>#</NoWarn> <WarningsNotAsErrors>NU1902;NU1903</WarningsNotAsErrors>#" src/Directory.Build.props
-
   # Remove upstream dotnet version
   rm global.json
 
@@ -78,6 +76,7 @@ prepare() {
 
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
+    -p:NuGetAudit=false \
     --runtime "${_runtime}" \
     --locked-mode
 
