@@ -92,13 +92,14 @@ optdepends=(
 )
 
 _td_commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
+_wallet_engine_patch_commit=23d349a3ff09dbc1fa8127ce39ba9223de0edf21
 _wallet_engine_ver=0.0.7
 source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver%.*}/tdesktop-${pkgver%.*}-full.tar.gz"
   "git+https://github.com/tdlib/td.git#commit=${_td_commit}"
   wallet-engine-${_wallet_engine_ver}.tar.gz::https://github.com/i582/wallet-engine/archive/refs/tags/v${_wallet_engine_ver}.tar.gz
   "https://github.com/yukigram/yukigram/archive/refs/tags/v${pkgver}.tar.gz"
-  https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch
+  wallet-engine-${_wallet_engine_patch_commit}.patch::https://github.com/desktop-app/patches/raw/${_wallet_engine_patch_commit}/wallet-engine.patch
   "0000-Fix-Pony-fix-lang-res-file-loc.patch"
 )
 
@@ -106,7 +107,7 @@ sha512sums=('fc597cf9a04edd6228fc06503ca11a37590f4bc423612137ea1a953206c01da33cc
             'dd4741b3621c5e76ba7c9eee44ffd41b1e6b6c24fdb19988efd780d307aff79a9dcfd710be9ad63db6857cbbd71c273c54d82be524a5326fc22f1233d9eb6ca2'
             'f1a38de20459c5b780c98aaab037fdf34357980e7f3b93c4b523636d016ca4ffc9d9679c2ee4a246b138ef0474b8190d2db1874b204c006b0f30b3c950c62ff6'
             '14b1a0dcbbcefb584ff1f0ee341da283f9367a933cea943332eed89c9137aff9654787f47f70c02030f8d11762dde4273149c1034dc72f8070acb361e8645e45'
-            '79460145f706d3eb244335700a30be2e6862db2bcda042244cf45ec5227956130a366c54a4240167327e33fde4c9fa671305a7f942acedd17e994d24e0612a2b'
+            '71c9b0aacef42e87febee042d251c2835e3d30b8000f9b00afb48d74a7e7aba93a36530c1ef0d6da69bb4d115e7a852a8888f1bcf868d1bd60d9e3f55a024088'
             '392c4ca2a7b6dc276a49f5281949ec4f96707c881113441c1c717e5fd6cc689a85634a49bbd6f55150d09340be298cb25bf2b5d54b1a2fe87b5baa87f1c0ea72')
 
 
@@ -118,7 +119,7 @@ prepare() {
   patch -Np1 < "$srcdir"/0000-Fix-Pony-fix-lang-res-file-loc.patch
   
   cd "$srcdir"/wallet-engine-${_wallet_engine_ver}
-  patch -Np1 -i "$srcdir"/wallet-engine.patch
+  patch -Np1 -i "$srcdir"/wallet-engine-${_wallet_engine_patch_commit}.patch
 }
 
 build() {
