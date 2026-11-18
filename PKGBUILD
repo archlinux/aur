@@ -1,7 +1,7 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=shuvarie-bin
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 epoch=
 pkgdesc="Blazingly fast AI coding TUI for chivalrous people (Binary)"
@@ -21,15 +21,15 @@ install=
 changelog=
 _repourl='https://github.com/shuvarie/shuvarie'
 source_x86_64=(
-    "shuvarie-v${pkgver}.tar.gz::${_repourl}/releases/download/v${pkgver}/shuvarie-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
+    "shuvarie-x86_64-v${pkgver}.tar.gz::${_repourl}/releases/download/v${pkgver}/shuvarie-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
 )
 
 source_aarch64=(
-    "shuvarie-v${pkgver}.tar.gz::${_repourl}/releases/download/v${pkgver}/shuvarie-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
+    "shuvarie-aarch64-v${pkgver}.tar.gz::${_repourl}/releases/download/v${pkgver}/shuvarie-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
 )
 noextract=()
-sha256sums_aarch64=('1dc74eda6412e997966d22b17174537a4b78bdb5984afaa5e96941cc272fcd43')
-sha256sums_x86_64=('10fe75b6a2e2fcfd539e20a58be141c787fcedbb10c9e552dc04c0460e9d7493')
+sha256sums_x86_64=('617e230fc3d1ac204b422a1418334fdd51f93e10cfcd5fe3a094351ef38934c6')
+sha256sums_aarch64=('5da459419e73a98268c25c0631e81f0a2a890b3247d7eff6a8a4acc98a55ceba')
 validpgpkeys=()
 
 _dirname="shuvarie-$pkgver"
