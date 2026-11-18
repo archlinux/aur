@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark at manjaro dot org>
 
 pkgname=unfold-xapp
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Archive Manager for Linux Desktops"
 arch=('any')
@@ -21,7 +21,7 @@ checkdepends=('desktop-file-utils')
 provides=('unfold')
 conflicts=('unfold')
 source=("unfold-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('75ec76b9727cbdce3d11e3a45833fe1db757594efaf4959749ea3fc38f784130')
+sha256sums=('93cc7902c9c416318c12a499ba349dd2be20736c333214f5215278335c1d71b4')
 
 build() {
   arch-meson "unfold-$pkgver" build
