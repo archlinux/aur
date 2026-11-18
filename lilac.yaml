@@ -1,0 +1,28 @@
+build_prefix: extra-x86_64
+
+maintainers:
+  - github: lucaszhou007
+    email: lucaszhou007@gmail.com
+
+# Upstream (magnumpv/sidebarsubtitles) has no tags or releases, only commits
+# on main. Track the head commit via the commits atom feed and pin it in the
+# PKGBUILD's _commit variable; the changed _commit line is a non-pkgrel change
+# so the AUR gate lets the update through despite the pkgbase not ending in
+# -git. Patches are verified by the chroot build (prepare() fails -> package
+# lands in the failed set, no bad push).
+update_on:
+  - source: regex
+    url: https://github.com/magnumpv/sidebarsubtitles/commits/main.atom
+    regex: 'Grit::Commit/([0-9a-f]{40})'
+
+pre_build_script: |
+  if getattr(_G, 'newver', None):
+      for line in edit_file('PKGBUILD'):
+          if line.startswith('_commit='):
+              line = f"_commit='{_G.newver}'"
+          print(line)
+  update_pkgrel()
+
+post_build_script: |
+  git_pkgbuild_commit()
+  update_aur_repo()
