@@ -1,6 +1,6 @@
 pkgbase = koma-bin
 	pkgdesc = Wayland tiling compositor with explicit desktop automation interfaces (prebuilt release binaries)
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://komawm.org
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = koma-bin
 	conflicts = koma
 	options = !debug
 	options = !strip
-	source_x86_64 = koma-0.0.3-x86_64.tar.zst::https://cdn.komawm.org/releases/koma/v0.0.3/koma-0.0.3-x86_64-unknown-linux-gnu.tar.zst
-	sha256sums_x86_64 = 53f13f038662005d1a4620b6a690208f35fa6998ddf2e4e172a36633dc6c7dee
-	source_aarch64 = koma-0.0.3-aarch64.tar.zst::https://cdn.komawm.org/releases/koma/v0.0.3/koma-0.0.3-aarch64-unknown-linux-gnu.tar.zst
-	sha256sums_aarch64 = 5475be6cad4ed1ac9dc7a70981954ee8769da031686afc968560b4f50cd12a32
+	source_x86_64 = koma-0.0.4-x86_64.tar.zst::https://cdn.komawm.org/releases/koma/v0.0.4/koma-0.0.4-x86_64-unknown-linux-gnu.tar.zst
+	sha256sums_x86_64 = 520efef63b759d8a659f3960f5bd51e9737b395146eec44bc3d8dbebc927d2df
+	source_aarch64 = koma-0.0.4-aarch64.tar.zst::https://cdn.komawm.org/releases/koma/v0.0.4/koma-0.0.4-aarch64-unknown-linux-gnu.tar.zst
+	sha256sums_aarch64 = 4729836faca2e7945f126438f3b1983632653ab0c0b8aece84e1430b9fac0c61
 
 pkgname = koma-bin
