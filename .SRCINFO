@@ -1,6 +1,6 @@
 pkgbase = gravityfile
 	pkgdesc = File system explorer and analyzer with an interactive TUI
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/Epistates/gravityfile
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = gravityfile
 	depends = glibc
 	depends = libgcc
 	depends = xz
-	provides = gravityfile
+	provides = grav
 	options = !strip
 	options = !lto
-	source = gravityfile-0.4.1.tgz::https://github.com/Epistates/gravityfile/archive/v0.4.1.tar.gz
-	sha256sums = aa6a125d4008ee78ca536f178dec9bf951c186e9e1dc1302f87f03dc1b7acaf4
+	source = gravityfile-0.4.2.tgz::https://github.com/Epistates/gravityfile/archive/v0.4.2.tar.gz
+	sha256sums = 340ea7dbe34ed2e560bffe3211507c9585b6dbcfa4175312625ba230a95e3c59
 
 pkgname = gravityfile

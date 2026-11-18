@@ -7,7 +7,7 @@ _execname=grav
 pkgname=${_appname}
 pkgdesc="File system explorer and analyzer with an interactive TUI"
 
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,7 +28,7 @@ depends=('glibc' 'libgcc' 'xz')
 options=('!strip' '!lto')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('aa6a125d4008ee78ca536f178dec9bf951c186e9e1dc1302f87f03dc1b7acaf4')
+sha256sums=('340ea7dbe34ed2e560bffe3211507c9585b6dbcfa4175312625ba230a95e3c59')
 
 
 prepare() {
