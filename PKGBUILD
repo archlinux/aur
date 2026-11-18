@@ -2,10 +2,10 @@
 # Checksums: ./packaging/refresh-checksums.sh vX.Y.Z
 pkgname=i2pchat-bin
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="P2P (peer-to-peer) chat client over I2P network (GUI version)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/MetanoicArmor/I2PChat-ng"
+url="https://github.com/MetanoicArmor/I2PChat"
 license=('AGPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'zlib')
 provides=('i2pchat')
