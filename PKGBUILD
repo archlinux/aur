@@ -7,7 +7,7 @@
 # Rule: only deps in the official repos reuse the system; the rest are bundled.
 
 pkgname=deeptools
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Tools to process and analyze deep sequencing data (ChIP-seq, ATAC-seq, RNA-seq, etc.)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ options=('!strip')
 _site=/opt/$pkgname
 # Pinned PyPI sdist (stable version-templated URL, no hash prefix).
 source=("deeptools-$pkgver.tar.gz::https://pypi.org/packages/source/d/deeptools/deeptools-$pkgver.tar.gz")
-sha256sums=('f2d47483f71aaff098501579cbe83ef9dcba873ce9c57cfeabeec268ed69c4b7')
+sha256sums=('5b806c63bb8aa31ddac6a34f3c5435cb24d7923991bcab32ab72605a6bf4195a')
 
 build() {
     cd "$pkgname-$pkgver"

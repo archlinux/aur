@@ -1,6 +1,6 @@
 pkgbase = deeptools
 	pkgdesc = Tools to process and analyze deep sequencing data (ChIP-seq, ATAC-seq, RNA-seq, etc.)
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/deeptools/deepTools
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = deeptools
 	depends = python-plotly
 	depends = python-numpydoc
 	options = !strip
-	source = deeptools-4.0.0.tar.gz::https://pypi.org/packages/source/d/deeptools/deeptools-4.0.0.tar.gz
-	sha256sums = f2d47483f71aaff098501579cbe83ef9dcba873ce9c57cfeabeec268ed69c4b7
+	source = deeptools-4.1.0.tar.gz::https://pypi.org/packages/source/d/deeptools/deeptools-4.1.0.tar.gz
+	sha256sums = 5b806c63bb8aa31ddac6a34f3c5435cb24d7923991bcab32ab72605a6bf4195a
 
 pkgname = deeptools
