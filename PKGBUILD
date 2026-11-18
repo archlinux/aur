@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=omniget-bin
 _pkgname=OmniGet
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A local MCP server that gives your coding agent a desktop toolbox: downloads from YouTube, torrents and every site yt-dlp supports, media conversion, files, chats and system cleanup."
 arch=('x86_64')
 url="https://getomniget.com"
@@ -18,8 +18,9 @@ depends=(
     'libappindicator'
 	'openssl-3'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/dl/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('93021a0f34c850c90b308e52436d0aaf46c93c6f8055f8c117b2e1c6a738fac5')
+#source=("${pkgname%-bin}-${pkgver}.deb::${url}/dl/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+sha256sums=('194864cf3b8b5561d7cba248c8169e6dcaf1203d78eb6505321563d4668aa4bd')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
