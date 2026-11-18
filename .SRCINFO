@@ -1,6 +1,6 @@
 pkgbase = sysc-shell
-	pkgdesc = Desktop shell for Niri with bars, panels and settings
-	pkgver = 0.2.0
+	pkgdesc = Desktop shell for sysc-compositor and Niri with bars, panels and settings
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Nomadcxx/sysc-shell
 	install = sysc-shell.install
@@ -11,14 +11,15 @@ pkgbase = sysc-shell
 	license = MIT
 	license = Apache-2.0
 	license = Unicode-3.0
-	makedepends = go>=1.26.4
-	depends = niri
+	makedepends = go>=1.26.11
 	depends = systemd
 	depends = inter-font
 	depends = sysc-clipboard
 	depends = sysc-notify
 	depends = sysc-tray
 	depends = sysc-lock
+	optdepends = sysc-compositor: scrollable-tiling Wayland session
+	optdepends = niri: Niri session
 	optdepends = sysc-terminal: live terminal-art wallpapers
 	optdepends = sysc-plugins-git: official plugins
 	optdepends = gslapper: video wallpapers
@@ -29,13 +30,13 @@ pkgbase = sysc-shell
 	optdepends = networkmanager: network controls
 	optdepends = bluez: Bluetooth controls
 	optdepends = git: install plugins from source catalogs
-	source = sysc-shell-0.2.0.tar.gz::https://github.com/Nomadcxx/sysc-shell/archive/refs/tags/v0.2.0.tar.gz
+	source = sysc-shell-0.3.0.tar.gz::https://github.com/Nomadcxx/sysc-shell/archive/refs/tags/v0.3.0.tar.gz
 	source = config.example.json
 	source = first-run.md
 	source = niri-bindings.kdl
-	sha256sums = f2bcbfc7a957ade720d9162e7b6806b5a7564932f7d7eb494ca83517e0b41d44
+	sha256sums = d821c3fd856d5499edf3272b879a3aec2c40bb7146d6b07678deb6a9058ca3ca
 	sha256sums = 57389e844b9d71c50f6bc9907042fab411f3152b17b4161ad7ad48438fd62724
-	sha256sums = 325af3045e0781c5c71affef3024fafbb7c2a6d32a52d4c74dcb0d9f112fa8b9
+	sha256sums = 2d999f280775a20a289b62191a54b1a5f2c1c3ba3cf273148a49138e1c29a169
 	sha256sums = cb1fbdb2f11eceaaa73fd7ce5a6a0866554e1d87014170290be58b8c97b9e09b
 
 pkgname = sysc-shell

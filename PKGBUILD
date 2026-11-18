@@ -1,22 +1,22 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-shell
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="Desktop shell for Niri with bars, panels and settings"
+pkgdesc="Desktop shell for sysc-compositor and Niri with bars, panels and settings"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-shell"
 license=('BSD-3-Clause' 'GPL-3.0-only' 'MIT' 'Apache-2.0' 'Unicode-3.0')
-depends=('niri' 'systemd' 'inter-font' 'sysc-clipboard' 'sysc-notify' 'sysc-tray' 'sysc-lock')
-optdepends=('sysc-terminal: live terminal-art wallpapers' 'sysc-plugins-git: official plugins' 'gslapper: video wallpapers' 'swaybg: static wallpapers' 'matugen: wallpaper-derived colors' 'wl-clipboard: plugin clipboard access' 'wireplumber: volume controls' 'networkmanager: network controls' 'bluez: Bluetooth controls' 'git: install plugins from source catalogs')
-makedepends=('go>=1.26.4')
+depends=('systemd' 'inter-font' 'sysc-clipboard' 'sysc-notify' 'sysc-tray' 'sysc-lock')
+optdepends=('sysc-compositor: scrollable-tiling Wayland session' 'niri: Niri session' 'sysc-terminal: live terminal-art wallpapers' 'sysc-plugins-git: official plugins' 'gslapper: video wallpapers' 'swaybg: static wallpapers' 'matugen: wallpaper-derived colors' 'wl-clipboard: plugin clipboard access' 'wireplumber: volume controls' 'networkmanager: network controls' 'bluez: Bluetooth controls' 'git: install plugins from source catalogs')
+makedepends=('go>=1.26.11')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-shell/archive/refs/tags/v${pkgver}.tar.gz"
   'config.example.json'
   'first-run.md'
   'niri-bindings.kdl')
-sha256sums=('f2bcbfc7a957ade720d9162e7b6806b5a7564932f7d7eb494ca83517e0b41d44'
+sha256sums=('d821c3fd856d5499edf3272b879a3aec2c40bb7146d6b07678deb6a9058ca3ca'
             '57389e844b9d71c50f6bc9907042fab411f3152b17b4161ad7ad48438fd62724'
-            '325af3045e0781c5c71affef3024fafbb7c2a6d32a52d4c74dcb0d9f112fa8b9'
+            '2d999f280775a20a289b62191a54b1a5f2c1c3ba3cf273148a49138e1c29a169'
             'cb1fbdb2f11eceaaa73fd7ce5a6a0866554e1d87014170290be58b8c97b9e09b')
 
 build() {
@@ -25,7 +25,6 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   export CGO_ENABLED=0
   go build -buildvcs=false -o "${pkgname}" "./cmd/${pkgname}"
-  go build -buildvcs=false -o sysc-plugin-weather ./cmd/sysc-plugin-weather
 }
 
 package() {
@@ -43,8 +42,6 @@ package() {
   install -Dm644 internal/render/icons/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/icons-MIT"
   install -Dm644 internal/render/icons/material/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/material-Apache-2.0"
   install -Dm644 "$(go list -m -f '{{.Dir}}' github.com/Nomadcxx/sysc-launch)/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/sysc-launch-GPL-3.0"
-  install -Dm644 plugins/reference/weather/manifest.json "${pkgdir}/usr/share/sysc-shell/plugins/org.sysc.weather/manifest.json"
-  install -Dm755 sysc-plugin-weather "${pkgdir}/usr/share/sysc-shell/plugins/org.sysc.weather/bin/sysc-plugin-weather"
   install -Dm644 "${srcdir}/config.example.json" "${pkgdir}/usr/share/doc/${pkgname}/config.example.json"
   install -Dm644 "${srcdir}/first-run.md" "${pkgdir}/usr/share/doc/${pkgname}/first-run.md"
   install -Dm644 "${srcdir}/niri-bindings.kdl" "${pkgdir}/usr/share/doc/${pkgname}/niri-bindings.kdl"

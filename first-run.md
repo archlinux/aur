@@ -2,8 +2,9 @@
 
 Full documentation: https://nomadcxx.github.io/sysc/docs/
 
-Start Niri with `niri-session` (or your display manager), so the systemd user
-manager has `NIRI_SOCKET`, `WAYLAND_DISPLAY` and an active graphical session.
+Start a sysc-compositor or Niri session from your display manager (or run
+`niri-session`), so the systemd user manager has `NIRI_SOCKET`, `WAYLAND_DISPLAY`
+and an active graphical session. The shell works with either compositor.
 Run the commands below as your normal user inside that session.
 
 The packaged service creates a missing configuration with sysc-lock selected
@@ -23,7 +24,8 @@ For an existing configuration, choose sysc-lock in Settings or merge the
 settings. Choose idle locking explicitly in Settings; the example sets no timeout.
 
 Stop your existing bar and notification daemon and remove their startup entries
-before starting the shell. Remove duplicate sysc-shell startup entries from Niri.
+before starting the shell. Remove duplicate sysc-shell startup entries (`spawn-at-startup`) from your
+compositor config.
 Then run:
 
 ```sh
@@ -36,8 +38,9 @@ before the shell. Clipboard persistence needs a running Secret Service provider,
 such as gnome-keyring or KeePassXC, or a configured `--key-file`. Starting the lock
 owner does not lock the screen. sysc-lock uses the existing PAM `login` stack.
 
-Merge the bindings in `/usr/share/doc/sysc-shell/niri-bindings.kdl` into your Niri
-config's existing `binds` block. Click the clock to open the control centre.
+Merge the bindings in `/usr/share/doc/sysc-shell/niri-bindings.kdl` into the
+existing `binds` block of your compositor config: `~/.config/sysc-compositor/config.kdl`
+or Niri's `~/.config/niri/config.kdl`. Both read the same KDL. Click the clock to open the control centre.
 Configure weather location, theme, wallpapers and plugins in Settings. The shell
 starts with its built-in bar and theme when no config exists. Install
 sysc-terminal for animated wallpaper, or swaybg/gSlapper for image/video wallpaper.
