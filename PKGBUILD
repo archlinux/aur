@@ -10,7 +10,7 @@ pkgname=mimo-desktop-bin
 # Version from the deb control archive. A Debian revision is part of the
 # upstream release when present ("26.1107.70703-211"); Arch spells "-" as "_".
 pkgver=26.1116.161705
-pkgrel=2
+pkgrel=5
 # CDN file names omit the Debian revision.
 _srcver=26.1116.161705
 _appdir='Xiaomi MiMo'
@@ -34,7 +34,7 @@ depends=(
   'xdg-utils'
 )
 optdepends=('libappindicator-gtk3: tray icon support')
-makedepends=('gcc' 'imagemagick' 'libarchive')
+makedepends=('gcc' 'imagemagick' 'libarchive' 'ttf-dejavu')
 install="${pkgname}.install"
 conflicts=('mimo-desktop')
 provides=("mimo-desktop=${pkgver}")
@@ -59,6 +59,28 @@ build() {
     "${srcdir}/envguard.c"
 }
 
+# 上游国内版与国际版共用同一张 logo；国内版右下角合成 CN 角标以便区分。
+_badge_icon() {
+  local src="$1" dst="$2" size="$3" label="${4:-CN}" bg="${5:-#C8102E}"
+  local bw pad ring pointsize tmp
+  bw=$(( size * 30 / 100 )); [ "$bw" -lt 7 ] && bw=7
+  pad=$(( size * 5 / 100 )); [ "$pad" -lt 1 ] && pad=1
+  ring=$(( bw / 12 )); [ "$ring" -lt 1 ] && ring=1
+  pointsize=$(( bw * 45 / 100 )); [ "${#label}" -ge 4 ] && pointsize=$(( bw * 27 / 100 ))
+  [ "$pointsize" -lt 4 ] && pointsize=4
+  tmp="$(mktemp --suffix=.png)"
+  install -dm755 "$(dirname "${dst}")"
+  magick -size "${bw}x${bw}" xc:none \
+    -fill white -draw "circle $(( bw / 2 )),$(( bw / 2 )) $(( bw / 2 )),0" \
+    -fill "${bg}" -draw "circle $(( bw / 2 )),$(( bw / 2 )) $(( bw / 2 )),${ring}" \
+    -gravity center -font DejaVu-Sans-Bold -pointsize "${pointsize}" \
+    -fill white -annotate +0+0 "${label}" "${tmp}" || return 1
+  install -dm755 "$(dirname "${dst}")"
+  magick "${src}" -resize "${size}x${size}" \
+    "${tmp}" -gravity southeast -geometry "+${pad}+${pad}" -composite "${dst}"
+  rm -f "${tmp}"
+}
+
 package() {
   local _extractdir _icon _size
   _extractdir="$(mktemp -d)"
@@ -80,13 +102,11 @@ package() {
   # usual sizes finds nothing and falls back to a missing icon. Derive the
   # indexed sizes from the source image and keep the original as well.
   _icon="${_extractdir}/usr/share/icons/hicolor/1024x1024/apps/xiaomi-mimo-desktop.png"
-  install -Dm644 "${_icon}" \
-    "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
+  _badge_icon "${_icon}" \
+    "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png" 1024
   for _size in 512 256 128 64 48 32 24 16; do
-    magick "${_icon}" -strip -resize "${_size}x${_size}" \
-      "${_extractdir}/icon-${_size}.png"
-    install -Dm644 "${_extractdir}/icon-${_size}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png"
+    _badge_icon "${_icon}" \
+      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png" "${_size}"
   done
 
   # Keep upstream's desktop file name: it is what the app declares as
