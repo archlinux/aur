@@ -6,7 +6,7 @@
 # login manager needs a small patch to support Kenning's face sign-in option.
 pkgbase=kenning
 pkgname=(kenning plasma-login-manager-kenning)
-pkgver=0.8.1
+pkgver=1.0.0
 _plmver=6.8.2
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -24,7 +24,7 @@ source=("kenning-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         https://download.kde.org/stable/plasma/$_plmver/plasma-login-manager-$_plmver.tar.xz{,.sig}
         https://github.com/opencv/opencv_zoo/raw/f12e12798e8314f7c074a6656816c048dcc95b7a/models/face_detection_yunet/face_detection_yunet_2023mar.onnx
         https://github.com/opencv/opencv_zoo/raw/ba91a3b91d00d76e86540d4013f944bd6b514e39/models/face_recognition_sface/face_recognition_sface_2021dec.onnx)
-sha256sums=('ed424ec2da6fbec41a3f9e2fe7c1da52255110739ad3fa7f06bf5e04e37dae19'
+sha256sums=('17d87d0dc09a4bd0674943b801b260cf4f9ba8420834aaef140062212191a564'
             '4a6e2b65b5d462fcf43b2a5be3c3e6244f479451b6dcfa00dcbf33fbc5cd093a'
             'SKIP'
             '8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4'
