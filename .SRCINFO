@@ -1,15 +1,16 @@
 pkgbase = fence
 	pkgdesc = Lightweight, container-free sandbox for running untrusted commands
-	pkgver = 0.1.61
+	pkgver = 0.1.67
 	pkgrel = 1
-	url = https://github.com/Use-Tusk/fence
+	url = https://github.com/fencesandbox/fence
 	arch = x86_64
 	license = Apache-2.0
+	checkdepends = socat
 	makedepends = go
 	depends = bubblewrap
 	depends = socat
 	optdepends = bpftrace: filesystem violation visibility when monitoring with -m
-	source = fence-0.1.61.tar.gz::https://github.com/Use-Tusk/fence/archive/refs/tags/v0.1.61.tar.gz
-	sha256sums = 4df2107171de9c420252c5fc9876887238b49d46fa474fdc1e15522b4036a949
+	source = fence-0.1.67.tar.gz::https://github.com/fencesandbox/fence/archive/refs/tags/v0.1.67.tar.gz
+	sha256sums = f2e55bd108816d224f45b3115e0c8feba2cb1a92055f0ebf7839f82b87a84f35
 
 pkgname = fence
