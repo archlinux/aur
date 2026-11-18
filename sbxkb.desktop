@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=sbxkb
+Comment=Show and switch the X11 keyboard layout in the system tray
+Exec=sbxkb
+TryExec=sbxkb
+Icon=input-keyboard
+Terminal=false
+StartupNotify=false
