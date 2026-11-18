@@ -1,10 +1,10 @@
 # Maintainer: ShibbityShwab
-# Contributor: LightSpeed Contributors
+# Contributor: ShibbityShwab
 
 # Prebuilt ("-bin") AUR package for LightSpeed, the zero-cost global network
 # optimizer for multiplayer games: https://github.com/ShibbityShwab/lightspeed
 #
-# Downloads the cargo-dist release tarballs from GitHub Releases (v1.11.0):
+# Downloads the cargo-dist release tarballs from GitHub Releases (v1.11.1):
 #   - lightspeed       : CLI client  (x86_64 and aarch64)
 #   - lightspeed-gui   : egui tray GUI (x86_64 only - upstream publishes no
 #                        aarch64-unknown-linux-gnu build of the GUI)
@@ -23,12 +23,12 @@
 # push it to the AUR. See README.md.
 
 pkgname=lightspeed-bin
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Zero-cost global network optimizer for multiplayer games - prebuilt LightSpeed CLI client and x86_64 GUI tray app"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ShibbityShwab/lightspeed"
-license=('custom:LightSpeed-NC-1.0')
+license=('custom:LightSpeed-NC-1.1')
 depends=()
 options=('!strip')  # keep upstream cargo-dist artifacts byte-identical (Sigstore attestations)
 
@@ -43,14 +43,14 @@ source_aarch64=(
   "https://github.com/ShibbityShwab/lightspeed/releases/download/v${pkgver}/lightspeed-client-aarch64-unknown-linux-gnu.tar.xz"
 )
 
-# sha256 of the v1.11.0 release assets, checked against the published
-# release digests on 2026-11-17 (see README.md "Local verification").
+# sha256 of the v1.11.1 release assets, checked against the published
+# release digests on 2026-11-18 (see README.md "Local verification").
 sha256sums_x86_64=(
-  'd77cb662c5b39610eb6b63b8866a223093053e378bba02ba4f27ebda2b3f3307'
-  '86bf64593fa39790b595611933089c762b725431427495b38dbc1ae21974affc'
+  'ae0fd50a33df177f48dc098af017b75107db165ff1b1ef23289d333b011299ad'
+  '8d2b26d55f489a77b6f0b87f82c83f0f6a7430509207962942106408af6fd1d7'
 )
 sha256sums_aarch64=(
-  '85183d651b3f2a1e326e184360e1d263c560bb678059d55a8e959e32721b43fe'
+  '36a823484a243d8720c2419bed7f38a66d595821f69fc21edb808b35444be08b'
 )
 
 package() {
