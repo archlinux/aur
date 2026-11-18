@@ -1,6 +1,6 @@
 # Maintainer: Ben Davison <benjdavison02@gmail.com>
 pkgname=gtkittorrent
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Modern GTK4 and Libadwaita frontend for qBittorrent"
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('b6f1695baccff23b6cb43c617ad570875165a95481b8b7c89ca1676b6001720d')
+sha256sums=('a39d0d7fe35b47fbbcb91cd75db12aeea72bad54c84ff207774f2433969c6c9d')
 
 build() {
     arch-meson "$pkgname-$pkgver" build
