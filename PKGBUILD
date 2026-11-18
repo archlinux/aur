@@ -2,7 +2,7 @@
 # Upstream: TIANLI0 <wutianli@tianli0.top>
 
 pkgname=thrm-bin
-pkgver=3.8.2
+pkgver=3.9.0
 pkgrel=1
 pkgdesc='Flydigi BS-series laptop cooler controller (prebuilt)'
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/TIANLI0/THRM/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '710fb94740e5d5d6b79f5f1516a60f2315d61eafdb360bf0fd3ebe54085323da'
+  '62d326848711835b8e31123ec8512ed4933dbba830335dc8367a6c32fd39ebec'
   '4144920f63b10e483bcf5f69094e8ccfc1af01f76836d6785ceca3ee66e4bb28'
   'bb4f94dbe3dcfdc66e27d35cae627a73c9e8f66ec792971e569d272893b08ac6'
 )
@@ -45,6 +45,7 @@ prepare() {
 package() {
   install -Dm755 "${srcdir}/thrm" "${pkgdir}/usr/bin/thrm"
   install -Dm755 "${srcdir}/thrm-core" "${pkgdir}/usr/bin/thrm-core"
+  install -Dm755 "${srcdir}/thrm-rapl-helper" "${pkgdir}/usr/bin/thrm-rapl-helper"
   install -Dm644 "${srcdir}/99-flydigi-fan.rules" \
     "${pkgdir}/usr/lib/udev/rules.d/99-flydigi-fan.rules"
   install -Dm644 "${srcdir}/thrm.desktop" \
