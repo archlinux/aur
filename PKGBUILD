@@ -1,8 +1,8 @@
 # Maintainer: MeoArch <https://github.com/QwQdoge>
-_srcdir=MeoUI-73eb4ba590a0bb52e242f69f8dffc8c64c9d4f9e
+_srcdir=MeoUI-bddc93eac71f5d783f0593362a9b1d9edcb02600
 pkgname=meoui-qml-beta
 pkgver=1.0.4beta3
-pkgrel=6
+pkgrel=7
 pkgdesc="MeoUI Qt Quick Material Design 3 component library (Beta channel)"
 arch=('x86_64')
 conflicts=('meoui-qml')
@@ -14,12 +14,12 @@ makedepends=('cmake' 'ninja' 'qt6-tools' 'qt6-shadertools')
 # The reviewed minimal train does not publish implicit split debug packages.
 # MeoKDE's application style links the exported meoui_tokens CMake target.
 options=('!debug' 'staticlibs')
-source=('MeoUI-73eb4ba590a0bb52e242f69f8dffc8c64c9d4f9e.tar.gz::https://codeload.github.com/QwQdoge/MeoUI/tar.gz/73eb4ba590a0bb52e242f69f8dffc8c64c9d4f9e'
+source=('MeoUI-bddc93eac71f5d783f0593362a9b1d9edcb02600.tar.gz::https://codeload.github.com/QwQdoge/MeoUI/tar.gz/bddc93eac71f5d783f0593362a9b1d9edcb02600'
         'Apache-2.0.txt'
         'DankMaterialShell-MIT.txt'
         'OFL-Comfortaa.txt'
         'OFL-Roboto.txt')
-sha256sums=('0ae19332e46aba4b6c247e2d540310136d9d5594211d8621cd6dfa485a06085a'
+sha256sums=('c0e38bb4440f4c4931195597aa16af95fc1090a9c81bb55f90d27e429dc1726a'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
             '4cee96286c5b7da9763a4694868bb1853b33bb1558821e0c609ad2eabd426bfa'
             '25bddd6b7f7e5973b6ada98fd6c9b9f01d947948a935e5f80480eda24ddcd515'
