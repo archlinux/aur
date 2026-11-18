@@ -1,0 +1,15 @@
+pkgbase = func-e
+	pkgdesc = Download and run Envoy proxy versions
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/tetratelabs/func-e
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	conflicts = func-e-bin
+	source = func-e-1.6.0.tar.gz::https://github.com/tetratelabs/func-e/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = 98982018669fe59b2216d43cafac3760bbad346cec93b329d8943f56268b6446
+
+pkgname = func-e
