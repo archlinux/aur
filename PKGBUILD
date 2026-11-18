@@ -19,7 +19,7 @@ source_x86_64=("$_pkgname-x86_64-$pkgver.zip::https://image.lceda.cn/files/lceda
 source_aarch64=("$_pkgname-aarch64-$pkgver.zip::https://image.lceda.cn/files/lceda-pro-linux-arm64-$pkgver.zip")
 sha256sums=('afba3c6712227a37c08783b3cc1a97ae71e90dc2f575409213d2773372220697')
 sha256sums_x86_64=('e95a3a1f0db9e12e189225966b971b73cbe7e65dc32d14a6287854ff94dab4b0')
-sha256sums_aarch64=('2af3ca7abc297b5bcc3af83cfd27d65b06008cbc99e6f75ac15b13c44fd7b925')
+sha256sums_aarch64=('be4f7058939f5be0acd0c9802b0432d5d05e89d9d1b905c072f9cc0f3d2b4826')
 
 prepare() {
     curl -sSfL -o "LICENSE-$pkgver.html" "https://lceda.cn/page/legal"
