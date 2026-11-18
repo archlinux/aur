@@ -23,9 +23,9 @@ optdepends=(
 provides=("oh-my-pi")
 conflicts=("oh-my-pi")
 options=('!strip')
-source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/can1357/oh-my-pi/v${pkgver}/LICENSE")
-source_x86_64=("omp-${pkgver}::https://github.com/can1357/oh-my-pi/releases/download/v${pkgver}/omp-linux-x64")
-source_aarch64=("omp-${pkgver}::https://github.com/can1357/oh-my-pi/releases/download/v${pkgver}/omp-linux-arm64")
+source=("LICENSE-${pkgver}-${pkgrel}::https://raw.githubusercontent.com/can1357/oh-my-pi/v${pkgver}/LICENSE")
+source_x86_64=("omp-${pkgver}-${pkgrel}::https://github.com/can1357/oh-my-pi/releases/download/v${pkgver}/omp-linux-x64")
+source_aarch64=("omp-${pkgver}-${pkgrel}::https://github.com/can1357/oh-my-pi/releases/download/v${pkgver}/omp-linux-arm64")
 sha256sums=('16c45f9d667442781f03fa198914cc39abcaa48ec5ed8f644643e554ca2fbf63')
 sha256sums_x86_64=('ba2d380bc54a6f175a314b49d2f45e82d45e469274362969afbadf2d65423fd6')
 sha256sums_aarch64=('c65dd594ba33efd53274fa3b766bd31f67c070717fac12f9e604d2b5b5469bf9')
@@ -51,7 +51,7 @@ _install_completions() {
 }
 
 package() {
-    install -Dm755 "${srcdir}/omp-${pkgver}" "${pkgdir}/usr/bin/omp"
+    install -Dm755 "${srcdir}/omp-${pkgver}-${pkgrel}" "${pkgdir}/usr/bin/omp"
     _install_completions "${pkgdir}/usr/bin/omp"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}-${pkgrel}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
