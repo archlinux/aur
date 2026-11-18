@@ -1,15 +1,16 @@
 # Maintainer: Remy Huang <me@remya.top>
 pkgname=remya-settings-git
 _app_id=remya_settings
-_upstream_ver=0.1.0-dev.20261114.0
-pkgver=0.1.0_dev.20261114.0.r134.g246b906
+_upstream_ver=0.1.0-dev.20261118.0
+_core_ver=0.2.0
+pkgver=0.1.0_dev.20261118.0.r140.g5c3cae9
 pkgrel=1
 pkgdesc="A Material Design 3 Expressive system settings application for Hyprland on Linux (git)"
 arch=('x86_64')
 url="https://github.com/remyhuang03/remya-settings"
 license=('LicenseRef-PolyForm-Noncommercial-1.0.0')
 depends=(
-  'remya-core'
+  'remya-core>=0.2.0'
   'gtk3'
   'gstreamer'
   'gst-plugins-base-libs'
@@ -28,7 +29,7 @@ makedepends=(
 provides=('remya-settings')
 conflicts=('remya-settings' 'remya-settings-bin')
 options=('!strip' '!lto')
-source=("git+${url}.git" "git+https://github.com/remyhuang03/remya-core.git#tag=v0.1.0")
+source=("git+${url}.git" "git+https://github.com/remyhuang03/remya-core.git#tag=v${_core_ver}")
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
@@ -67,6 +68,6 @@ package() {
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "assets/licenses/rust-dependencies.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/rust-dependencies.txt"
-  install -Dm644 "assets/licenses/croppy-kiwi.txt" \
+  install -Dm644 "build/linux/x64/release/bundle/data/flutter_assets/packages/remya_ui/assets/licenses/croppy-kiwi.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/croppy-kiwi.txt"
 }
