@@ -1,0 +1,15 @@
+pkgbase = xpflasher
+	pkgdesc = A command-line tool for flashing Sony Xperia devices using firmware files downloaded with XperiFirm
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/paypur/xpflasher
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	source = git+https://github.com/paypur/xpflasher.git#tag=v0.1.0
+	sha256sums = 5a5c94682f10738402a0262a27c6e3b62682ace82ea786285184849feb911e0b
+
+pkgname = xpflasher
