@@ -4,7 +4,7 @@
 
 pkgname="cargo-leptos-bin"
 pkgdesc="Build tool for the Rust framework Leptos (pre-built binary)"
-pkgver=0.3.7
+pkgver=0.3.11
 pkgrel=1
 arch=("x86_64" "aarch64")
 url="https://github.com/leptos-rs/cargo-leptos"
@@ -16,8 +16,8 @@ options=(!debug)
 
 source_x86_64=("${_ghurl}/releases/download/v${pkgver}/cargo-leptos-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_ghurl}/releases/download/v${pkgver}/cargo-leptos-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=("fda80f4845e92d0e8f5ec13cf1a46982ba7a518ae01182e7e4201312944bc05d")
-sha256sums_aarch64=("70e0c1cdf47f3c26c90ab4a020f8fcd9206233cc34b321c1aa37f7a554aa3bad")
+sha256sums_x86_64=("1c9cf0e1e3ffae6c8b58d29281d949dab560cea613b80d361f323f93071df7c8")
+sha256sums_aarch64=("8aa36d841d69fb62fa00a3e0d8670a52dc16a9a94c2c6f96c545d889c49f18aa")
 
 depends=('cargo' 'cargo-generate' 'binaryen')
 optdepends=(
