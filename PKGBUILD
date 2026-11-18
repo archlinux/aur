@@ -2,10 +2,10 @@
 # Checksums: ./packaging/refresh-checksums.sh vX.Y.Z
 pkgname=i2pchat-tui-bin
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="P2P (peer-to-peer) chat client over I2P network (TUI version)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/MetanoicArmor/I2PChat-ng"
+url="https://github.com/MetanoicArmor/I2PChat"
 license=('AGPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'zlib')
 provides=('i2pchat-tui')
@@ -34,7 +34,7 @@ package() {
 [Desktop Entry]
 Type=Application
 Name=I2P Chat (TUI)
-Comment=P2P chat over I2P (terminal)
+Comment=P2P chat over I2P
 Exec=i2pchat-tui
 Icon=i2pchat-tui
 Terminal=true
