@@ -1,7 +1,7 @@
 pkgbase = epsxe-appimage
 	pkgdesc = ePSXe PS1 emulator for 64-bit Linux (self-built AppImage)
 	pkgver = 2.0.5
-	pkgrel = 12
+	pkgrel = 13
 	url = https://github.com/Twilight0/epsxe-appimage
 	arch = x86_64
 	license = unknown
@@ -13,7 +13,7 @@ pkgbase = epsxe-appimage
 	conflicts = epsxe-git
 	options = !strip
 	options = !debug
-	source = ePSXe-2.0.5-12-x86_64.AppImage::https://github.com/Twilight0/epsxe-appimage/releases/download/v2.0.5-12/ePSXe-2.0.5-12-x86_64.AppImage
-	sha256sums = e089ffe19a424db9dbea25ebc303f99c30c4432891ca93ad9da3c27276584fa7
+	source = ePSXe-2.0.5-13-x86_64.AppImage::https://github.com/Twilight0/epsxe-appimage/releases/download/v2.0.5-13/ePSXe-2.0.5-13-x86_64.AppImage
+	sha256sums = 211bc0a8a738094a67e3def91f418e090d0a863b5366086288f990769965e168
 
 pkgname = epsxe-appimage
