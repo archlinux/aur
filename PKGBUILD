@@ -2,7 +2,7 @@
 
 pkgname=prime-agent-bin
 _pkgname=prime-agent
-pkgver=0.10.4
+pkgver=0.10.5
 pkgrel=1
 pkgdesc='Self-improving RLM agent for coding workflows and long-running autonomous tasks'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$_rel/$_pkgname-$pkgver-linux-x
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$_rel/$_pkgname-$pkgver-linux-arm64.tar.gz")
 # The archive has no top-level directory; it is unpacked straight into the payload dir.
 noextract=("$_pkgname-$pkgver-x86_64.tar.gz" "$_pkgname-$pkgver-aarch64.tar.gz")
-sha256sums_x86_64=('cecf29b7057c2a876e2eca7355c9947b87ec5d84b4d2c71c373d69f0386c6f43')
-sha256sums_aarch64=('279fe439dccc2374b40e20a8b852a16294f8032991c28207a8ff07e698143d62')
+sha256sums_x86_64=('b9f653f4c32e83a2270f0b52edea6a72c7bdbd1f7b5c3e64c55e75157094f3b3')
+sha256sums_aarch64=('8ddee5f1ed1a4443829944117509212f1294abbf0cbed22765f8a6efefaa2516')
 
 package() {
     # The binary looks for prime-agent-runtime/, skills/ and its assets next to itself
