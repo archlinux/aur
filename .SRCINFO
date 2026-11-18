@@ -1,6 +1,6 @@
 pkgbase = terrascope-git
 	pkgdesc = Braille-rendered terminal world map with live weather and aircraft (git)
-	pkgver = 0.3.0.r0.ga904987
+	pkgver = 1.0.0.r2.g0a68b35
 	pkgrel = 1
 	url = https://github.com/a-shygun/terrascope
 	arch = any

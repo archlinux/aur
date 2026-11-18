@@ -1,7 +1,7 @@
 # Maintainer: 9M2PJU <9m2pju@gmail.com>
 # Contributor: Amir Shygun <a-shygun@users.noreply.github.com>
 pkgname=terrascope-git
-pkgver=0.3.0.r0.ga904987
+pkgver=1.0.0.r2.g0a68b35
 pkgrel=1
 pkgdesc="Braille-rendered terminal world map with live weather and aircraft (git)"
 arch=('any')
