@@ -1,0 +1,14 @@
+pkgbase = pit
+	pkgdesc = Work with a directory tree of several git repositories as if it were one
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = https://github.com/patrickbergner/pit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = git
+	source = pit-2.10.0.tar.gz::https://github.com/patrickbergner/pit/archive/refs/tags/v2.10.0.tar.gz
+	sha256sums = e29d5c2edcd3c7b7c69ed2aee861a6132f5c5471f655d6f698f643f30a220085
+
+pkgname = pit
