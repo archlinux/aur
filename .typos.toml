@@ -29,6 +29,7 @@ EnumHumanizeWithCustomDescriptionPropertyNamesTests = "EnumHumanizeWithCustomDes
 PSScriptAnalyzer = "PSScriptAnalyzer"
 RandomizedDelaySec = "RandomizedDelaySec"
 ScriptAnalyzer = "ScriptAnalyzer"
+TEST_NGINX_RANDOMIZE = "TEST_NGINX_RANDOMIZE"
 TypeCatalogGen = "TypeCatalogGen"
 dota = "dota"
 packageid = "packageid"
