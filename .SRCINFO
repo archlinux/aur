@@ -1,6 +1,6 @@
 pkgbase = kopuz-nightly-bin
 	pkgdesc = A modern music player, built nightly from the latest development code (pre-built binary)
-	pkgver = 0.68.0_nightly.20261117
+	pkgver = 0.68.0_nightly.20261118
 	pkgrel = 1
 	url = https://github.com/Kopuz-org/kopuz
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = kopuz-nightly-bin
 	provides = kopuzd-nightly
 	provides = kopuzctl-nightly
 	conflicts = kopuz-nightly
-	source = kopuz-nightly-0.68.0_nightly.20261117-1.deb::https://github.com/Kopuz-org/kopuz/releases/download/v0.68.0-nightly.20261117/kopuz-nightly_0.68.0-nightly.20261117_amd64.deb
-	sha256sums = f31b4d92442b409493cb9d53fd6c270e2b10d6a492e48d8ad08db476df136661
+	source = kopuz-nightly-0.68.0_nightly.20261118-1.deb::https://github.com/Kopuz-org/kopuz/releases/download/v0.68.0-nightly.20261118/kopuz-nightly_0.68.0-nightly.20261118_amd64.deb
+	sha256sums = 85a1df792d03b5ee248865b2754070cb3c1c2b458f5120c897a097f062a8fd18
 
 pkgname = kopuz-nightly-bin
