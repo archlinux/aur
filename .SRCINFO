@@ -1,16 +1,16 @@
 pkgbase = darkubectl-bin
 	pkgdesc = kubectl-like access to the Hamravesh Darkube platform
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/rahacloud/darkubectl
 	license = GPL-3.0-only
 	conflicts = darkubectl
 	provides = darkubectl
 	arch = aarch64
-	source_aarch64 = darkubectl-bin_0.14.0_aarch64.tar.gz::https://github.com/rahacloud/darkubectl/releases/download/v0.14.0/darkubectl_0.14.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0510cdec8bd772f37f819e368203cef3c774e73040d7d9ef14ffb8aa6523d989
+	source_aarch64 = darkubectl-bin_0.15.0_aarch64.tar.gz::https://github.com/rahacloud/darkubectl/releases/download/v0.15.0/darkubectl_0.15.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = fa9209a070706f9d68867b05ae8d233298f8bde785be3472596978e4a47aba5e
 	arch = x86_64
-	source_x86_64 = darkubectl-bin_0.14.0_x86_64.tar.gz::https://github.com/rahacloud/darkubectl/releases/download/v0.14.0/darkubectl_0.14.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 122f12b03d424e2ff737e0664401806dee74de2127a42c2a9e0452b00d2a0a42
+	source_x86_64 = darkubectl-bin_0.15.0_x86_64.tar.gz::https://github.com/rahacloud/darkubectl/releases/download/v0.15.0/darkubectl_0.15.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d46a45fea745f0a89a49a5314ce43c7d5308a674f9c9af24bd9dfa94a8ff0591
 	
 pkgname = darkubectl-bin
