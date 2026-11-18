@@ -1,0 +1,19 @@
+pkgbase = pareto-ai-desktop-bin
+	pkgdesc = Pareto AI: local AI model router with a spend and quality console (desktop app with system tray and gateway, prebuilt)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/mohamadkhani/pareto-ai
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	provides = pareto-ai-desktop
+	conflicts = pareto-ai-desktop
+	conflicts = pareto-ai
+	conflicts = pareto-ai-bin
+	source_x86_64 = https://github.com/mohamadkhani/pareto-ai/releases/download/v0.1.2/pareto-ai-desktop-v0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	b2sums_x86_64 = 28dd425b255518424691fa93d043b81bcd63b2b53ca265a7497a3f5f405b0514601a335ae6d3353d967c0818f7a5e5e80db0748a15f2f80697300bb7e06f46fd
+
+pkgname = pareto-ai-desktop-bin
