@@ -1,6 +1,6 @@
 pkgbase = fatou-bin
 	pkgdesc = A language server, formatter, and linter for Julia
-	pkgver = 0.26.1
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://github.com/jolars/fatou
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = fatou-bin
 	provides = fatou
 	conflicts = fatou
 	options = !strip
-	source_x86_64 = fatou-0.26.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jolars/fatou/releases/download/v0.26.1/fatou-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = a53c468022dfd8124badfdb8bb6ca6dab8037d0178cb45115cd4505e3ad0706e
-	source_aarch64 = fatou-0.26.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/jolars/fatou/releases/download/v0.26.1/fatou-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 62daba78ba7e17dec6cc325132eb271eeb509d6ccacfcad31ec8bd5433e4c4af
+	source_x86_64 = fatou-0.27.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jolars/fatou/releases/download/v0.27.0/fatou-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d4b4dc057809bb0af5bb2ac7aff126e7b2d4213364776def8a385b0a22ab6ff6
+	source_aarch64 = fatou-0.27.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/jolars/fatou/releases/download/v0.27.0/fatou-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9e92f25b082f8807d332de76708d56689c523f11a9f4a06c273222ab8cca2162
 
 pkgname = fatou-bin
