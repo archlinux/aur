@@ -1,0 +1,22 @@
+pkgbase = bond-bin
+	pkgdesc = Encrypted, quantum-safe and repairable backups for storage you have no reason to trust
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/patrickbergner/bond
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = LGPL-2.1-or-later
+	license = BSD-3-Clause
+	license = BSD-2-Clause
+	license = LicenseRef-unRAR
+	provides = bond=2.2.0
+	conflicts = bond
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/patrickbergner/bond/releases/download/v2.2.0/bond-2.2.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1be75a2f9471f5fa46243739f0595143c6ad2333b57b8f034beeb7b75ef9ce4e
+	source_aarch64 = https://github.com/patrickbergner/bond/releases/download/v2.2.0/bond-2.2.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9af836c9cb547378116f658e73cbebd036011103c7bcda86c62dc4f645f73dbb
+
+pkgname = bond-bin
