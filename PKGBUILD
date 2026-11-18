@@ -2,7 +2,7 @@
 
 pkgbase=vrgb
 pkgname=(vrgb vrgb-gui)
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="RGB keyboard backlight control for ASUS Vivobook S14/S16 laptops (ITE5570 HID LampArray)"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://github.com/vrgb-dev/vrgb"
 license=(MIT)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b5c89277344b3ee9fd4c5c75f2db479404d2024a996e2e542f11a3342814d1f1')
+sha256sums=('d079a5adbb366296bc6f03ab60f7a882cae2cc92253c5f07df40d856f015ba71')
 
 prepare() {
   cd "$pkgbase-$pkgver"
