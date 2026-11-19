@@ -10,6 +10,7 @@ pkgbase = proton-drive-for-linux-git
 	makedepends = git
 	makedepends = gettext
 	depends = fuse3
+	depends = polkit
 	depends = gtk4
 	depends = libadwaita
 	depends = webkitgtk-6.0

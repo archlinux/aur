@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://proton-drive.narl.io"
 _repo="https://github.com/narrrl/proton-drive-linux"
 license=('MIT')
-depends=('fuse3' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'dbus' 'gcc-libs' 'glibc'
+depends=('fuse3' 'polkit' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'dbus' 'gcc-libs' 'glibc'
          'hicolor-icon-theme')
 makedepends=('cargo' 'git' 'gettext')
 optdepends=('perl-image-exiftool: thumbnails for camera RAW files'
@@ -77,6 +77,9 @@ package() {
   # systemd user unit for the auto-mount daemon; enabled per user, not by pacman.
   install -Dm644 packaging/proton-drive.service \
     "$pkgdir/usr/lib/systemd/user/proton-drive.service"
+
+  install -Dm644 "packaging/io.narl.proton-drive-linux.policy" \
+    "$pkgdir/usr/share/polkit-1/actions/io.narl.proton-drive-linux.policy"
 
   # Translations: compiled from po/ into /usr/share/locale.
   po/build.sh "$pkgdir/usr/share/locale"
