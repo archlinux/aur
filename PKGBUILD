@@ -1,18 +1,18 @@
 # Maintainer: mcp-cpp-sdk maintainers <releases@users.noreply.github.com>
 pkgbase=mcp-cpp-sdk
 pkgname=('mcp-cpp-sdk' 'mcp-cpp-sdk-static')
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Model Context Protocol C++ SDK'
 arch=('x86_64')
 url='https://github.com/yurirocha15/mcp-cpp-sdk'
-license=('Apache-2.0')
+license=('Apache-2.0' 'BSL-1.0')
 options=('!debug' 'staticlibs')
 depends=('boost>=1.74' 'nlohmann-json>=3.10.5' 'openssl>=3.0')
 makedepends=('cmake>=3.20' 'gtest' 'ninja' 'python')
-source=("mcp-cpp-sdk-${pkgver}.tar.gz::https://github.com/yurirocha15/mcp-cpp-sdk/releases/download/v0.2.0/mcp-cpp-sdk-0.2.0.tar.gz"
-        "mcp-cpp-sdk-${pkgver}.tar.gz.asc::https://github.com/yurirocha15/mcp-cpp-sdk/releases/download/v0.2.0/mcp-cpp-sdk-0.2.0.tar.gz.asc")
-sha256sums=('f2a7b11e3fbb6ed6e67b649950a4d6d8a766cf71b59fe5bc795c1cdcd38868b4' 'SKIP')
+source=("mcp-cpp-sdk-${pkgver}.tar.gz::https://github.com/yurirocha15/mcp-cpp-sdk/releases/download/v0.3.0/mcp-cpp-sdk-0.3.0.tar.gz"
+        "mcp-cpp-sdk-${pkgver}.tar.gz.asc::https://github.com/yurirocha15/mcp-cpp-sdk/releases/download/v0.3.0/mcp-cpp-sdk-0.3.0.tar.gz.asc")
+sha256sums=('31ad6f5f63eb1b9101f0ecaac54db10021ecfec0b2fe85740a8172e0cc62dd20' 'SKIP')
 validpgpkeys=('32F4760A898CAA62344F81B078DDAF6A80105366')
 
 prepare() {

@@ -1,10 +1,11 @@
 pkgbase = mcp-cpp-sdk
 	pkgdesc = Model Context Protocol C++ SDK
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/yurirocha15/mcp-cpp-sdk
 	arch = x86_64
 	license = Apache-2.0
+	license = BSL-1.0
 	makedepends = cmake>=3.20
 	makedepends = gtest
 	makedepends = ninja
@@ -14,13 +15,13 @@ pkgbase = mcp-cpp-sdk
 	depends = openssl>=3.0
 	options = !debug
 	options = staticlibs
-	source = mcp-cpp-sdk-0.2.0.tar.gz::https://github.com/yurirocha15/mcp-cpp-sdk/releases/download/v0.2.0/mcp-cpp-sdk-0.2.0.tar.gz
-	source = mcp-cpp-sdk-0.2.0.tar.gz.asc::https://github.com/yurirocha15/mcp-cpp-sdk/releases/download/v0.2.0/mcp-cpp-sdk-0.2.0.tar.gz.asc
+	source = mcp-cpp-sdk-0.3.0.tar.gz::https://github.com/yurirocha15/mcp-cpp-sdk/releases/download/v0.3.0/mcp-cpp-sdk-0.3.0.tar.gz
+	source = mcp-cpp-sdk-0.3.0.tar.gz.asc::https://github.com/yurirocha15/mcp-cpp-sdk/releases/download/v0.3.0/mcp-cpp-sdk-0.3.0.tar.gz.asc
 	validpgpkeys = 32F4760A898CAA62344F81B078DDAF6A80105366
-	sha256sums = f2a7b11e3fbb6ed6e67b649950a4d6d8a766cf71b59fe5bc795c1cdcd38868b4
+	sha256sums = 31ad6f5f63eb1b9101f0ecaac54db10021ecfec0b2fe85740a8172e0cc62dd20
 	sha256sums = SKIP
 
 pkgname = mcp-cpp-sdk
 
 pkgname = mcp-cpp-sdk-static
-	depends = mcp-cpp-sdk=0.2.0-1
+	depends = mcp-cpp-sdk=0.3.0-1
