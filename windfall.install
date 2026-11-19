@@ -1,15 +1,12 @@
 post_install() {
-  # Start with the graphical session for every user. Each user can still switch the effect off for good with the
-  # tray's Display switch (or `windfallctl off`); that choice is remembered between sessions.
-  systemctl --global enable windfalld.service >/dev/null 2>&1 || true
-  echo "==> Windfall will start with your next Hyprland session. Start it now with: windfalld &"
-  echo "    Show/hide it any time from the tray icon (or: windfallctl toggle). The choice is remembered."
+  echo "==> Windfall is an app: launch it from your application menu (or run: windfall)."
+  echo "    It starts in the tray, and running it again opens the controller. It starts with your Hyprland session"
+  echo "    (XDG autostart; uwsm and dex honour it). Otherwise add one line to your Hyprland config:"
+  echo "        exec-once = windfall"
 }
 
 post_upgrade() {
-  systemctl --global enable windfalld.service >/dev/null 2>&1 || true
-}
-
-pre_remove() {
+  # Older versions ran Windfall as a systemd user service: remove that for good.
   systemctl --global disable windfalld.service >/dev/null 2>&1 || true
+  rm -f /etc/systemd/user/graphical-session.target.wants/windfalld.service
 }

@@ -1,6 +1,6 @@
 # Maintainer: tak0dan <200241398+tak0dan@users.noreply.github.com>
 pkgname=windfall
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Weather overlay for Hyprland: snow, leaves, petals and rain fall and pile up, flowers grow where they land (tray icon, GTK4 controller, pixel-art mode)"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('ttf-jetbrains-mono: pixel-theme font fallback'
 options=('!lto' '!debug')
 install=windfall.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2ed300c426671f45a1e7f93eb03a0d2fdb7a126216fea24dc1de789e3b59d705')
+sha256sums=('a2eac00543e874d5c12372e65c4a54264cb6e2604f44c799d8c93fe51ecbd55f')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -42,8 +42,9 @@ package() {
   done
   install -Dm644 packaging/windfall-controller.desktop "$pkgdir/usr/share/applications/io.github.tak0dan.Windfall.desktop"
   install -Dm644 packaging/windfall.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/windfall.svg"
-  install -Dm644 packaging/windfalld-autostart.desktop "$pkgdir/etc/xdg/autostart/windfalld.desktop"
-  install -Dm644 packaging/windfalld.service "$pkgdir/usr/lib/systemd/user/windfalld.service"
+  install -Dm644 packaging/windfall-app.desktop "$pkgdir/usr/share/applications/windfall.desktop"
+  install -Dm644 packaging/windfall-autostart.desktop "$pkgdir/etc/xdg/autostart/windfall.desktop"
+  ln -s windfalld "$pkgdir/usr/bin/windfall"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
