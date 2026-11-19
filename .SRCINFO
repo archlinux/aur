@@ -1,8 +1,8 @@
 pkgbase = python-compressed-tensors-git
 	pkgdesc = versatile and efficient way to store and manage compressed tensor data
-	pkgver = 0.14.0.r29.g91db5d7
+	pkgver = 0.20.1.r16.gd5f7e84
 	pkgrel = 1
-	url = https://github.com/neuralmagic/compressed-tensors
+	url = https://github.com/vllm-project/compressed-tensors
 	arch = any
 	license = Apache-2.0
 	makedepends = python-build
@@ -19,7 +19,7 @@ pkgbase = python-compressed-tensors-git
 	depends = python-transformers
 	provides = python-compressed-tensors
 	conflicts = python-compressed-tensors
-	source = git+https://github.com/neuralmagic/compressed-tensors
+	source = compressed-tensors-vllm::git+https://github.com/vllm-project/compressed-tensors
 	sha256sums = SKIP
 
 pkgname = python-compressed-tensors-git
