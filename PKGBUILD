@@ -4,7 +4,7 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=uq
-pkgver=0.3.12
+pkgver=0.3.15
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
 # The uq-hyprland-pin this release's config/hypr/base.lua is tested with: equal to
@@ -57,7 +57,7 @@ backup=(etc/pam.d/uq-greetd etc/pam.d/uq-greeter etc/pam.d/uq-lock etc/pam.d/uq-
 # (so its checksum) can change. The release workflow uploads exactly this file and prints its sum.
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
 # The release asset's sha256 for this tag; update it with pkgver at each release (docs/releasing.md).
-sha256sums=('7f40651fc106d0a7e820498062f67b292349709a9a81937807ebace3e31b49b5')
+sha256sums=('0e3910fc34dfed7ac2825329ab9254b7529da595949d8613aca6ced9650ec064')
 
 prepare() {
   cd "$srcdir/$pkgname-$_tag"
@@ -130,6 +130,10 @@ package() {
   install -Dm644 packaging/greeter/greeter.toml "$pkgdir/etc/uq/greeter.toml"
   install -Dm644 packaging/greeter/greetd-uq.conf "$pkgdir/usr/lib/systemd/system/greetd.service.d/uq.conf"
   install -Dm644 packaging/tmpfiles/uq-greeter.conf "$pkgdir/usr/lib/tmpfiles.d/uq-greeter.conf"
+  # The boot and shutdown banner (off until enabled: systemctl enable uq-banner-boot uq-banner-shutdown).
+  install -Dm755 packaging/banner/uq-banner "$pkgdir/usr/lib/uq/uq-banner"
+  install -Dm644 packaging/banner/uq-banner-boot.service "$pkgdir/usr/lib/systemd/system/uq-banner-boot.service"
+  install -Dm644 packaging/banner/uq-banner-shutdown.service "$pkgdir/usr/lib/systemd/system/uq-banner-shutdown.service"
   install -Dm755 target/release/uq-settings "$pkgdir/usr/bin/uq-settings"
   install -Dm644 packaging/org.uq.Settings.desktop "$pkgdir/usr/share/applications/org.uq.Settings.desktop"
   install -Dm644 packaging/dbus/org.uq.Settings1.service "$pkgdir/usr/share/dbus-1/services/org.uq.Settings1.service"
@@ -140,6 +144,7 @@ package() {
   install -Dm644 packaging/dbus/org.uq.SettingsHelper1.conf "$pkgdir/usr/share/dbus-1/system.d/org.uq.SettingsHelper1.conf"
   install -Dm644 packaging/uq-settings-helper.service "$pkgdir/usr/lib/systemd/system/uq-settings-helper.service"
   install -Dm644 packaging/polkit/org.uq.settings.policy "$pkgdir/usr/share/polkit-1/actions/org.uq.settings.policy"
+  install -Dm644 packaging/polkit/49-uq-greeter-theme.rules "$pkgdir/usr/share/polkit-1/rules.d/49-uq-greeter-theme.rules"
   # The helper's unit makes these writable only if they exist.
   install -dm755 "$pkgdir/etc/uq" "$pkgdir/etc/systemd/logind.conf.d"
   # Plugin settings pages are read from here (one directory per page); uQ ships only uqlip's.
