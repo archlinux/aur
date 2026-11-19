@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A fast Jupyter notebook TUI with vim keys, inline plots and rendered LaTeX"
 
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('2a6e9a4876cea2d33bd270e06ab8e2afbf669346047a8d1e84944f19cca8da54')
-sha256sums_aarch64=('e4d5c9a8e91cdbfd7a7305c91699be797caec0010cc76f1c5827eafc90dd94b5')
+sha256sums_x86_64=('002c96a77584942652b88019ffcee6f9f72c025656feb5f44a0937deef430943')
+sha256sums_aarch64=('5bd9f45b05d66148b403481416ba73e4833cef24213562813d9ffc6175760588')
 
 
 package() {

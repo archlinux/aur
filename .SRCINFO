@@ -1,6 +1,6 @@
 pkgbase = jotter-bin
 	pkgdesc = A fast Jupyter notebook TUI with vim keys, inline plots and rendered LaTeX
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/samox73/jotter
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = jotter-bin
 	provides = jotter
 	conflicts = jotter
 	options = !strip
-	source_x86_64 = jotter-x86_64-0.6.0.tgz::https://github.com/samox73/jotter/releases/download/v0.6.0/jotter-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 2a6e9a4876cea2d33bd270e06ab8e2afbf669346047a8d1e84944f19cca8da54
-	source_aarch64 = jotter-aarch64-0.6.0.tgz::https://github.com/samox73/jotter/releases/download/v0.6.0/jotter-aarch64-linux.tar.gz
-	sha256sums_aarch64 = e4d5c9a8e91cdbfd7a7305c91699be797caec0010cc76f1c5827eafc90dd94b5
+	source_x86_64 = jotter-x86_64-0.7.0.tgz::https://github.com/samox73/jotter/releases/download/v0.7.0/jotter-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 002c96a77584942652b88019ffcee6f9f72c025656feb5f44a0937deef430943
+	source_aarch64 = jotter-aarch64-0.7.0.tgz::https://github.com/samox73/jotter/releases/download/v0.7.0/jotter-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 5bd9f45b05d66148b403481416ba73e4833cef24213562813d9ffc6175760588
 
 pkgname = jotter-bin
