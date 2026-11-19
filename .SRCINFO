@@ -16,6 +16,6 @@ pkgbase = mbv
 	depends = vulkan-icd-loader
 	optdepends = pinwin>=0.4.1: pinned panel support
 	source = mbv-0.28.0-linux-x86_64.tar.gz::https://github.com/slatkin/mbv/releases/download/v0.28.0/mbv-0.28.0-linux-x86_64.tar.gz
-	sha256sums = 549f3c277b4edfedf39eb84d7a1918995058a2c6039d91eee4160c4958587db2
+	sha256sums = 4cd3f41864edf6e6398c61b6c6f8b908a6a3083a3206c1a6c2b1d0aa8778dab2
 
 pkgname = mbv
