@@ -1,17 +1,13 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
+# Contributor: Carmine Paolino <carmine@paolino.me>
 pkgname=voxtype
-pkgver=1.1.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
 url="https://voxtype.io"
 license=('MIT')
-depends=(
-    'alsa-lib'
-    'curl'
-    'gcc-libs'
-    'glibc'
-)
+depends=('alsa-lib' 'bash' 'curl' 'glibc' 'libgcc' 'libstdc++')
 makedepends=(
     'cargo'
     'clang'
@@ -19,35 +15,51 @@ makedepends=(
     'git'
     'pkgconf'
     'shaderc'
+    'spirv-headers'
     'vulkan-headers'
     'vulkan-icd-loader'
-    'gtk4'              # build-time headers for the GTK4 OSD frontend
-    'gtk4-layer-shell'  # gtk4-layer-shell-rs needs the system lib at build time
+    'gtk4'
+    'gtk4-layer-shell'
+    'wayland'
+    'libxkbcommon'
 )
 optdepends=(
     'wtype: keyboard simulation for Wayland (recommended, best CJK support)'
     'dotool: keyboard simulation with layout support (KDE/GNOME compatible)'
     'ydotool: keyboard simulation fallback (X11/TTY support)'
-    'wl-clipboard: clipboard support'
+    'wl-clipboard: Wayland clipboard support'
+    'xdotool: X11 keyboard simulation'
+    'xclip: X11 clipboard support'
     'libnotify: desktop notifications'
-    'pipewire: audio server (recommended)'
-    'pipewire-alsa: ALSA compatibility for PipeWire (required if using PipeWire)'
-    'pulseaudio: audio server (alternative to PipeWire)'
-    'vulkan-icd-loader: GPU acceleration via Vulkan for Whisper'
-    'onnxruntime: required for ONNX engines (rebuild with onnxruntime installed)'
-    'cuda: GPU acceleration via CUDA 13 for ONNX engines (NVIDIA GPUs, requires driver 580+)'
-    'cuda12.6: GPU acceleration via CUDA 12 for ONNX engines (older NVIDIA setups)'
-    'rocm-hip-runtime: ROCm runtime (required by migraphx)'
-    'migraphx: AMD GPU graph optimization for the MIGraphX execution provider — required for AMD GPU acceleration on ONNX engines'
+    'pipewire-alsa: ALSA compatibility for PipeWire'
+    'pulseaudio-alsa: ALSA compatibility for PulseAudio'
+    'vulkan-icd-loader: GPU acceleration for Whisper and GGUF models, and native OSD rendering'
+    'onnxruntime>=1.24.0: CPU inference for the ONNX engines'
+    'gtk4: GTK4 OSD frontend and meetings window'
+    'gtk4-layer-shell: GTK4 OSD frontend'
+    'cairo: GTK4 OSD frontend'
+    'glib2: GTK4 OSD frontend'
+    'wayland: native OSD frontend'
+    'libxkbcommon: native OSD frontend'
+    'libglvnd: OpenGL rendering for the native OSD frontend'
+    'quickshell: Quickshell OSD frontend'
+    'qt6-declarative: Quickshell OSD frontend'
     'ollama: local AI summarization for meeting mode'
-    'gtk4: runtime for the GTK4 on-screen mic visualizer (voxtype-osd-gtk4)'
-    'gtk4-layer-shell: runtime for the GTK4 on-screen mic visualizer'
-    'quickshell: Quickshell-based OSD frontend (opt in via [osd] frontend = "quickshell")'
+    'libpulse: capture of the other side of a call in meeting mode (parec, pactl)'
+    'ffmpeg: meeting audio import, retention and playback'
+    'xdg-utils: open shared meetings and links from the meeting view'
+    'bubblewrap: sandbox for the meeting assistant'
 )
+# voxtype-bin and voxtype-git already conflict with 'voxtype'; naming them
+# here as well lets pacman offer the swap from either direction.
+conflicts=('voxtype-bin' 'voxtype-bin-rc' 'voxtype-git')
 backup=('etc/voxtype/config.toml')
+# whisper.cpp mixes C/C++ with Rust; avoid cross-language LTO. A debug
+# package of eight large binaries is gigabytes that AUR users do not want.
+options=('!lto' '!debug')
 install=voxtype.install
 validpgpkeys=(
-    # Offline maintainer primary (Peter Jackson) — signs legacy assets
+    # Offline maintainer primary (Peter Jackson). Signed legacy assets
     # through v0.7.4 and cross-signed the CI primary below.
     'E79F5BAF8CD51A806AA27DBB7DA2709247D75BC6'
     # Voxtype CI release signing primary. Signs the GitHub auto-archive
@@ -61,232 +73,177 @@ source=(
     "$pkgname-$pkgver.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-    'dbde68a335ae190aec4f077e1b653f5fef3ff9dc7cddbfce1befae090eea33c9'
+    'aee9d36164d055904e82fccbf381d6fac794b4534af7ac58522bf6042c759899'
     'SKIP'
 )
 
+# Run cargo with its final and intermediate artifacts both in one target
+# directory under the source tree. Upstream requires that GPU feature sets
+# never share build artifacts, and a build.build-dir set in the packager's
+# own cargo config would otherwise pool every feature set's intermediates
+# outside $srcdir.
+_cargo_in() {
+    local _dir="$srcdir/$pkgname-$pkgver/$1"
+    shift
+    CARGO_TARGET_DIR="$_dir" CARGO_BUILD_BUILD_DIR="$_dir" cargo "$@"
+}
+
 prepare() {
     cd "$pkgname-$pkgver"
-
-    # Respect XDG Base Directory Specification
-    # Use existing toolchain/cache, but allow override via environment
-    export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
-    export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
     export RUSTUP_TOOLCHAIN=stable
-
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    # Respect XDG Base Directory Specification
-    # Use existing toolchain/cache, but allow override via environment
-    export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
-    export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
-
-    echo "=== BUILD ENVIRONMENT DEBUG ==="
-    echo "cargo: $(which cargo)"
-    cargo --version
-    echo "rustc: $(which rustc)"
-    rustc --version
-    echo "clang: $(which clang)"
-    clang --version | head -1
-    echo "cmake: $(which cmake)"
-    cmake --version | head -1
-    echo "PATH=$PATH"
-    echo "RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-unset}"
-    echo "CARGO_HOME=$CARGO_HOME"
-    echo "RUSTUP_HOME=$RUSTUP_HOME"
-    echo "CFLAGS=$CFLAGS"
-    echo "CXXFLAGS=$CXXFLAGS"
-    echo "LDFLAGS=$LDFLAGS"
-    env | grep -i rust || true
-    echo "==============================="
-
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-
-    # build.rs stamps `git rev-parse HEAD` into --version when it finds a
-    # repo. A tarball has none, but git would walk up into the AUR clone
-    # makepkg runs in and stamp the packaging repo's commit (1.1.1+g<aur-sha>).
-    export GIT_CEILING_DIRECTORIES="$srcdir"
-
-    # Clear flags set by makepkg - they can interfere with whisper-rs/whisper.cpp build
-    unset RUSTFLAGS
-    unset DEBUG_RUSTFLAGS
-    unset CFLAGS
-    unset CXXFLAGS
-    unset LDFLAGS
-
-    # Remap build paths so binaries don't contain $srcdir references
-    local _src="$srcdir/$pkgname-$pkgver"
-    export RUSTFLAGS="--remap-path-prefix=$_src/= --remap-path-prefix=${CARGO_HOME}/registry/src/=cargo/"
-    export CFLAGS="-ffile-prefix-map=$_src/="
-    export CXXFLAGS="-ffile-prefix-map=$_src/="
-
-    # Use clang for C/C++ - avoids whisper.cpp build failures with newer gcc
-    # (e.g. when [testing] repo is enabled)
+    export CARGO_PROFILE_RELEASE_LTO=false
+    export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=8
     export CC=clang
     export CXX=clang++
+    export CMAKE_BUILD_PARALLEL_LEVEL="${CMAKE_BUILD_PARALLEL_LEVEL:-4}"
+    # build.rs stamps `git rev-parse HEAD` into --version when it finds a
+    # repo. A tarball has none, but git would walk up into the AUR clone
+    # makepkg runs in and stamp the packaging repo's commit (1.3.0+g<aur-sha>).
+    export GIT_CEILING_DIRECTORIES="$srcdir"
+    # Rust panic locations and whisper.cpp diagnostics otherwise embed
+    # the packager's working directory even in stripped release binaries.
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=$srcdir/="
+    export CFLAGS="${CFLAGS} -ffile-prefix-map=$srcdir/="
+    export CXXFLAGS="${CXXFLAGS} -ffile-prefix-map=$srcdir/="
+    # makepkg exports SOURCE_DATE_EPOCH, and ggml turns its native tuning off
+    # when that is set without enabling any other instruction set, so
+    # whisper.cpp would be compiled for plain x86-64. Ask for the build
+    # machine's CPU explicitly. To build a package for other machines, set
+    # GGML_NATIVE=OFF and the GGML_* instruction sets they share.
+    export GGML_NATIVE="${GGML_NATIVE:-ON}"
 
-    # Limit parallelism to prevent cmake deadlocks during whisper-rs build
-    export CMAKE_BUILD_PARALLEL_LEVEL=4
-    export MAKEFLAGS="-j4"
+    # Every daemon carries the client for GGUF models (Parakeet and Cohere
+    # .gguf files); gpu-vulkan implies it. The models run in
+    # voxtype-gguf-worker, a separate crate because transcribe.cpp and
+    # whisper.cpp each bring their own ggml.
+    local _gguf=gguf,cohere-gguf,parakeet-gguf
 
-    # Build native CPU binary (optimized for the user's machine)
-    # Disable LTO to prevent linking hangs (Cargo.toml has lto=true)
-    cargo build --frozen --release \
-        --config 'profile.release.lto=false' \
-        --config 'profile.release.codegen-units=8'
-    cp target/release/voxtype voxtype-native
+    _cargo_in target build --frozen --release --bin voxtype --features "$_gguf"
+    # CPU worker, installed under the generic name every variant falls
+    # back to. .cargo/config.toml holds its transcribe.cpp build at AVX2.
+    _cargo_in target build --frozen --release -p voxtype-gguf-worker
 
-    # Build Vulkan GPU binary (for GPU acceleration)
-    cargo clean
-    cargo build --frozen --release --features gpu-vulkan \
-        --config 'profile.release.lto=false' \
-        --config 'profile.release.codegen-units=8'
-    cp target/release/voxtype voxtype-vulkan
+    _cargo_in target-vulkan build --frozen --release --bin voxtype --features gpu-vulkan
+    # voxtype-vulkan looks beside itself for voxtype-gguf-worker-vulkan.
+    _cargo_in target-vulkan build --frozen --release -p voxtype-gguf-worker --features vulkan
 
-    # Build ONNX engines binary if onnxruntime is available
-    if pacman -Q onnxruntime &>/dev/null; then
-        echo "=== Building ONNX engines binary (onnxruntime found) ==="
-        export ORT_STRATEGY=system
-        cargo clean
-        cargo build --frozen --release \
-            --features parakeet-load-dynamic,moonshine,sensevoice,paraformer,dolphin,omnilingual,cohere \
-            --config 'profile.release.lto=false' \
-            --config 'profile.release.codegen-units=8'
-        cp target/release/voxtype voxtype-onnx
-    else
-        echo "=== Skipping ONNX engines (install onnxruntime and rebuild for Parakeet/SenseVoice/etc.) ==="
-    fi
+    # Dynamic loading needs no ONNX Runtime at build time. Always build
+    # the same engines; users install the optional runtime to use them.
+    _cargo_in target-onnx build --frozen --release --bin voxtype \
+        --features "parakeet-load-dynamic,moonshine,sensevoice,paraformer,dolphin,omnilingual,cohere,ml-diarization,$_gguf"
 
-    # Build OSD binaries: the launcher (voxtype-osd) plus all three
-    # frontends and the audio-bridge sidecar.
-    # - voxtype-osd / voxtype-audio-bridge / voxtype-osd-quickshell have no
-    #   required-features (no GUI deps; quickshell loads QML at runtime).
-    # - voxtype-osd-gtk4 requires the osd-gtk4 feature.
-    # - voxtype-osd-native requires the osd-native feature.
-    # Engine features aren't needed — the OSD frontends consume audio
-    # frames over IPC, not the transcribers themselves.
-    cargo clean
-    cargo build --frozen --release \
+    # The OSD frontends, the audio bridge and the meetings window do not
+    # link a GPU backend, so they share the CPU build's directory.
+    _cargo_in target build --frozen --release \
         --bin voxtype-osd \
         --bin voxtype-osd-gtk4 \
         --bin voxtype-osd-native \
         --bin voxtype-osd-quickshell \
         --bin voxtype-audio-bridge \
-        --features osd-gtk4,osd-native \
-        --config 'profile.release.lto=false' \
-        --config 'profile.release.codegen-units=8'
-    cp target/release/voxtype-osd voxtype-osd
-    cp target/release/voxtype-osd-gtk4 voxtype-osd-gtk4
-    cp target/release/voxtype-osd-native voxtype-osd-native
-    cp target/release/voxtype-osd-quickshell voxtype-osd-quickshell
-    cp target/release/voxtype-audio-bridge voxtype-audio-bridge
+        --bin voxtype-meetings-gtk4 \
+        --features osd-gtk4,osd-native,meetings-gtk4
+
+    # Man pages, rendered the way the other packages render them. xtask
+    # compiles only clap and clap_mangen.
+    _cargo_in target --frozen xtask man target/man
 }
 
 check() {
     cd "$pkgname-$pkgver"
-
-    # Respect XDG Base Directory Specification
-    export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
-    export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
     export RUSTUP_TOOLCHAIN=stable
-
-    # Skip examples — inspect_cohere_onnx requires the `cohere` feature for
-    # the optional `ort` crate. Examples aren't part of the shipped package.
-    cargo test --frozen --lib --bins --tests
+    export CC=clang
+    export CXX=clang++
+    export CMAKE_BUILD_PARALLEL_LEVEL="${CMAKE_BUILD_PARALLEL_LEVEL:-4}"
+    export GIT_CEILING_DIRECTORIES="$srcdir"
+    # The meeting assistant's jail test runs bwrap whenever it is installed,
+    # and gtk4 pulls bubblewrap in. bwrap needs unprivileged user
+    # namespaces, which containers, some chroots and hardened kernels do
+    # not allow; skip that one test there instead of failing the build.
+    local _skip=()
+    if ! bwrap --ro-bind / / true 2>/dev/null; then
+        _skip=(--skip meeting::assistant::tests::codex_runs_in_a_jail_that_hides_home)
+    fi
+    # Include both waveform implementations and the meetings window.
+    # Model-dependent inference tests remain opt-in, as in upstream's
+    # regular test suite.
+    _cargo_in target test --frozen --lib --bins --tests \
+        --features osd-gtk4,osd-native,meetings-gtk4 -- "${_skip[@]}"
 }
 
 package() {
     cd "$pkgname-$pkgver"
 
-    # Install CPU binary to /usr/lib/voxtype/ (matches binary package layout)
-    install -Dm755 "voxtype-native" "$pkgdir/usr/lib/voxtype/voxtype-native"
+    install -Dm755 target/release/voxtype \
+        "$pkgdir/usr/lib/voxtype/voxtype-native"
+    install -Dm755 target-vulkan/release/voxtype \
+        "$pkgdir/usr/lib/voxtype/voxtype-vulkan"
+    install -Dm755 target-onnx/release/voxtype \
+        "$pkgdir/usr/lib/voxtype/voxtype-onnx"
+    install -Dm755 target/release/voxtype-gguf-worker \
+        "$pkgdir/usr/lib/voxtype/voxtype-gguf-worker"
+    install -Dm755 target-vulkan/release/voxtype-gguf-worker \
+        "$pkgdir/usr/lib/voxtype/voxtype-gguf-worker-vulkan"
+    # The voxtype-osd launcher probes its own directory for the frontends,
+    # and `voxtype meeting view` finds the meetings window beside the daemon.
+    install -Dm755 -t "$pkgdir/usr/lib/voxtype" \
+        target/release/voxtype-osd \
+        target/release/voxtype-osd-gtk4 \
+        target/release/voxtype-osd-native \
+        target/release/voxtype-osd-quickshell \
+        target/release/voxtype-meetings-gtk4
+    install -Dm755 target/release/voxtype-audio-bridge \
+        "$pkgdir/usr/bin/voxtype-audio-bridge"
+    # /usr/bin/voxtype is created by the install script; see the note there.
+    ln -s /usr/lib/voxtype/voxtype-osd "$pkgdir/usr/bin/voxtype-osd"
 
-    # Install Vulkan GPU binary to /usr/lib/voxtype/
-    install -Dm755 "voxtype-vulkan" "$pkgdir/usr/lib/voxtype/voxtype-vulkan"
+    # Quickshell QML, OSD style packages and OSD recipes, copied as whole
+    # trees. A list of files or directories goes stale as soon as upstream
+    # adds one (quickshell/voxtype-meetings arrived with 1.3.0), and a QML
+    # module with a file missing does not load.
+    local _tree _dest
+    for _tree in quickshell:quickshell examples/osd-packages:osd examples/osd-recipes:osd-recipes; do
+        _dest="$pkgdir/usr/share/voxtype/${_tree#*:}"
+        install -d "$_dest"
+        cp -a "${_tree%%:*}/." "$_dest/"
+        find "$_dest" -mindepth 1 \( -name '.*' -o -name '*~' \) -prune -exec rm -rf {} +
+        find "$_dest" -type d -exec chmod 755 {} +
+        find "$_dest" -type f -exec chmod 644 {} +
+    done
 
-    # Install ONNX engines binary if it was built
-    if [[ -f "voxtype-onnx" ]]; then
-        install -Dm755 "voxtype-onnx" "$pkgdir/usr/lib/voxtype/voxtype-onnx"
-    fi
+    # Omarchy Settings panel, staged by the script every package uses. It
+    # puts the QML in a directory named after the plugin manifest's version.
+    bash scripts/stage-omarchy-plugin.sh omarchy-plugin \
+        "$pkgdir/usr/share/voxtype/omarchy-plugin"
 
-    # Create symlink at /usr/bin/voxtype -> /usr/lib/voxtype/voxtype-native
-    install -d "$pkgdir/usr/bin"
-    ln -sf /usr/lib/voxtype/voxtype-native "$pkgdir/usr/bin/voxtype"
-
-    # Install OSD binaries into /usr/lib/voxtype/, matching the daemon
-    # variant layout. Only the launcher gets a /usr/bin symlink — users
-    # invoke `voxtype-osd` and config picks the frontend at runtime.
-    # The launcher resolves its real path via /proc/self/exe (which
-    # follows the symlink) and probes its parent directory first, so it
-    # finds /usr/lib/voxtype/voxtype-osd-{gtk4,native} without needing
-    # them on PATH.
-    install -Dm755 "voxtype-osd" "$pkgdir/usr/lib/voxtype/voxtype-osd"
-    install -Dm755 "voxtype-osd-gtk4" "$pkgdir/usr/lib/voxtype/voxtype-osd-gtk4"
-    install -Dm755 "voxtype-osd-native" "$pkgdir/usr/lib/voxtype/voxtype-osd-native"
-    install -Dm755 "voxtype-osd-quickshell" "$pkgdir/usr/lib/voxtype/voxtype-osd-quickshell"
-    ln -sf /usr/lib/voxtype/voxtype-osd "$pkgdir/usr/bin/voxtype-osd"
-
-    # voxtype-audio-bridge: NDJSON sidecar streaming audio levels over a
-    # UNIX socket to the Quickshell OSD. Installed to /usr/bin so the
-    # quickshell launcher can exec it by basename.
-    install -Dm755 "voxtype-audio-bridge" "$pkgdir/usr/bin/voxtype-audio-bridge"
-
-    # Quickshell QML tree, copied wholesale. voxtype-osd-quickshell probes
-    # /usr/share/voxtype/quickshell/ for shell.qml after user/runtime paths.
-    # The voxtype-shared/ subdir is a QML module registered via qmldir, and
-    # every file qmldir names must ship or `import voxtype-shared 1.0` fails
-    # (a per-file list here missed StyleLoader and RecipeRenderer in 1.1.0).
-    install -d "$pkgdir/usr/share/voxtype"
-    cp -a quickshell "$pkgdir/usr/share/voxtype/"
-    find "$pkgdir/usr/share/voxtype/quickshell" -type f -exec chmod 644 {} +
-    find "$pkgdir/usr/share/voxtype/quickshell" -type d -exec chmod 755 {} +
-
-    # OSD style packages and recipes. The OSD resolves [osd] style = "<name>"
-    # in /usr/share/voxtype/osd/<name> after the user paths, and
-    # `voxtype setup osd --recipe` reads /usr/share/voxtype/osd-recipes.
-    install -d "$pkgdir/usr/share/voxtype/osd" "$pkgdir/usr/share/voxtype/osd-recipes"
-    cp -a examples/osd-packages/. "$pkgdir/usr/share/voxtype/osd/"
-    cp -a examples/osd-recipes/. "$pkgdir/usr/share/voxtype/osd-recipes/"
-    find "$pkgdir/usr/share/voxtype/osd" "$pkgdir/usr/share/voxtype/osd-recipes" -type f -exec chmod 644 {} +
-    find "$pkgdir/usr/share/voxtype/osd" "$pkgdir/usr/share/voxtype/osd-recipes" -type d -exec chmod 755 {} +
-
-    # Desktop entry for the TUI configure command, surfaced in walker/rofi/fuzzel/etc.
-    install -Dm755 "packaging/scripts/voxtype-configure-launcher" \
+    install -Dm755 packaging/scripts/voxtype-configure-launcher \
         "$pkgdir/usr/bin/voxtype-configure-launcher"
-    install -Dm644 "packaging/voxtype-configure.desktop" \
-        "$pkgdir/usr/share/applications/voxtype-configure.desktop"
-
-    # Install default configuration
-    install -Dm644 "config/default.toml" "$pkgdir/etc/voxtype/config.toml"
-
-    # Install systemd user service
-    install -Dm644 "packaging/systemd/voxtype.service" \
+    install -Dm644 -t "$pkgdir/usr/share/applications" \
+        packaging/voxtype-configure.desktop \
+        packaging/voxtype-meetings.desktop
+    # The icon the desktop entries and notifications ask for by name.
+    install -Dm644 assets/icon.svg \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/voxtype.svg"
+    install -Dm644 assets/icon.png \
+        "$pkgdir/usr/share/icons/hicolor/128x128/apps/voxtype.png"
+    install -Dm644 config/default.toml "$pkgdir/etc/voxtype/config.toml"
+    install -Dm644 packaging/systemd/voxtype.service \
         "$pkgdir/usr/lib/systemd/user/voxtype.service"
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" \
+        README.md docs/INSTALL.md THIRD_PARTY.md
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    # Install documentation
-    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 "docs/INSTALL.md" "$pkgdir/usr/share/doc/$pkgname/INSTALL.md"
-
-    # Install license
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    # Install shell completions
-    install -Dm644 "packaging/completions/voxtype.bash" \
+    install -Dm644 packaging/completions/voxtype.bash \
         "$pkgdir/usr/share/bash-completion/completions/voxtype"
-    install -Dm644 "packaging/completions/voxtype.zsh" \
+    install -Dm644 packaging/completions/voxtype.zsh \
         "$pkgdir/usr/share/zsh/site-functions/_voxtype"
-    install -Dm644 "packaging/completions/voxtype.fish" \
+    install -Dm644 packaging/completions/voxtype.fish \
         "$pkgdir/usr/share/fish/vendor_completions.d/voxtype.fish"
 
-    # Install man pages (generated by build.rs)
-    local man_dir
-    man_dir=$(find target/release/build -name "man" -type d -path "*/voxtype-*/out/man" 2>/dev/null | head -1)
-    if [[ -n "$man_dir" && -d "$man_dir" ]]; then
-        install -d "$pkgdir/usr/share/man/man1"
-        install -Dm644 "$man_dir"/*.1 "$pkgdir/usr/share/man/man1/"
-    fi
+    install -Dm644 -t "$pkgdir/usr/share/man/man1" target/man/*.1
 }
