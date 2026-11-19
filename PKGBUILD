@@ -3,7 +3,7 @@
 # release, which fills in the version and the .deb checksum.
 pkgname=stroke-bin
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Native database client for PostgreSQL, MySQL, SQLite, MongoDB, Redis and more, with an AI agent and an MCP server"
 arch=('x86_64')
 url="https://stroke.click"
@@ -20,11 +20,16 @@ sha256sums=('45f0efd79a23d83e6c982fd1ff081031e3ddb64a2c7a1bb871c364b3cb60b791'
 package() {
   bsdtar -xf data.tar.gz -C "$pkgdir"
 
-  # The .deb names its binary and icon "app"; on Arch that would collide with
-  # anything else called app, so both become "stroke".
-  mv "$pkgdir/usr/bin/app" "$pkgdir/usr/bin/stroke"
+  # Builds before 2.20 name the binary and icon "app"; on Arch that would
+  # collide with anything else called app, so both become "stroke". Newer
+  # .debs already ship them as "stroke".
+  if [[ -e "$pkgdir/usr/bin/app" ]]; then
+    mv "$pkgdir/usr/bin/app" "$pkgdir/usr/bin/stroke"
+  fi
   for icon in "$pkgdir"/usr/share/icons/hicolor/*/apps/app.png; do
-    mv "$icon" "${icon%/app.png}/stroke.png"
+    if [[ -e "$icon" ]]; then
+      mv "$icon" "${icon%/app.png}/stroke.png"
+    fi
   done
   sed -i -e 's/^Exec=app$/Exec=stroke/' \
          -e 's/^Icon=app$/Icon=stroke/' \

@@ -1,7 +1,7 @@
 pkgbase = stroke-bin
 	pkgdesc = Native database client for PostgreSQL, MySQL, SQLite, MongoDB, Redis and more, with an AI agent and an MCP server
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stroke.click
 	arch = x86_64
 	license = LicenseRef-Stroke
