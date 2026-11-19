@@ -1,6 +1,6 @@
 pkgbase = onionscan-bin
 	pkgdesc = Tool to scan onion services
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/nao1215/onionscan
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = onionscan-bin
 	provides = onionscan
 	conflicts = onionscan
 	options = !strip
-	source = onionscan-0.2.6-checksums.txt::https://github.com/nao1215/onionscan/releases/download/v0.2.6/checksums.txt
-	sha256sums = b39d3620819032124d89a81a038586019634ef8d53b3cd416681f9e5f2758c3e
-	source_x86_64 = onionscan-0.2.6-x86_64.tgz::https://github.com/nao1215/onionscan/releases/download/v0.2.6/onionscan_0.2.6_linux_amd64.tar.gz
-	sha256sums_x86_64 = 53520abdfa1c1e220625d005c9dfcfd7aafdb6657bb2c1ee95cd516221eb4088
-	source_aarch64 = onionscan-0.2.6-aarch64.tgz::https://github.com/nao1215/onionscan/releases/download/v0.2.6/onionscan_0.2.6_linux_arm64.tar.gz
-	sha256sums_aarch64 = dd76f564ecfd7d0e8659b2528daa982e156caf9c2d73520880cfa7dcca1ce21e
+	source = onionscan-0.2.7-checksums.txt::https://github.com/nao1215/onionscan/releases/download/v0.2.7/checksums.txt
+	sha256sums = d7bee98dc2de5916ce9ec904c43eca1826c4746854be2f87aa3b6cbe39c9f0bf
+	source_x86_64 = onionscan-0.2.7-x86_64.tgz::https://github.com/nao1215/onionscan/releases/download/v0.2.7/onionscan_0.2.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = d9e8a27b1c8b519a8b094527d6f8c28db545bd24cd75168bf6edf161ddcf7409
+	source_aarch64 = onionscan-0.2.7-aarch64.tgz::https://github.com/nao1215/onionscan/releases/download/v0.2.7/onionscan_0.2.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6fbb7cbd70ca8158f92e078a272970b267ade80e4998046334710f806e998d24
 
 pkgname = onionscan-bin
