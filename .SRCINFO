@@ -1,6 +1,6 @@
 pkgbase = pollis
 	pkgdesc = End-to-end encrypted messaging
-	pkgver = 1.19.17
+	pkgver = 1.19.18
 	pkgrel = 1
 	url = https://pollis.com
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = pollis
 	depends = dbus
 	optdepends = noto-fonts-cjk: Japanese, Korean and Chinese text
 	optdepends = noto-fonts: Indic, Arabic-script and Ethiopic text
-	source = https://cdn.pollis.com/releases/v1.19.17/pollis-v1.19.17-linux.deb
-	sha256sums = de032d44a49f0c6e0c8631ffdebbefc1bb64049ff2f45d3509a7a9837fa37ec8
+	source = https://cdn.pollis.com/releases/v1.19.18/pollis-v1.19.18-linux.deb
+	sha256sums = 03421453e0a8de236ec757cb34b74010f073ba35802f0516405716896d677cfe
 
 pkgname = pollis
