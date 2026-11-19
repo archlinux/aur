@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Make Muster Agent write an MCP server's launcher before handing it to an agent.
 
-Upstream bug (agent 0.3.14 to 0.3.16; musterhq/muster-code#766):
+Upstream bug (agent 0.3.14 onward, still present in 0.3.20;
+musterhq/muster-code#766):
 servers imported from ~/.claude.json, ~/.codex/config.toml or a folder's
 .mcp.json are stored by `syncDetected()` in
 packages/agent-app/src/runtime/domains/mcp.ts, but only the add/update handlers

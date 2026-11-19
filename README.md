@@ -28,7 +28,7 @@ Upstream publishes Linux builds on GitHub releases under tags of the form
 `agent-v<version>`, as a `.deb`, a `.tar.gz` and an `.AppImage`:
 
 ```
-https://github.com/musterhq/muster-code/releases/download/agent-v0.3.16/Muster-Agent-0.3.16-linux-amd64.deb
+https://github.com/musterhq/muster-code/releases/download/agent-v0.3.20/Muster-Agent-0.3.20-linux-amd64.deb
 ```
 
 All three carry the three checksums published in the release's `SHA256SUMS`
@@ -86,7 +86,7 @@ Settings write that script, so imported servers start with a missing command:
 the chat reports them as failed (`ENOENT`) while Settings › MCP shows them
 healthy, because its own test spawns the command directly. Toggling a server
 off and on writes its launcher, which hides the bug until the next import.
-Present in 0.3.14 to 0.3.16 (`syncDetected()` in
+Present in 0.3.14 through 0.3.20 (`syncDetected()` in
 `packages/agent-app/src/runtime/domains/mcp.ts`); reported upstream as
 [#766](https://github.com/musterhq/muster-code/issues/766).
 

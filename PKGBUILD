@@ -1,7 +1,7 @@
 # Maintainer: gaou-piou <i.am.piou@gmail.com>
 
 pkgname=muster-agent-bin
-pkgver=0.3.18
+pkgver=0.3.20
 pkgrel=1
 pkgdesc='Agentic development environment (ADE) for Codex, Claude Code, OpenCode and local models'
 arch=('x86_64')
@@ -36,9 +36,9 @@ _url="https://github.com/musterhq/muster-code/releases/download/agent-v${pkgver}
 source=("${_deb}::${_url}/${_deb}"
         "LICENSE::https://raw.githubusercontent.com/musterhq/muster-code/agent-v${pkgver}/LICENSE"
         'fix-mcp-launchers.py')
-sha256sums=('7b63799e27ba21532293a18133011ee20da43a4af6eb2e9a38946c09731964aa'
+sha256sums=('925162f5ba957b74260b390ef2b69a7df2f72db74f114c66fdca3b86f7426a2d'
             '8be9dc5eea50ccc91e9c3be00ffd5c973531f2f0a7098e9bd979b4355523661e'
-            '6fe33e03b7d28f51091382cebae3c695a37c17fab35d23b31cf9a84bbb69f83e')
+            'a30f7c9121250253050f902cade779185fcd62b5a83ac84ac7c4fce5990dfaef')
 
 prepare() {
   cd "${srcdir}"
