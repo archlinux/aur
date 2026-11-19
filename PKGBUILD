@@ -1,14 +1,14 @@
 # Maintainer: AndyHazz <andy.nmc@gmail.com>
 pkgname=libfprint-goodix53x5
 pkgver=1.94.10
-pkgrel=10
+pkgrel=11
 pkgdesc="libfprint with Goodix HTK32 (27c6:5335/5385/5395) driver - Dell XPS 13 9305 / XPS 13 7390 / XPS 15 9570"
 arch=('x86_64')
 url="https://github.com/AndyHazz/goodix53x5-libfprint"
 license=('LGPL-2.1-or-later')
 depends=('libusb' 'libgusb' 'pixman' 'cairo' 'glib2' 'nss'
          'libjpeg-turbo' 'openssl' 'opencv')
-makedepends=('git' 'meson' 'ninja' 'gcc' 'pkgconf' 'gtk-doc'
+makedepends=('git' 'meson' 'ninja' 'gcc' 'pkgconf' 'glib2-devel' 'gtk-doc'
              'gobject-introspection')
 optdepends=('fprintd: fingerprint authentication daemon')
 provides=('libfprint' 'libfprint-2' 'libfprint-2.so')
