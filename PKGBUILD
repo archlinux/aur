@@ -1,7 +1,7 @@
 # Maintainer: Chris <goabonga@pm.me>
 
 pkgname=ctui
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='C library of reusable ncursesw terminal user interface components'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('pkgconf')
 # !lto: the upstream tests build with -Werror, which LTO turns on false warnings.
 options=('staticlibs' '!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f2d3c2c024d17455c35235a2c29e6380e431064a6706225999e4da7038dfa006')
+sha256sums=('3340572e8dae1771c8af9b4c65495a418c83af63493dfabe63aeb4eb6149ab6e')
 
 build() {
   cd "$pkgname-$pkgver"
