@@ -186,4 +186,16 @@ EOF
       -o "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf" "$_fontdir/"*.ttf
     chmod 644 "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf"
   fi
+
+  # Opt-in hintnone snippet (fonttune nohint): these families drawn unhinted, the
+  # outlines as designed and only anti-aliased (as macOS draws them). Every
+  # built font is named, variable ones too. Enable it by linking it into conf.d.
+  if grep -q '^nohint = true' "$srcdir/fonttune.toml"; then
+    install -d "$pkgdir/usr/share/fontconfig/conf.avail"
+    python "$(_ft)/bin/fonttune" hintconf --style none --name "$pkgname" \
+      -o "$pkgdir/usr/share/fontconfig/conf.avail/81-$pkgname-nohint.conf" "$_fontdir/"*.[ot]tf
+    chmod 644 "$pkgdir/usr/share/fontconfig/conf.avail/81-$pkgname-nohint.conf"
+    echo "==> nohint: ships conf.avail/81-$pkgname-nohint.conf (hintstyle=hintnone for these families; off until enabled):"
+    echo "    sudo ln -s /usr/share/fontconfig/conf.avail/81-$pkgname-nohint.conf /etc/fonts/conf.d/ && fc-cache -f"
+  fi
 }
