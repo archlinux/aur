@@ -1,0 +1,15 @@
+pkgbase = lua-lpcre
+	pkgdesc = PCRE2 regular expressions for Lua strings and carrays
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/osch/lua-lpcre
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	depends = pcre2
+	source = lua-lpcre-0.0.1.tar.gz::https://github.com/osch/lua-lpcre/archive/v0.0.1.tar.gz
+	sha256sums = 42d3708e1eb71a09f8f59932b81c9a3754d22550f1f39758f73d749a84600514
+
+pkgname = lua-lpcre
