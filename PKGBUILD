@@ -1,7 +1,7 @@
 # Maintainer: Nasir A. <112448715+NasirA1991@users.noreply.github.com>
 pkgname=satur8
 pkgver=0.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Per-game digital vibrance for Linux: compositor/scanout saturation boost, never injected into the game"
 arch=('x86_64')
 url="https://github.com/NtrpyDev/satur8"
