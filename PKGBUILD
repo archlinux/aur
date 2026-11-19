@@ -1,7 +1,7 @@
 # Maintainer: OxiRoute maintainers <https://github.com/oxiroute/oxiroute/issues>
 
 pkgname=oxiroute-bin
-pkgver=6.5.2
+pkgver=7.1.0
 pkgrel=1
 pkgdesc='Pingora-based HTTP, TCP, and RTMP proxy runtime (prebuilt, profile-guided release binaries)'
 arch=('x86_64')
@@ -30,22 +30,28 @@ source=("oxiroute-${pkgver}-${_target}.tar.gz::${_release}/oxiroute-${pkgver}-${
         'oxiroute.kdl'
         'oxiroute.lua'
         'README.md')
-sha256sums=('7488ce8b4ab556c05cb3506819a53f41da8cc1730192429a579cc376bd8bd9f9'
-            'ffb543ff6043239bd1ceb86395a5de51a6571438485ab3f3b027893baee5884b'
-            '574eab59174656b0813499ed1c9bca8be5a6e2cf69a98e8327f376e1c0b83b1b'
-            'ece087105e74910e9d4a6c3551082828378ac5c62fc15e97a755a3bc93020e72'
+sha256sums=('b002f507aba6b4f839c74bb45b317548d4aa3b6f354c2046c642b1e6fae1d651'
+            '96d0fbfa9f990fb7b5eac66a8f15ff496bdc063386e23952a4829a17a32f5f66'
+            '1bb18eb30e49f9b4eae546094ca57bf2796a0660bd3811c25f551f76ca9bd86b'
+            '167ec612cbdedb8a4e1ea92b181badb77042a0303e276b8181f14cf1956dc13f'
             '502dbc96a4f316ff7375cf90da32457b6003723a744825f04cec8a624974a356'
             'c23385c6ee614b2b91e8fcd1c535038fc2dd9a115b77db368fa2fda4d9d698a1'
             'd56db017915b82ad6204bb4de1aa268cc41586eafcbbf35194366b32ed02f19a'
             '57e5cb6cf58a38b6c5efd99e0b5a9a36bac3fafba438059a8396b07e9b6e80a9'
             'f55a08f56ff139b566afac6b0c9cbbc4ed08f69a7e04810128bfb8c98a0f0564'
-            'ef376abd6ce6dcbab820ce478f4b9f134a4be4528fb88bb3abb9d7425e83137e')
+            'a6aba7b89182befdfe5aada05a34c741d101dff1c5d9b4e5e6d7401e9114faa6')
 
 package() {
   cd "oxiroute-${pkgver}-${_target}"
 
   install -Dm755 bin/oxiroute "${pkgdir}/usr/bin/oxiroute"
   ln -s oxiroute "${pkgdir}/usr/bin/oxr"
+  if [[ -d share ]]; then
+    install -Dm644 -t "${pkgdir}/usr/share/bash-completion/completions" share/bash-completion/completions/*
+    install -Dm644 -t "${pkgdir}/usr/share/zsh/site-functions" share/zsh/site-functions/*
+    install -Dm644 -t "${pkgdir}/usr/share/fish/vendor_completions.d" share/fish/vendor_completions.d/*
+    install -Dm644 -t "${pkgdir}/usr/share/man/man1" share/man/man1/*
+  fi
   install -Dm755 lib/oxiroute/oxiroute-worker-launcher \
     "${pkgdir}/usr/lib/oxiroute/oxiroute-worker-launcher"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/oxiroute/LICENSE"
