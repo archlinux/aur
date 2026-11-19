@@ -1,0 +1,4 @@
+src/
+pkg/
+capture-view/
+*.pkg.tar.zst
