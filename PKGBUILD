@@ -1,6 +1,6 @@
 # Maintainer: dimflix <dimflix.official@gmail.com>
 pkgname=mewline-qs
-pkgver=1.0.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Quickshell shell for Hyprland and bspwm — bar, widgets and menus (successor of mewline)"
 arch=('any')
@@ -8,6 +8,8 @@ url="https://github.com/meowrch/mewline-qs"
 license=('GPL-3.0-only')
 depends=('quickshell')
 optdepends=(
+  'python: runtime helper scripts and peripheral battery polling'
+  'python-dbus: Bluetooth battery levels via BlueZ Battery1'
   'bspwm: X11 window management (required on bspwm)'
   'sxhkd: X11 hotkey daemon for the widget binds (required on bspwm)'
   'picom: X11 compositor (required on bspwm: corners, blur, animations)'
@@ -31,7 +33,7 @@ optdepends=(
 )
 install=mewline-qs.install
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('63a60453ea39a8ed85916d6f7ff35ffb53bb8850121a30028826dbaeb478f6ea')
+sha256sums=('c0a435813091e36f9f3ab2325904f46609ebbe6fd82b5483c76f9849b0d5218c')
 
 package() {
   cd "$srcdir/mewline-qs-$pkgver"

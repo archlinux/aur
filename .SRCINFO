@@ -1,12 +1,14 @@
 pkgbase = mewline-qs
 	pkgdesc = Quickshell shell for Hyprland and bspwm — bar, widgets and menus (successor of mewline)
-	pkgver = 1.0.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/meowrch/mewline-qs
 	install = mewline-qs.install
 	arch = any
 	license = GPL-3.0-only
 	depends = quickshell
+	optdepends = python: runtime helper scripts and peripheral battery polling
+	optdepends = python-dbus: Bluetooth battery levels via BlueZ Battery1
 	optdepends = bspwm: X11 window management (required on bspwm)
 	optdepends = sxhkd: X11 hotkey daemon for the widget binds (required on bspwm)
 	optdepends = picom: X11 compositor (required on bspwm: corners, blur, animations)
@@ -27,7 +29,7 @@ pkgbase = mewline-qs
 	optdepends = wf-recorder: Wayland screen recording
 	optdepends = ffmpeg: screen recording (x11grab on X11)
 	optdepends = pawlette: palette/theme engine the shell follows live
-	source = https://github.com/meowrch/mewline-qs/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 63a60453ea39a8ed85916d6f7ff35ffb53bb8850121a30028826dbaeb478f6ea
+	source = https://github.com/meowrch/mewline-qs/archive/refs/tags/v2.4.0.tar.gz
+	sha256sums = c0a435813091e36f9f3ab2325904f46609ebbe6fd82b5483c76f9849b0d5218c
 
 pkgname = mewline-qs
