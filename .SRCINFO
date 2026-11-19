@@ -1,0 +1,27 @@
+pkgbase = puramai-bin
+	pkgdesc = Puramai desktop app (repackaged from the official .deb)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://puramai.io-workshop.net/
+	arch = x86_64
+	license = LicenseRef-Puramai
+	depends = alsa-lib
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libx11
+	depends = libxext
+	depends = libxi
+	depends = libxrender
+	depends = libxtst
+	depends = xdg-utils
+	depends = zlib
+	noextract = puramai_1.0.1_amd64.deb
+	options = !strip
+	options = !debug
+	source = https://puramai.io-workshop.net/download/puramai_1.0.1_amd64.deb
+	source = LICENSE
+	sha256sums = a201571a76fce22a9cdfb1f39fdf2b8b217af8fdac587f468f64fd8975a4046a
+	sha256sums = 26a02bba9618166b1d2c9f4af1a084be050112c93a344269759370e45cd961d1
+
+pkgname = puramai-bin
