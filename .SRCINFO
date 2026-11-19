@@ -1,7 +1,7 @@
 pkgbase = parsec
 	pkgdesc = Generic framework for architecture aware scheduling and management of micro-tasks on distributed many-core heterogeneous architectures
 	pkgver = 4.0.2411
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ICLDisco/parsec
 	arch = x86_64
 	license = BSD-3-Clause-Open-MPI
@@ -16,7 +16,6 @@ pkgbase = parsec
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	makedepends = cython
 	makedepends = python-pandas
 	makedepends = valgrind
@@ -37,7 +36,9 @@ pkgbase = parsec
 	optdepends = python-pytables: convert PaRSEC traces to HDF5
 	source = parsec-4.0.2411.tar.gz::https://github.com/ICLDisco/parsec/archive/refs/tags/parsec-4.0.2411.tar.gz
 	source = use-python-build-installer.patch
+	source = sde-cmake-config.patch
 	sha256sums = 3f5750565b9f673626284dd0ba835dadea3633577fee50ac217baf43a335f2ef
 	sha256sums = 602834fbc4ca080af6e31ca942301b89ae0d33089421bc9f9ce70b81d004e170
+	sha256sums = 40f836f4246c04a043cee49f371e8f5eb06a55f6ec8c7d9360c7a97a46eff7ca
 
 pkgname = parsec

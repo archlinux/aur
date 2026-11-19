@@ -2,7 +2,7 @@
 
 pkgname=parsec
 pkgver=4.0.2411
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic framework for architecture aware scheduling and management of micro-tasks on distributed many-core heterogeneous architectures"
 arch=('x86_64')
 url="https://github.com/ICLDisco/$pkgname"
@@ -27,7 +27,6 @@ makedepends=('cmake'
              'python-build'
              'python-installer'
              'python-setuptools'
-             'python-wheel'
              'cython'
              'python-pandas'
              'valgrind'
@@ -38,14 +37,18 @@ checkdepends=('python-pytables'
 optdepends=('python-pandas: read PaRSEC traces as tables'
             'python-pytables: convert PaRSEC traces to HDF5')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgname-$pkgver.tar.gz"
-        'use-python-build-installer.patch')
+        'use-python-build-installer.patch'
+        'sde-cmake-config.patch')
 sha256sums=('3f5750565b9f673626284dd0ba835dadea3633577fee50ac217baf43a335f2ef'
-            '602834fbc4ca080af6e31ca942301b89ae0d33089421bc9f9ce70b81d004e170')
+            '602834fbc4ca080af6e31ca942301b89ae0d33089421bc9f9ce70b81d004e170'
+            '40f836f4246c04a043cee49f371e8f5eb06a55f6ec8c7d9360c7a97a46eff7ca')
 
 prepare() {
   cd "$pkgname-$pkgname-$pkgver"
   # Build and install the pbt2ptt Python module with python-build and python-installer instead of pip
   patch -Np1 -i ../use-python-build-installer.patch
+  # Install FindSDE.cmake and look for PAPI::SDE in PaRSECConfig.cmake, which libparsec links publicly
+  patch -Np1 -i ../sde-cmake-config.patch
   # Graphviz >= 3 gvRenderData() takes a size_t length
   sed -i 's/gvRenderData(\(gvc, [A-Za-z]*, "png", result\), length);/{ size_t len; gvRenderData(\1, \&len); *length = len; }/' tools/profiling/graph.c
   # Point the Python tool symlinks in /usr/bin at /usr/libexec instead of the DESTDIR path
