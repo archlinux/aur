@@ -2,7 +2,7 @@
 
 _pkgname=gritql
 pkgname=gritql-git
-pkgver=0.5.2.r387.b3e9e54f
+pkgver=0.5.2.r388.b9e923aa
 pkgrel=1
 pkgdesc="GritQL query language for searching, linting, and modifying source code (builds the 'grit' CLI)"
 arch=('x86_64' 'aarch64')
