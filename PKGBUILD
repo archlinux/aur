@@ -1,7 +1,7 @@
 # Maintainer: Joki <jokitm at outlook dot com>
 pkgname=alphabat-git
 _pkgname=alphabat
-pkgver=r17.9a9559f
+pkgver=r19.895b82b
 pkgrel=1
 pkgdesc="Battery status for HyperX Cloud Alpha Wireless headsets"
 arch=('x86_64')
@@ -30,7 +30,7 @@ build() {
 package() {
 	cd "$_pkgname"
     install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-    install -Dm644 "LICENCE" "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
-    install -Dm644 "NOTICE"  "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
+    install -Dm644 "LICENSES/GPL-3.0-or-later.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
+    install -Dm644 "LICENSES/MIT.txt"  "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
     install -Dm644 "$srcdir/99-hyprx.rules" "$pkgdir/usr/lib/udev/rules.d/99-hyprx.rules"
 }
