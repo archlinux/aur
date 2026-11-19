@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=krakend-bin
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc='High-performance, stateless, declarative API gateway (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -19,9 +19,9 @@ source_x86_64=("${_release}/krakend_${pkgver}_amd64_generic-linux.tar.gz"{,.asc}
 source_aarch64=("${_release}/krakend_${pkgver}_arm64_generic-linux.tar.gz"{,.asc})
 sha256sums=('17afd32db829065d7ca5a7ab2c729ba0f076a7d4b6465ee182f23c7869a310ca'
             '6710405313f2e37386f5299581058a0ba5e14bd800262a04759c0faa98e48c08')
-sha256sums_x86_64=('03a1886c3794af6d4520b6562358b0207bcba5c3988f5f162216f9f802cc0f56'
+sha256sums_x86_64=('449446c2470f35c166c4a519bee3ac5da931e735a61fe5916c25957e4584d47d'
                    'SKIP')
-sha256sums_aarch64=('d45f9b3e720ea87255e5f5adf35a22e8c4f1ececdc9461cbb0854b04aadd96da'
+sha256sums_aarch64=('b6d41cab065af6d5ae944563d5f091174d2244a1668becf385d4921bfc912505'
                     'SKIP')
 validpgpkeys=('5B270F2E01E375FD9D5635E25DE6FD698AD6FDD2') # Devops Faith Package Manager
 
