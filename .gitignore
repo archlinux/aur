@@ -1,0 +1,6 @@
+src/
+pkg/
+*.pkg.tar*
+/LICENSE
+/LICENSE-AUXILIARY
+/dexsql-linux-*
