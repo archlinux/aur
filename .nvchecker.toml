@@ -1,0 +1,6 @@
+[bettbox-bin]
+source = 'github'
+github = 'appshubcc/Bettbox'
+use_max_release = true
+include_regex = '^v\d+\.\d+\.\d+$'
+prefix = 'v'
