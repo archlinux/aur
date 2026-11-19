@@ -2,8 +2,8 @@
 # Contributor: Jamie Magee <jamie dot magee at gmail dot com>
 
 pkgname=scorecard
-pkgver=5.6.0
-pkgrel=2
+pkgver=5.7.0
+pkgrel=1
 pkgdesc='Security health metrics for Open Source'
 arch=('x86_64')
 url='https://github.com/ossf/scorecard'
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ossf/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('c0ff21580bf61f72efd6e1b1badaa7b286a169640ba5c471ea16228c60396e5f34b1b8563f63c4fff18bea9571ba1938ae66b56800e4a5f877111461eb55f714')
+b2sums=('dbd11067e9d07bf3f59e68648d9da1582a66923992cf0d7f442d55830a0f5feabc76696a29bf80b8299009f3a66b85917445e33fcec248f79181dbd19e769dd2')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
