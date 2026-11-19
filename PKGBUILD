@@ -3,7 +3,7 @@
 pkgname=bettbox-compatible-bin
 _pkgname=Bettbox
 pkgver=1.19.8
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core. (Build with GOAMD64=v1)"
 arch=('x86_64')
 url="https://github.com/appshubcc/Bettbox"
@@ -14,6 +14,13 @@ conflicts=(
 	'bettbox-lite-compatible' 'bettbox-lite-compatible-bin'
 	'bettbox-lite-compatible-pre' 'bettbox-lite-compatible-pre-bin'
 	'bettbox-lite-pre' 'bettbox-lite-pre-bin' 'bettbox-pre' 'bettbox-pre-bin'
+)
+provides=("${pkgname%-compatible-bin}=${pkgver}")
+depends=(
+    'gtk3'
+    'libayatana-appindicator'
+    'libayatana-indicator'
+    'libkeybinder3'
 )
 optdepends=('polkit: for TUN authorization')
 options=('!debug')
