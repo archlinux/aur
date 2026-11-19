@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="fava-dashboards"
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Custom Dashboards for Beancount in Fava"
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("beanquery" "fava" "python" "python-flask" "python-yaml")
 makedepends=("esbuild" "npm" "python-build" "python-hatch-vcs" "python-hatchling" "python-installer" "python-wheel")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5845994b01c33daf482f1412e84581b9ed4fee4e7651eb2dfc7cf1e04caba348')
+sha256sums=('235cbe136d001e4c3915404a5613930d57046f14a7647bf90c6a2cb6b0d82e5f')
 
 build(){
  cd "$pkgname-$pkgver/frontend"

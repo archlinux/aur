@@ -1,6 +1,6 @@
 pkgbase = fava-dashboards
 	pkgdesc = Custom Dashboards for Beancount in Fava
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/andreasgerstmayr/fava-dashboards
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = fava-dashboards
 	depends = python
 	depends = python-flask
 	depends = python-yaml
-	source = fava-dashboards-2.0.2.tar.gz::https://github.com/andreasgerstmayr/fava-dashboards/archive/refs/tags/v2.0.2.tar.gz
-	sha256sums = 5845994b01c33daf482f1412e84581b9ed4fee4e7651eb2dfc7cf1e04caba348
+	source = fava-dashboards-2.0.3.tar.gz::https://github.com/andreasgerstmayr/fava-dashboards/archive/refs/tags/v2.0.3.tar.gz
+	sha256sums = 235cbe136d001e4c3915404a5613930d57046f14a7647bf90c6a2cb6b0d82e5f
 
 pkgname = fava-dashboards
