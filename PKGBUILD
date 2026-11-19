@@ -1,8 +1,8 @@
 # Maintainer: MeoArch <https://github.com/QwQdoge>
-_srcdir=meo-kde-fb8c0f7bb097a9feb04afa18ae5d091a9e6cd7d5
+_srcdir=meo-kde-1c1c0017f8812faf363bf934790382d651388a30
 pkgname=meo-desktop-beta
 pkgver=0.4.0
-pkgrel=26
+pkgrel=27
 pkgdesc="Meo Desktop integration for MeoArch, powered by KDE Plasma (Beta channel)"
 arch=('x86_64')
 url='https://github.com/QwQdoge/meo-kde'
@@ -33,8 +33,8 @@ install=meo-desktop.install
 # pacman writes the reviewed package payload as .pacnew and the install hook
 # below atomically adopts it during the same transaction.
 backup=('usr/lib/qt6/plugins/org.kde.kdecoration3/org.meo.decoration.so')
-source=('meo-kde-fb8c0f7bb097a9feb04afa18ae5d091a9e6cd7d5.tar.gz::https://codeload.github.com/QwQdoge/meo-kde/tar.gz/fb8c0f7bb097a9feb04afa18ae5d091a9e6cd7d5')
-sha256sums=('3d572487887452fbf6bcd3ccd5ee8e225b5c7d10eed6c8f3faf6150d342cefbb')
+source=('meo-kde-1c1c0017f8812faf363bf934790382d651388a30.tar.gz::https://codeload.github.com/QwQdoge/meo-kde/tar.gz/1c1c0017f8812faf363bf934790382d651388a30')
+sha256sums=('0d7b04057541d7565b63b7dd368198161d47daa9727fa52779e56e71eb5f8f3d')
 
 # The release renderer supplies a pinned source tree as $srcdir/$_srcdir. This
 # recipe intentionally never reads a developer sibling checkout.
