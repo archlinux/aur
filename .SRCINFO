@@ -1,6 +1,6 @@
 pkgbase = prostir-bin
 	pkgdesc = Extra KDE Plasma 6 and Hyprland monitors in a Meta Quest 3 or 3S headset (PC part)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://prostir.ishawyha.dev
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = prostir-bin
 	optdepends = android-tools: connecting the headset over USB (developer mode)
 	provides = prostir
 	conflicts = prostir
-	source = https://github.com/OlexiyOdarchuk/prostir/releases/download/v0.1.0/prostir-0.1.0-x86_64-linux.tar.gz
-	sha256sums = 930e055da0254875be5e1c03f65d31194de0ec98cfa86c206101ae577c0e8574
+	source = https://github.com/OlexiyOdarchuk/prostir/releases/download/v0.1.1/prostir-0.1.1-x86_64-linux.tar.gz
+	sha256sums = ef5466873ab95c72f4ba2e7196dce89499a6fe17d8cfddcf89b357c3611889fe
 
 pkgname = prostir-bin
