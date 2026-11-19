@@ -4,7 +4,7 @@ _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
 _debname="com.${pkgname//-/}.Nuclear"
-pkgver=1.56.0
+pkgver=1.56.4
 _nodeversion=26
 pkgrel=1
 pkgdesc="Streaming music player that finds free music for you."
@@ -32,7 +32,7 @@ optdepends=(
     'gst-libav: FFmpeg-based codec support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/player@${pkgver}.tar.gz")
-sha256sums=('da5739393877f3f8c9999f9da695bb01f58de00c77485dc6cafcf3290bc28058')
+sha256sums=('71f27c2291655c34b3b497581baf67e642de9bfd3d5c1b1875d0f71837113df8')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
