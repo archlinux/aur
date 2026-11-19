@@ -1,7 +1,7 @@
 # Maintainer: colegeming <collegeming@outlook.com>
 
 pkgname=kimi-code-bin
-pkgver=2.6.3
+pkgver=2.7.0
 pkgrel=1
 pkgdesc='Kimi Code CLI - the starting point for next-gen agents (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -28,19 +28,19 @@ options=('!strip')
 # LICENSE comes from the repo at the release tag (see [extras] in
 # metadata.toml); its URL and checksum are filled in by the updater.
 source_x86_64=(
-    "kimi-code-${pkgver}-linux-x64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.6.3/kimi-code-linux-x64.tar.gz"
-    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.6.3/LICENSE"
+    "kimi-code-${pkgver}-linux-x64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.7.0/kimi-code-linux-x64.tar.gz"
+    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.7.0/LICENSE"
 )
 sha256sums_x86_64=(
-    'a138b9854236c2b97f8bd6f28f93dd756f720383177e5cf0f95810b2872bab43'
+    'ca2a8c4b5282c57ab57415defc1bebc1f65c7ad84894c1f65c874a1185e67ae6'
     '23cc68e17992e0b512ae2e80afc5787d7d8e0fbfbdb4fff54ec0245508fa400e'
 )
 source_aarch64=(
-    "kimi-code-${pkgver}-linux-arm64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.6.3/kimi-code-linux-arm64.tar.gz"
-    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.6.3/LICENSE"
+    "kimi-code-${pkgver}-linux-arm64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.7.0/kimi-code-linux-arm64.tar.gz"
+    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.7.0/LICENSE"
 )
 sha256sums_aarch64=(
-    'f3da3f2268683260fe39ceaf37aacd973e56b7e42f41858ff113ed06789f493a'
+    'e3436a332cacdbc993a5db6ddc9309a6b0efc6948ebdb94d58bf2f21a035af59'
     '23cc68e17992e0b512ae2e80afc5787d7d8e0fbfbdb4fff54ec0245508fa400e'
 )
 
