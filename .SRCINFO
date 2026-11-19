@@ -1,6 +1,6 @@
 pkgbase = openvox8-agent-bin
 	pkgdesc = Agent of the OpenVox Automation Framework (non-modular)
-	pkgver = 8.33.0
+	pkgver = 8.33.1
 	pkgrel = 1
 	url = https://voxpupuli.org/openvox/
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = openvox8-agent-bin
 	options = !debug
 	backup = etc/puppetlabs/puppet/puppet.conf
 	backup = etc/puppetlabs/puppet/hiera.yaml
-	source_x86_64 = https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/openvox-agent_8.33.0-1+debian13_amd64.deb
-	b2sums_x86_64 = 1134f10f5bf02b3d1e6ce9c9cb7a0981c9685f94a826214364a04b0eccb85cc91d05f94921a0799618de5a2629a4fccf180edbaca0e7fc105e2e19fae74abbfa
-	source_aarch64 = https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/openvox-agent_8.33.0-1+debian13_arm64.deb
-	b2sums_aarch64 = 1e957384f13d9ad0935e1d069a483c56904eb02bddc4488de23a571dbf5cd17e0255077374fc87afe225900efb36c9eda637ff51e69f988e0fefcbd0c8b1a8eb
-	source_armv7h = https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/openvox-agent_8.33.0-1+debian13_armhf.deb
-	b2sums_armv7h = 9fca05ce301d5a0c3ebbcbcf1067cc73a5af97210e2ef98dd526b9e2e07c60046577501e06ebfafdd7dd0a92ee46c863dd213a570934ead388952a3cfabcb267
+	source_x86_64 = https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/openvox-agent_8.33.1-1+debian13_amd64.deb
+	b2sums_x86_64 = 30d253cb3568c25791aeec1894d13dffc7a44372c08842469586f102d9eee683979c6700627affc02da14b3178cb8bb7202ecb84a4626dddab084747b594f3c6
+	source_aarch64 = https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/openvox-agent_8.33.1-1+debian13_arm64.deb
+	b2sums_aarch64 = 063935d2c416ce8f1140abf843e6ced0f6aa2363803abf8cb2abac8b86b0297f8b6d622155be6e1350f010d401f45a89d7b096b1439272f6086b1c80819f2b6c
+	source_armv7h = https://apt.voxpupuli.org/pool/openvox8/o/openvox-agent/openvox-agent_8.33.1-1+debian13_armhf.deb
+	b2sums_armv7h = 023cd43952c0f60b3ca65a16f879c9d4da51c6168aeedfffe2aba6c6ac4541f9b3aff5cc5426837f6d7ec81a5e4b4060bf5859b4dcb8c270ba0dc24ee2821909
 
 pkgname = openvox8-agent-bin
