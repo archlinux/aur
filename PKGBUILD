@@ -3,7 +3,7 @@
 
 _pkgname="amitools"
 pkgname="$_pkgname"
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Various tools for using AmigaOS programs on other platforms"
 url="https://github.com/cnvogelg/amitools"
@@ -29,7 +29,7 @@ _module="amitools"
 _pkgsrc="$_module-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.$_pkgext")
-sha256sums=('6172074deaf2702b6b5bb03abca22ce3edf665fed3d69e8fdf1d0045059e5a78')
+sha256sums=('a925937de0411d45f996c043843d567d82c5ee7cc56bb5ab51ff3d43e5529932')
 
 build() {
   cd "$_pkgsrc"
