@@ -1,7 +1,7 @@
 # Maintainer: Hmgle <dustgle@gmail.com>
 
 pkgname=graftcp
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A flexible tool for redirecting a program's TCP, UDP, and DNS traffic to SOCKS5 or HTTP proxies."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('go' 'gcc' 'make' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hmgle/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('2f29afbc6fd64159c0ad29030765b79b1c0c542ca7e9c50d68707ae9bd2e6354')
+sha256sums=('f292665d42dfb889b54a25f8fb4affab19acd7c150908b2e548f5d56c88d35d4')
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
