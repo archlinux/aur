@@ -14,4 +14,4 @@ MIHOMO_PARTY_GITHUB_PROXY=http://127.0.0.1:7890 makepkg -s
 
 也可以用已有的 `https_proxy`、`HTTPS_PROXY`、`all_proxy` 或 `ALL_PROXY` 配置代理。未配置时走直连。显式设置 `MIHOMO_PARTY_GITHUB_PROXY=` 可指定直连。代理地址是 HTTP(S) 转发代理，示例端口需与本机代理客户端一致。
 
-AUR 已有上游维护的 [mihomo-party-git](https://aur.archlinux.org/packages/mihomo-party-git)，本项目通过 GitHub 提供构建配方。
+也可以从 [AUR](https://aur.archlinux.org/packages/mihomo-party-ghproxy-git) 获取配方。使用 AUR 助手时，如果构建进程继承了代理环境变量，同样会自动测速。
