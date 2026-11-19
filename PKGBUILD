@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-rs-bin
 pkgdesc="Terminal RPN / XRPN scientific calculator written in Rust"
 
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,8 +30,8 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('9b24bee5a1a8b2b667aec78c1c7851b997e2dc1cc4cd10dfc82c672a79a3018e')
-sha256sums_x86_64=('a32993611ae717ebc204cb6a861d44202aafac2c3a24429f23c09fdd5aa3cea3')
-sha256sums_aarch64=('adb7d9a1d969293fb386f2a5ea88dfedb7ade27f30ff0b28f5af3c6199a0354c')
+sha256sums_x86_64=('e4926bda982bcec099d8ca70c20d28c241f4012c93781fc5dad3a5b7aa6fcd39')
+sha256sums_aarch64=('3b3a7a33b75940841af53835cc3a1fb33e19709d73ef9bba22dae3318668050a')
 
 
 package() {
