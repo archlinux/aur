@@ -5,8 +5,8 @@
 # Maintainer: CloverGit <clovergit@hotmail.com>
 
 pkgname=stm32cubeprog
-pkgver=2.23.0
-pkgrel=4
+pkgver=2.24.0
+pkgrel=1
 pkgdesc='An all-in-one multi-OS software tool for programming STM32 products.'
 arch=('x86_64')
 url='https://www.st.com/en/development-tools/stm32cubeprog.html'
@@ -29,13 +29,24 @@ makedepends=(
 provides=('stm32cubeprogrammer')
 options=('!strip' '!debug')
 
+_installer="SetupSTM32CubeProgrammer_${pkgver}_linux-${arch}.zip"
+
 source=(
-  "SetupSTM32CubeProgrammer_linux_64-${pkgver}.zip::https://www.st.com/cloudfront/publish/stm32cubeprg-lin-v${pkgver//./-}/${pkgver}/en/SetupSTM32CubeProgrammer_linux_64.zip"
+  "local://${_installer}"
   'SLA0048_STM32CubeProg.pdf'
 )
 
-sha256sums=('6a9e60a5a048c45eb3241f9bb66bdc2e6cbd0119fb2e42568dc059fc6167442a'
+sha256sums=('c450051932af9050852ea34f0a31f5178dd9785e7ee084de8d0b30fb8e0f1f76'
             'c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702')
+
+if [ ! -f "${startdir}/${_installer}" ]; then
+  echo ""
+  echo "  ==> ERROR: Source package '${_installer}' not found in build directory!"
+  echo "  ==> Please download the Linux installer manually from:"
+  echo "      ${url}"
+  echo "  ==> And place it in: ${startdir}"
+  echo ""
+fi
 
 prepare() {
   cd "${srcdir}"
@@ -129,4 +140,5 @@ EOF
     "${pkgdir}/opt/${pkgname}/updater" \
     "${pkgdir}/opt/${pkgname}/.installationinformation"
 }
+
 # vim: set sw=2 ts=2 et:
