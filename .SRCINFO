@@ -1,0 +1,23 @@
+pkgbase = xmms-qtify
+	pkgdesc = XMMS, the GTK 1.2 audio player, built on Qt with GTK made Qt
+	pkgver = 1.2.11
+	pkgrel = 1
+	url = https://github.com/deepfire/xmms
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = pkgconf
+	depends = gtk-made-qt
+	depends = glib2
+	depends = alsa-lib
+	depends = libvorbis
+	depends = libogg
+	provides = xmms
+	conflicts = xmms
+	options = !lto
+	source = xmms-5847897230da018d93cd9833695f944ece96587b.tar.gz::https://github.com/deepfire/xmms/archive/5847897230da018d93cd9833695f944ece96587b.tar.gz
+	source = xmms.desktop
+	sha256sums = 3963f5e2c0c9b55598dff2e0e86a4b02cae952c46a82f43a62421b22b32d05d1
+	sha256sums = bcd49d1fb9f9b66eccd574f347d9ba887703dfb64738d75426122997a1698350
+
+pkgname = xmms-qtify
