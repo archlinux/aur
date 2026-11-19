@@ -4,7 +4,7 @@
 # and published to the AUR with packaging/aur/publish.sh (see RELEASING.md). Don't edit it on the AUR directly.
 pkgname=xtouch-daemon-gui-bin
 _pkgname=xtouch-daemon-gui
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="The GUI of xtouch-daemon: edit the configuration of the X-Touch Extender, with a live view of the device"
 arch=('any')
@@ -15,7 +15,7 @@ depends=("xtouch-daemon-bin=${pkgver}" 'python>=3.14' 'python<3.15' 'python-pyqt
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}-any.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-any.tar.gz")
-sha256sums=('d262bc92f64c9fb4f979858385d3a70304337b36d38f2e2e31164e5844865cc3')
+sha256sums=('aa652c28f482a2f95ea978a6ca6cee8958105c1fc13d71c51896d50f3216b167')
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}-any"
