@@ -3,5 +3,6 @@
 *.tar.zst
 *.tar.gz
 *.tar.xz
+__pycache__
 pkg
 src
