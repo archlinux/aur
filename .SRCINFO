@@ -1,6 +1,6 @@
 pkgbase = dream-llmchatbox
 	pkgdesc = Chat with local AI models (Ollama) - tools, folders, memory, groups, speech, German/English
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/yakuda-stack/Dream-LLMChatBox
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = dream-llmchatbox
 	depends = libxrandr
 	depends = hicolor-icon-theme
 	optdepends = ollama: run the local AI models (or ollama-vulkan / ollama-rocm)
+	optdepends = bubblewrap: sandbox for terminal commands
 	optdepends = xdg-utils: open links, files and folders
 	optdepends = polkit: start/stop the Ollama service and switch its graphics backend
 	optdepends = libnotify: desktop notification when an automation is done
@@ -35,7 +36,7 @@ pkgbase = dream-llmchatbox
 	optdepends = podman: run test environment commands in a container
 	optdepends = docker: run test environment commands in a container
 	options = !lto
-	source = dream-llmchatbox-0.1.4.tar.gz::https://github.com/yakuda-stack/Dream-LLMChatBox/archive/refs/tags/v0.1.4.tar.gz
-	sha256sums = 25c066b92f8b1f36accd755239e014af61ee4e76b3841540a22ebb4cb8dfd91d
+	source = dream-llmchatbox-0.1.5.tar.gz::https://github.com/yakuda-stack/Dream-LLMChatBox/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = 0f50b971bbc22f1ed8d30aa33c261dc40a30003e4264185f470c8669695d0917
 
 pkgname = dream-llmchatbox

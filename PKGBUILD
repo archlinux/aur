@@ -1,6 +1,6 @@
 # Maintainer: yakuda <yakuda@outlook.de>
 pkgname=dream-llmchatbox
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Chat with local AI models (Ollama) - tools, folders, memory, groups, speech, German/English"
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=('glibc' 'gcc-libs' 'alsa-lib' 'fontconfig' 'freetype2'
 makedepends=('cargo' 'cmake' 'clang')
 options=('!lto')
 optdepends=('ollama: run the local AI models (or ollama-vulkan / ollama-rocm)'
+            'bubblewrap: sandbox for terminal commands'
             'xdg-utils: open links, files and folders'
             'polkit: start/stop the Ollama service and switch its graphics backend'
             'libnotify: desktop notification when an automation is done'
@@ -27,7 +28,7 @@ optdepends=('ollama: run the local AI models (or ollama-vulkan / ollama-rocm)'
             'docker: run test environment commands in a container')
 _tag="v${pkgver/_/-}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('25c066b92f8b1f36accd755239e014af61ee4e76b3841540a22ebb4cb8dfd91d')
+sha256sums=('0f50b971bbc22f1ed8d30aa33c261dc40a30003e4264185f470c8669695d0917')
 
 _srcdir() { echo "Dream-LLMChatBox-${_tag#v}"; }
 
