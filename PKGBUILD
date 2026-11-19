@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 pkgname=pipdeptree
-pkgver=4.2.14
+pkgver=4.2.15
 pkgrel=1
 pkgdesc="Command line utility to show dependency tree of Python packages"
 arch=('x86_64' 'aarch64')
@@ -26,10 +26,11 @@ makedepends=(
   'python-setuptools'
   'python-setuptools-scm'
   'python-scikit-build-core'
+  'python-sbom'
   'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a324eb8bc7f914b72b4bb92ce1916bd65535173f24999efc553784d32cecd292')
+sha256sums=('e0712918a408e06efef463099daaad13e7d9de5f0a8e68a49787ebe37a3ec404')
 
 prepare() {
   cd "$pkgname-$pkgver"
