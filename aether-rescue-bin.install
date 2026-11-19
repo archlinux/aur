@@ -1,0 +1,9 @@
+post_install() {
+	echo "NOTE: to use aether as your boot initramfs, set HOOKS=(aether ...) in /etc/mkinitcpio.conf, then:"
+	echo "  sudo mkinitcpio -P"
+	echo "Rescue images are built locally — see https://github.com/Fgaoxing/Aether for details."
+}
+
+post_upgrade() {
+	post_install
+}
