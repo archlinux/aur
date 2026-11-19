@@ -1,7 +1,7 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-git
-pkgver=r934.de05168
+pkgver=r937.934c5c5
 pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
@@ -35,7 +35,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	cargo build --release --workspace
+	cargo build --release --workspace --locked
 	# ferriscope's WSI layer, from the ferriscope version in Cargo.lock.
 	DESTDIR="$srcdir/wsi" dist/install-wsi.sh
 }
@@ -44,7 +44,13 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm755 target/release/moonshine "$pkgdir/usr/bin/moonshine"
 	install -Dm755 dist/start-moonshine.sh "$pkgdir/usr/bin/start-moonshine.sh"
-	install -Dm755 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	# install-wsi.sh clones ferriscope into target/ferriscope-src/v<version>.
+	local ferriscope
+	ferriscope=$(echo target/ferriscope-src/v*)
+	install -Dm644 "$ferriscope/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.ferriscope"
+	install -Dm644 "$ferriscope/protocol/ferriscope-swapchain-v1.xml" \
+		"$pkgdir/usr/share/licenses/$pkgname/ferriscope-swapchain-v1.xml"
 	install -Dm644 dist/moonshine@.service "$pkgdir/usr/lib/systemd/system/moonshine@.service"
 	install -Dm644 dist/60-moonshine.rules "$pkgdir/usr/lib/udev/rules.d/60-moonshine.rules"
 	install -Dm644 dist/moonshine-modules.conf "$pkgdir/usr/lib/modules-load.d/moonshine.conf"
