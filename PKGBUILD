@@ -2,7 +2,7 @@
 # Contributor: Thomas Millward Wright <tmillwardwright@gmail.com>
 pkgname=perimeter81
 pkgver=10.1.1.339
-pkgrel=1
+pkgrel=2
 pkgdesc='Perimeter81 agent application'
 arch=('x86_64')
 url='https://support.perimeter81.com/docs/downloading-the-agent'
@@ -15,8 +15,8 @@ source=(
   'LICENSE'
 )
 sha256sums=('03868c3c0a52dee87594a6d74af47479023da726f655066887c5e7d94366724e'
-  '3a081715b806d54b09d65f17c0f38c0ce40d99b9157555f6c63245afcc702baf'
-  'c505b227d3f2222305800c16805f29b8da3bf841bf71df36674a695528bd0731')
+            'ff96b99097667e770b30837026e308736c264ac63c7c0361ef581692b294af61'
+            'c505b227d3f2222305800c16805f29b8da3bf841bf71df36674a695528bd0731')
 
 prepare() {
   bsdtar -xf data.tar.xz
