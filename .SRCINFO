@@ -1,6 +1,6 @@
 pkgbase = gtk4-polkit-agent-bin
 	pkgdesc = Minimal GTK4 polkit authentication agent for Wayland (prebuilt)
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://gitlab.com/nisby/gtk4-polkit-agent
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gtk4-polkit-agent-bin
 	conflicts = gtk4-polkit-agent
 	options = !strip
 	options = !debug
-	source = gtk4-polkit-agent-bin-0.1.2.tar.gz::https://gitlab.com/nisby/gtk4-polkit-agent/-/releases/v0.1.2/downloads/gtk4-polkit-agent-v0.1.2-x86_64.tar.gz
-	sha256sums = f2f294f723acbcdc4c89921a06e5c611108566b384ef78bfe1949f7958bbb237
+	source = gtk4-polkit-agent-bin-0.1.3.tar.gz::https://gitlab.com/nisby/gtk4-polkit-agent/-/releases/v0.1.3/downloads/gtk4-polkit-agent-v0.1.3-x86_64.tar.gz
+	sha256sums = 49473500bbff7d8f478e442977c3e3f4dcbc7cfa9c495f221e0cd94749581975
 
 pkgname = gtk4-polkit-agent-bin
