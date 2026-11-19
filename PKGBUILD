@@ -2,7 +2,7 @@
 
 pkgname=jotty-git
 _pkgname=jotty
-pkgver=2.3.0.r0.g69d57af
+pkgver=2.4.0.r0.g3aeeb19
 pkgrel=1
 pkgdesc='An opinionated, Wayland-native terminal emulator that supports both CPU and GPU renderer'
 arch=('x86_64' 'aarch64')
