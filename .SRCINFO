@@ -1,7 +1,7 @@
 pkgbase = stm32cubemx2-electron
-	pkgdesc = STM32CubeMX2 - new flavor of STM32CubeMX tool
+	pkgdesc = STM32CubeMX2 - new flavor of STM32CubeMX tool. Run with system electron
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.st.com/en/development-tools/stm32cubemx.html
 	arch = x86_64
 	groups = stm32cube

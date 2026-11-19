@@ -3,8 +3,8 @@
 pkgname=stm32cubemx2-electron
 _pkgname=stm32cubemx2
 pkgver=1.2.0
-pkgrel=1
-pkgdesc="STM32CubeMX2 - new flavor of STM32CubeMX tool"
+pkgrel=2
+pkgdesc="STM32CubeMX2 - new flavor of STM32CubeMX tool. Run with system electron"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubemx.html"
 license=('custom:SLA0048')
