@@ -1,6 +1,6 @@
 # Maintainer: Tino Gohl <tuvbunn2@googlemail.com>
 pkgname=tinox-bin
-pkgver=2.9.6
+pkgver=2.9.7
 pkgrel=1
 pkgdesc="Native, statically typed programming language with an LLVM backend, garbage collection, and concurrency support (prebuilt binary)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
 provides=("tinox=$pkgver")
 conflicts=('tinox')
 source=("https://github.com/subnix-work/tinox/releases/download/v${pkgver}/tinox-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('ad2a1c327faa2ca37c87d99b1bd60daed4bc3d3bddd3f9cf51cb38385a6a031a')
+sha256sums=('36933116cc80e9503341b84c147cb25710450cf6a1fd3441eaa584e9bf8c5311')
 
 package() {
   cd "$srcdir"
