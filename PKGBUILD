@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=ducter-bin
-pkgver=0.0.84
+pkgver=0.0.90
 pkgrel=1
 pkgdesc="Personal AI that dispatches work to coding agents on your own machines and reports back"
 arch=('x86_64' 'aarch64')
@@ -32,9 +32,9 @@ source_aarch64=(
     "${_tar_aarch64}::${_repo}/releases/download/v${pkgver}/${_tar_aarch64}"
     "LICENSE::${_repo}/raw/v${pkgver}/LICENSE"
 )
-sha256sums_x86_64=('193c1894d4dff30747b0e563e9acd41e8882772b2aafb85d7edb9acb98b8a0dc'
+sha256sums_x86_64=('75dcb4e6fed82dac54e0f71fb72d2790e1327cddccf0d0cc2df94d83a9fae9c6'
                    'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_aarch64=('40b579811731cf06a2053a80f76af7c816998840ead6f1dd6beba930afa57e60'
+sha256sums_aarch64=('0bb8613472574efa21f8c556e49989f80aaba13e06bb0a9e928feafc9a6ee32b'
                     'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package() {
