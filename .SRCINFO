@@ -1,6 +1,6 @@
 pkgbase = python-openinference-instrumentation
 	pkgdesc = OpenInference instrumentation utilities.
-	pkgver = 0.1.79
+	pkgver = 0.1.80
 	pkgrel = 1
 	url = https://github.com/Arize-ai/openinference/tree/main/python/openinference-instrumentation
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-openinference-instrumentation
 	depends = python-opentelemetry-sdk
 	depends = python-openinference-semantic-conventions
 	depends = python-wrapt
-	source = openinference-instrumentation-0.1.79.tar.gz::https://github.com/Arize-ai/openinference/archive/refs/tags/python-openinference-instrumentation-v0.1.79.tar.gz
-	sha256sums = ef0964f4ddf9e42338a79789243a2598f434e1ace168cf2da6cdfddaa7feeb37
+	source = openinference-instrumentation-0.1.80.tar.gz::https://github.com/Arize-ai/openinference/archive/refs/tags/python-openinference-instrumentation-v0.1.80.tar.gz
+	sha256sums = 5b58235252f7a834f4a0b29c26fe10153bff60bacbf831b719f611eeaee6da10
 
 pkgname = python-openinference-instrumentation
