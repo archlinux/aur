@@ -2,7 +2,7 @@
 
 pkgname=mriya-wm
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Stacking Wayland window manager with xfwm4 window decorations"
 arch=('x86_64')
 url="https://github.com/acidnik/mriya-wm"
@@ -11,7 +11,7 @@ depends=('libxkbcommon' 'mesa' 'wayland' 'fontconfig' 'freetype2')
 optdepends=('waybar: the panel the default config starts'
             'xcursor-themes: cursor themes for the compositor to load')
 makedepends=('cargo' 'git')
-source=("$pkgname::git+$url.git#commit=ce9bc638495d370155a8934a4d6c47ef0bb68c41")
+source=("$pkgname::git+$url.git#commit=5687d9dcda16c92367fc5cc59143643c0935a4a5")
 sha256sums=('SKIP')
 
 build() {

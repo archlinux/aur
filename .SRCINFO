@@ -1,7 +1,7 @@
 pkgbase = mriya-wm
 	pkgdesc = Stacking Wayland window manager with xfwm4 window decorations
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/acidnik/mriya-wm
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = mriya-wm
 	depends = freetype2
 	optdepends = waybar: the panel the default config starts
 	optdepends = xcursor-themes: cursor themes for the compositor to load
-	source = mriya-wm::git+https://github.com/acidnik/mriya-wm.git#commit=ce9bc638495d370155a8934a4d6c47ef0bb68c41
+	source = mriya-wm::git+https://github.com/acidnik/mriya-wm.git#commit=5687d9dcda16c92367fc5cc59143643c0935a4a5
 	sha256sums = SKIP
 
 pkgname = mriya-wm
