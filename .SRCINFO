@@ -1,0 +1,20 @@
+pkgbase = kraken-cli
+	pkgdesc = Kraken exchange CLI, interactive shell, and MCP server
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/krakenfx/kraken-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	conflicts = kraken-cli-bin
+	options = !debug
+	options = !lto
+	source = kraken-cli-0.5.1.tar.gz::https://github.com/krakenfx/kraken-cli/releases/download/v0.5.1/source.tar.gz
+	sha256sums = 48082c89d48b0126a7cc9befb55447d159b120bb7a3f8981b47098631e8a399a
+
+pkgname = kraken-cli
