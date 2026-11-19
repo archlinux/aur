@@ -7,7 +7,7 @@ pkgname=(
   lib32-openal
 )
 pkgver=1.25.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform 3D audio library, software implementation (32-bit)"
 url="https://github.com/kcat/openal-soft"
 arch=(x86_64)
@@ -41,6 +41,8 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib32
     -DALSOFT_EXAMPLES=OFF
     -DALSOFT_UTILS=OFF
+    -DALSOFT_ENABLE_MODULES=OFF
+    -DCMAKE_CXX_SCAN_FOR_MODULES=OFF
   )
 
   export CC="gcc -m32 -mstackrealign"
