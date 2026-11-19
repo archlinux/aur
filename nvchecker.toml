@@ -1,0 +1,9 @@
+# Track the ProjectLibre source tarball in the SourceForge release folder.
+# Run: nvchecker -c nvchecker.toml
+[__config__]
+oldver = "oldver.json"
+newver = "newver.json"
+
+[projectlibre]
+source = "cmd"
+cmd = 'curl -fsSL "https://sourceforge.net/projects/projectlibre/rss?path=/ProjectLibre" 2>/dev/null | grep -oE "projectlibre-[0-9.]+\.tar\.gz" | sed -E "s/projectlibre-//; s/\.tar\.gz//" | sort -V | tail -n1'

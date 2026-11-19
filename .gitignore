@@ -3,3 +3,7 @@ pkg/
 *.zst
 *.gz
 *.xz
+
+# nvchecker local version records (not committed)
+oldver.json
+newver.json
