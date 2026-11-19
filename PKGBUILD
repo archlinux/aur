@@ -6,7 +6,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=lib32-pam
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc='Pluggable Authentication Modules'
 arch=(x86_64)
@@ -33,7 +33,7 @@ validpgpkeys=(
         '296D6F29A020808E8717A8842DB5BD89A340AEB7' # Dimitry V. Levin <ldv@altlinux.org>
         '7BECFE3AF7B280BB52FF77F104BA4521C996DDE1' # Dmitry V. Levin <ldv@strace.io
 )
-b2sums=('7fac16161ee8abab8639f5661badcf29536f0df71fec085075b657f91264fa7e616ae74c60e77fd8503d767517847dda877f583f20ca354e2ba45a381d89c998')
+b2sums=('a533679b3362f9ebb67a7652454af9402ee845e1bd6f99064b870b38f9dc7a6ec62a73d65af2086e863448742714b6eb6a91d0ad2209e77325fd127635230648')
 options=(!emptydirs)
 
 pkgver() {
