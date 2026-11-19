@@ -3,7 +3,7 @@
 # `markview-bin` packages the prebuilt archive from the same release. Both
 # install the same files, so they conflict with each other.
 pkgname=markview
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A fast, native Markdown reader with publication-quality typography.'
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
 	'vulkan-icd-loader'
 	'xdg-desktop-portal'
 )
-makedepends=('cargo' 'rust>=1.96' 'fontconfig')
+makedepends=('cargo' 'rust>=1.100.0' 'fontconfig')
 optdepends=(
 	'noto-fonts-cjk: CJK glyphs for Chinese, Japanese, and Korean text'
 	'noto-fonts-emoji: colour Emoji glyphs'
@@ -36,7 +36,7 @@ source=(
 	'markview.mime.xml'
 )
 sha256sums=(
-	'a610e6b59619dcb9986a07e13b5472d294f968560e090ffa94ee391bbc6062f8'
+	'9056657e49b3f67b6620d175132ecb65a38c32aa316ff5ec76c7cf03a1f8a3a8'
 	'c2b54efc155e407495127927cabafb92b369a4ead7e1a04d8246f9939bf280b0'
 )
 
@@ -54,12 +54,10 @@ build() {
 	# compiler flags are dropped for this build and cargo owns the C flags.
 	unset CFLAGS CXXFLAGS LDFLAGS
 
-	# Pinning to the stable toolchain keeps the build off a rustup-default
-	# nightly. `+stable` is a no-op on a plain `rust` installation.
-	# The registry lives under `$srcdir` so that nothing is written to the
-	# builder's home directory, and so the cache is removed with the build.
-	cargo +stable fetch --locked
-	cargo +stable build --release --locked --offline
+	# `rust-toolchain.toml` selects the release toolchain for `rustup` users.
+	# Keep the Cargo registry under `$srcdir`.
+	cargo fetch --locked
+	cargo build --release --locked --offline
 }
 
 package() {
