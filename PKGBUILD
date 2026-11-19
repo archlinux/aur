@@ -9,7 +9,7 @@ pkgname=(
 )
 pkgbase=python-nab
 _name=${pkgbase#python-}
-pkgver=0.0.25
+pkgver=0.0.28
 pkgrel=1
 pkgdesc="PubGrub-based dependency resolver for Python packages."
 arch=('any')
@@ -17,12 +17,12 @@ url="https://github.com/notatallshaw/nab"
 license=('MIT')
 makedepends=(
   'python-build'
-  'python-hatchling'
+  'python-hatchling'  ## >=0.0.29 requires >=1.33.0
   'python-installer'
   'python-wheel'
 )
 source=("${_name}-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e877044b60b3427a395a567caf027d8e6f8e007717920918ee76aacfe4f122f7')
+sha256sums=('4dd307e9dd68304b4083de054afcfa8c713bf585f21a6933b2f0f238ada79468')
 
 build() {
   cd "${_name}-$pkgver"
@@ -63,6 +63,7 @@ package_python-nab-index() {
   pkgdesc="PyPI Simple-API client and on-disk cache for nab"
   depends=(
     'python-nab-provider'
+    'python-nab-resolver'
     'python-packaging'
     'python-truststore'
     'python-typing_extensions'
@@ -81,10 +82,8 @@ package_python-nab-index() {
 
 package_python-nab-markersets() {
   pkgdesc="PEP 508 marker algebra: markers as sets of environments"
-  depends=(
-    'python-packaging'
-    'python-typing_extensions'
-  )
+  depends=('python-nab-resolver')
+  optdepends=('python-packaging')
 
   cd "${_name}-$pkgver/${pkgname#python-}"
   python -m installer --destdir="$pkgdir" dist/*.whl
@@ -104,7 +103,6 @@ package_python-nab-project() {
     'python-packaging'
     'python-pyproject-hooks'
     'python-tomli'
-    'python-tomli-w'
     'python-typing_extensions'
   )
   conflicts=('python-nab-python')
@@ -132,7 +130,7 @@ package_python-nab-provider() {
 
 package_python-nab-resolver() {
   pkgdesc="Generic PubGrub dependency-resolver core"
-  depends=('python-typing_extensions')
+  depends=('python')
 
   cd "${_name}-$pkgver/${pkgname#python-}"
   python -m installer --destdir="$pkgdir" dist/*.whl
