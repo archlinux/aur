@@ -9,7 +9,8 @@ pkgrel=1
 pkgdesc='A stacking Wayland compositor built on Smithay'
 arch=(x86_64 aarch64)
 url='https://github.com/igalmarino/pila'
-license=(GPL-3.0-or-later)
+# Apache-2.0: the icons built into pila-bar and pila-osd (bar/icons).
+license=(GPL-3.0-or-later Apache-2.0)
 # The libraries Pila links (readelf -d), EGL (loaded at runtime through
 # libglvnd) and bash for pila-session and pila-report. Xwayland, which Pila
 # starts for X11 apps, is optional: without it, there are none.
@@ -29,14 +30,9 @@ optdepends=(
     'xorg-xwayland: X11 apps (games, older programs)'
     'kitty: the default terminal (or foot, alacritty, ...)'
     'xdg-desktop-portal-wlr: screen sharing'
-    'grim: screenshots'
-    'slurp: picking the screen to share, and screenshot regions'
     'xdg-desktop-portal-gtk: file chooser and other portals'
-    'wl-clipboard: Mod+Shift+S, a region of the screen to the clipboard (wl-copy)'
     'swaylock: locking the session'
     'xdg-utils: opening links and files from programs such as kitty (xdg-open)'
-    'pciutils: the GPU and its driver in pila-report (lspci)'
-    'ttf-nerd-fonts-symbols: icons in pila-bar and pila-osd (or otf-font-awesome, or any Nerd Font)'
     'wireplumber: the volume and mute keys (wpctl)'
 )
 provides=(pila)
@@ -76,7 +72,8 @@ prepare() {
     local target
     target="$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --locked --target "$target"
-    # pila-launcher and pila-bar: a cargo workspace of their own, with its own lock.
+    # pila-launcher, pila-bar, pila-switcher, pila-osd and pila-shot: a cargo
+    # workspace of their own, with its own lock.
     cargo fetch --locked --target "$target" --manifest-path launcher/Cargo.toml
 }
 
