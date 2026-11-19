@@ -2,7 +2,7 @@
 
 pkgname=profilecli-bin
 _pkgname=profilecli
-pkgver=2.3.1
+pkgver=2.4.3
 pkgrel=1
 pkgdesc='CLI for Grafana Pyroscope, the continuous profiling aggregation system (static binary)'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ _url_base="https://github.com/grafana/pyroscope/releases/download/v$pkgver"
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$_url_base/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$_url_base/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('c01eb19acce7a966d992117bbbd59aa7efacc58922b17450cdebfeb0c994308b')
-sha256sums_aarch64=('790c3183f9ce8d4a8904a19588f23a32e8483a0970074696c6d662c636b8ace2')
+sha256sums_x86_64=('f527ea43702046e029d3f7b82439066632e8aba7b1b3fd0b29876701a106666b')
+sha256sums_aarch64=('e2b6dd0a9e7a68a748fe844cf16ca1ac71fb8aecfded91f5cafcb5ce0ab89ef8')
 
 build() {
   cd "$srcdir"
