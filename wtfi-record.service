@@ -1,0 +1,12 @@
+[Unit]
+Description=wtfi background recorder
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/wtfi --record --every 30s
+StandardOutput=null
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
