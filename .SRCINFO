@@ -1,6 +1,6 @@
 pkgbase = binger-bin
 	pkgdesc = Keyboard-driven pointer selection for wlroots Wayland compositors
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/borber/binger
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = binger-bin
 	depends = libxkbcommon
 	provides = binger
 	conflicts = binger
-	source = binger-bin-0.1.1.tar.gz::https://github.com/borber/binger/releases/download/v0.1.1/binger-0.1.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = f0e0e432c2400614f70f829e28b1a6b4177f416e5d2b5a52b7649e57c575d5f1
+	source = binger-bin-0.1.2.tar.gz::https://github.com/borber/binger/releases/download/v0.1.2/binger-0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 0e7b08160f873aea1dba433ae8f62fd5b38e7921d8728a3bd8839e5fd7a9df3c
 
 pkgname = binger-bin

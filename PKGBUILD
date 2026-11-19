@@ -1,7 +1,7 @@
 # Maintainer: Borber <borber dot drum at gmail dot com>
 
 pkgname=binger-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Keyboard-driven pointer selection for wlroots Wayland compositors'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('binger')
 conflicts=('binger')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/borber/binger/releases/download/v$pkgver/binger-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 
-sha256sums=('f0e0e432c2400614f70f829e28b1a6b4177f416e5d2b5a52b7649e57c575d5f1')
+sha256sums=('0e7b08160f873aea1dba433ae8f62fd5b38e7921d8728a3bd8839e5fd7a9df3c')
 
 package() {
     install -Dm755 binger "$pkgdir/usr/bin/binger"
