@@ -5,7 +5,7 @@
 # Contributor: Daniel Haß <aur@hass.onl>
 
 pkgname=standardnotes
-pkgver=3.202.11
+pkgver=3.203.0
 pkgrel=1
 pkgdesc="Think fearlessly with end-to-end encrypted notes and files"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('nvm' 'python-setuptools' 'yarn')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/standardnotes/app/archive/@standardnotes/desktop@${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('e636a0adc691d651a7421c1afed6ca80c675eb9ca72dcd22411407991405cb21'
+sha256sums=('d8a16457f3dbe2733e186f344caaf0cc57de07b677bb387a77f344c632fc2f81'
             'b990343f6d187f3997129a7e2d5892fb2cb7a942a8040f9be2b8887ad5150215'
             '6dc53fdd5d597acd1bcc1bfe7ecc6458291fb53c5b1a4d2ece12e0dbfa8b41a2')
 
