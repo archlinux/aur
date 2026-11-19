@@ -1,0 +1,15 @@
+post_install() {
+  # Start with the graphical session for every user. Each user can still switch the effect off for good with the
+  # tray's Display switch (or `windfallctl off`); that choice is remembered between sessions.
+  systemctl --global enable windfalld.service >/dev/null 2>&1 || true
+  echo "==> Windfall will start with your next Hyprland session. Start it now with: windfalld &"
+  echo "    Show/hide it any time from the tray icon (or: windfallctl toggle). The choice is remembered."
+}
+
+post_upgrade() {
+  systemctl --global enable windfalld.service >/dev/null 2>&1 || true
+}
+
+pre_remove() {
+  systemctl --global disable windfalld.service >/dev/null 2>&1 || true
+}
