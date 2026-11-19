@@ -1,6 +1,6 @@
 pkgbase = delta-backup
 	pkgdesc = Time travel for your files in GNOME, with BorgBackup
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://delta.sincorchetes.tech
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = delta-backup
 	optdepends = nautilus-python: the right-click menu and the versions window from Nautilus
 	optdepends = gnome-keyring: where passwords are kept
 	optdepends = yelp: the help (F1)
-	source = delta-0.1.1.tar.gz::https://github.com/sincorchetes/delta/archive/v0.1.1.tar.gz
-	sha256sums = 190274a4f1b5bd3c82416b9d79c8893059c4de48038e6e2c588b59466be1df59
+	source = delta-0.1.2.tar.gz::https://github.com/sincorchetes/delta/archive/v0.1.2.tar.gz
+	sha256sums = 1c6e6e7355d3e8ae2cf26ffc6f021add189739194f73513e7a4b040e9d391f74
 
 pkgname = delta-backup
