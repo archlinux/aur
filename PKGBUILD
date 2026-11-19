@@ -5,16 +5,19 @@ pkgname="${_pkgname}"
 pkgver=5
 _cssver=2
 #_cssver="${pkgver}"
-pkgrel=17
+pkgrel=18
 pkgdesc='Clicker game where you control an AI whose aim is to create as many paperclips as possible. Patched version which loads a colour highlight UI mod if that is installed, and which does not load content from google and with removed external links.'
 arch=('any')
 url='https://decisionproblem.com/paperclips/'
 _downloadbase='https://decisionproblem.com/paperclips'
-license=('custom:unknown')
+license=('LicenseRef-unknown')
 makedepends=(
-  'zopflipng-parallel'  # To size-optimise PNG images.
+  'zopfli'    # To size-optimise PNG images.
+  'parallel'  # To size-optimise PNG images.
 )
-depends=('electron')
+depends=(
+  'electron'
+)
 optdepends=(
   'universalpaperclips-colouruimod: For colourised highlight of several status values.'
 )
@@ -22,21 +25,21 @@ provides=(
   "${_pkgname}-colouruimodready=${pkgver}"
 )
 source=(
-  "index2.html::${_downloadbase}/index2.html"
-  "main.js::${_downloadbase}/main.js?v${pkgver}"
-  "globals.js::${_downloadbase}/globals.js?v${pkgver}"
-  "projects.js::${_downloadbase}/projects.js?v${pkgver}"
-  "combat.js::${_downloadbase}/combat.js?v${pkgver}"
-  "interface.css::${_downloadbase}/interface.css?v${_cssver}"
-  "mobile-title.png::${_downloadbase}/mobile-title.png"
-  "test.mp3::${_downloadbase}/test.mp3"
-  # "apple_badge.svg::${_downloadbase}/apple_badge.svg"   # Apple store badge not needed since we patch out links to external content.
-  # "google_badge.svg::${_downloadbase}/google_badge.svg" # Google play store badge not needed since we patch out links to external content.
-  "index.html::${_downloadbase}/index.html"
-  "titlescreen.css::${_downloadbase}/titlescreen.css?v${_cssver}"
-  "title.png::${_downloadbase}/title.png"
-  "patch1notes.html::${_downloadbase}/patch1notes.html"
-  "patch2notes.html::${_downloadbase}/patch2notes.html"
+  "${_pkgname}-v${pkgver}.index2.html::${_downloadbase}/index2.html"
+  "${_pkgname}-v${pkgver}.main.js::${_downloadbase}/main.js?v${pkgver}"
+  "${_pkgname}-v${pkgver}.globals.js::${_downloadbase}/globals.js?v${pkgver}"
+  "${_pkgname}-v${pkgver}.projects.js::${_downloadbase}/projects.js?v${pkgver}"
+  "${_pkgname}-v${pkgver}.combat.js::${_downloadbase}/combat.js?v${pkgver}"
+  "${_pkgname}-v${pkgver}.interface.css::${_downloadbase}/interface.css?v${_cssver}"
+  "${_pkgname}-v${pkgver}.mobile-title.png::${_downloadbase}/mobile-title.png"
+  "${_pkgname}-v${pkgver}.test.mp3::${_downloadbase}/test.mp3"
+  # "${_pkgname}-v${pkgver}.apple_badge.svg::${_downloadbase}/apple_badge.svg"   # Apple store badge not needed since we patch out links to external content.
+  # "${_pkgname}-v${pkgver}.google_badge.svg::${_downloadbase}/google_badge.svg" # Google play store badge not needed since we patch out links to external content.
+  "${_pkgname}-v${pkgver}.index.html::${_downloadbase}/index.html"
+  "${_pkgname}-v${pkgver}.titlescreen.css::${_downloadbase}/titlescreen.css?v${_cssver}"
+  "${_pkgname}-v${pkgver}.title.png::${_downloadbase}/title.png"
+  "${_pkgname}-v${pkgver}.patch1notes.html::${_downloadbase}/patch1notes.html"
+  "${_pkgname}-v${pkgver}.patch2notes.html::${_downloadbase}/patch2notes.html"
   'index2.01.html_remove-external-content.patch'
   'index2.02.html_reenable-threnody-music.patch'
   'index2.03.html_add-uimod-by-timophy.patch'
@@ -51,7 +54,7 @@ source=(
   'license-dummy.txt'
 )
 sha256sums=(
-  '0174dd761dadacb8eb8e5e6806b9b6a1cb24c65cba63092e9d39bd0944136214' # index2.html
+  '526b148a2eabe6543c4964e625fc3bba53984b2c294415fdec939b077478b9cb' # index2.html
   'ee599076de868869e533490505189ddcb72dcc8748909ceeebe11e789f1b3a0a' # main.js
   '968abd83c7090f24b6817842b4453b6d24de0e03e06d7ccb5ec4d15bee520919' # globals.js
   '05034c51809bc0632e8963e671c8e68c68604ca3643da291e0c6fabc86152774' # projects.js
@@ -82,13 +85,13 @@ sha256sums=(
 
 prepare() {
   mkdir -p "${srcdir}/patched"
-  cp "${srcdir}/index.html"       "${srcdir}/patched/index.html"
-  cp "${srcdir}/index2.html"      "${srcdir}/patched/index2.html"
+  cp "${srcdir}/${_pkgname}-v${pkgver}.index.html"       "${srcdir}/patched/index.html"
+  cp "${srcdir}/${_pkgname}-v${pkgver}.index2.html"      "${srcdir}/patched/index2.html"
   if [ ! -e "${srcdir}/patched/mobile-title.png" ]; then # Copy only if it not already exists, in order to not overwrite already-optimised files from a previous build() (useful for subsequent repackaging with `-R` option to skip time consuming PNG optimisation but still use the already optimised files).
-    cp "${srcdir}/mobile-title.png" "${srcdir}/patched/mobile-title.png"
+    cp "${srcdir}/${_pkgname}-v${pkgver}.mobile-title.png" "${srcdir}/patched/mobile-title.png"
   fi
   if [ ! -e "${srcdir}/patched/title.png" ]; then # Copy only if it not already exists, in order to not overwrite already-optimised files from a previous build() (useful for subsequent repackaging with `-R` option to skip time consuming PNG optimisation but still use the already optimised files).
-    cp "${srcdir}/title.png"        "${srcdir}/patched/title.png"
+    cp "${srcdir}/${_pkgname}-v${pkgver}.title.png"        "${srcdir}/patched/title.png"
   fi
 
   cd "${srcdir}/patched"
@@ -108,14 +111,18 @@ build() {
   cd "${srcdir}/patched"
 
   msg2 'Optimising PNG files for size ...'
-  zopflipng-parallel -m -- 'mobile-title.png' 'title.png'
+  printf '%s\n' *.png | parallel -j`nproc` zopflipng -m -y {} {}
 }
 
 package() {
   cd "${srcdir}"
 
-  for _gamefile in 'patched/index2.html' 'main.js' 'globals.js' 'projects.js' 'combat.js' 'interface.css' 'patched/mobile-title.png' 'test.mp3' 'patched/index.html' 'titlescreen.css' 'patched/title.png'; do
+  local _gamefile
+  for _gamefile in 'patched/index2.html' 'patched/mobile-title.png'  'patched/index.html'  'patched/title.png'; do
     install -D -v -m644 "${_gamefile}" "${pkgdir}/usr/lib/${_pkgname}/$(basename "${_gamefile}")"
+  done
+  for _gamefile in "main.js" "globals.js" "projects.js" "combat.js" "interface.css" "test.mp3" "titlescreen.css"; do
+    install -D -v -m644 "${_pkgname}-v${pkgver}.${_gamefile}" "${pkgdir}/usr/lib/${_pkgname}/$(basename "${_gamefile}")"
   done
   ln -srv "${pkgdir}/usr/lib/${_pkgname}/index2.html" "${pkgdir}/usr/lib/${_pkgname}/universalpaperclips.html"
   ln -srv "${pkgdir}/usr/lib/${_pkgname}/index.html"  "${pkgdir}/usr/lib/${_pkgname}/start.html"
@@ -128,11 +135,13 @@ package() {
 
   install -D -v -m644 'universalpaperclips.desktop' "${pkgdir}/usr/share/applications/universalpaperclips.desktop"
 
+  local _docfile
   for _docfile in 'game.url' 'author.url' 'wikipedia.url' 'reddit.url' 'fandom.url'; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
+  local _changelog
   for _changelog in 'patch1notes.html' 'patch2notes.html'; do
-    install -D -v -m644 "${_changelog}" "${pkgdir}/usr/share/doc/${_pkgname}/changelog/${_changelog}"
+    install -D -v -m644 "${_pkgname}-v${pkgver}.${_changelog}" "${pkgdir}/usr/share/doc/${_pkgname}/changelog/${_changelog}"
   done
 
   install -D -v -m644 'license-dummy.txt' "${pkgdir}/usr/share/licenses/${pkgname}/license-dummy.txt"
