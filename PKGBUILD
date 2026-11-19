@@ -3,7 +3,7 @@
 pkgname=aerial-lock-git
 _project=aerial-lock
 pkgver=0.1.4.r0.g2675185
-pkgrel=4
+pkgrel=5
 pkgdesc='Wayland session lock with video backgrounds and an idle/session companion'
 arch=('x86_64')
 url='https://github.com/atmosphera-dev/aerial-lock'
@@ -16,7 +16,6 @@ optdepends=('curl: remote video pack downloader'
             'python: remote video pack downloader'
             'tar: remote video pack downloader'
             'procps-ng: signal-unlock examples'
-            'qt6-niriqml: focused-output selection on niri'
             'systemd: aerial-idle user service and logind integration'
             'elogind: logind integration without systemd (unverified)')
 provides=('aerial-lock')
