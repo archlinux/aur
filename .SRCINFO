@@ -1,0 +1,18 @@
+pkgbase = rarc
+	pkgdesc = Lightweight, modern GTK4 archive manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nathawatc/rarc
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = gettext
+	makedepends = pkgconf
+	depends = gtk4
+	depends = libarchive
+	optdepends = thunar-archive-plugin: Thunar context menu integration
+	options = !lto
+	source = rarc-0.1.0.tar.gz::https://github.com/nathawatc/rarc/archive/refs/tags/v0.1.0.tar.gz
+	b2sums = SKIP
+
+pkgname = rarc
