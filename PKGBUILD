@@ -1,7 +1,7 @@
 # Maintainer: Irshad Ali <irshadali5@proton.me>
 pkgname=siar-git
 pkgver=0.1.0.r2639.g6353eb6
-pkgrel=1
+pkgrel=2
 pkgdesc="Survivable Identity & Autonomous Routing: decentralized, offline-first messaging (built from git master)"
 arch=('x86_64')
 url="https://github.com/irshadlab/siar"
@@ -39,6 +39,14 @@ package() {
   install -Dm755 target/release/siar "${pkgdir}/usr/bin/siar"
   install -Dm755 target/release/siar-daemon "${pkgdir}/usr/bin/siar-daemon"
   install -Dm755 target/release/siar-desktop "${pkgdir}/usr/bin/siar-desktop"
+
+  # Install icons
+  install -Dm644 assets/branding/icon.png "${pkgdir}/usr/share/pixmaps/siar.png"
+  for sz in 16 32 64 128 256 512; do
+    if [ -f "assets/branding/icon-${sz}.png" ]; then
+      install -Dm644 "assets/branding/icon-${sz}.png" "${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/apps/siar.png"
+    fi
+  done
 
   # Install desktop entry
   install -d "${pkgdir}/usr/share/applications"

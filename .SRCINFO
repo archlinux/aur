@@ -1,7 +1,7 @@
 pkgbase = siar-git
 	pkgdesc = Survivable Identity & Autonomous Routing: decentralized, offline-first messaging (built from git master)
 	pkgver = 0.1.0.r2639.g6353eb6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/irshadlab/siar
 	arch = x86_64
 	license = AGPL-3.0-or-later
