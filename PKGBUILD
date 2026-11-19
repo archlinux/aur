@@ -8,7 +8,7 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname="solidity"
-pkgver="0.8.38"
+pkgver="0.8.39"
 pkgrel="1"
 pkgdesc="Smart contract programming language."
 arch=("x86_64")
@@ -21,7 +21,7 @@ makedepends=("boost" "cmake" "fmt" "nlohmann-json" "range-v3")
 checkdepends=("cmake" "evmone")
 conflicts=("solidity-bin" "solidity-git")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}.tar.gz")
-sha512sums=("209472ddb12bf05b16b1886f78de6faf8c21b43ca3a5a3a37831612fd341e69699848609e5c30d18baf07c874c0924945850b25f955dafcf22fd769588cdbeef")
+sha512sums=("68d526bf4994919111d6827118c8208996e7f7b93a7e4d5f7d63b6aaf693c3ed2c5ace6f34ae9cd8fcc0014dd47b3c542295691162141a6e034f26d8b7e24e92")
 
 _compile()
 {
