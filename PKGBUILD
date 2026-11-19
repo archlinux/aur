@@ -1,6 +1,6 @@
 # Maintainer: Fred Junior <fredjunior54@users.noreply.github.com>
 pkgname=aula-f75-rs-bin
-pkgver=0.1.34
+pkgver=0.1.36
 pkgrel=1
 pkgdesc='GUI and CLI configuration tool for the AULA F75 keyboard (prebuilt binary)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ provides=('aula-f75')
 conflicts=('aula-f75')
 options=('!strip' '!debug')
 source=("aula-f75-v$pkgver-x86_64-unknown-linux-gnu.tar.gz::https://github.com/fredjunior54/aula-f75-rs/releases/download/v$pkgver/aula-f75-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('d83e47f4e4203eee66f5fa5f5b53033ea7fead1865d93944c85d38937aaf9acd')
+sha256sums=('e6a30dc227aaace4ed6eaa91cb866c1dae5f442ee2cd57f8a157326d7ab63e79')
 
 package() {
   local dir="$srcdir/aula-f75-v$pkgver-x86_64-unknown-linux-gnu"
