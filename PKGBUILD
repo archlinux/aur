@@ -1,7 +1,7 @@
 # Maintainer: kewl fft <kewl@archlinux.org>
 
 pkgname=prysm-beacon-chain
-pkgver=7.3.1
+pkgver=7.3.2
 pkgrel=1
 pkgdesc="Prysm Ethereum consensus client (beacon chain node)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('prysm-beacon-chain')
 conflicts=('prysm-beacon-chain-bin' 'prysm' 'prysm-bin')
 options=(!strip !buildflags)
 source=("prysm::git+https://github.com/OffchainLabs/prysm.git#tag=v${pkgver}")
-sha256sums=('b059f7e6c15fa1edc410396515a398bcc1c14b219d1c162e59188fa9e60bd1bd')
+sha256sums=('d7ecbee526897a274cb5db98f1039ab0b750ee61bd75f942d5294d30f198abde')
 
 build() {
   cd "$srcdir/prysm"
