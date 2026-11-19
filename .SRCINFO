@@ -1,15 +1,16 @@
 pkgbase = wl-proxy
 	pkgdesc = proxy wayland connections and intercept and manipulate wayland messages
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/mahkoh/wl-proxy
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
-	depends = gcc-libs
 	depends = glibc
+	depends = libdrm
+	depends = libgcc
 	options = !lto
-	source = wl-proxy-0.1.4.tar.gz::https://github.com/mahkoh/wl-proxy/archive/v0.1.4.tar.gz
-	sha512sums = ed2ef9797eb45d039e84afb660eaa18510f3de85c6aa4db70ea0baabf34dfd058ebadee91e0ce3dbb140aaa91c54014c949d15fde09171d34165cf1e513c3d2c
+	source = wl-proxy-0.1.5.tar.gz::https://github.com/mahkoh/wl-proxy/archive/v0.1.5.tar.gz
+	sha512sums = 65267b38a444314f04388857f6b411bb3a2946bc13f4c598e9668a046220793d8259ef42016ad3982d2ef5d95bdd55bcf40b3a3d827593d46a7107b3bc2bdff3
 
 pkgname = wl-proxy
