@@ -30,6 +30,12 @@ build() {
   go build -v \
     -ldflags="-linkmode=external -X sigs.k8s.io/release-utils/version.gitVersion=v${pkgver} -X sigs.k8s.io/release-utils/version.gitTreeState=clean" \
     -o scorecard .
+  for shell in bash fish zsh; do
+    ./scorecard completion "${shell}" > "completion.${shell}"
+  done
+  # Upstream names the root command ./scorecard,
+  # and cobra registers the completions under that name
+  sed -i 's|\./scorecard|scorecard|g' completion.{bash,fish,zsh}
 }
 
 check() {
@@ -43,8 +49,10 @@ check() {
 }
 
 package() {
-  cd $pkgname-$pkgver
-
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 scorecard -t "${pkgdir}/usr/bin"
+  install -Dm644 completion.bash "${pkgdir}/usr/share/bash-completion/completions/scorecard"
+  install -Dm644 completion.fish "${pkgdir}/usr/share/fish/vendor_completions.d/scorecard.fish"
+  install -Dm644 completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_scorecard"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
