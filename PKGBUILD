@@ -3,8 +3,8 @@
 pkgname=signageos-cli
 _npmname=@signageos/cli
 _cmd=sos
-pkgver=4.4.0
-pkgrel=2
+pkgver=4.5.2
+pkgrel=1
 pkgdesc='signageOS command-line interface for developing applets and managing devices'
 arch=('any')
 url='https://github.com/signageos/cli'
@@ -17,7 +17,7 @@ options=(!strip !debug)
 
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/${_npmname#*/}-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('fcc4d7f7e107d01daaea4a84ed6b73fbaeb9c9e5a00bf83428d939f8e94eb38f')
+sha256sums=('9dac66cddfccf32dac69cb8396d3e06d5d027d01eb23a65a142794f15d6e5817')
 
 package() {
   # The only install scripts in the tree are no-ops on Linux: the CLI's own

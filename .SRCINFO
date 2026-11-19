@@ -1,17 +1,17 @@
 pkgbase = signageos-cli
 	pkgdesc = signageOS command-line interface for developing applets and managing devices
-	pkgver = 4.4.0
-	pkgrel = 2
+	pkgver = 4.5.2
+	pkgrel = 1
 	url = https://github.com/signageos/cli
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs>=20
 	conflicts = sos
-	noextract = signageos-cli-4.4.0.tgz
+	noextract = signageos-cli-4.5.2.tgz
 	options = !strip
 	options = !debug
-	source = signageos-cli-4.4.0.tgz::https://registry.npmjs.org/@signageos/cli/-/cli-4.4.0.tgz
-	sha256sums = fcc4d7f7e107d01daaea4a84ed6b73fbaeb9c9e5a00bf83428d939f8e94eb38f
+	source = signageos-cli-4.5.2.tgz::https://registry.npmjs.org/@signageos/cli/-/cli-4.5.2.tgz
+	sha256sums = 9dac66cddfccf32dac69cb8396d3e06d5d027d01eb23a65a142794f15d6e5817
 
 pkgname = signageos-cli
