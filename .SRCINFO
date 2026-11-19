@@ -1,0 +1,14 @@
+pkgbase = lua-carray
+	pkgdesc = Arrays for primitive numeric C data types in Lua, shareable between C modules
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/osch/lua-carray
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	source = lua-carray-0.0.5.tar.gz::https://github.com/osch/lua-carray/archive/v0.0.5.tar.gz
+	sha256sums = 3164711b73670c6138ce3407057a566c467a4849d056047d7741d24f0069eced
+
+pkgname = lua-carray
