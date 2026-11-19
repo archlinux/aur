@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leafview-bin
 _pkgname=LeafView
-pkgver=4.5.4
+pkgver=4.5.5
 _electronversion=45
 pkgrel=1
 pkgdesc="A minimalist image viewer based on Leaflet.js and Electron."
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f47429e75e5dcd0792b5a4205a09bc8ee39049db756b56ab57322790877797c7'
+sha256sums=('ac2343864e6298b1bb8e229e12495d6cc8334f54a566fe9f3a306a4408b2d995'
             '162f34c5f15a8f5866ca60b5cc6c0468346556a403f084c40206fbeec1bd3e76'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
