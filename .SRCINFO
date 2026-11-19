@@ -1,0 +1,18 @@
+pkgbase = lua-compress
+	pkgdesc = zlib, brotli, lzma and bzip2 compression for Lua strings and carrays (compress.zlib, compress.brotli, compress.lzma, compress.bzip2)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/osch/lua-compress
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	depends = zlib
+	depends = brotli
+	depends = xz
+	depends = bzip2
+	source = lua-compress-0.0.1.tar.gz::https://github.com/osch/lua-compress/archive/v0.0.1.tar.gz
+	sha256sums = 581b4fd071575c91959d9d0a53b036d594775a66f96f1c4fc96de60ba08a2596
+
+pkgname = lua-compress
