@@ -1,17 +1,17 @@
 # lito.lock
-_wavsen_commit=92f37f4748a17a36f946e64c8a4a0880cc9fbe23
-_vrento_commit=550e3c1f44ccafc064eb6b4b0b320764f5b65692
+_wavsen_commit=fe27f752e29a94565b6a33083d90df9a020ee76f
+_vrento_commit=02101d93c5fd76d8d4892910ba16765892d197c0
 _vectext_commit=36fc965d8cb418f9dc17d31683dc268dabb52cb2
 
 pkgname=open-wallpaper-engine
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
 url=https://github.com/waywallen/open-wallpaper-engine
 license=(GPL-2.0-only)
 depends=(libgcc libstdc++ glibc lz4 freetype2 ffmpeg vulkan-icd-loader libglvnd
-         "waywallen>=0.5.0" cef glslang fontconfig quickjs-ng glfw wayland)
+         "waywallen>=0.6.1" cef glslang fontconfig quickjs-ng glfw wayland)
 makedepends=(lito "cmake>4.3.1" ninja git "clang>=22" lld llvm eigen vulkan-headers
              waywallen-display)
 options=(!lto)
@@ -20,9 +20,9 @@ source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver
         "git+https://github.com/vecren/vrento.git#commit=$_vrento_commit"
         "git+https://github.com/vecren/vectext.git#commit=$_vectext_commit"
         "0001-lito-Use-system-cef.patch")
-sha256sums=('ed5704d45ccf8cf6551bf33acb0d2b36b1af384090ce94ecffcf1c1a37019be5'
-            'b745db138636443c8fcdf08f3265580369d1fa3eafa64e5c0821b05a7070056c'
-            'fabb2fa38be16ff0f8facc1779249ce64bf5a9e05f4848082c27be8b16be0ef0'
+sha256sums=('9637b2ec6b6265745a2fe9ad31a04b37208487508c2c7e840267e22944375538'
+            'e64fd2498d75a21749a71c8f82dbe534b59acb3a462b73c1e2d330538588e5c0'
+            '80614f5810186112c4680d77b6535e89da162e8b17e3e302bc86e1a9d9ae3ace'
             'd710ad4ce7b565c8a07042f5e054545ffe732013919637fa824603d86eaad293'
             '3629af4ae0b17d055fa869f3613f9dc975e4c5e084fa9fc0e993f2f27d812212')
 
