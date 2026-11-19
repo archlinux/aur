@@ -1,14 +1,17 @@
 # Maintainer: Kief Studio <packages@kief.studio>
 pkgname=aur-scanner
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Security scanner for Arch Linux AUR packages - detect malicious PKGBUILDs before installation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/KiefStudioMA/ks-aur-scanner"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'clang' 'git')
-provides=('aur-scan')
+provides=('aur-scan' 'ks-aur-scanner')
+# ks-aur-scanner was this same package under its upstream repo name. It was
+# merged into aur-scanner on 2026-11-18; the provides/conflicts pair lets an
+# installed ks-aur-scanner swap over and keeps anything depending on it working.
 conflicts=('aur-scanner-git' 'ks-aur-scanner' 'aur-scanner-rc')
 options=('!debug')
 # Source is the GPG-signed release tag, verified against our signing key.
