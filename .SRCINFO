@@ -21,8 +21,11 @@ pkgbase = crowdsec-nginx-bouncer
 	backup = etc/nginx/lua/templates/crowdsec/captcha.html
 	backup = etc/nginx/conf.d/crowdsec_nginx.conf
 	backup = etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf
-	source = crowdsec-nginx-bouncer-1.2.4.tar.gz::https://github.com/crowdsecurity/cs-nginx-bouncer/releases/download/v1.2.4/crowdsec-nginx-bouncer.tgz
-	sha512sums = 3efbeeab98c5a0b8127c0b4b0e3200f568cf415d4044b88b7b6eb66ba962200448efabea23819f4b55b6e482ad059e5876a1d7740e2b7448c8f3e54b3f2798f2
-	b2sums = c5d4814d831328d2caa313d2aeb4c3ea87b76395deab0594bcc45e7f2030d5a7d40cbe383c063b6bb8bbc0c71fadb54e8f8b59d4b63d186eef5fd3f1ce533b4c
+	source = cs-nginx-bouncer-1.2.4.tar.gz::https://github.com/crowdsecurity/cs-nginx-bouncer/archive/refs/tags/v1.2.4.tar.gz
+	source = lua-cs-bouncer-1.0.19.tar.gz::https://github.com/crowdsecurity/lua-cs-bouncer/archive/refs/tags/v1.0.19.tar.gz
+	sha512sums = fc87624bf77a2d8464aec9b99184ea501611394bd1a1426583b9b2ddae3e0606e78dabf5c337941e405474065a17a2bc05ef3254822ca2613b8cdf62c1f0a0e2
+	sha512sums = 0ecc7da6a9d56cfdb336b8ef72d8398f54fb500b95fcc96531a9d6639980b98298bf4732c1a001c796f3dc317316fd1236104d57cad08709d775aac399797643
+	b2sums = 5db2e8ed3192a6a3034f9e698c2f3c7bc2bbb2a23856c5ca4235e69fc90a157b08d7fe12e2d0066f9fafcd08987262b8353fc02f8dff40cd15667e23ec405926
+	b2sums = 103249ad91499730e7432ef988616795bcddc31d015084714acc7104b5e30b807f61b352c047886f978b48485a21ca4334cfba64de5847981bbefe63a607a114
 
 pkgname = crowdsec-nginx-bouncer

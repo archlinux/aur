@@ -4,6 +4,9 @@
 # shellcheck shell=bash
 pkgname=crowdsec-nginx-bouncer
 pkgver=1.2.4
+# lua-cs-bouncer, the Lua half that upstream's release puts together with the nginx configuration:
+# the version its Makefile clones (LUA_BOUNCER_BRANCH), which check() compares
+_luaver=1.0.19
 pkgrel=1
 pkgdesc="CrowdSec bouncer for Nginx"
 arch=(any)
@@ -12,6 +15,8 @@ license=(MIT)
 replaces=(cs-nginx-bouncer)
 provides=(cs-nginx-bouncer)
 conflicts=(cs-nginx-bouncer)
+# lua-resty-http as a package rather than the copy upstream's release vendors since 1.2.4
+# (vendor/lua-resty-http), which isn't installed
 depends=(
   crowdsec
   gettext # envsubst in the install script
@@ -28,29 +33,40 @@ backup=(
   etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf
 )
 install=cs-nginx-bouncer.install
+# The sources upstream's release puts together (make release), from their tags: its archive's folder
+# is named after the newest tag in git's version order, crowdsec-nginx-bouncer-v1.2.4-rc1 for 1.2.4
 source=(
-  "$pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}.tgz"
+  "cs-nginx-bouncer-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "lua-cs-bouncer-$_luaver.tar.gz::https://github.com/crowdsecurity/lua-cs-bouncer/archive/refs/tags/v$_luaver.tar.gz"
 )
-sha512sums=('3efbeeab98c5a0b8127c0b4b0e3200f568cf415d4044b88b7b6eb66ba962200448efabea23819f4b55b6e482ad059e5876a1d7740e2b7448c8f3e54b3f2798f2')
-b2sums=('c5d4814d831328d2caa313d2aeb4c3ea87b76395deab0594bcc45e7f2030d5a7d40cbe383c063b6bb8bbc0c71fadb54e8f8b59d4b63d186eef5fd3f1ce533b4c')
+sha512sums=('fc87624bf77a2d8464aec9b99184ea501611394bd1a1426583b9b2ddae3e0606e78dabf5c337941e405474065a17a2bc05ef3254822ca2613b8cdf62c1f0a0e2'
+  '0ecc7da6a9d56cfdb336b8ef72d8398f54fb500b95fcc96531a9d6639980b98298bf4732c1a001c796f3dc317316fd1236104d57cad08709d775aac399797643')
+b2sums=('5db2e8ed3192a6a3034f9e698c2f3c7bc2bbb2a23856c5ca4235e69fc90a157b08d7fe12e2d0066f9fafcd08987262b8353fc02f8dff40cd15667e23ec405926'
+  '103249ad91499730e7432ef988616795bcddc31d015084714acc7104b5e30b807f61b352c047886f978b48485a21ca4334cfba64de5847981bbefe63a607a114')
 
 prepare() {
-  cd "$pkgname-v$pkgver" || exit
-  sed -i 's@var/lib/crowdsec/lua/templates@etc/nginx/lua/templates/crowdsec@' lua-mod/config_example.conf
+  sed -i 's@var/lib/crowdsec/lua/templates@etc/nginx/lua/templates/crowdsec@' \
+    "lua-cs-bouncer-$_luaver/config_example.conf"
   # $prefix see https://openresty-reference.readthedocs.io/en/latest/Directives/#lua_package_path
   # shellcheck disable=SC2016
-  sed -i 's@/usr/local/lua/crowdsec/@$prefix/lua/plugins/crowdsec/@' nginx/crowdsec_nginx.conf
+  sed -i 's@/usr/local/lua/crowdsec/@$prefix/lua/plugins/crowdsec/@' \
+    "cs-nginx-bouncer-$pkgver/nginx/crowdsec_nginx.conf"
+}
+
+check() {
+  # The lua-cs-bouncer of upstream's release
+  grep -qx "LUA_BOUNCER_BRANCH?=v$_luaver" "cs-nginx-bouncer-$pkgver/Makefile" || exit
 }
 
 package() {
-  cd "$pkgname-v$pkgver" || exit
   install -dm755 "$pkgdir"/etc/nginx/lua/plugins/crowdsec/
   install -dm755 "$pkgdir"/etc/nginx/lua/templates/crowdsec/
 
-  install -Dm644 {nginx,"$pkgdir"/etc/nginx/conf.d}/crowdsec_nginx.conf
-  cp -R lua-mod/lib/* "$pkgdir"/etc/nginx/lua/plugins/crowdsec/
-  cp -R lua-mod/templates/* "$pkgdir"/etc/nginx/lua/templates/crowdsec/
-  install -Dm600 lua-mod/config_example.conf "$pkgdir"/etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf
+  install -Dm644 "cs-nginx-bouncer-$pkgver/nginx/crowdsec_nginx.conf" -t "$pkgdir"/etc/nginx/conf.d/
+  cd "lua-cs-bouncer-$_luaver" || exit
+  cp -R lib/* "$pkgdir"/etc/nginx/lua/plugins/crowdsec/
+  cp -R templates/* "$pkgdir"/etc/nginx/lua/templates/crowdsec/
+  install -Dm600 config_example.conf "$pkgdir"/etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf
 
-  install -Dm644 lua-mod/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
