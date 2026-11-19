@@ -1,0 +1,12 @@
+# SearXNG settings for llama-websearch.
+# Only the differences from SearXNG's built-in defaults are listed here.
+use_default_settings: true
+
+server:
+  secret_key: "@SECRET_KEY@"   # replaced with a random key on first run
+  limiter: false               # single local user; the limiter needs Valkey and would block the model's searches
+
+search:
+  formats:
+    - html
+    - json                     # mcp-searxng talks to SearXNG over its JSON API

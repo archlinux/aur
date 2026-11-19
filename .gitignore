@@ -1,0 +1,9 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!llama-websearch
+!llama-websearch.install
+!config.default
+!searxng-settings.yml
+!LICENSE

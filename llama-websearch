@@ -1,0 +1,409 @@
+#!/bin/sh
+# llama-websearch: a local llama.cpp chat that can search the web.
+#
+#   SearXNG (per-user virtualenv, Granian)  ->  mcp-searxng (MCP over HTTP)  ->  llama-server + web UI
+#
+# Runs entirely as your normal user. Nothing here needs root.
+
+# --- folders (XDG locations; override the XDG_* variables to move them) ---
+SHARE_DIR="${LLAMA_WEBSEARCH_SHARE:-/usr/share/llama-websearch}"
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/llama-websearch"
+DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/llama-websearch"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/llama-websearch"
+
+CONFIG_FILE="$CONFIG_DIR/config"
+SEARXNG_SETTINGS="$CONFIG_DIR/searxng-settings.yml"
+SEARXNG_SRC="$DATA_DIR/searxng-src"
+SEARXNG_VENV="$DATA_DIR/searxng-venv"
+SEARXNG_MARKER="$DATA_DIR/.searxng-installed"
+WEBUI_CONFIG="$STATE_DIR/webui.json"
+
+SEARXNG_REPO="https://github.com/searxng/searxng.git"
+SEARXNG_BRANCH="master"
+
+# Programs (override for testing or to use your own builds)
+LLAMA_SERVER="${LLAMA_SERVER:-llama-server}"
+MCP_SEARXNG="${MCP_SEARXNG:-mcp-searxng}"
+
+set -u
+set -f   # no globbing: EXTRA_LLAMA_ARGS is split on spaces on purpose, never globbed
+
+# --- built-in defaults; ~/.config/llama-websearch/config overrides these ---
+MODEL_DIR="$HOME/.cache/llama.cpp"
+MODEL="unsloth/Qwen3.5-9B-GGUF:Q4_K_M"
+MODEL_FILE=""
+CTX=16384
+GPU_LAYERS=99
+THINKING="yes"
+TEMP=0.6
+TOP_P=0.95
+TOP_K=20
+EXTRA_LLAMA_ARGS=""
+LLAMA_HOST="127.0.0.1"
+LLAMA_PORT=8001
+SEARXNG_PORT=8888
+MCP_PORT=3000
+SEARCH_MAX_RESULTS=5
+SEARCH_MAX_RESULT_CHARS=500
+PAGE_READ_MAX_CHARS=4000
+LITE_TOOLS="true"
+SYSTEM_PROMPT="You are a helpful assistant. Today's date is {DATE}. For anything current, or anything you are not sure of, use the web search tool first, then answer and list the URLs you used."
+
+SEARXNG_PID=""
+MCP_PID=""
+LLAMA_PID=""
+
+say()  { printf '==> %s\n' "$*"; }
+warn() { printf '==> WARNING: %s\n' "$*" >&2; }
+die()  { printf '==> ERROR: %s\n' "$*" >&2; exit 1; }
+
+need() {
+  command -v "$1" >/dev/null 2>&1 || die "'$1' not found. $2"
+}
+
+load_config() {
+  if [ -f "$CONFIG_FILE" ]; then
+    # shellcheck source=/dev/null
+    . "$CONFIG_FILE"
+  fi
+}
+
+# --- first-run setup -------------------------------------------------------
+
+setup_config() {
+  mkdir -p "$CONFIG_DIR"
+  if [ -f "$CONFIG_FILE" ]; then
+    say "Config already exists: $CONFIG_FILE"
+  else
+    cp "$SHARE_DIR/config.default" "$CONFIG_FILE" || die "Could not copy $SHARE_DIR/config.default"
+    say "Wrote $CONFIG_FILE (edit it to change the model, context size or ports)"
+  fi
+
+  if [ -f "$SEARXNG_SETTINGS" ]; then
+    say "SearXNG settings already exist: $SEARXNG_SETTINGS"
+  else
+    secret=$(python3 -I -c 'import secrets; print(secrets.token_hex(32))') || die "python3 failed to make a secret key"
+    sed "s/@SECRET_KEY@/$secret/" "$SHARE_DIR/searxng-settings.yml" > "$SEARXNG_SETTINGS" \
+      || die "Could not write $SEARXNG_SETTINGS"
+    chmod 600 "$SEARXNG_SETTINGS"
+    say "Wrote $SEARXNG_SETTINGS (JSON output on, rate limiter off, new secret key)"
+  fi
+}
+
+install_searxng() {
+  need git "Install it with: pacman -S git"
+  need python3 "Install it with: pacman -S python"
+  mkdir -p "$DATA_DIR"
+
+  if [ -d "$SEARXNG_SRC/.git" ]; then
+    say "Updating SearXNG source in $SEARXNG_SRC"
+    git -C "$SEARXNG_SRC" fetch --depth 1 origin "$SEARXNG_BRANCH" || die "git fetch failed (are you online?)"
+    git -C "$SEARXNG_SRC" reset --hard FETCH_HEAD >/dev/null || die "git reset failed"
+  else
+    say "Downloading SearXNG into $SEARXNG_SRC"
+    rm -rf "$SEARXNG_SRC"
+    git clone --depth 1 --branch "$SEARXNG_BRANCH" "$SEARXNG_REPO" "$SEARXNG_SRC" \
+      || die "git clone failed (are you online?)"
+  fi
+
+  if [ ! -x "$SEARXNG_VENV/bin/python" ]; then
+    say "Creating Python virtualenv in $SEARXNG_VENV"
+    python3 -m venv "$SEARXNG_VENV" || die "python3 -m venv failed"
+  fi
+
+  pip="$SEARXNG_VENV/bin/pip"
+  say "Installing SearXNG's build requirements"
+  "$pip" install --quiet -U pip setuptools wheel pyyaml msgspec typing-extensions pybind11 \
+    || die "pip install of build requirements failed"
+  say "Installing SearXNG (this takes a minute)"
+  (cd "$SEARXNG_SRC" && "$pip" install --quiet --use-pep517 --no-build-isolation -e .) \
+    || die "pip install of SearXNG failed"
+  say "Installing Granian (SearXNG's web server)"
+  "$pip" install --quiet -U granian || die "pip install granian failed"
+
+  git -C "$SEARXNG_SRC" rev-parse --short HEAD > "$SEARXNG_MARKER" 2>/dev/null || : > "$SEARXNG_MARKER"
+  say "SearXNG installed (commit $(cat "$SEARXNG_MARKER"))"
+}
+
+ensure_setup() {
+  if [ ! -f "$CONFIG_FILE" ] || [ ! -f "$SEARXNG_SETTINGS" ]; then
+    setup_config
+    load_config
+  fi
+  if [ ! -f "$SEARXNG_MARKER" ] || [ ! -x "$SEARXNG_VENV/bin/granian" ]; then
+    say "First run: SearXNG is not installed yet, setting it up now"
+    install_searxng
+  fi
+}
+
+# --- running ---------------------------------------------------------------
+
+# Exit 7 from curl means nothing is listening; anything else means the port is taken.
+port_free() {
+  curl -s -o /dev/null --max-time 2 "http://127.0.0.1:$1/"
+  [ $? -eq 7 ]
+}
+
+wait_http() {   # url seconds name logfile pid
+  i=0
+  while [ "$i" -lt "$2" ]; do
+    if curl -fs -o /dev/null --max-time 2 "$1"; then
+      return 0
+    fi
+    if ! kill -0 "$5" 2>/dev/null; then
+      printf '==> ERROR: %s exited during startup. Last lines of %s:\n' "$3" "$4" >&2
+      tail -n 20 "$4" >&2
+      exit 1
+    fi
+    i=$((i + 1))
+    sleep 1
+  done
+  printf '==> ERROR: %s did not answer at %s within %ss. Last lines of %s:\n' "$3" "$1" "$2" "$4" >&2
+  tail -n 20 "$4" >&2
+  exit 1
+}
+
+cleanup() {
+  for pid in $LLAMA_PID $MCP_PID $SEARXNG_PID; do
+    kill "$pid" 2>/dev/null
+  done
+  for pid in $LLAMA_PID $MCP_PID $SEARXNG_PID; do
+    wait "$pid" 2>/dev/null
+  done
+  LLAMA_PID=""
+  MCP_PID=""
+  SEARXNG_PID=""
+}
+
+write_webui_config() {
+  mkdir -p "$STATE_DIR"
+  LWS_DATE=$(date +%Y-%m-%d) \
+  LWS_PROMPT="$SYSTEM_PROMPT" \
+  LWS_MCP_URL="http://127.0.0.1:$MCP_PORT/mcp" \
+  LWS_OUT="$WEBUI_CONFIG" \
+  python3 -I -c '
+import json, os
+cfg = {
+    "systemMessage": os.environ["LWS_PROMPT"].replace("{DATE}", os.environ["LWS_DATE"]),
+    "mcpServers": [{
+        "name": "searxng",
+        "url": os.environ["LWS_MCP_URL"],
+        "useProxy": True,
+        "enabled": True,
+    }],
+}
+with open(os.environ["LWS_OUT"], "w") as f:
+    json.dump(cfg, f, indent=2)
+    f.write("\n")
+' || die "Could not write $WEBUI_CONFIG"
+}
+
+cmd_run() {
+  need "$LLAMA_SERVER" "Install it with: pacman -S llama-cpp ggml-vulkan"
+  need "$MCP_SEARXNG" "Install the mcp-searxng package from the AUR"
+  need curl "Install it with: pacman -S curl"
+  load_config
+  ensure_setup
+
+  if [ -n "$MODEL_FILE" ] && [ ! -f "$MODEL_FILE" ]; then
+    die "MODEL_FILE is set to '$MODEL_FILE' but that file does not exist"
+  fi
+  for p in "$SEARXNG_PORT:SearXNG" "$MCP_PORT:mcp-searxng" "$LLAMA_PORT:llama-server"; do
+    port_free "${p%%:*}" || die "Port ${p%%:*} (for ${p#*:}) is already in use. Is llama-websearch already running? Change the port in $CONFIG_FILE if something else owns it."
+  done
+  case "$LLAMA_HOST" in
+    127.*|localhost|::1) ;;
+    *) warn "LLAMA_HOST=$LLAMA_HOST: the chat UI has no login, so anyone who can reach this address can use it." ;;
+  esac
+
+  mkdir -p "$STATE_DIR" "$MODEL_DIR"
+  trap cleanup EXIT
+  trap 'exit 130' INT TERM HUP
+
+  say "Starting SearXNG on 127.0.0.1:$SEARXNG_PORT (log: $STATE_DIR/searxng.log)"
+  SEARXNG_SETTINGS_PATH="$SEARXNG_SETTINGS" \
+    "$SEARXNG_VENV/bin/granian" --interface wsgi --host 127.0.0.1 --port "$SEARXNG_PORT" searx.webapp:app \
+    > "$STATE_DIR/searxng.log" 2>&1 &
+  SEARXNG_PID=$!
+  wait_http "http://127.0.0.1:$SEARXNG_PORT/healthz" 60 SearXNG "$STATE_DIR/searxng.log" "$SEARXNG_PID"
+
+  say "Starting mcp-searxng on 127.0.0.1:$MCP_PORT (log: $STATE_DIR/mcp-searxng.log)"
+  SEARXNG_URL="http://127.0.0.1:$SEARXNG_PORT" \
+  MCP_HTTP_HOST=127.0.0.1 \
+  MCP_HTTP_PORT="$MCP_PORT" \
+  MCP_HTTP_ALLOWED_ORIGINS="http://127.0.0.1:$LLAMA_PORT,http://localhost:$LLAMA_PORT,http://$LLAMA_HOST:$LLAMA_PORT" \
+  SEARXNG_LITE_TOOLS="$LITE_TOOLS" \
+  SEARXNG_MAX_RESULTS="$SEARCH_MAX_RESULTS" \
+  SEARXNG_MAX_RESULT_CHARS="$SEARCH_MAX_RESULT_CHARS" \
+  URL_READ_MAX_CHARS="$PAGE_READ_MAX_CHARS" \
+    "$MCP_SEARXNG" > "$STATE_DIR/mcp-searxng.log" 2>&1 &
+  MCP_PID=$!
+  wait_http "http://127.0.0.1:$MCP_PORT/health" 30 mcp-searxng "$STATE_DIR/mcp-searxng.log" "$MCP_PID"
+
+  write_webui_config
+
+  if [ -n "$MODEL_FILE" ]; then
+    set -- -m "$MODEL_FILE"
+  else
+    set -- -hf "$MODEL"
+  fi
+  set -- "$@" --no-mmproj --jinja \
+    -ngl "$GPU_LAYERS" -c "$CTX" \
+    --temp "$TEMP" --top-p "$TOP_P" --top-k "$TOP_K" \
+    --host "$LLAMA_HOST" --port "$LLAMA_PORT" \
+    --webui-mcp-proxy --webui-config-file "$WEBUI_CONFIG"
+  if [ "$THINKING" = "no" ]; then
+    set -- "$@" --chat-template-kwargs '{"enable_thinking":false}'
+  fi
+  # shellcheck disable=SC2086  # split on purpose
+  set -- "$@" $EXTRA_LLAMA_ARGS
+
+  say "Starting llama-server. The first run downloads the model into $MODEL_DIR."
+  say "When it prints 'server is listening', open http://$LLAMA_HOST:$LLAMA_PORT  (Ctrl+C stops everything)"
+  # Run it in the background and wait, so Ctrl+C, kill or a closed terminal
+  # reaches the trap right away and all three programs are stopped together.
+  LLAMA_CACHE="$MODEL_DIR" "$LLAMA_SERVER" "$@" &
+  LLAMA_PID=$!
+  wait "$LLAMA_PID"
+  status=$?
+  LLAMA_PID=""
+  exit "$status"
+}
+
+cmd_setup() {
+  setup_config
+  load_config
+  install_searxng
+  say "Setup done. Start it with: llama-websearch"
+}
+
+cmd_update() {
+  load_config
+  [ -d "$SEARXNG_SRC/.git" ] || die "SearXNG is not installed yet; run: llama-websearch setup"
+  port_free "$SEARXNG_PORT" || die "SearXNG is running. Stop llama-websearch (Ctrl+C) before updating it."
+  install_searxng
+  say "llama.cpp and mcp-searxng update through pacman and your AUR helper, not here."
+}
+
+# --- diagnostics -----------------------------------------------------------
+
+FAILS=0
+pass() { printf '[PASS] %s\n' "$1"; }
+fail() { printf '[FAIL] %s\n       fix: %s\n' "$1" "$2"; FAILS=$((FAILS + 1)); }
+skip() { printf '[SKIP] %s\n       %s\n' "$1" "$2"; }
+
+cmd_check() {
+  load_config
+  echo "Static checks (work whether or not llama-websearch is running):"
+
+  if command -v "$LLAMA_SERVER" >/dev/null 2>&1; then
+    devs=$("$LLAMA_SERVER" --list-devices 2>&1)
+    gpu=$(printf '%s\n' "$devs" | grep -E '^[[:space:]]*Vulkan[0-9]+:' | head -n 1 | sed 's/^[[:space:]]*//')
+    if [ -n "$gpu" ]; then
+      pass "llama.cpp sees a Vulkan GPU: $gpu"
+    else
+      fail "llama.cpp sees no Vulkan GPU (it would run on the CPU)" \
+           "pacman -S ggml-vulkan vulkan-radeon, then rerun. 'llama-server --list-devices' shows what it sees."
+    fi
+    if "$LLAMA_SERVER" --help 2>&1 | grep -q -- '--webui-mcp-proxy'; then
+      pass "llama-server supports --webui-mcp-proxy (web UI tool calls)"
+    else
+      fail "llama-server has no --webui-mcp-proxy option" "Update llama-cpp: pacman -Syu"
+    fi
+  else
+    fail "llama-server is not installed" "pacman -S llama-cpp ggml-vulkan"
+  fi
+
+  if command -v node >/dev/null 2>&1 && node -e 'process.exit(+process.versions.node.split(".")[0] >= 22 ? 0 : 1)'; then
+    pass "Node.js $(node --version) (mcp-searxng needs 22 or newer)"
+  else
+    fail "Node.js 22 or newer is missing" "pacman -S nodejs"
+  fi
+
+  if command -v "$MCP_SEARXNG" >/dev/null 2>&1; then
+    pass "mcp-searxng is installed ($("$MCP_SEARXNG" --version 2>/dev/null | head -n 1))"
+  else
+    fail "mcp-searxng is not installed" "Install the mcp-searxng package from the AUR"
+  fi
+
+  if [ -f "$SEARXNG_MARKER" ] && [ -x "$SEARXNG_VENV/bin/granian" ]; then
+    pass "SearXNG is installed in $SEARXNG_VENV (commit $(cat "$SEARXNG_MARKER"))"
+  else
+    fail "SearXNG is not installed" "llama-websearch setup"
+  fi
+
+  if [ -f "$SEARXNG_SETTINGS" ] && grep -Eq "^[[:space:]]*-[[:space:]]*[\"']?json[\"']?[[:space:]]*(#.*)?$" "$SEARXNG_SETTINGS"; then
+    pass "SearXNG settings allow JSON output ($SEARXNG_SETTINGS)"
+  elif [ -f "$SEARXNG_SETTINGS" ]; then
+    fail "SearXNG settings do not list json under search.formats" "Add '- json' under search: formats: in $SEARXNG_SETTINGS"
+  else
+    fail "SearXNG settings file is missing" "llama-websearch setup"
+  fi
+
+  echo
+  echo "Live checks (need llama-websearch running in another terminal):"
+
+  if ! curl -s -o /dev/null --max-time 2 "http://127.0.0.1:$SEARXNG_PORT/healthz"; then
+    skip "SearXNG is not running on port $SEARXNG_PORT" "Start llama-websearch in another terminal, then rerun this check."
+  else
+    body=$(curl -s --max-time 20 "http://127.0.0.1:$SEARXNG_PORT/search?q=arch+linux&format=json")
+    count=$(printf '%s' "$body" | python3 -I -c 'import json,sys
+try: print(len(json.load(sys.stdin).get("results", [])))
+except Exception: print(-1)')
+    if [ "$count" -gt 0 ] 2>/dev/null; then
+      pass "SearXNG answered a JSON search with $count results"
+    elif [ "$count" = "0" ]; then
+      fail "SearXNG answered but returned 0 results" "Its search engines may be blocking you. See $STATE_DIR/searxng.log"
+    else
+      fail "SearXNG did not return JSON for a search" "Check search: formats: in $SEARXNG_SETTINGS and $STATE_DIR/searxng.log"
+    fi
+  fi
+
+  if curl -fs -o /dev/null --max-time 2 "http://127.0.0.1:$MCP_PORT/health"; then
+    pass "mcp-searxng is answering on port $MCP_PORT"
+  else
+    skip "mcp-searxng is not answering on port $MCP_PORT" "Start llama-websearch, then rerun. Log: $STATE_DIR/mcp-searxng.log"
+  fi
+
+  health=$(curl -s --max-time 2 "http://127.0.0.1:$LLAMA_PORT/health")
+  case "$health" in
+    *'"ok"'*) pass "llama-server is up and the model is loaded (port $LLAMA_PORT)" ;;
+    *'oading'*) skip "llama-server is still loading the model" "Wait for 'server is listening', then rerun." ;;
+    '') skip "llama-server is not running on port $LLAMA_PORT" "Start llama-websearch, then rerun." ;;
+    *) fail "llama-server answered unexpectedly: $health" "See the llama-websearch terminal output." ;;
+  esac
+
+  echo
+  if [ "$FAILS" -eq 0 ]; then
+    echo "Result: no failures."
+  else
+    echo "Result: $FAILS failure(s). Fix the [FAIL] lines above, top to bottom."
+    exit 1
+  fi
+}
+
+usage() {
+  cat <<EOF
+Usage: llama-websearch [command]
+
+  run      Start SearXNG, mcp-searxng and llama-server (default). First run sets everything up.
+  setup    Create your config and install SearXNG into $SEARXNG_VENV
+  update   Update your SearXNG copy to the latest version
+  check    Test the GPU, the installed pieces and (if running) the search path
+  help     Show this text
+
+Config:  $CONFIG_FILE
+Logs:    $STATE_DIR
+EOF
+}
+
+[ "$(id -u)" -ne 0 ] || die "Run llama-websearch as your normal user, not root. It never needs sudo."
+
+case "${1:-run}" in
+  run)          cmd_run ;;
+  setup)        cmd_setup ;;
+  update)       cmd_update ;;
+  check)        cmd_check ;;
+  help|-h|--help) usage ;;
+  *)            usage >&2; exit 2 ;;
+esac

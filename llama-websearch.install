@@ -1,0 +1,15 @@
+post_install() {
+  echo "==> Start it as your normal user (not root):  llama-websearch"
+  echo "==> The first run downloads SearXNG (into ~/.local/share/llama-websearch)"
+  echo "==> and the model (~5.3 GB, into ~/.cache/llama.cpp)."
+  echo "==> Settings: ~/.config/llama-websearch/config   Diagnostics: llama-websearch check"
+}
+
+post_upgrade() {
+  echo "==> To update your SearXNG copy as well, run:  llama-websearch update"
+}
+
+post_remove() {
+  echo "==> Per-user files are left in place. Remove them by hand if you want them gone:"
+  echo "==>   ~/.config/llama-websearch  ~/.local/share/llama-websearch  ~/.local/state/llama-websearch"
+}
