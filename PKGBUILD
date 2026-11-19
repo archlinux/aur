@@ -34,10 +34,10 @@ optdepends=(
     'xdg-desktop-portal-gtk: file chooser and other portals'
     'wl-clipboard: Mod+Shift+S, a region of the screen to the clipboard (wl-copy)'
     'swaylock: locking the session'
-    'libnotify: notifications from pila, such as an invalid config (notify-send)'
     'xdg-utils: opening links and files from programs such as kitty (xdg-open)'
     'pciutils: the GPU and its driver in pila-report (lspci)'
-    'ttf-nerd-fonts-symbols: icons in pila-bar (or otf-font-awesome, or any Nerd Font)'
+    'ttf-nerd-fonts-symbols: icons in pila-bar and pila-osd (or otf-font-awesome, or any Nerd Font)'
+    'wireplumber: the volume and mute keys (wpctl)'
 )
 provides=(pila)
 conflicts=(pila)
