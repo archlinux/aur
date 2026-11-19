@@ -1,13 +1,13 @@
 # Maintainer: Novaturiente
 pkgname=novabrowser
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="AVX2-optimized keyboard-driven web browser on Chromium (CEF), configured in TypeScript"
 arch=(x86_64)
 url="https://github.com/Novaturiente/nova-browser"
 license=(GPL-3.0-or-later)
 # libcef.so's runtime deps (same set Arch's cef/electron packages pull in)
-depends=(sqlite gtk3 nss alsa-lib libxss libxkbcommon libdrm mesa libcups at-spi2-core)
+depends=(sqlite gtk3 gtk4 libadwaita nss alsa-lib libxss libxkbcommon libdrm mesa libcups at-spi2-core)
 makedepends=(cargo cmake ninja)
 optdepends=('wl-clipboard: primary selection and paste on Wayland'
             'xclip: primary selection and paste on X11'
@@ -22,7 +22,7 @@ options=(strip !lto !debug)
 _cef=cef-154.0.34-novabrowser-x86_64-v3
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$_cef.tar.zst::$url/releases/download/cef-154.0.34-nova1/$_cef.tar.zst")
-sha256sums=('7bfff6d92419aec696440cb85b76123e5fa8c08e79ae8640bd17eef686ddee69'
+sha256sums=('683e7dc458cddbc277d42bec5a3025d0757b7a9c8031b598a860b99a00d0efb9'
             'a88ace6b3f2857e28a9ca9446c041a5cd729a15aa2e838caa7e3d8f9906e285f')
 _src=nova-browser-$pkgver
 
