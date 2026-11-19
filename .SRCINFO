@@ -1,15 +1,14 @@
 pkgbase = saws
-	pkgdesc = Scientific Application Web server
-	pkgver = 0.1.0
-	pkgrel = 1
-	url = https://bitbucket.org/saws/saws/wiki/Home
+	pkgdesc = Scientific Application Web Server: monitor and steer running programs (such as PETSc) from a web browser
+	pkgver = 20260503
+	pkgrel = 2
+	url = https://gitlab.com/petsc/saws
 	arch = x86_64
-	arch = i686
 	license = MIT
-	source = https://bitbucket.org/saws/saws/get/v0.1.0.tar.gz
-	source = tabs.patch
-	md5sums = 941a541bdf625856be18c9752249146d
-	md5sums = aad46c722f9ab1ce5f73bf0b70c87be3
+	makedepends = python
+	depends = glibc
+	depends = cjson
+	source = saws-20260503.tar.gz::https://gitlab.com/petsc/saws/-/archive/028a32f0118f227c9264bebdc282ab71f8eb88db/saws-028a32f0118f227c9264bebdc282ab71f8eb88db.tar.gz
+	sha256sums = d1ea701e0642046e6fc832d54cc5be2196c248845a06abd5069c7b9e441c1f68
 
 pkgname = saws
-

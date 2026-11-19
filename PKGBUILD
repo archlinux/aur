@@ -1,36 +1,42 @@
 # Maintainer: Doron Behar <doron.behar@gmail.com>
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 pkgname=saws
-pkgver=0.1.0
-_commit=312ccc1698cf
-pkgrel=1
-pkgdesc="Scientific Application Web server"
-url="https://bitbucket.org/saws/saws/wiki/Home"
-arch=('x86_64' 'i686')
+pkgver=20260503
+pkgrel=2
+pkgdesc="Scientific Application Web Server: monitor and steer running programs (such as PETSc) from a web browser"
+arch=('x86_64')
+url="https://gitlab.com/petsc/$pkgname"
 license=('MIT')
-source=(
-  "https://bitbucket.org/saws/saws/get/v${pkgver}.tar.gz"
-  'tabs.patch'
-)
-makedepends=()
-depends=()
-md5sums=('941a541bdf625856be18c9752249146d'
-         'aad46c722f9ab1ce5f73bf0b70c87be3')
+depends=('glibc'
+         'cjson')
+makedepends=('python')
+_commit=028a32f0118f227c9264bebdc282ab71f8eb88db
+source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
+sha256sums=('d1ea701e0642046e6fc832d54cc5be2196c248845a06abd5069c7b9e441c1f68')
 
 prepare() {
-  cd ${srcdir}/saws-${pkgname}-${_commit}
-  patch -p0 < ../tabs.patch
+  cd "$pkgname-$_commit"
+  # Use the system cJSON instead of the bundled copy
+  rm src/cJSON.c src/cJSON.h
 }
 
 build() {
-  cd ${srcdir}/saws-${pkgname}-${_commit}
-  ./configure \
-    --prefix=/usr \
-    --enable-shared
-  make
+  cd "$pkgname-$_commit"
+  python ./configure --prefix=/usr --enable-shared --CFLAGS="$CFLAGS -I/usr/include/cjson -MMD -MP" --LDFLAGS="$LDFLAGS" --LIBS="-lcjson -lpthread -lm"
+  make -C build all
+}
+
+check() {
+  cd "$pkgname-$_commit"
+  build/bin/simpleJSONtoCStructTest
+  build/bin/simpleMultiDirectoryJSONTest
+  build/bin/simpleRegisterDeleteTest
 }
 
 package() {
-  cd ${srcdir}/saws-${pkgname}-${_commit}
-  make DESTDIR=${pkgdir} install
+  cd "$pkgname-$_commit"
+  make -C build DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+  install -Dm644 js/*.js -t "$pkgdir"/usr/share/$pkgname/js/
 }
