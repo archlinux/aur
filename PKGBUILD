@@ -2,7 +2,7 @@
 
 _name=exa-py
 pkgname=python-$_name
-pkgver=2.28.0
+pkgver=2.29.0
 pkgrel=1
 pkgdesc="Python SDK for Exa API."
 arch=('any')
@@ -23,7 +23,7 @@ checkdepends=('python-pytest'
               'python-pytest-asyncio'
               'python-pytest-mock')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1df2016ab4a697bf6257099e5de60b5501b06aebc83eda98c3b470240e656cf7')
+sha256sums=('150418a66efb59ddc0bf765db5c3e41a26b5f64d61431141224febd9d5f90762')
 
 prepare() {
   cd "$_name-$pkgver"
