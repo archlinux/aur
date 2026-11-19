@@ -1,7 +1,7 @@
 # Maintainer: KOWX712 <leecc0503@gmail.com>
 pkgname=dexsql-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SQL for Android apk and dex files"
 arch=('x86_64' 'aarch64')
 url="https://dexsql.lsposed.org"
