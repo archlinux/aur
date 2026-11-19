@@ -1,0 +1,5 @@
+[treg-bin]
+source = "github"
+github = "metaory/treg"
+use_latest_release = true
+prefix = "v"
