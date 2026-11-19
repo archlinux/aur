@@ -1,0 +1,18 @@
+pkgbase = llm-visuals-git
+	pkgdesc = Live truecolor terminal dashboard for a locally running LLM
+	pkgver = 0.14.0.r12.gc8596a2
+	pkgrel = 1
+	url = https://github.com/DingoOz/llm-visuals/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = llm-visuals
+	conflicts = llm-visuals
+	options = !lto
+	source = llm-visuals-git::git+https://github.com/DingoOz/llm-visuals/
+	sha256sums = SKIP
+
+pkgname = llm-visuals-git
