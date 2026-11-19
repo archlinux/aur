@@ -1,7 +1,7 @@
 # Maintainer: Torben <git@letorbi.com>
 
 pkgname=swissfer
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 arch=(x86_64)
 pkgdesc="Command line interface for Swisstransfer."
@@ -9,7 +9,7 @@ url='https://github.com/Blutsh/swissfer'
 license=(GPL)
 makedepends=(cargo)
 source=("https://github.com/Blutsh/swissfer/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('02de9293ef1096c151d58e4226e50f2d163722e9634da085a90c346a69ef4c5d')
+sha256sums=('90c1a97debdb2bc2285e20000c8f06181834e60c869b1b338ad0b9192ec01b3c')
 
 prepare() {
   ln -sf "$pkgname-$pkgver" "$pkgname"
