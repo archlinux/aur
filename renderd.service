@@ -2,11 +2,20 @@
 Description=Daemon that renders map tiles using mapnik
 Documentation=man:renderd(1)
 Documentation=man:renderd.conf(5)
-After=network.target auditd.service
+After=network.target
+Conflicts=renderd-postgresql.service
 
 [Service]
 #Environment=G_MESSAGES_DEBUG=all
+CacheDirectory=renderd
 ExecStart=/usr/bin/renderd --foreground
+Group=renderd
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ReadWritePaths=/run/renderd /var/cache/renderd
+RuntimeDirectory=renderd
 User=renderd
 
 [Install]
