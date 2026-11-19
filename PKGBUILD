@@ -1,6 +1,6 @@
 # Maintainer: Max <max@swk-web.com>
 pkgname=devin-cli-bin
-pkgver=3000.12.57
+pkgver=3000.14.30821
 pkgrel=1
 pkgdesc="Command-line interface for Devin, Cognition's AI software engineer"
 arch=('x86_64' 'aarch64')
@@ -11,10 +11,9 @@ conflicts=('devin-cli')
 options=('!strip' '!debug')
 
 source_x86_64=("https://static.devin.ai/cli/${pkgver}/devin-${pkgver}-x86_64-unknown-linux.tar.gz")
-sha256sums_x86_64=('0946784ef886d716e82a8026f76933bf0a6e4f0a804a23722bb62047e8c07d4a')
-
 source_aarch64=("https://static.devin.ai/cli/${pkgver}/devin-${pkgver}-aarch64-unknown-linux.tar.gz")
-sha256sums_aarch64=('e0f03ce263e30940122547f73e1c57d4f163391553fd37c6c856b366463d766f')
+sha256sums_x86_64=('4dc43e3e4388bace60fe2aa8010cbb399402e724892d7175845b1cdef00e7ddb')
+sha256sums_aarch64=('3deb8af6b026060e975ed371936e139818020e5dc5abbcba07cde039f473a5a5')
 
 package() {
   install -Dm755 "${srcdir}/bin/devin" "${pkgdir}/usr/bin/devin"
