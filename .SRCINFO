@@ -1,0 +1,21 @@
+pkgbase = sylpheed-qtify
+	pkgdesc = Sylpheed, the GTK 2 mail client, built on Qt with GTK made Qt
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://sylpheed.sraoss.jp/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	makedepends = pkgconf
+	depends = gtk-made-qt
+	depends = glib2
+	depends = cairo
+	depends = pango
+	depends = openssl
+	provides = sylpheed
+	conflicts = sylpheed
+	source = https://deb.debian.org/debian/pool/main/s/sylpheed/sylpheed_3.7.0.orig.tar.bz2
+	sha256sums = 3e6ac156fa1f7c7b3a4e8a5b077488c77b49374318575bb9e32ae13b3655cbe7
+
+pkgname = sylpheed-qtify
