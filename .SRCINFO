@@ -1,31 +1,35 @@
 pkgbase = synthos-git
-	pkgdesc = Local AI desktop studio: agentic chat, notes workspace, node editor for image/video/music/speech, code editor — native synaptix engine on any NVIDIA sm_80+ GPU, .syn and GGUF models (git)
-	pkgver = 0.2.287.r468.ge62f363
+	pkgdesc = Local AI desktop studio: agentic chat, notes workspace, node editor for image/video/music/speech, code editor — native synaptix engine on any NVIDIA sm_80+ GPU, .syn and GGUF models
+	pkgver = 0.2.322.r0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/VitaminDB/synthos
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = cargo
 	makedepends = git
-	makedepends = rust
-	makedepends = cuda
-	makedepends = pkgconf
 	makedepends = clang
+	makedepends = pkgconf
+	makedepends = cuda
 	depends = alsa-lib
 	depends = fontconfig
 	depends = vulkan-icd-loader
 	depends = libxkbcommon
 	depends = wayland
 	depends = gtk3
-	depends = ffmpeg
+	depends = libavutil.so=61-64
+	depends = libavcodec.so=63-64
+	depends = libavformat.so=63-64
+	depends = libswscale.so=10-64
+	depends = libswresample.so=7-64
 	optdepends = nvidia-utils: нейросети на видеокарте NVIDIA (драйвер CUDA грузится в рантайме)
 	optdepends = cuda: компилятор ядер NVRTC — ядра собираются на лету под карту (sm_80+)
 	optdepends = openvino-intel-npu-plugin: нейросети на Intel NPU
 	optdepends = intel-npu-driver: драйвер Intel NPU
 	optdepends = intel-npu-compiler: компилятор моделей для Intel NPU
-	optdepends = synaptix: системная служба synaptixd — synthos подключается к ней и делит загруженные модели с synshell; без неё работает свой встроенный движок
+	optdepends = synaptix: системная служба synaptixd — synthos делит с ней загруженные модели; без неё работает встроенный движок
 	optdepends = synshell-ai: ассистент synshell — ставит службу synaptix, с которой synthos делит модели
-	provides = synthos=0.2.287
+	provides = synthos
 	conflicts = synthos
 	conflicts = synthos-bin
 	options = !lto
