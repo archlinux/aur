@@ -6,14 +6,14 @@
 
 pkgbase=luanti-git
 pkgname=('luanti-git' 'luanti-server-git' 'luanti-common-git')
-pkgver=5.15.0.r1.g1fe24af28
+pkgver=5.18.0.r42.g8bb14e85d2
 pkgrel=1
 arch=('x86_64')
 url='https://www.luanti.org/'
 license=('LGPL-2.1-or-later')
-makedepends=('sqlite' 'freetype2' 'leveldb' 'postgresql' 'libspatialindex' 'openal' 'libvorbis' 'curl'
-             'hicolor-icon-theme' 'cmake' 'ninja' 'hiredis' 'luajit' 'sdl2')
-makedepends+=('libjpeg-turbo' 'libgl' 'libxi' 'git')
+makedepends=('cmake' 'curl' 'freetype2' 'git' 'gmp' 'hicolor-icon-theme' 'hiredis' 'jsoncpp'
+             'leveldb' 'libgl' 'libjpeg-turbo' 'libspatialindex' 'libvorbis' 'libxi' 'libzip'
+             'luajit' 'ncurses' 'ninja' 'openal' 'postgresql' 'sdl2-compat' 'sqlite')
 source=('luanti::git+https://github.com/luanti-org/luanti.git'
         'luanti.service'
         'sysusers.d'
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd luanti
-  git describe --long --tags | sed 's/^v//;s/-rc/rc/;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --match '[0-9]*.[0-9]*.[0-9]' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -35,7 +35,7 @@ prepare() {
 build() {
   local _cmake_options=(
     -DCMAKE_INSTALL_PREFIX=/usr
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    -DCMAKE_BUILD_TYPE=Release
     -DENABLE_GETTEXT=1
     -DBUILD_UNITTESTS=0
     -DENABLE_UPDATE_CHECKER=0
@@ -64,10 +64,9 @@ build() {
 
 package_luanti-git() {
   pkgdesc='Multiplayer infinite-world block sandbox game (git version)'
-  depends=('luanti-common-git' 'curl' 'libvorbis' 'sqlite'
-           'openal' 'hicolor-icon-theme' 'desktop-file-utils' 'xdg-utils'
-           'freetype2' 'luajit' 'postgresql-libs' 'libspatialindex' 'jsoncpp'
-           'libgl' 'libjpeg-turbo' 'libxi') # irrlichtmt
+  depends=('curl' 'freetype2' 'gmp' 'hicolor-icon-theme' 'jsoncpp' 'libgl' 'libjpeg-turbo'
+           'libspatialindex' 'libvorbis' 'libzip' 'luajit' 'luanti-common-git' 'openal'
+           'postgresql-libs' 'sdl2-compat' 'sqlite' 'xdg-utils') # irrlichtmt is bundled (irr/)
   optdepends=('luanti-server-git: for hosting dedicated servers')
   provides=('luanti' 'minetest')
   conflicts=('luanti' 'minetest' 'minetest-git')
@@ -82,8 +81,8 @@ package_luanti-git() {
 
 package_luanti-server-git() {
   pkgdesc='Server of infinite-world block sandbox game (git version)'
-  depends=('luanti-common-git' 'leveldb' 'curl' 'sqlite' 'hiredis' 'luajit'
-           'postgresql-libs' 'libspatialindex' 'jsoncpp')
+  depends=('curl' 'gmp' 'hiredis' 'jsoncpp' 'leveldb' 'libspatialindex' 'luajit' 'luanti-common-git'
+           'ncurses' 'postgresql-libs' 'sqlite')
   provides=('luanti-server' 'minetest-server')
   conflicts=('luanti-server' 'minetest-server' 'minetest-server-git')
   replaces=('minetest-server' 'minetest-server-git')
@@ -91,7 +90,8 @@ package_luanti-server-git() {
   DESTDIR="${pkgdir}" ninja -C build-server install
 
   # systemd integration
-  install -d "${pkgdir}"/etc/luanti
+  install -Dm644 "${srcdir}"/luanti/minetest.conf.example \
+    "${pkgdir}"/etc/luanti/minetest.conf.example
   install -Dm644 luanti.service "${pkgdir}"/usr/lib/systemd/system/luanti@.service
   install -Dm644 tmpfiles.d "${pkgdir}"/usr/lib/tmpfiles.d/luanti-server.conf
   install -Dm644 sysusers.d "${pkgdir}"/usr/lib/sysusers.d/luanti-server.conf
@@ -103,7 +103,8 @@ package_luanti-server-git() {
 
 package_luanti-common-git() {
   pkgdesc='Common data files for luanti and luanti-server (git version)'
-  license=('custom')
+  arch=('any')
+  license=('LicenseRef-Custom')
   provides=('luanti-common' 'minetest-common')
   conflicts=('luanti-common' 'minetest-common' 'minetest-common-git')
   replaces=('minetest-common' 'minetest-common-git')
@@ -114,9 +115,8 @@ package_luanti-common-git() {
   cp -a builtin client fonts textures "${pkgdir}"/usr/share/luanti/
   cp -a "${srcdir}"/build-client/locale "${pkgdir}"/usr/share/luanti/
 
-  for file in doc/{fst_api,lua_api,menu_lua_api,protocol,world_format}.*; do
-    install -Dm644 $file "${pkgdir}"/usr/share/luanti/doc/$(basename $file)
-  done
+  install -Dm644 -t "${pkgdir}"/usr/share/luanti/doc \
+    doc/{fst_api,lua_api,menu_lua_api,protocol,world_format,client_lua_api,texture_packs}.*
 
   # devtest
   cp -a games "${pkgdir}"/usr/share/luanti/
