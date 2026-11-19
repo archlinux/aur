@@ -1,6 +1,6 @@
 pkgbase = jdk25-graalvm-bin
 	pkgdesc = Advanced JDK with ahead-of-time Native Image compilation
-	pkgver = 25.4.4.1.1
+	pkgver = 25.5.5.0.3
 	pkgrel = 1
 	url = https://www.graalvm.org/
 	install = install_jdk25-graalvm.sh
@@ -27,9 +27,9 @@ pkgbase = jdk25-graalvm-bin
 	options = staticlibs
 	options = !debug
 	options = !strip
-	source_x86_64 = https://gds.oracle.com/download/graal/25i4/archive/graalvm-jdk-25i4-25.0.4.1.1_linux-x64_bin.tar.gz
-	sha256sums_x86_64 = 4fcc632cfc68e98f49f9316f8a3588bafe4f5289f120104e2d290a75cf33e28e
-	source_aarch64 = https://gds.oracle.com/download/graal/25i4/archive/graalvm-jdk-25i4-25.0.4.1.1_linux-aarch64_bin.tar.gz
-	sha256sums_aarch64 = 780d5784d3db9bbcff77775c4d026e4a0e21a041ba9dba7c59135949ea5234a4
+	source_x86_64 = https://gds.oracle.com/download/graal/25i5/archive/graalvm-jdk-25i5-25.0.5.0.3_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = 90582f405cb89a825a43297cdacc7f427ce04039a249f5f0fc75c95b50600b08
+	source_aarch64 = https://gds.oracle.com/download/graal/25i5/archive/graalvm-jdk-25i5-25.0.5.0.3_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = c4e423cdbf21963329d4fb7846fdc2236dcd9cb3e996484d06c3b6d363b58a83
 
 pkgname = jdk25-graalvm-bin
