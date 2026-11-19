@@ -1,6 +1,7 @@
+depends=('pcsclite')
 pkgname=piv-agent
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An SSH and GPG agent which you can use with your PIV hardware security device (e.g. a Yubikey).'
 arch=('x86_64')
 url="https://github.com/smlx/${pkgname}"
