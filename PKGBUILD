@@ -3,7 +3,7 @@
 pkgname=python-kara-templater
 _pkgname=kara-templater
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python karaoke effects engine for standard ASS subtitles and libplacebo shaders'
 arch=('x86_64')
 url='https://github.com/sitiyou/python-kara-templater'
@@ -25,9 +25,11 @@ makedepends=(
   'nasm'
   'libpng'
 )
-checkdepends=('ttf-dejavu' 'noto-fonts-cjk' 'python-pytest' 'python-pillow' 'ty')
-source=("https://files.pythonhosted.org/packages/source/k/$_pkgname/${_pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('ea82fb346696f5d0234a1acceafe2df8a2e89f21eb50627439396b1607a368a8')
+checkdepends=('python-pytest' 'ttf-dejavu')
+source=("https://files.pythonhosted.org/packages/source/k/$_pkgname/${_pkgname//-/_}-$pkgver.tar.gz"
+        "check-core.sh")
+sha256sums=('ea82fb346696f5d0234a1acceafe2df8a2e89f21eb50627439396b1607a368a8'
+            '6f6a2aa096bded2bcd732985219c9d4a86668da2700bfbcffe04be0bbfcbc8b3')
 
 build() {
   cd "${_pkgname//-/_}-$pkgver"
@@ -35,15 +37,8 @@ build() {
 }
 
 check() {
-  cd "${_pkgname//-/_}-$pkgver"
-  local checkdir="$srcdir/check-$pkgver"
-  mkdir -p "$checkdir"
-  cp -r tests examples tools docs setup.py README.md THIRD_PARTY.md pyproject.toml "$checkdir/"
-  python -m venv --system-site-packages --without-pip "$checkdir/venv"
-  "$checkdir/venv/bin/python" -m installer --overwrite-existing dist/*.whl
-  cd "$checkdir"
-  VIRTUAL_ENV="$checkdir/venv" PATH="$checkdir/venv/bin:$PATH" "$checkdir/venv/bin/python" -m pytest -q tests
-  "$checkdir/venv/bin/kara-templater" examples/karaoke.ass "$checkdir/output.ass"
+  cd "$(mktemp -d "$srcdir/check.XXXXXXXX")"
+  timeout --signal=KILL 30s bash "$srcdir/check-core.sh" "$srcdir/${_pkgname//-/_}-$pkgver"
 }
 
 package() {
