@@ -1,0 +1,5 @@
+[maak]
+source = "github"
+github = "jjba23/maak"
+use_latest_release = true
+prefix = "v"
