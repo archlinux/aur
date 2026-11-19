@@ -1,7 +1,7 @@
 pkgbase = cumpressor-bin
 	pkgdesc = Private, on-device video compressor built with Rust and GPUI (prebuilt binary)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Coobyk/Cumpressor
 	arch = x86_64
 	license = MIT
@@ -17,7 +17,11 @@ pkgbase = cumpressor-bin
 	conflicts = cumpressor
 	source = cumpressor-linux-x64.tar.gz::https://github.com/Coobyk/Cumpressor/releases/download/v0.1.0/cumpressor-linux-x64.tar.gz
 	source = cumpressor-bin-LICENSE::https://raw.githubusercontent.com/Coobyk/Cumpressor/v0.1.0/LICENSE
+	source = cumpressor.png
+	source = cumpressor.desktop
 	sha256sums = 653eef649363e81b14f8147783a31ebd325451da40869d6429070773ee3900dc
 	sha256sums = 3d668656749ec34086a42c91666749947fec5d9c835c2db88419431fef767e3c
+	sha256sums = 1dd35f267ebcd6b532cb34f99ced92a90833ea79900627e5406810ca4f94845b
+	sha256sums = 1a6aa6b4d7bfd2a985ca82e3abae3f042489cdd115e7a7ae43a8b4d316db7ccf
 
 pkgname = cumpressor-bin
