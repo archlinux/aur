@@ -3,7 +3,7 @@
 pkgname=termimus-ssh-bin
 _pkgname=termimus
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-hosted SSH & Server Manager desktop app (Termius alternative built with Tauri + React)"
 arch=('x86_64')
 url="https://github.com/termimus/termimus-ssh"
@@ -33,6 +33,18 @@ sha256sums=(
 
 package() {
     bsdtar -xf data.tar.gz -C "${pkgdir}"
+
+    # Move binary to /usr/lib and create wrapper for WebKitGTK DMA-BUF/GBM compatibility
+    install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
+    mv "${pkgdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
+
+    cat <<'EOF' > "${pkgdir}/usr/bin/${_pkgname}"
+#!/bin/sh
+# Workaround for WebKitGTK DMA-BUF / GBM buffer allocation issues (e.g. on NVIDIA / Wayland)
+export WEBKIT_DISABLE_DMABUF_RENDERER="${WEBKIT_DISABLE_DMABUF_RENDERER:-1}"
+exec /usr/lib/termimus/termimus "$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
 
     # Symlink command alias
     ln -sf termimus "${pkgdir}/usr/bin/termimus-ssh"
