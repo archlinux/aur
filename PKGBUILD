@@ -1,7 +1,7 @@
 # Maintainer: Muzammil Shafique <muzu@duck.com>
 _pkgname=tsuki
 pkgname="${_pkgname}-git"
-pkgver=0.1.1.r0.g2cd62f0
+pkgver=0.2.0.r0.gd7ef6b4
 pkgrel=1
 pkgdesc="Native Linux game launcher for Wine, Proton, and native titles (git version)"
 arch=('x86_64')
@@ -11,6 +11,7 @@ depends=(
     'glibc'
     'gcc-libs'
     'libglvnd'
+    'zlib'
     'qt6-base'
     'qt6-declarative'
     'qt6-svg'
@@ -19,6 +20,7 @@ depends=(
     'tar'
 )
 optdepends=(
+    'ttf-jetbrains-mono-nerd: Nerd Font monospace glyphs in diagnostic paths and logs'
     'wine: Windows game compatibility via system Wine'
     'winetricks: Windows runtime component installer'
     'mangohud: In-game FPS and performance overlay'
@@ -58,7 +60,14 @@ build() {
 }
 
 check() {
-    QT_QPA_PLATFORM=offscreen ctest --test-dir build --output-on-failure
+    local test_home="${srcdir}/test-home"
+    mkdir -p "${test_home}/.config" "${test_home}/.local/share" "${test_home}/.cache"
+    HOME="${test_home}" \
+    XDG_CONFIG_HOME="${test_home}/.config" \
+    XDG_DATA_HOME="${test_home}/.local/share" \
+    XDG_CACHE_HOME="${test_home}/.cache" \
+    QT_QPA_PLATFORM=offscreen \
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
