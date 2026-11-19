@@ -31,9 +31,12 @@ build() {
 
 check() {
   cd "$pkgname"
-  # Qt senza schermo, binding del pacchetto, rclone vero di sistema
+  # Qt senza schermo, binding del pacchetto, rclone vero di sistema.
+  # Fuori i test degli script di pubblicazione AUR: controllano che il
+  # .SRCINFO sia allineato, e test-in-docker.sh lo rigenera solo dopo la build.
   QT_QPA_PLATFORM=offscreen CLONAUT_QT=pyqt6 \
-    python -m pytest -q -p no:cacheprovider tests
+    python -m pytest -q -p no:cacheprovider \
+      --ignore=tests/test_publish_aur.py --ignore=tests/test_aur_release.py tests
 }
 
 package() {
