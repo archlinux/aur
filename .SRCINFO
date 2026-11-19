@@ -1,0 +1,47 @@
+pkgbase = python-pytcp
+	pkgdesc = The TCP/IP stack written in Python
+	pkgver = 3.0.8
+	pkgrel = 1
+	url = https://github.com/ccie18643/PyTCP
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = python-click
+	checkdepends = python-parameterized
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	source = python-pytcp::git+https://github.com/ccie18643/PyTCP.git#tag=v3.0.8
+	sha256sums = b6960f3f8d327575782ea84f22aaee02168be4b658c67ecebfa577d948866ca5
+
+pkgname = python-pytcp
+	depends = python
+	depends = python-pmd-net-addr
+	depends = python-pmd-net-proto
+	depends = python-pmd-pytcp
+	provides = python-pytcp
+	conflicts = python-pytcp
+
+pkgname = python-pmd-net-addr
+	pkgdesc = An alternative to Python's standard-library ipaddress module — originally built for the PyTCP stack, fully usable on its own
+	depends = python
+	depends = python-click
+	provides = python-pmd-net-addr
+	conflicts = python-pmd-net-addr
+
+pkgname = python-pmd-net-proto
+	pkgdesc = The network-protocol packet parse/assemble layer of the PyTCP stack — Ethernet through TCP/UDP — fully usable on its own
+	depends = python
+	depends = python-pmd-net-addr
+	provides = python-pmd-net-proto
+	conflicts = python-pmd-net-proto
+
+pkgname = python-pmd-pytcp
+	pkgdesc = Pure-Python, zero-dependency TCP/IP stack — Ethernet through RFC 9293 TCP — running in user space on a TAP/TUN interface as a daemon (the supported mode), with a Berkeley-sockets API and a 1:1 stdlib-socket drop-in
+	depends = python
+	depends = python-pmd-net-addr
+	depends = python-pmd-net-proto
+	provides = python-pmd-pytcp
+	conflicts = python-pmd-pytcp
