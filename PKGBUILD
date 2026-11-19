@@ -1,5 +1,5 @@
 # Maintainer: Alex Indigo <ai@aegis.one>
-pkgname=kosmozoo-bin; pkgver=0.5.0; pkgrel=1
+pkgname=kosmozoo-bin; pkgver=0.5.1; pkgrel=1
 pkgdesc="Local review and curation app for ComfyUI image output (prebuilt executable)"
 arch=('x86_64')
 url="https://github.com/alexindigo/kosmozoo"
@@ -10,7 +10,7 @@ install=kosmozoo.install
 provides=('kosmozoo'); conflicts=('kosmozoo' 'kosmozoo-git')
 options=('!strip' '!debug')
 source=("kosmozoo-$pkgver::$url/releases/download/v$pkgver/kosmozoo-linux-x86_64")
-sha256sums=('9443f47244fe57ea0c638ef0691ca70f49ebe97e5430d0ed33e5501c2018dc5f')
+sha256sums=('3bbde1e20e258ea8aa003478404b08850bc6017ba4aa77b157dfb36edaf88963')
 package() {
   install -Dm755 "kosmozoo-$pkgver" "$pkgdir/usr/bin/kosmozoo"
   "$pkgdir/usr/bin/kosmozoo" package-resources --prefix=/usr --destdir="$pkgdir"

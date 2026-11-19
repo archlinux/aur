@@ -1,6 +1,6 @@
 pkgbase = kosmozoo-bin
 	pkgdesc = Local review and curation app for ComfyUI image output (prebuilt executable)
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/alexindigo/kosmozoo
 	install = kosmozoo.install
@@ -18,7 +18,7 @@ pkgbase = kosmozoo-bin
 	conflicts = kosmozoo-git
 	options = !strip
 	options = !debug
-	source = kosmozoo-0.5.0::https://github.com/alexindigo/kosmozoo/releases/download/v0.5.0/kosmozoo-linux-x86_64
-	sha256sums = 9443f47244fe57ea0c638ef0691ca70f49ebe97e5430d0ed33e5501c2018dc5f
+	source = kosmozoo-0.5.1::https://github.com/alexindigo/kosmozoo/releases/download/v0.5.1/kosmozoo-linux-x86_64
+	sha256sums = 3bbde1e20e258ea8aa003478404b08850bc6017ba4aa77b157dfb36edaf88963
 
 pkgname = kosmozoo-bin
