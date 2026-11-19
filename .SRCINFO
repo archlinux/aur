@@ -1,6 +1,6 @@
 pkgbase = prism-rs-bin
 	pkgdesc = TUI RGB color picker written in Rust
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/isene/prism
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = prism-rs-bin
 	provides = prism
 	conflicts = prism-rs
 	options = !strip
-	source = README-0.1.5.md::https://raw.githubusercontent.com/isene/prism/v0.1.5/README.md
+	source = README-0.1.6.md::https://raw.githubusercontent.com/isene/prism/v0.1.6/README.md
 	sha256sums = 883fce580b293445952508dd4f05968c2aa7144789e22568c920ba61aaf15b0a
-	source_x86_64 = prism-x86_64-0.1.5::https://github.com/isene/prism/releases/download/v0.1.5/prism-linux-x86_64
-	sha256sums_x86_64 = 6cb78b2e3ce48659150eda010495976ef566dc30c598175a612a03fcc5e75aaf
-	source_aarch64 = prism-aarch64-0.1.5::https://github.com/isene/prism/releases/download/v0.1.5/prism-linux-aarch64
-	sha256sums_aarch64 = f016eda7e8ac1b1e30fa8c5f5a9512fbe7df8f560572e4da9c4896bef04fc40d
+	source_x86_64 = prism-x86_64-0.1.6::https://github.com/isene/prism/releases/download/v0.1.6/prism-linux-x86_64
+	sha256sums_x86_64 = ff801920bf81191a4f4a7ba0f838c2a824238d928751b7e53efe21fec3210a93
+	source_aarch64 = prism-aarch64-0.1.6::https://github.com/isene/prism/releases/download/v0.1.6/prism-linux-aarch64
+	sha256sums_aarch64 = 560b8f4627c01ff6c581105153dbba1b956ba65b0031154f554af2a2a4fe5c5d
 
 pkgname = prism-rs-bin
