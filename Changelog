@@ -1,11 +1,11 @@
 -------------------------------------------------------
  Changelog    : wg-client
- Tags         : 8.0.1 ➙ 8.0.5
+ Tags         : 8.0.2 ➙ 8.1.0,
               : 2026-09-02 ➙ 2026-10-04
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-10-04   : 8.0.5
+ 2026-10-04   : 8.1.0,
               - release 8.0.5
                 Sun Oct  4 06:14:30 AM EDT 2026
                 * Update Documentation
@@ -35,8 +35,3 @@
               - **8.02**
             
                 * Add missing dependency no PyCidr package used by the ssh listener
-
- 2026-09-02   : 8.0.1
-              - meson tweak
-              - remove unused from meson.build
-              - add meson.options
