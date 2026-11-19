@@ -1,7 +1,7 @@
 # Maintainer: acceleration3 <acceleration23 at gmail dot com>
 
 pkgname=lsw-bin
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Linux Subsystem for Windows: Windows applications as native windows, from a KVM guest with a paravirtual GPU"
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
 install=lsw-bin.install
 options=('!strip' '!debug')
 source=("https://github.com/acceleration3/linux-subsystem-windows/releases/download/v${pkgver}/lsw-${pkgver}-${CARCH}.tar.zst")
-sha256sums=('cdf97335127ba0fdf72c80e527679277565a8f5d2ffc864b820a26690252067f')
+sha256sums=('7c9ed0887d1c6504478b41fa64cfc26f3de84e8990521aaa4748dfa1b94b7202')
 
 package() {
     cp -a --no-preserve=ownership "${srcdir}/usr" "${pkgdir}/"
