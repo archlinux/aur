@@ -1,0 +1,5 @@
+[zonvie-bin]
+source = "github"
+github = "akiyosi/zonvie"
+use_latest_release = true
+prefix = "v"
