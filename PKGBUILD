@@ -3,19 +3,20 @@
 _pkgname=csv2md
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=1.7.1.r75.20260621.b4e13d2
+pkgver=1.8.0.r78.20261110.a893db8
 pkgrel=1
 pkgdesc='Command line tool for converting CSV files into Markdown tables.'
 url='https://pypi.org/project/csv2md/'
 arch=(any)
 license=(MIT)
 depends=(
-  'python>=3.6'
-  'python-importlib-metadata'
+  'python>=3.10'
 )
 makedepends=(
   'git'
-  'python-setuptools'
+  'python-build'
+  'python-installer'
+  'python-poetry-core'
 )
 provides=(
   "${_pkgname}"
@@ -37,7 +38,7 @@ sha256sums=(
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  _ver="$(python setup.py --version)"
+  _ver="$(sed -n 's/^version *= *"\([^"]*\)".*/\1/p' pyproject.toml)"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
@@ -53,13 +54,13 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  python ./setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  python ./setup.py install --skip-build --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   for _docfile in README.md; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"

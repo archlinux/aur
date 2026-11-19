@@ -1,18 +1,19 @@
 pkgbase = csv2md-git
 	pkgdesc = Command line tool for converting CSV files into Markdown tables.
-	pkgver = 1.7.1.r75.20260621.b4e13d2
+	pkgver = 1.8.0.r78.20261110.a893db8
 	pkgrel = 1
 	epoch = 0
 	url = https://pypi.org/project/csv2md/
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = python-setuptools
-	depends = python>=3.6
-	depends = python-importlib-metadata
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python>=3.10
 	provides = csv2md
-	provides = python-csv2md=1.7.1.r75.20260621.b4e13d2
-	provides = python-csv2md-git=1.7.1.r75.20260621.b4e13d2
+	provides = python-csv2md=1.8.0.r78.20261110.a893db8
+	provides = python-csv2md-git=1.8.0.r78.20261110.a893db8
 	conflicts = csv2md
 	conflicts = python-csv2md
 	conflicts = python-csv2md-git
