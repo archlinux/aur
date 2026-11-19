@@ -1,12 +1,12 @@
 # Maintainer: MeoArch <https://github.com/QwQdoge>
-_srcdir=meo-ai-0785643cb9a0510e52b9b6f5b82f79cf5bd6dd08
+_srcdir=meo-ai-ef520c6fa4fe3c595e6d58ed5b3408ebddc9b765
 pkgname=meo-ai-beta
-pkgver=0.1.0beta16
+pkgver=0.1.0beta17
 pkgrel=1
 pkgdesc="Meo AI desktop app and headless AgentService (Beta channel)"
 arch=('x86_64')
 conflicts=('meo-ai')
-provides=('meo-ai=0.1.0beta16')
+provides=('meo-ai=0.1.0beta17')
 url='https://github.com/QwQdoge/meo-ai'
 license=('GPL-3.0-or-later' 'MIT' 'BSD-3-Clause')
 depends=('meo-account' 'meoui-qml>=1.0.4beta3' 'qt6-base' 'qt6-declarative'
@@ -23,30 +23,30 @@ optdepends=('meo-settings: manage Meo Account and device AI connections'
             'python-pyaudio: microphone input'
             'python-mcp: external MCP tools')
 options=('!debug')
-source=('meo-ai-0785643cb9a0510e52b9b6f5b82f79cf5bd6dd08.tar.gz::https://codeload.github.com/QwQdoge/meo-ai/tar.gz/0785643cb9a0510e52b9b6f5b82f79cf5bd6dd08'
+source=('meo-ai-ef520c6fa4fe3c595e6d58ed5b3408ebddc9b765.tar.gz::https://codeload.github.com/QwQdoge/meo-ai/tar.gz/ef520c6fa4fe3c595e6d58ed5b3408ebddc9b765'
         'org.meo.AI.desktop'
         'newspaper3k-LICENSE'
         'feedfinder2-LICENSE'
         'tinysegmenter-LICENSE'
         'runtime-sources.json'
-        'MeoUI-73eb4ba590a0bb52e242f69f8dffc8c64c9d4f9e.tar.gz::https://codeload.github.com/QwQdoge/MeoUI/tar.gz/73eb4ba590a0bb52e242f69f8dffc8c64c9d4f9e'
+        'MeoUI-c3c1e441c4a5082cf6dc6f56c51bf8ceaf83bda7.tar.gz::https://codeload.github.com/QwQdoge/MeoUI/tar.gz/c3c1e441c4a5082cf6dc6f56c51bf8ceaf83bda7'
         'feedfinder2-0.0.4.tar.gz::https://files.pythonhosted.org/packages/35/82/1251fefec3bb4b03fd966c7e7f7a41c9fc2bb00d823a34c13f847fd61406/feedfinder2-0.0.4.tar.gz'
         'newspaper3k-0.2.8-py3-none-any.whl::https://files.pythonhosted.org/packages/d7/b9/51afecb35bb61b188a4b44868001de348a0e8134b4dfa00ffc191567c4b9/newspaper3k-0.2.8-py3-none-any.whl'
         'tinysegmenter-0.3.tar.gz::https://files.pythonhosted.org/packages/17/82/86982e4b6d16e4febc79c2a1d68ee3b707e8a020c5d2bc4af8052d0f136a/tinysegmenter-0.3.tar.gz')
-sha256sums=('0645eeb1d0dfe9ded823a6da5a12f5233b36ccf1806afb347ff6162819df4ecb'
+sha256sums=('9b68ce14977195f48381a806c9643e3a1b51ab25927a61b158b6a014b650b2e4'
             '330e2822261054e9cb41a802cd51f7b4e1b3696e335a8b10cd6d91552cc11e74'
             '662ea995a58f4d1138128ae1f44a91bccd4ddb114419d04446cf165442b8217c'
             'dd878f923e4dc2e4ee6a4482fc00a94a933888c2ceb51db131827939a26739af'
             '3ecf2511b2bfac0296d6d4efe236e323d8989b779e0dcce281f2482ebdd560af'
             'f38110e262126c355bfe4f5ebe10b38dac960a00f1c20ea5f89f638a36f92706'
-            '0ae19332e46aba4b6c247e2d540310136d9d5594211d8621cd6dfa485a06085a'
+            '464a9d54b2bba2f511e0a32897f4ecb9a30acb2c9d8ea36a84e309ef4899c677'
             '3701ee01a6c85f8b865a049c30ba0b4608858c803fe8e30d1d289fdbe89d0efe'
             '44a864222633d3081113d1030615991c3dbba87239f6bbf59d91240f71a22e3e'
             'ed1f6d2e806a4758a73be589754384cbadadc7e1a414c81a166fc9adf2d40c6d')
 noextract=('feedfinder2-0.0.4.tar.gz' 'newspaper3k-0.2.8-py3-none-any.whl' 'tinysegmenter-0.3.tar.gz')
 
 prepare() {
-  ln -sfn "$srcdir/MeoUI-73eb4ba590a0bb52e242f69f8dffc8c64c9d4f9e" "$srcdir/meoui"
+  ln -sfn "$srcdir/MeoUI-c3c1e441c4a5082cf6dc6f56c51bf8ceaf83bda7" "$srcdir/meoui"
   mkdir -p "$srcdir/third-party"
   cp -f "$srcdir/feedfinder2-0.0.4.tar.gz" "$srcdir/third-party/feedfinder2-0.0.4.tar.gz"
   cp -f "$srcdir/newspaper3k-0.2.8-py3-none-any.whl" "$srcdir/third-party/newspaper3k-0.2.8-py3-none-any.whl"
@@ -94,17 +94,23 @@ package() {
   install -d "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/meo-ai" <<'WRAPPER'
 #!/bin/sh
-args=
-for a in "$@"; do
-  case "$a" in
-    --live-recovery) export MEO_AI_LIVE_RECOVERY=1 ;;
+# Parse only the documented leading wrapper flags. Never reconstruct argv with eval:
+# arguments are untrusted input and must remain distinct shell positional parameters.
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --live-recovery)
+      export MEO_AI_LIVE_RECOVERY=1
+      shift
+      ;;
     --smoke)
       test -x /usr/bin/meo-ai-desktop && test -s /usr/share/meo-ai-desktop/qml/Main.qml
-      exit $? ;;
-    *) args="$args \"$a\"" ;;
+      exit $?
+      ;;
+    *)
+      break
+      ;;
   esac
 done
-eval "set -- $args"
 exec /usr/bin/meo-ai-desktop "$@"
 WRAPPER
   chmod 755 "$pkgdir/usr/bin/meo-ai"
