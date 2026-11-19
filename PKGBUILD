@@ -12,7 +12,6 @@ url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('MIT')
 
 provides=("${_pkgname}")
-conflicts=("python-${pkgname}")
 
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 depends=('python' 'python-art' 'python-matplotlib' 'python-pillow')
