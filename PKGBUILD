@@ -32,7 +32,7 @@
 # which reads the release's CI-signed SHA256SUMS.txt. updpkgsums only sees
 # the selected variants and cannot fill the _vt_assets_<arch> tables.
 pkgname=voxtype-bin
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (pre-built binaries)"
 arch=('x86_64' 'aarch64')
@@ -66,6 +66,7 @@ optdepends=(
     'migraphx: AMD GPU graph optimization for the MIGraphX execution provider, required for AMD GPU acceleration on ONNX engines'
     'ollama: local AI summarization for meeting mode'
     'gtk4-layer-shell: runtime for the GTK4 on-screen mic visualizer (voxtype-osd-gtk4)'
+    'gtk4: the meeting window on desktops without Quickshell (voxtype-meetings-gtk4)'
     'quickshell: Quickshell-based OSD frontend (opt in via [osd] frontend = "quickshell")'
 )
 # aarch64 has no GPU-accelerated binary variant yet (#547 tracks it): no
@@ -82,6 +83,7 @@ optdepends_aarch64=(
     'pulseaudio: audio server (alternative to PipeWire)'
     'ollama: local AI summarization for meeting mode'
     'gtk4-layer-shell: runtime for the GTK4 on-screen mic visualizer (voxtype-osd-gtk4)'
+    'gtk4: the meeting window on desktops without Quickshell (voxtype-meetings-gtk4)'
     'quickshell: Quickshell-based OSD frontend (opt in via [osd] frontend = "quickshell")'
 )
 provides=('voxtype')
@@ -132,16 +134,16 @@ source=(
     "voxtype-$pkgver.tar.gz.asc::$_github/voxtype-$_vt_ver.tar.gz.asc"
 )
 sha256sums=(
-    '7c76f22f1dea86d304c6bfa38601e45c278cbff051cb412357f889b442d83cfa'  # config/default.toml
+    'e874273cbb4c6628059e320d08d8462008a88a3a02408318ed90ce488f9a0298'  # config/default.toml
     '531c3658e229619e56bb01659fb81f401767b85e1d6e2acd1ac67ee3414a168c'  # voxtype.service
     '65c95805d9b03ccc2fadb9d63a03ab79974b00091df8457ee8ef290ec6bd5b12'  # voxtype.bash
     'e5e63b3c7f48238cf719e4f2ef90c1f9c5c7e8cd25eaebc9f78bdd34b24b6605'  # voxtype.zsh
     'f720ddd24ee97c105b448323899c36bca7c63d00c2d42c4a3da70c3d157dccbb'  # voxtype.fish
     '31123c45b4ff9cb5fd9e01083350fea6ccaf14969013fd48e4c95fdf89e6eb4b'  # LICENSE
-    'ebf04c934b697c0a9af68e750f2076892b14c4cd4aead5aab94df73692bc0b8a'  # README.md
-    '32144a4a5210092b0aa909f6de7a43ebe8bbf82fa3dfb1f3519787512fdf8e4b'  # voxtype-configure.desktop
+    '5ff589b63120e689eafb5ab9d2056de7eac23be12b4faa3bf13de7b7d9b57373'  # README.md
+    '93c6ae3e47f95486d1e4fa2572d1e367e83f813706eaf190ec676709bcc89e17'  # voxtype-configure.desktop
     'f8a626280b26b7f34b2221c7a16dc9d98f18085b7373cc60afc5c514e5ce18e4'  # voxtype-configure-launcher
-    'e20fa6f176f3367d4fae872bd6933ac446c49390c658f499588215ca466851b9'  # voxtype-$pkgver.tar.gz (source archive)
+    'aee9d36164d055904e82fccbf381d6fac794b4534af7ac58522bf6042c759899'  # voxtype-$pkgver.tar.gz (source archive)
     'SKIP'  # voxtype-$pkgver.tar.gz.asc
 )
 
@@ -155,58 +157,61 @@ _vt_assets_x86_64=(
     # Whisper binaries, each followed by its GGUF worker (new in 1.2.0).
     # baseline: x86-64-v2, for pre-AVX2 CPUs (#612). Its worker is the
     # generic voxtype-gguf-worker every binary falls back to.
-    'baseline|baseline|4a75621270504168be9b0b44113bc1b19e5f0dbca540a3de78b4806034f751e1'
-    'baseline|baseline.gguf-worker|cbb1a2921a6e5cbf39a061854b56b3a10dbc204b4195b4648d7b53eaeb8fde2e'
-    'avx2|avx2|8f4e911a62183a4b81fbb9b265018b36a5afc631162235c1436f98252db545b4'
-    'avx2|avx2.gguf-worker|f277e2320798a8dc2f099a89886450024b9753b7f8962eeb1b5bcb867fc504aa'
-    'avx512|avx512|2f4e382014a1d438be264eec22325fe0b4ca1983c0c5a99a9c9f519f22e5dc35'
-    'avx512|avx512.gguf-worker|7157230215332737da83667f5a4b4436cd94aad7cb0dd4cd02f88293da819876'
-    'vulkan|vulkan|3e246b8cc455c897ffbb2fa8156f2e4689ded55c4ae0a2386de06fbab510ae9e'
-    'vulkan|vulkan.gguf-worker|118dafbd855743dbdc486f8d7e98b26ec8f6389790fc28bc255a510b8218ce77'
+    'baseline|baseline|090e69f44300c041221677c1a997c87f98a977ec9c2b5192a0da2e1624d75fd6'
+    'baseline|baseline.gguf-worker|9a1be7cd8c2dc6ac291b0424f4a4204aec47f1e8c8e82fc09904b525b68c7c7f'
+    'avx2|avx2|971f4cc329b6c20afd6044693fd6999b252079de43e4bfb772a489873a80a28e'
+    'avx2|avx2.gguf-worker|b642fdf87fd03f1e924182adb9b9b7717da15a8980805f647b6dfe06d4f8b4ca'
+    'avx512|avx512|b1609902c84dc9c2e919408ddeae7767f99b3f7a1f1edb6227eb7e36b055d9ee'
+    'avx512|avx512.gguf-worker|fea54a6d159504a051c2e1bc570594209d70ffca9f3cdb2201341d17901751c8'
+    'vulkan|vulkan|cb2e73aec3325fbb6212da164b9f2ddaf2e457692d84f7caf15309de9d42048b'
+    'vulkan|vulkan.gguf-worker|1fe59d224258fe9f2c47d314d21ac8c1f5e558ce5cadc9ca96f5c50664360f06'
     # ONNX CPU binaries (Parakeet, Moonshine, SenseVoice, Paraformer, Dolphin,
     # Omnilingual, Cohere) plus their Vulkan-capable GGUF workers
-    'onnx-avx2|onnx-avx2|b11ad3fd1214565ff773b5a30f845f32e5dce36f19ec6d666d2bdd9cc774953c'
-    'onnx-avx2|onnx-avx2.gguf-worker|5d21d334a41f2582ede118b922af7cf42c241521a9f5403d61d18661d46dd7e5'
-    'onnx-avx512|onnx-avx512|67e8af71d9a22b6c767656a2fb34b4aeeb5909c10325a4aca7fbcab623cb7726'
-    'onnx-avx512|onnx-avx512.gguf-worker|acaba0a62c4095c73b143764838f7596fcd98fa53f687353cbc79993156995cc'
+    'onnx-avx2|onnx-avx2|0441da27f7a7bccd77efb38b59b0934b1a9a94465eb888a0cc4ad43b29a4917a'
+    'onnx-avx2|onnx-avx2.gguf-worker|4fe8f2bd6d4846319aff90c3077dccbe03f520fdebd831d95e4ad6d95bc6bfe6'
+    'onnx-avx512|onnx-avx512|8635c34f7071d818b4695485c6faa4bcd92fa04e2f871f7cccb85daa34f22524'
+    'onnx-avx512|onnx-avx512.gguf-worker|c0efb432448f4f8ef1439be6dc51295b37208ee6b3ce588a82d0058c3ea4eace'
     # ONNX CUDA 12 (CUDA 12.x hosts: Ubuntu LTS, Debian, older Fedora)
-    'onnx-cuda-12|onnx-cuda-12|87b7c1fc5c3f6d14bd2a26be158b23b0348d28aad1e46d7b5fad94ee83b97f06'
-    'onnx-cuda-12|onnx-cuda-12.gguf-worker|266236d6bd0cfa023d92d0cdd0f895d5d1bbeafe44b6bb3d2f3c2f4d2fe71a41'
+    'onnx-cuda-12|onnx-cuda-12|709e78920ca2fa23b84c658819f76dabc0d02eb45ec830a39955feb651ad43bb'
+    'onnx-cuda-12|onnx-cuda-12.gguf-worker|7c362e939e71c742b2ebfad662b8e20fbd899d14c5c8f91d777de34a96adc10b'
     'onnx-cuda-12|onnx-cuda-12.libonnxruntime_providers_cuda.so|a8584727d51ba646ac63fc991c2f36ad6cd5b8cc8b1141896e46938700b888d0'
     'onnx-cuda-12|onnx-cuda-12.libonnxruntime_providers_shared.so|1b028afc079628d76a28d7eb09700a4baead4a27f9634ba82c35398486134114'
     # ONNX CUDA 13 (CUDA 13.x hosts: Arch, rolling distros, driver 580+).
     # v0.7.3+: cu13 dlopens ORT at runtime (ort/load-dynamic) because
     # Microsoft's prebuilt is the only ORT 1.24.4 build with Blackwell sm_120
     # coverage and is distributed as .so only.
-    'onnx-cuda-13|onnx-cuda-13|8a7ac5b573452b0cafc621551783b03279a39381ae1ce53f48af0b0ff9b17fee'
-    'onnx-cuda-13|onnx-cuda-13.gguf-worker|266236d6bd0cfa023d92d0cdd0f895d5d1bbeafe44b6bb3d2f3c2f4d2fe71a41'
+    'onnx-cuda-13|onnx-cuda-13|b6b794a19d66b39fda22c672e8a068a769e6071a839755105b148cf3193cc1ec'
+    'onnx-cuda-13|onnx-cuda-13.gguf-worker|4a2e40e33927a373d3c6b3f345b827491f8032add4b43fcf2483d37e47fdd2b4'
     'onnx-cuda-13|onnx-cuda-13.libonnxruntime_providers_cuda.so|b6cb7744d0efd2faced5c83ead374c13e7f2630b5a249ffaf393cdb1e092c92b'
     'onnx-cuda-13|onnx-cuda-13.libonnxruntime_providers_shared.so|c6a12593396095f5670160e284c35d1700b7708cf3037b7042e2a5200ccae772'
     'onnx-cuda-13|onnx-cuda-13.libonnxruntime.so.1.24.4|1aacefdf0b4afa145d410b2381bbc3db3d978c485fb182c42a2b0b09f91f5310'
     # ONNX MIGraphX (AMD GPU EP, replaces ROCm in v0.7.0)
-    'onnx-migraphx|onnx-migraphx|18de08441759babe197eca1d9b29c2003adc6eeeafc2ec8be00534c600ffdf05'
-    'onnx-migraphx|onnx-migraphx.gguf-worker|266236d6bd0cfa023d92d0cdd0f895d5d1bbeafe44b6bb3d2f3c2f4d2fe71a41'
+    'onnx-migraphx|onnx-migraphx|bfb2afb8a315bd85765ada6c2739fe7f1202a090d589af579fa3cfa962fc544b'
+    'onnx-migraphx|onnx-migraphx.gguf-worker|4a2e40e33927a373d3c6b3f345b827491f8032add4b43fcf2483d37e47fdd2b4'
     'onnx-migraphx|onnx-migraphx.libonnxruntime_providers_migraphx.so|ddd67e6193ade819ee21f1706d1b03b9151f1d2d2843701e2d19d8b183631707'
     'onnx-migraphx|onnx-migraphx.libonnxruntime_providers_shared.so|17f7cf47ad0d7b5ac895ae588fd62c7f85a13842588161b6a24c7d480f062be4'
     # OSD launcher, GTK4 and Quickshell frontends, audio-bridge sidecar
-    'common|osd|afc121f235e6920fe6aa53c9b0ae65bb11e46d7889391a197b33e32ed1706997'
-    'common|osd-gtk4|a62c6bbe10879b8292dba66ad42cb9ec86fef7a4aa56f00ee8f1b8a1c90b03bb'
-    'common|osd-quickshell|97596d084f5d0d90edbee47bbaa1c45186e9b15af0bcdf186426624931f0407d'
-    'common|audio-bridge|e06637b02af8c655e77a18f576f2db795cf71e0e0edefdad1ad1760947bde28e'
+    'common|osd|1e9e2bfa0350a92cf01761ac3c4247c61002fdf58e372bd1bd43c05ee59cd4b0'
+    'common|osd-gtk4|c0586f871bf67cb1b32d79a413d4a30cbc66bbe5668520a6e38837c869ff3874'
+    'common|osd-quickshell|9eca5b40929f947a89cbc86fc0cfff3c0157ba9114d0fad4ff547ead7073b47b'
+    'common|audio-bridge|1791df3fa2544a7f60d217ba90c1ce704420f37296d0fc2c9db62272ddb6af4b'
+    # Meeting window for desktops without Quickshell (new in 1.3.0)
+    'common|meetings-gtk4|f523799108f659e76530164ab383ad905f5f483ed1f7b726d63051d8b23d12da'
 )
 _vt_assets_aarch64=(
     # aarch64: one generic CPU Whisper binary and one generic ONNX binary. No
     # AVX2/AVX-512 split exists on this architecture, and no GPU variant ships
     # yet (#547). Experimental until validated on real Pi/Ampere/Graviton/
     # Snapdragon X hardware (see .github/workflows/build-linux.yml).
-    'cpu|cpu|7b9c63877ae5cfb5db2d01eb5b5348a2dd92ef0d8e81ba67d176e69c787c2201'
-    'cpu|cpu.gguf-worker|15d0e6008e72087cccb275eaa8b5fa54d3cba4d98783a08b7c2c7be7f5b508cf'
-    'onnx|onnx|ecb0a1fc39d176115a72bb9ea4ab9e5979cd42e42a2ba5ef630e96b3e35c1e70'
-    'onnx|onnx.gguf-worker|fbdf115a691b92a3dd9bf318a8ceb5aad60872d091e977af913822909a70c6ee'
-    'common|osd|fce0eb8f2e00863ff769c92dc6443dbe4e643bb2d7f51018394ca69f5fa98e28'
-    'common|osd-gtk4|1003bef58bfaf3fbaa4efa9044c9a6dc93e04c3ba584e867c8310aab2544067d'
-    'common|osd-quickshell|ba0063643d74c1f1ce6b42d5f9607bc90de7fd7509d6a7e5cb6983030c1a2ac3'
-    'common|audio-bridge|270a5496e8284ce06d44baab9426f4c11df84ae5272d5eb78296b6e93d8f14f3'
+    'cpu|cpu|63d1a8000a0735ef5cf952247f625aaacd826e31630bacc57f955e3bc05f7603'
+    'cpu|cpu.gguf-worker|080d982fc550f32d040e3fc1cbe10609ec750c191860b2a0925f27f4761d328b'
+    'onnx|onnx|3afff910e2b0d0f1ce20f1ff22bc8483e10b52a3dbf6a6791264a97378e4fe43'
+    'onnx|onnx.gguf-worker|c290c47d9f1b489059e6e20bc2ef538f9e780b5c253a25e9cecf2498d57576f0'
+    'common|osd|acd9cb933f0b6d3c296db1b9e2bb708835d5e9df5dd102d60ac7b0873054cc5b'
+    'common|osd-gtk4|79574940feb6ba4faa295ae6ca555f49cc3a90ca05ad042c2a946c59da02dc90'
+    'common|osd-quickshell|8903767751008d0edcbabbfa12ccaa999a94520b8e493672ce65d61e52c9cc64'
+    'common|audio-bridge|05b3c771c53142754f134be31bbdd689edc9323d090e2d031be5e2d46deb5f5a'
+    'common|meetings-gtk4|edfd83c7096abe98d176fc730828db6e6ca879f21924157cf351f2c216ac8c62'
 )
 
 # Every variant per arch, in the order package-variants lists them.
@@ -515,6 +520,11 @@ package() {
     install -d "$pkgdir/usr/bin"
     ln -sf /usr/lib/voxtype/voxtype-osd "$pkgdir/usr/bin/voxtype-osd"
 
+    # Meeting window for desktops without Quickshell. `voxtype meeting view`
+    # finds it beside the running binary and only uses it when libgtk-4
+    # loads. Mirrors scripts/package.sh.
+    install -Dm755 "$srcdir/voxtype-$pkgver-meetings-gtk4" "$pkgdir/usr/lib/voxtype/voxtype-meetings-gtk4"
+
     # voxtype-audio-bridge: NDJSON sidecar that streams audio levels over a
     # UNIX socket to the Quickshell OSD. Lives in /usr/bin because the
     # quickshell launcher exec's it directly by basename.
@@ -567,6 +577,16 @@ package() {
         "$pkgdir/usr/bin/voxtype-configure-launcher"
     install -Dm644 "$srcdir/voxtype-configure-$pkgver.desktop" \
         "$pkgdir/usr/share/applications/voxtype-configure.desktop"
+
+    # Voxtype Meetings launcher entry, and voxtype's own icon (named by both
+    # desktop entries' Icon=voxtype and by notifications), from the signed
+    # source archive. Mirrors scripts/package.sh.
+    install -Dm644 "$srcdir/voxtype-$_vt_ver/packaging/voxtype-meetings.desktop" \
+        "$pkgdir/usr/share/applications/voxtype-meetings.desktop"
+    install -Dm644 "$srcdir/voxtype-$_vt_ver/assets/icon.svg" \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/voxtype.svg"
+    install -Dm644 "$srcdir/voxtype-$_vt_ver/assets/icon.png" \
+        "$pkgdir/usr/share/icons/hicolor/128x128/apps/voxtype.png"
 
     # Install default configuration
     install -Dm644 "$srcdir/config-$pkgver.toml" "$pkgdir/etc/voxtype/config.toml"
