@@ -2,7 +2,7 @@
 
 pkgname=bioinformatics-mcp
 _pkgname=bioinformatics-mcp
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Independent MCP servers for bioinformatics data services"
 arch=('any')
@@ -14,7 +14,7 @@ checkdepends=('python-pytest')
 optdepends=('uv: generate client configurations that install on demand with uvx')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'validate-before-request.patch')
-sha256sums=('e1de1fecc84d85440166ef2e49d859767b877ac7f7b322319ce73acd7042f98f'
+sha256sums=('7f7b9dbfac99974dfd2e974785265cab8ac15b4889ef3b3993f2a11d9e40b26a'
             '7325d21b12a94b4dc255ed66804e8fa128e7373624c49b6f9674c89dacf52ddb')
 
 prepare() {

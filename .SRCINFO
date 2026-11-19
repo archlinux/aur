@@ -1,6 +1,6 @@
 pkgbase = bioinformatics-mcp
 	pkgdesc = Independent MCP servers for bioinformatics data services
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/imjiaoyuan/bioinformatics-mcp
 	arch = any
@@ -16,9 +16,9 @@ pkgbase = bioinformatics-mcp
 	depends = python-httpx>=0.28.1
 	depends = python-httpx<1
 	optdepends = uv: generate client configurations that install on demand with uvx
-	source = bioinformatics-mcp-0.2.1.tar.gz::https://github.com/imjiaoyuan/bioinformatics-mcp/archive/v0.2.1.tar.gz
+	source = bioinformatics-mcp-0.2.2.tar.gz::https://github.com/imjiaoyuan/bioinformatics-mcp/archive/v0.2.2.tar.gz
 	source = validate-before-request.patch
-	sha256sums = e1de1fecc84d85440166ef2e49d859767b877ac7f7b322319ce73acd7042f98f
+	sha256sums = 7f7b9dbfac99974dfd2e974785265cab8ac15b4889ef3b3993f2a11d9e40b26a
 	sha256sums = 7325d21b12a94b4dc255ed66804e8fa128e7373624c49b6f9674c89dacf52ddb
 
 pkgname = bioinformatics-mcp
