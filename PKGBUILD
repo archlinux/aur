@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=skykeep-bin
-pkgver=0.1.26
+pkgver=0.1.33
 pkgrel=1
 pkgdesc="Native iCloud apps: Notes, Reminders, Calendar, Contacts, Drive and Photos, offline and in sync (upstream binary)"
 arch=('x86_64')
@@ -13,16 +13,20 @@ license=('GPL-3.0-only')
 # videos: base and good for the elements, libav for H.264 and HEVC.
 depends=('cairo' 'dbus' 'gdk-pixbuf2' 'glib2' 'glibc' 'gst-libav'
          'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugins-good' 'gstreamer'
-         'gtk3' 'hicolor-icon-theme' 'libgcc' 'libheif' 'libsoup3' 'webkit2gtk-4.1')
+         'gtk3' 'hicolor-icon-theme' 'libgcc' 'libheif' 'libpipewire' 'libsoup3'
+         'webkit2gtk-4.1')
 # The keyring is spoken to over D-Bus, so it needs a Secret Service, not libsecret.
 optdepends=('org.freedesktop.secrets: stay signed in'
-            'fuse3: iCloud Drive and Photos as folders in the file manager')
+            'fuse3: iCloud Drive and Photos as folders in the file manager'
+            'usbmuxd: the iPhone as camera and microphone over the cable'
+            'gst-plugin-va: the iPhone camera decoded on the graphics chip'
+            'gst-plugins-bad: the iPhone camera decoded on the graphics chip')
 provides=('skykeep')
 conflicts=('skykeep')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Skykeep_${pkgver}_amd64.deb")
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('3515aae291f589a2dc8a18226d400f2f48d62fc1644f37f4cd7adc537d5ee4ae')
+sha256sums=('6e61ffb49ad84b135da15ede392e26a1fc2fe0bfd9720f4c4bcf071dead88f19')
 
 package() {
   bsdtar -xOf "$srcdir/${pkgname}-${pkgver}.deb" 'data.tar.*' \
