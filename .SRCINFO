@@ -1,6 +1,6 @@
 pkgbase = ltbox-bin
 	pkgdesc = Lenovo tablet firmware tool (region, root, EDL) — binary release
-	pkgver = 3.3.5
+	pkgver = 3.3.6
 	pkgrel = 1
 	url = https://github.com/miner7222/LTBox
 	install = ltbox-bin.install
@@ -16,11 +16,11 @@ pkgbase = ltbox-bin
 	conflicts = ltbox
 	options = !strip
 	options = !debug
-	source = 51-ltbox-qcom.rules::https://raw.githubusercontent.com/miner7222/LTBox/v3.3.5/misc/udev/51-ltbox-qcom.rules
-	sha256sums = 66c912a16aaa7f1ba1026433391f4407650409efa6a9d8672d7578fb2b51f8b6
-	source_x86_64 = LTBox-linux_x86_64-v3.3.5.tar.gz::https://github.com/miner7222/LTBox/releases/download/v3.3.5/LTBox-linux_x86_64-v3.3.5.tar.gz
-	sha256sums_x86_64 = 1154ee5cf81fcb314d486102085c5afda71297bf2c9725219c41c457abbc36d5
-	source_aarch64 = LTBox-linux_arm64-v3.3.5.tar.gz::https://github.com/miner7222/LTBox/releases/download/v3.3.5/LTBox-linux_arm64-v3.3.5.tar.gz
-	sha256sums_aarch64 = af15c6adcf1597250a5592f8342d82895676d18faf26f0d086e8dae9e57e565a
+	source = 51-ltbox-qcom.rules::https://raw.githubusercontent.com/miner7222/LTBox/v3.3.6/misc/udev/51-ltbox-qcom.rules
+	sha256sums = 0368938d93e75ec541dcd05c45307d1fb536e379b87341a9f332607c566bdbe0
+	source_x86_64 = LTBox-linux_x86_64-v3.3.6.tar.gz::https://github.com/miner7222/LTBox/releases/download/v3.3.6/LTBox-linux_x86_64-v3.3.6.tar.gz
+	sha256sums_x86_64 = f4df22fb65f642c77073586f5f47bd9ea2e8810a3b54d6a95dc300b3fee4cadc
+	source_aarch64 = LTBox-linux_arm64-v3.3.6.tar.gz::https://github.com/miner7222/LTBox/releases/download/v3.3.6/LTBox-linux_arm64-v3.3.6.tar.gz
+	sha256sums_aarch64 = b3f012b0a5a1699945d4c0dbbb97a9fdf35d18ded5751329a600a3bbbc776152
 
 pkgname = ltbox-bin
