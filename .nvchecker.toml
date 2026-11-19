@@ -2,5 +2,4 @@
 source = "github"
 github = "AlanKK/everythingx"
 use_latest_release = true
-from_pattern = 'v([0-9.]*)-beta'
-to_pattern = '\1'
+prefix = "v"

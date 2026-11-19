@@ -6,9 +6,9 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A blazing fast file name search tool"
 
-pkgver=0.2.21
+pkgver=1.0.3
 pkgrel=1
-_gitversion=v${pkgver}-beta
+_gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
 _barch=('linux_amd64' 'linux_arm64')
@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE.txt")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.rpm::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.rpm")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.rpm::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.rpm")
-sha256sums=('efca097849327a593fff4b13e9aa0b7fd6cb6a4209ddc1ccbd768edc159e4907'
+sha256sums=('201a474ca03af9a75d11f9fe97555d18c1495c4694d8e1d916be37e53e6a4787'
             'b47b5eeb5533dc7ebe52f56d65d161a624504ff8ee6653882c55b02a2affcea6')
-sha256sums_x86_64=('b60f17d3026dd104789b0c83418501bee6f303bb1dd315922ad48adb85b02aa0')
-sha256sums_aarch64=('165aaca35f98baed5441bd5b7d59bbd457bb0baa5d07d6b99441f2804b6c6be8')
+sha256sums_x86_64=('1efbd633d1df7fa5c813a820e5dcaf908a3ec53c7fd09a97c7409326117a227d')
+sha256sums_aarch64=('54a4bc2e93add3f1861503df3043894cce8a920edb836a06bbc1d0b852379873')
 
 
 prepare() {
@@ -48,6 +48,11 @@ package() {
 	install -Dm755 usr/local/bin/* -t "${pkgdir}/usr/bin/"
 
 	install -Dm644 usr/share/applications/*.desktop -t "${pkgdir}/usr/share/applications/"
+
+	for size in 32 64 128 256; do
+		install -Dm644 usr/share/icons/hicolor/${size}x${size}/apps/*.png -t "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/"
+	done
+
 	install -Dm644 usr/share/pixmaps/*.png -t "${pkgdir}/usr/share/pixmaps/"
 
 	install -Dm644 etc/systemd/system/*.service -t "${pkgdir}/usr/lib/systemd/system/"
