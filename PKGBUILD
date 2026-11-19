@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="A terminal UI for explaining and visualizing regular expressions, kindof like regex101."
 
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ depends=('glibc' 'libgcc')
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums_x86_64=('946bb593c24a9b1116ced80018657239377553882bb74fde96953244b9831194')
+sha256sums_x86_64=('523b716162a6912e54473b1c7eb87e37dddaea06c80b50203281e8d5da80dbcf')
 
 
 prepare() {
