@@ -1,6 +1,6 @@
 pkgbase = hiddify-desktop-bin
 	pkgdesc = Multi-platform auto-proxy client supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH, and more. Open-source, secure, and ad-free.
-	pkgver = 5.5.5
+	pkgver = 5.9.15
 	pkgrel = 1
 	url = https://github.com/hiddify/hiddify-app
 	install = hiddify-desktop-bin.install
@@ -50,9 +50,9 @@ pkgbase = hiddify-desktop-bin
 	conflicts = hiddify-desktop
 	conflicts = hiddify-desktop-git
 	options = !debug
-	source = hiddify-desktop-5.5.5.deb::https://github.com/hiddify/hiddify-app/releases/download/v5.5.5/Hiddify-Debian-x64.deb
+	source = hiddify-desktop-5.9.15.deb::https://github.com/hiddify/hiddify-app/releases/download/v5.9.15/Hiddify-Debian-x64.deb
 	source = hiddify-desktop-bin.install
-	sha256sums = 2cd4b830a3db146a123fb3a69b02e7d6e6f5399c2b12236a5e3a639ba6b61492
+	sha256sums = f90762994b274e0b51c871739f4b6bc8ea7cda3139f897efc49e101fc5c00d77
 	sha256sums = e7b5e75683e0a50b98471c8acb6ed5fc641428475aba9e3c2a80ec54f11b196d
 
 pkgname = hiddify-desktop-bin

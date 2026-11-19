@@ -2,7 +2,7 @@
 
 _pkgname=hiddify-desktop
 pkgname=${_pkgname}-bin
-pkgver=5.5.5
+pkgver=5.9.15
 pkgrel=1
 pkgdesc="Multi-platform auto-proxy client supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH, and more. Open-source, secure, and ad-free."
 arch=('x86_64')
@@ -66,7 +66,7 @@ source=(
     "${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Hiddify-Debian-x64.deb"
     "${pkgname}.install"
 )
-sha256sums=('2cd4b830a3db146a123fb3a69b02e7d6e6f5399c2b12236a5e3a639ba6b61492'
+sha256sums=('f90762994b274e0b51c871739f4b6bc8ea7cda3139f897efc49e101fc5c00d77'
             'e7b5e75683e0a50b98471c8acb6ed5fc641428475aba9e3c2a80ec54f11b196d')
 
 # Install prefix.
