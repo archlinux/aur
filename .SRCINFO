@@ -1,6 +1,6 @@
 pkgbase = multilogin-bin
 	pkgdesc = Desktop app for the Multilogin antidetect browser
-	pkgver = 12.17.0
+	pkgver = 12.18.0
 	pkgrel = 1
 	url = https://multilogin.com
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = multilogin-bin
 	depends = webkit2gtk-4.1
 	provides = multilogin
 	conflicts = multilogin
-	noextract = desktop-multilogin-12.17.0-ubuntu-24.04-amd64.deb
+	noextract = desktop-multilogin-12.18.0-ubuntu-24.04-amd64.deb
 	options = !strip
 	options = !debug
-	source = desktop-multilogin-12.17.0-ubuntu-24.04-amd64.deb::https://cdn-mlx-prod.multiloginapp.com/desktop/12.17.0/desktop-multilogin-ubuntu-24.04-amd64.deb
+	source = desktop-multilogin-12.18.0-ubuntu-24.04-amd64.deb::https://cdn-mlx-prod.multiloginapp.com/desktop/12.18.0/desktop-multilogin-ubuntu-24.04-amd64.deb
 	source = LICENSE
-	sha256sums = c75da7b7a313132b8286ad1beab7bfffe3717382bfb6b302dcca12227468bc71
+	sha256sums = 7ab1769324997064632c40ab2005b79a98b67543ef137338d4bb402331deb91e
 	sha256sums = 5f27472826e4cec04ca9097936bc3ea149886097396d764eb969cadbc578e6eb
 
 pkgname = multilogin-bin
