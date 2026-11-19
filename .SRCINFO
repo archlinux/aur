@@ -1,0 +1,32 @@
+pkgbase = ferron-bin
+	pkgdesc = A fast, modern web server written in Rust (prebuilt binaries)
+	pkgver = 3.0.0rc11
+	pkgrel = 1
+	url = https://github.com/ferronweb/ferron
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = ca-certificates
+	optdepends = systemd: run ferron.service
+	provides = ferron=3.0.0rc11
+	conflicts = ferron
+	conflicts = ferronweb
+	options = !strip
+	options = !debug
+	backup = etc/ferron/ferron.conf
+	source = ferron.pkgunix-3.0.0-rc.11.conf::https://raw.githubusercontent.com/ferronweb/ferron/63648d8c93d214f70686a0db72cfaec778f57156/configs/ferron.pkgunix.conf
+	source = ferron-3.0.0-rc.11.LICENSE::https://raw.githubusercontent.com/ferronweb/ferron/63648d8c93d214f70686a0db72cfaec778f57156/LICENSE
+	source = ferron.service
+	source = ferron.sysusers
+	sha256sums = 85a40b712cadd966bece80eeeaff640d5eb705d4bd1531c021f98cdcfe9348ab
+	sha256sums = c1db5c351e357ea68362c01faff8dc046c59e1d7466317f64482c2a6d3e6a695
+	sha256sums = f60a80735bf97656a39413e16c7568832bd565716649b8fa9355e69421e92948
+	sha256sums = ab52479e574200cfac7981e0e8f5cf31b5c8f6129685122d5f22f8c3184ee808
+	source_x86_64 = https://github.com/ferronweb/ferron/releases/download/3.0.0-rc.11/ferron-3.0.0-rc.11-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 8db96c57ae01e8e8a4a6fe36447953aedaedf8078753c46de6370fb228c5d90c
+	source_aarch64 = https://github.com/ferronweb/ferron/releases/download/3.0.0-rc.11/ferron-3.0.0-rc.11-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 85bd449d2fcf05dc91d2f46a4cbfc743b897597708b9791ebe8867f54fb27f84
+
+pkgname = ferron-bin

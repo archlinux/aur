@@ -1,0 +1,22 @@
+# Adapted from Ferron 3.0.0-rc.11: packaging/deb/ferron.service
+[Unit]
+Description=Ferron web server
+After=network.target
+
+[Service]
+Type=exec
+User=ferron
+Group=ferron
+ExecStart=/usr/bin/ferron run -c /etc/ferron/ferron.conf
+ExecReload=/usr/bin/kill -HUP $MAINPID
+Restart=on-failure
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+NoNewPrivileges=yes
+StateDirectory=ferron
+StateDirectoryMode=0700
+Environment=XDG_DATA_HOME=/var/lib/ferron
+LogsDirectory=ferron
+
+[Install]
+WantedBy=multi-user.target
