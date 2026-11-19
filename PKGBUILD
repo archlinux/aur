@@ -1,7 +1,7 @@
 # Maintainer: acceleration3 <acceleration23 at gmail dot com>
 
 pkgname=lsw-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Linux Subsystem for Windows: Windows applications as native windows, from a KVM guest with a paravirtual GPU"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=(
     'libelf' 'libcbor' 'systemd-libs' 'libseccomp' 'dtc' 'pam' 'fuse3'
     'libaio' 'liburing' 'capstone' 'libusb'
     'glibc' 'libgcc' 'libstdc++'
-    'vulkan-driver' 'edk2-ovmf' 'qemu-img' '7zip' 'curl'
+    'vulkan-driver' 'edk2-ovmf' 'qemu-img' '7zip' 'curl' 'passt'
     'hicolor-icon-theme'
     'sdl3'
 )
@@ -32,7 +32,7 @@ optdepends=(
 install=lsw-bin.install
 options=('!strip' '!debug')
 source=("https://github.com/acceleration3/linux-subsystem-windows/releases/download/v${pkgver}/lsw-${pkgver}-${CARCH}.tar.zst")
-sha256sums=('f016f4f0387c302573447c890e2d71d9d02a93a47dce6be73bbda84a9b464af4')
+sha256sums=('cdf97335127ba0fdf72c80e527679277565a8f5d2ffc864b820a26690252067f')
 
 package() {
     cp -a --no-preserve=ownership "${srcdir}/usr" "${pkgdir}/"
