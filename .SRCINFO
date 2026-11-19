@@ -1,6 +1,6 @@
 pkgbase = unsloth-desktop-bin
 	pkgdesc = Unsloth Desktop - train and run open models locally (prebuilt)
-	pkgver = 0.1.919.beta
+	pkgver = 0.1.920.beta
 	pkgrel = 1
 	url = https://unsloth.ai/
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = unsloth-desktop-bin
 	provides = unsloth
 	conflicts = unsloth
 	options = !strip
-	source_x86_64 = unsloth-desktop-bin-0.1.919.beta-x86_64.deb::https://github.com/unslothai/unsloth/releases/download/v0.1.919-beta/Unsloth-Desktop-Ubuntu.deb
-	sha256sums_x86_64 = e35a8cda25a170803945d49cd84134e3078bc6386c9f40be7eb28a4c473fe9c8
-	source_aarch64 = unsloth-desktop-bin-0.1.919.beta-aarch64.deb::https://github.com/unslothai/unsloth/releases/download/v0.1.919-beta/Unsloth-Desktop-Ubuntu-ARM64.deb
-	sha256sums_aarch64 = ed3fe301b8e162d438572b279408d67f817a6b5e8ccad701977421740d58f3ca
+	source_x86_64 = unsloth-desktop-bin-0.1.920.beta-x86_64.deb::https://github.com/unslothai/unsloth/releases/download/v0.1.920-beta/Unsloth-Desktop-Ubuntu.deb
+	sha256sums_x86_64 = d7ab8e95e59b3dde1475a17a01ecde91630cb5394e269bc15e453e437f55fc97
+	source_aarch64 = unsloth-desktop-bin-0.1.920.beta-aarch64.deb::https://github.com/unslothai/unsloth/releases/download/v0.1.920-beta/Unsloth-Desktop-Ubuntu-ARM64.deb
+	sha256sums_aarch64 = 399f46ec955f7974cf53be592d35f9a2fab57c126b96656cdc8e30b2b00af2ee
 
 pkgname = unsloth-desktop-bin
