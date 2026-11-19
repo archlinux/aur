@@ -1,0 +1,30 @@
+pkgbase = amp-player
+	pkgdesc = A Music Player
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://codeberg.org/alichraghi/amp
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = zig>=0.17.1
+	makedepends = zig<0.18
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = vulkan-icd-loader
+	depends = wayland
+	depends = libxkbcommon
+	depends = libx11
+	depends = libxcursor
+	depends = libxrandr
+	depends = libxi
+	depends = libxinerama
+	depends = libxext
+	depends = libxrender
+	optdepends = vulkan-driver: Vulkan driver (mesa, nvidia-utils, ...)
+	optdepends = pipewire: PipeWire audio backend
+	optdepends = alsa-lib: ALSA audio backend (fallback)
+	optdepends = libdecor: window decorations on Wayland
+	options = !debug
+	source = amp-player-0.1.tar.gz::https://codeberg.org/alichraghi/amp/archive/v0.1.tar.gz
+	sha256sums = 564c2dffcb8c3d75d0f93aacc47f6c64a656b29f0797bc377f2b39c095d07895
+
+pkgname = amp-player
