@@ -1,7 +1,7 @@
 pkgbase = satur8-bin
 	pkgdesc = Per-game digital vibrance for Linux (prebuilt binaries)
 	pkgver = 0.3.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/NtrpyDev/satur8
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -17,7 +17,7 @@ pkgbase = satur8-bin
 	conflicts = satur8
 	options = !strip
 	options = !debug
-	source = satur8-bin-v0.3.3-3-x86_64.tar.gz::https://github.com/NasirA1991/satur8-aur/releases/download/satur8-bin-v0.3.3-3/satur8-bin-v0.3.3-3-x86_64.tar.gz
-	sha256sums = 18d2a4daae2e30aade51cdacfeb90ed67cd438e7927576c1ec5dc4e6ed3adcf4
+	source = satur8-bin-v0.3.3-4-x86_64.tar.gz::https://github.com/NasirA1991/satur8-aur/releases/download/satur8-bin-v0.3.3-4/satur8-bin-v0.3.3-4-x86_64.tar.gz
+	sha256sums = 70c9f530cb01996869afdea4f8e320806a8f16204da4898891f8ddb94b791096
 
 pkgname = satur8-bin
