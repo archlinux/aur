@@ -6,7 +6,7 @@
 # widgie-menu-compat package.
 pkgbase=widgie-git
 pkgname=(widgie-git widgie-dev-git widgie-apps-git)
-pkgver=0.3.8
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A lightweight widget library for applications which do not need a splashscreen."
 arch=('x86_64' 'aarch64')
