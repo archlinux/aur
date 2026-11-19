@@ -2,7 +2,7 @@
 
 pkgname=('mod_tile' 'renderd')
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
 url='https://github.com/openstreetmap/mod_tile'
@@ -21,10 +21,10 @@ source=("${url}/archive/v${pkgver}/mod_tile-${pkgver}.tar.gz"
         'renderd.sysusers'
         'renderd.tmpfiles')
 sha256sums=('a8fa86fec638d1f3a6268d1eddf6154712b539602b3f524aafcceede37809e61'
-            '7bb1c67f92e9d253cecbb2f17048fba151a67e470c231fc33605937917b0567a'
-            'd6c009e95380d8a9be41f0bd077638cb6adbebb74fff238a2bfc9fbbb3ed49fa'
-            'cd6871cdb3e640912c95499e97fe1a2496ba95f102ec65f112bcd546ba736514'
-            'cc450b47539d8a3e0d3d78634c78b0019a15097d2fb4e86fa3332957abd82d89')
+            '9b7a3c191ddbdafc06bf92943c0fe4a0686cf9a17b3f3492fd945696bff14597'
+            'd3f8d9deb5facb846313eee254398f06edeb29c732b957d4b895a16c2e3d8879'
+            '7dd8ee22408ace2410b7e04e44867e7d6126f52d3c82ab057ff929f9b486c229'
+            '8baa8e59d106b54dd1fb8f4cef06b7d9b5adf9f4dcc79fce14c68d3a498a5550')
 
 prepare() {
   if [ -d mod_tile ]
@@ -74,9 +74,9 @@ package_mod_tile() {
   install -dm755 "${pkgdir}"/usr/share/renderd
   cp -av "${srcdir}"/mod_tile/utils/example-map "${pkgdir}"/usr/share/renderd/example-map
 
-  # "/etc/renderd.conf", "/usr/bin", "/usr/share/man", "/var/cache/renderd/tiles" & "/run/renderd" are contained in "renderd" package
+  # "/etc/renderd.conf", "/usr/bin", "/usr/share/man/man1", "/usr/share/man/man5/renderd.conf.5", "/var/cache/renderd/tiles" & "/run/renderd" are contained in "renderd" package
   pushd "${pkgdir}" || return
-  rm -rf etc/renderd.conf run usr/bin usr/share/man var
+  rm -rf etc/renderd.conf run usr/bin usr/share/man/man1 usr/share/man/man5/renderd.conf.5 var
 }
 
 package_renderd() {
@@ -96,7 +96,7 @@ package_renderd() {
   install -Dm644 "${srcdir}"/mod_tile/COPYING "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   # "/var/cache/renderd/tiles" & "/run/renderd" will be handled by "renderd.tmpfiles"
-  # "/etc/httpd" & "/usr/lib/httpd" are contained in "mod_tile" package
+  # "/etc/httpd", "/usr/lib/httpd" & "/usr/share/man/man5/mod_tile.5" are contained in "mod_tile" package
   pushd "${pkgdir}" || return
-  rm -rf etc/httpd run usr/lib/httpd var
+  rm -rf etc/httpd run usr/lib/httpd usr/share/man/man5/mod_tile.5 var
 }

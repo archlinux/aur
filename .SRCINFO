@@ -1,7 +1,7 @@
 pkgbase = mod_tile
 	pkgdesc = A daemon and apache module for rendering and serving Mapnik raster tiles
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openstreetmap/mod_tile
 	arch = i686
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = mod_tile
 	source = renderd.sysusers
 	source = renderd.tmpfiles
 	sha256sums = a8fa86fec638d1f3a6268d1eddf6154712b539602b3f524aafcceede37809e61
-	sha256sums = 7bb1c67f92e9d253cecbb2f17048fba151a67e470c231fc33605937917b0567a
-	sha256sums = d6c009e95380d8a9be41f0bd077638cb6adbebb74fff238a2bfc9fbbb3ed49fa
-	sha256sums = cd6871cdb3e640912c95499e97fe1a2496ba95f102ec65f112bcd546ba736514
-	sha256sums = cc450b47539d8a3e0d3d78634c78b0019a15097d2fb4e86fa3332957abd82d89
+	sha256sums = 9b7a3c191ddbdafc06bf92943c0fe4a0686cf9a17b3f3492fd945696bff14597
+	sha256sums = d3f8d9deb5facb846313eee254398f06edeb29c732b957d4b895a16c2e3d8879
+	sha256sums = 7dd8ee22408ace2410b7e04e44867e7d6126f52d3c82ab057ff929f9b486c229
+	sha256sums = 8baa8e59d106b54dd1fb8f4cef06b7d9b5adf9f4dcc79fce14c68d3a498a5550
 
 pkgname = mod_tile
 	pkgdesc = An Apache 2 module to deliver map tiles
