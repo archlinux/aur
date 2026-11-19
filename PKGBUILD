@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults: Hornero Signal themes, compositor, terminal, GTK/Qt, fonts, XDG handlers"
 arch=('any')
@@ -62,7 +62,7 @@ optdepends=(
 # AUR chroot builds identical to local packaging/ builds.
 install=hornero-config.install
 backup=('etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf')
-source=("config::git+https://github.com/HorneroOS/config.git#commit=5419e40c0d30598328155f41fdf7845d2d6e6351")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=8b90369708dd668543019100168237cad74d7d30")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -250,6 +250,12 @@ package() {
   fi
   install -Dm644 "$repo_root/shell/shell.default.json" \
     "$pkgdir/etc/xdg/hornero/shell.json"
+  # shell.json key migrations (hornero/shell-migrations@1), read by
+  # `horneroctl update plan` so renamed settings never drop user values.
+  install -Dm644 "$repo_root/shell/shell-migrations.json" \
+    "$pkgdir/usr/share/hornero/shell-migrations.json"
+  install -Dm644 "$repo_root/shell/shell-migrations.schema.json" \
+    "$pkgdir/usr/share/hornero/shell-migrations.schema.json"
 
   # Implementation libraries, CLI adapters, and theme recipes.
   # Stage the canonical Hornero data and configuration paths.
