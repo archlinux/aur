@@ -1,9 +1,9 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=axiom
-pkgver=0.22.0
-pkgrel=2
-_commit=841bd2721896952322863bfce5eec0d035933b4f
+pkgver=0.23.0
+pkgrel=1
+_commit=1f082448697e7215efb892645910a7ba488504d7
 pkgdesc="Powerful log analytics from the comfort of your command-line"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url="https://github.com/axiomhq/cli"
@@ -12,7 +12,7 @@ depends=('glibc')
 depends_armv7h=('libgcc')
 makedepends=('go')
 source=("$pkgname-$pkgver-${_commit}.tar.gz::https://github.com/axiomhq/cli/archive/${_commit}.tar.gz")
-sha256sums=('ebe7433699663433842d577b3a7efeb2767d4f2003f0ab4d09681edade2f1b00')
+sha256sums=('d1aed734b66b19dc2187d5023c802fa31cafad50119620392a8296e3ba6948ae')
 
 prepare() {
   cd "cli-${_commit}"
