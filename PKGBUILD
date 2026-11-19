@@ -1,7 +1,7 @@
 # Maintainer: JohnChiao <johnchiao@outlook.com>
 pkgname=touchfish-client
-pkgver=0.0.3
-pkgrel=1
+pkgver=0.0.5
+pkgrel=50
 pkgdesc="TouchFish V5 官方支持的现代化客户端，基于 Flutter 构建"
 arch=('x86_64' 'aarch64')
 url="https://github.com/JohnChiao75/TouchFish-Client"
