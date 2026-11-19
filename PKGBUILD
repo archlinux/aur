@@ -1,14 +1,15 @@
 pkgname=zendrite
 pkgver=3.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An opinionated fork of element-hq/dendrite"
 arch=(x86_64)
 url=https://zendrite.pat-s.me/
 license=("AGPL-3.0-or-later OR LicenseRef-Element-Commercial-License")
-depends=(glibc)
+depends=(glibc sqlite)
 makedepends=(git go)
 optdepends=("postgresql>=12: Recommended database"
-            "nats-server: Use external nats server")
+            "nats-server: Use external nats server"
+            "libwebp: Faster WebP thumbnail decoding")
 install="$pkgname.install"
 source=("git+https://codefloe.com/pat-s/zendrite.git#tag=v$pkgver"
         "$pkgname.service")
@@ -29,13 +30,12 @@ build() {
     export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
     export GOPATH="$srcdir"
     go build -ldflags "-compressdwarf=false -linkmode external -bindnow -X codefloe.com/pat-s/zendrite/internal.version=$pkgver" \
-             -tags goolm -o bin/ ./cmd/...
+             -tags libsqlite3 -o bin/ ./cmd/...
 }
 check() {
     cd "$pkgname"
     # Skip tests require pgsql
     export ZENDRITE_TEST_SKIP_NODB=1
-    # TestRedaction/sqlite failed
     go test -tags goolm ./...
 }
 package() {

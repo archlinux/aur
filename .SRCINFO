@@ -1,7 +1,7 @@
 pkgbase = zendrite
 	pkgdesc = An opinionated fork of element-hq/dendrite
 	pkgver = 3.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zendrite.pat-s.me/
 	install = zendrite.install
 	arch = x86_64
@@ -9,8 +9,10 @@ pkgbase = zendrite
 	makedepends = git
 	makedepends = go
 	depends = glibc
+	depends = sqlite
 	optdepends = postgresql>=12: Recommended database
 	optdepends = nats-server: Use external nats server
+	optdepends = libwebp: Faster WebP thumbnail decoding
 	source = git+https://codefloe.com/pat-s/zendrite.git#tag=v3.9.1
 	source = zendrite.service
 	sha256sums = 01b6811de43088b5a9bece50d6006002e7ff673bc3cbd6337fea0cb257b4a4ff
