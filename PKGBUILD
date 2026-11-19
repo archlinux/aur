@@ -5,7 +5,7 @@
 # shellcheck disable=SC2154  # srcdir/pkgdir/startdir set by makepkg
 
 pkgname=superhuman
-pkgver=1044.0.6
+pkgver=1045.0.0
 pkgrel=1
 pkgdesc="The fastest email experience ever made (unofficial)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ sha256sums=('SKIP'
             '859be0a8e8a72c25c8288380dae29e281cd9e20a81cc8ddb46d99537295afd20')
 noextract=("Superhuman-${pkgver}.exe")
 
-_electron_version="44.9.3"
+_electron_version="45.2.3"
 
 prepare() {
     cd "$srcdir" || return
