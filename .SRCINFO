@@ -1,0 +1,37 @@
+pkgbase = livewdf-git
+	pkgdesc = Real-time analog audio circuit simulator with a schematic editor and VST3 plugin
+	pkgver = r51.g708b507
+	pkgrel = 1
+	url = https://github.com/Yahiake/LiveWDF
+	arch = x86_64
+	license = AGPL-3.0-only
+	license = MIT
+	license = OFL-1.1
+	makedepends = cmake
+	makedepends = git
+	makedepends = jack
+	makedepends = ninja
+	depends = alsa-lib
+	depends = fontconfig
+	depends = freetype2
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libx11
+	depends = libxcomposite
+	depends = libxcursor
+	depends = libxext
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxrender
+	optdepends = jack: JACK audio backend for the standalone audio application
+	provides = livewdf=r51.g708b507
+	provides = livewdf-vst3
+	conflicts = livewdf
+	source = livewdf-upstream::git+https://github.com/Yahiake/LiveWDF.git#branch=main
+	source = JUCE::git+https://github.com/juce-framework/JUCE.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = livewdf-git
