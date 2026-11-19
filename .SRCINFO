@@ -1,7 +1,7 @@
 pkgbase = zcalld-bin
 	pkgdesc = Compact Linux AI gateway built on zcall with native zplugin extensions (binary)
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LIghtJUNction/zcalld
 	arch = x86_64
 	arch = aarch64

@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction
 pkgname=zcalld-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Compact Linux AI gateway built on zcall with native zplugin extensions (binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/LIghtJUNction/zcalld'
@@ -20,4 +20,5 @@ sha256sums_aarch64=('da86ac0a8671566bd14fa6cfc8cc1edc9b36e303e1dacfa012ed8589623
 package() {
   cd "zcalld-$pkgver-$CARCH-unknown-linux-gnu"
   DESTDIR="$pkgdir" PREFIX=/usr ./install.sh
+  mv "$pkgdir/usr/share/licenses/zcalld" "$pkgdir/usr/share/licenses/$pkgname"
 }
