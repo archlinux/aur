@@ -34,6 +34,9 @@ def _parse_config(path):
     """解析 INI 格式配置文件"""
     c = configparser.RawConfigParser()
     c.read(path)
+    dns_backend = c.get('dns', 'backend', fallback='resolvconf').strip().lower()
+    if dns_backend not in ('resolvconf', 'dnsmasq'):
+        raise ValueError('[dns] backend must be resolvconf or dnsmasq')
 
     gateways_raw = c.get('gateway', 'list', fallback='')
     gateways = []
@@ -53,6 +56,8 @@ def _parse_config(path):
         'password': c.get('auth', 'password', fallback=''),
         'gateways': gateways,
         'tun_name': c.get('tun', 'name', fallback='cnem0'),
+        'dns_backend': dns_backend,
+        'gateway_ca': c.get('gateway', 'ca_file', fallback='').strip(),
     }
 
 

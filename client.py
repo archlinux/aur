@@ -9,6 +9,7 @@ UniVPN 开源客户端 — 自动选最优网关 + TUN 模式
 import socket, ssl, struct, json, sys, os, time, threading, select, fcntl, subprocess, ipaddress, logging, re, signal, shutil
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from config import load_config, setup_wizard, _find_config
+import dns_backend
 
 logger = logging.getLogger('openunivpn')
 
@@ -269,9 +270,18 @@ def _resolvconf_available():
     return shutil.which("resolvconf") is not None
 
 
-def setup_dns(vpn_dns_list):
-    """把 VPN DNS 通过 resolvconf 加入系统（自动排最前，保留原 DNS fallback）。"""
+def setup_dns(vpn_dns_list, backend='resolvconf', tun_name=None):
+    """将网关下发的 DNS 交给所选后端。"""
     if not vpn_dns_list:
+        return
+    if backend == 'dnsmasq':
+        try:
+            if dns_backend.activate(vpn_dns_list, tun_name):
+                logger.info("dnsmasq 已切换为 VPN DNS: %s", vpn_dns_list)
+            else:
+                logger.warning("没有可经 VPN 隧道路由的 DNS，保留原上游")
+        except (OSError, subprocess.SubprocessError) as e:
+            logger.warning("切换 dnsmasq 上游失败: %s", e)
         return
     if not _resolvconf_available():
         logger.warning("openresolv(resolvconf) 未安装，跳过 VPN DNS 注入（不影响公网）")
@@ -290,8 +300,14 @@ def setup_dns(vpn_dns_list):
         logger.warning("更新系统 DNS 失败: %s", e)
 
 
-def restore_dns():
-    """VPN 退出时从 resolvconf 移除 VPN DNS。"""
+def restore_dns(backend='resolvconf'):
+    """VPN 退出时恢复原 DNS。"""
+    if backend == 'dnsmasq':
+        try:
+            dns_backend.restore()
+        except (OSError, subprocess.SubprocessError) as e:
+            logger.warning("恢复 dnsmasq 上游失败: %s", e)
+        return
     if not _resolvconf_available():
         return
     try:
@@ -307,6 +323,15 @@ def restore_dns():
         logger.warning("恢复系统 DNS 失败: %s", e)
 
 
+def gateway_tls_context(config):
+    if config.get('dns_backend') == 'dnsmasq':
+        return ssl.create_default_context(cafile=config.get('gateway_ca') or None)
+    context = ssl.create_default_context()
+    context.check_hostname = False
+    context.verify_mode = ssl.CERT_NONE
+    return context
+
+
 def main():
     logging.basicConfig(
         level=logging.INFO,
@@ -317,7 +342,7 @@ def main():
         print("需要 root 权限 (TUN)")
         sys.exit(1)
 
-    # SIGTERM/SIGINT 优雅退出（systemd stop 时执行 finally 恢复 DNS/清理 TUN）
+    # SIGTERM/SIGINT 请求主循环退出。
     stop_event = threading.Event()
 
     def _handle_signal(signum, frame):
@@ -343,6 +368,14 @@ def main():
         print("    请编辑该文件后重试。")
         sys.exit(2)
 
+    try:
+        run_vpn(config, stop_event)
+    finally:
+        if config.get('dns_backend') == 'dnsmasq':
+            restore_dns('dnsmasq')
+
+
+def run_vpn(config, stop_event):
     gateways = config["gateways"]
     tun_name = config["tun_name"]
     username = config["username"]
@@ -370,9 +403,7 @@ def main():
         # 1. 认证短连接（独立连接，认证完即关闭；确定性失败直接退出）
         if username and password:
             try:
-                auth_ctx = ssl.create_default_context()
-                auth_ctx.check_hostname = False
-                auth_ctx.verify_mode = ssl.CERT_NONE
+                auth_ctx = gateway_tls_context(config)
                 auth_sock = auth_ctx.wrap_socket(
                     socket.create_connection((ip, port), timeout=10), server_hostname=host)
                 pwd_enc = password.replace("%", "%25")
@@ -417,9 +448,7 @@ def main():
                 sys.exit(1)
 
         # 2. 新建 CNEM 主连接（fd=12），第一帧即 ACL（官方时序，无握手帧）
-        ssl_ctx = ssl.create_default_context()
-        ssl_ctx.check_hostname = False
-        ssl_ctx.verify_mode = ssl.CERT_NONE
+        ssl_ctx = gateway_tls_context(config)
         raw = socket.create_connection((ip, port), timeout=15)
         sock = ssl_ctx.wrap_socket(raw, server_hostname=host)
         sock.settimeout(30)
@@ -548,7 +577,7 @@ def main():
         for subnet in ["10.11.0.0/16", "10.12.0.0/16", "10.13.0.0/16"]:
             run_cmd(["ip", "route", "add", subnet, "dev", tun_name])
         if vip["dns"]:
-            setup_dns(vip["dns"])
+            setup_dns(vip["dns"], config.get('dns_backend', 'resolvconf'), tun_name)
 
         print(f"\n[*] {host} ({latency:.0f}ms) VIP={vip['vip_ip']} DNS={vip['dns']}")
         print(f"    TUN: {tun_name}  Ctrl+C 停止")
@@ -672,7 +701,7 @@ def main():
         sock.close()
         os.close(tun_fd)
         run_cmd(["ip", "link", "del", tun_name])
-        restore_dns()
+        restore_dns(config.get('dns_backend', 'resolvconf'))
         print("已清理")
 
         if not reconnect[0] or stop_event.is_set():

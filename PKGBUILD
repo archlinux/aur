@@ -1,12 +1,13 @@
 # Maintainer: tsaitang404 <tsaitang.agent@gmail.com>
 pkgname=openunivpn
-pkgver=1.1.9
+pkgver=1.1.10
 pkgrel=1
 pkgdesc="H3C SecPath SSLVPN 开源替代客户端"
 arch=('any')
 url="https://github.com/tsaitang404/openunivpn"
 license=('MIT')
 depends=('python>=3.8' 'openresolv')
+optdepends=('dnsmasq: exclusive VPN DNS with a local dnsmasq resolver')
 makedepends=('git')
 source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
@@ -16,7 +17,7 @@ package() {
     cd "$srcdir/$pkgname"
 
     # 主程序
-    install -Dm644 client.py config.py protocol-format.md README.md -t "$pkgdir/opt/$pkgname/"
+    install -Dm644 client.py config.py dns_backend.py protocol-format.md README.md -t "$pkgdir/opt/$pkgname/"
 
     # systemd service
     install -Dm644 openunivpn.service -t "$pkgdir/usr/lib/systemd/system/"
@@ -38,6 +39,9 @@ list =
 
 [tun]
 name = cnem0
+
+[dns]
+backend = resolvconf
 EOF
 
     # 会话目录

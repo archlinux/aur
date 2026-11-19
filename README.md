@@ -105,3 +105,18 @@ UDP_AVAILABLE/DATA_CONNECT 的已知四字节响应支持两种端序。
 TLS 关闭、读写失败、保活发送失败或网关 KICKOUT 仍会触发重连。
 这不提供独立的数据面健康探测：控制连接正常而数据面失效时，需要后续使用可验证的
 请求/响应探测，不能仅凭业务流量静默判断故障。
+
+## 本机使用 dnsmasq 时的 DNS 接管
+
+默认继续使用 openresolv。若系统通过本机 dnsmasq 解析，并且 dnsmasq 不使用 openresolv 写入的上游，可选用 `[dns]` 下的 `backend = dnsmasq`。此模式只更换 dnsmasq 上游，不更改网页流量路由。连接期间，公网域名也由 VPN DNS 解析。
+
+启用前，由管理员一次性配置 dnsmasq：
+
+1. 把原有 `server=` 上游（包括需在离线时保留的按域转发规则）移到 `/etc/openunivpn/dnsmasq-offline.servers`。确保该文件可被 dnsmasq 读取。移除仅为旧版 VPN 留下的临时转发，不要把它们放入离线文件。
+2. 在 dnsmasq 中使用 `no-resolv` 和 `servers-file=/run/openunivpn-dns.servers`，不要保留其他静态或动态上游。不要移除本地 hosts、监听地址等非上游配置。
+3. 在 `/etc/tmpfiles.d/openunivpn-dns.conf` 中写入 `L /run/openunivpn-dns.servers - - - - /etc/openunivpn/dnsmasq-offline.servers`，执行 `systemd-tmpfiles --create /etc/tmpfiles.d/openunivpn-dns.conf`。用 `dnsmasq --test` 验证，然后重启 dnsmasq。`dnsmasq.service` 必须支持用 SIGHUP 重读 `servers-file`。
+4. 在 OpenUniVPN 配置中启用该后端，再启动 `openunivpn.service`。不要同时运行多个客户端实例。
+
+此后端要求 VPN 网关的 TLS 证书和主机名通过校验，只采用经 VPN 隧道路由的 DNS 地址。若网关使用企业 CA，从管理员获取可信 CA 文件，并在 OpenUniVPN 配置的 `[gateway]` 中设置 `ca_file = /path/to/company-ca.pem`。不要把未经核实的网关证书当作信任来源。
+
+断开时 OpenUniVPN 恢复离线上游；通过 systemd 运行时，异常退出也会执行恢复。若公司 DNS 本身超时，此模式不会改用公网 DNS；先验证 VPN 到公司 DNS 的连通性。
