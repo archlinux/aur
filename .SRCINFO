@@ -1,6 +1,6 @@
 pkgbase = pegsofur
 	pkgdesc = Ancient city-states dice and wooden pegboard strategy game for 1-4 Human/AI players
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/chrisfair/pegsofur
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = pegsofur
 	depends = hicolor-icon-theme
 	provides = pegsofur
 	conflicts = pegsofur
-	source = pegsofur-0.1.4.tar.gz::https://github.com/chrisfair/pegsofur/archive/refs/tags/v0.1.4.tar.gz
+	source = pegsofur-0.1.5.tar.gz::https://github.com/chrisfair/pegsofur/archive/refs/tags/v0.1.5.tar.gz
 	source = gdext-nim-0.17.1.tar.gz::https://github.com/godot-nim/gdext-nim/archive/refs/tags/v0.17.1.tar.gz
-	sha256sums = d08d05380cb87cdf8d1c1360cdaad489dfe663fa4cf6ff34826cf438e71b38c9
+	sha256sums = 6cf81e82292b28b2d024462a4905f3ef29c45360c9515a9029342dbfad7d990f
 	sha256sums = e446f3d682e49c609552bee599d21de01ebc86b47889559ab267655b3e887f2d
 
 pkgname = pegsofur
