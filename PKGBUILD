@@ -2,9 +2,9 @@
 
 _name=tree-sitter-php
 pkgname=python-tree-sitter-php
-pkgver=0.25.1
+pkgver=0.25.2
 pkgrel=1
-_commit=58d5643086ae60e93a3746cca648363ee97c8761
+_commit=c1e13490bd656b8869cd47e6f74997ed46750a08
 pkgdesc="Php grammar for tree-sitter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tree-sitter/tree-sitter-php"
@@ -17,7 +17,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("${pkgname}-${pkgver}-${_commit}.tar.gz::https://github.com/tree-sitter/tree-sitter-php/archive/${_commit}.tar.gz")
-sha256sums=('139701b185691b6f82d81ef6387de5cfe23b7833a75fa1eeca9b80416aa58039')
+sha256sums=('86ac20308ba775d977494b9546a74f991a1821f10946643efc820702bb2313d3')
 
 build() {
     cd "${_name}-${_commit}"
