@@ -1,6 +1,6 @@
 # Maintainer: gifnksm <makoto.nksm+aur@gmail.com>
 pkgname=souko
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 epoch=
 pkgdesc="Provides an easy way to organize clones of remote git repositories"
@@ -11,7 +11,7 @@ depends=('glibc' 'gcc-libs' 'libgit2' 'openssl')
 conflicts=('souko-bin')
 provides=('souko')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gifnksm/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6da4e24cb4216245e242b2f1bced35af20edfb0d5bda7f5309b6c831040bed67')
+sha256sums=('97b7dc7f99f2ed1bca15930a219f9705331d66b63cf49195da20962bb0faf0b5')
 options=(!lto)
 
 build() {
