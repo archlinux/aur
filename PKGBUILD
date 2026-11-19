@@ -1,7 +1,7 @@
 # Maintainer: Ivan Odnoorov <elcheshirecat at yandex dot ru>
 pkgname=ymusic-cli-bin
 _pkgname=ymusic-cli
-pkgver=3.11.0
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="Terminal client for Yandex Music: My Wave, likes, stations (TUI) — prebuilt static binary"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source=("$url/releases/download/v$pkgver/ymusic-$pkgver-x86_64-linux.tar.gz")
-sha256sums=('e1055f6ab5444b6e85ca8c36816169109f07d074c56bfd3e2e1b7e77fc6ec39b')
+sha256sums=('607c604035a5347c76af3e3943b8ccdbdc29ba4795ba1c2905d1e4df727ab84f')
 
 package() {
   cd "ymusic-$pkgver-x86_64-linux"
