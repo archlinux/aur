@@ -1,8 +1,8 @@
 _pkgname=rivu
 pkgname=rivu-git
-pkgver=0.2.24.r1.14ef4ab3
+pkgver=0.2.24.r8.e0dbe18c
 pkgrel=1
-pkgdesc='a lightweight, local-first linux music player'
+pkgdesc='A lightweight, local-first Linux music player'
 arch=('x86_64' 'aarch64')
 url="https://github.com/rtgiskard/${_pkgname}"
 license=('GPL-3.0-or-later')
