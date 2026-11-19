@@ -1,0 +1,23 @@
+pkgbase = parula-bin
+	pkgdesc = New full-featured desktop email, chat and video conference client.
+	pkgver = 0.9.42
+	pkgrel = 1
+	url = https://parula.app/
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-EUPL-1.2
+	depends = electron41
+	provides = parula=0.9.42
+	conflicts = parula
+	source = LICENSE-0.9.42::https://raw.githubusercontent.com/parula-app/parula/v0.9.42/LICENSE
+	source = parula.js
+	source = parula.sh
+	sha256sums = b235d2b5410c8a5f6d176a8dfbf3afaadb7165d27659285d1916fe7e0044aa89
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = parula-0.9.42-aarch64.pacman::https://github.com/parula-app/parula/releases/download/v0.9.42/parula-0.9.42-aarch64.pacman
+	sha256sums_aarch64 = 08100dc468111c2f23a68ad9498ebae3eb9c331e0092aedda1104eb68cbdce50
+	source_x86_64 = parula-0.9.42-x86_64.pacman::https://github.com/parula-app/parula/releases/download/v0.9.42/parula-0.9.42.pacman
+	sha256sums_x86_64 = 73a4663dbea549c08765726f795f6d04f1598786ecf936fbd9a9125a984c75db
+
+pkgname = parula-bin
