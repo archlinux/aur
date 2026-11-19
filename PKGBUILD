@@ -1,8 +1,8 @@
 # Maintainer: Muzammil Shafique <muzu@duck.com>
 _pkgname=tsuki
 pkgname="${_pkgname}-bin"
-pkgver=0.1.1
-_tag="v0.1.1"
+pkgver=0.2.0
+_tag="v0.2.0"
 _upstream_pkgrel=1
 pkgrel=1
 pkgdesc="Native Linux game launcher for Wine, Proton, and native titles (prebuilt binary)"
@@ -13,6 +13,7 @@ depends=(
     'glibc'
     'gcc-libs'
     'libglvnd'
+    'zlib'
     'qt6-base'
     'qt6-declarative'
     'qt6-svg'
@@ -21,6 +22,7 @@ depends=(
     'tar'
 )
 optdepends=(
+    'ttf-jetbrains-mono-nerd: Nerd Font monospace glyphs in diagnostic paths and logs'
     'wine: Windows game compatibility via system Wine'
     'winetricks: Windows runtime component installer'
     'mangohud: In-game FPS and performance overlay'
@@ -36,7 +38,7 @@ install=tsuki.install
 _pkgfile="${_pkgname}-${pkgver}-${_upstream_pkgrel}-x86_64.pkg.tar.zst"
 source_x86_64=("${_pkgfile}::https://github.com/muzammilshafique/tsuki/releases/download/${_tag}/${_pkgfile}")
 noextract=("${_pkgfile}")
-sha256sums_x86_64=('5c5e6205108adffe2435e27173e4d89b7ca2740945fd6364d3ba2ebf4feec811')
+sha256sums_x86_64=('825a001a225302685db35a78b14f7145dbac16046e7d39ca770d43558524d082')
 
 package() {
     bsdtar -xf "${srcdir}/${_pkgfile}" -C "${pkgdir}" usr/
