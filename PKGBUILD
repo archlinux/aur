@@ -2,7 +2,7 @@
 
 _name=measured
 pkgname=python-${_name}
-pkgver=0.12.2
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="A library for measurements and quantities"
 
@@ -26,7 +26,7 @@ depends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
-sha256sums=('1ab53b7f884c38f31eb22ff90c3dc7f11d333c745a4ba4be9947f1e520a1b2c8')
+sha256sums=('5530896bcd551a2d76ae210bfa36f1255ec7570eff030447e04f10300b65bc8d')
 
 build() {
 	cd "${_name}-${pkgver}"
