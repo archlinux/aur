@@ -1,4 +1,5 @@
-# Maintainer: Maxime Gauduin <alucryd@gmail.com>
+# Maintainer: Nikolai Käck <nikolaikack@nikoware.com>
+# Contributor: Maxime Gauduin <alucryd@gmail.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 # Contributor: Xavius <xavierelf@gmail.com>
