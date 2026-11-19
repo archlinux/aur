@@ -1,0 +1,23 @@
+pkgbase = netpop
+	pkgdesc = GTK4 NetworkManager popup, connection editor and secret agent (replaces nm-applet / nm-connection-editor)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/jinzhongjia/netpop
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	checkdepends = desktop-file-utils
+	makedepends = meson
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = libnm
+	depends = libsecret
+	depends = networkmanager
+	optdepends = ttf-jetbrains-mono-nerd: icons and monospace text in the popup
+	optdepends = ttf-nerd-fonts-symbols: icons in the popup
+	source = https://github.com/jinzhongjia/netpop/releases/download/v0.2.0/netpop-0.2.0.tar.xz
+	sha256sums = f2f0a58b94ca0ce8bdb5d29ead6a465e93bdc991cb599c0f1a169b32d748b67f
+
+pkgname = netpop
