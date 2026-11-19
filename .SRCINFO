@@ -1,7 +1,7 @@
 pkgbase = bettbox-pre
 	pkgdesc = A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core.
 	pkgver = 1.19.8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/appshubcc/Bettbox
 	install = bettbox.install
 	arch = x86_64
@@ -15,6 +15,11 @@ pkgbase = bettbox-pre
 	makedepends = rustup
 	makedepends = fvm
 	makedepends = patchelf
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libayatana-indicator
+	depends = libkeybinder3
+	provides = bettbox=1.19.8
 	conflicts = bettbox
 	conflicts = bettbox-bin
 	conflicts = bettbox-compatible
