@@ -1,6 +1,6 @@
 # Maintainer: Peter Justin <peter.justin@outlook.com>
 pkgname=appimage-integrator
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Integrate AppImages into the desktop"
 arch=(x86_64 aarch64)
@@ -16,7 +16,7 @@ provides=("appimage-integrator-cli=$pkgver")
 conflicts=(appimage-integrator-cli)
 options=(!lto !debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('160c902259bb3545adf030915d45720af927b51b7a66db41a50509dcefcacf03')
+sha256sums=('0dd1a66bdc8414c5dc4fa0829911379768e317eb0ec26acdc997fc2555e7b051')
 
 prepare() {
   cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = appimage-integrator
 	pkgdesc = Integrate AppImages into the desktop
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/sh4nks/appimage-integrator
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = appimage-integrator
 	depends = qt6-declarative
 	optdepends = libnotify: desktop notifications for available updates
 	optdepends = qqc2-desktop-style: native look on KDE Plasma
-	provides = appimage-integrator-cli=0.1.0
+	provides = appimage-integrator-cli=0.2.0
 	conflicts = appimage-integrator-cli
 	options = !lto
 	options = !debug
-	source = appimage-integrator-0.1.0.tar.gz::https://github.com/sh4nks/appimage-integrator/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 160c902259bb3545adf030915d45720af927b51b7a66db41a50509dcefcacf03
+	source = appimage-integrator-0.2.0.tar.gz::https://github.com/sh4nks/appimage-integrator/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 0dd1a66bdc8414c5dc4fa0829911379768e317eb0ec26acdc997fc2555e7b051
 
 pkgname = appimage-integrator
