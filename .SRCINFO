@@ -1,11 +1,11 @@
 pkgbase = pgdog-bin
 	pkgdesc = PostgreSQL connection pooler, load balancer and database sharder.
-	pkgver = 0.1.64
+	pkgver = 0.1.66
 	pkgrel = 1
 	url = https://pgdog.dev/
 	arch = x86_64
 	license = AGPL-3.0
-	source = pgdog-v0.1.64.tar.gz::https://github.com/pgdogdev/pgdog/releases/download/v0.1.64/pgdog-v0.1.64-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = e4f06f76cb3245f877790dfc942c5394015e2ad9fb2f8cd3cbb7b9425ae28e05
+	source = pgdog-v0.1.66.tar.gz::https://github.com/pgdogdev/pgdog/releases/download/v0.1.66/pgdog-v0.1.66-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = b8280403583ffc117df1505d7008546f486fa13d0e1cff17b0f68c45cd19e3ca
 
 pkgname = pgdog-bin
