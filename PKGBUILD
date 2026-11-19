@@ -2,11 +2,11 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=rufin-bin
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc='Native music player for Jellyfin, Navidrome/OpenSubsonic, Plex, and Emby servers;  local folders,  WebDAV including a direct Nextcloud browser login path, Samba and NAS shares.'
 arch=('x86_64')
-url='https://github.com/screwys/Rufin'
+url='https://github.com/rufin-app/rufin'
 license=('GPL-3.0-or-later')
 depends=(
   'libgcc_s.so'
@@ -26,8 +26,8 @@ depends=(
 provides=("rufin=${pkgver}")
 conflicts=('rufin')
 options=('!strip' '!debug')
-source_x86_64=("https://github.com/screwys/Rufin/releases/download/v0.18.0/rufin-0.18.0-archlinux-x86_64.tar.zst")
-sha256sums_x86_64=('5b63ca210a79822700ac8b100ef3c75e4441efb3abd9fa8a58873504eb34fd4b')
+source_x86_64=("https://github.com/rufin-app/rufin/releases/download/v0.19.0/rufin-0.19.0-archlinux-x86_64.tar.zst")
+sha256sums_x86_64=('8c28e757f5992c2d29138d48d2f1abd0e88de361d5d3c7594cddc43280c7567c')
 
 package() {
   cp -a "$srcdir/usr" "$pkgdir/"
