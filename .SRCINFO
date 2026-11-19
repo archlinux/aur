@@ -1,0 +1,18 @@
+pkgbase = godwit-bin
+	pkgdesc = AI-native desktop email client with local privacy masking (prebuilt binary)
+	pkgver = 1.39.3
+	pkgrel = 1
+	url = https://github.com/godwit-email/godwit
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	provides = godwit=1.39.3
+	conflicts = godwit
+	noextract = godwit-1.39.3-x86_64.deb
+	options = !strip
+	options = !debug
+	source_x86_64 = godwit-1.39.3-x86_64.deb::https://dl.godwit.email/godwit_1.39.3_amd64.deb
+	sha256sums_x86_64 = 59c64edadc8c57bf41af3d07eda8fb5c237d420ea0937e3a0bbdd9a845179abc
+
+pkgname = godwit-bin
