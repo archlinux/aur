@@ -4,7 +4,7 @@
 # Squelch release, bump _squelch and keep depends and the whisper.cpp commit in
 # step with Squelch's PKGBUILD.
 pkgname=nullspace
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 _squelch=0.12.1
 pkgdesc='Tasks, notes, screen captures, voice notes and dictation from one key'
@@ -26,7 +26,7 @@ conflicts=('squelch')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/desktop-v$pkgver.tar.gz"
         "squelch-$_squelch.tar.gz::https://github.com/ieatfood314/squelch/archive/refs/tags/v$_squelch.tar.gz"
         "whisper.cpp::git+https://github.com/ggml-org/whisper.cpp.git#commit=0c7be696371069e0baa2515ed7aa08d5a5473aa6")
-sha256sums=('13547f439b2db7c4b576a66c0ee3f6968a66e9941da5ac86b30072821a536937'
+sha256sums=('fa229649ac0acc52c23fe60cc59cc380c99d6f7de954b23b5cc808b0d3a4c5a8'
             'dd1a363307251026cf528c8e5e90fb62c6b4ef103997e76e6778b49228568980'
             'SKIP')
 options=('!debug')
@@ -45,6 +45,7 @@ package() {
 
   cd "$srcdir/$pkgname-desktop-v$pkgver"
   install -Dm755 desktop/nullspace-desktop -t "$pkgdir/usr/bin/"
+  install -Dm644 desktop/settings.html -t "$pkgdir/usr/lib/nullspace/desktop/"
   install -Dm755 server/nullspace.py -t "$pkgdir/usr/lib/nullspace/server/"
   install -d "$pkgdir/usr/lib/nullspace/web"
   cp -r web/. "$pkgdir/usr/lib/nullspace/web/"
