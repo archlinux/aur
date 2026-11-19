@@ -2,18 +2,18 @@
 #
 # RELEASE CANDIDATE channel. This builds the GPG-signed pre-release tag so
 # testers can opt into the next release before it is promoted to stable.
-# Between candidates it tracks the current stable tag (v3.0.0), so it never
-# falls behind stable. It installs the same binaries as `aur-scanner` and therefore
+# It now builds v4.0.0-rc.1. Between candidates it tracks the current stable
+# tag, so it never falls behind stable. It installs the same binaries as `aur-scanner` and therefore
 # conflicts with it -- do NOT run both. For production systems prefer the
-# stable `aur-scanner` / `ks-aur-scanner` packages.
+# stable `aur-scanner` package.
 #
 # Release notes: see CHANGELOG.md in the repository.
 pkgname=aur-scanner-rc
 # AUR pkgver may not contain a hyphen, so a semver pre-release like
 # '2.3.0-rc.1' becomes '2.3.0rc1' here; the upstream git tag keeps the
 # canonical form.
-pkgver=3.0.0
-_tag=v3.0.0
+pkgver=4.0.0rc1
+_tag=v4.0.0-rc.1
 pkgrel=1
 pkgdesc="Security scanner for Arch Linux AUR packages (release candidate) - detect malicious PKGBUILDs before installation"
 arch=('x86_64' 'aarch64')
