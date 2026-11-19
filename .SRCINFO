@@ -1,0 +1,17 @@
+pkgbase = darkubectl-git
+	pkgdesc = kubectl-like access to the Hamravesh Darkube platform (development version)
+	pkgver = 0.15.0.r1.gce3c4cc
+	pkgrel = 1
+	url = https://github.com/rahacloud/darkubectl
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = darkubectl
+	conflicts = darkubectl
+	source = darkubectl-git::git+https://github.com/rahacloud/darkubectl.git
+	sha256sums = SKIP
+
+pkgname = darkubectl-git
