@@ -1,6 +1,6 @@
 pkgbase = fabric-d77
 	pkgdesc = GTK desktop shell for Wayland compositors, built on Fabric
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/dani-77/fabric-d77
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = fabric-d77
 	optdepends = ollama: backend for the Ollama Chat popup
 	optdepends = matugen: wallpaper-based color palette
 	backup = etc/pam.d/fabric-d77
-	source = fabric-d77-1.4.2.tar.gz::https://github.com/dani-77/fabric-d77/archive/refs/tags/1.4.2.tar.gz
-	sha256sums = 2dc977c7659cf4f723dbacb453a1f83a70913b0a0981a885d2aff7617994c9b4
+	source = fabric-d77-1.5.0.tar.gz::https://github.com/dani-77/fabric-d77/archive/refs/tags/1.5.0.tar.gz
+	sha256sums = d0c1d5c2f9826d89e07e69ab4584fbcc6540d915ba47e36fa36847141dcc69a0
 
 pkgname = fabric-d77
