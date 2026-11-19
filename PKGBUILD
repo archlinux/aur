@@ -2,8 +2,8 @@
 # Base: kevku <kevku@gmx.com>
 pkgbase=web-eid-git
 pkgname=("web-eid-native-git" "web-eid-firefox-git" "web-eid-chrome-git")
-pkgver=2.6.0.r10.geee1522
-_ext_ver=2.2.1
+pkgver=2.10.0.r20.g7f41cdd
+_ext_ver=2.5.0
 pkgrel=1
 arch=('x86_64')
 url="https://www.id.ee/"
@@ -13,8 +13,8 @@ provides=('web-eid-native' 'web-eid-firefox' 'web-eid-chrome')
 depends=('pcsclite' 'ccid' 'openssl' 'qt6-base' 'qt6-svg' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'gtest' 'qt6-tools')
 source=("$pkgbase::git+https://github.com/web-eid/web-eid-app.git"
-        "web-eid-libelectronic-id::git+https://github.com/web-eid/libelectronic-id.git"
-        "https://addons.mozilla.org/firefox/downloads/file/4079746/web_eid_webextension-$_ext_ver.xpi")
+    "web-eid-libelectronic-id::git+https://github.com/web-eid/libelectronic-id.git"
+    "https://addons.mozilla.org/firefox/downloads/file/4079746/web_eid_webextension-$_ext_ver.xpi")
 noextract=("web_eid_webextension-$_ext_ver.xpi")
 sha256sums=('SKIP'
             'SKIP'
@@ -41,13 +41,13 @@ build() {
     export BUILD_NUMBER=$(echo $_git_describe | sed 's/.*-\([0-9]*\)-g.*/\1/')
 
     cmake .. -DCMAKE_BUILD_TYPE=Release \
-             -DCMAKE_C_FLAGS:STRING="${CFLAGS} -ffile-prefix-map=$srcdir=." \
-             -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -ffile-prefix-map=$srcdir=." \
-             -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
-             -DCMAKE_INSTALL_PREFIX="/usr" \
-             -DCMAKE_INSTALL_LIBDIR="lib" \
-             -DCMAKE_INSTALL_SYSCONFDIR="/etc" \
-             -DQT_DIR="/usr/lib/cmake/Qt6"
+        -DCMAKE_C_FLAGS:STRING="${CFLAGS} -ffile-prefix-map=$srcdir=." \
+        -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -ffile-prefix-map=$srcdir=." \
+        -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_INSTALL_LIBDIR="lib" \
+        -DCMAKE_INSTALL_SYSCONFDIR="/etc" \
+        -DQT_DIR="/usr/lib/cmake/Qt6"
     cmake --build . --config Release
 }
 
@@ -57,14 +57,14 @@ package_web-eid-native-git() {
     conflicts=('web-eid-native')
 
     cd "$srcdir/$pkgbase/$pkgbase-build"
-    install -Dm755 "src/app/web-eid"            "$pkgdir/usr/bin/web-eid"
+    install -Dm755 "src/app/web-eid" "$pkgdir/usr/bin/web-eid"
     install -Dm644 "../install/web-eid.desktop" "$pkgdir/usr/share/applications/web-eid.desktop"
-    install -Dm644 "../install/appicon_16.png"  "$pkgdir/usr/share/icons/hicolor/16x16/apps/web-eid.png"
-    install -Dm644 "../install/appicon_32.png"  "$pkgdir/usr/share/icons/hicolor/32x32/apps/web-eid.png"
+    install -Dm644 "../install/appicon_16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/web-eid.png"
+    install -Dm644 "../install/appicon_32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/web-eid.png"
     install -Dm644 "../install/appicon_128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/web-eid.png"
     install -Dm644 "../install/appicon_256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/web-eid.png"
     install -Dm644 "../install/appicon_512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/web-eid.png"
-    install -Dm644 "../LICENSE"                 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_web-eid-firefox-git() {
@@ -76,9 +76,9 @@ package_web-eid-firefox-git() {
 
     cd "$srcdir/$pkgbase/$pkgbase-build"
     install -Dm644 "src/app/eu.webeid.firefox.json" \
-                   "$pkgdir/usr/lib/mozilla/native-messaging-hosts/eu.webeid.json"
+        "$pkgdir/usr/lib/mozilla/native-messaging-hosts/eu.webeid.json"
     install -Dm644 "$srcdir/web_eid_webextension-$_ext_ver.xpi" \
-                   "$pkgdir/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/{e68418bc-f2b0-4459-a9ea-3e72b6751b07}.xpi"
+        "$pkgdir/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/{e68418bc-f2b0-4459-a9ea-3e72b6751b07}.xpi"
     install -Dm644 "../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
@@ -111,10 +111,10 @@ package_web-eid-chrome-git() {
     mkdir -p $pkgdir/opt/microsoft/msedge/extensions
     ln -sf "/usr/share/google-chrome/extensions/ncibgoaomkmdpilpocfeponihegamlic.json" "$pkgdir/opt/microsoft/msedge/extensions/ncibgoaomkmdpilpocfeponihegamlic.json"
     # from Microsoft Edge Add-ons Store
-#    cat << EOF > "gnmckgbandlkacikdndelhfghdejfido.json"
-#{
-#    "external_update_url": "https://edge.microsoft.com/extensionwebstorebase/v1/crx"
-#}
-#EOF
-#    install -Dm644 "gnmckgbandlkacikdndelhfghdejfido.json" "$pkgdir/opt/microsoft/msedge/extensions/gnmckgbandlkacikdndelhfghdejfido.json"
+    #    cat << EOF > "gnmckgbandlkacikdndelhfghdejfido.json"
+    #{
+    #    "external_update_url": "https://edge.microsoft.com/extensionwebstorebase/v1/crx"
+    #}
+    #EOF
+    #    install -Dm644 "gnmckgbandlkacikdndelhfghdejfido.json" "$pkgdir/opt/microsoft/msedge/extensions/gnmckgbandlkacikdndelhfghdejfido.json"
 }
