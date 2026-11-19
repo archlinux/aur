@@ -1,6 +1,6 @@
 pkgbase = tokativ-bin
 	pkgdesc = Local dictation that types into the focused app as you speak
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/nolight132/tokativ
 	arch = x86_64
@@ -18,15 +18,15 @@ pkgbase = tokativ-bin
 	optdepends = nvidia-utils: Vulkan driver for NVIDIA GPUs
 	optdepends = pipewire-alsa: microphone input through PipeWire
 	optdepends = pulseaudio-alsa: microphone input through PulseAudio
-	provides = tokativ=0.6.0
+	provides = tokativ=0.7.0
 	conflicts = tokativ
 	options = !strip
 	options = !debug
-	source = https://github.com/nolight132/tokativ/archive/refs/tags/v0.6.0/tokativ-0.6.0.tar.gz
-	sha256sums = 3e8d5ba381588a6d33be08a63d55905abe9c20a90f7c934a7b9d68ff946063bb
-	source_x86_64 = tokativ-0.6.0-x86_64::https://github.com/nolight132/tokativ/releases/download/v0.6.0/tokativ-v0.6.0-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = f23c013496ba8baaba596a7a1f43c47ccfbb1a5f255153b63ba084bd8182c486
-	source_aarch64 = tokativ-0.6.0-aarch64::https://github.com/nolight132/tokativ/releases/download/v0.6.0/tokativ-v0.6.0-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = 5f4f1b92dfa10d9d47b8017bbee08e6678f7359097f8126dbe0c6efa084800c2
+	source = https://github.com/nolight132/tokativ/archive/refs/tags/v0.7.0/tokativ-0.7.0.tar.gz
+	sha256sums = 384d8bf88164826267306d9fd7c8f74979975af46b9fe7bb1dc320206906da14
+	source_x86_64 = tokativ-0.7.0-x86_64::https://github.com/nolight132/tokativ/releases/download/v0.7.0/tokativ-v0.7.0-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = da206cc8b49a5b738ccdbcfbc9a325ffbf30207044d8b420abcd28ce2dd14be1
+	source_aarch64 = tokativ-0.7.0-aarch64::https://github.com/nolight132/tokativ/releases/download/v0.7.0/tokativ-v0.7.0-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 90430b5f445e4f07fc24d0b1452c19f81f281e33fb7f13d561a87723d9b20b69
 
 pkgname = tokativ-bin
