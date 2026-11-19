@@ -66,3 +66,4 @@ nfs_layout_nfsv41_files
 nfs_layout_flexfiles
 prom21_xhci
 ntfs
+xt_mark

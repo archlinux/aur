@@ -308,7 +308,7 @@ _tagrel=2
 # the same kernel version, so every build has its own `uname -r` and installs as a
 # visible upgrade. That is all it does: it does not protect the running kernel's
 # module tree, see the HAZARD above.
-pkgrel=2
+pkgrel=3
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 # Kept short: the split packages append their own suffixes to this string
 # ("... kernel and modules", "Non-stripped vmlinux file for the ..."), so a long
@@ -814,6 +814,16 @@ prepare() {
     echo "Enabling the AMD Promontory 21 temperature sensor..."
     scripts/config -m SENSORS_PROM21_XHCI
 
+    # The base config has NETFILTER_XT_MARK off, so iptables-nft cannot load the MARK
+    # target or the mark match. tailscaled adds both (-j MARK --set-mark and
+    # -m mark --mark in its ts-forward and ts-postrouting chains), fails with
+    # "MARK: bad value for option --set-mark", and tailscale status reports a
+    # health warning. NETFILTER_XT_TARGET_MARK is only a deprecated alias that
+    # selects this option. Listing xt_mark in modules.always keeps localmodconfig
+    # from dropping it, since PC1 does not load it until tailscaled asks.
+    echo "Enabling the netfilter MARK target and match..."
+    scripts/config -m NETFILTER_XT_MARK
+
     ### CI-only stuff
     if _is_ci_build; then
         echo "Detected build inside CI"
@@ -1252,9 +1262,9 @@ done
 
 b2sums=('34499a44a378dd7a330f2fa821ebdef10f477af461e1e40f193a85c188133627c885ddd636693c4ec895c1e22ffe6d0378948ee6c51a6d9a36dca262784f916a'
         'SKIP'
-        '1c1a007862656a1cb7b1d9fa26f93628d746cf3ca697ec2dc36452c5c204aed44ad45381e5a64404d098dfd7f5b4f9a0f8b2b4606df31938c7026ebc283d8f70'
+        '44a20dc88f13e67c65c8d840d692063b3e99ed4a7a354760b97bb96788d19dd4fd0e6f2b0357a1e706c94275cc268bd5bf70f7f31a3695e6acb62994b0c7fc9b'
         '4103183a51f761fcc79e38dd6c48560a1bc7e7bd952bdaa5c2fbe0bf5e1ed593f896c00cfa2ce031ce720654c2078ecdb37d6c586417c75db7356569f44cb850'
-        '754c21da91745e0ee2992e1c1df53f5bd005dcdf076a2f5dce45c26c76f818768fc7123b652b73e7236c4fc3bcf2359bb0ff0d40e0d0b437613619ef5d768fc9'
+        'c86055ec8322e0a14d7dacc515037660c13c3e13a55172c3c38c24d77132323b217934a5e0faf037b181ea692d8452546706211ad81e0b6c291f90a9d5b732ba'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e'
         '2033d4dcd3bc97aff7fb7d9e4dfa027b9efe1cda646080ab79ebf29d3b6e7ba70e5df246d24add3b44009074be1ff801b17d825e73e74bfc615f79f72a7287ef')
 
