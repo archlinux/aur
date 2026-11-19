@@ -1,6 +1,6 @@
 pkgbase = xtouch-daemon-bin
 	pkgdesc = Use a Behringer X-Touch Extender as a hardware mixer for PipeWire: motor faders, meters, scribble strips
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/markusressel/xtouch-daemon
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = xtouch-daemon-bin
 	optdepends = pipewire-pulse: the PulseAudio server of PipeWire, which the daemon controls (or PulseAudio)
 	optdepends = xtouch-daemon-gui-bin: the GUI
 	optdepends = mumble: voip strips with the people of a Mumble channel (the plugin is in /usr/share/xtouch-daemon)
-	provides = xtouch-daemon=0.1.0
+	provides = xtouch-daemon=0.2.0
 	conflicts = xtouch-daemon
 	options = !strip
 	options = !debug
-	source = xtouch-daemon-0.1.0-x86_64.tar.gz::https://github.com/markusressel/xtouch-daemon/releases/download/0.1.0/xtouch-daemon-0.1.0-x86_64.tar.gz
-	sha256sums = 567783ccb1903f9c6249107205ab9685fac4f17d21c890729e3057c668154fe5
+	source = xtouch-daemon-0.2.0-x86_64.tar.gz::https://github.com/markusressel/xtouch-daemon/releases/download/0.2.0/xtouch-daemon-0.2.0-x86_64.tar.gz
+	sha256sums = 0b2a82258bb00c00a3a235cfdf9135ac2c856fd65d3669149e808559649e566c
 
 pkgname = xtouch-daemon-bin

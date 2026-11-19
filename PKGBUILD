@@ -4,7 +4,7 @@
 # and published to the AUR with packaging/aur/publish.sh (see RELEASING.md). Don't edit it on the AUR directly.
 pkgname=xtouch-daemon-bin
 _pkgname=xtouch-daemon
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Use a Behringer X-Touch Extender as a hardware mixer for PipeWire: motor faders, meters, scribble strips"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=("${_pkgname}")
 # the bundled Python comes ready to run: stripping breaks its binaries
 options=('!strip' '!debug')
 source=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64.tar.gz")
-sha256sums=('567783ccb1903f9c6249107205ab9685fac4f17d21c890729e3057c668154fe5')
+sha256sums=('0b2a82258bb00c00a3a235cfdf9135ac2c856fd65d3669149e808559649e566c')
 
 check() {
 	cd "${srcdir}/${_pkgname}-${pkgver}-x86_64"
