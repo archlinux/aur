@@ -1,21 +1,21 @@
 pkgbase = shelly-bin
-	pkgver = 3.3.1
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = go-md2man
 	makedepends = binutils
-	source = Shelly-ALPM-linux-x64-3.3.1.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v3.3.1/Shelly-ALPM-linux-x64.tar.gz
-	source = Shelly-Flatpak-Backend-linux-x64-3.3.1.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v3.3.1/Shelly-Flatpak-Backend-linux-x64.tar.gz
-	source = shelly-updates-symbolic-3.3.1.svg::https://raw.githubusercontent.com/Seafoam-Labs/Shelly-ALPM/v3.3.1/assets/shelly-updates-symbolic.svg
-	source = shelly-shell-symbolic-3.3.1.svg::https://raw.githubusercontent.com/Seafoam-Labs/Shelly-ALPM/v3.3.1/assets/shelly-shell-symbolic.svg
+	source = Shelly-ALPM-linux-x64-3.4.0.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v3.4.0/Shelly-ALPM-linux-x64.tar.gz
+	source = Shelly-Flatpak-Backend-linux-x64-3.4.0.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v3.4.0/Shelly-Flatpak-Backend-linux-x64.tar.gz
+	source = shelly-updates-symbolic-3.4.0.svg::https://raw.githubusercontent.com/Seafoam-Labs/Shelly-ALPM/v3.4.0/assets/shelly-updates-symbolic.svg
+	source = shelly-shell-symbolic-3.4.0.svg::https://raw.githubusercontent.com/Seafoam-Labs/Shelly-ALPM/v3.4.0/assets/shelly-shell-symbolic.svg
 	source = shellybuild.conf
 	source = com.shellyorg.shelly.desktop
 	source = com.shellyorg.shelly-notifications.desktop
 	source = shelly-flatpak-integrate
-	sha256sums = 51743b80f4c00cf9f6c0f2267e68bcb5ce3c252b267271d4f6f352b17510827d
-	sha256sums = 98d317f419559ef99f396634a30522f54f3643eef380212c8fa550d5b71a9d42
+	sha256sums = 9b2f0a9ef97ab695f072735109ae813aab44f374ae34ecd9ac8e8ca0a44756cd
+	sha256sums = 8c6899b77ef45d094d18b6b42273263dcc4dee43ae5b6b9ca685fb0d48d45c84
 	sha256sums = cfec9274ece30407404b3c41187c465c68f1a6017394ac31c0be937d06f8a850
 	sha256sums = 27eb0cf269296254f45c68c88a27b0e43817bb6107db8e7edb87ea030730bf25
 	sha256sums = 4126da205e91a3ba3b15453c2aeade92f67e16e3386a52aae32fbd3f2e4af9cc
@@ -46,6 +46,7 @@ pkgname = shelly-bin
 	optdepends = zsh: Zsh shell completions
 	optdepends = libstarfish: dependency viewer for arch packages
 	optdepends = shelly-flatpak-backend-bin: Flatpak package management support
+	optdepends = fwupd: Firmware page for device firmware updates
 	optdepends = util-linux: isolate fresh-root provisioning for --isolated builds
 	optdepends = fuse2: run AppImages that require FUSE 2
 	provides = shelly
@@ -55,8 +56,8 @@ pkgname = shelly-bin
 
 pkgname = shelly-flatpak-backend-bin
 	pkgdesc = Optional native Flatpak backend for Shelly (prebuilt binary)
-	depends = shelly-bin=3.3.1-1
+	depends = shelly-bin=3.4.0-1
 	depends = flatpak
-	provides = shelly-flatpak-backend=3.3.1
+	provides = shelly-flatpak-backend=3.4.0
 	conflicts = shelly-flatpak-backend
 	conflicts = shelly-flatpak-backend-git
