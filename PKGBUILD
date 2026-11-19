@@ -2,7 +2,7 @@
 
 _pkgname=aria2-next
 pkgname=${_pkgname}-bin
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="aria2 fork with extensive bug fixes and modernized architecture (binary version)"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ conflicts=("${_pkgname}")
 source_x86_64=( "${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64" )
 source_aarch64=( "${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-aarch64" )
 
-sha256sums_x86_64=('5a264fc39312cc1abc6d12cfd2d96464d27f0349fd7cb5e0cbf1ee5bd686e890')
-sha256sums_aarch64=('38019a34ac5edd4dc7443fd7214842dc2c29b38202a1a65a6271c5e994fbd0d0')
+sha256sums_x86_64=('027b46099c32a9085e269accfe6089397c84cea0c0b37887bbda0a8b291c20d6')
+sha256sums_aarch64=('e848ba182f716458f719415d2186b6435906aff20c28b6649819653301d11cb2')
 
 package() {
 
