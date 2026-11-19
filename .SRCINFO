@@ -1,6 +1,6 @@
 pkgbase = novabrowser-bin
 	pkgdesc = AVX2-optimized keyboard-driven web browser on Chromium (CEF), configured in TypeScript (prebuilt)
-	pkgver = 0.1.12
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/Novaturiente/nova-browser
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = novabrowser-bin
 	conflicts = novabrowser-git
 	options = !strip
 	options = !debug
-	source = novabrowser-0.1.12-x86_64.tar.zst::https://github.com/Novaturiente/nova-browser/releases/download/v0.1.12/novabrowser-0.1.12-x86_64.tar.zst
-	sha256sums = 79c9a053bbd83179d9df62c4c5ed5247abfc1d1daa8b600444f8a94065abddcf
+	source = novabrowser-0.1.13-x86_64.tar.zst::https://github.com/Novaturiente/nova-browser/releases/download/v0.1.13/novabrowser-0.1.13-x86_64.tar.zst
+	sha256sums = 7ed3aeef4d23ed7c34f567426beabea3ed8914d222fdfe897a111c532392d048
 
 pkgname = novabrowser-bin
