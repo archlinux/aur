@@ -2,7 +2,7 @@
 
 pkgname=rhythmbox-folder-shuffle
 _foldername=foldershuffle
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Continuous folder shuffle plugin for Rhythmbox"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/username227/Rhythmbox-Folder-Shuffle"
 license=('GPL-3.0-or-later')
 depends=('rhythmbox' 'libpeas' 'python-gobject')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ecda1dbe2574febeaf1f4cf2d95b9d33b0dfb502e26f2009ecd4e34070f5f7c3')
+sha256sums=('b8302fd52132113d10d80f0ead172d28a41d2c932ded0c28b9281b253a21ee13')
 
 package() {
     cd "${srcdir}/Rhythmbox-Folder-Shuffle-${pkgver}"
