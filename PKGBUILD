@@ -1,6 +1,6 @@
 # Creator: piernov <piernov@piernov.org>
 # Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
-pkgname=git-gl-git
+pkgname=git-gl
 _pkgname=git
 pkgver=2.56.1.r591.ge1ec09b23c
 pkgrel=1

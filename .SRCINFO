@@ -1,4 +1,4 @@
-pkgbase = git-gl-git
+pkgbase = git-gl
 	pkgdesc = GitLab's version of Git
 	pkgver = 2.56.1.r591.ge1ec09b23c
 	pkgrel = 1
@@ -43,4 +43,4 @@ pkgbase = git-gl-git
 	b2sums = SKIP
 	b2sums = 7630e8245526ad80f703fac9900a1328588c503ce32b37b9f8811674fcda4a45
 
-pkgname = git-gl-git
+pkgname = git-gl
