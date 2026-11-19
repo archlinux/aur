@@ -1,0 +1,35 @@
+pkgbase = butterflypack-rocm
+	pkgdesc = Mathematical software for rapidly solving large-scale dense linear systems with butterfly and low-rank compression (with ROCm)
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/liuyangzhuan/ButterflyPACK
+	arch = x86_64
+	license = BSD-3-Clause-LBNL
+	makedepends = cmake
+	makedepends = gcc-fortran
+	makedepends = pybind11
+	depends = glibc
+	depends = libgcc
+	depends = libgfortran
+	depends = libgomp
+	depends = libstdc++
+	depends = openmpi
+	depends = blas
+	depends = lapack
+	depends = scalapack
+	depends = zfp
+	depends = fftw
+	depends = python
+	depends = python-numpy
+	depends = arpack
+	depends = parsec-rocm
+	depends = magma-hip
+	optdepends = python-mpi4py: run the Python interface on several MPI processes
+	provides = butterflypack=5.0.0
+	conflicts = butterflypack
+	source = ButterflyPACK-5.0.0.tar.gz::https://github.com/liuyangzhuan/ButterflyPACK/archive/refs/tags/v5.0.0.tar.gz
+	source = magma-offset-precisions.patch
+	sha256sums = 9a6ba1685b0181851faba3f020285893c61318f6abcfca2309cc26703485ecf5
+	sha256sums = 1a9c3789fd0698b8d12b65efdb76679f4010a42e33b15cfad0c199ac6a90537e
+
+pkgname = butterflypack-rocm

@@ -1,0 +1,51 @@
+diff --git a/SRC/MAGMA_offset.c b/SRC/MAGMA_offset.c
+index 7875b7b..72f3b59
+--- a/SRC/MAGMA_offset.c
++++ b/SRC/MAGMA_offset.c
+@@ -23,7 +23,7 @@ double* d_c_magma_offset_2d(
+     return A + (i-1) + (j-1)*lda;
+ }
+ 
+-#else
++#elif DAT==0
+ 
+ magmaDoubleComplex* z_c_magma_offset_1d(
+     magmaDoubleComplex* x, magma_int_t inc,
+@@ -39,5 +39,37 @@ magmaDoubleComplex* z_c_magma_offset_2d(
+     return A + (i-1) + (j-1)*lda;
+ }
+ 
++#elif DAT==2
++
++magmaFloatComplex* c_c_magma_offset_1d(
++    magmaFloatComplex* x, magma_int_t inc,
++    magma_int_t i )
++{
++    return x + (i-1)*inc;
++}
++
++magmaFloatComplex* c_c_magma_offset_2d(
++    magmaFloatComplex* A, magma_int_t lda,
++    magma_int_t i, magma_int_t j )
++{
++    return A + (i-1) + (j-1)*lda;
++}
++
++#elif DAT==3
++
++float* s_c_magma_offset_1d(
++    float* x, magma_int_t inc,
++    magma_int_t i )
++{
++    return x + (i-1)*inc;
++}
++
++float* s_c_magma_offset_2d(
++    float* A, magma_int_t lda,
++    magma_int_t i, magma_int_t j )
++{
++    return A + (i-1) + (j-1)*lda;
++}
++
+ #endif
+ #endif
