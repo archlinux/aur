@@ -1,8 +1,8 @@
 # Maintainer: Grant Moyer <grantmoyer@gmail.com>
 
 pkgname=foundryvtt
-pkgver=14.368
-pkgrel=1
+pkgver=14.370
+pkgrel=2
 pkgdesc="A self-hosted, modern, and developer-friendly roleplaying platform"
 arch=('x86_64')
 url="https://foundryvtt.com/"
@@ -14,7 +14,7 @@ source=(
 	"foundryvtt.desktop"
 )
 sha256sums=(
-	'2c82ce9866382c49751675ecd1b6f3c3e2a5d06afb29e402dc747d952db1a427'
+	'9355650a131c31c724a6b5916ad22e76dc9e282d35af70c4bc3b4ce54d097ef8'
 	'eb6d09ea176748a0e9b3a0ebb2aa3f2bca23e5f082ed676edd9fd8bf6b0ebbcb'
 )
 DLAGENTS+=("foundryvtt::/usr/bin/sh -c printf\ '%s\\\\n'\
