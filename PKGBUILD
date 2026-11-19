@@ -2,7 +2,8 @@
 # The kernel module is built into linux-multikernel
 pkgbase=daxfs
 pkgname=daxfs-utils
-pkgver=0.1.0 # renovate: datasource=github-tags depName=multikernel/daxfs
+# renovate: datasource=github-tags depName=multikernel/daxfs
+pkgver=0.1.0
 pkgrel=3
 pkgdesc="DAX-based filesystem for multikernel and multi-host shared memory (mkdaxfs and daxfs-inspect)"
 arch=(x86_64 aarch64 riscv64)
