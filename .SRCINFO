@@ -1,18 +1,13 @@
 pkgbase = sinestesia
-	pkgdesc = Audio visualizer for Linux with effects and system theming (Rust + GTK4)
-	pkgver = 0.6.2
+	pkgdesc = Audio visualizer for Linux, a Genoma app in Bioma's style
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/AkusenArcade/Sinestesia
-	arch = x86_64
+	arch = any
 	license = MIT
-	makedepends = cargo
-	depends = gtk4
-	depends = libadwaita
-	depends = pipewire
-	depends = libepoxy
+	depends = genoma>=0.1.21
 	depends = hicolor-icon-theme
-	options = !lto
-	source = sinestesia-0.6.2.tar.gz::https://github.com/AkusenArcade/Sinestesia/archive/refs/tags/v0.6.2.tar.gz
-	sha256sums = 62d1e772741c28a17914afb6a08166bb49d8a3b37227b205697deb792b923c43
+	source = sinestesia-1.0.0.tar.gz::https://github.com/AkusenArcade/Sinestesia/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 0cc947a079f534dd545a8813182513880df7545c465490c7276efd7245e508dc
 
 pkgname = sinestesia
