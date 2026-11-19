@@ -1,6 +1,6 @@
 # Maintainer: Omar <https://github.com/sazardev>
 pkgname=shiki
-pkgver=0.10.6
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="TUI note-taking app with a Yazi-inspired three-pane layout and git-backed notebooks"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cargo')
 conflicts=('shiki-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sazardev/shiki/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ceb3470e42c3aadf3c69f132c41e8ca579e7cdc8a41fdb8f7512c4a8b4821ad1')
+sha256sums=('2a8cd5d2dc397e29f2227f398fd9896e6d0a6dda9e3d587bd5d783bc165a0bb0')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -29,12 +29,13 @@ build() {
   # while testing this PKGBUILD, not a hypothetical. Unset them for the
   # Rust build specifically rather than fighting the flags themselves.
   unset CFLAGS CXXFLAGS LDFLAGS LTOFLAGS
-  cargo build --frozen --release -p shiki-cli
+  cargo build --frozen --release -p shiki-cli -p shiki-mcp
 }
 
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "target/release/shiki" "$pkgdir/usr/bin/shiki"
+  install -Dm755 "target/release/shiki-mcp" "$pkgdir/usr/bin/shiki-mcp"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
