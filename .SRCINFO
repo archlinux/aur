@@ -1,6 +1,6 @@
 pkgbase = budget-tracker-bin
 	pkgdesc = A simple TUI budget tracker. Designed to track income and expenses and help visualize and gather basic insights from your transactions.
-	pkgver = 1.7.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/Feromond/budget-tracker-tui
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = budget-tracker-bin
 	options = !lto
 	options = !debug
 	options = !strip
-	source_x86_64 = budget-tracker-1.7.0-bin.tar.gz::https://github.com/Feromond/budget-tracker-tui/releases/download/v1.7.0/budget-tracker-1.7.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 1b07f4808da59b08237f7802e4f8bbc15d0c5471ef924c8d86f901e6906ab51f
-	source_aarch64 = budget-tracker-1.7.0-bin.tar.gz::https://github.com/Feromond/budget-tracker-tui/releases/download/v1.7.0/budget-tracker-1.7.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 939f9699413ba6e7e8b428be2e9841e6da50e4508bf8af3d404f5c30ea4afc9d
+	source_x86_64 = budget-tracker-1.8.1-bin.tar.gz::https://github.com/Feromond/budget-tracker-tui/releases/download/v1.8.1/budget-tracker-1.8.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7d25a54e4ca54835b87fb9bb26a490506fcc4e69e9029326efce01d41205cc0a
+	source_aarch64 = budget-tracker-1.8.1-bin.tar.gz::https://github.com/Feromond/budget-tracker-tui/releases/download/v1.8.1/budget-tracker-1.8.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 81f188ff40314374faeecc0baf3057f6c16a3e20a04b5b0537dd61e2330ec0be
 
 pkgname = budget-tracker-bin
