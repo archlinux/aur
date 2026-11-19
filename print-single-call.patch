@@ -1,0 +1,142 @@
+diff --git a/src/portals/print/dbus.rs b/src/portals/print/dbus.rs
+index 39b4d55..f4c484b 100644
+--- a/src/portals/print/dbus.rs
++++ b/src/portals/print/dbus.rs
+@@ -10,7 +10,7 @@ fn flatten_dict(dict: HashMap<String, Value<'_>>) -> HashMap<String, String> {
+ }
+ 
+ use {
+-    super::gui::{ExecutePrintUi, PrintUi},
++    super::gui::{ExecutePrintUi, PrintTokenProbe, PrintUi},
+     crate::{
+         core::{request::run_request, response::Response},
+         gui::UiProxy,
+@@ -122,13 +122,12 @@ impl Print {
+     async fn print_impl(
+         &self,
+         app_id: String,
+-        _parent_window: String,
+-        _title: String,
++        parent_window: String,
++        title: String,
+         fd: Fd<'_>,
+         options: PrintOptions,
+     ) -> Response<PrintResults> {
+         use std::os::fd::AsRawFd;
+-        let token = options.token.unwrap_or(0);
+ 
+         // The file descriptor provided by the portal daemon must be passed to the print system.
+         // The D-Bus library (zbus) internally dup's the fd during deserialization.
+@@ -136,6 +135,39 @@ impl Print {
+         // it is safe to extract the raw_fd here and pass it down.
+         let raw_fd = fd.as_raw_fd();
+ 
++        // A token from `PreparePrint` authorises a job cached there. Callers that
++        // skip that step (GtkPrintDialog::print_file() passes no setup, so GTK
++        // sends `token = 0`) expect this method to present the dialog itself, the
++        // way the GTK3 and GNOME backends do. Only the dialog run decides whether
++        // the user gets that far; a foreign token is still refused below.
++        let mut token = options.token.unwrap_or(0);
++        let known = token != 0
++            && PrintTokenProbe { token }
++                .run(&self.proxy)
++                .await
++                .unwrap_or(false);
++
++        if !known {
++            let prepared = PrintUi {
++                app_id: app_id.clone(),
++                parent_window,
++                activation_token: options.activation_token.clone(),
++                title,
++                settings: HashMap::new(),
++                page_setup: HashMap::new(),
++            }
++            .run(&self.proxy)
++            .await;
++
++            match prepared {
++                Ok(result) => token = result.token,
++                Err(e) => {
++                    tracing::error!(error = %e, "Print dialog failed");
++                    return Response::from_ui_error(e);
++                }
++            }
++        }
++
+         // A token is only valid for the application that obtained it. Without
+         // this check any app could consume another app's cached printer and
+         // settings by guessing a token.
+diff --git a/src/portals/print/gui.rs b/src/portals/print/gui.rs
+index 2531c7a..27b6f26 100644
+--- a/src/portals/print/gui.rs
++++ b/src/portals/print/gui.rs
+@@ -299,20 +299,62 @@ impl ExecutePrintUi {
+             &cached.settings,
+             &cached.page_setup,
+         );
+-        if let Err(e) = print_job.set_source_fd(self.fd) {
++
++        // GTK takes ownership of the fd it is given and closes it with the job,
++        // while zbus also closes the fd it deserialized: hand GTK its own copy so
++        // the job does not end up reading a descriptor that was already closed.
++        let source_fd = unsafe { libc::dup(self.fd) };
++        if source_fd < 0 {
++            tracing::error!(
++                "Failed to duplicate the print source fd: {}",
++                std::io::Error::last_os_error()
++            );
++            let _ = send.dispatch(Err(UiError::Closed));
++            return;
++        }
++
++        if let Err(e) = print_job.set_source_fd(source_fd) {
+             tracing::error!("Failed to set source fd for print job: {}", e);
++            unsafe { libc::close(source_fd) };
+             let _ = send.dispatch(Err(UiError::Rejected));
+             return;
+         }
+ 
+-        print_job.send(move |_, err| {
+-            if let Err(e) = err {
+-                tracing::error!("Failed to send print job: {}", e);
+-            } else {
++        // Answer only once the backend has accepted the job, so the application
++        // is not told that printing succeeded before anything reached CUPS.
++        print_job.send(move |_, err| match err {
++            Ok(()) => {
+                 tracing::info!("Print job successfully sent to CUPS");
++                let _ = send.dispatch(Ok(()));
++            }
++            Err(e) => {
++                tracing::error!("Failed to send print job: {}", e);
++                let _ = send.dispatch(Err(UiError::Closed));
+             }
+         });
+-        let _ = send.dispatch(Ok(()));
++    }
++}
++
++/// Reports whether `token` is parked in the `PRINT_JOBS` cache, without claiming it.
++///
++/// `Print` uses this to tell the two flows apart: a cached token means the
++/// application went through `PreparePrint`, while an unknown or absent token
++/// means it expects the dialog to be shown at print time.
++pub struct PrintTokenProbe {
++    pub token: u32,
++}
++
++impl PrintTokenProbe {
++    pub async fn run(self, proxy: &UiProxy) -> Result<bool, UiError> {
++        crate::gui::run_ui_task(
++            proxy,
++            move |send, _, _| {
++                let exists = PRINT_JOBS.with(|jobs| jobs.borrow().contains_key(&self.token));
++                let _ = send.dispatch(Ok(exists));
++            },
++            || UiError::Closed,
++        )
++        .await
+     }
+ }
+ 

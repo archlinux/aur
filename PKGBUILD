@@ -10,7 +10,7 @@ depends=('xdg-desktop-portal' 'gtk4' 'glib2' 'gdk-pixbuf2' 'glibc' 'libgcc')
 provides=('xdg-desktop-portal-impl' 'xdg-desktop-portal-gtk4' 'xdg-desktop-portal-gtk4-printfix')
 conflicts=('xdg-desktop-portal-gtk4' 'xdg-desktop-portal-gtk4-git' 'xdg-desktop-portal-gtk4-bin' 'xdg-desktop-portal-gtk4-printfix')
 options=('!strip' '!debug')
-# Built from upstream v1.6.6 + print-single-call.patch; see the -printfix source package.
+# Built from upstream v1.6.6 + print-single-call.patch (kept in this repo).
 source=("$pkgname-$pkgver.tar.gz::$url/-/releases/v$pkgver/downloads/xdg-desktop-portal-gtk4-printfix-v$pkgver-x86_64.tar.gz")
 sha256sums=('a5e6dc868a9776c2690c5fd4b6aad2847c0e334116ab1c99dbbe59c42f37b0f7')
 
