@@ -1,51 +1,43 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/greeter>
 pkgname=hornero-greeter
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc='HorneroOS SDDM greeter theme on Hornero Signal (Argentina footage, offline)'
+pkgdesc='HorneroOS SDDM greeter theme on Hornero Signal (generative horizon, offline)'
 arch=('any')
 url='https://github.com/HorneroOS/greeter'
 license=('GPL-3.0-only')
 # Qt6 runtime: the theme imports QtQuick, QtQuick.Effects, QtQuick.Shapes,
-# QtMultimedia and QtQuick.VirtualKeyboard (see Main.qml / components/*.qml);
-# sddm provides SddmComponents. ttf-ibm-plex supplies the Hornero Signal
+# QtQuick.Window and QtQuick.VirtualKeyboard (see Main.qml /
+# components/*.qml); sddm runs it. ttf-ibm-plex supplies the Hornero Signal
 # families (IBM Plex Sans, Mono and Sans Condensed); without it fontconfig
 # falls back to the default sans/mono and the greeter still renders.
-# gst-plugins-good decodes the offline H.264 footage via the QtMultimedia
-# GStreamer backend.
-depends=('sddm' 'qt6-multimedia' 'qt6-declarative' 'qt6-virtualkeyboard' 'gst-plugins-good' 'ttf-ibm-plex')
-optdepends=('hornero-greeter-media-base: Argentina video pack')
+# The background is drawn in code: no photos or videos ship with the theme.
+depends=('sddm' 'qt6-declarative' 'qt6-virtualkeyboard' 'ttf-ibm-plex')
+# Only an administrator's own opt-in video (theme.conf backgroundImage)
+# needs QtMultimedia; components/UserVideo.qml is loaded on demand and the
+# generative horizon stays when the module is missing.
+optdepends=('qt6-multimedia: play an opt-in video background'
+            'gst-plugins-good: decode common video formats for an opt-in background')
 # Named "$pkgname" so the checkout lands at "${srcdir}/$pkgname";
 # package() below only ever reads from there, so AUR chroot builds
 # behave exactly like local packaging/ builds.
-source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#commit=37bc22d110d853ce1e38b69cd2a0051d7b5c8f59")
+source=("$pkgname::git+https://github.com/HorneroOS/greeter.git#commit=7c21ed038da9cf8f143cb627b33d58d61b703fe0")
 sha256sums=('SKIP')
 
 package() {
   local src="$srcdir/$pkgname" dest="$pkgdir/usr/share/sddm/themes/hornero/"
   install -d "$dest"
-  # Theme payload: QML, configs, static fallback (all required).
+  # Theme payload: QML and configs (all required).
   install -Dm644 "$src/Main.qml" "${dest}Main.qml"
   # theme.conf.user is an optional administrator override. Shipping a
   # sample as an active override masks theme.conf defaults on a fresh
   # install (including the default typeface and login affordance).
-  for f in theme.conf metadata.desktop background.jpg; do
+  for f in theme.conf metadata.desktop; do
     install -Dm644 "$src/$f" "${dest}$f"
   done
-  # Golden-hour and night have licensed local still fallbacks. Video remains
-  # an optional offline media pack; these compact images ship with the theme.
-  install -Dm644 "$src/media/stills/ar-ba-nocturno.jpg" \
-    "${dest}media/stills/ar-ba-nocturno.jpg"
-  install -Dm644 "$src/media/stills/ar-er-el-palmar-golden-hour.jpg" \
-    "${dest}media/stills/ar-er-el-palmar-golden-hour.jpg"
   cp -a "$src/components" "$dest"
-  # Runtime video catalog (generated from media/catalog.json, committed):
-  # entries resolve clips under media/base/ relative to the theme root.
-  install -Dm644 "$src/media/catalog.js" "${dest}media/catalog.js"
-  # Bridge to the optional hornero-greeter-media-base pack. The link dangles
-  # when the pack is absent; the deck then skips the missing files and holds
-  # the static fallback, so the theme works with or without the pack.
-  ln -sfn /usr/share/hornero/greeter/media/base "${dest}media/base"
+  # Preview image for theme pickers (an original render of this theme).
+  install -Dm644 "$src/screens/screenshot.png" "${dest}screens/screenshot.png"
   # Layered SDDM snippet: selects this theme WITHOUT rewriting /etc/sddm.conf.
   install -Dm644 "$src/packaging/arch/hornero-greeter/hornero.conf" \
     "$pkgdir/etc/sddm.conf.d/10-hornero.conf"

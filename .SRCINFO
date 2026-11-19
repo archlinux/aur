@@ -1,18 +1,17 @@
 pkgbase = hornero-greeter
-	pkgdesc = HorneroOS SDDM greeter theme on Hornero Signal (Argentina footage, offline)
-	pkgver = 1.1.0
+	pkgdesc = HorneroOS SDDM greeter theme on Hornero Signal (generative horizon, offline)
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/HorneroOS/greeter
 	arch = any
 	license = GPL-3.0-only
 	depends = sddm
-	depends = qt6-multimedia
 	depends = qt6-declarative
 	depends = qt6-virtualkeyboard
-	depends = gst-plugins-good
 	depends = ttf-ibm-plex
-	optdepends = hornero-greeter-media-base: Argentina video pack
-	source = hornero-greeter::git+https://github.com/HorneroOS/greeter.git#commit=37bc22d110d853ce1e38b69cd2a0051d7b5c8f59
+	optdepends = qt6-multimedia: play an opt-in video background
+	optdepends = gst-plugins-good: decode common video formats for an opt-in background
+	source = hornero-greeter::git+https://github.com/HorneroOS/greeter.git#commit=7c21ed038da9cf8f143cb627b33d58d61b703fe0
 	sha256sums = SKIP
 
 pkgname = hornero-greeter
