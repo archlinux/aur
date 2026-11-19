@@ -2,8 +2,8 @@
 
 pkgname=flclash
 _name=FlClash
-pkgver=0.9.3
-_flutter=3.47.6
+pkgver=0.9.4
+_flutter=3.50.0
 pkgrel=1
 pkgdesc="Multi-platform proxy client based on ClashMeta"
 arch=('x86_64')
@@ -16,17 +16,17 @@ depends=('at-spi2-core'
          'glib2'
          'glibc'
          'gtk3'
-         'libayatana-appindicator'
          'libepoxy'
          'libgcc'
          'libstdc++'
          'libx11'
-         'pango')
+         'pango'
+         'wayland')
 makedepends=('chrpath' 'clang' 'cmake' 'fvm' 'gendesk' 'git' 'go' 'ninja' 'rustup')
 source=("git+${url}.git#tag=v${pkgver}"
         "git+https://github.com/chen08209/Clash.Meta.git"
         "git+https://github.com/chen08209/prism_ui.git")
-sha256sums=('dd2d88d78843a1bc6971ab8de380fca345e9e51cd6e16924867f2a45b0fa48a0'
+sha256sums=('1b8587475cd5fbed4673436adfb684fe88caf134b0979e59cc3e2538b01e5c73'
             'SKIP'
             'SKIP')
 
