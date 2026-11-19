@@ -1,0 +1,25 @@
+From ba84182adae522a65ceab66264eaee172cddef19 Mon Sep 17 00:00:00 2001
+From: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
+Date: Thu, 19 Nov 2026 11:34:29 +0200
+Subject: [PATCH] fix(service): use the global path
+
+---
+ contrib/wtfi-record.service | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/contrib/wtfi-record.service b/contrib/wtfi-record.service
+index 766f482..69d3ae9 100644
+--- a/contrib/wtfi-record.service
++++ b/contrib/wtfi-record.service
+@@ -3,7 +3,7 @@ Description=wtfi background recorder
+ After=network.target
+ 
+ [Service]
+-ExecStart=%h/.cargo/bin/wtfi --record --every 30s
++ExecStart=/usr/bin/wtfi --record --every 30s
+ StandardOutput=null
+ Restart=always
+ RestartSec=10
+-- 
+2.54.0
+

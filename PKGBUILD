@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=wtfi2
-pkgver=0.7.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Live, visual network-path diagnostic that pinpoints exactly where your Wi-Fi connection dies'
 arch=(
@@ -10,18 +10,31 @@ arch=(
 )
 url='https://github.com/kanywst/wtfi2'
 license=('MIT')
-makedepends=('cargo')
+makedepends=(
+    'cargo'
+    'patch'
+)
 options=(
     '!lto'
     '!debug'
 )
 provides=('wtfi')
 conflicts=('wtfi2-git' 'wtfi2-bin')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('282c05637203fca846a58b56f1e5dd0bc5fbb6b1fbd0dfca2e2270753dda0b88')
+install=wtfi2.install
+source=(
+    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+    '0001-fix-service-use-the-global-path.patch'
+    'wtfi2.install'
+)
+sha256sums=(
+    'ed3400a0e62cbe72615064edda17ebe4d10992d7a76bdc621aa02a6faf18cda5'
+    '67ddc4dec7cea34b8d4e8876c16b7cde34f09e1b5ec94a1329defecd36636261'
+    'fca82538ba506d7d4c01d3e587a68a6cea767bdf9ab444eccf969ef8684d1b1e'
+)
 
 prepare() {
     cd "$pkgname-$pkgver"
+    patch -p1 < ../0001-fix-service-use-the-global-path.patch
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -35,6 +48,7 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm0755 target/release/wtfi "$pkgdir/usr/bin/wtfi"
+    install -Dm644 contrib/wtfi-record.service "$pkgdir/usr/lib/systemd/system/wtfi-record.service"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
