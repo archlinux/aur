@@ -1,6 +1,6 @@
 pkgbase = openrig-bin
 	pkgdesc = Open-source guitar multi-effects pedalboard: NAM, LV2 and impulse responses
-	pkgver = 0.18.0
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/Siryu6/OpenRig
 	arch = x86_64
@@ -26,13 +26,13 @@ pkgbase = openrig-bin
 	optdepends = jack: JACK audio backend
 	provides = openrig
 	conflicts = openrig
-	source = openrig-0.18.0.svg::https://raw.githubusercontent.com/Siryu6/OpenRig/v0.18.0/os/board/common/splash/splash.svg
+	source = openrig-0.19.0.svg::https://raw.githubusercontent.com/Siryu6/OpenRig/v0.19.0/os/board/common/splash/splash.svg
 	source = openrig.desktop
 	sha256sums = 7b681e71a25f758d295065fac871f1383e260105ddf8d49cefc5dfbb4497da8a
 	sha256sums = cfc443010569356a4059993d93ffde9c6043d96afeddbab733338e3bcb5f5f75
-	source_x86_64 = https://github.com/Siryu6/OpenRig/releases/download/v0.18.0/openrig-0.18.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 822083d85ff89d0446afb5018570e6ee66e57f783d7ccdcd6cdf8c349e7ce13a
-	source_aarch64 = https://github.com/Siryu6/OpenRig/releases/download/v0.18.0/openrig-0.18.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 7ef60fd7000d87afaa53f5c9baa40cdf194318f0255ff8ff6497d910a57d6978
+	source_x86_64 = https://github.com/Siryu6/OpenRig/releases/download/v0.19.0/openrig-0.19.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 2023144fd07fee19c268d7913517d3e70690dd188f842b0f083c01438a8df76a
+	source_aarch64 = https://github.com/Siryu6/OpenRig/releases/download/v0.19.0/openrig-0.19.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 44a24ccd2a3dabb81063b75aea819403eef184060eb4d316cc13e81f8fffe137
 
 pkgname = openrig-bin
