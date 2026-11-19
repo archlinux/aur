@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc='Security health metrics for Open Source'
 arch=('x86_64')
 url='https://github.com/ossf/scorecard'
-license=(APACHE)
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ossf/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
@@ -54,5 +54,4 @@ package() {
   install -Dm644 completion.bash "${pkgdir}/usr/share/bash-completion/completions/scorecard"
   install -Dm644 completion.fish "${pkgdir}/usr/share/fish/vendor_completions.d/scorecard.fish"
   install -Dm644 completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_scorecard"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
