@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=con-bin
-pkgver=0.1.0.beta.183
+pkgver=0.1.0.beta.185
 pkgrel=1
 pkgdesc="The Native Terminal Emulator with a builtin AI Harness"
 arch=('x86_64')
@@ -10,9 +10,9 @@ depends=('libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'gcc-libs')
 provides=('con')
 conflicts=('con')
 options=('!strip')
-_upstream_ver="0.1.0-beta.183"
+_upstream_ver="0.1.0-beta.185"
 source_x86_64=("con-${_upstream_ver}-linux-x86_64.tar.gz::https://github.com/nowledge-co/con-terminal/releases/download/v${_upstream_ver}/con-${_upstream_ver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('9c2ccb99dff1a91fbd57f39fe840097eac260e0ee0bed03332c32e171750b246')
+sha256sums_x86_64=('2720daa50d9cc9f9a81a20615b938678b8c1f41c69be9f8554f719297e1d67d3')
 
 package() {
     cd "con-${_upstream_ver}-linux-x86_64"
