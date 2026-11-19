@@ -24,25 +24,25 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
 b2sums=('b82605a61508cf674718378227dbbb7e441c43048268dae43e88d333f7e7530e1f73acaf532b0a76d9fb834b34531e6fdb8017cdfdd0b7d6c3f1b28e7686d00e')
 
 prepare() {
-	cd "${pkgname}"
+	cd "${pkgname}-${pkgver}"
 
 	cargo fetch --locked
 }
 
 build() {
-	cd "${pkgname}"
+	cd "${pkgname}-${pkgver}"
 
 	cargo build --frozen --release --target-dir target
 }
 
 check() {
-	cd "${pkgname}"
+	cd "${pkgname}-${pkgver}"
 
 	cargo test --frozen --release --target-dir target
 }
 
 package() {
-	cd "${pkgname}"
+	cd "${pkgname}-${pkgver}"
 
 	install -Dm755 target/release/iweap \
 		"${pkgdir}/usr/bin/iweap"
