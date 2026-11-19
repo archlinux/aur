@@ -1,6 +1,6 @@
 # Maintainer: Rafael Just <rafaeljust at proton dot me>
 pkgname="powerlevel11k-git"
-pkgver=r343.580aa4c
+pkgver=r487.feaf405
 pkgdesc="Powerlevel10k continuation for all shells. (git version)"
 pkgrel=1
 arch=("x86_64")
@@ -8,7 +8,7 @@ conflicts=('powerlevel11k')
 provides=('powerlevel11k')
 url="https://github.com/Qaaxaap/powerlevel11k"
 license=("GPL-3.0-or-later")
-makedepends=('git' 'rust' 'cmake' 'gettext' 'pkg-config' 'libssh2')
+makedepends=('git' 'rust' 'cmake' 'gettext' 'pkg-config' 'libssh2' 'libgit2')
 source=("powerlevel11k::git+https://github.com/Qaaxaap/powerlevel11k.git")
 sha256sums=('SKIP')
 
