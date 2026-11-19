@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi-bin
-pkgver=18.22.2
+pkgver=19.0.0
 pkgrel=1
 pkgdesc="Coding agent with the IDE wired in (release binary)"
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ source=("LICENSE-${pkgver}-${pkgrel}::https://raw.githubusercontent.com/can1357/
 source_x86_64=("omp-${pkgver}-${pkgrel}::https://github.com/can1357/oh-my-pi/releases/download/v${pkgver}/omp-linux-x64")
 source_aarch64=("omp-${pkgver}-${pkgrel}::https://github.com/can1357/oh-my-pi/releases/download/v${pkgver}/omp-linux-arm64")
 sha256sums=('16c45f9d667442781f03fa198914cc39abcaa48ec5ed8f644643e554ca2fbf63')
-sha256sums_x86_64=('80a692c5adb9c71124bb11e77bd7edb3cf8fbbab6980db3206dcb6a4cb2905b5')
-sha256sums_aarch64=('82a880ba04d73f1c81a12931447f9f9ed8945581998564eae900c1238f4502e2')
+sha256sums_x86_64=('c7cc5c8d505053c8ffaf180417e5d5c781235b9d936f286810560151120109bf')
+sha256sums_aarch64=('6301041309d9bb26c19576ab116d828dba9c74654507cfa3594d62d310864626')
 
 _install_completions() {
     local _omp_bin="$1"
