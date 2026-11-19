@@ -9,15 +9,15 @@ url="https://es-de.org"
 license=('MIT')
 depends=('bluez-libs' 'curl' 'ffmpeg' 'freeimage' 'freetype2' 'gettext' 'harfbuzz' 'icu' 'libgit2' 'poppler' 'pugixml' 'sdl2')
 makedepends=('cmake' 'bluez-libs' 'curl' 'pkgconf' 'make' 'ffmpeg' 'freeimage' 'freetype2' 'gettext' 'harfbuzz' 'icu' 'libgit2' 'poppler' 'pugixml' 'sdl2')
-source=("emulationstation-de-stable-3.5-AUR_${pkgver}-${pkgrel}.tar.gz::https://gitlab.com/es-de/emulationstation-de/-/archive/stable-3.5-AUR/emulationstation-de-stable-3.5-AUR.tar.gz")
-md5sums=('88109ec34a612c6eb15d465cd83d5003')
+source=("https://packages.es-de.org/release/${pkgver}/es-de-frontend-${pkgver}.tar.gz")
+md5sums=('5e369db5235c1c4722a2e2c8230cd978')
 
 build() {
         export CXXFLAGS=""
-        cmake -DAUR_BUILD=on -B emulationstation-de-stable-3.5-AUR -S emulationstation-de-stable-3.5-AUR
-        make -C emulationstation-de-stable-3.5-AUR -j6
+        cmake -DAUR_BUILD=on -B es-de-frontend -S es-de-frontend
+        make -C es-de-frontend
 }
 
 package() {
-        make -C emulationstation-de-stable-3.5-AUR DESTDIR="${pkgdir}" install
+        make -C es-de-frontend DESTDIR="${pkgdir}" install
 }

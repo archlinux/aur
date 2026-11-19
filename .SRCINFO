@@ -32,7 +32,7 @@ pkgbase = emulationstation-de
 	depends = poppler
 	depends = pugixml
 	depends = sdl2
-	source = emulationstation-de-stable-3.5-AUR_3.5.0-1.tar.gz::https://gitlab.com/es-de/emulationstation-de/-/archive/stable-3.5-AUR/emulationstation-de-stable-3.5-AUR.tar.gz
-	md5sums = 88109ec34a612c6eb15d465cd83d5003
+	source = https://packages.es-de.org/release/3.5.0/es-de-frontend-3.5.0.tar.gz
+	md5sums = 5e369db5235c1c4722a2e2c8230cd978
 
 pkgname = emulationstation-de
