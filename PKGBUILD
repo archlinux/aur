@@ -2,7 +2,7 @@
 
 _pkgname=gufo
 pkgname=${_pkgname}-git
-pkgver=0.33.0.r9.gb62b1674
+pkgver=0.35.0.r20.gba0cb3b6
 pkgrel=1
 pkgdesc="The Open Source Strix Halo AI engine (git version)."
 arch=(x86_64)
@@ -40,7 +40,9 @@ makedepends=(
   rocm-llvm
   rocprim
   rocwmma
+  xrt
 )
+optdepends=("xrt-plugin-amdxdna: AMD XDNA NPU support")
 # GCC host objects and ROCm Clang HIP objects use different LTO formats.
 options=(!lto !debug)
 source=(
