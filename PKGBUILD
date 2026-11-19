@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A selection-first modal text editor for the terminal, scriptable in Scheme"
 
-pkgver=0.22.1
+pkgver=0.22.2
 pkgrel=1
 _gitversion=v${pkgver}
 _gitcommit=$(gh api repos/${_gitauthor}/${_gitname}/git/tags/$(gh api repos/${_gitauthor}/${_gitname}/git/ref/tags/${_gitversion} --jq '.object.sha') --jq '.object.sha[0:9]')
@@ -30,7 +30,7 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_gitcommit}-${_barch[0]}.tar.gz")
 sha256sums=('d50167744f68cd6fbf6db44921fa7f4f4e6f57f8aa2a8179c53074114afc165b'
             'e10b2e23fc9874c2f8c7ddac5d9a3f1123f5149ffed33ce598166f54febf66b2')
-sha256sums_x86_64=('780879f6391be495c659ee069e0a122ade3d246af473a33152666cc7127e56aa')
+sha256sums_x86_64=('2079954a0745328358b037a1c3c73526202f3b441d3780fa6e774ff92f22707c')
 
 
 case ${CARCH} in
