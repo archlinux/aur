@@ -2,14 +2,14 @@
 
 pkgname=perl-alien-sqlite
 _dist=Alien-sqlite
-pkgver=1.07
-pkgrel=7
+pkgver=1.09
+pkgrel=1
 pkgdesc='Compile the Sqlite library'
 
 url="https://metacpan.org/dist/$_dist"
 _author=SLAFFAN
 source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('09ab5ea452b73749ef8ad6a07bdeb2e0b726d7d1509fe9236dcb10b48006caa9')
+sha256sums=('f0a3cbf26d900aadcf16c5bf5071703a03117b57e6a650a20d153e9ca73ae47a')
 
 arch=(any)
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
