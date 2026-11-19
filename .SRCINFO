@@ -1,6 +1,6 @@
 pkgbase = quickshell-d77
 	pkgdesc = Quickshell d77 shell for Wayland compositors
-	pkgver = 1.6.2
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/dani-77/quickshell-d77
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = quickshell-d77
 	depends = brightnessctl
 	depends = wireless_tools
 	optdepends = matugen: wallpaper-based color palette
-	source = quickshell-d77-1.6.2.tar.gz::https://github.com/dani-77/quickshell-d77/archive/refs/tags/1.6.2.tar.gz
-	sha256sums = 437ce42d2654bfede96073482dc3d71c067e071eafedfd60d24aa8310069a588
+	source = quickshell-d77-1.7.0.tar.gz::https://github.com/dani-77/quickshell-d77/archive/refs/tags/1.7.0.tar.gz
+	sha256sums = 671927c95227924974cfa4305f524ac2b36512320553ae0ba9eac89744968950
 
 pkgname = quickshell-d77
