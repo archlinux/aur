@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A rich git commit graph in your terminal, like magic"
 
-pkgver=0.10.2
+pkgver=0.11.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums=('e6006ff37d3c0311121b2aca21a78bebc9d3771af29173309983464fab3204d3'
+sha256sums=('a82d1ee873b3efa3dc7f54648cd9a00890f27baff89fb650c391213fde8d30a8'
             'cb706d2a8b5063d7fd2fe7f9a3bb8f4fd32ce1829c51dfeb77b5977586d981f2')
-sha256sums_x86_64=('500ab76e2f8e2c2ef986916e18f6c7048134868115a00c65555575fb17c4f672')
-sha256sums_aarch64=('9cda9e05549f879a5b50db1b1b77350ae7b9231b3d31a9796590768fae3d52cc')
+sha256sums_x86_64=('cb105286591030e41f373a3586497b672d749e3b70567e4931ca0b88cc617ce5')
+sha256sums_aarch64=('f82c99a710330dd51e4aa07ab972c536c4190899e439ec5c1be908a27335c7b4')
 
 
 package() {
