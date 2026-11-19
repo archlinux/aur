@@ -3,7 +3,7 @@
 # Builds a tagged release from source. Zig dependencies (libqt6zig, ziglua, kwinctl) are
 # pinned in build.zig.zon and fetched in prepare(); build() and check() then run offline.
 pkgname=zenkai
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="Fast application launcher with plugins, themes and window switching"
 arch=('x86_64')
@@ -15,13 +15,14 @@ optdepends=('qt6-wayland: Wayland support'
             'xdg-utils: open URLs and files'
             'wmctrl: window layout actions on X11'
             'xorg-xrandr: monitor layout actions on X11'
-            'kwinctl: control KDE Plasma windows from the command line')
+            'kwinctl: control KDE Plasma windows from the command line'
+            'wl-clipboard: clipboard history on Wayland')
 provides=('zenkai')
 conflicts=('zenkai-bin')
 # The build strips the binary, so a debug package would be empty.
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dayvster/zenkai/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a8894fdde353eb3498d7c18594915d9eb494c3e3a5344bcf8c573915cfa75647')
+sha256sums=('6496033b50861f05353ee41a3aae863749d2cb2a613fefdeb16267b3eaab4811')
 
 prepare() {
     cd "$pkgname-$pkgver"
