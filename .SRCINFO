@@ -1,0 +1,14 @@
+pkgbase = mcp-searxng
+	pkgdesc = MCP server that gives AI assistants web search and page reading through a SearXNG instance
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/ihor-sokoliuk/mcp-searxng
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=22
+	noextract = mcp-searxng-2.4.0.tgz
+	source = https://registry.npmjs.org/mcp-searxng/-/mcp-searxng-2.4.0.tgz
+	sha256sums = 6ca4f9314ead3b01c348a69617dd3d5e27a48cb63885e59b3bc093229312de1d
+
+pkgname = mcp-searxng
