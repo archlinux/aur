@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 
 pkgname=starsector
-pkgver=0.98a_RC8
+pkgver=0.98.5a_RC7
 pkgrel=4
 pkgdesc='Starsector (formerly "Starfarer") is an in-development open-world single-player space-combat, roleplaying, exploration, and economic game.'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ backup=('usr/share/starsector/data/config/settings.json')
 source=(https://f005.backblazeb2.com/file/fractalsoftworks/release/starsector_linux-${pkgver//_/-}.zip
         starsector.sh
         starsector.desktop)
-sha256sums=('84672163d6c9b04c1f7ff886342f787a40dd1515cff2ce172d67bd23fa26e193'
+sha256sums=('64b121751a421202c6646f22cf31b7c44a8ab00c836a30914d1c7bcb99a9f45d'
             '975a4c39989b58298b7052c51491c677471f83ba56e6ea4e204fbca527e4f557'
             'becc92483d9599672b75d8b00216a64dd8fda38cfcfccd8e735238aa0ce6d8b6')
 package() {
