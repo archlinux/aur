@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-rs-bin
 pkgdesc="Terminal touch-typing tutor written in Rust"
 
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('e2a5ab02d1fc54218b6a637294aeea7618c9e5dc3755254b61e9c6fba44db8c2')
-sha256sums_x86_64=('014b0e70be5796fc875b06fc47eb60fc650588d0ab9615f1e4d4e726e41acbb4')
-sha256sums_aarch64=('42cb0f8ac3249e510f123deef1eff2c78291c0f3327ae13c6a90a129a340af61')
+sha256sums=('17f5d8483f90ce3ee6e92447c570b1979a149ecc38cc860d807a87171ac67b66')
+sha256sums_x86_64=('61718cfef4dcc2a6f2971270e81589dd5e1d718c88cc0f8fa01e60b07faa1875')
+sha256sums_aarch64=('2632987fcd59dfebeaa58f654b03842c4d5c68df26ee03c27bc6287b4db8007f')
 
 
 package() {
