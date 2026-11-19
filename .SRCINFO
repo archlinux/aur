@@ -1,7 +1,7 @@
 pkgbase = nginx-mod-lua
 	pkgdesc = Lua scripting for nginx: the ngx_http_lua module of OpenResty, built for Arch Linux's nginx
-	pkgver = 0.10.29R2
-	pkgrel = 1.1
+	pkgver = 0.10.32rc7
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/openresty/lua-nginx-module
 	arch = x86_64
@@ -24,26 +24,30 @@ pkgbase = nginx-mod-lua
 	checkdepends = valkey
 	makedepends = nginx
 	makedepends = nginx-src
+	makedepends = openssl
 	depends = glibc
 	depends = luajit-openresty
-	depends = lua-resty-core>=1:0.1.32R1
-	depends = lua-resty-core<1:0.1.33RC1
+	depends = lua-resty-core>=1:0.1.35rc1
+	depends = lua-resty-core<1:0.1.36rc1
 	depends = nginx-mod-ndk
 	backup = etc/nginx/modules.d/30-lua.conf
-	source = lua-nginx-module-0.10.29R2.tar.gz::https://github.com/openresty/lua-nginx-module/archive/refs/tags/v0.10.29R2.tar.gz
+	source = lua-nginx-module-0.10.32rc7.tar.gz::https://github.com/openresty/lua-nginx-module/archive/refs/tags/v0.10.32rc7.tar.gz
 	source = ngx_devel_kit-0.3.4.tar.gz::https://github.com/vision5/ngx_devel_kit/archive/refs/tags/v0.3.4.tar.gz
 	source = test-nginx-0.32.tar.gz::https://github.com/openresty/test-nginx/archive/refs/tags/v0.32.tar.gz
-	sha512sums = 4933e8d250ee8cceae5b42e95235df9e2e63536b158a57c57c6846af42d52e65c39aa5cdac74564255ded40b77f1c1262fe3f3581e485d5d156f7bdda51a93d2
+	source = lua-resty-core-0.1.35rc2.tar.gz::https://github.com/openresty/lua-resty-core/archive/refs/tags/v0.1.35rc2.tar.gz
+	sha512sums = c1996ef9dfa3ee33b1fc7ccb549525beba8fefb768348adbd0f60eb2732a547ff9db55e169d44298685bfba4fb5f0a7d31ac3b1fa2073d58f29b904d8d3e6cd1
 	sha512sums = 6bc2f4d3b7ad22527e6c7c343884f8b0d5810ae9b7b09d6c2988b50afbd9c7a79e387667bfb980e93c5e204c163544f79634b2862895d8ee004a4393245ee185
 	sha512sums = c8ddec5dc21c23ded4ea974f4d6fca01ea498f728e5f8dc87224b1151bf9fcfb1921d971359ee79e3984b23fd6cb2f510259b077f79b867b95a437d28af48b97
-	b2sums = fb323ffe97785837f6f9973072a26c224439448e58e61510d63524f7480a559741367b257140f0e77049299a24824adf104c5c54f319e311fc4fdd9aa076306d
+	sha512sums = 6c10895c4484628e081b0f4da6d4ab396118cfbb40eba03d15baf9b8c4124e02c6927103b6e3ee60fa7b049483cd76523bf56cd99ffce2f14e3395d0212db3a5
+	b2sums = 4fa759d07cca1e43523589a8fbad8826c5c78cdac663ac6f5797f8d5fb137026e7380a017013c0b1f469f7d51e34e0a0b9e9984fca3cb54cf9b82e3af2d948c5
 	b2sums = 3b5ed36517f27ea83881d2fb1e6ba2839c173a833ec563fa94dc9b633b3ebe9ea24c7bb5676aa811267b09a2504d74b306ee7268b8a0d56b230886fd955289e9
 	b2sums = 5b98a9764d2fb322199ecf839feed2d995f4ab3e2c9488eebe698fad00e852c45862b94774232d4d8043e2850018c1699ea055a0da211b88211eddfc26e380ed
+	b2sums = 95c52593543d06385b2dee49e7dd71ce29fe436d48e22d2df2454e9017af88e2890ff11eabe1699d464ed9bf04bef10ab3732be26bce95e1f9f24cfa47c1fa83
 
 pkgname = nginx-mod-lua
 	depends = glibc
 	depends = luajit-openresty
-	depends = lua-resty-core>=1:0.1.32R1
-	depends = lua-resty-core<1:0.1.33RC1
+	depends = lua-resty-core>=1:0.1.35rc1
+	depends = lua-resty-core<1:0.1.36rc1
 	depends = nginx-mod-ndk
 	depends = nginx

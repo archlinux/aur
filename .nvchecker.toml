@@ -1,7 +1,8 @@
-# The releases of lua-nginx-module, tagged v<version>, without the release candidates (rc1, RC1)
+# The releases of lua-nginx-module, tagged v<version>, rc tags included: OpenResty's releases take
+# them; take the one OpenResty bundles, with its lua-resty-core
 [nginx-mod-lua]
 source = "git"
 git = "https://github.com/openresty/lua-nginx-module.git"
 use_max_tag = true
 prefix = "v"
-exclude_regex = '.*[rR][cC]\d+$'
+sort_version_key = "vercmp"
