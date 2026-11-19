@@ -1,6 +1,6 @@
 pkgbase = jobman-control-bin
 	pkgdesc = Shared PostgreSQL-backed control plane for Jobman.
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/ryancswallace/Jobman-Control
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = jobman-control-bin
 	conflicts = jobman-control
 	options = !strip
 	backup = etc/jobman-control/jobman-control.env
-	source_x86_64 = jobman-control-x86_64-0.4.2.tgz::https://github.com/ryancswallace/Jobman-Control/releases/download/v0.4.2/jobman-control_0.4.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 04702f74e3b236afbf37d7f9249dd4197302ff1b6f89dcd13ceac59ddc17034d
-	source_i686 = jobman-control-i686-0.4.2.tgz::https://github.com/ryancswallace/Jobman-Control/releases/download/v0.4.2/jobman-control_0.4.2_linux_386.tar.gz
-	sha256sums_i686 = a5fcf6ba6f4ae039243b5732f51f984f5f2b26410a13cc79488e67b76ea888b2
-	source_aarch64 = jobman-control-aarch64-0.4.2.tgz::https://github.com/ryancswallace/Jobman-Control/releases/download/v0.4.2/jobman-control_0.4.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = f287ff4a198f7aee946c685dc0cba3755c536062d8df8be547f435c77a9d2392
+	source_x86_64 = jobman-control-x86_64-0.4.3.tgz::https://github.com/ryancswallace/Jobman-Control/releases/download/v0.4.3/jobman-control_0.4.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = b52b80dec54fd9e0328f2f8862d49352c7c2bc7f27c6a5d0d3cc39c4fbe5fda3
+	source_i686 = jobman-control-i686-0.4.3.tgz::https://github.com/ryancswallace/Jobman-Control/releases/download/v0.4.3/jobman-control_0.4.3_linux_386.tar.gz
+	sha256sums_i686 = ac7df9d3805c71db49e14dfeb880c20d818b45dc5589d61cb724d8fb57b09bac
+	source_aarch64 = jobman-control-aarch64-0.4.3.tgz::https://github.com/ryancswallace/Jobman-Control/releases/download/v0.4.3/jobman-control_0.4.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = fc9feb7893d98404e8b3b4f5f85d818a5e9445de9d08197555612cc8b449f741
 
 pkgname = jobman-control-bin
