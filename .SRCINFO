@@ -1,0 +1,22 @@
+pkgbase = gtk-made-qt-git
+	pkgdesc = The GTK 1.2/2/3/4 C API on Qt 6: build GTK programs that run without GTK
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/staalmannen/gtk-made-qt
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = glib2
+	depends = cairo
+	depends = pango
+	provides = gtk-made-qt
+	conflicts = gtk-made-qt
+	options = staticlibs
+	options = !lto
+	source = git+https://github.com/staalmannen/gtk-made-qt.git
+	sha256sums = SKIP
+
+pkgname = gtk-made-qt-git
