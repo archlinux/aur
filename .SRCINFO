@@ -1,0 +1,15 @@
+pkgbase = ruby-qt6-qtcore
+	pkgdesc = Ruby Bindings for Qt Core.
+	pkgver = 6.3.1
+	pkgrel = 1
+	url = https://github.com/souk4711/ruby-qt6
+	arch = x86_64
+	license = LGPL-3.0-only WITH LGPL-3.0-linking-exception
+	depends = ruby
+	depends = ruby-qt6-rice>=6.3.0
+	depends = qt6-base
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ruby-qt6-qtcore-6.3.1.gem
+	sha256sums = e1bb9fa67313698c3e6143b2cd92287c32220a06e32ceb15cd943e48402080a9
+
+pkgname = ruby-qt6-qtcore
