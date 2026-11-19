@@ -1,20 +1,20 @@
 # Maintainer: RadicalMuffinMan <support@moonfin.app>
 # Written by the Moonfin release workflow. Edits here are overwritten.
 pkgname=moonfin-bin
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='Jellyfin & Emby media client for Linux (binary release)'
 arch=('x86_64')
 url='https://github.com/Moonfin-Client/Moonfin-Core'
 license=('GPL-3.0-or-later')
-depends=('gtk3' 'glib2' 'libsecret' 'webkit2gtk-4.1' 'mpv' 'harfbuzz-icu' 'xdg-user-dirs')
+depends=('gtk3' 'glib2' 'libsecret' 'webkit2gtk-4.1' 'mpv' 'harfbuzz-icu' 'sqlite' 'xdg-user-dirs')
 provides=('moonfin')
 conflicts=('moonfin')
-# The binary and the bundled libraries ship stripped already, and
+# The binary and its libraries ship stripped already, and
 # makepkg's pass over a prebuilt Flutter bundle can break it.
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Moonfin-Client/Moonfin-Core/releases/download/${pkgver}/Moonfin_Linux_v${pkgver}.tar.gz")
-sha256sums=('ee29bdf479494fc69a1d2d9da0692add0d6b7539e37b3840d128449ea96a6238')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Moonfin-Client/Moonfin-Core/releases/download/${pkgver}/Moonfin_Linux_v${pkgver}_system-libs.tar.gz")
+sha256sums=('b6e6aa8fcacf170e28a9db7b7da3ef9207bf9a95c0151ba49363ebae09587326')
 
 package() {
   cd "${srcdir}/moonfin-${pkgver}"
@@ -31,15 +31,6 @@ package() {
   done
   chmod 755 "${pkgdir}/usr/lib/moonfin/moonfin" \
     "${pkgdir}/usr/lib/moonfin/moonfin-bin"
-
-  # These come from the depends list, and the launcher searches the
-  # bundled lib directory first, so leftover copies would shadow the
-  # system ones.
-  for lib in mpv ass secret-1 avcodec avdevice avfilter avformat \
-    avutil postproc swresample swscale va va-drm va-wayland va-x11 \
-    vdpau; do
-    rm -f "${pkgdir}/usr/lib/moonfin/lib/lib${lib}.so."*
-  done
 
   # The launcher in the bundle reads its own directory to find the
   # libraries, so it is called by its real path rather than linked to.
