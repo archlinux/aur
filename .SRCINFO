@@ -1,6 +1,6 @@
 pkgbase = mailcraft
 	pkgdesc = vibe coded clean-room reimplementation of Microsoft Outlook
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/UCS-Care-Group/mailcraft
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = mailcraft
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	source = https://github.com/UCS-Care-Group/mailcraft/archive/refs/tags/v0.13.0/mailcraft-0.13.0.tar.gz
-	sha256sums = ae9dcc90be17aab280ed3674ec4651efa72771f80acbb1fb06c66bd0e5213852
+	source = https://github.com/UCS-Care-Group/mailcraft/archive/refs/tags/v0.14.0/mailcraft-0.14.0.tar.gz
+	sha256sums = da3b3687d8353e9ff8005d4407941afcdfdb61005ff3141bdd86f5519ed06333
 
 pkgname = mailcraft
 	depends = glibc
