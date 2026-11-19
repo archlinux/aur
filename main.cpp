@@ -13,7 +13,7 @@
 
 namespace fs = std::filesystem;
 
-// ansi escape codes
+// ansi codes
 const std::string RESET = "\x1b[0m";
 const std::string RED = "\x1b[0;31m";
 const std::string GOLD = "\x1b[0;33m";
@@ -84,13 +84,13 @@ int main(int argc, char* argv[]) {
     for (int i = 1; i < argc; ++i) {
         std::string flag = argv[i];
         if (flag == "-v" || flag == "--version") {
-            std::cout << "smosummary v4.0.1-4 | owner: aray4iv3\n";
+            std::cout << "smosummary v4.0.2-1 | owner: aray4iv3\n";
             return 0;
         } else if (flag == "-h" || flag == "--help") {
             std::cout << GOLD << "smosummary tui" << RESET << "\nusage:\n"
                       << "  ./smosummary      - manual calculator mode\n"
                       << "  ./smosummary -s   - stopwatch tui\n"
-                      << "  -v, --version     - owner info\n";
+                      << "  -v, --version     - version and owner name\n";
             return 0;
         } else if (flag == "-s" || flag == "--stopwatch") {
             stopwatch = true;
@@ -100,7 +100,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    std::cout << GOLD << ".. smosummary .." << RESET << "\n1) any%\n2) 100%\n3) custom\n> " << std::flush;
+    std::cout << CYAN << "== | smosummary | ==" << RESET << "\n1) any%\n2) 100%\n3) custom\n> " << std::flush;
     
     std::string choice_str;
     std::getline(std::cin, choice_str);
