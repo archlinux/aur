@@ -4,7 +4,7 @@ _appauthor="tox-dev"
 _appname="python-sbom"
 
 pkgname=${_appname}
-pkgver=0.3.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="SBOMs for Python distributions: write PEP 770 CycloneDX SBOMs into wheels"
 
@@ -18,12 +18,12 @@ _url_pypi="https://pypi.org/project/${_pypi_package}/"
 _url_github="https://github.com/${_appauthor}/${_appname}"
 url="${_url_github}"
 
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-build' 'python-hatchling' 'python-zipremove')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-build' 'python-hatchling' 'python-hatch-fancy-pypi-readme' 'python-hatch-vcs' 'python-zipremove')
 depends=('python' 'python-packaging' 'python-packageurl' 'python-setuptools' 'python-installer' 'python-pdm' 'python-pdm-backend' 'python-hatchling' 'python-zipremove' 'python-license-expression')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
-sha256sums=('37d0fa3d0a16fddc3d88099e147e164ddb3055e8bc3424506ef41dd80f723a73')
+sha256sums=('fc7b2c46fa40f52e587ac59cada775e83dcac231fafa90b7a71c3554527ddfb6')
 
 
 build() {

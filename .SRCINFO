@@ -1,6 +1,6 @@
 pkgbase = python-sbom
 	pkgdesc = SBOMs for Python distributions: write PEP 770 CycloneDX SBOMs into wheels
-	pkgver = 0.3.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/tox-dev/python-sbom
 	arch = any
@@ -11,6 +11,8 @@ pkgbase = python-sbom
 	makedepends = python-installer
 	makedepends = python-uv-build
 	makedepends = python-hatchling
+	makedepends = python-hatch-fancy-pypi-readme
+	makedepends = python-hatch-vcs
 	makedepends = python-zipremove
 	depends = python
 	depends = python-packaging
@@ -22,7 +24,7 @@ pkgbase = python-sbom
 	depends = python-hatchling
 	depends = python-zipremove
 	depends = python-license-expression
-	source = https://files.pythonhosted.org/packages/source/p/python_sbom/python_sbom-0.3.1.tar.gz
-	sha256sums = 37d0fa3d0a16fddc3d88099e147e164ddb3055e8bc3424506ef41dd80f723a73
+	source = https://files.pythonhosted.org/packages/source/p/python_sbom/python_sbom-0.5.0.tar.gz
+	sha256sums = fc7b2c46fa40f52e587ac59cada775e83dcac231fafa90b7a71c3554527ddfb6
 
 pkgname = python-sbom
