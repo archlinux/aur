@@ -10,7 +10,7 @@
 # build. The ghostty source is the commit that the libghostty-vt pin names.
 # All downloads happen in the sources and in prepare(); build() needs no network.
 pkgname=efr-code
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc='Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state'
 arch=('x86_64')
@@ -33,7 +33,7 @@ install=efr-code.install
 options=('!lto')
 # The ghostty commit of the libghostty-vt pin, and the Zig release it needs.
 # Change them together with docs/ghostty-pin.md.
-_ghostty=0fa3d577a5614150ff8e2c152de5fb9d5c6d2dec
+_ghostty=108cacb17ed8990840cd14abfce43d8ed8503ca1
 _zig=0.17.0
 _src="eggfriedrice.code-$pkgver"
 _zigdir="zig-$CARCH-linux-$_zig"
@@ -45,8 +45,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 # and the Zig tarball whose SHA-256 ziglang.org publishes in
 # https://ziglang.org/download/index.json
 # (1cbe9df9f27e6b78d14ccbca43b6703a404ef79ef1c463de901d7f088d4e2026).
-b2sums=('7b8588f4c841067a3e59572d91e7ec882fb29aba5f34173c4743f680ed5cbd383bd3de7966372194e9a017cba83bc71f26b6b899f4b3e72b3b8c9a022db6ef9a'
-        '508f69a31bd5bba9f3486b83966b8f33b9cf40caa58dc0753cc28d5c022c4cd8ee272f2ffe0747d0bccd94c83a27811596c16a5ee247d8897d8107bc69c680c1'
+b2sums=('02776e1d4eca5d9d485cd023ec993998c0e5b9a0a9e9c18066306d1b692c0be501d18e92c1732cdc079c2c8d096bb7799e38e782cdbaa1ecd45ca8a10fce93a1'
+        '71616427c4857fce7156afeed3851f0c9db08a11e542ba537adc231a6806d370712a6511d39b853525edca4236bc1c0dba64f9b60c337501e787c1b90138a978'
         '384b04872c92132ffeaee2c5201dff61ea10e00e8b3d42c6745246f79b847e54b05262ff89cd850d30e32957a82cb1b15722511e9535db6e9126912b182a3a61')
 
 # Keep debug info in the binaries so makepkg can split it into the -debug package.
@@ -92,9 +92,9 @@ build() {
   export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-global-cache"
   export LIBGHOSTTY_VT_SYS_CPU=baseline
   _drop_cflags_optimization
-  # The packages and the feature of `just build-release`.
-  cargo build --frozen --release -p efr-daemon -p efr-cli -p efr-sbx \
-    --features efr-daemon/screen-ghostty
+  # The packages, the feature and the two cargo runs of `just build-release`.
+  cargo build --frozen --release -p efr-daemon --features efr-daemon/screen-ghostty
+  cargo build --frozen --release -p efr-cli -p efr-sbx
 
   # A build with the sandbox's test seams lets a test replace the launcher and the
   # probe; it must never ship.
