@@ -3,7 +3,7 @@
 
 _pkgname="ialauncher"
 pkgname="$_pkgname-git"
-pkgver=r684.d6a4370c
+pkgver=r697.81735b7f
 pkgrel=1
 pkgdesc="Play all of the Internet Archive's MS-DOS games offline"
 url="https://github.com/rtts/ialauncher"
@@ -20,25 +20,22 @@ depends=(
 makedepends=(
   'git'
   'imagemagick'
+  'optipng'
   'python-build'
-  'python-installer'
   'python-hatchling'
+  'python-installer'
 )
 
-options=('!strip')
+options=('!debug' '!strip')
 
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+$url.git"
-  '0001-Use-FHS-and-XDG-paths.patch'
-  '0002-Drop-CLI-options-stats-build-cache.patch'
-  '0003-Add-CLI-options-list-download-start.patch'
+  '0001-Add-CLI-options-list-download-start.patch'
 )
 sha256sums=(
   'SKIP'
-  'ba53a638bf230bb5e38ad1abe8dec2ba60421a8f36faf092b60feddc7cad9779'
-  '971cb225c27766aa5330d5fd724addec167a0e95ea489d7d5237fcb4a3b00cb8'
-  'e13e8a2b826c5ac947a4f5c8d2463acb79734fee722d14e8e165e56021d807b3'
+  '8ef8dba23442dfb2a811ff1657e9b0f677864a7182a65621a587a4ee4d74a4f4'
 )
 
 prepare() {
@@ -55,8 +52,11 @@ prepare() {
     fi
   done
 
-  # convert icon
+  echo "Converting app icon..."
   magick windows/ia.ico[3] "$_pkgname.png"
+
+  echo "Optimizing title images..."
+  find games -type f -name '*.png' -print0 | xargs -0 -n 1 -P "$(nproc)" optipng &> /dev/null
 }
 
 pkgver() {
@@ -72,9 +72,6 @@ build() {
 package() {
   cd "$_pkgsrc"
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  mkdir -pm755 "$pkgdir/usr/share/$_pkgname"
-  cp -r games/* "$pkgdir/usr/share/$_pkgname/"
 
   install -Dm644 "$_pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/48x48/apps/"
 

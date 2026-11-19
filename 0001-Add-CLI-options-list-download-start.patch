@@ -1,0 +1,118 @@
+From 3fa43e8da715e6cdcf1e34e2ed0b5e9b93a280fc Mon Sep 17 00:00:00 2001
+From: xiota <>
+Date: Wed, 18 Nov 2026 08:48:00 +0000
+Subject: [PATCH] Add CLI options list/download/start
+
+---
+ ialauncher/__main__.py | 74 +++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 73 insertions(+), 1 deletion(-)
+
+diff --git a/ialauncher/__main__.py b/ialauncher/__main__.py
+index a6ce26e5..a2bafa60 100644
+--- a/ialauncher/__main__.py
++++ b/ialauncher/__main__.py
+@@ -11,7 +11,7 @@ import games
+ 
+ from . import options
+ from .cleanup import cleanup
+-from .config import read_games_dir
++from .config import default_games_dir, read_games_dir, write_games_dir
+ from .emulator import has_opengl
+ from .engine import run
+ from .game import Game, write_metadata_cache
+@@ -32,6 +32,61 @@ The following wasn't supposed to happen:
+ If you're feeling adventurous, you are welcome to report this bug.
+ Otherwise, please continue as if nothing happened :-)"""
+ 
++GAMES_DIR = Path(games.__file__).parent
++
++def ensure_games_dir() -> Path:
++    games_dir = read_games_dir()
++    if games_dir is None:
++        games_dir = default_games_dir()
++        write_games_dir(games_dir)
++    games_dir.mkdir(parents=True, exist_ok=True)
++    return games_dir
++
++def cli_list() -> None:
++    for entry in GAMES_DIR.iterdir():
++        if (entry / "metadata.ini").is_file():
++            print(entry.name)
++
++def cli_start(identifier: str) -> None:
++    path = GAMES_DIR / identifier
++    if not (path / "metadata.ini").is_file():
++        print(f"Game not found: {identifier}")
++        return
++
++    options.games_dir = ensure_games_dir()
++    game = Game(path)
++
++    if not game.is_downloaded():
++        game.download()
++        game.download_thread.join()
++        if game.download_thread.error:
++            print(game.download_thread.error)
++            return
++    if game.is_downloaded():
++        if not game.is_ready():
++            unzip = game.unzip()
++            unzip.join()
++            if unzip.error:
++                print(unzip.error)
++                return
++        if game.is_ready():
++            game.start()
++
++def cli_download(identifier: str) -> None:
++    path = GAMES_DIR / identifier
++    if not (path / "metadata.ini").is_file():
++        print(f"Game not found: {identifier}")
++        return
++
++    options.games_dir = ensure_games_dir()
++    game = Game(path)
++    game.download()
++    game.download_thread.join()
++
++    if game.download_thread.error:
++        print(game.download_thread.error)
++    else:
++        print("Download complete.")
+ 
+ def main() -> None:
+     """Start IA Launcher, and show any unexpected error as a bug."""
+@@ -47,6 +102,11 @@ def launch() -> None:
+     parser = argparse.ArgumentParser(
+         description="DOSBox frontend for the Internet Archive MS-DOS games collection"
+     )
++
++    parser.add_argument("--list", action="store_true", help="List available games")
++    parser.add_argument("--download", metavar="GAME", help="Download a specific game")
++    parser.add_argument("--start", metavar="GAME", help="Launch a specific game")
++
+     parser.add_argument(
+         "--slideshow",
+         type=int,
+@@ -150,6 +210,18 @@ def launch() -> None:
+         print_stats(Path(games.__file__).parent)
+         return
+ 
++    if args.list:
++        cli_list()
++        return
++
++    if args.download:
++        cli_download(args.download)
++        return
++
++    if args.start:
++        cli_start(args.start)
++        return
++
+     set_options(args)
+     has_opengl()
+     if isinstance(sys.stdout, io.TextIOWrapper):
+-- 
+2.56.1
+
