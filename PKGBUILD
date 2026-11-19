@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="🧟 Zonvie is a Fast, feature-rich Neovim GUI"
 
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,8 +32,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
 sha256sums=('ba6b21546949b5967deefc31198714849cb339a5f32f75ed18a66f5b729909ad'
             '2d88afc70c716ff40f002f6a274da2b58798408a3d08f1b83d0b20d56ca956d0')
-sha256sums_x86_64=('7531c5d7932307fd713dddecc101595165d3a2eac6f075b737222e389fff170d')
-sha256sums_aarch64=('621fa50ce1a4a975fa492f8b97b6893681d5fe4e3c083216a0db50ee0d7bc017')
+sha256sums_x86_64=('957d3293184323af9f44f9c40002312ad860ddb6e3f341fabc0cf95145e0b778')
+sha256sums_aarch64=('230566a5c6f259beb88286ba4ed315f78f8352ab9b0d54e1bd0c0a56d27a6d82')
 
 
 case ${CARCH} in
