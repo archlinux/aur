@@ -1,5 +1,5 @@
 pkgname=vleer
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Music, but without the subscription'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('cargo' 'git')
 optdepends=('wayland: Wayland support')
 conflicts=('vleer-bin' 'vleer-nightly-bin' 'vleer-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vleerapp/vleer/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d3777ca27c29758a36613f696e7c6972e01bc5caf618ba926164ddfc63796b9c')
+sha256sums=('8ae3387a3e622e73b65bdefee4d8d29ca5bffe3ff2e1235e482a80956d366a37')
 
 prepare() {
   cd "vleer-${pkgver}"
