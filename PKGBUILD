@@ -4,7 +4,7 @@
 # Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
 _pkgname=fgj
 pkgname=fgj-git
-pkgver=0.5.0.r46.g755413f
+pkgver=0.6.1.r0.gccef4c9
 pkgrel=1
 pkgdesc="A command-line tool for working with Forgejo instances (including Codeberg.org) -"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,6 +13,8 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("git+$url")
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 b2sums=('SKIP')
 
 pkgver() {
