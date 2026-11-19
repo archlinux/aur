@@ -1,18 +1,20 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Denommus <yuridenommus@gmail.com>
 # Contributor: Bill Fraser <wfraser@codewise.org>
 # Contributor: Felipe Contreras <felipe.contreras@gmail.com>
 
 pkgname=lib32-flex
-pkgver=2.6.4
-pkgrel=5
+pkgver=2.6.15
+pkgrel=1
 pkgdesc='A tool for generating text-scanning programs'
 arch=('x86_64')
-url='http://flex.sourceforge.net'
+#url='http://flex.sourceforge.net'
+url='https://github.com/westes/flex'
 license=('custom')
-depends=('flex' 'lib32-glibc')
+depends=("flex>=${pkgver}" 'lib32-glibc')
 source=("https://github.com/westes/flex/releases/download/v${pkgver}/flex-${pkgver}.tar.gz")
-sha256sums=('e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995')
+sha256sums=('ba38801d12d38782e36f2ddd66c118aa9ed3cbed9849194c4e68d9894cd739d9')
 
 build() {
   cd flex-${pkgver}
