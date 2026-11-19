@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>U3LogicAnalyzer</id>
+  <name>U3LogicAnalyzer</name>
+  <summary>CH32H417 Logic Analyzer</summary>
+  <developer_name>WeAct Studio</developer_name>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <description>
+    <p>PulseView based acquisition software for the WeAct Studio CH32H417
+    logic analyzer: captures with up to 16 channels and decodes them with
+    the bundled sigrok protocol decoders.</p>
+  </description>
+  <launchable type="desktop-id">U3LogicAnalyzer.desktop</launchable>
+  <icon type="stock">U3LogicAnalyzer</icon>
+  <categories>
+    <category>Development</category>
+    <category>Science</category>
+  </categories>
+  <provides>
+    <binary>U3LogicAnalyzer</binary>
+  </provides>
+  <url type="homepage">https://github.com/WeActStudio</url>
+</component>

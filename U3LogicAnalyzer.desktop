@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=U3LogicAnalyzer
+Comment=CH32H417 Logic Analyzer (WeAct Studio)
+Exec=U3LogicAnalyzer %f
+Icon=U3LogicAnalyzer
+Terminal=false
+Categories=Development;Electronics;
+Keywords=logic analyzer;sigrok;pulseview;CH32H417;
+StartupWMClass=U3LogicAnalyzer
+MimeType=application/vnd.sigrok.session;

@@ -1,0 +1,37 @@
+pkgbase = u3logicanalyzer-git
+	pkgdesc = Sigrok/PulseView based acquisition software for the WeAct Studio CH32H417 logic analyzer
+	pkgver = 0.2.0.0.r2.g41b2564
+	pkgrel = 1
+	url = https://github.com/WeActStudio/WeActStudio.U3LogicAnalyzer
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = patchelf
+	makedepends = qt6-tools
+	depends = boost-libs
+	depends = gcc-libs
+	depends = glib2
+	depends = glibmm
+	depends = hicolor-icon-theme
+	depends = hidapi
+	depends = libglvnd
+	depends = libserialport
+	depends = libsigc++
+	depends = libusb
+	depends = libzip
+	depends = python
+	depends = qt6-base
+	depends = qt6-svg
+	provides = u3logicanalyzer
+	conflicts = u3logicanalyzer
+	source = u3logicanalyzer-git::git+https://github.com/WeActStudio/WeActStudio.U3LogicAnalyzer.git#branch=WeActStudio
+	source = U3LogicAnalyzer.desktop
+	source = U3LogicAnalyzer.metainfo.xml
+	sha256sums = SKIP
+	sha256sums = 7354ea6c071850ff39dae5a78afa6886c405041ea2593e00c9abbc26e4d16197
+	sha256sums = 505293edf7a4051f75ce08bbfcc3b9fa462ed6ed8db99f14f63c37b3c927abe8
+
+pkgname = u3logicanalyzer-git
