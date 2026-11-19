@@ -1,6 +1,6 @@
 # Maintainer: yobson <aur@yobson.xyz>
 pkgname=stremio-web
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Stremio web client frontend"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-2.0-only')
 depends=('nodejs')
 makedepends=('nvm' 'pnpm' 'esbuild')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
-sha256sums=('281633f688711c0f396a6d5336d537377364851209cdccba6e056f33a62a8861')
+sha256sums=('508871a9e804085667e0761113b233a6d4376f78b528b644641404cf2a8ecc81')
 
 # https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
 _ensure_local_nvm() {
