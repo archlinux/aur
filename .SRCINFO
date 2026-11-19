@@ -1,6 +1,6 @@
 pkgbase = venti-bin
 	pkgdesc = Fast, quiet terminal multiplexer for linux
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/programmersd21/venti
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = venti-bin
 	provides = venti
 	conflicts = venti
 	options = !strip
-	source_x86_64 = venti-x86_64-0.1.0.tgz::https://github.com/programmersd21/venti/releases/download/v0.1.0/venti-0.1.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 7120c5db1ddd4ad0eaba74be1ff6fd0889dfeab20a32e0c4452a77c810f4eff6
+	source_x86_64 = venti-x86_64-0.2.0.tgz::https://github.com/programmersd21/venti/releases/download/v0.2.0/venti-0.2.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 578a5c424e6146863f8ac33508de1b6934ce20af856e74c50923c8a120b100b1
 
 pkgname = venti-bin

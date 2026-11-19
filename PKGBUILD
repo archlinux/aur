@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Fast, quiet terminal multiplexer for linux"
 
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ conflicts=("${pkgname%-bin}")
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('7120c5db1ddd4ad0eaba74be1ff6fd0889dfeab20a32e0c4452a77c810f4eff6')
+sha256sums_x86_64=('578a5c424e6146863f8ac33508de1b6934ce20af856e74c50923c8a120b100b1')
 
 
 case ${CARCH} in
