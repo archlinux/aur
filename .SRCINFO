@@ -1,6 +1,6 @@
 pkgbase = kytyps5-nightly-bin
 	pkgdesc = PlayStation 5 emulator (upstream nightly binary release)
-	pkgver = 2026.11.18.6c61825
+	pkgver = 2026.11.18.a90be8d
 	pkgrel = 1
 	url = https://github.com/KytyPS5/KytyPS5
 	arch = x86_64
@@ -47,16 +47,16 @@ pkgbase = kytyps5-nightly-bin
 	depends = xcb-util-wm
 	depends = zlib
 	depends = zstd
-	provides = kytyps5=2026.11.18.6c61825
+	provides = kytyps5=2026.11.18.a90be8d
 	conflicts = kytyps5
 	options = !strip
 	options = !debug
-	source = kytyps5-nightly-bin-2026.11.18.6c61825.tar.gz::https://github.com/KytyPS5/KytyPS5/releases/download/KytyPS5-2026-11-18-6c61825/KytyPS5-2026-11-18-6c61825-Linux-x86_64.tar.gz
-	source = LICENSE-2026.11.18.6c61825::https://raw.githubusercontent.com/KytyPS5/KytyPS5/6c618255ee2593edbf6a79eaf488f4795a550039/LICENSE
-	source = Kyty-MIT-2026.11.18.6c61825.txt::https://raw.githubusercontent.com/KytyPS5/KytyPS5/6c618255ee2593edbf6a79eaf488f4795a550039/LICENSES/Kyty-MIT.txt
-	source = kytyps5-2026.11.18.6c61825.svg::https://raw.githubusercontent.com/KytyPS5/KytyPS5/6c618255ee2593edbf6a79eaf488f4795a550039/docs/logo.svg
+	source = kytyps5-nightly-bin-2026.11.18.a90be8d.tar.gz::https://github.com/KytyPS5/KytyPS5/releases/download/KytyPS5-2026-11-18-a90be8d/KytyPS5-2026-11-18-a90be8d-Linux-x86_64.tar.gz
+	source = LICENSE-2026.11.18.a90be8d::https://raw.githubusercontent.com/KytyPS5/KytyPS5/a90be8dd7304640cf4176a975871d51443710292/LICENSE
+	source = Kyty-MIT-2026.11.18.a90be8d.txt::https://raw.githubusercontent.com/KytyPS5/KytyPS5/a90be8dd7304640cf4176a975871d51443710292/LICENSES/Kyty-MIT.txt
+	source = kytyps5-2026.11.18.a90be8d.svg::https://raw.githubusercontent.com/KytyPS5/KytyPS5/a90be8dd7304640cf4176a975871d51443710292/docs/logo.svg
 	source = kytyps5.desktop
-	sha256sums = 7c12f0f3f280af0ef8338516ef2cbade6f669c3cdd8f0dd4b6a5b57b6d1e8d99
+	sha256sums = 6f11ceb801521d99706d50586cd6f2c671c407a91d7930eb313aa0cd4d2a8c7f
 	sha256sums = f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505
 	sha256sums = 1bbcea0e75b3ac77b4711a12eefa3a3b7dfea43528fc0730af3178ba5cd55396
 	sha256sums = 33c2226b6bb65376d3eda37f624a539a6cba9d3963fed3d710fcf6d7ecc0d7e0
