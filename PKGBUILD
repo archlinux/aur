@@ -2,14 +2,14 @@
 
 pkgname=nginx-mod-zip
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 
 _modname=mod_zip
 
 pkgdesc='Streaming ZIP archiver for nginx (module for nginx)'
 arch=('i686' 'x86_64')
-depends=('nginx')
-makedepends=('nginx-src')
+makedepends=('nginx' 'nginx-src')
+backup=(etc/nginx/modules.d/20-zip.conf)
 url="https://github.com/evanmiller/mod_zip"
 license=('BSD')
 
@@ -32,9 +32,11 @@ build() {
 package() {
 	install -Dm644 "$srcdir/"$_modname-$pkgver/LICENSE \
 	               "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -dm0755 "$pkgdir"/etc/nginx/modules.d
 
-	cd build/objs
+  cd build/objs
 	for mod in *.so; do
-		install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
+    install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
+    printf 'load_module "/usr/lib/nginx/modules/%s";\n' "${mod}" >> "$pkgdir/etc/nginx/modules.d/20-zip.conf"
 	done
 }

@@ -13,6 +13,7 @@
 *.sig
 *.log
 *.zst
+*.lz4
 /src
 /pkg
 *.kate-swp
