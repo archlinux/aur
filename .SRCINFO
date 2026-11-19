@@ -1,20 +1,20 @@
 pkgbase = php-castor-bin
 	pkgdesc = A lightweight and modern task runner, automate everything in PHP (static binary, PHP embedded)
-	pkgver = 1.7.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://castor.jolicode.com/
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = php-castor=1.7.0
+	provides = php-castor=1.9.1
 	conflicts = php-castor
 	options = !strip
 	options = !debug
-	source = LICENSE-1.7.0::https://raw.githubusercontent.com/jolicode/castor/v1.7.0/LICENSE
+	source = LICENSE-1.9.1::https://raw.githubusercontent.com/jolicode/castor/v1.9.1/LICENSE
 	sha256sums = 873ddfe436c906c14a9069c2358f2f81dd95d140c88a44c390419bcebc920409
-	source_x86_64 = castor-1.7.0-x86_64::https://github.com/jolicode/castor/releases/download/v1.7.0/castor.linux-amd64
-	sha256sums_x86_64 = 4ee2df3d779d44b750f0c38375ccc4c1bd784965a1624dda6e30402576d0dc52
-	source_aarch64 = castor-1.7.0-aarch64::https://github.com/jolicode/castor/releases/download/v1.7.0/castor.linux-arm64
-	sha256sums_aarch64 = b140d82cd001fe08fcffe8ff2eaa82b1ba24286deeeeb671d5d20eb9e94c99b1
+	source_x86_64 = castor-1.9.1-x86_64::https://github.com/jolicode/castor/releases/download/v1.9.1/castor.linux-amd64
+	sha256sums_x86_64 = 487ec4748875128cca4a05e965b05327e5fb47f878e344f7dec41c8a79caf3d6
+	source_aarch64 = castor-1.9.1-aarch64::https://github.com/jolicode/castor/releases/download/v1.9.1/castor.linux-arm64
+	sha256sums_aarch64 = de882dc4ab698b12c7f496e1faf40d4698399323d77f15e5e0a7d2906ff1fc4c
 
 pkgname = php-castor-bin
