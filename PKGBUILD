@@ -51,6 +51,11 @@ options=(
     !strip
 )
 
+_libs_to_copy=(
+    libCardAPI.so
+    "libpkcs11_x${_upstream_arch:(-2)}.so"
+)
+
 prepare() {
     rm -rf "eID_klient_${pkgver}"
 
@@ -86,9 +91,8 @@ prepare() {
     mkdir squashfs-root/lib
     for _lib in \
         VirtualKeyboard \
-        libCardAPI.so \
         libbotan-2.so.18 \
-        "libpkcs11_x${_upstream_arch:(-2)}.so" \
+        "${_libs_to_copy[@]}" \
         ; do
         mv {unused-libs,squashfs-root}/lib/"${_lib}"
     done
@@ -154,17 +158,16 @@ package_eidklient-native() {
     #ln -s /usr/bin/eID_Client "${pkgdir}/usr/bin/VirtualKeyboard"
 
     install -dm755 "${pkgdir}/usr/lib/eID_klient"
+    ln -s "/opt/${pkgbase}/lib/libbotan-2.so.18" "${pkgdir}/usr/lib/eID_klient/"
     ln -s /usr/bin/eID_Client "${pkgdir}/usr/lib/eID_klient/VirtualKeyboard"
-
-    local lib
-
-    for lib in squashfs-root/lib/lib{CardAPI,botan,pkcs11_}*; do
-        ln -s "/opt/${pkgbase}/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
-    done
-
-    for lib in unused-libs/lib/lib{crypto,ssl}*; do
-        ln -s "/usr/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
-    done
+    # Duplicating these libraries is required for proper functioning.
+    # They have runpath set to the directory they are located in. libpkcs11 is
+    # loaded by external apps, so the eID_Client wrapper isn't used, meaning the
+    # dependencies are loaded from /opt/eidklient-native/lib, which is undesired.
+    # Moreover, libCardAPI executes VirtualKeyboard from its runpath. Therefore,
+    # this also fixes VirtualKeyboard crashes due to mismatched Qt library and
+    # plugin distributions.
+    cp "${_libs_to_copy[@]/#/squashfs-root/lib/}" "${pkgdir}/usr/lib/eID_klient"
 
     # Icons + desktop file
     tar \
