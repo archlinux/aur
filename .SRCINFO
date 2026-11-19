@@ -1,6 +1,6 @@
 pkgbase = python-numpy-groupies
 	pkgdesc = Optimised tools for group-indexing operations for python numpy
-	pkgver = 0.16.7
+	pkgver = 0.16.8
 	pkgrel = 1
 	url = https://github.com/ml31415/numpy-groupies
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-numpy-groupies
 	depends = python-numpy
 	optdepends = python-numba: for numba backend
 	optdepends = python-pandas: for pandas backend
-	source = git+https://github.com/ml31415/numpy-groupies.git#tag=v0.16.7
-	sha256sums = 06e00753e48af32e83e08a41fea578b4ddf88e65392f8c4d353c463480ac35ab
+	source = git+https://github.com/ml31415/numpy-groupies.git#tag=v0.16.8
+	sha256sums = 78fad554b997675a05f23a4ee61d514c180672f24607a1e0e9ba075115ad63d7
 
 pkgname = python-numpy-groupies
