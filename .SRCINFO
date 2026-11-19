@@ -1,0 +1,24 @@
+pkgbase = nefervox-bin
+	pkgdesc = Push-to-talk dictation for Wayland: speak, then the transcript is typed into the focused window
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.bnema.dev/nefervox
+	arch = aarch64
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = glibc
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	depends = pipewire-audio
+	depends = ttf-dejavu
+	optdepends = wl-clipboard: clipboard output and fallback when typing fails
+	optdepends = xdg-utils: open the browser for nefervox login chatgpt
+	provides = nefervox
+	conflicts = nefervox
+	conflicts = nefervox-git
+	source_aarch64 = nefervox-bin_0.1.0_aarch64.tar.gz::https://git.bnema.dev/nefervox/releases/download/v0.1.0/nefervox_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = af17d52851191516796ffabe11168c02521c84250d6dc51acdd9335d3f392c1b
+	source_x86_64 = nefervox-bin_0.1.0_x86_64.tar.gz::https://git.bnema.dev/nefervox/releases/download/v0.1.0/nefervox_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = f7d51b65b7e3a16db022d23e71332e551699308cbb80e7678aefda13fb1a9bbc
+
+pkgname = nefervox-bin
