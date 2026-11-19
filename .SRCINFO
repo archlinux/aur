@@ -1,17 +1,20 @@
 pkgbase = tvpipe
 	pkgdesc = Low-latency video and audio mirroring to AirPlay, Google Cast and browsers
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mitsuhiko/tvpipe
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	checkdepends = ffmpeg
 	makedepends = cargo
+	depends = libgcc
+	depends = glibc
 	optdepends = ffmpeg: transcoding media and capturing audio/video devices
 	optdepends = chromium: screen capture and web page sharing
 	optdepends = firefox: alternative browser for web page sharing
 	optdepends = xdg-utils: opening preview and share pages in the default browser
+	options = !lto
 	source = tvpipe-0.2.0.tar.gz::https://github.com/mitsuhiko/tvpipe/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = 328f8ee10256cf46f717ca826e0cd4ab1431572810412e9c3b160954627cdc2c
 
