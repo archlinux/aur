@@ -7,7 +7,7 @@
 # After editing, regenerate .SRCINFO: makepkg --printsrcinfo > .SRCINFO
 
 pkgname=romforge
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Identify, tidy and play your ROM collection"
 arch=('x86_64')
@@ -29,7 +29,7 @@ conflicts=('romforge-bin')
 # Rust does its own LTO; makepkg's C flags for it break the bundled C code.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c6edfb90df82ebba0e534d8c0228a2b20449bc61b22abe24f70fc3e2850832cc')
+sha256sums=('ab1cf8b49290abee0c529276b4177a8143fdfc3612514fcebe6c79815efcde72')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -70,6 +70,9 @@ Icon=romforge
 Categories=Game;
 Terminal=false
 DESKTOP
+  # Opens a ROM from a file manager (romforge-cli launch FILE); hidden from menus.
+  install -Dm644 packaging/romforge-open.desktop \
+    "$pkgdir/usr/share/applications/romforge-open.desktop"
   local size
   for size in 32 64 128 256; do
     install -Dm644 "app/src-tauri/icons/${size}x${size}.png" \
