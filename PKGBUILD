@@ -1,7 +1,7 @@
 # Maintainer: Ivan Krivosheev <py.krivosheev@gmail.com>
 
 pkgname=pa-notify
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="PulseAudio or PipeWire volume notification"
 arch=(x86_64)
