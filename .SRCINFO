@@ -1,7 +1,7 @@
 pkgbase = linux-multikernel
 	pkgdesc = Linux with Multikernel support
 	pkgver = 7.0.mk5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://multikernel.io
 	arch = x86_64
 	license = GPL-2.0-only
@@ -19,7 +19,9 @@ pkgbase = linux-multikernel
 	options = !debug
 	options = !strip
 	source = linux-multikernel-7.0.mk5.tar.gz::https://github.com/multikernel/linux/archive/refs/tags/v7.0-mk5.tar.gz
+	source = daxfs-0.1.0.tar.gz::https://github.com/multikernel/daxfs/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = 7edf4d86e95dd22e0ec2993125fbb6d9b845b67a6f5f8a10a7cf8d7758a874a3
+	sha256sums = d9e0f9b5aee1f1a707f9b09bac9222a21ab34afebf10eedbbb1554ed69d970ed
 	source_x86_64 = config.x86_64
 	sha256sums_x86_64 = 75366b057ddfafeb2c02a902aebdcbeb36ddcd56de74c82b1eadf4fac308555a
 
@@ -30,9 +32,10 @@ pkgname = linux-multikernel
 	depends = kmod
 	optdepends = linux-multikernel-headers: headers and scripts for building modules
 	optdepends = kerf: manage multikernel instances
-	optdepends = daxfs-dkms: boot instances from container images
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	conflicts = daxfs-dkms
+	replaces = daxfs-dkms
 
 pkgname = linux-multikernel-headers
 	pkgdesc = Headers and scripts for building modules for the Linux with Multikernel support kernel

@@ -3,8 +3,9 @@
 
 pkgbase=linux-multikernel
 _mkver=7.0-mk5 # renovate: datasource=github-tags depName=multikernel/linux
+_daxfsver=0.1.0 # renovate: datasource=github-tags depName=multikernel/daxfs
 pkgver=${_mkver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux with Multikernel support'
 url='https://multikernel.io'
 arch=(x86_64)
@@ -29,6 +30,7 @@ options=(
 _srcname=linux-$_mkver
 source=(
   "$pkgbase-$pkgver.tar.gz::https://github.com/multikernel/linux/archive/refs/tags/v$_mkver.tar.gz"
+  "daxfs-$_daxfsver.tar.gz::https://github.com/multikernel/daxfs/archive/refs/tags/v$_daxfsver.tar.gz"
 )
 # Arch Linux 'linux' config, adapted in prepare()
 source_x86_64=(config.x86_64)
@@ -44,6 +46,15 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
+  # The in-tree fs/daxfs reads image format v1; kerf writes the v8 format of
+  # standalone daxfs. Swap in its sources, built in so spawned kernels can
+  # mount rootfstype=daxfs without an initrd.
+  echo "Importing daxfs $_daxfsver..."
+  rm fs/daxfs/*.[ch]
+  cp ../daxfs-$_daxfsver/daxfs/*.[ch] ../daxfs-$_daxfsver/include/*.h fs/daxfs/
+  sed -i 's/^daxfs-y :=.*/daxfs-y := super.o inode.o dir.o file.o dax_mem.o validate.o pcache.o overlay.o/' \
+    fs/daxfs/Makefile
+
   echo "Setting config..."
   cp ../config.$CARCH .config
   # Multikernel host/spawn support (needs OF for the device-tree resource model);
@@ -57,12 +68,13 @@ prepare() {
     -e MKTTY \
     -m VSOCKETS \
     -m MULTIKERNEL_VSOCKETS \
+    -e DAXFS \
     -d RUST
   make olddefconfig
   diff -u ../config.$CARCH .config || :
 
   local _opt
-  for _opt in MULTIKERNEL MKTTY; do
+  for _opt in MULTIKERNEL MKTTY DAXFS; do
     [[ $(scripts/config -s $_opt) = y ]] || { echo "CONFIG_$_opt not enabled"; return 1; }
   done
 
@@ -85,10 +97,12 @@ _package() {
   optdepends=(
     "$pkgbase-headers: headers and scripts for building modules"
     'kerf: manage multikernel instances'
-    'daxfs-dkms: boot instances from container images'
     'linux-firmware: firmware images needed for some devices'
     'wireless-regdb: to set the correct wireless channels of your country'
   )
+  # daxfs is built in
+  conflicts=(daxfs-dkms)
+  replaces=(daxfs-dkms)
 
   cd $_srcname
   local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
@@ -209,5 +223,6 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-sha256sums=('7edf4d86e95dd22e0ec2993125fbb6d9b845b67a6f5f8a10a7cf8d7758a874a3')
+sha256sums=('7edf4d86e95dd22e0ec2993125fbb6d9b845b67a6f5f8a10a7cf8d7758a874a3'
+            'd9e0f9b5aee1f1a707f9b09bac9222a21ab34afebf10eedbbb1554ed69d970ed')
 sha256sums_x86_64=('75366b057ddfafeb2c02a902aebdcbeb36ddcd56de74c82b1eadf4fac308555a')
