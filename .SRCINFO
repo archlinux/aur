@@ -1,6 +1,6 @@
 pkgbase = paseo-bin
 	pkgdesc = One interface for all your Claude Code, Codex and OpenCode agents (Electron desktop app)
-	pkgver = 0.16.1
+	pkgver = 0.16.2
 	pkgrel = 1
 	url = https://paseo.sh
 	install = paseo-bin.install
@@ -30,19 +30,19 @@ pkgbase = paseo-bin
 	depends = nspr
 	depends = nss
 	depends = pango
-	provides = paseo=0.16.1
+	provides = paseo=0.16.2
 	conflicts = paseo
 	conflicts = paseo-desktop-bin
 	conflicts = paseo-appimage
 	options = !strip
 	options = !debug
-	source = paseo-bin-0.16.1.tar.gz::https://github.com/getpaseo/paseo/releases/download/v0.16.1/Paseo-0.16.1-x64.tar.gz
-	source = LICENSE-0.16.1::https://raw.githubusercontent.com/getpaseo/paseo/v0.16.1/LICENSE
+	source = paseo-bin-0.16.2.tar.gz::https://github.com/getpaseo/paseo/releases/download/v0.16.2/Paseo-0.16.2-x64.tar.gz
+	source = LICENSE-0.16.2::https://raw.githubusercontent.com/getpaseo/paseo/v0.16.2/LICENSE
 	source = paseo.desktop
 	source = paseo.sh
 	source = paseo.service
 	source = paseo-daemon-session.sh
-	sha256sums = 281df080079b0158f77a50f5ed7a614333bc813878cd0b1da4e6ebb724776059
+	sha256sums = 1f2a229d6121a821abd65d9a2d59bc2818efddadb616c8e85df4f5fb9cdd7179
 	sha256sums = 79d5aedce6aa0adc547336dc1bd34c5cc9308ba110fac7079ed97515ee573ad3
 	sha256sums = 8219842d8f7bb20e0608450f2574fa37d98e37ef410de459e0792651a78c1b47
 	sha256sums = 635acff5ec0bcce1b9dd5aa373cb1d043b29022bb6918325f8db7304c8828af9
