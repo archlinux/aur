@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=gitpane-bin
 _pkgname=gitpane
-pkgver=0.18.4
+pkgver=0.18.13
 pkgrel=1
 pkgdesc='Multi-repo Git workspace dashboard for the terminal'
 arch=(
@@ -17,7 +17,6 @@ depends=(
 optdepends=(
     'github-cli: For improved github integration'
 )
-makedepends=('cargo')
 options=(
     !debug
     !strip
@@ -28,8 +27,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/affromero/$_pkgnam
 source_x86_64=("$_pkgname-$pkgver-bin.tar.gz::$url/releases/download/v$pkgver/$_pkgname-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-bin.tar.gz::$url/releases/download/v$pkgver/$_pkgname-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('5953e81de31e9fbf77306d93feac10000c25889ec5a35c1e954d0d6efc3fd794')
-sha256sums_x86_64=('41a0d301900b91accb0830f13d060b5744724c2987ab58c398c1b14d6144b8ad')
-sha256sums_aarch64=('53d0c72027d35a294b8dc2c602b792b24af8ae67886d85d8d2b5847794f04c9d')
+sha256sums_x86_64=('3fb504d31ceef5e69aef82574af1fd198730f30c7e0ceb41ee5f455e77331875')
+sha256sums_aarch64=('4c660560c6f8ba577ad19e265d6b546b181b3c6514a05e66d7e3d59a4888c2e9')
 
 package() {
     install -Dm0755 gitpane "$pkgdir/usr/bin/gitpane"
