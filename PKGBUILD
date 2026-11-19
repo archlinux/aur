@@ -2,7 +2,7 @@
 
 _plugin=histogram
 pkgname=vsview-${_plugin}
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A vsview plugin displaying video clips' histograms and other related visualizations"
 arch=("x86_64")
