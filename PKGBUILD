@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 # Contributor: Community
 pkgname=reflectcpp-git
-pkgver=0.27.1.r12.g73710de4
+pkgver=0.27.1.r13.ga2f0e74d
 pkgrel=1
 pkgdesc="A C++20 library for fast serialization, deserialization and validation using reflection"
 arch=('x86_64' 'aarch64' 'armv7h')
