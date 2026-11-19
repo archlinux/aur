@@ -6,16 +6,16 @@
 # widgie-menu-compat package.
 pkgbase=widgie
 pkgname=(widgie widgie-dev widgie-apps)
-pkgver=0.3.8
+pkgver=0.4.0
 pkgrel=2
 pkgdesc="A lightweight widget library for applications which do not need a splashscreen."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/manner/widgie"
 license=('GPL3')
-makedepends=(wayland-protocols wayland libxkbcommon freetype2 libxkbcommon-x11 libxcb xcb-util-image xorgproto flint)
+makedepends=(wayland-protocols wayland libxkbcommon freetype2 libxkbcommon-x11 libxcb xcb-util-image xorgproto flint libical)
 source=("https://gitlab.com/manner/widgie/-/archive/$pkgver/widgie-$pkgver.tar.gz")
 options=('staticlibs')
-sha256sums=('f662d2bdde9c3fdce8f2b71b6b059e28497fa2648ee2bcaa9a656d348bc0a0e3')
+sha256sums=('0696a763e4a2ae792887422dc4e0ee1e0f12833bcdc724af3d0624c0c6de9a03')
 
 _builddir="widgie-$pkgver"
 
