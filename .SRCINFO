@@ -1,6 +1,6 @@
 pkgbase = smosummary
 	pkgdesc = A Sum of Best (SoB) calculator and Stopwatch for Super Mario Odyssey speedrunners
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 1
 	arch = x86_64
 	license = MIT

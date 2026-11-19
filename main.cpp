@@ -84,12 +84,12 @@ int main(int argc, char* argv[]) {
     for (int i = 1; i < argc; ++i) {
         std::string flag = argv[i];
         if (flag == "-v" || flag == "--version") {
-            std::cout << "smosummary v4.0.2-1 | owner: aray4iv3\n";
+            std::cout << "smosummary v4.0.3-1 | owner: aray4iv3\n";
             return 0;
         } else if (flag == "-h" || flag == "--help") {
             std::cout << GOLD << "smosummary tui" << RESET << "\nusage:\n"
                       << "  ./smosummary      - manual calculator mode\n"
-                      << "  ./smosummary -s   - stopwatch tui\n"
+                      << "  -s, --stopwatch   - stopwatch tui\n"
                       << "  -v, --version     - version and owner name\n";
             return 0;
         } else if (flag == "-s" || flag == "--stopwatch") {
