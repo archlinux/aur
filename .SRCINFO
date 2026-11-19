@@ -1,0 +1,15 @@
+pkgbase = deepbump
+	pkgdesc = Generate normal, height and curvature maps from single pictures with ML (DeepBump CLI)
+	pkgver = 8
+	pkgrel = 1
+	url = https://github.com/HugoTini/DeepBump
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = python-numpy
+	depends = python-onnxruntime
+	depends = python-imageio
+	options = !debug
+	source = deepbump-8.tar.gz::https://github.com/HugoTini/DeepBump/archive/refs/tags/v8.tar.gz
+	sha256sums = bca85b5955d2620e39cffa09a3a2f0d9eafb3a79c8c03ede3c4f1d92b8b12f98
+
+pkgname = deepbump
