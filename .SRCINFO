@@ -1,0 +1,24 @@
+pkgbase = nefervox-git
+	pkgdesc = Push-to-talk dictation for Wayland: speak, then the transcript is typed into the focused window (git version)
+	pkgver = 0.1.0.r0.g893bcd8
+	pkgrel = 1
+	url = https://git.bnema.dev/nefervox
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = go>=2:1.27
+	makedepends = git
+	depends = glibc
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	depends = pipewire-audio
+	depends = ttf-dejavu
+	optdepends = wl-clipboard: clipboard output and fallback when typing fails
+	optdepends = xdg-utils: open the browser for nefervox login chatgpt
+	provides = nefervox
+	conflicts = nefervox
+	conflicts = nefervox-bin
+	source = git+https://git.bnema.dev/nefervox.git
+	sha256sums = SKIP
+
+pkgname = nefervox-git
