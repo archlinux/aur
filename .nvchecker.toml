@@ -1,0 +1,5 @@
+[bluerig]
+source = "github"
+github = "blue-panels/bluerig"
+use_latest_release = true
+prefix = "bluerig-"

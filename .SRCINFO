@@ -1,0 +1,46 @@
+pkgbase = bluerig
+	pkgdesc = A terminal IDE grown out of mcedit
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/blue-panels/bluerig
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = pkgconf
+	makedepends = gettext
+	makedepends = glib2
+	makedepends = json-glib
+	makedepends = slang
+	makedepends = gpm
+	makedepends = lua
+	makedepends = libx11
+	makedepends = check
+	options = !emptydirs
+	source = bluerig-1.0.2.tgz::https://github.com/blue-panels/bluerig/releases/download/bluerig-1.0.2/bluerig-1.0.2.tar.gz
+	b2sums = a4601c7bdc819c07bf076953417ec8705c8f39799b5040b10fb9f14a055d1dff9e899ab86a4ea1474dc80c4addb23d65c402eee3676343d13cf09f68837f164f
+
+pkgname = bluerig
+	pkgdesc = A terminal IDE grown out of mcedit
+	depends = glib2
+	depends = json-glib
+	depends = slang
+	depends = gpm
+	optdepends = bluerig-lua: the Lua runtime and the editor scripts
+	optdepends = libx11: keyboard modifiers under X
+	optdepends = aspell: spell checking
+	optdepends = hunspell: spell checking
+	optdepends = ctags: the tag index the editor reads
+	backup = etc/bluerig/bluerig.menu
+	backup = etc/bluerig/ctags.keymap
+	backup = etc/bluerig/keymap.default.ini
+	backup = etc/bluerig/keymap.emacs.ini
+	backup = etc/bluerig/keymap.ini
+	backup = etc/bluerig/keymap.vim.ini
+	backup = etc/bluerig/spell.keymap
+
+pkgname = bluerig-lua
+	pkgdesc = Lua runtime and scripts for bluerig
+	depends = bluerig=1.0.2-1
+	depends = glib2
+	depends = lua54
