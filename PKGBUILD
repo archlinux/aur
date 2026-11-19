@@ -1,6 +1,7 @@
 # Maintainer: robertfoster
 pkgname=kerf
-pkgver=0.5.0 # renovate: datasource=github-tags depName=multikernel/kerf
+# renovate: datasource=github-tags depName=multikernel/kerf
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Orchestrate and manage multiple kernel instances on a single host (Multikernel Linux)"
 arch=(x86_64 aarch64 riscv64)
