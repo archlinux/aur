@@ -2,7 +2,7 @@
 
 pkgname=workdaddy-bin
 pkgver=1.2.22
-pkgrel=6
+pkgrel=7
 pkgdesc='WorkBuddy desktop enhancement assistant (WorkDaddy, official Linux DEB repack)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/babygoton/WorkDaddy'
@@ -11,6 +11,7 @@ depends=('bash' 'ca-certificates' 'curl' 'gcc-libs' 'glibc' 'hicolor-icon-theme'
          'procps-ng' 'util-linux' 'xdg-utils')
 optdepends=('workbuddy: WorkBuddy desktop client enhanced by WorkDaddy'
             'workbuddy-agent: alternative WorkBuddy client; conflicts with workbuddy, install either one'
+            'workbuddy-cn-bin: WorkBuddy China edition client (unofficial port); provides workbuddy, conflicts with workbuddy-agent, install either one'
             'zenity: graphical launcher dialogs (channel menu, restart confirmation, wallpaper folder picker)')
 provides=('workdaddy')
 conflicts=('workdaddy')
