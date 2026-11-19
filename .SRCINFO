@@ -1,6 +1,6 @@
 pkgbase = codex-desktop-git
 	pkgdesc = Unofficial ChatGPT desktop repackaged from OpenAI's official Linux build (ilysenko/codex-desktop-linux)
-	pkgver = 26.1111.71025.r2271.g6175ccd9
+	pkgver = 26.1111.71704.r2274.g04840e91
 	pkgrel = 1
 	url = https://github.com/ilysenko/codex-desktop-linux
 	install = codex-desktop-git.install
