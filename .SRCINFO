@@ -1,0 +1,16 @@
+pkgbase = ruby-qt6-qtwebview
+	pkgdesc = Ruby Bindings for Qt WebView.
+	pkgver = 6.3.0
+	pkgrel = 1
+	url = https://github.com/souk4711/ruby-qt6
+	arch = x86_64
+	license = LGPL-3.0-only WITH LGPL-3.0-linking-exception
+	depends = ruby
+	depends = ruby-qt6-rice>=6.3.0
+	depends = ruby-qt6-qtcore
+	depends = qt6-webview
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ruby-qt6-qtwebview-6.3.0.gem
+	sha256sums = 08ae6358db33b207c1f25630eac924d252e689070ef92be05b515516082c03d2
+
+pkgname = ruby-qt6-qtwebview
