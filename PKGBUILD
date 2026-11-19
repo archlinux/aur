@@ -2,15 +2,16 @@
 # 本地手动同步：./packaging/aur/sync-aur.sh
 pkgname=neko-cloud-music
 pkgver=2026.1115.69
-pkgrel=3
+pkgrel=4
 pkgdesc="NekoMusic: Free High-Quality Cloud Music"
 arch=('x86_64' 'aarch64')
 url="https://github.com/FantasyNetworkCN/NekoMusicForPc"
 license=('AGPL-3.0-or-later')
 depends=('qt6-base' 'qt6-multimedia' 'qt6-svg' 'qt6-websockets' 'openssl')
-makedepends=('cmake' 'ninja')
+makedepends=('cmake' 'ninja' 'vulkan-headers' 'shaderc')
+optdepends=('vulkan-icd-loader: Vulkan 液态玻璃')
 
-_commit=51328a285f93e4bdf2cf5b87341bd46b322fae58
+_commit=29f6d9d88458a609ce786becd8afd80215f5479c
 source=("${pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz")
 sha256sums=('SKIP')
 
@@ -30,7 +31,8 @@ pkgver() {
 build() {
   cmake -S "$(_srcdir)" -B "${srcdir}/build" \
     -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DNEKO_REQUIRE_VULKAN_GLASS=ON
   cmake --build "${srcdir}/build"
 }
 
