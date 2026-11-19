@@ -2,8 +2,15 @@
 # Based on the Arch Linux 'linux' package by Jan Alexander Steffens (heftig)
 
 pkgbase=linux-multikernel
-_mkver=7.0-mk5 # renovate: datasource=github-tags depName=multikernel/linux
-_daxfsver=0.1.0 # renovate: datasource=github-tags depName=multikernel/daxfs
+pkgname=(
+  "$pkgbase"
+  "$pkgbase-headers"
+)
+# OBS's PKGBUILD parser keeps trailing comments in values: keep these above
+# renovate: datasource=github-tags depName=multikernel/linux
+_mkver=7.0-mk5
+# renovate: datasource=github-tags depName=multikernel/daxfs
+_daxfsver=0.1.0
 pkgver=${_mkver//-/.}
 pkgrel=2
 pkgdesc='Linux with Multikernel support'
@@ -29,7 +36,7 @@ options=(
 )
 _srcname=linux-$_mkver
 source=(
-  "$pkgbase-$pkgver.tar.gz::https://github.com/multikernel/linux/archive/refs/tags/v$_mkver.tar.gz"
+  "$pkgbase-$_mkver.tar.gz::https://github.com/multikernel/linux/archive/refs/tags/v$_mkver.tar.gz"
   "daxfs-$_daxfsver.tar.gz::https://github.com/multikernel/daxfs/archive/refs/tags/v$_daxfsver.tar.gz"
 )
 # Arch Linux 'linux' config, adapted in prepare()
@@ -213,10 +220,6 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-pkgname=(
-  "$pkgbase"
-  "$pkgbase-headers"
-)
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
