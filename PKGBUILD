@@ -32,6 +32,16 @@ build() {
     -o scorecard .
 }
 
+check() {
+  cd "${pkgname}-${pkgver}"
+  export GOPATH="${srcdir}/gopath"
+  export GOFLAGS='-buildvcs=false -mod=readonly -modcacherw'
+  export TMPDIR="${srcdir}/tmp"
+  mkdir -p "${TMPDIR}"
+  # These tests fetch the digest of python:3.7 from Docker Hub
+  SKIP_GINKGO=1 go test -skip '^TestMixedPinning$|^TestCollectDockerfilePinning$/^Non-pinned_dockerfile' ./...
+}
+
 package() {
   cd $pkgname-$pkgver
 
