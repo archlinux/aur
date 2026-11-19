@@ -1,6 +1,6 @@
 # Maintainer: FrogSnot
 pkgname=fieldcraft-bin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Open-source finite-element / CAE modeler: mesh, set up, solve and export decks (binary release)'
 arch=(x86_64)
@@ -19,7 +19,7 @@ options=(!strip !debug)
 provides=("fieldcraft=$pkgver")
 conflicts=(fieldcraft)
 source=("https://github.com/tangency-labs/fieldcraft/releases/download/v$pkgver/fieldcraft-$pkgver-linux-$CARCH.tar.gz")
-sha256sums=('d031c16a9bb9d69ea4575d493f779020a9dea686b0ad463f07dd2b7fbaeb2df1')
+sha256sums=('987be64ed96f168d6e7224a8b3ddcac02aa3c17f448f6490c88b3868378e1708')
 
 package() {
   cd "fieldcraft-$pkgver-linux-$CARCH"
