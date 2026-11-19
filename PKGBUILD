@@ -2,7 +2,7 @@
 
 _name=aws_sdk_transcribe_streaming
 pkgname=python-$_name
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc='aws_sdk_transcribe_streaming client.'
 arch=('any')
@@ -28,7 +28,7 @@ checkdepends=('python-boto3'
               'python-awscrt')
 optdepends=('python-awscrt: awscrt')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('563a0e791395c3ae2eba107156ebc4e2fe9bfcc1b237d9f2c0c34e273139b62b')
+sha256sums=('30ff16b4a1bc3f3ccbc904fc56e2d3aa25d7e11065818f33aedb083b997f1cb4')
 
 build() {
   cd "$_name-$pkgver"
