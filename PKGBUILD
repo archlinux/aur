@@ -1,38 +1,48 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=zen-c-git
 _pkgname=zen-c
-pkgver=0.4.4.r133.g60993ab
+pkgver=0.4.4.r676.gb3f550e
 pkgrel=1
 pkgdesc='Write like a high-level language, run like C.'
 url='https://github.com/zenc-lang/zenc'
-arch=('x86_64' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
+arch=(
+    'x86_64'
+    'aarch64'
+    'armv7h'
+    'riscv64'
+)
 license=('MIT')
-optdepends=('gcc: gcc backend support'
+optdepends=(
+    'gcc: gcc backend support'
     'clang: clang backend support'
-    'zig: zig backend support')
-makedepends=(gcc make git)
+    'zig: zig backend support'
+)
+makedepends=(
+    'gcc'
+    'make'
+    'git'
+)
 provides=(zc)
 conflicts=('zen-c' 'zen-c-bin')
 replaces=('zenc-git')
-source=("$_pkgname::git+$url.git#branch=main")
+source=("${_pkgname}-main::git+$url.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
+    cd "${_pkgname}-main"
     git describe --long --abbrev=7 --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$_pkgname"
+    cd "${_pkgname}-main"
     make CC=gcc -j
 }
 
 package() {
-    cd "$_pkgname"
+    cd "${_pkgname}-main"
     install -Dm755 zc "$pkgdir/usr/bin/zc"
     install -d "$pkgdir/usr/local/share/zenc"
     cp -r std/ "$pkgdir/usr/local/share/zenc/std"
-    install -Dm644 src/zen/facts.json "$pkgdir/usr/local/share/zenc/facts.json"
     install -Dm644 src/repl/docs.json "$pkgdir/usr/local/share/zenc/docs.json"
     install -Dm644 src/misc/zenc.json "$pkgdir/usr/local/share/zenc/zenc.json"
     install -Dm644 plugins/zprep_plugin.h "${pkgdir}"/usr/local/include/zprep_plugin.h
