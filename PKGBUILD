@@ -43,7 +43,8 @@ makedepends=(
   'git'
   'gzip'
   'make'
-  'zopflipng-parallel'
+  'zopflipng'
+  'parallel'
 )
 source=(
   "${_gitname}::git+${url}.git"
@@ -78,7 +79,7 @@ build() {
 
   local _gif
   printf '%s\n' "  > Size-optimising image and manpage files ..."
-  zopflipng-parallel -m -- "${_gitname}"/pictures/*.png
+  printf '%s\n' "${_gitname}"/pictures/*.png | parallel -j`nproc` zopflipng -m -y {} {}
   for _gif in "${_gitname}"/pictures/*.gif; do
     printf '%s\n' "${_gif} ..."
     gifsicle -O3 "${_gif}" -o "${_gif}.optimised.gif"
