@@ -3,7 +3,7 @@
 pkgbase=bitwuzla
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations'
 arch=('x86_64')
 url='https://bitwuzla.github.io'
@@ -13,7 +13,7 @@ depends=(
     'cryptominisat'
     'glibc'
     'gmp>=6.1'
-    'kissat'
+#    'kissat'
     'libgcc'
     'libstdc++'
     'mpfr'
@@ -37,7 +37,7 @@ makedepends=(
 )
 optdepends=(
     'aiger: Utilities for And-Inverter Graphs (AIGs)'
-    'cadical: CaDiCaL support'
+#    'cadical: CaDiCaL support'
     'python>=3.7: Python bindings'
 )
 provides=(
@@ -46,9 +46,15 @@ provides=(
     'libbitwuzlals.so'
     'libbitwuzla.so'
 )
-b2sums=('065f768bdfa9299ef6f1bb6f8da2cc3d7b2b145583a9d656ad7dad91d5be48bfdc0bdb5caa83c2929dbff9508f86dfe038bd998896bf3bac8b69c5c952e99cdf'
-        '96897dada985c929820c7285a4e968977786e58e18b632dff06414ed71572a9139c0dad7a20705c03ff462cc954e5ffccb331d1ead100cd085686a5fc1d79fa3')
+b2sums=('065f768bdfa9299ef6f1bb6f8da2cc3d7b2b145583a9d656ad7dad91d5be48bfdc0bdb5caa83c2929dbff9508f86dfe038bd998896bf3bac8b69c5c952e99cdf')
 options=('!lto')
+
+prepare() {
+    cd "${srcdir}/${pkgbase}-${pkgver}"
+
+    # Force the bundled, patched CaDiCaL subproject
+    sed -i "s/find_library('cadical',/find_library('cadical-bundled-only',/" src/meson.build
+}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -89,7 +95,7 @@ package_bitwuzla() {
     cd "${srcdir}/${pkgbase}-${pkgver}"
 
     install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-    install -Dm644 CONTRIBUTING.md "${pkgdir/}usr/share/doc/${pkgname}/CONTRIBUTING.md"
+    install -Dm644 CONTRIBUTING.md "${pkgdir}/usr/share/doc/${pkgname}/CONTRIBUTING.md"
 
     install -Dm644 NEWS.md "${pkgdir}/usr/share/doc/${pkgname}/NEWS.md"
 
