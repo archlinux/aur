@@ -1,6 +1,6 @@
 pkgbase = rynas-agent
 	pkgdesc = rynas PC backup agent: file backups to a rynas NAS and bare-metal restore from any live Linux
-	pkgver = 0.8.24
+	pkgver = 0.8.25
 	pkgrel = 1
 	url = https://github.com/rylos/rynas
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = rynas-agent
 	optdepends = cryptsetup: restoring LUKS volumes
 	conflicts = rynas-agent-bin
 	options = !lto
-	source = rynas-0.8.24.tar.gz::https://github.com/rylos/rynas/archive/refs/tags/v0.8.24.tar.gz
-	sha256sums = 548ffeb9e832bf152a42463d825114d85a4a52508d58ef09b2611cf5b2660840
+	source = rynas-0.8.25.tar.gz::https://github.com/rylos/rynas/archive/refs/tags/v0.8.25.tar.gz
+	sha256sums = 70ba1a9a96500a9788e1e490f9f67333fefc3266ee7f5d791932eb940955094f
 
 pkgname = rynas-agent
