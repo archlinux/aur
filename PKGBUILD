@@ -1,11 +1,11 @@
 # Maintainer: Remenod <remenod@gmail.com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: hexchain <i@hexchain.org>
-# Generated from Arch Linux's extra/telegram-desktop 7.3.3-1
+# Generated from Arch Linux's extra/telegram-desktop 7.4.4-1
 # by https://github.com/Remenod/telegram-desktop-export (packaging branch).
 
 pkgname=telegram-desktop-export
-pkgver=7.3.3
+pkgver=7.4.4
 _td_commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
 _wallet_engine_ver=0.0.7
 pkgrel=1
@@ -99,11 +99,11 @@ source=(
   https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch
   export-patches.patch
 )
-sha512sums=('3e76971f5ac1c8b4f29c867cf2a6e52f5eb71e479533daaaef26ba8bf53c10c6dd0abc09bb99ec213582546a50fa5306b2bcad023e85024979ebf04603c48540'
+sha512sums=('fc597cf9a04edd6228fc06503ca11a37590f4bc423612137ea1a953206c01da33cc8fa8177956f5175922ce848939f64166f4a12a9e07a3824731906549088de'
             'dd4741b3621c5e76ba7c9eee44ffd41b1e6b6c24fdb19988efd780d307aff79a9dcfd710be9ad63db6857cbbd71c273c54d82be524a5326fc22f1233d9eb6ca2'
             'f1a38de20459c5b780c98aaab037fdf34357980e7f3b93c4b523636d016ca4ffc9d9679c2ee4a246b138ef0474b8190d2db1874b204c006b0f30b3c950c62ff6'
-            '79460145f706d3eb244335700a30be2e6862db2bcda042244cf45ec5227956130a366c54a4240167327e33fde4c9fa671305a7f942acedd17e994d24e0612a2b'
-            'a68f0622ea83eedf49c7d3e43909d20552a52848d5be987a650267a9827347af47654b93ed9926c2a429bfa6eb9666eaf8a21d4c4c6fcedca269d4a6d4d67f9b')
+            '71c9b0aacef42e87febee042d251c2835e3d30b8000f9b00afb48d74a7e7aba93a36530c1ef0d6da69bb4d115e7a852a8888f1bcf868d1bd60d9e3f55a024088'
+            '1545c8ad6e24d9fe4a0eb1e918ab5465c955f7e82036483c5ede74574a1adfadc6049c800e1480f78b5d4346abced4eeff821ee5df25d9dc3ea6f9fbffefaaaf')
 
 prepare() {
   patch -Np1 -d "$srcdir/tdesktop-$pkgver-full" -i "$srcdir/export-patches.patch"
