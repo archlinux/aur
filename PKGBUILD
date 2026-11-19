@@ -1,7 +1,8 @@
-# Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
+# Maintainer: agony <27015 at riseup dot net>
+# Contributor: Jamie Magee <jamie dot magee at gmail dot com>
 
 pkgname=scorecard
-pkgver=5.6.0 # renovate: datasource=github-tags depName=ossf/scorecard
+pkgver=5.6.0
 pkgrel=1
 pkgdesc='Security health metrics for Open Source'
 arch=('x86_64')
