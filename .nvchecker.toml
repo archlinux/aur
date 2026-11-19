@@ -1,0 +1,5 @@
+[venti-bin]
+source = "github"
+github = "programmersd21/venti"
+use_latest_release = true
+prefix = "v"
