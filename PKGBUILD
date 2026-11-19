@@ -4,7 +4,7 @@
 # Squelch release, bump _squelch and keep depends and the whisper.cpp commit in
 # step with Squelch's PKGBUILD.
 pkgname=nullspace
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 _squelch=0.12.0
 pkgdesc='Tasks, notes, screen captures, voice notes and dictation from one key'
@@ -26,7 +26,7 @@ conflicts=('squelch')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/desktop-v$pkgver.tar.gz"
         "squelch-$_squelch.tar.gz::https://github.com/ieatfood314/squelch/archive/refs/tags/v$_squelch.tar.gz"
         "whisper.cpp::git+https://github.com/ggml-org/whisper.cpp.git#commit=0c7be696371069e0baa2515ed7aa08d5a5473aa6")
-sha256sums=('be51ebd071ba32dcedf76bbe2902af172b232cb03df33416e104c8ff770d11f0'
+sha256sums=('27d107e25bd9d03d94b60721379e1433a06281a0d713d68ebd0e193f070a5ebb'
             '7db127986dc8d792c5dc04c698334d5a42299a4333b5932051296654747ae678'
             'SKIP')
 options=('!debug')
