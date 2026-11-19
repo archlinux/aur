@@ -1,6 +1,6 @@
 pkgbase = mex
 	pkgdesc = Terminal UI to browse and debug mDNS/DNS-SD on the local link — live services, records, queries, raw packets, and anomaly detection
-	pkgver = 0.20.2
+	pkgver = 0.20.4
 	pkgrel = 1
 	url = https://github.com/hrzlgnm/mex
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mex
 	makedepends = rust
 	options = !strip
 	options = !emptydirs
-	source = mex-0.20.2.tar.gz::https://github.com/hrzlgnm/mex/archive/refs/tags/v0.20.2.tar.gz
-	sha256sums = 78385036caae9736fb295c78d0bce909ae9cb10dea9170c892bc5ae876cbb99b
+	source = mex-0.20.4.tar.gz::https://github.com/hrzlgnm/mex/archive/refs/tags/v0.20.4.tar.gz
+	sha256sums = be2949825c4e4598004b23b267e56ed0c4b35f9366a00daeb223167513dc4552
 
 pkgname = mex
