@@ -1,0 +1,1154 @@
+From bd86ce5c871830751414290b17470fa5b130dde4 Mon Sep 17 00:00:00 2001
+From: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
+Date: Thu, 19 Nov 2026 20:18:00 +0200
+Subject: [PATCH] clean: remove the auto update functionallty
+
+This build is managed via the package manager
+---
+ src/app/mod.rs            |   1 -
+ src/app/state.rs          |  32 --
+ src/app/updater.rs        | 654 --------------------------------------
+ src/app/util.rs           |  18 --
+ src/events/mod.rs         |   1 -
+ src/events/runner.rs      |  14 +-
+ src/events/update_mode.rs | 145 ---------
+ src/main.rs               |  12 +-
+ src/ui/mod.rs             |   5 -
+ src/ui/update_popup.rs    |  93 ------
+ 10 files changed, 3 insertions(+), 972 deletions(-)
+ delete mode 100644 src/app/updater.rs
+ delete mode 100644 src/events/update_mode.rs
+ delete mode 100644 src/ui/update_popup.rs
+
+diff --git a/src/app/mod.rs b/src/app/mod.rs
+index 1227a54..9e3e51e 100644
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -21,5 +21,4 @@ pub mod settings_types;
+ pub mod state;
+ pub mod summary;
+ pub mod transaction_io;
+-pub mod updater;
+ pub mod util;
+diff --git a/src/app/state.rs b/src/app/state.rs
+index 9a6671f..c1acfc1 100644
+--- a/src/app/state.rs
++++ b/src/app/state.rs
+@@ -3,7 +3,6 @@ use crate::app::fields::{
+     FilterCriterion, InvestmentAccountField, InvestmentEntryField, ReconcileField, RecurringField,
+     SelectingField,
+ };
+-use crate::app::updater;
+ use crate::config::{AppSettings, load_settings, save_settings};
+ use crate::csv_io::{load_seed_categories, load_transactions};
+ use crate::db::account_store::{AccountStore, SqliteAccountStore};
+@@ -21,9 +20,6 @@ use std::collections::{HashMap, HashSet};
+ use std::fs::{copy, create_dir_all};
+ use std::io::{Error, ErrorKind};
+ use std::path::{Path, PathBuf};
+-use std::sync::atomic::AtomicBool;
+-use std::sync::{Arc, mpsc};
+-use std::thread;
+ 
+ pub(crate) enum DateUnit {
+     Day,
+@@ -273,32 +269,11 @@ pub struct App {
+     pub(crate) previous_mode: Option<AppMode>,
+     pub(crate) help_table_state: TableState,
+     pub(crate) hide_help_bar: bool,
+-    // Update Check
+-    pub(crate) update: Option<updater::Update>,
+-    pub(crate) update_phase: UpdatePhase,
+-    pub(crate) show_update_popup: bool,
+     pub(crate) file_browser: Option<crate::app::file_browser::FileBrowser>,
+-    pub(crate) update_rx: mpsc::Receiver<Option<updater::Update>>,
+-    pub(crate) update_progress_rx: Option<mpsc::Receiver<updater::Progress>>,
+-    pub(crate) update_cancel: Arc<AtomicBool>,
+-    pub(crate) after_exit: Option<updater::AfterExit>,
+-}
+-
+-pub(crate) enum UpdatePhase {
+-    Offer,
+-    Downloading { received: u64, total: u64 },
+-    Installed(PathBuf),
+-    Failed(String),
+ }
+ 
+ impl App {
+     pub fn new() -> Self {
+-        // --- Start Update Check ---
+-        let (tx, rx) = mpsc::channel();
+-        thread::spawn(move || {
+-            let _ = tx.send(updater::check());
+-        });
+-
+         // --- Load Settings ---
+         let (loaded_settings, load_settings_error_msg) = match load_settings() {
+             Ok(settings) => (settings, None),
+@@ -572,14 +547,7 @@ impl App {
+             previous_mode: None,
+             help_table_state: TableState::default(),
+             hide_help_bar: loaded_settings.hide_help_bar.unwrap_or(false),
+-            update: None,
+-            update_phase: UpdatePhase::Offer,
+-            show_update_popup: false,
+             file_browser: None,
+-            update_rx: rx,
+-            update_progress_rx: None,
+-            update_cancel: Arc::new(AtomicBool::new(false)),
+-            after_exit: None,
+         };
+         if let Some(version) = Self::newer_schema_version(&app.database_path) {
+             app.status_message = Some(format!(
+diff --git a/src/app/updater.rs b/src/app/updater.rs
+deleted file mode 100644
+index 6cebf18..0000000
+--- a/src/app/updater.rs
++++ /dev/null
+@@ -1,654 +0,0 @@
+-use data_encoding::{BASE64, HEXLOWER};
+-use ed25519_dalek::{Signature, VerifyingKey};
+-use serde::Deserialize;
+-use sha2::{Digest, Sha256};
+-use std::collections::BTreeMap;
+-use std::fs;
+-use std::io::{Read, Write};
+-use std::path::{Path, PathBuf};
+-use std::process::{Command, Stdio};
+-use std::sync::atomic::{AtomicBool, Ordering};
+-use std::time::Duration;
+-
+-pub const RELEASES_PAGE: &str = "https://github.com/Feromond/budget-tracker-tui/releases";
+-const MANIFEST_URL: &str =
+-    "https://github.com/Feromond/budget-tracker-tui/releases/latest/download/latest.json";
+-const DOWNLOAD_PREFIX: &str = "https://github.com/Feromond/budget-tracker-tui/releases/download/";
+-const BREW_API: &str = "https://formulae.brew.sh/api/formula/budget-tracker.json";
+-// Limit the response to fit `MAX_MANIFEST`.
+-const CRATES_API: &str =
+-    "https://crates.io/api/v1/crates/budget-tracker-tui?include=default_version";
+-const USER_AGENT: &str = concat!(
+-    "budget-tracker/",
+-    env!("CARGO_PKG_VERSION"),
+-    " (+https://github.com/Feromond/budget-tracker-tui)"
+-);
+-
+-// Must match CI's UPDATE_SIGNING_KEY; installed apps trust this key.
+-const PUBLIC_KEY_HEX: &str = "c010a4a4ca51d493ddff59ac828fc1221d730a5867f406f6865c0f9d86a9951d";
+-const CONTEXT: &[u8] = b"budget-tracker/update/v1";
+-const MAX_MANIFEST: u64 = 64 * 1024;
+-const MAX_DOWNLOAD: u64 = 256 * 1024 * 1024;
+-
+-const TARGET: &str = env!("BUILD_TARGET");
+-const BIN_FILE: &str = if cfg!(windows) {
+-    "budget-tracker.exe"
+-} else {
+-    "budget-tracker"
+-};
+-const CRATE_NAME: &str = "budget-tracker-tui";
+-const BREW_FORMULA: &str = "budget-tracker";
+-const STAGING_PREFIX: &str = ".budget-tracker-update-";
+-// Allow an hour for cleanup; downloads time out after 10 minutes.
+-const STALE_STAGING: Duration = Duration::from_secs(60 * 60);
+-#[cfg(windows)]
+-const OLD_EXE: &str = "budget-tracker.old.exe";
+-
+-type Result<T> = std::result::Result<T, String>;
+-
+-#[derive(Debug, Clone)]
+-pub struct Update {
+-    pub version: String,
+-    pub action: Action,
+-}
+-
+-#[derive(Debug, Clone)]
+-pub enum Action {
+-    Replace { exe: PathBuf, asset: Asset },
+-    Installer { asset: Asset },
+-    Brew { prefix: PathBuf },
+-    Cargo { root: PathBuf },
+-    Browser,
+-}
+-
+-impl Action {
+-    pub fn in_app(&self) -> bool {
+-        matches!(self, Action::Replace { .. } | Action::Installer { .. })
+-    }
+-
+-    pub fn download_size(&self) -> u64 {
+-        match self {
+-            Action::Replace { asset, .. } | Action::Installer { asset } => asset.size,
+-            _ => 0,
+-        }
+-    }
+-
+-    pub fn command(&self) -> Option<String> {
+-        match self {
+-            Action::Brew { .. } => Some(format!("brew upgrade {BREW_FORMULA}")),
+-            Action::Cargo { .. } => Some(format!("cargo install {CRATE_NAME} --locked")),
+-            _ => None,
+-        }
+-    }
+-}
+-
+-#[derive(Debug)]
+-pub enum AfterExit {
+-    Restart(PathBuf),
+-    RunInstaller { path: PathBuf, asset: Asset },
+-    Upgrade { action: Action, version: String },
+-}
+-
+-pub enum Progress {
+-    Downloading { received: u64, total: u64 },
+-    Finished(Result<AfterExit>),
+-}
+-
+-#[derive(Debug, Clone, Deserialize)]
+-pub struct Asset {
+-    url: String,
+-    size: u64,
+-    sha256: String,
+-}
+-
+-#[derive(Deserialize)]
+-struct Manifest {
+-    version: String,
+-    files: BTreeMap<String, Asset>,
+-}
+-
+-enum Install {
+-    Standalone(PathBuf),
+-    WindowsSetup,
+-    Homebrew(PathBuf),
+-    Cargo(PathBuf),
+-    Manual,
+-}
+-
+-/// Blocks on the network; call it off the UI thread.
+-pub fn check() -> Option<Update> {
+-    let agent = agent(Duration::from_secs(5));
+-    let (version, action) = match detect_install() {
+-        Install::Homebrew(prefix) => {
+-            #[derive(Deserialize)]
+-            struct Formula {
+-                versions: Versions,
+-            }
+-            #[derive(Deserialize)]
+-            struct Versions {
+-                stable: String,
+-            }
+-            let formula: Formula =
+-                serde_json::from_slice(&get(&agent, BREW_API, MAX_MANIFEST)?).ok()?;
+-            (formula.versions.stable, Action::Brew { prefix })
+-        }
+-        Install::Cargo(root) => {
+-            #[derive(Deserialize)]
+-            struct Crate {
+-                #[serde(rename = "crate")]
+-                krate: Info,
+-            }
+-            #[derive(Deserialize)]
+-            struct Info {
+-                default_version: String,
+-            }
+-            let info: Crate =
+-                serde_json::from_slice(&get(&agent, CRATES_API, MAX_MANIFEST)?).ok()?;
+-            (info.krate.default_version, Action::Cargo { root })
+-        }
+-        install => {
+-            let manifest = fetch_manifest(&agent)?;
+-            let asset = |key: &str| {
+-                manifest
+-                    .files
+-                    .get(key)
+-                    .filter(|a| a.url.starts_with(DOWNLOAD_PREFIX) && a.size <= MAX_DOWNLOAD)
+-                    .cloned()
+-            };
+-            let action = match install {
+-                Install::Standalone(exe) => {
+-                    asset(TARGET).map(|asset| Action::Replace { exe, asset })
+-                }
+-                Install::WindowsSetup => {
+-                    asset(&format!("{TARGET}-setup")).map(|asset| Action::Installer { asset })
+-                }
+-                _ => None,
+-            };
+-            (manifest.version, action.unwrap_or(Action::Browser))
+-        }
+-    };
+-    is_newer(&version).then_some(Update { version, action })
+-}
+-
+-fn is_newer(version: &str) -> bool {
+-    match (
+-        semver::Version::parse(version.trim_start_matches('v')),
+-        semver::Version::parse(env!("CARGO_PKG_VERSION")),
+-    ) {
+-        (Ok(remote), Ok(current)) => remote > current,
+-        _ => false,
+-    }
+-}
+-
+-fn agent(timeout: Duration) -> ureq::Agent {
+-    ureq::Agent::config_builder()
+-        .timeout_connect(Some(timeout.min(Duration::from_secs(10))))
+-        .timeout_global(Some(timeout))
+-        .user_agent(USER_AGENT)
+-        .build()
+-        .new_agent()
+-}
+-
+-fn get(agent: &ureq::Agent, url: &str, limit: u64) -> Option<Vec<u8>> {
+-    let response = agent.get(url).call().ok()?;
+-    response
+-        .into_body()
+-        .with_config()
+-        .limit(limit)
+-        .read_to_vec()
+-        .ok()
+-}
+-
+-fn fetch_manifest(agent: &ureq::Agent) -> Option<Manifest> {
+-    let bytes = get(agent, MANIFEST_URL, MAX_MANIFEST)?;
+-    let signature = get(agent, &format!("{MANIFEST_URL}.sig"), 1024)?;
+-    if !verify(&bytes, std::str::from_utf8(&signature).ok()?) {
+-        return None;
+-    }
+-    serde_json::from_slice(&bytes).ok()
+-}
+-
+-fn verify(manifest: &[u8], signature: &str) -> bool {
+-    let key = HEXLOWER
+-        .decode(PUBLIC_KEY_HEX.as_bytes())
+-        .ok()
+-        .and_then(|k| <[u8; 32]>::try_from(k).ok());
+-    let signature = BASE64
+-        .decode(signature.trim().as_bytes())
+-        .ok()
+-        .and_then(|s| <[u8; 64]>::try_from(s).ok());
+-    let (Some(key), Some(signature)) = (key, signature) else {
+-        return false;
+-    };
+-    let mut message = Vec::with_capacity(CONTEXT.len() + 1 + manifest.len());
+-    message.extend_from_slice(CONTEXT);
+-    message.push(0);
+-    message.extend_from_slice(manifest);
+-    VerifyingKey::from_bytes(&key).is_ok_and(|key| {
+-        key.verify_strict(&message, &Signature::from_bytes(&signature))
+-            .is_ok()
+-    })
+-}
+-
+-fn detect_install() -> Install {
+-    if cfg!(debug_assertions) {
+-        return Install::Manual;
+-    }
+-    let Ok(exe) = std::env::current_exe() else {
+-        return Install::Manual;
+-    };
+-    // Windows' canonical form is a \\?\ path, which some tools choke on.
+-    let exe = if cfg!(windows) {
+-        exe
+-    } else {
+-        exe.canonicalize().unwrap_or(exe)
+-    };
+-    let Some(dir) = exe.parent() else {
+-        return Install::Manual;
+-    };
+-    // unins000.exe is the old Inno Setup installer; the new setup migrates it.
+-    if cfg!(windows) && (dir.join("uninstall.exe").is_file() || dir.join("unins000.exe").is_file())
+-    {
+-        return Install::WindowsSetup;
+-    }
+-    if let Some(prefix) = homebrew_prefix(&exe) {
+-        return Install::Homebrew(prefix);
+-    }
+-    if let Some(root) = cargo_root(dir) {
+-        return Install::Cargo(root);
+-    }
+-    let system_managed = ["/usr/bin", "/usr/sbin", "/bin", "/nix", "/snap", "/opt"]
+-        .iter()
+-        .any(|p| exe.starts_with(p));
+-    if !system_managed && writable(dir) {
+-        Install::Standalone(exe)
+-    } else {
+-        Install::Manual
+-    }
+-}
+-
+-/// `<prefix>/Cellar/budget-tracker/<version>/bin/budget-tracker` -> `<prefix>`.
+-fn homebrew_prefix(exe: &Path) -> Option<PathBuf> {
+-    let keg = exe.parent()?.ancestors().find(|p| {
+-        p.file_name().is_some_and(|n| n == BREW_FORMULA)
+-            && p.parent()
+-                .and_then(Path::file_name)
+-                .is_some_and(|n| n == "Cellar")
+-    })?;
+-    let prefix = keg.parent()?.parent()?;
+-    prefix
+-        .join("bin/brew")
+-        .is_file()
+-        .then(|| prefix.to_path_buf())
+-}
+-
+-fn cargo_root(bin_dir: &Path) -> Option<PathBuf> {
+-    if bin_dir.file_name()? != "bin" {
+-        return None;
+-    }
+-    let root = bin_dir.parent()?;
+-    let manifest: serde_json::Value =
+-        serde_json::from_slice(&fs::read(root.join(".crates2.json")).ok()?).ok()?;
+-    // Keys look like "budget-tracker-tui 1.7.0 (registry+https://...)".
+-    let ours = manifest.get("installs")?.as_object()?.keys().any(|key| {
+-        key.split(' ')
+-            .next()
+-            .is_some_and(|name| name.replace('_', "-") == CRATE_NAME)
+-    });
+-    ours.then(|| root.to_path_buf())
+-}
+-
+-fn writable(dir: &Path) -> bool {
+-    let probe = dir.join(format!(".budget-tracker-probe-{}", std::process::id()));
+-    let ok = fs::OpenOptions::new()
+-        .write(true)
+-        .create_new(true)
+-        .open(&probe)
+-        .is_ok();
+-    if ok {
+-        let _ = fs::remove_file(&probe);
+-    }
+-    ok
+-}
+-
+-// Keep each instance's download separate.
+-fn staging_dir(parent: &Path) -> PathBuf {
+-    parent.join(format!("{STAGING_PREFIX}{}", std::process::id()))
+-}
+-
+-pub fn clean_up() {
+-    let Some(dir) = std::env::current_exe()
+-        .ok()
+-        .and_then(|exe| exe.parent().map(Path::to_path_buf))
+-    else {
+-        return;
+-    };
+-    remove_stale_staging(&dir);
+-    #[cfg(windows)]
+-    {
+-        // Fails harmlessly while the instance that renamed it is still running.
+-        let _ = fs::remove_file(dir.join(OLD_EXE));
+-        remove_stale_staging(&std::env::temp_dir());
+-    }
+-}
+-
+-fn remove_stale_staging(parent: &Path) {
+-    let Ok(entries) = fs::read_dir(parent) else {
+-        return;
+-    };
+-    for entry in entries.flatten() {
+-        let stale = entry
+-            .metadata()
+-            .and_then(|m| m.modified())
+-            .ok()
+-            .and_then(|modified| modified.elapsed().ok())
+-            .is_some_and(|age| age > STALE_STAGING);
+-        let ours = entry
+-            .file_name()
+-            .to_str()
+-            .is_some_and(|name| name.starts_with(STAGING_PREFIX));
+-        if ours && stale && entry.path().is_dir() {
+-            let _ = fs::remove_dir_all(entry.path());
+-        }
+-    }
+-}
+-
+-/// Blocks; `progress` reports (bytes received, total). Cancellation stops before replacement.
+-pub fn install(
+-    action: &Action,
+-    cancel: &AtomicBool,
+-    mut progress: impl FnMut(u64, u64),
+-) -> Result<AfterExit> {
+-    match action {
+-        Action::Replace { exe, asset } => {
+-            replace(exe, asset, cancel, &mut progress)?;
+-            Ok(AfterExit::Restart(exe.clone()))
+-        }
+-        Action::Installer { asset } => {
+-            let dir = staging_dir(&std::env::temp_dir());
+-            let _ = fs::remove_dir_all(&dir);
+-            let path = download(asset, &dir, cancel, &mut progress)?;
+-            Ok(AfterExit::RunInstaller {
+-                path,
+-                asset: asset.clone(),
+-            })
+-        }
+-        _ => Err("this install can't update itself".into()),
+-    }
+-}
+-
+-const CANCELLED: &str = "the update was cancelled";
+-
+-fn expected_hash(asset: &Asset) -> Result<Vec<u8>> {
+-    HEXLOWER
+-        .decode(asset.sha256.to_ascii_lowercase().as_bytes())
+-        .map_err(|_| "the update information is malformed".into())
+-}
+-
+-fn download(
+-    asset: &Asset,
+-    dir: &Path,
+-    cancel: &AtomicBool,
+-    progress: &mut impl FnMut(u64, u64),
+-) -> Result<PathBuf> {
+-    let expected = expected_hash(asset)?;
+-    let name = asset
+-        .url
+-        .rsplit('/')
+-        .next()
+-        .filter(|name| {
+-            !name.is_empty()
+-                && !name.starts_with('.')
+-                && name
+-                    .chars()
+-                    .all(|c| c.is_ascii_alphanumeric() || matches!(c, '.' | '-' | '_'))
+-        })
+-        .ok_or("the update information is malformed")?;
+-    fs::create_dir_all(dir).map_err(io_error)?;
+-    let path = dir.join(name);
+-    let partial = dir.join(format!("{name}.part"));
+-
+-    let response = agent(Duration::from_secs(10 * 60))
+-        .get(&asset.url)
+-        .call()
+-        .map_err(|e| format!("couldn't download the update: {e}"))?;
+-    let mut body = response.into_body().into_reader();
+-    let _ = fs::remove_file(&partial);
+-    let mut file = fs::OpenOptions::new()
+-        .write(true)
+-        .create_new(true)
+-        .open(&partial)
+-        .map_err(io_error)?;
+-    let mut hasher = Sha256::new();
+-    let mut received = 0u64;
+-    let mut buffer = vec![0u8; 64 * 1024];
+-    let result = loop {
+-        if cancel.load(Ordering::Relaxed) {
+-            break Err(CANCELLED.into());
+-        }
+-        let n = match body.read(&mut buffer) {
+-            Ok(0) => break Ok(()),
+-            Ok(n) => n,
+-            Err(e) => break Err(format!("couldn't download the update: {e}")),
+-        };
+-        received += n as u64;
+-        if received > asset.size {
+-            break Err("the download doesn't match the update".into());
+-        }
+-        hasher.update(&buffer[..n]);
+-        if let Err(e) = file.write_all(&buffer[..n]) {
+-            break Err(io_error(e));
+-        }
+-        progress(received, asset.size);
+-    };
+-    let result = result
+-        .and_then(|_| file.sync_all().map_err(io_error))
+-        .and_then(|_| {
+-            if received == asset.size && hasher.finalize().as_slice() == expected.as_slice() {
+-                Ok(())
+-            } else {
+-                Err("the download doesn't match the update".into())
+-            }
+-        });
+-    drop(file);
+-    if let Err(e) = result {
+-        let _ = fs::remove_file(&partial);
+-        return Err(e);
+-    }
+-    fs::rename(&partial, &path).map_err(io_error)?;
+-    Ok(path)
+-}
+-
+-// The staged file may have changed since download.
+-fn verify_file(path: &Path, asset: &Asset) -> Result<()> {
+-    let expected = expected_hash(asset)?;
+-    let mut file = fs::File::open(path).map_err(io_error)?;
+-    let mut hasher = Sha256::new();
+-    let mut size = 0u64;
+-    let mut buffer = vec![0u8; 64 * 1024];
+-    loop {
+-        let n = file.read(&mut buffer).map_err(io_error)?;
+-        if n == 0 {
+-            break;
+-        }
+-        size += n as u64;
+-        hasher.update(&buffer[..n]);
+-    }
+-    if size == asset.size && hasher.finalize().as_slice() == expected.as_slice() {
+-        Ok(())
+-    } else {
+-        Err("the download doesn't match the update".into())
+-    }
+-}
+-
+-fn replace(
+-    exe: &Path,
+-    asset: &Asset,
+-    cancel: &AtomicBool,
+-    progress: &mut impl FnMut(u64, u64),
+-) -> Result<()> {
+-    let dir = exe.parent().ok_or("can't find the app's folder")?;
+-    // Staged next to the binary so the final rename stays on one filesystem.
+-    let staging = staging_dir(dir);
+-    let _ = fs::remove_dir_all(&staging);
+-    let archive = download(asset, &staging, cancel, progress)?;
+-
+-    let tar = if cfg!(windows) {
+-        // System32's bsdtar reads zips; a GNU tar earlier on PATH wouldn't.
+-        PathBuf::from(std::env::var_os("SystemRoot").unwrap_or_else(|| "C:\\Windows".into()))
+-            .join("System32\\tar.exe")
+-    } else {
+-        PathBuf::from("tar")
+-    };
+-    let status = Command::new(tar)
+-        .arg("-xf")
+-        .arg(&archive)
+-        .arg("-C")
+-        .arg(&staging)
+-        .stdin(Stdio::null())
+-        .stdout(Stdio::null())
+-        .stderr(Stdio::null())
+-        .status()
+-        .map_err(|e| format!("couldn't unpack the update: {e}"))?;
+-    if !status.success() {
+-        return Err("couldn't unpack the update".into());
+-    }
+-    let new = fs::read_dir(&staging)
+-        .map_err(io_error)?
+-        .filter_map(|e| e.ok().map(|e| e.path().join(BIN_FILE)))
+-        .find(|p| p.is_file())
+-        .ok_or("the update has no app in it")?;
+-    if cancel.load(Ordering::Relaxed) {
+-        let _ = fs::remove_dir_all(&staging);
+-        return Err(CANCELLED.into());
+-    }
+-
+-    #[cfg(unix)]
+-    {
+-        use std::os::unix::fs::PermissionsExt;
+-        fs::set_permissions(&new, fs::Permissions::from_mode(0o755)).map_err(io_error)?;
+-    }
+-    // A running exe can't be overwritten on Windows, but it can be renamed.
+-    #[cfg(windows)]
+-    {
+-        let old = dir.join(OLD_EXE);
+-        let _ = fs::remove_file(&old);
+-        fs::rename(exe, &old).map_err(io_error)?;
+-        if let Err(e) = fs::rename(&new, exe) {
+-            let _ = fs::rename(&old, exe);
+-            return Err(io_error(e));
+-        }
+-    }
+-    #[cfg(not(windows))]
+-    fs::rename(&new, exe).map_err(io_error)?;
+-
+-    let _ = fs::remove_dir_all(&staging);
+-    Ok(())
+-}
+-
+-fn io_error(e: std::io::Error) -> String {
+-    format!("couldn't install the update: {e}")
+-}
+-
+-/// Call after restoring the terminal.
+-pub fn run_after_exit(after: AfterExit) -> std::result::Result<(), Box<dyn std::error::Error>> {
+-    match after {
+-        AfterExit::Restart(exe) => restart(&exe),
+-        AfterExit::RunInstaller { path, asset } => {
+-            verify_file(&path, &asset)?;
+-            // /P: passive, /R: reopen the app after, /NS: don't recreate deleted shortcuts.
+-            Command::new(&path)
+-                .args(["/P", "/R", "/NS"])
+-                .stdin(Stdio::null())
+-                .stdout(Stdio::null())
+-                .stderr(Stdio::null())
+-                .spawn()?;
+-            println!(
+-                "Installing the update. Budget Tracker reopens in a new window when it's done."
+-            );
+-            Ok(())
+-        }
+-        AfterExit::Upgrade { action, version } => upgrade(&action, &version),
+-    }
+-}
+-
+-fn restart(exe: &Path) -> std::result::Result<(), Box<dyn std::error::Error>> {
+-    #[cfg(unix)]
+-    {
+-        use std::os::unix::process::CommandExt;
+-        Err(Command::new(exe).exec().into())
+-    }
+-    #[cfg(not(unix))]
+-    {
+-        let status = Command::new(exe).status()?;
+-        std::process::exit(status.code().unwrap_or(0));
+-    }
+-}
+-
+-fn upgrade(action: &Action, version: &str) -> std::result::Result<(), Box<dyn std::error::Error>> {
+-    let shown = action.command().unwrap_or_default();
+-    let (mut command, relaunch) = match action {
+-        Action::Brew { prefix } => {
+-            let mut command = Command::new(prefix.join("bin/brew"));
+-            command
+-                .args(["upgrade", BREW_FORMULA])
+-                // Refresh brew's index so it sees the new release.
+-                .env("HOMEBREW_AUTO_UPDATE_SECS", "0");
+-            // The old Cellar path is gone; bin/ links to the new version.
+-            (command, prefix.join("bin").join(BIN_FILE))
+-        }
+-        Action::Cargo { root } => {
+-            let bin = root.join("bin");
+-            let cargo = bin.join(if cfg!(windows) { "cargo.exe" } else { "cargo" });
+-            let mut command = Command::new(if cargo.is_file() {
+-                cargo.into_os_string()
+-            } else {
+-                "cargo".into()
+-            });
+-            command
+-                .args(["install", CRATE_NAME, "--locked", "--root"])
+-                .arg(root);
+-            (command, bin.join(BIN_FILE))
+-        }
+-        _ => return Ok(()),
+-    };
+-
+-    println!("Updating Budget Tracker to {version}: {shown}\n");
+-    #[cfg(windows)]
+-    let parked = {
+-        let old = relaunch.with_file_name(OLD_EXE);
+-        let _ = fs::remove_file(&old);
+-        fs::rename(&relaunch, &old).ok().map(|_| old)
+-    };
+-    let status = command.status();
+-    let succeeded = matches!(&status, Ok(s) if s.success());
+-    #[cfg(windows)]
+-    if let Some(old) = parked
+-        && !relaunch.is_file()
+-    {
+-        let _ = fs::rename(old, &relaunch);
+-    }
+-    if !succeeded {
+-        let reason = match status {
+-            Err(e) => format!(" ({e})"),
+-            Ok(_) => String::new(),
+-        };
+-        eprintln!("\nThe update didn't finish{reason}. You can run it yourself: {shown}");
+-    } else {
+-        let installed = Command::new(&relaunch)
+-            .arg("--version")
+-            .output()
+-            .map(|out| String::from_utf8_lossy(&out.stdout).into_owned())
+-            .unwrap_or_default();
+-        if installed.split_whitespace().any(|word| word == version) {
+-            return restart(&relaunch);
+-        }
+-        println!("\nBudget Tracker {version} isn't available there yet. Try again later.");
+-    }
+-    if !relaunch.is_file() {
+-        std::process::exit(1);
+-    }
+-    println!("Press Enter to reopen Budget Tracker.");
+-    let _ = std::io::stdin().read_line(&mut String::new());
+-    restart(&relaunch)
+-}
+diff --git a/src/app/util.rs b/src/app/util.rs
+index de98b32..52fa2fb 100644
+--- a/src/app/util.rs
++++ b/src/app/util.rs
+@@ -224,24 +224,6 @@ fn category_tiebreak(a: &CategoryRecord, b: &CategoryRecord) -> Ordering {
+         .then_with(|| a.id.cmp(&b.id))
+ }
+ 
+-/// Opens a URL in the default browser using system commands.
+-/// Returns true if successful, false otherwise.
+-pub fn open_url(url: &str) -> bool {
+-    let result = if cfg!(target_os = "macos") {
+-        std::process::Command::new("open").arg(url).spawn()
+-    } else if cfg!(target_os = "windows") {
+-        std::process::Command::new("cmd")
+-            .args(["/C", "start", url])
+-            .spawn()
+-    } else if cfg!(target_os = "linux") {
+-        std::process::Command::new("xdg-open").arg(url).spawn()
+-    } else {
+-        return false;
+-    };
+-
+-    result.map(|_| true).unwrap_or(false)
+-}
+-
+ // --- Recurring Transaction Utilities ---
+ 
+ /// Action types for jumping to original recurring transactions
+diff --git a/src/events/mod.rs b/src/events/mod.rs
+index ebfe623..b061f9d 100644
+--- a/src/events/mod.rs
++++ b/src/events/mod.rs
+@@ -17,6 +17,5 @@ mod selection_mode;
+ mod settings_mode;
+ mod summary_mode;
+ mod transaction_io_mode;
+-mod update_mode;
+ 
+ pub use runner::run_app;
+diff --git a/src/events/runner.rs b/src/events/runner.rs
+index 8fd3859..f8c1c85 100644
+--- a/src/events/runner.rs
++++ b/src/events/runner.rs
+@@ -10,7 +10,7 @@ use super::{
+     account_manager_mode, add_edit_mode, backup_mode, budget_mode, category_manager_mode,
+     debts_mode, file_browser_mode, filter_mode, fuzzy_search_mode, help_mode, investments_mode,
+     ledger_manager_mode, normal_mode, recurring_mode, selection_mode, settings_mode, summary_mode,
+-    transaction_io_mode, update_mode,
++    transaction_io_mode,
+ };
+ 
+ pub fn run_app<B: Backend>(
+@@ -32,10 +32,6 @@ where
+             needs_redraw = true;
+         }
+ 
+-        if update_mode::poll(app) {
+-            needs_redraw = true;
+-        }
+-
+         if needs_redraw {
+             terminal.draw(|f| ui(f, app))?;
+             needs_redraw = false;
+@@ -52,8 +48,7 @@ where
+                 Event::Paste(text) if app.file_browser.is_none() => app.handle_paste(&text),
+                 Event::Key(key)
+                     if key.kind == KeyEventKind::Press
+-                        && (app.show_update_popup
+-                                || app.file_browser.is_some()
++                        && (app.file_browser.is_some()
+                                 || key.modifiers == KeyModifiers::NONE
+                                 || (app.mode == AppMode::Settings && key.modifiers == KeyModifiers::CONTROL && matches!(key.code, KeyCode::Char('d') | KeyCode::Char('u') | KeyCode::Char('v') | KeyCode::Char('o')))
+                                 // Let Shift+Char pass through for typing capitals/symbols in settings path
+@@ -131,11 +126,6 @@ fn normalize_key(mut key: KeyEvent) -> KeyEvent {
+ 
+ // Main input handler, dispatching based on mode
+ fn update(app: &mut App, key_event: KeyEvent) {
+-    if app.show_update_popup {
+-        update_mode::handle_update_popup(app, key_event);
+-        return;
+-    }
+-
+     if app.file_browser.is_some() {
+         file_browser_mode::handle_file_browser(app, key_event);
+         return;
+diff --git a/src/events/update_mode.rs b/src/events/update_mode.rs
+deleted file mode 100644
+index df2ad5b..0000000
+--- a/src/events/update_mode.rs
++++ /dev/null
+@@ -1,145 +0,0 @@
+-use crate::app::state::{App, UpdatePhase};
+-use crate::app::updater::{self, AfterExit, Progress};
+-use crossterm::event::{KeyCode, KeyEvent};
+-use std::sync::Arc;
+-use std::sync::atomic::{AtomicBool, Ordering};
+-use std::sync::mpsc::{self, TryRecvError};
+-use std::thread;
+-
+-/// Returns true when update state changes.
+-pub fn poll(app: &mut App) -> bool {
+-    let mut changed = false;
+-    if let Ok(Some(update)) = app.update_rx.try_recv() {
+-        app.update = Some(update);
+-        app.update_phase = UpdatePhase::Offer;
+-        app.show_update_popup = true;
+-        changed = true;
+-    }
+-    while let Some(rx) = &app.update_progress_rx {
+-        let event = match rx.try_recv() {
+-            Ok(event) => event,
+-            Err(TryRecvError::Empty) => break,
+-            Err(TryRecvError::Disconnected) => {
+-                Progress::Finished(Err("the update stopped unexpectedly".into()))
+-            }
+-        };
+-        changed = true;
+-        match event {
+-            Progress::Downloading { received, total } => {
+-                app.update_phase = UpdatePhase::Downloading { received, total };
+-            }
+-            Progress::Finished(result) => {
+-                app.update_progress_rx = None;
+-                finish(app, result);
+-            }
+-        }
+-    }
+-    changed
+-}
+-
+-fn finish(app: &mut App, result: Result<AfterExit, String>) {
+-    let cancelled = app.update_cancel.load(Ordering::Relaxed);
+-    match result {
+-        Ok(AfterExit::Restart(exe)) => {
+-            app.update_phase = UpdatePhase::Installed(exe);
+-            // Cancelled too late: the swap already happened.
+-            if cancelled {
+-                updated_message(app);
+-            }
+-        }
+-        Ok(after) if !cancelled => {
+-            app.after_exit = Some(after);
+-            app.quit();
+-        }
+-        Ok(_) => app.update_phase = UpdatePhase::Offer,
+-        Err(_) if cancelled => app.update_phase = UpdatePhase::Offer,
+-        Err(e) => app.update_phase = UpdatePhase::Failed(e),
+-    }
+-}
+-
+-pub fn handle_update_popup(app: &mut App, key: KeyEvent) {
+-    let Some(update) = app.update.clone() else {
+-        app.show_update_popup = false;
+-        return;
+-    };
+-    match &app.update_phase {
+-        UpdatePhase::Downloading { .. } => {
+-            if key.code == KeyCode::Esc {
+-                app.update_cancel.store(true, Ordering::Relaxed);
+-                app.show_update_popup = false;
+-                app.set_status_message("Update cancelled.", Some(chrono::Duration::seconds(5)));
+-            }
+-        }
+-        UpdatePhase::Installed(exe) => {
+-            if matches!(key.code, KeyCode::Char('r' | 'R')) {
+-                app.after_exit = Some(AfterExit::Restart(exe.clone()));
+-                app.quit();
+-            } else {
+-                updated_message(app);
+-            }
+-        }
+-        UpdatePhase::Offer | UpdatePhase::Failed(_) => match key.code {
+-            KeyCode::Char('u' | 'U')
+-                if matches!(app.update_phase, UpdatePhase::Offer) && update.action.in_app() =>
+-            {
+-                start_download(app, update.action);
+-            }
+-            KeyCode::Char('u' | 'U')
+-                if matches!(app.update_phase, UpdatePhase::Offer)
+-                    && update.action.command().is_some() =>
+-            {
+-                app.after_exit = Some(AfterExit::Upgrade {
+-                    action: update.action,
+-                    version: update.version,
+-                });
+-                app.quit();
+-            }
+-            KeyCode::Enter | KeyCode::Char('o' | 'O') => open_releases_page(app),
+-            _ => app.show_update_popup = false,
+-        },
+-    }
+-}
+-
+-fn updated_message(app: &mut App) {
+-    app.show_update_popup = false;
+-    let version = app.update.as_ref().map_or("", |u| u.version.as_str());
+-    app.set_status_message(
+-        format!("Updated to {version}. Restart Budget Tracker to use it."),
+-        Some(chrono::Duration::seconds(5)),
+-    );
+-}
+-
+-fn start_download(app: &mut App, action: updater::Action) {
+-    let (tx, rx) = mpsc::channel();
+-    let cancel = Arc::new(AtomicBool::new(false));
+-    app.update_cancel = Arc::clone(&cancel);
+-    app.update_progress_rx = Some(rx);
+-    app.update_phase = UpdatePhase::Downloading {
+-        received: 0,
+-        total: action.download_size(),
+-    };
+-    thread::spawn(move || {
+-        let progress_tx = tx.clone();
+-        let mut last_percent = None;
+-        let result = updater::install(&action, &cancel, |received, total| {
+-            let percent = received * 100 / total.max(1);
+-            if last_percent != Some(percent) {
+-                last_percent = Some(percent);
+-                let _ = progress_tx.send(Progress::Downloading { received, total });
+-            }
+-        });
+-        let _ = tx.send(Progress::Finished(result));
+-    });
+-}
+-
+-fn open_releases_page(app: &mut App) {
+-    app.show_update_popup = false;
+-    if crate::app::util::open_url(updater::RELEASES_PAGE) {
+-        app.quit();
+-    } else {
+-        app.set_status_message(
+-            format!("Could not open browser. Visit {}", updater::RELEASES_PAGE),
+-            Some(chrono::Duration::seconds(5)),
+-        );
+-    }
+-}
+diff --git a/src/main.rs b/src/main.rs
+index d7f9c14..ebff6bd 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -49,8 +49,6 @@ fn main() -> StdResult<(), Box<dyn std::error::Error>> {
+         }
+     }
+ 
+-    app::updater::clean_up();
+-
+     // Restore the terminal before printing a panic.
+     let default_hook = std::panic::take_hook();
+     std::panic::set_hook(Box::new(move |info| {
+@@ -76,15 +74,7 @@ fn main() -> StdResult<(), Box<dyn std::error::Error>> {
+     }
+ 
+     match run_result {
+-        Ok(_) => match app.after_exit.take() {
+-            Some(after) => {
+-                // Release database and ledger locks before restarting.
+-                drop(app);
+-                drop(terminal);
+-                app::updater::run_after_exit(after)
+-            }
+-            None => Ok(()),
+-        },
++        Ok(_) => Ok(()),
+         Err(run_err) => {
+             eprintln!("Application Error: {}", run_err);
+             Err(run_err)
+diff --git a/src/ui/mod.rs b/src/ui/mod.rs
+index a3fa04d..5cef1f0 100644
+--- a/src/ui/mod.rs
++++ b/src/ui/mod.rs
+@@ -21,7 +21,6 @@ pub mod summary;
+ pub mod transaction_form;
+ pub mod transaction_io;
+ pub mod transaction_table;
+-pub mod update_popup;
+ 
+ use crate::app::state::{App, AppMode};
+ use ratatui::Frame;
+@@ -318,10 +317,6 @@ pub(crate) fn ui(f: &mut Frame, app: &mut App) {
+         help_popup::render_keybindings_popup(f, app, f.area());
+     }
+ 
+-    if app.show_update_popup {
+-        update_popup::render_update_popup(f, app, f.area());
+-    }
+-
+     if render_mode == AppMode::Filtering {
+         let cursor_x = app.simple_filter_content[..app.simple_filter_cursor]
+             .chars()
+diff --git a/src/ui/update_popup.rs b/src/ui/update_popup.rs
+deleted file mode 100644
+index 1954d39..0000000
+--- a/src/ui/update_popup.rs
++++ /dev/null
+@@ -1,93 +0,0 @@
+-use crate::app::state::{App, UpdatePhase};
+-use crate::app::updater::Action;
+-use crate::ui::helpers::centered_rect;
+-use ratatui::{
+-    Frame,
+-    layout::{Alignment, Constraint, Layout, Rect},
+-    style::{Color, Style},
+-    widgets::{Block, Borders, Clear, Gauge, Paragraph, Wrap},
+-};
+-
+-pub fn render_update_popup(f: &mut Frame, app: &App, area: Rect) {
+-    if !app.show_update_popup {
+-        return;
+-    }
+-    let Some(update) = &app.update else {
+-        return;
+-    };
+-    let version = &update.version;
+-    let popup_area = centered_rect(50, 40, area);
+-
+-    let block = Block::default()
+-        .title("Update Available")
+-        .borders(Borders::ALL)
+-        .style(Style::default().bg(Color::DarkGray).fg(Color::White));
+-    let inner_area = block.inner(popup_area);
+-    f.render_widget(Clear, popup_area);
+-    f.render_widget(block, popup_area);
+-
+-    let text = match &app.update_phase {
+-        UpdatePhase::Offer => {
+-            let how = match &update.action {
+-                Action::Replace { .. } | Action::Installer { .. } => {
+-                    "Press 'u' to update now.".to_string()
+-                }
+-                Action::Brew { .. } | Action::Cargo { .. } => format!(
+-                    "Press 'u' to close Budget Tracker and run\n{}\nIt reopens when that's done.",
+-                    update.action.command().unwrap_or_default()
+-                ),
+-                Action::Browser => "Visit GitHub releases to download.".to_string(),
+-            };
+-            format!(
+-                "\nVersion {version} is available!\n\n{how}\n\nPress <Enter> or 'o' to open the releases page and exit.\nPress any other key to close."
+-            )
+-        }
+-        UpdatePhase::Downloading { .. } => {
+-            format!("\nDownloading version {version}...\n\n\n\nPress Esc to cancel.")
+-        }
+-        UpdatePhase::Installed(_) => format!(
+-            "\nUpdated to version {version}.\n\nPress 'r' to restart into it now.\nPress any other key to keep working; the update applies next time you start."
+-        ),
+-        UpdatePhase::Failed(error) => format!(
+-            "\nThe update didn't work: {error}.\n\nPress <Enter> or 'o' to open the releases page and exit.\nPress any other key to close."
+-        ),
+-    };
+-
+-    let paragraph = Paragraph::new(text)
+-        .alignment(Alignment::Center)
+-        .wrap(Wrap { trim: true })
+-        .style(Style::default().fg(Color::White));
+-    f.render_widget(paragraph, inner_area);
+-
+-    // Drawn after the text so the paragraph's style doesn't repaint it.
+-    if let UpdatePhase::Downloading { received, total } = app.update_phase {
+-        render_progress(f, inner_area, received, total);
+-    }
+-}
+-
+-fn render_progress(f: &mut Frame, area: Rect, received: u64, total: u64) {
+-    let [_, gauge_area, _] = Layout::vertical([
+-        Constraint::Length(3),
+-        Constraint::Length(1),
+-        Constraint::Min(0),
+-    ])
+-    .areas(area);
+-    let gauge_area = gauge_area.inner(ratatui::layout::Margin::new(2, 0));
+-    let ratio = if total == 0 {
+-        0.0
+-    } else {
+-        (received as f64 / total as f64).clamp(0.0, 1.0)
+-    };
+-    let label = format!(
+-        "{:.1} / {:.1} MB",
+-        received as f64 / 1_048_576.0,
+-        total as f64 / 1_048_576.0
+-    );
+-    f.render_widget(
+-        Gauge::default()
+-            .gauge_style(Style::default().fg(Color::Green).bg(Color::Black))
+-            .ratio(ratio)
+-            .label(label),
+-        gauge_area,
+-    );
+-}
+-- 
+2.54.0
+
