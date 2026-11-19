@@ -67,3 +67,4 @@ nfs_layout_flexfiles
 prom21_xhci
 ntfs
 xt_mark
+xt_connmark

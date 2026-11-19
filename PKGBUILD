@@ -308,7 +308,7 @@ _tagrel=2
 # the same kernel version, so every build has its own `uname -r` and installs as a
 # visible upgrade. That is all it does: it does not protect the running kernel's
 # module tree, see the HAZARD above.
-pkgrel=3
+pkgrel=6
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 # Kept short: the split packages append their own suffixes to this string
 # ("... kernel and modules", "Non-stripped vmlinux file for the ..."), so a long
@@ -821,8 +821,20 @@ prepare() {
     # health warning. NETFILTER_XT_TARGET_MARK is only a deprecated alias that
     # selects this option. Listing xt_mark in modules.always keeps localmodconfig
     # from dropping it, since PC1 does not load it until tailscaled asks.
+    # The IPv6 half needs IP6_NF_IPTABLES, which has to be set after localmodconfig
+    # (see "Options localmodconfig would switch off" below).
     echo "Enabling the netfilter MARK target and match..."
     scripts/config -m NETFILTER_XT_MARK
+
+    # tailscaled's rp_filter workaround adds `-j CONNMARK --restore-mark` and
+    # `-m connmark` in mangle/PREROUTING. The base config has NETFILTER_XT_CONNMARK off,
+    # so with MARK in place tailscale status moved on to "Extension connmark revision 0
+    # not supported". It depends on NF_CONNTRACK (a module here) and selects
+    # NF_CONNTRACK_MARK (already built in). Listing xt_connmark in modules.always keeps
+    # localmodconfig from dropping it; the IPv6 CONNMARK target needs the
+    # IP6_NF_IPTABLES set below.
+    echo "Enabling the netfilter CONNMARK target and match..."
+    scripts/config -m NETFILTER_XT_CONNMARK
 
     ### CI-only stuff
     if _is_ci_build; then
@@ -912,6 +924,26 @@ prepare() {
             _die "No module list found at $_modlist"
         fi
     fi
+
+    ### Options localmodconfig would switch off
+    # xt_mark.c registers the IPv4 MARK target unconditionally but the IPv6 one only
+    # under CONFIG_IP6_NF_IPTABLES, which the base config leaves off. Without it
+    # ip6tables still fails to add tailscaled's MARK rule ("MARK: bad value for option
+    # --set-mark") while the same iptables rule loads. localmodconfig turns off every
+    # =m option it cannot tie to a module it keeps, and this one has no module of its
+    # own: xt_mark.c tests it with #if, not depends or select. Setting it earlier lost
+    # it (the 7.3.5-4 build ended with "# CONFIG_IP6_NF_IPTABLES is not set"), so it is
+    # set here, after localmodconfig, and the `make config` below resolves it.
+    # IP6_NF_IPTABLES gates the v6 sub-options and selects only NETFILTER_XTABLES; its
+    # sub-options default off here (NETFILTER_ADVANCED=y). -m, not -e: =y would select
+    # XTABLES to built-in.
+    echo "Enabling IP6_NF_IPTABLES for the IPv6 MARK target..."
+    scripts/config -m IP6_NF_IPTABLES
+    # Turning that gate on exposes 13 IPv6 match and target options the config has
+    # never seen (IP6_NF_MATCH_*, IP6_NF_TARGET_*), and the `make prepare` below asks
+    # about each one on a terminal, which stops a build run from one (pikaur, makepkg
+    # in a shell). olddefconfig takes every default without asking; they are all n here.
+    make "${BUILD_FLAGS[@]}" olddefconfig
 
     ### Rewrite configuration
     echo "Rewrite configuration..."
@@ -1264,7 +1296,7 @@ b2sums=('34499a44a378dd7a330f2fa821ebdef10f477af461e1e40f193a85c188133627c885ddd
         'SKIP'
         '44a20dc88f13e67c65c8d840d692063b3e99ed4a7a354760b97bb96788d19dd4fd0e6f2b0357a1e706c94275cc268bd5bf70f7f31a3695e6acb62994b0c7fc9b'
         '4103183a51f761fcc79e38dd6c48560a1bc7e7bd952bdaa5c2fbe0bf5e1ed593f896c00cfa2ce031ce720654c2078ecdb37d6c586417c75db7356569f44cb850'
-        'c86055ec8322e0a14d7dacc515037660c13c3e13a55172c3c38c24d77132323b217934a5e0faf037b181ea692d8452546706211ad81e0b6c291f90a9d5b732ba'
+        '1bedc10f4e0db13af96071907c90da7e13c83827b9e37172fe938539a182fc2a379fa7694a047155dfe7c508fda773b0d0abe7a66c3a1678b7bc791fc4378f6d'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e'
         '2033d4dcd3bc97aff7fb7d9e4dfa027b9efe1cda646080ab79ebf29d3b6e7ba70e5df246d24add3b44009074be1ff801b17d825e73e74bfc615f79f72a7287ef')
 
