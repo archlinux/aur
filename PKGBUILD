@@ -4,12 +4,12 @@
 pkgname=horcom-git
 _pkgname=horcom
 pkgver=0.89.r0.gde999ad
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete desktop astrology program and chart calculator (C++ rewrite of Robert Rettig's HORCOM)"
 arch=('x86_64')
 url="https://github.com/horcom-rr/HORCOM"
 license=('GPL-3.0-or-later')
-depends=('qt6-base' 'qt6-svg')
+depends=('qt6-base' 'qt6-svg' 'ttf-liberation')
 makedepends=('git' 'cmake' 'qt6-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -27,7 +27,7 @@ build() {
   cmake -B build -S . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_FLAGS="-Wno-error=format-truncation"
+    -DHORCOM_VERSION="$pkgver"
   cmake --build build
 }
 
