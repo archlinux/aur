@@ -1,88 +1,127 @@
 # Maintainer: Mark Austin <ganthore@gmail.com>
 
-pkgname=(gaia-amd gaia-amd-webui)
-pkgver=0.24.1
-pkgrel=3
+pkgname=(gaia-amd gaia-amd-cli gaia-amd-webui)
+pkgver=0.26.0
+pkgrel=1
 pkgdesc="AI-powered inference engine for AMD hardware"
 arch=(x86_64)
 url="https://github.com/amd/gaia"
 license=(MIT)
 
-# AUR-only deps (must be installed via an AUR helper or manually):
-#   lemonade-server, python-faiss, python-sentence-transformers,
-#   python-transformers, python-accelerate
-
-# Runtime deps for gaia-amd; gaia-amd-webui overrides with its own depends=()
+# Dependencies follow upstream's own split (setup.py at this version):
+#
+#   depends    = everything in upstream's core install_requires, plus the
+#                part of its [ui] extra that the Agent UI needs to start,
+#                because this package's gaia.service and gaia-amd-webui
+#                both run `gaia --ui`.
+#   optdepends = upstream's other extras, each labelled with the feature it
+#                enables, and external tools GAIA only calls when asked.
+#
+# Required packages that come from the AUR: python-apscheduler,
+# python-discord, python-tavily-python, python-faiss (faiss-cpu or faiss-gpu).
+#
+# Runtime deps for gaia-amd; gaia-amd-cli and gaia-amd-webui override with
+# their own depends=().
 depends=(
     python
-    python-requests
-    python-aiohttp
+    # upstream core (install_requires)
+    python-openai
+    python-anthropic
     python-pydantic
+    python-yaml
+    python-numpy
+    python-psutil
+    python-dateutil
     python-dotenv
+    python-aiohttp
     python-rich
+    python-requests
+    python-charset-normalizer
+    python-idna
+    python-httpx
+    python-truststore
+    python-beautifulsoup4
+    python-watchdog
+    python-pillow
+    python-apscheduler
+    python-tzlocal
+    python-tomli-w
+    python-keyring
+    python-discord
+    python-tavily-python
+    python-cryptography
+    # Agent UI server (from upstream's [ui] extra; faiss is imported at startup)
     python-fastapi
     uvicorn
-    python-psutil
-    python-pymupdf
-    python-pypdf
-    python-torchvision
-    python-joblib
-    python-cloudpickle
-    python-prompt_toolkit
-    python-typer
-    python-async-lru
-    python-fsspec
-    python-pyarrow
-    python-cryptography
-    python-lz4
-    python-orjson
-    python-cachetools
-    python-lxml
-    python-greenlet
-    python-msgpack
-    python-toml
-    python-fastjsonschema
     python-python-multipart
-    python-httpx
-    python-keyring
-    python-numpy
-    python-beautifulsoup4
     python-faiss
-    python-sentence-transformers
-    python-transformers
-    python-tokenizers
-    python-accelerate
-    python-aiodns
-    python-openai
-    python-openpyxl
-    python-reportlab
-    python-tomli-w
-    lemonade-server
+    # model server; upstream refuses anything older
+    'lemonade-server>=2026.44.1'
 )
-optdepends=('python-apscheduler: gaia schedule daemon (AUR)')
+optdepends=(
+    # upstream [ui]/[rag] extras: document formats
+    'python-pypdfium2: PDF indexing for document chat (AUR)'
+    'python-pypdf: PDF reading for document chat'
+    'python-docx: Word document indexing and generation'
+    'python-pptx: PowerPoint indexing and generation (AUR)'
+    'python-openpyxl: Excel (xlsx) document skill'
+    'python-reportlab: PDF generation document skill'
+    # upstream [mcp], [browser], [image], [media-url], [notify], [slack] extras
+    'python-mcp: MCP servers and the gaia-mcp bridge'
+    'python-playwright: browser automation tools'
+    'python-term-image: inline images in the terminal'
+    'yt-dlp: reading media from URLs'
+    'python-plyer: desktop notifications (AUR)'
+    'python-slack-sdk: Slack messaging integration (AUR)'
+    # upstream [talk], [diarize], [eval] extras
+    'python-sounddevice: microphone and speaker I/O for gaia talk (AUR)'
+    'python-websockets: realtime transcription for gaia talk'
+    'python-sherpa-onnx: speaker diarization (AUR)'
+    'python-pyarrow: gaia eval retrieval benchmarks'
+    # external tools GAIA runs on demand
+    'ffmpeg: transcribing audio and video recordings'
+    'npm: MCP servers started with npx'
+    'uv: MCP servers started with uvx'
+)
 makedepends=(
     git
     cmake
     ninja
+    go
     python-setuptools
     python-wheel
     python-build
     python-installer
     nodejs
     npm
-    electron40
+    electron44
     libappindicator
 )
 
-sha256sums=(f08f4835acc10eb8c9fd1d86c1e91680e11c2247a9f3fcc287278e819b348cac
-            95d029aa72c61d3fc10be4e79ae1e4a8a8fabce8c5c76ec8deb032c953ffced2
-            13598d2e9294b09ac7cf26739a0ae42acc4993fc2e63ac94a7867ec3d22c99df
+sha256sums=(1dbd95a6608bb41f7de66128318eaa38e04a763608fca67a71ac7fffd67f3dfe
+            037ab4a7275fa111521ffb8d02c3e55cc7173fb7ff59431cd279d13ed7c22575
+            2dc78e16a4f806faf9d58f8fd1e2608a8269f422a8bdd5787f71ff9bfe7e3de7
             3d185692ac7bd9834643052cb570a6a214878bf74f9e6e14b8c5115493bc7c7e)
 
 source=("gaia-amd-$pkgver.tar.gz::https://github.com/amd/gaia/archive/refs/tags/v$pkgver.tar.gz"
         "gaia.service"
         "gaia-user.service"
         "gaia.sysusers")
+
+# Apply a sed expression and fail the build unless it changes exactly one line,
+# so a patch that stops matching upstream (or starts matching twice) is noticed
+# instead of silently dropped or misapplied.
+_sed_checked() {
+    local _expr=$1 _file=$2 _changed
+    cp "$_file" "$_file.orig"
+    sed -i "$_expr" "$_file"
+    _changed=$(diff "$_file.orig" "$_file" | grep -c '^>')
+    if [[ $_changed != 1 ]]; then
+        echo "==> ERROR: patch changed $_changed lines (expected 1) in ${_file#"$srcdir"/}: $_expr" >&2
+        return 1
+    fi
+    rm "$_file.orig"
+}
 
 prepare() {
     rm -rf "$srcdir/build"
@@ -93,96 +132,66 @@ prepare() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
 
-    # Upstream bug: tray-manager passes the raw 4096x4096 app icon to the Tray
-    # constructor. The pixel data (~67MB uncompressed RGBA) exceeds the D-Bus
-    # session bus message limit, so KDE's StatusNotifierWatcher silently drops
-    # the registration and no tray icon appears. Resize to 22px at load time
-    # (standard KDE Plasma tray icon size) before handing it to Electron.
-    sed -i \
-        's#return nativeImage\.createFromPath(iconPath);#return nativeImage.createFromPath(iconPath).resize({ width: 22, height: 22 });#' \
-        "$srcdir/gaia-$pkgver/src/gaia/apps/webui/services/tray-manager.cjs"
+    # The desktop app runs only the `gaia` backend it ships, which it looks for
+    # under process.resourcesPath. With system Electron that is
+    # /usr/lib/electron44/resources, so let the wrapper script point it at our
+    # install dir, where core/gaia links to /usr/bin/gaia. Without this the app
+    # looks for ~/.gaia/venv, then `gaia` on PATH, and pip-installs its own copy
+    # of GAIA into ~/.gaia/venv whenever that lookup or its version check fails.
+    _sed_checked \
+        's#path\.join(process\.resourcesPath, "core",#path.join(process.env.GAIA_RESOURCES_PATH || process.resourcesPath, "core",#' \
+        "$srcdir/gaia-$pkgver/src/gaia/apps/webui/services/backend-installer.cjs"
 
-    local _webui="$srcdir/gaia-$pkgver/src/gaia/apps/webui"
+    # Upstream turns Chromium's sandbox off on Linux because its AppImage and
+    # .deb strip the chrome-sandbox helper. System Electron ships that helper
+    # and Arch allows unprivileged user namespaces, so keep the sandbox on and
+    # leave GAIA_NO_SANDBOX=1 as an explicit opt-out.
+    _sed_checked \
+        's#switches\.push(\["no-sandbox"\]);#if (TRUTHY.has(String(env.GAIA_NO_SANDBOX || "").trim().toLowerCase())) switches.push(["no-sandbox"]);#' \
+        "$srcdir/gaia-$pkgver/src/gaia/apps/webui/services/chromium-switches.cjs"
 
-    # With system Electron the binary is at /usr/bin/electron40, so
-    # process.resourcesPath resolves to /usr/lib/electron40/resources/ rather
-    # than our install dir. The wrapper script exports GAIA_RESOURCES_PATH so
-    # these two services find agents/ and vendor/uv/ in the right place.
-    # Use # as delimiter to avoid conflicts with | in the replacement strings.
-    sed -i \
-        's#path\.join(process\.resourcesPath, "agents")#path.join(process.env.GAIA_RESOURCES_PATH || process.resourcesPath, "agents")#' \
-        "$_webui/services/agent-seeder.cjs"
-    sed -i \
-        's#const resourcesPath = process\.resourcesPath;#const resourcesPath = process.env.GAIA_RESOURCES_PATH || process.resourcesPath;#' \
-        "$_webui/services/backend-installer.cjs"
+    # Fetch the terminal UI's Go modules here so build() needs no network.
+    cd "$srcdir/gaia-$pkgver/tui"
+    export GOPATH="$srcdir/gopath"
+    GOTOOLCHAIN=local GOFLAGS=-modcacherw go mod download
 
-    # lemond v10.6.0 passes bare --flash-attn (no value) to llama-server for
-    # Gemma-4 models; llama-server requires --flash-attn on. Explicitly supply
-    # the arg so the default model loads on first run.
-    sed -i \
-        's/prompt=False$/prompt=False, llamacpp_args="--flash-attn on"/' \
-        "$srcdir/gaia-$pkgver/src/gaia/ui/server.py"
-
-    # The lifespan calls keyring (via tripwire_check) which blocks until
-    # kwalletd responds — up to 7+ minutes if KWallet isn't running yet.
-    # Port 4200 never opens until the lifespan yields. Bypass the system
-    # keyring for the Electron-spawned backend; OAuth connectors fall back
-    # to prompting for credentials at first use.
-    # Also set GAIA_SKIP_DEVICE_CHECK: the device support check is Windows-only;
-    # on Linux it always returns false and shows a warning banner.
-    sed -i \
-        's/env: { \.\.\.process\.env }/env: { ...process.env, PYTHON_KEYRING_BACKEND: "keyring.backends.null.Keyring", GAIA_SKIP_DEVICE_CHECK: "1" }/' \
-        "$srcdir/gaia-$pkgver/src/gaia/apps/webui/main.cjs"
-
-    # The onboarding wizard installs lemonade via Ubuntu PPA — useless on Arch.
-    # Mark the install as initialized on any non-Windows platform so the UI
-    # opens directly to the chat interface rather than the setup wizard.
-    sed -i \
-        's/status\.initialized = init_marker\.exists()/status.initialized = init_marker.exists() or sys.platform != "win32"/' \
-        "$srcdir/gaia-$pkgver/src/gaia/ui/routers/system.py"
-
-    # The ConnectionBanner shows "Cannot connect" on the very first health-check
-    # because the React frontend fires immediately on mount while gaia's Python
-    # server is still starting (port 4200 not yet open). Apply the same 3-
-    # consecutive-failure threshold already used for the lemonade check so
-    # startup noise is suppressed without hiding genuine outages.
-    local _app="$srcdir/gaia-$pkgver/src/gaia/apps/webui/src/App.tsx"
-    sed -i \
-        '/const LEMONADE_FAIL_THRESHOLD = 3;/a\    const backendFailCountRef = useRef(0);\n    const BACKEND_FAIL_THRESHOLD = 3; // require 3 consecutive failures before showing banner' \
-        "$_app"
-    sed -i \
-        's/const status = await api\.getSystemStatus();/const status = await api.getSystemStatus();\n            backendFailCountRef.current = 0;/' \
-        "$_app"
-    python3 -c '
-import sys
-path = sys.argv[1]
-with open(path) as f: s = f.read()
-s = s.replace(
-    "            setBackendConnected(false);\n            setSystemStatus(null);",
-    "            backendFailCountRef.current += 1;\n            if (backendFailCountRef.current >= BACKEND_FAIL_THRESHOLD) {\n                setBackendConnected(false);\n                setSystemStatus(null);\n            }"
-)
-with open(path, "w") as f: f.write(s)
-' "$_app"
+    # Likewise the Agent UI's npm modules. The build packs against system
+    # Electron, so skip npm's own Electron binary.
+    cd "$srcdir/gaia-$pkgver/src/gaia/apps/webui"
+    ELECTRON_SKIP_BINARY_DOWNLOAD=1 npm ci --no-audit --no-fund
 }
 
 build() {
     cmake --build "$srcdir/build" -j$(nproc)
 
+    # Terminal UI (gaia-cli)
+    cd "$srcdir/gaia-$pkgver/tui"
+    local _gopkg=github.com/amd/gaia/tui/internal/cli
+    local _date
+    _date=$(date -u -d "@${SOURCE_DATE_EPOCH:-0}" +%Y-%m-%dT%H:%M:%SZ)
+    export GOPATH="$srcdir/gopath"
+    export CGO_CPPFLAGS="$CPPFLAGS" CGO_CFLAGS="$CFLAGS" CGO_CXXFLAGS="$CXXFLAGS" CGO_LDFLAGS="$LDFLAGS"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    # Everything was fetched in prepare(); never download here.
+    export GOPROXY=off GOTOOLCHAIN=local
+    go build \
+        -ldflags "-linkmode=external -X $_gopkg.version=$pkgver -X $_gopkg.commit=v$pkgver -X $_gopkg.date=$_date" \
+        -o "$srcdir/build-tui/gaia-cli" ./cmd/gaia
+
     # Build browser frontend first so package_data picks up dist/
     cd "$srcdir/gaia-$pkgver/src/gaia/apps/webui"
-    npm install --quiet
     npm run build
 
     cd "$srcdir/gaia-$pkgver"
     python -m build --wheel --no-isolation
 
     local _electronver
-    _electronver=$(cat /usr/lib/electron40/version)
+    _electronver=$(cat /usr/lib/electron44/version)
     cd "$srcdir/gaia-$pkgver/src/gaia/apps/webui"
     ELECTRON_BUILDER_OFFLINE=true \
     ./node_modules/.bin/electron-builder --linux dir --x64 \
         --publish never \
-        -c.electronDist=/usr/lib/electron40 \
+        -c.electronDist=/usr/lib/electron44 \
         -c.electronVersion="$_electronver"
 }
 
@@ -214,20 +223,51 @@ package_gaia-amd() {
     fi
 }
 
+package_gaia-amd-cli() {
+    pkgdesc="Terminal UI for the AMD Gaia inference engine"
+    # The GAIA agent it talks to is not packaged: first-run setup (`gaia init`,
+    # which gaia-cli runs through gaia-amd) downloads it into ~/.gaia.
+    depends=("gaia-amd=$pkgver" glibc hicolor-icon-theme)
+    optdepends=('wl-clipboard: paste images from the clipboard (Wayland)'
+                'xclip: paste images from the clipboard (X11)')
+
+    install -Dm755 "$srcdir/build-tui/gaia-cli" "$pkgdir/usr/bin/gaia-cli"
+
+    local _linux="$srcdir/gaia-$pkgver/installer/tui/linux"
+    install -Dm644 "$_linux/gaia-tui.desktop" "$pkgdir/usr/share/applications/gaia-tui.desktop"
+    install -Dm644 "$_linux/gaia-cli.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/gaia-cli.png"
+
+    install -Dm644 "$srcdir/gaia-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
 package_gaia-amd-webui() {
     pkgdesc="Electron desktop UI for the AMD Gaia inference engine"
-    depends=(gaia-amd electron40 libappindicator)
+    # Same version: the app treats /usr/bin/gaia as the backend it ships.
+    depends=("gaia-amd=$pkgver" electron44 libappindicator hicolor-icon-theme)
     optdepends=('ngrok: mobile access / remote tunnel feature')
 
     local _resources="$srcdir/gaia-$pkgver/src/gaia/apps/webui/dist-app/linux-unpacked/resources"
 
     install -dm755 "$pkgdir/usr/lib/gaia-amd-webui"
     cp -r --no-preserve=mode "$_resources/." "$pkgdir/usr/lib/gaia-amd-webui/"
+    # Electron's own default app, copied in from the system Electron at pack
+    # time, and the bundled-agents folder, which holds only a README in a source
+    # build (first-run setup downloads the GAIA agent instead).
+    rm -f "$pkgdir/usr/lib/gaia-amd-webui/default_app.asar"
+    rm -rf "$pkgdir/usr/lib/gaia-amd-webui/agents"
+
+    # The backend the app "ships" is the gaia-amd package (see prepare()).
+    install -dm755 "$pkgdir/usr/lib/gaia-amd-webui/core"
+    ln -s /usr/bin/gaia "$pkgdir/usr/lib/gaia-amd-webui/core/gaia"
 
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/gaia-amd-webui" <<'EOF'
 #!/bin/sh
 export GAIA_RESOURCES_PATH=/usr/lib/gaia-amd-webui
-exec /usr/bin/electron40 --no-sandbox /usr/lib/gaia-amd-webui/app.asar "$@"
+# Updates come from pacman, not from the app's own updater.
+export GAIA_DISABLE_UPDATE=1
+# Chromium's sandbox is on. If the window never appears on a kernel that
+# forbids unprivileged user namespaces, run with GAIA_NO_SANDBOX=1.
+exec /usr/bin/electron44 /usr/lib/gaia-amd-webui/app.asar "$@"
 EOF
 
     install -dm755 "$pkgdir/usr/share/applications"

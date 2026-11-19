@@ -1,5 +1,10 @@
+# True when a systemd system manager is running (not in a chroot or container
+# build), whatever its overall state.
+_systemd_running() {
+    [ -d /run/systemd/system ]
+}
+
 post_install() {
-    systemctl daemon-reload
 
     echo ""
     echo "=========================================="
@@ -7,48 +12,69 @@ post_install() {
     echo "=========================================="
     echo ""
     echo "QUICK START (no systemd required):"
-    echo "  gaia-amd-webui      # Launch the Electron desktop app"
-    echo "                      # (starts its own backend automatically)"
+    echo "  gaia-amd-webui      # Electron desktop app (package gaia-amd-webui)"
+    echo "  gaia-cli            # Terminal UI (package gaia-amd-cli)"
+    echo "  Both start their own backend. First-run setup downloads the GAIA"
+    echo "  agent and the models you pick into ~/.gaia, so it needs network."
     echo ""
     echo "LEMONADE SERVER (LLM backend):"
-    echo "  The Gaia backend requires lemonade-server to be running."
-    echo ""
-    echo "  As a system service (starts on boot, all users):"
-    echo "    sudo systemctl enable --now lemond.service"
-    echo ""
-    echo "  As a user service (starts on login, current user only):"
-    echo "    systemctl --user enable --now lemond.service"
-    echo ""
-    echo "  IMPORTANT: Gaia requires ctx_size >= 32768 in lemonade's config."
-    echo "  The default (4096) is too small and causes a 'context window too"
-    echo "  small' error in the Gaia web UI. Set it to at least 65536 in:"
-    echo "    /var/lib/lemonade/.cache/lemonade/config.json"
-    echo "  then restart lemond."
+    echo "  By default GAIA sets up and runs its own private Lemonade Server"
+    echo "  under ~/.gaia/lemonade. If a Lemonade Server is already running on"
+    echo "  this machine, first-run setup offers to use that one instead, e.g."
+    echo "  the system package's:"
+    echo "    sudo systemctl enable --now lemond.service      # all users"
+    echo "    systemctl --user enable --now lemond.service    # current user"
+    echo "  Switch back with: gaia config set lemonade_mode gaia"
     echo ""
     echo "GAIA AGENT UI (web interface via systemd):"
     echo ""
     echo "  As a system service:"
     echo "    sudo systemctl enable --now gaia.service"
-    echo "    # Runs as the 'gaia' system user, UI at http://localhost:4200"
+    echo "    # Runs as the 'gaia' system user, UI at http://127.0.0.1:4200"
     echo ""
     echo "  As a user service:"
     echo "    systemctl --user enable --now gaia.service"
-    echo "    # Runs as your user, UI at http://localhost:4200"
+    echo "    # Runs as your user, UI at http://127.0.0.1:4200"
+    echo ""
+    echo "SECURITY:"
+    echo "  As a basic security measure the Agent UI listens on 127.0.0.1 only,"
+    echo "  and GAIA's other local servers (daemon, API, MCP) bind loopback by"
+    echo "  default. To reach the UI from another machine use an SSH tunnel or"
+    echo "  an authenticating reverse proxy instead of binding a wider address."
     echo ""
     echo "=========================================="
     echo ""
 }
 
 post_upgrade() {
-    systemctl daemon-reload
-    if systemctl is-system-running --quiet 2>/dev/null; then
+    if _systemd_running; then
+        systemctl daemon-reload
         systemctl try-restart gaia.service
     fi
-    systemctl --user daemon-reload 2>/dev/null || true
+
+    echo ""
+    echo "gaia-amd: an upgrade does not restart a running per-user GAIA daemon"
+    echo "  or user service. To pick up the new version, run as your user:"
+    echo "    gaia daemon restart"
+    echo "  and, if you use the user service:"
+    echo "    systemctl --user daemon-reload"
+    echo "    systemctl --user restart gaia.service"
+    echo ""
+}
+
+pre_remove() {
+    # Not guarded: in a chroot or offline root systemctl still removes the
+    # enablement symlink and skips the stop on its own.
+    systemctl disable --now gaia.service 2>/dev/null || true
 }
 
 post_remove() {
-    systemctl disable --now gaia.service 2>/dev/null || true
-    systemctl --user disable --now gaia.service 2>/dev/null || true
-    systemctl daemon-reload
+    if _systemd_running; then
+        systemctl daemon-reload
+    fi
+    echo ""
+    echo "gaia-amd: per-user services and daemons are not stopped by removal."
+    echo "  Users who enabled it should run:"
+    echo "    systemctl --user disable --now gaia.service"
+    echo ""
 }

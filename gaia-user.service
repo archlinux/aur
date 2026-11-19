@@ -2,11 +2,18 @@
 Description=AMD Gaia Agent UI
 Documentation=https://github.com/amd/gaia
 After=network.target
+# Bounded restarts: at most 5 starts per 10 minutes. A service that keeps
+# crashing is then marked failed instead of crash-looping forever. Clear it
+# with `systemctl reset-failed gaia.service` (add --user for the user unit).
+StartLimitIntervalSec=10min
+StartLimitBurst=5
 
 [Service]
 Type=simple
 Environment=PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
-Environment=GAIA_SKIP_DEVICE_CHECK=1
+# Basic security measure: the Agent UI listens on 127.0.0.1 only (`gaia --ui`
+# binds loopback). Keep it that way; to reach it from another machine use an
+# SSH tunnel or an authenticating reverse proxy rather than a wider bind.
 ExecStart=/usr/bin/gaia --ui
 Restart=on-failure
 RestartSec=5s
