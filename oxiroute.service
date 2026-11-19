@@ -18,6 +18,7 @@ RestartSec=5s
 TimeoutStopSec=15s
 KillMode=mixed
 KillSignal=SIGTERM
+NotifyAccess=main
 LimitNOFILE=1048576
 UMask=0027
 

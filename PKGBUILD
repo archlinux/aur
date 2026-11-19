@@ -1,7 +1,7 @@
 # Maintainer: OxiRoute maintainers <https://github.com/oxiroute/oxiroute/issues>
 
 pkgname=oxiroute
-pkgver=6.5.2
+pkgver=7.1.0
 pkgrel=1
 pkgdesc='Pingora-based HTTP, TCP, and RTMP proxy runtime'
 arch=('x86_64')
@@ -24,22 +24,22 @@ source=("oxiroute-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/oxiroute
         'oxiroute.kdl'
         'oxiroute.lua'
         'README.md')
-sha256sums=('a5c667344bf3b5943c502bc26bc6ace680873b9efaf0ebc9b3685e710994c373'
-             '574eab59174656b0813499ed1c9bca8be5a6e2cf69a98e8327f376e1c0b83b1b'
-            'ece087105e74910e9d4a6c3551082828378ac5c62fc15e97a755a3bc93020e72'
+sha256sums=('52dbf16f33d3148cd4b221209f4409f7abaf7fb4bc97ef4637409796c631d16a'
+             '1bb18eb30e49f9b4eae546094ca57bf2796a0660bd3811c25f551f76ca9bd86b'
+            '167ec612cbdedb8a4e1ea92b181badb77042a0303e276b8181f14cf1956dc13f'
              '502dbc96a4f316ff7375cf90da32457b6003723a744825f04cec8a624974a356'
              'c23385c6ee614b2b91e8fcd1c535038fc2dd9a115b77db368fa2fda4d9d698a1'
              'd56db017915b82ad6204bb4de1aa268cc41586eafcbbf35194366b32ed02f19a'
             '57e5cb6cf58a38b6c5efd99e0b5a9a36bac3fafba438059a8396b07e9b6e80a9'
             'f55a08f56ff139b566afac6b0c9cbbc4ed08f69a7e04810128bfb8c98a0f0564'
-             'ef376abd6ce6dcbab820ce478f4b9f134a4be4528fb88bb3abb9d7425e83137e')
+             'a6aba7b89182befdfe5aada05a34c741d101dff1c5d9b4e5e6d7401e9114faa6')
 
 prepare() {
   cd "oxiroute-${pkgver}"
   cargo fetch --locked --target "${_target}"
 }
 
-# Copy of scripts/lib/reject-isa-flags.sh (the pinned release archive predates it; scripts/test-verify-baseline-isa.sh
+# Copy of scripts/lib/reject-isa-flags.sh (the pinned release archive predates it; scripts/test/verify/baseline-isa.sh
 # runs the same cases on both). The binary must stay generic x86-64 and pick AVX at run time, so a CPU target in
 # RUSTFLAGS or CFLAGS (makepkg.conf of x86-64-v3 distributions) fails the build; set generic flags in ~/.makepkg.conf.
 isa_rust_re='^((-C|--codegen)=?)?target-(cpu|feature)'
@@ -82,6 +82,15 @@ package() {
   install -Dm755 "target/${_target}/release/oxiroute" \
     "${pkgdir}/usr/bin/oxiroute"
   ln -s oxiroute "${pkgdir}/usr/bin/oxr"
+  install -d -m755 "${pkgdir}/usr/share/bash-completion/completions" "${pkgdir}/usr/share/zsh/site-functions" \
+    "${pkgdir}/usr/share/fish/vendor_completions.d" "${pkgdir}/usr/share/man/man1"
+  local name
+  for name in oxiroute oxr; do
+    "${pkgdir}/usr/bin/oxiroute" completions bash --name "${name}" >"${pkgdir}/usr/share/bash-completion/completions/${name}"
+    "${pkgdir}/usr/bin/oxiroute" completions zsh --name "${name}" >"${pkgdir}/usr/share/zsh/site-functions/_${name}"
+    "${pkgdir}/usr/bin/oxiroute" completions fish --name "${name}" >"${pkgdir}/usr/share/fish/vendor_completions.d/${name}.fish"
+    "${pkgdir}/usr/bin/oxiroute" man --name "${name}" >"${pkgdir}/usr/share/man/man1/${name}.1"
+  done
   install -d -m755 "${pkgdir}/usr/lib/oxiroute"
   install -m755 "target/${_target}/release/oxiroute-worker-launcher" \
     "${pkgdir}/usr/lib/oxiroute/oxiroute-worker-launcher"
