@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insantiy.org>
 
 pkgname=maddy
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc='Composable all-in-one mail server'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.tar.zst"
         "${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.tar.zst.sig"
         'maddy.sysusers'
         'maddy.tmpfiles')
-sha256sums=('c66d2a561cb0f0017a78cf1df3f02a48046e1e346a432970cede516ae536f4a7'
+sha256sums=('710c8c466cd0f922aecfdfb75c7f159275fa8c5048a42563f0af0fb2f967c511'
             'SKIP'
             '5f1f6f5fcaf9b75742323c0008ec586bcfd7213a2d700eb85fa05474384b6a44'
             '656ada3e302fedacaaec4f019c368488151c6252367c41cb1c2b2068555a7026')
