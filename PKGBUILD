@@ -5,10 +5,10 @@
 # shellcheck shell=bash
 
 pkgname=nginx-mod-lua
-# The release OpenResty 1.31.8.1 bundles, with lua-resty-core 0.1.35rc2 and OpenResty's LuaJIT
-# 2.1-20261023; OpenResty's releases take upstream's rc tags. Above the AUR's 1:0.10.29R2-1
+# Upstream's newest release, an rc tag as OpenResty's releases take them (1.31.8.1 bundles rc7).
+# It goes with a lua-resty-core of its own (_restycorever, depends). Above the AUR's 1:0.10.29R2-1
 pkgver=0.10.32rc8
-pkgrel=1
+pkgrel=2
 # The AUR's epoch, without which our version would be below its
 epoch=1
 # ngx_devel_kit, the version of Arch Linux's nginx-mod-ndk, whose headers the module is built
@@ -16,8 +16,9 @@ epoch=1
 _ndkver=0.3.4
 # Test::Nginx, upstream's test scaffold, for check()
 _testnginxver=0.32
-# lua-resty-core, for its tests, which need the module and run in check()
-_restycorever=0.1.35rc2
+# lua-resty-core, for its tests, which need the module and run in check(): the release that goes
+# with pkgver, as in depends
+_restycorever=0.1.35rc3
 pkgdesc="Lua scripting for nginx: the ngx_http_lua module of OpenResty, built for Arch Linux's nginx"
 arch=(x86_64)
 url="https://github.com/openresty/lua-nginx-module"
@@ -28,9 +29,13 @@ depends=(
   # OpenResty's LuaJIT, not Arch Linux's luajit: the module uses its extensions where it's built
   # against it (OPENRESTY_LUAJIT), so a module built against one doesn't work with the other
   luajit-openresty
-  # The Lua side of the module, which it loads on startup: lua-resty-core checks the module's
-  # version exactly, its 0.1.35 releases are the ones for 0.10.32
-  'lua-resty-core>=1:0.1.35rc1'
+  # The Lua side of the module, which it loads on startup. lua-resty-core checks the module's
+  # version (its 0.1.35 releases are for 0.10.32), but not the rc: the FFI of
+  # balancer.enable_keepalive() takes a pool size since 0.10.32rc8
+  # (openresty/lua-nginx-module@797bacea), which lua-resty-core declares since 0.1.35rc3
+  # (openresty/lua-resty-core@16747a5); an older one passes its error pointer as the pool size,
+  # and the module writes its error through garbage
+  'lua-resty-core>=1:0.1.35rc3'
   'lua-resty-core<1:0.1.36rc1'
   nginx-mod-ndk
 )
@@ -43,6 +48,8 @@ makedepends=(
 # Upstream's tests: Test::Nginx's Perl modules, the nginx modules they use besides ours, and the
 # servers some talk to
 checkdepends=(
+  # lua-cjson, which OpenResty bundles, for 069-null and 140-ssl-c-api
+  lua51-cjson
   memcached
   nginx-mod-echo
   nginx-mod-headers-more
@@ -70,11 +77,11 @@ source=(
 sha512sums=('94b5aa3687bdba5338fd8c9e55f2b4f5eb5e973665e609dcb1b5d082c0eb5c782fa3e9397651de8c8ab78fd1fed97bcb7fe3e4ad059a5b80135a8255dc092cbb'
   '6bc2f4d3b7ad22527e6c7c343884f8b0d5810ae9b7b09d6c2988b50afbd9c7a79e387667bfb980e93c5e204c163544f79634b2862895d8ee004a4393245ee185'
   'c8ddec5dc21c23ded4ea974f4d6fca01ea498f728e5f8dc87224b1151bf9fcfb1921d971359ee79e3984b23fd6cb2f510259b077f79b867b95a437d28af48b97'
-  '6c10895c4484628e081b0f4da6d4ab396118cfbb40eba03d15baf9b8c4124e02c6927103b6e3ee60fa7b049483cd76523bf56cd99ffce2f14e3395d0212db3a5')
+  '989768a37e9818317c1cc0b46d0a2ef0c14eb17a0494f3649e9f406f1a4572bab4dfb635ca749ba18dbd893e16bf6949a3fb26bcbb48bf6c0831de35b827730f')
 b2sums=('49349bc66dab093435437c86d1e918fedce4f5045b445d10dead830dba7915863b9ba86f6f3815299044e4f66fe66836ae2a2504c18caa94417ee6f5fed0064b'
   '3b5ed36517f27ea83881d2fb1e6ba2839c173a833ec563fa94dc9b633b3ebe9ea24c7bb5676aa811267b09a2504d74b306ee7268b8a0d56b230886fd955289e9'
   '5b98a9764d2fb322199ecf839feed2d995f4ab3e2c9488eebe698fad00e852c45862b94774232d4d8043e2850018c1699ea055a0da211b88211eddfc26e380ed'
-  '95c52593543d06385b2dee49e7dd71ce29fe436d48e22d2df2454e9017af88e2890ff11eabe1699d464ed9bf04bef10ab3732be26bce95e1f9f24cfa47c1fa83')
+  'fa78bdebd7819a8f304ab87a067c2a1d312d64cecfb4e42d1c090103d3176fb5acf4ac37e29c9c1d2cacebe6ee7df73cc1e143d7f056ddb2b6ca0c8a0f2563cc')
 
 # The version of the installed nginx, empty without it
 _nginxver() {
@@ -185,10 +192,9 @@ _prepare_tests() {
   # OpenResty's nginx, its patches and test modules, and a test machine of its own
   # MySQL, and the drizzle module, which Arch Linux doesn't package
   _skip_tests "$_lnm" 000--init:1 003-errors:5 005-exit:6,7,8 026-mysql
-  # lua-cjson, which OpenResty bundles
-  _skip_tests "$_lnm" 069-null:1 140-ssl-c-api:15,17,19
   # stream-lua-nginx-module, OpenResty's module for the stream module
   _skip_tests "$_lnm" 058-tcp-socket:74 186-cosocket-busy-bufs
+  _skip_tests "$_lrc" shdict-ownership-compat:2
   # image_filter, which upstream builds into nginx: Arch Linux's nginx-mod-image-filter, loaded
   # with the module, changes the error 132-lua-blocks' TEST 24 checks
   _skip_tests "$_lnm" 020-subrequest:74
@@ -226,6 +232,10 @@ _prepare_tests() {
   _skip_tests "$_lnm" 014-bugs:37 058-tcp-socket:4 303-udp-socket-error-log
   # OpenResty's patch to OpenSSL that lets ssl_session_fetch_by_lua* yield (sess_set_get_cb_yield)
   _skip_tests "$_lrc" ssl-session-fetch:5
+  # set_ciphers() with DHE-RSA-AES256-SHA first, which the test expects the server can't use
+  # without DH parameters, as with the OpenSSL 3 of upstream's CI: OpenSSL 4 negotiates it anyway,
+  # rather than the ECDHE-RSA-AES128-SHA the test looks for
+  _skip_tests "$_lrc" ssl-client-hello:12
   # The firewall rules of upstream's CI (.travis.yml), which drop packets to 127.0.0.2:12345, so
   # that connecting to it times out, and reject UDP to port 10086
   _skip_tests "$_lnm" 058-tcp-socket:6,55,62 068-socket-keepalive:33,45 090-log-socket-errors:1,2 \

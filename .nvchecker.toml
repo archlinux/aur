@@ -1,5 +1,6 @@
-# The releases of lua-nginx-module, tagged v<version>, rc tags included: OpenResty's releases take
-# them; take the one OpenResty bundles, with its lua-resty-core
+# The releases of lua-nginx-module, tagged v<version>, rc tags included as OpenResty's releases take
+# them: the newest. Upstream releases it together with lua-resty-core (local/lua-resty-core,
+# _restycorever), whose version has to move with it
 [nginx-mod-lua]
 source = "git"
 git = "https://github.com/openresty/lua-nginx-module.git"
