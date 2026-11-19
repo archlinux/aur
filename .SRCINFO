@@ -1,0 +1,21 @@
+pkgbase = agent-access-bin
+	pkgdesc = Bitwarden Agent Access: give a remote agent or script credentials from your vault over an end-to-end encrypted tunnel, without exposing the rest of it
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/bitwarden/agent-access
+	arch = x86_64
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	provides = agent-access
+	provides = aac
+	conflicts = agent-access
+	options = !strip
+	options = !debug
+	source = aac-0.11.0-linux-x86_64.tar.gz::https://github.com/bitwarden/agent-access/releases/download/v0.11.0/aac-linux-x86_64.tar.gz
+	source = LICENSE.txt::https://raw.githubusercontent.com/bitwarden/agent-access/v0.11.0/LICENSE.txt
+	sha256sums = a05b35bcc2cb9c87bc32c2ffaf83a1e8f29ac32590e609621f92e8b94d86e368
+	sha256sums = 05ac42df10ae6a3ba4a83e73a015c4c8febeb6650c1a29be8274742c6577a032
+
+pkgname = agent-access-bin
