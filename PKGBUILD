@@ -8,8 +8,8 @@
 # Repackages upstream's own .deb. The version is tracked from the auth-v* tags
 # of the ente/ente monorepo, release candidates and betas excluded.
 pkgname=ente-auth-bin-jetm
-pkgver=4.4.26
-pkgrel=2
+pkgver=4.4.27
+pkgrel=1
 pkgdesc='Ente two-factor authenticator'
 arch=('x86_64')
 url='https://ente.io/auth'
@@ -38,7 +38,7 @@ options=('!strip')
 
 source=("ente-auth-v${pkgver}-x86_64.deb::https://github.com/ente/ente/releases/download/auth-v${pkgver}/ente-auth-v${pkgver}-x86_64.deb")
 noextract=("ente-auth-v${pkgver}-x86_64.deb")
-sha256sums=('9952ad4c7d9d4774b52df0de53eda4959e4a4662d63ab9eb64aa168013bc3369')
+sha256sums=('252800cc91404de982a00b6174a8f79da3380754c7aba482544329f4d90edde2')
 
 package() {
   # Not `data.tar.zst` by name: upstream picks the compression, and a switch to

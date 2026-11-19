@@ -1,7 +1,7 @@
 pkgbase = ente-auth-bin-jetm
 	pkgdesc = Ente two-factor authenticator
-	pkgver = 4.4.26
-	pkgrel = 2
+	pkgver = 4.4.27
+	pkgrel = 1
 	url = https://ente.io/auth
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -19,9 +19,9 @@ pkgbase = ente-auth-bin-jetm
 	provides = ente-auth
 	conflicts = ente-auth
 	conflicts = ente-auth-bin
-	noextract = ente-auth-v4.4.26-x86_64.deb
+	noextract = ente-auth-v4.4.27-x86_64.deb
 	options = !strip
-	source = ente-auth-v4.4.26-x86_64.deb::https://github.com/ente/ente/releases/download/auth-v4.4.26/ente-auth-v4.4.26-x86_64.deb
-	sha256sums = 9952ad4c7d9d4774b52df0de53eda4959e4a4662d63ab9eb64aa168013bc3369
+	source = ente-auth-v4.4.27-x86_64.deb::https://github.com/ente/ente/releases/download/auth-v4.4.27/ente-auth-v4.4.27-x86_64.deb
+	sha256sums = 252800cc91404de982a00b6174a8f79da3380754c7aba482544329f4d90edde2
 
 pkgname = ente-auth-bin-jetm
