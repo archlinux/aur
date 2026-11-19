@@ -1,6 +1,6 @@
 # Maintainer: QwerProg
 pkgname=bili-tools-bin
-pkgver=0.1.6
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A multi-functional CLI tool for Bilibili (precompiled binary)"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('bili-tools' 'bili-tools-git')
 options=('!debug')
 source_x86_64=("bt-${pkgver}-x86_64-linux.tar.gz::https://github.com/qwerprog/bili-tools/releases/download/v${pkgver}/bt-x86_64-linux.tar.gz")
 source_aarch64=("bt-${pkgver}-arm64-linux.tar.gz::https://github.com/qwerprog/bili-tools/releases/download/v${pkgver}/bt-arm64-linux.tar.gz")
-sha256sums_x86_64=('70fa6fe02577b583b2397268ed3c0a95db54ecc660d6c41403f1b2571d981682')
-sha256sums_aarch64=('7db1fb276168256fc3e5dacac7666207be505a530c9011267224bddc14abdf50')
+sha256sums_x86_64=('04d6378b087b8b6ec3c5deca30fb9995bfc90a372833ac8512bf64aeb5f170af')
+sha256sums_aarch64=('67af02c8fe6f642f305ddcfb53444a7029ae941f367d2fcc83bb433a5ac36332')
 package() {
   install -Dm755 "${srcdir}/bt" "${pkgdir}/usr/bin/bt"
 }
