@@ -1,6 +1,6 @@
 pkgbase = cef-vaapi
 	pkgdesc = Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)
-	pkgver = 156.0.28
+	pkgver = 156.0.30
 	pkgrel = 1
 	url = https://chromiumembedded.github.io/cef
 	arch = x86_64
@@ -64,11 +64,11 @@ pkgbase = cef-vaapi
 	optdepends = libva-mesa-driver: VAAPI driver for AMD GPUs
 	optdepends = intel-media-driver: VAAPI driver for modern Intel GPUs
 	optdepends = libva-utils: VAAPI diagnostics such as vainfo
-	provides = cef=156.0.28
+	provides = cef=156.0.30
 	conflicts = cef
 	options = !lto
 	source = chromium-156.0.8078.93-lite.tar.xz::https://commondatastorage.googleapis.com/chromium-browser-official/chromium-156.0.8078.93-lite.tar.xz
-	source = cef::git+https://github.com/chromiumembedded/cef.git#commit=57389f04a61ab0e9603d9f96602843d0e08bb11c
+	source = cef::git+https://github.com/chromiumembedded/cef.git#commit=6028375a4532fb89d23b58635f5c0d3a82c93959
 	source = chromium-138-nodejs-version-check.patch
 	source = chromium-145-fix-SYS_SECCOMP.patch
 	source = chromium-147-rust-1.95-bytemuck.patch
@@ -94,7 +94,7 @@ pkgbase = cef-vaapi
 	source = chromium-disable-font-tests.patch
 	source = FindCEF.cmake
 	sha256sums = 858bac041597aee091865adef72e39d469f40d3ed1da2136dab2073c60480a88
-	sha256sums = a160c7b5bf0aea777c93d7590bf26f8d15e5039d6a0401cd3cdf21702597629b
+	sha256sums = 4ef2e056035b6772a30416fcb744de696fff4ed9b6619c9fe458990005decfd0
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
 	sha256sums = 4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e
 	sha256sums = b9e6339221efe03540ffb360c161d93604a1fc93a5a1c53e5e9849066f987d05
