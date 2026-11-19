@@ -2,9 +2,9 @@
 # Akiflow Desktop for Linux (unofficial)
 
 pkgname=akiflow-bin
-pkgver=2.85.5
+pkgver=2.86.9
 pkgrel=1
-_buildhash=833b3cae
+_buildhash=779a9203
 pkgdesc="Akiflow - Time blocking and task management (unofficial Linux build)"
 arch=('x86_64')
 url="https://akiflow.com"
@@ -22,7 +22,7 @@ source=("Akiflow-${pkgver}.exe::https://download.akiflow.com/builds/Akiflow-${pk
         "plasma-widget-akiflow.png::${_ghraw}/plasma-widget/package/contents/icons/akiflow.png"
         "kwin-popup-metadata.json::${_ghraw}/kwin-script/akiflow-popup/metadata.json"
         "kwin-popup-main.js::${_ghraw}/kwin-script/akiflow-popup/contents/code/main.js")
-sha512sums=('7596a2160a4e8be93fc28624b17960a1d49d1063e6cdac2956353e7039d0a55d82980603b1ae6e3a6428d8d86f06bfc6ec170412653e0ba7e51e68aaccd9eddb'
+sha512sums=('9944160282069145e863d37132f144fbf346c73bfa47bf03301de5096bbd59ee01457b44e56e6ee9f9b9b7ed516caff4f6c6e603fe2495d71323f70ea7982ec4'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
