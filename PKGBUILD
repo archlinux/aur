@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=flyline-bin
 _pkgname=flyline
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Bash plugin to replace readline for a modern line editing experience: syntax highlighting, agent integration, rich prompts, tooltips, fuzzy history search, and more'
 arch=(
@@ -32,7 +32,7 @@ source=(
     "${_pkgname}-LICENSE-GPLv3-${pkgver}::https://raw.githubusercontent.com/HalFrgrd/flyline/refs/tags/v${pkgver}/LICENSE-GPLv3"
 )
 sha256sums=(
-    '0b174cfc6b68aacbe23d823f66d2c3a177b2e4836e2020295fc59e2ece565cc6'
+    'f377208a55db6017fe446365cc52f1ce45786c8f4f65a0ab9a73014db379c0bf'
     'bb423e9f9dd6e3331b822117e164b147ea1a8223b3046c4ab58af70c2e1f1fac'
     '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
 )
@@ -40,10 +40,10 @@ source_x86_64=("libflyline-${pkgver}.tar.gz::$url/releases/download/v${pkgver}/l
 source_aarch64=("libflyline-${pkgver}.tar.gz::$url/releases/download/v${pkgver}/libflyline-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 source_riscv64=("libflyline-${pkgver}.tar.gz::$url/releases/download/v${pkgver}/libflyline-v${pkgver}-riscv64gc-unknown-linux-gnu.tar.gz")
 source_armv7=("libflyline-${pkgver}.tar.gz::$url/releases/download/v${pkgver}/libflyline-v${pkgver}-armv7-unknown-linux-gnueabihf.tar.gz")
-sha256sums_x86_64=('ff666c3c8d982e3a0bb08d1a515a19da4719af4721649220c9be3d008f260beb')
-sha256sums_aarch64=('da1a077aa27d2bdcae126ba242dffc28371c32edd8ddc6ef47f03f479dbf5919')
-sha256sums_riscv64=('551991e67ebebfbcca6f12a0f7c779c54a48368232940b2313671bbcdb1bcba4')
-sha256sums_armv7=('e3d65d4b17a988b5a67ee2077b823888d64d8665c671c60608cc5c647314a62a')
+sha256sums_x86_64=('40b30c88aabc8baf23e547af9ffd3388cbfa4b044df1ab53f2ba997a66bf436a')
+sha256sums_aarch64=('4bd49880574d7ab5700fee579b7131fc7caae468d36d391e2986cb370d1a7816')
+sha256sums_riscv64=('0f575262a38e5e1a232e9b0b98ad49b75a26d69b22e85a91d9643e8ffcf8c25f')
+sha256sums_armv7=('61eb1a10a1c623e6e5dad23999372bc4fef4ecdd6ae7b9de4ad329b841d8bcb1')
 
 package() {
     install -Dm0755 libflyline.so."${pkgver}" "$pkgdir/usr/lib/libflyline.so.${pkgver}"
