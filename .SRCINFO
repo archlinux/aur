@@ -1,6 +1,6 @@
 pkgbase = jdk25-graalvm-ce-bin
 	pkgdesc = Advanced JDK with ahead-of-time Native Image compilation (Community Edition)
-	pkgver = 25.4.4.1.1
+	pkgver = 25.5.5.0.3
 	pkgrel = 1
 	url = https://www.graalvm.org/
 	install = install_jdk25-graalvm-ce.sh
@@ -27,9 +27,9 @@ pkgbase = jdk25-graalvm-ce-bin
 	options = staticlibs
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.4.4.1.1/graalvm-community-jdk-25i4-25.0.4.1.1_linux-x64_bin.tar.gz
-	sha256sums_x86_64 = 05ccbbe783210b6886ff7b08fcd0b061c5dce4852b05db87284fc0e24abb08e2
-	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.4.4.1.1/graalvm-community-jdk-25i4-25.0.4.1.1_linux-aarch64_bin.tar.gz
-	sha256sums_aarch64 = e5f5e2f59643cf96765c741dc00b206f86c69c8c1bf843fe26050c871e0e2dbc
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.5.5.0.3/graalvm-community-jdk-25i5-25.0.5.0.3_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = c6438dee6c3ade2220d40b7ccdcad24b512d30e233e61bb4fc70519522de34ef
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.5.5.0.3/graalvm-community-jdk-25i5-25.0.5.0.3_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = 41741c0650ae7564a78335f9e4fc353a902e6ff1d4140f2e4fabd1c55d5cce66
 
 pkgname = jdk25-graalvm-ce-bin
