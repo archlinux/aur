@@ -1,83 +1,57 @@
 # Maintainer: temidaradev <temidaradev@proton.me>
 pkgname=kopuz
-pkgver=0.7.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="A modern music player"
+pkgdesc="A modern music player, with the kopuzd daemon it runs on"
 arch=('x86_64')
-url="https://github.com/temidaradev/kopuz"
-license=('MIT')
+url="https://github.com/Kopuz-org/kopuz"
+license=('EUPL-1.2')
 depends=(
-    'webkit2gtk-4.1'
-    'gtk3'
-    'libsoup3'
-    'glib-networking'
+    'ca-certificates'
     'alsa-lib'
     'openssl'
-    'xdotool'
-    'dbus'
-    'cmake'
-    'opus'
-    'libayatana-appindicator'
+    'gcc-libs'
+    'libxcb'
+    'libxkbcommon'
+    'libxkbcommon-x11'
+    'wayland'
+    'vulkan-icd-loader'
+    'fontconfig'
+    'freetype2'
 )
-
+# rustup, not rust: the bundled plugins build for wasm32-wasip2, which rust-toolchain.toml pins.
+makedepends=('rustup' 'pkgconf' 'cmake' 'clang')
 optdepends=(
-    'yt-dlp'
-    'python-mutagen'
+    'ffmpeg: converting YouTube downloads to MP3, FLAC or WAV'
 )
-
-makedepends=(
-    'rust'
-    'cargo'
-    'git'
-    'dioxus-cli'
-)
-options=(!lto !debug)
-# dioxus-cli must be installed manually or from AUR at version matching dioxus 0.7.x:
-#   cargo install dioxus-cli --version "^0.7"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/temidaradev/kopuz/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3da4fb263e716c13441d31a218831096a9d8ca6713cf7633c8ebc772bda0e3cf')
+options=('!lto')
+source=("kopuz-$pkgver.tar.gz::https://github.com/Kopuz-org/kopuz/archive/refs/tags/v$pkgver.tar.gz")
+# Filled in at publish time from the tag's source tarball.
+sha256sums=('75e0705c7f6452c3f941328db7592d356c3da578204518d0dc9cc6673455735d')
 
 prepare() {
-    cd "$pkgname-$pkgver"
-
-    sed -i \
-        -e 's|"\./assets/app\.ico"|"crates/kopuz/assets/app.ico"|g' \
-        -e 's|"\./assets/logo\.png"|"crates/kopuz/assets/logo.png"|g' \
-        Dioxus.toml
+    cd "kopuz-$pkgver"
+    rustup toolchain install
+    cargo fetch --locked
 }
 
 build() {
-    cd "$pkgname-$pkgver"
-
-    export CARGO_HOME="$srcdir/cargo-home"
-    export RUSTUP_TOOLCHAIN=stable
-
-    # tailwind.css is pre-built and included in the release tarball
-    dx build --release --platform desktop -p kopuz
+    cd "kopuz-$pkgver"
+    export SQLX_OFFLINE=true
+    export KOPUZ_FLAVOR=stable
+    cargo build --frozen --release -p kopuz -p kopuz-kopuzd -p kopuz-ctl
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-
-    local appdir="target/dx/kopuz/release/linux/app"
-
-    install -Dm755 "$appdir/kopuz" "$pkgdir/usr/bin/kopuz"
-
-    # Install bundled assets alongside binary
-    if [[ -d "$appdir/assets" ]]; then
-        cp -r "$appdir/assets" "$pkgdir/usr/bin/"
-    fi
-
-    install -Dm644 "data/com.temidaradev.kopuz.desktop" \
-        "$pkgdir/usr/share/applications/com.temidaradev.kopuz.desktop"
-    sed -i "s|Exec=kopuz|Exec=/usr/bin/kopuz|" \
-        "$pkgdir/usr/share/applications/com.temidaradev.kopuz.desktop"
-
-    install -Dm644 "crates/kopuz/assets/logo.png" \
-        "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.temidaradev.kopuz.png"
-
-    install -Dm644 "data/com.temidaradev.kopuz.metainfo.xml" \
-        "$pkgdir/usr/share/metainfo/com.temidaradev.kopuz.metainfo.xml"
-
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "kopuz-$pkgver"
+    install -Dm755 -t "$pkgdir/usr/bin" target/release/{kopuz,kopuzd,kopuzctl}
+    install -Dm644 data/moe.kopuz.kopuz.desktop \
+        "$pkgdir/usr/share/applications/moe.kopuz.kopuz.desktop"
+    install -Dm644 data/moe.kopuz.kopuz.metainfo.xml \
+        "$pkgdir/usr/share/metainfo/moe.kopuz.kopuz.metainfo.xml"
+    install -Dm644 apps/legacy/kopuz/assets/logo.png \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/moe.kopuz.kopuz.png"
+    install -Dm644 packaging/systemd/kopuzd.service \
+        "$pkgdir/usr/lib/systemd/user/kopuzd.service"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
