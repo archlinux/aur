@@ -1,9 +1,9 @@
 # Maintainer: lubuoren <luboren123@outlook.com>
 
 pkgname=wowtype
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
-_dataver=2026.11.11.7
+_dataver=2026.11.11.8
 _datafile="wowtype-data-rime-ice-$_dataver.tar.gz"
 pkgdesc='WeType 风格的拼音输入法：fcitx5 插件 + Rust 引擎（长句、半成品输入、纠错、学习）'
 arch=('x86_64')
@@ -15,6 +15,7 @@ optdepends=(
   'fcitx5-gtk: GTK 应用输入法模块'
   'fcitx5-qt: Qt 应用输入法模块'
   'python-gobject: 设置界面 wowtype-config'
+  'python-cairo: 打字统计图表'
   'gtk4: 设置界面'
   'libadwaita: 设置界面'
   'noto-fonts-emoji: 候选里的彩色 emoji'
@@ -36,7 +37,7 @@ source=(
 noextract=("$_datafile")
 sha256sums=(
   'SKIP'
-  'b35a4af76573ebb1c7b402c5285d33bbb1ce2b3244770bef9e90826c3fcfc8aa'
+  'b85d7c67de796d5f2d8dfacd75cea6e2d6d53c3352aa2e990b9aaa4a71055640'
   '20dc3a5c30e74fdc77aedc7de3b2e977610118f7abf3443e32c9deab4343daa6'
   '28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5'
   'e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96'
