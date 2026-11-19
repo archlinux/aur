@@ -14,15 +14,9 @@ pkgbase = paru-static
 	license = GPL-3.0-or-later
 	makedepends = rustup
 	makedepends = musl
-	makedepends = meson
 	makedepends = kernel-headers-musl
 	makedepends = lld
-	makedepends = binutils
 	makedepends = git
-	makedepends = cmake
-	makedepends = publicsuffix-list
-	makedepends = gtk-doc
-	makedepends = libxslt
 	depends = pacman-static>=7.1
 	optdepends = bat: colored pkgbuild printing
 	optdepends = devtools: build in chroot and downloading pkgbuilds
