@@ -2,7 +2,7 @@
 
 pkgname=sherpa-onnx-bin
 _pkgname=sherpa-onnx
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Speech-to-text, TTS, diarization and VAD with next-gen Kaldi and onnxruntime (prebuilt)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -20,11 +20,11 @@ source=("c-api-${pkgver}.h::${_raw}/c-api.h"
 source_x86_64=("${_release}-linux-x64-shared.tar.bz2")
 source_aarch64=("${_release}-linux-aarch64-shared-cpu.tar.bz2")
 source_armv7h=("${_release}-linux-arm-gnueabihf-shared.tar.bz2")
-sha256sums=('5698f38ba09ad2bdf085c56a6cbbd7741acf15e25f4ce5c7097b9702cadf437f'
-            '144b4b33c468078748449b3a8f6ebfb0d92d5c398b2d39067c9fbc008c091c9f')
-sha256sums_x86_64=('2e823376987c3b6960d50726b6560155e2ad92da0b8b3886325773225ec6bdec')
-sha256sums_aarch64=('a8fc9fb3940d1aa3f83136767742b05068f00253f560d53c4f5aeb75ab4cb350')
-sha256sums_armv7h=('099c6bc956b26df246712ff9902419ff9cbc938c014177ea3e205b32675b48d5')
+sha256sums=('1f738de63a206328253ff471edda96b011fa1bd6f2a028f82967a7761abc2edd'
+            '6fb6afc866784836a08832c611c867153f185b0a65fa418f743fcc3323d7dd7f')
+sha256sums_x86_64=('e7f65778bfb891ec98db56c2cfc37b968d7f56e57271986a8dd2cd0c21d002c9')
+sha256sums_aarch64=('5c715c43c8b2a9e591a7146f6a397419780dc2af78921ed9d36d993333317d43')
+sha256sums_armv7h=('adfa418dcc10c3ac4718552ddb7b6e2651c22d30548c4d05c96e4c982d3a794b')
 
 package() {
   local src
