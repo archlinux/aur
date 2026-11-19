@@ -3,7 +3,7 @@
 # Disclaimer: While this PKGBUILD is tested on multiple devices, it is fully vibe-coded.
 
 pkgname=chrony-git
-pkgver=4.9.r10.gc97d808
+pkgver=4.9.r17.g372462c
 pkgrel=1
 pkgdesc="Lightweight NTP client and server (git version)"
 arch=('x86_64')
