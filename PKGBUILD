@@ -1,7 +1,7 @@
 # Maintainer: Benoît Rouits <brouits at free dot fr>
 pkgname=qabc
 pkgver=1.16
-pkgrel=2
+pkgrel=1
 pkgdesc="ABC music notation minimal GUI."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/be1/qabc"
