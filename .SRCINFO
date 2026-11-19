@@ -1,0 +1,22 @@
+pkgbase = zcalld-bin
+	pkgdesc = Compact Linux AI gateway built on zcall with native zplugin extensions (binary)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/zcalld
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = curl
+	optdepends = systemd: system and user service management
+	provides = zcalld=0.1.1
+	conflicts = zcalld
+	options = !strip
+	backup = etc/zcalld/config.conf
+	source_x86_64 = https://github.com/LIghtJUNction/zcalld/releases/download/v0.1.1/zcalld-0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7d558a50e50f73ae2f65c60bd3faebcddd59c344c3bc6b1bcb25319410b15b3e
+	source_aarch64 = https://github.com/LIghtJUNction/zcalld/releases/download/v0.1.1/zcalld-0.1.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = da86ac0a8671566bd14fa6cfc8cc1edc9b36e303e1dacfa012ed8589623369ac
+
+pkgname = zcalld-bin
