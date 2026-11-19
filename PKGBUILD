@@ -2,7 +2,7 @@
 
 pkgname=python-hatch-rs
 _origpkgname=hatch_rs
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Hatch plugin for Rust builds"
 arch=("x86_64")
@@ -20,7 +20,7 @@ makedepends=(
 	"python-setuptools"
 )
 source=("https://files.pythonhosted.org/packages/source/h/${_origpkgname}/${_origpkgname}-${pkgver}.tar.gz")
-sha256sums=('5b6e04ba8346d71a3007d9efa6bb1632ef3a37fa90a9d2fc17e83b0ffd9df6cd')
+sha256sums=('93349b93f378426fecf78a57e60b47afec8ee77c2c01d1346b8db5e914de22d0')
 
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
