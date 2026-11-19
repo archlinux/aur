@@ -1,7 +1,7 @@
 pkgbase = donutstudio-bin
 	pkgdesc = DonutStudio — harmonic composition workstation and MIDI editor (just-intonation native)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://donutsdelivery.online/donutstudio
 	install = donutstudio-bin.install
 	arch = x86_64

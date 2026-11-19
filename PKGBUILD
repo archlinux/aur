@@ -1,7 +1,7 @@
 # Maintainer: Donuts Delivery <support@donutsdelivery.online>
 pkgname=donutstudio-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DonutStudio — harmonic composition workstation and MIDI editor (just-intonation native)"
 arch=('x86_64')
 url="https://donutsdelivery.online/donutstudio"
@@ -38,13 +38,14 @@ package() {
   cp -a "${srcdir}/Soundfonts" "${pkgdir}/opt/donutstudio/"
   cp -a "${srcdir}/video-helper" "${pkgdir}/opt/donutstudio/"
 
-  for content_dir in shader-packs mod-presets example-projects; do
+  for content_dir in shader-packs mod-presets example-projects audio-export-dependencies sidecar resources RELEASE_BUILD.json; do
     cp -a "${srcdir}/${content_dir}" "${pkgdir}/opt/donutstudio/"
   done
 
   install -Dm644 "${srcdir}/DonutStudio.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/donutstudio.svg"
 
   install -dm755 "${pkgdir}/usr/lib/clap"
+  cp -a "${srcdir}/audio-export-dependencies" "${srcdir}/DonutStudioSidecar" "${pkgdir}/usr/lib/clap/"
   install -Dm755 "${srcdir}/DonutStudio.clap" "${pkgdir}/usr/lib/clap/DonutStudio.clap"
   install -Dm755 "${srcdir}/ArbitPluginScanner" "${pkgdir}/usr/lib/clap/ArbitPluginScanner"
 
@@ -91,13 +92,5 @@ StartupNotify=true
 EOF
 
   # License
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<'EOF'
-DonutStudio is proprietary closed-source software by Donuts Delivery.
-
-This package installs the official binary open beta distributed from:
-https://donutsdelivery.online/download-donutstudio/
-
-Use of DonutStudio is governed by the license terms presented by Donuts Delivery
-and by any license terms displayed by the application or official website.
-EOF
+  install -Dm644 "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
