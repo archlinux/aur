@@ -1,6 +1,6 @@
 # Maintainer: Gentrit Biba <gentritbiba@gmail.com>
 pkgname=cogpit
-pkgver=3.7.1
+pkgver=3.7.3
 pkgrel=1
 pkgdesc="Control center for Claude Code, OpenAI Codex, and GitHub Copilot CLI sessions"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/gentritbiba/cogpit"
 license=('MIT')
 depends=('c-ares' 'gcc-libs' 'glibc' 'gtk3' 'libcups' 'libdrm' 'libnotify' 'libxcrypt-compat' 'libxss' 'mesa' 'nss' 'alsa-lib')
 source=("${pkgname}-${pkgver}.pacman::https://github.com/gentritbiba/cogpit/releases/download/v${pkgver}/cogpit-${pkgver}.pacman")
-sha256sums=('9a7734a192a78c4c8f81b2d922de05decd968038a4e7310494bf1624dc048586')
+sha256sums=('eab74471029a77ef19a032fc403cbd6053601443162812885b17a3f5564f2480')
 # !strip: install the release's binaries exactly as built (cogpit-core is
 # stripped at build time, Electron ships stripped). !debug: nothing to split.
 options=('!strip' '!debug')
