@@ -5,7 +5,7 @@
 # Contributor: Roman Perepelitsa <roman.perepelitsa@gmail.com>
 pkgname=zsh-theme-powerlevel10k
 # Whenever pkgver is updated, _libgit2ver below must also be updated.
-pkgver=1.20.19  ## see P9K_VERSION in internal/p10k.zsh
+pkgver=1.21.0  ## see P9K_VERSION in internal/p10k.zsh
 _libgit2ver="tag-2ecf33948a4df9ef45a66c68b8ef24a5e60eaac6"
 pkgrel=1
 epoch=1
@@ -19,10 +19,7 @@ depends=(
   'libstdc++'
   'zsh'
 )
-makedepends=(
-  'git'
-  'cmake'
-)
+makedepends=('cmake')
 optdepends=(
   # It works well with Nerd Fonts, Source Code Pro, Font Awesome, Powerline,
   # and even the default system fonts. The full choice of style options is
@@ -32,18 +29,17 @@ optdepends=(
   'ttf-font-nerd: full choice of style options'
 )
 replaces=('zsh-theme-powerlevel9k')
-_commit=7ddd1b2715c3844275214347a3572ac1fdd6dc39
 
 # _libgit2ver depends on pkgver. They must be updated together. See libgit2_version in:
 # https://raw.githubusercontent.com/romkatv/powerlevel10k/v${pkgver}/gitstatus/build.info
 source=(
-  "git+https://github.com/romkatv/powerlevel10k.git#commit=${_commit}"
-#  "powerlevel10k-${pkgver}.tar.gz::https://github.com/romkatv/powerlevel10k/archive/v${pkgver}.tar.gz"
-#  "https://github.com/romkatv/powerlevel10k/releases/download/v$pkgver/powerlevel10k-$pkgver.tar.gz.asc"
+  "powerlevel10k-${pkgver}.tar.gz::https://github.com/romkatv/powerlevel10k/archive/v${pkgver}.tar.gz"
+  "https://github.com/romkatv/powerlevel10k/releases/download/v$pkgver/powerlevel10k-$pkgver.tar.gz.asc"
   "libgit2-${_libgit2ver}.tar.gz::https://github.com/romkatv/libgit2/archive/${_libgit2ver}.tar.gz")
-sha256sums=('452cbce737dc7afa9ad309beebf5022dbee1dd204bdabfc319cde4066fc60b8a'
+sha256sums=('352e277a60dbdda0a2005758b0c20b35e04a315b98f06bb8a75ef649e9b8c881'
+            'SKIP'
             '4ce11d71ee576dbbc410b9fa33a9642809cc1fa687b315f7c23eeb825b251e93')
-#validpgpkeys=('8B060F8B9EB395614A669F2A90ACE942EB90C3DD') # Roman Perepelitsa <roman.perepelitsa@gmail.com>
+validpgpkeys=('8B060F8B9EB395614A669F2A90ACE942EB90C3DD') # Roman Perepelitsa <roman.perepelitsa@gmail.com>
 
 build() {
   cd "libgit2-${_libgit2ver}"
@@ -67,21 +63,20 @@ build() {
   make
 
   # build gitstatus
-  cd "$srcdir/powerlevel10k/gitstatus"
+  cd "$srcdir/powerlevel10k-${pkgver}/gitstatus"
   export CXXFLAGS+=" -I${srcdir}/libgit2-${_libgit2ver}/include -DGITSTATUS_ZERO_NSEC -D_GNU_SOURCE"
   export LDFLAGS+=" -L${srcdir}/libgit2-${_libgit2ver}"
   make
 }
 
 package() {
-  cd powerlevel10k
+  cd "powerlevel10k-${pkgver}"
   find . -type f -exec install -D '{}' "$pkgdir/usr/share/${pkgname}/{}" ';'
 
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s "/usr/share/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # delete unnecessary files. See also: https://bugs.archlinux.org/task/66737
-  rm -r "${pkgdir}/usr/share/${pkgname}/.git"
   rm -r "${pkgdir}/usr/share/${pkgname}/gitstatus/deps/"
   rm -r "${pkgdir}/usr/share/${pkgname}/gitstatus/obj"
   rm -r "${pkgdir}/usr/share/${pkgname}/gitstatus/src/"

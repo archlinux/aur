@@ -1,13 +1,12 @@
 pkgbase = zsh-theme-powerlevel10k
 	pkgdesc = Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience.
-	pkgver = 1.20.19
+	pkgver = 1.21.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/romkatv/powerlevel10k
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = git
 	makedepends = cmake
 	depends = glibc
 	depends = libgcc
@@ -17,9 +16,12 @@ pkgbase = zsh-theme-powerlevel10k
 	optdepends = powerline-fonts: patched fonts for powerline
 	optdepends = ttf-font-nerd: full choice of style options
 	replaces = zsh-theme-powerlevel9k
-	source = git+https://github.com/romkatv/powerlevel10k.git#commit=7ddd1b2715c3844275214347a3572ac1fdd6dc39
+	source = powerlevel10k-1.21.0.tar.gz::https://github.com/romkatv/powerlevel10k/archive/v1.21.0.tar.gz
+	source = https://github.com/romkatv/powerlevel10k/releases/download/v1.21.0/powerlevel10k-1.21.0.tar.gz.asc
 	source = libgit2-tag-2ecf33948a4df9ef45a66c68b8ef24a5e60eaac6.tar.gz::https://github.com/romkatv/libgit2/archive/tag-2ecf33948a4df9ef45a66c68b8ef24a5e60eaac6.tar.gz
-	sha256sums = 452cbce737dc7afa9ad309beebf5022dbee1dd204bdabfc319cde4066fc60b8a
+	validpgpkeys = 8B060F8B9EB395614A669F2A90ACE942EB90C3DD
+	sha256sums = 352e277a60dbdda0a2005758b0c20b35e04a315b98f06bb8a75ef649e9b8c881
+	sha256sums = SKIP
 	sha256sums = 4ce11d71ee576dbbc410b9fa33a9642809cc1fa687b315f7c23eeb825b251e93
 
 pkgname = zsh-theme-powerlevel10k
