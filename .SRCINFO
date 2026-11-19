@@ -1,0 +1,23 @@
+pkgbase = leafpad-qtify
+	pkgdesc = Leafpad (the GTK 2 text editor) built on Qt with GTK made Qt
+	pkgver = 0.8.19
+	pkgrel = 1
+	url = https://github.com/tarot231/leafpad
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = gtk-made-qt
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = intltool
+	makedepends = pkgconf
+	depends = qt6-base
+	depends = glib2
+	depends = cairo
+	depends = pango
+	provides = leafpad
+	conflicts = leafpad
+	source = leafpad-3b1a2c2a1fad10f7f03e9b240bb6fa425aed5417.tar.gz::https://github.com/tarot231/leafpad/archive/3b1a2c2a1fad10f7f03e9b240bb6fa425aed5417.tar.gz
+	sha256sums = a57774ef72694758fe61e8a9cc151c394d3a2a3c5c9cf3ff3c2d874bb1926115
+
+pkgname = leafpad-qtify
