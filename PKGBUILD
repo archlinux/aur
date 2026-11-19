@@ -2,7 +2,7 @@
 
 _pkgbase=ryzen_smu
 pkgname=ryzen_smu_vermeer_phoenix-git
-pkgver=0.2.1.r216.g4c73518
+pkgver=0.2.1.r217.g2f54a4b
 pkgrel=1
 pkgdesc="AMD Ryzen SMU driver (DKMS) with a PM table monitor for Vermeer and Phoenix"
 arch=('x86_64')
