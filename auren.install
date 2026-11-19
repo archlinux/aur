@@ -1,0 +1,54 @@
+# pacman runs these as root, so they can't set Auren up for you: that's `auren setup`, which runs
+# the first time you run `auren`. They only say what to do (Arch never enables user services for you).
+
+post_install() {
+  cat <<'EOF'
+
+Auren is installed. Set it up for yourself (as you, not root) by running:
+
+    auren
+
+It asks a few questions, then adds the talk keys and the bar plugin, downloads the voice model and
+starts Auren. Run `auren setup` again any time.
+
+Installed Auren with install.sh before? Run `/usr/bin/auren setup` instead: until it replaces that
+copy, your old `auren` comes first in PATH. Your settings, keys and voice model are kept.
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+
+Auren was updated. Restart it when it's idle, to run the new version:
+
+    systemctl --user try-restart auren auren-mascot
+
+If the bar panel still looks the same, restart the bar too: omarchy restart shell
+(Updating from Auren's bar panel does both for you.)
+EOF
+}
+
+pre_remove() {
+  cat <<'EOF'
+
+Removing Auren. Best done after `auren setup --remove`, which takes out the talk keys, the bar plugin
+and the services for your user. If you didn't, see the steps printed after removal.
+EOF
+}
+
+post_remove() {
+  cat <<'EOF'
+
+Auren has been removed. If you didn't run `auren setup --remove` first, clean up as yourself:
+
+    systemctl --user stop auren auren-mascot
+    rm -f ~/.config/systemd/user/graphical-session.target.wants/auren.service \
+          ~/.config/systemd/user/graphical-session.target.wants/auren-mascot.service
+    systemctl --user daemon-reload
+    omarchy plugin disable kvm404.auren; rm -f ~/.config/omarchy/plugins/kvm404.auren
+
+and take the "Auren: talk" lines out of ~/.config/hypr/bindings.lua. Your settings and API key
+(~/.config/auren), history (~/.local/state/auren) and voice model (~/.local/share/auren) are left
+alone: delete those folders too to remove everything.
+EOF
+}
