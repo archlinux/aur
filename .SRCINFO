@@ -1,7 +1,7 @@
 pkgbase = siar-bin
 	pkgdesc = Survivable Identity & Autonomous Routing: decentralized, offline-first messaging (prebuilt binaries)
 	pkgver = 0.1.0_alpha.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/irshadlab/siar
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -16,6 +16,8 @@ pkgbase = siar-bin
 	conflicts = siar
 	conflicts = siar-git
 	source = https://github.com/irshadlab/siar/releases/download/v0.1.0-alpha.1/siar-v0.1.0-alpha.1-linux-x86_64.tar.gz
+	source = siar.png::https://raw.githubusercontent.com/irshadlab/siar/main/assets/branding/icon.png
 	sha256sums = 5846dd390434af1e4258b827fc34316207ff16f6cbccf3d5616dd486ff25cf3e
+	sha256sums = 6af4e71bef096e4e5afd1a3998428a0fd62acebc92d6bf29203787f450154a7d
 
 pkgname = siar-bin
