@@ -1,12 +1,12 @@
 # rootapp-bin
 pkgname=rootapp-bin
 pkgver=0.9.164
-pkgrel=1
+pkgrel=3
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
 license=('LicenseRef-proprietary')
-# deps payload 2026-11-18
+# deps payload 2026-11-19
 depends=('alsa-lib'
          'at-spi2-core'
          'ca-certificates-mozilla'
@@ -80,7 +80,11 @@ optdepends=('bluez: org.bluez Bluetooth service (bluetooth.service) for Web Blue
             'vlc-plugin-ffmpeg: video and stream codecs for LibVLC playback (pulls libvlc)'
             'vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio (pulls libvlc)'
             'curl: crash report uploads for the bundled Chromium crash handler (chrome_crashpad_handler dlopens libcurl.so.4)'
-            'nvidia-utils: hardware video decode/encode on NVIDIA GPUs (provides libcuda.so.1, libnvcuvid.so.1, libnvidia-encode.so.1, libGLX_nvidia.so.0)')
+            'nvidia-utils: hardware video decode/encode on NVIDIA GPUs (provides libcuda.so.1, libnvcuvid.so.1, libnvidia-encode.so.1, libGLX_nvidia.so.0)'
+            'vulkan-intel: Intel GPU Vulkan driver and ICD (provides libvulkan_intel.so probed by the bundled Chromium GPU process)'
+            'vulkan-radeon: AMD GPU Vulkan driver and ICD (provides libvulkan_radeon.so probed by the bundled Chromium GPU process)'
+            'vulkan-swrast: lavapipe software Vulkan ICD (provides libvulkan_lvp.so probed by the bundled Chromium GPU process; Mesa ships no ICD by default)'
+            'vulkan-mesa-implicit-layers: Mesa implicit Vulkan layers (libVkLayer_MESA_device_select.so, libVkLayer_MESA_anti_lag.so) probed by the bundled Chromium GPU process; picks the right GPU on hybrid/multi-GPU systems')
 options=('!strip' '!debug')
 
 source=("Root-${pkgver}-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage")
