@@ -10,7 +10,7 @@
 
 pkgname=jennifer-bin
 _realname=jennifer
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc='Jennifer programming language interpreter (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -31,8 +31,8 @@ source_aarch64=("$_realname-$pkgver-linux-arm64.tar.gz::$url/releases/download/$
 # update these on each release. AUR maintainer note: replace SKIP
 # with the real sums when you bump pkgver. CI publishes a
 # pre-filled PKGBUILD-bin as a release asset; copy from there.
-sha256sums_x86_64=('56da2e067d6f63657b90382cc3984587c3ff56268402b97b2f23638124929e1a')
-sha256sums_aarch64=('343ce497d1b1e31da0a9abc7b3edb42f165ecaf1315d13b39d74cab79d77af84')
+sha256sums_x86_64=('d6ac64edb72cca037f5f1f50ea66ed1f097132e8a0bdda878bb50023a519d2e4')
+sha256sums_aarch64=('ea35474b66f21f001e6735766a70a719ae1f76a04c39eeabbb85571364afad38')
 
 # The release tarball lays out as `jennifer-X.Y.Z-linux-ARCH/` with
 # both binaries at the top of that directory.
