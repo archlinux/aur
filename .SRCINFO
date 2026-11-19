@@ -1,13 +1,13 @@
 pkgbase = wofi-power-menu
 	pkgdesc = Highly configurable power menu using the wofi launcher power-menu
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/szaffarano/wofi-power-menu
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = wofi
-	source = wofi-power-menu-0.3.6::https://github.com/szaffarano/wofi-power-menu/archive/refs/tags/v0.3.6.tar.gz
-	sha256sums = 340d3bc58febb288eaaa25d7efea3dabea1c56723c54b64061e067acb45739b8
+	source = wofi-power-menu-0.3.7::https://github.com/szaffarano/wofi-power-menu/archive/refs/tags/v0.3.7.tar.gz
+	sha256sums = 2e9a0c73091dd3551bcd32f32dacdec2d1300d0f01d94f45ae6fb1746b1024e4
 
 pkgname = wofi-power-menu
