@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034
 # Maintainer: LIghtJUNction <https://github.com/LIghtJUNction>
 pkgname=ztty
-pkgver=0.1.2
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Lightweight no_std Rust terminal emulator for X11 and XWayland'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc' 'libx11' 'libxft' 'libxrender')
 makedepends=('rustup')
 optdepends=('xdg-utils: open hyperlinks' 'ttf-dejavu: default monospace font')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('d866a566f43a3e7fd806faa0e06dc3bb10fc71372cd11cd4cb5cd01b50b3500a')
+sha256sums=('f8c4fbf1b6e0afcbc4c72d10caa23a4d57a21a845070f936bf601e44e01f1196')
 
 prepare() {
     cd "$pkgname-$pkgver" || return
@@ -32,5 +32,6 @@ package() {
     cd "$pkgname-$pkgver" || return
     install -Dm755 target/release/ztty "$pkgdir/usr/bin/ztty"
     install -Dm644 assets/ztty.desktop "$pkgdir/usr/share/applications/ztty.desktop"
+    sed -i 's|^Exec=.*|Exec=/usr/bin/ztty|' "$pkgdir/usr/share/applications/ztty.desktop"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
