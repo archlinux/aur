@@ -1,0 +1,16 @@
+pkgbase = go-cafe
+	pkgdesc = Native Go client for Fox Weiqi
+	pkgver = 1.2.18
+	pkgrel = 1
+	url = https://github.com/go-cafe-app/app
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = gtk3
+	depends = libsecret
+	optdepends = gnome-keyring: remember server passwords in the desktop keyring
+	options = !strip
+	source_x86_64 = https://github.com/go-cafe-app/app/releases/download/v1.2.18/GoCafe-1.2.18-x86_64.AppImage
+	sha256sums_x86_64 = 96371a9523454efa9161453fa675e7c1dcb2ab14cebb330051155a2b32c3ef0e
+
+pkgname = go-cafe
