@@ -3,7 +3,7 @@
 _name=parsec
 pkgname=parsec-cuda
 pkgver=4.0.2411
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic framework for architecture aware scheduling and management of micro-tasks on distributed many-core heterogeneous architectures (with CUDA)"
 arch=('x86_64')
 url="https://github.com/ICLDisco/$_name"
@@ -29,7 +29,6 @@ makedepends=('cmake'
              'python-build'
              'python-installer'
              'python-setuptools'
-             'python-wheel'
              'cython'
              'python-pandas'
              'valgrind'
@@ -42,15 +41,19 @@ provides=("parsec=$pkgver")
 conflicts=('parsec')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$_name-$pkgver.tar.gz"
         'use-python-build-installer.patch'
-        'cuda-13.patch')
+        'cuda-13.patch'
+        'sde-cmake-config.patch')
 sha256sums=('3f5750565b9f673626284dd0ba835dadea3633577fee50ac217baf43a335f2ef'
             '602834fbc4ca080af6e31ca942301b89ae0d33089421bc9f9ce70b81d004e170'
-            '7d4cbc862015310a4a9831a9275889b13f02ebfd1e1ea008af1ceafd07186f1e')
+            '7d4cbc862015310a4a9831a9275889b13f02ebfd1e1ea008af1ceafd07186f1e'
+            '40f836f4246c04a043cee49f371e8f5eb06a55f6ec8c7d9360c7a97a46eff7ca')
 
 prepare() {
   cd "$_name-$_name-$pkgver"
   # Build and install the pbt2ptt Python module with python-build and python-installer instead of pip
   patch -Np1 -i ../use-python-build-installer.patch
+  # Install FindSDE.cmake and look for PAPI::SDE in PaRSECConfig.cmake, which libparsec links publicly
+  patch -Np1 -i ../sde-cmake-config.patch
   # CUDA 13 removed clockRate, computeMode and memoryClockRate from cudaDeviceProp (upstream commit 658ff5ed)
   patch -Np1 -i ../cuda-13.patch
   # Graphviz >= 3 gvRenderData() takes a size_t length

@@ -1,0 +1,27 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 604e323..a29453b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1281,6 +1281,7 @@ install(FILES
+   ${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/PaRSECConfig.cmake
+   ${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/ParsecConfigVersion.cmake
+   ${PROJECT_SOURCE_DIR}/cmake_modules/FindPAPI.cmake
++  ${PROJECT_SOURCE_DIR}/cmake_modules/FindSDE.cmake
+   ${PROJECT_SOURCE_DIR}/cmake_modules/FindOTF2.cmake
+   ${PROJECT_SOURCE_DIR}/cmake_modules/FindHWLOC.cmake
+   ${PROJECT_SOURCE_DIR}/cmake_modules/ParsecCompilePTG.cmake
+diff --git a/cmake_modules/PaRSECConfig.cmake.in b/cmake_modules/PaRSECConfig.cmake.in
+index 5d7827b..57c98c6 100644
+--- a/cmake_modules/PaRSECConfig.cmake.in
++++ b/cmake_modules/PaRSECConfig.cmake.in
+@@ -48,6 +48,10 @@ if(@PARSEC_HAVE_PAPI@)
+   find_package(PAPI REQUIRED MODULE)
+ endif(@PARSEC_HAVE_PAPI@)
+ 
++if(@PARSEC_PAPI_SDE@)
++  find_package(SDE REQUIRED MODULE)
++endif(@PARSEC_PAPI_SDE@)
++
+ if(@PARSEC_DIST_WITH_MPI@)
+   # Try to find MPI::MPI_C
+   if (NOT TARGET MPI::MPI_C)
