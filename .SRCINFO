@@ -1,6 +1,6 @@
 pkgbase = chatwithwork-desktop-bin
 	pkgdesc = Chat with Work Desktop: the desktop app, terminal interface and background agent
-	pkgver = 0.16.2
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/crmne/chatwithwork-desktop
 	install = chatwithwork-desktop-bin.install
@@ -33,9 +33,9 @@ pkgbase = chatwithwork-desktop-bin
 	conflicts = chatwithwork-desktop-git
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/crmne/chatwithwork-desktop/releases/download/v0.16.2/cww-app-v0.16.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 5b197417b8faee1abe261700574b5eba10c82c30d8e06d1067ba4bc9e5479e72
-	source_aarch64 = https://github.com/crmne/chatwithwork-desktop/releases/download/v0.16.2/cww-app-v0.16.2-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = c618d8a8a432fa83589c2f30e36f92c5897bab29775f24ca941568f28f8b22f7
+	source_x86_64 = https://github.com/crmne/chatwithwork-desktop/releases/download/v0.17.0/cww-app-v0.17.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 861f1c35eb9a682b2f8a839dbdcf986df9bd82762440e7b2021d4e4ac261b89a
+	source_aarch64 = https://github.com/crmne/chatwithwork-desktop/releases/download/v0.17.0/cww-app-v0.17.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 512d7f3a81774f0ac593d02c501e67a1c8557d2ba08176996ef363e6134150a3
 
 pkgname = chatwithwork-desktop-bin
