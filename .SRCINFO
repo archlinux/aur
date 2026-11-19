@@ -1,13 +1,13 @@
 pkgbase = calibre-plugin-goodreads
 	pkgdesc = Downloads metadata and covers from Goodreads - Calibre Plugin
-	pkgver = 1.8.5
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/kiwidude68/calibre_plugins/tree/main/goodreads
 	arch = any
 	license = GPL3
 	depends = calibre>=2.0.0
-	noextract = goodreads-1.8.5.zip
-	source = https://github.com/kiwidude68/calibre_plugins/releases/download/goodreads-1.8.5/goodreads-1.8.5.zip
-	sha256sums = c76f97fc3976f4196ffd616ab6e47dfbd98033fe6fd4c736bed47503a17a5b22
+	noextract = goodreads-1.10.0.zip
+	source = https://github.com/kiwidude68/calibre_plugins/releases/download/goodreads-1.10.0/goodreads-1.10.0.zip
+	sha256sums = a940b53392e9b14768d464c2bcdf0857a17652a42b3e8239b85862d27329eaf5
 
 pkgname = calibre-plugin-goodreads
