@@ -52,7 +52,7 @@ source=(
 )
 source_x86_64=(
   # The x86_64 kernel config file from the 'linux' package for the Arch 'Core' repo
-    config.x86_64::https://gitlab.archlinux.org/api/v4/projects/42594/repository/files/config.x86_64/raw/\?ref\=$pkgver-$pkgrel
+    config-$pkgver-$pkgrel.x86_64::https://gitlab.archlinux.org/api/v4/projects/42594/repository/files/config.x86_64/raw/\?ref\=$pkgver-$pkgrel
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -96,10 +96,10 @@ prepare() {
     done
 
   echo "Setting config..."
-    sed -i 's/CONFIG_BLK_DEV_NVME=m/CONFIG_BLK_DEV_NVME=y/' ../config.$CARCH
-    cp ../config.$CARCH .config
+    sed -i 's/CONFIG_BLK_DEV_NVME=m/CONFIG_BLK_DEV_NVME=y/' ../config-$pkgver-$pkgrel.$CARCH
+    cp ../config-$pkgver-$pkgrel.$CARCH .config
     make olddefconfig
-    diff -u ../config.$CARCH .config || :
+    diff -u ../config-$pkgver-$pkgrel.$CARCH .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -191,46 +191,46 @@ _package-headers() {
     cp -t "$builddir" -a scripts
     ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
-  if [[ $(scripts/config -s CONFIG_HAVE_STACK_VALIDATION) = y ]]; then
-    install -Dt "$builddir/tools/objtool" tools/objtool/objtool
-  fi
-  
-  if [[ $(scripts/config -s CONFIG_DEBUG_INFO_BTF_MODULES) = y ]]; then
-    install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
-  fi
-  
-  echo "Installing headers..."
-    cp -t "$builddir" -a include
-    cp -t "$builddir/arch/$karch" -a arch/$karch/include
-    install -Dt "$builddir/arch/$karch/kernel" -m644 arch/$karch/kernel/asm-offsets.s
-
-  # idk :')
-    install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
-    install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
-
-  # https://bugs.archlinux.org/task/13146
-    install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
-
-  # https://bugs.archlinux.org/task/20402
-    install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-    install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-    install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
-
-  # https://bugs.archlinux.org/task/71392
-    install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
-
+    if [[ $(scripts/config -s CONFIG_HAVE_STACK_VALIDATION) = y ]]; then
+      install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+    fi
+     
+    if [[ $(scripts/config -s CONFIG_DEBUG_INFO_BTF_MODULES) = y ]]; then
+      install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+    fi
+    
+    echo "Installing headers..."
+      cp -t "$builddir" -a include
+      cp -t "$builddir/arch/$karch" -a arch/$karch/include
+      install -Dt "$builddir/arch/$karch/kernel" -m644 arch/$karch/kernel/asm-offsets.s
+    
+    # idk :')
+      install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
+      install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
+    
+    # https://bugs.archlinux.org/task/13146
+      install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+    
+    # https://bugs.archlinux.org/task/20402
+      install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+      install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+      install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+    
+    # https://bugs.archlinux.org/task/71392
+      install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
+    
   echo "Installing KConfig files..."
     find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
-
-  if [[ $(scripts/config -s CONFIG_RUST) = y ]]; then
-    echo "Installing Rust files..."
-      install -Dt "$builddir/rust" -m644 rust/*.rmeta
-      install -Dt "$builddir/rust" rust/*.so
-  fi
+    
+    if [[ $(scripts/config -s CONFIG_RUST) = y ]]; then
+      echo "Installing Rust files..."
+        install -Dt "$builddir/rust" -m644 rust/*.rmeta
+        install -Dt "$builddir/rust" rust/*.so
+    fi
   
   echo "Installing unstripped VDSO..."
     make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install link=  # Suppress build-id symlinks
-
+  
   echo "Removing unneeded architectures..."
     local arch
     for arch in "$builddir"/arch/*/; do
@@ -238,16 +238,16 @@ _package-headers() {
       echo "Removing $(basename "$arch")"
       rm -r "$arch"
     done
-
+  
   echo "Removing documentation..."
     rm -r "$builddir/Documentation"
-
+  
   echo "Removing broken symlinks..."
     find -L "$builddir" -type l -printf 'Removing %P\n' -delete
-
+  
   echo "Removing loose objects..."
     find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
-
+  
   echo "Stripping build tools..."
     local file
     while read -rd '' file; do
@@ -263,9 +263,8 @@ _package-headers() {
       esac
     done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0) 
 
- echo "Stripping vmlinux..."
-   strip -v $STRIP_STATIC "$builddir/vmlinux"
-
+  echo "Stripping vmlinux..."
+    strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
@@ -276,6 +275,7 @@ pkgname=(
   "$pkgbase"
   "$pkgbase-headers"
 )
+
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
