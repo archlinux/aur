@@ -1,7 +1,7 @@
 pkgbase = open-webui
 	pkgdesc = Web UI and OpenAI API for various LLM runners, including Ollama
 	pkgver = 0.13.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/open-webui/open-webui
 	install = open-webui.install
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = open-webui
 	sha256sums = 5f1bd74c48bf13ab0f82e177ad9e637313b92533d20ead2593d49347a47fc232
 	sha256sums = b1567cc9763241a41569e01f08272a167dac57273f717b95b31ba7b5ec935e17
 	sha256sums = 9de72254becbb9a317410a459447be7e8f042b911a846c58307319c77e50df00
-	sha256sums = 8c2aea01a03ee76ef4cbd0be5fb4d32840da315328e42da2f07e131ab7b4adf1
+	sha256sums = ae11cd2f2f06a6b68e570df4662552ab0553f4dd1385ff3593a81e0eb914f3db
 	sha256sums = 576562a1788303dbdf9e3df4239ea0c43cdab39276e48542f1550f6346dae8f1
 	sha256sums = 8cde3e05a807e73f85d9c20183dd82dcfef7d2400d8bf3303bfef33641598b45
 	sha256sums = dbf2a9e54801e598ebf9656777318ecb09ceea37c3464b692389f1c900f46f1c
