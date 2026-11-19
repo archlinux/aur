@@ -1,7 +1,7 @@
 [Unit]
 Description=Daemon that renders map tiles using mapnik (using PostgreSQL)
 Documentation=man:renderd(1)
-
+Documentation=man:renderd.conf(5)
 After=postgresql.service
 Requires=postgresql.service
 PartOf=postgresql.service
