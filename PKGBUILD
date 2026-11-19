@@ -3,7 +3,7 @@
 # Contributor: FederAndInk
 
 pkgname=circup
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=2
 pkgdesc="A tool to manage/update libraries on CircuitPython devices."
 url="https://github.com/adafruit/circup"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-setuptools-scm' 'python-pip' 'python-bu
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
-sha256sums=('158ab86216b01dc57e1b73abbd6fb683a7399e5644c907264a2b1bf3131aea51')
+sha256sums=('f6cb3811fbb2068270cfc5477962f21377cb5a51c974cadbf47a9ebb573db6e4')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
