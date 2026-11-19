@@ -1,6 +1,6 @@
 pkgbase = polify-bin
 	pkgdesc = Cross-platform music manager with multi-source library, audio fingerprinting, and ID3 tag editing
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://hut.buildr.fun/apps/Polify
 	arch = x86_64
@@ -25,12 +25,12 @@ pkgbase = polify-bin
 	provides = polify
 	conflicts = polify
 	conflicts = polify-git
-	source = polify-1.3.1-linux-x86_64.tar.zst::https://hut.buildr.fun/api/apps/Polify/latest/linux/x86_64/tar.zst
-	source = polify-1.3.1-linux-x86_64.tar.zst.sig::https://hut.buildr.fun/api/apps/Polify/latest/linux/x86_64/tar.zst/signature
+	source = polify-1.3.2-linux-x86_64.tar.zst::https://hut.buildr.fun/api/apps/Polify/latest/linux/x86_64/tar.zst
+	source = polify-1.3.2-linux-x86_64.tar.zst.sig::https://hut.buildr.fun/api/apps/Polify/latest/linux/x86_64/tar.zst/signature
 	validpgpkeys = EF27591A48D4B6F7C7E55F49EC8E0E98E7C13D19
-	sha256sums = fe891ae4d5090213349949c6b76af0792fd8f05d64ebecab60ad38c80cfc1470
+	sha256sums = ae6fc657474863e8754dcb191e9930195aa68ec61c1dec879bbfd5d4a5269b50
 	sha256sums = SKIP
-	b2sums = 881b91dbcedb5bcab38f1405aa7ff90ffde3f73e4e559a0ddf7e06256813b55cff3565ee7f4c0a12b16807f33f9ba12ed4f68409fa4f6b0c9815a55a2ee70c91
+	b2sums = 40f2700b6c6d511c1e31fbfe37f01da422d674c5007a78fcaf982cc4c0795eb81a770c76945f901704e3455bfe78eb5fef39e5a3886c102b083d855a8e07ca49
 	b2sums = SKIP
 
 pkgname = polify-bin
