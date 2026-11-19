@@ -2,7 +2,7 @@
 
 _pkgname=bb-desktop
 pkgname=${_pkgname}-bin
-pkgver=0.49.0
+pkgver=0.50.1
 pkgrel=1
 pkgdesc='Agentic IDE for orchestrating coding agents (official AppImage)'
 arch=('x86_64')
@@ -56,7 +56,7 @@ source=(
   "${_pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/get-bb/bb/desktop-v${pkgver}/LICENSE"
 )
 noextract=("${_appimage}")
-sha256sums=('8349ab773715624fec5082739c817d2a15809504699d34b47d3d9dfbe60fc770'
+sha256sums=('7063d187817abaff710afaba039bed78923e464a9006a39231ff04d1764408a8'
             'd10816aa30183af920bdd789a81b16847bcf3e287e1b3419dd7d85f6e3e8e7b0')
 
 prepare() {
