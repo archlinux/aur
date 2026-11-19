@@ -2,7 +2,7 @@
 
 pkgname=stm32cubemx2
 _pkgname=stm32cubemx2
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="STM32CubeMX2 - new flavor of STM32CubeMX tool"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip' '!debug')
 
 _installer="stm32cubemx2-${pkgver}-X64-Linux-installer"
 source=("local://${_installer}")
-sha256sums=('ae861590821c95863f04c1e73619bd04e3b27e89ad89ef93129ced353de0bedd')
+sha256sums=('1b95155270d15c2e5ee266330579bc25bf659bca15e788a3ec3a865cc314af17')
 
 if [ ! -f "${startdir}/${_installer}" ]; then
   echo ""
@@ -39,7 +39,7 @@ prepare() {
 
   # The ELF embeds a gzip archive, use binwalk to locate where the gzip data starts,
   # binwalk counts from 0, while tail -c +N counts from 1, so tail needs offset + 1
-  tail -c +12853518 "${_installer}" >data.tar.gz
+  tail -c +$((0x526084 + 1)) "${_installer}" >data.tar.gz
   mkdir -p build
   bsdtar -C build -zxf data.tar.gz
 }
