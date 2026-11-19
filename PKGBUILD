@@ -1,6 +1,6 @@
 # Maintainer: Christopher Patrick Fair <christopherpatrickfair@gmail.com>
 pkgname=pegsofur
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 _gdext_ver=0.17.1
 pkgdesc="Ancient city-states dice and wooden pegboard strategy game for 1-4 Human/AI players"
@@ -24,14 +24,14 @@ source=(
   "gdext-nim-${_gdext_ver}.tar.gz::https://github.com/godot-nim/gdext-nim/archive/refs/tags/v${_gdext_ver}.tar.gz"
 )
 sha256sums=(
-  'd955e80f461fbb8234b4ae448b2a15073d90f4125e0a48efe7b36ff6e33bea79'
+  '0aa15bfcf4823d7a5a59c2a38b1d4a70b28b0f6f8d6add9342586f3ce123af6e'
   'e446f3d682e49c609552bee599d21de01ebc86b47889559ab267655b3e887f2d'
 )
 
 prepare() {
-  export NIMBLE_DIR="${srcdir}/${pkgname}-${pkgver}/.nimble"
-  export HOME="${srcdir}/home"
-  mkdir -p "${HOME}"
+  local _nimble_dir="${srcdir}/${pkgname}-${pkgver}/.nimble"
+  local _fake_home="${srcdir}/home"
+  mkdir -p "${_fake_home}"
 
   # Apply Nim 2.4+ compatibility fixes to gdext-nim v0.17.1 before local install
   python3 "${srcdir}/${pkgname}-${pkgver}/packaging/patch_gdext_nim24.py" "${srcdir}/gdext-nim-${_gdext_ver}"
@@ -42,36 +42,39 @@ prepare() {
     git -c user.name="makepkg" -c user.email="makepkg@localhost" add -A
     git -c user.name="makepkg" -c user.email="makepkg@localhost" commit -q -m "source"
   fi
-  nimble install -y
+  HOME="${_fake_home}" NIMBLE_DIR="${_nimble_dir}" nimble install -y
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  export NIMBLE_DIR="${PWD}/.nimble"
-  export HOME="${srcdir}/home"
-  mkdir -p .godot "${HOME}/.cache" "${HOME}/.local/share" "${HOME}/.config"
+  local _nimble_dir="${PWD}/.nimble"
+  local _fake_home="${srcdir}/home"
+  mkdir -p .godot "${_fake_home}/.cache" "${_fake_home}/.local/share" "${_fake_home}/.config"
   printf "res://nim/PegsOfUr.gdextension\n" > .godot/extension_list.cfg
 
   (
     cd nim
-    nim c -d:release -d:target=debug --nimcache:"${srcdir}/nimcache_ext_dbg" bootstrap.nim
-    nim c -d:release -d:target=release --nimcache:"${srcdir}/nimcache_ext_rel" bootstrap.nim
+    HOME="${_fake_home}" NIMBLE_DIR="${_nimble_dir}" \
+      nim c -d:release -d:target=debug --nimcache:"${srcdir}/nimcache_ext_dbg" bootstrap.nim
+    HOME="${_fake_home}" NIMBLE_DIR="${_nimble_dir}" \
+      nim c -d:release -d:target=release --nimcache:"${srcdir}/nimcache_ext_rel" bootstrap.nim
   )
 
   # Pre-import Godot textures, audio streams, and UID cache so /usr/share/pegsofur runs read-only
-  godot --headless --path . --import
+  HOME="${_fake_home}" godot --headless --path . --import
 }
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  export NIMBLE_DIR="${PWD}/.nimble"
-  export HOME="${srcdir}/home"
-  nim c -r \
-    --path:nim/src \
-    --nimCache:"${srcdir}/nimcache_check" \
-    -o:"${srcdir}/test_runner" \
-    tests/test_all.nim
-  godot --headless --path . --quit-after 5
+  local _nimble_dir="${PWD}/.nimble"
+  local _fake_home="${srcdir}/home"
+  HOME="${_fake_home}" NIMBLE_DIR="${_nimble_dir}" \
+    nim c -r \
+      --path:nim/src \
+      --nimCache:"${srcdir}/nimcache_check" \
+      -o:"${srcdir}/test_runner" \
+      tests/test_all.nim
+  HOME="${_fake_home}" godot --headless --path . --quit-after 5
 }
 
 package() {
