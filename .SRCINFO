@@ -55,6 +55,6 @@ pkgbase = vulcanium-bin
 	options = !strip
 	backup = etc/vulcanium/default-flags.conf
 	source = https://github.com/lumexren/vulcanium/releases/download/v157.0.8103.78-1/vulcanium-157.0.8103.78-1-x86_64.pkg.tar.zst
-	sha256sums = 55d835c2e525f509318cfc787f9c1a85168c1a96e7262f31674fabc778ceab25
+	sha256sums = 0a195a6df03c23fd3707c29374b1560b33b90b140c2ed339c7f0fbdc702c7f4a
 
 pkgname = vulcanium-bin
