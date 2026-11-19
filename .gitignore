@@ -3,7 +3,7 @@
 !/.gitignore
 !/.SRCINFO
 !/PKGBUILD
-!/hister.install
+!/nogon.install
 !/*.override.service
 !/*.sysusers
 !/*.patch
