@@ -1,0 +1,49 @@
+#!/bin/sh
+# SPDX-License-Identifier: 0BSD
+
+app=/usr/lib/quosparr/quosparr
+
+for arg do
+    case $arg in
+        -h|--help|--self-check) exec "$app" "$@" ;;
+    esac
+done
+if [ "${QUOSPARR_DEV_VERIFY_SQLITE:-}" = 1 ]; then
+    exec "$app" "$@"
+fi
+
+initialize_update_preference() (
+    case ${HOME:-} in
+        /*) ;;
+        *) exit 1 ;;
+    esac
+
+    dir=$HOME/.quosparr
+    prefs=$dir/preferences.json
+    lock=$dir/quosparr.lock
+
+    # Leave existing settings and pending legacy migrations to Quosparr.
+    for path in "$prefs" "$HOME/.codex-runway" "$HOME/.quosparr-migration-v2"; do
+        if [ -e "$path" ] || [ -L "$path" ]; then
+            exit 1
+        fi
+    done
+    if [ -L "$dir" ] || [ -L "$lock" ] || { [ -e "$lock" ] && [ ! -f "$lock" ]; }; then
+        exit 1
+    fi
+
+    umask 077
+    mkdir -p -- "$dir" || exit 1
+    exec 9>>"$lock" || exit 1
+    flock -n 9 || exit 1
+    tmp=$(mktemp -- "$dir/.aur-preferences.XXXXXX") || exit 1
+    trap 'rm -f -- "$tmp"' EXIT
+    printf '%s\n' '{"automaticallyChecksForUpdates":false}' > "$tmp" || exit 1
+    ln -T -- "$tmp" "$prefs" 2>/dev/null
+)
+
+if initialize_update_preference; then
+    # The seeded preferences make the app identify this as a returning profile.
+    set -- "$@" --settings
+fi
+exec "$app" "$@"
