@@ -1,7 +1,7 @@
 pkgbase = trilium-next-server-bin
 	pkgdesc = Trilium Notes Server Next version
 	pkgver = 0.107.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/TriliumNext/Trilium
 	arch = x86_64
 	license = AGPL3
@@ -10,11 +10,11 @@ pkgbase = trilium-next-server-bin
 	conflicts = trilium-server-bin
 	conflicts = trilium-server-cn
 	conflicts = trilium-server-cn-bin
-	source = trilium-next-server-bin-0.107.0.tar.xz::https://github.com/TriliumNext/Trilium/releases/download/v0.107.0/TriliumNotes-Server-v0.107.0-linux-x64.tar.xz
+	source = trilium-next-server-bin.tar.xz::https://github.com/TriliumNext/Trilium/releases/download/v0.104.1/TriliumNotes-Server-v0.104.1-linux-x64.tar.xz
 	source = trilium-next-server.sh
 	source = trilium-next-server.service
-	sha256sums = a217b5ac702e4bd9d401cfd5c6e9ee25f0a6f4a0c67345c65bd67dc8663d3dce
+	sha256sums = SKIP
 	sha256sums = 9f21966fea2c209ed575090879eede7388f783c0bf7417dfe70021d4c58b48f7
-	sha256sums = f002d981d84b5314755dc059cdef341ed3a492506fb3d7bf789342383c87c358
+	sha256sums = SKIP
 
 pkgname = trilium-next-server-bin
