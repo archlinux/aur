@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 604e323..f08f8e7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -722,10 +722,6 @@ int main(int argc, char *argv[]) {
+     set(PARSEC_HAVE_CUDA ${CUDAToolkit_FOUND} CACHE BOOL "True if PaRSEC provide support for CUDA")
+     if (CUDAToolkit_FOUND)
+       message(STATUS "Found CUDA ${CUDAToolkit_VERSION} in ${CUDAToolkit_LIBRARY_DIR}")
+-      get_target_property(extra_cuda_libs CUDA::cudart INTERFACE_LINK_LIBRARIES)
+-      if(extra_cuda_libs)
+-          list(APPEND EXTRA_LIBS ${extra_cuda_libs})
+-      endif(extra_cuda_libs)
+       # Check if PaRSEC can provide automatic compilation of .cu files.
+       check_language(CUDA)
+       if(CMAKE_CUDA_COMPILER)

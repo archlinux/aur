@@ -3,7 +3,7 @@
 _name=parsec
 pkgname=parsec-cuda
 pkgver=4.0.2411
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic framework for architecture aware scheduling and management of micro-tasks on distributed many-core heterogeneous architectures (with CUDA)"
 arch=('x86_64')
 url="https://github.com/ICLDisco/$_name"
@@ -42,11 +42,13 @@ conflicts=('parsec')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$_name-$pkgver.tar.gz"
         'use-python-build-installer.patch'
         'cuda-13.patch'
-        'sde-cmake-config.patch')
+        'sde-cmake-config.patch'
+        'cudart-link-interface.patch')
 sha256sums=('3f5750565b9f673626284dd0ba835dadea3633577fee50ac217baf43a335f2ef'
             '602834fbc4ca080af6e31ca942301b89ae0d33089421bc9f9ce70b81d004e170'
             '7d4cbc862015310a4a9831a9275889b13f02ebfd1e1ea008af1ceafd07186f1e'
-            '40f836f4246c04a043cee49f371e8f5eb06a55f6ec8c7d9360c7a97a46eff7ca')
+            '40f836f4246c04a043cee49f371e8f5eb06a55f6ec8c7d9360c7a97a46eff7ca'
+            '8d75e93544da27941a4246b99a4b7ae434ea9b40b421f4e1643b2ac874d53346')
 
 prepare() {
   cd "$_name-$_name-$pkgver"
@@ -56,6 +58,8 @@ prepare() {
   patch -Np1 -i ../sde-cmake-config.patch
   # CUDA 13 removed clockRate, computeMode and memoryClockRate from cudaDeviceProp (upstream commit 658ff5ed)
   patch -Np1 -i ../cuda-13.patch
+  # Don't copy CUDA::cudart's internal link dependencies into the exported PaRSEC::parsec link interface
+  patch -Np1 -i ../cudart-link-interface.patch
   # Graphviz >= 3 gvRenderData() takes a size_t length
   sed -i 's/gvRenderData(\(gvc, [A-Za-z]*, "png", result\), length);/{ size_t len; gvRenderData(\1, \&len); *length = len; }/' tools/profiling/graph.c
   # Point the Python tool symlinks in /usr/bin at /usr/libexec instead of the DESTDIR path

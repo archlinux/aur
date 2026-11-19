@@ -1,7 +1,7 @@
 pkgbase = parsec-cuda
 	pkgdesc = Generic framework for architecture aware scheduling and management of micro-tasks on distributed many-core heterogeneous architectures (with CUDA)
 	pkgver = 4.0.2411
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ICLDisco/parsec
 	arch = x86_64
 	license = BSD-3-Clause-Open-MPI
@@ -40,9 +40,11 @@ pkgbase = parsec-cuda
 	source = use-python-build-installer.patch
 	source = cuda-13.patch
 	source = sde-cmake-config.patch
+	source = cudart-link-interface.patch
 	sha256sums = 3f5750565b9f673626284dd0ba835dadea3633577fee50ac217baf43a335f2ef
 	sha256sums = 602834fbc4ca080af6e31ca942301b89ae0d33089421bc9f9ce70b81d004e170
 	sha256sums = 7d4cbc862015310a4a9831a9275889b13f02ebfd1e1ea008af1ceafd07186f1e
 	sha256sums = 40f836f4246c04a043cee49f371e8f5eb06a55f6ec8c7d9360c7a97a46eff7ca
+	sha256sums = 8d75e93544da27941a4246b99a4b7ae434ea9b40b421f4e1643b2ac874d53346
 
 pkgname = parsec-cuda
