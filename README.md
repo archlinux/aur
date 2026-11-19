@@ -117,6 +117,6 @@ TLS 关闭、读写失败、保活发送失败或网关 KICKOUT 仍会触发重�
 3. 在 `/etc/tmpfiles.d/openunivpn-dns.conf` 中写入 `L /run/openunivpn-dns.servers - - - - /etc/openunivpn/dnsmasq-offline.servers`，执行 `systemd-tmpfiles --create /etc/tmpfiles.d/openunivpn-dns.conf`。用 `dnsmasq --test` 验证，然后重启 dnsmasq。`dnsmasq.service` 必须支持用 SIGHUP 重读 `servers-file`。
 4. 在 OpenUniVPN 配置中启用该后端，再启动 `openunivpn.service`。不要同时运行多个客户端实例。
 
-此后端要求 VPN 网关的 TLS 证书和主机名通过校验，只采用经 VPN 隧道路由的 DNS 地址。若网关使用企业 CA，从管理员获取可信 CA 文件，并在 OpenUniVPN 配置的 `[gateway]` 中设置 `ca_file = /path/to/company-ca.pem`。不要把未经核实的网关证书当作信任来源。
+此后端默认校验 VPN 网关的 TLS 证书和主机名，只采用经 VPN 隧道路由的 DNS 地址。企业 CA 可在 `[gateway]` 中配置 `ca_file = /path/to/company-ca.pem`。若管理员明确配置 `[gateway]` 的 `tls_verify = false`，还必须在 `[dns]` 的 `servers` 中填写受信的 VPN DNS IPv4 地址（逗号分隔）；此时不使用网关下发的 DNS。关闭校验仍可能使 VPN 登录凭据和隧道流量被冒充网关截获，不影响浏览器的 HTTPS 校验。
 
 断开时 OpenUniVPN 恢复离线上游；通过 systemd 运行时，异常退出也会执行恢复。若公司 DNS 本身超时，此模式不会改用公网 DNS；先验证 VPN 到公司 DNS 的连通性。

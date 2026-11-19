@@ -324,12 +324,21 @@ def restore_dns(backend='resolvconf'):
 
 
 def gateway_tls_context(config):
-    if config.get('dns_backend') == 'dnsmasq':
+    if config.get('tls_verify', config.get('dns_backend') == 'dnsmasq'):
         return ssl.create_default_context(cafile=config.get('gateway_ca') or None)
     context = ssl.create_default_context()
     context.check_hostname = False
     context.verify_mode = ssl.CERT_NONE
     return context
+
+
+def select_session_dns(config, advertised):
+    if config.get('dns_backend') == 'dnsmasq':
+        configured = config.get('dns_servers', [])
+        if not config.get('tls_verify', True):
+            return configured
+        return configured or advertised
+    return advertised
 
 
 def main():
@@ -368,6 +377,8 @@ def main():
         print("    请编辑该文件后重试。")
         sys.exit(2)
 
+    if config.get('dns_backend') == 'dnsmasq' and not config.get('tls_verify', True):
+        logger.warning("VPN 网关 TLS 身份校验已禁用；仅使用管理员配置的 DNS 地址")
     try:
         run_vpn(config, stop_event)
     finally:
@@ -576,8 +587,7 @@ def run_vpn(config, stop_event):
             run_cmd(["ip", "route", "add", f"{net}/{prefix}", "dev", tun_name])
         for subnet in ["10.11.0.0/16", "10.12.0.0/16", "10.13.0.0/16"]:
             run_cmd(["ip", "route", "add", subnet, "dev", tun_name])
-        if vip["dns"]:
-            setup_dns(vip["dns"], config.get('dns_backend', 'resolvconf'), tun_name)
+        setup_dns(select_session_dns(config, vip["dns"]), config.get('dns_backend', 'resolvconf'), tun_name)
 
         print(f"\n[*] {host} ({latency:.0f}ms) VIP={vip['vip_ip']} DNS={vip['dns']}")
         print(f"    TUN: {tun_name}  Ctrl+C 停止")

@@ -11,6 +11,7 @@
 import os
 import sys
 import configparser
+import ipaddress
 
 USER_CONFIG = os.path.expanduser('~/.config/openunivpn/config.conf')
 SYSTEM_CONFIG = '/etc/openunivpn/config.conf'
@@ -37,6 +38,17 @@ def _parse_config(path):
     dns_backend = c.get('dns', 'backend', fallback='resolvconf').strip().lower()
     if dns_backend not in ('resolvconf', 'dnsmasq'):
         raise ValueError('[dns] backend must be resolvconf or dnsmasq')
+    tls_verify = c.getboolean('gateway', 'tls_verify', fallback=dns_backend == 'dnsmasq')
+    dns_servers = []
+    if dns_backend == 'dnsmasq':
+        for raw in c.get('dns', 'servers', fallback='').split(','):
+            if raw.strip():
+                ip = ipaddress.IPv4Address(raw.strip())
+                if ip.is_unspecified or ip.is_loopback or ip.is_multicast:
+                    raise ValueError('[dns] servers must be unicast VPN IPv4 addresses')
+                dns_servers.append(str(ip))
+        if not tls_verify and not dns_servers:
+            raise ValueError('[dns] servers is required when dnsmasq is used with tls_verify=false')
 
     gateways_raw = c.get('gateway', 'list', fallback='')
     gateways = []
@@ -57,6 +69,8 @@ def _parse_config(path):
         'gateways': gateways,
         'tun_name': c.get('tun', 'name', fallback='cnem0'),
         'dns_backend': dns_backend,
+        'dns_servers': dns_servers,
+        'tls_verify': tls_verify,
         'gateway_ca': c.get('gateway', 'ca_file', fallback='').strip(),
     }
 

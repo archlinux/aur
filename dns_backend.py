@@ -33,7 +33,8 @@ def routed_to_tunnel(ip, tun_name):
     if result.returncode != 0:
         return False
     routes = json.loads(result.stdout)
-    return len(routes) == 1 and routes[0].get('dev') == tun_name
+    return (len(routes) == 1 and routes[0].get('dev') == tun_name
+            and routes[0].get('type', 'unicast') == 'unicast')
 
 
 def activate(addresses, tun_name):
