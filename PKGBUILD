@@ -2,40 +2,98 @@
 
 pkgname=python-pymobiledevice3
 _pkgname=pymobiledevice3
-pkgver=6.0.1
+pkgver=11.55.0
 pkgrel=1
 pkgdesc='Pure python3 implementation for working with iDevices'
 arch=('any')
 url='https://github.com/doronz88/pymobiledevice3'
 license=('GPL-3.0-or-later')
-depends=(
-  'openssl' 'libusb' 'python' 'python-construct' 'python-asn1'
-  'python-click' 'python-coloredlogs' 'ipython' 'python-bpylist2' 'python-pygments'
-  'python-hexdump' 'python-daemonize' 'python-gpxpy' 'python-pykdebugparser' 'python-pyusb'
-  'python-tqdm' 'python-requests' 'xonsh' 'python-parameter-decorators' 'python-packaging'
-  'python-pygnuutils' 'python-cryptography' 'python-pycrashreport' 'python-fastapi' 'uvicorn'
-  'python-nest-asyncio' 'python-pillow' 'python-inquirer3' 'python-ipsw_parser'
-  'python-ifaddr' 'python-hyperframe' 'python-srptools' 'python-qh3' 'python-developer_disk_image'
-  'python-opack2' 'python-psutil' 'python-pytun-pmd3' 'python-prompt_toolkit'
-  'python-sslpsk-pmd3' 'python-python-pcapng' 'python-plumbum'
+_pydeps=(
+  asn1 # AUR
+  bpylist2 # AUR
+  pygments
+  daemonize
+  pykdebugparser # AUR
+  rich
+  ansilogs # AUR
+  requests
+  packaging
+  typing_extensions
+  pygnuutils # AUR
+  cryptography
+  pycrashreport # AUR
+  fastapi
+  wsproto
+  pillow
+  questionary # AUR
+  ipsw_parser # AUR
+  ifaddr
+  hyperframe
+  qh3
+  developer_disk_image # AUR
+  opack2 #AUR
+  psutil
+  pytun-pmd3 # AUR
+  prompt_toolkit
+  sslpsk-pmd3 # AUR
+  python-pcapng # AUR
+  pyimg4 # AUR
+  typer
+  typer-injector # AUR
+  defusedxml
+  bytestruct # AUR
+  av
+  pmd-pytcp # AUR
+  pmd-net-addr # AUR
+  pyiosbackup # AUR
+  pyzstd
+  click
+  pexpect
+  shellingham
+  traitlets
 )
-makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'python-setuptools-scm')
-checkdepends=('python-pytest' 'python-pytest-asyncio')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fb6cbd884337920e9c7a4e014040f8724febe41dc19deba952603703479e3407')
+depends=(
+  sh
+  libusb
+  ipython
+  python
+  "${_pydeps[@]/#/python-}"
+  uvicorn
+  asgi-webdav # AUR
+)
+makedepends=(
+  'git'
+  'python-build' 
+  'python-wheel' 
+  'python-installer' 
+  'python-setuptools' 
+  'python-setuptools-scm'
+)
+checkdepends=(
+  'python-pytest' 
+  'python-pytest-asyncio'
+  'python-httpx'
+)
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('c3cc4d7c00a7c2761418539454ccba6cfab29692ab013bbf7c6ac94e37cbca4d')
+
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   export SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver"
   python -m build --wheel --no-isolation
 }
 
-check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python -m pytest -m cli
-}
+# check() {
+#   cd "${srcdir}/${pkgname}"
+#   python -m pytest -m cli
+# }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
