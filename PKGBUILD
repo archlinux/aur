@@ -2,7 +2,7 @@
 
 pkgbase=taigikeyboard
 pkgname=(fcitx5-taigikeyboard ibus-taigikeyboard taigikeyboard-common)
-pkgver=3.8.0
+pkgver=3.9.0
 _tag="desktop-${pkgver}"
 pkgrel=1
 arch=('x86_64')
@@ -28,7 +28,7 @@ makedepends=(
 	'fcitx5'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/taigikeyboard/taigikeyboard/archive/refs/tags/${_tag}.tar.gz")
-sha512sums=('f2cda6006344e91b795c1d50960a0c91ec9acdb4ccbe88903e59a5b0995d8a3911dd68a9a417d3d47485a44eb84bd35ec61badb69792bddc6de5dd51ba654d25')
+sha512sums=('79c67f8d4de0a0283ddf08fa05cae9ccc2b6980fd9fb3040eb7c6498cfdc60ea5f39558fb4371f65ea52b9db808532158a2bf18413d03cadae1ac35a0ae0cbda')
 # Unbundling libsqlite3-sys while using LTO for C still leads to errors. Disable
 # it instead.
 options=(!lto)
