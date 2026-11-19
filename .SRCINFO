@@ -1,6 +1,6 @@
 pkgbase = runx-bin
 	pkgdesc = Universal project launcher with portable runtimes. Run projects without installing Node, Python, or other toolchains globally.
-	pkgver = 0.6.2
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/aryankahar31/runx
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = runx-bin
 	provides = runx
 	conflicts = runx
 	options = !strip
-	source = README-0.6.2.md::https://raw.githubusercontent.com/aryankahar31/runx/v0.6.2/README.md
+	source = README-0.7.1.md::https://raw.githubusercontent.com/aryankahar31/runx/v0.7.1/README.md
 	source = LICENSE
-	sha256sums = b93ed9bb1b4a6ac2fdc513b12bbd8bdbaccc2959f6d6b449a9e390bd7b6194d5
+	sha256sums = 21e4bcd7bfc837411634ac93f8e747a43e1c7c86a6a3567ec92daf004f4a5d91
 	sha256sums = fbd9c09c7b576e977fa12ea54df5861ae6ae9b130487f1e1664550f743257f31
-	source_x86_64 = runx-x86_64-0.6.2.tgz::https://github.com/aryankahar31/runx/releases/download/v0.6.2/runx-linux-x64.tar.gz
-	sha256sums_x86_64 = 82b2918785bfb67033cd1b3524bf3c2124cce539ce206f1f5b0dfc1422b48f25
+	source_x86_64 = runx-x86_64-0.7.1.tgz::https://github.com/aryankahar31/runx/releases/download/v0.7.1/runx-linux-x64.tar.gz
+	sha256sums_x86_64 = ff9a6dcd8287ce588ec575854e4b22c65e518cdb153bd65b4c056aa8b8635c15
 
 pkgname = runx-bin
