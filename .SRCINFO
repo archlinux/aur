@@ -1,0 +1,18 @@
+pkgbase = zfetch-project-z-bin
+	pkgdesc = A tiny native Linux system summary from Project Z (official static binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/zfetch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = zfetch
+	conflicts = zfetch
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/LIghtJUNction/zfetch/releases/download/v0.1.0/zfetch-0.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 9dbb856645309e89f2ce2cd191588f3206bbffd4e1806c18ccd381bc7346e606
+	source_aarch64 = https://github.com/LIghtJUNction/zfetch/releases/download/v0.1.0/zfetch-0.1.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = b2874564e9e40242b2be219b721e0ba69b0c906bd8be74ea1336227e9d2a0918
+
+pkgname = zfetch-project-z-bin
