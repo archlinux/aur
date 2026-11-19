@@ -7,7 +7,7 @@
 # result to the AUR; see packaging/aur/README.md.
 pkgname=nvbeam-bin
 _pkgname=nvbeam
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="Fast, native Neovim GUI client built with Qt6 and C++ (prebuilt)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ _asset="${_pkgname}-${pkgver}-${_upstream_pkgrel}-${arch[0]}.pkg.tar.zst"
 # makepkg extracts the .pkg.tar.zst into $srcdir: usr/ plus the package
 # metadata files (.PKGINFO, .MTREE, ...), of which only usr/ is used.
 source=("${_asset}::${url}/releases/download/${_tag}/${_asset}")
-sha256sums=('a9277848c2bfb37677db353b2625fd259ecb19eeff35027f0f8db2389c030a23')
+sha256sums=('0d6dff4d862d556557686cd7ceb7d77cf04e66a4e0ef64aed0cf9191415e8640')
 
 package() {
     cp -a "${srcdir}/usr" "${pkgdir}/"
