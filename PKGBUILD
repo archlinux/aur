@@ -51,7 +51,7 @@ source_aarch64=("${_file_aarch64}::${_url_aarch64}")
 
 options=(!strip !debug)
 sha256sums=(
-    'b9478f6156fc65858971ca8fb0cc0b94d327ed34f704ce4c614b10e7510dbfe9'
+    'dc40c8d1dc42d37524e296bdd5e1fa4c3cc7e472d08c70bd6f2bb7f9a594f752'
     '54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445'
     'SKIP'
 )

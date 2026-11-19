@@ -1,5 +1,5 @@
 [Desktop Entry]
-Comment=
+Comment=Zalo for Linux (with ZaDark)
 Name=Zalo
 Exec=/usr/bin/zalo
 Icon=/opt/zalo/icon.png
