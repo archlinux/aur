@@ -1,6 +1,6 @@
 pkgbase = kopuz-legacy
 	pkgdesc = The legacy Dioxus interface of the Kopuz music player, with the daemon built in
-	pkgver = 0.67.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Kopuz-org/kopuz
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = kopuz-legacy
 	depends = gst-plugins-good
 	optdepends = ffmpeg: converting YouTube downloads to MP3, FLAC or WAV
 	options = !lto
-	source = kopuz-0.67.1.tar.gz::https://github.com/Kopuz-org/kopuz/archive/refs/tags/v0.67.1.tar.gz
-	sha256sums = 8190de289db3ad8e5ddea1684201dc86ea1336a5ca1a73655a8d97bba675f57a
+	source = kopuz-1.0.0.tar.gz::https://github.com/Kopuz-org/kopuz/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 75e0705c7f6452c3f941328db7592d356c3da578204518d0dc9cc6673455735d
 
 pkgname = kopuz-legacy
