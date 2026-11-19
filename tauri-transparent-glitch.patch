@@ -1,0 +1,13 @@
+diff --git a/apps/desktop/src-tauri/tauri.conf.json b/apps/desktop/src-tauri/tauri.conf.json
+index 3ef4cad..092639f 100644
+--- a/apps/desktop/src-tauri/tauri.conf.json
++++ b/apps/desktop/src-tauri/tauri.conf.json
+@@ -21,7 +21,7 @@
+         "center": true,
+         "resizable": true,
+         "decorations": false,
+-        "transparent": true,
++        "transparent": false,
+         "shadow": false,
+         "dragDropEnabled": false
+       }

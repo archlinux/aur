@@ -1,0 +1,15 @@
+diff --git a/packaging/flatpak/dev.termoso.Termoso.desktop b/packaging/flatpak/dev.termoso.Termoso.desktop
+index 4ff6329..d37fd54 100644
+--- a/packaging/flatpak/dev.termoso.Termoso.desktop
++++ b/packaging/flatpak/dev.termoso.Termoso.desktop
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+ Name=Termoso
+ Comment=SSH, SFTP and terminal client with an encrypted vault
+-Exec=termoso %U
+-Icon=dev.termoso.Termoso
++Exec=termoso-desktop %U
++Icon=termoso
+ Terminal=false
+ Type=Application
+ Categories=Network;RemoteAccess;System;TerminalEmulator;

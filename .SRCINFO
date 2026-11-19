@@ -1,0 +1,28 @@
+pkgbase = termoso
+	pkgdesc = Free, open-source, zero-knowledge SSH/SFTP client & sync server.
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://termoso.dev/
+	arch = x86_64
+	license = AGPL-3
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = cargo
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgcc
+	depends = libsoup3
+	depends = systemd-libs
+	depends = webkit2gtk-4.1
+	source = termoso::git+https://github.com/termoso/termoso.git/#tag=v0.12.1
+	source = tauri-transparent-glitch.patch
+	source = icon.patch
+	sha256sums = fd7ba9dfc47bd3a45128a2948d4e816d5665dc4d10941ea03b9ed46a3f16a1fc
+	sha256sums = 2324a2b6cb280356d6f0ec24e084153a65998f401a94a01742779ac1e7bd2e96
+	sha256sums = a23643c6d140ac1b8b23957bbd8e32216a52b62a89345a5de96ff5a839cd0ddc
+
+pkgname = termoso

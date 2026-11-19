@@ -1,0 +1,5 @@
+/termoso/
+/src/
+/pkg/
+*.pkg.tar.xz
+*.sig
