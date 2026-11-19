@@ -1,0 +1,24 @@
+pkgbase = parula-git
+	pkgdesc = New full-featured desktop email, chat and video conference client.
+	pkgver = 0.9.42.r1.g234bdff
+	pkgrel = 1
+	url = https://parula.app/
+	arch = any
+	license = LicenseRef-EUPL-1.2
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = yarn
+	makedepends = gendesk
+	makedepends = jq
+	depends = electron41
+	provides = parula=0.9.42
+	conflicts = parula
+	source = parula.git::git+https://github.com/parula-app/parula.git
+	source = parula.js
+	source = parula.sh
+	sha256sums = SKIP
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+
+pkgname = parula-git
