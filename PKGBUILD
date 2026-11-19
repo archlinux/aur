@@ -2,7 +2,7 @@
 
 _pkgname=vite-plus
 pkgname=${_pkgname}
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="The Unified Toolchain for the Web"
 arch=("x86_64" "aarch64")
@@ -21,8 +21,8 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/voidzero-dev/vite-plus/archive/refs/tags/v${pkgver}.tar.gz"
   "vite-plus-js-${pkgver}.tgz::https://registry.npmjs.org/vite-plus/-/vite-plus-${pkgver}.tgz"
 )
-sha256sums=('8bb73c2ff33523675c66e9d87d8694754e4def7d7bbaff2ee95f274fb48de946'
-            '10c1a4fe42b04678b37ceddf651a59395de390ebdeda897fc9e6eb065baa7ec6')
+sha256sums=('badbb6809618cba01ae311a4cb89591e35d15dfe6fee01efbfff8cc3d1dec04d'
+  '8bb1fb48a5a928d58b9b03fd9b6d855a8fb82f3dfdffef7d43f0faf8ad1b7244')
 
 install=vite-plus.install
 
@@ -75,7 +75,7 @@ prepare() {
   toolchain=$(_get_toolchain)
   rustup install "$toolchain"
   export RUSTUP_TOOLCHAIN="$toolchain"
-  cargo fetch --locked --target "$(rustc -vV | grep host | sed 's/host: //')"
+  cargo fetch --target "$(rustc -vV | grep host | sed 's/host: //')"
 }
 
 build() {
