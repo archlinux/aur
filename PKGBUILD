@@ -1,6 +1,6 @@
 # Maintainer: mengh04 <mengh04@users.noreply.github.com>
 pkgname=shotori
-pkgver=0.18.1
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Wayland-first screenshot tool with built-in OCR, self-drawn UI via gpui-kit"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/mengh04/shotori"
 license=('MIT')
 depends=('gcc-libs' 'libxcb' 'libxau' 'libxdmcp' 'libxkbcommon')
 source=("shotori-${pkgver}-x86_64.tar.gz::https://github.com/mengh04/shotori/releases/download/v${pkgver}/shotori-v${pkgver}-x86_64.tar.gz")
-sha256sums=('7a8d03b2f7462a7b2d7802d1653b40acf90a8f33c0a9e549afa0b75e8b2d08f9')
+sha256sums=('663227c0094783cbb36104f304225c18a7f4eebc60f2296eeced71176b6ec8e6')
 
 package() {
     install -Dm0755 shotori -t "$pkgdir/usr/bin/"
