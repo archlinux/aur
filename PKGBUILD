@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=kiri-desktop-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Tiny, fast container runtime speaking the Docker API (with GUI and bundled docker CLI, Compose, buildx)"
 arch=('x86_64' 'aarch64')
@@ -40,8 +40,8 @@ source_aarch64=(
 sha256sums=('1e8f1730d7bca0eacdc7d1dea9e86e2dc690e1e14434fd90d98ad54bcf48df8d'
             'fa0bd2c3b048b5205b21c66959ba23e63ddde224ee0b1a14a11d2ad13f9375e2'
             '270725dbf2ca755ca30400dab099b56b96f37d5efcd6d316a863de28b5fbc10f')
-sha256sums_x86_64=('9ce1668b859b64b190d79996a7ad9c54e0f9ab9a89043a9ea0e13c45894e3872')
-sha256sums_aarch64=('c8433438a146b6dfb0ce1c64dec26cac6229a7a231f306e5dd15ec67e0b0cc4e')
+sha256sums_x86_64=('639f64abb7f3bd063a80ed1744e891156351c56cf2ad502633c47536c397a961')
+sha256sums_aarch64=('2b29a93a45f1597ed8c3239d3de28b7dbf91b813d61e53750ed9d6f216b09fb8')
 # makepkg would unpack the .deb into srcdir; _unpack_deb does it per package.
 noextract=("kiri-${pkgver}-x86_64.deb" "kiri-${pkgver}-aarch64.deb")
 
