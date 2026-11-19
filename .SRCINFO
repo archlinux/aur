@@ -1,6 +1,6 @@
 pkgbase = rhythmbox-albumartist-filter
 	pkgdesc = Album Artist filtering plugin for Rhythmbox
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 2
 	url = https://github.com/username227/Rhythmbox-AlbumArtist-Filter
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rhythmbox-albumartist-filter
 	depends = rhythmbox
 	depends = libpeas
 	depends = python-gobject
-	source = rhythmbox-albumartist-filter-1.0.0.tar.gz::https://github.com/username227/Rhythmbox-AlbumArtist-Filter/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 5b837bff078ec3c2423b21592cb4aa23ad235c5ec4706170268a5ce4361a418e
+	source = rhythmbox-albumartist-filter-1.1.0.tar.gz::https://github.com/username227/Rhythmbox-AlbumArtist-Filter/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = a71eb7d7efa79664f346bb225ed9f4b7f7b18a331ddcc5c78021cd6bd95378df
 
 pkgname = rhythmbox-albumartist-filter
