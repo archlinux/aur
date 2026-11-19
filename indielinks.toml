@@ -69,19 +69,19 @@ Ipv4Address = "127.0.0.1"
 [background-tasks]
 default-timeout = { secs = 5, nanos = 0 }
 max-concurrent-tasks = 16
-sleep-duration = { secs = 1, nanos = 0 }
+sleep-duration = { secs = 600, nanos = 0 } # ten minutes
 shutdown-timeout = { secs = 0, nanos = 500000000 } # "500ms"
 pickup-timeout = { secs = 1, nanos = 0 }
 
 [raft-config]
 cluster-name = "indielinks"
 this-node = 0
-heartbeat-interval   = { secs = 0, nanos =  500000000 } # 500ms
-election-timeout-min = { secs = 0, nanos = 1500000000 } # 1500ms
-election-timeout-max = { secs = 0, nanos = 3000000000 } # 3000ms
+heartbeat-interval   = { secs = 0, nanos = 400000000 } # 400ms
+election-timeout-min = { secs = 1, nanos = 200000000 } # 1200ms
+election-timeout-max = { secs = 2, nanos = 400000000 } # 2.4s
 
 [raft-config.snapshot-policy]
-LogsSinceLast = 1000
+LogsSinceLast = 5000
 
 [client-configuration]
 timeout = [

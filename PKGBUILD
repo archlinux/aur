@@ -2,7 +2,7 @@
 
 pkgname=indielinks-git
 _pkgname=${pkgname%-git}
-pkgver=v0.0.3.r8.g8fea65f
+pkgver=v0.0.8.r18.g4ba045b
 pkgrel=1
 pkgdesc="del.icio.us in the Fediverse (git version)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("${_pkgname}::git+https://github.com/sp1ff/indielinks.git"
         'indielinks.toml'
         'indielinks.service')
 sha256sums=('SKIP'
-            'df6595015c362854bcd6013e2a2e5b30482ade16ca23fe8ce27f1d13c41dd674'
+            '432b623bccb75500ebf420cab8d039e9580f8ca42352f611cfd89185b26a9b24'
             '4254ea7c35897861c280e540d2a467227ac66451c3b19730ef59efb512848493')
 _nproc=$(($(nproc)/4))
 if [ $_nproc -eq 0 ]; then
