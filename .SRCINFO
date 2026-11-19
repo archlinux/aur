@@ -1,0 +1,20 @@
+pkgbase = ddd-qtify
+	pkgdesc = DDD, the GNU Data Display Debugger (Motif and Athena), built on Qt with Motif on Qt
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = https://www.gnu.org/software/ddd/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = motif-on-qt
+	makedepends = flex
+	makedepends = bison
+	depends = qt6-base
+	depends = ncurses
+	depends = gdb
+	provides = ddd
+	conflicts = ddd
+	source = https://deb.debian.org/debian/pool/main/d/ddd/ddd_3.4.1.orig.tar.gz
+	sha256sums = b87517a6c3f9611566347e283a2cf931fa369919b553536a2235e63402f4ee89
+
+pkgname = ddd-qtify
