@@ -2,7 +2,7 @@
 _appname=qingjian
 pkgname="fcitx5-${_appname}-bin"
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="青简输入法 Linux/Fcitx5 官方支持版（Rust Server + Fcitx5 插件 + 离线数据模型）"
 arch=('x86_64')
 url="https://qingjian.app"
@@ -16,6 +16,9 @@ depends=(
 	'openssl-3'
 	'hicolor-icon-theme'
 	'glibc'
+	'fcitx5-gtk'
+	'fcitx5-qt'
+	'fcitx5-configtool'
 )
 options=(
 	'!strip'
@@ -24,6 +27,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-x86_64.tar.gz"
     "${_appname}-server.service"
 )
+install="${pkgname%-bin}.install"
 sha256sums=('363371f48e988356b2fab8bc38cd3c04188a25cc475fd7e78401e7dccc9cb069'
             'b543cdc876b02e14602fb84399afbcd1a57add840b10d8b1ce532099ad8b3516')
 _get_app_dir() {

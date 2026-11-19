@@ -1,8 +1,9 @@
 pkgbase = fcitx5-qingjian-bin
 	pkgdesc = 青简输入法 Linux/Fcitx5 官方支持版（Rust Server + Fcitx5 插件 + 离线数据模型）
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qingjian.app
+	install = fcitx5-qingjian.install
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = python
@@ -10,6 +11,9 @@ pkgbase = fcitx5-qingjian-bin
 	depends = openssl-3
 	depends = hicolor-icon-theme
 	depends = glibc
+	depends = fcitx5-gtk
+	depends = fcitx5-qt
+	depends = fcitx5-configtool
 	provides = fcitx5-qingjian=0.3.4
 	conflicts = fcitx5-qingjian
 	options = !strip

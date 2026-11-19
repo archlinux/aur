@@ -1,0 +1,10 @@
+qingjian_server_hint() {
+	printf 'To enable and start the qingjian server, run:\n'
+	printf '    \033[1;31msystemctl --user enable --now qingjian-server.service\033[0m\n'
+}
+post_install() {
+	qingjian_server_hint
+}
+post_upgrade() {
+	qingjian_server_hint
+}
