@@ -1,6 +1,6 @@
 # Maintainer: chaoticdev
 pkgname=magicpodscore
-pkgver=2.0.7
+pkgver=2.0.12
 pkgrel=2
 pkgdesc="A command-line utility for managing AirPods, Beats, and Galaxy Buds."
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=()
 provides=('magicpodscore')
 conflicts=('magicpodscore-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/steam3d/MagicPodsCore/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('0d34f6f3d5c004f39b7860c8f79b2fe6c83faadc8cf8b306118e5d0f333e91da')
+sha256sums=('e070124a7acb8081d1d7b225f3c05c071061d5d7ce790d462d93a81c2fbe3c39')
 
 build() {
   cd "$srcdir/MagicPodsCore-$pkgver"
