@@ -4,7 +4,7 @@
 # crumBS as /usr/bin/crumbs, so it conflicts with that one.
 pkgname=crum-bs
 _pkgname=crumbs
-pkgver=0.6.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Find and remove app leftovers, caches and system bloat"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('crumbs')
 options=('!lto')
 # The release uploads this tarball (git archive of the tag).
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('d02765628811d90f9f157fd439705d41a8dbe4e0d6ab28afdedad16ffdf31313')
+sha256sums=('2140c728ec419aa3873fc862f5c8f8e7386b28abcc687d046fec533156b61ab8') # filled in by scripts/release.sh
 
 prepare() {
     cd "$_pkgname-$pkgver"
