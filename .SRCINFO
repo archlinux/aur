@@ -1,6 +1,6 @@
 pkgbase = synthos-bin
-	pkgdesc = Local AI desktop studio: agentic chat, notes workspace, node editor for image/video/music/speech, code editor — native synaptix engine on any NVIDIA sm_80+ GPU, .syn and GGUF models (binary release)
-	pkgver = 0.2.321
+	pkgdesc = Local AI desktop studio: agentic chat, notes workspace, node editor for image/video/music/speech, code editor — native synaptix engine on any NVIDIA sm_80+ GPU, .syn and GGUF models
+	pkgver = 0.2.322
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/VitaminDB/synthos
@@ -22,12 +22,14 @@ pkgbase = synthos-bin
 	optdepends = openvino-intel-npu-plugin: нейросети на Intel NPU
 	optdepends = intel-npu-driver: драйвер Intel NPU
 	optdepends = intel-npu-compiler: компилятор моделей для Intel NPU
-	optdepends = synaptix: системная служба synaptixd — synthos подключается к ней и делит загруженные модели с synshell; без неё работает свой встроенный движок
+	optdepends = synaptix: системная служба synaptixd — synthos делит с ней загруженные модели; без неё работает встроенный движок
 	optdepends = synshell-ai: ассистент synshell — ставит службу synaptix, с которой synthos делит модели
-	provides = synthos=0.2.321
+	provides = synthos
 	conflicts = synthos
 	conflicts = synthos-git
-	source = synthos-0.2.321.tar.zst::https://github.com/VitaminDB/synthos/releases/download/v0.2.321/synthos-0.2.321-x86_64-linux.tar.zst
-	sha256sums = 6c8ad3d04c4fe2b8c585dd2e994d4ccadbf65301b65a312aae9eb09cef446f64
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/VitaminDB/synthos/releases/download/v0.2.322/synthos-0.2.322-x86_64.tar.zst
+	sha256sums_x86_64 = 4e5291eeacfe62b461da0a8a3583d7d1b15835eb0f1a242f4cbb1ccb3027aba6
 
 pkgname = synthos-bin
