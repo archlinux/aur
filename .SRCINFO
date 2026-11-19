@@ -1,0 +1,32 @@
+pkgbase = quosparr-git
+	pkgdesc = Native desktop tray monitor for AI quotas, session usage and costs
+	pkgver = 1.12.2.r0.g9edda7b
+	pkgrel = 1
+	url = https://github.com/Licoy/Quosparr
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only AND MIT AND LicenseRef-Remix-Icon
+	makedepends = git
+	makedepends = go>=1.27.3
+	makedepends = python
+	depends = ca-certificates
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libayatana-appindicator
+	depends = org.freedesktop.secrets
+	depends = pango
+	depends = ttf-font
+	depends = xdg-utils
+	provides = quosparr
+	conflicts = quosparr
+	options = !strip
+	options = !debug
+	source = quosparr::git+https://github.com/Licoy/Quosparr.git#branch=main
+	sha256sums = SKIP
+
+pkgname = quosparr-git
