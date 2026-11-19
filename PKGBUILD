@@ -2,7 +2,7 @@
 
 pkgname=strom
 pkgver=0.8.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Visual GStreamer pipeline editor and media pipeline engine'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Eyevinn/strom'
@@ -134,6 +134,9 @@ Group=strom
 WorkingDirectory=/var/lib/strom
 StateDirectory=strom
 StateDirectoryMode=0750
+SupplementaryGroups=render video
+Environment=GST_GL_PLATFORM=egl
+Environment=GST_GL_WINDOW=surfaceless
 Environment=RUST_LOG=info
 ExecStart=/usr/bin/strom --headless --data-dir=/var/lib/strom
 Restart=on-failure

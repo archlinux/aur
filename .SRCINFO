@@ -1,7 +1,7 @@
 pkgbase = strom
 	pkgdesc = Visual GStreamer pipeline editor and media pipeline engine
 	pkgver = 0.8.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Eyevinn/strom
 	arch = x86_64
 	arch = aarch64
