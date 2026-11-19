@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=anydoc
-pkgver=0.2.4
-pkgrel=3
+pkgver=0.2.5
+pkgrel=1
 pkgdesc='Convert Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV, and PDF to clean Markdown'
 arch=(x86_64)
 url="https://github.com/firecrawl/$pkgname"
@@ -13,7 +13,7 @@ depends=(glibc # jklibc.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('d0cf6ce8ca3776b1d6e3c3f8bc0d3f97cd3d78cc0a428eeabb8fc37485a36a55')
+sha256sums=('9feb89cb8ffdf93ae5aff36d8c0330be36f485e1d0e5252a867e985ee677002f')
 
 _srcenv() {
 	cd "$_archive"
