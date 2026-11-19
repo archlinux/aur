@@ -7,7 +7,7 @@
 pkgname=nginx-mod-lua
 # The release OpenResty 1.31.8.1 bundles, with lua-resty-core 0.1.35rc2 and OpenResty's LuaJIT
 # 2.1-20261023; OpenResty's releases take upstream's rc tags. Above the AUR's 1:0.10.29R2-1
-pkgver=0.10.32rc7
+pkgver=0.10.32rc8
 pkgrel=1
 # The AUR's epoch, without which our version would be below its
 epoch=1
@@ -67,11 +67,11 @@ source=(
   "test-nginx-$_testnginxver.tar.gz::https://github.com/openresty/test-nginx/archive/refs/tags/v$_testnginxver.tar.gz"
   "lua-resty-core-$_restycorever.tar.gz::https://github.com/openresty/lua-resty-core/archive/refs/tags/v$_restycorever.tar.gz"
 )
-sha512sums=('c1996ef9dfa3ee33b1fc7ccb549525beba8fefb768348adbd0f60eb2732a547ff9db55e169d44298685bfba4fb5f0a7d31ac3b1fa2073d58f29b904d8d3e6cd1'
+sha512sums=('94b5aa3687bdba5338fd8c9e55f2b4f5eb5e973665e609dcb1b5d082c0eb5c782fa3e9397651de8c8ab78fd1fed97bcb7fe3e4ad059a5b80135a8255dc092cbb'
   '6bc2f4d3b7ad22527e6c7c343884f8b0d5810ae9b7b09d6c2988b50afbd9c7a79e387667bfb980e93c5e204c163544f79634b2862895d8ee004a4393245ee185'
   'c8ddec5dc21c23ded4ea974f4d6fca01ea498f728e5f8dc87224b1151bf9fcfb1921d971359ee79e3984b23fd6cb2f510259b077f79b867b95a437d28af48b97'
   '6c10895c4484628e081b0f4da6d4ab396118cfbb40eba03d15baf9b8c4124e02c6927103b6e3ee60fa7b049483cd76523bf56cd99ffce2f14e3395d0212db3a5')
-b2sums=('4fa759d07cca1e43523589a8fbad8826c5c78cdac663ac6f5797f8d5fb137026e7380a017013c0b1f469f7d51e34e0a0b9e9984fca3cb54cf9b82e3af2d948c5'
+b2sums=('49349bc66dab093435437c86d1e918fedce4f5045b445d10dead830dba7915863b9ba86f6f3815299044e4f66fe66836ae2a2504c18caa94417ee6f5fed0064b'
   '3b5ed36517f27ea83881d2fb1e6ba2839c173a833ec563fa94dc9b633b3ebe9ea24c7bb5676aa811267b09a2504d74b306ee7268b8a0d56b230886fd955289e9'
   '5b98a9764d2fb322199ecf839feed2d995f4ab3e2c9488eebe698fad00e852c45862b94774232d4d8043e2850018c1699ea055a0da211b88211eddfc26e380ed'
   '95c52593543d06385b2dee49e7dd71ce29fe436d48e22d2df2454e9017af88e2890ff11eabe1699d464ed9bf04bef10ab3732be26bce95e1f9f24cfa47c1fa83')
