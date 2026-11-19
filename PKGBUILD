@@ -1,7 +1,7 @@
 # Maintainer: Bram Oosterlynck <bram.oosterlynck@gmail.com>
 pkgname=python-powerline-pws
 gitname=powerline-pws
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A Powerline segment for showing the PWS station data"
 arch=('any')
