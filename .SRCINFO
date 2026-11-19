@@ -1,6 +1,6 @@
 pkgbase = tailor
 	pkgdesc = Create bootable drives
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://altlinux.space/alt-gnome/Tailor/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = tailor
 	depends = libosinfo
 	depends = libsoup3
 	depends = udisks2
-	source = git+https://altlinux.space/alt-gnome/Tailor.git#tag=v1.2.0
-	sha256sums = 731b959bfb59e8275903bf16cc12759c700d6a81736d4572d5af374cf6985cef
+	source = git+https://altlinux.space/alt-gnome/Tailor.git#tag=v1.3.0
+	sha256sums = e6320960d35eb8970a6cfcf0cf13c21bd6954c819cd97c4752baa0a41934c280
 
 pkgname = tailor
