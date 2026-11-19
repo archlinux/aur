@@ -4,7 +4,7 @@
 
 pkgname=open-webui
 pkgver=0.13.4 # renovate: datasource=github-releases depName=open-webui/open-webui versioning=semver-coerced
-pkgrel=3
+pkgrel=4
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -12,6 +12,7 @@ license=('custom:Open-WebUI' 'BSD-3-Clause' 'MIT')
 depends=('uv' 'ollama')
 optdepends=('tika-server')
 conflicts=('open-webui-uv' 'open-webui-git' 'open-webui-openrc' 'open-webui-no-venv' 'open-webui-dinit')
+backup=('etc/open-webui/environment' 'etc/open-webui/override')
 source=("LICENSE::https://raw.githubusercontent.com/open-webui/open-webui/refs/tags/v$pkgver/LICENSE"
         "LICENSE_HISTORY::https://raw.githubusercontent.com/open-webui/open-webui/refs/tags/v$pkgver/LICENSE_HISTORY"
         "LICENSE_NOTICE::https://raw.githubusercontent.com/open-webui/open-webui/refs/tags/v$pkgver/LICENSE_NOTICE"
