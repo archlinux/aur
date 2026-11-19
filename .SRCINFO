@@ -1,40 +1,40 @@
 pkgbase = lib32-ghostscript
 	pkgdesc = An interpreter for the PostScript language (32-bit)
-	pkgver = 10.05.1
-	pkgrel = 2
-	url = https://www.ghostscript.com
+	pkgver = 10.08.0
+	pkgrel = 1
+	url = https://www.ghostscript.com/
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = lib32-gtk3
-	depends = ghostscript>=10.05.1
-	depends = lib32-fontconfig
-	depends = lib32-gcc-libs
-	depends = lib32-glibc
-	depends = lib32-ijs
-	depends = lib32-jbig2dec
-	depends = lib32-lcms2
-	depends = lib32-leptonica
-	depends = lib32-libcups
-	depends = lib32-libidn
-	depends = lib32-libjpeg-turbo
-	depends = lib32-libpaper
-	depends = lib32-libpng
-	depends = lib32-libtiff
-	depends = lib32-libx11
 	depends = lib32-libxt
-	depends = lib32-openjpeg2
-	depends = lib32-tesseract>=4.1
+	depends = lib32-libcups
+	depends = lib32-fontconfig
 	depends = lib32-zlib
+	depends = lib32-libpng
+	depends = lib32-libjpeg-turbo
+	depends = lib32-jbig2dec
+	depends = lib32-libtiff
+	depends = lib32-lcms2
+	depends = lib32-libpaper
+	depends = lib32-ijs
+	depends = lib32-openjpeg2
+	depends = lib32-libidn
+	depends = lib32-glibc
+	depends = lib32-libx11
+	depends = lib32-gcc-libs
+	depends = lib32-leptonica
+	depends = lib32-tesseract>=4.1
+	depends = ghostscript>=10.08.0
 	provides = libgs.so
 	conflicts = lib32-ghostxps
 	conflicts = lib32-ghostpcl
 	replaces = lib32-ghostxps
 	replaces = lib32-ghostpcl
 	options = !lto
-	source = ghostscript-10.05.1.tar.xz::https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10051/ghostscript-10.05.1.tar.xz
+	source = ghostscript-10.08.0.tar.xz::https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10080/ghostscript-10.08.0.tar.xz
 	source = 2010_add_build_timestamp_setting.patch
 	source = gcc15.patch
-	sha512sums = 1a3f2b0f53db9a00a245df19ce8fdce0fbccc6fad47b64d14fc9058b494ab07c77e21bb073df8d4a2522b3ccb0df26735f8224a9e36c07367031ed2262fb26af
+	sha512sums = 8006e2a32d03759a905b9548bdd83d4563173041006750e17e428b9eea24ad519aa4452ceecd7c073d3c420a68bf1b07ccc9e0533b1a05935f6b39ea8d9ce875
 	sha512sums = cd7794ee4f28b11177021b950196385200b610127ed6cb94a45e3202b690b721a0dfcc0276ff39448d4dab64c1b31a76e6c323696a8315aad9edc22077f18a3d
 	sha512sums = 248ff8c61f8988286705aec0931b891287546db5d0e60564fa6878198490b0b7b8922d61ef9a1d059aade200e1a3c856b8d39cde04f9f67ec076a616d868aeac
 
