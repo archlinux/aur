@@ -1,6 +1,6 @@
 pkgbase = nightlightd
 	pkgdesc = Zero-config screen colour temperature daemon for X11, with tray, panel and TUI clients
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/umutdinceryananer/nightlightd
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = nightlightd
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
 	depends = libxrandr
-	source = nightlightd-0.4.0.tar.gz::https://github.com/umutdinceryananer/nightlightd/archive/v0.4.0.tar.gz
-	sha256sums = dad03c5225c17239a3284d4ceb7df4d55fad3601a9459617b22a358757c2e5e9
+	source = nightlightd-0.5.0.tar.gz::https://github.com/umutdinceryananer/nightlightd/archive/v0.5.0.tar.gz
+	sha256sums = 9bcd764116a3ab2649f878373f320532eb011f2bb23b6a0c05b446eed3fcc3ac
 
 pkgname = nightlightd
