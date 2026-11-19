@@ -1,0 +1,15 @@
+pkgbase = ruby-clash-systray
+	pkgdesc = A simple system tray for Clash on Linux.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/souk4711/ruby-clash-systray
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = ruby
+	depends = ruby-qt6-qtwidgets
+	depends = ruby-qt6-qtnetwork
+	depends = ruby-qt6-qtwebenginewidgets
+	source = https://rubygems.org/downloads/ruby-clash-systray-2.0.0.gem
+	sha256sums = d5df841a4da230b29488b140cecf0b0dac78edda7f8505e575b4637a2a64f6b2
+
+pkgname = ruby-clash-systray
