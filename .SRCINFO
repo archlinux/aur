@@ -1,0 +1,25 @@
+pkgbase = gitea-cli-bin
+	pkgdesc = The official CLI for Gitea: manage repositories, issues, pull requests, releases and Actions from the command line
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://gitea.com/gitea/cli
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	depends = git
+	provides = gitea-cli
+	conflicts = gitea-cli
+	noextract = gitea-cli_2.0.0_amd64.deb
+	noextract = gitea-cli_2.0.0_arm64.deb
+	noextract = gitea-cli_2.0.0_armhf.deb
+	options = !strip
+	options = !debug
+	source_x86_64 = gitea-cli_2.0.0_amd64.deb::https://gitea.com/gitea/cli/releases/download/v2.0.0/gitea-cli_2.0.0_amd64.deb
+	sha256sums_x86_64 = 6869816e73605ec4d6dbac924ce2b4b320568fd6a5e943d8f1a897af559f229f
+	source_aarch64 = gitea-cli_2.0.0_arm64.deb::https://gitea.com/gitea/cli/releases/download/v2.0.0/gitea-cli_2.0.0_arm64.deb
+	sha256sums_aarch64 = 15c405274bb05690c6e2c5994eda198b144f501e7ebbaec19b29989711155232
+	source_armv7h = gitea-cli_2.0.0_armhf.deb::https://gitea.com/gitea/cli/releases/download/v2.0.0/gitea-cli_2.0.0_armhf.deb
+	sha256sums_armv7h = 7df62bb2fb306aa1fd902283502e3787b4f64afe8e4d4f02a3492b4d10da71a4
+
+pkgname = gitea-cli-bin
