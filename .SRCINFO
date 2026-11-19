@@ -1,6 +1,6 @@
 pkgbase = oku-bin
 	pkgdesc = Swap and bridge across 30+ chains and trade perps on Oku, from your terminal or your AI agent.
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/oku-trade/oku-cli
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = oku-bin
 	conflicts = oku
 	options = !strip
 	options = !debug
-	source_x86_64 = oku_v0.0.10_linux_amd64.tar.gz::https://github.com/oku-trade/oku-cli/releases/download/v0.0.10/oku_v0.0.10_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2640c7bfa5c63f7cfb681ad864804ceaa098b31b0625da87b872e2b5f8f620ad
-	source_aarch64 = oku_v0.0.10_linux_arm64.tar.gz::https://github.com/oku-trade/oku-cli/releases/download/v0.0.10/oku_v0.0.10_linux_arm64.tar.gz
-	sha256sums_aarch64 = c82f1925837bff5bb03b34865eaebf2d13568d30351e81f70d033a3a3dbecbb7
+	source_x86_64 = oku_v0.0.11_linux_amd64.tar.gz::https://github.com/oku-trade/oku-cli/releases/download/v0.0.11/oku_v0.0.11_linux_amd64.tar.gz
+	sha256sums_x86_64 = 12d8e1418341febb39ce6b1b8ca0a6489dfcc653f618ea7cfa073c917c0f9b5b
+	source_aarch64 = oku_v0.0.11_linux_arm64.tar.gz::https://github.com/oku-trade/oku-cli/releases/download/v0.0.11/oku_v0.0.11_linux_arm64.tar.gz
+	sha256sums_aarch64 = 93e1db5be0f19b3d538aad9b2e91eac9ce37cf0b4adf172608fcdf5d6eba040d
 
 pkgname = oku-bin
