@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=elp-bin
-pkgver=2026.11.16
+pkgver=2026.11.19
 _otp=otp-29.1
 pkgrel=1
 pkgdesc='LSP server and CLI for Erlang (prebuilt)'
@@ -17,8 +17,8 @@ source=("elp-${pkgver}-LICENSE-MIT::https://raw.githubusercontent.com/WhatsApp/e
 source_x86_64=("elp-${pkgver}-${_otp}-x86_64.tar.gz::${_release}/elp-linux-x86_64-unknown-linux-gnu-${_otp}.tar.gz")
 source_aarch64=("elp-${pkgver}-${_otp}-aarch64.tar.gz::${_release}/elp-linux-aarch64-unknown-linux-gnu-${_otp}.tar.gz")
 sha256sums=('da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93')
-sha256sums_x86_64=('cc7b402df9ea1ca65404993abdba64c222bcc2220e0345dccb7401ae3ca7fdba')
-sha256sums_aarch64=('ffc8c0dc0c459ad615468610c25bf4e4d2882cff56a1280c5719e01bbb27c6c3')
+sha256sums_x86_64=('080e60a67bd699efc09144e5114fd91b2a252bb57c501daf1da4749683ccf25f')
+sha256sums_aarch64=('9b90fa3d749a76d648ed1d341e35a33e8385c9b2a8ac0d1014b6f9328f906c98')
 
 build() {
   for shell in bash fish zsh; do
