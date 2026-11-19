@@ -1,4 +1,5 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
@@ -110,6 +111,4 @@ package() {
 
   cd "${pkgdir}/usr"
   rm -rf "bin" "include" "share"
-
-  install -Dt "${pkgdir}"/usr/share/licenses/${pkgname} -m644 LICENSE
 }
