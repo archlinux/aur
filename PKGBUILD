@@ -1,6 +1,6 @@
 pkgname=openvox8-agent-bin
 _pkgname=openvox-agent
-pkgver=8.33.1
+pkgver=8.34.0
 pkgrel=1
 pkgdesc='Agent of the OpenVox Automation Framework (non-modular)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -26,6 +26,6 @@ package() {
     cp -a  "${srcdir}/data/etc" "${pkgdir}/"
     install -Dm 644 "${srcdir}/data/lib/systemd/system/puppet.service" "${pkgdir}/usr/lib/systemd/system/puppet.service"
 }
-b2sums_x86_64=('30d253cb3568c25791aeec1894d13dffc7a44372c08842469586f102d9eee683979c6700627affc02da14b3178cb8bb7202ecb84a4626dddab084747b594f3c6')
-b2sums_aarch64=('063935d2c416ce8f1140abf843e6ced0f6aa2363803abf8cb2abac8b86b0297f8b6d622155be6e1350f010d401f45a89d7b096b1439272f6086b1c80819f2b6c')
-b2sums_armv7h=('023cd43952c0f60b3ca65a16f879c9d4da51c6168aeedfffe2aba6c6ac4541f9b3aff5cc5426837f6d7ec81a5e4b4060bf5859b4dcb8c270ba0dc24ee2821909')
+b2sums_x86_64=('417cdfe4a42848f1178dcd4ddf42a6e3736a51cef90bc10079a62b33429e0020a6ad5c225ad082e3ef67dc0106054a12b4b5e0862741d8741c194a700bd1b9f1')
+b2sums_aarch64=('f9ad023dc67ed2e15146c6ad1724af2dad629687e8336e4ad70c08fad41ba125eb90643e4f4e0c4b4aa2d8c0817fa0632843e12973f79773b46c2f922d89ad5b')
+b2sums_armv7h=('e6e9785cb6e0a8b4c0579aa3cd3e6426b744ebac0f478324f91913efcb256760c7a4ed1ef1e2e556ac92e5079b5ab7a5b29001a28e2cb69777122193606514fc')
