@@ -1,6 +1,6 @@
 pkgbase = ryzen_smu_vermeer_phoenix-git
 	pkgdesc = AMD Ryzen SMU driver (DKMS) with a PM table monitor for Vermeer and Phoenix
-	pkgver = 0.2.1.r215.g6e05994
+	pkgver = 0.2.1.r216.g4c73518
 	pkgrel = 1
 	url = https://github.com/NeoChen1024/ryzen_smu
 	install = ryzen_smu_vermeer_phoenix-git.install
