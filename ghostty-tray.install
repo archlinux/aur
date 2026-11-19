@@ -1,6 +1,6 @@
 post_install() {
-  echo "==> Ghostty Tray starts automatically at login (turn it off in"
-  echo "    System Settings > Autostart). To start it now, open"
-  echo "    \"Ghostty Tray\" from the application launcher."
+  echo "==> Open \"Ghostty Tray\" from the application launcher. From then on it"
+  echo "    starts at login; turn that off with Start at Login in its menu or in"
+  echo "    System Settings > Autostart."
   echo "==> Example profiles: /usr/share/doc/ghostty-tray/examples/profiles"
 }
