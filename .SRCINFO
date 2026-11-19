@@ -1,6 +1,6 @@
-pkgbase = git-gl
+pkgbase = git-gl-git
 	pkgdesc = GitLab's version of Git
-	pkgver = 2.49.0.gl2
+	pkgver = 2.56.1.r591.ge1ec09b23c
 	pkgrel = 1
 	url = https://gitlab.com/gitlab-org/git
 	install = git.install
@@ -36,13 +36,11 @@ pkgbase = git-gl
 	optdepends = libsecret: libsecret credential helper
 	provides = git
 	conflicts = git
-	source = git+https://gitlab.com/gitlab-org/git.git#tag=v2.49.0.gl2
+	source = git+https://gitlab.com/gitlab-org/git.git
 	source = git-daemon@.service
 	source = git-daemon.socket
 	source = git-sysusers.conf
-	sha256sums = SKIP
-	sha256sums = 14c0b67cfe116b430645c19d8c4759419657e6809dfa28f438c33a005245ad91
-	sha256sums = ac4c90d62c44926e6d30d18d97767efc901076d4e0283ed812a349aece72f203
-	sha256sums = 7630e8245526ad80f703fac9900a1328588c503ce32b37b9f8811674fcda4a45
+	b2sums = SKIP
+	b2sums = 7630e8245526ad80f703fac9900a1328588c503ce32b37b9f8811674fcda4a45
 
-pkgname = git-gl
+pkgname = git-gl-git
