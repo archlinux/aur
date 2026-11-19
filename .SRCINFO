@@ -1,0 +1,22 @@
+pkgbase = xpdf-qtify
+	pkgdesc = xpdf 3 (the Motif PDF viewer, poppler based) built on Qt with Motif on Qt
+	pkgver = 3.04.git20260802
+	pkgrel = 1
+	url = https://tracker.debian.org/pkg/xpdf
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	license = OR
+	license = GPL-3.0-only
+	makedepends = motif-on-qt
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = pkgconf
+	depends = qt6-base
+	depends = poppler
+	provides = xpdf
+	conflicts = xpdf
+	source = https://deb.debian.org/debian/pool/main/x/xpdf/xpdf_3.04+git20260802.orig.tar.xz
+	sha256sums = 3d08a47306ac7515736cb256d63ea2f0cbaeafa4f05961fcd6cf38e3dbea83e6
+
+pkgname = xpdf-qtify
