@@ -1,6 +1,6 @@
 pkgbase = sway-displays
 	pkgdesc = Display manager for Sway window manager
-	pkgver = 1.2.9
+	pkgver = 1.2.10
 	pkgrel = 1
 	url = https://github.com/pescheckit/sway-displays
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = sway-displays
 	depends = bc
 	depends = sway
 	optdepends = sway-mirror>=1.1.1: for display mirroring support
-	source = sway-displays-1.2.9.tar.gz::https://github.com/pescheckit/sway-displays/archive/refs/tags/1.2.9.tar.gz
+	source = sway-displays-1.2.10.tar.gz::https://github.com/pescheckit/sway-displays/archive/refs/tags/1.2.10.tar.gz
 	sha256sums = SKIP
 
 pkgname = sway-displays
