@@ -8,8 +8,8 @@ _name=${pkgname#python-}
 pkgdesc="A Python library for network analysis"
 url="http://udst.github.io/pandana/"
 
-pkgver=0.7
-pkgrel=3
+pkgver=0.8.1
+pkgrel=1
 
 arch=("x86_64")
 license=("AGPL-3.0-only")
@@ -38,7 +38,7 @@ source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
 )
 b2sums=(
-    "2635470bd610b419d5a518a341379c4faab9c89fcbbd22184d4e484aa52ba14d4f676004e27eff078b5d9e4f2986f0e824cdcc60400e70436f699680bf360458"
+    "e3299d1c3478adb2a7d8f2e2a0136bcf46dd17c3f19b7130019d4e01daa77cab30a5eb43b1b10d5861fe762cfe19c61bba59bb2c51bb5d2bb0c030babaabc658"
 )
 
 build() {
