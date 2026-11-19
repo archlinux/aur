@@ -1,0 +1,578 @@
+diff --git a/nemo/collections/asr/parts/submodules/adapters/__init__.py b/nemo/collections/asr/parts/submodules/adapters/__init__.py
+index c51d935..d177305 100644
+--- a/nemo/collections/asr/parts/submodules/adapters/__init__.py
++++ b/nemo/collections/asr/parts/submodules/adapters/__init__.py
+@@ -30,5 +30,15 @@ from nemo.collections.asr.parts.submodules.adapters.transformer_multi_head_atten
+     TransformerMultiHeadAttentionAdapter,
+     TransformerMultiHeadAttentionAdapterConfig,
+ )
++from nemo.utils.serialization import register_checkpoint_schema_types
+ 
+ # fmt: on
++
++
++register_checkpoint_schema_types(
++    MultiHeadAttentionAdapterConfig,
++    PositionalEncodingAdapterConfig,
++    RelPositionalEncodingAdapterConfig,
++    RelPositionMultiHeadAttentionAdapterConfig,
++    TransformerMultiHeadAttentionAdapterConfig,
++)
+diff --git a/nemo/collections/asr/parts/submodules/ctc_decoding.py b/nemo/collections/asr/parts/submodules/ctc_decoding.py
+index 1a12c55..aecbe35 100644
+--- a/nemo/collections/asr/parts/submodules/ctc_decoding.py
++++ b/nemo/collections/asr/parts/submodules/ctc_decoding.py
+@@ -30,6 +30,7 @@ from nemo.collections.asr.parts.utils.tokenizer_utils import define_spe_tokenize
+ from nemo.collections.common.tokenizers.aggregate_tokenizer import DummyTokenizer
+ from nemo.collections.common.tokenizers.tokenizer_spec import TokenizerSpec
+ from nemo.utils import logging, logging_mode
++from nemo.utils.serialization import register_checkpoint_schema_types
+ 
+ 
+ def move_dimension_to_the_front(tensor, dim_index):
+@@ -1386,3 +1387,6 @@ class CTCDecodingConfig:
+ @dataclass
+ class CTCBPEDecodingConfig(CTCDecodingConfig):
+     pass
++
++
++register_checkpoint_schema_types(CTCDecodingConfig, CTCBPEDecodingConfig)
+diff --git a/nemo/collections/asr/parts/submodules/multitask_decoding.py b/nemo/collections/asr/parts/submodules/multitask_decoding.py
+index 1d49a8b..6961826 100644
+--- a/nemo/collections/asr/parts/submodules/multitask_decoding.py
++++ b/nemo/collections/asr/parts/submodules/multitask_decoding.py
+@@ -33,6 +33,7 @@ from nemo.collections.asr.parts.utils.rnnt_utils import Hypothesis, NBestHypothe
+ from nemo.collections.common.tokenizers.aggregate_tokenizer import AggregateTokenizer
+ from nemo.collections.common.tokenizers.tokenizer_spec import TokenizerSpec
+ from nemo.utils import logging
++from nemo.utils.serialization import register_checkpoint_schema_types
+ 
+ 
+ class AbstractMultiTaskDecoding(ConfidenceMixin):
+@@ -663,3 +664,6 @@ class MultiTaskDecodingConfig:
+ 
+     # if set to true, return attention scores; ignore them to save memory otherwise
+     return_xattn_scores: bool = False
++
++
++register_checkpoint_schema_types(MultiTaskDecodingConfig)
+diff --git a/nemo/collections/asr/parts/submodules/rnnt_decoding.py b/nemo/collections/asr/parts/submodules/rnnt_decoding.py
+index c9a0989..1efe75c 100644
+--- a/nemo/collections/asr/parts/submodules/rnnt_decoding.py
++++ b/nemo/collections/asr/parts/submodules/rnnt_decoding.py
+@@ -33,6 +33,7 @@ from nemo.collections.common.tokenizers.aggregate_tokenizer import AggregateToke
+ from nemo.collections.common.tokenizers.tokenizer_spec import TokenizerSpec
+ from nemo.utils import logging
+ from nemo.utils.enum import PrettyStrEnum
++from nemo.utils.serialization import register_checkpoint_schema_types
+ 
+ try:
+     import kenlm
+@@ -1863,3 +1864,6 @@ class RNNTBPEDecodingConfig(RNNTDecodingConfig):
+     """
+ 
+     pass
++
++
++register_checkpoint_schema_types(RNNTDecodingConfig, RNNTBPEDecodingConfig)
+diff --git a/nemo/collections/common/callbacks/ema.py b/nemo/collections/common/callbacks/ema.py
+index dee125b..1d083f8 100644
+--- a/nemo/collections/common/callbacks/ema.py
++++ b/nemo/collections/common/callbacks/ema.py
+@@ -20,6 +20,7 @@ from typing import Any, Dict, Iterable
+ import lightning.pytorch as pl
+ import torch
+ from lightning.pytorch import Callback
++from lightning.pytorch.trainer.states import TrainerFn
+ from lightning.pytorch.utilities.exceptions import MisconfigurationException
+ from lightning.pytorch.utilities.rank_zero import rank_zero_info
+ 
+@@ -119,6 +120,9 @@ class EMA(Callback):
+     def on_load_checkpoint(
+         self, trainer: "pl.Trainer", pl_module: "pl.LightningModule", checkpoint: Dict[str, Any]
+     ) -> None:
++        # Evaluation restores callback state too, but never resumes optimizer/EMA state.
++        if getattr(getattr(trainer, 'state', None), 'fn', TrainerFn.FITTING) != TrainerFn.FITTING:
++            return
+         checkpoint_callback = trainer.checkpoint_callback
+ 
+         # Replace connector._ckpt_path with below to avoid calling into lightning's protected API
+@@ -135,7 +139,10 @@ class EMA(Callback):
+                 return
+             ema_path = ckpt_path.replace(ext, f'-EMA{ext}')
+             if os.path.exists(ema_path):
+-                ema_state_dict = torch.load(ema_path, map_location=torch.device('cpu'))
++                from nemo.utils.serialization import checkpoint_config_loading
++
++                with checkpoint_config_loading():
++                    ema_state_dict = torch.load(ema_path, map_location=torch.device('cpu'), weights_only=True)
+ 
+                 checkpoint['optimizer_states'] = ema_state_dict['optimizer_states']
+                 del ema_state_dict
+diff --git a/nemo/collections/common/parts/adapter_modules.py b/nemo/collections/common/parts/adapter_modules.py
+index 2084147..bfbf545 100644
+--- a/nemo/collections/common/parts/adapter_modules.py
++++ b/nemo/collections/common/parts/adapter_modules.py
+@@ -21,6 +21,7 @@ from torch import nn as nn
+ 
+ from nemo.collections.common.parts.utils import activation_registry
+ from nemo.core.classes.mixins import access_mixins, adapter_mixin_strategies
++from nemo.utils.serialization import register_checkpoint_schema_types
+ 
+ 
+ class AdapterModuleUtil(access_mixins.AccessMixin):
+@@ -164,3 +165,6 @@ class LinearAdapterConfig:
+         default_factory=lambda: adapter_mixin_strategies.ResidualAddAdapterStrategyConfig()
+     )
+     _target_: str = "{0}.{1}".format(LinearAdapter.__module__, LinearAdapter.__name__)
++
++
++register_checkpoint_schema_types(LinearAdapterConfig)
+diff --git a/nemo/core/classes/mixins/adapter_mixin_strategies.py b/nemo/core/classes/mixins/adapter_mixin_strategies.py
+index 917d3f8..4638e29 100644
+--- a/nemo/core/classes/mixins/adapter_mixin_strategies.py
++++ b/nemo/core/classes/mixins/adapter_mixin_strategies.py
+@@ -19,6 +19,7 @@ from typing import Any, Dict, List, Tuple, Union
+ import torch
+ 
+ from nemo.core.classes.mixins import AccessMixin
++from nemo.utils.serialization import register_checkpoint_schema_types
+ 
+ 
+ class AbstractAdapterStrategy(ABC):
+@@ -257,3 +258,6 @@ class ResidualAddAdapterStrategyConfig:
+     _target_: str = "{0}.{1}".format(
+         ResidualAddAdapterStrategy.__module__, ResidualAddAdapterStrategy.__name__
+     )  # mandatory field
++
++
++register_checkpoint_schema_types(ResidualAddAdapterStrategyConfig)
+diff --git a/nemo/core/classes/modelPT.py b/nemo/core/classes/modelPT.py
+index 3ede355..0fc3ade 100644
+--- a/nemo/core/classes/modelPT.py
++++ b/nemo/core/classes/modelPT.py
+@@ -1743,6 +1743,16 @@ class ModelPT(LightningModule, Model):
+ 
+         return super().hparams
+ 
++    def on_save_checkpoint(self, checkpoint: Dict[str, Any]) -> None:
++        """Store a plain configuration snapshot without changing live hparams metadata."""
++        super().on_save_checkpoint(checkpoint)
++        key = self.CHECKPOINT_HYPER_PARAMS_KEY
++        hyper_parameters = checkpoint.get(key)
++        if isinstance(hyper_parameters, (dict, DictConfig)) and 'cfg' in hyper_parameters:
++            hyper_parameters = copy.deepcopy(hyper_parameters)
++            hyper_parameters['cfg'] = OmegaConf.create(OmegaConf.to_container(self.cfg, resolve=True))
++            checkpoint[key] = hyper_parameters
++
+     @property
+     def validation_step_outputs(self):
+         """
+diff --git a/nemo/core/config/pytorch_lightning.py b/nemo/core/config/pytorch_lightning.py
+index 98c1a11..69d6c78 100644
+--- a/nemo/core/config/pytorch_lightning.py
++++ b/nemo/core/config/pytorch_lightning.py
+@@ -74,6 +74,8 @@ class TrainerConfig:
+     enable_model_summary: bool = True
+     inference_mode: bool = True
+     barebones: bool = False
++    model_registry: Optional[str] = None
++    enable_autolog_hparams: bool = True
+ 
+ 
+ # Register the trainer config.
+diff --git a/nemo/lightning/callback_group.py b/nemo/lightning/callback_group.py
+index f4c5f2f..b776ac7 100644
+--- a/nemo/lightning/callback_group.py
++++ b/nemo/lightning/callback_group.py
+@@ -18,7 +18,6 @@ from typing import Any, Callable, List, Optional
+ 
+ from lightning.pytorch.callbacks import Callback as PTLCallback
+ from nemo.lightning.base_callback import BaseCallback
+-from nemo.lightning.one_logger_callback import OneLoggerNeMoCallback
+ 
+ 
+ class CallbackGroup:
+@@ -43,7 +42,8 @@ class CallbackGroup:
+         return cls._instance
+ 
+     def __init__(self) -> None:
+-        self._callbacks: List[BaseCallback] = [OneLoggerNeMoCallback()]
++        # Leave telemetry detached until its callback integration is updated.
++        self._callbacks: List[BaseCallback] = []
+         # Ensure application-end is emitted at most once per process
+         self._app_end_emitted: bool = False
+ 
+diff --git a/nemo/utils/__init__.py b/nemo/utils/__init__.py
+index ee2ac15..77b70ef 100644
+--- a/nemo/utils/__init__.py
++++ b/nemo/utils/__init__.py
+@@ -27,11 +27,20 @@ from nemo.utils.dtype import str_to_dtype
+ from nemo.utils.nemo_logging import Logger as _Logger
+ from nemo.utils.nemo_logging import LogMode as logging_mode
+ 
++try:
++    from nemo.utils.serialization import register_checkpoint_config_types
++except ModuleNotFoundError as error:
++    if error.name != 'omegaconf':
++        raise
++else:
++    register_checkpoint_config_types()
++
+ logging = _Logger()
+ try:
+-    from nemo.utils.lightning_logger_patch import add_memory_handlers_to_pl_logger
++    from nemo.utils.lightning_logger_patch import add_memory_handlers_to_pl_logger, preserve_trainer_callback_defaults
+ 
+     add_memory_handlers_to_pl_logger()
++    preserve_trainer_callback_defaults()
+ except ModuleNotFoundError:
+     pass
+ 
+diff --git a/nemo/utils/callbacks/nemo_model_checkpoint.py b/nemo/utils/callbacks/nemo_model_checkpoint.py
+index a8c379a..902dd49 100644
+--- a/nemo/utils/callbacks/nemo_model_checkpoint.py
++++ b/nemo/utils/callbacks/nemo_model_checkpoint.py
+@@ -259,6 +259,28 @@ class NeMoModelCheckpoint(ModelCheckpoint):
+             get_filesystem(backup_path).rm(backup_path)
+         return output
+ 
++    def on_validation_end(self, trainer, pl_module):
++        # Lightning 2.6.0 stopped refreshing last when top-k does not improve; preserve NeMo's prior behavior.
++        refresh_last = (
++            self.save_last is True
++            and not self._should_skip_saving_checkpoint(trainer)
++            and not self._should_save_on_train_epoch_end(trainer)
++        )
++        super().on_validation_end(trainer, pl_module)
++        if refresh_last and self._last_global_step_saved != trainer.global_step:
++            self._save_last_checkpoint(trainer, self._monitor_candidates(trainer))
++
++    def on_train_epoch_end(self, trainer, pl_module):
++        # Lightning 2.6.0 stopped refreshing last when top-k does not improve; preserve NeMo's prior behavior.
++        refresh_last = (
++            self.save_last is True
++            and not self._should_skip_saving_checkpoint(trainer)
++            and self._should_save_on_train_epoch_end(trainer)
++        )
++        super().on_train_epoch_end(trainer, pl_module)
++        if refresh_last and self._last_global_step_saved != trainer.global_step:
++            self._save_last_checkpoint(trainer, self._monitor_candidates(trainer))
++
+     def on_train_end(self, trainer, pl_module):
+         """
+         Save the checkpoint on train end.
+@@ -572,6 +594,10 @@ class NeMoModelCheckpoint(ModelCheckpoint):
+                 storage_options = None
+             logging.info(f'Checkpoint save for step {trainer.global_step} started at {time.time()}.')
+             trainer.save_checkpoint(filepath, self.save_weights_only, storage_options=storage_options)
++            # Lightning uses these to schedule subsequent saves in this hook.
++            # Async completion may happen several steps later and must not rewind them.
++            self._last_global_step_saved = trainer.global_step
++            self._last_checkpoint_saved = filepath
+             if self.async_save:
+                 logging.info(f'Scheduled async checkpoint save for {filepath}')
+             else:
+@@ -587,9 +613,6 @@ class NeMoModelCheckpoint(ModelCheckpoint):
+ 
+         def _cb():
+             logging.debug(f'Finalize callback called for step {global_step}, filepath {filepath}')
+-            self._last_global_step_saved = global_step
+-            self._last_checkpoint_saved = filepath
+-
+             # notify loggers
+             if trainer.is_global_zero:
+                 for logger in trainer.loggers:
+diff --git a/nemo/utils/callbacks/s3_checkpoint_io.py b/nemo/utils/callbacks/s3_checkpoint_io.py
+index fe7fce4..a331071 100644
+--- a/nemo/utils/callbacks/s3_checkpoint_io.py
++++ b/nemo/utils/callbacks/s3_checkpoint_io.py
+@@ -200,7 +200,10 @@ class S3CheckpointIO(CheckpointIO):
+                 _upload_bytes_to_s3(bytes, path, self.chunk_size_MB, self.max_write_concurrency)
+ 
+     def load_checkpoint(
+-        self, path: Union[str, Path], map_location: Optional[Callable] = lambda storage, loc: storage
++        self,
++        path: Union[str, Path],
++        map_location: Optional[Callable] = lambda storage, loc: storage,
++        weights_only: Optional[bool] = None,
+     ) -> Dict[str, Any]:
+         if os.path.exists(SHARED_MEM_DIR):
+             with NamedTemporaryFile(dir=SHARED_MEM_DIR, delete=True) as tempfile:
+@@ -213,12 +216,12 @@ class S3CheckpointIO(CheckpointIO):
+                     chunk_size_MB=self.chunk_size_MB,
+                     max_concurrency=self.max_read_concurrency,
+                 )
+-                checkpoint = torch.load(tempfile.name)
++                checkpoint = torch.load(tempfile.name, map_location=map_location, weights_only=weights_only)
+         else:
+             file_stream: BytesIO = S3Utils.download_s3_file_to_stream(
+                 s3_path=path, chunk_size_MB=self.chunk_size_MB, max_concurrency=self.max_read_concurrency
+             )
+-            checkpoint = torch.load(file_stream)
++            checkpoint = torch.load(file_stream, map_location=map_location, weights_only=weights_only)
+         return checkpoint
+ 
+     def remove_checkpoint(self, path: Union[str, Path]) -> None:
+diff --git a/nemo/utils/exp_manager.py b/nemo/utils/exp_manager.py
+index 41ababd..083f686 100644
+--- a/nemo/utils/exp_manager.py
++++ b/nemo/utils/exp_manager.py
+@@ -33,7 +33,7 @@ from hydra.utils import get_original_cwd
+ from lightning.pytorch.callbacks import Callback, ModelCheckpoint
+ from lightning.pytorch.callbacks.early_stopping import EarlyStopping
+ from lightning.pytorch.callbacks.timer import Interval, Timer
+-from lightning.pytorch.loggers import MLFlowLogger, NeptuneLogger, TensorBoardLogger, WandbLogger
++from lightning.pytorch.loggers import MLFlowLogger, TensorBoardLogger, WandbLogger
+ from lightning.pytorch.loops import _TrainingEpochLoop
+ from lightning.pytorch.strategies.ddp import DDPStrategy
+ from lightning.pytorch.trainer.connectors.checkpoint_connector import _CheckpointConnector
+@@ -850,6 +850,11 @@ def error_checks(trainer: 'lightning.pytorch.Trainer', cfg: Optional[Union[DictC
+         - Prints error messages when 1) run on multi-node and not Slurm, and
+             2) run on multi-gpu without DDP
+     """
++    if cfg.create_neptune_logger:
++        raise ValueError(
++            'create_neptune_logger is unsupported by the required Lightning version. '
++            'Use another exp_manager logger or pass a supported logger to the Trainer.'
++        )
+     if HydraConfig.initialized() and get_original_cwd() != os.getcwd():
+         raise ValueError(
+             "Hydra changed the working directory. This interferes with ExpManger's functionality."
+@@ -1300,19 +1305,7 @@ def configure_loggers(
+         logging.info("ClearMLLogger has been set up")
+ 
+     if create_neptune_logger:
+-        if neptune_kwargs is None:
+-            neptune_kwargs = {}
+-        if "name" not in neptune_kwargs and "project" not in neptune_kwargs:
+-            raise ValueError("name and project are required for neptune_logger")
+-        if "api_key" not in neptune_kwargs and not os.getenv("NEPTUNE_API_TOKEN", None):
+-            raise ValueError(
+-                "either api_key should be set in neptune_kwargs or NEPTUNE_API_TOKEN should "
+-                "be set in environment variable for neptune_logger"
+-            )
+-        neptune_logger = NeptuneLogger(**neptune_kwargs)
+-
+-        logger_list.append(neptune_logger)
+-        logging.info("NeptuneLogger has been set up")
++        raise ValueError('create_neptune_logger is unsupported by the required Lightning version.')
+ 
+     trainer._logger_connector.configure_logger(logger_list)
+ 
+@@ -1323,13 +1316,13 @@ class NeMoCheckpointConnector(_CheckpointConnector):
+     distributed training settings to pre-load checkpoint.
+     """
+ 
+-    def resume_start(self, checkpoint_path=None) -> None:
++    def resume_start(self, checkpoint_path=None, weights_only: Optional[bool] = None) -> None:
+         """resume_start"""
+         checkpoint_path = self.trainer.ckpt_path
+         if checkpoint_path is not None:
+             logging.info(f'Resuming from checkpoint {checkpoint_path}, rank {torch.distributed.get_rank()}')
+         start_time = time.perf_counter()
+-        super().resume_start(checkpoint_path)
++        super().resume_start(checkpoint_path, weights_only=weights_only)
+         if checkpoint_path is not None:
+             logging.info(
+                 'Time elapsed loading checkpoint/optimizer states: '
+diff --git a/nemo/utils/lightning_logger_patch.py b/nemo/utils/lightning_logger_patch.py
+index 1528146..21bc53c 100644
+--- a/nemo/utils/lightning_logger_patch.py
++++ b/nemo/utils/lightning_logger_patch.py
+@@ -13,6 +13,7 @@
+ # limitations under the License.
+ 
+ import logging as _logging
++from functools import wraps
+ from logging.handlers import MemoryHandler
+ 
+ import lightning.pytorch as pl
+@@ -56,3 +57,56 @@ def add_filehandlers_to_pl_logger(all_log_file, err_log_file):
+         HANDLERS["memory_err"].setTarget(HANDLERS["file_err"])
+         HANDLERS["memory_err"].close()
+         del HANDLERS["memory_err"]
++
++
++def preserve_trainer_callback_defaults():
++    """Keep pre-2.6 callback selection for Trainers in a NeMo process.
++
++    NeMo entry points also construct Lightning Trainers directly, so configure
++    defaults at the existing Lightning integration boundary. Explicit callbacks,
++    disable flags and barebones mode retain Lightning's validation and behavior.
++    """
++    from importlib import import_module
++
++    for namespace in ('lightning.pytorch', 'pytorch_lightning'):
++        try:
++            connector = import_module(f'{namespace}.trainer.connectors.callback_connector')
++            callbacks = import_module(f'{namespace}.callbacks')
++        except ModuleNotFoundError as error:
++            if error.name != namespace.split('.')[0]:
++                raise
++            continue
++        _preserve_callback_selection(connector._CallbackConnector, callbacks)
++
++
++def _preserve_callback_selection(connector, callbacks):
++    """Install an idempotent adapter around one Lightning callback connector."""
++    if getattr(connector, '_nemo_callback_defaults_preserved', False):
++        return
++
++    configure_progress = connector._configure_progress_bar
++    configure_summary = connector._configure_model_summary_callback
++
++    @wraps(configure_progress)
++    def progress_bar(self, enable_progress_bar=True):
++        """Supply the previous default while retaining upstream flag validation."""
++        if enable_progress_bar and not any(isinstance(cb, callbacks.ProgressBar) for cb in self.trainer.callbacks):
++            self.trainer.callbacks.append(callbacks.TQDMProgressBar())
++        return configure_progress(self, enable_progress_bar)
++
++    @wraps(configure_summary)
++    def model_summary(self, enable_model_summary):
++        """Match the old summary selection, including explicit Rich progress bars."""
++        if enable_model_summary and not any(isinstance(cb, callbacks.ModelSummary) for cb in self.trainer.callbacks):
++            summary_type = (
++                callbacks.RichModelSummary
++                if isinstance(self.trainer.progress_bar_callback, callbacks.RichProgressBar)
++                else callbacks.ModelSummary
++            )
++            self.trainer.callbacks.append(summary_type())
++            return None
++        return configure_summary(self, enable_model_summary)
++
++    connector._configure_progress_bar = progress_bar
++    connector._configure_model_summary_callback = model_summary
++    connector._nemo_callback_defaults_preserved = True
+diff --git a/nemo/utils/serialization.py b/nemo/utils/serialization.py
+new file mode 100644
+index 0000000..2910665
+--- /dev/null
++++ b/nemo/utils/serialization.py
+@@ -0,0 +1,125 @@
++# SPDX-FileCopyrightText: Copyright (c) 2026, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
++# SPDX-License-Identifier: Apache-2.0
++"""Checkpoint configuration types supported by the weights-only loader."""
++
++from collections import defaultdict
++from contextlib import contextmanager
++from dataclasses import is_dataclass
++from enum import Enum
++from pathlib import Path, PosixPath, WindowsPath
++from pickle import UnpicklingError
++from typing import Any, Dict, List, Set, Tuple, Union, get_args, get_origin, get_type_hints
++
++import torch
++from omegaconf import DictConfig, ListConfig
++from omegaconf.base import ContainerMetadata, Metadata, UnionNode
++from omegaconf.nodes import (
++    AnyNode,
++    BooleanNode,
++    BytesNode,
++    EnumNode,
++    FloatNode,
++    IntegerNode,
++    InterpolationResultNode,
++    PathNode,
++    StringNode,
++    ValueNode,
++)
++
++
++def checkpoint_config_types() -> list:
++    """Return the fixed data types and restricted annotation loader used by checkpoints."""
++    return [
++        DictConfig,
++        ListConfig,
++        ContainerMetadata,
++        Metadata,
++        UnionNode,
++        AnyNode,
++        BooleanNode,
++        BytesNode,
++        EnumNode,
++        FloatNode,
++        IntegerNode,
++        InterpolationResultNode,
++        PathNode,
++        StringNode,
++        ValueNode,
++        Path,
++        PosixPath,
++        WindowsPath,
++        Any,
++        Dict,
++        List,
++        Set,
++        Tuple,
++        Union,
++        # Typing aliases pickle through _operator.getitem. The replacement below
++        # accepts only fixed typing origins and type arguments, never arbitrary
++        # object subscription (including OmegaConf interpolation resolution).
++        (_restore_checkpoint_annotation, "_operator.getitem"),
++        defaultdict,
++        dict,
++        list,
++        tuple,
++        int,
++        float,
++        str,
++        bool,
++        bytes,
++    ]
++
++
++@contextmanager
++def checkpoint_config_loading():
++    """Add scoped configuration types while retaining existing process registrations."""
++    existing = set(torch.serialization.get_safe_globals())
++    additions = [entry for entry in checkpoint_config_types() if entry not in existing]
++    with torch.serialization.safe_globals(additions):
++        yield
++
++
++def register_checkpoint_config_types() -> None:
++    """Register the fixed configuration container types used by Lightning checkpoints."""
++    torch.serialization.add_safe_globals(checkpoint_config_types())
++
++
++def register_checkpoint_schema_types(*schemas: type) -> None:
++    """Register source-defined dataclass schemas, nested schemas, and annotated enums.
++
++    Call from the schema's module after its definitions. Only trusted source types
++    are traversed; checkpoint contents never select imports or additional globals.
++    """
++    pending = list(schemas)
++    registered = set()
++    while pending:
++        schema = pending.pop()
++        arguments = get_args(schema)
++        if arguments:
++            pending.extend(arguments)
++        elif isinstance(schema, type) and schema not in registered:
++            if is_dataclass(schema):
++                registered.add(schema)
++                pending.extend(get_type_hints(schema).values())
++            elif issubclass(schema, Enum):
++                registered.add(schema)
++    torch.serialization.add_safe_globals(list(registered))
++
++
++def _restore_checkpoint_annotation(origin, arguments):
++    """Rebuild typing annotations without permitting general object item access."""
++    if not any(origin is candidate for candidate in (Dict, List, Set, Tuple, Union)):
++        raise UnpicklingError('Checkpoint item access is restricted to typing annotations.')
++    items = arguments if isinstance(arguments, tuple) else (arguments,)
++    if not all(_is_checkpoint_annotation(item) for item in items):
++        raise UnpicklingError('Checkpoint annotation arguments must be types.')
++    return origin[arguments]
++
++
++def _is_checkpoint_annotation(value):
++    if value is None or value is Ellipsis or isinstance(value, type):
++        return True
++    origin = get_origin(value)
++    return any(origin is candidate for candidate in (dict, list, set, tuple, Union)) and all(
++        _is_checkpoint_annotation(argument) for argument in get_args(value)
++    )
