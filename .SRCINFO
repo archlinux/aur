@@ -1,6 +1,6 @@
 pkgbase = python-vercel-internal-core
 	pkgdesc = Shared internal runtime for Vercel Python packages.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/vercel/vercel-py/tree/main/src/vercel-internal-core
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-vercel-internal-core
 	depends = python
 	depends = python-httpx2
 	depends = python-anyio
-	source = vercel-internal-core-0.3.0.tar.gz::https://github.com/vercel/vercel-py/archive/refs/tags/vercel-internal-core-v0.3.0.tar.gz
-	sha256sums = 3f951ab0d66a9fe512853a950c8dddc2717f2e985b304215e8105ca9a52f094c
+	source = vercel-internal-core-0.3.1.tar.gz::https://github.com/vercel/vercel-py/archive/refs/tags/vercel-internal-core-v0.3.1.tar.gz
+	sha256sums = 7a2e268465f93e80dee225101aa85866e222fd62c1ad1dc303777af28f20f22c
 
 pkgname = python-vercel-internal-core

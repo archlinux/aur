@@ -2,7 +2,7 @@
 
 _name=vercel-internal-core
 pkgname=python-$_name
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Shared internal runtime for Vercel Python packages.'
 arch=('any')
@@ -21,7 +21,7 @@ checkdepends=('python-pytest'
               'python-hypothesis'
               'python-trio')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name-v$pkgver.tar.gz")
-sha256sums=('3f951ab0d66a9fe512853a950c8dddc2717f2e985b304215e8105ca9a52f094c')
+sha256sums=('7a2e268465f93e80dee225101aa85866e222fd62c1ad1dc303777af28f20f22c')
 
 prepare() {
   cd "vercel-py-$_name-v$pkgver/src/$_name"
