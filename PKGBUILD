@@ -1,24 +1,25 @@
-# Maintainer: Daniel Playfair Cal <Daniel.playfair.cal@gmail.com>
+# Maintainer:  twa022 <twa022 at gmail dot com>
+# Contributor: Daniel Playfair Cal <Daniel.playfair.cal@gmail.com>
 # Contributor: Brad Fanella <cesura@archlinux.org>
 # Contributor: Martin Wimpress <code@flexion.org>
 # Contributor: Davide Depau <davide@depau.eu>
 
-pkgname=mate-panel-git
 _pkgname=mate-panel
-sha256sums=('SKIP')
-provides=(mate-panel)
-pkgver=v1.25.3.r0.gb7f96b10
+pkgname=mate-panel-git
+pkgver=1.29.2.r0.g2ff4ee7c
 pkgrel=1
 pkgdesc="The MATE Panel"
 url="https://mate-desktop.org"
 arch=('x86_64')
-license=('GPL')
-depends=('dbus-glib' 'libwnck3' 'libcanberra' 'libmateweather' 'libsm' 'mate-menus' 'mate-desktop' 'gtk-layer-shell')
-makedepends=('mate-common' 'yelp-tools' 'intltool' 'itstool' 'gobject-introspection' 'gtk-layer-shell')
+license=('GPL-2.0-or-later AND LGPL-2.0-or-later')
+depends=('dbus-glib' 'libwnck3' 'libcanberra' 'libmateweather' 'libsm' 'mate-menus' 'xorg-xrandr'
+         'mate-desktop>=1.29.1' 'gtk-layer-shell' 'libxfce4windowing')
+makedepends=('mate-common' 'yelp-tools' 'itstool' 'meson' 'git')
 source=("git+https://github.com/mate-desktop/mate-panel")
-groups=('mate')
+groups=('mate-git')
+sha256sums=('SKIP')
 conflicts=('mate-panel-gtk3' 'mate-panel')
-provides=('mate-panel-gtk3' 'mate-panel')
+provides=("${_pkgname}=${pkgver%%.r*}")
 
 prepare() {
   cd "$srcdir/$_pkgname"
@@ -27,27 +28,22 @@ prepare() {
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    	cd "${_pkgname}"
-        ./autogen.sh
-    	./configure \
-        	--prefix=/usr \
-        	--libexecdir=/usr/lib/${_pkgname} \
-        	--sysconfdir=/etc \
-        	--localstatedir=/var \
-        	--enable-introspection \
-		--enable-wayland
+  local meson_options=(
+    -D gtk-doc=enabled
+    -D enable-x11=enabled
+    -D enable-wayland=enabled
+    -D enable-eds=disabled #build failed
+    -D in-process-applets=all
+  )
 
-    	#https://bugzilla.gnome.org/show_bug.cgi?id=656231
-    	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-    	make
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-    	cd "${_pkgname}"
-    	make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "$pkgdir"
 }
