@@ -1,0 +1,17 @@
+pkgbase = testsweeper
+	pkgdesc = C++ testing framework for parameter sweeps
+	pkgver = 2025.05.28
+	pkgrel = 1
+	url = https://github.com/icl-utk-edu/testsweeper
+	arch = x86_64
+	license = BSD-3-Clause
+	checkdepends = python
+	makedepends = cmake
+	depends = glibc
+	depends = libgcc
+	depends = libgomp
+	depends = libstdc++
+	source = testsweeper-2025.05.28.tar.gz::https://github.com/icl-utk-edu/testsweeper/archive/refs/tags/v2025.05.28.tar.gz
+	sha256sums = 7f2b5f185c35f164879eac2a7cdbe57c92a0affeecfe1e3185056c10a861462d
+
+pkgname = testsweeper
