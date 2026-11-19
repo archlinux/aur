@@ -1,25 +1,31 @@
-# Maintainer
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Adrian Bacircea <adrian.bacircea@gmail.com>
 
 pkgname=lib32-libbpf
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Library for loading eBPF programs and reading and manipulating eBPF objects from user-space'
 url='https://github.com/libbpf/libbpf'
 arch=(x86_64)
 license=('LGPL-2.1-only OR BSD-2-Clause')
 depends=(
-  lib32-glibc
-  lib32-libelf
-  lib32-zlib
-  libbpf
+  glibc
+  libelf
+  zlib
 )
+depends=("${depends[@]/#/lib32-}")
+depends+=("libbpf>=${pkgver}")
 makedepends=(
   git
 )
-provides=(libbpf.so)
-source=("git+${url}#tag=v${pkgver}")
-sha512sums=('f623f39bec882c8a642bf8f1485d3ca028b393b73b1bb588be26b9b7f58040223b6ca778a098c2c7468cf60386cbc279d58c7f2c83836bf0fcebb87a69aa86f9')
-b2sums=('1315f3cdd336b57a70e2b0284d1f5a6ad32d1e3aabcca6fdccd50d51aa743f365c396ac240995e36d92f37f2d8bc0afb487e59a47638d0ae1f7999cc03cf0f5b')
+provides=(
+  libbpf.so
+)
+source=(
+  "git+${url}#tag=v${pkgver}"
+)
+sha512sums=('b5494a4e2637b9fd5210f05a733d2d0ac983f123a6e6c7c286f6e003db109b7b3c582920898bd8616756825ae0df040211a870347f4410e839cd8dc9306f61c5')
 
 build() {
   export CC='gcc -m32'

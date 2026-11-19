@@ -1,6 +1,6 @@
 pkgbase = lib32-libbpf
 	pkgdesc = Library for loading eBPF programs and reading and manipulating eBPF objects from user-space
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/libbpf/libbpf
 	arch = x86_64
@@ -9,10 +9,9 @@ pkgbase = lib32-libbpf
 	depends = lib32-glibc
 	depends = lib32-libelf
 	depends = lib32-zlib
-	depends = libbpf
+	depends = libbpf>=1.8.0
 	provides = libbpf.so
-	source = git+https://github.com/libbpf/libbpf#tag=v1.7.0
-	sha512sums = f623f39bec882c8a642bf8f1485d3ca028b393b73b1bb588be26b9b7f58040223b6ca778a098c2c7468cf60386cbc279d58c7f2c83836bf0fcebb87a69aa86f9
-	b2sums = 1315f3cdd336b57a70e2b0284d1f5a6ad32d1e3aabcca6fdccd50d51aa743f365c396ac240995e36d92f37f2d8bc0afb487e59a47638d0ae1f7999cc03cf0f5b
+	source = git+https://github.com/libbpf/libbpf#tag=v1.8.0
+	sha512sums = b5494a4e2637b9fd5210f05a733d2d0ac983f123a6e6c7c286f6e003db109b7b3c582920898bd8616756825ae0df040211a870347f4410e839cd8dc9306f61c5
 
 pkgname = lib32-libbpf
