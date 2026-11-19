@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=kiri-desktop-lite-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Tiny, fast container runtime speaking the Docker API (engine only)"
 arch=('x86_64' 'aarch64')
@@ -30,8 +30,8 @@ source_x86_64=(
 source_aarch64=(
   "kiri-lite-${pkgver}-aarch64.deb::${_dl}/kiri-lite_${pkgver}_arm64.deb"
 )
-sha256sums_x86_64=('5e7b1f6d8239aa590b314fd2ccc8f1472ba1427f414b35efa86ccedd6a6571b2')
-sha256sums_aarch64=('76fe00facf4d61aefe90fbb0e44774942b1507e810c4e7b47ea34fddafe0193d')
+sha256sums_x86_64=('24798125ee50bb24db86594a9ee1469b1032d9b2ffd7da616b06e40763c723b9')
+sha256sums_aarch64=('5388bd5651db97a23d7eb9f057881522cbad8a27b3463d293f337b8c8797d7f2')
 # makepkg would unpack the .deb into srcdir; _unpack_deb does it here.
 noextract=("kiri-lite-${pkgver}-x86_64.deb" "kiri-lite-${pkgver}-aarch64.deb")
 
