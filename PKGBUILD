@@ -1,12 +1,12 @@
 # Check deps.json
-_rstd_commit=0d2e9c19f318ea4cb920623eda2358dc2f75e63a
+_rstd_commit=4b2b7893a7c32135a9064a33fa85aab3a05bb684
 _luato_commit=34b0d9b6a64f23a54b7c158853a1b127f25a0056
 _licrypto_commit=4f5f0432d4566d66745b448d617f6b1b36ae6db9
 _ligraph_commit=26cfca9b2306f1de389487cabfe37f16363ee24f
 _liresto_commit=a36aa4edd009197cd123275143bfb00d67b3f769
 
 pkgname=lito
-pkgver=0.8.9
+pkgver=0.8.10
 pkgrel=1
 pkgdesc="Module-first C++ build tool with manifest."
 arch=(x86_64)
@@ -21,8 +21,8 @@ source=("git+https://github.com/litocpp/lito.git#tag=v$pkgver"
         "git+https://github.com/litocpp/licrypto.git#commit=$_licrypto_commit"
         "git+https://github.com/litocpp/ligraph.git#commit=$_ligraph_commit"
         "git+https://github.com/litocpp/liresto.git#commit=$_liresto_commit")
-sha256sums=('e21832263662b7488939348d9fa197e3fd6c72fb05ab43aea4f6488ae6122333'
-            '7b80bf852afc94e543f9d87a632bdefa1f0766de01bd95df59440975e4e8d931'
+sha256sums=('042ff65e1a1f9f3c2c23a9b9d9de81518592365c456b3edf441a0a77d9752f13'
+            '85538d0fbaab692c4bb67093880c281a1b3c9a166068011381daba04a0b3bf7f'
             'b8e4589fe724df1eaecf7f1009b466545ad63ac9c89eb28ad12953e66eb10c6e'
             'a1b4edc2f1055d556f023fc6863f278fdcad906a72a2bc30615a4704aa2efd8a'
             '90dd0eb2a90813149c0392cbb05ea74d6a23e2a0a76617713088a0bc2bd9f27b'
