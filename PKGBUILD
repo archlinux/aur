@@ -1,6 +1,6 @@
 pkgname=open-design
-pkgver=0.27.1
-pkgrel=9
+pkgver=0.27.2
+pkgrel=1
 _tag="open-design-v${pkgver}"
 # Upstream CLI name is `od`; this package installs `open-design` because /usr/bin/od is coreutils (octal dump).
 pkgdesc='Local-first design product: design skills and design systems with your code-agent CLI; daemon and static web UI (CLI: open-design).'
@@ -11,7 +11,7 @@ depends=('nodejs' 'node-gyp' 'python' 'make' 'gcc')
 makedepends=('npm')
 options=('!strip' '!debug')
 source=("${url}/archive/refs/tags/${_tag}.tar.gz" 'open-design' 'open-design-rebuild-native' 'open-design-nodejs.hook')
-sha256sums=('4172b61ba331c9323db94e56f69c670052c253c404d011a06178797ddc76d168'
+sha256sums=('97aacbcff3925575ab56c738a278dfaa59ac8899256e41b5098cd9dc8ce62140'
             '6d0dbacec1ef6e27725d04aee28221cb7ba4f1b39ed15c10efdf499540157bd5'
             'b5b254f77ed0f8a8b89909f561088298d34d7f4ee57c5dc18ef3901bb43c5ee7'
             'aba727989d9c776fea7c8ac3888d1129bab5b8d6d861dbefb31fb703e30cef04')
