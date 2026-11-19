@@ -1,6 +1,6 @@
 pkgbase = everywhere-bin
 	pkgdesc = Context-aware AI assistant for your desktop
-	pkgver = 0.9.0canary.20261116.28
+	pkgver = 0.9.0canary.20261119.29
 	pkgrel = 1
 	url = https://github.com/Sylinko/Everywhere
 	arch = x86_64
@@ -32,13 +32,13 @@ pkgbase = everywhere-bin
 	optdepends = libnotify: desktop notifications
 	provides = everywhere
 	conflicts = everywhere
-	noextract = Everywhere-Linux-x64-v0.9.0-canary.20261116.28.tar.zst
-	noextract = Everywhere-Linux-arm64-v0.9.0-canary.20261116.28.tar.zst
-	source = https://github.com/pasical/Everywhere-AUR/releases/download/v0.9.0-canary.20261116.28/LICENSE
-	source = https://github.com/pasical/Everywhere-AUR/releases/download/v0.9.0-canary.20261116.28/Everywhere-icon.png
+	noextract = Everywhere-Linux-x64-v0.9.0-canary.20261119.29.tar.zst
+	noextract = Everywhere-Linux-arm64-v0.9.0-canary.20261119.29.tar.zst
+	source = https://github.com/pasical/Everywhere-AUR/releases/download/v0.9.0-canary.20261119.29/LICENSE
+	source = https://github.com/pasical/Everywhere-AUR/releases/download/v0.9.0-canary.20261119.29/Everywhere-icon.png
 	sha256sums = 1afb97b109ac6dc78fee57f86e854abe75bbdffb12b40d36c91084b12efa96a2
 	sha256sums = ef52179d078f3ee23a1eec9ded2dbb8a9529de49dd4412375fea7566f9f83c34
-	source_x86_64 = https://github.com/pasical/Everywhere-AUR/releases/download/v0.9.0-canary.20261116.28/Everywhere-Linux-x64-v0.9.0-canary.20261116.28.tar.zst
-	sha256sums_x86_64 = 08b0b9cb07620b9ce82f676e01b0b134687768ca78535c030115d3b705654a60
+	source_x86_64 = https://github.com/pasical/Everywhere-AUR/releases/download/v0.9.0-canary.20261119.29/Everywhere-Linux-x64-v0.9.0-canary.20261119.29.tar.zst
+	sha256sums_x86_64 = 9bf46f161c134bb1dc8401f593bf72e2ea91fc2a086216c58643880e062ab3f1
 
 pkgname = everywhere-bin
