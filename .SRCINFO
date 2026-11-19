@@ -1,6 +1,6 @@
 pkgbase = hivemind-ai-bin
 	pkgdesc = Kanban board for running AI coding agents (Claude Code, OpenCode) across projects (prebuilt binary)
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/BorisBrock/Hivemind
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = hivemind-ai-bin
 	conflicts = hivemind-git
 	options = !strip
 	options = !debug
-	source = hivemind-ai-bin-1.0.2.deb::https://github.com/BorisBrock/Hivemind/releases/download/v1.0.2/Hivemind_1.0.2_amd64.deb
-	source = LICENSE-1.0.2::https://raw.githubusercontent.com/BorisBrock/Hivemind/v1.0.2/LICENSE
-	sha256sums = 4af2c420bffe99d88cc736373c1f9ce3d4e05d4b6ddaf126b196a2e470912b0d
+	source = hivemind-ai-bin-1.0.3.deb::https://github.com/BorisBrock/Hivemind/releases/download/v1.0.3/Hivemind_1.0.3_amd64.deb
+	source = LICENSE-1.0.3::https://raw.githubusercontent.com/BorisBrock/Hivemind/v1.0.3/LICENSE
+	sha256sums = c0ab23d91ac2def85b973da763405eb9d49d10fe4d50d377434d375cd99d2aed
 	sha256sums = 90bc9218c32fb04e7384d8acbbeac4ea255d0823d3c53fec70a3b6679ef604ae
 
 pkgname = hivemind-ai-bin

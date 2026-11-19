@@ -1,7 +1,7 @@
 # Maintainer: Boris Brock <gabrielborisbrock@gmail.com>
 pkgname=hivemind-ai-bin
 _appname=Hivemind
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Kanban board for running AI coding agents (Claude Code, OpenCode) across projects (prebuilt binary)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('hivemind-ai' 'hivemind<=1.0.1' 'hivemind-git')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/${_appname}_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/BorisBrock/Hivemind/v$pkgver/LICENSE")
-sha256sums=('4af2c420bffe99d88cc736373c1f9ce3d4e05d4b6ddaf126b196a2e470912b0d'
+sha256sums=('c0ab23d91ac2def85b973da763405eb9d49d10fe4d50d377434d375cd99d2aed'
             '90bc9218c32fb04e7384d8acbbeac4ea255d0823d3c53fec70a3b6679ef604ae')
 
 package() {
