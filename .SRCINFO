@@ -1,0 +1,14 @@
+pkgbase = lua-cipher
+	pkgdesc = AES, RC4, ChaCha20 and DES ciphers for Lua strings and carrays (cipher.aes, cipher.rc4, cipher.chacha20, cipher.des)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/osch/lua-cipher
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	source = lua-cipher-0.0.1.tar.gz::https://github.com/osch/lua-cipher/archive/v0.0.1.tar.gz
+	sha256sums = 520f9dd9a6823f621b3e00213b4b4c7fce4e62cb7c86edb26f8135633c02699d
+
+pkgname = lua-cipher
