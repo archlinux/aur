@@ -1,6 +1,20 @@
 # pacman runs these as root, so they can't set up anyone's session: they say what to do.
 
+# The boot and shutdown banner is on after an install or an update, unless it was switched off in
+# Settings (Login screen, Startup banner), which creates /etc/uq/banner-off. The units themselves
+# also check that file, so this only has to enable them (idempotent).
+_enable_banner() {
+    [ -e /etc/uq/banner-off ] && return 0
+    command -v systemctl >/dev/null 2>&1 || return 0
+    systemctl enable --quiet uq-banner-boot.service uq-banner-shutdown.service >/dev/null 2>&1 || true
+}
+
+post_install() {
+    _enable_banner
+}
+
 post_upgrade() {
+    _enable_banner
     # uqd and the shell keep running the old version until the session restarts; asking the old
     # uqd to re-render (`uqctl reload`) would mix its code with the new templates.
     echo ":: uQ was updated. Log out and back in to start the new version."

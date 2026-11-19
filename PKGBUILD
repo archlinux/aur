@@ -4,7 +4,7 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=uq
-pkgver=0.3.15
+pkgver=0.3.17
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
 # The uq-hyprland-pin this release's config/hypr/base.lua is tested with: equal to
@@ -15,7 +15,7 @@ pkgdesc="Themeable Hyprland desktop: shell, theme and layout daemon, CLI and bas
 arch=(x86_64)
 url="https://github.com/asafelobotomy/uq"
 license=(MIT)
-depends=("uq-hyprland-pin>=$_pin" dbus glib2 qt6ct gcc-libs 'quickshell>=0.3.1' 'quickshell<0.4' brightnessctl upower systemd noto-fonts-emoji gnome-keyring
+depends=("uq-hyprland-pin>=$_pin" dbus glib2 shared-mime-info qt6ct gcc-libs 'quickshell>=0.3.1' 'quickshell<0.4' brightnessctl upower systemd noto-fonts-emoji gnome-keyring
   kirigami qqc2-desktop-style qt6-declarative kvantum polkit kcolorscheme kconfig)
 install=uq.install
 makedepends=(cargo qt6-base qt6-declarative kcolorscheme kconfig)
@@ -57,7 +57,7 @@ backup=(etc/pam.d/uq-greetd etc/pam.d/uq-greeter etc/pam.d/uq-lock etc/pam.d/uq-
 # (so its checksum) can change. The release workflow uploads exactly this file and prints its sum.
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
 # The release asset's sha256 for this tag; update it with pkgver at each release (docs/releasing.md).
-sha256sums=('0e3910fc34dfed7ac2825329ab9254b7529da595949d8613aca6ced9650ec064')
+sha256sums=('760beca395bf51474ea99871024ff55c243a40a239437c8d5303a1f138689909')
 
 prepare() {
   cd "$srcdir/$pkgname-$_tag"
@@ -134,6 +134,10 @@ package() {
   install -Dm755 packaging/banner/uq-banner "$pkgdir/usr/lib/uq/uq-banner"
   install -Dm644 packaging/banner/uq-banner-boot.service "$pkgdir/usr/lib/systemd/system/uq-banner-boot.service"
   install -Dm644 packaging/banner/uq-banner-shutdown.service "$pkgdir/usr/lib/systemd/system/uq-banner-shutdown.service"
+  # ROM and retro-platform file types: names, extensions and icons for file managers and xdg-open.
+  # pacman's shared-mime-info and icon-cache hooks refresh the databases after the install.
+  install -Dm644 packaging/mime/uq-roms.xml "$pkgdir/usr/share/mime/packages/uq-roms.xml"
+  install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/scalable/mimetypes" packaging/mime/icons/*.svg
   install -Dm755 target/release/uq-settings "$pkgdir/usr/bin/uq-settings"
   install -Dm644 packaging/org.uq.Settings.desktop "$pkgdir/usr/share/applications/org.uq.Settings.desktop"
   install -Dm644 packaging/dbus/org.uq.Settings1.service "$pkgdir/usr/share/dbus-1/services/org.uq.Settings1.service"
