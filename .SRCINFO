@@ -1,0 +1,18 @@
+pkgbase = horcom-git
+	pkgdesc = Complete desktop astrology program and chart calculator (C++ rewrite of Robert Rettig's HORCOM)
+	pkgver = 0.89.r0.gde999ad
+	pkgrel = 1
+	url = https://github.com/horcom-rr/HORCOM
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-svg
+	provides = horcom
+	conflicts = horcom
+	source = horcom::git+https://github.com/horcom-rr/HORCOM.git
+	sha256sums = SKIP
+
+pkgname = horcom-git
