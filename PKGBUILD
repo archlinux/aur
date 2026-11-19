@@ -72,7 +72,7 @@ prepare() {
     local target
     target="$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --locked --target "$target"
-    # pila-launcher, pila-bar, pila-switcher, pila-osd and pila-shot: a cargo
+    # pila-launcher, pila-bar, pila-osd and pila-shot: a cargo
     # workspace of their own, with its own lock.
     cargo fetch --locked --target "$target" --manifest-path launcher/Cargo.toml
 }
