@@ -1,9 +1,9 @@
 # Maintainer: Tarek <tarekdshli@gmail.com>
 # Based on the quickshell-git AUR recipe maintained by Entailz.
 pkgname=quickshell-dusk-git
-pkgver=0.3.2.r16.gd4bb6a3
+pkgver=0.3.2.r17.gb618f81
 pkgrel=1
-pkgdesc='Quickshell with faster startup through QML scanning and disk-cache optimizations'
+pkgdesc='Quickshell with faster startup through QML scanning and disk-cache optimizations, plus ii memory patches'
 arch=(x86_64)
 url='https://github.com/totti786/quickshell-dusk'
 license=(LGPL-3.0-only GPL-3.0-only)

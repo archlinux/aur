@@ -1,6 +1,6 @@
 pkgbase = quickshell-dusk-git
-	pkgdesc = Quickshell with faster startup through QML scanning and disk-cache optimizations
-	pkgver = 0.3.2.r16.gd4bb6a3
+	pkgdesc = Quickshell with faster startup through QML scanning and disk-cache optimizations, plus ii memory patches
+	pkgver = 0.3.2.r17.gb618f81
 	pkgrel = 1
 	url = https://github.com/totti786/quickshell-dusk
 	arch = x86_64
