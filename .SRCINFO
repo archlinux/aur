@@ -1,6 +1,6 @@
 pkgbase = python-snp2le
 	pkgdesc = Convert Touchstone S-parameter files into lumped-elemt netlists for NGSpice and VACASK
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/iic-jku/snp2le
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-snp2le
 	optdepends = ngspice: SPICE simulator to simulate/verify results
 	optdepends = vacask: SPICE simulator to simulate/verify results
 	optdepends = xyce: SPICE simulator to simulate/verify results
-	source = snp2le::git+https://github.com/iic-jku/snp2le#tag=v0.2.1
-	b2sums = 056d0efa0c52ae837cfa7d5ff552170f66c63066c4b414e4091789fc1a8f5383b4a9f5eb739dc7ace617ceff097bf1a5e95c99f74454a77454abddb476fa624f
+	source = snp2le::git+https://github.com/iic-jku/snp2le#tag=v0.2.2
+	b2sums = 72eb9ea618428bfc6c95ffe8c8ce9b7943365d776989af1e7e1c89c2f2ec128f89e669a5646c57ec1330c5511f4dcc4ebd1a9e12d372f36d33bed22045a17946
 
 pkgname = python-snp2le
