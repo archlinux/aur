@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_gitname}-bin
 pkgdesc="Rust image toolkit for CLI with signed URLs, SSRF protection, and AVIF/WebP/SVG support"
 
-pkgver=0.27.1
+pkgver=0.28.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,11 +30,11 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md" "LICENSE-${pkgver}::${_ghu
 		"${_pkgsrc}-checksums.txt::${_ghurl}/releases/download/${_gitversion}/checksums.txt")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgsrc}-${arch[1]}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums=('c7cfc451d9ccd7c73d22d6af0e2cee301ff9f75ae566f6fed3f2a45ac1d85b4b'
+sha256sums=('3ee5c3004452939132480502132b440f0d783938b6b3b2ccb1b4377b66a981a1'
             '192d385e901927e0e4f6c16540c61525f334a732020f010d04e462fae0f8104d'
-            '5ca80659f97ac6893e8b457f6fc491142520501eaaaf0216f035d8af73bb814e')
-sha256sums_x86_64=('f61081ef0347d66cf29ca45fb09fb03765b3ef2802b9fb6554fd152c3e9cc5f7')
-sha256sums_aarch64=('061ad3293d4e424f82d002dc57aaf691e7ced943ce74c04991033233f138f24b')
+            'baa9f5dc18b87a74afef87b6ae2098163ffc78a65082c681fea42a1d8a37af45')
+sha256sums_x86_64=('0140aef9dbd22002b114ed9967062f67204e7fb03ffa0cc1adc51ea996e8805b')
+sha256sums_aarch64=('4eef468b3f8d21a6bfa13362d5d8403c15497fe0b9d38e493d7a87df44e84b7d')
 
 
 verify() {
