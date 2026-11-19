@@ -2,8 +2,9 @@
 
 _name=outline-client
 pkgname=${_name}-bin
-pkgver=1.22.0
+pkgver=1.23.0
 pkgrel=1
+_build=3
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
 provides=("${_name}")
@@ -12,14 +13,14 @@ url="https://getoutline.org"
 license=("Apache-2.0")
 
 _deb="outline-client_amd64_${pkgver}.deb"
-source=("${_deb}::https://s3.amazonaws.com/outline-releases/client/linux/${pkgver}/1/outline-client_amd64.deb")
+source=("${_deb}::https://s3.amazonaws.com/outline-releases/client/linux/${pkgver}/${_build}/outline-client_amd64.deb")
 options=('!strip' '!debug')
-depends=('libnotify' 'libxtst' 'nss' 'libcap' 'libdrm' 'alsa-lib' 'mesa' 'libxdamage' 'libxkbcommon' 'libxrandr' \
-         'hicolor-icon-theme' 'dbus' 'gtk3' 'at-spi2-core' 'libxcomposite' 'libcups')
+depends=('libnotify' 'libxtst' 'nss' 'libcap' 'libdrm' 'alsa-lib' 'mesa' 'libxdamage' 'libxkbcommon' \
+         'libxrandr' 'hicolor-icon-theme' 'dbus' 'gtk3' 'at-spi2-core' 'libxcomposite' 'libcups')
 makedepends=('patchelf')
 install="${pkgname}.install"
 
-sha256sums=('145ac6763601b4253e6530d061e0207309b59672fc23ba24e4194f0825772cac')
+sha256sums=('2d4d1bb24793e6a2795ad174451383bd8923aee1357f8f1e859268d0ca29281b')
 
 prepare() {
   cd "$srcdir"
