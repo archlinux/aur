@@ -4,7 +4,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=ripperx-git
-pkgver=3.1.1.r249.20261028.2571d88
+pkgver=3.1.2.r262.20261030.cf108e2
 pkgrel=1
 pkgdesc="GTK2 program to rip Audio CDs and encode to FLAC, OGG and MP3."
 arch=(
