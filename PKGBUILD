@@ -3,13 +3,8 @@
 # Based on extra/electron* by
 # Bruno Pagani <archange@archlinux.org>
 # Caleb Maclennan <caleb@alerque.com>
-_projectname=electron
-_major=43
-_pkgname="${_projectname}${_major}"
-pkgname="${_pkgname}"-bin
-_subver='8.11'
-_pkgver="${_major}.${_subver}"
-pkgver="${_pkgver/-}"
+pkgname=electron43-bin
+pkgver=43.8.12
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
 arch=(
@@ -24,9 +19,9 @@ license=(
     'LicenseRef-custom'
 )
 provides=(
-    "${_pkgname}=${pkgver}"
+    "${pkgname%-bin}=${pkgver}"
 )
-conflicts=("${_pkgname}")
+conflicts=("${pkgname%-bin}")
 depends=(
     'alsa-lib'
     'gtk3'
@@ -41,41 +36,41 @@ optdepends=(
     "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)"
 )
 noextract=(
-    "${_pkgname}-chromedriver-${pkgver}-${CARCH}.zip"
-    "${_pkgname}-${pkgver}-${CARCH}.zip"
+    "${pkgname%-bin}-chromedriver-${pkgver}-${CARCH}.zip"
+    "${pkgname%-bin}-${pkgver}-${CARCH}.zip"
 )
 source=("${pkgname%-bin}.sh")
 source_aarch64=(
-    "${_pkgname}-chromedriver-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-arm64.zip"
-    "${_pkgname}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-arm64.zip"
+    "${pkgname%-bin}-chromedriver-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/chromedriver-v${pkgver}-linux-arm64.zip"
+    "${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/electron-v${pkgver}-linux-arm64.zip"
 )
 source_armv7h=(
-    "${_pkgname}-chromedriver-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-armv7l.zip"
-    "${_pkgname}-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-armv7l.zip"
+    "${pkgname%-bin}-chromedriver-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${pkgver}/chromedriver-v${pkgver}-linux-armv7l.zip"
+    "${pkgname%-bin}-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${pkgver}/electron-v${pkgver}-linux-armv7l.zip"
 )
 source_x86_64=(
-    "${_pkgname}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-x64.zip"
-    "${_pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-x64.zip"
+    "${pkgname%-bin}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/chromedriver-v${pkgver}-linux-x64.zip"
+    "${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/electron-v${pkgver}-linux-x64.zip"
 )
 sha256sums=('cea9f99f6d0a9a8bab239ffd2192dca3adf4f769b3123a2f366983c82d572ac9')
 sha256sums_aarch64=('bcb7be36988f28bfa13065f29b12fe8ebf61266c48a1dd97e245e0c31ed42071'
                     '9293a0a8458e1bc9fe50b4e0ccd0edc780ead1818aca7d0080871f2e9b78bff7')
 sha256sums_armv7h=('43f41d5e95d436cc5589e4bedffd4d97bab61e9feb31ec941b59c08cc034f09d'
-                   '55e059a829c7c94020099886e7f7a428711984275ce269c2e0a7693c4f2a7359')
+                    '55e059a829c7c94020099886e7f7a428711984275ce269c2e0a7693c4f2a7359')
 sha256sums_x86_64=('80068011119353809803aa4d2121fe689ec92053f2a03430116b0302bbc18c29'
-                   'd3ef64c9110e5d76a382047c4557329dbd01b01cdcab1eccf8c49b382bc4e386')
+                    'd3ef64c9110e5d76a382047c4557329dbd01b01cdcab1eccf8c49b382bc4e386')
 prepare() {
-    sed -i "s/@ELECTRON@/${_pkgname}/g" "${srcdir}/${pkgname%-bin}.sh"
-    install -Dm755 -d "${srcdir}/${_pkgname}"
-    bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
-    bsdtar -xf "${srcdir}/${_pkgname}-chromedriver-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
-    rm -rf "${srcdir}/${_pkgname}/"{gen,chromedriver.debug}
-    chmod u+s "${srcdir}/${_pkgname}/chrome-sandbox"
+    sed -i "s/@ELECTRON@/${pkgname%-bin}/g" "${srcdir}/${pkgname%-bin}.sh"
+    install -Dm755 -d "${srcdir}/${pkgname%-bin}"
+    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/${pkgname%-bin}"
+    bsdtar -xf "${srcdir}/${pkgname%-bin}-chromedriver-${pkgver}-${CARCH}.zip" -C "${srcdir}/${pkgname%-bin}"
+    rm -rf "${srcdir}/${pkgname%-bin}/"{gen,chromedriver.debug}
+    chmod u+s "${srcdir}/${pkgname%-bin}/chrome-sandbox"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -a "${srcdir}/${_pkgname}" "${pkgdir}/usr/lib"
-    rm -rf "${pkgdir}/usr/lib/${_pkgname}/LICENSE"*
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    cp -a "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/lib"
+    rm -rf "${pkgdir}/usr/lib/${pkgname%-bin}/LICENSE"*
+    install -Dm644 "${srcdir}/${pkgname%-bin}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
