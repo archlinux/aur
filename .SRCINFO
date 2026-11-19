@@ -1,6 +1,6 @@
 pkgbase = theia-bin
 	pkgdesc = Cloud and Desktop IDE Platform
-	pkgver = 1.76.1
+	pkgver = 1.77.0
 	pkgrel = 1
 	url = https://www.theia-ide.org/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = theia-bin
 	provides = theia
 	conflicts = theia
 	options = !strip
-	source = TheiaIDE_x64_1.76.1.deb::https://www.eclipse.org/downloads/download.php?file=/theia/ide/1.76.1/linux/TheiaIDE.deb&r=1
-	sha256sums = ec3a3b5596fc7be9c99e7e242514341c6bda28762cd76644cfa502f992887d97
+	source = TheiaIDE_x64_1.77.0.deb::https://download.eclipse.org/theia/ide/1.77.0/linux/TheiaIDE.deb
+	sha256sums = 62f23c9e5befb9b6ce8b804e96d87736c053e20703848f48039b1a2192137fbc
 
 pkgname = theia-bin
