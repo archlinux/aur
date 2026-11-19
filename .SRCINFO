@@ -1,11 +1,11 @@
 pkgbase = xtouch-daemon-gui-bin
 	pkgdesc = The GUI of xtouch-daemon: edit the configuration of the X-Touch Extender, with a live view of the device
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/markusressel/xtouch-daemon
 	arch = any
 	license = AGPL-3.0-or-later
-	depends = xtouch-daemon-bin=0.2.0
+	depends = xtouch-daemon-bin>=0.2.0
 	depends = python>=3.14
 	depends = python<3.15
 	depends = python-pyqt6

@@ -5,13 +5,14 @@
 pkgname=xtouch-daemon-gui-bin
 _pkgname=xtouch-daemon-gui
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GUI of xtouch-daemon: edit the configuration of the X-Touch Extender, with a live view of the device"
 arch=('any')
 url="https://github.com/markusressel/xtouch-daemon"
 license=('AGPL-3.0-or-later')
-# the GUI runs on the system's Python with its PyQt6, and uses the packages of xtouch-daemon-bin of the same version
-depends=("xtouch-daemon-bin=${pkgver}" 'python>=3.14' 'python<3.15' 'python-pyqt6' 'qt6-base')
+# the GUI runs on the system's Python with its PyQt6, and uses the packages of xtouch-daemon-bin, which has the code
+# of the GUI too; not "=${pkgver}": an AUR helper installs xtouch-daemon-bin first, which must not break this package
+depends=("xtouch-daemon-bin>=${pkgver}" 'python>=3.14' 'python<3.15' 'python-pyqt6' 'qt6-base')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}-any.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-any.tar.gz")
