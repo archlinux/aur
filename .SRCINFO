@@ -1,0 +1,24 @@
+pkgbase = git-credential-manager-linux
+	pkgdesc = Git Credential Manager rewritten in C++/Qt for Linux (no .NET runtime needed)
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/huycn/gcml
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
+	depends = git
+	depends = libsecret
+	depends = openssl
+	depends = qt6-base
+	depends = qt6-svg
+	provides = git-credential-manager
+	conflicts = git-credential-manager
+	conflicts = git-credential-manager-bin
+	source = gcml-3.0.2.tar.gz::https://github.com/huycn/gcml/archive/refs/tags/v3.0.2.tar.gz
+	sha256sums = 1f19ffdbd68ee36bad53b33268d96de5925966bb3fab252407cdb9108f1db4f5
+
+pkgname = git-credential-manager-linux
