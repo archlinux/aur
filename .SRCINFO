@@ -1,7 +1,7 @@
 pkgbase = cumpressor
 	pkgdesc = Private, on-device video compressor built with Rust and GPUI
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Coobyk/Cumpressor
 	arch = x86_64
 	license = MIT
@@ -16,6 +16,10 @@ pkgbase = cumpressor
 	depends = wayland
 	depends = vulkan-icd-loader
 	source = cumpressor-0.1.0.tar.gz::https://github.com/Coobyk/Cumpressor/archive/refs/tags/v0.1.0.tar.gz
+	source = cumpressor.png
+	source = cumpressor.desktop
 	sha256sums = 93d31dd4b965a8d093d428d89fa9e0ee8ed953d00e4f5008a15eab99d3f7ffa4
+	sha256sums = 1dd35f267ebcd6b532cb34f99ced92a90833ea79900627e5406810ca4f94845b
+	sha256sums = 1a6aa6b4d7bfd2a985ca82e3abae3f042489cdd115e7a7ae43a8b4d316db7ccf
 
 pkgname = cumpressor

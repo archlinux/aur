@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Cumpressor
+Comment=Private, on-device video compressor
+Exec=cumpressor %U
+Icon=cumpressor
+Type=Application
+Categories=AudioVideo;Video;
+Keywords=video;compress;ffmpeg;encode;convert;
+StartupNotify=true
+MimeType=video/mp4;video/x-matroska;video/webm;video/quicktime;video/x-msvideo;
