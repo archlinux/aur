@@ -1,6 +1,6 @@
 pkgbase = zenkai-bin
 	pkgdesc = Fast application launcher with plugins, themes and window switching
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://github.com/dayvster/zenkai
 	arch = x86_64
@@ -15,10 +15,11 @@ pkgbase = zenkai-bin
 	optdepends = wmctrl: window layout actions on X11
 	optdepends = xorg-xrandr: monitor layout actions on X11
 	optdepends = kwinctl: control KDE Plasma windows from the command line
+	optdepends = wl-clipboard: clipboard history on Wayland
 	provides = zenkai
 	conflicts = zenkai
 	options = !debug
-	source = https://github.com/dayvster/zenkai/releases/download/v1.6/zenkai-v1.6-linux-x64.tar.gz
-	sha256sums = 1e780799f30c6d19b0d814ddb4081bee6079f6f5c564ce2849790425ee244b28
+	source = https://github.com/dayvster/zenkai/releases/download/v1.7/zenkai-v1.7-linux-x64.tar.gz
+	sha256sums = 307c8abd7cfebaa6b8e45363f58c36a6c03abc247ffb5553b2b61d15ae88d5b8
 
 pkgname = zenkai-bin
