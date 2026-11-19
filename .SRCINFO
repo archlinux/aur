@@ -1,19 +1,19 @@
 pkgbase = crum-bs-bin
 	pkgdesc = Find and remove app leftovers, caches and system bloat (static binary)
-	pkgver = 0.6.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/crumbs
 	arch = x86_64
 	license = GPL-3.0-or-later
 	optdepends = uq: the Storage and cleanup page in Settings and an "Uninstall…" entry in the app menus
-	provides = crum-bs=0.6.0
+	provides = crum-bs=0.8.0
 	conflicts = crum-bs
 	conflicts = crumbs
 	options = !strip
 	options = !debug
-	source = crumbs-0.6.0.tar.gz::https://github.com/asafelobotomy/crumbs/releases/download/v0.6.0/crumbs-0.6.0.tar.gz
-	sha256sums = d02765628811d90f9f157fd439705d41a8dbe4e0d6ab28afdedad16ffdf31313
-	source_x86_64 = crumbs-0.6.0-x86_64-linux-musl::https://github.com/asafelobotomy/crumbs/releases/download/v0.6.0/crumbs-0.6.0-x86_64-linux-musl
-	sha256sums_x86_64 = a3aefce7e3b1128d56cdff91bc6fd73f6a709d1d1ddb0ec94b09dfb260525c7a
+	source = crumbs-0.8.0.tar.gz::https://github.com/asafelobotomy/crumbs/releases/download/v0.8.0/crumbs-0.8.0.tar.gz
+	sha256sums = 2140c728ec419aa3873fc862f5c8f8e7386b28abcc687d046fec533156b61ab8
+	source_x86_64 = crumbs-0.8.0-x86_64-linux-musl::https://github.com/asafelobotomy/crumbs/releases/download/v0.8.0/crumbs-0.8.0-x86_64-linux-musl
+	sha256sums_x86_64 = eb442c29a6ffb3578fdd873885f3498c63b99d626c5edb2cf038d0315a0e398f
 
 pkgname = crum-bs-bin
