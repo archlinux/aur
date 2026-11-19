@@ -3,7 +3,7 @@
 
 pkgname=codex-switcher-bin
 _pkgname=codex-switcher
-pkgver=0.2.23
+pkgver=0.2.24
 pkgrel=1
 pkgdesc='A multi-account manager for OpenAI Codex CLI'
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 options=('!strip')
 source=("${_pkgname}-${pkgver}.deb::https://github.com/Lampese/codex-switcher/releases/download/v${pkgver}/Codex.Switcher_${pkgver}_amd64.deb")
-sha256sums=('e915f0af5c726c8c82c76b23b7eebb13a0d313a44b0517d54437c01c91d5dbca')
+sha256sums=('07d6bba0da799699e169dba3035508008ea0a2e7ff19aa167a9fab54a0f8993d')
 
 package() {
     cd "$srcdir"
