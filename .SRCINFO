@@ -1,7 +1,7 @@
 pkgbase = neko-cloud-music
 	pkgdesc = NekoMusic: Free High-Quality Cloud Music
 	pkgver = 2026.1115.69
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FantasyNetworkCN/NekoMusicForPc
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = neko-cloud-music
 	depends = qt6-svg
 	depends = qt6-websockets
 	depends = openssl
-	source = neko-cloud-music-d4efc7e0e856de9fb90472078d4dff8354df43fc.tar.gz::https://github.com/FantasyNetworkCN/NekoMusicForPc/archive/d4efc7e0e856de9fb90472078d4dff8354df43fc.tar.gz
+	source = neko-cloud-music-51328a285f93e4bdf2cf5b87341bd46b322fae58.tar.gz::https://github.com/FantasyNetworkCN/NekoMusicForPc/archive/51328a285f93e4bdf2cf5b87341bd46b322fae58.tar.gz
 	sha256sums = SKIP
 
 pkgname = neko-cloud-music
