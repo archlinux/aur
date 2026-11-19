@@ -1,6 +1,6 @@
 pkgbase = waftty-bin
 	pkgdesc = A light terminal emulator
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/danpozmanter/waftty
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = waftty-bin
 	provides = waftty
 	conflicts = waftty
 	options = !strip
-	source = LICENSE-0.8.3::https://raw.githubusercontent.com/danpozmanter/waftty/v0.8.3/LICENSE
+	source = LICENSE-0.8.4::https://raw.githubusercontent.com/danpozmanter/waftty/v0.8.4/LICENSE
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = waftty-x86_64-0.8.3.tgz::https://github.com/danpozmanter/waftty/releases/download/v0.8.3/waftty-0.8.3-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 5d8b51f560174ac88b094d34e5a846aaa021c798a002522cafbb5731abe8521a
+	source_x86_64 = waftty-x86_64-0.8.4.tgz::https://github.com/danpozmanter/waftty/releases/download/v0.8.4/waftty-0.8.4-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 80895e80c6edc40477fe80018c4cc1436ea4d112870753eff247ce6725c00435
 
 pkgname = waftty-bin
