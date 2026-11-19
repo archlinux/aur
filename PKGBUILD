@@ -1,12 +1,12 @@
 # Maintainer: Novaturiente
 pkgname=novabrowser-bin
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="AVX2-optimized keyboard-driven web browser on Chromium (CEF), configured in TypeScript (prebuilt)"
 arch=(x86_64)
 url="https://github.com/Novaturiente/nova-browser"
 license=(GPL-3.0-or-later)
-depends=(sqlite gtk3 nss alsa-lib libxss libxkbcommon libdrm mesa libcups at-spi2-core)
+depends=(sqlite gtk3 gtk4 libadwaita nss alsa-lib libxss libxkbcommon libdrm mesa libcups at-spi2-core)
 optdepends=('wl-clipboard: primary selection and paste on Wayland'
             'xclip: primary selection and paste on X11'
             'xdg-utils: download-open and default-browser setup'
@@ -18,7 +18,7 @@ conflicts=(novabrowser novabrowser-git)
 options=(!strip !debug)
 # The /usr tree of the `novabrowser` package, built by packaging/release.sh
 source=("novabrowser-$pkgver-x86_64.tar.zst::$url/releases/download/v$pkgver/novabrowser-$pkgver-x86_64.tar.zst")
-sha256sums=('7ed3aeef4d23ed7c34f567426beabea3ed8914d222fdfe897a111c532392d048')
+sha256sums=('1ecada534fa5abbd80f2e909870fc81071329c67c2292dd296880b8235eb5a88')
 
 prepare() {
   /lib/ld-linux-x86-64.so.2 --help 2>/dev/null | grep -q 'x86-64-v3 (supported' || {
