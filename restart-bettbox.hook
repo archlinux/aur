@@ -1,9 +1,15 @@
 [Trigger]
+# 仅用于 1.19.8-2 → 1.19.8-3 一次性迁移
 Operation = Upgrade
 Type = Package
 Target = bettbox-bin
 
+[Trigger]
+Operation = Upgrade
+Type = Path
+Target = usr/bin/bettbox
+
 [Action]
 Description = Restarting Bettbox...
 When = PostTransaction
-Exec = /bin/sh -c 'for d in /run/user/*/; do u=${d#/run/user/}; u=${u%/}; su "$(id -nu "$u" 2>/dev/null)" -c "/usr/bin/Bettbox --restart" 2>/dev/null || true; done'
+Exec = /bin/sh -c 'for d in /run/user/*/; do u=${d#/run/user/}; u=${u%/}; su "$(id -nu "$u" 2>/dev/null)" -c "/usr/bin/bettbox --restart" 2>/dev/null || true; done'

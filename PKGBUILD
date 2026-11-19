@@ -1,11 +1,21 @@
 # Maintainer: lyj <lyj404@gmail.com>
 pkgname=bettbox-bin
+_pkgname=Bettbox
 pkgver=1.19.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Another Better Network Toolbox"
 arch=('x86_64' 'aarch64')
 url="https://github.com/appshubcc/Bettbox"
 license=('GPL-3.0-or-later')
+conflicts=(
+  'bettbox' 'bettbox-compatible' 'bettbox-compatible-bin'
+  'bettbox-compatible-pre' 'bettbox-compatible-pre-bin'
+  'bettbox-lite' 'bettbox-lite-bin' 'bettbox-lite-compatible'
+  'bettbox-lite-compatible-bin' 'bettbox-lite-compatible-pre'
+  'bettbox-lite-compatible-pre-bin' 'bettbox-lite-pre' 'bettbox-lite-pre-bin'
+  'bettbox-pre' 'bettbox-pre-bin'
+)
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
   'gtk3'
   'libayatana-appindicator'
@@ -19,30 +29,39 @@ source=("restart-bettbox.hook"
         "bettbox.install")
 source_x86_64=("https://github.com/appshubcc/Bettbox/releases/download/v${pkgver}/Bettbox-${pkgver}-linux-amd64.deb")
 source_aarch64=("https://github.com/appshubcc/Bettbox/releases/download/v${pkgver}/Bettbox-${pkgver}-linux-arm64.deb")
-sha256sums=('9d8b0a54499c9325ed64d987184a229af75c34600ca28afd016dff43ebb53cd0'
-            'ba5165cd9c2fa422507323c1942bea73c001613fb5b4ffeb0d41c5c451709810')
+sha256sums=('25e4c72f27aeecb3499f236b20a1aac26288710e855c8f13bb526cda94b9e287'
+            '40d61c873b4a66e936b05df4c2c0f5b014ca9933bfc9578dedc2571325079187')
 sha256sums_x86_64=('2c522c41bd7b13a320b6a329fe3c5c56864436d30025b75251fd3cf9723f0b86')
 sha256sums_aarch64=('a814e6ef74387d086c66f0b113022e60e8f8fc52ea2e25fd090c2acce2f83808')
 
+prepare() {
+  bsdtar -xf "${srcdir}/data."*
+
+  # 安装布局与同系列其他包一致：程序和桌面项都叫 bettbox
+  sed -i -e "
+    s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
+    s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+  " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+}
+
 package() {
-  bsdtar -xf data.tar.zst -C "${srcdir}"
+  # 应用主体（自 v1.19.5 起上游 desktop 已自带 StartupWMClass）
+  install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+  cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${_pkgname}/"* \
+    "${pkgdir}/usr/lib/${pkgname%-bin}/"
 
-  # 应用主体
-  install -dm755 "${pkgdir}/usr/share/Bettbox"
-  cp -a "${srcdir}/usr/share/Bettbox/"* "${pkgdir}/usr/share/Bettbox/"
+  # /usr/bin 符号链接
+  install -Dm755 -d "${pkgdir}/usr/bin"
+  ln -s "/usr/lib/${pkgname%-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
 
-  # 创建 /usr/bin 符号链接
-  install -dm755 "${pkgdir}/usr/bin"
-  ln -s /usr/share/Bettbox/Bettbox "${pkgdir}/usr/bin/Bettbox"
+  # 桌面快捷方式
+  install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" \
+    "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 
-  # 桌面快捷方式（v1.19.5 起上游 desktop 已自带 StartupWMClass）
-  install -Dm644 "${srcdir}/usr/share/applications/Bettbox.desktop" \
-    "${pkgdir}/usr/share/applications/Bettbox.desktop"
-
-  # 图标（确保尺寸正确）
+  # 图标
   for size in 128 256; do
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/${size}x${size}/apps/Bettbox.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/Bettbox.png"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/${size}x${size}/apps/${_pkgname}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname%-bin}.png"
   done
 
   # pacman hook: 升级后自动重启 bettbox

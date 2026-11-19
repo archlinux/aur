@@ -4,7 +4,7 @@ post_install() {
   #   cap_net_admin         TUN
   #   cap_net_bind_service  特权端口
   #   cap_net_raw           raw socket
-  CORE_PATH="/usr/share/Bettbox/BettboxCore"
+  CORE_PATH="/usr/lib/bettbox/BettboxCore"
   if [ -f "$CORE_PATH" ]; then
     /usr/bin/setcap 'cap_net_admin,cap_net_bind_service,cap_net_raw=+ep' "$CORE_PATH" && sync
   fi
