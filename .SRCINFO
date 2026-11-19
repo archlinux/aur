@@ -1,6 +1,6 @@
 pkgbase = keeper
 	pkgdesc = Agent-first cleanup for Arch: stale worktrees, AUR clones, caches and agent leftovers
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/cjber/keeper
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = keeper
 	provides = keeper
 	conflicts = keeper-bin
 	options = !strip
-	source = keeper-0.7.0.tar.gz::https://github.com/cjber/keeper/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = ebd2318f6c2906a93ea58cad5f8641a552b0774b3f43b963981252e3030c772e
+	source = keeper-0.8.0.tar.gz::https://github.com/cjber/keeper/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 8f98ea891436d1091aababdfa82394d8f19f0796d2825d0fbf84f9e8b1e36dac
 
 pkgname = keeper
