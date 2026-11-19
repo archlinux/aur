@@ -1,6 +1,6 @@
 pkgbase = kolimi-desktop
 	pkgdesc = Kolimi desktop client: browse, share, and keep a local folder in sync
-	pkgver = 0.4.10
+	pkgver = 0.4.11
 	pkgrel = 1
 	url = https://github.com/chaitanyayeleti/kolimi
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = kolimi-desktop
 	depends = gtk3
 	depends = libayatana-appindicator
 	options = !lto
-	source = kolimi-desktop-0.4.10.tar.gz::https://github.com/chaitanyayeleti/kolimi/archive/refs/tags/desktop-v0.4.10.tar.gz
-	sha256sums = fdb026127af2c9fe4a1beedfcbd5d2a4bc91b731b9cb904e4f3a15e412134ed4
+	source = kolimi-desktop-0.4.11.tar.gz::https://github.com/chaitanyayeleti/kolimi/archive/refs/tags/desktop-v0.4.11.tar.gz
+	sha256sums = f41a922bfc82f34204c19f043e57eb2cf85f882cd89951e1992a53aed10ab0c5
 
 pkgname = kolimi-desktop
