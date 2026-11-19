@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal that keeps your agents, servers and projects in view"
 
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.deb")
-sha256sums=('48148654bf3a5ad922a958324c69f8462fe7835ba255a0f8f19176764cd877dc'
+sha256sums=('c034e9eaebf329c1478ac85e9abaf1547521ff3c63658d148d44aedc57f19b4e'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('851d32486f6b37dd8b39d756af3884004af8aa2aaf6332ee71af70b6d9e4f3d3')
+sha256sums_x86_64=('86c21edeb69f439b7413be25f598d9c9835cf525b070234933111fb607690839')
 
 
 package() {
