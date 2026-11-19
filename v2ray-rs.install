@@ -4,17 +4,88 @@
 # backend binary (xray/sing-box) is system-managed and not owned by this
 # package; the app grants its capabilities on demand via a one-time pkexec setcap.
 
-post_install() {
-    getent group v2ray-rs >/dev/null || groupadd --system v2ray-rs
-    id v2ray-rs-bypass &>/dev/null || useradd --system --no-create-home --shell /usr/bin/nologin v2ray-rs-bypass
+NETCTL=/usr/bin/v2ray-rs-netctl
+RUN=/usr/bin/v2ray-rs-run
 
-    # chgrp clears the setuid bit and any file capabilities, so re-apply them
-    # afterwards: setuid on the wrapper, cap_net_admin on the route helper.
-    chgrp v2ray-rs /usr/bin/v2ray-rs-netctl /usr/bin/v2ray-rs-run 2>/dev/null || true
-    chmod 0750 /usr/bin/v2ray-rs-netctl 2>/dev/null || true
-    chmod 4750 /usr/bin/v2ray-rs-run 2>/dev/null || true
-    setcap 'cap_net_admin+ep' /usr/bin/v2ray-rs-netctl 2>/dev/null || \
-        echo "==> Could not setcap v2ray-rs-netctl; TUN mode needs: sudo setcap 'cap_net_admin+ep' /usr/bin/v2ray-rs-netctl"
+_helper_matches() {
+    local _owner=$1 _mode=$2 _bin=$3
+
+    [[ $(stat -c '%U:%G' "$_bin" 2>/dev/null) == "$_owner" ]] &&
+        [[ $(stat -c '%a' "$_bin" 2>/dev/null) == "$_mode" ]]
+}
+
+_revoke_helpers() {
+    local _failed=""
+
+    setcap -r "$NETCTL" 2>/dev/null || true
+    chmod 0750 "$NETCTL" 2>/dev/null || _failed="route helper mode"
+    chmod 0750 "$RUN" 2>/dev/null ||
+        _failed="${_failed:+$_failed and }wrapper mode"
+
+    if getcap "$NETCTL" 2>/dev/null | grep -q 'cap_net_admin'; then
+        _failed="${_failed:+$_failed and }route helper capability"
+    fi
+
+    if [[ -n $_failed ]]; then
+        echo "==> Could not revoke partial TUN privileges from: $_failed" >&2
+        echo "==> Repair the helper permissions manually; TUN mode stays unavailable." >&2
+    else
+        echo "==> Partial TUN privileges were removed. TUN mode stays unavailable" >&2
+        echo "    until the helper permissions are repaired." >&2
+    fi
+}
+
+_fail_helpers() {
+    echo "==> TUN helper provisioning failed: $1" >&2
+    _revoke_helpers
+    return 1
+}
+
+post_install() {
+    getent group v2ray-rs >/dev/null || groupadd --system v2ray-rs ||
+        { echo "==> Could not create the v2ray-rs group; TUN mode is unavailable" >&2; return 1; }
+    id v2ray-rs-bypass &>/dev/null ||
+        useradd --system --no-create-home --shell /usr/bin/nologin v2ray-rs-bypass ||
+        { echo "==> Could not create v2ray-rs-bypass; TUN mode is unavailable" >&2; return 1; }
+
+    local _bin
+    for _bin in "$NETCTL" "$RUN"; do
+        [[ -f $_bin ]] ||
+            { echo "==> Missing helper $_bin; TUN mode is unavailable" >&2; return 1; }
+    done
+
+    # Start from group-restricted helpers without capabilities or setuid. chown
+    # clears the setuid bit and any file capabilities, so modes follow it.
+    chown root:v2ray-rs "$NETCTL" "$RUN" 2>/dev/null ||
+        { _fail_helpers "could not set root:v2ray-rs ownership"; return 1; }
+    chmod 0750 "$NETCTL" "$RUN" 2>/dev/null ||
+        { _fail_helpers "could not restrict helper access to mode 0750"; return 1; }
+
+    if ! _helper_matches root:v2ray-rs 750 "$NETCTL"; then
+        _fail_helpers "route helper is not root:v2ray-rs with mode 0750"
+        return 1
+    fi
+    if ! _helper_matches root:v2ray-rs 750 "$RUN"; then
+        _fail_helpers "wrapper is not root:v2ray-rs with mode 0750"
+        return 1
+    fi
+
+    local _failed=""
+    setcap 'cap_net_admin+ep' "$NETCTL" 2>/dev/null || _failed="cap_net_admin grant"
+    chmod 4750 "$RUN" 2>/dev/null ||
+        _failed="${_failed:+$_failed and }setuid mode"
+
+    if [[ -z $_failed ]]; then
+        if ! getcap "$NETCTL" 2>/dev/null | grep -q 'cap_net_admin'; then
+            _failed="cap_net_admin verification"
+        elif ! _helper_matches root:v2ray-rs 750 "$NETCTL"; then
+            _failed="route helper mode verification"
+        elif ! _helper_matches root:v2ray-rs 4750 "$RUN"; then
+            _failed="wrapper mode verification"
+        fi
+    fi
+
+    [[ -z $_failed ]] || { _fail_helpers "$_failed"; return 1; }
 
     cat <<'EOF'
 ==> TUN mode requires your user to be in the 'v2ray-rs' group:
@@ -29,6 +100,9 @@ post_upgrade() {
 }
 
 pre_remove() {
-    userdel v2ray-rs-bypass 2>/dev/null || true
-    groupdel v2ray-rs 2>/dev/null || true
+    setcap -r "$NETCTL" 2>/dev/null || true
+    # Keep the v2ray-rs group and the v2ray-rs-bypass account: removing them
+    # would change the identity, UID, GID, and group memberships that a
+    # reinstall and the bypass wrapper depend on.
+    echo "==> Retaining the v2ray-rs group and v2ray-rs-bypass user across removal."
 }

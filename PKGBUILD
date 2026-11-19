@@ -1,12 +1,12 @@
 pkgname=v2ray-rs
-pkgver=0.20.3
+pkgver=0.20.12
 pkgrel=1
 pkgdesc="Linux desktop GUI for v2ray/xray/sing-box proxy management"
 arch=('x86_64')
 url="https://github.com/victorzhuk/v2ray-rs"
 license=('Apache-2.0')
 depends=('gtk4' 'libadwaita' 'dbus' 'libcap')
-makedepends=('rust' 'cargo')
+makedepends=('rust' 'cargo' 'protobuf')
 optdepends=(
     'v2ray: V2Ray proxy backend'
     'xray: Xray proxy backend'
@@ -15,7 +15,7 @@ optdepends=(
 )
 install=v2ray-rs.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('545b65a9839fe45f1b5221e4bd9da6689743fe8c8ca50ba3f15ff63df3ceaaec')
+sha256sums=('c491b880dfb155781e7ec65317c17d649af298fdd613b2e9234815fd6f4d2553')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -37,7 +37,9 @@ package() {
     # restricts these to it (netctl 0750 + cap_net_admin, run 4750 setuid), and
     # creates the bypass user. Modes here are the pre-hook defaults.
     install -Dm755 "target/release/v2ray-rs-netctl" "$pkgdir/usr/bin/v2ray-rs-netctl"
-    install -Dm4755 "target/release/v2ray-rs-run" "$pkgdir/usr/bin/v2ray-rs-run"
+    # Archives never carry the setuid bit: the install hook applies root:v2ray-rs
+    # and 4750 after systemd-sysusers has created the group and bypass user.
+    install -Dm755 "target/release/v2ray-rs-run" "$pkgdir/usr/bin/v2ray-rs-run"
     install_icon "assets/v2ray-rs.svg" \
         "crates/ui/icons/hicolor/scalable/apps/com.github.v2ray-rs.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.v2ray-rs.svg"
