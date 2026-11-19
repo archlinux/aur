@@ -1,0 +1,155 @@
+#!/bin/sh
+# triforce-oot: build, update and play your own Triforce game with the packaged tools (/usr/lib/triforce-oot).
+#
+#   triforce-oot                          play; first builds the game again if it is behind these tools
+#   triforce-oot --build <file.nup> [--out <folder>] [--language <code>]
+#   triforce-oot --build --romfs <dir> --exefs <dir> [--out <folder>] [--language <code>]
+#                                         a first build from your own dump (default folder ~/Games/Triforce)
+#   triforce-oot --update [<folder>]      build the game folder again with these tools (its kept files, no dump needed)
+#   triforce-oot --check <file.nup>       only check the dump's version
+#   triforce-oot --cli <args>             nx2/make_game.py itself
+#
+# The game folder is the out= line of ~/.config/triforce/builder.ini (the file builder/linux/hookshot-launch and the
+# Triforce launcher read); --build writes it. Nothing here writes outside your home folder.
+set -u
+TOOLS=/usr/lib/triforce-oot
+INI="${XDG_CONFIG_HOME:-$HOME/.config}/triforce/builder.ini"
+LOG_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/triforce-build"
+export HOOKSHOT_TOOLS="$TOOLS"
+export HOOKSHOT_VULKAN_HEADERS="${HOOKSHOT_VULKAN_HEADERS:-/usr/include}"
+export HOOKSHOT_SPIRV_HEADERS="${HOOKSHOT_SPIRV_HEADERS:-/usr/include}"
+export HOOKSHOT_VMA_HEADERS="${HOOKSHOT_VMA_HEADERS:-$TOOLS/vma}"
+# (written into the game folder's triforce_version.txt as builder=: the game's own update offer starts this command)
+export HOOKSHOT_BUILDER_EXE=/usr/bin/triforce-oot
+
+make_game() { /usr/bin/python3 -I "$TOOLS/nx2/make_game.py" "$@"; }
+
+# a message: to the terminal, and as a notification / dialog when started from the menu (no terminal)
+say() {
+    printf 'triforce-oot: %s\n' "$1" >&2
+    if [ ! -t 2 ] && command -v notify-send >/dev/null 2>&1; then notify-send -a Triforce -i triforce-oot Triforce "$1" || true; fi
+}
+fail() {
+    printf 'triforce-oot: %s\n' "$1" >&2
+    if [ ! -t 2 ]; then
+        if command -v zenity >/dev/null 2>&1; then zenity --error --title=Triforce --text="$1" || true
+        elif command -v notify-send >/dev/null 2>&1; then notify-send -a Triforce -u critical Triforce "$1" || true; fi
+    fi
+    exit 1
+}
+
+game_folder() {
+    out=
+    if [ -f "$INI" ]; then
+        while IFS= read -r line || [ -n "$line" ]; do
+            case $line in out=*) out=${line#out=} ;; esac
+        done < "$INI"
+    fi
+    printf '%s\n' "$out"
+}
+
+set_game_folder() {
+    mkdir -p "$(dirname "$INI")"
+    if [ -f "$INI" ] && grep -q '^out=' "$INI"; then
+        tmp="$INI.new"
+        awk -v v="$1" '/^out=/{print "out=" v; next} {print}' "$INI" > "$tmp" && mv "$tmp" "$INI"
+    else
+        printf 'out=%s\n' "$1" >> "$INI"
+    fi
+}
+
+version_of() { [ -f "$1" ] && sed -n "s/^$2//p" "$1" | head -1; }
+
+# Why the game folder needs building again, or nothing: these tools are a newer (or older) release than the one that
+# built it, or the system's libraries it links (FFmpeg) are gone after a system update.
+behind() {
+    tools=$(head -1 "$TOOLS/VERSION" 2>/dev/null)
+    game=$(version_of "$1/triforce_version.txt" "version=")
+    if [ "$game" != "$tools" ]; then
+        printf 'the game is %s, the tools are %s\n' "${game:-from an unknown version}" "$tools"
+    else
+        # (the game is bin/triforce in a folder these tools built; triforce there is the folder's start script)
+        for exe in "$1/bin/triforce" "$1/triforce"; do
+            [ -f "$exe" ] && ldd "$exe" >/dev/null 2>&1 || continue
+            ldd "$exe" 2>/dev/null | grep -q 'not found' && printf 'a library the game links was updated\n'
+            break
+        done
+    fi
+}
+
+update() {
+    folder=$1
+    [ -d "$folder/romfs" ] && { [ -d "$folder/.triforce_exefs" ] || [ -d "$folder/.hookshot_exefs" ]; } ||
+        fail "$folder has no kept game files to build from: build it again from your dump with triforce-oot --build."
+    mkdir -p "$LOG_DIR"
+    log="$LOG_DIR/triforce-oot-update.log"
+    say "Updating your game ($2). This takes a few minutes."
+    if [ -t 1 ]; then
+        make_game --update "$folder" 2>&1 | tee "$log"
+        code=$?
+        # (tee's status is the pipe's; make_game's own is lost in plain sh: the log's last line says how it ended)
+        grep -q '^@@done ' "$log" || code=1
+    else
+        make_game --update "$folder" > "$log" 2>&1
+        code=$?
+    fi
+    [ "$code" -eq 0 ] || fail "The update stopped. The log is $log."
+    say "Your game is updated."
+}
+
+play() {
+    folder=${1:-$(game_folder)}
+    [ -n "$folder" ] && [ -f "$folder/image.bin" ] ||
+        fail "No built game yet. Build it from your own dump: triforce-oot --build <file.nup>"
+    why=$(behind "$folder")
+    [ -n "$why" ] && update "$folder" "$why"
+    exec "$TOOLS/builder/linux/hookshot-launch" "$folder"
+}
+
+case "${1:-}" in
+    ""|--play)
+        play ;;
+    --launch)
+        # (the game folder's own start script, builder/linux/hookshot-folder: <builder> --launch <folder>)
+        [ $# -ge 2 ] || fail "--launch needs the game folder."
+        play "$2" ;;
+    --build)
+        shift
+        nup= romfs= exefs= out= lang=en-US
+        while [ $# -gt 0 ]; do
+            case $1 in
+                --out|--language|--romfs|--exefs) [ $# -ge 2 ] || fail "$1 needs a value." ;;
+            esac
+            case $1 in
+                --out) out=$2; shift 2 ;;
+                --language) lang=$2; shift 2 ;;
+                --romfs) romfs=$2; shift 2 ;;
+                --exefs) exefs=$2; shift 2 ;;
+                *) nup=$1; shift ;;
+            esac
+        done
+        if [ -n "$nup" ]; then set -- --nup "$nup"
+        elif [ -n "$romfs" ] && [ -n "$exefs" ]; then set -- --romfs "$romfs" --exefs "$exefs"
+        else fail "Name your dump: triforce-oot --build <file.nup>, or --romfs <dir> --exefs <dir>."
+        fi
+        out=${out:-$HOME/Games/Triforce}
+        make_game "$@" --out "$out" --language "$lang" || fail "The build stopped."
+        set_game_folder "$(realpath "$out")"
+        say "Your game is built in $out. Start it with triforce-oot." ;;
+    --update)
+        # (also the game's own update offer: <builder> --update <dir> --tag <tag>; the tag is these tools')
+        folder=${2:-$(game_folder)}
+        [ -n "$folder" ] || fail "No game folder: name one, or build one first with triforce-oot --build."
+        update "$folder" "asked for" ;;
+    --check)
+        shift
+        make_game --nup "$1" --check ;;
+    --cli)
+        shift
+        exec /usr/bin/python3 -I "$TOOLS/nx2/make_game.py" "$@" ;;
+    -h|--help)
+        sed -n '2,13p' "$0" | sed 's/^# \{0,1\}//' ;;
+    *)
+        [ -d "$1" ] && exec "$TOOLS/builder/linux/hookshot-launch" "$1"
+        fail "Unknown argument: $1 (triforce-oot --help)" ;;
+esac

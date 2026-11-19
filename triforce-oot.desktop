@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Triforce
+GenericName=Ocarina of Time
+Comment=Play your own build of Ocarina of Time (updated first when the tools are newer)
+Exec=triforce-oot
+Icon=triforce-oot
+Terminal=false
+Categories=Game;
+Keywords=zelda;ocarina;oot;triforce;

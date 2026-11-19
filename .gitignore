@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/triforce/
+*.pkg.tar.*
+*.tar.gz
+*.log

@@ -1,0 +1,20 @@
+post_install() {
+    cat <<'EOF'
+==> triforce-oot holds no game files: the game is built on this PC from your own dump
+    (program 0400486024DEC000, update v131072; other versions are refused).
+    Check your dump:   triforce-oot --check <file.nup>
+    First build:       triforce-oot --build <file.nup> [--out ~/Games/Triforce] [--language en-US]
+                       (about 60 GB free while it builds; 20 minutes to 2 hours by your processor)
+    Play:              triforce-oot, or Triforce in your applications menu
+    Everything else:   triforce-oot --help
+EOF
+}
+
+post_upgrade() {
+    # (only a new release of the tools changes the game; a pkgrel bump does not)
+    [ "${1%-*}" = "${2%-*}" ] && return 0
+    cat <<'EOF'
+==> triforce-oot: the next time you play, your game is built again with the new tools (a few minutes).
+    To do it now: triforce-oot --update
+EOF
+}
