@@ -1,0 +1,18 @@
+pkgbase = aether-rescue-git
+	pkgdesc = Initramfs rescue shell toolbox: PID 1 init flow + BusyBox-style rescue applets (pure C, static nolibc)
+	pkgver = 1.0.0.r17.gb5a046d
+	pkgrel = 1
+	url = https://github.com/Fgaoxing/Aether
+	install = aether-rescue-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = aether
+	conflicts = aether-rescue-bin
+	options = !buildflags
+	options = !debug
+	source = aether-rescue-git::git+https://github.com/Fgaoxing/Aether.git
+	sha256sums = SKIP
+
+pkgname = aether-rescue-git
