@@ -1,0 +1,14 @@
+pkgbase = label-studio
+	pkgdesc = Multi-type data labeling and annotation tool (installed from PyPI into a private virtual environment)
+	pkgver = 1.23.2
+	pkgrel = 1
+	url = https://github.com/HumanSignal/label-studio
+	arch = any
+	license = Apache-2.0
+	makedepends = uv
+	noextract = label_studio-1.23.2-py3-none-any.whl
+	options = !strip
+	source = label_studio-1.23.2-py3-none-any.whl::https://files.pythonhosted.org/packages/a6/05/0056b02f03b6a7616e460096bb3a08a0e1170bedcee7cdacb63ae5191cf8/label_studio-1.23.2-py3-none-any.whl
+	sha256sums = c575b2552d0b271554224c5e56ab2ce9449c6e62a0b4851bc8c706d8fe651137
+
+pkgname = label-studio
