@@ -1,0 +1,25 @@
+pkgbase = galculator-qtify
+	pkgdesc = Galculator, the GTK scientific calculator, built on Qt with GTK made Qt
+	pkgver = 2.1.4
+	pkgrel = 1
+	url = http://galculator.mnim.org/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = gtk-made-qt
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = intltool
+	makedepends = flex
+	makedepends = pkgconf
+	depends = qt6-base
+	depends = glib2
+	depends = cairo
+	depends = pango
+	provides = galculator
+	conflicts = galculator
+	source = https://deb.debian.org/debian/pool/main/g/galculator/galculator_2.1.4.orig.tar.gz
+	sha256sums = dcbdb48ddf8a3f68b9aa5902f880f174fd269de2b7410988148d05871012e142
+
+pkgname = galculator-qtify
