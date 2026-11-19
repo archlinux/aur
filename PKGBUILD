@@ -20,7 +20,7 @@ _upstream_arch=
 _appimage="eID_klient-${_upstream_arch}.AppImage"
 _url="https://web.archive.org/web/%dif_/https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_%s.tar.gz"
 source=(
-    eidklient
+    eID_Client
     patch-qt
     qt.hook
     qt6.conf
@@ -147,7 +147,7 @@ package_eidklient-native() {
     install -Dm644 "${srcdir}/qt.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgbase}-qt.hook"
 
     # Custom wrapper
-    install -Dm755 "${srcdir}/eidklient" "${pkgdir}/usr/bin/eID_Client"
+    install -Dm755 {"${srcdir}","${pkgdir}/usr/bin"}/eID_Client
 
     # Symlink executable
     # It seems this is unnecessary (however it's done like this in the upstream package)

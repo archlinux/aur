@@ -20,7 +20,7 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
-    "eidklient",
+    "eID_Client",
     "patch-qt",
     "qt6.conf",
 ]
