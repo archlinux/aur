@@ -3,7 +3,7 @@
 # (scripts/aur-packages.mjs renders this template): the release's Linux .deb, unpacked.
 # Maintainer: Athan Clark <athan.clark@gmail.com>
 pkgname=openchronology-desktop-bin
-pkgver=0.30.1
+pkgver=0.30.2
 pkgrel=1
 pkgdesc='Exact timelines, shared on your terms: the Circagraph desktop app'
 arch=('x86_64')
@@ -13,9 +13,9 @@ depends=('gmp' 'sqlite' 'webkit2gtk-4.1' 'gtk3')
 provides=('openchronology-desktop')
 conflicts=('openchronology-desktop')
 options=('!strip' '!debug')
-source=("openchronology-desktop-$pkgver.deb::https://github.com/circagraph/timeline-app/releases/download/v0.30.1/openchronology-desktop-linux-amd64.deb")
+source=("openchronology-desktop-$pkgver.deb::https://github.com/circagraph/timeline-app/releases/download/v0.30.2/openchronology-desktop-linux-amd64.deb")
 noextract=("openchronology-desktop-$pkgver.deb")
-sha256sums=('a23442fd7244ab43cb2536f98ac15b4c5509cbf5deab3ced88bb7437a7b756c2')
+sha256sums=('6f735e0f216801dc6e900cb59375461208f06823ac6da2c685720f39e7c261c1')
 
 package() {
   bsdtar -xOf "openchronology-desktop-$pkgver.deb" 'data.tar*' | bsdtar -xf - -C "$pkgdir"
