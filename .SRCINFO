@@ -1,0 +1,22 @@
+pkgbase = klaviature-git
+	pkgdesc = A very customizable virtual keyboard for KDE Plasma Desktop and Mobile.
+	pkgver = r24.ff04c7f
+	pkgrel = 1
+	url = https://codeberg.org/The-World-Machine/klaviature
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = wayland-protocols
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-tools
+	depends = layer-shell-qt
+	depends = libxkbcommon
+	depends = hicolor-icon-theme
+	optdepends = ydotool: ydotool layouts
+	provides = klaviature
+	conflicts = klaviature
+	source = klaviature-git::git+https://codeberg.org/The-World-Machine/klaviature.git
+	sha512sums = SKIP
+
+pkgname = klaviature-git
