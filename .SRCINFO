@@ -1,0 +1,15 @@
+pkgbase = lua-digest
+	pkgdesc = MD5, SHA-256/384/512 and HMAC for Lua (one-shot and streaming)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/osch/lua-digest
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = BSD-3-Clause
+	makedepends = luarocks
+	depends = lua
+	source = lua-digest-0.0.1.tar.gz::https://github.com/osch/lua-digest/archive/v0.0.1.tar.gz
+	sha256sums = bfc261ffb78e133c19669fe41bd57098d83f4866d7c340a2a6f7a4521cad3043
+
+pkgname = lua-digest
