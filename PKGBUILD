@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sox-vulkan-bin
-pkgver=16.2.2
+pkgver=16.2.3
 pkgrel=1
 pkgdesc="Sound eXchange (sox) with Vulkan acceleration"
 arch=('aarch64' 'x86_64')
@@ -12,8 +12,8 @@ provides=("sox-vulkan=$pkgver")
 conflicts=('sox-vulkan')
 source_aarch64=("$pkgname-$pkgver-aarch64::https://github.com/simonefil/sox-vulkan/releases/download/sox-${pkgver}/sox-vulkan-linux-aarch64.zip")
 source_x86_64=("$pkgname-$pkgver-x86_64::https://github.com/simonefil/sox-vulkan/releases/download/sox-${pkgver}/sox-vulkan-linux-amd64.zip")
-sha256sums_aarch64=('213bb1f7958a9a4c084578c814ecd8ad47174c1de440403e9659cc9f5fac4b1e')
-sha256sums_x86_64=('262e0a0dc1b8bc8deeec0f9e7869c1626dbf6f115a6a73d59b3976e32c95b0f0')
+sha256sums_aarch64=('50d69aaae94f621d60992c9d3b045c822c4506053eba2819b341468421788be2')
+sha256sums_x86_64=('3b08dfe6362d935ef58764f95b7e943d4f5086da94910fbc6da1b49bb560eae5')
 
 
 package() {
