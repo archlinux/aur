@@ -1,7 +1,7 @@
 pkgbase = alphabat-git
 	pkgdesc = Battery status for HyperX Cloud Alpha Wireless headsets
 	pkgver = r19.895b82b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JokiTM/alphabat
 	arch = x86_64
 	license = GPL-3.0-or-later
