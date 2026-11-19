@@ -3,10 +3,10 @@
 # `markview` builds the same program from source. Both install the same files,
 # so they conflict with each other.
 pkgname=markview-bin
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A fast, native Markdown reader with publication-quality typography.'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/szdytom/markview'
 license=('MIT')
 options=('!strip' '!debug')
@@ -23,6 +23,7 @@ depends=(
 	'vulkan-icd-loader'
 	'xdg-desktop-portal'
 )
+depends_aarch64=('libglvnd')
 optdepends=(
 	'noto-fonts-cjk: CJK glyphs for Chinese, Japanese, and Korean text'
 	'noto-fonts-emoji: colour Emoji glyphs'
@@ -38,15 +39,21 @@ install="$pkgname.install"
 # matching source archive is fetched as well and `prepare()` takes them from
 # there. Every source is checksummed; nothing is downloaded during packaging.
 source=(
-	"$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/markview-x86_64-unknown-linux-gnu.tar.gz"
 	"markview-$pkgver-src.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 	'markview.mime.xml'
 )
+source_x86_64=(
+	"$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/markview-x86_64-unknown-linux-gnu.tar.gz"
+)
+source_aarch64=(
+	"$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/markview-aarch64-unknown-linux-gnu.tar.gz"
+)
 sha256sums=(
-	'ce256cc939c9fb5e307902678ca2253118343646b5bfbb7a68d7f99a06a5ac42'
-	'a610e6b59619dcb9986a07e13b5472d294f968560e090ffa94ee391bbc6062f8'
+	'9056657e49b3f67b6620d175132ecb65a38c32aa316ff5ec76c7cf03a1f8a3a8'
 	'c2b54efc155e407495127927cabafb92b369a4ead7e1a04d8246f9939bf280b0'
 )
+sha256sums_x86_64=('6cfc033e9c2943dc6d3d26102134a37874674560a17781a9ac1bb06adbea783f')
+sha256sums_aarch64=('122fe6a25fd171425dbe853b02121c47ef1caa76a7b31b6b654a7cd75c2b6cf3')
 
 prepare() {
 	local src="$srcdir/markview-$pkgver"
@@ -67,7 +74,7 @@ prepare() {
 }
 
 package() {
-	local doc="$srcdir/markview-x86_64-unknown-linux-gnu"
+	local doc="$srcdir/markview-$CARCH-unknown-linux-gnu"
 
 	install -Dm755 "$doc/markview" "$pkgdir/usr/bin/markview"
 
