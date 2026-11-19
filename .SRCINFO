@@ -1,7 +1,7 @@
 pkgbase = arbit-bin
 	pkgdesc = DonutStudio (legacy codename: Arbit) — harmonic composition workstation and MIDI editor
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://donutsdelivery.online/donutstudio
 	install = arbit-bin.install
 	arch = x86_64
