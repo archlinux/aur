@@ -1,0 +1,14 @@
+post_install() {
+  cat <<'MSG'
+appzones: zones start on demand, or through the systemd user units:
+  systemctl --user daemon-reload
+Write ~/.config/appzones/zones.toml (see /usr/share/appzones/zones.minimal.toml),
+then `appzones check`. For `appzones mount`, join the appzones group:
+  sudo gpasswd -a "$USER" appzones   (then log in again)
+Docs: https://mirql.github.io/appzones/
+MSG
+}
+
+post_upgrade() {
+  echo "appzones: restart running zones to use the new version (appzones restart ZONE)"
+}

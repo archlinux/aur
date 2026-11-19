@@ -1,0 +1,27 @@
+pkgbase = appzones
+	pkgdesc = Long-lived sandboxes for desktop apps, dev tools and AI agents (bubblewrap, pasta, nftables)
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/mirql/appzones
+	install = appzones.install
+	arch = x86_64
+	license = MIT
+	makedepends = pkgconf
+	depends = python>=3.11
+	depends = bubblewrap
+	depends = passt
+	depends = nftables
+	depends = xdg-dbus-proxy
+	depends = dbus
+	depends = iproute2
+	depends = wayland
+	optdepends = sudo: appzones mount (for members of the appzones group)
+	optdepends = hyprland: zone border colours and window tags
+	optdepends = nix: the packages setting
+	backup = etc/sudoers.d/appzones
+	source = appzones-0.8.1.tar.gz::https://github.com/mirql/appzones/archive/refs/tags/v0.8.1.tar.gz
+	source = appzones.sysusers
+	sha256sums = 8ca22baa64a2da6db53aced5e1b0cc57951785f34929c11c6db9e34ef31f2e07
+	sha256sums = SKIP
+
+pkgname = appzones
