@@ -143,7 +143,7 @@ package_eidklient-native() {
     # Patched Qt 6 libraries are required, otherwise the app crashes on launch with
     # `error due to GNU_PROPERTY_1_NEEDED_INDIRECT_EXTERN_ACCESS`.
     # https://gitlab.archlinux.org/archlinux/packaging/packages/qt6-base/-/issues/21
-    install -Dm755 "${srcdir}/patch-qt" "${pkgdir}/opt/${_pkgbase}"
+    install -Dm755 {"${srcdir}","${pkgdir}/usr/lib/${pkgbase}"}/patch-qt
     install -Dm644 "${srcdir}/qt.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgbase}-qt.hook"
 
     # Custom wrapper

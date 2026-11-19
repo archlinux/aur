@@ -8,4 +8,4 @@ Target = qt6-base
 Description = Patching Qt 6 libraries for eidklient...
 Depends = binutils
 When = PostTransaction
-Exec = /opt/eidklient/patch-qt
+Exec = /usr/lib/eidklient-native/patch-qt
