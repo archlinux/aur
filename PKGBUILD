@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=nmem-cli
-pkgver=0.10.120
+pkgver=0.10.121
 pkgrel=1
 pkgdesc="CLI and TUI for Nowledge Mem - AI memory management"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ _wheel_aarch64="nmem_cli-${pkgver}-py3-none-manylinux2014_aarch64.manylinux_2_17
 source_x86_64=("${_wheel_x86_64}::https://files.pythonhosted.org/packages/py3/n/nmem-cli/${_wheel_x86_64}")
 source_aarch64=("${_wheel_aarch64}::https://files.pythonhosted.org/packages/py3/n/nmem-cli/${_wheel_aarch64}")
 noextract=("${_wheel_x86_64}" "${_wheel_aarch64}")
-sha256sums_x86_64=('71c071274780c6f1c893068c9cb92c094ec88b9ef88d60ee520d9de936eb12ad')
-sha256sums_aarch64=('ddddbaf29d97a280257050b9b9734eca2798e5939c1a5950a2a24638d3d5b68d')
+sha256sums_x86_64=('b4179a414d8a7dd8c12c3426f784cf86002dd72c841b7355f8598c33f025cee0')
+sha256sums_aarch64=('0ffd199141566dc36086de24f13e8a625aaac5bc9292192e7aa9e122fe4820e1')
 
 package() {
   local wheel_var="_wheel_${CARCH}"
