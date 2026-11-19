@@ -3,20 +3,19 @@
 
 pkgname=dcvviewer-bin
 _pkgname=dcvviewer
-_majver=2024.0
-_minver=8004
+_majver=2026.0
+_minver=14555
 pkgver=${_majver}.${_minver}
 pkgrel=1
-pkgdesc="NICE DCV client for Linux. DCV is a desktop remotization server, with support for native as well as web-based clients."
+pkgdesc="Amazon DCV (fka NICE DCV) client for Linux. DCV is a desktop remotization server, with support for native as well as web-based clients."
 arch=('x86_64')
-url="https://www.nice-software.com/products/dcv"
+url="https://aws.amazon.com/hpc/dcv/"
 license=('custom: commercial')
-depends=('cairo' 'ffmpeg' 'gdk-pixbuf2' 'glib2' 'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugins-good' 'gstreamer' 'gtk4' 'harfbuzz-icu' 'json-glib' 'krb5' 'libfido2' 'libjpeg6-turbo' 'libjpeg-turbo' 'libsasl' 'libsoup3' 'libx11' 'lmdb' 'lz4' 'nss' 'pcsclite' 'protobuf-c' 'sqlite' 'wayland'
-)
+depends=('cairo' 'ffmpeg' 'gdk-pixbuf2' 'glib2' 'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugins-good' 'gstreamer' 'gtk4' 'harfbuzz-icu' 'json-glib' 'krb5' 'libadwaita' 'libfido2' 'libjpeg-turbo' 'libx11' 'lmdb' 'lz4' 'nss' 'pcsclite' 'protobuf-c' 'sqlite' 'wayland' 'webrtc-audio-processing')
 source=(
-  "https://d1uj6qtbmh3dt5.cloudfront.net/${_majver}/Clients/nice-dcv-viewer_${pkgver}-1_amd64.ubuntu2404.deb"
+  "https://d1uj6qtbmh3dt5.cloudfront.net/${_majver}/Clients/nice-dcv-viewer_${pkgver}-1_amd64.ubuntu2604.deb"
 )
-sha256sums=('c8255bc21d42decab9b12bfd2443021bd27734e8a975916eb66ac0dc99fb7e9b')
+sha256sums=('8103023b8c56e8bf186342b6b94961d5a9a2f07be1ed2f89bd6da1138ac5f8db')
 install="${_pkgname}.install"
 package(){
 
@@ -49,21 +48,16 @@ package(){
   
   ## Most  native ##
   mkdir keep
-  mv libavcodec.so.* libavutil.so.* libdcv.so libsoup* keep
+  mv libavcodec.so.* libavutil.so.* libdcv.so libjpeg.so* keep
   rm *.so*
   rm gtk4-update-icon-cache glib-compile-schemas glib-compile-resources gdk-pixbuf-query-loaders
   rm -rf gtk-4.0 gstreamer-1.0
   mv keep/* .
   rmdir keep
-  sed -i '/export GST_PLUGIN_SCANNER/d' "${pkgdir}/usr/bin/dcvviewer"
-  sed -i '/export GST_PLUGIN_SYSTEM_PATH/d' "${pkgdir}/usr/bin/dcvviewer"
-  sed -i '/export GTK_PATH/d' "${pkgdir}/usr/bin/dcvviewer"
-  sed -i '/export PANGO_LIBDIR/d' "${pkgdir}/usr/bin/dcvviewer"
-  #pushd sasl2
-  #rm libanonymous.so libdigestmd5.so libplain.so libscram.so libcrammd5.so libsasldb.so    # libsasl
-  #rm libgssapiv2.so libgs2.so    # cyrus-sasl-gssapi
-  #rm libotp.so    # ?
-  #popd
+  sed -i '/export GST_PLUGIN_SCANNER/d' "${pkgdir}/usr/bin/${_pkgname}"
+  sed -i '/export GST_PLUGIN_SYSTEM_PATH/d' "${pkgdir}/usr/bin/${_pkgname}"
+  sed -i '/export GTK_PATH/d' "${pkgdir}/usr/bin/${_pkgname}"
+  sed -i '/export PANGO_LIBDIR/d' "${pkgdir}/usr/bin/${_pkgname}"
  ##              ##
    
   popd
