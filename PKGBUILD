@@ -1,6 +1,6 @@
 # Maintainer: asafelobotomy <https://github.com/asafelobotomy>
 pkgname=romforge-bin
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Identify, tidy and play your ROM collection"
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=('romforge')
 conflicts=('romforge')
 source=("$pkgname-$pkgver.deb::https://github.com/asafelobotomy/romforge/releases/download/v$pkgver/romforge_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/asafelobotomy/romforge/v$pkgver/LICENSE")
-sha256sums=('1365309ccab4c9619c73379b3908afb1921ab8d9c96b653614710ac898a5c50f'
+sha256sums=('3642ae220280cf82c61f3255985fc9f3cf348849b8f211ccac158dc11db388d9'
             'b96b5a0ecb11e311dab94d71fe36add411fd2110b624d336a6e54cc74aba3e4b')
 
 package() {
