@@ -2,7 +2,7 @@
 
 pkgname=rhythmbox-session-restore
 _foldername=sessionrestore
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Continuous folder shuffle plugin for Rhythmbox"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/username227/Rhythmbox-Session-Restore"
 license=('GPL-3.0-or-later')
 depends=('rhythmbox' 'libpeas' 'python-gobject')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('57ad176dcd5ecf2b41e8421a6178777f57cb8ec73c9e1128631f48079ce695e7')
+sha256sums=('f54ec01e06ebb7fd630e4bc3dcefd7ddcf1789d66698c605eee5de7cf53b1af5')
 
 package() {
     cd "${srcdir}/Rhythmbox-Session-Restore-${pkgver}"
