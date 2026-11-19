@@ -1,5 +1,5 @@
 # Maintainer: Alex Indigo <ai@aegis.one>
-pkgname=kosmozoo; pkgver=0.5.0; pkgrel=1
+pkgname=kosmozoo; pkgver=0.5.1; pkgrel=1
 pkgdesc="Local review and curation app for ComfyUI image output"
 arch=('x86_64')
 url="https://github.com/alexindigo/kosmozoo"
@@ -9,7 +9,7 @@ optdepends=('chromium: app window' 'google-chrome: app window' 'brave-bin: app w
 install=kosmozoo.install
 makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "kosmozoo.sh")
-sha256sums=('1b14f5fe28547ba87857558c6d42030d55ddfaac5bf02798277c4323c0d9f75f'
+sha256sums=('28b2990d79eac37d8d0faedb7c970909a8f077184977c456adfe381523e68a98'
             'd830038ed0bd18cd38b59e2d753a7389aaa926135818f48151d700976ba8d42e')
 build() {
   cd "$pkgname-$pkgver"
