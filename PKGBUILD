@@ -2,7 +2,7 @@
 
 pkgname=mailcraft-bin
 _pkgname=mailcraft
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Open-source native mail, calendar, contacts and tasks app, Outlook alternative (binary release)'
 arch=('x86_64' 'aarch64')
@@ -97,8 +97,8 @@ sha256sums=('24cae84af9daaafda42a085ebdbbfcd33e14b713b6449e312a018e32c2d3e07a'
             '56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             'cfc1cc505827f4c23eedc297975a0fd038268d41293f389dd8ff3b574aefab19')
-sha256sums_x86_64=('8f4f9aea71712b964a08031d6138bc2a295a25a78614f1fffca57a69784dfc69')
-sha256sums_aarch64=('5a14c55f199b15025934f8e793307959037ce2aa8e6598e9081cefed58ecd340')
+sha256sums_x86_64=('d67a5beeedc24cfe07c8f8184735810c5e2d3e565118121448aec61e40012f10')
+sha256sums_aarch64=('47f74f7bf98958fb657fbca6f695db7781b33bd750cbc09ccfa369c8c4815b74')
 
 package() {
   cd "$_pkgname-$pkgver-linux-$CARCH"
