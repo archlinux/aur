@@ -5,7 +5,7 @@ _pkgname=geelark
 _appname=GeeLark
 pkgname=${_pkgname}-bin
 pkgver=4.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Desktop client for GeeLark cloud phones and antidetect browser profiles'
 arch=('x86_64')
 url='https://www.geelark.com'
@@ -49,10 +49,12 @@ options=('!strip' '!debug')
 
 _deb="${_appname}_x64_${pkgver}.deb"
 source=("https://appdownload1.geelark.com/app/release/linux/${_deb}"
-        'LICENSE')
+        'LICENSE'
+        'geelark.sh')
 noextract=("${_deb}")
 sha256sums=('b041e9567ff9a1c51fe53e2c199739ef4a368c960be3239520e11cefed6075fb'
-            '658a423224047fb431619796254b77ca7ff06b5ef0fd5fb4b8cf7864cf62ee32')
+            '658a423224047fb431619796254b77ca7ff06b5ef0fd5fb4b8cf7864cf62ee32'
+            '81b026d288a8f6a91aee08a4b19cb6d170a4e15b7034ad0ba1a279fc1aed2a3b')
 
 prepare() {
   mkdir -p deb
@@ -68,11 +70,7 @@ package() {
   # Arch has unprivileged user namespaces, so the sandbox helper needs no SUID
   chmod 755 "${pkgdir}/opt/${_appname}/chrome-sandbox"
 
-  # Under native Wayland the app runs but never maps a window, so force XWayland
-  install -dm755 "${pkgdir}/usr/bin"
-  printf '#!/bin/sh\nexec /opt/%s/%s --ozone-platform=x11 "$@"\n' "${_appname}" "${_pkgname}" \
-    > "${pkgdir}/usr/bin/${_pkgname}"
-  chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 geelark.sh "${pkgdir}/usr/bin/${_pkgname}"
   sed -i "s|^Exec=.*|Exec=${_pkgname} %U|" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

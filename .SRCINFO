@@ -1,7 +1,7 @@
 pkgbase = geelark-bin
 	pkgdesc = Desktop client for GeeLark cloud phones and antidetect browser profiles
 	pkgver = 4.5.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.geelark.com
 	arch = x86_64
 	license = LicenseRef-GeeLark
@@ -40,7 +40,9 @@ pkgbase = geelark-bin
 	options = !debug
 	source = https://appdownload1.geelark.com/app/release/linux/GeeLark_x64_4.5.5.deb
 	source = LICENSE
+	source = geelark.sh
 	sha256sums = b041e9567ff9a1c51fe53e2c199739ef4a368c960be3239520e11cefed6075fb
 	sha256sums = 658a423224047fb431619796254b77ca7ff06b5ef0fd5fb4b8cf7864cf62ee32
+	sha256sums = 81b026d288a8f6a91aee08a4b19cb6d170a4e15b7034ad0ba1a279fc1aed2a3b
 
 pkgname = geelark-bin
