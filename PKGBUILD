@@ -3,7 +3,7 @@
 # GitHub below is the upstream-maintained mirror used for clickable links and release artifacts.
 pkgname=nostr-vpn-cli-bin
 _pkgname=nvpn
-pkgver=4.1.22
+pkgver=4.1.23
 pkgrel=1
 pkgdesc='nvpn CLI/daemon for Nostr VPN, a Tailscale-style private mesh VPN (prebuilt musl binary)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -26,8 +26,8 @@ source_aarch64=("${_url_base}/nvpn-v${pkgver}-${_aarch64_arch}.tar.gz")
 source_armv7h=("${_url_base}/nvpn-v${pkgver}-${_armv7h_arch}.tar.gz")
 source=('LICENSE')
 sha256sums=('0db560024163fbcc5ee5cff1971684ca448da90088f341db083a38548846c3d5')
-sha256sums_x86_64=('8d6fe6d29458d796725775abddd4c98cee9d6ad6cdb374198da681303c1140f6')
-sha256sums_aarch64=('970801789eab17287671416c15ec9d836d7035e9c8a5304e9e105925e7c724e5')
+sha256sums_x86_64=('24c317250bd95c238bf6c14ab5c8d0c19493e9ee927abc6ec86a840d2c442562')
+sha256sums_aarch64=('71c2112ab29feb8081b30cda22da48801a9c8b0fee97510b871bf35a6205ce22')
 sha256sums_armv7h=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 package() {
