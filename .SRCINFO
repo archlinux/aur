@@ -1,6 +1,6 @@
 pkgbase = neferafk-git
 	pkgdesc = Idle daemon for Wayland: fade, session lock, screens off and suspend (git version)
-	pkgver = 0.6.0.r0.g434db6f
+	pkgver = 0.7.0.r0.ge291b22
 	pkgrel = 1
 	url = https://git.bnema.dev/neferafk
 	arch = x86_64
