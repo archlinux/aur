@@ -1,6 +1,6 @@
 pkgbase = tessera-deck
 	pkgdesc = Host application (tray, USB host and editor) for the Tessera deck panel
-	pkgver = 1.2.2
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/catorendal-a11y/tessera-deck
 	install = tessera-deck.install
@@ -25,7 +25,7 @@ pkgbase = tessera-deck
 	optdepends = tk: fallback tray menu
 	optdepends = librsvg: vector program icons
 	optdepends = gnome-keyring: secret storage for plugin passwords
-	source = tessera-host-v1.2.2.zip::https://github.com/catorendal-a11y/tessera-deck/releases/download/v1.2.2/tessera-host-v1.2.2.zip
+	source = tessera-host-v1.2.4.zip::https://github.com/catorendal-a11y/tessera-deck/releases/download/v1.2.4/tessera-host-v1.2.4.zip
 	source = tessera-deck.sh
 	source = tessera-deck.desktop
 	sha256sums = 7ae1c3513100785a5827a9dc346529b8a8b79ded49ef67aa037c79a48bc9a68b
