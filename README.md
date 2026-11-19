@@ -15,3 +15,13 @@ MIHOMO_PARTY_GITHUB_PROXY=http://127.0.0.1:7890 makepkg -s
 也可以用已有的 `https_proxy`、`HTTPS_PROXY`、`all_proxy` 或 `ALL_PROXY` 配置代理。未配置时走直连。显式设置 `MIHOMO_PARTY_GITHUB_PROXY=` 可指定直连。代理地址是 HTTP(S) 转发代理，示例端口需与本机代理客户端一致。
 
 也可以从 [AUR](https://aur.archlinux.org/packages/mihomo-party-ghproxy-git) 获取配方。使用 AUR 助手时，如果构建进程继承了代理环境变量，同样会自动测速。
+
+## 从 `mihomo-party` 迁移
+
+如果安装时提示 `/usr/bin/clash-party` 已存在，先用 `pacman -Qo /usr/bin/clash-party` 和 `update-alternatives --display clash-party` 确认它是旧包留下的链接。若链接无包归属，且旧目标为 `/opt/clash-party/mihomo-party`，可以分步迁移。
+
+```bash
+sudo pacman -R mihomo-party
+sudo update-alternatives --remove clash-party /opt/clash-party/mihomo-party
+paru -S mihomo-party-ghproxy-git
+```
