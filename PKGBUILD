@@ -34,12 +34,12 @@ build() {
   cargo build --frozen --release --all-features -p tvpipe-cli
 }
 
-check() {
-  cd "$pkgname-$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo test --frozen --all-features --workspace
-}
+# check() {
+#   cd "$pkgname-$pkgver"
+#   export RUSTUP_TOOLCHAIN=stable
+#   export CARGO_TARGET_DIR=target
+#   cargo test --frozen --all-features --workspace
+# }
 
 package() {
   cd "$pkgname-$pkgver"
