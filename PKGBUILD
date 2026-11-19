@@ -1,7 +1,7 @@
 # Maintainer: Aidan Heeney <aidan.heeney@proton.me>
 # Built from the repo's desktop-vX.Y.Z tags (the phone app's are v1.0.<n>).
 pkgname=nullspace
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Tasks, notes, screen captures and voice notes from one key, with Squelch dictation'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('squelch' 'python' 'python-pyqt6' 'python-pyqt6-webengine' 'qt6-svg'
          'qt6-imageformats' 'spectacle' 'libnotify' 'python-gobject'
          'at-spi2-core' 'layer-shell-qt')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/desktop-v$pkgver.tar.gz")
-sha256sums=('9645ef28c1fd2ab13dcaf35e96fae809d535fc67c547a0b44f73730fb362590d')
+sha256sums=('2a8b7b2d24ea6c67894cc067dc9db5f1552c80934af9d41a98a0289e0c17c16b')
 
 package() {
   cd "$srcdir/$pkgname-desktop-v$pkgver"

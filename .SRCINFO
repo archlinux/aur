@@ -1,6 +1,6 @@
 pkgbase = nullspace
 	pkgdesc = Tasks, notes, screen captures and voice notes from one key, with Squelch dictation
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/ieatfood314/nullspace
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = nullspace
 	depends = python-gobject
 	depends = at-spi2-core
 	depends = layer-shell-qt
-	source = nullspace-1.0.0.tar.gz::https://github.com/ieatfood314/nullspace/archive/refs/tags/desktop-v1.0.0.tar.gz
-	sha256sums = 9645ef28c1fd2ab13dcaf35e96fae809d535fc67c547a0b44f73730fb362590d
+	source = nullspace-1.0.1.tar.gz::https://github.com/ieatfood314/nullspace/archive/refs/tags/desktop-v1.0.1.tar.gz
+	sha256sums = 2a8b7b2d24ea6c67894cc067dc9db5f1552c80934af9d41a98a0289e0c17c16b
 
 pkgname = nullspace
