@@ -1,6 +1,6 @@
 # Maintainer: fr0stb1rd <fr0stb1rd@proton.me>
 pkgname=jadx-bin
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc='Command line and GUI tools to produce Java source code from Android Dex and APK files (binary release)'
 arch=('any')
@@ -18,7 +18,7 @@ source=("https://github.com/skylot/jadx/releases/download/v${pkgver}/jadx-${pkgv
         "https://raw.githubusercontent.com/skylot/jadx/v${pkgver}/jadx-gui/src/main/resources/logos/jadx-logo-16px.png"
         "https://raw.githubusercontent.com/skylot/jadx/v${pkgver}/jadx-gui/src/main/resources/logos/jadx-logo-32px.png"
         "https://raw.githubusercontent.com/skylot/jadx/v${pkgver}/jadx-gui/src/main/resources/logos/jadx-logo-48px.png")
-sha512sums=('4f556d2d9c2da120c898c928b84d2615f6199efdbbedd813bd84c5654a3f7e97dfab1e4be511121e1155e9b6a9355c6a4abe09bdbba9a58db1e79449f0cf4a26'
+sha512sums=('7040a831b12b972cfd5d29693ecbf6c89f6a144e49df578ab97d2e9ab2d875328218d9fa0133aeb82875ac633f0c6c88d52e31b43e2213382e4ce7057ea491df'
             '0e5a2cd618cbd2e058038650e6e8628c7ca810509a01ad6cbc8d9c7a4da2d9e290d7188ab4f45148120c2d4f3ea36c7dd916aa9b1ace54ff8e151ed2aad15967'
             '29f6ea7accc304bbf41bed657c9db5356a99b042dbaac94d6fa6a8e9d783ee27950dd19742de447516edf4aadf5215257050f9e089ea4d7aad3fef2f5f0c3132'
             '0641cc5afb326c985f02ca42206c4a6be393cd5e4fa0e6c84f47341fda54aea32a0ae10363628dcb9852f58cc19255307651611ba074b90b87b7b49327ce91f0'
