@@ -1,0 +1,20 @@
+pkgbase = motif-on-qt-git
+	pkgdesc = The Motif, Athena, Xt and Xlib APIs on Qt 6: build Motif and Xaw programs without X11
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/staalmannen/motif-on-qt
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.1-or-later
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	provides = motif-on-qt
+	conflicts = motif-on-qt
+	options = staticlibs
+	options = !lto
+	source = git+https://github.com/staalmannen/motif-on-qt.git
+	sha256sums = SKIP
+
+pkgname = motif-on-qt-git
