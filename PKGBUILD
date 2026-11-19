@@ -5,7 +5,7 @@
 pkgname=epic-games-launcher-bin
 pkgver=0.118.0
 _commit=g45ea4d4
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Epic Games Store launcher (Preview)"
 arch=('x86_64')
 url="https://launcher.epicgames.com/"
@@ -17,6 +17,7 @@ depends=(
   'gdk-pixbuf2'
   'glib2'
   'glibc'
+  'gst-plugins-good'
   'gtk3'
   'hicolor-icon-theme'
   'libayatana-appindicator'

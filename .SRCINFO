@@ -1,7 +1,7 @@
 pkgbase = epic-games-launcher-bin
 	pkgdesc = Official Epic Games Store launcher (Preview)
 	pkgver = 0.118.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launcher.epicgames.com/
 	arch = x86_64
 	license = LicenseRef-EpicGamesLauncher
@@ -11,6 +11,7 @@ pkgbase = epic-games-launcher-bin
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
+	depends = gst-plugins-good
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = libayatana-appindicator
