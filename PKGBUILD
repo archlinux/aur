@@ -3,7 +3,7 @@
 pkgname=zcode-redminote11tech
 _pkgname=zcode
 _appdir=ZCode
-pkgver=3.18.2
+pkgver=3.19.0
 pkgrel=1
 pkgdesc='ZCode desktop app repackaged from official Linux release'
 arch=('x86_64' 'aarch64')
@@ -35,8 +35,8 @@ source_x86_64=("ZCode-${pkgver}-linux-x64.deb::https://cdn-zcode.z.ai/zcode/elec
 source_aarch64=("ZCode-${pkgver}-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/linux-arm64/ZCode-${pkgver}-linux-arm64.deb")
 noextract=("ZCode-${pkgver}-linux-x64.deb" "ZCode-${pkgver}-linux-arm64.deb")
 sha256sums=('510fb413274334e05901d65b28df618b1fb7216d690c136ab55173f9bf1a75e6')
-sha256sums_x86_64=('a7e066eeb018d15e403546a14dd3692220fc9976769b1f3525a0620cfa974f73')
-sha256sums_aarch64=('be3de63f57b1351d921bd977a21cff212d9e5a0710e3af8eae8abcfc2147b714')
+sha256sums_x86_64=('d71f25d230c371b95076ebc42aa66b6bb7e9d10f664a665d38eeeb591600ea85')
+sha256sums_aarch64=('803b50ea7180fec9a78fe85e6aabb79e33c5b44279c816b6a447a0f6aca334d2')
 
 package() {
   local _extractdir _deb_arch
