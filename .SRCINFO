@@ -1,0 +1,23 @@
+pkgbase = newshow-git
+	pkgdesc = High-performance terminal video player in Rust (pure ANSI/Unicode output)
+	pkgver = 0.1.0.r5.g626cccc
+	pkgrel = 1
+	url = https://github.com/serverjonas/newshow
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = clang
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = perl
+	makedepends = nasm
+	makedepends = pkg-config
+	depends = glibc
+	depends = gcc-libs
+	options = !lto
+	source = newshow-git::git+https://github.com/serverjonas/newshow.git
+	sha256sums = SKIP
+
+pkgname = newshow-git
