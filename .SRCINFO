@@ -1,6 +1,6 @@
 pkgbase = nvuv
 	pkgdesc = CLI tool for undervolting and overclocking NVIDIA gpu
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/doums/nvuv
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = nvuv
 	conflicts = nvuv
 	options = !debug
 	backup = etc/nvuv/nvuv.toml
-	source = nvuv-0.3.2.tar.gz::https://github.com/doums/nvuv/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = 6115a0d2949d629664988f0ba387875294675c915c44d80bba198581d06f592d
+	source = nvuv-0.3.3.tar.gz::https://github.com/doums/nvuv/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = ff64265f6b8e085ae99e6db084299d55227b48306ae6a21f4c7caa3940cc66ae
 
 pkgname = nvuv
