@@ -3,34 +3,34 @@
 
 _name=datasette
 pkgname="${_name}-git"
-pkgver=1.0a41.r73.77bc27bd
+pkgver=1.0a43.r60.c3974839
 pkgrel=1
 pkgdesc="An open source multi-tool for exploring and publishing data (bleeding-edge version)"
 arch=("any")
 url="https://datasette.io"
 license=("Apache-2.0")
 depends=(
-	# from setup.py install_requires
-	python-asgiref
-	python-click
-	python-click-default-group
-	python-jinja
-	python-hupper
-	python-httpx
-	python-pint
-	python-pluggy
-	uvicorn
-	python-aiofiles
-	python-janus
-	python-asgi-csrf
-	python-yaml
-	python-mergedeep
-	python-itsdangerous
-	python-setuptools
-	# pip is assumed
+    # from setup.py install_requires
+    python-asgiref
+    python-click
+    python-click-default-group
+    python-jinja
+    python-hupper
+    python-httpx
+    python-pint
+    python-pluggy
+    uvicorn
+    python-aiofiles
+    python-janus
+    python-asgi-csrf
+    python-yaml
+    python-mergedeep
+    python-itsdangerous
+    python-setuptools
+    # pip is assumed
 
-	python-rich
-	python-importlib-metadata
+    python-rich
+    python-importlib-metadata
 
     # Namcap detection
     python
@@ -40,6 +40,9 @@ depends=(
     python-flexcache
     python-markupsafe
     python-typing_extensions
+    python-pydantic
+    python-pydantic-core
+    python-pytest
 )
 makedepends=(git python-build python-installer python-wheel)
 conflicts=("datasette")
@@ -53,13 +56,13 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/${_name}"
-	python -m build --wheel --no-isolation
+    cd "${srcdir}/${_name}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${srcdir}/${_name}"
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname"
+    cd "${srcdir}/${_name}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname"
 }
 

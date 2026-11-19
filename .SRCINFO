@@ -1,6 +1,6 @@
 pkgbase = datasette-git
 	pkgdesc = An open source multi-tool for exploring and publishing data (bleeding-edge version)
-	pkgver = 1.0a41.r73.77bc27bd
+	pkgver = 1.0a43.r60.c3974839
 	pkgrel = 1
 	url = https://datasette.io
 	arch = any
@@ -34,6 +34,9 @@ pkgbase = datasette-git
 	depends = python-flexcache
 	depends = python-markupsafe
 	depends = python-typing_extensions
+	depends = python-pydantic
+	depends = python-pydantic-core
+	depends = python-pytest
 	conflicts = datasette
 	source = git+https://github.com/simonw/datasette#branch=main
 	sha256sums = SKIP
