@@ -1,7 +1,7 @@
 # Maintainer: Boris Brock <gabrielborisbrock@gmail.com>
 pkgname=hivemind-ai
 _appname=Hivemind
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Kanban board for running AI coding agents (Claude Code, OpenCode) across projects'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=('claude-code: Claude Code agent'
 conflicts=('hivemind<=1.0.1' 'hivemind-git')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('68daabc997927e666ffc0ba3e2fa4f485059ad18b7fe4f73df188bae4e7e4ffc')
+sha256sums=('27ba5fc72e9ec37e204894fe1971bffb8b0a1f0df8745da2e92fcfa709e92a43')
 
 prepare() {
   cd "$_appname-$pkgver"
