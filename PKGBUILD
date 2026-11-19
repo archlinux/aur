@@ -1,14 +1,14 @@
 # Maintainer: alcubierre-drive
 
 pkgname=btrfs-snap-cpp-git
-pkgver=0.1.r13.gb23a1e0
+pkgver=0.1.r28.gf7abb99
 pkgrel=1
 pkgdesc="Creates and transfers btrfs snapshots"
 license=('GPL3')
-depends=('btrfs-progs' 'boost')
+depends=('btrfs-progs' 'boost' 'systemd' 'polkit' 'dbus')
 arch=('any')
 url="https://github.com/alcubierre-drive/btrfs-snap"
-makedepends=('git')
+makedepends=('git' 'cmake')
 source=("$pkgname::git+$url")
 sha256sums=( 'SKIP' )
 backup=( "etc/btrfs-snap-cpp.conf" )
@@ -23,11 +23,15 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
-    mkdir build
-    cd build
-    cmake .. -DDEFAULT_CONFIG_FILE=/etc/btrfs-snap-cpp.conf
-    make
+    local cmake_options=(
+        -B build
+        -S $pkgname
+        -W no-author
+        -D CMAKE_BUILD_TYPE=None
+        -D CMAKE_INSTALL_PREFIX=/usr
+    )
+    cmake "${cmake_options[@]}"
+    cmake --build build
 }
 
 check() {
@@ -35,11 +39,6 @@ check() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
-    PREFIX="$pkgdir" make install
+    DESTDIR="$pkgdir" cmake --install build
 }
 
-package() {
-    install -Dm755 "${srcdir}/${pkgname}/build/btrfs-snap" "${pkgdir}/usr/bin/btrfs-snap-cpp"
-    install -Dm644 "${srcdir}/${pkgname}/btrfs-snap.conf" "${pkgdir}/etc/btrfs-snap-cpp.conf"
-}
