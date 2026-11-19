@@ -2,9 +2,9 @@
 
 pkgname=python-kara-templater
 _pkgname=kara-templater
-pkgver=0.2.1
+pkgver=1.0.0
 pkgrel=1
-pkgdesc='Python karaoke template engine with native libass text metrics'
+pkgdesc='Python karaoke effects engine for standard ASS subtitles and libplacebo shaders'
 arch=('x86_64')
 url='https://github.com/sitiyou/python-kara-templater'
 license=('MIT' 'ISC')
@@ -25,9 +25,9 @@ makedepends=(
   'nasm'
   'libpng'
 )
-checkdepends=('ttf-dejavu')
+checkdepends=('ttf-dejavu' 'noto-fonts-cjk' 'python-pytest' 'python-pillow' 'ty')
 source=("https://files.pythonhosted.org/packages/source/k/$_pkgname/${_pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('df84a856f14072128fc2b19e7864a3be1c5f37805c784089887ddee73d865f0d')
+sha256sums=('ea82fb346696f5d0234a1acceafe2df8a2e89f21eb50627439396b1607a368a8')
 
 build() {
   cd "${_pkgname//-/_}-$pkgver"
@@ -36,12 +36,14 @@ build() {
 
 check() {
   cd "${_pkgname//-/_}-$pkgver"
-  local site_packages
-  site_packages=$(python -c 'import sysconfig; print(sysconfig.get_path("platlib"))')
-  python -m installer --destdir="$srcdir/check" --overwrite-existing dist/*.whl
-  export PYTHONPATH="$srcdir/check$site_packages"
-  python -P -m unittest discover -s tests -v
-  python -P -m kara_templater examples/karaoke.ass "$srcdir/check-output.ass"
+  local checkdir="$srcdir/check-$pkgver"
+  mkdir -p "$checkdir"
+  cp -r tests examples tools docs setup.py README.md THIRD_PARTY.md pyproject.toml "$checkdir/"
+  python -m venv --system-site-packages --without-pip "$checkdir/venv"
+  "$checkdir/venv/bin/python" -m installer --overwrite-existing dist/*.whl
+  cd "$checkdir"
+  VIRTUAL_ENV="$checkdir/venv" PATH="$checkdir/venv/bin:$PATH" "$checkdir/venv/bin/python" -m pytest -q tests
+  "$checkdir/venv/bin/kara-templater" examples/karaoke.ass "$checkdir/output.ass"
 }
 
 package() {

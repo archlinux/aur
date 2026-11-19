@@ -1,12 +1,16 @@
 pkgbase = python-kara-templater
-	pkgdesc = Python karaoke template engine with native libass text metrics
-	pkgver = 0.2.1
+	pkgdesc = Python karaoke effects engine for standard ASS subtitles and libplacebo shaders
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/sitiyou/python-kara-templater
 	arch = x86_64
 	license = MIT
 	license = ISC
 	checkdepends = ttf-dejavu
+	checkdepends = noto-fonts-cjk
+	checkdepends = python-pytest
+	checkdepends = python-pillow
+	checkdepends = ty
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools>=77
@@ -20,7 +24,7 @@ pkgbase = python-kara-templater
 	depends = harfbuzz
 	depends = fribidi
 	depends = fontconfig
-	source = https://files.pythonhosted.org/packages/source/k/kara-templater/kara_templater-0.2.1.tar.gz
-	sha256sums = df84a856f14072128fc2b19e7864a3be1c5f37805c784089887ddee73d865f0d
+	source = https://files.pythonhosted.org/packages/source/k/kara-templater/kara_templater-1.0.0.tar.gz
+	sha256sums = ea82fb346696f5d0234a1acceafe2df8a2e89f21eb50627439396b1607a368a8
 
 pkgname = python-kara-templater
