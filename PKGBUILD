@@ -2,7 +2,7 @@
 
 pkgauthor="crftwr"
 pkgname="eosh"
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A lightweight but powerful terminal shell with rich TAB completion and context switching"
 
@@ -23,7 +23,7 @@ depends=('python' 'python-botocore' 'python-boto3' 'python-pygments' 'python-pex
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('785662c173cf62d848ac27c4c621e7f5ff14992bf8b6b65739729b141f7dc1b5')
+sha256sums=('fb4e83140098a06ac284831da3365f7a0ece6a38e6d27f4d35e585317222dc84')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/" || exit

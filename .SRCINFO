@@ -1,6 +1,6 @@
 pkgbase = eosh
 	pkgdesc = A lightweight but powerful terminal shell with rich TAB completion and context switching
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/crftwr/eosh
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = eosh
 	depends = python-pexpect
 	provides = eosh
 	conflicts = python-eosh
-	source = eosh-0.4.0.tar.gz::https://github.com/crftwr/eosh/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 785662c173cf62d848ac27c4c621e7f5ff14992bf8b6b65739729b141f7dc1b5
+	source = eosh-0.5.0.tar.gz::https://github.com/crftwr/eosh/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = fb4e83140098a06ac284831da3365f7a0ece6a38e6d27f4d35e585317222dc84
 
 pkgname = eosh
