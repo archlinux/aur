@@ -3,7 +3,7 @@
 pkgname=bettbox-compatible-pre
 _pkgname=Bettbox
 pkgver=1.19.8
-pkgrel=4
+pkgrel=5
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core. (Build with GOAMD64=v1)"
 arch=('x86_64')
@@ -16,6 +16,13 @@ conflicts=(
 	'bettbox-lite-compatible' 'bettbox-lite-compatible-bin'
 	'bettbox-lite-compatible-pre' 'bettbox-lite-compatible-pre-bin'
 	'bettbox-lite-pre' 'bettbox-lite-pre-bin' 'bettbox-pre' 'bettbox-pre-bin'
+)
+provides=("${pkgname%-compatible-pre}=${pkgver}")
+depends=(
+	'gtk3'
+	'libayatana-appindicator'
+	'libayatana-indicator'
+	'libkeybinder3'
 )
 makedepends=('git' 'clang' 'cmake' 'ninja' 'go' 'rustup' 'fvm' 'patchelf')
 source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/v${_pkgver}.tar.gz" "restart-bettbox.hook" "bettbox.desktop" "bettbox.install")
