@@ -1,0 +1,44 @@
+diff --git a/tools/bazeldefs/extensions/coral_crosstool.bzl b/tools/bazeldefs/extensions/coral_crosstool.bzl
+--- a/tools/bazeldefs/extensions/coral_crosstool.bzl
++++ b/tools/bazeldefs/extensions/coral_crosstool.bzl
+@@ -11,6 +11,7 @@ def _crosstool_impl(_ctx):
+             "//tools:crosstool-link-flags.patch",
+             "//tools:remove_windows_deps.patch",
+             "//tools:crosstool-bazel9.patch",
++            "//tools:crosstool-archlinux.patch",
+         ],
+         sha256 = "f86d488ca353c5ee99187579fe408adb73e9f2bb1d69c6e3a42ffb904ce3ba01",
+         strip_prefix = "crosstool-8e885509123395299bed6a5f9529fdc1b9751599",
+diff --git a/tools/crosstool-archlinux.patch b/tools/crosstool-archlinux.patch
+new file mode 100644
+--- /dev/null
++++ b/tools/crosstool-archlinux.patch
+@@ -0,0 +1,28 @@
++--- a/cc_toolchain_config.bzl.tpl
+++++ b/cc_toolchain_config.bzl.tpl
++@@ -72,4 +72,7 @@
++     "k8": [
++         "/usr/include/c++/%d" % GCC_VERSION,
+++        "/usr/include/c++/%d/x86_64-pc-linux-gnu" % GCC_VERSION,
+++        "/usr/lib/gcc/x86_64-pc-linux-gnu/%d/include" % GCC_VERSION,
+++        "/usr/lib/gcc/x86_64-pc-linux-gnu/%d/include-fixed" % GCC_VERSION,
++         "/usr/include/x86_64-linux-gnu/c++/%d" % GCC_VERSION,
++         "/usr/include/c++/%d/backward" % GCC_VERSION,
++@@ -102,3 +105,8 @@
++     "aarch64": [
+++        "/usr/include/c++/%d" % GCC_VERSION,
+++        "/usr/include/c++/%d/aarch64-unknown-linux-gnu" % GCC_VERSION,
+++        "/usr/include/c++/%d/backward" % GCC_VERSION,
+++        "/usr/lib/gcc/aarch64-unknown-linux-gnu/%d/include" % GCC_VERSION,
+++        "/usr/lib/gcc/aarch64-unknown-linux-gnu/%d/include-fixed" % GCC_VERSION,
++         "/usr/aarch64-linux-gnu/include/c++/%d" % GCC_VERSION,
++         "/usr/aarch64-linux-gnu/include/c++/%d/aarch64-linux-gnu" % GCC_VERSION,
++@@ -134,6 +142,6 @@
++ TOOL_PATH_PREFIX = {
++-    "k8":      "/usr/bin/x86_64-linux-gnu-",
+++    "k8":      "/usr/bin/",
++     "armv7a":  "/usr/bin/arm-linux-gnueabihf-",
++     "armv6":   "%{bcm2708_toolchain_root}%/arm-linux-gnueabihf/bin/arm-linux-gnueabihf-",
++-    "aarch64": "/usr/bin/aarch64-linux-gnu-",
+++    "aarch64": "/usr/bin/",
++     "riscv64": "/usr/bin/riscv64-linux-gnu-",

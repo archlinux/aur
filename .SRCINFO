@@ -1,0 +1,23 @@
+pkgbase = gvisor
+	pkgdesc = Application kernel and OCI runtime (runsc) for sandboxed containers
+	pkgver = 20261116.0
+	pkgrel = 1
+	url = https://gvisor.dev
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = bazel
+	optdepends = docker: Docker runtime integration
+	optdepends = containerd: containerd shim integration
+	provides = runsc
+	conflicts = gvisor-bin
+	conflicts = gvisor-git
+	options = !lto
+	options = !strip
+	options = !debug
+	source = gvisor-20261116.0.tar.gz::https://github.com/google/gvisor/archive/refs/tags/release-20261116.0.tar.gz
+	source = crosstool-archlinux.patch
+	sha256sums = 5f38ec5f75d7034d33988424297a275e6ee6ce32fde440a4ec4bf0ac98e9dd7b
+	sha256sums = c790418d6e2126f63a41da6e78341649f03c1cde252325ec9ee7d2b46663857e
+
+pkgname = gvisor
