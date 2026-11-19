@@ -60,7 +60,7 @@ backup=('etc/helcanium/default-flags.conf')
 options=('!strip')
 source=("https://github.com/lumexren/vulcanium/releases/download/v${pkgver}-${pkgrel}/helcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("helcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('30458ff5889c2cea1034a942405b82ba50ed2079ebbc2f15a875b3eae1f5c03f')
+sha256sums=('6f85e6ec8169cdc6d4b5474da91e50521cb88c2d1bab5a820002415d6655ef7c')
 
 package() {
   bsdtar -xf "${srcdir}/helcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" \
