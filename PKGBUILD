@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=kwi-git
-pkgver=r101.1df8741
+pkgver=r151.8d4af96
 pkgrel=1
 epoch=
 pkgdesc="Kwi is a modern and fast terminal for KDE Plasma and other desktops built on libghostty-vt"
@@ -17,7 +17,8 @@ groups=()
 depends=('kirigami-app-components' 'glibc' 'qt6-declarative' 'kxmlgui' 'kparts'
 	 'kwindowsystem' 'kwidgetsaddons' 'kguiaddons' 'kdbusaddons' 'ki18n'
 	 'knotifications' 'kcoreaddons' 'qt6-base' 'kirigami' 'kirigami-addons'
-	 'hicolor-icon-theme' 'libstdc++' 'kconfig' 'kpty' 'libghostty-vt' 'union' 'kconfigwidgets' 'kio')
+	 'hicolor-icon-theme' 'libstdc++' 'kconfig' 'kpty' 'libghostty-vt' 'union'
+	 'kconfigwidgets' 'kio' 'kcolorscheme' 'kiconthemes')
 makedepends=('git' 'cmake' 'ninja' 'extra-cmake-modules' 'vulkan-headers' 'qqc2-desktop-style' 'appstream')
 checkdepends=()
 optdepends=()
