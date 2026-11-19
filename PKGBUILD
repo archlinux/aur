@@ -1,6 +1,6 @@
 # Maintainer: Christopher Patrick Fair <christopherpatrickfair@gmail.com>
 pkgname=pegsofur
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 _gdext_ver=0.17.1
 pkgdesc="Ancient city-states dice and wooden pegboard strategy game for 1-4 Human/AI players"
@@ -15,6 +15,7 @@ depends=(
 makedepends=(
   'nim>=2.2.0'
   'git'
+  'python'
 )
 provides=('pegsofur')
 conflicts=('pegsofur')
@@ -23,7 +24,7 @@ source=(
   "gdext-nim-${_gdext_ver}.tar.gz::https://github.com/godot-nim/gdext-nim/archive/refs/tags/v${_gdext_ver}.tar.gz"
 )
 sha256sums=(
-  '253f05366be57d7d4200c34452441f5b7c45fda65ac85b2e8fce8454e09b46a4'
+  'd955e80f461fbb8234b4ae448b2a15073d90f4125e0a48efe7b36ff6e33bea79'
   'e446f3d682e49c609552bee599d21de01ebc86b47889559ab267655b3e887f2d'
 )
 
@@ -31,6 +32,10 @@ prepare() {
   export NIMBLE_DIR="${srcdir}/${pkgname}-${pkgver}/.nimble"
   export HOME="${srcdir}/home"
   mkdir -p "${HOME}"
+
+  # Apply Nim 2.4+ compatibility fixes to gdext-nim v0.17.1 before local install
+  python3 "${srcdir}/${pkgname}-${pkgver}/packaging/patch_gdext_nim24.py" "${srcdir}/gdext-nim-${_gdext_ver}"
+
   cd "${srcdir}/gdext-nim-${_gdext_ver}"
   if [ ! -d .git ]; then
     git init -q
