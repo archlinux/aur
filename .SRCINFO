@@ -1,6 +1,6 @@
 pkgbase = sonora-nightly-bin
 	pkgdesc = A native, familiar music streaming client (nightly build of main)
-	pkgver = 0.50.0.nightly.20261116
+	pkgver = 0.50.2.nightly.20261119
 	pkgrel = 1
 	url = https://github.com/sonorahq/sonora
 	arch = x86_64
@@ -22,18 +22,18 @@ pkgbase = sonora-nightly-bin
 	optdepends = pipewire-alsa: audio output through PipeWire
 	optdepends = pulseaudio-alsa: audio output through PulseAudio
 	optdepends = webkit2gtk-4.1: sign in to YouTube Music through a browser window
-	provides = sonora=0.50.0
+	provides = sonora=0.50.2
 	conflicts = sonora
 	conflicts = sonora-bin
 	options = !strip
 	options = !debug
-	source = sonora-887e3643ee3f3386787bd448720fcd99af523fd5.tar.gz::https://github.com/sonorahq/sonora/archive/887e3643ee3f3386787bd448720fcd99af523fd5.tar.gz
-	source = sonora-build-0.50.0.nightly.20261116.json::https://github.com/sonorahq/sonora/releases/download/nightly/sonora-build.json
-	sha256sums = 62f55d95ede0a2e3d8b60d94de5a3ddeb66b789064634ea6001383904c916aa9
-	sha256sums = 6012572301cb489ef3318293fb9b7fba2edeb6dd1f9bf9ed447f347d3264d8cb
-	source_x86_64 = sonora-nightly-bin-0.50.0.nightly.20261116-x86_64::https://github.com/sonorahq/sonora/releases/download/nightly/sonora-nightly-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 9d237f02071db3184b7fcee0e08f16c9369df93cc8190af2518e33400941286c
-	source_aarch64 = sonora-nightly-bin-0.50.0.nightly.20261116-aarch64::https://github.com/sonorahq/sonora/releases/download/nightly/sonora-nightly-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = f13bbb239e8b207722930b6492cd6067f83eb2c19d4c2d02075e5933285a2518
+	source = sonora-ed0f0c32cc0f0fa5be3c6859f8139d67d8a94f99.tar.gz::https://github.com/sonorahq/sonora/archive/ed0f0c32cc0f0fa5be3c6859f8139d67d8a94f99.tar.gz
+	source = sonora-build-0.50.2.nightly.20261119.json::https://github.com/sonorahq/sonora/releases/download/nightly-build/sonora-build.json
+	sha256sums = a7eb96cdd1d725d1133c8c44781441b166c381ccf9af9170d0f9d3411b390649
+	sha256sums = 305e51a685c37e8addcaccac9d6fa748d0c3e4a61e1551e237f95940ddeb100c
+	source_x86_64 = sonora-nightly-bin-0.50.2.nightly.20261119-x86_64::https://github.com/sonorahq/sonora/releases/download/nightly-build/sonora-nightly-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 41d83920a7b2f9a53aee92607022ce3680596c1872fb136292187e4b36f19197
+	source_aarch64 = sonora-nightly-bin-0.50.2.nightly.20261119-aarch64::https://github.com/sonorahq/sonora/releases/download/nightly-build/sonora-nightly-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 78c590b6ca57c3cecb2cec7c3a24b9e0857961ed998bc0824427335cd20fd88f
 
 pkgname = sonora-nightly-bin
