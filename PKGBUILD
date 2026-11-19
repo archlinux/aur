@@ -1,8 +1,8 @@
 # Maintainer: Matteo Bonanomi <mbonanomi.dev@proton.me>
 
 pkgname=xfce4-meowmenu-plugin
-_upstream_version=0.8.2
-pkgver=0.8.2
+_upstream_version=1.0.0-rc2
+pkgver=1.0.0rc2
 pkgrel=1
 pkgdesc="Modern menu launcher plugin for the Xfce panel"
 arch=('x86_64')
@@ -13,8 +13,9 @@ depends=('exo' 'garcon' 'glib2' 'gtk3'
 # base-devel is assumed present (standard makepkg requirement) and is NOT
 # listed here. meson/ninja are real build inputs not guaranteed by base-devel.
 makedepends=('gettext' 'git' 'meson' 'ninja' 'pkgconf')
+checkdepends=('xorg-server-xvfb' 'xorg-xauth')
 source=("${pkgname}-${_upstream_version}.tar.gz::${url}/archive/refs/tags/v${_upstream_version}.tar.gz")
-sha256sums=('c4f1becd10d55e437b55c0ac49bb3a96b2982c29a567069f4ca2b94e0f2a1ce6')
+sha256sums=('c2f9dcdc21c280427b91733dc02d2a65ead32e277a17f4769499bbe2af7863e8')
 
 build() {
   cd "${srcdir}"
@@ -34,7 +35,11 @@ build() {
 
 check() {
   cd "${srcdir}"
-  meson test -C build --print-errorlogs
+  GTK_THEME=Adwaita \
+  GDK_BACKEND=x11 \
+  MEOWMENU_REQUIRE_DISPLAY=1 \
+  MEOWMENU_REQUIRE_XFCONF=1 \
+    xvfb-run -a meson test -C build --print-errorlogs
 }
 
 package() {
