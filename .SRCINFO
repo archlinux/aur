@@ -1,6 +1,6 @@
 pkgbase = hylki
 	pkgdesc = A clean, fast GNOME-native email client
-	pkgver = 1.48.1
+	pkgver = 1.49.0
 	pkgrel = 1
 	url = https://hylki.hyprlab.co
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = hylki
 	optdepends = gnome-keyring: Secret Service provider to store passwords and OAuth tokens
 	optdepends = nautilus-python: GNOME Files right-click attachment integration
 	options = !lto
-	source = hylki-1.48.1.tar.gz::https://github.com/hyprlab/hylki/archive/refs/tags/v1.48.1.tar.gz
-	sha256sums = 0010cbbdf8e42e0e847bb01862dcc1ef8b68993e163f2d8a07f2866fb32006c6
+	source = hylki-1.49.0.tar.gz::https://github.com/hyprlab/hylki/archive/refs/tags/v1.49.0.tar.gz
+	sha256sums = 05dddd3053c25b6e5e93e50fd03b84f8e9060f29553416b09a6c33eb059c7209
 
 pkgname = hylki
