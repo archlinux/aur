@@ -233,8 +233,10 @@ _prepare_tests() {
   # OpenResty's patch to OpenSSL that lets ssl_session_fetch_by_lua* yield (sess_set_get_cb_yield)
   _skip_tests "$_lrc" ssl-session-fetch:5
   # set_ciphers() with DHE-RSA-AES256-SHA first, which the test expects the server can't use
-  # without DH parameters, as with the OpenSSL 3 of upstream's CI: OpenSSL 4 negotiates it anyway,
-  # rather than the ECDHE-RSA-AES128-SHA the test looks for
+  # without DH parameters, as with the OpenSSL 3 of upstream's CI: OpenSSL 4's TLS 1.2 server takes
+  # an RFC 7919 group the client offers for it (openssl/openssl#24551), rather than the
+  # ECDHE-RSA-AES128-SHA the test looks for
+  # upstream: workaround openresty/lua-resty-core#551
   _skip_tests "$_lrc" ssl-client-hello:12
   # The firewall rules of upstream's CI (.travis.yml), which drop packets to 127.0.0.2:12345, so
   # that connecting to it times out, and reject UDP to port 10086
