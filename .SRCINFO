@@ -1,0 +1,21 @@
+pkgbase = ryzen_smu_vermeer_phoenix-git
+	pkgdesc = AMD Ryzen SMU driver (DKMS) with a PM table monitor for Vermeer and Phoenix
+	pkgver = 0.2.1.r215.g6e05994
+	pkgrel = 1
+	url = https://github.com/NeoChen1024/ryzen_smu
+	install = ryzen_smu_vermeer_phoenix-git.install
+	arch = x86_64
+	license = GPL-2.0-only
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = dkms
+	depends = glibc
+	optdepends = sudo: lets monitor_cpu elevate itself when not run as root
+	provides = ryzen_smu
+	provides = ryzen_smu-dkms
+	conflicts = ryzen_smu
+	conflicts = ryzen_smu-dkms
+	source = ryzen_smu::git+https://github.com/NeoChen1024/ryzen_smu.git#branch=vermeer-monitor
+	sha256sums = SKIP
+
+pkgname = ryzen_smu_vermeer_phoenix-git

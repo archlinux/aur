@@ -1,0 +1,7 @@
+post_install() {
+    echo "Reload the driver with 'rmmod ryzen_smu; modprobe ryzen_smu' or reboot to use the new module."
+}
+
+post_upgrade() {
+    post_install
+}
