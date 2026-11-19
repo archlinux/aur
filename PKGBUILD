@@ -4,7 +4,7 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 _pkgname=libeconf
 pkgname="python-${_pkgname}"
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc='Python bindings for libeconf'
 url="https://github.com/openSUSE/${_pkgname}"
@@ -24,7 +24,7 @@ checkdepends=(
     "${_pkgname}"
 )
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('1572f941ba12334df1aa7b86582c79fdb604434bc27307d36b597ed4d7bbbeda27d753d4a5c07591989b5645f281afa63352018037279995fbf705f0d30d2b6a')
+b2sums=('4fe65e40bd33d3d0f384bdbd410bdee18ed79ecd42eaa783e89b5275ab9f161da55657541c2cd8a8acc58536d5c8c1cbaee0ecedaeda3f8c0a2f79ceb824b0ff')
 
 _srcdir="${_pkgname}-${pkgver}/bindings/python3"
 
