@@ -1,0 +1,38 @@
+pkgbase = zeppbridge-git
+	pkgdesc = Local-first desktop companion for Amazfit and Zepp health data
+	pkgver = 3.2.0.r596.g6bf7b7f0
+	pkgrel = 1
+	url = https://github.com/lingcang728/ZeppBridge
+	arch = x86_64
+	license = MIT
+	license = OFL-1.1
+	license = LicenseRef-MiSans
+	checkdepends = desktop-file-utils
+	makedepends = git
+	makedepends = nodejs>=22.12.0
+	makedepends = npm
+	makedepends = rust
+	makedepends = pkgconf
+	depends = cairo
+	depends = dbus
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libayatana-appindicator
+	depends = libsoup3
+	depends = openssl
+	depends = webkit2gtk-4.1
+	depends = xdg-utils
+	optdepends = gnome-keyring: Secret Service credential storage, or use another Secret Service provider
+	provides = zeppbridge=3.2.0.r596.g6bf7b7f0
+	conflicts = zeppbridge
+	conflicts = zeppbridge-bin
+	options = !lto
+	options = !debug
+	source = zeppbridge::git+https://github.com/lingcang728/ZeppBridge.git#branch=main
+	sha256sums = SKIP
+
+pkgname = zeppbridge-git
