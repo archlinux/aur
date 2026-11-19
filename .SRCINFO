@@ -1,0 +1,19 @@
+pkgbase = nedit-qtify
+	pkgdesc = NEdit, the classic Motif programmer's text editor, built on Qt with Motif on Qt
+	pkgver = 5.7
+	pkgrel = 1
+	url = https://sourceforge.net/projects/nedit/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = motif-on-qt
+	makedepends = perl
+	depends = qt6-base
+	provides = nedit
+	conflicts = nedit
+	source = https://downloads.sourceforge.net/project/nedit/nedit-source/nedit-5.7-src.tar.gz
+	source = nedit.desktop
+	sha256sums = add9ac79ff973528ad36c86858238bac4f59896c27dbf285cbe6a4d425fca17a
+	sha256sums = c6580aef92843368d0bddd90d7340717f8fd94054f21c927a37b54fc4dd77d4c
+
+pkgname = nedit-qtify
