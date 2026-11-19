@@ -1,6 +1,6 @@
 pkgbase = kuna-bin
 	pkgdesc = Agent-first decompiler, ported from Ghidra to Rust, designed to be refined by other agents
-	pkgver = 1.1000
+	pkgver = 1.1001
 	pkgrel = 1
 	url = https://github.com/Noelo-Lab/kuna
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = kuna-bin
 	conflicts = kuna
 	conflicts = kuna-git
 	options = !strip
-	source = https://github.com/Noelo-Lab/kuna/releases/download/v1.1000/kuna-v1.1000-specs.tar.gz
-	sha256sums = 97e015d3ec4082863631e1f187cfa754c30487260ced937efad3488c1148f90c
-	source_x86_64 = https://github.com/Noelo-Lab/kuna/releases/download/v1.1000/kuna-v1.1000-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 21655687410a8e5782ac0c28b38417406127286b4dd49b35b9f109d85b621099
-	source_aarch64 = https://github.com/Noelo-Lab/kuna/releases/download/v1.1000/kuna-v1.1000-linux-arm64.tar.gz
-	sha256sums_aarch64 = 7e530c360cf4ecd529c8879b2dbcdca40201e18fdcc2002ae5ac8cf172fe16b5
+	source = https://github.com/Noelo-Lab/kuna/releases/download/v1.1001/kuna-v1.1001-specs.tar.gz
+	sha256sums = e32a31b1c7b87730b6f079434c23b07b1d36d19f18733983ea30def6cb376ed5
+	source_x86_64 = https://github.com/Noelo-Lab/kuna/releases/download/v1.1001/kuna-v1.1001-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c1d1d99b033ab19a3b248ca4f1da74b995812dc0d6e96cb7e98753861e797086
+	source_aarch64 = https://github.com/Noelo-Lab/kuna/releases/download/v1.1001/kuna-v1.1001-linux-arm64.tar.gz
+	sha256sums_aarch64 = b94985ff81b1af18ef3ba817f33d5c386d2d98df789206951cae0403cf5e6902
 
 pkgname = kuna-bin
