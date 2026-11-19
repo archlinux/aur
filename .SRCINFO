@@ -1,0 +1,19 @@
+pkgbase = amiwm-git
+	pkgdesc = Actively updated fork of amiwm
+	pkgver = 0.22pl2+github
+	pkgrel = 1
+	url = http://www.lysator.liu.se/~marcus/amiwm.html
+	arch = i686
+	arch = x86_64
+	license = amiwm
+	makedepends = git
+	makedepends = autoconf
+	depends = xorg-xinit
+	optdepends = imagemagick: Background module
+	provides = amiwm
+	source = make_wm.patch
+	source = make_libami.patch
+	sha256sums = eba44a0091e9744da389739c07ba062f86b7a8df4c6cf9d6cd2020263c6bf544
+	sha256sums = 5e6701b05509344e7413980ed703ab2aecdb07d294177b32e340af2aa270e17b
+
+pkgname = amiwm-git

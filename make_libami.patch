@@ -1,0 +1,17 @@
+--- libami/Makefile.in	2026-03-20 17:53:50.168281807 -0500
++++ libami/Makefile.in	2026-03-20 17:52:51.325329587 -0500
+@@ -5,12 +5,12 @@
+ LEX = @LEX@
+ YACC = @YACC@
+ RANLIB = @RANLIB@
+-CFLAGS = @CFLAGS@
++CFLAGS = @CFLAGS@ -std=gnu89
+ LDFLAGS = @LDFLAGS@
+ DEFS = @DEFS@
+ ALL_CFLAGS = -Wall -I@srcdir@ -I@top_srcdir@ $(DEFS) $(CFLAGS) @X_CFLAGS@
+ LIBS = @X_LIBS@ @X_PRE_LIBS@ -lXext -lXmu -lX11 @X_EXTRA_LIBS@ @LIBS@
+-prefix = @prefix@
++prefix = /usr
+ exec_prefix = @exec_prefix@
+ bindir = $(exec_prefix)/bin
+ libdir = $(exec_prefix)/lib
