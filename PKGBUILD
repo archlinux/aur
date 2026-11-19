@@ -134,11 +134,11 @@ package_eidklient-native() {
 
     # App
     mkdir "${pkgdir}/opt"
-    cp -r squashfs-root "${pkgdir}/opt/${_pkgbase}"
+    cp -r squashfs-root "${pkgdir}/opt/${pkgbase}"
 
     # With QT_PLUGIN_PATH and QT_QPA_PLATFORM_PLUGIN_PATH, some bundled plugins
     # were still used.
-    cp "${srcdir}/qt6.conf" "${pkgdir}/opt/${_pkgbase}"
+    cp "${srcdir}/qt6.conf" "${pkgdir}/opt/${pkgbase}"
 
     # Patched Qt 6 libraries are required, otherwise the app crashes on launch with
     # `error due to GNU_PROPERTY_1_NEEDED_INDIRECT_EXTERN_ACCESS`.
@@ -159,7 +159,7 @@ package_eidklient-native() {
     local lib
 
     for lib in squashfs-root/lib/lib{CardAPI,botan,pkcs11_}*; do
-        ln -s "/opt/${_pkgbase}/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
+        ln -s "/opt/${pkgbase}/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
     done
 
     for lib in unused-libs/lib/lib{crypto,ssl}*; do
@@ -174,7 +174,7 @@ package_eidklient-native() {
         --no-same-owner
 
     mkdir -p "${pkgdir}/usr/share/licenses"
-    ln -s /opt/eidklient/Licenses "${pkgdir}/usr/share/licenses/${_pkgname}"
+    ln -s "/opt/${pkgbase}/Licenses" "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
 
 package_eidklient-native-unused-libs() {
@@ -189,10 +189,10 @@ package_eidklient-native-unused-libs() {
     cd "eID_klient_${pkgver}"
 
     mkdir "${pkgdir}/opt"
-    cp -r unused-libs "${pkgdir}/opt/${_pkgbase}"
+    cp -r unused-libs "${pkgdir}/opt/${pkgbase}"
 
     mkdir -p "${pkgdir}/usr/share/licenses"
-    ln -s /opt/eidklient/Licenses "${pkgdir}/usr/share/licenses/${_pkgname}"
+    ln -s "/opt/${pkgbase}/Licenses" "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
 
 : "${arch[@]}"

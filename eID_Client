@@ -6,4 +6,4 @@ FILENAME=$(basename "$0")
 
 export LD_LIBRARY_PATH=/usr/lib/eID_klient:/usr/lib
 
-exec "/opt/eidklient/${FILENAME}" "$@"
+exec "/opt/eidklient-native/${FILENAME}" "$@"
