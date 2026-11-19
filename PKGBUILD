@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=wowtype-bin
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="WeType-style pinyin input method for fcitx5, with bundled dictionaries and language model"
 arch=('x86_64')
@@ -46,7 +46,7 @@ source=(
     'Unicode-3.0.txt'
 )
 noextract=("${_deb}")
-sha256sums=('ef49dae5e976f3759c7a362b1e627ca10b0a07d98a8d1fa1fda73d92dad09116'
+sha256sums=('2d7d67af6d6d84c0b4d1baf91414bf24211bb900a6216d13b19662018b056613'
             'e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96')
 
 package() {
