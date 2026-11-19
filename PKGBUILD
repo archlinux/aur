@@ -1,6 +1,6 @@
 # Maintainer: tak0dan <200241398+tak0dan@users.noreply.github.com>
 pkgname=windfall
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Weather overlay for Hyprland: snow, leaves, petals and rain fall and pile up, flowers grow where they land (tray icon, GTK4 controller, pixel-art mode)"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('ttf-jetbrains-mono: pixel-theme font fallback'
 options=('!lto' '!debug')
 install=windfall.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2d6f5b1fadf79850ccd82bef6a5ec6574b0bc3f2dcf375cb8147e6691572c3e5')
+sha256sums=('742fe13b877ffaef7b1f719da40f1ca13465e4cbfc447634df9b187aac927e96')
 
 prepare() {
   cd "$pkgname-$pkgver"
