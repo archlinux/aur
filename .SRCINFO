@@ -58,6 +58,6 @@ pkgbase = ungoogled-vulcanium-bin
 	options = !strip
 	backup = etc/chromium/default-flags.conf
 	source = https://github.com/lumexren/vulcanium/releases/download/v157.0.8103.78-1/ungoogled-vulcanium-157.0.8103.78-1-x86_64.pkg.tar.zst
-	sha256sums = 19cd3b62a0e49bf5d2e2054a4a25c0acc555dbbabb93f6ec44561d3d4ad05fef
+	sha256sums = 2bec31149458ff9fa7a3aca5b1189ab3af5f5189ee1a356535d63e574c2ad40a
 
 pkgname = ungoogled-vulcanium-bin

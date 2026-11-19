@@ -60,7 +60,7 @@ backup=('etc/chromium/default-flags.conf')
 options=('!strip')
 source=("https://github.com/lumexren/vulcanium/releases/download/v${pkgver}-${pkgrel}/ungoogled-vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("ungoogled-vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('19cd3b62a0e49bf5d2e2054a4a25c0acc555dbbabb93f6ec44561d3d4ad05fef')
+sha256sums=('2bec31149458ff9fa7a3aca5b1189ab3af5f5189ee1a356535d63e574c2ad40a')
 
 package() {
   bsdtar -xf "${srcdir}/ungoogled-vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" \
