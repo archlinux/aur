@@ -1,44 +1,42 @@
 post_install() {
-  echo "---------------------------------------------------------"
-  echo "To enable 'mod_tile':"
-  echo "- Add the following line to '/etc/httpd/conf/httpd.conf':"
-  echo "Include conf/extra/httpd-tile.conf"
-  echo
-  echo "- Restart Apache HTTP Server:"
-  echo "systemctl restart httpd"
-  echo
-  echo "---------------------------------------------------------"
-  echo "To enable 'render-example-map' from 'mod_tile':"
-  echo "- Add the following line to '/etc/httpd/conf/httpd.conf':"
-  echo "Include conf/extra/httpd-tile-renderd-example-map.conf"
-  echo
-  echo "- Add the following lines to '/etc/renderd.conf':"
-  echo "[example-map]"
-  echo "URI=/tiles/renderd-example"
-  echo "XML=/usr/share/renderd/example-map/mapnik.xml"
-  echo
-  echo "[example-map-jpg]"
-  echo "TYPE=jpg image/jpeg jpeg"
-  echo "URI=/tiles/renderd-example-jpg"
-  echo "XML=/usr/share/renderd/example-map/mapnik.xml"
-  echo
-  echo "[example-map-png256]"
-  echo "TYPE=png image/png png256"
-  echo "URI=/tiles/renderd-example-png256"
-  echo "XML=/usr/share/renderd/example-map/mapnik.xml"
-  echo
-  echo "[example-map-png32]"
-  echo "TYPE=png image/png png32"
-  echo "URI=/tiles/renderd-example-png32"
-  echo "XML=/usr/share/renderd/example-map/mapnik.xml"
-  echo
-  echo "[example-map-webp]"
-  echo "TYPE=webp image/webp webp"
-  echo "URI=/tiles/renderd-example-webp"
-  echo "XML=/usr/share/renderd/example-map/mapnik.xml"
-  echo
-  echo "- Restart Apache HTTP Server & renderd:"
-  echo "systemctl restart httpd renderd"
-  echo
-  echo "---------------------------------------------------------"
+  cat << 'EOF'
+==> To enable 'mod_tile':
+    - Add the following line to '/etc/httpd/conf/httpd.conf':
+      Include conf/extra/httpd-tile.conf
+
+    - Restart Apache HTTP Server:
+      systemctl restart httpd
+
+==> To enable 'render-example-map' from 'mod_tile':
+    - Add the following line to '/etc/httpd/conf/httpd.conf':
+      Include conf/extra/httpd-tile-renderd-example-map.conf
+
+    - Add the following lines to '/etc/renderd.conf':
+      [example-map]
+      URI=/tiles/renderd-example
+      XML=/usr/share/renderd/example-map/mapnik.xml
+
+      [example-map-jpg]
+      TYPE=jpg image/jpeg jpeg
+      URI=/tiles/renderd-example-jpg
+      XML=/usr/share/renderd/example-map/mapnik.xml
+
+      [example-map-png256]
+      TYPE=png image/png png256
+      URI=/tiles/renderd-example-png256
+      XML=/usr/share/renderd/example-map/mapnik.xml
+
+      [example-map-png32]
+      TYPE=png image/png png32
+      URI=/tiles/renderd-example-png32
+      XML=/usr/share/renderd/example-map/mapnik.xml
+
+      [example-map-webp]
+      TYPE=webp image/webp webp
+      URI=/tiles/renderd-example-webp
+      XML=/usr/share/renderd/example-map/mapnik.xml
+
+    - Restart Apache HTTP Server & renderd:
+      systemctl restart httpd renderd
+EOF
 }

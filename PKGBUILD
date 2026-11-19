@@ -1,41 +1,44 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
+pkgbase=mod_tile
 pkgname=('mod_tile' 'renderd')
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
-arch=('i686' 'x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url='https://github.com/openstreetmap/mod_tile'
 license=('GPL-2.0-or-later')
-optdepends=('libmemcached: Memcached tile storage support')
-makedepends=('apache'
-             'apr'
-             'cmake'
-             'glib2'
-             'iniparser'
-             'mapnik')
-checkdepends=('curl' 'jq')
-source=("${url}/archive/v${pkgver}/mod_tile-${pkgver}.tar.gz"
-        'renderd.service'
-        'renderd-postgresql.service'
-        'renderd.sysusers'
-        'renderd.tmpfiles')
-sha256sums=('a8fa86fec638d1f3a6268d1eddf6154712b539602b3f524aafcceede37809e61'
-            '9b7a3c191ddbdafc06bf92943c0fe4a0686cf9a17b3f3492fd945696bff14597'
-            'd3f8d9deb5facb846313eee254398f06edeb29c732b957d4b895a16c2e3d8879'
-            '7dd8ee22408ace2410b7e04e44867e7d6126f52d3c82ab057ff929f9b486c229'
-            '8baa8e59d106b54dd1fb8f4cef06b7d9b5adf9f4dcc79fce14c68d3a498a5550')
+makedepends=(
+  'apache'
+  'apr'
+  'cmake'
+  'glib2'
+  'iniparser'
+  'mapnik'
+)
+checkdepends=(
+  'curl'
+  'jq'
+  'procps-ng'
+)
+source=(
+  "${url}/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz"
+  'renderd-postgresql.service'
+  'renderd.service'
+  'renderd.sysusers'
+  'renderd.tmpfiles'
+)
+sha256sums=(
+  'a8fa86fec638d1f3a6268d1eddf6154712b539602b3f524aafcceede37809e61'
+  '6f4bae7a7c7e52344633941db5a5720c448bef0282aa306347f336a475d0d44f'
+  '7a90d0f27e8a0fea4c8bcad141eb99ec57e65b42638e60a04d3b760b0460ed6f'
+  '9d36c0aec084797d4bd8f641bc204a4f04491a5e65724c65f0c1e701b1453966'
+  '8baa8e59d106b54dd1fb8f4cef06b7d9b5adf9f4dcc79fce14c68d3a498a5550'
+)
 
-prepare() {
-  if [ -d mod_tile ]
-  then
-    rm -rf mod_tile
-  fi
-  mv mod_tile-${pkgver} mod_tile
-
-  export CXXFLAGS CFLAGS LDFLAGS
-  cmake -B build -S mod_tile \
-    -D CMAKE_BUILD_TYPE:STRING=Release \
+build() {
+  cmake -B build -S "${pkgbase}-${pkgver}" \
+    -D CMAKE_BUILD_TYPE:STRING=None \
     -D CMAKE_INSTALL_LOCALSTATEDIR:PATH=/var \
     -D CMAKE_INSTALL_PREFIX:PATH=/usr \
     -D CMAKE_INSTALL_RUNSTATEDIR:PATH=/run \
@@ -43,11 +46,10 @@ prepare() {
     -D ENABLE_TESTS:BOOL=ON \
     -D USE_CAIRO:BOOL=OFF \
     -D USE_CURL:BOOL=OFF \
-    -D USE_RADOS:BOOL=OFF
-}
+    -D USE_MEMCACHED:BOOL=OFF \
+    -D USE_RADOS:BOOL=OFF \
+    -W no-dev
 
-build() {
-  export MAKEFLAGS
   cmake --build build
 }
 
@@ -59,44 +61,68 @@ check() {
 }
 
 package_mod_tile() {
-  depends=('apache' 'apr' 'glib2' 'iniparser')
-  install="${pkgname}.install"
   pkgdesc='An Apache 2 module to deliver map tiles'
-  provides=('mod_tile')
+  depends=(
+    'apache'
+    'apr'
+    'glib2'
+    'iniparser'
+  )
+  backup=(
+    'etc/httpd/conf/extra/httpd-tile-renderd-example-map.conf'
+  )
+  install="${pkgname}.install"
 
-  DESTDIR="${pkgdir}" cmake --install build --strip
-
-  # License
-  install -Dm644 "${srcdir}"/mod_tile/COPYING "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  DESTDIR="${pkgdir}" cmake --install build
 
   # Example Map
-  install -Dm644 "${srcdir}"/mod_tile/etc/apache2/renderd-example-map.conf "${pkgdir}"/etc/httpd/conf/extra/httpd-tile-renderd-example-map.conf
-  install -dm755 "${pkgdir}"/usr/share/renderd
-  cp -av "${srcdir}"/mod_tile/utils/example-map "${pkgdir}"/usr/share/renderd/example-map
+  install -D --mode=644 \
+    "${srcdir}/${pkgbase}-${pkgver}/etc/apache2/renderd-example-map.conf" \
+    "${pkgdir}/etc/httpd/conf/extra/httpd-tile-renderd-example-map.conf"
+  install --directory --mode=755 "${pkgdir}/usr/share/renderd/example-map"
+  cp --no-preserve=ownership --recursive \
+    "${srcdir}/${pkgbase}-${pkgver}/utils/example-map/." \
+    "${pkgdir}/usr/share/renderd/example-map/"
 
-  # "/etc/renderd.conf", "/usr/bin", "/usr/share/man/man1", "/usr/share/man/man5/renderd.conf.5", "/var/cache/renderd/tiles" & "/run/renderd" are contained in "renderd" package
-  pushd "${pkgdir}" || return
-  rm -rf etc/renderd.conf run usr/bin usr/share/man/man1 usr/share/man/man5/renderd.conf.5 var
+  # Remove files belonging to renderd or managed by tmpfiles.d
+  rm --recursive \
+    "${pkgdir}/etc/renderd.conf" \
+    "${pkgdir}/run" \
+    "${pkgdir}/usr/bin" \
+    "${pkgdir}/usr/share/man/man1" \
+    "${pkgdir}/usr/share/man/man5/renderd.conf.5" \
+    "${pkgdir}/var"
 }
 
 package_renderd() {
-  backup=('etc/renderd.conf')
-  depends=('glib2' 'iniparser' 'mapnik')
   pkgdesc='A daemon that renders map tiles using mapnik'
-  provides=('renderd')
+  depends=(
+    'glib2'
+    'iniparser'
+    'mapnik'
+  )
+  backup=(
+    'etc/renderd.conf'
+  )
 
-  DESTDIR="${pkgdir}" cmake --install build --strip
+  DESTDIR="${pkgdir}" cmake --install build
 
-  # Systemd service units, sysusers.d & tmpfiles.d configuration files
-  install -Dm644 -t "${pkgdir}"/usr/lib/systemd/system/ "${srcdir}"/renderd-postgresql.service "${srcdir}"/renderd.service
-  install -Dm644 "${srcdir}"/renderd.sysusers "${pkgdir}"/usr/lib/sysusers.d/renderd.conf
-  install -Dm644 "${srcdir}"/renderd.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/renderd.conf
+  # Systemd units, sysusers.d, and tmpfiles.d
+  install -D --mode=644 --target-directory="${pkgdir}/usr/lib/systemd/system/" \
+    "${srcdir}/renderd-postgresql.service" \
+    "${srcdir}/renderd.service"
+  install -D --mode=644 \
+    "${srcdir}/renderd.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/renderd.conf"
+  install -D --mode=644 \
+    "${srcdir}/renderd.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/renderd.conf"
 
-  # License
-  install -Dm644 "${srcdir}"/mod_tile/COPYING "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-
-  # "/var/cache/renderd/tiles" & "/run/renderd" will be handled by "renderd.tmpfiles"
-  # "/etc/httpd", "/usr/lib/httpd" & "/usr/share/man/man5/mod_tile.5" are contained in "mod_tile" package
-  pushd "${pkgdir}" || return
-  rm -rf etc/httpd run usr/lib/httpd usr/share/man/man5/mod_tile.5 var
+  # Remove files belonging to mod_tile or managed by tmpfiles.d
+  rm --recursive \
+    "${pkgdir}/etc/httpd" \
+    "${pkgdir}/run" \
+    "${pkgdir}/usr/lib/httpd" \
+    "${pkgdir}/usr/share/man/man5/mod_tile.5" \
+    "${pkgdir}/var"
 }

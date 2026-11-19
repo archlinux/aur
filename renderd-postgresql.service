@@ -5,10 +5,19 @@ Documentation=man:renderd.conf(5)
 After=postgresql.service
 Requires=postgresql.service
 PartOf=postgresql.service
+Conflicts=renderd.service
 
 [Service]
 #Environment=G_MESSAGES_DEBUG=all
+CacheDirectory=renderd
 ExecStart=/usr/bin/renderd --foreground
+Group=renderd
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ReadWritePaths=/run/renderd /var/cache/renderd
+RuntimeDirectory=renderd
 User=renderd
 
 [Install]
