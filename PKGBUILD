@@ -16,7 +16,7 @@ options=('!lto')
 _tag=v${pkgver}
 
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${_tag}.tar.gz")
-b2sums=('SKIP')
+b2sums=('65aab8715d1eb5033dcb53dc6b63198eb16b6b2a15c518a869c047034850aee08ecfbe14104a9bd47b441db6f99074756ebc0d42eea5d0bac50af282a5c2d004')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
