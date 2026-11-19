@@ -1,26 +1,4 @@
-# makepkg build directories
-/src/
-/pkg/
-
-# Built package archives
-*.pkg.tar*
-
-# Downloaded source tarballs and archives
-*.tar.gz
-*.tar.xz
-*.tar.bz2
-*.tar.zst
-*.zip
-*.deb
-*.rpm
-*.AppImage
-*.gem
-
-# Signature and log files
-*.sig
-*.asc
-*.log
-
-# Local helper scripts and VCS backups
-release.sh
-*.bak
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
