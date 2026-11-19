@@ -7,8 +7,8 @@ pkgrel=1
 epoch=1
 provides=('HBuilderX-alpha')
 pkgdesc="cli的用途是让开发者可以在linux服务器上调用HBuilderX cli，来实现程序化操作打包app、上传unicloud云函数。"
-arch=('x86_64' "aarch64" "loong64")
-url="https://www.dcloud.io"
+arch=('x86_64')
+url="https://hx.dcloud.net.cn/Tutorial/install/linux-cli"
 license=('unknown')
 source=(
 "https://download1.dcloud.net.cn/download/$_pkggroupname.$pkgver-alpha.linux_x64.full.tar.gz"
