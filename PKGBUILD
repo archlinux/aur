@@ -11,7 +11,7 @@
 # repositories. All downloads happen in the sources and in prepare(); build() needs
 # no network.
 pkgname=efr-code-git
-pkgver=0.0.8.r2394.g04e5c7f6
+pkgver=0.0.12.r2899.g2d65d39a
 pkgrel=1
 pkgdesc='Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state (main branch)'
 arch=('x86_64')
@@ -122,9 +122,9 @@ build() {
   export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-global-cache"
   export LIBGHOSTTY_VT_SYS_CPU=baseline
   _drop_cflags_optimization
-  # The packages and the feature of `just build-release`.
-  cargo build --frozen --release -p efr-daemon -p efr-cli -p efr-sbx \
-    --features efr-daemon/screen-ghostty
+  # The packages, the feature and the two cargo runs of `just build-release`.
+  cargo build --frozen --release -p efr-daemon --features efr-daemon/screen-ghostty
+  cargo build --frozen --release -p efr-cli -p efr-sbx
 
   # A build with the sandbox's test seams lets a test replace the launcher and the
   # probe; it must never ship.

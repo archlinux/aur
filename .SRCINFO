@@ -1,6 +1,6 @@
 pkgbase = efr-code-git
 	pkgdesc = Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state (main branch)
-	pkgver = 0.0.8.r2394.g04e5c7f6
+	pkgver = 0.0.12.r2899.g2d65d39a
 	pkgrel = 1
 	url = https://github.com/eggfriedrice24/eggfriedrice.code
 	install = efr-code.install
@@ -20,7 +20,7 @@ pkgbase = efr-code-git
 	optdepends = ripgrep: the search that the model uses for text and file names (rg)
 	optdepends = xdg-dbus-proxy: read-only system queries in the auto mode (0.1.9 or newer)
 	optdepends = xdg-utils: let efr login openai open the browser with EFR_OPEN_BROWSER=1
-	provides = efr-code=0.0.8
+	provides = efr-code=0.0.12
 	conflicts = efr-code
 	conflicts = efr-code-bin
 	options = !lto
