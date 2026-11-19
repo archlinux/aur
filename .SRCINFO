@@ -1,0 +1,20 @@
+pkgbase = ruby-qt6-qtquickwidgets
+	pkgdesc = Ruby Bindings for Qt Quick Widgets.
+	pkgver = 6.3.0
+	pkgrel = 1
+	url = https://github.com/souk4711/ruby-qt6
+	arch = x86_64
+	license = LGPL-3.0-only WITH LGPL-3.0-linking-exception
+	depends = ruby
+	depends = ruby-qt6-rice>=6.3.0
+	depends = ruby-qt6-qtcore
+	depends = ruby-qt6-qtgui
+	depends = ruby-qt6-qtwidgets
+	depends = ruby-qt6-qtqml
+	depends = ruby-qt6-qtquick
+	depends = qt6-declarative
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ruby-qt6-qtquickwidgets-6.3.0.gem
+	sha256sums = 96db28b5c5e6d8900085163f4e847b3a6695d51b857a3c38150c2f0f8e2c715b
+
+pkgname = ruby-qt6-qtquickwidgets
