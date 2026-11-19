@@ -1,0 +1,16 @@
+pkgbase = alphabat-git
+	pkgdesc = Battery status for HyperX Cloud Alpha Wireless headsets
+	pkgver = r17.9a9559f
+	pkgrel = 1
+	url = https://github.com/JokiTM/alphabat
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = alphabat::git+https://github.com/JokiTM/alphabat.git
+	source = 99-hyprx.rules
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = alphabat-git

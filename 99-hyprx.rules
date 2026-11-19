@@ -1,0 +1,3 @@
+# HyperX Cloud Alpha Wireless - allow access for logged-in users
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="03f0", ATTRS{idProduct}=="098d", MODE="0666"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0", ATTRS{idProduct}=="098d", MODE="0666"
