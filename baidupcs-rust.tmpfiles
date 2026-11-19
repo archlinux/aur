@@ -1,0 +1,8 @@
+# Mutable state for the service; the code in /usr/lib/baidupcs-rust is
+# package-owned.  config/ holds app.toml, auth.json and baidu-pcs.db, which the
+# app writes itself on first start.
+d /var/lib/baidupcs-rust            0750 baidupcs baidupcs -
+d /var/lib/baidupcs-rust/config     0750 baidupcs baidupcs -
+d /var/lib/baidupcs-rust/downloads  0750 baidupcs baidupcs -
+d /var/lib/baidupcs-rust/logs       0750 baidupcs baidupcs -
+d /var/lib/baidupcs-rust/wal        0750 baidupcs baidupcs -

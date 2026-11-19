@@ -1,0 +1,23 @@
+[Unit]
+Description=BaiduPCS-Rust web client for Baidu Netdisk
+Documentation=https://github.com/komorebiCarry/BaiduPCS-Rust
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=baidupcs
+Group=baidupcs
+# The app reads config/app.toml and writes downloads/, logs/, wal/ and data/
+# relative to its working directory.
+WorkingDirectory=/var/lib/baidupcs-rust
+Environment=HOME=/var/lib/baidupcs-rust
+ExecStart=/usr/lib/baidupcs-rust/baidu-netdisk-rust
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

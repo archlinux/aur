@@ -1,0 +1,2 @@
+# type name      id  comment                        home                     shell
+u      baidupcs  -   "BaiduPCS-Rust web service"    /var/lib/baidupcs-rust   /usr/bin/nologin

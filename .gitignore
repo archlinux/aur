@@ -1,0 +1,10 @@
+# Whitelist: this repo tracks only the files listed below.
+*
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!baidupcs-rust.service
+!baidupcs-rust.sysusers
+!baidupcs-rust.tmpfiles
+!download-directory.md
+!lilac.yaml

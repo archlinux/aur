@@ -1,0 +1,25 @@
+build_prefix: extra-x86_64
+
+maintainers:
+  - github: lucaszhou007
+    email: lucaszhou007@163.com
+
+# Upstream publishes the prebuilt Linux tarballs (x86_64/arm64) on GitHub
+# releases.  nvchecker's github source returns the tag name (e.g. "v2.4.1");
+# prefix strips the "v" so pkgver matches the release asset filenames.
+update_on:
+  - source: github
+    github: komorebiCarry/BaiduPCS-Rust
+    use_latest_release: true
+    prefix: v
+
+pre_build_script: |
+  if getattr(_G, 'newver', None):
+      update_pkgver_and_pkgrel(_G.newver)
+  else:
+      # forced rebuild (lilac <pkg> without a new upstream version)
+      update_pkgrel()
+
+post_build_script: |
+  git_pkgbuild_commit()
+  update_aur_repo()
