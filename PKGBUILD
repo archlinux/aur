@@ -1,15 +1,15 @@
 pkgname=wait-tray-ready-git
-pkgver=0.1.0.20231212.0e08d9b
+pkgver=0.1.1.20261119.c8a31e9
 pkgrel=1
 pkgdesc="A small utility to wait for a system tray to be ready"
 arch=('x86_64')
-url="https://gitlab.com/ssfdust/wait-tray-ready"
+url="https://codeberg.org/ssfdust/wait-tray-ready"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'cargo')
 provides=('wait-tray-ready')
 conflicts=('wait-tray-ready')
-source=("$pkgname::git+https://gitlab.com/ssfdust/wait-tray-ready.git")
+source=("$pkgname::git+https://codeberg.org/ssfdust/wait-tray-ready.git")
 sha1sums=('SKIP')
 
 build() {

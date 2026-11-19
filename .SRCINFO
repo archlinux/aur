@@ -1,8 +1,8 @@
 pkgbase = wait-tray-ready-git
 	pkgdesc = A small utility to wait for a system tray to be ready
-	pkgver = 0.1.0.20231212.0e08d9b
+	pkgver = 0.1.1.20261119.c8a31e9
 	pkgrel = 1
-	url = https://gitlab.com/ssfdust/wait-tray-ready
+	url = https://codeberg.org/ssfdust/wait-tray-ready
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = wait-tray-ready-git
 	depends = gcc-libs
 	provides = wait-tray-ready
 	conflicts = wait-tray-ready
-	source = wait-tray-ready-git::git+https://gitlab.com/ssfdust/wait-tray-ready.git
+	source = wait-tray-ready-git::git+https://codeberg.org/ssfdust/wait-tray-ready.git
 	sha1sums = SKIP
 
 pkgname = wait-tray-ready-git
