@@ -17,7 +17,7 @@ pkgbase = paru-static
 	makedepends = kernel-headers-musl
 	makedepends = lld
 	makedepends = git
-	depends = pacman-static>=7.1
+	makedepends = pacman-static>=7.1
 	optdepends = bat: colored pkgbuild printing
 	optdepends = devtools: build in chroot and downloading pkgbuilds
 	source = git+https://github.com/Morganamilo/paru.git?commit=7a8a0b9e3666d620a774907706a609288d33d73b
