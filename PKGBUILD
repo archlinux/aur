@@ -1,22 +1,19 @@
 # Maintainer: furudbat <hircreacc@gmail.com>
 
 ## options
-: ${_with_audio:=false} # audio visualizer (PipeWire + fftw), beta
+: "${_with_audio:=false}" # audio visualizer (PipeWire + fftw), beta
 
 _pkgname="wpets"
 pkgname="$_pkgname-git"
 pkgver=r563.4a3b80e
-pkgrel=1
+pkgrel=2
 pkgdesc="A Wayland overlay that displays an animated virtual pet reacting to keyboard input"
 url='https://github.com/furudbat/wayland-vpets'
-license=('MIT')
+license=('MIT' 'CC-BY-NC-4.0') # code: MIT, PMD sprites: CC-BY-NC-4.0
 arch=('x86_64' 'aarch64')
 
 depends=(
-  'bash' # wpets-find-devices
-  'glibc'
-  'libstdc++'
-  'systemd-libs'
+  'systemd-libs' # libudev
   'wayland'
 )
 makedepends=(
@@ -33,7 +30,7 @@ provides=("$_pkgname=${pkgver%.g*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="wayland-vpets"
-source=("$_pkgsrc"::"git+$url.git")
+source=("$_pkgsrc::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -42,9 +39,9 @@ pkgver() {
 }
 
 build() {
-  # strip $srcdir from __FILE__ strings embedded in the binaries
-  export CFLAGS+=" -ffile-prefix-map=$srcdir=."
-  export CXXFLAGS+=" -ffile-prefix-map=$srcdir=."
+  # map $srcdir in __FILE__ strings like makepkg's debug option does (no $srcdir refs)
+  export CFLAGS+=" -ffile-prefix-map=$srcdir=${DBGSRCDIR:-/usr/src/debug}/$pkgbase"
+  export CXXFLAGS+=" -ffile-prefix-map=$srcdir=${DBGSRCDIR:-/usr/src/debug}/$pkgbase"
 
   local _cmake_args=(
     -DCMAKE_BUILD_TYPE=Release
@@ -105,7 +102,7 @@ package() {
   # example configs
   install -Dm644 "$_pkgsrc/bongocat.conf.example" "$pkgdir/usr/share/wpets/bongocat.conf.example"
   local _conf
-  for _conf in clippy digimon pokemon cpu-digimon moving-digimon neko; do
+  for _conf in clippy digimon pokemon cpu-digimon evol-digimon moving-digimon neko; do
     install -Dm644 "$_pkgsrc/examples/$_conf.bongocat.conf" \
       "$pkgdir/usr/share/wpets/$_conf.bongocat.conf.example"
   done
@@ -113,4 +110,6 @@ package() {
   # docs & license
   install -Dm644 "$_pkgsrc/README.md" -t "$pkgdir/usr/share/doc/$_pkgname/"
   install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$_pkgsrc/assets/pmd/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.pmd"
+  install -Dm644 "$_pkgsrc/assets/PMD_CREDITS.txt" "$pkgdir/usr/share/licenses/$pkgname/PMD_CREDITS.txt"
 }
