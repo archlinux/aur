@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-window-nativizer
 	pkgdesc = Seamlessly nativize non-native applications into the GNOME desktop
-	pkgver = 0.11.2
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/everyx/gnome-shell-extension-window-nativizer
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = gnome-shell-extension-window-nativizer
 	makedepends = nodejs
 	depends = gnome-shell>=50
 	depends = dconf
-	source = gnome-shell-extension-window-nativizer-0.11.2.tar.gz::https://github.com/everyx/gnome-shell-extension-window-nativizer/archive/refs/tags/v0.11.2.tar.gz
-	b2sums = 0bab6dd1819518ad8755ff04463b4ff0c526e55cc4ba9b7d2512bf1f1dd8828644866de3fee7c5b032f55d8591a23519cd8cded0b5a92f8eb1808a754f09fbcf
+	source = gnome-shell-extension-window-nativizer-0.12.0.tar.gz::https://github.com/everyx/gnome-shell-extension-window-nativizer/archive/refs/tags/v0.12.0.tar.gz
+	b2sums = cbf8417174283caf26d1aaa16f2874a499dbef26abc736590b06cb5ad5a49bdd3b90e6b4426834b8e580b7e6225948632a1cbf8c721a249d1ac353e83df9508f
 
 pkgname = gnome-shell-extension-window-nativizer
