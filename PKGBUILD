@@ -2,7 +2,7 @@
 
 pkgname=vsview-nativeres
 _origpkgname=vsview_nativeres
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A vsview plugin for analyzing and determining the native resolution of video content"
 arch=("x86_64")
