@@ -1,6 +1,6 @@
 pkgbase = linger-bin
 	pkgdesc = Personal AI agent that runs a local model on your own machine, turning mail, chats and meetings into shared memory
-	pkgver = 0.1.3
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/simplexai-labs/linger
 	arch = x86_64
@@ -32,10 +32,10 @@ pkgbase = linger-bin
 	conflicts = linger
 	options = !strip
 	options = !debug
-	source = Linger-0.1.3-linux-x64.tar.gz::https://github.com/simplexai-labs/linger/releases/download/desktop-v0.1.3/Linger-0.1.3-linux-x64.tar.gz
-	source = linger.svg::https://raw.githubusercontent.com/simplexai-labs/linger/desktop-v0.1.3/assets/logo-horizontal.svg
-	source = LICENSE::https://raw.githubusercontent.com/simplexai-labs/linger/desktop-v0.1.3/LICENSE
-	sha256sums = b172ee44f0715be96407b4aac6bc9e575a3a3e7bb8c5c7af1f0b28ecf9a4f6c2
+	source = Linger-0.1.5-linux-x64.tar.gz::https://github.com/simplexai-labs/linger/releases/download/desktop-v0.1.5/Linger-0.1.5-linux-x64.tar.gz
+	source = linger.svg::https://raw.githubusercontent.com/simplexai-labs/linger/desktop-v0.1.5/assets/logo-horizontal.svg
+	source = LICENSE::https://raw.githubusercontent.com/simplexai-labs/linger/desktop-v0.1.5/LICENSE
+	sha256sums = 2ef2365525bf7fe20adb918646a5455b613ed5aa71a9b387c0caa35f547bc7ca
 	sha256sums = a0aa9e9fc9f9ba51456486bdacbca16f24234b922a23fe9bedf5ec45dceaf86b
 	sha256sums = c0885bd7ddca2e3a26648168725d358cd2dc7269e80968a9481dacebb4139e65
 
