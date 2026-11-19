@@ -1,7 +1,7 @@
 # Prebuilt multi-arch AUR PKGBUILD template for Koma.
 # shellcheck shell=bash
 pkgname=koma-bin
-pkgver='0.0.6'
+pkgver='0.0.7'
 pkgrel=1
 pkgdesc='Wayland tiling compositor with explicit desktop automation interfaces (prebuilt release binaries)'
 arch=('x86_64' 'aarch64')
@@ -12,10 +12,10 @@ optdepends=('xwayland-satellite: X11 client support' 'xdg-desktop-portal-gnome: 
 provides=('koma')
 conflicts=('koma')
 options=('!debug' '!strip')
-source_x86_64=("koma-${pkgver}-x86_64.tar.zst::https://cdn.komawm.org/releases/koma/v0.0.6/koma-${pkgver}-x86_64-unknown-linux-gnu.tar.zst")
-source_aarch64=("koma-${pkgver}-aarch64.tar.zst::https://cdn.komawm.org/releases/koma/v0.0.6/koma-${pkgver}-aarch64-unknown-linux-gnu.tar.zst")
-sha256sums_x86_64=('925cf759b1cd7914f28f0200a78f74b87bd1fab1e2abbb2f6ffe32845febc554')
-sha256sums_aarch64=('65cefa8a9a1c5b1ce5e52575b58bd67e0fae719c2b2d5e89a855d40ce426bb79')
+source_x86_64=("koma-${pkgver}-x86_64.tar.zst::https://cdn.komawm.org/releases/koma/v0.0.7/koma-${pkgver}-x86_64-unknown-linux-gnu.tar.zst")
+source_aarch64=("koma-${pkgver}-aarch64.tar.zst::https://cdn.komawm.org/releases/koma/v0.0.7/koma-${pkgver}-aarch64-unknown-linux-gnu.tar.zst")
+sha256sums_x86_64=('c6e96b90386e471674b8ae63f8506351d406016a984f37a7cbe34d8a65a9cb4a')
+sha256sums_aarch64=('3fe5a9237dac026a20f30e68995a808968fdad84993dfd4c6f6149dfbe5023ec')
 
 package() {
     cd "koma-${pkgver}-${CARCH}-unknown-linux-gnu" || return 1
