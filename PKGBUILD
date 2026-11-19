@@ -2,7 +2,7 @@
 pkgname="powerlevel11k-git"
 pkgver=r487.feaf405
 pkgdesc="Powerlevel10k continuation for all shells. (git version)"
-pkgrel=2
+pkgrel=3
 arch=("x86_64")
 conflicts=('powerlevel11k')
 provides=('powerlevel11k')
@@ -11,6 +11,7 @@ license=("GPL-3.0-or-later")
 makedepends=('git' 'rust' 'cmake' 'gettext' 'pkg-config' 'libssh2' 'libgit2')
 source=("powerlevel11k::git+https://github.com/Qaaxaap/powerlevel11k.git")
 sha256sums=('SKIP')
+options=(!lto)
 
 pkgver() {
   cd "$srcdir/powerlevel11k"
@@ -19,7 +20,6 @@ pkgver() {
 
 build () {
     cd "$srcdir/powerlevel11k"
-    export LIBSSH2_SYS_USE_PKG_CONFIG=1 # Build fails to find libssh2 functions if not included
     cargo build --release --locked
 }
 

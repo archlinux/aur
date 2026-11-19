@@ -1,7 +1,7 @@
 pkgbase = powerlevel11k-git
 	pkgdesc = Powerlevel10k continuation for all shells. (git version)
 	pkgver = r487.feaf405
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Qaaxaap/powerlevel11k
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -14,6 +14,7 @@ pkgbase = powerlevel11k-git
 	makedepends = libgit2
 	provides = powerlevel11k
 	conflicts = powerlevel11k
+	options = !lto
 	source = powerlevel11k::git+https://github.com/Qaaxaap/powerlevel11k.git
 	sha256sums = SKIP
 
