@@ -1,7 +1,7 @@
 pkgbase = hakoniwa-bin
-	pkgdesc = Process isolation for Linux using namespaces, resource limits, landlock and seccomp.
+	pkgdesc = Process isolation for Linux using namespaces, resource limits, cgroups, landlock and seccomp.
 	pkgver = 1.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/souk4711/hakoniwa
 	arch = x86_64
 	license = GPL-3.0-only

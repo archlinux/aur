@@ -4,8 +4,8 @@
 
 pkgname=hakoniwa-bin
 pkgver=1.8.1
-pkgrel=2
-pkgdesc="Process isolation for Linux using namespaces, resource limits, landlock and seccomp."
+pkgrel=3
+pkgdesc="Process isolation for Linux using namespaces, resource limits, cgroups, landlock and seccomp."
 arch=("x86_64")
 url="https://github.com/souk4711/hakoniwa"
 license=("GPL-3.0-only")
