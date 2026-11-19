@@ -55,6 +55,7 @@ fi
 export PKG_CONFIG_ALLOW_CROSS=1
 
 export RUSTUP_TOOLCHAIN=stable
+unset RUSTFLAGS
 #unset RUSTC
 #unset AR
 #unset NM
@@ -251,6 +252,9 @@ build () {
     _features+="generate,"
   fi
   
+  #RUSTFLAGS+=" -C linker=musl-gcc -Clink-arg=-static-pie -Clink-arg=-fuse-ld=lld -C link-arg=-L/usr/lib/musl/lib"
+  #RUSTFLAGS+=" -C link-arg=-Wl,-z,relro,-z,now"
+
   # Linker rust-lld
   # PIE
   RUSTFLAGS+=" -C linker=rust-lld -C link-arg=-L/usr/lib/musl/lib -Clink-arg=--no-dynamic-linker -C link-arg=-pie"
@@ -259,11 +263,14 @@ build () {
   RUSTFLAGS+=" -C link-arg=-z -Clink-arg=relro -Clink-arg=-z -Clink-arg=now"
 
   if [[ $CARCH == x86_64 ]]; then
-    export RUSTFLAGS+=" -C link-self-contained=on -C strip=symbols -C no-redzone=y -C overflow-checks=y -C opt-level=z -C control-flow-guard=y"
+    RUSTFLAGS+=" -C link-self-contained=on -C strip=symbols -C no-redzone=y -C overflow-checks=y -C opt-level=z -C control-flow-guard=y"
   fi
 
-  # paruビルド
+  # Build paru
   #export LTOFLAGS="$LTOFLAGS_"
+  #RUSTFLAGS=$(echo $RUSTFLAGS|sed "s/-Wl,//g")
+  echo $RUSTFLAGS
+  export RUSTFLAGS
   cargo build --frozen --features "${_features:-}" --release --target-dir target --target $TARGET
   #./scripts/mkmo locale/
 }
