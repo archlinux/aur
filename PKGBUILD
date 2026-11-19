@@ -2,8 +2,8 @@
 
 pkgname=stably-orca-git
 _gitname=orca
-pkgver=1.1.30.r0.g0000000
-pkgrel=4
+pkgver=1.4.214.r22803.geddcd832a
+pkgrel=1
 pkgdesc="Stably AI Orca - Electron-based agentic coding IDE (built from main)"
 arch=('x86_64')
 url="https://github.com/stablyai/orca"
@@ -78,7 +78,7 @@ prepare() {
   # are the same rolling-release system, so the floor is meaningless for us —
   # turn the checker into a no-op. Keep the module's other exports: the
   # Wayland clipboard build and packaging hooks use collectNativeBinaries().
-  local gate='config/scripts/verify-linux-glibc-floor.cjs'
+  local gate='config/scripts/native-build/linux/verify-linux-glibc-floor.cjs'
   if [[ ! -f "${gate}" ]] || ! grep -q '^module.exports = {' "${gate}"; then
     echo "ERROR: expected upstream ${gate} with a module.exports object, not found."
     echo "Upstream may have moved or dropped the glibc floor gate. Re-check the"
@@ -92,20 +92,45 @@ prepare() {
 // against the same Arch system they will run on.
 module.exports.verifyLinuxGlibcFloor = () => {}
 EOF
+
+  # The electron-builder beforePack hook builds native/journal-file-lock with
+  # glibcFloor 'desktop' on Linux, which compiles inside the same Ubuntu 20.04
+  # Docker image. Drop the floor so it falls through to a plain host `cc` build.
+  local config='config/electron-builder.config.cjs'
+  local floor="glibcFloor: context.electronPlatformName === 'linux' ? 'desktop' : false"
+  if ! grep -qF "${floor}" "${config}"; then
+    echo "ERROR: journal-file-lock glibcFloor option not found in ${config}."
+    echo "Re-check the beforePack hook and update this PKGBUILD."
+    return 1
+  fi
+  sed -i "s/${floor}/glibcFloor: false/" "${config}"
+
+  # Likewise the beforePack provider exec helper: desktop Linux targets pick the
+  # Docker toolchain. Force the host compiler, which upstream already supports
+  # for dev builds (same -Werror and hardening flags).
+  local pexec='config/scripts/native-build/posix/build-provider-exec.mjs'
+  local pick="return slotLibc || hostCompiler ? 'host' : 'docker'"
+  if [[ ! -f "${pexec}" ]] || ! grep -qF "${pick}" "${pexec}"; then
+    echo "ERROR: provider exec toolchain selection not found in ${pexec}."
+    echo "Re-check the beforePack hook and update this PKGBUILD."
+    return 1
+  fi
+  sed -i "s/${pick}/return 'host'/" "${pexec}"
 }
 
 # Upstream's build:native compiles native/wayland-clipboard inside an Ubuntu
 # 20.04 Docker image to hit its glibc floor. There is no Docker in a makepkg
 # chroot, and the floor does not apply here (see prepare()), so compile it with
 # the host toolchain using upstream's flags and write the fingerprint stamp
-# that makes config/scripts/build-wayland-clipboard.mjs skip its Docker step.
+# that makes config/scripts/native-build/linux/build-wayland-clipboard.mjs skip
+# its Docker step.
 _build_wayland_clipboard() {
   local src='native/wayland-clipboard'
   local out="${src}/.build/x64/orca-wayland-clipboard"
-  local script='config/scripts/build-wayland-clipboard.mjs'
+  local script='config/scripts/native-build/linux/build-wayland-clipboard.mjs'
   if [[ ! -f "${src}/wayland-clipboard.c" || ! -f "${script}" ]]; then
     echo "ERROR: upstream Wayland clipboard helper sources moved."
-    echo "Re-check build:native (config/scripts/build-native-for-platform.mjs) and update this PKGBUILD."
+    echo "Re-check build:native (config/scripts/native-build/composition/build-native-for-platform.mjs) and update this PKGBUILD."
     return 1
   fi
   mkdir -p "${out%/*}"
