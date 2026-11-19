@@ -1,6 +1,6 @@
 pkgbase = devo-bin
 	pkgdesc = Open-source, provider-agnostic coding agent that lives in your terminal
-	pkgver = 0.2.22
+	pkgver = 0.2.23
 	pkgrel = 1
 	url = https://github.com/7df-lab/devo
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = devo-bin
 	provides = devo
 	conflicts = devo
 	options = !strip
-	source_x86_64 = devo-bin-0.2.22-x86_64.tar.gz::https://github.com/7df-lab/devo/releases/download/v0.2.22/devo-tui-v0.2.22-x86_64-linux-musl.tar.gz
-	sha256sums_x86_64 = 23712b6299fc94d3f1b017787cadf1bf2cfa49f78d7eb4981b893be3769465e4
-	source_aarch64 = devo-bin-0.2.22-aarch64.tar.gz::https://github.com/7df-lab/devo/releases/download/v0.2.22/devo-tui-v0.2.22-aarch64-linux-musl.tar.gz
-	sha256sums_aarch64 = 746090786fd29f5010dd4a8d3f46d0614a98c7f211a7be3a256aba84e814cb85
+	source_x86_64 = devo-bin-0.2.23-x86_64.tar.gz::https://github.com/7df-lab/devo/releases/download/v0.2.23/devo-tui-v0.2.23-x86_64-linux-musl.tar.gz
+	sha256sums_x86_64 = 35b1deaa06d8460a3edab8f31f409d7ef7242087993a54fecc7d1f4083a2d461
+	source_aarch64 = devo-bin-0.2.23-aarch64.tar.gz::https://github.com/7df-lab/devo/releases/download/v0.2.23/devo-tui-v0.2.23-aarch64-linux-musl.tar.gz
+	sha256sums_aarch64 = ac35f0273abb6f6cc3e637614d12de051b45b293315cdd886b4d8f7961f9fcf3
 
 pkgname = devo-bin
