@@ -1,7 +1,7 @@
 pkgbase = butterflypack
 	pkgdesc = Mathematical software for rapidly solving large-scale dense linear systems with butterfly and low-rank compression
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/liuyangzhuan/ButterflyPACK
 	arch = x86_64
 	license = BSD-3-Clause-LBNL
@@ -26,6 +26,8 @@ pkgbase = butterflypack
 	depends = parsec
 	optdepends = python-mpi4py: run the Python interface on several MPI processes
 	source = butterflypack-5.0.0.tar.gz::https://github.com/liuyangzhuan/ButterflyPACK/archive/refs/tags/v5.0.0.tar.gz
+	source = parsec-cmake-config.patch
 	sha256sums = 9a6ba1685b0181851faba3f020285893c61318f6abcfca2309cc26703485ecf5
+	sha256sums = 03ca84d89dc4678f2cd9f3a12829aa6d4abeddc5adc2a3e06446116cd31ea17f
 
 pkgname = butterflypack

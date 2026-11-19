@@ -1,0 +1,16 @@
+diff --git a/cmake/butterflypack-config.cmake.in b/cmake/butterflypack-config.cmake.in
+index f12dbbb..8d1cfbe 100644
+--- a/cmake/butterflypack-config.cmake.in
++++ b/cmake/butterflypack-config.cmake.in
+@@ -14,6 +14,11 @@ include(FindPackageHandleStandardArgs)
+ set(${CMAKE_FIND_PACKAGE_NAME}_CONFIG "${CMAKE_CURRENT_LIST_FILE}")
+ find_package_handle_standard_args(${CMAKE_FIND_PACKAGE_NAME} CONFIG_MODE)
+ 
++if(@enable_parsec@)
++  include(CMakeFindDependencyMacro)
++  find_dependency(PaRSEC CONFIG)
++endif()
++
+ if(NOT TARGET ButterflyPACK AND NOT ButterflyPACK_BINARY_DIR)
+   include(${CMAKE_CURRENT_LIST_DIR}/butterflypack-targets.cmake)
+ endif()
