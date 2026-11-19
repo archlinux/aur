@@ -1,6 +1,6 @@
 # Maintainer: Christopher Patrick Fair <christopherpatrickfair@gmail.com>
 pkgname=zource
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="2D radial tree and 3D rotating bubble repository visualizer for Kitty, Ghostty, Foot, and Wayland"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=(
 provides=('zource')
 conflicts=('zource')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chrisfair/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2686f00490a131c0fb812ce0081134ed39d0bad01a319d2f9128488a2f61ed4a')
+sha256sums=('dd47aa7606673c3d701486368a3b1c86b002c43cb7b11450abc623b5f72eb7b1')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
