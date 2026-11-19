@@ -1,0 +1,16 @@
+pkgbase = darkubectl
+	pkgdesc = kubectl-like access to the Hamravesh Darkube platform
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/rahacloud/darkubectl
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go
+	depends = glibc
+	conflicts = darkubectl-bin
+	conflicts = darkubectl-git
+	source = darkubectl-0.15.0.tar.gz::https://github.com/rahacloud/darkubectl/archive/refs/tags/v0.15.0.tar.gz
+	sha256sums = e5d27fb075e957c3435d018c4c1728f2d6b198f9b7b54a9b2faa1a8b6df88665
+
+pkgname = darkubectl
