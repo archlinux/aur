@@ -1,0 +1,20 @@
+pkgbase = ntsync-iocp-dkms-git
+	pkgdesc = Salkim ntsync kernel module with IOCP support (DKMS)
+	pkgver = r272.g58b5ef5
+	pkgrel = 1
+	url = https://github.com/nanomatters/salkim-kernel-modules
+	arch = any
+	license = GPL-2.0-only
+	license = GPL-2.0-only WITH Linux-syscall-note
+	makedepends = git
+	depends = dkms
+	provides = ntsync-iocp-dkms=r272.g58b5ef5
+	provides = ntsync-iocp-git=r272.g58b5ef5
+	provides = NTSYNC-MODULE
+	conflicts = ntsync-iocp-dkms
+	conflicts = ntsync-iocp-git
+	conflicts = salkim-kernel-modules-dkms
+	source = ntsync-iocp::git+https://github.com/nanomatters/salkim-kernel-modules.git
+	b2sums = SKIP
+
+pkgname = ntsync-iocp-dkms-git
