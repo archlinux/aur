@@ -1,6 +1,6 @@
 pkgbase = clubin-bin
 	pkgdesc = Voice, video and screen sharing chat for groups (beta, invite only)
-	pkgver = 0.2.31
+	pkgver = 0.2.32
 	pkgrel = 1
 	url = https://clubin.chat
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = clubin-bin
 	conflicts = clubin
 	options = !strip
 	options = !debug
-	source = clubin-0.2.31+33.deb::https://dl.clubin.chat/stable/linux-x64/clubin-0.2.31+33-linux-x64.deb
-	sha256sums = 1bd781c132ae88e52d00e71f514ef30a22bf2b997e052e6bac2385b90c89c25c
+	source = clubin-0.2.32+34.deb::https://dl.clubin.chat/stable/linux-x64/clubin-0.2.32+34-linux-x64.deb
+	sha256sums = f116cdaff93b886da23d45373aee254fb79678564542c27fc466de9d386aa4b4
 
 pkgname = clubin-bin
