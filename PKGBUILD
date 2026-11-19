@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A zero-allocation reverse proxy and load balancer in Zig ⚡"
 
-pkgver=0.12.0
+pkgver=1.0.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,18 +28,16 @@ source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 		"README-${pkgver}.md::${_ghurlraw}/README.md"
 		"DESIGN-${pkgver}.md::${_ghurlraw}/docs/DESIGN.md"
 		"DOCUMENTATION-${pkgver}.md::${_ghurlraw}/docs/README.md"
-		"TIGER_STYLE-${pkgver}.md::${_ghurlraw}/docs/TIGER_STYLE.md"
-		"IMPLEMENTATION_NOTES-${pkgver}.md::${_ghurlraw}/docs/IMPLEMENTATION_NOTES.md")
+		"TIGER_STYLE-${pkgver}.md::${_ghurlraw}/docs/TIGER_STYLE.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
 sha256sums=('a9e7a0b2ca0bb923c316c0cc1b9f60e8407ebbeb974467cea6b808644b5dd611'
-            '96b5d42cf9c4799988a19552d6629c92e256aa9c8e3db615e89fbfff67af6a98'
-            'a623f720537848c2f712926dad8c73a077ee16b7a0ec391589f74db69ea9a3fd'
-            '82999f3a596ccb33404ebc007a7fee0c08db0b3514271c124a82c9bb1299dfab'
-            'ef10bbdfbb5f0601d6e6e9eaf699c4b882564267ba5743bb9359fb9f89d2a60b'
-            '63c3c92335dc6b423bb9ef6f3725595d9a7752498c4c9f4e4a818e3fdebd230d')
-sha256sums_x86_64=('bfca7ed5ae08a706ddea90915bde64781548ebb558b53121b6ca0a709d8223d9')
-sha256sums_aarch64=('ec913bf167db03eedfb2632d1dd4cdae25591463b7f55bd4b1b9270d280ca25b')
+            '3d684402edc830c47a68a75b906d936a194baaf05c05a3fc609baa6dbf43b0e2'
+            '6dd88f4413d797ced8356b86e1955f1fe57ac598b7fbdfa3dbee76fb6e1f8734'
+            '070284d0fc0366f171956755438ae7ab479d2caf801968c7a4ef0ee3ea00554f'
+            'ef10bbdfbb5f0601d6e6e9eaf699c4b882564267ba5743bb9359fb9f89d2a60b')
+sha256sums_x86_64=('2e75b5453bfd44dd66a1bd48ec5cfcb30ddf6789bc38fcb005588c982e109921')
+sha256sums_aarch64=('7fa0963125d4333c1210f9e256d29f033da0df46354565399cb5dab32ac3d0b7')
 
 
 package() {
@@ -50,8 +48,7 @@ package() {
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 "DESIGN-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/DESIGN.md"
 	install -Dm644 "TIGER_STYLE-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/TIGER_STYLE.md"
-	install -Dm644 "DOCUMENTATION-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/DOCUMENTATIONmd"
-	install -Dm644 "IMPLEMENTATION_NOTES-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/IMPLEMENTATION_NOTES.md"
+	install -Dm644 "DOCUMENTATION-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/DOCUMENTATION.md"
 
 	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
