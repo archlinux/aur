@@ -3,16 +3,16 @@
 # shellcheck disable=SC2148,SC2034,SC2154,SC2164
 # Maintainer: Frederik “Freso” S. Olesen <archlinux at freso.dk>
 pkgname=obs-vertical-canvas
-pkgver=1.6.7
+pkgver=1.6.8
 pkgrel=1
 pkgdesc='Add vertical canvas to OBS'
 arch=('x86_64' 'x86_64_v3')
 url='https://aitum.tv/products/vertical'
 license=('GPL-2.0-or-later')
 depends=('obs-studio>=31.1')
-makedepends=('cmake')
+makedepends=('cmake' 'simde')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Aitum/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('627e1bc4e1b67d9c2627c3a60fd86fcffa80813b95f07f3baa38ae7506266b238633548ca4f7cefeead434e864018f518a74fbf93e52f9b66a65a91bcd5dfe3d')
+b2sums=('9079bb62353e36ca0c6dbdcbdad12eb3e7b591343ee86e81967a31adfe0128106f6d3cdad105facc9db3e7ad18ae1c1995cb110f28a6dd0a86c9101423e06b13')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
