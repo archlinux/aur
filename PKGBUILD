@@ -2,7 +2,7 @@
 # Contributor: robertfoster <morf3089 at gmail dot com>
 
 pkgname=codenomad-bin
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A fast, multi-instance workspace for running OpenCode sessions (Electron build)'
 arch=('x86_64')
@@ -54,8 +54,8 @@ source=("codenomad.desktop"
         "${_distname}.deb::${url}/releases/download/v${pkgver}/${_distname}.deb")
 noextract=("${_distname}.deb")
 b2sums=('959ec0b4bb861e8e0947a71210cfa7448a34274a794786e2079a51ef20df825b917dc280668036b2ad5d4cb1671d7bb51206f33304bf3f902d39b38ccf5dd992'
-        '51acd35f605da58fbd46b37113f5a36cf35f17e449ef11744da8aafdebd250b72e8309a29d259607621c4d6ada8711813cf9a219f3185d82431ec7f918490afe'
-        '9a07c3b6eab6d67185710711047833a6d5dd9a05550cd5c5395b750ca06a3ce26c5f968058744f9ac8752f8749f7fcf97ebaf40cea8ef344b084ab76ab1ee0e1')
+        '1200e66eb498d10ee23b51c89c526716b1582bd0f0c7bcf45d78d4b4687e7e6d28002249e881e4c6c7e75d00775ce2bc2a32c4576e3fe51e8b5e09bc6de46920'
+        '5743f22cc889e5820a9235e7a2055a22f6ac3315a36aed7b004bdc2c5c91ee10e2d87c26f6fbb843f32d7147085e82a244e624e782f23acc22f5fdfaa8d270d7')
 
 package() {
   set -o pipefail
@@ -86,6 +86,8 @@ EOF
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.electron.txt"
   install -Dm644 "$pkgdir/opt/$pkgname/LICENSES.chromium.html" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
-  install -Dm644 "$pkgdir/opt/$pkgname/resources/node/linux-x64/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.nodejs.txt"
+  # 1.1.0 dropped the bundled Node runtime (and its LICENSE); npm now runs on
+  # Electron's built-in Node, so ship npm's license instead.
+  install -Dm644 "$pkgdir/opt/$pkgname/resources/node/linux-x64/npm/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.npm.txt"
 }
