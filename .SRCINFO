@@ -1,6 +1,6 @@
 pkgbase = sdme-bin
 	pkgdesc = The systemd machine editor (prebuilt static binary)
-	pkgver = 0.22.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://sdme.io
 	install = sdme.install
@@ -15,11 +15,11 @@ pkgbase = sdme-bin
 	options = !strip
 	options = !debug
 	backup = etc/apparmor.d/sdme-default
-	source = LICENSE-0.22.0::https://raw.githubusercontent.com/fiorix/sdme/v0.22.0/LICENSE
+	source = LICENSE-0.22.1::https://raw.githubusercontent.com/fiorix/sdme/v0.22.1/LICENSE
 	sha256sums = 1bdeb4314572553450c1bb5d29e40f4d55f30baa6a91a0b08cc69d7d2336dd68
-	source_x86_64 = sdme-0.22.0-x86_64::https://github.com/fiorix/sdme/releases/download/v0.22.0/sdme-x86_64-linux
-	sha256sums_x86_64 = 600e3740e860496d835fda7140c56da11ad713cc0defffa479b4c694a7f224a5
-	source_aarch64 = sdme-0.22.0-aarch64::https://github.com/fiorix/sdme/releases/download/v0.22.0/sdme-aarch64-linux
-	sha256sums_aarch64 = 6a40f74d701034ad1789478615ca14e5b609de60ba6acac30cdb70448911457e
+	source_x86_64 = sdme-0.22.1-x86_64::https://github.com/fiorix/sdme/releases/download/v0.22.1/sdme-x86_64-linux
+	sha256sums_x86_64 = 9b4958987ccad52a59862702c3541b0239d16674e373f1901866c4f022952d0f
+	source_aarch64 = sdme-0.22.1-aarch64::https://github.com/fiorix/sdme/releases/download/v0.22.1/sdme-aarch64-linux
+	sha256sums_aarch64 = 04e891a4cfef0fe21af13e6467c2752cd2dab15d7c157b1861bed37491aa6a19
 
 pkgname = sdme-bin

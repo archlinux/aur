@@ -6,7 +6,7 @@
 # asset, so they are the published ones rather than something recomputed here.
 
 pkgname=sdme-bin
-pkgver=0.22.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc='The systemd machine editor (prebuilt static binary)'
 arch=('x86_64' 'aarch64')
@@ -34,8 +34,8 @@ source=("LICENSE-$pkgver::https://raw.githubusercontent.com/fiorix/sdme/v$pkgver
 source_x86_64=("sdme-$pkgver-x86_64::$_rel/sdme-x86_64-linux")
 source_aarch64=("sdme-$pkgver-aarch64::$_rel/sdme-aarch64-linux")
 sha256sums=('1bdeb4314572553450c1bb5d29e40f4d55f30baa6a91a0b08cc69d7d2336dd68')
-sha256sums_x86_64=('600e3740e860496d835fda7140c56da11ad713cc0defffa479b4c694a7f224a5')
-sha256sums_aarch64=('6a40f74d701034ad1789478615ca14e5b609de60ba6acac30cdb70448911457e')
+sha256sums_x86_64=('9b4958987ccad52a59862702c3541b0239d16674e373f1901866c4f022952d0f')
+sha256sums_aarch64=('04e891a4cfef0fe21af13e6467c2752cd2dab15d7c157b1861bed37491aa6a19')
 
 package() {
     # Install first, then run the installed copy: makepkg symlinks sources from
