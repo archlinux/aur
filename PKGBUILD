@@ -1,7 +1,7 @@
 # Maintainer: Benoît Rouits <brouits at free dot fr>
 pkgname=qabc
-pkgver=1.15
-pkgrel=1
+pkgver=1.16
+pkgrel=2
 pkgdesc="ABC music notation minimal GUI."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/be1/qabc"
@@ -10,7 +10,7 @@ depends=('qt6-base' 'abcm2ps' 'abcmidi' 'fluidsynth' 'soundfont-fluid' 'shared-m
 makedepends=('qt6-tools')
 groups=(abc)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/be1/qabc/archive/refs/tags/$pkgver.tar.gz" "soundfont.patch")
-sha512sums=('b48cc3270f97d291e1ff0d09105307854012d5c4b3af4e5525f954704b40ef24263b50a1f8df68b66dbc82de23f02fdea68212b4abecda293facce53af102cab' 'edf3a10be120a452a4b024f0adb55bb5a4ec1ffcb56fcf7d8bdeb83189152baa5ebe77c873167d6ea23472b1575ffecab6c0810371a40234f2bda03a29dc00f8')
+sha512sums=('96bbb8a8ea3b33c851e45528737e29528f463e929ebc3513e9b6443970c2a5fe9f178e98c9e4579f0a5bef1a5b5046cc3ff282af5e8edf3419091e328e0b2b89' 'edf3a10be120a452a4b024f0adb55bb5a4ec1ffcb56fcf7d8bdeb83189152baa5ebe77c873167d6ea23472b1575ffecab6c0810371a40234f2bda03a29dc00f8')
 
 prepare() {
   cd $pkgname-$pkgver
