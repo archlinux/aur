@@ -1,6 +1,6 @@
 pkgbase = pyftrace
 	pkgdesc = Python function tracer
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/kangtegong/pyftrace
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = pyftrace
 	makedepends = python-installer
 	depends = python
 	provides = pyftrace
-	source = pyftrace-0.4.0.tar.gz::https://github.com/kangtegong/pyftrace/archive/v0.4.0.tar.gz
-	sha256sums = 6e4c6dd5e6e58d883387288877721ba9ae131d02acce4d83bae191dea0b6c576
+	source = pyftrace-0.4.1.tar.gz::https://github.com/kangtegong/pyftrace/archive/v0.4.1.tar.gz
+	sha256sums = 4da6c91363fcce0e036629eb85b9b1f0f195dc573bd35e596b85577afa9e7644
 
 pkgname = pyftrace

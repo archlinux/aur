@@ -2,7 +2,7 @@
 
 pkgauthor="kangtegong"
 pkgname="pyftrace"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Python function tracer"
 
@@ -23,7 +23,7 @@ depends=('python')
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/v${pkgver}.tar.gz")
-sha256sums=('6e4c6dd5e6e58d883387288877721ba9ae131d02acce4d83bae191dea0b6c576')
+sha256sums=('4da6c91363fcce0e036629eb85b9b1f0f195dc573bd35e596b85577afa9e7644')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/" || exit
