@@ -1,19 +1,19 @@
 pkgbase = auggie
 	pkgdesc = Augment Code's agentic AI CLI for context-aware code analysis and automation
-	pkgver = 0.37.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://www.augmentcode.com
 	arch = any
 	license = LicenseRef-auggie
 	makedepends = npm
-	depends = nodejs>=20
+	depends = nodejs>=20.6.0
 	provides = auggie-bin
 	conflicts = auggie-bin
 	replaces = auggie-bin
-	noextract = auggie-0.37.1.tgz
-	source = https://registry.npmjs.org/@augmentcode/auggie/-/auggie-0.37.1.tgz
+	noextract = auggie-1.2.2.tgz
+	source = https://registry.npmjs.org/@augmentcode/auggie/-/auggie-1.2.2.tgz
 	source = auggie.js
-	b2sums = 09201d7a5d093e999809d6753d5564b7cbabf9b7a12b1eaa7690fff7ae47e3fa0c9f92f6f61f23d7ceb9c6c35e0f2faf19dba48c43a939e29be5a8e91d7c7837
-	b2sums = 38b4443caf787bf354e9b64fe09eb3f1e995fa6d58502ca4a3f8a094585d44aab4370e326009d1938a790afd291138c7906f7a66ef2995720c98382b779ef3b5
+	b2sums = 2d3b2dc7e520dfc929b6c91848d1144c63add959745fff55382f9e849b10288c5ad3303e4c688374006e81fab87c9fc58de4e0e1087817edf8991aa2ee3655ea
+	b2sums = 2c8f1a5c09118a74bac9f426dd5602652c71325e61a001198753b64337567e5696a44ba29d6cea3ee344842d71ad89b5f71137f017166f3a2bd140d2295a7308
 
 pkgname = auggie

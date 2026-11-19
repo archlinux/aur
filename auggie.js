@@ -1,14 +1,14 @@
 #!/usr/bin/node
 // Pacman-managed wrapper: disable daemon auto-update and block npm self-upgrade.
 process.env.AUGMENT_DISABLE_AUTO_UPDATE = '1';
-const REAL = '/usr/lib/node_modules/@augmentcode/auggie/augment.mjs';
+const REAL = '/usr/lib/node_modules/@augmentcode/auggie/auggie-v2.mjs';
 const MSG = 'Update with your AUR helper.';
 function deny() {
   console.error(MSG);
   process.exit(1);
 }
 const cmd = process.argv.slice(2).find((a) => a !== '--' && !String(a).startsWith('-'));
-if (cmd === 'update' || cmd === 'upgrade') deny();
+if (cmd === 'upgrade') deny();
 const cp = require('child_process');
 function blocked(file, args) {
   const name = String(file).replace(/\\/g, '/').split('/').pop();
