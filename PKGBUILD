@@ -1,7 +1,7 @@
 # Maintainer:  Rubin Simons <me@rubin55.org>
 
 pkgname=pupdate
-pkgver=5.10.1
+pkgver=5.10.2
 pkgrel=1
 pkgdesc="Pupdate, a thing for updating your Analogue Pocket"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('dotnet-runtime-10.0' 'gcc-libs' 'glibc')
 makedepends=('dotnet-sdk-10.0')
 conflicts=('pupdate-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b49965866b26241a14ed9876c720f413bfc0eece6df1a91d44e42c451f925165')
+sha256sums=('f74ae86b12ad3c67745e8746a51326ab95b0eafbf6b20ae6228a8ed192c713ca')
 
 _dotnet_env() {
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
