@@ -1,0 +1,27 @@
+pkgbase = rust-anything-bin
+	pkgdesc = Incrementally port applications to Rust and verify them against recorded behavior
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/erkamyaman/rust-anything
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc>=2.34
+	depends = libgcc
+	optdepends = rust: build Rust ports and run gate checks with Cargo, rustfmt, and Clippy
+	optdepends = nodejs: record JavaScript and TypeScript behavior
+	optdepends = python: run the Python and C recording and replay harnesses
+	optdepends = gcc: compile C originals for recording
+	optdepends = go: record Go behavior
+	optdepends = ruby: record Ruby behavior
+	optdepends = java-environment: provide javac and java for the Java harness
+	provides = rust-anything=2.0.0
+	conflicts = rust-anything
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/erkamyaman/rust-anything/releases/download/v2.0.0/rust-anything-v2.0.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 52145ac76f4cfe3beff25c66d7d129a6e791b31a43f8d36cef3a49083d20a8a9
+	source_aarch64 = https://github.com/erkamyaman/rust-anything/releases/download/v2.0.0/rust-anything-v2.0.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7bde02f15cf1009acef5d1bb1c14b5002a6c727a2216f4316f20074f0ed87ec6
+
+pkgname = rust-anything-bin
