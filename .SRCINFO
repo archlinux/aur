@@ -1,7 +1,7 @@
 pkgbase = claudemom
 	pkgdesc = Turn an Anthropic-compatible API key into the Claude Desktop login mode, with localization and dictation
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BigPizzaV3/ClaudeMom
 	arch = x86_64
 	license = AGPL-3.0-only

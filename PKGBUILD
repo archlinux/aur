@@ -17,7 +17,7 @@
 
 pkgname=claudemom
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn an Anthropic-compatible API key into the Claude Desktop login mode, with localization and dictation"
 arch=('x86_64')
 url="https://github.com/BigPizzaV3/ClaudeMom"
@@ -128,7 +128,7 @@ package() {
 #!/bin/sh
 # The binary embeds its frontend and runtime assets; Node.js is found through
 # PATH (or CLAUDE_LOCAL_NODE) by the local compatibility service.
-exec /usr/lib/claudemom/claude-mom "$@"
+exec /usr/lib/claudemom/claudemom "$@"
 LAUNCHER
 
   # Upstream ships a 512px icon plus the 32/128/256px Tauri variants.
