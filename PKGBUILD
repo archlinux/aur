@@ -1,6 +1,6 @@
 # Maintainer: Nilesh Kevlani <njkevlani@gmail.com>
 pkgname=tolaria-bin
-pkgver=2026.11.10
+pkgver=2026.11.18
 pkgrel=1
 pkgdesc="Personal knowledge and life management app"
 arch=('x86_64')
@@ -16,8 +16,8 @@ optdepends=(
 options=('!emptydirs' '!strip')
 makedepends=('libarchive') # For bsdtar
 
-source=("https://github.com/refactoringhq/tolaria/releases/download/v2026-11-10/Tolaria_2026.11.10_amd64.deb")
-sha256sums=('ec211209a22e6c307d2eaaae0750749552af90a471c51b1b9f55a3b03d04e620')
+source=("https://github.com/refactoringhq/tolaria/releases/download/v2026-11-18/Tolaria_2026.11.18_amd64.deb")
+sha256sums=('441384f53af6e3a5cfbfdf85e4adab1e858b2785c3db43d571f19c5a3a4cfd97')
 
 package() {
 	bsdtar -xf data.tar.gz -C "$pkgdir/"
@@ -26,3 +26,4 @@ package() {
 	rm -rf "${pkgdir}/usr/share/doc"
 	rm -rf "${pkgdir}/usr/share/lintian"
 }
+
