@@ -1,6 +1,6 @@
 pkgbase = negpy-bin
 	pkgdesc = Tool for processing film negatives
-	pkgver = 0.69.0
+	pkgver = 0.70.0
 	pkgrel = 1
 	url = https://github.com/marcinz606/NegPy
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = negpy-bin
 	provides = negpy
 	options = !strip
 	options = !debug
-	source = NegPy-0.69.0-x86_64.AppImage::https://github.com/marcinz606/NegPy/releases/download/0.69.0/NegPy-0.69.0-x86_64.AppImage
-	sha256sums = cc51ac2c4076b8c92699cf5bda350ee71daaf72c00ef6f07e74a6f42ca6451fd
+	source = NegPy-0.70.0-x86_64.AppImage::https://github.com/marcinz606/NegPy/releases/download/0.70.0/NegPy-0.70.0-x86_64.AppImage
+	sha256sums = fc1b2155f102b467151c132cbab137d6c19ceef513dce554b231dfb2a3b4c01f
 
 pkgname = negpy-bin
