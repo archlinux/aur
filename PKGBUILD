@@ -3,7 +3,8 @@
 
 _hgname=zilf
 pkgname="${_hgname}-hg"
-pkgver=r1698.cb4aebdf35d5
+epoch=1
+pkgver=1.10.r1.cb4aebdf35d5
 pkgrel=1
 pkgdesc="A set of tools for working with the ZIL interactive fiction language, including a compiler, assembler, disassembler, and game library. (mercurial version)"
 arch=('x86_64')
@@ -33,7 +34,8 @@ _getarch-dotnet() {
 
 pkgver() {
   cd "${srcdir}/${_hgname}"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  hg log -r . --template '{latesttag}.r{latesttagdistance}.{node|short}\n'
+  # printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 build() {
