@@ -1,7 +1,7 @@
 pkgbase = caqtdm
 	pkgdesc = caQtDM is a popular Epics framework for developing panels
 	pkgver = 4.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://caqtdm.github.io/
 	arch = x86_64
 	license = GPL-3.0-or-later

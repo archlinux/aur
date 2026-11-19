@@ -2,7 +2,7 @@
 _pkgsrc=caqtdm
 pkgname='caqtdm'
 pkgver=4.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc='caQtDM is a popular Epics framework for developing panels'
 arch=('x86_64')
 url='https://caqtdm.github.io/'
@@ -125,6 +125,10 @@ EOF
     ln -sf /opt/caqtdm/lib/qt6/adl2ui          "$pkgdir/usr/bin/adl2ui"
     ln -sf /opt/caqtdm/lib/qt6/edl2ui          "$pkgdir/usr/bin/edl2ui"
     ln -sf /opt/caqtdm/lib/qt6/caqtdm_designer "$pkgdir/usr/bin/caqtdm_designer"
+
+    # Expose control-system plugins at the path searched by caQtDM.
+    ln -s /opt/caqtdm/lib/qt6/controlsystems \
+        "$pkgdir/usr/lib/qt6/plugins/controlsystems"
 
     # Symlink Qt Designer plugins
     local _designerdir="$pkgdir/usr/lib/qt6/plugins/designer"
