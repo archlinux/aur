@@ -1,7 +1,7 @@
 # Maintainer: Vincent Wang <wzh20070720@outlook.com>
 
 pkgname=flexconnect
-pkgver=1.3.8
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Flexible cross-platform AnyConnect client"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('systemd' 'gtk3' 'libayatana-appindicator' 'libnotify')
 makedepends=('go' 'git' 'pkgconf')
 conflicts=('flexconnect-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nanakusa-electronics/FlexConnect/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('acde265f31d1ca88ac16f539d7390d7e1e51495db915565444e5a05ad7ae3a28')
+sha256sums=('9050f1b3d096ef61928c304300a1e2cac20f1dd522671d72524fdbe62951e261')
 
 build() {
   cd "$srcdir/FlexConnect-$pkgver"
