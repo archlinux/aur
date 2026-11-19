@@ -21,6 +21,7 @@ depends=(
 )
 makedepends=('cargo' 'gettext')
 optdepends=(
+  'bubblewrap: thumbnailers in a sandbox (recommended)'
   'ffmpegthumbnailer: video thumbnails'
   'ffmpeg: video thumbnails without ffmpegthumbnailer'
   'mediainfo: the Media Info tab in Properties'

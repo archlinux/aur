@@ -18,6 +18,7 @@ pkgbase = arkha
 	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = pango
+	optdepends = bubblewrap: thumbnailers in a sandbox (recommended)
 	optdepends = ffmpegthumbnailer: video thumbnails
 	optdepends = ffmpeg: video thumbnails without ffmpegthumbnailer
 	optdepends = mediainfo: the Media Info tab in Properties
