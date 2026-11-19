@@ -1,6 +1,6 @@
 pkgbase = fallow
 	pkgdesc = Codebase intelligence for TypeScript and JavaScript
-	pkgver = 3.43.2
+	pkgver = 3.44.0
 	pkgrel = 1
 	url = https://github.com/fallow-rs/fallow
 	install = fallow.install
@@ -11,7 +11,7 @@ pkgbase = fallow
 	depends = glibc
 	depends = libgcc
 	options = !lto
-	source = fallow-3.43.2.tar.gz::https://github.com/fallow-rs/fallow/archive/refs/tags/v3.43.2.tar.gz
-	sha256sums = 771644aa95d7df0ea6deef3e55c0610205d30190af58e976c64ed881e823d49a
+	source = fallow-3.44.0.tar.gz::https://github.com/fallow-rs/fallow/archive/refs/tags/v3.44.0.tar.gz
+	sha256sums = 75512f1665601b7471b5843313b87261305000329067eb7976392ffd66e71260
 
 pkgname = fallow
