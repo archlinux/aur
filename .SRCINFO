@@ -1,0 +1,17 @@
+pkgbase = ruby-pass-qt
+	pkgdesc = A simple GUI for pass on Linux.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/souk4711/ruby-pass-at
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = ruby
+	depends = ruby-qt6-qtwidgets
+	depends = pass
+	depends = pass-otp
+	depends = pwgen
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ruby-pass-qt-2.1.2.gem
+	sha256sums = 54dfcfedfcfa6c4da197d1459636bf575f741ba1b65007342e39cb4e13c171f7
+
+pkgname = ruby-pass-qt
