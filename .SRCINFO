@@ -1,7 +1,7 @@
 pkgbase = fingwit
 	pkgdesc = Fingerprint Configuration Tool
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xapp-project/fingwit
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -21,7 +21,7 @@ pkgbase = fingwit
 	source = fingwit-1.1.2.tar.gz::https://github.com/xapp-project/fingwit/archive/refs/tags/1.1.2.tar.gz
 	source = license.patch
 	source = fingwit_pam.conf
-	sha256sums = f61e1f3c00c1e31f9c04f2432d2a3bab59147d5eb41779c3be4ce1d45fe75a02
+	sha256sums = 3f0a9dc6f961cfa6519b00dc6380ac207721ae6438bb79ba841db30e3248c83b
 	sha256sums = c93378f42af280a724960c895b2007dabaa028368d1aba70d0cde6044f475222
 	sha256sums = a5df2e143c32f1a92d4f56e26f630165340ef988fcedae73f380987d4dc3d0ab
 
