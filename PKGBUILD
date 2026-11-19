@@ -1,8 +1,8 @@
 # Maintainer: Ivan Krivosheev <py.krivosheev@gmail.com>
 
 pkgname=acpi-backlight-notify
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=0
 pkgdesc="ACPI backlight notification daemon"
 arch=(x86_64)
 url="https://github.com/ikrivosheev/acpi-backlight-notify"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(libnotify glib2)
 makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('b28b2a1e328d9e67b5889c5529fa3eb4')
+md5sums=('065c388d590e650626ff07eca7e0ef95')
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"

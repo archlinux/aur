@@ -1,14 +1,14 @@
 pkgbase = acpi-backlight-notify
 	pkgdesc = ACPI backlight notification daemon
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 1.0.1
+	pkgrel = 0
 	url = https://github.com/ikrivosheev/acpi-backlight-notify
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = libnotify
 	depends = glib2
-	source = acpi-backlight-notify-1.0.0.tar.gz::https://github.com/ikrivosheev/acpi-backlight-notify/archive/v1.0.0.tar.gz
-	md5sums = 170568e724d01c70c9ed7f3fde8957f3
+	source = acpi-backlight-notify-1.0.1.tar.gz::https://github.com/ikrivosheev/acpi-backlight-notify/archive/v1.0.1.tar.gz
+	md5sums = 065c388d590e650626ff07eca7e0ef95
 
 pkgname = acpi-backlight-notify
