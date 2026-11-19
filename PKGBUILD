@@ -2,7 +2,7 @@
 # Your computer should have a little guy in it.
 pkgbase=gremlincore
 pkgname=('gremlincore' 'meatbag')
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 arch=('any')
 url="https://github.com/KohlJary/gremlincore"
