@@ -1,6 +1,6 @@
 pkgbase = dsh-tauri-desktop-bin
 	pkgdesc = Native desktop application for DeepSeek Harness (official binary)
-	pkgver = 0.31.7
+	pkgver = 0.32.0
 	pkgrel = 1
 	url = https://github.com/dsh-tauri/deepseek-harness-desktop
 	arch = x86_64
@@ -41,16 +41,16 @@ pkgbase = dsh-tauri-desktop-bin
 	depends = xdg-utils
 	optdepends = git: Git integration and workspace operations
 	optdepends = xdg-desktop-portal: Native directory selection (requires a desktop-specific backend)
-	provides = dsh-tauri-desktop=0.31.7
+	provides = dsh-tauri-desktop=0.32.0
 	conflicts = dsh-tauri-desktop
 	conflicts = deepseek-harness-desktop
 	options = !strip
 	options = !debug
-	source = dsh-tauri-desktop-bin-0.31.7-LICENSE::https://raw.githubusercontent.com/dsh-tauri/deepseek-harness-desktop/v0.31.7/LICENSE
-	source = dsh-tauri-desktop-bin-0.31.7-LICENSE.details::https://raw.githubusercontent.com/dsh-tauri/deepseek-harness-desktop/v0.31.7/LICENSE.details
+	source = dsh-tauri-desktop-bin-0.32.0-LICENSE::https://raw.githubusercontent.com/dsh-tauri/deepseek-harness-desktop/v0.32.0/LICENSE
+	source = dsh-tauri-desktop-bin-0.32.0-LICENSE.details::https://raw.githubusercontent.com/dsh-tauri/deepseek-harness-desktop/v0.32.0/LICENSE.details
 	sha256sums = a9a6b4fb724c6a42f68cc377969ee2816035367ab127aceba7f6af9da3656e5d
 	sha256sums = 3d1e8bb97f9047b71888b14c063b12ed1ee3d5980f122f02c1f150dab6e5f8d0
-	source_x86_64 = https://github.com/dsh-tauri/deepseek-harness-desktop/releases/download/v0.31.7/Deepseek.Harness.Desktop_0.31.7_amd64.deb
-	sha256sums_x86_64 = 906170345cca966ecea1c149a4f985dacc4eb30ba9074b5b195bb1eb339a2bda
+	source_x86_64 = https://github.com/dsh-tauri/deepseek-harness-desktop/releases/download/v0.32.0/Deepseek.Harness.Desktop_0.32.0_amd64.deb
+	sha256sums_x86_64 = f42858675df2018fc1de97cadb56ad1bd0c7e5d7bc744a1eacd7293678aeed38
 
 pkgname = dsh-tauri-desktop-bin
