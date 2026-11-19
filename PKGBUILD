@@ -1,7 +1,7 @@
 # Maintainer: Alex S. <shantanna_at_hotmail_dot_com>
 
 pkgname=pandacode
-pkgver=0.3.129
+pkgver=0.3.133
 pkgrel=1
 pkgdesc="Lightweight coding agent workspace"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ _appimage="PandaCode-Linux-${CARCH}.AppImage"
 
 source_x86_64=("PandaCode-Linux-x86_64.AppImage::https://github.com/aicodeking/pandacode/releases/download/v${pkgver}/PandaCode-Linux-x86_64.AppImage")
 source_aarch64=("PandaCode-Linux-aarch64.AppImage::https://github.com/aicodeking/pandacode/releases/download/v${pkgver}/PandaCode-Linux-aarch64.AppImage")
-sha256sums_x86_64=('9aa36a4bbd35c9d70e79f93cc41fa652ed131a33bde7775f21023889bad0cc9c')
-sha256sums_aarch64=('97d5a277f3c51474d4c49b4fe783387310f08a5dcae8202108b714cda03e7fa4')
+sha256sums_x86_64=('24a0e8b06c1f2c2b09ad93b2ee195786b64f7923ad23969d0a318b52439e76b1')
+sha256sums_aarch64=('3bc0e7aba99d04111a1dd04ead593fe5cbc5a444c1ea6e9cb3077296b229b146')
 prepare() {
   cd "${srcdir}"
   chmod +x "${_appimage}"
