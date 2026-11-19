@@ -1,6 +1,6 @@
 pkgbase = zeppbridge-git
 	pkgdesc = Local-first desktop companion for Amazfit and Zepp health data
-	pkgver = 3.2.0.r596.g6bf7b7f0
+	pkgver = 3.2.0.r599.g18ce721a
 	pkgrel = 1
 	url = https://github.com/lingcang728/ZeppBridge
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = zeppbridge-git
 	depends = webkit2gtk-4.1
 	depends = xdg-utils
 	optdepends = gnome-keyring: Secret Service credential storage, or use another Secret Service provider
-	provides = zeppbridge=3.2.0.r596.g6bf7b7f0
+	provides = zeppbridge=3.2.0.r599.g18ce721a
 	conflicts = zeppbridge
 	conflicts = zeppbridge-bin
 	options = !lto

@@ -1,6 +1,6 @@
 # Maintainer: ZeppBridge contributors (https://github.com/lingcang728/ZeppBridge)
 pkgname=zeppbridge-git
-pkgver=3.2.0.r596.g6bf7b7f0
+pkgver=3.2.0.r599.g18ce721a
 pkgrel=1
 pkgdesc='Local-first desktop companion for Amazfit and Zepp health data'
 arch=('x86_64')
@@ -35,7 +35,7 @@ prepare() {
   # Fetch locked dependencies here; build() itself does not need the network.
   # npm 12 otherwise treats the lockfile's mirror URLs as disallowed remote URLs.
   # Explicitly run the project's patch hook, independent of npm script policy.
-  npm ci --ignore-scripts --no-audit --no-fund --replace-registry-host=registry.npmmirror.com
+  npm ci --ignore-scripts --no-audit --no-fund --replace-registry-host=npmjs
   npm run --if-present postinstall
   cargo fetch --locked --manifest-path src-tauri/Cargo.toml \
     --target "$(rustc -vV | sed -n 's/^host: //p')"
