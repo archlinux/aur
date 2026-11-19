@@ -2,7 +2,7 @@
 
 _plugin=frameprops-extended
 pkgname=vsview-${_plugin}
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A vsview plugin adding more categories and formatters to the built-in vsview frameprops tool"
 arch=("x86_64")
