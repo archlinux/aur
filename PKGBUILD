@@ -1,7 +1,7 @@
 # Maintainer: Atmosphera App <atmosphera-app@proton.me>
 
 pkgname=atmosphera
-pkgver=0.9.3
+pkgver=0.10.0
 pkgrel=1
 _gitname="$pkgname-$pkgver"
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell"
@@ -12,6 +12,7 @@ makedepends=()
 depends=(
   'quickshell'
   'qt6-dbusqml>=1.1.0'
+  'qt6-configqml>=0.5.1'
   'qt6-pipewirespectrum'
   'qt6-xdgiconqml-git'
   'imagemagick'
@@ -23,6 +24,8 @@ depends=(
   'python-gobject'
   'wlr-randr'
   'wl-clipboard'
+  'glib2'
+  'udisks2'
   'git'
 )
 optdepends=(
@@ -47,7 +50,7 @@ provides=('atmosphera' 'xdg-desktop-portal-impl')
 conflicts=('atmosphera-git')
 install=atmosphera.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d26b4a3fa867e4db1835b400170325ddcfc492ef47926f35a553a3cb62f8f601')
+sha256sums=('91dcf9001416931045863664e9a15c8fec2957f3b43549376cc01065346af9c4')
 
 package() {
   cd "$srcdir/$_gitname"
@@ -59,15 +62,10 @@ package() {
   # Exclude dev tooling and temp files from the installed tree
   rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/dev" "$pkgdir/etc/xdg/quickshell/atmosphera/Scripts/dev"
 
-  # Bundled per-process lock screen (the shell spawns it as
-  # `qs -c atmosphera-lockscreen`): sibling config whose symlinks into the
-  # main tree let the shared lock UIs render with fresh per-process
-  # singletons.
-  install -dm755 "$pkgdir/etc/xdg/quickshell/atmosphera-lockscreen"
-  install -Dm644 Quickshell/atmosphera-lockscreen/shell.qml "$pkgdir/etc/xdg/quickshell/atmosphera-lockscreen/shell.qml"
-  for d in Assets Bindings Commons Configs Helpers Modules Services Widgets builtin; do
-    ln -sfn "../atmosphera/$d" "$pkgdir/etc/xdg/quickshell/atmosphera-lockscreen/$d"
-  done
+  # Quickshell scans every QML file in imported directories, including unused
+  # shell panels and registries. Install the reviewed runtime closure instead
+  # of exposing those directories wholesale to the per-process locker.
+  bash Scripts/bash/install-locker-configs "$PWD" "$pkgdir/etc/xdg/quickshell"
   rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/tmp"
 
   # Install dispatcher to PATH (handlers resolved via SELF_DIR auto-detect)
