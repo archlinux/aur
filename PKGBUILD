@@ -11,7 +11,7 @@ depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad'
          'xdg-desktop-portal' 'zenity')
 makedepends=('rust' 'cargo')
 source=("https://github.com/Paul-sinbud2004/lambo-subtitle-edit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('d2ebe054c07764e020a6169eb86bc706c8f6db2beaf64a82921cc1711ef7094d')
 
 prepare() {
     cd "$pkgname-$pkgver"
