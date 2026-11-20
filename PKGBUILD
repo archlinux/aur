@@ -1,7 +1,7 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-git
-pkgver=r937.934c5c5
+pkgver=r944.efa2f3c
 pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
@@ -47,7 +47,7 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	# install-wsi.sh clones ferriscope into target/ferriscope-src/v<version>.
 	local ferriscope
-	ferriscope=$(echo target/ferriscope-src/v*)
+	ferriscope=$(printf '%s\n' target/ferriscope-src/v* | sort -V | tail -n1)
 	install -Dm644 "$ferriscope/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.ferriscope"
 	install -Dm644 "$ferriscope/protocol/ferriscope-swapchain-v1.xml" \
 		"$pkgdir/usr/share/licenses/$pkgname/ferriscope-swapchain-v1.xml"
