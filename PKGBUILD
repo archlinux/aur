@@ -6,7 +6,7 @@
 
 pkgname=lib32-imlib2
 _pkgname=imlib2
-pkgver=1.12.6
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Library that does image file loading and saving as well as rendering, manipulation, arbitrary polygon support, lib32'
 url='https://sourceforge.net/projects/enlightenment/'
@@ -26,7 +26,7 @@ optdepends=('lib32-libid3tag: ID3 loader'
             'lib32-libwebp: WEBP loader')
 provides=('libImlib2.so')
 source=("${_pkgname}::git+https://git.enlightenment.org/old/legacy-imlib2.git#tag=v${pkgver}")
-sha512sums=('084933f76c30038c2ec96be6bda7cd029ffd17b07dd6804832abe2803a3276eb30b8186dca74bf77f18068f6dc8b93393097b15fc1a00ba83dbce48a3dae2457')
+sha512sums=('848fd1743ade5d6e40432d3dc7d91a2fe4a2740f783632ad376dfb2de5be163d10e866ebeb373e842a665280caca0601ddc007d8ef8f4db71bdf8509151d2e8d')
 
 prepare() {
   cd "${_pkgname}"
