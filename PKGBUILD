@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=kiro-ide
-pkgver=1.4.178
+pkgver=1.4.236
 pkgrel=1
 epoch=2
 pkgdesc='An agentic AI IDE with spec-driven development from prototype to production'
@@ -40,10 +40,11 @@ depends=(alsa-lib
          mesa
          nspr
          nss
-         openssl
+         openssl-3
          pango
          systemd-libs
-         util-linux-libs)
+         util-linux-libs
+         webkit2gtk-4.1)
 conflicts=(kiro)
 options=(!debug !strip)
 _baseurl=https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/$pkgver/deb
@@ -51,8 +52,8 @@ source=($pkgname-$pkgver.deb::$_baseurl/$pkgname-$pkgver-stable-linux-x64.deb
         $pkgname-$pkgver-deb-signature.bin::$_baseurl/signature.bin
         $pkgname-$pkgver-certificate.pem::$_baseurl/certificate.pem
         Kiro-LICENSE.txt)
-b2sums=('00a1beca4c815156a2004a913941af82d4918da41d76386d1218579bb5eac44347488f1913023d9c7a602c16e3bde01e638e103e20aa6149407a9228e62ad6ed'
-        '5a073e1bc501ceae22a24007a429046b0d30eb1b345245f614b3459b36924aa0e76aa63ed1d0359d633cfdb18723b20b8029825cab7eeefca2de07369a532fd1'
+b2sums=('4ce8914db74d0897f05a39f7ad246de256c40a8e0f47928d591936188c633922b63dde8cb2214d9e877ab6addc65b51b1d65c95398e63c2206b44a1d3b202978'
+        'b210a195da0515ad2b5b5b1a505e16d4655fc0199bd3db605ac48eae89c41e496761651144dad405847ffcd3c582b3f426828343929829981596dc3603bbf4a9'
         '4cba4d51523a883653b28e04abc4a0e444d7672636153be9c99058b4469137ab2c591466d9452c5471e1577c6ce9a54edca28f14c01e6d66b36b72eb53f92bc8'
         '4fee11387ffa92e8fba85ca53dcd51906efb5aa0d581002510a66e63916e439c836539de374db5e5b5a4470a1790b6dc0348e7ceb555a8de4dd5210b6c0f7a01')
 
@@ -83,7 +84,7 @@ package() {
 
     install -Dm644 appdata/kiro.appdata.xml -t "$pkgdir/usr/share/metainfo"
     install -Dm644 applications/kiro.desktop -t "$pkgdir/usr/share/applications"
-    install -Dm644 applications/kiro-url-handler.desktop -t "$pkgdir/usr/share/applications"
+    install -Dm644 applications/kiro.UrlHandler.desktop -t "$pkgdir/usr/share/applications"
     install -Dm644 pixmaps/code-oss.png "$pkgdir/usr/share/pixmaps/kiro.png"
     install -Dm644 mime/packages/kiro-workspace.xml -t "$pkgdir/usr/share/mime/packages"
     install -Dm644 bash-completion/completions/kiro -t "$pkgdir/usr/share/bash-completion/completions"
