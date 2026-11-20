@@ -26,12 +26,25 @@ url='https://github.com/vtium/vtium'
 # tables made from Unicode's data (Unicode-3.0) and X.Org's color names
 # (MIT-open-group and MIT), which COPYING lists.
 license=('MIT' 'OFL-1.1' 'Unicode-3.0' 'MIT-open-group')
-makedepends=('cargo' 'git' 'libxkbcommon' 'seatd' 'systemd-libs')
+# fontforge runs Nerd Fonts' font patcher, which builds Cullet Mono for a
+# tag from 0.1.0-alpha.10 on.
+makedepends=('cargo' 'git' 'libxkbcommon' 'seatd' 'systemd-libs' 'fontforge')
 options=('!debug')
+# vtium's own source, then the font sources vtium pins in
+# tools/fonts/pins.tsv and tools/cullet-mono/pins.tsv from 0.1.0-alpha.10
+# on, at the SHA-256 each pin names: Terminus 4.49.1's release archive,
+# Terminus (TTF) 4.49.3 and Nerd Fonts' font patcher 3.4.0. prepare() hands
+# them to vtium's tools whole, so makepkg leaves them packed. An earlier
+# tag uses none of them.
 source=("vtium::git+https://github.com/vtium/vtium.git#tag=${_tag}?signed"
-        'terminus.vtfrit')
+        'https://downloads.sourceforge.net/project/terminus-font/terminus-font-4.49/terminus-font-4.49.1.tar.gz'
+        'https://files.ax86.net/terminus-ttf/files/4.49.3/terminus-ttf-4.49.3.zip'
+        'https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FontPatcher.zip')
+noextract=('terminus-font-4.49.1.tar.gz' 'terminus-ttf-4.49.3.zip' 'FontPatcher.zip')
 sha256sums=('SKIP'
-            '600bace75f6fa5e109d29368e4b3872218e9d9e2eb53f0a795e74b68e9c39989')
+            'd961c1b781627bf417f9b340693d64fc219e0113ad3a3af1a3424c7aa373ef79'
+            '0ead921d98d99a4590ffe6cd66dc037fc0a2ceea1c735d866ba73fe058257577'
+            'a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760')
 validpgpkeys=('33F9B54FD2A4B6A4110749B3BA464FC9847A832A') # Aaron Bockelie <aaronsb@gmail.com>
 
 package_vtium() {
@@ -46,18 +59,14 @@ package_vtium() {
   # them provides vtium, so a package that depends on vtium is met by any.
   conflicts=('vtium-git' 'vtium-minspec' 'vtium-minspec-git'
              'vtium-minspec-gpu' 'vtium-minspec-gpu-git')
-  # The frits _make names in FRITS, the Terminus frit and seat mode's PAM
-  # file, which keep a user's edits across an upgrade (ADR-1500 D8).
+  # Seat mode's PAM file, and the frits that make install stages by default
+  # for this tag, which keep a user's edits across an upgrade (ADR-1500 D8).
   backup=('etc/pam.d/vtium'
           'etc/vtium/fonts/desktop.vtfrit'
           'etc/vtium/fonts/minspec-16.vtfrit'
-          'etc/vtium/fonts/minspec-8.vtfrit'
-          'etc/vtium/fonts/terminus.vtfrit')
+          'etc/vtium/fonts/minspec-8.vtfrit')
   install=vtium.install
   _package_console
-  # The Terminus frit names the console font by the file name Arch's
-  # terminus-font gives it, so this repository carries it, not vtium's tree.
-  install -Dm644 "$srcdir/terminus.vtfrit" "$pkgdir/etc/vtium/fonts/terminus.vtfrit"
 }
 
 # The console's features while VTIUM_FEATURES is unset, and the default of
@@ -73,6 +82,38 @@ _hwaccel=on
 prepare() {
   cd vtium
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')"
+  if _installs_fonts; then
+    _cache_pinned tools/fonts/pins.tsv fonts
+    _cache_pinned tools/cullet-mono/pins.tsv cullet-mono
+    _make font-files
+  fi
+}
+
+# Whether vtium's tree installs font files of its own: Terminus's BDF files,
+# Unifont's .hex file and Cullet Mono's two faces. From 0.1.0-alpha.10 on,
+# make install checks each of them against its pin and stops when one is
+# missing. An earlier tag installs no font file.
+_installs_fonts() {
+  grep -q '^font-files-check:' "$srcdir/vtium/Makefile"
+}
+
+# _cache_pinned PINS DIR links each source that vtium's pin file PINS names
+# into $srcdir/cache/vtium/DIR. vtium's tools look for their sources in
+# $XDG_CACHE_HOME/vtium/DIR, and _make points XDG_CACHE_HOME at
+# $srcdir/cache, so the tools find every source there and download nothing.
+# makepkg has already checked each source's SHA-256, and the tools check it
+# again against the pin. When the tree pins a source this recipe does not
+# download, the build stops here and names it.
+_cache_pinned() {
+  local file cache=$srcdir/cache/vtium/$2
+  mkdir -p "$cache"
+  for file in $(awk -F'\t' '$1 == "source" { print $2 }' "$1"); do
+    if [[ ! -f $srcdir/$file ]]; then
+      error "vtium's $1 pins $file, which this recipe does not download"
+      return 1
+    fi
+    ln -sf "$srcdir/$file" "$cache/$file"
+  done
 }
 
 # vtium's Makefile builds and stages every file the packages ship, so which
@@ -96,25 +137,37 @@ prepare() {
 #     hwaccel turns the GPU path on.
 #   - DISPLAY_BUFFERS=3, the default of display-buffers: the console keeps
 #     three buffers for each display.
-#   - FRITS, the frits make install stages into /etc/vtium/fonts, which each
-#     console package's backup list names.
 #   - --frozen, because prepare() fetched the crates.
+#   - XDG_CACHE_HOME, the cache that prepare() fills with the pinned font
+#     sources, where make font-files and make cullet-mono look for them.
+#
+# The recipe names no FRITS, so make install stages the font sets and
+# layers that vtium's Makefile names for a console package into
+# /etc/vtium/fonts.
 _make() {
-  CARGO_TARGET_DIR=target make -C "$srcdir/vtium" PREFIX=/usr \
+  CARGO_TARGET_DIR=target XDG_CACHE_HOME="$srcdir/cache" \
+    make -C "$srcdir/vtium" PREFIX=/usr \
     FEATURES="${VTIUM_FEATURES-$_features}" HWACCEL="$_hwaccel" \
-    DISPLAY_BUFFERS=3 FRITS='desktop minspec-16 minspec-8' \
-    CARGO_BUILD_FLAGS=--frozen "$@"
+    DISPLAY_BUFFERS=3 CARGO_BUILD_FLAGS=--frozen "$@"
 }
 
 # The console, built with vtium's minspec profile, its glyph helper and,
-# with images, its image helper.
+# with images, its image helper. For a tree that installs its own font
+# files, make cullet-mono first builds Cullet Mono's two faces with
+# FontForge from the pinned sources in the cache, and checks each face
+# against the SHA-256 that vtium pins for it.
 build() {
+  if _installs_fonts; then
+    _make cullet-mono
+  fi
   _make install-build
 }
 
 # The console, its helper, its units vtium@.service and vtium-getty@.service,
-# the example configuration /etc/vtium/vtium.conf.example, the frits in
+# the example configuration /etc/vtium/vtium.conf.example, the font sets in
 # /etc/vtium/fonts, the example udev rules and hwdb fragment, and LICENSE.
+# From 0.1.0-alpha.10 on, also the font files in /usr/share/vtium/fonts,
+# with Cullet Mono's notices in the package's license directory.
 # With images, also the image helper /usr/bin/vtium-image, the sysusers file
 # that creates its account, and the picture gallery tool
 # /usr/bin/vtium-gallery, a bash script. With libseat and logind, also seat

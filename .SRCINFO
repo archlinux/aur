@@ -13,12 +13,20 @@ pkgbase = vtium
 	makedepends = libxkbcommon
 	makedepends = seatd
 	makedepends = systemd-libs
+	makedepends = fontforge
+	noextract = terminus-font-4.49.1.tar.gz
+	noextract = terminus-ttf-4.49.3.zip
+	noextract = FontPatcher.zip
 	options = !debug
 	source = vtium::git+https://github.com/vtium/vtium.git#tag=v0.1.0-alpha.9?signed
-	source = terminus.vtfrit
+	source = https://downloads.sourceforge.net/project/terminus-font/terminus-font-4.49/terminus-font-4.49.1.tar.gz
+	source = https://files.ax86.net/terminus-ttf/files/4.49.3/terminus-ttf-4.49.3.zip
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FontPatcher.zip
 	validpgpkeys = 33F9B54FD2A4B6A4110749B3BA464FC9847A832A
 	sha256sums = SKIP
-	sha256sums = 600bace75f6fa5e109d29368e4b3872218e9d9e2eb53f0a795e74b68e9c39989
+	sha256sums = d961c1b781627bf417f9b340693d64fc219e0113ad3a3af1a3424c7aa373ef79
+	sha256sums = 0ead921d98d99a4590ffe6cd66dc037fc0a2ceea1c735d866ba73fe058257577
+	sha256sums = a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760
 
 pkgname = vtium
 	install = vtium.install
@@ -43,4 +51,3 @@ pkgname = vtium
 	backup = etc/vtium/fonts/desktop.vtfrit
 	backup = etc/vtium/fonts/minspec-16.vtfrit
 	backup = etc/vtium/fonts/minspec-8.vtfrit
-	backup = etc/vtium/fonts/terminus.vtfrit
