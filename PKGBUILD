@@ -4,7 +4,7 @@
 pkgname=flclash-myflavor-bin
 _pkgname=FlClash
 pkgver=1.19.34
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free, follows the mainline mihomo core updates. (Forked by myflavor)"
 arch=('x86_64')
 url="https://github.com/myflavor/FlClash"
@@ -31,7 +31,7 @@ source_x86_64=(
 
 
 sha256sums=('debddc0c8728bcbc552d0826ef0b5a4cd33e20df01752baa85e54498ec8ec3d5')
-sha256sums_x86_64=('663cc42b76ef32c752af86b65c777afccb4c69cd3fcc3e5b11c016784bd571ef')
+sha256sums_x86_64=('2ef67f3ccf2e09b26b9d22d6a73e75ff1138a03887b97f34f4d1814669c52180')
 
 prepare() {
     sed -i -e "
