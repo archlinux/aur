@@ -1,6 +1,6 @@
 pkgbase = nanoget
 	pkgdesc = Functions to extract useful metrics from Oxford Nanopore sequencing reads and alignments
-	pkgver = 1.19.6
+	pkgver = 1.19.7
 	pkgrel = 1
 	url = https://github.com/wdecoster/nanoget/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = nanoget
 	depends = python-numpy
 	depends = python-biopython
 	depends = python-pysam
-	source = https://files.pythonhosted.org/packages/source/n/nanoget/nanoget-1.19.6.tar.gz
-	sha256sums = f900c187967af06c491cb92edc017e18b914d1c02e6d0333de2fb9a78738b6fb
+	source = https://files.pythonhosted.org/packages/source/n/nanoget/nanoget-1.19.7.tar.gz
+	sha256sums = d95c324a40802e4a233d2a9e38c424a396e182fb03c2c5de7392bb925dbaabed
 
 pkgname = nanoget
