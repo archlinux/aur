@@ -1,0 +1,26 @@
+pkgbase = uqview
+	pkgdesc = Fast image viewer for uQ: view, mark up and set as wallpaper
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/asafelobotomy/qview
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = clang
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-imageformats
+	depends = kimageformats
+	depends = xdg-utils
+	depends = gcc-libs
+	depends = glibc
+	optdepends = uq: Set as wallpaper, the uQ theme and the uQview page in uQ Settings
+	optdepends = qt6-wayland: native Wayland window
+	optdepends = glib2: move pictures on other drives to their trash (gio)
+	options = !lto
+	source = uqview-0.1.1.tar.gz::https://github.com/asafelobotomy/qview/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 677ba86a4b86370d414acf4ed12fd66cf6dfccb414f744e2bbf5f16a92f27a0b
+
+pkgname = uqview
