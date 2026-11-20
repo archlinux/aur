@@ -1,0 +1,22 @@
+pkgbase = volpop
+	pkgdesc = GTK4 volume popup and mixer for PulseAudio / PipeWire (replaces pavucontrol)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jinzhongjia/volpop
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	checkdepends = desktop-file-utils
+	makedepends = meson
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = libpulse
+	optdepends = pulse-native-provider: PulseAudio-compatible sound server (pipewire-pulse or pulseaudio)
+	optdepends = ttf-jetbrains-mono-nerd: icons and monospace text in the popup
+	optdepends = ttf-nerd-fonts-symbols: icons in the popup
+	source = https://github.com/jinzhongjia/volpop/releases/download/v0.1.0/volpop-0.1.0.tar.xz
+	sha256sums = 71c4cc61904d01fac7796d2fc016af2278cc154c08d99aebe4319c0907563d3f
+
+pkgname = volpop
