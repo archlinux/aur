@@ -2,8 +2,8 @@
 
 pkgname=python-aiorwlock
 _pkgname=aiorwlock
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Read-write lock for asyncio'
 arch=('any')
 url='https://github.com/aio-libs/aiorwlock'
@@ -21,7 +21,7 @@ checkdepends=(
 )
 # GitHub release tarball (the PyPI sdist omits the tests/ dir)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/aio-libs/aiorwlock/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b3a5297495452ed0a5b7fb9eb184cd531380856791792abe92f19c9906365def')
+sha256sums=('365dfd4403397424144627cc6790dc35e5785780dcdb585abc5d2706df05e4e6')
 
 build() {
     cd "$_pkgname-$pkgver"

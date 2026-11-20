@@ -1,7 +1,7 @@
 pkgbase = python-aiorwlock
 	pkgdesc = Read-write lock for asyncio
-	pkgver = 1.5.1
-	pkgrel = 2
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://github.com/aio-libs/aiorwlock
 	arch = any
 	license = Apache-2.0
@@ -12,7 +12,7 @@ pkgbase = python-aiorwlock
 	makedepends = python-wheel
 	makedepends = python-poetry-core
 	depends = python
-	source = aiorwlock-1.5.1.tar.gz::https://github.com/aio-libs/aiorwlock/archive/refs/tags/v1.5.1.tar.gz
-	sha256sums = b3a5297495452ed0a5b7fb9eb184cd531380856791792abe92f19c9906365def
+	source = aiorwlock-1.6.0.tar.gz::https://github.com/aio-libs/aiorwlock/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = 365dfd4403397424144627cc6790dc35e5785780dcdb585abc5d2706df05e4e6
 
 pkgname = python-aiorwlock
