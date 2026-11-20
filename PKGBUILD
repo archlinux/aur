@@ -1,6 +1,6 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 pkgname=yt-tui
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Curses TUI for yt-dlp with search and queueing"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'yt-dlp' 'ffmpeg')
 makedepends=('python-build' 'python-installer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Twilight0/yt-tui/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ce70a68e4648962ed0471660ba6da9be71d21368a75eb69e821a8bf05c0444ac')
+sha256sums=('bd11792958d61e13e66f91fc01a5d186e77127cd248255fc01b6accaa227fee9')
 
 build() {
   cd "$pkgname-$pkgver"
