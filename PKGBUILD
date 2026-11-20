@@ -2,20 +2,20 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=agricolae
-_pkgver=1.3-7
+_pkgver=1.3-8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Statistical Procedures for Agricultural Research"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
-  r-algdesign
+  r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('27cdffab9bd7cf428cb005d41db13c00')
-b2sums=('b76606cf9107d06273d92d7f7eeb0de27f1013431c0ff2077906843c68f87d8295211f5889718a7fd15f3a9498c21e01d4a27af94c11b61cc7f21ab2fe844a8a')
+md5sums=('66c25c3de4f5c4d3a87349fbdbe7504b')
+b2sums=('9b235c61fb15517cf857c8353c3f28e01d5abf703240a7d15faa479ad517694342c9ec4e3a6a03419d2c19d75a5f84f57e69b373e9db4f4cba0f0a8496ac6e42')
 
 build() {
   mkdir build
