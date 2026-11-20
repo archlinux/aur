@@ -1,7 +1,7 @@
 pkgbase = okshell
 	pkgdesc = A customizable shell for Hyprland
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JohnOberhauser/OkShell
 	arch = x86_64
 	license = GPL-3.0-only
