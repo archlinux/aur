@@ -1,7 +1,7 @@
 # Maintainer: HITCJK <1641796967@qq.com>
 pkgname=psd2live-bin
-pkgver=3.6.7
-pkgrel=2
+pkgver=3.8.3
+pkgrel=1
 pkgdesc='Turn layered PSD files into editable Live2D models (prebuilt binary release)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/tsunehimatoi/psd2live'
@@ -18,6 +18,7 @@ license=('GPL-3.0-only')
 # are pulled in by fontconfig/freetype2/libx11 automatically. The bundled
 # Wayland backend (libawt_wlawt.so / libwlsplashscreen.so) is not used on the
 # supported X11/GLX path, so wayland and libffi are intentionally omitted.
+# libxcursor/libxinerama/libxrandr/libxxf86vm are dlopen'ed by LWJGL's GLFW.
 depends=(
   'alsa-lib'
   'fontconfig'
@@ -26,10 +27,14 @@ depends=(
   'glibc'
   'libglvnd'
   'libx11'
+  'libxcursor'
   'libxext'
   'libxi'
+  'libxinerama'
+  'libxrandr'
   'libxrender'
   'libxtst'
+  'libxxf86vm'
   'zlib'
 )
 optdepends=(
@@ -50,11 +55,11 @@ sha256sums=(
 )
 
 source_x86_64=("https://github.com/tsunehimatoi/psd2live/releases/download/v$pkgver/PSD2Live-$pkgver-linux-x64.tar.gz")
-sha256sums_x86_64=('ac788290387ca5b373d445f9f879185de3b4102373487b389e3adab0e433b686')
+sha256sums_x86_64=('2abe566de809122ee1efc0e11d6d1dd4938103724488522b5c979f030c5484a7')
 
 # arm64 uses Live2D's experimental Cubism Core (see upstream statement above).
 source_aarch64=("https://github.com/tsunehimatoi/psd2live/releases/download/v$pkgver/PSD2Live-$pkgver-linux-arm64.tar.gz")
-sha256sums_aarch64=('505e05346a91ad058525c84fcdd49d004c944cb880dce9cf43132a655476ca30')
+sha256sums_aarch64=('449e4c8391579ec3fa13838f2e90801b9310f248cf4d507517641f400214b95b')
 
 package() {
   # The tarball is a self-contained jpackage app image with its own JRE.
