@@ -4,7 +4,7 @@
 pkgname=limusic-bin-prerelease
 _pkgname=limusic
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 # Upstream tag without the leading "v"; pkgver drops the hyphen because Arch
 # forbids it (and 1.4.0rc.6 correctly sorts before 1.4.0).
 _tag=1.4.1
@@ -22,7 +22,7 @@ provides=("${_pkgname}" "${_pkgname}-prerelease")
 conflicts=("${_pkgname}" "limusic-bin")
 
 source=("limusic_${_tag}_amd64.AppImage::https://github.com/SimoHypers/limusic/releases/download/v${_tag}/limusic_${_tag}_amd64.AppImage")
-sha256sums=('6782ffe69e99bffe0bc103a0ab957b3bee53a538fa2eb50a2118c12a61db5726')
+sha256sums=('b0df7a9129e648db041f7f79a2f28cc9b3914903f062a07053fcfcaf4152fc30')
 
 prepare() {
   chmod +x "${srcdir}/limusic_${_tag}_amd64.AppImage"
