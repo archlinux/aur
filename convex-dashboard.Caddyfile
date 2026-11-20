@@ -1,0 +1,11 @@
+{
+	admin off
+	persist_config off
+}
+
+http://127.0.0.1:6791, http://localhost:6791 {
+	bind 127.0.0.1
+	root * /usr/share/convex/dashboard
+	try_files {path} {path}.html
+	file_server
+}

@@ -1,0 +1,11 @@
+[Unit]
+Description=Convex self-hosted dashboard
+Wants=convex-backend.service
+After=convex-backend.service
+PartOf=convex.target
+
+[Service]
+DynamicUser=yes
+RuntimeDirectory=convex-dashboard
+Environment=HOME=/run/convex-dashboard
+ExecStart=/usr/bin/caddy run --config /usr/lib/convex/dashboard.Caddyfile --adapter caddyfile
