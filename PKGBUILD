@@ -7,7 +7,7 @@
 # release workflow (ticket 14) publishes a `cargo aur` tarball, this file's
 # fields already match cargo-aur's output layout.
 pkgname=voisu-bin
-pkgver=0.81.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Voice dictation for Linux desktops (prebuilt binaries)"
 arch=('x86_64')
@@ -26,7 +26,8 @@ depends=('gtk4'
          'wl-clipboard'
          'libsecret'
          'curl'
-         'xdg-desktop-portal')
+         'xdg-desktop-portal'
+         'vulkan-icd-loader')
 optdepends=('libei: direct Delivery of the Transcript into the focused window'
             'xdg-desktop-portal-kde: portal backend for KDE Plasma'
             'xdg-desktop-portal-hyprland: portal backend for Hyprland')
@@ -43,21 +44,36 @@ install="$pkgname.install"
 #   voisu.service, voisu-overlay.service
 #   voisu.desktop, voisu.svg
 #   LICENSE
+#   THIRD_PARTY_NOTICES.md
 #   ring/LICENSE
 #   ring/LICENSE-BoringSSL
 #   ring/LICENSE-other-bits
 #   ring/src/polyfill/once_cell/LICENSE-APACHE
 #   ring/src/polyfill/once_cell/LICENSE-MIT
 #   ring/third_party/fiat/LICENSE
+#   worker/voisu-local-asr and its libwhisper/libggml libraries and backend
+#   modules (whisper.cpp and ggml, MIT; libggml-vulkan.so links
+#   vulkan-icd-loader's libvulkan.so.1)
 # ring's tree must keep those UPSTREAM names and paths so the cross-references
 # inside ring's own LICENSE manifest resolve once installed.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Anuraj-Dev/voisu/releases/download/v$pkgver/voisu-$pkgver-${CARCH}.tar.gz")
-sha256sums=('3315f070c8135d2939c9c11cd1da643f611be9b9811b161dbf1cae9932d4c73c')
+sha256sums=('0a62d646c4e21d89a1cae372152aeb1408875d83a369ff5f76578456e100b213')
 
 package() {
     install -Dm755 voisu "$pkgdir/usr/bin/voisu"
     install -Dm755 voisu-daemon "$pkgdir/usr/bin/voisu-daemon"
     install -Dm755 voisu-overlay "$pkgdir/usr/bin/voisu-overlay"
+
+    # The whisper.cpp worker keeps its libraries beside it and finds them
+    # through its $ORIGIN rpath. Arch keeps private helpers in /usr/lib/<pkg>.
+    # The daemon starts only a worker whose runtime list sits beside it.
+    install -Dm755 -t "$pkgdir/usr/lib/voisu" worker/voisu-local-asr
+    local lib
+    while read -r lib; do
+        install -Dm755 "worker/$lib" "$pkgdir/usr/lib/voisu/$lib"
+    done < worker/voisu-whisper-runtime.txt
+    install -Dm644 worker/voisu-whisper-runtime.txt \
+        "$pkgdir/usr/lib/voisu/voisu-whisper-runtime.txt"
 
     install -Dm644 voisu.service "$pkgdir/usr/lib/systemd/user/voisu.service"
     install -Dm644 voisu-overlay.service \
@@ -69,6 +85,8 @@ package() {
     install -Dm644 voisu.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/voisu.svg"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 THIRD_PARTY_NOTICES.md \
+        "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_NOTICES.md"
 
     # Preserve ring's upstream license tree verbatim.
     local ringlic="$pkgdir/usr/share/licenses/$pkgname/ring"
