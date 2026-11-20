@@ -1,6 +1,6 @@
 # Maintainer: temidaradev <temidaradev@proton.me>
 pkgname=kopuz-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A modern music player, with the kopuzd daemon it runs on (pre-built binary)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
 )
 source=("kopuz-$pkgver-$pkgrel.deb::https://github.com/Kopuz-org/kopuz/releases/download/v$pkgver/kopuz_$pkgver-1_amd64.deb")
 # Filled in at publish time from the release's kopuz_<version>-1_amd64.deb.sha256.
-sha256sums=('2d0f0549108522ed8d1937b2d32efed1e611348e14cc2776cc5fabcb401f03d3')
+sha256sums=('cca351084a71e99fc8090a895eae5af8ba7888b68d92ead853591162cb528320')
 
 package() {
     bsdtar -xf data.tar.gz -C "$pkgdir"
