@@ -1,11 +1,15 @@
 --- a/src/plugins/intel_gpu/CMakeLists.txt
 +++ b/src/plugins/intel_gpu/CMakeLists.txt
-@@ -125,7 +125,7 @@ add_subdirectory(thirdparty)
+@@ -133,9 +133,9 @@ set(INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
+ add_subdirectory(thirdparty)
  include(thirdparty/cmake/rapidjson.cmake)
  
- if(CMAKE_COMPILER_IS_GNUCXX)
+-if(CMAKE_COMPILER_IS_GNUCXX)
 -    ov_add_compiler_flags(-Werror)
-+    #ov_add_compiler_flags(-Werror)
- endif()
+-endif()
++#if(CMAKE_COMPILER_IS_GNUCXX)
++#    ov_add_compiler_flags(-Werror)
++#endif()
  
- add_subdirectory(src/runtime)
+ # Directory-wide on purpuse: the macro guards virtual methods in
+ # include/intel_gpu/runtime, so ENABLE_MLIR_FOR_GPU must be defined consistently in all targets

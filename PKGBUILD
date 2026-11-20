@@ -8,7 +8,7 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler-git
-pkgver=2026.38rc1.r0.g0b38f7d
+pkgver=2026.44rc1.r2.g0ce4ad6
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) compiler (git version)'
 arch=('x86_64')
@@ -65,6 +65,8 @@ source=('git+https://github.com/openvinotoolkit/npu_compiler.git'
         'git+https://github.com/libxsmm/libxsmm.git'
         'git+https://github.com/ARM-software/kleidiai.git'
         'git+https://github.com/herumi/xbyak_riscv.git'
+        'git+https://github.com/intel/ipf.git'
+        'git+https://github.com/axboe/liburing.git'
         # patches
         '010-intel-npu-compiler-llvm-disable-atomic-check.patch'
         '020-intel-npu-compiler-disable-werror.patch'
@@ -105,12 +107,14 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
+            'SKIP'
             '8d8f4b46ab469fe5a3a19fd35b4467c690ea7e1dc2941b179420b89eef893a0a'
-            '6b3e210a55f403bff07d7aa43dd38f5825a4606e9ff916f87b92d63bc2a53850'
-            '12a1c77e7b2de84072b657662dce7950d51c5904c3b0cd552c6567c15cd99a53'
+            '0f038031b213fa5ea7497d0d5c21b1922b66d502e2ba9e13844fda352ac4050e'
+            '93acfad5097907a5c830802af7aad789c6a9ac3c1d1f770adc4b65ca2b014d38'
             'e4734603808ad0402819eb36578f1eabb80524f4f82aed45f31736c5d184b2ef'
-            '1c99b8accd3bb685395f612fc84a1f546baf5e7027c49f16f739951adbd655c8'
-            '855d2a7e2fca1ba742205ea666ec518e0f0b3852d7d8bd869692af9af9a05040'
+            '8e36d6dbe95c170159bfcb8af1a9cc57b00850814bd544a2cadeaf87a3564197'
+            '9f0a0eda1fb883b9e7d4dd75b493ffa5dab490dc5036393adcdeac8cd568ac23'
             'f8bcc5e9d08ffa52fd1375ad93624f5031511c55f7d6dbebc303fa4bae8115a4')
 
 export GIT_LFS_SKIP_SMUDGE='1'
@@ -167,6 +171,8 @@ prepare() {
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/libxsmm.url "${srcdir}/libxsmm"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/kleidiai.url "${srcdir}/kleidiai"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/xbyak_riscv.url "${srcdir}/xbyak_riscv"
+    git -C openvino config --local submodule.src/plugins/auto/thirdparty/ipf.url "${srcdir}/ipf"
+    git -C openvino config --local submodule.thirdparty/liburing/liburing.url "${srcdir}/liburing"
     git -C openvino -c protocol.file.allow='always' submodule update
     
     ln -sf ../npu_compiler/CMakePresets.json openvino/CMakePresets.json
@@ -196,6 +202,7 @@ build() {
     export CFLAGS="${CFLAGS/-Werror=format-security/}"
     export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
     
+    export CXXFLAGS+=" -isystem${srcdir}/openvino/src/common/zero_loader/include"
     export CXXFLAGS+=" -isystem${srcdir}/openvino/src/plugins/intel_npu/thirdparty/level-zero-ext"
     export CXXFLAGS+=" -isystem${srcdir}/openvino/src/plugins/intel_npu/src/utils/include"
     

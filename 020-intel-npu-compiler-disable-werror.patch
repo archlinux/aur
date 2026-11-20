@@ -1,11 +1,11 @@
 --- a/cmake/compile_options.cmake
 +++ b/cmake/compile_options.cmake
-@@ -120,7 +120,7 @@ function(enable_warnings_as_errors TARGET_NAME)
+@@ -147,7 +147,7 @@ function(enable_warnings_as_errors TARGE
      else()
          target_compile_options(${TARGET_NAME}
              PRIVATE
 -                -Wall -Wextra -Werror -Werror=suggest-override
 +                -Wall -Wextra #-Werror -Werror=suggest-override
          )
-         if(NOT WARNIGS_SKIP_SYSTEM)
-             # Set SYSTEM property on OpenVINO dependencies to suppress extra warnings from their headers
+         # Set SYSTEM property on OpenVINO dependencies to suppress extra warnings from their headers
+         # when building via OPENVINO_EXTRA_MODULES
