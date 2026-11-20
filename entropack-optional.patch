@@ -1,0 +1,26 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -23,7 +23,6 @@
+     "pandas",
+     "accelerate",
+     "peft",
+-    "entropack>=0.1.7",
+ ]
+ classifiers = [
+     "Programming Language :: Python :: 3",
+@@ -45,6 +44,7 @@
+     "librosa"
+ ]
+ quant = [
++    "entropack>=0.1.7",
+     "bitsandbytes",
+     "comfy-kitchen",
+     "torchao>=0.16"
+@@ -85,6 +85,7 @@
+     "tiktoken"
+ ]
+ all = [
++    "entropack>=0.1.7",
+     "av",
+     "torchaudio",
+     "torchcodec",

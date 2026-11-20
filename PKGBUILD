@@ -2,7 +2,7 @@
 
 pkgname=python-diffsynth
 _pkgname=diffsynth
-pkgver=2.2.0
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Enjoy the magic of Diffusion models! Diffusion engine by the ModelScope team"
 arch=('any')
@@ -60,12 +60,22 @@ optdepends=(
     'python-opencv: face restoration and image-processing pipelines'
     'python-comfy-kitchen: quantization kernels (quant extra)'
     'python-torchao>=0.16: TorchAO quantization (quant extra)'
+    'python-entropack>=0.1.7: EntroPack quantization and CUDA weight offload'
     'python-tiktoken: Yue2 tokenization'
 )
-_commit=543bf843411a32e1520301a5f8a09e2c0ae27a1d
+_commit=9dde6d179fb49f835e8e746b08c2998a2877e5c7
 _archive="DiffSynth-Studio-${_commit}"
-source=("${pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz")
-sha256sums=('8545685dc77b257397c1af6494a39a9188dede057e5ccc1951aa4fa16e060d4e')
+source=("${pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz"
+        entropack-optional.patch)
+sha256sums=('3e9aa5d83de356dd9d8ed81dea1dc77b7659bd67d1b887d17e6dc5639dd77ac4'
+            '330ff2bf9db83543a4404f1e2758598656b16f7535aca8dae57654bfd251743a')
+
+prepare() {
+    cd "$srcdir/${_archive}"
+    # Keep the lazy CUDA quantization backend available without forcing CUDA
+    # for the base CPU and ROCm workflows.
+    patch -Np1 --fuzz=0 -i "$srcdir/entropack-optional.patch"
+}
 
 build() {
     cd "$srcdir/${_archive}"

@@ -1,6 +1,6 @@
 pkgbase = python-diffsynth
 	pkgdesc = Enjoy the magic of Diffusion models! Diffusion engine by the ModelScope team
-	pkgver = 2.2.0
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/modelscope/DiffSynth-Studio
 	arch = any
@@ -51,8 +51,11 @@ pkgbase = python-diffsynth
 	optdepends = python-opencv: face restoration and image-processing pipelines
 	optdepends = python-comfy-kitchen: quantization kernels (quant extra)
 	optdepends = python-torchao>=0.16: TorchAO quantization (quant extra)
+	optdepends = python-entropack>=0.1.7: EntroPack quantization and CUDA weight offload
 	optdepends = python-tiktoken: Yue2 tokenization
-	source = python-diffsynth-543bf843411a32e1520301a5f8a09e2c0ae27a1d.tar.gz::https://github.com/modelscope/DiffSynth-Studio/archive/543bf843411a32e1520301a5f8a09e2c0ae27a1d.tar.gz
-	sha256sums = 8545685dc77b257397c1af6494a39a9188dede057e5ccc1951aa4fa16e060d4e
+	source = python-diffsynth-9dde6d179fb49f835e8e746b08c2998a2877e5c7.tar.gz::https://github.com/modelscope/DiffSynth-Studio/archive/9dde6d179fb49f835e8e746b08c2998a2877e5c7.tar.gz
+	source = entropack-optional.patch
+	sha256sums = 3e9aa5d83de356dd9d8ed81dea1dc77b7659bd67d1b887d17e6dc5639dd77ac4
+	sha256sums = 330ff2bf9db83543a4404f1e2758598656b16f7535aca8dae57654bfd251743a
 
 pkgname = python-diffsynth
