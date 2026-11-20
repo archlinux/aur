@@ -1,6 +1,6 @@
 pkgbase = snowflake-cli-bin
 	pkgdesc = snowflake-cli (snow)
-	pkgver = 3.26.0
+	pkgver = 3.34.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/snowflakedb/snowflake-cli
@@ -8,7 +8,7 @@ pkgbase = snowflake-cli-bin
 	license = Apache-2.0
 	depends = gcc-libs
 	depends = xz
-	source = https://sfc-repo.snowflakecomputing.com/snowflake-cli/linux_x86_64/3.26.0/snowflake-cli-3.26.0.x86_64.deb
-	sha256sums = a1c1b2b24eab70c6349d0cb0647527f2b65ec0901fa7fb1a949f6e8ac43ed4d5
+	source = https://sfc-repo.snowflakecomputing.com/snowflake-cli/linux_x86_64/3.34.0/snowflake-cli-3.34.0.x86_64.deb
+	sha256sums = d7dfe7ce361361ca47a0fba7c58eb85985157cde2f64aa0a5161b90ef78a82ee
 
 pkgname = snowflake-cli-bin
