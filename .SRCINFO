@@ -10,6 +10,7 @@ pkgbase = lua-combustion-git
 	makedepends = lua51
 	makedepends = lua52
 	makedepends = lua53
+	makedepends = lua54
 	makedepends = luarocks
 	source = git+https://github.com/Frityet/combustion.git
 	sha256sums = SKIP
@@ -21,6 +22,14 @@ pkgname = lua-combustion-git
 	depends = lua-penlight
 	provides = lua-combustion
 	conflicts = lua-combustion
+
+pkgname = lua54-combustion-git
+	depends = lua54
+	depends = lua54-argparse
+	depends = lua54-filesystem
+	depends = lua54-penlight
+	provides = lua54-combustion
+	conflicts = lua54-combustion
 
 pkgname = lua53-combustion-git
 	depends = lua53

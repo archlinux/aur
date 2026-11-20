@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=combustion
-pkgname=("lua-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
+pkgname=("lua-$_rockname-git" "lua54-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
 pkgver=r60.4294fca
 pkgrel=1
 _rockrel=2
@@ -17,6 +17,7 @@ makedepends=(git
              lua51
              lua52
              lua53
+             lua54
              luarocks)
 source=("git+$url.git")
 sha256sums=('SKIP')
@@ -36,6 +37,13 @@ _package() {
 
 package_lua-combustion-git() {
 	depends=('lua' "${_luadeps[@]/#/lua-}")
+	provides=("${pkgname/-git}")
+	conflicts=("${pkgname/-git}")
+	_package 5.5
+}
+
+package_lua54-combustion-git() {
+	depends=('lua54' "${_luadeps[@]/#/lua54-}")
 	provides=("${pkgname/-git}")
 	conflicts=("${pkgname/-git}")
 	_package 5.4
