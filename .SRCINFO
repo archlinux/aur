@@ -1,6 +1,6 @@
 pkgbase = kimi-code-desktop-bin
 	pkgdesc = Kimi Code Desktop - GUI client for the Kimi Code agent (prebuilt binary)
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://kimi.com/code
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = kimi-code-desktop-bin
 	depends = at-spi2-core
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: tray icon
-	noextract = KimiCode-1.4.1-linux-amd64.deb
+	noextract = KimiCode-1.4.2-linux-amd64.deb
 	options = !strip
-	source_x86_64 = KimiCode-1.4.1-linux-amd64.deb::https://code.kimi.com/kimi-code/desktop/binaries/1.4.1/KimiCode-1.4.1-linux-amd64.deb
-	sha512sums_x86_64 = 6149862ddb0146e5f54d7c3d257394bd74f64516445a4d72221e48256cdbed1a945868813aed0b4764b9d4daaa523bacae95fcd96d178c1f51e6e3a05f4c9f17
-	source_aarch64 = kimi-code-desktop-bin-1.4.1-1-aarch64.pkg.tar.zst::https://github.com/collegeming/aur-release/releases/download/aur-built-latest/kimi-code-desktop-bin-1.4.1-1-aarch64.pkg.tar.zst
-	sha256sums_aarch64 = 34742357e1d72525344df23156767aa2ff005475666c6130a1bca3836bee8590
+	source_x86_64 = KimiCode-1.4.2-linux-amd64.deb::https://code.kimi.com/kimi-code/desktop/binaries/1.4.2/KimiCode-1.4.2-linux-amd64.deb
+	sha512sums_x86_64 = f3392f5f33d22aa6522057f332748f2d10b8ddf7f0b728657995c59af110907a4462fb0b88db530559b192974fc565a687e6d3080a4deb1a83a4d1ab4aa3819d
+	source_aarch64 = kimi-code-desktop-bin-1.4.2-1-aarch64.pkg.tar.zst::https://github.com/collegeming/aur-release/releases/download/aur-built-latest/kimi-code-desktop-bin-1.4.2-1-aarch64.pkg.tar.zst
+	sha256sums_aarch64 = f1ac62bd31d3b488037a82571d1dba9bf30b96f2c263a2a78f521a6b763337fc
 
 pkgname = kimi-code-desktop-bin
