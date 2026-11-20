@@ -1,14 +1,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=ch9344ser-git
-pkgname=(ch9344ser-dkms-git)
+pkgname=(ch9344ser-git ch9344ser-dkms-git libch9344ser-git)
 pkgver=r61.dc1b70a
-pkgrel=1
+pkgrel=3
 pkgdesc="This driver supports USB to quad serial ports chip ch9344 and USB to octal serial ports chip ch348."
 arch=('any')
 arch=($CARCH)
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
 url="https://github.com/WCHSoftGroup/ch9344ser_linux"
 license=('GPL-2.0-or-later')
 depends=(dkms)
@@ -19,7 +17,8 @@ makedepends=(
 optdepends=(
     'linux-headers: build the module against Arch kernel'
     'linux-ck-headers: build the module against Linux-ck kernel'
-    'linux-lts-headers: build the module against LTS Arch kernel')
+    'linux-lts-headers: build the module against LTS Arch kernel'
+)
 source=("${pkgbase}::git+${url}.git")
 sha512sums=('SKIP')
 options=(!strip !debug)
@@ -37,7 +36,19 @@ prepare() {
     git -C "${srcdir}/${pkgbase}" clean -dfx
 }
 
-package() {
+package_ch9344ser-git() {
+    provides=(${pkgname%-git})
+    conflicts=(${pkgname%-git})
+    depends=(
+        ch9344ser-dkms
+        libch9344ser
+    )
+}
+
+package_ch9344ser-dkms-git() {
+    provides=(${pkgname%-git})
+    conflicts=(${pkgname%-git})
+
     cd "$srcdir/${pkgbase}/driver"
     rm -rf Makefile
     install -Dm755 /dev/stdin Makefile <<EOF
@@ -50,9 +61,6 @@ SRC_DIR=\$(shell pwd)
 
 default:
 	\$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules
-
-clean:
-	\$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) clean
 
 install:
 	\$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules_install
@@ -93,11 +101,10 @@ PACKAGE_NAME="ch9344ser"
 PACKAGE_VERSION="#MODULE_VERSION#"
 AUTOINSTALL="yes"
 
-MAKE[0]="make"
-CLEAN="make clean"
+MAKE[0]="make KVER=\$kernelver"
 
 BUILT_MODULE_NAME[0]="ch9344"
-DEST_MODULE_LOCATION[0]="/kernel/drivers/usb/serial"
+DEST_MODULE_LOCATION[0]="/updates"
 EOF
     # autoload
     install -Dm644 /dev/stdin "${pkgdir}/etc/modules-load.d/ch9344.conf" <<EOF
@@ -108,4 +115,22 @@ EOF
     #     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/cdc_acm.conf" <<EOF
     # blacklist cdc_acm
     # EOF
+}
+
+package_libch9344ser-git() {
+    pkgdesc+=" (dynamic lib)"
+    provides=("${pkgname%-git}")
+    conflicts=("${pkgname%-git}")
+    depends=(glibc)
+    arch=($CARCH)
+
+    case "$CARCH" in
+        x86_64)  _libdir=x64 ;;
+        aarch64) _libdir=aarch64 ;;
+        *) echo "Unsupported arch for libch9344ser-git: $CARCH" >&2; return 1 ;;
+    esac
+
+    cd "$srcdir/${pkgbase}/lib"
+    install -vDm755 "${_libdir}/dynamic/"*.so -t "${pkgdir}/usr/lib/"
+    install -vDm644 "${_libdir}/dynamic/"*.h -t "${pkgdir}/usr/include/"
 }
