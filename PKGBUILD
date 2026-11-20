@@ -66,8 +66,8 @@ package_vtium-git() {
   # it enables no seatd daemon.
   depends=('bash' 'glibc' 'libgcc' 'libglvnd' 'libxkbcommon' 'mesa' 'seatd'
            'systemd-libs' 'vtium-terminfo-git')
-  optdepends=('vtium-fonts: the fonts the shipped frits name'
-              'kbd: console fonts, which vtium draws when no frit is set'
+  optdepends=("vtium-fonts: the rest of vtium's catalog of font sets, and the fonts they draw with"
+              "kbd: console fonts, which vconsole.conf's FONT= and vtium.conf's font-name can name"
               'kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon')
   # provides vtium at this build's version, so a package that depends on
   # vtium, or on a version of it, is met by this one; conflicts with vtium,
