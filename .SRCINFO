@@ -1,6 +1,6 @@
 pkgbase = wikistow-desktop-beta-bin
 	pkgdesc = Desktop app for your family's encrypted wiki (beta channel)
-	pkgver = 0.29.0beta.2
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://github.com/skint007/wikistow
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = wikistow-desktop-beta-bin
 	conflicts = wikistow-desktop-beta
 	options = !strip
 	options = !debug
-	source = https://github.com/skint007/wikistow/releases/download/v0.29.0-beta.2/wikistow-desktop-0.29.0-beta.2.tar.gz
-	sha256sums = 286f6fe36286235d7b9ef0705bc037eb5e27fbb5e2cbd34707571da408ac107f
+	source = https://github.com/skint007/wikistow/releases/download/v0.29.0/wikistow-desktop-0.29.0.tar.gz
+	sha256sums = 31dec232e5a87e95fc5f4640bc4c7241c6160d15365846c00494c92ccdb020fb
 
 pkgname = wikistow-desktop-beta-bin
