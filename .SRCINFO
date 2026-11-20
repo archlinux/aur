@@ -1,11 +1,12 @@
 pkgbase = lua-lunajson
 	pkgdesc = A strict and fast JSON parser/decoder/encoder written in pure Lua
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grafi-tt/lunajson
 	arch = any
 	license = MIT
 	makedepends = lua
+	makedepends = lua54
 	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
@@ -14,6 +15,8 @@ pkgbase = lua-lunajson
 	sha256sums = 4a4207806864d4a21eb24ddeb026e28efba179440d7c0043482568a7a191ba66
 
 pkgname = lua-lunajson
+
+pkgname = lua54-lunajson
 
 pkgname = lua53-lunajson
 

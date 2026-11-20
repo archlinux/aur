@@ -2,15 +2,16 @@
 
 _rockname=lunajson
 pkgbase="lua-$_rockname"
-pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua54-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=1.2.3
 _rockrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='A strict and fast JSON parser/decoder/encoder written in pure Lua'
 arch=(any)
 url="https://github.com/grafi-tt/$_rockname"
 license=(MIT)
 makedepends=(lua
+             lua54
              lua53
              lua52
              lua51
@@ -27,6 +28,10 @@ _package() {
 }
 
 package_lua-lunajson() {
+	_package 5.5
+}
+
+package_lua54-lunajson() {
 	_package 5.4
 }
 
