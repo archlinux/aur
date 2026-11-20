@@ -1,7 +1,7 @@
 pkgbase = trusttunnel-client
 	pkgdesc = Modern, open-source VPN protocol client by AdGuard
-	pkgver = 1.1.12
-	pkgrel = 2
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://github.com/TrustTunnel/TrustTunnelClient
 	arch = x86_64
 	arch = aarch64
@@ -10,9 +10,9 @@ pkgbase = trusttunnel-client
 	depends = glibc
 	source = trusttunnel-client.service
 	sha256sums = c742f56b78e7be2556983f28481f295b58177d9d8b33938f2d3f411052b2c8ea
-	source_x86_64 = trusttunnel_client-v1.1.12-linux-x86_64-1.1.12.tar.gz::https://github.com/TrustTunnel/TrustTunnelClient/releases/download/v1.1.12/trusttunnel_client-v1.1.12-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 75b7df59351e26462487464de5f3462153e00195f2d40677872fb93a5b44c488
-	source_aarch64 = trusttunnel_client-v1.1.12-linux-aarch64-1.1.12.tar.gz::https://github.com/TrustTunnel/TrustTunnelClient/releases/download/v1.1.12/trusttunnel_client-v1.1.12-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 10402be7e715f35380e8bcf67e2d8f2ceb9fad81eef8274a472e3a085a0d5cc1
+	source_x86_64 = trusttunnel_client-v1.3.0-linux-x86_64-1.3.0.tar.gz::https://github.com/TrustTunnel/TrustTunnelClient/releases/download/v1.3.0/trusttunnel_client-v1.3.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 99e764bb2c080f7a60c441b51ad75fa7ec00e6c8a80afe36030af37201ba32f7
+	source_aarch64 = trusttunnel_client-v1.3.0-linux-aarch64-1.3.0.tar.gz::https://github.com/TrustTunnel/TrustTunnelClient/releases/download/v1.3.0/trusttunnel_client-v1.3.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 837ec64520d546cdf8e7a327614589f64dc6c4f30e408e3788de7bfaef05b52b
 
 pkgname = trusttunnel-client
