@@ -1,10 +1,11 @@
 pkgbase = fastercap
 	pkgdesc = Three- and two-dimensional capacitance extraction
-	pkgver = 6.2.1
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://www.fastfieldsolvers.com/fastercap.htm
 	arch = x86_64
 	license = LGPL-2.1-or-later
+	checkdepends = procps-ng
 	makedepends = git
 	makedepends = cmake
 	makedepends = pkg-config
@@ -17,11 +18,13 @@ pkgbase = fastercap
 	depends = libgfortran
 	depends = glibc
 	depends = wxwidgets-common
-	source = fastercap::git+https://github.com/iic-jku/FasterCap#tag=v6.2.1
+	source = fastercap::git+https://github.com/iic-jku/FasterCap#tag=v6.3.0
 	source = git+https://github.com/iic-jku/LinAlgebra#commit=c240583108de50758eb9eaa561ad8b6a734f0e08
 	source = git+https://github.com/iic-jku/Geometry#commit=d85b854c20c4089028c3da104c99bcfdfccad957
-	b2sums = 4696c0945e26b3a89fdfde889fabd6c4c0b12f69af3c08d38f61519f5ada53c21ca5f6a2ec8641420cb67ba025607e2195e25e748453d5737b12ba99baa54230
+	source = 0001-fix-name-collision-gmres.patch
+	b2sums = a9566a53e42ad1bc98e269840a390fafb338b804b9da61b343b94771adb3a4ce286e767e973f9ba164a6d270abfef9fd09f82d059451b17022568ccbab5a2331
 	b2sums = 2f9153f511986e342db67f37d95b26986432c1e2f176a6bf8483ea8abdab62d6e2fdf44c48da11f178abfdc34638af3818293eb587e5e8d96faa2a3389ee5b3c
 	b2sums = bd28a092f6703303f846121dbdcd4667ba2e3464b35a7cad24daab49dc0edebb42a176e229c6c1813f1b1c60d408263a824a4300a622eec37dc113b6fcd5d3f7
+	b2sums = 68fb16b40a0ef7bf87033a2c19cc8dc50bd59bccd845ad38c603abb98745a89baaa2c02dfadf2278d1aa4f4317a7c5c0e37b13df6fe82fb9c11abc613c249c71
 
 pkgname = fastercap

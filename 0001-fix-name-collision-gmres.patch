@@ -1,0 +1,56 @@
+diff --git a/tests/test_gmres.cpp b/tests/test_gmres.cpp
+index 4cc8673..58e04bb 100644
+--- a/tests/test_gmres.cpp
++++ b/tests/test_gmres.cpp
+@@ -69,7 +69,7 @@ protected:
+     }
+ };
+ 
+-static CLin_Matrix identity(unsigned long size)
++static CLin_Matrix identity_mtx(unsigned long size)
+ {
+     CLin_Matrix matrix(size, size);
+     matrix = 0.0;
+@@ -92,7 +92,7 @@ static double relativeResidual(const CLin_Matrix &matrix, const CLin_Vector &b,
+ 
+ static void simpleSystems(bool flexible)
+ {
+-    CLin_Matrix matrix = identity(1);
++    CLin_Matrix matrix = identity_mtx(1);
+     CSmallGmres solver(matrix);
+     CLin_Vector b(1, 3.0), x(1, -9.0);
+     std::feclearexcept(FE_ALL_EXCEPT);
+@@ -149,7 +149,7 @@ static void knownSystem(bool preconditioned, bool flexible)
+ 
+ static void continueAfterFailedResidual(bool flexible)
+ {
+-    CLin_Matrix matrix = identity(2);
++    CLin_Matrix matrix = identity_mtx(2);
+     matrix[1][1] = 2.0;
+     CLin_Vector b(2, -1.0), x(2);
+     CSmallGmres solver(matrix);
+@@ -164,7 +164,7 @@ static void continueAfterFailedResidual(bool flexible)
+ 
+ static void errors(bool flexible)
+ {
+-    CLin_Matrix matrix = identity(1);
++    CLin_Matrix matrix = identity_mtx(1);
+     CLin_Vector b(1, 1.0), x(1);
+     CSmallGmres inaccurate(matrix);
+     inaccurate.m_lPerturbProduct = 2;
+@@ -216,13 +216,13 @@ int main()
+ 
+     const double magnitudes[] = {1e-200, 1e200};
+     for(double magnitude : magnitudes) {
+-        CSmallGmres scaled(identity(1));
++        CSmallGmres scaled(identity_mtx(1));
+         CLin_Vector b(1, magnitude), x(1);
+         int ret = scaled.SolveSystem(b, x, 1e-12);
+         check("scaled RHS avoids norm underflow and overflow", ret == FC_NORMAL_END && scaled.Converged() && std::fabs(x[0]/magnitude-1.0) < 1e-12);
+     }
+ 
+-    CLin_Matrix matrix = identity(2);
++    CLin_Matrix matrix = identity_mtx(2);
+     matrix[1][1] = 0.0;
+     CSmallGmres inconsistent(matrix);
+     CLin_Vector b(2, 1.0), x(2);
