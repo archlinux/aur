@@ -3,7 +3,7 @@
 _pkgname=ssl12-ctl
 pkgname="$_pkgname-git"
 pkgver=r5
-pkgrel=1
+pkgrel=2
 pkgdesc='Control the Solid State Logic SSL 12 audio interface.'
 arch=('x86_64')
 url='https://github.com/john-baxter-dev/ssl12-ctl'
@@ -31,7 +31,7 @@ build() {
 	cd $_pkgname
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release
+	cargo build --features="usb,tui,config" --frozen --release
 }
 
 check() {
