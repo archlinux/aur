@@ -68,7 +68,11 @@
 #   - Px437_IBM_VGA_9x16.ttf, Px437 IBM VGA 9x16 from the Ultimate Oldschool
 #     PC Font Pack 2.2, which the classic set ibm-vga names by its family.
 #     The pack is a zip of 15 MB, and prepare() takes the font and the
-#     pack's license out of it.
+#     pack's license out of it. The recipe downloads the pack from the
+#     Internet Archive's copy of int10h.org's download, because int10h.org
+#     answers GitHub's build runners with 239 bytes in place of the zip.
+#     The copy has the same bytes as int10h.org's file, and the SHA-256 pin
+#     holds both to them.
 #   - Glass_TTY_VT220.ttf, Glass TTY VT220 1.3, which the classic set
 #     dec-vt220 names by its family.
 #   - Tiny5Mono.bdf, Tiny5 Mono 3.000, the font of the small set tiny5.
@@ -175,7 +179,7 @@ backup=('etc/vtium/fonts/classic/dec-vt220.vtfrit'
         'etc/vtium/fonts/scripts/noto-vietnamese.vtfrit'
         'etc/vtium/fonts/small/tiny5.vtfrit')
 source=("vtium::git+https://github.com/vtium/vtium.git#tag=${_tag}?signed"
-        'https://int10h.org/oldschool-pc-fonts/download/oldschool_pc_font_pack_v2.2_linux.zip'
+        'https://web.archive.org/web/20261105221733id_/https://int10h.org/oldschool-pc-fonts/download/oldschool_pc_font_pack_v2.2_linux.zip'
         'https://github.com/svofski/glasstty/raw/845410289199833ca0d5d7697d06e1780bfe3715/Glass_TTY_VT220.ttf'
         'glasstty-LICENSE::https://github.com/svofski/glasstty/raw/845410289199833ca0d5d7697d06e1780bfe3715/LICENSE'
         'https://github.com/Gissio/font_Tiny5Mono/raw/7d30f9e887fdb29e0b951e92493822afba5f70a7/fonts/bdf/Tiny5Mono.bdf'
