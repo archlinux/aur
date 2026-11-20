@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A light terminal emulator"
 
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,7 +29,7 @@ options=('!strip')
 source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('d65ae44a07ab02db2ab15729e21961eeb88d2239d9c96c03e6c9e0f3e544a848')
+sha256sums_x86_64=('c4cb8aeefee394fc933371a5bca4504b7d576bb58116e9c922ea997607634f85')
 
 
 case ${CARCH} in
