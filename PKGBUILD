@@ -3,7 +3,7 @@
 pkgname=ctfile-electron
 _pkgname=CTFile
 pkgver=5.1.28
-pkgrel=1
+pkgrel=2
 pkgdesc="城通网盘electron版"
 arch=('any')
 url="https://www.ctfile.com/"
@@ -36,6 +36,9 @@ package() {
     chmod 644 "${pkgdir}/opt/${pkgname%-electron}/assets/"*.png
     find ${pkgdir} -type d -exec chmod 755 {} \;
     install -Dm644 ${pkgname%-electron}.desktop "${pkgdir}/usr/share/applications/${pkgname%-electron}.desktop"
-    install -Dm644 squashfs-root/usr/share/icons/hicolor/1024x1024/apps/ctfile-desktop.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/ctfile-desktop.png"
+    while IFS= read -r iconfile; do
+        rel="${iconfile#squashfs-root/usr/share/icons/}"
+        install -Dm644 "$iconfile" "${pkgdir}/usr/share/icons/${rel}"
+    done < <(find squashfs-root/usr/share/icons/hicolor -type f -name "*.png")
     install -Dm644 ${srcdir}/"城通网盘 隐私政策" "$pkgdir/usr/share/licenses/${pkgname%-electron}/LICENSE"
 }

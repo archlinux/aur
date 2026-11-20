@@ -1,7 +1,7 @@
 pkgbase = ctfile-electron
 	pkgdesc = 城通网盘electron版
 	pkgver = 5.1.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ctfile.com/
 	arch = any
 	license = CC0-1.0
