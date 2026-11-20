@@ -16,7 +16,7 @@ _build_number=263.8311.30
 # like "eap_5", "rc", etc.
 _pre_release_identifier_snake_case=preview
 pkgver="$_version_yyyy_r_n_m.$_build_number${_pre_release_identifier_snake_case:+.$_pre_release_identifier_snake_case}"
-pkgrel=1
+pkgrel=2
 
 _tag=idea/2026.3.1-preview
 # Override Git hash if needed, for when they change a tag's hash and build number after pushing, as with
@@ -36,13 +36,16 @@ pkgdesc='IDE for Java, Groovy and other programming languages with advanced refa
 url='https://www.jetbrains.com/idea/'
 arch=('x86_64')
 license=('Apache-2.0')
-provides=('intellij-idea-community-edition')
-conflicts=('intellij-idea-community-edition')
 backup=('usr/share/idea/bin/idea64.vmoptions')
-# There is no JDK/JVM dependency because this package's output includes the JetBrains Runtime (JBR),
-# and the build process bootstraps its own Java environment.
-makedepends=('git')
-depends=('giflib' 'python' 'sh' 'ttf-font' 'libdbusmenu-glib' 'fontconfig' 'hicolor-icon-theme')
+provides=('intellij-idea-oss' 'intellij-idea-community-edition')
+conflicts=('intellij-idea-oss' 'intellij-idea-community-edition')
+
+# This package needs no JDK or JVM to run or build: it includes the JetBrains Runtime (JBR),
+# and the build process sets up its own Java environment.
+
+depends=('giflib' 'python' 'sh' 'ttf-font' 'fontconfig' 'hicolor-icon-theme')
+makedepends=('git' 'procps-ng')
+
 optdepends=(
   'lldb: lldb frontend integration'
 )
@@ -51,7 +54,7 @@ source=("git+https://github.com/JetBrains/intellij-community.git#$_github_source
   idea.desktop)
 sha256sums=('eb59cd40f32007fee87d4ff1ee9f62d3a5cd58424a5745acde9af5b5fc467476'
   'a0eba0d8b61c4c36884dc3ede27edc2f5dd5126d633009fdfeacbef0b2d1d47c'
-  '7e653ec3049058e2dcd7ca262081164ba417ea664885af7b5e4f94bcc987038f')
+  '077937dc8653ceb1a2bb20d0e2f1bca4046eba52d792b8d5fb2bf84e01ed5dc9')
 
 prepare() {
   cd intellij-community
@@ -80,6 +83,7 @@ build() {
   ./installers.cmd \
     -Dintellij.build.use.compiled.classes=false \
     -Dintellij.build.target.os=linux \
+    -Dintellij.build.target.arch=x64 \
     -Dbuild.number="${_build_number}"
   tar -xf out/idea-ce/artifacts/ideaIC-${_build_number}.tar.gz -C "${srcdir}"
 }
@@ -87,13 +91,13 @@ build() {
 package() {
   cd idea-oss
 
-  install -dm 755 "${pkgdir}"/usr/share/{licenses,pixmaps,idea,icons/hicolor/scalable/apps}
+  install -dm 755 "${pkgdir}"/usr/share/{licenses,idea,icons/hicolor/{128x128,scalable}/apps}
   cp -dr --no-preserve='ownership' bin lib plugins jbr "${pkgdir}"/usr/share/idea/
   cp -dr --no-preserve='ownership' license "${pkgdir}"/usr/share/licenses/idea
-  ln -s /usr/share/idea/bin/idea.png "${pkgdir}"/usr/share/pixmaps/
+  ln -s /usr/share/idea/bin/idea.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/
   ln -s /usr/share/idea/bin/idea.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/
   install -Dm 644 ../idea.desktop -t "${pkgdir}"/usr/share/applications/
-  mkdir "${pkgdir}"/usr/bin
+  install -dm 755 "${pkgdir}"/usr/bin
   ln -s /usr/share/idea/bin/idea "${pkgdir}"/usr/bin/idea
   install -Dm 644 build.txt -t "${pkgdir}"/usr/share/idea
   install -Dm 644 product-info.json -t "${pkgdir}"/usr/share/idea

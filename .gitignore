@@ -1,8 +1,6 @@
-*.pkg.tar*
-.ruff_cache/
+/*.pkg.tar*
 /.idea/
 /idea-android/
 /intellij-community/
 /pkg/
 /src/
-__pycache__/

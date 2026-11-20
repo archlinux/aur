@@ -1,20 +1,22 @@
 pkgbase = intellij-idea-open-eap
 	pkgdesc = IDE for Java, Groovy and other programming languages with advanced refactoring features. Open-source, latest-tag (usually EAP) version
 	pkgver = 2026.3.1.0.263.8311.30.preview
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/idea/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
+	makedepends = procps-ng
 	depends = giflib
 	depends = python
 	depends = sh
 	depends = ttf-font
-	depends = libdbusmenu-glib
 	depends = fontconfig
 	depends = hicolor-icon-theme
 	optdepends = lldb: lldb frontend integration
+	provides = intellij-idea-oss
 	provides = intellij-idea-community-edition
+	conflicts = intellij-idea-oss
 	conflicts = intellij-idea-community-edition
 	backup = usr/share/idea/bin/idea64.vmoptions
 	source = git+https://github.com/JetBrains/intellij-community.git#tag=idea/2026.3.1-preview
@@ -22,6 +24,6 @@ pkgbase = intellij-idea-open-eap
 	source = idea.desktop
 	sha256sums = eb59cd40f32007fee87d4ff1ee9f62d3a5cd58424a5745acde9af5b5fc467476
 	sha256sums = a0eba0d8b61c4c36884dc3ede27edc2f5dd5126d633009fdfeacbef0b2d1d47c
-	sha256sums = 7e653ec3049058e2dcd7ca262081164ba417ea664885af7b5e4f94bcc987038f
+	sha256sums = 077937dc8653ceb1a2bb20d0e2f1bca4046eba52d792b8d5fb2bf84e01ed5dc9
 
 pkgname = intellij-idea-open-eap

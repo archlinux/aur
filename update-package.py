@@ -8,8 +8,8 @@ goes. A run does these steps:
 
 1. Find the newest IDEA release tag in JetBrains' ``intellij-community``
    repository and look up its build number.
-2. Write the new version to PKGBUILD, update its checksums, check and format
-   it, and regenerate ``.SRCINFO``.
+2. Write the new version to PKGBUILD with pkgrel set back to 1, update its
+   checksums, check and format it, and regenerate ``.SRCINFO``.
 3. Build the package with ``makepkg -Csc`` and install it with
    ``makepkg -i`` unless that release is already installed.
 4. Check the version in ``product-info.json`` in both the package file and
@@ -22,7 +22,9 @@ goes. A run does these steps:
 If the PKGBUILD is already at the newest tag, running the script again
 continues where an earlier run stopped. It starts at step 3 if the PKGBUILD
 and ``.SRCINFO`` changes are not committed yet and at step 7 if they are
-committed but not pushed.
+committed but not pushed. Before step 7, it builds and checks a committed
+``pkgver-pkgrel`` that is not installed yet, such as a pkgrel bump made by
+hand.
 
 Pitfalls the script handles, from PKGBUILD comments and the package's Git
 history:
@@ -1038,8 +1040,12 @@ def complete_plan(plan: UpdatePlan, android_tags: dict[str, str]) -> UpdatePlan:
 # Edit PKGBUILD.
 
 
-def apply_plan(pkgbuild_text: str, plan: UpdatePlan) -> str:
-    """Return PKGBUILD text with the plan's values written in."""
+def apply_plan(pkgbuild_text: str, state: PkgState, plan: UpdatePlan) -> str:
+    """Return PKGBUILD text with the plan's values written in.
+
+    pkgrel goes back to 1 when the plan changes pkgver. When pkgver stays the
+    same, as when only the tag or the commit pins change, pkgrel keeps its value.
+    """
     replacements = {
         "_version_yyyy_r_n_m": plan.version_yyyy_r_n_m,
         "_build_number": plan.build_number,
@@ -1050,6 +1056,11 @@ def apply_plan(pkgbuild_text: str, plan: UpdatePlan) -> str:
             plan.android_sha if plan.use_hash_overrides else ""
         ),
     }
+    current_pkgver = format_pkgver(
+        state.version_yyyy_r_n_m, state.build_number, state.pre_snake
+    )
+    if planned_pkgver(plan) != current_pkgver:
+        replacements["pkgrel"] = "1"
     return replace_assignments(pkgbuild_text, replacements)
 
 
@@ -1133,10 +1144,15 @@ def print_plan(
 # Build and install.
 
 
+def format_pkgver(version_yyyy_r_n_m: str, build_number: str, pre_snake: str) -> str:
+    """Return the pkgver that PKGBUILD computes from its version variables."""
+    pkgver = f"{version_yyyy_r_n_m}.{build_number}"
+    return f"{pkgver}.{pre_snake}" if pre_snake else pkgver
+
+
 def planned_pkgver(plan: UpdatePlan) -> str:
     """Return the pkgver that PKGBUILD computes for the plan."""
-    pkgver = f"{plan.version_yyyy_r_n_m}.{plan.build_number}"
-    return f"{pkgver}.{plan.pre_snake}" if plan.pre_snake else pkgver
+    return format_pkgver(plan.version_yyyy_r_n_m, plan.build_number, plan.pre_snake)
 
 
 def built_package_pattern(plan: UpdatePlan) -> str:
@@ -1235,12 +1251,13 @@ def build_package(repo: Path, plan: UpdatePlan) -> Path:
     return built
 
 
-def build_and_install(repo: Path, plan: UpdatePlan) -> None:
-    """Build and install the package; then check that ``pacman`` reports it."""
+def build_install_and_check(repo: Path, plan: UpdatePlan) -> None:
+    """Build and install the package; then check it and ask whether IDEA launches."""
     package_path = build_package(repo, plan)
     info(f"installing {package_path.name} with makepkg -i")
     run(["makepkg", "-i"], cwd=repo)
     confirm_pacman_installed(repo, plan)
+    confirm_release_and_launch(repo, plan, package_required=True)
 
 
 # Check the installed release.
@@ -1469,8 +1486,7 @@ def finish_update(repo: Path, plan: UpdatePlan) -> None:
         info(f"{PKGNAME} {planned_version} is already installed; skipping makepkg")
         confirm_release_and_launch(repo, plan, package_required=False)
     else:
-        build_and_install(repo, plan)
-        confirm_release_and_launch(repo, plan, package_required=True)
+        build_install_and_check(repo, plan)
     commit_update(repo, plan)
     push_unpushed(repo, upstream_branch(repo))
     prompt_delete_built_packages(repo, plan)
@@ -1482,7 +1498,9 @@ def continue_unfinished_update(repo: Path, plan: UpdatePlan) -> None:
     If the PKGBUILD and ``.SRCINFO`` changes are not committed, an earlier run
     stopped before committing, so this refreshes the checksums and
     ``.SRCINFO`` and continues from the install step. If they are committed
-    but not pushed, this goes straight to the push step. Otherwise there is
+    but not pushed, this goes to the push step. When that committed
+    ``pkgver-pkgrel`` is not installed yet, as after a packaging change made
+    by hand, this builds, installs, and checks it first. Otherwise there is
     nothing to do.
     """
     changed = run(
@@ -1511,7 +1529,15 @@ def continue_unfinished_update(repo: Path, plan: UpdatePlan) -> None:
             "nothing to do"
         )
         return
-    info(f"{plan.version_tag} is committed but not pushed; going to the push step")
+    planned_version = planned_package_version(repo, plan)
+    if installed_package_version() == planned_version:
+        info(f"{plan.version_tag} is committed but not pushed; going to the push step")
+    else:
+        info(
+            f"{PKGNAME} {planned_version} is committed but not installed; "
+            "building it before the push step"
+        )
+        build_install_and_check(repo, plan)
     push_unpushed(repo, upstream)
     prompt_delete_built_packages(repo, plan)
 
@@ -1545,7 +1571,7 @@ def main() -> int:
 
     print_plan(state, plan, idea_tags=recent_tags)
     info(f"writing the planned values to {PKGBUILD_NAME}")
-    pkgbuild_path.write_text(apply_plan(text, plan), encoding="utf-8")
+    pkgbuild_path.write_text(apply_plan(text, state, plan), encoding="utf-8")
     refresh_pkgbuild_and_srcinfo(repo)
     finish_update(repo, plan)
     return 0
