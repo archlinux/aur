@@ -1,7 +1,7 @@
 pkgbase = subnetdesk-bin
 	pkgdesc = LAN-only remote desktop based on RustDesk
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/zibo-chen/SubnetDesk
 	arch = x86_64
 	arch = aarch64
@@ -23,9 +23,9 @@ pkgbase = subnetdesk-bin
 	provides = subnetdesk
 	conflicts = subnetdesk
 	options = !strip
-	source_x86_64 = subnetdesk-1.3.0-x86_64.deb::https://github.com/zibo-chen/SubnetDesk/releases/download/v1.3.0/subnetdesk-1.3.0-x86_64.deb
-	sha256sums_x86_64 = 59686cd464204dfc898473a49c1b80260b61b67dc2e6ce11b20ec60abdc7329a
-	source_aarch64 = subnetdesk-1.3.0-aarch64.deb::https://github.com/zibo-chen/SubnetDesk/releases/download/v1.3.0/subnetdesk-1.3.0-aarch64.deb
-	sha256sums_aarch64 = 93f5a83c4a5f4eb10c59a43a08ce0b3797103084972a0950c17633e6344703b4
+	source_x86_64 = subnetdesk-2.0.0-x86_64.deb::https://github.com/zibo-chen/SubnetDesk/releases/download/v2.0.0/subnetdesk-2.0.0-x86_64.deb
+	sha256sums_x86_64 = dc24d629c26a05b93f47d40c12943f295b2a680ab2db7add1ab956177667e88e
+	source_aarch64 = subnetdesk-2.0.0-aarch64.deb::https://github.com/zibo-chen/SubnetDesk/releases/download/v2.0.0/subnetdesk-2.0.0-aarch64.deb
+	sha256sums_aarch64 = 15c494a5dc82be02e404c75aa7aeff8015bfe444c8d9dcd6f1608220c1c8319a
 
 pkgname = subnetdesk-bin
