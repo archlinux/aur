@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TSP
-_pkgver=1.2.7
+_pkgver=1.3.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.7
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Traveling Salesperson Problem (TSP)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('49929c9488411d2cfdf136f99fa0ec942f0cf65d0573195897ba29b41a135f73')
+sha256sums=('a92ee21bceddde2bfcebebf6858bc899d2bc2ef6ff0d830b209b996c4b1bfdd4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

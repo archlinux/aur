@@ -1,6 +1,6 @@
 pkgbase = r-tsp
 	pkgdesc = Traveling Salesperson Problem (TSP)
-	pkgver = 1.2.7
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=TSP
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-tsp
 	optdepends = r-doparallel
 	optdepends = r-maps
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/TSP_1.2.7.tar.gz
-	sha256sums = 49929c9488411d2cfdf136f99fa0ec942f0cf65d0573195897ba29b41a135f73
+	source = https://cran.r-project.org/src/contrib/TSP_1.3.0.tar.gz
+	sha256sums = a92ee21bceddde2bfcebebf6858bc899d2bc2ef6ff0d830b209b996c4b1bfdd4
 
 pkgname = r-tsp
