@@ -6,11 +6,11 @@
 
 pkgname=aurcache-server
 pkgver=0.6.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Build server and pacman repository for Arch Linux packages from the AUR"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/Lukas-Heiligenbrunner/AURCache"
-license=(GPL-3.0-or-later)
+license=(MIT)
 # alpm-pkgbuild-bridge is what parses a PKGBUILD; without it every package add
 # fails. The server runs it through aurcache-sandbox, both by absolute path,
 # and the two speak an interface that changes with them (`aurcache-sandbox
@@ -60,4 +60,5 @@ package() {
     source "$srcdir/$_srcdir/packaging/common.sh"
     cd "$_srcdir"
     packaging/install-files.sh server "$pkgdir" "$PWD" "backend/$(_aurcache_release_dir)"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
