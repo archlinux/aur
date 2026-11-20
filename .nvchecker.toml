@@ -1,0 +1,5 @@
+[limo-js-bin]
+source = "github"
+github = "Spxg/limo"
+use_latest_release = true
+prefix = "v"

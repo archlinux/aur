@@ -1,0 +1,22 @@
+pkgbase = limo-js-bin
+	pkgdesc = Run JavaScript with browser Web APIs, right from your terminal
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Spxg/limo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = zlib
+	depends = fontconfig
+	provides = limo
+	conflicts = limo-js
+	options = !strip
+	source_x86_64 = limo-x86_64-0.1.2.tgz::https://github.com/Spxg/limo/releases/download/v0.1.2/limo-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e02fd9975b0148824dc0856ef19efb9f268e2b0bc69a307b4ac4f5bca685b54c
+	source_aarch64 = limo-aarch64-0.1.2.tgz::https://github.com/Spxg/limo/releases/download/v0.1.2/limo-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 8a0e914e181ea6d13d6fc3723bb65955fcb446ce90644582fb94a90152d6d75f
+
+pkgname = limo-js-bin
