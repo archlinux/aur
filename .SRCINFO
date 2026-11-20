@@ -1,6 +1,6 @@
 pkgbase = fish-pure-prompt
 	pkgdesc = Pretty, minimal, and fast prompt for Fish
-	pkgver = 4.19.2
+	pkgver = 4.19.3
 	pkgrel = 1
 	url = https://github.com/pure-fish/pure
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = fish-pure-prompt
 	license = MIT
 	depends = fish
 	provides = fish-prompt
-	source = fish-pure-prompt-4.19.2.tar.gz::https://github.com/pure-fish/pure/archive/v4.19.2.tar.gz
-	sha256sums = 3d42523b48d92a83861257f902ff4c8c39ee7ee80d8da51d22b6ad5e1ad091d4
+	source = fish-pure-prompt-4.19.3.tar.gz::https://github.com/pure-fish/pure/archive/v4.19.3.tar.gz
+	sha256sums = 707701f1a851844c5780737de90807eedaad48bc25d4d76eadc69ad0dbc7c88b
 
 pkgname = fish-pure-prompt
