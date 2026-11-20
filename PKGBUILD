@@ -6,7 +6,7 @@ _execname=fs
 pkgname=${_pkgname}-bin
 pkgdesc="A fast and intuitive search tool for the filesystem"
 
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,8 +24,8 @@ depends=('glibc' 'libgcc')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('efe3db76c3fb2b670d3d0516b6e1123db5679be3cb0993265fa1be47584edf43')
-sha256sums_aarch64=('ece4d852a6a3b4e2ce60cb3a1090b0b5171b7bbb34b438ba77cd2225c9cb5462')
+sha256sums_x86_64=('4f90522b0f15f7e42bb3d5630ffaf75f5ea1cb52d3df806706803cdc87303065')
+sha256sums_aarch64=('a36e4fde331ac1449c6e289646953123ec7142fb68f07a4212a440c377987d4a')
 
 
 case ${CARCH} in
