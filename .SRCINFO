@@ -1,20 +1,20 @@
 pkgbase = uutils-coreutils-bin
 	pkgdesc = Cross-platform Rust rewrite of the GNU coreutils (upstream PGO optimized binaries)
-	pkgver = 0.12.0
-	pkgrel = 3
+	pkgver = 0.13.0
+	pkgrel = 1
 	url = https://uutils.org/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	depends = libgcc
-	provides = uutils-coreutils=0.12.0
+	provides = uutils-coreutils=0.13.0
 	conflicts = uutils-coreutils
-	source = uutils-coreutils-bin-0.12.0-LICENSE::https://raw.githubusercontent.com/uutils/coreutils/refs/heads/main/LICENSE
+	source = uutils-coreutils-bin-0.13.0-LICENSE::https://raw.githubusercontent.com/uutils/coreutils/refs/heads/main/LICENSE
 	sha256sums = SKIP
-	source_aarch64 = uutils-coreutils-bin-0.12.0-aarch64.tar.gz::https://github.com/uutils/coreutils/releases/download/0.12.0/coreutils-0.12.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 8ded600eb3f6099d9f085d0e1ba8a5c002b8df1929d7f6c86d9cd03355ac3c5f
-	source_x86_64 = uutils-coreutils-bin-0.12.0-x86_64.tar.gz::https://github.com/uutils/coreutils/releases/download/0.12.0/coreutils-0.12.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = e08bd526f3c14717b145dfed4dbff5545848ca67a9b940be7ff7de5afea32786
+	source_aarch64 = uutils-coreutils-bin-0.13.0-aarch64.tar.gz::https://github.com/uutils/coreutils/releases/download/0.13.0/coreutils-0.13.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7253662e9f661d3dab28cfb50883d488a253e920828a697d13abf96e8c42efb8
+	source_x86_64 = uutils-coreutils-bin-0.13.0-x86_64.tar.gz::https://github.com/uutils/coreutils/releases/download/0.13.0/coreutils-0.13.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0970b93a3a5ef6a6eba13ab04b4015308bb32da01c7fa2d000f340eed2d7b394
 
 pkgname = uutils-coreutils-bin
