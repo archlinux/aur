@@ -1,6 +1,6 @@
 pkgbase = nyaterm-bin
 	pkgdesc = Native GPUI terminal workspace with SSH, SFTP, RDP and VNC
-	pkgver = 2.0.6
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://github.com/nyakang/nyaterm
 	arch = x86_64
@@ -24,11 +24,11 @@ pkgbase = nyaterm-bin
 	optdepends = vulkan-icd-loader: Vulkan loader required by GPUI
 	optdepends = vulkan-driver: hardware-specific Vulkan implementation
 	options = !debug
-	source = LICENSE::https://github.com/nyakang/nyaterm/raw/v2.0.6/LICENSE
+	source = LICENSE::https://github.com/nyakang/nyaterm/raw/v2.0.7/LICENSE
 	sha256sums = e0360c0b8e0dc3d944033910279d7736d72a51a6639278ede8807e74fe4c1de9
-	source_x86_64 = nyaterm-bin-2.0.6-x86_64.deb::https://github.com/nyakang/nyaterm/releases/download/v2.0.6/NyaTerm_2.0.6_linux_x64.deb
-	sha256sums_x86_64 = 34fa22e0fdf02f3be21a40badc1feed14a46380b7b16f1dd72473096ea9228fd
-	source_aarch64 = nyaterm-bin-2.0.6-aarch64.deb::https://github.com/nyakang/nyaterm/releases/download/v2.0.6/NyaTerm_2.0.6_linux_arm64.deb
-	sha256sums_aarch64 = 17f41d0dd237262260ff831604d6e0cf35cabfc7f3756727ee3f2e47394590e1
+	source_x86_64 = nyaterm-bin-2.0.7-x86_64.deb::https://github.com/nyakang/nyaterm/releases/download/v2.0.7/NyaTerm_2.0.7_linux_x64.deb
+	sha256sums_x86_64 = 78327adb3a79a811c87f657dac66132c3342c64d7a8c17aada2d4d19baf04514
+	source_aarch64 = nyaterm-bin-2.0.7-aarch64.deb::https://github.com/nyakang/nyaterm/releases/download/v2.0.7/NyaTerm_2.0.7_linux_arm64.deb
+	sha256sums_aarch64 = dee1e77bb580a41d9e8bc5b306ff9fc024dde7a1c32fa4c0c416405a606a3c8b
 
 pkgname = nyaterm-bin
