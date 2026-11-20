@@ -37,11 +37,12 @@ optdepends=('polkit: deleting a whole folder as administrator under admin://'
 
 options=('!strip')
 
-source=("README-${pkgver}.md::${_ghurlraw}/README.md"
-		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
+source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE" "THIRD_PARTY_NOTICES-${pkgver}::${_ghurlraw}/THIRD_PARTY_NOTICES.md"
+        "README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-${arch[0]}.tzst::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${pkgver}-${pkgrel}-${arch[0]}.pkg.tar.zst")
-sha256sums=('d74c2c3b58cd0f4bf032cea974933994c0d404b69cc68f955cf5a8140758cdd5'
-            'fa330b7ec7715da6050bb6cd8cc5ec86c61d0671da711fcc79460cf69193d260')
+sha256sums=('fa330b7ec7715da6050bb6cd8cc5ec86c61d0671da711fcc79460cf69193d260'
+            'e692556113c0d1f1ed7e5eb8710d354f55ad881fb131832218d715ade8bb14ec'
+            'd74c2c3b58cd0f4bf032cea974933994c0d404b69cc68f955cf5a8140758cdd5')
 sha256sums_x86_64=('2cfb8b2e386aa0669efe8dc40308981dca7154e14babbf573c5dc3942f3698e1')
 
 noextract=("${source_x86_64[@]%%::*}")
@@ -55,4 +56,5 @@ package() {
 	install -Dm644 ${srcdir}/README-${pkgver}.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
 
 	install -Dm644 ${srcdir}/LICENSE-${pkgver} ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	install -Dm644 ${srcdir}/THIRD_PARTY_NOTICES-${pkgver} ${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_NOTICES
 }
