@@ -1,0 +1,23 @@
+pkgbase = multilogin-agent-bin
+	pkgdesc = Tray agent that lets the Multilogin X web app start antidetect browser profiles
+	pkgver = 1.44.0
+	pkgrel = 1
+	url = https://multilogin.com
+	arch = x86_64
+	license = LicenseRef-Multilogin
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libayatana-appindicator
+	provides = multilogin-agent
+	conflicts = multilogin-agent
+	noextract = multiloginx-1.44.0-amd64.deb
+	options = !strip
+	options = !debug
+	source = multiloginx-1.44.0-amd64.deb::https://cdn-mlx-prod.multiloginapp.com/mlx/1.44.0/multiloginx-amd64.deb
+	source = LICENSE
+	sha256sums = fca764305ec470f43e738ceca89890bcd3f3d19265c460ef9e0e5fd3f596e728
+	sha256sums = 5f27472826e4cec04ca9097936bc3ea149886097396d764eb969cadbc578e6eb
+
+pkgname = multilogin-agent-bin
