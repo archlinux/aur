@@ -1,6 +1,6 @@
 pkgbase = r-openair
 	pkgdesc = Tools for the Analysis of Air Pollution Data
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=openair
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = r-openair
 	depends = r-patchwork
 	depends = r-purrr
 	depends = r-rcpp
-	depends = r-readr
 	depends = r-rlang
 	depends = r-scales
 	depends = r-tidyr
@@ -20,13 +19,16 @@ pkgbase = r-openair
 	optdepends = r-knitr
 	optdepends = r-legendry
 	optdepends = r-quantreg
+	optdepends = r-rcolorbrewer
+	optdepends = r-readr
 	optdepends = r-rmarkdown
 	optdepends = r-rnaturalearth
+	optdepends = r-rnaturalearthdata
 	optdepends = r-sf
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/openair_3.1.0.tar.gz
-	md5sums = 34870e5594e1000f4a3b9b13ae3c9192
-	b2sums = 313f79debb9bf2a64caefd10d48cc913614dc4c8a9357232574288d0f8bd96c082e953950a3cde8eed7cbfedcbfe3c6906237258e729137d257df7431da8e9a4
+	source = https://cran.r-project.org/src/contrib/openair_3.2.0.tar.gz
+	md5sums = 6909cbf1275c2f9c0e2c46754fb9323e
+	b2sums = cb7c48bf761cb889e0103475506d435cfc4e14b44b3da7e5ddf1b8a084c059491467d353a1d067a0cda07f015ad11bdd655f19c07420d27a1f96db1e2c92b712
 
 pkgname = r-openair

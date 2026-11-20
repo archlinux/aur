@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=openair
-_pkgver=3.1.0
+_pkgver=3.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,7 +17,6 @@ depends=(
   r-patchwork
   r-purrr
   r-rcpp
-  r-readr
   r-rlang
   r-scales
   r-tidyr
@@ -27,15 +26,18 @@ optdepends=(
   r-knitr
   r-legendry
   r-quantreg
+  r-rcolorbrewer
+  r-readr
   r-rmarkdown
   r-rnaturalearth
+  r-rnaturalearthdata
   r-sf
   r-spelling
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('34870e5594e1000f4a3b9b13ae3c9192')
-b2sums=('313f79debb9bf2a64caefd10d48cc913614dc4c8a9357232574288d0f8bd96c082e953950a3cde8eed7cbfedcbfe3c6906237258e729137d257df7431da8e9a4')
+md5sums=('6909cbf1275c2f9c0e2c46754fb9323e')
+b2sums=('cb7c48bf761cb889e0103475506d435cfc4e14b44b3da7e5ddf1b8a084c059491467d353a1d067a0cda07f015ad11bdd655f19c07420d27a1f96db1e2c92b712')
 
 build() {
   mkdir build
