@@ -2,7 +2,7 @@
 
 _pkgname=mechrevo-drivers
 pkgname=mechrevo-drivers-dkms-git
-pkgver=4.24.0.r30.g85bf136
+pkgver=4.24.0.r220.g2308286
 pkgrel=1
 pkgdesc='Unofficial MECHREVO laptop platform drivers based on TUXEDO drivers (DKMS, git)'
 arch=('x86_64')
@@ -42,7 +42,7 @@ options=('!strip' '!debug' '!lto')
 source=("${_pkgname}::git+${url}.git#branch=main"
         'dkms.conf')
 sha256sums=('SKIP'
-            '1e04086ef9bb94ec15878464b6594f7507715c081c4c114e56b7d46731fd7ea6')
+            '7f9879bfb6f8e44f0657454a0a3614ac68d0b5b82167e9d8b669dd0a10b4bd68')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}" || return 1
@@ -78,5 +78,5 @@ package() {
     while IFS= read -r -d '' doc; do
         install -Dm644 "$doc" \
             "${pkgdir}/usr/share/doc/${pkgname}/docs/${doc#"${srcdir}/${_pkgname}/docs/"}"
-    done < <(find "${srcdir}/${_pkgname}/docs" -type f -name '*.md' -print0)
+    done < <(find "${srcdir}/${_pkgname}/docs" -type f -print0)
 }
