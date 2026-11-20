@@ -3,16 +3,16 @@
 # Contributor: Greyson Christoforo <grey nospamat christoforo nospamdot net>
 # Contributor: piernov <piernov nospamat piernov nospamdot org>
 
-pkgname=flexbv-bin
+pkgname=flexbv5-bin
 pkgver=5.3175
 pkgrel=1
-pkgdesc="Paid version of the FlexBV boardview software"
+pkgdesc="Paid version of the FlexBV5 LTS boardview software"
 arch=("x86_64")
-url="https://pldaniels.com/flexbv5/"
+url="https://pldaniels.com/flexbv/"
 license=("custom")
 makedepends=("patchelf")
 depends=('glibc' 'zlib' 'fontconfig' 'libstdc++' 'gcc-libs')
-conflicts=("flexbv-free-bin")
+conflicts=("flexbv5-free-bin" "flexbv6-bin" "flexbv6-free-bin")
 
 source=("flexbv-std-${pkgver}-linux-x86_64.tar.gz::https://pldaniels.com/flexbv5/releases/flexbv-std-${pkgver}-linux-x86_64.tar.gz")
 
@@ -29,6 +29,7 @@ package() {
 
 	cd "share"
 	install -Dm644 "applications/flexbv.desktop" "${pkgdir}/usr/share/applications/flexbv.desktop"
+	sed -i '/^Name=/ { /^Name\[/! s/^Name=.*/Name=FlexBV5/ }' "$pkgdir/usr/share/applications/flexbv.desktop"
 	install -Dm644 "icons/hicolor/scalable/apps/flexbv.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/flexbv.svg"
 	install -Dm644 "appdata/flexbv.appdata.xml" "${pkgdir}/usr/share/metainfo/flexbv.appdata.xml"
 	install -Dm644 "mime/packages/flexbv.xml" "${pkgdir}/usr/share/mime/packages/flexbv.xml"
