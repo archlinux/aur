@@ -1,7 +1,7 @@
 # Maintainer: Vade <72322348+MetanoicArmor@users.noreply.github.com>
 # Checksums: ./packaging/refresh-checksums.sh vX.Y.Z
 pkgname=i2pchat-tui-bin
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="P2P (peer-to-peer) chat client over I2P network (TUI version)"
 arch=('x86_64' 'aarch64')
@@ -16,9 +16,9 @@ source_x86_64=("I2PChat-linux-x86_64-tui-v${pkgver}.zip::${url}/releases/downloa
                "${_icon}")
 source_aarch64=("I2PChat-linux-aarch64-tui-v${pkgver}.zip::${url}/releases/download/v${pkgver}/I2PChat-linux-aarch64-tui-v${pkgver}.zip"
                 "${_icon}")
-sha256sums_x86_64=('8a2f58595e3e5caa292e06ed42756d163a407668140877a5a5492b283835fb0c'
+sha256sums_x86_64=('baf113edecc119cbbd6f1449f0d12651fe3840ea836d3a2667aff5b2d9880114'
                    '2f27e90c85949ec4eabeaac6d12bca1449f679dbb10e4e9f07925e33b7d008b8')
-sha256sums_aarch64=('431a15fc498fe9b4d52a0510e10e5dda491629dee88caf31e2c64acd20b5172b'
+sha256sums_aarch64=('40c5fd87d6f35614138350ab578ddf1d7ad4eb52863b5ebad2cabd17efaf2514'
                     '2f27e90c85949ec4eabeaac6d12bca1449f679dbb10e4e9f07925e33b7d008b8')
 
 package() {
