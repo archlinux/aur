@@ -2,27 +2,45 @@
 
 _name=spitch
 pkgname=python-$_name
-pkgver=1.50.0
+pkgver=1.51.0
 pkgrel=1
 pkgdesc='The official Python library for the spitch API.'
 arch=('any')
 url='https://github.com/spi-tch/spitch-python'
 license=('Apache-2.0')
-depends=('python' 'python-httpx' 'python-pydantic' 'python-typing_extensions' 'python-anyio' 'python-distro' 'python-sniffio')
-makedepends=('python-hatchling' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-respx' 'python-pytest' 'python-pytest-asyncio' 'python-time-machine' 'python-dirty-equals' 'python-rich' 'python-pytest-xdist' 'python-aiohttp' 'python-httpx-aiohttp' 'npm' 'nodejs')
-optdepends=('python-aiohttp: aiohttp' 'python-httpx-aiohttp: aiohttp')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a860e9bd623090d16e51f1a4e41dcfbd04431baf1fe88b511091111828ef480c')
+depends=('python'
+         'python-httpx'
+         'python-pydantic'
+         'python-typing_extensions'
+         'python-anyio'
+         'python-distro'
+         'python-sniffio')
+makedepends=('python-hatchling'
+             'python-hatch-fancy-pypi-readme'
+             'python-build'
+             'python-installer')
+checkdepends=('python-respx'
+              'python-pytest'
+              'python-pytest-asyncio'
+              'python-pytest-xdist'
+              'python-time-machine'
+              'python-dirty-equals'
+              'python-rich'
+              'python-httpx-aiohttp'
+              'python-aiohttp')
+optdepends=('python-aiohttp: aiohttp'
+            'python-httpx-aiohttp: aiohttp')
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('986f953670aec7cb7a780501361b36a559f108892503d6f9a58bb449e7b3cdd9')
 
-prepare(){
-  cd "$srcdir"/$_name-python-$pkgver
-  sed -i 's/from typing_extensions import Literal, Annotated/from typing_extensions import Literal, Annotated, TypeAliasType/g' tests/test_models.py
-  sed -i 's/from openai import BaseModel/from spitch import BaseModel/g' src/spitch/_response.py
+prepare() {
+  cd "$_name-python-$pkgver"
+  # Use the hatchling version shipped by Arch
+  sed -i '/^requires = /s/"hatchling[<>=!~][^"]*"/"hatchling"/' pyproject.toml
 }
 
 build() {
-  cd "$srcdir"/$_name-python-$pkgver
+  cd "$_name-python-$pkgver"
   python -m build --wheel --no-isolation --skip-dependency-check
 }
 
@@ -32,18 +50,12 @@ check() {
     -vv
     --disable-warnings
     -p 'no:benchmark'
-    # Need to be fixed by developers
-    --deselect tests/api_resources/test_speech.py
-    --deselect tests/api_resources/test_files.py
-    --deselect tests/api_resources/test_text.py
   )
-  cd "$srcdir"/$_name-python-$pkgver
-  trap 'pkill -f steady' EXIT
-  ./scripts/mock --daemon
-  PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests
+  cd "$_name-python-$pkgver"
+  PYTHONPATH="$PWD"/src python scripts/mock pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "$srcdir"/$_name-python-$pkgver
+  cd "$_name-python-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
