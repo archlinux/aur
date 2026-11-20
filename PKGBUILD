@@ -2,7 +2,7 @@
 
 pkgname=gety-bin
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The local file search engine for you and your AI agents, made by Listary team"
 arch=('x86_64')
 url="https://gety.ai/"
@@ -26,7 +26,7 @@ source=(
     "gety-license.txt"
 )
 sha256sums=('3ee736e68d5c4fd9b0da89ea9b7bba51d5c0746b80a4546f54d9d9bb501dd35c'
-            'fe5811b6741770c6dded6256176f4a71bdf2918541a1191767484984e810172e')
+            'a904bb613cb9fd13c1aa317763501d146e8b622463f94d0b5ee45d996fa02821')
 
 package() {
     cd "$srcdir"

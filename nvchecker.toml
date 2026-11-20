@@ -1,0 +1,10 @@
+# nvchecker config for gety-bin
+# Usage: nvchecker -c nvchecker.toml
+# No GitHub releases; the download page shows the single current version
+# (tied to the actually downloadable installer). Asset URL pattern:
+# https://dl.gety.ai/Gety-linux-x64-<ver>-beta.deb
+[gety-bin]
+source = "regex"
+url = "https://gety.ai/download/"
+regex = 'v(\d+\.\d+\.\d+)'
+encoding = "utf-8"
