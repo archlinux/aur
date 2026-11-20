@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libdatachannel-git
-pkgver=0.24.1.r11.g28b2e730
+pkgver=0.24.6.r252.g0540cb05
 pkgrel=1
 pkgdesc="C/C++ WebRTC network library featuring Data Channels, Media Transport, and WebSockets"
 arch=('i686' 'x86_64')
 url="https://libdatachannel.org/"
 license=('MPL-2.0')
-depends=('glibc' 'libgcc' 'libstdc++' 'libjuice' 'libsrtp' 'openssl')
-makedepends=('git' 'cmake')
-provides=("libdatachannel=$pkgver")
+depends=('glibc' 'libgcc' 'libstdc++' 'libjuice' lib{crypto,srtp2,ssl}.so)
+makedepends=('git' 'cmake' 'libsrtp' 'openssl')
+provides=("libdatachannel=$pkgver" 'libdatachannel.so')
 conflicts=('libdatachannel')
 source=("git+https://github.com/paullouisageneau/libdatachannel.git")
 sha256sums=('SKIP')
