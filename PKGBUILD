@@ -9,7 +9,7 @@ license=('MIT')
 provides=('nodewipe')
 conflicts=('nodewipe-bin')
 source=("nodewipe-${pkgver}::https://github.com/KADHIRAVANEG/nodewipe/releases/download/v${pkgver}/nodewipe-linux-x86_64")
-sha256sums=('SKIP')
+sha256sums=('12240bf35c0fb31d77f6ddba93cf133204f6a9b9eeeb857bf0990329ee5c8aeb')
 
 package() {
     local bin="${pkgdir}/usr/bin/nodewipe"

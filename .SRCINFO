@@ -8,6 +8,6 @@ pkgbase = nodewipe
 	provides = nodewipe
 	conflicts = nodewipe-bin
 	source = nodewipe-0.9.8::https://github.com/KADHIRAVANEG/nodewipe/releases/download/v0.9.8/nodewipe-linux-x86_64
-	sha256sums = SKIP
+	sha256sums = 12240bf35c0fb31d77f6ddba93cf133204f6a9b9eeeb857bf0990329ee5c8aeb
 
 pkgname = nodewipe
