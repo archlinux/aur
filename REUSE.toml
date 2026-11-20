@@ -9,7 +9,6 @@ path = [
     ".gitignore",
     ".nvchecker.toml",
     "*.install",
-    "*.java",
     "*.sysusers",
     "*sysusers.conf",
     "*.tmpfiles",
