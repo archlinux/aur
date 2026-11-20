@@ -20,9 +20,9 @@
 # QoderWake service (https://qoder.cn/).
 
 pkgname=qoderwake-cn-bin
-_upstreamver=1.2.20-cn
-pkgver=1.2.20_cn
-pkgrel=5
+_upstreamver=1.2.22-cn
+pkgver=1.2.22_cn
+pkgrel=1
 pkgdesc="QoderWake 国内版 local CLI and daemon (official prebuilt Linux runtime)"
 arch=('x86_64' 'aarch64')
 url='https://qoder.cn/'
@@ -40,8 +40,8 @@ source_x86_64=(
 source_aarch64=(
   "qoderwake-cn-${_upstreamver}-linux-arm64.tar.gz::https://ide.qoder.com.cn/qoderwake-cn/releases/${_upstreamver}/qoderwake-cn_${_upstreamver}_linux_arm64.tar.gz"
 )
-sha256sums_x86_64=('0cf0d8d6f396b2b03ac1cf3aa16316dc810b7c0e14e5fa8abacb16d4a645096b')
-sha256sums_aarch64=('25f32f74a5f677a5d4515f4971ddf154f9a71a5b705052fa30ff4d5d57ea5ffb')
+sha256sums_x86_64=('285529b89d1798a40c7c39326e2e67b76ded0f475f1b931bd02902b17ea1d07e')
+sha256sums_aarch64=('5ec4bf312600c8df18dc3cb1fc69c865bd890f8e63fd6d71a821659e3fd5fb86')
 
 # 上游两版包内的位图 logo 相同；国内版右下角合成 CN 角标以便区分（console
 # 页面本身已使用 qoderwake-icon-cn.svg）。
