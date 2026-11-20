@@ -2,7 +2,7 @@
 
 _rockname=cluacov
 pkgbase="lua-$_rockname"
-pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua54-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=1.0.0
 pkgrel=1
 pkgdesc='C extensions for LuaCov'
@@ -15,6 +15,7 @@ makedepends=(lua
              lua51
              lua52
              lua53
+             lua54
              luarocks)
 source=("$_rockname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('0d4683d195ec69b070ba6d37ccb07b4c428cba38a727b0e2c2f4ba77e90df4b6')
@@ -27,6 +28,11 @@ _package_helper() {
 
 package_lua-cluacov() {
   depends=('lua' "${_lua_deps[@]/#/lua-}")
+  _package_helper 5.5
+}
+
+package_lua54-cluacov() {
+  depends=('lua54' "${_lua_deps[@]/#/lua54-}")
   _package_helper 5.4
 }
 

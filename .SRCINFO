@@ -10,6 +10,7 @@ pkgbase = lua-cluacov
 	makedepends = lua51
 	makedepends = lua52
 	makedepends = lua53
+	makedepends = lua54
 	makedepends = luarocks
 	depends = lua
 	source = cluacov-1.0.0.tar.gz::https://github.com/luarocks/cluacov/archive/1.0.0.tar.gz
@@ -18,6 +19,10 @@ pkgbase = lua-cluacov
 pkgname = lua-cluacov
 	depends = lua
 	depends = lua-luacov
+
+pkgname = lua54-cluacov
+	depends = lua54
+	depends = lua54-luacov
 
 pkgname = lua53-cluacov
 	depends = lua53
