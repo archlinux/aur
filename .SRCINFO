@@ -1,6 +1,6 @@
 pkgbase = morgan-git
 	pkgdesc = Shell de escritorio para Hyprland: barra, centro de control, notificaciones, launcher, OSD y bloqueo
-	pkgver = 0.3.0.r0.g0000000
+	pkgver = 0.3.1.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/ImJustDoingMyPart/morgan
 	install = morgan.install
