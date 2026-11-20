@@ -1,7 +1,7 @@
 pkgbase = nvforever-bin
 	pkgdesc = Clean-room Fallout: New Vegas engine (official prebuilt release; requires game data)
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.8.1
+	pkgrel = 1
 	url = https://github.com/LootJunkieAzza/NVForever
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -24,9 +24,9 @@ pkgbase = nvforever-bin
 	conflicts = nvforever
 	options = !strip
 	options = !debug
-	source = https://github.com/LootJunkieAzza/NVForever/releases/download/v0.8.0/NVForever-v0.8.0-x86_64-unknown-linux-gnu.tar.gz
+	source = https://github.com/LootJunkieAzza/NVForever/releases/download/v0.8.1/NVForever-v0.8.1-x86_64-unknown-linux-gnu.tar.gz
 	source = nvforever.desktop
-	sha256sums = be295a61c87e8c0b4acdeedc19b8d0a8d5a45ececd9e61ac7d0d1067b13c11e2
+	sha256sums = 4c8882a214680fdab8d85b9fc26606052f4d9985580748dd9ef130be2b76007e
 	sha256sums = 1927e63790d5216c4f01c1fc18142551446e685184943bc91e57a0d31a10e6e0
 
 pkgname = nvforever-bin
