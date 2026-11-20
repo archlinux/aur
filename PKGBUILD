@@ -3,8 +3,9 @@
 # Contributor: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 # Fork of the AUR `slack-desktop-wayland`, which trails upstream by several
-# releases. The -jetm suffix is what keeps this installable: `provides` and
-# `conflicts` alone still let a `slack-desktop-wayland` upgrade take the slot.
+# releases and is now an orphan. The -jetm suffix stays until the adoption of
+# the unsuffixed name is granted: until then the AUR refuses a push to that
+# name, so this package cannot be published under it.
 #
 # Ships Slack's own bundled Electron and launches it as a native Wayland client.
 # An earlier revision ran the deb's app.asar under the system electron44 package
@@ -14,7 +15,7 @@
 # the lag it causes.
 pkgname=slack-desktop-wayland-jetm
 _debname=slack-desktop
-pkgver=4.53.276
+pkgver=4.53.292
 pkgrel=1
 pkgdesc='Slack Desktop (Beta) for Linux, launched as a native Wayland client'
 arch=('x86_64')
@@ -48,7 +49,7 @@ options=('!strip')
 
 source=("https://downloads.slack-edge.com/desktop-releases/linux/x64/${pkgver}/${_debname}-${pkgver}-amd64.deb")
 noextract=("${_debname}-${pkgver}-amd64.deb")
-b2sums=('153e908075e45f00c7ecbbfffb8289260989bf6ac2978e324726339bdcbb83d7d748f81eb8b91d77cea4fd44a8e79e18390860cb3779e218cee91aa263ca5c60')
+b2sums=('7ff7b2ad59bab89b8e94421dc3ec25de1541b4608b90a2f4ee1f212b137cd2be75749f43cf08e4484e8c485d1088055ce67c2b8d1f0262a4fe38c3022420e6b5')
 
 package() {
   bsdtar -O -xf "${srcdir}/${_debname}-${pkgver}-amd64.deb" 'data.tar.*' |
