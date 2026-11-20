@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=kander-bin
-pkgver=1.4.5
+pkgver=1.4.7
 pkgrel=1
 pkgdesc="Kanban board for coordinating multiple AI coding agents, with isolated git worktrees and independent reviewer agents"
 arch=('x86_64' 'aarch64')
@@ -25,8 +25,8 @@ source_x86_64=("${_archive_x86_64}::${_releases}/${_archive_x86_64}")
 source_aarch64=("${_archive_aarch64}::${_releases}/${_archive_aarch64}")
 
 sha256sums=('365a3932a1297fc06250ea4ee0f23ee99da5a8a567b3c84b3e879877170c0836')
-sha256sums_x86_64=('5f92d0e1baaabbd11e4bb63c99e8df9ad0bc08da86b425bf91acf8055c30a24f')
-sha256sums_aarch64=('23e05e5caf9b6037fcb4a48aaebddd4b8ed05d32ef676c6197992784dcc64af2')
+sha256sums_x86_64=('f137577a1bb66ebb9793b3b7b688fdc94dc766020a431df6d88b309b8ecdce1b')
+sha256sums_aarch64=('c520bdb75f7b8029015612acc5e45a5fd8487f07f03371e88330bb57b08d1bcf')
 
 package() {
     local archive_var="_archive_${CARCH}"
