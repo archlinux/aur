@@ -1,0 +1,18 @@
+post_install() {
+  cat <<'EOS'
+
+  Peregrine Fil-C is installed under /opt/perefil; use filc / filc++.
+
+    filc   --filc-no-ape -o hello hello.c     # plain x86_64 static ELF
+    filc++ --filc-no-ape -o app app.cpp       # libc++ based
+    filc   -o hello hello.c                   # fat APE (needs aarch64-linux-gnu-binutils)
+
+  Compiler is clang 20.1.8: C17 and C++20 only.
+  Full usage notes: /usr/share/doc/perefil-bin/README.arch
+
+EOS
+}
+
+post_upgrade() {
+  post_install
+}

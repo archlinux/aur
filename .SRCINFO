@@ -1,0 +1,23 @@
+pkgbase = perefil-bin
+	pkgdesc = Peregrine Fil-C: memory-safe C/C++ compiler and runtime (prebuilt, emits APEs)
+	pkgver = 0.687
+	pkgrel = 1
+	url = https://fil-c.org/
+	install = perefil-bin.install
+	arch = x86_64
+	license = Apache-2.0
+	license = BSD-2-Clause
+	license = ISC
+	depends = linux-api-headers
+	optdepends = aarch64-linux-gnu-binutils: link the default fat-APE output (else pass --filc-no-ape)
+	optdepends = qemu-user: run the ARM64 half of an APE (qemu-aarch64)
+	optdepends = aarch64-linux-gnu-gdb: debug the ARM64 half of an APE
+	optdepends = wine: run the Windows side of an APE through the binfmt_misc DOSWin handler
+	options = !strip
+	options = !debug
+	options = !lto
+	options = !staticlibs
+	source_x86_64 = https://github.com/pizlonator/fil-c/releases/download/v0.687/perefil-0.687-linux-x86_64.tar.xz
+	sha256sums_x86_64 = 34fde85316fc9fadb2e07091bb04578e80f65f3c617ebb23b1738c0369aa5247
+
+pkgname = perefil-bin
