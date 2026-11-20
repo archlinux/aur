@@ -1,6 +1,6 @@
 pkgbase = datacraft-bin
 	pkgdesc = Lightweight desktop client for SQL databases (precompiled release)
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/javy-fernandez/datacraft
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = datacraft-bin
 	conflicts = datacraft-git
 	options = !strip
 	options = !debug
-	source_x86_64 = datacraft-bin-0.16.0-x86_64.tar.gz::https://github.com/javy-fernandez/datacraft/releases/download/v0.16.0/DataCraft-0.16.0-linux-x64.tar.gz
-	sha256sums_x86_64 = 9235271e9a15bcd867d355eb03cc4a88cc373ebfca033c410a76a113fee0221d
-	source_aarch64 = datacraft-bin-0.16.0-aarch64.tar.gz::https://github.com/javy-fernandez/datacraft/releases/download/v0.16.0/DataCraft-0.16.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = a3934168b5a60c2c7a3d99ec9ed2a77899da77f25e3200a47a0dcbbd63d971d9
+	source_x86_64 = datacraft-bin-0.17.0-x86_64.tar.gz::https://github.com/javy-fernandez/datacraft/releases/download/v0.17.0/DataCraft-0.17.0-linux-x64.tar.gz
+	sha256sums_x86_64 = e23265d10fd350b1fc03d61f710ca066f2e0267d1e25244228683bc122785fee
+	source_aarch64 = datacraft-bin-0.17.0-aarch64.tar.gz::https://github.com/javy-fernandez/datacraft/releases/download/v0.17.0/DataCraft-0.17.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0f4cde94d1bd7a180f15082bcd6374fe993200c7d98ee5f86c0e2fd79cc36f05
 
 pkgname = datacraft-bin
