@@ -5,7 +5,7 @@
 
 pkgname=flexbv6-bin
 pkgver=6.0407
-pkgrel=1
+pkgrel=2
 pkgdesc="Paid version of the FlexBV6 boardview software"
 arch=("x86_64")
 url="https://pldaniels.com/flexbv/"
