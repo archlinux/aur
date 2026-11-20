@@ -1,0 +1,19 @@
+pkgbase = python-assoc-scan
+	pkgdesc = Associative scan in PyTorch with optional GPU acceleration
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/lucidrains/assoc-scan
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python-accelerated-scan>=0.3.0
+	depends = python-einops>=0.8.0
+	depends = python-pytorch>=2.0
+	source = python-assoc-scan-0.0.6.tar.gz::https://github.com/lucidrains/assoc-scan/archive/d1d628b09ea7306e88dd86e11c53eae4be16d9ed.tar.gz
+	sha256sums = 052918749329ae77c11b181c08bc1ae2cbef8032f7f97da41eb6d00203a46816
+
+pkgname = python-assoc-scan
