@@ -1,6 +1,6 @@
 pkgbase = kiwix-cli-bin
 	pkgdesc = Browse a self-hosted Kiwix server from the command line
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/joey5403/kiwix-cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = kiwix-cli-bin
 	depends = gcc-libs
 	provides = kiwix-cli
 	conflicts = kiwix-cli
-	source = https://github.com/joey5403/kiwix-cli/releases/download/v0.2.1/kiwix-cli-0.2.1-linux-x86_64.tar.gz
-	sha256sums = 61a362c1145ef61b4d2f90ddfcc111b2e42d428995becf3839d951aa5d0dcba0
+	source = https://github.com/joey5403/kiwix-cli/releases/download/v0.3.0/kiwix-cli-0.3.0-linux-x86_64.tar.gz
+	sha256sums = 1f4893e4c27e368ed2cd6ac5d32a3f1f15e945d195cde7bcffab6ddfdc538ef7
 
 pkgname = kiwix-cli-bin
