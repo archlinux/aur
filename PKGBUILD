@@ -1,6 +1,6 @@
 # Maintainer: buding <1259085392z@gmail.com>
 pkgname=pixelterm-c
-pkgver=1.8.10
+pkgver=1.8.11
 pkgrel=1
 pkgdesc="A high-performance terminal image/video/book browser written in C, based on the Chafa library"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('pkgconf')
 provides=('pixelterm-c')
 options=('!debug' '!strip')
 source=("pixelterm-c-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('38857dcfbb9602d812bf11bd1e249d721a3dcfc133ed77a439d433d5f43087c1')
+sha256sums=('efa8bea3bc8b75cf9e006f5ac51b8d313050f754d6acdd5d6bd395392b1b8e4e')
 
 build() {
   cd "${srcdir}/PixelTerm-C-${pkgver}"
@@ -34,4 +34,4 @@ package() {
   install -Dm644 completions/fish/pixelterm.fish "${pkgdir}/usr/share/fish/vendor_completions.d/pixelterm.fish"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-# rebuild-deps: libmupdf=1.28.6-1 ffmpeg=2:9.0.2-5
+# rebuild-deps: libmupdf=1.28.6-1 ffmpeg=2:9.1-1
