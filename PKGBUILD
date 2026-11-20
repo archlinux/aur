@@ -6,7 +6,7 @@ appname=${gitname,,}
 pkgname=${appname}
 pkgdesc="A no-clutter terminal Markdown editor with modal editing"
 
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 gitver=v${pkgver}
 
@@ -22,7 +22,7 @@ depends=('glibc' 'libgcc')
 options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/${gitver}.tar.gz")
-sha256sums=('11987fb3228056feea6af44649db1667654a5e4ac9eb89605054a6424690bbad')
+sha256sums=('86acfd2da14b2ed3bc9dd6da12e6071971ea4e583ef16f69f9c7da2d446e5533')
 
 prepare() {
 	cd "${gitname}-${gitver//v/}" || exit
