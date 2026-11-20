@@ -1,7 +1,7 @@
 pkgbase = justaiagent
 	pkgdesc = Linux-native local AI agent with embedded web interface
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/Friendships6666/JustAIAgent
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = justaiagent
 	depends = traceroute
 	depends = iputils
 	options = !lto
-	source = justaiagent-0.1.0.tar.gz::https://github.com/Friendships6666/JustAIAgent/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = bd9332d17b78dc153ed38fa94f53b7522924878c32e829997ecaa3e870f651c1
+	source = justaiagent-0.1.1.tar.gz::https://github.com/Friendships6666/JustAIAgent/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = cf0d6129f2d4ebb01a569454c94edf5857610a87ba2e211f2a8c87ebf4a90b8a
 
 pkgname = justaiagent
