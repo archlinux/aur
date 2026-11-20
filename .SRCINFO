@@ -1,6 +1,6 @@
 pkgbase = mindwtr
 	pkgdesc = To-do app built on the Getting Things Done (GTD) method
-	pkgver = 1.3.7
+	pkgver = 1.3.9
 	pkgrel = 1
 	url = https://github.com/dongdongbh/Mindwtr
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = mindwtr
 	depends = openssl
 	depends = sqlite
 	depends = webkit2gtk-4.1
-	source = mindwtr-1.3.7.tar.gz::https://github.com/dongdongbh/Mindwtr/archive/v1.3.7.tar.gz
-	sha256sums = 72a60b4aaa4e4e2b85c20f46e2e172b938443ae93a1f0f9d3749126bd0fd86ee
+	source = mindwtr-1.3.9.tar.gz::https://github.com/dongdongbh/Mindwtr/archive/v1.3.9.tar.gz
+	sha256sums = c9701903217122c800872d3f51973f623f59931a0967921f761eef7ce422df49
 
 pkgname = mindwtr
