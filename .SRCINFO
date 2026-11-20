@@ -1,6 +1,6 @@
 pkgbase = lua-cassowary-git
 	pkgdesc = The cassowary constraint solver
-	pkgver = 2.3.1.r4.gfa4d058
+	pkgver = 2.3.2.r1.gcdc9427
 	pkgrel = 1
 	url = https://github.com/sile-typesetter/cassowary.lua
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = lua-cassowary-git
 	makedepends = lua51
 	makedepends = lua52
 	makedepends = lua53
+	makedepends = lua54
 	makedepends = luarocks
 	source = cassowary.lua.git::git+https://github.com/sile-typesetter/cassowary.lua.git
 	sha256sums = SKIP
@@ -19,6 +20,12 @@ pkgname = lua-cassowary-git
 	depends = lua-penlight
 	provides = lua-cassowary
 	conflicts = lua-cassowary
+
+pkgname = lua54-cassowary-git
+	depends = lua54
+	depends = lua54-penlight
+	provides = lua54-cassowary
+	conflicts = lua54-cassowary
 
 pkgname = lua53-cassowary-git
 	depends = lua53

@@ -2,8 +2,8 @@
 
 _rockname=cassowary
 _project=$_rockname.lua
-pkgname=("lua-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
-pkgver=2.3.1.r4.gfa4d058
+pkgname=("lua-$_rockname-git" "lua54-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
+pkgver=2.3.2.r1.gcdc9427
 _rockrel=0
 pkgrel=1
 pkgdesc='The cassowary constraint solver'
@@ -16,6 +16,7 @@ makedepends=(git
              lua51
              lua52
              lua53
+             lua54
              luarocks)
 source=("$_project.git::git+$url.git")
 sha256sums=('SKIP')
@@ -34,6 +35,13 @@ _package_helper() {
 
 package_lua-cassowary-git() {
 	depends=('lua' "${_lua_deps[@]/#/lua-}")
+	provides=("${pkgname/-git}")
+	conflicts=("${pkgname/-git}")
+	_package_helper 5.5
+}
+
+package_lua54-cassowary-git() {
+	depends=('lua54' "${_lua_deps[@]/#/lua54-}")
 	provides=("${pkgname/-git}")
 	conflicts=("${pkgname/-git}")
 	_package_helper 5.4
