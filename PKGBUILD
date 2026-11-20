@@ -1,6 +1,6 @@
 # Maintainer: CastSound Team <ci@castsound.app>
 pkgname=castsound-bin
-pkgver=1.0.36
+pkgver=1.0.37
 pkgrel=1
 pkgdesc="Turn your smartphone into complete PC peripherals (speaker, mic, webcam) with ultra-low latency"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,10 @@ license=('custom')
 provides=('castsound')
 conflicts=('castsound')
 depends=('alsa-lib' 'libpulse' 'pipewire' 'ffmpeg')
-optdepends=('pipewire-pulse: PulseAudio compatibility via PipeWire')
+optdepends=(
+  'pipewire-pulse: PulseAudio compatibility via PipeWire'
+  'v4l2loopback-dkms: Virtual camera streaming support'
+)
 source=('.managed_by_aur')
 sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 source_x86_64=("CastSound-${pkgver}-linux-x86_64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-${pkgver}-linux-x86_64.tar.gz")
