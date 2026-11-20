@@ -2,7 +2,7 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=mistral-vibe
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
@@ -69,7 +69,7 @@ checkdepends=(
 )
 source=("git+${url}.git#tag=v${pkgver}"
         "stretch_e2e_timeouts_when_builder_is_loaded.patch")
-sha256sums=('e1decf9d0513b9a3b276ea8e5c2d7d7284482094167b26bb93eb844758f9a16d'
+sha256sums=('c78c36e9c4f0022ecc7bae64ada93e14515f13a7792c6d1a278971d0c52f626b'
             'f6431800cea45f1a74d9786769b93190c4c9c9849f295e3ac83af5cfd2b15324')
 
 prepare() {
