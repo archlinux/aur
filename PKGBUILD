@@ -4,7 +4,7 @@ pkgver=20261102.r${_commit}
 pkgrel=1
 pkgdesc="Nintendo Switch emulator (Citron nightly build from NextendoNetwork)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/NextendoNetwork/citron-nextendo"
+url="https://git.nextendo.network/NextendoNetwork/citron-nextendo"
 license=('GPL-2.0-or-later')
 depends=(
   'glibc'
@@ -24,12 +24,12 @@ _repo="NextendoNetwork/citron-nextendo"
 _release_tag="nightly-linux"
 
 source_x86_64=(
-  "${pkgname}-${_commit}-x86_64.tar.zst::https://github.com/${_repo}/releases/download/${_release_tag}/citron_nightly-${_commit}-linux-x86_64-use-nopgo.tar.zst"
+  "${pkgname}-${_commit}-x86_64.tar.zst::https://git.nextendo.network/${_repo}/releases/download/${_release_tag}/citron_nightly-${_commit}-linux-x86_64-use-nopgo.tar.zst"
 )
 sha256sums_x86_64=('18370afa5d1c50dd917e0a2aa4b9751dee04c079ff6a950baebd3415333171a5')
 
 source_aarch64=(
-  "${pkgname}-${_commit}-aarch64.tar.zst::https://github.com/${_repo}/releases/download/${_release_tag}/citron_nightly-${_commit}-linux-aarch64-use-nopgo.tar.zst"
+  "${pkgname}-${_commit}-aarch64.tar.zst::https://git.nextendo.network/${_repo}/releases/download/${_release_tag}/citron_nightly-${_commit}-linux-aarch64-use-nopgo.tar.zst"
 )
 sha256sums_aarch64=('ba9edd8ee4ad508471b2023c6726f1ed94549ed9e48aab1f1e132f90dbc510b7')
 
