@@ -1,6 +1,6 @@
 # Maintainer: westlaw
 pkgname=nvforever-bin
-pkgver=0.5.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Clean-room Fallout: New Vegas engine (official prebuilt release; requires game data)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('nvforever')
 options=('!strip' '!debug')
 _archive="NVForever-v${pkgver}-x86_64-unknown-linux-gnu"
 source=("${url}/releases/download/v${pkgver}/${_archive}.tar.gz")
-sha256sums=('301b39b587ce3f6b427d8e3433c5b5035d400deb6d8cbfbeca14752dc401c186')
+sha256sums=('be295a61c87e8c0b4acdeedc19b8d0a8d5a45ececd9e61ac7d0d1067b13c11e2')
 
 package() {
   local program
