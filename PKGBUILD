@@ -3,7 +3,7 @@
 # GapGPT all rights reserved ©
 
 pkgname=gapgpt-desktop-bin
-pkgver=1.3.25
+pkgver=1.3.26
 pkgrel=1
 pkgdesc="GapGPT desktop AI workspace with a local GapCode agent server (unofficial package)"
 arch=('x86_64' 'aarch64')
@@ -35,14 +35,18 @@ options=('!strip' '!debug')
 #   curl -s https://gapgpt.ir/releases/app/desktop/latest-linux-arm64.yml
 # Those feeds publish sha512 (base64); convert with: base64 -d | xxd -p -c64
 _base=https://gapgpt.ir/releases/app/desktop
+# The arm64 feed lags behind: keep aarch64 on the newest build it lists.
+_pkgver_aarch64=1.3.25
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_base}/linux/${pkgver}/GapGPT_${pkgver}_amd64.deb")
-source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_base}/linux-arm64/${pkgver}/GapGPT_${pkgver}_arm64.deb")
-sha512sums_x86_64=('d162ffd7cef87c19183b71f08cb7fffa60ac6e317ced15f839ad26cb05f9efaad478b96ac3504e5c7d340a97f26422c7519cdc0284d46e4b15c85e5a8363df9c')
+source_aarch64=("${pkgname}-${_pkgver_aarch64}-aarch64.deb::${_base}/linux-arm64/${_pkgver_aarch64}/GapGPT_${_pkgver_aarch64}_arm64.deb")
+sha512sums_x86_64=('80ee1982ae9033565fdfac7443c6cb88ee75cfa94dec4dd82547259721db4af379e48b81da602770b042ee75b8ebe395f2d14915aff8a42f34e846e5fc4b030c')
 sha512sums_aarch64=('430a1b0094253b671e1a5db11a9bffb6898ffca36e740fb19529e136e9500da2cb1cef55cc3c6f3fdc39c81c15b1a578cf1726ef0e21aa70c7e1cd25b67a1515')
-noextract=("${pkgname}-${pkgver}-${CARCH}.deb")
+noextract=("${pkgname}-${pkgver}-x86_64.deb" "${pkgname}-${_pkgver_aarch64}-aarch64.deb")
 
 package() {
-  bsdtar -xOf "${pkgname}-${pkgver}-${CARCH}.deb" data.tar.gz | bsdtar -xpf - -C "$pkgdir"
+  local _deb="${pkgname}-${pkgver}-x86_64.deb"
+  [[ $CARCH == aarch64 ]] && _deb="${pkgname}-${_pkgver_aarch64}-aarch64.deb"
+  bsdtar -xOf "$_deb" data.tar.gz | bsdtar -xpf - -C "$pkgdir"
 
   local _app=/opt/GapGPT _res=/opt/GapGPT/resources
 
