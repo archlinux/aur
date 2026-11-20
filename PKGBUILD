@@ -1,6 +1,6 @@
 # Maintainer: Anuraj Jit Saikia <rajasaikia1644@gmail.com>
 pkgname=voisu
-pkgver=0.81.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Voice dictation for Linux desktops (daemon, CLI, and optional Overlay)"
 arch=('x86_64')
@@ -9,6 +9,8 @@ url="https://github.com/Anuraj-Dev/voisu"
 # statically link the ring crate, which adds ISC (new ring code), Apache-2.0
 # and BSD-3-Clause (BoringSSL-derived code) and MIT (once_cell polyfill).
 # ring's full upstream license tree is installed under licenses/voisu/ring/.
+# The voisu-local-asr worker bundles whisper.cpp and ggml (MIT), noticed in
+# THIRD_PARTY_NOTICES.md.
 license=('MIT' 'Apache-2.0' 'ISC' 'BSD-3-Clause')
 # Runtime boundaries that are NOT visible to namcap's ELF scan because Voisu
 # reaches them as subprocesses, a D-Bus service, or via dlopen:
@@ -30,8 +32,13 @@ depends=('gtk4'
          'wl-clipboard'
          'libsecret'
          'curl'
-         'xdg-desktop-portal')
-makedepends=('cargo')
+         'xdg-desktop-portal'
+         'vulkan-icd-loader')
+# The whisper.cpp worker (crates/voisu-whisper-sys): cmake and a C++ compiler
+# build the vendored tree; ggml's Vulkan backend compiles its shaders with
+# glslc (shaderc) against the Vulkan and SPIR-V headers. vulkan-icd-loader
+# above is libvulkan.so.1, which libggml-vulkan.so links.
+makedepends=('cargo' 'cmake' 'shaderc' 'vulkan-headers' 'spirv-headers')
 optdepends=('libei: direct Delivery of the Transcript into the focused window'
             'xdg-desktop-portal-kde: portal backend for KDE Plasma'
             'xdg-desktop-portal-hyprland: portal backend for Hyprland')
@@ -55,7 +62,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Anuraj-Dev/voisu/archive/re
         'LICENSE.ring-once_cell-APACHE'
         'LICENSE.ring-once_cell-MIT'
         'LICENSE.ring-fiat')
-sha256sums=('c0d5a6112e9c0676602924c1aa9c0233d7301d8c9df2d7618ee08e51c6fef34c'
+sha256sums=('050f6c919ea60de20b25be9395b96671e4efcd06c537abf6e357dc3458aa0873'
             'b3d734001a94efff3579978d953391aa7115f877657d25eb54037a43875d078a'
             '005fc765ddc5115da796cca915baa9557abae13ff35e0a47c47affc56f6c414d'
             'f025ccfb7dfb6bdfedc75ca0f67acc69e6fb4998143d834f7c2f38a29989680f'
@@ -79,6 +86,9 @@ build() {
     cargo build --frozen --release --workspace
     # The Overlay is feature-gated behind voisu-app/overlay.
     cargo build --frozen --release -p voisu-app --features overlay --bin voisu-overlay
+    # The whisper.cpp worker, built with Vulkan in its own target dir so its
+    # libraries never trade places with the CPU-only build in target/release.
+    cargo build --frozen --release -p voisu-local-asr --features vulkan --target-dir target/worker
 }
 
 # No check(): CI (.github/workflows/ci.yml) runs the full workspace test suite
@@ -91,6 +101,19 @@ package() {
     install -Dm755 target/release/voisu "$pkgdir/usr/bin/voisu"
     install -Dm755 target/release/voisu-daemon "$pkgdir/usr/bin/voisu-daemon"
     install -Dm755 target/release/voisu-overlay "$pkgdir/usr/bin/voisu-overlay"
+
+    # The worker and its private ggml libraries and backend modules (listed
+    # by voisu-whisper-sys) in one directory; the worker finds them through
+    # its $ORIGIN rpath. Arch keeps private helpers in /usr/lib/<pkg>.
+    install -Dm755 target/worker/release/voisu-local-asr \
+        "$pkgdir/usr/lib/voisu/voisu-local-asr"
+    local lib
+    while read -r lib; do
+        install -Dm755 "target/worker/release/$lib" "$pkgdir/usr/lib/voisu/$lib"
+    done < target/worker/release/voisu-whisper-runtime.txt
+    # The daemon starts only a worker whose runtime list sits beside it.
+    install -Dm644 target/worker/release/voisu-whisper-runtime.txt \
+        "$pkgdir/usr/lib/voisu/voisu-whisper-runtime.txt"
 
     # systemd *user* units (Voisu never runs privileged system services).
     install -Dm644 packaging/voisu.service \
@@ -106,6 +129,8 @@ package() {
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/voisu.svg"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 THIRD_PARTY_NOTICES.md \
+        "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_NOTICES.md"
 
     # ring's license tree, kept at its upstream names/paths so the
     # cross-references inside ring's LICENSE manifest actually resolve.
