@@ -1,12 +1,12 @@
 # Maintainer: Arzet Ro <arzeth0@gmail.com>
 pkgname=python-deepspeed
-pkgver=0.19.6
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective."
 #depends=(python python-hjson ninja python-numpy python-packaging python-psutil python-py-cpuinfo python-pydantic python-pynvml python-pytorch python-tqdm)
 #depends+=(python-cupy python-huggingface-hub tensorboard python-transformers python-mpi4py python-tabulate python-fairscale python-safetensors)
 depends=(
-	# requirements.txt and/or requirements/requirements.txt
+	# according to `requirements.txt` (in `requirements/`):
 	python-einops
 	python-hjson
 	python-pytorch
@@ -77,10 +77,10 @@ optdepends=(
 arch=('x86_64') # same as python-pytorch, python-torchvision
 url="https://github.com/deepspeedai/DeepSpeed"
 license=('Apache-2.0')
-# 208 MiB, but building takes ~5 sec,
+# 204 MiB, but building takes ~5 sec,
 # and .pkg.tar.zst is 4 MiB (if `-18` is passed to `zstd`)
 source=("https://github.com/deepspeedai/DeepSpeed/archive/refs/tags/v$pkgver.tar.gz")
-sha384sums=('153b6e838965106f9f955585211ce1d8fb6539c4408677e10794c4538564213792203d1c5bf8e45e262d30a42afd830b')
+sha384sums=('aa40c97885922eb0b86cf314305444e130dab9d7d26b78ee72c1716a7cffa02c7e1127bf299e76502c58a196999feb41')
 
 build() {
 	cd "${srcdir}/DeepSpeed-$pkgver"
@@ -96,4 +96,7 @@ package() {
 	# The package already provides /usr/bin/{deepspeed,ds_report}
 	# which are exactly the same, i.e. aliases.
 	rm "$pkgdir/usr/bin/ds"{,r}
+
+	# See https://github.com/deepspeedai/DeepSpeed/commit/baa95c6256c1064f602049918cb64db3859cc00b
+	rm "$pkgdir/usr/bin/ds_bench"
 }
