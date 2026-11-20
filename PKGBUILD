@@ -2,7 +2,7 @@
 
 pkgname=python-crewai-core
 _pkgname=crewai_core
-pkgver=1.15.41
+pkgver=1.15.44
 pkgrel=1
 pkgdesc="Shared utilities for CrewAI: version, paths, user-data, telemetry, printer"
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
 _archive="crewAI-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'test_lock_store.py')
-sha256sums=('2ecab5b30e37b021adaafbe5c430a158daa288a49a99608bcea82d65edfd860e'
+sha256sums=('f345e0a5f982514c89a5c7427e81bb39359cfdda97269d22669661f1e35e16b6'
             'cc1979d4babc95f3461490e30a82384039110fea6d0ccf4bc7c7ef3d36a8bbcb')
 
 prepare() {
