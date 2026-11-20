@@ -1,12 +1,14 @@
 pkgbase = deepseek-harness-bin-autotrack
 	pkgdesc = DeepSeek Harness CLI and agent harness (auto-tracked npm releases)
 	pkgver = 0.2.2~rc.5
-	pkgrel = 1
+	pkgrel = 7
 	url = https://github.com/deepseek-ai/deepseek-harness
+	install = deepseek-harness-bin-autotrack.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = npm
+	makedepends = curl
 	depends = nodejs>=24.9.0
 	depends = pnpm
 	provides = dsh
@@ -18,14 +20,9 @@ pkgbase = deepseek-harness-bin-autotrack
 	conflicts = deepseek-harness-git
 	conflicts = deepseek-harness-cli-git
 	options = !strip
-	backup = etc/conf.d/dsh-web
 	source = dsh-0.2.2-rc.5.tgz::https://registry.npmjs.org/@deepseek-ai/dsh/-/dsh-0.2.2-rc.5.tgz
 	source = dsh-web.service
-	source = dsh-web.sysusers
-	source = dsh-web.confd
 	sha256sums = 67da5a3c458f46cd278e0eec6ad0e3a44e99fd13087c6f11a1b362268900a52c
-	sha256sums = 3e713da03d126f9b710a83b8c4962c9a76402cc8d15d37f706b5db3b612944e1
-	sha256sums = 009d6a22833c4a0d0c1837dde60353066c45c837da7f1e8d1af47030d22b96eb
-	sha256sums = e2640ed12ac93aed52a82ce92b01ec7a50a675ed4a2702540a63f59d2846a9f2
+	sha256sums = 69613f7934e1062261bb47eda8db29fd54e0d6246ebb552dd3c75b31bbe6da27
 
 pkgname = deepseek-harness-bin-autotrack

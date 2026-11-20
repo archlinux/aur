@@ -1,51 +1,70 @@
+# /usr/lib/systemd/user/dsh-web.service — DeepSeek Harness web UI, per user
+#
+# One plain unit: it boots the "web" profile from your home ($HOME/.dsh by
+# default), so every user runs their own instance. The package installs the
+# unit only; it never enables or starts anything for you. To run it at every
+# login, enable it yourself:
+#   systemctl --user enable --now dsh-web.service
+# and undo with: systemctl --user disable dsh-web.service
+#
+# To start it at boot without a login session (optional):
+#   loginctl enable-linger $USER
+#
+# Settings live in ~/.config/dsh/web.env; the file is optional. Raise the port
+# if 3080 is taken, and set DSH_HOME if this instance should not share your
+# default state:
+#   DSH_WEB_HOST=127.0.0.1
+#   DSH_WEB_PORT=3081
+#   DSH_HOME=/home/me/.dsh-work
+#   DSH_TELEMETRY_DISABLED=1
+# %h is your home, so a non-default XDG_CONFIG_HOME needs a drop-in instead:
+#   systemctl --user edit dsh-web.service
+#
+# $DSH_WEB_ARGS is appended to the dsh command line; it carries every other
+# web flag, notably the public-deployment ones (full reference:
+# https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/bundle/web-app/README.zh.md#public-deployments):
+#   DSH_WEB_ARGS=--public-url https://app.example/ui/ --trusted-host app.example
+#   DSH_WEB_ARGS=--tls-cert /home/me/tls/fullchain.pem --tls-key /home/me/tls/key.pem
+# systemd splits the value on whitespace and keeps no quoting, so values and
+# paths must not contain spaces; unset or empty adds nothing. Behind a reverse
+# proxy --public-url only advertises the address: name every authority the
+# browsers use with --trusted-host (repeat it per host) or each API call
+# answers 403. TLS wants cert and key together, and relative paths resolve
+# against $HOME — this service's working directory; prefer absolute ones. The
+# same options are also editable as row settings in the GUI (web-runtime,
+# Connection, webserver).
+#
+# Note: the URL it prints to the journal carries the login token
+# (journalctl --user -u dsh-web.service).
+
 [Unit]
-Description=DeepSeek Harness web UI (dsh --profile web)
+Description=DeepSeek Harness web UI
 Documentation=https://github.com/deepseek-ai/deepseek-harness
-After=network-online.target
-Wants=network-online.target
+# No network-online.target ordering: user services start at login (or during
+# boot when lingering), well after the system is online, and binding a socket
+# needs no connectivity anyway.
 
 [Service]
 Type=simple
 
-# Dedicated system user created by /usr/lib/sysusers.d/dsh-web.conf; all dsh
-# state (settings, sessions, memory) lives under $HOME/.dsh = /var/lib/dshweb.
-User=dshweb
-Group=dshweb
-WorkingDirectory=/var/lib/dshweb
-
+# Defaults; the env file is read last and wins.
 Environment=DSH_WEB_HOST=127.0.0.1
 Environment=DSH_WEB_PORT=3080
-Environment=XDG_RUNTIME_DIR=/run/dshweb
-# Applied last so /etc/conf.d/dsh-web overrides the defaults above.
-EnvironmentFile=-/etc/conf.d/dsh-web
+Environment=DSH_WEB_ARGS=
+EnvironmentFile=-%h/.config/dsh/web.env
 
-StateDirectory=dshweb
-StateDirectoryMode=0750
-RuntimeDirectory=dshweb
-RuntimeDirectoryMode=0750
-
-ExecStart=/usr/bin/dsh --profile web --no-open --host ${DSH_WEB_HOST} --port ${DSH_WEB_PORT}
+# $DSH_WEB_ARGS must stay unbraced: systemd then word-splits it and an empty
+# value contributes no argument, while ${DSH_WEB_ARGS} would pass the whole
+# string as a single argument plus a stray empty one when unset.
+ExecStart=/usr/bin/dsh --profile web --no-open --host ${DSH_WEB_HOST} --port ${DSH_WEB_PORT} $DSH_WEB_ARGS
 
 Restart=on-failure
 RestartSec=5
 
-# --- hardening ---------------------------------------------------------------
-# NoNewPrivileges/ProtectSystem/PrivateTmp are safe here; npm caches, downloads
-# and ~/.dsh all live under the state dir which ProtectSystem=strict still
-# allows through StateDirectory.
-NoNewPrivileges=yes
-PrivateTmp=yes
-ProtectSystem=strict
-ProtectHome=yes
-ProtectKernelTunables=yes
-ProtectControlGroups=yes
-RestrictRealtime=yes
-# systemd >=262 renamed RestrictSUIDSGD -> RestrictSUIDSGID; older systemd
-# ignores unknown keys with a warning only.
-RestrictSUIDSGID=yes
-# Deliberately NOT set:
-#  MemoryDenyWriteExecute — Node/V8 JIT needs writable executable memory.
-#  PrivateDevices         — dsh's terminal plugin opens /dev/ptmx (PTYs).
+# No sandboxing here on purpose: this unit runs as you, in your home, and dsh is
+# meant to work on your real files. ProtectHome/PrivateTmp would hide them from
+# it, ProtectSystem would block plugin installs, NoNewPrivileges would break
+# sudo inside its terminal panel. Harden with a drop-in.
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

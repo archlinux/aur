@@ -15,7 +15,6 @@ path = [
     "*.tmpfiles",
     "*tmpfiles.conf",
     "*.logrotate",
-    "dsh-web.confd",
     "*.pam",
     "*.service",
     "*.socket",

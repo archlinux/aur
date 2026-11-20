@@ -1,2 +1,0 @@
-# type name        id               comment                     home            shell
-u       dshweb     -                "DeepSeek Harness web service" /var/lib/dshweb  /usr/bin/nologin

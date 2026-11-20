@@ -1,0 +1,20 @@
+## deepseek-harness-bin-autotrack install scriptlet
+#
+# The package installs dsh-web.service but never enables it (see PKGBUILD), so
+# every user decides for themselves whether to run it. This script only tells
+# them how; this is a plain message because a root pacman hook cannot touch
+# anyone's per-user systemd state anyway.
+
+post_install() {
+  cat <<'EOF'
+==> deepseek-harness-bin-autotrack: dsh-web.service is installed but NOT enabled.
+    To start the web UI (127.0.0.1:3080) at every login, run as your user:
+      systemctl --user enable --now dsh-web.service
+    Keep it running without a logged-in session (optional):
+      loginctl enable-linger $USER
+    Settings live in ~/.config/dsh/web.env; the URL with the login token is
+    printed to: journalctl --user -u dsh-web.service
+    Reverse-proxy / HTTPS options go in that file too, e.g.:
+      DSH_WEB_ARGS=--public-url https://app.example/ui/ --trusted-host app.example
+EOF
+}

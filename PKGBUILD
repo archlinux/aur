@@ -1,28 +1,24 @@
 # Maintainer: lucas <lucaszhou007@163.com>
 pkgname=deepseek-harness-bin-autotrack
 pkgver=0.2.2~rc.5
-pkgrel=1
+pkgrel=7
 pkgdesc='DeepSeek Harness CLI and agent harness (auto-tracked npm releases)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/deepseek-ai/deepseek-harness'
 license=('MIT')
 depends=('nodejs>=24.9.0' 'pnpm')
-makedepends=('npm')
+makedepends=('npm' 'curl')
 options=('!strip')
-backup=('etc/conf.d/dsh-web')
+install="${pkgname}.install"
 provides=('dsh' 'deepseek-harness')
 conflicts=('dsh' 'dsh-bin' 'deepseek-harness' 'deepseek-harness-bin'
            'deepseek-harness-git' 'deepseek-harness-cli-git')
 # pkgver carries npm prereleases as "~" so pacman orders them correctly
 # (0.2.2~rc.4 < 0.2.2); the registry tarball name uses "-", map it back.
 source=("dsh-${pkgver//\~/-}.tgz::https://registry.npmjs.org/@deepseek-ai/dsh/-/dsh-${pkgver//\~/-}.tgz"
-        dsh-web.service
-        dsh-web.sysusers
-        dsh-web.confd)
+        dsh-web.service)
 sha256sums=('67da5a3c458f46cd278e0eec6ad0e3a44e99fd13087c6f11a1b362268900a52c'
-            '3e713da03d126f9b710a83b8c4962c9a76402cc8d15d37f706b5db3b612944e1'
-            '009d6a22833c4a0d0c1837dde60353066c45c837da7f1e8d1af47030d22b96eb'
-            'e2640ed12ac93aed52a82ce92b01ec7a50a675ed4a2702540a63f59d2846a9f2')
+            '69613f7934e1062261bb47eda8db29fd54e0d6246ebb552dd3c75b31bbe6da27')
 
 prepare() {
   rm -rf npm-root npm-cache
@@ -38,6 +34,31 @@ prepare() {
     --no-fund \
     --allow-scripts=@deepseek-ai/dsh-subprocess-local,koffi,node-pty,@google/genai,protobufjs \
     "$srcdir/dsh-${pkgver//\~/-}.tgz"
+
+  # node-addon-require-builtin loads its native binding from an *optional*
+  # dependency (node-addon-require-builtin-<platform>). npm silently drops an
+  # optional dependency it cannot resolve, and right after upstream publishes a
+  # new version the registry can still serve a stale packument, so the tree can
+  # end up without the binding and dsh then dies with:
+  #   host preparation failed: No usable native binding found for ...
+  # Fetch the binding by exact tarball URL (no packument involved) at the
+  # version npm picked for the addon, and fail the build unless it loads.
+  local dsh_modules="$srcdir/npm-root/usr/lib/node_modules/@deepseek-ai/dsh/node_modules"
+  local addon_ver binding
+  addon_ver=$(node -p "require('${dsh_modules}/node-addon-require-builtin/package.json').version")
+  case "$CARCH" in
+    x86_64)  binding=node-addon-require-builtin-linux-x64-gnu ;;
+    aarch64) binding=node-addon-require-builtin-linux-arm64-gnu ;;
+    *) error "unsupported architecture: $CARCH" ;;
+  esac
+  curl --fail --location --retry 3 --retry-delay 2 \
+    --output "$srcdir/${binding}.tgz" \
+    "https://registry.npmjs.org/${binding}/-/${binding}-${addon_ver}.tgz"
+  mkdir -p "$dsh_modules/${binding}"
+  bsdtar -xzf "$srcdir/${binding}.tgz" -C "$dsh_modules/${binding}" --strip-components=1
+
+  ( cd "$srcdir/npm-root/usr/lib/node_modules/@deepseek-ai/dsh" &&
+    node -e "require('node-addon-require-builtin')" )
 }
 
 package() {
@@ -46,13 +67,12 @@ package() {
   install -Dm644 "$srcdir/package/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # systemd integration: unit + dedicated user (sysusers.d) + config template
+  # systemd integration: one plain per-user unit (dsh-web.service) that boots
+  # the "web" profile. Nothing is enabled by default — starting a service for
+  # every user is the user's call, not the package's. Adopters opt in:
+  #   systemctl --user enable --now dsh-web.service
   install -Dm644 "$srcdir/dsh-web.service" \
-    "$pkgdir/usr/lib/systemd/system/dsh-web.service"
-  install -Dm644 "$srcdir/dsh-web.sysusers" \
-    "$pkgdir/usr/lib/sysusers.d/dsh-web.conf"
-  install -Dm644 "$srcdir/dsh-web.confd" \
-    "$pkgdir/etc/conf.d/dsh-web"
+    "$pkgdir/usr/lib/systemd/user/dsh-web.service"
 
   find "$pkgdir/usr" -type d -exec chmod 755 {} +
   chown -R root:root "$pkgdir"
