@@ -1,64 +1,142 @@
-# Maintainer: 0b100100 <0b100100 at protonmail dot ch>
+# Maintainer: Dirk Wouters <dirk@wouters.onl>
+# Contributor: 0b100100 <0b100100 at protonmail dot ch>
 # Contributor: Ivan Agarkov <ivan.agarkov@gmail.com>
 
 pkgname=heli-x
-pkgver=10.1.2561
-pkgrel=1
-pkgdesc="Professional R/C Flight Simulator"
-arch=('i686' 'x86_64')
-url="https://www.heli-x.info"
-license=('custom')
-depends=('archlinux-java-run' 'java-runtime>=11' 'hicolor-icon-theme')
+pkgver=11.0.2675
+pkgrel=2
+pkgdesc='Professional R/C Flight Simulator'
+arch=('x86_64')
+url='https://www.heli-x.info'
+license=('LicenseRef-HELI-X')
+depends=('hicolor-icon-theme' 'xdg-utils' 'bash' 'coreutils')
 makedepends=('icoutils')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::$url/${pkgver##*.}/HELI-X${pkgver%%.*}.tar.gz"
-        "$pkgname-$pkgver-manual_de.pdf::$url/help${pkgver%%.*}/BedienungsanleitungV${pkgver%%.*}.pdf"
-        "$pkgname-$pkgver-manual_en.pdf::$url/help${pkgver%%.*}/UsersManualV${pkgver%%.*}.pdf"
-        "$pkgname-wrapper.sh"
-        "$pkgname.desktop"
-        "$pkgname-server.desktop")
-sha512sums=('703211f196e47ecfbf4e4f6f4af14964b0c27e82772dd204bdbe95ad32b9bbb91190e804cefa6d1cd8bffaebe959d4c0ada21343a36ecde8bccb5114f69305da'
-            '8772099f77d28c5937f66d1c28bce1e4e623ee565ed4c3b9e8aa11de579cbeda1539985a7c9ff4b374892a7b11f3001aac968fb01d4bc0c1494cb4a1129c06c1'
-            '644ec254248c2d79209a240121563a5b4cc0b835bc2bf797cac16471f612ce2dc22b50cedfd8f9de2513ea3acd26b9e259fb3091b82eecb10876c428386d71dd'
-            'b6b318c787c45602f0f1cfe1e30edfc56a2fec4fd98d8add9715ef950a9355dee0f5267378a4f4aade487bb75e26150b87ece9481278dee8c20775ca01669a90'
-            '36af9602ad6b4654dba7651851ee51acf062a76824dc584fbb2e836e1438199ae5ee187d76b5cb56d8c260bce7ecdefa67e973d003678c3ed3ad3c107fa9c09d'
-            '8be08b65cdc9007f4d39ab7a327a407bc7162d8d091d3e44294e11ddc6903151e35eb9999082332439b065ccac6ed6cb39bb2f0dae315483b00c9580e2184010')
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/${pkgver##*.}/HELI-X${pkgver%%.*}.tar.gz"
+  "$pkgname-$pkgver-manual_de.pdf::$url/help${pkgver%%.*}/BedienungsanleitungV${pkgver%%.*}.pdf"
+  "$pkgname-$pkgver-manual_en.pdf::$url/help${pkgver%%.*}/UsersManualV${pkgver%%.*}.pdf"
+)
+sha512sums=(
+  '1f6124ae88b018741942dceb70428ff8bc6a5e20b5716a5d4aa71e3207ba87904b0ddbb878c8b45e95f0d82472e1da089735b929361227862209c0ce7029f591'
+  '437439178d651e9693bb08d433043a302436bc0e2484b02f4e9326326b26bcf4af0576c30f119b83a5ac7613ed21927f6a40bdaa792d4bb949ee95b216512b57'
+  '96605160f4e10c07ec062d3f7bdf820813b06a70bb8d5fd3ddfe43165dc0e7764ff211190ae1166fcf47403d3c106bea10805bb98688f480986d43eb3f1f1e1d'
+)
 
 prepare() {
-  cd "HELI-X${pkgver%%.*}"
-  local s="[[:space:]]"
+  cd "$srcdir/HELI-X${pkgver%%.*}" || return 1
+  local script
+  for script in runHELI-X.sh runHELI-X-Server.sh; do
+    [[ -f $script ]] || { printf 'Missing launcher: %s\n' "$script" >&2; return 1; }
+    grep -qF './Java/jre21/bin/java' "$script" || { printf 'Unexpected Java command in %s\n' "$script" >&2; return 1; }
+    sed -i 's|./Java/jre21/bin/java|./Java/jre21/bin/java --enable-native-access=ALL-UNNAMED -DheliX.path.home="$HOME/.heli-x"|' "$script"
+    # All vendor JAR replacement operations must target the writable user directory.
+    sed -i 's|"$PWD/libs/HeliX/|"$HELIX_USER_JARS/|g' "$script"
+  done
 
-  # Use an installed java runtime engine instead of the provided one
-  rm -rf Java
+  sed -i 's/ -XX:InitiatingHeapOccupancyPercent=70//g' runHELI-X.sh
+  # The upstream classpath uses $JARPATH, not $PWD/libs/HeliX.
+  # Redirect only the four mutable vendor JARs to the user-owned copies.
   sed -i \
-    -e 's|./Java/jre[0-9]\+/bin/java|JAVA_HOME=$(archlinux-java-run --min 11 --java-home) \&\& \\\n"$JAVA_HOME"/bin/java|' \
-    runHELI-X.sh runHELI-X-Server.sh
+    -e 's|$JARPATH/HeliX/HeliX11.jar|$HELIX_USER_JARS/HeliX11.jar|g' \
+    -e 's|$JARPATH/HeliX/Translation.jar|$HELIX_USER_JARS/Translation.jar|g' \
+    -e 's|$JARPATH/HeliX/Media.jar|$HELIX_USER_JARS/Media.jar|g' \
+    runHELI-X.sh
+  # The classpath entry for the main application must use the personal JAR.
+  grep -qF 'CP="$CP:$HELIX_USER_JARS/HeliX11.jar"' runHELI-X.sh || {
+    printf 'Main JAR classpath replacement failed\n' >&2; return 1;
+  }
+  # Server JAR is also user-writable; all other resources remain in /opt.
+  grep -qF 'JARPATH="$HELIX_USER_JARS/server.jar"' runHELI-X-Server.sh || {
+    printf 'Server JAR replacement failed\n' >&2; return 1;
+  }
+  sed -i 's|--dataDir ./files/server|--dataDir "$HOME/.heli-x/files/server"|' runHELI-X-Server.sh
+  sed -i 's/"Session"--gui/"Session" --gui/g' runHELI-X-Server.sh
+  sed -i '/^\.\/Java\/jre21\/bin\/java /i mkdir -p "$HOME/.heli-x/files/server"' runHELI-X-Server.sh
 
-  # Use a local writable home path for config files and resources
-  sed -i \
-    -e "/\/bin\/java/{s/$s*$//}" \
-    -e "/\/bin\/java/{s|\(.*\)$s|\1 -DheliX.path.home=\"\$HOME/.heli-x\" |}" \
-    runHELI-X.sh runHELI-X-Server.sh
+  local flightdir='resources/flights/Heli_School/Piro_Tic_Tocs_Demo'
+  if [[ -f "$flightdir/Piro_Tic_Tocs_Demo.fly" && ! -e "$flightdir/Piro_Tic_Tocs_demo.fly" ]]; then
+    ln -s Piro_Tic_Tocs_Demo.fly "$flightdir/Piro_Tic_Tocs_demo.fly"
+  fi
 }
 
 package() {
-  install -d -m755 "$pkgdir/opt/"
-  cp -R HELI-X${pkgver%%.*} "$pkgdir/opt/$pkgname"
+  install -dm755 "$pkgdir/opt/$pkgname"
+  cp -a "$srcdir/HELI-X${pkgver%%.*}/." "$pkgdir/opt/$pkgname/"
+  chmod 755 "$pkgdir/opt/$pkgname/runHELI-X.sh" \
+            "$pkgdir/opt/$pkgname/runHELI-X-Server.sh" \
+            "$pkgdir/opt/$pkgname/Java/jre21/bin/java" \
+            "$pkgdir/opt/$pkgname/Java/jre21/lib/jspawnhelper"
+  # Correct upstream's permissive directory modes, without touching file modes.
+  find "$pkgdir/opt/$pkgname" -type d -exec chmod 755 {} +
 
-  icotool -x HELI-X${pkgver%%.*}/runHeli-X.ico
-  for res in {16,32,48,128,256}; do
-    install -Dm644 runHeli-X_*_${res}x${res}x32.png "$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/$pkgname.png"
+  install -dm755 "$pkgdir/usr/bin"
+  cat > "$pkgdir/usr/bin/heli-x" <<'WRAPPER'
+#!/usr/bin/env bash
+set -e
+install_dir=/opt/heli-x
+state_dir="${XDG_DATA_HOME:-$HOME/.local/share}/heli-x"
+jar_dir="$state_dir/libs/HeliX"
+mkdir -p "$jar_dir"
+
+# Never overwrite an activated JAR, including on package upgrades.
+# To adopt new vendor JARs, the user must explicitly reset/migrate them.
+for jar in HeliX11.jar Translation.jar Media.jar server.jar; do
+  if [[ ! -e "$jar_dir/$jar" ]]; then
+    cp "$install_dir/libs/HeliX/$jar" "$jar_dir/$jar"
+  fi
+done
+
+export HELIX_USER_JARS="$jar_dir"
+if [[ ${1:-} == --server || ${0##*/} == heli-x-server ]]; then
+  shift
+  exec "$install_dir/runHELI-X-Server.sh" "$@"
+fi
+exec "$install_dir/runHELI-X.sh" "$@"
+WRAPPER
+  chmod 755 "$pkgdir/usr/bin/heli-x"
+  ln -s heli-x "$pkgdir/usr/bin/heli-x-server"
+
+  install -dm755 "$pkgdir/usr/share/applications"
+  cat > "$pkgdir/usr/share/applications/heli-x.desktop" <<'DESKTOP'
+[Desktop Entry]
+Type=Application
+Name=HELI-X
+Comment=Professional R/C Flight Simulator
+Exec=heli-x
+Icon=heli-x
+Terminal=false
+Categories=Game;Simulation;
+DESKTOP
+  cat > "$pkgdir/usr/share/applications/heli-x-server.desktop" <<'DESKTOP'
+[Desktop Entry]
+Type=Application
+Name=HELI-X Server
+Comment=HELI-X Simulator Server
+Exec=heli-x --server
+Icon=heli-x
+Terminal=true
+Categories=Game;Simulation;
+DESKTOP
+
+  cd "$srcdir" || return 1
+  icotool -x "HELI-X${pkgver%%.*}/runHELI-X.ico" || return 1
+  local res
+  local -a icons
+  for res in 16 32 48 128 256; do
+    icons=(runHELI-X_*_"${res}x${res}x32.png")
+    if (( ${#icons[@]} != 1 )) || [[ ! -f ${icons[0]} ]]; then
+      printf 'Expected exactly one %sx%s icon\n' "$res" "$res" >&2
+      return 1
+    fi
+    install -Dm644 "${icons[0]}" "$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/$pkgname.png"
   done
 
-  install -Dm755 $pkgname-wrapper.sh "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 $pkgname*.desktop -t "$pkgdir/usr/share/applications/"
-
-  install -Dm644 $pkgname-$pkgver-manual_en.pdf "$pkgdir/usr/share/doc/$pkgname/manual_en.pdf"
-  install -Dm644 $pkgname-$pkgver-manual_de.pdf "$pkgdir/usr/share/doc/$pkgname/manual_de.pdf"
-
-  cd "HELI-X${pkgver%%.*}"
-  install -Dm644 libs/HeliX/license.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 libs/HeliX/license_e.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$srcdir/$pkgname-$pkgver-manual_en.pdf" "$pkgdir/usr/share/doc/$pkgname/manual_en.pdf"
+  install -Dm644 "$srcdir/$pkgname-$pkgver-manual_de.pdf" "$pkgdir/usr/share/doc/$pkgname/manual_de.pdf"
+  local helidir="$srcdir/HELI-X${pkgver%%.*}"
+  install -Dm644 "$helidir/libs/HeliX/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+  install -Dm644 "$helidir/libs/HeliX/license_e.txt" "$pkgdir/usr/share/licenses/$pkgname/license_e.txt"
 }
 
 # vim:set ts=2 sw=2 et:
