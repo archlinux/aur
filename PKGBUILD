@@ -1,21 +1,21 @@
 # Maintainer: LIghtJUNction
 pkgname=zcalld-bin
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Compact Linux AI gateway built on zcall with native zplugin extensions (binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/LIghtJUNction/zcalld'
 license=('MIT')
 depends=('glibc' 'libgcc' 'curl')
-optdepends=('systemd: system and user service management')
+optdepends=('systemd: system and user service management' 'zcalld-compat>=0.1.3: privacy, audit history, OAuth accounts and community plugins' 'zcall-gui: optional native desktop interface' 'libsecret: configure Zed credentials through Secret Service')
 provides=("zcalld=$pkgver")
 conflicts=('zcalld')
 backup=('etc/zcalld/config.conf')
 options=('!strip')
 source_x86_64=("$url/releases/download/v$pkgver/zcalld-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/zcalld-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('7d558a50e50f73ae2f65c60bd3faebcddd59c344c3bc6b1bcb25319410b15b3e')
-sha256sums_aarch64=('da86ac0a8671566bd14fa6cfc8cc1edc9b36e303e1dacfa012ed8589623369ac')
+sha256sums_x86_64=('806070ec4e4fca8d5fbf992d454a648ab1227ae29905b8891f067b08f2bbe18d')
+sha256sums_aarch64=('66297bc7f19775e363cf14053e378446d007064c240112efcf8e7c7dbb563e76')
 
 package() {
   cd "zcalld-$pkgver-$CARCH-unknown-linux-gnu"
