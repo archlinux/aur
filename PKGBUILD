@@ -1,7 +1,7 @@
 # Maintainer: Piotr Jan Balwierz <author's surname at google's email service>
 
 pkgname=bwa-mem3
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='Short-read aligner derived from bwa-mem2 with correctness fixes, performance improvements and methylation alignment'
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ options=('!lto')
 # tarball that includes them.
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/Source_code_including_submodules.tar.gz"
         'mimalloc-free-null-before-init.patch')
-sha256sums=('748a49e9d2009cc317f944e80a6b7e8f9d05a0efe44cacc050500f86de6f05c6'
+sha256sums=('6145d3c26f0fde77ff4938c60a4fb7ec7688e4f5236ab7d385c792088aca79d7'
             '05fa3a8216cf7a5bfdf5945f084f7fb8e65bdde995020a6ef908050cf63a0f0f')
 
 prepare() {
