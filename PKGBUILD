@@ -8,7 +8,7 @@
 # -> git add -A && git commit && git push（AUR 只接受 master 分支上的 PKGBUILD/.SRCINFO）。
 
 pkgname=basctl
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Control-plane CLI and agent for Beangle Bas Server"
 arch=('x86_64')
@@ -17,7 +17,7 @@ license=('GPL-3.0-or-later')
 # basctl/basagent 的下载走宿主 curl（namcap 的 "may not be needed" 是误报）；
 # basagent 另动态链接 OpenSSL 3 与 zlib。make/start/resolve/run 需要 jstart，
 # 但它不在官方仓库中，故只列为 optdepends。
-depends=('bash' 'curl' 'logrotate' 'openssl' 'zlib')
+depends=('bash' 'curl' 'logrotate' 'openssl' 'sudo' 'zlib')
 makedepends=('ldc' 'dub' 'git')
 optdepends=(
   'jstart: make/start/resolve/run'
@@ -31,9 +31,9 @@ source=(
   "basctl.sysusers"
   "basctl.tmpfiles"
 )
-sha256sums=('c0389e100c79c7a84d925e86f7f80adfa6cdad35220fe857b49ca8026aa233fd'
+sha256sums=('7c19b8b0fee7e46451b50dd1d95d386294e724880506d2df3bc7b0118f895886'
             '5f2b07b290434ed54b959fb0dc38a2b5d240a994184bf1e7753c99c2ce4dcb5c'
-            '5f7279245eab48a05321e929ab50ef8c18ae3cdcba371501b62bb160d8b99bd8')
+            '661d5917c8b3cc94d9988e32f682394373bdc46a291e81a8ab7c78a430fd1f34')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -70,10 +70,16 @@ package() {
     install -Dm755 "resources/bas/bin/$script" "$pkgdir/var/lib/bas/bin/$script"
   done
 
-  install -Dm600 resources/bas/init/basctl.env \
-    "$pkgdir/usr/share/basctl/basctl.env"
+  install -Dm640 resources/bas/init/basctl.env \
+    "$pkgdir/usr/share/bas/basctl.env"
   install -Dm644 resources/systemd/basagent.service \
     "$pkgdir/usr/lib/systemd/system/basagent.service"
+  install -Dm644 resources/systemd/basproxy-apply@.service \
+    "$pkgdir/usr/lib/systemd/system/basproxy-apply@.service"
+  install -Dm755 resources/basproxy/basproxy-apply \
+    "$pkgdir/usr/libexec/basproxy-apply"
+  install -Dm440 resources/sudoers/basproxy \
+    "$pkgdir/etc/sudoers.d/basproxy"
   install -Dm644 resources/logrotate/bas "$pkgdir/etc/logrotate.d/bas"
 
   install -Dm644 "$srcdir/basctl.sysusers" \

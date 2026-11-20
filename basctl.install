@@ -13,23 +13,36 @@ post_install() {
   install -d -m0755 -o bas -g beangle /var/lib/bas/bin
   install -d -m0750 -o bas -g beangle /var/log/bas
   install -d -m0700 -o bas -g beangle /var/log/bas/agent
+  install -d -m0750 -o root -g beangle /etc/bas/conf
 
-  # basctl.env 是用户配置：只在缺失时从模板生成，升级与卸载都不覆盖或删除。
-  if [ ! -f /var/lib/bas/conf/basctl.env ]; then
-    install -m0600 -o bas -g beangle /usr/share/basctl/basctl.env \
-      /var/lib/bas/conf/basctl.env
+  # basctl.env 是主机级配置：只在缺失时从模板生成，升级与卸载都不覆盖或删除。
+  if [ ! -e /etc/bas/conf/basctl.env ]; then
+    install -m0640 -o root -g beangle /usr/share/bas/basctl.env \
+      /etc/bas/conf/basctl.env
   fi
+  chown root:beangle /etc/bas/conf /etc/bas/conf/basctl.env 2>/dev/null || :
+  chmod 0750 /etc/bas/conf
+  chmod 0640 /etc/bas/conf/basctl.env
 
   chown -R bas:beangle /var/lib/bas/bin /var/lib/bas/conf 2>/dev/null || :
   chmod 0755 /var/lib/bas/bin/*.sh 2>/dev/null || :
-  chmod 0600 /var/lib/bas/conf/basctl.env 2>/dev/null || :
   [ -e /var/lib/bas/logs ] || ln -s /var/log/bas /var/lib/bas/logs
+
+  if command -v visudo >/dev/null 2>&1; then
+    visudo -cf /etc/sudoers.d/basproxy >/dev/null
+  fi
 
   systemctl daemon-reload 2>/dev/null || :
   systemctl enable basagent.service 2>/dev/null || :
 }
 
 post_upgrade() {
+  if [ -f /var/lib/bas/conf/basctl.env ] && [ ! -f /etc/bas/conf/basctl.env ]; then
+    echo "注意: v0.0.3 起 basctl.env 固定放在 /etc/bas/conf/basctl.env，程序不再读取旧路径。"
+    echo "      请执行：install -d -m0750 -o root -g beangle /etc/bas/conf"
+    echo "              install -m0640 -o root -g beangle /var/lib/bas/conf/basctl.env /etc/bas/conf/basctl.env"
+    echo "      然后重启 basagent.service。"
+  fi
   post_install
   systemctl try-restart basagent.service 2>/dev/null || :
 }
