@@ -1,62 +1,35 @@
 # Contributor: Andrey Kolchenko <andrey@kolchenko.me>
 
 pkgname=gosplugin
-pkgver=1.3.42.0
+pkgver=1.3.43.1
 pkgrel=1
 pkgdesc='Crypto Interface Web Browser Plugin for https://gosuslugi.ru/'
 arch=('x86_64')
 url="https://www.gosuslugi.ru/help/faq/esignature/3842"
 license=('unknown')
+# Прямые runtime-зависимости (soname, которые напрямую требуют ELF пакета).
+# Остальное (curl, icu, freetype, harfbuzz, krb5, libssh2, …) — транзитивные
+# зависимости qt5-base/openssl-3/pcsclite, pacman подтянет их сам.
+# openssl-3 (а не openssl): плагину нужен libcrypto.so.3 / libssl.so.3,
+# тогда как openssl в Arch/CachyOS уже 4.x (libcrypto.so.4).
 depends=(
-    'brotli'
-    'bzip2'
-    'curl'
-    'double-conversion'
-    'duktape'
-    'e2fsprogs'
-    'freetype2'
     'gcc-libs'
-    'glib2'
     'glibc'
-    'graphite'
-    'harfbuzz'
-    'icu'
-    'keyutils'
-    'krb5'
-    'libcap'
-    'libffi'
     'libglvnd'
-    'libidn2'
-    'libnghttp2'
-    'libnghttp3'
-    'libpng'
-    'libproxy'
-    'libpsl'
-    'libssh2'
-    'libunistring'
-    'libx11'
-    'libxau'
-    'libxcb'
-    'libxdmcp'
-    'md4c'
-    'openssl'
-    'pcre2'
+    'openssl-3'
+    'pcsclite'
     'qt5-base'
-    'systemd-libs'
-    'util-linux-libs'
-    'zlib'
-    'zstd'
     'rutoken-connect'
 )
-optdepends=('rutoken-connect' 'jacartauc')
+optdepends=('jacartauc')
 makedepends=('grep' 'libarchive')
 
 source=(
     "${pkgname}-${pkgver}-${pkgrel}.deb.zip::https://gu-st.ru/content/Gosplugin/Gosplugin_Linux-Debian_Installer.deb.zip"
 	'gosuslugi_plugin.sh'
 )
-sha256sums=('332b321e069c34eda5c22ded50696d5bd58df077408262c74fbe9894e7611ef8'
-            'b2a148903b0fc84a60a8e1423b01c865491401a2b65d6b16dbe8442b15705dda')
+sha256sums=('f7ab21f9ef21b2090a189ff7df2147074f4252e1255930df689d3f31acc258f2'
+            '547408c8c098b17ad2f3c474dc4cc442ed067244f3ebbc6868908c9c6a7bbc9c')
 
 _script='Gosplugin_Linux-Debian_Installer.deb.sh'
 
@@ -116,10 +89,12 @@ package() {
 	done
 	rm -rf "${srcdir}/opt/iitrust/gosuslugi_plugin/lib"
 
+	# librutoken.so и tokens/ (librtpkcs11ecp.so) ОБЯЗАТЕЛЬНЫ: плагин загружает
+	# собственный rutoken-модуль из bin/ (подтверждено логами рабочего 1.3.42.0
+	# и тестом 1.3.43.1: без librutoken.so модуль rutoken не грузится).
+	# Удаляем только xdg-open.sh — его заменяет gosuslugi_plugin.sh.
 	unused=(
-		'tokens'
 		'xdg-open.sh'
-		'librutoken.so'
 	)
 	for file in "${unused[@]}"; do
 		rm -rf "${srcdir}/opt/iitrust/gosuslugi_plugin/bin/${file}"
