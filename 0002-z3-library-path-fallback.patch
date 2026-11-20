@@ -1,32 +1,36 @@
 angr opens libz3 itself: library_dir() takes the z3-solver wheel's bundled lib directory and
-load() dlopen()s a fixed "libz3.so". Two things are wrong on Arch. That directory does not
+load() dlopen()s a fixed "libz3.so". Both halves are wrong on Arch. That directory does not
 exist, because Arch packages z3-solver as Python files only and keeps the library in the
-separate z3 package under a different soname; and the wheel's Rust extension has a hard
-DT_NEEDED on libz3.so.5.3, which no packaged z3 provides. Importing angr therefore dies with
+separate z3 package under a different soname, and the extension has a hard DT_NEEDED on
+libz3.so.5.3, which no packaged z3 provides. Importing angr therefore dies with
 
     OSError: .../site-packages/z3/lib/libz3.so: cannot open shared object file
 
 Carry the exact library angr was built against inside this package (angr/_z3lib, reached from
-the extension through an $ORIGIN rpath) and fall back to it. That directory holds only the
-versioned soname, so load() has to accept it as well.
+the extension through an $ORIGIN rpath) and prefer it, which also drops the requirement that a
+z3 python module be importable at all: angr never imports z3, it only used find_spec to locate
+the library. The cached directory holds just the versioned soname, so load() accepts that too.
 
-Both branches keep upstream behaviour when the wheel's own layout is present, so this stops
-mattering once the repos ship z3-solver 5.3.3.0 or newer.
+The find_spec branch stays as the fallback, so behaviour is unchanged wherever the wheel's own
+layout is present and this patch stops mattering once the repos ship z3-solver 5.3.3.0+.
 
 diff --git a/angr/_z3.py b/angr/_z3.py
-index f9a18aa..c57174a 100644
+index f9a18aa..16f8fd6 100644
 --- a/angr/_z3.py
 +++ b/angr/_z3.py
-@@ -27,9 +27,18 @@ def library_dir() -> Path:
+@@ -23,7 +23,10 @@ else:
+ 
+ 
+ def library_dir() -> Path:
+-    """The lib directory of the installed z3-solver wheel. find_spec does not import the package."""
++    """The directory holding the libz3 that angr.rustylib links against."""
++    cached = Path(__file__).parent / "_z3lib"
++    if cached.is_dir():
++        return cached
      spec = importlib.util.find_spec("z3")
      if spec is None or spec.origin is None:
          raise ImportError("angr requires the z3-solver package, which does not appear to be installed")
--    return Path(spec.origin).parent / "lib"
-+    bundled = Path(spec.origin).parent / "lib"
-+    if (bundled / LIBRARY_NAME).is_file():
-+        return bundled
-+    return Path(__file__).parent / "_z3lib"
- 
+@@ -32,4 +35,10 @@ def library_dir() -> Path:
  
  @functools.cache
  def load() -> ctypes.CDLL:

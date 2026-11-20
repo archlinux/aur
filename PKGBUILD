@@ -33,7 +33,6 @@ depends=(
   'python-rich'
   'python-sortedcontainers'
   'python-typing_extensions'
-  'python-z3-solver'
 )
 # angr guards every one of these imports itself: they cover its optional extras plus the
 # interactive debugger hook, so the package works without any of them. pydantic-ai has no
@@ -58,6 +57,8 @@ options=('!strip' '!debug')
 # through an $ORIGIN rpath; see 0002. Pointing the extension at the system 4.16 instead
 # makes the basic paths work, but a solver answering from a different major version is a
 # silent-wrong-answer risk, so the matching library is bundled rather than substituted.
+# python-z3-solver is therefore not a dependency: angr never imports the z3 module, it only
+# used find_spec to locate that library, and 0002 removes even that.
 _pypi='https://files.pythonhosted.org/packages'
 noextract=('angr.whl' 'z3.whl')
 source=(
@@ -138,7 +139,7 @@ EOF
 }
 sha256sums=('d95af3980d65ccfd60d23124c6769b1f1564c437049502ce70c476e43abb3d42'
             '3b2d6ff7ad82567ea9ecbb5a9fb8a9da02e4a414ebb2bb0fa3da7d293f4750db'
-            '947cf00d47502dd5bb8da98d1f968c3902fc0a790cfd32879e5cc37b9f008ea3')
+            'ea6721a385ef24ca0c646a75cfbafba89a13b9c497316c64576b772666d41ee3')
 sha256sums_x86_64=('d3c1903eb9c8481ed650aa7d9502e7baeba8bc880e7c9576d2776b4ec0fd5e08'
                    '0431023a82278dab706c02a320f63178ee0755fb8f10a5c980f0bfe3c84f6f96')
 sha256sums_aarch64=('4b95794e51dc48452ca9b2a1f4969410bc32ef44002a615558471c1b6c987d1d'
