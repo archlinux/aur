@@ -1,7 +1,7 @@
 pkgbase = tabdock-bin
 	pkgdesc = Autohiding side panel for Firefox-family browsers on X11 and Wayland, signed extension
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/musqz/tabdock
 	install = tabdock.install
 	arch = any

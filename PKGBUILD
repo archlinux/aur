@@ -6,7 +6,7 @@
 pkgname=tabdock-bin
 _name=tabdock
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Autohiding side panel for Firefox-family browsers on X11 and Wayland, signed extension"
 arch=('any')
 url="https://github.com/musqz/tabdock"
@@ -75,7 +75,7 @@ package() {
     while IFS= read -r -d '' f; do
         install -Dm644 "$f" "$pkgdir$share/$f"
     done < <(find lib/tabdock -type f -not -path '*/__pycache__/*' -print0)
-    install -Dm755 lib/native-host/tabdock-nmhost "$pkgdir$share/lib/native-host/tabdock-nmhost"
+    install -Dm755 -t "$pkgdir$share/lib/native-host" lib/native-host/tabdock-nmhost
     install -Dm644 configs/config.toml "$pkgdir$share/configs/config.toml"
     install -Dm644 extension/icons/icon-96.png "$pkgdir$share/icon.png"
     install -Dm644 "$srcdir/$_name-$pkgver.xpi" "$pkgdir$share/$_name.xpi"
