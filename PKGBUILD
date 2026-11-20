@@ -1,7 +1,7 @@
 # Maintainer: duanluan <duanluan@outlook.com>
 
 pkgname=uuway-bin
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc='UU Remote Linux host (prebuilt binary)'
 arch=('x86_64')
@@ -56,7 +56,7 @@ conflicts=('uuway' 'uuway-git')
 options=('!strip' '!debug')
 install=uuway-bin.install
 source_x86_64=("uuway-${pkgver}-1-x86_64.pkg.tar.zst::https://github.com/GaryOAO/UUWay/releases/download/v${pkgver}/uuway-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums_x86_64=('d706f5588aab96c46a4d095c50c2b7221acb4f1a82ad4efc3095d828fe5b4e3a')
+sha256sums_x86_64=('792d56ceb6ccf56b40e24a02574c92561e4a2ef5fbbf875f0ebe94d5de5f63ea')
 
 package() {
   # Repack upstream's own Arch package as-is.
