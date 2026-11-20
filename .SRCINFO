@@ -1,0 +1,24 @@
+pkgbase = pila-desktop
+	pkgdesc = Pila with a desktop: its default wallpaper, bar, launcher, notifications, lock and keys
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/igalmarino/pila
+	arch = any
+	license = GPL-3.0-or-later
+	depends = pila
+	depends = swaybg
+	depends = kitty
+	depends = waybar
+	depends = fuzzel
+	depends = mako
+	depends = otf-font-awesome
+	depends = swayidle
+	depends = swaylock
+	depends = wireplumber
+	depends = brightnessctl
+	depends = playerctl
+	depends = grim
+	depends = slurp
+	depends = wl-clipboard
+
+pkgname = pila-desktop
