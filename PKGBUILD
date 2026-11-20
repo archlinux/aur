@@ -1,6 +1,6 @@
 # Maintainer: tsaitang404 <tsaitang.agent@gmail.com>
 pkgname=openunivpn
-pkgver=1.1.11
+pkgver=1.1.12
 pkgrel=1
 pkgdesc="H3C SecPath SSLVPN 开源替代客户端"
 arch=('any')
@@ -36,9 +36,13 @@ password =
 [gateway]
 # 格式: host:ip 或 host:port（缺省 443）
 list =
+# 默认校验 VPN 网关证书；仅在明确需要时设为 false。
+# tls_verify = true
 
 [tun]
 name = cnem0
+# 可选：逗号分隔的 IPv4 CIDR；留空只使用协商网段及网关下发路由。
+extra_routes =
 
 [dns]
 backend = resolvconf

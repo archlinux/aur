@@ -6,9 +6,13 @@ UniVPN 开源客户端 — 自动选最优网关 + TUN 模式
   1. sudo python3 client.py               # 启动 VPN（自动认证 + 选最快网关）
   2. dae 分流内网段到 cnem0 / 浏览器直接访问内网 IP
 """
-import socket, ssl, struct, json, sys, os, time, threading, select, fcntl, subprocess, ipaddress, logging, re, signal, shutil
+import socket, ssl, struct, sys, os, time, threading, select, random, fcntl, subprocess, ipaddress, logging, signal, shutil, errno, json
+import re
+from contextlib import closing, contextmanager
+from configparser import Error as ConfigError
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from config import load_config, setup_wizard, _find_config
+from typing import Optional, Tuple
+from config import load_config, _find_config, parse_extra_route
 import dns_backend
 
 logger = logging.getLogger('openunivpn')
@@ -173,26 +177,24 @@ def parse_netcfg(payload):
     if not vip["dns"]:
         logger.warning("未能从 REQVIP 响应解析出 DNS（偏移可能已漂移）")
 
-    # 路由表：@188 开始，每条 12B，数量由 @184 给出
+    # 路由表：@188 开始，每条 12B，数量由 @186 给出。
     if NETCFG_RT_COUNT_OFF + 2 <= len(payload):
         route_count = struct.unpack(">H", payload[NETCFG_RT_COUNT_OFF:NETCFG_RT_COUNT_OFF + 2])[0]
-        off = NETCFG_RT_START
-        for _ in range(route_count):
-            if off + 8 > len(payload):
-                break
+        end = NETCFG_RT_START + route_count * NETCFG_RT_STRIDE
+        if end > len(payload):
+            logger.warning("REQVIP 路由表截断")
+            return None
+        for off in range(NETCFG_RT_START, end, NETCFG_RT_STRIDE):
             net_b = payload[off:off + 4]
             mask_b = payload[off + 4:off + 8]
-            if net_b == b"\x00\x00\x00\x00" and mask_b == b"\x00\x00\x00\x00":
-                break
             vip["routes"].append((_parse_ip(net_b), _parse_ip(mask_b)))
-            off += NETCFG_RT_STRIDE
 
     logger.info("REQVIP 解析: VIP=%s mask=%s DNS=%s routes=%d",
                 vip["vip_ip"], vip["mask"], vip["dns"], len(vip["routes"]))
     return vip
 
 
-def resolve_gateway(addr):
+def resolve_gateway(addr: str) -> Tuple[str, Optional[str]]:
     """解析网关地址，返回 (sni_host, ip)。addr 可为域名或 IP。"""
     try:
         socket.inet_aton(addr)
@@ -201,9 +203,14 @@ def resolve_gateway(addr):
         pass
     try:
         ip = socket.getaddrinfo(addr, None, socket.AF_INET, socket.SOCK_STREAM)[0][4][0]
+        if not isinstance(ip, str):
+            raise ValueError("invalid IPv4 resolver result")
         return addr, ip
-    except Exception:
-        return addr, None
+    except socket.gaierror as exc:
+        # An offline resolver can return a negative answer as well as EAI_AGAIN.
+        if exc.errno in (socket.EAI_AGAIN, socket.EAI_NONAME, getattr(socket, 'EAI_NODATA', None)):
+            return addr, None
+        raise
 
 
 def probe_gateway(addr, port, ctx1f4):
@@ -212,51 +219,108 @@ def probe_gateway(addr, port, ctx1f4):
     重要：不能在此建立 TLS 连接或发送任何 CNEM 帧。
     网关对同一会话的裸 TLS 连接（握手后不发协议帧就关闭）敏感，
     会判定异常并对后续主连接返回 KICKOUT (cmd=0x0008)。
-    因此探测只做 TCP connect 测延迟，完整握手仅在 main() 中做一次。
+    因此探测只做 TCP connect 测延迟，完整握手在探测之后串行执行。
     """
-    host, ip = resolve_gateway(addr)
+    _, ip = resolve_gateway(addr)
     if not ip:
         return None
-    t0 = time.time()
+    t0 = time.monotonic()
     try:
-        raw = socket.create_connection((ip, port), timeout=5)
-        raw.close()
-        lat = (time.time() - t0) * 1000
-        return {"host": addr, "ip": ip, "port": port, "latency": lat}
-    except Exception:
+        with closing(socket.create_connection((ip, port), timeout=5)):
+            lat = (time.monotonic() - t0) * 1000
+    except (socket.timeout, TimeoutError):
         return None
+    except OSError as exc:
+        if exc.errno in TRANSIENT_ERRNOS:
+            return None
+        raise
+    return {"host": addr, "ip": ip, "port": port, "latency": lat}
 
 
 def select_gateway(ctx1f4, gateways):
-    """并发探测所有网关（仅 TCP/TLS 连通性），按延迟升序返回最快的一个"""
-    print("[*] 探测网关...")
-    results = []
+    """并发探测 TCP 连通性，返回所有可达候选（按延迟升序）。"""
+    logger.info("探测网关 TCP 连通性")
+    if not gateways:
+        return []
     with ThreadPoolExecutor(max_workers=min(len(gateways), 8)) as pool:
-        futures = {pool.submit(probe_gateway, addr, port, ctx1f4): addr for addr, port in gateways}
-        for f in as_completed(futures):
-            r = f.result()
-            if r:
-                results.append(r)
-    if not results:
-        print("[!] 所有网关不可达")
-        sys.exit(1)
-    results.sort(key=lambda r: r["latency"])
-    for r in results:
-        print(f"  {r['host']}:{r['port']} {r['latency']:.0f}ms")
-    return results[0]
+        futures = [pool.submit(probe_gateway, addr, port, ctx1f4) for addr, port in gateways]
+        results = [r for f in as_completed(futures) if (r := f.result()) is not None]
+    return sorted(results, key=lambda r: r["latency"])
 
 
 def create_tun(name="cnem0"):
     TUNSETIFF = 0x400454CA
+    IFF_TUN, IFF_NO_PI, IFF_TUN_EXCL = 0x0001, 0x1000, 0x8000
+    if not re.fullmatch(r'[A-Za-z0-9_.-]{1,15}', name) or name in ('.', '..') or name.startswith('-'):
+        raise SessionFailure('TUN 配置', '无效的 TUN 接口名称')
+    # Kernel exclusivity prevents attaching to a persistent or concurrently created TUN.
+    ifr = struct.pack("16sH22x", name.encode('ascii'), IFF_TUN | IFF_NO_PI | IFF_TUN_EXCL)
     fd = os.open("/dev/net/tun", os.O_RDWR)
-    ifr = struct.pack("16sH", name.encode(), 0x0001 | 0x1000)
-    fcntl.ioctl(fd, TUNSETIFF, ifr)
+    try:
+        fcntl.ioctl(fd, TUNSETIFF, ifr)
+    except BaseException:
+        close_resource(os.close, fd)
+        raise
     return fd, name
 
 
 def run_cmd(args):
-    """安全运行系统命令"""
-    subprocess.run(args, check=False, capture_output=True)
+    result = subprocess.run(args, capture_output=True)
+    if result.returncode:
+        raise SessionFailure("TUN 配置", f"ip {args[1]} {args[2]} 失败（退出码 {result.returncode}）")
+
+
+def negotiated_network(address, mask):
+    network = ipaddress.IPv4Network(f'{address}/{mask}', strict=False)
+    # ipaddress also accepts wildcard/host masks and numeric prefix lengths.
+    if str(network.netmask) != mask:
+        raise ValueError('invalid IPv4 netmask')
+    return network
+
+
+def implicit_broadcast_routes(network):
+    # noprefixroute doesn't suppress local broadcast routes. Older Linux also
+    # treats the subnet's first IP as a broadcast; /31 and /32 have neither.
+    if network.prefixlen < 31:
+        return (ipaddress.IPv4Network(network.broadcast_address),
+                ipaddress.IPv4Network(network.network_address))
+    return ()
+
+
+def plan_tun(vip, extra_routes, gateway_ip):
+    try:
+        address = ipaddress.IPv4Address(vip['vip_ip'])
+        if address.is_unspecified or address.is_loopback or address.is_multicast or int(address) == 0xffffffff:
+            raise ValueError('invalid VIP')
+        connected = negotiated_network(address, vip.get('mask'))
+        routes = [connected]
+        routes.extend(negotiated_network(net, mask) for net, mask in vip['routes'])
+        routes.extend(parse_extra_route(route) for route in extra_routes)
+        # Match the actual IPv4 endpoint, including literal forms inet_aton accepts.
+        gateway = ipaddress.IPv4Address(socket.inet_aton(gateway_ip))
+    except (ValueError, OSError) as exc:
+        raise SessionFailure('TUN 配置', '无效的 IPv4 地址、掩码或路由') from exc
+    if any(route.prefixlen == 0 or gateway in route for route in routes):
+        raise SessionFailure('TUN 配置', '路由计划包含默认路由或覆盖当前 VPN 网关')
+    for prefix in implicit_broadcast_routes(connected):
+        if prefix in routes:
+            raise SessionFailure('TUN 配置', f'IPv4 路由与隐式广播路由冲突：{prefix}')
+    return ipaddress.IPv4Interface(f'{address}/{connected.prefixlen}'), tuple(dict.fromkeys(routes))
+
+
+def check_route_conflicts(address, routes):
+    implicit = (ipaddress.IPv4Network(address.ip), *implicit_broadcast_routes(address.network))
+    for prefix in dict.fromkeys((*implicit, *routes)):
+        result = subprocess.run(['ip', '-j', '-4', 'route', 'show', 'table', 'all', 'exact', str(prefix)],
+                                capture_output=True, text=True, timeout=5)
+        try:
+            entries = json.loads(result.stdout) if result.returncode == 0 else None
+        except (ValueError, TypeError):
+            entries = None
+        if not isinstance(entries, list):
+            raise SessionFailure('TUN 配置', '无法检查现有 IPv4 路由')
+        if entries:
+            raise SessionFailure('TUN 配置', f'IPv4 路由冲突：{prefix}')
 
 
 # ── 系统 DNS 管理（通过 openresolv/resolvconf 协调，与 NetworkManager 共存）──
@@ -270,61 +334,77 @@ def _resolvconf_available():
     return shutil.which("resolvconf") is not None
 
 
-def setup_dns(vpn_dns_list, backend='resolvconf', tun_name=None):
-    """将网关下发的 DNS 交给所选后端。"""
-    if not vpn_dns_list:
-        return
+def setup_dns(vpn_dns_list, backend='resolvconf', tun_name=None, *, before_change=None):
+    """将经隧道可达的 DNS 交给所选后端。"""
     if backend == 'dnsmasq':
-        try:
-            if dns_backend.activate(vpn_dns_list, tun_name):
-                logger.info("dnsmasq 已切换为 VPN DNS: %s", vpn_dns_list)
-            else:
-                logger.warning("没有可经 VPN 隧道路由的 DNS，保留原上游")
-        except (OSError, subprocess.SubprocessError) as e:
-            logger.warning("切换 dnsmasq 上游失败: %s", e)
+        if dns_backend.activate(vpn_dns_list, tun_name, before_change=before_change):
+            logger.info("dnsmasq 已切换为 VPN DNS: %s", vpn_dns_list)
+        elif vpn_dns_list:
+            logger.warning("没有可经 VPN 隧道路由的 DNS，保留原上游")
+        return
+    if not vpn_dns_list:
         return
     if not _resolvconf_available():
         logger.warning("openresolv(resolvconf) 未安装，跳过 VPN DNS 注入（不影响公网）")
         return
-    try:
-        content = "\n".join(f"nameserver {d}" for d in vpn_dns_list) + "\n"
-        p = subprocess.run(
-            ["resolvconf", "-a", RESOLVCONF_IFACE],
-            input=content, capture_output=True, text=True,
-        )
-        if p.returncode == 0:
-            logger.info("VPN DNS 已通过 resolvconf 添加: %s", vpn_dns_list)
-        else:
-            logger.warning("resolvconf 添加 DNS 失败: %s", p.stderr.strip())
-    except Exception as e:
-        logger.warning("更新系统 DNS 失败: %s", e)
+    servers = dns_backend.tunnel_dns_servers(vpn_dns_list, tun_name)
+    if not servers:
+        logger.warning("没有可经 VPN 隧道路由的 DNS，保留系统 DNS")
+        return
+    content = "\n".join(f"nameserver {d}" for d in servers) + "\n"
+    if before_change is not None:
+        before_change()
+    subprocess.run(["resolvconf", "-a", RESOLVCONF_IFACE], input=content,
+                   capture_output=True, text=True).check_returncode()
+    logger.info("VPN DNS 已通过 resolvconf 添加: %s", ', '.join(map(str, servers)))
 
 
 def restore_dns(backend='resolvconf'):
-    """VPN 退出时恢复原 DNS。"""
+    """Restore a backend whose state may have changed; propagate failures."""
     if backend == 'dnsmasq':
-        try:
-            dns_backend.restore()
-        except (OSError, subprocess.SubprocessError) as e:
-            logger.warning("恢复 dnsmasq 上游失败: %s", e)
+        dns_backend.restore()
         return
-    if not _resolvconf_available():
-        return
+    subprocess.run(["resolvconf", "-d", RESOLVCONF_IFACE],
+                   capture_output=True, text=True).check_returncode()
+    logger.info("VPN DNS 已从 resolvconf 移除")
+
+
+@contextmanager
+def session_dns(addresses, backend, tun_name):
+    changed = False
+    failure = None
+
+    def before_change():
+        nonlocal changed
+        changed = True
+
     try:
-        p = subprocess.run(
-            ["resolvconf", "-d", RESOLVCONF_IFACE],
-            capture_output=True, text=True,
-        )
-        if p.returncode == 0:
-            logger.info("VPN DNS 已从 resolvconf 移除")
-        else:
-            logger.warning("resolvconf 移除 DNS 失败: %s", p.stderr.strip())
-    except Exception as e:
-        logger.warning("恢复系统 DNS 失败: %s", e)
+        try:
+            setup_dns(addresses, backend, tun_name, before_change=before_change)
+        except dns_backend.OwnershipConflict as exc:
+            raise SessionFailure("DNS 配置", "dnsmasq 所有权冲突；请确认离线上游已恢复后再启动") from exc
+        except (OSError, subprocess.SubprocessError, ValueError) as exc:
+            if changed:
+                raise SessionFailure("DNS 配置", f"切换 {backend} DNS 失败（{type(exc).__name__}）") from exc
+            logger.warning("切换 %s DNS 失败，保留原 DNS（%s）", backend, type(exc).__name__)
+        yield
+    except BaseException as exc:
+        failure = exc
+        raise
+    finally:
+        if changed:
+            try:
+                restore_dns(backend)
+            except Exception as exc:
+                reason = f"恢复 {backend} DNS 失败（{type(exc).__name__}）"
+                if failure is None or (isinstance(failure, SessionFailure) and failure.retryable):
+                    raise SessionFailure("DNS 清理", reason) from exc
+                # A cleanup failure must not replace a terminal session failure.
+                logger.error("%s", reason)
 
 
 def gateway_tls_context(config):
-    if config.get('tls_verify', config.get('dns_backend') == 'dnsmasq'):
+    if config.get('tls_verify', True):
         return ssl.create_default_context(cafile=config.get('gateway_ca') or None)
     context = ssl.create_default_context()
     context.check_hostname = False
@@ -333,12 +413,33 @@ def gateway_tls_context(config):
 
 
 def select_session_dns(config, advertised):
+    configured = config.get('dns_servers', [])
+    if not config.get('tls_verify', True):
+        return configured
     if config.get('dns_backend') == 'dnsmasq':
-        configured = config.get('dns_servers', [])
-        if not config.get('tls_verify', True):
-            return configured
         return configured or advertised
     return advertised
+
+
+class StopRequest:
+    """Signal handler writes only a flag; it never enters a lock or logs."""
+
+    signum = None
+
+    def request(self, signum, _frame):
+        self.signum = signum
+
+    def is_set(self):
+        return self.signum is not None
+
+    def wait(self, timeout):
+        deadline = time.monotonic() + timeout
+        while not self.is_set():
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                break
+            time.sleep(min(0.1, remaining))
+        return self.is_set()
 
 
 def main():
@@ -349,19 +450,18 @@ def main():
 
     if os.geteuid() != 0:
         print("需要 root 权限 (TUN)")
-        sys.exit(1)
+        return EXIT_NO_RESTART
 
     # SIGTERM/SIGINT 请求主循环退出。
-    stop_event = threading.Event()
+    stop_event = StopRequest()
+    signal.signal(signal.SIGTERM, stop_event.request)
+    signal.signal(signal.SIGINT, stop_event.request)
 
-    def _handle_signal(signum, frame):
-        logger.info("收到信号 %s，正在退出...", signum)
-        stop_event.set()
-
-    signal.signal(signal.SIGTERM, _handle_signal)
-    signal.signal(signal.SIGINT, _handle_signal)
-
-    config = load_config()
+    try:
+        config = load_config()
+    except (ConfigError, OSError, ValueError) as exc:
+        logger.error("配置读取失败（%s）；停止，不自动重试", type(exc).__name__)
+        return EXIT_NO_RESTART
 
     # ── 配置完整性校验：缺项时给出明确诊断，而非笼统报错 ──
     missing = []
@@ -375,351 +475,403 @@ def main():
         print("[!] 配置不完整，缺少: " + "、".join(missing))
         print("    配置文件路径: " + (_find_config() or "(未找到配置文件)"))
         print("    请编辑该文件后重试。")
-        sys.exit(2)
+        return EXIT_NO_RESTART
 
-    if config.get('dns_backend') == 'dnsmasq' and not config.get('tls_verify', True):
-        logger.warning("VPN 网关 TLS 身份校验已禁用；仅使用管理员配置的 DNS 地址")
+    if not config.get('tls_verify', True):
+        logger.warning("VPN 网关 TLS 身份校验已禁用；不接受网关下发的 DNS")
     try:
-        run_vpn(config, stop_event)
-    finally:
+        result = run_vpn(config, stop_event)
+        if stop_event.is_set():
+            logger.info("收到信号 %s，连接已退出", stop_event.signum)
+        return result
+    except BaseException:
+        # Last resort for an unexpected process-level failure. Normal session
+        # cleanup runs before the TUN closes. dnsmasq only restores our claim.
         if config.get('dns_backend') == 'dnsmasq':
-            restore_dns('dnsmasq')
+            try:
+                restore_dns('dnsmasq')
+            except Exception as exc:
+                logger.error("恢复 dnsmasq DNS 失败（%s）", type(exc).__name__)
+        raise
 
 
 def run_vpn(config, stop_event):
-    gateways = config["gateways"]
-    tun_name = config["tun_name"]
-    username = config["username"]
-    password = config["password"]
+    if stop_event.is_set():
+        return 0
+    try:
+        context = gateway_tls_context(config)
+    except (OSError, ValueError):
+        logger.error("TLS 配置：无法加载 TLS 信任配置；停止，不自动重试")
+        return EXIT_NO_RESTART
+    delay = 3
 
-    # ── 数据面稳定性参数 ──
-    RECV_TIMEOUT = 5          # TLS recv 轮询超时（秒）
-    RECONNECT_DELAY = 3       # 断连后重连间隔（秒）
+    def on_ready():
+        nonlocal delay
+        delay = 3
 
-    # ── 主循环：建立连接 + 转发；数据面假死/断连时自动重连 ──
     while not stop_event.is_set():
-        # 注：ctx1f4 初始值不重要，NetExtension 认证后会覆盖为认证 UserID
-        ctx1f4 = 0
-        gw = select_gateway(ctx1f4, gateways)
-        host, ip, port, latency = gw["host"], gw["ip"], gw["port"], gw["latency"]
-
-        # ── 完整握手（对照官方 UniVPNCS 日志时序 2026-08-07 22:37:49-50）──
-        #   官方流程（日志验证）：
-        #     1. Master Auth：独立短连接完成认证（拿 UserID），随即关闭
-        #     2. SSL Start Nem：新建 CNEM 主连接 fd=12，第一帧即 ACL
-        #     3. ACL → REQVIP → UDP_AVAILABLE → DATA_CONNECT → UDP_DETECT → DATA
-        #   ⚠ 官方主连接第一帧就是 ACL，无额外"握手帧(0x001D)"；认证与主连接是
-        #     两个不同连接。旧实现先建主连接发 0x001D 再认证，导致网关 KICKOUT。
-
-        # 1. 认证短连接（独立连接，认证完即关闭；确定性失败直接退出）
-        if username and password:
+        try:
+            candidates = select_gateway(0, config["gateways"])
+        except Exception as exc:
+            logger.error("网关探测异常（%s, errno=%s）；停止，不自动重试",
+                         type(exc).__name__, getattr(exc, 'errno', None))
+            return EXIT_NO_RESTART
+        for gateway in candidates:
+            if stop_event.is_set():
+                return 0
             try:
-                auth_ctx = gateway_tls_context(config)
-                auth_sock = auth_ctx.wrap_socket(
-                    socket.create_connection((ip, port), timeout=10), server_hostname=host)
-                pwd_enc = password.replace("%", "%25")
-                path = (f"/netextension/netextensionlogin.html?"
-                        f"SelectLanguage=0&UserName={username}&Password={pwd_enc}"
-                        f"&MacAddress=F04B-B3B9-EBE5&SVN_Seco_AaA=1&")
-                http_req = (f"GET {path} HTTP/1.1\r\n"
-                            "Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, */*\r\n"
-                            "Accept-Language: zh-cn\r\n"
-                            "Accept-Encoding: gzip, deflate\r\n"
-                            "User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; NT 5.1; SV1; .NET CLR 2.0.50727)OS=Linux64\r\n"
-                            f"Host: {host}\r\n"
-                            "\r\n").encode()
-                auth_sock.sendall(http_req)
-                auth_sock.settimeout(5)
-                auth_resp = auth_sock.recv(65536)
-                auth_sock.close()
-                if auth_resp[:4] == b"\xf0\xf0\xf0\xf0":
-                    new_uid = struct.unpack(">I", auth_resp[4:8])[0]
-                    # 网关对认证失败返回 UserID=0xfffffffb(-5) 等错误码，须与合法 UserID 区分
-                    if new_uid == 0 or new_uid >= 0xFFFFF000:
-                        print(f"[!] 认证失败：网关 {host} 拒绝登录（错误码 0x{new_uid:08x}）")
-                        print("    可能原因：用户名或密码错误、账号被禁用/锁定。")
-                        sys.exit(1)
-                    ctx1f4 = new_uid  # 用认证 UserID 作为 CNEM ctx
-                    m = re.search(rb"[A-Za-z0-9+/=]{44}", auth_resp)
-                    if m:
-                        logger.info("NetExtension 认证成功 UserID=0x%08x 密钥len=%d", new_uid, len(m.group(0)))
-                    else:
-                        logger.info("NetExtension 认证成功 UserID=0x%08x", new_uid)
-                else:
-                    print(f"[!] 认证失败：网关 {host} 拒绝登录（{len(auth_resp)}B）")
-                    print("    可能原因：用户名或密码错误、账号被禁用/锁定、或不允许当前来源拨入。")
-                    print(f"    响应前 16 字节: {auth_resp[:16].hex()}")
-                    sys.exit(1)
-            except (socket.timeout, OSError, ssl.SSLError) as e:
-                print(f"[!] 认证失败：无法连接网关 {host}:{port}（{e}）")
-                print("    请检查网络连通性和网关地址是否正确。")
-                sys.exit(1)
-            except Exception as e:
-                print(f"[!] 认证异常：{e}")
-                sys.exit(1)
+                _run_session(config, context, stop_event, gateway, on_ready)
+            except SessionFailure as exc:
+                if stop_event.is_set() and exc.retryable:
+                    return 0
+                logger.warning("%s:%s %s：%s；%s", gateway['host'], gateway['port'],
+                               exc.stage, exc, "可重试" if exc.retryable else "停止，不自动重试")
+                if not exc.retryable:
+                    return EXIT_NO_RESTART
+            except Exception as exc:
+                logger.error("%s:%s 本地或未知会话异常（%s, errno=%s）；停止，不自动重试",
+                             gateway['host'], gateway['port'], type(exc).__name__, getattr(exc, 'errno', None))
+                return EXIT_NO_RESTART
+        if stop_event.is_set():
+            break
+        wait = min(60, delay * random.uniform(0.9, 1.1))
+        logger.info("本轮无可用连接，%.1f 秒后重新探测网关", wait)
+        if stop_event.wait(wait):
+            break
+        delay = min(60, delay * 2)
+    return 0
 
-        # 2. 新建 CNEM 主连接（fd=12），第一帧即 ACL（官方时序，无握手帧）
-        ssl_ctx = gateway_tls_context(config)
-        raw = socket.create_connection((ip, port), timeout=15)
-        sock = ssl_ctx.wrap_socket(raw, server_hostname=host)
-        sock.settimeout(30)
 
-        # 3. UDP socket connect 到网关:4433（模拟 univpn fd=14，数据面激活需要）
-        udp_probe = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+class SessionFailure(Exception):
+    def __init__(self, stage, reason, *, retryable=False):
+        super().__init__(reason)
+        self.stage = stage
+        self.retryable = retryable
+
+
+TRANSIENT_ERRNOS = {
+    errno.ECONNABORTED, errno.ECONNREFUSED, errno.ECONNRESET, errno.EHOSTDOWN,
+    errno.EHOSTUNREACH, errno.ENETDOWN, errno.ENETRESET, errno.ENETUNREACH,
+    errno.EPIPE, errno.ETIMEDOUT, errno.ENOTCONN,
+}
+EXIT_NO_RESTART = 78
+CMD_KICKOUT = 0x0008
+
+
+@contextmanager
+def network_io(stage):
+    """Classify only network I/O, never local TUN/DNS errors by socket errno."""
+    try:
+        yield
+    except ssl.SSLCertVerificationError:
+        raise SessionFailure(stage, "TLS 证书校验失败") from None
+    except (ssl.SSLEOFError, ssl.SSLZeroReturnError, socket.timeout, TimeoutError, EOFError):
+        raise SessionFailure(stage, "传输超时或连接关闭", retryable=True) from None
+    except ssl.SSLError:
+        raise SessionFailure(stage, "TLS 协议异常") from None
+    except OSError as exc:
+        raise SessionFailure(stage, f"网络 I/O 异常（{type(exc).__name__}, errno={exc.errno}）",
+                             retryable=exc.errno in TRANSIENT_ERRNOS) from None
+
+
+def open_gateway_tls(context, gw, timeout, stage):
+    with network_io(stage):
+        raw = socket.create_connection((gw['ip'], gw['port']), timeout=timeout)
         try:
-            udp_probe.connect((ip, port))
-            udp_probe.settimeout(2)
-            logger.info("UDP socket 已 connect %s:%s", ip, port)
-        except Exception as e:
-            logger.warning("UDP connect 失败: %s", e)
+            return context.wrap_socket(raw, server_hostname=gw['host'])
+        except BaseException:
+            close_resource(raw.close)
+            raise
 
-        # 4. ACL（连接A第一帧，20B：16B 头 + 4B ctx+0x1f8，ctx=认证UserID）
-        sock.sendall(cnem_frame(CMD_ACL, extra_be32=0, ctx1f4=ctx1f4))
-        acl_resp = b""
-        try:
-            acl_resp = sock.recv(4096)
-        except Exception:
-            pass
-        logger.info("ACL 响应 %dB: %s", len(acl_resp), acl_resp[:64].hex())
-        acl_cmd, _, _ = parse_cnem(acl_resp)
-        if acl_cmd == 0x0008:
-            # KICKOUT：网关拒绝连接（逆向确认 cmd=0x0008 即 KICKOUT，原因码 g_uiReConnectResult=6）
-            print(f"[!] 网关拒绝连接 (KICKOUT cmd=0x0008, {len(acl_resp)}B)")
-            print("    可能原因：同账号在其他设备登录(多端冲突)、账号受限、或网关对该出口IP限制")
-            sock.close()
-            print(f"[*] {RECONNECT_DELAY} 秒后重连...")
-            time.sleep(RECONNECT_DELAY)
-            continue
-        if acl_cmd != CMD_ACL:
-            print(f"[!] ACL 握手失败 (resp cmd=0x{(acl_cmd or 0):04x}, {len(acl_resp)}B)")
-            sys.exit(1)
-        logger.info("ACL 握手成功")
 
-        # 5. REQVIP（16B 帧头，无载荷）
-        sock.sendall(cnem_frame(CMD_REQVIP, ctx1f4=ctx1f4))
-        buf = b""
-        try:
-            sock.settimeout(15)
-            for _ in range(10):
-                d = sock.recv(65536)
-                if not d:
-                    break
-                buf += d
-        except Exception:
-            pass
-        sock.settimeout(30)
+def close_resource(close, *args):
+    try:
+        close(*args)
+    except OSError as exc:
+        logger.warning("关闭会话资源失败（%s, errno=%s）", type(exc).__name__, exc.errno)
 
-        # 解析 REQVIP 响应：提取 VIP/掩码/DNS/路由
-        vip = None
-        off = 0
-        while off + 16 <= len(buf):
-            cmd, pl, rest = parse_cnem(buf[off:])
+
+@contextmanager
+def session_socket(sock):
+    try:
+        yield sock
+    finally:
+        close_resource(sock.close)
+
+
+def set_read_deadline(sock, deadline):
+    remaining = deadline - time.monotonic()
+    if remaining <= 0:
+        raise TimeoutError
+    sock.settimeout(remaining)
+
+
+def authenticate(config, context, gw):
+    # Master Auth is a separate short-lived TLS connection. Keep the request
+    # unchanged; the only fields this client consumes are the magic and UID.
+    with session_socket(open_gateway_tls(context, gw, 10, "认证连接")) as sock:
+        username = config['username']
+        pwd_enc = config['password'].replace("%", "%25")
+        path = (f"/netextension/netextensionlogin.html?"
+                f"SelectLanguage=0&UserName={username}&Password={pwd_enc}"
+                f"&MacAddress=F04B-B3B9-EBE5&SVN_Seco_AaA=1&")
+        http_req = (f"GET {path} HTTP/1.1\r\n"
+                    "Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, */*\r\n"
+                    "Accept-Language: zh-cn\r\n"
+                    "Accept-Encoding: gzip, deflate\r\n"
+                    "User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; NT 5.1; SV1; .NET CLR 2.0.50727)OS=Linux64\r\n"
+                    f"Host: {gw['host']}\r\n"
+                    "\r\n").encode()
+        stage = "认证响应"
+        magic = b"\xf0" * 4
+        header = b""
+        with network_io(stage):
+            sock.sendall(http_req)
+            deadline = time.monotonic() + 5
+            while len(header) < 8:
+                set_read_deadline(sock, deadline)
+                chunk = sock.recv(8 - len(header))
+                if not chunk:
+                    raise EOFError
+                header += chunk
+                if len(header) >= 4 and header[:4] != magic:
+                    raise SessionFailure(stage, "无法识别的认证响应协议")
+        uid = struct.unpack(">I", header[4:8])[0]
+        if uid == 0 or uid >= 0xFFFFF000:
+            raise SessionFailure(stage, "认证拒绝")
+        logger.info("NetExtension 认证成功")
+        return uid
+
+
+class CnemStream:
+    """Preserve partial frames across reads and handshake/forwarding stages."""
+    # Header + largest 16-bit payload + header lookahead for ambiguous lengths.
+    MAX_HANDSHAKE_BUFFER = 16 + 0xffff + 16
+
+    def __init__(self, sock):
+        self.sock = sock
+        self.buf = b""
+
+    @staticmethod
+    def _check_kickout(buf, stage):
+        # A valid CNEM header suffices to recognize a KICKOUT, even if its
+        # optional payload length cannot be inferred by the general parser.
+        if (len(buf) >= 16 and buf[:4] == MAGIC_B
+                and buf[12:14] == be16(CMD_KICKOUT)):
+            raise SessionFailure(stage, "网关拒绝或踢出会话 (KICKOUT)")
+
+    def check_buffered_kickout(self, stage):
+        """Look only at frame boundaries, without consuming early DATA."""
+        buf = self.buf
+        while buf:
+            self._check_kickout(buf, stage)
+            try:
+                cmd, _, buf = parse_cnem(buf)
+            except ValueError:
+                break  # The normal parser reports malformed frames.
             if cmd is None:
                 break
-            if cmd == 0x0003 and len(pl) >= 30:
-                vip = parse_netcfg(pl)
-                if vip:
-                    logger.info("REQVIP 解析成功: VIP=%s mask=%s", vip["vip_ip"], vip["mask"])
-                break
-            off += 16 + len(pl)
 
-        if not vip:
-            print("[!] REQVIP 响应解析失败，无法继续")
-            sys.exit(1)
+    def pop(self, stage, *, only=None):
+        self._check_kickout(self.buf, stage)
+        try:
+            cmd, payload, remaining = parse_cnem(self.buf)
+        except ValueError:
+            raise SessionFailure(stage, "CNEM 协议帧无效") from None
+        if only is not None and cmd != only:
+            return None, None
+        self.buf = remaining
+        return cmd, payload
 
-        # 6. UDP_AVAILABLE → DATA_CONNECT → UDP 探测（MITM 实测必须）
-        handshake_ok = True
-        for cmd_val, payload in (
-            (CMD_UDP_AVAILABLE, struct.pack(">I", 4)),
-            (CMD_DATA_CONNECT, struct.pack(">I", 4)),
-        ):
-            try:
-                sock.sendall(cnem_frame(cmd_val, payload=payload, ctx1f4=ctx1f4))
-            except Exception as e:
-                print(f"[!] 握手发送 cmd=0x{cmd_val:04x} 失败: {e}，触发重连")
-                handshake_ok = False
-                break
-            logger.info("已发送 cmd=0x%04x", cmd_val)
-            try:
-                sock.settimeout(2)
-                r = sock.recv(65536)
-                if r:
-                    rcmd, rpl, _ = parse_cnem(r)
-                    logger.info("  响应 cmd=0x%04x payload=%s", rcmd or 0, (rpl or b"").hex()[:32])
-            except socket.timeout:
-                logger.warning("  cmd=0x%04x 无响应", cmd_val)
-            except Exception:
-                pass
+    def receive(self, size):
+        chunk = self.sock.recv(size)
+        if not chunk:
+            raise EOFError
+        self.buf += chunk
+
+    def expect(self, expected, stage, *, timeout, ignored=()):
+        deadline = time.monotonic() + timeout
+        while True:
+            cmd, payload = self.pop(stage)
+            if cmd == expected:
+                return payload
+            if cmd in ignored:
+                continue
+            if cmd is not None:
+                raise SessionFailure(stage, "非预期或无法解析的 CNEM 协议帧")
+            room = self.MAX_HANDSHAKE_BUFFER - len(self.buf)
+            if room <= 0:
+                raise SessionFailure(stage, "CNEM 握手帧超过缓冲上限或无法解析")
+            set_read_deadline(self.sock, deadline)
+            self.receive(min(65536, room))
+
+
+def negotiate(sock, stream, gw, ctx1f4, stop_event):
+    with session_socket(socket.socket(socket.AF_INET, socket.SOCK_DGRAM)) as udp:
+        try:
+            udp.connect((gw['ip'], gw['port']))
+            udp.settimeout(2)
+        except OSError:
+            logger.warning("UDP 探测 socket 连接失败；继续 TLS 握手")
+
+        with network_io("ACL 握手"):
             sock.settimeout(30)
-        if not handshake_ok:
-            sock.close()
-            print(f"[*] 握手中断，{RECONNECT_DELAY} 秒后重连...")
-            time.sleep(RECONNECT_DELAY)
-            continue
+            sock.sendall(cnem_frame(CMD_ACL, extra_be32=0, ctx1f4=ctx1f4))
+            stream.expect(CMD_ACL, "ACL 握手", timeout=30)
+        with network_io("REQVIP 握手"):
+            sock.settimeout(15)
+            sock.sendall(cnem_frame(CMD_REQVIP, ctx1f4=ctx1f4))
+            reply = stream.expect(CMD_REQVIP, "REQVIP 握手", timeout=15, ignored=(CMD_ACL, CMD_KEEPALIVE))
+            vip = parse_netcfg(reply)
+            if not vip:
+                raise SessionFailure("REQVIP 握手", "CNEM 网络配置无效")
 
-        # UDP 探测帧（0x0010，无载荷）——发 TLS + UDP socket
-        time.sleep(1)
-        try:
+        for cmd in (CMD_UDP_AVAILABLE, CMD_DATA_CONNECT):
+            stage = f"CNEM 握手 0x{cmd:04x}"
+            stream.check_buffered_kickout(stage)
+            with network_io(stage):
+                sock.settimeout(30)
+                sock.sendall(cnem_frame(cmd, payload=be32(4), ctx1f4=ctx1f4))
+                sock.settimeout(2)
+                try:
+                    if stream.pop(stage, only=cmd)[0] is None:
+                        stream.receive(65536)
+                        stream.check_buffered_kickout(stage)
+                        stream.pop(stage, only=cmd)
+                except (socket.timeout, TimeoutError):
+                    # Optional acknowledgements; a read timeout alone is normal.
+                    pass
+
+        if stop_event.wait(1):
+            return None
+        with network_io("TLS UDP 探测"):
+            sock.settimeout(30)
             sock.sendall(cnem_frame(CMD_UDP_DETECT, ctx1f4=ctx1f4))
-            logger.info("已发送 UDP 探测 cmd=0x0010")
-        except Exception:
-            logger.warning("UDP 探测发送失败（忽略）")
-        # UDP socket 也发一帧探测（HTML §7 格式）
+        udp_detect = (struct.pack("<I", 0xBEEFFCFE) + bytes.fromhex("c192a4d6")
+                      + struct.pack("<I", 0x1000021c) + be32(ctx1f4) + os.urandom(13))
         try:
-            udp_detect = (struct.pack("<I", 0xBEEFFCFE) + bytes.fromhex("c192a4d6")
-                          + struct.pack("<I", 0x1000021c) + struct.pack(">I", ctx1f4)
-                          + os.urandom(13))
-            udp_probe.sendto(udp_detect, (ip, port))
-            logger.info(" UDP 探测帧 %dB 已发送", len(udp_detect))
-        except Exception:
-            pass
+            udp.sendto(udp_detect, (gw['ip'], gw['port']))
+        except OSError:
+            logger.warning("UDP 探测发送失败；继续使用 TLS")
+        if not stop_event.wait(2):
+            return vip
+    return None
 
-        # 等待 UDP 探测超时（官方客户端在此等 2 秒后切换到 SSL 模式）
-        logger.info("等待 UDP 探测超时（2秒）...")
-        time.sleep(2)
 
-        # ── TUN 配置 ──
-        tun_fd, tun_name = create_tun(tun_name)
-        run_cmd(["ip", "link", "set", tun_name, "up"])
-        run_cmd(["ip", "addr", "add", f"{vip['vip_ip']}/24", "dev", tun_name])
-        for net, mask in vip["routes"]:
-            prefix = ipaddress.IPv4Network(f"{net}/{mask}", strict=False).prefixlen
-            run_cmd(["ip", "route", "add", f"{net}/{prefix}", "dev", tun_name])
-        for subnet in ["10.11.0.0/16", "10.12.0.0/16", "10.13.0.0/16"]:
-            run_cmd(["ip", "route", "add", subnet, "dev", tun_name])
-        setup_dns(select_session_dns(config, vip["dns"]), config.get('dns_backend', 'resolvconf'), tun_name)
+def _run_session(config, context, stop_event, gw, on_ready):
+    ctx1f4 = authenticate(config, context, gw)
+    if stop_event.is_set():
+        return
+    with session_socket(open_gateway_tls(context, gw, 15, "CNEM 连接")) as sock:
+        stream = CnemStream(sock)
+        try:
+            vip = negotiate(sock, stream, gw, ctx1f4, stop_event)
+        except SessionFailure as exc:
+            if exc.retryable:
+                stream.check_buffered_kickout(exc.stage)
+            raise
+        stream.check_buffered_kickout("CNEM 握手")
+        if vip is None or stop_event.is_set():
+            return
+        backend = config.get('dns_backend', 'resolvconf')
+        address, routes = plan_tun(vip, config.get('extra_routes', ()), gw['ip'])
+        check_route_conflicts(address, routes)
+        if stop_event.is_set():
+            return
+        tun_fd, tun_name = create_tun(config['tun_name'])
+        try:
+            run_cmd(["ip", "link", "set", "dev", tun_name, "up"])
+            run_cmd(["ip", "addr", "add", str(address), "dev", tun_name, "noprefixroute"])
+            for route in routes:
+                run_cmd(["ip", "route", "add", str(route), "dev", tun_name])
+            if stop_event.is_set():
+                return
+            dns = select_session_dns(config, vip['dns'])
+            with session_dns(dns, backend, tun_name):
+                on_ready()
+                logger.info("已连接 %s:%s (%.0fms)，TUN=%s VIP=%s", gw['host'], gw['port'],
+                            gw['latency'], tun_name, vip['vip_ip'])
+                _forward(sock, stream, tun_fd, ctx1f4, stop_event)
+        finally:
+            # DNS cleanup runs first. Closing the fd removes the TUN and its routes.
+            close_resource(os.close, tun_fd)
 
-        print(f"\n[*] {host} ({latency:.0f}ms) VIP={vip['vip_ip']} DNS={vip['dns']}")
-        print(f"    TUN: {tun_name}  Ctrl+C 停止")
 
-        # ── 双向转发 + 心跳 + 假死检测 ──
-        running = True
-        session_stop = threading.Event()
-        sock_lock = threading.Lock()
-        reconnect = [False]
+def _forward(sock, stream, tun_fd, ctx1f4, stop_event):
+    done = threading.Event()
+    sock_lock = threading.Lock()
+    failures = []
+    sock.settimeout(5)
 
-        def send_keepalive():
-            """定期发送 DATA_CONNECT，防止网关因控制连接空闲而断开。
+    def send(frame, stage):
+        with sock_lock, network_io(stage):
+            if not done.is_set():
+                sock.sendall(frame)
 
-            ⚠ 2026-08-08 实测结论：
-            - 空闲 ~34s 被网关踢（网关空闲超时）
-            - 0x0005 空载荷心跳、0x0010 UDP探测帧均不被网关视为有效流量
-            - ICMP ping / UDP DNS 保活效果有限
-            - 持续真实流量（HTTP/DNS 查询）连接稳定
-            - cmd=0x001A (DATA_CONNECT) 网关有回包（握手时 payload=11510000）
-             因此保活固定发送 0x001A，不因 TUN 流量而跳过。"""
-            next_data_keepalive = time.monotonic()
-            while not session_stop.wait(KEEPALIVE_CHECK_INTERVAL):
-                if time.monotonic() < next_data_keepalive:
-                    continue
-                try:
-                    keepalive_frame = cnem_frame(CMD_DATA_CONNECT,
-                                                 payload=struct.pack(">I", 4),
-                                                 ctx1f4=ctx1f4)
-                    with sock_lock:
-                        sock.sendall(keepalive_frame)
-                    next_data_keepalive = time.monotonic() + KEEPALIVE_IDLE_TIMEOUT
-                    logger.info("保活: DATA_CONNECT 0x001A 已发送")
-                except Exception as e:
-                    logger.warning("DATA_CONNECT 保活发送失败: %s", e)
-                    reconnect[0] = True
-                    break
+    def send_keepalive():
+        next_keepalive = time.monotonic()
+        while not done.wait(KEEPALIVE_CHECK_INTERVAL):
+            if time.monotonic() >= next_keepalive:
+                send(cnem_frame(CMD_DATA_CONNECT, payload=be32(4), ctx1f4=ctx1f4), "保活发送")
+                next_keepalive = time.monotonic() + KEEPALIVE_IDLE_TIMEOUT
 
-        def tun_to_tls():
-            while running:
-                r, _, _ = select.select([tun_fd], [], [], 1)
-                if r:
+    def tun_to_tls():
+        while not done.is_set():
+            ready, _, _ = select.select([tun_fd], [], [], 1)
+            if ready and not done.is_set():
+                packet = os.read(tun_fd, 65536)
+                if packet:
+                    send(cnem_frame(CMD_DATA, packet, ctx1f4=ctx1f4), "TLS 数据发送")
+
+    def tls_to_tun():
+        while not done.is_set():
+            cmd, payload = stream.pop("TLS 数据接收")
+            if cmd is None:
+                with network_io("TLS 数据接收"):
                     try:
-                        packet = os.read(tun_fd, 65536)
-                        if packet:
-                            with sock_lock:
-                                sock.sendall(cnem_frame(CMD_DATA, packet, ctx1f4=ctx1f4))
-                    except OSError as e:
-                        print(f"  [!] TUN读取错误: {e}")
-                        reconnect[0] = True
-                        break
-                    except Exception as e:
-                        print(f"  [!] TLS写入错误: {e}")
-                        reconnect[0] = True
-                        break
+                        stream.receive(65536)
+                    except (BlockingIOError, socket.timeout, TimeoutError):
+                        # Traffic need not elicit a reply; silence is not failure.
+                        continue
+            elif cmd == CMD_DATA and payload:
+                os.write(tun_fd, payload)
 
-        def tls_to_tun():
-            buf = b""
-            sock.settimeout(RECV_TIMEOUT)
-            while running:
-                try:
-                    data = sock.recv(65536)
-                    if not data:
-                        print("  [!] TLS连接关闭，触发重连")
-                        reconnect[0] = True
-                        break
-                    buf += data
-                    while len(buf) >= 16:
-                        cmd, payload, remaining = parse_cnem(buf)
-                        if cmd is None:
-                            break
-                        buf = remaining
-                        if cmd == CMD_DATA and payload:
-                            os.write(tun_fd, payload)
-                        elif cmd in (0x0008, 0x0005, 0x000D, 0x001A, 0x0003):
-                            # 控制帧：KICKOUT(0x0008)/KEEPALIVE(0x0005) 等，打印供诊断
-                            logger.info("  收到控制帧 cmd=0x%04x plen=%d %s",
-                                         cmd, len(payload), payload.hex()[:64])
-                            if cmd == 0x0008:
-                                # KICKOUT：被服务器踢出（网关不发错误码，统一提示）
-                                print("  ⚠ 被网关踢出连接 (KICKOUT)")
-                                reconnect[0] = True
-                                break
-                except BlockingIOError:
-                    # EAGAIN：SSL socket 暂时无数据（正常，非错误），继续轮询
-                    continue
-                except socket.timeout:
-                    # IP traffic need not elicit a reply (UDP, TCP ACK/FIN).
-                    # Silence alone is not evidence that the tunnel has failed.
-                    continue
-                except Exception as e:
-                    print(f"  [!] TLS读取错误: {e}，触发重连")
-                    reconnect[0] = True
-                    break
-
-        t1 = threading.Thread(target=tun_to_tls, daemon=True)
-        t2 = threading.Thread(target=tls_to_tun, daemon=True)
-        t3 = threading.Thread(target=send_keepalive, daemon=True)
-        t1.start()
-        t2.start()
-        t3.start()
-
+    def worker(target):
         try:
-            while (t1.is_alive() and t2.is_alive() and t3.is_alive()
-                   and not reconnect[0] and not stop_event.is_set()):
-                time.sleep(0.5)
-        except KeyboardInterrupt:
-            stop_event.set()
+            target()
+        except Exception as exc:
+            # Preserve parsed terminal failures even if another worker just
+            # observed a transport error. Ignore shutdown-induced I/O errors.
+            if not done.is_set() or (isinstance(exc, SessionFailure) and not exc.retryable):
+                failures.append(exc)
+        finally:
+            done.set()
 
-        # 清理本会话（先停线程再关 fd，避免转发线程访问已关闭资源）
-        running = False
-        session_stop.set()
-        # Wake recv/send before joining; never reuse session resources while
-        # an old forwarding thread can still access them.
+    threads = []
+    try:
+        for target in (tls_to_tun, tun_to_tls, send_keepalive):
+            thread = threading.Thread(target=worker, args=(target,), daemon=True)
+            thread.start()
+            threads.append(thread)
+        while not stop_event.is_set() and not done.wait(0.5):
+            pass
+    finally:
+        done.set()
         try:
             sock.shutdown(socket.SHUT_RDWR)
         except OSError:
             pass
-        t1.join()
-        t2.join()
-        t3.join()
-        sock.close()
-        os.close(tun_fd)
-        run_cmd(["ip", "link", "del", tun_name])
-        restore_dns(config.get('dns_backend', 'resolvconf'))
-        print("已清理")
+        finally:
+            for thread in threads:
+                thread.join()
 
-        if not reconnect[0] or stop_event.is_set():
-            break  # 正常退出（收到停止信号/手动停止）
-
-        print(f"[*] 数据面断开，{RECONNECT_DELAY} 秒后重连...")
-        time.sleep(RECONNECT_DELAY)
+    if failures and not stop_event.is_set():
+        failure = next((exc for exc in failures
+                        if not isinstance(exc, SessionFailure) or not exc.retryable), failures[0])
+        if isinstance(failure, SessionFailure) and failure.retryable:
+            stream.check_buffered_kickout(failure.stage)
+        raise failure
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

@@ -31,6 +31,19 @@ def _find_config():
     return None
 
 
+def parse_extra_route(route):
+    _, sep, prefix = route.partition('/')
+    try:
+        if not (sep and prefix.isascii() and prefix.isdecimal()):
+            raise ValueError
+        network = ipaddress.IPv4Network(route)
+        if network.prefixlen == 0:
+            raise ValueError
+    except ValueError:
+        raise ValueError('[tun] extra_routes requires non-default IPv4 network CIDRs') from None
+    return network
+
+
 def _parse_config(path):
     """解析 INI 格式配置文件"""
     c = configparser.RawConfigParser()
@@ -38,17 +51,17 @@ def _parse_config(path):
     dns_backend = c.get('dns', 'backend', fallback='resolvconf').strip().lower()
     if dns_backend not in ('resolvconf', 'dnsmasq'):
         raise ValueError('[dns] backend must be resolvconf or dnsmasq')
-    tls_verify = c.getboolean('gateway', 'tls_verify', fallback=dns_backend == 'dnsmasq')
+    tls_verify = c.getboolean('gateway', 'tls_verify', fallback=True)
     dns_servers = []
-    if dns_backend == 'dnsmasq':
+    if dns_backend == 'dnsmasq' or not tls_verify:
         for raw in c.get('dns', 'servers', fallback='').split(','):
             if raw.strip():
                 ip = ipaddress.IPv4Address(raw.strip())
                 if ip.is_unspecified or ip.is_loopback or ip.is_multicast:
                     raise ValueError('[dns] servers must be unicast VPN IPv4 addresses')
                 dns_servers.append(str(ip))
-        if not tls_verify and not dns_servers:
-            raise ValueError('[dns] servers is required when dnsmasq is used with tls_verify=false')
+    if dns_backend == 'dnsmasq' and not tls_verify and not dns_servers:
+        raise ValueError('[dns] servers is required when dnsmasq is used with tls_verify=false')
 
     gateways_raw = c.get('gateway', 'list', fallback='')
     gateways = []
@@ -58,16 +71,25 @@ def _parse_config(path):
             if not pair:
                 continue
             # 格式: 地址:端口，地址可为域名或 IP，端口缺省 443
-            parts = pair.split(':')
-            addr = parts[0].strip()
-            port = int(parts[1].strip()) if len(parts) > 1 and parts[1].strip().isdigit() else 443
+            addr, sep, port_text = pair.partition(':')
+            addr, port_text = addr.strip(), port_text.strip()
+            if not addr or any(c.isspace() for c in addr):
+                raise ValueError('[gateway] list requires a hostname or IPv4 address')
+            if sep and not (port_text.isascii() and port_text.isdecimal()):
+                raise ValueError('[gateway] list requires a numeric port after colon')
+            port = int(port_text) if sep else 443
+            if not 1 <= port <= 65535:
+                raise ValueError('[gateway] list port must be in 1..65535')
             gateways.append((addr, port))
 
+    extra_routes = [str(parse_extra_route(raw.strip()))
+                    for raw in c.get('tun', 'extra_routes', fallback='').split(',') if raw.strip()]
     return {
         'username': c.get('auth', 'username', fallback=''),
         'password': c.get('auth', 'password', fallback=''),
         'gateways': gateways,
         'tun_name': c.get('tun', 'name', fallback='cnem0'),
+        'extra_routes': extra_routes,
         'dns_backend': dns_backend,
         'dns_servers': dns_servers,
         'tls_verify': tls_verify,
@@ -79,7 +101,7 @@ def load_config():
     path = _find_config()
     if path:
         return _parse_config(path)
-    return {'username': '', 'password': '', 'gateways': [], 'tun_name': 'cnem0'}
+    return {'username': '', 'password': '', 'gateways': [], 'tun_name': 'cnem0', 'extra_routes': []}
 
 
 def setup_wizard():
