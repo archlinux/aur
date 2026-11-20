@@ -1,7 +1,7 @@
 # Maintainer: Matthias Schabhüttl <matthias@matthiasschabhuettl.com>
 pkgname=bentwire-git
 _pkgname=bentwire
-pkgver=0.2.0.r0.gbaab34a
+pkgver=0.2.1.r0.ga2cb500
 pkgrel=1
 pkgdesc='Desktop characters (Microsoft Agent and Office Assistant formats) for Wayland (development version)'
 arch=(x86_64)
