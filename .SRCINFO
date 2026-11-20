@@ -1,6 +1,6 @@
 pkgbase = gnotes-gtk
 	pkgdesc = Native GNOME client for Gnotes, self-hosted Markdown notes with live shared editing
-	pkgver = 1.9.2
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/justinmdickey/gnotes
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = gnotes-gtk
 	depends = libgcc
 	depends = pango
 	options = !lto
-	source = gnotes-1.9.2.tar.gz::https://github.com/justinmdickey/gnotes/archive/v1.9.2.tar.gz
-	sha256sums = 347c1fa3d2fd60a2ded876a2893be13564c118c75f498e0eaa593c2c708c3498
+	source = gnotes-1.10.0.tar.gz::https://github.com/justinmdickey/gnotes/archive/v1.10.0.tar.gz
+	sha256sums = 4d9bef75685af82b5931028ca9a91d81be375df1726c071ffb62752309378632
 
 pkgname = gnotes-gtk
