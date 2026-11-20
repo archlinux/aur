@@ -33,6 +33,7 @@ pkgbase = python-angr-bin
 	depends = python-sortedcontainers
 	depends = python-typing_extensions
 	optdepends = ipython: BP_IPYTHON debugger hook
+	optdepends = python-keystone: assembling shellcode (angr.load_shellcode, arch.asm)
 	optdepends = python-opentelemetry-api: tracing support
 	optdepends = python-pydantic: LLM feature models
 	optdepends = python-sqlalchemy: saving and loading projects (angrdb)

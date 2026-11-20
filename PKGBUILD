@@ -39,6 +39,7 @@ depends=(
 # package in the repos or the AUR, so the llm extra is deliberately unlisted.
 optdepends=(
   'ipython: BP_IPYTHON debugger hook'
+  'python-keystone: assembling shellcode (angr.load_shellcode, arch.asm)'
   'python-opentelemetry-api: tracing support'
   'python-pydantic: LLM feature models'
   'python-sqlalchemy: saving and loading projects (angrdb)'
