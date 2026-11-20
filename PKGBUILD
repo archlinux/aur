@@ -2,7 +2,7 @@
 # 打包说明见上游 docs/build_aur.md
 
 pkgname=micdn
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Beangle minimal CDN (static, Maven, npm, blob, www)"
 arch=('x86_64')
@@ -26,10 +26,10 @@ source=(
   "micdn.sysusers"
   "micdn.tmpfiles"
 )
-sha256sums=('488c9aa33c37fb62ff840cfd5bad2cd7359c189a8f7bbafd978fb3e27309ff6f'
-            'c9af15c01fe7b5f0ee42ccc00e41c056c88525b06e90160716d0fd905fc4cfad'
+sha256sums=('9abee4bb4bfe7b6f60874343c0a765f54da90ab3b768e5d20cc95b44ea19828b'
+            'be0de541356462ebab3f50c26a919daf65d017e30ac32414b52c3d28de42c0ad'
             'abbeb4d5fc1c271a950d1bd9f8e316e0d696931a9cebbb56651186cc8ef148c6'
-            'd80affc81230b473551692a51165df4be18daf9b93d8d3d780711598f1c2405f')
+            'a2578033a2b7982d02b5b2ca016363c1859b374b573063054e5d9a9d22c040a1')
 
 prepare() {
   cd micdn
@@ -51,10 +51,7 @@ package() {
   cd micdn
 
   install -Dm755 target/micdn "$pkgdir/usr/bin/micdn"
-  # v0.3.1 的 xi:include 展开会把注释示例行（<!-- <xi:include href="blob.xml"/> -->）当真实指令，
-  # 导致默认配置启动即 exit 2；上游保留此 bug，打包时剔除该行，保证全新安装默认配置可启动。
   install -Dm644 scripts/package/micdn.xml "$pkgdir/usr/share/micdn/micdn.xml.default"
-  sed -i '/<xi:include href="blob.xml"/d' "$pkgdir/usr/share/micdn/micdn.xml.default"
   install -Dm644 scripts/package/micdn.service "$pkgdir/usr/lib/systemd/system/micdn.service"
   install -Dm644 "$srcdir/micdn.sysusers" "$pkgdir/usr/lib/sysusers.d/micdn.conf"
   install -Dm644 "$srcdir/micdn.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/micdn.conf"

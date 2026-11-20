@@ -1,10 +1,4 @@
 post_install() {
-  if [ ! -f /etc/micdn/micdn.xml ]; then
-    install -dm755 /etc/micdn
-    cp /usr/share/micdn/micdn.xml.default /etc/micdn/micdn.xml
-    chmod 0644 /etc/micdn/micdn.xml
-  fi
-
   systemd-sysusers micdn.conf 2>/dev/null || :
   systemd-tmpfiles --create micdn.conf 2>/dev/null || :
 
@@ -17,11 +11,21 @@ post_install() {
       -c "Micdn CDN server" micdn 2>/dev/null || :
   fi
 
+  # micdn 是唯一写自己配置的人：目录/XML 归 micdn，basagent 不写文件。
+  install -dm750 -o micdn -g beangle /etc/micdn
+  if [ ! -f /etc/micdn/micdn.xml ]; then
+    install -m640 -o micdn -g beangle \
+      /usr/share/micdn/micdn.xml.default /etc/micdn/micdn.xml
+  fi
+  chown micdn:beangle /etc/micdn /etc/micdn/micdn.xml 2>/dev/null || :
+  chmod 0750 /etc/micdn
+  chmod 0640 /etc/micdn/micdn.xml
+
   if [ -d /var/lib/micdn ]; then
     chown -R micdn:beangle /var/cache/micdn /var/lib/micdn /var/log/micdn 2>/dev/null || :
     chmod 2775 /var/cache/micdn /var/cache/micdn/asset /var/cache/micdn/www 2>/dev/null || :
     chmod 2775 /var/lib/micdn /var/lib/micdn/blob /var/lib/micdn/maven \
-      /var/lib/micdn/npm /var/lib/micdn/local 2>/dev/null || :
+      /var/lib/micdn/npm /var/lib/micdn/native /var/lib/micdn/local 2>/dev/null || :
     chmod 2775 /var/log/micdn 2>/dev/null || :
   fi
 
@@ -45,6 +49,11 @@ post_upgrade() {
     echo "注意: v0.4.0 起 <publish token=.../> 变为 <auth publish-key=... download-key=... max-size=.../>，"
     echo "      驼峰属性（publishKey/maxSize）不再识别，<repo> 也不再当成 <maven>；另外 <maven>/<npm>"
     echo "      不显式声明就不再挂端点。请对照 docs/release-v0.4.0.md 迁移 /etc/micdn/micdn.xml 后重启服务"
+  fi
+
+  if [ -f /etc/micdn/micdn.xml ] && grep -q '<xi:include' /etc/micdn/micdn.xml 2>/dev/null; then
+    echo "注意: v0.4.2 起 micdn.xml 不再支持 xi:include，配置必须是一份完整文件。"
+    echo "      请展开包含内容后重启服务；远程配置由 basagent/basctl 0.0.3 及以上投递。"
   fi
 }
 

@@ -5,5 +5,6 @@ d /var/lib/micdn 2775 micdn beangle -
 d /var/lib/micdn/blob 2775 micdn beangle -
 d /var/lib/micdn/maven 2775 micdn beangle -
 d /var/lib/micdn/npm 2775 micdn beangle -
+d /var/lib/micdn/native 2775 micdn beangle -
 d /var/lib/micdn/local 2775 micdn beangle -
 d /var/log/micdn 2775 micdn beangle -
