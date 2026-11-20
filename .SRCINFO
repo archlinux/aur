@@ -1,6 +1,6 @@
 pkgbase = arkha-git
 	pkgdesc = A fast graphical file manager (development version from master)
-	pkgver = 1.2.0dev.r221.g44a1fbd
+	pkgver = 1.2.0.r225.g51ef377
 	pkgrel = 1
 	url = https://github.com/dekart811/arkha
 	arch = x86_64
