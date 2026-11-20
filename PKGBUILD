@@ -1,6 +1,6 @@
 # Maintainer: Professor Lee <https://github.com/professor-lee>
 pkgname=cnmplayer-bin
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="A terminal-based Netease cloud music player with spectrum visualizer, lyrics support. (Prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.xz::${_url_base}/CNMPlayer_v${pk
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.xz::${_url_base}/CNMPlayer_v${pkgver}_linux_aarch64.tar.xz")
 
 # The release sync renders the version and asset checksums into this template.
-sha256sums_x86_64=('154366e44979cecfbdfbce41ca06497a779855d6979d3a9bf6955bad3ea5e9c1')
-sha256sums_aarch64=('d73e249294804dc8fb65e883285e5dd6eb69af4acff15234c5705bbbe3693440')
+sha256sums_x86_64=('54f308b9c475a9fce72a1b0012d23baadd256432dfdb011daceb238d296c0b92')
+sha256sums_aarch64=('551c1f8d41c27d1127a93576c6005380c4636a52465d3ece68a463a1dce48235')
 
 package() {
   install -Dm755 "cnmplayer" "${pkgdir}/usr/bin/cnmplayer"
