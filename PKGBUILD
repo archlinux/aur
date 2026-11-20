@@ -1,7 +1,7 @@
 # Maintainer: dekart811 <mail@dekart811.net>
 
 pkgname=arkha
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A fast graphical file manager'
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,7 @@ options=('!debug')
 # The release's sources, as GitHub packs the tag v$pkgver. The checksum is
 # set for each release (updpkgsums, then makepkg --printsrcinfo > .SRCINFO).
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('add8bed570ebf387e093a4af308e9d2a096d37b41f1edbd575947e9ed173ac0f')
+sha256sums=('e5c15bdbda375387bb732c5eae9b6345414b27633df42f373be04449228df7c5')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -69,6 +69,12 @@ package() {
   # The translations build.rs made from po/*.po.
   for mo in target/release/locale/*/LC_MESSAGES/arkha.mo; do
     install -Dm644 "$mo" "$pkgdir/usr/share/locale/${mo#target/release/locale/}"
+  done
+  # The manual's pages build.rs made from docs/manual.
+  # Never a package without them (the loop below would pass without any).
+  test -f target/release/manual/en/index.html
+  find target/release/manual -type f | while read -r f; do
+    install -Dm644 "$f" "$pkgdir/usr/share/arkha/${f#target/release/}"
   done
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
