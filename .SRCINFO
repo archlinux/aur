@@ -1,0 +1,14 @@
+pkgbase = dux-icons
+	pkgdesc = Icon theme generator that follows your Material colors
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/duxlabs-dev/dux-icons
+	arch = any
+	license = MIT
+	license = Apache-2.0
+	depends = hicolor-icon-theme
+	depends = python
+	source = dux-icons-0.1.3.tar.gz::https://github.com/duxlabs-dev/dux-icons/archive/v0.1.3.tar.gz
+	sha256sums = 072432876c98fbbdb9d9cf7c0ad268b2af31e7201fe9963156779931a4d43095
+
+pkgname = dux-icons
