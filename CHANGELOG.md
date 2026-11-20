@@ -2,6 +2,59 @@
 
 All the changes made to runa are documented here.
 
+## [0.15.7] - 2026-11-20
+
+#### File renaming fixes, switch from `chrono` to `jiff`, CI hardening and core refactors.
+
+### Fixed
+- **File renaming**:
+    - Reject invalid file names (`.`, `..`, paths containing separators) to prevent accidental deletion of the current or parent directory.
+    - Prevent case-only renames (`Foo.txt` -> `foo.txt`) from overwriting an existing file.
+
+### Changed
+- **Windows**: `rn.exe` now links the C runtime statically and no longer needs Visual C++ Redistributable.
+- **Dependencies**: Switched from `chrono` to `jiff`.
+
+### Internal
+- **Cargo**:
+    - Added `.cargo/config.toml` with `global-min-publish-age` set to 7 days. (Stable rust 1.100)
+    - Ran `cargo update`.
+- **Refactor**:
+    - Combined `formatter.rs` and `sort.rs` into a new `listing.rs` core module.
+    - Split `core/fs.rs` into `core/workers/fileop.rs` and `core/preview.rs`.
+    - Renamed every duplicating module file name to a unique name.
+    - Merged `core/command.rs` into `config/commands.rs`.
+    - Renamed all I/O worker channels and methods after the pane and renamed `core/workers/io.rs` to `core/workers/loader.rs`.
+- **CI**:
+    - Pinned all actions to their specific SHA hashes.
+    - `cross` install step is now verified against a pinned SHA-256 checksum.
+    - `mdBook` install step is now verified against a pinned SHA-256 checksum.
+    - Added 7 day dependabot cooldown for cargo checks and for GitHub action checks.
+    - Replaced `dtolnay/rust-toolchain` action with the runner's preinstalled `rustup`.
+    - MSRV now reads `rust-version` from `Cargo.toml`.
+    - Clippy now runs with `--locked`.
+    - Removed `Swatinem/rust-cache` action. CI now uses only GitHub's own actions.
+    - Tests now run on all targets the CI can execute.
+    - Added `Check lockfile` job to check if `Cargo.lock` matches the whole dependency graph or if its missing. Build, MSRV, Clippy and Audit wait for it.
+    - Renamed `maintenance.yml` workflow to `weekly.yml`. Rust beta check also now runs with `--locked`.
+    - Removed the monthly `cargo-audit` caching. CI installs it on every run now.
+
+
+---
+
+
+## [0.15.6] - 2026-11-10
+
+#### Fedora spec version fix.
+
+### Internal
+- **Packaging**: The version and changelog in `runa.spec` now match the release. Packit had already set them correctly for the 0.15.5 COPR build.
+- **Releases**: `packaging/RELEASES.md` now covers the `runa.spec` version bump in release preparation.
+
+
+---
+
+
 ## [0.15.5] - 2026-11-10
 
 #### Pane update fix and powerpc64le builds.
