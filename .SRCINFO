@@ -1,7 +1,7 @@
 pkgbase = mechrevo-console
 	pkgdesc = Native MECHREVO system and OEM device control console
-	pkgver = 0.1.0.r1535.gcee10ec
-	pkgrel = 2
+	pkgver = 0.1.0.r1553.g97e6656
+	pkgrel = 1
 	url = https://github.com/LIghtJUNction/mechrevo-drivers
 	install = mechrevo-console.install
 	arch = x86_64
@@ -30,11 +30,11 @@ pkgbase = mechrevo-console
 	options = !strip
 	options = !debug
 	options = !lto
-	source = mechrevo-drivers::git+https://github.com/LIghtJUNction/mechrevo-drivers.git#commit=cee10ecbf7e86582e2e0f7ba887c13385c96c50d
+	source = mechrevo-drivers::git+https://github.com/LIghtJUNction/mechrevo-drivers.git#commit=97e66567bc779d37eb032f0e29a37fa9973658e6
 	source = best.lmm.mechrevo-console.desktop
 	source = mechrevo-console.install
 	sha256sums = SKIP
 	sha256sums = bca48b9200f8aa66b34f357c3b8cce4f679bba998b6e777afec047bf601576a5
-	sha256sums = 8778bbd1244d414adafe79a7d2187765a7e9a5da1f4efdd3d6e49c3688f52e20
+	sha256sums = a5d1c5ec2e60bec3c171f8a076ad4eac2dcd1602ff6971dcb1298d8c0852ee30
 
 pkgname = mechrevo-console

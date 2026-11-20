@@ -1,9 +1,27 @@
 post_install() {
     /usr/bin/mechrevo-control sync-profiles >/dev/null 2>&1 ||
         printf '%s\n' 'mechrevo-console: profile migration was not applied; run mechrevo-control sync-profiles as root.' >&2
-    printf '%s\n' 'mechrevo-console: enable LED synchronization with: systemctl --user enable --now mechrevo-gaming-hotkey.service'
+    udevadm control --reload-rules ||
+        printf '%s\n' 'mechrevo-console: could not reload touchpad udev rules.' >&2
+    systemctl daemon-reload || return 1
+    systemctl start mechrevo-touchpad-restore@startup.service ||
+        printf '%s\n' 'mechrevo-console: saved touchpad state was not restored; inspect mechrevo-touchpad-restore@startup.service.' >&2
+    printf '%s\n' 'mechrevo-console: choose ONE hotkey handler to avoid double mode changes:'
+    printf '%s\n' '  TCC mode:  systemctl --user enable --now mechrevo-gaming-hotkey.service'
+    printf '%s\n' '  EC-only:   systemctl --user disable --now mechrevo-gaming-hotkey.service'
+    printf '%s\n' '             systemctl enable --now mechrevo-ec-hotkey.service'
+    printf '%s\n' 'touchpad: mechrevo-control touchpad status|on|off|toggle; the dedicated helper verifies kernel input state.'
 }
 
 post_upgrade() {
     post_install
+}
+
+pre_remove() {
+    # The root-only helper validates its private state and releases only saved
+    # disabled seats. It never imports the old shared directory or rebinds I2C.
+    /usr/lib/mechrevo-control/touchpad-helper release-all || {
+        printf '%s\n' 'mechrevo-console: could not re-enable saved touchpad input before removal; review the helper error.' >&2
+        return 1
+    }
 }
