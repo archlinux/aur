@@ -1,12 +1,363 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [26.10.1]
+
+### Added
+
+- Support selecting vulnerability export `properties` in `exports.vulns()`. #1026
+- Added quickstart example in documentation #1023
+- Added support for vulnerability export property selection #1027
+- Added agent group delete alias for Nessus #1022
+- Added propertied parameter for WAS export #1032
+- Recast rules API support #1024
+- Scan list filter options added (start_from && started_to) #1039
+- Added new agent-config options #1043
+- Added updated fields to user's module #1041
+
+### Updated
+
+- Modernized scan download example #1028
+- Added default redaction fields to vendored restfly lib #1028
+- Nessus scans module now supports URI scrubbing for path vars #1028
+- Refactored vuln export download example #1028
+- Updated example requirements files #1028
+- Existing test suite refactored to use responses and mock requests instead of VCR #1045
+
+### Fixed
+
+- Updated developer portal links #1029
+- Session logout default mechanism corrected #1031
+- Connection Error exceptions no longer leak API keys #1028
+- Plugin rule edit method no longer throws an erroneous error #1028
+- Corrected potential relative path escape #1028
+
+### Removed
+
+- Vendored RESTfly v1 lib no longer supports absolute URLs #1028
+- pytest-vcr no longer required for testing framework #1045
+
+[26.6.1]: https://github.com/tenable/pyTenable/compare/v26.8.1...v26.10.1
+
+## [26.8.1]
+
+### Fixed
+
+- Updated the T1 Inventory Findings module to appropriately handle the passed attributes #1019
+- Corrected the comparison type mismatch in the scrub utility. #1018
+- Updated dependencies #1011, #1012, #1017 in lockfile.
+
+[26.6.1]: https://github.com/tenable/pyTenable/compare/26.6.1...v26.8.1
+
+## [26.6.1]
+
+### Fixed
+
+- Corrected regression created from incorporating the scrub utility as part of vendoring restfly #1006
+- Corrected tagging issue with exports #1004
+
+### Changed
+
+- Switched build pipeline to use Justfile (replaces the need to use act to test the pipeline) #1000, #1003
+
+### Added
+
+- MITRE Heatmap Export method #1001
+
+[26.6.1]: https://github.com/tenable/pyTenable/compare/26.5.1...26.6.1
+
+## [26.05.01]
+
+### Changed
+
+- Vendored RESTFly 1.5.1 into the library and assumed the testing suite for the lib. #994
+- Switched to temporal versioning scheme.
+
+### Updated
+
+- Modified the relevant models to support Marshmallow 4 #995
+
+### Removed
+
+- Removed the deprecated v3 explore APIs
+
+### Fixed
+
+- Corrected Asset Tag space replacement in export job declaration #993
+
+### Added
+
+- Attack Path Export API #983
+- Attack Path Findings #981
+
+[26.05.01]: https://github.com/tenable/pyTenable/compare/1.9.1...26.5.1
+
+## [1.9.1]
+
+### Updated
+
+- APA Export API Module
+- Documentation cleanup #976
+- Accepted status addition to APA schema #980
+- Ticketing API additions #975
+
+[1.9.1]: https://github.com/tenable/pyTenable/compare/1.9.0...1.9.1
+
+## [1.9.0]
+
+### Removed
+
+- Removed Deprecated Access Groups endpoints and associated tests
+- Removed Deprecated Access Groups v2 endpoints and associated tests
+- Removed Deprecated Target Groups endpoints and associated tests
+
+### Changed
+
+- Removed unnecessary sleep timers from testing suite (sped up by 300%)
+- Added pip security issue GHSA-4xh5-x5gv-qwph to pip-audit ignore as we aren't using anywhere but to actually run pip-audit. #965
+
+### Updated
+
+- Refactored the Exports API to use Pydantic instead of Marshmallow. Part of the longer effort to remove marshmallow
+  from the library entirely and migrate to Pydantic v2. #968
+- Refactored the base GQL library to support the gql v4 library as it's base #969
+
+### Added
+
+- Added support for PCI-ASV API endpoints within TVM. #971
+- Added support for T1 Export Job improvements #970, #963, #966
+
+[1.9.0]: https://github.com/tenable/pyTenable/compare/1.8.4...1.9.0
+
+## [1.8.4]
+
+### Added
+
+- T1 search vectors endpoint #948
+- T1 Findings API #949
+
+[1.8.4]: https://github.com/tenable/pyTenable/compare/1.8.3...1.8.4
+
+## [1.8.3]
+
+### Added
+
+- Support for some newer vuln export filters #945
+
+### Fixed
+
+- Addressed schema changes to the export API that are needed to match the API docs #943
+
+### Changed
+
+- CLeaned up the T1 documentation #940
+
+[1.8.3]: https://github.com/tenable/pyTenable/compare/1.8.2...1.8.3
+
+## [1.8.2]
+
+### Added
+
+- T1 Inventory Findings API #919
+- T1 Export APIs #936
+
+### Fixed
+
+- Updated Pagination and sorting options based on API changes #931
+- Improved OT Graph Error Handling #935
+- Scan Schedule Extraneous Time Addition #738
+
+[1.8.2]: https://github.com/tenable/pyTenable/compare/1.8.1...1.8.2
+
+## [1.8.1]
+
+## Fixed
+
+- Updated Pagination and sorting options based on API changes #931
+
+[1.8.1]: https://github.com/tenable/pyTenable/compare/1.8.0...1.8.1
+
+## [1.8.0]
+
+### Added
+
+- Initial TenableOne Package
+- Security Center License management #845
+
+### Fixed
+
+- Corrected documentation issue in export sub-pkg #923
+- Updated TVM Scans module to appropriately duck type scan ids #924
+- Updated TVM filter cache mechanisms to appropriately support expirations and refresh #928
+
+[1.8.0]: https://github.com/tenable/pyTenable/compare/1.7.5...1.8.0
+
+## [1.7.5]
+
+### Added
+
+- Added TenableInventory package #899
+
+### Fixed
+
+- Fixed SC "unlimited" bug introduced #906
+- Corrected regression identified in SC repos #905
+- Fixed SC universal repo support #904
+- Pinned Marshmallow to <4.x #911
+
+[1.7.5]: https://github.com/tenable/pyTenable/compare/1.7.4...1.7.5
+
+## [1.7.4]
+
+### Fixed
+
+- Updated Export sub-pkg based on API changes from EA->GA #889
+- Updated Export sub-pkg to support backwats compat with 1.4.x #890
+- Fixed ASM API changes within the iterator #891
+- Added missing metadat field for default reponse in ASM #894
+
+### Changed
+
+- Updated the readthedocs config to use UV #892
+
+[1.7.4]: https://github.com/tenable/pyTenable/compare/1.7.3...1.7.4
+
+## [1.7.3]
+
+- Sync model changes/improvements
+
+[1.7.3]: https://github.com/tenable/pyTenable/compare/1.7.2...1.7.3
+
+## [1.7.2]
+
+### Changed
+
+- Sync model changes/improvements
+
+[1.7.2]: https://github.com/tenable/pyTenable/compare/1.7.1...1.7.2
+
+## [1.7.1]
+
+### Changed
+
+- Sync Model changes/improvements
+
+[1.7.1]: https://github.com/tenable/pyTenable/compare/1.7.0...1.7.1
+
+## [1.7.0]
+
+### Added
+
+- Tenable One Sync API Framework (Beta) #872
+- Tenable Security Center Hosts API Support #866
+- Tenable Security Center Universal Repository Support #854
+- Tenable Security Center Accept Risk expiration support #858
+
+### Fixed
+
+- Incorrect `maxScanTime` behavior for Tenable Security Senter Scans API #873
+- Tenable Cloud AssetsAPI.delete method was broken #855
+
+### Updated
+
+- Improved Workflow pipelines and dropped python support under 3.10 #867
+
+[1.7.0]: https://github.com/tenable/pyTenable/compare/1.6.0...1.7.0
+
+## [1.6.0]
+
+### Added
+
+- Tenable.sc plugin listing now supports the `filters` parameter #718
+- Tenable.sc report definition launching capability #656
+- Tenable.io (TVM) WAS Export support #850
+- Tenable.sc HostUUID support for accept & recast risks #843
+
+[1.6.0]: https://github.com/tenable/pyTenable/compare/1.5.3...1.6.0
+
+## [1.5.3]
+
+### Changed
+
+- Moved cryptography to be an optional package only for the pkcs12 extra
+
+[1.5.3]: https://github.com/tenable/pyTenable/compare/1.5.2...1.5.3
+
+## [1.5.2]
+
+### Changed
+
+- Corrected the pyproject.toml config for the readme
+- Linted CHANGELOG.md
+- Fixed missing variable passing within graphql queries #839
+- Updated the GQL Queries for Cloud Security #840
+- Updated pipeline w/ pre-commit checks
+
+### Fixed
+
+- Updated default ovject params for Security Center #714
+- Agents List throws an exception when no agents are available #687
+- Updated Security Center users endpoints with user migration upon delete #541
+
+[1.5.2]: https://github.com/tenable/pyTenable/compare/1.5.1...1.5.2
+
+## [1.5.1]
+
+### Added
+
+- Adding support for GET /api/v1/vectors endpoint by @naumraviz in #818 #819 #822
+- Adding support for GET /api/v1/vectors endpoint - run_ai_summarization param by @naumraviz in #829
+- Support for Export phase 2 Filters and Endpoints by @aseemsavio in #826
+- Simple shim for support importing as TVM as well as TIO. by @SteveMcGrath in #821
+- Feature/gql support by @SteveMcGrath in #832
+- Agent export csv writer by @JosephPerri in #830
+- Initial ASM support & Tests by @SteveMcGrath in #835
+
+### Changed
+
+- Improved Export Iterator logging. by @SteveMcGrath in #820
+- Updated tooling and GH Actions by @SteveMcGrath in #833
+- Updated Analysis iterator to improve record keeping. by @SteveMcGrath in #834
+- Fixed cert auth issues by @SteveMcGrath in #836
+- Corrected last_modified issue #810 by @SteveMcGrath in #837
+
+[1.5.1]: https://github.com/tenable/pyTenable/compare/1.5.0...1.5.1
+
+## [1.5.0]
+
+### Added
+
+- Merged in all of the remaining Tenable Identity Exposure API modules #466 #468 #484 #487 #496 #497 #498 #499 #500 #501 #503 #505 #507 #509 #510 #511 #516 #517 #519 #522 #525 #526 #527 #528 #529 #531 #537 #538
+- Added support for Python 3.12 to testing framework #773
+- Refactored Audit Log module to support pagination updates #772
+- Added Job Adoption support to Export sub-pkg #779
+- Added Access control to main IO package
+
+### Fixed
+
+- Corrected issue with TSC Files module #771
+
+### Removed
+
+- Pulled v3 Explore sub-pkgs as the API has been deprecated for some time.
+
+### Changed
+
+- Added deprecation notice to v3 base sub-pkg. Only applies to access control.
+- Added deprecation notice to Target Groups module (Deprecated APIs)
+- Added deprecation notice to Workbenches module (Soon to be Deprecated APIs)
+- Added deprecation notice to Access Groups module (Deprecated APIs)
+
+[1.5.0]: https://github.com/tenable/pyTenable/compare/1.4.22...1.5.0
+
 ## [1.4.22]
 
 ### Added
+
 - Support for New ACR APIs (#654)
 - Added Implicit WAS exclude for Tenable Security Center (#763)
 - Support for `currentPassword` field in SC Users API.
@@ -16,22 +367,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.4.21]
 
 ### Added
+
 - Support for new Compliance Export Enhancement fields in Vulnerability Management.
 - Support for `currentPassword` field in SC Users API.
-
-[1.4.21]: https://github.com/tenable/pyTenable/compare/1.4.20...1.4.21
 
 ## [1.4.20]
 
 ### Fixed
+
 - Bug that causes pyTenable to error out when `srcInterface` or `dstInterface` values in `events` object in OT is non-null.
 
 [1.4.20]: https://github.com/tenable/pyTenable/compare/1.4.19...1.4.20
 
-
 ## [1.4.19]
 
 ### Added
+
 - Support for `inactivity_timeout` during a Security Center scan creation.
 - Loosened up validations on the preference object in Security Center policies API.
 
@@ -40,6 +391,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.4.18]
 
 ### Added
+
 - Support for `file_type` property in `upload` method in Vulnerability Management Credentials API.
 
 [1.4.18]: https://github.com/tenable/pyTenable/compare/1.4.17...1.4.18
@@ -47,16 +399,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.4.17]
 
 ### Fixed
+
 - Vulnerability `CVE-2023-38325` by upgrading the test dependency `requests-pkcs12`.
 
 ### Added
+
 - Support for `include_open_ports` property in Vulnerability Management asset export request.
 
 [1.4.17]: https://github.com/tenable/pyTenable/compare/1.4.16...1.4.17
 
 ## [1.4.16]
 
- ### Fixed
+### Fixed
+
 - Pagination bug in the Tenable OT Security Exports - Plugin Query.
 
 [1.4.16]: https://github.com/tenable/pyTenable/compare/1.4.15...1.4.16
@@ -64,6 +419,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.4.15]
 
 ### Added
+
 - New Tenable OT Security Exports package #742
 
 [1.4.15]: https://github.com/tenable/pyTenable/compare/1.4.14...1.4.15
@@ -71,11 +427,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.4.14]
 
 ### Added
+
 - Support for `source` and `severity_modification_type` filters to Vulnerability Management vulnerability export.
 - Support for filtering out hidden assets from Operational technology asset `list` method by default.
 - Product Rebranding in the SDK documentation.
 
 ### Deprecated
+
 - Support for V3 Vulnerability Management API methods.
 
 [1.4.14]: https://github.com/tenable/pyTenable/compare/1.4.13...1.4.14
@@ -83,6 +441,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.4.13]
 
 ### Added
+
 - Support for exporting Web App Scan Results.
 
 [1.4.13]: https://github.com/tenable/pyTenable/compare/1.4.12...1.4.13
@@ -90,9 +449,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.4.12]
 
 ### Added
+
 - Support for Python 3.11
 
 ### Fixed
+
 - `tsc.analysis.scan(1)` not honoring Scan ID with Tenable.sc 6.0.0.
 - pyTenable crashes when pagination key with a null value is in the HTTP response in Tenable.io v3 APIs.
 
@@ -101,6 +462,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.4.11]
 
 ### Added
+
 - Support for Scan UUID (`last_scan_id`) filter for assets exports.
 
 [1.4.11]: https://github.com/tenable/pyTenable/compare/1.4.10...1.4.11
@@ -108,14 +470,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.4.10]
 
 ### Added
+
 - Support for `scan_uuid` filter for vulnerability exports.
 
 ### Fixed
+
 - Bug in `tenable/io/scanners.py` that invoked the `/settings/{}` endpoint instead of the correct `/scanners/{}` endpoint.
 - Error in the documentation of the `sc.scans.edit()` method. The property - `policy` was renamed to `policy_id`.
 - tests module getting into the pypi package. Now, the module will no longer be part of pypi package.
 
 ### Removed
+
 - `plugin_id` param from the `sc.scans.create()` method as it is no longer supported by Tenable.sc.
 - Python 3.6 references from all documentation.
 - `search_host_audit()` method from `io/v3/explore/findings`.
@@ -123,6 +488,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.4.10]: https://github.com/tenable/pyTenable/compare/1.4.9...1.4.10
 
 ## [1.4.9]
+
 ### Added
 
 - Support for initiating exports (and getting the export UUID).
@@ -140,10 +506,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Support for Python Version 3.6.
 
-
- [1.4.9]: https://github.com/tenable/pyTenable/compare/1.4.8...1.4.9
+[1.4.9]: https://github.com/tenable/pyTenable/compare/1.4.8...1.4.9
 
 ## [1.4.8]
+
 ### Added
 
 - Support for Role Based Access Control endpoints.
@@ -152,6 +518,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.4.8]: https://github.com/tenable/pyTenable/compare/1.4.7...1.4.8
 
 ## [1.4.7]
+
 ### Added
 
 - Added support for querying v3 Findings for Hosts, Cloud Resources, Web Applications and Host Audits modules. #592 #595
@@ -165,6 +532,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.4.7]: https://github.com/tenable/pyTenable/compare/1.4.6...1.4.7
 
 ## [1.4.6]
+
 ### Added
 
 - Initial support for Nessus #556
@@ -180,6 +548,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.4.6]: https://github.com/tenable/pyTenable/compare/1.4.4...1.4.6
 
 ## [1.4.4]
+
 ### Added
 
 - Initial support for additional Tenable.ad APIs
@@ -195,6 +564,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.4.4]: https://github.com/tenable/pyTenable/compare/1.4.3...1.4.4
 
 ## [1.4.3]
+
 ### Added
 
 - Initial support for Tenable.ad #487 #484 #468 #466
@@ -209,6 +579,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.4.3]: https://github.com/tenable/pyTenable/compare/1.4.2...1.4.3
 
 ## [1.4.2]
+
 ### Added
 
 - TenableSC version checking refactored to handle an APIError on the response
@@ -222,7 +593,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactored the API Docsite to be easier to navigate, read, and link. #460 #464
 - Rebased low-level connection logic to use RESTfly instead. (v2 work) #457
 - Refactored Container Security Package to be within the IO package and
-  recoded to properly follow the API docs.  #459 #474
+  recoded to properly follow the API docs. #459 #474
 - Refactored Exports API code to follow v2 standard #463
 
 ### Fixed
@@ -232,9 +603,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.4.2]: https://github.com/tenable/pyTenable/compare/1.3.3...1.4.2
 
 ## [1.4.1]: yanked - broken build
+
 ## [1.4.0]: yanked - broken build
 
 ## [1.3.3]
+
 ### Added
 
 - Added Python 3.9 in the pypi changes #380 #376
@@ -265,21 +638,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed github issue 298 io_exception_handling #354
 - Fixed the documentation issue in exclusions #352
 - Fixed the import os problem of PR 299 #351
-- Fixed invalid creation date in row num  #341
-
+- Fixed invalid creation date in row num #341
 
 [1.3.3]: https://github.com/tenable/pyTenable/compare/1.3.1...1.3.3
 
 ## [1.3.2] : yanked - broken build
 
 ## [1.3.1]
+
 ### Added
+
 - add tio.remediationscans endpoints #339
 
 ### Changed
+
 - added stream_hook param to tio.scans.export endpoint #332
 
 ### Fixed
+
 - fix all_permisisons var in tio.tags to have correct values #340
 - fix tests and test coverage #336, #328, #344, #338
 - fix links and typos in documentation #335, #323
@@ -287,12 +663,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fixed endpoints in sc.organizations #330, #331
 - missing import in ContainerSecurity class #299
 
-
 [1.3.1]: https://github.com/tenable/pyTenable/compare/1.3.0...1.3.1
 
-
 ## [1.3.0]
+
 ### Added
+
 - PyLint and Codacy checks as part of PyTenable test suite / pipeline #316
 - move assets endpoint in tio.assets.move_assets #312
 - access group v2 endpoints added in tio.access_groups_v2 #308
@@ -305,103 +681,120 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add network_asset_count in tio.networks #303
 
 ### Changed
+
 - tags.create and tags.edit now have access_control and filter #309
 - updated tio.exclusions.edit arguments #282
 - added sort arg in tio.scans.history, fixed sort in tio.tags #283
 - added network_id arg to tio.exclusions create/edit #284
 - support bulk delete in tio.tags.delete #295
 -
+
 ### Fixed
+
 - many errors and warnings across the code base #320, #317, #314, #313, #281
 - tio.agent_config.edit now returns payload #287
 - error handling in tio.plugins #291
 
-
 [1.3.0]: https://github.com/tenable/pyTenable/compare/1.2.8...1.3.0
 
 ## [1.2.8]
+
 ### Changed
+
 - Centralized the SSL Verification process and support passing the verify param
-  to Python Requests regardless of the of the session setting.  This addresses
-  the requests issue identified https://github.com/psf/requests/issues/3829
+  to Python Requests regardless of the of the session setting. This addresses
+  the requests issue identified <https://github.com/psf/requests/issues/3829>
   #265 #166 #139
 
 [1.2.8]: https://github.com/tenable/pyTenable/compare/1.2.7...1.2.8
 
 ## [1.2.7]
+
 ### Fixed
+
 - Tenable.io policy template details required type #271
 - Editing a user would fail if no account name existed #270
 - Export iterator could potentially restart #263
 
 ### Added
+
 - TenableIO.credentials.upload method added #269
 
 [1.2.7]: https://github.com/tenable/pyTenable/compare/1.2.6...1.2.7
 
 ## [1.2.6]
+
 ### Fixed
+
 - Removed integer checks for tio.editor.obj_details
 - Fixed Plugin Family URL for scan policies when using mixed families #255
 
 ### Added
+
 - `timeout` and `when_done` are now documented and supported for both vuln and asset exports.
 
 [1.2.6]: https://github.com/tenable/pyTenable/compare/1.2.5...1.2.6
 
-
 ## [1.2.5]
+
 ### Fixed
+
 - Updated docs to replace "category_name" with "name" in the example in tagging. #241
 - Updated export None checking added in 1.2.3 to check for None correctly #248
 - Updated filter schema to always return the rule.
 - Incorrect endpoint used for sc.organizations.recast_risk_rules #256
 
 ### Added
+
 - Added pagination support in tio.agent_groups_details #251
 - Added "linked" to accepted account types #257
 
 ### Changed
+
 - Tenable.ot base version is now 3.7
 - TenableOT object now uses `secret_key` over `api_token`.
 - Updated VulnInternmixer iterator in Tenable.ot to support new format.
 
 [1.2.5]: https://github.com/tenable/pyTenable/compare/1.2.3...1.2.5
 
-
 ## [1.2.4]
 
-This version was pulled due to a dirty build environment.  All 1.2.4 notes are in 1.2.5
-
+This version was pulled due to a dirty build environment. All 1.2.4 notes are in 1.2.5
 
 ## [1.2.3]
+
 ### Fixed
+
 - Corrected documentation issue #239
 
 ### Changed
+
 - Corrected behavior in tio.exports.ExportsIterator now that the API has changed
 
 [1.2.3]: https://github.com/tenable/pyTenable/compare/1.2.2...1.2.3
 
-
 ## [1.2.2]
+
 ### Fixed
+
 - Reverted Tenable.sc credential issue #210 as the docs are incorrect.
 - Fixed documentation issues #228 #225 #233 #229
 - Fixed regex escaping in test suite #230
 
 [1.2.2]: https://github.com/tenable/pyTenable/compare/1.2.1...1.2.2
 
-
 ## [1.2.1]
+
 ### Changed
+
 - Removed ipaddress requirement as it's part of the standard library #226
 
 [1.2.1]: https://github.com/tenable/pyTenable/compare/1.2.0...1.2.1
 
-
 ## [1.2.0]
+
 ### Added
+
 - Embedded new base classes leveraging RESTfly for connection logic instead of the custom-coded ones.
 - Added base schema for filtering using marshmallow.
 - Added Tenable.ot support using new base class.
@@ -409,223 +802,259 @@ This version was pulled due to a dirty build environment.  All 1.2.4 notes are i
 - New unit tests will now start to use responses over pytest-vcr when possible.
 
 ### Changed
+
 - tenable.downloads.Downloads now will warn about deprecation.
 
 [1.2.0]: https://github.com/tenable/pyTenable/compare/1.1.3...1.2.0
 
-
 ## [1.1.3]
+
 ### Added
+
 - history_uuid is now a field that can be used in TenableIO.scans
 
 ### Changed
+
 - Relaxed type checking for scan_id in TenableIO.scans
 
 [1.1.3]: https://github.com/tenable/pyTenable/compare/1.1.2...1.1.3
 
-
 ## [1.1.2]
+
 ### Fixed
+
 - TenableSC.FeedsAPI.process pointed to the wrong URL. #201
 
 ### Changed
+
 - TenableIO.ScansAPI didn't distinctly call out that unknown keyword args are shunted to settings #202
 - Explicitly called out the common themes section of the documentation for TenableSC #200
 - Adjusted case sensitivity guidelines for plugin_family in TenableIO.exports.vulns #199
 
 [1.1.2]: https://github.com/tenable/pyTenable/compare/1.1.1...1.1.2
 
-
 ## [1.1.1]
+
 ### Added
+
 - Added assign tags method to TenableIO.assets package #194
 
 ### Fixed
+
 - Errant id check in audit file template list #195
 - BytesIO import didn't exist in TenableSC.audit_files package #197
 
 [1.1.1]: https://github.com/tenable/pyTenable/compare/1.1.0...1.1.1
 
-
 ## [1.1.0]
+
 ### Added
+
 - Response timeout settings exposed and defaults set. #192 #193
 
 ### Changed
+
 - Improved handling of export chunks.
-    - Added Error handling of JSON decode errors
-    - Added retry logic of chunks that appear to be broken (networking issue?)
-    - Added automatic retiring and re-fetch to ignore empty chunks of data.
+  - Added Error handling of JSON decode errors
+  - Added retry logic of chunks that appear to be broken (networking issue?)
+  - Added automatic retiring and re-fetch to ignore empty chunks of data.
 
 ### Fixed
+
 - Retry documentation wasn't correct, adjusted the default values as necessary.
 
 [1.1.0]: https://github.com/tenable/pyTenable/compare/1.0.7...1.1.0
 
-
 ## [1.0.7]
+
 ### Fixed
+
 - TenableSC.queries.create() did not pass filters to the constructor #191
 
 [1.0.7]: https://github.com/tenable/pyTenable/compare/1.0.6...1.0.7
 
-
 ## [1.0.6]
+
 ### Fixed
+
 - TenableIO.tags.list_categories() was pointing to values instead of categories #186
 - TenableSC instantiation does not support base path customization #187
 
 [1.0.6]: https://github.com/tenable/pyTenable/compare/1.0.5...1.0.6
 
-
 ## [1.0.5]
+
 ### Fixed
+
 - Documentation Examples for TenableSC.feeds use feed instead of feeds #178
 - Documentation Examples for TenableSC.files used feed instead of files. #179
 - TenableSC.credentials used the incorrect parameter for oracleAuthType. #180
 
 [1.0.5]: https://github.com/tenable/pyTenable/compare/1.0.4...1.0.5
 
-
 ## [1.0.4]
+
 ### Fixed
+
 - TenableSC.AssetListAPI constructor improperly referred to fobj instead of kw['fobj'] #177
 - TenableSC.ScannerAPI.edit improperly attempted to merge the scanner details into the PATCH call #176
 
 ### Changed
+
 - Increased default chunk sizing for TenableIO.exports.assets to 1000
 - Increased default num_assets chunk sizing for TenableIO.exports.vulns to 500
 - Increased default page sizing for TenableSC.analysis calls to 1000
-- Improved debug logs for all API calls.  Debug logs now effectively log before, during, and after.
-- Improved debug log format.  Pre-Request logs now output a standard JSON format.
+- Improved debug logs for all API calls. Debug logs now effectively log before, during, and after.
+- Improved debug log format. Pre-Request logs now output a standard JSON format.
 
 [1.0.4]: https://github.com/tenable/pyTenable/compare/1.0.3...1.0.4
 
-
 ## [1.0.3]
+
 ### Added
+
 - Will now attempt to retry on lower-level ConnectionErrors.
 
 ### Changed
+
 - ExportIterator will now backoff on status calls up to 30 seconds between calls.
 
 [1.0.3]: https://github.com/tenable/pyTenable/compare/1.0.2...1.0.3
 
-
 ## [1.0.2]
+
 ### Added
+
 - Exporting WAS scans nor functions as intended. #175
 
 ### Fixed
+
 - TenableIO.TagAPI filter check erroneously used self.check instead of self._check
 
 [1.0.2]: https://github.com/tenable/pyTenable/compare/1.0.1...1.0.2
 
-
 ## [1.0.1]
+
 ### Added
+
 - API Key support for TenableSC as Tenable.sc version 5.13 introduced key support.
 - TenableSC now supports context management for authentication. (with TenableSC...)
 - Dyanamic tag filter field support for TenableIO.tags create and edit methods. #174
 
 ### Changed
+
 - TenableSC.login user && passwd parameters now called username && password
 
 [1.0.1]: https://github.com/tenable/pyTenable/compare/1.0.0...1.0.1
 
-
 ## [1.0.0]
+
 ### Changed
+
 - Upped Revision on 0.3.29
 
 ### Added
+
 - Testing in travis for Python 3.7 and 3.8
 
 [1.0.0]: https://github.com/tenable/pyTenable/compare/0.3.29...1.0.0
 
-
 ## [0.3.29]
+
 ### Fixed
+
 - New UA String code was failing on windows hosts as os.uname isn't x-platform #164
 - Implicit "all" hostType was not set when creating an accepted risk. #162
 
 [0.3.29]: https://github.com/tenable/pyTenable/compare/0.3.28...0.3.29
 
-
 ## [0.3.28]
+
 ### Changed
+
 - Converted to new UA String format in an effort to normalize UA strings.
 
 [0.3.28]: https://github.com/tenable/pyTenable/compare/0.3.27...0.3.28
 
-
 ## [0.3.37]
+
 ### Changed
+
 - Query filters can now be overloadable and removable for TenableSC.analysis
 
 ### Fixed
+
 - Documentation was incorrectly calling the wrong method #156
 - Incorrect timezone documentation for SC #145
 - repeatRule parameter for schedules was incorrectly documented as rrule #144
 - host_tracking for scans constructor was documented, however unimplemented #152
 - Unable to set the max scan time to unlimited #149
 
-[0.3.27]: https://github.com/tenable/pyTenable/compare/0.3.26...0.3.27
-
-
 ## [0.3.26]
+
 ### Fixed
+
 - Failed to add necessary requirement for the "ipaddress" python package.
 
 [0.3.26]: https://github.com/tenable/pyTenable/compare/0.3.25...0.3.26
 
-
 ## [0.3.25]
+
 ### Added
+
 - Added the Tenable.io ScansAPI.history endpoint #141
 - Added the ability for Tenable.io's PolicyAPI.list() iterator to graft on plugin family details.
 
 ### Fixed
+
 - Spelling type in Tenable.sc ScansAPI.launch when generating diagnostic passwords #142
 - Incorrect policy UUID passed to scans created in Tenable.io w/ an existing policy. #143
 
 [0.3.25]: https://github.com/tenable/pyTenable/compare/0.3.24...0.3.25
 
-
 ## [0.3.24]
+
 ### Changed
+
 - Switched the Nessusv2 file parser to diffusedxml per recommendation with bandit
 
 ### Fixed
+
 - TenableSC SSL verification flags were not set in the session builder, which meant that login was a one-time event. #139
 
 [0.3.24]: https://github.com/tenable/pyTenable/compare/0.3.23...0.3.24
 
-
 ## [0.3.23]
+
 ### Changed
+
 - Improved documentation for creating scans to include credentials
 
 ### Added
+
 - Tenable.io Access Group API Added and Tested #98
 - Tenable.io Networks API Added and Tested #129
 - Tenable.io Managed Credentials API Added and Tested #130
 
 ### Fixed
+
 - tio.policies.template_details wasn't correctly constructing the document from the editor API #136
 - tio.agent_groups.list was missing from the documentation
 
 [0.3.23]: https://github.com/tenable/pyTenable/compare/0.3.22...0.3.23
 
-
 ## [0.3.22]
+
 ### Added
+
 - Tenable.sc Asset List API Added and Tested #13
 
 ### Changed
-- Export wait logic is now centralized.  Both scan export and workbench export now use this new method.
+
+- Export wait logic is now centralized. Both scan export and workbench export now use this new method.
 
 ### Fixed
+
 - Multiple chapters should be merged with ; and not , in Workbenches exports
 - Chapter "vuln_by_asset" was missing from the choices for workbench export #127
 - Docstrings incorrectly state that chapters are only necessary for PDF and HTML #127
@@ -633,32 +1062,37 @@ This version was pulled due to a dirty build environment.  All 1.2.4 notes are i
 
 [0.3.22]: https://github.com/tenable/pyTenable/compare/0.3.21...0.3.22
 
-
 ## [0.3.21]
+
 ### Changed
+
 - Tenable.io scans.export now supports explicitly defining the filters attribute as well as the implicit argument list #124
 
 ### Fixed
+
 - Doc examples for TenableSC credentials.create were incorrect. #122
 - SC API Reference incorrectly stated authType of "publickey" instead of "publicKey". #122
-- SC Analysis Query Expander wasn't expanding numerid ids https://community.tenable.com/s/question/0D7f2000005b5OX/filter-on-asset-via-api-call-to-analysis-resource-using-pytenable
+- SC Analysis Query Expander wasn't expanding numerid ids <https://community.tenable.com/s/question/0D7f2000005b5OX/filter-on-asset-via-api-call-to-analysis-resource-using-pytenable>
 - SC Credential privilegeEscalation attr pre-fill wasn't restricted to just specific types #126
 - SC Users docs weren't linked into the documentation.
 
 [0.3.21]: https://github.com/tenable/pyTenable/compare/0.3.20...0.3.21
 
-
 ## [0.3.20]
+
 ### Added
+
 - Added support for the new plugins list endpoint.
 - Support for extensible retry logic using the retry_on param.
 - Tested out CSv2 API endpoints #8 #9
 
 ### Changed
+
 - Homogenized the docstrings for TenableSC #115
 - Updated docs in tio.scans.create to denote that the name is required. #118
 
 ### Fixed
+
 - Streaming responses in TenableSC weren't working as expected #114
 - Files weren't uploading properly in TenableSC Credentials endpoints #122
 - User permissions parameter type #121
@@ -667,86 +1101,99 @@ This version was pulled due to a dirty build environment.  All 1.2.4 notes are i
 
 [0.3.20]: https://github.com/tenable/pyTenable/compare/0.3.19...0.3.20
 
-
 ## [0.3.19]
+
 ### Changed
+
 - All Tenable.io API doc links have been re-pointed to the new developer portal. #111
 - tio.editor.edit has been renamed to tio.editor.template_details as it was misnamed.
 - tio.editor.list has been renamed to tio.editor.template_list to more accurately describe it's function.
 
 ### Added
+
 - Added the asset delete method to the workbenches TenableIO module #110
 - Added and tested out the TenableSC plugin family additions to the plugins module #78
 - Added and tested out the TenableSC OrganizationAPI module #77
 - Added and tested out the TenableSC QueryAPI module #79
 
 ### Fixed
+
 - Various documentation issues reported by sphinx addressed
 - TenableSC.scan_instances.list can now support non-standard timeframes #108
 
 [0.3.19]: https://github.com/tenable/pyTenable/compare/0.3.18...0.3.19
 
-
 ## [0.3.18]
+
 ### Added
+
 - Added and tested out support for TenableSC Credentials #76
 
 [0.3.18]: https://github.com/tenable/pyTenable/compare/0.3.17...0.3.18
 
-
 ## [0.3.17]
+
 ### Added
+
 - Analysis filters now allow for collapsing lists if id dicts into lists of
-  integer ids.  e.g. `('name', '=', [{'id': 1}])` is now `('name', '=', [1])`
+  integer ids. e.g. `('name', '=', [{'id': 1}])` is now `('name', '=', [1])`
 - Added and tested out support for TenableSC AuditFileAPI #75
 
 ### Changed
+
 - Tenable.io Exports iterator now has **uuid**, **chunk_id**, **chunks**, and
   **processed** publicly exposed.
 
 ### Fixed
+
 - Addressed issue where UnexpectedValueError was sometimes raised when
   specifying a scanner by name in tio.scans._create_scan_document.
 
 [0.3.17]: https://github.com/tenable/pyTenable/compare/0.3.16...0.3.17
 
-
 ## [0.3.16]
+
 ### Added
+
 - Added and tested out support for TenableSC UserAPI #24
 - Added and tested out support for TenableSC GroupAPI #24
 - Added and tested TenableIO.agent_groups.list() #105
 
 ### Fixed
+
 - Tenable.sc Schedule document validation extended to support `now` for
   scans #102
 
 [0.3.16]: https://github.com/tenable/pyTenable/compare/0.3.15...0.3.16
 
-
 ## [0.3.15]
+
 ### Added
+
 - Added and tested out support for TenableSC RoleAPI #24
 
 ### Fixed
+
 - Retries would throw an error as they weren't floats.
 - Exports would erroneously set an option if set to none.
 - The scan history test cassette was modified to match the new call.
 
 [0.3.15]: https://github.com/tenable/pyTenable/compare/0.3.14...0.3.15
 
-
 ## [0.3.14]
+
 ### Fixed
+
 - Corrected Doc Issue where the downloads API was incorrectly referencing
   sc.alerts
 - Fixed issue with scan history deletion where the path was incorrect #101
 
 [0.3.14]: https://github.com/tenable/pyTenable/compare/0.3.13...0.3.14
 
-
 ## [0.3.13]
+
 ### Added
+
 - Tested out TenableSC StatusAPI #22
 - Tested out TenableSC SystemAPI #22
 - Tested out TenableSC ScanZoneAPI #21
@@ -754,6 +1201,7 @@ This version was pulled due to a dirty build environment.  All 1.2.4 notes are i
 - Tested out Downloads API
 
 ### Fixed
+
 - RetryError no longer itself throws an error due to logging.
 - Fixed type mismatch bug in IO workbench filters #97
 - Corrected issue with ScanZone updates using the wrong HTTP method #95
@@ -763,9 +1211,10 @@ This version was pulled due to a dirty build environment.  All 1.2.4 notes are i
 
 [0.3.13]: https://github.com/tenable/pyTenable/compare/0.3.12...0.3.13
 
-
 ## [0.3.12]
+
 ### Added
+
 - Added view parameter for TenableSC.analysis.scan #73
 - Added accept_risks module #18 (untested)
 - Added system module and converted the TenableSC module to use it over a raw
@@ -773,24 +1222,28 @@ This version was pulled due to a dirty build environment.  All 1.2.4 notes are i
 - Added status module #22 (untested)
 
 ### Fixed
+
 - Fixed issue with TenableSC.analysis.scan not properly passing a view. #73
 
 [0.3.12]: https://github.com/tenable/pyTenable/compare/0.3.11...0.3.12
 
-
 ## [0.3.11]
+
 ### Added
+
 - Added proxy support for the IO, SC, etc. #72
 
 ### Fixed
+
 - Fixed issue where supplied sessions weren't being properly passed to
   _build_session.
 
 [0.3.11]: https://github.com/tenable/pyTenable/compare/0.3.10...0.3.11
 
-
 ## [0.3.10]
+
 ### Added
+
 - Added example for Workbench CSV Downloads for IO
 - Added support for multi-value filters in IO.
 - Added Request-UUID logging for all responses when available.
@@ -801,20 +1254,23 @@ This version was pulled due to a dirty build environment.  All 1.2.4 notes are i
 - Added TenableSC repositories endpoint and associated tests #17
 
 ### Fixed
+
 - Exports methods in TenableIO now respect 0 integers being passed #69.
 - Errored scan exports in TenableIO will no longer wait forever.
 - Scan Exports using multiple chapters now works as expected #71 #70
 
 ### Removed
+
 - schedule_* parameters in scans have been removed in favor of direct checking
-    and documentation of the schedule dictionary.  This has larger implications
-    down the line with repositories, alerts, etc.
+  and documentation of the schedule dictionary. This has larger implications
+  down the line with repositories, alerts, etc.
 
 [0.3.10]: https://github.com/tenable/pyTenable/compare/0.3.9...0.3.10
 
-
 ## [0.3.9]
+
 ### Added
+
 - Added the `aggregate` parameter for scan import.
 - Added Changelog and backfilled changes from 0.1.0 to current
 - Added testing for user outputs #26
@@ -826,6 +1282,7 @@ This version was pulled due to a dirty build environment.  All 1.2.4 notes are i
 - Added tagging support #44
 
 ### Changed
+
 - Tenable.sc files module was incorrectly pointing to self.post instead of
   self._api.post
 - Launching a scan with alt_targets sends an array instead of a string #64
@@ -836,96 +1293,112 @@ This version was pulled due to a dirty build environment.  All 1.2.4 notes are i
 
 [0.3.9]: https://github.com/tenable/pyTenable/compare/0.3.8...0.3.9
 
-
 ## [0.3.8]
+
 ### Added
+
 - Added TioExportsError to handle status error
 - Tagging support for asset export
 
 [0.3.8]: https://github.com/tenable/pyTenable/compare/0.3.7...0.3.8
 
-
 ## [0.3.7]
+
 ### Added
+
 - Added scans.status in Tenable.sc
 - Added scans module for Tenable.sc
 - Added logging support for the whole of pyTenable
 
 ### Changed
+
 - Corrected pathway to acceptRiskRule for Tenable.sc package
 - Scans.update renamed to Scans.edit in Tenable.io
 
 ### Removed
+
 - analysis_type from being sent to the API
 
 [0.3.7]: https://github.com/tenable/pyTenable/compare/0.3.6...0.3.7
 
-
 ## [0.3.6]
+
 ### Added
+
 - Tenable.sc login testing
 - Tenable.sc Analysis testing #10
 
 ### Changed
+
 - Fixed iterator looping issue
 - Travis now runs all tests
 - Converted pytest to use conftest standard
 - Improved VCRpy testing
 
 ### Removed
+
 - Container Security v1 tests (not VCRed)
 
 [0.3.6]: https://github.com/tenable/pyTenable/compare/0.3.5...0.3.6
 
-
 ## [0.3.5]
+
 ### Changed
+
 - Fixed iterator first page problem
 - Adjusted Tenable.sc model constructors to all behave the same uniform way
 
 [0.3.5]: https://github.com/tenable/pyTenable/compare/0.3.4...0.3.5
 
-
 ## [0.3.4]
+
 ### Added
+
 - Added tagging support for vulnerability export
 - Added VCRpy to all unit tests
 - Added accept_risks Model to TenableSC
 
 ### Changed
+
 - Moved get_status checking for iterators to conform to DRY
 - lxml is now an optional dependency
 
 [0.3.4]: https://github.com/tenable/pyTenable/compare/0.3.3...0.3.4
 
-
 ## [0.3.3]
+
 ### Added
+
 - Added scan_instances to TenableSC
 
 ### Changed
+
 - tio.scanners.linking_key is now a method instead fo a property
 
 ### Removed
+
 - Removed a lot of stubbed models that haven't been worked on yet
 
 [0.3.3]: https://github.com/tenable/pyTenable/compare/0.3.2...0.3.3
 
-
 ## [0.3.2]
+
 ### Changed
+
 - Documentation refactored
 - Mocked up some of the libraries for improved testing
 - Fixed typo bug in sc.scans
 
 [0.3.2]: https://github.com/tenable/pyTenable/compare/0.3.1...0.3.2
 
-
 ## [0.3.1]
+
 ### Added
+
 - Documented asset_activity to TenableIO
 
 ### Changed
+
 - Re-pointed all SecurityCenter references to TenableSC instead
 - Refactored schedule sub-document creation into a separate constructor for
   re-use
@@ -933,9 +1406,10 @@ This version was pulled due to a dirty build environment.  All 1.2.4 notes are i
 
 [0.3.1]: https://github.com/tenable/pyTenable/compare/0.3.0...0.3.1
 
-
 ## [0.3.0]
+
 ### Added
+
 - Added unit tests for Inputs & Outputs for IO Scanner Groups
 - Added unit tests for Inputs & Outputs for IO Policies
 - Added unit tests for Inputs & Outputs for IO Plugins
@@ -947,48 +1421,55 @@ This version was pulled due to a dirty build environment.  All 1.2.4 notes are i
 - Added RetryError
 
 ### Changed
+
 - Inlined all of the Documentation into the code itself
 - Documentation refactoring effort for the whole package
 - Unit test improvements
 
 [0.3.0]: https://github.com/tenable/pyTenable/compare/0.2.2...0.3.0
 
-
 ## [0.2.2]
+
 ### Changed
+
 - Refactored long-description to better suit PyPI inclusion
 
 [0.2.2]: https://github.com/tenable/pyTenable/compare/0.2.1...0.2.2
 
-
 ## [0.2.1]
+
 ### Changed
+
 - Inlined the Readme
 
 [0.2.1]: https://github.com/tenable/pyTenable/compare/0.2.0...0.2.1
 
-
 ## [0.2.0]
+
 ### Added
+
 - Added TenableSC Analysis Model
 - Added TenableSC Feeds Model
 - Added TenableSC Files Model
 - Added NessusReportv2 Model
 
 ### Changed
+
 - Refactored the sub-package pathing
 - Modified importing to be relative
 
 [0.2.0]: https://github.com/tenable/pyTenable/compare/0.1.0...0.2.0
 
-
 ## [0.1.0]
+
 ### Added
+
 - Added TenableIO Exports Model
 - Added TenableIO Scans Model
 - Added
 
 ### Changed
+
 - Fixed Time Conversion Issue #6
 
 [0.1.0]: https://github.com/tenable/pyTenable/compare/4ab62c61c80768a36b65ba5accef0bfe1350480e...0.1.0

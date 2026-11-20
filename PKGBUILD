@@ -4,24 +4,24 @@
 
 pkgname=python-pytenable
 _pkg=pyTenable
-pkgver=1.7.4
+pkgver=26.10.1
 pkgrel=1
 pkgdesc="Python library to interface into Tenable's products and applications"
 arch=('any')
 url="https://github.com/tenable/pyTenable"
 license=('MIT')
 depends=(
+	'python-arrow'
 	'python-box'
-	'python-cryptography'
 	'python-dateutil'
 	'python-defusedxml'
+	'python-gql'
 	'python-graphql-core'
 	'python-marshmallow'
 	'python-pydantic'
 	'python-pydantic-extra-types'
 	'python-requests'
 	'python-requests-toolbelt'
-	'python-restfly'
 	'python-semver'
 	'python-typing_extensions'
 	)
@@ -30,10 +30,13 @@ makedepends=(
 	'python-installer'
 	'python-wheel'
 	)
-optdepends=('python-docker: Docker support')
-changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('4c546852b690ce20d292e065994cc40bb72fd2cefbda584102aa8622012eb78d')
+optdepends=(
+	'python-cryptography: PKCS#12 certificate support'
+	'python-docker: Docker support'
+	)
+changelog="CHANGELOG.md"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('162294ed61adf6b81698920f4fb2c6669ab4720ad6c3984d0bcd8ed4b4ca0209')
 
 
 build() {
