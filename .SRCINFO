@@ -1,0 +1,19 @@
+pkgbase = av-morning-star
+	pkgdesc = Video and audio downloader for YouTube, Odysee and 1000+ sites (a yt-dlp front end)
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/asafelobotomy/AV-Morning-Star
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyqt5
+	depends = yt-dlp
+	depends = python-mutagen
+	depends = ffmpeg
+	optdepends = deno: YouTube proof-of-origin tokens (recommended by yt-dlp)
+	optdepends = nodejs: YouTube proof-of-origin tokens, if deno is not installed
+	optdepends = python-syncedlyrics: more lyrics sources when LRCLIB has none
+	source = av-morning-star-0.4.3.tar.gz::https://github.com/asafelobotomy/AV-Morning-Star/archive/refs/tags/v0.4.3.tar.gz
+	sha256sums = 3b8f70b29567830dc4b974781c54e250f772c0546ee373818240337d1203886a
+
+pkgname = av-morning-star
