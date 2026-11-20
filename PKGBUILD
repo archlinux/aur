@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=kiota
-pkgver=1.38.0
+pkgver=1.39.0
 pkgrel=1
 pkgdesc='OpenAPI based HTTP client code generator'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('dotnet-sdk-10.0')
 options=('!debug')
 install=kiota.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b69b1981d4405224a5dbe02c21f43be9c753e5dd99c1f499b8af269a24fc1488')
+sha256sums=('bdccb057d063fecd650d10ee2f289d6894a68ca3a554c2636d308b3047c1ef48')
 
 _project=src/kiota/kiota.csproj
 
