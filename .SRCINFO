@@ -1,0 +1,17 @@
+pkgbase = diaphora
+	pkgdesc = Program diffing tool for IDA Pro
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://github.com/joxeankoret/diaphora
+	arch = any
+	license = AGPL-3.0-or-later
+	optdepends = python-cdifflib: C implementation of the diff, replaces the slower stdlib fallback
+	optdepends = python-numpy: ML-assisted comparison
+	optdepends = python-pandas: ML-assisted comparison
+	optdepends = python-scikit-learn: ML-assisted comparison
+	optdepends = python-joblib: ML-assisted comparison
+	optdepends = python-nltk: "code cut" module-boundary guessing
+	source = diaphora-3.5.0.tar.gz::https://github.com/joxeankoret/diaphora/archive/refs/tags/3.5.0.tar.gz
+	sha256sums = 015c1ef6bbd37152ad2ec406486fd16284a0d6a94ddeaeb4d42bf0231724c716
+
+pkgname = diaphora
