@@ -3,7 +3,7 @@
 # Contributor: Cillian Berragan <cjberragan@gmail.com>
 pkgname=python-stanza
 _name=${pkgname#python-}
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="Stanford NLP Python library for tokenization, sentence segmentation, NER, and parsing of many human languages"
 arch=('any')
@@ -52,7 +52,7 @@ optdepends=(
   'python-zstandard: Process compressed Community OSCAR corpora'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/stanfordnlp/stanza/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3defd7c9924d3d6527f2c58f8dac4a0f4150a1ecf9043cfa943d3c983ac47a81')
+sha256sums=('a8c8bdd7e93f282271814979a67363b85f91d218a2341b0a0922b1a101f38c13')
 
 prepare() {
   cd "$_name-$pkgver"
@@ -129,7 +129,7 @@ import tempfile
 
 import stanza
 
-assert stanza.__version__ == "1.15.0"
+assert stanza.__version__ == "1.15.1"
 with tempfile.TemporaryDirectory() as model_dir:
     with open(os.path.join(model_dir, "resources.json"), "w", encoding="utf-8") as stream:
         json.dump({}, stream)
