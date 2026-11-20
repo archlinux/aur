@@ -2,7 +2,7 @@
 pkgname=zen-c-git
 _pkgname=zen-c
 pkgver=0.4.4.r676.gb3f550e
-pkgrel=1
+pkgrel=2
 pkgdesc='Write like a high-level language, run like C.'
 url='https://github.com/zenc-lang/zenc'
 arch=(
@@ -22,7 +22,13 @@ makedepends=(
     'make'
     'git'
 )
-provides=(zc)
+provides=(
+    'zc'
+    'zc-lsp'
+    'zc-format'
+    'zc-repl'
+    'zc-doc'
+)
 conflicts=('zen-c' 'zen-c-bin')
 replaces=('zenc-git')
 source=("${_pkgname}-main::git+$url.git#branch=main")
@@ -41,6 +47,10 @@ build() {
 package() {
     cd "${_pkgname}-main"
     install -Dm755 zc "$pkgdir/usr/bin/zc"
+    install -Dm755 zc-lsp "$pkgdir/usr/bin/zc-lsp"
+    install -Dm755 zc-format "$pkgdir/usr/bin/zc-format"
+    install -Dm755 zc-repl "$pkgdir/usr/bin/zc-repl"
+    install -Dm755 zc-doc "$pkgdir/usr/bin/zc-doc"
     install -d "$pkgdir/usr/local/share/zenc"
     cp -r std/ "$pkgdir/usr/local/share/zenc/std"
     install -Dm644 src/repl/docs.json "$pkgdir/usr/local/share/zenc/docs.json"
@@ -51,12 +61,6 @@ package() {
     install -Dm644 man/zc.5 "$pkgdir/usr/share/man/man5/zc.5"
     install -Dm644 man/zc.7 "$pkgdir/usr/share/man/man7/zc.7"
     install -Dm644 man/zc-stdlib.7 "$pkgdir/usr/share/man/man7/zc-stdlib.7"
-    command -v gzip >/dev/null 2>&1 && {
-        gzip -9 "$pkgdir/usr/share/man/man1/zc.1"
-        gzip -9 "$pkgdir/usr/share/man/man5/zc.5"
-        gzip -9 "$pkgdir/usr/share/man/man7/zc.7"
-        gzip -9 "$pkgdir/usr/share/man/man7/zc-stdlib.7"
-    }
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
