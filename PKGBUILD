@@ -2,15 +2,15 @@
 
 _rockname=ltdiff
 _project=luatablediff
-pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua54-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=1.0
 _rockrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Diffing and patching for Lua tables'
 arch=(any)
 url="https://github.com/martinfelis/$_project"
 license=(MIT)
-makedepends=(lua lua53 lua52 lua51 luarocks)
+makedepends=(lua lua54 lua53 lua52 lua51 luarocks)
 _archive="$_project-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
 sha256sums=('ef8b70bf9d9d78b3a74bad8b45fe920df30a24dc0c587441e2b87e535f0c6f6c')
@@ -23,6 +23,11 @@ _package_helper() {
 
 package_lua-ltdiff() {
 	depends=(lua)
+	_package_helper 5.5
+}
+
+package_lua54-ltdiff() {
+	depends=(lua54)
 	_package_helper 5.4
 }
 
