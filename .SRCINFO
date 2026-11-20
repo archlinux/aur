@@ -1,6 +1,6 @@
 pkgbase = fist-bin
 	pkgdesc = A fast and intuitive search tool for the filesystem
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/Squirreljetpack/fist
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = fist-bin
 	depends = libgcc
 	provides = fs
 	conflicts = fist
-	source_x86_64 = fist-x86_64-0.0.4.txz::https://github.com/Squirreljetpack/fist/releases/download/v0.0.4/fist-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 2f245dcded51bf01c1d2929d901f5a473f7607f41c52e6fe647ecf39506ddf45
-	source_aarch64 = fist-aarch64-0.0.4.txz::https://github.com/Squirreljetpack/fist/releases/download/v0.0.4/fist-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 1b00ece7328734b2204c22bf4f0e6b487a3b670bdb6d991a791bee2001510a9d
+	source_x86_64 = fist-x86_64-0.0.5.txz::https://github.com/Squirreljetpack/fist/releases/download/v0.0.5/fist-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = efe3db76c3fb2b670d3d0516b6e1123db5679be3cb0993265fa1be47584edf43
+	source_aarch64 = fist-aarch64-0.0.5.txz::https://github.com/Squirreljetpack/fist/releases/download/v0.0.5/fist-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = ece4d852a6a3b4e2ce60cb3a1090b0b5171b7bbb34b438ba77cd2225c9cb5462
 
 pkgname = fist-bin
