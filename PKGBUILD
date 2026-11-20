@@ -3,8 +3,8 @@
 
 pkgname=open-quickshare-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.15.2
-pkgrel=3
+pkgver=0.16.1
+pkgrel=1
 pkgdesc="Complete Quick Share implementation for Linux with Bluetooth LE and Wi-Fi Direct"
 arch=('x86_64')
 url="https://github.com/ignotusbucius/${_pkgname}"
@@ -40,7 +40,7 @@ options=('!debug')
 
 source=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_x86_64.deb")
 
-sha256sums=('85c0f86b1b024cabfb27c77dc7eeda2abc49542bf9cc4f58484187af4e18301b')
+sha256sums=('4a4df6ab643fc5744b5f854d235b0f8f613e2371f5729ffeda50701a287d84a6')
 
 package() {
   bsdtar -xf data.tar.* -C "$pkgdir/"
