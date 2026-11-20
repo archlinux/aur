@@ -8,7 +8,8 @@ pkgrel='1'
 pkgdesc='A utility for managing multiple cloud storage services'
 arch=('x86_64')
 url='https://www.expandrive.com/'
-license=('custom:proprietary')
+license=('LicenseRef-proprietary')
+options=('!strip' '!debug')
 depends=(
     'alsa-lib'
     'at-spi2-core'
