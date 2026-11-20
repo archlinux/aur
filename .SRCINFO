@@ -1,6 +1,6 @@
 pkgbase = dffy-render-markdown-bin
 	pkgdesc = dffy renderer plugin that draws Markdown as rendered text for the diff view: headings, lists, quotes, tables and links, with Mermaid fences drawn as diagrams
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/amalucelli/dffy
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = dffy-render-markdown-bin
 	optdepends = dffy-bin: the diff viewer this renderer plugs into
 	provides = dffy-render-markdown
 	conflicts = dffy-render-markdown
-	noextract = dffy-render-markdown_0.2.1_linux_amd64.tar.gz
-	noextract = dffy-render-markdown_0.2.1_linux_arm64.tar.gz
+	noextract = dffy-render-markdown_0.3.0_linux_amd64.tar.gz
+	noextract = dffy-render-markdown_0.3.0_linux_arm64.tar.gz
 	options = !strip
 	options = !debug
-	source_x86_64 = dffy-render-markdown_0.2.1_linux_amd64.tar.gz::https://github.com/amalucelli/dffy/releases/download/v0.2.1/dffy-render-markdown_linux_amd64.tar.gz
-	sha256sums_x86_64 = 66334872412eff4f568a6bec062b113173eac58fbf722a3c79bbc8558c78c5ee
-	source_aarch64 = dffy-render-markdown_0.2.1_linux_arm64.tar.gz::https://github.com/amalucelli/dffy/releases/download/v0.2.1/dffy-render-markdown_linux_arm64.tar.gz
-	sha256sums_aarch64 = e723bfdc8ced770a8d964cd92bb9a5e1ca4205b8ae3fb8f68483e426be1f6f1c
+	source_x86_64 = dffy-render-markdown_0.3.0_linux_amd64.tar.gz::https://github.com/amalucelli/dffy/releases/download/v0.3.0/dffy-render-markdown_linux_amd64.tar.gz
+	sha256sums_x86_64 = dcdf295c19bfa197557ede6f7ac52e3defe83577cbd27e3c685b1efe5e45ecbf
+	source_aarch64 = dffy-render-markdown_0.3.0_linux_arm64.tar.gz::https://github.com/amalucelli/dffy/releases/download/v0.3.0/dffy-render-markdown_linux_arm64.tar.gz
+	sha256sums_aarch64 = b26958f2df8b88cd256d0edba9ab1ce9d6591328838f3204e74a2fbf0af82c05
 
 pkgname = dffy-render-markdown-bin
