@@ -1,0 +1,10 @@
+UniVPN 是 Leagsoft（leagsoft.com）提供的闭源商业软件。
+
+本 AUR 配方从厂商下载二进制文件，并在本地构建时调整安装路径。
+UniVPN 软件本身不附带开源许可证，
+其版权归 Leagsoft 所有。
+
+本 PKGBUILD 打包脚本遵循 Arch Linux AUR 规范发布，
+打包脚本以 MIT License 发布。
+
+使用本软件需遵守 Leagsoft 的服务条款与许可协议。
