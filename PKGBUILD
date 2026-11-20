@@ -2,7 +2,7 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=jose
-_pkgver=2.0.0
+_pkgver=3.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a92e5664a4efbb86f31342c1190b3722')
-b2sums=('3ccd5c73170a315981ff6881f317d99e90bd654c3112be3826270a26b442b50cb9dbe2edc9f2492a1dcef9cf5a3386227aa2a52291712ae2322e01396c715b5d')
+md5sums=('cbe0ee6b9792d4067252f181619cf81d')
+b2sums=('e7401216feff6300dc85be71c63244ea261959a4075e9028e9bf668967305de678c10f08d15e6e329f95ed60ca43e72d8543d0dec7ee3aa3fc5004baaff1a98f')
 
 build() {
   mkdir build
