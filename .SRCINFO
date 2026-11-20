@@ -1,6 +1,6 @@
 pkgbase = oh-my-ztty-bin
 	pkgdesc = Lean Project Z terminal workspace with zsh presets and explicit AI tools
-	pkgver = 0.2.3
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/oh-my-ztty
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = oh-my-ztty-bin
 	optdepends = xdg-utils: open terminal hyperlinks
 	optdepends = rsync: ssmcp workspace synchronization
 	optdepends = nodejs: optional ssmcp browser tools
-	provides = oh-my-ztty=0.2.3
+	provides = oh-my-ztty=0.2.5
 	conflicts = oh-my-ztty
 	options = !strip
 	options = !debug
@@ -43,9 +43,9 @@ pkgbase = oh-my-ztty-bin
 	source = README.archlinux
 	sha256sums = 775c292e77996d9e32c78963909ddce7eb836c612e88195721a1a5befcec8690
 	sha256sums = 8cdff13beef76595d6d8c740c6f6873189c0c1f5e74f116dda0305100b6af099
-	source_x86_64 = https://github.com/LIghtJUNction/oh-my-ztty/releases/download/v0.2.3/oh-my-ztty-0.2.3-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 58862acd3c4ce0584b60b00494b620336dd91b188ca9d8102f3cb867a99f1cef
-	source_aarch64 = https://github.com/LIghtJUNction/oh-my-ztty/releases/download/v0.2.3/oh-my-ztty-0.2.3-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 8b0d7c8ff30f165e51e8dd5c1e65506fc57c382709aac7bb122cdc35e16a1da6
+	source_x86_64 = https://github.com/LIghtJUNction/oh-my-ztty/releases/download/v0.2.5/oh-my-ztty-0.2.5-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 79d58efac183069e9d50701374fc76dc9938d96d69c9a58d35252a629129a388
+	source_aarch64 = https://github.com/LIghtJUNction/oh-my-ztty/releases/download/v0.2.5/oh-my-ztty-0.2.5-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 40cdf0fe1cb714d141fcab4328f98f8d73a789a485b112ed6a95cb36dcb6f3b5
 
 pkgname = oh-my-ztty-bin
