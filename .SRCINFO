@@ -1,6 +1,6 @@
 pkgbase = rakudo
 	pkgdesc = Raku compiler for MoarVM
-	pkgver = 2026.04
+	pkgver = 2026.11
 	pkgrel = 1
 	url = http://rakudo.org/
 	arch = i686
@@ -9,13 +9,13 @@ pkgbase = rakudo
 	groups = perl6
 	license = Artistic-2.0
 	makedepends = perl>=5.10
-	depends = nqp>=2026.04
+	depends = nqp>=2026.11
 	provides = perl6
 	options = !makeflags
-	source = https://rakudo.org/dl/rakudo/rakudo-2026.04.tar.gz
-	source = https://rakudo.org/dl/rakudo/rakudo-2026.04.tar.gz.asc
+	source = https://rakudo.org/dl/rakudo/rakudo-2026.11.tar.gz
+	source = https://rakudo.org/dl/rakudo/rakudo-2026.11.tar.gz.asc
 	validpgpkeys = 2832BDB33241A14EFCCA61470F09888FE017A4C2
-	sha512sums = 3219482c860c96ed2af4ec57f83410accc9c3e3923b3dd26647447b68440b15f359f4bba57c78b61fe63070301f82f9d4c57d36b77dc0769ac8609fd2ac39bb4
-	sha512sums = 3f4aea4d8c1c77255a5329e1065327228a597eaa6ec2cc8d6c60ecd75c79e8912214c036e2a15597740f4ee72e0917fc356300fc64058fec5e8eff00ae9c838d
+	sha512sums = ad4072a2dfd5c03773a8e3e9943c8229009eccd716b94eaffc79652576369028fb5e232755398fd4657ef065b64f9cc1746069c9be8cff721cd9ae7946f585d4
+	sha512sums = 9a3641ebf9d73c5e3a22d7145c0f7980434b1b1a1dffe00ec070fef416a95ede71ff59d905265dd6e85d70fc6ab865c371a0e17500f88225ba90d8b1d38ecc6f
 
 pkgname = rakudo
