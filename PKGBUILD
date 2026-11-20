@@ -5,7 +5,7 @@
 
 _appname='jmusicbot-arif'
 pkgname="$_appname"
-_pkgverUpstream="0.8.0"
+_pkgverUpstream="0.8.1"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="A cross-platform Discord music bot with a clean interface (Arif's fork)"
@@ -20,7 +20,7 @@ replaces=('jmusicbot')
 source=("JMusicBot-${_pkgverUpstream}.tar.gz::https://github.com/arif-banai/MusicBot/archive/refs/tags/v${_pkgverUpstream}.tar.gz"
         "jmusicbot@.service"
         "jmusicbot.service")
-sha384sums=('5db41c2a2c7b94bafdae451ea216815beee2506ae3c810cedf20e5c69071702d218339cddabcc000357497a345f515ed'
+sha384sums=('5a81148bc8f22a71bc389d72cc4b2c90bea8e25329706b4c8a10a95ea6a7043c0c59a470d0fe34fb0ff9a508516995a8'
             '2206fe907599447bef54936a16070d6de333d44a3bc4dc532a984662ac43ecb831c29998727f7b0c318fb9f13ed92d23'
             '0626429a1fdf931b4e766ef207ea2a77df854ce509e75b4a8807c240ad7ffdbf7ddb259c8b3b365030bfad8cdc23ca97')
 
