@@ -4,7 +4,7 @@
 
 pkgname=lunar-client-bin
 _pkgname=lunarclient
-pkgver=3.7.39
+pkgver=3.7.40
 pkgrel=1
 pkgdesc="All-in-one modpack with mods, settings and cosmetics for all Minecraft versions (upstream AppImage)"
 arch=('x86_64')
@@ -23,9 +23,9 @@ provides=('lunar-client' 'lunarclient')
 conflicts=('lunar-client' 'lunarclient')
 options=('!strip' '!debug')
 # maintained by CI together with pkgver (upstream varies the filename suffix)
-_appimage="Lunar%20Client-3.7.39-ow.AppImage"
+_appimage="Lunar%20Client-3.7.40-ow.AppImage"
 source=("${_pkgname}-${pkgver}.AppImage::https://launcher-releases.lunarclientprod.com/master/6e18b5a4f4ebbd4c7ecff572f1700cedce1f248bcb157adce5ec49be9e081a23/${_appimage}")
-sha256sums=('f607349b36c47e497922442204b09435e2b5f9e9a5ef505cb71464057a76c4c9')
+sha256sums=('afe4c5cbb8e2b1594a4c94942d16a75a5bd83f6d5364ff9b0187042162e67f44')
 
 prepare() {
   chmod +x "${_pkgname}-${pkgver}.AppImage"
