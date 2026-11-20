@@ -1,0 +1,20 @@
+pkgbase = timeshift-uki-hooks-git
+	pkgdesc = Hooks inteligentes para Timeshift que sincronizan imágenes UKI (Unified Kernel Images) con snapshots Btrfs
+	pkgver = v3.8.r0.g3b1ccb7
+	pkgrel = 1
+	url = https://github.com/jairogaleano/timeshift-uki-hooks
+	install = timeshift-uki-hooks.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = fakeroot
+	depends = timeshift
+	depends = bash
+	depends = coreutils
+	depends = util-linux
+	provides = timeshift-uki-hooks
+	conflicts = timeshift-uki-hooks
+	source = git+https://github.com/jairogaleano/timeshift-uki-hooks.git
+	sha256sums = SKIP
+
+pkgname = timeshift-uki-hooks-git
