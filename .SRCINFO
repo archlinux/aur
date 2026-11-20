@@ -1,6 +1,6 @@
 pkgbase = egd
 	pkgdesc = egd ci/cd/batch processing tooling
-	pkgver = v0.0.1795140650000
+	pkgver = v0.0.1795192406000
 	pkgrel = 1
 	url = https://github.com/egdaemon/eg
 	arch = x86_64
