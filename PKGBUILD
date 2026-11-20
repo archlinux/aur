@@ -2,7 +2,7 @@
 _appname=qoder
 pkgname="${_appname}-ide"
 _pkgname='Qoder IDE'
-pkgver=1.40.1
+pkgver=1.41.1
 _electronversion=42
 pkgrel=1
 pkgdesc="AI native IDE for real-world software development."
@@ -32,7 +32,7 @@ source=(
     "qoder-ide.sh"
     "qoder-ide-512.png"
 )
-sha256sums=('1e520293f6dc684c67fef689966cc71619d63b59f0058e36540068d78c25d11f'
+sha256sums=('77c7753fdeedaded6495829788e59cbc4b56776a2b2c670520e24abf04d810d5'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21'
