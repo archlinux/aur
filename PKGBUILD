@@ -2,8 +2,8 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=ffmpeg-full
-pkgver=9.0.2
-pkgrel=3
+pkgver=9.1
+pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.5'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
@@ -14,11 +14,13 @@ depends=(
     'alsa-lib'
     'aom'
     'aribb24'
+    'astc-encoder'
     'avisynthplus' # loaded on-demand by dlopen()
     'bzip2'
     'cairo'
     'chromaprint-fftw'
     'codec2'
+    'curl'
     'dav1d'
     'davs2'
     'flite1'
@@ -172,24 +174,26 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch'
         '060-ffmpeg-lensfun-fix-pkgconfig.patch'
         '070-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
-        '080-ffmpeg-openapv1.1-fix.patch'::'https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/c54710db21c1827dbc3e47658a562525af0fe528.patch'
         'LICENSE')
-sha256sums=('8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e'
+sha256sums=('1a4d394ae63d190a526cd052eb4415c156b5c5e2df37efab41a7de0b8fde2433'
             'SKIP'
             'SKIP'
             'ff1a9053feb509ff9d7729703355541ae9690073a6b1c40eb692c962e0dc1720'
-            'e6fdcb8446b0a0c0967f125d2de5084a5bdb418a1a6608f808cff2c97fc9bd6a'
+            '13132f22a475acd811a5610ffab08d6156d992b40dad0ddcacd8a76a9e8cdd74'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            'cc80568f7dab2094f4f3bede6d0f068f217161f924915b067b0d287cf53b0849'
-            'cd1aa93e78800247b4516a01ef391106acb362957bd1e56f85d64906343cddac'
-            '4a9a672f67cc0e5dd63bd7659f5a5198cd981e60bbbc1b9a63277758be6a7fdf'
+            'bb16c7022349600f672f42e60c1133ce9a5956ef25dd81273f9ff1444c0eb7e7'
+            '141981e5596b6f7031825f117036fe152121c255ea3be7b3baf8871a87f64599'
+            'd8c3e8b8d107eda4ef7c921bc20a9250d8c9aed47e4602c1d57e479bffb25bd2'
             'c39addf190d25d1182c5c5658677f77ee7c1ae542969b2004441c62a425d324b'
             '2c846c629ad129ae8ce50791de4f1d390714db6d6420a35406b83b9b44999d4a'
-            '6eda059a49ec07dc8d0c872c3c1fc71d8f92c5e76463380c62fe027111b3ae2e'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
+    # ffmpeg includes the astc-encoder header from <astcenc/astcenc.h> instead of using just <astcenc.h>
+    mkdir -p include/astcenc
+    ln -sf /usr/include/astcenc.h include/astcenc/astcenc.h
+    
     rm -f "ffmpeg-${pkgver}/libavcodec"/libsvt_{hevc,vp9}.c
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
@@ -198,7 +202,6 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch"
     patch -d lensfun -Np1 -i "${srcdir}/060-ffmpeg-lensfun-fix-pkgconfig.patch"
     patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/070-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/080-ffmpeg-openapv1.1-fix.patch"
 }
 
 build() {
@@ -236,7 +239,7 @@ build() {
     cd "ffmpeg-${pkgver}"
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
-    export CFLAGS+=' -isystem/opt/cuda/include'
+    export CFLAGS+=" -isystem/opt/cuda/include -isystem ${srcdir}/include"
     export LDFLAGS+=' -L/opt/cuda/lib64'
     
     # fix build of libavfilter/asrc_flite.c with gcc 14
@@ -272,17 +275,20 @@ build() {
         --enable-libaribb24 \
         --enable-libaribcaption \
         --enable-libass \
+        --enable-libastcenc \
         --enable-libbluray \
         --enable-libbs2b \
         --enable-libcaca \
         --enable-libcdio \
         --enable-libcodec2 \
+        --enable-libcurl \
         --enable-libdav1d \
         --enable-libdavs2 \
         --enable-libdc1394 \
         --enable-libdvdnav \
         --enable-libdvdread \
         --enable-libfdk-aac \
+        --enable-libfdk-xhe-aac \
         --enable-libflite \
         --enable-libfontconfig \
         --enable-libfreetype \
@@ -391,7 +397,6 @@ build() {
         --enable-nvenc \
         --disable-ohcodec \
         --enable-opencl \
-        --enable-opengl \
         --enable-rkmpp \
         --enable-v4l2-m2m \
         --enable-vdpau \
