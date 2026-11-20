@@ -1,27 +1,28 @@
 # Maintainer: Andrey Kolchenko <andrey@kolchenko.me>
 
 pkgname='dolphin-anty-bin'
-pkgver=2026.147.225
+pkgver=2026.323.70886
 pkgrel=1
 pkgdesc='Antidetect browser for multi-accounting'
 arch=('x86_64')
-url='https://dolphin-anty.net/'
+url='https://dolphin-anty.com/'
 license=('custom:Proprietary')
 options=(!strip)
 provides=('dolphin-anty')
-makedepends=('binutils' 'grep' 'coreutils')
+makedepends=('libarchive')
 
-_file="${pkgname%-*}-${pkgver}.rpm"
+# Upstream ships AppImage, .deb and .rpm for Linux. The .rpm payload is a
+# malformed cpio (bad magic, truncated headers) that bsdtar/rpm2cpio cannot
+# unpack, so we use the official .deb — identical /opt/Dolphin Anty layout.
+_file="${pkgname%-*}-${pkgver}.deb"
 
-source=("${_file}::https://dolphin-anty-cdn.com/anty-app/dolphin-anty-linux-x86_64-latest.rpm")
-sha256sums=('e8c5de3881d4008face9e729d681af2dbe9a7f1e2753f5592ff2a4b2e70bf0c6')
+source=("${_file}::https://dolphin-anty-cdn.com/anty-app/dolphin-anty-linux-amd64-latest.deb")
+sha256sums=('2831a85928af25c3505454c4e1535eac43099b2b91686beedab81ee07bc0ee4e')
 
 pkgver() {
-    strings "${_file}" | grep -m 1 'dolphin_anty-[^[:space:]]*' | cut -d- -f2-2
+    bsdtar -xf "${srcdir}/control.tar.xz" -O ./control | sed -n 's/^Version: //p'
 }
 
 package() {
-    for item in usr opt; do
-        cp -a "${srcdir}/${item}" "${pkgdir}"
-    done
+    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
 }

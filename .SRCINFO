@@ -1,16 +1,14 @@
 pkgbase = dolphin-anty-bin
 	pkgdesc = Antidetect browser for multi-accounting
-	pkgver = 2026.147.225
+	pkgver = 2026.323.70886
 	pkgrel = 1
-	url = https://dolphin-anty.net/
+	url = https://dolphin-anty.com/
 	arch = x86_64
 	license = custom:Proprietary
-	makedepends = binutils
-	makedepends = grep
-	makedepends = coreutils
+	makedepends = libarchive
 	provides = dolphin-anty
 	options = !strip
-	source = dolphin-anty-2026.147.225.rpm::https://dolphin-anty-cdn.com/anty-app/dolphin-anty-linux-x86_64-latest.rpm
-	sha256sums = e8c5de3881d4008face9e729d681af2dbe9a7f1e2753f5592ff2a4b2e70bf0c6
+	source = dolphin-anty-2026.323.70886.deb::https://dolphin-anty-cdn.com/anty-app/dolphin-anty-linux-amd64-latest.deb
+	sha256sums = 2831a85928af25c3505454c4e1535eac43099b2b91686beedab81ee07bc0ee4e
 
 pkgname = dolphin-anty-bin
