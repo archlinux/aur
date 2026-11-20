@@ -1,10 +1,10 @@
 # Maintainer: maria-rcks <maria at kuuro dot net>
 
 pkgname=t3code-bin
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc='Desktop control surface for local coding agents'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/pingdotgg/t3code'
 license=('MIT')
 depends=(
@@ -43,16 +43,15 @@ provides=("t3code=$pkgver")
 conflicts=('t3code')
 options=('!debug' '!strip')
 
-_appimage="T3-Code-${pkgver}-x86_64.AppImage"
-_asset='T3-Code-x86_64.AppImage'
-source=(
-  "$_appimage::https://github.com/pingdotgg/t3code/releases/download/v${pkgver}/$_asset"
-  "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v${pkgver}/LICENSE"
-)
-sha256sums=(
-  '7cded13c10757153901edddac9a2608b156f17445de506ef9ffdf73c01528d79' # AppImage
-  '935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43' # upstream license
-)
+_appimage="T3-Code-${pkgver}-${CARCH/aarch64/arm64}.AppImage"
+_asset_x86_64="T3-Code-x86_64.AppImage"
+_asset_aarch64="T3-Code-arm64.AppImage"
+source=("${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v${pkgver}/LICENSE")
+sha256sums=('935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43') # upstream license
+source_x86_64=("T3-Code-${pkgver}-x86_64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v${pkgver}/$_asset_x86_64")
+sha256sums_x86_64=('8baa06a7bbaa3f729d69466fb211ed7006d6a6e4d800b9ecdacd831fd1686b14')
+source_aarch64=("T3-Code-${pkgver}-arm64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v${pkgver}/$_asset_aarch64")
+sha256sums_aarch64=('3daf88ccf17548bc29ff8a6e78e225def0696b44498c5f50057048e182f14626')
 
 prepare() {
   chmod +x "$srcdir/$_appimage"
