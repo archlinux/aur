@@ -2,12 +2,12 @@
 # Sourced by pacman (no shebang).
 post_install() {
   cat <<'MSG'
-==> scx_devbox is installed but not running. Only one sched_ext scheduler can
-    run at a time, so stop any other first (scxctl stop), then:
+==> scx_devbox is installed but not running. Either let scdr run it: pick
+    "devbox" as a scheduler in [sched_ext] (or on the Scheduling page), and
+    scdr starts and stops the unit itself. Or run it by hand with scdr's
+    [sched_ext] off: stop any other scheduler first (scxctl stop), then
       systemctl enable --now scx_devbox
-    Leave scdr's own [sched_ext] switching off while it runs; scdr's rules
-    and roles keep working underneath. Back to EEVDF:
-      systemctl disable --now scx_devbox
+    and back to EEVDF with: systemctl disable --now scx_devbox
 MSG
 }
 
