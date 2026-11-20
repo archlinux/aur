@@ -1,7 +1,7 @@
 # Maintainer: Arzet Ro <arzeth0@gmail.com>
 pkgname=python-deepspeed
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective."
 #depends=(python python-hjson ninja python-numpy python-packaging python-psutil python-py-cpuinfo python-pydantic python-pynvml python-pytorch python-tqdm)
 #depends+=(python-cupy python-huggingface-hub tensorboard python-transformers python-mpi4py python-tabulate python-fairscale python-safetensors)
@@ -21,9 +21,6 @@ depends=(
 	python-msgpack
 	python-tqdm
 
-	# requirements-1bit-mpi.txt
-	python-mpi4py
-
 	# requirements-autotuning-ml.txt
 	python-tabulate python-xgboost
 	# ..... or `python-xgboost-cuda`.
@@ -39,7 +36,7 @@ depends=(
 	# requirements-sd.txt
 	python-diffusers
 
-	# requirements-sd.txt, requirements-sparse_attn.txt, requirements-triton.txt
+	# requirements-sd.txt, requirements-triton.txt
 	python-triton
 
 	# ... Dependencies can also be found in `/environment.yml`,
@@ -51,26 +48,6 @@ depends=(
 # from accelerator import get_accelerator
 makedepends=(python-build python-installer python-wheel ninja)
 optdepends=(
-	# requirements-sparse_pruning.txt
-		# has `python-neural-compressor==2.1.0`.
-		# But `python-neural-compressor` in AUR is 3.8
-		#
-		#
-		# `python-neural-compressor` is used only by
-		# `deepspeed/compression/{compress.py,helper.py}`,
-		# which use props (e.g. `neural_compressor.WeightPruningConfig`)
-		# that aren't available in `python-neural-compressor==3.8`.
-		# That's probably because
-		# version 3.8 changelog at
-		# https://github.com/intel/neural-compressor/releases/tag/v3.8
-		# mentions `Removal of deprecated 2.x API`.
-		#
-		# BTW, ver 2.1.0 has never been in AUR and requires numpy <2.0,
-		# but Arch Linux uses numpy 2.
-		#
-		# Those two `.py` files mention that this optional
-		# `python-neural-compressor==2.1.0` is for:
-		# "snip_momentum sparse pruning".
 	# requirements-torchembed.txt
 		'python-torchembed>=0.3.0: Optional fused RoPE backend'
 )

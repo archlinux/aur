@@ -1,7 +1,7 @@
 pkgbase = python-deepspeed
 	pkgdesc = DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective.
 	pkgver = 0.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deepspeedai/DeepSpeed
 	arch = x86_64
 	license = Apache-2.0
@@ -22,7 +22,6 @@ pkgbase = python-deepspeed
 	depends = python-numpy
 	depends = python-msgpack
 	depends = python-tqdm
-	depends = python-mpi4py
 	depends = python-tabulate
 	depends = python-xgboost
 	depends = python-scipy
