@@ -1,7 +1,7 @@
 # Maintainer: hiruocha <hiruocha[at]outlook[dot]com>
 
 pkgname=nipaplay-reload
-pkgver=1.11.11
+pkgver=1.11.12
 pkgrel=1
 pkgdesc="A cross platform danmaku video player"
 arch=('x86_64')
@@ -40,7 +40,7 @@ makedepends=('clang'
              'meson'
              'vulkan-headers')
 source=("git+https://github.com/AimesSoft/NipaPlay-Reload.git#tag=v$pkgver"
-        "Erika::git+https://github.com/AimesSoft/liberika.git#tag=v0.3.2"
+        "Erika::git+https://github.com/AimesSoft/liberika.git#tag=v0.3.8"
         "git+https://github.com/AimesSoft/media-kit.git"
         "git+https://github.com/AimesSoft/libmpv-darwin-build.git"
         "git+https://github.com/AimesSoft/mpv.git"
@@ -48,8 +48,8 @@ source=("git+https://github.com/AimesSoft/NipaPlay-Reload.git#tag=v$pkgver"
         "libass-0.17.5.tar.xz::https://github.com/libass/libass/releases/download/0.17.5/libass-0.17.5.tar.xz"
         "fix-dart-path.patch"
 	"use-system-cargo.patch")
-sha256sums=('31390640d87e052d2bab97d9b41182b43cd63a1c97c21e5d1e378448c9394c64'
-            'e5302415e0f039bfc4df8cd2ff56cf55fad4b353a25ebe2241c5d3d09d9a4da5'
+sha256sums=('6851d0aaeb5eeb21c2160aa2cc87c1ce533bedefe8d8f2cfead3e49e39b2c00c'
+            '7020fbc4a00bb28380a00446e836f64146af81f2c9eff1ba5f66cd7d5dcea95c'
             'SKIP'
             'SKIP'
             'SKIP'

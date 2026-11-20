@@ -1,6 +1,6 @@
 pkgbase = nipaplay-reload
 	pkgdesc = A cross platform danmaku video player
-	pkgver = 1.11.11
+	pkgver = 1.11.12
 	pkgrel = 1
 	url = https://github.com/AimesSoft/NipaPlay-Reload
 	arch = x86_64
@@ -38,8 +38,8 @@ pkgbase = nipaplay-reload
 	depends = fontconfig
 	depends = libc++
 	conflicts = nipaplay
-	source = git+https://github.com/AimesSoft/NipaPlay-Reload.git#tag=v1.11.11
-	source = Erika::git+https://github.com/AimesSoft/liberika.git#tag=v0.3.2
+	source = git+https://github.com/AimesSoft/NipaPlay-Reload.git#tag=v1.11.12
+	source = Erika::git+https://github.com/AimesSoft/liberika.git#tag=v0.3.8
 	source = git+https://github.com/AimesSoft/media-kit.git
 	source = git+https://github.com/AimesSoft/libmpv-darwin-build.git
 	source = git+https://github.com/AimesSoft/mpv.git
@@ -47,8 +47,8 @@ pkgbase = nipaplay-reload
 	source = libass-0.17.5.tar.xz::https://github.com/libass/libass/releases/download/0.17.5/libass-0.17.5.tar.xz
 	source = fix-dart-path.patch
 	source = use-system-cargo.patch
-	sha256sums = 31390640d87e052d2bab97d9b41182b43cd63a1c97c21e5d1e378448c9394c64
-	sha256sums = e5302415e0f039bfc4df8cd2ff56cf55fad4b353a25ebe2241c5d3d09d9a4da5
+	sha256sums = 6851d0aaeb5eeb21c2160aa2cc87c1ce533bedefe8d8f2cfead3e49e39b2c00c
+	sha256sums = 7020fbc4a00bb28380a00446e836f64146af81f2c9eff1ba5f66cd7d5dcea95c
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
