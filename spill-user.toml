@@ -1,0 +1,8 @@
+# Packaged defaults for the user service. For overrides, copy this file to
+# ~/.config/spill/spill.toml and run `systemctl --user edit spill.service`:
+# [Service]
+# ExecStart=
+# ExecStart=/usr/bin/spill serve --config %h/.config/spill/spill.toml
+
+# Other local users can also open the web interface. Remove this line to disable it.
+web_listen = "127.0.0.1:8080"
