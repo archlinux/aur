@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=zmcl
+Comment=Minecraft, with less overhead
+Exec=zmcl gui
+Icon=zmcl
+Terminal=false
+Categories=Game;
+StartupWMClass=zmcl
