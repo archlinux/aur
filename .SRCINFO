@@ -1,6 +1,6 @@
 pkgbase = concat-bin
 	pkgdesc = Free and open-source CapCut replacement, a video editor with a Rust engine (upstream binary)
-	pkgver = 0.2.11
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://github.com/jub0t/Concat
 	arch = x86_64
@@ -24,13 +24,13 @@ pkgbase = concat-bin
 	depends = hicolor-icon-theme
 	provides = concat
 	conflicts = concat
-	noextract = concat-bin-0.2.11-x86_64.deb
-	noextract = concat-bin-0.2.11-aarch64.deb
+	noextract = concat-bin-0.2.12-x86_64.deb
+	noextract = concat-bin-0.2.12-aarch64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = concat-bin-0.2.11-x86_64.deb::https://github.com/jub0t/Concat/releases/download/v0.2.11/Concat-0.2.11-linux-x86_64.deb
-	sha256sums_x86_64 = 38babfd7a29e3859d67c12dedab7c1ccaa851fd97baf3fe14bcaa9a729839eea
-	source_aarch64 = concat-bin-0.2.11-aarch64.deb::https://github.com/jub0t/Concat/releases/download/v0.2.11/Concat-0.2.11-linux-aarch64.deb
-	sha256sums_aarch64 = 4295715f4f89f25f94d23e3db7ae4120c8961424c5c81e1f25d7382ecba3b558
+	source_x86_64 = concat-bin-0.2.12-x86_64.deb::https://github.com/jub0t/Concat/releases/download/v0.2.12/Concat-0.2.12-linux-x86_64.deb
+	sha256sums_x86_64 = b3856dacc4d81e00f7e1d95d7a02dba095a9741deab6161c7297bb8a7fb39dfb
+	source_aarch64 = concat-bin-0.2.12-aarch64.deb::https://github.com/jub0t/Concat/releases/download/v0.2.12/Concat-0.2.12-linux-aarch64.deb
+	sha256sums_aarch64 = 1931236d5ae5e57cb8a085e6318b5269fd0901f48665da63aaf74eb6cfe5a064
 
 pkgname = concat-bin
