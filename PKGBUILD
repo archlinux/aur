@@ -12,10 +12,17 @@
 
 pkgname=perefil-bin
 pkgver=0.687
-pkgrel=1
+pkgrel=2
 pkgdesc='Peregrine Fil-C: memory-safe C/C++ compiler and runtime (prebuilt, emits APEs)'
 arch=('x86_64')
 url='https://fil-c.org/'
+# AUR-only metadata: what people actually type into the AUR search box.
+keywords=(
+  'fil-c' 'filc' 'perefil'
+  'memory-safety' 'memory-safe' 'memory-errors' 'sanitizer'
+  'compiler' 'c' 'cpp' 'clang' 'toolchain'
+  'ape' 'cosmopolitan' 'garbage-collector' 'capability'
+)
 license=('Apache-2.0' 'BSD-2-Clause' 'ISC')
 depends=('linux-api-headers')
 optdepends=(
@@ -92,6 +99,15 @@ Gotchas
 * If /proc/sys/fs/binfmt_misc has a DOSWin (PE) handler (wine-binfmt), running
   an APE executes the Windows/x86_64 side through Wine. Run the side file
   (./hello.com.dbg) or use --filc-no-ape to stay native.
+* Running the ARM64 half under qemu-user needs a large guest VA reservation,
+  otherwise it dies with "QEMU internal SIGSEGV {code=MAPERR}" 4 times out of 5:
+      qemu-aarch64 -R 64G ./hello.aarch64.elf     # reliable
+      qemu-aarch64       ./hello.aarch64.elf      # flaky
+  48G is the smallest reservation that worked here, 32G still failed.
+* Known qemu-user limitation: Fil-C C++ binaries that use std::shared_ptr crash
+  in the ARM64 half under qemu-user 11.1.3 (0/3 with any -R or -cpu value),
+  while the same binary works natively on x86_64. Use real ARM64 hardware or a
+  full-system emulator to validate those.
 * pizfix/os-include links point at /usr/include/{linux,asm,asm-generic}, i.e.
   at linux-api-headers; they are created at package build time.
 * Expect a real slowdown vs native clang (author: 1.5-5x, older docs ~4x) and
