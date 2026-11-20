@@ -1,6 +1,6 @@
 pkgbase = kalign3
-	pkgver = 3.5.1
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://github.com/TimoLassmann/kalign
 	arch = x86_64
 	license = Apache-2.0
@@ -13,8 +13,8 @@ pkgbase = kalign3
 	makedepends = pybind11
 	makedepends = python-numpy
 	makedepends = python-biopython
-	source = kalign3-3.5.1.tar.gz::https://github.com/TimoLassmann/kalign/archive/refs/tags/v3.5.1.tar.gz
-	sha256sums = 983bfd7da76010d59c3de3bae3d977cac78642c5eb061009dd12b11b9db5190d
+	source = kalign3-4.0.0.tar.gz::https://github.com/TimoLassmann/kalign/archive/refs/tags/v4.0.0.tar.gz
+	sha256sums = 3292ac61a6d2af195e5100650b26cf87dcab75d14167ce39d5b4d5b78ebe5b77
 
 pkgname = kalign3
 	pkgdesc = A fast and accurate multiple sequence alignment algorithm (v3)
