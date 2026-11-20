@@ -2,7 +2,7 @@
 
 pkgname=waydroid-tray
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE Plasma system tray launcher for Waydroid apps and sessions"
 arch=('any')
 url="https://github.com/Natetronn/waydroid-tray"

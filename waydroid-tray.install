@@ -2,5 +2,5 @@ post_install() {
   echo "==> Open \"Waydroid Tray\" from the application launcher. From then on it"
   echo "    starts at login; turn that off with Start at Login in its menu or in"
   echo "    System Settings > Autostart."
-  echo "==> Waydroid must be initialized first (sudo waydroid init)."
+  echo "==> Waydroid must be initialized first: run \"waydroid init\" as root."
 }
