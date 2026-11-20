@@ -2,7 +2,7 @@
 
 _name=iris
 pkgname=${_name}-autocomplete
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Shell auto-completion tool that works like code editor''s IntelliSense.'
 url="https://github.com/versenilvis/${_name}"
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d72febb345a215af7759d7da3415af5bf6a4c12a744e706d9778dcf3e2ae7f25')
+sha256sums=('1c5e40b5078faa79768e5e5996f438c2ade9108d61717a5b7a76e675892cd638')
 
 _srcdir="IRIS-${pkgver}"
 
