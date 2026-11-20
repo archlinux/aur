@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="python-kajson"
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Powerful universal JSON encoder/decoder for Python objects"
 
@@ -16,7 +16,7 @@ depends=('python' 'python-pydantic' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
-sha256sums=('57ef84b04a2522872247335f05dbe58b48e031ea0e0ad209b3a58c54c27a67be')
+sha256sums=('20896cf29c96a871746b726581c97b5d3659a82030f63ed245bf8b1e07c68ce2')
 
 
 build() {
