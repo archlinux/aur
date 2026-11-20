@@ -1,0 +1,4 @@
+[lua-lusc_luv]
+source = "git"
+git = "https://github.com/svermeulen/lusc_luv.git"
+prefix = "v"

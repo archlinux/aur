@@ -1,0 +1,30 @@
+pkgbase = lua-lusc_luv
+	pkgdesc = Structured Async/Concurrency for Lua using Luv
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/svermeulen/lusc_luv
+	arch = any
+	license = MIT
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	makedepends = lua54
+	makedepends = luarocks
+	source = https://github.com/svermeulen/lusc_luv/archive/v4.0.0/lusc_luv-4.0.0.tar.gz
+	sha256sums = 27a4b49dfe52be224c9dcedaf663005e35fe8ce1158f85f36c45f6b78378c9b0
+
+pkgname = lua-lusc_luv
+	depends = lua-luv
+
+pkgname = lua51-lusc_luv
+	depends = lua51-luv
+
+pkgname = lua52-lusc_luv
+	depends = lua52-luv
+
+pkgname = lua53-lusc_luv
+	depends = lua53-luv
+
+pkgname = lua54-lusc_luv
+	depends = lua54-luv
