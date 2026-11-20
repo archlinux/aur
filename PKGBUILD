@@ -9,12 +9,12 @@
 #
 # _tag and pkgver are bumped by .github/workflows/publish-aur.yml when a release
 # is published. pkgver is the tag without the leading "v" and the "-alpha" suffix.
-_tag=v1.4.0.6103
+_tag=v1.4.0.6109
 # The launcher is a separate repository with no tags, so it is pinned by commit.
-_launcher_commit=e9668076bae4f6d95456d193066a6042452c5726
+_launcher_commit=fe26dac2ba8490602cb303e1c852307d37cbe82a
 pkgbase=keeperfx-tux
 pkgname=('keeperfx-tux' 'keeperfx-tux-data' 'keeperfx-tux-launcher')
-pkgver=1.4.0.6103
+pkgver=1.4.0.6109
 # rel 2 (1.4.0.6103): build against Arch's own libcurl. Arch moved to OpenSSL 4
 # on 2026-11-10, and the prebuilt static libcurl linux.mk fetches calls the ENGINE
 # API that OpenSSL 4 removed, so the engine stopped linking and the package
@@ -37,7 +37,7 @@ pkgver=1.4.0.6103
 # rel 1 kept the previous stable's launcher pin, so it paired a month-newer
 # engine with a launcher lacking the RAR installer, the updater's engine stash
 # and the channel fixes.
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/ForkedInTime/keeperfx-tux-edition"
 license=('GPL-2.0-or-later')
@@ -81,7 +81,7 @@ source=(
 noextract=("keeperfx-tux-${pkgver}-full.7z")
 sha256sums=(
   'SKIP'
-  '4e73598938e8aae3ae421d87e5cad6407801b1f5cdef887e5912eab84febf753'
+  '7e55af2bf160c43b9ab6b15c2bb3c57943d3145fac5fed7a846dcbab0cedb8d8'
   'SKIP'
   '57f83c03c54dbc76535e22cc051811875bd572fdbc6e0457e9b63df92afe1de3'
   '72d72a8e7c1221208eed0622a6e323399ba8cb139ab8840d620ef2697623a1b4'
