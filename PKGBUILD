@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction
 pkgname=zcalld-bin
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Compact Linux AI gateway built on zcall with native zplugin extensions (binary)'
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ backup=('etc/zcalld/config.conf')
 options=('!strip')
 source_x86_64=("$url/releases/download/v$pkgver/zcalld-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/zcalld-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('e7ff2318bb51b14324a7f657adbfd135541758214af7ecf567794b9a97a3ea30')
-sha256sums_aarch64=('d4eb27a6367150c8378a80301cbca37ba56ecb99a7b588b4b6d959bc2c202474')
+sha256sums_x86_64=('93234715421e4f95de43191d77c6fdf4b7cf923adb9b8df15beed0deb854b96a')
+sha256sums_aarch64=('ff9e38cd0c4ba5c3480613557c5cae9d31bdb86aa360238866419c92f05e6dba')
 
 package() {
   cd "zcalld-$pkgver-$CARCH-unknown-linux-gnu"

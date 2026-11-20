@@ -1,6 +1,6 @@
 pkgbase = zcalld-bin
 	pkgdesc = Compact Linux AI gateway built on zcall with native zplugin extensions (binary)
-	pkgver = 0.2.2
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/zcalld
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = zcalld-bin
 	optdepends = zcalld-compat>=0.1.5: privacy, audit history, OAuth accounts and community plugins
 	optdepends = zcall-gui: optional native desktop interface
 	optdepends = libsecret: configure Zed credentials through Secret Service
-	provides = zcalld=0.2.2
+	provides = zcalld=0.2.4
 	conflicts = zcalld
 	options = !strip
 	backup = etc/zcalld/config.conf
-	source_x86_64 = https://github.com/LIghtJUNction/zcalld/releases/download/v0.2.2/zcalld-0.2.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = e7ff2318bb51b14324a7f657adbfd135541758214af7ecf567794b9a97a3ea30
-	source_aarch64 = https://github.com/LIghtJUNction/zcalld/releases/download/v0.2.2/zcalld-0.2.2-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = d4eb27a6367150c8378a80301cbca37ba56ecb99a7b588b4b6d959bc2c202474
+	source_x86_64 = https://github.com/LIghtJUNction/zcalld/releases/download/v0.2.4/zcalld-0.2.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 93234715421e4f95de43191d77c6fdf4b7cf923adb9b8df15beed0deb854b96a
+	source_aarch64 = https://github.com/LIghtJUNction/zcalld/releases/download/v0.2.4/zcalld-0.2.4-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ff9e38cd0c4ba5c3480613557c5cae9d31bdb86aa360238866419c92f05e6dba
 
 pkgname = zcalld-bin
