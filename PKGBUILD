@@ -2,12 +2,12 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=sparrow-wifi-git
-pkgver=r400.b4f4592
+pkgver=r414.3789fd2
 pkgrel=1
 pkgdesc="Next-Gen GUI-based WiFi and Bluetooth Analyzer for Linux"
 arch=('any')
 url="https://github.com/ghostop14/sparrow-wifi"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('aircrack-ng'
          'iw'
          'polkit'
@@ -16,10 +16,12 @@ depends=('aircrack-ng'
          'python-manuf'
          'python-matplotlib'
          'python-numpy'
-         'python-pyqt6-charts'
-         'python-pyqt6-sip'
-         'python-qscintilla-qt6'
-         'qt6-declarative'
+         'python-requests'
+	 'python-pyqt5-chart'
+         'python-pyqt5-sip'
+         'python-qscintilla-qt5'
+         'qt5-declarative'
+         'qt5-svg'
          'tk'
          'wireless_tools')
 makedepends=('git')
