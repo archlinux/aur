@@ -1,6 +1,6 @@
 pkgbase = nuvio-desktop
 	pkgdesc = A modern media hub desktop application (AppImge)
-	pkgver = 0.1.37_alpha
+	pkgver = 0.1.38_alpha
 	pkgrel = 1
 	url = https://github.com/NuvioMedia/NuvioDesktop
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = nuvio-desktop
 	conflicts = nuvio-desktop-bin
 	conflicts = nuvio
 	conflicts = nuvio-desktop-git
-	noextract = nuvio-0.1.37-alpha.AppImage
+	noextract = nuvio-0.1.38-alpha.AppImage
 	options = !strip
 	options = !debug
-	source = Nuvio-Linux-x86_64-0.1.37-alpha.AppImage::https://github.com/NuvioMedia/NuvioDesktop/releases/download/0.1.37-alpha/Nuvio-Linux-x86_64-0.1.37-alpha.AppImage
-	sha256sums = 1fb2807309c4b3b5f7ea9b55d56f097e358f8eafda021fa5ddb2b188c35f6fc0
+	source = Nuvio-Linux-x86_64-0.1.38-alpha.AppImage::https://github.com/NuvioMedia/NuvioDesktop/releases/download/0.1.38-alpha/Nuvio-Linux-x86_64-0.1.38-alpha.AppImage
+	sha256sums = 4efcd0575c6cb8c212895209327766fa76e9dcdd9dd863023b9ce445f6a610cd
 
 pkgname = nuvio-desktop
