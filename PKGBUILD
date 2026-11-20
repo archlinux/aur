@@ -2,7 +2,7 @@
 
 pkgname=libz-rs-sys-git
 pkgver=0.6.8.r36.gf6a2b3f
-pkgrel=1
+pkgrel=2
 pkgdesc="A zlib implementation in Rust available as a C dynamic library"
 arch=('i686' 'x86_64')
 url="https://trifectatech.org/projects/zlib-rs/"
@@ -20,9 +20,11 @@ prepare() {
   cd "zlib-rs/libz-rs-sys-cdylib"
 
   if [ ! -f "Cargo.lock" ]; then
-    cargo update
+    cargo generate-lockfile
   fi
-  cargo fetch
+  cargo fetch \
+    --locked \
+    --target host-tuple
 }
 
 pkgver() {
