@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.41.0.r856.g33111f3212
+pkgver=0.42.0.r191.gd11ffba253
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -9,8 +9,7 @@ license=('GPL-2.0-or-later')
 url='https://mpv.io/'
 depends=(
     'alsa-lib'
-    'ffmpeg-git'
-    'gcc-libs'
+    'ffmpeg'
     'glibc'
     'hicolor-icon-theme'
     'jack'
@@ -24,6 +23,7 @@ depends=(
     'libdisplay-info'
     'libdrm'
     'libdvdnav'
+    'libdvdread'
     'libgl'
     'libjpeg-turbo'
     'libpipewire'
@@ -62,7 +62,7 @@ makedepends=(
     'python-docutils'
     'vulkan-headers'
     'wayland-protocols'
-    # for satisfying pkgcheck:
+    # for satisfying namcap:
     'python-pyqt6'
     'python-pyqtgraph')
 optdepends=(
@@ -100,6 +100,7 @@ build() {
         -Dcdda='enabled' \
         -Dcplugins='enabled' \
         -Ddvbin='enabled' \
+        -Ddvda='enabled' \
         -Ddvdnav='enabled' \
         -Diconv='enabled' \
         -Djavascript='enabled' \
