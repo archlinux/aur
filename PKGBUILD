@@ -134,7 +134,7 @@ _cache_pinned() {
   mkdir -p "$cache"
   for file in $(awk -F'\t' '$1 == "source" { print $2 }' "$1"); do
     if [[ ! -f $srcdir/$file ]]; then
-      error "vtium's $1 pins $file, which this recipe does not download"
+      printf "vtium's %s pins %s, which this recipe does not download\n" "$1" "$file" >&2
       return 1
     fi
     ln -sf "$srcdir/$file" "$cache/$file"
