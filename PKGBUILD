@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction <lightjunction@users.noreply.github.com>
 pkgname=zcalld-compat
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Optional privacy worker and community plugin compatibility for zcalld'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go>=1.26.8')
 optdepends=('bun: JavaScript community plugin runtime' 'git: install pinned Git community sources' 'zcalld: native gateway and adapters')
 options=('!lto')
 source=("$pkgname-$pkgver-source.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('8d1e3bfa92fa31ea059a5303dccb187fafc4fa039ee007a9b34314f62a894169')
+sha256sums=('a5a2566a96c6ddae13b288af0f3068728f3ee54b73faf8d493ef6cbecad37368')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -25,7 +25,7 @@ check() {
   cd "$srcdir/$pkgname-$pkgver"
   ./zcalld-privacy --version
   ./zcalld-pluginctl --version
-  go test -mod=readonly ./privacy ./internal/redact ./internal/lazyre ./internal/pii/guard
+  go test -mod=readonly ./cmd/zcalld-privacy ./privacy ./internal/redact ./internal/lazyre ./internal/pii/guard
 }
 
 package() {

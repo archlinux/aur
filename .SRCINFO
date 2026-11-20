@@ -1,6 +1,6 @@
 pkgbase = zcalld-compat
 	pkgdesc = Optional privacy worker and community plugin compatibility for zcalld
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/zcalld-compat
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = zcalld-compat
 	optdepends = git: install pinned Git community sources
 	optdepends = zcalld: native gateway and adapters
 	options = !lto
-	source = zcalld-compat-0.1.2-source.tar.gz::https://github.com/LIghtJUNction/zcalld-compat/releases/download/v0.1.2/zcalld-compat-0.1.2-source.tar.gz
-	sha256sums = 8d1e3bfa92fa31ea059a5303dccb187fafc4fa039ee007a9b34314f62a894169
+	source = zcalld-compat-0.1.3-source.tar.gz::https://github.com/LIghtJUNction/zcalld-compat/releases/download/v0.1.3/zcalld-compat-0.1.3-source.tar.gz
+	sha256sums = a5a2566a96c6ddae13b288af0f3068728f3ee54b73faf8d493ef6cbecad37368
 
 pkgname = zcalld-compat
