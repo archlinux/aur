@@ -1,7 +1,7 @@
 pkgname=nextendo-citron-bin
 _commit=d3df71e55
 pkgver=20261102.r${_commit}
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator (Citron nightly build from NextendoNetwork)"
 arch=('x86_64' 'aarch64')
 url="https://git.nextendo.network/NextendoNetwork/citron-nextendo"
