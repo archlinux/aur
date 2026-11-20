@@ -1,7 +1,7 @@
 # Maintainer: Dily Duan Yi Ong <dlo26@cam.ac.uk>
 pkgname=python-unimpeded
 _name=${pkgname#python-}
-pkgver=1.2.9
+pkgver=1.2.10
 pkgrel=1
 pkgdesc="Universal model comparison & parameter estimation over diverse datasets"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('1b016b0b2a0a2dac682f5ca3d5060bd19bea42069f0f1f3d8128aa30ed78e23d')
+sha256sums=('8b8df15a794e1f16ceb06e160a519c3d10cd54ff8576c48bb790aa44668e1acc')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
