@@ -4,15 +4,15 @@
 # Contributor: Stephen Smith <stephen304@gmail.com>
 
 pkgbase=lua-socket-git
-pkgname=(lua-socket-git lua51-socket-git lua52-socket-git lua53-socket-git)
-pkgver=3.0.0.r0.g88c8a85
+pkgname=(lua-socket-git lua51-socket-git lua52-socket-git lua53-socket-git lua54-socket-git)
+pkgver=3.1.0.r76.g3518798
 pkgrel=1
 pkgdesc='Networking support library for the Lua language'
 arch=('x86_64')
 url='https://github.com/lunarmodules/luasocket'
 license=('MIT')
 #options=('debug')
-makedepends=('lua' 'lua51' 'lua52' 'lua53' 'git')
+makedepends=('lua' 'lua51' 'lua52' 'lua53' 'lua54' 'git')
 source=("git+https://github.com/lunarmodules/luasocket.git")
 md5sums=('SKIP')
 
@@ -20,6 +20,7 @@ prepare() {
   cp -a luasocket luasocket-51
   cp -a luasocket luasocket-52
   cp -a luasocket luasocket-53
+  cp -a luasocket luasocket-54
 }
 
 pkgver() {
@@ -38,8 +39,11 @@ build() {
   cd "$srcdir"/luasocket-53
   MYCFLAGS="$CFLAGS" MYLDFLAGS=$LDFLAGS make LUAV=5.3 linux
 
-  cd "$srcdir"/luasocket
+  cd "$srcdir"/luasocket-54
   MYCFLAGS="$CFLAGS" MYLDFLAGS=$LDFLAGS make LUAV=5.4 linux
+
+  cd "$srcdir"/luasocket
+  MYCFLAGS="$CFLAGS" MYLDFLAGS=$LDFLAGS make LUAV=5.5 linux
 }
 
 package_lua51-socket-git() {
@@ -71,11 +75,20 @@ package_lua53-socket-git() {
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
+package_lua54-socket-git() {
+  depends=('lua54')
+  provides=("lua54-socket=$pkgver")
+  conflicts=('lua54-socket')
+  cd luasocket-54
+  make DESTDIR="$pkgdir" LUAV=5.4 prefix=/usr install-unix
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
 package_lua-socket-git() {
   depends=('lua')
   provides=("lua-socket=$pkgver")
   conflicts=('lua-socket')
   cd luasocket
-  make DESTDIR="$pkgdir" LUAV=5.4 prefix=/usr install-unix
+  make DESTDIR="$pkgdir" LUAV=5.5 prefix=/usr install-unix
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
