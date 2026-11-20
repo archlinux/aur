@@ -56,8 +56,8 @@ package_vtium() {
   # it enables no seatd daemon.
   depends=('bash' 'glibc' 'libgcc' 'libglvnd' 'libxkbcommon' 'mesa' 'seatd'
            'systemd-libs' 'vtium-terminfo')
-  optdepends=('vtium-fonts: the fonts the shipped frits name'
-              'kbd: console fonts, which vtium draws when no frit is set'
+  optdepends=("vtium-fonts: the rest of vtium's catalog of font sets, and the fonts they draw with"
+              "kbd: console fonts, which vconsole.conf's FONT= and vtium.conf's font-name can name"
               'kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon')
   # The other console packages, so a machine holds one at a time. Each of
   # them provides vtium, so a package that depends on vtium is met by any.
