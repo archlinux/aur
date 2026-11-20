@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full
-pkgver=0.41.0
-pkgrel=2
+pkgver=0.42.0
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
 license=('GPL-2.0-or-later')
@@ -10,7 +10,6 @@ url='https://mpv.io/'
 depends=(
     'alsa-lib'
     'ffmpeg'
-    'gcc-libs'
     'glibc'
     'hicolor-icon-theme'
     'jack'
@@ -24,6 +23,7 @@ depends=(
     'libdisplay-info'
     'libdrm'
     'libdvdnav'
+    'libdvdread'
     'libgl'
     'libjpeg-turbo'
     'libpipewire'
@@ -61,7 +61,7 @@ makedepends=(
     'python-docutils'
     'vulkan-headers'
     'wayland-protocols'
-    # for satisfying pkgcheck:
+    # for satisfying namcap:
     'python-pyqt6'
     'python-pyqtgraph')
 optdepends=(
@@ -74,17 +74,8 @@ optdepends=(
 provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
-source=("https://github.com/mpv-player/mpv/archive/v${pkgver}/mpv-${pkgver}.tar.gz"
-        '010-mpv-vapoursynth-fix-001.patch'::'https://github.com/mpv-player/mpv/commit/75b2ccfeb1ce4ed5a40ac9860fa74f3d1265e13f.patch'
-        '020-mpv-vapoursynth-fix-002.patch'::'https://github.com/mpv-player/mpv/commit/fb6c700ecbc695ba355d998340a6e6ef9e625b70.patch')
-sha256sums=('ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209'
-            'fe357801d733565b4bda28c388b300d632f34b9d9c4b7b554437e6f0dbb034f4'
-            'cd97e8445e81ec90843d2b994f7d46eb675b2b05c09e5ec0be7895c4d78f5720')
-
-prepare() {
-    patch -d "mpv-${pkgver}" -Np1 -i "${srcdir}/010-mpv-vapoursynth-fix-001.patch"
-    patch -d "mpv-${pkgver}" -Np1 -i "${srcdir}/020-mpv-vapoursynth-fix-002.patch"
-}
+source=("https://github.com/mpv-player/mpv/archive/v${pkgver}/mpv-${pkgver}.tar.gz")
+sha256sums=('bcfebbfa2b65a6d88dc97ea18117831072373e38b5785a2afb874ed4df5070dd')
 
 build() {
     arch-meson "mpv-${pkgver}" build \
@@ -98,6 +89,7 @@ build() {
         -Dcdda='enabled' \
         -Dcplugins='enabled' \
         -Ddvbin='enabled' \
+        -Ddvda='enabled' \
         -Ddvdnav='enabled' \
         -Diconv='enabled' \
         -Djavascript='enabled' \
@@ -110,6 +102,7 @@ build() {
         -Dpthread-debug='disabled' \
         -Drubberband='enabled' \
         -Dsdl2-gamepad='enabled' \
+        -Dsubrandr='disabled' \
         -Duchardet='enabled' \
         -Duwp='disabled' \
         -Dvapoursynth='enabled' \
@@ -135,6 +128,7 @@ build() {
         -Dsndio='enabled' \
         -Dwasapi='disabled' \
         \
+        -Damf='disabled' \
         -Dcaca='enabled' \
         -Dcocoa='disabled' \
         -Dd3d11='disabled' \
