@@ -1,6 +1,6 @@
 pkgbase = gtm-player-bin
 	pkgdesc = Reimagined terminal audio player with background daemon, YouTube/Spotify, radio and podcasts (prebuilt binary)
-	pkgver = 0.2.97
+	pkgver = 0.2.98
 	pkgrel = 1
 	url = https://gtmd.dev
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = gtm-player-bin
 	optdepends = pipewire-alsa: PipeWire audio output through the ALSA backend
 	provides = gtm-player
 	conflicts = gtm-player
-	source = LICENSE-0.2.97::https://raw.githubusercontent.com/craftty-org/gtm/v0.2.97/LICENSE
+	source = LICENSE-0.2.98::https://raw.githubusercontent.com/craftty-org/gtm/v0.2.98/LICENSE
 	sha256sums = 74baee093d1aaf8c77670ceafecb2185b4ce18cbd3e4237e9cac60617f3b5d20
-	source_x86_64 = gtm-arch-x86_64-0.2.97.tar.gz::https://github.com/craftty-org/gtm/releases/download/v0.2.97/gtm-arch-x86_64.tar.gz
-	sha256sums_x86_64 = c8ee00aaee8d1f3d25664ebb3d5379db6772d1e6299cc0849198c862c7122f87
-	source_aarch64 = gtm-arch-aarch64-0.2.97.tar.gz::https://github.com/craftty-org/gtm/releases/download/v0.2.97/gtm-arch-aarch64.tar.gz
-	sha256sums_aarch64 = 3731b4b8e569af2963b3f3855d790d02324da92ceb890bf47ef2b11f462f8c8d
+	source_x86_64 = gtm-arch-x86_64-0.2.98.tar.gz::https://github.com/craftty-org/gtm/releases/download/v0.2.98/gtm-arch-x86_64.tar.gz
+	sha256sums_x86_64 = a79f6dbe3e9ace69879472e818533c3d9d98b9a0682babf60d6d32625083c07a
+	source_aarch64 = gtm-arch-aarch64-0.2.98.tar.gz::https://github.com/craftty-org/gtm/releases/download/v0.2.98/gtm-arch-aarch64.tar.gz
+	sha256sums_aarch64 = a48bb63f7c8f0897c21be32ef5d8a1d686d5a9ed77c5ade140521dd121c08c79
 
 pkgname = gtm-player-bin
