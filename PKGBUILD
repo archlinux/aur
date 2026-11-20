@@ -1,7 +1,7 @@
 # Maintainer: duanluan <duanluan@outlook.com>
 
 pkgname=coze
-pkgver=1.1.49
+pkgver=1.1.50
 pkgrel=1
 pkgdesc='Coze desktop app repackaged from the official macOS release'
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=('coze-bin')
 options=('!strip' '!lto')
 # buildId is a per-release CDN path segment maintained by upstream's update
 # service; update.sh rewrites it together with pkgver.
-_buildid=554528883
+_buildid=568518630
 source=(
   "coze-${pkgver}-mac-x64.dmg::https://lf3-cdn-tos.bytegoofy.com/obj/tron-demo/7617773946401724698/${_buildid}/${pkgver}/darwin-x64/扣子-v${pkgver}-darwin-x64.dmg"
   'coze.sh'
@@ -33,7 +33,7 @@ source=(
   'prepare-app.mjs'
 )
 sha256sums=(
-  '67d14336cca540a8edd764ccf7dc4dd13322710470fedbe1350a6d1ca27b19cf'
+  '9e86e28535d83d63961e80c80d3ee0bd7843f4943a582c40791139ff3885973a'
   'SKIP'
   'SKIP'
   'SKIP'
