@@ -1,0 +1,19 @@
+pkgbase = windowrun-bin
+	pkgdesc = A fzf-based app launcher
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lucas-farias07/windowrun
+	arch = x86_64
+	license = MPL-2.0
+	depends = fzf
+	provides = windowrun
+	conflicts = windowrun
+	options = !strip
+	source = README-1.0.0.md::https://raw.githubusercontent.com/lucas-farias07/windowrun/v1.0.0/README.md
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/lucas-farias07/windowrun/v1.0.0/LICENSE
+	sha256sums = 6c2f85fb4bc19d1ba5bfa62a743768150dce13fb472b934172571aca41427543
+	sha256sums = a7aa7cc22f8dcfeec782a313f94a895c820b33db6d4d080e0dc7285853bdee75
+	source_x86_64 = windowrun-x86_64-1.0.0::https://github.com/lucas-farias07/windowrun/releases/download/v1.0.0/windowrun
+	sha256sums_x86_64 = c80b261687d403652fd0cda6479306f1890f91badfcd0b0a1c2b7fca2eb6ed38
+
+pkgname = windowrun-bin

@@ -1,0 +1,5 @@
+[windowrun-bin]
+source = "github"
+github = "lucas-farias07/windowrun"
+use_latest_release = true
+prefix = "v"
