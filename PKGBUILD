@@ -3,8 +3,8 @@
 
 pkgname='openwebrx-plus-git'
 _pkgname='openwebrx'
-pkgver=1.2.130.r2.g45416258
-pkgrel=4
+pkgver=1.2.131.r1.g4f960dde
+pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
