@@ -2,9 +2,10 @@
 
 pkgbase=jdk-lts
 pkgname=('jre-lts' 'jdk-lts' 'jdk-lts-doc')
-pkgver=25.0.4.1
-_build=7
-_hash=eda28b422d69454c901d71e19e354064
+pkgver=25.0.5.1
+_docver=25.0.5.0.2
+_build=1
+_hash=44b71484ae7249ee9ede9b5653dc3fa7
 _majver="${pkgver%%.*}"
 pkgrel=2
 pkgdesc='Oracle Java'
@@ -16,7 +17,7 @@ makedepends=(
     # to satisfy pkgcheck:
     'alsa-lib')
 source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux-x64_bin.tar.gz"
-        "https://download.oracle.com/otn_software/java/jdk/${pkgver%.*}+${_build}/${_hash}/jdk-${pkgver%.*}_doc-all.zip"
+        "https://download.oracle.com/otn_software/java/jdk/${_docver}+${_build}/${_hash}/jdk-${_docver}_doc-all.zip"
         "jdk-${_majver}_doc-license.html"::"https://download.oracle.com/otndocs/jcp/java_se-${_majver}-final-spec/license.html"
         'java.desktop'
         'jconsole.desktop'
@@ -24,9 +25,9 @@ source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux
         'java_16.png'
         'java_48.png'
         'LICENSE')
-noextract=("jdk-${pkgver%.*}_doc-all.zip")
-sha256sums=('dd7e7f51d23bcffe85f1a439577ce1c0190a33417b34afdb338f9b3897bdeaec'
-            '74673f5f6116845322fe3f3d0929ce6f047a7d992b652da1af5492cb929e9b81'
+noextract=("jdk-${_docver}_doc-all.zip")
+sha256sums=('3d40d69461200594380ac84c17be6224539022028730cffe043ac70c41ffd1d5'
+            '8d094221c9be3ecacf29e18ee0fad2b93d91617ac057826515c4418521774036'
             '238ad31acf952842a3161837b70ddc1debb4a9d52f8248bcd7732bed5685976a'
             'fcfed2eb57f8c7948a84905827c2ec0b6ff0ff70b47a338b6329be2bf4905589'
             '9e3a89d09f130fbbb92e1e997045ce0c268aee749ab415fa780cb3c156d22246'
@@ -74,7 +75,7 @@ _jre_backup=("etc/java-${pkgbase}/jaxp.properties"
 
 prepare() {
     mkdir -p "jdk-doc-${pkgver}"
-    bsdtar -x -f "jdk-${pkgver%.*}_doc-all.zip" -C "jdk-doc-${pkgver}" --strip-components='1'
+    bsdtar -x -f "jdk-${_docver}_doc-all.zip" -C "jdk-doc-${pkgver}" --strip-components='1'
     html2text "jdk-${_majver}_doc-license.html" > LICENSE-doc
 }
 

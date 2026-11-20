@@ -1,15 +1,15 @@
 pkgbase = jdk-lts
 	pkgdesc = Oracle Java
-	pkgver = 25.0.4.1
+	pkgver = 25.0.5.1
 	pkgrel = 2
 	url = https://www.oracle.com/java/
 	arch = x86_64
 	license = LicenseRef-Custom
 	makedepends = python-html2text
 	makedepends = alsa-lib
-	noextract = jdk-25.0.4_doc-all.zip
-	source = https://download.oracle.com/java/25/archive/jdk-25.0.4.1_linux-x64_bin.tar.gz
-	source = https://download.oracle.com/otn_software/java/jdk/25.0.4+7/eda28b422d69454c901d71e19e354064/jdk-25.0.4_doc-all.zip
+	noextract = jdk-25.0.5.0.2_doc-all.zip
+	source = https://download.oracle.com/java/25/archive/jdk-25.0.5.1_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/25.0.5.0.2+1/44b71484ae7249ee9ede9b5653dc3fa7/jdk-25.0.5.0.2_doc-all.zip
 	source = jdk-25_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-25-final-spec/license.html
 	source = java.desktop
 	source = jconsole.desktop
@@ -17,8 +17,8 @@ pkgbase = jdk-lts
 	source = java_16.png
 	source = java_48.png
 	source = LICENSE
-	sha256sums = dd7e7f51d23bcffe85f1a439577ce1c0190a33417b34afdb338f9b3897bdeaec
-	sha256sums = 74673f5f6116845322fe3f3d0929ce6f047a7d992b652da1af5492cb929e9b81
+	sha256sums = 3d40d69461200594380ac84c17be6224539022028730cffe043ac70c41ffd1d5
+	sha256sums = 8d094221c9be3ecacf29e18ee0fad2b93d91617ac057826515c4418521774036
 	sha256sums = 238ad31acf952842a3161837b70ddc1debb4a9d52f8248bcd7732bed5685976a
 	sha256sums = fcfed2eb57f8c7948a84905827c2ec0b6ff0ff70b47a338b6329be2bf4905589
 	sha256sums = 9e3a89d09f130fbbb92e1e997045ce0c268aee749ab415fa780cb3c156d22246
@@ -45,10 +45,10 @@ pkgname = jre-lts
 	provides = jre=25
 	provides = java-runtime=25
 	provides = java-runtime-jdk25
-	provides = jre25-jdk=25.0.4.1-2
+	provides = jre25-jdk=25.0.5.1-2
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-jdk=25
-	provides = jre25-jdk-headless=25.0.4.1-2
+	provides = jre25-jdk-headless=25.0.5.1-2
 	conflicts = jdk-lts
 	backup = etc/java-jdk-lts/jaxp.properties
 	backup = etc/java-jdk-lts/jaxp-strict.properties.template
@@ -87,15 +87,15 @@ pkgname = jdk-lts
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=25
 	provides = java-environment-jdk=25
-	provides = jdk25-jdk=25.0.4.1-2
+	provides = jdk25-jdk=25.0.5.1-2
 	provides = jre=25
 	provides = jre-lts
 	provides = java-runtime=25
 	provides = java-runtime-jdk25
-	provides = jre25-jdk=25.0.4.1-2
+	provides = jre25-jdk=25.0.5.1-2
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-jdk=25
-	provides = jre25-jdk-headless=25.0.4.1-2
+	provides = jre25-jdk-headless=25.0.5.1-2
 	conflicts = jre-lts
 	backup = etc/java-jdk-lts/jaxp.properties
 	backup = etc/java-jdk-lts/jaxp-strict.properties.template
