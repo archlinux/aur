@@ -4,7 +4,7 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=uq
-pkgver=0.3.17
+pkgver=0.3.20
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
 # The uq-hyprland-pin this release's config/hypr/base.lua is tested with: equal to
@@ -16,17 +16,17 @@ arch=(x86_64)
 url="https://github.com/asafelobotomy/uq"
 license=(MIT)
 depends=("uq-hyprland-pin>=$_pin" dbus glib2 shared-mime-info qt6ct gcc-libs 'quickshell>=0.3.1' 'quickshell<0.4' brightnessctl upower systemd noto-fonts-emoji gnome-keyring
-  kirigami qqc2-desktop-style qt6-declarative kvantum polkit kcolorscheme kconfig)
+  kirigami qqc2-desktop-style qt6-declarative kvantum polkit kcolorscheme kconfig
+  plasma-integration papirus-icon-theme adw-gtk-theme inter-font ttf-jetbrains-mono
+  xdg-desktop-portal-gtk)
 install=uq.install
 makedepends=(cargo qt6-base qt6-declarative kcolorscheme kconfig)
 checkdepends=(lua qt6-declarative)
 optdepends=(
+  'plasma5-integration: Qt 5 apps follow the uQ theme (with kvantum-qt5)'
+  'kvantum-qt5: the uQ widget style for Qt 5 apps'
   'kitty: default terminal (SUPER+Return)'
-  'adw-gtk-theme: makes GTK 3 apps follow the uQ theme (stock Adwaita stays light)'
-  'papirus-icon-theme: icon theme used by every uQ theme'
   'bibata-cursor-theme: cursor theme used by every uQ theme'
-  'ttf-jetbrains-mono: monospace font'
-  'inter-font: interface font'
   'wireplumber: volume keys and the Sound settings page'
   'playerctl: media keys'
   'networkmanager: network status in the shell and the Network settings page'
@@ -57,7 +57,7 @@ backup=(etc/pam.d/uq-greetd etc/pam.d/uq-greeter etc/pam.d/uq-lock etc/pam.d/uq-
 # (so its checksum) can change. The release workflow uploads exactly this file and prints its sum.
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
 # The release asset's sha256 for this tag; update it with pkgver at each release (docs/releasing.md).
-sha256sums=('760beca395bf51474ea99871024ff55c243a40a239437c8d5303a1f138689909')
+sha256sums=('8e6fe3294369209f45c1488bf7306994b0c518622bb02ae59a5437de1cfed2b4')
 
 prepare() {
   cd "$srcdir/$pkgname-$_tag"
