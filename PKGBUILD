@@ -1,16 +1,16 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=hsluv
-pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua54-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.1
 _sha=ff1bcf087b2b352ed5903d6d407b5e394b7a0496
 _rockrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Human-friendly HSL'
 arch=(any)
 url="https://github.com/$_rockname/$_rockname-lua"
 license=(MIT)
-makedepends=(lua lua53 lua52 lua51 luarocks)
+makedepends=(lua lua54 lua53 lua52 lua51 luarocks)
 _archive="$_rockname-$pkgver-$_rockrel"
 source=("$_archive.tar.gz::$url/archive/$_sha.tar.gz")
 sha256sums=('da7369b71df1e5398208dcff328cebc00d9a2546a0515ca9419ae9c85b3a7386')
@@ -23,6 +23,11 @@ _package_helper() {
 
 package_lua-hsluv() {
   depends+=(lua)
+  _package_helper 5.5
+}
+
+package_lua54-hsluv() {
+  depends+=(lua54)
   _package_helper 5.4
 }
 

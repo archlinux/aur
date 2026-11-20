@@ -1,11 +1,12 @@
 pkgbase = lua-hsluv
 	pkgdesc = Human-friendly HSL
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hsluv/hsluv-lua
 	arch = any
 	license = MIT
 	makedepends = lua
+	makedepends = lua54
 	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
@@ -15,6 +16,9 @@ pkgbase = lua-hsluv
 
 pkgname = lua-hsluv
 	depends = lua
+
+pkgname = lua54-hsluv
+	depends = lua54
 
 pkgname = lua53-hsluv
 	depends = lua53
