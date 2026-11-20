@@ -1,6 +1,6 @@
 pkgbase = mangayomi
 	pkgdesc = free and open source application for reading manga, novels, and watching animes
-	pkgver = 0.9.96
+	pkgver = 0.9.97
 	pkgrel = 1
 	url = https://github.com/kodjodevf/mangayomi
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = mangayomi
 	depends = pango
 	depends = webkit2gtk-4.1
 	options = !lto
-	source = mangayomi-0.9.96.tar.gz::https://github.com/kodjodevf/mangayomi/archive/refs/tags/v0.9.96.tar.gz
-	sha256sums = 56c2521d609aea6d4baa82d87f5b3332dbc2cf840d071f446a6c42c06c58d927
+	source = mangayomi-0.9.97.tar.gz::https://github.com/kodjodevf/mangayomi/archive/refs/tags/v0.9.97.tar.gz
+	sha256sums = 93791af26ff0bccdfcbd92a97b997bd5e90a9ff7c4068f030bdf583bdbcfd7b8
 
 pkgname = mangayomi
