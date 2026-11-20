@@ -3,8 +3,8 @@
 options=(!debug !strip)
 
 pkgname=msdfgen
-pkgver=1.13
-pkgrel=2
+pkgver=1.13.1
+pkgrel=1
 pkgdesc="Multi-channel signed distance field generator binary and library"
 url=https://github.com/Chlumsky/msdfgen
 arch=(x86_64)
