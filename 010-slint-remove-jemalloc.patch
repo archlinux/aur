@@ -1,7 +1,7 @@
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -153,7 +153,6 @@ icu_normalizer = { version = "2", default-features = false, features = ["compile
- icu_properties = { version = "2.2.0", features = ["compiled_data"] }
+@@ -152,7 +152,6 @@ icu_normalizer = { version = "2", default-features = false, features = ["compile
+ icu_properties = { version = "2", features = ["compiled_data"] }
  
  glow = { version = "0.18" }
 -tikv-jemallocator = { version = "0.7" }
@@ -10,7 +10,7 @@
  # Version floor only: the Metal surface code (renderer-skia) calls
 --- a/api/cpp/CMakeLists.txt
 +++ b/api/cpp/CMakeLists.txt
-@@ -109,10 +109,6 @@ if(SLINT_FEATURE_COMPILER AND NOT SLINT_COMPILER)
+@@ -141,10 +141,6 @@ if(SLINT_FEATURE_COMPILER AND NOT SLINT_COMPILER)
      if (SLINT_FEATURE_SDF_FONTS)
          list(APPEND slint_compiler_features "sdf-fonts")
      endif()
@@ -34,7 +34,7 @@
  extern crate std;
 --- a/api/rs/slint/lib.rs
 +++ b/api/rs/slint/lib.rs
-@@ -199,7 +199,7 @@ struct MyComponent { /*...*/ }
+@@ -207,7 +207,7 @@ struct MyComponent { /*...*/ }
  #![warn(missing_docs)]
  #![deny(unsafe_code)]
  #![doc(html_logo_url = "https://slint.dev/logo/slint-logo-square-light.svg")]
@@ -53,18 +53,29 @@
 +
  #![forbid(unsafe_code)]
  #![forbid(missing_docs)]
- 
+ #![forbid(clippy::shadow_same, clippy::shadow_reuse, clippy::shadow_unrelated)]
 --- a/api/slint-sc/tests/driver.rs
 +++ b/api/slint-sc/tests/driver.rs
-@@ -492,7 +492,7 @@ fn assemble_program(gen_path: &str, body: &str) -> String {
-         .replace('\\', "/");
-     let mut content = String::new();
-     // no_std so that accidental use of std in the generated code doesn't compile
+@@ -613,7 +613,7 @@ fn assemble_program(gen_path: &str, body: &str, name: &str) -> String {
+     // Only the harness declares `extern crate std`, so the generated code at
+     // the crate root can name neither `std` nor `alloc`
+     //#sls.gen.no-std
 -    writeln!(content, "#![no_std]").unwrap();
 +    writeln!(content, "").unwrap();
-     writeln!(content, "extern crate std;").unwrap();
-     writeln!(content).unwrap();
-     writeln!(content, "#[macro_use]").unwrap();
+     // On a bare-metal target, the harness defines the entry point
+     writeln!(content, "#![cfg_attr(target_os = \"none\", no_main)]").unwrap();
+     //#sls.gen.no-unsafe
+--- a/api/slint-sc/tests/driver/bare_metal/lib.rs
++++ b/api/slint-sc/tests/driver/bare_metal/lib.rs
+@@ -10,7 +10,7 @@
+ //!
+ //! On other targets, the crate is empty.
+ 
+-#![no_std]
++
+ 
+ #[cfg(target_os = "none")]
+ pub use semihosting;
 --- a/demos/analogclock/rust/main.rs
 +++ b/demos/analogclock/rust/main.rs
 @@ -1,7 +1,7 @@
@@ -138,6 +149,17 @@
 -#![no_std]
 +
  #![no_main]
+ 
+ extern crate alloc;
+--- a/examples/mcu-viewer/main.rs
++++ b/examples/mcu-viewer/main.rs
+@@ -6,7 +6,7 @@
+ //! Shows on a microcontroller the designs that the Slint live preview compiles on the
+ //! desktop and sends over USB.
+ 
+-#![no_std]
++
+ #![cfg_attr(not(feature = "simulator"), no_main)]
  
  extern crate alloc;
 --- a/examples/safe-ui/app/src/lib.rs
@@ -230,7 +252,7 @@
  extern crate alloc;
 --- a/internal/core/platform.rs
 +++ b/internal/core/platform.rs
-@@ -104,7 +104,7 @@ fn new_event_loop_proxy(&self) -> Option<Box<dyn EventLoopProxy>> {
+@@ -103,7 +103,7 @@ fn new_event_loop_proxy(&self) -> Option<Box<dyn EventLoopProxy>> {
      /// This is used by the animations and timer to compute the elapsed time.
      ///
      /// When the `std` feature is enabled, this function is implemented in terms of
@@ -239,6 +261,17 @@
      /// be implemented.
      fn duration_since_start(&self) -> core::time::Duration {
          #[cfg(feature = "std")]
+--- a/internal/interpreter/lib.rs
++++ b/internal/interpreter/lib.rs
+@@ -2,7 +2,7 @@
+ // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
+ 
+ #![cfg_attr(docsrs, feature(doc_cfg))]
+-#![no_std]
++
+ 
+ /*!
+ # Slint interpreter library
 --- a/internal/renderers/software/lib.rs
 +++ b/internal/renderers/software/lib.rs
 @@ -8,7 +8,7 @@
@@ -252,7 +285,7 @@
  extern crate alloc;
 --- a/tools/compiler/Cargo.toml
 +++ b/tools/compiler/Cargo.toml
-@@ -21,7 +21,6 @@ path = "main.rs"
+@@ -24,7 +24,6 @@ tempfile = "3"
  [features]
  renderer-software = ["i-slint-compiler/renderer-software"]
  image-default-formats = ["i-slint-compiler/image-default-formats"]
@@ -260,23 +293,23 @@
  sdf-fonts = ["renderer-software", "i-slint-compiler/sdf-fonts"]
  fontconfig-dlopen = ["i-slint-common/fontconfig-dlopen"]
  
-@@ -34,7 +33,7 @@ python = ["i-slint-compiler/python"]
- slint-sc = ["i-slint-compiler/slint-sc"]
- 
- # Keep defaults in sync with defaults applied in api/cpp/CMakeLists.txt for slint-compiler
--default = ["renderer-software", "image-default-formats", "jemalloc", "bundle-translations", "cpp", "rust", "python"]
-+default = ["renderer-software", "image-default-formats",  "bundle-translations", "cpp", "rust", "python"]
- 
- [dependencies]
- i-slint-compiler = { workspace = true, features = ["default", "display-diagnostics"] }
-@@ -46,4 +45,3 @@ spin_on = { workspace = true }
+@@ -41,7 +40,7 @@ slint-sc = ["i-slint-compiler/slint-sc"]
+ default = [
+   "renderer-software",
+   "image-default-formats",
+-  "jemalloc",
++  
+   "bundle-translations",
+   "cpp",
+   "rust",
+@@ -59,4 +58,3 @@ spin_on = { workspace = true }
  itertools = { workspace = true }
  
  [target.'cfg(not(any(target_os = "openbsd", target_os = "windows", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
 -tikv-jemallocator = { workspace = true, optional = true }
 --- a/tools/compiler/main.rs
 +++ b/tools/compiler/main.rs
-@@ -9,26 +9,6 @@
+@@ -14,26 +14,6 @@
  use std::io::Cursor;
  use std::io::Write;
  
@@ -305,7 +338,7 @@
  enum Embedding {
 --- a/tools/lsp/Cargo.toml
 +++ b/tools/lsp/Cargo.toml
-@@ -119,7 +119,6 @@ tokio-tungstenite-wasm = "0.8.2"
+@@ -121,7 +121,6 @@ tokio-tungstenite-wasm = "0.9.0"
  postcard = { version = "1.1.3", default-features = false, features = ["alloc"] }
  
  [target.'cfg(not(any(target_os = "openbsd", target_os = "windows", target_arch = "wasm32", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
@@ -315,7 +348,7 @@
  objc2-app-kit = { version = "0.3.2", default-features = false, features = ["std", "NSResponder", "NSToolbar", "NSView", "NSWindow", "objc2-core-foundation"] }
 --- a/tools/lsp/main.rs
 +++ b/tools/lsp/main.rs
-@@ -59,7 +59,6 @@
+@@ -61,7 +61,6 @@
      target_arch = "wasm32",
      all(target_arch = "aarch64", target_os = "linux")
  )))]
@@ -323,7 +356,7 @@
  
  #[cfg(not(any(
      target_os = "openbsd",
-@@ -67,8 +66,6 @@
+@@ -69,8 +68,6 @@
      target_arch = "wasm32",
      all(target_arch = "aarch64", target_os = "linux")
  )))]
@@ -334,7 +367,7 @@
  
 --- a/tools/viewer/Cargo.toml
 +++ b/tools/viewer/Cargo.toml
-@@ -126,7 +126,6 @@ i-slint-backend-android-activity = { workspace = true, optional = true }
+@@ -128,7 +128,6 @@ i-slint-backend-android-activity = { workspace = true, optional = true }
  jni = { version = "0.22", optional = true }
  
  [target.'cfg(not(any(target_os = "openbsd", target_os = "windows", target_os = "ios", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
@@ -344,7 +377,7 @@
  crate-type = ["cdylib"]
 --- a/tools/viewer/main.rs
 +++ b/tools/viewer/main.rs
-@@ -26,7 +26,6 @@
+@@ -28,7 +28,6 @@
      target_os = "ios",
      all(target_arch = "aarch64", target_os = "linux")
  )))]
@@ -352,7 +385,7 @@
  
  #[cfg(not(any(
      target_os = "openbsd",
-@@ -34,8 +33,6 @@
+@@ -36,8 +35,6 @@
      target_os = "ios",
      all(target_arch = "aarch64", target_os = "linux")
  )))]
