@@ -3,7 +3,7 @@
 # appzones' repository under contrib/arch/. To update: pkgver, then
 # `updpkgsums && makepkg --printsrcinfo > .SRCINFO`, then push both to the AUR.
 pkgname=appzones
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Long-lived sandboxes for desktop apps, dev tools and AI agents (bubblewrap, pasta, nftables)"
 arch=('x86_64')
@@ -22,12 +22,14 @@ backup=('etc/sudoers.d/appzones')
 install=appzones.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mirql/appzones/archive/refs/tags/v$pkgver.tar.gz"
         'appzones.sysusers')
-sha256sums=('5c65b75d7e604ee7c8a5d4feb9664fd80206d685cd1f4eb94a3d8738fc9616a3'
+sha256sums=('a8da91adda3232ff5c819826bae3ea7b61e1839955a7d205ecc2ccd6d1f4dd73'
             'SKIP')
 
 build() {
   cd "$pkgname-$pkgver"
-  make
+  # the C helper only: the package is the same whether or not cargo is installed (the
+  # optional Rust helpers are not packaged here yet, #121)
+  make zone-wayland
 }
 
 package() {
