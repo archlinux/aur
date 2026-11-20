@@ -1,0 +1,19 @@
+pkgbase = freetoken-desktop-bin
+	pkgdesc = FreeToken brings datacenter-scale model serving to your desktop. Run massive models locally, fast and efficiently.
+	pkgver = 0.2.0_beta.27
+	pkgrel = 1
+	url = https://github.com/FlashML-org/FreeToken
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = libarchive
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	optdepends = freetoken: the 'ft' engine CLI this panel drives (pip/uv install)
+	provides = freetoken-desktop
+	conflicts = freetoken-desktop
+	options = !debug
+	source = freetoken-desktop-0.2.0_beta.27.pkg.tar.zst::https://github.com/FlashML-org/FreeToken-Web/releases/download/v0.2.0-beta.27/freetoken-desktop-x86_64.pkg.tar.zst
+	sha256sums = 164a05ae70354ccba446f169bba8ae0d732422e09a51fc1713593c436d3c18d7
+
+pkgname = freetoken-desktop-bin
