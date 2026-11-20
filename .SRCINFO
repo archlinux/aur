@@ -1,5 +1,5 @@
 pkgbase = microbin-bin
-	pkgdesc = A tiny, self-contained, configurable paste bin and URL shortener written in Rust.
+	pkgdesc = A secure, configurable file-sharing and URL shortening web app written in Rust.
 	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/szabodanika/microbin
@@ -21,7 +21,7 @@ pkgbase = microbin-bin
 	source = LICENSE-2.1.0::https://raw.githubusercontent.com/szabodanika/microbin/v2.1.0/LICENSE
 	source = README-2.1.0.md::https://raw.githubusercontent.com/szabodanika/microbin/v2.1.0/README.md
 	sha256sums = 583df49c44bceb7f93f712caf3eaa33170e49d2a345f85c5a6e11256772e1af9
-	sha256sums = bf3a8c07168be42a531e76d906e098a13f186d123ad995d908b9e20563fca328
+	sha256sums = fdbdae9934701a0b64564f74135d5887970477e61e1c50aa7dfa66e2ec47e407
 	sha256sums = 40ae0f45c7c779dc8e8e68955144a56bb71f710564eb1500193912ed53e844e1
 	sha256sums = 625d8ee0470bc79ad1b03c870161cb26506a4a407c971a296abc7ad6dbf81783
 	sha256sums = 15a4e601622a4e80fcf5f564f526f98e43f3fe69335d3c84e7d06fcbb5378fce

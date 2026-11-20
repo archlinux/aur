@@ -8,7 +8,7 @@ pkgname=${_pkgname}-bin
 pkgver=2.1.0
 _pkgvername=v${pkgver}
 pkgrel=1
-pkgdesc="A tiny, self-contained, configurable paste bin and URL shortener written in Rust."
+pkgdesc="A secure, configurable file-sharing and URL shortening web app written in Rust."
 
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
 _barch=('x86_64-unknown-linux-musl' 'i686-unknown-linux-musl' 'arm-unknown-linux-musleabihf' 'armv7-unknown-linux-musleabihf' 'aarch64-unknown-linux-musl')
@@ -19,7 +19,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 license=('BSD-3-Clause')
 
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${pkgname%-bin}")
 
 backup=("etc/${_pkgname}/${_pkgname}.env")
 
@@ -33,12 +33,12 @@ source=("${_pkgname}.env"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE"
 		"README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
-source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/microbin-v${pkgver}-${_barch[1]}.tar.gz")
-source_arm=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/microbin-v${pkgver}-${_barch[2]}.tar.gz")
-source_armv7h=("${_pkgname}-${arch[3]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/microbin-v${pkgver}-${_barch[3]}.tar.gz")
-source_aarch64=("${_pkgname}-${arch[4]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/microbin-v${pkgver}-${_barch[4]}.tar.gz")
+source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
+source_arm=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[2]}.tar.gz")
+source_armv7h=("${_pkgname}-${arch[3]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[3]}.tar.gz")
+source_aarch64=("${_pkgname}-${arch[4]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[4]}.tar.gz")
 sha256sums=('583df49c44bceb7f93f712caf3eaa33170e49d2a345f85c5a6e11256772e1af9'
-            'bf3a8c07168be42a531e76d906e098a13f186d123ad995d908b9e20563fca328'
+            'fdbdae9934701a0b64564f74135d5887970477e61e1c50aa7dfa66e2ec47e407'
             '40ae0f45c7c779dc8e8e68955144a56bb71f710564eb1500193912ed53e844e1'
             '625d8ee0470bc79ad1b03c870161cb26506a4a407c971a296abc7ad6dbf81783'
             '15a4e601622a4e80fcf5f564f526f98e43f3fe69335d3c84e7d06fcbb5378fce'

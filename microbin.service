@@ -1,5 +1,5 @@
 [Unit]
-Description=A tiny, self-contained, configurable paste bin web application
+Description=A secure, configurable file-sharing and URL shortening web app
 Documentation=https://github.com/szabodanika/microbin
 After=network.target
 
