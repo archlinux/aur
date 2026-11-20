@@ -3,31 +3,31 @@
 
 _name=dspy
 pkgname=python-$_name
-pkgver=3.4.1
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="The framework for programming (not prompting) language models"
 arch=('any')
 url="https://github.com/stanfordnlp/dspy"
 license=('MIT')
 depends=(
-    'litellm'
     'python'
     'python-anyio'
     'python-cachetools'
+    'python-certifi>=2026.10.19'
     'python-cloudpickle'
     'python-diskcache'
-    'python-gepa=0.1.4'
-    'python-jiter'
+    'python-gepa>=0.1.4'
+    'python-gepa<0.2.0'
     'python-json_repair>=0.54.2'
     'python-jsonschema'
     'python-numpy'
-    'python-openai'
+    # The public FAISS Python loader imports packaging.version.
+    'python-packaging'
     'python-orjson'
     'python-pydantic'
     'python-pydantic-core'
     'python-regex'
     'python-requests'
-    'python-tenacity'
     'python-tqdm'
     'python-yaml'
 )
@@ -41,6 +41,9 @@ makedepends=(
 )
 checkdepends=(
     'datamodel-code-generator'
+    'litellm'
+    'python-openai'
+    'python-tenacity'
     'python-datasets'
     'python-langchain-core'
     'python-mcp'
@@ -53,6 +56,9 @@ checkdepends=(
     'python-pytest-socket'
 )
 optdepends=(
+    'python-openai: OpenAI-compatible language model provider'
+    'litellm: LiteLLM provider and model routing'
+    'python-tenacity: retries for LiteLLM requests'
     'python-anthropic: anthropic extra (Anthropic LM provider)'
     'python-accelerate: local Hugging Face fine-tuning'
     'python-colbert-ai: local ColBERT indexing and reranking'
@@ -77,14 +83,20 @@ optdepends=(
     'python-weaviate-client: weaviate extra (Weaviate retriever)'
     'sglang: local model serving'
 )
-source=("$_name-$pkgver.tar.gz::https://github.com/stanfordnlp/dspy/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('973b12683e325aa79ada1d117782ce1833f55fb43ebe6a9677071f0491167503')
+source=("$_name-$pkgver.tar.gz::https://github.com/stanfordnlp/dspy/archive/refs/tags/$pkgver.tar.gz"
+        litellm-header-merge.patch
+        httpmessage-fixture.patch)
+sha256sums=('c4ecb7beb771ea8a768245b9de6c5e9e97fd4c391c43f8e50d38f99086fd55d5'
+            '15a36665184a1216655aa64aff36fc2ff37231dbc1a5b4d4b217ce1cbbda0432'
+            '476ead35129de3d724c22fd4bc60c846180a83058d996588e8ea9fe7de2a04e9')
 
 prepare() {
     cd "$srcdir/$_name-$pkgver"
-    # Upstream's publish workflow replaces the tag's 3.4.0 placeholders.
-    sed -i -E 's/^version *= *"3\.4\.0"/version = "3.4.1"/' pyproject.toml
-    sed -i -E 's/__version__ *= *"3\.4\.0"/__version__ = "3.4.1"/' dspy/__metadata__.py
+    patch -Np1 -i "$srcdir/litellm-header-merge.patch"
+    patch -Np1 --fuzz=0 -i "$srcdir/httpmessage-fixture.patch"
+    # Upstream's publish workflow replaces the tag's 3.4.1 placeholders.
+    sed -i -E 's/^version *= *"3\.4\.1"/version = "3.5.0"/' pyproject.toml
+    sed -i -E 's/__version__ *= *"3\.4\.1"/__version__ = "3.5.0"/' dspy/__metadata__.py
 }
 
 build() {
@@ -93,12 +105,14 @@ build() {
 }
 
 check() {
-    local _checkroot="$srcdir/_check" _site _staged
+    local _checkroot="$srcdir/_check" _python _staged
     rm -rf "$_checkroot"
-    python -m installer --destdir="$_checkroot" \
-        "$srcdir/$_name-$pkgver"/dist/*.whl
-    _site=$(python -c 'import site; print(site.getsitepackages()[0])')
-    _staged="$_checkroot$_site"
+    # Isolated child interpreters deliberately ignore PYTHONPATH. Install the
+    # actual wheel into their interpreter environment, with public dependencies.
+    python -m venv --without-pip --system-site-packages "$_checkroot/venv"
+    _python="$_checkroot/venv/bin/python"
+    "$_python" -m installer "$srcdir/$_name-$pkgver"/dist/*.whl
+    _staged=$("$_python" -c 'import site; print(site.getsitepackages()[0])')
     mkdir -p "$_checkroot/suite" "$_checkroot/home"
     cp -a "$srcdir/$_name-$pkgver/tests" "$_checkroot/suite/"
     cp -a "$srcdir/$_name-$pkgver/docs" "$_checkroot/suite/"
@@ -147,14 +161,14 @@ PY
     HOME="$_checkroot/home" \
     PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
     PYTHONPATH="$_staged:$_checkroot/suite" \
-        python -P -m pytest -c pyproject.toml -o addopts= \
+        "$_python" -P -m pytest -c pyproject.toml -o addopts= \
         -p anyio.pytest_plugin -p pytest_asyncio.plugin -p pytest_mock \
         -p pytest_socket -p dspy_offline_plugin --disable-socket \
         --allow-hosts=127.0.0.1,localhost --allow-unix-socket \
         --import-mode=importlib -ra -v tests
 
     DSPY_STAGED_ROOT="$_checkroot" \
-    PYTHONPATH="$_staged" python -P - <<'PY'
+    PYTHONPATH="$_staged" "$_python" -P - <<'PY'
 import asyncio
 import os
 from pathlib import Path
@@ -165,9 +179,9 @@ from dspy.utils import DummyLM
 assert Path(dspy.__file__).resolve().is_relative_to(
     Path(os.environ["DSPY_STAGED_ROOT"]).resolve()
 )
-assert dspy.__version__ == "3.4.1"
+assert dspy.__version__ == "3.5.0"
 
-lm = DummyLM([{"reasoning": "add two and two", "answer": "4"}])
+lm = DummyLM([{"plan": "add two and two", "answer": "4"}])
 with dspy.context(lm=lm):
     program = dspy.ChainOfThought("question -> answer")
     prediction = program(question="What is 2 + 2?")

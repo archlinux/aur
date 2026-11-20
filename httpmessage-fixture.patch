@@ -1,0 +1,11 @@
+--- a/tests/clients/test_registered_providers.py
++++ b/tests/clients/test_registered_providers.py
+@@ -43,7 +43,7 @@
+         def do_POST(self):
+             body = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+             seen.append({"auth": self.headers.get("Authorization"), "path": self.path, "body": body,
+-                         "headers": dict(self.headers)})
++                         "headers": self.headers})
+             out = {"id": "x", "object": "chat.completion", "model": body["model"],
+                    "choices": [{"index": 0, "message": {"role": "assistant", "content": "Paris"}, "finish_reason": "stop"}],
+                    "usage": {"prompt_tokens": 10, "completion_tokens": 5, "total_tokens": 15}}

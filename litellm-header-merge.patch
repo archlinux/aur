@@ -1,0 +1,13 @@
+--- a/dspy/clients/engines/litellm_engine.py
++++ b/dspy/clients/engines/litellm_engine.py
+@@ -175,7 +175,9 @@
+             # as a LiteLLM argument rather than dropped by the conversion.
+             data["top_k"] = request.config.top_k
+         data.update(self.client_options)
+-        data["headers"] = {"User-Agent": f"DSPy/{dspy.__version__}", **(data.pop("headers", None) or {})}
++        # LiteLLM forwards headers in preference to extra_headers. Preserve both.
++        data["headers"] = {"User-Agent": f"DSPy/{dspy.__version__}",
++                           **(data.pop("headers", None) or {}), **(data.pop("extra_headers", None) or {})}
+         data.update(num_retries=0, cache={"no-cache": True, "no-store": True})
+         if self.model_type == "text":
+             # Text completions are addressed through LiteLLM's OpenAI-compatible

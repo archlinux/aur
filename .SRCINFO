@@ -1,11 +1,14 @@
 pkgbase = python-dspy
 	pkgdesc = The framework for programming (not prompting) language models
-	pkgver = 3.4.1
-	pkgrel = 2
+	pkgver = 3.5.0
+	pkgrel = 1
 	url = https://github.com/stanfordnlp/dspy
 	arch = any
 	license = MIT
 	checkdepends = datamodel-code-generator
+	checkdepends = litellm
+	checkdepends = python-openai
+	checkdepends = python-tenacity
 	checkdepends = python-datasets
 	checkdepends = python-langchain-core
 	checkdepends = python-mcp
@@ -20,26 +23,28 @@ pkgbase = python-dspy
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = litellm
 	depends = python
 	depends = python-anyio
 	depends = python-cachetools
+	depends = python-certifi>=2026.10.19
 	depends = python-cloudpickle
 	depends = python-diskcache
-	depends = python-gepa=0.1.4
-	depends = python-jiter
+	depends = python-gepa>=0.1.4
+	depends = python-gepa<0.2.0
 	depends = python-json_repair>=0.54.2
 	depends = python-jsonschema
 	depends = python-numpy
-	depends = python-openai
+	depends = python-packaging
 	depends = python-orjson
 	depends = python-pydantic
 	depends = python-pydantic-core
 	depends = python-regex
 	depends = python-requests
-	depends = python-tenacity
 	depends = python-tqdm
 	depends = python-yaml
+	optdepends = python-openai: OpenAI-compatible language model provider
+	optdepends = litellm: LiteLLM provider and model routing
+	optdepends = python-tenacity: retries for LiteLLM requests
 	optdepends = python-anthropic: anthropic extra (Anthropic LM provider)
 	optdepends = python-accelerate: local Hugging Face fine-tuning
 	optdepends = python-colbert-ai: local ColBERT indexing and reranking
@@ -63,7 +68,11 @@ pkgbase = python-dspy
 	optdepends = python-trl: local supervised fine-tuning
 	optdepends = python-weaviate-client: weaviate extra (Weaviate retriever)
 	optdepends = sglang: local model serving
-	source = dspy-3.4.1.tar.gz::https://github.com/stanfordnlp/dspy/archive/refs/tags/3.4.1.tar.gz
-	sha256sums = 973b12683e325aa79ada1d117782ce1833f55fb43ebe6a9677071f0491167503
+	source = dspy-3.5.0.tar.gz::https://github.com/stanfordnlp/dspy/archive/refs/tags/3.5.0.tar.gz
+	source = litellm-header-merge.patch
+	source = httpmessage-fixture.patch
+	sha256sums = c4ecb7beb771ea8a768245b9de6c5e9e97fd4c391c43f8e50d38f99086fd55d5
+	sha256sums = 15a36665184a1216655aa64aff36fc2ff37231dbc1a5b4d4b217ce1cbbda0432
+	sha256sums = 476ead35129de3d724c22fd4bc60c846180a83058d996588e8ea9fe7de2a04e9
 
 pkgname = python-dspy
