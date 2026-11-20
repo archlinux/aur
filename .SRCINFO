@@ -1,7 +1,7 @@
 pkgbase = moarvm
 	pkgdesc = A VM with adaptive optimization and JIT compilation, built for Rakudo
 	pkgver = 2026.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://moarvm.com/
 	changelog = Changelog
 	arch = i686

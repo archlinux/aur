@@ -2,7 +2,7 @@
 # Contributor: spider-mario <spidermario@free.fr>
 pkgname=moarvm
 pkgver=2026.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A VM with adaptive optimization and JIT compilation, built for Rakudo"
 arch=(i686 x86_64 aarch64)
 url="http://moarvm.com/"
@@ -34,8 +34,18 @@ Most probably it is set in /etc/makepkg.conf
 EOT
         exit 1
     fi
+
     cd MoarVM-${pkgver}
     perl Configure.pl --prefix=/usr
+
+    if echo $CFLAGS | grep -sq file-prefix-map
+    then
+        plain 'Your $CFLAGS variable contains reference to $srcdir which will be baked into libmoar.so'
+        # If you don't want this, either build with !debug option or uncomment
+        # following filter (it doesn't handle white spaces or quotes, so beware):
+        #sed -E -i '/"cflags"/ s/-ffile-prefix-map=[^ "'\'']+ //' src/gen/config.c
+    fi
+
     make
 }
 
