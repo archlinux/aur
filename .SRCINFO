@@ -1,6 +1,6 @@
 pkgbase = bindle
 	pkgdesc = Fresh-install setup wizard and system updater (bindleUP) for Arch Linux
-	pkgver = 0.1.27
+	pkgver = 0.1.29
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/bindle
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = bindle
 	optdepends = libnotify: the daily update-check notification
 	optdepends = uq: Bindle's page in uQ Settings (setup, updates, history)
 	options = !lto
-	source = bindle-0.1.27.tar.gz::https://github.com/asafelobotomy/bindle/archive/refs/tags/v0.1.27.tar.gz
-	sha256sums = f866f35bb5c531e56192887c1e01ba8261318547d3b0a75f93c866b65a773561
+	source = bindle-0.1.29.tar.gz::https://github.com/asafelobotomy/bindle/archive/refs/tags/v0.1.29.tar.gz
+	sha256sums = 6612295c1b514c7d782173756e5d04147ffa50ac9e06868e922e0fb3882822c2
 
 pkgname = bindle

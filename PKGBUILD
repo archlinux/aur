@@ -9,7 +9,7 @@
 # into its `aur` artifact.
 
 pkgname=bindle
-pkgver=0.1.27
+pkgver=0.1.29
 pkgrel=1
 pkgdesc='Fresh-install setup wizard and system updater (bindleUP) for Arch Linux'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('snapper: a snapshot before each apply or update, and undo'
 # Rust does its own LTO; makepkg's C/C++ LTO flags break the cxx-qt objects.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f866f35bb5c531e56192887c1e01ba8261318547d3b0a75f93c866b65a773561')
+sha256sums=('6612295c1b514c7d782173756e5d04147ffa50ac9e06868e922e0fb3882822c2')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -79,6 +79,8 @@ DESKTOP
   # uQ Settings' Bindle page (inert without uQ). Its commands run
   # /usr/lib/bindle/bindle, since a page may only run programs under /usr/lib or /usr/bin.
   install -Dm644 -t "$pkgdir/usr/share/uq/settings/pages/bindle" uq/pages/bindle/*
+  # bindleUP's icon in uQ's bar (a widget; inert without uQ).
+  install -Dm644 -t "$pkgdir/usr/share/uq/shell/widgets/bindleup" uq/widgets/bindleup/*
   install -d "$pkgdir/usr/lib/bindle"
   ln -s /usr/bin/bindle "$pkgdir/usr/lib/bindle/bindle"
 
