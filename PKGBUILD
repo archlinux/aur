@@ -1,6 +1,6 @@
 # Maintainer: temidaradev <temidaradev@proton.me>
 pkgname=kopuz-legacy
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="The legacy Dioxus interface of the Kopuz music player, with the daemon built in"
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
 options=('!lto')
 source=("kopuz-$pkgver.tar.gz::https://github.com/Kopuz-org/kopuz/archive/refs/tags/v$pkgver.tar.gz")
 # Filled in at publish time from the tag's source tarball.
-sha256sums=('75e0705c7f6452c3f941328db7592d356c3da578204518d0dc9cc6673455735d')
+sha256sums=('d6e991c21bbe5355bb71010a54ea0a36774907efe1ea48a69d94994df41e03d6')
 
 # Legacy tags cut from release-0.67 still have the old crates/ layout, where the app is the kopuz crate.
 _layout() {
