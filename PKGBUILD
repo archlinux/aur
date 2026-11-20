@@ -22,10 +22,14 @@ pkgrel=1
 pkgdesc='Terminal for the Linux console, drawn through KMS/DRM'
 arch=('x86_64')
 url='https://github.com/vtium/vtium'
-# vtium is MIT. The console also builds in the Unifont font (OFL-1.1),
-# tables made from Unicode's data (Unicode-3.0) and X.Org's color names
-# (MIT-open-group and MIT), which COPYING lists.
-license=('MIT' 'OFL-1.1' 'Unicode-3.0' 'MIT-open-group')
+# vtium is MIT. The console also builds in tables made from Unicode's data
+# (Unicode-3.0), X.Org's color names (MIT-open-group and MIT) and
+# tiny-skia (BSD-3-Clause), which COPYING lists. The package installs the
+# Terminus and Unifont font files (OFL-1.1), Cullet Mono, whose icon sets
+# add the MIT, Apache-2.0 and CC-BY-4.0 licenses its notices name, and
+# color schemes under the MIT and Apache-2.0 licenses.
+license=('MIT' 'OFL-1.1' 'Unicode-3.0' 'MIT-open-group' 'BSD-3-Clause'
+         'Apache-2.0' 'CC-BY-4.0')
 # fontforge runs Nerd Fonts' font patcher, which builds Cullet Mono for a
 # tag from 0.1.0-alpha.10 on.
 makedepends=('cargo' 'git' 'libxkbcommon' 'seatd' 'systemd-libs' 'fontforge')
@@ -62,9 +66,16 @@ package_vtium() {
   # Seat mode's PAM file, and the frits that make install stages by default
   # for this tag, which keep a user's edits across an upgrade (ADR-1500 D8).
   backup=('etc/pam.d/vtium'
-          'etc/vtium/fonts/desktop.vtfrit'
-          'etc/vtium/fonts/minspec-16.vtfrit'
-          'etc/vtium/fonts/minspec-8.vtfrit')
+          'etc/vtium/fonts/console/cullet-mono.vtfrit'
+          'etc/vtium/fonts/console/terminus.vtfrit'
+          'etc/vtium/fonts/code/jetbrains-mono.vtfrit'
+          'etc/vtium/fonts/small/unifont-icons.vtfrit'
+          'etc/vtium/fonts/small/unscii-icons.vtfrit'
+          'etc/vtium/fonts/layers/nerd-symbols.vtlayer'
+          'etc/vtium/fonts/layers/nerd-symbols-small.vtlayer'
+          'etc/vtium/fonts/layers/noto-emoji.vtlayer'
+          'etc/vtium/fonts/layers/noto-emoji-small.vtlayer'
+          'etc/vtium/fonts/layers/unifont.vtlayer')
   install=vtium.install
   _package_console
 }
@@ -73,7 +84,7 @@ package_vtium() {
 # hwaccel, the same as vtium-git's: the build for an ordinary desktop or
 # laptop, with right-to-left text, seat mode through libseat and logind, and
 # the GPU path on by default (ADR-1500 D8).
-_features='images logind gpu bidi libseat'
+_features='images logind gpu bidi libseat filters'
 _hwaccel=on
 
 # Everything below is the same in vtium-git/PKGBUILD and vtium/PKGBUILD;
