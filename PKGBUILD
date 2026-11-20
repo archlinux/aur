@@ -2,7 +2,7 @@
 
 pkgname=pi-web
 pkgver=0.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Local browser UI for the pi coding agent'
 arch=('any')
 url='https://github.com/agegr/pi-web'
@@ -34,7 +34,7 @@ build() {
     --no-audit \
     --no-fund
 
-  NEXT_TELEMETRY_DISABLED=1 npm run build
+  CI=1 NEXT_TELEMETRY_DISABLED=1 npm run build
 }
 
 package() {
