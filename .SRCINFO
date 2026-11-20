@@ -1,0 +1,16 @@
+pkgbase = project-bees
+	pkgdesc = Deduplicate identical Btrfs file ranges across local Git repositories
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/project-bees
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = sqlite
+	optdepends = systemd: run the background user service
+	source = project-bees-0.1.0.tar.gz::https://github.com/LIghtJUNction/project-bees/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 5d36e91d0886e76078653333ba5503dfdd0524ce4c1beccd8b89df57ed7f5a3d
+
+pkgname = project-bees
