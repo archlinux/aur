@@ -1,0 +1,6 @@
+post_install() {
+  echo "Enable the input helper: systemctl --user enable --now emobie-inputd.service"
+  echo "Grant keyboard and /dev/uinput access once from emobie's Expand tab, or:"
+  echo "  pkexec /usr/share/emobie/setup-input-access.sh"
+}
+
