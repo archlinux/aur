@@ -2,8 +2,8 @@
 
 _pkgname=cursor-clip
 pkgname=${_pkgname}-bin
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="GTK4/Libadwaita Wayland clipboard manager with dynamic cursor-positioned overlay (prebuilt binary)"
 arch=("x86_64" "aarch64")
 url="https://github.com/Sirulex/cursor-clip"
@@ -26,14 +26,14 @@ source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
 )
 sha256sums_x86_64=(
-  "d49d73ce66253aaa758c767b1ce8c7211a0c3744f72b955b2c06fd50cb1ecc45"
+  "8f468a9cb3e7501707878e27816674835cfb551f9e4894ce3ebb1f9d414d4a6a"
 )
 
 source_aarch64=(
   "${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
 )
 sha256sums_aarch64=(
-  "53d74fe2c6544d09f9ba500ae7fe546b0c015c61a73f99301c8f159088e00e45"
+  "98641baa92dbc0ebcccf680f7c314eb38a0791e5a60e870462cfc7efc5694a8e"
 )
 
 package() {
@@ -49,8 +49,8 @@ package() {
 
   local release_dir="${srcdir}/${_pkgname}-v${pkgver}-${target}"
 
-  install -Dm755 "${release_dir}/${_pkgname}" \
-    "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "${release_dir}/${_pkgname}-daemon" \
+    "${pkgdir}/usr/bin/${_pkgname}-daemon"
   install -Dm755 "${release_dir}/${_pkgname}-toggle" \
     "${pkgdir}/usr/bin/${_pkgname}-toggle"
   install -Dm644 "${release_dir}/assets/io.github.sirulex.cursor-clip.desktop" \
