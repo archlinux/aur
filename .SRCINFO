@@ -1,6 +1,6 @@
 pkgbase = helium-d77
 	pkgdesc = Wayland shell built with the Helium shell framework
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/dani-77/helium-d77
 	arch = x86_64
@@ -18,14 +18,14 @@ pkgbase = helium-d77
 	depends = glibc
 	depends = wl-clipboard
 	depends = curl
-	depends = amorphis
 	optdepends = alsa-utils: volume widget and OSD
 	optdepends = brightnessctl: brightness OSD
 	optdepends = power-profiles-daemon: power profile toggle
 	optdepends = swaybg: wallpaper backend
 	optdepends = ollama: backend for helium-ollama
 	optdepends = pciutils: GPU detection in helium-ollama
-	source = helium-d77-0.2.0.tar.gz::https://github.com/dani-77/helium-d77/archive/refs/tags/0.2.0.tar.gz
-	sha256sums = 730741bddb17d6210942f30984030b261695f5527929ca97fc43e4c192335852
+	backup = etc/pam.d/helium-locker
+	source = helium-d77-0.3.0.tar.gz::https://github.com/dani-77/helium-d77/archive/refs/tags/0.3.0.tar.gz
+	sha256sums = 69cd869f7e4b9639c011d41c4505333a24fdb9b56e1871a95c1a3ff1e28be350
 
 pkgname = helium-d77
