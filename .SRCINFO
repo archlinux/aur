@@ -1,6 +1,6 @@
 pkgbase = runnersh-bin
 	pkgdesc = Local desktop cockpit for CLI coding agents
-	pkgver = 0.20.1
+	pkgver = 0.20.2
 	pkgrel = 1
 	url = https://github.com/yicheng47/runner
 	arch = x86_64
@@ -24,16 +24,16 @@ pkgbase = runnersh-bin
 	optdepends = git: repository status, diffs and worktree support
 	optdepends = noto-fonts-cjk: Chinese, Japanese and Korean font coverage
 	optdepends = xdg-desktop-portal: desktop integration for file dialogs
-	provides = runnersh=0.20.1
+	provides = runnersh=0.20.2
 	conflicts = runnersh
 	conflicts = runner-bin
 	options = !strip
 	options = !debug
-	source = runner-0.20.1-LICENSE::https://raw.githubusercontent.com/yicheng47/runner/v0.20.1/LICENSE
+	source = runner-0.20.2-LICENSE::https://raw.githubusercontent.com/yicheng47/runner/v0.20.2/LICENSE
 	sha256sums = 9cd05f17e4eb355ec72bcc88306c54e0e0d19a9d701fe38ddb02604f0ea68af7
-	source_x86_64 = https://github.com/yicheng47/runner/releases/download/v0.20.1/Runner_0.20.1_linux-x64.deb
-	sha256sums_x86_64 = 19c0d4897cafa4faca3c8f08fdfc05384e71797bc122eb8968926fdd7d2be1c6
-	source_aarch64 = https://github.com/yicheng47/runner/releases/download/v0.20.1/Runner_0.20.1_linux-arm64.deb
-	sha256sums_aarch64 = 4ae22e28fa925ec52cf5f4cfc9010cd8f2edbbb291959f3039080ffa9462fa24
+	source_x86_64 = https://github.com/yicheng47/runner/releases/download/v0.20.2/Runner_0.20.2_linux-x64.deb
+	sha256sums_x86_64 = 4afce8365dffe68a5663096488528e258f5d775bbe30eb746e88d2ee2d601eea
+	source_aarch64 = https://github.com/yicheng47/runner/releases/download/v0.20.2/Runner_0.20.2_linux-arm64.deb
+	sha256sums_aarch64 = 9af532974dc113fcafc9631197f64232396eb6fd215657046cc721878ad07853
 
 pkgname = runnersh-bin
