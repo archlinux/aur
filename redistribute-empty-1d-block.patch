@@ -1,0 +1,24 @@
+diff --git a/SRC/MISC_utilities.f90 b/SRC/MISC_utilities.f90
+index bc4e22a..9e58909 100755
+--- a/SRC/MISC_utilities.f90
++++ b/SRC/MISC_utilities.f90
+@@ -6012,6 +6012,9 @@ end subroutine TensorPermute
+          allocate (dat_1D(max(1,myArows), max(1,myAcols)))
+          ld = max(1,myArows)
+          dat_1D = 0
++      else
++         allocate (dat_1D(1, 1))
++         dat_1D = 0
+       endif
+       ctxt = ptree%pgrp(pgno_o)%ctxt
+       call blacs_gridinfo_wrp(ctxt, nprow, npcol, myrow, mycol)
+@@ -6072,6 +6075,9 @@ end subroutine TensorPermute
+          allocate (dat_1D(max(1,myArows), max(1,myAcols)))
+          ld = max(1,myArows)
+          dat_1D = 0
++      else
++         allocate (dat_1D(1, 1))
++         dat_1D = 0
+       endif
+ 
+       ctxt = ptree%pgrp(pgno_i)%ctxt

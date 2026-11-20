@@ -3,7 +3,7 @@
 _name=ButterflyPACK
 pkgname=butterflypack
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Mathematical software for rapidly solving large-scale dense linear systems with butterfly and low-rank compression"
 arch=('x86_64')
 url="https://github.com/liuyangzhuan/$_name"
@@ -29,14 +29,18 @@ checkdepends=('python-mpi4py'
               'python-george')
 optdepends=('python-mpi4py: run the Python interface on several MPI processes')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        'parsec-cmake-config.patch')
+        'parsec-cmake-config.patch'
+        'redistribute-empty-1d-block.patch')
 sha256sums=('9a6ba1685b0181851faba3f020285893c61318f6abcfca2309cc26703485ecf5'
-            '03ca84d89dc4678f2cd9f3a12829aa6d4abeddc5adc2a3e06446116cd31ea17f')
+            '03ca84d89dc4678f2cd9f3a12829aa6d4abeddc5adc2a3e06446116cd31ea17f'
+            'ece23da8051902b4c2ea50ccf46b99a9011333a0e5c09030ca3f9d8067e10bc6')
 
 prepare() {
   cd "$_name-$pkgver"
   # Look for PaRSEC in the installed CMake config, since libbutterflypack links PaRSEC::parsec publicly
   patch -Np1 -i ../parsec-cmake-config.patch
+  # Allocate the 1D buffer on ranks that own no rows too, since passing it unallocated to pgemr2df90 makes gfortran pack it from an undefined descriptor (endless loop in STRUMPACK's SPARSE_HODLR_mpi_1)
+  patch -Np1 -i ../redistribute-empty-1d-block.patch
   # Don't install the example programs into /usr/lib/EXAMPLE
   sed -i '/^install(TARGETS .* RUNTIME DESTINATION "${CMAKE_INSTALL_LIBDIR}\/EXAMPLE")/d' EXAMPLE/CMakeLists.txt
   # Install the Python interface into site-packages instead of /usr/lib
