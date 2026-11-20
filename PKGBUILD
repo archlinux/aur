@@ -1,110 +1,94 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: hiruocha <hiruocha[at]outlook[dot]com>
+# Contributor: Small_Fox <smallfox0305@gmail.com>
 
-# Maintainer: Small_Fox <smallfox0305@gmail.com>
-pkgname=mia-code-git
-_pkgFullName=MiaCode
-pkgver=v2.0.0_alpha
+pkgname=miacode
+pkgver=2.0.1
 pkgrel=1
-epoch=
 pkgdesc="A Simai editor built for professional chart creators"
 arch=('x86_64')
 url="https://github.com/fanfaredash/MiaCode"
-license=('MIT')
-groups=()
+license=('GPL-3.0-only')
 depends=(
     'ffmpeg'
     'libva'
     'qt6-base'
     'qt6-declarative'
     'qt6-multimedia'
-    'qt6-quick3d'
-    'qt6-shadertools'
-    'libxkbcommon'
     'libglvnd'
-    'libdrm'
     'libgcc'
     'libstdc++'
-    'glibc'
     'hicolor-icon-theme'
 )
 makedepends=(
     'git'
     'cmake'
-    'ninja'
+    'qt6-tools'
+    'qt6-shadertools'
 )
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+$url.git#branch=dev")
-noextract=()
-sha256sums=('SKIP')
-validpgpkeys=()
+source=("${pkgname}::git+${url}.git#tag=${pkgver}"
+        'git+https://github.com/imakris/ScintillaQuick.git'
+        'disable-update-check.patch')
+sha256sums=('dcb6aee740d467175721d87ce8e3ae4610a727ea86848157c09d4d3d833d86e6'
+            'SKIP'
+            '14db8a53e29b67bda810d95f7e652b29cab535433c2ec840be4d7251831b13e4')
 
 prepare() {
-    cd "$srcdir/$_pkgFullName"
+    cd "${pkgname}"
 
-    git submodule update --init --recursive
+    export SOURCE_DATE_EPOCH=$(git log -1 --format=%ct)
+
+    patch -Np1 -i "${srcdir}/disable-update-check.patch"
+
+    git submodule init
+    git config submodule.third_party/ScintillaQuick.url "${srcdir}/ScintillaQuick"
+    git -c protocol.file.allow=always submodule update
 
     sed -i '1i#include <cstdint>' \
     third_party/ScintillaQuick/third_party/scintilla/include/ScintillaTypes.h
 
+    # 临时解决方案：上游忘记改版本号
+    sed -i 's/set(MIACODE_VERSION_PATCH "0")/set(MIACODE_VERSION_PATCH "1")/' \
+    CMakeLists.txt
+
     cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG -ffile-prefix-map=$srcdir/MiaCode=." \
-    -DCMAKE_BUILD_RPATH='$ORIGIN' \
-    -DCMAKE_INSTALL_RPATH='$ORIGIN' \
-    -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
+    -DMIACODE_RELEASE_CHANNEL=release \
+    -DCMAKE_CXX_FLAGS="$CPPFLAGS $CXXFLAGS" \
+    -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
+    -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS" \
+    -DCMAKE_MODULE_LINKER_FLAGS="$LDFLAGS" \
+    -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+    -DCMAKE_INSTALL_RPATH='$ORIGIN'
 }
 
 build() {
-    cd "$srcdir/$_pkgFullName"
+    cd "${pkgname}"
     cmake --build build --target MiaCode --parallel 4
 }
 
 package() {
 
-	install -Dm644 "$_pkgFullName/resources/icons/app.png" \
+    install -Dm644 "${pkgname}/resources/icons/app.png" \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/MiaCode.png"
 
-    install -Dm644 "$_pkgFullName/resources/icons/app.ico" \
+    install -Dm644 "${pkgname}/resources/icons/app.ico" \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/MiaCode.ico"
 
-    install -Dm644 "$_pkgFullName/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${pkgname}/build/"
 
-    cd "$_pkgFullName/build/"
+    install -dm755 "$pkgdir/usr/lib/${pkgname}"
+    cp -a bin/. "$pkgdir/usr/lib/${pkgname}/"
 
-    install -dm755 "$pkgdir/usr/lib/miacode"
-
-    cp -a bin "$pkgdir/usr/lib/miacode/"
-
-    install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/usr/share/applications"
 
     cat > "$pkgdir/usr/share/applications/MiaCode.desktop" <<'EOF'
 [Desktop Entry]
 Name=MiaCode
 Comment=MiaCode
-Exec=MiaCode
+Exec=/usr/lib/miacode/MiaCode
 Icon=MiaCode
 Terminal=false
 Type=Application
 Categories=Game;ArcadeGame;
 EOF
-
-    cat > "$pkgdir/usr/bin/MiaCode" <<'EOF'
-#!/bin/sh
-exec /usr/lib/miacode/bin/MiaCode "$@"
-EOF
-
-    chmod 755 "$pkgdir/usr/bin/MiaCode"
 }

@@ -1,0 +1,123 @@
+diff --git a/src/app/services/update/UpdateService.cpp b/src/app/services/update/UpdateService.cpp
+index 544eadb9..4a188406 100644
+--- a/src/app/services/update/UpdateService.cpp
++++ b/src/app/services/update/UpdateService.cpp
+@@ -48,7 +48,6 @@ UpdateService::UpdateService(UpdateFetcher& fetcher,
+     if (currentVersionParsed_) {
+         currentVersion_ = *parsed;
+     }
+-    restoreKnownFinding();
+ }
+ 
+ bool UpdateService::checkEnabled() const
+diff --git a/src/app/ui/Bootstrap.cpp b/src/app/ui/Bootstrap.cpp
+index e9e3fd2d..53458272 100644
+--- a/src/app/ui/Bootstrap.cpp
++++ b/src/app/ui/Bootstrap.cpp
+@@ -347,10 +347,6 @@ bool Bootstrap::start(const QString& startupOpenTarget)
+         }
+     }
+ 
+-    if (miacode::update::UpdateService* updates = applicationServices_->updateService()) {
+-        updates->scheduleStartupCheck();
+-    }
+-
+     appendUiRuntimeLog(QStringLiteral("start_ok"));
+     miacode::oplog::appendStartupBeaconLine("ui/start_ok");
+     return true;
+diff --git a/src/app/ui/preferences/PreferencesDialog.qml b/src/app/ui/preferences/PreferencesDialog.qml
+index 45c6466f..70f07a9d 100644
+--- a/src/app/ui/preferences/PreferencesDialog.qml
++++ b/src/app/ui/preferences/PreferencesDialog.qml
+@@ -937,21 +937,6 @@ AppDialog {
+                                 text: "v" + root.aboutInfo.version
+                                 color: Theme.colors.text.secondary
+                             }
+-                            Text {
+-                                objectName: "aboutUpdateHint"
+-                                visible: root.updateService && root.updateService.updateAvailable
+-                                text: qsTrId("status.update_available").arg(
+-                                    root.updateService ? root.updateService.availableVersion : "")
+-                                color: Theme.colors.text.active
+-                                font.family: Theme.uiFont
+-                                font.pixelSize: Theme.secondaryFontSize
+-
+-                                MouseArea {
+-                                    anchors.fill: parent
+-                                    cursorShape: Qt.PointingHandCursor
+-                                    onClicked: root.updateRequested()
+-                                }
+-                            }
+                         }
+                         Item { Layout.fillWidth: true }
+                     }
+@@ -968,69 +953,6 @@ AppDialog {
+                         AboutInfoLabel { text: root.aboutInfo.buildTypeLabel }
+                         AboutInfoValue { text: root.aboutInfo.buildType }
+                     }
+-
+-                    PreferenceGroup {
+-                        title: qsTrId("dialog.preferences.updates_group")
+-
+-                        PreferenceSwitch {
+-                            objectName: "preferencesUpdateCheckSwitch"
+-                            text: qsTrId("dialog.preferences.update.auto_check")
+-                            checked: root.updateService ? root.updateService.checkEnabled : false
+-                            onToggled: if (root.updateService) root.updateService.checkEnabled = checked
+-                        }
+-
+-                        Text {
+-                            Layout.fillWidth: true
+-                            visible: root.updateService && root.updateService.lastCheckText.length > 0
+-                            text: qsTrId("dialog.preferences.update.last_check").arg(
+-                                root.updateService ? root.updateService.lastCheckText : "")
+-                            color: Theme.colors.text.secondary
+-                            font.family: Theme.uiFont
+-                            font.pixelSize: Theme.secondaryFontSize
+-                            wrapMode: Text.WordWrap
+-                        }
+-
+-                        RowLayout {
+-                            Layout.fillWidth: true
+-                            Layout.minimumHeight: root.settingsRowHeight
+-                            spacing: 12
+-
+-                            Text {
+-                                id: updateManualResult
+-                                property string outcome: ""
+-                                text: {
+-                                    if (outcome === "up-to-date") return qsTrId("dialog.preferences.update.up_to_date")
+-                                    if (outcome === "no-package") return qsTrId("dialog.preferences.update.no_package")
+-                                    if (outcome === "" || outcome === "available") return ""
+-                                    return qsTrId("dialog.preferences.update.failed")
+-                                }
+-                                objectName: "preferencesUpdateManualResultText"
+-                                Layout.fillWidth: true
+-                                color: Theme.colors.text.secondary
+-                                font.family: Theme.uiFont
+-                                font.pixelSize: Theme.secondaryFontSize
+-                                wrapMode: Text.WordWrap
+-                            }
+-
+-                            AppButton {
+-                                objectName: "preferencesUpdateCheckNowButton"
+-                                text: qsTrId("dialog.preferences.update.check_now")
+-                                enabled: root.updateService && !root.updateService.checkInFlight
+-                                onClicked: if (root.updateService) root.updateService.checkNow(true)
+-                            }
+-                        }
+-
+-                        Connections {
+-                            target: root.updateService
+-                            function onManualCheckFinished(outcome, detail) {
+-                                updateManualResult.outcome = outcome
+-                                if (outcome === "available") {
+-                                    root.updateRequested()
+-                                    return
+-                                }
+-                            }
+-                        }
+-                    }
+                 }
+             }
+         }

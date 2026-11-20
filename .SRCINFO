@@ -1,28 +1,28 @@
-pkgbase = mia-code-git
+pkgbase = miacode
 	pkgdesc = A Simai editor built for professional chart creators
-	pkgver = v2.0.0_alpha
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/fanfaredash/MiaCode
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = cmake
-	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = qt6-shadertools
 	depends = ffmpeg
 	depends = libva
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-multimedia
-	depends = qt6-quick3d
-	depends = qt6-shadertools
-	depends = libxkbcommon
 	depends = libglvnd
-	depends = libdrm
 	depends = libgcc
 	depends = libstdc++
-	depends = glibc
 	depends = hicolor-icon-theme
-	source = git+https://github.com/fanfaredash/MiaCode.git#branch=dev
+	source = miacode::git+https://github.com/fanfaredash/MiaCode.git#tag=2.0.1
+	source = git+https://github.com/imakris/ScintillaQuick.git
+	source = disable-update-check.patch
+	sha256sums = dcb6aee740d467175721d87ce8e3ae4610a727ea86848157c09d4d3d833d86e6
 	sha256sums = SKIP
+	sha256sums = 14db8a53e29b67bda810d95f7e652b29cab535433c2ec840be4d7251831b13e4
 
-pkgname = mia-code-git
+pkgname = miacode
