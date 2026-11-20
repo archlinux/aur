@@ -4,7 +4,7 @@
 # Prebuilt ("-bin") AUR package for LightSpeed, the zero-cost global network
 # optimizer for multiplayer games: https://github.com/ShibbityShwab/lightspeed
 #
-# Downloads the cargo-dist release tarballs from GitHub Releases (v1.11.3):
+# Downloads the cargo-dist release tarballs from GitHub Releases (v1.11.4):
 #   - lightspeed       : CLI client  (x86_64 and aarch64)
 #   - lightspeed-gui   : egui tray GUI (x86_64 only - upstream publishes no
 #                        aarch64-unknown-linux-gnu build of the GUI)
@@ -23,7 +23,7 @@
 # push it to the AUR. See README.md.
 
 pkgname=lightspeed-bin
-pkgver=1.11.3
+pkgver=1.11.4
 pkgrel=1
 pkgdesc="Zero-cost global network optimizer for multiplayer games - prebuilt LightSpeed CLI client and x86_64 GUI tray app"
 arch=('x86_64' 'aarch64')
@@ -43,14 +43,14 @@ source_aarch64=(
   "https://github.com/ShibbityShwab/lightspeed/releases/download/v${pkgver}/lightspeed-client-aarch64-unknown-linux-gnu.tar.xz"
 )
 
-# sha256 of the v1.11.3 release assets, checked against the published
-# release digests on 2026-11-18 (see README.md "Local verification").
+# sha256 of the v1.11.4 release assets, checked against the published
+# release digests on 2026-11-20 (see README.md "Local verification").
 sha256sums_x86_64=(
-  '00108ff777be2aa0ebd4f05b0cb943943b499a5ab1c720b0ec70959493be84b6'
-  'd9c44db473d68326f9dcbc0ea7d426d2c264ffbd419a6bcc8d99b8f187557369'
+  '7835f62375f2c2532f8c12865d14671c561c50d44a83f9705eb5d4847525f6a0'
+  '8831c465f6d49ed7a0ad070e375f2514d2f45ae0ca4ba934527b9f82662cdd0a'
 )
 sha256sums_aarch64=(
-  '0de78fe31139f4bb05c8ee63c5a5332b9d3999d6667212e26ee22dfa9539d945'
+  '7e2e3b3a8acf4d9736d6d1ee186bcc4c6a2af406b81cca35ec58f0098962de90'
 )
 
 package() {
