@@ -1,6 +1,6 @@
 pkgbase = flectar-mail-bin
 	pkgdesc = Native email client built with Rust and Slint
-	pkgver = 0.1.0alpha.6
+	pkgver = 0.1.0alpha.7
 	pkgrel = 1
 	url = https://github.com/flectar/mail
 	arch = x86_64
@@ -21,14 +21,14 @@ pkgbase = flectar-mail-bin
 	optdepends = org.freedesktop.secrets: storing account credentials
 	optdepends = gnupg: OpenPGP signing and encryption
 	optdepends = xdg-desktop-portal: native file dialogs
-	provides = flectar-mail=0.1.0alpha.6
+	provides = flectar-mail=0.1.0alpha.7
 	conflicts = flectar-mail
 	options = !strip
 	options = !debug
-	source = flectar-mail-0.1.0alpha.6.AppImage::https://github.com/flectar/mail/releases/download/v0.1.0-alpha.6/flectar-mail-0.1.0-alpha.6-linux-x64.AppImage
-	source = com.flectar.mail-0.1.0alpha.6.desktop::https://raw.githubusercontent.com/flectar/mail/v0.1.0-alpha.6/resources/com.flectar.mail.desktop
-	source = com.flectar.mail-0.1.0alpha.6.svg::https://raw.githubusercontent.com/flectar/mail/v0.1.0-alpha.6/resources/app-icon/flectar-mail-masked.svg
-	sha256sums = b7f0f02873c0e85af3822e4de9703727a1af00210e50271ae4dcfd567e5de663
+	source = flectar-mail-0.1.0alpha.7.AppImage::https://github.com/flectar/mail/releases/download/v0.1.0-alpha.7/flectar-mail-0.1.0-alpha.7-linux-x64.AppImage
+	source = com.flectar.mail-0.1.0alpha.7.desktop::https://raw.githubusercontent.com/flectar/mail/v0.1.0-alpha.7/resources/com.flectar.mail.desktop
+	source = com.flectar.mail-0.1.0alpha.7.svg::https://raw.githubusercontent.com/flectar/mail/v0.1.0-alpha.7/resources/app-icon/flectar-mail-masked.svg
+	sha256sums = 9aff0d35bc02e67a93d3a1442624a1fb0742b38fda6d1c82c43ccc1a5ef24900
 	sha256sums = bd4f2020a71f42eacbd6fdd33f1e35d04547bf8e3cbef1574c2f7dde7de2044b
 	sha256sums = f0e0083d21e8648d367a47e61d762c7ffd84e27d857749a38b499b2cd47341cf
 
