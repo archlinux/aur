@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily check for Unsloth Studio ROCm gfx90a updates
+
+[Timer]
+OnCalendar=*-*-* 05:00:00
+RandomizedDelaySec=30m
+Persistent=true
+
+[Install]
+WantedBy=timers.target

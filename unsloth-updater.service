@@ -1,0 +1,10 @@
+[Unit]
+Description=Unsloth Studio ROCm gfx90a updater (nvchecker-based)
+Documentation=file:/usr/share/unsloth-updater/README.md
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/unsloth-updater/unsloth-updater.sh
+# installer + pip + three tarballs can take a while on slow links
+TimeoutStartSec=3h
+Nice=10

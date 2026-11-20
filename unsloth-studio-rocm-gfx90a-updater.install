@@ -1,0 +1,13 @@
+post_install() {
+  echo ">>> unsloth-studio-rocm-gfx90a-updater installed."
+  echo ">>> Enable the daily timer (runs as your user, checks at ~05:00):"
+  echo "      systemctl --user enable --now unsloth-updater.timer"
+  echo ">>> Check manually any time:"
+  echo "      /usr/lib/unsloth-updater/unsloth-updater.sh            # check + apply"
+  echo "      UNSLOTH_UPDATER_DRY_RUN=1 /usr/lib/unsloth-updater/unsloth-updater.sh   # check only"
+  echo ">>> Logs: journalctl --user -u unsloth-updater.service"
+}
+
+post_upgrade() {
+  post_install
+}

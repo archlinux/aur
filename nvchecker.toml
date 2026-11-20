@@ -1,0 +1,17 @@
+# nvchecker entries used by unsloth-updater.sh
+# pytorch_rocm: newest ROCm line on AMD's gfx90a wheel index, and the newest
+#               torch on top of it (see amd_pytorch.py for the selection rule).
+[pytorch_rocm]
+source = "cmd"
+cmd = "/usr/lib/unsloth-updater/amd_pytorch.py --print-version"
+
+# unsloth library installed into ~/.unsloth/studio venv comes from PyPI.
+[unsloth]
+source = "pypi"
+pypi = "unsloth"
+
+# llama.cpp / whisper.cpp / audio.cpp are intentionally NOT tracked: their
+# release tarballs do not match Studio's on-disk layout under ~/.unsloth
+# (build/bin overlay, top-level symlink, install-record json, and whisper's
+# libggml libraries hardlinked from the paired llama.cpp build). Swapping them
+# wholesale breaks the install; Studio's own installer owns those components.
