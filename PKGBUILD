@@ -2,8 +2,9 @@
 
 pkgbase=dm-tools-appimage
 pkgname=(dm-tools-appimage)
-pkgver=2.1.6.7
-pkgrel=1
+_tagname=2.2.2.2-hotfix
+pkgver=${_tagname//-/+}
+pkgrel=2
 pkgdesc="DM-USB2FDCAN (Damiao 达妙) host computer software supports DM-USB2FDCAN series CAN cards"
 arch=('x86_64')
 url="https://github.com/dmBots/motor-debugging-tool"
@@ -13,9 +14,8 @@ conflicts=(${pkgname%-appimage})
 replaces=()
 depends=(
     sh
-    glibc
     hicolor-icon-theme
-    zlib
+    libz.so
 )
 makedepends=(
     git
@@ -29,7 +29,7 @@ optdepends=(
 backup=()
 options=(!debug !strip !lto)
 install=
-_name=DMTool-v${pkgver}-${CARCH}.AppImage
+_name=DMTool-v${_tagname}-${CARCH}.AppImage
 source=(
     "motor-debugging-tool::git+${url}.git"
 )
@@ -38,7 +38,9 @@ noextract=()
 _install_path="/opt/appimages"
 
 prepare() {
+    git -C "${srcdir}/motor-debugging-tool" clean -dfx
     cd ${srcdir}/motor-debugging-tool/Linux/x86_64
+    bsdtar -xf ${_name}.tar.gz
     chmod +x ${_name}
     "./${_name}" --appimage-extract >/dev/null
     sed -i -e 's|Exec=serial-port-assistant|Exec=/usr/bin/dm-tools|g' \
@@ -112,8 +114,7 @@ fi
 exec /${_install_path}/${pkgname}.AppImage "\$@"
 EOF
     install -vDm644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/99-dm-fdcan.rules" <<EOF
-SUBSYSTEM=="usb", ATTR{idVendor}=="34b7", ATTR{idProduct}=="6877", MODE="0666", GROUP="uucp", TAG+="uaccess"
-SUBSYSTEM=="usb_device", ATTR{idVendor}=="34b7", ATTR{idProduct}=="6877", MODE="0666", GROUP="uucp", TAG+="uaccess"
+SUBSYSTEM=="usb|usb_device", ATTR{idVendor}=="34b7", ATTR{idProduct}=="6877", MODE="0666", GROUP="uucp", TAG+="uaccess"
 
 KERNEL=="ttyUSB*", ATTRS{idVendor}=="34b7", ATTRS{idProduct}=="6877", MODE="0666", SYMLINK+="ttyDM_FDCAN_%n"
 KERNEL=="ttyACM*", ATTRS{idVendor}=="34b7", ATTRS{idProduct}=="6877", MODE="0666", SYMLINK+="ttyDM_FDCAN_%n"
