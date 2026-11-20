@@ -6,12 +6,12 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="sed and awk for tabular data — regex transforms over Excel-style ranges on CSV/DSV."
 
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
-_barch=('x86_64-unknown-linux-gnu' 'aarch64-unknown-linux-gnu')
+_barch=('amd64' 'arm64')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -25,10 +25,14 @@ depends=('glibc' 'libgcc')
 
 options=(!strip)
 
-source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
-source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('228444fdc1a13e326206ec498de532ec07131f2ee301291003d0f727e7a4e42a')
-sha256sums_aarch64=('bcacf81919eaccd1015ef4f8dda798ad2f59a6c41ac0652783d6c174d112d3c6')
+source=("README-${pkgver}.md::${_ghurlraw}/README.md"
+		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}-${pkgrel}_${_barch[0]}.deb")
+source_aarch64=("${_appname}-${arch[1]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}-${pkgrel}_${_barch[1]}.deb")
+sha256sums=('1d7ce6cb6f7f7a6a154c28f4e59712e038ddb53b60ffb72bf6343f7693f7c6f4'
+            '3f497ab835deeb8c179da91c333f2e0be83b27bf1d2dadcc76a625f6c8da8405')
+sha256sums_x86_64=('68848e7c3e70a5f9b16e716ddfcc747962f9fc261716de1bea671316a609c2eb')
+sha256sums_aarch64=('c8d93d8fe46c5527a2f997ef3aad9344a1dbab685a6a293d58e845bf10061535')
 
 
 case ${CARCH} in
@@ -42,11 +46,11 @@ case ${CARCH} in
 esac
 
 package() {
-	cd "${srcdir}/${_appname}-${_CARCH}/" || exit
+	cd "${pkgdir}"
 
-	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+	tar -xf "${srcdir}/data.tar.xz" --exclude="usr/share/doc"
 
-	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "${srcdir}/README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
