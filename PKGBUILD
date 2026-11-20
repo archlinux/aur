@@ -6,8 +6,8 @@
 # VTIUM_GIT_URL and VTIUM_GIT_BRANCH point the build at another repository
 # and branch, such as a local checkout. The console is built for an
 # ordinary desktop or laptop, with the features images logind gpu bidi
-# libseat and hwaccel on (ADR-1500 D8), and VTIUM_FEATURES names other
-# features (below):
+# libseat filters and hwaccel on (ADR-1500 D8), and VTIUM_FEATURES names
+# other features (below):
 #
 #   VTIUM_GIT_URL=file:///path/to/vtium VTIUM_GIT_BRANCH=my-branch makepkg -f
 #
@@ -96,9 +96,9 @@ package_vtium-git() {
 
 # The console's features while VTIUM_FEATURES is unset, and the default of
 # hwaccel: the build for an ordinary desktop or laptop, with right-to-left
-# text, seat mode through libseat and logind, and the GPU path on by
-# default (ADR-1500 D8).
-_features='images logind gpu bidi libseat'
+# text, seat mode through libseat and logind, the frame filters that draw a
+# look's effects, and the GPU path on by default (ADR-1500 D8).
+_features='images logind gpu bidi libseat filters'
 _hwaccel=on
 
 # Everything below is the same in vtium-git/PKGBUILD and vtium/PKGBUILD;
