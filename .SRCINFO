@@ -1,0 +1,21 @@
+pkgbase = arknights-launcher
+	pkgdesc = Unofficial native Linux launcher for original Arknights CN
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ParticleG/arknights-launcher
+	arch = x86_64
+	license = MIT
+	makedepends = bun
+	makedepends = rust
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = xdg-utils
+	optdepends = dwproton-bin: run the Windows game with DWProton
+	options = !debug
+	options = !lto
+	source = arknights-launcher-0ec1d40ed0043680ef96d109cbde60539fb02008.tar.gz::https://github.com/ParticleG/arknights-launcher/archive/0ec1d40ed0043680ef96d109cbde60539fb02008.tar.gz
+	source = arknights-launcher.desktop
+	sha256sums = d305ec557ffb684d14e51cb50db216b8a60d67af3117119dd47ced2e820c6f6e
+	sha256sums = 72e03c0b656935b86d7d3840890a7cff888cc02458471cb40deb509e48fa7079
+
+pkgname = arknights-launcher

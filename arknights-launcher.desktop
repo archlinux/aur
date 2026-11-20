@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Arknights Launcher
+Comment=Unofficial launcher for original Arknights CN
+Exec=arknights-launcher
+Icon=arknights-launcher
+Terminal=false
+Type=Application
+Categories=Game;
