@@ -1,6 +1,6 @@
 # Maintained by the Project Z upstream: github.com/LIghtJUNction/zfetch
 pkgname=zfetch-project-z
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A tiny native Linux system summary from Project Z, without runtime dependencies'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ provides=('zfetch')
 conflicts=('zfetch')
 options=('!debug')
 source=("zfetch-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4bc6bc960c1044d666eb4d5342529a62d92a8a5d97712cc5355226202b225de5')
+sha256sums=('055267b68fcded41599981cf98d2a24789440d0dc0ad367b6d2dc198bb06057a')
 
 build() {
   cd "zfetch-$pkgver"

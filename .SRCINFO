@@ -1,6 +1,6 @@
 pkgbase = zfetch-project-z
 	pkgdesc = A tiny native Linux system summary from Project Z, without runtime dependencies
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/zfetch
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = zfetch-project-z
 	provides = zfetch
 	conflicts = zfetch
 	options = !debug
-	source = zfetch-0.1.0.tar.gz::https://github.com/LIghtJUNction/zfetch/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 4bc6bc960c1044d666eb4d5342529a62d92a8a5d97712cc5355226202b225de5
+	source = zfetch-0.1.1.tar.gz::https://github.com/LIghtJUNction/zfetch/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 055267b68fcded41599981cf98d2a24789440d0dc0ad367b6d2dc198bb06057a
 
 pkgname = zfetch-project-z
