@@ -4,7 +4,7 @@ _pkgauthor=chaqchase
 _pkgname=lla
 
 pkgname=${_pkgname}-bin
-pkgver=0.9.0
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Blazing fast 'ls' replacement with superpowers"
 
@@ -27,9 +27,9 @@ source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tzst::${url}/releases/download/v$
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tzst::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${pkgrel}-${arch[2]}.pkg.tar.zst")
 sha256sums=('29ed92c2966b04bd1ef1c09a9f7de46ac3e0eb9ac0f95d1c43cbab1417cc124f'
             '5aa93dd4dc0c1d186296de788a59403543a5390bdec1fb7a040eccf49a261275')
-sha256sums_x86_64=('7a3334a97e72b3d164d99769ffd35a8b1b97e9992da2354087a144a08580d651')
-sha256sums_i686=('b55d450a45b034298ef71bc84bf0933e2dbcff1af832051ad1e773a43ac8d3ad')
-sha256sums_aarch64=('7aa3c7ed20f215d0ec5d75cbe142d19886c5a8e5733dfc2fe68620aaab708ff8')
+sha256sums_x86_64=('ebd7176e22fdccf4621bb1b5c8ef2938653b224ff8f5ff8c086439a43eb90caf')
+sha256sums_i686=('fdd256eee1b060e6553a3b4b974a2ecce6b150a52ec7b5b6b0b11a0a074b99f7')
+sha256sums_aarch64=('dcddda0c6ca807e984723ef83613a36a9bcdb76c289db99dfa9fe6ce3d269035')
 
 noextract=("${source_x86_64[@]%%::*}" "${source_i686[@]%%::*}" "${source_aarch64[@]%%::*}")
 
