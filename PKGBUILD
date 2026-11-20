@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=obs-wayland-hotkeys
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OBS Studio plugin that implements the global shortcuts portal"
 arch=('x86_64')
 url="https://github.com/leia-uwu/obs-wayland-hotkeys"
 license=('GPL-2.0-or-later')
 depends=('obs-studio' 'glibc' 'libstdc++' 'qt6-base' 'libgcc')
-makedepends=('cmake' 'ninja' 'wayland' 'libxkbcommon')
+makedepends=('cmake' 'ninja' 'wayland' 'libxkbcommon' 'simde')
 optdepends=()
 install=
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
