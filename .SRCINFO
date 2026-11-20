@@ -1,6 +1,6 @@
 pkgbase = stellarium-qt5-bin
 	pkgdesc = Software which renders realistic skies in real time with OpenGL - Binary (Qt5)
-	pkgver = 26.2
+	pkgver = 26.3
 	pkgrel = 1
 	url = https://stellarium.org/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = stellarium-qt5-bin
 	provides = stellarium
 	conflicts = stellarium
 	conflicts = stellarium-bin
-	source = https://github.com/Stellarium/stellarium/releases/download/v26.2/Stellarium-26.2-qt5-x86_64.AppImage
-	source = https://github.com/Stellarium/stellarium/releases/download/v26.2/Stellarium-26.2-qt5-x86_64.AppImage.asc
+	source = https://github.com/Stellarium/stellarium/releases/download/v26.3/Stellarium-26.3-qt5-x86_64.AppImage
+	source = https://github.com/Stellarium/stellarium/releases/download/v26.3/Stellarium-26.3-qt5-x86_64.AppImage.asc
 	source = stellarium.bash
 	validpgpkeys = 79151C2E6351E7278DA1A730BF38D4D02A328DFF
-	sha256sums = cac4cd722f965a457ce066ed6fa6e7ce06f81ccf2eb10857eecad79d7dfa37f3
+	sha256sums = d3a3b9bc2e09aea41da549edfa1671e9e5ef514cbd39249bef63d32d1339b056
 	sha256sums = SKIP
 	sha256sums = cc8903384ef8b8349dda202be45c3f68542dc74d40c4a1c266a5e057e96323ff
 
