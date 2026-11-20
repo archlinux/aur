@@ -1,7 +1,7 @@
 # Maintainer: Robert Rosca <robert@rosca.dev>
 
 pkgname=crit
-pkgver=0.23.3
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Review AI coding agents' plans, diffs and running apps in the browser, local-first"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ optdepends=('github-cli: GitHub PR comment sync'
             'xdg-user-dirs: locate Documents dir for crit install')
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('34018ad7c49f52874beb355bd5b8f91bb997fc3697c59eb07b78ddbef077ef14')
+sha256sums=('ad667b91f7ade11c0ac0a9527e7d099766f1a6f5cbcaec3344769c04afc957c1')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
