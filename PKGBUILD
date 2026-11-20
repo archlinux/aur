@@ -18,15 +18,6 @@ url='https://www.wolfram.com/mathematica/'
 arch=(x86_64)
 license=('LicenseRef-Wolfram-Mathematica-License-Agreement') # https://www.wolfram.com/legal/agreements/wolfram-mathematica/
 makedepends=('curl' 'inetutils')
-optdepends=(
-  'qt6-wayland: full Wayland support'
-  'openssl-1.1: MQTTLink and Kerberos integration'
-  'libxinerama: required by FFmpegTools'
-  'ffmpeg4.4: alternative FFmpegTools backend'
-  'libxtst: X11 backend for Java AWT libraries'
-  'ttf-dejavu: correct fonts for Greek characters and inline TeX'
-  'libcups: printer support'
-)
 provides=('mathematica')
 conflicts=('mathematica')
 _source_url='https://account.wolfram.com/dl/WolframApp'
@@ -99,6 +90,15 @@ package() {
     'nss'
     'qt6-base'
     'zstd'
+  )
+  optdepends=(
+    'qt6-wayland: full Wayland support'
+    'openssl-1.1: MQTTLink and Kerberos integration'
+    'libxinerama: required by FFmpegTools'
+    'ffmpeg4.4: alternative FFmpegTools backend'
+    'libxtst: X11 backend for Java AWT libraries'
+    'ttf-dejavu: correct fonts for Greek characters and inline TeX'
+    'libcups: printer support'
   )
 
   local installdir
