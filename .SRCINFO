@@ -1,20 +1,27 @@
 pkgbase = python-x-transformers
 	pkgdesc = A concise but complete full-attention transformer with a set of promising experimental features from various papers
-	pkgver = 2.2.12
+	pkgver = 2.32.1
 	pkgrel = 1
 	url = https://github.com/lucidrains/x-transformers
-	arch = x86_64
+	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	makedepends = python-installer
+	checkdepends = python-setuptools
 	makedepends = python-build
-	makedepends = python-wheel
-	depends = python-einops
-	depends = python-einx
-	depends = python-pytorch
-	depends = python-packaging
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python
+	depends = python-assoc-scan>=0.0.6
+	depends = python-einops>=0.8.0
+	depends = python-einx>=0.3.0
 	depends = python-loguru
-	source = https://files.pythonhosted.org/packages/source/x/x_transformers/x_transformers-2.2.12.tar.gz
-	sha256sums = be4a60a8f975d552a8036d989d8230ac130e40a1cc380230a24efe3c3cef97d6
+	depends = python-packaging>=21.0
+	depends = python-pytorch>=2.0
+	depends = python-torch-einops-utils>=0.2.6
+	optdepends = gcc: TorchInductor compilation used by UniversalPretrainWrapper
+	optdepends = python-flash-attn: packed variable-length sequences with FlashAttention
+	optdepends = python-setuptools: TorchInductor compilation used by UniversalPretrainWrapper
+	source = python-x-transformers-2619e6f38ffa68e7f390574936e29c10ba63c896.tar.gz::https://github.com/lucidrains/x-transformers/archive/2619e6f38ffa68e7f390574936e29c10ba63c896.tar.gz
+	sha256sums = 6e287c28a174e5e43f9440a39c328e3e09e1a328b0bba1988c71af1503881cba
 
 pkgname = python-x-transformers
