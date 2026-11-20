@@ -16,6 +16,7 @@ pkgbase = sysinternalsebpf-git
 	depends = libelf
 	depends = libz.so
 	provides = sysinternalsebpf=2.3.0.r0.ga43369a
+	provides = libsysinternalsEBPF.so
 	conflicts = sysinternalsebpf
 	source = git+https://github.com/microsoft/SysinternalsEBPF.git
 	sha256sums = SKIP

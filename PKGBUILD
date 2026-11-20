@@ -9,7 +9,7 @@ url="https://github.com/microsoft/SysinternalsEBPF"
 license=('LGPL-2.1-or-later')
 depends=('glibc' 'glib2' 'json-glib' 'libelf' 'libz.so')
 makedepends=('git' 'clang' 'cmake' 'zlib')
-provides=("sysinternalsebpf=$pkgver")
+provides=("sysinternalsebpf=$pkgver" 'libsysinternalsEBPF.so')
 conflicts=('sysinternalsebpf')
 source=("git+https://github.com/microsoft/SysinternalsEBPF.git")
 sha256sums=('SKIP')
@@ -52,5 +52,4 @@ package() {
   cd "SysinternalsEBPF"
 
   DESTDIR="$pkgdir" cmake --install "_build"
-  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/sysinternalsebpf"
 }
