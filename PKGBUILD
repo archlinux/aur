@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction <https://github.com/LIghtJUNction>
 pkgname=zcall-omarchy
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Native Omarchy menu and bar controls for the zcalld AI gateway'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python>=3.11' 'gum' 'omarchy>=4.5.0' 'zcalld>=0.2.0')
 optdepends=('zcalld-compat: community providers, OAuth, privacy and advanced routing')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('15c7055caa34572229738c452191a448e0021247cca95e8954e036ef1b4866e9')
+sha256sums=('efb245416646b31463df2c40974ae81bcbe11244b37e05fa4cbe1e549551cfdf')
 
 check() {
   cd "$pkgname-$pkgver"
@@ -28,5 +28,6 @@ package() {
   install -Dm644 share/zcall-omarchy.desktop "$pkgdir/usr/share/applications/zcall-omarchy.desktop"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 docs/INTEGRATION.md "$pkgdir/usr/share/doc/$pkgname/INTEGRATION.md"
+  install -dm755 "$pkgdir/usr/share/doc/$pkgname/docs"
+  install -m644 docs/*.md "$pkgdir/usr/share/doc/$pkgname/docs/"
 }
