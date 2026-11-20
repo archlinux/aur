@@ -1,0 +1,15 @@
+pkgbase = marmota-daily
+	pkgdesc = Daily note templating system
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/B3ella/groundhog
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = marmota-daily-1.0.0.tar.gz::https://github.com/B3ella/groundhog/archive/v1.0.0.tar.gz
+	sha256sums = a3de328a8025524701acb008a40a146d4b3a74d4a0d4c3d28ba82db49d454048
+
+pkgname = marmota-daily
