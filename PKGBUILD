@@ -3,7 +3,7 @@
 _pkgauthor=matze
 _pkgname=wastebin
 pkgname=${_pkgname}-bin
-pkgdesc="wastebin is a pastebin 📝"
+pkgdesc="A minimal pastebin with a design shamelessly copied from `bin`."
 
 pkgver=3.9.0
 pkgrel=1
@@ -17,7 +17,7 @@ license=('MIT')
 
 depends=('glibc')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${pkgname%-bin}")
 
 backup=("etc/${_pkgname}/${_pkgname}.env")
 

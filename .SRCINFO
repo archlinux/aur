@@ -1,5 +1,5 @@
 pkgbase = wastebin-bin
-	pkgdesc = wastebin is a pastebin 📝
+	pkgdesc = A minimal pastebin with a design shamelessly copied from Path Version URL Status.
 	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://github.com/matze/wastebin
