@@ -1,15 +1,16 @@
 # Maintainer: LIghtJUNction <https://github.com/LIghtJUNction>
 pkgname=zcall-omarchy
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Native Omarchy menu and bar controls for the zcalld AI gateway'
 arch=('any')
 url='https://github.com/LIghtJUNction/zcall-omarchy'
 license=('MIT')
 depends=('python>=3.11' 'gum' 'omarchy>=4.5.0' 'zcalld>=0.2.0')
+checkdepends=('git')
 optdepends=('zcalld-compat: community providers, OAuth, privacy and advanced routing')
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('efb245416646b31463df2c40974ae81bcbe11244b37e05fa4cbe1e549551cfdf')
+source=("$pkgname-$pkgver.tar::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar")
+sha256sums=('3456a696ac016048971ed1f6e96349f756c84ebf4dc72eddea0199a7fd2b8bc3')
 
 check() {
   cd "$pkgname-$pkgver"
