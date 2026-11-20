@@ -1,6 +1,6 @@
 pkgbase = python-git-changelog
 	pkgdesc = Automatic changelog generator using Jinja2 templates
-	pkgver = 2.11.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/pawamoy/git-changelog
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-git-changelog
 	depends = python-platformdirs>=4.4
 	depends = python-semver>=3.0
 	depends = python-typing_extensions
-	source = python-git-changelog-2.11.0.tar.gz::https://github.com/pawamoy/git-changelog/archive/refs/tags/2.11.0.tar.gz
-	sha256sums = 99a0d8f38476ee3628ab1c12f2fbbbd2a69b997fa58b87ca69d825c11bc49ccb
+	source = python-git-changelog-2.12.0.tar.gz::https://github.com/pawamoy/git-changelog/archive/refs/tags/2.12.0.tar.gz
+	sha256sums = 572fd30a48c70a5617e9e7888f64823651151afdb36ff21e27e192569287e5b2
 
 pkgname = python-git-changelog
