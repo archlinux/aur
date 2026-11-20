@@ -1,2 +1,0 @@
-# Kernel TLS offload used by ktls = "auto"; the unprivileged service cannot autoload this module.
-tls

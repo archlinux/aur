@@ -1,6 +1,6 @@
 pkgbase = oxiroute-bin
 	pkgdesc = Pingora-based HTTP, TCP, and RTMP proxy runtime (prebuilt, profile-guided release binaries)
-	pkgver = 7.1.0
+	pkgver = 7.1.1
 	pkgrel = 1
 	url = https://github.com/brauliobo/oxiroute
 	install = oxiroute.install
@@ -11,31 +11,17 @@ pkgbase = oxiroute-bin
 	depends = glibc
 	depends = systemd>=257
 	optdepends = certbot: provide certificate lineages consumed by configured Certbot sources
-	provides = oxiroute=7.1.0
+	provides = oxiroute=7.1.1
 	conflicts = oxiroute
+	noextract = oxiroute-7.1.1-1-x86_64.pkg.tar.zst
 	options = !debug
+	options = !strip
+	options = !zipman
+	options = !purge
 	backup = etc/oxiroute/oxiroute.env
 	backup = etc/oxiroute/oxiroute.kdl
 	backup = etc/oxiroute/oxiroute.lua
-	source = oxiroute-7.1.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/brauliobo/oxiroute/releases/download/v7.1.0/oxiroute-7.1.0-x86_64-unknown-linux-gnu.tar.gz
-	source = management-cli-7.1.0.md::https://raw.githubusercontent.com/brauliobo/oxiroute/v7.1.0/docs/MANAGEMENT_CLI.md
-	source = oxiroute.service
-	source = oxiroute.sysusers
-	source = oxiroute.tmpfiles
-	source = oxiroute.modules
-	source = oxiroute.env
-	source = oxiroute.kdl
-	source = oxiroute.lua
-	source = README.md
-	sha256sums = b002f507aba6b4f839c74bb45b317548d4aa3b6f354c2046c642b1e6fae1d651
-	sha256sums = 96d0fbfa9f990fb7b5eac66a8f15ff496bdc063386e23952a4829a17a32f5f66
-	sha256sums = 1bb18eb30e49f9b4eae546094ca57bf2796a0660bd3811c25f551f76ca9bd86b
-	sha256sums = 167ec612cbdedb8a4e1ea92b181badb77042a0303e276b8181f14cf1956dc13f
-	sha256sums = 502dbc96a4f316ff7375cf90da32457b6003723a744825f04cec8a624974a356
-	sha256sums = c23385c6ee614b2b91e8fcd1c535038fc2dd9a115b77db368fa2fda4d9d698a1
-	sha256sums = d56db017915b82ad6204bb4de1aa268cc41586eafcbbf35194366b32ed02f19a
-	sha256sums = 57e5cb6cf58a38b6c5efd99e0b5a9a36bac3fafba438059a8396b07e9b6e80a9
-	sha256sums = f55a08f56ff139b566afac6b0c9cbbc4ed08f69a7e04810128bfb8c98a0f0564
-	sha256sums = a6aba7b89182befdfe5aada05a34c741d101dff1c5d9b4e5e6d7401e9114faa6
+	source = oxiroute-7.1.1-1-x86_64.pkg.tar.zst::https://github.com/brauliobo/oxiroute/releases/download/v7.1.1/oxiroute-7.1.1-1-x86_64.pkg.tar.zst
+	sha256sums = 521c41f2df47c0ebfeb12b523f4bb2d7ad7d3d0b56ff2ef168f4725f8f47cb1e
 
 pkgname = oxiroute-bin
