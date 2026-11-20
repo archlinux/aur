@@ -1,6 +1,6 @@
 pkgbase = zmcl-bin
 	pkgdesc = A small native Minecraft launcher built on Project Z (development preview)
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/zmcl
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = zmcl-bin
 	optdepends = openssl: Verify official Horizon launcher signatures
 	optdepends = xorg-xwayland: Run the native X11 GUI in a Wayland session
 	optdepends = ttf-font: Render the native GUI text
-	provides = zmcl=0.1.3
+	provides = zmcl=0.1.4
 	conflicts = zmcl
 	options = !strip
 	options = !debug
-	source = zmcl-0.1.3-linux-x86_64.tar.gz::https://github.com/LIghtJUNction/zmcl/releases/download/v0.1.3/zmcl-0.1.3-linux-x86_64.tar.gz
+	source = zmcl-0.1.4-linux-x86_64.tar.gz::https://github.com/LIghtJUNction/zmcl/releases/download/v0.1.4/zmcl-0.1.4-linux-x86_64.tar.gz
 	source = zmcl.desktop
-	sha256sums = b15024e99dd1275db15020ef26669f24aaad9026d948dd6683cacac5c7647e0e
+	sha256sums = 8265e672ef7914362c1038b71ed382d18efafe49668d7791005713faa5f580f1
 	sha256sums = 62d26944cd3c4aaaf2dd68668332527883b02bca734c893b510996ba19589082
 
 pkgname = zmcl-bin
