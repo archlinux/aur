@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=dffy-render-mermaid-bin
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="dffy renderer plugin that draws Mermaid flowcharts and sequence diagrams with box characters, so their changes read as a diagram in the diff view"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_aarch64=("${_tar_aarch64}::https://github.com/amalucelli/dffy/releases/do
 # Both archives hold a file called dffy-render-mermaid, so they are unpacked by
 # arch below instead of into the same source directory.
 noextract=("${_tar_x86_64}" "${_tar_aarch64}")
-sha256sums_x86_64=('50bf6268bb35e640fe3b8b8bd3b47c33a88260eb4ca3690a8176fc7b43b9b9f5')
-sha256sums_aarch64=('fce1f53af83bc6801d814537464f8a0050e92f5219a10ae58ed557c221639d77')
+sha256sums_x86_64=('3ac53fdecf0702e65bb4858042ee0e4d4223012706f63bfdcebbbf5c3e8ddb46')
+sha256sums_aarch64=('952b12419d47688484abc771d2cc4504e4f32ce94854e9d32a9ecf80b14459bb')
 
 package() {
   local tar_var="_tar_${CARCH}"
