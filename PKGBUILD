@@ -1,7 +1,7 @@
 # Maintainer: colegeming <collegeming@outlook.com>
 
 pkgname=kimi-code-bin
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc='Kimi Code CLI - the starting point for next-gen agents (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -28,19 +28,19 @@ options=('!strip')
 # LICENSE comes from the repo at the release tag (see [extras] in
 # metadata.toml); its URL and checksum are filled in by the updater.
 source_x86_64=(
-    "kimi-code-${pkgver}-linux-x64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.7.1/kimi-code-linux-x64.tar.gz"
-    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.7.1/LICENSE"
+    "kimi-code-${pkgver}-linux-x64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.7.2/kimi-code-linux-x64.tar.gz"
+    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.7.2/LICENSE"
 )
 sha256sums_x86_64=(
-    'ab70e5739eb4d0df0b25607d61aa65119fec390a30a88f98f0ba492490027a93'
+    'a5581d27e084296179eb61a618cd4e5f14921e987035ed8c854a12f034d52227'
     '23cc68e17992e0b512ae2e80afc5787d7d8e0fbfbdb4fff54ec0245508fa400e'
 )
 source_aarch64=(
-    "kimi-code-${pkgver}-linux-arm64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.7.1/kimi-code-linux-arm64.tar.gz"
-    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.7.1/LICENSE"
+    "kimi-code-${pkgver}-linux-arm64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.7.2/kimi-code-linux-arm64.tar.gz"
+    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.7.2/LICENSE"
 )
 sha256sums_aarch64=(
-    'b469477212eb4e0afc9306e0d8a1b8c05574130d633d9e0f3320335522b5d59d'
+    'b8854bf3cbab9bae89e46d1d7468c88c1c6f2ead9b6f193b2e36e14197497947'
     '23cc68e17992e0b512ae2e80afc5787d7d8e0fbfbdb4fff54ec0245508fa400e'
 )
 
