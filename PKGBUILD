@@ -9,27 +9,30 @@ pkgname=('brave-extension-bitwarden-dist'
          'firefox-extension-bitwarden-dist'
          'librewolf-extension-bitwarden-dist'
          'opera-extension-bitwarden-dist')
-pkgver=2026.10.2
+pkgver=2026.11.0
 pkgrel=1
 pkgdesc='Bitwarden browser extensions (official release dist builds)'
 arch=('any')
 url='https://github.com/bitwarden/clients'
 license=('GPL-3.0-or-later')
 # bsdtar (libarchive) is part of base and unpacks the zips
+# Upstream prefixes releases with the license variant: this package tracks the
+# open-source (GPL) build, which is "oss-" since 2026.11.0 and was unprefixed before.
+_dist='oss-'
 _rel="${url}/releases/download/browser-v${pkgver}"
-source=("dist-chrome-${pkgver}.zip::${_rel}/dist-chrome-${pkgver}.zip"
-        "dist-edge-${pkgver}.zip::${_rel}/dist-edge-${pkgver}.zip"
-        "dist-firefox-${pkgver}.zip::${_rel}/dist-firefox-${pkgver}.zip"
-        "dist-opera-${pkgver}.zip::${_rel}/dist-opera-${pkgver}.zip"
+source=("${_dist}dist-chrome-${pkgver}.zip::${_rel}/${_dist}dist-chrome-${pkgver}.zip"
+        "${_dist}dist-edge-${pkgver}.zip::${_rel}/${_dist}dist-edge-${pkgver}.zip"
+        "${_dist}dist-firefox-${pkgver}.zip::${_rel}/${_dist}dist-firefox-${pkgver}.zip"
+        "${_dist}dist-opera-${pkgver}.zip::${_rel}/${_dist}dist-opera-${pkgver}.zip"
         "LICENSE_GPL-${pkgver}.txt::https://raw.githubusercontent.com/bitwarden/clients/browser-v${pkgver}/LICENSE_GPL.txt")
-noextract=("dist-chrome-${pkgver}.zip"
-           "dist-edge-${pkgver}.zip"
-           "dist-firefox-${pkgver}.zip"
-           "dist-opera-${pkgver}.zip")
-sha256sums=('2ebc61246a2ea82a65c589b8484e26a5678253fa6474c26dc5b6a7a7fcacbda4'
-            'f688b7c9880323803a71b8db66cc68db463549c178a7da4446779411660d2102'
-            '4f812658de3ef86385348aeeae81a24b072bc26171d5db8931217e6a3c4b94aa'
-            'a0e549db7702086f101271e6c2d9e9f8a7367dc63241648ad02eadb8ece0b8bb'
+noextract=("${_dist}dist-chrome-${pkgver}.zip"
+           "${_dist}dist-edge-${pkgver}.zip"
+           "${_dist}dist-firefox-${pkgver}.zip"
+           "${_dist}dist-opera-${pkgver}.zip")
+sha256sums=('407b741949bc8ba3ba2af425c6a3ef124454c7bd72eb0a1db0679dc3c2fd7713'
+            'e23d0525ba0f32ec3266d9c01473f031a055c1eb9e8f956580b2ee7a7fb654e1'
+            'c31bcd736a588586916655cfce28c4e44c3ae3bc4afe8ff9cf49b386dd37b4d8'
+            '5afe12218a1d0dd783819b298d8706dc54b3c2777e77e60dba933b088c2fea70'
             'b98fbb37db5b23bc5cfdcd16793206a5a7120a7b01f75374e5e0888376e4691c')
 
 _firefox_id='{446900e4-71c2-419f-a6a7-df9c091e268b}'
@@ -38,7 +41,7 @@ _firefox_id='{446900e4-71c2-419f-a6a7-df9c091e268b}'
 _package_unpacked() {
   local _browser=$1
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  bsdtar -xf "${srcdir}/dist-${_browser}-${pkgver}.zip" -C "${pkgdir}/usr/share/${pkgname}" --no-same-owner
+  bsdtar -xf "${srcdir}/${_dist}dist-${_browser}-${pkgver}.zip" -C "${pkgdir}/usr/share/${pkgname}" --no-same-owner
   chmod -R u=rwX,go=rX "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 "${srcdir}/LICENSE_GPL-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_GPL.txt"
 }
@@ -46,7 +49,7 @@ _package_unpacked() {
 # Firefox-family: the zip is the xpi, auto-loaded from the system extensions directory.
 _package_xpi() {
   local _dir=$1
-  install -Dm644 "${srcdir}/dist-firefox-${pkgver}.zip" \
+  install -Dm644 "${srcdir}/${_dist}dist-firefox-${pkgver}.zip" \
     "${pkgdir}/usr/lib/${_dir}/browser/extensions/${_firefox_id}.xpi"
   install -Dm644 "${srcdir}/LICENSE_GPL-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_GPL.txt"
 }
