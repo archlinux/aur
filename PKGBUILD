@@ -1,7 +1,7 @@
 # Maintainer: Nihal Kumar <2tv8xupqg at mozmail dot com>
 # https://github.com/nihalxkumar/PKGBUILDs/tree/main/onionspray
 pkgname=onionspray
-pkgver=1.8.5
+pkgver=1.8.6
 pkgrel=1
 pkgdesc="A tool to setup Onion Services for existing websites."
 arch=('any')
