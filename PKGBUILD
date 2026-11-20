@@ -1,6 +1,6 @@
 # Maintainer: Gabantax <ve20@web.de>
 pkgname=switch-frame-tap
-pkgver=0.7.22
+pkgver=0.7.23
 pkgrel=1
 pkgdesc='PC viewer for Switch Frame Tap: watch and record your Nintendo Switch streamed over USB or network'
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('libva-mesa-driver: VAAPI decoding on AMD'
             'intel-media-driver: VAAPI decoding on Intel'
             'nvidia-utils: NVDEC decoding on NVIDIA')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5043081ca4d073907a53acf555e1b32f3b63f587f306f982f0d7b19ef134460f')
+sha256sums=('8e6f27ad82ca8f36d99a280dc16db311f24f7dd4e210d49cdf4bf8ab0ecbe39b')
 
 build() {
   cd "$pkgname-$pkgver"
