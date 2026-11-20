@@ -1,12 +1,12 @@
 # rootapp-bin
 pkgname=rootapp-bin
 pkgver=0.9.164
-pkgrel=4
+pkgrel=5
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
 license=('LicenseRef-proprietary')
-# deps payload 2026-11-19
+# deps payload 2026-11-20
 depends=('alsa-lib'
          'at-spi2-core'
          'ca-certificates-mozilla'
@@ -62,7 +62,7 @@ optdepends=('bluez: org.bluez Bluetooth service (bluetooth.service) for Web Blue
             'xdg-desktop-portal-gtk: file-picker and settings backend on GTK desktops'
             'xdg-desktop-portal-kde: file-picker and screen-share backend on KDE Plasma'
             'xdg-desktop-portal-wlr: screen-share backend on wlroots compositors'
-            'xdg-desktop-portal-hyprland: window and region screen share plus portal global shortcuts on Hyprland'
+            'xdg-desktop-portal-hyprland: window and region screen share backend on Hyprland (the app registers global hotkeys through X11 XRecord in libuiohook, so they stay unavailable on Wayland)'
             'pipewire: PipeWire daemon that feeds the portal ScreenCast capture'
             'wireplumber: PipeWire session and policy manager for voice and audio devices'
             'pipewire-pulse: PulseAudio-compatible server for voice and audio devices'
@@ -82,6 +82,9 @@ optdepends=('bluez: org.bluez Bluetooth service (bluetooth.service) for Web Blue
             'vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio (pulls libvlc)'
             'curl: crash report uploads for the bundled Chromium crash handler (chrome_crashpad_handler dlopens libcurl.so.4)'
             'nvidia-utils: hardware video decode/encode on NVIDIA GPUs (provides libcuda.so.1, libnvcuvid.so.1, libnvidia-encode.so.1, libGLX_nvidia.so.0)'
+            'intel-media-driver: Intel VA-API driver (iHD_drv_video.so) for hardware video decode in the bundled Chromium on Broadwell and newer'
+            'libva-intel-driver: legacy Intel VA-API driver (i965_drv_video.so) for hardware video decode on Haswell and older'
+            'libva-nvidia-driver: VA-API frontend for NVIDIA NVDEC (nvidia_drv_video.so) used by the bundled Chromium on NVIDIA GPUs'
             'vulkan-intel: Intel GPU Vulkan driver and ICD (provides libvulkan_intel.so probed by the bundled Chromium GPU process)'
             'vulkan-radeon: AMD GPU Vulkan driver and ICD (provides libvulkan_radeon.so probed by the bundled Chromium GPU process)'
             'vulkan-swrast: lavapipe software Vulkan ICD (provides libvulkan_lvp.so probed by the bundled Chromium GPU process; Mesa ships no ICD by default)'
