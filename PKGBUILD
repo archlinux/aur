@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bitwarden-bin
 pkgver=2026.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64' 'aarch64')
 url="https://bitwarden.com"
@@ -55,7 +55,7 @@ package() {
 
   # Files have the world writable bit set
   find "$pkgdir/opt/Bitwarden/" -type f -exec chmod 644 {} \;
-  chmod 0755 "$pkgdir"/opt/Bitwarden/{bitwarden,bitwarden-app,chrome_crashpad_handler,*{.so,.so.*}}
+  chmod 0755 "$pkgdir"/opt/Bitwarden/{bitwarden,bitwarden-app,chrome{_crashpad_handler,-sandbox},desktop_proxy,*{.so,.so.*}}
   find "$pkgdir/opt/Bitwarden/locales/" -type f -exec chmod 644 {} \;
 
   install -d "$pkgdir/etc/apparmor.d"
