@@ -8,8 +8,8 @@ _name=${pkgname#python-}
 pkgdesc="Tools for the extraction of OpenStreetMap street network data "
 url="http://udst.github.io/osmnet/"
 
-pkgver=0.1.7
-pkgrel=3
+pkgver=0.2
+pkgrel=1
 
 arch=("any")
 license=("AGPL-3.0-only")
@@ -29,16 +29,12 @@ depends=(
     "python-shapely"
 )
 checkdepends=(
-    "python-coveralls"
-    "python-pycodestyle"
     "python-pytest"
     "python-pytest-cov"
 )
 
 source=("${_name}-${pkgver}.tar.gz::https://github.com/UDST/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=(
-    "5e047107f4836737e373da1aed549eb4227d67b5de196bda8a3de1d575e34f88c3fa7bbbf3aea15fb6cdbadadabfa8b3fe3ccc6196329ceafc7f6a05bb6e17dd"
-)
+b2sums=("30bb6297ae5645b4fe6d82fc3eae2bdf80e2007d328e217ce044bb6ea699c0a05a65acab31086eb04bf914d6fd4dcfc2ff6e0aec5f10b7eaa5ac25668820da78")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
