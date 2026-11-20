@@ -1,0 +1,21 @@
+pkgbase = python-accelerated-scan
+	pkgdesc = Parallel associative scan with PyTorch, Triton and CUDA implementations
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/proger/accelerated-scan
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python-pytorch>=2.9.0
+	optdepends = python-triton: Triton scan backend
+	optdepends = cuda: compile the CUDA warp backend at runtime
+	optdepends = ninja: build the CUDA warp extension
+	optdepends = python-setuptools: load the PyTorch CUDA extension builder
+	source = python-accelerated-scan-0.3.1.tar.gz::https://github.com/proger/accelerated-scan/archive/866fa4cd4eaf01338ee6d77a4f99fcd4b2f656d1.tar.gz
+	source = warp-pytorch-extension-flags.patch
+	sha256sums = 2fe7821cc126a61558378df438ed196016bec64762c518d06b2262e0cb818daf
+	sha256sums = 976fbf7ce18ef4ec1c149e3445ad482d84cede89f94d4bca8078667bc718c2a3
+
+pkgname = python-accelerated-scan

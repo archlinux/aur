@@ -1,0 +1,14 @@
+--- a/accelerated_scan/warp.py
++++ b/accelerated_scan/warp.py
+@@ -16,9 +16,10 @@
+     cuda_sources=[cuda_source],
+     functions=['warpscan_forward', 'warpscan_backward'],
+     verbose=True,
++    extra_cflags=["-DGLOG_USE_GLOG_EXPORT"],
+     extra_cuda_cflags=[
++        "-DGLOG_USE_GLOG_EXPORT",
+         "-O3",
+-        "-std=c++17",
+         "--ptxas-options=-v",
+         "-lineinfo",
+         "--fmad", "false",
