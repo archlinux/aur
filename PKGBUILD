@@ -2,8 +2,8 @@
 
 _rockname=fluent
 _project=$_rockname-lua
-pkgname=("lua-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
-pkgver=0.0.4.r79.g4661a39
+pkgname=("lua-$_rockname-git" "lua54-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
+pkgver=0.2.0.r9.gefaf199
 _branch='master'
 _rockrel=0
 pkgrel=1
@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/alerque/$_project"
 license=('MIT')
 _lua_deps=('cldr' 'luaepnf' 'penlight')
-makedepends=('git' 'lua' 'lua53' 'lua52' 'lua51' 'luarocks')
+makedepends=('git' 'lua' 'lua54' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("git+$url.git#branch=$_branch")
 sha256sums=('SKIP')
 
@@ -29,6 +29,13 @@ _package_helper() {
 
 package_lua-fluent-git() {
   depends=('lua' "${_lua_deps[@]/#/lua-}")
+  provides=("${pkgname/-git}")
+  conflicts=("${pkgname/-git}")
+  _package_helper 5.5
+}
+
+package_lua54-fluent-git() {
+  depends=('lua54' "${_lua_deps[@]/#/lua54-}")
   provides=("${pkgname/-git}")
   conflicts=("${pkgname/-git}")
   _package_helper 5.4
