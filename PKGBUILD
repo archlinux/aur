@@ -1,11 +1,11 @@
 # Maintainer: chadsr <git at ross dot ch>
 
 pkgname=openshell
-pkgver=0.1.9 # renovate: datasource=github-releases depName=NVIDIA/OpenShell
-pkgrel=1
+pkgver=0.1.9 # renovate: datasource=github-releases depName=ai-openshell/openshell
+pkgrel=2
 pkgdesc="The safe, private runtime for autonomous AI agents."
 arch=('x86_64' 'aarch64')
-url='https://github.com/NVIDIA/OpenShell'
+url='https://github.com/ai-openshell/openshell'
 license=('Apache-2.0')
 install=openshell.install
 depends=('z3' 'sqlite' 'git')
@@ -24,10 +24,11 @@ optdepends=(
 conflicts=("$pkgname-bin" "$pkgname-git")
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('157472ad00b34c2aa02a256e487de393c30e62b89eab457a32d124afacb9d4fbb237f170144dcb3c6a96f3cd0a860ba0bf8ad912f3c264d13875b8931e4c7031')
+b2sums=('ac4f6ba8bb832f2885ba790fb90855392ba548ff538a144275bb26f3873b74d0705e44c8b7acb09db6c7f7ae949c2f9755379c523f381096559baf1497e9a460')
 
 prepare() {
-	cd "OpenShell-$pkgver"
+	cd "openshell-$pkgver"
+	export RUSTC_WRAPPER=
 
 	# stamp pkgver like openshell.spec; sync lock for --frozen
 	sed -i "s/^version = \"0.0.0\"/version = \"$pkgver\"/" Cargo.toml
@@ -41,13 +42,14 @@ prepare() {
 }
 
 build() {
-	cd "OpenShell-$pkgver"
+	cd "openshell-$pkgver"
 	export CARGO_TARGET_DIR=target
 	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export OPENSHELL_GIT_VERSION="$pkgver"
 	export OPENSHELL_IMAGE_TAG="$pkgver"
 	export GIT_CEILING_DIRECTORIES="$PWD" # prevent git-describing the enclosing repo
 	export AWS_LC_SYS_USE_SYSTEM=0        # always build vendored aws-lc
+	export RUSTC_WRAPPER=
 
 	# telemetry-free gateway; separate build to avoid telemetry via feature unification
 	cargo build --frozen --release -p openshell-gateway \
@@ -68,13 +70,14 @@ build() {
 }
 
 check() {
-	cd "OpenShell-$pkgver"
+	cd "openshell-$pkgver"
 	export CARGO_TARGET_DIR=target
 	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export OPENSHELL_GIT_VERSION="$pkgver"
 	export OPENSHELL_IMAGE_TAG="$pkgver"
 	export GIT_CEILING_DIRECTORIES="$PWD"
 	export AWS_LC_SYS_USE_SYSTEM=0
+	export RUSTC_WRAPPER=
 
 	cargo test --frozen --lib -p openshell-gateway \
 		--no-default-features --features defaults-without-telemetry
@@ -85,7 +88,7 @@ check() {
 }
 
 package() {
-	cd "OpenShell-$pkgver"
+	cd "openshell-$pkgver"
 	install -Dm0755 target/release/openshell -t "$pkgdir/usr/bin/"
 	install -Dm0755 target/release/openshell-gateway -t "$pkgdir/usr/bin/"
 	install -Dm0755 target/release/openshell-prover -t "$pkgdir/usr/bin/"
