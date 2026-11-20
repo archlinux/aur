@@ -1,6 +1,6 @@
 pkgbase = uq
 	pkgdesc = Themeable Hyprland desktop: shell, theme and layout daemon, CLI and base config
-	pkgver = 0.3.25
+	pkgver = 0.3.26
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/uq
 	install = uq.install
@@ -66,6 +66,7 @@ pkgbase = uq
 	optdepends = grim: screenshots (Print)
 	optdepends = slurp: pick an area for a screenshot (Print)
 	optdepends = wl-clipboard: copy screenshots to the clipboard (Copy in the preview)
+	optdepends = uqview: Mark up and Open in the screenshot preview; the image viewer
 	optdepends = kate: KWrite, a plain text editor
 	options = !lto
 	backup = etc/pam.d/uq-greetd
@@ -74,7 +75,7 @@ pkgbase = uq
 	backup = etc/pam.d/uq-lock-fingerprint
 	backup = etc/uq/greetd.toml
 	backup = etc/uq/greeter.toml
-	source = uq-0.3.25.tar.gz::https://github.com/asafelobotomy/uq/releases/download/v0.3.25/uq-0.3.25.tar.gz
-	sha256sums = e160e84254a3e31957c3beda4942e4aeacd5abab96505fcf08896c3d62e6eac8
+	source = uq-0.3.26.tar.gz::https://github.com/asafelobotomy/uq/releases/download/v0.3.26/uq-0.3.26.tar.gz
+	sha256sums = dc3b5aa6c33cb9b7016e9139ec68cb2210cb244c1462b64b2c484c3ef4cf0057
 
 pkgname = uq

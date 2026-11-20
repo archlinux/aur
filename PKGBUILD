@@ -4,7 +4,7 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=uq
-pkgver=0.3.25
+pkgver=0.3.26
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
 # The uq-hyprland-pin this release's config/hypr/base.lua is tested with: equal to
@@ -50,6 +50,7 @@ optdepends=(
   'grim: screenshots (Print)'
   'slurp: pick an area for a screenshot (Print)'
   'wl-clipboard: copy screenshots to the clipboard (Copy in the preview)'
+  'uqview: Mark up and Open in the screenshot preview; the image viewer'
   'kate: KWrite, a plain text editor'
 )
 # Keep !lto: rustc links with lld, and makepkg's LTO flags make the cxx-qt C++ objects unreadable to it.
@@ -59,7 +60,7 @@ backup=(etc/pam.d/uq-greetd etc/pam.d/uq-greeter etc/pam.d/uq-lock etc/pam.d/uq-
 # (so its checksum) can change. The release workflow uploads exactly this file and prints its sum.
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
 # The release asset's sha256 for this tag; update it with pkgver at each release (docs/releasing.md).
-sha256sums=('e160e84254a3e31957c3beda4942e4aeacd5abab96505fcf08896c3d62e6eac8')
+sha256sums=('dc3b5aa6c33cb9b7016e9139ec68cb2210cb244c1462b64b2c484c3ef4cf0057')
 
 prepare() {
   cd "$srcdir/$pkgname-$_tag"
