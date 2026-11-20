@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libjuice-git
-pkgver=1.4.0.r0.gac0fc81
+pkgver=1.7.4.r25.gd3d490b
 pkgrel=1
 pkgdesc="JUICE is a UDP Interactive Connectivity Establishment library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/paullouisageneau/libjuice"
 license=('MPL-2.0')
 depends=('glibc')
 makedepends=('git' 'cmake')
-provides=("libjuice=$pkgver")
+provides=("libjuice=$pkgver" 'libjuice.so')
 conflicts=('libjuice')
 source=("git+https://github.com/paullouisageneau/libjuice.git")
 sha256sums=('SKIP')
@@ -19,7 +19,7 @@ pkgver() {
   cd "libjuice"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
