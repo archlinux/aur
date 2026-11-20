@@ -87,9 +87,19 @@ try {
 				const wrap = (obj, name) => {
 					const orig = obj[name];
 					if (typeof orig !== 'function') return;
-					obj[name] = function (p, ...rest) {
+					const wrapper = function (p, ...rest) {
 						return orig.call(this, redirect(p), ...rest);
 					};
+					// Node exposes fs.realpathSync.native alongside the plain
+					// function, and some callers (0.5.16's plugin SDK path
+					// resolver) use it. A bare replacement would remove .native
+					// and make them fail with a TypeError.
+					if (typeof orig.native === 'function') {
+						wrapper.native = function (p, ...rest) {
+							return orig.native.call(this, redirect(p), ...rest);
+						};
+					}
+					obj[name] = wrapper;
 				};
 				for (const name of [
 					'readFile', 'readFileSync', 'existsSync', 'createReadStream',
