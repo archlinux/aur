@@ -4,13 +4,12 @@
 # copy of this file and its .SRCINFO (makepkg --printsrcinfo > .SRCINFO).
 
 pkgname=pila-git
-pkgver=0.7.1.r672.g89f3998
+pkgver=0.8.0.r740.g33c2178
 pkgrel=1
 pkgdesc='A stacking Wayland compositor built on Smithay'
 arch=(x86_64 aarch64)
 url='https://github.com/igalmarino/pila'
-# Apache-2.0: the icons built into pila-bar and pila-osd (bar/icons).
-license=(GPL-3.0-or-later Apache-2.0)
+license=(GPL-3.0-or-later)
 # The libraries Pila links (readelf -d), EGL (loaded at runtime through
 # libglvnd) and bash for pila-session and pila-report. Xwayland, which Pila
 # starts for X11 apps, is optional: without it, there are none.
@@ -26,14 +25,15 @@ depends=(
     systemd-libs
 )
 makedepends=(cargo git pkgconf)
+# The desktop's tools (bar, launcher, notifications, lock, the keys' programs)
+# are pila-desktop's (packaging/aur/pila-desktop): this is the compositor
+# alone, and the defaults that aren't installed are skipped.
 optdepends=(
+    'pila-desktop: the bar, launcher, notifications, lock and keys of the default configuration'
     'xorg-xwayland: X11 apps (games, older programs)'
-    'kitty: the default terminal (or foot, alacritty, ...)'
     'xdg-desktop-portal-wlr: screen sharing'
     'xdg-desktop-portal-gtk: file chooser and other portals'
-    'swaylock: locking the session'
     'xdg-utils: opening links and files from programs such as kitty (xdg-open)'
-    'wireplumber: the volume and mute keys (wpctl)'
 )
 provides=(pila)
 conflicts=(pila)
@@ -72,9 +72,6 @@ prepare() {
     local target
     target="$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --locked --target "$target"
-    # pila-launcher, pila-bar, pila-osd and pila-shot: a cargo
-    # workspace of their own, with its own lock.
-    cargo fetch --locked --target "$target" --manifest-path launcher/Cargo.toml
 }
 
 build() {
@@ -82,8 +79,6 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
-    CARGO_TARGET_DIR=launcher/target cargo build --frozen --release \
-        --manifest-path launcher/Cargo.toml
 }
 
 # No check(): the tests start pila headless, which needs EGL and Xwayland and
