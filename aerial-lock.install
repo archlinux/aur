@@ -1,8 +1,28 @@
 post_install() {
     printf '%s\n' \
+        'Aerial content downloads start at your next login/user-manager startup.' \
+        'To start now: systemctl --user start aerial.service' \
+        'Or fetch now: aerialctl fetch' \
+        'Automatic downloads: up to 1080p, no known metered connections, AC/battery allowed.' \
+        'The managed cache defaults to 10 GB with weekly replacement; all are settings.' \
+        'Cache filling and rotation consume network traffic, not a monthly allowance.' \
+        'Until a clip completes, locks show solid colour; new clips play next lock.' \
+        "Apple's aerial videos are produced by Apple and download directly from Apple." \
+        'We do not host, mirror or redistribute them. No videos are in this package.' \
+        'Apple, macOS, tvOS, Apple TV and Mac are trademarks of Apple Inc.' \
+        'aerial-lock is not affiliated with Apple. This approach is adapted from Aerial' \
+        '(John Coates, Guillaume Louel and contributors):' \
+        'https://aerialscreensaver.github.io/legal' \
+        "The software license does not grant rights to Apple's footage or community media." \
+        '' \
+        'Idle/session integration is separate and remains optional.' \
         'To enable idle/session integration from your graphical session:' \
         '  systemctl --user enable --now aerial-idle.service' \
         'No inactivity timeout is enabled by default. For a five-minute example,' \
         'see /usr/share/aerial-lock/examples/idle.json and merge its idle object' \
         'into your config. Lock-on-suspend and logind lock/unlock default to on.'
+}
+
+post_upgrade() {
+    post_install
 }
