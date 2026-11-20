@@ -1,14 +1,15 @@
 # Maintainer: LIghtJUNction
 pkgname=zcall-gui
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Native Project Z control panel for the zcalld local AI gateway'
 arch=('x86_64' 'aarch64')
 url='https://github.com/LIghtJUNction/zcall-gui'
 license=('MIT')
 optdepends=('xorg-xwayland: run on Wayland sessions' 'noto-fonts-cjk: Chinese and Japanese glyphs')
 depends=('zcalld>=0.2.0' 'glibc' 'libgcc' 'libx11' 'libgl' 'freetype2' 'fontconfig' 'curl' 'hicolor-icon-theme')
-makedepends=('rust>=1.100' 'pkgconf')
+# Cargo enforces rust-version; Arch rustup provides rust without a package version.
+makedepends=('rust' 'pkgconf')
 # Rust retains its own thin LTO; keep native C objects compatible with the linker.
 options=('!lto')
 source=("$pkgname-v$pkgver-source.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver-source.tar.gz")
