@@ -2,7 +2,7 @@
 
 pkgname=python-megatron-core
 _pkgname=Megatron-LM
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 _archive="$_pkgname-core_v$pkgver"
 pkgdesc='NVIDIA Megatron-Core: GPU-optimized building blocks for training transformer models at scale'
@@ -73,7 +73,7 @@ optdepends=(
     'python-wget: Hugging Face tokenizer downloads'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/core_v$pkgver.tar.gz")
-sha256sums=('8025f7fdf46d6c1c46c5ed53d165df0372d126a738e8033ff47da17722ecb35e')
+sha256sums=('4fa06d7ce036baaa5a81c5070b3a88b4205c0399cb2cb1359c5daa1909400115')
 
 build() {
     cd "$_archive"

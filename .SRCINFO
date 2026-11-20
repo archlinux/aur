@@ -1,6 +1,6 @@
 pkgbase = python-megatron-core
 	pkgdesc = NVIDIA Megatron-Core: GPU-optimized building blocks for training transformer models at scale
-	pkgver = 0.20.0
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://github.com/NVIDIA/Megatron-LM
 	arch = x86_64
@@ -61,7 +61,7 @@ pkgbase = python-megatron-core
 	optdepends = python-wandb: experiment logging
 	optdepends = python-wget: Hugging Face tokenizer downloads
 	options = !strip
-	source = python-megatron-core-0.20.0.tar.gz::https://github.com/NVIDIA/Megatron-LM/archive/refs/tags/core_v0.20.0.tar.gz
-	sha256sums = 8025f7fdf46d6c1c46c5ed53d165df0372d126a738e8033ff47da17722ecb35e
+	source = python-megatron-core-0.20.1.tar.gz::https://github.com/NVIDIA/Megatron-LM/archive/refs/tags/core_v0.20.1.tar.gz
+	sha256sums = 4fa06d7ce036baaa5a81c5070b3a88b4205c0399cb2cb1359c5daa1909400115
 
 pkgname = python-megatron-core
