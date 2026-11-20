@@ -2,7 +2,7 @@
 
 pkgname=jorvik-git
 _pkgname=jorvik
-pkgver=1.0.34.r0.gc554e49
+pkgver=1.0.35.r0.g7dc1836
 pkgrel=1
 pkgdesc="Chat and voice for Matrix (git)"
 arch=('x86_64')
