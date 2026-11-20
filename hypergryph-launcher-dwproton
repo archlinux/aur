@@ -1,0 +1,109 @@
+#!/usr/bin/bash
+# SPDX-FileCopyrightText: 2026 ParticleG
+# SPDX-License-Identifier: 0BSD
+
+set -euo pipefail
+
+readonly APP_ID='hypergryph-launcher-dwproton'
+readonly PACKAGE_VERSION='1.6.0.1601'
+readonly INSTALLER_SHA256='341c4b9c8b8c4923cec9c7ebd6cb466dcc03e94b7ba3f5dd1449bb218c3dd959'
+readonly INSTALLER_URL='https://launcher.hypergryph.com/launcher/get_latest_launcher?appcode=abYeZZ16BPluCFyT&ta=arknights&channel=1'
+readonly data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
+readonly cache_home="${XDG_CACHE_HOME:-$HOME/.cache}"
+readonly compat_data="${HYPERGRYPH_LAUNCHER_COMPAT_DATA:-$data_home/arknights-proton/compatdata}"
+readonly prefix="$compat_data/pfx"
+readonly steam_root="$data_home/$APP_ID/steam"
+readonly cache_dir="$cache_home/$APP_ID"
+readonly client="$prefix/drive_c/Program Files/Hypergryph Launcher/Launcher.exe"
+readonly installer="$cache_dir/HypergryphLauncher-$PACKAGE_VERSION.exe"
+readonly proton="${HYPERGRYPH_LAUNCHER_PROTON:-/usr/share/steam/compatibilitytools.d/dwproton/proton}"
+
+die() {
+    printf '%s: %s\n' "$APP_ID" "$*" >&2
+    if [[ ! -t 2 ]] && command -v notify-send >/dev/null 2>&1; then
+        notify-send --urgency=critical 'Hypergryph Launcher (DWProton)' "$*" || true
+    fi
+    exit 1
+}
+
+usage() {
+    cat <<'EOF'
+Usage: hypergryph-launcher-dwproton [OPTION]
+
+Run the official Hypergryph Launcher using an isolated DWProton prefix.
+When absent, download the original installer from Hypergryph and open its GUI.
+
+Options:
+  --install       Open the official installer without bypassing its agreement
+  --print-prefix  Print the Wine prefix without starting any process
+  --version       Print the integration package version
+  -h, --help      Show this help
+
+Environment:
+  HYPERGRYPH_LAUNCHER_PROTON       Path to a DWProton proton executable
+  HYPERGRYPH_LAUNCHER_COMPAT_DATA  Proton compatdata directory (not its pfx child)
+  XDG_DATA_HOME / XDG_CACHE_HOME  Override the standard user data/cache roots
+EOF
+}
+
+check_installer() {
+    printf '%s  %s\n' "$INSTALLER_SHA256" "$1" | sha256sum --check --status
+}
+
+obtain_installer() {
+    local temporary
+    if [[ -f "$installer" ]]; then
+        check_installer "$installer" ||
+            die "The cached installer failed its checksum. Remove '$installer' and try again."
+        return
+    fi
+
+    mkdir -p -- "$cache_dir"
+    temporary=$(mktemp "$cache_dir/installer.XXXXXXXX.exe")
+    trap 'rm -f -- "$temporary"' EXIT
+    printf '%s: Downloading the original installer from Hypergryph.\n' "$APP_ID"
+    curl --fail --location --proto '=https' --proto-redir '=https' \
+        --connect-timeout 30 --progress-bar \
+        --referer 'https://ak.hypergryph.com/' \
+        --output "$temporary" "$INSTALLER_URL" ||
+        die 'The official installer download failed.'
+    check_installer "$temporary" ||
+        die 'The official installer changed or failed its checksum. Update this package before installing.'
+    mv -- "$temporary" "$installer"
+    trap - EXIT
+}
+
+run_proton() {
+    local target=$1
+    mkdir -p -- "$compat_data" "$steam_root"
+    exec env \
+        STEAM_COMPAT_DATA_PATH="$compat_data" \
+        STEAM_COMPAT_CLIENT_INSTALL_PATH="$steam_root" \
+        WINEPREFIX="$prefix" \
+        SteamAppId=0 SteamGameId=0 \
+        "$proton" run "$target"
+}
+
+mode=launch
+if (($# > 1)); then
+    die 'Use one option at a time. See --help.'
+fi
+case ${1:-} in
+    '') ;;
+    --install) mode=install ;;
+    --print-prefix) printf '%s\n' "$prefix"; exit 0 ;;
+    --version) printf '%s %s\n' "$APP_ID" "$PACKAGE_VERSION"; exit 0 ;;
+    -h|--help) usage; exit 0 ;;
+    *) die "Unknown option '$1'. See --help." ;;
+esac
+
+[[ $EUID -ne 0 ]] || die 'Run this command as your desktop user, not as root.'
+[[ -x "$proton" ]] ||
+    die "DWProton was not found at '$proton'. Install dwproton-bin or set HYPERGRYPH_LAUNCHER_PROTON."
+
+if [[ "$mode" == launch && -f "$client" ]]; then
+    run_proton "$client"
+else
+    obtain_installer
+    run_proton "$installer"
+fi

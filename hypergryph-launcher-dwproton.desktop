@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Hypergryph Launcher (DWProton)
+Comment=Run the official Hypergryph Launcher through DWProton
+Exec=hypergryph-launcher-dwproton
+Icon=applications-games
+Terminal=false
+Categories=Game;
+StartupNotify=true
