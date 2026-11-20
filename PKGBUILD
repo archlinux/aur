@@ -19,11 +19,11 @@ depends=(
     'gawk'
     'coreutils'
     'libnotify'
+    'yt-dlp'
+    'xdg-utils'
 )
 
 optdepends=(
-    'yt-dlp: video downloading'
-    'xdg-utils: opening URLs'
     'kitty: terminal video playback'
 )
 conflicts=('por-cli-git')
