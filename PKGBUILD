@@ -5,7 +5,7 @@
 # packaging/aur.
 
 pkgname=herakleo
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Desktop IPTV player for M3U lists and Xtream Codes'
 arch=('x86_64')
@@ -39,7 +39,7 @@ replaces=('herakleo-wails')
 # makepkg's LTO flags break cgo
 options=('!lto' '!debug')
 source=("herakleo-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d0d24504218a2cf1c0e840077ba01450a9b19fc3af628ad7d72420d64d39913c')
+sha256sums=('aa0fa8f2258582ade0995a5dbef25ffc03f6b1fb8d9a8858a26e11c472ac5a76')
 
 _goenv() {
   export GOPATH="$srcdir/gopath"
