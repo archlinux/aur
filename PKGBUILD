@@ -1,11 +1,11 @@
 pkgname=moomoo-opend-bin
 pkgver=10.12.7208
-pkgrel=1
+pkgrel=2
 pkgdesc="Moomoo OpenD command-line daemon and GUI"
 arch=('x86_64')
 url='https://openapi.moomoo.com/'
 license=('custom:proprietary')
-depends=('fuse2' 'gcc-libs' 'glibc' 'hicolor-icon-theme')
+depends=('fuse2' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'zlib')
 provides=('moomoo-opend' 'futu-opend')
 conflicts=('moomoo-opend' 'futu-opend')
 options=('!debug' '!strip')
