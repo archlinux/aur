@@ -1,6 +1,6 @@
 pkgbase = morgan-bin
 	pkgdesc = Shell de escritorio para Hyprland: barra, centro de control, notificaciones, launcher, OSD y bloqueo (binario)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/ImJustDoingMyPart/morgan
 	install = morgan.install
@@ -34,14 +34,14 @@ pkgbase = morgan-bin
 	optdepends = papirus-folders: color de las carpetas del tema de íconos
 	optdepends = greetd: morgan-greet, la pantalla de inicio de sesión
 	optdepends = jq: morgan-cuota (cuotas de Claude Code y Antigravity)
-	provides = morgan=0.3.0
+	provides = morgan=0.3.1
 	provides = notification-daemon
 	conflicts = morgan
 	conflicts = morgan-git
 	options = !strip
 	options = !debug
 	backup = etc/pam.d/morgan-lock
-	source = morgan-0.3.0-x86_64.tar.gz::https://github.com/ImJustDoingMyPart/morgan/releases/download/v0.3.0/morgan-0.3.0-x86_64.tar.gz
-	sha256sums = cd35185fa3ad4d330e37caba2437de6c0cd12b24898cbc84bd01a7bf2ffbb516
+	source = morgan-0.3.1-x86_64.tar.gz::https://github.com/ImJustDoingMyPart/morgan/releases/download/v0.3.1/morgan-0.3.1-x86_64.tar.gz
+	sha256sums = bd224982ddfa21ef256fb96a2804247cf48bda9bd5a161b782e2866928d21fba
 
 pkgname = morgan-bin

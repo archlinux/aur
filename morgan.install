@@ -2,8 +2,9 @@ post_install() {
     cat <<'FIN'
 ==> Para usar morgan, cada usuario corre una vez, desde Hyprland (con la config en Lua):
         morgan setup
-    Agrega la línea de morgan a ~/.config/hypr/hyprland.lua, habilita la unidad, avisa qué
-    otra barra, OSD o servidor de notificaciones hay que parar, y lo arranca.
+    Agrega la línea de morgan a ~/.config/hypr/hyprland.lua, habilita la unidad, ofrece parar
+    la otra barra, OSD o servidor de notificaciones e instalar lo recomendado, y lo arranca.
+    Antes de quitar el paquete: morgan setup --deshacer.
 FIN
 }
 
@@ -15,5 +16,8 @@ post_remove() {
     cat <<'FIN'
 ==> En cada usuario quedan la línea `pcall(require, "morgan")` de ~/.config/hypr/hyprland.lua
     y ~/.config/hypr/morgan.lua: se pueden borrar. La config (~/.config/morgan) queda.
+    Lo que paró `morgan setup` sigue parado: las unidades están en
+    ~/.local/state/morgan/setup-parados, las líneas de la config de Hyprland empiezan con
+    «-- [morgan setup]» y las apps de inicio terminan en .morgan-parado.
 FIN
 }
