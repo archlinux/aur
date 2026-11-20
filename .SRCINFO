@@ -1,0 +1,19 @@
+pkgbase = tdrive-bin
+	pkgdesc = TDrive-compatible Telegram-backed cloud drive client — prebuilt binary
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Coobyk/tdrive-rs
+	arch = x86_64
+	license = MIT
+	depends = fuse3
+	depends = openssl
+	depends = fontconfig
+	depends = libxcb
+	depends = libxkbcommon
+	depends = wayland
+	provides = tdrive
+	conflicts = tdrive
+	source = tdrive-linux-x86_64-$pkgver.tar.gz::https://github.com/Coobyk/tdrive-rs/releases/download/v$pkgver/tdrive-rs-linux-x86_64.tar.gz
+	sha256sums = f55af86af36a5ef668071787f5154d30ba98bfcc2d8ea2de383fc49582f078ce
+
+pkgname = tdrive-bin
