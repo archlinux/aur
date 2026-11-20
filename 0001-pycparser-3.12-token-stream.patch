@@ -1,0 +1,41 @@
+pycparser 3.12 changed _TokenStream to take a zero-argument callable that returns the
+next token; 3.11 and earlier took the lexer object and called .token() themselves. angr's
+monkeypatch still passes the lexer object, so the first parse raises
+"TypeError: 'CLexer' object is not callable" and importing angr fails outright.
+
+Dispatch on the constructor's parameter name so the patch is a no-op on either API.
+
+--- a/angr/sim_type.py
++++ b/angr/sim_type.py
+@@ -4165,6 +4165,13 @@
+     return _decl_to_type(decl, extra_types=extra_types, arch=arch), node.name
+ 
+ 
++def _token_stream_arg(clex):
++    # pycparser >= 3.12 wants a zero-argument callable, <= 3.11 wants the lexer object
++    if "read_token" in pycparser.c_parser._TokenStream.__init__.__code__.co_varnames:
++        return clex.token
++    return clex
++
++
+ def _accepts_scope_stack():
+     """
+     pycparser hack to include scope_stack as parameter in CParser parse method
+@@ -4185,7 +4192,7 @@
+         self._scope_stack = [{}] if scope_stack is None else scope_stack
+ 
+         self.clex.input(text, filename)
+-        self._tokens = pycparser.c_parser._TokenStream(self.clex)
++        self._tokens = pycparser.c_parser._TokenStream(_token_stream_arg(self.clex))
+ 
+         ast = self._parse_translation_unit_or_empty()
+         tok = self._peek()
+@@ -4199,7 +4206,7 @@
+         self._scope_stack = [{}] if scope_stack is None else scope_stack
+ 
+         self.clex.input(text, filename)
+-        self._tokens = pycparser.c_parser._TokenStream(self.clex)
++        self._tokens = pycparser.c_parser._TokenStream(_token_stream_arg(self.clex))
+ 
+         return self._parse_type_name()  # ignore all tokens that follow the type name
+ 
