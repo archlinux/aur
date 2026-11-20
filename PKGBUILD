@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A zero-allocation reverse proxy and load balancer in Zig ⚡"
 
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -33,11 +33,11 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
 sha256sums=('a9e7a0b2ca0bb923c316c0cc1b9f60e8407ebbeb974467cea6b808644b5dd611'
             '3d684402edc830c47a68a75b906d936a194baaf05c05a3fc609baa6dbf43b0e2'
-            '6dd88f4413d797ced8356b86e1955f1fe57ac598b7fbdfa3dbee76fb6e1f8734'
+            '3db3407e2ee24c50e74b8e025be45e235954803e60fc0af2c72a400685145511'
             '070284d0fc0366f171956755438ae7ab479d2caf801968c7a4ef0ee3ea00554f'
             'ef10bbdfbb5f0601d6e6e9eaf699c4b882564267ba5743bb9359fb9f89d2a60b')
-sha256sums_x86_64=('d3fb873c0b840cc33165a75cf6e03deb6058a809941c5586b0c967096d220fb9')
-sha256sums_aarch64=('7ff5967da5e3f8e5d66ae14b8f0c6a42936a2018c0fb12a2d5bed62bbdbb81c1')
+sha256sums_x86_64=('5af49f6949570678d62752c475eb8ef3b6ac97c8d0c8bda34f7c5d744db4103a')
+sha256sums_aarch64=('846068a173ee269cea01153040cb3bd2226b2002a6ec7695f303b1d6e3e0f059')
 
 
 package() {
