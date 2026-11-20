@@ -7,7 +7,7 @@
 
 pkgname=av-morning-star
 _reponame=AV-Morning-Star
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='Video and audio downloader for YouTube, Odysee and 1000+ sites (a yt-dlp front end)'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('deno: YouTube proof-of-origin tokens (recommended by yt-dlp)'
             'nodejs: YouTube proof-of-origin tokens, if deno is not installed'
             'python-syncedlyrics: more lyrics sources when LRCLIB has none')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('25f8cfc9d2be315bb547218a191de9c01bee5aebe6a6a9e369239de1afe2581c')
+sha256sums=('afae5a4046dec10d75d87c45a65075d63c31703a102510fa9122bfe82a67e875')
 
 _appdir=/usr/share/av-morning-star
 
@@ -32,7 +32,7 @@ check() {
 package() {
   cd "$_reponame-$pkgver"
   local f
-  for f in main.py browser_utils.py dialogs.py settings.py threads.py ui_widgets.py av-morning-star.png; do
+  for f in main.py browser_utils.py dialogs.py settings.py single_instance.py threads.py ui_widgets.py av-morning-star.png; do
     install -Dm644 "$f" "$pkgdir$_appdir/$f"
   done
   for f in app_mixins/*.py constants/*.py extractors/*.py lyrics/*.py themes/*.py themes/*.qss; do
