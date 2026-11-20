@@ -2,7 +2,7 @@
 
 pkgname=sysinternalsebpf
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Sysinternals EBPF"
 arch=('i686' 'x86_64')
 url="https://github.com/microsoft/SysinternalsEBPF"
@@ -42,5 +42,4 @@ package() {
   cd "SysinternalsEBPF-$pkgver"
 
   DESTDIR="$pkgdir" cmake --install "_build"
-  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/sysinternalsebpf"
 }
