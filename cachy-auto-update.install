@@ -16,7 +16,7 @@ post_install() {
 
   cachy-auto-update is installed but not active yet.
 
-    sudo cachy-auto-update          interactive setup
+    cachy-auto-update               open the settings window
     sudo cachy-auto-update enable   turn automatic updates on
     sudo cachy-auto-update status   see what it would do right now
 

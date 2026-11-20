@@ -3,34 +3,54 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=cachy-auto-update
-pkgver=1.7.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Unattended background updates for CachyOS, aware of battery, gaming and manual package management"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/LoonixTools/cachy-auto-update"
 license=('GPL-3.0-or-later')
-depends=('bash' 'systemd' 'pacman' 'pacman-contrib' 'util-linux' 'sudo'
-         'gettext')
-makedepends=('gettext' 'scdoc')
-optdepends=('paru: AUR package updates'
+# Rust since 2.0.0. The window and the tray icon are drawn with Rune, which
+# opens its libraries by name: fontconfig, the Vulkan loader, and wayland or
+# the X11 libraries, for whichever session the user is in.
+# vulkan-driver: the loader alone draws nothing.
+depends=('bash' 'coreutils' 'gcc-libs' 'glibc' 'pacman' 'polkit' 'procps-ng'
+         'sudo' 'systemd' 'util-linux'
+         'fontconfig' 'hicolor-icon-theme' 'libx11' 'libxcursor' 'libxi'
+         'libxkbcommon' 'libxkbcommon-x11' 'vulkan-driver' 'vulkan-icd-loader'
+         'wayland')
+makedepends=('cargo' 'scdoc')
+optdepends=('pacman-contrib: count updates ahead of time and trim the package cache'
+            'paru: AUR package updates'
             'yay: AUR package updates'
             'base-devel: required to build AUR packages'
             'flatpak: Flatpak updates'
-            'libnotify: desktop notifications'
-            'gearlever: AppImage updates'
-            'python-gobject: progress bar in the desktop taskbar')
+            'gearlever: AppImage updates')
 backup=('etc/cachy-auto-update/cachy-auto-update.conf'
         'etc/logrotate.d/cachy-auto-update')
+# !debug: upstream's release profile strips the binaries itself, so there is
+# nothing left to split into a debug package.
+options=('!debug')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('97b5c5e78bdce2372aa51b6123316b7c24a477a476b05494a6eacb68d9ab2488')
+sha256sums=('ccac00bb843b3974d17bc1c1fad44a4a2ccd4fbb28b0e596dcc448a220d3b253')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')"
+}
 
 build() {
-  # pass the version being packaged so `cachy-auto-update --version` cannot
-  # drift away from pkgver
-  make -C "${pkgname}-${pkgver}" VERSION="$pkgver"
+  cd "${pkgname}-${pkgver}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  # upstream's Makefile: both programs and the man page. The version comes
+  # from Cargo.toml.
+  make CARGOFLAGS="--release --frozen"
 }
 
 package() {
-  make -C "${pkgname}-${pkgver}" VERSION="$pkgver" DESTDIR="$pkgdir" install
+  make -C "${pkgname}-${pkgver}" DESTDIR="$pkgdir" install
 }
