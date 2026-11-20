@@ -1,7 +1,7 @@
 # Maintainer: Mike Boiko <mike@boiko.ca>
 
 pkgname=twg-cli-bin
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 pkgdesc='Atlassian Teamwork Graph CLI (baseline-compatible prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -27,10 +27,10 @@ sha256sums=(
 	'007879788b4d4a258cf924e4177a9f4f808b4aec5c2fd6ac65c09b526c07177f'
 )
 sha256sums_x86_64=(
-	'12cdcd49597ef7c2a7a4b0c8948bc708112fb5901ebce3e54983171b62405595'
+	'289e804ffae54fe958d0be3ea8374dc806a7e341d3cf34e5feca81ad0c1f41bf'
 	'e0446eb55995772eb9894bebae9a6be368d985a8b9271ee124486f9946eedd76'
 )
-sha256sums_aarch64=('8b2e462e5f6efdcfd085207b2607b1f9d4d74d5bd72620f7778993e64ad2b4ac')
+sha256sums_aarch64=('9acea0127e9bc12f8687da81434fe61e4578ae7dde556dde626d3ecaab45350c')
 
 prepare() {
 	if [[ "$CARCH" == x86_64 ]]; then
