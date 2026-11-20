@@ -87,9 +87,18 @@ try {
 				const wrap = (obj, name) => {
 					const orig = obj[name];
 					if (typeof orig !== 'function') return;
-					obj[name] = function (p, ...rest) {
+					const wrapper = function (p, ...rest) {
 						return orig.call(this, redirect(p), ...rest);
 					};
+					// Node exposes fs.realpathSync.native alongside the plain
+					// function. A bare replacement removes .native and breaks
+					// callers that use it.
+					if (typeof orig.native === 'function') {
+						wrapper.native = function (p, ...rest) {
+							return orig.native.call(this, redirect(p), ...rest);
+						};
+					}
+					obj[name] = wrapper;
 				};
 				for (const name of [
 					'readFile', 'readFileSync', 'existsSync', 'createReadStream',
