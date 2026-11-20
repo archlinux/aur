@@ -1,7 +1,7 @@
 pkgbase = proton-authenticator-bin
 	pkgdesc = 2FA app from Proton to securely sync and backup 2FA codes
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://proton.me/authenticator
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -14,7 +14,6 @@ pkgbase = proton-authenticator-bin
 	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = libsoup3
-	depends = pango
 	depends = webkit2gtk-4.1
 	provides = proton-authenticator
 	conflicts = proton-authenticator

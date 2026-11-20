@@ -3,7 +3,7 @@
 pkgname=proton-authenticator-bin
 _name=${pkgname%-bin}
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='2FA app from Proton to securely sync and backup 2FA codes'
 arch=(x86_64)
 url='https://proton.me/authenticator'
@@ -17,7 +17,6 @@ depends=(cairo
          hicolor-icon-theme
          libgcc
          libsoup3
-         pango
          webkit2gtk-4.1)
 provides=($_name)
 conflicts=($_name)
@@ -28,8 +27,8 @@ b2sums_x86_64=('823145b37b9c09d63a18811693efaf7f34bc837b3795ba1a3b74099f481e9aad
 prepare() {
     tar -xf data.tar.gz
 
-    # Fix display issue on Wayland+Nvidia and X11
-    sed -i 's/Exec=proton-authenticator/Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 proton-authenticator/' \
+    # Fix NVIDIA issue by disabling explicit sync
+    sed -i 's/Exec=proton-authenticator/Exec=env __NV_DISABLE_EXPLICIT_SYNC=1 proton-authenticator/' \
         "usr/share/applications/Proton Authenticator.desktop"
 }
 
