@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mehra <aix.m@outlook.com>
 pkgname=rift-home
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A VR desktop for the Oculus Rift CV1 on RiftLinux: your apps as windows in a room around you"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('mpv: HDR video player'
 	'steam: games and SteamVR apps')
 # The release's own source tarball (the same files as the tag's archive, with a checksum that never changes).
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7baf2012a4953a55e5bbc96ff18369b0ebc6f7b1aa882b5a9420888f9d750ca1')
+sha256sums=('ad15e26b80556f6af290ac638eba44720e3325f60e90c533ae77f626121a2bac')
 
 build() {
 	cmake -S "RiftHome-$pkgver" -B build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr

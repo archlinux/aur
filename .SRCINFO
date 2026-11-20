@@ -1,6 +1,6 @@
 pkgbase = rift-home
 	pkgdesc = A VR desktop for the Oculus Rift CV1 on RiftLinux: your apps as windows in a room around you
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/AIIX/RiftHome
 	arch = x86_64
@@ -42,7 +42,7 @@ pkgbase = rift-home
 	optdepends = libnotify: messages from the desktop menu entry
 	optdepends = kde-cli-tools: keeps the desktop awake while Rift Home runs from the desktop
 	optdepends = steam: games and SteamVR apps
-	source = rift-home-0.1.0.tar.gz::https://github.com/AIIX/RiftHome/releases/download/v0.1.0/rift-home-0.1.0.tar.gz
-	sha256sums = 7baf2012a4953a55e5bbc96ff18369b0ebc6f7b1aa882b5a9420888f9d750ca1
+	source = rift-home-0.1.1.tar.gz::https://github.com/AIIX/RiftHome/releases/download/v0.1.1/rift-home-0.1.1.tar.gz
+	sha256sums = ad15e26b80556f6af290ac638eba44720e3325f60e90c533ae77f626121a2bac
 
 pkgname = rift-home
