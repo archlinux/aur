@@ -1,6 +1,6 @@
 pkgbase = cinnamon-control-center-git
 	pkgdesc = The Control Center for Cinnamon
-	pkgver = 6.8.0.r0.gec7bef1
+	pkgver = 6.8.0.r3.gb02b8d8
 	pkgrel = 1
 	url = https://github.com/linuxmint/cinnamon-control-center
 	arch = i686
