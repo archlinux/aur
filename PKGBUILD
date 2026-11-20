@@ -2,7 +2,7 @@
 
 _pkgname=amneziavpn
 pkgname=$_pkgname-bin
-pkgver=5.1.0.6
+pkgver=5.1.1.10
 pkgrel=1
 pkgdesc='Amnezia VPN Client'
 arch=(x86_64)
@@ -18,7 +18,7 @@ conflicts=($_pkgname{,-git})
 options=(!debug)
 install=$_pkgname.install
 source=($_pkgname-$pkgver.run::$url/releases/download/$pkgver/AmneziaVPN_${pkgver}_linux_x64.run)
-sha256sums=('f60a4f373332dac8465bd9b8e4f233ee3aa32131fe124d31ca70bc499c73496f')
+sha256sums=('37046d9eb3188d69d18b038e12a38b1d32dfe090a2b5721dc702f0e26cd97026')
 
 # TODO: Remove this when dev merges amnezia-vpn/amnezia-client#3139
 if [[ ${AMNEZIAVPN_BUNDLE_WAYLAND_PLUGIN:-true} == true ]]; then
