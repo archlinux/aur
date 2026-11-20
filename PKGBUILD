@@ -3,7 +3,7 @@
 _pkgname=hf_transfer
 pkgname=python-hf-transfer
 pkgver=0.1.9
-pkgrel=4
+pkgrel=5
 pkgdesc='Speed up file transfers with the Hugging Face Hub'
 arch=('x86_64')
 url='https://github.com/huggingface/hf_transfer'
@@ -21,23 +21,33 @@ makedepends=(
   python-maturin
   python-installer
   python-wheel
+  rust
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/huggingface/hf_transfer/archive/refs/tags/v${pkgver}.tar.gz"
-        'Fix-inclusive-range-progress.patch')
+        'Fix-inclusive-range-progress.patch'
+        'openssl4-cargo-lock.patch')
 sha512sums=('074801626fdf7bf9c83451f6d7567ef3f9cebc390ccf4724f1f3fdbb1d5f56e49d179ef7baecbd53d89b317c13ac6df7459ee47cb9a9f18aa23f52fbfba36a84'
-            'd0a995aefdbcd8d31b7c0711a2b15a055512d024d550cd4f89953f3b9e75fb19c16186d55e13aab33a6e51ccdab32ffe35c34e79eb65de33e938d6feec6d2075')
+            'd0a995aefdbcd8d31b7c0711a2b15a055512d024d550cd4f89953f3b9e75fb19c16186d55e13aab33a6e51ccdab32ffe35c34e79eb65de33e938d6feec6d2075'
+            'd8039afb1d478dc36e6bd2181b7638b0ade2c30732f5c3643a314ebb9a9333288877a279f7b3a4f972224608284566339e6c501f2cc3fa3afaa2bedde66ba158')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
   # Report inclusive download ranges and the actual final upload part size.
   patch -Np1 -i "$srcdir/Fix-inclusive-range-progress.patch"
+  patch -Np1 -i "$srcdir/openssl4-cargo-lock.patch"
+  CARGO_HOME="$srcdir/cargo-home" cargo fetch --locked
 }
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  # use system openssl
-  OPENSSL_NO_VENDOR=1 \
+  CARGO_HOME="$srcdir/cargo-home" CARGO_NET_OFFLINE=true OPENSSL_NO_VENDOR=1 \
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${_pkgname}-${pkgver}"
+  CARGO_HOME="$srcdir/cargo-home" OPENSSL_NO_VENDOR=1 \
+    cargo test --locked --offline --all-targets --release
 }
 
 package() {
