@@ -3,17 +3,15 @@
 pkgbase=kh-ucanfd
 pkgname=(kh-ucanfd kh-ucanfd-dkms)
 pkgver=1.5.0
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="KunHong UCANFD Linux driver"
 arch=($CARCH)
 url="https://gitee.com/ChengDu-KunHong/KH-UCANFD_Linux_SDK"
-license=("GPL-2.0-only AND LGPL-2.0-only")
+license=('GPL-2.0-only' 'LGPL-2.1-only')
 depends=(
     sh
-    dkms
     python
-    popt
 )
 makedepends=(
     libarchive
@@ -80,65 +78,38 @@ package_kh-ucanfd-dkms() {
     depends=(
         sh
         dkms
-        popt
     )
     arch=(any)
+    options=('!strip' '!debug')
 
     cd ${srcdir}/${_name}-${pkgver}/driver
+
+    local _src_dir="${pkgdir}/usr/src/${pkgname}-${pkgver}"
 
     install -Dm0755 kcanosdiag.sh -t ${pkgdir}/usr/bin/
     install -Dm0755 lskcan -t ${pkgdir}/usr/bin/
     install -Dm0755 kcan_make_devices -t ${pkgdir}/usr/bin/
     install -Dm0755 kcan_monitor -t ${pkgdir}/usr/bin/
-    install -Dm0644 *.h -t ${pkgdir}/usr/src/${pkgname}-${pkgver}/src
-    install -Dm0644 kcan.conf -t ${pkgdir}/usr/lib/modprobe.d/
     install -Dm0755 udev/kcan_usb_minor_check.bash -t ${pkgdir}/usr/bin/
-    install -Dm0644 udev/45-kcan.rules -t ${pkgdir}/usr/lib/udev/rules.d/ 
+    install -Dm0644 kcan.conf -t ${pkgdir}/usr/lib/modprobe.d/
+    install -Dm0644 udev/45-kcan.rules -t ${pkgdir}/usr/lib/udev/rules.d/
     install -Dm0644 udev/blacklist-kunhong.conf -t ${pkgdir}/usr/lib/modprobe.d/
-    install -Dm0644 src/* -t ${pkgdir}/usr/src/${pkgname}-${pkgver}/src
 
-    install -Dm644 /dev/stdin "${pkgdir}/usr/src/${pkgname}-${pkgver}/Makefile" <<EOF
-DESTDIR =
-MODDIR  ?= \$(DESTDIR)/lib/modules
-KVERS   ?= \$(shell uname -r)
-KVER    ?= \$(KVERS)
-VMODDIR ?= \$(MODDIR)/\$(KVER)
-KSRC    ?= \$(VMODDIR)/build
+    install -Dm0644 Makefile -t "${_src_dir}/"
+    install -Dm0644 *.h -t "${_src_dir}/"
+    install -Dm0644 src/* -t "${_src_dir}/src"
 
-obj-m := kcan.o
-kcan-objs := src/kcan_main.o src/kcan_fops.o src/kcan_fifo.o src/kcan_filter.o
-kcan-objs += src/kcan_parse.o src/kcan_sja1000.o src/kcan_common.o src/kcan_timing.o
-kcan-objs += src/kcanfd_core.o src/kcanfd_ucan.o
-kcan-objs += src/kcan_usb_core.o src/kcan_usb.o src/kcan_usbpro.o src/kcanfd_usb.o
-kcan-objs += src/kcan_netdev.o
-
-ccflags-y += -I\$(src) -I\$(src)/src -DNO_DEBUG -DMODVERSIONS -DUSB_SUPPORT -DNETDEV_SUPPORT -DNO_RT -Wno-date-time
-
-all: kcan
-
-check_kernel_dir:
-	@if [ ! -d \$(KSRC) ]; then \
-		echo "Unable to find the Linux source tree."; \
-		exit 1; \
-	fi
-
-kcan: check_kernel_dir clean
-	\$(MAKE) -C \$(KSRC) M=\$(CURDIR) modules
-
-clean: check_kernel_dir
-	\$(MAKE) -C \$(KSRC) M=\$(CURDIR) clean
-EOF
-
-    install -Dm644 /dev/stdin "${pkgdir}/usr/src/${pkgname}-${pkgver}/dkms.conf" <<EOF
+    install -Dm644 /dev/stdin "${_src_dir}/dkms.conf" <<EOF
 PACKAGE_NAME="${pkgname}"
 PACKAGE_VERSION="${pkgver}"
+MAKE[0]="make DKMS_KERNEL_DIR=\${kernel_source_dir} MOD=MODVERSIONS USB=USB_SUPPORT NET=NETDEV_SUPPORT RT=NO_RT COMPAT_SUPPORT=NO"
 BUILT_MODULE_NAME[0]="kcan"
 BUILT_MODULE_LOCATION[0]="."
 DEST_MODULE_LOCATION[0]="/updates"
 AUTOINSTALL="yes"
 EOF
     install -Dm644 /dev/stdin "${pkgdir}/etc/modules-load.d/${pkgname}.conf" <<EOF
-${pkgname}
+kcan
 EOF
     install -Dm644 "${srcdir}"/${_name}-${pkgver}/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
