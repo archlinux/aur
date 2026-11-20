@@ -1,6 +1,6 @@
 # Maintainer: Alessandro Chitarrini <alessandro.chitarrini51@gmail.com>
 pkgname=swtch
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A minimal terminal stopwatch"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('gcc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('028c367cc51f91f5a684e0f4af5a670376ec880bcc9adcfe37b51444c17d03fd')
+sha256sums=('6dd7b97cca79d1b92213f6dffa3bb4a8ce08db2e05dbe741eb0d82cb25d774bf')
 
 build() {
     cd "$pkgname-$pkgver"
