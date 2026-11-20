@@ -1,7 +1,7 @@
 # Maintainer: colegeming <collegeming@outlook.com>
 
 pkgname=openchamber-arch-bin
-pkgver=2.7.2
+pkgver=2.7.3
 pkgrel=1
 pkgdesc='OpenChamber desktop application (official prebuilt Linux binary)'
 arch=('x86_64' 'aarch64')
@@ -29,15 +29,15 @@ conflicts=(
 # The payload is the upstream .deb; only the license text comes from the repo at
 # the release tag (see [extras.license] in metadata.toml).
 source_x86_64=(
-    "OpenChamber-${pkgver}-linux-amd64.deb::https://github.com/openchamber/openchamber/releases/download/v${pkgver}/OpenChamber-2.7.2-linux-amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/openchamber/openchamber/v2.7.2/LICENSE"
+    "OpenChamber-${pkgver}-linux-amd64.deb::https://github.com/openchamber/openchamber/releases/download/v${pkgver}/OpenChamber-2.7.3-linux-amd64.deb"
+    "LICENSE::https://raw.githubusercontent.com/openchamber/openchamber/v2.7.3/LICENSE"
 )
-sha256sums_x86_64=('d991ee6ade4c203ff200c7314ff7e1f8ad50c6a1ddfd0d647a681cd1bd9aa28d' '1f6e869a3feff6b4eb07907afc89176562b1f4324389f163d9fd94f09864b44e')
+sha256sums_x86_64=('d9bfb0e3bbb4dfc5861ed9c2dd3ea8e46700101f4d4d89912f1f0f42957aee4a' '1f6e869a3feff6b4eb07907afc89176562b1f4324389f163d9fd94f09864b44e')
 source_aarch64=(
-    "OpenChamber-${pkgver}-linux-arm64.deb::https://github.com/openchamber/openchamber/releases/download/v${pkgver}/OpenChamber-2.7.2-linux-arm64.deb"
-    "LICENSE::https://raw.githubusercontent.com/openchamber/openchamber/v2.7.2/LICENSE"
+    "OpenChamber-${pkgver}-linux-arm64.deb::https://github.com/openchamber/openchamber/releases/download/v${pkgver}/OpenChamber-2.7.3-linux-arm64.deb"
+    "LICENSE::https://raw.githubusercontent.com/openchamber/openchamber/v2.7.3/LICENSE"
 )
-sha256sums_aarch64=('4443439d88b5d796708b51e94ad339c75c55adad87056e2981a75368c4a85387' '1f6e869a3feff6b4eb07907afc89176562b1f4324389f163d9fd94f09864b44e')
+sha256sums_aarch64=('3a126521a10b9a9c3b2c6f24ca70bdd481342fa8e2494ee79d4904c10efffa8a' '1f6e869a3feff6b4eb07907afc89176562b1f4324389f163d9fd94f09864b44e')
 
 package() {
     local deb
