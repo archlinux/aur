@@ -1,0 +1,42 @@
+pkgbase = bluerig-bin
+	pkgdesc = A terminal IDE grown out of mcedit
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/blue-panels/bluerig
+	arch = x86_64
+	license = GPL-3.0-or-later
+	noextract = bluerig-x86_64-1.0.2.tzst
+	noextract = bluerig-lua-x86_64-1.0.2.tzst
+	options = !emptydirs
+	options = !strip
+	source_x86_64 = bluerig-x86_64-1.0.2.tzst::https://github.com/blue-panels/bluerig/releases/download/bluerig-1.0.2/bluerig-1.0.2-1-x86_64.pkg.tar.zst
+	source_x86_64 = bluerig-lua-x86_64-1.0.2.tzst::https://github.com/blue-panels/bluerig/releases/download/bluerig-1.0.2/bluerig-lua-1.0.2-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 2b668ba42405b65d45be2b8a6fd82ae644103141af2210799e5571f31d7b4787
+	sha256sums_x86_64 = 1614537a44159ed080ce9def34a6e8b09a8aa6388ddd9e838edbe40cc59a5bce
+
+pkgname = bluerig-bin
+	pkgdesc = A terminal IDE grown out of mcedit
+	depends = glib2
+	depends = json-glib
+	depends = slang
+	depends = gpm
+	optdepends = bluerig-lua-bin: the Lua runtime and the editor scripts
+	optdepends = libx11: keyboard modifiers under X
+	optdepends = aspell: spell checking
+	optdepends = hunspell: spell checking
+	optdepends = ctags: the tag index the editor reads
+	conflicts = bluerig
+	backup = etc/bluerig/bluerig.menu
+	backup = etc/bluerig/ctags.keymap
+	backup = etc/bluerig/keymap.default.ini
+	backup = etc/bluerig/keymap.emacs.ini
+	backup = etc/bluerig/keymap.ini
+	backup = etc/bluerig/keymap.vim.ini
+	backup = etc/bluerig/spell.keymap
+
+pkgname = bluerig-lua-bin
+	pkgdesc = Lua runtime and scripts for bluerig-bin
+	depends = bluerig-bin=1.0.2-1
+	depends = glib2
+	depends = lua
+	conflicts = bluerig-lua
