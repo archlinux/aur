@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=qdigidoc4
-pkgver=4.11.0.5421
-_rls_tag=v4.11.0
+pkgver=4.12.0.0+aeaca6c
+_rls_tag=v4.11.2
 pkgrel=1
 pkgdesc="DigiDoc4 Client is an application for digitally signing and encrypting documents; the software includes functionality to manage Estonian ID-card - change pin codes, update certificates etc."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('zlib' 'openssl' 'libdigidocpp>=4.5.0' 'libldap' 'pcsclite' 'opensc' 'q
 makedepends=('git' 'cmake' 'gettext' 'flatbuffers' 'qt6-tools' 'qt6-translations')
 optdepends=('ccid: Smart Card support'
             'python-nautilus: Nautilus Extension')
-source=("$pkgname-$pkgver::git+https://github.com/open-eid/DigiDoc4-Client.git?signed#tag=$_rls_tag"
+source=("$pkgname-$pkgver::git+https://github.com/open-eid/DigiDoc4-Client.git?#commit=aeaca6c"
         "open-eid-common::git+https://github.com/open-eid/qt-common.git"
         "open-eid-libcdoc::git+https://github.com/open-eid/libcdoc.git"
         "eu-lotl.xml-$pkgver::https://ec.europa.eu/tools/lotl/eu-lotl.xml"
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver::git+https://github.com/open-eid/DigiDoc4-Client.git?s
         "config.json-$pkgver::https://id.eesti.ee/config.json"
         "config.rsa-$pkgver::https://id.eesti.ee/config.rsa"
         "config.pub-$pkgver::https://id.eesti.ee/config.pub")
-sha256sums=('5aa57a9f4f6a1218050da0f6744530b236d2318524739530ad7677117b1f8fca'
+sha256sums=('c0dd90e382159628d3c6aa7aeff7e6e3e3f7387f460bf6d2d6e7e79a08430b42'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 validpgpkeys=(
     'D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D'  # Raul Metsma https://github.com/metsma.gpg
@@ -45,7 +45,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/$pkgname-build"
-  export BUILD_NUMBER=${pkgver##*.}
+  # export BUILD_NUMBER=${pkgver##*.}
   cmake .. -DCMAKE_C_FLAGS:STRING="${CFLAGS} -ffile-prefix-map=$srcdir=." \
            -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -ffile-prefix-map=$srcdir=." \
            -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \

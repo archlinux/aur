@@ -1,6 +1,6 @@
 pkgbase = qdigidoc4
 	pkgdesc = DigiDoc4 Client is an application for digitally signing and encrypting documents; the software includes functionality to manage Estonian ID-card - change pin codes, update certificates etc.
-	pkgver = 4.11.0.5421
+	pkgver = 4.12.0.0+aeaca6c
 	pkgrel = 1
 	url = https://www.id.ee/
 	arch = x86_64
@@ -22,16 +22,16 @@ pkgbase = qdigidoc4
 	depends = hicolor-icon-theme
 	optdepends = ccid: Smart Card support
 	optdepends = python-nautilus: Nautilus Extension
-	source = qdigidoc4-4.11.0.5421::git+https://github.com/open-eid/DigiDoc4-Client.git?signed#tag=v4.11.0
+	source = qdigidoc4-4.12.0.0+aeaca6c::git+https://github.com/open-eid/DigiDoc4-Client.git?#commit=aeaca6c
 	source = open-eid-common::git+https://github.com/open-eid/qt-common.git
 	source = open-eid-libcdoc::git+https://github.com/open-eid/libcdoc.git
-	source = eu-lotl.xml-4.11.0.5421::https://ec.europa.eu/tools/lotl/eu-lotl.xml
-	source = EE.xml-4.11.0.5421::https://sr.riik.ee/tsl/estonian-tsl.xml
-	source = config.json-4.11.0.5421::https://id.eesti.ee/config.json
-	source = config.rsa-4.11.0.5421::https://id.eesti.ee/config.rsa
-	source = config.pub-4.11.0.5421::https://id.eesti.ee/config.pub
+	source = eu-lotl.xml-4.12.0.0+aeaca6c::https://ec.europa.eu/tools/lotl/eu-lotl.xml
+	source = EE.xml-4.12.0.0+aeaca6c::https://sr.riik.ee/tsl/estonian-tsl.xml
+	source = config.json-4.12.0.0+aeaca6c::https://id.eesti.ee/config.json
+	source = config.rsa-4.12.0.0+aeaca6c::https://id.eesti.ee/config.rsa
+	source = config.pub-4.12.0.0+aeaca6c::https://id.eesti.ee/config.pub
 	validpgpkeys = D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D
-	sha256sums = 5aa57a9f4f6a1218050da0f6744530b236d2318524739530ad7677117b1f8fca
+	sha256sums = c0dd90e382159628d3c6aa7aeff7e6e3e3f7387f460bf6d2d6e7e79a08430b42
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
