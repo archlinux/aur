@@ -1,0 +1,20 @@
+pkgbase = python-entropack
+	pkgdesc = CUDA tensor compression library for PyTorch
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/modelscope/entropack
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=77.0.3
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytorch-cuda>=2.10
+	depends = python-numpy>=1.23
+	depends = python-dahuffman>=0.4
+	depends = python-cupy>=14
+	source = python-entropack-137350a181526740dfafe4b1ea00bf56f4b18d45.tar.gz::https://github.com/modelscope/entropack/archive/137350a181526740dfafe4b1ea00bf56f4b18d45.tar.gz
+	sha256sums = 3c875c80d6ce4693b0ee2d54353a3530917ae6da342c713094a56c47441baa61
+
+pkgname = python-entropack
