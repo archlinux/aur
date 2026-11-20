@@ -1,6 +1,6 @@
 pkgbase = qodana-cli-bin
 	pkgdesc = JetBrains Qodana CLI - code quality tool for analyzing projects
-	pkgver = 2026.2.4
+	pkgver = 2026.3.1
 	pkgrel = 1
 	url = https://github.com/JetBrains/qodana-cli
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = qodana-cli-bin
 	conflicts = qodana
 	conflicts = qodana-cli
 	options = !debug
-	source_x86_64 = qodana-cli-bin-2026.2.4-x86_64.tar.gz::https://github.com/JetBrains/qodana-cli/releases/download/v2026.2.4/qodana_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 589a9bd92b76fe208f0f39badca471b01dffdda237ba4e80eab5af7040239e17
-	source_aarch64 = qodana-cli-bin-2026.2.4-aarch64.tar.gz::https://github.com/JetBrains/qodana-cli/releases/download/v2026.2.4/qodana_linux_arm64.tar.gz
-	sha256sums_aarch64 = 758e5aa00db839cfa57f6bf3e8267a53587c5f2a90a01e975121c727b5351182
+	source_x86_64 = qodana-cli-bin-2026.3.1-x86_64.tar.gz::https://github.com/JetBrains/qodana-cli/releases/download/v2026.3.1/qodana_linux_x86_64.tar.gz
+	sha256sums_x86_64 = dae6d31f481ed15c6c016fd746e907978f0c1437010326fa04a92f13c7c52338
+	source_aarch64 = qodana-cli-bin-2026.3.1-aarch64.tar.gz::https://github.com/JetBrains/qodana-cli/releases/download/v2026.3.1/qodana_linux_arm64.tar.gz
+	sha256sums_aarch64 = afc4514cc84670809435941579f40002ddc999d716cf84072dd16e7e35b11b95
 
 pkgname = qodana-cli-bin
