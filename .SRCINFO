@@ -1,13 +1,13 @@
 pkgbase = cdt
 	pkgdesc = Constrained Delaunay Triangulation (C++)
-	pkgver = 2.0.2
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://artem-ogre.github.io/CDT/
 	arch = any
 	license = MPL-2.0
 	makedepends = cmake
 	options = !debug
-	source = https://github.com/artem-ogre/CDT/archive/refs/tags/2.0.2.tar.gz
-	sha256sums = 43e22918907f354a300674222d63595afe121ec16ced8f6d2bac90a3db88892b
+	source = https://github.com/artem-ogre/CDT/archive/refs/tags/2.1.0.tar.gz
+	sha256sums = 4b17289c589fbaf3a961f250809f55a9e6ceccc627fbc36ded3a151c81fa7d43
 
 pkgname = cdt
