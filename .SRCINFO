@@ -1,7 +1,7 @@
 pkgbase = syscall-git
 	pkgdesc = Look up Linux syscalls from your terminal
 	pkgver = r7.c8e64f0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://syscall.sh/cli/
 	arch = any
 	license = MIT
