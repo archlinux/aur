@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=bowtie2-git
-pkgver=2.5.4.r4.gb7e97e9
+pkgver=2.5.4.r145.geaec43d
 pkgrel=1
 pkgdesc="Tool for aligning sequencing reads to long reference sequences"
 arch=("x86_64")
@@ -46,11 +46,19 @@ prepare() {
 
     # copy sra-tools to temp dir
     cd "$srcdir/ncbi-vdb"
-    git worktree add ../bowtie2-git/.tmp/ncbi-vdb-$vdb_ver $vdb_ver
+    git worktree add "$srcdir/$pkgname/.tmp/ncbi-vdb-$vdb_ver" $vdb_ver
+
     cd "$srcdir/sra-tools"
-    git worktree add ../bowtie2-git/.tmp/sra-tools-$sra_ver $sra_ver
-    cd ../bowtie2-git/.tmp/sra-tools-$sra_ver
+    git worktree add "$srcdir/$pkgname/.tmp/sra-tools-$sra_ver" $sra_ver
+
+    cd "$srcdir/bowtie2-git/.tmp/sra-tools-$sra_ver"
     sed -i 's/ATTRIBUTE_UNUSED/__attribute__((unused))/' ./libs/kxml/xml.c
+
+    # fix old cmake files
+    sed -i 's/ SCRIPT CODE/CODE/' build/env.cmake
+
+    cd "$srcdir/bowtie2-git/.tmp/ncbi-vdb-$vdb_ver"
+    sed -i 's/ SCRIPT CODE/CODE/' build/env.cmake libs/kfg/CMakeLists.txt
 }
 
 build() {

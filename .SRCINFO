@@ -1,6 +1,6 @@
 pkgbase = bowtie2-git
 	pkgdesc = Tool for aligning sequencing reads to long reference sequences
-	pkgver = 2.5.4.r4.gb7e97e9
+	pkgver = 2.5.4.r145.geaec43d
 	pkgrel = 1
 	url = https://bowtie-bio.sourceforge.net/bowtie2
 	arch = x86_64
