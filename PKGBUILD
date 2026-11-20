@@ -3,7 +3,7 @@
 
 pkgname=magic-context-dashboard-bin
 _pkgname=magic-context-dashboard
-pkgver=0.20.23
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Dashboard for Magic Context"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=("${_pkgname}")
 options=('!strip')
 source=("${_pkgname}-${pkgver}.deb::https://github.com/cortexkit/magic-context/releases/download/dashboard-v${pkgver}/magic-context-dashboard-linux-x64.deb"
         "LICENSE::https://raw.githubusercontent.com/cortexkit/magic-context/dashboard-v${pkgver}/LICENSE")
-sha256sums=('cde1434af17f73c2e76f55f99a7a5d202a34e0a5d0386b127f5c1bee7f3d3672'
+sha256sums=('e790e057105e54bbbe53ed22b87b8cc614b75673f792a7b5abc4419fe7d04468'
             '66d8947518a0b3efefa01a1615249f6e2d99b9308379628dafb0abcabc8b128a')
 noextract=("${_pkgname}-${pkgver}.deb")
 
