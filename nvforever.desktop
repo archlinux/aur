@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=NVForever
+Comment=Play Fallout: New Vegas with the NVForever engine
+Exec=/opt/nvforever/nvforever-launcher
+TryExec=/opt/nvforever/nvforever-launcher
+Icon=applications-games
+Terminal=false
+Categories=Game;RolePlaying;
