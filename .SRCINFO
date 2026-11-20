@@ -1,7 +1,7 @@
 pkgbase = tracking
 	pkgdesc = Analyze how the behavior of a parallel application evolves through different scenarios (from BSC).
-	pkgver = 2.7.1.20250303
-	pkgrel = 2
+	pkgver = 26.11.0.20261119
+	pkgrel = 1
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -10,7 +10,7 @@ pkgbase = tracking
 	depends = python-pillow
 	depends = python-wxpython
 	depends = python-matplotlib
-	source = https://ftp.tools.bsc.es/tracking/tracking-2.7.1-src.tar.bz2
-	sha512sums = 058b4c81b95a614e05c90ea1fccc57a974954f1127bb6e9e295d77c62962226384ad96c20712e2945a98b1bd58c6aeee7ecf01c7dbac0615a0cbcd3ece9d64f8
+	source = https://ftp.tools.bsc.es/tracking/tracking-26.11.0-src.tar.bz2
+	sha512sums = 2d24c2c0d080ec35c1a404c1c01745ed15f8458f95a47b8cc6dc6e5408ca98b91db9a6d06ea2f335dc21a7f9d44877546ae6937ecb744131d3de58e0670a3bc9
 
 pkgname = tracking
