@@ -6,8 +6,16 @@
 #   4. Build and test (run: makepkg -sf)
 _pkgname=radiance-inference
 pkgname=${_pkgname}-git
-pkgver=2.2.0.r1087
-pkgrel=1
+pkgver=2.2.0.r1090
+# pkgrel 2: ships the 3-patch "head-class governance" series (prefill-interleave:
+# head — each step governed by the oldest active request's class; sched core +
+# tests + docs). Series base b6b8751c ("radiance 2.2.0"). NB: makepkg runs
+# prepare() BEFORE pkgver(), so pkgver carries the +3 patch commits (r1090 =
+# 1087 on main + 3); and when upstream moves, makepkg's pkgver rewrite resets
+# pkgrel to 1 — re-set it to 2 on rebuilds so `pacman -Q` keeps distinguishing
+# the patched build. Patches touch no build files (core/sched/config + tests +
+# docs only), so the VOPD logic below is unaffected.
+pkgrel=2
 pkgdesc="C++20 LLM inference server for AMD GPUs (primarily gfx1201) with OpenAI-compatible HTTP API (git HEAD)"
 arch=('x86_64')
 url="https://codeberg.org/StillDeadcode/radiance"
@@ -26,11 +34,17 @@ options=('!lto' '!debug')
 source=("${_pkgname}::git+${url}.git#branch=main"
         radiance.service
         radiance.yaml
-        radiance.env)
+        radiance.env
+        0001-sched-prefill-interleave-head-mode-oldest-request-cl.patch
+        0002-tests-head-mode-governance-coverage.patch
+        0003-docs-document-prefill-interleave-head.patch)
 sha256sums=('SKIP'
             'c903669f221faea09545b70525f780001d73648c66cfc472ac9b23df23956400'
-            'f03e9c85f9540527b2d1a756238fb3dd25c1e4718c78b48eb0e0ef8b3313c9e5'
-            'a0310c047f107a493c275e5e92b896785238f8dbcc5319efca86ac537885c3ac')
+            'cc76ea474ab22a0a2ef24a00c1dbb936df444c83c522ebcd667fd0eafce49112'
+            'a0310c047f107a493c275e5e92b896785238f8dbcc5319efca86ac537885c3ac'
+            'ff769d39bb82fe419ec3694e1f8beebadd6dcc1a602e3f7cf7969527ea347c18'
+            'd33d9f9cb9b7623528f93ed15fbfb3c88bae1c6e193bcf206fc59b54c537f678'
+            'dbcf0099b44df7f8a82f18b745e9f5c39fd9a63c032127d6b2b4f58f617d6de2')
 
 # Edit for other hardware: run `offload-arch`.
 _hip_archs='gfx1201'
@@ -45,6 +59,22 @@ pkgver() {
   # upstream bumps per release (2.0.0 at ddcb9c6), plus the commit count.
   _basever=$(grep -m1 '^project(' CMakeLists.txt | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
   printf "%s.r%s" "${_basever}" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  # git am needs an identity for the merge commits --3way may produce.
+  git config user.email "packaging@localhost"
+  git config user.name "makepkg"
+  # The 000?-*.patch files live beside the PKGBUILD, NOT in a patches/ subdir:
+  # makepkg strips any directory prefix from local source entries (get_filename
+  # keeps only the basename) and resolves them against $startdir/$SRCDEST only,
+  # so a "patches/..." entry fails with "not found in the build directory".
+  # They are staged into $srcdir by basename. Applied explicitly in order;
+  # loud failure on upstream drift is intended — no fallbacks: a conflict
+  # means the series no longer matches main and must be rebased in the dev
+  # clone, not papered over here.
+  git am --3way "${srcdir}"/0001-*.patch "${srcdir}"/0002-*.patch "${srcdir}"/0003-*.patch
 }
 
 build() {

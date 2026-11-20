@@ -1,0 +1,57 @@
+From 939af96c1961385c76ef48e1affecee721a7d4b9 Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Thu, 19 Nov 2026 23:11:26 -0500
+Subject: [PATCH 3/3] docs: document prefill-interleave: head
+
+---
+ docs/GUIDE.md | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+
+diff --git a/docs/GUIDE.md b/docs/GUIDE.md
+index 52e45567..c2c91477 100644
+--- a/docs/GUIDE.md
++++ b/docs/GUIDE.md
+@@ -1307,6 +1307,21 @@ from 6.5 to 31 tokens/s each and delayed the last first token by 6 %. Because th
+ device's timing, which steps carry a chunk differs from run to run; a number schedules the same
+ steps every time.
+ 
++**Head-class governance: `prefill-interleave: head`.** Instead of a counted hold, each step is
++governed by the class of the oldest active request: while that request is prefilling its prompt,
++the decode lanes are frozen (no decode rows in the step); while it is decoding, prefill and
++admission are frozen (no chunk, no new request enters). The policy self-ages -- the governing
++request always moves toward finishing, and a preempted request keeps its arrival, so its recompute
++governs as a prefill from the queue -- and carries no starvation timer and no hysteresis. KNOWN
++TRADE: a new prompt's time to first token has a floor of the summed remaining decode of every
++older request, and frozen decoders keep their KV (they are never preempted while frozen), so the
++pool is not freed for the prefill until a flip or `preempt-wait-ms` pressure reclaims it. Expert
++staging disarms on every flip (`head_flips`: on an expert-tiered box each flip re-stages the
++resident set). `/stats` counts the frozen-lane steps as `steps_held_decode`, the flips as
++`head_flips`, and the liveness passes that lifted a freeze because the step would otherwise have
++idled as `head_freeze_releases` (each occurrence is a near-stall; watch it at ~0). A step issued
++ahead keeps its overlap under decode-govern. `prefill-interleave: auto/N` stays the safe default.
++
+ **A prefill alone in its step can carry several intervals** (`prefill-span: N`, default 1). A
+ chunk ends on every checkpoint interval, so a prompt is otherwise prefilled one interval a step.
+ With
+@@ -2615,7 +2630,7 @@ switch is set with `true`. The fleet's own keys (a model's `aliases`, `priority`
+ |---|---|---|
+ | `max-num-batched-tokens: N` | 2048 | largest token count one step may carry |
+ | `prefill-room-gate: MODE` | off | `on`: a fresh prompt is admitted only when the whole prompt and one decode position fit the KV cache beside every running sequence and every prompt admitted ahead of it, and the requests behind it wait with it; a prompt that cannot fit even with nothing running fails (`idle_admission`) instead of waiting; long prompts then run one after another. `off`: a prompt is admitted when its first chunk fits, so a long one may fill the cache mid-prompt and be preempted, recomputing from its start |
+-| `prefill-interleave: N` | auto:1 (0 under `deterministic: true`, KL mode, generators) | decode-only steps after each prefill chunk while other sequences decode (§4.5), at most 64; `auto` fits them in a quarter of the chunk step's measured time, `auto:SHARE` in SHARE of it (0 < SHARE <= 4); `0` lets every step carry a chunk |
++| `prefill-interleave: N` | auto:1 (0 under `deterministic: true`, KL mode, generators) | decode-only steps after each prefill chunk while other sequences decode (§4.5), at most 64; `auto` fits them in a quarter of the chunk step's measured time, `auto:SHARE` in SHARE of it (0 < SHARE <= 4); `0` lets every step carry a chunk; `head` governs each step by the class of the oldest active request (§4.5) |
+ | `mixed-step-target-ms: N` | 0 (off) | soft completed-service-time target for mixed prefill/decode steps; learns one aggregate prefill cap while decoders are active and leaves uncontended prefill unchanged (§4.5) |
+ | `preempt-wait-ms: N` | 5000 | how long a preempted prefill may wait for its whole-recompute gate before reclaiming cache blocks and preempting lowest-priority running requests until one overdue request can prefill; `0` falls back on the next step. A preempted request publishes what it computed to the prefix cache, as a finished one does, so its recompute adopts its prompt instead of computing it again; under pressure the cache gives those blocks back, the newest last, before another request is preempted |
+ | `busy-prefill-chunk: MODE` | auto | a prefill chunk's share of a step that has other work: `auto` leaves decode rows and waiting requests their room (§4.5), `off` takes the whole step, `N` holds it to N tokens |
+@@ -4544,6 +4559,9 @@ always 1 and carries the cache's settings as labels: `cache_dtype`, `block_size`
+ | `draft_depth_adaptive`, `draft_verify_depth_total{depth}` | the adaptive window's mean over the running sequences, and verifies by the drafts they carried; only with `draft-window: adaptive` (§4.6) |
+ | `engine_prefill_chunks_capped_total` | prefill chunks held back to share a step (§4.5) |
+ | `engine_steps_held_total` | decode-only steps `prefill-interleave` ran between chunks (§4.5) |
++| `engine_steps_held_decode_total` | decode steps the frozen decode lanes sat out under `prefill-interleave: head` (§4.5) |
++| `engine_head_flips_total` | head-class flips under `prefill-interleave: head`: the oldest active request changed class (§4.5) |
++| `engine_head_freeze_releases_total` | liveness passes that lifted a head-mode freeze because the step would otherwise have idled (§4.5; watch ~0) |
+ | `mixed_step_target_steps_total`, `mixed_step_target_misses_total` | mixed steps observed by `mixed-step-target-ms`, and those whose completed engine service time exceeded its soft target (§4.5) |
+ | `mixed_step_target_prefill_cap` | current learned aggregate prefill-row cap; absent while the policy is off (§4.5) |
+ | `attn_cached_tokens_total`, `linear_cached_tokens_total` | prefix reuse, both halves |
+-- 
+2.56.1
+

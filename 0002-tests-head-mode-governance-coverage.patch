@@ -1,0 +1,402 @@
+From cc49166467f09ee64d82c638de2bd313928769b4 Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Thu, 19 Nov 2026 23:11:26 -0500
+Subject: [PATCH 2/3] tests: head-mode governance coverage
+
+---
+ tests/config_test.cpp |  19 +++
+ tests/sched_test.cpp  | 304 +++++++++++++++++++++++++++++++++++++++++-
+ tests/server_test.cpp |  25 ++++
+ 3 files changed, 347 insertions(+), 1 deletion(-)
+
+diff --git a/tests/config_test.cpp b/tests/config_test.cpp
+index f3f5ae7b..cb68e13d 100644
+--- a/tests/config_test.cpp
++++ b/tests/config_test.cpp
+@@ -558,6 +558,25 @@ TEST(prefill_interleave_takes_a_step_count_up_to_64) {
+     CHECK_EQ(parse({ "--prefill-interleave", "auto:x" }, &c), RAD_E_INVAL);
+ }
+ 
++/* --prefill-interleave head: the sentinel and the set flag; the dump prints the name back;
++ * anything head-shaped but not head is refused. */
++TEST(prefill_interleave_takes_head) {
++    Config h;
++    CHECK_EQ(parse({ "--prefill-interleave", "head" }, &h), RAD_OK);
++    CHECK_EQ(h.prefill_interleave, Config::kPrefillInterleaveHead);
++    CHECK(h.prefill_interleave_set);      /* bring-up keeps it: no auto:1 default */
++    Config c;
++    CHECK_EQ(parse({ "--prefill-interleave", "head:2" }, &c), RAD_E_INVAL);
++    CHECK_EQ(parse({ "--prefill-interleave", "Head" }, &c), RAD_E_INVAL);
++    bool shown = false;
++    for (const diag::ConfigRow& r : diag::config_rows(h))
++        if (r.flag == "--prefill-interleave") {
++            shown = true;
++            CHECK_EQ(r.value, std::string("head"));
++        }
++    CHECK(shown);
++}
++
+ TEST(mixed_step_target_is_an_opt_in_soft_millisecond_target) {
+     Config d;
+     REQUIRE_EQ(parse({}, &d), RAD_OK);
+diff --git a/tests/sched_test.cpp b/tests/sched_test.cpp
+index d89fbf9e..4c9df6fc 100644
+--- a/tests/sched_test.cpp
++++ b/tests/sched_test.cpp
+@@ -4163,6 +4163,306 @@ TEST(interleave_counts_steps_issued_ahead_and_then_serves_the_chunk) {
+     CHECK(chunk);
+ }
+ 
++/* ================================================================== head-class governance */
++/* --prefill-interleave: head. Each step is governed by the class of the oldest active request:
++ * a prefill head freezes the decode lanes, a decode head freezes prefill and admission. Frozen
++ * rows are never preempted; a step that would idle the engine lifts the freeze once. The shape
++ * letters and `staged` follow interleave_run: 'C' when the step carries a chunk of p's prompt,
++ * 'D' when it does not; '+' when prefill_continues() arms the stager after the step. */
++struct Headed {
++    std::string shape;
++    std::string staged;
++    int64_t steps_held = 0, steps_held_decode = 0, head_flips = 0, head_staging_disarms = 0;
++};
++
++/* The twin of interleave_run: `decoder_first` submits a decoding sequence before the prompt, so
++ * the head is a decoder; otherwise the prompt is the oldest request and governs. */
++static Headed head_run(bool decoder_first, int steps) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveHead;
++    CHECK_OK(f.start());
++    f.sch.set_stage_rows(64);
++    if (decoder_first) {
++        f.submit(100, 512);
++        CHECK(f.sch.step() != nullptr);
++        f.commit_plain(11);
++    }
++    const uint64_t p = f.submit(2000, 4);
++    Headed out;
++    for (int k = 0; k < steps; ++k) {
++        if (!f.sch.step()) break;
++        bool chunk = false;
++        for (const StepEntry& e : f.sch.plan().e) if (e.seq == p && e.is_prefill) chunk = true;
++        out.shape += chunk ? 'C' : 'D';
++        out.staged += f.sch.prefill_continues() ? '+' : '-';
++        f.commit_plain(12);
++    }
++    out.steps_held = f.sch.metrics().steps_held;
++    out.steps_held_decode = f.sch.metrics().steps_held_decode;
++    out.head_flips = f.sch.metrics().head_flips;
++    out.head_staging_disarms = f.sch.metrics().head_staging_disarms;
++    return out;
++}
++
++/* The prompt is the oldest: its class governs, the decoder admitted beside it is frozen while
++ * the prompt runs, and the chunk takes the whole step the frozen row would have shared. When
++ * the prompt's last chunk lands, the head turns into a decoder and the lanes reopen. */
++TEST(head_prefill_governs_freezes_decode) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveHead;
++    CHECK_OK(f.start());
++    const uint64_t p = f.submit(2000, 4);            /* the older: its class governs */
++    CHECK(f.sch.step() != nullptr);                  /* admitted: the waiting head prefills */
++    f.commit_plain(12);
++    const uint64_t d = f.submit(100, 512);           /* arrives while the prompt runs */
++    CHECK(f.sch.step() != nullptr);                  /* admitted as a prefill: the head is one */
++    f.commit_plain(12);
++    CHECK(f.sch.step() != nullptr);                  /* the head still governs: d's lane is frozen */
++    CHECK_EQ((int)f.sch.plan().e.size(), 1);
++    CHECK_EQ(f.sch.plan().e[0].seq, p);
++    CHECK_EQ(f.sch.plan().e[0].n_tokens, 256);       /* the chunk keeps the frozen row's budget */
++    CHECK_EQ((int)f.sch.find(d)->state, (int)ReqState::Running);   /* frozen, not dropped */
++    f.commit_plain(12);
++    for (int k = 0; k < 7; ++k) {                    /* chunks 4..9, then a decode step */
++        CHECK(f.sch.step() != nullptr);
++        f.commit_plain(12);
++    }
++    /* d was frozen on steps 3..9 (seven): the prompt's chunks run to the tail checkpoint's
++     * split (256x7 + 192 + 16), the last one included. */
++    CHECK_EQ(f.sch.metrics().steps_held_decode, 7);
++    CHECK_EQ(f.sch.metrics().steps_held, 0);         /* no prefill row was ever held */
++    CHECK_EQ(f.sch.metrics().head_flips, 1);         /* the one flip, when the prompt finished */
++}
++
++/* The decoder is the oldest: it governs, the running prompt is held out of the step (the old
++ * steps_held meaning), and admission is frozen with it -- a request arriving now waits in the
++ * queue, not in the step. */
++TEST(head_decode_governs_freezes_prefill_and_admission) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveHead;
++    CHECK_OK(f.start());
++    const uint64_t d = f.submit(100, 512);           /* the oldest: decode once committed */
++    const uint64_t p = f.submit(2000, 4);            /* admitted beside it: the waiting head is d */
++    CHECK(f.sch.step() != nullptr);
++    f.commit_plain(12);
++    const uint64_t r = f.submit(100, 8);             /* arrives while the decoder governs */
++    CHECK(f.sch.step() != nullptr);                  /* decode-governed: no prefill row */
++    for (const StepEntry& e : f.sch.plan().e) CHECK(!e.is_prefill);
++    CHECK(f.sch.find(d)->state == ReqState::Running);   /* the governor runs its step */
++    CHECK(f.sch.find(p)->state == ReqState::Running);   /* frozen mid-prompt, KV kept */
++    f.commit_plain(12);
++    CHECK(f.sch.metrics().steps_held >= 1);          /* the held prompt: the old meaning */
++    uint64_t q[8];
++    bool r_waiting = false;
++    for (int i = 0, n = f.sch.queue_snapshot(q, 8); i < n; ++i) if (q[i] == r) r_waiting = true;
++    CHECK(r_waiting);                                /* admission frozen: it stays queued */
++}
++
++/* A preempted request keeps its arrival, so it re-enters the queue ahead of later arrivals and
++ * -- its recompute starts at zero -- governs as a prefill once the older request is done. Its
++ * chunk then runs with no decode rows beside it. */
++TEST(head_preempted_request_governs_from_waiting_by_its_arrival) {
++    Fixture f;
++    f.build(/*blocks=*/22, /*states=*/64);
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveHead;
++    CHECK_OK(f.start());
++    const uint64_t a = f.submit(160, 64, /*priority=*/0);   /* arrives first */
++    const uint64_t d = f.submit(160, 128, /*priority=*/5);  /* governs: priority */
++    CHECK(f.sch.step() != nullptr);                  /* both admitted: the waiting head is d */
++    f.commit_plain(12);
++    const RadBatch* b = nullptr;
++    for (int k = 0; k < 40; ++k) {                   /* until the pool forces one out */
++        b = f.sch.step();
++        CHECK(b != nullptr);
++        if (f.sch.find(a)->state == ReqState::Preempted ||
++            f.sch.find(d)->state == ReqState::Preempted) break;
++        f.commit_plain(12);
++    }
++    REQUIRE(f.sch.find(a)->state == ReqState::Preempted);   /* the back of running_ gives way */
++    CHECK_EQ(f.sch.find(a)->n_computed, 0);
++    f.commit_plain(12);
++    const uint64_t c = f.submit(160, 8);             /* arrives after the preempted one */
++    uint64_t q[8];
++    int n = f.sch.queue_snapshot(q, 8);
++    REQUIRE(n >= 1);
++    CHECK_EQ(q[0], a);                               /* its arrival keeps it at the front */
++    (void)c;
++    bool saw_chunk = false;
++    for (int k = 0; k < 400 && !saw_chunk; ++k) {    /* d decodes out; then a's turn governs */
++        const RadBatch* s = f.sch.step();
++        CHECK(s != nullptr);
++        bool a_pf = false;
++        for (const StepEntry& e : f.sch.plan().e) {
++            if (e.seq == a && e.is_prefill) a_pf = true;
++            if (e.seq == a) CHECK(e.is_prefill);     /* a never runs as a decode row before */
++        }
++        if (a_pf) {
++            for (const StepEntry& e : f.sch.plan().e) CHECK(e.is_prefill);   /* no decode rows */
++            saw_chunk = true;
++        }
++        f.commit_plain(12);
++    }
++    CHECK(saw_chunk);
++}
++
++/* The walk-time preemption never takes a frozen row: with an unfrozen row behind the failing
++ * one, that is the victim, and the frozen prompt keeps its KV. The prefix cache is asked for
++ * blocks first. */
++TEST(head_victim_skip_frozen) {
++    Fixture f;
++    f.build(/*blocks=*/38, /*states=*/64);
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveHead;
++    CHECK_OK(f.start());
++    const uint64_t a = f.submit(160, 512);           /* the oldest: governs decode once committed */
++    const uint64_t p = f.submit(300, 64);            /* stays mid-prompt: frozen while a runs */
++    const uint64_t e = f.submit(96, 64);             /* short prompt: a decoder, younger than p */
++    CHECK(f.sch.step() != nullptr);
++    f.commit_plain(12);
++    CHECK(f.sch.step() != nullptr);                  /* a governs: p is out of the step */
++    for (const StepEntry& x : f.sch.plan().e) CHECK(x.seq != p);
++    f.commit_plain(12);
++    const int64_t ev0 = f.pc.evict_calls;
++    bool preempted = false;
++    for (int k = 0; k < 300 && !preempted; ++k) {    /* a's growth runs the pool out */
++        CHECK(f.sch.step() != nullptr);
++        if (f.sch.find(e)->state == ReqState::Preempted ||
++            f.sch.find(p)->state == ReqState::Preempted) { preempted = true; break; }
++        f.commit_plain(12);
++    }
++    REQUIRE(preempted);
++    CHECK(f.sch.find(a)->state == ReqState::Running);   /* the governor untouched */
++    CHECK(f.sch.find(p)->state == ReqState::Running);   /* never the victim */
++    CHECK_EQ(f.sch.find(p)->n_computed, 256);           /* its KV stands */
++    CHECK_EQ((int)f.sch.find(e)->state, (int)ReqState::Preempted);
++    CHECK(f.pc.evict_calls > ev0);                      /* the cache gave blocks back first */
++    CHECK_EQ(f.sch.metrics().preemptions, 1);
++}
++
++/* The admission headroom gate: a new prompt that would not fit beside the running prompt's
++ * remaining chunks is refused before admit_one is asked (no lookup, no kAdmitWait churn), and
++ * comes in once the prompt it waited behind has shrunk. */
++TEST(head_admission_gate_refuses_without_headroom) {
++    Fixture f;
++    f.build(/*blocks=*/24, /*states=*/64);
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveHead;
++    CHECK_OK(f.start());
++    const uint64_t p = f.submit(300, 64);
++    CHECK(f.sch.step() != nullptr);                  /* chunk 1: 256 of 300 */
++    f.commit_plain(12);
++    const uint64_t d = f.submit(100, 64);
++    const int64_t look0 = f.pc.lookups;
++    CHECK(f.sch.step() != nullptr);                  /* the gate refuses d: no headroom */
++    for (const StepEntry& e : f.sch.plan().e) CHECK(e.seq != d);
++    CHECK(f.sch.find(p)->state == ReqState::Running);
++    CHECK_EQ(f.pc.lookups, look0);                   /* refused before admit_one looked up */
++    uint64_t q[8];
++    bool waiting = false;
++    for (int i = 0, n = f.sch.queue_snapshot(q, 8); i < n; ++i) if (q[i] == d) waiting = true;
++    CHECK(waiting);
++    f.commit_plain(12);                              /* p's last chunk */
++    bool admitted = false;
++    for (int k = 0; k < 200 && !admitted; ++k) {     /* p decodes out; d gets its room */
++        const RadBatch* s = f.sch.step();
++        CHECK(s != nullptr);
++        for (const StepEntry& e : f.sch.plan().e) if (e.seq == d && e.is_prefill) admitted = true;
++        f.commit_plain(12);
++    }
++    CHECK(admitted);
++}
++
++/* The stager is armed while the head's chunks continue and disarmed on the step whose head
++ * entry produces the token: the next step is governed by the head's new class and would drop
++ * what was staged. */
++TEST(head_disarms_staging_on_phase_flip) {
++    const Headed r = head_run(/*decoder_first=*/false, 11);
++    CHECK_EQ(r.shape, std::string("CCCCCCCCCDD"));   /* chunks to the tail checkpoint's split
++                                                        (256x7 + 192 + 16), then decoding */
++    /* Armed while a chunk leaves >= stage_rows_ of prompt; the 192-token chunk leaves 16, so
++     * the generic rule disarms there and the head's last chunk (producing the token) is the
++     * counted flip-disarm. */
++    CHECK_EQ(r.staged, std::string("+++++++----"));
++    CHECK_EQ(r.head_staging_disarms, 1);             /* the last chunk's step */
++}
++
++/* A decode-governed step with a frozen prompt still gets its successor issued ahead: the head
++ * mode hold is not a counted budget the chunk waits behind, and the held counts carry to the
++ * step issued ahead (promote_next). */
++TEST(head_uses_step_issued_ahead_when_decoding) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveHead;
++    CHECK_OK(f.start());
++    const uint64_t d = f.submit(100, 512);
++    const uint64_t p = f.submit(2000, 4);
++    CHECK(f.sch.step() != nullptr);                  /* both in: the waiting head is d */
++    f.commit_plain(12);
++    f.sch.find(d)->speculation_fixed = true;
++    CHECK(f.sch.step() != nullptr);                  /* d governs, p frozen: one row */
++    CHECK_EQ((int)f.sch.plan().e.size(), 1);
++    CHECK(f.sch.find(p)->state == ReqState::Running);   /* held out, not dropped */
++    CHECK(f.sch.step_next() != nullptr);             /* the step issued ahead: the head fix */
++    f.commit_plain(12);
++    f.sch.promote_next();
++    CHECK_EQ(f.sch.metrics().steps_held, 2);         /* the step and the step issued ahead */
++}
++
++/* The frozen rows hold the whole pool and the governing class cannot get a row in: step()
++ * re-plans once with the freeze lifted instead of idling the engine. The step comes back a
++ * decode step, nothing fails, and the liveness counter moves. */
++TEST(head_never_idles_the_engine) {
++    Fixture f;
++    f.build(/*blocks=*/32, /*states=*/64);
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveHead;
++    CHECK_OK(f.start());
++    const uint64_t a = f.submit(160, 512);           /* the oldest: governs decode */
++    const uint64_t p = f.submit(300, 64);            /* frozen mid-prompt, holding blocks */
++    CHECK(f.sch.step() != nullptr);
++    f.commit_plain(12);
++    const RadBatch* b = nullptr;
++    for (int k = 0; k < 300; ++k) {                  /* a's growth runs into the frozen pool */
++        b = f.sch.step();
++        CHECK(b != nullptr);                         /* never nullptr: the net holds the engine up */
++        if (f.sch.metrics().head_freeze_releases > 0) break;
++        f.commit_plain(12);
++    }
++    REQUIRE(f.sch.metrics().head_freeze_releases == 1);
++    REQUIRE(b != nullptr);
++    CHECK_EQ(b->phase, RAD_PHASE_DECODE);            /* the frozen row ran its step */
++    CHECK(f.sch.find(a)->state == ReqState::Running);
++    CHECK(f.sch.find(a)->state != ReqState::Failed);
++    CHECK(f.sch.find(p)->state != ReqState::Failed); /* §17 untouched: nothing failed */
++}
++
++/* The agentic pattern -- a turn decodes, the next turn's prompt arrives -- flips the governing
++ * class once per phase change, and the counter reads the flips. */
++TEST(head_flips_counter) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveHead;
++    CHECK_OK(f.start());
++    const uint64_t t1 = f.submit(100, 4);
++    CHECK(f.sch.step() != nullptr);                  /* turn 1 prefill: prefill governs */
++    f.commit_plain(12);
++    for (int k = 0; k < 3; ++k) {                    /* turn 1 decodes out: flip to decode */
++        CHECK(f.sch.step() != nullptr);
++        f.commit_plain(12);
++    }
++    const uint64_t t2 = f.submit(100, 4);            /* the client's next turn */
++    (void)t2;
++    CHECK(f.sch.step() != nullptr);                  /* prefill again: flip back */
++    f.commit_plain(12);
++    for (int k = 0; k < 3; ++k) {                    /* and decode again: the third flip */
++        CHECK(f.sch.step() != nullptr);
++        f.commit_plain(12);
++    }
++    CHECK_EQ(f.sch.metrics().head_flips, 3);
++    CHECK(f.sch.find(t1)->state != ReqState::Failed);
++}
++
++
+ /* The arithmetic at a real deployment's shape: a 2048-token step and interval, the stager arming
+  * at 1025 tokens (so a held-back chunk keeps 1024 and its step-mates take the rest). */
+ TEST(busy_cap_keeps_the_stager_floor_and_never_leaves_a_runt) {
+@@ -8877,7 +9177,9 @@ TEST(sim_burst_of_long_prompts) {
+     auto pct = [&](double q) { return tt[std::min(tt.size() - 1, (size_t)(q * (double)tt.size()))]; };
+     const double intervals = (double)pf_tok / (double)std::max<int64_t>(f.cfg.checkpoint_interval, 1);
+     char il[32];
+-    if (f.cfg.prefill_interleave < 0)
++    if (f.cfg.prefill_interleave == Config::kPrefillInterleaveHead)
++        std::snprintf(il, sizeof il, "head");
++    else if (f.cfg.prefill_interleave < 0)
+         std::snprintf(il, sizeof il, "auto:%g", f.cfg.prefill_interleave_share);
+     else
+         std::snprintf(il, sizeof il, "%lld", (long long)f.cfg.prefill_interleave);
+diff --git a/tests/server_test.cpp b/tests/server_test.cpp
+index c37afc72..5a062b83 100644
+--- a/tests/server_test.cpp
++++ b/tests/server_test.cpp
+@@ -2615,6 +2615,31 @@ TEST(the_steps_a_prefill_interleave_held_are_counted) {
+     CHECK(it != d.samples.end() && it->second == 6.0);
+ }
+ 
++/* The head-mode governance counters are counters beside it: the frozen decode lanes, the
++ * flips, and the liveness releases operators watch at ~0. */
++TEST(the_head_governance_counters_are_exported) {
++    Metrics m("m", 1024);
++    server::SchedMetrics s;
++    s.steps_held_decode = 4;
++    s.head_flips = 3;
++    s.head_freeze_releases = 1;
++    m.sample(s);
++    PromDoc d = parse_prom(m.render());
++    CHECK_EQ((int)d.errors.size(), 0);
++    CHECK_EQ(d.type["radiance:engine_steps_held_decode_total"], std::string("counter"));
++    CHECK_EQ(d.type["radiance:engine_head_flips_total"], std::string("counter"));
++    CHECK_EQ(d.type["radiance:engine_head_freeze_releases_total"], std::string("counter"));
++    const auto held = d.samples.find(
++        "radiance:engine_steps_held_decode_total{model_name=\"m\",engine=\"0\"}");
++    CHECK(held != d.samples.end() && held->second == 4.0);
++    const auto flips = d.samples.find(
++        "radiance:engine_head_flips_total{model_name=\"m\",engine=\"0\"}");
++    CHECK(flips != d.samples.end() && flips->second == 3.0);
++    const auto rel = d.samples.find(
++        "radiance:engine_head_freeze_releases_total{model_name=\"m\",engine=\"0\"}");
++    CHECK(rel != d.samples.end() && rel->second == 1.0);
++}
++
+ TEST(the_mixed_step_target_controller_is_observable) {
+     Metrics m("m", 1024);
+     server::SchedMetrics s;
+-- 
+2.56.1
+
