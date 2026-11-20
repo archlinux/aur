@@ -3,7 +3,7 @@
 # Contributor: Seth Murphy <seth.murphy18@gmail.com>
 
 pkgname='expandrive-bin'
-pkgver='2025.11.21.808'
+pkgver='2026.11.06.916'
 pkgrel='1'
 pkgdesc='A utility for managing multiple cloud storage services'
 arch=('x86_64')
@@ -23,9 +23,9 @@ depends=(
 )
 
 source=('LICENSE'
-    "https://corp.hosted-by-files.com/builds/ExpanDrive/${pkgver}/linux/ExpanDrive_${pkgver%.*}_amd64.deb")
+    "ExpanDrive_${pkgver}_amd64.deb::https://www.expandrive.com/api/download/expandrive?platform=linux&ext=deb")
 sha256sums=('0d764524f7d542d267cc68a7fdfa07ebd3146e784aa89fc157fceb800001d823'
-    'b558f56dfcd9c7486d2498695847e06edf16960e7a1056f67345dce48d73036a')
+    '493aa2d100efbb707f379dbc3e0f208df8fe63312a2344bf095371fcd28d5e85')
 
 prepare() {
     # Create the package directory, if it doesn't already exist
