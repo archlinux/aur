@@ -3,7 +3,7 @@
 
 pkgname='perl-crypt-gcrypt'
 pkgver='1.26'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl/CPAN Module Crypt::GCyrpt: Perl interface to the GNU Cryptographic library"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -15,11 +15,11 @@ url='https://metacpan.org/release/Crypt-GCrypt'
 # e.g. https://rt.cpan.org/Public/Bug/Display.html?id=97201
 # We want them.
 source=("http://search.cpan.org/CPAN/authors/id/A/AA/AAR/Crypt-GCrypt-$pkgver.tar.gz"
-  'http://http.debian.net/debian/pool/main/libc/libcrypt-gcrypt-perl/libcrypt-gcrypt-perl_1.26-5.debian.tar.xz')
+  'http://http.debian.net/debian/pool/main/libc/libcrypt-gcrypt-perl/libcrypt-gcrypt-perl_1.26-7.debian.tar.xz')
 md5sums=( 'd23084ed878e5d12d4956c39e6f2b813'
-  'feadad19cee085c510e0d4e3030c5a90')
+  '35cc406f64f30abab557829d1d50b917')
 sha512sums=('26a55539297ab0ba12d8732a15e3797aa5ee74fad01edc11ef55f25f0b26d8d03381696e65ec057e191866a6a5221f34af97572680c48e1336b08ab50cad3e89'
-  'cd7bad47b7b09f2fb98c4cac351f712450051fa7481dcf44ba58370440597d0e115f03108b5fee7b7d19ac8dab6e0a7a5be9c170448fe2ab60258d4c5662b3ee')
+  '5f5931364bf7e346904eaa95082e8071b3f2c98f8ab9cf40fd8e7125da954bc351cc4dc83295a8f6e66bec0f7feda04bd861b9288fa99899751694d80ad76a83')
 _distdir="Crypt-GCrypt-$pkgver"
 
 prepare() {
@@ -28,6 +28,8 @@ prepare() {
     patch -p1 < ../debian/patches/gcrypt-1.6.patch
     patch -p1 < ../debian/patches/gcc5-warnings.patch
     patch -p1 < ../debian/patches/0001-Use-an-encryption-key-in-the-test-suite.patch
+    patch -p1 < ../debian/patches/fix-checklib-fail.patch
+    patch -p1 < ../debian/patches/fix-build-with-gcc-14.patch
 }
 
 build() {
