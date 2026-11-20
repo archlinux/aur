@@ -1,6 +1,6 @@
 pkgbase = graph2dot
 	pkgdesc = parse a filtergraph description and issue a corresponding textual representation in the dot language
-	pkgver = 9.0.2
+	pkgver = 9.1
 	pkgrel = 1
 	url = https://ffmpeg.org
 	arch = i686
@@ -34,7 +34,7 @@ pkgbase = graph2dot
 	depends = fontconfig
 	depends = libgcc
 	optdepends = graphviz: dot utility needed to convert gv to png
-	source = https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.gz
-	sha256sums = 84960df915059e8754fef2cd7c9afeb614062b1b5458ec471eecee619ee04e98
+	source = https://ffmpeg.org/releases/ffmpeg-9.1.tar.gz
+	sha256sums = a7a5c7219a9232e2017f7584922b50e96c1d6d7b55737184f94e394a229d13c7
 
 pkgname = graph2dot
