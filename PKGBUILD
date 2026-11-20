@@ -32,8 +32,7 @@ package() {
 
     install -Dm755 build/mx-service-manager "${pkgdir}/usr/bin/mx-service-manager"
 
-    install -dm755 "${pkgdir}/usr/share/mx-service-manager/locale"
-    install -Dm644 build/*.qm "${pkgdir}/usr/share/mx-service-manager/locale/" 2>/dev/null || true
+    install -Dm644 -t "${pkgdir}/usr/share/mx-service-manager/locale/" build/*.qm
 
     install -Dm644 mx-service-manager.desktop "${pkgdir}/usr/share/applications/mx-service-manager.desktop"
 
@@ -49,7 +48,7 @@ package() {
 
     install -dm755 "${pkgdir}/usr/share/doc/mx-service-manager"
 
-    install -Dm644 help/*.1 "${pkgdir}/usr/share/man/man1/" 2>/dev/null || true
+    install -Dm644 -t "${pkgdir}/usr/share/man/man1/" help/*.1
     if [ -d docs ]; then
         cp -r docs/* "${pkgdir}/usr/share/doc/mx-service-manager/" 2>/dev/null || true
     fi
