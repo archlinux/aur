@@ -1,6 +1,6 @@
 pkgbase = shellfirm-bin
 	pkgdesc = Intercept any risky patterns (default or defined by you) and prompt you a small challenge for double verification
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/kaplanelad/shellfirm
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = shellfirm-bin
 	provides = shellfirm
 	conflicts = shellfirm
 	options = !debug
-	source = shellfirm-0.4.1.tar.gz::https://github.com/kaplanelad/shellfirm/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = 97ba51d3428ad39856e95b52aaebe95f42b859ba7c30b3cfeb09b0bf05c4fa41
-	source_x86_64 = shellfirm-0.4.1-x86_64.tar.xz::https://github.com/kaplanelad/shellfirm/releases/download/v0.4.1/shellfirm-v0.4.1-x86_64-linux.tar.xz
-	sha256sums_x86_64 = 625a398446ec72ec1a10da7c5f8381fa91c2e48dfd9e397f381b1b0bcbaf008f
-	source_aarch64 = shellfirm-0.4.1-aarch64.tar.xz::https://github.com/kaplanelad/shellfirm/releases/download/v0.4.1/shellfirm-v0.4.1-aarch64-linux.tar.xz
-	sha256sums_aarch64 = 9142365b7ea679ccc93d2ca4e8410ca1d1a343fd350474132248b9a1a369bd23
+	source = shellfirm-0.4.2.tar.gz::https://github.com/kaplanelad/shellfirm/archive/refs/tags/v0.4.2.tar.gz
+	sha256sums = 4c2493df918ecca8c9f36292661f81a504d5ff7101dede8980d71fbf463f7f4f
+	source_x86_64 = shellfirm-0.4.2-x86_64.tar.xz::https://github.com/kaplanelad/shellfirm/releases/download/v0.4.2/shellfirm-v0.4.2-x86_64-linux.tar.xz
+	sha256sums_x86_64 = b00d5ec25084e79251ab7a000a338bb9f0d285cf05143c280db8e1364ab072a7
+	source_aarch64 = shellfirm-0.4.2-aarch64.tar.xz::https://github.com/kaplanelad/shellfirm/releases/download/v0.4.2/shellfirm-v0.4.2-aarch64-linux.tar.xz
+	sha256sums_aarch64 = b06b8fa59d92c06cdf82b9eeda33a4accf9610f2ea3a4f3a1a88c8b6c72660a5
 
 pkgname = shellfirm-bin
