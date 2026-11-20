@@ -2,7 +2,7 @@
 # Maintainer: Wimpy <vvinnpy@gmail.com>
 
 pkgname='whop-bin'
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='Local-first terminal connection deck with SSH, sessions, and automation'
 url='https://github.com/vvinnpy/whop'
@@ -12,10 +12,10 @@ provides=('whop')
 conflicts=('whop')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/vvinnpy/whop/releases/download/v${pkgver}/whop_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('6ef03e38497c4d46d2746db7dde18e99f0f167ea207bb1304c2569bbe534c3f6')
+sha256sums_aarch64=('257174cd1ee50d0847e999b2662996d5e77b94f3ad586b8e1d0f54608749140b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/vvinnpy/whop/releases/download/v${pkgver}/whop_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('5a05c045cf2b73dd9d3d9686c76f2d139015d6e587a2b20ccce54830c02d2ac0')
+sha256sums_x86_64=('68478bc26d916278ce30694189c8571c294f2dd7a59fecb2952c6a7544df37b8')
 
 package() {
   install -Dm755 "./whop" "${pkgdir}/usr/bin/whop"
