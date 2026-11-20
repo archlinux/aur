@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction <lightjunction@users.noreply.github.com>
 pkgname=zcalld-compat
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Optional privacy worker and community plugin compatibility for zcalld'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go>=1.26.8')
 optdepends=('bun: JavaScript community plugin runtime' 'git: install pinned Git community sources' 'zcalld: native gateway and adapters')
 options=('!lto')
 source=("$pkgname-$pkgver-source.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('07b605bfce4965d533e35d02bdc2f31b1abf65a6e650c7b3214f90fc765d9ab7')
+sha256sums=('7b7972a79e4abdeb7e54590bead662032840fcb11b355ae1c60ea406ceff14cc')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
