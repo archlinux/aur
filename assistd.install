@@ -3,11 +3,8 @@ post_install() {
 
 ==> Initialize your user config:
       assistd init-config
-    (writes ~/.config/assistd/config.toml from defaults)
-
-    Or copy the annotated system template manually:
-      mkdir -p ~/.config/assistd
-      cp /etc/assistd/config.toml ~/.config/assistd/config.toml
+    (writes the annotated sample to ~/.config/assistd/config.toml;
+    a copy is also installed at /etc/assistd/config.toml)
 
 ==> Install llama.cpp for the LLM backend (provides llama-server):
       pacman -S llama.cpp        # or build llama.cpp-* from the AUR
