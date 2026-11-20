@@ -1,6 +1,6 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 pkgname=pcf-unifont
-pkgver=17.0.05
+pkgver=18.0.01
 pkgrel=1
 pkgdesc="GNU Unifont Glyphs (PCF version)"
 arch=('any')
@@ -9,7 +9,7 @@ license=('OFL-1.1 OR GPL-2.0-or-later WITH Font-exception-2.0')
 source=("https://ftp.gnu.org/gnu/unifont/unifont-$pkgver/unifont-$pkgver.pcf.gz"{,.sig}
         "unifont-LICENSE.txt::https://unifoundry.com/LICENSE.txt")
 noextract=("unifont-$pkgver.pcf.gz")
-sha256sums=('92577d819fd03e1b2eec872ab45821078a9e77807af86a7d21b6da38fef61cdc'
+sha256sums=('3f7702429c948f05b979800b65c7e1383614d924591627aeae5d38d20101c69f'
             'SKIP'
             '1e74cb82bf476843e97c2596297b04219b1a7e51f7238944a8c031cb9401fa87')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <unifoundry@unifoundry.com>
