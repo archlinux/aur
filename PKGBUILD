@@ -1,14 +1,14 @@
 # Maintainer: Remenod <remenod@gmail.com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: hexchain <i@hexchain.org>
-# Generated from Arch Linux's extra/telegram-desktop 7.4.4-1
+# Generated from Arch Linux's extra/telegram-desktop 7.4.4-2
 # by https://github.com/Remenod/telegram-desktop-export (packaging branch).
 
 pkgname=telegram-desktop-export
 pkgver=7.4.4
 _td_commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
 _wallet_engine_ver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Telegram Desktop with export patches: media reused between exports, size limits per media type, no hangs on lost media'
 arch=('x86_64')
 url="https://github.com/Remenod/telegram-desktop-export"
