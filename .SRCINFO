@@ -7,7 +7,7 @@ pkgbase = r-jpeg
 	arch = x86_64
 	license = GPL2
 	license = GPL3
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = r>=2.9.0
 	source = https://cran.r-project.org/src/contrib/jpeg_0.1-11.tar.gz
 	b2sums = ffa9cad7da57db429fe0030a52cdd69162e30e8da2d18fc269c49773b39cfa4473bb4ea3039f3f07b2beeb112fa9061f41d52e4656eda464af366d3e11b0ccd9
