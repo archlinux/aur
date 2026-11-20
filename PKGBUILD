@@ -16,8 +16,8 @@
 # tested on Linux until upstream adds desktop discovery.
 
 pkgname=claudemom
-pkgver=0.1.9
-pkgrel=2
+pkgver=0.1.10
+pkgrel=1
 pkgdesc="Turn an Anthropic-compatible API key into the Claude Desktop login mode, with localization and dictation"
 arch=('x86_64')
 url="https://github.com/BigPizzaV3/ClaudeMom"
@@ -44,7 +44,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/BigPizzaV3/ClaudeMom/archive/refs/tags/v${pkgver}.tar.gz"
   "sherpa-onnx-v1.13.8-linux-x64-static-lib.tar.bz2::https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.13.8/sherpa-onnx-v1.13.8-linux-x64-static-lib.tar.bz2"
 )
-sha256sums=('da0c838996c31f438b4b2f0877e37103a63f95205f8d69e35418849b46efd34d'
+sha256sums=('b3527e0b4758ab445e5287d5f89f285235927d7fca5b4550b89313b97bbd911f'
             'e1fdc5b67530e15741ef897fa5ffff297056f3bf0c6d829a27af9225a4c4b5a6')
 
 prepare() {
