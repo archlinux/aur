@@ -12,7 +12,7 @@
 
 pkgname=gitkraken
 pkgrel=1
-pkgver=12.6.2
+pkgver=12.7.0
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="https://www.gitkraken.com/"
 arch=('x86_64' 'aarch64')
@@ -33,8 +33,8 @@ sha256sums=('af2d2e5a44ec6e543c34f94cfb89fe34b6c05d2baf6ca9db5b6d332e4a5686e5'
             '4342596839114228740e5d61cdc49fbe9e98d05d1aabe2694ffe9d48ffd4082e'
             '4b3eaf932b79e8f1d6a6a6efd030e73cb544d3d0fbe6bf7b61b884f4c6042b0a'
             '22d30f568c6410f76f80412cd9665fbeb44a267828444df3203c37baabdf3335')
-sha256sums_x86_64=('69a4195eb398aa5e159efbd57be6c9cddbb6fa30ff8dafbc7fb3f23729115b11')
-sha256sums_aarch64=('a894eb3e494f6c21d446ea6d97f995b1a20caa743a21b09df6fe4c03d54080b4')
+sha256sums_x86_64=('40e78b4dc3916818b9a8d60d3b71d00900ad9288c95d14c17e644db53cbf5efa')
+sha256sums_aarch64=('fe134f379917f13f1e16c9e1649e06a662aaa71f56de0f3fd5ae5ec769236738')
 options=('!strip' '!debug')
 
 package() {
