@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=ssl12tui
+Comment=Control the SSL 12 audio interface.
+Exec=/usr/bin/ssl12tui
+Icon=ssl12ctl
+Terminal=true
+Categories=AudioVideo;Audio;Player;
