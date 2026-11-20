@@ -5,3 +5,8 @@
 /pkg/
 /*.pkg.tar*
 /*.log
+# The fonts and license files that makepkg downloads.
+/oldschool_pc_font_pack_v2.2_linux.zip
+/Glass_TTY_VT220.ttf
+/glasstty-LICENSE
+/Tiny5Mono.bdf

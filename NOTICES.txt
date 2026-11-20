@@ -1,0 +1,210 @@
+vtium-fonts: notices
+
+vtium-fonts installs the font sets of vtium's catalog that the console packages leave out, and copies of the fonts that the sets name and that Arch does not package. This file names every font that a set of the catalog names: where the font comes from, its version, its copyright line, its license, and its Reserved Font Name or the attribution its license asks for. The copyright lines are quoted from the font files or from the license files that the fonts' projects publish.
+
+The font sets and layers are text files of vtium, under the MIT License in LICENSE, and COPYING holds vtium's own notices. For each font that vtium-fonts carries, the full text of its license is in this folder. A font that another Arch package installs keeps its license text in that package's folder under /usr/share/licenses.
+
+
+Fonts that vtium-fonts carries
+==============================
+
+vtium-fonts installs these files unchanged in /usr/share/fonts/vtium.
+
+Px437 IBM VGA 9x16
+  The set: ibm-vga, which names the font by its family.
+  The file: Px437_IBM_VGA_9x16.ttf, from the folder "ttf - Px (pixel outline)" of oldschool_pc_font_pack_v2.2_linux.zip, https://int10h.org/oldschool-pc-fonts/download/oldschool_pc_font_pack_v2.2_linux.zip
+  Version: the Ultimate Oldschool PC Font Pack 2.2. The font's own version string is "v2.2-2020-11".
+  Copyright: "(c) 2016-2020 VileR", as the pack's README.TXT states.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0), in CC-BY-SA-4.0.txt, which is the pack's LICENSE.TXT.
+  Attribution, which the license asks for: Px437 IBM VGA 9x16 is from The Ultimate Oldschool PC Font Pack by VileR, https://int10h.org/oldschool-pc-fonts/, licensed under CC BY-SA 4.0. The file is not changed. The licensor offers it as-is and makes no warranties, as section 5 of the license states.
+
+Glass TTY VT220
+  The set: dec-vt220, which names the font by its family.
+  The file: Glass_TTY_VT220.ttf, from https://github.com/svofski/glasstty at commit 845410289199833ca0d5d7697d06e1780bfe3715.
+  Version: 1.3. The font's own version string is "Version 001.3".
+  Copyright: neither the font nor its repository states a copyright line. The font's description says "Created by svo with FontForge 2.0".
+  License: the Unlicense, by which the author dedicates the font to the public domain, in Unlicense.txt, which is the repository's LICENSE file.
+
+Tiny5 Mono
+  The set: tiny5, which names the file by its path.
+  The file: Tiny5Mono.bdf, from fonts/bdf/Tiny5Mono.bdf of https://github.com/Gissio/font_Tiny5Mono at commit 7d30f9e887fdb29e0b951e92493822afba5f70a7.
+  Version: 3.000, as the file's FONT_VERSION property states.
+  Copyright: "Copyright 2026 The Tiny5 Mono Project Authors (https://github.com/Gissio/font_Tiny5Mono)", as the file's COPYRIGHT property states.
+  License: SIL Open Font License 1.1 (OFL-1.1), in OFL-1.1.txt. The repository's OFL.txt holds the same license under the placeholder copyright line of the template it was made from, so OFL-1.1.txt holds the license text alone.
+  Reserved Font Name: none.
+
+
+Fonts that every vtium console package installs
+================================================
+
+vtium's console packages install these files in /usr/share/vtium/fonts. vtium's COPYING names each one with its copyright line and its license, and the OFL's text is beside COPYING.
+
+Terminus Font 4.49.1
+  The sets and layers: terminus, from its BDF files ter-u12n.bdf.gz to ter-u32b.bdf.gz.
+  Source: https://sourceforge.net/projects/terminus-font/files/terminus-font-4.49/
+  Copyright: "Copyright (C) 2020 Dimitar Toshkov Zhekov", as each file's COPYRIGHT property states.
+  License: OFL-1.1. Reserved Font Name: "Terminus Font".
+
+GNU Unifont 17.0.03
+  The sets and layers: the layer unifont, which every set but unifont-icons ends with, and the set unifont-icons, which draws its text from the same file, unifont_all-17.0.03.hex.
+  Source: https://unifoundry.com/pub/unifont/unifont-17.0.03/
+  Copyright: "Copyright (C) 1998-2025 Roman Czyborra, Paul Hardy, Qianqian Fang, Andrew Miller, Johnnie Weaver, David Corbett, Ælla Chiana Moskopp, Rebecca Bettencourt, Minseo Lee, Ho-Seok Ee, et al.", as Unifoundry's BDF build of the font states.
+  License: vtium takes Unifont under OFL-1.1, one of its two licenses. Reserved Font Name: none.
+
+Cullet Mono
+  The set: cullet-mono, from CulletMono-Regular.ttf and CulletMono-Bold.ttf.
+  Source: vtium builds it from Terminus (TTF) 4.49.3 and Nerd Fonts' icons, https://github.com/vtium/vtium/tree/main/tools/cullet-mono
+  Copyright, license and attribution: its own notices, cullet-mono/NOTICES.txt beside vtium's COPYING. Cullet Mono is under OFL-1.1, and its icons keep their own licenses.
+
+
+Fonts from Arch's packages
+==========================
+
+vtium-fonts depends on the package of each font below, apart from the packages marked optional, which pacman lists as optional dependencies.
+
+kbd 2.10.0's console fonts: default8x16, sun12x22, cp865-8x16 and cp865-8x8
+  The sets: default8x16 and linux-sun-8x16 (default8x16), linux-sun-12x22 and sun-gallant (sun12x22), linux-vga-8x16 (cp865-8x16), and linux-vga-8x8 (cp865-8x8).
+  Source: https://github.com/legionus/kbd/tree/v2.10.0/data/consolefonts
+  Copyright: the font files state no copyright line. kbd's README.12x22 says that sun12x22 was taken from the Linux kernel's source.
+  License: GPL-2.0-or-later, the license of kbd.
+  Package: kbd.
+
+Terminus Font 4.49.1, the console font ter-i32b
+  The set: linux-ter-16x32.
+  Source: https://sourceforge.net/projects/terminus-font/files/terminus-font-4.49/
+  Copyright: "Copyright (C) 2020 Dimitar Toshkov Zhekov", as Terminus Font's BDF files state.
+  License: OFL-1.1. Reserved Font Name: "Terminus Font".
+  Package: terminus-font.
+
+Cascadia Code 2407.24
+  The set: cascadia-code.
+  Source: https://github.com/microsoft/cascadia-code/releases/tag/v2407.24
+  Copyright: "Copyright (c) 2019 - Present, Microsoft Corporation, with Reserved Font Name Cascadia Code.", as the project's LICENSE states.
+  License: OFL-1.1. Reserved Font Name: "Cascadia Code".
+  Package: ttf-cascadia-code.
+
+DejaVu Sans Mono 2.37
+  The set: dejavu-sans-mono.
+  Source: https://github.com/dejavu-fonts/dejavu-fonts/releases/tag/version_2_37
+  Copyright: "Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved. DejaVu changes are in public domain", as the font states.
+  License: the Bitstream Vera Fonts license (Bitstream-Vera), with DejaVu's changes in the public domain. The license lets a changed font be distributed only under a name that contains neither the word "Bitstream" nor the word "Vera".
+  Package: ttf-dejavu.
+
+Fira Code 6.002
+  The set: fira-code.
+  Source: https://github.com/tonsky/FiraCode/releases/tag/6.2
+  Copyright: "Copyright 2014-2021 The Fira Code Project Authors (https://github.com/tonsky/FiraCode)", as the font states.
+  License: OFL-1.1. Reserved Font Name: none.
+  Package: ttf-fira-code.
+
+Hack 3.003
+  The set: hack.
+  Source: https://github.com/source-foundry/Hack/releases/tag/v3.003
+  Copyright: "Copyright (c) 2018 Source Foundry Authors" and "Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved.", as the font states.
+  License: MIT for Hack's own work, and the Bitstream Vera Fonts license (Bitstream-Vera) for the glyphs that come from Bitstream Vera.
+  Package: ttf-hack.
+
+IBM Plex Mono 2.5.0
+  The set: ibm-plex-mono.
+  Source: https://github.com/IBM/plex/releases/tag/%40ibm%2Fplex-mono%402.5.0
+  Copyright: "Copyright © 2017 IBM Corp. with Reserved Font Name "Plex"", as the project's LICENSE.txt states.
+  License: OFL-1.1. Reserved Font Name: "Plex".
+  Package: ttf-ibm-plex.
+
+JetBrains Mono 2.304
+  The set: jetbrains-mono, which the console packages install.
+  Source: https://github.com/JetBrains/JetBrainsMono/releases/tag/v2.304
+  Copyright: "Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono)", as the font states.
+  License: OFL-1.1. Reserved Font Name: none.
+  Package: ttf-jetbrains-mono.
+
+Monoid 0.61
+  The set: monoid.
+  Source: https://github.com/larsenwork/monoid/releases/tag/0.61
+  Copyright: "Copyright (c) 2015, Andreas Larsen and contributors.", as the project's Readme.md states.
+  License: MIT or OFL-1.1, at the user's choice.
+  Package: ttf-monoid.
+
+Source Code Pro 2.042
+  The set: source-code-pro.
+  Source: https://github.com/adobe-fonts/source-code-pro/releases/tag/2.042R-u%2F1.062R-i%2F1.026R-vf
+  Copyright: "© 2023 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'.", as the project's LICENSE.md states.
+  License: OFL-1.1. Reserved Font Name: "Source".
+  Package: adobe-source-code-pro-fonts.
+
+Noto Sans Mono 2.014
+  The sets: the nine sets of the scripts folder, which draw their Latin text with it.
+  Source: https://github.com/notofonts/latin-greek-cyrillic/releases/tag/NotoSansMono-v2.014
+  Copyright: "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/latin-greek-cyrillic)", as the font states.
+  License: OFL-1.1. Reserved Font Name: none.
+  Package: noto-fonts.
+
+The Noto fonts of the script layers
+  The layers: arabic, hebrew, indic and thai-lao, and the sets noto-arabic, noto-hebrew, noto-indic and noto-thai-lao, which add them.
+  The fonts and their sources, each a release of https://github.com/notofonts:
+    Noto Sans Arabic 2.013, arabic/releases/tag/NotoSansArabic-v2.013
+    Noto Sans Hebrew 3.001, hebrew/releases/tag/NotoSansHebrew-v3.001
+    Noto Sans Devanagari 2.007, devanagari/releases/tag/NotoSansDevanagari-v2.007
+    Noto Sans Bengali 3.011, bengali/releases/tag/NotoSansBengali-v3.011
+    Noto Sans Gurmukhi 2.004, gurmukhi/releases/tag/NotoSansGurmukhi-v2.004
+    Noto Sans Gujarati 2.106, gujarati/releases/tag/NotoSansGujarati-v2.106
+    Noto Sans Oriya 2.007, oriya/releases/tag/NotoSansOriya-v2.007
+    Noto Sans Tamil 2.004, tamil/releases/tag/NotoSansTamil-v2.004
+    Noto Sans Telugu 2.005, telugu/releases/tag/NotoSansTelugu-v2.005
+    Noto Sans Kannada 2.006, kannada/releases/tag/NotoSansKannada-v2.006
+    Noto Sans Malayalam 2.104, malayalam/releases/tag/NotoSansMalayalam-v2.104
+    Noto Sans Sinhala 3.000, sinhala/releases/tag/NotoSansSinhala-v3.000
+    Noto Sans Thai 2.002, thai/releases/tag/NotoSansThai-v2.002
+    Noto Sans Lao 2.003, lao/releases/tag/NotoSansLao-v2.003
+  Copyright: each font states "Copyright 2022 The Noto Project Authors" followed by its project's address, such as "(https://github.com/notofonts/arabic)". Noto Sans Hebrew states "Copyright 2024" and Noto Sans Bengali "Copyright 2025".
+  License: OFL-1.1. Reserved Font Name: none.
+  Package: noto-fonts.
+
+Noto Sans CJK 2.004, optional
+  The layers: cjk-jp, cjk-kr, cjk-sc and cjk-tc, and the sets noto-cjk-jp, noto-cjk-kr, noto-cjk-sc and noto-cjk-tc, which add them.
+  Source: https://github.com/notofonts/noto-cjk/releases/tag/Sans2.004
+  Copyright: "© 2014-2021 Adobe (http://www.adobe.com/).", as the font states.
+  License: OFL-1.1. Reserved Font Name: none.
+  Package: noto-fonts-cjk, an optional dependency. Without it, the four CJK sets draw Han, kana and Hangul from Unifont.
+
+Noto Color Emoji 2.051
+  The layers: noto-emoji and noto-emoji-small, which every set but terminus adds.
+  Source: https://github.com/googlefonts/noto-emoji/releases/tag/v2.051
+  Copyright: "Copyright 2022 Google Inc.", as the font states.
+  License: OFL-1.1. Reserved Font Name: none.
+  Package: noto-fonts-emoji.
+
+
+Nerd Fonts, which vtium-fonts does not carry
+=============================================
+
+vtium-fonts carries no Nerd Fonts file and depends on none. Every Nerd Fonts build, Symbols Nerd Font Mono included, holds the Font Logos icons, the logos of operating systems and projects at U+F300 to U+F385, and Nerd Fonts' license-audit.md lists Font Logos as unlicensed. So the recipe names Arch's Nerd Fonts packages as optional dependencies, which you install yourself. Without a Nerd font, a set draws each Nerd Fonts icon that none of its other sources holds as a hollow box, and a set of the nerd folder draws its text from Unifont.
+
+Symbols Nerd Font Mono 3.4.0, optional
+  The layers: nerd-symbols and nerd-symbols-small, which add Powerline's and Nerd Fonts' icons to every set of the console, classic, code, scripts and small folders apart from terminus.
+  Source: https://github.com/ryanoasis/nerd-fonts/releases/tag/v3.4.0
+  Copyright: "Copyright (c) 2016, Ryan McIntyre", as the font states, and the copyright of each icon set, below.
+  License: MIT for Nerd Fonts' own work, and each icon set under its own license, below.
+  Package: ttf-nerd-fonts-symbols-mono, an optional dependency.
+
+The Nerd Fonts 3.4.0 builds of the sets in the nerd folder, optional
+  The sets and their fonts: caskaydia-cove (CaskaydiaCove Nerd Font Mono, from Cascadia Code), fira-code-nerd (FiraCode Nerd Font Mono), hack-nerd (Hack Nerd Font Mono), jetbrains-mono-nerd (JetBrainsMono Nerd Font Mono), monoid-nerd (Monoid Nerd Font Mono), sauce-code-pro (SauceCodePro Nerd Font Mono, from Source Code Pro) and terminess (Terminess Nerd Font Mono, from Terminus (TTF)).
+  Source: https://github.com/ryanoasis/nerd-fonts/releases/tag/v3.4.0
+  Copyright: the copyright line of the font each build is made from, given above for the code fonts; for Terminess, "Copyright (c) 2010 Dimitar Toshkov Zhekov, with Reserved Font Name "Terminus Font"" and "Copyright (c) 2011-2023 Tilman Blumenbach, with Reserved Font Name "Terminus (TTF)"", as Terminus (TTF)'s COPYING states. Nerd Fonts' font patcher, which adds the icons, is "Copyright (c) 2014 Ryan L McIntyre", as Nerd Fonts' LICENSE states. Each icon set keeps its own copyright, below.
+  License: the license of the font each build is made from, MIT for the patcher, and each icon set under its own license. CaskaydiaCove, SauceCodePro and Terminess carry names of their own because Cascadia Code, Source Code Pro and Terminus (TTF) reserve theirs.
+  Packages, each an optional dependency: ttf-cascadia-code-nerd, ttf-firacode-nerd, ttf-hack-nerd, ttf-jetbrains-mono-nerd, ttf-monoid-nerd, ttf-sourcecodepro-nerd and ttf-terminus-nerd.
+
+The icon sets whose licenses ask for attribution
+  Font Awesome: icons from Font Awesome Free by Fonticons, Inc., https://fontawesome.com, "Copyright (c) 2022 Fonticons, Inc.", licensed under Creative Commons Attribution 4.0 International (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/. Nerd Fonts scales and places the icons to fit one character cell.
+  Codicons: https://github.com/microsoft/vscode-codicons, "Copyright (c) Microsoft Corporation.", licensed under CC BY 4.0, https://creativecommons.org/licenses/by/4.0/. Nerd Fonts scales and places the icons to fit one character cell.
+  Nerd Fonts' license-audit.md lists the license of every other icon set: MIT, Apache-2.0 or OFL-1.1, apart from Font Logos.
+
+
+Unscii-8, which vtium-fonts does not carry
+==========================================
+
+Unscii-8 2.1
+  The set: unscii-icons, which the console packages install and which names a BDF file at /usr/share/fonts/vtium/unscii-8.bdf. vtium-fonts installs no file there, so vtium's built-in font, which holds Unscii-8's 8×8 glyphs, draws the set's text.
+  Source: http://viznut.fi/unscii/, which publishes the font as unscii-8.hex.
+  Copyright: unscii.txt in unscii-2.1-src.tar.gz says "Everything made by me (viznut) is in the Public Domain."
+  License: public domain.
