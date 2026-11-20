@@ -2,7 +2,7 @@
 # Contributor: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-peft
 _pkgname=${pkgname#python-}
-pkgver=0.21.3
+pkgver=0.22.0
 pkgrel=1
 pkgdesc='State-of-the-art Parameter-Efficient Fine-Tuning.'
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=(
     'python-transformer-engine: Transformer Engine layers'
 )
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/huggingface/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7d3f64e8ffb12f7e4cd4b12f7aef8f0d5f053b05e207f370bfc5eaf009c06f55')
+sha256sums=('360193e23c6dd49a491c22bc57bfbdcdea552747d639a3bab67fff2db7101524')
 
 build() {
     python -m build -nw $_pkgname-$pkgver
