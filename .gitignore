@@ -1,0 +1,5 @@
+/src/
+/pkg/
+
+/piik-*.tar.gz
+/piik-*.pkg.tar.zst
