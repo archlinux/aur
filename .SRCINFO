@@ -1,6 +1,6 @@
 pkgbase = dffy-bin
 	pkgdesc = Fast terminal diff viewer for git, built for large repositories: file tree and split or unified view, syntax-aware diff, watch mode, JSON output and an MCP server for coding agents
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/amalucelli/dffy
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = dffy-bin
 	provides = dffy
 	conflicts = dffy
 	conflicts = dffy-git
-	noextract = dffy_0.2.1_linux_amd64.tar.gz
-	noextract = dffy_0.2.1_linux_arm64.tar.gz
+	noextract = dffy_0.3.0_linux_amd64.tar.gz
+	noextract = dffy_0.3.0_linux_arm64.tar.gz
 	options = !strip
 	options = !debug
-	source_x86_64 = dffy_0.2.1_linux_amd64.tar.gz::https://github.com/amalucelli/dffy/releases/download/v0.2.1/dffy_linux_amd64.tar.gz
-	sha256sums_x86_64 = d6f6c6102d1ac3f87b891a00de98d83c656d59e003b80b61d8344091cc200661
-	source_aarch64 = dffy_0.2.1_linux_arm64.tar.gz::https://github.com/amalucelli/dffy/releases/download/v0.2.1/dffy_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2054e8176eeb20928f9a76cce29abc8eda10e3023c09c6bd728df636a7d60e84
+	source_x86_64 = dffy_0.3.0_linux_amd64.tar.gz::https://github.com/amalucelli/dffy/releases/download/v0.3.0/dffy_linux_amd64.tar.gz
+	sha256sums_x86_64 = edc5ffd2d9173c7d2540902fad79d7970bc670b17991ade9ef6e35ca667aa10f
+	source_aarch64 = dffy_0.3.0_linux_arm64.tar.gz::https://github.com/amalucelli/dffy/releases/download/v0.3.0/dffy_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9574355e19742a51441b35130372f6a47ee09e64d7b46dbc275be2c1218f686a
 
 pkgname = dffy-bin
