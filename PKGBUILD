@@ -3,12 +3,12 @@
 pkgname=python-unsloth-zoo
 _pkgname=unsloth_zoo
 _archive=unsloth-zoo
-pkgver=2026.11.4
+pkgver=2026.11.8
 # Upstream does not tag releases. This is the version-bump commit immediately
 # preceding the PyPI upload.
-_commit=be64da73196f9ceba40a8df40f05e538a6c539e8
-# Match the Unsloth 2026.11.3 source release used as the staged test companion.
-_unsloth_commit=47179dc94e1cc3ecc42854bddcfa9f9523dd2c24
+_commit=d67ccdf457e18bd752c4602feeb6497185db5a4c
+# Match the Unsloth 2026.11.8 source release used as the staged test companion.
+_unsloth_commit=8fe1882def85bdae35bf5e88b2caee8b11c45fac
 _source="${_archive}-${_commit}"
 _unsloth_source="unsloth-${_unsloth_commit}"
 pkgrel=1
@@ -84,8 +84,8 @@ source=(
     'preserve-installed-triton.patch'
     'arch-torchvision-pair.patch'
 )
-sha256sums=('2b97be42ed9abce89fb7ef9e7b33a832dd8be2001b20cfd87a2e1fb70205825d'
-            '33f993660aefe0d041f53551e5eedae174debd5a76d077e95934065a7b5c5358'
+sha256sums=('d0bd87b7b08c68c4384132ccf0d9090fc43b3d8fe5cffc2448ae348a8b5e112a'
+            '74112d668b1c966a55c0f33763766daaeaafaf8b4350e277aa989ff1d98fabbd'
             '9cf5a611d5e2490dbd7e77726c8c4115202b675221392676682b8d25388eda69'
             '6f76ab18ae09ee637f89058bedafcf3c031f31e289922e78e23d83af9c3b4fba')
 
@@ -98,7 +98,7 @@ prepare() {
     sed -i 's/setuptools-scm==10.3.4/setuptools-scm>=10.3.4/' pyproject.toml
     # Validate Arch's Transformers 5.19 and Datasets 5 with the retained
     # CPU compatibility suite before widening these upstream ceilings.
-    sed -i 's/<=5.17.0/<6/g; s/<5.0.0/<6/g' pyproject.toml
+    sed -i 's/<=5.18.0/<6/g; s/<5.0.0/<6/g' pyproject.toml
 
     cd "$srcdir/$_unsloth_source"
     sed -i 's/setuptools==84.1.0/setuptools>=84.1.0/' pyproject.toml
