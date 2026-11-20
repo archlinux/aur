@@ -3,7 +3,7 @@
 # Repository: https://github.com/minpeter/aur-zuse-bin
 
 pkgname=zuse-bin
-pkgver=0.26.1
+pkgver=0.27.1
 pkgrel=1
 pkgdesc='Desktop and browser control plane for coding agents'
 arch=('x86_64' 'aarch64')
@@ -39,8 +39,8 @@ makedepends=('libarchive')
 _deb='zuse.deb'
 source_x86_64=("${_deb}::https://github.com/opcodehq/zuse/releases/download/v${pkgver}/zuse-${pkgver}-linux-x86_64.deb")
 source_aarch64=("${_deb}::https://github.com/opcodehq/zuse/releases/download/v${pkgver}/zuse-${pkgver}-linux-aarch64.deb")
-sha256sums_x86_64=('8b8cc1707dd7086833260ff65bd4dd61d42bd6a5021e13faeaf74ff2bb6d2291')
-sha256sums_aarch64=('14ef5c70137c797470da4b9d4da7ccf2f11c709cf28b40193387ffd86da4f8e2')
+sha256sums_x86_64=('8d143cb1e6b573f4c44b9110743fe73c62e43665da22cec4c8f2ba01da9a5a28')
+sha256sums_aarch64=('86bdb204857f00acd2d8bf444882ea881b45e3792724477894fb7cb250ac31c7')
 noextract=("${_deb}")
 
 prepare() {
