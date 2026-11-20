@@ -1,6 +1,6 @@
 pkgbase = viper4linux-re-git
 	pkgdesc = Reverse-engineered ViPERDSP effects for PipeWire with a Qt6 interface (development VCS build)
-	pkgver = 1.1.2.r22.g9dea39b
+	pkgver = 1.2.1.r0.g6af27be
 	pkgrel = 1
 	url = https://github.com/username227/viper4linux-re
 	arch = x86_64

@@ -2,7 +2,7 @@
 # Maintainer: username227 {gfrank227 [at] gmail [dot] com}
 
 pkgname=viper4linux-re-git
-pkgver=1.1.2.r22.g9dea39b
+pkgver=1.2.1.r0.g6af27be
 pkgrel=1
 pkgdesc='Reverse-engineered ViPERDSP effects for PipeWire with a Qt6 interface (development VCS build)'
 arch=('x86_64')
@@ -23,7 +23,8 @@ source=(
     "ViPERDSP::git+https://github.com/likelikeslike/ViPERDSP.git"
 )
 
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
     cd "$srcdir/viper4linux"
@@ -43,7 +44,6 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_TESTING=ON \
-        -DVIPER_BUILD_DEVELOPER_TESTS=OFF \
         -DVIPER_ENABLE_SYSTEM_INSTALL=ON \
         -DVIPER_SYSTEM_INSTALL_LAYOUT=arch \
         -DVIPER_SYSTEM_PACKAGE_NAME="$pkgname"
