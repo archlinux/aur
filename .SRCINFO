@@ -1,0 +1,15 @@
+pkgbase = anytls-go-bin
+	pkgdesc = A reference implementation of proxy protocol to mitigate the issue of TLS in TLS.
+	pkgver = 0.0.13
+	pkgrel = 1
+	url = https://github.com/anytls/anytls-go
+	arch = x86_64
+	arch = aarch64
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/anytls/anytls-go/releases/download/v0.0.13/anytls_0.0.13_linux_amd64.zip
+	sha256sums_x86_64 = 7e80fc099ea54a71110d256dd60648c47c63c70a3c499eb1f6d7aaa4edb7016f
+	source_aarch64 = https://github.com/anytls/anytls-go/releases/download/v0.0.13/anytls_0.0.13_linux_arm64.zip
+	sha256sums_aarch64 = 88cb762c3c8eb56b46a2d8d6feab9c0858655192143fc164874229499246a956
+
+pkgname = anytls-go-bin
