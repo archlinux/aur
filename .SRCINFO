@@ -1,16 +1,16 @@
 pkgbase = whop-bin
 	pkgdesc = Local-first terminal connection deck with SSH, sessions, and automation
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/vvinnpy/whop
 	license = MIT
 	conflicts = whop
 	provides = whop
 	arch = aarch64
-	source_aarch64 = whop-bin_0.2.5_aarch64.tar.gz::https://github.com/vvinnpy/whop/releases/download/v0.2.5/whop_0.2.5_linux_arm64.tar.gz
-	sha256sums_aarch64 = 257174cd1ee50d0847e999b2662996d5e77b94f3ad586b8e1d0f54608749140b
+	source_aarch64 = whop-bin_0.2.6_aarch64.tar.gz::https://github.com/vvinnpy/whop/releases/download/v0.2.6/whop_0.2.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = d9dac2c1475a95da1b47b70e93d23786771fb883be8f19e911415b4ec707fd89
 	arch = x86_64
-	source_x86_64 = whop-bin_0.2.5_x86_64.tar.gz::https://github.com/vvinnpy/whop/releases/download/v0.2.5/whop_0.2.5_linux_amd64.tar.gz
-	sha256sums_x86_64 = 68478bc26d916278ce30694189c8571c294f2dd7a59fecb2952c6a7544df37b8
+	source_x86_64 = whop-bin_0.2.6_x86_64.tar.gz::https://github.com/vvinnpy/whop/releases/download/v0.2.6/whop_0.2.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 023c6f716c1cc5c288590a3d28d6de02efdd21b45035526c02519b0dc3e8ce5d
 	
 pkgname = whop-bin
