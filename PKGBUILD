@@ -2,13 +2,13 @@
 
 pkgname=python-torch-einops-utils
 _name=torch-einops-utils
-pkgver=0.2.6
+pkgver=0.2.8
 pkgrel=1
-# Upstream does not tag releases. Pin the commit that set version 0.2.6.
-_commit=4e720ee5cc66d653ba573d22cc87a11bde39f791
+# Upstream does not tag releases. Pin the commit that set version 0.2.8.
+_commit=57c571ed0b3e1734ac8d6d8bb95d48890e742a17
 pkgdesc="PyTorch and einops tensor utilities used by lucidrains' model libraries"
 arch=('any')
-url="https://codeberg.org/lucidrains/torch-einops-utils"
+url="https://github.com/lucidrains/torch-einops-utils"
 license=('MIT')
 depends=(
     'python'
@@ -27,15 +27,15 @@ checkdepends=(
     'python-setuptools'
 )
 source=("$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('06104f85babd5ebcb3d6abb40f131c0d39bfb7da2474eb31eaa6a68fabbc0f63')
+sha256sums=('98f59e9f190f83cbb85f796563dd8f070a279ed8d9772b73ca3f5bb4d4df63ae')
 
 build() {
-    cd "$_name"
+    cd "$_name-$_commit"
     python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "$_name"
+    cd "$_name-$_commit"
     local site
     site=$(python -c 'import sysconfig; print(sysconfig.get_path("purelib"))')
     rm -rf "$srcdir/check-root" "$srcdir/check-suite"
@@ -56,7 +56,7 @@ PY
 }
 
 package() {
-    cd "$_name"
+    cd "$_name-$_commit"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
