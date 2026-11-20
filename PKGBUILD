@@ -2,9 +2,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later WITH LicenseRef-PanicButton-app-store-exception
 #
 # Template for the AUR package panic-button-bin, filled in by release.yml
-# (0.2.0, 349f59d1ba146b8261a37514e762014d26c089094dd3df9ee7d3037251b48600, 7de16be1774008ece12e623cd2f2711bfb11063db7b7d875cd15ffc375b7e0f3).
+# (0.2.1, 4309b7ed0d6a0038cf47b002a52772cc8d4ec79b143d1465a62024332e662d11, 7de16be1774008ece12e623cd2f2711bfb11063db7b7d875cd15ffc375b7e0f3).
 pkgname=panic-button-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Staff panic alarm: call colleagues for help from this computer (desktop app)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('panic-button')
 source=("panic-button-desktop_${pkgver}_amd64.deb::https://github.com/ohtf/panic-button/releases/download/v${pkgver}/panic-button-desktop_${pkgver}_amd64.deb"
         "LICENSE-EXCEPTIONS-${pkgver}.md::https://raw.githubusercontent.com/ohtf/panic-button/v${pkgver}/LICENSE-EXCEPTIONS.md")
 noextract=("panic-button-desktop_${pkgver}_amd64.deb")
-sha256sums=('349f59d1ba146b8261a37514e762014d26c089094dd3df9ee7d3037251b48600'
+sha256sums=('4309b7ed0d6a0038cf47b002a52772cc8d4ec79b143d1465a62024332e662d11'
             '7de16be1774008ece12e623cd2f2711bfb11063db7b7d875cd15ffc375b7e0f3')
 
 package() {

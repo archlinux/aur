@@ -1,6 +1,6 @@
 pkgbase = panic-button-bin
 	pkgdesc = Staff panic alarm: call colleagues for help from this computer (desktop app)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/ohtf/panic-button
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = panic-button-bin
 	depends = hicolor-icon-theme
 	provides = panic-button
 	conflicts = panic-button
-	noextract = panic-button-desktop_0.2.0_amd64.deb
-	source = panic-button-desktop_0.2.0_amd64.deb::https://github.com/ohtf/panic-button/releases/download/v0.2.0/panic-button-desktop_0.2.0_amd64.deb
-	source = LICENSE-EXCEPTIONS-0.2.0.md::https://raw.githubusercontent.com/ohtf/panic-button/v0.2.0/LICENSE-EXCEPTIONS.md
-	sha256sums = 349f59d1ba146b8261a37514e762014d26c089094dd3df9ee7d3037251b48600
+	noextract = panic-button-desktop_0.2.1_amd64.deb
+	source = panic-button-desktop_0.2.1_amd64.deb::https://github.com/ohtf/panic-button/releases/download/v0.2.1/panic-button-desktop_0.2.1_amd64.deb
+	source = LICENSE-EXCEPTIONS-0.2.1.md::https://raw.githubusercontent.com/ohtf/panic-button/v0.2.1/LICENSE-EXCEPTIONS.md
+	sha256sums = 4309b7ed0d6a0038cf47b002a52772cc8d4ec79b143d1465a62024332e662d11
 	sha256sums = 7de16be1774008ece12e623cd2f2711bfb11063db7b7d875cd15ffc375b7e0f3
 
 pkgname = panic-button-bin
