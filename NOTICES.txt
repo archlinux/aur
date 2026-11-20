@@ -2,13 +2,13 @@ vtium-fonts: notices
 
 vtium-fonts installs the font sets of vtium's catalog that the console packages leave out, and copies of the fonts that the sets name and that Arch does not package. This file names every font that a set of the catalog names: where the font comes from, its version, its copyright line, its license, and its Reserved Font Name or the attribution its license asks for. The copyright lines are quoted from the font files or from the license files that the fonts' projects publish.
 
-The font sets and layers are text files of vtium, under the MIT License in LICENSE, and COPYING holds vtium's own notices. For each font that vtium-fonts carries, the full text of its license is in this folder. A font that another Arch package installs keeps its license text in that package's folder under /usr/share/licenses.
+The font sets and layers are text files of vtium, under the MIT License in LICENSE, and COPYING holds vtium's own notices. For each font that vtium-fonts carries, the full text of its license is in this folder, and for Unscii-8, which is in the public domain, upstream's own statement of that. A font that another Arch package installs keeps its license text in that package's folder under /usr/share/licenses.
 
 
 Fonts that vtium-fonts carries
 ==============================
 
-vtium-fonts installs these files unchanged in /usr/share/fonts/vtium.
+vtium-fonts installs these files in /usr/share/fonts/vtium. It installs the first three unchanged, and it builds the fourth, unscii-8.bdf, from upstream's own file.
 
 Px437 IBM VGA 9x16
   The set: ibm-vga, which names the font by its family.
@@ -31,6 +31,14 @@ Tiny5 Mono
   Version: 3.000, as the file's FONT_VERSION property states.
   Copyright: "Copyright 2026 The Tiny5 Mono Project Authors (https://github.com/Gissio/font_Tiny5Mono)", as the file's COPYRIGHT property states.
   License: SIL Open Font License 1.1 (OFL-1.1), in OFL-1.1.txt. The repository's OFL.txt holds the same license under the placeholder copyright line of the template it was made from, so OFL-1.1.txt holds the license text alone.
+  Reserved Font Name: none.
+
+Unscii-8 2.1
+  The set: unscii-icons, which the console packages install and which names the file by its path, /usr/share/fonts/vtium/unscii-8.bdf.
+  The file: unscii-8.bdf. The recipe builds it from unscii-8.hex, http://viznut.fi/unscii/unscii-8.hex, with the script hex2bdf.pl from upstream's source archive, http://viznut.fi/unscii/unscii-2.1-src.tar.gz. It runs the line that upstream's Makefile runs: ./hex2bdf.pl --version=2.1 --variant='8' --rows=8 < unscii-8.hex. The script keeps the 2,840 glyphs from U+0000 to U+FFFF with their pixels unchanged, and leaves out the 351 glyphs above U+FFFF, most of them Symbols for Legacy Computing at U+1FB00, as upstream's own PCF font does.
+  Version: 2.1, as the file's FONT_VERSION property states.
+  Copyright: unscii.txt in the source archive says "Everything made by me (viznut) is in the Public Domain." The file's COPYRIGHT property is empty, because upstream's line passes no copyright.
+  License: public domain, in unscii.txt, which is upstream's own text. unscii.txt also says that hex2bdf.pl comes from the Unifont project and is under the GPL. The recipe runs the script to build the font, and vtium-fonts does not install the script.
   Reserved Font Name: none.
 
 
@@ -198,13 +206,3 @@ The icon sets whose licenses ask for attribution
   Font Awesome: icons from Font Awesome Free by Fonticons, Inc., https://fontawesome.com, "Copyright (c) 2022 Fonticons, Inc.", licensed under Creative Commons Attribution 4.0 International (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/. Nerd Fonts scales and places the icons to fit one character cell.
   Codicons: https://github.com/microsoft/vscode-codicons, "Copyright (c) Microsoft Corporation.", licensed under CC BY 4.0, https://creativecommons.org/licenses/by/4.0/. Nerd Fonts scales and places the icons to fit one character cell.
   Nerd Fonts' license-audit.md lists the license of every other icon set: MIT, Apache-2.0 or OFL-1.1, apart from Font Logos.
-
-
-Unscii-8, which vtium-fonts does not carry
-==========================================
-
-Unscii-8 2.1
-  The set: unscii-icons, which the console packages install and which names a BDF file at /usr/share/fonts/vtium/unscii-8.bdf. vtium-fonts installs no file there, so vtium's built-in font, which holds Unscii-8's 8×8 glyphs, draws the set's text.
-  Source: http://viznut.fi/unscii/, which publishes the font as unscii-8.hex.
-  Copyright: unscii.txt in unscii-2.1-src.tar.gz says "Everything made by me (viznut) is in the Public Domain."
-  License: public domain.

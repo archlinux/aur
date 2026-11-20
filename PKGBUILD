@@ -11,13 +11,15 @@
 # font. Where Arch packages the font, the recipe depends on that package.
 # Where Arch does not, the recipe carries a copy of the upstream file,
 # pinned by its URL and SHA-256, whose license lets anyone pass it on. It
-# installs those copies unchanged in /usr/share/fonts/vtium. The font
-# helper looks for a font that a set names by its family in
-# /usr/share/fonts and /usr/local/share/fonts, and opens a font that a set
-# names by its path at that path. It leaves out a font the machine lacks,
-# and the next source that holds a character draws it. vtium draws a font
-# only once the person activates it with vtium-config, so the fonts this
-# package brings wait for that step.
+# installs those copies in /usr/share/fonts/vtium, unchanged apart from
+# Unscii-8, which upstream publishes in a form the font helper does not read
+# and which the recipe converts to BDF. The font helper looks for a font
+# that a set names by its family in /usr/share/fonts and
+# /usr/local/share/fonts, and opens a font that a set names by its path at
+# that path. It leaves out a font the machine lacks, and the next source
+# that holds a character draws it. vtium draws a font only once the person
+# activates it with vtium-config, so the fonts this package brings wait for
+# that step.
 #
 # The sets come from a release tag of vtium, so the recipe is a release
 # recipe: bump-release moves its _tag with the other release recipes. The
@@ -73,11 +75,15 @@
 #     tiny5 opens the file at /usr/local/share/fonts/misc/Tiny5Mono.bdf, in
 #     a folder that belongs to the machine's administrator and that no
 #     package installs into, so tiny5 does not find this copy.
-#
-# The console packages' set unscii-icons names Unscii-8 as a BDF file,
-# /usr/share/fonts/vtium/unscii-8.bdf. The recipe installs no file there,
-# so vtium's built-in font, which holds Unscii-8's 8×8 glyphs, draws that
-# set's text.
+#   - unscii-8.bdf, Unscii-8 2.1, the font of the set unscii-icons that the
+#     console packages install. Upstream publishes Unscii-8 as a .hex file,
+#     which the font helper does not read, so build() converts it to BDF
+#     with upstream's own script and command line, as upstream's Makefile
+#     builds its PCF font. The script, hex2bdf.pl, comes from upstream's
+#     source archive unscii-2.1-src.tar.gz and needs only perl. The archive
+#     does not hold unscii-8.hex itself, so the recipe downloads both.
+#     viznut.fi's https certificate fails to verify, so both files come
+#     over http, and their SHA-256 pins protect them.
 #
 # NOTICES.txt names every font that a set of the catalog names, with its
 # source, version, copyright line, license, and Reserved Font Name or the
@@ -107,9 +113,10 @@ arch=('any')
 url='https://github.com/vtium/vtium'
 # The licenses of what the package itself holds: MIT for the font sets and
 # layers, CC-BY-SA-4.0 for Px437 IBM VGA 9x16, the Unlicense for Glass TTY
-# VT220, and OFL-1.1 for Tiny5 Mono. The fonts it depends on keep their
-# licenses in their own packages, and NOTICES.txt names them.
-license=('MIT' 'CC-BY-SA-4.0' 'OFL-1.1' 'Unlicense')
+# VT220, OFL-1.1 for Tiny5 Mono, and the public domain for Unscii-8. The
+# fonts it depends on keep their licenses in their own packages, and
+# NOTICES.txt names them.
+license=('MIT' 'CC-BY-SA-4.0' 'OFL-1.1' 'Unlicense' 'LicenseRef-Public-Domain')
 depends=('adobe-source-code-pro-fonts' 'kbd' 'noto-fonts' 'noto-fonts-emoji'
          'terminus-font' 'ttf-cascadia-code' 'ttf-dejavu' 'ttf-fira-code'
          'ttf-hack' 'ttf-ibm-plex' 'ttf-jetbrains-mono' 'ttf-monoid')
@@ -122,7 +129,8 @@ optdepends=('noto-fonts-cjk: Noto Sans CJK, for the sets noto-cjk-jp, noto-cjk-k
             'ttf-nerd-fonts-symbols-mono: Symbols Nerd Font Mono, for the icons of the layers nerd-symbols and nerd-symbols-small'
             'ttf-sourcecodepro-nerd: SauceCodePro Nerd Font Mono, for the set sauce-code-pro'
             'ttf-terminus-nerd: Terminess Nerd Font Mono, for the set terminess')
-makedepends=('git')
+# perl runs Unscii's hex2bdf.pl in build().
+makedepends=('git' 'perl')
 # The sets and layers that make install-fonts installs. pacman keeps a
 # user's edits to these files when it upgrades the package.
 backup=('etc/vtium/fonts/classic/dec-vt220.vtfrit'
@@ -171,6 +179,8 @@ source=("vtium::git+https://github.com/vtium/vtium.git#tag=${_tag}?signed"
         'https://github.com/svofski/glasstty/raw/845410289199833ca0d5d7697d06e1780bfe3715/Glass_TTY_VT220.ttf'
         'glasstty-LICENSE::https://github.com/svofski/glasstty/raw/845410289199833ca0d5d7697d06e1780bfe3715/LICENSE'
         'https://github.com/Gissio/font_Tiny5Mono/raw/7d30f9e887fdb29e0b951e92493822afba5f70a7/fonts/bdf/Tiny5Mono.bdf'
+        'http://viznut.fi/unscii/unscii-8.hex'
+        'http://viznut.fi/unscii/unscii-2.1-src.tar.gz'
         'NOTICES.txt')
 noextract=('oldschool_pc_font_pack_v2.2_linux.zip')
 sha256sums=('SKIP'
@@ -178,7 +188,9 @@ sha256sums=('SKIP'
             'cc4d515abd736808f429f2df2fe950b6c13468c7a889a7032d074aa05f246958'
             '88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd'
             '33a935687277817534ddcc1decf586d977cee211550f611ba4bb4365e99755d3'
-            'f0a42037211998c90a782b84d2771aba0cd770484b619763668bb1ae3c0008a3')
+            '03094f7fbab7085cf6a6b624cee61e47e71ce5d0c2f308c2f4436afdc17f776c'
+            '4d1215d495e49d005ae70828ec1529e997049b9a7f152b9439d78c7e70c65b57'
+            '7f3ce15babc1dd773537a78b9f108a0ddb80146ce7049cad22143999e62dee78')
 validpgpkeys=('33F9B54FD2A4B6A4110749B3BA464FC9847A832A') # Aaron Bockelie <aaronsb@gmail.com>
 
 # prepare() takes Px437 IBM VGA 9x16 and the pack's license, LICENSE.TXT,
@@ -188,6 +200,23 @@ prepare() {
   mkdir -p "$srcdir/px437"
   bsdtar -xf "$srcdir/oldschool_pc_font_pack_v2.2_linux.zip" -C "$srcdir/px437" \
     'ttf - Px (pixel outline)/Px437_IBM_VGA_9x16.ttf' LICENSE.TXT
+}
+
+# build() converts Unscii-8 from upstream's .hex file to BDF with the
+# command that upstream's Makefile runs for unscii-8.pcf, which then pipes
+# the BDF font to bdftopcf. The script reads the hex file on its standard
+# input and writes the BDF font to its standard output, and it opens no
+# other file. It keeps the glyphs from U+0000 to U+FFFF and leaves out the
+# 351 glyphs above them, most of them Symbols for Legacy Computing, as
+# upstream's own PCF font does. The font names upstream's version, 2.1, and
+# the variant 8, and its COPYRIGHT property is empty, because the command
+# passes no copyright string. The script prints a warning from perl's
+# Getopt::Long, because its short options -v and -V collide. The long
+# options that the recipe passes parse as they should.
+build() {
+  cd "$srcdir/unscii-2.1-src"
+  ./hex2bdf.pl --version=2.1 --variant='8' --rows=8 < "$srcdir/unscii-8.hex" \
+    > "$srcdir/unscii-8.bdf"
 }
 
 # make install-fonts installs the sets of the category folders classic,
@@ -205,13 +234,16 @@ prepare() {
 # LICENSE and COPYING, which holds vtium's own notices, NOTICES.txt, and
 # the text of each license of a carried font under the name of its SPDX
 # identifier. The OFL's text is the one vtium-font keeps beside its own
-# fonts. The license texts of the fonts in other packages stay with those
-# packages.
+# fonts. Unscii-8 has no license text, because it is in the public domain,
+# so the recipe installs unscii.txt from upstream's source archive, whose
+# introduction states that. The license texts of the fonts in other
+# packages stay with those packages.
 package() {
   make -C "$srcdir/vtium" PREFIX=/usr install-fonts DESTDIR="$pkgdir"
   install -Dm644 -t "$pkgdir/usr/share/fonts/vtium" \
     "$srcdir/px437/ttf - Px (pixel outline)/Px437_IBM_VGA_9x16.ttf" \
-    "$srcdir/Glass_TTY_VT220.ttf" "$srcdir/Tiny5Mono.bdf"
+    "$srcdir/Glass_TTY_VT220.ttf" "$srcdir/Tiny5Mono.bdf" \
+    "$srcdir/unscii-8.bdf"
   local licenses="$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 -t "$licenses" \
     "$srcdir/vtium/LICENSE" "$srcdir/vtium/COPYING" "$srcdir/NOTICES.txt"
@@ -219,4 +251,5 @@ package() {
   install -Dm644 "$srcdir/glasstty-LICENSE" "$licenses/Unlicense.txt"
   install -Dm644 "$srcdir/vtium/crates/vtium-font/data/OFL-1.1.txt" \
     "$licenses/OFL-1.1.txt"
+  install -Dm644 "$srcdir/unscii-2.1-src/unscii.txt" "$licenses/unscii.txt"
 }
