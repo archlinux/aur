@@ -9,10 +9,10 @@
 pkgname=mimo-desktop-bin
 # Version from the deb control archive. A Debian revision is part of the
 # upstream release when present ("26.1107.70703-211"); Arch spells "-" as "_".
-pkgver=26.1116.161705
-pkgrel=5
+pkgver=26.1120.201429
+pkgrel=1
 # CDN file names omit the Debian revision.
-_srcver=26.1116.161705
+_srcver=26.1120.201429
 _appdir='Xiaomi MiMo'
 pkgdesc='Xiaomi MiMo desktop client with built-in AI assistant (official Linux build)'
 arch=('x86_64')
@@ -44,7 +44,7 @@ source_x86_64=("XiaomiMiMo-${_srcver}-x64.deb::https://mimocode-cdn.xiaomimimo.c
 noextract=("XiaomiMiMo-${_srcver}-x64.deb")
 sha256sums=('f5bd330f1ba5e2f17c2a1a0cbaeff95e9b279b92a0b0b55013b1e4290b5294d4'
             'e05c5d8eb276bb322f6134699c5c6eb5f43f2156953d1f9c704a109cd1c366a6')
-sha256sums_x86_64=('36a7eb261a4101005907dd9304bc2c22ded8eb46095359efc073cb0340cbe373')
+sha256sums_x86_64=('fd02640cdecbad9b56c9e81aebee8807453f82233bcae1ea9c44ea272b23a4b4')
 
 build() {
   # Upstream serialises its built-in agent prompts (four ~37 KiB copies) plus
@@ -97,14 +97,14 @@ package() {
 
   cp -a "${_extractdir}/opt/${_appdir}" "${pkgdir}/opt/"
 
-  # Upstream ships a single 1024x1024 PNG, but hicolor-icon-theme's index.theme
-  # only lists directories up to 512x512, so a launcher asking for any of the
-  # usual sizes finds nothing and falls back to a missing icon. Derive the
-  # indexed sizes from the source image and keep the original as well.
-  _icon="${_extractdir}/usr/share/icons/hicolor/1024x1024/apps/xiaomi-mimo-desktop.png"
+  # Upstream ships a single 512x512 PNG (it used to be 1024x1024), and
+  # hicolor-icon-theme's index.theme only lists directories up to 512x512, so
+  # a launcher asking for any of the usual sizes finds nothing and falls back
+  # to a missing icon. Derive the indexed sizes from the source image.
+  _icon="${_extractdir}/usr/share/icons/hicolor/512x512/apps/xiaomi-mimo-desktop.png"
   _badge_icon "${_icon}" \
-    "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png" 1024
-  for _size in 512 256 128 64 48 32 24 16; do
+    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png" 512
+  for _size in 256 128 64 48 32 24 16; do
     _badge_icon "${_icon}" \
       "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png" "${_size}"
   done
