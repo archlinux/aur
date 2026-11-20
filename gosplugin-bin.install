@@ -1,3 +1,31 @@
+# Апстримовские preinst/prerm в .deb не делают ничего, кроме остановки
+# запущенного ядра плагина перед установкой/удалением - воспроизводим то же
+# самое. Шаблон поиска взят оттуда же (полный путь, чтобы не зацепить чужой
+# процесс с похожим именем).
+_stop_plugin() {
+    local pattern='^/opt/iitrust/gosuslugi_plugin/bin/gosuslugi_plugin'
+    local sig
+    pgrep -f "$pattern" >/dev/null 2>&1 || return 0
+    echo "  Останавливаю запущенное ядро Госплагина..."
+    for sig in INT TERM KILL; do
+        pgrep -f "$pattern" >/dev/null 2>&1 || return 0
+        pkill --signal "$sig" -f "$pattern" >/dev/null 2>&1
+        sleep 1
+    done
+}
+
+pre_install() {
+    _stop_plugin
+}
+
+pre_upgrade() {
+    _stop_plugin
+}
+
+pre_remove() {
+    _stop_plugin
+}
+
 post_install() {
     cat <<'EOF'
 

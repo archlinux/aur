@@ -4,17 +4,20 @@
 # с электронной подписью на Госуслугах. Современная замена устаревшему IFCPlugin
 # (тот - отдельный продукт, может стоять параллельно, конфликта нет).
 #
-# Апстрим не публикует ни .rpm, ни «голый» .deb и ни apt-репозиторий - только
-# самораспаковывающийся инсталлятор Gosplugin_Linux-Debian_Installer.deb.sh
+# Апстрим не публикует ни .rpm, ни «голый» .deb, ни apt-репозиторий - только
+# zip с самораспаковывающимся инсталлятором Gosplugin_Linux-Debian_Installer.deb.sh
 # (bash-скрипт с приклеенным tar-архивом после маркера PAYLOAD:, внутри один
-# gosuslugi-plugin_<версия>_amd64.deb). Поэтому версия здесь зафиксирована
-# вручную и обновляется локальным check-update.sh (не входит в AUR-репозиторий),
-# который перекачивает инсталлятор, вытаскивает версию из имени .deb и вызывает
-# updpkgsums. В самом PKGBUILD никакой сетевой логики во время сборки нет.
+# gosuslugi-plugin_<версия>_amd64.deb). Версии в URL тоже нет, поэтому она
+# зафиксирована здесь вручную и обновляется локальным check-update.sh (в
+# AUR-репозиторий не входит): он качает zip, достаёт версию из имени .deb и
+# вызывает updpkgsums. В самом PKGBUILD никакой сетевой логики при сборке нет.
+#
+# ВНИМАНИЕ: по старому адресу .../Gosplugin_Linux-Debian_Installer.deb.sh до сих
+# пор лежит протухшая сборка 1.3.19.0 (март 2025). Актуальная раздача - .deb.zip.
 
 pkgname=gosplugin-bin
 _debname=gosuslugi-plugin
-pkgver=1.3.19.0
+pkgver=1.3.43.1
 pkgrel=1
 pkgdesc="Госплагин - локальный модуль для работы с электронной подписью на портале Госуслуг (native messaging host для браузерного расширения)"
 arch=('x86_64')
@@ -24,11 +27,11 @@ license=('LicenseRef-proprietary')
 provides=("${_debname}=${pkgver}")
 conflicts=("${_debname}")
 
-# Сборка полностью самодостаточная: своя Qt 5.11, boost 1.83, OpenSSL 3, xerces/xalan
-# и прочее лежат в /opt/iitrust/gosuslugi_plugin/lib и подхватываются через
-# LD_LIBRARY_PATH в bin/gosuslugi_plugin.sh. Снаружи нужны только те библиотеки,
-# которые реально остаются неразрешёнными (посчитано по DT_NEEDED основного
-# бинарника, ядра Qt и xcb-плагина платформы).
+# Сборка полностью самодостаточная: своя Qt 5.11, boost, OpenSSL 3,
+# xerces/xalan, даже libxcb-util лежат в /opt/iitrust/gosuslugi_plugin/lib и
+# подхватываются через LD_LIBRARY_PATH в bin/gosuslugi_plugin.sh. Снаружи нужно
+# только то, что реально остаётся неразрешённым (посчитано по DT_NEEDED всех ELF
+# в бандле за вычетом того, что он несёт с собой).
 depends=(
   'glibc'
   'gcc-libs'
@@ -46,7 +49,6 @@ depends=(
   'libxi'
   'libxrender'
   'pcsclite'
-  'xcb-util'
   'zlib'
 )
 
@@ -63,10 +65,11 @@ options=('!strip' '!debug' '!lto')
 
 install="${pkgname}.install"
 
-_installer="Gosplugin_Linux-Debian_Installer-${pkgver}.deb.sh"
-source=("${_installer}::https://gu-st.ru/content/Gosplugin/Gosplugin_Linux-Debian_Installer.deb.sh")
-noextract=("${_installer}")
-sha256sums=('f9de0a3eebc853c10133d040d9ab39963b509dff3ea3ca63621a8e163a6ce3f5')
+# zip распаковывает сам makepkg, так что в $srcdir оказывается .sh-инсталлятор
+# с фиксированным (без версии) именем.
+_installer="Gosplugin_Linux-Debian_Installer.deb.sh"
+source=("Gosplugin_Linux-Debian_Installer-${pkgver}.deb.zip::https://gu-st.ru/content/Gosplugin/Gosplugin_Linux-Debian_Installer.deb.zip")
+sha256sums=('f7ab21f9ef21b2090a189ff7df2147074f4252e1255930df689d3f31acc258f2')
 
 package() {
   cd "${srcdir}"
@@ -93,9 +96,11 @@ package() {
   fi
   echo "  -> Найден пакет: $(basename "${_deb}")"
 
-  # 2. Разворачиваем data.tar.* прямо в $pkgdir. Maintainer-скриптов
-  #    (postinst и т.п.) в .deb нет - только md5sums и control, так что
-  #    установка сводится к раскладке файлов.
+  # 2. Разворачиваем data.tar.* прямо в $pkgdir (в 1.3.43.1 это .xz, в прежних
+  #    сборках был .gz - перебираем варианты). Из maintainer-скриптов в .deb
+  #    есть только preinst/prerm, и оба лишь прибивают запущенный процесс
+  #    плагина - это воспроизведено в ${pkgname}.install, раскладка файлов
+  #    ничего больше не требует.
   echo "  -> Распаковка data.tar..."
   bsdtar -O -xf "${_deb}" data.tar.gz | bsdtar -xf - -C "${pkgdir}" 2>/dev/null || \
   bsdtar -O -xf "${_deb}" data.tar.xz | bsdtar -xf - -C "${pkgdir}" 2>/dev/null || \
@@ -111,17 +116,7 @@ package() {
     rm -rf "${pkgdir}/usr/lib64"
   fi
 
-  # 4. xcb-плагин платформы Qt тянет libxcb-util.so.0, а в Arch пакет xcb-util
-  #    (0.4.x) даёт только libxcb-util.so.1. Нужный плагину символ
-  #    (xcb_aux_create_gc) в новой версии на месте, поэтому кладём compat-симлинк
-  #    в собственный lib-каталог плагина - он первым в LD_LIBRARY_PATH и
-  #    на систему не влияет. Без этого не грузится платформа xcb, и плагин
-  #    падает при попытке показать окно ввода пароля к контейнеру.
-  echo "  -> Добавление compat-симлинка libxcb-util.so.0 -> libxcb-util.so.1..."
-  ln -sf /usr/lib/libxcb-util.so.1 \
-     "${pkgdir}/opt/iitrust/gosuslugi_plugin/lib/libxcb-util.so.0"
-
-  # 5. Манифесты native messaging host уже разложены самим .deb:
+  # 4. Манифесты native messaging host уже разложены самим .deb:
   #      /etc/opt/chrome/native-messaging-hosts  - Chrome
   #      /etc/chromium/native-messaging-hosts    - Chromium, Яндекс.Браузер, Vivaldi
   #      /usr/lib/mozilla/native-messaging-hosts - Firefox
