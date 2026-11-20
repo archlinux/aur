@@ -1,6 +1,6 @@
 pkgbase = zmcl-bin
 	pkgdesc = A small native Minecraft launcher built on Project Z (development preview)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/zmcl
 	arch = x86_64
@@ -12,19 +12,19 @@ pkgbase = zmcl-bin
 	depends = fontconfig>=2.17.0
 	depends = hicolor-icon-theme
 	depends = curl
-	depends = python
+	depends = python>=3.8
 	optdepends = libsecret: Store Microsoft account tokens using a desktop Secret Service
 	optdepends = java-runtime: Use an existing Java runtime instead of downloading a managed runtime
 	optdepends = openssl: Verify official Horizon launcher signatures
 	optdepends = xorg-xwayland: Run the native X11 GUI in a Wayland session
 	optdepends = ttf-font: Render the native GUI text
-	provides = zmcl=0.1.1
+	provides = zmcl=0.1.2
 	conflicts = zmcl
 	options = !strip
 	options = !debug
-	source = zmcl-0.1.1-linux-x86_64.tar.gz::https://github.com/LIghtJUNction/zmcl/releases/download/v0.1.1/zmcl-0.1.1-linux-x86_64.tar.gz
+	source = zmcl-0.1.2-linux-x86_64.tar.gz::https://github.com/LIghtJUNction/zmcl/releases/download/v0.1.2/zmcl-0.1.2-linux-x86_64.tar.gz
 	source = zmcl.desktop
-	sha256sums = c61a83ce918d7fe3d58a080bc41bc1c5f301c259396cc4a96a5acf81c3ee9f0b
+	sha256sums = 5cb7945cb5888d1ec02d84e55a4b91576161ddb6fe6c3a6be2644c8f058fb3c4
 	sha256sums = 62d26944cd3c4aaaf2dd68668332527883b02bca734c893b510996ba19589082
 
 pkgname = zmcl-bin

@@ -1,13 +1,13 @@
 # Maintainer: LIghtJUNction
 # SPDX-License-Identifier: MIT
 pkgname=zmcl-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='A small native Minecraft launcher built on Project Z (development preview)'
 arch=('x86_64')
 url='https://github.com/LIghtJUNction/zmcl'
 license=('MIT')
-depends=('glibc>=2.39' 'libgcc' 'libx11' 'freetype2' 'fontconfig>=2.17.0' 'hicolor-icon-theme' 'curl' 'python')
+depends=('glibc>=2.39' 'libgcc' 'libx11' 'freetype2' 'fontconfig>=2.17.0' 'hicolor-icon-theme' 'curl' 'python>=3.8')
 optdepends=(
   'libsecret: Store Microsoft account tokens using a desktop Secret Service'
   'java-runtime: Use an existing Java runtime instead of downloading a managed runtime'
@@ -23,7 +23,7 @@ source=(
   'zmcl.desktop'
 )
 sha256sums=(
-  'c61a83ce918d7fe3d58a080bc41bc1c5f301c259396cc4a96a5acf81c3ee9f0b'
+  '5cb7945cb5888d1ec02d84e55a4b91576161ddb6fe6c3a6be2644c8f058fb3c4'
   '62d26944cd3c4aaaf2dd68668332527883b02bca734c893b510996ba19589082'
 )
 
