@@ -1,6 +1,6 @@
 pkgbase = bayestraits
 	pkgdesc = A computer package for performing analyses of trait evolution among groups of species for which a phylogeny or sample of phylogenies is available
-	pkgver = 5.0.3
+	pkgver = 5.0.4
 	pkgrel = 1
 	url = http://www.evolution.reading.ac.uk/BayesTraits.html
 	arch = x86_64
