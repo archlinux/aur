@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <imlonghao@archlinuxcn.org>
 
 pkgname=vykar
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='Fast, encrypted, deduplicated backups in Rust'
 url='https://github.com/borgbase/vykar'
@@ -10,7 +10,7 @@ makedepends=('cargo' 'cairo' 'pango' 'atk')
 depends=('glibc' 'libgcc' 'libstdc++' 'freetype2' 'gtk3' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'xdotool')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('a0f25c3f41203612c89697ad82331470dfc2059455f0406d27d11dbabba5625e42b3badf85bdd40bf9838626d3070bf5967d798ecc841b223b232dd5ca54e1ed')
+b2sums=('eb270721d0fc726ea0e8a27e614e917ab6baa81c4a0986e4edfab1993a91ce68f808ea7f06ab093bee8b8754b5003b5b699219425d2e078edb62f5ac08df9803')
 
 prepare() {
     cd "$pkgname-$pkgver"
