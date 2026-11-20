@@ -1,0 +1,15 @@
+pkgbase = cyclonedx-cli
+	pkgdesc = CycloneDX CLI tool for SBOM analysis, merging, diffs and format conversions
+	pkgver = 0.33.1
+	pkgrel = 1
+	url = https://github.com/CycloneDX/cyclonedx-cli
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = dotnet-sdk
+	makedepends = git
+	options = !strip
+	options = !debug
+	source = cyclonedx-cli::git+https://github.com/CycloneDX/cyclonedx-cli#tag=v0.33.1
+	b2sums = 8e5ae27c19bd5fc133f0a17793ebc84aff210032e575a8c8d071262457b4afcd8998507ddded2a9144319541be925143b5c2e42108e880948193de5f37bce163
+
+pkgname = cyclonedx-cli

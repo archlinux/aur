@@ -1,0 +1,5 @@
+/cyclonedx-cli
+/pkg
+/src
+*.log
+*.zst
