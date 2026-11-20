@@ -1,6 +1,6 @@
 pkgbase = moarvm
 	pkgdesc = A VM with adaptive optimization and JIT compilation, built for Rakudo
-	pkgver = 2026.04
+	pkgver = 2026.11
 	pkgrel = 1
 	url = http://moarvm.com/
 	changelog = Changelog
@@ -11,10 +11,10 @@ pkgbase = moarvm
 	makedepends = perl>=5.10
 	depends = zstd
 	options = !makeflags
-	source = https://moarvm.com/releases/MoarVM-2026.04.tar.gz
-	source = https://moarvm.com/releases/MoarVM-2026.04.tar.gz.asc
+	source = https://moarvm.com/releases/MoarVM-2026.11.tar.gz
+	source = https://moarvm.com/releases/MoarVM-2026.11.tar.gz.asc
 	validpgpkeys = 2832BDB33241A14EFCCA61470F09888FE017A4C2
-	sha256sums = 65dc2242c9e71a52b85e636c1779408127910d51ecd462fb8c7376dc7a97917f
-	sha256sums = 8ae42b97b6124eef6508b7b9863b2974cd362aa69cf094a3ecafb6a76dfc217a
+	sha256sums = 75d3ebf889351294fab7222ad4eb966c74cefbef4cbe0073e397083394a663d4
+	sha256sums = b7c25ecb32de76cc57194203a210cc61b69f179fb5d982b718a919e9e9f1299c
 
 pkgname = moarvm
