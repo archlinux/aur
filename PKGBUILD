@@ -2,7 +2,7 @@
 
 pkgname=faodel
 pkgver=1.2306.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Flexible, Asynchronous, Object Data-Exchange Libraries for HPC data management"
 arch=('x86_64')
 url="https://github.com/sandialabs/$pkgname"
@@ -55,8 +55,14 @@ prepare() {
   sed -i 's/MPI_Init(&argc, &argv);/int provided;\n  MPI_Init_thread(\&argc, \&argv, MPI_THREAD_MULTIPLE, \&provided);/' tests/kelpie/component/mpi_kelpie_many_items.cpp
   # The MPI transport takes &vector[0] of an empty request list, which aborts with _GLIBCXX_ASSERTIONS; use data()
   sed -i 's/&outstanding_msg_requests_\[0\]/outstanding_msg_requests_.data()/;s/&outstanding_op_requests_\[0\]/outstanding_op_requests_.data()/' src/nnti/transports/mpi/mpi_transport.cpp
+  # The MPI transport's progress thread appends to unexpected_msgs_ while next_unexpected() pops from it without a lock, so the deque can lose a message and NntiUnexpected(Long)SendTest fail with NNTI_ENOENT; guard it with a mutex
+  sed -i 's/^    std::deque<nnti::core::mpi_cmd_msg \*>   unexpected_msgs_;   \/\/$/&\n    std::mutex                             unexpected_msgs_mutex_;/' src/nnti/transports/mpi/mpi_transport.hpp
+  sed -i 's/^    if (unexpected_msgs_.size() == 0) {$/    std::unique_lock<std::mutex> unexpected_lock(unexpected_msgs_mutex_);\n&/;s/^    unexpected_msgs_.pop_front();$/&\n    unexpected_lock.unlock();/;s/^            unexpected_msgs_.push_back(cmd_msg);$/            {\n                std::lock_guard<std::mutex> unexpected_lock(unexpected_msgs_mutex_);\n                unexpected_msgs_.push_back(cmd_msg);\n            }/' src/nnti/transports/mpi/mpi_transport.cpp
   # NntiOpVectorTest writes to a vector it only reserve()d, which aborts with _GLIBCXX_ASSERTIONS; resize it
   sed -i 's/mirror.reserve(1024);/mirror.resize(num_op);/' tests/nnti/cpp-api/NntiOpVectorTest.cpp
+  # ObjectCapacities::Size() calls size() on a vector of the still incomplete kelpie::Key when kelpie/Key.hh is included first, which nvcc rejects in C++20 (constexpr vector::size()); define it in ObjectCapacities.cpp instead of inline
+  sed -i 's|  size_t Size() const {  return keys.size();  }|  size_t Size() const;|' src/kelpie/common/ObjectCapacities.hh
+  sed -i 's|^/// Clear out all entries$|size_t ObjectCapacities::Size() const {\n  return keys.size();\n}\n\n/// Clear out all entries|' src/kelpie/common/ObjectCapacities.cpp
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = faodel
 	pkgdesc = Flexible, Asynchronous, Object Data-Exchange Libraries for HPC data management
 	pkgver = 1.2306.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sandialabs/faodel
 	arch = x86_64
 	license = MIT
