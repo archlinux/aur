@@ -3,9 +3,10 @@
 
 pkgbase=jdk
 pkgname=('jre' 'jdk' 'jdk-doc')
-pkgver=27
-_build=35
-_hash=55ce5470a6294008af0057ff4626d0e5
+pkgver=27.0.1.1
+_docver=27.0.1.0.2
+_build=1
+_hash=924dbdccfc234bb9b9355d7c6b66034b
 _majver="${pkgver%%.*}"
 pkgrel=1
 pkgdesc='Oracle Java'
@@ -14,10 +15,10 @@ url='https://www.oracle.com/java/'
 license=('LicenseRef-Custom')
 makedepends=(
     'python-html2text'
-    # to satisfy pkgcheck:
+    # for satisfying namcap:
     'alsa-lib')
 source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux-x64_bin.tar.gz"
-        "https://download.oracle.com/otn_software/java/jdk/${pkgver}+${_build}/${_hash}/jdk-${pkgver}_doc-all.zip"
+        "https://download.oracle.com/otn_software/java/jdk/${_docver}+${_build}/${_hash}/jdk-${_docver}_doc-all.zip"
         "jdk-${_majver}_doc-license.html"::"https://download.oracle.com/otndocs/jcp/java_se-${_majver}-final-spec/license.html"
         'java.desktop'
         'jconsole.desktop'
@@ -25,9 +26,9 @@ source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux
         'java_16.png'
         'java_48.png'
         'LICENSE')
-noextract=("jdk-${pkgver}_doc-all.zip")
-sha256sums=('0c7bb6c33c7fcc46674054cab734e3ca027ba05323c6c6ecbc8786f76a45b155'
-            '767e992ce20e86a0452570ff9c0e0ee3bafb7a05ca99d5555634a9552011c0be'
+noextract=("jdk-${_docver}_doc-all.zip")
+sha256sums=('50d42ab5bacc735aa9b4da9c451f631a4b5c09e00b961df412a26d159c538cfc'
+            'e6bd2b9233f3468d04ffe509efcaba8f3c6e174080debcca9f37f1b55e1031c3'
             '64c4284265aa0d7f0499dbb8eb9cc1d86ad75570e92e8b31675e6dc806ef001e'
             'd3db8fd5b469110709dc4986b3ef8d858bfeb77851a32ff0d1c7df7e0a0e075f'
             '72bbb9357debef6f03e5ee9a26189cd3e1a4f2c670595742b7f25b0b47caf044'
@@ -74,7 +75,7 @@ _jre_backup=("etc/java-${pkgbase}/jaxp.properties"
 
 prepare() {
     mkdir -p "jdk-doc-${pkgver}"
-    bsdtar -x -f "jdk-${pkgver}_doc-all.zip" -C "jdk-doc-${pkgver}" --strip-components='1'
+    bsdtar -x -f "jdk-${_docver}_doc-all.zip" -C "jdk-doc-${pkgver}" --strip-components='1'
     html2text "jdk-${_majver}_doc-license.html" > LICENSE-doc
 }
 
