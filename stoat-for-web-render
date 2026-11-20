@@ -1,0 +1,170 @@
+#!/usr/bin/python3
+"""Render the distro-packaged Stoat/Vite web assets for a self-hosted instance.
+
+The upstream Docker image uses the same fixed placeholders, but deploys through
+an additional Node process. This renderer generates a static Nginx document root.
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+from pathlib import Path
+import re
+import shutil
+import sys
+import tempfile
+from urllib.parse import urlsplit
+
+SOURCE = Path('/usr/share/webapps/stoat-web/dist')
+STATE = Path('/usr/share/webapps/stoat-web')
+CONFIG = Path('/etc/stoat-web/config')
+
+PLACEHOLDERS = {
+    '__VITE_HOST__': 'VITE_HOST',
+    '__VITE_API_URL__': 'VITE_API_URL',
+    '__VITE_WS_URL__': 'VITE_DEV_WS_URL',
+    '__VITE_MEDIA_URL__': 'VITE_DEV_MEDIA_URL',
+    '__VITE_PROXY_URL__': 'VITE_DEV_PROXY_URL',
+    '__VITE_GIFBOX_URL__': 'VITE_DEV_GIFBOX_URL',
+    '__VITE_RNNOISE_WORKLET_CDN_URL__': 'VITE_RNNOISE_WORKLET_CDN_URL',
+}
+REQUIRED = ('VITE_HOST', 'VITE_API_URL')
+ALLOWED = set(PLACEHOLDERS.values())
+
+
+def read_config(path: Path) -> dict[str, str]:
+    result: dict[str, str] = {}
+    for line_no, line in enumerate(path.read_text(encoding='utf-8').splitlines(), 1):
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+        if '=' not in line:
+            raise ValueError(f'{path}:{line_no}: expected KEY=VALUE')
+        key, value = (part.strip() for part in line.split('=', 1))
+        if key not in ALLOWED:
+            raise ValueError(f'{path}:{line_no}: unknown key: {key}')
+        if key in result:
+            raise ValueError(f'{path}:{line_no}: duplicated key: {key}')
+        if '\x00' in value or any(c in value for c in ('\r', '\n')):
+            raise ValueError(f'{path}:{line_no}: invalid value')
+        result[key] = value
+    return result
+
+
+def validate(values: dict[str, str]) -> None:
+    host = values['VITE_HOST']
+    if not re.fullmatch(r'[a-zA-Z0-9.-]+(?::[0-9]{1,5})?', host):
+        raise ValueError('VITE_HOST must be a hostname (and optional port), without scheme or path')
+    for key, url in values.items():
+        if key == 'VITE_HOST' or not url:
+            continue
+        parsed = urlsplit(url)
+        valid_schemes = ('ws', 'wss') if key == 'VITE_DEV_WS_URL' else ('http', 'https')
+        if parsed.scheme not in valid_schemes or not parsed.netloc or parsed.username or parsed.password:
+            raise ValueError(f'{key} must be a public {"/".join(valid_schemes)} URL without credentials')
+
+
+def escape_js(value: str) -> str:
+    # Convert the value to escaped JS double-quoted string content; avoids
+    # injecting executable JS if a custom URL contains an unexpected character.
+    import json
+    return json.dumps(value, ensure_ascii=True)[1:-1]
+
+
+def replace_text(text: str, values: dict[str, str]) -> tuple[str, set[str]]:
+    found: set[str] = set()
+    for token, key in PLACEHOLDERS.items():
+        if token not in text:
+            continue
+        found.add(token)
+        value = values.get(key, '')
+        if value:
+            text = text.replace(token, escape_js(value))
+        else:
+            # Mirror upstream docker/inject.js for optional missing env vars.
+            text = text.replace(f'"{token}"', 'void 0')
+    return text, found
+
+
+def render(source: Path, state: Path, config: Path, if_configured: bool) -> None:
+    if not config.is_file():
+        if if_configured:
+            print('Stoat web: configuration is missing; skipping render.')
+            return
+        raise ValueError(f'Missing config: {config}')
+
+    values = read_config(config)
+    missing = [key for key in REQUIRED if not values.get(key)]
+    if missing:
+        if if_configured:
+            print('Stoat web: VITE_HOST and VITE_API_URL are not configured; skipping render.')
+            return
+        raise ValueError(f'Required fields are empty: {", ".join(missing)}')
+    validate(values)
+    if not (source / 'index.html').is_file():
+        raise ValueError(f'Missing packaged web assets: {source}/index.html')
+
+    releases = state / 'releases'
+    releases.mkdir(parents=True, exist_ok=True, mode=0o755)
+    staging: Path | None = Path(tempfile.mkdtemp(prefix='.new-', dir=releases))
+    try:
+        shutil.copytree(source, staging, dirs_exist_ok=True)
+        staging.chmod(0o755)
+
+        tokens_found: set[str] = set()
+        for path in staging.rglob('*'):
+            if not path.is_file() or path.suffix not in {'.js', '.html'}:
+                continue
+            data = path.read_text(encoding='utf-8')
+            patched, tokens = replace_text(data, values)
+            tokens_found.update(tokens)
+            if patched != data:
+                path.write_text(patched, encoding='utf-8')
+
+        for key in REQUIRED:
+            token = next(token for token, name in PLACEHOLDERS.items() if name == key)
+            if token not in tokens_found:
+                raise ValueError(f'Expected placeholder {token} was not found in the Vite build')
+
+        # Releases live in a root-owned directory; symlink swap is atomic for
+        # Nginx and does not mutate pacman-managed files.
+        release = releases / f'release-{os.getpid()}-{staging.stat().st_mtime_ns}'
+        staging.rename(release)
+        staging = None
+        tmp_link = state / f'.current-new-{os.getpid()}'
+        try:
+            tmp_link.symlink_to(release.relative_to(state))
+            tmp_link.replace(state / 'current')
+        finally:
+            tmp_link.unlink(missing_ok=True)
+
+        # Prune previous materialisations only after a successful switch.
+        for item in releases.iterdir():
+            if item != release and item.is_dir() and not item.is_symlink():
+                shutil.rmtree(item)
+        print(f'Stoat web: ready at {state / "current"}')
+    finally:
+        if staging is not None and staging.exists():
+            shutil.rmtree(staging)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--if-configured', action='store_true', help='do nothing when required config fields are empty')
+    # These flags also enable an isolated, local installation test.
+    parser.add_argument('--source', type=Path, default=SOURCE)
+    parser.add_argument('--state', type=Path, default=STATE)
+    parser.add_argument('--config', type=Path, default=CONFIG)
+    args = parser.parse_args()
+    os.umask(0o022)
+    try:
+        render(args.source, args.state, args.config, args.if_configured)
+    except (ValueError, OSError) as e:
+        print(f'Stoat web: {e}', file=sys.stderr)
+        return 1
+    return 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

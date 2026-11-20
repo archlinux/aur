@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = stoat-for-web
+
+[Action]
+Description = Rebuilding the configured Stoat web document root...
+When = PostTransaction
+Exec = /usr/bin/stoat-for-web-render --if-configured

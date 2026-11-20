@@ -1,0 +1,34 @@
+pkgbase = stoat-for-web
+	pkgdesc = Official Stoat web client for self-hosted instances (static assets)
+	pkgver = 0.17.0
+	pkgrel = 2
+	url = https://github.com/stoatchat/for-web
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = corepack
+	makedepends = nodejs>=24
+	makedepends = python
+	makedepends = make
+	makedepends = gcc
+	depends = python
+	optdepends = nginx: serve the generated web assets with Nginx
+	backup = etc/stoat-web/config
+	source = for-web::git+https://github.com/stoatchat/for-web.git#commit=9fd140a85de494482666bd98cd00fef427ffe3da
+	source = stoat-js::git+https://github.com/stoatchat/javascript-client-sdk.git#commit=e88f6aa2de5c283785fdb5669a150719346bb082
+	source = solid-livekit-components::git+https://github.com/stoatchat/javascript-solid-livekit-components.git#commit=a67176da7f0580ea9fdad22e58a963668f047fca
+	source = stoat-for-web.conf
+	source = stoat-for-web-render
+	source = 90-stoat-for-web.hook
+	source = nginx-stoat-for-web.conf
+	source = README.arch.md
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 2a42258707c9c14b55f0ed05ca2edbbd8b190408e6e8c099421c51b265be244b
+	sha256sums = 5f68d162cc535de10e6e297534a27af42c9ad77295787ce94e93ee4c47675942
+	sha256sums = c98047cb3ff48eec00da21788aaf6210ced7731ece3338f97ab84c0bfd31ccab
+	sha256sums = de10e53514eaedd5d4abe602143925ec7511695169c884b381b69a0be11a0119
+	sha256sums = 2bb40c4183e9b89246c5f2a2920da024153b812e7ced3c4eff356a7312c36c0a
+
+pkgname = stoat-for-web
