@@ -1,12 +1,12 @@
 pkgbase = aurcache-worker-docker
 	pkgdesc = Legacy Docker build executor for AURCache (deprecated)
 	pkgver = 0.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Lukas-Heiligenbrunner/AURCache
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = GPL-3.0-or-later
+	license = MIT
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs

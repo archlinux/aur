@@ -13,11 +13,11 @@
 
 pkgname=aurcache-worker-docker
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Legacy Docker build executor for AURCache (deprecated)"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/Lukas-Heiligenbrunner/AURCache"
-license=(GPL-3.0-or-later)
+license=(MIT)
 # It speaks to the Docker socket directly through bollard, so it needs neither
 # the docker CLI nor a local daemon -- the socket may well be the host's.
 depends=(gcc-libs)
@@ -48,4 +48,5 @@ package() {
     source "$srcdir/$_srcdir/packaging/common.sh"
     cd "$_srcdir"
     packaging/install-files.sh worker-docker "$pkgdir" "$PWD" "backend/$(_aurcache_release_dir)"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
