@@ -1,0 +1,380 @@
+Copy ifail without indexing one past its end. When all n eigenvalues are
+found (nfound == n), &ifail_[ nfound_ ] indexes past the end of ifail_,
+which _GLIBCXX_ASSERTIONS (part of Arch's CXXFLAGS) aborts on, so
+heevx, hpevx, hbevx, hegvx, hpgvx, hbgvx and the other ?evx/?gvx/stemr
+wrappers crash for range=All or a value range holding every eigenvalue.
+
+diff --git a/src/hbevx.cc b/src/hbevx.cc
+index 393f3c6..8cb0b23 100644
+--- a/src/hbevx.cc
++++ b/src/hbevx.cc
+@@ -68,7 +68,7 @@ int64_t hbevx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -126,7 +126,7 @@ int64_t hbevx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/hbevx_2stage.cc b/src/hbevx_2stage.cc
+index be1e78f..7c9f9c5 100644
+--- a/src/hbevx_2stage.cc
++++ b/src/hbevx_2stage.cc
+@@ -91,7 +91,7 @@ int64_t hbevx_2stage(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -170,7 +170,7 @@ int64_t hbevx_2stage(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/hbgvx.cc b/src/hbgvx.cc
+index 9413aa8..05d4a63 100644
+--- a/src/hbgvx.cc
++++ b/src/hbgvx.cc
+@@ -72,7 +72,7 @@ int64_t hbgvx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -134,7 +134,7 @@ int64_t hbgvx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/heevx.cc b/src/heevx.cc
+index 726ead7..0054546 100644
+--- a/src/heevx.cc
++++ b/src/heevx.cc
+@@ -85,7 +85,7 @@ int64_t heevx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -288,7 +288,7 @@ int64_t heevx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/heevx_2stage.cc b/src/heevx_2stage.cc
+index 9f8c3bb..99a7879 100644
+--- a/src/heevx_2stage.cc
++++ b/src/heevx_2stage.cc
+@@ -87,7 +87,7 @@ int64_t heevx_2stage(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -320,7 +320,7 @@ int64_t heevx_2stage(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/hegvx.cc b/src/hegvx.cc
+index 3e1b6e1..9581d57 100644
+--- a/src/hegvx.cc
++++ b/src/hegvx.cc
+@@ -89,7 +89,7 @@ int64_t hegvx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -168,7 +168,7 @@ int64_t hegvx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/hpevx.cc b/src/hpevx.cc
+index 99c4202..9969a0d 100644
+--- a/src/hpevx.cc
++++ b/src/hpevx.cc
+@@ -63,7 +63,7 @@ int64_t hpevx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -116,7 +116,7 @@ int64_t hpevx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/hpgvx.cc b/src/hpgvx.cc
+index 19a1e5c..6b9ca3f 100644
+--- a/src/hpgvx.cc
++++ b/src/hpgvx.cc
+@@ -66,7 +66,7 @@ int64_t hpgvx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -122,7 +122,7 @@ int64_t hpgvx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/sbevx.cc b/src/sbevx.cc
+index 9c05059..193fc5e 100644
+--- a/src/sbevx.cc
++++ b/src/sbevx.cc
+@@ -66,7 +66,7 @@ int64_t sbevx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -122,7 +122,7 @@ int64_t sbevx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/sbevx_2stage.cc b/src/sbevx_2stage.cc
+index 83c8ad4..3125da9 100644
+--- a/src/sbevx_2stage.cc
++++ b/src/sbevx_2stage.cc
+@@ -87,7 +87,7 @@ int64_t sbevx_2stage(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -162,7 +162,7 @@ int64_t sbevx_2stage(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/sbgvx.cc b/src/sbgvx.cc
+index 3c5b564..dc60da1 100644
+--- a/src/sbgvx.cc
++++ b/src/sbgvx.cc
+@@ -70,7 +70,7 @@ int64_t sbgvx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -130,7 +130,7 @@ int64_t sbgvx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/spevx.cc b/src/spevx.cc
+index 2e6daaf..ef9803a 100644
+--- a/src/spevx.cc
++++ b/src/spevx.cc
+@@ -61,7 +61,7 @@ int64_t spevx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -112,7 +112,7 @@ int64_t spevx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/spgvx.cc b/src/spgvx.cc
+index a2d152a..8314e04 100644
+--- a/src/spgvx.cc
++++ b/src/spgvx.cc
+@@ -64,7 +64,7 @@ int64_t spgvx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -118,7 +118,7 @@ int64_t spgvx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/stevx.cc b/src/stevx.cc
+index bad330f..e7fe4bc 100644
+--- a/src/stevx.cc
++++ b/src/stevx.cc
+@@ -62,7 +62,7 @@ int64_t stevx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -114,7 +114,7 @@ int64_t stevx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/syevx.cc b/src/syevx.cc
+index 6e75272..dacffb4 100644
+--- a/src/syevx.cc
++++ b/src/syevx.cc
+@@ -81,7 +81,7 @@ int64_t syevx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -153,7 +153,7 @@ int64_t syevx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/syevx_2stage.cc b/src/syevx_2stage.cc
+index f31ccfa..c9a983d 100644
+--- a/src/syevx_2stage.cc
++++ b/src/syevx_2stage.cc
+@@ -83,7 +83,7 @@ int64_t syevx_2stage(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -155,7 +155,7 @@ int64_t syevx_2stage(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+diff --git a/src/sygvx.cc b/src/sygvx.cc
+index 96eee2a..5f794f5 100644
+--- a/src/sygvx.cc
++++ b/src/sygvx.cc
+@@ -85,7 +85,7 @@ int64_t sygvx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
+@@ -160,7 +160,7 @@ int64_t sygvx(
+     *nfound = nfound_;
+     #ifndef LAPACK_ILP64
+         if (jobz != Job::NoVec) {
+-            std::copy( &ifail_[ 0 ], &ifail_[ nfound_ ], ifail );
++            std::copy( &ifail_[ 0 ], ifail_.data() + nfound_, ifail );
+         }
+     #endif
+     return info_;
