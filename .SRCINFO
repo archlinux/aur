@@ -1,6 +1,6 @@
 pkgbase = elp-bin
 	pkgdesc = LSP server and CLI for Erlang (prebuilt)
-	pkgver = 2026.11.19
+	pkgver = 2026.11.20
 	pkgrel = 1
 	url = https://github.com/WhatsApp/erlang-language-platform
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = elp-bin
 	depends = glibc
 	depends = libgcc
 	optdepends = rebar3: rebar3 projects
-	provides = elp=2026.11.19
+	provides = elp=2026.11.20
 	conflicts = elp
-	source = elp-2026.11.19-LICENSE-MIT::https://raw.githubusercontent.com/WhatsApp/erlang-language-platform/2026-11-19/LICENSE-MIT
+	source = elp-2026.11.20-LICENSE-MIT::https://raw.githubusercontent.com/WhatsApp/erlang-language-platform/2026-11-20/LICENSE-MIT
 	sha256sums = da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93
-	source_x86_64 = elp-2026.11.19-otp-29.1-x86_64.tar.gz::https://github.com/WhatsApp/erlang-language-platform/releases/download/2026-11-19/elp-linux-x86_64-unknown-linux-gnu-otp-29.1.tar.gz
-	sha256sums_x86_64 = 080e60a67bd699efc09144e5114fd91b2a252bb57c501daf1da4749683ccf25f
-	source_aarch64 = elp-2026.11.19-otp-29.1-aarch64.tar.gz::https://github.com/WhatsApp/erlang-language-platform/releases/download/2026-11-19/elp-linux-aarch64-unknown-linux-gnu-otp-29.1.tar.gz
-	sha256sums_aarch64 = 9b90fa3d749a76d648ed1d341e35a33e8385c9b2a8ac0d1014b6f9328f906c98
+	source_x86_64 = elp-2026.11.20-otp-29.1-x86_64.tar.gz::https://github.com/WhatsApp/erlang-language-platform/releases/download/2026-11-20/elp-linux-x86_64-unknown-linux-gnu-otp-29.1.tar.gz
+	sha256sums_x86_64 = 30f726acc7a1a941bffdb4c117d7a147fcf10c9b302fa8cd71bd31dae3bc28d2
+	source_aarch64 = elp-2026.11.20-otp-29.1-aarch64.tar.gz::https://github.com/WhatsApp/erlang-language-platform/releases/download/2026-11-20/elp-linux-aarch64-unknown-linux-gnu-otp-29.1.tar.gz
+	sha256sums_aarch64 = b17aebea19a3fac8bc2c6c15f1267c8926df4c18c8791637c7a231a76322340c
 
 pkgname = elp-bin
