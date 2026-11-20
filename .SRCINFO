@@ -1,6 +1,6 @@
 pkgbase = infernix
 	pkgdesc = C++/CUDA inference engine serving Qwen models on RTX 50-series GPUs: CLI, server and launcher
-	pkgver = 2026.11.18
+	pkgver = 2026.11.20
 	pkgrel = 1
 	url = https://github.com/Wallawalla47/Infernix
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = infernix
 	depends = ffmpeg
 	depends = libjpeg-turbo
 	depends = nvidia-utils
-	source = infernix-2026.11.18.tar.gz::https://github.com/Wallawalla47/Infernix/archive/refs/tags/windows-2026.11.18.tar.gz
+	source = infernix-2026.11.20.tar.gz::https://github.com/Wallawalla47/Infernix/archive/refs/tags/windows-2026.11.20.tar.gz
 	source = https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F8152/pdfium-linux-x64.tgz
-	sha256sums = 58fdf32922216823a369df29d94af750acf780bddd19a8027b7723155b9ac844
+	sha256sums = f7cde424373f30788ec3d7ee1004aaef7f54c53b34c3ce8dcffdabcae61f85f2
 	sha256sums = 384ab5c51882408a143a21f9c14dcd2caf1f75280ae41c554d0489b46c3dba9f
 
 pkgname = infernix
