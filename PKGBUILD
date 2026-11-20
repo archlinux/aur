@@ -1,8 +1,8 @@
 # Maintainer: Irshad Ali <irshadali5@proton.me>
 pkgname=siar-bin
-pkgver=0.1.0_alpha.1
-_pkgver_tag=v0.1.0-alpha.1
-pkgrel=2
+pkgver=0.1.0_alpha.2
+_pkgver_tag=v0.1.0-alpha.2
+pkgrel=1
 pkgdesc="Survivable Identity & Autonomous Routing: decentralized, offline-first messaging (prebuilt binaries)"
 arch=('x86_64')
 url="https://github.com/irshadlab/siar"
@@ -15,8 +15,8 @@ source=(
   "siar.png::https://raw.githubusercontent.com/irshadlab/siar/main/assets/branding/icon.png"
 )
 sha256sums=(
-  '5846dd390434af1e4258b827fc34316207ff16f6cbccf3d5616dd486ff25cf3e'
-  '6af4e71bef096e4e5afd1a3998428a0fd62acebc92d6bf29203787f450154a7d'
+  '703a737dabaa1f1a93328133385fc36deb02835e1c21d396e6f1366220b87eb6'
+  'e414d01fee3e72ef0175153db5222338836f1c922e48d1333aef17d72b188dbd'
 )
 
 package() {
