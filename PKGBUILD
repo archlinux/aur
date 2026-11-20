@@ -82,7 +82,7 @@ source=(
   "git+https://github.com/tdlib/td.git#commit=${_td_commit}"
   # We're vendoring wallet-engine because tdesktop requires a massive patch against it.
   "wallet-engine-${_wallet_engine_ver}.tar.gz::https://github.com/i582/wallet-engine/archive/refs/tags/v${_wallet_engine_ver}.tar.gz"
-  "https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch"
+  "https://github.com/desktop-app/patches/raw/69f23a834024d6064da209076151393582b3c966/wallet-engine.patch"
   "git+https://github.com/Microsoft/GSL.git"
   "git+https://github.com/Cyan4973/xxHash.git"
   "git+https://github.com/lz4/lz4.git"
@@ -128,7 +128,7 @@ source=(
 sha512sums=('e1ae5f775fdb312d94ccc83d8fb170847ffed8e0c2e4b412e45b5da5a1aa8d75b16e6d9cc11d27730bf35a90312afb642acc26fdb04f92e31441975a09b9afe7'
             'dd4741b3621c5e76ba7c9eee44ffd41b1e6b6c24fdb19988efd780d307aff79a9dcfd710be9ad63db6857cbbd71c273c54d82be524a5326fc22f1233d9eb6ca2'
             'f1a38de20459c5b780c98aaab037fdf34357980e7f3b93c4b523636d016ca4ffc9d9679c2ee4a246b138ef0474b8190d2db1874b204c006b0f30b3c950c62ff6'
-            '2a404adbebf7a2c6ca5b014e0979ea3f3d8e4f14a8b7bd7143076be8a7e1109c1d01dd181367431d0a10eb6b76d255291a9af19580967e5628cfee3c5989ad1c'
+            '71c9b0aacef42e87febee042d251c2835e3d30b8000f9b00afb48d74a7e7aba93a36530c1ef0d6da69bb4d115e7a852a8888f1bcf868d1bd60d9e3f55a024088'
             'SKIP'
             'SKIP'
             'SKIP'
