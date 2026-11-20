@@ -1,7 +1,7 @@
 # Maintainer: Jacob Burgess
 pkgname=eddie-git
 _pkgname=eddie
-pkgver=r151.ff8b0f7
+pkgver=r165.e4585d4
 pkgrel=1
 pkgdesc="The editor that watches the footage for you: a native Rust video editor that AI agents can drive"
 arch=('x86_64')
