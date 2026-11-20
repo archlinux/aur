@@ -3,7 +3,7 @@
 # appzones' repository under contrib/arch/. To update: pkgver, then
 # `updpkgsums && makepkg --printsrcinfo > .SRCINFO`, then push both to the AUR.
 pkgname=appzones
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Long-lived sandboxes for desktop apps, dev tools and AI agents (bubblewrap, pasta, nftables)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ backup=('etc/sudoers.d/appzones')
 install=appzones.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mirql/appzones/archive/refs/tags/v$pkgver.tar.gz"
         'appzones.sysusers')
-sha256sums=('c3fd51aae02590921bab1eef4047c4df621e89d549398ebf884adc4fef86bacd'
+sha256sums=('ed1dc6835005635a21001813d821624c831b4161c8156c9ce8cd8fd483399ef7'
             'SKIP')
 
 build() {
