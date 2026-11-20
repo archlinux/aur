@@ -1,23 +1,25 @@
 # Maintainer: Wasylq <wasylq@protonmail.com>
 pkgname=fss
-pkgver=1.30.1
+pkgver=1.35.1
 pkgrel=1
 pkgdesc='Scrapes all scenes and metadata from a studio URL'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Anastylosis/FSS'
 license=('GPL-3.0-only')
-depends=('glibc')
 makedepends=('go>=1.26')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Anastylosis/FSS/archive/v${pkgver}.tar.gz")
 # The real sha256 is populated by `updpkgsums` in the release workflow before
 # the package is committed to AUR — see .github/workflows/release.yml. The
 # 'SKIP' placeholder lets makepkg parse the file locally without the source.
-sha256sums=('ca085ac2aa1df7a697163b13893a72e96dee91df026c6f55c6629c96172bd252')
+sha256sums=('d8ea6d8790541a4eefdf8beeafc60df4c27ce9f770a36129fb1419b4ce4d4bf6')
 
 build() {
   cd "FSS-${pkgver}"
   export CGO_ENABLED=0
-  go build -ldflags "-s -w -X main.version=${pkgver} -X main.commit=aur -X main.date=$(date -u +%Y-%m-%dT%H:%M:%SZ)" -o fss .
+  # The source tarball carries no .git, so there is no commit to stamp; the
+  # channel says where the build came from instead. It used to be smuggled
+  # through main.commit, which cost the field its actual meaning.
+  go build -ldflags "-s -w -X main.version=${pkgver} -X main.channel=aur -X main.date=$(date -u +%Y-%m-%dT%H:%M:%SZ)" -o fss .
 }
 
 package() {
