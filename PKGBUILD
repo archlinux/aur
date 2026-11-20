@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 pkgname=crowdsec-nginx-bouncer
-pkgver=1.2.4
+pkgver=1.2.5
 # lua-cs-bouncer, the Lua half that upstream's release puts together with the nginx configuration:
 # the version its Makefile clones (LUA_BOUNCER_BRANCH), which check() compares
 _luaver=1.0.19
@@ -17,8 +17,8 @@ license=(MIT)
 replaces=(cs-nginx-bouncer)
 provides=(cs-nginx-bouncer)
 conflicts=(cs-nginx-bouncer)
-# lua-resty-http as a package rather than the copy upstream's release vendors since 1.2.4
-# (vendor/lua-resty-http), which isn't installed
+# lua-resty-http and lua-resty-string as packages rather than the copies upstream's release vendors
+# since 1.2.4 and 1.2.5 (vendor/), which aren't installed
 depends=(
   crowdsec
   gettext # envsubst in the install script
@@ -49,17 +49,17 @@ backup=(
   etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf
 )
 install=cs-nginx-bouncer.install
-# The sources upstream's release puts together (make release), from their tags: its archive's folder
-# is named after the newest tag in git's version order, crowdsec-nginx-bouncer-v1.2.4-rc1 for 1.2.4
+# The sources upstream's release puts together (make release), from their tags, without the
+# libraries it vendors
 source=(
   "cs-nginx-bouncer-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "lua-cs-bouncer-$_luaver.tar.gz::https://github.com/crowdsecurity/lua-cs-bouncer/archive/refs/tags/v$_luaver.tar.gz"
   "test-nginx-$_testnginxver.tar.gz::https://github.com/openresty/test-nginx/archive/refs/tags/v$_testnginxver.tar.gz"
 )
-sha512sums=('fc87624bf77a2d8464aec9b99184ea501611394bd1a1426583b9b2ddae3e0606e78dabf5c337941e405474065a17a2bc05ef3254822ca2613b8cdf62c1f0a0e2'
+sha512sums=('9ce3ce342e61096e949527d28811288a9dd16bc66a2aa23349e4f118ed4f21da1f58cd43d78583432641be3f445a8dbf3e1c0c5b2c4900fdc68e600c0e44fddf'
   '0ecc7da6a9d56cfdb336b8ef72d8398f54fb500b95fcc96531a9d6639980b98298bf4732c1a001c796f3dc317316fd1236104d57cad08709d775aac399797643'
   'c8ddec5dc21c23ded4ea974f4d6fca01ea498f728e5f8dc87224b1151bf9fcfb1921d971359ee79e3984b23fd6cb2f510259b077f79b867b95a437d28af48b97')
-b2sums=('5db2e8ed3192a6a3034f9e698c2f3c7bc2bbb2a23856c5ca4235e69fc90a157b08d7fe12e2d0066f9fafcd08987262b8353fc02f8dff40cd15667e23ec405926'
+b2sums=('175d7756575c65b9b1d0b45d7a4647ef16e316e96168f5261a9686e4eae3f0b9f9a7117f06f509d8325d3bb1a3429b52929210dfd8ab867cf5843c55f73558aa'
   '103249ad91499730e7432ef988616795bcddc31d015084714acc7104b5e30b807f61b352c047886f978b48485a21ca4334cfba64de5847981bbefe63a607a114'
   '5b98a9764d2fb322199ecf839feed2d995f4ab3e2c9488eebe698fad00e852c45862b94774232d4d8043e2850018c1699ea055a0da211b88211eddfc26e380ed')
 

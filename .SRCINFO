@@ -1,6 +1,6 @@
 pkgbase = crowdsec-nginx-bouncer
 	pkgdesc = CrowdSec bouncer for Nginx
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/crowdsecurity/cs-nginx-bouncer
 	install = cs-nginx-bouncer.install
@@ -32,13 +32,13 @@ pkgbase = crowdsec-nginx-bouncer
 	backup = etc/nginx/lua/templates/crowdsec/captcha.html
 	backup = etc/nginx/conf.d/crowdsec_nginx.conf
 	backup = etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf
-	source = cs-nginx-bouncer-1.2.4.tar.gz::https://github.com/crowdsecurity/cs-nginx-bouncer/archive/refs/tags/v1.2.4.tar.gz
+	source = cs-nginx-bouncer-1.2.5.tar.gz::https://github.com/crowdsecurity/cs-nginx-bouncer/archive/refs/tags/v1.2.5.tar.gz
 	source = lua-cs-bouncer-1.0.19.tar.gz::https://github.com/crowdsecurity/lua-cs-bouncer/archive/refs/tags/v1.0.19.tar.gz
 	source = test-nginx-0.32.tar.gz::https://github.com/openresty/test-nginx/archive/refs/tags/v0.32.tar.gz
-	sha512sums = fc87624bf77a2d8464aec9b99184ea501611394bd1a1426583b9b2ddae3e0606e78dabf5c337941e405474065a17a2bc05ef3254822ca2613b8cdf62c1f0a0e2
+	sha512sums = 9ce3ce342e61096e949527d28811288a9dd16bc66a2aa23349e4f118ed4f21da1f58cd43d78583432641be3f445a8dbf3e1c0c5b2c4900fdc68e600c0e44fddf
 	sha512sums = 0ecc7da6a9d56cfdb336b8ef72d8398f54fb500b95fcc96531a9d6639980b98298bf4732c1a001c796f3dc317316fd1236104d57cad08709d775aac399797643
 	sha512sums = c8ddec5dc21c23ded4ea974f4d6fca01ea498f728e5f8dc87224b1151bf9fcfb1921d971359ee79e3984b23fd6cb2f510259b077f79b867b95a437d28af48b97
-	b2sums = 5db2e8ed3192a6a3034f9e698c2f3c7bc2bbb2a23856c5ca4235e69fc90a157b08d7fe12e2d0066f9fafcd08987262b8353fc02f8dff40cd15667e23ec405926
+	b2sums = 175d7756575c65b9b1d0b45d7a4647ef16e316e96168f5261a9686e4eae3f0b9f9a7117f06f509d8325d3bb1a3429b52929210dfd8ab867cf5843c55f73558aa
 	b2sums = 103249ad91499730e7432ef988616795bcddc31d015084714acc7104b5e30b807f61b352c047886f978b48485a21ca4334cfba64de5847981bbefe63a607a114
 	b2sums = 5b98a9764d2fb322199ecf839feed2d995f4ab3e2c9488eebe698fad00e852c45862b94774232d4d8043e2850018c1699ea055a0da211b88211eddfc26e380ed
 
