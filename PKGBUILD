@@ -12,7 +12,7 @@ _mkver=7.0-mk5
 # renovate: datasource=github-tags depName=multikernel/daxfs
 _daxfsver=0.1.0
 pkgver=${_mkver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux with Multikernel support'
 url='https://multikernel.io'
 arch=(x86_64)
@@ -73,15 +73,17 @@ prepare() {
     -e CONTIG_ALLOC \
     -e MULTIKERNEL \
     -e MKTTY \
-    -m VSOCKETS \
-    -m MULTIKERNEL_VSOCKETS \
+    -e VSOCKETS \
+    -e MULTIKERNEL_VSOCKETS \
     -e DAXFS \
     -d RUST
   make olddefconfig
   diff -u ../config.$CARCH .config || :
 
   local _opt
-  for _opt in MULTIKERNEL MKTTY DAXFS; do
+  # Built in: spawned kernels boot container images without modules, and
+  # kerf exec needs the vsock transport inside them
+  for _opt in MULTIKERNEL MKTTY DAXFS VSOCKETS MULTIKERNEL_VSOCKETS; do
     [[ $(scripts/config -s $_opt) = y ]] || { echo "CONFIG_$_opt not enabled"; return 1; }
   done
 

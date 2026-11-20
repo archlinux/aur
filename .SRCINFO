@@ -1,7 +1,7 @@
 pkgbase = linux-multikernel
 	pkgdesc = Linux with Multikernel support
 	pkgver = 7.0.mk5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://multikernel.io
 	arch = x86_64
 	license = GPL-2.0-only
