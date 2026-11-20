@@ -2,7 +2,7 @@
 
 pkgbase=kiri-bin
 pkgname=('kiri-bin' 'kiri-lite-bin')
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Tiny, fast container runtime speaking the Docker API"
 arch=('x86_64' 'aarch64')
@@ -23,10 +23,10 @@ noextract=("kiri-${pkgver}-"{x86_64,aarch64}.rpm "kiri-lite-${pkgver}-"{x86_64,a
 sha256sums=('b51af0fe564133bb9c44003954b7179ef29f30a4118712485a54c0db5e43512d'
             '644847bf7123f538aab0e2dad11b491f18905c6237a4e46048d816e2b74d4df9'
             'cc85676414f87b4c07af61e8df1a298fd3cc82fed4ec7024dec250fc629ced47')
-sha256sums_x86_64=('dcd3c6df3b2b198f3a85d8e757864c2c33ae16e29646cec102e471eb7d3a4821'
-                   '5e7b1f6d8239aa590b314fd2ccc8f1472ba1427f414b35efa86ccedd6a6571b2')
-sha256sums_aarch64=('55f52eb2d7d935063b0f6f7ac53b66d3a423c9e250820941a0074ac4c42dc788'
-                    '76fe00facf4d61aefe90fbb0e44774942b1507e810c4e7b47ea34fddafe0193d')
+sha256sums_x86_64=('3b25696654deb1ea02858e7fb5798b709626f341aa2266db7cd3a606effe51ca'
+                   '24798125ee50bb24db86594a9ee1469b1032d9b2ffd7da616b06e40763c723b9')
+sha256sums_aarch64=('a3237feaf4d0c98e131493c551a74de9310a8355f765678c964c57475bb9f603'
+                    '5388bd5651db97a23d7eb9f057881522cbad8a27b3463d293f337b8c8797d7f2')
 
 _fixup() {
   install -Dm644 "$srcdir/kiri.sysusers" "$pkgdir/usr/lib/sysusers.d/kiri.conf"
