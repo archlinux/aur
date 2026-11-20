@@ -46,7 +46,7 @@ if [[ -z "$FFMPEG_OBS_SVT" ]]; then
 fi
 
 pkgname=ffmpeg-obs
-pkgver=9.0.2
+pkgver=9.1
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
@@ -57,7 +57,7 @@ license=(GPL-3.0-only)
 _aomver=3
 _dav1dver=1.3.0
 _ffnvcodecver=12.2
-_libjxlver=0.12.0
+_libjxlver=0.13
 _libplacebover=7.360
 _libristver=0.2.7
 _libtheoraver=1.2
@@ -177,17 +177,19 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=946fcce07b6dcd0331c8cc609192aeff5e1924f8
+_tag=74e4393595cf2b5857f0da925c4e0dd74ea306e5
 _deps_tag=2024-09-12
 source=(
   "ffmpeg-src::git+https://code.ffmpeg.org/FFmpeg/FFmpeg.git#tag=${_tag}"
   "obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=${_deps_tag}"
   "0001-Add-av_stream_get_first_dts-for-Chromium.patch"
+  "0002-libaomenc-presets.patch"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
   'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
+  'd5b07a2fd197d4497e2db1d26f760a9843c78c023501a84ee2454963551f31ac'
 )
 
 if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
@@ -260,7 +262,6 @@ _args=(
   --enable-nvdec
   --enable-nvenc
   --enable-opencl
-  --enable-opengl
   --enable-shared
   --enable-vapoursynth
   --enable-version3
@@ -507,7 +508,7 @@ prepare() {
   #  - Fix decoding of certain malformed FLV files
   #  - Add additional CPU levels for libaom
   patch -Np1 -i "${srcdir}"/obs-deps/deps.ffmpeg/patches/FFmpeg/0001-flvdec-handle-unknown.patch
-  patch -Np1 -i "${srcdir}"/obs-deps/deps.ffmpeg/patches/FFmpeg/0002-libaomenc-presets.patch
+  patch -Np1 -i "${srcdir}"/0002-libaomenc-presets.patch
 
   ### Package features changes
 

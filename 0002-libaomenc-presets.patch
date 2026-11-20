@@ -1,0 +1,11 @@
+--- ./libavcodec/libaomenc.c  2021-10-24 22:47:07.000000000 +0200
++++ ./libavcodec/libaomenc.c  2021-11-08 13:15:54.000000000 +0100
+@@ -1337,7 +1337,7 @@
+ #define VE AV_OPT_FLAG_VIDEO_PARAM | AV_OPT_FLAG_ENCODING_PARAM
+ #define VER VE | AV_OPT_FLAG_RUNTIME_PARAM
+ static const AVOption options[] = {
+-    { "cpu-used",        "Quality/Speed ratio modifier",           OFFSET(cpu_used),        AV_OPT_TYPE_INT, {.i64 = 1}, 0, 8, VER},
++    { "cpu-used",        "Quality/Speed ratio modifier",           OFFSET(cpu_used),        AV_OPT_TYPE_INT, {.i64 = 1}, 0, 10, VER},
+     { "auto-alt-ref",    "Enable use of alternate reference "
+                          "frames (2-pass only)",                   OFFSET(auto_alt_ref),    AV_OPT_TYPE_INT, {.i64 = -1},      -1,      2,       VE},
+     { "lag-in-frames",   "Number of frames to look ahead at for "
