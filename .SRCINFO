@@ -1,0 +1,26 @@
+pkgbase = blaspp-cuda
+	pkgdesc = C++ API for the Basic Linear Algebra Subroutines (with CUDA)
+	pkgver = 2025.05.28
+	pkgrel = 1
+	url = https://github.com/icl-utk-edu/blaspp
+	arch = x86_64
+	license = BSD-3-Clause
+	checkdepends = python
+	makedepends = cmake
+	makedepends = cblas
+	makedepends = testsweeper
+	depends = glibc
+	depends = libgcc
+	depends = libgomp
+	depends = libstdc++
+	depends = blas
+	depends = lapack
+	depends = cuda
+	provides = blaspp=2025.05.28
+	conflicts = blaspp
+	source = blaspp-2025.05.28.tar.gz::https://github.com/icl-utk-edu/blaspp/archive/refs/tags/v2025.05.28.tar.gz
+	source = lapack-libraries.patch
+	sha256sums = 8a4254e672e7f422eb62f70861f70bfa9582b622ef9e448bec3b6639b8077f8c
+	sha256sums = 9df53f25019dfb876125b2115ce6580f604b551ecef26a818e04ad4befccd4fa
+
+pkgname = blaspp-cuda
