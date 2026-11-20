@@ -9,10 +9,10 @@
 
 pkgname=vicinae-private
 _appname=vicinae
-pkgver=0.29.1
-_numenver=0.7.0
+pkgver=0.30.1
+_numenver=0.8.1
 _glazever=7.2.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Privacy-focused Vicinae build without telemetry or background network requests"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vicinaehq/vicinae"
@@ -25,16 +25,18 @@ depends=(
   'libqalculate'
   'qtkeychain-qt6'
   'qt6-declarative'
+  'qt6-multimedia'
   'syntax-highlighting'
+  'cmark-gfm'
 )
 makedepends=(
   'cmake'
+  'git'
   'ninja'
   'npm'
   'qt6-shadertools'
   'qt6-tools'
   'wayland-protocols'
-  'cmark-gfm'
 )
 install="${_appname}.install"
 provides=("${_appname}=${pkgver}")
@@ -46,10 +48,10 @@ source=(
   'disable-background-networking.patch'
   'vicinae.hook'
 )
-sha256sums=('ca79782e7c94faa9da1bd12ba1a361cea41970db781447773acb9a580a47cea8'
-            'abca62b157f7f998ae657ad5664c65bcbd221a845fb7b4fc4015c0e0ab9e9076'
+sha256sums=('cbbf86706e36b038ebfd69fda68fa3e0081d520e44cf8663ba05cc122e51ab8a'
+            'fc74be7a04ab5387ae13b5618099e1cbdff51c4cbc6a9ff8e570b55248a217ee'
             '17dba19ae63ae48f94994f00d49d5cb3c8f1306db1046c534c4828662490b7d4'
-            '63efbaea67b918e9c747fd576b81e54cd6b509d802dabe5c32a3c8ade48327df'
+            'cd0bb0a99f408951cc48abb091391908bee4d1b166db27786110bb681e9d0db6'
             '3cc96aa4cc38cf9bfd365feca8ee523e0c47c83a9d3f6f6fef43bed3ec0de209')
 
 prepare() {

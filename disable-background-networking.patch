@@ -1,5 +1,5 @@
 diff --git a/extra/config.jsonc b/extra/config.jsonc
-index 227868b..b01bbc5 100644
+index ba4ff40..4de50e7 100644
 --- a/extra/config.jsonc
 +++ b/extra/config.jsonc
 @@ -10,15 +10,6 @@
@@ -19,10 +19,10 @@ index 227868b..b01bbc5 100644
  	// If disabled, Vicinae will automatically fallback on copy instead of paste, and keyword expansion for snippets will no longer work.
  	// Note that conceptually, the input server is not uniquely related to snippets, so disabling snippets will not shutdown the input server process:
 diff --git a/src/server/CMakeLists.txt b/src/server/CMakeLists.txt
-index 46bbad1..1255bef 100644
+index 400b29b..7251f27 100644
 --- a/src/server/CMakeLists.txt
 +++ b/src/server/CMakeLists.txt
-@@ -513,9 +513,6 @@ set(SRCS
+@@ -629,9 +629,6 @@ set(SRCS
  	src/services/news/news-service.hpp
  	src/services/news/news-service.cpp
  
@@ -33,10 +33,10 @@ index 46bbad1..1255bef 100644
  	src/services/update/github-release.hpp
  	src/services/update/abstract-update-installer.hpp
 diff --git a/src/server/src/config/config.hpp b/src/server/src/config/config.hpp
-index dc3ff95..0b0f0bc 100644
+index 639a970..680e319 100644
 --- a/src/server/src/config/config.hpp
 +++ b/src/server/src/config/config.hpp
-@@ -271,7 +271,7 @@ template <> struct Partial<Footer> {
+@@ -279,7 +279,7 @@ template <> struct Partial<Footer> {
  };
  
  struct TelemetryConfig {
@@ -46,7 +46,7 @@ index dc3ff95..0b0f0bc 100644
  
  template <> struct Partial<TelemetryConfig> {
 diff --git a/src/server/src/builtins/vicinae/vicinae-extension.cpp b/src/server/src/builtins/vicinae/vicinae-extension.cpp
-index 571b958..55cbd50 100644
+index 1b4d15f..1ddf90e 100644
 --- a/src/server/src/builtins/vicinae/vicinae-extension.cpp
 +++ b/src/server/src/builtins/vicinae/vicinae-extension.cpp
 @@ -7,7 +7,6 @@
@@ -56,8 +56,8 @@ index 571b958..55cbd50 100644
 -#include "services/telemetry/telemetry-service.hpp"
  #include "navigation-controller.hpp"
  #include "config/config.hpp"
- #include "builtins/vicinae/local-storage-view-host.hpp"
-@@ -168,43 +167,6 @@ class ReloadScriptDirectoriesCommand : public BuiltinCallbackCommand {
+ #include "builtins/vicinae/config-tools.hpp"
+@@ -171,43 +170,6 @@ class ReloadScriptDirectoriesCommand : public BuiltinCallbackCommand {
    }
  };
  
@@ -101,8 +101,8 @@ index 571b958..55cbd50 100644
  class OAuthTokenStoreCommand : public BuiltinViewCommand<OAuthTokenStoreViewHost> {
    Q_DECLARE_TR_FUNCTIONS(OAuthTokenStoreCommand)
  
-@@ -273,7 +235,6 @@ VicinaeExtension::VicinaeExtension() {
-   registerCommand<ShowLogs>();
+@@ -318,7 +280,6 @@ VicinaeExtension::VicinaeExtension() {
+        .create = [] { return std::make_unique<SetThemeTool>(*ServiceRegistry::instance()->config()); }});
  
    // disabled by default
 -  registerCommand<ForgetTelemetryCommand>();
@@ -110,7 +110,7 @@ index 571b958..55cbd50 100644
    registerCommand<OAuthTokenStoreCommand>();
    registerCommand<InspectLocalStorage>();
 diff --git a/src/server/src/ui/settings/general-settings-model.cpp b/src/server/src/ui/settings/general-settings-model.cpp
-index 79df28d..41f489c 100644
+index 89346e6..eb7c2ee 100644
 --- a/src/server/src/ui/settings/general-settings-model.cpp
 +++ b/src/server/src/ui/settings/general-settings-model.cpp
 @@ -85,11 +85,6 @@ void GeneralSettingsModel::setEncryptSensitiveData(bool v) {
@@ -126,10 +126,10 @@ index 79df28d..41f489c 100644
  void GeneralSettingsModel::setLayerShellEnabled(bool v) {
    cfgManager().mergeWithUser({.launcherWindow = config::Partial<config::WindowConfig>{
 diff --git a/src/server/src/ui/settings/general-settings-model.hpp b/src/server/src/ui/settings/general-settings-model.hpp
-index 341bbdf..827671a 100644
+index 52fa10f..c9bccea 100644
 --- a/src/server/src/ui/settings/general-settings-model.hpp
 +++ b/src/server/src/ui/settings/general-settings-model.hpp
-@@ -24,8 +24,6 @@ class GeneralSettingsModel : public QObject {
+@@ -25,8 +25,6 @@ class GeneralSettingsModel : public QObject {
    Q_PROPERTY(bool wrapNavigation READ wrapNavigation WRITE setWrapNavigation NOTIFY configChanged)
    Q_PROPERTY(
        bool encryptSensitiveData READ encryptSensitiveData WRITE setEncryptSensitiveData NOTIFY configChanged)
@@ -138,7 +138,7 @@ index 341bbdf..827671a 100644
    Q_PROPERTY(bool layerShellEnabled READ layerShellEnabled WRITE setLayerShellEnabled NOTIFY configChanged)
    Q_PROPERTY(bool clientSideDecorations READ clientSideDecorations WRITE setClientSideDecorations NOTIFY
                   configChanged)
-@@ -78,8 +76,6 @@ public:
+@@ -79,8 +77,6 @@ public:
    void setWrapNavigation(bool v);
    bool encryptSensitiveData() const;
    void setEncryptSensitiveData(bool v);
@@ -148,7 +148,7 @@ index 341bbdf..827671a 100644
    void setLayerShellEnabled(bool v);
    bool clientSideDecorations() const;
 diff --git a/src/server/src/ui/qml/settings/GeneralSettingsPage.qml b/src/server/src/ui/qml/settings/GeneralSettingsPage.qml
-index 5063923..443f5cd 100644
+index 2e663b3..9ccb5de 100644
 --- a/src/server/src/ui/qml/settings/GeneralSettingsPage.qml
 +++ b/src/server/src/ui/qml/settings/GeneralSettingsPage.qml
 @@ -103,24 +103,6 @@ Flickable {
@@ -177,10 +177,10 @@ index 5063923..443f5cd 100644
              Layout.preferredHeight: 24
          }
 diff --git a/src/server/src/server.cpp b/src/server/src/server.cpp
-index 431bb79..67137b5 100644
+index 8e730f6..6417160 100644
 --- a/src/server/src/server.cpp
 +++ b/src/server/src/server.cpp
-@@ -59,7 +59,6 @@
+@@ -68,7 +68,6 @@
  #include "services/script-command/script-command-service.hpp"
  #include "services/shortcut/shortcut-service.hpp"
  #include "services/news/news-service.hpp"
@@ -188,7 +188,7 @@ index 431bb79..67137b5 100644
  #include "services/update/update-service.hpp"
  #if defined(Q_OS_MACOS)
  #include "services/update/macos-update-installer.hpp"
-@@ -379,7 +378,6 @@ int startServer(const ServerLaunchOptions &launchOpts) {
+@@ -406,7 +405,6 @@ int startServer(const ServerLaunchOptions &launchOpts) {
      ShortcutInhibitor::setManager(registry->shortcutInhibitManager());
      registry->setFileChooserService(std::make_unique<FileChooserService>(nullptr));
      registry->setNewsService(std::make_unique<NewsService>(*registry->config()));
@@ -196,7 +196,7 @@ index 431bb79..67137b5 100644
  #if defined(Q_OS_MACOS)
      auto updateInstaller = std::unique_ptr<AbstractUpdateInstaller>(std::make_unique<MacosUpdateInstaller>());
  #elif defined(Q_OS_WIN)
-@@ -593,7 +591,6 @@ int startServer(const ServerLaunchOptions &launchOpts) {
+@@ -640,7 +638,6 @@ int startServer(const ServerLaunchOptions &launchOpts) {
      }
  #endif
  
@@ -205,10 +205,10 @@ index 431bb79..67137b5 100644
      if (tray) {
        if (next.tray.enabled) {
 diff --git a/src/server/src/service-registry.cpp b/src/server/src/service-registry.cpp
-index ad1c296..e783da9 100644
+index 2534d43..4ed5d36 100644
 --- a/src/server/src/service-registry.cpp
 +++ b/src/server/src/service-registry.cpp
-@@ -27,7 +27,6 @@
+@@ -29,7 +29,6 @@
  #include "services/raycast/raycast-store.hpp"
  #include "services/extension-store/vicinae-store.hpp"
  #include "services/root-item-manager/root-item-manager.hpp"
@@ -216,16 +216,15 @@ index ad1c296..e783da9 100644
  #include "services/update/update-service.hpp"
  #include "services/toast/toast-service.hpp"
  #include "services/window-manager/window-manager.hpp"
-@@ -94,8 +93,6 @@ ShortcutInhibitManager *ServiceRegistry::shortcutInhibitManager() const {
+@@ -103,7 +102,6 @@ ShortcutInhibitManager *ServiceRegistry::shortcutInhibitManager() const {
    return m_shortcutInhibitManager.get();
  }
  
 -TelemetryService *ServiceRegistry::telemetry() const { return m_telemetry.get(); }
--
- UpdateService *ServiceRegistry::updateService() const { return m_updateService.get(); }
+ AI::ConversationStore *ServiceRegistry::conversations() const { return m_conversations.get(); }
  
- AudioControlService *ServiceRegistry::audioControl() const { return m_audioControl.get(); }
-@@ -215,10 +212,6 @@ void ServiceRegistry::setShortcutInhibitManager(std::unique_ptr<ShortcutInhibitM
+ void ServiceRegistry::setConversations(std::unique_ptr<AI::ConversationStore> store) {
+@@ -250,10 +248,6 @@ void ServiceRegistry::setShortcutInhibitManager(std::unique_ptr<ShortcutInhibitM
    m_shortcutInhibitManager = std::move(service);
  }
  
@@ -237,10 +236,10 @@ index ad1c296..e783da9 100644
    m_updateService = std::move(service);
  }
 diff --git a/src/server/src/service-registry.hpp b/src/server/src/service-registry.hpp
-index 53a5d99..ccf69b5 100644
+index 25ae915..44fe82f 100644
 --- a/src/server/src/service-registry.hpp
 +++ b/src/server/src/service-registry.hpp
-@@ -38,7 +38,6 @@ class FileChooserService;
+@@ -39,7 +39,6 @@ class FileChooserService;
  class NewsService;
  class PasteService;
  class AbstractSelectionService;
@@ -248,7 +247,7 @@ index 53a5d99..ccf69b5 100644
  class UpdateService;
  class AudioControlService;
  class MediaControlService;
-@@ -89,7 +88,6 @@ public:
+@@ -99,7 +98,6 @@ public:
    NewsService *newsService() const;
    WindowMaterialManager *windowMaterialManager() const;
    ShortcutInhibitManager *shortcutInhibitManager() const;
@@ -256,7 +255,7 @@ index 53a5d99..ccf69b5 100644
    UpdateService *updateService() const;
    AudioControlService *audioControl() const;
    MediaControlService *mediaControl() const;
-@@ -132,7 +130,6 @@ public:
+@@ -148,7 +146,6 @@ public:
    void setNewsService(std::unique_ptr<NewsService> service);
    void setWindowMaterialManager(std::unique_ptr<WindowMaterialManager> manager);
    void setShortcutInhibitManager(std::unique_ptr<ShortcutInhibitManager> manager);
@@ -264,7 +263,7 @@ index 53a5d99..ccf69b5 100644
    void setUpdateService(std::unique_ptr<UpdateService> service);
    void setAudioControl(std::unique_ptr<AudioControlService> service);
    void setMediaControl(std::unique_ptr<MediaControlService> service);
-@@ -176,7 +173,6 @@ private:
+@@ -198,7 +195,6 @@ private:
    std::unique_ptr<NewsService> m_newsService;
    std::unique_ptr<WindowMaterialManager> m_windowMaterialManager;
    std::unique_ptr<ShortcutInhibitManager> m_shortcutInhibitManager;
@@ -272,8 +271,31 @@ index 53a5d99..ccf69b5 100644
    std::unique_ptr<UpdateService> m_updateService;
    std::unique_ptr<AudioControlService> m_audioControl;
    std::unique_ptr<MediaControlService> m_mediaControl;
+diff --git a/src/server/src/services/calculator-service/calculator-service.cpp b/src/server/src/services/calculator-service/calculator-service.cpp
+index 83b642a..817f19e 100644
+--- a/src/server/src/services/calculator-service/calculator-service.cpp
++++ b/src/server/src/services/calculator-service/calculator-service.cpp
+@@ -5,7 +5,6 @@
+ #include "services/calculator-service/abstract-calculator-backend.hpp"
+ #include "services/calculator-service/calculator-service.hpp"
+ #include "services/calculator-service/numen/numen-calculator-backend.hpp"
+-#include "utils/environment.hpp"
+ #include <ranges>
+ #include <qdatetime.h>
+ #include <qlogging.h>
+@@ -32,10 +31,6 @@ bool CalculatorService::setBackend(AbstractCalculatorBackend *newBackend) {
+ 
+   qInfo() << "Started" << newBackend->displayName() << "calculator backend";
+ 
+-  if (newBackend->supportsRefreshExchangeRates() && !Environment::isAutoRateRefreshDisabled()) {
+-    newBackend->refreshExchangeRates();
+-  }
+-
+   if (m_backend) { m_backend->stop(); }
+ 
+   m_backend = newBackend;
 diff --git a/src/server/src/services/calculator-service/numen/numen-calculator-backend.cpp b/src/server/src/services/calculator-service/numen/numen-calculator-backend.cpp
-index 7d56b74..89e82ea 100644
+index 2e4ade6..80be394 100644
 --- a/src/server/src/services/calculator-service/numen/numen-calculator-backend.cpp
 +++ b/src/server/src/services/calculator-service/numen/numen-calculator-backend.cpp
 @@ -1,7 +1,6 @@
@@ -281,10 +303,10 @@ index 7d56b74..89e82ea 100644
  #include "numen/numen.hpp"
  #include "services/calculator-service/numen/numen-currency-provider.hpp"
 -#include "utils/environment.hpp"
+ #include <qdatetime.h>
  #include <qfuture.h>
- #include <chrono>
- #include <format>
-@@ -27,13 +26,7 @@ std::string formatTimezone(const numen::Timezone &tz) {
+ #include <qlocale.h>
+@@ -125,13 +124,7 @@ QString formatDateTime(const numen::DateTime &dt) {
  }
  }; // namespace
  
@@ -319,7 +341,7 @@ index 61c4d35..ab7d0c7 100644
    numen::Numen m_numen{};
  };
 diff --git a/src/server/src/services/news/news-service.cpp b/src/server/src/services/news/news-service.cpp
-index 29d9084..6d6ea85 100644
+index 41f3588..724b02a 100644
 --- a/src/server/src/services/news/news-service.cpp
 +++ b/src/server/src/services/news/news-service.cpp
 @@ -17,19 +17,6 @@ struct NewsState {
@@ -635,7 +657,7 @@ index 15210b4..0000000
 -  std::string m_buf;
 -};
 diff --git a/src/server/src/services/update/update-service.cpp b/src/server/src/services/update/update-service.cpp
-index b9a4fca..9cf43be 100644
+index 3ac5fa7..2f90da3 100644
 --- a/src/server/src/services/update/update-service.cpp
 +++ b/src/server/src/services/update/update-service.cpp
 @@ -1,215 +1,25 @@
@@ -750,8 +772,7 @@ index b9a4fca..9cf43be 100644
 -
 -  qInfo() << "Update available:" << update.tag;
 +std::filesystem::path UpdateService::downloadDir() { return Omnicast::cacheDir() / "updates"; }
--
-+
+ 
 -  m_available = std::move(update);
 -  setStatus(Status::UpdateAvailable);
 -}
@@ -863,7 +884,7 @@ index b9a4fca..9cf43be 100644
 -}
 +void SkipUpdateVersionAction::execute(ApplicationContext *) {}
 diff --git a/src/server/src/services/update/update-service.hpp b/src/server/src/services/update/update-service.hpp
-index f3b0880..b2a2d93 100644
+index ed63378..78e80c5 100644
 --- a/src/server/src/services/update/update-service.hpp
 +++ b/src/server/src/services/update/update-service.hpp
 @@ -1,17 +1,12 @@
