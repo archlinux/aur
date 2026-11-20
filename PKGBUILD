@@ -14,6 +14,9 @@ pkgdesc="Slovak eID Client - uses system-provided libraries, supports Wayland, â
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
 license=('LicenseRef-custom')
+checkdepends=(
+    pcsclite
+)
 _upstream_arch=
 [[ "$CARCH" == "x86_64" ]] && _upstream_arch="x86_64"
 [[ "$CARCH" == "i686" ]] && _upstream_arch="i386"
@@ -51,9 +54,10 @@ options=(
     !strip
 )
 
+_libpkcs11=libpkcs11_x${_upstream_arch:(-2)}.so
 _libs_to_copy=(
     libCardAPI.so
-    "libpkcs11_x${_upstream_arch:(-2)}.so"
+    "${_libpkcs11}"
 )
 
 prepare() {
@@ -96,6 +100,14 @@ prepare() {
         ; do
         mv {unused-libs,squashfs-root}/lib/"${_lib}"
     done
+}
+
+check() {
+    cd "eID_klient_${pkgver}/squashfs-root"
+
+    "/lib/ld-linux-${CARCH//_/-}.so.2" \
+        --preload "lib/${_libpkcs11}" \
+        /bin/true
 }
 
 package_eidklient-native() {
@@ -199,6 +211,7 @@ package_eidklient-native-unused-libs() {
 }
 
 : "${arch[@]}"
+: "${checkdepends[@]}"
 : "${conflicts[@]}"
 : "${depends[@]}"
 : "${install}"

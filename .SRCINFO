@@ -6,6 +6,7 @@ pkgbase = eidklient-native
 	arch = i686
 	arch = x86_64
 	license = LicenseRef-custom
+	checkdepends = pcsclite
 	options = !debug
 	options = !strip
 	source = eID_Client
