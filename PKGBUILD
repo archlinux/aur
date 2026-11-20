@@ -10,11 +10,11 @@
 
 pkgname=aurcache-sandbox
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Landlock sandbox used by AURCache to confine PKGBUILD execution"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/Lukas-Heiligenbrunner/AURCache"
-license=(GPL-3.0-or-later)
+license=(MIT)
 depends=(gcc-libs)
 makedepends=(cargo git)
 # See the aurcache-worker PKGBUILD: !lto is load-bearing for the vendored C in
@@ -41,4 +41,5 @@ package() {
     source "$srcdir/$_srcdir/packaging/common.sh"
     cd "$_srcdir"
     packaging/install-files.sh sandbox "$pkgdir" "$PWD" "backend/$(_aurcache_release_dir)"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
