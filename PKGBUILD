@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=unifyterm-bin
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="One terminal for Windows, macOS and Linux: the same Unix commands everywhere, a command history you can search as you type, pictures and markdown in the terminal"
 arch=('x86_64')
@@ -24,7 +24,7 @@ _deb="unifyterm_${pkgver}-${_deb_rev}_amd64.deb"
 
 source=("${_deb}::https://github.com/newdee/unifyterm/releases/download/v${pkgver}/${_deb}")
 noextract=("${_deb}")
-sha256sums=('76595607bc74ca089a1e50842d5e99e177a66c794da119ec26bd587cdec2f062')
+sha256sums=('8fe13ef5223aea9a1aa15b0ab5e8170998fe5d139e7f941d5cff4d19571eb620')
 
 package() {
   local data_archive
