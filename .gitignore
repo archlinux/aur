@@ -1,0 +1,6 @@
+src/
+pkg/
+logs/
+tools/
+*.tar.*
+*.svg
