@@ -6,7 +6,7 @@ _appname=${_gitname%-cli}
 pkgname=${_gitname}-bin
 pkgdesc="A proxied shell for terminal workflows. Open a session and run commands through a proxy."
 
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,8 +30,8 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
 sha256sums=('2e778e72264168945689d0c54c7e4a2741ebbd5afc71abf2cb964f8895c0363b')
-sha256sums_x86_64=('8ddc22f34201e31e1d559a08b5d2997a00433b0269769f72a3e215c7a6e6b285')
-sha256sums_aarch64=('4040e444e1023b345189fff607a2fb41c7b71431fb1ebee344d0e829314dcae4')
+sha256sums_x86_64=('efaa4636c8960adf4270c02690117712f3ddf748b1473f62f60521eb76d0ef19')
+sha256sums_aarch64=('2d47dfe19caa789317c4dcc4480a73a91503163ffcb3434bc26e3d0dcb036797')
 
 
 package() {
