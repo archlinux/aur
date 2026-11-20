@@ -1,5 +1,5 @@
 pkgbase = shelly-git
-	pkgver = 3.4.0r5462.gb24939d
+	pkgver = 3.4.1r5476.g496089a
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
@@ -58,7 +58,7 @@ pkgname = shelly-git
 	optdepends = util-linux: isolate fresh-root provisioning for --isolated builds
 	optdepends = fuse2: run AppImages that require FUSE 2
 	provides = shelly
-	provides = shelly-tui=3.4.0r5462.gb24939d
+	provides = shelly-tui=3.4.1r5476.g496089a
 	conflicts = shelly
 	conflicts = shelly-bin
 	conflicts = shelly-tui
@@ -67,8 +67,8 @@ pkgname = shelly-git
 
 pkgname = shelly-flatpak-backend-git
 	pkgdesc = Optional native Flatpak backend for Shelly (git version)
-	depends = shelly-git=3.4.0r5462.gb24939d-1
+	depends = shelly-git=3.4.1r5476.g496089a-1
 	depends = flatpak
-	provides = shelly-flatpak-backend=3.4.0r5462.gb24939d
+	provides = shelly-flatpak-backend=3.4.1r5476.g496089a
 	conflicts = shelly-flatpak-backend
 	conflicts = shelly-flatpak-backend-bin
