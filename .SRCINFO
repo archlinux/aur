@@ -1,40 +1,46 @@
 pkgbase = onnxruntime-split-bin
 	pkgver = 1.29.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/rsd/omarchy-onnxruntime
 	arch = x86_64
 	license = MIT AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MPL-2.0
-	noextract = onnxruntime-core-1.29.0-6-x86_64.pkg.tar.zst
-	noextract = onnxruntime-provider-cuda13-all-1.29.0-6-x86_64.pkg.tar.zst
-	noextract = onnxruntime-provider-cuda13-rtx-1.29.0-6-x86_64.pkg.tar.zst
-	noextract = onnxruntime-provider-openvino-1.29.0-6-x86_64.pkg.tar.zst
-	noextract = onnxruntime-provider-tensorrt-cuda13-1.29.0-6-x86_64.pkg.tar.zst
-	noextract = python-onnxruntime-core-1.29.0-6-x86_64.pkg.tar.zst
+	noextract = onnxruntime-core-1.29.0-7-x86_64.pkg.tar.zst
+	noextract = onnxruntime-provider-cuda13-all-1.29.0-7-x86_64.pkg.tar.zst
+	noextract = onnxruntime-provider-cuda13-rtx-1.29.0-7-x86_64.pkg.tar.zst
+	noextract = onnxruntime-provider-dnnl-1.29.0-7-x86_64.pkg.tar.zst
+	noextract = onnxruntime-provider-openvino-1.29.0-7-x86_64.pkg.tar.zst
+	noextract = onnxruntime-provider-tensorrt-cuda13-1.29.0-7-x86_64.pkg.tar.zst
+	noextract = python-onnxruntime-core-1.29.0-7-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
 	options = !lto
-	source = onnxruntime-core-1.29.0-6-x86_64.pkg.tar.zst::https://github.com/rsd/omarchy-onnxruntime/releases/download/v1.29.0-6/onnxruntime-core-1.29.0-6-x86_64.pkg.tar.zst
-	source = onnxruntime-provider-cuda13-all-1.29.0-6-x86_64.pkg.tar.zst::https://github.com/rsd/omarchy-onnxruntime/releases/download/v1.29.0-6/onnxruntime-provider-cuda13-all-1.29.0-6-x86_64.pkg.tar.zst
-	source = onnxruntime-provider-cuda13-rtx-1.29.0-6-x86_64.pkg.tar.zst::https://github.com/rsd/omarchy-onnxruntime/releases/download/v1.29.0-6/onnxruntime-provider-cuda13-rtx-1.29.0-6-x86_64.pkg.tar.zst
-	source = onnxruntime-provider-openvino-1.29.0-6-x86_64.pkg.tar.zst::https://github.com/rsd/omarchy-onnxruntime/releases/download/v1.29.0-6/onnxruntime-provider-openvino-1.29.0-6-x86_64.pkg.tar.zst
-	source = onnxruntime-provider-tensorrt-cuda13-1.29.0-6-x86_64.pkg.tar.zst::https://github.com/rsd/omarchy-onnxruntime/releases/download/v1.29.0-6/onnxruntime-provider-tensorrt-cuda13-1.29.0-6-x86_64.pkg.tar.zst
-	source = python-onnxruntime-core-1.29.0-6-x86_64.pkg.tar.zst::https://github.com/rsd/omarchy-onnxruntime/releases/download/v1.29.0-6/python-onnxruntime-core-1.29.0-6-x86_64.pkg.tar.zst
-	sha256sums = 4deec6e768d68fab0fac02d980689fb14c270eec78e0fd78c971aa35be3d51fc
-	sha256sums = e7a4f79329bf13f95bfbd0a164bd55ec8cd2180817b425e2626a8f4edbb7081e
-	sha256sums = f8bbf804651fecf6593a3f450f7be116427e1581f559968f4174ac1ce5161ee6
-	sha256sums = 91d13853b7523ad296ba248e9d5aadf5e1bdfacca74af0ae7690358ba5ea685b
-	sha256sums = 4a17ed26a4fbccaddc1ec45e5096b2666ca19dbcadd3ea997c01d24b3fbe6f92
-	sha256sums = d409a0c5b2847f71a9f8088b00cc8b98079e77279139336706f913075e66be6c
+	source = onnxruntime-core-1.29.0-7-x86_64.pkg.tar.zst::https://github.com/rsd/omarchy-onnxruntime/releases/download/v1.29.0-7/onnxruntime-core-1.29.0-7-x86_64.pkg.tar.zst
+	source = onnxruntime-provider-cuda13-all-1.29.0-7-x86_64.pkg.tar.zst::https://github.com/rsd/omarchy-onnxruntime/releases/download/v1.29.0-7/onnxruntime-provider-cuda13-all-1.29.0-7-x86_64.pkg.tar.zst
+	source = onnxruntime-provider-cuda13-rtx-1.29.0-7-x86_64.pkg.tar.zst::https://github.com/rsd/omarchy-onnxruntime/releases/download/v1.29.0-7/onnxruntime-provider-cuda13-rtx-1.29.0-7-x86_64.pkg.tar.zst
+	source = onnxruntime-provider-dnnl-1.29.0-7-x86_64.pkg.tar.zst::https://github.com/rsd/omarchy-onnxruntime/releases/download/v1.29.0-7/onnxruntime-provider-dnnl-1.29.0-7-x86_64.pkg.tar.zst
+	source = onnxruntime-provider-openvino-1.29.0-7-x86_64.pkg.tar.zst::https://github.com/rsd/omarchy-onnxruntime/releases/download/v1.29.0-7/onnxruntime-provider-openvino-1.29.0-7-x86_64.pkg.tar.zst
+	source = onnxruntime-provider-tensorrt-cuda13-1.29.0-7-x86_64.pkg.tar.zst::https://github.com/rsd/omarchy-onnxruntime/releases/download/v1.29.0-7/onnxruntime-provider-tensorrt-cuda13-1.29.0-7-x86_64.pkg.tar.zst
+	source = python-onnxruntime-core-1.29.0-7-x86_64.pkg.tar.zst::https://github.com/rsd/omarchy-onnxruntime/releases/download/v1.29.0-7/python-onnxruntime-core-1.29.0-7-x86_64.pkg.tar.zst
+	sha256sums = 66425458e9ec9bc1aafdf32ffe8bf9fc56ccd4e41db2b45982d01979db8f3f22
+	sha256sums = 65460ae241ca1b697c5ff71ee5eb191bb4a807d8c264d0b1da1b2450ffe43ec5
+	sha256sums = fbee7ded0f0280490543540505d055f76476bacf83008d19f557084e820b54b9
+	sha256sums = 68c045673f76b9040ed1b39ac7f0f137ed5d843d01729ac0342bf1c87ca1ad42
+	sha256sums = 88446be39a7e6759effbb76f606d1d51e69a916d4c0efa112061c19d8f5bf0bc
+	sha256sums = 7fdc974e15c6d4212f459730c9e9d97cdaa15e1ce022efb557a163ada1c8646f
+	sha256sums = de48b76a3699b2b58a5b894401de6db13157464ff6067774158cbef4149152dc
 
 pkgname = onnxruntime-core-bin
 	pkgdesc = Cross-platform inference engine for ONNX models: the C and C++ library with the CPU execution provider (prebuilt)
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
+	depends = nccl
 	optdepends = onnxruntime-provider-cuda: the CUDA execution provider
 	optdepends = onnxruntime-provider-tensorrt: the TensorRT execution provider
 	optdepends = onnxruntime-provider-openvino: the OpenVINO execution provider (Intel CPU, GPU and NPU)
-	provides = onnxruntime-core=1.29.0-6
+	optdepends = onnxruntime-provider-dnnl: the oneDNN execution provider (CPU)
+	optdepends = onnxruntime-provider-migraphx: the MIGraphX execution provider (AMD GPUs; AUR pkgbase onnxruntime-split-migraphx, untested on AMD hardware)
+	provides = onnxruntime-core=1.29.0-7
 	provides = onnxruntime=1.29.0
 	provides = libonnxruntime.so=1-64
 	conflicts = onnxruntime-core
@@ -46,47 +52,64 @@ pkgname = onnxruntime-core-bin
 	conflicts = onnxruntime-opt-rocm
 	conflicts = onnxruntime-git
 	conflicts = onnxruntime-full
+	conflicts = onnxruntime-provider-cuda12-legacy<1.29.0-2
+	conflicts = onnxruntime-provider-cuda12-legacy-bin<1.29.0-2
 	replaces = onnxruntime-full
 
 pkgname = onnxruntime-provider-cuda13-all-bin
 	pkgdesc = The CUDA execution provider of ONNX Runtime, for onnxruntime-core (NVIDIA GPUs) (prebuilt)
-	depends = onnxruntime-core=1.29.0-6
+	depends = onnxruntime-core=1.29.0-7
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
 	depends = nvidia-utils
+	depends = nccl
 	depends = cuda>=13
 	depends = cuda<14
 	depends = cudnn>=9
 	depends = cudnn<10
-	provides = onnxruntime-provider-cuda13-all=1.29.0-6
+	provides = onnxruntime-provider-cuda13-all=1.29.0-7
 	provides = onnxruntime-provider-cuda=1.29.0
 	provides = onnxruntime-provider-cuda13=1.29.0
 	conflicts = onnxruntime-provider-cuda13-all
 	conflicts = onnxruntime-provider-cuda
 	conflicts = onnxruntime-provider-cuda13
+	conflicts = onnxruntime-core-nccloff
 
 pkgname = onnxruntime-provider-cuda13-rtx-bin
 	pkgdesc = The CUDA execution provider of ONNX Runtime, for onnxruntime-core (NVIDIA GPUs) (prebuilt)
-	depends = onnxruntime-core=1.29.0-6
+	depends = onnxruntime-core=1.29.0-7
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
 	depends = nvidia-utils
+	depends = nccl
 	depends = cuda>=13
 	depends = cuda<14
 	depends = cudnn>=9
 	depends = cudnn<10
-	provides = onnxruntime-provider-cuda13-rtx=1.29.0-6
+	provides = onnxruntime-provider-cuda13-rtx=1.29.0-7
 	provides = onnxruntime-provider-cuda=1.29.0
 	provides = onnxruntime-provider-cuda13=1.29.0
 	conflicts = onnxruntime-provider-cuda13-rtx
 	conflicts = onnxruntime-provider-cuda
 	conflicts = onnxruntime-provider-cuda13
+	conflicts = onnxruntime-core-nccloff
+
+pkgname = onnxruntime-provider-dnnl-bin
+	pkgdesc = The oneDNN execution provider of ONNX Runtime, for onnxruntime-core (CPU) (prebuilt)
+	depends = onnxruntime-core=1.29.0-7
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libgomp
+	provides = onnxruntime-provider-dnnl=1.29.0-7
+	conflicts = onnxruntime-provider-dnnl
+	conflicts = onnxruntime-core-nccloff
 
 pkgname = onnxruntime-provider-openvino-bin
 	pkgdesc = The OpenVINO execution provider of ONNX Runtime, for onnxruntime-core (Intel CPU, GPU and NPU) (prebuilt)
-	depends = onnxruntime-core=1.29.0-6
+	depends = onnxruntime-core=1.29.0-7
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
@@ -97,12 +120,13 @@ pkgname = onnxruntime-provider-openvino-bin
 	optdepends = intel-compute-runtime: Intel graphics compute runtime (OpenVINO GPU device)
 	optdepends = level-zero-loader: oneAPI Level Zero loader (OpenVINO GPU and NPU devices)
 	optdepends = intel-npu-driver: Intel NPU user-space driver (OpenVINO NPU device)
-	provides = onnxruntime-provider-openvino=1.29.0-6
+	provides = onnxruntime-provider-openvino=1.29.0-7
 	conflicts = onnxruntime-provider-openvino
+	conflicts = onnxruntime-core-nccloff
 
 pkgname = onnxruntime-provider-tensorrt-cuda13-bin
 	pkgdesc = The TensorRT execution provider of ONNX Runtime, for onnxruntime-core (NVIDIA GPUs) (prebuilt)
-	depends = onnxruntime-core=1.29.0-6
+	depends = onnxruntime-core=1.29.0-7
 	depends = onnxruntime-provider-cuda13=1.29.0
 	depends = glibc
 	depends = libgcc
@@ -114,32 +138,40 @@ pkgname = onnxruntime-provider-tensorrt-cuda13-bin
 	depends = cuda<14
 	depends = cudnn>=9
 	depends = cudnn<10
-	provides = onnxruntime-provider-tensorrt-cuda13=1.29.0-6
+	provides = onnxruntime-provider-tensorrt-cuda13=1.29.0-7
 	provides = onnxruntime-provider-tensorrt=1.29.0
 	conflicts = onnxruntime-provider-tensorrt-cuda13
 	conflicts = onnxruntime-provider-tensorrt
+	conflicts = onnxruntime-core-nccloff
 
 pkgname = python-onnxruntime-core-bin
 	pkgdesc = The Python module of ONNX Runtime, the cross-platform inference engine for ONNX models (onnxruntime-core) (prebuilt)
-	depends = onnxruntime-core=1.29.0-6
+	depends = onnxruntime-core=1.29.0-7
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
+	depends = nccl
 	depends = python-numpy
 	depends = python-flatbuffers
 	depends = python-packaging
 	depends = python-protobuf
+	depends = python-cerberus
+	depends = python-h5py
+	depends = python-onnx
+	depends = python-sympy
+	depends = python-setuptools
 	depends = python>=3.14
 	depends = python<3.15
 	optdepends = onnxruntime-provider-cuda: the CUDA execution provider
 	optdepends = onnxruntime-provider-tensorrt: the TensorRT execution provider
 	optdepends = onnxruntime-provider-openvino: the OpenVINO execution provider (Intel CPU, GPU and NPU)
-	optdepends = python-onnx: the quantization, transformers optimisation and model tools
+	optdepends = onnxruntime-provider-dnnl: the oneDNN execution provider (CPU)
+	optdepends = onnxruntime-provider-migraphx: the MIGraphX execution provider (AMD GPUs; AUR pkgbase onnxruntime-split-migraphx, untested on AMD hardware)
+	optdepends = python-pytorch: onnxruntime.training.ortmodule (import onnxruntime.training needs it)
 	optdepends = python-ml-dtypes: 4-bit and float8 quantization (the wheel's quantization extra)
-	optdepends = python-sympy: symbolic shape inference (onnxruntime.tools)
 	optdepends = python-psutil: the transformers optimisation and benchmark tools
 	optdepends = python-py-cpuinfo: the transformers optimisation and benchmark tools
-	provides = python-onnxruntime-core=1.29.0-6
+	provides = python-onnxruntime-core=1.29.0-7
 	provides = python-onnxruntime=1.29.0
 	conflicts = python-onnxruntime-core
 	conflicts = python-onnxruntime
@@ -149,4 +181,5 @@ pkgname = python-onnxruntime-core-bin
 	conflicts = python-onnxruntime-rocm
 	conflicts = python-onnxruntime-opt-rocm
 	conflicts = python-onnxruntime-full
+	conflicts = onnxruntime-core-nccloff
 	replaces = python-onnxruntime-full
