@@ -2,7 +2,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=qui
-pkgver=1.35.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc="A fast, modern web interface for qBittorrent"
 arch=(x86_64)
@@ -18,20 +18,15 @@ makedepends=(
 source=(git+"${url}".git#tag=v"${pkgver}"
 	"${pkgname}.service"
 	"${pkgname}.sysusers"
-	"${pkgname}.tmpfiles"
-	"${url}/commit/72b20d064dbc016207a5688f2525ac028d6bc1f1.patch")
-sha256sums=('988379f4d40ef4fca760d1e7b9a836fb8ad0505849071ce23a6b5db8cd811ef1'
+	"${pkgname}.tmpfiles")
+sha256sums=('e486132609b3c5b36a1468e3b1a9ca8bd4aa18700a4c7e3d4c7831a92aefd125'
             'f9f478c29d18cadb7a58b421c7c65711bc612822e32077c19849e473cc269e6b'
             '149029ffcc078976e0ac6cd1f002b25221bb1561a1c979362dc27d9e6ad5dda3'
-            '3bacde8867fbb7b6d566666b635589579c1cc079cd23418284f43a7b37f0c41b'
-            'cb83021263b1024870fe181180d8f1361dddb8e24d60fd1bf1f87915d3a86b27')
+            '3bacde8867fbb7b6d566666b635589579c1cc079cd23418284f43a7b37f0c41b')
 
 prepare() {
 	cd "${pkgname}"
 	mkdir -p build
-
-	# https://github.com/autobrr/qui/issues/3787
-	patch -Np1 -i ../72b20d064dbc016207a5688f2525ac028d6bc1f1.patch
 
 	# Retrieve Go dependencies
 	# Don't proxy connection through Google
