@@ -1,6 +1,6 @@
 pkgbase = correlation
 	pkgdesc = Analysis tool for liquid and amorphous solid structures
-	pkgver = 4.7.0
+	pkgver = 4.7.1
 	pkgrel = 1
 	url = https://github.com/Isurwars/Correlation
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = correlation
 	depends = libxcb
 	depends = fftw
 	depends = vulkan-icd-loader
-	source = correlation-4.7.0.tar.gz::https://github.com/Isurwars/Correlation/archive/refs/tags/v4.7.0.tar.gz
-	sha256sums = 3799c757bf9b0b5b36667cefb0fca3b9003d2fd9cd92717845d2a87d6530949d
+	source = correlation-4.7.1.tar.gz::https://github.com/Isurwars/Correlation/archive/refs/tags/v4.7.1.tar.gz
+	sha256sums = 162330c798883ec3884e09e7c2517cba1da95a30e88bc26a85950fa4c2b254b4
 
 pkgname = correlation
