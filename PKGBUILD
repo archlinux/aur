@@ -23,6 +23,13 @@ sha256sums=('015c1ef6bbd37152ad2ec406486fd16284a0d6a94ddeaeb4d42bf0231724c716')
 # modules, and every optional import upstream is guarded by a working fallback
 # (cdifflib -> difflib; scikit-learn, pandas, joblib -> ML_AVAILABLE = False).
 # Hence empty depends and four ML optdepends.
+#
+# Expected namcap findings that must not be "fixed" with depends: IDA ships its own Qt
+# bindings (PySide6 above SDK 920, PyQt5 below) and the ida_* modules; the pygments copy
+# inside the plugin directory is vendored upstream and is what the plugin actually
+# imports, so a system python-pygments would be shadowed; and pygments' PIL, chardet,
+# docutils and sphinx imports live in the image formatter and Sphinx extension, which
+# Diaphora never loads.
 
 latestver() {
   curl -fsSL "https://api.github.com/repos/joxeankoret/diaphora/releases/latest" |
