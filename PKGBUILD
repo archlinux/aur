@@ -7,18 +7,18 @@ pkgname=intellij-idea-open-eap
 # yyyy.r or yyyy.r.n . In pre-release tags, these are suffixed with text such as "-eap-8", "-beta", "-rc-2", or
 # "-preview". Therefore, in order to ensure Arch vercmp sorting, while still including all version information, expand
 # upstream version to full yyyy.r.n.m format and include build number after version and before tag suffix.
-_version_yyyy_r_n_m=2026.3.0.0
+_version_yyyy_r_n_m=2026.3.1.0
 # Sources of build number, in preference order (as they're not consistently available):
 #   1. matching-hash build number tag at https://github.com/JetBrains/intellij-community/tags
 #   2. https://youtrack.jetbrains.com/articles/IDEA-A-21/IDEA-Latest-Builds-And-Release-Notes
 #   3. installing closed-source build via "snap install intellij-idea --classic --edge" and checking Help --> About
-_build_number=263.7307.200
+_build_number=263.8311.30
 # like "eap_5", "rc", etc.
-_pre_release_identifier_snake_case=
+_pre_release_identifier_snake_case=preview
 pkgver="$_version_yyyy_r_n_m.$_build_number${_pre_release_identifier_snake_case:+.$_pre_release_identifier_snake_case}"
 pkgrel=1
 
-_tag=idea/2026.3
+_tag=idea/2026.3.1-preview
 # Override Git hash if needed, for when they change a tag's hash and build number after pushing, as with
 # the "idea/2026.2.1" tag.
 _git_hash_override_idea=
@@ -49,8 +49,8 @@ optdepends=(
 source=("git+https://github.com/JetBrains/intellij-community.git#$_github_source_fragment_idea"
   idea-android::"git+https://github.com/JetBrains/android.git#$_github_source_fragment_android"
   idea.desktop)
-sha256sums=('cef316136b5c1cb9792050ead05641e1673afe81c50ca41ba90ef77184304d29'
-  '80642c61db580608aeec23e4809f2d1f5b0dffdde37c482096307c57efdbc904'
+sha256sums=('eb59cd40f32007fee87d4ff1ee9f62d3a5cd58424a5745acde9af5b5fc467476'
+  'a0eba0d8b61c4c36884dc3ede27edc2f5dd5126d633009fdfeacbef0b2d1d47c'
   '7e653ec3049058e2dcd7ca262081164ba417ea664885af7b5e4f94bcc987038f')
 
 prepare() {
