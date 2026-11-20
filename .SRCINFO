@@ -1,11 +1,12 @@
 pkgbase = lua-coxpcall
 	pkgdesc = Encapsulates the protected calls with a coroutine based loop
 	pkgver = 1.17.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://keplerproject.github.io/coxpcall
 	arch = any
 	license = MIT
 	makedepends = lua
+	makedepends = lua54
 	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
@@ -15,6 +16,9 @@ pkgbase = lua-coxpcall
 
 pkgname = lua-coxpcall
 	depends = lua
+
+pkgname = lua54-coxpcall
+	depends = lua54
 
 pkgname = lua53-coxpcall
 	depends = lua53

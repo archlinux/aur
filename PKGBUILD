@@ -2,16 +2,16 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=coxpcall
-pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua54-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=1.17.0
 _rockrel=1
 _tag=${pkgver//./_}
-pkgrel=3
+pkgrel=4
 pkgdesc='Encapsulates the protected calls with a coroutine based loop'
 arch=('any')
 url="https://keplerproject.github.io/$_rockname"
 license=('MIT')
-makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
+makedepends=('lua' 'lua54' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("$_rockname-$_tag.tar.gz::https://github.com/keplerproject/$_rockname/archive/v$_tag.tar.gz")
 sha256sums=('6044f70fcc01f50cae3a191cba13c252dcf9e6f169502e3d9c4a151934c46be0')
 
@@ -23,6 +23,11 @@ _package_helper() {
 
 package_lua-coxpcall() {
   depends+=('lua')
+  _package_helper 5.5
+}
+
+package_lua54-coxpcall() {
+  depends+=('lua54')
   _package_helper 5.4
 }
 
