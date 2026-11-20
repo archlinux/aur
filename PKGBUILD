@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-gfx1151
 _pkgname=${pkgname%%-gfx1151}
-pkgver=b12532
+pkgver=b12557
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1151, ROCm + Vulkan)"
 arch=(x86_64)
@@ -51,7 +51,7 @@ source=(
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.sysusers"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.tmpfiles"
 )
-sha256sums=('78d5fbc0e769bcc571baa81638f0bb9ad92cc224fa8e77914d164a85f78a2c42'
+sha256sums=('8ed2a67c4f34fdd1c6b51c016b7a2376ba13a056b16a7dac0956995e429c1b87'
             'b481dcaa07d8b912b32066da4ee48341cb521852eb16d76a6cf7a8216402e101'
             'bd43b307d55a74bc64b88d95e1f37d0b12ddd2935563fc893835a91e2b8c10b5'
             '8349878d7e61819fe3da6e8a25c46c7dd66592c9a5736a7f66eb475c7a51068c'
