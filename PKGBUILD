@@ -25,7 +25,7 @@ _renderer=gl
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r74597.623f24ad8cf
+pkgver=r74857.773772157e6
 pkgrel=1
 arch=(x86_64)
 url="https://kodi.tv"
@@ -52,16 +52,7 @@ options=(!lto !debug)
 # upstream pull requests to apply
 _prs=()
 
-# Found on their respective github release pages. One can check them against
-# what is pulled down when not specifying them in the cmake step.
-# $CHROOT/build/kodi-git/src/kodi-build/build/download
-#
-# https://github.com/xbmc/FFmpeg/tags
-# https://github.com/xbmc/libdvdcss/tags
-# https://github.com/xbmc/libdvdnav/tags
-# https://github.com/xbmc/libdvdread/tags
-#
-_libdvdcss_version="1.5.0"
+_libdvdcss_version="1.6.0"
 _libdvdnav_version="7.0.0"
 _libdvdread_version="7.0.1"
 _ffmpeg_version="9.0.2"
@@ -91,7 +82,7 @@ noextract=(
   "libudfread-$_libudfread_version.tar.bz2"
 )
 b2sums=('SKIP'
-        '0fbaf0fef65c9c538100cc48257c0cbf52c4d6b45bc90b2373ebcf4c12405f506260a04d21dd85172f80964d9ec70397f680795f892a318ade2b89fe351eb2db'
+        '12aad9e279e0b77950c16ddabe9c1f8fa03662f9ec5a0ef8d262f8d49e93b496b314dd8f773f7c11cdd03500349635bd99b35271c6e69fe1197905b6e8827cbe'
         'f6e5cd2ae45d61392fa2c1c01dd0eb7bc1f0ab8d2fe5153f44107eaf3e12b78b96482ad3f54dd1cabb92cb456f204927f179f133f88f1598949438067516aca5'
         'b4d7f6e760100a55b96e412b0e36196f82c508c97a53f96f84013b5427a4add1ae7ae02db43dace6429b98f3bedf5baaf118219701255c1475c4505c021bbdf9'
         'c768e75f3b129d7e51131ebe36813fdddbf8087637a15d3bad6e10a73b1d4fc815deee189809ff51750c5e00c4df401134417c911a3c97393d40e56cf3fd8308'
