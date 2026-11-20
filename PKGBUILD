@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libz-rs-sys-git
-pkgver=0.6.7.r7.g049540b
-pkgrel=2
+pkgver=0.6.8.r36.gf6a2b3f
+pkgrel=1
 pkgdesc="A zlib implementation in Rust available as a C dynamic library"
 arch=('i686' 'x86_64')
 url="https://trifectatech.org/projects/zlib-rs/"
 license=('Zlib')
 depends=('glibc' 'libgcc')
 makedepends=('git' 'cargo' 'cargo-c')
-provides=("libz-rs-sys=$pkgver")
+provides=("libz-rs-sys=$pkgver" 'libz_rs.so')
 conflicts=('libz-rs-sys')
 options=('staticlibs')
 source=("git+https://github.com/trifectatechfoundation/zlib-rs.git")
