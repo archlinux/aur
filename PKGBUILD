@@ -2,8 +2,8 @@
 
 _pkgname=cursor-clip
 pkgname=${_pkgname}-git
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 epoch=1
 pkgdesc="GTK4/Libadwaita Wayland clipboard manager with dynamic cursor-positioned overlay"
 arch=("x86_64" "aarch64")
