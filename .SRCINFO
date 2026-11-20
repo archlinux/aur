@@ -1,6 +1,6 @@
 pkgbase = baler
 	pkgdesc = A Cargo-style package manager for {box} modules
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/baler-dev/baler
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = baler
 	conflicts = baler-bin
 	options = !lto
 	options = !debug
-	source = baler-0.1.1.tar.gz::https://github.com/baler-dev/baler/archive/v0.1.1.tar.gz
-	sha256sums = 8574cd2c178c1a69c5d92c02e84f38067a377cf490a065855376ad35194fd212
+	source = baler-0.2.0.tar.gz::https://github.com/baler-dev/baler/archive/v0.2.0.tar.gz
+	sha256sums = 94bb76f3e46b9b7c682efb9059956d46a045f4d6e3b0c65734e891b746012624
 
 pkgname = baler
