@@ -1,6 +1,6 @@
 pkgbase = auren
 	pkgdesc = Voice assistant for Omarchy: say what you want, and it uses your desktop
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/kvm404/Auren
 	install = auren.install
@@ -24,7 +24,7 @@ pkgbase = auren
 	optdepends = yay: update Auren from its bar panel
 	options = !strip
 	options = !debug
-	source = auren-0.1.6.tar.gz::https://github.com/kvm404/Auren/archive/refs/tags/v0.1.6.tar.gz
-	sha256sums = 4739644b9936a1d70817bdd4ce47083cbdc1d1acadce589488c6d828a3460b4c
+	source = auren-0.1.7.tar.gz::https://github.com/kvm404/Auren/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = 5aa2ea67a7674edac5290df1c18e42bfac9157a41549b2287e2f07ed893ac3c2
 
 pkgname = auren

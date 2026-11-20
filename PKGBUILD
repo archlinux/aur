@@ -4,12 +4,12 @@
 # https://github.com/kvm404/Auren; the release workflow sets pkgver and the checksum and pushes it to
 # the AUR. build-local.sh builds it from a checkout instead.
 #
-# Auren's Python dependencies aren't all in Arch (supertonic isn't packaged, python-mcp is too old), so
+# Auren's Python dependencies aren't all in Arch (ptts isn't packaged, python-mcp is too old), so
 # the package carries its own environment in /usr/lib/auren, built with uv from uv.lock against the
 # system Python. When Arch moves to a new Python, rebuild it: yay -S --rebuild auren.
 
 pkgname=auren
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='Voice assistant for Omarchy: say what you want, and it uses your desktop'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=('claude-code: the main brain (Claude Code)'
 install=auren.install
 options=('!strip' '!debug')        # the wheels' libraries come as they were built
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4739644b9936a1d70817bdd4ce47083cbdc1d1acadce589488c6d828a3460b4c')
+sha256sums=('5aa2ea67a7674edac5290df1c18e42bfac9157a41549b2287e2f07ed893ac3c2')
 _src="Auren-$pkgver"
 
 build() {
@@ -40,7 +40,7 @@ build() {
 
 check() {
   cd "$_src"
-  "$srcdir/venv/bin/python" -I -c 'import auren.cli, auren.daemon, auren.setup, supertonic, mcp'
+  "$srcdir/venv/bin/python" -I -c 'import auren.cli, auren.daemon, auren.setup, auren.phone_server, ptts, mcp'
 }
 
 package() {
