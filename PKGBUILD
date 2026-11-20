@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fieldcraft
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 url="https://tangency-labs.github.io/$pkgname/"
 _url="https://github.com/tangency-labs/$pkgname"
@@ -13,7 +13,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('fc40038fd20fc08070e92aa86e2190436d95286db76ac3bdfeda85e45248b50d')
+sha256sums=('08281721ac0685db4c1b6d43d340ae6427af9d9206eb69da2c6c7c26a3bdf6af')
 
 _srcenv() {
 	cd "$_archive"
