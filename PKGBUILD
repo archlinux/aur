@@ -5,11 +5,17 @@ _pkgname=upt
 pkgname=${_pkgname}-bin
 pkgver=0.9.0
 pkgrel=2
-pkgdesc="Universal Package-management Tool for any OS."
+pkgdesc="Universal Package-management Tool for any OS"
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
+
 arch=('x86_64' 'i686' 'aarch64')
 license=('MIT' 'Apache-2.0')
+
+provides=("${_pkgname}")
+conflicts=("${pkgname%-bin}")
+
 depends=('curl' 'tar' 'gzip' 'unzip')
 makedepends=('help2man')
 
@@ -27,23 +33,14 @@ sha256sums_x86_64=('3051a30e23a2c5167bdd48d98fea2bf8fedec328bf2f570b3c4d42fdb92a
 sha256sums_i686=('3051a30e23a2c5167bdd48d98fea2bf8fedec328bf2f570b3c4d42fdb92a674e')
 sha256sums_aarch64=('3051a30e23a2c5167bdd48d98fea2bf8fedec328bf2f570b3c4d42fdb92a674e')
 
-build() {
-  cd "${srcdir}/" || exit
-
-  help2man ./${_pkgname} --output "MAN-${pkgver}.1" --no-info --no-discard-stderr
-
-  gzip "MAN-${pkgver}.1"
-}
 
 package() {
-  cd "${srcdir}/" || exit
+	cd "${srcdir}/" || exit
 
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -Dm644 "README_${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "README_${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-  install -Dm644 "LICENSE-MIT_${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
-  install -Dm644 "LICENSE-APACHE_${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
-
-  install -Dm644 "MAN-${pkgver}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1.gz"
+	install -Dm644 "LICENSE-MIT_${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+	install -Dm644 "LICENSE-APACHE_${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
 }

@@ -1,5 +1,5 @@
 pkgbase = upt-bin
-	pkgdesc = Universal Package-management Tool for any OS.
+	pkgdesc = Universal Package-management Tool for any OS
 	pkgver = 0.9.0
 	pkgrel = 2
 	url = https://github.com/sigoden/upt
@@ -13,6 +13,8 @@ pkgbase = upt-bin
 	depends = tar
 	depends = gzip
 	depends = unzip
+	provides = upt
+	conflicts = upt
 	source = README_0.9.0.md::https://raw.githubusercontent.com/sigoden/upt/v0.9.0/README.md
 	source = LICENSE-MIT_0.9.0::https://raw.githubusercontent.com/sigoden/upt/v0.9.0/LICENSE-MIT
 	source = LICENSE-APACHE_0.9.0::https://raw.githubusercontent.com/sigoden/upt/v0.9.0/LICENSE-APACHE
