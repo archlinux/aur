@@ -1,6 +1,6 @@
 pkgbase = dwellir-cli-bin
 	pkgdesc = Dwellir CLI - Blockchain RPC infrastructure from your terminal
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/dwellir-public/cli
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = dwellir-cli-bin
 	license = MIT
 	provides = dwellir-cli
 	conflicts = dwellir-cli
-	source_x86_64 = dwellir-linux-amd64-0.7.0.tar.gz::https://github.com/dwellir-public/cli/releases/download/v0.7.0/dwellir_linux_amd64.tar.gz
-	sha256sums_x86_64 = 423576a1984ddccbc48b8ad4bea48b5d526fd0be90504c0521f9d9956ba1894a
-	source_aarch64 = dwellir-linux-arm64-0.7.0.tar.gz::https://github.com/dwellir-public/cli/releases/download/v0.7.0/dwellir_linux_arm64.tar.gz
-	sha256sums_aarch64 = 02ef47c3510eae9891152947d9e0d502f2f95279878462fb84019e9994dafd51
+	source_x86_64 = dwellir-linux-amd64-0.8.0.tar.gz::https://github.com/dwellir-public/cli/releases/download/v0.8.0/dwellir_linux_amd64.tar.gz
+	sha256sums_x86_64 = cf10cb1e54a309570309efa07ab6b7ba65bddb12f3321c5f5d506473a463a028
+	source_aarch64 = dwellir-linux-arm64-0.8.0.tar.gz::https://github.com/dwellir-public/cli/releases/download/v0.8.0/dwellir_linux_arm64.tar.gz
+	sha256sums_aarch64 = 371232ef4703930130e57a5f29ec58dbc27048788cb2c190689e794c934a1e39
 
 pkgname = dwellir-cli-bin
