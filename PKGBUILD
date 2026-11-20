@@ -1,6 +1,6 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=jabridge
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Control Jabra headsets and dongles on Linux. Change settings, manage sound and update supported firmware."
 arch=('x86_64' 'armv7h')
@@ -9,8 +9,8 @@ license=('Apache-2.0')
 depends=()
 makedepends=('go')
 source=("https://github.com/Watchdog0x/jabridge/releases/download/v${pkgver}/jabridge_${pkgver}_source.tar.gz")
-b2sums=('3f3494f911e781f123b5f756c71e12074c6d58d476ab1c15a7d5a9ba94fa2bfc9ab9a27b82200cb9dc5dc914b905946f957f51df3b1fc427f3f97316e218911f')
-sha256sums=('aa60888f69c04a543c5e1bd107de289f3c60debcfb442fc3b0e70fe3de0d245b')
+sha256sums=('83ab0a4ed594fa977a892a9a862b5b3244ac7e9a0c033fe79e7487bdb3a0991f')
+b2sums=('a7295024db36eeebf2a3509d56e026fef966c0d08f3ef8fb878eef4e1872b8651fd22e0928d93e7a73a82d314fce726d85f1859bcd9ee29ba8ff854c80d77626')
 
 prepare() {
   cd "$srcdir/${pkgname}_${pkgver}_source"
