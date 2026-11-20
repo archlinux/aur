@@ -96,15 +96,35 @@ package() {
   fi
   echo "  -> Найден пакет: $(basename "${_deb}")"
 
-  # 2. Разворачиваем data.tar.* прямо в $pkgdir (в 1.3.43.1 это .xz, в прежних
-  #    сборках был .gz - перебираем варианты). Из maintainer-скриптов в .deb
-  #    есть только preinst/prerm, и оба лишь прибивают запущенный процесс
-  #    плагина - это воспроизведено в ${pkgname}.install, раскладка файлов
-  #    ничего больше не требует.
-  echo "  -> Распаковка data.tar..."
-  bsdtar -O -xf "${_deb}" data.tar.gz | bsdtar -xf - -C "${pkgdir}" 2>/dev/null || \
-  bsdtar -O -xf "${_deb}" data.tar.xz | bsdtar -xf - -C "${pkgdir}" 2>/dev/null || \
-  bsdtar -O -xf "${_deb}" data.tar.zst | bsdtar -xf - -C "${pkgdir}"
+  # 2. Разворачиваем data.tar.* прямо в $pkgdir. Имя члена архива берём из
+  #    листинга, а НЕ перебираем варианты через "||": если в .deb нет, скажем,
+  #    data.tar.gz, то первый bsdtar молча ничего не пишет в stdout, второй в
+  #    конвейере получает пустой ввод и возвращает 0 - цепочка считает это
+  #    успехом и не доходит до остальных вариантов, распаковав ровно ничего.
+  #    (Напоролся вживую: у 1.3.19.0 было data.tar.gz, у 1.3.43.1 - data.tar.xz.)
+  #
+  #    Из maintainer-скриптов в .deb есть только preinst/prerm, и оба лишь
+  #    прибивают запущенный процесс плагина - это воспроизведено в
+  #    ${pkgname}.install, раскладка файлов ничего больше не требует.
+  local _data
+  _data=$(bsdtar -tf "${_deb}" | grep -m1 '^data\.tar')
+  if [ -z "${_data}" ]; then
+    echo "!! В ${_deb##*/} нет члена data.tar.* - формат пакета изменился." >&2
+    return 1
+  fi
+  echo "  -> Распаковка ${_data}..."
+  # --no-same-owner: в вендорном tar файлы записаны от uid/gid 1000, и без
+  # этого флага они такими и приедут в пакет (namcap ругается, у пользователя
+  # /etc и /opt окажутся с чужим владельцем). Ниже ещё и явный chown - чтобы
+  # не зависеть от того, что именно записано в архиве.
+  bsdtar -O -xf "${_deb}" "${_data}" | bsdtar --no-same-owner -xf - -C "${pkgdir}"
+
+  # Страховка от молчаливой распаковки «в никуда»: без ядра плагина пакет
+  # бессмыслен, лучше упасть на сборке, чем выкатить пустышку.
+  if [ ! -f "${pkgdir}/opt/iitrust/gosuslugi_plugin/bin/gosuslugi_plugin" ]; then
+    echo "!! После распаковки нет bin/gosuslugi_plugin - содержимое .deb изменилось." >&2
+    return 1
+  fi
 
   # 3. В Arch /usr/lib64 - это симлинк на /usr/lib (пакет filesystem), а .deb
   #    кладёт туда НАСТОЯЩИЙ каталог с манифестом для Firefox. Оставить его
@@ -116,7 +136,26 @@ package() {
     rm -rf "${pkgdir}/usr/lib64"
   fi
 
-  # 4. Манифесты native messaging host уже разложены самим .deb:
+  # 4. Текста лицензии апстрим не кладёт ни в .deb, ни в zip (проверено
+  #    поиском по всему содержимому), а проприетарная лицензия по правилам
+  #    требует файла в /usr/share/licenses. Кладём отсылку к официальной
+  #    странице - сочинять за правообладателя текст нельзя.
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<EOF
+Госплагин (gosuslugi-plugin) - проприетарное ПО.
+Правообладатель: InfoTeCS Internet Trust <help@iitrust.ru>
+
+Дистрибутив не содержит текста лицензии: ни в .deb, ни в zip-инсталляторе
+с официального CDN нет ни LICENSE, ни EULA, ни copyright-файла.
+
+Условия использования - на официальной странице продукта:
+  ${url}
+EOF
+
+  # 5. Владелец всего содержимого - root:root (под fakeroot это просто запись
+  #    в метаданных пакета).
+  chown -R root:root "${pkgdir}"
+
+  # 6. Манифесты native messaging host уже разложены самим .deb:
   #      /etc/opt/chrome/native-messaging-hosts  - Chrome
   #      /etc/chromium/native-messaging-hosts    - Chromium, Яндекс.Браузер, Vivaldi
   #      /usr/lib/mozilla/native-messaging-hosts - Firefox
