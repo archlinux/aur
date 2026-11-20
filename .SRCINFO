@@ -1,6 +1,6 @@
 pkgbase = decasify-git
 	pkgdesc = cast strings to title-case according to locale specific style guides including Turkish
-	pkgver = 0.10.1.r20.g356000d
+	pkgver = 0.11.4.r0.g25efb70
 	pkgrel = 1
 	url = https://github.com/alerque/decasify
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = decasify-git
 	makedepends = lua52-luarocks-build-rust-mlua
 	makedepends = lua53
 	makedepends = lua53-luarocks-build-rust-mlua
+	makedepends = lua54
+	makedepends = lua54-luarocks-build-rust-mlua
 	makedepends = luarocks
 	makedepends = python-build
 	makedepends = python-installer
@@ -29,10 +31,12 @@ pkgbase = decasify-git
 
 pkgname = decasify-git
 	pkgdesc = cast strings to title-case according to locale specific style guides including Turkish (CLI tool)
-	provides = decasify=0.10.1.r20.g356000d
+	provides = decasify=0.11.4.r0.g25efb70
 	conflicts = decasify
 
 pkgname = lua-decasify-git
+
+pkgname = lua54-decasify-git
 
 pkgname = lua53-decasify-git
 
@@ -42,27 +46,27 @@ pkgname = lua51-decasify-git
 
 pkgname = neovim-decasify-git
 	pkgdesc = cast strings to title-case according to locale specific style guides including Turkish (Neovim plugin)
-	depends = lua51-decasify-git=0.10.1.r20.g356000d
+	depends = lua51-decasify-git=0.11.4.r0.g25efb70
 	depends = neovim
-	provides = neovim-decasify=0.10.1.r20.g356000d
+	provides = neovim-decasify=0.11.4.r0.g25efb70
 	conflicts = neovim-decasify
 
 pkgname = python-decasify-git
 	pkgdesc = cast strings to title-case according to locale specific style guides including Turkish (Python module)
 	depends = python
-	provides = python-decasify=0.10.1.r20.g356000d
+	provides = python-decasify=0.11.4.r0.g25efb70
 	conflicts = python-decasify
 
 pkgname = sile-decasify-git
 	pkgdesc = cast strings to title-case according to locale specific style guides including Turkish (SILE package)
-	depends = lua51-decasify-git=0.10.1.r20.g356000d
+	depends = lua51-decasify-git=0.11.4.r0.g25efb70
 	depends = sile
-	provides = sile-decasify=0.10.1.r20.g356000d
+	provides = sile-decasify=0.11.4.r0.g25efb70
 	conflicts = sile-decasify
 
 pkgname = vim-decasify-git
 	pkgdesc = cast strings to title-case according to locale specific style guides including Turkish (VIM plugin)
-	depends = decasify-git=0.10.1.r20.g356000d
+	depends = decasify-git=0.11.4.r0.g25efb70
 	depends = vim
-	provides = vim-decasify=0.10.1.r20.g356000d
+	provides = vim-decasify=0.11.4.r0.g25efb70
 	conflicts = vim-decasify

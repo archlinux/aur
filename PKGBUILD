@@ -2,8 +2,8 @@
 
 pkgbase=decasify-git
 _pkgbase=${pkgbase%-git}
-pkgname=("$pkgbase" "lua-$pkgbase" "lua53-$pkgbase" "lua52-$pkgbase" "lua51-$pkgbase" "neovim-$pkgbase" "python-$pkgbase" "sile-$pkgbase" "vim-$pkgbase" )
-pkgver=0.10.1.r20.g356000d
+pkgname=("$pkgbase" "lua-$pkgbase" "lua54-$pkgbase" "lua53-$pkgbase" "lua52-$pkgbase" "lua51-$pkgbase" "neovim-$pkgbase" "python-$pkgbase" "sile-$pkgbase" "vim-$pkgbase" )
+pkgver=0.11.4.r0.g25efb70
 _rockrel=1
 pkgrel=1
 pkgdesc='cast strings to title-case according to locale specific style guides including Turkish'
@@ -18,6 +18,7 @@ makedepends=(cargo
              lua51{,-luarocks-build-rust-mlua}
              lua52{,-luarocks-build-rust-mlua}
              lua53{,-luarocks-build-rust-mlua}
+             lua54{,-luarocks-build-rust-mlua}
              luarocks
              python-{build,installer,wheel}
              python-maturin
@@ -72,7 +73,7 @@ _package() {
 }
 
 package_lua-decasify-git() {
-	_package 5.4
+	_package 5.5
 }
 
 package_lua51-decasify-git() {
@@ -85,6 +86,10 @@ package_lua52-decasify-git() {
 
 package_lua53-decasify-git() {
 	_package 5.3
+}
+
+package_lua54-decasify-git() {
+	_package 5.4
 }
 
 package_neovim-decasify-git() {
