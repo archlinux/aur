@@ -1,6 +1,6 @@
 pkgbase = agy-switch-cli-bin
 	pkgdesc = Headless multi-account manager, quota inspector, and credential switcher for Antigravity CLI (agy)
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/MatrixC7/agy-switch-cli
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = agy-switch-cli-bin
 	license = CC-BY-NC-SA-4.0
 	optdepends = org.freedesktop.secrets: Desktop keyring storage for dual and keyring backend modes
 	optdepends = systemd: Manage background auto-switch service via daemon --install
-	provides = agy-switch-cli=1.2.2
+	provides = agy-switch-cli=1.2.3
 	conflicts = agy-switch-cli
 	options = !strip
 	options = !debug
-	source_x86_64 = agy-switch-cli-v1.2.2-x86_64-unknown-linux-musl.tar.gz::https://github.com/MatrixC7/agy-switch-cli/releases/download/v1.2.2/agy-switch-cli-v1.2.2-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 384d0f01e0e17bd97a89a09a3ff44c3b45be61d9d746850510ea03606e39527a
-	source_aarch64 = agy-switch-cli-v1.2.2-aarch64-unknown-linux-musl.tar.gz::https://github.com/MatrixC7/agy-switch-cli/releases/download/v1.2.2/agy-switch-cli-v1.2.2-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 002c6e849ff13551761215c5e7ce994ef133fdb428ca38d9f062e404a7b2fef8
+	source_x86_64 = agy-switch-cli-v1.2.3-x86_64-unknown-linux-musl.tar.gz::https://github.com/MatrixC7/agy-switch-cli/releases/download/v1.2.3/agy-switch-cli-v1.2.3-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 3f430ae7f17fa9534ce5c624ed50d9da360af21406945b15788bc85faaf249d3
+	source_aarch64 = agy-switch-cli-v1.2.3-aarch64-unknown-linux-musl.tar.gz::https://github.com/MatrixC7/agy-switch-cli/releases/download/v1.2.3/agy-switch-cli-v1.2.3-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 8755953a0573fc6b3b0dab958dde37c8974286f113195d81e23af2a450e68183
 
 pkgname = agy-switch-cli-bin
