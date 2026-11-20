@@ -1,6 +1,6 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=pdfsam-bin
-pkgver=6.0.10
+pkgver=6.0.11
 pkgrel=1
 pkgdesc="PDFsam Basic: Split, merge, extract pages, rotate and mix your PDF files(without Java dependency)"
 #pkgdesc="PDFsam Basic: The free app to split, merge, extract, rotate and mix PDF files (without Java dependency)"
@@ -10,7 +10,7 @@ license=('AGPL-3.0-or-later')
 provides=(pdfsam)
 depends=(gtk3)
 source_x86_64=("https://github.com/torakiki/pdfsam/releases/download/v$pkgver/pdfsam-basic_$pkgver-1_amd64.deb") #{,.asc})
-sha256sums_x86_64=('484106b1b87f7d0747c2f6486cdbb6776d9f99a186cf712aa98f0b48d5e2ba85')
+sha256sums_x86_64=('31260d8bdf0812843386522d647e08e322cc59a5ff1ca0481e67f2c5ef0e1ce7')
 
 package() {
   cd "$pkgdir"
