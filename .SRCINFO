@@ -1,7 +1,7 @@
 pkgbase = setdown
 	pkgdesc = Convert Markdown to typographically high-quality PDFs with an embedded Typst
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/patrickbergner/setdown
 	arch = x86_64
 	arch = aarch64

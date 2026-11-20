@@ -1,7 +1,7 @@
 # Maintainer: Patrick Bergner <aur-contact@rldn.de>
 pkgname=setdown
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert Markdown to typographically high-quality PDFs with an embedded Typst'
 arch=('x86_64' 'aarch64')
 url='https://github.com/patrickbergner/setdown'
@@ -79,6 +79,9 @@ prepare() {
     for pair in "${_licenses[@]}"; do
         cp "$srcdir/${pair%%:*}" "$cache/${pair#*:}"
     done
+    # This version's tools/fetch takes Go's license only from $GOROOT/LICENSE, which Arch's go does not install
+    sed -i 's|"go-LICENSE", filepath.Join(goroot, "LICENSE")}}|"go-LICENSE", "/usr/share/licenses/go/LICENSE"}}; _ = goroot|' tools/fetch/main.go
+    grep -qF '"/usr/share/licenses/go/LICENSE"' tools/fetch/main.go
     go run ./tools/fetch -target "linux/$(_goarch)"
 }
 
