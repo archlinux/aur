@@ -1,6 +1,6 @@
 pkgbase = cindy-bin
 	pkgdesc = Open-source AI agent that works out of the box (global edition)
-	pkgver = 0.1.141
+	pkgver = 0.1.143
 	pkgrel = 1
 	url = https://github.com/makecindy/cindy
 	arch = x86_64
@@ -35,13 +35,13 @@ pkgbase = cindy-bin
 	depends = systemd-libs
 	depends = xdg-utils
 	optdepends = libsecret: desktop credential storage
-	provides = cindy=0.1.141
+	provides = cindy=0.1.143
 	conflicts = cindy
 	conflicts = cindy-cn-bin
-	noextract = cindy-0.1.141-linux-x64-global.deb
+	noextract = cindy-0.1.143-linux-x64-global.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = cindy-0.1.141-linux-x64-global.deb::https://github.com/makecindy/cindy/releases/download/v0.1.141/cindy-0.1.141-linux-x64-global.deb
-	sha256sums_x86_64 = 47ba23f5828bbcf7188fc9edb517024ffa265cfb443a727953013a08d62778ab
+	source_x86_64 = cindy-0.1.143-linux-x64-global.deb::https://github.com/makecindy/cindy/releases/download/v0.1.143/cindy-0.1.143-linux-x64-global.deb
+	sha256sums_x86_64 = cf0e3e2f2a24e094b4c544aebf2439a8b49b1f170121989fa6441e66cc0b4034
 
 pkgname = cindy-bin
