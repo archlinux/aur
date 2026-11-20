@@ -1,0 +1,8 @@
+post_install() {
+  cat <<'MSG'
+==> rsds: the daemon (rsds-daemon) restores saved layouts and runs Nightlight
+    and Lid Close. Start it with your X session, e.g. by adding
+        rsds-daemon &
+    to ~/.config/openbox/autostart (or your window manager's equivalent).
+MSG
+}
