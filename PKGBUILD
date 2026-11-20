@@ -1,17 +1,16 @@
 # Maintainer: Petrov Vlad <petrov.vlad@ya.ru>
 
 pkgname=freelib-dev-git
-pkgver=6.2.42
+pkgver=6.2.44
 pkgrel=1
 pkgdesc="Book library manager"
 arch=(x86_64)
 url="https://github.com/petrovvlad/freeLib"
 license=(GPL3)
-depends=(qt6-base qt6-svg qt6-httpserver quazip-qt6 onetbb qtkeychain-qt6)
+depends=(qt6-base qt6-svg qt6-httpserver 7zip onetbb qtkeychain-qt6)
 optdepends=('kindlegen: convert to MOBI, AZW3'
   'djvulibre: djvu covers'
   'poppler-qt6: pdf covers'
-  '7zip: 7z, rar archives'
   'kio: KDE integration')
 makedepends=(git cmake)
 provides=(freelib)
@@ -25,7 +24,6 @@ prepare() {
   cd "freeLib"
   git submodule init
   git config submodule.freeLib/src/quazip.update none
-  #  git config submodule.freeLib/src/SmtpClient.url "${srcdir}/freelib-SmtpClient-for-Qt"
   git config submodule.freeLib/src/SmtpClient.url "https://github.com/petrovvlad/SmtpClient-for-Qt.git"
   git -c protocol.file.allow=always submodule update
 }
