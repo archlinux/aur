@@ -1,6 +1,6 @@
 pkgbase = python-pystac
 	pkgdesc = Python library for working with SpatioTemporal Asset Catalogs (STAC)
-	pkgver = 1.16.0
+	pkgver = 1.16.1
 	pkgrel = 1
 	url = https://github.com/stac-utils/pystac
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-pystac
 	optdepends = python-orjson: faster JSON (de)serialization (runtime requires >=3.5)
 	optdepends = python-referencing: local JSON-schema validation
 	optdepends = python-urllib3>=2.6.3: reading STAC objects from remote URLs
-	provides = python-pystac-core=1.16.0
+	provides = python-pystac-core=1.16.1
 	provides = python-pystac-ext-classification=2.0.2
 	provides = python-pystac-ext-datacube=2.2.2
 	provides = python-pystac-ext-eo=1.1.2
@@ -72,13 +72,13 @@ pkgbase = python-pystac
 	conflicts = python-pystac-ext-version
 	conflicts = python-pystac-ext-view
 	conflicts = python-pystac-ext-xarray-assets
-	source = pystac-1.16.0.tar.gz::https://github.com/stac-utils/pystac/archive/refs/tags/v1.16.0.tar.gz
+	source = pystac-1.16.1.tar.gz::https://github.com/stac-utils/pystac/archive/refs/tags/v1.16.1.tar.gz
 	source = python-3.14-http-error-cleanup.patch
 	source = dateutil-runtime.patch
 	source = check-dateutil-runtime.py
 	source = orjson-runtime.patch
 	source = check-orjson-runtime.py
-	sha256sums = 5d01effd8565d0abbc1fe52756fe476fb6449919274d56d0dff36911b59597f3
+	sha256sums = 45fe3a26ede6230306165697b327d10a6a77d2d8d9a232caef085554d2ff945b
 	sha256sums = b82504d06f1992b00b60cca645072c32ed33503b7f67fb42961baa855c5982b7
 	sha256sums = 4c0a1817aa55598af6fd091ab69040c19f47bcab4945bd7d1e5ab94a173411c8
 	sha256sums = 14f577a5885a4eec650963f48fc87da6c4ed5739684af63a42a680a55bce7c10

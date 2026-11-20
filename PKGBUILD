@@ -2,7 +2,7 @@
 
 pkgname=python-pystac
 _pkgname=pystac
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc='Python library for working with SpatioTemporal Asset Catalogs (STAC)'
 arch=('any')
@@ -43,7 +43,7 @@ optdepends=(
 # distributions. They all contribute to the same pystac package namespace and
 # are bundled here so python-pystac remains a complete, installable package.
 provides=(
-    'python-pystac-core=1.16.0'
+    'python-pystac-core=1.16.1'
     'python-pystac-ext-classification=2.0.2'
     'python-pystac-ext-datacube=2.2.2'
     'python-pystac-ext-eo=1.1.2'
@@ -102,7 +102,7 @@ source=(
     'check-orjson-runtime.py'
 )
 sha256sums=(
-    '5d01effd8565d0abbc1fe52756fe476fb6449919274d56d0dff36911b59597f3'
+    '45fe3a26ede6230306165697b327d10a6a77d2d8d9a232caef085554d2ff945b'
     'b82504d06f1992b00b60cca645072c32ed33503b7f67fb42961baa855c5982b7'
     '4c0a1817aa55598af6fd091ab69040c19f47bcab4945bd7d1e5ab94a173411c8'
     '14f577a5885a4eec650963f48fc87da6c4ed5739684af63a42a680a55bce7c10'
@@ -208,8 +208,8 @@ extensions = (
 for extension in extensions:
     importlib.import_module(f"pystac.extensions.{extension}")
 
-assert version("pystac") == "1.16.0"
-assert version("pystac-core") == "1.16.0"
+assert version("pystac") == "1.16.1"
+assert version("pystac-core") == "1.16.1"
 
 utc = datetime.timezone.utc
 cat = pystac.Catalog(id="sensors", description="demo catalog")
