@@ -12,9 +12,9 @@
 # builds reproducible. Upstream only ships x86_64 for Linux.
 
 pkgname=mimo-desktop-intl-bin
-pkgver=26.1116.161705
-pkgrel=2
-_srcver=26.1116.161705
+pkgver=26.1120.201429
+pkgrel=1
+_srcver=26.1120.201429
 _appdir='Xiaomi MiMo AI'
 pkgdesc='Xiaomi MiMo AI desktop client with built-in AI assistant (official overseas Linux build)'
 arch=('x86_64')
@@ -48,7 +48,7 @@ sha256sums=(
   'e4bb67a49f84ba2fac6f8afda3a37a072c440b1c85f53526c24099a5f87949a2'  # launcher
   'f5bd330f1ba5e2f17c2a1a0cbaeff95e9b279b92a0b0b55013b1e4290b5294d4'  # envguard.c
 )
-sha256sums_x86_64=('86410949baf80865a92298899e8ec317ee89c9f79cd0e7dbddc9484b1106c9c5')
+sha256sums_x86_64=('a8648af72d192ba484b9f934363918a3013d43f1c12514bdd9c94e9fc6ae70fe')
 
 build() {
   # Filter oversized environment strings before Chromium spawns a child: the
@@ -95,14 +95,14 @@ package() {
 
   cp -a "${_extractdir}/opt/${_appdir}" "${pkgdir}/opt/"
 
-  # Upstream ships a single 1024x1024 PNG, but hicolor-icon-theme's index.theme
-  # only lists directories up to 512x512, so a launcher asking for any of the
-  # usual sizes finds nothing and falls back to a missing icon. Derive the
-  # indexed sizes from the source image and keep the original as well.
-  _icon="${_extractdir}/usr/share/icons/hicolor/1024x1024/apps/xiaomi-mimo-desktop-ai.png"
+  # Upstream ships a single 512x512 PNG (it used to be 1024x1024), and
+  # hicolor-icon-theme's index.theme only lists directories up to 512x512, so
+  # a launcher asking for any of the usual sizes finds nothing and falls back
+  # to a missing icon. Derive the indexed sizes from the source image.
+  _icon="${_extractdir}/usr/share/icons/hicolor/512x512/apps/xiaomi-mimo-desktop-ai.png"
   _badge_icon "${_icon}" \
-    "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png" 1024 INTL '#2C549E'
-  for _size in 512 256 128 64 48 32 24 16; do
+    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png" 512 INTL '#2C549E'
+  for _size in 256 128 64 48 32 24 16; do
     _badge_icon "${_icon}" \
       "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png" \
       "${_size}" INTL '#2C549E'

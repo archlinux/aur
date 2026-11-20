@@ -1,7 +1,7 @@
 pkgbase = mimo-desktop-intl-bin
 	pkgdesc = Xiaomi MiMo AI desktop client with built-in AI assistant (official overseas Linux build)
-	pkgver = 26.1116.161705
-	pkgrel = 2
+	pkgver = 26.1120.201429
+	pkgrel = 1
 	url = https://mimo-ai.xiaomimimo.com/desktop/
 	install = mimo-desktop-intl-bin.install
 	arch = x86_64
@@ -23,15 +23,15 @@ pkgbase = mimo-desktop-intl-bin
 	depends = util-linux-libs
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: tray icon support
-	provides = mimo-desktop-ai=26.1116.161705
+	provides = mimo-desktop-ai=26.1120.201429
 	conflicts = mimo-desktop-ai
-	noextract = XiaomiMiMo-AI-26.1116.161705-x64.deb
+	noextract = XiaomiMiMo-AI-26.1120.201429-x64.deb
 	options = !strip
 	source = mimo-desktop-intl-bin.sh
 	source = envguard.c
 	sha256sums = e4bb67a49f84ba2fac6f8afda3a37a072c440b1c85f53526c24099a5f87949a2
 	sha256sums = f5bd330f1ba5e2f17c2a1a0cbaeff95e9b279b92a0b0b55013b1e4290b5294d4
-	source_x86_64 = XiaomiMiMo-AI-26.1116.161705-x64.deb::https://mimocode-cdn.xiaomimimo.com/mimocode/mimodesktopai/XiaomiMiMo-AI-26.1116.161705-x64.deb
-	sha256sums_x86_64 = 86410949baf80865a92298899e8ec317ee89c9f79cd0e7dbddc9484b1106c9c5
+	source_x86_64 = XiaomiMiMo-AI-26.1120.201429-x64.deb::https://mimocode-cdn.xiaomimimo.com/mimocode/mimodesktopai/XiaomiMiMo-AI-26.1120.201429-x64.deb
+	sha256sums_x86_64 = a8648af72d192ba484b9f934363918a3013d43f1c12514bdd9c94e9fc6ae70fe
 
 pkgname = mimo-desktop-intl-bin
