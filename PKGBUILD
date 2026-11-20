@@ -2,14 +2,14 @@
 PROJECT=pageguard
 BASE_NAME=pageguard
 DESCR="A tool for saving HTML-pages with all resources embedded"
-makedepends=("bash" "chrpath" "findutils" "glib2" "amalthea-gdc" "htmldnext-gdc" "gcc-d")
-depends=("glib2" "amalthea-gdc" "htmldnext-gdc")
-pkgver=0.2.0
+makedepends=("bash" "chrpath" "findutils" "glib2" "amalthea-ldc2" "htmldnext-ldc2" "ldc")
+depends=("glib2" "amalthea-ldc2" "htmldnext-ldc2")
+pkgver=0.2.1
 pkgrel=0
 license=("BSL-1.0")
 
-DC=gdc
-DC_PKG=gcc-d
+DC=ldc2
+DC_PKG=ldc
 
 pkgname=pageguard
 pkgdesc="${DESCR}"
@@ -17,7 +17,7 @@ arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=${BASE_NAME}-${pkgver}.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v${pkgver}.tar.gz")
-sha256sums=("8da6a91af1d7fe8c0280fc4329868391602ef83f200d6b91a358e85df9b25d79")
+sha256sums=("a2dce9653010b9822c675b121dd66e823cadfca74aa93af3a76d937584d2bb1b")
 
 build() {
     cd "${PROJECT}-v${pkgver}"
