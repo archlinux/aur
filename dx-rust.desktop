@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=DX RUST
+GenericName=Deus Ex
+Comment=Deus Ex rebuilt in Rust on the Bevy engine, played with your own copy of the game
+Exec=dx-rust
+Icon=applications-games
+Terminal=false
+Categories=Game;ActionGame;RolePlaying;Shooter;
+Keywords=Deus Ex;JC Denton;Bevy;Rust;

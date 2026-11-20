@@ -1,0 +1,11 @@
+post_install() {
+    cat <<'EOF'
+==> DX RUST needs your own copy of Deus Ex: Game of the Year Edition.
+==> With Steam, just install it; Proton fetches the files DX RUST reads and
+==> you don't have to run it. For GOG or anything else, click
+==> "Game Folder..." in the launcher.
+==> The first start copies the game programs to ~/.local/share/dx-rust/
+==> and runs them from there; that copy is refreshed after each upgrade.
+==> For Steam's Game Mode, add /usr/bin/dx-rust as a Non-Steam Game.
+EOF
+}
