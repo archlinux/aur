@@ -2,7 +2,7 @@
 # The tarball is built by CI and upstream publishes SHA256SUMS.txt with every release.
 # The published checksum for this release is pinned in sha256sums below.
 pkgname=sumi-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Paint, draw and sketch: the Sumi desktop app (prebuilt binary)'
 arch=('x86_64')
@@ -42,7 +42,7 @@ optdepends=(
   'alsa-utils: Feedback Sounds and brush sounds via aplay (ALSA)'
 )
 source=("$pkgname-$pkgver-linux-x86_64.tar.gz::https://github.com/mafuzyk/sumi/releases/download/v$pkgver/sumi-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('b2f7106396fff3ba36b7bfe445d4d59742774e15fdeaddd330015c3c5d93fce7')
+sha256sums=('971a36932dda2fad870bb9840f2168392fc36185f6d6f3bf9f93030d69fadb1f')
 
 package() {
   cd "$srcdir/sumi-$pkgver-linux-x86_64"
