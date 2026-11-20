@@ -1,0 +1,16 @@
+# 默认忽略全部内容，再逐项排除（白名单）需要提交的文件
+*
+
+# --- 需要提交的文件 ---
+# 注意：.SRCINFO 故意不列白名单——umbrella 仓库不跟踪它（见仓库根 .gitignore）；
+# 手动推 AUR 时 makepkg --printsrcinfo 生成后用 git add -f .SRCINFO
+!.gitignore
+!PKGBUILD
+!README.md
+!LICENSE
+!nvchecker.toml
+!amd_pytorch.py
+!unsloth-updater.sh
+!unsloth-updater.service
+!unsloth-updater.timer
+!unsloth-studio-rocm-gfx90a-updater.install
