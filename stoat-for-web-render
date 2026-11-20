@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import secrets
 from pathlib import Path
 import re
 import shutil
@@ -18,8 +19,7 @@ from urllib.parse import urlsplit
 
 SOURCE = Path('/usr/share/webapps/stoat-web/dist')
 STATE = Path('/usr/share/webapps/stoat-web')
-CONFIG = Path('/etc/stoat-web/config')
-
+CONFIG = Path('/etc/webapps/stoat-web/config')
 PLACEHOLDERS = {
     '__VITE_HOST__': 'VITE_HOST',
     '__VITE_API_URL__': 'VITE_API_URL',
@@ -98,7 +98,7 @@ def render(source: Path, state: Path, config: Path, if_configured: bool) -> None
     missing = [key for key in REQUIRED if not values.get(key)]
     if missing:
         if if_configured:
-            print('Stoat web: VITE_HOST and VITE_API_URL are not configured; skipping render.')
+            print(f'Stoat web: configure VITE_HOST and VITE_API_URL in {config}, then run stoat-for-web-render; no current/ directory was generated.', file=sys.stderr)
             return
         raise ValueError(f'Required fields are empty: {", ".join(missing)}')
     validate(values)
@@ -114,11 +114,14 @@ def render(source: Path, state: Path, config: Path, if_configured: bool) -> None
 
         tokens_found: set[str] = set()
         for path in staging.rglob('*'):
-            if not path.is_file() or path.suffix not in {'.js', '.html'}:
+            if not path.is_file() or path.suffix not in {'.js', '.mjs', '.html'}:
                 continue
             data = path.read_text(encoding='utf-8')
             patched, tokens = replace_text(data, values)
             tokens_found.update(tokens)
+            leftovers = [token for token in PLACEHOLDERS if token in patched]
+            if leftovers:
+                raise ValueError(f'Unresolved Vite placeholder(s) in {path.relative_to(staging)}: {", ".join(leftovers)}')
             if patched != data:
                 path.write_text(patched, encoding='utf-8')
 
@@ -129,7 +132,7 @@ def render(source: Path, state: Path, config: Path, if_configured: bool) -> None
 
         # Releases live in a root-owned directory; symlink swap is atomic for
         # Nginx and does not mutate pacman-managed files.
-        release = releases / f'release-{os.getpid()}-{staging.stat().st_mtime_ns}'
+        release = releases / f'release-{os.getpid()}-{secrets.token_hex(8)}'
         staging.rename(release)
         staging = None
         tmp_link = state / f'.current-new-{os.getpid()}'

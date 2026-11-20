@@ -2,7 +2,7 @@
 # Stoat's official Solid.js web client (static site; no Node.js runtime required).
 pkgname=stoat-for-web
 pkgver=0.17.0
-pkgrel=2
+pkgrel=5
 pkgdesc='Official Stoat web client for self-hosted instances (static assets)'
 arch=('any')
 url='https://github.com/stoatchat/for-web'
@@ -11,15 +11,14 @@ license=('AGPL-3.0-or-later')
 depends=('python')
 makedepends=('git' 'corepack' 'nodejs>=24' 'python' 'make' 'gcc')
 optdepends=('nginx: serve the generated web assets with Nginx')
-backup=('etc/stoat-web/config')
+backup=('etc/webapps/stoat-web/config')
 
-# Pinned to upstream's stoat-for-web-v0.17.0 tag and its gitlink submodules.
-_web_commit='9fd140a85de494482666bd98cd00fef427ffe3da'
+# Main repo tracks the release tag. Submodules must match gitlinks in that tag.
 _sdk_commit='e88f6aa2de5c283785fdb5669a150719346bb082'
 _livekit_commit='a67176da7f0580ea9fdad22e58a963668f047fca'
 
 source=(
-  "for-web::git+https://github.com/stoatchat/for-web.git#commit=${_web_commit}"
+  "for-web::git+https://github.com/stoatchat/for-web.git#tag=stoat-for-web-v${pkgver}"
   "stoat-js::git+https://github.com/stoatchat/javascript-client-sdk.git#commit=${_sdk_commit}"
   "solid-livekit-components::git+https://github.com/stoatchat/javascript-solid-livekit-components.git#commit=${_livekit_commit}"
   'stoat-for-web.conf'
@@ -32,11 +31,11 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
-  '2a42258707c9c14b55f0ed05ca2edbbd8b190408e6e8c099421c51b265be244b'
-  '5f68d162cc535de10e6e297534a27af42c9ad77295787ce94e93ee4c47675942'
+  '9417cf0e9aef2833fd92686315dd324c51e3adcd2bce3244eb2679c1719f82bf'
+  '917bece4562d0e76390902079fb0250da8f56f143d784ac47b39735a0c348f52'
   'c98047cb3ff48eec00da21788aaf6210ced7731ece3338f97ab84c0bfd31ccab'
-  'de10e53514eaedd5d4abe602143925ec7511695169c884b381b69a0be11a0119'
-  '2bb40c4183e9b89246c5f2a2920da024153b812e7ced3c4eff356a7312c36c0a'
+  'f48a5c1e6e5d9f9bc926bfd86ba194d23984bdae48616e7feca9967f86f9f05c'
+  '64ea37cb385a118f913bc0adbfaaf1dd30fcb198d18b3128c3a818cefec5147d'
 )
 
 prepare() {
@@ -93,7 +92,7 @@ package() {
   install -dm755 "$pkgdir/usr/share/webapps/stoat-web/dist"
   cp -a "$srcdir/for-web/packages/client/dist/." "$pkgdir/usr/share/webapps/stoat-web/dist/"
 
-  install -Dm644 "$srcdir/stoat-for-web.conf" "$pkgdir/etc/stoat-web/config"
+  install -Dm644 "$srcdir/stoat-for-web.conf" "$pkgdir/etc/webapps/stoat-web/config"
   install -Dm755 "$srcdir/stoat-for-web-render" "$pkgdir/usr/bin/stoat-for-web-render"
   install -Dm644 "$srcdir/90-stoat-for-web.hook" "$pkgdir/usr/share/libalpm/hooks/90-stoat-for-web.hook"
   install -Dm644 "$srcdir/nginx-stoat-for-web.conf" "$pkgdir/usr/share/doc/$pkgname/nginx.conf"
