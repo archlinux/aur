@@ -4,7 +4,7 @@ _suffix=tytan652
 pkgname="obs-studio-${_suffix}"
 _pkgver=33.0.2
 pkgver="${_pkgver//-/_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -157,6 +157,7 @@ build() {
     -DCEF_ROOT_DIR="$srcdir/cef_binary_7871_linux_${CARCH/%_v?/}" \
     -DOBS_VERSION_OVERRIDE="$_pkgver" \
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
+    -DCMAKE_COMPILE_WARNING_AS_ERROR=OFF \
     -DCMAKE_INCLUDE_PATH="/usr/include/mbedtls3;/usr/include" \
     -DMbedTLS_ROOT="/usr/lib/mbedtls3/cmake/MbedTLS" \
     -Wno-dev
