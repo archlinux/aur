@@ -183,10 +183,10 @@ pkgbase="linux-$_pkgsuffix"
 _major=7.4
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc2
+_rcver=rc3
 pkgver=${_major}.${_rcver}
-_tagrel=2
-pkgrel=1
+_tagrel=1
+pkgrel=2
 #_stable=${_major}.${_minor}
 #_stable=${_major}
 _stable=${_major}-${_rcver}
@@ -222,7 +222,7 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=620.70.06
+_nv_ver=620.73.04
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 _nv_580xx_ver=580.196.07
@@ -266,8 +266,7 @@ if [ "$_build_nvidia_open" = "yes" ]; then
     source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
              "${_patchsource}/misc/nvidia/0001-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch"
              "${_patchsource}/misc/nvidia/0002-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch"
-             "${_patchsource}/misc/nvidia/0004-Open-sysfs-config-from-the-userspace-root-on-7.3.patch"
-             "${_patchsource}/misc/nvidia/0005-Fix-build-on-Linux-7.4.patch")
+             "${_patchsource}/misc/nvidia/0004-Open-sysfs-config-from-the-userspace-root-on-7.3.patch")
 
 fi
 
@@ -868,7 +867,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('7dcac630dcbe1b267b3465f9c1ce81267ae49e7e1a5b54beaf1d06369a65ad7b50f7de5cd564868e672507e66f66391ee682bc0fc98b058e3920ce0b895c661b'
+b2sums=('94fdbcabc2c6feefe585c1564a7398755201372f87e057aa83ec5e049dbb06c6f1bf8c7b044563693e35fb2e2b11bbd64c56997f9e8262cf0a9231e0ebe6cf57'
         'SKIP'
-        'c7cd48ad46fdc7c94e16164e7fd4610fc42e71262f48650da84e976a36745ab8b517c54445d04d2ee8e7c557733d6609d1cd4f09058fb8213d8a6ed4821a6914'
+        '5917822e1af0f3ebef2cf4902692cbe7ecd40574c2626e6aad4a011a7479577a768bb1f972de226cf9d37e74d8b1eec15057bc098a7154870cc2c21bb4540c07'
         'cb10d76ed978235db2f7db2de8a239331cf0b1bbf0482d32a5037e3602d6f9fb10a582a719ea49d53b7c15ff465e0f1a0594e61f3b235508336c67aa13f12bb4')
