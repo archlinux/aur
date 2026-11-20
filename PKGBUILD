@@ -4,35 +4,33 @@ pkgname="$_pkgname-mkl-git"
 # Upstream has changed tag formats, epoch is necessary
 epoch=1
 _pkgver=2.0
-pkgver=2.0.a.7.0.r0.g38779704
+pkgver=2.0.0b.1.4.r51.g7f3ba4ad
 pkgrel=1
-pkgdesc="whole-genome association analysis toolset, version 2.00 (alpha); dynamically linked to Intel MKL"
+pkgdesc="whole-genome association analysis toolset, version 2.00 (beta); dynamically linked to Intel MKL"
 arch=(x86_64)
 license=('GPL-3.0-or-later')
 url="https://www.cog-genomics.org/plink/2.0/"
-source=('plink-ng::git+https://github.com/chrchang/plink-ng.git' fixes.patch)
+source=('plink-ng::git+https://github.com/chrchang/plink-ng.git')
 depends=('zlib>=1.2.4' 'intel-oneapi-mkl' 'intel-oneapi-openmp' 'intel-oneapi-compiler-shared-runtime')
 makedepends=('git')
 provides=('plink2')
-sha256sums=('SKIP'
-            'ef03418c3f0e3a6a2569f1df76a8a14f8d0cbb46415cfa3c9ccbdbbf0de8fd0c')
-
-prepare() {
-    cd "plink-ng/$_pkgver/build_dynamic"
-    patch -i "${srcdir}/fixes.patch"
-}
+conflicts=('plink2')
+sha256sums=('SKIP')
 
 build() {
     cd "plink-ng/$_pkgver/build_dynamic"
-    DYNAMIC_MKL=1 LD_LIBRARY_PATH="/opt/intel/oneapi/compiler/latest/lib" BIN=$_pkgname make -f Makefile
+    make NO_AVX2= NO_SSE42= DYNAMIC_MKL=1 \
+        MKLROOT=/opt/intel/oneapi/mkl/latest \
+        MKL_IOMP5_DIR=/opt/intel/oneapi/compiler/latest/lib \
+        SFX=
 }
 
 package() {
     cd "plink-ng/$_pkgver/build_dynamic"
-    BIN="$_pkgname" DESTDIR="$pkgdir" PREFIX=/usr make -f Makefile install
+    install -Dm755 -t "$pkgdir/usr/bin" plink2 pgen_compress
 }
 
 pkgver() {
     cd "plink-ng"
-    echo "$_pkgver"."$(git describe --tags --long --match "v2.0*" | sed -E 's/^[^-]+-([^-]+)-([0-9]+)-(g[a-f0-9]+)/\1.r\2.\3/')"
+    git describe --tags --long --match "v2.0*" | sed -E 's/^v//; s/-([0-9]+)-(g[0-9a-f]+)$/.r\1.\2/; s/-//'
 }
