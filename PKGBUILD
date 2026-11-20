@@ -17,7 +17,7 @@ provides=("wordle-solver=$pkgver")
 conflicts=('wordle-solver')
 
 pkgver() {
-	cd "${srcdir}/wordle"
+	cd "${srcdir}/wordle-solver"
 	git describe --tags --always \
 	  | sed -E 's/^v//' \
 	  | sed -E 's/^(.+)-([0-9]+)-g/\1.\2./' \
@@ -25,12 +25,12 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/wordle" || exit 1
+	cd "${srcdir}/wordle-solver" || exit 1
 	make wordle
 }
 
 package() {
-	cd "${srcdir}/wordle" || exit 1
+	cd "${srcdir}/wordle-solver" || exit 1
 	install -Dm755 wordle "$pkgdir/usr/bin/wordle-solver"
 
 	install -d "$pkgdir/usr/share/wordle-solver/word_list_files"

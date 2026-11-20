@@ -8,7 +8,7 @@ pkgbase = wordle-solver-git
 	makedepends = make
 	makedepends = gcc
 	makedepends = git
-	provides = wordle-solver
+	provides = wordle-solver=1.3.49
 	conflicts = wordle-solver
 	source = git+https://github.com/emile-ross/wordle-solver.git
 	sha256sums = SKIP
