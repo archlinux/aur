@@ -8,7 +8,7 @@ license=('GPL')
 makedepends=('lazarus')
 depends=('qt5-base' 'qt5-x11extras' 'qt5pas')
 source=("https://www.hnsky.org/astap_source.zip")
-sha256sums=('3c1a251519aff79fa696c119c33c6827ea996cf718ebb35ccd2838510017928d')
+sha256sums=('0010e4a981f218f61d7d11677d68d9673b4dcefd5004d68541d5b01f357e606a')
 optdepends=('hyperleda-galaxy-db-astap: 25MB database of 1.3m galaxies and 171k other non-star objects'
   'w08-star-db-astap: 250KB database of stars up to magnitude 8, reliable above 20° FOV'
   'd05-star-db-astap: 100MB database of 500 stars per square degree, reliable with 0.6-10° FOV'

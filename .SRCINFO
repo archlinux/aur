@@ -19,6 +19,6 @@ pkgbase = astap
 	conflicts = astap-bin-qt5
 	conflicts = astap-cli
 	source = https://www.hnsky.org/astap_source.zip
-	sha256sums = 3c1a251519aff79fa696c119c33c6827ea996cf718ebb35ccd2838510017928d
+	sha256sums = 0010e4a981f218f61d7d11677d68d9673b4dcefd5004d68541d5b01f357e606a
 
 pkgname = astap
