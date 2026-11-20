@@ -2,7 +2,7 @@
 
 pkgname=arkha-git
 _pkgname=arkha
-pkgver=1.1.0.r216.g516c594
+pkgver=1.2.0dev.r221.g44a1fbd
 pkgrel=1
 pkgdesc='A fast graphical file manager (development version from master)'
 arch=('x86_64' 'aarch64')
@@ -85,6 +85,8 @@ package() {
     install -Dm644 "$mo" "$pkgdir/usr/share/locale/${mo#target/release/locale/}"
   done
   # The manual's pages build.rs made from docs/manual.
+  # Never a package without them (the loop below would pass without any).
+  test -f target/release/manual/en/index.html
   find target/release/manual -type f | while read -r f; do
     install -Dm644 "$f" "$pkgdir/usr/share/arkha/${f#target/release/}"
   done
