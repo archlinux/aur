@@ -1,0 +1,2814 @@
+Description: drop some use of FindBin and hardcode paths
+Author: Tim Booth <tbooth@ceh.ac.uk>
+Forwarded: not-needed
+--- a/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl
++++ b/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl
+@@ -5,10 +5,9 @@ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling);
+ 
+-use FindBin;
+ use File::Basename;
+ 
+-$ENV{PATH} .= ":$FindBin::RealBin/../../trinity-plugins/slclust/bin/";
++$ENV{PATH} .= ":/usr/lib/trinityrnaseq/trinity-plugins/slclust/bin/";
+ 
+ my $help_flag;
+ 
+@@ -87,7 +86,7 @@ if ($help_flag) {
+     die $usage;
+ }
+ 
+-my $util_dir = "$FindBin::RealBin/util";
++my $util_dir = "/usr/lib/trinityrnaseq/util";
+ 
+ my $found_all_tools = 1;
+ my @required_tools = qw (blat slclust);
+--- a/Trinity
++++ b/Trinity
+@@ -5,8 +5,7 @@ use warnings;
+ use threads;
+ no strict qw(subs refs);
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use File::Basename;
+ use Time::localtime;
+ use Cwd;
+@@ -31,7 +30,7 @@ my $ABSOLUTE_MIN_CONTIG_LENGTH = 100;  #
+ 
+ BEGIN {
+ 
+-    $ENV{TRINITY_HOME} = "$FindBin::RealBin";
++    $ENV{TRINITY_HOME} = "/usr/lib/trinityrnaseq";
+ 
+ }
+ 
+@@ -39,16 +38,16 @@ open (STDERR, ">&STDOUT");  ## capturing
+ 
+ 
+ #directory defnintions
+-my $ROOTDIR = "$FindBin::RealBin";
++my $ROOTDIR = "/usr/lib/trinityrnaseq";
+ my $UTILDIR = "$ROOTDIR/util";
+ my $MISCDIR = "$UTILDIR/misc";
+-my $INCHWORM_DIR = "$ROOTDIR/Inchworm/bin/";
+-my $CHRYSALIS_DIR = "$ROOTDIR/Chrysalis";
++my $INCHWORM_DIR = "/usr/bin/";
++my $CHRYSALIS_DIR = "/usr";
+ my $BUTTERFLY_DIR = "$ROOTDIR/Butterfly";
+ my $COLLECTL_DIR = "$ROOTDIR/trinity-plugins/COLLECTL/collectl";
+ my $TRINITY_PLUGINS_DIR = "$ROOTDIR/trinity-plugins";
+ my $TRINITY_BIN_DIR = "$TRINITY_PLUGINS_DIR/BIN";
+-my $PARAFLY = "$TRINITY_BIN_DIR/ParaFly";
++my $PARAFLY = "/usr/bin/ParaFly";
+ my $HTSLIB_DIR = "$ROOTDIR/trinity-plugins/htslib";
+ 
+ $ENV{LD_LIBRARY_PATH} .= ":${HTSLIB_DIR}";
+@@ -520,7 +519,7 @@ my $usage_synopsis = qq^#
+ #        Trinity --genome_guided_bam rnaseq_alignments.csorted.bam --max_memory 50G\
+ #                --genome_guided_max_intron 10000 --CPU 6
+ #
+-#     see: $FindBin::RealBin/sample_data/test_Trinity_Assembly/
++#     see: /usr/lib/trinityrnaseq/sample_data/test_Trinity_Assembly/
+ #          for sample data and 'runMe.sh' for example Trinity execution
+ #
+ #     For more details, visit: http://trinityrnaseq.github.io
+@@ -3518,11 +3517,7 @@ sub run_genome_guided_Trinity {
+     if ($long_reads_bam) {
+         ## add LongReads read group
+         
+-        unless ($ENV{PICARD_HOME}) {
+-            die "Error, for genome-guided long reads pipeline, need env var PICARD_HOME set to the directory where picard.jar is installed";
+-        }
+-        
+-        my $PICARD_HOME = $ENV{PICARD_HOME};
++        my $PICARD_HOME = "/usr/share/java";
+         
+         my $pipeliner = new Pipeliner(-verbose => 2);
+         
+--- a/util/align_and_estimate_abundance.pl
++++ b/util/align_and_estimate_abundance.pl
+@@ -2,7 +2,6 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+ 
+ use Cwd;
+ use Carp;
+@@ -418,7 +417,7 @@ main: {
+ 
+     if ($trinity_mode && ! $gene_trans_map_file) {
+         $gene_trans_map_file = "$transcripts.gene_trans_map";
+-        my $cmd = "$FindBin::RealBin/support_scripts/get_Trinity_gene_to_trans_map.pl $transcripts > $gene_trans_map_file";
++        my $cmd = "/usr/lib/trinityrnaseq/util/support_scripts/get_Trinity_gene_to_trans_map.pl $transcripts > $gene_trans_map_file";
+         &process_cmd($cmd) unless (-e $gene_trans_map_file);
+     }
+ 
+@@ -824,7 +823,7 @@ sub run_kallisto {
+         
+         if ($gene_trans_map_file) {
+             
+-            my $cmd = "$FindBin::RealBin/support_scripts/kallisto_trans_to_gene_results.pl $output_dir/abundance.tsv $gene_trans_map_file > $output_dir/abundance.tsv.genes";
++            my $cmd = "/usr/lib/trinityrnaseq/util/support_scripts/kallisto_trans_to_gene_results.pl $output_dir/abundance.tsv $gene_trans_map_file > $output_dir/abundance.tsv.genes";
+             &process_cmd($cmd);
+         }
+     }
+@@ -890,7 +889,7 @@ sub run_salmon {
+             
+             if ($gene_trans_map_file) {
+                 
+-                my $cmd = "$FindBin::RealBin/support_scripts/salmon_trans_to_gene_results.pl $output_dir/quant.sf $gene_trans_map_file > $output_dir/quant.sf.genes";
++                my $cmd = "/usr/lib/trinityrnaseq/util/support_scripts/salmon_trans_to_gene_results.pl $output_dir/quant.sf $gene_trans_map_file > $output_dir/quant.sf.genes";
+                 &process_cmd($cmd);
+             }
+         };
+--- a/Analysis/DifferentialExpression/ROKU.pl
++++ b/Analysis/DifferentialExpression/ROKU.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use BHStats;
+ 
+ my $usage = "usage: $0 fpkm.matrix\n\n";
+--- a/Analysis/DifferentialExpression/diff_expr_analysis_to_heatmap_html.pl
++++ b/Analysis/DifferentialExpression/diff_expr_analysis_to_heatmap_html.pl
+@@ -5,9 +5,8 @@ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling);
+ use File::Basename;
+-use FindBin;
+ 
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use CanvasXpress::Heatmap;
+ 
+ 
+@@ -80,7 +79,7 @@ main: {
+         
+         open (my $ofh, ">$R_script") or die "Error, cannot write to file $R_script";
+         
+-        print $ofh "source(\"$FindBin::RealBin/R/get_cluster_info.R\")\n";
++        print $ofh "source(\"/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/R/get_cluster_info.R\")\n";
+         print $ofh "get_cluster_info(\"$R_data_file\")\n";
+         close $ofh;
+         
+--- a/Analysis/DifferentialExpression/get_transcript_lengths.pl
++++ b/Analysis/DifferentialExpression/get_transcript_lengths.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ 
+--- a/Analysis/DifferentialExpression/merge_matrices.pl
++++ b/Analysis/DifferentialExpression/merge_matrices.pl
+@@ -5,9 +5,8 @@ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling);
+ use Cwd;
+-use FindBin;
+ use File::Basename;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use Data::Dumper;
+ 
+--- a/Analysis/DifferentialExpression/remove_batch_effects_from_count_matrix.pl
++++ b/Analysis/DifferentialExpression/remove_batch_effects_from_count_matrix.pl
+@@ -5,9 +5,8 @@ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling);
+ use Cwd;
+-use FindBin;
+ use File::Basename;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use Data::Dumper;
+ 
+--- a/Analysis/DifferentialExpression/run_DE_analysis.pl
++++ b/Analysis/DifferentialExpression/run_DE_analysis.pl
+@@ -5,9 +5,8 @@ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+ use Cwd;
+-use FindBin;
+ use File::Basename;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use Data::Dumper;
+ 
+@@ -442,7 +441,7 @@ sub run_edgeR_sample_pair {
+     print $ofh "write.table(rnaseqMatrix, file=\'$output_prefix.edgeR.count_matrix\', sep='\t', quote=F, row.names=T)\n";
+     
+     ## generate MA and Volcano plots
+-    print $ofh "source(\"$FindBin::RealBin/R/rnaseq_plot_funcs.R\")\n";
++    print $ofh "source(\"/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R\")\n";
+     print $ofh "pdf(\"$output_prefix.edgeR.DE_results.MA_n_Volcano.pdf\")\n";
+ 
+     print $ofh "plot_MA_and_Volcano(rownames(result_table), result_table\$logCPM, result_table\$logFC, result_table\$FDR)\n";
+@@ -542,7 +541,7 @@ sub run_DESeq2_sample_pair {
+     
+     
+     ## generate MA and Volcano plots
+-    print $ofh "source(\"$FindBin::RealBin/R/rnaseq_plot_funcs.R\")\n";
++    print $ofh "source(\"/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R\")\n";
+     print $ofh "pdf(\"$output_prefix.DESeq2.DE_results.MA_n_Volcano.pdf\")\n";
+     print $ofh "plot_MA_and_Volcano(rownames(res), log2(res\$baseMean+1), res\$log2FoldChange, res\$padj)\n";
+     print $ofh "dev.off()\n";
+@@ -621,7 +620,7 @@ sub run_limma_voom_sample_pair {
+     
+     ## generate MA and Volcano plots
+     print $ofh "# MA and volcano plots\n";
+-    print $ofh "source(\"$FindBin::RealBin/R/rnaseq_plot_funcs.R\")\n";
++    print $ofh "source(\"/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R\")\n";
+     print $ofh "pdf(\"$output_prefix.voom.DE_results.MA_n_Volcano.pdf\")\n";
+     print $ofh "plot_MA_and_Volcano(rownames(tTags2), tTags2\$logCPM, tTags\$logFC, tTags\$'adj.P.Val')\n";
+     print $ofh "dev.off()\n";
+@@ -719,7 +718,7 @@ sub run_ROTS_sample_pair {
+     
+     ## generate MA and Volcano plots
+     print $ofh "# MA and volcano plots\n";
+-    print $ofh "source(\"$FindBin::RealBin/R/rnaseq_plot_funcs.R\")\n";
++    print $ofh "source(\"/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R\")\n";
+     print $ofh "pdf(\"$output_prefix.voom.DE_results.MA_n_Volcano.pdf\")\n";
+     print $ofh "plot_MA_and_Volcano(rownames(final_table), final_table\$logCPM, final_table\$logFC, final_table\$FDR)\n";
+     print $ofh "dev.off()\n";
+--- a/Analysis/DifferentialExpression/run_TMM_normalization_write_FPKM_matrix.pl
++++ b/Analysis/DifferentialExpression/run_TMM_normalization_write_FPKM_matrix.pl
+@@ -5,9 +5,8 @@ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling);
+ use Cwd;
+-use FindBin;
+ use File::Basename;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use Data::Dumper;
+ 
+@@ -104,7 +103,6 @@ sub run_TMM {
+     
+     my $tmm_norm_script = "__tmp_runTMM.R";
+     open (my $ofh, ">$tmm_norm_script") or die "Error, cannot write to $tmm_norm_script";
+-    #print $ofh "source(\"$FindBin::RealBin/R/edgeR_funcs.R\")\n";
+     
+     print $ofh "library(edgeR)\n\n";
+     
+--- a/trinity_ext_sample_data/test_align_and_estimate_abundance/align_and_estimate_tester.pl
++++ b/trinity_ext_sample_data/test_align_and_estimate_abundance/align_and_estimate_tester.pl
+@@ -3,9 +3,8 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+ use File::Basename;
+-use lib ("$ENV{TRINITY_HOME}/PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Process_cmd;
+ 
+ 
+--- a/util/misc/Artemis/join_multi_wig_to_graph_plot.pl
++++ b/util/misc/Artemis/join_multi_wig_to_graph_plot.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use WigParser;
+ 
+ 
+--- a/util/misc/ButterflyFastaToGraphDot.pl
++++ b/util/misc/ButterflyFastaToGraphDot.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib", "$FindBin::RealBin/../../PerlLib/KmerGraphLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib", "/usr/lib/trinityrnaseq/PerlLib/KmerGraphLib");
+ 
+ use Fasta_reader;
+ use StringGraph;
+--- a/util/misc/HiCpipe_nameSortedSam_to_raw.pl
++++ b/util/misc/HiCpipe_nameSortedSam_to_raw.pl
+@@ -3,9 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ use Data::Dumper;
+--- a/util/misc/Monarch
++++ b/util/misc/Monarch
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib", "$FindBin::RealBin/../../PerlLib/KmerGraphLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use Fasta_reader;
+ 
+--- a/util/misc/N50.pl
++++ b/util/misc/N50.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ 
+--- a/util/misc/SAM_coordsorted_max_reads_per_position.pl
++++ b/util/misc/SAM_coordsorted_max_reads_per_position.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/misc/SAM_intron_extractor.pl
++++ b/util/misc/SAM_intron_extractor.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use SAM_reader;
+ use SAM_entry;
+--- a/util/misc/SAM_nameSorted_to_uniq_count_stats.pl
++++ b/util/misc/SAM_nameSorted_to_uniq_count_stats.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/misc/SAM_pair_to_bed.pl
++++ b/util/misc/SAM_pair_to_bed.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ use Overlap_piler;
+--- a/util/misc/SAM_sortAny_to_count_stats.pl
++++ b/util/misc/SAM_sortAny_to_count_stats.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/misc/SAM_toString.pl
++++ b/util/misc/SAM_toString.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/misc/SAM_to_bed.pl
++++ b/util/misc/SAM_to_bed.pl
+@@ -1,10 +1,7 @@
+-#!/usr/bin/env perl
+-
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/misc/SAM_to_fasta.pl
++++ b/util/misc/SAM_to_fasta.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ use Nuc_translator;
+--- a/util/misc/allele_simulator.pl
++++ b/util/misc/allele_simulator.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib("$FindBin::RealBin/../../PerlLib");
++use lib("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use List::Util qw(min max);
+ use Data::Dumper;
+--- a/util/misc/average.pl
++++ b/util/misc/average.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use BHStats;
+ 
+ my $count = 0;
+--- a/util/misc/blast_outfmt6_group_segments.pl
++++ b/util/misc/blast_outfmt6_group_segments.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib "$FindBin::RealBin/../../PerlLib";
++use lib "/usr/lib/trinityrnaseq/PerlLib";
+ use Fasta_reader;
+ use List::Util qw(min max);
+ use Overlap_piler;
+--- a/util/misc/blast_outfmt6_group_segments.to_Markov_Clustering.pl
++++ b/util/misc/blast_outfmt6_group_segments.to_Markov_Clustering.pl
+@@ -5,8 +5,7 @@ use warnings;
+ 
+ use Carp;
+ use Getopt::Long qw(:config posix_default no_ignore_case bundling pass_through);
+-use FindBin;
+-use lib "$FindBin::RealBin/../../PerlLib";
++use lib "/usr/lib/trinityrnaseq/PerlLib";
+ use Pipeliner;
+ use File::Basename;
+ 
+--- a/util/misc/capture_orig_n_unmapped_reads.pl
++++ b/util/misc/capture_orig_n_unmapped_reads.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use Cwd;
+ use Carp;
+--- a/util/misc/cdna_fasta_file_to_transcript_gtf.pl
++++ b/util/misc/cdna_fasta_file_to_transcript_gtf.pl
+@@ -4,8 +4,7 @@ use strict;
+ use warnings;
+ 
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use Fasta_reader;
+ 
+--- a/util/misc/check_fastQ_pair_ordering.pl
++++ b/util/misc/check_fastQ_pair_ordering.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fastq_reader;
+ 
+ my $usage = "usage: $0 left.fq right.fq\n\n";
+--- a/util/misc/contig_ExN50_statistic.pl
++++ b/util/misc/contig_ExN50_statistic.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use File::Basename;
+ 
+--- a/util/misc/ensure_paired_end_bam_file.pl
++++ b/util/misc/ensure_paired_end_bam_file.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use SAM_reader;
+ use SAM_entry;
+--- a/util/misc/extract_fastQ_pairings.pl
++++ b/util/misc/extract_fastQ_pairings.pl
+@@ -5,8 +5,7 @@ use warnings;
+ 
+ use Data::Dumper;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fastq_reader;
+ 
+ my $DEBUG = 0;
+--- a/util/misc/fastQ_rand_subset.SE.reservoir_sampling_reqiures_high_mem.pl
++++ b/util/misc/fastQ_rand_subset.SE.reservoir_sampling_reqiures_high_mem.pl
+@@ -22,8 +22,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fastq_reader;
+ use File::Basename;
+ 
+--- a/util/misc/fastQ_rand_subset.pl
++++ b/util/misc/fastQ_rand_subset.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fastq_reader;
+ use File::Basename;
+ 
+--- a/util/misc/fastQ_rand_subset.reservoir_sampling_reqiures_high_mem.pl
++++ b/util/misc/fastQ_rand_subset.reservoir_sampling_reqiures_high_mem.pl
+@@ -22,8 +22,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fastq_reader;
+ use File::Basename;
+ 
+--- a/util/misc/fasta_file_reformatter.pl
++++ b/util/misc/fasta_file_reformatter.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ my $usage = "usage: $0 fasta\n";
+--- a/util/misc/fasta_filter_by_min_length.pl
++++ b/util/misc/fasta_filter_by_min_length.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ 
+--- a/util/misc/fasta_to_cmd_generator.pl
++++ b/util/misc/fasta_to_cmd_generator.pl
+@@ -1,8 +1,7 @@
+ #!/usr/bin/env perl
+ 
+ use strict;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use Getopt::Std;
+ use strict;
+--- a/util/misc/fasta_write_sense_n_anti.pl
++++ b/util/misc/fasta_write_sense_n_anti.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use Nuc_translator;
+ 
+--- a/util/misc/fastq_interleave_pairs.pl
++++ b/util/misc/fastq_interleave_pairs.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use Fastq_reader;
+ 
+--- a/util/misc/fastq_unweave_pairs.pl
++++ b/util/misc/fastq_unweave_pairs.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use Fastq_reader;
+ 
+--- a/util/misc/gene_gff3_to_introns.pl
++++ b/util/misc/gene_gff3_to_introns.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Gene_obj;
+ use Fasta_reader;
+ use GFF3_utils;
+--- a/util/misc/get_longest_isoform_seq_per_trinity_gene.pl
++++ b/util/misc/get_longest_isoform_seq_per_trinity_gene.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ print STDERR "\n\n\tNOTE - longest transcript isn't always the best transcript!... consider filtering based on relative expression support ... \n\n";
+--- a/util/misc/gff3_file_to_cdna.pl
++++ b/util/misc/gff3_file_to_cdna.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Gene_obj;
+ use Fasta_reader;
+ use GFF3_utils;
+--- a/util/misc/gff3_file_utr_coverage_trimmer.pl
++++ b/util/misc/gff3_file_utr_coverage_trimmer.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Gene_obj;
+ use Fasta_reader;
+ use GFF3_utils;
+--- a/util/misc/gff3_to_genome_feature_base_encoding.parse_SAM.pl
++++ b/util/misc/gff3_to_genome_feature_base_encoding.parse_SAM.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Gene_obj;
+ use GFF3_utils;
+ use SAM_reader;
+--- a/util/misc/gff3_to_genome_feature_base_encoding.pl
++++ b/util/misc/gff3_to_genome_feature_base_encoding.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Gene_obj;
+ use GFF3_utils;
+ use Data::Dumper;
+--- a/util/misc/gmap_gff3_chimera_jaccard_analyzer.pl
++++ b/util/misc/gmap_gff3_chimera_jaccard_analyzer.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use GFF3_alignment_utils;
+ use WigParser;
+ use Data::Dumper;
+--- a/util/misc/gmap_gff3_to_percent_length_stats.pl
++++ b/util/misc/gmap_gff3_to_percent_length_stats.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ my $usage = "usage: $0 gmap.gff3 transcripts.fasta\n\n";
+--- a/util/misc/gmap_native_to_format_converter.pl
++++ b/util/misc/gmap_native_to_format_converter.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Gene_obj;
+ 
+ my $usage = "usage: $0 file.gmap (BED|GTF)\n\n";
+--- a/util/misc/gtf_to_bed_format.pl
++++ b/util/misc/gtf_to_bed_format.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Gene_obj;
+ 
+ my $usage = "usage: $0 transcripts.gtf\n\n";
+--- a/util/misc/gtf_to_introns.pl
++++ b/util/misc/gtf_to_introns.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Gene_obj;
+ use Fasta_reader;
+ 
+--- a/util/misc/identify_distal_isoform_variations.pl
++++ b/util/misc/identify_distal_isoform_variations.pl
+@@ -2,9 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+ 
+-use lib ("$FindBin::RealBin/../../PerlLib", "$FindBin::RealBin/PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib", "/usr/lib/trinityrnaseq/PerlLib");
+ use Gene_obj;
+ use GFF3_utils;
+ 
+--- a/util/misc/illustrate_ref_comparison.pl
++++ b/util/misc/illustrate_ref_comparison.pl
+@@ -3,9 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-
+-use lib ("$FindBin::RealBin/../../PerlLib/");
++use lib ("/usr/lib/trinityrnaseq/PerlLib/");
+ use Ascii_genome_illustrator;
+ use Cwd;
+ 
+--- a/util/misc/jaccard_sam_pair_refiner.pl
++++ b/util/misc/jaccard_sam_pair_refiner.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/misc/kmer_counter.pl
++++ b/util/misc/kmer_counter.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ use Carp;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use Ktree;
+ use Nuc_translator;
+--- a/util/misc/m8_blastclust.pl
++++ b/util/misc/m8_blastclust.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling);
+--- a/util/misc/map_gtf_transcripts_to_genome_annots.pl
++++ b/util/misc/map_gtf_transcripts_to_genome_annots.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib/");
++use lib ("/usr/lib/trinityrnaseq/PerlLib/");
+ use Gene_obj;
+ use GFF3_utils;
+ use GTF_utils;
+--- a/util/misc/merge_blast_n_rsem_results.pl
++++ b/util/misc/merge_blast_n_rsem_results.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ my $usage = "usage: $0 rsem.out blast.outfmt6 [transcripts.fasta]\n\n";
+--- a/util/misc/nameSorted_SAM_to_FastQ.pl
++++ b/util/misc/nameSorted_SAM_to_FastQ.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use SAM_reader;
+ use SAM_entry;
+--- a/util/misc/nameSorted_SAM_to_paired_fastq.pl
++++ b/util/misc/nameSorted_SAM_to_paired_fastq.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use SAM_reader;
+ use SAM_entry;
+--- a/util/misc/pairwise_kmer_content_comparer.pl
++++ b/util/misc/pairwise_kmer_content_comparer.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ my $usage = "usage: $0 file.fasta [kmer_length=25]\n\n";
+--- a/util/misc/print_kmers.pl
++++ b/util/misc/print_kmers.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ my $usage = "usage: $0 file.fa [kmer_length=25]\n\n";
+--- a/util/misc/prop_pair_sam_refiner.pl
++++ b/util/misc/prop_pair_sam_refiner.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/misc/randomly_sample_PE_fastq.pl
++++ b/util/misc/randomly_sample_PE_fastq.pl
+@@ -10,8 +10,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fastq_reader;
+ use File::Basename;
+ use List::Util qw(shuffle);
+--- a/util/misc/run_HISAT.pl
++++ b/util/misc/run_HISAT.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib("$FindBin::RealBin/../../PerlLib");
++use lib("/usr/lib/trinityrnaseq/PerlLib");
+ use Pipeliner;
+ use File::Basename;
+ use Cwd;
+--- a/util/misc/run_STAR.pl
++++ b/util/misc/run_STAR.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib("$FindBin::RealBin/../../PerlLib");
++use lib("/usr/lib/trinityrnaseq/PerlLib");
+ use Pipeliner;
+ use File::Basename;
+ use Cwd;
+--- a/util/misc/run_STAR_via_samples_file.pl
++++ b/util/misc/run_STAR_via_samples_file.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib("$FindBin::RealBin/../../PerlLib");
++use lib("/usr/lib/trinityrnaseq/PerlLib");
+ use Pipeliner;
+ use File::Basename;
+ use Cwd;
+--- a/util/misc/run_read_simulator_per_fasta_entry.pl
++++ b/util/misc/run_read_simulator_per_fasta_entry.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ 
+@@ -41,7 +40,7 @@ main: {
+         
+         my $outfile = "$sim_out_dir/$outdir/$outdir.reads.fa";
+         
+-        my $cmd = "$FindBin::RealBin/simulate_illuminaPE_from_transcripts.pl --transcripts $template_file --out_prefix $template_file";
++        my $cmd = "/usr/lib/trinityrnaseq/util/misc/simulate_illuminaPE_from_transcripts.pl --transcripts $template_file --out_prefix $template_file";
+         if ($require_proper_pairs_flag) {
+             $cmd .= " --require_proper_pairs";
+         }
+--- a/util/misc/simulate_illuminaPE_from_transcripts.pl
++++ b/util/misc/simulate_illuminaPE_from_transcripts.pl
+@@ -4,8 +4,7 @@ use strict;
+ use warnings;
+ use Carp;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use Nuc_translator;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+--- a/util/misc/simulate_illuminaPE_from_transcripts.wgsim.pl
++++ b/util/misc/simulate_illuminaPE_from_transcripts.wgsim.pl
+@@ -4,8 +4,7 @@ use strict;
+ use warnings;
+ use Carp;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use Nuc_translator;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+@@ -118,9 +117,9 @@ main: {
+     &process_cmd($cmd);
+ 
+     # convert to fasta format
+-    &process_cmd("$FindBin::Bin/../support_scripts/fastQ_to_fastA.pl -I $left_prefix.fq > $left_prefix.fa");
++    &process_cmd("/usr/lib/trinityrnaseq/util/support_scripts/fastQ_to_fastA.pl -I $left_prefix.fq > $left_prefix.fa");
+ 
+-    &process_cmd("$FindBin::Bin/../support_scripts/fastQ_to_fastA.pl -I $right_prefix.fq > $right_prefix.fa");
++    &process_cmd("/usr/lib/trinityrnaseq/util/support_scripts/fastQ_to_fastA.pl -I $right_prefix.fq > $right_prefix.fa");
+ 
+     #unlink("$left_prefix.fq", "$right_prefix.fq");
+ 
+--- a/util/misc/sixFrameTranslation.pl
++++ b/util/misc/sixFrameTranslation.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use Nuc_translator;
+ 
+--- a/util/misc/sort_fastq.pl
++++ b/util/misc/sort_fastq.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fastq_reader;
+ 
+ my $usage = "usage: $0 file.fastq\n\n";
+--- a/util/misc/strip_fasta_header.pl
++++ b/util/misc/strip_fasta_header.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ use Carp;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ my $usage = "usage: $0 file.fasta\n\n";
+--- a/util/misc/transcript_coverage_UTR_trimmer.pl
++++ b/util/misc/transcript_coverage_UTR_trimmer.pl
+@@ -5,9 +5,8 @@ use warnings;
+ 
+ use threads;
+ 
+-use FindBin;
+ use Getopt::Long qw(:config no_ignore_case bundling);
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use WigParser;
+ use Fasta_reader;
+ use Statistics::Descriptive;
+@@ -71,7 +70,7 @@ if ($SS_lib_type && $SS_lib_type !~ /^(F
+ 	die "Error, invalid --SS_lib_type, only F, R, FR, or RF are possible values";
+ }
+ 
+-my $UTIL_DIR = "$FindBin::RealBin/";
++my $UTIL_DIR = "/usr/lib/trinityrnaseq/util/support_scripts";
+ 
+ main: {
+ 
+--- a/util/misc/transcript_fasta_to_ORF_pics.pl
++++ b/util/misc/transcript_fasta_to_ORF_pics.pl
+@@ -1,7 +1,6 @@
+ #!/usr/bin/env perl
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use strict;
+ use warnings;
+--- a/util/misc/transcript_gff3_to_bed.pl
++++ b/util/misc/transcript_gff3_to_bed.pl
+@@ -3,9 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Gene_obj;
+ 
+ my $usage = "usage: $0 alignments.gff3\n\n";
+--- a/util/misc/trinity_component_distribution.pl
++++ b/util/misc/trinity_component_distribution.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ use POSIX qw (ceil);
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ my $usage = "usage: $0 Trinity.fasta [length_bin_size=100] [out_prefix='dist']\n\n";
+--- a/util/support_scripts/SAM_coordSorted_fragment_Read_coverage_writer.pl
++++ b/util/support_scripts/SAM_coordSorted_fragment_Read_coverage_writer.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/support_scripts/SAM_coordSorted_fragment_coverage_writer2.pl
++++ b/util/support_scripts/SAM_coordSorted_fragment_coverage_writer2.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/support_scripts/SAM_extract_properly_mapped_pairs.pl
++++ b/util/support_scripts/SAM_extract_properly_mapped_pairs.pl
+@@ -1,8 +1,7 @@
+ #!/usr/bin/env perl
+ 
+ use strict;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/support_scripts/SAM_extract_uniquely_mapped_reads.pl
++++ b/util/support_scripts/SAM_extract_uniquely_mapped_reads.pl
+@@ -1,8 +1,7 @@
+ #!/usr/bin/env perl
+ 
+ use strict;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/support_scripts/SAM_filter_out_unmapped_reads.pl
++++ b/util/support_scripts/SAM_filter_out_unmapped_reads.pl
+@@ -1,8 +1,7 @@
+ #!/usr/bin/env perl
+ 
+ use strict;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/support_scripts/SAM_set_transcribed_orient_info.pl
++++ b/util/support_scripts/SAM_set_transcribed_orient_info.pl
+@@ -1,8 +1,7 @@
+ #!/usr/bin/env perl
+ 
+ use strict;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/support_scripts/SAM_strand_separator.pl
++++ b/util/support_scripts/SAM_strand_separator.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ use Carp;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ use File::Basename;
+--- a/util/support_scripts/SAM_to_frag_coords.pl
++++ b/util/support_scripts/SAM_to_frag_coords.pl
+@@ -7,8 +7,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use SAM_reader;
+ use SAM_entry;
+--- a/util/support_scripts/define_SAM_coverage_partitions2.pl
++++ b/util/support_scripts/define_SAM_coverage_partitions2.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use WigParser;
+ 
+ my $usage = "usage: $0 strand_coverage.wig strand[+-]\n\n";
+--- a/util/support_scripts/define_coverage_partitions.pl
++++ b/util/support_scripts/define_coverage_partitions.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use WigParser;
+ 
+ my $usage = "usage: $0 strand_coverage.wig min_coverage strand[+-]\n\n";
+--- a/util/support_scripts/extract_reads_per_partition.pl
++++ b/util/support_scripts/extract_reads_per_partition.pl
+@@ -7,8 +7,7 @@ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+ use File::Basename;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use Nuc_translator;
+ use SAM_reader;
+--- a/util/support_scripts/fastQ_to_fastA.pl
++++ b/util/support_scripts/fastQ_to_fastA.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Nuc_translator;
+ use IO::Uncompress::Gunzip;
+ 
+--- a/util/support_scripts/fasta_to_tab.pl
++++ b/util/support_scripts/fasta_to_tab.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ my $usage = "usage: $0 [multiFastaFile] [NO_FULL_HEADER_FLAG=0]\n\n";
+--- a/util/support_scripts/filter_iworm_by_min_length_or_cov.pl
++++ b/util/support_scripts/filter_iworm_by_min_length_or_cov.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ 
+--- a/util/support_scripts/fragment_coverage_writer.pl
++++ b/util/support_scripts/fragment_coverage_writer.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/support_scripts/jaccard_fasta_clipper.pl
++++ b/util/support_scripts/jaccard_fasta_clipper.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ my $usage = "usage: $0 transcripts.fasta jaccard_clips.wig\n\n";
+--- a/util/support_scripts/jaccard_wig_clipper.pl
++++ b/util/support_scripts/jaccard_wig_clipper.pl
+@@ -6,8 +6,7 @@ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use WigParser;
+ 
+--- a/util/support_scripts/ordered_fragment_coords_to_jaccard.pl
++++ b/util/support_scripts/ordered_fragment_coords_to_jaccard.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use SAM_reader;
+ use SAM_entry;
+--- a/util/support_scripts/run_TMM_scale_matrix.pl
++++ b/util/support_scripts/run_TMM_scale_matrix.pl
+@@ -5,9 +5,8 @@ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling);
+ use Cwd;
+-use FindBin;
+ use File::Basename;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Data::Dumper;
+ 
+ my $usage = <<__EOUSAGE__;
+@@ -67,7 +66,6 @@ sub run_TMM {
+     
+     my $tmm_norm_script = "$counts_matrix_file.runTMM.R";
+     open (my $ofh, ">$tmm_norm_script") or die "Error, cannot write to $tmm_norm_script";
+-    #print $ofh "source(\"$FindBin::RealBin/R/edgeR_funcs.R\")\n";
+     
+     print $ofh "library(edgeR)\n\n";
+     
+--- a/util/support_scripts/run_UpperQuartileNormalization_matrix.pl
++++ b/util/support_scripts/run_UpperQuartileNormalization_matrix.pl
+@@ -5,9 +5,8 @@ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling);
+ use Cwd;
+-use FindBin;
+ use File::Basename;
+-use lib ("$FindBin::RealBin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Data::Dumper;
+ 
+ 
+@@ -76,7 +75,6 @@ sub upper_quartile_normalize {
+     
+     my $tmm_norm_script = "__tmp_upper_quart_norm.R";
+     open (my $ofh, ">$tmm_norm_script") or die "Error, cannot write to $tmm_norm_script";
+-    #print $ofh "source(\"$FindBin::RealBin/R/edgeR_funcs.R\")\n";
+     
+     print $ofh "data = read.table(\"$matrix_file\", header=T, row.names=1, com='')\n";
+     print $ofh "get_upper_quartile = function(vec) {\n"
+--- a/Analysis/FL_reconstruction_analysis/util/blat_full_length_mappings.pl
++++ b/Analysis/FL_reconstruction_analysis/util/blat_full_length_mappings.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use SingleLinkageClusterer;
+ use PSL_parser;
+@@ -308,7 +307,7 @@ sub examine_blat_mappings {
+ 
+ 	my %mappings;
+ 
+-    my $cmd = "$FindBin::Bin/blat_psl_to_align_summary_stats.pl $blat_output > $blat_output.stats";
++    my $cmd = "/usr/lib/trinityrnaseq/Analysis/FL_reconstruction_analysis/util/blat_psl_to_align_summary_stats.pl $blat_output > $blat_output.stats";
+     &process_cmd($cmd);
+ 
+     open(my $fh, "$blat_output.stats") or die "Error, cannot open file $blat_output.stats";
+--- a/Analysis/FL_reconstruction_analysis/util/blat_psl_to_align_summary_stats.pl
++++ b/Analysis/FL_reconstruction_analysis/util/blat_psl_to_align_summary_stats.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use PSL_parser;
+ use DelimParser;
+ 
+--- a/Analysis/FL_reconstruction_analysis/util/blat_top_tier_genes.pl
++++ b/Analysis/FL_reconstruction_analysis/util/blat_top_tier_genes.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use PSL_parser;
+ require "overlapping_nucs.ph";
+--- a/util/misc/bam_gene_tests/extract_bam_reads_per_target_gene.pl
++++ b/util/misc/bam_gene_tests/extract_bam_reads_per_target_gene.pl
+@@ -7,8 +7,7 @@ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+ use File::Basename;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use Nuc_translator;
+ use SAM_reader;
+--- a/util/misc/bam_gene_tests/extract_bam_reads_per_target_transcript.pl
++++ b/util/misc/bam_gene_tests/extract_bam_reads_per_target_transcript.pl
+@@ -7,8 +7,7 @@ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+ use File::Basename;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use Nuc_translator;
+ use SAM_reader;
+--- a/util/misc/blat_util/blat_sam_add_reads2.pl
++++ b/util/misc/blat_util/blat_sam_add_reads2.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Nuc_translator;
+ 
+ my $usage = "usage: $0 blat.psl.nameSorted.sam  reads.tab.nameSorted\n\n";
+--- a/util/misc/blat_util/process_BLAT_alignments.pl
++++ b/util/misc/blat_util/process_BLAT_alignments.pl
+@@ -1,7 +1,6 @@
+ #!/usr/bin/env perl
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use strict;
+ use warnings;
+@@ -66,7 +65,6 @@ my $genome_db = $opt_g;
+ my $transcript_db = $opt_t;
+ my $output_prefix = $opt_o || "blat";
+ my $blat_path = "blat";
+-my $util_dir = $FindBin::RealBin;
+ 
+ unless ($genome_db && $transcript_db) {
+     die "$usage\n";
+@@ -171,7 +169,7 @@ my @top_hits_files;
+ 
+     foreach my $pslx_file (@pslx_files) {
+         
+-        my $cmd = "$util_dir/blat_top_hit_extractor.pl $pslx_file $num_top_hits > $pslx_file.top_${num_top_hits}";
++        my $cmd = "/usr/lib/trinityrnaseq/util/misc/blat_util/blat_top_hit_extractor.pl $pslx_file $num_top_hits > $pslx_file.top_${num_top_hits}";
+         
+         my $completed_checkpoint_file = "$pslx_file.top_${num_top_hits}.completed";
+         unless (-e $completed_checkpoint_file) {
+@@ -220,7 +218,7 @@ foreach my $top_hits_file (@top_hits_fil
+     # convert to gff3 format
+     print STDERR "-converting $top_hits_file to gff3\n";
+         
+-    my $cmd = "$util_dir/pslx_to_gff3.pl < $top_hits_file >> $output_prefix.gff3";
++    my $cmd = "/usr/lib/trinityrnaseq/util/misc/blat_util/pslx_to_gff3.pl < $top_hits_file >> $output_prefix.gff3";
+     &process_cmd($cmd);
+ }
+ 
+--- a/util/misc/blat_util/top_blat_sam_extractor.pl
++++ b/util/misc/blat_util/top_blat_sam_extractor.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use SAM_reader;
+ use SAM_entry;
+--- a/util/misc/splice_path_analysis/assess_intron_path_sensitivity.pl
++++ b/util/misc/splice_path_analysis/assess_intron_path_sensitivity.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::RealBin/../../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Gene_obj;
+ use GFF3_utils;
+ use BED_utils;
+--- a/Analysis/DifferentialExpression/prune_isoforms_fasta.pl
++++ b/Analysis/DifferentialExpression/prune_isoforms_fasta.pl
+@@ -5,8 +5,7 @@ use warnings;
+ 
+ use Carp;
+ use Getopt::Long qw(:config posix_default no_ignore_case bundling pass_through);
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use Data::Dumper;
+ 
+--- a/Analysis/SuperTranscripts/AllelicVariants/VCF_to_annotated_SNP_report.pl
++++ b/Analysis/SuperTranscripts/AllelicVariants/VCF_to_annotated_SNP_report.pl
+@@ -6,8 +6,7 @@ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling);
+ 
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use Fasta_reader;
+ use Gene_obj;
+--- a/trinity-plugins/COLLECTL/examine_resource_usage_profiling.pl
++++ b/trinity-plugins/COLLECTL/examine_resource_usage_profiling.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Process_cmd;
+ use File::Basename;
+ 
+@@ -15,10 +14,10 @@ my $collectl_dir = $ARGV[0] or die $usag
+ 
+ main: {
+ 
+-    my $cmd = "$FindBin::Bin/util/collectl_dat_to_time_matrix.py --dat $collectl_dir/collectl.dat --out_prefix " . basename($collectl_dir);
++    my $cmd = "/usr/lib/trinityrnaseq/trinity-plugins/COLLECTL/util/collectl_dat_to_time_matrix.py --dat $collectl_dir/collectl.dat --out_prefix " . basename($collectl_dir);
+     &process_cmd($cmd);
+     
+-    $cmd = "$FindBin::Bin/util/plot_time_vs_resource.Rscript " . basename($collectl_dir);
++    $cmd = "/usr/lib/trinityrnaseq/trinity-plugins/COLLECTL/util/plot_time_vs_resource.Rscript " . basename($collectl_dir);
+     &process_cmd($cmd);
+ 
+     exit(0);
+--- a/util/misc/Trinity_genome_aligned_gff3_to_regrouped_genes_gtf.pl
++++ b/util/misc/Trinity_genome_aligned_gff3_to_regrouped_genes_gtf.pl
+@@ -4,8 +4,7 @@ use strict;
+ use warnings;
+ use Carp;
+ use Data::Dumper;
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SingleLinkageClusterer;
+ use Overlap_piler;
+ 
+--- a/util/misc/align_reads_launch_igv.pl
++++ b/util/misc/align_reads_launch_igv.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib("$FindBin::Bin/../../PerlLib");
++use lib("/usr/lib/trinityrnaseq/PerlLib");
+ use Pipeliner;
+ use Cwd;
+ 
+--- a/util/misc/collate_fqs.pl
++++ b/util/misc/collate_fqs.pl
+@@ -5,8 +5,7 @@ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config posix_default no_ignore_case bundling pass_through);
+ 
+-use FindBin;
+-use lib("$FindBin::Bin/../../PerlLib");
++use lib("/usr/lib/trinityrnaseq/PerlLib");
+ use Fastq_reader;
+ use Data::Dumper;
+ 
+--- a/util/misc/determine_RF_strand_specificity.pl
++++ b/util/misc/determine_RF_strand_specificity.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/misc/examine_strand_specificity.pl
++++ b/util/misc/examine_strand_specificity.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ use Process_cmd;
+@@ -81,7 +80,7 @@ main: {
+ 
+ 
+     ## plot it.
+-    my $cmd  = "$FindBin::Bin/plot_strand_specificity_dist_by_quantile.Rscript $out_prefix.dat";
++    my $cmd  = "/usr/lib/trinityrnaseq/util/misc/plot_strand_specificity_dist_by_quantile.Rscript $out_prefix.dat";
+     &process_cmd($cmd);
+     
+     
+--- a/util/misc/fasta_seq_length.pl
++++ b/util/misc/fasta_seq_length.pl
+@@ -2,9 +2,8 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+ 
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ my $usage = "usage: $0 fastaFile\n\n";
+--- a/util/misc/filter_similar_seqs_expr_and_strand_aware.pl
++++ b/util/misc/filter_similar_seqs_expr_and_strand_aware.pl
+@@ -5,8 +5,7 @@ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config posix_default no_ignore_case bundling pass_through);
+ use Data::Dumper;
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ my $help_flag;
+--- a/util/misc/flattened_gff_n_genome_to_Trinity_emulator.pl
++++ b/util/misc/flattened_gff_n_genome_to_Trinity_emulator.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use Nuc_translator;
+ use Data::Dumper;
+--- a/util/misc/get_GC_content_dist.pl
++++ b/util/misc/get_GC_content_dist.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use Process_cmd;
+ 
+--- a/util/misc/run_HISAT2_via_samples_file.pl
++++ b/util/misc/run_HISAT2_via_samples_file.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Process_cmd;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+ use Pipeliner;
+--- a/util/misc/run_bowtie2.pl
++++ b/util/misc/run_bowtie2.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Process_cmd;
+ use Getopt::Long qw(:config posix_default no_ignore_case bundling pass_through);
+ use Carp;
+--- a/util/support_scripts/ensure_coord_sorted_sam.pl
++++ b/util/support_scripts/ensure_coord_sorted_sam.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_reader;
+ use SAM_entry;
+ 
+--- a/util/support_scripts/fasta_find_duplicates.pl
++++ b/util/support_scripts/fasta_find_duplicates.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ 
+--- a/util/support_scripts/filter_transcripts_require_min_cov.pl
++++ b/util/support_scripts/filter_transcripts_require_min_cov.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use DelimParser;
+ use Carp;
+--- a/util/support_scripts/iworm_LR_to_scaff_pairs.pl
++++ b/util/support_scripts/iworm_LR_to_scaff_pairs.pl
+@@ -8,8 +8,7 @@ use Carp;
+ use Getopt::Long qw(:config posix_default no_ignore_case bundling pass_through);
+ use Data::Dumper;
+ 
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ my $MIN_CONTAINMENT = 96;
+--- a/util/support_scripts/nbkc_merge_left_right_stats.pl
++++ b/util/support_scripts/nbkc_merge_left_right_stats.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use DelimParser;
+ 
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+--- a/util/support_scripts/nbkc_normalize.pl
++++ b/util/support_scripts/nbkc_normalize.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use DelimParser;
+ 
+--- a/util/support_scripts/outfmt6_add_percent_match_length.pl
++++ b/util/support_scripts/outfmt6_add_percent_match_length.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use List::Util qw(min max);
+ 
+--- a/util/support_scripts/prep_rnaseq_alignments_for_genome_assisted_assembly.pl
++++ b/util/support_scripts/prep_rnaseq_alignments_for_genome_assisted_assembly.pl
+@@ -8,9 +8,8 @@ use threads;
+ 
+ use File::Basename;
+ use File::Spec;
+-use FindBin;
+ use Getopt::Long qw(:config no_ignore_case bundling);
+-use lib("$FindBin::Bin/../../PerlLib");
++use lib("/usr/lib/trinityrnaseq/PerlLib");
+ use Thread_helper;
+ use Cwd;
+ 
+@@ -99,7 +98,7 @@ if ($SS_lib_type && $SS_lib_type !~ /^(F
+ 	die "Error, invalid --SS_lib_type, only F, R, FR, or RF are possible values";
+ }
+ 
+-my $UTIL_DIR = "$FindBin::RealBin/";
++my $UTIL_DIR = "/usr/lib/trinityrnaseq/util/support_scripts";
+ 
+ main: {
+ 
+--- a/util/support_scripts/salmon_runner.pl
++++ b/util/support_scripts/salmon_runner.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Process_cmd;
+ 
+ my $usage = "\n\n\tusage: $0 Trinity.fasta reads.fa [threads=1]\n\n";
+--- a/util/support_scripts/scaffold_iworm_contigs.pl
++++ b/util/support_scripts/scaffold_iworm_contigs.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_entry;
+ 
+ my $usage = "\n\nusage: $0 nameSorted.sam iworm_fasta_file\n\n";
+--- a/Analysis/SuperTranscripts/DTU/dexseq_wrapper.pl
++++ b/Analysis/SuperTranscripts/DTU/dexseq_wrapper.pl
+@@ -4,8 +4,7 @@ use strict;
+ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config posix_default no_ignore_case bundling pass_through);
+-use FindBin;
+-use lib "$FindBin::Bin/../../../PerlLib";
++use lib "/usr/lib/trinityrnaseq/PerlLib";
+ use Pipeliner;
+ use File::Basename;
+ 
+@@ -87,7 +86,7 @@ unless ($aligner =~ /^(STAR|HISAT2)$/i)
+ 
+ $aligner = lc $aligner;
+ 
+-my $TRINITY_HOME = "$FindBin::Bin/../../..";
++my $TRINITY_HOME = "/usr/lib/trinityrnaseq";
+ 
+ main: {
+ 
+@@ -173,7 +172,7 @@ main: {
+         $pipeliner->add_commands(new Command($cmd, "$analysis_token.$bam_file.fc.ok"));
+ 
+         
+-        $pipeliner->add_commands(new Command("$FindBin::Bin/util/reformat_featureCounts.pl $bam_file.fc > $bam_file.counts",
++        $pipeliner->add_commands(new Command("/usr/lib/trinityrnaseq/Analysis/SuperTranscripts/DTU/util/reformat_featureCounts.pl $bam_file.fc > $bam_file.counts",
+                                              "$analysis_token.$bam_file.counts.ok"));
+         
+         push (@counts_files, "$bam_file.counts");
+--- a/Analysis/DifferentialExpression/diff_express.cgi
++++ b/Analysis/DifferentialExpression/diff_express.cgi
+@@ -5,10 +5,9 @@ use warnings;
+ 
+ use CGI;
+ use CGI::Carp qw(fatalsToBrowser);
+-use FindBin;
+ use File::Basename;
+ 
+-use lib ("$FindBin::RealBin/PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ 
+ use CanvasXpress::Heatmap;
+ use BHStats;
+--- a/util/TrinityStats.pl
++++ b/util/TrinityStats.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use BHStats;
+ 
+--- a/util/analyze_blastPlus_topHit_coverage.pl
++++ b/util/analyze_blastPlus_topHit_coverage.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ use Data::Dumper;
+ 
+--- a/util/filter_low_expr_transcripts.pl
++++ b/util/filter_low_expr_transcripts.pl
+@@ -4,8 +4,7 @@ use strict;
+ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config posix_default no_ignore_case bundling pass_through);
+-use FindBin;
+-use lib ("$FindBin::RealBin/../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use Fasta_reader;
+ 
+ my $help_flag;
+--- a/util/insilico_read_normalization.pl
++++ b/util/insilico_read_normalization.pl
+@@ -5,8 +5,7 @@ use warnings;
+ use threads;
+ no strict qw(subs refs);
+ 
+-use FindBin;
+-use lib ("$FindBin::RealBin/../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use File::Basename;
+ use Cwd;
+ use Carp;
+@@ -18,7 +17,7 @@ use Data::Dumper;
+ use COMMON;
+ use DB_File;
+ 
+-$ENV{PATH} = "$FindBin::Bin/../trinity-plugins/BIN:$ENV{PATH}";
++$ENV{PATH} = "/usr/lib/trinityrnaseq/trinity-plugins/BIN:$ENV{PATH}";
+ 
+ 
+ open (STDERR, ">&STDOUT");  ## capturing stderr and stdout in a single stdout stream
+@@ -118,9 +117,9 @@ _EOUSAGE_
+ 
+     ;
+ 
+-my $ROOTDIR = "$FindBin::RealBin/../";
++my $ROOTDIR = "/usr/lib/trinityrnaseq/";
+ my $UTILDIR = "$ROOTDIR/util/support_scripts/";
+-my $INCHWORM_DIR = "$ROOTDIR/Inchworm";
++my $INCHWORM_DIR = "/usr";
+ 
+ unless (@ARGV) {
+     die "$usage\n";
+--- a/util/sift_bam_max_cov.pl
++++ b/util/sift_bam_max_cov.pl
+@@ -4,8 +4,7 @@ use strict;
+ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config posix_default no_ignore_case bundling pass_through);
+-use FindBin;
+-use lib ("$FindBin::Bin/../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use SAM_entry;
+ 
+ my $help_flag;
+--- a/Analysis/DifferentialExpression/PtR
++++ b/Analysis/DifferentialExpression/PtR
+@@ -4,7 +4,6 @@ use strict;
+ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+-use FindBin;
+ use File::Basename;
+ 
+ my $min_rowSums = 0;
+@@ -590,10 +589,10 @@ main: {
+     
+ 
+     # source these after potential data restoration above - in case they changed.
+-    $Rscript .= "source(\"$FindBin::RealBin/R/heatmap.3.R\")\n";
+-    $Rscript .= "source(\"$FindBin::RealBin/R/misc_rnaseq_funcs.R\")\n";
+-    $Rscript .= "source(\"$FindBin::RealBin/R/pairs3.R\")\n";
+-    $Rscript .= "source(\"$FindBin::RealBin/R/vioplot2.R\")\n";
++    $Rscript .= "source(\"/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/R/heatmap.3.R\")\n";
++    $Rscript .= "source(\"/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/R/misc_rnaseq_funcs.R\")\n";
++    $Rscript .= "source(\"/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/R/pairs3.R\")\n";
++    $Rscript .= "source(\"/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/R/vioplot2.R\")\n";
+     
+     $Rscript .= "data = primary_data\n";
+     
+--- a/Analysis/DifferentialExpression/analyze_diff_expr.pl
++++ b/Analysis/DifferentialExpression/analyze_diff_expr.pl
+@@ -4,7 +4,6 @@ use strict;
+ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+-use FindBin;
+ use Data::Dumper;
+ 
+ my $usage = <<__EOUSAGE__;
+@@ -237,7 +236,7 @@ main: {
+ sub cluster_diff_expressed_transcripts {
+     my ($diff_expr_matrix_file) = @_;
+     
+-    my $cmd = "$FindBin::RealBin/PtR -m $diff_expr_matrix_file --log2 --heatmap --min_colSums 0 --min_rowSums 0 --gene_dist euclidean --sample_dist euclidean --sample_cor_matrix --center_rows --save @ARGV";
++    my $cmd = "/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/PtR -m $diff_expr_matrix_file --log2 --heatmap --min_colSums 0 --min_rowSums 0 --gene_dist euclidean --sample_dist euclidean --sample_cor_matrix --center_rows --save @ARGV";
+     
+     if ($samples_file) {
+         $cmd .= " -s $samples_file";
+@@ -406,7 +405,7 @@ sub parse_result_files_find_diffExp {
+             my $background_file = $result_file;
+             $background_file =~ s/\.DE_results$/\.count_matrix/ or die "Error, cannot modify $result_file to count_matrix name";
+ 
+-            my $cmd = "$FindBin::RealBin/run_GOseq.pl --GO_assignments $GO_annots_file "
++            my $cmd = "/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/run_GOseq.pl --GO_assignments $GO_annots_file "
+                 . " --lengths $gene_lengths_file --genes_single_factor $condA_up_subset_file"
+                 . " --background $background_file ";
+ 
+@@ -419,7 +418,7 @@ sub parse_result_files_find_diffExp {
+             }
+             
+                 
+-            $cmd = "$FindBin::RealBin/run_GOseq.pl --GO_assignments $GO_annots_file "
++            $cmd = "/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/run_GOseq.pl --GO_assignments $GO_annots_file "
+                 . " --lengths $gene_lengths_file --genes_single_factor $condB_up_subset_file"
+                 . " --background $background_file ";
+             
+@@ -434,7 +433,7 @@ sub parse_result_files_find_diffExp {
+ 
+             if ($countA + $countB) {
+                 
+-                $cmd = "$FindBin::RealBin/run_GOseq.pl --GO_assignments $GO_annots_file "
++                $cmd = "/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/run_GOseq.pl --GO_assignments $GO_annots_file "
+                     . " --lengths $gene_lengths_file --genes_single_factor $either_subset_file"
+                     . " --background $background_file ";
+             
+@@ -447,7 +446,7 @@ sub parse_result_files_find_diffExp {
+                 }
+                 
+                 if ($RUN_GOPLOT) {
+-                    $cmd = "$FindBin::RealBin/prep_n_run_GOplot.pl --GO_annots $GO_annots_file "
++                    $cmd = "/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/prep_n_run_GOplot.pl --GO_annots $GO_annots_file "
+                         . " --DE_subset $either_subset_file "
+                         . " --DE_GO_enriched $either_subset_file.GOseq.enriched "
+                         . " --tmpdir $either_subset_file.GOseq.enriched.GOplot_dat"
+@@ -534,7 +533,7 @@ sub write_matrix_generate_heatmap {
+     }
+     close $ofh;
+ 
+-    my $cmd = "$FindBin::RealBin/PtR -m $matrix_out_file -s $pairwise_samples_file --log2 --heatmap --min_colSums 0 --min_rowSums 0 --gene_dist euclidean --sample_dist euclidean @ARGV ";
++    my $cmd = "/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/PtR -m $matrix_out_file -s $pairwise_samples_file --log2 --heatmap --min_colSums 0 --min_rowSums 0 --gene_dist euclidean --sample_dist euclidean @ARGV ";
+     
+     if ($samples_file) {
+         $cmd .= " -s $samples_file ";
+--- a/Analysis/DifferentialExpression/cut_tree_into_clusters.pl
++++ b/Analysis/DifferentialExpression/cut_tree_into_clusters.pl
+@@ -5,7 +5,6 @@ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+ use File::Basename;
+-use FindBin;
+ 
+ my $usage = <<__EOUSAGE__;
+ 
+@@ -88,7 +87,7 @@ main: {
+     #print $ofh "library(gplots)\n";
+     print $ofh "library(Biobase)\n";
+     print $ofh "library(fastcluster)\n";
+-    print $ofh "source(\"$FindBin::RealBin/R/heatmap.3.R\")\n";
++    print $ofh "source(\"/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/R/heatmap.3.R\")\n";
+     
+     print $ofh "load(\"$R_data_file\")\n";
+     
+--- a/Analysis/DifferentialExpression/define_clusters_by_cutting_tree.pl
++++ b/Analysis/DifferentialExpression/define_clusters_by_cutting_tree.pl
+@@ -5,7 +5,6 @@ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+ use File::Basename;
+-use FindBin;
+ 
+ my $usage = <<__EOUSAGE__;
+ 
+@@ -89,7 +88,7 @@ main: {
+     #print $ofh "library(gplots)\n";
+     print $ofh "library(Biobase)\n";
+     print $ofh "library(fastcluster)\n";
+-    print $ofh "source(\"$FindBin::RealBin/R/heatmap.3.R\")\n";
++    print $ofh "source(\"/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/R/heatmap.3.R\")\n";
+     
+     print $ofh "load(\"$R_data_file\")\n";
+     
+@@ -191,7 +190,7 @@ main: {
+ 
+     chdir $outdir or die "Error, cannot cd into $outdir";
+     
+-    my $cmd = "$FindBin::RealBin/plot_expression_patterns.pl subcluster\*fpkm.matrix";
++    my $cmd = "/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/plot_expression_patterns.pl subcluster\*fpkm.matrix";
+     &process_cmd($cmd);
+     
+     
+--- a/Analysis/DifferentialExpression/extract_GO_enriched_genes.pl
++++ b/Analysis/DifferentialExpression/extract_GO_enriched_genes.pl
+@@ -4,8 +4,6 @@ use strict;
+ use warnings;
+ use Carp;
+ 
+-use FindBin;
+-
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+ 
+ 
+@@ -101,7 +99,7 @@ main: {
+     }
+     
+     ## generate a heatmap
+-    my $cmd = "$FindBin::RealBin/PtR -m $fpkm_outfile --log2 --heatmap --gene_dist euclidean --sample_dist euclidean";
++    my $cmd = "/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/PtR -m $fpkm_outfile --log2 --heatmap --gene_dist euclidean --sample_dist euclidean";
+     if ($samples_file) {
+         $cmd .= " -s $samples_file ";
+     }
+--- a/Analysis/DifferentialExpression/prune_isoforms_gtf.pl
++++ b/Analysis/DifferentialExpression/prune_isoforms_gtf.pl
+@@ -5,7 +5,6 @@ use warnings;
+ 
+ use Carp;
+ use Getopt::Long qw(:config posix_default no_ignore_case bundling pass_through);
+-use FindBin;
+ use Data::Dumper;
+ 
+ my $help_flag;
+--- a/Analysis/DifferentialExpression/run_GOseq.pl
++++ b/Analysis/DifferentialExpression/run_GOseq.pl
+@@ -2,7 +2,6 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+ 
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+ 
+--- a/Analysis/DifferentialExpression/stratify_diff_expression.pl
++++ b/Analysis/DifferentialExpression/stratify_diff_expression.pl
+@@ -2,7 +2,6 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+ 
+ my $usage = "\n\nusage: $0 edgeR_dir\n\n";
+ 
+@@ -21,7 +20,7 @@ for my $fold_change (1..8) {
+ 
+     for my $pvalue (2..10) {
+ 
+-        my $cmd = "$FindBin::RealBin/analyze_diff_expr.pl --matrix $fpkm_matrix_file -C $fold_change -P 1e-$pvalue";
++        my $cmd = "/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/analyze_diff_expr.pl --matrix $fpkm_matrix_file -C $fold_change -P 1e-$pvalue";
+         &process_cmd($cmd);
+         
+         
+--- a/Analysis/DifferentialExpression/subcluster_to_canvasXpress_html.pl
++++ b/Analysis/DifferentialExpression/subcluster_to_canvasXpress_html.pl
+@@ -3,8 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-use lib("$FindBin::RealBin/../TrinityWeb/cgi-bin/PerlLib/");
++use lib("/usr/lib/trinityrnaseq/PerlLib/");
+ use CanvasXpress::Heatmap;
+ use CanvasXpress::PlotOnLoader;
+ use CanvasXpress::Line;
+--- a/Analysis/FL_reconstruction_analysis/compute_oracle.pl
++++ b/Analysis/FL_reconstruction_analysis/compute_oracle.pl
+@@ -3,8 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-
+ my $usage = "usage: $0 reads.fasta ref_transcripts.fasta [SS]\n\n";
+ 
+ my $reads_file = $ARGV[0] or die $usage;
+@@ -12,7 +10,7 @@ my $ref_transcripts_fasta = $ARGV[1] or
+ my $SS_flag = $ARGV[2] || 0;
+ 
+ 
+-my $cmd = "$FindBin::RealBin/../../Inchworm/bin/inchworm "
++my $cmd = "/usr/bin/inchworm "
+     . " --reads $reads_file "
+     . " --checkFastaPath $ref_transcripts_fasta ";
+ 
+--- a/Analysis/FL_reconstruction_analysis/maps_file_to_paralog_representation.pl
++++ b/Analysis/FL_reconstruction_analysis/maps_file_to_paralog_representation.pl
+@@ -2,7 +2,6 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+ 
+ my $usage = "usage: $0 file.paralog_clusters file.maps\n\n";
+ 
+--- a/Analysis/FL_reconstruction_analysis/tier_gene_trans_alignments.pl
++++ b/Analysis/FL_reconstruction_analysis/tier_gene_trans_alignments.pl
+@@ -2,7 +2,6 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+ 
+ my $usage = "usage: $0 genes.fasta transcripts.fasta max_intron BLAT_CPU [STRAND-SPECIFIC_FLAG=0]\n\n";
+ 
+@@ -16,14 +15,14 @@ my $SS = $ARGV[4] || 0;
+ main: {
+ 
+     ## run blat:
+-    my $cmd = "$FindBin::RealBin/../../util/process_BLAT_alignments.pl -g $genes_fasta -t $trans_fasta -I $max_intron --CPU $blat_cpu --KEEP_PSLX";
++    my $cmd = "/usr/lib/trinityrnaseq/util/misc/blat_util/process_BLAT_alignments.pl -g $genes_fasta -t $trans_fasta -I $max_intron --CPU $blat_cpu --KEEP_PSLX";
+ 
+     &process_cmd($cmd);
+ 
+     $cmd = "cat blat_out_dir/*top_1 > blat.top_1.pslx";
+     &process_cmd($cmd);
+ 
+-    $cmd = "$FindBin::RealBin/util/blat_top_tier_genes.pl blat.top_1.pslx $SS";
++    $cmd = "/usr/lib/trinityrnaseq/Analysis/FL_reconstruction_analysis/util/blat_top_tier_genes.pl blat.top_1.pslx $SS";
+     &process_cmd($cmd);
+     
+     exit(0);
+--- a/util/abundance_estimates_to_matrix.pl
++++ b/util/abundance_estimates_to_matrix.pl
+@@ -2,7 +2,6 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+ use File::Basename;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+ use Carp;
+@@ -363,11 +362,11 @@ sub perform_cross_sample_norm {
+     my ($tpm_matrix_file, $out_prefix_name) = @_;
+ 
+     if ($cross_sample_norm =~ /^TMM$/i) {
+-        my $cmd = "$FindBin::RealBin/support_scripts/run_TMM_scale_matrix.pl --matrix $tpm_matrix_file > $out_prefix_name.$cross_sample_norm.EXPR.matrix";
++        my $cmd = "/usr/lib/trinityrnaseq/util/support_scripts/run_TMM_scale_matrix.pl --matrix $tpm_matrix_file > $out_prefix_name.$cross_sample_norm.EXPR.matrix";
+         &process_cmd($cmd);
+     }
+     elsif ($cross_sample_norm =~ /^UpperQuartile$/) {
+-        my $cmd = "$FindBin::RealBin/support_scripts/run_UpperQuartileNormalization_matrix.pl --matrix $tpm_matrix_file > $out_prefix_name.$cross_sample_norm.EXPR.matrix";
++        my $cmd = "/usr/lib/trinityrnaseq/util/support_scripts/run_UpperQuartileNormalization_matrix.pl --matrix $tpm_matrix_file > $out_prefix_name.$cross_sample_norm.EXPR.matrix";
+         &process_cmd($cmd);
+     }
+     elsif ($cross_sample_norm =~ /^none$/i) {
+--- a/util/misc/TophatCufflinksWrapper.pl
++++ b/util/misc/TophatCufflinksWrapper.pl
+@@ -6,7 +6,6 @@ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+ use File::Basename;
+-use FindBin;
+ use Cwd;
+ 
+ my $usage = <<__EOUSAGE__;
+--- a/util/misc/bam_gene_tests/write_trin_cmds.pl
++++ b/util/misc/bam_gene_tests/write_trin_cmds.pl
+@@ -3,7 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+ 
+ my $usage = <<__EOUSAGE__;
+@@ -70,7 +69,7 @@ while (<$fh>) {
+     
+     my $file = pop @x;
+     
+-    my $cmd = "$FindBin::RealBin/../../../Trinity --single \"$file\" --output \"$file.trinity.$out_token\" $trin_args ";
++    my $cmd = "/usr/bin/Trinity --single \"$file\" --output \"$file.trinity.$out_token\" $trin_args ";
+     
+     print "$cmd\n";
+ }
+--- a/util/misc/blat_util/blat_to_sam.pl
++++ b/util/misc/blat_util/blat_to_sam.pl
+@@ -3,7 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+ use Cwd;
+ 
+ use Getopt::Long qw(:config no_ignore_case bundling);
+@@ -72,9 +71,7 @@ unless ($genome_fa && $reads_fa) {
+ 
+ main: {
+ 
+-	my $util_dir = "$FindBin::RealBin/../util";
+-	
+-	my $cmd = "$util_dir/fasta_to_tab.pl $reads_fa > $reads_fa.tab";
++	my $cmd = "/usr/lib/trinityrnaseq/util/support_scripts/fasta_to_tab.pl $reads_fa > $reads_fa.tab";
+ 	&process_cmd($cmd) unless (-s "$reads_fa.tab");
+ 
+ 	$cmd = "sort -T . -S 2G -k 1,1 $reads_fa.tab > $reads_fa.tab.sort";
+@@ -90,11 +87,11 @@ main: {
+ 
+ 
+ 	# add the reads
+-	$cmd = "$util_dir/blat_sam_add_reads2.pl $reads_fa.psl.sam $reads_fa.tab.sort > $reads_fa.psl.sam.wReads";
++	$cmd = "/usr/lib/trinityrnaseq/util/misc/blat_util/blat_sam_add_reads2.pl $reads_fa.psl.sam $reads_fa.tab.sort > $reads_fa.psl.sam.wReads";
+ 	&process_cmd($cmd);
+ 
+ 	## prune output to top matches:
+-	$cmd = "$util_dir/top_blat_sam_extractor.pl $reads_fa.psl.sam.wReads $top_hits $min_per_ID > $reads_fa.psl.sam.wReads.top";
++	$cmd = "/usr/lib/trinityrnaseq/util/misc/blat_util/top_blat_sam_extractor.pl $reads_fa.psl.sam.wReads $top_hits $min_per_ID > $reads_fa.psl.sam.wReads.top";
+ 	&process_cmd($cmd);
+ 
+ 	$cmd = "$FindBin::RealBin/cigar_tweaker $reads_fa.psl.sam.wReads.top $genome_fa > $reads_fa.psl.sam.wReads.top.tweaked";
+--- a/util/misc/count_trans_per_component.pl
++++ b/util/misc/count_trans_per_component.pl
+@@ -3,8 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-
+ my $usage = "usage: $0 bfly.A.fasta [bfly.B.fasta ...]\n\n";
+ 
+ my @files = @ARGV or die $usage;
+--- a/util/misc/frag_to_bed.pl
++++ b/util/misc/frag_to_bed.pl
+@@ -2,7 +2,6 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+ 
+ use lib ("$ENV{EUK_MODULES}");
+ use Gene_obj;
+--- a/util/misc/genome_gff3_to_gene_gff3_partitions.pl
++++ b/util/misc/genome_gff3_to_gene_gff3_partitions.pl
+@@ -2,7 +2,6 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+ use lib ("$ENV{TRINITY_HOME}/PerlLib");
+ use Gene_obj;
+ use Fasta_reader;
+--- a/util/misc/plot_expressed_gene_dist.pl
++++ b/util/misc/plot_expressed_gene_dist.pl
+@@ -3,15 +3,13 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-
+ my $usage = "usage: $0 RSEM.isoforms.fpkm\n\n";
+ 
+ my $fpkm_file = $ARGV[0] or die $usage;
+ 
+ my $Rscript = "$fpkm_file.R";
+ open (my $ofh, ">$Rscript");
+-print $ofh "source(\"$FindBin::RealBin/R/expression_analysis_lib.R\")\n";
++print $ofh "source(\"/usr/lib/trinityrnaseq/util/R/expression_analysis_lib.R\")\n";
+ print $ofh "pdf(\"$fpkm_file.genes_vs_minFPKM.pdf\")\n";
+ print $ofh "plot_expressed_gene_counts(\"$fpkm_file\", title=\"expressed transcripts vs. min FPKM\", fpkm_range=seq(0,5,0.01), outfile=\"$fpkm_file.genes_vs_minFPKM.dat\")\n";
+ print $ofh "dev.off()\n";
+--- a/util/misc/process_GMAP_alignments_gff3_chimeras_ok.pl
++++ b/util/misc/process_GMAP_alignments_gff3_chimeras_ok.pl
+@@ -3,7 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+ use File::Basename;
+ use Cwd;
+ 
+--- a/util/misc/run_GSNAP.pl
++++ b/util/misc/run_GSNAP.pl
+@@ -3,7 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+ use File::Basename;
+ use Cwd;
+ 
+--- a/util/misc/run_HiCpipe_bowtie.pl
++++ b/util/misc/run_HiCpipe_bowtie.pl
+@@ -3,9 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-
+-
+ my $usage = "usage: $0 genome.fasta  left.fq  right.fq [output_dir]\n\n";
+ 
+ my $genome_file = $ARGV[0] or die $usage;
+@@ -26,7 +23,7 @@ main: {
+         . " -- -a -m 1 --best --strata -p 4 --chunkmbs 512 ";
+     &process_cmd($cmd) unless (-s "$output_dir/$output_dir.nameSorted.sam");
+ 
+-    $cmd = "$FindBin::RealBin/HiCpipe_nameSortedSam_to_raw.pl $output_dir/$output_dir.nameSorted.sam > $output_dir/$output_dir.raw";
++    $cmd = "/usr/lib/trinityrnaseq/util/misc/HiCpipe_nameSortedSam_to_raw.pl $output_dir/$output_dir.nameSorted.sam > $output_dir/$output_dir.raw";
+     &process_cmd($cmd) unless (-s "$output_dir/$output_dir.raw");
+     
+ 
+--- a/util/misc/run_TOPHAT.pl
++++ b/util/misc/run_TOPHAT.pl
+@@ -3,7 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+ use File::Basename;
+ use Cwd;
+ use Carp;
+--- a/util/misc/run_bwa.pl
++++ b/util/misc/run_bwa.pl
+@@ -3,7 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+ use Cwd;
+ use File::Basename;
+ use Carp;
+--- a/util/misc/run_jellyfish.pl
++++ b/util/misc/run_jellyfish.pl
+@@ -3,7 +3,6 @@
+ use strict;
+ use warnings;
+ use Cwd;
+-use FindBin;
+ 
+ my $usage = "\n\nusage: $0 reads.fa hash_size\n\n";
+ 
+@@ -11,7 +10,7 @@ my $reads_file = $ARGV[0] or die $usage;
+ my $hash_size = $ARGV[1] or die $usage;
+ 
+ 
+-my $JELLYFISH_DIR = $FindBin::RealBin . "/../../trinity-plugins/jellyfish-1.1.3";
++my $JELLYFISH_DIR = "/usr";
+ my $CPU = 4;
+ my $min_kmer_cov = 1;
+ 
+--- a/util/misc/run_read_simulator_per_gene.pl
++++ b/util/misc/run_read_simulator_per_gene.pl
+@@ -5,8 +5,6 @@ use warnings;
+ 
+ use lib ($ENV{EUK_MODULES});
+ use Fasta_reader;
+-use FindBin;
+-
+ 
+ my $usage = "usage: $0 file.fasta [max_genes]\n\n";
+ 
+@@ -69,7 +67,7 @@ main: {
+         
+         my $outfile = "$sim_out_dir/$outdir/$outdir.reads.fa";
+         
+-        my $cmd = "$FindBin::RealBin/simulate_illuminaPE_from_transcripts.pl --transcripts $template_file --SS --out_prefix $sim_out_dir/$outdir/reads";
++        my $cmd = "/usr/lib/trinityrnaseq/util/misc/simulate_illuminaPE_from_transcripts.pl --transcripts $template_file --SS --out_prefix $sim_out_dir/$outdir/reads";
+         &process_cmd($cmd);
+         
+         $gene_counter++;
+--- a/util/misc/run_trimmomatic_qual_trimming.pl
++++ b/util/misc/run_trimmomatic_qual_trimming.pl
+@@ -5,8 +5,6 @@ use warnings;
+ 
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+ 
+-use FindBin;
+-
+ my $usage = <<__EOUSAGE__;
+ 
+ ###############################################################
+@@ -72,7 +70,7 @@ main: {
+ 
+     if ($left && $right) {
+     
+-        $cmd = "java -jar $FindBin::RealBin/../../trinity-plugins/Trimmomatic/trimmomatic.jar PE -threads $threads -phred33 "
++        $cmd = "java -jar /usr/share/java/trimmomatic.jar PE -threads $threads -phred33 "
+             . " $left $right "
+             . " $left.P.qtrim.fq $left.U.qtrim.fq "
+             . " $right.P.qtrim.fq $right.U.qtrim.fq "
+@@ -80,7 +78,7 @@ main: {
+     }
+     else {
+         
+-        $cmd = "java -jar $FindBin::RealBin/../../trinity-plugins/Trimmomatic/trimmomatic.jar SE -threads $threads -phred33 "
++        $cmd = "java -jar /usr/share/java/trimmomatic.jar SE -threads $threads -phred33 "
+             . " $single "
+             . " $single.qtrim.fq "
+             . " $trim_params ";
+--- a/util/misc/sim_test_framework/info_files_to_eval_cmds.pl
++++ b/util/misc/sim_test_framework/info_files_to_eval_cmds.pl
+@@ -3,7 +3,6 @@
+ use strict;
+ use warnings;
+ use Cwd;
+-use FindBin;
+ 
+ my $usage = "usage: $0 info_files.list.txt output_basedir [eval cmds]\n\n";
+ 
+@@ -19,7 +18,7 @@ main: {
+     my @files = `cat $files_listing_file`;
+     chomp @files;
+ 
+-    my $eval_script = "$FindBin::Bin/run_Trinity_eval.sh";
++    my $eval_script = "/usr/lib/trinityrnaseq/util/misc/sim_test_framework/run_Trinity_eval.sh";
+     my $basedir = cwd();
+ 
+     unless ($output_basedir =~ /^\//) {
+--- a/util/misc/sim_test_framework/partition_target_transcripts.pl
++++ b/util/misc/sim_test_framework/partition_target_transcripts.pl
+@@ -3,7 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+ use lib ("$ENV{TRINITY_HOME}/PerlLib/");
+ use Fasta_reader;
+ use Cwd;
+--- a/util/misc/sim_test_framework/run_Trinity_eval.pl
++++ b/util/misc/sim_test_framework/run_Trinity_eval.pl
+@@ -3,7 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+ use lib ("$ENV{TRINITY_HOME}/PerlLib/");
+ use Fasta_reader;
+ use Cwd;
+@@ -142,7 +141,7 @@ unless ($ref_trans_fa && $BFLY_JAR && $l
+ $NO_CLEANUP = 1; ## NEEDED NOW for iworm and bfy pruning assessment
+ 
+ unless ($ENV{TRINITY_HOME}) {
+-    $ENV{TRINITY_HOME} = "$FindBin::Bin/../../trinityrnaseq/";
++    $ENV{TRINITY_HOME} = "/usr/lib/trinityrnaseq";
+ }
+ 
+ my $reconstructions_log_file = "$OUT_DIR.reconstruction_summary.txt";
+@@ -203,7 +202,7 @@ main: {
+     print $summary;
+     close $ofh;
+ 
+-    &process_cmd("echo " . cwd() . "/audit.txt | $FindBin::Bin/audit_summary_stats.reexamine.pl | tee audit2.txt");
++    &process_cmd("echo " . cwd() . "/audit.txt | /usr/lib/trinityrnaseq/util/misc/sim_test_framework/audit_summary_stats.reexamine.pl | tee audit2.txt");
+     
+     
+     exit(0);
+@@ -423,7 +422,7 @@ sub check_inchworm_kmer_content {
+ sub check_pruning {
+     my ($log_file, $ref_kmers_file) = @_;
+ 
+-    my $pruned_ref_edges = `$FindBin::Bin/util/find_pruned_edges_shouldve_kept.pl $ref_kmers_file $log_file`;
++    my $pruned_ref_edges = `/usr/lib/trinityrnaseq/util/misc/sim_test_framework/util/find_pruned_edges_shouldve_kept.pl $ref_kmers_file $log_file`;
+ 
+     if ($pruned_ref_edges =~ /\w/) {
+         print "Pruned precious edges: $pruned_ref_edges\n";
+--- a/util/misc/sim_test_framework/run_simulate_reads.wgsim.pl
++++ b/util/misc/sim_test_framework/run_simulate_reads.wgsim.pl
+@@ -3,7 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+ use lib ("$ENV{TRINITY_HOME}/PerlLib/");
+ use Fasta_reader;
+ use Cwd;
+@@ -95,7 +94,7 @@ unless ($ref_trans_fa && $OUT_DIR) {
+ 
+ 
+ unless ($ENV{TRINITY_HOME}) {
+-    $ENV{TRINITY_HOME} = "$FindBin::Bin/../../trinityrnaseq/";
++    $ENV{TRINITY_HOME} = "/usr/lib/trinityrnaseq";
+ }
+ 
+ 
+--- a/util/misc/sim_test_framework/write_simulate_read_commands.pl
++++ b/util/misc/sim_test_framework/write_simulate_read_commands.pl
+@@ -2,7 +2,6 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+ use File::Basename;
+ 
+ my $usage = "\n\n\tusage: $0 target_trans_files.list [opts ex. --wgsim ...]\n\n";
+@@ -18,7 +17,7 @@ main: {
+ 
+     foreach my $file (@ref_files) {
+         my $outdir = dirname($file);
+-        my $cmd = "$FindBin::Bin/run_simulate_reads.wgsim.pl -R $file -O $outdir @ARGV";
++        my $cmd = "/usr/lib/trinityrnaseq/util/misc/sim_test_framework/run_simulate_reads.wgsim.pl -R $file -O $outdir @ARGV";
+                 
+         print "$cmd\n";
+     }
+--- a/util/misc/simulate_reads_sam_and_fa.pl
++++ b/util/misc/simulate_reads_sam_and_fa.pl
+@@ -3,7 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+ use lib "$ENV{TRINITY_HOME}/PerlLib";
+ use Simulate::Uniform_Read_Generator;
+ use Overlap_info;
+@@ -353,7 +352,7 @@ main: {
+ =strand_sep_trans
+ 
+     if ($SS_lib_type) {
+-        $cmd = "$FindBin::RealBin/../support_scripts/SAM_strand_separator.pl $trans_sam_outfile.coordSorted.bam $SS_lib_type";
++        $cmd = "/usr/lib/trinityrnaseq/util/support_scripts/SAM_strand_separator.pl $trans_sam_outfile.coordSorted.bam $SS_lib_type";
+         &process_cmd($cmd);
+ 
+         foreach my $sam_file ("$trans_sam_outfile.coordSorted.bam.+.sam", "$trans_sam_outfile.coordSorted.bam.-.sam") {
+@@ -398,7 +397,7 @@ main: {
+ =strand_sep_genome
+ 
+     if ($SS_lib_type) {
+-        $cmd = "$FindBin::RealBin/../support_scripts/SAM_strand_separator.pl $genome_sam_outfile.coordSorted.bam $SS_lib_type";
++        $cmd = "/usr/lib/trinityrnaseq/util/support_scripts/SAM_strand_separator.pl $genome_sam_outfile.coordSorted.bam $SS_lib_type";
+         &process_cmd($cmd);
+ 
+         foreach my $sam_file ("$genome_sam_outfile.coordSorted.bam.+.sam", "$genome_sam_outfile.coordSorted.bam.-.sam") {
+--- a/util/support_scripts/SAM_ordered_pair_jaccard.pl
++++ b/util/support_scripts/SAM_ordered_pair_jaccard.pl
+@@ -4,7 +4,6 @@ use strict;
+ use warnings;
+ use Carp;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+-use FindBin;
+ 
+ 
+ 
+@@ -84,7 +83,7 @@ if (@ARGV) {
+ }
+ 
+ 
+-my $util_dir = "$FindBin::RealBin";
++my $util_dir = "/usr/lib/trinityrnaseq/util/support_scripts";
+ 
+ main: {
+ 
+--- a/util/support_scripts/bowtie2_wrapper.pl
++++ b/util/support_scripts/bowtie2_wrapper.pl
+@@ -3,7 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+ use Cwd;
+ use File::Basename;
+ use Carp;
+@@ -11,8 +10,6 @@ use Data::Dumper;
+ 
+ use Getopt::Long qw(:config no_ignore_case bundling);
+ 
+-$ENV{PATH} .= "\:$FindBin::RealBin/../trinity-plugins/rsem/sam/";  # include samtools in path, already included in rsem build.
+-
+ $ENV{LC_ALL} = 'C';  # critical for proper sorting using [system "sort -k1,1 ..."] within the perl script
+ 
+ 
+@@ -171,7 +168,7 @@ if ($SS_lib_type && $SS_lib_type !~ /^(F
+ }
+ 
+ 
+-my $util_dir = "$FindBin::RealBin";
++my $util_dir = "/usr/lib/trinityrnaseq/util/support_scripts";
+ 
+ my ($start_dir, $work_dir, $num_hits);
+ 
+--- a/util/support_scripts/fastQ_to_tab.pl
++++ b/util/support_scripts/fastQ_to_tab.pl
+@@ -3,8 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+-
+ use Getopt::Long qw(:config no_ignore_case bundling);
+ 
+ 
+--- a/util/support_scripts/inchworm_transcript_splitter.pl
++++ b/util/support_scripts/inchworm_transcript_splitter.pl
+@@ -5,13 +5,11 @@ use warnings;
+ 
+ use Getopt::Long qw(:config no_ignore_case bundling);
+ 
+-use FindBin;
+-
+ use Cwd;
+ 
+ $ENV{LC_ALL} = 'C';
+ 
+-my $util_dir = "$FindBin::RealBin";
++my $util_dir = "/usr/lib/trinityrnaseq/util/support_scripts";
+ 
+ 
+ my $usage = <<_EOUSAGE_;
+--- a/util/support_scripts/process_GMAP_alignments_gff3_chimeras_ok.pl
++++ b/util/support_scripts/process_GMAP_alignments_gff3_chimeras_ok.pl
+@@ -3,7 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+ use File::Basename;
+ use Cwd;
+ 
+--- a/util/support_scripts/write_partitioned_trinity_cmds.pl
++++ b/util/support_scripts/write_partitioned_trinity_cmds.pl
+@@ -3,7 +3,6 @@
+ use strict;
+ use warnings;
+ 
+-use FindBin;
+ use Getopt::Long qw(:config no_ignore_case bundling pass_through);
+ 
+ my $usage = <<__EOUSAGE__;
+@@ -84,7 +83,7 @@ while (<$fh>) {
+     my $file = pop @x;
+     
+ 
+-    my $cmd = "$FindBin::RealBin/../../Trinity --single \"$file\" --output \"$file.out\" $trin_args ";
++    my $cmd = "/usr/bin/Trinity --single \"$file\" --output \"$file.out\" $trin_args ";
+ 
+     if ($singularity_img) {
+         $cmd = "singularity exec $singularity_extra_params $singularity_img $cmd";
+--- a/Analysis/SuperTranscripts/AllelicVariants/run_variant_calling.py
++++ b/Analysis/SuperTranscripts/AllelicVariants/run_variant_calling.py
+@@ -143,7 +143,7 @@ def main():
+     
+     args = parser.parse_args()
+ 
+-    PICARD_HOME = os.getenv("PICARD_HOME")
++    PICARD_HOME = os.getenv("PICARD_HOME", "/usr/share/java")
+     if not PICARD_HOME:
+         exit("Error, missing path to Picard-Tools in $PICARD_HOME.")
+ 
+--- a/trinity_ext_sample_data/test_GenomeGuidedTrinity/old/run_mouse_TrinityGG.sh
++++ b/trinity_ext_sample_data/test_GenomeGuidedTrinity/old/run_mouse_TrinityGG.sh
+@@ -20,7 +20,7 @@ find Dir_mm9chr17.tophat.* -regex ".*rea
+ ../../util/support_scripts/GG_write_trinity_cmds.pl --reads_list_file read_files.list --paired --SS  > trinity_GG.cmds
+ 
+ 
+-../../trinity-plugins/parafly/bin/ParaFly -c trinity_GG.cmds -CPU 2 -vv
++/usr/bin/ParaFly -c trinity_GG.cmds -CPU 2 -vv
+ 
+ ## execute the trinity commands, and then pull together the aggregate fasta file like so:
+ find Dir_mm9chr17.tophat.*  -name "*inity.fasta"  | ../../util/GG_trinity_accession_incrementer.pl > mm9.Trinity-GG.fasta
+--- a/util/support_scripts/trinity_install_tests.sh
++++ b/util/support_scripts/trinity_install_tests.sh
+@@ -41,7 +41,7 @@ else
+ fi
+ 
+ 
+-if [ -e "trinity-plugins/BIN/ParaFly" ]
++if [ -e "/usr/bin/ParaFly" ]
+ then
+ 	echo "parafly:                 has been Installed Properly"
+ else
+--- a/Analysis/DifferentialExpression/deprecated/prep_n_run_GOplot.pl
++++ b/Analysis/DifferentialExpression/deprecated/prep_n_run_GOplot.pl
+@@ -2,8 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-use FindBin;
+-use lib ("$FindBin::Bin/../../PerlLib");
++use lib ("/usr/lib/trinityrnaseq/PerlLib");
+ use DelimParser;
+ use File::Basename;
+ use Data::Dumper;
+@@ -144,7 +143,7 @@ main: {
+     }
+ 
+     
+-    my $cmd = "$FindBin::RealBin/GOplot.Rscript --EC_david $EC_david_file --EC_genelist $EC_genelist_file --pdf_outfile $pdf_filename";
++    my $cmd = "/usr/lib/trinityrnaseq/Analysis/DifferentialExpression/GOplot.Rscript --EC_david $EC_david_file --EC_genelist $EC_genelist_file --pdf_outfile $pdf_filename";
+     &process_cmd($cmd);
+     
+     exit(0);
+

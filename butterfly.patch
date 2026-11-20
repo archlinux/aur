@@ -1,0 +1,90 @@
+Description: Updates the main Trinity program to use FHS paths
+Author: Michael R. Crusoe <crusoe@debian.org>
+Forwarded: not-needed
+Last-Updated: 2015-02-22
+
+--- trinityrnaseq.orig/Trinity
++++ trinityrnaseq/Trinity
+@@ -381,7 +381,7 @@
+ #  --bfly_algorithm <string>       : assembly algorithm to use. Options: @BFLY_ALGORITHMS
+ #
+ #  --bfly_opts <string>            :additional parameters to pass through to butterfly
+-#                                   (see butterfly options: java -jar Butterfly.jar ).
++#                                   (see butterfly options: java -jar /usr/share/java/Butterfly.jar ).
+ #                                   (note: only for expert or experimental use.  Commonly used parameters are exposed through this Trinity menu here).
+ #
+ #
+@@ -1074,7 +1074,7 @@
+ }
+ 
+ unless ($BFLY_JAR) {
+-    $BFLY_JAR = "$BUTTERFLY_DIR/Butterfly.jar";
++    $BFLY_JAR = "/usr/share/java/Butterfly.jar";
+ }
+ 
+ 
+--- trinityrnaseq.orig/Chrysalis/analysis/Chrysalis.cc
++++ trinityrnaseq/Chrysalis/analysis/Chrysalis.cc
+@@ -258,7 +258,7 @@
+     commandArg<string> iwormStringCmmd("-iworm","inchworm file", "");
+     commandArg<string> oStringCmmd("-o","output directory");
+     commandArg<bool> pairsStringCmmd("-paired", "paired-end reads are used.", false);
+-    commandArg<string> butterflyCmmd("-butterfly","butterfly executable", "../Butterfly/Butterfly.jar");
++    commandArg<string> butterflyCmmd("-butterfly","butterfly executable", "/usr/share/java/Butterfly.jar");
+     commandArg<bool> skipCmmd("-skip","skip initial 2 steps", false);
+     commandArg<bool> strandCmmd("-strand","strand-specific data", false);
+     commandArg<bool> nobreakCmmd("-nobreak","skip breaking", false);
+--- trinityrnaseq.orig/trinity-plugins/bamsifter/Makefile
++++ trinityrnaseq/trinity-plugins/bamsifter/Makefile
+@@ -3,7 +3,7 @@
+ cwd = $(shell pwd)
+ 
+ sift_bam_max_cov: sift_bam_max_cov.cpp htslib/version.h
+-	g++ -std=c++11 -o _sift_bam_max_cov sift_bam_max_cov.cpp -Wall -O2 -L./htslib/build/lib/ -I./htslib/build/include -lhts
++	$(CXX) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -std=c++11 -o _sift_bam_max_cov sift_bam_max_cov.cpp -Wall -O2 -L./htslib/build/lib/ -I./htslib/build/include -lhts
+ 
+ 
+ htslib/version.h :
+--- trinityrnaseq.orig/util/misc/bam_gene_tests/write_trin_cmds.pl
++++ trinityrnaseq/util/misc/bam_gene_tests/write_trin_cmds.pl
+@@ -23,7 +23,7 @@
+ 
+ #  Example: 
+ #
+-#    write_trin_cmds.pl  --reads_list_file ReadPartitions.listing --out_token origbfly --SS_lib_type F --full_cleanup_ET --CPU 1 --bfly_jar ~/SVN/trinityrnaseq/trunk/Butterfly/Butterfly.jar --JM 1G --seqType fa
++#    write_trin_cmds.pl  --reads_list_file ReadPartitions.listing --out_token origbfly --SS_lib_type F --full_cleanup_ET --CPU 1 --bfly_jar /usr/share/java/Butterfly.jar --JM 1G --seqType fa
+ 
+ 
+ __EOUSAGE__
+--- trinityrnaseq.orig/util/misc/compare_bflies.pl
++++ trinityrnaseq/util/misc/compare_bflies.pl
+@@ -37,7 +37,7 @@
+         my $cmd = "ln -s $comp.reads .;  ln -s $comp.out .";
+         &process_cmd($cmd);
+ 
+-        $cmd = "java -Xmx4G -jar $TRINITY_HOME/Butterfly/prev_vers/Butterfly_r2013_08_14.jar -N 100000 -L 200 -F 500 -C " . basename($comp) . " --path_reinforcement_distance=75 --max_number_of_paths_per_node=10 -V 15 --stderr 2>&1 | tee log.txt";
++        $cmd = "java -Xmx4G -jar $/usr/share/java/Butterfly.jar -N 100000 -L 200 -F 500 -C " . basename($comp) . " --path_reinforcement_distance=75 --max_number_of_paths_per_node=10 -V 15 --stderr 2>&1 | tee log.txt";
+ 
+         open (my $ofh, ">bfly.cmd") or die $!;
+         print $ofh $cmd;
+@@ -61,7 +61,7 @@
+         &process_cmd($cmd);
+         
+ 
+-        $cmd = "java -Xmx4G -jar $TRINITY_HOME/Butterfly/Butterfly.jar -N 100000 -L 200 -F 500 -C " . basename($comp) . " --path_reinforcement_distance=75 -V 15 --stderr 2>&1 | tee log.txt";
++        $cmd = "java -Xmx4G -jar /usr/share/java/Butterfly.jar -N 100000 -L 200 -F 500 -C " . basename($comp) . " --path_reinforcement_distance=75 -V 15 --stderr 2>&1 | tee log.txt";
+ 
+         open (my $ofh, ">bfly.cmd") or die $!;
+         print $ofh $cmd;
+--- trinityrnaseq.orig/util/misc/sim_test_framework/run_Trinity_eval.pl
++++ trinityrnaseq/util/misc/sim_test_framework/run_Trinity_eval.pl
+@@ -17,7 +17,7 @@
+ 
+ my $help_flag;
+ my $ref_trans_fa;
+-my $BFLY_JAR = "$ENV{TRINITY_HOME}/Butterfly/Butterfly.jar";
++my $BFLY_JAR = "/usr/share/java/Butterfly.jar";
+ my $INCLUDE_REF_TRANS = 0;
+ my $OUT_DIR = "testing_dir";
+ my $MIN_CONTIG_LENGTH = 200;
+

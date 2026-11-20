@@ -3,23 +3,21 @@
 basename=trinityrnaseq
 pkgname=('trinityrnaseq' 'trinityrnaseq-doc' 'trinityrnaseq-extra')
 _pkgname=Trinity
-pkgver=2.15.1
-pkgrel=2
+pkgver=2.16.0
+pkgrel=1
 pkgdesc="Transcriptome assembler for RNA-seq reads \
 	 https://doi.org/10.1038%2Fnbt.1883"
 url="https://github.com/Trinotate/Trinotate/wiki"
 license=('BSD-3-Clause')
 arch=('x86_64')
 makedepends=('git' 'cmake' 'make' 'python' 'rsync')
-source=("git+https://github.com/trinityrnaseq/trinityrnaseq.git#tag=$_pkgname-v$pkgver"
-	"string.patch")
-sha256sums=('3764a52e34eacdf4affc1ab719901e90c68e326b9be7b70a8bacdb8843e0aedf'
-            '9304eae411d76a6ce1846ed06e7311b35175638a74ec6277909ef9d4ba71769b')
+source=("git+https://github.com/trinityrnaseq/trinityrnaseq.git#tag=$_pkgname-v$pkgver")
+sha256sums=('40f15b5b7c46c5cc05ff0d691c39da6638c1ae24de8af2daba1a42679eab4fd9')
 
 prepare(){
   cd $srcdir/$pkgname
   git submodule update --init --recursive
-  patch -p1 < $srcdir/string.patch
+#  patch -p1 < $srcdir/string.patch
 }
 
 build() {
@@ -29,7 +27,8 @@ build() {
 }
 
 package_trinityrnaseq() {
-  depends=('perl' 'bash' 'glibc' 'java-runtime' 'python' 'zlib')
+  depends=('perl' 'bash' 'glibc' 'java-runtime' 'python' 'zlib'
+	'parafly' 'samtools' 'jellyfish' 'bowtie2' 'salmon')
   # 'xz' 'bzip2' 'curl'
   set -x
   cd $srcdir/trinityrnaseq

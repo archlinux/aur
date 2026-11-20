@@ -1,7 +1,7 @@
 pkgbase = trinityrnaseq
 	pkgdesc = Transcriptome assembler for RNA-seq reads https://doi.org/10.1038%2Fnbt.1883
-	pkgver = 2.15.1
-	pkgrel = 2
+	pkgver = 2.16.0
+	pkgrel = 1
 	url = https://github.com/Trinotate/Trinotate/wiki
 	arch = x86_64
 	license = BSD-3-Clause
@@ -10,10 +10,8 @@ pkgbase = trinityrnaseq
 	makedepends = make
 	makedepends = python
 	makedepends = rsync
-	source = git+https://github.com/trinityrnaseq/trinityrnaseq.git#tag=Trinity-v2.15.1
-	source = string.patch
-	sha256sums = 3764a52e34eacdf4affc1ab719901e90c68e326b9be7b70a8bacdb8843e0aedf
-	sha256sums = 9304eae411d76a6ce1846ed06e7311b35175638a74ec6277909ef9d4ba71769b
+	source = git+https://github.com/trinityrnaseq/trinityrnaseq.git#tag=Trinity-v2.16.0
+	sha256sums = 40f15b5b7c46c5cc05ff0d691c39da6638c1ae24de8af2daba1a42679eab4fd9
 
 pkgname = trinityrnaseq
 	depends = perl
@@ -22,6 +20,11 @@ pkgname = trinityrnaseq
 	depends = java-runtime
 	depends = python
 	depends = zlib
+	depends = parafly
+	depends = samtools
+	depends = jellyfish
+	depends = bowtie2
+	depends = salmon
 
 pkgname = trinityrnaseq-doc
 

@@ -1,0 +1,16 @@
+Author: Michael R. Crusoe <crusoe@debian.org>
+Description: Match the Debian's path
+Forwarded: not-needed
+--- a/Trinity
++++ b/Trinity
+@@ -56,8 +56,8 @@ if ($ENV{TRINITY_NO_RETRIES}) {
+     $PARAFLY .= " -max_retry 1 ";
+ }
+ 
+-my $TRIMMOMATIC = "$ROOTDIR/trinity-plugins/Trimmomatic/trimmomatic.jar";
+-my $TRIMMOMATIC_DIR = "$ROOTDIR/trinity-plugins/Trimmomatic";
++my $TRIMMOMATIC = "/usr/share/java/trimmomatic/trimmomatic.jar";
++my $TRIMMOMATIC_DIR = "/usr/share/java/trimmomatic/";
+ 
+ $ENV{PATH} = "$ROOTDIR/trinity-plugins/BIN:$ENV{PATH}";
+ 
