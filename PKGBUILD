@@ -2,7 +2,7 @@
 
 _suffix=tytan652
 pkgname="obs-studio-${_suffix}"
-_pkgver=33.0.1
+_pkgver=33.0.2
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
@@ -110,8 +110,8 @@ source=(
   "bind_iface_eyeballed.patch" # Based on https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed3
   "10136-Add_ROI_support_for_VAAPI.patch" # https://github.com/obsproject/obs-studio/pull/10136
 )
-source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_7871_linux_x86_64.tar.xz")
-source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_7871_linux_aarch64.tar.xz")
+source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_7871_linux_x86_64_v2.tar.xz")
+source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_7871_linux_aarch64_v2.tar.xz")
 sha256sums=(
   "SKIP"
   "SKIP"
@@ -119,8 +119,8 @@ sha256sums=(
   "785b95a8b51864ece25b307246a29ddf80e7e7d4d77fe7d557df73f68329f16d"
   "6739b632ca2275e189f0214c4843b8accc1c9d2bdff81d0f169ec1de4c02096c"
 )
-sha256sums_x86_64=("8ffc64d06ea74da613eeda7f2aa5d4e98661af6fa3ed8c68724c9a6e4e89ea8e")
-sha256sums_aarch64=("b05cf13b0f482e3b0149ac21268268c536d091b5e6608c742019ebd6c8e8a1e3")
+sha256sums_x86_64=("3f5c74f8c4c4b24dbbe9ff4cff7ba764aa4d0a72127b96976342e4360e435db3")
+sha256sums_aarch64=("a6f04ea5a1a0555d683f2dafa663e0704a0ea954d703dee4cab5ff67ba074ad0")
 
 if [[ ${CARCH/%_v?/} == 'x86_64' ]]; then
   optdepends+=("decklink: Blackmagic Design DeckLink support")
