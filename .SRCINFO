@@ -1,6 +1,6 @@
 pkgbase = wofi-power-menu-bin
 	pkgdesc = Highly configurable power menu using the wofi launcher power-menu (prebuilt binary)
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/szaffarano/wofi-power-menu
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = wofi-power-menu-bin
 	depends = wofi
 	provides = wofi-power-menu
 	conflicts = wofi-power-menu
-	source = wofi-power-menu-bin-0.3.7::https://github.com/szaffarano/wofi-power-menu/releases/download/v0.3.7/wofi-power-menu-linux-x64
-	source = wofi-power-menu-bin-0.3.7.asc::https://github.com/szaffarano/wofi-power-menu/releases/download/v0.3.7/wofi-power-menu-linux-x64.asc
+	source = wofi-power-menu-bin-0.3.8::https://github.com/szaffarano/wofi-power-menu/releases/download/v0.3.8/wofi-power-menu-linux-x64
+	source = wofi-power-menu-bin-0.3.8.asc::https://github.com/szaffarano/wofi-power-menu/releases/download/v0.3.8/wofi-power-menu-linux-x64.asc
 	validpgpkeys = 42BE68F43D528467FC281E2E310FFE86A2E427BA
-	sha256sums = 6b9e1b460198acba84367d31b7b381ec81a4d4b5e5dd83bf7afc2dc4b79aadec
-	sha256sums = 674c78c0129f0983868f56fdd9e4bd8e7e51a770421ec5d807506265cad0803b
+	sha256sums = 40f325e0404e2cac2e98295ecf15acc656895143ab1f4fa89ad704516d8c9139
+	sha256sums = SKIP
 
 pkgname = wofi-power-menu-bin
