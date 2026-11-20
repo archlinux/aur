@@ -1,7 +1,7 @@
 pkgbase = mpv-phoenix
 	pkgdesc = A fork of mpv with HDR support on X11
 	pkgver = 0.41.0
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 1
 	url = https://github.com/dec05eba/mpv
 	arch = x86_64

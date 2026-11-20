@@ -7,7 +7,7 @@
 pkgname=mpv-phoenix
 epoch=1
 pkgver=0.41.0
-pkgrel=5
+pkgrel=6
 _commit=cfbb33214201d4d48c3b09739bdf9cfe8a31717c
 _srcname=mpv-${_commit}
 pkgdesc='A fork of mpv with HDR support on X11'
