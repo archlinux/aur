@@ -1,7 +1,7 @@
 # Maintainer: fnrir <fnr1r0@protonmail.com>
 pkgname=g3mtool
-pkgver=1.3.2
-_tag="2026.11.04"
+pkgver=1.3.4
+_tag="2026.11.19"
 pkgrel=1
 epoch=
 pkgdesc="Command-line tool for modding GameMaker games"
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("G3MTool-$_tag.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
 noextract=()
-sha256sums=('7634cf3bd6e64ed45b901272e608116f74910e586601497a1f4f2ac5aa1657d2')
+sha256sums=('a1b1c5ff041af0fe358ba0f763088748e2141ab70c724d96b3e92ebc3378b8ab')
 validpgpkeys=()
 
 _dotnet_arch=x64
