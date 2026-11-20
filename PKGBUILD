@@ -5,10 +5,10 @@ pkgname=(
     'tensorrt'
     'tensorrt-cross-builder-libs'
     'python-tensorrt')
-pkgver=11.4.0.106
-_cudaver=13.4
+pkgver=11.5.0.63
+_cudaver=13.5
 _onnx_graphsurgeon_ver=0.6.2
-_polygraphy_ver=0.53.6
+_polygraphy_ver=0.53.9
 _tensorflow_quantization_ver=0.2.0
 pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
@@ -39,8 +39,8 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         'git+https://github.com/pybind/pybind11.git'
         '010-tensorrt-use-local-pybind11-sources.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
-sha256sums=('c67c87674cbe7b2337d1c30cb16d48686ab79ecb11bf08cb764b71f4f2bb711b'
-            '6aa6856994d4b6e1a4a6c38b1a66c1c6d30f39e7479295e777ca5f2d2cbdb9c7'
+sha256sums=('ebeaadd0e259e461c2c39d21ca8232f6a575241006eb0d93050e38d6b324d7bc'
+            '73acfaec54dc08f0e2ff794a27fe05511952669c4e849877b986b5d150ca4013'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -81,7 +81,6 @@ build() {
         -DCMAKE_CUDA_ARCHITECTURES:STRING='75;80;86;87;89;90;100;103;110;120;121' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_PREFIX_PATH:PATH="${srcdir}/TensorRT-${pkgver}" \
-        -DCUDA_INCLUDE_DIR:STRING='/opt/cuda/include' \
         -DONNX_BUILD_PYTHON:BOOL='ON' \
         -Wno-author
     cmake --build build
