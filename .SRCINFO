@@ -1,0 +1,22 @@
+pkgbase = lambo-subtitle-edit
+	pkgdesc = SRT subtitle editor with dual video preview
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Paul-sinbud2004/lambo-subtitle-edit
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	depends = gst-libav
+	depends = hicolor-icon-theme
+	depends = xdg-desktop-portal
+	depends = zenity
+	source = https://github.com/Paul-sinbud2004/lambo-subtitle-edit/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = lambo-subtitle-edit
