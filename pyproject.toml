@@ -1,2 +1,2 @@
 [build-system]
-requires = ["setuptools", "wheel", "mypy", "typing-extensions"]
+requires = ["setuptools", "wheel", "typing-extensions"]
