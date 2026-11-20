@@ -1,6 +1,6 @@
 pkgbase = libgamma
 	pkgdesc = Display server abstraction layer for gamma ramps
-	pkgver = 0.8.1
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://codeberg.org/maandree/libgamma
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = libgamma
 	depends = libx11
 	depends = libxxf86vm
 	depends = libdrm
-	source = libgamma-0.8.1.tar.gz::https://codeberg.org/maandree/libgamma/archive/0.8.1.tar.gz
-	sha256sums = 166f3de5f6a0665af24417763a7022f3f49f898b5e95f218838b4d79741b36e3
+	source = libgamma-0.9.tar.gz::https://codeberg.org/maandree/libgamma/archive/0.9.tar.gz
+	sha256sums = 9af13a6e28ef02d0082319a44b41eb48aa8249ea5a289c5b2902798a2ebd3343
 
 pkgname = libgamma

@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=libgamma
-pkgver=0.8.1
+pkgver=0.9
 pkgrel=1
 pkgdesc="Display server abstraction layer for gamma ramps"
 arch=(i686 x86_64 aarch64)
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=(libxcb libx11 libxxf86vm libdrm)
 makedepends=(libxcb libx11 libxxf86vm libdrm pkg-config)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(166f3de5f6a0665af24417763a7022f3f49f898b5e95f218838b4d79741b36e3)
+sha256sums=(9af13a6e28ef02d0082319a44b41eb48aa8249ea5a289c5b2902798a2ebd3343)
 
 
 prepare () {
