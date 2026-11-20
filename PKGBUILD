@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=yardstick
-_pkgver=1.4.0
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,13 +31,14 @@ optdepends=(
   r-ggplot2
   r-knitr
   r-probably
+  r-quarto
   r-rmarkdown
   r-testthat
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d475fe630be7b265ebb47f56b7d8870c')
-b2sums=('3c528d3ba8119da12f703e66e15a83d5d09c0ef66cf30681e2efe685a9d9d434c2616e96d0bf16863f1ebf332c676f1a2634c1eefd5988ea61a5d42fb4c24cb5')
+md5sums=('2497f86dd35f07b46660a2b4290781cf')
+b2sums=('3bd4cc2301540f8d54512049ac71120d7704ef596e990a60f20b93ef26ba194adb066bf2027846c29a37a4147ccc1003b89526c695eaced1bbb25562b13d0846')
 
 build() {
   mkdir build
