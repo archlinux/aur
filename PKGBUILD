@@ -2,7 +2,7 @@
 
 pkgname=python-pylance
 _pkgname=pylance
-pkgver=14.0.2
+pkgver=14.0.3
 pkgrel=1
 pkgdesc="Python wrapper for the Lance columnar data format"
 arch=('x86_64')
@@ -61,7 +61,7 @@ source=(
     'invalid-log-path-test.patch'
 )
 sha256sums=(
-    '91228e11ded856254fcfb389c965ae57bfffc43365bbf72fccd1971feb7a8d31'
+    'b04f172dd509f7f266d0adc3725874a5e8baf1a504440df5eb0da33f4bc11618'
     '3cd69e6fbfd972dcd79a1ce63fd035a12a74e476f62800910801cd04d365b1b0'
     '34bd5ed151329068b9eb2839c6815a0c36541ba05208023fbfce0547a829181e'
 )
