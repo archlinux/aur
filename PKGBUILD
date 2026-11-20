@@ -2,19 +2,19 @@
 
 pkgbase=ch343ser-git
 pkgname=(ch343ser-git ch343ser-dkms-git libch343ser-git)
-pkgver=r58.9e6eb31
-pkgrel=3
+pkgver=r61.b5515b9
+pkgrel=4
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc."
 arch=($CARCH)
 url="https://github.com/WCHSoftGroup/ch343ser_linux"
 license=('GPL-2.0-or-later')
-depends=(dkms
-    glibc)
 makedepends=('git')
-source=("${pkgbase}::git+${url}.git"
-    "ch343ser-dkms-git.install")
+source=(
+    "${pkgbase}::git+${url}.git"
+    "ch343ser-dkms-git.install"
+)
 sha256sums=('SKIP'
-    '6cd61719a10c54747b9794a684e68eedd8c6b38424b1710940c13434b2ec7d55')
+            '92dee6db2b97fc397d5182a289d633d728bb64aca7e6a5cb757830a2d40b1363')
 options=(!strip !debug)
 
 pkgver() {
@@ -42,18 +42,22 @@ package_ch343ser-git() {
 }
 
 package_ch343ser-dkms-git() {
-    pkgdesc+="= (dkms)."
-    provides=(${pkgname%-git})
-    conflicts=(${pkgname%-git} brltty-udev-generic)
+    pkgdesc+=" (DKMS)"
+    provides=("${pkgname%-git}")
+    conflicts=("${pkgname%-git}")
     depends=(dkms)
-    optdepends=('linux-headers: build the module against Arch kernel'
-        'linux-ck-headers: build the module against Linux-ck kernel'
-        'linux-lts-headers: build the module against LTS Arch kernel')
+    optdepends=(
+        'linux-headers: build the module against Arch kernel'
+        'linux-lts-headers: build the module against LTS Arch kernel'
+        'linux-zen-headers: build the module against Zen kernel'
+    )
     arch=('any')
     install=${pkgname}.install
     cd "$srcdir/${pkgbase}/driver"
-    rm -rf Makefile
-    install -Dm755 /dev/stdin Makefile <<EOF
+    install -dm755 "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/"
+    install -vDm644 ch343.c ch343.h -t "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/"
+
+    install -vDm0644 /dev/stdin "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/Makefile" <<EOF
 obj-m := ch343.o
 
 KVER ?= \$(shell uname -r)
@@ -63,9 +67,6 @@ SRC_DIR=\$(shell pwd)
 
 default:
 	\$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules
-
-clean:
-	\$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) clean
 
 install:
 	\$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules_install
@@ -77,7 +78,7 @@ load: unload
 	/sbin/insmod ch343.ko
 
 dkms.conf: dkms.conf.in
-	sed "s/@@VERSION@@/\$(VERSION)/" $^ > \$@
+	sed "s/@@VERSION@@/\$(VERSION)/" \$^ > \$@
 
 dkms-add: dkms.conf
 	/usr/sbin/dkms add \$(SRC_DIR)
@@ -99,28 +100,24 @@ modprobe-remove:
 
 dev: modprobe-remove dkms-remove dkms-add dkms-builddkms-install modprobe-install
 EOF
-    install -dm755 "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/"
-    for i in "${srcdir}/${pkgbase}/driver/"{Makefile,*.c,*.h}; do
-        install -D -m644 "${i}" "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/"
-    done
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/dkms.conf" <<EOF
+    install -vDm0644 /dev/stdin "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/dkms.conf" <<EOF
 PACKAGE_NAME="ch343ser"
 PACKAGE_VERSION="#MODULE_VERSION#"
 AUTOINSTALL="yes"
 
-MAKE="make KVER=\$kernelver"
-CLEAN="make clean"
+MAKE[0]="make KVER=\$kernelver"
 
 BUILT_MODULE_NAME[0]="ch343"
-DEST_MODULE_LOCATION[0]="/kernel/drivers/usb/serial"
+DEST_MODULE_LOCATION[0]="/updates"
 EOF
     # autoload
-    install -Dm644 /dev/stdin "${pkgdir}/etc/modules-load.d/ch343.conf" <<EOF
+    install -vDm644 /dev/stdin "${pkgdir}/etc/modules-load.d/ch343.conf" <<EOF
 ch343
 EOF
-    sed -i 's|GROUP="plugdev"|TAG+="uaccess"|g' "${srcdir}/${pkgbase}/udev/99-ch34x.rules"
-    install -Dm644 "${srcdir}/${pkgbase}/udev/99-ch34x.rules" -t "${pkgdir}/usr/lib/udev/rules.d/"
+    sed 's|GROUP="plugdev"|TAG+="uaccess"|g' \
+        "${srcdir}/${pkgbase}/udev/99-ch34x.rules" \
+        | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/99-ch34x.rules"
     # Blacklists conflicting module
     #     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/cdc_acm.conf" <<EOF
     # blacklist cdc_acm
@@ -128,19 +125,19 @@ EOF
 }
 
 package_libch343ser-git() {
-    pkgdesc+=" (dynamic lib)."
-    provides=(${pkgname%-git} libch9344ser)
-    conflicts=(${pkgname%-git} libch9344ser)
+    pkgdesc+=" (dynamic lib)"
+    provides=("${pkgname%-git}")
+    conflicts=("${pkgname%-git}")
     depends=(glibc)
     arch=($CARCH)
 
+    case "$CARCH" in
+        x86_64)  _libdir=x64 ;;
+        aarch64) _libdir=aarch64 ;;
+        *) echo "Unsupported arch for libch343ser-git: $CARCH" >&2; return 1 ;;
+    esac
+
     cd "$srcdir/${pkgbase}/lib"
-    if [ ${CARCH} = "x86_64" ]; then
-        install -vDm644 x64/dynamic/*.so -t "${pkgdir}/usr/lib/"
-        install -vDm644 x64/dynamic/*.h -t "${pkgdir}/usr/include/"
-    fi
-    if [ ${CARCH} = "aarch64" ]; then
-        install -vDm644 aarch64/dynamic/*.so -t "${pkgdir}/usr/lib/"
-        install -vDm644 aarch64/dynamic/*.h -t "${pkgdir}/usr/include/"
-    fi
+    install -vDm755 "${_libdir}/dynamic/"*.so -t "${pkgdir}/usr/lib/"
+    install -vDm644 "${_libdir}/dynamic/"ch34*.h -t "${pkgdir}/usr/include/"
 }
