@@ -1,0 +1,14 @@
+pkgbase = syscall-git
+	pkgdesc = Look up Linux syscalls from your terminal
+	pkgver = r7.c8e64f0
+	pkgrel = 1
+	url = https://syscall.sh/cli/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go>=1.27
+	depends = python
+	source = git+https://github.com/guitmz/syscall
+	sha512sums = SKIP
+
+pkgname = syscall-git

@@ -1,0 +1,1 @@
+/home/laio/Documents/Software/Contribs/AUR/ghidra-git/LICENSES/../LICENSE
