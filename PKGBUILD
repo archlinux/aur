@@ -1,16 +1,17 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=optparse
-pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua54-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=1.4
 _rockrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Parse and process command-line options'
 arch=(any)
 url="https://gvvaughan.github.io/$_rockname"
 _url="https://github.com/gvvaughan/$_rockname"
 license=(MIT)
 makedepends=(lua
+             lua54
              lua53
              lua52
              lua51
@@ -23,7 +24,7 @@ sha256sums=('fbb43a6139e9b3a992883f24bd32982fcee0028a3500f40f2b58597aa87a519e')
 
 build() {
 	cd "$_archive"
-	for LUAVER in 5.{1,2,3,4}; do
+	for LUAVER in 5.{1,2,3,4,5}; do
 		luarocks --lua-version "$LUAVER" \
 			make --pack-binary-rock --deps-mode none -- $_rockspec
 		install -Dm0644 -t "lua-$LUAVER/" "$_rock"
@@ -38,7 +39,7 @@ _package() {
 }
 
 package_lua-optparse() {
-  _package 5.4
+  _package 5.5
 }
 
 package_lua51-optparse() {
@@ -51,4 +52,8 @@ package_lua52-optparse() {
 
 package_lua53-optparse() {
   _package 5.3
+}
+
+package_lua54-optparse() {
+  _package 5.4
 }

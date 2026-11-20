@@ -1,11 +1,12 @@
 pkgbase = lua-optparse
 	pkgdesc = Parse and process command-line options
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gvvaughan.github.io/optparse
 	arch = any
 	license = MIT
 	makedepends = lua
+	makedepends = lua54
 	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
@@ -14,6 +15,8 @@ pkgbase = lua-optparse
 	sha256sums = fbb43a6139e9b3a992883f24bd32982fcee0028a3500f40f2b58597aa87a519e
 
 pkgname = lua-optparse
+
+pkgname = lua54-optparse
 
 pkgname = lua53-optparse
 
