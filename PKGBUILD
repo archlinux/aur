@@ -1,12 +1,12 @@
 # Maintainer: sumerjakhar78 (AUR), sumerchoudhary78 (GitHub)
 pkgname=hyprlume
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Glass command shell and local English voice companion for Hyprland, powered by HyprPilot'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sumerchoudhary78/hyprlume'
 license=('MIT' 'Apache-2.0')
-depends=('glibc' 'coreutils' 'gtk3' 'gcc-libs' 'dbus' 'polkit' 'glib2' 'systemd>=257' 'quickshell' 'qt6-declarative' 'qt6-wayland' 'qt6-quick3d>=6.9' 'hyprland>=0.57' 'uwsm>=0.27' 'wlr-randr>=0.5' 'xkeyboard-config' 'pipewire-audio' 'wireplumber' 'python' 'xdg-utils')
+depends=('glibc' 'coreutils' 'gtk3' 'gcc-libs' 'dbus' 'polkit' 'glib2' 'systemd>=257' 'quickshell' 'qt6-declarative' 'qt6-wayland' 'hyprland>=0.57' 'uwsm>=0.27' 'wlr-randr>=0.5' 'xkeyboard-config' 'pipewire-audio' 'wireplumber' 'python' 'xdg-utils')
 makedepends=('cargo' 'git' 'qt6-shadertools' 'pkgconf' 'glib2-devel')
 optdepends=('swaylock>=1.6: secure Wayland locking with PAM'
             'swayidle: opt-in Wayland idle policy and logind sleep hooks'
