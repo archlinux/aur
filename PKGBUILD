@@ -1,7 +1,7 @@
 # Maintainer: alcubierre-drive
 
 pkgname=btrfs-snap-cpp-git
-pkgver=0.1.r28.gf7abb99
+pkgver=0.1.r31.g8f77c7a
 pkgrel=1
 pkgdesc="Creates and transfers btrfs snapshots"
 license=('GPL3')
