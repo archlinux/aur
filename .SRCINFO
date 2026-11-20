@@ -1,6 +1,6 @@
 pkgbase = zcall-gui
 	pkgdesc = Native Project Z control panel for the zcalld local AI gateway
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/zcall-gui
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = zcall-gui
 	optdepends = xorg-xwayland: run on Wayland sessions
 	optdepends = noto-fonts-cjk: Chinese and Japanese glyphs
 	options = !lto
-	source = zcall-gui-v0.1.0-source.tar.gz::https://github.com/LIghtJUNction/zcall-gui/releases/download/v0.1.0/zcall-gui-v0.1.0-source.tar.gz
-	sha256sums = 881e83c8f8d34288c1b273efad3934c0701b5ae955c741a7ceaefd44f98edd1a
+	source = zcall-gui-v0.1.1-source.tar.gz::https://github.com/LIghtJUNction/zcall-gui/releases/download/v0.1.1/zcall-gui-v0.1.1-source.tar.gz
+	sha256sums = e7754ab193ceea9c3dc73be98e05038908c28e67b7c6a0310ffa5e11f2aa86da
 
 pkgname = zcall-gui
