@@ -5,7 +5,7 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
-pkgver=620.70.06
+pkgver=620.73.04
 pkgrel=1
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         '10-gsk.conf'
         'gsk-renderer.sh'
         '120-nvidia-settings-change-desktop-paths.patch')
-sha256sums=('29118e3abd08c07559bcca3d9c76238d039490af0362a2e5bcfcbe7204afd4b1'
+sha256sums=('b5f2e2d5da8435b32539304015b89bf7eb22fe0aec8cd6905b7a6e8a9f9b8f1b'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             '8ed91802c2a2d5b46c0692c624caf01dcde62a885dc617dda6694f4666de4c8e'
             'f77a5247a3ba63e9fad3a3b2822d0fcfa51e0f79b5a90bd79bf08ea34b64ab07'
