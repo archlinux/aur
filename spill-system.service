@@ -1,0 +1,25 @@
+[Unit]
+Description=spill BitTorrent daemon
+After=network.target
+
+[Service]
+Type=exec
+User=spill
+Group=spill
+ExecStart=/usr/bin/spill serve --config /etc/spill/spill.toml
+StateDirectory=spill spill/downloads
+StateDirectoryMode=0700
+RuntimeDirectory=spill
+RuntimeDirectoryMode=0700
+UMask=0077
+Restart=on-failure
+RestartSec=10s
+TimeoutStopSec=120s
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+
+[Install]
+WantedBy=multi-user.target

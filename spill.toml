@@ -1,0 +1,7 @@
+# Used only by the system service. Other settings use spill's defaults.
+state_dir = "/var/lib/spill"
+download_dir = "/var/lib/spill/downloads"
+control_socket = "/run/spill/control.sock"
+port_mapping = false
+# Other local users can also open the web interface. Remove this line to disable it.
+web_listen = "127.0.0.1:8080"
