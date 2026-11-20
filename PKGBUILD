@@ -2,10 +2,10 @@
 
 _rockname=pegdebug
 _pkgname=PegDebug
-pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua54-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.41
 _rockrel=1
-pkgrel=5
+pkgrel=6
 pkgdesc='Trace debugger for LPeg rules and captures'
 arch=(i686 x86_64)
 url="https://github.com/pkulchenko/$_pkgname"
@@ -15,6 +15,7 @@ makedepends=(lua
              lua51
              lua52
              lua53
+             lua54
              luarocks)
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
@@ -28,7 +29,7 @@ _package() {
 }
 
 package_lua-pegdebug() {
-	_package 5.4
+	_package 5.5
 }
 
 package_lua51-pegdebug() {
@@ -41,4 +42,8 @@ package_lua52-pegdebug() {
 
 package_lua53-pegdebug() {
 	_package 5.3
+}
+
+package_lua54-pegdebug() {
+	_package 5.4
 }
