@@ -5,7 +5,7 @@
 # (Linux)"). Kernels compile for sm_120a only: needs an RTX 50-series GPU, the
 # NVIDIA driver >= 580 and CUDA >= 13.4 (CMake refuses an older toolkit).
 pkgname=infernix
-pkgver=2026.11.18
+pkgver=2026.11.20
 pkgrel=1
 pkgdesc="C++/CUDA inference engine serving Qwen models on RTX 50-series GPUs: CLI, server and launcher"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('cmake' 'ninja' 'pkgconf' 'python')
 _pdfium_release=chromium%2F8152
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/windows-${pkgver}.tar.gz"
         "https://github.com/bblanchon/pdfium-binaries/releases/download/${_pdfium_release}/pdfium-linux-x64.tgz")
-sha256sums=('58fdf32922216823a369df29d94af750acf780bddd19a8027b7723155b9ac844'
+sha256sums=('f7cde424373f30788ec3d7ee1004aaef7f54c53b34c3ce8dcffdabcae61f85f2'
             '384ab5c51882408a143a21f9c14dcd2caf1f75280ae41c554d0489b46c3dba9f')
 
 prepare() {
