@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=yulab.utils
-_pkgver=0.2.5
+_pkgver=0.2.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,12 +21,11 @@ optdepends=(
   r-httr2
   r-jsonlite
   r-openssl
-  r-r.utils
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('09c42a5753acb5f2b98badebf5dc3ec6')
-b2sums=('340bb163addc87bcd3cb2472f891e8ea052d8a4dc227285ef6bf6f7d8237bd685c002a2ae3e5b7bf978a17e69dc3436459f461088644a7ebdc475e4595449043')
+md5sums=('a6eb9c0e13d9257dd3e07e2acffa6954')
+b2sums=('1865119ba378b4b4f7f56265d784757d529a1f206bc4179ee85437382f849e683259e9c88ca296a521e07d198e73e43a2cbdaa7d9de8bfab023922f4457bc34c')
 
 build() {
   mkdir build
