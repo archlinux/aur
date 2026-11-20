@@ -7,7 +7,7 @@
 
 pkgname=av-morning-star
 _reponame=AV-Morning-Star
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='Video and audio downloader for YouTube, Odysee and 1000+ sites (a yt-dlp front end)'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('deno: YouTube proof-of-origin tokens (recommended by yt-dlp)'
             'nodejs: YouTube proof-of-origin tokens, if deno is not installed'
             'python-syncedlyrics: more lyrics sources when LRCLIB has none')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3b8f70b29567830dc4b974781c54e250f772c0546ee373818240337d1203886a')
+sha256sums=('25f8cfc9d2be315bb547218a191de9c01bee5aebe6a6a9e369239de1afe2581c')
 
 _appdir=/usr/share/av-morning-star
 
