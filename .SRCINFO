@@ -1,6 +1,6 @@
 pkgbase = akyuu
 	pkgdesc = Anime list tracker with player and browser detection
-	pkgver = 0.2.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/ligneo/akyuu
 	arch = x86_64
@@ -10,11 +10,9 @@ pkgbase = akyuu
 	makedepends = gcc
 	makedepends = qt6-tools
 	depends = qt6-base
-	depends = qt6-multimedia
 	depends = qt6-svg
-	depends = systemd-libs
 	depends = hicolor-icon-theme
-	source = https://github.com/ligneo/akyuu/releases/download/v0.2.1/akyuu-0.2.1-source.tar.xz
-	sha256sums = 03a64637549b6e8b70541547e71774c5c7a32e37da042d09e327a8d2d39efbe6
+	source = https://github.com/ligneo/akyuu/releases/download/v0.5.0/akyuu-0.5.0-source.tar.xz
+	sha256sums = 336518816e22f2badf793930a2b0fc1b172652cff639c0c1ce6ec521eb15c034
 
 pkgname = akyuu
