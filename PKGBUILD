@@ -2,14 +2,13 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=howdy-next-git
-pkgver=3.4.2.r42.g8385406
+pkgver=3.4.2.r108.g174922c
 pkgrel=1
 pkgdesc="Modern C++ reimplementation of Howdy facial authentication on Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nathawatc/howdy-next"
 license=('GPL-3.0-or-later')
 depends=(
-	'acl'
 	'curl>=7.85.0'
 	'glibc>=2.36'
 	'libevdev'
