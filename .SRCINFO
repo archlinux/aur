@@ -1,0 +1,23 @@
+pkgbase = tiny-engineer-git
+	pkgdesc = CLI for the Tiny Engineer desk robot: IDE hooks, animations and audio over HTTP or USB serial (git)
+	pkgver = 0.4.1.r15.gb43d46d
+	pkgrel = 1
+	url = https://github.com/jamro/tiny-engineer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = jq
+	makedepends = npm
+	depends = nodejs>=18
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = tiny-engineer=0.4.1
+	conflicts = tiny-engineer
+	options = !strip
+	options = !debug
+	source = tiny-engineer::git+https://github.com/jamro/tiny-engineer.git
+	sha256sums = SKIP
+
+pkgname = tiny-engineer-git
