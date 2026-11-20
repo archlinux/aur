@@ -1,0 +1,30 @@
+pkgbase = red-two-bin
+	pkgdesc = Static recompilation of Star Wars: Rogue Squadron II - Rogue Leader (GameCube) for PC (prebuilt, needs your own USA disc image)
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/gminustwo/red_two
+	install = red-two-bin.install
+	arch = x86_64
+	license = MIT
+	license = LicenseRef-custom
+	depends = glibc>=2.38
+	depends = gcc-libs
+	depends = sdl3
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	depends = hicolor-icon-theme
+	provides = red-two
+	conflicts = red-two
+	noextract = RedTwo-v1.2-x86_64.AppImage
+	options = !strip
+	options = !debug
+	source = RedTwo-v1.2-x86_64.AppImage::https://github.com/gminustwo/red_two/releases/download/v1.2/RedTwo-v1.2-x86_64.AppImage
+	source = LICENSE-1.2::https://raw.githubusercontent.com/gminustwo/red_two/v1.2/LICENSE
+	source = red-two.sh
+	source = red-two.desktop
+	sha256sums = 0066ecaea397510d3652b8eef2e5c8c447ee3e07b68614e88b51a7f809609661
+	sha256sums = 2b4d4c1ca64a0110170e9f1804ef1a60af12e932a95f09eefc406416c4dd589d
+	sha256sums = 3efb511ae445bf342b7c37980c392f45e5d0e953a85fcd426b8c0ac67a0d2fe1
+	sha256sums = 813f91652a7d84f53d21bd251e4efb1609e86270ae5a9491bf34c2b4df362d7b
+
+pkgname = red-two-bin

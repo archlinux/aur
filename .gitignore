@@ -1,0 +1,10 @@
+# AUR repos should only track packaging files. Ignore everything
+# (the downloaded AppImage, src/, pkg/, built *.pkg.tar.zst, logs) and
+# whitelist what belongs in the repo.
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!red-two-bin.install
+!red-two.sh
+!red-two.desktop

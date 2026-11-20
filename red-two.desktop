@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Red Two
+GenericName=Star Wars: Rogue Squadron II - Rogue Leader
+Comment=Static recompilation of Rogue Leader (GameCube) for PC
+Exec=red-two
+Icon=red-two
+Terminal=false
+Categories=Game;ActionGame;
+Keywords=Star Wars;Rogue Squadron;Rogue Leader;GameCube;recomp;

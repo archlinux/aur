@@ -1,0 +1,9 @@
+post_install() {
+    cat <<'EOF'
+==> Red Two needs your own disc image of Star Wars: Rogue Squadron II -
+==> Rogue Leader (USA, GSWE64, revision 0) as .iso, .gcm, .rvz or .wia.
+==> If it can't find one on the first start, it asks for it and remembers it.
+==> You can also run:  red-two --disc /path/to/RogueLeader.rvz
+==> Settings, saves, states and logs live in ~/.local/share/Red Two/
+EOF
+}
