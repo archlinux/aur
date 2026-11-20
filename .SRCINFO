@@ -1,0 +1,20 @@
+pkgbase = gtw-bin
+	pkgdesc = Wikipedia in your terminal: cached reading, rich rendering, inline media, and offline lists (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/craftty-org/gtw
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	provides = gtw
+	conflicts = gtw
+	options = !strip
+	source_x86_64 = gtw-0.1.0-x86_64.tar.gz::https://github.com/craftty-org/gtw/releases/download/v0.1.0/gtw-arch-x86_64.tar.gz
+	sha256sums_x86_64 = eae567c3424cf591c9b4ba805f295d8fb1cbeaa997cf182d772febc30cedf6c8
+	source_aarch64 = gtw-0.1.0-aarch64.tar.gz::https://github.com/craftty-org/gtw/releases/download/v0.1.0/gtw-arch-aarch64.tar.gz
+	sha256sums_aarch64 = 6f6ba72cbdcdd45ad0a51fdf19bfae5defbaf2126ce6c64903e89bf7c260e4c3
+
+pkgname = gtw-bin
