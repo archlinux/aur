@@ -1,0 +1,26 @@
+[Unit]
+Description=Stoat.chat Proxy
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=/etc/stoat
+StartLimitIntervalSec=0
+
+[Service]
+Type=exec
+User=stoat
+Group=stoat
+WorkingDirectory=/etc/stoat/
+ExecStart=/usr/bin/revolt-january
+Environment=RUST_LOG=info
+Restart=on-failure
+RestartSec=10s
+TimeoutStartSec=15min
+
+# Hardening
+ProtectSystem=yes
+PrivateTmp=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,27 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+# Delta binds its HTTP listener only after MongoDB migrations and AMQP setup.
+# Use the local listener, bypassing reverse proxies and HTTP proxy variables.
+ready_url="${STOAT_API_READY_URL:-http://127.0.0.1:14702/}"
+wait_seconds="${STOAT_API_WAIT_SECONDS:-840}"
+
+if [[ ! "$wait_seconds" =~ ^[0-9]{1,5}$ ]] || (( 10#$wait_seconds < 1 )); then
+    printf '%s\n' 'STOAT_API_WAIT_SECONDS must be a positive integer (seconds).' >&2
+    exit 2
+fi
+
+deadline=$((SECONDS + 10#$wait_seconds))
+printf '%s\n' 'Waiting for the Stoat API to finish initialization...'
+
+while (( SECONDS < deadline )); do
+    if status=$(/usr/bin/curl --noproxy '*' --silent --output /dev/null \
+        --connect-timeout 2 --max-time 5 --write-out '%{http_code}' \
+        "$ready_url") && [[ "$status" == 200 ]]; then
+        exit 0
+    fi
+    /usr/bin/sleep 2
+done
+
+printf '%s\n' 'Timed out waiting for the Stoat API; check stoat-api.service logs.' >&2
+exit 1
