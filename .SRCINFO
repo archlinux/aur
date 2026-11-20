@@ -1,0 +1,20 @@
+pkgbase = gtw
+	pkgdesc = Wikipedia in your terminal: cached reading, rich rendering, inline media, and offline lists
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/craftty-org/gtw
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = gtw-0.1.0.tar.gz::https://github.com/craftty-org/gtw/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 09023fbc13cb21cb17eab1242938701256033517a88c6f2b1dd03f2c5787ecf2
+
+pkgname = gtw
