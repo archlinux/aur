@@ -2,16 +2,16 @@
 
 _rockname=cmark
 _project=$_rockname-lua
-pkgname=("lua-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
-pkgver=0.29.0.r5.gefb3feb
+pkgname=("lua-$_rockname-git" "lua54-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
+pkgver=0.31.1.r0.g539c639
 _branch='master'
 _rockrel=1
-pkgrel=2
+pkgrel=1
 pkgdesc='Lua wrapper for libcmark, CommonMark Markdown parsing and rendering library'
 arch=('x86_64' 'i686')
 url="https://github.com/jgm/$_project"
 license=('BSD')
-makedepends=('git' 'lua' 'lua53' 'lua52' 'lua51' 'luarocks')
+makedepends=('git' 'lua' 'lua54' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("git+$url.git#branch=$_branch")
 sha256sums=('SKIP')
 
@@ -25,6 +25,7 @@ prepare() {
   cp -a "$_project"{,-5.2}
   cp -a "$_project"{,-5.3}
   cp -a "$_project"{,-5.4}
+  cp -a "$_project"{,-5.5}
 }
 
 _package_helper() {
@@ -36,6 +37,13 @@ _package_helper() {
 
 package_lua-cmark-git() {
   depends=('lua')
+  provides=("${pkgname/-git}")
+  conflicts=("${pkgname/-git}")
+  _package_helper 5.5
+}
+
+package_lua54-cmark-git() {
+  depends=('lua54')
   provides=("${pkgname/-git}")
   conflicts=("${pkgname/-git}")
   _package_helper 5.4
