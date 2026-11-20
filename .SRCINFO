@@ -1,7 +1,7 @@
 pkgbase = stoat-server
 	pkgdesc = Stoat chat server
 	pkgver = 0.16.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stoat.chat
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -9,6 +9,7 @@ pkgbase = stoat-server
 	makedepends = rust>=1.92.0
 	makedepends = pkgconf
 	makedepends = cmake
+	makedepends = patch
 	depends = bash
 	depends = coreutils
 	depends = glibc
@@ -29,7 +30,7 @@ pkgbase = stoat-server
 	optdepends = clamav: optional upload scanning when files.clamd_host is configured
 	options = !lto
 	backup = etc/stoat/Revolt.toml
-	source = stoatchat::git+https://github.com/stoatchat/stoatchat.git#commit=7eaa89a1a38b26e359cec3c77818ac6de36e2647
+	source = stoatchat::git+https://github.com/stoatchat/stoatchat.git#tag=v0.16.5
 	source = stoat-api.service
 	source = stoat-crond.service
 	source = stoat-events.service
@@ -43,6 +44,7 @@ pkgbase = stoat-server
 	source = stoat.tmpfiles
 	source = stoat-Revolt.toml
 	source = README.arch.md
+	source = redis-rs-never-type.patch
 	sha256sums = SKIP
 	sha256sums = f49154efb33defdfeb0906f38bebb8b8d2d672c8bb3ee42eaaca00eb9b5ed300
 	sha256sums = 934081d7a8e5504eacb10e8b142efb1b12710c1695efe275145567343800065f
@@ -56,6 +58,7 @@ pkgbase = stoat-server
 	sha256sums = 380ba8357ae5a2ccba4da80c5389bdf25af81b92bbc93878eeb36286739a31c6
 	sha256sums = f59cc377a9e7532b73244e57c3a8646f49c43d81f51b560c2e700f5983596c77
 	sha256sums = da3bc55cac5b5778afd04d900c488fea5a3b4b6254a042292480206eab59f281
-	sha256sums = 8ae3194aa1d501b6407a80cda8c0fa7c84143e620fe9164214c1ef29d1ce73ea
+	sha256sums = 692e041a8207ba28a8b64d0ae3973994003860aff3c497ea8a1fd890f30492ef
+	sha256sums = 78a75f79f700c9c063cae5c853bd3beb63654146ab65b479b7a87e79f7898466
 
 pkgname = stoat-server

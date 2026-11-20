@@ -1,14 +1,13 @@
 # Stoat backend with eight independently managed systemd daemons.
-# Source is pinned to the audited v0.16.5 release commit, not a movable tag.
+# Source fetched by upstream release tag; patch old redis-rs for newer Rust.
 pkgname=stoat-server
 pkgver=0.16.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Stoat chat server'
 arch=('x86_64')
 url='https://stoat.chat'
 license=('AGPL-3.0-or-later')
-# GCC LTO objects embedded in native Cargo crates cannot be linked by lld.
-# Rust's own [profile.release] lto=true is unaffected.
+# Rust profile.release has its own LTO; disable conflicting distro-wide LTO.
 options=('!lto')
 
 depends=(
@@ -30,6 +29,7 @@ makedepends=(
     'rust>=1.92.0'
     'pkgconf'
     'cmake'
+    'patch'
 )
 optdepends=(
     'mongodb: local MongoDB server (may be hosted remotely)'
@@ -41,8 +41,8 @@ optdepends=(
 )
 backup=('etc/stoat/Revolt.toml')
 
-# Dereferenced annotated release tag v0.16.5 on 2026-11-20.
-_commit=7eaa89a1a38b26e359cec3c77818ac6de36e2647
+_tag="v${pkgver}"
+_redis_commit=523b2937367e17bd0073722bf6e23d06042cb4e4
 _binaries=(
     revolt-autumn
     revolt-bonfire
@@ -64,15 +64,15 @@ _units=(
     stoat-voice-ingress.service
 )
 source=(
-    "stoatchat::git+https://github.com/stoatchat/stoatchat.git#commit=${_commit}"
+    "stoatchat::git+https://github.com/stoatchat/stoatchat.git#tag=${_tag}"
     "${_units[@]}"
     'stoat.conf'
     'stoat-wait-api'
     'stoat.tmpfiles'
     'stoat-Revolt.toml'
     'README.arch.md'
+    'redis-rs-never-type.patch'
 )
-# Git checkout is locked to the release commit; local files have SHA-256 hashes.
 sha256sums=(
     'SKIP'
     'f49154efb33defdfeb0906f38bebb8b8d2d672c8bb3ee42eaaca00eb9b5ed300'
@@ -87,21 +87,45 @@ sha256sums=(
     '380ba8357ae5a2ccba4da80c5389bdf25af81b92bbc93878eeb36286739a31c6'
     'f59cc377a9e7532b73244e57c3a8646f49c43d81f51b560c2e700f5983596c77'
     'da3bc55cac5b5778afd04d900c488fea5a3b4b6254a042292480206eab59f281'
-    '8ae3194aa1d501b6407a80cda8c0fa7c84143e620fe9164214c1ef29d1ce73ea'
+    '692e041a8207ba28a8b64d0ae3973994003860aff3c497ea8a1fd890f30492ef'
+    '78a75f79f700c9c063cae5c853bd3beb63654146ab65b479b7a87e79f7898466'
 )
 
 prepare() {
     cd "$srcdir/stoatchat"
 
-    # Use Arch's packaged compiler rather than downloading a rustup toolchain.
+    # Avoid downloading a rustup-managed compiler during the Arch build.
     rm -f rust-toolchain.toml
+
+    # Cargo's git checkout of redis-rs is patched below. Keep the Cargo cache
+    # per build to avoid silently altering the user's global ~/.cargo cache.
+    export CARGO_HOME="$srcdir/.cargo-home"
+    mkdir -p "$CARGO_HOME"
     cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+
+    # Cargo.lock pins this redis-rs git revision; fail if upstream changes.
+    local redis_source=()
+    redis_source=("$CARGO_HOME"/git/checkouts/redis-rs-*/"${_redis_commit:0:7}"/redis/src/script.rs)
+    if (( ${#redis_source[@]} != 1 )) || [[ ! -f "${redis_source[0]}" ]]; then
+        printf 'ERROR: expected redis-rs revision %s not found in CARGO_HOME\n' "$_redis_commit" >&2
+        return 1
+    fi
+
+    # The SCRIPT LOAD command returns a SHA-1 string. Explicitly bind its
+    # return type, avoiding Rust's changed never-type (!) inference fallback.
+    if grep -Fqx '                    self.load_cmd().query(con)?;' "${redis_source[0]}"; then
+        patch --batch --fuzz=0 -p1 -d "${redis_source[0]%/src/script.rs}" \
+            -i "$srcdir/redis-rs-never-type.patch"
+    elif ! grep -Fqx '                    let _: String = self.load_cmd().query(con)?;' "${redis_source[0]}" || \
+         ! grep -Fqx '                    let _: String = self.load_cmd().query_async(con).await?;' "${redis_source[0]}"; then
+        printf 'ERROR: redis-rs source differs from expected patch revision\n' >&2
+        return 1
+    fi
 }
 
 build() {
     cd "$srcdir/stoatchat"
-
-    # Keep the output path independent of user Cargo configuration.
+    export CARGO_HOME="$srcdir/.cargo-home"
     export CARGO_TARGET_DIR="$srcdir/target"
     cargo build --frozen --release --workspace --bins \
         --target "${CARCH}-unknown-linux-gnu"
@@ -109,17 +133,13 @@ build() {
 
 package() {
     local binary unit
-
     for binary in "${_binaries[@]}"; do
         install -Dm755 \
             "$srcdir/target/${CARCH}-unknown-linux-gnu/release/$binary" \
             "$pkgdir/usr/bin/$binary"
     done
-
-    # Not the development Revolt.toml: no default working secrets.
     install -Dm644 "$srcdir/stoat-Revolt.toml" \
         "$pkgdir/etc/stoat/Revolt.toml"
-
     for unit in "${_units[@]}"; do
         install -Dm644 "$srcdir/$unit" \
             "$pkgdir/usr/lib/systemd/system/$unit"

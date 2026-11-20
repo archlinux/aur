@@ -5,7 +5,7 @@ This archive **does not build the binaries**; run `makepkg -si` on Arch Linux.
 
 ## Upgrade notes (from 0.16.2)
 
-- Upstream pinned at Stoat `v0.16.5` (commit `7eaa89a1a38b26e359cec3c77818ac6de36e2647`).
+- Upstream fetched from the Stoat release tag `v0.16.5` (`#tag=v${pkgver}`), rather than a commit hash.
 - MongoDB, Valkey, RabbitMQ, MinIO and LiveKit server packages are now **optional local implementations**, not mandatory colocated packages. The actual services are still required where applicable.
 - systemd units no longer pull local infrastructure servers into the boot transaction automatically.
 - The packaged `/etc/stoat/Revolt.toml` now uses intentionally **invalid** example hosts and credentials, never the upstream development SMTP/LiveKit/S3 secrets.
@@ -47,11 +47,31 @@ The API unit uses `/usr/lib/stoat/wait-api`, defaulting to `http://127.0.0.1:147
 
 ## Updating the AUR sources
 
-The Git source uses a fixed commit, not a movable tag. When bumping upstream:
+The Git source uses the upstream release **tag** `v${pkgver}`. When bumping upstream:
 
 1. Verify the release is stable and inspect its notes.
-2. Resolve and review the release tag's underlying **commit**, update `_commit` and `pkgver` in PKGBUILD.
-3. Build/test on Arch, verify both `sha256sums` and `.SRCINFO` match, then publish.
-4. Regenerate `.SRCINFO` with `makepkg --printsrcinfo > .SRCINFO` before uploading.
+2. Change `pkgver` (and reset `pkgrel=1`), with no commit-hash lookup.
+3. Regenerate `.SRCINFO` with `makepkg --printsrcinfo > .SRCINFO`.
+4. Build/test on Arch, verify all checksums, then publish.
+
+**Security/reproducibility note:** Git tags can be moved by upstream; because Git VCS sources are marked `SKIP` in `sha256sums`, this is not as immutable as the earlier commit pin. The pinned `redis-rs` Git dependency and its compatibility patch are unchanged.
 
 These source files have not been tested with a full Rust build in this environment.
+
+## Rust 1.100 compatibility fix (pkgrel 2)
+
+The project's pinned Git dependency `revoltchat/redis-rs` at commit
+`523b2937367e17bd0073722bf6e23d06042cb4e4` relies on older Rust
+never-type inference in `redis/src/script.rs`. Two `SCRIPT LOAD` queries must
+explicitly specify `String` as their return type (the Redis SHA-1 response).
+
+The `redis-rs-never-type.patch` file fixes the two call sites without changing
+`Cargo.lock` or upgrading any other dependency. `prepare()` uses a private
+`$srcdir/.cargo-home` to avoid changing the global Cargo cache; `build()` uses
+the same cache. `cargo fetch --locked` is followed by patching the exact pinned
+revision and `cargo build --frozen`.
+
+Note: a clean build now downloads dependencies to that private Cargo cache.
+This patch fixes the reported E0277 errors, but a complete compilation on Arch
+Linux is still required to verify any additional upstream compatibility issues.
+

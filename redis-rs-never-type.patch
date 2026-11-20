@@ -1,0 +1,18 @@
+--- a/src/script.rs
++++ b/src/script.rs
+@@ -147,6 +147,6 @@
+             Err(err) => {
+                 if err.kind() == ErrorKind::NoScriptError {
+-                    self.load_cmd().query(con)?;
++                    let _: String = self.load_cmd().query(con)?;
+                     eval_cmd.query(con)
+                 } else {
+                     Err(err)
+@@ -173,6 +173,6 @@
+                 // Load the script into Redis if the script hash wasn't there already
+                 if err.kind() == ErrorKind::NoScriptError {
+-                    self.load_cmd().query_async(con).await?;
++                    let _: String = self.load_cmd().query_async(con).await?;
+                     eval_cmd.query_async(con).await
+                 } else {
+                     Err(err)
