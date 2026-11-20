@@ -1,6 +1,6 @@
 pkgbase = zcalld
 	pkgdesc = Compact Linux AI gateway built on zcall with native zplugin extensions
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/zcalld
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = zcalld
 	optdepends = zcall-gui: optional native desktop interface
 	optdepends = libsecret: configure Zed credentials through Secret Service
 	backup = etc/zcalld/config.conf
-	source = zcalld-0.3.0.tar.gz::https://github.com/LIghtJUNction/zcalld/releases/download/v0.3.0/zcalld-0.3.0-source.tar.gz
-	sha256sums = ee73baae39625f4a607276036d21736e7a8396e0bf7a306f14e49531eb52ba52
+	source = zcalld-0.3.1.tar.gz::https://github.com/LIghtJUNction/zcalld/releases/download/v0.3.1/zcalld-0.3.1-source.tar.gz
+	sha256sums = f9d42a51f3a365f69d4b4fcd37b9b5a601abb674ea84d3feab7628dffd8db3db
 
 pkgname = zcalld
