@@ -1,6 +1,6 @@
 pkgbase = daftar-cli-bin
 	pkgdesc = The command line and TUI of Daftar, for an Obsidian vault in a Git repository
-	pkgver = 0.28.0
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://github.com/parham-alvani/notes-linux
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = daftar-cli-bin
 	provides = daftar-cli
 	conflicts = daftar-cli
 	conflicts = daftar-bin
-	source_x86_64 = https://github.com/parham-alvani/notes-linux/releases/download/v0.28.0/daftar-cli-0.28.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = c1dcb6177d2f521cc9eb37b258f5c3875d3455e4f990a0897c707659dd73740f
-	source_aarch64 = https://github.com/parham-alvani/notes-linux/releases/download/v0.28.0/daftar-cli-0.28.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 3af89fc05661ba419865166eb3cf5e315b5c2a504f19f402742d4ab1e03b5e09
+	source_x86_64 = https://github.com/parham-alvani/notes-linux/releases/download/v0.29.0/daftar-cli-0.29.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3712a46841d1a0d4c515217961089e1b3be8c92189957f9aed6bb4b20e2df522
+	source_aarch64 = https://github.com/parham-alvani/notes-linux/releases/download/v0.29.0/daftar-cli-0.29.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2b621fda5b4ec6055e52b46c2a1b47e4d3be669588491c19444b0c1547f953c4
 
 pkgname = daftar-cli-bin
