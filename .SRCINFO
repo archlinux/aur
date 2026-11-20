@@ -1,6 +1,6 @@
 pkgbase = xzram
 	pkgdesc = Cross-distro Linux swap management (zram, swap files, sysctl tuning)
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/XZram
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = xzram
 	makedepends = polkit
 	makedepends = systemd
 	makedepends = util-linux
-	source = XZram-0.7.2.tar.gz::https://github.com/asafelobotomy/XZram/archive/refs/tags/v0.7.2.tar.gz
-	sha256sums = 3a4b873b4c08d9ff5f6b395eb1dbd7d1c51f539071b9b2348abc80cd03fbd83e
+	source = XZram-0.7.3.tar.gz::https://github.com/asafelobotomy/XZram/archive/refs/tags/v0.7.3.tar.gz
+	sha256sums = e312b9557f209bcab3dae058d36c05f0540e22fc09d196084d5ea70c5c380196
 
 pkgname = xzram
 	pkgdesc = CLI, helper, and D-Bus daemon for Linux swap management
