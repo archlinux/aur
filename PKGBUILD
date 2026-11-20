@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=dbine-bin
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="DBine - desktop manager for 130+ SQL and NoSQL databases with notebooks, schema compare and AI assistant"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('dbine')
 conflicts=('dbine')
 options=('!strip' '!debug')
 source_x86_64=("DBine_${pkgver}_amd64.deb::https://github.com/addlayer-io/dbine/releases/download/v${pkgver}/DBine_${pkgver}_amd64.deb")
-sha256sums_x86_64=('654a931167b1aa15af7863ba42ade996aa560c228107b23eeb243da86382a0f6')
+sha256sums_x86_64=('8bae087a9ff8741603554e082b555eb4c822f559becaa8b5a50ffda34a7414ad')
 
 package() {
     local _deb="DBine_${pkgver}_amd64.deb"
