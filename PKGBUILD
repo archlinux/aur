@@ -2,7 +2,7 @@
 
 _name=openinference-instrumentation
 pkgname=python-$_name
-pkgver=0.1.80
+pkgver=0.1.81
 pkgrel=1
 pkgdesc="OpenInference instrumentation utilities."
 arch=('any')
@@ -24,7 +24,7 @@ checkdepends=('python-pytest'
               'python-pytest-asyncio'
               'python-pytest-recording')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('5b58235252f7a834f4a0b29c26fe10153bff60bacbf831b719f611eeaee6da10')
+sha256sums=('36626f40d50acfc36dc90afaacb4cee4035f0606a2a405c5e4d4c25103b56df8')
 
 build() {
   cd "openinference-$pkgname-v$pkgver/python/$_name"
