@@ -1,7 +1,7 @@
 # Maintainer: Pablo Palazon <ppalazon@phyxor.com>
 
 pkgname=floci-cli-bin
-pkgver=0.4.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Command-line interface for Floci local cloud emulators"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source_x86_64=("floci-$pkgver::$url/releases/download/$pkgver/floci-linux-amd64"
 source_aarch64=("floci-$pkgver::$url/releases/download/$pkgver/floci-linux-arm64")
 noextract=("floci-$pkgver")
 sha256sums=('76ab864e89fba40a87ed6ad64ca0abab6957e98c419930916db8825fd6109d8a')
-sha256sums_x86_64=('cdf4603e169a030b57d18b2fff6ef3f6a4ad45a2bbf137992cb9cf691c4620f8')
-sha256sums_aarch64=('62b2d1c202f5041d545e5ae681a38dc9dc148fb355a0b8b203dcae0b0951637b')
+sha256sums_x86_64=('abad8107f8ffba56f0e3af8c82710cfccee0dc61ba015699030e7a5029353714')
+sha256sums_aarch64=('d2d22b5f6150b4e800248bccc65c386ec6d18b0cc57a6e64aa2884fe196f2218')
 
 prepare() {
   chmod +x "floci-$pkgver"
