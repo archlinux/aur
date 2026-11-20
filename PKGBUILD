@@ -2,15 +2,16 @@
 
 _rockname=colors
 _project=lua-$_rockname
-pkgname=("lua-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
+pkgname=("lua-$_rockname-git" "lua54-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
 pkgver=8.05.26.r7.gf373e79
-pkgrel=4
+pkgrel=5
 pkgdesc='HSL Color Theory Computation in Lua'
 arch=(any)
 url="https://github.com/yuri/$_project"
 license=(MIT)
 makedepends=(git
              lua
+             lua54
              lua53
              lua52
              lua51
@@ -36,7 +37,7 @@ _package() {
 }
 
 package_lua-colors-git() {
-	_package 5.4
+	_package 5.5
 }
 
 package_lua51-colors-git() {
@@ -49,4 +50,8 @@ package_lua52-colors-git() {
 
 package_lua53-colors-git() {
 	_package 5.3
+}
+
+package_lua54-colors-git() {
+	_package 5.4
 }
