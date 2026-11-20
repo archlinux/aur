@@ -1,6 +1,6 @@
 # Maintainer: huochenghai <huochenghai@gmail.com>
 pkgname="alma-desktop-bin"
-pkgver="0.4.872"
+pkgver="0.4.893"
 pkgrel=1
 pkgdesc="A beautiful desktop application that unifies your AI experience. Seamlessly switch between OpenAI, Anthropic, Google Gemini, and custom providers."
 arch=("x86_64")
@@ -12,7 +12,7 @@ provides=("alma=${pkgver}")
 conflicts=(alma-appimage)
 license=("LicenseRef-custom")
 source=("${_github_url}/releases/download/v${pkgver}/alma-${pkgver}-linux-amd64.deb")
-sha256sums=('2078ccb0bc3587367bda0cf0920cab8a4ea75a2bd7f772ddb4bbf67b3899f461')
+sha256sums=('b7d90c4267181534bd67ab896d6e152cd73d7a9fdc94d8a2041ebe79a530d699')
 
 prepare() {
         local deb="alma-${pkgver}-linux-amd64.deb" member
