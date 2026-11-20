@@ -1,0 +1,29 @@
+post_install() {
+    cat <<'EOF'
+==> Install the extension once in each browser: about:addons -> gear icon ->
+    "Install Add-on From File..." -> /usr/share/tabdock/tabdock.xpi
+==> Settings: copy /usr/share/tabdock/configs/config.toml to ~/.config/tabdock/config.toml
+    and edit it; without one the defaults apply.
+==> Installed with ./install.sh before? Run "./install.sh --uninstall" in that checkout:
+    its manifest in ~/.mozilla/native-messaging-hosts overrides this package's.
+EOF
+}
+
+post_upgrade() {
+    # $2 is the version upgraded from; 0.3.1 was the last one whose command was sidepanel
+    if (( $(vercmp "${2%-*}" 0.3.1) <= 0 )); then
+        cat <<'EOF'
+==> The command is "tabdock" now (/usr/bin/tabdock), not "sidepanel": update autostart lines and
+    keybindings that start it; the menu entry is "Tabdock". Quit a panel still running from before
+    (its x button), then start tabdock.
+EOF
+    fi
+    # 0.6.0 is the first version whose extension changed since 0.5.0 (bookmarks and history permissions)
+    if (( $(vercmp "${2%-*}" 0.6.0) < 0 )); then
+        cat <<'EOF'
+==> This version has a new extension: install it again in each browser, about:addons -> gear icon ->
+    "Install Add-on From File..." -> /usr/share/tabdock/tabdock.xpi. Until then the panel works as
+    before, without the undo row for a closed tab and the Bookmarks and History views.
+EOF
+    fi
+}

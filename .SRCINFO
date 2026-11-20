@@ -1,0 +1,23 @@
+pkgbase = tabdock-bin
+	pkgdesc = Autohiding side panel for Firefox-family browsers on X11 and Wayland, signed extension
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/musqz/tabdock
+	install = tabdock.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = python-xlib
+	depends = gtk3
+	optdepends = gtk-layer-shell: run on Wayland compositors such as labwc
+	optdepends = python-pywayland: follow the active window on Wayland
+	provides = tabdock
+	conflicts = tabdock
+	noextract = tabdock-0.15.0.xpi
+	source = tabdock-0.15.0.tar.gz::https://github.com/musqz/tabdock/archive/refs/tags/v0.15.0.tar.gz
+	source = tabdock-0.15.0.xpi::https://github.com/musqz/tabdock/releases/download/v0.15.0/tabdock-0.15.0.xpi
+	sha256sums = 2855caef3a59b77536888f29ebb9007f7c2a59dfedc11aa85e2f3d55acb6bdb4
+	sha256sums = 73856abf203b6795dd7c6dfb809b00adafad345c1bbd4fca3d491a404df85fcc
+
+pkgname = tabdock-bin
