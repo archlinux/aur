@@ -1,7 +1,7 @@
 # Maintainer: sssemil <sssemil at github dot com>
 # Contributor: Ergus <spacibba at aol dot com>
 pkgname=kraken-desktop-auto-bin
-pkgver=1.36.1
+pkgver=1.37.0
 pkgrel=1
 pkgdesc="Kraken crypto exchange desktop application"
 arch=('aarch64' 'armv7' 'x86_64')
@@ -16,9 +16,9 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::https://desktop-downloads.krake
 source_armv7=("${pkgname}-${pkgver}-armv7.zip::https://desktop-downloads.kraken.com/latest/kraken-armv7-unknown-linux-gnueabihf.zip")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://desktop-downloads.kraken.com/latest/kraken-aarch64-unknown-linux-gnu.zip")
 sha256sums=('6fc49c5128736ffa958ded6d12f3a1fa819bce5b563e768d479ca01a67517148')
-sha256sums_aarch64=('74d395e9350f750dddf973685709736867170af0b341ea767d43d71bac3d4a47')
-sha256sums_armv7=('4008509efb4c79f4a8cda428869b307518de696d60af825b5685a828779c89f2')
-sha256sums_x86_64=('38567536f920121e379370a10b33acc37fd973f47d57ae87a68daa97f4d3420a')
+sha256sums_aarch64=('4de54f581f6126dfc068b72ef085eaaeb35376292dc7dc1e6bd286a8dfa205d8')
+sha256sums_armv7=('db4def9c27682efe2ca86a5b0b3d65c960990dd854b7fe0bbde2de4bd2fb714e')
+sha256sums_x86_64=('1f31254e80521c0391cd24516d4516c47a6d1d23ad0b8d57b9b1ff7fdf2e92ff')
 
 
 options=('!debug' '!lto' '!strip')
