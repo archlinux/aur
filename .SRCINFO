@@ -1,6 +1,6 @@
 pkgbase = enclave-messenger-bin
 	pkgdesc = Private messages without a phone number, through Tor and the Nym mixnet
-	pkgver = 0.1.10
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/0xnullsect0r/enclave-messenger
 	arch = x86_64
@@ -29,9 +29,9 @@ pkgbase = enclave-messenger-bin
 	conflicts = enclave-messenger
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/0xnullsect0r/enclave-messenger/releases/download/v0.1.10/enclave-0.1.10-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 280e8314bad90ee2e1593f68d5c98c24200456b42cc4eafc2cfbe3e1e5991eb7
-	source_aarch64 = https://github.com/0xnullsect0r/enclave-messenger/releases/download/v0.1.10/enclave-0.1.10-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = d6bc38285e263f366b1ea5855b824a38e0b2a6784ab10d0de03f68493a23c405
+	source_x86_64 = https://github.com/0xnullsect0r/enclave-messenger/releases/download/v0.2.0/enclave-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = dc3b4a05a91472a7a687f33cb8ac99a1a2ea83d5fa6a5743a01e26aef69f09f3
+	source_aarch64 = https://github.com/0xnullsect0r/enclave-messenger/releases/download/v0.2.0/enclave-0.2.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = c2f04994e44d3e66daefd792894c60b80f4e77b16fa824b32fa8d36294812355
 
 pkgname = enclave-messenger-bin
