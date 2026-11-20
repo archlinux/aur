@@ -1,0 +1,25 @@
+pkgbase = lapackpp
+	pkgdesc = C++ API for the Linear Algebra PACKage
+	pkgver = 2025.05.28
+	pkgrel = 1
+	url = https://github.com/icl-utk-edu/lapackpp
+	arch = x86_64
+	license = BSD-3-Clause
+	checkdepends = python
+	makedepends = cmake
+	makedepends = cblas
+	makedepends = lapacke
+	makedepends = testsweeper
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = blaspp
+	depends = lapack
+	source = lapackpp-2025.05.28.tar.gz::https://github.com/icl-utk-edu/lapackpp/archive/refs/tags/v2025.05.28.tar.gz
+	source = ifail-copy.patch
+	source = test-bounds.patch
+	sha256sums = a29be08104f52ca835e300a6aa0530831d67c52a57f72e7b4fb36b3f6859ab7c
+	sha256sums = 251b67e18d216e5e10b31a9cd0adc182b60d54bbe05f3a1465d39e21d95d54ac
+	sha256sums = 5553191404ae21df5c16af5a7e62fdf31caf88a55acdff0313f5d7a5cbe02f7d
+
+pkgname = lapackpp

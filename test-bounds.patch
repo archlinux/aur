@@ -1,0 +1,58 @@
+Don't index one past the end of the tests' vectors, which
+_GLIBCXX_ASSERTIONS aborts on:
+- test_larft.cc: for the last reflector (n-i == 1) larfg gets x one past
+  V's end; larfg doesn't read it there, so pass V.data() + offset.
+- test_tplqt.cc, test_tplqt2.cc: with L == 0 or 1 the laset of B's upper
+  triangle is empty, but &B_ref[(n-L+1)*ldb] is past the end; only call
+  it when L > 1.
+
+diff --git a/test/test_larft.cc b/test/test_larft.cc
+index e4a4ff1..95045af 100644
+--- a/test/test_larft.cc
++++ b/test/test_larft.cc
+@@ -87,7 +87,7 @@ void test_larft_work( Params& params, bool run )
+     for (int i = 0; i < k; ++i) {
+         if (storev == lapack::StoreV::Columnwise) {
+             if (direction == lapack::Direction::Forward) {
+-                lapack::larfg( n-i, &V[i + i*ldv], &V[i+1 + i*ldv], 1, &tau[i] );
++                lapack::larfg( n-i, &V[i + i*ldv], V.data() + (i+1 + i*ldv), 1, &tau[i] );
+             }
+             else {
+                 lapack::larfg( n-k+i+1, &V[(n - k + i) + i*ldv], &V[0 + i*ldv], 1, &tau[i] );
+@@ -95,7 +95,7 @@ void test_larft_work( Params& params, bool run )
+         }
+         else {
+             if (direction == lapack::Direction::Forward) {
+-                lapack::larfg( n-i, &V[i + i*ldv], &V[i + (i+1)*ldv], ldv, &tau[i] );
++                lapack::larfg( n-i, &V[i + i*ldv], V.data() + (i + (i+1)*ldv), ldv, &tau[i] );
+             }
+             else {
+                 lapack::larfg( n-k+i+1, &V[i + (n - k + i)*ldv], &V[i + 0*ldv], ldv, &tau[i] );
+diff --git a/test/test_tplqt.cc b/test/test_tplqt.cc
+index 23feea5..919dfac 100644
+--- a/test/test_tplqt.cc
++++ b/test/test_tplqt.cc
+@@ -125,7 +125,8 @@ void test_tplqt_work( Params& params, bool run )
+ 
+         // zero out upper triangle of A (above col 1) and B (above col n-L+1).
+         lapack::laset( lapack::MatrixType::Upper, m-1, m-1, 0.0, 0.0, &A_ref[1*lda], lda );
+-        lapack::laset( lapack::MatrixType::Upper, L-1, L-1, 0.0, 0.0, &B_ref[(n-L+1)*ldb], ldb );
++        if (L > 1)
++            lapack::laset( lapack::MatrixType::Upper, L-1, L-1, 0.0, 0.0, &B_ref[(n-L+1)*ldb], ldb );
+         if (verbose >= 2) {
+             printf( "Aref  = " ); print_matrix( m, m,   &A_ref[0], lda );
+             printf( "Bref1 = " ); print_matrix( m, n-L, &B_ref[0], ldb );
+diff --git a/test/test_tplqt2.cc b/test/test_tplqt2.cc
+index fa0052c..79a80be 100644
+--- a/test/test_tplqt2.cc
++++ b/test/test_tplqt2.cc
+@@ -124,7 +124,8 @@ void test_tplqt2_work( Params& params, bool run )
+ 
+         // zero out upper triangle of A (above col 1) and B (above col n-L+1).
+         lapack::laset( lapack::MatrixType::Upper, m-1, m-1, 0.0, 0.0, &A_ref[1*lda], lda );
+-        lapack::laset( lapack::MatrixType::Upper, L-1, L-1, 0.0, 0.0, &B_ref[(n-L+1)*ldb], ldb );
++        if (L > 1)
++            lapack::laset( lapack::MatrixType::Upper, L-1, L-1, 0.0, 0.0, &B_ref[(n-L+1)*ldb], ldb );
+         if (verbose >= 2) {
+             printf( "Aref  = " ); print_matrix( m, m,   &A_ref[0], lda );
+             printf( "Bref1 = " ); print_matrix( m, n-L, &B_ref[0], ldb );
