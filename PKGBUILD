@@ -1,7 +1,7 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=jaq-bin
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='A jq clone focused on correctness, speed, and simplicity'
 url='https://github.com/01mf02/jaq'
@@ -12,7 +12,7 @@ provides=('jq' "jaq=$pkgver")
 depends=('gcc-libs' 'glibc')
 source=("$pkgname-$pkgver::$url/releases/download/v$pkgver/jaq-$CARCH-unknown-linux-gnu"
         "https://raw.githubusercontent.com/01mf02/jaq/7a3466f/LICENSE-MIT")
-b2sums=('df1932a43e52c18c1dffdb79a781edda73e02c3d1b68653d7f8cdbea371a23a8bcd6daaf046fa7ae921f1d72775e9584ef78f899372011221dc5f286231f4d12'
+b2sums=('59d465def39ca3279eccc8f379f861dad439869c435f327047bf6584038fa19710e6b72820c64bc666084a9e42e3b476d821a5970d5bbcb2c72937b7f524fe12'
         'fb26aba82fe953b9895595c5b7c11b5363b83bd60cf1cb6aab572df6dadb940711eda080f8ad77fb519e79309211318b6200081bb05be7b71117a07082c3815d')
 options=(!strip)
 
