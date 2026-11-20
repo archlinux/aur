@@ -8,14 +8,14 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin launcher name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v0.23.2
-_commit=ae2a81ccc00e9b7c06301523e5bb09608397149c
+_pkgver_tag=v0.23.3
+_commit=caafe5389ae585ef77387a962aee05b1bcf17029
 # Arch's Electron runtime: the major upstream locks, or a newer one (README).
 # prepare() points the launcher and its test at it.
 _electron=electron44
 # pm's pnpm pin (pm/lock.json); prepare() stops when it moves.
 _pnpmver=12.15.0
-pkgver=0.23.2
+pkgver=0.23.3
 pkgrel=1
 pkgdesc="Desktop UI for Hermes Agent (chat, voice, files, settings)"
 arch=('x86_64')
@@ -52,7 +52,7 @@ source=(
   'launcher.test.cjs'
 )
 # Run updpkgsums after editing a local file.
-sha256sums=('7e828086c549fc2d90c16795daf416a81a8180d8a52b5d4a29656f7a2ba8f827'
+sha256sums=('061442bf28ee1abd47ef7d6884c5fd906ee0f478b4c3813a5b899ba16544f150'
             '10568d3fd03b5511a8f2f2e9cbea6a3bd0239fe012814fe08d7c9095e6b71074'
             '412ad7b2b6bc5149a8d236ad2cb9be54d2ac0ab78dbd3c8e16deb4f4e683713f'
             'ac4077eb2846f90d36858c69d8fe99988606caa0059e85a9606273bb7bc29077'
