@@ -1,7 +1,7 @@
 pkgbase = gtm-player
 	pkgdesc = Reimagined terminal audio player with background daemon, YouTube/Spotify, radio and podcasts
-	pkgver = 0.2.97
-	pkgrel = 2
+	pkgver = 0.2.98
+	pkgrel = 1
 	url = https://gtmd.dev
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = gtm-player
 	optdepends = yt-dlp: download YouTube audio and resolve Spotify tracks for offline playback
 	optdepends = ffmpeg: audio conversion for downloaded tracks
 	optdepends = pipewire-alsa: PipeWire audio output through the ALSA backend
-	source = gtm-0.2.97.tar.gz::https://github.com/craftty-org/gtm/archive/refs/tags/v0.2.97.tar.gz
-	sha256sums = e8c6e2344723c2ae642e96bb7e66f2d32e2bc80c37e615ca43dde8b8d77369cc
+	source = gtm-0.2.98.tar.gz::https://github.com/craftty-org/gtm/archive/refs/tags/v0.2.98.tar.gz
+	sha256sums = b09cecb35110fdecec46b2be27fce9a3c8d7203f5b224c1f2fb53ddf299f50e3
 
 pkgname = gtm-player
