@@ -18,9 +18,9 @@
 # QoderWake service (https://qoder.com/).
 
 pkgname=qoderwake-bin
-_upstreamver=1.2.20
-pkgver=1.2.20
-pkgrel=3
+_upstreamver=1.2.22
+pkgver=1.2.22
+pkgrel=1
 pkgdesc="QoderWake local CLI and daemon (official prebuilt Linux runtime)"
 arch=('x86_64' 'aarch64')
 url='https://qoder.com/'
@@ -38,8 +38,8 @@ source_x86_64=(
 source_aarch64=(
   "qoderwake-${_upstreamver}-linux-arm64.tar.gz::https://download.qoder.com/qoderwake/releases/${_upstreamver}/qoderwake_${_upstreamver}_linux_arm64.tar.gz"
 )
-sha256sums_x86_64=('ded4e94a2ddcc048c65d4c9eaed7257b03799a66aea9c3f443de5ee9b49dfa91')
-sha256sums_aarch64=('d22da484d3af7a346debd59a026775b8d7c12473cb322e9adce7b6c3dee04e81')
+sha256sums_x86_64=('ba04d86bcf5a9bd95ff9c040f2c1a7fc53f2e867c98c34f43e56ec94f219d18c')
+sha256sums_aarch64=('41de25319b22e00ce15ba0c0e17b2457e887ce1da066dae914d6d37e21dcd61d')
 
 # 国际版与国内版共用上游 logo，右下角合成 INTL 角标以与国内版区分。
 _badge_icon() {
