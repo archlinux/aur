@@ -1,7 +1,7 @@
 # Maintainer: Genesis <tofupedia.fr@gmail.com>
 
 pkgname=ankama-launcher
-pkgver=3.15.15
+pkgver=3.15.18
 pkgrel=1
 pkgdesc='A multi-game portal for all Ankama games.'
 url='https://www.ankama.com/en/launcher'
@@ -19,7 +19,7 @@ options=('!strip')
 source=('ankama-launcher')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage")
 sha512sums=('0b9d72c460dd22acc0d2d2b0ab312bc609501c8c7fb8eaef2bd93092fd4ac849152b0e9163253066536ea4169079e5bc424bea37ee005c48a2047721142f876b')
-sha512sums_x86_64=('926f0541202ac3cab939ea7112468d4320043c46627f735695a32c68d567788cf5d59a8c11b4f46bf0752ec71868cd49ec14011d2eedc2ff4e92350f0c6411ea')
+sha512sums_x86_64=('2e85850b8895dcc926f54dd0fb10f2e4d7036d1784cdf2e2e2fbdc3395afca0093c351b994a99fda7af8cd938ef682f9c7fa60af3d190cb6705988752ce7f961')
 
 prepare() {
     cd "${srcdir}"
