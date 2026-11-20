@@ -3,17 +3,20 @@
 
 pkgname=codex-switcher-git
 _pkgname=codex-switcher
-pkgver=0.2.2.r0.g279e33d
+pkgver=0.2.24.r0.g1faa3ea
 pkgrel=1
 pkgdesc='A multi-account manager for OpenAI Codex CLI'
 arch=('x86_64')
 url='https://github.com/Lampese/codex-switcher'
-license=('unknown')
+license=('MIT')
 makedepends=('git' 'rust' 'cargo' 'nodejs' 'pnpm' 'webkit2gtk-4.1' 'gtk3'
              'libsoup3' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3')
-depends=('webkit2gtk-4.1' 'gtk3')
+depends=('webkit2gtk-4.1' 'gtk3' 'openssl')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-bin")
+# makepkg's `lto` option builds ring's C code with GCC -flto, which rust-lld
+# cannot read: every ring_core_* symbol then comes out undefined at link time.
+options=('!lto')
 source=("git+https://github.com/Lampese/codex-switcher.git")
 sha256sums=('SKIP')
 
@@ -26,6 +29,20 @@ prepare() {
     cd "$_pkgname"
     export PNPM_HOME="$srcdir/.pnpm-store"
     pnpm install --frozen-lockfile
+
+    # Arch moved to OpenSSL 4.x; upstream's lockfile pins openssl-sys 0.9.112,
+    # whose build script rejects anything past 3.x. 0.9.118 / 0.10.82 are the
+    # first releases that build against OpenSSL 4.1. Only raise them if the
+    # lockfile is older, so a fixed upstream lock is left alone.
+    cd src-tauri
+    local crate min locked
+    for crate in openssl-sys=0.9.118 openssl=0.10.82; do
+        min=${crate#*=} crate=${crate%%=*}
+        locked=$(sed -n "/^name = \"$crate\"\$/{n;s/^version = \"\(.*\)\"/\1/p;q}" Cargo.lock)
+        if [[ -n $locked ]] && (( $(vercmp "$locked" "$min") < 0 )); then
+            cargo update -p "$crate" --precise "$min"
+        fi
+    done
 }
 
 build() {
@@ -64,4 +81,6 @@ Name=Codex Switcher
 Terminal=false
 Type=Application
 EOF
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
