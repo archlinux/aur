@@ -2,8 +2,8 @@
 # Contributor: WeChat Linux Community
 
 pkgname=tencent-wechat
-pkgver=4.1.13.26
-pkgrel=2
+pkgver=4.1.13.29
+pkgrel=1
 pkgdesc="Tencent WeChat (Linux) with native Wayland support and privacy sandbox (Community Repackage)"
 arch=('x86_64')
 url="https://linux.weixin.qq.com/"
@@ -70,7 +70,7 @@ sha256sums=(
     'c7d3a19e099ba6e6f33d90a35891a443fdd01c62f424e31e21c955fd03168b63'
     '3f02a485084d1d7ecd0dc6b787240fd234d168f051b60456a023e8a841d5bb4b'
 )
-sha256sums_x86_64=('a0db8caeee8d1e6cfe0aa5ce58710270f8d74a90ff4920f53a3fc22aa0956fe9')
+sha256sums_x86_64=('d5b21c6e21186a58b2c2fd41712a4ef90f9452735931a6b8500e85c5b0913b0b')
 
 prepare() {
     rm -f data.tar.*
