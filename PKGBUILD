@@ -8,11 +8,11 @@
 
 pkgname=aurcache-cli
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Typed CLI for the AURCache API"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/Lukas-Heiligenbrunner/AURCache"
-license=(GPL-3.0-or-later)
+license=(MIT)
 # The TLS stack is rustls over aws-lc-rs/ring (see aurcache-server), so
 # nothing links libssl; gcc-libs is what the binary actually links (`ldd` on
 # the built artifact, not guesswork).
@@ -50,4 +50,5 @@ package() {
     source "$srcdir/$_srcdir/packaging/common.sh"
     cd "$_srcdir"
     packaging/install-files.sh cli "$pkgdir" "$PWD" "backend/$(_aurcache_release_dir)"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
