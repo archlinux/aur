@@ -1,6 +1,6 @@
 pkgbase = r-permute
 	pkgdesc = Functions for Generating Restricted Permutations of Data
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=permute
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = r-permute
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
 	optdepends = r-vegan
-	source = https://cran.r-project.org/src/contrib/permute_0.10-0.tar.gz
-	md5sums = adeaa5f1517f5de7fab9df51d7c90bb1
-	b2sums = 82d0a85800906904a75a5dd580a91d43c21acb27ca7f89c6a748a00bcd0eddbef757eed5f6d90ddd2e32ca297b52182683ee9d86444106c168cecf870bea34d0
+	source = https://cran.r-project.org/src/contrib/permute_0.10-1.tar.gz
+	md5sums = 77db61dea2fca235e65f05cf8cf041a0
+	b2sums = b0daf3ea28bcd113e146937faa389bd7f66875273f8cb4010ef11f83cde8a0cd52498f04b6131d3b92a1e993ba810d4a82be66b5dfb17c2b21ec79dfc0b6f024
 
 pkgname = r-permute
