@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=concat
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="Free and open-source CapCut replacement, a video editor with a Rust engine"
 arch=('x86_64')
@@ -34,7 +34,7 @@ options=('!debug' '!lto')
 # Only tags that start with a version are packaged, and pkgver drops their
 # hyphens (v0.2.2-alpha.1 -> 0.2.2alpha.1), which pacman sorts older than a
 # later plain 0.2.2, so no epoch is needed. See pkg.sh.
-_tag="v0.2.11"
+_tag="v0.2.12"
 # skia-bindings, behind Slint's Skia renderer, does not build Skia: it
 # downloads prebuilt Skia libraries from its own release page unless it is
 # handed them. Handing them over keeps that binary under makepkg's checksums
@@ -46,7 +46,7 @@ _skia_key="b7f043e0b1e2a850e702-x86_64-unknown-linux-gnu-ganesh-gl-jpegd-jpege-p
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jub0t/Concat/archive/refs/tags/${_tag}.tar.gz"
         "https://github.com/rust-skia/skia-binaries/releases/download/${_skia}/skia-binaries-${_skia_key}.tar.gz")
 noextract=("skia-binaries-${_skia_key}.tar.gz")
-sha256sums=('ff37af68aceb57785a2e6ba42a50144caa33f865efbfc1fb2eb719adb5a51c6f' '9ebe4c448cc9f789bad241cbd11739cdf759e27db5719c23a7635e096d5807b3')
+sha256sums=('35ee0ee29468d9884357e98f5ac90b9672860416a8d737940b8bf4d9ff079419' '9ebe4c448cc9f789bad241cbd11739cdf759e27db5719c23a7635e096d5807b3')
 
 # GitHub names the tarball's top folder after the repository, so it carries
 # upstream's capitalisation: "Concat" since the repository was renamed after
@@ -55,6 +55,13 @@ _srcname="Concat-${_tag#v}"
 
 prepare() {
   cd "$_srcname/src"
+
+  # ort's copy-dylibs feature links every library in ORT_LIB_LOCATION into
+  # the target folder, so a binary runs from there. With /usr/lib that is
+  # hundreds of links, and since Rust 1.100 changed the layout of the target
+  # folder it fails the build. The package uses the system's onnxruntime, so
+  # it is turned off. Features are not in Cargo.lock, so --locked still holds.
+  sed -i 's/, "copy-dylibs"//' Cargo.toml
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')"
