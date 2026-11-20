@@ -1,0 +1,15 @@
+pkgbase = python-zensical-ui
+	pkgdesc = Templates and browser assets for Zensical
+	pkgver = 0.0.43
+	pkgrel = 1
+	url = https://github.com/zensical/ui
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/z/zensical_ui/zensical_ui-0.0.43.tar.gz
+	sha256sums = e82d161ad797fff833cd045cfa3ddb9be69f276386b78dd5a4dff76dfbd41596
+
+pkgname = python-zensical-ui
