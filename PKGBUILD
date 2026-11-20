@@ -7,7 +7,7 @@
 
 _suffix=browser
 pkgname="obs-studio-${_suffix}"
-_pkgver=33.0.1
+_pkgver=33.0.2
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
@@ -113,15 +113,15 @@ source=(
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
 )
-source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_7871_linux_x86_64.tar.xz")
-source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_7871_linux_aarch64.tar.xz")
+source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_7871_linux_x86_64_v2.tar.xz")
+source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_7871_linux_aarch64_v2.tar.xz")
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
 )
-sha256sums_x86_64=("8ffc64d06ea74da613eeda7f2aa5d4e98661af6fa3ed8c68724c9a6e4e89ea8e")
-sha256sums_aarch64=("b05cf13b0f482e3b0149ac21268268c536d091b5e6608c742019ebd6c8e8a1e3")
+sha256sums_x86_64=("3f5c74f8c4c4b24dbbe9ff4cff7ba764aa4d0a72127b96976342e4360e435db3")
+sha256sums_aarch64=("a6f04ea5a1a0555d683f2dafa663e0704a0ea954d703dee4cab5ff67ba074ad0")
 
 if [[ ${CARCH/%_v?/} == 'x86_64' ]]; then
   optdepends+=("decklink: Blackmagic Design DeckLink support")
