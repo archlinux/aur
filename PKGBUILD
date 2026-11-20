@@ -1,21 +1,20 @@
 # Maintainer: Yasir Hassan <abdulebaroo@gmail.com>
 pkgname=hush-shell
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
-pkgdesc='Dynamic island shell for Hyprland, built on Quickshell: bar, launcher, notifications, control center, lock and login in one pill'
+pkgdesc='Dynamic island shell for Hyprland, built on Quickshell: bar, launcher, notifications, control center and lock in one pill'
 arch=(any)
 url='https://github.com/sirrryasir/hush'
 license=(MIT)
-depends=(hyprland quickshell matugen awww hyprlock python python-pillow lua imagemagick git
+depends=(hyprland quickshell matugen awww pipewire python python-pillow lua imagemagick git
          inter-font ttf-material-symbols-variable)
-optdepends=('sddm: Hush login screen'
-            'cliphist: clipboard history'
+optdepends=('cliphist: clipboard history'
             'wf-recorder: screen recording'
             'fprintd: fingerprint unlock')
 conflicts=(hush hush-git)  # hush: unrelated AUR package that also ships /usr/bin/hush
 install=hush-shell.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sirrryasir/hush/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b15a7dd189b61200e1ed6a47e480ff66412e2bad9305a069e6f7403a6409fc1d')
+sha256sums=('786ad7f5d32c0c48c8d9a310870c548afcad7b7157332b8475005c1c341f46ff')
 
 package() {
   cd "hush-$pkgver"
