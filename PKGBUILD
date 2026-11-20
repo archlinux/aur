@@ -3,7 +3,7 @@
 pkgname=bettbox-lite-compatible-pre
 _pkgname=Bettbox
 pkgver=1.19.9pre1
-pkgrel=1
+pkgrel=2
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core. (Lite build: no EasyTier/Tailscale/ZeroTier/fake-TCP/gVisor; Build with GOAMD64=v1)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ sha256sums=('c66aa913efe6e2bb7ac1feb26e2ffea11c08466ad91bc0b1d1e7c87f02d59791'
 install=bettbox.install
 prepare() {
 	cd "${_pkgname}-${_pkgver}"
-	fvm use 3.47.7
+	fvm use 3.50.1
 	fvm flutter --disable-analytics
 	fvm flutter --no-version-check pub get
 }
