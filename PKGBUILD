@@ -36,8 +36,7 @@ sha256sums_x86_64=('9b3b98086ea5917153d3fb8f4d4e38409e21a7d6e671a892bb18deae4b16
 package() {
 	cd "${pkgdir}"
 
-	tar -xf "${srcdir}/data.tar.xz"
-	rm -rf "${pkgdir}/usr/share/doc"
+	tar -xf "${srcdir}/data.tar.xz" --exclude="usr/share/doc"
 	mv "${pkgdir}/usr/share/icons/hicolor/2048x2048" "${pkgdir}/usr/share/icons/hicolor/512x512"
 
 	install -Dm644 "${srcdir}/README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
