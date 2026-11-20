@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction
 # SPDX-License-Identifier: MIT
 pkgname=zmcl-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='A small native Minecraft launcher built on Project Z (development preview)'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
   'zmcl.desktop'
 )
 sha256sums=(
-  '5cb7945cb5888d1ec02d84e55a4b91576161ddb6fe6c3a6be2644c8f058fb3c4'
+  'b15024e99dd1275db15020ef26669f24aaad9026d948dd6683cacac5c7647e0e'
   '62d26944cd3c4aaaf2dd68668332527883b02bca734c893b510996ba19589082'
 )
 
