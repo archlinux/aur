@@ -1,0 +1,20 @@
+pkgbase = bladebro
+	pkgdesc = Agentic browser driver for AI: five MCP tools over a real Chromium session
+	pkgver = 4.8.2
+	pkgrel = 1
+	url = https://github.com/dondai44423/bladebro
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	optdepends = chromium: Chromium-family browser for the agent lane
+	optdepends = xvfb: virtual display for hosts without one
+	optdepends = xfwm4: window manager, so a headful Xvfb session has frame extents
+	conflicts = bladebro-bin
+	source = bladebro-4.8.2.tar.gz::https://github.com/dondai44423/bladebro/archive/refs/tags/v4.8.2.tar.gz
+	sha256sums = 56172c8486d64edb43fd1c321b96a11c94374ae95887885469347e8c6f379dea
+
+pkgname = bladebro
