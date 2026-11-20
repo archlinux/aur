@@ -1,16 +1,17 @@
 # Maintainer: rilian-la-te <ria.freelander@gmail.com>
 
-makedepends=('meson' 'gtk3' 'git' 'appmenu-glib-translator>=26.11')
+makedepends=('meson' 'git' 'wayland-protocols')
 
 _pkgbase=vala-panel-appmenu
 pkgname=appmenu-gtk-module-git
 _path=subprojects/appmenu-gtk-module
-pkgver=25.04.r128.ge196990
+pkgver=25.04.r182.gaa5b558
 pkgrel=1
 pkgdesc="Gtk module for exporting menus"
-depends=('gtk3' 'appmenu-glib-translator>=26.11')
+depends=('gtk3' 'appmenu-glib-translator>=26.11' 'wayland')
 provides=(appmenu-gtk-module)
 conflicts=(appmenu-gtk-module)
+options=('!strip')
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
 license=('LGPL3')
@@ -29,7 +30,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson build "${srcdir}/${_pkgbase}/${_path}" -Dgtk=3
+  arch-meson build "${srcdir}/${_pkgbase}/${_path}" -Dgtk=3 -Dwayland=true
   meson compile -C build
 }
 
