@@ -1,6 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 # Contributor: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Dmitriy Morozov <archlinux@foxcub.org>
+# Contributor: dylanhall
 
 pkgname=shpool
 pkgver=0.11.7
@@ -27,6 +28,7 @@ check() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$PWD/test-run}"
+  export CARGO_BIN_PATH="$srcdir/$pkgname-$pkgver/target/debug"
 
   cd $pkgname-$pkgver
 
