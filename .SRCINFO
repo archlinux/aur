@@ -1,12 +1,12 @@
 pkgbase = lianwalld-bin
 	pkgdesc = LianWall daemon - built-in Vulkan image/video wallpaper engine
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Yueosa/lianwall
 	arch = x86_64
 	license = MIT
 	depends = glibc>=2.39
-	depends = libplacebo.so=360-64
+	depends = libplacebo.so=387-64
 	depends = libavformat.so=63-64
 	depends = libavcodec.so=63-64
 	depends = libavutil.so=61-64
@@ -23,7 +23,7 @@ pkgbase = lianwalld-bin
 	conflicts = lianwalld
 	options = !strip
 	options = !debug
-	source = https://github.com/Yueosa/lianwall/releases/download/v6.0.0/lianwalld_6.0.0_linux_x86_64
-	sha256sums = 130c73e348c974c1ef2378243ee0ed9fd8c7f88e6f5ef6adb55c786c31a7b826
+	source = https://github.com/Yueosa/lianwall/releases/download/v6.0.0/lianwalld_6.0.0-2_linux_x86_64
+	sha256sums = fc659494e769c46b8f68018e7fe391b4b9716ec1aa95772ed378fb3fda9a1100
 
 pkgname = lianwalld-bin
