@@ -1,0 +1,24 @@
+post_install() {
+    cat <<'EOF'
+
+  Госплагин (локальный модуль) установлен в /opt/iitrust/gosuslugi_plugin.
+
+  Чтобы он заработал, нужны ещё две вещи:
+
+  1. Расширение браузера "Госплагин":
+       Chrome / Chromium / Яндекс.Браузер / Vivaldi:
+         https://chromewebstore.google.com/detail/jabjbhgjaidecageckilhonbggakppme
+       Firefox:
+         https://addons.mozilla.org/ru/firefox/addon/%D0%B3%D0%BE%D1%81%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD/
+     Браузер нужно перезапустить - манифесты native messaging host читаются
+     только при старте.
+
+  2. Для USB-токенов и смарт-карт (Рутокен, JaCarta и т.п.) - служба pcscd:
+       sudo systemctl enable --now pcscd.socket
+
+EOF
+}
+
+post_upgrade() {
+    echo "  Перезапустите браузер, чтобы он подхватил обновлённый модуль Госплагина."
+}

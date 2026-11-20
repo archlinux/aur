@@ -1,0 +1,6 @@
+# В AUR-репозиторий уходят только PKGBUILD, .SRCINFO и .install.
+*
+!PKGBUILD
+!.SRCINFO
+!gosplugin-bin.install
+!.gitignore
