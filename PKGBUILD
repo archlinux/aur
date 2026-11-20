@@ -2,7 +2,7 @@
 
 pkgname=agy-switch-cli-bin
 _pkgname=agy-switch-cli
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Headless multi-account manager, quota inspector, and credential switcher for Antigravity CLI (agy)'
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_x86_64=(
 source_aarch64=(
     "${_pkgname}-v${pkgver}-aarch64-unknown-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-aarch64-unknown-linux-musl.tar.gz"
 )
-sha256sums_x86_64=('a744fcb36b663d9a7e88fadb418d976dbd8c311468982b3925f2204f17d31aa2')
-sha256sums_aarch64=('eec7277ad5e994ec10bd2306dda237a68b9e8eeb63fd36e1861b909c9096177e')
+sha256sums_x86_64=('9c1bcd62a65d4b6413d49a48c2edb8f7798fbabe209fd6291473c8f7e8ba8224')
+sha256sums_aarch64=('7e2bb406ca16573cf3081517625900ed9c3b2e373dbe085cea6448361389f5b0')
 
 package() {
     local _dir="${srcdir}/${_pkgname}-v${pkgver}-${CARCH}-unknown-linux-musl"
