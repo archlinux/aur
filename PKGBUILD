@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=coopgammad
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Cooperative gamma server"
 arch=(i686 x86_64 aarch64)
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=(libgamma)
 makedepends=(libgamma libclut)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(53909602c751370636441c6421742c28ff15e7fc810b92c05382b0b22567e6f2)
+sha256sums=(e376c5fec69e1ac1a6579567dc41382330171226c2cf066e65dd91e4daad8a02)
 
 
 build () {
