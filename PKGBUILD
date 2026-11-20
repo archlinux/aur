@@ -2,7 +2,7 @@
 # Maintainer: bnema <b at bnema dot dev>
 
 pkgname='vev-bin'
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Terminal multiplexer with a per-user daemon, server-side rendering, and minimal socket/SSH diffs'
 url='https://git.bnema.dev/vev'
@@ -12,10 +12,10 @@ provides=('vev')
 conflicts=('vev')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://git.bnema.dev/vev/releases/download/v${pkgver}/vev_linux_arm64.tar.gz")
-sha256sums_aarch64=('d0ef45ac741abdaa989aa4a6b3d4f1fdbb7bed44f87b36777cf2a24c01470d4b')
+sha256sums_aarch64=('8b14ded012c084938e488c7a295ea459a58b40c860aeedee352872b2b29148ad')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://git.bnema.dev/vev/releases/download/v${pkgver}/vev_linux_x86_64.tar.gz")
-sha256sums_x86_64=('e500f2bd83043a816128a38549831532965400355ac25d77043c1428d5f4549b')
+sha256sums_x86_64=('d030277199f21c865d7f262cefe5d26c32fd19ca1b1947e1f70e712d1ec56250')
 
 package() {
   install -Dm755 "./vev" "${pkgdir}/usr/bin/vev"
