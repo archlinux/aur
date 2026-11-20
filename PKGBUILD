@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=cannelloni
-pkgver=2.1.2
-pkgrel=2
-pkgdesc="cannelloni is written in C++11 and uses UDP, TCP or SCTP to transfer CAN frames between two machines."
+pkgver=2.1.3
+pkgrel=1
+pkgdesc="a SocketCAN over Ethernet tunnel"
 arch=($CARCH)
 url="https://github.com/mguentner/cannelloni"
 license=('GPL-2.0-only')
@@ -26,12 +26,16 @@ checkdepends=()
 optdepends=(
     'can-utils: Linux-CAN / SocketCAN user space applications'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c704707f7dd9f1ed64e9195097809f8882c03b1fa0a79864b8e3bf286521e3d7')
-options=()
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('56a23ccabebf4a8953c5ba0c87381249c02e46ea860a457d0b638d8ae3f7058c')
+options=(!debug)
+
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}/"
+    cd "${srcdir}/${pkgname}/"
 
     # see：https://wiki.archlinux.org/title/CMake_package_guidelines
     cmake -DCMAKE_BUILD_TYPE=None \
@@ -44,6 +48,6 @@ build() {
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}-${pkgver}/build install
-    install -Dm644 "${srcdir}"/${pkgname}-${pkgver}/gpl-2.0.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
+    install -vDm644 "${srcdir}"/${pkgname}/gpl-2.0.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
