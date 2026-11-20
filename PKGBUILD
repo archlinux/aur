@@ -1,17 +1,17 @@
 # shellcheck shell=bash disable=SC2034
 # Maintainer: LIghtJUNction <https://github.com/LIghtJUNction>
 pkgname=ztty
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
-pkgdesc='Lightweight no_std Rust terminal emulator for X11 and XWayland'
+pkgdesc='Lightweight no_std Rust terminal emulator for X11, XWayland and native Wayland'
 arch=('x86_64')
 url='https://github.com/LIghtJUNction/ztty'
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'libx11' 'libxft' 'libxrender')
-makedepends=('rustup')
+depends=('gcc-libs' 'glibc' 'libx11' 'libxft' 'libxrender' 'fontconfig' 'freetype2' 'harfbuzz' 'libglvnd' 'wayland' 'libxkbcommon')
+makedepends=('rustup' 'pkgconf' 'wayland-protocols')
 optdepends=('xdg-utils: open hyperlinks' 'ttf-dejavu: default monospace font')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('f8c4fbf1b6e0afcbc4c72d10caa23a4d57a21a845070f936bf601e44e01f1196')
+sha256sums=('cca31ef869c0872e0fd4a772f008f5919bab85628c11824c13fe4908016d6059')
 
 prepare() {
     cd "$pkgname-$pkgver" || return
@@ -20,12 +20,12 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver" || return
-    cargo build --frozen --release
+    cargo build --frozen --release --features wayland
 }
 
 check() {
     cd "$pkgname-$pkgver" || return
-    cargo test --frozen --workspace --lib
+    cargo test --frozen --workspace --lib --features wayland
 }
 
 package() {
