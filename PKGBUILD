@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=kwi-git
-pkgver=r151.8d4af96
+pkgver=0.1.0.r9.gc2ba966
 pkgrel=1
 epoch=
 pkgdesc="Kwi is a modern and fast terminal for KDE Plasma and other desktops built on libghostty-vt"
@@ -30,7 +30,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "$srcdir/${pkgname::-4}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 prepare() {
@@ -57,9 +57,13 @@ build() {
 package() {
 	cd "$srcdir"
 	DESTDIR="${pkgdir}" cmake --install build
-	pushd "$pkgdir/usr/share/licenses/kwi"
+	cd "$srcdir/${pkgname::-4}/LICENSES"
+	for _file in *.txt
+	do
+		install -Dm644 "${_file}" "${pkgdir}/usr/share/licenses/${pkgname}/${_file}"
+	done
+	pushd "$pkgdir/usr/share/licenses/${pkgname}"
 	mv LicenseRef-KDE-Accepted-GPL.txt LicenseRef-scancode-kde-accepted-gpl.txt
 	mv LicenseRef-KDE-Accepted-LGPL.txt LicenseRef-scancode-kde-accepted-lgpl.txt
 	popd
-	mv "$pkgdir/usr/share/licenses/kwi" "$pkgdir/usr/share/licenses/kwi-git"
 }
