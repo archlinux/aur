@@ -1,4 +1,6 @@
 [pam_mount-git]
-source = "regex"
-url = "https://inai.de/files/pam_mount/"
-regex = 'pam_mount-([\d.]+)\.[a-z]'
+source = "gitea"
+host = "codeberg.org"
+gitea = "jengelh/pam_mount"
+use_max_tag = true
+prefix = "v"
