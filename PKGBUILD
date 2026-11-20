@@ -2,7 +2,7 @@
 
 pkgname=lody-desktop-bin
 _pkgname=lody-desktop
-pkgver=0.112.0
+pkgver=0.113.1
 pkgrel=1
 pkgdesc='Team workspace for the coding agents you already run'
 arch=('x86_64')
@@ -27,7 +27,7 @@ provides=("${_pkgname}=$pkgver")
 conflicts=("$_pkgname" 'lody' 'lody-bin')
 options=('!debug')
 source=("${_pkgname}-${pkgver}-amd64.deb::https://updates.lody.ai/production/Lody-${pkgver}-amd64.deb")
-sha256sums=('19bf055acec92ae2698f49e6b85eb93d9186a3a057095ef97321953ac7a77211')
+sha256sums=('154901d68b10bfb1adfbbb9ffb5fcfd20e60d6ea0ac2bbc8ac198c5846913ff1')
 
 prepare() {
   bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-amd64.deb" -C "${srcdir}" 'data.tar.*'
