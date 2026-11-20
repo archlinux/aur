@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libbz2-rs-sys-git
-pkgver=0.2.5.r1.g1028131
-pkgrel=2
+pkgver=0.2.7.r2.g9551dd3
+pkgrel=1
 pkgdesc="An implementation of bzip2 in pure Rust available as a C dynamic library"
 arch=('i686' 'x86_64')
 url="https://github.com/trifectatechfoundation/libbzip2-rs"
 license=('bzip2-1.0.6')
 makedepends=('git' 'cargo' 'cargo-c')
-provides=("libbz2-rs-sys=$pkgver")
+provides=("libbz2-rs-sys=$pkgver" 'libbz2_rs.so')
 conflicts=('libbz2-rs-sys')
 options=('staticlibs')
 source=("git+https://github.com/trifectatechfoundation/libbzip2-rs.git")
@@ -19,9 +19,11 @@ prepare() {
   cd "libbzip2-rs/libbz2-rs-sys-cdylib"
 
   if [ ! -f "Cargo.lock" ]; then
-    cargo update
+    cargo generate-lockfile
   fi
-  cargo fetch
+  cargo fetch \
+    --locked \
+    --target host-tuple
 }
 
 pkgver() {
