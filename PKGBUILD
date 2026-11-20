@@ -3,10 +3,10 @@
 pkgbase=lua-rough
 _rockname=${pkgbase#lua-}
 _project=$_rockname-lua
-pkgname=("$pkgbase" "lua51-$_rockname" "lua52-$_rockname" "lua53-$_rockname")
+pkgname=("$pkgbase" "lua51-$_rockname" "lua52-$_rockname" "lua53-$_rockname" "lua54-$_rockname")
 pkgver=1.0.0
 _rockrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pure Lua library for creating hand-drawn graphics'
 arch=(any)
 url="https://github.com/Omikhleia/$_project"
@@ -16,6 +16,7 @@ makedepends=(lua
              lua51
              lua52
              lua53
+             lua54
              luarocks)
 _archive="$_project-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
@@ -30,7 +31,7 @@ _package() {
 
 package_lua-rough() {
 	depends=("${_luadeps[@]/#/${pkgname%-*}-}")
-	_package 5.4
+	_package 5.5
 }
 
 package_lua51-rough() {
@@ -46,4 +47,9 @@ package_lua52-rough() {
 package_lua53-rough() {
 	depends=("${_luadeps[@]/#/${pkgname%-*}-}")
 	_package 5.3
+}
+
+package_lua54-rough() {
+	depends=("${_luadeps[@]/#/${pkgname%-*}-}")
+	_package 5.4
 }

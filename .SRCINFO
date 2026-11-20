@@ -1,7 +1,7 @@
 pkgbase = lua-rough
 	pkgdesc = Pure Lua library for creating hand-drawn graphics
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Omikhleia/rough-lua
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = lua-rough
 	makedepends = lua51
 	makedepends = lua52
 	makedepends = lua53
+	makedepends = lua54
 	makedepends = luarocks
 	source = https://github.com/Omikhleia/rough-lua/archive/v1.0.0/rough-lua-1.0.0.tar.gz
 	sha256sums = 3829949ddfcd6b03fc3d651548e2c1370da7a38160489e28d99f181f45c488c6
@@ -24,3 +25,6 @@ pkgname = lua52-rough
 
 pkgname = lua53-rough
 	depends = lua53-penlight
+
+pkgname = lua54-rough
+	depends = lua54-penlight
