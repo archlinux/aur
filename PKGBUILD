@@ -5,7 +5,7 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.110.1
+pkgver=1.110.2
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=('x86_64' 'aarch64')
@@ -39,7 +39,9 @@ depends=('python'
 makedepends=('python-maturin'
              'python-build'
              'python-installer')
-optdepends=('gunicorn: proxy'
+optdepends=('python-nemo-switchyard: switchyard'
+
+            'gunicorn: proxy'
             'uvicorn: proxy'
             'python-granian: proxy'
             'python-uvloop: proxy'
@@ -73,6 +75,7 @@ optdepends=('gunicorn: proxy'
             'python-soundfile: proxy'
             'python-pyroscope-io: proxy'
             'python-expression: proxy'
+            'python-semver: proxy'
             
             'python-rich: cli'
             'python-pyyaml: cli'
@@ -108,7 +111,8 @@ optdepends=('gunicorn: proxy'
 
             'python-google-cloud-speech: stt-vertex-chirp'
 
-            'python-nvidia-riva-client: stt-nvidia-riva'
+            'python-grpcio: stt-nvidia-riva'
+            'python-protobuf: stt-nvidia-riva'
             'python-soundfile: stt-nvidia-riva'
             'python-audioread: stt-nvidia-riva'
             'python-numpy: stt-nvidia-riva'
@@ -143,7 +147,7 @@ optdepends=('gunicorn: proxy'
 provides=("python-${pkgname}")
 options=(!lto !strip)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5d21c59b38241b08c1b0f9afa14aa3760566a9cf4ba718564e2d46b17f6e1c3a')
+sha256sums=('41e8d3a4f32d55557aaf166b5d43ec7e04c3af3884591db182e968ceeff9a3e4')
 
 prepare() {
   cd "$pkgname-$pkgver"
