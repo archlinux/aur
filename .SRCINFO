@@ -1,13 +1,14 @@
 pkgbase = libbz2-rs-sys
 	pkgdesc = An implementation of bzip2 in pure Rust available as a C dynamic library
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trifectatechfoundation/libbzip2-rs
 	arch = i686
 	arch = x86_64
 	license = bzip2-1.0.6
 	makedepends = cargo
 	makedepends = cargo-c
+	provides = libbz2_rs.so
 	options = staticlibs
 	source = libbz2-rs-sys-0.2.7-src.tar.gz::https://github.com/trifectatechfoundation/libbzip2-rs/archive/refs/tags/v0.2.7.tar.gz
 	sha256sums = f05ad4010051d513abc3d13656686b60a88f1338db089d33d00f023e0952377b
