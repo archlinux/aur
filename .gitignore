@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!oh-my-ztty.desktop
+!README.archlinux
+!LICENSE

@@ -1,0 +1,38 @@
+oh-my-ztty on Arch Linux
+========================
+
+Run `omztty terminal` to open the bundled terminal, or `omztty shell` to use
+its zsh preset in an existing terminal. `omztty doctor` checks the installation.
+No background service starts during package installation.
+
+The package owns /usr/lib/oh-my-ztty and /usr/bin/omztty. Bundled component
+commands remain private to the suite, so separately installed ztty, ssmcp,
+zdot and zfetch packages can coexist. If a previous per-user installation
+appears first in PATH, use /usr/bin/omztty to select this package explicitly.
+
+Configuration is adopted only when you request it as your ordinary user:
+
+    omztty config init
+    omztty config plan
+    omztty config apply --backup
+
+Existing conflicting files are backed up by the explicit apply command.
+Personal additions belong in ~/.config/oh-my-ztty/local.zsh. The editable
+profile is at ~/.config/oh-my-ztty/profile; XDG paths are respected.
+
+Update the package with your AUR helper, for example:
+
+    yay -Syu oh-my-ztty-bin
+
+After an update, run `omztty config refresh` to update unchanged shipped
+defaults while preserving personal edits. Review its updated/preserved file
+report. Package installation and upgrades do not edit home files.
+
+Before removing the package, restore an adopted home profile if desired:
+
+    omztty config remove
+    sudo pacman -R oh-my-ztty-bin
+
+Removing the package preserves personal configuration, backups and history.
+The built-in updater and uninstaller direct package users to the package
+manager; they do not change pacman-owned files.

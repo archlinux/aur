@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=oh-my-ztty
+Comment=A lean Project Z terminal workspace
+Exec=/usr/bin/omztty terminal
+TryExec=/usr/bin/omztty
+Icon=oh-my-ztty
+Terminal=false
+Categories=System;TerminalEmulator;
+Keywords=terminal;shell;zsh;Project Z;
+X-TerminalArgExec=-e
