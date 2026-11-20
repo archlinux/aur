@@ -4,7 +4,7 @@
 
 pkgname=autobrr
 pkgver=1.91.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The modern download automation tool for torrents'
 arch=(x86_64)
 url='https://autobrr.com'
@@ -13,6 +13,7 @@ depends=(glibc)
 makedepends=(
   git
   go
+  nodejs
   pnpm
 )
 optdepends=(
