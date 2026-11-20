@@ -1,6 +1,6 @@
 pkgbase = sv-lang
 	pkgdesc = SystemVerilog compiler and language services
-	pkgver = 12.1
+	pkgver = 12.2
 	pkgrel = 1
 	url = https://github.com/MikePopoloski/slang
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = sv-lang
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	source = sv-lang::git+https://github.com/MikePopoloski/slang.git#tag=v12.1
-	sha256sums = 12a68c35932f43120b58495271ab79ed2f4b3cff48e306a3fcf5e5eae2c5d825
+	source = sv-lang::git+https://github.com/MikePopoloski/slang.git#tag=v12.2
+	sha256sums = 4afcbc76214f90748cf1cd88e97a03c210a33ff0fb98b95b33cde07008d3cec0
 
 pkgname = sv-lang
 	provides = sv-lang
