@@ -2,7 +2,7 @@
 
 _pkgname=dataclass-wizard
 pkgname=python-${_pkgname}
-pkgver=0.36.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="This library provides a set of simple, yet elegant wizarding tools for interacting with the Python dataclasses module."
 arch=('any')
@@ -10,10 +10,14 @@ url="https://github.com/rnag/dataclass-wizard"
 license=('Apache-2.0')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+optdepends=('python-dotenv: load environment variables from .env files'
+            'python-pytimeparse: parse timedelta strings'
+            'python-tomli-w: TOML serialization'
+            'python-yaml: YAML support')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/rnag/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3037618b7424d7635d442750bd6e57cb72896ab1a3a49e886fcf3d45667183ad')
+sha256sums=('5ce5a1c5fc18bb84fd0d71f3e0ce911679a41440e94182863a5bedf8a125116f')
 
 build() {
   cd "${_pkgname}-${pkgver}"

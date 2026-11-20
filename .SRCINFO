@@ -1,6 +1,6 @@
 pkgbase = python-dataclass-wizard
 	pkgdesc = This library provides a set of simple, yet elegant wizarding tools for interacting with the Python dataclasses module.
-	pkgver = 0.36.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/rnag/dataclass-wizard
 	arch = any
@@ -10,9 +10,13 @@ pkgbase = python-dataclass-wizard
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
+	optdepends = python-dotenv: load environment variables from .env files
+	optdepends = python-pytimeparse: parse timedelta strings
+	optdepends = python-tomli-w: TOML serialization
+	optdepends = python-yaml: YAML support
 	provides = python-dataclass-wizard
 	conflicts = python-dataclass-wizard
-	source = dataclass-wizard-0.36.2.tar.gz::https://github.com/rnag/dataclass-wizard/archive/v0.36.2.tar.gz
-	sha256sums = 3037618b7424d7635d442750bd6e57cb72896ab1a3a49e886fcf3d45667183ad
+	source = dataclass-wizard-1.0.0.tar.gz::https://github.com/rnag/dataclass-wizard/archive/v1.0.0.tar.gz
+	sha256sums = 5ce5a1c5fc18bb84fd0d71f3e0ce911679a41440e94182863a5bedf8a125116f
 
 pkgname = python-dataclass-wizard
