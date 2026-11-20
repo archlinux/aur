@@ -2,7 +2,7 @@
 
 pkgname=arkha-bin
 _pkgname=arkha
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A fast graphical file manager (prebuilt binary)'
 arch=('x86_64')
@@ -39,10 +39,10 @@ conflicts=("$_pkgname")
 options=('!debug')
 # The release's prebuilt program: arkha-<version>-<arch>/ with arkha (runs
 # from there too), arkha.desktop, arkha.svg, the AppStream metainfo,
-# locale/, LICENSE and README.md. The checksum is set for each release (updpkgsums, then
+# locale/, manual/, LICENSE and README.md. The checksum is set for each release (updpkgsums, then
 # makepkg --printsrcinfo > .SRCINFO).
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
-sha256sums_x86_64=('de1d0090ac95b0b79db0df6c795ae7d4f44f69615bd68b8b898eff8047495319')
+sha256sums_x86_64=('2269a49ff3ee831cc45c788fd30e34942e4c840b09c03727bcacf4e36c603227')
 
 package() {
   cd "$_pkgname-$pkgver-$CARCH"
@@ -52,6 +52,11 @@ package() {
   install -Dm644 io.github.dekart811.Arkha.metainfo.xml "$pkgdir/usr/share/metainfo/io.github.dekart811.Arkha.metainfo.xml"
   for mo in locale/*/LC_MESSAGES/arkha.mo; do
     install -Dm644 "$mo" "$pkgdir/usr/share/$mo"
+  done
+  # Never a package without the manual (the loop below would pass without it).
+  test -f manual/en/index.html
+  find manual -type f | while read -r f; do
+    install -Dm644 "$f" "$pkgdir/usr/share/arkha/$f"
   done
   install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 }
