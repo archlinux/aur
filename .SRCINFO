@@ -1,0 +1,17 @@
+pkgbase = axon-cli
+	pkgdesc = Runs named requests from a .http file, authenticating via .netrc, and prints the responses curl-style, or as JSON
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/desdic/axon-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	options = !debug
+	source = axon-cli-1.0.0.tar.gz::https://github.com/desdic/axon-cli/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 383e5560fbf844504c7cbd612794921a463161fe35f4f0b6e54d744ae55b8689
+
+pkgname = axon-cli
