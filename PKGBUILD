@@ -1,4 +1,4 @@
-# Maintainer: Dirk Wouters <dirk@wouters.onl>
+# Maintainer: Dirk Wouters <info@dirkwouters.de>
 # Contributor: 0b100100 <0b100100 at protonmail dot ch>
 # Contributor: Ivan Agarkov <ivan.agarkov@gmail.com>
 
