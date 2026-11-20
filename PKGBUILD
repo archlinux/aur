@@ -2,14 +2,14 @@
 PROJECT=fileformat
 BASE_NAME=fileformat
 DESCR="A tool for recognizing file formats"
-makedepends=("bash" "chrpath" "findutils" "glib2" "amalthea-gdc" "gcc-d")
-depends=("glib2" "amalthea-gdc")
-pkgver=0.4.6
+makedepends=("bash" "chrpath" "findutils" "glib2" "amalthea-ldc2" "ldc")
+depends=("glib2" "amalthea-ldc2")
+pkgver=0.4.7
 pkgrel=0
 license=("BSL-1.0 or GPL-3+")
 
-DC=gdc
-DC_PKG=gcc-d
+DC=ldc2
+DC_PKG=ldc
 
 pkgname=fileformat
 pkgdesc="${DESCR}"
@@ -17,7 +17,7 @@ arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=${BASE_NAME}-${pkgver}.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v${pkgver}.tar.gz")
-sha256sums=("fb259297e16459a55b7785211979bc79c5eb76361ff48c600e3e5cfce59b1e69")
+sha256sums=("08b59abbd633658381706437d336e6fd2675f9f0125d8a64daf2cf1e2eaaa7c0")
 
 build() {
     cd "${PROJECT}-v${pkgver}"
