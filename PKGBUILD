@@ -7,14 +7,14 @@
 
 pkgname=aurcache-worker
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Remote build worker for AURCache"
 # armv7h is deliberately absent: its cross toolchain is not in Arch's official
 # repositories, only aarch64's is. Adding it means the AUR toolchain or an
 # emulated build.
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/Lukas-Heiligenbrunner/AURCache"
-license=(GPL-3.0-or-later)
+license=(MIT)
 
 # devtools is what the worker shells out to, and it already brings fakeroot,
 # sudo, git, openssh, binutils and the VCS tools. python runs the patch that
@@ -67,4 +67,5 @@ package() {
     source "$srcdir/$_srcdir/packaging/common.sh"
     cd "$_srcdir"
     packaging/install-files.sh worker "$pkgdir" "$PWD" "backend/$(_aurcache_release_dir)"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
