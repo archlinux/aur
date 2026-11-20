@@ -1,0 +1,25 @@
+pkgbase = reelo
+	pkgdesc = uQ's media player: mpv's engine in a Qt Quick window that follows the uQ theme, with MPRIS
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/asafelobotomy/reelo
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = mpv
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	optdepends = yt-dlp: play video pages (YouTube and the like) from an address
+	optdepends = qt6-wayland: run natively on Wayland
+	optdepends = uq: Media player page in uQ Settings
+	source = reelo-0.1.0.tar.gz::https://github.com/asafelobotomy/reelo/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 224fb2fd702183f24f4670efa38ae6b23bdaff9bb0594d3aed39093180aa88b8
+
+pkgname = reelo
