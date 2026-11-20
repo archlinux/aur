@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction
 pkgname=zcall-gui-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Native Project Z control panel for the zcalld local AI gateway (binary)'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('zcall-gui')
 options=('!strip')
 source_x86_64=("zcall-gui-v$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/zcall-gui-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("zcall-gui-v$pkgver-aarch64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/zcall-gui-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('f8239366812bbce656abb4ad622c2ffa8001d95e8d62ad9ca10bbf91212ae5a5')
-sha256sums_aarch64=('fa34e86214f8fd0b64bd0aa2b4d6dd95014bbf73c6486e752c8c0921a10d04d4')
+sha256sums_x86_64=('a1eca76ba78a9bddf37ac05a010b3dc4902352fd8d741c092b0dbae526a329ec')
+sha256sums_aarch64=('2ef6ba6cff00207341b0846b6d673271cb1327ef9d4f798f826a9fff8bfbf386')
 
 package() {
   cd "$srcdir/zcall-gui-v$pkgver-$CARCH-unknown-linux-gnu"
