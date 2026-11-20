@@ -1,0 +1,14 @@
+[Unit]
+Description=spill BitTorrent daemon
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/spill serve --config /usr/share/spill/spill-user.toml
+UMask=0077
+Restart=on-failure
+RestartSec=10s
+TimeoutStopSec=120s
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=default.target
