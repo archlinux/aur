@@ -1,7 +1,7 @@
 # Maintainer: Gaou Piou <i.am.piou@gmail.com>
 
 pkgname=anycode-bin
-pkgver=0.0.103
+pkgver=0.0.104
 pkgrel=1
 pkgdesc='Desktop workspace for AI coding agents (Claude Code, Codex and native)'
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=("AnyCode-${pkgver}.AppImage::https://github.com/incadawr/anycode/release
         'anycode.desktop'
         'anycode.sh'
         'anycode-patches.mjs')
-sha256sums=('73ac33380234581b8f003df340dd68079d441842e1fa511a31ae70e3f105ec0d'
+sha256sums=('11952f91311a6808786bab90d5c5e2d1793f480d377edbcf4062385e844a26bc'
             'f65fd74511d34e143f022c7fdf7f8ee7d4ca9321d80e7390ce3f5147f0f94e34'
             'eb3d3a4a865f5cff62ff2a3a3bb77f5e660ee4f0376a90a9d8e238241034df81'
             'd2173b4ad832386fdef35329734ebf7900c4910460792039992b0ebc712cde83'
@@ -82,13 +82,23 @@ prepare() {
 
   # Upstream keeps these native/binary packages outside the archive. Repack with
   # the same set and verify it, since the app resolves them from
-  # app.asar.unpacked at runtime.
-  local unpacked_before
-  unpacked_before=$(cd "${resources}/app.asar.unpacked" && find . -type f | sort)
+  # app.asar.unpacked at runtime. asar extract and asar pack write regular files
+  # as 0644, which would leave the bundled ripgrep non-executable and make every
+  # spawn of it fail with EACCES, so the original modes are carried over to both
+  # the extracted copy and the repacked tree.
+  local unpacked_modes
+  unpacked_modes=$(cd "${resources}/app.asar.unpacked" && find . -type f -printf '%m %P\n' | sort)
+  local mode path
+  while read -r mode path; do
+    chmod "${mode}" "${app}/${path}"
+  done <<< "${unpacked_modes}"
   rm -rf "${resources}/app.asar" "${resources}/app.asar.unpacked"
   asar pack "${app}" "${resources}/app.asar" \
     --unpack-dir '{node_modules/node-pty,node_modules/@vscode/ripgrep,node_modules/@vscode/ripgrep-linux-x64}'
-  if [[ $(cd "${resources}/app.asar.unpacked" && find . -type f | sort) != "${unpacked_before}" ]]; then
+  while read -r mode path; do
+    chmod "${mode}" "${resources}/app.asar.unpacked/${path}"
+  done <<< "${unpacked_modes}"
+  if [[ $(cd "${resources}/app.asar.unpacked" && find . -type f -printf '%m %P\n' | sort) != "${unpacked_modes}" ]]; then
     error "the repacked app.asar.unpacked differs from upstream's"
     return 1
   fi
