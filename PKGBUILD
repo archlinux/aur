@@ -1,10 +1,10 @@
 # Maintainer: João Vitor Polverari <dev at ayru dot dev>
 pkgname=marmota-daily-git
-pkgver=1.0.0.r135.g2c8bb00
+pkgver=2.0.0.r2.g12f3254
 pkgrel=1
 pkgdesc='Daily note templating system'
 arch=('x86_64' 'aarch64')
-url='https://github.com/B3ella/groundhog'
+url='https://github.com/B3ella/marmota'
 license=('MIT')
 depends=('glibc' 'libgcc')
 makedepends=('cargo' 'git')
@@ -21,7 +21,7 @@ pkgver() {
 prepare() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target host-tuple
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')"
 }
 
 build() {
@@ -39,7 +39,7 @@ check() {
 
 package() {
   cd "$pkgname"
-  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/groundhog"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/marmota"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 readme.md "$pkgdir/usr/share/doc/$pkgname/readme.md"
 }
