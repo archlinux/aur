@@ -1,6 +1,6 @@
 pkgbase = cachy-auto-update
 	pkgdesc = Unattended background updates for CachyOS, aware of battery, gaming and manual package management
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/LoonixTools/cachy-auto-update
 	install = cachy-auto-update.install
@@ -38,7 +38,7 @@ pkgbase = cachy-auto-update
 	options = !debug
 	backup = etc/cachy-auto-update/cachy-auto-update.conf
 	backup = etc/logrotate.d/cachy-auto-update
-	source = cachy-auto-update-2.0.0.tar.gz::https://github.com/LoonixTools/cachy-auto-update/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = ccac00bb843b3974d17bc1c1fad44a4a2ccd4fbb28b0e596dcc448a220d3b253
+	source = cachy-auto-update-2.0.1.tar.gz::https://github.com/LoonixTools/cachy-auto-update/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = fa5f97535a99ed371050071feef4e38d66d73eaf6d56d208e37ee8d9e019cd3a
 
 pkgname = cachy-auto-update
