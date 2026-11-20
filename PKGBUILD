@@ -17,7 +17,7 @@
 # commit that GitHub signs with its own key.
 
 pkgname=vtium-terminfo-git
-pkgver=0.1.0alpha.9.r0.g4aa2eed
+pkgver=0.1.0alpha.10.r0.gd1187d4
 pkgrel=1
 pkgdesc='The terminfo entry xterm-vtium, for sessions in vtium (git main)'
 arch=('any')
