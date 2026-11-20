@@ -17,7 +17,7 @@ b2sums=('8e5ae27c19bd5fc133f0a17793ebc84aff210032e575a8c8d071262457b4afcd8998507
 build() {
   cd "${srcdir}/${pkgname}"
   dotnet publish src/cyclonedx/cyclonedx.csproj \
-    -r linux-x64
+    -r linux-x64 \
     --configuration Release \
     --self-contained true \
     /p:PublishSingleFile=true \
