@@ -1,9 +1,9 @@
 # Maintainer: AntiCompositeNumber <anticompositenumber+aur@gmail.com>
 # Maintainer: ExtremTechniker <aur@extremtechniker.io>
 pkgname=f1multiviewer-bin
-pkgver=2.17.0
+pkgver=2.17.1
 # This ID changes for every release, you must grab it from https://multiviewer.app/download each time.
-_build=2.17.0/1/1T1m0yPzE_fif9dGfQNGjw-za8YLjLht
+_build=2.17.1/1/ziC8el67TwD_khD-Em8Ispk1TIx6St2_
 pkgrel=1
 pkgdesc="Unofficial motorsports desktop client"
 arch=('x86_64')
@@ -17,7 +17,7 @@ install=f1multiviewer-bin.install
 source=("https://releases.multiviewer.app/v/$_build/MultiViewer-linux-x64-$pkgver.zip"
     "f1multiviewer.desktop")
 noextract=()
-sha256sums=('b27927ef068b7edfb243f8f37797abf72d12cb4fe9ec15edac5360190a0a4d0f'
+sha256sums=('5075d7e4d8d39050a2d3250ebb058c461aec22de952e3404418fff950676b478'
             '00dd9ca8d94a729b80125f6f9ee2287ccd3f86975338c5ce1d12575130d73a6a')
 
 package() {
