@@ -2,8 +2,8 @@
 
 pkgname=python-nats-py
 _pkgname=nats.py
-pkgver=2.16.0
-pkgrel=2
+pkgver=2.17.0
+pkgrel=1
 pkgdesc="Asyncio NATS client for Python"
 arch=('any')
 url="https://github.com/nats-io/nats.py"
@@ -33,7 +33,7 @@ source=(
     'fast-parser-header-name-validation.patch'
 )
 sha256sums=(
-    'efe0fe244f02c18de7816a214825e383fcd8d38382ba8d6faf51abc3d142e7a8'
+    '6fee7960779e48eadea011a6150c506e5897b57ed1cf96581b1740926b7a8f58'
     '44e236d00ac84672c8fbe58c61339593fa192c14a4d55ed594e1b8378bf23c90'
 )
 
