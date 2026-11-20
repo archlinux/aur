@@ -2,19 +2,19 @@
 # Contributor: MSOB7YY <namida.coo@gmail.com>
 
 pkgname=namida-bin
-pkgver=8.6.5
-_buildnumber=261114224
+pkgver=8.6.7
+_buildnumber=261120140
 pkgrel=1
 pkgdesc="A Beautiful and Feature-rich Music Player, With YouTube & Video Support Built in Flutter"
 arch=('x86_64')
-url="https://github.com/namidaco/namida-snapshots"
+url="https://github.com/namidaco/namida"
 license=('EULA')
 depends=('mpv' 'webkit2gtk-4.1' 'gtk3' 'glib2' 'pango' 'freetype2' 'bzip2' 'libpng' 'brotli' 'fontconfig' 'expat' 'fribidi' 'libepoxy' 'libxi' 'libxext' 'libx11' 'libxcb' 'libxau' 'libxdmcp' 'at-spi2-core' 'dbus' 'systemd-libs' 'libcloudproviders' 'tinysparql' 'json-glib' 'libxml2' 'icu' 'sqlite' 'libxfixes' 'wayland' 'libffi' 'libxcursor' 'libxrender' 'libxdamage' 'libxcomposite' 'libxrandr' 'libxinerama' 'zlib' 'cairo' 'gdk-pixbuf2' 'glycin' 'lcms2' 'libseccomp' 'atk' 'libthai' 'libdatrie' 'pixman' 'harfbuzz' 'graphite' 'util-linux-libs' 'pcre2' 'gcc-libs' 'glibc')
 provides=(namida)
 conflicts=(namida)
 makedepends=()
-source=("namida-v${pkgver}-beta.linux.tar.gz::https://github.com/namidaco/namida-snapshots/releases/download/${pkgver}-beta%2B${_buildnumber}/namida-v${pkgver}-beta.linux.tar.gz")
-sha256sums=('892aee3081b4141f26cb573d9b7a75df59defbb763114a52d595b98ca5b69cfe')
+source=("namida-v${pkgver}.linux.tar.gz::https://github.com/namidaco/namida/releases/download/v${pkgver}/namida-v${pkgver}.linux.tar.gz")
+sha256sums=('8cadb9bd780751677d01eabd32c73d74e7da9153527fb77753c432e97110daee')
 
 package() {
   cd "${srcdir}"
