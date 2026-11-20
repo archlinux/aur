@@ -1,6 +1,6 @@
 pkgbase = gcannon
 	pkgdesc = TCP HTTP Load generator for linux
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/MDA2AV/gcannon
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gcannon
 	provides = gcannon
 	conflicts = gcannon
 	options = !strip
-	source = gcannon-0.8.2.tgz::https://github.com/MDA2AV/gcannon/archive/v0.8.2.tar.gz
-	sha256sums = 8c1e17dbc13d821df4faa9de468ed0afae6272ec82ee289d24865973df1db501
+	source = gcannon-0.8.3.tgz::https://github.com/MDA2AV/gcannon/archive/v0.8.3.tar.gz
+	sha256sums = eabae24b994a7eece55c0a79fbff7275716111bd20ac1527cbceb132c1222815
 
 pkgname = gcannon

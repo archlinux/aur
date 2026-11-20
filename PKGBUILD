@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="TCP HTTP Load generator for linux"
 
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,7 +28,7 @@ conflicts=("${_appname}")
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('8c1e17dbc13d821df4faa9de468ed0afae6272ec82ee289d24865973df1db501')
+sha256sums=('eabae24b994a7eece55c0a79fbff7275716111bd20ac1527cbceb132c1222815')
 
 
 build() {
