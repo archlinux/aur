@@ -1,7 +1,7 @@
 # Maintainer: Manish Khadka <manish.khadka@tutanota.com>
 
 pkgname=kubectl-ate
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='kubectl plugin for Agent Substrate, the Kubernetes platform for running AI agents'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 optdepends=('kubectl: run it as `kubectl ate`')
 source=("substrate-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c3609d5dfbba49cec2a5e74addd84f9e619b0d36f6abc2cb17b5a630d47c80be')
+sha256sums=('a5ac0caa5e2bde5a0f8acd478db1b07a1b8f4942f594d570186dc0a5cd84cddb')
 
 build() {
     # internal/version drops a stamped Version unless Commit is stamped too. The tag's
