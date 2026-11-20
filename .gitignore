@@ -2,9 +2,10 @@
 *
 
 # --- 需要提交的文件 ---
-# 注意：.SRCINFO 故意不列白名单——umbrella 仓库不跟踪它（见仓库根 .gitignore）；
-# 手动推 AUR 时 makepkg --printsrcinfo 生成后用 git add -f .SRCINFO
+# 本包不走 lilac，.SRCINFO 正常跟踪维护（AUR 必需；更新 PKGBUILD 后
+# makepkg --printsrcinfo 重新生成并一并提交）
 !.gitignore
+!.SRCINFO
 !PKGBUILD
 !README.md
 !LICENSE
