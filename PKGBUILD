@@ -2,8 +2,8 @@
 # Contributor: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 _pkgname=penlight
-pkgname=("lua-$_pkgname-git" "lua53-$_pkgname-git" "lua52-$_pkgname-git" "lua51-$_pkgname-git")
-pkgver=1.12.0.r9.ga7b9f88
+pkgname=("lua-$_pkgname-git" "lua54-$_pkgname-git" "lua53-$_pkgname-git" "lua52-$_pkgname-git" "lua51-$_pkgname-git")
+pkgver=1.15.0.r27.g6a1f94f
 pkgrel=1
 pkgdesc='Lua libraries for on input data handling, functional programming, and OS interface'
 url="https://github.com/lunarmodules/${_pkgname^}"
@@ -15,6 +15,7 @@ makedepends=(git
              lua51
              lua52
              lua53
+             lua54
              luarocks)
 options=(debug)
 _rockspec="$_pkgname-dev-1.rockspec"
@@ -30,7 +31,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	for LUAVER in 5.{1,2,3,4}; do
+	for LUAVER in 5.{1,2,3,4,5}; do
 		luarocks --lua-version "$LUAVER" \
 			make --pack-binary-rock --deps-mode none -- "$_rockspec"
 		install -Dm0644 -t "lua-$LUAVER/" "$_rock"
@@ -51,7 +52,7 @@ _package() {
 }
 
 package_lua-penlight-git() {
-	_package 5.4
+	_package 5.5
 }
 
 package_lua51-penlight-git() {
@@ -64,4 +65,8 @@ package_lua52-penlight-git() {
 
 package_lua53-penlight-git() {
 	_package 5.3
+}
+
+package_lua54-penlight-git() {
+	_package 5.4
 }
