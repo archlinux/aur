@@ -158,8 +158,9 @@
 # "sbctl enroll-keys -m -f -c", or as a MOK when booting via shim.
 # _eac_sbsign_key is either a PEM key file or a PKCS#11 URI of a key on a
 # hardware token, e.g. "pkcs11:token=CachyOS;object=signing;type=private".
-# PKCS#11 keys are loaded through libp11, PKCS11_MODULE_PATH selects the
-# token's module (default: p11-kit-proxy). The PIN is asked for on the terminal.
+# PKCS#11 keys are loaded through the libp11 OpenSSL provider,
+# PKCS11_MODULE_PATH selects the token's module (default: p11-kit-proxy).
+# The PIN is asked for on the terminal.
 : "${_eac_sbsign_key:=}"
 : "${_eac_sbsign_cert:=}"
 
@@ -212,12 +213,12 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=7.3
-_minor=4
+_minor=5
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_tagrel=1
-pkgrel=1
+_tagrel=2
+pkgrel=2
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 pkgdesc='Linux EEVDF + LTO Cachy Sauce Kernel by CachyOS configured for Easy Anti-Cheat Linux v2'
 _kernver="$pkgver-$pkgrel"
@@ -249,7 +250,7 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=620.70.06
+_nv_ver=620.73.04
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 _nv_580xx_ver=580.196.07
@@ -322,7 +323,9 @@ if [ -n "$_eac_sbsign_key" ] && [ -n "$_eac_sbsign_cert" ]; then
     [ -e "$_eac_sbsign_cert" ] || _die "Failed to find file ${_eac_sbsign_cert}"
     _eac_sbsign_cert="$(realpath "$_eac_sbsign_cert")"
     if [[ "$_eac_sbsign_key" = pkcs11:* ]]; then
-        _eac_sbsign_args=(--engine pkcs11)
+        # OpenSSL 4 dropped ENGINEs, use the libp11 provider. Loading a
+        # provider explicitly disables the implicit default one, so load both.
+        _eac_sbsign_args=(--provider default --provider pkcs11prov)
         makedepends+=(libp11)
     else
         [ -e "$_eac_sbsign_key" ] || _die "Failed to find file ${_eac_sbsign_key}"
@@ -981,12 +984,12 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('438505cf485af55d63f82675df5d57c8f584abad72c1aacf5e126e8cdc5b2a0153e05ec017769aaf70fc081e3969ba3e83760556a6d53d3f7a0641961c71cce2'
+b2sums=('34499a44a378dd7a330f2fa821ebdef10f477af461e1e40f193a85c188133627c885ddd636693c4ec895c1e22ffe6d0378948ee6c51a6d9a36dca262784f916a'
         'SKIP'
-        'e21485bd3d917be15837eb51ddb9aeb4a0df5fb7b18ccbf1d520aff2340833935e441f634e4ae8482a21ff38a9dec9f320bec3459aedf15087909b6eb2cff7db'
+        'c96bc76381a6aa601ae39663dd8c21cd2f4503d6d13ee944770a5b46f70175b9280159c7ff3a2fa3d29ada7fe82cdf95ca6715d3d9489a27b044154db0355789'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e'
         '88c799dae2ad506c7e653436f45171d20c1374b4bcdd7af55734ab900515ea359c2ef52a75e10151fe5502331c63f31b8eb1ce550e2001e73e0fabc8f9c0608a'
-        'b0bb5f8a23765c73fb59febe23bf649fc10ad0cfc822ed8bcae0578915711ec24123bdca7d0c132a8196d679d350353cfad13d15b21dd9cf315c3cd074809646'
+        '390d1761b0ac3db00db8c8de4fa249aded45f67dcd7ff55d995910862fc968761bedae1f9f0191471c4cbc6bbae76b371c99847c4bbf8789a50fce8e56f49d5a'
         '43386fb36a975bd5215d477bd2e11d91adbdc20393b9898788ee5734834aaeb6af83e8e493a0d20f6bd7fd6ecbff124f7877ede44c3beafb007b9c7effa44fe6'
         '8106fe252012ca17f32c56877a98e047befe15c71adc0e6c97927760e08bfe7f78a8b71721470564514328c470f26345ec81796bd9dedd47a6c330d57205fae8'
         '4731aa2e4bff627c27f61e9ef31a01bf33611b85085a35859b3ed5c903e9e3457ce78b1a7f471f7253b3c4f51ce8914dc299b36c552067ebbc77db091c90c502'
