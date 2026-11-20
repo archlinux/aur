@@ -18,8 +18,10 @@ pkgbase = expandrive-bin
 	options = !strip
 	options = !debug
 	source = LICENSE
+	source = expandrive.sh
 	source = ExpanDrive_2026.11.06.916_amd64.deb::https://www.expandrive.com/api/download/expandrive?platform=linux&ext=deb
 	sha256sums = 0d764524f7d542d267cc68a7fdfa07ebd3146e784aa89fc157fceb800001d823
+	sha256sums = 1bf5eeb30ec66a2256417bc56a45ebd3ad10b5338792da9d667b744dc50ee870
 	sha256sums = 493aa2d100efbb707f379dbc3e0f208df8fe63312a2344bf095371fcd28d5e85
 
 pkgname = expandrive-bin

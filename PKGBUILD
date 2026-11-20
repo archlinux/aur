@@ -24,8 +24,10 @@ depends=(
 )
 
 source=('LICENSE'
+    'expandrive.sh'
     "ExpanDrive_${pkgver}_amd64.deb::https://www.expandrive.com/api/download/expandrive?platform=linux&ext=deb")
 sha256sums=('0d764524f7d542d267cc68a7fdfa07ebd3146e784aa89fc157fceb800001d823'
+    '1bf5eeb30ec66a2256417bc56a45ebd3ad10b5338792da9d667b744dc50ee870'
     '493aa2d100efbb707f379dbc3e0f208df8fe63312a2344bf095371fcd28d5e85')
 
 prepare() {
@@ -51,14 +53,9 @@ package() {
 
     # Install the LICENSE file in the correct place
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
 
-post_install() {
-    # Link the ExpanDrive binary to /usr/local/bin
-    ln -sf '/opt/ExpanDrive/expandrive' '/usr/local/bin/expandrive'
-}
-
-pre_remove() {
-    # Remove ExpanDrive from /usr/local/bin
-    rm -f '/usr/local/bin/expandrive'
+    # Launcher wrapper (native Wayland when available) and desktop entry pointing to it
+    install -Dm755 expandrive.sh "$pkgdir/usr/bin/expandrive"
+    sed -i 's|^Exec=/opt/ExpanDrive/expandrive|Exec=/usr/bin/expandrive|' \
+        "$pkgdir/usr/share/applications/expandrive.desktop"
 }
