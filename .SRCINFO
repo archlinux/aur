@@ -1,6 +1,6 @@
 pkgbase = link-editor
 	pkgdesc = Editor of symbolic links
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 0
 	url = https://gitlab.com/os-18/link-editor/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = link-editor
 	makedepends = bash
 	makedepends = ldc
 	depends = 
-	source = link-editor-0.8.0.tar.gz::https://gitlab.com/os-18/link-editor//-/archive/v0.8.0/link-editor-v0.8.0.tar.gz
-	sha256sums = ba34a85723a37b0cc21625062ea8d369456b2c871c86da4f322208b524d7561c
+	source = link-editor-0.8.1.tar.gz::https://gitlab.com/os-18/link-editor//-/archive/v0.8.1/link-editor-v0.8.1.tar.gz
+	sha256sums = a2c60ee33c1edd01a4a8246b84bd6f8dfbcde235c74bdb13788b6a073f9125fb
 
 pkgname = link-editor

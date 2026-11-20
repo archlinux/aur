@@ -4,7 +4,7 @@ BASE_NAME=link-editor
 DESCR="Editor of symbolic links"
 makedepends=("bash" "ldc")
 depends=("")
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=0
 license=("BSL-1.0")
 
@@ -17,7 +17,7 @@ arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=${BASE_NAME}-${pkgver}.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v${pkgver}.tar.gz")
-sha256sums=("ba34a85723a37b0cc21625062ea8d369456b2c871c86da4f322208b524d7561c")
+sha256sums=("a2c60ee33c1edd01a4a8246b84bd6f8dfbcde235c74bdb13788b6a073f9125fb")
 
 build() {
     cd "${PROJECT}-v${pkgver}"
