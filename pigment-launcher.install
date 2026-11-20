@@ -1,0 +1,11 @@
+#pacman cant run stuff as the user, so i js tell them how to give roblox:// back
+pre_remove() {
+  echo "==> If you made Pigment your default roblox:// launcher, run this as your"
+  echo "    user BEFORE removing (or Sober links will point at a deleted binary):"
+  echo "        pigment-launch --unregister"
+}
+
+post_remove() {
+  echo "==> Already removed? Run: xdg-mime default org.vinegarhq.Sober.desktop x-scheme-handler/roblox x-scheme-handler/roblox-player"
+  echo "    and delete ~/.local/share/applications/net.pigmentlab.Pigment.Launcher.desktop"
+}
