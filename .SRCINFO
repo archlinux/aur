@@ -1,11 +1,13 @@
 pkgbase = libgbm
-	pkgdesc = libgbm is the Generic Buffer Management backend loader, which various packages and GBM vendors use.
+	pkgdesc = libgbm is the Generic Buffer Management backend loader, which various packages and GBM vendors use. This package provides a standalone alternative to mesa.
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/glfs-book/libgbm
 	arch = x86_64
 	license = MIT
 	makedepends = meson
+	depends = libdrm
+	conflicts = mesa
 	source = https://github.com/glfs-book/libgbm/archive/refs/tags/1.1.0.zip
 	sha256sums = SKIP
 
