@@ -2,7 +2,7 @@
 
 pkgname=flectar-mail-git
 _srcname=mail
-pkgver=0.1.0alpha.7.r1179.gd2ab26d
+pkgver=0.1.0alpha.7.r1315.g723cba1
 pkgrel=1
 pkgdesc='Native email client built with Rust and Slint'
 arch=('x86_64')
@@ -23,9 +23,8 @@ conflicts=('flectar-mail')
 # -flto=auto while giving rustc -C linker-plugin-lto; rust-lld then cannot read
 # GCC's LTO bytecode and every symbol in those archives comes out undefined.
 # The release profile in Cargo.toml already asks for thin LTO anyway.
-# `!debug`: makepkg's default debug option adds -C debuginfo=2, and with the
-# release profile's codegen-units=1 rustc then needs more than 16 GiB of RAM for
-# the flectar_mail crate alone (OOM-killed at 16 GiB, 2026-11-17).
+# `!debug`: makepkg's default debug option adds -C debuginfo=2, which pushes the
+# flectar_mail crate's already large peak memory further (see build()).
 options=('!lto' '!debug')
 
 # PDFium is a pinned, checksum-verified prebuilt in upstream's own packaging
@@ -72,22 +71,38 @@ build() {
     cd "$_srcname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    # The checked-in .cargo/config.toml pins `jobs = 1` because this dependency
-    # graph (Slint's generated UI plus stylo/blitz at codegen-units=1) can
-    # exhaust a 16 GiB host. Scale with the builder instead of crawling, but
-    # budget ~8 GiB of RAM per job: on a big core count, `nproc` jobs is what
-    # actually runs the machine out of memory, not the CPU count.
-    local memory_gib jobs
-    memory_gib=$(($(awk '/^MemTotal:/ { print $2 }' /proc/meminfo) / 1048576))
-    jobs=$((memory_gib / 8))
+
+    # Slint turns the UI into a ~100 MB generated app.rs inside the flectar-mail
+    # crate. Measured on 2026-11-19 (723cba14, peak RSS of that one rustc):
+    #   upstream codegen-units=1   17.6 GiB  (the OOM kill reported on the AUR)
+    #   codegen-units=16           11.8 GiB  (and ~30% faster overall)
+    #   codegen-units=256          11.5 GiB  (rustc's front end is the floor)
+    # Split only that crate; dependencies keep upstream's release profile.
+    local -a cargo_config=(--config 'profile.release.package.flectar-mail.codegen-units=16')
+
+    local mem_kib swap_kib total_gib jobs
+    mem_kib=$(awk '/^MemTotal:/ { print $2 }' /proc/meminfo)
+    swap_kib=$(awk '/^SwapTotal:/ { print $2 }' /proc/meminfo)
+    total_gib=$(((mem_kib + swap_kib) / 1048576))
+    if (( total_gib < 14 )); then
+        warning "Compiling flectar-mail needs about 12 GiB of free memory for one rustc process;"
+        warning "this machine has %s GiB of RAM + swap and will likely be OOM-killed." "$total_gib"
+        warning "Add swap or zram, or install flectar-mail-bin instead."
+    fi
+
+    # The checked-in .cargo/config.toml pins `jobs = 1` for 16 GiB dev hosts.
+    # Budget ~8 GiB of RAM per job rather than one per core: the final crate
+    # builds alongside the last dependencies, and nproc jobs is what runs a big
+    # many-core box out of memory.
+    jobs=$((mem_kib / 1048576 / 8))
     (( jobs < 1 )) && jobs=1
     (( jobs > $(nproc) )) && jobs=$(nproc)
     export CARGO_BUILD_JOBS="$jobs"
-    msg2 "Building with %s parallel job(s) for %s GiB of RAM" "$jobs" "$memory_gib"
+    msg2 "Building with %s parallel job(s) for %s GiB of RAM" "$jobs" "$((mem_kib / 1048576))"
     # Software rendering, no WGPU. Upstream's packages (scripts/build-deb.sh)
     # have since added gpu-renderer; it is not adopted here yet. The CPU renderer
     # is upstream's runtime default either way.
-    cargo build --frozen --release --bin flectar-mail \
+    cargo build --frozen --release "${cargo_config[@]}" --bin flectar-mail \
         --no-default-features --features remote-content
 }
 
