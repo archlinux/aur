@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=7.3.4
+_kernver=7.3.5
 _archver=arch1
-_pkgrel=2
+_pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=7.3.4-arch1-2
+_KERNNAME=7.3.5-arch1-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -21,9 +21,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-7.3.4.arch1-2-x86_64.pkg.tar.zst
-_headerspkg=linux-headers-7.3.4.arch1-2-x86_64.pkg.tar.zst
-_docspkg=linux-docs-7.3.4.arch1-2-x86_64.pkg.tar.zst
+_kernpkg=linux-7.3.5.arch1-1-x86_64.pkg.tar.zst
+_headerspkg=linux-headers-7.3.5.arch1-1-x86_64.pkg.tar.zst
+_docspkg=linux-docs-7.3.5.arch1-1-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -31,9 +31,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('6106da072a3197ee9d1af0597e7bd1f94337eb828aea7a102ce1f18f354e9377'
-            'fe3b9795b38b9705ea5a3aa4e6325cc02a84b0d93f2a1f74a3c1f66b426d1c2b'
-            '4f50485ef09d93a142aaac4c50bd359a3150bf4467bc32a1bbfac42d47bbdf29')
+sha256sums=('d39804f7af4a4478d4c3f808edb550227f6866cfa093ace2e779cba939dcc322'
+            '20fce145a491e15f8cc289a4e0dd772529cb6d4e38e526a87e4dea31d37bccb0'
+            '2404368d58215e92a7dc40f7066b7626ede083a1d4da88550597c531bfb9c503')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -51,7 +51,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux7.3.4.arch1-2-bin() {
+package_linux7.3.5.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -72,7 +72,7 @@ package_linux7.3.4.arch1-2-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux7.3.4.arch1-2-headers-bin() {
+package_linux7.3.5.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(binutils
            glibc
@@ -90,7 +90,7 @@ package_linux7.3.4.arch1-2-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux7.3.4.arch1-2-docs-bin() {
+package_linux7.3.5.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
