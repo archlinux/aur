@@ -1,0 +1,5 @@
+post_install() {
+  printf '\n%s\n%s\n\n' \
+    'Convex is for trusted single-user hosts only. The instance secret is visible in process arguments.' \
+    'Before starting Convex, see /usr/share/doc/convex-bin/SETUP.md for setup instructions.'
+}
