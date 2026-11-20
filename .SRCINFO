@@ -1,6 +1,6 @@
 pkgbase = mediafragmenter
 	pkgdesc = Tool for working with file fragments
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 0
 	url = https://gitlab.com/os-18/mediafragmenter
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = mediafragmenter
 	makedepends = ldc
 	depends = glib2
 	depends = amalthea-ldc2
-	source = mediafragmenter-0.4.2.tar.gz::https://gitlab.com/os-18/mediafragmenter/-/archive/v0.4.2/mediafragmenter-v0.4.2.tar.gz
-	sha256sums = ada705357f7764e3b17e109e71f4d7a197b0421ab0b2be51baa01ba8184e8cab
+	source = mediafragmenter-0.4.3.tar.gz::https://gitlab.com/os-18/mediafragmenter/-/archive/v0.4.3/mediafragmenter-v0.4.3.tar.gz
+	sha256sums = 99c7cb93ead4440d39956dd51089c0d30a7e115c2c773df54d3200db47de0f0e
 
 pkgname = mediafragmenter
