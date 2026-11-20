@@ -3,7 +3,7 @@ pkgname=salmon2
 _pkgname=salmon
 provides=('salmon')
 conflicts=('salmon' 'salmon-cpp')
-pkgver=2.11.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments (v2)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('glibc' 'bzip2' 'xz')
 makedepends=('cargo')
 options=('!emptydirs' '!lto')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/COMBINE-lab/salmon/archive/v$pkgver.tar.gz")
-sha256sums=('2c1ac16c8e176772f714d78a74b80e4e86ef01f7c7e71e8e6b3341dd30a88492')
+sha256sums=('af408eaeeb08274e65ada719c5e5a9ad79b15c5a51c7590f81ef2a66b2d3571c')
 
 prepare() {
   cd "$_pkgname-$pkgver"
