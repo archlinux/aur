@@ -4,12 +4,15 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults: Hornero Signal themes, compositor, terminal, GTK/Qt, fonts, XDG handlers"
 arch=('any')
 url="https://github.com/HorneroOS/config"
-license=('MIT' 'CC-BY-2.0' 'CC-BY-SA-4.0')
+license=('MIT' 'CC-BY-2.0' 'LicenseRef-owner-curated-unverified')
+# LicenseRef-owner-curated-unverified: 54 owner-curated wallpapers ship with
+# license unknown / unverified (see wallpaper-collection.json); only the
+# three CC-BY-2.0 photographs in wallpaper-provenance.json are verified.
 # python: lib/hornero/signal_theme.py + signal_render.py render every native
 # theme format from the schema-v2 roles at apply time (stdlib only).
 # ttf-ibm-plex: RFC 0001 §3.3 families (IBM Plex Sans / Mono / Sans Condensed)
@@ -62,7 +65,7 @@ optdepends=(
 # AUR chroot builds identical to local packaging/ builds.
 install=hornero-config.install
 backup=('etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf')
-source=("config::git+https://github.com/HorneroOS/config.git#commit=2124a5a4578da288f4fe2c16aeb2011b50158374")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=2311ab1b2cdac9ade4c563510f0934c4c879ac0e")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -353,6 +356,8 @@ package() {
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$repo_root/profiles/themes/wallpaper-provenance.json" \
     "$pkgdir/usr/share/hornero/wallpapers/wallpaper-provenance.json"
+  install -Dm644 "$repo_root/profiles/themes/wallpaper-collection.json" \
+    "$pkgdir/usr/share/hornero/wallpapers/wallpaper-collection.json"
   install -Dm644 "$repo_root/profiles/themes/WALLPAPER-CREDITS.md" \
     "$pkgdir/usr/share/licenses/$pkgname/WALLPAPER-CREDITS.md"
 }
