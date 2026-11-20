@@ -1,6 +1,6 @@
 pkgbase = zcall-omarchy
 	pkgdesc = Native Omarchy panel and controls for the zcalld AI gateway
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/zcall-omarchy
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = zcall-omarchy
 	depends = omarchy>=4.5.0
 	depends = zcalld>=0.2.0
 	optdepends = zcalld-compat: community providers, OAuth, privacy and advanced routing
-	source = zcall-omarchy-0.2.0.tar::https://github.com/LIghtJUNction/zcall-omarchy/releases/download/v0.2.0/zcall-omarchy-0.2.0.tar
-	sha256sums = 9aadbaea9978953fb6de4049057a6e5eabfabed4f69c66c47fae0e9f0748351e
+	source = zcall-omarchy-0.2.1.tar::https://github.com/LIghtJUNction/zcall-omarchy/releases/download/v0.2.1/zcall-omarchy-0.2.1.tar
+	sha256sums = 999931180e8db6019d666a79be4f371ebee5d377d53d17236f620ee7455d47c4
 
 pkgname = zcall-omarchy

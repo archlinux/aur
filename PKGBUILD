@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction <https://github.com/LIghtJUNction>
 pkgname=zcall-omarchy
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Native Omarchy panel and controls for the zcalld AI gateway'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python>=3.11' 'gum' 'omarchy>=4.5.0' 'zcalld>=0.2.0')
 checkdepends=('git')
 optdepends=('zcalld-compat: community providers, OAuth, privacy and advanced routing')
 source=("$pkgname-$pkgver.tar::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar")
-sha256sums=('9aadbaea9978953fb6de4049057a6e5eabfabed4f69c66c47fae0e9f0748351e')
+sha256sums=('999931180e8db6019d666a79be4f371ebee5d377d53d17236f620ee7455d47c4')
 
 check() {
   cd "$pkgname-$pkgver"
@@ -28,6 +28,7 @@ package() {
   find "$pkgdir/usr/share/$pkgname/lib" -type f -name '*.py' -exec chmod 644 {} +
   ln -s /usr/share/$pkgname/bin/zcall-omarchy "$pkgdir/usr/bin/zcall-omarchy"
   install -Dm644 share/zcall-omarchy.desktop "$pkgdir/usr/share/applications/zcall-omarchy.desktop"
+  install -Dm644 share/icons/hicolor/scalable/apps/zcall-omarchy.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/zcall-omarchy.svg"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -dm755 "$pkgdir/usr/share/doc/$pkgname/docs"
