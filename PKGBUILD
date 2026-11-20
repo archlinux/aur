@@ -2,7 +2,7 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=vcfanno
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc="Annotate a VCF with other VCFs/BEDs/tabixed files http://dx.doi.org/10.5281/zenodo.49500"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/brentp/vcfanno/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('a5119f39a70a3872067e00be2f20ac69ec8c2688fc9f4cf603b3de12c90cba4d')
+sha256sums=('6a13fc9fe247f2726b6294e55e713281e62e4a5c279501e60763c52c4c921d45')
 
 prepare(){
   cd "$pkgname-$pkgver"
