@@ -1,14 +1,22 @@
 pkgbase = sys-dashboard
-	pkgdesc = A professional real-time system monitoring dashboard built with Node.js and Electron
-	pkgver = 1.0.4
+	pkgdesc = Monitor de sistema de escritorio nativo en Rust
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Alejopek/Sys-Dashboard-
 	arch = x86_64
+	arch = aarch64
 	license = ISC
-	makedepends = git
-	depends = nodejs
-	depends = npm
-	source = sys-dashboard::git+https://github.com/Alejopek/Sys-Dashboard-.git#tag=v1.0.4
-	sha256sums = SKIP
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = wayland-protocols
+	depends = gcc-libs
+	depends = libglvnd
+	depends = libx11
+	depends = libxcb
+	depends = libxkbcommon
+	depends = wayland
+	options = !lto
+	source = sys-dashboard-1.1.0.tar.gz::https://github.com/Alejopek/Sys-Dashboard-/archive/4db2307878ec120019ecf82ac373ecd2f50c384f.tar.gz
+	sha256sums = 101ed566e9d40d199d27c7cd3f74596eb60a27111ad3345223ff50d11c1c7c01
 
 pkgname = sys-dashboard
