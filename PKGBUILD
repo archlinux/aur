@@ -2,10 +2,10 @@
 
 _rockname=path
 pkgbase="lua-$_rockname"
-pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua54-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.3.1
 _rockrel=1
-pkgrel=5
+pkgrel=6
 pkgdesc='File system path manipulation library'
 arch=(i686 x86_64)
 url="https://github.com/moteus/$pkgbase"
@@ -14,6 +14,7 @@ makedepends=(lua
              lua51
              lua52
              lua53
+             lua54
              luarocks)
 _archive="$pkgbase-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
@@ -28,7 +29,7 @@ _package() {
 }
 
 package_lua-path() {
-	_package 5.4
+	_package 5.5
 }
 
 package_lua51-path() {
@@ -41,4 +42,8 @@ package_lua52-path() {
 
 package_lua53-path() {
 	_package 5.3
+}
+
+package_lua54-path() {
+	_package 5.4
 }
