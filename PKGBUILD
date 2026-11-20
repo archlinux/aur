@@ -2,7 +2,7 @@
 
 pkgbase=ch34xsercfg-git
 pkgname=(ch34xsercfg-git)
-pkgver=r48.d4af106
+pkgver=r61.b5515b9
 pkgrel=1
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc. (ch34xsercfg)"
 arch=($CARCH)
@@ -11,9 +11,9 @@ conflicts=(${pkgname%-git})
 url="https://github.com/WCHSoftGroup/ch343ser_linux"
 license=('GPL-2.0-or-later')
 depends=(
-    glibc
     libch343ser
-    libch9344ser)
+    libch9344ser
+)
 makedepends=('git')
 source=("${pkgbase}::git+${url}.git")
 sha256sums=('SKIP')
@@ -34,10 +34,12 @@ prepare() {
 
 build() {
     cd "$srcdir/${pkgbase}/demo/param_config"
-    gcc ch34x_demo_param_config.c -lch34xcfg -lch343 -lch9344 -o ch34xsercfg
+    gcc ch34x_demo_param_config.c -lch343 -lch9344 -o ch34xsercfg
 }
+
 package() {
     cd "$srcdir/${pkgbase}/demo/param_config"
-    install -Dm755 ch34xsercfg -t "${pkgdir}/usr/bin/"
-
+    install -vDm755 ch34xsercfg -t "${pkgdir}/usr/bin/"
+    install -vDm644 *.INI -t "${pkgdir}/etc/${pkgname%-git}/"
+    install -vDm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
