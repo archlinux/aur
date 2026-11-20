@@ -2,8 +2,8 @@
 # Contributor: Based on mmtrt's snap package
 
 pkgname=acroread-dc-wine
-pkgver=26.002.22031
-pkgrel=2
+pkgver=26.003.22110
+pkgrel=1
 pkgdesc="Adobe Acrobat Reader DC - PDF viewer (via Wine)"
 arch=('x86_64')
 url="https://www.adobe.com/products/reader.html"
@@ -13,7 +13,7 @@ depends=(
     'wine'
     'wine-mono'
     'wine-gecko'
-    'winetricks'
+    'winetricks-git'
     '7zip'
     'hicolor-icon-theme'
 )
@@ -53,11 +53,11 @@ source=(
     "acroread-dc.desktop"
     "acroread-dc.reg"
 )
-sha256sums=('86e98feb3f2afa66656a85cbbc6fb71d6a3217ebf8fdc21f4d1a54d21cb45028'
+sha256sums=('a7149f099dba2f868b65c2e4d62149fe411490fbb622192725fcc9ecfaa03852'
             '349941ca58b0bc175161716234a4eda3fe3ec5c5b1f3d256e327da2b66aa7107'
             'a0eec4268a0b990aa31eac35f007d9fd58d2a2f58e70a448ef27ceca6ec99e8b'
             'a69382a6c60b16e84ec10c65e0f0bcb771e739976d0ee503fd284bea621d48fc'
-            'dd0e5b9a114f0ce58eb13e0a586b0095a92e113312c666198e454c96a9ffb4d0'
+            '95bd18870660991b12a7a00a8b0303e7e444851838aad8ecc1a99167194838a6'
             'e04eacab60902549a0de3aa72c3bdb64f78a71b508bb942fc9a1117716376275'
             '2be03c810ba30b402e0406910ce7db5bee2588bfab8b7f60fda003c0c929e134')
 noextract=("$_installer")
@@ -142,7 +142,7 @@ check() {
 
     local _listing
     _listing="$(7z l "$_installer")"
-    grep -Fq "FileVersion: ${pkgver/002/2}.0" <<< "$_listing"
+    grep -Fq "FileVersion: ${pkgver/.00/.}.0" <<< "$_listing"
     grep -Fq "AcroRdrDCx64Upd${_pkgver_nodots}.msp" <<< "$_listing"
     grep -Fq "setup.exe" <<< "$_listing"
     7z t "$_installer" >/dev/null

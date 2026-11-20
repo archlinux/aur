@@ -54,6 +54,29 @@ if ! winetricks --unattended win10 riched20 vcrun2015 \
     exit 1
 fi
 
+# Adobe requires a WebView2 runtime of at least 131 in a fresh 64-bit prefix.
+has_webview2() {
+    local runtime directory major
+    for runtime in "$WINEPREFIX"/drive_c/Program\ Files*/Microsoft/EdgeWebView/Application/*/msedgewebview2.exe; do
+        [[ -f "$runtime" ]] || continue
+        directory=${runtime%/*}
+        major=${directory##*/}
+        major=${major%%.*}
+        if [[ "$major" =~ ^[0-9]{1,5}$ ]] && (( 10#$major >= 131 )); then
+            return 0
+        fi
+    done
+    return 1
+}
+
+if ! has_webview2; then
+    if ! winetricks --unattended --force webview2 >> "$WINETRICKS_LOG" 2>&1 || ! has_webview2; then
+        echo "Error: WebView2 131 or later is required. See $WINETRICKS_LOG." >&2
+        tail -n 40 "$WINETRICKS_LOG" >&2 || true
+        exit 1
+    fi
+fi
+
 # Wine's built-in mspatcha cannot decode every PA19 stream used by current
 # Adobe updates.  Install the source-built, multi-architecture implementation.
 install -m644 "$MSPATCHA_X64" \
