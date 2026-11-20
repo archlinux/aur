@@ -1,11 +1,10 @@
 pkgbase = lib32-pam
 	pkgdesc = Pluggable Authentication Modules
 	pkgver = 1.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://linux-pam.org
 	arch = x86_64
 	license = GPL2
-	makedepends = fop
 	makedepends = git
 	makedepends = lib32-flex
 	makedepends = meson

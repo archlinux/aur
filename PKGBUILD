@@ -7,7 +7,7 @@
 
 pkgname=lib32-pam
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Pluggable Authentication Modules'
 arch=(x86_64)
 url=http://linux-pam.org
@@ -21,7 +21,6 @@ depends=(
   pam
 )
 makedepends=(
-  fop
   git
   lib32-flex
   meson
