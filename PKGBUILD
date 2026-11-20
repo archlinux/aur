@@ -2,8 +2,8 @@
 
 pkgname=bettbox-compatible-pre-bin
 _pkgname=Bettbox
-pkgver=1.19.8
-pkgrel=5
+pkgver=1.19.9pre1
+pkgrel=1
 _pkgver="${pkgver/pre/-pre}"
 pkgdesc="A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core. (Build with GOAMD64=v1)"
 arch=('x86_64')
@@ -30,11 +30,11 @@ source=("restart-bettbox.hook" "bettbox.install")
 # SRCDEST, and makepkg reuses a cached file by name without validating it, so a
 # name shared with another package would make updpkgsums publish its checksum.
 source_x86_64=(
-    "${pkgname}-${pkgver}-${arch}.deb::${url}/releases/download/v${_pkgver}/${_pkgname}-${_pkgver%-pre*}-linux-amd64-compatible.deb"
+    "${pkgname}-${pkgver}-${arch}.deb::${url}/releases/download/v${_pkgver}/${_pkgname}-${_pkgver%-pre*}-linux-amd64-compatible-standard.deb"
 )
 sha256sums=('03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2'
             'c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b')
-sha256sums_x86_64=('2d3ce9a41f3b5fa8eefa58eba5ae004902cc82a2f24b664da32b76bf07ef38a4')
+sha256sums_x86_64=('22c33ca02d2fe01fb99e177efee6407f758d2926bf8cc3519ac415c2f4587df6')
 install=bettbox.install
 
 prepare() {
