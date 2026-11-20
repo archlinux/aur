@@ -1,7 +1,7 @@
 # Maintainer: Irshad Ali <irshadali5@proton.me>
 pkgname=siar-git
-pkgver=0.1.0.r2639.g6353eb6
-pkgrel=2
+pkgver=0.1.0.alpha.2.r0.gc936778
+pkgrel=1
 pkgdesc="Survivable Identity & Autonomous Routing: decentralized, offline-first messaging (built from git master)"
 arch=('x86_64')
 url="https://github.com/irshadlab/siar"
