@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A desktop terminal for running several coding agents at once, with a sidebar that shows what each one is doing right now"
 
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums=('5654178d18d31117e8e67c4abbfd3168e74bc4df5b638bc891d0b37d0e93dcbd')
-sha256sums_x86_64=('5ce0ada6bde641cb8a65c215602e738c6663019f4156e4d29dfa5b25087c4ed0')
-sha256sums_aarch64=('0b3e1f0e3a3790bfc6af470f70c2671e33ec420b8922c38d303270f7aa6c8fd9')
+sha256sums=('d2023e36dfc43395651d392088cfb4d858b9d8deafb1acb00423263b6e7f2f11')
+sha256sums_x86_64=('4af8bdbd0318edd8ae26bdb7305bf85b30a13e3ba130803bc9980a14ea642138')
+sha256sums_aarch64=('edf3b0520a359359043978d32c33860f1652af43183dcf833f29455ca8a1fd32')
 
 
 package() {
