@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=baler-bin
-pkgver=0.1.1 # renovate: datasource=github-releases depName=baler-dev/baler
+pkgver=0.2.0 # renovate: datasource=github-releases depName=baler-dev/baler
 pkgrel=1
 pkgdesc="A Cargo-style package manager for {box} modules"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ package() {
     install -Dm755 baler "$pkgdir/usr/bin/baler"
     install -Dm644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums_x86_64=('da8fa994c20fd4c4d77a37d53b3c2f0e7b0476afda70042b8d7f2abd710bd8eb'
+sha256sums_x86_64=('d780d8b1b8d2688ca6bce380b7d72c38a880012920cbf3791f147c6be35d955b'
                    'ec04d5f03c96b3c4bd5afec05f4f73536ae26765323747e5969a0760809cdc93')
-sha256sums_aarch64=('abeececfd86c93cfb1c85243da115f8f36330f783f7e0d2bb11f38dc125b12be'
+sha256sums_aarch64=('76b59678be4c2e8d182eead82d3c305f4305931925affc45036bb19e207232cd'
                     'ec04d5f03c96b3c4bd5afec05f4f73536ae26765323747e5969a0760809cdc93')
