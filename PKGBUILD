@@ -2,25 +2,19 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=tntnet
-pkgver=3.0
-pkgrel=3
+_commit=694079d9bcd3b869e5342c85dacfe72f737a60f8
+pkgver=4.2
+pkgrel=1
 pkgdesc="Modular, multithreaded, high performance webapplicationserver for C++"
 url="http://www.tntnet.org"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('cxxtools' 'openssl' 'zlib' 'perl')
-source=("$pkgname-${pkgver}_git.tar.gz::https://github.com/maekitalo/tntnet/archive/refs/tags/V${pkgver}.tar.gz"
-        "$pkgname-autoconf-2.70-fixes.patch::https://github.com/maekitalo/tntnet/commit/69adfc8ee351a0e82990c1ffa7af6dab726e1e49.patch")
-sha256sums=('bc16249f7af7c7b407ec37bb397fe1eb8b54d2410dd5208531ca58908fc19f48'
-            '401573b47d74348d065a9a83af0428525bcb90d88142e02c0d647ec10bb3f9df')
-
-prepare() {
-  # autoconf-2.70 fixes
-  patch -d "$pkgname-$pkgver" -p1 -i "../$pkgname-autoconf-2.70-fixes.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/maekitalo/tntnet/archive/${_commit}.tar.gz")
+sha256sums=('0d6435ae756bbbb89d129f038880be89e8c0349de36b0ce00809554ead86a93a')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_commit}"
   autoreconf -i
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
@@ -31,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_commit}"
 
   make DESTDIR="${pkgdir}" install
 }
