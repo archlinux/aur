@@ -1,20 +1,21 @@
 pkgbase = onnxruntime-split-cuda12-bin
 	pkgdesc = The CUDA execution provider of ONNX Runtime, CUDA 12 build for Pascal, Volta and newer NVIDIA GPUs, for onnxruntime-core (prebuilt)
 	pkgver = 1.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rsd/omarchy-onnxruntime
 	arch = x86_64
 	license = MIT AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MPL-2.0
-	noextract = onnxruntime-provider-cuda12-legacy-1.29.0-1-x86_64.pkg.tar.zst
+	noextract = onnxruntime-provider-cuda12-legacy-1.29.0-2-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
 	options = !lto
-	source = onnxruntime-provider-cuda12-legacy-1.29.0-1-x86_64.pkg.tar.zst::https://github.com/rsd/omarchy-onnxruntime/releases/download/cuda12-v1.29.0-1/onnxruntime-provider-cuda12-legacy-1.29.0-1-x86_64.pkg.tar.zst
-	sha256sums = 8e1d031872d65a6e353ed009f9bdaf95c81c4fc6ecb9ef40fd38cb5a80c60bab
+	source = onnxruntime-provider-cuda12-legacy-1.29.0-2-x86_64.pkg.tar.zst::https://github.com/rsd/omarchy-onnxruntime/releases/download/cuda12-v1.29.0-2/onnxruntime-provider-cuda12-legacy-1.29.0-2-x86_64.pkg.tar.zst
+	sha256sums = 3f6dde4cbe9296e5a19c215adc4614218f989068973215712679da7676a1f015
 
 pkgname = onnxruntime-provider-cuda12-legacy-bin
 	pkgdesc = The CUDA execution provider of ONNX Runtime, CUDA 12 build for Pascal, Volta and newer NVIDIA GPUs, for onnxruntime-core (prebuilt)
-	depends = onnxruntime-core=1.29.0
+	depends = onnxruntime-core>=1.29.0-7
+	depends = onnxruntime-core<1.29.1
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
@@ -23,9 +24,11 @@ pkgname = onnxruntime-provider-cuda12-legacy-bin
 	depends = cuda<13
 	depends = cudnn>=9.10
 	depends = cudnn<9.11
-	provides = onnxruntime-provider-cuda12-legacy=1.29.0-1
+	depends = nccl-cuda12.9
+	provides = onnxruntime-provider-cuda12-legacy=1.29.0-2
 	provides = onnxruntime-provider-cuda=1.29.0
 	provides = onnxruntime-provider-cuda12=1.29.0
 	conflicts = onnxruntime-provider-cuda12-legacy
 	conflicts = onnxruntime-provider-cuda
 	conflicts = onnxruntime-provider-cuda12
+	conflicts = onnxruntime-core-nccloff
