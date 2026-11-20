@@ -1,0 +1,10 @@
+post_install() {
+    cat <<'EOF'
+==> Project Midas needs your own GoldenEye 007 (USA) N64 ROM.
+==> Run `project-midas` once and it will ask for it, or use:
+==>     project-midas --set-rom /path/to/GoldenEye.z64
+==> Settings, saves and profiles live in ~/.local/share/project-midas/
+==> If levels draw as a few large blank triangles, start it with:
+==>     GE_FULLHEIGHT=0 GE_EDGEINSET=1 project-midas
+EOF
+}

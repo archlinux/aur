@@ -1,0 +1,10 @@
+# AUR repos should only track packaging files. Ignore everything
+# (downloaded zips, src/, pkg/, built *.pkg.tar.zst, logs) and whitelist
+# what belongs in the repo.
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!project-midas-bin.install
+!project-midas.sh
+!project-midas.desktop

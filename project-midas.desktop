@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Project Midas
+GenericName=GoldenEye 007 PC port
+Comment=PC port of GoldenEye 007 built from the N64 decompilation
+Exec=project-midas
+Icon=applications-games
+Terminal=false
+Categories=Game;ActionGame;Shooter;
+Keywords=GoldenEye;007;N64;Bond;FPS;
