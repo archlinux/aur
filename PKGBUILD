@@ -1,7 +1,7 @@
 # Maintainer: banana-bred <j.forer@posteo.net>
 
 pkgname=fortran-fpm
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 epoch=
 pkgdesc="A Fortran package manager and build system"
@@ -23,10 +23,8 @@ changelog=
 source=("https://github.com/fortran-lang/fpm/releases/download/v$pkgver/${pkgname##*-}-$pkgver.zip"
         "https://github.com/fortran-lang/fpm/releases/download/v$pkgver/"${pkgname##*-}-$pkgver.F90)
 noextract=()
-sha256sums=(
-  2c81b448efe9f6a93f4c3cfd7131a42249cd611121857f2bae15b8e2d69ff9a7
-  001cff6cf1145f215baa0888ba27acc06cea30a89b79d1a8be97db3fffbc8cd2
-)
+sha256sums=('80d4caa2438ab68794685ad18e46605beef0d44beb4c7c3f34de7c14a4fde40e'
+            'a620bbb6dcb6f704badb63dd0d3b944fd437b3a8e2e4e3acd54ac23ea06bd81b')
 
 prepare() {
   mkdir -p "$srcdir/${pkgname##*-}-$pkgver/_bootstrap"
