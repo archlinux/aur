@@ -29,4 +29,17 @@ fi
 : ${QT_AUTO_SCREEN_SCALE_FACTOR:=1}
 export QT_AUTO_SCREEN_SCALE_FACTOR
 
-exec /opt/wechat-appimage/wechat-appimage.AppImage $@
+# ----------------------------------------------------------------------
+# 无特权运行环境配置（替代原 AppImage 内部强制提权的 AppRun 逻辑）
+# 1. 模拟官方 AppRun 提供的路径变量，确保内置组件与小程序 (WeChatAppEx) 正常定位依赖
+export APPDIR="/opt/wechat-appimage"
+export PATH="/opt/wechat-appimage:${PATH}"
+
+# 2. 沙盒注意项：
+#    - 标准 Arch Linux 内核默认允许非特权用户命名空间 (userns)，无需 SUID 即可正常启动沙盒。
+#    - 若使用 linux-hardened 内核或自定义禁用 userns 的环境导致内置浏览器/小程序白屏或报错，
+#      请取消下一行注释以禁用 QtWebEngine/Chromium 沙盒：
+# export QTWEBENGINE_DISABLE_SANDBOX=1
+# ----------------------------------------------------------------------
+
+exec /opt/wechat-appimage/wechat "$@"
