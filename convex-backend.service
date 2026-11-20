@@ -1,0 +1,17 @@
+[Unit]
+Description=Convex self-hosted backend
+After=network.target
+
+[Service]
+DynamicUser=yes
+User=convex
+StateDirectory=convex
+StateDirectoryMode=0700
+WorkingDirectory=/var/lib/convex
+LoadCredential=instance-secret:/etc/convex/instance-secret
+ExecStart=/usr/lib/convex/convex-backend
+KillSignal=SIGINT
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

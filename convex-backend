@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+# Upstream accepts the secret only in argv, which can be visible to other local users.
+if [[ ${CONVEX_ALLOW_SECRET_IN_ARGV-} != yes ]]; then
+  echo 'Convex requires CONVEX_ALLOW_SECRET_IN_ARGV=yes. Only use this on a trusted single-user host.' >&2
+  exit 1
+fi
+
+secret=$(<"${CREDENTIALS_DIRECTORY:-/etc/convex}/instance-secret")
+if [[ ! $secret =~ ^[[:xdigit:]]{64}$ ]]; then
+  echo 'The Convex instance-secret file must contain 64 hex characters.' >&2
+  exit 1
+fi
+
+if [[ ${1-} == keygen ]]; then
+  exec /usr/bin/convex-local-backend keygen admin-key --instance-name convex-self-hosted --instance-secret "$secret"
+fi
+exec /usr/bin/convex-local-backend --interface 127.0.0.1 --disable-beacon \
+  --instance-name convex-self-hosted --instance-secret "$secret" "$@"
