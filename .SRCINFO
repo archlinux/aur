@@ -22,6 +22,7 @@ pkgbase = zalo-for-linux-git
 	depends = alsa-utils
 	depends = pipewire
 	depends = rtkit
+	depends = onnxruntime-cpu
 	optdepends = wl-clipboard: paste images from clipboard on Wayland
 	optdepends = xclip: paste images from clipboard on X11
 	optdepends = zenity: call window when the engine is run standalone
