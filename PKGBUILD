@@ -2,7 +2,7 @@
 
 pkgname=moonshine-git
 pkgver=r944.efa2f3c
-pkgrel=1
+pkgrel=2
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
@@ -44,6 +44,7 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm755 target/release/moonshine "$pkgdir/usr/bin/moonshine"
 	install -Dm755 dist/start-moonshine.sh "$pkgdir/usr/bin/start-moonshine.sh"
+	install -Dm755 dist/moonshine-gamescope "$pkgdir/usr/bin/moonshine-gamescope"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	# install-wsi.sh clones ferriscope into target/ferriscope-src/v<version>.
 	local ferriscope
