@@ -2,7 +2,6 @@
 
 import argparse
 import json
-import os
 import re
 import subprocess
 import sys
@@ -11,29 +10,47 @@ import urllib.request
 PKGBUILD_FILE = "PKGBUILD"
 SRCINFO_FILE = ".SRCINFO"
 GITHUB_API_URL = "https://api.github.com/repos/DEEIX-AI/Winc/releases/latest"
+REPO = "DEEIX-AI/Winc"
+
+
+def fetch_text(url):
+    request = urllib.request.Request(
+        url,
+        headers={"Accept": "application/vnd.github+json", "User-Agent": "winc-aur-helper"},
+    )
+    with urllib.request.urlopen(request, timeout=30) as response:
+        return response.read().decode("utf-8")
 
 
 def fetch_latest_release():
+    tag = None
     try:
-        request = urllib.request.Request(
-            GITHUB_API_URL,
-            headers={"Accept": "application/vnd.github+json", "User-Agent": "winc-aur-helper"},
-        )
-        with urllib.request.urlopen(request, timeout=30) as response:
-            data = json.load(response)
+        data = json.loads(fetch_text(GITHUB_API_URL))
         tag = data.get("tag_name", "").strip()
-        if not tag:
-            print("Error: tag_name not found in GitHub release response.")
-            return None
-        version = tag.lstrip("v")
-        match = re.fullmatch(r"(\d+\.\d+\.\d+)(?:-(\d+))?", version)
-        if not match:
-            print(f"Error: unexpected version format: {version}")
-            return None
-        return match.group(1), int(match.group(2) or 1)
     except Exception as exc:
-        print(f"Unexpected error fetching latest version: {exc}")
+        print(f"Warning: GitHub API unavailable ({exc}); using releases page fallback.")
+
+    if not tag:
+        try:
+            releases_page = fetch_text(f"https://github.com/{REPO}/releases/latest")
+            match = re.search(r"/releases/tag/(v?\d+\.\d+\.\d+(?:-\d+)?)", releases_page)
+            if match:
+                tag = match.group(1)
+        except Exception as exc:
+            print(f"Error fetching latest release page: {exc}")
+            return None
+
+    if not tag:
+        print("Error: latest release tag not found.")
         return None
+
+    version = tag.lstrip("v")
+    match = re.fullmatch(r"(\d+\.\d+\.\d+)(?:-(\d+))?", version)
+    if not match:
+        print(f"Error: unexpected version format: {version}")
+        return None
+    sums_url = f"https://github.com/{REPO}/releases/download/{tag}/SHA256SUMS"
+    return match.group(1), int(match.group(2) or 1), sums_url
 
 
 def get_current_release():
@@ -51,43 +68,38 @@ def get_current_release():
         return None
 
 
-def update_pkgbuild(version, pkgrel):
+def get_upstream_sha256(version, pkgrel, sums_url):
+    filename = f"winc-{version}-{pkgrel}-x86_64.pkg.tar.zst"
+    try:
+        sums = fetch_text(sums_url)
+    except Exception as exc:
+        print(f"Error fetching upstream SHA256SUMS: {exc}")
+        return None
+    for line in sums.splitlines():
+        match = re.match(r"^([0-9a-fA-F]{64})\s+\*?(.+)$", line.strip())
+        if match and match.group(2).strip() == filename:
+            return match.group(1).lower()
+    print(f"Error: {filename} not found in upstream SHA256SUMS.")
+    return None
+
+
+def update_pkgbuild(version, pkgrel, checksum):
     try:
         with open(PKGBUILD_FILE, "r", encoding="utf-8") as handle:
             content = handle.read()
         content = re.sub(r"^pkgver=.*", f"pkgver={version}", content, flags=re.MULTILINE)
         content = re.sub(r"^pkgrel=.*", f"pkgrel={pkgrel}", content, flags=re.MULTILINE)
+        content = re.sub(
+            r"^sha256sums_x86_64=\(.*\)$",
+            f"sha256sums_x86_64=('{checksum}')",
+            content,
+            flags=re.MULTILINE,
+        )
         with open(PKGBUILD_FILE, "w", encoding="utf-8") as handle:
             handle.write(content)
         return True
     except Exception as exc:
         print(f"Unexpected error updating PKGBUILD: {exc}")
-        return False
-
-
-def update_sums():
-    result = subprocess.run(["makepkg", "-g"], capture_output=True, text=True)
-    if result.returncode != 0:
-        print(f"Error generating sums: {result.stderr}")
-        return False
-    new_sums = result.stdout.strip()
-    if not new_sums:
-        print("Error: no sums generated.")
-        return False
-    try:
-        with open(PKGBUILD_FILE, "r", encoding="utf-8") as handle:
-            content = handle.read()
-        content = re.sub(
-            r"^(sha256sums_x86_64=)\(([^)]*)\)$\n?",
-            "",
-            content,
-            flags=re.MULTILINE,
-        )
-        with open(PKGBUILD_FILE, "w", encoding="utf-8") as handle:
-            handle.write(content + new_sums + "\n")
-        return True
-    except Exception as exc:
-        print(f"Unexpected error updating sums: {exc}")
         return False
 
 
@@ -121,21 +133,32 @@ def commit_git(version, pkgrel):
 
 def main():
     parser = argparse.ArgumentParser(description="Update Winc AUR package.")
-    parser.add_argument("--version", action="store_true", help="Fetch the latest GitHub release")
-    parser.add_argument("--sums", action="store_true", help="Update SHA-256 sums")
+    parser.add_argument("--version", action="store_true", help="Fetch the latest GitHub release and upstream SHA256SUMS")
+    parser.add_argument("--sums", action="store_true", help="Refresh checksum from upstream SHA256SUMS")
     parser.add_argument("--info", action="store_true", help="Generate .SRCINFO")
     parser.add_argument("--commit", action="store_true", help="Commit changes when updated")
     args = parser.parse_args()
     if not any(vars(args).values()):
         args.version = args.sums = args.info = args.commit = True
 
-    latest = fetch_latest_release() if args.version else None
-    if args.version and not latest:
+    latest = fetch_latest_release() if (args.version or args.sums) else None
+    if (args.version or args.sums) and not latest:
         return 1
 
-    version, pkgrel = latest if latest else get_current_release()
-    if not version:
-        return 1
+    if latest:
+        version, pkgrel, sums_url = latest
+    else:
+        current = get_current_release()
+        if not current:
+            return 1
+        version, pkgrel = current
+        sums_url = f"https://github.com/{REPO}/releases/download/v{version}/SHA256SUMS"
+
+    checksum = None
+    if args.version or args.sums:
+        checksum = get_upstream_sha256(version, pkgrel, sums_url)
+        if not checksum:
+            return 1
 
     updated = False
     if args.version:
@@ -143,15 +166,15 @@ def main():
         if current == (version, pkgrel):
             print(f"No update needed. Version is already {version}-{pkgrel}.")
         else:
-            updated = update_pkgbuild(version, pkgrel)
+            updated = update_pkgbuild(version, pkgrel, checksum)
             if not updated:
                 return 1
-
-    if args.sums and (updated or not args.version):
-        if not update_sums():
+    elif args.sums:
+        updated = update_pkgbuild(version, pkgrel, checksum)
+        if not updated:
             return 1
 
-    if args.info and (updated or not args.version):
+    if args.info and (updated or not (args.version or args.sums)):
         if not generate_srcinfo():
             return 1
 
