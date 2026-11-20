@@ -2,21 +2,19 @@
 
 pkgname=aerial-lock-git
 _project=aerial-lock
-pkgver=0.1.4.r0.g2675185
-pkgrel=5
-pkgdesc='Wayland session lock with video backgrounds and an idle/session companion'
+pkgver=0.3.0.r0.g2884b89
+pkgrel=6
+pkgdesc='Wayland video session lock with idle integration and automatic content service'
 arch=('x86_64')
 url='https://github.com/atmosphera-dev/aerial-lock'
 license=('GPL-3.0-or-later')
 depends=('quickshell>=0.3' 'quickshell<0.4' 'qt6-mpvqml>=0.2.0'
          'qt6-5compat' 'qt6-base' 'qt6-declarative' 'pam' 'wayland'
-         'bash' 'glibc' 'libgcc' 'libstdc++' 'libxkbcommon')
+         'bash' 'glibc' 'libgcc' 'libstdc++' 'libxkbcommon' 'xkeyboard-config'
+         'dbus' 'libarchive' 'ffmpeg')
 makedepends=('git' 'wayland-protocols')
-optdepends=('curl: remote video pack downloader'
-            'python: remote video pack downloader'
-            'tar: remote video pack downloader'
-            'procps-ng: signal-unlock examples'
-            'systemd: aerial-idle user service and logind integration'
+optdepends=('procps-ng: signal-unlock examples'
+            'systemd: content user service, optional aerial-idle and logind integration'
             'elogind: logind integration without systemd (unverified)')
 provides=('aerial-lock')
 conflicts=('aerial-lock')
