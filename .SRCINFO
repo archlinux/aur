@@ -9,9 +9,9 @@ pkgbase = gitcrawl-bin
 	provides = gitcrawl
 	conflicts = gitcrawl
 	options = !strip
-	source_x86_64 = gitcrawl-0.19.0-linux_amd64.tar.gz::https://github.com/openclaw/gitcrawl/releases/download/v0.19.0/gitcrawl_0.19.0_linux_amd64.tar.gz
+	source_x86_64 = gitcrawl-0.19.0.tar.gz::https://github.com/openclaw/gitcrawl/releases/download/v0.19.0/gitcrawl_0.19.0_linux_amd64.tar.gz
 	sha256sums_x86_64 = b86b1a8a68458ea697b1a3f2eb669ca16c5fd2b895e1db10f7122de8c0fbf73a
-	source_aarch64 = gitcrawl-0.19.0-linux_arm64.tar.gz::https://github.com/openclaw/gitcrawl/releases/download/v0.19.0/gitcrawl_0.19.0_linux_arm64.tar.gz
+	source_aarch64 = gitcrawl-0.19.0.tar.gz::https://github.com/openclaw/gitcrawl/releases/download/v0.19.0/gitcrawl_0.19.0_linux_arm64.tar.gz
 	sha256sums_aarch64 = 3e810c3d9f01888d0c3f995b1e16650d367563441fc61bfb4ff8dd6583116b93
 
 pkgname = gitcrawl-bin
