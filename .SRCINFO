@@ -8,6 +8,7 @@ pkgbase = magic-context-dashboard-bin
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = libappindicator-gtk3
+	depends = openssl-3
 	provides = magic-context-dashboard
 	conflicts = magic-context-dashboard
 	noextract = magic-context-dashboard-0.20.23.deb
