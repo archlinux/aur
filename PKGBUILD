@@ -1,3 +1,4 @@
+# Maintainer: matthewq337 <matt at mattquintanilla dot xyz>
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgname='clox'
