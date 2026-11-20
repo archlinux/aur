@@ -1,0 +1,53 @@
+# Stoat server configuration template for Arch Linux.
+# IMPORTANT: THIS IS NOT A WORKING PRODUCTION CONFIGURATION.
+# Configure domain names, database credentials, AMQP and S3 before starting Stoat.
+# Local test endpoints and dev secrets from upstream are intentionally NOT copied.
+# On an existing installation pacman preserves your customized config (or creates .pacnew).
+# See /usr/share/doc/stoat-server/README.arch.md for setup and permissions.
+
+[database]
+# Configure authentication and TLS when connecting to real production servers.
+mongodb = "mongodb://127.0.0.1:27017"
+redis = "redis://127.0.0.1:6379/"
+
+[rabbit]
+host = "127.0.0.1"
+port = 5672
+username = "CHANGE_ME"
+password = "CHANGE_ME"
+
+[hosts]
+# Replace all example.invalid URLs with your external HTTPS/WSS routes.
+app = "https://chat.example.invalid"
+api = "https://chat.example.invalid/api"
+events = "wss://chat.example.invalid/ws"
+autumn = "https://chat.example.invalid/autumn"
+january = "https://chat.example.invalid/january"
+gifbox = "https://chat.example.invalid/gifbox"
+voso_legacy = ""
+voso_legacy_ws = ""
+
+# Optional: add public LiveKit URLs only when voice calls are configured.
+[hosts.livekit]
+
+[api.smtp]
+# An empty host disables email sending; configure secure SMTP if needed.
+host = ""
+username = ""
+password = ""
+from_address = ""
+reply_to = ""
+port = 587
+use_tls = false
+use_starttls = true
+
+# Optional: add matching LiveKit node keys/secrets when voice is configured.
+[api.livekit.nodes]
+
+[files.s3]
+# Must be an actual reachable S3-compatible storage endpoint.
+endpoint = "https://s3.example.invalid"
+region = "us-east-1"
+access_key_id = "CHANGE_ME"
+secret_access_key = "CHANGE_ME"
+default_bucket = "revolt-uploads"

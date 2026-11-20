@@ -1,0 +1,4 @@
+# Keep the configuration readable by the Stoat service account, not by other users.
+# sysusers.d is processed before tmpfiles.d by the pacman hooks.
+d /etc/stoat 0750 root stoat -
+z /etc/stoat/Revolt.toml 0640 root stoat -

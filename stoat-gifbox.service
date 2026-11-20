@@ -1,21 +1,24 @@
 [Unit]
 Description=Stoat.chat Gifbox
-Wants=network-online.target mongodb.service valkey.service stoat-api.service
-After=network-online.target mongodb.service valkey.service stoat-api.service
+Wants=network-online.target stoat-api.service
+After=network-online.target stoat-api.service
 RequiresMountsFor=/etc/stoat
-StartLimitIntervalSec=0
+# Allow expected 10-second restarts while limiting unusually fast crash loops.
+StartLimitIntervalSec=60s
+StartLimitBurst=10
 
 [Service]
 Type=exec
 User=stoat
 Group=stoat
-WorkingDirectory=/etc/stoat/
+WorkingDirectory=/etc/stoat
 ExecStartPre=/usr/lib/stoat/wait-api
 ExecStart=/usr/bin/revolt-gifbox
 Environment=RUST_LOG=info
 Restart=on-failure
 RestartSec=10s
 TimeoutStartSec=15min
+UMask=0077
 
 # Hardening
 ProtectSystem=yes
