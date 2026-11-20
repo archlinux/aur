@@ -10,3 +10,13 @@ post_install() {
 	echo '[SETUP] Add pam_howdy.so to the relevant service in /etc/pam.d/'
 	echo '[SETUP] Example: auth sufficient pam_howdy.so workaround=native'
 }
+
+post_upgrade() {
+	# Most PAM clients start a new process per authentication and load the new pam_howdy.so.
+	# An application that called pam_start before the upgrade (such as a lock screen) keeps the
+	# old module, which works only with the helpers installed alongside it.
+	printf '\033[1;31m%s\033[0m\n' \
+		'[REBOOT] If face authentication fails in an application that was already running' \
+		'[REBOOT] (such as a lock screen), restart it or reboot. A reboot also clears runtime' \
+		'[REBOOT] copies under /run/howdy left by older versions.'
+}
