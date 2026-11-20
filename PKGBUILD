@@ -2,11 +2,11 @@
 
 _rockname=cldr
 _project=$_rockname-lua
-pkgname=("lua-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
-pkgver=0.2.0.r0.g51e4760
+pkgname=("lua-$_rockname-git" "lua54-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
+pkgver=0.3.0.r8.g6612fd3
 _branch='master'
 _rockrel=0
-pkgrel=2
+pkgrel=1
 pkgdesc='Lua interface to Unicode CLDR data'
 arch=(any)
 url="https://github.com/alerque/$_project"
@@ -17,6 +17,7 @@ makedepends=(git
              lua51
              lua52
              lua53
+             lua54
              luarocks)
 source=("git+$url.git#branch=$_branch")
 sha256sums=('SKIP')
@@ -36,6 +37,10 @@ _package_helper() {
 }
 
 package_lua-cldr-git() {
+  _package_helper 5.5
+}
+
+package_lua54-cldr-git() {
   _package_helper 5.4
 }
 
