@@ -84,5 +84,9 @@ package() {
   for mo in target/release/locale/*/LC_MESSAGES/arkha.mo; do
     install -Dm644 "$mo" "$pkgdir/usr/share/locale/${mo#target/release/locale/}"
   done
+  # The manual's pages build.rs made from docs/manual.
+  find target/release/manual -type f | while read -r f; do
+    install -Dm644 "$f" "$pkgdir/usr/share/arkha/${f#target/release/}"
+  done
   install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 }
