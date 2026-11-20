@@ -1,7 +1,7 @@
 # Maintainer: Smoolak <smoolak@gmail.com>
 
 pkgname=python-crewai-cli
-pkgver=1.15.41
+pkgver=1.15.44
 pkgrel=1
 pkgdesc="CLI for CrewAI: scaffold, run, deploy and manage AI agent crews"
 arch=('any')
@@ -40,8 +40,8 @@ checkdepends=('python-pytest')
 _archive="crewAI-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         textual-runtime.patch check-textual-runtime.py)
-sha256sums=('2ecab5b30e37b021adaafbe5c430a158daa288a49a99608bcea82d65edfd860e'
-            '41159a296fb35c0a567bff73edbb76a4c8b6315fb92c6a126604d2a782841965'
+sha256sums=('f345e0a5f982514c89a5c7427e81bb39359cfdda97269d22669661f1e35e16b6'
+            'e6ad8458faea7bbe59e1bf10be476e6067f84ae2e50bd56634f5b4af1346568c'
             'fa7e5b5bbd68aebaa49fc2dd15d731c467a2adc46a4ca2bd17fda47400ea8585')
 
 prepare() {

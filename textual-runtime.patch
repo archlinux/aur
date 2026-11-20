@@ -31,4 +31,4 @@
 +_check_textual_runtime()
 +del _check_textual_runtime
 +
- __version__ = "1.15.41"
+ __version__ = "1.15.44"
