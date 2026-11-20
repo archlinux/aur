@@ -9,7 +9,7 @@ pkgver=1.9.1.r17.g7f3ba4ad
 pkgrel=1
 pkgdesc="whole-genome association analysis toolset, version 1.9"
 arch=(x86_64)
-license=(GPL-3.0-only)
+license=(GPL-3.0-or-later)
 url="https://www.cog-genomics.org/plink/1.9/"
 source=("plink-ng::git+https://github.com/chrchang/plink-ng.git"
         'bin-name.patch')
