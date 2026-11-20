@@ -1,0 +1,6 @@
+pkg/
+src/
+plink1.9/
+plink-ng/
+*.pkg.tar.*
+*.log

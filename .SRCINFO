@@ -1,0 +1,20 @@
+pkgbase = plink1.9
+	pkgdesc = whole-genome association analysis toolset, version 1.9
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://www.cog-genomics.org/plink/1.9/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = zlib>=1.2.4
+	depends = blas
+	depends = cblas
+	depends = lapack
+	source = plink-ng-1.9.1.tar.gz::https://github.com/chrchang/plink-ng/archive/refs/tags/v1.9.1.tar.gz
+	source = bin-name.patch
+	sha256sums = c1da6fc12829108743affc94866391d96021d3c55ed52735e110b89654af85b3
+	sha256sums = 24f570e751f51b6ab05c29f92cad4a57b0a54b7bb4a81dd067cf1cdc1c887327
+
+pkgname = plink1.9

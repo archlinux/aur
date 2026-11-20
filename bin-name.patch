@@ -1,0 +1,16 @@
+diff --color -ura src/plink1.9/1.9/Makefile src/plink1.9-patched/1.9/Makefile
+--- src/plink1.9/1.9/Makefile	2024-07-26 14:43:56.962588763 +0530
++++ src/plink1.9-patched/1.9/Makefile	2024-07-26 14:45:39.865461011 +0530
+@@ -77,10 +77,10 @@
+ 
+ all:	$(BIN)
+ 
+-plink: $(OBJS)
++$(BIN): $(OBJS)
+ 	$(CXX) $(OBJS) $(LDFLAGS_EXTRA) $(BLASFLAGS) $(LDFLAGS) $(ZLIB) -o $@
+ 
+-plinkw: $(OBJS)
++$(BIN)w: $(OBJS)
+ 	gfortran -O2 $(OBJS) $(LDFLAGS_EXTRA) -Wl,-Bstatic $(BLASFLAGS) $(LDFLAGS) $(ZLIB) -o $@
+ 
+ install:
