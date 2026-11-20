@@ -4,7 +4,7 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=uq
-pkgver=0.3.21
+pkgver=0.3.25
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
 # The uq-hyprland-pin this release's config/hypr/base.lua is tested with: equal to
@@ -33,6 +33,7 @@ optdepends=(
   'scdr: CPU priorities for the focused app and builds (enable scdr-session; uQ starts it)'
   'tailscale: exit-node and VPN status in the shell'
   'bluez: Bluetooth status in the shell and the Bluetooth settings page'
+  'cups: the Printers settings page'
   'power-profiles-daemon: power profile switching'
   'hyprlock: fallback lock for the SUPER+CTRL+L recovery bind'
   'noti-fi: notification backend'
@@ -40,6 +41,7 @@ optdepends=(
   'crum-bs: uninstall apps with their leftovers and clean up storage'
   'xzram: the Memory and swap page in Settings'
   'scale_tail: the Tailscale page and quick-settings tile'
+  'reelo: the default media player, themed like uQ, with the Media player page'
   'greetd: the uQ login screen (run0 uqctl greeter enable)'
   'kwallet-pam: unlock KDE Wallet at the uQ login screen'
   'networkmanager-openvpn: OpenVPN connections on the Network settings page'
@@ -57,7 +59,7 @@ backup=(etc/pam.d/uq-greetd etc/pam.d/uq-greeter etc/pam.d/uq-lock etc/pam.d/uq-
 # (so its checksum) can change. The release workflow uploads exactly this file and prints its sum.
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
 # The release asset's sha256 for this tag; update it with pkgver at each release (docs/releasing.md).
-sha256sums=('e3ee5df084c9a61a19a69ff3be16ada2d0cc91b5d7726e8d9d1cd105428d70dc')
+sha256sums=('e160e84254a3e31957c3beda4942e4aeacd5abab96505fcf08896c3d62e6eac8')
 
 prepare() {
   cd "$srcdir/$pkgname-$_tag"
