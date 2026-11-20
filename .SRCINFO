@@ -1,6 +1,6 @@
 pkgbase = open-quickshare
 	pkgdesc = Complete Quick Share implementation for Linux with Bluetooth LE and Wi-Fi Direct
-	pkgver = 0.15.2
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://github.com/ignotusbucius/open-quickshare
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = open-quickshare
 	conflicts = r-quick-share
 	conflicts = rquickshare
 	options = !lto
-	source = open-quickshare-0.15.2.tar.gz::https://github.com/ignotusbucius/open-quickshare/archive/refs/tags/v0.15.2.tar.gz
-	sha256sums = SKIP
+	source = open-quickshare-0.16.1.tar.gz::https://github.com/ignotusbucius/open-quickshare/archive/refs/tags/v0.16.1.tar.gz
+	sha256sums = 2da72630d6289bdd31368c55e023a7447eae8e5986fb9994cd6f76047ec95a64
 
 pkgname = open-quickshare

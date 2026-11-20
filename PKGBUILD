@@ -2,7 +2,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=open-quickshare
-pkgver=0.15.2
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Complete Quick Share implementation for Linux with Bluetooth LE and Wi-Fi Direct"
 arch=('x86_64' 'aarch64')
@@ -44,10 +44,11 @@ options=('!lto')
 
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('SKIP')
+sha256sums=('2da72630d6289bdd31368c55e023a7447eae8e5986fb9994cd6f76047ec95a64')
 
 prepare() {
   cd "${pkgname}-$pkgver/app/main"
+  cargo update --manifest-path src-tauri/Cargo.toml -p bluer --precise 0.17.4 # fix: inconsistent version pinning in upstream
   pnpm install --frozen-lockfile
 }
 
