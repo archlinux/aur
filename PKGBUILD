@@ -1,7 +1,7 @@
 # Maintainer: dr460nf1r3 <root at dr460nf1r3 dot org>
 
 pkgname=latte-dock-ng
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc='Latte is a dock based on plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids'
 arch=('x86_64')
@@ -47,7 +47,7 @@ makedepends=(
 conflicts=('latte-dock')
 provides=('latte-dock')
 source=("$pkgname-$pkgver.tar.gz"::"${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('cea3e27a46d06b9dd020feacdb02fc08987fd4d8985de1daef08478c2d87fe72')
+sha256sums=('07d4f71ee20f21ee6835d8c05ededb0dc6192822fdb672b4d1e1ef139963efdb')
 
 build() {
   cmake -S "${srcdir}/${pkgname}-${pkgver}" -B "${srcdir}/${pkgname}-${pkgver}/build" \
