@@ -2,7 +2,7 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
@@ -14,8 +14,8 @@ url="https://www.st.com/en/development-tools/stm32cubeide.html"
 license=('custom:SLA0048')
 options=(!strip)
 
-_pkgver_ext=2.2.0_29186_20260626_0934
-_pkg_file_name=stm32cubeide_2.2.0-Lin-x86_64.sh.zip
+_pkgver_ext=2.3.0_29909_20261112_1330
+_pkg_file_name=stm32cubeide_2.3.0-Lin-x86_64.sh.zip
 _pkg_license_name="${pkgname}_SLA0048.pdf"
 _pkg_additional_terms="${pkgname}_v${pkgver}_additional_license_terms.html"
 
@@ -38,7 +38,7 @@ source=("local://${_pkg_file_name}"
 	"stm32cubeide"
 	"stm32cubeide_wayland"
 	)
-sha256sums=('6a3480814f718fd05dd43cd6c2f4ccb97556273029fab3a605b0dc34742911d0'
+sha256sums=('1555e2e88db8a5cadc4e20cf00bfe151cdb20ee72a90cc55de2277a88caa0a90'
 	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP'
 	#'SKIP'
