@@ -1,6 +1,6 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=klayout-pex
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Parasitic Extraction (PEX) tool for KLayout"
 arch=("any")
@@ -42,7 +42,7 @@ optdepends=(
 )
 options=()
 source=("${pkgname}::git+${_git_url}#tag=v${pkgver}")
-b2sums=('6c17e97c8a017976d76eb4617bcbc813c63af23da5886dd59aa5252ecbd99c5f0d37217e088565966374ba51385f2b3328d14139bfd3645d032fb9b53d4fdac9')
+b2sums=('9502382557ed37207ba71f215aa2a97dd92337fd4c057b7cc52c6f7fc222e0fb03b64ded6f6bd9a33f9c71b09d135bb2963532f26add742414d862165da1fa48')
 
 build() {
 	cd ${pkgname}
@@ -101,6 +101,8 @@ check() {
 		"openpdk_corner_data_test.py"
 		# Fastercap
 		"fastercap/physical_input_test.py"
+		"fastercap/execution_lifecycle_test.py"
+		"fastercap/numerical_report_test.py"
 		# Netlist
 		"netlist/coupling_test.py"
 		"netlist/grounding_test.py"
@@ -128,6 +130,12 @@ check() {
 		"tech_catalog_test.py"
 		"tech_layer_type_test.py"
 		"tech_provenance_test.py"
+		# Calibration
+		"calibration/cli_test.py"
+		"calibration/patterns_test.py"
+		"calibration/prepare_test.py"
+		"calibration/solve_collect_test.py"
+		"calibration/targets_test.py"
 	)
 
 	# Make the string for pytest
