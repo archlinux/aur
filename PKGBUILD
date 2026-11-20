@@ -1,31 +1,41 @@
-# Maintainer: Sijmen J. Mulder <ik@sjmulder.nl>
+# Maintainer: Peter Tirsek <peter@tirsek.com>
+# Contributor: Sijmen J. Mulder <ik@sjmulder.nl>
+
+# Note: To avoid conflicts with the "trickle" package, the binaries and man
+# pages in this package are renamed as follows:
+#
+#     trickle -> trickle-pipe
+#     tritty  -> trickle-tty
+
 pkgname=trickle-pipe
-pkgver=1.0
+_pkgname=trickle
+pkgver=1.0.1
 pkgrel=1
-pkgdesc='600 baud pipe and terminal'
+pkgdesc='Rate limit pipes and ttys to 1990s era serial port speeds'
 arch=(x86_64)
-url=https://github.com/sjmulder/trickle
-license=(BSD)
+url="https://codeberg.org/sjmulder/trickle"
+license=(BSD-2-Clause)
 depends=(glibc)
-conflicts=(trickle)
-source=(trickle-$pkgver.tar.gz::https://github.com/sjmulder/trickle/archive/$pkgver.tar.gz)
-sha256sums=(b1029f75e43136cb0651ab61b23ec46e215cd4effd8294424961f7d70686ee59)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=("dd096c3f87868fb0a7d006b035881fff2c2ebee7468b7b609d435befc64079ae")
 
 build() {
-	cd trickle-$pkgver
+	cd "${srcdir}/${_pkgname}"
 	make
 }
 
 check() {
-	cd trickle-$pkgver
+	cd "${srcdir}/${_pkgname}"
 	echo a | ./trickle >/dev/null
 	./tritty -- echo -n
 }
 
 package() {
-	cd trickle-$pkgver
-	make install PREFIX="$pkgdir/usr"
-	rm -r "$pkgdir/usr/share/doc"
-	install -d "$pkgdir/usr/share/licenses/trickle"
-	install LICENSE.md "$pkgdir/usr/share/licenses/trickle/"
+	cd "${srcdir}/${_pkgname}"
+	make install DESTDIR="${pkgdir}" PREFIX="/usr" MANPREFIX="/usr/share/man"
+	mv "${pkgdir}/usr/bin/trickle" "${pkgdir}/usr/bin/trickle-pipe"
+	mv "${pkgdir}/usr/bin/tritty" "${pkgdir}/usr/bin/trickle-tty"
+	mv "${pkgdir}/usr/share/man/man1/trickle.1" "${pkgdir}/usr/share/man/man1/trickle-pipe.1"
+	mv "${pkgdir}/usr/share/man/man1/tritty.1" "${pkgdir}/usr/share/man/man1/trickle-tty.1"
+	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }

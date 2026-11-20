@@ -1,14 +1,12 @@
 pkgbase = trickle-pipe
-	pkgdesc = 600 baud pipe and terminal
-	pkgver = 1.0
+	pkgdesc = Rate limit pipes and ttys to 1990s era serial port speeds
+	pkgver = 1.0.1
 	pkgrel = 1
-	url = https://github.com/sjmulder/trickle
+	url = https://codeberg.org/sjmulder/trickle
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	depends = glibc
-	conflicts = trickle
-	source = trickle-1.0.tar.gz::https://github.com/sjmulder/trickle/archive/1.0.tar.gz
-	sha256sums = b1029f75e43136cb0651ab61b23ec46e215cd4effd8294424961f7d70686ee59
+	source = trickle-pipe-1.0.1.tar.gz::https://codeberg.org/sjmulder/trickle/archive/1.0.1.tar.gz
+	sha256sums = dd096c3f87868fb0a7d006b035881fff2c2ebee7468b7b609d435befc64079ae
 
 pkgname = trickle-pipe
-
