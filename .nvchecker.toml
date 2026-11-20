@@ -1,0 +1,3 @@
+[mxflow]
+source = "npm"
+npm = "mxflow"

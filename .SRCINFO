@@ -1,0 +1,23 @@
+pkgbase = mxflow
+	pkgdesc = A Beautiful, Friendly, General purpose CLI task runner
+	pkgver = 0.64.5
+	pkgrel = 1
+	url = https://www.npmjs.com/package/mxflow
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = libx11
+	depends = nodejs
+	provides = mxflow
+	provides = mxf
+	noextract = mxflow-0.64.5.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = mxflow-0.64.5.tgz::https://registry.npmjs.org/mxflow/-/mxflow-0.64.5.tgz
+	b2sums = d4ba42f66885ef3763e879428b94f276f9f45e2585d2254f223e5746cf6d91b13fb880c5aad08917feaae6dc91b924251fe58835a26a4194570d039a97d50d3a
+
+pkgname = mxflow
