@@ -1,0 +1,79 @@
+wifi: mt76: mt7921: keep the join ROC until the station is authorized
+
+When an association succeeds mac80211 calls mgd_complete_tx(), and mt7921
+aborts the join ROC there. The AP starts the 4-way handshake right away, so
+the abort lands where message 3 arrives. The supplicant sends message 2, never
+receives message 3 and the connection ends with reason 15
+(4WAY_HANDSHAKE_TIMEOUT).
+
+Keep the ROC after a successful (re)association on a station interface and
+release it when the station is authorized, on disassociation, or when the
+station is removed. The ROC timer still ends it if none of that happens. The
+state lives in a flag in struct mt792x_vif.
+
+Upstream tested this on an MT7922 over PCIe against a WPA3-SAE AP: 34 of 73
+association attempts lost message 3 unpatched, 0 of 40 patched.
+
+This package builds the mt7921 modules too, and the mt7925 half of the fix
+(the next patch) uses the roc_join_held flag this patch adds to
+struct mt792x_vif, so both are carried together.
+
+Fixes: 41ac53c899bd ("wifi: mt76: mt7921: introduce chanctx support")
+
+Backported from upstream commit 6f591a4bb5d9a6a4a28f3f2fd77f394ddbcc4e05.
+It first appears in v7.4-rc1 and is not in the 7.3.y stable series, so the
+kernel 7.3.5 tarball this package builds from does not have it.
+
+Context regenerated against the 7.3.5 tree with this package's AP-mode
+patches already applied.
+
+--- a/mt7921/main.c
++++ b/mt7921/main.c
+@@ -865,6 +865,12 @@
+ 	if (sta->aid > MT7921_MAX_AID)
+ 		return -ENOENT;
+ 
++	if (mvif->roc_join_held && !sta->tdls &&
++	    (ev == MT76_STA_EVENT_AUTHORIZE || ev == MT76_STA_EVENT_DISASSOC)) {
++		mvif->roc_join_held = false;
++		mt7921_abort_roc(mvif->phy, mvif);
++	}
++
+ 	if (ev != MT76_STA_EVENT_ASSOC)
+ 	    return 0;
+ 
+@@ -906,6 +912,7 @@
+ 		struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
+ 
+ 		mvif->wep_sta = NULL;
++		mvif->roc_join_held = false;
+ 		ewma_rssi_init(&mvif->bss_conf.rssi);
+ 		if (!sta->tdls)
+ 			mt76_connac_mcu_uni_add_bss(&dev->mphy, vif,
+@@ -1448,6 +1455,16 @@
+ {
+ 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
+ 
++	/* Keep the join ROC until the station is authorized, so that it
++	 * covers the 4-way handshake. mt7921_mac_sta_event() releases it.
++	 */
++	if (vif->type == NL80211_IFTYPE_STATION && info->success &&
++	    (info->subtype == IEEE80211_STYPE_ASSOC_REQ ||
++	     info->subtype == IEEE80211_STYPE_REASSOC_REQ)) {
++		mvif->roc_join_held = true;
++		return;
++	}
++
+ 	mt7921_abort_roc(mvif->phy, mvif);
+ }
+ 
+--- a/mt792x.h
++++ b/mt792x.h
+@@ -191,6 +191,7 @@
+ 	struct mt792x_sta *wep_sta;
+ 
+ 	struct mt792x_phy *phy;
++	bool roc_join_held; /* join ROC kept until the STA is authorized */
+ 	u16 valid_links;
+ 	u8 deflink_id;
+ 	enum mt792x_mlo_pm_state mlo_pm_state;

@@ -1,0 +1,72 @@
+wifi: mt76: mt7925: keep the join ROC until the station is authorized
+
+When a non-MLO station associates, mgd_complete_tx() aborts the join ROC as
+soon as the association succeeds, which is right before the supplicant sends
+message 2 of the 4-way handshake. With the abort that close to message 2, the
+adapter acknowledges nothing the AP sends for the next several ms: the AP
+sends message 3 and its seven retries within about 5 ms, none is acknowledged,
+and the handshake ends with reason 15 (4WAY_HANDSHAKE_TIMEOUT).
+
+Keep the ROC after a successful (re)association on a non-MLD station interface
+and release it when the station is authorized, on disassociation, or when the
+station is removed. The ROC timer still ends it if none of that happens. MLD
+interfaces keep the old behaviour.
+
+Upstream tested this on an MT7925U (USB) against a FRITZ!Box 5690 Pro on a
+6 GHz-only, non-MLO SSID, kernel 7.2.3: 8 of 84 handshakes completed
+unpatched and 30 of 30 patched. Nobody has reported a run on an MT7927.
+
+Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
+
+Backported from upstream commit ac22c8c723c62013dd45b74e32249fc877c86fe0.
+It first appears in v7.4-rc1 and is not in the 7.3.y stable series, so the
+kernel 7.3.5 tarball this package builds from does not have it. It needs the
+roc_join_held flag added by the previous patch.
+
+Context regenerated against the 7.3.5 tree with this package's AP-mode
+patches and the previous patch already applied.
+
+--- a/mt7925/main.c
++++ b/mt7925/main.c
+@@ -1256,6 +1256,13 @@
+ {
+ 	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
+ 	struct ieee80211_link_sta *link_sta = &sta->deflink;
++	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
++
++	if (mvif->roc_join_held && !sta->tdls &&
++	    (ev == MT76_STA_EVENT_AUTHORIZE || ev == MT76_STA_EVENT_DISASSOC)) {
++		mvif->roc_join_held = false;
++		mt7925_abort_roc(mvif->phy, &mvif->bss_conf);
++	}
+ 
+ 	switch (ev) {
+ 	case MT76_STA_EVENT_ASSOC:
+@@ -1451,6 +1458,7 @@
+ 
+ 	if (vif->type == NL80211_IFTYPE_STATION) {
+ 		mvif->wep_sta = NULL;
++		mvif->roc_join_held = false;
+ 		ewma_rssi_init(&mvif->bss_conf.rssi);
+ 	}
+ 
+@@ -2103,6 +2111,19 @@
+ {
+ 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
+ 
++	/* Keep the join ROC until the station is authorized, so that it
++	 * covers the 4-way handshake. mt7925_mac_sta_event() releases it.
++	 * On MLD, the active ROC is the MLO ROC, which must be released
++	 * before the link activation work sets its own.
++	 */
++	if (vif->type == NL80211_IFTYPE_STATION && !ieee80211_vif_is_mld(vif) &&
++	    info->success &&
++	    (info->subtype == IEEE80211_STYPE_ASSOC_REQ ||
++	     info->subtype == IEEE80211_STYPE_REASSOC_REQ)) {
++		mvif->roc_join_held = true;
++		return;
++	}
++
+ 	mt7925_abort_roc(mvif->phy, &mvif->bss_conf);
+ }
+ 

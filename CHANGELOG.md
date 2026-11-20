@@ -5,6 +5,18 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.18-1] - 2026-11-20
+
+### Driver
+
+- Rebase the `mt76` WiFi and `btusb`/`btmtk` Bluetooth sources from Linux 7.3 to 7.3.5 (tarball sha256 `8f293f83...`, checked against kernel.org's `sha256sums.asc`). 7.3.y has fixed nine commits in these drivers since 7.3.0. The ones that reach a PCIe MT7927 user are the WM2 rx irq mask fix for a NULL dereference in `napi_disable` during a chip reset (`3c287de98388`, CVE-2026-99560), the channel survey fix (`d681a3aee651`), the offload-capability errno truncation (`8275a14a3384`) and an of_node reference leak. The other five are USB, SDIO or a Realtek device ID
+- Backport the mainline fix for 4-way handshake timeouts as two patches, `mt7927-wifi-backport-01` (mt7921, adds the `roc_join_held` flag to `struct mt792x_vif`) and `-02` (mt7925). After an association mac80211 calls `mgd_complete_tx()`, which aborted the join remain-on-channel just before message 2 or 3 of the handshake. The adapter then acknowledged nothing the AP sent, and the connection ended with reason 15 (`4WAY_HANDSHAKE_TIMEOUT`). The ROC is now kept until the station is authorized. Upstream measured 34 of 73 failed attempts unpatched against 0 of 40 patched on an MT7922 over PCIe with a WPA3-SAE AP (`6f591a4bb5d9`), and 8 of 84 completed handshakes unpatched against 30 of 30 patched on an MT7925U on 6 GHz (`ac22c8c723c6`). Both are in v7.4-rc1 and not in 7.3.y. This matches the failure reported in #102 and #120. Nobody has reported a run on an MT7927 yet, so whether it fixes those two is unconfirmed
+- All other patches apply to 7.3.5 unchanged, with the same two fuzz-2 hunks (`eml-cap-macros`, `linux-6.8`) as on 7.3
+
+### Compatibility
+
+- Both module sets compile with 0 errors and 0 warnings against the headers of stable 6.17.y, 6.18.y, 7.0.y, 7.1.y and 7.2.y and against the 7.3.5 host. Not verified: any hardware run of the 7.3.5 base or of the two backports, hosts that are distro kernels instead of stable heads, and the Ubuntu 6.8 Bluetooth-only path on its original hardware
+
 ## [2.17-2] - 2026-10-28
 
 ### Packaging
