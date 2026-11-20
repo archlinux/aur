@@ -1,0 +1,129 @@
+From 80471a32de3baaf7d73d7a6bd106cfaa46b5ed6f Mon Sep 17 00:00:00 2001
+From: Thomas Otahal <tjotaha@sandia.gov>
+Date: Thu, 22 Oct 2026 12:38:00 -0600
+Subject: [PATCH] Fix one-past-end std::vector indexing in Ioex and nem_spread
+
+Several call sites formed a pointer into a std::vector with
+`&vec[offset]` where `offset` can equal `vec.size()` (e.g. a rank owning
+zero elements of the last block, a processor with no border elements or
+external nodes, or an empty comm map). Calling operator[] with an index
+of size() is undefined behavior even though the paired count is zero, so
+no data is ever read or written through the pointer.
+
+GCC 15's libstdc++ enables _GLIBCXX_ASSERTIONS by default in unoptimized
+builds, which turns these into aborts in DEBUG builds:
+  - SEACASIoss_Utst_blockbatchread_MPI_2 / _MPI_4
+    (Ioex::ElementBlockBatchReader::get_connectivity_impl)
+  - SEACASNemspread_Utst_nem_spread_MPI_1
+    (load_lb_info, find_elem_block, utest_util ElementPartition)
+
+Use `Data(vec) + offset` instead, which is well-defined for one-past-end
+and returns nullptr for empty vectors.
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+---
+ packages/seacas/applications/nem_spread/el_exoII_io.C  |  4 ++--
+ .../seacas/applications/nem_spread/pe_load_lb_info.C   | 10 +++++-----
+ packages/seacas/applications/nem_spread/ps_restart.C   |  2 +-
+ .../seacas/applications/utest_util/ElementPartition.C  |  8 ++++----
+ .../libraries/ioss/src/exodus/Ioex_DecompositionData.C |  2 +-
+ 5 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/packages/seacas/applications/nem_spread/el_exoII_io.C b/packages/seacas/applications/nem_spread/el_exoII_io.C
+index 0006debe3..00f1d977a 100644
+--- a/packages/seacas/applications/nem_spread/el_exoII_io.C
++++ b/packages/seacas/applications/nem_spread/el_exoII_io.C
+@@ -1856,7 +1856,7 @@ void NemSpread<T, INT>::find_elem_block(std::vector<INT> &proc_elem_blk, int ipr
+    */
+ 
+   /* Internal Elements */
+-  if (check_monot(&globals.GElems[iproc][0], globals.Num_Internal_Elems[iproc])) {
++  if (check_monot(Data(globals.GElems[iproc]), globals.Num_Internal_Elems[iproc])) {
+     size_t tmp_cnt = globals.Num_Internal_Elems[iproc];
+     int    j       = 0;
+     size_t i       = 0;
+@@ -1892,7 +1892,7 @@ void NemSpread<T, INT>::find_elem_block(std::vector<INT> &proc_elem_blk, int ipr
+   }
+ 
+   /* Border Elements */
+-  if (check_monot(&globals.GElems[iproc][globals.Num_Internal_Elems[iproc]],
++  if (check_monot(Data(globals.GElems[iproc]) + globals.Num_Internal_Elems[iproc],
+                   globals.Num_Border_Elems[iproc])) {
+     INT tmp_cnt = globals.Num_Internal_Elems[iproc] + globals.Num_Border_Elems[iproc];
+     int j       = 0;
+diff --git a/packages/seacas/applications/nem_spread/pe_load_lb_info.C b/packages/seacas/applications/nem_spread/pe_load_lb_info.C
+index 5328e17cf..e9651c1cd 100644
+--- a/packages/seacas/applications/nem_spread/pe_load_lb_info.C
++++ b/packages/seacas/applications/nem_spread/pe_load_lb_info.C
+@@ -171,9 +171,9 @@ template <typename T, typename INT> void NemSpread<T, INT>::load_lb_info()
+     size_t itotal_nodes = globals.Num_Internal_Nodes[iproc] + globals.Num_Border_Nodes[iproc] +
+                           globals.Num_External_Nodes[iproc];
+     globals.GNodes[iproc].resize(itotal_nodes);
+-    if (ex_get_processor_node_maps(
+-            lb_exoid, &globals.GNodes[iproc][0], &globals.GNodes[iproc][Int_Node_Num[iproc]],
+-            &globals.GNodes[iproc][Int_Node_Num[iproc] + Bor_Node_Num[iproc]], iproc) < 0) {
++    INT *gnodes = Data(globals.GNodes[iproc]);
++    if (ex_get_processor_node_maps(lb_exoid, gnodes, gnodes + Int_Node_Num[iproc],
++                                   gnodes + Int_Node_Num[iproc] + Bor_Node_Num[iproc], iproc) < 0) {
+       fmt::print(stderr, "[{}] ERROR, failed to get node map for Proc {}!\n", __func__, iproc);
+       exit(1);
+     }
+@@ -183,8 +183,8 @@ template <typename T, typename INT> void NemSpread<T, INT>::load_lb_info()
+     globals.GElems[iproc].resize(itotal_elems);
+     globals.Elem_Map[iproc].resize(itotal_elems);
+ 
+-    if (ex_get_processor_elem_maps(lb_exoid, &globals.GElems[iproc][0],
+-                                   &globals.GElems[iproc][Int_Elem_Num[iproc]], iproc) < 0) {
++    if (ex_get_processor_elem_maps(lb_exoid, Data(globals.GElems[iproc]),
++                                   Data(globals.GElems[iproc]) + Int_Elem_Num[iproc], iproc) < 0) {
+       fmt::print(stderr, "[{}] ERROR, failed to get element map for Proc {}!\n", __func__, iproc);
+       exit(1);
+     }
+diff --git a/packages/seacas/applications/nem_spread/ps_restart.C b/packages/seacas/applications/nem_spread/ps_restart.C
+index 721369201..dfc0d78f4 100644
+--- a/packages/seacas/applications/nem_spread/ps_restart.C
++++ b/packages/seacas/applications/nem_spread/ps_restart.C
+@@ -220,7 +220,7 @@ template <typename T, typename INT> void NemSpread<T, INT>::read_restart_data()
+         }
+ 
+         if (ilocal < globals.Proc_Num_Elem_Blk[iproc]) {
+-          eb_map_ptr[iproc][cnt]    = &globals.GElems[iproc][offset];
++          eb_map_ptr[iproc][cnt]    = Data(globals.GElems[iproc]) + offset;
+           eb_cnts_local[iproc][cnt] = globals.Proc_Num_Elem_In_Blk[iproc][ilocal];
+           offset += globals.Proc_Num_Elem_In_Blk[iproc][ilocal];
+           ifound = ilocal; /* don't search the same part of the list over */
+diff --git a/packages/seacas/applications/utest_util/ElementPartition.C b/packages/seacas/applications/utest_util/ElementPartition.C
+index b353a6839..895e42705 100644
+--- a/packages/seacas/applications/utest_util/ElementPartition.C
++++ b/packages/seacas/applications/utest_util/ElementPartition.C
+@@ -618,10 +618,10 @@ namespace utest_util {
+     /* Order the element communication maps by processor */
+     for (int pcnt = 0; pcnt < m_numProcs; pcnt++) {
+       /* Note that this sort is multi-key */
+-      qsort4(&e_cmap_procs[pcnt][0],     /* 1st key */
+-             &e_cmap_elems[pcnt][0],     /* 2nd key */
+-             &e_cmap_neigh[pcnt][0],     /* 3rd key */
+-             &e_cmap_sides[pcnt][0],     /* 4th key */
++      qsort4(Data(e_cmap_procs[pcnt]),   /* 1st key */
++             Data(e_cmap_elems[pcnt]),   /* 2nd key */
++             Data(e_cmap_neigh[pcnt]),   /* 3rd key */
++             Data(e_cmap_sides[pcnt]),   /* 4th key */
+              e_cmap_procs[pcnt].size()); /* Size */
+     }
+     /*
+diff --git a/packages/seacas/libraries/ioss/src/exodus/Ioex_DecompositionData.C b/packages/seacas/libraries/ioss/src/exodus/Ioex_DecompositionData.C
+index 96ff72095..9e7b00ba6 100644
+--- a/packages/seacas/libraries/ioss/src/exodus/Ioex_DecompositionData.C
++++ b/packages/seacas/libraries/ioss/src/exodus/Ioex_DecompositionData.C
+@@ -2202,7 +2202,7 @@ namespace Ioex {
+ 
+         blockComponentCount[i] = blk.nodesPerEntity;
+         ex_get_partial_conn(filePtr, EX_ELEM_BLOCK, id, offset + 1, count,
+-                            &file_conn[fileConnOffset[i]], nullptr, nullptr);
++                            Data(file_conn) + fileConnOffset[i], nullptr, nullptr);
+       }
+ 
+       retval = decompData->m_decomposition.communicate_entity_data(
+-- 
+2.43.0
+

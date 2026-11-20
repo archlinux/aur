@@ -1,0 +1,22 @@
+From: Mohamed Amine Zghal <medaminezghal@outlook.com>
+Subject: [PATCH] Ioex: skip node map output when region has no node blocks
+
+A region holding only blobs (e.g. blob_write_read run in parallel)
+has no node block, so output_node_map() hit assert(!node_blocks.empty()).
+update_processor_offset_property() already skips this case; do the same.
+---
+diff --git a/packages/seacas/libraries/ioss/src/exodus/Ioex_ParallelDatabaseIO.C b/packages/seacas/libraries/ioss/src/exodus/Ioex_ParallelDatabaseIO.C
+index cee6d43e..9134a252 100644
+--- a/packages/seacas/libraries/ioss/src/exodus/Ioex_ParallelDatabaseIO.C
++++ b/packages/seacas/libraries/ioss/src/exodus/Ioex_ParallelDatabaseIO.C
+@@ -4916,7 +4916,9 @@ namespace Ioex {
+ 
+     if (metaDataWritten) {
+       const Ioss::NodeBlockContainer &node_blocks = get_region()->get_node_blocks();
+-      assert(!node_blocks.empty());
++      if (node_blocks.empty()) {
++        return;
++      }
+       assert(node_blocks[0]->property_exists("_processor_offset"));
+       assert(node_blocks[0]->property_exists("locally_owned_count"));
+       size_t processor_offset    = node_blocks[0]->get_property("_processor_offset").get_int();

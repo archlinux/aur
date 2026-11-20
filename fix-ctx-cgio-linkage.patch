@@ -1,0 +1,40 @@
+From 25eb1cf76f362a3696a8e3af4a3ed66a9a31fb42 Mon Sep 17 00:00:00 2001
+From: Georg Hammerl <georg.hammerl@hereon.de>
+Date: Tue, 18 Aug 2026 10:02:42 +0200
+Subject: [PATCH] Iocgns: Fix ctx_cgio C linkage with GCC 15
+
+---
+ .../libraries/ioss/src/cgns/Iocgns_DatabaseIO.C       | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/packages/seacas/libraries/ioss/src/cgns/Iocgns_DatabaseIO.C b/packages/seacas/libraries/ioss/src/cgns/Iocgns_DatabaseIO.C
+index fd8e7c666..71c23fca9 100644
+--- a/packages/seacas/libraries/ioss/src/cgns/Iocgns_DatabaseIO.C
++++ b/packages/seacas/libraries/ioss/src/cgns/Iocgns_DatabaseIO.C
+@@ -78,9 +78,8 @@
+ 
+ // extern char hdf5_access[64];
+ 
+-namespace {
+-  extern "C" {
+-  // From private CGNS header: `cgio_internal_type.h`
++extern "C" {
++// From private CGNS header: `cgio_internal_type.h`
+   typedef struct _cgns_io_ctx_t
+   {
+     /* Flag indicating if HDF5 file accesses is PARALLEL or NATIVE */
+@@ -97,8 +96,10 @@ namespace {
+ #endif
+   } cgns_io_ctx_t;
+ 
+-  extern cgns_io_ctx_t ctx_cgio; /* located in cgns_io.c */
+-  }
++extern cgns_io_ctx_t ctx_cgio; /* located in cgns_io.c */
++}
++
++namespace {
+ 
+   // There is a bug in the CGNS library (4.4.0 and before) where it
+   // has a global symbol `ctx_cgio` which controls whether
+-- 
+2.43.0
