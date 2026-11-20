@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.263
+pkgver=1.4.267
 pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
@@ -62,7 +62,7 @@ _electronmajor=43
 # changes the payload, so pin the peeled commit of tag v$pkgver instead.
 # Version bumps must resolve `git ls-remote $url "refs/tags/v<ver>^{}"` and
 # update _commit together with pkgver and the source checksum.
-_commit=131f209f7703e21c9b4d933920abe766d0d12820
+_commit=baf9c2c328fa95c0ba9c25fda4836b479162d232
 source=(
   "$pkgname-$pkgver-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "pnpm-$_pnpmver.tgz::https://registry.npmjs.org/pnpm/-/pnpm-$_pnpmver.tgz"
@@ -83,7 +83,7 @@ source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
 )
 sha256sums=(
-  'fbc012a9428d8d7c5e190939e4bea69765a02da8f72f305dbdde5add7252f73e'
+  '5311832bdb2aab0f97d048a4e3da4d2d4cf6cb2929f11d1736840370978c3568'
   'ea206e35474bf87be9564a85ca70ed1c8ebdc45da55aafb0a3bf09d1ba69b179'
   'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
   '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
@@ -182,6 +182,19 @@ replacements = [
         "} = require('./scripts/desktop-distribution/linux/appimage-node-runtime.cjs')\n",
         "const { appImageNodeRuntimeFpmArgs } = "
         "require('./scripts/desktop-distribution/linux/appimage-node-runtime.cjs')\n",
+    ),
+    (
+        "    return import('./scripts/native-build/build-journal-file-lock.mjs').then(\n"
+        "      ({ buildJournalFileLock }) => {\n"
+        "        const lockName =\n"
+        "          context.electronPlatformName === 'win32' ? 'journal-file-lock.exe' : 'journal-file-lock'\n"
+        "        const arch = normalizeElectronArchitecture(context.arch)\n"
+        "        buildJournalFileLock(join(__dirname, '..', journalFileLockBuildDir, arch, lockName), arch, {\n"
+        "          glibcFloor: context.electronPlatformName === 'linux' ? 'desktop' : false\n"
+        "        })\n"
+        "      }\n"
+        "    )\n",
+        "",
     ),
     (
         "  beforePack: (\n"
@@ -283,6 +296,24 @@ build() {
     native/wayland-clipboard/x11-clipboard-publisher.c \
     -ldl \
     -o "$wayland_out/orca-wayland-clipboard"
+  local journal_arch
+  case $CARCH in
+    x86_64) journal_arch=x64 ;;
+    aarch64) journal_arch=arm64 ;;
+    *)
+      printf 'ERROR: unsupported journal file lock architecture %s\n' "$CARCH" >&2
+      return 1
+      ;;
+  esac
+  local journal_out="native/journal-file-lock/.build/$journal_arch"
+  install -d "$journal_out"
+  gcc \
+    -O2 -Wall -Wextra -Werror \
+    -fstack-protector-strong -D_FORTIFY_SOURCE=2 \
+    -fPIE -pie -Wl,-z,relro,-z,now \
+    native/journal-file-lock/main.c \
+    -o "$journal_out/journal-file-lock"
+
 
   local pnpm=("$srcdir/pnpm/pnpm")
 
