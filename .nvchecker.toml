@@ -1,0 +1,5 @@
+[argc-bin]
+source = "github"
+github = "sigoden/argc"
+use_latest_release = true
+prefix = "v"
