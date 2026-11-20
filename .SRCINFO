@@ -1,0 +1,37 @@
+pkgbase = ch34xpar-git
+	pkgdesc = This driver and application support the USB bus interface chips from WCH (Qinheng Microelectronics): CH341, CH346, CH347, CH339, CH9341, CH9346, as well as the WCH USB-to-serial series chips.
+	pkgver = r15.2ccc018
+	pkgrel = 1
+	url = https://github.com/WCHSoftGroup/ch341par_linux
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	optdepends = ch34x-mphsi-master: CH341A/B/C/F/H/T | CH347F/T | CH339W Linux USB to SPI/I2C/GPIO Controller Driver
+	optdepends = ch343ser-dkms: USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc
+	options = !strip
+	options = !debug
+	source = ch34xpar-git::git+https://github.com/WCHSoftGroup/ch341par_linux.git
+	sha256sums = SKIP
+
+pkgname = ch34xpar-git
+	depends = ch34xpar-dkms-git
+	depends = libch34xpar-git
+	provides = ch34xpar
+	conflicts = ch34xpar
+
+pkgname = ch34xpar-dkms-git
+	pkgdesc = This driver and application support the USB bus interface chips from WCH (Qinheng Microelectronics): CH341, CH346, CH347, CH339, CH9341, CH9346, as well as the WCH USB-to-serial series chips. (DKMS)
+	arch = any
+	depends = dkms
+	optdepends = linux-headers: build the module against Arch kernel
+	optdepends = linux-lts-headers: build the module against LTS Arch kernel
+	optdepends = linux-zen-headers: build the module against Zen kernel
+	provides = ch34xpar-dkms
+	conflicts = ch34xpar-dkms
+
+pkgname = libch34xpar-git
+	pkgdesc = This driver and application support the USB bus interface chips from WCH (Qinheng Microelectronics): CH341, CH346, CH347, CH339, CH9341, CH9346, as well as the WCH USB-to-serial series chips. (dynamic lib)
+	arch = x86_64
+	depends = glibc
+	provides = libch34xpar
+	conflicts = libch34xpar
