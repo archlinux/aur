@@ -1,6 +1,6 @@
 pkgbase = visicasts-bin
 	pkgdesc = Native podcast player with a local library and offline listening
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://visicasts.com
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = visicasts-bin
 	conflicts = visicasts
 	options = !strip
 	options = !debug
-	source = https://downloads.visicasts.com/releases/0.1.1/visicasts-0.1.1-linux-x86_64.tar.gz
-	sha256sums = 7a244d73d335e1f837818b18b3e8a8af660a66afd844e77b5a795eba3b89175e
+	source = https://downloads.visicasts.com/releases/0.2.0/visicasts-0.2.0-linux-x86_64.tar.gz
+	sha256sums = fc99067af8e47c56bd63ae4927f83df974c56ddbe4dca45260093c2d476275ac
 
 pkgname = visicasts-bin
