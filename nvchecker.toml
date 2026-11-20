@@ -1,0 +1,10 @@
+# nvchecker config for genoffice
+# Usage: nvchecker -c nvchecker.toml
+# Upstream tags look like "v0.8.667"; strip the "v" prefix.
+[genoffice]
+source = "git"
+git = "https://github.com/genspark-ai/genoffice.git"
+use_max_tag = true
+tag_sort = "version"
+from_pattern = 'v(\d+\.\d+\.\d+)'
+to_pattern = '\1'
