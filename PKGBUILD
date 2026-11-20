@@ -14,7 +14,7 @@
 
 pkgname=baidupcs-rust-bin
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern Baidu Netdisk client with a Rust backend and Vue 3 web UI (prebuilt)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/komorebiCarry/BaiduPCS-Rust'
