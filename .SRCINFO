@@ -1,6 +1,6 @@
 pkgbase = skwir-bin
 	pkgdesc = An augmented file manager, for humans and agents (the release build)
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://skwir.org
 	arch = x86_64
@@ -42,17 +42,17 @@ pkgbase = skwir-bin
 	optdepends = fuse3: rclone mounts, and phones KDE holds
 	optdepends = avahi: servers nearby, a NAS or a Mac
 	optdepends = wsdd: Windows PCs nearby
-	provides = skwir=0.5.1
-	provides = skwir-mermaid=0.5.1
-	provides = skwir-math=0.5.1
-	provides = skwir-mupdf=0.5.1
+	provides = skwir=0.6.0
+	provides = skwir-mermaid=0.6.0
+	provides = skwir-math=0.6.0
+	provides = skwir-mupdf=0.6.0
 	conflicts = skwir
 	conflicts = skwir-mermaid
 	conflicts = skwir-math
 	conflicts = skwir-mupdf
 	options = !strip
 	options = !debug
-	source = skwir-0.5.1-linux-x86_64.tar.gz::https://github.com/skwir-org/skwir/releases/download/v0.5.1/skwir-0.5.1-linux-x86_64.tar.gz
-	sha256sums = 71cf261f27839de54c0a0f609b3a3739eeed66eec7c08e172328110760978d74
+	source = skwir-0.6.0-linux-x86_64.tar.gz::https://github.com/skwir-org/skwir/releases/download/v0.6.0/skwir-0.6.0-linux-x86_64.tar.gz
+	sha256sums = d6fcbb1ac5f0f5c957d0b9daf7076f8bf45dc1e8cc0d53a75bbeb925c4f5c29a
 
 pkgname = skwir-bin

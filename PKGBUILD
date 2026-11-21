@@ -8,7 +8,7 @@
 # Maintainer: venator <venator at tutamail dot com>
 
 pkgname=skwir-bin
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents (the release build)'
 arch=('x86_64')
@@ -54,11 +54,14 @@ conflicts=('skwir' 'skwir-mermaid' 'skwir-math' 'skwir-mupdf')
 options=('!strip' '!debug')
 source=("skwir-$pkgver-linux-x86_64.tar.gz::$_repo/releases/download/v$pkgver/skwir-$pkgver-linux-x86_64.tar.gz")
 # Filled by aur-prepare with the release's.
-sha256sums=('71cf261f27839de54c0a0f609b3a3739eeed66eec7c08e172328110760978d74')
+sha256sums=('d6fcbb1ac5f0f5c957d0b9daf7076f8bf45dc1e8cc0d53a75bbeb925c4f5c29a')
 
 package() {
   install -d "$pkgdir/opt" "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses"
   cp -a --no-preserve=ownership "skwir-$pkgver-linux-x86_64" "$pkgdir/opt/skwir"
+  # The AUR updates this copy: it is never told of new versions by
+  # skwir, which asks only one the tarball's word names (ADR-142).
+  rm "$pkgdir/opt/skwir/usr/share/skwir/channel"
   # skwir finds its helpers, libraries and licences beside the program
   # the link leads to.
   ln -s /opt/skwir/usr/bin/skwir "$pkgdir/usr/bin/skwir"
@@ -66,6 +69,8 @@ package() {
   cd "$pkgdir/opt/skwir/usr/share"
   install -Dm644 applications/org.skwir.skwir.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 metainfo/org.skwir.skwir.metainfo.xml -t "$pkgdir/usr/share/metainfo/"
+  install -Dm644 xdg-desktop-portal/portals/skwir.portal -t "$pkgdir/usr/share/xdg-desktop-portal/portals/"
+  install -Dm644 dbus-1/services/org.freedesktop.impl.portal.desktop.skwir.service -t "$pkgdir/usr/share/dbus-1/services/"
   for icon in icons/hicolor/*/apps/org.skwir.skwir.*; do
     install -Dm644 "$icon" "$pkgdir/usr/share/$icon"
   done
