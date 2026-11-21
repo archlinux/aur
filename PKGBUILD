@@ -1,6 +1,6 @@
 # Maintainer: Lecer69 <https://github.com/Lecer69>
 pkgname=lssh
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Simple SSH server manager"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 options=('!debug')
 # pkgver, pkgrel and sha256sums are filled in by .github/workflows/aur.yml on release.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Lecer69/LSSH/archive/v$pkgver.tar.gz")
-sha256sums=('e55fe28113a26ba3c4f19164789ad1cc6ddf3479e207733a9f05ab00d9fcde12')
+sha256sums=('7b1b2ed6cf36b8783a8e6dbac210be4911a194f196e57114b1e4ad0909265637')
 
 build() {
     cd "LSSH-$pkgver"
