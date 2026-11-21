@@ -1,0 +1,27 @@
+post_install() {
+  cat <<'EOF'
+==> The daemon starts by itself at your next login, on any desktop, with or
+    without systemd. To start it now, as your own user (not root):
+      luxtide autostart
+    Turn starting at login off in the tray menu ("Start at login"), in the
+    settings window, or with: luxtide autostart --off
+    sway, Hyprland and niri do not read login entries: run
+    "luxtide autostart" from their configuration instead.
+==> Check what it found and decided:
+      luxtide displays
+      luxtide status
+==> External monitors need ddcutil. Right after installing it, load the
+    I2C driver once (it loads by itself from the next boot on):
+      sudo modprobe i2c-dev
+==> GNOME shows the tray icon only with the AppIndicator extension
+    (gnome-shell-extension-appindicator) enabled.
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> Restart the daemon to load the new version:
+      systemctl --user restart luxtide
+    (without systemd: log out and back in)
+EOF
+}

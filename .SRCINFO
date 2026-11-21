@@ -1,0 +1,23 @@
+pkgbase = luxtide-git
+	pkgdesc = Automatic screen brightness that follows the sun, for DDC/CI monitors and laptop panels (development version)
+	pkgver = 2.0.0.r15.g411489d
+	pkgrel = 1
+	url = https://github.com/MikolajQ/luxtide
+	install = luxtide.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gtk4
+	depends = python
+	depends = python-gobject
+	optdepends = ddcutil: external monitors over DDC/CI
+	optdepends = gnome-shell-extension-appindicator: tray icon on GNOME
+	optdepends = geoclue: find the location automatically
+	optdepends = libshumate: map in the location window
+	provides = luxtide
+	conflicts = luxtide
+	conflicts = ddc-sun-dimmer
+	source = git+https://github.com/MikolajQ/luxtide.git
+	sha256sums = SKIP
+
+pkgname = luxtide-git
