@@ -63,17 +63,23 @@ package() {
   rm -rf "$pkgdir/opt"
   gunzip "$pkgdir/usr/lib/jacartauc/bin/JaCartaUC.gz" # unpack binary
 
-  # package-provided polkit rules belong in /usr/share, /etc is for the admin
-  install -Dm644 "$pkgdir/etc/polkit-1/rules.d/00-aladdin-pcsc.rules" \
-    "$pkgdir/usr/share/polkit-1/rules.d/00-aladdin-pcsc.rules"
+  # package-provided polkit rules belong in /usr/share, /etc is for the admin;
+  # keep whatever names upstream ships instead of assuming a file name
+  for rule in "$pkgdir"/etc/polkit-1/rules.d/*.rules; do
+    install -Dm644 "$rule" "$pkgdir/usr/share/polkit-1/rules.d/${rule##*/}"
+  done
   rm -rf "$pkgdir/etc"
 
-  # icons and desktop entry
-  for size in 16 24 32 48 256 512; do
-    install -Dm644 "$pkgdir/usr/lib/jacartauc/bin/jacartauc-$size.png" \
-      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/jacartauc.png"
+  # icons and desktop entry; upstream may add or drop sizes, so derive them
+  # from the file names instead of hardcoding the list
+  for icon in "$pkgdir"/usr/lib/jacartauc/bin/jacartauc-*.png; do
+    size=${icon##*/jacartauc-}
+    size=${size%.png}
+    if [[ $size =~ ^[0-9]+$ ]]; then
+      install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/jacartauc.png"
+      rm -f "$icon"
+    fi
   done
-  rm -f "$pkgdir"/usr/lib/jacartauc/bin/jacartauc-*.png
   sed -i -e 's|^Exec=.*|Exec=/usr/bin/jacartauc|' \
          -e 's|^Icon=.*|Icon=jacartauc|' \
          -e 's|^Path=.*|Path=/usr/lib/jacartauc/bin|' \
