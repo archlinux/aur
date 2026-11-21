@@ -1,0 +1,67 @@
+From 930a24586d68e5f6976ea7f60fdc9f691157482a Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Fri, 20 Nov 2026 21:30:38 -0500
+Subject: [PATCH 4/4] docs: document prefill-interleave: epoch
+
+---
+ docs/GUIDE.md | 30 +++++++++++++++++++++++++++++-
+ 1 file changed, 29 insertions(+), 1 deletion(-)
+
+diff --git a/docs/GUIDE.md b/docs/GUIDE.md
+index c2c91477..fe00ad66 100644
+--- a/docs/GUIDE.md
++++ b/docs/GUIDE.md
+@@ -1322,6 +1322,30 @@ resident set). `/stats` counts the frozen-lane steps as `steps_held_decode`, the
+ idled as `head_freeze_releases` (each occurrence is a near-stall; watch it at ~0). A step issued
+ ahead keeps its overlap under decode-govern. `prefill-interleave: auto/N` stays the safe default.
+ 
++**Cohort epochs: `prefill-interleave: epoch`.** The governed unit is the epoch, not the step: the
++class of the oldest active request governs from formation to formation, and every request of that
++class present at formation -- the cohort, queued ones included -- is guaranteed that phase to its
++end. An epoch forms when the previous one's last member finishes its phase, and when an idle
++engine gets work; never mid-epoch. A PREFILL epoch runs every member's prompt to completion with
++no decode sawtooth between its chunks; a DECODE epoch runs every member's decoding to its end,
++and prompts queued behind it wait for it whole. Mid-epoch arrivals of the governed class run
++beside the cohort but hold no membership and no guarantee. KNOWN TRADES: at an epoch boundary a
++running request of the other class is frozen where it stands -- a mid-prompt cut
++(`midarrival_cuts`) that keeps its KV occupied while the epoch it missed runs -- and a DECODE
++epoch closes only at its longest member's last token, so prompts queued behind a long generation
++wait out that tail. Preemption revokes membership: a preempted member loses the guarantee
++(`cohort_preempt_removals`; watch ~0) and the epoch closes without it rather than livelocking;
++the epoch's own victim preference takes the frozen other-class rows first, then same-class
++mid-arrivals, and a cohort member only when nothing else is eligible. The head mode's liveness
++net applies: a step that would idle the engine lifts the freeze once, and expert staging disarms
++at each epoch boundary (`head_staging_disarms`, counted as under head). `/stats` counts the
++formations as `epochs`, the summed closed-epoch length in steps as `epoch_len_steps` (divide by
++`epochs` for the average), the boundary cuts as
++`midarrival_cuts` and the revoked guarantees as `cohort_preempt_removals`; the head-mode counters
++(`steps_held_decode`, `head_flips`, `head_freeze_releases`) count the same events here. `head`
++governs the step, `epoch` the phase: choose `epoch` when a prompt's chunks and a session's
++generation each matter more uninterrupted than interleaved.
++
+ **A prefill alone in its step can carry several intervals** (`prefill-span: N`, default 1). A
+ chunk ends on every checkpoint interval, so a prompt is otherwise prefilled one interval a step.
+ With
+@@ -2630,7 +2654,7 @@ switch is set with `true`. The fleet's own keys (a model's `aliases`, `priority`
+ |---|---|---|
+ | `max-num-batched-tokens: N` | 2048 | largest token count one step may carry |
+ | `prefill-room-gate: MODE` | off | `on`: a fresh prompt is admitted only when the whole prompt and one decode position fit the KV cache beside every running sequence and every prompt admitted ahead of it, and the requests behind it wait with it; a prompt that cannot fit even with nothing running fails (`idle_admission`) instead of waiting; long prompts then run one after another. `off`: a prompt is admitted when its first chunk fits, so a long one may fill the cache mid-prompt and be preempted, recomputing from its start |
+-| `prefill-interleave: N` | auto:1 (0 under `deterministic: true`, KL mode, generators) | decode-only steps after each prefill chunk while other sequences decode (§4.5), at most 64; `auto` fits them in a quarter of the chunk step's measured time, `auto:SHARE` in SHARE of it (0 < SHARE <= 4); `0` lets every step carry a chunk; `head` governs each step by the class of the oldest active request (§4.5) |
++| `prefill-interleave: N` | auto:1 (0 under `deterministic: true`, KL mode, generators) | decode-only steps after each prefill chunk while other sequences decode (§4.5), at most 64; `auto` fits them in a quarter of the chunk step's measured time, `auto:SHARE` in SHARE of it (0 < SHARE <= 4); `0` lets every step carry a chunk; `head` governs each step by the class of the oldest active request (§4.5); `epoch` holds that class until every request of it present at epoch start finishes that phase (§4.5) |
+ | `mixed-step-target-ms: N` | 0 (off) | soft completed-service-time target for mixed prefill/decode steps; learns one aggregate prefill cap while decoders are active and leaves uncontended prefill unchanged (§4.5) |
+ | `preempt-wait-ms: N` | 5000 | how long a preempted prefill may wait for its whole-recompute gate before reclaiming cache blocks and preempting lowest-priority running requests until one overdue request can prefill; `0` falls back on the next step. A preempted request publishes what it computed to the prefix cache, as a finished one does, so its recompute adopts its prompt instead of computing it again; under pressure the cache gives those blocks back, the newest last, before another request is preempted |
+ | `busy-prefill-chunk: MODE` | auto | a prefill chunk's share of a step that has other work: `auto` leaves decode rows and waiting requests their room (§4.5), `off` takes the whole step, `N` holds it to N tokens |
+@@ -4562,6 +4586,10 @@ always 1 and carries the cache's settings as labels: `cache_dtype`, `block_size`
+ | `engine_steps_held_decode_total` | decode steps the frozen decode lanes sat out under `prefill-interleave: head` (§4.5) |
+ | `engine_head_flips_total` | head-class flips under `prefill-interleave: head`: the oldest active request changed class (§4.5) |
+ | `engine_head_freeze_releases_total` | liveness passes that lifted a head-mode freeze because the step would otherwise have idled (§4.5; watch ~0) |
++| `engine_epochs_total` | cohort epochs formed under `prefill-interleave: epoch`: at epoch end or idle->busy (§4.5) |
++| `engine_epoch_len_steps_total` | summed closed-epoch length in steps under `prefill-interleave: epoch`; divide by `engine_epochs_total` for the average (§4.5) |
++| `engine_midarrival_cuts_total` | requests frozen mid-phase by a class flip at an epoch boundary under `prefill-interleave: epoch` (§4.5) |
++| `engine_cohort_preempt_removals_total` | epoch cohort members whose preemption revoked the finish-guarantee (§4.5; watch ~0) |
+ | `mixed_step_target_steps_total`, `mixed_step_target_misses_total` | mixed steps observed by `mixed-step-target-ms`, and those whose completed engine service time exceeded its soft target (§4.5) |
+ | `mixed_step_target_prefill_cap` | current learned aggregate prefill-row cap; absent while the policy is off (§4.5) |
+ | `attn_cached_tokens_total`, `linear_cached_tokens_total` | prefix reuse, both halves |
+-- 
+2.56.1
+

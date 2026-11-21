@@ -1,0 +1,463 @@
+From f7a7f4ab7ec590d5440a4c6625e31c572db30383 Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Fri, 20 Nov 2026 21:30:38 -0500
+Subject: [PATCH 3/4] tests: epoch governance coverage
+
+---
+ tests/config_test.cpp |  20 +++
+ tests/sched_test.cpp  | 366 ++++++++++++++++++++++++++++++++++++++++++
+ tests/server_test.cpp |  30 ++++
+ 3 files changed, 416 insertions(+)
+
+diff --git a/tests/config_test.cpp b/tests/config_test.cpp
+index cb68e13d..a919f5d6 100644
+--- a/tests/config_test.cpp
++++ b/tests/config_test.cpp
+@@ -577,6 +577,26 @@ TEST(prefill_interleave_takes_head) {
+     CHECK(shown);
+ }
+ 
++/* --prefill-interleave epoch: the sentinel and the set flag; the dump prints the name back;
++ * anything epoch-shaped but not epoch is refused. */
++TEST(prefill_interleave_takes_epoch) {
++    Config e;
++    CHECK_EQ(parse({ "--prefill-interleave", "epoch" }, &e), RAD_OK);
++    CHECK_EQ(e.prefill_interleave, Config::kPrefillInterleaveEpoch);
++    CHECK(e.prefill_interleave_set);      /* bring-up keeps it: no auto:1 default */
++    Config c;
++    CHECK_EQ(parse({ "--prefill-interleave", "epoch:2" }, &c), RAD_E_INVAL);
++    CHECK_EQ(parse({ "--prefill-interleave", "Epoch" }, &c), RAD_E_INVAL);
++    CHECK_EQ(parse({ "--prefill-interleave", "epochs" }, &c), RAD_E_INVAL);
++    bool shown = false;
++    for (const diag::ConfigRow& r : diag::config_rows(e))
++        if (r.flag == "--prefill-interleave") {
++            shown = true;
++            CHECK_EQ(r.value, std::string("epoch"));
++        }
++    CHECK(shown);
++}
++
+ TEST(mixed_step_target_is_an_opt_in_soft_millisecond_target) {
+     Config d;
+     REQUIRE_EQ(parse({}, &d), RAD_OK);
+diff --git a/tests/sched_test.cpp b/tests/sched_test.cpp
+index b8092ff5..6d150e36 100644
+--- a/tests/sched_test.cpp
++++ b/tests/sched_test.cpp
+@@ -4205,6 +4205,372 @@ static Headed head_run(bool decoder_first, int steps) {
+     return out;
+ }
+ 
++/* ================================================================== epoch/cohort governance */
++/* --prefill-interleave: epoch. The oldest active request's class governs an epoch that forms at
++ * epoch end and idle->busy only; the cohort -- every same-class request in running_ or waiting_
++ * at formation -- is guaranteed that phase, and the epoch closes when the last one finishes it.
++ * Mid-epoch arrivals run (right class) without a guarantee; preemption revokes membership.
++ * These timelines run with the prefix cache off: the shapes below are the policy, not a hit. */
++
++/* Commit the planned step with every row producing `token` and only the rows whose seq appears
++ * in `ends` ending. */
++static void commit_eos_on(Fixture& f, std::vector<uint64_t> ends, int32_t token = 12) {
++    const StepPlan& p = f.sch.plan();
++    std::vector<int32_t> a(p.e.size(), 0), t(p.e.size(), token);
++    std::vector<uint8_t> e(p.e.size(), 0);
++    for (size_t i = 0; i < p.e.size(); ++i)
++        for (uint64_t id : ends) if (p.e[i].seq == id) e[i] = 1;
++    Scheduler::StepResult r;
++    r.n_seq = (int)p.e.size();
++    r.n_accepted = a.data();
++    r.token = t.data();
++    r.eos = e.data();
++    CHECK_OK(f.sch.commit(r));
++}
++
++/* Whether the request is still prefilling (the scheduler's class predicate). */
++static bool epoch_pf(const Request& r) {
++    return r.n_computed < (int64_t)r.prompt.size() ||
++           r.n_computed + 1 < (int64_t)(r.prompt.size() + r.output.size());
++}
++
++/* E1: three near-simultaneous prompts. One PREFILL epoch drains all three -- no sawtooth, no
++ * member frozen mid-prompt -- and the first member's early class flip re-governs nothing. Then
++ * the DECODE epoch's cohort is all three; a turn-2 arrival queues behind it, outside the cohort,
++ * and the epoch is unaffected by it. */
++TEST(epoch_E1_three_prompts_one_prefill_epoch) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    const uint64_t a = f.submit(256, 8);             /* the leader: one chunk, flips early */
++    const uint64_t b = f.submit(512, 8);
++    const uint64_t c = f.submit(512, 8);
++    std::string shape;
++    int steps = 0;
++    for (; steps < 40; ++steps) {
++        CHECK(f.sch.step() != nullptr);
++        if (f.sch.metrics().epochs >= 2) break;      /* this step formed the DECODE epoch */
++        bool chunk = false;
++        for (const StepEntry& e : f.sch.plan().e) if (e.is_prefill) chunk = true;
++        shape += chunk ? 'C' : 'D';
++        /* no cohort member sits frozen mid-prompt: every running member with a phase left has
++         * a row in the step */
++        for (uint64_t id : {a, b, c}) {
++            Request* sp = f.sch.find(id);
++            if (!sp || sp->state != ReqState::Running || !epoch_pf(*sp)) continue;
++            bool row = false;
++            for (const StepEntry& e : f.sch.plan().e) if (e.seq == id) row = true;
++            CHECK(row);
++        }
++        f.commit_plain(12);
++        CHECK_EQ(f.sch.metrics().head_flips, 0);     /* a's early flip re-governed nothing */
++    }
++    CHECK_EQ(f.sch.metrics().epochs, 2);             /* the PF epoch, then DECODE */
++    CHECK(shape.find('D') == std::string::npos);     /* no sawtooth inside the PF epoch */
++    CHECK_EQ(f.sch.metrics().head_flips, 1);         /* the one flip, at the boundary */
++    CHECK_EQ(f.sch.metrics().midarrival_cuts, 0);
++    CHECK_EQ(f.sch.metrics().head_freeze_releases, 0);
++    CHECK(f.sch.find(a)->n_computed >= 256);    /* all three prefills completed in epoch 1 */
++    CHECK(f.sch.find(b)->n_computed >= 512);
++    CHECK(f.sch.find(c)->n_computed >= 512);
++    /* the DECODE epoch: cohort {a, b, c}; a turn-2 arrival is queued, not cohort */
++    const uint64_t t2 = f.submit(100, 8);
++    for (int k = 0; k < 3; ++k) {
++        CHECK(f.sch.step() != nullptr);
++        for (const StepEntry& e : f.sch.plan().e) CHECK(!e.is_prefill);
++        f.commit_plain(12);
++    }
++    CHECK_EQ(f.sch.metrics().epochs, 2);             /* the arrival did not re-govern */
++    CHECK_EQ((int)f.sch.find(t2)->state, (int)ReqState::Waiting);
++}
++
++/* E2: an old decoder holds the floor. The prompts wait -- wrong class, not cohort, admission
++ * frozen -- and on its EOS the PREFILL epoch that forms takes both queued prompts into its
++ * cohort [OD2] and completes them. */
++TEST(epoch_E2_old_decoder_holds_the_floor) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    const uint64_t o = f.submit(100, 512);
++    CHECK(f.sch.step() != nullptr);                  /* PF epoch {o}: its chunk */
++    f.commit_plain(12);                              /* o decodes: epoch 1 drains */
++    const uint64_t p1 = f.submit(512, 8);
++    const uint64_t p2 = f.submit(512, 8);
++    for (int k = 0; k < 4; ++k) {                    /* DECODE epoch {o}: the prompts wait */
++        CHECK(f.sch.step() != nullptr);
++        for (const StepEntry& e : f.sch.plan().e) CHECK(!e.is_prefill);
++        CHECK_EQ((int)f.sch.find(p1)->state, (int)ReqState::Waiting);
++        CHECK_EQ((int)f.sch.find(p2)->state, (int)ReqState::Waiting);
++        f.commit_plain(12);
++    }
++    CHECK_EQ(f.sch.metrics().epochs, 2);
++    CHECK_EQ(f.sch.metrics().midarrival_cuts, 0);    /* queued, not running: not cuts */
++    CHECK(f.sch.step() != nullptr);
++    f.commit(12, 1);                                 /* o's EOS closes the epoch */
++    bool done1 = false, done2 = false;
++    for (int k = 0; k < 60 && !(done1 && done2); ++k) {
++        CHECK(f.sch.step() != nullptr);              /* PF epoch {p1, p2} [OD2] */
++        f.commit_plain(12);
++        done1 = f.sch.find(p1)->n_computed >= 512;
++        done2 = f.sch.find(p2)->n_computed >= 512;
++    }
++    CHECK(done1);
++    CHECK(done2);
++    CHECK_EQ(f.sch.metrics().epochs, 3);
++}
++
++/* E3: a mid-arrival runs beside the cohort (right class, no membership), the epoch ends at the
++ * last member's last chunk with it mid-prompt, and the DECODE epoch that forms freezes it --
++ * the boundary cut. It leads the PREFILL epoch after that: mid-arrival status is not a stigma. */
++TEST(epoch_E3_midarrival_runs_and_is_cut) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    const uint64_t a = f.submit(512, 8);
++    const uint64_t b = f.submit(128, 8);             /* short member: leaves budget beside it */
++    CHECK(f.sch.step() != nullptr);                  /* PF epoch {a, b} */
++    f.commit_plain(12);
++    const uint64_t c = f.submit(512, 8);             /* mid-arrival: same class, no membership */
++    bool c_ran = false;
++    for (int k = 0; k < 20; ++k) {                   /* run to the boundary */
++        CHECK(f.sch.step() != nullptr);
++        for (const StepEntry& e : f.sch.plan().e) if (e.seq == c && e.is_prefill) c_ran = true;
++        if (f.sch.metrics().epochs >= 2) break;      /* this step formed the DECODE epoch */
++        f.commit_plain(12);
++    }
++    CHECK(c_ran);                                    /* it ran beside the cohort */
++    CHECK(f.sch.find(c)->n_computed < 512);          /* still mid-prompt at the boundary */
++    CHECK_EQ(f.sch.metrics().epochs, 2);             /* the DECODE epoch formed at the drain */
++    CHECK_EQ(f.sch.metrics().midarrival_cuts, 1);    /* c is the one running opposite-class row */
++    bool c_frozen = true;
++    for (const StepEntry& e : f.sch.plan().e) if (e.seq == c) c_frozen = false;
++    CHECK(c_frozen);
++    CHECK_EQ((int)f.sch.find(c)->state, (int)ReqState::Running);   /* frozen, KV kept */
++    for (int k = 0; k < 3; ++k) {                    /* frozen through the decode epoch */
++        f.commit_plain(12);
++        CHECK(f.sch.step() != nullptr);
++        for (const StepEntry& e : f.sch.plan().e) CHECK(e.seq != c);
++    }
++    f.commit(12, 1);                                 /* a and b EOS: the epoch drains */
++    CHECK(f.sch.step() != nullptr);                  /* c leads the next PF epoch */
++    CHECK_EQ(f.sch.metrics().epochs, 3);
++    bool c_chunk = false;
++    for (const StepEntry& e : f.sch.plan().e) if (e.seq == c && e.is_prefill) c_chunk = true;
++    CHECK(c_chunk);
++    CHECK_EQ(f.sch.metrics().midarrival_cuts, 1);    /* c matches this epoch: not a cut */
++}
++
++/* E4a: a mid-arrival that finishes its prefill before the boundary joins the DECODE cohort at
++ * formation -- the guarantee covers it, and the epoch closes only when it too ends its phase. */
++TEST(epoch_E4a_midarrival_joins_the_decode_cohort) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    const uint64_t a = f.submit(2000, 8);
++    const uint64_t b = f.submit(2000, 8);
++    CHECK(f.sch.step() != nullptr);                  /* PF epoch {a, b} */
++    f.commit_plain(12);
++    const uint64_t c = f.submit(256, 8);             /* mid-arrival: one chunk */
++    for (int k = 0; k < 20; ++k) {
++        CHECK(f.sch.step() != nullptr);
++        const bool cdone = f.sch.find(c)->n_computed >= 256;
++        f.commit_plain(12);
++        if (cdone) break;                            /* c finished early: frozen, waiting */
++    }
++    CHECK(f.sch.find(c)->n_computed >= 256);
++    CHECK_EQ(f.sch.metrics().epochs, 1);             /* the PF epoch still drains a and b */
++    for (int k = 0; k < 30; ++k) {                   /* to the cohort's drain */
++        CHECK(f.sch.step() != nullptr);
++        const bool adone = f.sch.find(a)->n_computed >= 2000;
++        const bool bdone = f.sch.find(b)->n_computed >= 2000;
++        f.commit_plain(12);
++        if (adone && bdone) break;
++    }
++    CHECK(f.sch.step() != nullptr);                  /* DECODE epoch: cohort {a, b, c} */
++    CHECK_EQ(f.sch.metrics().epochs, 2);
++    CHECK_EQ(f.sch.metrics().midarrival_cuts, 0);    /* c is same-class at formation: cohort */
++    f.commit_plain(12);
++    CHECK(f.sch.step() != nullptr);
++    commit_eos_on(f, {a, b});                        /* two EOS do not close it: c is cohort */
++    CHECK(f.sch.step() != nullptr);
++    CHECK_EQ(f.sch.metrics().epochs, 2);
++    bool c_row = false;
++    for (const StepEntry& e : f.sch.plan().e) if (e.seq == c) c_row = true;
++    CHECK(c_row);
++    commit_eos_on(f, {c});                           /* the epoch closes at the last member */
++    const uint64_t n = f.submit(100, 8);
++    (void)n;
++    CHECK(f.sch.step() != nullptr);                  /* idle->busy: a new epoch forms */
++    CHECK_EQ(f.sch.metrics().epochs, 3);
++}
++
++/* E4b: with no decoders at the boundary (the cohort closes with its phase), the next epoch is
++ * PREFILL led by the mid-arrival that is still running. */
++TEST(epoch_E4b_no_decoders_at_the_boundary) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    const uint64_t a = f.submit(512, 1);             /* max_tokens 1: closes with its phase */
++    const uint64_t b = f.submit(512, 1);
++    CHECK(f.sch.step() != nullptr);                  /* PF epoch {a, b} */
++    f.commit_plain(12);
++    const uint64_t c = f.submit(2000, 8);            /* mid-arrival */
++    for (int k = 0; k < 20; ++k) {
++        CHECK(f.sch.step() != nullptr);
++        const bool adone = f.sch.find(a) == nullptr || f.sch.find(a)->state != ReqState::Running;
++        const bool bdone = f.sch.find(b) == nullptr || f.sch.find(b)->state != ReqState::Running;
++        f.commit_plain(12);
++        if (adone && bdone) break;                   /* both closed: nothing decodes */
++    }
++    CHECK(f.sch.find(c)->n_computed < 2000);    /* c still mid-prompt */
++    CHECK(f.sch.step() != nullptr);                  /* the next epoch is PF, led by c */
++    CHECK_EQ(f.sch.metrics().epochs, 2);
++    CHECK_EQ(f.sch.metrics().midarrival_cuts, 0);    /* c is the epoch's class: cohort, not cut */
++    bool c_chunk = false;
++    for (const StepEntry& e : f.sch.plan().e) if (e.seq == c && e.is_prefill) c_chunk = true;
++    CHECK(c_chunk);
++}
++
++/* E5: the decode epoch closes exactly at its longest member's EOS -- a short member's EOS does
++ * not close it -- and the turn-2 prompts queued behind the epoch are admitted at that instant.
++ * This is the full-generation guarantee's tail: the prompts wait out the long member. */
++TEST(epoch_E5_closes_at_the_long_member) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    const uint64_t l = f.submit(100, 512);           /* the long member */
++    const uint64_t s = f.submit(100, 8);             /* the short one */
++    CHECK(f.sch.step() != nullptr);                  /* PF epoch {l, s}: both chunks */
++    f.commit_plain(12);                              /* both decode-class: epoch 1 drains */
++    const uint64_t t2 = f.submit(100, 4);            /* turn 2, queued behind the epoch */
++    CHECK(f.sch.step() != nullptr);                  /* DECODE epoch {l, s} */
++    CHECK_EQ(f.sch.metrics().epochs, 2);
++    for (int k = 0; k < 4; ++k) {
++        CHECK(f.sch.step() != nullptr);
++        f.commit_plain(12);
++    }
++    CHECK(f.sch.step() != nullptr);
++    commit_eos_on(f, {s});                           /* the short member ends: no close */
++    for (int k = 0; k < 2; ++k) {
++        CHECK(f.sch.step() != nullptr);
++        for (const StepEntry& e : f.sch.plan().e) CHECK(e.seq != s);
++        CHECK_EQ((int)f.sch.find(t2)->state, (int)ReqState::Waiting);   /* the E5 tail */
++        f.commit_plain(12);
++    }
++    CHECK_EQ(f.sch.metrics().epochs, 2);             /* the epoch waits for its long member */
++    CHECK(f.sch.step() != nullptr);
++    commit_eos_on(f, {l});                           /* the long member's EOS closes it */
++    CHECK(f.sch.step() != nullptr);                  /* PF epoch {t2}: admitted at the instant */
++    CHECK_EQ(f.sch.metrics().epochs, 3);
++    bool t2_in = false;
++    for (const StepEntry& e : f.sch.plan().e) if (e.seq == t2) t2_in = true;
++    CHECK(t2_in);
++}
++
++/* E6: an idle engine governs nothing; the first arrival forms the first epoch (idle->busy), and
++ * the closed epoch reports its length. */
++TEST(epoch_E6_idle_to_busy_forms) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    CHECK(f.sch.step() == nullptr);                  /* idle: nothing to govern */
++    CHECK_EQ(f.sch.metrics().epochs, 0);
++    const uint64_t a = f.submit(100, 4);
++    CHECK(f.sch.step() != nullptr);                  /* idle->busy: the epoch forms */
++    CHECK_EQ(f.sch.metrics().epochs, 1);
++    bool chunk = false;
++    for (const StepEntry& e : f.sch.plan().e)
++        if (e.seq == a && e.is_prefill) chunk = true;
++    CHECK(chunk);
++    f.commit_plain(12);                              /* a decodes: the PF epoch drains */
++    CHECK(f.sch.step() != nullptr);                  /* the DECODE epoch forms */
++    CHECK_EQ(f.sch.metrics().epochs, 2);
++    CHECK(f.sch.metrics().epoch_len_steps > 0);      /* the closed epoch reported its length */
++}
++
++/* Preemption revokes membership [OD1]: the cohort's chunks run the pool out, a member is the
++ * only victim class, and its preemption moves the drain rather than a fulfilled guarantee --
++ * the epoch closes when the surviving member finishes its phase, without waiting for the
++ * preempted one to replay it. */
++TEST(epoch_preemption_revokes_membership) {
++    Fixture f;
++    f.build(/*blocks=*/150, /*states=*/64);          /* two prompts fit, three do not */
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    const uint64_t a = f.submit(1000, 512);
++    const uint64_t b = f.submit(1000, 512);
++    const uint64_t c = f.submit(1000, 512);          /* the pool cannot hold all three */
++    CHECK(f.sch.step() != nullptr);                  /* PF epoch {a, b, c} */
++    CHECK_EQ(f.sch.metrics().epochs, 1);
++    bool preempted = false;
++    for (int k = 0; k < 300 && !preempted; ++k) {
++        CHECK(f.sch.step() != nullptr);
++        for (uint64_t id : {a, b, c}) {
++            Request* r = f.sch.find(id);
++            if (r && r->state == ReqState::Preempted) preempted = true;
++        }
++        if (preempted) break;
++        f.commit_plain(12);
++    }
++    REQUIRE(preempted);
++    CHECK_EQ(f.sch.metrics().cohort_preempt_removals, 1);   /* membership revoked, not drained */
++    CHECK_EQ(f.sch.metrics().epochs, 1);             /* the epoch lives for the survivors */
++    for (int k = 0; k < 400 && f.sch.metrics().epochs < 2; ++k) {
++        CHECK(f.sch.step() != nullptr);
++        f.commit_plain(12);
++    }
++    CHECK_EQ(f.sch.metrics().epochs, 2);             /* it closed without the revoked member */
++}
++
++/* The victim preference [R7]: a decode epoch's cohort is the last resort. The frozen cut --
++ * the opposite-class row -- is the preferred victim, and the epoch and its cohort survive it
++ * untouched (head mode protects that same row; epoch mode owes it nothing). */
++TEST(epoch_victim_prefers_the_frozen_cut) {
++    Fixture f;
++    f.build(/*blocks=*/80, /*states=*/64);           /* the cohort's growth runs this out */
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    const uint64_t a = f.submit(512, 512);
++    const uint64_t b = f.submit(128, 512);
++    CHECK(f.sch.step() != nullptr);                  /* PF epoch {a, b} */
++    f.commit_plain(12);
++    const uint64_t c = f.submit(300, 512);           /* mid-arrival: runs beside the cohort */
++    for (int k = 0; k < 20 && f.sch.metrics().epochs < 2; ++k) {
++        CHECK(f.sch.step() != nullptr);
++        f.commit_plain(12);
++    }
++    CHECK_EQ(f.sch.metrics().epochs, 2);             /* the DECODE epoch formed */
++    CHECK_EQ(f.sch.metrics().midarrival_cuts, 1);    /* c is the frozen cut */
++    bool preempted = false;
++    for (int k = 0; k < 400 && !preempted; ++k) {    /* a and b's growth runs the pool out */
++        CHECK(f.sch.step() != nullptr);
++        Request* rc = f.sch.find(c);
++        if (rc && rc->state == ReqState::Preempted) { preempted = true; break; }
++        f.commit_plain(12);
++    }
++    REQUIRE(preempted);
++    CHECK(f.sch.find(a) && f.sch.find(a)->state == ReqState::Running);   /* cohort untouched */
++    CHECK(f.sch.find(b) && f.sch.find(b)->state == ReqState::Running);
++    CHECK_EQ(f.sch.metrics().cohort_preempt_removals, 0);   /* the victim was not cohort */
++    CHECK_EQ(f.sch.metrics().epochs, 2);             /* the epoch holds for its cohort */
++}
++
+ /* The prompt is the oldest: its class governs, the decoder admitted beside it is frozen while
+  * the prompt runs, and the chunk takes the whole step the frozen row would have shared. When
+  * the prompt's last chunk lands, the head turns into a decoder and the lanes reopen. */
+diff --git a/tests/server_test.cpp b/tests/server_test.cpp
+index 5a062b83..04e1fe04 100644
+--- a/tests/server_test.cpp
++++ b/tests/server_test.cpp
+@@ -2640,6 +2640,36 @@ TEST(the_head_governance_counters_are_exported) {
+     CHECK(rel != d.samples.end() && rel->second == 1.0);
+ }
+ 
++/* The epoch-mode governance counters are counters beside them: the formations, the summed
++ * closed-epoch length, the boundary cuts, and the revoked finish-guarantees. */
++TEST(the_epoch_governance_counters_are_exported) {
++    Metrics m("m", 1024);
++    server::SchedMetrics s;
++    s.epochs = 5;
++    s.epoch_len_steps = 41;
++    s.midarrival_cuts = 2;
++    s.cohort_preempt_removals = 1;
++    m.sample(s);
++    PromDoc d = parse_prom(m.render());
++    CHECK_EQ((int)d.errors.size(), 0);
++    CHECK_EQ(d.type["radiance:engine_epochs_total"], std::string("counter"));
++    CHECK_EQ(d.type["radiance:engine_epoch_len_steps_total"], std::string("counter"));
++    CHECK_EQ(d.type["radiance:engine_midarrival_cuts_total"], std::string("counter"));
++    CHECK_EQ(d.type["radiance:engine_cohort_preempt_removals_total"], std::string("counter"));
++    const auto ep = d.samples.find(
++        "radiance:engine_epochs_total{model_name=\"m\",engine=\"0\"}");
++    CHECK(ep != d.samples.end() && ep->second == 5.0);
++    const auto len = d.samples.find(
++        "radiance:engine_epoch_len_steps_total{model_name=\"m\",engine=\"0\"}");
++    CHECK(len != d.samples.end() && len->second == 41.0);
++    const auto cut = d.samples.find(
++        "radiance:engine_midarrival_cuts_total{model_name=\"m\",engine=\"0\"}");
++    CHECK(cut != d.samples.end() && cut->second == 2.0);
++    const auto pr = d.samples.find(
++        "radiance:engine_cohort_preempt_removals_total{model_name=\"m\",engine=\"0\"}");
++    CHECK(pr != d.samples.end() && pr->second == 1.0);
++}
++
+ TEST(the_mixed_step_target_controller_is_observable) {
+     Metrics m("m", 1024);
+     server::SchedMetrics s;
+-- 
+2.56.1
+

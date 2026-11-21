@@ -1,0 +1,635 @@
+From 0cae018849393bdf02e485a0b026fcebc05874a7 Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Fri, 20 Nov 2026 21:30:38 -0500
+Subject: [PATCH 2/4] =?UTF-8?q?sched:=20prefill-interleave=20epoch=20mode?=
+ =?UTF-8?q?=20=E2=80=94=20cohort-epoch=20governance?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ core/config.cpp           |   8 +-
+ core/engine_diagnose.cpp  |   7 ++
+ core/rad_core.h           |  10 +-
+ core/sched/metrics.h      |   8 ++
+ core/sched/scheduler.cpp  | 212 ++++++++++++++++++++++++++++++++------
+ core/sched/scheduler.h    |  23 +++++
+ core/server/adapters.h    |   4 +
+ core/server/dashboard.cpp |   4 +
+ core/server/iface.h       |   4 +
+ core/server/metrics.cpp   |  16 +++
+ core/server/metrics.h     |   1 +
+ tests/sched_test.cpp      |   2 +
+ 12 files changed, 263 insertions(+), 36 deletions(-)
+
+diff --git a/core/config.cpp b/core/config.cpp
+index 0d1bed1b..1fcd0b12 100644
+--- a/core/config.cpp
++++ b/core/config.cpp
+@@ -78,7 +78,11 @@ static const Flag g_flags[] = {
+                                         "time, auto:SHARE in SHARE of it (0-4]; 0 lets every step carry\n"
+                                         "a chunk; head = each step governed by the oldest active\n"
+                                         "request's class: a prefill head freezes the decode lanes, a\n"
+-                                        "decode head freezes prefill and admission; served default\n"
++                                        "decode head freezes prefill and admission; epoch = cohort-epoch\n"
++                                        "governance: the oldest active request's class governs until every\n"
++                                        "same-class request present at epoch start finishes that phase;\n"
++                                        "mid-epoch arrivals run (right class) without a finish-guarantee;\n"
++                                        "preemption revokes membership; served default\n"
+                                         "auto:1 (0 under --deterministic, KL mode, generators)" },
+     { "--mixed-step-target-ms", "N",    "soft duration target in milliseconds for a mixed prefill/decode\n"
+                                         "step. The scheduler learns an aggregate prefill cap from\n"
+@@ -722,6 +726,7 @@ int config_parse(int argc, char** argv, Config* c) {
+             if (!(v = need(i))) return RAD_E_INVAL;
+             c->prefill_interleave_set = true;
+             if (!std::strcmp(v, "head")) c->prefill_interleave = Config::kPrefillInterleaveHead;
++            else if (!std::strcmp(v, "epoch")) c->prefill_interleave = Config::kPrefillInterleaveEpoch;
+             else if (!std::strcmp(v, "auto")) { c->prefill_interleave = -1; c->prefill_interleave_share = 0.25; }
+             else if (!std::strncmp(v, "auto:", 5)) {
+                 /* auto:SHARE -- decode-only steps for up to SHARE x a chunk step's time, 0 < SHARE <= 4 */
+@@ -1760,6 +1765,7 @@ const ShowRow kShow[] = {
+     { "--prefill-interleave", [](const Config& c) {
+           return c.prefill_interleave > 0 ? num(c.prefill_interleave)
+                : c.prefill_interleave == Config::kPrefillInterleaveHead ? std::string("head")
++               : c.prefill_interleave == Config::kPrefillInterleaveEpoch ? std::string("epoch")
+                : c.prefill_interleave < 0 ? "auto:" + std::to_string(c.prefill_interleave_share)
+                                           : std::string("off"); } },
+     { "--mixed-step-target-ms", [](const Config& c) {
+diff --git a/core/engine_diagnose.cpp b/core/engine_diagnose.cpp
+index e357b8b7..68fa41fc 100644
+--- a/core/engine_diagnose.cpp
++++ b/core/engine_diagnose.cpp
+@@ -148,6 +148,13 @@ int Engine::run_diagnose() {
+                             "arrival and completion order of the requests, so a run with a different request "
+                             "mix or arrival timing schedules different steps; --prefill-interleave 0 or N "
+                             "fixes that too");
++        if (cfg_.prefill_interleave == Config::kPrefillInterleaveEpoch)
++            repro.push_back("--prefill-interleave epoch governs a whole epoch by the class of the oldest "
++                            "active request at its formation and guarantees that phase to every same-class "
++                            "request present then; like head it reads no device timing, but its epochs "
++                            "follow the arrival and completion order of the requests, so a run with a "
++                            "different request mix or arrival timing runs different epochs; "
++                            "--prefill-interleave 0 or N fixes that too");
+         const std::vector<diag::CardSample> s0 = diag::sample_cards("", serving_bdfs);
+         for (const diag::CardSample& c : s0)
+             if (c.perf_level == "auto")
+diff --git a/core/rad_core.h b/core/rad_core.h
+index efedb10a..a4727eef 100644
+--- a/core/rad_core.h
++++ b/core/rad_core.h
+@@ -859,9 +859,17 @@ struct Config {
+      * prefill and admission. Frozen rows are never preempted; a step that would idle the engine
+      * lifts the freeze once (Scheduler::step_locked). */
+     static constexpr int64_t kPrefillInterleaveHead = -2;
++    /* --prefill-interleave epoch: cohort-epoch governance. The class of the oldest active
++     * request governs an epoch that forms at epoch end and on the idle->busy transition only;
++     * its cohort -- every request of that class present in running_ or waiting_ at formation --
++     * is guaranteed to finish that phase, and the epoch closes when the last one does.
++     * Mid-epoch arrivals run (right class) without a finish-guarantee; preemption revokes
++     * membership (Scheduler::epoch_form_locked). */
++    static constexpr int64_t kPrefillInterleaveEpoch = -3;
+     int64_t prefill_interleave = 0;    /* --prefill-interleave: decode-only steps between chunks;
+                                         * -1 auto (Scheduler::interleave_steps),
+-                                        * kPrefillInterleaveHead head-class governance */
++                                        * kPrefillInterleaveHead head-class governance,
++                                        * kPrefillInterleaveEpoch cohort-epoch governance */
+     /* --mixed-step-target-ms: soft duration target for a mixed prefill/decode step. The scheduler
+      * learns an aggregate prefill-row cap from completed mixed steps; 0 keeps the fixed policy. */
+     int64_t mixed_step_target_ms = 0;
+diff --git a/core/sched/metrics.h b/core/sched/metrics.h
+index afcf1db4..2e5de494 100644
+--- a/core/sched/metrics.h
++++ b/core/sched/metrics.h
+@@ -46,6 +46,14 @@ struct SchedMetrics {
+     int64_t head_flips = 0;
+     int64_t head_freeze_releases = 0;
+     int64_t head_staging_disarms = 0;
++    /* --prefill-interleave epoch: cohort-epoch formations, the summed length of closed epochs
++     * in steps (divide by epochs for the average), running requests frozen by a class flip at
++     * an epoch boundary (the E3 cut), and cohort members whose preemption revoked the
++     * finish-guarantee [OD1]. */
++    int64_t epochs = 0;
++    int64_t epoch_len_steps = 0;
++    int64_t midarrival_cuts = 0;
++    int64_t cohort_preempt_removals = 0;
+     int64_t decode_rows_unspeculated = 0;
+     /* Steps whose forward pass was enqueued behind the previous step before it committed
+      * (Scheduler::step_next). Every other step leaves the card idle during the host's commit and
+diff --git a/core/sched/scheduler.cpp b/core/sched/scheduler.cpp
+index 153b71c8..07b7fe6f 100644
+--- a/core/sched/scheduler.cpp
++++ b/core/sched/scheduler.cpp
+@@ -68,6 +68,69 @@ bool Scheduler::head_class_prefill() const {
+     return r.n_computed < (int64_t)r.prompt.size() || r.n_computed + 1 < s.seq_len();
+ }
+ 
++/* --prefill-interleave epoch: the walk's class predicate, one spelling. A request whose prompt
++ * is fully placed and whose output (a preempted one's replay included) is within one token of
++ * its committed length is decoding; everything else is still prefilling. */
++bool Scheduler::req_class_prefill(const SchedReq& s) {
++    const Request& r = *s.req;
++    return (r.n_computed < (int64_t)r.prompt.size()) || (r.n_computed + 1 < s.seq_len());
++}
++
++/* A member leaves the cohort: its phase completed, it closed (a cancel or error drains it -- no
++ * guarantee is owed a request that will not finish), or it was preempted [OD1] -- which revokes
++ * membership rather than draining a guarantee, though the drain counter moves either way: the
++ * epoch must not wait for a request it no longer governs. The last departure closes the epoch;
++ * formation runs on the next planning pass. mu_ held. */
++void Scheduler::epoch_drop_member(int32_t slot, bool preempted) {
++    if (!epoch_member_at(slot)) return;
++    epoch_member_[(size_t)slot] = false;
++    --epoch_drain_;
++    if (preempted) ++m_.cohort_preempt_removals;
++    if (epoch_drain_ <= 0) {
++        epoch_live_ = false;
++        m_.epoch_len_steps += step_ - epoch_start_step_;
++    }
++}
++
++/* Formation: the leader is the oldest active request (head_slot_locked's rule), the epoch class
++ * is its current class -- a waiting leader enters as a prefill, the head_class_prefill rule --
++ * and the cohort is every request of that class present in running_ or waiting_: queued
++ * same-class members are guaranteed admitted-when-room and completed [OD2]. A running request of
++ * the other class is frozen by the flip: a mid-arrival cut (E3). Formation happens only when no
++ * epoch is live -- epoch end or idle->busy -- never mid-epoch. mu_ held. */
++void Scheduler::epoch_form_locked() {
++    const int32_t lead = head_slot_locked();
++    if (lead < 0) return;                       /* nothing to govern */
++    bool waiting_lead = false;
++    for (int32_t slot : waiting_)
++        if (slot == lead) { waiting_lead = true; break; }
++    epoch_class_prefill_ = waiting_lead || req_class_prefill(*reqs_[(size_t)lead]);
++    epoch_member_.assign(reqs_.size(), false);
++    epoch_drain_ = 0;
++    for (int32_t slot : running_) {
++        const SchedReq& s = *reqs_[(size_t)slot];
++        if (!s.req || !s.running) continue;
++        if (req_class_prefill(s) == epoch_class_prefill_) {
++            epoch_member_[(size_t)slot] = true;
++            ++epoch_drain_;
++        } else {
++            ++m_.midarrival_cuts;               /* frozen by the class flip at the boundary */
++        }
++    }
++    for (int32_t slot : waiting_) {
++        const SchedReq& s = *reqs_[(size_t)slot];
++        if (!s.req) continue;
++        /* A waiting request enters as a prefill whatever its counters read (the head rule). */
++        if (epoch_class_prefill_) {
++            epoch_member_[(size_t)slot] = true;
++            ++epoch_drain_;
++        }
++    }
++    epoch_live_ = true;
++    epoch_start_step_ = step_;
++    ++m_.epochs;
++}
++
+ void Scheduler::queue_insert(std::vector<int32_t>& q, int32_t slot) {
+     auto it = std::lower_bound(q.begin(), q.end(), slot,
+                                [&](int32_t a, int32_t b) { return ahead_of(a, b); });
+@@ -182,6 +245,12 @@ int Scheduler::init(Program& prog, const Config& cfg, IKVManager* kv, IPrefixCac
+                  "the oldest active request: a prefill head freezes the decode lanes for that "
+                  "step, a decode head freezes prefill and admission; frozen rows are never "
+                  "preempted, and a step that would idle the engine lifts the freeze once");
++    else if (cfg.prefill_interleave == Config::kPrefillInterleaveEpoch)
++        RAD_INFO("scheduler: --prefill-interleave epoch: cohort-epoch governance: the oldest "
++                 "active request's class governs until every same-class request present at epoch "
++                 "start finishes that phase; mid-epoch arrivals run (right class) without a "
++                 "finish-guarantee; preemption revokes membership; a step that would idle the "
++                 "engine lifts the freeze once");
+     else if (cfg.prefill_interleave == -1)
+         RAD_INFO("scheduler: --prefill-interleave auto: after a prefill chunk that leaves its "
+                  "prompt unfinished while other sequences decode, decode-only steps follow for up "
+@@ -776,6 +845,10 @@ bool Scheduler::publish_prefix(SchedReq& s) {
+ void Scheduler::close_request(SchedReq& s, ReqState st, const char* reason, bool defer_free,
+                               bool publish, int status, const char* why) {
+     ++step_finished_;
++    /* Epoch R4: a closing member has ended its phase -- a cancel or error counts as drained,
++     * no guarantee being owed a request that will not finish -- and the epoch must not wait
++     * for it. */
++    epoch_drop_member(s.slot, /*preempted=*/false);
+     /* Publish before freeing: this is the only moment the whole prefix is both computed and still
+      * owned. insert() takes its own KV references, so the blocks survive the free below. Cancelled
+      * and failed requests are published too; their prompts were computed, and a client that hangs
+@@ -1518,7 +1591,8 @@ void Scheduler::note_step_cost(bool chunk, double seconds) {
+ 
+ int64_t Scheduler::interleave_steps() const {
+     /* head mode never arms the hold; defensive against a caller that asks anyway. */
+-    if (cfg_.prefill_interleave == Config::kPrefillInterleaveHead) return 0;
++    if (cfg_.prefill_interleave == Config::kPrefillInterleaveHead ||
++        cfg_.prefill_interleave == Config::kPrefillInterleaveEpoch) return 0;
+     if (cfg_.prefill_interleave >= 0) return cfg_.prefill_interleave;
+     if (ema_chunk_s_ <= 0.0 || ema_decode_s_ <= 0.0) return 1;
+     const double n = cfg_.prefill_interleave_share * ema_chunk_s_ / ema_decode_s_;
+@@ -1552,6 +1626,11 @@ bool Scheduler::preempt_back() {
+     r.draft = nullptr;
+     s.running = false;
+ 
++    /* Epoch [OD1]: a preempted cohort member loses its finish-guarantee and rejoins as an
++     * ordinary request -- its arrival is kept (queue_insert below), so it may run again when
++     * its class matches and may be cut at the next boundary. The epoch drains without it. */
++    epoch_drop_member(slot, /*preempted=*/true);
++
+     running_.pop_back();
+     queue_insert(waiting_, slot);   /* original arrival -> the front of its priority class */
+     ++m_.preemptions;
+@@ -2148,10 +2227,17 @@ const RadBatch* Scheduler::step_locked() {
+                 }
+             }
+             int32_t victim = -1;
++            bool victim_member = false;
+             for (int32_t slot : running_) {
+                 const Request& r = *reqs_[(size_t)slot]->req;
+                 if (r.n_computed < (int64_t)r.prompt.size()) continue;
+-                if (waiter >= 0 && ahead_of(waiter, slot)) victim = slot;
++                if (waiter < 0 || !ahead_of(waiter, slot)) continue;
++                /* Epoch [R7]: a cohort member is a last-resort victim on this path too --
++                 * a non-member the waiter is ahead of is taken first. */
++                const bool is_member = epoch_member_at(slot);
++                if (is_member && victim >= 0 && !victim_member) continue;
++                victim = slot;
++                victim_member = is_member;
+             }
+             if (victim < 0) break;
+             const SchedReq& v = *reqs_[(size_t)victim];
+@@ -2179,6 +2265,8 @@ const RadBatch* Scheduler::step_locked() {
+     bool hold_prefill = false;
+     bool hold_decode = false;
+     const bool head_mode = cfg_.prefill_interleave == Config::kPrefillInterleaveHead;
++    const bool epoch_mode = cfg_.prefill_interleave == Config::kPrefillInterleaveEpoch;
++    const bool governed = head_mode || epoch_mode;   /* frozen lanes, frozen admission */
+     held_prefill_ = 0;
+     held_decode_ = 0;
+     if (cfg_.prefill_interleave != 0 || cfg_.mixed_step_target_ms > 0) {
+@@ -2204,6 +2292,16 @@ const RadBatch* Scheduler::step_locked() {
+         head_govern_prefill_ = hp;
+         hold_decode  = hp && !head_unfreeze_once_;
+         hold_prefill = !hp && !head_unfreeze_once_;
++    } else if (epoch_mode) {
++        /* The epoch's class governs, not the live head: it was fixed at formation and holds
++         * until the cohort drains -- an early class flip of a member re-governs nothing (E1).
++         * Formation runs only while no epoch is live -- epoch end or idle->busy -- never
++         * mid-epoch. */
++        if (!epoch_live_) epoch_form_locked();
++        head_govern_prefill_ = epoch_class_prefill_;
++        hold_decode  = epoch_class_prefill_ && !head_unfreeze_once_;
++        hold_prefill = !epoch_class_prefill_ && !head_unfreeze_once_;
++    }
+     /* The frozen rows are counted here, ahead of the walk, not in it: the walk breaks on
+      * `budget <= 0` or max_seqs, and the governed chunk keeps nothing back for frozen rows
+      * (the share pre-count below skips them with their decrement), so a chunk that takes the
+@@ -2221,7 +2319,6 @@ const RadBatch* Scheduler::step_locked() {
+             else    { if (hold_decode) ++held_decode_; }
+         }
+     }
+-    }
+     mixed_target_active_ = cfg_.mixed_step_target_ms > 0 && any_decoding;
+ 
+     /* A span is for a prefill alone in its step (ChunkGeometry::span). A spanned step takes as
+@@ -2302,10 +2399,10 @@ const RadBatch* Scheduler::step_locked() {
+             const Request& rr = *reqs_[(size_t)slot]->req;
+             const int64_t tg = reqs_[(size_t)slot]->seq_len();
+             const bool pf = (rr.n_computed < (int64_t)rr.prompt.size()) || (rr.n_computed + 1 < tg);
+-            /* head: a frozen row is skipped by the walk and takes no share of the step; the
++            /* governed: a frozen row is skipped by the walk and takes no share of the step; the
+              * walk skips its decrement too (the consistent pair), or busy_cap would reserve
+              * the head's budget for rows that never run. */
+-            if (head_mode && ((pf && hold_prefill) || (!pf && hold_decode))) continue;
++            if (governed && ((pf && hold_prefill) || (!pf && hold_decode))) continue;
+             if (pf) ++behind_pf; else behind_dec += dec_row_tok;
+         }
+     }
+@@ -2315,7 +2412,7 @@ const RadBatch* Scheduler::step_locked() {
+         ? std::min<int64_t>((int64_t)waiting_.size(), std::max<int64_t>(0, admit_room)) : 0;
+     const bool admit_waits = share_step && !waiting_.empty() && !free_cards_.empty() &&
+                              (int64_t)running_.size() < cfg_.max_seqs &&
+-                             !(head_mode && hold_prefill);   /* head: admission is frozen */
++                             !(governed && hold_prefill);   /* governed: admission is frozen */
+     /* The first prefill chunk held back this step (its index in plan_.e before the sort) and what
+      * it would have taken: whatever the work it made room for did not use goes back to it. */
+     int32_t capped_at = -1;
+@@ -2350,9 +2447,9 @@ const RadBatch* Scheduler::step_locked() {
+         const int64_t target = s.seq_len();
+         const bool prefill = (r.n_computed < (int64_t)r.prompt.size()) ||
+                              (r.n_computed + 1 < target);
+-        /* head: a frozen row was left out of the pre-count, so its decrement is skipped too.
+-         * Non-head modes compute `frozen` as false and keep the legacy path byte-identical. */
+-        const bool frozen = head_mode && ((prefill && hold_prefill) || (!prefill && hold_decode));
++        /* governed: a frozen row was left out of the pre-count, so its decrement is skipped too.
++         * Ungoverned modes compute `frozen` as false and keep the legacy path byte-identical. */
++        const bool frozen = governed && ((prefill && hold_prefill) || (!prefill && hold_decode));
+         if (share_step && !frozen) {
+             if (prefill) behind_pf = std::max<int64_t>(0, behind_pf - 1);
+             else         behind_dec = std::max<int64_t>(0, behind_dec - dec_row_tok);
+@@ -2483,23 +2580,42 @@ const RadBatch* Scheduler::step_locked() {
+              * them, rather than failed. */
+             /* A victim that published keeps its blocks in the cache: eviction gets its rounds
+              * back, so they are reclaimed before anyone else is preempted. */
+-            if (head_mode) {
+-                /* Victim-skip-frozen: the victim is the last not-yet-planned running row whose
+-                 * class is not frozen this step. Rows at or before i are already in plan_ (live
+-                 * StepEntry pointers) and must never be touched. With no eligible victim the
+-                 * walk yields -- a frozen row keeps its KV rather than becoming the victim, and
+-                 * the liveness net below is what frees the engine if that leaves an empty plan. */
++            if (head_mode || epoch_mode) {
+                 int32_t j = -1;
+-                for (size_t k = running_.size(); k-- > i + 1; ) {
+-                    const SchedReq& vs = *reqs_[(size_t)running_[k]];
+-                    if (!vs.req || !vs.running) continue;
+-                    const Request& vr = *vs.req;
+-                    const bool vpf = (vr.n_computed < (int64_t)vr.prompt.size()) ||
+-                                     (vr.n_computed + 1 < vs.seq_len());
+-                    if (!((vpf && hold_prefill) || (!vpf && hold_decode))) { j = (int32_t)k; break; }
++                if (head_mode) {
++                    /* Victim-skip-frozen: the victim is the last not-yet-planned running row whose
++                     * class is not frozen this step. Rows at or before i are already in plan_ (live
++                     * StepEntry pointers) and must never be touched. With no eligible victim the
++                     * walk yields -- a frozen row keeps its KV rather than becoming the victim, and
++                     * the liveness net below is what frees the engine if that leaves an empty plan. */
++                    for (size_t k = running_.size(); k-- > i + 1; ) {
++                        const SchedReq& vs = *reqs_[(size_t)running_[k]];
++                        if (!vs.req || !vs.running) continue;
++                        const Request& vr = *vs.req;
++                        const bool vpf = (vr.n_computed < (int64_t)vr.prompt.size()) ||
++                                         (vr.n_computed + 1 < vs.seq_len());
++                        if (!((vpf && hold_prefill) || (!vpf && hold_decode))) { j = (int32_t)k; break; }
++                    }
++                } else {
++                    /* Epoch victim preference [R7]: non-target requests (the other class, frozen)
++                     * first, then mid-arrivals of the governed class, then cohort members only
++                     * when nothing else is eligible -- preempt-immunity is best-effort, and a
++                     * member taken anyway loses its membership (preempt_back revokes it [OD1],
++                     * so the epoch drains without it rather than livelocking). */
++                    int tier = 3;
++                    for (size_t k = running_.size(); k-- > i + 1; ) {
++                        const SchedReq& vs = *reqs_[(size_t)running_[k]];
++                        if (!vs.req || !vs.running) continue;
++                        const bool vpf = req_class_prefill(vs);
++                        const int t = (vpf != epoch_class_prefill_) ? 0
++                                    : (epoch_member_at(running_[(size_t)k]) ? 2 : 1);
++                        if (t < tier) { tier = t; j = (int32_t)k; if (!t) break; }
++                    }
+                 }
+                 if (j < 0) {
+-                    /* No eligible victim: the rows behind this one are all frozen. Skip this
++                    /* No eligible victim: head -- the rows behind this one are all frozen, and a
++                     * frozen row keeps its KV; epoch -- nothing is behind this one at all (a
++                     * cohort member is a last-resort victim, never a livelock). Skip this
+                      * request for the step -- it stays in running_, so i must advance by hand
+                      * (the other yield paths leave through preempt_back, which shrinks the set
+                      * under i). The liveness net below is what frees the engine if that leaves
+@@ -2623,11 +2739,11 @@ const RadBatch* Scheduler::step_locked() {
+                 share_step && !s.req->embed && at + 1 < waiting_.size() &&
+                 (int64_t)plan_.e.size() + 1 < cfg_.max_seqs && free_cards_.size() > 1
+                     ? share_tok : 0;
+-            /* --prefill-interleave head: a new prompt must fit beside the running prefills'
++            /* governed: a new prompt must fit beside the running prefills'
+              * remaining chunks and every runner's next-token headroom, or it waits. Embed
+              * inputs are exempt like the share reserve above. Refusal is head-of-line, like
+              * admit_one's own. */
+-            if (head_mode && !s.req->embed &&
++            if (governed && !s.req->embed &&
+                 !head_admission_room(s, std::min<int64_t>((int64_t)s.req->prompt.size(), budget)))
+                 break;
+             admit_full_ = 0;
+@@ -2785,7 +2901,7 @@ const RadBatch* Scheduler::step_locked() {
+          * once with the freeze lifted: the frozen rows run, and what finishes frees the pool.
+          * The unfrozen pass sets no holds, so it cannot re-enter here; head_unfreeze_once_
+          * guards the recursion directly too. */
+-        if (head_mode && !head_unfreeze_once_ && (held_decode_ > 0 || held_prefill_ > 0) &&
++        if (governed && !head_unfreeze_once_ && (held_decode_ > 0 || held_prefill_ > 0) &&
+             !running_.empty()) {
+             ++m_.head_freeze_releases;
+             head_unfreeze_once_ = true;
+@@ -2841,11 +2957,11 @@ const RadBatch* Scheduler::step_locked() {
+         case RAD_PHASE_MIXED:   ++m_.steps_mixed;   break;
+         default:                ++m_.steps_decode;  break;
+     }
+-    if (head_mode) {
+-        /* Head governance counts its holds with the legacy meanings: steps_held for a step the
++    if (governed) {
++        /* Governed modes count their holds with the legacy meanings: steps_held for a step the
+          * prefill was kept out of (decode governed), steps_held_decode for one the frozen decode
+          * lanes sat out (prefill governed). interleave_left_ is never armed and the auto EMAs
+-         * stay untouched: the head's class, not a step count or a timing share, decides. */
++         * stay untouched: the governing class, not a step count or a timing share, decides. */
+         if (held_prefill_ > 0) ++m_.steps_held;
+         if (held_decode_ > 0) ++m_.steps_held_decode;
+         if (head_govern_prefill_ != last_head_prefill_) {
+@@ -2950,6 +3066,24 @@ bool Scheduler::prefill_continues() const {
+                     return false;
+                 }
+     }
++    /* --prefill-interleave epoch: staging disarms at the epoch boundary, not at a per-request
++     * flip: when this step commits the last cohort member's phase completion, the next step
++     * re-governs and carries no chunk of this epoch -- however many prompts are still
++     * mid-flight, since a mid-arrival's next chunk would read experts the flip drops (the cost
++     * the note above describes, once per boundary). A decode epoch needs no test: its plan
++     * carries no prefill row for the walk below to find. */
++    if (cfg_.prefill_interleave == Config::kPrefillInterleaveEpoch &&
++        epoch_live_ && epoch_class_prefill_) {
++        int64_t left = epoch_drain_;
++        for (const StepEntry& e : plan_.e) {
++            if (e.slot < 0 || (size_t)e.slot >= reqs_.size() || !reqs_[(size_t)e.slot]) continue;
++            if (e.is_prefill && e.produces_token && epoch_member_at(e.slot)) --left;
++        }
++        if (left <= 0) {
++            ++m_.head_staging_disarms;
++            return false;
++        }
++    }
+     for (const StepEntry& e : plan_.e) {
+         if (!e.is_prefill || e.slot < 0 || (size_t)e.slot >= reqs_.size() || !reqs_[(size_t)e.slot])
+             continue;
+@@ -3067,10 +3201,11 @@ const RadBatch* Scheduler::step_next_locked() {
+     /* An admission is a decision about the pool and the queue that the full step makes. */
+     if (!waiting_.empty()) return nullptr;
+     /* Once the hold is spent, the held chunk goes into the next full step rather than waiting
+-     * behind decode steps issued ahead. Head mode keeps its issue-ahead: its holds are not a
+-     * counted-down budget the chunk is waiting for -- the next step's head is decided when that
+-     * step is planned -- so the chunk does not wait behind them. */
++     * behind decode steps issued ahead. Governed modes keep their issue-ahead: their holds are
++     * not a counted-down budget the chunk is waiting for -- the next step's head, or the epoch
++     * boundary, is decided when that step is planned -- so the chunk does not wait behind them. */
+     if (cfg_.prefill_interleave != Config::kPrefillInterleaveHead &&
++        cfg_.prefill_interleave != Config::kPrefillInterleaveEpoch &&
+         held_prefill_ > 0 && interleave_left_ == 0) return nullptr;
+     /* Before the loop below, which reserves the next step's KV. */
+     if (ends_every_request()) return nullptr;
+@@ -3177,8 +3312,9 @@ void Scheduler::promote_next() {
+     if (interleave_left_ > 0) {
+         --interleave_left_;
+         if (held_prefill_ > 0) ++m_.steps_held;
+-    } else if (cfg_.prefill_interleave == Config::kPrefillInterleaveHead) {
+-        /* Head mode never arms interleave_left_; the holds of the last step() describe the
++    } else if (cfg_.prefill_interleave == Config::kPrefillInterleaveHead ||
++               cfg_.prefill_interleave == Config::kPrefillInterleaveEpoch) {
++        /* Governed modes never arm interleave_left_; the holds of the last step() describe the
+          * stretch this step was issued ahead into (held_*_ are step-scoped and survive here). */
+         if (held_prefill_ > 0) ++m_.steps_held;
+         if (held_decode_ > 0) ++m_.steps_held_decode;
+@@ -3408,6 +3544,14 @@ int Scheduler::commit(StepResult& res) {
+             s.suffix_hot = false;
+         }
+ 
++        /* Epoch: a cohort member's prefill phase completes when its commit turns it
++         * decode-class -- the last chunk (and any preempted replay) has landed. It then sits
++         * frozen in the decode lane until the epoch ends (the class rule does that, R3); the
++         * drain counts the phase, not the generation. */
++        if (epoch_live_ && epoch_class_prefill_ && epoch_member_at(e.slot) &&
++            !req_class_prefill(s))
++            epoch_drop_member(e.slot, /*preempted=*/false);
++
+         /* A request the next step carries finishes now but keeps its blocks, which that step
+          * writes; its commit finds the request not running and returns them. */
+         const bool carried = next_open_ && s.entry_next >= 0;
+diff --git a/core/sched/scheduler.h b/core/sched/scheduler.h
+index 2caa9acb..4680715a 100644
+--- a/core/sched/scheduler.h
++++ b/core/sched/scheduler.h
+@@ -864,6 +864,16 @@ private:
+     bool head_govern_prefill_ = true;
+     bool last_head_prefill_ = true;
+     bool head_unfreeze_once_ = false;
++    /* --prefill-interleave epoch: the cohort-epoch state. The governing class (meaningful while
++     * epoch_live_), the members stamped at formation indexed by slot (cleared at phase
++     * completion, close and preemption), the members not yet drained -- the epoch closes at zero
++     * and re-forms on the next planning pass -- and the step the epoch opened on, for the length
++     * accounting. mu_ held. */
++    bool epoch_live_ = false;
++    bool epoch_class_prefill_ = true;
++    std::vector<bool> epoch_member_;
++    int64_t epoch_drain_ = 0;
++    int64_t epoch_start_step_ = 0;
+     /* --prefill-interleave auto: the decode-only steps after a chunk (interleave_steps), sized by
+      * the running means of a step that carried a chunk and of a decode step, in seconds, fed by
+      * step_finished. */
+@@ -911,6 +921,19 @@ private:
+     int32_t head_slot_locked() const;
+     bool head_class_prefill() const;
+     bool head_admission_room(const SchedReq& cand, int64_t want_est) const;
++    /* --prefill-interleave epoch: whether a request's current class is prefill (the walk's
++     * predicate: prompt left, or output still to replay after a preemption). Whether slot is a
++     * live cohort member; a member leaving the cohort -- phase completion, close, or the
++     * preemption revocation [OD1] -- decrements the drain, and a preemption also counts it.
++     * Formation (epoch_form_locked) runs only when no epoch is live: at epoch end and on the
++     * idle->busy transition. mu_ held. */
++    static bool req_class_prefill(const SchedReq& s);
++    bool epoch_member_at(int32_t slot) const {
++        return epoch_live_ && slot >= 0 && (size_t)slot < epoch_member_.size() &&
++               epoch_member_[(size_t)slot];
++    }
++    void epoch_drop_member(int32_t slot, bool preempted);
++    void epoch_form_locked();
+ 
+     /* lifecycle */
+     /* Ends a request: counts it by `st` and queues its id for take_completed. `publish` is
+diff --git a/core/server/adapters.h b/core/server/adapters.h
+index 8bf1f4b5..47af9d74 100644
+--- a/core/server/adapters.h
++++ b/core/server/adapters.h
+@@ -158,6 +158,10 @@ inline SchedMetrics bridge_metrics(const rad::SchedMetrics& m) {
+     o.head_flips = m.head_flips;
+     o.head_freeze_releases = m.head_freeze_releases;
+     o.head_staging_disarms = m.head_staging_disarms;
++    o.epochs = m.epochs;
++    o.epoch_len_steps = m.epoch_len_steps;
++    o.midarrival_cuts = m.midarrival_cuts;
++    o.cohort_preempt_removals = m.cohort_preempt_removals;
+     o.mixed_step_target_steps = m.mixed_step_target_steps;
+     o.mixed_step_target_misses = m.mixed_step_target_misses;
+     o.mixed_step_target_prefill_cap = m.mixed_step_target_prefill_cap;
+diff --git a/core/server/dashboard.cpp b/core/server/dashboard.cpp
+index c1d47c79..66f5dba3 100644
+--- a/core/server/dashboard.cpp
++++ b/core/server/dashboard.cpp
+@@ -376,6 +376,10 @@ HttpResponse Server::handle_stats(const HttpRequest&) {
+         o["head_flips"]      = m.head_flips;
+         o["head_freeze_releases"] = m.head_freeze_releases;
+         o["head_staging_disarms"] = m.head_staging_disarms;
++        o["epochs"] = m.epochs;
++        o["epoch_len_steps"] = m.epoch_len_steps;
++        o["midarrival_cuts"] = m.midarrival_cuts;
++        o["cohort_preempt_removals"] = m.cohort_preempt_removals;
+         o["mixed_step_target_steps"] = m.mixed_step_target_steps;
+         o["mixed_step_target_misses"] = m.mixed_step_target_misses;
+         o["mixed_step_target_prefill_cap"] = m.mixed_step_target_prefill_cap;
+diff --git a/core/server/iface.h b/core/server/iface.h
+index 1c411665..2f4c54f8 100644
+--- a/core/server/iface.h
++++ b/core/server/iface.h
+@@ -152,6 +152,10 @@ struct SchedMetrics {
+     int64_t head_flips = 0;           /* head: head-class flips between counted steps */
+     int64_t head_freeze_releases = 0; /* head: liveness passes that lifted a freeze (watch ~0) */
+     int64_t head_staging_disarms = 0; /* head: stagings disarmed by a flip behind the head */
++    int64_t epochs = 0;               /* epoch: cohort-epoch formations */
++    int64_t epoch_len_steps = 0;      /* epoch: summed closed-epoch length in steps (avg: /epochs) */
++    int64_t midarrival_cuts = 0;      /* epoch: requests frozen by a class flip at a boundary */
++    int64_t cohort_preempt_removals = 0; /* epoch: members whose preemption revoked the guarantee */
+     int64_t mixed_step_target_steps = 0; /* mixed steps observed by --mixed-step-target-ms */
+     int64_t mixed_step_target_misses = 0;      /* those whose completed wall time exceeded the target */
+     int64_t mixed_step_target_prefill_cap = 0; /* current learned mixed-prefill row cap */
+diff --git a/core/server/metrics.cpp b/core/server/metrics.cpp
+index 70c64c46..77e82fde 100644
+--- a/core/server/metrics.cpp
++++ b/core/server/metrics.cpp
+@@ -188,6 +188,10 @@ void Metrics::sample(const SchedMetrics& m) {
+     c_steps_held_decode_.advance_to(m.steps_held_decode);
+     c_head_flips_.advance_to(m.head_flips);
+     c_head_freeze_releases_.advance_to(m.head_freeze_releases);
++    c_epochs_.advance_to(m.epochs);
++    c_epoch_len_steps_.advance_to(m.epoch_len_steps);
++    c_midarrival_cuts_.advance_to(m.midarrival_cuts);
++    c_cohort_preempt_removals_.advance_to(m.cohort_preempt_removals);
+     c_mixed_step_target_steps_.advance_to(m.mixed_step_target_steps);
+     c_mixed_step_target_misses_.advance_to(m.mixed_step_target_misses);
+     c_rows_unspec_.advance_to(m.decode_rows_unspeculated);
+@@ -438,6 +442,18 @@ std::string Metrics::render() const {
+               "Liveness passes that lifted a head-mode freeze because the step would otherwise "
+               "have idled (--prefill-interleave head; each occurrence is a near-stall).",
+               L, c_head_freeze_releases_.get());
++    w.counter("radiance:engine_epochs_total",
++              "Cohort epochs formed (--prefill-interleave epoch; epoch end or idle->busy).",
++              L, c_epochs_.get());
++    w.counter("radiance:engine_epoch_len_steps_total",
++              "Summed closed-epoch length in steps (--prefill-interleave epoch; divide by "
++              "radiance:engine_epochs_total for the average).", L, c_epoch_len_steps_.get());
++    w.counter("radiance:engine_midarrival_cuts_total",
++              "Requests frozen mid-phase by a class flip at an epoch boundary "
++              "(--prefill-interleave epoch).", L, c_midarrival_cuts_.get());
++    w.counter("radiance:engine_cohort_preempt_removals_total",
++              "Cohort members whose preemption revoked the epoch finish-guarantee "
++              "(--prefill-interleave epoch).", L, c_cohort_preempt_removals_.get());
+     w.counter("radiance:mixed_step_target_steps_total",
+               "Mixed prefill/decode steps observed by --mixed-step-target-ms.",
+               L, c_mixed_step_target_steps_.get());
+diff --git a/core/server/metrics.h b/core/server/metrics.h
+index 30519214..92de0371 100644
+--- a/core/server/metrics.h
++++ b/core/server/metrics.h
+@@ -150,6 +150,7 @@ private:
+     Counter c_steps_prefill_, c_steps_mixed_, c_steps_decode_, c_rows_unspec_, c_steps_ahead_;
+     Counter c_prefill_capped_, c_steps_held_;
+     Counter c_steps_held_decode_, c_head_flips_, c_head_freeze_releases_;
++    Counter c_epochs_, c_epoch_len_steps_, c_midarrival_cuts_, c_cohort_preempt_removals_;
+     Counter c_mixed_step_target_steps_, c_mixed_step_target_misses_;
+     Gauge   g_mixed_step_target_cap_;
+     /* Seconds inside a step, all shapes and decode-only. Wall clock over a step count is not a
+diff --git a/tests/sched_test.cpp b/tests/sched_test.cpp
+index 999f950b..b8092ff5 100644
+--- a/tests/sched_test.cpp
++++ b/tests/sched_test.cpp
+@@ -9207,6 +9207,8 @@ TEST(sim_burst_of_long_prompts) {
+     char il[32];
+     if (f.cfg.prefill_interleave == Config::kPrefillInterleaveHead)
+         std::snprintf(il, sizeof il, "head");
++    else if (f.cfg.prefill_interleave == Config::kPrefillInterleaveEpoch)
++        std::snprintf(il, sizeof il, "epoch");
+     else if (f.cfg.prefill_interleave < 0)
+         std::snprintf(il, sizeof il, "auto:%g", f.cfg.prefill_interleave_share);
+     else
+-- 
+2.56.1
+

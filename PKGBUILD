@@ -6,15 +6,20 @@
 #   4. Build and test (run: makepkg -sf)
 _pkgname=radiance-inference
 pkgname=${_pkgname}-git
-pkgver=2.2.0.r1090
-# pkgrel 2: ships the 3-patch "head-class governance" series (prefill-interleave:
-# head — each step governed by the oldest active request's class; sched core +
-# tests + docs). Series base b6b8751c ("radiance 2.2.0"). NB: makepkg runs
-# prepare() BEFORE pkgver(), so pkgver carries the +3 patch commits (r1090 =
-# 1087 on main + 3); and when upstream moves, makepkg's pkgver rewrite resets
-# pkgrel to 1 — re-set it to 2 on rebuilds so `pacman -Q` keeps distinguishing
-# the patched build. Patches touch no build files (core/sched/config + tests +
-# docs only), so the VOPD logic below is unaffected.
+pkgver=2.2.0.r1094
+# pkgrel 2: ships the 7-patch scheduler-governance series on base b6b8751c
+# ("radiance 2.2.0"): 0001-0003 "head-class governance" (prefill-interleave:
+# head — each step governed by the oldest active request's class), 0004 a
+# head-mode steps_held_decode undercount fix found by live load testing, and
+# 0005-0007 "cohort-epoch governance" (prefill-interleave: epoch — the oldest
+# active request's class governs until every same-class request present at
+# epoch start finishes that phase; preemption revokes cohort membership).
+# NB: makepkg runs prepare() BEFORE pkgver(), so pkgver carries the +7 patch
+# commits (r1094 = 1087 on main + 7); and when upstream moves, makepkg's
+# pkgver rewrite resets pkgrel to 1 — re-set it to 2 on rebuilds so
+# `pacman -Q` keeps distinguishing the patched build. Patches touch no build
+# files (core/sched/config/server-metrics + tests + docs only), so the VOPD
+# logic below is unaffected.
 pkgrel=2
 pkgdesc="C++20 LLM inference server for AMD GPUs (primarily gfx1201) with OpenAI-compatible HTTP API (git HEAD)"
 arch=('x86_64')
@@ -37,14 +42,22 @@ source=("${_pkgname}::git+${url}.git#branch=main"
         radiance.env
         0001-sched-prefill-interleave-head-mode-oldest-request-cl.patch
         0002-tests-head-mode-governance-coverage.patch
-        0003-docs-document-prefill-interleave-head.patch)
+        0003-docs-document-prefill-interleave-head.patch
+        0004-sched-head-mode-steps_held_decode-counts-the-frozen-.patch
+        0005-sched-prefill-interleave-epoch-mode-cohort-epoch-gov.patch
+        0006-tests-epoch-governance-coverage.patch
+        0007-docs-document-prefill-interleave-epoch.patch)
 sha256sums=('SKIP'
             'c903669f221faea09545b70525f780001d73648c66cfc472ac9b23df23956400'
             'cc76ea474ab22a0a2ef24a00c1dbb936df444c83c522ebcd667fd0eafce49112'
             'a0310c047f107a493c275e5e92b896785238f8dbcc5319efca86ac537885c3ac'
             'ff769d39bb82fe419ec3694e1f8beebadd6dcc1a602e3f7cf7969527ea347c18'
             'd33d9f9cb9b7623528f93ed15fbfb3c88bae1c6e193bcf206fc59b54c537f678'
-            'dbcf0099b44df7f8a82f18b745e9f5c39fd9a63c032127d6b2b4f58f617d6de2')
+            'dbcf0099b44df7f8a82f18b745e9f5c39fd9a63c032127d6b2b4f58f617d6de2'
+            'aaa09367edce9a1d536cfcd1678efe2f446b2e2d9edb2b8561473c11efe05b32'
+            '1b383f08e53ce9147441971084a6c489c5116ca9e371ff7fd64af8048d4109a7'
+            '959716d3ced50db15d60637dea7a9ff325de6572fe4b1110b367af9f8319b413'
+            'ae7b6f818ad65d03064cae61c7eb818813069a84aef397fd7122935cd1b5f1c8')
 
 # Edit for other hardware: run `offload-arch`.
 _hip_archs='gfx1201'
@@ -74,7 +87,9 @@ prepare() {
   # loud failure on upstream drift is intended — no fallbacks: a conflict
   # means the series no longer matches main and must be rebased in the dev
   # clone, not papered over here.
-  git am --3way "${srcdir}"/0001-*.patch "${srcdir}"/0002-*.patch "${srcdir}"/0003-*.patch
+  git am --3way "${srcdir}"/0001-*.patch "${srcdir}"/0002-*.patch "${srcdir}"/0003-*.patch \
+              "${srcdir}"/0004-*.patch "${srcdir}"/0005-*.patch "${srcdir}"/0006-*.patch \
+              "${srcdir}"/0007-*.patch
 }
 
 build() {

@@ -1,0 +1,92 @@
+From bad190a8c50284495122766da6db587f088a1846 Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Fri, 20 Nov 2026 21:30:08 -0500
+Subject: [PATCH 1/4] sched: head-mode steps_held_decode counts the frozen rows
+ the walk never reaches
+
+---
+ core/sched/scheduler.cpp | 21 +++++++++++++++++++--
+ tests/sched_test.cpp     | 28 ++++++++++++++++++++++++++++
+ 2 files changed, 47 insertions(+), 2 deletions(-)
+
+diff --git a/core/sched/scheduler.cpp b/core/sched/scheduler.cpp
+index a09b5dc8..153b71c8 100644
+--- a/core/sched/scheduler.cpp
++++ b/core/sched/scheduler.cpp
+@@ -2204,6 +2204,23 @@ const RadBatch* Scheduler::step_locked() {
+         head_govern_prefill_ = hp;
+         hold_decode  = hp && !head_unfreeze_once_;
+         hold_prefill = !hp && !head_unfreeze_once_;
++    /* The frozen rows are counted here, ahead of the walk, not in it: the walk breaks on
++     * `budget <= 0` or max_seqs, and the governed chunk keeps nothing back for frozen rows
++     * (the share pre-count below skips them with their decrement), so a chunk that takes the
++     * whole step leaves the rows behind it uncounted -- the live load test saw decode lanes
++     * frozen for ~10 s with steps_held_decode at 0. A row the step kept out is held whether
++     * or not the walk reached it. */
++    if (hold_decode || hold_prefill) {
++        for (int32_t slot : running_) {
++            const SchedReq& s = *reqs_[(size_t)slot];
++            if (!s.req || !s.running) continue;
++            const Request& r = *s.req;
++            const bool pf = (r.n_computed < (int64_t)r.prompt.size()) ||
++                            (r.n_computed + 1 < s.seq_len());
++            if (pf) { if (hold_prefill) ++held_prefill_; }
++            else    { if (hold_decode) ++held_decode_; }
++        }
++    }
+     }
+     mixed_target_active_ = cfg_.mixed_step_target_ms > 0 && any_decoding;
+ 
+@@ -2343,8 +2360,8 @@ const RadBatch* Scheduler::step_locked() {
+ 
+         int64_t ckpt = -1;
+         int64_t want;
+-        if (!prefill && hold_decode) { ++held_decode_; ++i; continue; }   /* frozen: no row, no budget */
+-        if (prefill && hold_prefill) { ++held_prefill_; ++i; continue; }
++        if (!prefill && hold_decode) { ++i; continue; }   /* frozen: no row, no budget (counted above) */
++        if (prefill && hold_prefill) { ++i; continue; }
+         if (prefill) {
+             const int64_t shares = share_step ? behind_pf + (admit_waits ? 1 : 0) : 0;
+             const int64_t mixed_target_shares = mixed_target_active_ ? behind_pf + mixed_target_waits : 0;
+diff --git a/tests/sched_test.cpp b/tests/sched_test.cpp
+index 4c9df6fc..999f950b 100644
+--- a/tests/sched_test.cpp
++++ b/tests/sched_test.cpp
+@@ -4462,6 +4462,34 @@ TEST(head_flips_counter) {
+     CHECK(f.sch.find(t1)->state != ReqState::Failed);
+ }
+ 
++/* The live load test's anomaly: a running prefill head whose chunk takes the step's whole
++ * budget breaks the running walk (`budget <= 0`) before it reaches the frozen decode rows, so
++ * the walk's held_decode_ never moved and steps_held_decode stayed 0 through two ~10 s stretches
++ * of frozen decoders. A row the step kept out is held whether or not the walk got to it: the
++ * frozen rows are counted ahead of the walk. (busy_cap reserves nothing for frozen rows -- the
++ * pre-count skips them with their decrement -- so the governed chunk takes the entire budget
++ * and every step of the stretch missed the count.) */
++TEST(head_steps_held_decode_counts_rows_past_the_walk_break) {
++    Fixture f;
++    f.build(4096, 64, /*max_tok=*/256);          /* one chunk is the whole step */
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveHead;
++    CHECK_OK(f.start());
++    const uint64_t d = f.submit(100, 512);       /* decoder first: admitted, committed */
++    CHECK(f.sch.step() != nullptr);
++    f.commit_plain(11);
++    const uint64_t p = f.submit(2000, 4, 1);     /* higher priority: the head is a prefill */
++    CHECK(f.sch.step() != nullptr);              /* d is the only runner: walked, counted */
++    CHECK_EQ((int)f.sch.plan().e.size(), 1);     /* p's chunk; d frozen */
++    f.commit_plain(12);
++    CHECK_EQ(f.sch.metrics().steps_held_decode, 1);
++    CHECK(f.sch.step() != nullptr);              /* p walks first and takes the whole budget */
++    CHECK_EQ((int)f.sch.plan().e.size(), 1);
++    CHECK_EQ(f.sch.plan().e[0].seq, p);
++    CHECK_EQ((int)f.sch.find(d)->state, (int)ReqState::Running);   /* frozen, not dropped */
++    f.commit_plain(12);
++    CHECK_EQ(f.sch.metrics().steps_held_decode, 2);   /* the frozen lane sat this step out too */
++}
++
+ 
+ /* The arithmetic at a real deployment's shape: a 2048-token step and interval, the stager arming
+  * at 1025 tokens (so a held-back chunk keeps 1024 and its step-mates take the rest). */
+-- 
+2.56.1
+
