@@ -1,7 +1,7 @@
 # Maintainer: Muzammil Shafique <muzu@duck.com>
 _pkgname=tsuki
 pkgname="${_pkgname}-git"
-pkgver=0.2.0.r0.gd7ef6b4
+pkgver=0.2.3.r0.g2015b9f
 pkgrel=1
 pkgdesc="Native Linux game launcher for Wine, Proton, and native titles (git version)"
 arch=('x86_64')
