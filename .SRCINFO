@@ -1,7 +1,7 @@
 pkgbase = ante-bin
 	pkgdesc = Ante CLI (prebuilt static binary from the official release)
 	pkgver = 0.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ante.run
 	arch = x86_64
 	arch = aarch64
