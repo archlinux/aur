@@ -7,7 +7,7 @@
 pkgbase=solana
 pkgname=(solana-cli agave-validator solana-dev solana)
 epoch=1
-pkgver=4.4.0
+pkgver=4.4.1
 pkgrel=1
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
 _splTokenCliVersion=5.7.1
@@ -25,7 +25,7 @@ source=("git+https://github.com/anza-xyz/agave.git#tag=v${pkgver}"
         "https://github.com/anza-xyz/platform-tools/releases/download/v${_platformToolsVersion}/platform-tools-linux-x86_64.tar.bz2"
         $pkgbase-sbf_sdk-path.patch)
 noextract=(platform-tools-linux-x86_64.tar.bz2)
-sha256sums=('d489b6b9a5db7d16f73d644ad960da18fca673e38c983b3dc478fb6d34ff293d'
+sha256sums=('a7a5a72fa8b7d2f3b87adc28849a2c962c4cbea79dd4e9d5c3a7c61c9b064d79'
             '1694e997efe94b0eaf0114359511d877f8f5c5ab7b2779fea8633cbb47ea58ec'
             '0cc64f633474bcbed02604abb3ab0fbdd9c8bb242e174d117587153371374744'
             '7b82eb420b5aebd1e5590db0ae25c523eca06724d4238ae02139690535636c37'

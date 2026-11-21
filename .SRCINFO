@@ -1,5 +1,5 @@
 pkgbase = solana
-	pkgver = 4.4.0
+	pkgver = 4.4.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/anza-xyz/agave
@@ -12,12 +12,12 @@ pkgbase = solana
 	makedepends = rust
 	noextract = platform-tools-linux-x86_64.tar.bz2
 	options = !lto
-	source = git+https://github.com/anza-xyz/agave.git#tag=v4.4.0
+	source = git+https://github.com/anza-xyz/agave.git#tag=v4.4.1
 	source = git+https://github.com/anza-xyz/cargo-build-sbf.git#tag=cargo-build-sbf@v4.5.0
 	source = git+https://github.com/solana-program/token-2022.git#tag=cli@v5.7.1
 	source = https://github.com/anza-xyz/platform-tools/releases/download/v1.58/platform-tools-linux-x86_64.tar.bz2
 	source = solana-sbf_sdk-path.patch
-	sha256sums = d489b6b9a5db7d16f73d644ad960da18fca673e38c983b3dc478fb6d34ff293d
+	sha256sums = a7a5a72fa8b7d2f3b87adc28849a2c962c4cbea79dd4e9d5c3a7c61c9b064d79
 	sha256sums = 1694e997efe94b0eaf0114359511d877f8f5c5ab7b2779fea8633cbb47ea58ec
 	sha256sums = 0cc64f633474bcbed02604abb3ab0fbdd9c8bb242e174d117587153371374744
 	sha256sums = 7b82eb420b5aebd1e5590db0ae25c523eca06724d4238ae02139690535636c37
