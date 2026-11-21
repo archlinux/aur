@@ -3,7 +3,7 @@
 # push-to-aur.sh replaces pkgver from the release tag before publication and
 # updpkgsums fills the checksum once that artifact is public.
 pkgname=opal-media-player-bin
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Play everything — media player, universal search, torrent streaming, local AI (official binary)"
 arch=('x86_64')
@@ -25,8 +25,23 @@ optdepends=(
     'onnxruntime: OCR bubble detection'
     'python: voice helper scripts (STT/TTS servers)'
 )
-source=("https://github.com/debpalash/Opal/releases/download/v$pkgver/opal-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('551a9896c79484cbd69442e524534571fbf40dd2848fb52c5ef79fdad947cc98')
+makedepends=('gcc' 'boost' 'pkgconf')
+source=(
+    "https://github.com/debpalash/Opal/releases/download/v$pkgver/opal-$pkgver-linux-x86_64.tar.gz"
+    "Opal-$pkgver.tar.gz::https://github.com/debpalash/Opal/archive/refs/tags/v$pkgver.tar.gz"
+)
+sha256sums=('6b30278c637671ed86ec4e33d0b52685f5aa8e1131b5d7c99852d4d92cc64527'
+            'd7628b814aec08143f4da562a58f813783d0dc6ce3bc48162574d83023ce5bd7')
+
+build() {
+    # The wrapper owns the C++ ABI. Rebuild it against the Arch libtorrent
+    # installed at package build time, without rebuilding the Opal binary.
+    cd "Opal-$pkgver"
+    g++ -std=c++17 -O3 -shared -fPIC -Wl,-soname,libtorrent_wrapper.so \
+        $(pkg-config --cflags libtorrent-rasterbar) src/torrent_wrapper.cpp \
+        -o "$srcdir/opal-$pkgver-linux-x86_64/libtorrent_wrapper.so" \
+        $(pkg-config --libs libtorrent-rasterbar)
+}
 
 package() {
     cd "opal-$pkgver-linux-x86_64"
