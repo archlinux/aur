@@ -1,7 +1,7 @@
 # Maintainer: Gradia <gradia@disroot.org>
 
 pkgname=clonaut-git
-pkgver=0.4.0.r0.g0000000
+pkgver=0.5.0.r0.gfa6a1fe
 pkgrel=1
 pkgdesc='Desktop GUI for rclone: remotes, transfers with progress, safety trash, dry runs and scheduled syncs'
 arch=('any')
