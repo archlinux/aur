@@ -1,0 +1,21 @@
+pkgbase = trimd
+	pkgdesc = A terminal TUI that renders markdown — primarily Obsidian notes — as clean, styled text with zero visible markdown syntax
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/bakkario/trimd
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = nodejs
+	provides = trimd
+	noextract = trimd-0.4.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = trimd-0.4.0.tgz::https://registry.npmjs.org/@bakkario/trimd/-/trimd-0.4.0.tgz
+	b2sums = d5cbb3c0d2bec86046dc305fae506b7b6b6dcaf7aa244535a3daa9894ef458ea62cddbe23e7032871597a6f284698bf5f57653dfd75e80757741102f2d7a4277
+
+pkgname = trimd

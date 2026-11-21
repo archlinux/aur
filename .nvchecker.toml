@@ -1,0 +1,3 @@
+[trimd]
+source = "npm"
+npm = "@bakkario/trimd"
