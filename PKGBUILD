@@ -1,17 +1,34 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=pstoedit-nomagick
-pkgver=4.02
+pkgver=4.3
 pkgrel=1
 pkgdesc='Translates PS/PDF graphics to other vector formats (no ImageMagick dependency)'
 arch=('x86_64')
-url='http://www.pstoedit.net/'
+url='https://www.pstoedit.com/'
 license=('GPL-2.0-or-later')
-depends=('gd' 'ghostscript' 'ming' 'libemf' 'libzip' 'plotutils' 'zlib')
+depends=(
+    'ghostscript'
+    'glibc'
+    'libemf'
+    'libgcc'
+    'libstdc++'
+    'libzip'
+    'plotutils')
+makedepends=(
+    'texlive-basic'
+    'texlive-bin'
+    'texlive-latex'
+    'texlive-latexrecommended')
 provides=('pstoedit')
 conflicts=('pstoedit')
-source=("https://sourceforge.net/projects/pstoedit/files/pstoedit/${pkgver}/pstoedit-${pkgver}.tar.gz")
-sha256sums=('5588b432d2c6b2ad9828b44915ea5813ff9a3a3312a41fa0de4c38ddac9df72f')
+source=("https://github.com/woglu/pstoedit/archive/v${pkgver}/pstoedit-${pkgver}.tar.gz")
+sha256sums=('36dfdc79c750930dd57e2c4a4dee2a6ab1a1fe65cd8fc4dc047dbfb6f2cfa15b')
+
+prepare() {
+    cd "pstoedit-${pkgver}"
+    ./autogen.sh
+}
 
 build() {
     cd "pstoedit-${pkgver}"
@@ -22,7 +39,6 @@ build() {
         --with-emf \
         --without-magick \
         --with-libplot \
-        --with-swf \
         --with-pptx
     make
 }
