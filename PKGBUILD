@@ -1,19 +1,25 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=apkscope
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Android APK decompiler, xrefs, API recon and MCP server, with native viewer"
 arch=('x86_64')
 url="https://github.com/suffixing/apkscope"
 license=('Apache-2.0')
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
   # Opened with dlopen by winit/glutin, so they appear in no NEEDED entry and
-  # namcap cannot see them, yet the viewer cannot create a window without them.
+  # namcap cannot see them, yet the viewer cannot start without them: winit's X11
+  # connection opens libX11, libXcursor, libX11-xcb and libXi with `?`, and its XKB
+  # context needs the X11 bridge, which ships as a package of its own rather than
+  # inside libxkbcommon.
   'libglvnd'
-  'libxkbcommon'
   'libx11'
+  'libxcursor'
+  'libxkbcommon'
+  'libxkbcommon-x11'
+  'libxi'
   'wayland'
 )
 makedepends=('cargo')
