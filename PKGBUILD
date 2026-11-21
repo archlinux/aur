@@ -3,7 +3,7 @@
 _sdk=10.0
 _Name="CSharpier"
 pkgname="${_Name,,}"
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="An opinionated code formatter for C#"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=("dotnet-sdk-${_sdk}")
 options=('!strip' '!debug')
 _pkgsrc="${_url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('7fe0c48f6f92891b52239020c707156778e957791811081eb6a658d58a02731a82d763459f9a6c8628838391299d71aa9997f02113e548d882b11e2aab896b81')
+b2sums=('33880b5fc922f8a044600c27a5a28734e004eb3a681c8dbb13c1d8e78e19bd79dfdccf5a69a404b6b72b8d1dc6b4a07bf1a9816d340b50c4b0141e91c4f2c448')
 
 if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;
 elif [ "${CARCH}" = 'armv7h'  ]; then _msarch=arm;
