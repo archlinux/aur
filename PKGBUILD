@@ -1,6 +1,6 @@
 # Maintainer: viewerofall <joemomanugget@gmail.com>
 pkgname=velogin
-pkgver=4.12
+pkgver=4.16.4
 pkgrel=1
 pkgdesc="Graphical TTY login manager for Veil/Void systems"
 arch=('x86_64')
@@ -14,7 +14,7 @@ backup=('etc/pam.d/velogin')
 install=velogin-bin.install
 
 source=("velogin.tar.gz::https://github.com/viewerofall/veilTDC/releases/download/v${pkgver}/velogin.tar.gz")
-sha256sums=('503c2f91b499d17a8ba3116994365933af2409f98a61eedced8e317c54bca307')
+sha256sums=('6db342b07e86d7cbf23c3261773bb529848dee5dd8f1818e0f4f770f5ebedf5d')
 
 package() {
   install -Dm755 "${srcdir}/velogin/velogin" "${pkgdir}/usr/bin/velogin"
