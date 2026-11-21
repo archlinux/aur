@@ -6,7 +6,7 @@
 # checkout instead.
 
 pkgname=hauler
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Fast, resumable download manager: segmented engine, systemd daemon and Kirigami app'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('uq: Downloads widget in the bar, "Download with hauler" in look=see
 # Rust links its own LTO; makepkg's C/C++ LTO flags break the cxx-qt objects.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('010e313b0782c62b39656a888bb1c7b4da965d0b84c2199f42272d42d28e0834')
+sha256sums=('af7f5b76a95490da8e7bac0680f920bd584cfbb89298fe7aefc7961ac9742ced')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -41,6 +41,7 @@ package() {
   sed 's|@BINDIR@|/usr/bin|' dist/systemd/hauler.service |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/user/hauler.service"
   install -Dm644 dist/hauler.desktop "$pkgdir/usr/share/applications/hauler.desktop"
+  install -Dm644 -t "$pkgdir/usr/share/metainfo" dist/io.github.asafelobotomy.hauler.metainfo.xml
   # uQ integration (uq/README.md): inert without uQ; the D-Bus service file
   # lets the session bus start haulerd through hauler.service.
   install -Dm644 -t "$pkgdir/usr/share/uq/shell/widgets/hauler" uq/widgets/hauler/widget.toml uq/widgets/hauler/Widget.qml
