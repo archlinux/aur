@@ -1,6 +1,6 @@
 pkgbase = riftbar-bin
 	pkgdesc = Highly customizable GTK4 bar for Wayland written in Rust
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://codeberg.org/sorashii/riftbar
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = riftbar-bin
 	provides = riftbar
 	conflicts = riftbar
 	options = !debug
-	source = riftbar::https://codeberg.org/sorashii/riftbar/releases/download/v0.3.1/riftbar-x86_64
-	source = LICENSE::https://codeberg.org/sorashii/riftbar/raw/tag/v0.3.1/LICENSE
-	source = README.md::https://codeberg.org/sorashii/riftbar/raw/tag/v0.3.1/README.md
-	sha256sums = a9b4e7123df95879cf676025478047f7ece0d133f45f8db5900dae9f3413dc12
+	source = riftbar::https://codeberg.org/sorashii/riftbar/releases/download/v0.3.2/riftbar-x86_64
+	source = LICENSE::https://codeberg.org/sorashii/riftbar/raw/tag/v0.3.2/LICENSE
+	source = README.md::https://codeberg.org/sorashii/riftbar/raw/tag/v0.3.2/README.md
+	sha256sums = 7f03ba533a3658711678dd5405765cd33afdd5079dc3abd643068c915a0ce912
 	sha256sums = SKIP
 	sha256sums = SKIP
 
