@@ -7,8 +7,8 @@ pkgname=yocto-uninative-tarball
 # glibc the same build, so the uninative-vs-host version check below can never
 # be a judgement call. update-version.sh rewrites pkgver and _commit together
 # from Arch's packaging PKGBUILD; neither is hand-maintained.
-pkgver=2.44+r78+gfcfb867c58ab
-_commit=fcfb867c58ab5dc402a072fe23534fa3b8ff2616
+pkgver=2.44+r83+g625054f30f0e
+_commit=625054f30f0e7a961519f045f2364aa3ca6c1c6b
 pkgrel=1
 pkgdesc='Yocto uninative libc tarball built from the glibc commit Arch ships'
 arch=('x86_64')
