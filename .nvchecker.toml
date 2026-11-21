@@ -1,0 +1,19 @@
+[wiso-steuer-2027]
+source = "manual"
+manual = "34.0.1600"
+
+# Upstream publishes updaters both in the app and the change log:
+# https://download.buhl.de/Updates/Steuer/2027/Win/Aktuell/Versionsinfo_wsp.html
+#
+# Uncomment the following section once upstream has published the
+# first updater.
+
+# # To avoid unnecessary load on the shop, use the documented endpoint
+# # (adaptation of rmrfwindows’s GitHub gist) instead of scraping
+# # `https://www.buhl.de/shop/updates?category=9`.
+# #
+# source = "regex"
+# url = "https://drm.buhl.de/json/ServiceRest.svc/GetUpdate"
+# post_data = "{\"soap\":{\"ApplicationName\":\"wmain27.dll\",\"ProgKey\":\"SB_STD2027\",\"SerialExtension\":\"2027\",\"ApplicationVersion\":\"34.00.1600\",\"Value\":\"<Value>\\n <Value modul=\\\"WST2027\\\" name=\\\"Update\\\" version=\\\"34.00.1600\\\"/>\\n</Value>\\n\"}}"
+# post_data_type = "application/json"
+# regex = "actualversion=\\\\\"(.*?)\\\\\""

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=WISO Steuer 2027
+Comment=File your German tax return for the tax year 2026
+Exec=/usr/bin/wiso-steuer-2027
+Icon=/usr/share/pixmaps/wiso-steuer-2027.png
+Terminal=false
+StartupWMClass=wmain27.dll
+Categories=Office;Finance;
+SingleMainWindow=true
