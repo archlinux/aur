@@ -1,6 +1,6 @@
 # Maintainer: overrule <basbasbas at protonmail dot com>
 pkgname=icloudpd-bin
-pkgver=1.33.1
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='A command-line tool to download photos from iCloud'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -17,9 +17,9 @@ source_aarch64=("${pkgname}-${pkgver}-aarch64::${_ghbin}-linux-arm64")
 source_armv7h=("${pkgname}-${pkgver}-armv7h::${_ghbin}-linux-arm32v7")
 
 sha256sums=('bb04f6adb55cf312f3f5fefc559bf332bc8fb2bd680e309041449c18644ae385')
-sha256sums_x86_64=('961131997d58f349f437b3a9637ce92f04213fdfe4f484913b85eb4bae64ccc2')
-sha256sums_aarch64=('e0f830652822c71ddc2456c4ddb75ff26e73f89aeff3f7c5974f34b9b6d9d3d5')
-sha256sums_armv7h=('3cbc6483c9033a44d4b63c2ad0ee43de279228d91caa80d626688761a199ccd4')
+sha256sums_x86_64=('c1ae40027cea92eeb5ee24338a25fb79d564ae0f06c42d322b41282bbd2d3b02')
+sha256sums_aarch64=('a5d59bd72145d7f00530cc02c15ccc463db05bb11a5068ac6a8656faa4cf8e6e')
+sha256sums_armv7h=('10594f511bc4e8d7b0f7bbbb951cf00396826f3bb8ac5f098c39d2052ecfa470')
 
 package() {
   install -Dm755 ${pkgname}-${pkgver}-${CARCH} "${pkgdir}/usr/bin/${pkgname%-bin}"
