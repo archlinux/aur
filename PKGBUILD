@@ -5,7 +5,7 @@ _variant='netinst'
 _upstream_arch='amd64'
 _image_id='debian'
 pkgname="libvirt-iso-${_pkgname}-bin"
-pkgver=13.7.0
+pkgver=13.8.0
 pkgrel=1
 pkgdesc='Official Debian stable network installation ISO for libvirt'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
 )
 noextract=("${_iso}")
 sha512sums=(
-	'ef04d0276850d70e4aaec0b55003628660e9631b26e35215a70ab3c8c707294a4b12731bc73c75a932902f703a7c278310ca99df28d6b36fb06d5618d8d0f678'
+	'825d85a068532854f81c2d99a1890d8dfa969beeafd2ace976d86fb22ca5a3b0e4012f8b681682e668db3b883bd5f4e3dcdbdb2685f945a27aef0230558eaadb'
 	'SKIP'
 	'SKIP'
 	'4750f195399fb0d348dedd081d23f82c9fcd5545af7dc27a1af7084bbc23d14ea4cc86e91ae7e3e7be696e2c300632610e08a576797782d837028e5a265e8b78'
