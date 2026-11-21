@@ -1,0 +1,27 @@
+pkgbase = caelestia-lib
+	pkgdesc = Shared C++ library for Caelestia
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/caelestia-dots/lib
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-wayland
+	makedepends = wayland-protocols
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = ffmpeg
+	depends = wayland
+	optdepends = dart-sass: Discord theming
+	optdepends = dconf: GTK theming
+	optdepends = papirus-folders: folder icon theming
+	optdepends = gpu-screen-recorder: screen recorder
+	provides = caelestia-lib
+	conflicts = caelestia-lib-git
+	source = https://github.com/caelestia-dots/lib/releases/download/v0.0.2/caelestia-lib-v0.0.2.tar.gz
+	sha256sums = 6695dc30995e77d49c1927e27004b2d980918b4a4d8fbd64fc53b64f982c0877
+
+pkgname = caelestia-lib
