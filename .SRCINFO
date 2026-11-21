@@ -1,6 +1,6 @@
 pkgbase = globalping-cli
 	pkgdesc = Better understand your network routing, fix anycast issues, monitor your CDN and DNS performance, do uptime monitoring and build your own network tools for personal or public use.
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/jsdelivr/globalping-cli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = globalping-cli
 	makedepends = go
 	conflicts = globalping
 	conflicts = globalping-bin
-	source = globalping-cli::git+https://github.com/jsdelivr/globalping-cli.git#tag=v1.6.1
-	sha256sums = 80adf6b5e2c21527f5d5622d4be6e071668376d8e7f943b24ac39cb5ef2aff48
+	source = globalping-cli::git+https://github.com/jsdelivr/globalping-cli.git#tag=v1.7.0
+	sha256sums = 8adb6d611a08843df21e1ae359296a13f73a4579ea7e4279a4898f1b71f5be48
 
 pkgname = globalping-cli
