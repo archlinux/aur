@@ -1,17 +1,17 @@
 pkgbase = deja-vu-bin
 	pkgdesc = Shared local memory, cross-agent handoff and code recovery for coding agents (prebuilt)
-	pkgver = 0.24.3
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/vshulcz/deja-vu
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = deja-vu=0.24.3
+	provides = deja-vu=0.25.0
 	conflicts = deja-vu
 	conflicts = deja
-	source_x86_64 = https://github.com/vshulcz/deja-vu/releases/download/v0.24.3/deja-vu_0.24.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = d4a03ac69edd5063e7ddf847c5d59b86932363dc398daf152f4366b0d080a563
-	source_aarch64 = https://github.com/vshulcz/deja-vu/releases/download/v0.24.3/deja-vu_0.24.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2b3529740a05d6e2e0e34f0614107d5137e90de61fa7ce51d94cc4526e00d912
+	source_x86_64 = https://github.com/vshulcz/deja-vu/releases/download/v0.25.0/deja-vu_0.25.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3a95763c34884cb26b322157b3a56a8b4b675eb39f979ea5c54e927092689b72
+	source_aarch64 = https://github.com/vshulcz/deja-vu/releases/download/v0.25.0/deja-vu_0.25.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 605a54d0b67bac840d5bdfc4d7c045792507b20f7f545dde23229b5dae62a581
 
 pkgname = deja-vu-bin
