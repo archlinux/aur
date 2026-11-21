@@ -35,7 +35,8 @@ depends=(
 
 makedepends=(patchelf)
 
-source=("https://www.aladdin-rd.ru/upload/downloads/JaCarta_UC/jacarta-3.3.6/lunix/distributions/jacartauc_3.3.6.3921_rpm_x64.tgz")
+# the vendor directory carries a 3-part version, the file name a 4-part one
+source=("https://www.aladdin-rd.ru/upload/downloads/JaCarta_UC/jacarta-${pkgver%.*}/lunix/distributions/jacartauc_${pkgver}_rpm_x64.tgz")
 sha256sums=("d62d97880b48c5f56afcd269d87d8917e672b76c434112d759ab5fb6087e8cc4")
 options=(!strip !debug)
 
