@@ -1,6 +1,6 @@
 pkgbase = bettbox-pre-bin
 	pkgdesc = A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core.
-	pkgver = 1.19.9pre1
+	pkgver = 1.19.9
 	pkgrel = 1
 	url = https://github.com/appshubcc/Bettbox
 	install = bettbox.install
@@ -12,7 +12,7 @@ pkgbase = bettbox-pre-bin
 	depends = libayatana-indicator
 	depends = libkeybinder3
 	optdepends = polkit: for TUN authorization
-	provides = bettbox=1.19.9pre1
+	provides = bettbox=1.19.9
 	conflicts = bettbox
 	conflicts = bettbox-bin
 	conflicts = bettbox-compatible
@@ -33,9 +33,9 @@ pkgbase = bettbox-pre-bin
 	source = bettbox.install
 	sha256sums = 03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2
 	sha256sums = c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b
-	source_x86_64 = bettbox-pre-bin-1.19.9pre1-x86_64.deb::https://github.com/appshubcc/Bettbox/releases/download/v1.19.9-pre1/Bettbox-1.19.9-linux-amd64-standard.deb
-	sha256sums_x86_64 = 9de43ccc3f5820dc35122b6dbcf5c2f0788de6ee465730fbf3a92db7155d28dc
-	source_aarch64 = bettbox-pre-bin-1.19.9pre1-aarch64.deb::https://github.com/appshubcc/Bettbox/releases/download/v1.19.9-pre1/Bettbox-1.19.9-linux-arm64-standard.deb
-	sha256sums_aarch64 = 69dda053534de224ed32d607cbfe1261eb3f3a07188e98acadc913b1bd091fb4
+	source_x86_64 = bettbox-pre-bin-1.19.9-x86_64.deb::https://github.com/appshubcc/Bettbox/releases/download/v1.19.9/Bettbox-1.19.9-linux-amd64-standard.deb
+	sha256sums_x86_64 = d7f9d085c95af0df8d2e3fd59091a695afb870fdaf9c640ecb63765c74440db8
+	source_aarch64 = bettbox-pre-bin-1.19.9-aarch64.deb::https://github.com/appshubcc/Bettbox/releases/download/v1.19.9/Bettbox-1.19.9-linux-arm64-standard.deb
+	sha256sums_aarch64 = 91c3db178601895249a38fa912d9306dd023b9b3b1142f81d1b19bf70c521183
 
 pkgname = bettbox-pre-bin
