@@ -1,6 +1,6 @@
 pkgbase = gputaskman
 	pkgdesc = A GPU task manager for Windows, Linux, and WSL: per-process VRAM, GPU activity, and LLM model/KV-cache insights (Windows AMD and NVIDIA).
-	pkgver = 0.4.3
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/shanselman/gputaskman
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = gputaskman
 	depends = python-textual
 	optdepends = amdsmi: AMD SMI telemetry for AMD GPUs
 	optdepends = nvidia-utils: NVML telemetry for NVIDIA GPUs
-	source = gputaskman-0.4.3.tar.gz::https://github.com/shanselman/gputaskman/archive/refs/tags/v0.4.3.tar.gz
-	sha256sums = d589768884532de82bd72ce47348a55b77d61a4c66879c30643b80b5d8de0331
+	source = gputaskman-0.4.5.tar.gz::https://github.com/shanselman/gputaskman/archive/refs/tags/v0.4.5.tar.gz
+	sha256sums = 873cef40ebbd0e4f4465c4d812efd21de73d6def0b1d0f0ac7a6ff85d7c971fd
 
 pkgname = gputaskman
