@@ -1,6 +1,6 @@
 pkgbase = uq
 	pkgdesc = Themeable Hyprland desktop: shell, theme and layout daemon, CLI and base config
-	pkgver = 0.3.26
+	pkgver = 0.3.28
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/uq
 	install = uq.install
@@ -39,6 +39,7 @@ pkgbase = uq
 	depends = inter-font
 	depends = ttf-jetbrains-mono
 	depends = xdg-desktop-portal-gtk
+	depends = libnotify
 	optdepends = plasma5-integration: Qt 5 apps follow the uQ theme (with kvantum-qt5)
 	optdepends = kvantum-qt5: the uQ widget style for Qt 5 apps
 	optdepends = kitty: default terminal (SUPER+Return)
@@ -75,7 +76,7 @@ pkgbase = uq
 	backup = etc/pam.d/uq-lock-fingerprint
 	backup = etc/uq/greetd.toml
 	backup = etc/uq/greeter.toml
-	source = uq-0.3.26.tar.gz::https://github.com/asafelobotomy/uq/releases/download/v0.3.26/uq-0.3.26.tar.gz
-	sha256sums = dc3b5aa6c33cb9b7016e9139ec68cb2210cb244c1462b64b2c484c3ef4cf0057
+	source = uq-0.3.28.tar.gz::https://github.com/asafelobotomy/uq/releases/download/v0.3.28/uq-0.3.28.tar.gz
+	sha256sums = 8faaf62c493095661e933a9e319950c1bc0b605d84b8e4738c1e83cf7f6dc838
 
 pkgname = uq

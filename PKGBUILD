@@ -4,7 +4,7 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=uq
-pkgver=0.3.26
+pkgver=0.3.28
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
 # The uq-hyprland-pin this release's config/hypr/base.lua is tested with: equal to
@@ -18,7 +18,7 @@ license=(MIT)
 depends=("uq-hyprland-pin>=$_pin" dbus glib2 shared-mime-info qt6ct gcc-libs 'quickshell>=0.3.1' 'quickshell<0.4' brightnessctl upower systemd noto-fonts-emoji gnome-keyring
   kirigami qqc2-desktop-style qt6-declarative kvantum polkit kcolorscheme kconfig
   plasma-integration papirus-icon-theme adw-gtk-theme inter-font ttf-jetbrains-mono
-  xdg-desktop-portal-gtk)
+  xdg-desktop-portal-gtk libnotify)
 install=uq.install
 makedepends=(cargo qt6-base qt6-declarative kcolorscheme kconfig)
 checkdepends=(lua qt6-declarative)
@@ -60,7 +60,7 @@ backup=(etc/pam.d/uq-greetd etc/pam.d/uq-greeter etc/pam.d/uq-lock etc/pam.d/uq-
 # (so its checksum) can change. The release workflow uploads exactly this file and prints its sum.
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
 # The release asset's sha256 for this tag; update it with pkgver at each release (docs/releasing.md).
-sha256sums=('dc3b5aa6c33cb9b7016e9139ec68cb2210cb244c1462b64b2c484c3ef4cf0057')
+sha256sums=('8faaf62c493095661e933a9e319950c1bc0b605d84b8e4738c1e83cf7f6dc838')
 
 prepare() {
   cd "$srcdir/$pkgname-$_tag"
