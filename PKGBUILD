@@ -31,34 +31,36 @@ build() {
 }
 
 package() {
-    # 1. Копируем распакованное содержимое в /opt/vanyavpn/
+    # 1. Копируем распакованный squashfs-root в /opt/vanyavpn/
     install -dm755 "${pkgdir}/opt/vanyavpn"
     cp -rp squashfs-root/* "${pkgdir}/opt/vanyavpn/"
 
-    # 2. Права доступа на чтение и выполнение для всех пользователей (роли root:root)
-    find "${pkgdir}/opt/vanyavpn" -type d -exec chmod 755 {} +
-    find "${pkgdir}/opt/vanyavpn" -type f -exec chmod 644 {} +
-    find "${pkgdir}/opt/vanyavpn" -type f -executable -exec chmod 755 {} +
-    find "${pkgdir}/opt/vanyavpn" -name "*.so*" -exec chmod 755 {} +
+    # 2. Выставляем права на чтение и выполнение для всех пользователей (+rX)
+    # Это гарантирует, что папки 755, а бинарники сохраняют +x
+    chmod -R a+rX "${pkgdir}/opt/vanyavpn"
 
-    # 3. Настройка SUID для песочницы Electron (чтобы работать без --no-sandbox)
+    # 3. Гарантируем исполняемость ключевых файлов
+    chmod +x "${pkgdir}/opt/vanyavpn/AppRun"
+    if [ -f "${pkgdir}/opt/vanyavpn/vanyavpn" ]; then
+        chmod +x "${pkgdir}/opt/vanyavpn/vanyavpn"
+    fi
+
+    # 4. Настройка SUID для песочницы Electron
     if [ -f "${pkgdir}/opt/vanyavpn/chrome-sandbox" ]; then
         chmod 4755 "${pkgdir}/opt/vanyavpn/chrome-sandbox"
     fi
 
-    # 4. Ярлык .desktop
+    # 5. Установка .desktop и иконки
     install -Dm644 "vanyavpn.desktop" \
         "${pkgdir}/usr/share/applications/vanyavpn.desktop"
-
-    # 5. Иконка 128x128
     install -Dm644 "VanyaVPN.png" \
         "${pkgdir}/usr/share/icons/hicolor/128x128/apps/vanyavpn.png"
 
-    # 6. Симлинк для терминала (ссылается на AppRun распакованной папки)
-    install -d "${pkgdir}/usr/bin"
-    ln -s /opt/vanyavpn/AppRun "${pkgdir}/usr/bin/vanyavpn"
+    # 6. Создание симлинка в /usr/bin/vanyavpn (на AppRun)
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -sf /opt/vanyavpn/AppRun "${pkgdir}/usr/bin/vanyavpn"
 
-    # 7. Автоочистка застрявшего интерфейса outline-tun0 в systemd
+    # 7. Конфиг автоочистки systemd
     install -Dm644 "outline-controller-cleanup.conf" \
         "${pkgdir}/usr/lib/systemd/system/outline_proxy_controller.service.d/override.conf"
 }

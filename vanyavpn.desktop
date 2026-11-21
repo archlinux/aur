@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=VanyaVPN
 Comment=VanyaVPN Client
-Exec=/opt/vanyavpn/VanyaVPN.AppImage
+Exec=vanyavpn %U
 Icon=vanyavpn
 Type=Application
-Categories=Network;Security;
+Categories=Network;VPN;
 Terminal=false
