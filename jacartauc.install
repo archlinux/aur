@@ -2,6 +2,13 @@ post_install() {
 	bash /opt/jacartauc/scripts/PLIST/Linux/update_all_plists.sh
 }
 
-post_remove() {
-	mv /etc/libccid_Info.plist.*.backup /etc/libccid_Info.plist
+pre_remove() {
+	# restore the ccid Info.plist patched by update_all_plists.sh
+	local plist=/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist
+	local backup
+	backup=$(ls -1t "$plist".*.backup 2>/dev/null | head -n 1)
+	if [ -n "$backup" ]; then
+		mv -f "$backup" "$plist"
+		rm -f "$plist".*.backup
+	fi
 }
