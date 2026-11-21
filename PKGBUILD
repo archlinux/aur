@@ -1,7 +1,7 @@
 # Maintainer: Alex3236 <me@alex3236.moe>
 
 pkgname=zed-i18n-bin
-pkgver=1.28.1+i18n.1
+pkgver=1.29.3+i18n.1
 pkgrel=1
 pkgdesc="Localized build of the Zed editor (community i18n release)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ options=('!debug' '!strip')
 _tag="v${pkgver/+i18n./-i18n.}"
 
 source=("${pkgname}-${pkgver}.deb::https://github.com/LI-NA/zed-i18n/releases/download/${_tag}/zed-i18n-linux-x86_64.deb")
-sha256sums=('d1169516401c1caf70a1b0a5fb6c15978b19ddf8d70104cabdb5b451c2b97938')
+sha256sums=('28c247d782bcf48f097d6ca5689dced065d8c0cb691ee568bb77d76d86035f8b')
 
 package() {
     cd "$srcdir"

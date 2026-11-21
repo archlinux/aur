@@ -1,6 +1,6 @@
 pkgbase = zed-i18n-bin
 	pkgdesc = Localized build of the Zed editor (community i18n release)
-	pkgver = 1.28.1+i18n.1
+	pkgver = 1.29.3+i18n.1
 	pkgrel = 1
 	url = https://github.com/LI-NA/zed-i18n
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = zed-i18n-bin
 	depends = vulkan-icd-loader
 	optdepends = git: Git integration
 	optdepends = vulkan-driver: GPU acceleration
-	provides = zed=1.28.1
+	provides = zed=1.29.3
 	provides = zed-i18n
 	conflicts = zed
 	conflicts = zed-bin
@@ -26,7 +26,7 @@ pkgbase = zed-i18n-bin
 	conflicts = zed-i18n
 	options = !debug
 	options = !strip
-	source = zed-i18n-bin-1.28.1+i18n.1.deb::https://github.com/LI-NA/zed-i18n/releases/download/v1.28.1-i18n.1/zed-i18n-linux-x86_64.deb
-	sha256sums = d1169516401c1caf70a1b0a5fb6c15978b19ddf8d70104cabdb5b451c2b97938
+	source = zed-i18n-bin-1.29.3+i18n.1.deb::https://github.com/LI-NA/zed-i18n/releases/download/v1.29.3-i18n.1/zed-i18n-linux-x86_64.deb
+	sha256sums = 28c247d782bcf48f097d6ca5689dced065d8c0cb691ee568bb77d76d86035f8b
 
 pkgname = zed-i18n-bin

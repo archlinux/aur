@@ -1,0 +1,12 @@
+# nvchecker config for zed-i18n-bin
+# Usage: nvchecker -c nvchecker.toml
+# Upstream tags look like "v1.22.0-i18n.1"; the deb (and AUR pkgver) uses
+# "1.22.0+i18n.1". tag_sort=version is required so that 1.10.x sorts above
+# 1.9.x; from/to_pattern yield exactly the pkgver form.
+[zed-i18n]
+source = "git"
+git = "https://github.com/LI-NA/zed-i18n.git"
+use_max_tag = true
+tag_sort = "version"
+from_pattern = 'v(\d+\.\d+\.\d+)-i18n\.(\d+)'
+to_pattern = '\1+i18n.\2'
