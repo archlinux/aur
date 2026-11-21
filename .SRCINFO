@@ -1,6 +1,6 @@
 pkgbase = expresso
 	pkgdesc = Keep the system awake for a while: a scriptable systemd-inhibit lock
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/Davi-S/expresso
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = expresso
 	depends = systemd
 	depends = glib2
 	depends = libnotify
-	source = expresso-2.1.0.tar.gz::https://github.com/Davi-S/expresso/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = f080641bc34d1a14262ecf5aa1d542912ee742e134262ae8c6cf6f974854d6b1
+	source = expresso-2.2.0.tar.gz::https://github.com/Davi-S/expresso/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 4fc114553cf33809a41c848c244b37dc7a2a20e82108a7b300745d40176884be
 
 pkgname = expresso
