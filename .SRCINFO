@@ -1,18 +1,18 @@
 pkgbase = onnxruntime-split-cuda12
 	pkgdesc = The CUDA execution provider of ONNX Runtime, CUDA 12 build for Pascal, Volta and newer NVIDIA GPUs, for onnxruntime-core
 	pkgver = 1.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/onnxruntime
 	arch = x86_64
 	license = MIT AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MPL-2.0
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = patchelf
 	makedepends = python
 	makedepends = cuda-12.9
 	makedepends = cudnn9.10-cuda12.9
 	makedepends = gcc14
+	makedepends = nccl-cuda12.9
 	noextract = ortf-dep-abseil_cpp.zip
 	noextract = ortf-dep-re2.zip
 	noextract = ortf-dep-protobuf.zip
@@ -29,9 +29,13 @@ pkgbase = onnxruntime-split-cuda12
 	noextract = ortf-dep-pybind11.zip
 	noextract = ortf-dep-cutlass.zip
 	noextract = ortf-dep-cudnn_frontend.zip
+	noextract = ortf-dep-cxxopts.zip
+	noextract = ortf-dep-tensorboard.zip
+	noextract = ortf-dep-onednn.zip
+	noextract = onnxruntime-1.29.0.tar.gz
 	options = !lto
 	options = !debug
-	source = onnxruntime::git+https://github.com/microsoft/onnxruntime.git#tag=v1.29.0
+	source = onnxruntime-1.29.0.tar.gz::https://github.com/rsd/omarchy-onnxruntime/releases/download/source-v1.29.0/onnxruntime-1.29.0.tar.gz
 	source = ortf-dep-abseil_cpp.zip::https://github.com/abseil/abseil-cpp/archive/refs/tags/20250814.0.zip
 	source = ortf-dep-re2.zip::https://github.com/google/re2/archive/refs/tags/2024-07-02.zip
 	source = ortf-dep-protobuf.zip::https://github.com/protocolbuffers/protobuf/archive/refs/tags/v21.12.zip
@@ -48,7 +52,10 @@ pkgbase = onnxruntime-split-cuda12
 	source = ortf-dep-pybind11.zip::https://github.com/pybind/pybind11/archive/refs/tags/v3.0.2.zip
 	source = ortf-dep-cutlass.zip::https://github.com/NVIDIA/cutlass/archive/refs/tags/v4.4.2.zip
 	source = ortf-dep-cudnn_frontend.zip::https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v1.24.0.zip
-	b2sums = 8fdc31605d139480199860fc303a537bf67635bf60eb1d40e850b0270b422b070855cf416e9ca774889b9fba0c52fa40ad6fde0bdaf074013e2aaba89b53e054
+	source = ortf-dep-cxxopts.zip::https://github.com/jarro2783/cxxopts/archive/3c73d91c0b04e2b59462f0a741be8c07024c1bc0.zip
+	source = ortf-dep-tensorboard.zip::https://github.com/tensorflow/tensorboard/archive/373eb09e4c5d2b3cc2493f0949dc4be6b6a45e81.zip
+	source = ortf-dep-onednn.zip::https://github.com/uxlfoundation/oneDNN/archive/refs/tags/v3.11.3.zip
+	b2sums = 28d0b3e08d28a8d9295a21f8a233671bdab89f2a9573e169398421bd5e7355f4ce8a50cf6d2480baa02e6fb266323dff2808c8e474d456bd2e236a70621533f0
 	b2sums = a6ef9897d1557f06991cdd6afe73fce31bcf6dc3e971a7fb03eb4bd9db4379e98aea4fff0ac612e26638d0e0a835124e0d52611d560a27c85a9ca30f5210fee1
 	b2sums = 544f24a306b7b7adb924073e4319eae017bc82875cdfb20b668997ed212b343261f6c568b24ca945a69858ac9527fa22befac09138d38c9e5be1856bc11da8fd
 	b2sums = ecfb8890aea094c90f76062ca3eb88b24df467b2f1e9bd0531a8a1d66113869db02bff6f52f73a1dde8f7288914d5ca6345dfe395440baaf386028742981f4ea
@@ -65,10 +72,14 @@ pkgbase = onnxruntime-split-cuda12
 	b2sums = 3e79515d5b312775a5cc09ce8c98530f6c25e59e3be0c4745572f5a6dbf1849c912563b1ff1fad74f2ae2b294776da57c4b8412e300bbb93fbcb5ec483fb4635
 	b2sums = 3b3f79303cc113b4044b2f3d472060a3d90270882b4180d31eac07cf317b41abd3ab5bedabfa5116401669b85cce1fad83d5fd4bbf9a43020fa20f0ce748d0b5
 	b2sums = 3c12cf8c6de687744a13e889bcdd569cff2f390df4725885af255059f012de9f5a1e7c89541a26b70daffce546cad403f7907b003152918aca337b1d0dceffc2
+	b2sums = b6318baf652ee118153752c3b83f175691b35c28a5aee449ae61086bfb44f85f4507b5a24af23e40af917c962235f2430f0f99226439a21e6406365bfb6405dd
+	b2sums = 8e68d4e22e46026c303526f3ced8b53751264aeb9af04eaead40230553f768d8c84ec0042a5366387d978dc8c7f594b965bd178437cf66b68ad75074b7ab7045
+	b2sums = e1bd2db15056f1a2740860659b0d96e8200f9367989f05d09e1d9e2c4abf7967821e25afed293db3e867170ac3a682133b4388b2841606f51cdf6081af7a6f59
 
 pkgname = onnxruntime-provider-cuda12-legacy
 	pkgdesc = The CUDA execution provider of ONNX Runtime, CUDA 12 build for Pascal, Volta and newer NVIDIA GPUs, for onnxruntime-core
-	depends = onnxruntime-core=1.29.0
+	depends = onnxruntime-core>=1.29.0-7
+	depends = onnxruntime-core<1.29.1
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
@@ -77,7 +88,9 @@ pkgname = onnxruntime-provider-cuda12-legacy
 	depends = cuda<13
 	depends = cudnn>=9.10
 	depends = cudnn<9.11
+	depends = nccl-cuda12.9
 	provides = onnxruntime-provider-cuda=1.29.0
 	provides = onnxruntime-provider-cuda12=1.29.0
 	conflicts = onnxruntime-provider-cuda
 	conflicts = onnxruntime-provider-cuda12
+	conflicts = onnxruntime-core-nccloff
