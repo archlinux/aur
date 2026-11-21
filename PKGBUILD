@@ -1,6 +1,6 @@
 # Maintainer: ldgnu <ldgnu@users.noreply.github.com>
 pkgname=openaula
-pkgver=0.1.5
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="TUI, CLI y API para configurar el teclado AULA/Epomaker F108 Pro en Linux"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=("${pkgname}-bin")
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('711d875e3364e6fe190436e90c87cb89e8bc39aa17cea164968ac333de68e470')
+sha256sums=('298de244a9e683396d86cd132ca7de5f4a59b0eca0cd0982dcf1a8cc50cfc406')
 
 build() {
   cd "${srcdir}/openaula-${pkgver}"
