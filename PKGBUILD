@@ -10,8 +10,6 @@ _npmauthor=@${pkgname}
 _npmver=${pkgver}
 
 pkgdesc="A Modern Git UI - fresh take on ungit"
-pkgver=${_npmver}
-pkgrel=1
 arch=("x86_64")
 url="https://github.com/${pkgauthor}/${pkgname}"
 license=("MIT")
