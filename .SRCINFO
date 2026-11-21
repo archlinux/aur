@@ -1,6 +1,6 @@
 pkgbase = hitokoto
 	pkgdesc = A native, single-file hybrid Markdown editor
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/Daniel-Fuerst/hitokoto
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = hitokoto
 	depends = hicolor-icon-theme
 	depends = qt6-base
 	depends = qt6-svg
-	source = hitokoto-0.7.1.tar.gz::https://github.com/Daniel-Fuerst/hitokoto/archive/refs/tags/v0.7.1.tar.gz
+	source = hitokoto-0.7.2.tar.gz::https://github.com/Daniel-Fuerst/hitokoto/archive/refs/tags/v0.7.2.tar.gz
 	source = hitokoto.desktop
-	sha256sums = 323815828af62904a9ad8c2c9df580bedf16bf75364bf6c09b9deac4b82b59ee
+	sha256sums = b947ddd02d814656412dd278989064d9f22184e904debce4f249179940cd9bd1
 	sha256sums = 6e780a4fce0fc06cb349b88a8976bb2793cdbe949f60afb0573de375083659b6
 
 pkgname = hitokoto
