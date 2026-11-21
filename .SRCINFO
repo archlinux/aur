@@ -12,7 +12,7 @@ pkgbase = aethersdr-bin
 	conflicts = aethersdr
 	options = !strip
 	options = !debug
-	source = AetherSDR-v26.11.3-x86_64.AppImage::https://github.com/aethersdr/AetherSDR/releases/download/26.11.3/AetherSDR-v26.11.3-x86_64.AppImage
+	source = AetherSDR-v26.11.3-x86_64.AppImage::https://github.com/aethersdr/AetherSDR/releases/download/v26.11.3/AetherSDR-v26.11.3-x86_64.AppImage
 	sha256sums = 93ec14fca3e33cfc7f7f0fcd3922549f81d4d2e47de2321c390ef6b447fa90e7
 
 pkgname = aethersdr-bin
