@@ -1,7 +1,7 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
 # Release-pinned binary recipe; generated updates follow published assets.
 pkgname=fcitx5-misstype-bin
-pkgver=0.5.9
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Offline, fuzzy Zhuyin input method for fcitx5 (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -17,10 +17,10 @@ conflicts=('fcitx5-misstype' 'fcitx5-misstype-git' 'fcitx5-mistype-git'
            'ibus-misstype' 'ibus-misstype-git' 'ibus-misstype-bin')
 options=('!strip' '!debug')
 source_x86_64=("$url/releases/download/v$pkgver/Misstype-$pkgver-arch-x86_64.pkg.tar.zst")
-sha256sums_x86_64=('e53a5f1c5c0db66b04d6543c1ba734baf3649487eb9170b78598dfffb868af7b')
+sha256sums_x86_64=('3d24df1a4311d43f57ea1637184ca15f592828fd0b572a9311f97c7192673cbc')
 source_aarch64=("$url/releases/download/v$pkgver/Misstype-$pkgver-arch-aarch64.pkg.tar.zst")
 # Placeholder: prepare_aur_bin.py pins it, or drops aarch64 for releases without that asset.
-sha256sums_aarch64=('5c046c902e5711db8aeed78337e4798726edbe885951c9d3e8c7a9b3f20a9f2a')
+sha256sums_aarch64=('72b2898e16818a36b2446776746e8a3aa759d960f809145d86e5631efd53eab5')
 noextract=("Misstype-$pkgver-arch-x86_64.pkg.tar.zst"
             "Misstype-$pkgver-arch-aarch64.pkg.tar.zst")
 
