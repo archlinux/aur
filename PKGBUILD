@@ -1,5 +1,5 @@
 pkgname=iscsi-util-bin
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="A simple and modern GUI for managing iSCSI."
 arch=('x86_64')
@@ -23,8 +23,8 @@ depends=(
 
 options=('!debug' '!strip')
 
-source=("https://github.com/mijocecr/iscsi-util/releases/download/iscsi-util_5.2.0/ISCSI-Util.tar.gz")
-sha256sums=('a628bbcefcea2df0b64c69d63048b906ff78b43fa0851063c7cc1e1b09f243af')
+source=("https://github.com/mijocecr/iscsi-util/releases/download/iscsi-util_5.2.1/ISCSI-Util.tar.gz")
+sha256sums=('952f0fc181588784b8c21ffdd097ffa5bcd31fbedcefe08431ae3ccbcbb68baf')
 
 package() {
   install -d "$pkgdir/usr/lib/iscsi-util"
