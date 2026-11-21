@@ -5,7 +5,7 @@
 # the source of truth to copy from. See ../README.md for the publish
 # procedure.
 pkgname=tesseract-matrix-git
-pkgver=0.9.9.r0.gfcf6fbd7
+pkgver=0.9.10.r0.gd0a11f9c
 pkgrel=1
 pkgdesc="Cross-platform Matrix chat client (latest git build)"
 arch=('x86_64')
