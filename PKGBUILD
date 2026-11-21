@@ -1,7 +1,7 @@
 # Maintainer: rahmerh <rahmerh@users.noreply.github.com>
 
 pkgname=sax-git
-pkgver=1.0.0.r41.g37131ee
+pkgver=1.0.1.r2.g0fc589f
 pkgrel=1
 pkgdesc="A simple but smart archiving and extraction tool (latest Git commit)"
 arch=('x86_64')
@@ -18,15 +18,14 @@ sha256sums=('SKIP')
 pkgver() {
   cd sax
 
-  local cargo_version
-  cargo_version="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -n 1)"
-
-  printf '%s.r%s.g%s' "$cargo_version" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --match 'v[0-9]*.[0-9]*.[0-9]*' --abbrev=7 \
+    | sed 's/^v//; s/-\([0-9]*\)-g/.r\1.g/'
 }
 
 prepare() {
   cd sax
 
+  bash packaging/set-version.sh "$(git describe --tags --abbrev=0 --match 'v[0-9]*.[0-9]*.[0-9]*' | sed 's/^v//')"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
