@@ -1,6 +1,6 @@
 pkgbase = appofholding
 	pkgdesc = AppImage manager: menu integration, updates, launch options and sandboxing
-	pkgver = 0.12.2
+	pkgver = 0.12.3
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/appofholding
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = appofholding
 	optdepends = libnotify: desktop notifications from the background updater
 	optdepends = uq: AppImages page, update tile and app-menu actions in the uQ desktop
 	options = !lto
-	source = appofholding-0.12.2.tar.gz::https://github.com/asafelobotomy/appofholding/archive/refs/tags/v0.12.2.tar.gz
-	sha256sums = 7e387c2eb5c3cae1743e046b19a928d58a427b60d0d207299da806c28a38e905
+	source = appofholding-0.12.3.tar.gz::https://github.com/asafelobotomy/appofholding/archive/refs/tags/v0.12.3.tar.gz
+	sha256sums = cd5fa01df155dc4153ffd44ea7e499d0286fd986ffdce1c3b75cd8b74987eb65
 
 pkgname = appofholding
