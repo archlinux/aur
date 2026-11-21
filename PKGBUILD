@@ -9,7 +9,7 @@
 # into its `aur` artifact.
 
 pkgname=bindle
-pkgver=0.1.32
+pkgver=0.1.34
 pkgrel=1
 pkgdesc='Fresh-install setup wizard and system updater (bindleUP) for Arch Linux'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('snapper: a snapshot before each apply or update, and undo'
 # Rust does its own LTO; makepkg's C/C++ LTO flags break the cxx-qt objects.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cd61480cdd21fa991cd0eaef18ba9595b62480960f3e3aebd8ca408e42598733')
+sha256sums=('9a532b00b648452022567f0aabae4fd5a3026fb115fde0d67c539e28efe128f0')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -59,8 +59,9 @@ Comment=Set up and optimise this system
 Exec=bindle open
 Icon=bindle
 Terminal=false
-Categories=System;Settings;
+Categories=System;
 DESKTOP
+  install -Dm644 -t "$pkgdir/usr/share/metainfo" packaging/io.github.asafelobotomy.bindle.metainfo.xml
   install -Dm644 branding/bindle.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/bindle.svg"
   local png n
   for png in branding/png/bindle-*.png; do
