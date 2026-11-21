@@ -1,8 +1,8 @@
-# Maintainer: yjun <jerrysteve1101@gmail.com>
-# Maintainer: Maik93 <michael.mugnai@gmail.com>
 # Maintainer: taotieren <admin@taotieren.com>
-# Maintainer: GPereira <goncalo_pereira@outlook.pt>
 # Maintainer: CloverGit <clovergit@hotmail.com>
+# Contributor: yjun <jerrysteve1101@gmail.com>
+# Contributor: Maik93 <michael.mugnai@gmail.com>
+# Contributor: GPereira <goncalo_pereira@outlook.pt>
 
 pkgname=stm32cubeprog
 pkgver=2.24.0
@@ -31,36 +31,16 @@ makedepends=(
 provides=('stm32cubeprogrammer')
 options=('!strip' '!debug')
 
-source=('STM32CubeProgrammer_Wayland')
+_installer="STM32CubeProgrammer${pkgver}_linux64.zip"
+source=(
+  "${_installer}::https://sw-center.st.com/packs/cubeprog_test/Updater/Linux/${_installer}"
+  'STM32CubeProgrammer_Wayland')
 
-sha256sums=('b6b231ef58cac7a46f3eacd5ee6a6969cba3cf57532265d12489f3c9bbaedc25')
-
-_installer="SetupSTM32CubeProgrammer_${pkgver}_linux-${arch}.zip"
-_installer_sha256='c450051932af9050852ea34f0a31f5178dd9785e7ee084de8d0b30fb8e0f1f76'
-
-verify() {
-  if [[ ! -f "${_installer}" ]]; then
-    cat >&2 <<EOF
-
-  ==> ERROR: Source package '${_installer}' not found in build directory!
-
-  ST requires users to sign in before downloading the Linux installer.
-
-  1. Download the Linux installer manually from:
-     ${url}
-
-  2. Place the downloaded file in the same directory as PKGBUILD.
-
-EOF
-    return 1
-  fi
-
-  printf '%s  %s\n' "${_installer_sha256}" "${_installer}" | sha256sum --check -
-}
+sha256sums=('273975212fcf80f71a31ed091559f9289b589d5eb3cbbd090b6068abe80f317c'
+  'b6b231ef58cac7a46f3eacd5ee6a6969cba3cf57532265d12489f3c9bbaedc25')
 
 prepare() {
   cd "${srcdir}"
-  bsdtar -xf "${startdir}/${_installer}"
 
   gendesk -f -n \
     --pkgname "${pkgname}" \
@@ -157,9 +137,7 @@ EOF
   done
 
   # remove unused installer components
-  rm -rf \
-    "${pkgdir}/opt/${pkgname}/updater" \
-    "${pkgdir}/opt/${pkgname}/.installationinformation"
+  rm -rf "${pkgdir}/opt/${pkgname}/.installationinformation"
 }
 
 # vim: set sw=2 ts=2 et:
