@@ -1,7 +1,7 @@
 # Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
 
 pkgname=riftbar
-pkgver=0.2.8
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Highly customizable GTK4 bar for Wayland written in Rust"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('cargo')
 
 
 source=("https://codeberg.org/sorashii/riftbar/archive/v$pkgver.tar.gz")
-sha256sums=('c91df19130815e1a44ec762b441eb54e39606f9c845205d452529aa1fbc88ff1')
+sha256sums=('62591a0e51dbda2d815745783134c8cd44627d8389e8b85262dc21ac6e260e67')
 
 
 build() {
