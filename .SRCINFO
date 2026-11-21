@@ -1,0 +1,27 @@
+pkgbase = keyboard-tester-bin
+	pkgdesc = Linux keyboard tester with a visual ANSI TKL layout (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/aizigao/keyboard-tester
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = fontconfig
+	depends = wayland
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	optdepends = hyprland: Pin and position the compact window
+	provides = keyboard-tester=0.1.0
+	conflicts = keyboard-tester
+	options = !strip
+	options = !debug
+	source = LICENSE
+	sha256sums = 0c5179de52533d82c7f8525b7da3698eea9f7f51adfefdc1cfaeeb1baf5cf83e
+	source_x86_64 = https://github.com/aizigao/keyboard-tester/releases/download/v0.1.0/keyboard-tester-0.1.0-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 05c198352e73fad512768aa67a0eb14264c67cbdfdffbea558e66fb6655ac149
+
+pkgname = keyboard-tester-bin
