@@ -3,7 +3,7 @@
 
 _pkgname="qrcp"
 pkgname="$_pkgname"
-pkgver=0.11.7
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Transfer files over WiFi from computer to mobile by scanning a QR code at the terminal"
 url="https://github.com/claudiodangelis/qrcp"
@@ -15,7 +15,7 @@ makedepends=('go')
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('e3dcc23b85e2f37f378cf95b41a7a7c2ee5cd9941e3935a3325e3a0c8c770a06')
+sha256sums=('7aba9290ff94a6265f99a85da2c1a94fadcc47d65c40cc172bbaa19ebcc43cc3')
 
 build() {
   export CGO_ENABLED=0
