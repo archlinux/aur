@@ -2,7 +2,7 @@
 pkgname=mangodisk-bin
 _pkgname="${pkgname%-bin}"
 _appname=MangoDisk
-pkgver=2.1.0 # renovate: datasource=github-releases depName=harry0703/MangoDisk
+pkgver=2.1.1 # renovate: datasource=github-releases depName=harry0703/MangoDisk
 pkgrel=1
 pkgdesc="Safety-first disk cleaner and space analyzer with duplicate cleanup and maintenance tools"
 arch=('x86_64' 'aarch64')
@@ -54,5 +54,5 @@ package() {
 }
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('4fb093390fd1f7f1fbb3205ef3d6cbf4915ae837030a94269043783cd1ed7207')
-sha256sums_aarch64=('323a053f31207cbc9e100c6a47992f455cacb828bd0c4eea02b7d6b690648f56')
+sha256sums_x86_64=('69d750bd7ad7c966141e388159499f67c8f7490be25107cad3106195d023460a')
+sha256sums_aarch64=('dddfad01681d7c3eeb7298c2367daa27b59ac4a62b2974e8105ba176d522ed6f')
