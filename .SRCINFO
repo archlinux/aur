@@ -1,6 +1,6 @@
 pkgbase = deja-vu
 	pkgdesc = Shared local memory, cross-agent handoff and code recovery for coding agents
-	pkgver = 0.24.3
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/vshulcz/deja-vu
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = deja-vu
 	makedepends = go
 	depends = glibc
 	conflicts = deja
-	source = deja-vu-0.24.3.tar.gz::https://github.com/vshulcz/deja-vu/archive/refs/tags/v0.24.3.tar.gz
-	sha256sums = 3105799fff70aba142978b3864366d274d020844fd50fea7a3837c5e0a3c2ce0
+	source = deja-vu-0.25.0.tar.gz::https://github.com/vshulcz/deja-vu/archive/refs/tags/v0.25.0.tar.gz
+	sha256sums = 8efe4293648070b7f92b9ecc093cf4f347dbb283e1b939c3274e8835ba1fc3d9
 
 pkgname = deja-vu

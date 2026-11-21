@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=deja-vu
-pkgver=0.24.3
+pkgver=0.25.0
 pkgrel=1
 pkgdesc='Shared local memory, cross-agent handoff and code recovery for coding agents'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 conflicts=('deja')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3105799fff70aba142978b3864366d274d020844fd50fea7a3837c5e0a3c2ce0')
+sha256sums=('8efe4293648070b7f92b9ecc093cf4f347dbb283e1b939c3274e8835ba1fc3d9')
 
 _deja_env() {
   export HOME="${srcdir}/home"
