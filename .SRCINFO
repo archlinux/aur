@@ -1,6 +1,6 @@
 pkgbase = sunsama-appimage
 	pkgdesc = The daily planner for elite professionals. Organize everything you need to do today in one place. Tasks, meetings, emails, you name it.
-	pkgver = 3.5.3
+	pkgver = 3.5.4
 	pkgrel = 1
 	url = https://sunsama.com/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = sunsama-appimage
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = fuse2
-	noextract = sunsama-appimage-3.5.3.AppImage
+	noextract = sunsama-appimage-3.5.4.AppImage
 	options = !strip
-	source_x86_64 = sunsama-appimage-3.5.3.AppImage::https://desktop.sunsama.com/linux/appImage/x64
-	sha256sums_x86_64 = 5df8067abee170664183a0c37a1373e7e76e6348f83bf7deb78c7f028bc5cb9c
+	source_x86_64 = sunsama-appimage-3.5.4.AppImage::https://desktop.sunsama.com/linux/appImage/x64
+	sha256sums_x86_64 = a34acd05422df64fff2c6f7dfe2473103346cffd60d0b11b034d966f51c19b7a
 
 pkgname = sunsama-appimage
