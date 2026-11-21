@@ -1,0 +1,55 @@
+From ed74c4279b0bba134b40fa8709bfb00079e9e2ec Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Sun, 20 Sep 2026 10:10:06 +0000
+Subject: [PATCH] Tentative fix for NVIDIA 470.256.02 driver for Linux 7.4-rc1
+
+---
+ nvidia-drm/nvidia-drm-crtc.c | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/nvidia-drm/nvidia-drm-crtc.c b/nvidia-drm/nvidia-drm-crtc.c
+index c74f168..dc054c5 100644
+--- a/nvidia-drm/nvidia-drm-crtc.c
++++ b/nvidia-drm/nvidia-drm-crtc.c
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include "nvidia-drm-conftest.h" /* NV_DRM_ATOMIC_MODESET_AVAILABLE */
++#include <linux/version.h>
+ 
+ #if defined(NV_DRM_ATOMIC_MODESET_AVAILABLE)
+ 
+@@ -439,9 +440,14 @@ static const struct drm_plane_funcs nv_plane_funcs = {
+     .update_plane           = drm_atomic_helper_update_plane,
+     .disable_plane          = drm_atomic_helper_disable_plane,
+     .destroy                = nv_drm_plane_destroy,
+-    .reset                  = drm_atomic_helper_plane_reset,
+     .atomic_get_property    = nv_drm_plane_atomic_get_property,
+     .atomic_set_property    = nv_drm_plane_atomic_set_property,
++// Rel. commit "drm/plane: Remove reset" (Maxime Ripard, 16 Sep 2026)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(7, 4, 0)
++    .reset                  = drm_atomic_helper_plane_reset,
++#else
++    .atomic_create_state    = drm_atomic_helper_plane_create_state,
++#endif
+     .atomic_duplicate_state = nv_drm_plane_atomic_duplicate_state,
+     .atomic_destroy_state   = nv_drm_plane_atomic_destroy_state,
+ #if defined(NV_DRM_UNIVERSAL_PLANE_INIT_HAS_FORMAT_MODIFIERS_ARG)
+@@ -557,8 +563,13 @@ static void nv_drm_atomic_crtc_destroy_state(struct drm_crtc *crtc,
+ static struct drm_crtc_funcs nv_crtc_funcs = {
+     .set_config             = drm_atomic_helper_set_config,
+     .page_flip              = drm_atomic_helper_page_flip,
+-    .reset                  = drm_atomic_helper_crtc_reset,
+     .destroy                = nv_drm_crtc_destroy,
++// Rel. commit "drm/crtc: Remove reset" (Maxime Ripard, 15 Sep 2026)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(7, 4, 0)
++    .reset                  = drm_atomic_helper_crtc_reset,
++#else
++    .atomic_create_state    = drm_atomic_helper_crtc_create_state,
++#endif
+     .atomic_duplicate_state = nv_drm_atomic_crtc_duplicate_state,
+     .atomic_destroy_state   = nv_drm_atomic_crtc_destroy_state,
+ };
+-- 
+2.55.0
+

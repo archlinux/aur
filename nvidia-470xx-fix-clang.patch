@@ -1,0 +1,525 @@
+From 54b6a978b64c5c1f9c99a9a82ed0e2e8e402d2e7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Sun, 25 Oct 2026 17:29:13 +0000
+Subject: [PATCH] Fix build with Clang
+
+We need to fix 3 issues:
+- Clang seems to treat -Wstrict-prototypes more strictly than GCC,
+  fix the actual root issue.
+- For Clang, we can't use __GNUC__ to the check that the driver
+  is built with the same compiler version as the kernel.
+- Remove the -MD argument Clang complains about.
+  As far as I can't tell, it doesn't serve any purpose anymore.
+---
+ Kbuild                               |  2 +-
+ conftest.sh                          | 50 +++++++++++++++++-----------
+ nvidia-uvm/uvm_common.c              |  2 +-
+ nvidia-uvm/uvm_gpu_access_counters.c |  4 +--
+ nvidia-uvm/uvm_lock.c                |  2 +-
+ nvidia-uvm/uvm_migrate.c             |  4 +--
+ nvidia-uvm/uvm_migrate_pageable.c    |  4 +--
+ nvidia-uvm/uvm_perf_heuristics.c     |  4 +--
+ nvidia-uvm/uvm_perf_prefetch.c       |  4 +--
+ nvidia-uvm/uvm_perf_thrashing.c      |  4 +--
+ nvidia-uvm/uvm_procfs.c              |  8 ++---
+ nvidia-uvm/uvm_push.c                |  4 +--
+ nvidia-uvm/uvm_thread_context.c      |  2 +-
+ nvidia-uvm/uvm_tools.c               |  2 +-
+ nvidia/nvlink_linux.c                |  2 +-
+ nvidia/os-interface.c                |  6 ++--
+ 16 files changed, 57 insertions(+), 47 deletions(-)
+
+diff --git a/Kbuild b/Kbuild
+index 9381ab1..70e12e8 100644
+--- a/Kbuild
++++ b/Kbuild
+@@ -75,7 +75,7 @@ $(foreach _module, $(NV_KERNEL_MODULES), \
+ 
+ ccflags-y += -I$(src)/common/inc
+ ccflags-y += -I$(src)
+-ccflags-y += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
++ccflags-y += -Wall $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
+ ccflags-y += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"470.256.02\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
+ ccflags-y += $(call cc-option,-Werror=undef,)
+ ccflags-y += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
+diff --git a/conftest.sh b/conftest.sh
+index f49cb58..27d9fb7 100755
+--- a/conftest.sh
++++ b/conftest.sh
+@@ -1047,7 +1047,7 @@ compile_test() {
+             CODE="
+             #include <linux/pci.h>
+             #include <linux/mdev.h>
+-            void conftest_mdev_uuid() {
++            void conftest_mdev_uuid(void) {
+                 mdev_uuid();
+             }"
+ 
+@@ -1080,7 +1080,7 @@ compile_test() {
+             CODE="
+             #include <linux/pci.h>
+             #include <linux/mdev.h>
+-            void conftest_mdev_dev() {
++            void conftest_mdev_dev(void) {
+                 mdev_dev();
+             }"
+ 
+@@ -1097,7 +1097,7 @@ compile_test() {
+             CODE="
+             #include <linux/pci.h>
+             #include <linux/mdev.h>
+-            void conftest_mdev_get_type_group_id() {
++            void conftest_mdev_get_type_group_id(void) {
+                 mdev_get_type_group_id();
+             }"
+ 
+@@ -1130,7 +1130,7 @@ compile_test() {
+             CODE="
+             #include <linux/pci.h>
+             #include <linux/mdev.h>
+-            void conftest_mdev_parent_dev() {
++            void conftest_mdev_parent_dev(void) {
+                 mdev_parent_dev();
+             }"
+ 
+@@ -1147,7 +1147,7 @@ compile_test() {
+             CODE="
+             #include <linux/pci.h>
+             #include <linux/mdev.h>
+-            void conftest_mdev_from_dev() {
++            void conftest_mdev_from_dev(void) {
+                 mdev_from_dev();
+             }"
+ 
+@@ -1164,7 +1164,7 @@ compile_test() {
+             CODE="
+             #include <linux/pci.h>
+             #include <linux/mdev.h>
+-            void conftest_mdev_set_iommu_device() {
++            void conftest_mdev_set_iommu_device(void) {
+                 mdev_set_iommu_device();
+             }"
+ 
+@@ -1199,7 +1199,7 @@ compile_test() {
+             CODE="
+             #include <linux/pci.h>
+             #include <linux/msi.h>
+-            void conftest_pci_irq_vector_helpers() {
++            void conftest_pci_irq_vector_helpers(void) {
+                 pci_alloc_irq_vectors();
+                 pci_free_irq_vectors ();
+             }"
+@@ -1700,7 +1700,7 @@ compile_test() {
+                 echo "#define NV_LINUX_OF_H_USABLE" | append_conftest "generic"
+                 CODE="
+                 #include <linux/of.h>
+-                void conftest_of_get_property() {
++                void conftest_of_get_property(void) {
+                     of_get_property();
+                 }"
+ 
+@@ -1734,7 +1734,7 @@ compile_test() {
+                 echo "#define NV_LINUX_OF_H_USABLE" | append_conftest "generic"
+                 CODE="
+                 #include <linux/of.h>
+-                void conftest_of_find_node_by_phandle() {
++                void conftest_of_find_node_by_phandle(void) {
+                     of_find_node_by_phandle();
+                 }"
+ 
+@@ -1772,7 +1772,7 @@ compile_test() {
+                 #include <linux/version.h>
+                 #include <linux/utsname.h>
+                 #include <linux/of.h>
+-                void conftest_of_node_to_nid() {
++                void conftest_of_node_to_nid(void) {
+                     of_node_to_nid();
+                 }"
+ 
+@@ -1792,7 +1792,7 @@ compile_test() {
+             #
+             CODE="
+             #include <linux/pci.h>
+-            void conftest_pnv_pci_get_npu_dev() {
++            void conftest_pnv_pci_get_npu_dev(void) {
+                 pnv_pci_get_npu_dev();
+             }"
+ 
+@@ -1808,7 +1808,7 @@ compile_test() {
+             #
+             CODE="
+             #include <linux/mm.h>
+-            void conftest_node_end_pfn() {
++            void conftest_node_end_pfn(void) {
+                 node_end_pfn();
+             }"
+ 
+@@ -1899,7 +1899,7 @@ compile_test() {
+             #
+             CODE="
+             #include <linux/mm.h>
+-            void conftest_vm_insert_pfn_prot() {
++            void conftest_vm_insert_pfn_prot(void) {
+                 vm_insert_pfn_prot();
+             }"
+ 
+@@ -1915,7 +1915,7 @@ compile_test() {
+             #
+             CODE="
+             #include <linux/mm.h>
+-            void conftest_vmf_insert_pfn_prot() {
++            void conftest_vmf_insert_pfn_prot(void) {
+                 vmf_insert_pfn_prot();
+             }"
+ 
+@@ -2278,7 +2278,7 @@ compile_test() {
+             #
+             CODE="
+             #include <linux/vmalloc.h>
+-            void conftest_vzalloc() {
++            void conftest_vzalloc(void) {
+                 vzalloc();
+             }"
+ 
+@@ -2417,7 +2417,7 @@ compile_test() {
+             #
+             CODE="
+             #include <linux/bitmap.h>
+-            void conftest_bitmap_clear() {
++            void conftest_bitmap_clear(void) {
+                 bitmap_clear();
+             }"
+ 
+@@ -2434,7 +2434,7 @@ compile_test() {
+             CODE="
+             #include <linux/types.h>
+             #include <linux/pci.h>
+-            void conftest_pci_stop_and_remove_bus_device() {
++            void conftest_pci_stop_and_remove_bus_device(void) {
+                 pci_stop_and_remove_bus_device();
+             }"
+ 
+@@ -2451,7 +2451,7 @@ compile_test() {
+             CODE="
+             #include <linux/types.h>
+             #include <linux/pci.h>
+-            void conftest_pci_remove_bus_device() {
++            void conftest_pci_remove_bus_device(void) {
+                 pci_remove_bus_device();
+             }"
+ 
+@@ -3787,7 +3787,7 @@ compile_test() {
+                 echo "#define NV_LINUX_OF_H_USABLE" | append_conftest "generic"
+                 CODE="
+                 #include <linux/of.h>
+-                void conftest_of_find_matching_node() {
++                void conftest_of_find_matching_node(void) {
+                     of_find_matching_node();
+                 }"
+ 
+@@ -5231,8 +5231,18 @@ case "$5" in
+         kernel_cc_major=`echo ${kernel_cc_version} | cut -d '.' -f 1`
+         kernel_cc_minor=`echo ${kernel_cc_version} | cut -d '.' -f 2`
+ 
++        # For GCC, __GNUC__ / __GNUC_MINOR__ matches the compiler version.
++        # For Clang, it doesn't, so we need to check against its macros directly.
++        if echo "${kernel_cc_string}" | grep -q clang; then
++            cc_major_macro=__clang_major__
++            cc_minor_macro=__clang_minor__
++        else
++            cc_major_macro=__GNUC__
++            cc_minor_macro=__GNUC_MINOR__
++        fi
++
+         echo "
+-        #if (__GNUC__ != ${kernel_cc_major}) || (__GNUC_MINOR__ != ${kernel_cc_minor})
++        #if (${cc_major_macro} != ${kernel_cc_major}) || (${cc_minor_macro} != ${kernel_cc_minor})
+         #error \"cc version mismatch\"
+         #endif
+         " > conftest$$.c
+diff --git a/nvidia-uvm/uvm_common.c b/nvidia-uvm/uvm_common.c
+index 36e6280..b357304 100644
+--- a/nvidia-uvm/uvm_common.c
++++ b/nvidia-uvm/uvm_common.c
+@@ -34,7 +34,7 @@ static int uvm_debug_prints = UVM_IS_DEBUG() || UVM_IS_DEVELOP();
+ module_param(uvm_debug_prints, int, S_IRUGO|S_IWUSR);
+ MODULE_PARM_DESC(uvm_debug_prints, "Enable uvm debug prints.");
+ 
+-bool uvm_debug_prints_enabled()
++bool uvm_debug_prints_enabled(void)
+ {
+     return uvm_debug_prints != 0;
+ }
+diff --git a/nvidia-uvm/uvm_gpu_access_counters.c b/nvidia-uvm/uvm_gpu_access_counters.c
+index 25891b4..b55a8c7 100644
+--- a/nvidia-uvm/uvm_gpu_access_counters.c
++++ b/nvidia-uvm/uvm_gpu_access_counters.c
+@@ -1524,7 +1524,7 @@ bool uvm_va_space_has_access_counter_migrations(uvm_va_space_t *va_space)
+     return atomic_read(&va_space_access_counters->params.enable_mimc_migrations);
+ }
+ 
+-NV_STATUS uvm_perf_access_counters_init()
++NV_STATUS uvm_perf_access_counters_init(void)
+ {
+     uvm_perf_module_init("perf_access_counters",
+                          UVM_PERF_MODULE_TYPE_ACCESS_COUNTERS,
+@@ -1535,7 +1535,7 @@ NV_STATUS uvm_perf_access_counters_init()
+     return NV_OK;
+ }
+ 
+-void uvm_perf_access_counters_exit()
++void uvm_perf_access_counters_exit(void)
+ {
+ }
+ 
+diff --git a/nvidia-uvm/uvm_lock.c b/nvidia-uvm/uvm_lock.c
+index b77a22e..fc0b802 100644
+--- a/nvidia-uvm/uvm_lock.c
++++ b/nvidia-uvm/uvm_lock.c
+@@ -334,7 +334,7 @@ bool __uvm_check_all_unlocked(uvm_thread_context_lock_t *uvm_context)
+     return false;
+ }
+ 
+-bool __uvm_thread_check_all_unlocked()
++bool __uvm_thread_check_all_unlocked(void)
+ {
+     return __uvm_check_all_unlocked(uvm_thread_context_lock_get());
+ }
+diff --git a/nvidia-uvm/uvm_migrate.c b/nvidia-uvm/uvm_migrate.c
+index 1da7d1d..023eb77 100644
+--- a/nvidia-uvm/uvm_migrate.c
++++ b/nvidia-uvm/uvm_migrate.c
+@@ -792,7 +792,7 @@ static NV_STATUS uvm_migrate_release_user_sem(const UVM_MIGRATE_PARAMS *params,
+     return NV_OK;
+ }
+ 
+-NV_STATUS uvm_migrate_init()
++NV_STATUS uvm_migrate_init(void)
+ {
+     NV_STATUS status = uvm_migrate_pageable_init();
+     if (status != NV_OK)
+@@ -818,7 +818,7 @@ NV_STATUS uvm_migrate_init()
+     return NV_OK;
+ }
+ 
+-void uvm_migrate_exit()
++void uvm_migrate_exit(void)
+ {
+     uvm_migrate_pageable_exit();
+ }
+diff --git a/nvidia-uvm/uvm_migrate_pageable.c b/nvidia-uvm/uvm_migrate_pageable.c
+index 63aec6f..179a21e 100644
+--- a/nvidia-uvm/uvm_migrate_pageable.c
++++ b/nvidia-uvm/uvm_migrate_pageable.c
+@@ -976,7 +976,7 @@ NV_STATUS uvm_migrate_pageable(uvm_va_space_t *va_space,
+     return status;
+ }
+ 
+-NV_STATUS uvm_migrate_pageable_init()
++NV_STATUS uvm_migrate_pageable_init(void)
+ {
+     g_uvm_migrate_vma_state_cache = NV_KMEM_CACHE_CREATE("migrate_vma_state_t", migrate_vma_state_t);
+     if (!g_uvm_migrate_vma_state_cache)
+@@ -985,7 +985,7 @@ NV_STATUS uvm_migrate_pageable_init()
+     return NV_OK;
+ }
+ 
+-void uvm_migrate_pageable_exit()
++void uvm_migrate_pageable_exit(void)
+ {
+     kmem_cache_destroy_safe(&g_uvm_migrate_vma_state_cache);
+ }
+diff --git a/nvidia-uvm/uvm_perf_heuristics.c b/nvidia-uvm/uvm_perf_heuristics.c
+index 392f914..ffb96ea 100644
+--- a/nvidia-uvm/uvm_perf_heuristics.c
++++ b/nvidia-uvm/uvm_perf_heuristics.c
+@@ -28,7 +28,7 @@
+ #include "uvm_gpu_access_counters.h"
+ #include "uvm_va_space.h"
+ 
+-NV_STATUS uvm_perf_heuristics_init()
++NV_STATUS uvm_perf_heuristics_init(void)
+ {
+     NV_STATUS status;
+ 
+@@ -47,7 +47,7 @@ NV_STATUS uvm_perf_heuristics_init()
+     return NV_OK;
+ }
+ 
+-void uvm_perf_heuristics_exit()
++void uvm_perf_heuristics_exit(void)
+ {
+     uvm_perf_access_counters_exit();
+     uvm_perf_prefetch_exit();
+diff --git a/nvidia-uvm/uvm_perf_prefetch.c b/nvidia-uvm/uvm_perf_prefetch.c
+index ec41239..bba948f 100644
+--- a/nvidia-uvm/uvm_perf_prefetch.c
++++ b/nvidia-uvm/uvm_perf_prefetch.c
+@@ -460,7 +460,7 @@ void uvm_perf_prefetch_unload(uvm_va_space_t *va_space)
+     uvm_perf_module_unload(&g_module_prefetch, va_space);
+ }
+ 
+-NV_STATUS uvm_perf_prefetch_init()
++NV_STATUS uvm_perf_prefetch_init(void)
+ {
+     g_uvm_perf_prefetch_enable = uvm_perf_prefetch_enable != 0;
+ 
+@@ -498,7 +498,7 @@ NV_STATUS uvm_perf_prefetch_init()
+     return NV_OK;
+ }
+ 
+-void uvm_perf_prefetch_exit()
++void uvm_perf_prefetch_exit(void)
+ {
+     if (!g_uvm_perf_prefetch_enable)
+         return;
+diff --git a/nvidia-uvm/uvm_perf_thrashing.c b/nvidia-uvm/uvm_perf_thrashing.c
+index 00add34..f4dac45 100644
+--- a/nvidia-uvm/uvm_perf_thrashing.c
++++ b/nvidia-uvm/uvm_perf_thrashing.c
+@@ -1952,7 +1952,7 @@ NV_STATUS uvm_perf_thrashing_register_gpu(uvm_va_space_t *va_space, uvm_gpu_t *g
+     return NV_OK;
+ }
+ 
+-NV_STATUS uvm_perf_thrashing_init()
++NV_STATUS uvm_perf_thrashing_init(void)
+ {
+     NV_STATUS status;
+ 
+@@ -2011,7 +2011,7 @@ error:
+     return status;
+ }
+ 
+-void uvm_perf_thrashing_exit()
++void uvm_perf_thrashing_exit(void)
+ {
+     cpu_thrashing_stats_exit();
+ 
+diff --git a/nvidia-uvm/uvm_procfs.c b/nvidia-uvm/uvm_procfs.c
+index 8932d14..e2a6203 100644
+--- a/nvidia-uvm/uvm_procfs.c
++++ b/nvidia-uvm/uvm_procfs.c
+@@ -46,7 +46,7 @@ static struct proc_dir_entry *uvm_proc_dir;
+ static struct proc_dir_entry *uvm_proc_gpus;
+ static struct proc_dir_entry *uvm_proc_cpu;
+ 
+-NV_STATUS uvm_procfs_init()
++NV_STATUS uvm_procfs_init(void)
+ {
+     if (!uvm_procfs_is_enabled())
+         return NV_OK;
+@@ -66,7 +66,7 @@ NV_STATUS uvm_procfs_init()
+     return NV_OK;
+ }
+ 
+-void uvm_procfs_exit()
++void uvm_procfs_exit(void)
+ {
+     uvm_procfs_destroy_entry(uvm_proc_dir);
+ }
+@@ -95,12 +95,12 @@ void uvm_procfs_destroy_entry(struct proc_dir_entry *entry)
+     procfs_destroy_entry_with_root(entry, entry);
+ }
+ 
+-struct proc_dir_entry *uvm_procfs_get_gpu_base_dir()
++struct proc_dir_entry *uvm_procfs_get_gpu_base_dir(void)
+ {
+     return uvm_proc_gpus;
+ }
+ 
+-struct proc_dir_entry *uvm_procfs_get_cpu_base_dir()
++struct proc_dir_entry *uvm_procfs_get_cpu_base_dir(void)
+ {
+     return uvm_proc_cpu;
+ }
+diff --git a/nvidia-uvm/uvm_push.c b/nvidia-uvm/uvm_push.c
+index c1d7cb7..8b04e7f 100644
+--- a/nvidia-uvm/uvm_push.c
++++ b/nvidia-uvm/uvm_push.c
+@@ -242,12 +242,12 @@ NV_STATUS __uvm_push_begin_acquire_on_channel_with_info(uvm_channel_t *channel,
+     return status;
+ }
+ 
+-bool uvm_push_info_is_tracking_descriptions()
++bool uvm_push_info_is_tracking_descriptions(void)
+ {
+     return uvm_debug_enable_push_desc != 0;
+ }
+ 
+-bool uvm_push_info_is_tracking_acquires()
++bool uvm_push_info_is_tracking_acquires(void)
+ {
+     return uvm_debug_enable_push_acquire_info != 0;
+ }
+diff --git a/nvidia-uvm/uvm_thread_context.c b/nvidia-uvm/uvm_thread_context.c
+index 93103be..5fc9687 100644
+--- a/nvidia-uvm/uvm_thread_context.c
++++ b/nvidia-uvm/uvm_thread_context.c
+@@ -101,7 +101,7 @@ static DEFINE_PER_CPU(uvm_thread_context_lock_acquired_t, interrupt_thread_conte
+ static void thread_context_non_interrupt_remove(uvm_thread_context_t *thread_context,
+                                                 uvm_thread_context_table_entry_t *thread_context_entry);
+ 
+-bool uvm_thread_context_wrapper_is_used()
++bool uvm_thread_context_wrapper_is_used(void)
+ {
+     // The wrapper contains lock information. While uvm_record_lock_X
+     // routines are a no-op outside of debug mode, unit tests do invoke their
+diff --git a/nvidia-uvm/uvm_tools.c b/nvidia-uvm/uvm_tools.c
+index f0aceaf..7512da3 100644
+--- a/nvidia-uvm/uvm_tools.c
++++ b/nvidia-uvm/uvm_tools.c
+@@ -2141,7 +2141,7 @@ NV_STATUS uvm_api_tools_get_processor_uuid_table(UVM_TOOLS_GET_PROCESSOR_UUID_TA
+     return NV_OK;
+ }
+ 
+-void uvm_tools_flush_events()
++void uvm_tools_flush_events(void)
+ {
+     tools_schedule_completed_events();
+ 
+diff --git a/nvidia/nvlink_linux.c b/nvidia/nvlink_linux.c
+index 16dafad..b4c6242 100644
+--- a/nvidia/nvlink_linux.c
++++ b/nvidia/nvlink_linux.c
+@@ -571,7 +571,7 @@ void nvlink_assert(int cond)
+     }
+ }
+ 
+-void * nvlink_allocLock()
++void * nvlink_allocLock(void)
+ {
+     struct semaphore *sema;
+ 
+diff --git a/nvidia/os-interface.c b/nvidia/os-interface.c
+index bd5904e..bf7230d 100644
+--- a/nvidia/os-interface.c
++++ b/nvidia/os-interface.c
+@@ -1078,14 +1078,14 @@ void NV_API_CALL os_dbg_breakpoint(void)
+ #endif // DEBUG
+ }
+ 
+-NvU32 NV_API_CALL os_get_cpu_number()
++NvU32 NV_API_CALL os_get_cpu_number(void)
+ {
+     NvU32 cpu_id = get_cpu();
+     put_cpu();
+     return cpu_id;
+ }
+ 
+-NvU32 NV_API_CALL os_get_cpu_count()
++NvU32 NV_API_CALL os_get_cpu_count(void)
+ {
+     return NV_NUM_CPUS();
+ }
+@@ -1100,7 +1100,7 @@ NvBool NV_API_CALL os_is_efi_enabled(void)
+     return NV_EFI_ENABLED();
+ }
+ 
+-void NV_API_CALL os_dump_stack()
++void NV_API_CALL os_dump_stack(void)
+ {
+     dump_stack();
+ }
+-- 
+2.56.0
+

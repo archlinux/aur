@@ -9,7 +9,7 @@
 pkgbase=nvidia-470xx-utils
 pkgname=('nvidia-470xx-utils' 'opencl-nvidia-470xx' 'nvidia-470xx-dkms')
 pkgver=470.256.02
-pkgrel=8.03
+pkgrel=8.04
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -30,6 +30,7 @@ source=('nvidia-drm-outputclass.conf'
         "nvidia-470xx-fix-linux-6.13.patch"
         "nvidia-470xx-fix-linux-6.14.patch"
         "nvidia-470xx-fix-linux-6.15.patch"
+        "nvidia-470xx-fix-linux-6.15-followup.patch"
         "nvidia-470xx-fix-linux-6.17.patch"
         "nvidia-470xx-fix-linux-6.19-part1.patch"
         "nvidia-470xx-fix-linux-6.19-part2.patch"
@@ -38,13 +39,15 @@ source=('nvidia-drm-outputclass.conf'
         "nvidia-470xx-fix-linux-7.2-part2.patch"
         "nvidia-470xx-fix-linux-7.2-part3.patch"
         "nvidia-470xx-fix-linux-7.3.patch"
+        "nvidia-470xx-fix-linux-7.4.patch"
         "disable-objtool-override.patch"
         "enable-drm-modeset-by-default.patch"
+        "nvidia-470xx-fix-clang.patch"
         )
 
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
-            '4e870d1ec819e74757a65762484a44fea2c71d090f0898c7f8c193fc8539c29f3b14ecec9d1216ed23d6978ade9e7376f81c7d8242b7005c8c067171eb6df40a'
+            'fb2d25c733882f3d35ad736ebbb1ea58a026ac7623442158c9e195e2002a71da27a66433115f68f870af103508663945b1cd697659927f3926f96b7685599e6c'
             'a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8'
             '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
             'a837946dd24d7945c1962a695f1f31965f3ceb6927f52cd08fd51b8db138b7a888bbeab69243f5c8468a7bd7ccd47f5dbdb48a1ca81264866c1ebb7d88628f88'
@@ -57,6 +60,7 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             'c577d422799580e6a7b12670439dd7d68f9474ae17e96355144b7037d9a36228f22e53682f317ec7ca0f6a83d2520ede376350d02a2c072d0d195768f4115cba'
             '7f0ab1d27d08fc091e8190ff040115607eb2d0c4a6ab710f8083899c3ed44a30eb4479c0bae8a072ee54409734f9c78a10f0c2555157526e153b4578ccf8aea6'
             '556c6575f413a7e877d40de2533e65b80857d38f26cd31c2257cdde08818293e761105ac689f006829f8d18387ffbf72f5d5c9d03cb57ccab7a620bb98dbe033'
+            'c26381b9dfb46eb3025e8bace7844b366bd404b4758020d0df9f6afa67b338e11239c016f42c26746af4cf81f1d947da15501d6a1efb5fb52babbe4967d64eee'
             '7d68cfc8d088e53a7724104d4093c7b43b863caa0a937598cc4ad22161d69f2e2c15e0c9fc65813c05685d0995966a9f40cdfe86949bb921acfb3de51200453f'
             '9267dfcefbfd1e4e0f7a6661c151aa1626c15b6091766876a23e7e0dd20068a7279b0af2b38153f6ab219ccd5239ee7df0eeecaf754b5ab5dd8286508cb3be34'
             '9962feaf22b32b3fe7e3125eaafe7319a2bb45ab11482260701b06c6994104e64110466156b22ecc6cd9f493f18575ca56365ede90162b6f7d03877e7c679167'
@@ -65,8 +69,10 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             '89049dd8482e4bea5d79b56301c6e47c86e9e3a766ffbac7a4800511bb1f3f48dff6c8f41270956258ffeccc29da2eb9fdf9abd6a46f681de8201dbdfe49e920'
             'cd3cad8e7de596b16330a38679f927685dc97ff82349604093801268eb5fcb8d28c8fea6acf8c755c6fc0aaed9e96426137ae9c9003baab494b4b57451a24d14'
             'ae0f86c6f0b30e4a0ff5a241e6f7ffe15af0ee7bec7cebb8ac18c7f41a0701e09730c8c3dd7cadb265c2a434e5fb48c86305d41837c816b49ecb0db911f9f261'
+            '405c867ff52d835d1f00997a06cbb4f5882dcfd9f9af07bcbef7206e36b66ab90da71af48549f097d682d7aeb42c6d2e099593cb90956418811ed5700d64edf6'
             '2ced920b879b9c64e3f57269bda5803f25109bd9d0bfeb53a780329beeccb974dac614e9915d798a9678136eee3415b27b7027a7da4b1889fe1286b64ccbeafc'
-            'b753ccf7ee39231e07aad908f907e1a8314f4c055af317b21add6a438dcc1c8b21da027debe5ddda5229f5c250a724a2bb46b739bd2e70633dd08dca19ea7d99')
+            'b753ccf7ee39231e07aad908f907e1a8314f4c055af317b21add6a438dcc1c8b21da027debe5ddda5229f5c250a724a2bb46b739bd2e70633dd08dca19ea7d99'
+            'b436d5fa3a0744e37f6426dfaa95c783c5345e9f03e92a3efaf7f7d30087ec091bd12e040610ea0994bc93d26c194437f621ec39b93acf030d2e05e31a9d4399')
 
 create_links() {
     # create soname links
@@ -103,7 +109,10 @@ prepare() {
     
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.13.patch"
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.14.patch"
+    
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.15.patch"
+    patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.15-followup.patch"
+    
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.17.patch"
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.19-part1.patch"
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.19-part2.patch"
@@ -116,8 +125,12 @@ prepare() {
 
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-7.3.patch"
     
+    patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-7.4.patch"
+    
     patch -p1 -i "${srcdir}/disable-objtool-override.patch"
     patch -p1 -i "${srcdir}/enable-drm-modeset-by-default.patch"
+    
+    patch -p1 -i "${srcdir}/nvidia-470xx-fix-clang.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf

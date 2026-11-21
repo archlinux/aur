@@ -1,0 +1,115 @@
+From b491c4914d6d51c0b46a02c24f91a38d2a7290af Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Sun, 18 Oct 2026 19:47:42 +0000
+Subject: [PATCH] Shim timer_delete_sync for old kernels
+
+`timer_delete_sync` wasn't originally present in 5.10 / 5.15 / 6.1
+kernel LTS series, rather it was later backported to them.
+
+So, while the driver works on the latest patches of supported kernels,
+this breaks building on EOL kernels for testing (and perhaps even some
+supported LTS distro that never backported `timer_delete_sync`).
+
+For those cases, detect it via conftest and add a shim.
+With this patch, the driver builds for any reasonably supported kernel.
+---
+ common/inc/nv-timer.h                 |  5 +++++
+ conftest.sh                           | 16 ++++++++++++++++
+ nvidia-modeset/nvidia-modeset-linux.c |  1 +
+ nvidia-modeset/nvidia-modeset.Kbuild  |  1 +
+ nvidia-uvm/nvidia-uvm.Kbuild          |  1 +
+ nvidia/nvidia.Kbuild                  |  1 +
+ 6 files changed, 25 insertions(+)
+
+diff --git a/common/inc/nv-timer.h b/common/inc/nv-timer.h
+index adf559c..ab5b531 100644
+--- a/common/inc/nv-timer.h
++++ b/common/inc/nv-timer.h
+@@ -64,4 +64,9 @@ static inline void nv_timer_setup(struct nv_timer *nv_timer,
+ #endif
+ }
+ 
++#if !defined(NV_TIMER_DELETE_SYNC_PRESENT)
++// Rel. commit "treewide: Switch/rename to timer_delete[_sync]()" (Thomas Gleixner, 5 Apr 2025)
++#define timer_delete_sync(timer) del_timer_sync(timer)
++#endif
++
+ #endif // __NV_TIMER_H__
+diff --git a/conftest.sh b/conftest.sh
+index d41a22b..f49cb58 100755
+--- a/conftest.sh
++++ b/conftest.sh
+@@ -3297,6 +3297,22 @@ compile_test() {
+             compile_check_conftest "$CODE" "NV_TIMER_SETUP_PRESENT" "" "functions"
+         ;;
+ 
++        timer_delete_sync)
++            #
++            # Determine if the function timer_delete_sync() is present.
++            #
++            # Added by commit "treewide: Switch/rename to timer_delete[_sync]()"
++            # (Thomas Gleixner, 5 Apr 2025), and backported to some stable
++            # kernels. Older kernels only have del_timer_sync().
++            #
++            CODE="
++            #include <linux/timer.h>
++            int conftest_timer_delete_sync(void) {
++                return timer_delete_sync();
++            }"
++            compile_check_conftest "$CODE" "NV_TIMER_DELETE_SYNC_PRESENT" "" "functions"
++        ;;
++
+         radix_tree_replace_slot)
+             #
+             # Determine if the radix_tree_replace_slot() function is
+diff --git a/nvidia-modeset/nvidia-modeset-linux.c b/nvidia-modeset/nvidia-modeset-linux.c
+index b5b33d7..dd39257 100644
+--- a/nvidia-modeset/nvidia-modeset-linux.c
++++ b/nvidia-modeset/nvidia-modeset-linux.c
+@@ -39,6 +39,7 @@
+ #include "nv-kthread-q.h"
+ 
+ #include "nv-time.h"
++#include "nv-timer.h"
+ 
+ #include <linux/sched.h>
+ #if defined(NV_LINUX_SCHED_SIGNAL_H_PRESENT)
+diff --git a/nvidia-modeset/nvidia-modeset.Kbuild b/nvidia-modeset/nvidia-modeset.Kbuild
+index d417c28..d008026 100644
+--- a/nvidia-modeset/nvidia-modeset.Kbuild
++++ b/nvidia-modeset/nvidia-modeset.Kbuild
+@@ -97,6 +97,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += pde_data
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += PDE_DATA
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += proc_remove
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += timer_setup
++NV_CONFTEST_FUNCTION_COMPILE_TESTS += timer_delete_sync
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += kthread_create_on_node
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += list_is_first
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += ktime_get_real_ts64
+diff --git a/nvidia-uvm/nvidia-uvm.Kbuild b/nvidia-uvm/nvidia-uvm.Kbuild
+index c9e8740..8bb9558 100644
+--- a/nvidia-uvm/nvidia-uvm.Kbuild
++++ b/nvidia-uvm/nvidia-uvm.Kbuild
+@@ -92,6 +92,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += vmf_insert_pfn
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += cpumask_of_node
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += list_is_first
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += timer_setup
++NV_CONFTEST_FUNCTION_COMPILE_TESTS += timer_delete_sync
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += acquire_console_sem
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += console_lock
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += pci_bus_address
+diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
+index 62689f6..3b91f89 100644
+--- a/nvidia/nvidia.Kbuild
++++ b/nvidia/nvidia.Kbuild
+@@ -143,6 +143,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += dma_map_resource
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += backlight_device_register
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += get_backlight_device_by_name
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += timer_setup
++NV_CONFTEST_FUNCTION_COMPILE_TESTS += timer_delete_sync
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += pci_enable_msix_range
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += kernel_read_has_pointer_pos_arg
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += kernel_write
+-- 
+2.56.0
+
