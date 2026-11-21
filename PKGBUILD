@@ -2,30 +2,37 @@
 
 pkgname=fcitx5-pangu-git
 _gitname=fcitx5-pangu
-pkgver=0.8
+pkgver=r23.bd363c7
 pkgrel=1
-pkgdesc="pangu module for fcitx5, insert space between CJK and alphabet characters"
+pkgdesc="Fcitx5 module that inserts spaces between CJK and ASCII characters"
 arch=('x86_64' 'aarch64' 'i686')
+url="https://github.com/Fei-xiangShi/fcitx5-pangu"
 license=('GPL-2.0-or-later')
 depends=('fcitx5')
 makedepends=('cmake' 'git' 'extra-cmake-modules')
-url="https://github.com/Fei-xiangShi/fcitx5-pangu"
-source=("git+$url")
-md5sums=('SKIP')
+provides=('fcitx5-pangu')
+conflicts=('fcitx5-pangu')
+source=("${_gitname}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${_gitname}"
+  printf 'r%s.%s' \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
-
 build() {
-  cd "$srcdir/$_gitname"
-  cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo
+  cmake -S "${srcdir}/${_gitname}" -B build \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
 
+check() {
+  ctest --test-dir build --output-on-failure
+}
+
 package() {
-  cd "$srcdir/$_gitname"
   DESTDIR="${pkgdir}" cmake --install build
 }

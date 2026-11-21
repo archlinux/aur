@@ -1,6 +1,6 @@
 pkgbase = fcitx5-pangu-git
-	pkgdesc = pangu module for fcitx5, insert space between CJK and alphabet characters
-	pkgver = 0.8
+	pkgdesc = Fcitx5 module that inserts spaces between CJK and ASCII characters
+	pkgver = r23.bd363c7
 	pkgrel = 1
 	url = https://github.com/Fei-xiangShi/fcitx5-pangu
 	arch = x86_64
@@ -11,7 +11,9 @@ pkgbase = fcitx5-pangu-git
 	makedepends = git
 	makedepends = extra-cmake-modules
 	depends = fcitx5
-	source = git+https://github.com/Fei-xiangShi/fcitx5-pangu
-	md5sums = SKIP
+	provides = fcitx5-pangu
+	conflicts = fcitx5-pangu
+	source = fcitx5-pangu::git+https://github.com/Fei-xiangShi/fcitx5-pangu.git
+	sha256sums = SKIP
 
 pkgname = fcitx5-pangu-git
