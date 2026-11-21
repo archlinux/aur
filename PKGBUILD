@@ -16,6 +16,7 @@ url="https://www.xnview.com/en/xnviewmp/"
 
 arch=('x86_64')
 license=('custom')
+options=(!debug)
 # Require qt6-multimedia to pull all its dependencies. We do not actually need
 # to depend on qt6-*, but qt6-multimedia (and indirectly qt6-base) have
 # various dependencies that we need even when using the packaged libraries.
