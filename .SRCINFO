@@ -1,6 +1,6 @@
 pkgbase = rustconn-ru
 	pkgdesc = Modern connection manager for SSH, RDP, VNC, SPICE and more (with Russian localization)
-	pkgver = 0.25.5
+	pkgver = 0.26.0
 	pkgrel = 1
 	url = https://github.com/zbndev/RustConn-ru
 	arch = x86_64
@@ -48,11 +48,11 @@ pkgbase = rustconn-ru
 	optdepends = tigervnc: External VNC client fallback
 	optdepends = virt-viewer: External SPICE client fallback
 	optdepends = waypipe: Wayland application forwarding for SSH connections
-	provides = rustconn=0.25.5
+	provides = rustconn=0.26.0
 	conflicts = rustconn
 	conflicts = rustconn-appimage
 	conflicts = rustconn-bin
-	source = RustConn-0.25.5-ru.1.tar.gz::https://github.com/zbndev/RustConn-ru/archive/refs/tags/v0.25.5-ru.1.tar.gz
-	sha256sums = 0471c4d69d4c60d9009a40ad460ce3f3e3c6ce17a4f72f5b911fd3763036ae87
+	source = RustConn-0.26.0-ru.1.tar.gz::https://github.com/zbndev/RustConn-ru/archive/refs/tags/v0.26.0-ru.1.tar.gz
+	sha256sums = 03dd8be72697791b6e8936c52e1ad066329825db9e723c318b7542fe8aeca75c
 
 pkgname = rustconn-ru
