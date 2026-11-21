@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=ghidra-extension-kuna-bin
 _pkgname=kuna
-pkgver=1.1002 # renovate: datasource=github-releases depName=Noelo-Lab/kuna
+pkgver=1.1003 # renovate: datasource=github-releases depName=Noelo-Lab/kuna
 # Ghidra release the extension zip is built against; it is part of the asset name
 _ghidraver=12.1.2
 pkgrel=1
@@ -16,7 +16,7 @@ options=('!strip')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-KunaDecompiler-ghidra_${_ghidraver}.zip"
   "${_pkgname}-${pkgver}-LICENSE::${url}/raw/v${pkgver}/LICENSE"
   "${_pkgname}-${pkgver}-NOTICE::${url}/raw/v${pkgver}/NOTICE")
-sha256sums=('203a6ffd7e94831e1d5c3a031f1301c5d0a1b1207a405b8e325a5349a7a241df'
+sha256sums=('3c84d61b3919fe78c03d8d266a48ffd4dba871cc7f36cbb23737d1f16505dc47'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
             'a23de4e1bd5fe3c89e74e7b3c2343b132b4461a7e25b39fda5116d3b669b35b1')
 
