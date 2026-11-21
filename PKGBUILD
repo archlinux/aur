@@ -1,7 +1,7 @@
 # Maintainer: Coobyk <mail@coobyk.com>
 pkgname=tdrive
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TDrive-compatible Telegram-backed cloud drive client — Rust + GPUI desktop app"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Coobyk/tdrive-rs"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 provides=('tdrive')
 conflicts=('tdrive')
 source=("tdrive-rs-$pkgver.tar.gz::https://github.com/Coobyk/tdrive-rs/archive/v$pkgver.tar.gz")
-sha256sums=('c8adc3095e5e14d2c533f7e486d87a3d59ec1517049b4d4b83c65822313a3918')
+sha256sums=('d0980001b1b0005f1740aee88de25469caa0856bd8f76688018d5e79eb53b36a')
 
 prepare() {
     cd "tdrive-rs-$pkgver"
@@ -30,4 +30,10 @@ package() {
     cd "tdrive-rs-$pkgver"
     install -Dm755 "target/release/tdrive-rs" "$pkgdir/usr/bin/tdrive"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 packaging/tdrive.desktop "$pkgdir/usr/share/applications/tdrive.desktop"
+    install -Dm644 assets/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/tdrive.svg"
+    for s in 256 128 64 48 32; do
+        install -Dm644 "packaging/hicolor/tdrive-$s.png" \
+            "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/tdrive.png"
+    done
 }
