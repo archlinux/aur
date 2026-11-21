@@ -71,6 +71,19 @@ try {
 			}
 		}
 	}
+	// Upstream 0.5.16 treats every non-switch argv token as a path the user
+	// asked to open, so our own "--app <app.asar>" value is validated too and
+	// rejected as a directory, printing "Could not add 1 files" on every
+	// start. Electron has already consumed --app; drop the pair from argv so
+	// it cannot be mistaken for user input.
+	for (let i = process.argv.length - 1; i > 0; i--) {
+		const arg = process.argv[i];
+		if (arg === '--app' && i + 1 < process.argv.length) {
+			process.argv.splice(i, 2);
+		} else if (arg.startsWith('--app=')) {
+			process.argv.splice(i, 1);
+		}
+	}
 	if (!process.env._APPDIR_NO_FS_REDIRECT) {
 		const electronResources = path.join(path.dirname(process.execPath), 'resources');
 		if (electronResources !== appDir && fs.existsSync(appDir)) {

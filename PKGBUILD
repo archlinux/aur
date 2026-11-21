@@ -3,7 +3,7 @@ pkgname=qoder-cn-agent
 _pkgname=Qoder-CN
 pkgver=0.5.16
 _electronversion=43
-pkgrel=3
+pkgrel=4
 pkgdesc="Qoder 全新形态，以编程智能体为核心引擎，从想法到实现，轻松搞定。"
 arch=('x86_64')
 url="https://qoder.cn"
@@ -34,7 +34,7 @@ source=(
 )
 sha256sums=('616018e6f7d38f4001e2232171bd4df3a968e63f7fe4bb4d112e2e74510b3651'
             '64a79bddff14167a290d3547d7b4bd00cf693be6d11fb6b7018bca9d9d778ab4'
-            '5f5c3ac54c1dcc9c7179e7bdef850ef095cf544bbae23527a83c056139575dd9'
+            '40b6fe2dac644f8052fedf84edc90f973942c4cf7d3ab7579d036e6d49c125fe'
             '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
