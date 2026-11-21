@@ -19,7 +19,7 @@ pkgver() {
   if git describe --long --tags --match 'v[0-9]*' >/dev/null 2>&1; then
     git describe --long --tags --match 'v[0-9]*' | sed 's/^v//;s/-/.r/;s/-/./'
   else
-    printf '0.1.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf '0.1.1.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
 }
 
