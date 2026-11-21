@@ -4,8 +4,8 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
 pkgname=swift-bin
-pkgver=6.4.2
-pkgrel=2
+pkgver=6.4.3
+pkgrel=1
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64' 'aarch64')
 url="https://www.swift.org/"
@@ -18,8 +18,8 @@ provides=('swift-language')
 replaces=('swift-language-bin')
 source_x86_64=("https://download.swift.org/swift-$pkgver-release/ubi10/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-ubi10.tar.gz")
 source_aarch64=("https://download.swift.org/swift-$pkgver-release/ubi10-aarch64/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-ubi10-aarch64.tar.gz")
-sha256sums_x86_64=('d2663c735fd2a5a6d2a004a5701f77df14ff93b9e5ea54815e8616832058bfbf')
-sha256sums_aarch64=('236a49a0e848a6359937044ec125896f76a4f5284c99a954468e3bb93429c258')
+sha256sums_x86_64=('9ce6ec35b13bf5cb106ae67fa940a7e68939da0d677ca49352a079bab28e3deb')
+sha256sums_aarch64=('7bf5e3121626d2f9bcb0eb7ca144fea663f89b9d1ca621bddcbc47ac6c137d87')
 
 package() {
   _swift_root="/usr/lib/swift/usr"
