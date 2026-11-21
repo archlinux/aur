@@ -1,7 +1,7 @@
 pkgbase = triforce-oot
 	pkgdesc = Triforce build tools
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://triforceproject.com
 	install = triforce-oot.install
 	arch = x86_64
