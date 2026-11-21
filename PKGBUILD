@@ -1,6 +1,6 @@
 # Maintainer: undefined-ux <undefined_1@outlook.com>
 pkgname=lumine-capture-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Screenshot and annotation tool for Wayland with built-in OCR (prebuilt)'
 arch=('x86_64')
@@ -13,10 +13,10 @@ options=(!debug !strip)
 
 _pkgfile="lumine-capture-${pkgver}-1-x86_64.pkg.tar.zst"
 source=("$_pkgfile::$url/releases/download/v$pkgver/$_pkgfile")
-sha256sums=('4ef592afdc458555c3ab382cab7febff5c4e1d64bbcc5e374a70f588e8c7c67b')
+sha256sums=('9f083572f42db2cbaccd0318a4ae4a018907cf3da486aa9a5d03985d36dbf0a0')
 
 package() {
-    cp -a "$srcdir/usr" "$pkgdir/"
+    cp -a --no-preserve=ownership "$srcdir/usr" "$pkgdir/"
 
     mv "$pkgdir/usr/share/licenses/lumine-capture" \
        "$pkgdir/usr/share/licenses/$pkgname"
