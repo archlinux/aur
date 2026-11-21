@@ -1,7 +1,7 @@
 pkgbase = thermalright-trcc
-	pkgdesc = Thermalright LCD/LED Control Center for Linux
-	pkgver = 9.12.0
-	pkgrel = 2
+	pkgdesc = Thermalright LCD/LED Control Center for Linux (unofficial AUR package)
+	pkgver = 9.12.2
+	pkgrel = 1
 	url = https://github.com/Lexonight1/thermalright-trcc-linux
 	arch = any
 	license = GPL-3.0-or-later
@@ -39,7 +39,7 @@ pkgbase = thermalright-trcc
 	optdepends = ffmpeg: Video playback and audio capture
 	optdepends = smartmontools: Disk health sensors
 	conflicts = thermalright-trcc-git
-	source = thermalright-trcc-linux-9.12.0.tar.gz::https://github.com/Lexonight1/thermalright-trcc-linux/archive/refs/tags/v9.12.0.tar.gz
-	sha256sums = 3acbbccfaed3fb0619e973a5da91e4702b82cf117a496b6c6ca209a7fb0d4971
+	source = thermalright-trcc-linux-9.12.2.tar.gz::https://github.com/Lexonight1/thermalright-trcc-linux/archive/refs/tags/v9.12.2.tar.gz
+	sha256sums = b77391dd1334b4ad1f83544331dbd92bcd0edaf4295fc8b41057bf19747f7ca3
 
 pkgname = thermalright-trcc
