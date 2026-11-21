@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=CERO
+GenericName=Music Assistant Player
+Comment=CERO Electron, Reproduce Only - Native Music Assistant player
+Exec=cero
+Icon=xyz.delaosa.CERO
+Terminal=false
+Categories=AudioVideo;Audio;Music;Player;GTK;
+StartupWMClass=xyz.delaosa.CERO
