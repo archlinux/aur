@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=("${pkgname}-bin")
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('711d875e3364e6fe190436e90c87cb89e8bc39aa17cea164968ac333de68e470')
+sha256sums=('')
 
 build() {
   cd "${srcdir}/openaula-${pkgver}"
