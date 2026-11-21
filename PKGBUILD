@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=merman
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Mermaid.js, but headless, in Rust'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4a213990d7b329e1ddb7de5710cc4530a505f967d148afd54b9d3741ca15f3b9')
+sha256sums=('a2954c33ec9cfe1bcff8785fcb2d12e29c988075c6d5a3b962187f1665f3c373')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
