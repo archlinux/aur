@@ -2,7 +2,7 @@
 
 _name=vercel-sandbox
 pkgname=python-$_name
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Python SDK for Vercel Sandbox.'
 arch=('any')
@@ -11,8 +11,10 @@ url="$_repo/tree/main/src/$_name"
 license=('MIT')
 depends=('python'
          'python-vercel-internal-core'
+         'python-vercel-drives'
          'python-vercel-oidc'
          'python-anyio'
+         'python-cbor2'
          'python-httpx2'
          'python-wsproto'
          'python-pydantic')
@@ -25,7 +27,7 @@ checkdepends=('python-pytest'
               'python-hypothesis'
               'python-trio')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name-v$pkgver.tar.gz")
-sha256sums=('d7fa80f276ba4f6a177d17361f778e069ff77fc6f4fe376533259b2180170f14')
+sha256sums=('104c2e74740d59d3f5f5b1efdcb0816b3e0d68323c87ee4391165030a14200c3')
 
 prepare() {
   cd "vercel-py-$_name-v$pkgver/src/$_name"
