@@ -1,9 +1,9 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-bin
-pkgver=0.18.0
-pkgrel=2
-_ferriscope_ver=0.1.0
+pkgver=0.19.0
+pkgrel=1
+_ferriscope_ver=0.2.2
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
@@ -29,14 +29,15 @@ source=(
 	# Only for the ferriscope license texts; the layer itself is prebuilt.
 	"ferriscope-$_ferriscope_ver.tar.gz::https://github.com/hgaiser/ferriscope/archive/refs/tags/v$_ferriscope_ver.tar.gz"
 )
-sha256sums=('6714f638e8c5f92e5f69503c8f03e806c181723ec6ab3bc7a9054ea1a40f8462'
-            'f2da0cb2d66756f691d2c0ca55b8d04eef6e5c0500ba8fbc6d9bd68c45960baa')
+sha256sums=('8bbd81e0fe8d93050c88816b9d971a72c6ee0ce3af8b37754354c07d18664fea'
+            '8fbfcce2c117e558da8955e32d7d1cba5f21863040e324b36e0dcfabc3dc1ef5')
 
 package() {
 	cd "$srcdir/moonshine"
 
 	install -Dm755 bin/moonshine "$pkgdir/usr/bin/moonshine"
 	install -Dm755 share/moonshine/start-moonshine.sh "$pkgdir/usr/bin/start-moonshine.sh"
+	install -Dm755 bin/moonshine-gamescope "$pkgdir/usr/bin/moonshine-gamescope"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$srcdir/ferriscope-$_ferriscope_ver/LICENSE" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE.ferriscope"
