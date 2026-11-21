@@ -1,7 +1,7 @@
 pkgbase = heft-bin
 	pkgdesc = Read-only Linux TUI for application-weight process accounting
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Rethunk-Tech/heft
 	arch = x86_64
 	arch = aarch64

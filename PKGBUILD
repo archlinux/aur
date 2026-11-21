@@ -2,7 +2,7 @@
 
 pkgname=heft-bin
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Read-only Linux TUI for application-weight process accounting"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Rethunk-Tech/heft"
@@ -17,7 +17,7 @@ conflicts=('heft')
 # is no NSS lookup to link against.
 _url_rel="$url/releases/download/v$pkgver"
 source=("heft-completions-man-$pkgver.tar.gz::$_url_rel/heft-completions-man.tar.gz")
-source_x86_64=("heft-$pkgver-x86_64::$_url_rel/heft-x86_64-unknown-linux-musl")
+source_x86_64=("heft-$pkgver-$CARCH::$_url_rel/heft-x86_64-unknown-linux-musl")
 source_aarch64=("heft-$pkgver-aarch64::$_url_rel/heft-aarch64-unknown-linux-musl")
 sha256sums=('9fcb2652db431ecb2043ba90c886c20c2061d50200d799a0ad3b38fa281e254d')
 sha256sums_x86_64=('bac8e2331c2137917ba6a8e1f4fd87f120d86eba00a1c78ebfd47829df887a6d')
