@@ -1,6 +1,6 @@
 pkgbase = wayscriber
 	pkgdesc = Screen annotation tool for Wayland compositors
-	pkgver = 0.9.31
+	pkgver = 0.9.32
 	pkgrel = 1
 	url = https://wayscriber.com
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = wayscriber
 	optdepends = wayscriber-configurator: GUI configurator (F11)
 	conflicts = wayscriber-debug<0.8.6
 	replaces = wayscriber-debug
-	source = wayscriber-0.9.31.tar.gz::https://github.com/devmobasa/wayscriber/archive/refs/tags/v0.9.31.tar.gz
-	sha256sums = 9fefedc78d3b56e0b0d2cebc54800fba78f3d93342556ba09a6c06a0276af1a6
+	source = wayscriber-0.9.32.tar.gz::https://github.com/devmobasa/wayscriber/archive/refs/tags/v0.9.32.tar.gz
+	sha256sums = b69046d5ed8b86fbd29e657a6c613824368eb148503c663fa2d4865df5264c2e
 
 pkgname = wayscriber
