@@ -33,8 +33,23 @@
 # widget is a separate project (the omarchy-broadcast-plugin repository) and
 # is not part of these packages. Nothing is enabled: each user runs
 #   systemctl --user enable --now omarchy-broadcastd.service
-# The v4l2loopback device must be configured as in docs/setup/loopback.md.
+# The v4l2loopback device must be configured as in docs/setup/loopback.md;
+# the core ships its modprobe.d line as an example to copy, in
+# /usr/share/doc/omarchy-broadcast/examples/modprobe.d (never in
+# /usr/lib/modprobe.d: one options line per module is allowed, and it would
+# collide with a user's own). omarchy-broadcast.install prints these steps
+# after an install of the core, and a reminder after an upgrade.
 # (The docs/ files named here are installed in /usr/share/doc/omarchy-broadcast.)
+#
+# The NVIDIA driver userspace (nvidia-utils) and CUDA (cuda, for NVRTC) are
+# optional dependencies of the core: the daemon opens them at run time.
+# Without an NVIDIA GPU nothing extra is needed and the daemon runs the video
+# in system memory. With an NVIDIA GPU, install cuda as well: under
+# [video] memory = "auto" the daemon takes the CUDA path whenever the driver
+# lists a GPU, and GStreamer's CUDA converters need libnvrtc.so from cuda
+# (or set [video] memory = "system"). The Maxine video and AR module
+# packages depend on cuda (their stages need the CUDA video path), and every
+# Maxine SDK package depends on nvidia-utils.
 #
 # The daemon is built with PipeWire support (cargo feature
 # omarchy-broadcastd/pipewire): it can also offer the camera as a native
@@ -106,7 +121,7 @@ pkgname=(
   'omarchy-broadcast-onnx-git'
 )
 _pkgname=omarchy-broadcast
-pkgver=0.55.1
+pkgver=0.57.2
 pkgrel=1
 # The module ABI (<major>.<minor>) that the core provides and that the module
 # packages require. It must equal OBC_MODULE_ABI_MAJOR.OBC_MODULE_ABI_MINOR in
@@ -131,8 +146,6 @@ depends=(
   'gst-plugins-base-libs'  # libgstapp/libgstvideo; videoconvert(scale), videoscale, appsrc, appsink, videotestsrc
   'gst-plugins-good'       # v4l2src, v4l2sink, videocrop, jpegdec, pngdec, capssetter
   'gst-plugins-bad-libs'   # nvcodec plugin and libgstcuda: cudaupload, cudaconvert(scale), cudadownload
-  'cuda'                   # libnvrtc.so, dlopened by libgstcuda for the CUDA converters
-  'nvidia-utils'           # libcuda.so.1 (CUDA driver API) and libnvidia-ml.so.1 (NVML GPU load)
   'V4L2LOOPBACK-MODULE'    # the loopback kernel module, e.g. v4l2loopback-dkms
   'libpipewire'            # libpipewire-0.3.so.0: the optional PipeWire camera node
   'alsa-lib'               # libasound.so.2: the audio worker's hardware microphone gain
@@ -146,7 +159,14 @@ checkdepends=(
   'dbus'                   # /usr/bin/dbus-daemon: the process and CLI tests run a private bus
   'pipewire'               # client.conf: the PipeWire node's unit tests create a PipeWire context (no daemon)
 )
+# cuda and nvidia-utils are optional: nothing links against them. The daemon
+# opens libcuda.so.1 and libnvidia-ml.so.1 at run time, and libgstcuda opens
+# libnvrtc.so. Without an NVIDIA GPU the daemon runs the video in system
+# memory (docs/setup/onnx.md, "Using it on a machine without an NVIDIA GPU");
+# with one, the CUDA path needs cuda as well as nvidia-utils.
 optdepends=(
+  'cuda: NVRTC, needed for the CUDA video path on NVIDIA GPUs'
+  'nvidia-utils: CUDA driver and NVML, needed for the CUDA video path on NVIDIA GPUs'
   'omarchy: the Omarchy shell, for the bar widget in the separate omarchy-broadcast-plugin repository'
   'v4l2loopback-utils: runtime-only loopback setup without modprobe.d'
   'pipewire: the optional PipeWire camera node ([pipewire] enabled in config.toml), the optional noise-removed microphone (ADR 0014) and the microphone host with its audio worker (omarchy-broadcast-mic.service, omarchy-broadcast-audiod)'
@@ -219,6 +239,8 @@ check() {
 package_omarchy-broadcast-git() {
   provides=("$_pkgname" "$_pkgname-module-abi=$_module_abi")
   conflicts=("$_pkgname")
+  # The next steps (loopback, unit, microphone), printed by pacman.
+  install=$_pkgname.install
 
   cd "$_pkgname"
 
@@ -309,6 +331,11 @@ package_omarchy-broadcast-git() {
   install -Dm644 -t "$doc/examples/systemd/wireplumber.service.d" \
     dist/systemd/wireplumber.service.d/omarchy-broadcast.conf
 
+  # The loopback's modprobe.d line (docs/setup/loopback.md), as an inactive
+  # example to copy into /etc/modprobe.d.
+  install -Dm644 -t "$doc/examples/modprobe.d" \
+    dist/modprobe.d/omarchy-broadcast.conf
+
   # The optional noise-removed microphone: the filter-chain configurations
   # and the template unit, inactive (docs/setup/microphone.md). The packaged
   # configurations are not on PipeWire's config search path, so the packaged
@@ -365,6 +392,7 @@ package_omarchy-broadcast-maxine-vfx-git() {
     "$_pkgname-module-abi<2"
     'libgcc'
     'glibc'
+    'cuda'                   # NVRTC for GStreamer's CUDA converters: the stages take CUDA frames
     'maxine-vfx-sdk-local'
   )
   optdepends=()
@@ -393,6 +421,7 @@ package_omarchy-broadcast-maxine-ar-git() {
     "$_pkgname-module-abi<2"
     'libgcc'
     'glibc'
+    'cuda'                   # NVRTC for GStreamer's CUDA converters: the stages take CUDA frames
     'maxine-ar-sdk-local'
   )
   optdepends=()
@@ -463,10 +492,11 @@ package_omarchy-broadcast-onnx-git() {
     'omarchy-onnx-model-mediapipe-landscape'
   )
   optdepends=(
+    'onnxruntime-cpu: ONNX Runtime CPU engine, for machines without an NVIDIA GPU'
     'omarchy-onnx-model-pphumanseg-v2-mobile: the PP-HumanSeg v2 mobile model'
     'omarchy-onnx-model-pphumanseg-v2-lite: the PP-HumanSeg v2 lite model'
     'omarchy-onnx-model-modnet: the MODNet model'
-    'onnxruntime-core: ONNX Runtime with the CPU engine (or any Arch onnxruntime-* variant)'
+    'onnxruntime-core: ONNX Runtime with the CPU engine, the base of the omarchy-onnxruntime provider packages (or any Arch onnxruntime-* variant)'
     'onnxruntime-provider-cuda: the CUDA engine (onnxruntime-provider-cuda13-<preset> from omarchy-onnxruntime; or Arch onnxruntime-opt-cuda, with cudnn)'
     'onnxruntime-provider-tensorrt: the TensorRT engine (omarchy-onnxruntime)'
     'onnxruntime-provider-openvino: the OpenVINO engines (Intel CPU, GPU, NPU; omarchy-onnxruntime)'
