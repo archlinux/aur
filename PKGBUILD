@@ -2,7 +2,7 @@
 
 pkgname=beellama.cpp-cuda
 _pkgname=beellama.cpp
-pkgver=0.4.9
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="DFlash & TurboQuant fork of llama.cpp — up to 3x faster generation and 7.5x more KV cache (CUDA)"
 arch=('x86_64')
@@ -21,6 +21,8 @@ makedepends=(
   'cmake'
   'gcc14'
   'ninja'
+  'nodejs'
+  'npm'
 )
 optdepends=(
   'python-numpy: convert_hf_to_gguf.py'
@@ -37,7 +39,7 @@ source=(
   "beellama.conf"
   "beellama.service"
 )
-sha256sums=('70804696a26095a62c291f3c2b57570ddb53dfaea9fa2758bd6b70a2a8a8e660'
+sha256sums=('1140c1aa17cc02f1dc7ce129f515c8f27b82940e6d3fcaeb359b3c568d9f08ce'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             'b019eb0dbc511f0e411214650184d1fb1fb39a40bce0f418d53dd71bf244e01b')
 
@@ -57,6 +59,11 @@ build() {
   # CUDA 12.9 cudafe++ cannot parse GCC 15 <type_traits>; GCC 14 works
   local _nvcc_host_cxx="${CUDAHOSTCXX:-/usr/bin/g++-14}"
 
+  # The embedded Web UI is built from this tree's own tools/ui against its
+  # package-lock, never downloaded. The fork's build number matches no prebuilt
+  # asset tag, so the download falls through to that bucket's `latest`, whose
+  # asset layout this tree's UI validator rejects, and a fetched asset set would
+  # in any case be bytes no checksum in source=() covers.
   cmake \
     -G Ninja \
     -B build \
@@ -78,7 +85,8 @@ build() {
     -DLLAMA_BUILD_TESTS=OFF \
     -DLLAMA_BUILD_SERVER=ON \
     -DLLAMA_OPENSSL=ON \
-    -DLLAMA_BUILD_UI=OFF \
+    -DLLAMA_BUILD_UI=ON \
+    -DLLAMA_USE_PREBUILT_UI=OFF \
     -Wno-dev
 
   cmake --build build
