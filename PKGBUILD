@@ -3,7 +3,7 @@ pkgname=qoder-agent
 _pkgname=Qoder
 pkgver=0.5.16
 _electronversion=43
-pkgrel=2
+pkgrel=3
 pkgdesc="Qoder new form, with programming agents as the core engine, from idea to implementation, easy to handle."
 arch=('x86_64')
 url="https://qoder.com/"
@@ -34,7 +34,7 @@ source=(
 )
 sha256sums=('08d9ae87015f0a0749200737a050cf1c56279a985c31654b325b665f4cc2cd8f'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
-            'b11ec14ec9a4425acad686e80e9b0a1b681e1d3b8b1034f959816bf5fbf4a6ee'
+            '5f5c3ac54c1dcc9c7179e7bdef850ef095cf544bbae23527a83c056139575dd9'
             '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
