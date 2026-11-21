@@ -1,8 +1,8 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=aareco-bin
 _pkgname=aareco
-pkgver=0.1.4
-_tag=v0.1.4
+pkgver=0.1.5
+_tag=v0.1.5
 pkgrel=1
 pkgdesc='Voice recorder with a topic tree, marks and plugin effects'
 arch=('x86_64' 'aarch64')
@@ -16,19 +16,19 @@ optdepends=(
 provides=(aareco)
 conflicts=(aareco)
 options=(!strip)
-source_x86_64=("aareco-0.1.4-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/aareco/releases/download/${_tag}/aareco-0.1.4-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("aareco-0.1.4-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/aareco/releases/download/${_tag}/aareco-0.1.4-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('19dc883f1d22fc109f522bf9bbe5535fcab7b031e14f480c25903ea580881be8')
-sha256sums_aarch64=('2eb31054e9950a4b06a8344ef69357ccd8f860b797f88a332518640f1859a932')
+source_x86_64=("aareco-0.1.5-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/aareco/releases/download/${_tag}/aareco-0.1.5-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("aareco-0.1.5-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/aareco/releases/download/${_tag}/aareco-0.1.5-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('4e7719d1a911ea16254947185e9977bfce8c860b3fcb8eb5dc255bd8158c84f6')
+sha256sums_aarch64=('5b5965dfba7eb8b263e33968922685272c80d45b7380509b02058791a24b69bf')
 source+=("icon.png::https://raw.githubusercontent.com/mlm-games/aareco/master/others/packaging/icon.png")
 sha256sums+=('SKIP')
 
 package() {
   local dir
   if [[ "$CARCH" == "x86_64" ]]; then
-    dir="${srcdir}/aareco-0.1.4-x86_64-unknown-linux-gnu"
+    dir="${srcdir}/aareco-0.1.5-x86_64-unknown-linux-gnu"
   else
-    dir="${srcdir}/aareco-0.1.4-aarch64-unknown-linux-gnu"
+    dir="${srcdir}/aareco-0.1.5-aarch64-unknown-linux-gnu"
   fi
   install -Dm755 "${dir}/aareco" "${pkgdir}/usr/bin/aareco"
 
