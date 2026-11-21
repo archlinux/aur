@@ -3,7 +3,7 @@
 _pkgname=firedragon
 __pkgname=$_pkgname
 _rdns=org.garudalinux.$__pkgname
-_pkgver=13.12.1
+_pkgver=13.13.2
 _branding=dr460nized
 _gentoo=firefox-160-patches-02.tar.xz
 _gentoo_exclude=(0014-bgo-940031-wasm-support-firefox-155.patch)
@@ -48,7 +48,6 @@ depends=(alsa-lib
   ttf-font)
 makedepends=(cbindgen
   clang
-  corepack
   diffutils
   imake
   jack
@@ -58,6 +57,7 @@ makedepends=(cbindgen
   nasm
   nodejs
   onnxruntime
+  pnpm
   python
   rust
   unzip
@@ -84,11 +84,11 @@ install=$_pkgname.install
 noextract=($_gentoo)
 source=($_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
   https://dev.gentoo.org/~juippis/mozilla/patchsets/$_gentoo)
-sha256sums=('e26653ce09c309f1cb45a8e390476a58ef7ed5df10086b441479a62d29210a15'
+sha256sums=('bf7af509f1b85fda655bc3f04cb2ca9d1abbee3e48f0eb2c662594913ee0005b'
   '97eecbcc2ffa265402f5cb2ae42d46007c17ce2f37fa57523037002b6a1b13f2')
 
 prepare() {
-  mkdir -p mozbuild bin
+  mkdir -p mozbuild pnpm
   cd $_pkgname-v$_pkgver
 
   for patch in $(tar -tf "$srcdir/$_gentoo" --wildcards '*.patch' $(printf -- '--exclude=%s' "${_gentoo_exclude[@]}")); do
@@ -102,30 +102,25 @@ prepare() {
     -e 's/7b15213f4ca1c0241fddd0483397a68ceeafe33029d3056ac83b58d56833649b/5c1d506a889fe866baa6b65438def12cdb531443b12f53ee923ce41a9a95aacc/' \
     -i third_party/rust/bindgen/.cargo-checksum.json
 
-  echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/edition/$_pkgname-$_branding.mozconfig\"" > ../mozconfig
   export FIREDRAGON_EDITION=$_branding
 
   if [ $CARCH = x86_64 ]; then
-    echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/target/linux-x64.mozconfig\"" >> ../mozconfig
     export FIREDRAGON_TARGET=linux-x64
   elif [ $CARCH = aarch64 ]; then
-    echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/target/linux-arm64.mozconfig\"" >> ../mozconfig
     export FIREDRAGON_TARGET=linux-arm64
   fi
 
-  export COREPACK_HOME="$srcdir"/corepack
   export PNPM_HOME="$srcdir"/pnpm
-  export PATH="$srcdir"/bin:"$PATH"
-
-  corepack enable --install-directory "$srcdir"/bin
 
   pushd browser/$_pkgname > /dev/null
-  corepack install
   pnpm install --frozen-lockfile
   pnpm all:build
   popd > /dev/null
 
   cat >> ../mozconfig << END
+. "\$topsrcdir/browser/$_pkgname/mozconfig/edition/$_pkgname-$_branding.mozconfig"
+. "\$topsrcdir/browser/$_pkgname/mozconfig/target/$FIREDRAGON_TARGET.mozconfig"
+
 ac_add_options --enable-linker=lld
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
