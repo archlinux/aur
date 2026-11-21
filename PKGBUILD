@@ -2,7 +2,7 @@
 # Maintainer: Emmanuel Gautier <emmanuel@cerberauth.com>
 
 pkgname='cache-detective-bin'
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='HTTP cache & CDN behavior analysis CLI - cacheability, live cache state, CDN fingerprinting, and cache poisoning/deception checks.'
 url='https://github.com/cerberauth/cache-detective'
@@ -12,16 +12,16 @@ provides=('cache-detective')
 conflicts=('cache-detective')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cerberauth/cache-detective/releases/download/v${pkgver}/cache-detective_Linux_arm64.tar.gz")
-sha256sums_aarch64=('1d06721e0d737fc9194ba2322e8790692cce941503086eea2714b213c1b5619b')
+sha256sums_aarch64=('8ced3ef30291c53797e54e5848ac9c0cc81855af867f3d9a630fbc6ebfdae6e2')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/cerberauth/cache-detective/releases/download/v${pkgver}/cache-detective_Linux_armv7.tar.gz")
-sha256sums_armv7h=('27c93797c79ca579b323ab247b7a494419faa668cee5a2b7e3b47a9685aac0a4')
+sha256sums_armv7h=('f74dee64c8f3ec55ad34c4d383b0dd5e705fc7f3073d281407f5cd949b5330d8')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/cerberauth/cache-detective/releases/download/v${pkgver}/cache-detective_Linux_i386.tar.gz")
-sha256sums_i686=('049b768eec83a83d85bc9faf8fd0cc221a648dbfbd45026bdfaa7a40032ce89b')
+sha256sums_i686=('6ec45ef5bf50140eaa49076e3f369b0f486cd219a54ae589e1db6b29585c12c0')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cerberauth/cache-detective/releases/download/v${pkgver}/cache-detective_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('74a42d7b5bc109f00c98e371dbb4b4199b8f70dfe5aa95037f2c90ec13e9f30a')
+sha256sums_x86_64=('af0a97d29bab36d9bce350c18171c713a0b369e31824571054b26720ed2e034c')
 
 package() {
   install -Dm755 "./cache-detective" "${pkgdir}/usr/bin/cache-detective"
