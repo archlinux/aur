@@ -24,6 +24,13 @@ pkgver() {
 build() {
     cd "$srcdir/ferron"
     export CARGO_TARGET_DIR="$srcdir/target"
+    # makepkg's -flto=auto breaks the static mimalloc and aws-lc these crates
+    # link against, with undefined symbols. Drop LTO from the flags and keep
+    # the hardening.
+    CFLAGS=${CFLAGS//-flto=auto/}
+    CXXFLAGS=${CXXFLAGS//-flto=auto/}
+    LDFLAGS=${LDFLAGS//-flto=auto/}
+    export CFLAGS CXXFLAGS LDFLAGS
     cargo build --release --locked --workspace
 }
 
