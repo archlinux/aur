@@ -1,0 +1,36 @@
+pkgbase = anirust-bin
+	pkgdesc = Desktop client for Anixart with an mpv player (prebuilt)
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/mrFrok/AniRust
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = mpv
+	depends = gcc-libs
+	depends = fontconfig
+	depends = ffmpeg
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxcursor
+	depends = libxi
+	depends = libxrandr
+	depends = wayland
+	depends = libglvnd
+	optdepends = xdg-desktop-portal: desktop file chooser
+	optdepends = gnome-keyring: store the Anixart session token
+	optdepends = vapoursynth: frame generation on x86_64
+	provides = anirust=1.1.1
+	conflicts = anirust
+	options = !strip
+	options = !debug
+	source = https://raw.githubusercontent.com/mrFrok/AniRust/v1.1.1/packaging/linux/io.github.mrfrok.AniRust.desktop
+	source = https://raw.githubusercontent.com/mrFrok/AniRust/v1.1.1/packaging/linux/io.github.mrfrok.AniRust.metainfo.xml
+	sha256sums = 5ec162600363123a4fa2b624308b4ef6baa7e6e5457671daa7d844c6360d1f1c
+	sha256sums = f31b050989a5b816fc56128ad94268a7589ee6ba285688292e461d3b1289ac2d
+	source_x86_64 = https://github.com/mrFrok/AniRust/releases/download/v1.1.1/anirust-1.1.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 485b6572e1de289bb6dbdf20e14f469cea2b5078761bb8ca69325832b2be5ec8
+	source_aarch64 = https://github.com/mrFrok/AniRust/releases/download/v1.1.1/anirust-1.1.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = bce01aff7a7c040a6f76857089c9c7505303fe958e0d700c35eafde67e6e3152
+
+pkgname = anirust-bin
