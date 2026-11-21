@@ -1,6 +1,6 @@
 # Maintainer: araaha <ara.ahady at gmail dot com>
 pkgname=yavcpdf
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A minimal, keyboard-driven PDF viewer'
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
 )
 conflicts=('yavcpdf-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/araaha/yavcpdf/releases/download/v$pkgver/yavcpdf-$pkgver.tar.gz")
-sha256sums=('bca351872053d180787249ddfec8255bb5cce8825a5764ae5f98313d951ce8d6')
+sha256sums=('6b4e5f791de692ebe7944a644465f5e123a01f54dfec43cf8d618ba210c9752c')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -58,7 +58,8 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 target/release/yavcpdf "$pkgdir/usr/bin/yavcpdf"
-  install -Dm644 yavcpdf.desktop "$pkgdir/usr/share/applications/yavcpdf.desktop"
+  install -Dm644 assets/yavcpdf.desktop "$pkgdir/usr/share/applications/yavcpdf.desktop"
+  install -Dm644 assets/yavcpdf.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/yavcpdf.svg"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 src/default_config.toml "$pkgdir/usr/share/doc/$pkgname/config.toml"
   install -Dm644 LICENSE-MIT LICENSE-APACHE NOTICE ATTRIBUTION.md -t "$pkgdir/usr/share/licenses/$pkgname/"
