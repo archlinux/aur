@@ -1,6 +1,6 @@
 # Maintainer: John Oberhauser <j.aur@obez.io>
 pkgname=okshell
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A customizable shell for Hyprland"
 license=('GPL-3.0-only')
@@ -29,7 +29,7 @@ makedepends=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c35a973e0c1f0e1fb06fb07ac99105bb0bb49213a18b4a1704b3aa06623925b5')
+sha256sums=('69bae4dc1e5c6617271455144f98cf002825dddb563b198e98ac0fa0f3d67454')
 
 build() {
     cd "OkShell-$pkgver"
