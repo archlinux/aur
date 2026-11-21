@@ -1,7 +1,7 @@
 # Maintainer: Connor Dickey <kd9lsv@kd9lsv.me>
 pkgname=aethersdr-bin
 pkgver=26.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Native amateur-radio workstation for FlexRadio transceivers"
 arch=('x86_64' 'aarch64')
 url="https://www.aethersdr.com/"
