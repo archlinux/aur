@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=dartR.data
-_pkgver=1.2.2
+_pkgver=1.2.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-crayon
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('540e25b31f3158f41657fed8ba6089a2')
-b2sums=('3c8be1b6323f3472c535e3b194872b807f2a47caea25e8d42302e8df09bc67b6c0c686157f362a24f5c806e3e44e5c60fcf1ac41091fe3a9e965d8416e514472')
+md5sums=('0dcce68e749e5eba563415e12a6a4476')
+b2sums=('37b83656ebf67160c05d98790e5233a40eaa02ed46f4cc0f80a663e56781b4c718038e7329a33f4196fbffd3cc69cd31893fb367b57b07126e3ca97118c10b79')
 
 build() {
   mkdir build
