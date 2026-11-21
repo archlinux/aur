@@ -1,0 +1,27 @@
+post_install() {
+  cat <<EOF
+
+  mutter-native-xwayland has been installed.
+
+  This build adds an opt-in Xwayland scaling mode that lets Xwayland use the
+  monitor's physical resolution (for example 1920x1080 at 125% instead of
+  3072x1728). The default is unchanged ("automatic").
+
+  To enable it, run:
+
+      gsettings set org.gnome.mutter.wayland xwayland-scaling-mode 'native'
+
+  Then log out and back in (or restart mutter/Xwayland) for the change to
+  take effect. To revert to the upstream behavior:
+
+      gsettings reset org.gnome.mutter.wayland xwayland-scaling-mode
+
+  Note: a non-zero org.gnome.mutter.wayland xwayland-scaling-factor still
+  takes precedence over xwayland-scaling-mode.
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

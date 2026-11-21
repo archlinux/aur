@@ -1,0 +1,1460 @@
+diff --git a/data/org.gnome.mutter.wayland.gschema.xml.in b/data/org.gnome.mutter.wayland.gschema.xml.in
+index c4dde1d156..d3ebde87cd 100644
+--- a/data/org.gnome.mutter.wayland.gschema.xml.in
++++ b/data/org.gnome.mutter.wayland.gschema.xml.in
+@@ -5,6 +5,11 @@
+     <value nick="Xtest" value="2"/>
+   </flags>
+ 
++  <enum id="org.gnome.mutter.MetaXwaylandScalingMode">
++    <value nick="automatic" value="0"/>
++    <value nick="native" value="1"/>
++  </enum>
++
+   <schema id="org.gnome.mutter.wayland.keybindings" path="/org/gnome/mutter/wayland/keybindings/"
+ 	  gettext-domain="@GETTEXT_DOMAIN@">
+     <key name="switch-to-session-1" type="as">
+@@ -149,6 +154,31 @@
+       </description>
+     </key>
+ 
++    <key name="xwayland-scaling-mode"
++         enum="org.gnome.mutter.MetaXwaylandScalingMode">
++      <default>'automatic'</default>
++      <summary>Configure how the Xwayland coordinate space is scaled</summary>
++      <description>
++        Controls how the Xwayland coordinate space (and thus the root window
++        size visible to X11 clients) is derived from the monitor configuration.
++
++        “automatic” scales the Xwayland coordinate space by the ceiling of the
++        highest monitor scale. On a monitor using a fractional scale this means
++        Xwayland renders at a higher resolution than the monitor and the result
++        is downscaled by the compositor.
++
++        “native” makes the Xwayland coordinate space match the physical
++        resolution of the monitor. X11 content is then presented 1:1 and is not
++        rendered at a higher resolution than necessary, at the cost of X11 user
++        interfaces appearing smaller on fractional scales. This only has an
++        effect in the logical monitor layout mode; the physical layout mode
++        always behaves this way.
++
++        This key is overridden when the “xwayland-scaling-factor” key is set to
++        a non-zero value.
++      </description>
++    </key>
++
+     <key name="xwayland-scaling-factor" type="d">
+       <default>0</default>
+       <summary>Configure the Xwayland scaling factor</summary>
+@@ -158,6 +188,8 @@
+         and how the compositor scales X11 client windows. Setting the scale to 0
+         means the scale will be automatically calculated. The scale will as of
+         now be rounded to the closest integer.
++
++        A non-zero value overrides the “xwayland-scaling-mode” key.
+       </description>
+     </key>
+ 
+diff --git a/mtk/mtk/mtk-region.c b/mtk/mtk/mtk-region.c
+index 0f7cebb556..886a9d1385 100644
+--- a/mtk/mtk/mtk-region.c
++++ b/mtk/mtk/mtk-region.c
+@@ -23,6 +23,7 @@
+ 
+ #include "config.h"
+ 
++#include <float.h>
+ #include <pixman.h>
+ 
+ #include "mtk/mtk-region.h"
+@@ -440,6 +441,64 @@ mtk_region_scale (MtkRegion *region,
+   return scaled_region;
+ }
+ 
++MtkRegion *
++mtk_region_downscale_double (MtkRegion           *region,
++                             double               scale,
++                             MtkRoundingStrategy  rounding_strategy)
++{
++  int n_rects, i;
++  MtkRectangle *rects;
++  MtkRegion *scaled_region;
++
++  n_rects = mtk_region_num_rectangles (region);
++  if (!n_rects)
++    return mtk_region_create ();
++
++  if (G_APPROX_VALUE (scale, 1.0, DBL_EPSILON))
++    return mtk_region_copy (region);
++
++  MTK_RECTANGLE_CREATE_ARRAY_SCOPED (n_rects, rects);
++  for (i = 0; i < n_rects; i++)
++    {
++      rects[i] = mtk_region_get_rectangle (region, i);
++      mtk_rectangle_scale_double (&rects[i], 1.0 / scale,
++                                  rounding_strategy, &rects[i]);
++    }
++
++  scaled_region = mtk_region_create_rectangles (rects, n_rects);
++
++  return scaled_region;
++}
++
++MtkRegion *
++mtk_region_scale_double (MtkRegion           *region,
++                         double               scale,
++                         MtkRoundingStrategy  rounding_strategy)
++{
++  int n_rects, i;
++  MtkRectangle *rects;
++  MtkRegion *scaled_region;
++
++  n_rects = mtk_region_num_rectangles (region);
++  if (!n_rects)
++    return mtk_region_create ();
++
++  if (G_APPROX_VALUE (scale, 1.0, DBL_EPSILON))
++    return mtk_region_copy (region);
++
++  MTK_RECTANGLE_CREATE_ARRAY_SCOPED (n_rects, rects);
++  for (i = 0; i < n_rects; i++)
++    {
++      rects[i] = mtk_region_get_rectangle (region, i);
++      mtk_rectangle_scale_double (&rects[i], scale,
++                                  rounding_strategy, &rects[i]);
++    }
++
++  scaled_region = mtk_region_create_rectangles (rects, n_rects);
++
++  return scaled_region;
++}
++
+ MtkRegion *
+ mtk_region_crop_and_scale (MtkRegion       *region,
+                            graphene_rect_t *src_rect,
+diff --git a/mtk/mtk/mtk-region.h b/mtk/mtk/mtk-region.h
+index 3a7a7b8334..0a96b97f32 100644
+--- a/mtk/mtk/mtk-region.h
++++ b/mtk/mtk/mtk-region.h
+@@ -126,10 +126,20 @@ MTK_EXPORT
+ MtkRegion * mtk_region_downscale (MtkRegion *region,
+                                   int        scale);
+ 
++MTK_EXPORT
++MtkRegion * mtk_region_downscale_double (MtkRegion           *region,
++                                         double               scale,
++                                         MtkRoundingStrategy  rounding_strategy);
++
+ MTK_EXPORT
+ MtkRegion * mtk_region_scale (MtkRegion *region,
+                               int        scale);
+ 
++MTK_EXPORT
++MtkRegion * mtk_region_scale_double (MtkRegion           *region,
++                                     double               scale,
++                                     MtkRoundingStrategy  rounding_strategy);
++
+ MTK_EXPORT
+ MtkRegion * mtk_region_crop_and_scale (MtkRegion       *region,
+                                        graphene_rect_t *src_rect,
+diff --git a/src/backends/meta-monitor-manager.c b/src/backends/meta-monitor-manager.c
+index df0fe315b0..bda2c909f4 100644
+--- a/src/backends/meta-monitor-manager.c
++++ b/src/backends/meta-monitor-manager.c
+@@ -1420,6 +1420,10 @@ meta_monitor_manager_constructed (GObject *object)
+                            "xwayland-scaling-factor-changed",
+                            G_CALLBACK (meta_monitor_manager_reconfigure),
+                            manager, G_CONNECT_SWAPPED);
++  g_signal_connect_object (settings,
++                           "xwayland-scaling-mode-changed",
++                           G_CALLBACK (meta_monitor_manager_reconfigure),
++                           manager, G_CONNECT_SWAPPED);
+ 
+   monitor_manager_setup_dbus_config_handlers (manager);
+ 
+diff --git a/src/backends/meta-settings-private.h b/src/backends/meta-settings-private.h
+index 2ba4443a04..cbd357e2b7 100644
+--- a/src/backends/meta-settings-private.h
++++ b/src/backends/meta-settings-private.h
+@@ -39,6 +39,12 @@ typedef enum _MetaXwaylandExtension
+   META_XWAYLAND_EXTENSION_XTEST = (1 << 1),
+ } MetaXwaylandExtension;
+ 
++typedef enum _MetaXwaylandScalingMode
++{
++  META_XWAYLAND_SCALING_MODE_AUTOMATIC,
++  META_XWAYLAND_SCALING_MODE_NATIVE,
++} MetaXwaylandScalingMode;
++
+ #define META_TYPE_SETTINGS (meta_settings_get_type ())
+ G_DECLARE_FINAL_TYPE (MetaSettings, meta_settings,
+                       META, SETTINGS, GObject)
+@@ -76,6 +82,8 @@ gboolean meta_settings_are_xwayland_byte_swapped_clients_allowed (MetaSettings *
+ gboolean meta_settings_get_xwayland_scaling_factor (MetaSettings *settings,
+                                                     float        *scaling_factor);
+ 
++MetaXwaylandScalingMode meta_settings_get_xwayland_scaling_mode (MetaSettings *settings);
++
+ gboolean meta_settings_is_privacy_screen_enabled (MetaSettings *settings);
+ 
+ void meta_settings_set_privacy_screen_enabled (MetaSettings *settings,
+diff --git a/src/backends/meta-settings.c b/src/backends/meta-settings.c
+index e5b49ba57e..c2a73b3dec 100644
+--- a/src/backends/meta-settings.c
++++ b/src/backends/meta-settings.c
+@@ -41,6 +41,7 @@ enum
+   EXPERIMENTAL_FEATURES_CHANGED,
+   PRIVACY_SCREEN_CHANGED,
+   XWAYLAND_SCALING_FACTOR_CHANGED,
++  XWAYLAND_SCALING_MODE_CHANGED,
+ 
+   N_SIGNALS
+ };
+@@ -84,6 +85,7 @@ struct _MetaSettings
+   gboolean xwayland_allow_byte_swapped_clients;
+ 
+   float xwayland_scaling_factor;
++  MetaXwaylandScalingMode xwayland_scaling_mode;
+ };
+ 
+ G_DEFINE_TYPE (MetaSettings, meta_settings, G_TYPE_OBJECT)
+@@ -427,6 +429,14 @@ update_xwayland_scaling_factor (MetaSettings *settings)
+                                    "xwayland-scaling-factor");
+ }
+ 
++static void
++update_xwayland_scaling_mode (MetaSettings *settings)
++{
++  settings->xwayland_scaling_mode =
++    g_settings_get_enum (settings->wayland_settings,
++                         "xwayland-scaling-mode");
++}
++
+ static void
+ wayland_settings_changed (GSettings    *wayland_settings,
+                           gchar        *key,
+@@ -454,6 +464,11 @@ wayland_settings_changed (GSettings    *wayland_settings,
+       update_xwayland_scaling_factor (settings);
+       g_signal_emit (settings, signals[XWAYLAND_SCALING_FACTOR_CHANGED], 0);
+     }
++  else if (g_str_equal (key, "xwayland-scaling-mode"))
++    {
++      update_xwayland_scaling_mode (settings);
++      g_signal_emit (settings, signals[XWAYLAND_SCALING_MODE_CHANGED], 0);
++    }
+ }
+ 
+ void
+@@ -498,6 +513,12 @@ meta_settings_get_xwayland_scaling_factor (MetaSettings *settings,
+     }
+ }
+ 
++MetaXwaylandScalingMode
++meta_settings_get_xwayland_scaling_mode (MetaSettings *settings)
++{
++  return settings->xwayland_scaling_mode;
++}
++
+ gboolean
+ meta_settings_is_privacy_screen_enabled (MetaSettings *settings)
+ {
+@@ -605,6 +626,7 @@ meta_settings_init (MetaSettings *settings)
+   update_privacy_settings (settings);
+   update_xwayland_allow_byte_swapped_clients (settings);
+   update_xwayland_scaling_factor (settings);
++  update_xwayland_scaling_mode (settings);
+ }
+ 
+ static void
+@@ -682,4 +704,12 @@ meta_settings_class_init (MetaSettingsClass *klass)
+                   0,
+                   NULL, NULL, NULL,
+                   G_TYPE_NONE, 0);
++
++  signals[XWAYLAND_SCALING_MODE_CHANGED] =
++    g_signal_new ("xwayland-scaling-mode-changed",
++                  G_TYPE_FROM_CLASS (object_class),
++                  G_SIGNAL_RUN_LAST,
++                  0,
++                  NULL, NULL, NULL,
++                  G_TYPE_NONE, 0);
+ }
+diff --git a/src/compositor/meta-shaped-texture-private.h b/src/compositor/meta-shaped-texture-private.h
+index 5cd10f5fea..5c63548180 100644
+--- a/src/compositor/meta-shaped-texture-private.h
++++ b/src/compositor/meta-shaped-texture-private.h
+@@ -54,7 +54,7 @@ void meta_shaped_texture_set_viewport_dst_size (MetaShapedTexture *stex,
+                                                 int                dst_height);
+ void meta_shaped_texture_reset_viewport_dst_size (MetaShapedTexture *stex);
+ void meta_shaped_texture_set_buffer_scale (MetaShapedTexture *stex,
+-                                           int                buffer_scale);
++                                           double             buffer_scale);
+ 
+ gboolean meta_shaped_texture_update_area (MetaShapedTexture  *stex,
+                                           const MtkRectangle *area,
+diff --git a/src/compositor/meta-shaped-texture.c b/src/compositor/meta-shaped-texture.c
+index f9153d7962..c716857810 100644
+--- a/src/compositor/meta-shaped-texture.c
++++ b/src/compositor/meta-shaped-texture.c
+@@ -117,7 +117,7 @@ struct _MetaShapedTexture
+   int fallback_width, fallback_height;
+   int dst_width, dst_height;
+ 
+-  int buffer_scale;
++  double buffer_scale;
+ 
+   guint create_mipmaps : 1;
+ 
+@@ -239,7 +239,7 @@ meta_shaped_texture_init (MetaShapedTexture *stex)
+ static void
+ update_size (MetaShapedTexture *stex)
+ {
+-  int buffer_scale = stex->buffer_scale;
++  double buffer_scale = stex->buffer_scale;
+   int dst_width;
+   int dst_height;
+ 
+@@ -259,26 +259,26 @@ update_size (MetaShapedTexture *stex)
+         {
+           if (stex->texture)
+             {
+-              dst_width = stex->tex_height / buffer_scale;
+-              dst_height = stex->tex_width / buffer_scale;
++              dst_width = (int) round (stex->tex_height / buffer_scale);
++              dst_height = (int) round (stex->tex_width / buffer_scale);
+             }
+           else
+             {
+-              dst_width = stex->fallback_height / buffer_scale;
+-              dst_height = stex->fallback_width / buffer_scale;
++              dst_width = (int) round (stex->fallback_height / buffer_scale);
++              dst_height = (int) round (stex->fallback_width / buffer_scale);
+             }
+         }
+       else
+         {
+           if (stex->texture)
+             {
+-              dst_width = stex->tex_width / buffer_scale;
+-              dst_height = stex->tex_height / buffer_scale;
++              dst_width = (int) round (stex->tex_width / buffer_scale);
++              dst_height = (int) round (stex->tex_height / buffer_scale);
+             }
+           else
+             {
+-              dst_width = stex->fallback_width / buffer_scale;
+-              dst_height = stex->fallback_height / buffer_scale;
++              dst_width = (int) round (stex->fallback_width / buffer_scale);
++              dst_height = (int) round (stex->fallback_height / buffer_scale);
+             }
+         }
+     }
+@@ -386,7 +386,7 @@ get_base_pipeline (MetaShapedTexture   *stex,
+   mtk_compute_viewport_matrix (&matrix,
+                                stex->tex_width,
+                                stex->tex_height,
+-                               stex->buffer_scale,
++                               (float) stex->buffer_scale,
+                                stex->transform,
+                                src_rect);
+ 
+@@ -757,10 +757,10 @@ do_paint_content (MetaShapedTexture   *stex,
+ 
+   if (stex->has_viewport_src_rect)
+     {
+-      sample_width = (int) (stex->viewport_src_rect.size.width *
+-                            stex->buffer_scale);
+-      sample_height = (int) (stex->viewport_src_rect.size.height *
+-                             stex->buffer_scale);
++      sample_width = (int) round (stex->viewport_src_rect.size.width *
++                                  stex->buffer_scale);
++      sample_height = (int) round (stex->viewport_src_rect.size.height *
++                                   stex->buffer_scale);
+     }
+   else
+     {
+@@ -1145,13 +1145,17 @@ meta_shaped_texture_update_area (MetaShapedTexture  *stex,
+ 
+   if (mtk_monitor_transform_is_rotated (stex->transform))
+     {
+-      scaled_and_transformed_width = stex->tex_height / stex->buffer_scale;
+-      scaled_and_transformed_height = stex->tex_width / stex->buffer_scale;
++      scaled_and_transformed_width =
++        (int) round (stex->tex_height / stex->buffer_scale);
++      scaled_and_transformed_height =
++        (int) round (stex->tex_width / stex->buffer_scale);
+     }
+   else
+     {
+-      scaled_and_transformed_width = stex->tex_width / stex->buffer_scale;
+-      scaled_and_transformed_height = stex->tex_height / stex->buffer_scale;
++      scaled_and_transformed_width =
++        (int) round (stex->tex_width / stex->buffer_scale);
++      scaled_and_transformed_height =
++        (int) round (stex->tex_height / stex->buffer_scale);
+     }
+   inverted_transform = mtk_monitor_transform_invert (stex->transform);
+   mtk_rectangle_transform (clip,
+@@ -1554,10 +1558,10 @@ meta_shaped_texture_paint_to_bitmap (MetaShapedTexture *stex,
+         return NULL;
+ 
+       *image_clip = (MtkRectangle) {
+-        .x = image_clip->x * stex->buffer_scale,
+-        .y = image_clip->y * stex->buffer_scale,
+-        .width = image_clip->width * stex->buffer_scale,
+-        .height = image_clip->height * stex->buffer_scale,
++        .x = (int) round (image_clip->x * stex->buffer_scale),
++        .y = (int) round (image_clip->y * stex->buffer_scale),
++        .width = (int) round (image_clip->width * stex->buffer_scale),
++        .height = (int) round (image_clip->height * stex->buffer_scale),
+       };
+     }
+ 
+@@ -1621,7 +1625,7 @@ meta_shaped_texture_new (ClutterContext    *clutter_context,
+  */
+ void
+ meta_shaped_texture_set_buffer_scale (MetaShapedTexture *stex,
+-                                      int                buffer_scale)
++                                      double             buffer_scale)
+ {
+   g_return_if_fail (META_IS_SHAPED_TEXTURE (stex));
+ 
+@@ -1673,7 +1677,7 @@ get_unscaled_size (MetaShapedTexture *stex)
+   if (stex->has_viewport_src_rect)
+     {
+       graphene_size_scale (&stex->viewport_src_rect.size,
+-                           stex->buffer_scale,
++                           (float) stex->buffer_scale,
+                            &buffer_size);
+     }
+   else
+diff --git a/src/tests/meson.build b/src/tests/meson.build
+index f2d36b741c..e81e2bb3f7 100644
+--- a/src/tests/meson.build
++++ b/src/tests/meson.build
+@@ -1276,6 +1276,16 @@ if have_xwayland
+         'xwayland-tests.c',
+       ],
+     },
++    {
++      'name': 'xwayland-scaling',
++      'suite': 'backend',
++      'depends': [
++        test_client,
++      ],
++      'sources': [
++        'xwayland-scaling-tests.c',
++      ],
++    },
+     {
+       'name': 'x11-tests',
+       'suite': 'x11',
+diff --git a/src/tests/xwayland-scaling-tests.c b/src/tests/xwayland-scaling-tests.c
+new file mode 100644
+index 0000000000..1fa179c53c
+--- /dev/null
++++ b/src/tests/xwayland-scaling-tests.c
+@@ -0,0 +1,358 @@
++/*
++ * Copyright (C) 2026
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "config.h"
++
++#include "backends/meta-backend-private.h"
++#include "backends/meta-logical-monitor-private.h"
++#include "backends/meta-monitor-manager-private.h"
++#include "backends/meta-settings-private.h"
++#include "tests/meta-monitor-manager-test.h"
++#include "tests/meta-test-utils.h"
++#include "tests/meta-monitor-test-utils.h"
++#include "tests/meta-test/meta-context-test.h"
++#include "wayland/meta-wayland.h"
++#include "wayland/meta-xwayland.h"
++#include "x11/meta-x11-display-private.h"
++
++static MetaContext *test_context;
++static GSettings *wayland_settings;
++static int output_serial_counter = 0x12300000;
++
++static void
++set_up_monitor (float                         scale,
++                MetaLogicalMonitorLayoutMode  layout_mode)
++{
++  MetaBackend *backend = meta_context_get_backend (test_context);
++  MetaMonitorManager *monitor_manager =
++    meta_backend_get_monitor_manager (backend);
++  MetaMonitorManagerTest *monitor_manager_test =
++    META_MONITOR_MANAGER_TEST (monitor_manager);
++  MetaMonitorTestSetup *test_setup;
++  g_autofree char *output_serial = NULL;
++  MonitorTestCaseSetup test_case_setup = {
++    .modes = {
++      {
++        .width = 1920,
++        .height = 1080,
++        .refresh_rate = 60.0,
++      },
++    },
++    .n_modes = 1,
++    .outputs = {
++      {
++        .crtc = 0,
++        .modes = { 0 },
++        .n_modes = 1,
++        .preferred_mode = 0,
++        .possible_crtcs = { 0 },
++        .n_possible_crtcs = 1,
++        .width_mm = 150,
++        .height_mm = 85,
++        .scale = scale,
++      },
++    },
++    .n_outputs = 1,
++    .crtcs = {
++      {
++        .current_mode = 0,
++      },
++    },
++    .n_crtcs = 1,
++  };
++
++  output_serial = g_strdup_printf ("0x%x", output_serial_counter++);
++  test_case_setup.outputs[0].serial = output_serial;
++
++  meta_monitor_manager_test_set_layout_mode (monitor_manager_test,
++                                             layout_mode);
++  test_setup = meta_create_monitor_test_setup (backend,
++                                               &test_case_setup,
++                                               MONITOR_TEST_FLAG_NO_STORED);
++  meta_monitor_manager_test_emulate_hotplug (monitor_manager_test,
++                                             test_setup);
++}
++
++static MetaXWaylandManager *
++get_xwayland_manager (void)
++{
++  MetaWaylandCompositor *compositor =
++    meta_context_get_wayland_compositor (test_context);
++
++  return meta_wayland_compositor_get_xwayland_manager (compositor);
++}
++
++static void
++set_scaling_mode (MetaXwaylandScalingMode mode,
++                  double                  scaling_factor)
++{
++  g_settings_set_enum (wayland_settings, "xwayland-scaling-mode", mode);
++  g_settings_set_double (wayland_settings, "xwayland-scaling-factor",
++                         scaling_factor);
++  g_settings_sync ();
++
++  while (g_main_context_iteration (NULL, FALSE))
++    ;
++}
++
++static void
++assert_scaling (float              monitor_scale,
++                double             expected_effective_scale,
++                int                expected_ui_factor)
++{
++  MetaXWaylandManager *xwayland_manager = get_xwayland_manager ();
++  double effective_scale;
++  int ui_factor;
++  MetaLogicalMonitor *logical_monitor;
++  GList *logical_monitors;
++  MtkRectangle layout;
++
++  logical_monitors =
++    meta_monitor_manager_get_logical_monitors (
++      meta_backend_get_monitor_manager (meta_context_get_backend (test_context)));
++  g_assert_cmpuint (g_list_length (logical_monitors), ==, 1);
++  logical_monitor = logical_monitors->data;
++  g_assert_cmpfloat_with_epsilon (meta_logical_monitor_get_scale (logical_monitor),
++                                  monitor_scale,
++                                  FLT_EPSILON);
++
++  effective_scale = meta_xwayland_get_effective_scale (xwayland_manager);
++  g_assert_cmpfloat_with_epsilon (effective_scale,
++                                  expected_effective_scale,
++                                  DBL_EPSILON);
++
++  /* The X11 root window is the logical monitor size scaled by the effective
++   * Xwayland scale. */
++  layout = meta_logical_monitor_get_layout (logical_monitor);
++  g_assert_cmpint ((int) round (layout.width * effective_scale),
++                   ==,
++                   (int) round (layout.width * expected_effective_scale));
++
++  ui_factor =
++    meta_xwayland_get_x11_ui_scaling_factor (xwayland_manager);
++  g_assert_cmpint (ui_factor, ==, expected_ui_factor);
++}
++
++static void
++meta_test_xwayland_scaling_automatic_fractional (void)
++{
++  set_up_monitor (1.25f, META_LOGICAL_MONITOR_LAYOUT_MODE_LOGICAL);
++  set_scaling_mode (META_XWAYLAND_SCALING_MODE_AUTOMATIC, 0.0);
++  assert_scaling (1.25f, 2.0, 2);
++}
++
++static void
++meta_test_xwayland_scaling_native_fractional (void)
++{
++  set_up_monitor (1.25f, META_LOGICAL_MONITOR_LAYOUT_MODE_LOGICAL);
++  set_scaling_mode (META_XWAYLAND_SCALING_MODE_NATIVE, 0.0);
++  assert_scaling (1.25f, 1.25, 1);
++
++  /* The coordinate space is the physical resolution, i.e. 1920x1080. */
++  g_assert_cmpint ((int) round (1536 * 1.25), ==, 1920);
++}
++
++static void
++meta_test_xwayland_scaling_native_1_5 (void)
++{
++  set_up_monitor (1.5f, META_LOGICAL_MONITOR_LAYOUT_MODE_LOGICAL);
++  set_scaling_mode (META_XWAYLAND_SCALING_MODE_NATIVE, 0.0);
++  assert_scaling (1.5f, 1.5, 1);
++}
++
++static void
++meta_test_xwayland_scaling_native_2_0 (void)
++{
++  set_up_monitor (2.0f, META_LOGICAL_MONITOR_LAYOUT_MODE_LOGICAL);
++  set_scaling_mode (META_XWAYLAND_SCALING_MODE_NATIVE, 0.0);
++  assert_scaling (2.0f, 2.0, 2);
++}
++
++static void
++meta_test_xwayland_scaling_explicit_factor (void)
++{
++  set_up_monitor (1.25f, META_LOGICAL_MONITOR_LAYOUT_MODE_LOGICAL);
++
++  /* An explicit factor takes precedence over the scaling mode and is rounded
++   * to the closest integer, so 1.0 results in the logical resolution being
++   * used as the Xwayland coordinate space (1536x864 here). */
++  set_scaling_mode (META_XWAYLAND_SCALING_MODE_NATIVE, 1.0);
++  assert_scaling (1.25f, 1.0, 1);
++}
++
++static void
++meta_test_xwayland_scaling_physical_layout (void)
++{
++  set_up_monitor (1.25f, META_LOGICAL_MONITOR_LAYOUT_MODE_PHYSICAL);
++  set_scaling_mode (META_XWAYLAND_SCALING_MODE_NATIVE, 0.0);
++  /* In the physical layout mode the logical monitor keeps the monitor scale,
++   * but the Xwayland coordinate space is already physical. */
++  assert_scaling (1.25f, 1.0, 1);
++}
++
++static void
++wait_for_root_window_size (MetaX11Display *x11_display,
++                           int             expected_width,
++                           int             expected_height)
++{
++  Display *xdisplay = x11_display->xdisplay;
++  gint64 deadline = g_get_monotonic_time () + 10 * G_TIME_SPAN_SECOND;
++
++  while (TRUE)
++    {
++      Window root_ret;
++      int x, y;
++      unsigned int width, height;
++      unsigned int border_width, depth;
++
++      /* Don't rely on the client side Screen width/height, as those are only
++       * updated while handling the corresponding RandR event. */
++      XGetGeometry (xdisplay,
++                    DefaultRootWindow (xdisplay),
++                    &root_ret,
++                    &x, &y,
++                    &width, &height,
++                    &border_width, &depth);
++
++      if ((int) width == expected_width && (int) height == expected_height)
++        return;
++
++      if (g_get_monotonic_time () > deadline)
++        {
++          g_error ("Timed out waiting for an Xwayland root window of %dx%d, "
++                   "got %ux%u",
++                   expected_width, expected_height,
++                   width, height);
++        }
++
++      g_main_context_iteration (NULL, TRUE);
++    }
++}
++
++static MetaTestClient *xwayland_test_client;
++
++static void
++ensure_xwayland (void)
++{
++  MetaDisplay *display = meta_context_get_display (test_context);
++  static int client_count = 0;
++  g_autofree char *client_name = NULL;
++  g_autoptr (GError) error = NULL;
++  gint64 deadline;
++
++  if (meta_display_get_x11_display (display))
++    return;
++
++  /* The test context uses the ON_DEMAND X11 policy, where Xwayland is only
++   * started once a client connects to the public X11 socket. Start a test
++   * client to trigger that, and keep it around so Xwayland stays alive. */
++  client_name = g_strdup_printf ("xwayland-scaling-client-%d", client_count++);
++  xwayland_test_client = meta_test_client_new (test_context,
++                                               client_name,
++                                               META_WINDOW_CLIENT_TYPE_X11,
++                                               &error);
++  if (!xwayland_test_client)
++    g_error ("Failed to launch test client: %s", error->message);
++
++  deadline = g_get_monotonic_time () + 30 * G_TIME_SPAN_SECOND;
++  while (!meta_display_get_x11_display (display))
++    {
++      if (g_get_monotonic_time () > deadline)
++        g_error ("Timed out waiting for Xwayland to start");
++
++      g_main_context_iteration (NULL, TRUE);
++    }
++}
++
++static void
++assert_root_window_size (int expected_width,
++                         int expected_height)
++{
++  MetaDisplay *display = meta_context_get_display (test_context);
++  MetaX11Display *x11_display;
++
++  ensure_xwayland ();
++  x11_display = meta_display_get_x11_display (display);
++  wait_for_root_window_size (x11_display, expected_width, expected_height);
++}
++
++static void
++meta_test_xwayland_scaling_root_window (void)
++{
++  set_up_monitor (1.25f, META_LOGICAL_MONITOR_LAYOUT_MODE_LOGICAL);
++
++  set_scaling_mode (META_XWAYLAND_SCALING_MODE_NATIVE, 0.0);
++  assert_root_window_size (1920, 1080);
++
++  /* The automatic mode keeps rendering at the ceiling of the scale. */
++  set_scaling_mode (META_XWAYLAND_SCALING_MODE_AUTOMATIC, 0.0);
++  assert_root_window_size (3072, 1728);
++
++  set_scaling_mode (META_XWAYLAND_SCALING_MODE_NATIVE, 0.0);
++  assert_root_window_size (1920, 1080);
++}
++
++static void
++on_before_tests (void)
++{
++  wayland_settings = g_settings_new ("org.gnome.mutter.wayland");
++}
++
++static void
++on_after_tests (void)
++{
++  g_settings_reset (wayland_settings, "xwayland-scaling-mode");
++  g_settings_reset (wayland_settings, "xwayland-scaling-factor");
++  g_settings_sync ();
++  g_clear_object (&wayland_settings);
++}
++
++int
++main (int    argc,
++      char **argv)
++{
++  g_autoptr (MetaContext) context = NULL;
++
++  context = meta_create_test_context (META_CONTEXT_TEST_TYPE_TEST,
++                                      META_CONTEXT_TEST_FLAG_TEST_CLIENT);
++  g_assert_true (meta_context_configure (context, &argc, &argv, NULL));
++
++  test_context = context;
++
++  g_test_add_func ("/backend/xwayland-scaling/automatic-fractional",
++                   meta_test_xwayland_scaling_automatic_fractional);
++  g_test_add_func ("/backend/xwayland-scaling/native-fractional",
++                   meta_test_xwayland_scaling_native_fractional);
++  g_test_add_func ("/backend/xwayland-scaling/native-1.5",
++                   meta_test_xwayland_scaling_native_1_5);
++  g_test_add_func ("/backend/xwayland-scaling/native-2.0",
++                   meta_test_xwayland_scaling_native_2_0);
++  g_test_add_func ("/backend/xwayland-scaling/explicit-factor",
++                   meta_test_xwayland_scaling_explicit_factor);
++  g_test_add_func ("/backend/xwayland-scaling/physical-layout",
++                   meta_test_xwayland_scaling_physical_layout);
++  g_test_add_func ("/backend/xwayland-scaling/root-window",
++                   meta_test_xwayland_scaling_root_window);
++
++  g_signal_connect (context, "before-tests",
++                    G_CALLBACK (on_before_tests), NULL);
++  g_signal_connect (context, "after-tests",
++                    G_CALLBACK (on_after_tests), NULL);
++
++  return meta_context_test_run_tests (META_CONTEXT_TEST (context),
++                                      META_TEST_RUN_FLAG_NONE);
++}
+diff --git a/src/wayland/meta-cursor-wayland.c b/src/wayland/meta-cursor-wayland.c
+index 72278e2aa0..6919dc4771 100644
+--- a/src/wayland/meta-cursor-wayland.c
++++ b/src/wayland/meta-cursor-wayland.c
+@@ -72,25 +72,21 @@ meta_cursor_wayland_prepare_at (ClutterCursor *cursor,
+     meta_monitor_manager_get_logical_monitor_at (monitor_manager, x, y);
+   if (logical_monitor)
+     {
+-      int surface_scale;
++      double surface_scale;
+       float scale;
+-#ifdef HAVE_XWAYLAND
+-      MetaXWaylandManager *xwayland_manager =
+-        &surface->compositor->xwayland_manager;
+ 
+-      if (meta_wayland_surface_is_xwayland (surface))
+-        surface_scale = meta_xwayland_get_x11_ui_scaling_factor (xwayland_manager);
+-      else
+-#endif /* HAVE_XWAYLAND */
+-        surface_scale = surface->applied_state.scale;
++      /* For Xwayland surfaces the applied scale is the effective Xwayland
++       * scale, which may be fractional (e.g. the native scaling mode). Use it
++       * directly so the cursor is rendered at its physical size. */
++      surface_scale = surface->applied_state.scale;
+ 
+       if (surface->viewport.has_dst_size)
+         scale = 1.0f;
+       else if (meta_backend_is_stage_views_scaled (backend))
+-        scale = 1.0f / surface_scale;
++        scale = (float) (1.0 / surface_scale);
+       else
+-        scale = (meta_logical_monitor_get_scale (logical_monitor) /
+-                 surface_scale);
++        scale = (float) (meta_logical_monitor_get_scale (logical_monitor) /
++                         surface_scale);
+ 
+       clutter_cursor_set_scale (cursor, scale);
+       clutter_cursor_set_transform (cursor, surface->buffer_transform);
+diff --git a/src/wayland/meta-pointer-lock-wayland.c b/src/wayland/meta-pointer-lock-wayland.c
+index 79b9aa8345..a2cd2bf0eb 100644
+--- a/src/wayland/meta-pointer-lock-wayland.c
++++ b/src/wayland/meta-pointer-lock-wayland.c
+@@ -53,8 +53,8 @@ maybe_scale_for_xwayland (MetaWaylandSurface *surface,
+ {
+   if (meta_wayland_surface_is_xwayland (surface))
+     {
+-      *x /= surface->applied_state.scale;
+-      *y /= surface->applied_state.scale;
++      *x = (float) (*x / surface->applied_state.scale);
++      *y = (float) (*y / surface->applied_state.scale);
+     }
+ }
+ 
+diff --git a/src/wayland/meta-wayland-cursor-surface.c b/src/wayland/meta-wayland-cursor-surface.c
+index b4aa2dd34f..d78397eb1b 100644
+--- a/src/wayland/meta-wayland-cursor-surface.c
++++ b/src/wayland/meta-wayland-cursor-surface.c
+@@ -63,8 +63,8 @@ update_cursor_sprite_texture (MetaWaylandCursorSurface *cursor_surface)
+ 
+   if (texture && meta_multi_texture_is_simple (texture))
+     {
+-      float hotspot_scale_x;
+-      float hotspot_scale_y;
++      double hotspot_scale_x;
++      double hotspot_scale_y;
+ 
+       if (surface->viewport.has_dst_size)
+         {
+@@ -77,8 +77,8 @@ update_cursor_sprite_texture (MetaWaylandCursorSurface *cursor_surface)
+           tex_height = meta_multi_texture_get_height (texture);
+           dst_width = surface->viewport.dst_width;
+           dst_height = surface->viewport.dst_height;
+-          hotspot_scale_x = (float) tex_width / dst_width;
+-          hotspot_scale_y = (float) tex_height / dst_height;
++          hotspot_scale_x = (double) tex_width / dst_width;
++          hotspot_scale_y = (double) tex_height / dst_height;
+         }
+       else
+         {
+@@ -88,8 +88,8 @@ update_cursor_sprite_texture (MetaWaylandCursorSurface *cursor_surface)
+ 
+       meta_cursor_wayland_set_texture (priv->cursor_sprite,
+                                        meta_multi_texture_get_plane (texture, 0),
+-                                       (int) roundf (priv->hot_x * hotspot_scale_x),
+-                                       (int) roundf (priv->hot_y * hotspot_scale_y));
++                                       (int) round (priv->hot_x * hotspot_scale_x),
++                                       (int) round (priv->hot_y * hotspot_scale_y));
+     }
+   else
+     {
+diff --git a/src/wayland/meta-wayland-outputs.c b/src/wayland/meta-wayland-outputs.c
+index 84cd16ef94..70f190e082 100644
+--- a/src/wayland/meta-wayland-outputs.c
++++ b/src/wayland/meta-wayland-outputs.c
+@@ -71,7 +71,8 @@ struct _MetaWaylandOutput
+   MetaMonitor *monitor;
+ 
+ #ifdef HAVE_XWAYLAND
+-  int xwayland_scale;
++  double xwayland_scale;
++  int xwayland_wl_scale;
+ #endif
+ };
+ 
+@@ -213,11 +214,11 @@ maybe_scale_for_xwayland (MetaWaylandOutput  *wayland_output,
+     {
+       MetaXWaylandManager *xwayland_manager =
+         &wayland_output->compositor->xwayland_manager;
+-      int xwayland_scale;
++      double xwayland_scale;
+ 
+       xwayland_scale = meta_xwayland_get_effective_scale (xwayland_manager);
+-      *x *= xwayland_scale;
+-      *y *= xwayland_scale;
++      *x = (int) round (*x * xwayland_scale);
++      *y = (int) round (*y * xwayland_scale);
+     }
+ #endif
+ }
+@@ -337,11 +338,36 @@ send_output_events (struct wl_resource *resource,
+       need_done = TRUE;
+     }
+ 
+-  if (version >= WL_OUTPUT_SCALE_SINCE_VERSION &&
+-      (need_all_events || old_scale_int != scale_int))
++  if (version >= WL_OUTPUT_SCALE_SINCE_VERSION)
+     {
+-      wl_output_send_scale (resource, scale_int);
+-      need_done = TRUE;
++      int new_scale_int;
++      int prev_scale_int;
++
++#ifdef HAVE_XWAYLAND
++      if (is_xwayland_resource (wayland_output, resource))
++        {
++          MetaXWaylandManager *xwayland_manager =
++            &wayland_output->compositor->xwayland_manager;
++
++          /* Xwayland is only ever a 1x client: the coordinate space it uses is
++           * already scaled. This means we must never tell it a scale larger
++           * than 1, otherwise it would apply the scale twice. */
++          new_scale_int =
++            MAX (1, (int) floor (meta_xwayland_get_effective_scale (xwayland_manager)));
++          prev_scale_int = wayland_output->xwayland_wl_scale;
++        }
++      else
++#endif
++        {
++          new_scale_int = scale_int;
++          prev_scale_int = old_scale_int;
++        }
++
++      if (need_all_events || prev_scale_int != new_scale_int)
++        {
++          wl_output_send_scale (resource, new_scale_int);
++          need_done = TRUE;
++        }
+     }
+ 
+   if (need_all_events && version >= WL_OUTPUT_NAME_SINCE_VERSION)
+@@ -431,8 +457,12 @@ meta_wayland_output_update_xwayland_effective_scale (MetaWaylandOutput *wayland_
+ 
+   if (xwayland_manager->compositor)
+     {
+-      wayland_output->xwayland_scale =
++      double effective_scale =
+         meta_xwayland_get_effective_scale (xwayland_manager);
++
++      wayland_output->xwayland_scale = effective_scale;
++      wayland_output->xwayland_wl_scale =
++        MAX (1, (int) floor (effective_scale));
+     }
+ #endif
+ }
+diff --git a/src/wayland/meta-wayland-pointer-constraints.c b/src/wayland/meta-wayland-pointer-constraints.c
+index 1438a80aaa..e860171967 100644
+--- a/src/wayland/meta-wayland-pointer-constraints.c
++++ b/src/wayland/meta-wayland-pointer-constraints.c
+@@ -522,8 +522,8 @@ maybe_scale_for_xwayland (MetaWaylandSurface *surface,
+ {
+   if (meta_wayland_surface_is_xwayland (surface))
+     {
+-      *x /= surface->applied_state.scale;
+-      *y /= surface->applied_state.scale;
++      *x = (float) (*x / surface->applied_state.scale);
++      *y = (float) (*y / surface->applied_state.scale);
+     }
+ }
+ 
+diff --git a/src/wayland/meta-wayland-pointer.c b/src/wayland/meta-wayland-pointer.c
+index 409d31157e..1c2d332f85 100644
+--- a/src/wayland/meta-wayland-pointer.c
++++ b/src/wayland/meta-wayland-pointer.c
+@@ -1357,11 +1357,11 @@ pointer_set_cursor (struct wl_client *client,
+         {
+           MetaXWaylandManager *xwayland_manager =
+             &surface->compositor->xwayland_manager;
+-          int scale;
++          double scale;
+ 
+           scale = meta_xwayland_get_effective_scale (xwayland_manager);
+-          hot_x = (int32_t) round (hot_x / (double) scale);
+-          hot_y = (int32_t) round (hot_y / (double) scale);
++          hot_x = (int32_t) round (hot_x / scale);
++          hot_y = (int32_t) round (hot_y / scale);
+         }
+ #endif
+ 
+diff --git a/src/wayland/meta-wayland-surface-private.h b/src/wayland/meta-wayland-surface-private.h
+index e08cca7f07..19542e1868 100644
+--- a/src/wayland/meta-wayland-surface-private.h
++++ b/src/wayland/meta-wayland-surface-private.h
+@@ -82,7 +82,9 @@ struct _MetaWaylandSurfaceState
+   int32_t dx;
+   int32_t dy;
+ 
+-  int scale;
++  /* The buffer scale as set by the client, or the effective scale we use
++   * internally for Xwayland surfaces. */
++  double scale;
+ 
+   /* wl_surface.damage */
+   MtkRegion *surface_damage;
+@@ -219,7 +221,7 @@ struct _MetaWaylandSurface
+     GNode *subsurface_branch_node;
+     GNode *subsurface_leaf_node;
+     MetaMultiTexture *texture;
+-    int scale;
++    double scale;
+     gboolean is_valid;
+     MetaMultiTextureAlphaMode premult;
+     MetaMultiTextureCoefficients coeffs;
+diff --git a/src/wayland/meta-wayland-surface.c b/src/wayland/meta-wayland-surface.c
+index afb9aae549..8019897c2b 100644
+--- a/src/wayland/meta-wayland-surface.c
++++ b/src/wayland/meta-wayland-surface.c
+@@ -322,7 +322,7 @@ surface_process_damage (MetaWaylandSurface *surface,
+ 
+   if (!mtk_region_is_empty (surface_region))
+     {
+-      int surface_scale = surface->applied_state.scale;
++      double surface_scale = surface->applied_state.scale;
+       MtkRectangle surface_rect;
+       g_autoptr (MtkRegion) scaled_region = NULL;
+       g_autoptr (MtkRegion) transformed_region = NULL;
+@@ -365,15 +365,16 @@ surface_process_damage (MetaWaylandSurface *surface,
+             }
+ 
+           src_rect = (graphene_rect_t) {
+-            .size.width = width / surface_scale,
+-            .size.height = height / surface_scale
++            .size.width = (float) (width / surface_scale),
++            .size.height = (float) (height / surface_scale)
+           };
+         }
+       viewport_region = mtk_region_crop_and_scale (surface_region,
+                                                    &src_rect,
+                                                    surface_rect.width,
+                                                    surface_rect.height);
+-      scaled_region = mtk_region_scale (viewport_region, surface_scale);
++      scaled_region = mtk_region_scale_double (viewport_region, surface_scale,
++                                               MTK_ROUNDING_STRATEGY_GROW);
+       transformed_region = region_transform (scaled_region,
+                                              surface->buffer_transform,
+                                              buffer_rect.width,
+@@ -816,17 +817,23 @@ meta_wayland_surface_apply_viewport (MetaWaylandSurface      *surface,
+   if (window && meta_wayland_surface_is_xwayland (surface))
+     {
+       gboolean has_dst_size = state->viewport_dst_width > 0;
+-      int scale = surface->applied_state.scale;
++      double scale = surface->applied_state.scale;
+ 
+       /* Compensate for rootless Xwayland always calculating viewport based on
+        * buffer scale 1
+        */
+-      state->viewport_src_rect.origin.x /= scale;
+-      state->viewport_src_rect.origin.y /= scale;
+-      state->viewport_src_rect.size.width /= scale;
+-      state->viewport_src_rect.size.height /= scale;
+-      state->viewport_dst_width /= scale;
+-      state->viewport_dst_height /= scale;
++      state->viewport_src_rect.origin.x =
++        (float) (state->viewport_src_rect.origin.x / scale);
++      state->viewport_src_rect.origin.y =
++        (float) (state->viewport_src_rect.origin.y / scale);
++      state->viewport_src_rect.size.width =
++        (float) (state->viewport_src_rect.size.width / scale);
++      state->viewport_src_rect.size.height =
++        (float) (state->viewport_src_rect.size.height / scale);
++      state->viewport_dst_width =
++        (int) round (state->viewport_dst_width / scale);
++      state->viewport_dst_height =
++        (int) round (state->viewport_dst_height / scale);
+ 
+       if (has_dst_size != surface->viewport.has_dst_size ||
+           (has_dst_size &&
+@@ -1037,14 +1044,15 @@ meta_wayland_surface_apply_state (MetaWaylandSurface      *surface,
+       if (state->input_region)
+         {
+           if (meta_wayland_surface_is_xwayland (surface) &&
+-              surface->applied_state.scale > 1)
++              surface->applied_state.scale > 1.0)
+             {
+               /* Compensate for rootless Xwayland always calculating region based
+                * on buffer scale 1
+                */
+               surface->input_region =
+-                mtk_region_downscale (state->input_region,
+-                                      surface->applied_state.scale);
++                mtk_region_downscale_double (state->input_region,
++                                             surface->applied_state.scale,
++                                             MTK_ROUNDING_STRATEGY_GROW);
+             }
+           else
+             {
+@@ -1202,7 +1210,7 @@ meta_wayland_surface_commit (MetaWaylandSurface *surface)
+   if (surface->committed_state.texture)
+     {
+       MetaMultiTexture *committed_texture = surface->committed_state.texture;
+-      int committed_scale = surface->committed_state.scale;
++      int committed_scale = (int) round (surface->committed_state.scale);
+ 
+       if (((meta_multi_texture_get_width (committed_texture) % committed_scale != 0) ||
+            (meta_multi_texture_get_height (committed_texture) % committed_scale != 0)) &&
+@@ -2537,7 +2545,7 @@ meta_wayland_surface_get_width (MetaWaylandSurface *surface)
+       else
+         width = meta_wayland_surface_get_buffer_width (surface);
+ 
+-      return width / surface->applied_state.scale;
++      return (int) round (width / surface->applied_state.scale);
+     }
+ }
+ 
+@@ -2564,7 +2572,7 @@ meta_wayland_surface_get_height (MetaWaylandSurface *surface)
+       else
+         height = meta_wayland_surface_get_buffer_height (surface);
+ 
+-      return height / surface->applied_state.scale;
++      return (int) round (height / surface->applied_state.scale);
+     }
+ }
+ 
+@@ -2655,15 +2663,15 @@ meta_wayland_surface_try_acquire_scanout (MetaWaylandSurface *surface,
+ 
+   if (surface->viewport.has_src_rect)
+     {
+-      int buffer_scale = surface->applied_state.scale;
++      double buffer_scale = surface->applied_state.scale;
+ 
+       src_rect = surface->viewport.src_rect;
+ 
+       /* Convert to buffer coordinates */
+-      src_rect.origin.x *= buffer_scale;
+-      src_rect.origin.y *= buffer_scale;
+-      src_rect.size.width *= buffer_scale;
+-      src_rect.size.height *= buffer_scale;
++      src_rect.origin.x = (float) (src_rect.origin.x * buffer_scale);
++      src_rect.origin.y = (float) (src_rect.origin.y * buffer_scale);
++      src_rect.size.width = (float) (src_rect.size.width * buffer_scale);
++      src_rect.size.height = (float) (src_rect.size.height * buffer_scale);
+ 
+       src_rect_ptr = &src_rect;
+     }
+@@ -2754,7 +2762,21 @@ committed_state_handle_preferred_scale_monitor (MetaWaylandSurface *surface)
+       int ceiled_scale;
+       MtkMonitorTransform transform;
+ 
+-      ceiled_scale = (int) ceil (scale);
++#ifdef HAVE_XWAYLAND
++      if (meta_wayland_surface_is_xwayland (surface))
++        {
++          MetaXWaylandManager *xwayland_manager =
++            &surface->compositor->xwayland_manager;
++
++          /* Xwayland clients are rendered 1:1 with the physical resolution
++           * in the native scaling mode, so tell it to use the floored
++           * (integer) scale rather than the ceiling. */
++          ceiled_scale =
++            MAX (1, (int) floor (meta_xwayland_get_effective_scale (xwayland_manager)));
++        }
++      else
++#endif
++        ceiled_scale = (int) ceil (scale);
+       if (ceiled_scale > 0 && ceiled_scale != surface->preferred_scale)
+         {
+           wl_surface_send_preferred_buffer_scale (surface->resource, ceiled_scale);
+diff --git a/src/wayland/meta-wayland-tablet-tool.c b/src/wayland/meta-wayland-tablet-tool.c
+index d25de93c18..d3acc909db 100644
+--- a/src/wayland/meta-wayland-tablet-tool.c
++++ b/src/wayland/meta-wayland-tablet-tool.c
+@@ -523,11 +523,11 @@ tool_set_cursor (struct wl_client   *client,
+         {
+           MetaXWaylandManager *xwayland_manager =
+             &surface->compositor->xwayland_manager;
+-          int scale;
++          double scale;
+ 
+           scale = meta_xwayland_get_effective_scale (xwayland_manager);
+-          hot_x = (int32_t) round (hot_x / (double) scale);
+-          hot_y = (int32_t) round (hot_y / (double) scale);
++          hot_x = (int32_t) round (hot_x / scale);
++          hot_y = (int32_t) round (hot_y / scale);
+         }
+ #endif
+ 
+diff --git a/src/wayland/meta-window-xwayland.c b/src/wayland/meta-window-xwayland.c
+index d4a02f2be2..41d7bf8037 100644
+--- a/src/wayland/meta-window-xwayland.c
++++ b/src/wayland/meta-window-xwayland.c
+@@ -328,21 +328,21 @@ meta_window_xwayland_process_property_notify (MetaWindow     *window,
+ 
+ static int
+ scale_and_handle_overflow (int                 input,
+-                           float               scale,
++                           double              scale,
+                            MtkRoundingStrategy rounding_strategy)
+ {
+-  float value;
++  double value;
+ 
+   switch (rounding_strategy)
+     {
+     case MTK_ROUNDING_STRATEGY_SHRINK:
+-      value = floorf (input * scale);
++      value = floor (input * scale);
+       break;
+     case MTK_ROUNDING_STRATEGY_GROW:
+-      value = ceilf (input * scale);
++      value = ceil (input * scale);
+       break;
+     case MTK_ROUNDING_STRATEGY_ROUND:
+-      value = roundf (input * scale);
++      value = round (input * scale);
+       break;
+     default:
+       g_return_val_if_reached (NAN);
+@@ -356,7 +356,7 @@ scale_and_handle_overflow (int                 input,
+     return (int) value;
+ }
+ 
+-static float
++static double
+ get_viewport_scale_x (MetaWaylandSurface *surface)
+ {
+   int buffer_width;
+@@ -378,11 +378,11 @@ get_viewport_scale_x (MetaWaylandSurface *surface)
+   else
+     buffer_width = meta_wayland_surface_get_buffer_width (surface);
+ 
+-  return (float) surface->viewport.dst_width * surface->applied_state.scale
++  return surface->viewport.dst_width * surface->applied_state.scale
+          / buffer_width;
+ }
+ 
+-static float
++static double
+ get_viewport_scale_y (MetaWaylandSurface *surface)
+ {
+   int buffer_height;
+@@ -404,7 +404,7 @@ get_viewport_scale_y (MetaWaylandSurface *surface)
+   else
+     buffer_height = meta_wayland_surface_get_buffer_height (surface);
+ 
+-  return (float) surface->viewport.dst_height * surface->applied_state.scale
++  return surface->viewport.dst_height * surface->applied_state.scale
+          / buffer_height;
+ }
+ 
+@@ -421,7 +421,7 @@ meta_window_xwayland_stage_to_protocol (MetaWindow          *window,
+   MetaWaylandCompositor *wayland_compositor =
+     meta_context_get_wayland_compositor (context);
+   MetaXWaylandManager *xwayland_manager = &wayland_compositor->xwayland_manager;
+-  float scale;
++  double scale;
+ 
+   scale = meta_xwayland_get_effective_scale (xwayland_manager);
+ 
+@@ -450,7 +450,7 @@ meta_window_xwayland_stage_to_protocol_size (MetaWindow *window,
+     meta_context_get_wayland_compositor (context);
+   MetaXWaylandManager *xwayland_manager = &wayland_compositor->xwayland_manager;
+   MetaWaylandSurface *surface;
+-  float scale_w, scale_h;
++  double scale_w, scale_h;
+ 
+   scale_w = scale_h = meta_xwayland_get_effective_scale (xwayland_manager);
+ 
+@@ -489,11 +489,11 @@ meta_window_xwayland_protocol_to_stage (MetaWindow          *window,
+   MetaWaylandCompositor *wayland_compositor =
+     meta_context_get_wayland_compositor (context);
+   MetaXWaylandManager *xwayland_manager = &wayland_compositor->xwayland_manager;
+-  int xwayland_scale;
+-  float scale;
++  double xwayland_scale;
++  double scale;
+ 
+   xwayland_scale = meta_xwayland_get_effective_scale (xwayland_manager);
+-  scale = 1.0f / xwayland_scale;
++  scale = 1.0 / xwayland_scale;
+ 
+   if (stage_x)
+     {
+@@ -520,11 +520,11 @@ meta_window_xwayland_protocol_to_stage_size (MetaWindow *window,
+     meta_context_get_wayland_compositor (context);
+   MetaXWaylandManager *xwayland_manager = &wayland_compositor->xwayland_manager;
+   MetaWaylandSurface *surface;
+-  int xwayland_scale;
+-  float scale_w, scale_h;
++  double xwayland_scale;
++  double scale_w, scale_h;
+ 
+   xwayland_scale = meta_xwayland_get_effective_scale (xwayland_manager);
+-  scale_w = scale_h = 1.0f / xwayland_scale;
++  scale_w = scale_h = 1.0 / xwayland_scale;
+ 
+   surface = meta_window_get_wayland_surface (window);
+   if (surface && surface->viewport.has_dst_size)
+diff --git a/src/wayland/meta-xwayland-surface.c b/src/wayland/meta-xwayland-surface.c
+index 8e7307a196..092f25c600 100644
+--- a/src/wayland/meta-xwayland-surface.c
++++ b/src/wayland/meta-xwayland-surface.c
+@@ -175,13 +175,13 @@ meta_xwayland_surface_get_relative_coordinates (MetaWaylandSurfaceRole *surface_
+   MetaWaylandSurface *surface =
+     meta_wayland_surface_role_get_surface (surface_role);
+   MtkRectangle window_rect = { 0 };
+-  int xwayland_scale = surface->applied_state.scale;
++  double xwayland_scale = surface->applied_state.scale;
+ 
+   if (xwayland_surface->window)
+     meta_window_get_buffer_rect (xwayland_surface->window, &window_rect);
+ 
+-  *out_sx = (abs_x - window_rect.x) * xwayland_scale;
+-  *out_sy = (abs_y - window_rect.y) * xwayland_scale;
++  *out_sx = (float) ((abs_x - window_rect.x) * xwayland_scale);
++  *out_sy = (float) ((abs_y - window_rect.y) * xwayland_scale);
+ }
+ 
+ static MetaWaylandSurface *
+diff --git a/src/wayland/meta-xwayland.c b/src/wayland/meta-xwayland.c
+index 3a9e752e60..095bbbd21a 100644
+--- a/src/wayland/meta-xwayland.c
++++ b/src/wayland/meta-xwayland.c
+@@ -1365,7 +1365,7 @@ meta_xwayland_set_should_enable_ei_portal (MetaXWaylandManager  *manager,
+   manager->should_enable_ei_portal = should_enable_ei_portal;
+ }
+ 
+-int
++double
+ meta_xwayland_get_effective_scale (MetaXWaylandManager *manager)
+ {
+   MetaWaylandCompositor *compositor = manager->compositor;
+@@ -1377,7 +1377,7 @@ meta_xwayland_get_effective_scale (MetaXWaylandManager *manager)
+   switch (meta_monitor_manager_get_layout_mode (monitor_manager))
+     {
+     case META_LOGICAL_MONITOR_LAYOUT_MODE_PHYSICAL:
+-      return 1;
++      return 1.0;
+     case META_LOGICAL_MONITOR_LAYOUT_MODE_LOGICAL:
+       {
+         MetaSettings *settings = meta_backend_get_settings (backend);
+@@ -1385,9 +1385,19 @@ meta_xwayland_get_effective_scale (MetaXWaylandManager *manager)
+ 
+         if (meta_settings_get_xwayland_scaling_factor (settings,
+                                                        &scaling_factor))
+-          return (int) roundf (scaling_factor);
++          {
++            return (double) roundf (scaling_factor);
++          }
+         else
+-          return (int) ceil (manager->highest_monitor_scale);
++          {
++            switch (meta_settings_get_xwayland_scaling_mode (settings))
++              {
++              case META_XWAYLAND_SCALING_MODE_AUTOMATIC:
++                return ceil (manager->highest_monitor_scale);
++              case META_XWAYLAND_SCALING_MODE_NATIVE:
++                return (double) manager->highest_monitor_scale;
++              }
++          }
+       }
+     }
+ 
+@@ -1409,7 +1419,21 @@ meta_xwayland_get_x11_ui_scaling_factor (MetaXWaylandManager *manager)
+     case META_LOGICAL_MONITOR_LAYOUT_MODE_PHYSICAL:
+       return meta_settings_get_ui_scaling_factor (settings);
+     case META_LOGICAL_MONITOR_LAYOUT_MODE_LOGICAL:
+-      return meta_xwayland_get_effective_scale (manager);
++      {
++        float scaling_factor;
++
++        if (meta_settings_get_xwayland_scaling_factor (settings,
++                                                       &scaling_factor))
++          return (int) roundf (scaling_factor);
++
++        switch (meta_settings_get_xwayland_scaling_mode (settings))
++          {
++          case META_XWAYLAND_SCALING_MODE_AUTOMATIC:
++            return (int) ceil (manager->highest_monitor_scale);
++          case META_XWAYLAND_SCALING_MODE_NATIVE:
++            return MAX (1, (int) floor (manager->highest_monitor_scale));
++          }
++      }
+     }
+ 
+   g_assert_not_reached ();
+diff --git a/src/wayland/meta-xwayland.h b/src/wayland/meta-xwayland.h
+index ed8540ad21..01a2897a29 100644
+--- a/src/wayland/meta-xwayland.h
++++ b/src/wayland/meta-xwayland.h
+@@ -45,8 +45,10 @@ gboolean meta_xwayland_signal (MetaXWaylandManager  *manager,
+                                int                   signum,
+                                GError              **error);
+ 
+-int meta_xwayland_get_effective_scale (MetaXWaylandManager *manager);
++META_EXPORT_TEST
++double meta_xwayland_get_effective_scale (MetaXWaylandManager *manager);
+ 
++META_EXPORT_TEST
+ int meta_xwayland_get_x11_ui_scaling_factor (MetaXWaylandManager *manager);
+ 
+ const char * meta_xwayland_get_public_display_name (MetaXWaylandManager *manager);
+diff --git a/src/x11/meta-x11-display.c b/src/x11/meta-x11-display.c
+index caf29b8fbb..20b7b98ae3 100644
+--- a/src/x11/meta-x11-display.c
++++ b/src/x11/meta-x11-display.c
+@@ -135,7 +135,7 @@ stage_to_protocol (MetaX11Display *x11_display,
+ {
+   MetaDisplay *display = meta_x11_display_get_display (x11_display);
+   MetaContext *context = meta_display_get_context (display);
+-  int scale = 1;
++  double scale = 1.0;
+ 
+   MetaWaylandCompositor *wayland_compositor =
+     meta_context_get_wayland_compositor (context);
+@@ -145,9 +145,9 @@ stage_to_protocol (MetaX11Display *x11_display,
+   scale = meta_xwayland_get_effective_scale (xwayland_manager);
+ 
+   if (protocol_x)
+-    *protocol_x = stage_x * scale;
++    *protocol_x = (int) round (stage_x * scale);
+   if (protocol_y)
+-    *protocol_y = stage_y * scale;
++    *protocol_y = (int) round (stage_y * scale);
+ }
+ 
+ static void
