@@ -9,7 +9,7 @@
 
 pkgbase=skwir-git
 pkgname=(skwir-git skwir-mermaid-git skwir-math-git skwir-mupdf-git)
-pkgver=0.5.1.r0.g361c0b9
+pkgver=0.6.0.r0.g3cb515d
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents (its last commit)'
 arch=('x86_64' 'aarch64')
@@ -61,6 +61,9 @@ build() {
   . tools/build/order-link-env.sh
   # shellcheck disable=SC2046 # one `-p name` per program
   cargo build --frozen --profile dist $(sed 's/^/-p /' tools/package/programs)
+  # The desktop entry and the metainfo in every language translated
+  # (ADR-139), by base-devel's gettext.
+  tools/package/linux/l10n.sh merge target/l10n
 }
 
 package_skwir-git() {
@@ -125,8 +128,12 @@ package_skwir-git() {
   # skwir's folders, which it looks in for its licences
   # (crates/platform/src/about.rs) whichever package holds it.
   install -Dm644 "$srcdir/LICENSE" "$srcdir"/licenses/* -t "$pkgdir/usr/share/licenses/skwir/pdfium/"
-  install -Dm644 tools/package/linux/org.skwir.skwir.desktop -t "$pkgdir/usr/share/applications/"
-  install -Dm644 tools/package/linux/org.skwir.skwir.metainfo.xml -t "$pkgdir/usr/share/metainfo/"
+  install -Dm644 target/l10n/applications/org.skwir.skwir.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 target/l10n/metainfo/org.skwir.skwir.metainfo.xml -t "$pkgdir/usr/share/metainfo/"
+  # Other programs' Open and Save dialogs, once chosen in Settings
+  # (ADR-141): the portal's back end, which the bus starts.
+  install -Dm644 tools/package/linux/skwir.portal -t "$pkgdir/usr/share/xdg-desktop-portal/portals/"
+  install -Dm644 tools/package/linux/org.freedesktop.impl.portal.desktop.skwir.service -t "$pkgdir/usr/share/dbus-1/services/"
   install -Dm644 crates/ui/assets/org.skwir.skwir.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/skwir/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/skwir/"
