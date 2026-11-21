@@ -21,13 +21,12 @@
 # Maintainer: BastionGuard info@bastionguard.eu
 
 pkgname=bastionguard
-pkgver=2.0.4
+pkgver=2.1
 pkgrel=1
-pkgdesc="BastionGuard - transparent security control plane for Linux desktops"
+pkgdesc="BastionGuard - transparent security control plane for Linux desktops "
 arch=('x86_64')
 url="https://bastionguard.eu/"
-license=('GPL-3.0-only')
-# Documentation: https://bastionguard.eu/documentation/bastionguard-documentation/technical-documentation-application-install/installation-package/
+license=('GPL3')
 
 depends=(
   'glibc' 'gcc-libs'
@@ -45,7 +44,9 @@ depends=(
   'vte4' 'vte3' 'libgee' 'json-glib' 'grpc' 'protobuf'
   'libshumate' 'libnetfilter_queue' 'libbpf' 'help2man' 'libbpf' 'bcc-libbpf-tools' 'bpf' 'zstd' 'lzo'
   # Runtime services / helpers
-  'nginx' 'php' 'clamav' 'dnsmasq' 'bubblewrap' 'rsync'
+  'nginx' 'php' 'dnsmasq' 'bubblewrap' 'rsync'
+  # BastionGuard Smart Engine (replaces ClamAV since 2.1)
+  'libarchive' 'pcre2' 'xz' 'libpng' 'zlib'
 )
 
 makedepends=(
@@ -56,26 +57,14 @@ makedepends=(
 )
 
 options=('strip')
-
+# Engine configuration edited by the user or the settings page.
+backup=('etc/BastionGuard/engine.conf')
 source=(
   "BastionGuard::git+https://git.bastionguard.eu/specialworld83/BastionGuard.git#tag=v${pkgver}"
 )
-
 sha256sums=('SKIP')
 
-_srcname="BastionGuard"
-
-prepare() {
-  cd "$srcdir/$_srcname"
-
-  # Sostituisce il CMake generico con quello specifico per Arch Linux
-  cp -f \
-    pkgbuild/cmake_archlinux/CMakeLists.txt \
-    CMakeLists.txt
-
-  # Evita di riutilizzare una configurazione CMake precedente
-  rm -rf build
-}
+_srcname="BastionGuard-ci"
 
 build() {
   cd "$srcdir/$_srcname"
@@ -90,6 +79,8 @@ build() {
     -DENABLE_USER_AGENT_AUTO=OFF \
     -DINSTALL_NGINX_DEFAULTS=OFF \
     -DBASTIONGUARD_INIT_SYSTEM=AUTO \
+    -DBASTIONGUARD_SMART_ENGINE=ON \
+    -DBUILD_TESTING=OFF \
 
   cmake --build build -- -j1
 }

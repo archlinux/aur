@@ -1,10 +1,10 @@
 pkgbase = bastionguard
 	pkgdesc = BastionGuard - transparent security control plane for Linux desktops
-	pkgver = 2.0.4
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://bastionguard.eu/
 	arch = x86_64
-	license = GPL-3.0-only
+	license = GPL3
 	makedepends = cmake
 	makedepends = pkgconf
 	makedepends = gettext
@@ -77,12 +77,17 @@ pkgbase = bastionguard
 	depends = lzo
 	depends = nginx
 	depends = php
-	depends = clamav
 	depends = dnsmasq
 	depends = bubblewrap
 	depends = rsync
+	depends = libarchive
+	depends = pcre2
+	depends = xz
+	depends = libpng
+	depends = zlib
 	options = strip
-	source = BastionGuard::git+https://git.bastionguard.eu/specialworld83/BastionGuard.git#tag=v2.0.4
+	backup = etc/BastionGuard/engine.conf
+	source = BastionGuard::git+https://git.bastionguard.eu/specialworld83/BastionGuard.git#tag=v2.1
 	sha256sums = SKIP
 
 pkgname = bastionguard
