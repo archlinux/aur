@@ -1,6 +1,6 @@
 pkgbase = directory-navigator-bin
 	pkgdesc = A modern terminal file manager built in Rust with Turbo Vision, inspired by DOS Navigator
-	pkgver = 1.1.14
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/deemoun/Directory-Navigator
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = directory-navigator-bin
 	provides = dn
 	conflicts = directory-navigator
 	options = !strip
-	source_x86_64 = dn-x86_64-1.1.14.tgz::https://github.com/deemoun/Directory-Navigator/releases/download/v1.1.14/dn-1.1.14-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 935f5dfb394ea0688a354ce3d940493c9a62cfa1d65fb5ab530b1d4d15124912
-	source_aarch64 = dn-aarch64-1.1.14.tgz::https://github.com/deemoun/Directory-Navigator/releases/download/v1.1.14/dn-1.1.14-linux-aarch64.tar.gz
-	sha256sums_aarch64 = f62ab52ad7ce0fa431a2404075a95b1fe699fc19bc063fd525a3b48ed84c7422
+	source_x86_64 = dn-x86_64-1.1.5.tgz::https://github.com/deemoun/Directory-Navigator/releases/download/v1.1.5/dn-1.1.5-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f7061c733098eabd6fa0cf1ced78d72916e36f5c163d85f6d311f4abd16efc3b
+	source_aarch64 = dn-aarch64-1.1.5.tgz::https://github.com/deemoun/Directory-Navigator/releases/download/v1.1.5/dn-1.1.5-linux-aarch64.tar.gz
+	sha256sums_aarch64 = c268c69446c1f9dbb0d3f3336843d670f5effa531c1f51702f1d12f06f2d3037
 
 pkgname = directory-navigator-bin
