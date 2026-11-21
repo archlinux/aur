@@ -5,7 +5,7 @@ _godot_version="4.7.2-stable"
 
 pkgname=gozen-git
 pkgver=20261120
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalistic video editor (git)"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
