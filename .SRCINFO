@@ -1,6 +1,6 @@
 pkgbase = mx-service-manager
 	pkgdesc = GUI service management tool
-	pkgver = 26.08
+	pkgver = 26.11
 	pkgrel = 1
 	url = https://github.com/mx-linux/mx-service-manager
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mx-service-manager
 	depends = qt6-base
 	depends = polkit
 	depends = systemd
-	source = https://github.com/mx-linux/mx-service-manager/archive/refs/tags/26.08.tar.gz
-	sha256sums = 28ddb9a32f0ad0631b45ab1d1696d7226867c9409bc31f17020b9e0f139be744
+	source = https://github.com/mx-linux/mx-service-manager/archive/refs/tags/26.11.tar.gz
+	sha256sums = 2d4e3171be4c9874dc2db17b0a0f0cc6ec354406ef639b965661781d43c2137c
 
 pkgname = mx-service-manager
