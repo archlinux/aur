@@ -1,6 +1,6 @@
 pkgbase = skvirt
 	pkgdesc = Touch-driven on-screen keyboard for fcitx5 on KWin (Wayland)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Vendetta1871/skvirt
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = skvirt
 	optdepends = hunspell-en_us: English word suggestions
 	optdepends = hunspell-ru: Russian word suggestions
 	optdepends = whisper-cpp: voice input via whisper-server
-	optdepends = fcitx5-commit-git: insert dictated text as one commit instead of key taps
-	source = skvirt-0.2.0.tar.gz::https://github.com/Vendetta1871/skvirt/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 03ba2669f6bdb1c017b6e9b8876c8d1fa4399fbe3dae6241c13991549f79414c
+	optdepends = fcitx5-commit: insert dictated text as one commit instead of key taps
+	source = skvirt-0.3.0.tar.gz::https://github.com/Vendetta1871/skvirt/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = c31438f8e6ce2035116a29136eadbe20255780b70b55908778548a2826076b3e
 
 pkgname = skvirt
