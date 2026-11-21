@@ -1,6 +1,6 @@
 pkgbase = screen-relay
 	pkgdesc = Stream a desktop to a browser, and drive it from a CLI, an HTTP API, or a Node SDK
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://screen-relay.dev
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = screen-relay
 	optdepends = sway: Wayland desktop for a headless Wayland session
 	optdepends = xorg-xwayland: X11 applications inside a Wayland session
 	optdepends = foot: Wayland terminal
-	source = screen-relay-0.1.2.tar.gz::https://github.com/vercel-labs/screen-relay/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = b3a4eb8c28e9523c3678a5122291f9cbf5632e4f7b925b32bb2c9a64e6b39ed5
+	source = screen-relay-0.1.3.tar.gz::https://github.com/vercel-labs/screen-relay/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = e81a2a63c293d29172a2d2ed1968f7b208f5061cb150ae206c2c14cf4b769472
 
 pkgname = screen-relay
