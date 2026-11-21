@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/*.pkg.tar.*
+/jquery-*.js
+/jquery-*.map
+/jquery-*-LICENSE
