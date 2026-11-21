@@ -1,0 +1,5 @@
+[restish]
+source = "github"
+github = "rest-sh/restish"
+use_latest_release = true
+prefix = "v"
