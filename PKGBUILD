@@ -2,20 +2,20 @@
 
 pkgname=raiderio-client
 _pkgapp=raiderio-client
-pkgver=6.0.4
+pkgver=6.0.6
 pkgrel=1
 pkgdesc="raider.io desktop client for Linux"
 arch=('x86_64' 'arm64')
 depends=("fuse2")
 url="https://raider.io/"
-source=("$_pkgapp-x86_64-v6.0.4.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v6.0.4/RaiderIO_Installer_Linux_x86_64.AppImage"
-        "$_pkgapp-arm64-v6.0.4.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v6.0.4/RaiderIO_Installer_Linux_arm64.AppImage"
+source=("$_pkgapp-x86_64-v6.0.6.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v6.0.6/RaiderIO_Installer_Linux_x86_64.AppImage"
+        "$_pkgapp-arm64-v6.0.6.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v6.0.6/RaiderIO_Installer_Linux_arm64.AppImage"
         'start')
 license=('custom' 'MIT' 'custom:chromium-licenses')
 options=(!strip)
 # Skip checksum check for the RaiderIO binary, to avoid breakage on updates
-sha512sums=('a7507fe12f248461571d5026d3304638841bc3c4e0f5360122a36a4e231ac1913cfaa4e681da84c1df60f7f4d3801e9d704081034fa34673b0c02d92762ab0e6'
-            'a88ecc1cc9562e1c37a5c70ff68fa1b55958dd2554404c19dc40cfc7b14054a903ce25beee78e9e77fd72fb23ec081c31dadaa98f825a905f894f0d4febd9641'
+sha512sums=('d5e6d9aacc7c1226cb21396c1fe75807d349f16aaf0c90ac3ca5b2caa684da989a35f4e485bb0b9d1ac8f31d6a667273dddea65e945c3ef7681de2314405a2a0'
+            '7a2e8636d66649ad80473b3dd6b14c8eb550f23950159d9df8e4efd876564bcae34169d8da12a22af71e6da418ee328713aba95d17f31cd544588b5c4d7b7b13'
             'ee0cb07b4bf56ed43bf163f0141d5165889b051fe0aaf52f46789f67f6ab896f7d69c3527ab77bb1fd70e3c7c6a6611e691fd8ad91edd1db35a2252f10bef9a9')
 
 normalize_desktop() {
@@ -52,8 +52,8 @@ normalize_desktop() {
 pkgver() {
     cd ${srcdir}
     rm -rf "${srcdir}/squashfs-root"
-    chmod +x ${srcdir}/${_pkgapp}-${CARCH}-v6.0.4.AppImage
-    ${srcdir}/${_pkgapp}-${CARCH}-v6.0.4.AppImage --appimage-extract >/dev/null
+    chmod +x ${srcdir}/${_pkgapp}-${CARCH}-v6.0.6.AppImage
+    ${srcdir}/${_pkgapp}-${CARCH}-v6.0.6.AppImage --appimage-extract >/dev/null
 
     normalize_desktop
 
@@ -63,14 +63,14 @@ pkgver() {
 package() {
     cd ${srcdir}
     rm -rf "${srcdir}/squashfs-root"
-    chmod +x ${srcdir}/${_pkgapp}-${CARCH}-v6.0.4.AppImage
-    ./${_pkgapp}-${CARCH}-v6.0.4.AppImage --appimage-extract >/dev/null
+    chmod +x ${srcdir}/${_pkgapp}-${CARCH}-v6.0.6.AppImage
+    ./${_pkgapp}-${CARCH}-v6.0.6.AppImage --appimage-extract >/dev/null
 
     normalize_desktop
 
     sed -i 's/Exec=.*/Exec=\/usr\/bin\/'${_pkgapp}' %U/' squashfs-root/${_pkgapp}.desktop
 
-    install -Dm755 ${_pkgapp}-${CARCH}-v6.0.4.AppImage "${pkgdir}/opt/${_pkgapp}/${_pkgapp}.AppImage"
+    install -Dm755 ${_pkgapp}-${CARCH}-v6.0.6.AppImage "${pkgdir}/opt/${_pkgapp}/${_pkgapp}.AppImage"
     install -Dm755 "start" "${pkgdir}/usr/bin/${_pkgapp}"
     install -dm755 "${pkgdir}/usr/share/applications/"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
