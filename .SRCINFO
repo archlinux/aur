@@ -3,7 +3,6 @@ pkgbase = mutter-native-xwayland
 	pkgver = 51.1
 	pkgrel = 2
 	url = https://github.com/wlroots/mutter-native-xwayland
-	install = .INSTALL
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = bash-completion
@@ -79,6 +78,7 @@ pkgbase = mutter-native-xwayland
 	b2sums = 5f7e0d64d24fdcee14ed2bcd56c7e99d076b4840f1f09219964be99469217cd13b2e6fef9e9bf683132a6db497b65e79435b456fae05c3b964c2d47a76cbaa0d
 
 pkgname = mutter-native-xwayland
+	install = .INSTALL
 	optdepends = bash-completion: Bash completions for gdctl
 	optdepends = mutter-native-xwayland-devkit: Mutter SDK, "MDK"
 	provides = mutter=51.1

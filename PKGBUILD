@@ -16,7 +16,6 @@ pkgdesc="Window manager and compositor for GNOME (with opt-in native Xwayland sc
 url="https://github.com/wlroots/mutter-native-xwayland"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
-install=.INSTALL
 depends=(
   at-spi2-core
   cairo
@@ -129,6 +128,7 @@ _pick() {
 }
 
 package_mutter-native-xwayland() {
+  install=.INSTALL
   provides=('mutter=51.1' libmutter-51.so)
   conflicts=('mutter')
   optdepends=(
