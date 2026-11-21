@@ -1,20 +1,38 @@
 pkgbase = openmv-ide-bin
 	pkgdesc = QtCreator based OpenMV IDE.
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openmv/openmv-ide
 	arch = x86_64
 	license = MIT
+	makedepends = rsync
+	options = !strip
+	source_x86_64 = https://github.com/openmv/openmv-ide/releases/download/v5.1.0/openmv-ide-linux-x86_64-5.1.0.tar.gz
+	sha256sums_x86_64 = 3baa87a17290f50a149fdefac93f40dc964a27bb3194e1d1c62dc45eac00c9bf
+
+pkgname = openmv-ide-bin
+	pkgdesc = QtCreator based OpenMV IDE.
 	depends = fontconfig
 	depends = freetype2
 	depends = libxcb
 	depends = libpng
 	depends = libusb
 	depends = python-pyusb
+	optdepends = openmv-ide-arm-toolchain-bin: Bundled ARM GNU Toolchain
+	optdepends = openmv-ide-stedgeai-bin: ST Edge AI model generation
+	optdepends = openmv-ide-ffmpeg-bin: Video playback and conversion
 	provides = openmv-ide
 	conflicts = openmv-ide
-	options = !strip
-	source_x86_64 = https://github.com/openmv/openmv-ide/releases/download/v5.1.0/openmv-ide-linux-x86_64-5.1.0.tar.gz
-	sha256sums_x86_64 = 3baa87a17290f50a149fdefac93f40dc964a27bb3194e1d1c62dc45eac00c9bf
 
-pkgname = openmv-ide-bin
+pkgname = openmv-ide-arm-toolchain-bin
+	pkgdesc = Bundled ARM GNU Toolchain for OpenMV IDE
+	depends = openmv-ide-bin=5.1.0-2
+
+pkgname = openmv-ide-stedgeai-bin
+	pkgdesc = ST Edge AI Core for OpenMV IDE
+	depends = openmv-ide-bin=5.1.0-2
+	optdepends = openmv-ide-arm-toolchain-bin: Bundled ARM GCC for relocatable model generation
+
+pkgname = openmv-ide-ffmpeg-bin
+	pkgdesc = Bundled FFmpeg tools for OpenMV IDE
+	depends = openmv-ide-bin=5.1.0-2
