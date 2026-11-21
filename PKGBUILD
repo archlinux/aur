@@ -121,7 +121,7 @@ pkgname=(
   'omarchy-broadcast-onnx-git'
 )
 _pkgname=omarchy-broadcast
-pkgver=0.57.5
+pkgver=0.57.6
 pkgrel=1
 # The module ABI (<major>.<minor>) that the core provides and that the module
 # packages require. It must equal OBC_MODULE_ABI_MAJOR.OBC_MODULE_ABI_MINOR in
