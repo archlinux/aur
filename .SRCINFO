@@ -1,0 +1,22 @@
+pkgbase = corsa
+	pkgdesc = Decentralized end-to-end encrypted messenger built on the Gazeta protocol
+	pkgver = 2.6.72
+	pkgrel = 1
+	url = https://github.com/piratecash/corsa
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.27.4
+	depends = libglvnd
+	depends = mesa
+	depends = wayland
+	depends = libx11
+	depends = libxcb
+	depends = libxcursor
+	depends = libxfixes
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	optdepends = alsa-lib: notification sounds
+	source = corsa-2.6.72.tar.gz::https://github.com/piratecash/corsa/archive/refs/tags/v2.6.72.tar.gz
+	sha256sums = 609b28c3e83279620ebff56e9e65c6225895da02f6428eb4c779a5128d6b732f
+
+pkgname = corsa
