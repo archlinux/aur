@@ -1,23 +1,25 @@
 # xdg-desktop-portal-gtk4-printfix-bin
 
-Arch Linux `-bin` package for [xdg-desktop-portal-gtk4](https://github.com/JohnRTitor/xdg-desktop-portal-gtk4)
-1.6.6 with the Print portal fixes from `print-single-call.patch`, which is
-kept in this repository.
+Arch Linux `-bin` package for [xdg-desktop-portal-gtk4](https://github.com/JohnRTitor/xdg-desktop-portal-gtk4),
+prebuilt from upstream `master`.
 
-The release tarball installs a binary built from upstream v1.6.6 with that
-patch applied, plus the portal, D-Bus, systemd and desktop files.
+The Print portal fixes this package used to carry as `print-single-call.patch`
+are upstream since commit `3461d7e` ("print: support single-call Print and fix
+fd lifetime"), so the binary is now built straight from upstream: master
+snapshot `9fc147b`, versioned `1.6.6.r3.g9fc147b`. The package can be dropped
+once upstream ships a release with the fix and a stable source is available.
 
 ## Rebuild the binary
 
 ```sh
-curl -LO https://github.com/JohnRTitor/xdg-desktop-portal-gtk4/releases/download/v1.6.6/xdg-desktop-portal-gtk4-1.6.6.tar.gz
-tar -xzf xdg-desktop-portal-gtk4-1.6.6.tar.gz
-cd xdg-desktop-portal-gtk4-1.6.6
-patch -Np1 -i ../print-single-call.patch
+curl -LO https://github.com/JohnRTitor/xdg-desktop-portal-gtk4/archive/9fc147b.tar.gz
+tar -xzf 9fc147b.tar.gz
+cd xdg-desktop-portal-gtk4-9fc147b5f47f30b2086fe11e05d0f9584c42941c
 cargo build --release --locked
 strip target/release/xdg-desktop-portal-gtk4
 ```
 
 Stage the binary together with `gtk4.portal`, the D-Bus service, the systemd
-user unit, the desktop file and `LICENSE`, then attach the tarball to a GitLab
+user unit, the desktop file and `LICENSE` (`make install DESTDIR=… PREFIX=/usr
+LIBEXECDIR=/usr/lib` produces them), then attach the tarball to a GitLab
 release of this project. The `PKGBUILD` downloads that asset.

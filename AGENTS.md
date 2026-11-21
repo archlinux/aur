@@ -1,15 +1,14 @@
 # AGENTS.md
 
-AUR `-bin` package for xdg-desktop-portal-gtk4 1.6.6 with the Print portal
-fixes in `print-single-call.patch`. The package installs a prebuilt binary and
-does not compile anything.
+AUR `-bin` package for xdg-desktop-portal-gtk4, prebuilt from upstream `master`.
+The Print portal fixes that used to live in `print-single-call.patch` are
+upstream since commit `3461d7e`, so the recipe builds the upstream tree as is.
+The package installs a prebuilt binary and does not compile anything.
 
 ## Files
 
 - `PKGBUILD` — `-bin` recipe; downloads the GitLab release asset.
 - `.SRCINFO` — generated from the PKGBUILD; never edit it by hand.
-- `print-single-call.patch` — source of the Print fixes; keep it with the
-  binary it produced.
 - `README.md` — rebuild instructions; keep it in English.
 - Ignored: `src/`, `pkg/`, `*.pkg.tar.zst`, `*.tar.gz`, `*.log`.
 
@@ -30,15 +29,16 @@ checksum does not match the asset.
 
 The binary is built outside this repository:
 
-1. Download upstream `vX.Y.Z`, apply `print-single-call.patch`, then
+1. Download the upstream snapshot (tag or master commit), then
    `cargo build --release --locked`.
 2. Stage the binary, `gtk4.portal`, the D-Bus service, the systemd user unit,
    the desktop file and `LICENSE`; create the tarball.
-3. Create a GitLab release `vX.Y.Z` and attach the tarball as an asset.
+3. Create a GitLab release for the new `pkgver` and attach the tarball as an
+   asset.
 4. Update `pkgver`, `source` and `sha256sums`, regenerate `.SRCINFO`, then
    `makepkg -f`.
-5. If upstream changed, refresh `print-single-call.patch` or drop it once the
-   fixes are upstream.
+5. If upstream ships a release with the Print fix, prefer it as the source and
+   consider dropping this package.
 
 The release asset URL lives under
 `https://gitlab.com/nisby/xdg-desktop-portal-gtk4-printfix-bin/-/releases/`.
@@ -56,9 +56,8 @@ changes.
 
 ## Gotchas
 
-- A `-bin` package with a locally built patched binary is not strictly
-  AUR-compliant and can be removed; the patch and rebuild notes keep it
-  traceable.
+- A `-bin` package with a locally built binary is not strictly AUR-compliant
+  and can be removed; the rebuild notes keep it traceable.
 - `provides`/`conflicts` cover `xdg-desktop-portal-gtk4`, `-git` and the old
   `-printfix` source package.
 - `PKGBUILD.bak` in this directory is a local backup: leave it untracked.
