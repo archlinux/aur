@@ -1,6 +1,6 @@
 # Maintainer: H3mul <phil.d324@gmail.com>
 pkgname=claude-mem-sync-git
-pkgver=1.1.9.r142.g5bb37b2
+pkgver=1.1.9.r148.g6019a4a
 pkgrel=1
 pkgdesc='Team memory sharing for claude-mem - H3mul fork with SSH remote support (builds from git)'
 arch=('x86_64' 'aarch64')
