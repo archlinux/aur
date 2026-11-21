@@ -1,6 +1,6 @@
 pkgbase = waybar-module-pacman-updates-git
 	pkgdesc = Waybar module for Arch to show system updates available
-	pkgver = 0.2.14
+	pkgver = 0.2.15
 	pkgrel = 1
 	url = https://github.com/coffebar/waybar-module-pacman-updates
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = waybar-module-pacman-updates-git
 	depends = curl
 	depends = openssl
 	options = !lto
-	source = git+https://github.com/coffebar/waybar-module-pacman-updates#commit=bc77269
+	source = git+https://github.com/coffebar/waybar-module-pacman-updates#commit=4edac81b8976b4fc5e0be8b28a35d10b7c649c43
 	sha256sums = SKIP
 
 pkgname = waybar-module-pacman-updates-git
