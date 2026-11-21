@@ -6,8 +6,8 @@
 # _reltag carries the real GitHub tag because pkgver must be
 # makepkg-safe (no hyphens), while tags use hyphens (v0.2.0-preview2).
 pkgname=horneroctl-bin
-_reltag=horneroctl-v0.2.0-preview49
-pkgver=0.2.0_preview49
+_reltag=horneroctl-v0.2.0-preview50
+pkgver=0.2.0_preview50
 pkgrel=1
 pkgdesc='HorneroOS system CLI (native binary)'
 arch=('x86_64' 'aarch64')
@@ -50,8 +50,8 @@ source_aarch64=(
 # weaken signature verification to work around a missing key; see
 # docs/RELEASE_SIGNING.md.
 validpgpkeys=('FCFBEE43925AB5429362278AE59EAB44AA2498DC')
-sha256sums_x86_64=('125f40c0bd5e20616f211b2db6b107779688d6b03efb6afe7ff9c0b7c8041deb' 'a20af2d553fe5bbe2d7de7d7cd6fe204653e965287200bf3323e4fea50f09152')
-sha256sums_aarch64=('63425e75f06bcf04d203e10fec4eb0c8fe75ada6ba02d009cdba874ceb6fd18a' 'f36561479e468ec627ca17e4002316e1fe39d814ef8cbec9dfe1e43d5cdaef5b')
+sha256sums_x86_64=('95fea488b74bb610a1fe322bce4b63c025e65096b60e23af71a0ae3b338dd7e9' '998d5323f207a7e1178c84ea252f78018e9be262dd7cb6ee879e7a4a800bb859')
+sha256sums_aarch64=('9e2a88f2fd3a07acf3285fe5755cb0eb3ddac902c271dc6de73f0db3beedf0cb' 'a433846854e8b977d539aa4f780760e782d5770d7e02a98b0a59261b8e4e7151')
 
 package() {
   install -Dm755 "${srcdir}/horneroctl-${pkgver}" "${pkgdir}/usr/bin/horneroctl"
