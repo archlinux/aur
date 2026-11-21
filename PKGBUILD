@@ -1,12 +1,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ma35d1-nuwriter-git
-pkgver=1.08.r4.g6a3051a
-pkgrel=2
+pkgver=1.08_20260515.r11.g3a0c5f8
+pkgrel=1
 epoch=
 pkgdesc="MA35D1 NuWriter"
 arch=($CARCH)
-url="https://gitee.com/OpenNuvoton/MA35D1_NuWriter"
+url="https://github.com/OpenNuvoton/MA35D1_NuWriter"
 license=('GPL-3.0-only')
 groups=()
 depends=(
@@ -14,7 +14,13 @@ depends=(
     'python-pyusb' 
     'python' 
     'python-crcmod' 
-    'python-pyqt5')
+    'python-ecdsa'
+    'python-pyqt5'
+    'python-pycryptodome'
+    'python-python-pkcs11'
+    'python-requests'
+    'python-tqdm'
+)
 makedepends=("git")
 checkdepends=()
 optdepends=()
@@ -29,7 +35,7 @@ source=("${pkgname%-git}::git+${url}.git"
     "${pkgname}.install")
 noextract=()
 sha256sums=('SKIP'
-    '940f09c5609e8a78c600078ddab945c403216c186601830c128a854757de8a89')
+            '940f09c5609e8a78c600078ddab945c403216c186601830c128a854757de8a89')
 #validpgpkeys=()
 
 pkgver() {
@@ -41,11 +47,18 @@ pkgver() {
     )
 }
 
+prepare() {
+    git -C "${srcdir}/${pkgname%-git}" clean -dfx
+}
+
 package() {
     cd "${srcdir}/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}/gui/images/NuWriter.ico" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.ico"
+    install -Dm644 gui/images/NuWriter.ico "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.ico"
     cp -ra ${srcdir}/${pkgname%-git}/ "${pkgdir}/usr/share/"
-    rm -rf "${pkgdir}/usr/share/${pkgname%-git}/.git"
+    cd "${pkgdir}/usr/share/${pkgname%-git}/"
+    rm -rf .git
+    rm -rf EXE
+    rm -rf MacApp
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" <<EOF
 #!/bin/bash
