@@ -37,14 +37,14 @@ post_install() {
   groupadd -f flutter
 
   for i in "${_groups[@]}"; do
-    if grep -q "$i" /etc/passwd > /dev/null; then
+    if grep -Fq "$i" /etc/group > /dev/null; then
       setfacl -R -m "g:$i:rwX" /opt/flutter
     fi
   done
 
   # clean chroot/container builders
   for i in "${_builders[@]}"; do
-    if grep -q "$i" /etc/passwd > /dev/null; then
+    if grep -Fq "$i" /etc/passwd > /dev/null; then
       setfacl -R -m "u:$i:rwX" /opt/flutter
     fi
   done
@@ -78,26 +78,10 @@ pre_upgrade() {
 }
 
 pre_remove() {
-  if [ ! -e opt/flutter ]; then
-    return
-  fi
-
-  # remove extra permissions
-  for i in ${_builders[@]} ${_groups[@]}; do
-    if grep -q "group:$i" <<< $(getfacl -ac /opt/flutter 2> /dev/null); then
-      setfacl -R -x "g:$i" /opt/flutter
-    fi
-    if grep -q "user:$i" <<< $(getfacl -ac /opt/flutter 2> /dev/null); then
-      setfacl -R -x "u:$i" /opt/flutter
-    fi
-  done
-
-  chmod -R u+rwX,go+rX,go-w opt/flutter
+  rm -rf opt/flutter &> /dev/null
 }
 
 post_remove() {
-  rm -rf opt/flutter
-
   msg1 "If no longer needed, remove the 'flutter' group:"
   echo
   msg2 "        sudo groupdel flutter"

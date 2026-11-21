@@ -3,7 +3,7 @@
 _pkgname="flutter"
 pkgname="$_pkgname-bin"
 pkgver=3.50.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform widget toolkit for Dart (monolithic)"
 arch=("x86_64")
 url="https://github.com/flutter/flutter"
@@ -121,6 +121,7 @@ if ! grep -q '/usr/bin' <<< "$(which dart)"; then
 fi
 END
 
-  # permissions
+  # fix ownership and permissions
+  chown -R 0:0 "$pkgdir"
   chmod -R u+rwX,go+rX,go-w "$pkgdir"
 }
