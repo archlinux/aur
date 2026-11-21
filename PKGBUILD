@@ -1,5 +1,5 @@
 pkgname=samba-util-bin
-pkgver=4.6.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc="A simple and modern GUI for managing Samba."
 arch=('x86_64')
@@ -21,9 +21,9 @@ optdepends=(
 
 options=('!debug' '!strip')
 
-source=("https://github.com/mijocecr/samba-util/releases/download/samba-util_v4.6.0/SAMBA-Util.tar.gz")
+source=("https://github.com/mijocecr/samba-util/releases/download/samba-util_v4.6.1/SAMBA-Util.tar.gz")
 
-sha256sums=('27f5c9cb7f1597bee29b5cfc5998c873ac71a5d5fb51b328d37fddc080861d74')
+sha256sums=('c19f45881cf3989871a0ee5555c0bf0b2897588d5d8af2ad1ff17f7063a8cd91')
 
 package() {
   # Create the destination tree under /usr/lib
