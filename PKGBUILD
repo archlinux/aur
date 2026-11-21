@@ -1,12 +1,12 @@
 # rootapp-bin
 pkgname=rootapp-bin
 pkgver=0.9.164
-pkgrel=5
+pkgrel=7
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
 license=('LicenseRef-proprietary')
-# deps payload 2026-11-20
+# deps payload 2026-11-21
 depends=('alsa-lib'
          'at-spi2-core'
          'ca-certificates-mozilla'
@@ -38,7 +38,6 @@ depends=('alsa-lib'
          'libxi'
          'libxinerama'
          'libxkbcommon'
-         'libxkbcommon-x11'
          'libxrandr'
          'libxss'
          'libxt'
@@ -63,11 +62,19 @@ optdepends=('bluez: org.bluez Bluetooth service (bluetooth.service) for Web Blue
             'xdg-desktop-portal-kde: file-picker and screen-share backend on KDE Plasma'
             'xdg-desktop-portal-wlr: screen-share backend on wlroots compositors'
             'xdg-desktop-portal-hyprland: window and region screen share backend on Hyprland (the app registers global hotkeys through X11 XRecord in libuiohook, so they stay unavailable on Wayland)'
+            'xdg-desktop-portal-cosmic: xdg-desktop-portal backend on the COSMIC desktop environment'
+            'xdg-desktop-portal-dde: xdg-desktop-portal backend on the Deepin desktop environment'
+            'xdg-desktop-portal-lxqt: xdg-desktop-portal backend using Qt, KDE Frameworks and libfm-qt'
+            'xdg-desktop-portal-pantheon: xdg-desktop-portal backend on Pantheon'
+            'xdg-desktop-portal-phosh: xdg-desktop-portal backend using GTK, GNOME and Phosh'
+            'xdg-desktop-portal-wlcom: xdg-desktop-portal backend for the Kylin Wayland compositor'
+            'xdg-desktop-portal-xapp: xdg-desktop-portal backend using GTK and Cinnamon, MATE and Xfce4 infrastructure'
             'pipewire: PipeWire daemon that feeds the portal ScreenCast capture'
             'wireplumber: PipeWire session and policy manager for voice and audio devices'
             'pipewire-pulse: PulseAudio-compatible server for voice and audio devices'
             'pipewire-alsa: ALSA client bridge to the PipeWire audio server for voice and audio devices'
             'dunst: org.freedesktop.Notifications daemon for sessions without one'
+            'upower: org.freedesktop.UPower service for the Chromium battery-status API (org.freedesktop.UPower.Device IsPresent/Percentage)'
             'gnome-keyring: org.freedesktop.secrets service for session-token and password storage on GNOME and GTK desktops'
             'gnome-shell-extension-appindicator: org.kde.StatusNotifierItem tray host on GNOME'
             'plasma-desktop: org.kde.StatusNotifierWatcher tray host on KDE Plasma'
@@ -77,7 +84,7 @@ optdepends=('bluez: org.bluez Bluetooth service (bluetooth.service) for Web Blue
             'snixembed: StatusNotifierItem-to-XEmbed bridge for trays on minimal X11 sessions'
             'waybar: org.kde.StatusNotifierWatcher tray host on wlroots compositors'
             'speech-dispatcher: text-to-speech service for the Chromium libspeechd.so.2 probe (pulls libspeechd)'
-            'libvlc: LibVLC runtime probed by the Root player (libvlc.so.5, libvlccore.so.9)'
+            'libvlc: LibVLC runtime for the Root player (P/Invoke module libvlc, resolved through /usr/lib/libvlc.so)'
             'vlc-plugin-ffmpeg: video and stream codecs for LibVLC playback (pulls libvlc)'
             'vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio (pulls libvlc)'
             'curl: crash report uploads for the bundled Chromium crash handler (chrome_crashpad_handler dlopens libcurl.so.4)'
