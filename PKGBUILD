@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=python-claude-agent-sdk
 _name=${pkgname#python-}
-pkgver=0.2.186
+pkgver=0.2.187
 pkgrel=1
 pkgdesc="Python SDK for Claude Code"
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   'python-opentelemetry-api: OpenTelemetry propagation support'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('16cb01af8309d371aae7c214b69d1a85f283a5aed06fc16054c1bc356c92f7a3')
+sha256sums=('40558f133cb57286989521d6b4e89afb1fb9a853268d009716d35d7a9580ae21')
 
 build() {
   cd "${_name//-/_}-${pkgver}"
