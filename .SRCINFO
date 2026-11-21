@@ -1,6 +1,6 @@
 pkgbase = voquill
 	pkgdesc = AI voice dictation with local Whisper transcription
-	pkgver = 0.0.656
+	pkgver = 0.0.657
 	pkgrel = 1
 	url = https://github.com/josiahsrc/voquill
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = voquill
 	provides = voquill-gpu
 	conflicts = voquill-gpu
 	options = !debug
-	source = voquill-desktop_0.0.656_amd64.deb::https://github.com/josiahsrc/voquill/releases/download/desktop-v0.0.656/voquill-desktop_0.0.656_amd64.deb
-	sha256sums = bb2e915b944081725d5740e262965823e1071f5863f3bb75e82f71c17290d443
+	source = voquill-desktop_0.0.657_amd64.deb::https://github.com/josiahsrc/voquill/releases/download/desktop-v0.0.657/voquill-desktop_0.0.657_amd64.deb
+	sha256sums = 0e8b2441a2e85dc3df7ede2295a9d5f5513d5208c2c29776f9da7dfdbfad1231
 
 pkgname = voquill
