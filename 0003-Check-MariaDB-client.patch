@@ -1,0 +1,14 @@
+diff --git a/meson.build b/meson.build
+index 34614641b..86ed5624c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -86,7 +86,7 @@ graphviz_dep = dependency('libgvc', required : false)
+ libxslt_dep = dependency('libxslt', required: false)
+ jsonglib_dep = dependency('json-glib-1.0',required : false)
+ postgres_dep = dependency ('libpq', required: false)
+-mysql_dep = dependency ('mysqlclient', required: false)
++mysql_dep = dependency (['mysqlclient', 'mariadb'], required: false)
+ mysql_args = []
+ if mysql_dep.found ()
+ if mysql_dep.version ().version_compare ('>21.0.0')
+
