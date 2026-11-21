@@ -1,0 +1,18 @@
+pkgbase = python-hatch-native
+	pkgdesc = Hatch plugin for Rust builds
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://pypi.org/project/hatch-rs/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-hatchling
+	depends = python-packaging
+	depends = python-pydantic
+	source = https://files.pythonhosted.org/packages/source/h/hatch_native/hatch_native-0.1.0.tar.gz
+	sha256sums = a75a8473336caa1440e40ffdd80a9390910c953ba38bf0a7b875fedf6ab69910
+
+pkgname = python-hatch-native
