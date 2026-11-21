@@ -1,8 +1,8 @@
 # Maintainer: Monjaris <ziyanovruzlu750@gmail.com>
 pkgname=raylib-wayland-git
 _pkgname=raylib
-pkgver=6.0.r249.g9ef6850
-pkgrel=6
+pkgver=6.2.r129.ga6b2af8
+pkgrel=1
 pkgdesc="Optimized Wayland build for simple and easy-to-use graphics library raylib"
 arch=('x86_64' 'aarch64')
 url="https://www.raylib.com/"
