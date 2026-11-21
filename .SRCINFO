@@ -1,0 +1,22 @@
+pkgbase = openmolcas
+	pkgdesc = Multiconfigurational quantum chemistry package
+	pkgver = 26.10
+	pkgrel = 1
+	url = https://gitlab.com/Molcas/OpenMolcas
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = cmake
+	makedepends = gcc-fortran
+	makedepends = git
+	depends = hdf5
+	depends = openblas64
+	depends = python
+	depends = python-pyparsing
+	depends = libxc
+	optdepends = python-h5py: reading HDF5 output from Python
+	optdepends = python-lxml: input validation in pymolcas
+	options = !lto
+	source = git+https://gitlab.com/Molcas/OpenMolcas.git#tag=v26.10
+	sha512sums = bca294db7f6bba937e8ff48216d53c2345834add8394c2db717a0f303b214e35e0942b0e3368fc54c6576ced003d5de4cadc8df88b6474335a8ff3504e58bbc4
+
+pkgname = openmolcas
