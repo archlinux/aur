@@ -1,5 +1,5 @@
 pkgname=md-viewer-git
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=2
 pkgdesc="Fast, lightweight markdown viewer with LaTeX math, mermaid diagrams, tabs, file explorer and live reload"
 arch=('x86_64')
@@ -9,8 +9,6 @@ depends=(
     'gcc-libs'
     'libxcb'
     'libxkbcommon'
-    'openssl'
-    'gtk3'
     'fontconfig'
     'dbus'
 )
