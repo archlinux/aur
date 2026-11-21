@@ -1,0 +1,7 @@
+# Keep PKGBUILD and .SRCINFO tracked in the separate AUR repository.
+/src/
+/pkg/
+/*.pkg.tar.*
+/*.src.tar.*
+/*.log
+/goatak-setup-archbased/
