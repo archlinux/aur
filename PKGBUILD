@@ -1,7 +1,7 @@
 # Maintainer: sphekes <sphekes@qq.com>
 
 pkgname=openidea-appimage
-pkgver=0.1.48
+pkgver=0.1.50
 pkgrel=1
 pkgdesc='Open-source IntelliJ IDEA-style IDE rebuilt in Rust (AppImage)'
 arch=('x86_64' 'aarch64')
@@ -47,13 +47,13 @@ sha256sums=('164afa76e861e7be17ec716f60e1d8a81f749cd130c3787515d6fbe07c9521a4'
             '0e6e92b1c9bb5fdf32f6073ad79ac9828462974a75e6609abf9d74512634e16a'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
             '682a1ac37ab5a629459e66f21e5eb9f392ea74c886e09d6f5042fc1d49194bda'
-            '752c0f13a38b06108ae2e4d8e21907ad66c80beb860cc588776f2fef72749f36'
+            'd07c7724ca90cd3bed4f1763b962c48f830862e588b930bac4cac6270d4e33bf'
             '250b9253554760a7e003fc360d452b407f00d8993c76d96c9ff9397607be4aeb'
             '2a7e8d8ae9e8facc84818546ae2a8d83aec5e9c80a675ff789acd1c338b53b3d'
             '6245ecd81789d113a600fa0e4f5f503e6d1b4f425860f6047dc945560dfcf13c'
             '05c6130cda97e7600ca91427a41e8a065efcf82365fc0293e7de80faec494c07')
-sha256sums_x86_64=('0d47ca7e6e45fd510387e241af896fe541d8f4c443041dff4851c6e76010a601')
-sha256sums_aarch64=('3f8ae102e5c85fa752a2a0a6ba2bf58a0f897b65146380507004a097e844af08')
+sha256sums_x86_64=('b7ea6afe46c9ee0c5b0ba95aa18a6a1f2d49f9a80b1245777f0e90bd7983198f')
+sha256sums_aarch64=('dda92d6aa6ffa8814f904da2969b5239efc504c066cfbea7c3f24d7c4afc89e5')
 source_x86_64=("${url}/releases/download/v${pkgver}/OpenIDEA_${pkgver}_amd64.AppImage")
 source_aarch64=("${url}/releases/download/v${pkgver}/OpenIDEA_${pkgver}_aarch64.AppImage")
 noextract=("OpenIDEA_${pkgver}_amd64.AppImage" "OpenIDEA_${pkgver}_aarch64.AppImage")
