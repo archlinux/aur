@@ -1,6 +1,6 @@
 pkgbase = arf
 	pkgdesc = A modern R console
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/eitsupi/arf
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = arf
 	conflicts = arf-bin
 	options = !lto
 	options = !debug
-	source = arf-0.7.1.tar.gz::https://github.com/eitsupi/arf/archive/v0.7.1.tar.gz
-	sha512sums = ec5a8ede7ffd8c09f20abe4d469c804d2b2b5dcdb9de9bf4137bce8f8bd1a2b588b7ebd3410df26c36cee7d6360a7af068a97b0857b897502d7d75f8ecb8dda7
+	source = arf-0.7.2.tar.gz::https://github.com/eitsupi/arf/archive/v0.7.2.tar.gz
+	sha512sums = 6d7e194d6b12774b2f97d26eb6ee0dcedf9d01f2481f6eadfa43447eb285e174ad3d8b9ad8f736c35190e368a6af28c16275e65f85d2b3587d8b310d8a6993a5
 
 pkgname = arf
