@@ -1,6 +1,6 @@
 pkgbase = luxtide-git
 	pkgdesc = Automatic screen brightness that follows the sun, for DDC/CI monitors and laptop panels (development version)
-	pkgver = 2.0.0.r21.g05160c6
+	pkgver = 2.0.0.r22.g7e8bc19
 	pkgrel = 1
 	url = https://github.com/MikolajQ/luxtide
 	install = luxtide.install
