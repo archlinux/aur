@@ -3,29 +3,21 @@
 # Contributor: syntheit <daniel@matv.io>
 
 pkgname=tagspaces
-pkgver=6.14.3
+pkgver=6.15.1
 pkgrel=1
 pkgdesc="Offline file organizer and browser with tagging support"
 arch=('any')
 url="https://www.tagspaces.org"
 license=('AGPL-3.0-or-later')
-_electron=electron44
+_electron=electron45
 depends=('bash' "${_electron}")
-makedepends=('gendesk' 'git' 'libxcrypt-compat' 'nvm')
+makedepends=('gendesk' 'git' 'libxcrypt-compat' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tagspaces/tagspaces/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('8327d3691d43d4a332cbd1da231787254838ac6c0381af17a6a5da2c7b671933'
+sha256sums=('0e14967ae94f72c9ded902f5a0edc758bdd7681ac27ce14a595cde5607da7588'
             '3ece307810a9e0acedb73bb422a58233b9d0933ebfd125db6064b5ea4723a60f')
 
-_ensure_local_nvm() {
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
-
 prepare() {
-    _ensure_local_nvm
-
     gendesk -f -n \
         --pkgname "${pkgname}" \
         --pkgdesc "${pkgdesc}" \
@@ -40,13 +32,9 @@ prepare() {
 
     # A key is required in order for the main application to communicate with the web server
     echo "KEY=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 128)" >release/app/.env
-
-    nvm install 22
 }
 
 build() {
-    _ensure_local_nvm
-
     cd "${pkgname}-${pkgver}"
     npm install
     npm run package-linux -- --dir \
