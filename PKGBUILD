@@ -40,10 +40,11 @@ prepare() {
   rm -rf "${srcdir}/etc/init.d"
   rm -rf "${srcdir}/etc/pam.d"
 
-  # Upstream probes /usr/lib/xorg/Xorg and otherwise falls back to "Xorg" from
-  # PATH, which on Arch is the suid wrapper /usr/bin/Xorg; the wrapper refuses
-  # to start the server for non-console users, so the CRD systemd user session
-  # would never get a display.
+  # Upstream probes /usr/lib/xorg/Xorg, which this xorg-server no longer
+  # ships, and otherwise falls back to "Xorg" from PATH — on Arch a script
+  # that execs the setuid /usr/lib/Xorg.wrap, which refuses to start the
+  # server for non-console users, so the CRD systemd user session would never
+  # get a display. Point it at the real binary instead.
   patch -Np1 -i "${srcdir}/xorg-binary-path.patch"
 }
 
