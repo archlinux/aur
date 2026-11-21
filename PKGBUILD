@@ -15,5 +15,4 @@ sha256sums_aarch64=(88cb762c3c8eb56b46a2d8d6feab9c0858655192143fc164874229499246
 package() {
     install -D -m755 -t ${pkgdir}/usr/bin               ${srcdir}/anytls-{client,server}
     install -D -m644 -t ${pkgdir}/usr/share/doc/anytls  ${srcdir}/readme.md
-    ls ${pkgdir}/usr
 }
