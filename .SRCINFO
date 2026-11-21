@@ -1,0 +1,18 @@
+pkgbase = rmx
+	pkgdesc = A faster rm written in Rust: parallel unlink, rm-compatible flags, never follows symlinks
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/ismoilovdevml/rmx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	conflicts = rmx-bin
+	conflicts = rmx-fast-bin
+	options = !debug
+	source = rmx-0.9.0.tar.gz::https://github.com/ismoilovdevml/rmx/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 3656396da1278d746661e9c6979e4be96bf36efef0049823c0e3318d252ae118
+
+pkgname = rmx
