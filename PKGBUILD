@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=crossbow-bin
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="Proxy client for mihomo with a Tauri desktop interface"
 arch=('x86_64')
@@ -34,7 +34,7 @@ source_x86_64=(
     "crossbow-128x128.png::${_icons}/128x128.png"
     "crossbow-512x512.png::${_icons}/icon-source.png"
 )
-sha256sums_x86_64=('4165fc0206a68983bd8a5902ab6129f68bb545b47413bfe066cecd021d73efde'
+sha256sums_x86_64=('e22637420a24c50617e4677660b7a8129252ece3b93424d990932aa3c2ccf576'
                    'f2618a6eea241e5180c4ca110f36c4602cb690680bbfbf9dfe2497a695002830'
                    'c340471988c04135dfa74696d623f7f30f9f64c3e11b47022fe67ddcfec24679')
 
