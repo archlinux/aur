@@ -1,48 +1,45 @@
 # Maintainer: vn158 <vn158 at seznam dot cz>
 
 pkgname=fiosign
-pkgver=5.0.0
+pkgver=6.0.1
 pkgrel=1
-pkgdesc='Fio bank signer (signing tool).'
-arch=('i686' 'x86_64')
+pkgdesc='Fio signer (bank signing tool).'
+arch=('any')
 url='http://www.fio.cz'
-license=('custom:free')
+license=('LicenseRef-FioSigner')
 groups=()
-depends=('java-runtime')
+depends=('java-runtime' 'hicolor-icon-theme')
 makedepends=('imagemagick')
 optdepends=()
 provides=()
 conflicts=()
 replaces=()
 backup=()
-options=('!strip')
+options=('!strip' '!debug')
 
-source=( ${url}/apps/signer_client.jar ${url}/apps/bcprov-jdk16-146.jar ${url}/docs/web_pics/logo_P_662_C_pod_sebou.png ${pkgname}.desktop ${pkgname})
-noextract=(signer_client.jar bcprov-jdk16-146.jar)
+source=(${url}/apps/signer_client.jar ${url}/docs/web_pics/logo_P_662_C_pod_sebou.png LICENSE ${pkgname}.desktop ${pkgname})
+noextract=(signer_client.jar)
 
-md5sums=('b53ab4b453117dbdf8bf18a4566c03ca'
-         '881ce7b0e75a764892eafa63af7e4d38'
-         '8c547b7238959ceec1289a58587df35a'
-         '367bbe660b09aff0c709311f97bd5674'
-         '96a46c0a1737038982eec27df09fb73f')
-sha1sums=('2e8c3c618b18f47570c1bc187edcc730bf313906'
-          'ce091790943599535cbb4de8ede84535b0c1260c'
-          'de3bae7de31e388450715c03aa4777a719254c6f'
-          '3c59fc5ef1fd226e148f909c0b21c3c66bdc9cb9'
-          '970199b7757ceb43ed04446c729d84da4131e492')
+sha256sums=('d78708e2bdcbd3fc84b849c7e14fe8bafdccab1efc919d19ca659235fdd32291'
+            'cc2cc5d63f2094bd7ae2c5a068bc39feed3f14bd2be778b2a7fd66d30aa74a0e'
+            '3c918e3d0a096f48e6c439b9d69d2ec48882417af6a1e9c2ee6c03ee8a617a6f'
+            '1e5edbd1705e28847f6dce23d15d8f094172374f9edb63c18a300b8c4612210d'
+            'a898bad70075a8d65e532501c08bd1de133e862fb584c2a0e73756ccdd167254')
 
 build() {
   for _size in 256 128 64 48 32 24 16 ; do
-    convert logo_P_662_C_pod_sebou.png -trim -resize ${_size}x -background transparent -extent ${_size}x${_size} +repage -strip \
+    magick logo_P_662_C_pod_sebou.png -trim -resize ${_size}x \
+    -background transparent -extent ${_size}x${_size} +repage -strip \
     -define png:compression-level=9 fiosign-${_size}.png
   done
 }
 
 package() {
-  #cd "$startdir"
   install -d -m755 ${pkgdir}/usr/share/${pkgname}
+  install -d -m755 ${pkgdir}/usr/share/licenses/${pkgname}
   install -d -m755 ${pkgdir}/usr/bin
-  install -m644 *.jar ${pkgdir}/usr/share/${pkgname}
+  install -m644 signer_client.jar ${pkgdir}/usr/share/${pkgname}
+  install -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
   install -m755 ${pkgname} ${pkgdir}/usr/bin
   for _size in 256 128 64 48 32 24 16 ; do
     install -m644 -D ${pkgname}-${_size}.png "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png"
