@@ -1,0 +1,115 @@
+# Record what a previous package version seeded, so an upgrade can tell a file
+# the user has edited from one that is still stock.
+seedmanifest=/var/lib/ferron/wwwroot.seed
+
+seedroot() {
+    local src=/usr/share/ferron/wwwroot
+    local dest=/var/www/ferron
+    [ -d "$src" ] || return 0
+    mkdir -p "$dest" "$(dirname "$seedmanifest")"
+    local f rel
+    : > "$seedmanifest"
+    for f in "$src"/*; do
+        rel=$(basename "$f")
+        cp -r "$f" "$dest/$rel"
+        if [ -f "$dest/$rel" ]; then
+            printf '%s  %s\n' "$(sha256sum "$dest/$rel" | cut -d' ' -f1)" "$rel" >> "$seedmanifest"
+        fi
+    done
+}
+
+# Refresh stock files on upgrade. A file is stock when its hash matches what the
+# previous package seeded; anything else is the user's and is left alone. Files
+# that disappeared are restored. Nothing is ever deleted.
+reseedroot() {
+    local src=/usr/share/ferron/wwwroot
+    local dest=/var/www/ferron
+    [ -d "$src" ] || return 0
+    mkdir -p "$dest" "$(dirname "$seedmanifest")"
+    local newmanifest="$seedmanifest.new"
+    : > "$newmanifest"
+    local f rel oldsum newsum
+    for f in "$src"/*; do
+        rel=$(basename "$f")
+        if [ -f "$f" ]; then
+            newsum=$(sha256sum "$f" | cut -d' ' -f1)
+            if [ ! -e "$dest/$rel" ]; then
+                cp "$f" "$dest/$rel"
+            else
+                oldsum=$(grep -E "  $rel\$" "$seedmanifest" 2>/dev/null | cut -d' ' -f1)
+                if [ -n "$oldsum" ] && [ "$oldsum" = "$(sha256sum "$dest/$rel" | cut -d' ' -f1)" ]; then
+                    cp "$f" "$dest/$rel"
+                fi
+            fi
+            printf '%s  %s\n' "$newsum" "$rel" >> "$newmanifest"
+        fi
+    done
+    mv "$newmanifest" "$seedmanifest"
+}
+
+fixperms() {
+    chown -R ferron:ferron /var/log/ferron /var/www/ferron /var/lib/ferron 2>/dev/null
+    find /var/log/ferron -type d -exec chmod 755 {} + 2>/dev/null
+    find /var/log/ferron -type f -exec chmod 644 {} + 2>/dev/null
+    find /var/www/ferron -type d -exec chmod 755 {} + 2>/dev/null
+    find /var/www/ferron -type f -exec chmod 644 {} + 2>/dev/null
+}
+
+restartservice() {
+    if systemctl is-active --quiet ferron; then
+        echo "==> Restarting ferron to apply the update"
+        systemctl restart ferron
+    fi
+}
+
+post_install() {
+    echo "==> Creating ferron user and group..."
+    systemd-sysusers
+    echo "==> Setting up directories and permissions..."
+    systemd-tmpfiles --create
+    if [ ! -e /etc/ferron/ferron.conf ]; then
+        install -Dm644 /usr/share/ferron/ferron.conf.default /etc/ferron/ferron.conf
+    fi
+    seedroot
+    fixperms
+    echo "==> Ferron is now installed. Start it with: systemctl start ferron"
+}
+
+post_upgrade() {
+    # 2.x /etc/ferron.kdl -> 3.x /etc/ferron/ferron.conf.
+    # 1.x YAML is a two-step path needing ferron-yaml2kdl, which only 2.x
+    # packages ship, so that case is left to ferron's own upgrade to handle first.
+    if [ -f /etc/ferron.kdl ] && [ ! -f /etc/ferron/ferron.conf ]; then
+        if command -v ferron-kdl2ferron >/dev/null 2>&1; then
+            echo "==> Detected 2.x /etc/ferron.kdl, converting to /etc/ferron/ferron.conf"
+            if ferron-kdl2ferron /etc/ferron.kdl /etc/ferron/ferron.conf.new; then
+                mv /etc/ferron.kdl /etc/ferron.kdl.bak
+                mv /etc/ferron/ferron.conf.new /etc/ferron/ferron.conf
+                echo "==> Conversion successful, backup at /etc/ferron.kdl.bak"
+            else
+                echo "==> WARNING: conversion failed, /etc/ferron/ferron.conf was not written"
+                rm -f /etc/ferron/ferron.conf.new
+            fi
+        else
+            echo "==> WARNING: ferron-kdl2ferron not found, cannot convert /etc/ferron.kdl"
+        fi
+    elif [ -f /etc/ferron.yaml ] && [ ! -f /etc/ferron/ferron.conf ]; then
+        echo "==> Detected legacy /etc/ferron.yaml"
+        echo "==> Install ferron (2.x) first to convert it, then re-run this upgrade"
+    fi
+    if [ ! -e /etc/ferron/ferron.conf ]; then
+        install -Dm644 /usr/share/ferron/ferron.conf.default /etc/ferron/ferron.conf
+    fi
+    reseedroot
+    fixperms
+    restartservice
+}
+
+post_remove() {
+    echo "==> Ferron configuration and data directories are preserved."
+    echo "==> Remove them manually if they are no longer needed:"
+    echo "    /etc/ferron/ferron.conf"
+    echo "    /var/www/ferron"
+    echo "    /var/log/ferron"
+    echo "    /var/lib/ferron"
+}
