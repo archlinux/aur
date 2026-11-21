@@ -12,3 +12,21 @@ pkgbase = restish
 	sha256sums = b80dfebc06288d8ce6ca1e83fb1b848e345958001d878220b9fa17ae702a7dc5
 
 pkgname = restish
+
+pkgname = restish-bulk
+	pkgdesc = Restish plugin for git-like bulk resource management
+	install = restish-plugin.install
+	depends = restish=2.3.0
+	depends = glibc
+
+pkgname = restish-csv
+	pkgdesc = Restish formatter plugin that renders responses as CSV
+	install = restish-plugin.install
+	depends = restish=2.3.0
+	depends = glibc
+
+pkgname = restish-mcp
+	pkgdesc = Restish plugin that exposes registered APIs as MCP tools
+	install = restish-plugin.install
+	depends = restish=2.3.0
+	depends = glibc

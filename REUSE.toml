@@ -4,6 +4,7 @@ version = 1
 path = [
     "PKGBUILD",
     ".SRCINFO",
+    "*.install",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"

@@ -1,0 +1,8 @@
+post_install() {
+  cat <<-'EOF'
+	==> Restish only loads plugins from its plugins dir (`restish doctor` shows it).
+	==> Enable per user with a symlink, which keeps up with upgrades:
+	==>   mkdir -p ~/.config/restish/plugins
+	==>   ln -s /usr/bin/restish-<plugin> ~/.config/restish/plugins/
+	EOF
+}
