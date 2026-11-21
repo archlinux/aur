@@ -2,7 +2,7 @@
 
 pkgname=bettbox-lite
 _pkgname=Bettbox
-pkgver=1.19.8
+pkgver=1.19.9
 pkgrel=1
 pkgdesc="A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core. (Lite build: no EasyTier/Tailscale/ZeroTier/fake-TCP/gVisor)"
 arch=('x86_64' 'aarch64')
@@ -29,14 +29,14 @@ depends=(
 )
 makedepends=('git' 'clang' 'cmake' 'ninja' 'go' 'rustup' 'fvm' 'patchelf')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz" "restart-bettbox.hook" "bettbox.desktop" "bettbox.install")
-sha256sums=('524ecaa3350f6b319919f79943337ffdbc90c39fcab2051a552b193ac047b14d'
+sha256sums=('bdda7e41b9e0331cebc6bef1a2c50b063d7272f2ff83343536ace89bd5c28017'
             '03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2'
             'd7b7bdb64b1aabcedc8092a1498d743fad66d34b7f592194f805d039004d3e0f'
             'c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b')
 install=bettbox.install
 prepare() {
 	cd "${_pkgname}-${pkgver}"
-	fvm use 3.47.7
+	fvm use 3.50.1
 	fvm flutter --disable-analytics
 	fvm flutter --no-version-check pub get
 }
