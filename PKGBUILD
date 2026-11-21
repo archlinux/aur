@@ -3,7 +3,7 @@
 _pkgauthor=sigoden
 _pkgname=argc
 pkgname=${_pkgname}-bin
-pkgver=1.24.0
+pkgver=1.25.0
 pkgrel=1
 pkgdesc="An elegant command-line argument parser"
 
@@ -26,12 +26,12 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arc
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch[0]}-unknown-linux-musl.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch[0]}-unknown-linux-musl.tar.gz")
 
-sha256sums=('1c89461c092e7a24758aa6e62ab5cdc605f61926109a54f24f99698ea68179d0'
+sha256sums=('7e9071908de2af3d8b037a9e99d7ffe6df7fd9268c46c89c54ffbc2de6dd397a'
             '5af431a6a9869052e2be4e71ccd731c7efe45dca47eaca84d4d1fb38f134cb79'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('92e2c30ef078e0a66855b5bdd389cefa7ac6ef4c1fe0b177f3f0bf639891aa72')
-sha256sums_i686=('92e2c30ef078e0a66855b5bdd389cefa7ac6ef4c1fe0b177f3f0bf639891aa72')
-sha256sums_aarch64=('92e2c30ef078e0a66855b5bdd389cefa7ac6ef4c1fe0b177f3f0bf639891aa72')
+sha256sums_x86_64=('cb31d8709a09d382928955ffa32aee0d6948ad771576b9f2c1bfc7a81319631e')
+sha256sums_i686=('cb31d8709a09d382928955ffa32aee0d6948ad771576b9f2c1bfc7a81319631e')
+sha256sums_aarch64=('cb31d8709a09d382928955ffa32aee0d6948ad771576b9f2c1bfc7a81319631e')
 
 
 prepare() {
