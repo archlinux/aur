@@ -1,0 +1,19 @@
+pkgbase = wpatui-git
+	pkgdesc = Terminal front end for wpa_supplicant (development version)
+	pkgver = 0.1.0.r1.gd782f8f
+	pkgrel = 1
+	url = https://github.com/AuthenticSm1les/wpatui
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = wpa_supplicant
+	provides = wpatui
+	conflicts = wpatui
+	source = git+https://github.com/AuthenticSm1les/wpatui.git
+	sha256sums = SKIP
+
+pkgname = wpatui-git
