@@ -1,6 +1,6 @@
 pkgbase = libexecinfo
 	pkgdesc = BSD-licensed clone of backtrace facility found in GNU libc
-	pkgver = 1.1.0.25
+	pkgver = 1.1.0.27
 	pkgrel = 1
 	url = https://github.com/fam007e/libexecinfo
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = libexecinfo
 	provides = libexecinfo.so
 	conflicts = libexecinfo-git
 	options = staticlibs
-	source = libexecinfo-1.1.0.25.tar.gz::https://github.com/fam007e/libexecinfo/releases/download/v1.1.0.25/libexecinfo-1.1.0.25.tar.gz
-	sha256sums = 4547e37b20f006626ed118999ef8e6a71bc98f9f561a9939287c35853e1e7b8f
+	source = libexecinfo-1.1.0.27.tar.gz::https://github.com/fam007e/libexecinfo/releases/download/v1.1.0.27/libexecinfo-1.1.0.27.tar.gz
+	sha256sums = 6527166b49a22039de69668c679e800addc139f2224be821698b740403d95c0e
 
 pkgname = libexecinfo

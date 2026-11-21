@@ -1,6 +1,6 @@
 # Maintainer: fam007e <faisalmoshiur@gmail.com>
 pkgname=libexecinfo
-pkgver=1.1.0.25
+pkgver=1.1.0.27
 pkgrel=1
 pkgdesc="BSD-licensed clone of backtrace facility found in GNU libc"
 # armv7h/aarch64 intentionally absent: GCC does not implement
@@ -22,9 +22,9 @@ options=('staticlibs')
 # sha256sum below would silently stop matching the moment a new release
 # is published, even though pkgver here hasn't changed.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fam007e/libexecinfo/releases/download/v$pkgver/libexecinfo-$pkgver.tar.gz")
-sha256sums=('4547e37b20f006626ed118999ef8e6a71bc98f9f561a9939287c35853e1e7b8f')
+sha256sums=('6527166b49a22039de69668c679e800addc139f2224be821698b740403d95c0e')
 
-# No prepare()/sed step: since libexecinfo 1.1.0.25 the Makefile
+# No prepare()/sed step: since 1.1.0.25 the Makefile
 # generates libexecinfo.pc directly from libexecinfo.pc.in with correct
 # PREFIX/LIBDIR/INCLUDEDIR substitution, so there is nothing for
 # makepkg to patch around.
