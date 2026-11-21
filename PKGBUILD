@@ -3,7 +3,8 @@
 #   makepkg --printsrcinfo > .SRCINFO
 
 pkgname=sharky-shell-bin
-pkgver=3.7.0
+pkgver=4.0.0_alpha
+_tag=4.0.0-alpha
 pkgrel=1
 pkgdesc="Unix-first interactive shell written in Rust (prebuilt binary, alpha)"
 arch=('x86_64')
@@ -13,11 +14,11 @@ provides=('sharky' 'sharky-shell')
 conflicts=('sharky' 'sharky-shell' 'sharky-shell-git')
 options=(!strip)
 source=(
-  "$url/releases/download/v$pkgver/sharky-x86_64-unknown-linux-musl.tar.gz"
-  "LICENSE::$url/raw/v$pkgver/LICENSE"
+  "$url/releases/download/v$_tag/sharky-x86_64-unknown-linux-musl.tar.gz"
+  "LICENSE::$url/raw/v$_tag/LICENSE"
 )
 sha256sums=(
-  '851951930b1952de054d590e930415325e086675aeb4a21784080f664fa94553'
+  'fa32994f2ecd39a767425d1696c2e5511eac9a4edc02ebb6ff9d5c1ddafd5b82'
   '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
 )
 
