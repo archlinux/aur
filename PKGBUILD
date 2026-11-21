@@ -13,7 +13,7 @@ conflicts=('signal-desktop-beta')
 _pkgver=8.37.0-beta.1
 pkgver=${_pkgver/-/}
 source=("https://updates.signal.org/desktop/apt/pool/s/signal-desktop-beta/signal-desktop-beta_${_pkgver}_amd64.deb")
-sha256sums=('5e30f6a084b215d72cf8270988d4c9b345796e9bfc62d24f00cf1fb07bf89904')
+sha256sums=('ed4f6fd68b43311d38f481c10c39cb53ff7955978d25d3eec24c89559f685ed3')
 
 package(){
   # Extract package data
