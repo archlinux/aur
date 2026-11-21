@@ -3,7 +3,7 @@
 # push-to-aur.sh replaces pkgver from the release tag before publication and
 # updpkgsums fills the checksum once that artifact is public.
 pkgname=opal-media-player-bin
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="Play everything — media player, universal search, torrent streaming, local AI (official binary)"
 arch=('x86_64')
@@ -30,8 +30,8 @@ source=(
     "https://github.com/debpalash/Opal/releases/download/v$pkgver/opal-$pkgver-linux-x86_64.tar.gz"
     "Opal-$pkgver.tar.gz::https://github.com/debpalash/Opal/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('6b30278c637671ed86ec4e33d0b52685f5aa8e1131b5d7c99852d4d92cc64527'
-            'd7628b814aec08143f4da562a58f813783d0dc6ce3bc48162574d83023ce5bd7')
+sha256sums=('97454e3be65ac106f149751086ed325a717b9251798673b4a309a18d26211b4e'
+            '71f59372c9de2f63b024eda54f097280916c6b46d280bce8095a7afb4cf65414')
 
 build() {
     # The wrapper owns the C++ ABI. Rebuild it against the Arch libtorrent
