@@ -1,53 +1,57 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 
 pkgname=kepubify
-pkgver=4.0.4
-pkgrel=2
-pkgdesc='Convert your ePubs into kepubs, with a easy-to-use command-line tool'
+pkgver=5.0.0
+pkgrel=1
+pkgdesc='Convert EPUBs into Kobo EPUBs using a command-line tool'
 arch=('x86_64')
 url='https://pgaskin.net/kepubify/'
 license=('MIT')
+depends=('glibc')
+makedepends=('go>=1.26.10')
 conflicts=('kepubify-bin')
-makedepends=('go')
-options=(!lto)
-source=("https://github.com/pgaskin/kepubify/archive/v$pkgver.tar.gz")
-sha256sums=('a3bf118a8e871b989358cb598746efd6ff4e304cba02fd2960fe35404a586ed5')
+options=('!lto')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pgaskin/kepubify/archive/v${pkgver}.tar.gz")
+sha256sums=('bd8053d3927440a9bd54022bbda697b937ab0365e55ad70b73c998233e57c030')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  export GOPATH="${srcdir}"
+  go mod download -modcacherw
+}
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
+
+  export GOPATH="${srcdir}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
 
   go build \
     -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode=external -extldflags=$LDFLAGS -X main.version=$pkgver" \
-    -o $pkgname \
-    github.com/pgaskin/kepubify/v4/cmd/kepubify/
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X github.com/pgaskin/kepubify/v5/internal.Version=v${pkgver}" \
+    -o kepubify \
+    .
+}
 
-  go build \
-    -trimpath \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-linkmode=external -extldflags=$LDFLAGS -X main.version=$pkgver" \
-    -o covergen \
-    github.com/pgaskin/kepubify/v4/cmd/covergen/
+check() {
+  cd "${pkgname}-${pkgver}"
 
-  go build \
-    -trimpath \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-linkmode=external -extldflags=$LDFLAGS -X main.version=$pkgver" \
-    -o seriesmeta \
-    github.com/pgaskin/kepubify/v4/cmd/seriesmeta/
+  export GOPATH="${srcdir}"
+
+  go test -mod=readonly ./...
+  test "$(./kepubify --version)" = "kepubify v${pkgver}"
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
+
   install -Dm755 kepubify "${pkgdir}/usr/bin/kepubify"
-  install -Dm755 covergen "${pkgdir}/usr/bin/covergen"
-  install -Dm755 seriesmeta "${pkgdir}/usr/bin/seriesmeta"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
