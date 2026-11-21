@@ -1,6 +1,6 @@
 pkgbase = gentle-ai
 	pkgdesc = CLI tool to manage and configure AI coding agents ecosystems
-	pkgver = 4.5.0
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://github.com/Gentleman-Programming/gentle-ai
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gentle-ai
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = gentle-ai-4.5.0.tar.gz::https://github.com/Gentleman-Programming/gentle-ai/archive/v4.5.0.tar.gz
-	sha256sums = 4ccbc0293b623aae57e56da00886f344cdc23c7f306a9e1eaa95d5ef835adb24
+	source = gentle-ai-4.6.0.tar.gz::https://github.com/Gentleman-Programming/gentle-ai/archive/v4.6.0.tar.gz
+	sha256sums = cb05692506de2af5b17d7d5697de498f42cada605e5e68b57c4bc4d347127869
 
 pkgname = gentle-ai
