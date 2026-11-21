@@ -6,28 +6,28 @@ pkgname=jackett
 pkgver=0.25.8
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=(x86_64 aarch64 armv7h)
 license=('GPL-2.0-or-later')
 url='https://github.com/Jackett/Jackett'
 depends=(
-  'aspnet-runtime-10.0'
-  'glibc'
-  'gcc-libs'
+  aspnet-runtime-10.0
+  gcc-libs
+  glibc
 )
 optdepends=(
   'flaresolverr: A proxy server to bypass Cloudflare protection'
 )
 makedepends=(
-  'aspnet-targeting-pack-10.0'
-  'dotnet-sdk-10.0'
+  aspnet-targeting-pack-10.0
+  dotnet-sdk-10.0
 )
-options=('!strip' 'staticlibs' '!debug')
+options=(!strip staticlibs !debug)
 
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/archive/v${pkgver}.tar.gz"
-  'jackett.service'
-  'jackett.sysusers'
-  'jackett.tmpfiles'
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+  jackett.service
+  jackett.sysusers
+  jackett.tmpfiles
 )
 
 sha256sums=('08d1fca77280d66c2f25d3fedbb5b934913328d97b15ce900956817cbcd92622'
