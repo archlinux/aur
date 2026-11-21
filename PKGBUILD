@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-test-git
-pkgver=1.15.0+0.r1.fa70bcf
+pkgver=1.15.0+1.r1.4134621
 pkgrel=1
 pkgdesc='Next-Gen Universal Package Manager for Linux (linglong)'
 arch=($CARCH)
@@ -55,6 +55,7 @@ optdepends=(
   "linglong-tools: A command line helper for linglong."
   "ll-killer-go: 玲珑杀手 Go: 玲珑应用快速构建系统"
 )
+options=('!debug')
 install=${pkgname}.install
 source=(
   "${pkgname}::git+${url}.git"

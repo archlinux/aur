@@ -1,6 +1,6 @@
 pkgbase = linyaps-test-git
 	pkgdesc = Next-Gen Universal Package Manager for Linux (linglong)
-	pkgver = 1.15.0+0.r1.fa70bcf
+	pkgver = 1.15.0+1.r1.4134621
 	pkgrel = 1
 	url = https://github.com/LFRon/linyaps-generic-linux
 	install = linyaps-test-git.install
@@ -43,6 +43,7 @@ pkgbase = linyaps-test-git
 	conflicts = linyaps
 	conflicts = linglong
 	replaces = linglong-git
+	options = !debug
 	source = linyaps-test-git::git+https://github.com/LFRon/linyaps-generic-linux.git
 	source = quicktype::git+https://github.com/glideapps/quicktype.git
 	source = linyaps-test-git.install
