@@ -1,6 +1,6 @@
 pkgbase = utumno
 	pkgdesc = Minimal Quickshell shell for Wayland compositors, lighter sibling of quickshell-d77
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/dani-77/utumno
 	arch = any
@@ -12,10 +12,12 @@ pkgbase = utumno
 	depends = alsa-tools
 	depends = brightnessctl
 	depends = wireless_tools
+	depends = eww
+	depends = dgop
 	optdepends = upower: battery widget
 	optdepends = networkmanager: network widget
 	optdepends = matugen: wallpaper-based color palette
-	source = utumno-0.3.1.tar.gz::https://github.com/dani-77/utumno/archive/refs/tags/0.3.1.tar.gz
-	sha256sums = 75605993a5004fa7dcbe52b45f6d4ff3e09d0b89948aacd4fdaa309fa8b10557
+	source = utumno-0.4.0.tar.gz::https://github.com/dani-77/utumno/archive/refs/tags/0.4.0.tar.gz
+	sha256sums = 2a606880fbe2530fa0ec9bbf172db118e37899b5fcd800a699caafc859d5bfbe
 
 pkgname = utumno

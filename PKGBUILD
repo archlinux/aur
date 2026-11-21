@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=utumno
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Minimal Quickshell shell for Wayland compositors, lighter sibling of quickshell-d77"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 # Unlike the Void template, quickshell is listed here: an unversioned
 # dependency never holds back pacman upgrades.
 depends=('quickshell' 'power-profiles-daemon' 'alsa-utils' 'alsa-tools'
-         'brightnessctl' 'wireless_tools')
+         'brightnessctl' 'wireless_tools' 'eww' 'dgop')
 makedepends=('rsync')
 optdepends=(
   'upower: battery widget'
@@ -18,7 +18,7 @@ optdepends=(
   'matugen: wallpaper-based color palette'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('75605993a5004fa7dcbe52b45f6d4ff3e09d0b89948aacd4fdaa309fa8b10557')
+sha256sums=('2a606880fbe2530fa0ec9bbf172db118e37899b5fcd800a699caafc859d5bfbe')
 
 package() {
     cd "$pkgname-$pkgver"
