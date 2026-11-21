@@ -1,0 +1,33 @@
+pkgbase = sdat-bin
+	pkgdesc = Unofficial native GTK4 / Adwaita music streaming client for TIDAL
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/Nichokas/SDAT
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = dconf
+	depends = glib-networking
+	depends = glib2
+	depends = glibc
+	depends = graphene
+	depends = gst-plugins-bad
+	depends = gst-plugins-base
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = gstreamer
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = libgcc
+	depends = libsecret
+	optdepends = gnome-keyring: Secret Service for storing TIDAL credentials
+	optdepends = gst-libav: additional audio codecs
+	provides = sdat-desktop=2.3.0
+	conflicts = sdat-desktop
+	conflicts = tonearm
+	options = !strip
+	options = !debug
+	source = https://github.com/Nichokas/SDAT/releases/download/desktop-v2.3.0/sdat-desktop-2.3.0-arch-x86_64.tar.zst
+	sha256sums = cce3bb617f85589f98f495f13d2b1260373d52e84b521bfe62bf76ca9378a77b
+
+pkgname = sdat-bin
