@@ -1,12 +1,8 @@
 # Maintainer: Kisaragi Hiu <mail@kisaragi-hiu.com>
 
 pkgbase=taigikeyboard-git
-# split from the original amalgamation that installs all of them all at once
-# installing an ibus input method should not pull in fcitx5 itself or the
-# corresponding fcitx5 input method, and vice versa
-# fonts are not installed, this recommends them from the aur instead
 pkgname=(fcitx5-taigikeyboard-git ibus-taigikeyboard-git taigikeyboard-common-git)
-pkgver=3.7.0.r3.68f2481
+pkgver=3.9.0.r460.e161c40
 pkgrel=1
 arch=('x86_64')
 url="https://taigikeyboard.tw"
@@ -27,6 +23,7 @@ makedepends=(
 	'protobuf-c'
 	'cmake'
 	'extra-cmake-modules'
+	'ibus'
 	'fcitx5'
 )
 source=("git+https://github.com/taigikeyboard/taigikeyboard.git")
@@ -56,9 +53,6 @@ build() {
 	make build-fcitx5
 }
 
-# We need to use our own install commands because upstream install them all at
-# once. That works for RPM or .deb since they install everything then declare
-# files afterwards, but that's not the case here.
 package_taigikeyboard-common-git() {
 	pkgdesc='Common files for Taigi Keyboard'
 	optdepends=()
