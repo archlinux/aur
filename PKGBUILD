@@ -10,7 +10,7 @@
 # set pkgver, run `updpkgsums` and `makepkg --printsrcinfo > .SRCINFO`.
 
 pkgname=stratagram
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Network diagram editor: standardized stencils and line types, quick add and auto layout'
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ optdepends=('xdg-desktop-portal: the desktop'"'"'s own open and save dialogs')
 # which the Rust linker cannot read.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shinsterneck/stratagram/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f9482edd6a6b4cc5087886ffc52e93a28327d877ec52fc07b86e49d9b11379af')
+sha256sums=('a4402da93f0cfa9fda813b1c1fb045b63a6d4f73f7132d3d520badc181f89303')
 
 prepare() {
   cd "$pkgname-$pkgver"
