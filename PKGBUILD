@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction
 pkgname=zcall-gui
-pkgver=0.1.5
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 pkgdesc='Native Project Z control panel for the zcalld local AI gateway'
 arch=('x86_64' 'aarch64')
 url='https://github.com/LIghtJUNction/zcall-gui'
@@ -13,7 +13,7 @@ makedepends=('rust' 'pkgconf')
 # Rust retains its own thin LTO; keep native C objects compatible with the linker.
 options=('!lto')
 source=("$pkgname-v$pkgver-source.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver-source.tar.gz")
-sha256sums=('0a12c6f4aeaf6c64c2da70fe9786d22f9278afa6e8ba4775465463ef25b34999')
+sha256sums=('e54822ffaf1681f311e7f54e3042c014e7f36bfa49defd4274cc545ba71c298c')
 
 prepare() {
   cd "$srcdir/$pkgname-v$pkgver"
