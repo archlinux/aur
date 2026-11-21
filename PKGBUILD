@@ -2,8 +2,8 @@
 
 pkgname=goatak-setup-archbased
 # Upstream has no release tags yet: version is the date of the pinned commit.
-pkgver=20261103
-_commit=43e7c1fdd5eb77d4b5edf3012922fd71eb208723
+pkgver=20261121
+_commit=d3caaac2c4c1dc1afa92d21a173f1db50953ce69
 pkgrel=1
 pkgdesc="Interactive first-time setup for the GoATAK server: CA and server certificates, config, users, service and ATAK connection package"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   'inetutils: suggest the FQDN as the default hostname'
 )
 source=("$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('a1442892e4c84fdd0aaae7b691dd497f91ff090efef9a1aa60186480334fcca3')
+sha256sums=('01d066e877426e53b87bb8920197474466a574607360959751c24a18a76e99f8')
 
 package() {
   cd "$pkgname-$_commit"
