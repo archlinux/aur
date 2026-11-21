@@ -2,7 +2,7 @@
 
 pkgname=luxtide-git
 _name=luxtide
-pkgver=2.0.0.r25.g99b0f00
+pkgver=2.0.0.r26.g9fec51a
 pkgrel=1
 pkgdesc='Automatic screen brightness that follows the sun, for DDC/CI monitors and laptop panels (development version)'
 arch=('any')
