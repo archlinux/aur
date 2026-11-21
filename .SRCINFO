@@ -1,7 +1,7 @@
 pkgbase = stm32cubemx2-electron
 	pkgdesc = STM32CubeMX2 - new flavor of STM32CubeMX tool. Run with system electron
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.st.com/en/development-tools/stm32cubemx.html
 	arch = x86_64
 	groups = stm32cube
@@ -14,9 +14,9 @@ pkgbase = stm32cubemx2-electron
 	replaces = stm32cubemx2
 	options = !strip
 	options = !debug
-	source = local://stm32cubemx2-1.2.0-X64-Linux-installer
+	source = https://developer.st.com/bundles/s/stm32cubemx-application-1.2.0-x86_64-linux.bundle
 	source = stm32cubemx2.sh
-	sha256sums = 1b95155270d15c2e5ee266330579bc25bf659bca15e788a3ec3a865cc314af17
-	sha256sums = d2a2297c49600dd01af70ea157466585f7eaaeb8c5971fe676025db999d659f0
+	sha256sums = 8284b4d4e5c0931d1a832a9e270c701d7831b6ccc2792b5ea1a0dd3090555fb8
+	sha256sums = f4aa6680da9f0ffc3eeee3adac15e7b9f80e669a69eec1db3c562863e5e15f70
 
 pkgname = stm32cubemx2-electron

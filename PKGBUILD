@@ -3,7 +3,7 @@
 pkgname=stm32cubemx2-electron
 _pkgname=stm32cubemx2
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="STM32CubeMX2 - new flavor of STM32CubeMX tool. Run with system electron"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubemx.html"
@@ -18,19 +18,13 @@ replaces=("${_pkgname}")
 
 options=('!strip' '!debug')
 
-_installer="stm32cubemx2-${pkgver}-X64-Linux-installer"
-source=("local://${_installer}" "${_pkgname}.sh")
-sha256sums=('1b95155270d15c2e5ee266330579bc25bf659bca15e788a3ec3a865cc314af17'
-            'd2a2297c49600dd01af70ea157466585f7eaaeb8c5971fe676025db999d659f0')
-
-if [ ! -f "${startdir}/${_installer}" ]; then
-  echo ""
-  echo "  ==> ERROR: Source package '${_installer}' not found in build directory!"
-  echo "  ==> Please download the Linux installer manually from:"
-  echo "      ${url}"
-  echo "  ==> And place it in: ${startdir}"
-  echo ""
-fi
+_bundle="stm32cubemx-application-${pkgver}-x86_64-linux.bundle"
+source=(
+  "https://developer.st.com/bundles/s/${_bundle}"
+  "${_pkgname}.sh"
+)
+sha256sums=('8284b4d4e5c0931d1a832a9e270c701d7831b6ccc2792b5ea1a0dd3090555fb8'
+            'f4aa6680da9f0ffc3eeee3adac15e7b9f80e669a69eec1db3c562863e5e15f70')
 
 prepare() {
   cd "${srcdir}"
@@ -44,39 +38,38 @@ prepare() {
     --icon "${_pkgname}" \
     --categories "Development;IDE"
 
-  # The ELF embeds a gzip archive, use binwalk to locate where the gzip data starts,
-  # binwalk counts from 0, while tail -c +N counts from 1, so tail needs offset + 1
-  tail -c +$((0x526084 + 1)) "${_installer}" >data.tar.gz
   mkdir -p build
-  bsdtar -C build -zxf data.tar.gz
+  bsdtar -C build -xf "${_bundle}"
 }
 
 package() {
   cd "${srcdir}/build"
 
-  dist="resources/stm32cubemx-application/${pkgver}/dist"
-  appdir="${dist}/resources/app"
-  appdest="${pkgdir}/opt/${_pkgname}/resources/stm32cubemx-application/${pkgver}/dist"
-
-  # STM32Cube CLI
-  install -Dm755 .bin/cube "${pkgdir}/opt/${_pkgname}/.bin/cube"
+  appdir="${pkgdir}/opt/${_pkgname}"
 
   # STM32CubeMX2 application and bundles
-  install -d "${appdest}/resources"
-  cp -rp "resources/stm32cubemx-application/${pkgver}/bundles" "${pkgdir}/opt/${_pkgname}/resources/stm32cubemx-application/${pkgver}/"
-  cp -rp "${appdir}" "${appdest}/resources/"
-  install -Dm755 "${dist}/bin.js" "${appdest}/bin.js"
-  install -Dm755 "${dist}/start-and-load-headless-bin.js" "${appdest}/start-and-load-headless-bin.js"
+  install -d "${appdir}/bundles" "${appdir}/dist/resources"
+  cp -rp bundles/. "${appdir}/bundles/"
+  cp -rp dist/resources/app "${appdir}/dist/resources/"
+  install -Dm755 dist/bin.js "${appdir}/dist/bin.js"
+  install -Dm755 dist/start-and-load-headless-bin.js "${appdir}/dist/start-and-load-headless-bin.js"
+
+  install -d "${appdir}/bin"
+  ln -s "../bundles/cube-wrapper/0.11.2/bin/cube" "${appdir}/bin/cube"
 
   # Launcher
-  install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
-  sed -i "s/@PKGVER@/${pkgver}/" "${pkgdir}/usr/bin/${_pkgname}"
+  install -d "${pkgdir}/usr/bin"
+  install -m755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/opt/${_pkgname}/bin/${_pkgname}"
+  ln -s "/opt/${_pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -Dm644 "STM32CubeMX2.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm644 \
+    "dist/resources/app/plugins/st-cube-core/extension/img/Subbrand_STM32-2_STM32.png" \
+    "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 LICENSES.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  install -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  install -m644 "AdditionalLicenseTerms.md" "${pkgdir}/usr/share/licenses/${pkgname}/AdditionalLicenseTerms.md"
 }
 
 # vim: set sw=2 ts=2 et:
