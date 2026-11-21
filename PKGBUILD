@@ -1,6 +1,6 @@
 # Maintainer: Marcus Ziade <marcus@midgarcorp.cc>
 pkgname=flaccy-server-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Headless OpenSubsonic server for one music folder, made for Flaccy and any Subsonic app"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('flaccy-server')
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/guitaripod/flaccy/releases/download/server-v${pkgver}/flaccy-server-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("https://github.com/guitaripod/flaccy/releases/download/server-v${pkgver}/flaccy-server-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('dfc376450aed53ebf8c072a2439f2324948f139132a0a11989bf45ce3d83c741')
-sha256sums_aarch64=('d34cff69478cf3e2f47e9b95ea80ff75e2cc5e516c1188fad850bb911a216e00')
+sha256sums_x86_64=('339ab594c250385719a598f6f80d6435a4c5b4a4a912233f04a54f790b9b6fef')
+sha256sums_aarch64=('1341f3ad18a2f671a7561dc91d30141edd7579a5f21300019519860398e9739c')
 
 package() {
   cd "$srcdir/flaccy-server-${pkgver}-linux-${CARCH}"
