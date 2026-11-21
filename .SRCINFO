@@ -1,0 +1,17 @@
+pkgbase = qy-printer-bin
+	pkgdesc = QY thermal/label printer CUPS PPDs and proprietary raster filters
+	pkgver = 2.1.0.3
+	pkgrel = 2
+	url = https://ms.printsupport.cn/?mo=M100
+	arch = x86_64
+	arch = aarch64
+	license = custom:proprietary
+	depends = cups
+	depends = libcups
+	depends = gcc-libs
+	depends = zlib
+	optdepends = cups-filters: additional CUPS filter conversion support
+	source = QY_Printer_Driver_Linux.zip::https://oss.qu-in.ltd/Phomemo/QY_Printer_Driver_Linux.zip
+	sha512sums = 53d6994bb46062bcdd6702adf754893e3fa66cc1a52001055e710cb57896468ff643f1614fa95289f13aa883901d43863e26a1735c455d2d83d378b2be160e0e
+
+pkgname = qy-printer-bin
