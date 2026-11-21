@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/TheFlameLang/Flame"
 license=('MIT')
 depends=('glibc' 'gcc-libs') 
-makedepends=('git' 'make' 'gcc')
+makedepends=('git' 'make' 'gcc' 'libcsptr')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+$url.git")
@@ -35,4 +35,8 @@ package() {
   cd "$srcdir/${pkgname%-git}/shiver"
   echo "Installing Shiver(build system for Flame)..."
   install -Dm755 ./shiver "${pkgdir}/usr/bin/shiver"
+
+  cd "$srcdir/${pkgname%-git}/include/runtime"
+  echo "Installing Flame C runtime..."
+  install -Dm644 ./flame_rt.h "$pkgdir/usr/include/flame_rt.h"
 }
