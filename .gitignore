@@ -1,5 +1,5 @@
 /puppyclicker
-/puppyclicker.AppImage
+/puppyclicker-*.AppImage
 /src/
 /pkg/
 puppyclicker-appimage-*.pkg.tar
