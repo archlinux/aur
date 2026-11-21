@@ -1,0 +1,15 @@
+pkgbase = msi-gpu-mux-switch
+	pkgdesc = Inspect and switch the GPU MUX mode on the MSI Vector 16 HX AI A2XWIG
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/steelbrain/msi-gpu-mux-switch
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = libgcc
+	depends = glibc
+	options = !lto
+	source = msi-gpu-mux-switch-0.2.0.tar.gz::https://github.com/steelbrain/msi-gpu-mux-switch/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 005d6155b36fea66c0c07304438c28df04f3aacfa00db06507a93cb27d65f5ef
+
+pkgname = msi-gpu-mux-switch
