@@ -2,7 +2,7 @@
 
 pkgname=ironbar-git
 pkgver=0.19.1.r146.g1c6a53c
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo' 'git')
 
 depends=(
@@ -45,7 +45,7 @@ build() {
 }
 
 package() {
-  install -Dm 755 "$srcdir/ironbar/target/release/ironbard" "$pkgdir/use/bin/ironbard"
+  install -Dm 755 "$srcdir/ironbar/target/release/ironbard" "$pkgdir/usr/bin/ironbard"
   install -Dm 755 "$srcdir/ironbar/target/release/ironbar" "$pkgdir/usr/bin/ironbar"
 
   install -Dm 644 "$srcdir/ironbar/target/completions/ironbar.bash" "$pkgdir/usr/share/bash-completion/completions/ironbar"
