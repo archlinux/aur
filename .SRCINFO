@@ -1,6 +1,6 @@
 pkgbase = winc
 	pkgdesc = A lighter, faster desktop code editor
-	pkgver = 0.1.789
+	pkgver = 0.1.857
 	pkgrel = 1
 	url = https://winc.si
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = winc
 	depends = wayland
 	provides = winc
 	conflicts = winc
-	source_x86_64 = winc-0.1.789-1-x86_64.pkg.tar.zst::https://github.com/DEEIX-AI/Winc/releases/download/v0.1.789/winc-0.1.789-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 36b701edb94ae2aa8174a34a8c35ca702d82335d1a729b77c5148b2ee837b088
+	source_x86_64 = winc-0.1.857-1-x86_64.pkg.tar.zst::https://github.com/DEEIX-AI/Winc/releases/download/v0.1.857/winc-0.1.857-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 9aace59862d65c6ba675a936b0984e7f6897899e4e73264f505700060f5f07b9
 
 pkgname = winc

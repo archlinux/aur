@@ -1,6 +1,6 @@
 # Maintainer: mapleafgo <mapleafgo at 163 dot com>
 pkgname=winc
-pkgver=0.1.789
+pkgver=0.1.857
 pkgrel=1
 pkgdesc="A lighter, faster desktop code editor"
 arch=('x86_64')
@@ -15,4 +15,4 @@ package() {
   cp -a "${srcdir}/usr" "${pkgdir}/usr"
 }
 
-sha256sums_x86_64=('36b701edb94ae2aa8174a34a8c35ca702d82335d1a729b77c5148b2ee837b088')
+sha256sums_x86_64=('9aace59862d65c6ba675a936b0984e7f6897899e4e73264f505700060f5f07b9')
