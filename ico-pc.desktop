@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ICO
+GenericName=Action-adventure game
+Comment=PC port of ICO (PS2), built from the decompilation; needs your own disc image
+Exec=ico-pc
+Icon=applications-games
+Terminal=false
+Categories=Game;ActionGame;AdventureGame;
+Keywords=ico;ps2;team ico;yorda;

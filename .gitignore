@@ -1,0 +1,8 @@
+# Ignore everything makepkg leaves behind (downloaded sources, src/, pkg/,
+# built packages and logs). Only the files the AUR needs are tracked.
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!ico-pc.sh
+!ico-pc.desktop
