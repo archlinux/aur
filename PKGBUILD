@@ -6,7 +6,7 @@
 pkgname=fcitx5-ngosen
 # Ngó Sen numbers its own releases from 0.5.0; the epoch keeps them above the 3.5.10 builds.
 epoch=1
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 _tag=ngosen-$pkgver-$pkgrel
 pkgdesc="Ngó Sen, a Vietnamese input method for fcitx5"
@@ -21,7 +21,7 @@ makedepends=('cmake' 'extra-cmake-modules' 'rust' 'librsvg')
 options=('!debug')
 install=fcitx5-ngosen.install
 source=("$_tag.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('f572d5869ba876181a130295a75696c21950c75978a3412d0aeb8448a5f5ceaf')
+sha256sums=('e4758f81d2d58f100cdefb11c6326a0d7a18490f6361fe4226885725e536519f')
 
 build() {
     cmake -S "ngosen-$_tag" -B build \
