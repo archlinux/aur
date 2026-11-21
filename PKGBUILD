@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 pkgname=trigonum
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Lightweight viewer for STL 3D models'
 arch=(x86_64 aarch64)
@@ -21,13 +21,14 @@ makedepends=(
   cargo
   meson
 )
+options=(!debug)
 checkdepends=(
   appstream
   desktop-file-utils
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Plantilla: el workflow de release completa las sumas con updpkgsums y genera el .SRCINFO.
-sha256sums=('2f3f716dec63f3fb5009caa70e819c898d790728dab6b04e48e3eefd5373f458')
+sha256sums=('0c0a388745c9f61bb8bfe8f6d71b1204a739ff255a0f031b82ff0cb5b4e6ebd3')
 
 prepare() {
   cd "$pkgname-$pkgver"
