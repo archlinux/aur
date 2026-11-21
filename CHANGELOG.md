@@ -5,6 +5,12 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.18-2] - 2026-11-20
+
+### Packaging
+
+- Fix `makepkg` stopping in `package()` with `ERROR: Kernel tarball not found: linux-7.3.5.tar.xz` when `SRCDEST` is not the PKGBUILD directory, for example `SRCDEST=$HOME/.cache/makepkg/sources` as pikaur builds with. `build()` passed `KERNEL_TARBALL` and `DRIVER_ZIP` to `make sources`, but `package()` ran `make install` without them. The Makefile's stamp depends on the `.PHONY` `check-version` target, so the staging recipe runs again on every `make install` and falls back to a tarball and ZIP in the startdir, which exist only when `SRCDEST` is the startdir. `package()` now passes `MT76_KVER`, `KERNEL_TARBALL` and `DRIVER_ZIP` the way `build()` does. Reproduced with the cache as `SRCDEST` (exit 4 before, exit 0 after, package ships the patched sources), and the layout with the tarball in the startdir still builds. A test in `tests/test_pkgbuild.py` pins that both calls pass the same inputs. The RPM and DEB builds call both targets from one directory and are not affected. Not tested: versions before 2.18-1 under this `SRCDEST`
+
 ## [2.18-1] - 2026-11-20
 
 ### Driver
