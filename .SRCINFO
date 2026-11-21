@@ -1,0 +1,27 @@
+pkgbase = ferron
+	pkgdesc = A fast, modern web server written in Rust
+	pkgver = 2.8.1
+	pkgrel = 1
+	url = https://ferron.sh
+	install = ferron.install
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = ca-certificates
+	conflicts = ferron-git
+	conflicts = ferron-rc
+	conflicts = ferronweb
+	conflicts = ferron-bin
+	conflicts = ferronweb-bin
+	conflicts = ferronweb-git
+	source = ferron-2.8.1.tar.gz::https://github.com/ferronweb/ferron/archive/refs/tags/2.8.1.tar.gz
+	sha256sums = 32354ffed4fbe8caede924d420e6a7ac84127f264c47e1e738b462d9479c0680
+
+pkgname = ferron

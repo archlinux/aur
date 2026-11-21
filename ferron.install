@@ -1,0 +1,109 @@
+# Record what a previous package version seeded, so an upgrade can tell a file
+# the user has edited from one that is still stock.
+seedmanifest=/var/lib/ferron/wwwroot.seed
+
+seedroot() {
+    local src=/usr/share/ferron/wwwroot
+    local dest=/var/www/ferron
+    [ -d "$src" ] || return 0
+    mkdir -p "$dest" "$(dirname "$seedmanifest")"
+    local f rel sum
+    : > "$seedmanifest"
+    for f in "$src"/*; do
+        rel=$(basename "$f")
+        cp -r "$f" "$dest/$rel"
+        [ -f "$dest/$rel" ] && sha256sum "$dest/$rel" | cut -d' ' -f1 > "/dev/null" \
+            && printf '%s  %s\n' "$(sha256sum "$dest/$rel" | cut -d' ' -f1)" "$rel" >> "$seedmanifest"
+    done
+}
+
+# Refresh stock files on upgrade. A file is stock when its hash matches what the
+# previous package seeded; anything else is the user's and is left alone. Files
+# that disappeared are restored. Nothing is ever deleted.
+reseedroot() {
+    local src=/usr/share/ferron/wwwroot
+    local dest=/var/www/ferron
+    [ -d "$src" ] || return 0
+    mkdir -p "$dest" "$(dirname "$seedmanifest")"
+
+    local newmanifest="$seedmanifest.new"
+    : > "$newmanifest"
+    local f rel oldsum newsum
+    for f in "$src"/*; do
+        rel=$(basename "$f")
+        if [ -f "$f" ]; then
+            newsum=$(sha256sum "$f" | cut -d' ' -f1)
+            if [ ! -e "$dest/$rel" ]; then
+                cp "$f" "$dest/$rel"
+            else
+                oldsum=$(grep -E "  $rel\$" "$seedmanifest" 2>/dev/null | cut -d' ' -f1)
+                if [ -n "$oldsum" ] && [ "$oldsum" = "$(sha256sum "$dest/$rel" | cut -d' ' -f1)" ]; then
+                    # unchanged since we seeded it, so refresh the branding
+                    cp "$f" "$dest/$rel"
+                fi
+            fi
+            printf '%s  %s\n' "$newsum" "$rel" >> "$newmanifest"
+        fi
+    done
+    mv "$newmanifest" "$seedmanifest"
+}
+
+fixperms() {
+    chown -R ferron:ferron /var/log/ferron /var/www/ferron 2>/dev/null
+    find /var/log/ferron -type d -exec chmod 755 {} + 2>/dev/null
+    find /var/log/ferron -type f -exec chmod 644 {} + 2>/dev/null
+    find /var/www/ferron -type d -exec chmod 755 {} + 2>/dev/null
+    find /var/www/ferron -type f -exec chmod 644 {} + 2>/dev/null
+}
+
+restartservice() {
+    if systemctl is-active --quiet ferron; then
+        echo "==> Restarting ferron to apply the update"
+        systemctl restart ferron
+    fi
+}
+
+post_install() {
+    echo "==> Creating ferron user and group..."
+    systemd-sysusers
+    echo "==> Setting up directories and permissions..."
+    systemd-tmpfiles --create
+    if [ ! -e /etc/ferron.kdl ]; then
+        install -Dm644 /usr/share/ferron/ferron.kdl.default /etc/ferron.kdl
+    fi
+    seedroot
+    fixperms
+    echo "==> Ferron is now installed. Start it with: systemctl start ferron"
+}
+
+post_upgrade() {
+    # 1.x shipped /etc/ferron.yaml. Convert it before the 2.x service starts.
+    if [ -f /etc/ferron.yaml ] && [ ! -f /etc/ferron.kdl ]; then
+        if command -v ferron-yaml2kdl >/dev/null 2>&1; then
+            echo "==> Detected legacy /etc/ferron.yaml, converting to /etc/ferron.kdl"
+            if ferron-yaml2kdl /etc/ferron.yaml /etc/ferron.kdl; then
+                cp -a /etc/ferron.yaml /etc/ferron.yaml.bak
+                echo "==> Conversion successful, backup at /etc/ferron.yaml.bak"
+            else
+                echo "==> WARNING: conversion failed, /etc/ferron.kdl was not written"
+                rm -f /etc/ferron.kdl
+            fi
+        else
+            echo "==> WARNING: ferron-yaml2kdl not found, cannot convert /etc/ferron.yaml"
+        fi
+    fi
+    if [ ! -e /etc/ferron.kdl ]; then
+        install -Dm644 /usr/share/ferron/ferron.kdl.default /etc/ferron.kdl
+    fi
+    reseedroot
+    fixperms
+    restartservice
+}
+
+post_remove() {
+    echo "==> Ferron configuration and data directories are preserved."
+    echo "==> Remove them manually if they are no longer needed:"
+    echo "    /etc/ferron.kdl"
+    echo "    /var/www/ferron"
+    echo "    /var/log/ferron"
+}
