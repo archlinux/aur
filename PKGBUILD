@@ -905,7 +905,7 @@ _ortf_cuda12_pkgdesc='The CUDA execution provider of ONNX Runtime, CUDA 12 build
 _ortf_migraphx_pkgdesc='The MIGraphX execution provider of ONNX Runtime, for onnxruntime-core (AMD GPUs; untested on AMD hardware)'
 [[ $_ortf_line != migraphx ]] || pkgdesc=$_ortf_migraphx_pkgdesc
 arch=('x86_64')
-url='https://github.com/microsoft/onnxruntime'
+url='https://onnxruntime.ai'
 # ONNX Runtime (MIT) and the bundled dependencies compiled into its
 # libraries: abseil, flatbuffers, onnx, dlpack (Apache-2.0); cpuinfo
 # (BSD-2-Clause); protobuf, re2, pybind11, CUTLASS (BSD-3-Clause); Boost.Mp11
