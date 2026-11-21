@@ -1,6 +1,6 @@
 pkgbase = ibus-ngosen
 	pkgdesc = Ngó Sen for GNOME, a Vietnamese input method for IBus
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/ngosen/ibus-ngosen
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = ibus-ngosen
 	depends = libxcb
 	conflicts = fcitx5-ngosen
 	options = !debug
-	source = ibus-ngosen-1.4.1-1.tar.gz::https://github.com/ngosen/ibus-ngosen/releases/download/ibus-ngosen-1.4.1-1/ibus-ngosen-1.4.1.tar.gz
-	sha256sums = e0cc61ee5d1ca019e239a08a44600bbbb0ebf81652f2112d3dbfc044df867296
+	source = ibus-ngosen-1.5.0-1.tar.gz::https://github.com/ngosen/ibus-ngosen/releases/download/ibus-ngosen-1.5.0-1/ibus-ngosen-1.5.0.tar.gz
+	sha256sums = 9d1cc64d993c3fa5cce33ab2d6831b881100695a239f7305be5977515dcbf65e
 
 pkgname = ibus-ngosen
