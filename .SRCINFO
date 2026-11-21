@@ -1,6 +1,6 @@
 pkgbase = lolka-x-bin
 	pkgdesc = Native desktop client for lolka.app - chat and voice with friends
-	pkgver = 2.0.29
+	pkgver = 2.0.30
 	pkgrel = 1
 	url = https://lolka.app
 	arch = x86_64
@@ -30,12 +30,12 @@ pkgbase = lolka-x-bin
 	optdepends = libva-intel-driver: hardware video encoding/decoding (VAAPI) on Intel up to Haswell
 	optdepends = nvidia-utils: hardware video encoding (NVENC) on NVIDIA
 	optdepends = gtk3: native GTK dialogs and theme
-	provides = lolka-x=2.0.29
+	provides = lolka-x=2.0.30
 	conflicts = lolka-x
-	noextract = lolka-x-2.0.29-x86_64.pkg.tar.zst
+	noextract = lolka-x-2.0.30-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = lolka-x-2.0.29-x86_64.pkg.tar.zst::https://cdn.lolka.app/desktop/linux/2.0.29/lolka-x-bin-2.0.29-1-x86_64.pkg.tar.zst
-	sha512sums = 2aa6034089004077aa2c825856b4308e747c7ceb411c8bbac6a702141efd9d2d705225a0b71732adab6825cf8c58b4313c84b13edcc614a86472cd5c26b71faf
+	source = lolka-x-2.0.30-x86_64.pkg.tar.zst::https://cdn.lolka.app/desktop/linux/2.0.30/lolka-x-bin-2.0.30-1-x86_64.pkg.tar.zst
+	sha512sums = 71ea2a820ab19bd717ecc11cdc871a6b37cccccfba7fa5a8d71a53335fae36af6c3393d7a1b232739928182e6e4d2777f9ae15ed12ffc0dd0a6be007aa6a0c4a
 
 pkgname = lolka-x-bin
