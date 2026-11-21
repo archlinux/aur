@@ -1,0 +1,18 @@
+pkgbase = aethersdr-bin
+	pkgdesc = Native amateur-radio workstation for FlexRadio transceivers
+	pkgver = 26.11.3
+	pkgrel = 1
+	url = https://www.aethersdr.com/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = fuse2
+	depends = hicolor-icon-theme
+	provides = aethersdr
+	conflicts = aethersdr
+	options = !strip
+	options = !debug
+	source = AetherSDR-v26.11.3-x86_64.AppImage::https://github.com/aethersdr/AetherSDR/releases/download/26.11.3/AetherSDR-v26.11.3-x86_64.AppImage
+	sha256sums = 93ec14fca3e33cfc7f7f0fcd3922549f81d4d2e47de2321c390ef6b447fa90e7
+
+pkgname = aethersdr-bin
