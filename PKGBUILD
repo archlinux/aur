@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libavif-git
-pkgver=1.4.2.r41.g5a7fef63
-pkgrel=2
+pkgver=1.4.2.r122.g17bdf4c6
+pkgrel=1
 pkgdesc="Library for encoding and decoding .avif files"
 arch=('i686' 'x86_64')
 url="https://github.com/AOMediaCodec/libavif"
