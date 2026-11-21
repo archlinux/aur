@@ -17,6 +17,13 @@ sha256sums=('32354ffed4fbe8caede924d420e6a7ac84127f264c47e1e738b462d9479c0680')
 build() {
     cd "$srcdir/ferron-$pkgver"
     export CARGO_TARGET_DIR="$srcdir/target"
+    # makepkg's -flto=auto breaks the static mimalloc the 2.x crates link
+    # against, with undefined mi_malloc_aligned and friends. Drop LTO from the
+    # flags and keep the hardening.
+    CFLAGS=${CFLAGS//-flto=auto/}
+    CXXFLAGS=${CXXFLAGS//-flto=auto/}
+    LDFLAGS=${LDFLAGS//-flto=auto/}
+    export CFLAGS CXXFLAGS LDFLAGS
     cargo build --release --locked --workspace
 }
 
