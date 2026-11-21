@@ -18,6 +18,7 @@ pkgbase = xnviewmp-system-libs
 	depends = openexr
 	optdepends = glib2: support for moving files to trash
 	conflicts = xnviewmp
+	options = !debug
 	source = XnViewMP-linux-x64_1.12.3-rel1.tgz::https://download.xnview.com/old_versions/XnView_MP/XnView_MP-1.12.3-linux-x64.tgz
 	source = xnview.sh
 	source = XnView.desktop

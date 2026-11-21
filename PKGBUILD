@@ -10,6 +10,7 @@ url="https://www.xnview.com/en/xnviewmp/"
 
 arch=('x86_64')
 license=('custom')
+options=(!debug)
 depends=(
   # Main Qt dependencies (directly needed by the XnView binary)
   'qt6-multimedia' 'qt6-networkauth' 'qt6-svg' 'qt6-5compat'
