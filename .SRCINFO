@@ -8,7 +8,6 @@ pkgbase = flamelang-git
 	makedepends = git
 	makedepends = make
 	makedepends = gcc
-	makedepends = libcsptr
 	depends = glibc
 	depends = gcc-libs
 	provides = flamelang
