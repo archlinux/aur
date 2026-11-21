@@ -1,6 +1,6 @@
 # Maintainer: Jasmeet (Jazz) Bhatia <jasmeet.bhatia.us@gmail.com>
 pkgname=jerc-bin
-pkgver=0.6.63
+pkgver=0.6.64
 pkgrel=1
 pkgdesc='Keyboard-driven terminal email client written in Rust (prebuilt static binary)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('jerc')
 
 _source_archive="jerc-v${pkgver}-x86_64-unknown-linux-musl.tar.gz"
 source_x86_64=("${_source_archive}::${url}/releases/download/v${pkgver}/${_source_archive}")
-sha256sums_x86_64=('12c387bbd05f6a5931eed70aeb2873640ca9e175ee82ee9547f35c247167373d')
+sha256sums_x86_64=('92fdaf3f1940bf45f30b994f51a1aecfcb38d622b987230e5554f87d7a0badab')
 
 package() {
   local bundle="${srcdir}/jerc-v${pkgver}-x86_64-unknown-linux-musl"
