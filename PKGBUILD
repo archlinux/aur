@@ -2,7 +2,7 @@
 # Maintainer: combor <163394+combor@users.noreply.github.com>
 
 pkgname='magnetowid-bin'
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc='Downloads movies and series from video-on-demand sites for Sonarr and Radarr.'
 url='https://github.com/combor/magnetowid'
@@ -16,10 +16,10 @@ backup=('etc/magnetowid/magnetowid.env')
 install=magnetowid.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/combor/magnetowid/releases/download/v${pkgver}/magnetowid_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('fd8e6fc7df346b8daf8b9575888f0982710848848243d35a116b28cb39fa0f40')
+sha256sums_aarch64=('4364546f255c33d193e90f703f94dc667934e3cf873c3b385e223696245c2aa8')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/combor/magnetowid/releases/download/v${pkgver}/magnetowid_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('a9527b0df81cd8ddd9a4381c8f1d94586882aa90bd68afdb6b2ebd9b82b7ba32')
+sha256sums_x86_64=('4e568917c66f52a587906e66b439b60555e79ea1a8e48d35e56f2774319ef520')
 
 package() {
   install -Dm755 "./magnetowid" "${pkgdir}/usr/bin/magnetowid"
