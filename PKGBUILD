@@ -1,13 +1,13 @@
 # Maintainer: Tino Gohl <tuvbunn2@googlemail.com>
 pkgname=ygrep
-pkgver=1.0.19
+pkgver=1.0.20
 pkgrel=1
 pkgdesc="grep for YAML with jq-style filter expressions (built from source)"
 arch=('x86_64')
 url="https://github.com/subnix-work/jgrep-tinox"
 license=('Apache-2.0')
 depends=('glibc' 'gc' 'zlib' 'openssl')
-makedepends=('tinox>=2.9.7')
+makedepends=('tinox>=2.9.8')
 # ygrep is byte-identical to jgrep (same binary, behavior switches on
 # argv[0] -- see jgrep-tinox/build.sh); both packages compile the same
 # source with the same toolchain, so their binaries share the same ELF
@@ -18,7 +18,7 @@ makedepends=('tinox>=2.9.7')
 # is sufficient for debugging either binary.
 options=('!debug')
 source=("jgrep-tinox-$pkgver.tar.gz::https://github.com/subnix-work/jgrep-tinox/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5be9c2290ba9431f5963e27b687dbb87959095877febd4427301d1bc74ea7b9d')
+sha256sums=('d108831d58fce4306308457d6967ad60161b998df59cd58378e98a391c5df414')
 
 build() {
   cd "jgrep-tinox-$pkgver"
