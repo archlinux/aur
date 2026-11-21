@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=screen-relay
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Stream a desktop to a browser, and drive it from a CLI, an HTTP API, or a Node SDK"
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=('xprop: inspect the desktop windows a session starts'
             'xorg-xwayland: X11 applications inside a Wayland session'
             'foot: Wayland terminal')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vercel-labs/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e81a2a63c293d29172a2d2ed1968f7b208f5061cb150ae206c2c14cf4b769472')
+sha256sums=('885f9829ff10407fb900d55987f90b9f1c357cd3be9061bee0041947529f3367')
 
 # Releases come only as source: there are no binary assets to package.
 latestver() {
