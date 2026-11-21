@@ -1,0 +1,17 @@
+pkgbase = fcitx5-commit
+	pkgdesc = fcitx5 addon that lets other programs insert text into the focused input field over D-Bus
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Vendetta1871/fcitx5-commit
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = fcitx5
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	conflicts = fcitx5-commit-git
+	source = fcitx5-commit-0.1.0.tar.gz::https://github.com/Vendetta1871/fcitx5-commit/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 1114b5f34f923622fc8445766a2351458a387a429a6deb628cb1165cb2990ac9
+
+pkgname = fcitx5-commit
