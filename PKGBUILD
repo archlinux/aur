@@ -1,14 +1,14 @@
 # Maintainer: Jake Stanger <mail@jstanger.dev>
 
 pkgname=ironbar-git
-pkgver=0.19.0.r1.g2f324f2
+pkgver=0.19.1.r146.g1c6a53c
 pkgrel=1
 makedepends=('rust' 'cargo' 'git')
 
 depends=(
-  'gtk4' 
-  'gtk4-layer-shell' 
-  'lua51-lgi' 
+  'gtk4'
+  'gtk4-layer-shell'
+  'lua51-lgi'
   'libinput'
   'libpulse'
   'luajit'
@@ -29,22 +29,23 @@ md5sums=('SKIP')
 options=('!lto')
 
 pkgver() {
-    cd "$srcdir/ironbar"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' 
+  cd "$srcdir/ironbar"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/ironbar"
-    cargo build --release --locked
+  cd "$srcdir/ironbar"
+  cargo build --workspace --release --locked
 
-    mkdir -p "$srcdir/ironbar/target/completions"
+  mkdir -p "$srcdir/ironbar/target/completions"
 
-    "$srcdir/ironbar/target/release/ironbar" --print-completions bash > "$srcdir/ironbar/target/completions/ironbar.bash"
-    "$srcdir/ironbar/target/release/ironbar" --print-completions zsh >  "$srcdir/ironbar/target/completions/_ironbar"
-    "$srcdir/ironbar/target/release/ironbar" --print-completions fish > "$srcdir/ironbar/target/completions/ironbar.fish"
+  "$srcdir/ironbar/target/release/ironbar" --print-completions bash >"$srcdir/ironbar/target/completions/ironbar.bash"
+  "$srcdir/ironbar/target/release/ironbar" --print-completions zsh >"$srcdir/ironbar/target/completions/_ironbar"
+  "$srcdir/ironbar/target/release/ironbar" --print-completions fish >"$srcdir/ironbar/target/completions/ironbar.fish"
 }
 
 package() {
+  install -Dm 755 "$srcdir/ironbar/target/release/ironbard" "$pkgdir/use/bin/ironbard"
   install -Dm 755 "$srcdir/ironbar/target/release/ironbar" "$pkgdir/usr/bin/ironbar"
 
   install -Dm 644 "$srcdir/ironbar/target/completions/ironbar.bash" "$pkgdir/usr/share/bash-completion/completions/ironbar"
