@@ -1,0 +1,11 @@
+NOTICE
+
+JaCarta Unified Client (ПК «Единый Клиент JaCarta») is proprietary software
+of JSC "Aladdin R.D." (АО «Аладдин Р.Д.»), https://www.aladdin-rd.ru/
+
+The vendor does not ship a license text with the Linux distributions: the
+license agreement is only shown by the Windows installer. It is therefore not
+reproduced here, and this file is a notice, not a license.
+
+This Arch package only repackages the unmodified vendor RPMs. Use of the
+bundled software is governed by the vendor's license agreement.

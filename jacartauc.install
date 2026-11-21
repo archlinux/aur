@@ -1,5 +1,5 @@
 post_install() {
-	bash /opt/jacartauc/scripts/PLIST/Linux/update_all_plists.sh
+	bash /usr/share/jacartauc/scripts/PLIST/Linux/update_all_plists.sh
 }
 
 pre_remove() {
