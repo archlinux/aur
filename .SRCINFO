@@ -1,0 +1,22 @@
+pkgbase = python-vercel-drives
+	pkgdesc = Python SDK for Vercel Drives.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/vercel/vercel-py/tree/main/src/vercel-drives
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-vercel-internal-core
+	depends = python-vercel-oidc
+	depends = python-anyio
+	depends = python-httpx2
+	depends = python-pydantic
+	source = vercel-drives-0.1.0.tar.gz::https://github.com/vercel/vercel-py/archive/refs/tags/vercel-drives-v0.1.0.tar.gz
+	sha256sums = 0a78f2c26feb23366afc955dcaae17adf4fc8ed357ade1d3a9f2b9ac69160b3f
+
+pkgname = python-vercel-drives
