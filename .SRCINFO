@@ -1,0 +1,18 @@
+pkgbase = pan-tools-bin
+	pkgdesc = Modern Baidu Netdisk CLI & interactive TUI client (precompiled binary)
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://github.com/qwerprog/pan-tools
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = pan-tools
+	conflicts = pan-tools
+	conflicts = pan-tools-git
+	options = !debug
+	source_x86_64 = pant-v5.0.1-linux-amd64.tar.gz::https://github.com/qwerprog/pan-tools/releases/download/v5.0.1/pant-v5.0.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = f530dd0f7982045538164a01d088cedef6bcfa13c45cfc16327f6bdf61919ce8
+	source_aarch64 = pant-v5.0.1-linux-arm64.tar.gz::https://github.com/qwerprog/pan-tools/releases/download/v5.0.1/pant-v5.0.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4290396d939f0036fcc7a0a3fd69c3464102b6a079e9f2dedc6d02c172e39ee4
+
+pkgname = pan-tools-bin
