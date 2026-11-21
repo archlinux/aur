@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=candle-git
-pkgver=11.2.r26.gc04e6f2
-pkgrel=2
+pkgver=11.2.r27.ged6ec3f
+pkgrel=1
 pkgdesc="GRBL controller application with G-Code visualizer written in Qt"
 arch=($CARCH)
 url="https://github.com/Denvi/Candle"
