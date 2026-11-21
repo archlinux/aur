@@ -2,7 +2,7 @@
 # Builds noti-fi from the release's source archive against the Qt installed on your machine. Use:   cd packaging && makepkg -si
 # (the panel runs on any Qt 6 since 0.8.2; building it here simply avoids the prebuilt binaries).
 pkgname=noti-fi
-pkgver=0.21.4
+pkgver=0.21.5
 pkgrel=1
 pkgdesc="Notification daemon (notifd), command line (notify) and control panel for KDE Plasma and Hyprland on Wayland"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('qt6-multimedia: audio and video players in popups' 'flatpak: per-ap
 # The source archive the release workflow uploads (git archive of the tag). The release's `aur` artifact holds this
 # PKGBUILD with its real checksum and a .SRCINFO, ready to push to the AUR; here it stays SKIP between releases.
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('b7fb8b491d965b32d09404f6abd33a8f9539e103e43ca94704a077451e434f65')
+sha256sums=('65db84cc1f1d8058444c6639a08b32869b3814798ed195966c7928d8a8313b86')
 
 prepare() {
     cd "$pkgname-$pkgver"
