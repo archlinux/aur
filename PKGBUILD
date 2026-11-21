@@ -11,7 +11,7 @@
 #
 # This copy is generated for the AUR by scripts/aur.sh of
 # https://github.com/rsd/omarchy-nvidia-sdks (documentation:
-# https://github.com/rsd/omarchy-nvidia-sdks/blob/3be0fb976d281b0edc2704be141ff09e42abcd93/README.md).
+# https://github.com/rsd/omarchy-nvidia-sdks/blob/117dce47590cf44943e73811b6bf6b5462c173b3/README.md).
 # The recipe's helpers (selection.sh, assemble.sh, configure.sh, the
 # os-release shim's source, ...) come from that repository at the commit
 # pinned in source=(); makepkg checks it out into src/omarchy-nvidia-sdks.
@@ -64,7 +64,7 @@
 
 pkgname=maxine-afx-sdk-local
 pkgver=3.0.0.12
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA Maxine Audio Effects SDK, packaged from the user's own download (personal use, not redistributable)"
 arch=('x86_64')
 url='https://catalog.ngc.nvidia.com/orgs/nvidia/teams/maxine/resources/maxine_linux_audio_effects_sdk'
@@ -85,13 +85,13 @@ options=('!strip' '!debug' 'staticlibs')
 # below, fetched by makepkg (source=). Relative to $srcdir, where makepkg
 # runs every function: $srcdir is not set yet when makepkg reads this file.
 _repo=omarchy-nvidia-sdks
-_commit=3be0fb976d281b0edc2704be141ff09e42abcd93
+_commit=117dce47590cf44943e73811b6bf6b5462c173b3
 source=()
 
 # The helpers, pinned: makepkg verifies the checksum of `git archive` of the
 # commit.
 source+=("omarchy-nvidia-sdks::git+https://github.com/rsd/omarchy-nvidia-sdks.git#commit=$_commit")
-sha256sums+=('11e6b911209c3eceed8e29117bad4d89111460553b4d4f417addc62038f9ec9c')
+sha256sums+=('21e9de83464c9c5d5729b9ee7317576e9b0e79af22cf671c42265ba9a89a5007')
 makedepends+=('git')
 
 _root=/opt/nvidia/maxine/afx
