@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qsoc-git
-pkgver=2.13.0.r5.g8cae991
+pkgver=2.15.1.r0.g274cc62
 pkgrel=1
 epoch=
 pkgdesc="QSoC - Quick System on Chip Studio"
@@ -16,6 +16,9 @@ depends=(
     libstdc++
     hicolor-icon-theme
     $_qt-base
+    $_qt-declarative
+    $_qt-svg
+    zlib
 )
 makedepends=(
     cmake
@@ -24,8 +27,6 @@ makedepends=(
     ninja
     git
     $_qt-5compat
-    $_qt-declarative
-    $_qt-svg
     $_qt-tools
     pkgconf
     sqlite
@@ -38,7 +39,7 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 backup=()
-options=('!makeflags')
+options=('!makeflags' '!debug')
 install=
 changelog=
 source=(
