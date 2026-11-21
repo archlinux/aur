@@ -6,9 +6,9 @@ pkgbase = httpjail-bin
 	arch = x86_64
 	arch = aarch64
 	license = CC0-1.0
-	source_x86_64 = httpjail.0.6.2.tar.gz::https://github.com/coder/httpjail/releases/download/v0.6.2/httpjail-0.6.2-linux-x86_64.tar.gz
+	source_x86_64 = httpjail-0.6.2-x86_64.tar.gz::https://github.com/coder/httpjail/releases/download/v0.6.2/httpjail-0.6.2-linux-x86_64.tar.gz
 	sha256sums_x86_64 = 207b08f58b82b592ba66128f784c9e74955f0462b8ebb17fd5fa5d07397530cd
-	source_aarch64 = httpjail.0.6.2.tar.gz::https://github.com/coder/httpjail/releases/download/v0.6.2/httpjail-0.6.2-linux-x86_64.tar.gz
+	source_aarch64 = httpjail-0.6.2-aarch64.tar.gz::https://github.com/coder/httpjail/releases/download/v0.6.2/httpjail-0.6.2-linux-aarch64.tar.gz
 	sha256sums_aarch64 = 7d8764fcd4c2f41b0c70999fe4bb72ce2905de1cfd7774e60e98b6884347d8eb
 
 pkgname = httpjail-bin

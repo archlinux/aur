@@ -7,8 +7,8 @@ pkgrel=1
 url='https://github.com/coder/httpjail'
 arch=('x86_64' 'aarch64')
 license=('CC0-1.0')
-source_x86_64=("httpjail.${pkgver}.tar.gz::https://github.com/coder/httpjail/releases/download/v$pkgver/httpjail-$pkgver-linux-$CARCH.tar.gz")
-source_aarch64=("httpjail.${pkgver}.tar.gz::https://github.com/coder/httpjail/releases/download/v$pkgver/httpjail-$pkgver-linux-$CARCH.tar.gz")
+source_x86_64=("httpjail-${pkgver}-x86_64.tar.gz::https://github.com/coder/httpjail/releases/download/v$pkgver/httpjail-$pkgver-linux-x86_64.tar.gz")
+source_aarch64=("httpjail-${pkgver}-aarch64.tar.gz::https://github.com/coder/httpjail/releases/download/v$pkgver/httpjail-$pkgver-linux-aarch64.tar.gz")
 sha256sums_x86_64=('207b08f58b82b592ba66128f784c9e74955f0462b8ebb17fd5fa5d07397530cd')
 sha256sums_aarch64=('7d8764fcd4c2f41b0c70999fe4bb72ce2905de1cfd7774e60e98b6884347d8eb')
 
