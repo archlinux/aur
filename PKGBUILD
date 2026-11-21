@@ -4,7 +4,7 @@ pkgname="${_appname}-ide"
 _pkgname='Qoder IDE'
 pkgver=1.41.1
 _electronversion=42
-pkgrel=2
+pkgrel=3
 pkgdesc="面向真实软件开发的 AI 原生 Qoder CN IDE。"
 arch=('x86_64')
 url="https://qoder.cn"
@@ -33,7 +33,7 @@ source=(
 )
 sha256sums=('3bcbaaa0f62da672a7ade1cd680c8fa0e6f74ae42a608e5fdb56e30768a8c6ed'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
-            'c0c25525cc19e8a8cf02e4d2887ffd77a3be17afdc9fa0b223ef1ca9d243c091'
+            'fbafef871da672c41492faccaba4c542b52412b96cd55b7cbded659028360c29'
             '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21'
             '0d420542509408c41b56a0c6de783344e9514b5531393d291606875f23e34570')
 pkgver() {
