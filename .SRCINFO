@@ -1,7 +1,7 @@
 pkgbase = disc-printer
 	pkgdesc = A universal disc label editor for Linux — printer brand independent, supports CD/DVD/Blu-ray
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MrHaku81/disc-printer
 	arch = any
 	license = MIT

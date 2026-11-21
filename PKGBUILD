@@ -1,7 +1,7 @@
 # Maintainer: MrHaku81 <haku81.kk@gmail.com>
 pkgname=disc-printer
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A universal disc label editor for Linux — printer brand independent, supports CD/DVD/Blu-ray'
 arch=('any')
 url='https://github.com/MrHaku81/disc-printer'
@@ -36,4 +36,7 @@ package() {
   cd "${pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 flatpak/de.haku.disc-printer.desktop "${pkgdir}/usr/share/applications/de.haku.disc-printer.desktop"
+  install -Dm644 flatpak/de.haku.disc-printer.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/de.haku.disc-printer.svg"
+  install -Dm644 flatpak/de.haku.disc-printer.metainfo.xml "${pkgdir}/usr/share/metainfo/de.haku.disc-printer.metainfo.xml"
 }
