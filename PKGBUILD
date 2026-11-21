@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=quickshell-d77
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Quickshell d77 shell for Wayland compositors"
 arch=('any')
@@ -10,11 +10,11 @@ license=('MIT')
 # Unlike the Void template, quickshell is listed here: an unversioned
 # dependency never holds back pacman upgrades.
 depends=('quickshell' 'power-profiles-daemon' 'alsa-utils' 'alsa-tools'
-         'brightnessctl' 'wireless_tools')
+         'brightnessctl' 'wireless_tools' 'eww' 'dgop')
 makedepends=('rsync')
 optdepends=('matugen: wallpaper-based color palette')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('671927c95227924974cfa4305f524ac2b36512320553ae0ba9eac89744968950')
+sha256sums=('76cd490e416eb63502d9151429674febdb86c3ad0948ed2654b8b883337c375d')
 
 package() {
     cd "$pkgname-$pkgver"
