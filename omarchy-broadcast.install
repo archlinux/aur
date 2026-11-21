@@ -32,6 +32,6 @@ post_upgrade() {
   cat <<EOF
 ==> omarchy-broadcast: restart the daemon to run the new version:
        systemctl --user try-restart omarchy-broadcastd
-    First-time setup: $_doc/docs/setup/daemon.md
+    First-time setup: $_doc/INSTALL.md
 EOF
 }
