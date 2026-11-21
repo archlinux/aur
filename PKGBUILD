@@ -2,7 +2,7 @@
 
 pkgname=fortran-fpm
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A Fortran package manager and build system"
 arch=('any')
@@ -48,7 +48,7 @@ check() {
 package() {
   cd "$srcdir/${pkgname##*-}-$pkgver"
 
-  _bootstrap/fpm install --flag "-g -fbacktrace -O3" --prefix "$pkgdir/usr"
+  _bootstrap/fpm install --features openmp --flag "-g -fbacktrace -O3" --prefix "$pkgdir/usr"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
