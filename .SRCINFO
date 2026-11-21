@@ -1,7 +1,7 @@
 pkgbase = trigonum
 	pkgdesc = Lightweight viewer for STL 3D models
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/devedetti/trigonum
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = trigonum
 	depends = libepoxy
 	depends = libgcc
 	depends = pango
-	source = trigonum-0.1.1.tar.gz::https://github.com/devedetti/trigonum/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 7f8f104757db0fff0b47e801b68661c17c03b8ff139ae2b2822919b8dc4b2518
+	source = trigonum-0.1.2.tar.gz::https://github.com/devedetti/trigonum/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 2f3f716dec63f3fb5009caa70e819c898d790728dab6b04e48e3eefd5373f458
 
 pkgname = trigonum
