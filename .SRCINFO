@@ -1,7 +1,7 @@
 pkgbase = nvidia-optical-flow-sdk-local
 	pkgdesc = NVIDIA Optical Flow SDK, packaged from the user's own download (personal use, not redistributable)
 	pkgver = 5.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.nvidia.com/opticalflow/download
 	arch = x86_64
 	license = LicenseRef-NVIDIA-DesignWorks
@@ -13,7 +13,7 @@ pkgbase = nvidia-optical-flow-sdk-local
 	options = !strip
 	options = !debug
 	options = staticlibs
-	source = omarchy-nvidia-sdks::git+https://github.com/rsd/omarchy-nvidia-sdks.git#commit=3be0fb976d281b0edc2704be141ff09e42abcd93
-	sha256sums = 11e6b911209c3eceed8e29117bad4d89111460553b4d4f417addc62038f9ec9c
+	source = omarchy-nvidia-sdks::git+https://github.com/rsd/omarchy-nvidia-sdks.git#commit=117dce47590cf44943e73811b6bf6b5462c173b3
+	sha256sums = 21e9de83464c9c5d5729b9ee7317576e9b0e79af22cf671c42265ba9a89a5007
 
 pkgname = nvidia-optical-flow-sdk-local
