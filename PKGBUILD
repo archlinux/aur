@@ -1,5 +1,5 @@
 pkgname=dsd-neo-git
-pkgver=2.12.1.r53.g03adee2
+pkgver=2.12.1.r54.g307bdc9
 pkgrel=1
 pkgdesc="Modular C/C++ digital voice decoder with SDR support and trunking. Supports DMR, P25 Phase 1/2, NXDN, D-STAR, YSF, M17, dPMR, X2-TDMA, EDACS/ProVoice and TETRA."
 arch=('x86_64' 'aarch64')
