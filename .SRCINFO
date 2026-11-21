@@ -1,0 +1,24 @@
+pkgbase = uqbit
+	pkgdesc = uQ's torrent app: a Qt Quick front-end for qBittorrent-nox that follows the uQ theme
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/asafelobotomy/uqbit
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qbittorrent-nox
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	optdepends = qt6-wayland: run natively on Wayland
+	optdepends = uq: Torrents page in uQ Settings
+	source = uqbit-0.1.0.tar.gz::https://github.com/asafelobotomy/uqbit/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 984bd7077e6ee597e257421767c9c025f9fce2a877638dc462dce1a150129a31
+
+pkgname = uqbit
