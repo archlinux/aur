@@ -1,4 +1,4 @@
-# Maintainer: abdul444
+# Maintainer: Amog-us <ask at amogussugomus at proton dot me>
 
 pkgname=rats-search
 pkgver=2.3.6
