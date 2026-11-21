@@ -1,0 +1,6 @@
+# Local reference + scratch - never uploaded to the AUR
+README.local.md
+local-test/
+*.pkg.tar.zst
+src/
+pkg/

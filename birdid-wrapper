@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# birdid - AUR / system-wide launcher wrapper.
+#
+# Installed as /usr/bin/birdid by the birdid-git AUR package. The package
+# ships the pipeline + eBird seed data read-only under /usr/share/birdid, but
+# `--download` / `--update` / `--initialize` write generated tables into the
+# data dir, so it must be writable. This wrapper provisions a user-writable
+# copy of the eBird data in the XDG data home on first use, points the
+# pipeline at it via BIRDID_DATA_DIR, then execs the real launcher.
+#
+# Overrides (for custom installs / testing; normally unset):
+#   BIRDID_SYSTEM_DATA   read-only seed dir  [default /usr/share/birdid/ebird]
+#   BIRDID_LAUNCHER      real launcher to exec [default /usr/share/birdid/pipeline/birdid]
+set -eu
+
+SYSTEM_DATA="${BIRDID_SYSTEM_DATA:-/usr/share/birdid/ebird}"
+LAUNCHER="${BIRDID_LAUNCHER:-/usr/share/birdid/pipeline/birdid}"
+SEED_STAMP="$SYSTEM_DATA/.seed-version"
+
+if [ ! -d "$SYSTEM_DATA" ]; then
+    printf 'birdid: ERROR: system eBird data not found: %s\n' "$SYSTEM_DATA" >&2
+    printf 'birdid: reinstall the birdid-git package.\n' >&2
+    exit 1
+fi
+
+# ---- user-writable data home ----------------------------------------------
+if [ -n "${XDG_DATA_HOME:-}" ]; then
+    DATA_ROOT="${XDG_DATA_HOME%/}/birdid"
+else
+    DATA_ROOT="${HOME%/}/.local/share/birdid"
+fi
+DATA_DIR="$DATA_ROOT/ebird"
+
+# ---- provision -------------------------------------------------------------
+provision() {
+    if [ ! -e "$DATA_DIR" ]; then
+        # first run: copy the whole seed tree (incl. curated regions/)
+        mkdir -p "$DATA_ROOT"
+        cp -a "$SYSTEM_DATA" "$DATA_DIR"
+        return 0
+    fi
+
+    # Refresh the curated seed files when the installed package version
+    # changed, but never clobber user-downloaded data (regions_generated/ and
+    # the eBird API v2023 taxonomy) - those only ever live in the user copy.
+    local sys_ver="" cur_ver=""
+    [ -f "$SEED_STAMP" ] && sys_ver="$(cat "$SEED_STAMP" 2>/dev/null || true)"
+    [ -f "$DATA_DIR/.seed-version" ] && cur_ver="$(cat "$DATA_DIR/.seed-version" 2>/dev/null || true)"
+    if [ -n "$sys_ver" ] && [ "$sys_ver" != "$cur_ver" ]; then
+        ( cd "$SYSTEM_DATA" && \
+          tar -cf - --exclude='./regions_generated' --exclude='./eBird_Taxonomy_v2023.csv' . ) | \
+          ( cd "$DATA_DIR" && tar -xf - ) \
+            || printf 'birdid: WARNING: could not refresh seed data\n' >&2
+    fi
+}
+
+provision
+
+# the pipeline never writes to the read-only /usr/share copy
+export BIRDID_DATA_DIR="$DATA_DIR"
+exec "$LAUNCHER" "$@"

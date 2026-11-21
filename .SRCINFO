@@ -1,0 +1,20 @@
+pkgbase = birdid-git
+	pkgdesc = Offline bird-photo identification with BioCLIP 2 (eBird/Clements taxonomy, XMP sidecars)
+	pkgver = r54.134d583
+	pkgrel = 1
+	url = https://github.com/Felix-LIKE/local-bird-id
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = perl-image-exiftool
+	depends = python
+	depends = python-lxml
+	depends = python-numpy
+	depends = python-pybioclip
+	depends = python-requests
+	source = birdid-git::git+https://github.com/Felix-LIKE/local-bird-id.git#branch=main
+	source = birdid-wrapper
+	sha256sums = SKIP
+	sha256sums = 410261edb05e3694101fdaa18e0cb08bc9f6307fac8de9c36d8585b38caba080
+
+pkgname = birdid-git
