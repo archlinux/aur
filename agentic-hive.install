@@ -14,13 +14,22 @@ _claude_hooks() {
 _legacy_install() {
   if [ -e /var/lib/agentic-hive-install/state.json ] || [ -e /etc/systemd/system/hive-web.service ]; then
     echo ":: agentic-hive: a copy installed by install/hive-install is still present."
-    echo "   Its units in /etc/systemd/system override this package's units. Remove it with:"
-    echo "     sudo /path/to/agentic-hive/install/hive-install --beekeeper <you> --uninstall"
-    echo "   (the habitat in /srv/hive is kept), then: sudo systemctl daemon-reload"
+    echo "   Its units in /etc/systemd/system override this package's units. Remove it, keeping"
+    echo "   the hive account that owns /srv/hive, with:"
+    echo "     sudo /path/to/agentic-hive/install/hive-install --beekeeper <you> --uninstall --keep-account"
+    echo "   then: sudo systemctl daemon-reload"
   fi
 }
 
+# pacman applies sysusers/tmpfiles in hooks after this script, so create the
+# account and habitat now; units that start before them fail.
+_account() {
+  systemd-sysusers /usr/lib/sysusers.d/agentic-hive.conf >/dev/null 2>&1 || true
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/agentic-hive.conf >/dev/null 2>&1 || true
+}
+
 post_install() {
+  _account
   _claude_hooks merge
   systemctl enable --now agentic-hive-init.service >/dev/null 2>&1 || true
   _legacy_install
@@ -37,6 +46,7 @@ EOF
 }
 
 post_upgrade() {
+  _account
   _claude_hooks merge
   _legacy_install
   # Running member sessions keep going; they pick up the new CLI on their

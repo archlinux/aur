@@ -2,7 +2,7 @@
 pkgname=agentic-hive-git
 _pkgname=agentic-hive
 pkgver=0.1.0.r62.g4840de9
-pkgrel=1
+pkgrel=2
 pkgdesc="Persistent Unix habitat for Claude Code, Codex, OpenCode and Antigravity agents sharing projects"
 arch=('any')
 url="https://github.com/tctinh/agentic-hive"
