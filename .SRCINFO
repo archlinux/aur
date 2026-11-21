@@ -1,6 +1,6 @@
 pkgbase = paseo-cli-edge
 	pkgdesc = Command-line interface for controlling Paseo AI coding agents (edge - latest upstream release, beta or stable)
-	pkgver = 0.17.0_beta.1
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/getpaseo/paseo/tree/main/packages/cli
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = paseo-cli-edge
 	conflicts = paseo-desktop-bin-edge
 	conflicts = paseo-desktop-git
 	conflicts = paseo-desktop-git-bin
-	noextract = cli-0.17.0_beta.1.tgz
+	noextract = cli-0.17.0.tgz
 	options = !strip
-	source = cli-0.17.0_beta.1.tgz::https://registry.npmjs.org/@getpaseo/cli/-/cli-0.17.0-beta.1.tgz
-	source = LICENSE-0.17.0_beta.1::https://raw.githubusercontent.com/getpaseo/paseo/v0.17.0-beta.1/LICENSE
-	sha256sums = b8cc1d1636669118d910355843d89609cab05267239966e707503cd72580667a
+	source = cli-0.17.0.tgz::https://registry.npmjs.org/@getpaseo/cli/-/cli-0.17.0.tgz
+	source = LICENSE-0.17.0::https://raw.githubusercontent.com/getpaseo/paseo/v0.17.0/LICENSE
+	sha256sums = 338d83ff999242b69a1953b9ae912464d6b85c2a115b819785d9c079b45bfd7d
 	sha256sums = 79d5aedce6aa0adc547336dc1bd34c5cc9308ba110fac7079ed97515ee573ad3
 
 pkgname = paseo-cli-edge
