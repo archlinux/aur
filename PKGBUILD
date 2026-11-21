@@ -1,7 +1,7 @@
 # Maintainer: tctinh
 pkgname=agentic-hive-git
 _pkgname=agentic-hive
-pkgver=0.1.0.r0.g0000000
+pkgver=0.1.0.r62.g4840de9
 pkgrel=1
 pkgdesc="Persistent Unix habitat for Claude Code, Codex, OpenCode and Antigravity agents sharing projects"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = agentic-hive-git
 	pkgdesc = Persistent Unix habitat for Claude Code, Codex, OpenCode and Antigravity agents sharing projects
-	pkgver = 0.1.0.r0.g0000000
+	pkgver = 0.1.0.r62.g4840de9
 	pkgrel = 1
 	url = https://github.com/tctinh/agentic-hive
 	install = agentic-hive.install
