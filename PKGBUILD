@@ -88,18 +88,10 @@ package() {
   # The prebuilt llama backends ship RUNPATH "$ORIGIN:". ld.so ignores an empty
   # entry in DT_RUNPATH, but it reads as a search of the working directory, and
   # the Vulkan build additionally names its maintainer's own SDK prefix
-  # (/opt/vulkan-sdk/x86_64/lib) that no Arch system has. Only $ORIGIN earns
-  # its place: it resolves each of these libraries against its siblings.
-  local elf runpath kept
-  while IFS= read -r -d '' elf; do
-    runpath=$(readelf -d "$elf" 2>/dev/null | sed -n 's/.*RUNPATH.*\[\(.*\)\]/\1/p')
-    [[ -n $runpath ]] || continue
-    kept=$(tr ':' '\n' <<<"$runpath" | grep -E '^\$\{?ORIGIN\}?(/|$)' | paste -sd:)
-    if [[ -n $kept ]]; then
-      patchelf --set-rpath "$kept" "$elf"
-    else
-      patchelf --remove-rpath "$elf"
-    fi
-  done < <(find "${node_root}/node_modules/@node-llama-cpp" -type f \
-             \( -name '*.so' -o -name '*.so.*' -o -name '*.node' \) -print0)
+  # (/opt/vulkan-sdk/x86_64/lib) that no Arch system has. $ORIGIN alone is what
+  # these libraries need — it resolves each against its siblings — and no bin/
+  # sits beside them, so the addon's extra $ORIGIN/../bin entry finds nothing.
+  find "${node_root}/node_modules/@node-llama-cpp" -path '*/bins/linux-x64*/*' \
+    -type f \( -name '*.so' -o -name '*.so.*' -o -name '*.node' \) \
+    -exec patchelf --set-rpath '$ORIGIN' {} +
 }
