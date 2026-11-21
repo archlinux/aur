@@ -7,8 +7,8 @@ pkgdesc="Library for encoding and decoding .avif files"
 arch=('i686' 'x86_64')
 url="https://github.com/AOMediaCodec/libavif"
 license=('BSD-2-Clause')
-depends=('glibc' 'aom' 'dav1d' 'libjpeg-turbo' 'libpng' 'librav1e.so' 'libsharpyuv.so' 'libyuv' 'svt-av1')
-makedepends=('git' 'cmake' 'nasm' 'pkgconf' 'gdk-pixbuf2')
+depends=('glibc' 'libgcc' 'libstdc++' 'libyuv' 'svt-av1' lib{aom,dav1d,gdk_pixbuf-2.0,jpeg,png16,rav1e,sharpyuv}.so)
+makedepends=('git' 'cmake' 'aom' 'dav1d' 'gdk-pixbuf2' 'libjpeg-turbo' 'libpng' 'libwebp' 'nasm' 'pkgconf' 'rav1e')
 provides=("libavif=$pkgver")
 conflicts=('libavif')
 source=("git+https://github.com/AOMediaCodec/libavif.git")
@@ -19,7 +19,7 @@ pkgver() {
   cd "libavif"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
