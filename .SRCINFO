@@ -1,0 +1,17 @@
+pkgbase = termmark
+	pkgdesc = Minimal C++ Markdown viewer for the terminal (with leaf-style table rendering)
+	pkgver = 1.0.0
+	pkgrel = 14
+	url = https://github.com/ishanawal/TermMark
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	source = termmark-1.0.0.tar.gz::https://github.com/ishanawal/TermMark/archive/refs/tags/v1.0.0.tar.gz
+	source = termmark-tables.patch
+	sha256sums = 525193e4dce145df0ac638500883ccc6d272651b5cac2d321ef9da778cbf82f3
+	sha256sums = 4ffc7f5db26da08b3b8f52255a4a23d3ddc43a21f6f8c7853bbbe7e4b7c1b44d
+
+pkgname = termmark
