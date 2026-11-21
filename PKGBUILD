@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=revolut-x-mcp
-pkgver=1.0.53
+pkgver=1.0.54
 pkgrel=1
 pkgdesc="Read-only MCP server for the Revolut X crypto exchange"
 arch=('any')
@@ -12,7 +12,7 @@ source=(
   "$pkgname-wrapper"
 )
 noextract=("$pkgname-$pkgver.mcpb")
-sha256sums=('b28964ca3c75accfa68e174d5e5493484ef0518106e52c9fb7b79be33cd6f6ba'
+sha256sums=('c7e2f7e2b7e57e40b2d2bead96056d9283ce7ad21163972a1f9ac6f9633d35f4'
             '743d6fd897f4f5a9e21917c9793e4d137f95f4497cf761cb3fa94f0997189ef1')
 
 latestver() {
