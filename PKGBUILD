@@ -2,7 +2,7 @@
 # Maintainer: Daniel Lee Harple <git@dlh.dev>
 
 pkgname='vedi-bin'
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='Pager for colored text; select with the keyboard and copy'
 url='https://github.com/dlh/vedi'
@@ -13,10 +13,10 @@ conflicts=('vedi')
 depends=('gcc-libs' 'glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/dlh/vedi/releases/download/v${pkgver}/vedi_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('927793f36782fb4a058d6b15e507ff38db8189188251c8b940526980eb757616')
+sha256sums_aarch64=('5ed65ce748ce05d0e822ea9524b4503b9ff4c31b5900f89464cee845d5cb383a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/dlh/vedi/releases/download/v${pkgver}/vedi_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('6f97571b531fa486cdbada46a339337cfd1b5014b0493498cf1a1071c4cc7cc6')
+sha256sums_x86_64=('0828f9019a70daea29c8fc8e81fa8302d9209395b79c67eab88a74cca5712b5a')
 
 package() {
   install -Dm755 vedi "${pkgdir}/usr/bin/vedi"
@@ -25,5 +25,6 @@ package() {
   install -Dm644 completions/vedi.bash "${pkgdir}/usr/share/bash-completion/completions/vedi"
   install -Dm644 completions/_vedi "${pkgdir}/usr/share/zsh/site-functions/_vedi"
   install -Dm644 completions/vedi.fish "${pkgdir}/usr/share/fish/vendor_completions.d/vedi.fish"
+  install -Dm644 -t "${pkgdir}/usr/share/vedi/themes" themes/*.conf
   install -Dm644 -t "${pkgdir}/usr/share/doc/vedi" README.md CHANGELOG.md docs/*.md
 }
