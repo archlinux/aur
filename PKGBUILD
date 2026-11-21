@@ -2,7 +2,7 @@
 
 pkgname=fortran-fpm-bin
 _name=fpm
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 epoch=
 pkgdesc='A Fortran package manager and build system'
@@ -21,16 +21,14 @@ backup=()
 options=()
 install=
 changelog=
-_suf="-gcc-12"
+_suf="-gcc-14"
 noextract=()
 source=(
   "https://github.com/fortran-lang/fpm/releases/download/v${pkgver}/${_name}-${pkgver}-linux-${arch}${_suf}"
   "https://raw.githubusercontent.com/fortran-lang/fpm/main/LICENSE"
 )
-sha256sums=(
-  2e50a8649ac4136b9cf6b63c5d1b01adf26c02eedc18f32e16261c0ce655d46d
-  b7e33601c0130d1a674fcc772ed9b7804460d1896469a5b219ba4062efcd9fb9
-)
+sha256sums=('8dbc48ce5491cb862cfc1ec8740dcb2da0ec1555db079ace31a01b3a6e6f3437'
+            'b7e33601c0130d1a674fcc772ed9b7804460d1896469a5b219ba4062efcd9fb9')
 
 package() {
 	install -Dm 755 "${srcdir}/${_name}-${pkgver}-linux-${arch}${_suf}" "${pkgdir}/usr/bin/${_name}"
