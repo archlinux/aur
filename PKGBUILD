@@ -39,8 +39,8 @@ makedepends=(patchelf)
 # the vendor directory carries a 3-part version, the file name a 4-part one
 source=("https://www.aladdin-rd.ru/upload/downloads/JaCarta_UC/jacarta-${pkgver%.*}/lunix/distributions/jacartauc_${pkgver}_rpm_x64.tgz"
         "LICENSE")
-sha256sums=("d62d97880b48c5f56afcd269d87d8917e672b76c434112d759ab5fb6087e8cc4"
-            "2ec69bd9eae51ca29e96be8e88ad5ec5e92865515d4c207554c240fe8d8f34c3")
+sha256sums=('d62d97880b48c5f56afcd269d87d8917e672b76c434112d759ab5fb6087e8cc4'
+            '2ec69bd9eae51ca29e96be8e88ad5ec5e92865515d4c207554c240fe8d8f34c3')
 # Do NOT enable strip: GNU strip breaks the PT_LOAD size of the Aladdin
 # middleware (libjcPKCS11-2, libASEP11, libjcPKCS11ds). They reserve zero-filled
 # memory beyond .bss; strip recalculates p_memsz as equal to p_filesz, drops
