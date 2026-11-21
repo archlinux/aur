@@ -24,6 +24,7 @@ pkgbase = avernella-bin
 	depends = gtk4
 	depends = webkitgtk-6.0
 	optdepends = ffmpeg: video playback and recording
+	optdepends = vulkan-icd-loader: native GPU rendering with a Vulkan driver
 	optdepends = xdg-desktop-portal: screenshots and screen sharing
 	optdepends = zbar: scanning QR images
 	provides = avernella=0.1+git2.2453429

@@ -10,6 +10,7 @@ depends=('glibc' 'sdl2-compat' 'cairo' 'pango' 'glib2' 'qrencode' 'curl'
          'libcrypto.so=3-64' 'libvpx.so=12-64' 'libjpeg-turbo' 'libpng' 'libwebp' 'opus'
          'libsrtp' 'libpipewire' 'zlib' 'gtk4' 'webkitgtk-6.0')
 optdepends=('ffmpeg: video playback and recording'
+            'vulkan-icd-loader: native GPU rendering with a Vulkan driver'
             'xdg-desktop-portal: screenshots and screen sharing'
             'zbar: scanning QR images')
 provides=("avernella=$pkgver")
