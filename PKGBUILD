@@ -4,7 +4,7 @@ pkgname="${_appname}-ide"
 _pkgname='Qoder IDE'
 pkgver=1.41.1
 _electronversion=42
-pkgrel=2
+pkgrel=3
 pkgdesc="AI native IDE for real-world software development."
 arch=('x86_64')
 url="https://qoder.com/"
@@ -34,7 +34,7 @@ source=(
 )
 sha256sums=('77c7753fdeedaded6495829788e59cbc4b56776a2b2c670520e24abf04d810d5'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
-            'c0c25525cc19e8a8cf02e4d2887ffd77a3be17afdc9fa0b223ef1ca9d243c091'
+            'fbafef871da672c41492faccaba4c542b52412b96cd55b7cbded659028360c29'
             '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21'
             'eb3c6be5a67ca366fe1b15283535e2f5221e179b9dcd2cb1c914f5c3746b2fb1')
 pkgver() {

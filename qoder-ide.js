@@ -2,6 +2,15 @@
 try {
 	const path = require('path');
 	const fs = require('fs');
+	// Electron leaves its own CLI arguments in process.argv, and 0.5.16 treats
+	// every existing path there as a file to attach to the prompt at startup.
+	// Drop the --require <this file> pair; the module is already loaded here.
+	for (let i = process.argv.length - 1; i > 0; i--) {
+		if (process.argv[i] === __filename &&
+			(process.argv[i - 1] === '--require' || process.argv[i - 1] === '-r')) {
+			process.argv.splice(i - 1, 2);
+		}
+	}
 	const resolveAppDir = () => {
 		const argv = process.argv || [];
 		for (let i = 0; i < argv.length; i++) {
