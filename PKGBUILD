@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=fabric-d77
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="GTK desktop shell for Wayland compositors, built on Fabric"
 arch=('any')
@@ -26,6 +26,8 @@ depends=(
   'gtk-session-lock'
   'alsa-utils'
   'brightnessctl'
+  'eww'
+  'dgop'
 )
 optdepends=(
   'awww: wallpaper picker backend'
@@ -38,7 +40,7 @@ optdepends=(
 )
 backup=('etc/pam.d/fabric-d77')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d0c1d5c2f9826d89e07e69ab4584fbcc6540d915ba47e36fa36847141dcc69a0')
+sha256sums=('931401a6b1dfdbc6b97e4ca48f88e1fa273dfbd3395f03c269f166f075d5010c')
 
 package() {
     cd "$pkgname-$pkgver"
