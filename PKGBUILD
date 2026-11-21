@@ -59,7 +59,7 @@ package_python-dlib() {
 
 package_python-dlib-cuda() {
   depends+=('cuda' 'cudnn' 'python')
-  provides=('python-dlib')
+  provides=("python-dlib=${pkgver}")
   conflicts=('python-dlib')
   cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
   python setup.py install --skip-build --prefix=/usr --root="$pkgdir" --optimize=1
