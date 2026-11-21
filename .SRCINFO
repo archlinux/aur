@@ -1,6 +1,6 @@
 pkgbase = scale_tail
 	pkgdesc = System-tray control centre for the Tailscale CLI
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/scale_tail
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = scale_tail
 	optdepends = uq: Tailscale tile in uQ quick settings instead of the tray
 	options = !lto
 	options = !debug
-	source = scale_tail-0.7.1.tar.gz::https://github.com/asafelobotomy/scale_tail/archive/refs/tags/v0.7.1.tar.gz
-	sha256sums = 78b05c4bdb75945b521b90c5a23346e219dfc2413afc2dca8786da68a37e0a7d
+	source = scale_tail-0.7.2.tar.gz::https://github.com/asafelobotomy/scale_tail/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = a3965bfc998e1669b36434ad8cd243c3f0500db870dea39748f229643483a682
 
 pkgname = scale_tail
