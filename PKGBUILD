@@ -2,7 +2,7 @@
 # Contributor: Rowan <rowan@zeusteam.dev>
 pkgname=ferron-rc
 pkgver=3.0.0rc.11
-pkgrel=3
+pkgrel=4
 pkgdesc='A fast, modern web server written in Rust (release candidate)'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'riscv64')
 url='https://ferron.sh'
