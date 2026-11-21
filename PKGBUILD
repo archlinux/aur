@@ -3,7 +3,7 @@
 # push-to-aur.sh replaces pkgver from the release tag before publication and
 # updpkgsums fills the checksum once that tag is public.
 pkgname=opal-media-player
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Play everything — media player, universal search, torrent streaming, local AI, one native binary"
 arch=('x86_64')
@@ -16,12 +16,13 @@ depends=(
     'libtorrent-rasterbar'
     'curl'
     'ffmpeg'
+    'libwebp'
 )
 makedepends=(
     'zig>=0.17.0'
     'gcc'
     'pkgconf'
-    'libwebp'
+    'boost'
 )
 optdepends=(
     'yt-dlp: YouTube playback and downloads'
@@ -30,7 +31,7 @@ optdepends=(
     'python: voice helper scripts (STT/TTS servers)'
 )
 source=("Opal-$pkgver.tar.gz::https://github.com/debpalash/Opal/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5e3b174151d11d8a38259e6cd952dff69ca9de39b3ad06410b44f9f175c4ebc9')
+sha256sums=('d7628b814aec08143f4da562a58f813783d0dc6ce3bc48162574d83023ce5bd7')
 
 build() {
     cd "Opal-$pkgver"
@@ -39,12 +40,12 @@ build() {
     g++ -std=c++17 -O3 -shared -fPIC \
         src/torrent_wrapper.cpp \
         -o libtorrent_wrapper.so \
-        -ltorrent-rasterbar
+        $(pkg-config --cflags --libs libtorrent-rasterbar)
 
     # 2. The app. -fsys=sdl2 links the system SDL2 (Wayland support);
     #    the binary carries $ORIGIN/../lib/opal in its rpath, matching the
     #    install layout below. Pin x86_64_v2 so AUR builds stay portable.
-    zig build -Doptimize=safe -fsys=sdl2 -Dcpu=x86_64_v2
+    zig build -Doptimize=ReleaseSafe -Dsystem-webp=true -fsys=sdl2 -Dcpu=x86_64_v2
 }
 
 package() {
