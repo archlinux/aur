@@ -1,6 +1,6 @@
 pkgbase = nekomote
 	pkgdesc = Lightweight native interactive NEKOPARA (E-mote) anime wallpaper engine for Linux.
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://www.nekopara.uk/archives/NekoMote.html
 	arch = x86_64
@@ -34,11 +34,11 @@ pkgbase = nekomote
 	depends = glfw
 	optdepends = libplasma: Use the KDE Wallpaper
 	optdepends = python: Extract assets from Nekopara Game
-	optdepends = nekomote-assets=0.7.0: Managed assets
+	optdepends = nekomote-assets=0.7.1: Managed assets
 	optdepends = libxrandr: Using wallpaper in the X11 session
-	source = git+https://github.com/Chocola-X/NekoMote.git#tag=v0.7.0
+	source = git+https://github.com/Chocola-X/NekoMote.git#tag=v0.7.1
 	source = 0003-fix-test-flags.diff
-	sha256sums = d8933c369a676279ec19a0b087dce2e7a820873ff0fd085fa592457859a90c7c
+	sha256sums = 91a1be3c970d0e06dffbf95687d58f2c0dca69231cf3126736cb475ca6099f0e
 	sha256sums = ea311d5381df1d1076ee728d25309322738b83fb72531c2072a76b78acc862ad
 
 pkgname = nekomote
