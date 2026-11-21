@@ -1,7 +1,7 @@
 pkgbase = moonshine
 	pkgdesc = Streaming server for Moonlight clients, written in Rust.
-	pkgver = 0.18.0
-	pkgrel = 2
+	pkgver = 0.19.0
+	pkgrel = 1
 	url = https://github.com/hgaiser/moonshine
 	arch = x86_64
 	license = BSD-2-Clause
@@ -22,9 +22,9 @@ pkgbase = moonshine
 	provides = moonshine
 	conflicts = moonshine
 	options = !lto
-	source = https://github.com/hgaiser/moonshine/archive/refs/tags/v0.18.0.tar.gz
-	source = ferriscope-0.1.0.tar.gz::https://github.com/hgaiser/ferriscope/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 7eb2e22a8ed48137833ba281770d3b45f6a1aa71814b4877f28cae620d4d4a5a
-	sha256sums = f2da0cb2d66756f691d2c0ca55b8d04eef6e5c0500ba8fbc6d9bd68c45960baa
+	source = https://github.com/hgaiser/moonshine/archive/refs/tags/v0.19.0.tar.gz
+	source = ferriscope-0.2.2.tar.gz::https://github.com/hgaiser/ferriscope/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = f24aa3eeef166cdd646247c6ed8e13beec51ca1651163da5ad01649522361b9d
+	sha256sums = 8fbfcce2c117e558da8955e32d7d1cba5f21863040e324b36e0dcfabc3dc1ef5
 
 pkgname = moonshine

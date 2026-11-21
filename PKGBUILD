@@ -1,9 +1,9 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine
-pkgver=0.18.0
-pkgrel=2
-_ferriscope_ver=0.1.0
+pkgver=0.19.0
+pkgrel=1
+_ferriscope_ver=0.2.2
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
@@ -27,8 +27,8 @@ source=(
 	"https://github.com/hgaiser/moonshine/archive/refs/tags/v$pkgver.tar.gz"
 	"ferriscope-$_ferriscope_ver.tar.gz::https://github.com/hgaiser/ferriscope/archive/refs/tags/v$_ferriscope_ver.tar.gz"
 )
-sha256sums=('7eb2e22a8ed48137833ba281770d3b45f6a1aa71814b4877f28cae620d4d4a5a'
-            'f2da0cb2d66756f691d2c0ca55b8d04eef6e5c0500ba8fbc6d9bd68c45960baa')
+sha256sums=('f24aa3eeef166cdd646247c6ed8e13beec51ca1651163da5ad01649522361b9d'
+            '8fbfcce2c117e558da8955e32d7d1cba5f21863040e324b36e0dcfabc3dc1ef5')
 
 build() {
 	cd "$srcdir/moonshine-$pkgver"
@@ -43,6 +43,7 @@ package() {
 	cd "$srcdir/moonshine-$pkgver"
 	install -Dm755 target/release/moonshine "$pkgdir/usr/bin/moonshine"
 	install -Dm755 dist/start-moonshine.sh "$pkgdir/usr/bin/start-moonshine.sh"
+	install -Dm755 dist/moonshine-gamescope "$pkgdir/usr/bin/moonshine-gamescope"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$srcdir/ferriscope-$_ferriscope_ver/LICENSE" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE.ferriscope"
