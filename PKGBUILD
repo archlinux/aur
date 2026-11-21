@@ -2,7 +2,7 @@
 # Contributor: David Lumaye <david at chindit dot be>
 
 pkgname=frankenphp
-pkgver=1.13.5
+pkgver=1.13.6
 pkgrel=1
 pkgdesc="The modern PHP app server"
 arch=('x86_64')
@@ -10,16 +10,8 @@ url="https://frankenphp.dev"
 license=('MIT')
 depends=('php-embed' 'watcher')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/php/frankenphp/archive/refs/tags/v$pkgver.tar.gz"
-	"nts-fix.patch")
-sha256sums=('c853ae46bfa87a355a8dd3f18e25fb7e986a9fbff4b0ae70139b7fe6662f4a83'
-	'3f4ccf2fe29ca224aaec70680846ea09cdefdad0e94f2ffeda0b1dfab02a3280')
-
-prepare() {
-	cd "${pkgname}-${pkgver}"
-	# https://github.com/php/frankenphp/issues/2818
-	patch -p1 -i ../nts-fix.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/php/frankenphp/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('bc68359ecb7781b717af1a9ee6777c65ec7bff79508ad2159b6bc4ff73c4c23a')
 
 build() {
 	# like yay's PKGBUILD
