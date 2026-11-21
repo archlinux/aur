@@ -1,6 +1,6 @@
 # Maintainer: Kacper Adler <kacper at kacperadler dot info>
 pkgname=anker-c200
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Live preview and settings (FOV, mic pickup, mirror, anti-flicker) for the Anker PowerConf C200 webcam"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc' 'libglvnd' 'libx11' 'libxcursor' 'libxi' 'libxinerama' 'libxrandr' 'libxxf86vm' 'libxkbcommon' 'wayland')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('191d03156ec0df9f1beb83a84816861557e22fede5633a5253e2ff2cff9a279f')
+sha256sums=('33a49f414fb6cf1c02a526cff0a3d624211e44ef39ccc84e46aa68ebd1c2d46c')
 
 build() {
   cd "anker-c200-linux-$pkgver"
@@ -28,4 +28,6 @@ package() {
   install -Dm755 anker-c200 "$pkgdir/usr/bin/anker-c200"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 packaging/io.github.upgreydd.anker-c200.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 packaging/anker-c200.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/anker-c200.svg"
 }

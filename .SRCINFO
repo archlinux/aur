@@ -1,6 +1,6 @@
 pkgbase = anker-c200
 	pkgdesc = Live preview and settings (FOV, mic pickup, mirror, anti-flicker) for the Anker PowerConf C200 webcam
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/upgreydd/anker-c200-linux
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = anker-c200
 	depends = libxxf86vm
 	depends = libxkbcommon
 	depends = wayland
-	source = anker-c200-0.1.0.tar.gz::https://github.com/upgreydd/anker-c200-linux/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 191d03156ec0df9f1beb83a84816861557e22fede5633a5253e2ff2cff9a279f
+	source = anker-c200-0.1.1.tar.gz::https://github.com/upgreydd/anker-c200-linux/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 33a49f414fb6cf1c02a526cff0a3d624211e44ef39ccc84e46aa68ebd1c2d46c
 
 pkgname = anker-c200
