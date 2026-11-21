@@ -24,7 +24,7 @@
 # is an absolute symlink — safe by design.
 
 pkgname=c0wrk-openvino
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='Desktop AI coding-agent built with Wails (Go + React) — OpenVINO flavor, upstream release binaries'
 arch=(x86_64)
@@ -43,7 +43,7 @@ source=("LICENSE::$url/raw/v$pkgver/LICENSE" 'c0wrk.desktop' 'c0wrk.png')
 sha256sums=('26a0f4863f365c987a6762b0a48e987136543118989b2f00f2d57c70a45ffd15' '817980d6896b98a304ade9b151125408e83bdc00c0e7f006eb5f6d7bb486fe62' '7004f261089ce6744435156a4c6952e2d4d87ad6eec1a1a9af347ae6a1f76938')
 
 source_x86_64=("c0wrk-desktop-$pkgver-linux-amd64-openvino.tar.gz::$url/releases/download/v$pkgver/c0wrk-desktop-linux-amd64-openvino.tar.gz")
-sha256sums_x86_64=('1bccec1eac20b67bf23498991163a3cc50fb5010456177b235961ed4301ea543')
+sha256sums_x86_64=('a96b78a07f5a0b5c15a5973310d6c2db7c6a10dea3627c3f7ae8a59c7800c387')
 
 package() {
   cd "$srcdir"
