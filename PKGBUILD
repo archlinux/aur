@@ -5,8 +5,8 @@
 
 _pkgname=prusa-slicer
 pkgname=$_pkgname-no-webkit
-pkgver=2.9.6
-pkgrel=3
+pkgver=2.9.7
+pkgrel=1
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r, without webkit support)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
@@ -32,8 +32,8 @@ source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver/_/-}/${_
         use_glad.patch
         catch2-missing-include.patch
         system-libigl.patch
-        remove-webkit-2.9.6.patch)
-sha256sums=('8f9f40d93838b912bd9ed35e598c0b7eabd08024cb18aa620c6aa9f9d49d0b57'
+        remove-webkit-2.9.7.patch)
+sha256sums=('b0d42aa1c995541dd9028be61e3ec2e05d05fd4c92da28d1a65c7a26b049f478'
             '9cd41e83bf05f33b60a5ec99a166f10ac24a4f970dc7853ff67a9635fe21bdb7'
             '42b60b5d3c5912569feee7a7fd886ad98581237002da242f211a651005e3a911'
             'bd5d5b2cdc60df0add095dc7b77643022a7245b74dc9d7720fdc50eb203dba08'
@@ -71,7 +71,7 @@ prepare() {
   patch -Np1 -i "${srcdir}"/boost-1.88.patch
   patch -Np1 -i "${srcdir}"/boost-1.89.patch
   patch -Np1 -i "${srcdir}"/allow_wayland.patch
-  patch -Np1 -i "${srcdir}"/remove-webkit-2.9.6.patch
+  patch -Np1 -i "${srcdir}"/remove-webkit-2.9.7.patch
   # The following patch implements the idea found in
   # https://github.com/prusa3d/PrusaSlicer/pull/14440 but implements it by
   # generating the glad sources on the fly instead of checking them in and
