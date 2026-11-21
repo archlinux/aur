@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=camv-rnd-svn
-pkgver=r962
+pkgver=r1027
 pkgrel=1
 pkgdesc="free/open source, small, flexible viewer for PCB-related CAM file formats"
 arch=($CARCH)
@@ -10,7 +10,6 @@ license=('LGPL-2.0-or-later')
 provides=(${pkgname%-svn})
 conflicts=(${pkgname%-svn})
 depends=(
-    glibc
     # AUR
     librnd4
 )
