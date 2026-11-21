@@ -1,6 +1,6 @@
 pkgbase = cpplayer-bin
 	pkgdesc = Cross-platform music player (Material 3 Expressive) - prebuilt binaries
-	pkgver = 1.9.4
+	pkgver = 1.9.6
 	pkgrel = 1
 	url = https://github.com/Aurora-Nasa-1/CPPlayer-KMP
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = cpplayer-bin
 	depends = libxi
 	provides = cpplayer
 	conflicts = cpplayer
-	source = CPPlayer-1.9.4-linux-x64.tar.gz::https://github.com/Aurora-Nasa-1/CPPlayer-KMP/releases/download/v1.9.4/CPPlayer-1.9.4-linux-x64.tar.gz
-	sha256sums = b006204bdeee2788da26afd366f3b0fe43240abc7f0f2e97fbea19455bde6036
+	source = CPPlayer-1.9.6-linux-x64.tar.gz::https://github.com/Aurora-Nasa-1/CPPlayer-KMP/releases/download/v1.9.6/CPPlayer-1.9.6-linux-x64.tar.gz
+	sha256sums = cbe8e08b35de800abe18657511bfe00907742ac030eff1c79db25a4c3b539ebc
 
 pkgname = cpplayer-bin
