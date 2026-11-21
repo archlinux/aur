@@ -1,33 +1,29 @@
+# Maintainer: imxssible <https://dotify.fun>
 pkgname=nodotify
-pkgver=2.3.3
+pkgver=2.4.1
 pkgrel=1
-pkgdesc="t.me/nodotify | music player"
+pkgdesc="Music without limits. Combines all popular platforms in one app (Spotify, SoundCloud, Yandex Music, Apple Music, YouTube Music)"
 arch=('x86_64')
 url="https://dotify.fun"
-license=('custom')
+license=('custom:proprietary')
 depends=(
-  'webkit2gtk-4.1'
-  'libayatana-appindicator'
-  'glib2'
-  'gtk3'
-  'libsoup3'
-  'curl'
-  'openssl'
-  'cairo'
-  'pango'
-  'gdk-pixbuf2'
-  'pkgconf'
-  'libtool'
-  'desktop-file-utils'
-  'hicolor-icon-theme'
+    'webkit2gtk-4.1'
+    'gtk3'
+    'libsoup3'
+    'libayatana-appindicator'
+    'gst-plugins-base'
+    'gst-plugins-good'
+    'gst-plugins-bad'
+    'gst-plugins-ugly'
+    'gst-libav'
 )
 provides=('dotify')
 conflicts=('dotify')
-source=("https://dotify.fun/Dotify.deb")
-sha256sums=('a560f789e74bbe5b35dd4d642c39ab4a8eb8f577ffaae8c2b99f8b60f5f435fd')
+# the link always serves the latest build: the local name carries the version, so makepkg and
+# AUR helpers do not reuse a .deb cached by an earlier release
+source_x86_64=("dotify-${pkgver}.deb::https://dotify.fun/Dotify.deb")
+sha256sums_x86_64=('d7d81b593548a0c4605e47d15c8e4c737394ea654943e610307c3ee025f6f22a')
 
 package() {
-  cd "${srcdir}"
-  ar x Dotify.deb
-  tar -xf data.tar.* -C "${pkgdir}"
+    bsdtar -xf data.tar.* -C "${pkgdir}"
 }
