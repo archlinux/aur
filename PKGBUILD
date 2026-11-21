@@ -2,14 +2,14 @@
 
 pkgname=libavif-git
 pkgver=1.4.2.r41.g5a7fef63
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for encoding and decoding .avif files"
 arch=('i686' 'x86_64')
 url="https://github.com/AOMediaCodec/libavif"
 license=('BSD-2-Clause')
 depends=('glibc' 'libgcc' 'libstdc++' 'libyuv' 'svt-av1' lib{aom,dav1d,gdk_pixbuf-2.0,jpeg,png16,rav1e,sharpyuv}.so)
 makedepends=('git' 'cmake' 'aom' 'dav1d' 'gdk-pixbuf2' 'libjpeg-turbo' 'libpng' 'libwebp' 'nasm' 'pkgconf' 'rav1e')
-provides=("libavif=$pkgver")
+provides=("libavif=$pkgver" 'libavif.so')
 conflicts=('libavif')
 source=("git+https://github.com/AOMediaCodec/libavif.git")
 sha256sums=('SKIP')
