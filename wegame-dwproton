@@ -32,7 +32,6 @@ readonly backup_root="$state_dir/update-backups"
 readonly lock_file="$state_dir/launcher.lock"
 readonly prefix_config_marker="$prefix/.wegame-dwproton-config-v1"
 update_recovered=0
-update_managed_pending=0
 
 log() {
     printf '%s: %s\n' "$APP_ID" "$*"
@@ -110,69 +109,6 @@ prefix_is_active() {
     return 1
 }
 
-is_known_tgp_status() {
-    local line value
-    local saw_section=0 saw_perception=0 saw_guid=0
-    local saw_target_version=0 saw_old_version=0 saw_check_update_type=0
-    local saw_exit_op_source=0
-
-    [[ -f "$update_status" && ! -L "$update_status" ]] || return 1
-
-    while IFS= read -r line || [[ -n "$line" ]]; do
-        line=${line%$'\r'}
-        case "$line" in
-            '[tgp]')
-                ((saw_section == 0 && saw_perception == 0 && saw_guid == 0 &&
-                  saw_target_version == 0 && saw_old_version == 0 &&
-                  saw_check_update_type == 0 && saw_exit_op_source == 0)) || return 1
-                saw_section=1
-                ;;
-            Perception=*)
-                ((saw_section == 1 && saw_perception == 0)) || return 1
-                [[ "$line" == 'Perception=true' || "$line" == 'Perception=false' ]] ||
-                    return 1
-                saw_perception=1
-                ;;
-            Guid=*)
-                ((saw_section == 1 && saw_guid == 0)) || return 1
-                value=${line#Guid=}
-                [[ "$value" =~ ^[[:xdigit:]]{8}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{12}$ ]] ||
-                    return 1
-                saw_guid=1
-                ;;
-            TargetVersion=*)
-                ((saw_section == 1 && saw_target_version == 0)) || return 1
-                [[ "$line" == 'TargetVersion=' ]] || return 1
-                saw_target_version=1
-                ;;
-            OldVersion=*)
-                ((saw_section == 1 && saw_old_version == 0)) || return 1
-                value=${line#OldVersion=}
-                [[ "$value" =~ ^[0-9]+(\.[0-9]+){1,3}$ ]] || return 1
-                saw_old_version=1
-                ;;
-            CheckUpdateType=*)
-                ((saw_section == 1 && saw_check_update_type == 0)) || return 1
-                [[ "$line" == 'CheckUpdateType=0' ||
-                   "$line" == 'CheckUpdateType=1' ]] || return 1
-                saw_check_update_type=1
-                ;;
-            ExitOpSource=*)
-                ((saw_section == 1 && saw_exit_op_source == 0)) || return 1
-                value=${line#ExitOpSource=}
-                [[ "$value" =~ ^[0-9]+$ ]] || return 1
-                saw_exit_op_source=1
-                ;;
-            *)
-                return 1
-                ;;
-        esac
-    done < "$update_status"
-
-    ((saw_section == 1 && saw_perception == 1 && saw_guid == 1 &&
-      saw_target_version == 1 && saw_old_version == 1 &&
-      saw_check_update_type == 1))
-}
 is_confirmed_failure_status() {
     local status_path=$1 line
     local overwrite_status='' tick_move_file=''
@@ -199,39 +135,6 @@ is_confirmed_failure_status() {
     done < "$status_path"
 
     [[ "$overwrite_status" == '7299004' && "$tick_move_file" == '-1' ]]
-}
-
-
-
-classify_update() {
-    local -a payload_entries=()
-
-    if [[ ! -e "$update_payload" && ! -L "$update_payload" ]]; then
-        [[ ! -e "$update_status" && ! -L "$update_status" ]] && return 1
-        is_known_tgp_status && return 1
-        return 2
-    fi
-
-    if [[ ! -f "$update_status" || -L "$update_status" ||
-          ! -d "$update_payload" || -L "$update_payload" ]]; then
-        return 2
-    fi
-
-    if is_known_tgp_status; then
-        [[ -r "$update_payload" && -x "$update_payload" ]] || return 2
-        shopt -s nullglob dotglob
-        payload_entries=("$update_payload"/*)
-        shopt -u nullglob dotglob
-        # An empty staging directory must not block independent component recovery.
-        ((${#payload_entries[@]} == 0)) && return 1
-
-        [[ -f "$update_payload/wegame.exe" &&
-           ! -L "$update_payload/wegame.exe" ]] || return 2
-        return 3
-    fi
-
-    is_confirmed_failure_status "$update_status" || return 2
-    return 0
 }
 
 relative_parent() {
@@ -280,7 +183,7 @@ restore_pending_update() {
 }
 
 apply_confirmed_update() {
-    local payload_path=$1 status_path=$2 label=$3 require_client=$4
+    local payload_path=$1 status_path=$2 label=$3
     local source relative destination backup destination_parent temporary
     local backup_dir payload_name
     local -a source_files=() applied=() overwritten=() created=()
@@ -296,10 +199,6 @@ apply_confirmed_update() {
         die "The confirmed update payload is not a regular directory: '$payload_path'."
     [[ -f "$status_path" && ! -L "$status_path" ]] ||
         die "The confirmed update status is not a regular file: '$status_path'."
-    if ((require_client)); then
-        [[ -f "$payload_path/wegame.exe" && ! -L "$payload_path/wegame.exe" ]] ||
-            die 'The confirmed update payload does not contain a regular wegame.exe.'
-    fi
 
     shopt -s nullglob dotglob globstar
     for source in "$payload_path"/**; do
@@ -398,81 +297,40 @@ apply_confirmed_update() {
 }
 
 recover_nested_updates() {
-    local multi_group="$install_dir/multi_group"
-    local version_path version_name slot_path slot_name
-    local status_path payload_path
-    local -a version_paths=() slot_paths=()
-
-    [[ -e "$multi_group" || -L "$multi_group" ]] || return 0
-    [[ -d "$multi_group" && ! -L "$multi_group" ]] ||
-        die "The WeGame component update root is not a regular directory: '$multi_group'."
+    local multi_group="$install_dir/multi_group" slot_path version_path
+    local -a slot_paths=()
 
     shopt -s nullglob
-    version_paths=("$multi_group"/*)
+    slot_paths=("$multi_group"/*/*)
     shopt -u nullglob
-    for version_path in "${version_paths[@]}"; do
-        version_name=${version_path##*/}
-        [[ "$version_name" =~ ^[0-9]+(\.[0-9]+){1,3}$ ]] || continue
-        [[ -d "$version_path" && ! -L "$version_path" ]] ||
-            die "The WeGame component version path is unsafe: '$version_path'."
-
-        shopt -s nullglob
-        slot_paths=("$version_path"/*)
-        shopt -u nullglob
-        for slot_path in "${slot_paths[@]}"; do
-            slot_name=${slot_path##*/}
-            [[ "$slot_name" =~ ^[0-9]+$ ]] || continue
-            [[ -d "$slot_path" && ! -L "$slot_path" ]] ||
-                die "The WeGame component update slot is unsafe: '$slot_path'."
-
-            status_path="$slot_path/update.tmp"
-            payload_path="$slot_path/update_files"
-            [[ -e "$payload_path" || -L "$payload_path" ]] || continue
-            [[ -d "$payload_path" && ! -L "$payload_path" ]] ||
-                die "The WeGame component payload is unsafe: '$payload_path'."
-            is_confirmed_failure_status "$status_path" ||
-                die "Refusing an unknown or incomplete component update state in '$slot_path'."
-            apply_confirmed_update \
-                "$payload_path" "$status_path" 'WeGame component update' 0
-        done
+    for slot_path in "${slot_paths[@]}"; do
+        version_path=${slot_path%/*}
+        [[ "${version_path##*/}" =~ ^[0-9]+(\.[0-9]+){1,3}$ &&
+           "${slot_path##*/}" =~ ^[0-9]+$ ]] || continue
+        [[ -e "$slot_path/update_files" || -L "$slot_path/update_files" ]] || continue
+        is_confirmed_failure_status "$slot_path/update.tmp" || continue
+        [[ ! -L "$multi_group" && ! -L "$version_path" && ! -L "$slot_path" ]] ||
+            die "The confirmed component update path is unsafe: '$slot_path'."
+        apply_confirmed_update \
+            "$slot_path/update_files" "$slot_path/update.tmp" 'WeGame component update'
     done
 }
 
 recover_update() {
-    local report=${1:-yes} state
+    local report=${1:-yes}
 
     update_recovered=0
-    update_managed_pending=0
-    if classify_update; then
-        state=0
-    else
-        state=$?
+    # Only the confirmed Wine overwrite failure is repaired. Every other update
+    # state belongs to Tencent's updater: it is never modified and never blocks
+    # the launch, because WeGame resumes or discards its own staged downloads.
+    if [[ -e "$update_payload" || -L "$update_payload" ]] &&
+        is_confirmed_failure_status "$update_status"; then
+        apply_confirmed_update "$update_payload" "$update_status" 'WeGame update'
     fi
-
-    case "$state" in
-        0)
-            apply_confirmed_update \
-                "$update_payload" "$update_status" 'WeGame update' 1
-            ;;
-        1)
-            ;;
-        2)
-            die "Refusing an unknown or incomplete update state in '$install_dir'."
-            ;;
-        3)
-            update_managed_pending=1
-            ;;
-    esac
-
     recover_nested_updates
+
     [[ "$report" == 'yes' ]] || return 0
-    if ((update_recovered == 0)); then
-        if ((update_managed_pending)); then
-            log 'A Tencent-managed WeGame update is pending; start WeGame to let it finish.'
-        else
-            log 'No pending WeGame update requires recovery.'
-        fi
-    fi
+    ((update_recovered)) || log 'No confirmed WeGame update failure requires recovery.'
 }
 
 resolve_proton() {
@@ -1044,9 +902,6 @@ launch_wegame() {
         log 'Restarting WeGame once after the recovered update.'
         run_proton "$client"
         return
-    fi
-    if ((update_managed_pending)); then
-        log 'WeGame left a Tencent-managed update pending; start WeGame again to let it finish.'
     fi
 
     return "$exit_code"

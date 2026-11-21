@@ -82,25 +82,22 @@ Recovery is refused unless all of the following are true:
 
 - both markers are present with the exact values above;
 - `update.tmp` and `wegame_update` are regular paths inside the default WeGame directory;
-- the payload contains a regular `wegame.exe`;
 - the payload contains no symbolic links or special files;
 - no process is using this package's prefix.
 
-Before applying files, the launcher moves the update payload and status into a timestamped state backup and copies every overwritten destination file there. Each replacement is staged in the destination directory and atomically renamed. An application failure triggers rollback and restores the pending update files. Unknown or incomplete update states fail closed and are never guessed.
+Before applying files, the launcher moves the update payload and status into a timestamped state backup and copies every overwritten destination file there. Each replacement is staged in the destination directory and atomically renamed. An application failure triggers rollback and restores the pending update files. A confirmed state that fails any check above is refused without changes.
 
 The same recovery path handles confirmed component-update failures under `multi_group/<version>/<slot>/update_files`. Version and slot names must be numeric; the traversed directories must be non-symlink directories; every payload entry must be a regular file or directory without symbolic links; and the sibling `update.tmp` must contain the exact confirmed failure markers. Component payloads receive independent backups before their files are applied to the WeGame installation root.
 
-A strict `update.tmp` produced by a normal WeGame exit is accepted only when it contains the observed `[tgp]` schema, unique expected fields, `CheckUpdateType=0` or `CheckUpdateType=1`, a valid GUID, and either no `wegame_update` directory or an empty regular directory. An empty staging directory and its status are preserved and do not block confirmed component recovery. Hidden entries count as pending content; nonempty payloads without a regular `wegame.exe`, unknown keys, duplicate fields, malformed values, unobserved update types, or partial states still fail closed.
-
-When the same strict `[tgp]` status accompanies a regular `wegame_update` directory with a regular `wegame.exe`, the payload is still managed by Tencent's updater. The launcher lets WeGame process it instead of copying unconfirmed files or creating a recovery backup. `--recover-update` reports this state without changing it; if WeGame leaves it pending, start WeGame again.
-
 This operation copies Tencent's own downloaded update payload without modifying Tencent binaries. It remains an unsupported compatibility workaround.
 
-### Empty staging directories and successive updates
+### Unconfirmed update states
 
-The observed startup failure combined an empty root `wegame_update` directory and a valid `[tgp]` status (`CheckUpdateType=1`, `ExitOpSource=102`) with a confirmed failed component update under `multi_group/6.6.2/1/update_files`. The earlier classifier required `wegame.exe` whenever the staging directory existed, so it rejected this state before independent component recovery could run. An empty directory is now treated as having no root payload, not as permission to recover an unconfirmed update.
+Every other update state belongs to Tencent's updater. Status-only files, Tencent-managed client updates, empty or partially downloaded staging directories, unknown status values, and unconfirmed component updates are never copied, backed up, or deleted, and they never block the launch. WeGame rewrites `update.tmp` on startup and continues processing its own staged files. `--recover-update` reports that no confirmed failure requires recovery.
 
-Tencent updates can arrive in successive stages. During verification, the client reached its store UI on `6.7.0.10150` and subsequently staged `6.7.1.10221`. A visible main window therefore does not prove that no further update is pending. Install the updated integration package before resuming the client; if WeGame closes while processing an update, let the launcher finish and start it again to continue. Leave `update.tmp` and the staging directories intact so Tencent's updater and confirmed-failure recovery can process them.
+Earlier releases accepted only update states matching an observed `[tgp]` schema and refused to start WeGame for anything else. Each new Tencent staging pattern therefore became a startup failure: a status-only `CheckUpdateType=1` file, a managed `wegame_update` payload, an empty staging directory, and on `6.7.2.11080` a partially downloaded staging directory containing `apps/voice` and `data/json_db` files but no `wegame.exe`. Tencent's downloader wrote that last state after it started at client exit; the launcher ended the session 12 seconds later. With the rejection removed, WeGame starts normally on that state. Refusing these states protected nothing, because the launcher never modifies them.
+
+Tencent updates can arrive in successive stages, so a visible main window does not prove that no further update is pending. If WeGame closes while processing an update, let the launcher finish and start it again to continue. Leave `update.tmp` and the staging directories intact so Tencent's updater and confirmed-failure recovery can process them.
 
 
 ## Development
