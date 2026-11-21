@@ -1,0 +1,54 @@
+_share=/usr/share/agentic-hive
+_claude=/etc/claude-code/managed-settings.json
+
+# Claude Code reads hooks from one machine-wide file that other software may
+# also own, so Hive's hooks are merged into it rather than shipped as a file.
+_claude_hooks() {
+  local existed=0
+  [ -e "$_claude" ] && existed=1
+  python3 "$_share/hive_config.py" "$1" "$_claude" <"$_share/claude-managed-settings.json" ||
+    echo ":: agentic-hive: could not update $_claude; Claude Code members run without Room awareness"
+  [ "$existed" = 1 ] || [ ! -e "$_claude" ] || chmod 0644 "$_claude"
+}
+
+_legacy_install() {
+  if [ -e /var/lib/agentic-hive-install/state.json ] || [ -e /etc/systemd/system/hive-web.service ]; then
+    echo ":: agentic-hive: a copy installed by install/hive-install is still present."
+    echo "   Its units in /etc/systemd/system override this package's units. Remove it with:"
+    echo "     sudo /path/to/agentic-hive/install/hive-install --beekeeper <you> --uninstall"
+    echo "   (the habitat in /srv/hive is kept), then: sudo systemctl daemon-reload"
+  fi
+}
+
+post_install() {
+  _claude_hooks merge
+  systemctl enable --now agentic-hive-init.service >/dev/null 2>&1 || true
+  _legacy_install
+  cat <<'EOF'
+:: agentic-hive installed. Finish setup for your (Beekeeper) account:
+     sudo usermod -aG hive "$USER"
+     echo "$USER ALL=(hive) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/agentic-hive
+     sudo chmod 0440 /etc/sudoers.d/agentic-hive
+     sudo systemctl enable --now hive-web.service     # dashboard on http://127.0.0.1:8080/
+   Log out and back in for the group change. Sign in to the harnesses as hive:
+     sudo -u hive -i claude | codex login | opencode auth | agy
+   Start members with: hive-launch <name> [claude|codex|opencode|antigravity] [dir]
+EOF
+}
+
+post_upgrade() {
+  _claude_hooks merge
+  _legacy_install
+  # Running member sessions keep going; they pick up the new CLI on their
+  # next hook. Restart the dashboard so it serves the new version.
+  systemctl try-restart hive-web.service >/dev/null 2>&1 || true
+}
+
+pre_remove() {
+  systemctl disable --now hive-web.service agentic-hive-init.service >/dev/null 2>&1 || true
+  _claude_hooks remove
+}
+
+post_remove() {
+  echo ":: agentic-hive: the habitat (/srv/hive), the hive account and /etc/sudoers.d/agentic-hive are kept."
+}
