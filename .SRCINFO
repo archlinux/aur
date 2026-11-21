@@ -5,7 +5,7 @@ pkgbase = frost-d77
 	url = https://github.com/dani-77/frost
 	arch = x86_64
 	license = MIT
-	makedepends = cargo>=1.95
+	makedepends = rust>=1:1.95
 	makedepends = pkgconf
 	depends = wayland
 	depends = libglvnd

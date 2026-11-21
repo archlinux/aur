@@ -9,7 +9,7 @@ url="https://github.com/dani-77/frost"
 license=('MIT')
 depends=('wayland' 'libglvnd' 'libxkbcommon' 'fontconfig' 'freetype2' 'pam' 'gcc-libs' 'glibc'
          'glib2' 'cliphist' 'wl-clipboard' 'xdg-utils' 'eww' 'dgop')
-makedepends=('cargo>=1.95' 'pkgconf')
+makedepends=('rust>=1:1.95' 'pkgconf')
 backup=('etc/pam.d/frost-locker')
 optdepends=(
   'wireplumber: volume controls'
