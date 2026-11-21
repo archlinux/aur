@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction <https://github.com/LIghtJUNction>
 pkgbase=bilibilive-git
 pkgname=('bilibilive-git' 'bilibilive-obs-plugin-git')
-pkgver=0.1.1.r0.g0f97b0e
+pkgver=0.1.2.r0.g9c0f2ae
 pkgrel=1
 pkgdesc='Native Bilibili streaming studio following the latest Project Z sources'
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ pkgver() {
   if git describe --long --tags --match 'v[0-9]*' >/dev/null 2>&1; then
     git describe --long --tags --match 'v[0-9]*' | sed 's/^v//;s/-/.r/;s/-/./'
   else
-    printf '0.1.1.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf '0.1.2.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
 }
 
