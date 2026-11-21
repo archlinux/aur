@@ -2,7 +2,7 @@
 # Contributor: Rowan <rowan@zeusteam.dev>
 pkgname=ferron
 pkgver=2.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A fast, modern web server written in Rust'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'riscv64')
 url='https://ferron.sh'
@@ -39,6 +39,7 @@ package() {
     cd "$srcdir/ferron-$pkgver"
     install -dm755 "$pkgdir/var/log/ferron"
     install -dm755 "$pkgdir/var/www/ferron"
+    install -dm755 "$pkgdir/var/lib/ferron"
     install -dm755 "$pkgdir/etc"
     install -dm755 "$pkgdir/usr/lib/systemd/system"
     install -dm755 "$pkgdir/usr/lib/tmpfiles.d"
