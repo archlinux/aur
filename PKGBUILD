@@ -14,12 +14,12 @@ url="https://github.com/IBM/plex"
 arch=("any")
 license=('custom:OFL')
 source=(
-	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans@1.1.0/ibm-plex-sans.zip"
+	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans@1.3.6/ibm-plex-sans.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-serif@2.0.0/ibm-plex-serif.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-mono@2.5.0/ibm-plex-mono.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-math@1.1.0/ibm-plex-math.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-arabic@1.1.0/ibm-plex-sans-arabic.zip"
-	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-condensed@2.0.0/ibm-plex-sans-condensed.zip"
+	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-condensed@2.3.1/ibm-plex-sans-condensed.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-devanagari@1.1.0/ibm-plex-sans-devanagari.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-hebrew@1.1.0/ibm-plex-sans-hebrew.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-jp@3.0.0/ibm-plex-sans-jp.zip"
@@ -29,12 +29,12 @@ source=(
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-thai@1.1.0/ibm-plex-sans-thai.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-thai-looped@1.1.0/ibm-plex-sans-thai-looped.zip"
 )
-sha256sums=('fb365d910566e6d199cc2c15579a7dd9a267128e18431a394ed81f1970c69200'
+sha256sums=('a52bd405930040a6bfdb5c8aff67f1b7205538999986e2186d8f8895ca6a5de1'
             'c006b095c47b919c6c8d78319e9e628745033f5db94507c1c9dfe4b35dd51f1e'
             '6d23f01257663d8cc49a0d64c22ced630b79e0e2a0ac08a0da86e9a38bbc481c'
             'd85ed404394ced3a79a519af24611acdee9cc0483363c07cd5ac0656c06db42a'
             'f03915581aea37d82792c188b08064023a73494d679b8e19f85f5971db714013'
-            'f86ba73abbeed7cf7690ead863192a87211dfc2b0cef0ac6bf4700533ec5ab9e'
+            'baefcf09fd447d5c8c1b29fa8543a603d5d3c4766a9a495b5eaeaeeff6e5ed86'
             'effc4a35b2908c80806c97a4d5033e63f437611d17a3e09b237edd5c33d8ac94'
             'd7d490b8a767b972a7f361055fdcf60ad7cb7c270b38ff1bf859562a021369fd'
             '4c14c41552934b0bc92fc216a76b36bdc78f745dfbeed1115f9b8bc405ee314f'
