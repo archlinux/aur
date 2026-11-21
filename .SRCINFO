@@ -1,0 +1,21 @@
+pkgbase = btpop
+	pkgdesc = GTK4 Bluetooth popup and pairing agent for BlueZ (replaces blueman)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jinzhongjia/btpop
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	checkdepends = desktop-file-utils
+	makedepends = meson
+	depends = bluez
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = gtk4-layer-shell
+	optdepends = ttf-jetbrains-mono-nerd: icons and monospace text in the popup
+	optdepends = ttf-nerd-fonts-symbols: icons in the popup
+	source = https://github.com/jinzhongjia/btpop/releases/download/v0.1.0/btpop-0.1.0.tar.xz
+	sha256sums = 96ddca06b3e2223d4ecb304784e64230a57511329732d87c3855f5b703b9908a
+
+pkgname = btpop
