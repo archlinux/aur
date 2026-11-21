@@ -1,13 +1,13 @@
 pkgbase = adaptit
 	pkgdesc = Translation editor optimized for adapting existing translations in related languages
-	pkgver = 6.11.6
+	pkgver = 6.12.0
 	pkgrel = 1
 	url = https://adapt-it.org/
 	arch = x86_64
 	license = LGPL-2.1-or-later OR CPL
 	makedepends = zip
 	depends = wxwidgets-gtk3
-	source = https://github.com/adapt-it/adaptit/archive/adaptit-6.11.6/adaptit-adaptit-6.11.6.tar.gz
-	sha256sums = cf3082e64877893d6296b58bd9394fc0d9d40dc3c203e202663585fa62d65170
+	source = https://github.com/adapt-it/adaptit/archive/adaptit-6.12.0/adaptit-adaptit-6.12.0.tar.gz
+	sha256sums = e99a3dd338dd44d9587979d18cbebef97a922a6235e87b40350b3950c42f24eb
 
 pkgname = adaptit
