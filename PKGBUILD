@@ -2,7 +2,7 @@
 # Binary package of the published VisiCasts release tarball.
 # Update with packaging/aur/update.sh (rewrites pkgver and sha256sums).
 pkgname=visicasts-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Native podcast player with a local library and offline listening'
 arch=('x86_64')
@@ -20,7 +20,7 @@ provides=('visicasts')
 conflicts=('visicasts')
 options=('!strip' '!debug')
 source=("https://downloads.visicasts.com/releases/$pkgver/visicasts-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('1afc42fad10b45211317293d9e103b5ba1d7f1f4bde3f7bddb202e35755b322a')
+sha256sums=('aaf1d837617b808ed1e8d714535ddfe534314d3482e31c1ff39e377bdc395c33')
 
 package() {
     local bundle="$srcdir/visicasts-$pkgver-linux-x86_64"
