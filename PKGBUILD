@@ -3,7 +3,7 @@
 pkgname=python-hatch-rs
 _origpkgname=hatch_rs
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Hatch plugin for Rust builds"
 arch=("x86_64")
 url='https://pypi.org/project/hatch-rs/'
@@ -12,7 +12,7 @@ depends=(
 	"python-hatchling"
 	"python-packaging"
 	"python-pydantic"
-	"python-hatch-na"
+	"python-hatch-native"
 )
 makedepends=(
 	"python-build"
