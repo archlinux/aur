@@ -1,4 +1,6 @@
 [owncloud]
-source = 'regex'
-url = "https://download.owncloud.com/server/stable/"
-regex = 'owncloud-([\d.]+)\.[a-z]'
+source = "github"
+github = "owncloud/core"
+use_max_tag = true
+include_regex = 'v10\.[0-9]+\.[0-9]+'
+prefix = "v"
