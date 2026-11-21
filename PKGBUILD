@@ -1,8 +1,8 @@
 # Maintainer: jagrat7
 pkgname=wallpaperx-bin
 _pkgname=wallpaperx
-pkgver=0.4.12
-pkgrel=5 # bump for packaging-only fixes; CI resets it to 1 on a new release
+pkgver=0.4.15
+pkgrel=1
 pkgdesc="Browse, manage, and apply Wallpaper Engine wallpapers on Linux"
 arch=('x86_64')
 url="https://github.com/jagrat7/linux-wallpaper-engine"
@@ -20,24 +20,32 @@ conflicts=("$_pkgname" 'linux-wallpaper-engine-ux')
 replaces=('linux-wallpaper-engine-ux')
 options=('!strip' '!debug')
 
-# Names inside the Electron Forge zip; change these when the app is renamed.
-_appdir="Linux Wallpaper Engine-linux-x64"
+# The electron-builder zip has no top-level dir, so prepare() extracts it into app/.
+# Change these when the app is renamed.
+_appdir=app
 _exe=linux-wallpaper-engine
 _wmclass="Linux Wallpaper Engine"
 
 source=(
-  "$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/Linux.Wallpaper.Engine-linux-x64-$pkgver.zip"
+  "$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/linux-wallpaper-engine-$pkgver-x64.zip"
   "LICENSE-$pkgver::https://raw.githubusercontent.com/jagrat7/linux-wallpaper-engine/v$pkgver/LICENSE"
 )
-sha256sums=('9355fa0c5423f5c09c70f326acedb5fe936f87ddc60f74792d08760f3f582883'
+sha256sums=('d307f04f4f43ec071ef58b8b8fd6d8a443207c1c2d3e11cf0b9a7dacdccca024'
             '88c55a3ccc32252920ba0c8680bfb27403753acc93136fae042cb11595ba2147')
+
+noextract=("$pkgname-$pkgver.zip")
+
+prepare() {
+  mkdir -p "$srcdir/$_appdir"
+  bsdtar -xf "$srcdir/$pkgname-$pkgver.zip" -C "$srcdir/$_appdir"
+}
 
 package() {
   local app="$srcdir/$_appdir"
 
   install -dm755 "$pkgdir/opt/$_pkgname" "$pkgdir/usr/bin"
   cp -a "$app/." "$pkgdir/opt/$_pkgname/"
-  # The Forge zip stores its top-level dir as 0700, which cp -a carries over.
+  # Zip tools can store dirs as 0700, which cp -a would carry over.
   find "$pkgdir/opt/$_pkgname" -type d -exec chmod 755 {} +
   ln -s "/opt/$_pkgname/$_exe" "$pkgdir/usr/bin/$_pkgname"
 
