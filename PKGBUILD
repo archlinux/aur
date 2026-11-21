@@ -1,4 +1,4 @@
-Maintainer: Caleb Mignano <swagcalebwolf@.com>
+Maintainer: Caleb Mignano <swagcalebwolf@gmail.com>
 pkgname=aurora-viewer-bin
 _pkgname=aurora-viewer
 pkgver=0.9.12
