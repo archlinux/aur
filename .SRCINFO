@@ -1,6 +1,6 @@
 pkgbase = pebrel-bin
 	pkgdesc = GPU-accelerated terminal emulator with SSH and AI CLI integration (Linux Preview)
-	pkgver = 2.5.9
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://github.com/Kuddev/pebrel
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = pebrel-bin
 	depends = xdg-utils
 	optdepends = libsecret: save SSH credentials via secret-tool and a Secret Service provider
 	optdepends = xdg-desktop-portal: Wayland global shortcuts and desktop dialogs
-	provides = pebrel=2.5.9
+	provides = pebrel=2.6.1
 	conflicts = pebrel
-	noextract = Pebrel-v2.5.9-linux-x64-preview.deb
+	noextract = Pebrel-v2.6.1-linux-x64-preview.deb
 	options = !strip
-	source = https://github.com/Kuddev/pebrel/releases/download/v2.5.9/Pebrel-v2.5.9-linux-x64-preview.deb
-	sha256sums = 4f7c5fd6d4873f89565f51431f2bc432676ac3d0351438716a98770d6ed5cac1
+	source = https://github.com/Kuddev/pebrel/releases/download/v2.6.1/Pebrel-v2.6.1-linux-x64-preview.deb
+	sha256sums = ea011973273a954468c74fa793010223d86d1b7243ce874ba25515aa445d2a09
 
 pkgname = pebrel-bin

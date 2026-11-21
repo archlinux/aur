@@ -1,7 +1,7 @@
 # Maintainer: KafCoppelia <k740677208@gmail.com>
 
 pkgname=pebrel-bin
-pkgver=2.5.9
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='GPU-accelerated terminal emulator with SSH and AI CLI integration (Linux Preview)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('pebrel')
 options=('!strip')
 source=("$url/releases/download/v$pkgver/Pebrel-v$pkgver-linux-x64-preview.deb")
 noextract=("${source[0]##*/}")
-sha256sums=('4f7c5fd6d4873f89565f51431f2bc432676ac3d0351438716a98770d6ed5cac1')
+sha256sums=('ea011973273a954468c74fa793010223d86d1b7243ce874ba25515aa445d2a09')
 
 package() {
   bsdtar -xOf "${noextract[0]}" data.tar.zst | bsdtar -xf - -C "$pkgdir"
