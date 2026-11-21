@@ -2,7 +2,7 @@
 
 pkgname=artex-bin
 _pkgname=artex
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='AI autonomous penetration testing system with a web UI (server, skills and browser capture extension)'
 arch=('x86_64' 'aarch64')
@@ -24,13 +24,13 @@ source=("$_pkgname-$pkgver-src.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'artex.tmpfiles')
 source_x86_64=("$_pkgname-$pkgver-x86_64.zip::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-amd64.zip")
 source_aarch64=("$_pkgname-$pkgver-aarch64.zip::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-arm64.zip")
-sha256sums=('cc785f54e0802812c0a47a78eaa88f8f3f7d8b40ebfc7a63bf2ba2dd199d0c83'
+sha256sums=('2f92d0c6ed438c2610d92840084a25c406972cd50215f0069ea9487a3a5f0605'
             '204249b0836b13ce4baf63cb7ccadf5257b47e8c0e6006d199312c168741b81c'
             '53dafc3edd0b0401533372e27ab396db1f487655082c99d47144cc9d9369b6c1'
             '1824cf7e53ae4ca553bf00acb32a6dbd0160dc0cb4714548233135e7d9d8a57c'
             '947f7cb4e0fdf5e66bbcb5630a91bfae7f0f3f0a9226efee255c06398ce7185d')
-sha256sums_x86_64=('4ad3826b2ba2c0315457e35cbac577067048b708f8d1d0669d8d728ea9755fdc')
-sha256sums_aarch64=('48778ec3de4e742c117cef57dce5e4067fb2649eeddd49f025d002765f3d1401')
+sha256sums_x86_64=('b2caab73196aa3b63352edc75ae267bc41688b8f5ff8503b6d042f2bbc6f002a')
+sha256sums_aarch64=('ab8557e6e41838395a1292fcf136841428080ec43d502daeffa901462be0b68e')
 
 package() {
     local _arch
