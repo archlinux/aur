@@ -1,6 +1,6 @@
 # Maintainer: Vendetta1871
 pkgname=skvirt-git
-pkgver=r11.58360bb
+pkgver=r13.50818f4
 pkgrel=1
 pkgdesc="Touch-driven on-screen keyboard for fcitx5 on KWin (Wayland)"
 arch=('x86_64')

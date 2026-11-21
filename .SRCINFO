@@ -1,6 +1,6 @@
 pkgbase = skvirt-git
 	pkgdesc = Touch-driven on-screen keyboard for fcitx5 on KWin (Wayland)
-	pkgver = r11.58360bb
+	pkgver = r13.50818f4
 	pkgrel = 1
 	url = https://github.com/Vendetta1871/skvirt
 	arch = x86_64
