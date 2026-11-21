@@ -1,4 +1,6 @@
-# Maintainer: Ben Edwards <aur at artfuldodge dot io>
+# Maintainer: Lionel Fernandes <lsfe87 at gmail dot com>
+# Maintainer: Richard Hajek <richard.m.hajek at gmail dot com>
+# Contributor: Ben Edwards <aur at artfuldodge dot io>
 
 pkgname='restish'
 pkgver='0.21.0'
