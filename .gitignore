@@ -1,0 +1,19 @@
+# Временные директории сборки makepkg
+/src/
+/pkg/
+
+# Распакованная система AppImage
+/squashfs-root/
+
+# Скачанные бинарники AppImage
+VanyaVPN.AppImage
+*.AppImage
+
+# Собранные пакеты Pacman (Arch Linux)
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+*.pkg.tar
+
+# Логи сборки
+*.log

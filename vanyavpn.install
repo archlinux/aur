@@ -1,0 +1,13 @@
+post_install() {
+    # Выдаем CAP_NET_ADMIN для tun2socks
+    find /opt/vanyavpn -name "tun2socks" -exec setcap cap_net_admin+eip {} + 2>/dev/null || true
+    systemctl daemon-reload 2>/dev/null || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    systemctl daemon-reload 2>/dev/null || true
+}
