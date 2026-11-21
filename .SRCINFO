@@ -1,6 +1,6 @@
 pkgbase = hoja-git
 	pkgdesc = GPU-accelerated file manager with splittable panes, built on GPUI
-	pkgver = r186.2f79621
+	pkgver = r229.20b2e14
 	pkgrel = 1
 	url = https://github.com/slastra/hoja
 	arch = x86_64
@@ -22,6 +22,9 @@ pkgbase = hoja-git
 	optdepends = libnotify: desktop notification when a long transfer finishes
 	optdepends = udisks2: mount attached drives from the place finder
 	optdepends = shared-mime-info: identify file types for the Open With menu
+	optdepends = ffmpegthumbnailer: pictures of videos in previews and the grid
+	optdepends = papers: pictures of PDFs in previews and the grid
+	optdepends = poppler: page count and page shape of a PDF preview
 	optdepends = vulkan-radeon: Vulkan driver for AMD graphics
 	optdepends = nvidia-utils: Vulkan driver for NVIDIA graphics
 	optdepends = vulkan-intel: Vulkan driver for Intel graphics

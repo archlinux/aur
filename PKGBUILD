@@ -1,8 +1,8 @@
-# Maintainer: Shaun Lastra <shaun@revolvetrading.com>
+# Maintainer: Shaun Lastra <shaun@lastra.us>
 
 pkgname=hoja-git
 _pkgname=hoja
-pkgver=r186.2f79621
+pkgver=r229.20b2e14
 pkgrel=1
 pkgdesc='GPU-accelerated file manager with splittable panes, built on GPUI'
 arch=('x86_64')
@@ -27,7 +27,9 @@ depends=(
 
 # hoja shells out for these, and works without each one: no git means no
 # version-control colouring, no udisks means drives can be listed but not
-# mounted, and so on. None is required to start.
+# mounted, and so on. None is required to start. Video and PDF pictures come
+# from whatever freedesktop thumbnailer is installed: ffmpegthumbnailer and
+# papers are one choice each, and totem, gst-thumbnailers or evince do as well.
 optdepends=(
   'git: colour file names by version control status'
   'xdg-utils: open files with their default application'
@@ -35,6 +37,9 @@ optdepends=(
   'libnotify: desktop notification when a long transfer finishes'
   'udisks2: mount attached drives from the place finder'
   'shared-mime-info: identify file types for the Open With menu'
+  'ffmpegthumbnailer: pictures of videos in previews and the grid'
+  'papers: pictures of PDFs in previews and the grid'
+  'poppler: page count and page shape of a PDF preview'
   'vulkan-radeon: Vulkan driver for AMD graphics'
   'nvidia-utils: Vulkan driver for NVIDIA graphics'
   'vulkan-intel: Vulkan driver for Intel graphics'
