@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=shinyFiles
-_pkgver=0.9.3
+_pkgver=0.9.4
 pkgname=r-${_pkgname,,}
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='A Server-Side File System Viewer for Shiny'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-covr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4a72e165ee8a6e8256988f27286a2cfc4d7a42e2a902f4f2a728b1c237c07286')
+sha256sums=('efcd401b1e2acea13663f48d03fbf6c61b0ca1be6ac1770bb08318b2096e2167')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
