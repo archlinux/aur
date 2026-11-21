@@ -1,0 +1,32 @@
+pkgbase = gsword
+	pkgdesc = GTK4/libadwaita Bible study application with a SWORD module library
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/yetist/gsword
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = appstream
+	makedepends = desktop-file-utils
+	makedepends = gettext
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = vala
+	depends = bzip2
+	depends = curl>=7.68
+	depends = glib2>=2.66
+	depends = gtk4
+	depends = gtksourceview5
+	depends = hicolor-icon-theme
+	depends = libadwaita>=1.4
+	depends = sqlite
+	depends = xz
+	depends = zlib
+	provides = libgsword.so=0-64
+	source = gsword-0.3.0.tar.gz::https://github.com/yetist/gsword/archive/refs/tags/v0.3.0.tar.gz
+	source = gsword-system-icon-path.patch
+	sha256sums = 1094a9a731214289b4d88355b28f81ff1ad680231ea4def327a010870faadb36
+	sha256sums = 4625b2ddbb38ffbb17db9fe70a5ec2f7004b41911fc7a5907172ac972efb6b5f
+
+pkgname = gsword

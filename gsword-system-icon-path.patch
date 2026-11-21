@@ -1,0 +1,12 @@
+diff --git a/src/meson.build b/src/meson.build
+index 6845735..3c82771 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -9,6 +9,6 @@
+   app_deps = [gsword_dep, gtk4_dep, adw_dep, sqlite3_dep]
+   app_c_args = [
+-    '-DGSW_ICON_DIR="' + meson.project_source_root() + '/data/icons"',
++    '-DGSW_ICON_DIR="/usr/share/icons"',
+   ]
+   if gtksourceview_dep.found()
+     app_deps += gtksourceview_dep
