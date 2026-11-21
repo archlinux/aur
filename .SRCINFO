@@ -1,0 +1,24 @@
+pkgbase = nearcast-git
+	pkgdesc = Quick Share (Nearby Share) for Linux: share files and text with Android phones
+	pkgver = 0.1.0.r0.gf4247e9
+	pkgrel = 1
+	url = https://github.com/AuthenticSm1les/nearcast
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = protobuf
+	depends = bluez
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	depends = polkit
+	depends = systemd-libs
+	optdepends = wpa_supplicant: Wi-Fi Direct transfers through nearcast-netd
+	provides = nearcast
+	conflicts = nearcast
+	source = git+https://github.com/AuthenticSm1les/nearcast.git
+	sha256sums = SKIP
+
+pkgname = nearcast-git
