@@ -5,15 +5,15 @@
 # Edit this file only to change packaging (dependencies, install steps, ...).
 
 pkgname=expresso
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Keep the system awake for a while: a scriptable systemd-inhibit lock"
 arch=('any')
 url="https://github.com/Davi-S/expresso"
 license=('MIT')
 depends=('bash' 'systemd' 'glib2' 'libnotify')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('262ce6bcb012ac5bcc17af2f49947b449c251fef10e0ae299308ce410ee28a47')
+sha256sums=('f080641bc34d1a14262ecf5aa1d542912ee742e134262ae8c6cf6f974854d6b1')
 
 package() {
     cd "$pkgname-$pkgver"
