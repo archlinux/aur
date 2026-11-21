@@ -1,6 +1,6 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=gdscheck
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A fast, open source Design Rule Check (DRC) engine for GDSII layouts"
 arch=("i686" "x86_64" "armv6h" "armv7h")
@@ -17,7 +17,7 @@ makedepends=(
 provides=()
 conflicts=()
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
-b2sums=('ffab83f4b99c9b0322e49ea3be9b62851e0fb3e85b7877a3a64c1cb9781c6085ffb0d2bb6f96a0ec7b961444596a7b98d90a86242ffb7168fb3c0cb2f7db6cf4')
+b2sums=('54f61a1871f585821aacaeb31153adb99c0314f9cfa0188c3a39904d72f3a6f3a8a27e73885154d7192f9f9d438f295f54dc8a73fc47e177e2398b7719e236c5')
 options=()
 
 prepare() {
