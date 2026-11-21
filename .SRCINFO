@@ -1,0 +1,20 @@
+pkgbase = python-pybioclip
+	pkgdesc = Python package that simplifies using the BioCLIP foundation model
+	pkgver = 2.1.6
+	pkgrel = 1
+	url = https://github.com/Imageomics/pybioclip
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-open-clip-torch
+	depends = python-pandas
+	depends = python-prettytable
+	depends = python-pytorch
+	depends = python-torchvision
+	source = pybioclip-2.1.6.tar.gz::https://files.pythonhosted.org/packages/source/p/pybioclip/pybioclip-2.1.6.tar.gz
+	sha256sums = eb7a74a0e8b47dd729cf0f848ae3e65bdda75872c62f4286a75ce9b28ba3f607
+
+pkgname = python-pybioclip
