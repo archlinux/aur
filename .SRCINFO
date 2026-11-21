@@ -1,0 +1,21 @@
+pkgbase = shisa
+	pkgdesc = Application lock for Linux desktops, enforced at exec time through fanotify
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/RiverOnVenus/Shisa
+	install = shisa.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	depends = polkit
+	depends = dbus
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = hicolor-icon-theme
+	optdepends = noto-fonts-cjk: Chinese UI font
+	source = https://github.com/RiverOnVenus/Shisa/releases/download/v0.1.2/shisa-0.1.2.tar.gz
+	sha256sums = 25f5b5eafd26300a217ab780add52c4443cc1cc269904eee6257ee70dac55dc9
+
+pkgname = shisa

@@ -1,0 +1,60 @@
+post_install() {
+    cat <<'EOT'
+Shisa is installed. Set the application-lock password first. Only root can
+set it, and it is separate from the login password:
+
+  sudo passwd shisa-lock
+
+Protected applications cannot authenticate until it is set. The password is
+only used by Shisa's polkit dialog. It does not change the login password and
+gives shisa-lock no login or sudo access.
+
+Then enable the services:
+
+  sudo systemctl enable --now shisad.service
+  systemctl --user enable --now shisa-agent.service
+
+Per-user protected applications live in /etc/shisa/users/<username>.toml.
+You can also edit them in shisa-settings.
+EOT
+}
+
+post_upgrade() {
+    if [ -e /etc/pam.d/shisa.pacsave ]; then
+        cat <<'EOT'
+/etc/pam.d/shisa is no longer used by Shisa, authentication now goes through
+polkit. Your local changes are kept in /etc/pam.d/shisa.pacsave. Remove that
+file once you no longer need it.
+EOT
+    fi
+    if ! getent passwd shisa-lock >/dev/null || passwd -S shisa-lock 2>/dev/null | grep -q ' L '; then
+        cat <<'EOT'
+The application-lock password is not set yet:
+
+  sudo passwd shisa-lock
+
+Protected applications cannot authenticate until it is set.
+EOT
+    fi
+    cat <<'EOT'
+Services keep running the old binaries after an upgrade. Restart them to load
+the new version:
+
+  sudo systemctl restart shisad.service
+  systemctl --user restart shisa-agent.service
+EOT
+}
+
+pre_remove() {
+    cat <<'EOT'
+You can stop the services before removing:
+
+  sudo systemctl disable --now shisad.service
+  systemctl --user disable --now shisa-agent.service
+
+Configuration under /etc/shisa/ is kept.
+The shisa-lock account is not removed automatically. To delete it:
+
+  sudo userdel shisa-lock
+EOT
+}
