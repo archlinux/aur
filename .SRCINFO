@@ -1,6 +1,6 @@
 pkgbase = chrome-remote-desktop
 	pkgdesc = Access other computers or allow another user to access your computer securely over the Internet
-	pkgver = 157.0.8103.19
+	pkgver = 159.0.8154.7
 	pkgrel = 1
 	url = https://remotedesktop.google.com
 	install = chrome-remote-desktop.install
@@ -25,13 +25,13 @@ pkgbase = chrome-remote-desktop
 	depends = xorg-xrandr
 	options = !debug
 	options = !strip
-	source = chrome-remote-desktop-157.0.8103.19.deb::https://dl.google.com/linux/chrome-remote-desktop/deb/pool/main/c/chrome-remote-desktop/chrome-remote-desktop_157.0.8103.19_amd64.deb
+	source = chrome-remote-desktop-159.0.8154.7.deb::https://dl.google.com/linux/chrome-remote-desktop/deb/pool/main/c/chrome-remote-desktop/chrome-remote-desktop_159.0.8154.7_amd64.deb
 	source = pamrule
 	source = crd
 	source = xorg-binary-path.patch
-	sha256sums = cb3883ec7fbef455a5a1f75303f9f84face53fe8c10464fb102218833ed3db61
+	sha256sums = 2b883528d5605bbb0cc01731444f83ad919d5301efdcca6d5512225c3b3c47ea
 	sha256sums = fcc38269eb1cc902abff9688eda9377a22367e39b9f111f87c0dd8e77adb82e2
 	sha256sums = e4105af96f029a80275986a0b19c7eaf563034230b20ee4d9158e1169d155e6d
-	sha256sums = f59f98202c6d2693db8a6e32559178c9fffb198bfce0df69718f078e38cbc45b
+	sha256sums = 12c871fdad25ac6ddae99fec55d18d91b74581bf5dec4dad114d96ef4c63dd98
 
 pkgname = chrome-remote-desktop
