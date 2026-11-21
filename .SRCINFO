@@ -1,6 +1,6 @@
 pkgbase = sumi-bin
 	pkgdesc = Paint, draw and sketch: the Sumi desktop app (prebuilt binary)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/mafuzyk/sumi
 	arch = x86_64
@@ -22,14 +22,13 @@ pkgbase = sumi-bin
 	optdepends = vulkan-swrast: software Vulkan driver (CPU rendering, no GPU required)
 	optdepends = ffmpeg: time-lapse, animation and video import/export
 	optdepends = poppler: open PDF files as frames
-	optdepends = xdg-desktop-portal: file dialogs on Wayland
 	optdepends = pipewire-audio: Feedback Sounds and brush sounds via pw-play/pw-cat (PipeWire)
 	optdepends = libpulse: Feedback Sounds and brush sounds via paplay/pacat (PulseAudio client)
 	optdepends = alsa-utils: Feedback Sounds and brush sounds via aplay (ALSA)
 	provides = sumi
 	conflicts = sumi
 	options = !strip
-	source = sumi-bin-0.1.1-linux-x86_64.tar.gz::https://github.com/mafuzyk/sumi/releases/download/v0.1.1/sumi-0.1.1-linux-x86_64.tar.gz
-	sha256sums = 971a36932dda2fad870bb9840f2168392fc36185f6d6f3bf9f93030d69fadb1f
+	source = sumi-bin-0.1.2-linux-x86_64.tar.gz::https://github.com/mafuzyk/sumi/releases/download/v0.1.2/sumi-0.1.2-linux-x86_64.tar.gz
+	sha256sums = 4356c5d685b9f9962f25823ea12a1cc69861bb03c4e853af1690eb1257bdc6b4
 
 pkgname = sumi-bin
