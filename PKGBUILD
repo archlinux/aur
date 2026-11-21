@@ -7,6 +7,9 @@
 # Arch package and Rust package guidelines:
 # - direct library dependencies from readelf (adds libgcc and systemd-libs, drops
 #   libunistring, which nothing links) and cargo as makedepends
+# - libssl.so and libcrypto.so in depends, so the package records the OpenSSL
+#   soname it links (libssl.so=3-64 or =4-64): after a soname bump pacman must
+#   keep a matching library installed rather than leave PAM and NSS unloadable
 # - RUSTUP_TOOLCHAIN/CARGO_TARGET_DIR exports for builds outside a chroot
 # - the HSM PIN helper in /usr/lib/himmelblau instead of /usr/libexec
 # - a package-specific name for the display-manager drop-in
@@ -27,7 +30,7 @@
 
 pkgname=himmelblau
 pkgver=4.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Azure Entra ID authentication for Linux (daemon, PAM, NSS, broker, SSO)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/himmelblau-idm/himmelblau"
@@ -38,6 +41,8 @@ depends=(
   'glibc'
   'libgcc'
   'openssl'
+  'libcrypto.so'
+  'libssl.so'
   'pam'
   'sqlite'
   'systemd>=257'
