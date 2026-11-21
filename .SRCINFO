@@ -1,0 +1,18 @@
+pkgbase = guildmaster
+	pkgdesc = FIFO-like GNU make jobserver node via CUSE
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://codeberg.org/amonakov/guildmaster
+	arch = x86_64
+	license = ISC
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = fuse3
+	source = guildmaster-463382ba5b47625a9355832cd792a164c54237f9.tar.gz::https://codeberg.org/amonakov/guildmaster/archive/463382ba5b47625a9355832cd792a164c54237f9.tar.gz
+	source = guildmaster.service
+	sha256sums = 825b1a2c5748eb89d57fe6ef1435c1bf8d33656a696f9f5ca6b87b0965ccbfcb
+	sha256sums = c9748e7788a32288d8e80ae00c098485e7f039fdf9fa715ed7ec95b7dcb38b09
+
+pkgname = guildmaster

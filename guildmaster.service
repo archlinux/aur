@@ -1,0 +1,7 @@
+[Service]
+Type=exec
+ExecStart=/usr/bin/guildmaster
+
+[Install]
+WantedBy=multi-user.target
+
