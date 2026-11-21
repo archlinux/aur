@@ -4,7 +4,7 @@
 pkgname=android_translation_layer-git
 _pkgname="${pkgname%-git}"
 _pkgname="${_pkgname//-/_}"
-pkgver=r1337.b17fe9a5
+pkgver=r1373.94d69d8c
 pkgrel=1
 pkgdesc='A translation layer for running Android apps on a Linux system'
 url='https://gitlab.com/android_translation_layer/android_translation_layer'
@@ -33,6 +33,7 @@ depends=(
   libx11
   libxext
   pango
+  speech-dispatcher
   sqlite
   vulkan-icd-loader
   wayland
