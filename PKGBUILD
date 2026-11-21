@@ -9,9 +9,9 @@
 # for where this deviates and why (no --all-features: brygge has none; sha256sums, not the template's
 # b2sums, to match the release's own .sha256 assets).
 pkgname=brygge
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
-pkgdesc="A VCS history to IR converter (Git, Mercurial, Subversion, CVS), built from source"
+pkgdesc="Carries version-control history between systems: decodes Git, Mercurial, Subversion and CVS into a verifiable IR (built from source)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/prikk-vcs/brygge"
 license=('Apache-2.0')
@@ -34,7 +34,7 @@ optdepends=('subversion: decode a local SVN repository (dump files need nothing)
 # strip/debug options, unlike brygge-bin (review 084 D-2): a from-source build's own debug data is useful
 # to split out, where a prebuilt release binary's isn't.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/prikk-vcs/brygge/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('912698a94be394213503ba9b896c54d059ac8f5fa8eab2a36eaef0b48bcde685')
+sha256sums=('b6bf5653e4065e4e6b50e42c4e7f2102695f33de55b9522073c8dff7b74a29ab')
 
 prepare() {
     cd "$pkgname-$pkgver"
