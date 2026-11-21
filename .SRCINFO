@@ -1,0 +1,28 @@
+pkgbase = spiceforge
+	pkgdesc = Real-time audio circuit simulator and schematic editor based on LiveSPICE
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/mikeoliphant/SpiceForge
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = aspnet-targeting-pack-10.0
+	makedepends = dotnet-sdk-10.0
+	makedepends = nodejs>=22
+	makedepends = npm
+	depends = aspnet-runtime-10.0
+	depends = glibc
+	depends = xdg-utils
+	optdepends = jack: live audio through JACK or PipeWire JACK
+	optdepends = chromium: editor in a standalone browser window
+	options = !debug
+	source = SpiceForge-0.0.1.tar.gz::https://github.com/mikeoliphant/SpiceForge/archive/refs/tags/v0.0.1.tar.gz
+	source = LiveSPICE-b2a4bb0ec4d3c4cdb158530ab4b20c13207030f7.tar.gz::https://github.com/mikeoliphant/LiveSPICE/archive/b2a4bb0ec4d3c4cdb158530ab4b20c13207030f7.tar.gz
+	source = JackSharpCore-8ca7a0452fccbfa8a31709926a6d73025c437ad9.tar.gz::https://github.com/mikeoliphant/JackSharpCore/archive/8ca7a0452fccbfa8a31709926a6d73025c437ad9.tar.gz
+	source = ComputerAlgebra-20634f1c2465471133abb166a26b321e0003fe5b.tar.gz::https://github.com/dsharlet/ComputerAlgebra/archive/20634f1c2465471133abb166a26b321e0003fe5b.tar.gz
+	sha256sums = 14db27fba06e42bcb7ef245688a024733722af4cd2fa49af9cce2c00b92a0ea8
+	sha256sums = 5304cee73b4ff35d5f6697ffa96ba99f3a0a3ace7c967526c9219de955cbc784
+	sha256sums = 932700d795ede8ed96d3931d8827332abe9c7613f18d3c545906248f5c1cd84c
+	sha256sums = 3526a7f8f1582d56ecdb2084301c8aa9ba151b924cdd512d729a6df7bc9872e3
+
+pkgname = spiceforge
