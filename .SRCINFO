@@ -1,0 +1,58 @@
+pkgbase = snappie-git
+	pkgdesc = Screenshots, annotation, recording and sharing for KDE Plasma on Wayland (Git)
+	pkgver = 0.1.0.r9.g99b2060
+	pkgrel = 1
+	url = https://github.com/licentiapoetica/snappie
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-dbus
+	makedepends = cmake
+	makedepends = wayland
+	makedepends = purpose
+	makedepends = kcoreaddons
+	makedepends = qt6-base
+	makedepends = desktop-file-utils
+	options = !debug
+	source = snappie::git+https://github.com/licentiapoetica/snappie.git#branch=master
+	sha256sums = SKIP
+
+pkgname = snappie-git
+	depends = python
+	depends = python-pyqt6
+	depends = qt6-svg
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-numpy
+	depends = python-requests
+	depends = gstreamer
+	depends = gst-plugin-pipewire
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad-libs
+	depends = ffmpeg
+	depends = wayland
+	depends = kwin>=6
+	depends = kglobalacceld
+	depends = kservice
+	optdepends = gst-plugin-va: hardware video encoding
+	optdepends = python-evdev: clicks and keys in recordings
+	optdepends = tesseract: text recognition (also install your language data)
+	optdepends = pipewire: selecting which apps to record audio from
+	optdepends = openssh: SFTP uploads
+	optdepends = snappie-purpose-git: KDE Share menu integration
+	provides = snappie=0.1.0.r9.g99b2060
+	conflicts = snappie
+
+pkgname = snappie-purpose-git
+	pkgdesc = Snappie integration in KDE Share menus (Git)
+	depends = snappie-git=0.1.0.r9.g99b2060-1
+	depends = purpose
+	depends = kcoreaddons
+	depends = qt6-base
+	provides = snappie-purpose=0.1.0.r9.g99b2060
+	conflicts = snappie-purpose
