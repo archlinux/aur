@@ -1,0 +1,359 @@
+From 21991faccc56dcb98c28e6130267dd6cf98af3b4 Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Sat, 21 Nov 2026 10:13:40 -0500
+Subject: [PATCH 1/2] sched: symmetric epoch cohort join window -- the
+ pre-formation side admits only formation cuts
+
+The owner's anchor ("created within 5 seconds of the start of the epoch")
+reads symmetrically: the window now spans [formation-5s, formation+5s].
+The post-formation side keeps the W-series semantics unchanged; the
+pre-formation side is cut-only -- a row the formation class-guarded may
+join once its class flips into the epoch's, while rows queued at
+formation stay mid-arrivals (a DE epoch cannot feed them; admitting one
+would hang the drain on its own admission freeze). Formation stamps its
+cuts in the new epoch_cut_ vector; the planning-pass scan consumes it.
+epoch_cut_joins counter unchanged. Mechanism A -- a queued same-burst
+row waiting out a live DECODE epoch's full generation -- is
+owner-accepted by design (2026-11-21): pinned, not fixed, by
+epoch_same_burst_waits_out_live_decode_epoch_by_design. W6 pins the
+reachable pre-formation join (PF epoch, preempted cut replaying
+prefill-class) and the window bound on the pre side; W4's header is
+replaced with the per-direction flip-reachability matrix.
+---
+ core/sched/scheduler.cpp |  46 +++++++++----
+ core/sched/scheduler.h   |  37 ++++++----
+ tests/sched_test.cpp     | 144 ++++++++++++++++++++++++++++++++++++---
+ 3 files changed, 189 insertions(+), 38 deletions(-)
+
+diff --git a/core/sched/scheduler.cpp b/core/sched/scheduler.cpp
+index 4aa191bf..5ba78616 100644
+--- a/core/sched/scheduler.cpp
++++ b/core/sched/scheduler.cpp
+@@ -104,16 +104,20 @@ void Scheduler::epoch_drop_member(int32_t slot, bool preempted) {
+  * its cohort with full membership. Owner-specified value (2026-11-20): a spawn burst whose
+  * sessions stagger sub-5s must form ONE epoch, not a solo burst followed by a second epoch for
+  * the rest. Hard-coded -- no config knob until the owner asks. The window is anchored at
+- * formation and never re-anchored by a joiner, so an epoch's cohort is fixed 5 s after its
+- * formation instant: the anti-indefinite-precedence bound survives. */
++ * formation and never re-anchored by a joiner, so an epoch's cohort is fixed 5 s on either side
++ * of its formation instant: the anti-indefinite-precedence bound survives. The owner's anchor
++ * reads "created within 5 seconds of the start of the epoch" symmetrically (owner, 2026-11-21),
++ * so the window spans [formation - W, formation + W]: a same-burst row created microseconds
++ * BEFORE the formation pass is within 5 s of the epoch's start too. The pre-formation side is
++ * cut-only (epoch_joinable_locked): the formation already stamped everything else it owed. */
+ static constexpr int64_t kEpochCohortJoinWindowMs = 5000;
+ 
+ /* Formation: the leader is the oldest active request (head_slot_locked's rule), the epoch class
+  * is its current class -- a waiting leader enters as a prefill, the head_class_prefill rule --
+  * and the cohort is every request of that class present in running_ or waiting_: queued
+  * same-class members are guaranteed admitted-when-room and completed [OD2]. A running request of
+- * the other class is frozen by the flip: a mid-arrival cut (E3). Formation happens only when no
+- * epoch is live -- epoch end or idle->busy -- never mid-epoch. mu_ held. */
++ * the other class is frozen by the flip: a mid-arrival cut (E3), and the only row the join
++ * window's pre-formation side may later admit. Formation happens only when no epoch is live -- epoch end or idle->busy -- never mid-epoch. mu_ held. */
+ void Scheduler::epoch_form_locked() {
+     const int32_t lead = head_slot_locked();
+     if (lead < 0) return;                       /* nothing to govern */
+@@ -122,6 +126,7 @@ void Scheduler::epoch_form_locked() {
+         if (slot == lead) { waiting_lead = true; break; }
+     epoch_class_prefill_ = waiting_lead || req_class_prefill(*reqs_[(size_t)lead]);
+     epoch_member_.assign(reqs_.size(), false);
++    epoch_cut_.assign(reqs_.size(), false);
+     epoch_drain_ = 0;
+     for (int32_t slot : running_) {
+         const SchedReq& s = *reqs_[(size_t)slot];
+@@ -131,6 +136,9 @@ void Scheduler::epoch_form_locked() {
+             ++epoch_drain_;
+         } else {
+             ++m_.midarrival_cuts;               /* frozen by the class flip at the boundary */
++            /* The symmetric window's pre-formation side admits only this row later: the
++             * formation saw it running, class-mismatched, and class-guarded it (a cut). */
++            epoch_cut_[(size_t)slot] = true;
+         }
+     }
+     for (int32_t slot : waiting_) {
+@@ -148,14 +156,22 @@ void Scheduler::epoch_form_locked() {
+     ++m_.epochs;
+ }
+ 
+-/* The join window's predicate: an arrival after formation (one created before it is cohort
+- * under OD2, and one the window excludes keeps today's mid-arrival semantics), not revoked by
+- * a preemption [OD1], created within the window of formation, and of the epoch's governing
+- * class at this moment. mu_ held. */
++/* The join window's predicate. The window is symmetric about formation (owner, 2026-11-21):
++ * "created within 5 seconds of the start of the epoch" covers a row created just BEFORE the
++ * formation pass as well as one created after it. After formation: not revoked by a preemption
++ * [OD1], created within the window, and of the epoch's governing class at this moment -- the
++ * W-series semantics, unchanged (d == 0 reads as the post side, as the old gate had it). Before
++ * formation: the formation already stamped every
++ * same-class row it owed (OD2), so the only row it left out that may still join is the one it
++ * class-guarded -- a cut (epoch_cut_) -- and only once its class has flipped into the epoch's;
++ * a row that sat in waiting_ at formation stays a mid-arrival (a decode epoch does not stamp
++ * queued rows, and admitting one to a cohort it cannot feed would hang the drain on the
++ * admission freeze). A row outside the window keeps today's mid-arrival semantics. mu_ held. */
+ bool Scheduler::epoch_joinable_locked(const SchedReq& s) const {
+     if (!epoch_live_ || s.epoch_revoked) return false;
+-    if (s.arrived_us < epoch_formation_us_) return false;
+-    if (s.arrived_us - epoch_formation_us_ > kEpochCohortJoinWindowMs * 1000) return false;
++    const int64_t d = s.arrived_us - epoch_formation_us_;
++    if (d > kEpochCohortJoinWindowMs * 1000) return false;
++    if (d < 0 && (-d > kEpochCohortJoinWindowMs * 1000 || !epoch_cut_at(s.slot))) return false;
+     return req_class_prefill(s) == epoch_class_prefill_;
+ }
+ 
+@@ -171,9 +187,10 @@ void Scheduler::epoch_join_locked(int32_t slot) {
+ }
+ 
+ /* The window's second evaluation point: a request that arrived inside it while class-mismatched
+- * joins when its class flips into the epoch's. The scan runs every planning pass; arrivals that
+- * match at once joined at add_locked already (a new request is prefill-class, so a PREFILL
+- * epoch's in-window arrivals all join there and the scan is a no-op). mu_ held. */
++ * joins when its class flips into the epoch's, and so does a pre-formation cut whose class
++ * flips (epoch_joinable_locked's symmetric side). The scan runs every planning pass; arrivals
++ * that match at once joined at add_locked already (a new request is prefill-class, so a
++ * PREFILL epoch's in-window arrivals all join there and the scan is a no-op). mu_ held. */
+ void Scheduler::epoch_join_scan_locked() {
+     for (int32_t slot : running_) {
+         const SchedReq& s = *reqs_[(size_t)slot];
+@@ -2358,7 +2375,8 @@ const RadBatch* Scheduler::step_locked() {
+          * until the cohort drains -- an early class flip of a member re-governs nothing (E1).
+          * Formation runs only while no epoch is live -- epoch end or idle->busy -- never
+          * mid-epoch. While one is live the join window's scan runs: a request that arrived
+-         * inside it class-mismatched joins when its class flips into the epoch's. */
++         * inside it class-mismatched joins when its class flips into the epoch's, and so does
++         * a pre-formation cut that flips inside the symmetric window. */
+         if (!epoch_live_) epoch_form_locked();
+         else epoch_join_scan_locked();
+         head_govern_prefill_ = epoch_class_prefill_;
+diff --git a/core/sched/scheduler.h b/core/sched/scheduler.h
+index a89e0be6..4e07f94d 100644
+--- a/core/sched/scheduler.h
++++ b/core/sched/scheduler.h
+@@ -883,14 +883,17 @@ private:
+     bool head_unfreeze_once_ = false;
+     /* --prefill-interleave epoch: the cohort-epoch state. The governing class (meaningful while
+      * epoch_live_), the members stamped at formation indexed by slot (cleared at phase
+-     * completion, close and preemption), the members not yet drained -- the epoch closes at zero
+-     * and re-forms on the next planning pass -- the step the epoch opened on, for the length
+-     * accounting, and the formation instant (mono_us), the anchor of the cohort join window:
+-     * a request created within kEpochCohortJoinWindowMs of it joins the cohort (never
+-     * re-anchored by a joiner, so the cohort is fixed 5 s after formation). mu_ held. */
++     * completion, close and preemption), the rows formation class-guarded -- the cuts, also
++     * indexed by slot and the only rows the window's pre-formation side may admit -- the members
++     * not yet drained -- the epoch closes at zero and re-forms on the next planning pass -- the
++     * step the epoch opened on, for the length accounting, and the formation instant (mono_us),
++     * the anchor of the cohort join window: a request created within kEpochCohortJoinWindowMs
++     * of it joins the cohort, on either side of formation (never re-anchored by a joiner, so
++     * the cohort is fixed 5 s on each side of formation). mu_ held. */
+     bool epoch_live_ = false;
+     bool epoch_class_prefill_ = true;
+     std::vector<bool> epoch_member_;
++    std::vector<bool> epoch_cut_;
+     int64_t epoch_drain_ = 0;
+     int64_t epoch_start_step_ = 0;
+     int64_t epoch_formation_us_ = 0;
+@@ -957,16 +960,24 @@ private:
+         return epoch_live_ && slot >= 0 && (size_t)slot < epoch_member_.size() &&
+                epoch_member_[(size_t)slot];
+     }
++    /* Whether formation found this slot running and class-mismatched -- a cut. The symmetric
++     * window's pre-formation side admits only these (epoch_joinable_locked). */
++    bool epoch_cut_at(int32_t slot) const {
++        return epoch_live_ && slot >= 0 && (size_t)slot < epoch_cut_.size() &&
++               epoch_cut_[(size_t)slot];
++    }
+     void epoch_drop_member(int32_t slot, bool preempted);
+     void epoch_form_locked();
+-    /* The cohort join window. A request that arrived after formation -- one created before it
+-     * is cohort under OD2, and a preemption revocation [OD1] is permanent for the epoch --
+-     * joins iff its creation is within kEpochCohortJoinWindowMs of epoch_formation_us_ and its
+-     * current class matches the epoch's governing class. Joined members hold full membership:
+-     * the drain waits for them, they are not midarrival_cuts, and preemption still revokes.
+-     * Evaluated at arrival (add_locked) and on every planning pass (the scan, which catches a
+-     * request that arrived inside the window class-mismatched and later flips into the epoch's
+-     * class). mu_ held. */
++    /* The cohort join window, symmetric about formation (owner, 2026-11-21: "created within 5
++     * seconds of the start of the epoch"). After formation (d >= 0): a preemption revocation
++     * [OD1] is permanent for the epoch, and a request joins iff its creation is within
++     * kEpochCohortJoinWindowMs of epoch_formation_us_ and its current class matches the epoch's
++     * governing class -- the W-series semantics. Before formation (d < 0): only a cut -- the
++     * row formation class-guarded, which OD2 therefore did not stamp -- may join, and only once
++     * its class flips into the epoch's; a row queued at formation stays a mid-arrival. Joined
++     * members hold full membership: the drain waits for them, they are not midarrival_cuts, and
++     * preemption still revokes. Evaluated at arrival (add_locked) and on every planning pass
++     * (the scan, which catches the flips). mu_ held. */
+     bool epoch_joinable_locked(const SchedReq& s) const;
+     void epoch_join_locked(int32_t slot);
+     void epoch_join_scan_locked();
+diff --git a/tests/sched_test.cpp b/tests/sched_test.cpp
+index f8f1fd45..94e4601c 100644
+--- a/tests/sched_test.cpp
++++ b/tests/sched_test.cpp
+@@ -4215,10 +4215,10 @@ static Headed head_run(bool decoder_first, int steps) {
+  * epoch end and idle->busy only; the cohort -- every same-class request in running_ or waiting_
+  * at formation -- is guaranteed that phase, and the epoch closes when the last one finishes it.
+  * Mid-epoch arrivals run (right class) without a guarantee; preemption revokes membership. A
+- * request created within 5 s of formation JOINS the live cohort with full membership (the W
+- * tests); timelines that want mid-arrival semantics advance the clock past the window before
+- * submitting. These timelines run with the prefix cache off: the shapes below are the policy,
+- * not a hit. */
++ * request created within 5 s of formation -- on either side of it (W6) -- joins the live cohort
++ * with full membership (the W tests); timelines that want mid-arrival semantics advance the
++ * clock past the window before submitting. These timelines run with the prefix cache off: the
++ * shapes below are the policy, not a hit. */
+ 
+ /* Commit the planned step with every row producing `token` and only the rows whose seq appears
+  * in `ends` ending. */
+@@ -4707,13 +4707,23 @@ TEST(epoch_W3_join_extends_the_drain) {
+ 
+ /* W4 (join window, class condition): a request created inside the window of a DECODE epoch
+  * arrives prefill-class -- the epoch governs decode -- so it does not join, and the planning-
+- * pass flip scan never joins it either. The flip into the epoch's class is unreachable while a
+- * DECODE epoch is live: prefill admission is frozen, and the liveness net -- the only unfreeze
+- * -- needs an empty plan, whose precondition (the frozen rows hold the pool the decoders need)
+- * makes the frozen prefill the preferred preemption victim [R7 tier 0] before the net can
+- * fire. The scan stays as the spec's rule (2) for the exotic resumed/degenerate cases; what
+- * is observable here is the class guard: no join, no drain extension, and the request becomes
+- * cohort at the NEXT formation under OD2 -- formation stamping is not a join. */
++ * pass flip scan never joins it either. REACHABILITY, corrected 2026-11-21 (the original note
++ * claimed the flip into a live epoch's class was unreachable, full stop; the load-test forensics
++ * and W6 show that was too broad). The honest matrix, by epoch class:
++ *   DECODE epoch, queued row (this test): cannot flip -- prefill admission is frozen for the
++ *     epoch's whole life, and the liveness net, the only unfreeze, needs a plan the governing
++ *     class cannot fill, with the frozen prefill taken as the [R7 tier 0] victim first. Stays
++ *     queued: the by-design tail the owner accepted (epoch_same_burst_waits_out_live_decode_
++ *     epoch_by_design).
++ *   DECODE epoch, running prefill cut: cannot flip either -- a frozen row takes no chunk, and
++ *     the step issued ahead refuses to plan while a prompt continues
++ *     (interleave_counts_steps_issued_ahead_and_then_serves_the_chunk), so no in-flight chunk
++ *     can land a flip after formation.
++ *   PREFILL epoch, running decode cut: CAN flip -- preemption rewinds n_computed to zero and
++ *     the recompute reads prefill-class (req_class_prefill covers "a preempted one's replay"),
++ *     while PF admission stays open. That is the reachable flip, and W6 joins it.
++ * What is observable here is the DECODE-side class guard: no join, no drain extension, and the
++ * request becomes cohort at the NEXT formation under OD2 -- formation stamping is not a join. */
+ TEST(epoch_W4_decode_epoch_join_respects_class) {
+     Fixture f;
+     f.build();
+@@ -4784,6 +4794,118 @@ TEST(epoch_W5_preemption_after_join_is_permanent) {
+     CHECK_EQ(f.sch.metrics().epochs, 2);             /* the next epoch formed without a re-join */
+ }
+ 
++/* W6 (join window, the symmetric side): the reachable pre-formation join. A PREFILL epoch forms
++ * with a running decode-class row -- a cut, class-guarded at formation, created BEFORE the
++ * formation instant. The one-sided window excluded it forever; the symmetric window admits it
++ * once its class flips into the epoch's, and the flip is reachable here: the epoch governs
++ * prefill, so admission stays open, and a cut preempted under KV pressure replays from zero --
++ * req_class_prefill counts a preempted one's replay as prefill -- and the planning-pass scan
++ * joins it from waiting_. The other cut arrived 5.001 s before the formation: outside the
++ * window on the pre side too, it stays a mid-arrival no matter how it flips. */
++TEST(epoch_W6_preformation_cut_joins_after_its_flip) {
++    Fixture f;
++    f.build(/*blocks=*/156, /*states=*/64);          /* 2496 tokens: a+b+c do not fit, a+c do */
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    const uint64_t a = f.submit(2000, 512);
++    CHECK(f.sch.step() != nullptr);                  /* PF epoch E1 {a} */
++    CHECK_EQ(f.sch.metrics().epochs, 1);
++    f.advance_clock_ms(5001);                        /* past E1's window: b, c stay mid-arrivals */
++    const uint64_t b = f.submit(300, 512);           /* mid-arrival: runs beside the cohort */
++    for (int k = 0; k < 200; ++k) {                  /* a places its last chunk; b long decoding */
++        Request* ra = f.sch.find(a);
++        Request* rb = f.sch.find(b);
++        if (ra && ra->n_computed >= 2000 && rb && rb->n_computed >= 300) break;
++        CHECK(f.sch.step() != nullptr);
++        f.commit_plain(12);
++    }
++    REQUIRE(f.sch.find(a)->n_computed >= 2000);
++    REQUIRE(f.sch.find(b)->n_computed >= 300);
++    const uint64_t c = f.submit(2000, 8, /*priority=*/1);   /* refused: a and b hold the pool, and
++        * a chunk of it will not fit beside them. The priority makes it the queue's leader, so the
++        * epoch that forms with it queued governs PREFILL (epoch_form_locked's waiting-lead rule)
++        * and the two running decoders are its cuts. */
++    CHECK_EQ((int)f.sch.find(c)->state, (int)ReqState::Waiting);
++    for (int k = 0; k < 200; ++k) {                  /* a's phase completion closes E1; the next */
++        CHECK(f.sch.step() != nullptr);              /* pass forms E2 with c queued: PF, and the */
++        if (f.sch.metrics().epochs >= 2) break;      /* two running decoders are pre-formation cuts */
++        f.commit_plain(12);
++    }
++    CHECK_EQ(f.sch.metrics().epochs, 2);
++    CHECK_EQ(f.sch.metrics().midarrival_cuts, 2);    /* a and b: the class-guarded cuts */
++    CHECK_EQ(f.sch.metrics().epoch_cohort_joins, 0); /* nothing has flipped yet */
++    /* The liveness net runs the frozen cuts (the governing class cannot fill the plan: c is
++     * refused admission); a grows into the KV wall; the [R7] tier-0 walk takes b, the cut
++     * behind it. A cut is not a member, so the preemption revokes nothing [OD1]. */
++    bool preempted = false;
++    for (int k = 0; k < 1500 && !preempted; ++k) {
++        CHECK(f.sch.step() != nullptr);
++        Request* rb = f.sch.find(b);
++        if (rb && rb->state == ReqState::Preempted) preempted = true;
++        if (preempted) break;
++        f.commit_plain(12);
++    }
++    REQUIRE(preempted);
++    /* The replay reads prefill-class: the next scan sees an in-window (d ~= 0, pre side),
++     * unrevoked cut of the epoch's class -- and joins it. */
++    CHECK(f.sch.step() != nullptr);
++    CHECK_EQ(f.sch.metrics().epoch_cohort_joins, 1);
++    /* a is the same shape -- a pre-formation cut -- but 5.001 s before the formation: the
++     * window's pre side excludes it as surely as the post side excludes a late arrival. */
++    for (int k = 0; k < 50; ++k) {
++        CHECK(f.sch.step() != nullptr);
++        f.commit_plain(12);
++    }
++    CHECK_EQ(f.sch.metrics().epoch_cohort_joins, 1); /* a never joins */
++    CHECK_EQ(f.sch.metrics().epochs, 2);             /* and the drain still holds E2 open */
++}
++
++/* BY DESIGN -- owner-accepted 2026-11-21, do-not-change-without-owner: this pins the accepted
++ * cost of cohort-epoch governance, the load test's zombie-row window. A same-instant burst lands
++ * on a live DECODE epoch: the leader flips on its first commit and the epoch forms on the next
++ * planning pass, so the burst's arrived_us predates epoch_formation_us_. The symmetric window
++ * (epoch_joinable_locked) now covers that edge, but a QUEUED row is not a cut -- formation never
++ * saw it running -- so the pre-formation side does not admit it; the class guard excludes it
++ * (prefill-class rows, a decode epoch), and the DE epoch freezes admission, so it can never flip
++ * into the class. It waits out the cohort's FULL generation -- the E5 tail, bounded by the
++ * cohort's max_tokens -- with every counter silent (a waiting row is not held-counted, not a
++ * cut, not a join). The owner weighed this against the live load-test forensics and kept it:
++ * no admission change, no drain cap. The join counter's honest name for this state is silence. */
++TEST(epoch_same_burst_waits_out_live_decode_epoch_by_design) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    const uint64_t a = f.submit(100, 64);             /* the leader: one chunk, then decode */
++    CHECK(f.sch.step() != nullptr);                   /* PF epoch {a} */
++    f.commit_plain(12);                               /* a flips, drops: the epoch drains */
++    const uint64_t b = f.submit(512, 64);             /* same burst: no clock move between them */
++    const int64_t joins0 = f.sch.metrics().epoch_cohort_joins;
++    const int64_t held0 = f.sch.metrics().steps_held + f.sch.metrics().steps_held_decode;
++    CHECK(f.sch.step() != nullptr);                   /* DECODE epoch {a} forms on this pass */
++    CHECK_EQ(f.sch.metrics().epochs, 2);
++    int steps = 0;
++    while (steps < 200) {
++        CHECK(f.sch.step() != nullptr);
++        if (f.sch.metrics().epochs >= 3) break;       /* the boundary pass: formation + admission */
++        CHECK_EQ((int)f.sch.find(b)->state, (int)ReqState::Waiting);
++        f.commit_plain(12);
++        ++steps;
++    }
++    REQUIRE(f.sch.metrics().epochs == 3);
++    CHECK(f.sch.find(a) == nullptr ||
++          f.sch.find(a)->state != ReqState::Running); /* the cohort closed at its max_tokens */
++    CHECK(steps >= 40);                               /* the wait is the full generation */
++    CHECK_EQ(f.sch.metrics().epoch_cohort_joins, joins0);   /* the gate excludes b permanently */
++    CHECK_EQ(f.sch.metrics().midarrival_cuts, 0);     /* queued: not a cut either */
++    CHECK_EQ(f.sch.metrics().steps_held + f.sch.metrics().steps_held_decode, held0);
++    bool b_chunk = false;                             /* b is admitted at the boundary */
++    for (const StepEntry& e : f.sch.plan().e) if (e.seq == b && e.is_prefill) b_chunk = true;
++    CHECK(b_chunk);
++}
++
+ /* The prompt is the oldest: its class governs, the decoder admitted beside it is frozen while
+  * the prompt runs, and the chunk takes the whole step the frozen row would have shared. When
+  * the prompt's last chunk lands, the head turns into a decoder and the lanes reopen. */
+-- 
+2.56.1
+

@@ -1,0 +1,55 @@
+From ce77971938a4cc26e5dc9294327717f021403ea2 Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Sat, 21 Nov 2026 10:13:40 -0500
+Subject: [PATCH 2/2] docs: document the symmetric epoch join window and the
+ accepted DE-epoch tail
+
+---
+ docs/GUIDE.md | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/docs/GUIDE.md b/docs/GUIDE.md
+index 35d51c26..9d71941e 100644
+--- a/docs/GUIDE.md
++++ b/docs/GUIDE.md
+@@ -1329,15 +1329,23 @@ end. An epoch forms when the previous one's last member finishes its phase, and
+ engine gets work; never mid-epoch. A PREFILL epoch runs every member's prompt to completion with
+ no decode sawtooth between its chunks; a DECODE epoch runs every member's decoding to its end,
+ and prompts queued behind it wait for it whole. A request created within 5 s of the epoch's
+-formation JOINS its cohort with full membership -- the drain waits for it, it is not a boundary
+-cut, and preemption still revokes it (`epoch_cohort_joins`); the window is anchored at formation
+-and never re-anchored by a joiner, so an epoch's cohort is fixed 5 s after its formation instant.
+-Later arrivals of the governed class run
++formation -- on either side of it -- JOINS its cohort with full membership: the drain waits for
++it, it is not a boundary cut, and preemption still revokes it (`epoch_cohort_joins`). The window
++is anchored at formation and never re-anchored by a joiner, so an epoch's cohort is fixed 5 s on
++each side of its formation instant. The pre-formation side is the boundary cut's second chance:
++a row the formation class-guarded (below) joins once its class flips into the epoch's -- a
++preempted one's replay reads prefill, and a PREFILL epoch keeps admission open for it. A row
++that sat queued at formation stays a mid-arrival: a DECODE epoch does not stamp queued rows, and
++admitting one to a cohort it cannot feed would hang the drain on the epoch's own admission
++freeze. Later arrivals of the governed class run
+ beside the cohort but hold no membership and no guarantee. KNOWN TRADES: at an epoch boundary a
+ running request of the other class is frozen where it stands -- a mid-prompt cut
+ (`midarrival_cuts`) that keeps its KV occupied while the epoch it missed runs -- and a DECODE
+ epoch closes only at its longest member's last token, so prompts queued behind a long generation
+-wait out that tail. Preemption revokes membership: a preempted member loses the guarantee
++wait out that tail. A same-instant burst that lands on a live DECODE epoch is that tail in its
++sharpest form: the queued rows wait out the cohort's full generation -- bounded by the cohort's
++`max_tokens` -- with every counter silent, since a waiting row is not held-counted, not a cut
++and not a join; owner-accepted 2026-11-21. Preemption revokes membership: a preempted member loses the guarantee
+ (`cohort_preempt_removals`; watch ~0) and the epoch closes without it rather than livelocking;
+ the epoch's own victim preference takes the frozen other-class rows first, then same-class
+ mid-arrivals, and a cohort member only when nothing else is eligible. The head mode's liveness
+@@ -4595,7 +4603,7 @@ always 1 and carries the cache's settings as labels: `cache_dtype`, `block_size`
+ | `engine_epoch_len_steps_total` | summed closed-epoch length in steps under `prefill-interleave: epoch`; divide by `engine_epochs_total` for the average (§4.5) |
+ | `engine_midarrival_cuts_total` | requests frozen mid-phase by a class flip at an epoch boundary under `prefill-interleave: epoch` (§4.5) |
+ | `engine_cohort_preempt_removals_total` | epoch cohort members whose preemption revoked the finish-guarantee (§4.5; watch ~0) |
+-| `engine_epoch_cohort_joins_total` | requests created within 5 s of an epoch's formation that joined its cohort with full membership under `prefill-interleave: epoch` (§4.5) |
++| `engine_epoch_cohort_joins_total` | requests created within 5 s of an epoch's formation -- on either side of it -- that joined its cohort with full membership under `prefill-interleave: epoch` (§4.5) |
+ | `mixed_step_target_steps_total`, `mixed_step_target_misses_total` | mixed steps observed by `mixed-step-target-ms`, and those whose completed engine service time exceeded its soft target (§4.5) |
+ | `mixed_step_target_prefill_cap` | current learned aggregate prefill-row cap; absent while the policy is off (§4.5) |
+ | `attn_cached_tokens_total`, `linear_cached_tokens_total` | prefix reuse, both halves |
+-- 
+2.56.1
+

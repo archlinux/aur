@@ -1,6 +1,6 @@
 pkgbase = radiance-inference-git
 	pkgdesc = C++20 LLM inference server for AMD GPUs (primarily gfx1201) with OpenAI-compatible HTTP API (git HEAD)
-	pkgver = 2.2.0.r1097
+	pkgver = 2.2.0.r1099
 	pkgrel = 2
 	url = https://codeberg.org/StillDeadcode/radiance
 	install = radiance-inference-git.install
@@ -38,6 +38,8 @@ pkgbase = radiance-inference-git
 	source = 0008-sched-epoch-cohort-join-window-arrivals-within-5-s-o.patch
 	source = 0009-tests-epoch-join-window-coverage.patch
 	source = 0010-docs-document-the-epoch-cohort-join-window.patch
+	source = 0011-sched-symmetric-epoch-cohort-join-window-the-pre-for.patch
+	source = 0012-docs-document-the-symmetric-epoch-join-window-and-th.patch
 	sha256sums = SKIP
 	sha256sums = c903669f221faea09545b70525f780001d73648c66cfc472ac9b23df23956400
 	sha256sums = cc76ea474ab22a0a2ef24a00c1dbb936df444c83c522ebcd667fd0eafce49112
@@ -52,5 +54,7 @@ pkgbase = radiance-inference-git
 	sha256sums = e8049113a9f994c3386ef6d21a6e3fe440ebc25f891492a9271c335b427684af
 	sha256sums = 3c5b56023b51a0ffe39faeb7fc9aee9dfe1f7c8ae4728018f7b35d48a4db86f1
 	sha256sums = 43dc59a9d51d6968b9ed6af322e40924f45392bafd13fe35bcaf39a0b76098d2
+	sha256sums = 4b830dcfcff7a636ad02121d08df8b3b76dfc82bca74d5cf1e1dbf7699e13070
+	sha256sums = 16c9167c5570c5e12af8f1305d0fe0ca02afd6251a90713a6d87d70914550479
 
 pkgname = radiance-inference-git
