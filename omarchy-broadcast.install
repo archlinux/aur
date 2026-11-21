@@ -5,7 +5,9 @@ _doc=/usr/share/doc/omarchy-broadcast
 
 _next_steps() {
   cat <<EOF
-==> omarchy-broadcast: nothing is enabled. Next steps:
+==> omarchy-broadcast: the package enables nothing by itself. On a first
+    install, take these steps (skip any already done, for example after
+    switching between the -git and -bin packages):
   1. Configure the v4l2loopback device (needs root, once), as in
      $_doc/docs/setup/loopback.md:
        sudo install -Dm644 $_doc/examples/modprobe.d/omarchy-broadcast.conf \\
