@@ -1,13 +1,13 @@
 pkgbase = gguf-parser
 	pkgdesc = Review/check GGUF files and estimate memory usage and maximum tokens per second
-	pkgver = 0.28.3
+	pkgver = 0.28.4
 	pkgrel = 1
 	url = https://github.com/gpustack/gguf-parser-go
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = gguf-parser-0.28.3.tar.gz::https://github.com/gpustack/gguf-parser-go/archive/refs/tags/v0.28.3.tar.gz
-	sha256sums = aca3db214fc44dd2ec8fc557b717cee424163671dba8d8011984e831cfd9bb93
+	source = gguf-parser-0.28.4.tar.gz::https://github.com/gpustack/gguf-parser-go/archive/refs/tags/v0.28.4.tar.gz
+	sha256sums = ffe011720ad3ee2b73831f31872c8ecb80e9a344b5e21fab26e98d76dbe069c4
 
 pkgname = gguf-parser
