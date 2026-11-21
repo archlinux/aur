@@ -1,15 +1,20 @@
 pkgbase = stm32cubemx2
 	pkgdesc = STM32CubeMX2 - new flavor of STM32CubeMX tool
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.st.com/en/development-tools/stm32cubemx.html
 	arch = x86_64
 	groups = stm32cube
 	license = custom:SLA0048
 	makedepends = gendesk
+	provides = stm32cubemx2-electron
+	conflicts = stm32cubemx2-electron
+	replaces = stm32cubemx2-electron
 	options = !strip
 	options = !debug
-	source = local://stm32cubemx2-1.2.0-X64-Linux-installer
-	sha256sums = 1b95155270d15c2e5ee266330579bc25bf659bca15e788a3ec3a865cc314af17
+	source = https://developer.st.com/bundles/s/stm32cubemx-application-1.2.0-x86_64-linux.bundle
+	source = stm32cubemx2.sh
+	sha256sums = 8284b4d4e5c0931d1a832a9e270c701d7831b6ccc2792b5ea1a0dd3090555fb8
+	sha256sums = dec6c9b8a7e00fadf2939a0169d9515c7f0e21cfb73ac4a584c82946c2afb5b6
 
 pkgname = stm32cubemx2
