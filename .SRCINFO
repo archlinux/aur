@@ -1,0 +1,22 @@
+pkgbase = chupathingyce-bin
+	pkgdesc = Halo: Combat Evolved native port for modern systems (prebuilt Linux release)
+	pkgver = 0.9.1a
+	pkgrel = 1
+	url = https://github.com/ChupathingyCE/chupathingyce
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	optdepends = pipewire: audio support
+	optdepends = libpulse: PulseAudio support
+	optdepends = wayland: native Wayland support
+	provides = chupathingyce
+	conflicts = chupathingyce
+	conflicts = chupathingyce-git
+	options = !strip
+	source = chupathingyce-0.9.1a-linux64.zip::https://github.com/ChupathingyCE/chupathingyce/releases/download/v0.9.1a/chupathingyce-linux64-release.zip
+	sha256sums = 334d28cb55dfb23c5062e9d44aeae5659e9bf5427fe94b07f6707e793e01f198
+
+pkgname = chupathingyce-bin
