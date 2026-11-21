@@ -26,6 +26,8 @@ build() {
   cd "${srcdir}/${pkgname}"
   export GOPATH="${srcdir}"
   export PATH="${GOPATH}/bin:${PATH}"
+  # npm >= 12 defaults allow-remote=none; react-ui depends on xlsx via CDN tarball
+  export npm_config_allow_remote=root
 
   make build
 }
