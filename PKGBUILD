@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=ima2-gen
-pkgver=3.26.6
+pkgver=3.26.7
 pkgrel=1
 pkgdesc='Local OAuth image generation studio for GPT Image 2 workflows'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 )
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('9843a70aebc6b9c7cb48d8bea21d987e3e2dcb57508f4fd3be060e03f9da4eaf')
+sha256sums=('2eb7dd7af67e667404c5408f1af34160f54cba794404ff5d0df7ad9967236a1d')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 latestver() {
