@@ -2,7 +2,7 @@
 # Contributor: Rowan <rowan@zeusteam.dev>
 pkgname=ferron-git
 pkgver=3.0.0rc11.r0.g0000000
-pkgrel=1
+pkgrel=3
 pkgdesc='A fast, modern web server written in Rust (git)'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'riscv64')
 url='https://ferron.sh'
