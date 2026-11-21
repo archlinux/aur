@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=convex-bin
-pkgver=20261116.g80befbc
-pkgrel=2
+pkgver=20261121.gcf39368
+pkgrel=1
 pkgdesc='Self-hosted Convex backend and dashboard (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/convex/convex-backend'
@@ -26,7 +26,7 @@ source=("convex-dashboard-$pkgver.zip::$_release/dashboard.zip"
 source_x86_64=("convex-backend-$pkgver-x86_64.zip::$_release/convex-local-backend-x86_64-unknown-linux-gnu.zip")
 source_aarch64=("convex-backend-$pkgver-aarch64.zip::$_release/convex-local-backend-aarch64-unknown-linux-gnu.zip")
 noextract=("convex-dashboard-$pkgver.zip")
-sha256sums=('f8e67bad1b920c3af484c1c8adc6ff14d1165d4e1c0d429623aeddb7057b93ee'
+sha256sums=('70113a035882b2223f88ca68d9b8fb6405960b920ff79e45b5cb87994bf5226c'
             '563cea54ba1ad9d2a1b36f4a62b1ebdc3e1dcfb8776a7afee06c99aad5294588'
             '0b76474cc5dcd9bff93ad88102bfabbd681e144f19ba09e96f2ab81015e2db7a'
             '474264631a77817a3938753b3b27603a70adf8b3b2445c21c69ba168a3456824'
@@ -34,8 +34,8 @@ sha256sums=('f8e67bad1b920c3af484c1c8adc6ff14d1165d4e1c0d429623aeddb7057b93ee'
             'b737ad0b86a68d10f97e50fdd68528054630a6fee0a05f152119524e84fe7fb3'
             'c7531e58abeed63b29b5147f4e5143107d23a5d1f1d0df81f99076a862b26827'
             'f89744275d7eb26f33f272b2a01e319737a84edeccb50deb79de11fd490a3b88')
-sha256sums_x86_64=('65230f5e8583c7c7f13cdf5854b140187c153c71bbc32276d60d75658214ab9e')
-sha256sums_aarch64=('06c3a8b70d23f8915ce97be646a6de690c6cac8727089387cecb1a1e8bac5262')
+sha256sums_x86_64=('a7bf39daa91535b93a4c59943bcf5c963c3852b021f02be132145500904b5f1d')
+sha256sums_aarch64=('309cab736b37e5af742cf002732d920d453681cc721934c31ff0962a0806a1d7')
 
 package() {
   install -Dm755 "$srcdir/convex-local-backend" "$pkgdir/usr/bin/convex-local-backend"
