@@ -17,7 +17,7 @@
 # is an absolute symlink — safe by design.
 
 pkgname=c0wrk-cuda
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='Desktop AI coding-agent built with Wails (Go + React) — CUDA flavor, upstream release binaries'
 arch=(x86_64)
@@ -36,7 +36,7 @@ source=("LICENSE::$url/raw/v$pkgver/LICENSE" 'c0wrk.desktop' 'c0wrk.png')
 sha256sums=('26a0f4863f365c987a6762b0a48e987136543118989b2f00f2d57c70a45ffd15' '817980d6896b98a304ade9b151125408e83bdc00c0e7f006eb5f6d7bb486fe62' '7004f261089ce6744435156a4c6952e2d4d87ad6eec1a1a9af347ae6a1f76938')
 
 source_x86_64=("c0wrk-desktop-$pkgver-linux-amd64-cuda13.tar.gz::$url/releases/download/v$pkgver/c0wrk-desktop-linux-amd64-cuda13.tar.gz")
-sha256sums_x86_64=('21e411e57eff092a5211d65ead0a50a343131e990d91a6782ffc80392fe3dc81')
+sha256sums_x86_64=('bfdbd60272bbdedb0c153c70bcdc6b1752dc4e4c56781a31885a9b350a485824')
 
 package() {
   cd "$srcdir"
