@@ -1,6 +1,6 @@
 # Maintainer: win0na <winona@winneon.moe>
 pkgname=apw-cli
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Read Apple Passwords on Linux'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ conflicts=('apw')
 provides=('apw')
 makedepends=('cargo' 'rust' 'cmake' 'perl' 'dbus')
 source=("apw-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('37c70b236a6fe6d3fccc7e2929b0f1275e03ecd055c8e40153d102d14cc1cc02')
+sha256sums=('9a3c3e09e79f4e1bf2360cf8b5b4266b22083f5d1bb9d7b86be1ef393e70cb31')
 
 build() {
   cd "apw-$pkgver"
