@@ -2,7 +2,7 @@
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=socid-extractor
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Extract account identifiers and metadata from personal pages"
 arch=(any)
@@ -22,7 +22,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/$pkgname/socid_extractor-$pkgver.tar.gz")
-sha256sums=('a7013008ff4aeaedb24e0899318e2d5cbf1b395f9945db1495c720fa5823ded1')
+sha256sums=('584836cf6e04ada3f76c2e6b27b708a651479fcc044471d21d4f753fee9d1929')
 
 _archive="socid_extractor-$pkgver"
 
