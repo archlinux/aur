@@ -1,0 +1,11 @@
+pkgbase = spirv-reflect
+	pkgdesc = lightweight library that provides a C/C++ reflection API for SPIR-V shader bytecode in Vulkan applications
+	pkgver = 1.4.363.0
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/SPIRV-Reflect
+	arch = x86_64
+	license = Apache 2.0
+	source = https://github.com/KhronosGroup/SPIRV-Reflect/archive/refs/tags/vulkan-sdk-1.4.363.0.tar.gz
+	sha256sums = e0b2914648ab2eac1c83851911199e73f868d966e183531e4c227a258ea07bc6
+
+pkgname = spirv-reflect
