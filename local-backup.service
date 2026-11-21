@@ -1,0 +1,22 @@
+[Unit]
+Description=µBackup local incremental backup service
+After=local-fs.target
+RequiresMountsFor=/var/backups
+
+[Service]
+Type=oneshot
+WorkingDirectory=/var/backups
+EnvironmentFile=/etc/local-backup.conf
+ExecStart=/bin/bash -c '\
+    : "$${BACKUP_PATHS:?Set BACKUP_PATHS in /etc/local-backup.conf}"; \
+    timestamp=$$(date "+%%Y-%%m-%%d_%%H-%%M-%%S"); \
+    hostname=$$(hostnamectl hostname); \
+    exec tar --one-file-system \
+        --listed-incremental="/var/backups/$$hostname.snar" \
+        --exclude-caches-all --exclude-vcs --exclude-backups \
+        --zstd \
+        -cf "$$hostname-$$timestamp.tar.zst" \
+        "$$@"' local-backup $EXTRA_OPTIONS -- $BACKUP_PATHS
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

@@ -1,0 +1,2 @@
+d /var/backups 0750 - - -
+f /etc/local-backup.conf 0640 - - -

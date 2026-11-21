@@ -1,0 +1,10 @@
+[Unit]
+Description=µBackup Pull backups from %i timer
+
+[Timer]
+OnCalendar=*-*-* 05:00:00
+Persistent=true
+RandomizedDelaySec=10m
+
+[Install]
+WantedBy=timers.target

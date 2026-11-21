@@ -1,0 +1,15 @@
+[Unit]
+Description=µBackup Pull backups from %i service
+After=network-online.target
+Wants=network-online.target
+RequiresMountsFor=/var/backups
+
+[Service]
+Type=oneshot
+WorkingDirectory=/var/backups
+ExecStart=/usr/bin/rsync \
+    --archive \
+    --verbose \
+   --timeout=60 \
+    %i:/var/backups/ \
+    /var/backups/
