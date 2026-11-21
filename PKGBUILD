@@ -2,24 +2,17 @@
 # Contributor: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname="osslsigncode"
-pkgver="2.15"
-pkgrel=2
+pkgver="2.16"
+pkgrel=1
 pkgdesc="OpenSSL based Authenticode signing for PE/MSI/Java CAB files"
 arch=('i686' 'x86_64')
 url="https://github.com/mtrojnar/osslsigncode"
 license=('GPL-3.0-or-later')
 depends=('curl' 'openssl')
-makedepends=('cmake' 'perl' 'python')
-checkdepends=('libfaketime')
-source=("https://github.com/mtrojnar/${pkgname}/archive/${pkgver}.tar.gz"
-        "support-for--python-cryptography-43.patch")
-sha512sums=('fda1f2c7671872a9931baef90ff05f45b2009aa4b76136bfe299838c0a361f57ed8d7f5e26f5137c89d63bee32dfc177ffe9b7cd345e344fba18f071715276a2'
-            '987026a909418027081615a34cadff2aa93a2bc4b9c07dd695c4965853f3c01072c1fca6b1d4ef6f053d2e104df51562d63289427d8bdec3466e310ec2a43693')
-
-prepare() {
-  cd "$srcdir/osslsigncode-${pkgver}"
-  patch -p1 -i "$srcdir/support-for--python-cryptography-43.patch"
-}
+makedepends=('cmake' 'perl' 'python' 'pandoc')
+checkdepends=('libfaketime' 'python-cryptography')
+source=("https://github.com/mtrojnar/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('02f1235126b821c1aa6eb933a0ea2a0fc8dc08cfa5c0ee6776a50a0c0c48df8cb8b73a7fae08962b90564bfd94b9bb5d651a878423f63e4dde712de8f95028bc')
 
 build() {
   cd "$srcdir"
@@ -32,7 +25,7 @@ build() {
 
 check() {
   cd "$srcdir/build"
-  ctest Release
+  ctest --output-on-failure
 }
 
 package() {
@@ -44,4 +37,6 @@ package() {
   cd ..
 
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 build/osslsigncode.1 "$pkgdir/usr/share/man/man1/osslsigncode.1"
+  install -Dm644 build/osslsigncode.html "$pkgdir/usr/share/doc/osslsigncode/osslsigncode.html"
 }
