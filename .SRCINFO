@@ -95,10 +95,10 @@ pkgbase = obs-studio-liberty
 	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=33.0.2
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
-	source = https://cdn-fastly.obsproject.com/downloads/cef_binary_7871_linux_x86_64.tar.xz
+	source = https://cdn-fastly.obsproject.com/downloads/cef_binary_7871_linux_x86_64_v2.tar.xz
 	sha512sums = 18409ab0410e8864dc35761702fffffb2812f0221580a96567d0fe20c5fb858578183c8b07ab6543edd2c71efef4c926a676cfe48906d26298b4baf6583b6b71
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = d5ffabfe40d0c3cfad3a6e7522c9352d05bdc6330615e3f42eddfe787e82e8c21a0d7b323aaae3a1fb52e2a377d218624fc60dc1ae88762c8eb16d589f368289
+	sha512sums = 0e87b98c0324de896e10c541ecec5d8468b4d9dc57a8ca0c425f5398ff8861876962c4b57ca288399a21021eb74e7a1053bfaa649811a001ed0f327780a2aa8b
 
 pkgname = obs-studio-liberty

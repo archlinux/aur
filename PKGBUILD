@@ -12,7 +12,7 @@ _qtver=6.11.0
 _libdatachannelver=0.24.5
 _mbedtlsver=3.6.1
 _pythonver=3.14
-_cefver=cef_binary_7871_linux_x86_64
+_cefver=cef_binary_7871_linux_x86_64_v2
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
   "curl" # Deps of OBS Studio and rtmp-services plugin
@@ -100,7 +100,7 @@ source=(
 sha512sums=('18409ab0410e8864dc35761702fffffb2812f0221580a96567d0fe20c5fb858578183c8b07ab6543edd2c71efef4c926a676cfe48906d26298b4baf6583b6b71'
             'SKIP'
             'SKIP'
-            'd5ffabfe40d0c3cfad3a6e7522c9352d05bdc6330615e3f42eddfe787e82e8c21a0d7b323aaae3a1fb52e2a377d218624fc60dc1ae88762c8eb16d589f368289')
+            '0e87b98c0324de896e10c541ecec5d8468b4d9dc57a8ca0c425f5398ff8861876962c4b57ca288399a21021eb74e7a1053bfaa649811a001ed0f327780a2aa8b')
 
 prepare() {
   cd "$srcdir/obs-studio"
@@ -149,7 +149,7 @@ local cmake_options=(
     -DENABLE_AJA=OFF
     -DENABLE_BROWSER=ON
     -DENABLE_NVENC=ON
-    -DCEF_ROOT_DIR="$srcdir/${_cefver/%_v?/}"
+    -DCEF_ROOT_DIR="$srcdir/${_cefver/%_v?/}" − old variant
     -DOBS_VERSION_OVERRIDE="$pkgver"
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON
 
