@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Port Ex Machina
+Comment=Play Deus Ex using DXLauncher and DXEngine
+Exec=port-ex-machina
+Icon=applications-games
+Terminal=false
+Categories=Game;
+StartupNotify=true

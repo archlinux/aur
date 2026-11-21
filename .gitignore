@@ -1,0 +1,14 @@
+# makepkg artifacts
+/pkg/
+/src/
+/*.pkg.tar.*
+/*.tar.gz
+/*.tar.xz
+/*.tar.zst
+
+# Logs and temporary files
+*.log
+*.part
+*.tmp
+
+# Do NOT ignore .SRCINFO: it is required for AUR publication.
