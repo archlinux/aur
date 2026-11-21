@@ -121,7 +121,6 @@ package() {
 	install -d "${pkgdir}/usr/bin"
 	ln -s "/opt/${pkgname}/GoZen.x86_64" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "MANUAL.md" "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.md"
 	install -Dm644 "assets/linux/gozen.desktop" "${pkgdir}/usr/share/applications/gozen-git.desktop"
 	install -Dm644 "assets/linux/gozen.xml" "${pkgdir}/usr/share/mime/packages/gozen.xml"
 	install -Dm644 "assets/linux/gozen.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gozen.png"
