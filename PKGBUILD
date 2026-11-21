@@ -2,7 +2,7 @@
 
 pkgname=luxtide-git
 _name=luxtide
-pkgver=2.0.0.r20.g371bf19
+pkgver=2.0.0.r21.g05160c6
 pkgrel=1
 pkgdesc='Automatic screen brightness that follows the sun, for DDC/CI monitors and laptop panels (development version)'
 arch=('any')
@@ -37,12 +37,12 @@ pkgver() {
 
 check() {
   cd "$_name"
-  python -m unittest discover -s tests
+  python -m unittest discover -s tests -q
 }
 
 package() {
   cd "$_name"
-  make DESTDIR="$pkgdir" PREFIX=/usr install
+  make -s DESTDIR="$pkgdir" PREFIX=/usr install
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_name/"
   # make install puts the licence under the plain name.
   ln -s "$_name" "$pkgdir/usr/share/licenses/$pkgname"
