@@ -4,20 +4,22 @@
 # published copy (version and checksum filled in, plus .SRCINFO) into its `aur` artifact.
 
 pkgname=uqbit
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="uQ's torrent app: a Qt Quick front-end for qBittorrent-nox that follows the uQ theme"
 arch=('x86_64' 'aarch64')
 url='https://github.com/asafelobotomy/uqbit'
 license=('GPL-3.0-or-later')
 # qbittorrent-enhanced-nox (AUR) provides qbittorrent-nox too, so either engine works.
-depends=('qbittorrent-nox' 'qt6-base' 'qt6-declarative' 'qt6-svg' 'glibc' 'gcc-libs'
+depends=('qbittorrent-nox' 'qt6-base' 'qt6-declarative' 'qt6-svg' 'glibc' 'gcc-libs' 'zlib'
          'hicolor-icon-theme')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 optdepends=('qt6-wayland: run natively on Wayland'
-            'uq: Torrents page in uQ Settings')
+            'python: search through search plugins'
+            'networkmanager: find the VPN for the kill switch (else by interface name)'
+            'uq: Torrents page in uQ Settings, bar icon and quick settings tile')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('984bd7077e6ee597e257421767c9c025f9fce2a877638dc462dce1a150129a31')
+sha256sums=('dba95b57f18f160f54d72411c55570b9e2f2c6b9a9a8182f0059dd2d668831e7')
 
 build() {
   cmake -S "$pkgname-$pkgver" -B build -G Ninja \
