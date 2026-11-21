@@ -1,7 +1,7 @@
 # Maintainer: Agil Mammadov <mammadovagil@proton.me>
 
 pkgname=tidra-bin
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Keep every project you maintain up to date from one desktop app (prebuilt)"
 arch=('x86_64')
@@ -38,7 +38,7 @@ provides=("tidra=$pkgver")
 conflicts=('tidra')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver-amd64.deb::$url/releases/download/v$pkgver/Tidra_${pkgver}_amd64.deb")
-sha256sums=('00203549a9b0b3704689cf7152c208f07fe0b4d32de2da2781b13e6079dd5ce3')
+sha256sums=('c743ca835d20d6bbe9d92321f63cf2c5c42896aa7423147c1763d4199a7eeb98')
 
 prepare() {
     bsdtar -xf data.tar.gz
