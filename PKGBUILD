@@ -2,10 +2,10 @@
 
 pkgname=ante-bin
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Ante CLI (prebuilt static binary from the official release)"
 arch=('x86_64' 'aarch64')
-url="https://download.ante.run"
+url="https://ante.run"
 license=('LicenseRef-ante-binary-preview')
 depends=()
 provides=('ante')
