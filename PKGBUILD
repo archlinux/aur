@@ -1,7 +1,7 @@
 # Maintainer: lubuoren <luboren123@outlook.com>
 
 pkgname=wowtype
-pkgver=0.6.0
+pkgver=0.7.4
 pkgrel=1
 _dataver=2026.11.11.8
 _datafile="wowtype-data-rime-ice-$_dataver.tar.gz"
@@ -31,10 +31,12 @@ source=(
   'wowtype-config-pacman.patch'
   'CC-BY-SA-4.0.txt::https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt'
   'Unicode-3.0.txt::https://www.unicode.org/license.txt'
-  'CC-BY-2.0-FR.html::https://creativecommons.org/licenses/by/2.0/fr/legalcode.fr'
+  'CC-BY-2.0-FR.html::https://raw.githubusercontent.com/creativecommons/cc-legal-tools-data/01b53042d4c6a13134d72c4d6138c30759f5cb17/docs/licenses/by/2.0/fr/legalcode.fr.html'
 )
 # The upstream data archive is flat, not a versioned top-level directory.
 noextract=("$_datafile")
+# creativecommons.org serves the BY 2.0 FR legal code with a rotating promo banner, so the
+# licence is pinned to the exact commit of the official CC legal-tools-data repository.
 sha256sums=(
   'SKIP'
   'b85d7c67de796d5f2d8dfacd75cea6e2d6d53c3352aa2e990b9aaa4a71055640'
