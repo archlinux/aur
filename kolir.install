@@ -1,0 +1,52 @@
+# Hooks for kolir-git. Nothing here runs commands as the user or with sudo:
+# the package only ships files under /usr, and all user-side state is created
+# by the `kolir` CLI when the user asks for it.
+
+post_install() {
+  cat <<'EOF'
+==> kolir needs a one-time per-user setup before the session can use it.
+
+    Run as your normal user (never with sudo):
+
+        kolir setup
+
+    It writes the Hyprland/Foot/Matugen glue under ~/.config and creates the
+    GTK import stubs and theme state. It does not touch ~/.zshrc unless you
+    pass --zsh, and it does not generate colors until a wallpaper is set.
+    Log out and back in (or run 'kolir reload') afterwards.
+
+    Optional:
+      kolir setup --zsh            link ~/.zshrc and the dice Oh My Zsh theme
+      kolir setup --auto-reload    reload the session after package updates
+      kolir doctor                 check dependencies, links, and generated files
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> kolir was upgraded. Your user configuration was not touched.
+
+    To pick up the new shell and scripts in the running session:
+
+        kolir reload
+
+    or log out and back in. If the upgrade changed the user-facing glue
+    (loaders, matugen config, zsh profile), `kolir setup` re-syncs it and
+    keeps backups of any files it replaces.
+EOF
+}
+
+pre_remove() {
+  cat <<'EOF'
+==> Removing kolir-git leaves your user files in place.
+
+    The package only owns files under /usr. The glue in ~/.config/hypr,
+    ~/.config/foot, ~/.config/matugen, ~/.config/quickshell, ~/.zshrc and the
+    generated colour files are left untouched on purpose, so the session keeps
+    working if you reinstall.
+
+    To remove that glue as well, run before or after removal:
+
+        kolir uninstall-user
+EOF
+}
