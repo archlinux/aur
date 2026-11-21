@@ -1,0 +1,28 @@
+pkgbase = ferron-git
+	pkgdesc = A fast, modern web server written in Rust (git)
+	pkgver = 3.0.0rc11.r0.g0000000
+	pkgrel = 1
+	url = https://ferron.sh
+	install = ferron-git.install
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = ca-certificates
+	provides = ferron=3.0.0rc11.r0.g0000000
+	conflicts = ferron
+	conflicts = ferron-rc
+	conflicts = ferronweb
+	conflicts = ferron-bin
+	conflicts = ferronweb-bin
+	conflicts = ferronweb-git
+	source = git+https://github.com/ferronweb/ferron.git#branch=develop-3.x
+	sha256sums = SKIP
+
+pkgname = ferron-git
