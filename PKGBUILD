@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=chatwithwork-desktop-bin
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Chat with Work Desktop: the desktop app, terminal interface and background agent"
 arch=('x86_64' 'aarch64')
@@ -18,10 +18,10 @@ provides=('cww' 'cww-app' 'chatwithwork-desktop')
 conflicts=('cww' 'chatwithwork-desktop' 'chatwithwork-desktop-git')
 options=('!debug' '!strip')
 _repo="https://github.com/crmne/chatwithwork-desktop"
-source_x86_64=("${_repo}/releases/download/v${pkgver}/cww-app-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("${_repo}/releases/download/v${pkgver}/cww-app-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('e44aa5301e84a320c0c39a5454695f6ed30adda181c81473c0b3213adf95a912')
-sha256sums_aarch64=('0bb6461929c1f038e8028bc1f802ffa04e6ee8437e5782bdf0334112898122b7')
+source_x86_64=("${_repo}/releases/download/v${pkgver}/Chat-with-Work-Desktop-${pkgver}-Linux-x86_64.tar.gz")
+source_aarch64=("${_repo}/releases/download/v${pkgver}/Chat-with-Work-Desktop-${pkgver}-Linux-aarch64.tar.gz")
+sha256sums_x86_64=('a6c187fb6725685569ae37ee1aed7c698f870017247eebe4109c430e522f3917')
+sha256sums_aarch64=('e29af083ecb74b336a6f990641c6101d1bd6b0f721014c28418f59a32ac57c59')
 
 package() {
   local target
@@ -29,6 +29,7 @@ package() {
     x86_64) target="x86_64-unknown-linux-gnu" ;;
     aarch64) target="aarch64-unknown-linux-gnu" ;;
   esac
+  # The folder inside keeps the build's name.
   local dir="${srcdir}/cww-app-v${pkgver}-${target}"
   install -dm755 "${pkgdir}/usr/lib/chatwithwork"
   cp -R "${dir}/browser-engine" "${pkgdir}/usr/lib/chatwithwork/"
