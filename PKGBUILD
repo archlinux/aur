@@ -1,6 +1,6 @@
 # Maintainer: radnus <radnus@gmail.com>
 pkgname=tamil-assistant
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="AI-powered Tamil language learning companion for i3 window manager"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
     'dmenu: Alternative application launcher'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jalabulajunx/tamil-assistant/archive/v$pkgver.tar.gz")
-sha256sums=('4a7218e8fb6ab9983229447ace0a1296340920ff60d35e5aae0a194de980d4e4')
+sha256sums=('e176a8fcb13042795d8c1dcfc4ce5d676b46f2bbbb587dfb2e83c2892c202ecc')
 install=tamil-assistant.install
 
 package() {
@@ -43,7 +43,8 @@ package() {
     install -Dm644 gemini_client.py "$pkgdir/$_python_site_packages/tamil_assistant/"
     install -Dm644 okular_interface.py "$pkgdir/$_python_site_packages/tamil_assistant/"
     install -Dm644 config_manager.py "$pkgdir/$_python_site_packages/tamil_assistant/"
-    
+    install -Dm644 result_cache.py "$pkgdir/$_python_site_packages/tamil_assistant/"
+
     # Create __init__.py for proper Python package
     touch "$pkgdir/$_python_site_packages/tamil_assistant/__init__.py"
     
@@ -66,6 +67,8 @@ package() {
     install -dm755 "$pkgdir/usr/share/tamil-assistant/prompts"
     install -Dm644 prompts/page_analysis.txt "$pkgdir/usr/share/tamil-assistant/prompts/"
     install -Dm644 prompts/word_lookup.txt "$pkgdir/usr/share/tamil-assistant/prompts/"
+    install -Dm644 prompts/page_list.txt "$pkgdir/usr/share/tamil-assistant/prompts/"
+    install -Dm644 prompts/word_detail.txt "$pkgdir/usr/share/tamil-assistant/prompts/"
     
     # Note: Logs directory is now created in user's ~/.local/share/tamil-assistant/logs
     
