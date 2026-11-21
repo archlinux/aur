@@ -12,6 +12,6 @@ pkgbase = openaula
 	conflicts = openaula-bin
 	provides = openaula
 	source = openaula-0.1.5.tar.gz::https://github.com/ldgnu/openaula/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = 
+	sha256sums = 711d875e3364e6fe190436e90c87cb89e8bc39aa17cea164968ac333de68e470
 
 pkgname = openaula
