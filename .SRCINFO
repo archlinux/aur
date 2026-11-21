@@ -1,11 +1,10 @@
 pkgbase = termite
 	pkgdesc = A simple VTE-based terminal
-	pkgver = 16.9
-	pkgrel = 11
-	url = https://github.com/aperezdc/termite
+	pkgver = 16.15
+	pkgrel = 1
+	url = https://github.com/barbuk/termite
 	arch = x86_64
 	license = LGPL-2.1-only
-	makedepends = git
 	makedepends = gperf
 	makedepends = meson>=1.0
 	makedepends = ninja
@@ -15,12 +14,8 @@ pkgbase = termite
 	depends = gnutls
 	depends = vte-common
 	backup = etc/xdg/termite/config
-	source = https://github.com/aperezdc/termite/releases/download/v16.9/termite-16.9.tar.lz
-	source = https://github.com/aperezdc/termite/releases/download/v16.9/termite-16.9.tar.lz.asc
-	source = vte.patch
-	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
-	b2sums = 97a11784f4ed1bd602578e11f91f11b882d6f7750a0c51a56d5560c7bbf83b1df3af79a64965c436130a6248ecf9fb86dd58c4d4bd6e5b70408a70815bdb5d32
-	b2sums = SKIP
-	b2sums = 1c254b1d66f9ed874a1eeafcfe9d2293f8875bf0ec3cc55baa31b211a069ebf6082b508a25388d954e0708f3efbe287894dc7f7637eb484ddf02cb130813358b
+	source = https://github.com/barbuk/termite/releases/download/v16.15/termite-v16.15.tar.zst
+	validpgpkeys = 9F59A49568EE372AF17E5452B6D01F84A7519939
+	sha256sums = 8f11429bbf7bab15a25c8b47ea3ec8c75152255e1acf5857c870edd1e07d5887
 
 pkgname = termite

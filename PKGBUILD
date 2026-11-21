@@ -1,42 +1,28 @@
-# Maintainer: Frederik Schwan <freswa@archlinux.org>
+# Maintainer: Julien Virey <julien.virey+aur@gmail.com>
+# Contributor: Frederik Schwan <freswa@archlinux.org>
 # Contributor: Jelle van der Waa <jelle@archlinux.org>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
-# Contributor: Julien Virey <julien.virey@gmail.com>
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgdesc='A simple VTE-based terminal'
 pkgname=termite
-pkgver=16.9
-pkgrel=11
-url=https://github.com/aperezdc/termite
+pkgver=16.15
+pkgrel=1
+url=https://github.com/barbuk/termite
 license=(LGPL-2.1-only)
 depends=(gtk3 pcre2 gnutls vte-common)
-makedepends=(git gperf 'meson>=1.0' ninja glib2-devel)
+makedepends=(gperf 'meson>=1.0' ninja glib2-devel)
 arch=(x86_64)
 backup=(etc/xdg/termite/config)
-validpgpkeys=(5AA3BC334FD7E3369E7C77B291C559DBE4C9123B)
-source=(
-    "${url}/releases/download/v${pkgver}/termite-${pkgver}.tar.lz"{,.asc}
-    vte.patch
-)
-b2sums=('97a11784f4ed1bd602578e11f91f11b882d6f7750a0c51a56d5560c7bbf83b1df3af79a64965c436130a6248ecf9fb86dd58c4d4bd6e5b70408a70815bdb5d32'
-        'SKIP'
-        '1c254b1d66f9ed874a1eeafcfe9d2293f8875bf0ec3cc55baa31b211a069ebf6082b508a25388d954e0708f3efbe287894dc7f7637eb484ddf02cb130813358b')
+validpgpkeys=(9F59A49568EE372AF17E5452B6D01F84A7519939)
+source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.zst")
+sha256sums=('8f11429bbf7bab15a25c8b47ea3ec8c75152255e1acf5857c870edd1e07d5887')
 
-prepare() {
-    cd "${pkgname}-${pkgver}"
-    # Remove old vte version
-    rm -rf subprojects/vte
-    # Patch vte wrap with version 0.84.0
-    patch -p1 < ../vte.patch
+build () {
+	arch-meson _build .
+	meson compile -C _build
 }
 
-build()  {
-  rm -rf _build
-  arch-meson --wrap-mode=forcefallback _build "${pkgname}-${pkgver}"
-  meson compile -C _build
-}
-
-package()  {
-  meson install -C _build --skip-subprojects vte --destdir "${pkgdir}"
+package () {
+	meson install -C _build --skip-subprojects vte --destdir "${pkgdir}"
 }
