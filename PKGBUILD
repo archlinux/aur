@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 
 pkgname=floatlyrics-bin
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Floating synchronized lyrics for MPRIS players on Linux Wayland (prebuilt binary)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
 provides=("floatlyrics=$pkgver")
 conflicts=('floatlyrics')
 source_x86_64=("$pkgname-$pkgver.rpm::$url/releases/download/v$pkgver/floatlyrics-$pkgver-1.$CARCH.rpm")
-sha256sums_x86_64=('dc991a6957159c7794608fa0e2e5a54e58226d58a3159d744242247c3894897f')
+sha256sums_x86_64=('5528abdfdba94ac4d7a2241f07e02182b1f974f7363100800edf4c355a014236')
 
 package() {
     cp -a usr "$pkgdir/"

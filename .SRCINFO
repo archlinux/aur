@@ -1,6 +1,6 @@
 pkgbase = floatlyrics-bin
 	pkgdesc = Floating synchronized lyrics for MPRIS players on Linux Wayland (prebuilt binary)
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/ChouChiu/FloatLyrics
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = floatlyrics-bin
 	depends = libgcc
 	depends = pango
 	depends = webkitgtk-6.0
-	provides = floatlyrics=1.3.1
+	provides = floatlyrics=1.4.0
 	conflicts = floatlyrics
-	source_x86_64 = floatlyrics-bin-1.3.1.rpm::https://github.com/ChouChiu/FloatLyrics/releases/download/v1.3.1/floatlyrics-1.3.1-1.x86_64.rpm
-	sha256sums_x86_64 = dc991a6957159c7794608fa0e2e5a54e58226d58a3159d744242247c3894897f
+	source_x86_64 = floatlyrics-bin-1.4.0.rpm::https://github.com/ChouChiu/FloatLyrics/releases/download/v1.4.0/floatlyrics-1.4.0-1.x86_64.rpm
+	sha256sums_x86_64 = 5528abdfdba94ac4d7a2241f07e02182b1f974f7363100800edf4c355a014236
 
 pkgname = floatlyrics-bin
