@@ -13,7 +13,9 @@ pkgrel=1
 pkgdesc='Background service for OpenMouse: device communication, app detection and automatic profile switching'
 arch=('x86_64')
 url='https://github.com/OpenMouse-Project/OpenMouse-Bridge'
-license=('MIT' 'OFL-1.1')
+# The bundled @openmouse/protocol and @openmouse/keyboard-protocol npm packages
+# under native-hid/node_modules are AGPL-3.0-or-later.
+license=('MIT' 'OFL-1.1' 'AGPL-3.0-or-later')
 # The panel renders through wgpu, which dlopen()s libEGL (libglvnd), libvulkan
 # when present, and the Wayland client libraries. Its text needs one of a fixed
 # list of font families (Noto Sans, DejaVu Sans, Cantarell, Adwaita Sans, ...)

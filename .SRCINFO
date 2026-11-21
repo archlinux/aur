@@ -7,6 +7,7 @@ pkgbase = openmouse-bridge-bin
 	arch = x86_64
 	license = MIT
 	license = OFL-1.1
+	license = AGPL-3.0-or-later
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
