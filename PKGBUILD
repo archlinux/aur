@@ -1,7 +1,7 @@
 # Maintainer: Humblemonk <humblemonk@gmail.com>
 
 pkgname=shurectl
-pkgver=2.18.1
+pkgver=2.19.0
 pkgrel=1
 pkgdesc='TUI configurator for Shure MOTIV USB audio interfaces and microphones'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('libgcc' 'glibc' 'alsa-lib' 'systemd-libs')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7020257717b17a0ce438baa73a53c8e130305cb90d840d27967c07a8034fac27')
+sha256sums=('38bc49f498cd10f028069cf855b81364710ff6f2d94cf66548b219069714fcd9')
 
 prepare() {
 	cd "$pkgname-$pkgver"
