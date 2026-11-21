@@ -10,14 +10,13 @@ pkgname='wg-client'
 pkgdesc='Linux Wireguard client (command line and gui)'
 _gitname='wg-client'
 
-pkgver="8.1.0"
+pkgver="9.0.0"
 pkgrel=1
 url="https://github.com/gene-git/wg-client"
 
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 
-install='wg-client.install'
 
 depends=(
     hicolor-icon-theme
@@ -78,6 +77,8 @@ build() {
 package() {
     cd "${_gitname}"
     ./scripts/do-install ${pkgdir}
+
+    chmod 750 "$pkgdir/etc/sudoers.d"
 
     install -Dm644 ../wg-client.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/wg-client.conf
 }

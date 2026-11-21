@@ -1,11 +1,11 @@
 -------------------------------------------------------
  Changelog    : wg-client
- Tags         : 8.0.2 ➙ 8.1.0,
-              : 2026-09-02 ➙ 2026-10-04
+ Tags         : 8.0.3 ➙ 9.0.0,
+              : 2026-09-03 ➙ 2026-10-04
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-10-04   : 8.1.0,
+ 2026-10-04   : 9.0.0,
               - release 8.0.5
                 Sun Oct  4 06:14:30 AM EDT 2026
                 * Update Documentation
@@ -30,8 +30,3 @@
               - **8.0.3**
             
                 * Typo in Readme
-
- 2026-09-02   : 8.0.2
-              - **8.02**
-            
-                * Add missing dependency no PyCidr package used by the ssh listener
