@@ -1,7 +1,7 @@
 # Maintainer: Maximilian Roos <m@maxroos.com>
 # Maintained at: https://github.com/max-sixty/worktrunk/blob/main/.github/aur/PKGBUILD
 pkgname=worktrunk-bin
-pkgver=0.82.0
+pkgver=0.83.0
 pkgrel=1
 pkgdesc="CLI for git worktree management, designed for running AI agents in parallel"
 arch=('x86_64' 'aarch64')
@@ -12,13 +12,14 @@ provides=('worktrunk')
 conflicts=('worktrunk')
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/max-sixty/worktrunk/releases/download/v${pkgver}/worktrunk-x86_64-unknown-linux-musl.tar.xz")
 source_aarch64=("${pkgname}-${pkgver}.tar.gz::https://github.com/max-sixty/worktrunk/releases/download/v${pkgver}/worktrunk-aarch64-unknown-linux-musl.tar.xz")
-sha256sums_x86_64=('d1e38cf36d8c14ef0682a6d6617f8a512b1a971feb3dfa437419d00136e19a3e')
-sha256sums_aarch64=('d1e38cf36d8c14ef0682a6d6617f8a512b1a971feb3dfa437419d00136e19a3e')
+sha256sums_x86_64=('e0dd5e5eb365890ddc7b255183c227e441fbb7da04cab5b72e54fa80fd21818b')
+sha256sums_aarch64=('e0dd5e5eb365890ddc7b255183c227e441fbb7da04cab5b72e54fa80fd21818b')
 
 package() {
   cd "worktrunk-$CARCH-unknown-linux-musl"
   install -Dm755 wt "$pkgdir/usr/bin/wt"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+  install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 
   # Fish completions
   # TODO: a bit hacky, but short enough that copy & paste is OK for the moment
