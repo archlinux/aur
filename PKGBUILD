@@ -2,9 +2,12 @@
 #
 # ONNX Runtime built from upstream source at a pinned release, with every
 # execution provider this kind of machine can use in one installation: CPU,
-# CUDA, TensorRT and OpenVINO (its CPU, Intel GPU and Intel NPU devices);
-# MIGraphX (AMD GPUs) on request, untested on AMD hardware. Arch's own
-# variants each carry one GPU vendor and no TensorRT or OpenVINO.
+# CUDA, TensorRT, OpenVINO (its CPU, Intel GPU and Intel NPU devices) and
+# oneDNN (CPU), and the training ops; MIGraphX (AMD GPUs) in a pkgbase of
+# its own, onnxruntime-split-migraphx (below), untested on AMD hardware.
+# Arch's own variants each carry one GPU vendor and no TensorRT or
+# OpenVINO. It replaces them, never sits beside them: every one installs
+# /usr/lib/libonnxruntime.so (onnxruntime-core's conflicts).
 #
 # One build (pkgbase onnxruntime-split), split into one package per engine:
 #   onnxruntime-core                        libonnxruntime.so with the CPU
@@ -14,10 +17,21 @@
 #   onnxruntime-provider-cuda<M>-<archs>    the CUDA provider
 #   onnxruntime-provider-tensorrt-cuda<M>   the TensorRT provider
 #   onnxruntime-provider-openvino           the OpenVINO provider
+#   onnxruntime-provider-dnnl               the oneDNN provider (CPU), with
+#                                           oneDNN built from source and
+#                                           linked in statically
 #   onnxruntime-provider-migraphx           the MIGraphX provider (AMD GPUs;
 #                                           only with migraphx in ORTF_EPS;
-#                                           untested on AMD hardware)
-#   python-onnxruntime-core                 the Python module
+#                                           shipped by onnxruntime-split-
+#                                           migraphx; untested on AMD
+#                                           hardware)
+#   python-onnxruntime-core                 the Python module, with
+#                                           onnxruntime.training
+#   python-onnxruntime-provider-migraphx    the MIGraphX provider in that
+#                                           module: a link into its capi
+#                                           directory (shipped by
+#                                           onnxruntime-split-migraphx
+#                                           only)
 # A provider package depends on its vendor runtimes, so it cannot be
 # installed without them. <M> is the major version of the CUDA toolkit the
 # build uses: CUDA_VERSION in $_ortf_cuda_home/include/cuda.h (/opt/cuda,
@@ -26,11 +40,15 @@
 # helper reads this file before it installs the makedepends. Arch's cuda
 # 13.x gives onnxruntime-provider-cuda13-rtx and
 # onnxruntime-provider-tensorrt-cuda13. A CUDA 12 toolkit there gives
-# -cuda12 names instead; TensorRT 11 needs CUDA 13, so such a build has
-# ORTF_EPS without tensorrt, or a TensorRT 10. <archs> names the CUDA
+# -cuda12 names instead, and such a build needs ORTF_CUDA_ARCHS set to
+# an explicit list of architectures (or legacy): the default rtx preset,
+# and all, need CUDA 13 (_ortf_cuda_preset_major). It also has ORTF_EPS
+# without tensorrt, or a TensorRT 10: TensorRT 11 needs CUDA 13. The CUDA
+# 12 legacy package is not this pkgbase's but onnxruntime-split-cuda12's
+# (below). <archs> names the CUDA
 # architectures the CUDA provider's kernels were compiled for: a preset's
-# name (rtx, all) or the list itself (sm120, sm89-sm120, sm120-compute120
-# with PTX). Every CUDA package provides, and conflicts with,
+# name (rtx, all, legacy) or the list itself (sm120, sm89-sm120,
+# sm120-compute120 with PTX). Every CUDA package provides, and conflicts with,
 # onnxruntime-provider-cuda and onnxruntime-provider-cuda<M>, so CUDA
 # packages of different builds cannot be installed together: they all
 # install the same /usr/lib/libonnxruntime_providers_cuda.so. The TensorRT
@@ -45,6 +63,166 @@
 # libamdhip64.so.7 in both Arch's ROCm 7.2 and ROCm 10.1 (not yet seen in a
 # build's DT_NEEDED entries).
 #
+# The oneDNN package (onnxruntime-provider-dnnl) carries oneDNN itself:
+# the oneDNN release of ortf-dep-onednn.zip (_ortf_onednn_version, the
+# version Arch's onednn ships), built by ONNX Runtime's own ExternalProject
+# from that archive (prepare() patches cmake/external/dnnl.cmake, which
+# clones a pinned oneDNN 3.0.1 from git, _ortf_patch_dnnl) as a static
+# library and linked into libonnxruntime_providers_dnnl.so, whose version
+# script keeps oneDNN's symbols local. So it depends on no oneDNN package
+# and installs no libdnnl.so.3, which would be a file of Arch's onednn: a
+# libdnnl in its DT_NEEDED entries fails package() (_ortf_lib_depends) and
+# scripts/check-deps.sh. It needs oneDNN's OpenMP runtime, GCC's libgomp,
+# and the licence directory has oneDNN's LICENSE and THIRD-PARTY-PROGRAMS.
+# Its factory keeps the OpenMP thread count it is given: upstream's kept a
+# pointer to an int on the Python module's stack, and from Python the
+# provider crashed or asked libgomp for hundreds of GB
+# (_ortf_patch_dnnl_threadpool_args).
+#
+# Training: onnxruntime_ENABLE_TRAINING=ON (build()), as Arch builds, for
+# every line. Its CUDA kernels call cuDNN's backward functions directly, so
+# the CUDA provider links libcudnn.so.9 (_ortf_patch_cudnn_link). It changes the plug between onnxruntime-core and a provider
+# library: ENABLE_STRIDED_TENSORS, which it defines, adds virtual members to
+# the provider bridge (core/providers/shared_library/provider_interfaces.h),
+# and nothing checks that both sides agree, so a provider built without
+# training crashes in a core built with it. Hence the joint release rule:
+# the main line's 1.29.0-7 (training and NCCL on, below) and the cuda12
+# line's 1.29.0-2 (the same) are built and released together;
+# onnxruntime-core conflicts with the cuda12 line's earlier packages
+# (onnxruntime-provider-cuda12-legacy<1.29.0-2 and its -bin), and the
+# other lines' providers depend on onnxruntime-core>=<pkgver>-
+# <_ortf_core_abi_pkgrel> and onnxruntime-core<<the next patch release>
+# (_ortf_core_dep), which no core built without training meets.
+# python-onnxruntime-core ships upstream's training Python package,
+# onnxruntime.training (ortmodule, optim, amp, onnxblock, the training
+# API): build() gives setup.py --enable_training, so its packages and
+# requirements-training.txt are the wheel's (cerberus, h5py, onnx, sympy and
+# setuptools join depends). The distribution stays onnxruntime 1.29.0
+# (setup.py would call it onnxruntime-training 1.29.0+cpu,
+# _ortf_patch_setup), so that what asks for onnxruntime by its metadata
+# finds it. Its modules import torch: python-pytorch is an optdepend, and
+# import onnxruntime needs none of it. Nothing is compiled against torch
+# here (the torch interop, Triton and LazyTensor are off): ortmodule's
+# C++ extensions ship as sources, built by their user at run time
+# (python -m onnxruntime.training.ortmodule.torch_cpp_extensions.install).
+#
+# NCCL: onnxruntime_USE_NCCL=ON (build()) by default, in every line
+# (ORTF_NCCL=1, _ortf_default_nccl), as Arch builds its CUDA and ROCm
+# variants: the training ops' collective kernels (AllReduce, AllGather,
+# AllToAll, the distributed ops; multi-GPU) need it. Like the training
+# ops, it changes the plug between onnxruntime-core and a provider: it
+# defines ORT_USE_NCCL for every target (cmake/CMakeLists.txt), which adds
+# a member to the provider bridge (ProviderHost,
+# core/providers/shared_library/provider_interfaces.h) and, with CUDA, one
+# to the CUDA provider's interface (ProviderInfo_CUDA,
+# core/providers/cuda/cuda_provider_factory.h, with USE_NCCL_P2P: every
+# NCCL here is 2.7 or later). So the core and every provider, of every
+# line, are built with NCCL, or every one without it. The library is
+# NVIDIA's NCCL in a build with cuda (Arch's nccl; in the cuda12 line the
+# AUR's nccl-cuda12.9, a CUDA 12.9 build, which provides and conflicts
+# with nccl), AMD's RCCL in one with migraphx and without cuda (Arch's
+# rccl, under the ROCm root): CMake's NCCL_LIBNAME. RCCL is the migraphx
+# line's only: in the main line prepare() refuses ORTF_NCCL=1 without
+# cuda in ORTF_EPS (a CPU, OpenVINO, oneDNN or MIGraphX-only build gives
+# ORTF_NCCL=0), as a core built so would have the NCCL member of the
+# provider bridge but not the CUDA provider's (ProviderInfo_CUDA's
+# GetINcclService, under USE_CUDA, ORT_USE_NCCL, USE_NCCL_P2P and
+# ENABLE_TRAINING), while its pins accept the NCCL CUDA providers: they
+# would call through the wrong slots. In the migraphx line, migraphx is
+# all ORTF_EPS may hold, and the core it builds is not shipped. A main
+# core built without cuda and without NCCL (onnxruntime-core-nccloff,
+# with the CUDA provider interface, build()) has neither member; the NCCL
+# CUDA providers, which have both, conflict with it
+# (_ortf_nccl_conflicts), and only the -nccloff ones, which have neither,
+# install beside it. In v1.29.0 the ShardedMoE op, built only with NCCL,
+# includes a header the release no longer has; prepare() drops it as
+# Arch does (_ortf_patch_sharded_moe).
+# Where it lives: CMake links the library into libonnxruntime.so
+# (onnxruntime_EXTERNAL_LIBRARIES, cmake/onnxruntime.cmake), into the
+# Python module (cmake/onnxruntime_python.cmake) and, with CUDA, into the
+# CUDA provider (cmake/onnxruntime_providers_cuda.cmake), whose sources
+# are the only ones that call NCCL (cuda_call.cc, the collective
+# kernels). makepkg links with -Wl,--as-needed, so libonnxruntime.so and
+# the Python module likely have no NCCL in their DT_NEEDED entries (no
+# NCCL call in them; not yet seen in a build): onnxruntime-core and
+# python-onnxruntime-core depend on the build's NCCL package all the
+# same (_ortf_core_nccl_deps: a build without --as-needed would fail
+# their package() otherwise), the CUDA package on it by its DT_NEEDED
+# entry, libnccl.so.2: nccl in the main line, nccl-cuda12.9 by name in
+# the cuda12 line (_ortf_nccl_pkg), whose GPUs (Pascal, Volta) Arch's
+# nccl, a CUDA 13 build with kernels for sm_75 and newer, does not run
+# on; the bare nccl would let pacman pick Arch's. The core's nccl stays
+# bare: nccl-cuda12.9 provides it. The migraphx line's MIGraphX provider
+# links no RCCL (cmake/onnxruntime_providers_migraphx.cmake), so it does
+# not depend on rccl: there RCCL is a build input only, and the core's,
+# which that line does not ship. That provider loads into the main line's
+# core, whose NCCL is NVIDIA's: one process then holds libnccl (if the
+# core or the CUDA provider links it) and no librccl.
+# nccl is depended on without bounds: libnccl.so.2 has been NCCL's soname
+# since 2.0, and the AUR's nccl-cuda12.9 provides nccl without a version,
+# which no versioned dependency accepts. No shipped package depends on
+# rccl.
+# ORTF_NCCL=0 builds without NCCL, with any ORTF_EPS: every package of the
+# build is named with the suffix -nccloff (onnxruntime-core-nccloff,
+# onnxruntime-provider-cuda13-rtx-nccloff, python-onnxruntime-core-nccloff;
+# the other lines' onnxruntime-provider-cuda12-legacy-nccloff and
+# onnxruntime-provider-migraphx-nccloff), so that pacman never mixes the
+# two plugs. Such a package provides <name>=<pkgver>-<pkgrel> and
+# conflicts with <name>, beside <name>'s own provides and conflicts (the
+# -bin convention, below): it replaces the NCCL package of that name. Its
+# providers and Python package depend on onnxruntime-core-nccloff
+# (=<pkgver>-<pkgrel>; in the cuda12 and migraphx lines the pin pair,
+# below), which no NCCL core provides; and every NCCL provider and Python
+# package conflicts with onnxruntime-core-nccloff, whose provide of
+# onnxruntime-core would otherwise meet their depends (_ortf_nccl_conflicts;
+# their -bin packages keep the conflict). No -nccloff package is shipped
+# prebuilt: scripts/gen-bin.sh refuses them.
+#
+# The CUDA 12 legacy line: pkgbase onnxruntime-split-cuda12, whose one
+# package is onnxruntime-provider-cuda12-legacy, the CUDA provider built
+# with CUDA 12.9 for the GPUs CUDA 13 dropped: Pascal (sm_60, sm_61) and
+# Volta (sm_70), and Turing to Blackwell beside them (the legacy preset).
+# Its PKGBUILD is generated from this one by scripts/gen-cuda12.sh (the
+# _ortf_line=cuda12 line and the default inputs it stamps; the same
+# source, patches and build) and is not edited by hand. It loads into the
+# onnxruntime-core of this pkgbase, which links no CUDA library: it
+# depends on onnxruntime-core of <pkgver>, of any pkgrel built with
+# training (the pin pair above), and on CUDA 12
+# (cuda>=12, cuda<13) and a cuDNN of the build's major.minor (cudnn>=9.10,
+# cudnn<9.11: cuDNN 9.11 dropped these GPUs), which the AUR's cuda-12.9
+# and cudnn9.10-cuda12.9 provide; they replace Arch's cuda and cudnn on
+# that machine. Its package function lists those bounds itself, never the
+# bare cuda and cudnn, and its makedepends name the AUR packages
+# (cuda-12.9, cudnn9.10-cuda12.9 and gcc14, CUDA 12.9's host compiler), so
+# an AUR helper reading its .SRCINFO never resolves them to Arch's CUDA 13
+# and cuDNN 9.11 or later. As every CUDA package, it provides and
+# conflicts with onnxruntime-provider-cuda and onnxruntime-provider-cuda12,
+# so it is never installed beside a -cuda13 one. The main line's
+# python-onnxruntime-core serves it too (its module links no CUDA
+# library). Its architectures run untested on Pascal and Volta hardware.
+# Its prebuilt counterpart is the AUR pkgbase onnxruntime-split-cuda12-bin,
+# from the release assets of tag cuda12-v<pkgver>-<pkgrel>.
+#
+# The MIGraphX line: pkgbase onnxruntime-split-migraphx, whose package
+# is onnxruntime-provider-migraphx, the MIGraphX provider for AMD GPUs,
+# built against Arch's migraphx and hip-runtime-amd, untested on AMD
+# hardware. Its PKGBUILD is generated from this one by
+# scripts/gen-migraphx.sh (_ortf_line=migraphx), as the cuda12 line's is;
+# it builds migraphx alone, without the Python module, and loads into
+# this pkgbase's onnxruntime-core (the pin pair above). The provider
+# package needs no Python: an optdepend names its add-on,
+# python-onnxruntime-provider-migraphx, the second package of the line,
+# which holds one link, the provider's library in the main line's
+# python-onnxruntime-core's capi directory in the system python's
+# site-packages, and so depends on that provider package of the same
+# build (=<pkgver>-<pkgrel>), on python-onnxruntime-core by the pin pair
+# (>=<pkgver>-<_ortf_core_abi_pkgrel>, <<next patch release>), and on
+# python bounded to that site-packages' minor, as python-onnxruntime-core
+# is (package_python-onnxruntime-provider-migraphx). Both are
+# source-only: no prebuilt counterpart, and scripts/gen-bin.sh refuses
+# them. Its GPUs are those Arch's migraphx is built for; the provider
+# fixes none.
+#
 # Prebuilt packages: the AUR pkgbase onnxruntime-split-bin, built from this
 # recipe in a clean chroot (the default inputs, CUDA preset rtx, plus the
 # CUDA package of an `all` build), whose packages are the release assets of
@@ -53,12 +231,15 @@
 # package: <name>-bin provides <name>=<pkgver>-<pkgrel> and conflicts with
 # <name>, and provides (and conflicts with) the plain virtual names <name>
 # provides, at the same versions (onnxruntime-provider-cuda13-rtx-bin:
-# provides onnxruntime-provider-cuda13-rtx=1.29.0-6,
+# provides onnxruntime-provider-cuda13-rtx=1.29.0-7,
 # onnxruntime-provider-cuda=1.29.0 and onnxruntime-provider-cuda13=1.29.0).
 # Every dependency between the packages is therefore on a name such a
 # package provides: on onnxruntime-core=<pkgver>-<pkgrel> (the providers
-# and the Python module) and on onnxruntime-provider-cuda<M>=<pkgver> (the
-# TensorRT one), never on a name only this recipe's package itself has.
+# and the Python module)
+# and on onnxruntime-provider-cuda<M>=<pkgver> (the TensorRT one), never
+# on a name only this recipe's package itself has. The cuda12 and migraphx
+# lines' providers depend on onnxruntime-core>=<pkgver>-
+# <_ortf_core_abi_pkgrel> and onnxruntime-core<<next patch release> instead.
 # scripts/tests/pkgbuild-settings-test.sh checks that every such
 # dependency is met both by this recipe's packages and by their -bin
 # counterparts.
@@ -67,10 +248,14 @@
 # of each library its libraries link (DT_NEEDED; package() fails on one it
 # cannot map to a package in depends, see _ortf_lib_pkg), with bounds
 # where the ABI demands a rebuild on an upgrade: cuda by major
-# (from the sonames), cudnn by major (the build-time cuDNN: the CUDA provider
-# dlopen()s it, so no soname says), TensorRT by major.minor, openvino by year.minor,
-# python by minor, and migraphx and hip-runtime-amd by the major of their
-# package versions, these from the versions prepare() records in
+# (from the sonames), cudnn by major (the build-time cuDNN, recorded: the
+# CUDA provider dlopen()s most of it, and its libcudnn.so.9, which the
+# training kernels need (_ortf_patch_cudnn_link), says no minor; by
+# major.minor in the cuda12 line),
+# TensorRT by major.minor, openvino by year.minor,
+# python by minor, and migraphx and hip-runtime-amd by the major of
+# their package versions (nccl unbounded: see NCCL above), these from the
+# versions prepare() records in
 # src/ortf.conf (_ortf_resolve): TensorRT's from the NvInferVersion.h of
 # the headers it builds with, the others from the installed packages.
 # The ROCm bounds follow the package version, not the soname: ROCm 10.1
@@ -99,9 +284,25 @@
 # cpuinfo's and protobuf's licences (see license=()).
 #
 # AMD GPUs: ONNX Runtime removed its ROCm provider in 1.23; MIGraphX is its
-# AMD GPU provider. migraphx in ORTF_EPS builds it, alone or beside cuda,
-# tensorrt and openvino (nothing in ONNX Runtime's CMake excludes the
-# combination, but it is untested, as is the provider on AMD hardware).
+# AMD GPU provider. It ships as the MIGraphX line (above), whose recipe
+# builds migraphx alone. Here, migraphx in ORTF_EPS still builds it, alone
+# or beside the other providers (nothing in ONNX Runtime's CMake excludes
+# the combination, but it is untested, as is the provider on AMD
+# hardware), for a local build only: the published package is the
+# MIGraphX line's. The main line's onnxruntime-core, built without
+# MIGraphX, has its provider interface (build()), so the provider loads
+# by name: SessionOptionsAppendExecutionProvider with "MIGraphX", the
+# legacy SessionOptionsAppendExecutionProvider_MIGraphX, Python's
+# MIGraphXExecutionProvider. The C API's GetAvailableProviders still never
+# lists MIGraphX on that core: it names only the providers built into it,
+# so a C or C++ application must try the provider rather than look for it
+# in that list. Python's get_available_providers lists
+# MIGraphXExecutionProvider when the MIGraphX line's
+# python-onnxruntime-provider-migraphx is installed (in a local main-line
+# build with migraphx and the Python module, the MIGraphX package itself):
+# it links the provider's library into the module's capi directory, and
+# the module's list adds the provider whose library is there
+# (_ortf_patch_pybind_providers).
 #
 # Version: 1.29.0, the release Arch ships, so consumers built against Arch's
 # onnxruntime see the same API. It covers the three engines:
@@ -111,32 +312,68 @@
 #     (precision flags and calibration removed, strongly typed networks);
 #   - OpenVINO 2026.x: the provider requires OpenVINO >= 2026.0.
 #
-# Build-time inputs, each from the environment variable of that name, else
-# the default. ORTF_EPS, ORTF_CUDA_ARCHS and ORTF_PYTHON take theirs from
-# the _ortf_default_* variables below the header, so that a copy of this
-# file builds other inputs where the environment does not reach makepkg (a
-# clean chroot, see there). prepare() checks and prints every value and
-# where it came from, and records it for build() and package()
-# (src/ortf.conf). Of the metadata, only the package NAMES (and, for
-# tensorrt and migraphx, makedepends) depend on them, read from the
-# environment when makepkg sources this file: ORTF_EPS decides which
-# provider packages exist, ORTF_CUDA_ARCHS the CUDA package's suffix and
-# ORTF_PYTHON whether python-onnxruntime-core does, as makepkg must know
-# every package name before prepare() runs (as must the CUDA major, from
-# cuda.h, see above). Each package function checks that the values
-# recorded in src/ortf.conf give the same names (they would not under
-# `makepkg -e` or `-R` with another environment, or after a CUDA upgrade),
-# and says what to pass.
-# Every other field of `makepkg --printsrcinfo` is the same for any inputs,
-# but makedepends and two optdepends: with tensorrt in ORTF_EPS makedepends
-# has tensorrt, with migraphx migraphx and hip-runtime-amd (no other build
-# pulls in ROCm), and onnxruntime-core's and python-onnxruntime-core's
-# optdepends name onnxruntime-provider-migraphx.
+# Source: the tree of tag v<pkgver>, commit _ortf_commit.
+# github.com/microsoft/onnxruntime has answered 404 since 2026-11-17, so by
+# default (ORTF_SOURCE=mirror, _ortf_default_source) the tree comes from
+# this project's copy of it: onnxruntime-<pkgver>.tar.gz, the asset of the
+# release source-v<pkgver> of rsd/omarchy-onnxruntime, made from the
+# commit by scripts/make-source-archive.sh (git archive --format=tar
+# --prefix=onnxruntime-<pkgver>/ <commit> | gzip -n -9, the same bytes on
+# every run; its PROVENANCE.md, beside the asset, says how it was made and
+# how to check it). b2sums pins the archive; prepare() checks the commit
+# git archive wrote into its pax header (git get-tar-commit-id) against
+# _ortf_commit and unpacks it anew into src/onnxruntime-<pkgver>
+# (_ortf_unpack_mirror). ORTF_SOURCE=upstream builds from the git tag, as
+# before: `ORTF_SOURCE=upstream makepkg ...`, or in a clean chroot a copy
+# with _ortf_default_source=upstream (the sed below). The two layouts never
+# share a directory (_ortf_srcroot): makepkg's git extraction, finding a
+# src/onnxruntime that is no git checkout, would run git fetch and git
+# checkout in the repository around it. scripts/check-upstream.sh says
+# whether the tag is back (exit 0: back, the same commit; 1: back, but the
+# tag is missing or moved; 3: still gone); switching the default back is
+# the maintainer's decision. The change of source has no pkgrel of its
+# own: the archive is the tagged tree, and the build information that
+# cmake/CMakeLists.txt asked git for is fixed to the values of the git
+# checkout (_ortf_patch_git_info), so libonnxruntime.so says
+# "git-branch=makepkg, git-commit-id=2e2543fbe9f" as 1.29.0-7's does.
+#
+# Build-time inputs, each from the environment variable of that name, else the
+# default. ORTF_EPS, ORTF_CUDA_ARCHS, ORTF_PYTHON, ORTF_NCCL and ORTF_SOURCE
+# take theirs from the _ortf_default_* variables below the header, so that a
+# copy of this file builds other inputs where the environment does not reach
+# makepkg (a clean chroot, see there). prepare() checks and prints every value
+# and where it came from, and records it for build() and package()
+# (src/ortf.conf). Of the metadata, only the package NAMES (and, for tensorrt
+# and migraphx, makedepends; and the source) depend on them, read from the
+# environment when makepkg sources this file: ORTF_EPS decides which provider
+# packages exist, ORTF_CUDA_ARCHS the CUDA package's suffix, ORTF_PYTHON
+# whether python-onnxruntime-core does and ORTF_NCCL=0 the -nccloff suffix of
+# every name, as makepkg must know every package name before prepare() runs
+# (as must the CUDA major, from cuda.h, see above); ORTF_SOURCE the first
+# entry of source and of b2sums, and whether noextract has the archive, as
+# makepkg downloads and extracts before prepare() runs. Each package function
+# checks that the values recorded in src/ortf.conf give the same names (they
+# would not under `makepkg -e` or `-R` with another environment, or after a
+# CUDA upgrade), and says what to pass. Every other field of `makepkg
+# --printsrcinfo` is the same for any inputs, but the source fields
+# (ORTF_SOURCE), makedepends, one optdepend and the NCCL fields: with tensorrt
+# in ORTF_EPS makedepends has tensorrt, with migraphx migraphx and
+# hip-runtime-amd (no other build pulls in ROCm); with NCCL (ORTF_NCCL=1) it
+# has the build's NCCL (nccl; nccl-cuda12.9 in the cuda12 line; rccl in the
+# migraphx line), onnxruntime-core and python-onnxruntime-core depend on it
+# (the CUDA package on nccl, or nccl-cuda12.9), and the providers and the
+# Python package conflict with onnxruntime-core-nccloff; without it, the
+# -nccloff packages provide and conflict with their base names and depend on
+# onnxruntime-core-nccloff; and onnxruntime-core's and
+# python-onnxruntime-core's optdepends name onnxruntime-provider-dnnl only
+# when ORTF_EPS has dnnl (onnxruntime-provider-migraphx always, the MIGraphX
+# line's package).
 #   ORTF_EPS           execution providers, space- or comma-separated, from
-#                      cuda, tensorrt, openvino, migraphx; or `cpu` alone for
-#                      a CPU-only build (default: "cuda tensorrt openvino",
-#                      _ortf_default_eps).
-#                      tensorrt needs cuda; migraphx (AMD GPUs, untested on
+#                      cuda, tensorrt, openvino, dnnl, migraphx; or `cpu`
+#                      alone for a CPU-only build (default: "cuda tensorrt
+#                      openvino dnnl", _ortf_default_eps).
+#                      tensorrt needs cuda; dnnl (oneDNN, CPU) needs no
+#                      vendor install; migraphx (AMD GPUs, untested on
 #                      AMD hardware) stands alone or joins the others
 #                      (untested together). The CPU provider is always
 #                      built.
@@ -150,10 +387,26 @@
 #                             CUDA 13 supports (also A100, H100, B200,
 #                             B300); nvcc's 87 88 107 110 121 are
 #                             Jetson/Thor/DGX Spark (Arm) targets, left out
+#                        legacy  60 61 70 75 80 86 89 120 60-virtual:
+#                             the cuda12 line's: Pascal (P100, GTX 10)
+#                             and Volta (V100, Titan V), which CUDA 13
+#                             dropped, Turing to Blackwell beside them,
+#                             and the PTX of compute_60. The rule: a
+#                             preset's PTX is for the oldest architecture
+#                             the build compiles, the one PTX that every
+#                             newer GPU can JIT-compile. Maxwell (50, 52)
+#                             is not in it: ONNX Runtime 1.29's fp16
+#                             kernels need sm_53 or later (ptxas refuses
+#                             their f16 arithmetic for compute_50)
+#                      rtx and all need CUDA 13 or later, legacy CUDA 12
+#                      (prepare() refuses another major).
 #                      ONNX Runtime compiles 90, 100, 103 and 120 as
 #                      accelerated a-real code (120 -> 120a-real: that
 #                      exact GPU only) and the others as N-real; machine
-#                      code only, no PTX to JIT-compile on another GPU.
+#                      code only, no PTX to JIT-compile on another GPU,
+#                      but for a -virtual entry (legacy's 60-virtual).
+#                      Whatever the list, it also compiles 18 kernels for
+#                      sm_90a, so a built library holds that SASS too.
 #                      Each target adds about 33.7 MiB of GPU code to the
 #                      CUDA provider (55.7 MiB of host code; sm_120 alone
 #                      makes 89.4 MiB), and the CUDA kernels' compile time
@@ -180,10 +433,24 @@
 #                      Python module and
 #                      python-onnxruntime-core; 0 skips both. prepare()
 #                      records the version of the python that builds it.
+#   ORTF_NCCL          1 (default, _ortf_default_nccl) builds with NCCL
+#                      (NVIDIA's, which needs cuda in ORTF_EPS; RCCL in
+#                      the migraphx line, see NCCL above); 0 without it,
+#                      every package named -nccloff.
+#   ORTF_SOURCE        where the ONNX Runtime tree comes from (Source,
+#                      above): mirror (default, _ortf_default_source), the
+#                      archive of release source-v<pkgver> of
+#                      rsd/omarchy-onnxruntime, unpacked into
+#                      src/onnxruntime-<pkgver>; upstream, the git tag
+#                      v<pkgver> of microsoft/onnxruntime, checked out in
+#                      src/onnxruntime. Any other value: makepkg reads
+#                      the file with the mirror's source, and prepare()
+#                      refuses it.
 #   ORTF_CCACHE        auto (default: ccache as the C, C++ and CUDA compiler
 #                      launcher when it is on PATH), 1 (required) or 0.
 #   MAKEFLAGS          -jN sets the number of parallel compile jobs (ninja
-#                      runs nproc+2 without it).
+#                      runs nproc+2 without it), the oneDNN sub-build's
+#                      too (CMAKE_BUILD_PARALLEL_LEVEL, build()).
 #   CFLAGS, CXXFLAGS   makepkg's (/etc/makepkg.conf, ~/.makepkg.conf); Arch's
 #                      -march=x86-64 -mtune=generic is a portable baseline.
 #                      -march=native or -mtune=native is refused (it makes a
@@ -195,9 +462,13 @@
 # system's Python version). It is installed into /usr/bin/python's
 # site-packages whichever python builds it.
 #
-# The build is long and large: hours with CUDA, and it needs tens of GiB of
-# disk under the build directory (BUILDDIR=/path/with/space makepkg ... moves
-# it; SRCDEST=... moves the 1.6 GiB git clone). CUDA kernels (CUTLASS, flash
+# The build is long and large: about 2 hours with CUDA for the default four
+# architectures before the training ops and oneDNN (1.29.0-6; not yet
+# measured with them) (27 minutes with one, ORTF_CUDA_ARCHS=120), and it needs tens
+# of GiB of disk under the build directory (BUILDDIR=/path/with/space
+# makepkg ... moves it; SRCDEST=... moves the downloads: the 264 MiB source
+# archive, or with ORTF_SOURCE=upstream the 1.6 GiB git clone). CUDA
+# kernels (CUTLASS, flash
 # attention) take several GiB of RAM per compile job, so the job count, not
 # the thread count, decides whether the build fits in memory. For 24
 # threads and 30 GiB of RAM:
@@ -210,45 +481,61 @@
 # Build (from onnxruntime-split/), e.g.:
 #   MAKEFLAGS=-j8 makepkg -f
 #   ORTF_TENSORRT_HOME=/usr MAKEFLAGS=-j8 makepkg -f
-#   ORTF_EPS=cpu makepkg -d -f        # a CPU-only build to check the recipe
-#                                     # (-d: no CUDA, TensorRT or OpenVINO);
-#                                     # it makes onnxruntime-core (and the
-#                                     # Python package) only
-#   ORTF_EPS=migraphx makepkg -d -f   # AMD GPUs only: onnxruntime-core,
-#                                     # onnxruntime-provider-migraphx (and
-#                                     # the Python package). makedepends
-#                                     # lists cuda, cudnn and openvino for
-#                                     # every build, so -s would install
+#   ORTF_EPS=cpu ORTF_NCCL=0 makepkg -d -f
+#                                     # a CPU-only build to check the recipe
+#                                     # (-d: no CUDA, TensorRT or OpenVINO;
+#                                     # no NCCL without a GPU provider); it
+#                                     # makes onnxruntime-core-nccloff (and
+#                                     # the Python package) only
+#   ORTF_EPS=dnnl ORTF_NCCL=0 makepkg -d -f
+#                                     # CPU only, with the oneDNN provider
+#   ORTF_EPS=migraphx ORTF_NCCL=0 makepkg -d -f
+#                                     # AMD GPUs only, a local build (the
+#                                     # published one is the MIGraphX
+#                                     # line's), without NCCL (the main
+#                                     # line's needs cuda):
+#                                     # onnxruntime-core-nccloff,
+#                                     # onnxruntime-provider-migraphx-nccloff
+#                                     # (and the Python package). makedepends
+#                                     # lists cuda, cudnn, nccl and openvino
+#                                     # for every build, so -s would install
 #                                     # them too: install migraphx and
 #                                     # hip-runtime-amd first, and -d skips
 #                                     # the check (prepare() still checks
 #                                     # the ROCm install)
-#   ORTF_EPS='cuda tensorrt openvino migraphx' MAKEFLAGS=-j8 makepkg -s -f
+#   ORTF_EPS='cuda tensorrt openvino dnnl migraphx' MAKEFLAGS=-j8 makepkg -s -f
 #                                     # every provider (untested together)
+#   ORTF_SOURCE=upstream MAKEFLAGS=-j8 makepkg -f
+#                                     # from the git tag of
+#                                     # microsoft/onnxruntime, not the
+#                                     # mirror's archive (Source, above)
 # In a clean chroot (devtools: makechrootpkg, extra-x86_64-build) the
 # environment does not reach makepkg, so the PKGBUILD itself carries the
 # inputs: the _ortf_default_* lines below the header. A copy of the
 # recipe directory for another build sets them with one sed, e.g. the
 # `all` preset (the copy's .SRCINFO, if any, no longer matches it):
 #   sed -i 's/^_ortf_default_cuda_archs=.*/_ortf_default_cuda_archs=all/' PKGBUILD
+# or the upstream source:
+#   sed -i 's/^_ortf_default_source=.*/_ortf_default_source=upstream/' PKGBUILD
 # The ORTF_* variables still win where the environment reaches makepkg.
 # A clean chroot has no TensorRT package in its repositories: the AUR's
 # tensorrt is built first and handed over (makechrootpkg -I).
 # Install the packages of one build with one pacman transaction, naming
-# its files: a glob such as ./*onnxruntime-*-1.29.0-6-* also picks up the
+# its files: a glob such as ./*onnxruntime-*-1.29.0-7-* also picks up the
 # packages an earlier build with other inputs left in this directory (e.g.
 # onnxruntime-provider-cuda13-sm120 beside -cuda13-rtx, which conflict, and
 # the transaction fails). makepkg writes them as
-# <name>-1.29.0-6-x86_64<PKGEXT>, PKGEXT from /etc/makepkg.conf
+# <name>-1.29.0-7-x86_64<PKGEXT>, PKGEXT from /etc/makepkg.conf
 # (.pkg.tar.zst on Arch); PKGDEST=/an/empty/directory makepkg ... keeps one
 # build's packages apart. For the default build:
-#   sudo pacman -U onnxruntime-core-1.29.0-6-x86_64.pkg.tar.zst \
-#     onnxruntime-provider-cuda13-rtx-1.29.0-6-x86_64.pkg.tar.zst \
-#     onnxruntime-provider-tensorrt-cuda13-1.29.0-6-x86_64.pkg.tar.zst \
-#     onnxruntime-provider-openvino-1.29.0-6-x86_64.pkg.tar.zst \
-#     python-onnxruntime-core-1.29.0-6-x86_64.pkg.tar.zst
+#   sudo pacman -U onnxruntime-core-1.29.0-7-x86_64.pkg.tar.zst \
+#     onnxruntime-provider-cuda13-rtx-1.29.0-7-x86_64.pkg.tar.zst \
+#     onnxruntime-provider-tensorrt-cuda13-1.29.0-7-x86_64.pkg.tar.zst \
+#     onnxruntime-provider-openvino-1.29.0-7-x86_64.pkg.tar.zst \
+#     onnxruntime-provider-dnnl-1.29.0-7-x86_64.pkg.tar.zst \
+#     python-onnxruntime-core-1.29.0-7-x86_64.pkg.tar.zst
 # (with migraphx in ORTF_EPS, also
-# onnxruntime-provider-migraphx-1.29.0-6-x86_64.pkg.tar.zst).
+# onnxruntime-provider-migraphx-1.29.0-7-x86_64.pkg.tar.zst).
 # Upgrading from 1.29.0-1, the single onnxruntime-full (and its
 # python-onnxruntime-full) of this recipe's first, unsplit version:
 # onnxruntime-core has replaces=(onnxruntime-full) and
@@ -285,23 +572,36 @@
 
 pkgbase=onnxruntime-split
 
-# The defaults of ORTF_EPS, ORTF_CUDA_ARCHS and ORTF_PYTHON: the values
-# used when the environment variable is unset or empty, by the package
-# names and by prepare() alike (_ortf_resolve). The one place they are
+# The defaults of ORTF_EPS, ORTF_CUDA_ARCHS, ORTF_PYTHON, ORTF_NCCL and
+# ORTF_SOURCE: the values used when the environment variable is unset or
+# empty, by the package names and the source array and by prepare() alike
+# (_ortf_resolve). The one place they are
 # spelled. A copy of the recipe for another build (e.g. the `all` preset
 # in a clean chroot, where the environment does not reach makepkg) sets
 # them with one sed (the top of the file).
-_ortf_default_eps='cuda tensorrt openvino'
+_ortf_default_eps='cuda tensorrt openvino dnnl'
 _ortf_default_cuda_archs=rtx
 _ortf_default_python=1
+_ortf_default_nccl=1
+_ortf_default_source=mirror
+# The line this file builds: main, every package of the top of the file;
+# cuda12, the CUDA 12 legacy line (pkgbase onnxruntime-split-cuda12,
+# generated from this file by scripts/gen-cuda12.sh), whose only package
+# is the CUDA provider; or migraphx, the MIGraphX line (pkgbase
+# onnxruntime-split-migraphx, scripts/gen-migraphx.sh), whose packages
+# are the MIGraphX provider and its Python add-on. Both are for the onnxruntime-core of the main
+# line. Not an input of the environment: each line is its own pkgbase.
+_ortf_line=main
 
-# Where the vendor installs are looked for (Arch's cuda, cudnn and openvino
-# packages; a local TensorRT package; Arch's migraphx and hip-runtime-amd,
-# under the ROCm root). Variables, so that the tests can point them at a
-# fixture.
+# Where the vendor installs are looked for (Arch's cuda, cudnn, nccl and
+# openvino packages, and the AUR's nccl-cuda12.9, which installs where
+# nccl does; a local TensorRT package; Arch's migraphx, hip-runtime-amd
+# and rccl, under the ROCm root). Variables, so that the tests can point
+# them at a fixture.
 _ortf_cuda_home=/opt/cuda
 _ortf_rocm_home=/opt/rocm
 _ortf_cudnn_home=/usr
+_ortf_nccl_home=/usr
 _ortf_openvino_cmake_dir=/usr/lib/cmake
 _ortf_tensorrt_default=/opt/nvidia/tensorrt
 # Where the AUR's tensorrt installs, and the TensorRT root looked in when
@@ -313,15 +613,29 @@ _ortf_system_python=/usr/bin/python
 
 # The ORTF_CUDA_ARCHS presets, by name (the top of the file says what each
 # targets). A preset's package name is fixed, whatever its list.
-_ortf_cuda_presets='rtx all'
+_ortf_cuda_presets='rtx all legacy'
 # _ortf_cuda_preset <word>: prints the architectures of the preset <word>,
 # space-separated; returns 1 when <word> is no preset. The one table of
-# them, used by _ortf_cuda_suffix and _ortf_resolve.
+# them, used by _ortf_cuda_suffix and _ortf_resolve. The CUDA major each
+# preset needs is _ortf_cuda_preset_major's.
 _ortf_cuda_preset() {
   case $1 in
     rtx) printf '75 86 89 120\n' ;;
     all) printf '75 80 86 89 90 100 103 120\n' ;;
+    legacy) printf '60 61 70 75 80 86 89 120 60-virtual\n' ;;
     *) return 1 ;;
+  esac
+}
+
+# _ortf_cuda_preset_major <preset> <CUDA major>: whether the preset can be
+# built with that CUDA major; prints, when not, the majors it needs. rtx
+# and all, the main line's, need CUDA 13 or later; legacy needs CUDA 12,
+# the last major with Pascal (60, 61) and Volta (70), which CUDA 13
+# dropped. Any other value (a list) passes.
+_ortf_cuda_preset_major() {
+  case $1 in
+    rtx | all) (($2 >= 13)) || { printf 'CUDA 13 or later\n'; return 1; } ;;
+    legacy) (($2 == 12)) || { printf 'CUDA 12\n'; return 1; } ;;
   esac
 }
 
@@ -397,22 +711,54 @@ _ortf_cudnn_header_major() {
   return 1
 }
 
-# _ortf_pkgnames <ORTF_EPS> <ORTF_CUDA_ARCHS> <ORTF_PYTHON> <CUDA major>:
-# prints the package names these build inputs make, space-separated, in
-# the order makepkg packages them: onnxruntime-core first (the provider
-# packages copy from its staged install) and python-onnxruntime-core last
-# (it checks that each library of its wheel is in one of the others). Pure
-# bash, never fails: invalid values give some names, and prepare() reports
-# the error.
+# _ortf_cudnn_header_minor <cuDNN root>: prints the minor version of the
+# cuDNN there, CUDNN_MINOR from its include/cudnn_version.h (0 counts);
+# returns 1 when the header is unreadable or has no such line.
+_ortf_cudnn_header_minor() {
+  local line header=$1/include/cudnn_version.h
+  [[ -f $header && -r $header ]] || return 1
+  while IFS= read -r line; do
+    if [[ $line =~ ^[[:space:]]*#[[:space:]]*define[[:space:]]+CUDNN_MINOR[[:space:]]+(0|[1-9][0-9]*)([[:space:]]|$) ]]; then
+      printf '%s\n' "${BASH_REMATCH[1]}"
+      return 0
+    fi
+  done <"$header"
+  return 1
+}
+
+# _ortf_pkgnames <ORTF_EPS> <ORTF_CUDA_ARCHS> <ORTF_PYTHON> <CUDA major>
+# [<ORTF_NCCL>]: prints the package names these build inputs make,
+# space-separated, each with the suffix -nccloff when <ORTF_NCCL> is 0, in
+# the order makepkg packages them: onnxruntime-core first (it stages the
+# install the provider packages copy from, _ortf_stage) and
+# python-onnxruntime-core last (it checks that each library of its wheel
+# is in one of the others). The cuda12 line (_ortf_line) makes the CUDA
+# package alone, whatever the other inputs (prepare() refuses any but
+# ORTF_EPS=cuda and ORTF_PYTHON=0 there), and the migraphx line the
+# MIGraphX package and its Python add-on, after it (ORTF_EPS=migraphx and
+# ORTF_PYTHON=0). Pure bash,
+# never fails: invalid values give some names (an <ORTF_NCCL> other than
+# 0, or none, is NCCL on), and prepare() reports the error.
 _ortf_pkgnames() {
-  local eps=" ${1//,/ } " sfx names=onnxruntime-core
+  local eps=" ${1//,/ } " sfx names=onnxruntime-core off=''
+  local -a words
+  [[ ${5:-1} != 0 ]] || off=-nccloff
   sfx=$(_ortf_cuda_suffix "$2")
-  [[ $eps != *' cuda '* ]] || names+=" onnxruntime-provider-cuda$4-$sfx"
-  [[ $eps != *' tensorrt '* ]] || names+=" onnxruntime-provider-tensorrt-cuda$4"
-  [[ $eps != *' openvino '* ]] || names+=" onnxruntime-provider-openvino"
-  [[ $eps != *' migraphx '* ]] || names+=" onnxruntime-provider-migraphx"
-  [[ $3 == 0 ]] || names+=" python-onnxruntime-core"
-  printf '%s\n' "$names"
+  if [[ $_ortf_line == cuda12 ]]; then
+    names="onnxruntime-provider-cuda$4-$sfx"
+  elif [[ $_ortf_line == migraphx ]]; then
+    names='onnxruntime-provider-migraphx python-onnxruntime-provider-migraphx'
+  else
+    [[ $eps != *' cuda '* ]] || names+=" onnxruntime-provider-cuda$4-$sfx"
+    [[ $eps != *' tensorrt '* ]] || names+=" onnxruntime-provider-tensorrt-cuda$4"
+    [[ $eps != *' openvino '* ]] || names+=" onnxruntime-provider-openvino"
+    [[ $eps != *' dnnl '* ]] || names+=" onnxruntime-provider-dnnl"
+    [[ $eps != *' migraphx '* ]] || names+=" onnxruntime-provider-migraphx"
+    [[ $3 == 0 ]] || names+=" python-onnxruntime-core"
+  fi
+  read -ra words <<<"$names"
+  words=("${words[@]/%/$off}")
+  printf '%s\n' "${words[*]}"
 }
 
 # The CUDA major the names carry when there is no cuda.h to read it from:
@@ -424,19 +770,35 @@ _ortf_pkgnames() {
 _ortf_cuda_major_default=13
 # The package names, from the environment with the defaults above (an
 # empty variable counts as unset, as in _ortf_resolve), and the CUDA major
-# from the toolkit's cuda.h, else _ortf_cuda_major_default. _ortf_pkgname
+# from the toolkit's cuda.h, else _ortf_cuda_major_default. In the cuda12
+# line the major is always 12, whatever cuda.h says (a host with Arch's
+# cuda 13 at /opt/cuda still reads the published names); prepare() reads
+# cuda.h and refuses a toolkit of another major there. _ortf_pkgname
 # keeps them for the package functions, in which makepkg sets pkgname to
 # the one package being written.
 _ortf_sfx=$(_ortf_cuda_suffix "${ORTF_CUDA_ARCHS:-$_ortf_default_cuda_archs}")
 # _ortf_cuda_header_found: 1 when that major came from cuda.h, else 0.
 _ortf_cuda_header_found=1
-_ortf_cuda_major=$(_ortf_cuda_header_major "$_ortf_cuda_home") || {
+if [[ $_ortf_line == cuda12 ]]; then
+  _ortf_cuda_major=12
+  _ortf_cuda_header_found=0
+elif ! _ortf_cuda_major=$(_ortf_cuda_header_major "$_ortf_cuda_home"); then
   _ortf_cuda_major=$_ortf_cuda_major_default
   _ortf_cuda_header_found=0
-}
+fi
+# _ortf_nccl_sfx: -nccloff when the names are those of a build without
+# NCCL (ORTF_NCCL=0), else empty.
+_ortf_nccl_sfx=''
+[[ ${ORTF_NCCL:-$_ortf_default_nccl} != 0 ]] || _ortf_nccl_sfx=-nccloff
 read -ra _ortf_pkgname <<<"$(_ortf_pkgnames "${ORTF_EPS:-$_ortf_default_eps}" \
-  "${ORTF_CUDA_ARCHS:-$_ortf_default_cuda_archs}" "${ORTF_PYTHON:-$_ortf_default_python}" "$_ortf_cuda_major")"
+  "${ORTF_CUDA_ARCHS:-$_ortf_default_cuda_archs}" "${ORTF_PYTHON:-$_ortf_default_python}" "$_ortf_cuda_major" \
+  "${ORTF_NCCL:-$_ortf_default_nccl}")"
 pkgname=("${_ortf_pkgname[@]}")
+# _ortf_makes <name>: whether the names have the package <name> (a base
+# name, without the -nccloff suffix, which it adds as the names do).
+_ortf_makes() {
+  [[ " ${_ortf_pkgname[*]} " == *" $1$_ortf_nccl_sfx "* ]]
+}
 pkgver=1.29.0
 # 2: the split into one package per engine (1.29.0-1 was one package).
 # 3: the TensorRT provider package depends on tensorrt (the AUR's, or
@@ -456,9 +818,92 @@ pkgver=1.29.0
 # protobuf's (BSD-3-Clause) licence; a dependency with version bounds
 # (cuda, cudnn, openvino, python, migraphx, hip-runtime-amd) is no longer
 # listed bare as well.
-pkgrel=6
+# 7: the training ops (onnxruntime_ENABLE_TRAINING=ON), which change the
+# provider bridge: released together with the cuda12 line's 1.29.0-2, and
+# onnxruntime-core conflicts with the cuda12 line's earlier packages;
+# adds onnxruntime-provider-dnnl (oneDNN 3.11.3, static) to the default
+# build; MIGraphX ships as its own pkgbase, onnxruntime-split-migraphx,
+# which onnxruntime-core's and python-onnxruntime-core's optdepends name
+# in every build, and whose add-on python-onnxruntime-provider-migraphx
+# links its library into the main line's Python module, whose
+# get_available_providers then lists it
+# (_ortf_patch_pybind_providers); python-onnxruntime-core ships
+# onnxruntime.training;
+# NCCL on (onnxruntime_USE_NCCL, ORTF_NCCL), which changes the provider
+# bridge too, in every line. Before its release, after its first build:
+# the CUDA provider links cuDNN, libcudnn.so.9, which its training kernels
+# call (_ortf_patch_cudnn_link: that build's did not load); the oneDNN
+# provider keeps its thread count, not a pointer to the Python module's
+# dead stack (_ortf_patch_dnnl_threadpool_args); the Python module's
+# RUNPATH is $ORIGIN again (no build path); the add-on's licence
+# directory is a link; package() fails on a library with an undefined
+# symbol (_ortf_check_symbols) or a build path in its RUNPATH
+# (_ortf_check_runpaths). 7 stays 7: no package of 7 was released.
+pkgrel=7
+# The first pkgrel of pkgver whose onnxruntime-core the other lines'
+# providers (cuda12, migraphx) are built to fit: 7, the first with the
+# training ops and NCCL (the top of the file). Not this line's pkgrel, which a
+# packaging-only change may raise without touching the other lines: those
+# depend on onnxruntime-core>=<pkgver>-<this> and on
+# onnxruntime-core<<pkgver with its last number raised by one> (1.29.0 ->
+# 1.29.1, _ortf_core_next), which a later pkgrel of the same pkgver meets.
+# Back to 1 with a new pkgver.
+_ortf_core_abi_pkgrel=7
+# _ortf_core_next: pkgver with its last dot-separated number raised by one
+# (1.29.0 -> 1.29.1), the upper bound of those depends. Pure bash.
+_ortf_core_next=${pkgver%.*}.$((${pkgver##*.} + 1))
+# The onnxruntime-core the providers and the Python package depend on:
+# the same build's in the main line; in the cuda12 and migraphx lines,
+# which make no core, the main line's of the same pkgver from
+# _ortf_core_abi_pkgrel on. Without NCCL, onnxruntime-core-nccloff (the
+# top of the file): no NCCL core provides that name.
+if [[ $_ortf_line == main ]]; then
+  _ortf_core_dep=("onnxruntime-core$_ortf_nccl_sfx=$pkgver-$pkgrel")
+else
+  _ortf_core_dep=("onnxruntime-core$_ortf_nccl_sfx>=$pkgver-$_ortf_core_abi_pkgrel"
+    "onnxruntime-core$_ortf_nccl_sfx<$_ortf_core_next")
+fi
+# _ortf_nccl_conflicts: what every provider and the Python package
+# conflict with, of every line. With NCCL, onnxruntime-core-nccloff,
+# whose provide of onnxruntime-core would meet their depends on the core
+# (the plug rule, the top of the file); their -bin packages keep the
+# conflict (scripts/gen-bin.sh copies the conflicts). Without NCCL,
+# nothing: a -nccloff package's depend on onnxruntime-core-nccloff is met
+# by no NCCL core. (onnxruntime-core and onnxruntime-core-nccloff conflict
+# already: the latter provides and conflicts with the former.)
+_ortf_nccl_conflicts=()
+[[ -n $_ortf_nccl_sfx ]] || _ortf_nccl_conflicts=(onnxruntime-core-nccloff)
+# _ortf_core_nccl_deps: the NCCL package onnxruntime-core and
+# python-onnxruntime-core depend on (the top of the file): nccl when the
+# build has the CUDA provider (in the cuda12 line too: nccl-cuda12.9
+# provides it), rccl in the migraphx line (CMake's NCCL_LIBNAME without
+# CUDA), nothing without NCCL (or in a main-line build without cuda,
+# which prepare() refuses with NCCL). As the names, from the
+# environment. The cuda12 and migraphx lines build a core too, which
+# they do not ship: theirs is their build's NCCL.
+_ortf_core_nccl_deps=()
+if [[ -z $_ortf_nccl_sfx ]]; then
+  if [[ " ${_ortf_pkgname[*]} " == *" onnxruntime-provider-cuda$_ortf_cuda_major-"* ]]; then
+    _ortf_core_nccl_deps=(nccl)
+  elif [[ $_ortf_line == migraphx ]]; then
+    _ortf_core_nccl_deps=(rccl)
+  fi
+fi
+# _ortf_nccl_pkg: the NCCL package of the CUDA provider (the top of the
+# file), by name: the AUR's nccl-cuda12.9 in the cuda12 line, never the
+# bare nccl there, which pacman would resolve to Arch's CUDA 13 build;
+# Arch's nccl in the main line.
+_ortf_nccl_pkg=nccl
+[[ $_ortf_line != cuda12 ]] || _ortf_nccl_pkg='nccl-cuda12.9'
 # Each package sets its own; this one is the pkgbase's (and onnxruntime-core's).
 pkgdesc='Cross-platform inference engine for ONNX models: the C and C++ library with the CPU execution provider'
+# The cuda12 line's pkgbase is its one package, the CUDA provider's
+# (_ortf_cuda12_pkgdesc, its package function's too).
+_ortf_cuda12_pkgdesc='The CUDA execution provider of ONNX Runtime, CUDA 12 build for Pascal, Volta and newer NVIDIA GPUs, for onnxruntime-core'
+[[ $_ortf_line != cuda12 ]] || pkgdesc=$_ortf_cuda12_pkgdesc
+# The MIGraphX package's, the migraphx line's pkgbase's too.
+_ortf_migraphx_pkgdesc='The MIGraphX execution provider of ONNX Runtime, for onnxruntime-core (AMD GPUs; untested on AMD hardware)'
+[[ $_ortf_line != migraphx ]] || pkgdesc=$_ortf_migraphx_pkgdesc
 arch=('x86_64')
 url='https://github.com/microsoft/onnxruntime'
 # ONNX Runtime (MIT) and the bundled dependencies compiled into its
@@ -472,17 +917,52 @@ url='https://github.com/microsoft/onnxruntime'
 # /usr/share/licenses/spdx (namcap's licensepkg rule wants a file for each
 # of MIT, BSD-2-Clause and BSD-3-Clause): ONNX Runtime's LICENSE (MIT),
 # cpuinfo's (BSD-2-Clause) and protobuf's (BSD-3-Clause), from their source
-# archives (_ortf_licenses).
+# archives (_ortf_licenses), except the migraphx line's Python add-on, whose
+# licence directory is a link to its provider package's.
 # No vendor runtime is contained (see the top of the file).
 license=('MIT AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MPL-2.0')
 # Every build input, whatever ORTF_EPS selects; TensorRT and ROCm below,
 # by the package names.
 makedepends=(
-  'git' 'cmake' 'ninja' 'patchelf'
-  'python' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-numpy'
-  'cuda' 'cudnn'
-  'openvino'
+  'git' 'cmake' 'ninja'
+  # python itself for every build: ONNX's CMake generates its protobuf
+  # sources with a Python script; in the migraphx line it also gives the
+  # site-packages its Python add-on links the provider's library into
+  # (package_python-onnxruntime-provider-migraphx). The rest builds the Python
+  # module.
+  'python'
 )
+# The cuda12 line builds the CUDA provider alone, the migraphx line the
+# MIGraphX one: no Python module, and no OpenVINO and (migraphx) no CUDA
+# (their .SRCINFO, which the AUR shows, lists none of them).
+# The training Python package's requirements that python-onnxruntime-core
+# depends on are build inputs too (namcap: a split package's depends must
+# be makedepends); nothing imports them at build time.
+[[ $_ortf_line != main ]] ||
+  makedepends+=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-numpy'
+    'python-cerberus' 'python-h5py' 'python-onnx' 'python-sympy')
+# patchelf sets the RUNPATH of the TensorRT provider and of the Python
+# module (_ortf_package_provider, package_python-onnxruntime-core): the
+# main line's packages only; the cuda12 and migraphx lines run no patchelf.
+[[ $_ortf_line != main ]] || makedepends+=('patchelf')
+# The cuda12 line's CUDA 12.9 and cuDNN 9.10 by the AUR packages that
+# install them, and gcc14, the host compiler CUDA 12.9 accepts: the bare
+# cuda and cudnn would be Arch's CUDA 13 and cuDNN 9.11 or later, which
+# prepare() refuses in this line.
+if [[ $_ortf_line == cuda12 ]]; then
+  makedepends+=('cuda-12.9' 'cudnn9.10-cuda12.9' 'gcc14')
+elif [[ $_ortf_line == main ]]; then
+  makedepends+=('cuda' 'cudnn')
+fi
+# NCCL (ORTF_NCCL=1, the top of the file): the cuda12 line's by the AUR
+# package of the CUDA 12.9 build (it provides and conflicts with nccl, as
+# cuda-12.9 does with cuda), never the bare nccl, Arch's CUDA 13 build;
+# the main line's Arch's nccl for every build, as cuda and cudnn. RCCL is
+# with ROCm, below.
+if [[ -z $_ortf_nccl_sfx && $_ortf_line != migraphx ]]; then
+  makedepends+=("$_ortf_nccl_pkg")
+fi
+[[ $_ortf_line != main ]] || makedepends+=('openvino')
 # ROCm only when ORTF_EPS (from the environment, as for pkgname: the names
 # it gave above) selects migraphx: its install runs to GiB, and no other
 # build needs it. migraphx
@@ -492,7 +972,10 @@ makedepends=(
 # providing further HIP headers) is unverified until a trial build
 # hip-config.cmake may also need rocm-llvm, rocm-device-libs or rocm-cmake at
 # configure time (unverified until a trial build).
-[[ " ${_ortf_pkgname[*]} " != *' onnxruntime-provider-migraphx '* ]] || makedepends+=('migraphx' 'hip-runtime-amd')
+! _ortf_makes onnxruntime-provider-migraphx || makedepends+=('migraphx' 'hip-runtime-amd')
+# rccl, the NCCL of the migraphx line (a build with migraphx and
+# without CUDA): ROCm's, under the ROCm root.
+[[ ${_ortf_core_nccl_deps[*]} != rccl ]] || makedepends+=('rccl')
 # tensorrt when the names (as for ROCm) have the TensorRT provider package:
 # both TensorRT packages provide the name, the AUR's tensorrt (under /usr)
 # and nvidia-tensorrt-sdk-local (under /opt/nvidia/tensorrt).
@@ -500,13 +983,15 @@ makedepends=(
 # uses; a TensorRT that no package provides needs makepkg -d. prepare()
 # checks the headers and library, and warns when no installed package
 # provides tensorrt.
-[[ " ${_ortf_pkgname[*]} " != *" onnxruntime-provider-tensorrt-cuda$_ortf_cuda_major "* ]] || makedepends+=('tensorrt')
+! _ortf_makes "onnxruntime-provider-tensorrt-cuda$_ortf_cuda_major" || makedepends+=('tensorrt')
 # The provider packages, by the names they provide (whatever their CUDA
 # architectures), for onnxruntime-core's and python-onnxruntime-core's
-# optdepends. onnxruntime-provider-migraphx only when the names (as for
-# ROCm above) have it: nothing else provides it (it is never prebuilt), so
-# the AUR would list a default build's optdepend on it as one no package
-# meets. A variable at the top level, not a test in the package functions:
+# optdepends. onnxruntime-provider-dnnl only when the names have it, as
+# the build that makes onnxruntime-core makes it too (by default).
+# onnxruntime-provider-migraphx always: the AUR pkgbase
+# onnxruntime-split-migraphx makes it for any core of this pkgver from
+# _ortf_core_abi_pkgrel (as does a build with migraphx in ORTF_EPS). A
+# variable at the top level, not a test in the package functions:
 # makepkg --printsrcinfo takes every optdepends= line of a function's body
 # as it stands, whatever condition it sits under.
 _ortf_provider_optdepends=(
@@ -514,15 +999,61 @@ _ortf_provider_optdepends=(
   'onnxruntime-provider-tensorrt: the TensorRT execution provider'
   'onnxruntime-provider-openvino: the OpenVINO execution provider (Intel CPU, GPU and NPU)'
 )
-[[ " ${_ortf_pkgname[*]} " != *' onnxruntime-provider-migraphx '* ]] ||
-  _ortf_provider_optdepends+=('onnxruntime-provider-migraphx: the MIGraphX execution provider (AMD GPUs, untested)')
+! _ortf_makes onnxruntime-provider-dnnl ||
+  _ortf_provider_optdepends+=('onnxruntime-provider-dnnl: the oneDNN execution provider (CPU)')
+_ortf_provider_optdepends+=('onnxruntime-provider-migraphx: the MIGraphX execution provider (AMD GPUs; AUR pkgbase onnxruntime-split-migraphx, untested on AMD hardware)')
+# _ortf_mgx_pylink: whether the MIGraphX package itself links its library
+# into the Python module's capi directory (package_onnxruntime-provider-
+# migraphx): in a main-line build that makes python-onnxruntime-core too,
+# whose python bound covers the link (the two are rebuilt together). In
+# the migraphx line the link is its add-on's,
+# python-onnxruntime-provider-migraphx (package_python-onnxruntime-
+# provider-migraphx), which the provider optdepends on; as names at the
+# top level, as _ortf_provider_optdepends, for makepkg --printsrcinfo.
+_ortf_mgx_pylink=0 _ortf_mgx_optdepends=()
+if _ortf_makes python-onnxruntime-core; then _ortf_mgx_pylink=1; fi
+if [[ $_ortf_line == migraphx ]]; then
+  _ortf_mgx_optdepends=('python-onnxruntime-provider-migraphx: MIGraphX from Python (MIGraphXExecutionProvider in python-onnxruntime-core)')
+fi
+# The python-onnxruntime-core the migraphx line's add-on depends on: the
+# main line's, by the pin pair of _ortf_core_dep (python-onnxruntime-core
+# is versioned as onnxruntime-core, and depends on it exactly); without
+# NCCL, python-onnxruntime-core-nccloff's.
+_ortf_pycore_dep=("python-onnxruntime-core$_ortf_nccl_sfx>=$pkgver-$_ortf_core_abi_pkgrel"
+  "python-onnxruntime-core$_ortf_nccl_sfx<$_ortf_core_next")
 # !lto: link-time optimisation of the CUDA provider costs hours and many
 # GiB of RAM (upstream's releases are not LTO builds); !debug: the CUDA
 # provider's debug information alone runs to GiB.
 options=('!lto' '!debug')
 
-# The upstream tag and the commit it must point to (checked in prepare()).
+# The upstream tag and the commit it must point to (checked in prepare(),
+# in the git checkout or in the mirror's archive).
 _ortf_commit=2e2543fbe9fae542f921d47a72d21d5a4ef0b710
+
+# The ONNX Runtime source (Source, the top of the file), chosen when
+# makepkg reads this file, from ORTF_SOURCE as _ortf_resolve reads it:
+# _ortf_source is mirror or upstream. Any other value gives the mirror's
+# source here, so that reading the file never fails (makepkg
+# --printsrcinfo, an AUR helper), and prepare() refuses it.
+# _ortf_tree_source and _ortf_tree_b2sum are the first entries of source
+# and b2sums. The mirror's archive is the release asset of
+# rsd/omarchy-onnxruntime (sha256
+# 3aec9fa0c8f4064a8b043af1afbc3d5c2046443bb466243d5b843ca9b4a1fa94,
+# 276402461 bytes; scripts/make-source-archive.sh): git archive's tree of
+# _ortf_commit under onnxruntime-<pkgver>/, unpacked by prepare(), not
+# makepkg (noextract, _ortf_unpack_mirror). The git source's checksum is
+# makepkg's over the tag's tree (the same as Arch's for this tag).
+case ${ORTF_SOURCE:-$_ortf_default_source} in
+  upstream) _ortf_source=upstream ;;
+  *) _ortf_source=mirror ;;
+esac
+if [[ $_ortf_source == upstream ]]; then
+  _ortf_tree_source="onnxruntime::git+https://github.com/microsoft/onnxruntime.git#tag=v$pkgver"
+  _ortf_tree_b2sum=8fdc31605d139480199860fc303a537bf67635bf60eb1d40e850b0270b422b070855cf416e9ca774889b9fba0c52fa40ad6fde0bdaf074013e2aaba89b53e054
+else
+  _ortf_tree_source="onnxruntime-$pkgver.tar.gz::https://github.com/rsd/omarchy-onnxruntime/releases/download/source-v$pkgver/onnxruntime-$pkgver.tar.gz"
+  _ortf_tree_b2sum=28d0b3e08d28a8d9295a21f8a233671bdab89f2a9573e169398421bd5e7355f4ce8a50cf6d2480baa02e6fb266323dff2808c8e474d456bd2e236a70621533f0
+fi
 
 # ONNX Runtime fetches its C++ dependencies with CMake FetchContent, at the
 # versions pinned in cmake/deps.txt. They are downloaded here, as makepkg
@@ -536,17 +1067,26 @@ _ortf_commit=2e2543fbe9fae542f921d47a72d21d5a4ef0b710
 # libraries' version scripts. prepare() checks each URL and SHA-1 against
 # deps.txt, so a version bump that misses one fails there. Not mirrored, as
 # this build does not use them: the unit-test, benchmark, XNNPACK, CoreML,
-# WebGPU, DirectML, training, telemetry and Arm dependencies, and
-# onnx_tensorrt (the TensorRT provider uses TensorRT's own ONNX parser).
+# WebGPU, DirectML, telemetry and Arm dependencies, and onnx_tensorrt (the
+# TensorRT provider uses TensorRT's own ONNX parser). The training ops
+# (onnxruntime_ENABLE_TRAINING, build()) add two: cxxopts and tensorboard
+# (whose event protos are compiled into libonnxruntime.so).
 _ortf_deps=(
   abseil_cpp re2 protobuf date mp11 json pytorch_cpuinfo microsoft_gsl safeint
-  flatbuffers onnx eigen dlpack pybind11 cutlass cudnn_frontend
+  flatbuffers onnx eigen dlpack pybind11 cutlass cudnn_frontend cxxopts tensorboard
 )
+# oneDNN, which the oneDNN provider (dnnl in ORTF_EPS) links statically: not
+# in cmake/deps.txt (upstream clones oneDNN 3.0.1 from git in
+# cmake/external/dnnl.cmake, which prepare() points at this archive
+# instead, _ortf_patch_dnnl), so it is no part of the mirror. 3.11.3 is the
+# oneDNN Arch's onednn package ships; oneapi-src/oneDNN redirects to
+# uxlfoundation/oneDNN.
+_ortf_onednn_version=3.11.3
 # The git submodules (onnx, libprotobuf-mutator, emsdk) are not checked out:
 # onnx comes from deps.txt like the others, the other two are for fuzzing
 # and WebAssembly builds.
 source=(
-  "onnxruntime::git+https://github.com/microsoft/onnxruntime.git#tag=v$pkgver"
+  "$_ortf_tree_source"
   'ortf-dep-abseil_cpp.zip::https://github.com/abseil/abseil-cpp/archive/refs/tags/20250814.0.zip'
   'ortf-dep-re2.zip::https://github.com/google/re2/archive/refs/tags/2024-07-02.zip'
   'ortf-dep-protobuf.zip::https://github.com/protocolbuffers/protobuf/archive/refs/tags/v21.12.zip'
@@ -563,13 +1103,19 @@ source=(
   'ortf-dep-pybind11.zip::https://github.com/pybind/pybind11/archive/refs/tags/v3.0.2.zip'
   'ortf-dep-cutlass.zip::https://github.com/NVIDIA/cutlass/archive/refs/tags/v4.4.2.zip'
   'ortf-dep-cudnn_frontend.zip::https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v1.24.0.zip'
+  'ortf-dep-cxxopts.zip::https://github.com/jarro2783/cxxopts/archive/3c73d91c0b04e2b59462f0a741be8c07024c1bc0.zip'
+  'ortf-dep-tensorboard.zip::https://github.com/tensorflow/tensorboard/archive/373eb09e4c5d2b3cc2493f0949dc4be6b6a45e81.zip'
+  "ortf-dep-onednn.zip::https://github.com/uxlfoundation/oneDNN/archive/refs/tags/v$_ortf_onednn_version.zip"
 )
-# FetchContent extracts the archives itself.
-noextract=("${_ortf_deps[@]/%/.zip}")
+# FetchContent extracts the archives itself, and the oneDNN ExternalProject
+# its own; prepare() the mirror's archive.
+noextract=("${_ortf_deps[@]/%/.zip}" onednn.zip)
 noextract=("${noextract[@]/#/ortf-dep-}")
-# The git source's checksum is makepkg's over the tag's tree (the same as
-# Arch's for this tag); prepare() also checks the commit, _ortf_commit.
-b2sums=('8fdc31605d139480199860fc303a537bf67635bf60eb1d40e850b0270b422b070855cf416e9ca774889b9fba0c52fa40ad6fde0bdaf074013e2aaba89b53e054'
+[[ $_ortf_source != mirror ]] || noextract+=("onnxruntime-$pkgver.tar.gz")
+# The first is the ONNX Runtime source's (_ortf_tree_b2sum, above: the
+# mirror's archive, or makepkg's over the git tag's tree); prepare() also
+# checks the commit, _ortf_commit, in either.
+b2sums=("$_ortf_tree_b2sum"
         'a6ef9897d1557f06991cdd6afe73fce31bcf6dc3e971a7fb03eb4bd9db4379e98aea4fff0ac612e26638d0e0a835124e0d52611d560a27c85a9ca30f5210fee1'
         '544f24a306b7b7adb924073e4319eae017bc82875cdfb20b668997ed212b343261f6c568b24ca945a69858ac9527fa22befac09138d38c9e5be1856bc11da8fd'
         'ecfb8890aea094c90f76062ca3eb88b24df467b2f1e9bd0531a8a1d66113869db02bff6f52f73a1dde8f7288914d5ca6345dfe395440baaf386028742981f4ea'
@@ -585,7 +1131,10 @@ b2sums=('8fdc31605d139480199860fc303a537bf67635bf60eb1d40e850b0270b422b070855cf4
         'd7c961047f7daad71e73f718c354b6ee40abb925835b9ae6441d0aafd948d2b34dea55c7555814bd65c910c7b52185d6b8820e544ae5d30c273e45a3e106c83b'
         '3e79515d5b312775a5cc09ce8c98530f6c25e59e3be0c4745572f5a6dbf1849c912563b1ff1fad74f2ae2b294776da57c4b8412e300bbb93fbcb5ec483fb4635'
         '3b3f79303cc113b4044b2f3d472060a3d90270882b4180d31eac07cf317b41abd3ab5bedabfa5116401669b85cce1fad83d5fd4bbf9a43020fa20f0ce748d0b5'
-        '3c12cf8c6de687744a13e889bcdd569cff2f390df4725885af255059f012de9f5a1e7c89541a26b70daffce546cad403f7907b003152918aca337b1d0dceffc2')
+        '3c12cf8c6de687744a13e889bcdd569cff2f390df4725885af255059f012de9f5a1e7c89541a26b70daffce546cad403f7907b003152918aca337b1d0dceffc2'
+        'b6318baf652ee118153752c3b83f175691b35c28a5aee449ae61086bfb44f85f4507b5a24af23e40af917c962235f2430f0f99226439a21e6406365bfb6405dd'
+        '8e68d4e22e46026c303526f3ced8b53751264aeb9af04eaead40230553f768d8c84ec0042a5366387d978dc8c7f594b965bd178437cf66b68ad75074b7ab7045'
+        'e1bd2db15056f1a2740860659b0d96e8200f9367989f05d09e1d9e2c4abf7967821e25afed293db3e867170ac3a682133b4388b2841606f51cdf6081af7a6f59')
 
 # _ortf_lib_pkg <soname> <tensorrt package>: prints the package that
 # provides the library <soname> on Arch; nothing when it is not mapped.
@@ -596,25 +1145,33 @@ b2sums=('8fdc31605d139480199860fc303a537bf67635bf60eb1d40e850b0270b422b070855cf4
 # than shipped without its dependency, and so is a system library whose
 # package is not declared. The system libraries: glibc's (libc, libm,
 # libdl, libpthread, librt, the dynamic loader), GCC's runtimes
-# (libstdc++ in libstdc++, libgcc_s in libgcc: Arch's split of gcc-libs),
+# (libstdc++ in libstdc++, libgcc_s in libgcc, libgomp, the OpenMP runtime
+# the oneDNN provider links, in libgomp: Arch's split of gcc-libs),
 # python's; ONNX Runtime's own (libonnxruntime.so,
-# libonnxruntime_providers_shared.so) are onnxruntime-core's.
+# libonnxruntime_providers_shared.so) are onnxruntime-core's. libdnnl is
+# mapped to no package on purpose: oneDNN is linked into the oneDNN
+# provider statically, and a libdnnl NEEDED fails (_ortf_lib_depends).
 _ortf_lib_pkg() {
   case ${1%%.so*} in
     libc | libm | libdl | libpthread | librt | ld-linux*) printf 'glibc\n' ;;
     libstdc++) printf 'libstdc++\n' ;;
     libgcc_s) printf 'libgcc\n' ;;
+    libgomp) printf 'libgomp\n' ;;
     libpython3*) printf 'python\n' ;;
     libonnxruntime | libonnxruntime_providers_shared) printf 'onnxruntime-core\n' ;;
     libcuda) printf 'nvidia-utils\n' ;;
     libcudart | libcublas | libcublasLt | libcufft | libcurand) printf 'cuda\n' ;;
     libcudnn*) printf 'cudnn\n' ;;
+    # NCCL: Arch's nccl, or in the cuda12 line the AUR's nccl-cuda12.9 by
+    # name (_ortf_nccl_pkg).
+    libnccl) printf '%s\n' "$_ortf_nccl_pkg" ;;
     libnvinfer* | libnvonnxparser) printf '%s\n' "${2:-a TensorRT package}" ;;
     libopenvino*) printf 'openvino\n' ;;
     # Arch's ROCm, under /opt/rocm/lib: MIGraphX's libraries are migraphx's,
     # the HIP runtime is hip-runtime-amd's.
     libmigraphx*) printf 'migraphx\n' ;;
     libamdhip64) printf 'hip-runtime-amd\n' ;;
+    librccl) printf 'rccl\n' ;;
     # oneTBB's own package (not openvino's, which only depends on it): a
     # provider that links libtbb depends on onetbb itself.
     libtbb*) printf 'onetbb\n' ;;
@@ -628,8 +1185,9 @@ _ortf_lib_pkg() {
 # <package> itself or to a package in depends (the caller's array); prints
 # the version bounds to add to depends, one per line, from the major
 # version in the soname: libcudart.so.N gives cuda>=N and cuda<N+1,
-# libcudnn.so.N cudnn's (the CUDA provider has no such NEEDED entry: its cudnn
-# bound is the recorded one). TensorRT, openvino, python, migraphx and
+# libcudnn.so.N cudnn's when no <cuDNN major> is given (with one, the
+# recorded bounds _ortf_check_libs adds are cuDNN's, by major.minor in the
+# cuda12 line). TensorRT, openvino, python, migraphx and
 # hip-runtime-amd get their bounds from the installed versions prepare()
 # recorded instead (_ortf_minor_bounds, _ortf_major_bounds): a soname major
 # is too coarse for TensorRT, openvino's soname (libopenvino.so.2641) is no
@@ -638,7 +1196,8 @@ _ortf_lib_pkg() {
 # <CUDA major>, a libcudart.so.N must have N equal to it, the major the
 # package names carry; with <TensorRT version>, a libnvinfer.so.N must have
 # its major, and with <cuDNN major>, a libcudnn.so.N must have N equal to
-# it (the one the CUDA package is bounded to, _ortf_check_libs); with
+# it (the one the CUDA package is bounded to, _ortf_check_libs), and gives
+# no bound of its own; with
 # <libmigraphx_c major> and <libamdhip64 major>, a libmigraphx_c.so.N and a
 # libamdhip64.so.N must have the N of the library prepare() found in
 # $_ortf_rocm_home/lib (the one the build linked). Returns 1
@@ -651,9 +1210,12 @@ _ortf_lib_pkg() {
 # The NEEDED gate does not see what a library dlopen()s. libcuda, libnvrtc
 # and libcufft (the CUDA provider opens them at run time) are covered by
 # nvidia-utils and the cuda bound; cuDNN, which the CUDA provider also
-# dlopen()s (the real libonnxruntime_providers_cuda.so has no libcudnn in
-# its NEEDED entries), by the bound recorded from the build-time cuDNN
-# (ORTF_CUDNN_MAJOR, _ortf_check_libs).
+# dlopen()s for its inference kernels, by the bound recorded from the
+# build-time cuDNN (ORTF_CUDNN_MAJOR, _ortf_check_libs). Its training
+# kernels call cuDNN directly, so it also links libcudnn.so.9
+# (_ortf_patch_cudnn_link); that NEEDED entry, like the TensorRT
+# provider's, must be of the recorded major. Nor does the gate see a
+# symbol no NEEDED library defines: _ortf_check_symbols does.
 #
 # This replaces the earlier design, one package with the vendor runtimes as
 # optdepends: a provider package can no longer be installed without its
@@ -668,6 +1230,14 @@ _ortf_lib_depends() {
   for dep in "${depends[@]}"; do have+=("${dep%%[<>=]*}"); done
   while read -r soname; do
     [[ -n $soname ]] || continue
+    # oneDNN is linked statically into the oneDNN provider: a shared
+    # libdnnl would be Arch's onednn (or one this build left in the stage),
+    # which the package does not depend on.
+    if [[ $soname == libdnnl.so* ]]; then
+      echo "$label: $soname: oneDNN must be linked statically (ONEDNN_LIBRARY_TYPE=STATIC, _ortf_patch_dnnl), not as a shared library" >&2
+      bad=1
+      continue
+    fi
     pkg=$(_ortf_lib_pkg "$soname" "$trt")
     if [[ -z $pkg ]]; then
       echo "$label: $soname is a library no package is known for: map it to its package in _ortf_lib_pkg" >&2
@@ -703,6 +1273,10 @@ _ortf_lib_depends() {
       bad=1
       continue
     fi
+    # With the recorded cuDNN major, cuDNN's bounds are the recorded ones
+    # (_ortf_check_libs; by major.minor in the cuda12 line, where the
+    # soname's major bound is not in the package function's depends).
+    [[ -z $cudnn_major || $soname != libcudnn.so.* ]] || continue
     if [[ $soname == libnvinfer.so.* ]]; then
       if [[ -n $trt_major && $major != "$trt_major" ]]; then
         echo "$label: $soname is TensorRT ${major:-?}, the installed $trt is TensorRT $trt_major (ORTF_TENSORRT_VERSION)" >&2
@@ -894,15 +1468,34 @@ _ortf_jobs() {
 _ortf_resolve() {
   local out=$1 _ortf_val _ortf_src w
   local -a words lines=()
-  local cpu=0 cuda=0 trt=0 ov=0 mgx=0 eps archs='' python=0 python_exe='' nvcc_threads ccache='' jobs
+  local cpu=0 cuda=0 trt=0 ov=0 dnnl=0 mgx=0 eps archs='' python=0 python_exe='' nvcc_threads ccache='' jobs
   local trt_home='' trt_libdir='' host_cxx='' cuda_major='' cudnn_major='' cudnn_src nvcc_out cudnn_version
   local trt_version='' trt_installed='' ov_version='' python_version='' bounds rc
-  local mgx_version='' hip_version='' mgx_soname='' hip_soname=''
+  local mgx_version='' hip_version='' mgx_soname='' hip_soname='' cudnn_minor=''
+  local nccl=0 nccl_src nccl_lib='' tree
+
+  case $_ortf_line in
+    main) ;;
+    cuda12) lines+=("line cuda12 (_ortf_line): the CUDA 12 legacy CUDA package alone, for the main line's onnxruntime-core") ;;
+    migraphx) lines+=("line migraphx (_ortf_line): the MIGraphX package and its Python add-on, for the main line's onnxruntime-core") ;;
+    *) echo "_ortf_line: '$_ortf_line' is none of main, cuda12, migraphx" >&2; return 1 ;;
+  esac
+
+  # The source (the top of the file), which makepkg has already fetched as
+  # the source array chose it, from the same value (_ortf_source): an
+  # invalid one, which gave the mirror's source there, is refused here.
+  _ortf_pick ORTF_SOURCE "$_ortf_default_source" _ortf_default_source
+  case $_ortf_val in
+    mirror) lines+=("ORTF_SOURCE=mirror ($_ortf_src; onnxruntime-$pkgver.tar.gz, release source-v$pkgver of rsd/omarchy-onnxruntime, in src/onnxruntime-$pkgver)") ;;
+    upstream) lines+=("ORTF_SOURCE=upstream ($_ortf_src; git tag v$pkgver of microsoft/onnxruntime, in src/onnxruntime)") ;;
+    *) echo "ORTF_SOURCE: '$_ortf_val' is neither mirror nor upstream (mirror, the default, is the archive of release source-v$pkgver of rsd/omarchy-onnxruntime; upstream the git tag v$pkgver of microsoft/onnxruntime)" >&2; return 1 ;;
+  esac
+  tree=$_ortf_val
 
   _ortf_pick ORTF_EPS "$_ortf_default_eps" _ortf_default_eps
   read -ra words <<<"${_ortf_val//,/ }"
   if ((${#words[@]} == 0)); then
-    echo "ORTF_EPS: empty; give cpu, or some of cuda, tensorrt, openvino, migraphx" >&2
+    echo "ORTF_EPS: empty; give cpu, or some of cuda, tensorrt, openvino, dnnl, migraphx" >&2
     return 1
   fi
   for w in "${words[@]}"; do
@@ -911,13 +1504,15 @@ _ortf_resolve() {
       cuda) cuda=1 ;;
       tensorrt) trt=1 ;;
       openvino) ov=1 ;;
+      # oneDNN, built from ortf-dep-onednn.zip: no vendor install.
+      dnnl) dnnl=1 ;;
       # Alone or with the others: nothing in ONNX Runtime's CMake excludes
       # the combination (untested together, and on AMD hardware).
       migraphx) mgx=1 ;;
-      *) echo "ORTF_EPS: unknown provider '$w' (known: cpu, cuda, tensorrt, openvino, migraphx)" >&2; return 1 ;;
+      *) echo "ORTF_EPS: unknown provider '$w' (known: cpu, cuda, tensorrt, openvino, dnnl, migraphx)" >&2; return 1 ;;
     esac
   done
-  if ((cpu && cuda + trt + ov + mgx > 0)); then
+  if ((cpu && cuda + trt + ov + dnnl + mgx > 0)); then
     echo "ORTF_EPS: cpu stands alone (the CPU provider is always built); drop it or the others" >&2
     return 1
   fi
@@ -930,9 +1525,39 @@ _ortf_resolve() {
   ((cuda)) && eps+=' cuda'
   ((trt)) && eps+=' tensorrt'
   ((ov)) && eps+=' openvino'
+  ((dnnl)) && eps+=' dnnl'
   ((mgx)) && eps+=' migraphx'
   eps=${eps# }
+  # The cuda12 line has one package, the CUDA one: another provider would
+  # be built for no package.
+  if [[ $_ortf_line == cuda12 && $eps != cuda ]]; then
+    echo "ORTF_EPS: '$eps': the cuda12 line (_ortf_line) builds cuda alone, its one package" >&2
+    return 1
+  fi
+  # The migraphx line likewise: no CUDA, no other provider.
+  if [[ $_ortf_line == migraphx && $eps != migraphx ]]; then
+    echo "ORTF_EPS: '$eps': the migraphx line (_ortf_line) builds migraphx alone, its one package" >&2
+    return 1
+  fi
   lines+=("ORTF_EPS=$eps ($_ortf_src)")
+
+  # NCCL (the top of the file): NVIDIA's with cuda, else AMD's RCCL with
+  # migraphx, in the migraphx line only: a main-line core with NCCL and
+  # without cuda would not fit the NCCL CUDA providers its pins accept.
+  # Its library is checked below, with the other vendor installs.
+  _ortf_pick ORTF_NCCL "$_ortf_default_nccl" _ortf_default_nccl
+  case $_ortf_val in
+    0 | 1) nccl=$_ortf_val nccl_src=$_ortf_src ;;
+    *) echo "ORTF_NCCL: '$_ortf_val' is neither 0 nor 1" >&2; return 1 ;;
+  esac
+  if ((nccl && !cuda)) && [[ $_ortf_line == main ]]; then
+    echo "ORTF_NCCL=1 ($nccl_src): NCCL needs cuda in ORTF_EPS ('$eps') in this line, as a core built with NCCL and without CUDA does not fit the CUDA providers built with NCCL; add cuda to ORTF_EPS, or give ORTF_NCCL=0 to build without NCCL (every package is then named -nccloff)" >&2
+    return 1
+  fi
+  if ((nccl && !cuda && !mgx)); then
+    echo "ORTF_NCCL=1 ($nccl_src): NCCL needs cuda or migraphx in ORTF_EPS ('$eps'); give ORTF_NCCL=0 to build without it (every package is then named -nccloff)" >&2
+    return 1
+  fi
 
   _ortf_pick ORTF_CUDA_ARCHS "$_ortf_default_cuda_archs" _ortf_default_cuda_archs
   read -ra words <<<"${_ortf_val//[,;]/ }"
@@ -1038,23 +1663,52 @@ _ortf_resolve() {
       return 1
     fi
     lines+=("CUDA ${BASH_REMATCH[1]}.${BASH_REMATCH[2]} ($_ortf_cuda_home: nvcc and include/cuda.h; packages named -cuda$cuda_major)")
+    # The cuda12 line is CUDA 12's: its names, depends and preset are.
+    if [[ $_ortf_line == cuda12 && $cuda_major != 12 ]]; then
+      echo "cuda: $_ortf_cuda_home is CUDA $cuda_major; the cuda12 line (_ortf_line) builds with CUDA 12 only (AUR cuda-12.9)" >&2
+      return 1
+    fi
+    # A preset is for the CUDA major its architectures need
+    # (_ortf_cuda_preset_major).
+    if [[ -n $preset ]] && ! w=$(_ortf_cuda_preset_major "$preset" "$cuda_major"); then
+      echo "ORTF_CUDA_ARCHS: the preset '$preset' needs $w, $_ortf_cuda_home is CUDA $cuda_major" >&2
+      return 1
+    fi
     if [[ ! -f $_ortf_cudnn_home/include/cudnn.h ]]; then
       echo "cuda: $_ortf_cudnn_home/include/cudnn.h not found (install cudnn)" >&2
       return 1
     fi
     # The cuDNN major the CUDA and TensorRT packages are bounded to: the
-    # CUDA provider dlopen()s cuDNN (no DT_NEEDED for it, so the NEEDED
-    # check cannot bound it), so it is recorded here, from the header the
-    # build compiles against, else from the installed cudnn package.
+    # CUDA provider dlopen()s most of cuDNN (its libcudnn.so.9 NEEDED, for
+    # the training kernels, gives no minor), so it is recorded here, from the header the
+    # build compiles against, else from the installed cudnn package. Its
+    # minor, from the same source, bounds the cuda12 line's CUDA package:
+    # cuDNN 9.11 dropped Maxwell, Pascal and Volta, so a bound on the major
+    # would let pacman install a cuDNN the legacy cards cannot run.
     if cudnn_major=$(_ortf_cudnn_header_major "$_ortf_cudnn_home"); then
       cudnn_src="$_ortf_cudnn_home/include/cudnn_version.h"
-    elif cudnn_version=$(_ortf_installed_version cudnn) && [[ ${cudnn_version#*:} =~ ^([0-9]+)[.] ]]; then
-      cudnn_major=${BASH_REMATCH[1]} cudnn_src="installed cudnn $cudnn_version"
+      cudnn_minor=$(_ortf_cudnn_header_minor "$_ortf_cudnn_home") || cudnn_minor=''
+    elif cudnn_version=$(_ortf_installed_version cudnn) && [[ ${cudnn_version#*:} =~ ^([0-9]+)[.](([0-9]+)([^0-9]|$))? ]]; then
+      cudnn_major=${BASH_REMATCH[1]} cudnn_minor=${BASH_REMATCH[3]} cudnn_src="installed cudnn $cudnn_version"
+      [[ -z $cudnn_minor ]] || cudnn_minor=$((10#$cudnn_minor))
     else
       echo "cuda: no CUDNN_MAJOR in $_ortf_cudnn_home/include/cudnn_version.h and no installed cudnn version (pacman -Q cudnn): the cuDNN bound of the CUDA package has no source" >&2
       return 1
     fi
-    lines+=("cuDNN $cudnn_major ($cudnn_src, so cudnn>=$cudnn_major cudnn<$((cudnn_major + 1)))")
+    if [[ $_ortf_line == cuda12 ]]; then
+      if [[ -z $cudnn_minor ]]; then
+        echo "cuda: no cuDNN minor version in $cudnn_src: the cuda12 line bounds its CUDA package to the cuDNN major.minor" >&2
+        return 1
+      fi
+      # cuDNN 9.11 dropped Maxwell, Pascal and Volta: this line takes 9.10.
+      if ((cudnn_major != 9 || cudnn_minor != 10)); then
+        echo "cuda: the CUDA 12 legacy line needs cuDNN 9.10 (found $cudnn_major.$cudnn_minor): cuDNN 9.11 dropped Maxwell, Pascal and Volta" >&2
+        return 1
+      fi
+      lines+=("cuDNN $cudnn_major.$cudnn_minor ($cudnn_src, so cudnn>=$cudnn_major.$cudnn_minor cudnn<$cudnn_major.$((cudnn_minor + 1)))")
+    else
+      lines+=("cuDNN $cudnn_major ($cudnn_src, so cudnn>=$cudnn_major cudnn<$((cudnn_major + 1)))")
+    fi
     # nvcc's host compiler, as the cuda package sets it for login shells.
     if [[ -n ${NVCC_CCBIN:-} ]]; then
       host_cxx=$NVCC_CCBIN _ortf_src=environment
@@ -1131,6 +1785,12 @@ _ortf_resolve() {
     lines+=("openvino $ov_version (installed, so ${bounds//$'\n'/ })")
   fi
 
+  if ((dnnl)); then
+    # Nothing to look for: oneDNN is built from the source archive
+    # (_ortf_patch_dnnl checks the archive and the upstream CMake text).
+    lines+=("dnnl: oneDNN $_ortf_onednn_version from ortf-dep-onednn.zip, built static into the provider (OpenMP runtime: libgomp)")
+  fi
+
   if ((mgx)); then
     # The CMake packages the provider's find_package(hip) and
     # find_package(migraphx) look for under the ROCm root.
@@ -1161,11 +1821,40 @@ _ortf_resolve() {
     lines+=("migraphx $mgx_version, hip-runtime-amd $hip_version (installed; $_ortf_rocm_home/lib: libmigraphx_c.so.$mgx_soname, libamdhip64.so.$hip_soname; so ${bounds//$'\n'/ })")
   fi
 
+  if ((nccl && cuda)); then
+    # CMake's find_path(nccl.h) and find_library(nccl), under
+    # onnxruntime_NCCL_HOME (build()).
+    nccl_lib=nccl
+    if [[ ! -f $_ortf_nccl_home/include/nccl.h ]]; then
+      echo "nccl: $_ortf_nccl_home/include/nccl.h not found (install nccl, or in the cuda12 line nccl-cuda12.9; or give ORTF_NCCL=0, every package then named -nccloff)" >&2
+      return 1
+    fi
+    lines+=("ORTF_NCCL=1 ($nccl_src; NVIDIA's NCCL, $_ortf_nccl_home/include/nccl.h; the CUDA package depends on $_ortf_nccl_pkg)")
+  elif ((nccl)); then
+    # migraphx without cuda, the migraphx line's (the main line refuses
+    # it above): CMake's NCCL_LIBNAME is rccl, under the ROCm root
+    # (onnxruntime_NCCL_HOME, build()).
+    nccl_lib=rccl
+    if [[ ! -f $_ortf_rocm_home/include/rccl/rccl.h ]]; then
+      echo "rccl: $_ortf_rocm_home/include/rccl/rccl.h not found (install rccl; or give ORTF_NCCL=0, every package then named -nccloff)" >&2
+      return 1
+    fi
+    lines+=("ORTF_NCCL=1 ($nccl_src; AMD's RCCL, $_ortf_rocm_home/include/rccl/rccl.h; a build input only: the MIGraphX provider links no RCCL)")
+  else
+    lines+=("ORTF_NCCL=0 ($nccl_src; no NCCL: every package named -nccloff)")
+  fi
+
   _ortf_pick ORTF_PYTHON "$_ortf_default_python" _ortf_default_python
   case $_ortf_val in
     0 | 1) python=$_ortf_val ;;
     *) echo "ORTF_PYTHON: '$_ortf_val' is neither 0 nor 1" >&2; return 1 ;;
   esac
+  # The main line's python-onnxruntime-core serves the cuda12 line too (its
+  # module links no CUDA library).
+  if [[ $_ortf_line != main ]] && ((python)); then
+    echo "ORTF_PYTHON=1: the $_ortf_line line (_ortf_line) has no Python package; give ORTF_PYTHON=0" >&2
+    return 1
+  fi
   if ((python)); then
     if ! python_exe=$(command -v python); then
       echo "ORTF_PYTHON=1: no python on PATH" >&2
@@ -1205,11 +1894,13 @@ _ortf_resolve() {
 
   printf '  %s\n' "${lines[@]}"
   {
+    printf 'ORTF_SOURCE=%s\n' "$tree"
     printf 'ORTF_EPS=%s\n' "$eps"
     printf 'ORTF_CUDA_ARCHS=%s\n' "$archs"
     printf 'ORTF_CUDA_PRESET=%s\n' "$preset"
     printf 'ORTF_CUDA_MAJOR=%s\n' "$cuda_major"
     printf 'ORTF_CUDNN_MAJOR=%s\n' "$cudnn_major"
+    printf 'ORTF_CUDNN_MINOR=%s\n' "$cudnn_minor"
     printf 'ORTF_NVCC_THREADS=%s\n' "$nvcc_threads"
     printf 'ORTF_TENSORRT_HOME=%s\n' "$trt_home"
     printf 'ORTF_TENSORRT_LIBDIR=%s\n' "$trt_libdir"
@@ -1219,6 +1910,8 @@ _ortf_resolve() {
     printf 'ORTF_HIP_VERSION=%s\n' "$hip_version"
     printf 'ORTF_MIGRAPHX_SONAME_MAJOR=%s\n' "$mgx_soname"
     printf 'ORTF_HIP_SONAME_MAJOR=%s\n' "$hip_soname"
+    printf 'ORTF_NCCL=%s\n' "$nccl"
+    printf 'ORTF_NCCL_LIB=%s\n' "$nccl_lib"
     printf 'ORTF_PYTHON=%s\n' "$python"
     printf 'ORTF_PYTHON_EXE=%s\n' "$python_exe"
     printf 'ORTF_PYTHON_VERSION=%s\n' "$python_version"
@@ -1241,6 +1934,56 @@ _ortf_get() {
   return 1
 }
 
+# _ortf_srcroot: prints the ONNX Runtime source tree of the layout
+# prepare() recorded (ORTF_SOURCE in src/ortf.conf), so that build() and
+# the package functions under makepkg -e or -R, whose environment may give
+# another source array, read the tree prepare() made: src/onnxruntime-
+# <pkgver> for the mirror (the archive's prefix), src/onnxruntime for the
+# git checkout. Two names on purpose: makepkg's git extraction (extract_git
+# in /usr/share/makepkg/source/git.sh) runs git fetch and git checkout
+# --force in a src/onnxruntime it finds, and in an unpacked archive, which
+# is no git checkout, git would act on the repository around it (this one,
+# or an AUR clone).
+_ortf_srcroot() {
+  local tree
+  tree=$(_ortf_get ORTF_SOURCE) || return 1
+  case $tree in
+    mirror) printf '%s\n' "$srcdir/onnxruntime-$pkgver" ;;
+    upstream) printf '%s\n' "$srcdir/onnxruntime" ;;
+    *) echo "ortf.conf: ORTF_SOURCE '$tree' is neither mirror nor upstream (run makepkg without -e, so that prepare() runs)" >&2; return 1 ;;
+  esac
+}
+
+# _ortf_unpack_mirror <archive> <root>: the mirror's tree, from <archive>
+# (onnxruntime-<pkgver>.tar.gz), in <root> (its prefix's directory, under
+# the archive's own parent, $srcdir). Fails when the commit git archive
+# recorded in the archive's pax header is not _ortf_commit (b2sums already
+# pins the bytes; this ties them to the tag), or when the archive does not
+# give <root>. <root> is removed first and the archive unpacked anew, so
+# that a run starts from the pristine tree, as git clean gives the
+# checkout: build() leaves build/ and *.egg-info in the tree, which would
+# enter the next wheel, and makepkg's own extraction would keep them.
+_ortf_unpack_mirror() {
+  local archive=$1 root=$2 id
+  if [[ ! -f $archive ]]; then
+    echo "$archive not found (ORTF_SOURCE=mirror)" >&2
+    return 1
+  fi
+  # get-tar-commit-id reads the first header and exits, so gzip may stop on
+  # a closed pipe: its status is not the archive's (b2sums checked that).
+  id=$({ gzip -dc -- "$archive" 2>/dev/null || :; } | git get-tar-commit-id 2>/dev/null) || id=''
+  if [[ $id != "$_ortf_commit" ]]; then
+    echo "${archive##*/} is commit ${id:-(none recorded)}, not $_ortf_commit: the archive is not the tag's tree; check it (scripts/make-source-archive.sh, PROVENANCE.md) and its b2sum" >&2
+    return 1
+  fi
+  rm -rf -- "$root"
+  bsdtar -xf "$archive" -C "${root%/*}" || return 1
+  if [[ ! -d $root ]]; then
+    echo "${archive##*/} does not unpack to ${root##*/}/ (its prefix is not onnxruntime-$pkgver/)" >&2
+    return 1
+  fi
+}
+
 # _ortf_has <provider>: whether ORTF_EPS, as recorded, has <provider>.
 _ortf_has() {
   local eps
@@ -1254,7 +1997,7 @@ _ortf_has() {
 # than the build's, or after the CUDA toolkit changed major; makepkg would
 # then write packages named for inputs the build did not have.
 _ortf_check_names() {
-  local eps archs preset python major want
+  local eps archs preset python major nccl want
   eps=$(_ortf_get ORTF_EPS) || return 1
   archs=$(_ortf_get ORTF_CUDA_ARCHS) || return 1
   # A preset's name, not its list, is what names the CUDA package.
@@ -1263,7 +2006,8 @@ _ortf_check_names() {
   python=$(_ortf_get ORTF_PYTHON) || return 1
   # Empty without cuda: no name then carries it.
   major=$(_ortf_get ORTF_CUDA_MAJOR) || return 1
-  want=$(_ortf_pkgnames "$eps" "$archs" "$python" "${major:-$_ortf_cuda_major}")
+  nccl=$(_ortf_get ORTF_NCCL) || return 1
+  want=$(_ortf_pkgnames "$eps" "$archs" "$python" "${major:-$_ortf_cuda_major}" "$nccl")
   if [[ $want != "${_ortf_pkgname[*]}" ]]; then
     echo "makepkg runs for: ${_ortf_pkgname[*]}" >&2
     echo "the build was made for: $want" >&2
@@ -1274,7 +2018,7 @@ _ortf_check_names() {
         echo "the build used CUDA $major, $_ortf_cuda_home/include/cuda.h is absent so the names use _ortf_cuda_major_default ($_ortf_cuda_major_default): build anew (makepkg without -e/-R)" >&2
       fi
     else
-      echo "run makepkg with ORTF_EPS='$eps' ORTF_CUDA_ARCHS='$archs' ORTF_PYTHON=$python, the inputs src/ortf.conf records (or without -e/-R, to build anew)" >&2
+      echo "run makepkg with ORTF_EPS='$eps' ORTF_CUDA_ARCHS='$archs' ORTF_PYTHON=$python ORTF_NCCL=$nccl, the inputs src/ortf.conf records (or without -e/-R, to build anew)" >&2
     fi
     return 1
   fi
@@ -1298,9 +2042,12 @@ print(sysconfig.get_path("platlib", "posix_prefix", {"base": "/usr", "platbase":
 # skips the dependency check).
 _ortf_check_tools() {
   local tool missing=()
-  local -a tools=(cmake ninja git patch readelf)
-  # patchelf gives the TensorRT provider its RUNPATH.
-  ! _ortf_has tensorrt || tools+=(patchelf)
+  # git in both layouts: the checkout's, the mirror archive's commit
+  # (_ortf_unpack_mirror), and CMake's Git_FOUND (_ortf_patch_git_info).
+  local -a tools=(cmake ninja git patch readelf ldd gzip bsdtar)
+  # patchelf gives the TensorRT provider its RUNPATH, and the Python module
+  # its (package_python-onnxruntime-core).
+  if _ortf_has tensorrt || [[ $(_ortf_get ORTF_PYTHON) == 1 ]]; then tools+=(patchelf); fi
   for tool in "${tools[@]}"; do
     command -v "$tool" >/dev/null || missing+=("$tool")
   done
@@ -1311,6 +2058,13 @@ _ortf_check_tools() {
   if [[ $(_ortf_get ORTF_PYTHON) == 1 ]] &&
     ! "$(_ortf_get ORTF_PYTHON_EXE)" -c 'import numpy, build, installer, setuptools, wheel' 2>/dev/null; then
     echo "ORTF_PYTHON=1: the python on PATH lacks numpy, build, installer, setuptools or wheel" >&2
+    return 1
+  fi
+  # The migraphx line's Python add-on links the provider's library into
+  # the system python's site-packages (package_python-onnxruntime-
+  # provider-migraphx).
+  if [[ $_ortf_line == migraphx ]] && ! _ortf_py_site "$_ortf_system_python" >/dev/null 2>&1; then
+    echo "the migraphx line: $_ortf_system_python does not run (install python), whose site-packages python-onnxruntime-provider-migraphx links the provider's library into" >&2
     return 1
   fi
   if [[ $(_ortf_get ORTF_PYTHON) == 1 ]]; then
@@ -1366,6 +2120,634 @@ _ortf_mirror() {
   done
 }
 
+# _ortf_patch_dnnl <dnnl.cmake>: patches ONNX Runtime's
+# cmake/external/dnnl.cmake, the ExternalProject that builds oneDNN for the
+# oneDNN provider (Arch's recipe patches the same file to use its system
+# onednn instead, onnxruntime-system-dnnl.patch). Upstream clones a pinned
+# oneDNN (v3.0.1) from git at build time and builds it as the shared
+# libdnnl.so.3, which the provider links by name and the Python module's
+# build copies next to it (DNNL_DLL_PATH, onnxruntime_python.cmake). Here:
+#   - the source is ${ORTF_DNNL_ARCHIVE}, the checksummed
+#     ortf-dep-onednn.zip build() passes (URL, no GIT_REPOSITORY/GIT_TAG:
+#     no network), and configure fails when that file is missing;
+#   - oneDNN is built static (ONEDNN_LIBRARY_TYPE=STATIC, position
+#     independent, to be linked into the provider's shared library), with
+#     no host-specific instructions (ONEDNN_ARCH_OPT_FLAGS empty: oneDNN's
+#     own advice for distributions; makepkg's CFLAGS set the baseline and
+#     oneDNN's JIT picks the CPU's instructions at run time), the
+#     compilers, compiler launcher and library directory of this build;
+#   - DNNL_DLL_PATH is left unset, so no shared library is copied;
+#   - `dnnl`, the name the provider links (onnxruntime_providers_dnnl.cmake),
+#     becomes an imported target: the installed libdnnl.a, declared as the
+#     ExternalProject's install byproduct (ninja needs a rule for the
+#     file), with the OpenMP runtime it is built for (its default DNNL_CPU_RUNTIME, OMP;
+#     the provider also calls omp_set_num_threads itself) and the threads
+#     and dl libraries. A static archive carries no link dependencies of
+#     its own, and the provider is linked without -z defs, so a missing
+#     OpenMP would only fail when the provider is loaded.
+# Every upstream text it replaces must be there exactly once, or it fails
+# with a message and leaves the file untouched: a new ONNX Runtime release
+# that rewrites the file must be looked at, not patched blindly.
+# shellcheck disable=SC2016 # CMake's ${...}, not the shell's
+_ortf_patch_dnnl() {
+  local file=$1 text rest i n
+  local -a olds=() news=()
+  olds+=('if (onnxruntime_USE_DNNL)
+  set(DNNL_SOURCE ${CMAKE_CURRENT_BINARY_DIR}/dnnl/src/dnnl/src)')
+  news+=('if (onnxruntime_USE_DNNL)
+  # omarchy-onnxruntime (onnxruntime-split/PKGBUILD, _ortf_patch_dnnl):
+  # oneDNN from the checksummed source archive the PKGBUILD passes, built
+  # static and linked into the provider.
+  if(NOT EXISTS "${ORTF_DNNL_ARCHIVE}")
+    message(FATAL_ERROR "ORTF_DNNL_ARCHIVE: \"${ORTF_DNNL_ARCHIVE}\" is no file (the oneDNN source archive, ortf-dep-onednn.zip)")
+  endif()
+  set(DNNL_SOURCE ${CMAKE_CURRENT_BINARY_DIR}/dnnl/src/dnnl/src)')
+  olds+=('  if(WIN32)
+    set(DNNL_DLL_PATH ${DNNL_INSTALL}/${CMAKE_INSTALL_BINDIR}/${DNNL_SHARED_LIB})
+  else()
+    set(DNNL_DLL_PATH ${DNNL_LIB_DIR}/${DNNL_SHARED_LIB})
+  endif()')
+  news+=('  # No shared libdnnl to copy (onnxruntime_python.cmake copies
+  # DNNL_DLL_PATH next to the provider): oneDNN is linked in statically.
+  unset(DNNL_DLL_PATH)')
+  olds+=('    GIT_REPOSITORY ${DNNL_URL}
+    GIT_TAG ${DNNL_TAG}')
+  news+=('    URL ${ORTF_DNNL_ARCHIVE}
+    DOWNLOAD_EXTRACT_TIMESTAMP TRUE')
+  olds+=('    CMAKE_ARGS -DDNNL_BUILD_TESTS=OFF -DDNNL_ENABLE_CONCURRENT_EXEC=ON -DDNNL_BUILD_EXAMPLES=OFF -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${DNNL_INSTALL} ${DNNL_GPU_CMAKE_ARGS} ${DNNL_AARCH64_CMAKE_ARGS}
+  )')
+  news+=('    CMAKE_ARGS -DDNNL_BUILD_TESTS=OFF -DDNNL_ENABLE_CONCURRENT_EXEC=ON -DDNNL_BUILD_EXAMPLES=OFF -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${DNNL_INSTALL} ${DNNL_GPU_CMAKE_ARGS} ${DNNL_AARCH64_CMAKE_ARGS}
+      -DONEDNN_LIBRARY_TYPE=STATIC -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DONEDNN_ARCH_OPT_FLAGS=
+      -DCMAKE_INSTALL_LIBDIR=${CMAKE_INSTALL_LIBDIR}
+      -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+      -DCMAKE_C_COMPILER_LAUNCHER=${CMAKE_C_COMPILER_LAUNCHER} -DCMAKE_CXX_COMPILER_LAUNCHER=${CMAKE_CXX_COMPILER_LAUNCHER}
+    INSTALL_BYPRODUCTS ${DNNL_LIB_DIR}/libdnnl.a
+  )')
+  olds+=('  link_directories(${DNNL_LIB_DIR})
+endif()')
+  news+=('  link_directories(${DNNL_LIB_DIR})
+  # The provider links `dnnl`: the static library with what it needs.
+  find_package(OpenMP REQUIRED COMPONENTS CXX)
+  find_package(Threads REQUIRED)
+  add_library(dnnl STATIC IMPORTED GLOBAL)
+  set_target_properties(dnnl PROPERTIES
+    IMPORTED_LOCATION ${DNNL_LIB_DIR}/libdnnl.a
+    INTERFACE_LINK_LIBRARIES "$<LINK_ONLY:OpenMP::OpenMP_CXX>;Threads::Threads;${CMAKE_DL_LIBS}")
+  add_dependencies(dnnl project_dnnl)
+endif()')
+  if [[ ! -f $file ]]; then
+    echo "$file not found: the oneDNN provider's ExternalProject (_ortf_patch_dnnl)" >&2
+    return 1
+  fi
+  text=$(<"$file")
+  for i in "${!olds[@]}"; do
+    rest=${text//"${olds[i]}"/}
+    n=$(((${#text} - ${#rest}) / ${#olds[i]}))
+    if ((n != 1)); then
+      echo "$file: $n copies of the upstream text below, not exactly one: ONNX Runtime changed it; look at the file and update _ortf_patch_dnnl" >&2
+      printf '%s\n' "${olds[i]}" >&2
+      return 1
+    fi
+  done
+  for i in "${!olds[@]}"; do
+    text=${text/"${olds[i]}"/"${news[i]}"}
+  done
+  printf '%s\n' "$text" >"$file.tmp" && mv -f -- "$file.tmp" "$file"
+}
+
+# _ortf_patch_setup <setup.py>: patches ONNX Runtime's setup.py, which with
+# --enable_training (build()) takes the training packages and
+# requirements-training.txt, and also renames the distribution: to
+# onnxruntime-training, with the local version +cpu (no --cuda_version is
+# given) or, with ORT_DISABLE_PYTHON_PACKAGE_LOCAL_VERSION, to
+# onnxruntime-training-cpu. Here it stays onnxruntime <pkgver>, the wheel
+# package() installs (dist/onnxruntime-*.whl) and the name importlib.metadata
+# and pip know this module by, as Arch's python-onnxruntime keeps it (its
+# onnxruntime-install-orttraining-files.patch ships onnxruntime.training
+# without --enable_training). The one upstream text it replaces must be
+# there exactly once, or it fails and leaves the file untouched
+# (_ortf_patch_dnnl).
+_ortf_patch_setup() {
+  local file=$1 text rest n
+  local old='    if not is_openvino:
+        # To support the package consisting of both openvino and training modules part of it
+        package_name = "onnxruntime-training"'
+  local new='    # omarchy-onnxruntime (onnxruntime-split/PKGBUILD, _ortf_patch_setup):
+    # the distribution stays onnxruntime, with no local version.
+    if False:
+        # To support the package consisting of both openvino and training modules part of it
+        package_name = "onnxruntime-training"'
+  if [[ ! -f $file ]]; then
+    echo "$file not found: ONNX Runtime's setup.py (_ortf_patch_setup)" >&2
+    return 1
+  fi
+  text=$(<"$file")
+  rest=${text//"$old"/}
+  n=$(((${#text} - ${#rest}) / ${#old}))
+  if ((n != 1)); then
+    echo "$file: $n copies of the upstream text below, not exactly one: ONNX Runtime changed it; look at the file and update _ortf_patch_setup" >&2
+    printf '%s\n' "$old" >&2
+    return 1
+  fi
+  text=${text/"$old"/"$new"}
+  printf '%s\n' "$text" >"$file.tmp" && mv -f -- "$file.tmp" "$file"
+}
+
+# _ortf_patch_sharded_moe <onnxruntime_providers_cuda.cmake>
+# <cuda_contrib_kernels.cc>: drops the ShardedMoE CUDA op, as Arch's
+# onnxruntime-drop-sharded-moe.patch does. It is built only with NCCL
+# (cmake/onnxruntime_providers_cuda.cmake removes its sources without
+# it), and v1.29.0's contrib_ops/cuda/collective/sharded_moe.h still
+# includes contrib_ops/cuda/moe/ft_moe/moe_kernel.h, which the release
+# no longer has (the MoE kernels moved to contrib_ops/cuda/llm/moe_gemm/
+# in 1.27): with NCCL on, the CUDA provider fails to compile. Here its
+# two sources leave the CUDA provider's source list in every build, and
+# its two kernel registrations (under ORT_USE_NCCL) leave
+# onnxruntime/contrib_ops/cuda/cuda_contrib_kernels.cc. The other
+# collective ops stay. Every upstream text it replaces must be there
+# exactly once, or it fails and leaves both files untouched
+# (_ortf_patch_dnnl).
+# shellcheck disable=SC2016 # CMake's ${...}, not the shell's
+_ortf_patch_sharded_moe() {
+  local -a files=("$1" "$2" "$2") olds=() news=() texts=()
+  local i n rest f
+  olds+=('        "${ONNXRUNTIME_ROOT}/contrib_ops/cuda/collective/distributed_squeeze.cc"
+      )
+    endif()
+    # add using ONNXRUNTIME_ROOT so they show up under the '"'contrib_ops'"' folder in Visual Studio')
+  news+=('        "${ONNXRUNTIME_ROOT}/contrib_ops/cuda/collective/distributed_squeeze.cc"
+      )
+    endif()
+    # omarchy-onnxruntime (onnxruntime-split/PKGBUILD, _ortf_patch_sharded_moe):
+    # the ShardedMoE op includes contrib_ops/cuda/moe/ft_moe/moe_kernel.h,
+    # which this release no longer has, so it fails to compile with NCCL.
+    list(REMOVE_ITEM onnxruntime_cuda_contrib_ops_cc_srcs
+      "${ONNXRUNTIME_ROOT}/contrib_ops/cuda/collective/sharded_moe.h"
+      "${ONNXRUNTIME_ROOT}/contrib_ops/cuda/collective/sharded_moe.cc"
+    )
+    # add using ONNXRUNTIME_ROOT so they show up under the '"'contrib_ops'"' folder in Visual Studio')
+  olds+=('class CUDA_MS_OP_TYPED_CLASS_NAME(1, float, ShardedMoE);
+class CUDA_MS_OP_TYPED_CLASS_NAME(1, MLFloat16, ShardedMoE);
+')
+  news+=('// omarchy-onnxruntime (_ortf_patch_sharded_moe): no ShardedMoE.
+')
+  olds+=('      BuildKernelCreateInfo<CUDA_MS_OP_TYPED_CLASS_NAME(1, float, ShardedMoE)>,
+      BuildKernelCreateInfo<CUDA_MS_OP_TYPED_CLASS_NAME(1, MLFloat16, ShardedMoE)>,
+')
+  news+=('      // omarchy-onnxruntime (_ortf_patch_sharded_moe): no ShardedMoE.
+')
+  for f in "$1" "$2"; do
+    if [[ ! -f $f ]]; then
+      echo "$f not found: the ShardedMoE op's sources (_ortf_patch_sharded_moe)" >&2
+      return 1
+    fi
+  done
+  texts=("$(<"$1")" "$(<"$2")")
+  for i in "${!olds[@]}"; do
+    f=0
+    [[ ${files[i]} == "$1" ]] || f=1
+    rest=${texts[f]//"${olds[i]}"/}
+    n=$(((${#texts[f]} - ${#rest}) / ${#olds[i]}))
+    if ((n != 1)); then
+      echo "${files[i]}: $n copies of the upstream text below, not exactly one: ONNX Runtime changed it; look at the file and update _ortf_patch_sharded_moe" >&2
+      printf '%s\n' "${olds[i]}" >&2
+      return 1
+    fi
+  done
+  for i in "${!olds[@]}"; do
+    f=0
+    [[ ${files[i]} == "$1" ]] || f=1
+    texts[f]=${texts[f]/"${olds[i]}"/"${news[i]}"}
+  done
+  printf '%s\n' "${texts[0]}" >"$1.tmp" && printf '%s\n' "${texts[1]}" >"$2.tmp" &&
+    mv -f -- "$1.tmp" "$1" && mv -f -- "$2.tmp" "$2"
+}
+
+# _ortf_patch_exact <function> (<file> <old> <new>)...: replaces, in each
+# <file>, the text <old> with <new>, for the patch function <function>
+# (its name is in the messages). Every <old> must be in its file exactly
+# once (in the file as it is, before any replacement; the <old> texts of
+# one file must not overlap), or it fails with a message and leaves every
+# file untouched: a new ONNX Runtime release that changed the text, or a
+# file already patched (each <new> breaks its <old> up), is looked at,
+# not patched blindly (_ortf_patch_dnnl). The files are written together,
+# at the end.
+_ortf_patch_exact() {
+  local fn=$1 f i n rest
+  shift
+  local -a files=() olds=() news=()
+  local -A by_file=()
+  while (($# >= 3)); do
+    files+=("$1") olds+=("$2") news+=("$3")
+    shift 3
+  done
+  if (($# != 0 || ${#files[@]} == 0)); then
+    echo "_ortf_patch_exact ($fn): give <file> <old> <new> triples" >&2
+    return 1
+  fi
+  for f in "${files[@]}"; do
+    [[ ! -v by_file["$f"] ]] || continue
+    if [[ ! -f $f ]]; then
+      echo "$f not found ($fn)" >&2
+      return 1
+    fi
+    by_file["$f"]=$(<"$f")
+  done
+  for i in "${!olds[@]}"; do
+    f=${files[i]}
+    rest=${by_file["$f"]//"${olds[i]}"/}
+    n=$(((${#by_file["$f"]} - ${#rest}) / ${#olds[i]}))
+    if ((n != 1)); then
+      echo "$f: $n copies of the upstream text below, not exactly one: ONNX Runtime changed it, or the file is patched already; look at the file and update $fn" >&2
+      printf '%s\n' "${olds[i]}" >&2
+      return 1
+    fi
+  done
+  for i in "${!olds[@]}"; do
+    f=${files[i]}
+    by_file["$f"]=${by_file["$f"]/"${olds[i]}"/"${news[i]}"}
+  done
+  for f in "${!by_file[@]}"; do
+    printf '%s\n' "${by_file["$f"]}" >"$f.tmp" || return 1
+  done
+  for f in "${!by_file[@]}"; do
+    mv -f -- "$f.tmp" "$f" || return 1
+  done
+}
+
+# _ortf_patch_softmax_stream <orttraining/orttraining/training_ops/cuda>:
+# the training ops' CUDA kernels, as Arch's
+# onnxruntime-cuda-softmax-stream.patch has them. v1.29.0 changed two
+# helpers of the CUDA provider to take the raw cudaStream_t instead of an
+# onnxruntime::Stream* (upstream commit 879f65911a8) and their callers in
+# the provider, not the ones in the training ops: SoftMaxComputeHelper
+# (core/providers/cuda/math/softmax.h), which the loss kernels call, and
+# GatherNDBase::PrepareCompute (core/providers/cuda/tensor/gather_nd.h),
+# now (void* alloc_stream, cudaStream_t, ...), which GatherNDGrad calls.
+# Without it the CUDA provider of a training build does not compile. Here
+# the calls pass Stream(ctx) (and GetComputeStream(ctx) for the
+# allocations), as the provider's own softmax.cc and gather_nd.cc do.
+# Each upstream text must be there exactly once, or it fails and leaves
+# the files untouched (_ortf_patch_exact).
+_ortf_patch_softmax_stream() {
+  local d=$1 mark='omarchy-onnxruntime (onnxruntime-split/PKGBUILD, _ortf_patch_softmax_stream): the helper takes a cudaStream_t.'
+  _ortf_patch_exact _ortf_patch_softmax_stream \
+    "$d/loss/softmax_cross_entropy_loss_impl.cc" \
+    '  auto status = SoftMaxComputeHelper<T, TOut, true>(ctx->GetComputeStream(), logit_data, logit_reshape, log_prob_data, 1);' \
+    "  // $mark
+  auto status = SoftMaxComputeHelper<T, TOut, true>(Stream(ctx), logit_data, logit_reshape, log_prob_data, 1);" \
+    "$d/loss/softmaxcrossentropy_impl.cc" \
+    '  const T* label_data = label.template Data<T>();
+  T* log_prob_data = log_prob->template MutableData<T>();
+
+  // calculate logsoftmax
+  auto status = SoftMaxComputeHelper<T, T, true>(ctx->GetComputeStream(),' \
+    "  const T* label_data = label.template Data<T>();
+  T* log_prob_data = log_prob->template MutableData<T>();
+
+  // calculate logsoftmax
+  // $mark
+  auto status = SoftMaxComputeHelper<T, T, true>(Stream(ctx)," \
+    "$d/loss/softmaxcrossentropy_impl.cc" \
+    '  T* total_loss_data = total_loss->template MutableData<T>();
+  T* log_prob_data = log_prob->template MutableData<T>();
+
+  // calculate logsoftmax
+  auto status = SoftMaxComputeHelper<T, T, true>(ctx->GetComputeStream(),' \
+    "  T* total_loss_data = total_loss->template MutableData<T>();
+  T* log_prob_data = log_prob->template MutableData<T>();
+
+  // calculate logsoftmax
+  // $mark
+  auto status = SoftMaxComputeHelper<T, T, true>(Stream(ctx)," \
+    "$d/tensor/gather_nd_grad.cc" \
+    '  ORT_RETURN_IF_ERROR(PrepareCompute<TIndex>(context->GetComputeStream(),
+                                             batch_dims_,' \
+    '  // omarchy-onnxruntime (onnxruntime-split/PKGBUILD, _ortf_patch_softmax_stream):
+  // PrepareCompute takes the allocation stream and the cudaStream_t.
+  ORT_RETURN_IF_ERROR(PrepareCompute<TIndex>(GetComputeStream(context), Stream(context),
+                                             batch_dims_,'
+}
+
+# _ortf_patch_thrust_api <orttraining/orttraining/training_ops/cuda>: the
+# training ops' CUDA kernels, as Arch's fix-thrust-api.patch has them.
+# CUDA 13's CCCL 3 has no thrust::identity, cub::CountingInputIterator or
+# cub::DiscardOutputIterator, which reduction/all_impl.cu and
+# tensor/gather_grad_impl.cu use: the CUDA provider of a training build
+# does not compile with CUDA 13. With CUDA 12.9 and later (CUDA_VERSION
+# 12090, from cuda.h) they take ::cuda::std::identity,
+# thrust::counting_iterator and thrust::discard_iterator, which CUDA
+# 12.9's CCCL 2.8 has too, so both CUDA lines build the same code; an
+# older CUDA keeps upstream's. Each upstream text must be there exactly
+# once, or it fails and leaves the files untouched (_ortf_patch_exact).
+_ortf_patch_thrust_api() {
+  local d=$1 mark='// omarchy-onnxruntime (onnxruntime-split/PKGBUILD, _ortf_patch_thrust_api):'
+  local cuda_h="#if defined(__CUDACC__)
+// Needed for CUDA_VERSION check below
+#include <cuda.h>
+#endif"
+  local new_api='#if defined(CUDA_VERSION) && CUDA_VERSION >= 12090'
+  _ortf_patch_exact _ortf_patch_thrust_api \
+    "$d/reduction/all_impl.cu" \
+    '// Licensed under the MIT License.
+
+#include "orttraining/training_ops/cuda/reduction/all_impl.h"' \
+    "// Licensed under the MIT License.
+
+$mark
+// CUDA 13's CCCL has no thrust::identity; ::cuda::std::identity from
+// CUDA 12.9 on.
+$cuda_h
+
+#include \"orttraining/training_ops/cuda/reduction/all_impl.h\"" \
+    "$d/reduction/all_impl.cu" \
+    'void LaunchAllKernel(cudaStream_t stream, const bool* data, const int size, bool* output) {
+  if (thrust::all_of(thrust::cuda::par.on(stream), data, data + size, thrust::identity<bool>())) {' \
+    "void LaunchAllKernel(cudaStream_t stream, const bool* data, const int size, bool* output) {
+$new_api
+  if (thrust::all_of(thrust::cuda::par.on(stream), data, data + size, ::cuda::std::identity{})) {
+#else
+  if (thrust::all_of(thrust::cuda::par.on(stream), data, data + size, thrust::identity<bool>())) {
+#endif" \
+    "$d/tensor/gather_grad_impl.cu" \
+    '#include "core/providers/cuda/cu_inc/cub.cuh"
+#include "orttraining/training_ops/cuda/tensor/gather_grad_impl.h"
+
+#include "core/providers/cuda/cu_inc/common.cuh"' \
+    "$mark
+// CUDA 13's CCCL has no cub::CountingInputIterator or
+// cub::DiscardOutputIterator; thrust's iterators from CUDA 12.9 on.
+$cuda_h
+
+#include \"core/providers/cuda/cu_inc/cub.cuh\"
+#include \"orttraining/training_ops/cuda/tensor/gather_grad_impl.h\"
+
+$new_api
+#include <thrust/iterator/counting_iterator.h>
+#include <thrust/iterator/discard_iterator.h>
+#else
+#include <cub/iterator/counting_input_iterator.cuh>
+#include <cub/iterator/discard_output_iterator.cuh>
+#endif
+
+#include \"core/providers/cuda/cu_inc/common.cuh\"" \
+    "$d/tensor/gather_grad_impl.cu" \
+    '               GridDim::maxThreadsPerBlock, 0, stream>>>(
+      dY_indices.get(), cub::CountingInputIterator<TIndex>{0}, num_gathered_indices);' \
+    "               GridDim::maxThreadsPerBlock, 0, stream>>>(
+$new_api
+      dY_indices.get(), thrust::counting_iterator<TIndex>{0}, num_gathered_indices);
+#else
+      dY_indices.get(), cub::CountingInputIterator<TIndex>{0}, num_gathered_indices);
+#endif" \
+    "$d/tensor/gather_grad_impl.cu" \
+    '        nullptr, temp_storage_size_bytes,
+        dX_indices_sorted.get(), cub::DiscardOutputIterator<TIndex>{}, segment_counts.get(),' \
+    "        nullptr, temp_storage_size_bytes,
+$new_api
+        dX_indices_sorted.get(), thrust::discard_iterator<TIndex>{}, segment_counts.get(),
+#else
+        dX_indices_sorted.get(), cub::DiscardOutputIterator<TIndex>{}, segment_counts.get(),
+#endif" \
+    "$d/tensor/gather_grad_impl.cu" \
+    '        temp_storage.get(), temp_storage_size_bytes,
+        dX_indices_sorted.get(), cub::DiscardOutputIterator<TIndex>{}, segment_counts.get(),' \
+    "        temp_storage.get(), temp_storage_size_bytes,
+$new_api
+        dX_indices_sorted.get(), thrust::discard_iterator<TIndex>{}, segment_counts.get(),
+#else
+        dX_indices_sorted.get(), cub::DiscardOutputIterator<TIndex>{}, segment_counts.get(),
+#endif"
+}
+
+# _ortf_patch_tensorboard <cmake/tensorboard/compat/proto/CMakeLists.txt>:
+# the training ops' TensorBoard protos (the tensorboard library, built
+# with onnxruntime_ENABLE_TRAINING) with the full protobuf, which the
+# OpenVINO provider needs (build()). Upstream runs protoc with the protos'
+# own directory first on its import path (APPEND_PATH), so protoc names
+# each proto it compiles by its file name (attr_value.proto), while the
+# protos import each other as tensorboard/compat/proto/<name>.proto. The
+# full protobuf's generated code names a proto's descriptor table after
+# that name, and each .pb.cc refers to its imports' tables by the import
+# name: api_def.pb.cc to
+# descriptor_table_tensorboard_2fcompat_2fproto_2fattr_5fvalue_2eproto,
+# which attr_value.pb.h declares as descriptor_table_attr_5fvalue_2eproto,
+# so the library does not compile (the lite protobuf, Arch's, refers to
+# no descriptor table and builds either way). Here protoc has
+# tensorboard's source root first (NO_SRC_INCLUDES), names each proto as
+# it is imported, and writes it under the build directory's root
+# (GEN_SRC_SUB_DIR, three levels up from cmake/tensorboard/compat/proto's
+# binary directory), at tensorboard/compat/proto/<name>.pb.cc
+# (GEN_SRC_PREFIX): the files upstream generates, where it generates them
+# and where the training code includes them from. The one upstream text it
+# replaces must be there exactly once, or it fails and leaves the file
+# untouched (_ortf_patch_exact).
+# shellcheck disable=SC2016 # CMake's ${...}, not the shell's
+_ortf_patch_tensorboard() {
+  _ortf_patch_exact _ortf_patch_tensorboard "$1" \
+    'onnxruntime_protobuf_generate(APPEND_PATH IMPORT_DIRS ${tensorboard_SOURCE_DIR} ${protobuf_SOURCE_DIR}/src TARGET tensorboard)' \
+    '# omarchy-onnxruntime (onnxruntime-split/PKGBUILD, _ortf_patch_tensorboard):
+# each proto named as the others import it (tensorboard/compat/proto/...),
+# written where upstream writes it: the full protobuf refers to the
+# descriptor table of an imported proto by that name.
+onnxruntime_protobuf_generate(NO_SRC_INCLUDES GEN_SRC_SUB_DIR ../../../ GEN_SRC_PREFIX tensorboard/compat/proto/
+  IMPORT_DIRS ${tensorboard_SOURCE_DIR} ${protobuf_SOURCE_DIR}/src TARGET tensorboard)'
+}
+
+# _ortf_patch_pybind_providers <onnxruntime/python/_pybind_state.py.in>:
+# the Python module's get_available_providers lists the MIGraphX provider
+# of the migraphx line. The main line's onnxruntime-core loads that
+# provider by name (its MIGraphX provider interface, build()), but the
+# provider list behind get_available_providers names only the providers
+# built into the core (core/providers/get_execution_providers.cc, for
+# MIGraphX only with USE_MIGRAPHX; the training module returns that list,
+# orttraining_python_module.cc), so onnxruntime.get_available_providers()
+# had no MIGraphXExecutionProvider and InferenceSession warned that it is
+# not an available provider (onnxruntime_inference_collection.py checks
+# the names against C.get_available_providers(), C being this module),
+# then loaded it. Here capi/_pybind_state.py, which re-exports the C++
+# module's functions to both (onnxruntime/__init__.py imports
+# get_available_providers from it), wraps the function: in a core built
+# with the interface (@onnxruntime_USE_MIGRAPHX_INTERFACE@, which CMake's
+# configure_file of this template gives), and when
+# libonnxruntime_providers_migraphx.so is next to the module, in capi/,
+# where the C++ side loads the provider from (onnxruntime-provider-
+# migraphx links it there), the list also has MIGraphXExecutionProvider,
+# where upstream's priority order puts it: after NvTensorRTRTX, TensorRT
+# and CUDA, before OpenVINO and the rest, CPU last. The C++ list itself,
+# and so the C API's GetAvailableProviders, is unchanged. Every line's
+# checkout is patched alike; only the main line builds the Python module.
+# The one upstream text it replaces must be there exactly once, or it
+# fails and leaves the file untouched (_ortf_patch_exact).
+_ortf_patch_pybind_providers() {
+  _ortf_patch_exact _ortf_patch_pybind_providers "$1" \
+    '@ONNXRUNTIME_SETDLOPENFLAGS_GLOBAL@
+from .onnxruntime_pybind11_state import *  # noqa
+@ONNXRUNTIME_SETDLOPENFLAGS_LOCAL@' \
+    '@ONNXRUNTIME_SETDLOPENFLAGS_GLOBAL@
+# omarchy-onnxruntime (onnxruntime-split/PKGBUILD, _ortf_patch_pybind_providers):
+# get_available_providers is wrapped below.
+from .onnxruntime_pybind11_state import *  # noqa
+@ONNXRUNTIME_SETDLOPENFLAGS_LOCAL@
+
+
+# omarchy-onnxruntime (onnxruntime-split/PKGBUILD, _ortf_patch_pybind_providers):
+# a core built with the MIGraphX provider interface loads the MIGraphX
+# provider by name, from libonnxruntime_providers_migraphx.so next to this
+# module, but the C++ provider list names only the providers built in. The
+# list also has MIGraphXExecutionProvider when that library is here (the
+# onnxruntime-provider-migraphx package links it), in the priority order
+# upstream gives: after NvTensorRTRTX, TensorRT and CUDA, before the others.
+def _ortf_wrap_available_providers(c_get_available_providers, capi_dir):
+    import functools
+
+    migraphx = "MIGraphXExecutionProvider"
+    ahead = ("NvTensorRTRTXExecutionProvider", "TensorrtExecutionProvider", "CUDAExecutionProvider")
+    library = os.path.join(capi_dir, "libonnxruntime_providers_migraphx.so")
+
+    def get_available_providers():
+        providers = list(c_get_available_providers())
+        if migraphx in providers or not os.path.exists(library):
+            return providers
+        at = 0
+        for i, name in enumerate(providers):
+            if name in ahead:
+                at = i + 1
+        providers.insert(at, migraphx)
+        return providers
+
+    return functools.wraps(c_get_available_providers)(get_available_providers)
+
+
+if "@onnxruntime_USE_MIGRAPHX_INTERFACE@".upper() in ("ON", "1", "TRUE", "YES", "Y"):
+    get_available_providers = _ortf_wrap_available_providers(  # noqa: F405
+        get_available_providers,  # noqa: F405
+        os.path.dirname(os.path.abspath(__file__)),
+    )'
+}
+
+# _ortf_patch_cudnn_link <cmake/onnxruntime_providers_cuda.cmake>: the CUDA
+# provider links cuDNN (CUDNN::cudnn, libcudnn.so.9, from
+# cmake/external/cuDNN.cmake). Upstream links it with no cuDNN: the
+# provider's own definitions of the cuDNN functions the inference kernels
+# call (core/providers/cuda/cudnn_stub.cc) look each one up in a
+# dlopen()ed libcudnn.so (cudnn_loader). The training ops' CUDA kernels
+# (orttraining/orttraining/training_ops/cuda: the convolution and batch
+# normalization gradients) call eight more, which that file does not
+# define (cudnnConvolutionBackwardBias, cudnnConvolutionBackwardFilter,
+# cudnnBatchNormalizationBackward,
+# cudnnFindConvolutionBackwardFilterAlgorithmEx and the
+# cudnnGetConvolutionBackward{Data,Filter}{Algorithm_v7,WorkspaceSize}),
+# so a training build's provider kept them undefined, with no library
+# that defines them among its NEEDED entries, and failed to load:
+# "undefined symbol: cudnnGetConvolutionBackwardDataWorkspaceSize" (seen
+# in 1.29.0-7's and the cuda12 line's 1.29.0-2's first builds, which were
+# never released). Linked, the linker resolves those eight to
+# libcudnn.so.9, which then is a NEEDED entry (the references keep it
+# under makepkg's -Wl,--as-needed), and the stub's definitions still
+# serve the rest, through the same library. The package depends on cudnn
+# with its bounds either way (_ortf_check_libs), and package() fails on
+# an undefined symbol (_ortf_check_symbols). The one upstream text it
+# replaces must be there exactly once, or it fails and leaves the file
+# untouched (_ortf_patch_exact); _ortf_patch_sharded_moe edits another
+# part of the file.
+# shellcheck disable=SC2016 # CMake's ${...}, not the shell's
+_ortf_patch_cudnn_link() {
+  _ortf_patch_exact _ortf_patch_cudnn_link "$1" \
+    '      # intentionally not linked here to avoid a hard runtime dependency when the related ops are not used.
+      target_link_libraries(${target} PRIVATE CUDA::cublasLt CUDA::cublas cudnn_frontend CUDA::curand CUDA::cudart CUDA::cuda_driver' \
+    '      # intentionally not linked here to avoid a hard runtime dependency when the related ops are not used.
+      # omarchy-onnxruntime (onnxruntime-split/PKGBUILD, _ortf_patch_cudnn_link):
+      # cuDNN is linked all the same (CUDNN::cudnn): the training kernels call
+      # cuDNN functions that cudnn_stub.cc does not define, and without it
+      # the provider does not load (NEEDED libcudnn.so.9).
+      target_link_libraries(${target} PRIVATE CUDA::cublasLt CUDA::cublas cudnn_frontend CUDNN::cudnn CUDA::curand CUDA::cudart CUDA::cuda_driver'
+}
+
+# _ortf_patch_dnnl_threadpool_args
+# <onnxruntime/core/providers/dnnl/dnnl_provider_factory.cc>: the oneDNN
+# provider's factory keeps the thread count it is given, not a pointer to
+# the caller's. The Python module (onnxruntime_pybind_state.cc,
+# CreateExecutionProviderFactoryInstance) sets threadpool_args to the
+# address of an int local to the function that creates and returns the
+# factory; the factory keeps the pointer (DnnlExecutionProviderInfo, by
+# value), and CreateProvider(), later, hands it to the
+# DnnlExecutionProvider constructor, which reads the int through it
+# (dnnl_execution_provider.cc) and calls omp_set_num_threads() with
+# whatever is on that stack then: seen as omp_set_num_threads(1459638976),
+# then "libgomp: Out of memory allocating 338636243776 bytes" or a
+# segfault in GOMP_parallel, intermittently, from Python only (the C API
+# leaves threadpool_args null). Arch's onnxruntime has the same code.
+# Here the constructor copies the int, when there is one, into the
+# factory and points threadpool_args at the copy, which lives as long as
+# the factory: every caller is covered, and one that keeps its int alive
+# sees no change. Only with DNNL_OPENMP (an OpenMP oneDNN, as built
+# here), where threadpool_args is an int*; the copy constructor is
+# deleted, as a copy would point at the other factory's int. The upstream
+# texts it replaces must be there exactly once, or it fails and leaves the
+# file untouched (_ortf_patch_exact).
+_ortf_patch_dnnl_threadpool_args() {
+  _ortf_patch_exact _ortf_patch_dnnl_threadpool_args \
+    "$1" \
+    '  DnnlProviderFactory(const DnnlExecutionProviderInfo& info) : info_(info) {}' \
+    '  // omarchy-onnxruntime (onnxruntime-split/PKGBUILD, _ortf_patch_dnnl_threadpool_args):
+  // threadpool_args may point at an int of the caller that is gone by the
+  // time CreateProvider() runs (the Python module'"'"'s is a local of the
+  // function that returns this factory): keep a copy of the value.
+  DnnlProviderFactory(const DnnlExecutionProviderInfo& info) : info_(info) {
+#if defined(DNNL_OPENMP)
+    if (info_.threadpool_args != nullptr) {
+      num_threads_ = *static_cast<const int*>(info_.threadpool_args);
+      info_.threadpool_args = &num_threads_;
+    }
+#endif  // defined(DNNL_OPENMP)
+  }
+  DnnlProviderFactory(const DnnlProviderFactory&) = delete;
+  DnnlProviderFactory& operator=(const DnnlProviderFactory&) = delete;' \
+    "$1" \
+    ' private:
+  DnnlExecutionProviderInfo info_;
+};' \
+    ' private:
+  DnnlExecutionProviderInfo info_;
+  // omarchy-onnxruntime (_ortf_patch_dnnl_threadpool_args): the thread
+  // count info_.threadpool_args points at.
+  int num_threads_{0};
+};'
+}
+
+# _ortf_patch_git_info <cmake/CMakeLists.txt>: the build information
+# ("ORT Build Info: git-branch=..., git-commit-id=..., ...", in
+# libonnxruntime.so) has the values of the tag's git checkout, whatever
+# the layout: branch makepkg (makepkg's extract_git checks the tag out as
+# that branch) and the commit's 11-digit abbreviation, from _ortf_commit,
+# which git log --format=%h gives in that checkout. Upstream asks git in
+# the source directory: in the mirror's unpacked archive, no checkout, git
+# walks up to the repository around it (this one, or an AUR clone) or to
+# none, and the library would say another branch and commit, or none.
+# The rest of the `if (Git_FOUND)` block stays as upstream has it: its
+# other entries (fp8-kv-cache=1 and the like) still need CMake to find
+# git, which every build has (_ortf_check_tools: the checkout and the
+# mirror's commit check need it too). The upstream text it replaces must
+# be there exactly once, or it fails and leaves the file untouched
+# (_ortf_patch_exact).
+# shellcheck disable=SC2016 # CMake's ${...}, not the shell's
+_ortf_patch_git_info() {
+  _ortf_patch_exact _ortf_patch_git_info "$1" \
+    '  execute_process(COMMAND ${GIT_EXECUTABLE} log -1 --format=%h
+      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+      OUTPUT_VARIABLE ORT_GIT_COMMIT)
+  string(STRIP "${ORT_GIT_COMMIT}" ORT_GIT_COMMIT)
+  execute_process(COMMAND ${GIT_EXECUTABLE} rev-parse --abbrev-ref HEAD
+      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+      OUTPUT_VARIABLE ORT_GIT_BRANCH)
+  string(STRIP "${ORT_GIT_BRANCH}" ORT_GIT_BRANCH)' \
+    "  # omarchy-onnxruntime (onnxruntime-split/PKGBUILD, _ortf_patch_git_info):
+  # the values of the tag's git checkout, whatever the source tree's layout.
+  set(ORT_GIT_COMMIT \"${_ortf_commit:0:11}\")
+  set(ORT_GIT_BRANCH \"makepkg\")"
+}
+
 prepare() {
   echo "ONNX Runtime build inputs:"
   _ortf_resolve "$srcdir/ortf.conf" || return 1
@@ -1375,33 +2757,75 @@ prepare() {
   _ortf_check_names || return 1
   echo "packages: ${_ortf_pkgname[*]}"
 
-  cd "$srcdir/onnxruntime"
-  local head
-  head=$(git rev-parse HEAD)
-  if [[ $head != "$_ortf_commit" ]]; then
-    echo "tag v$pkgver is commit $head, not $_ortf_commit: the tag moved; check it and update _ortf_commit" >&2
-    return 1
+  local root head
+  root=$(_ortf_srcroot) || return 1
+  if [[ $(_ortf_get ORTF_SOURCE) == upstream ]]; then
+    cd "$root" || return 1
+    head=$(git rev-parse HEAD)
+    if [[ $head != "$_ortf_commit" ]]; then
+      echo "tag v$pkgver is commit $head, not $_ortf_commit: the tag moved; check it and update _ortf_commit" >&2
+      return 1
+    fi
+    # The checkout as tagged: build() copies the Python package tree the
+    # build assembled into onnxruntime/ and setup.py leaves build/ and
+    # *.egg-info, untracked files that would survive into the next build in
+    # this BUILDDIR (makepkg resets tracked files only) and enter its wheel.
+    git clean -ffdxq
+    echo "source: the git checkout of tag v$pkgver, commit $_ortf_commit, in $root"
+  else
+    # The archive unpacked anew, as git clean leaves the checkout.
+    _ortf_unpack_mirror "$srcdir/onnxruntime-$pkgver.tar.gz" "$root" || return 1
+    cd "$root" || return 1
+    echo "source: onnxruntime-$pkgver.tar.gz, commit $_ortf_commit (git get-tar-commit-id), unpacked anew in $root"
   fi
-  # The checkout as tagged: build() copies the Python package tree the
-  # build assembled into onnxruntime/ and setup.py leaves build/ and
-  # *.egg-info, untracked files that would survive into the next build in
-  # this BUILDDIR (makepkg resets tracked files only) and enter its wheel.
-  git clean -ffdxq
+  # Whatever the layout, so that every build's tree is the same.
+  _ortf_patch_git_info cmake/CMakeLists.txt || return 1
+  echo "cmake/CMakeLists.txt: the build information says git-branch=makepkg, git-commit-id=${_ortf_commit:0:11}, the tag's checkout (_ortf_patch_git_info)"
   _ortf_mirror cmake/deps.txt "$srcdir/deps-mirror" || return 1
   echo "dependency mirror: ${#_ortf_deps[@]} archives checked against cmake/deps.txt"
+  # Whatever ORTF_EPS has, so that every build's checkout is the same (the
+  # file is only read with dnnl in ORTF_EPS).
+  _ortf_patch_dnnl cmake/external/dnnl.cmake || return 1
+  echo "cmake/external/dnnl.cmake: oneDNN $_ortf_onednn_version from ortf-dep-onednn.zip, static (_ortf_patch_dnnl)"
+  _ortf_patch_setup setup.py || return 1
+  echo "setup.py: the training wheel keeps the distribution name onnxruntime (_ortf_patch_setup)"
+  # Whatever ORTF_EPS and ORTF_NCCL are, as the oneDNN patch: the op only
+  # builds with CUDA and NCCL.
+  _ortf_patch_sharded_moe cmake/onnxruntime_providers_cuda.cmake onnxruntime/contrib_ops/cuda/cuda_contrib_kernels.cc ||
+    return 1
+  echo "the CUDA provider: without the ShardedMoE op, which v1.29.0 cannot compile with NCCL (_ortf_patch_sharded_moe)"
+  # Whatever ORTF_EPS is, as the oneDNN patch: the file is only read with
+  # cuda in ORTF_EPS.
+  _ortf_patch_cudnn_link cmake/onnxruntime_providers_cuda.cmake || return 1
+  echo "the CUDA provider: links cuDNN, which the training kernels call (_ortf_patch_cudnn_link)"
+  _ortf_patch_dnnl_threadpool_args onnxruntime/core/providers/dnnl/dnnl_provider_factory.cc || return 1
+  echo "the oneDNN provider: its factory keeps the thread count, not the caller's pointer (_ortf_patch_dnnl_threadpool_args)"
+  # Whatever ORTF_EPS is, as the oneDNN patch: these sources only build
+  # with CUDA and the training ops.
+  _ortf_patch_softmax_stream orttraining/orttraining/training_ops/cuda || return 1
+  echo "the training ops' CUDA kernels: the cudaStream_t of v1.29.0's helpers (_ortf_patch_softmax_stream)"
+  _ortf_patch_thrust_api orttraining/orttraining/training_ops/cuda || return 1
+  echo "the training ops' CUDA kernels: CCCL 3's iterators and identity from CUDA 12.9 on (_ortf_patch_thrust_api)"
+  _ortf_patch_tensorboard cmake/tensorboard/compat/proto/CMakeLists.txt || return 1
+  echo "the TensorBoard protos: named as they import each other, for the full protobuf (_ortf_patch_tensorboard)"
+  # Whatever the line, as the oneDNN patch: only the main line builds the
+  # Python module.
+  _ortf_patch_pybind_providers onnxruntime/python/_pybind_state.py.in || return 1
+  echo "the Python module: get_available_providers lists MIGraphX when its provider library is in capi/ (_ortf_patch_pybind_providers)"
   # A fresh CMake build directory, so that a cache from other build inputs
   # is never reused (makepkg -e skips prepare() and continues a build).
   rm -rf -- "$srcdir/build" "$srcdir/dist" "$srcdir/stage"
 }
 
 build() {
-  local jobs ccache python archs host_cxx trt_home
+  local jobs ccache python archs host_cxx trt_home nccl_lib root
+  root=$(_ortf_srcroot) || return 1
   jobs=$(_ortf_get ORTF_JOBS) || return 1
   ccache=$(_ortf_get ORTF_CCACHE) || return 1
   python=$(_ortf_get ORTF_PYTHON) || return 1
 
   local -a args=(
-    -S "$srcdir/onnxruntime/cmake"
+    -S "$root/cmake"
     -B "$srcdir/build"
     -G Ninja
     -Wno-dev
@@ -1416,6 +2840,24 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=lib
     -Donnxruntime_BUILD_SHARED_LIB=ON
+    # The training ops, as Arch builds, in every line: they change the
+    # provider bridge (ENABLE_STRIDED_TENSORS), so every line's providers
+    # are built with them (the top of the file, the joint release rule).
+    # Of what it turns on, the torch interop and Triton turn themselves
+    # off again with BUILD_SHARED_LIB (cmake/CMakeLists.txt); NCCL is
+    # ORTF_NCCL's (below).
+    -Donnxruntime_ENABLE_TRAINING=ON
+    # RTTI, as upstream's build.py always passes it (OFF unless
+    # --disable_rtti): CMake's own default turns RTTI off without Python
+    # and CUDA (the migraphx line, a CPU-only check), and the training
+    # optimizer's dynamic_cast (orttraining/core/optimizer/memory_optimizer)
+    # does not compile with -fno-rtti.
+    -Donnxruntime_DISABLE_RTTI=OFF
+    # LazyTensor, on by default with training, as Arch turns it off: it
+    # links the Python module against PyTorch (find_package(Torch
+    # REQUIRED), onnxruntime_python.cmake) and is a fatal configure error
+    # without the Python module (the cuda12 and migraphx lines).
+    -Donnxruntime_ENABLE_LAZY_TENSOR=OFF
     # The unit tests would build googletest and thousands of test files and
     # need the GPU to mean anything; the package is checked after install.
     -Donnxruntime_BUILD_UNIT_TESTS=OFF
@@ -1450,10 +2892,18 @@ build() {
   local prefix_map="-ffile-prefix-map=$srcdir=/usr/src/debug/$pkgbase"
   CFLAGS+=" $prefix_map"
   CXXFLAGS+=" $prefix_map"
-  local cc=/usr/bin/gcc cxx=/usr/bin/g++
+  local cc=/usr/bin/gcc cxx=/usr/bin/g++ cuda_flags cuda_major
   if _ortf_has cuda; then
     archs=$(_ortf_get ORTF_CUDA_ARCHS) || return 1
     host_cxx=$(_ortf_get NVCC_CCBIN) || return 1
+    cuda_flags="-Xcompiler -Wno-template-body -Xcompiler $prefix_map"
+    # CUDA 12.9's nvcc warns on every compile for the architectures it
+    # deprecates (below 75, the legacy preset's 60 61 70). A warning only:
+    # no nvcc warning is an error here (--compile-no-warning-as-error;
+    # upstream makes only default-stream-launch one), so this just keeps
+    # the log readable.
+    cuda_major=$(_ortf_get ORTF_CUDA_MAJOR) || return 1
+    [[ $cuda_major != 12 ]] || cuda_flags+=' -Wno-deprecated-gpu-targets'
     # The C++ compiler is nvcc's host compiler, so that host code compiled
     # by nvcc and by the C++ compiler agrees.
     cxx=$host_cxx cc=${host_cxx/g++/gcc}
@@ -1467,10 +2917,8 @@ build() {
       -DCMAKE_CUDA_COMPILER="$_ortf_cuda_home/bin/nvcc"
       -DCMAKE_CUDA_HOST_COMPILER="$host_cxx"
       -DCMAKE_CUDA_ARCHITECTURES="$archs"
-      -DCMAKE_CUDA_FLAGS="-Xcompiler -Wno-template-body -Xcompiler $prefix_map"
+      -DCMAKE_CUDA_FLAGS="$cuda_flags"
       -Donnxruntime_NVCC_THREADS="$(_ortf_get ORTF_NVCC_THREADS)"
-      # One GPU: no multi-GPU collectives (and no NCCL dependency).
-      -Donnxruntime_USE_NCCL=OFF
     )
   fi
   if _ortf_has tensorrt; then
@@ -1488,13 +2936,56 @@ build() {
     # (CPU, GPU, NPU, AUTO:...) picks it per session.
     args+=(-Donnxruntime_USE_OPENVINO=ON)
   fi
+  if _ortf_has dnnl; then
+    # oneDNN from its source archive, built static (_ortf_patch_dnnl).
+    args+=(-Donnxruntime_USE_DNNL=ON -DORTF_DNNL_ARCHIVE="$srcdir/ortf-dep-onednn.zip")
+  fi
   if _ortf_has migraphx; then
     # Host C++ only, and no GPU architecture is fixed at build time:
     # MIGraphX compiles each model for the GPU it finds at run time. ONNX
     # Runtime 1.29 has no ROCm provider, so Arch's HIP architecture, HIP
-    # flag, NCCL/RCCL, composable-kernel and ROCM_HOME settings would be
-    # inert here and are not passed.
+    # flag, composable-kernel and ROCM_HOME settings would be inert here
+    # and are not passed; its RCCL setting is ORTF_NCCL's (below).
     args+=(-Donnxruntime_USE_MIGRAPHX=ON -Donnxruntime_MIGRAPHX_HOME="$_ortf_rocm_home")
+  fi
+  # NCCL (ORTF_NCCL, the top of the file), in every line alike, as it
+  # changes the provider bridge: NVIDIA's with CUDA, its nccl.h and
+  # libnccl under $_ortf_nccl_home, else RCCL with MIGraphX, under the ROCm
+  # root as Arch passes it (CMake looks in <home>/include/rccl and
+  # <home>/lib). Off, explicitly, without it.
+  nccl_lib=$(_ortf_get ORTF_NCCL_LIB) || return 1
+  case $nccl_lib in
+    nccl) args+=(-Donnxruntime_USE_NCCL=ON -Donnxruntime_NCCL_HOME="$_ortf_nccl_home") ;;
+    rccl) args+=(-Donnxruntime_USE_NCCL=ON -Donnxruntime_NCCL_HOME="$_ortf_rocm_home") ;;
+    *) args+=(-Donnxruntime_USE_NCCL=OFF) ;;
+  esac
+  # The main line's onnxruntime-core also hosts the other lines' providers
+  # (cuda12, migraphx), so it is built with ONNX Runtime's provider
+  # interface for any of the two it does not build itself. Each one only
+  # adds a compile definition to the core (USE_<EP>_PROVIDER_INTERFACE,
+  # cmake/CMakeLists.txt; build.py's --enable_generic_interface, "used only
+  # for building onnxruntime ... but not EPs"): no ROCm or CUDA at build
+  # time.
+  #   - MIGraphX: without it, the by-name SessionOptionsAppendExecutionProvider
+  #     (..., "MIGraphX") and the Python module's MIGraphXExecutionProvider
+  #     fail with "not supported in this build"
+  #     (core/session/provider_registration.cc,
+  #     python/onnxruntime_pybind_state.cc); with it they load
+  #     libonnxruntime_providers_migraphx.so. The C API's
+  #     GetAvailableProviders still does not list MIGraphX either way
+  #     (core/providers/get_execution_providers.cc tests USE_MIGRAPHX
+  #     only): an application must not take its absence there to mean that
+  #     the provider cannot load. The Python module's
+  #     get_available_providers lists it when the MIGraphX package is
+  #     installed (_ortf_patch_pybind_providers).
+  #   - CUDA: the CUDA provider's half of the CPU provider bridge
+  #     (ProviderHostCPU, core/providers/cpu/cpu_provider_shared.h) exists
+  #     only with USE_CUDA or the CUDA interface, so a core built without
+  #     either would not fit a CUDA provider at all; the default build has
+  #     cuda, which gives it already.
+  if [[ $_ortf_line == main ]]; then
+    _ortf_has migraphx || args+=(-Donnxruntime_USE_MIGRAPHX_INTERFACE=ON)
+    _ortf_has cuda || args+=(-Donnxruntime_USE_CUDA_INTERFACE=ON)
   fi
   args+=(-DCMAKE_C_COMPILER="$cc" -DCMAKE_CXX_COMPILER="$cxx")
   if [[ -n $ccache ]]; then
@@ -1503,16 +2994,29 @@ build() {
   fi
 
   cmake "${args[@]}"
+  # The oneDNN ExternalProject (dnnl in ORTF_EPS) builds with `cmake --build
+  # .`, ExternalProject's default for a CMake project under Ninja, a ninja
+  # of its own that would run nproc+2 jobs beside this build's. cmake
+  # --build without -j takes CMAKE_BUILD_PARALLEL_LEVEL from the
+  # environment, which ninja passes on to it: the same job count there.
+  # The two share no job server, so while oneDNN builds, beside the rest,
+  # up to twice the count can run.
+  if [[ -n $jobs ]]; then local -x CMAKE_BUILD_PARALLEL_LEVEL=$jobs; fi
   cmake --build "$srcdir/build" ${jobs:+-j "$jobs"}
 
   if [[ $python == 1 ]]; then
     # As Arch's recipe does: the Python package tree the build assembled
     # (modules, provider libraries) goes into the source tree, whose
-    # setup.py makes the wheel.
-    cp -a -- "$srcdir/build/onnxruntime/." "$srcdir/onnxruntime/onnxruntime/"
+    # setup.py makes the wheel. --enable_training, as upstream's build.py
+    # gives it with training (setup.py reads it from its arguments, which
+    # setuptools' backend extends by --build-option): the wheel has the
+    # onnxruntime.training packages and requirements-training.txt as its
+    # requirements, under the name onnxruntime (_ortf_patch_setup).
+    cp -a -- "$srcdir/build/onnxruntime/." "$root/onnxruntime/"
     rm -rf -- "$srcdir/dist"
-    (cd "$srcdir/onnxruntime" &&
-      "$(_ortf_get ORTF_PYTHON_EXE)" -m build --wheel --no-isolation --outdir "$srcdir/dist")
+    (cd "$root" &&
+      "$(_ortf_get ORTF_PYTHON_EXE)" -m build --wheel --no-isolation --outdir "$srcdir/dist" \
+        -C--build-option=--enable_training)
   fi
 }
 
@@ -1529,8 +3033,10 @@ build() {
 # (MIT, BSD-2-Clause, BSD-3-Clause: three files at least). Fails when a
 # source archive or its licence entry is missing (_ortf_dep_license).
 _ortf_licenses() {
+  local root
+  root=$(_ortf_srcroot) || return 1
   install -Dm644 -t "$pkgdir/usr/share/licenses/${pkgname[0]}" \
-    "$srcdir/onnxruntime/LICENSE" "$srcdir/onnxruntime/ThirdPartyNotices.txt"
+    "$root/LICENSE" "$root/ThirdPartyNotices.txt"
   _ortf_dep_license pytorch_cpuinfo LICENSE cpuinfo-LICENSE || return 1
   _ortf_dep_license protobuf LICENSE protobuf-LICENSE || return 1
 }
@@ -1579,9 +3085,10 @@ _ortf_dep_license() {
 # entry without a version (cuda) that a bounded entry of the same name
 # (cuda>=13, cuda<14) also lists: pacman needs the bounds alone, and the
 # package's .PKGINFO then lists each such dependency once, by its bounds.
-# Run last, after _ortf_check_libs and the recorded bounds, which find the
-# vendor packages by their bare names. The bare names stay in the package
-# functions' bodies, so .SRCINFO (whose depends carry no bounds) has them.
+# Run last, after _ortf_check_libs and the recorded bounds. The bare names
+# stay in the package functions' bodies, so .SRCINFO (whose depends carry
+# no bounds then) has them; the cuda12 line's CUDA package lists its cuda
+# and cudnn bounds in the body instead, and has none here to drop.
 _ortf_drop_bare_depends() {
   local d e keep
   local -a kept=()
@@ -1597,6 +3104,35 @@ _ortf_drop_bare_depends() {
   depends=("${kept[@]}")
 }
 
+# _ortf_cuda12_needed <label> <library file name>: reads the DT_NEEDED
+# entries of a library of the cuda12 line on stdin and fails, with a
+# message on stderr prefixed <label>, on any CUDA library (one
+# _ortf_lib_pkg maps to cuda) of soname major 13: a CUDA 13 runtime that
+# reached a build meant for CUDA 12 (a /opt/cuda of the other major). The
+# CUDA provider itself, libonnxruntime_providers_cuda.so, must link the
+# CUDA 12 runtime and cuBLAS: libcudart.so.12, libcublas.so.12 and
+# libcublasLt.so.12.
+_ortf_cuda12_needed() {
+  local label=$1 soname want bad=0
+  local -a needed=()
+  mapfile -t needed
+  for soname in "${needed[@]}"; do
+    if [[ $soname =~ [.]so[.]13([.]|$) && $(_ortf_lib_pkg "$soname") == cuda ]]; then
+      echo "$label: $soname is a CUDA 13 library: the cuda12 line links CUDA 12 only (build with CUDA 12 in $_ortf_cuda_home)" >&2
+      bad=1
+    fi
+  done
+  if [[ $2 == libonnxruntime_providers_cuda.so ]]; then
+    for want in libcudart.so.12 libcublas.so.12 libcublasLt.so.12; do
+      if [[ " ${needed[*]} " != *" $want "* ]]; then
+        echo "$label: no $want in its NEEDED entries (${needed[*]}): the cuda12 line's CUDA provider links CUDA 12's runtime and cuBLAS" >&2
+        bad=1
+      fi
+    done
+  fi
+  ((bad == 0))
+}
+
 # _ortf_check_libs [<tensorrt package>]: checks the DT_NEEDED entries of
 # every library of the package being written (each regular file named
 # *.so or *.so.*; links are checked as their targets) against its depends
@@ -1605,23 +3141,39 @@ _ortf_drop_bare_depends() {
 # depends. A package that depends on migraphx or hip-runtime-amd has its
 # libmigraphx_c and libamdhip64 sonames checked against the majors
 # prepare() found (ORTF_MIGRAPHX_SONAME_MAJOR, ORTF_HIP_SONAME_MAJOR).
+# In the cuda12 line the cudnn bounds are on the recorded major.minor
+# (ORTF_CUDNN_MINOR), each library's NEEDED entries also pass
+# _ortf_cuda12_needed, and a cuda or cudnn bound not already in depends
+# fails: that package function lists its bounds itself (in .SRCINFO), so
+# a build of another CUDA or cuDNN would not match them.
 _ortf_check_libs() {
-  local trt=${1:-} cuda_major cudnn_major='' trt_version='' lib needed bounds b bad=0
+  local trt=${1:-} cuda_major cudnn_major='' cudnn_minor='' trt_version='' lib needed bounds b d bad=0
   local mgx_soname='' hip_soname='' key
-  local -a libs found=()
+  local -a libs found=() names=()
+  # The names in depends, without their bounds (cudnn for cudnn>=9.10).
+  for d in "${depends[@]}"; do names+=("${d%%[<>=]*}"); done
   # The CUDA major the names carry, and the TensorRT version prepare()
   # recorded: the libcudart and libnvinfer linked must be of these.
   cuda_major=$(_ortf_get ORTF_CUDA_MAJOR) || return 1
   if [[ -n $trt ]]; then trt_version=$(_ortf_get ORTF_TENSORRT_VERSION) || return 1; fi
   # The cuDNN major prepare() recorded, for a package that depends on
-  # cudnn (the CUDA provider dlopen()s cuDNN: no NEEDED entry gives its
-  # bound). A libcudnn in the NEEDED entries (the TensorRT provider's) must
-  # be of it, and gives the same bounds, added once.
-  if [[ " ${depends[*]} " == *" cudnn "* ]]; then
+  # cudnn (the CUDA provider dlopen()s most of cuDNN). A libcudnn in the
+  # NEEDED entries (the TensorRT provider's, and the CUDA provider's, for
+  # its training kernels, _ortf_patch_cudnn_link) must be of it; the
+  # bounds are the recorded ones (by major.minor in the cuda12 line).
+  if [[ " ${names[*]} " == *" cudnn "* ]]; then
     cudnn_major=$(_ortf_get ORTF_CUDNN_MAJOR) || return 1
     if [[ ! $cudnn_major =~ ^[1-9][0-9]*$ ]]; then
       echo "ortf.conf: ORTF_CUDNN_MAJOR is '$cudnn_major', not a major version (run makepkg without -e, so that prepare() runs)" >&2
       return 1
+    fi
+    # The cuda12 line's bound is on the major.minor (_ortf_resolve).
+    if [[ $_ortf_line == cuda12 ]]; then
+      cudnn_minor=$(_ortf_get ORTF_CUDNN_MINOR) || return 1
+      if [[ ! $cudnn_minor =~ ^(0|[1-9][0-9]*)$ ]]; then
+        echo "ortf.conf: ORTF_CUDNN_MINOR is '$cudnn_minor', not a minor version (run makepkg without -e, so that prepare() runs)" >&2
+        return 1
+      fi
     fi
   fi
   for key in migraphx:ORTF_MIGRAPHX_SONAME_MAJOR hip-runtime-amd:ORTF_HIP_SONAME_MAJOR; do
@@ -1637,6 +3189,10 @@ _ortf_check_libs() {
   for lib in "${libs[@]}"; do
     needed=$(_ortf_needed "$lib") || return 1
     echo "${lib##*/} needs: ${needed//$'\n'/ }"
+    if [[ $_ortf_line == cuda12 ]] && ! _ortf_cuda12_needed "${pkgname[0]}: ${lib##*/}" "${lib##*/}" <<<"$needed"; then
+      bad=1
+      continue
+    fi
     if ! bounds=$(_ortf_lib_depends "${pkgname[0]}" "${pkgname[0]}: ${lib##*/}" "$trt" "$cuda_major" \
       "$trt_version" "$cudnn_major" "$mgx_soname" "$hip_soname" <<<"$needed"); then
       bad=1
@@ -1645,10 +3201,127 @@ _ortf_check_libs() {
     [[ -z $bounds ]] || mapfile -t -O "${#found[@]}" found <<<"$bounds"
   done
   ((bad == 0)) || return 1
-  [[ -z $cudnn_major ]] || found+=("cudnn>=$cudnn_major" "cudnn<$((cudnn_major + 1))")
+  if [[ -n $cudnn_minor ]]; then
+    found+=("cudnn>=$cudnn_major.$cudnn_minor" "cudnn<$cudnn_major.$((cudnn_minor + 1))")
+  elif [[ -n $cudnn_major ]]; then
+    found+=("cudnn>=$cudnn_major" "cudnn<$((cudnn_major + 1))")
+  fi
   for b in "${found[@]}"; do
-    [[ " ${depends[*]} " == *" $b "* ]] || depends+=("$b")
+    [[ " ${depends[*]} " != *" $b "* ]] || continue
+    if [[ $_ortf_line == cuda12 && ( ${b%%[<>=]*} == cuda || ${b%%[<>=]*} == cudnn ) ]]; then
+      echo "${pkgname[0]}: $b is not in its depends (${depends[*]}): the cuda12 line's package function lists its cuda and cudnn bounds, and the build does not match them" >&2
+      bad=1
+      continue
+    fi
+    depends+=("$b")
   done
+  ((bad == 0))
+}
+
+# _ortf_check_runpaths [<allowed directory>...]: fails when a library of the
+# package being written (each regular file named *.so or *.so.*, as in
+# _ortf_check_libs) has a RUNPATH or RPATH entry that is neither $ORIGIN
+# (alone or with a subdirectory) nor one of the allowed absolute
+# directories: /opt/nvidia/tensorrt/lib (the TensorRT provider's, and only
+# it has one) and the arguments (the library directory of a TensorRT
+# provider built against another ORTF_TENSORRT_HOME). An empty entry, which
+# means the working directory, fails too. A build path is the case this
+# stops: CMake puts the link directory of the oneDNN ExternalProject
+# (<build>/dnnl/install/lib) into the Python module's RUNPATH, and
+# namcap calls it an insecure RUNPATH.
+# shellcheck disable=SC2016 # $ORIGIN is the dynamic loader's, not the shell's
+_ortf_check_runpaths() {
+  local lib list entry bad=0
+  local -a libs parts allowed=("$_ortf_tensorrt_default/lib" "$@")
+  mapfile -t libs < <(find "$pkgdir" -type f \( -name '*.so' -o -name '*.so.*' \) | LC_ALL=C sort)
+  for lib in "${libs[@]}"; do
+    while IFS= read -r list; do
+      [[ -n $list ]] || continue
+      echo "${lib##*/} RUNPATH: $list"
+      if [[ :$list: == *::* ]]; then
+        echo "${pkgname[0]}: ${lib##*/}: RUNPATH '$list' has an empty entry (the working directory)" >&2
+        bad=1
+      fi
+      IFS=: read -ra parts <<<"$list"
+      for entry in "${parts[@]}"; do
+        case $entry in
+          '' | '$ORIGIN' | '$ORIGIN/'* | '${ORIGIN}' | '${ORIGIN}/'*) ;;
+          *)
+            [[ " ${allowed[*]} " == *" $entry "* ]] && continue
+            echo "${pkgname[0]}: ${lib##*/}: RUNPATH entry '$entry' is neither \$ORIGIN nor an intended directory (${allowed[*]}): a build path in it? (${lib##*/}: $list)" >&2
+            bad=1
+            ;;
+        esac
+      done
+    done < <(readelf -d -- "$lib" | sed -n 's/.*(\(RUNPATH\|RPATH\)).*\[\(.*\)\]$/\2/p')
+  done
+  ((bad == 0))
+}
+
+# _ortf_bridge_symbols: the symbols a provider library leaves undefined on
+# purpose, which libonnxruntime_providers_shared.so defines (the provider
+# bridge, core/providers/shared/common.cc): onnxruntime-core opens that
+# library with its symbols global (RTLD_GLOBAL, ProviderSharedLibrary in
+# core/session/provider_bridge_ort.cc) before any provider, so the dynamic
+# loader binds them then, and no provider has it among its NEEDED entries.
+_ortf_bridge_symbols=(Provider_GetHost Provider_SetHost)
+
+# _ortf_check_symbols: fails when an ONNX Runtime library of the package
+# being written (each regular file named libonnxruntime*.so or
+# libonnxruntime*.so.*: the core's and the providers'; not the Python
+# module, whose Python C API the interpreter defines) has an undefined
+# symbol that no library of its NEEDED entries (and theirs) defines,
+# other than _ortf_bridge_symbols, or a NEEDED library the dynamic loader
+# does not find; weak symbols may stay undefined. A library that passed
+# _ortf_check_libs can still not load: the CUDA provider of a training
+# build called cuDNN's backward functions without linking cuDNN, and
+# failed to load with "undefined symbol:
+# cudnnGetConvolutionBackwardDataWorkspaceSize" (_ortf_patch_cudnn_link).
+# The dynamic loader answers, in its trace mode (ldd -r, which binds every
+# symbol and runs no code of the library), as it would load the library:
+# each library's own RUNPATH ($ORIGIN, the TensorRT provider's), then
+# LD_LIBRARY_PATH, the package's /usr/lib and the CUDA and ROCm library
+# directories of the build (the vendor runtimes are build inputs,
+# installed), then ld.so.cache.
+_ortf_check_symbols() {
+  local lib line sym bad=0 this out
+  local -a libs
+  mapfile -t libs < <(find "$pkgdir" -type f \( -name 'libonnxruntime*.so' -o -name 'libonnxruntime*.so.*' \) | LC_ALL=C sort)
+  for lib in "${libs[@]}"; do
+    this=0
+    if ! out=$(LD_LIBRARY_PATH="$pkgdir/usr/lib:$_ortf_cuda_home/lib64:$_ortf_rocm_home/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" \
+      ldd -r -- "$lib" 2>&1); then
+      echo "${pkgname[0]}: ${lib##*/}: ldd -r failed: $out" >&2
+      bad=1
+      continue
+    fi
+    while IFS= read -r line; do
+      case $line in
+        *' => not found'*)
+          line=${line#"${line%%[![:space:]]*}"}
+          echo "${pkgname[0]}: ${lib##*/}: NEEDED ${line%% =>*} not found: the symbols it would define cannot be checked" >&2
+          this=1
+          ;;
+        *': version '*' not found (required by '"$lib)")
+          echo "${pkgname[0]}: ${lib##*/}: ${line#"${line%%[![:space:]]*}"}" >&2
+          this=1
+          ;;
+        'undefined symbol: '*"($lib)")
+          sym=${line#undefined symbol: }
+          sym=${sym%%[,$'\t']*}
+          [[ " ${_ortf_bridge_symbols[*]} " != *" $sym "* ]] || continue
+          echo "${pkgname[0]}: ${lib##*/}: undefined symbol $sym: no library among its NEEDED entries defines it, and the library would not load (link the library that defines it)" >&2
+          this=1
+          ;;
+      esac
+    done <<<"$out"
+    if ((this == 0)); then
+      echo "${lib##*/}: every symbol defined (but the provider bridge's ${_ortf_bridge_symbols[*]})"
+    else
+      bad=1
+    fi
+  done
+  ((bad == 0))
 }
 
 # _ortf_recorded_bounds <ortf.conf key> <package> [major]: prints the
@@ -1669,14 +3342,39 @@ _ortf_recorded_bounds() {
   fi
 }
 
+# _ortf_stage: installs the build into a fresh stage, $srcdir/stage, which
+# every package copies its files from. The first package of the run does
+# it (_ortf_pkgnames gives the order): onnxruntime-core in the main line,
+# the CUDA package in the cuda12 line and the MIGraphX one in the migraphx
+# line, which have no onnxruntime-core.
+_ortf_stage() {
+  rm -rf -- "$srcdir/stage"
+  DESTDIR=$srcdir/stage cmake --install "$srcdir/build"
+}
+
+# _ortf_nccloff_names: a line of every package function, after its
+# provides and conflicts, that does nothing with NCCL. Without it, the
+# function's -nccloff copy (the end of the file) has the line replaced by
+# the provide of its base name, <name>=<pkgver>-<pkgrel>, and the conflict
+# with it, so that .SRCINFO lists them too; it fails should a copy have
+# missed it.
+_ortf_nccloff_names() {
+  if [[ -n $_ortf_nccl_sfx ]]; then
+    echo "${pkgname[0]}: its package function has no -nccloff provides and conflicts (the copy at the end of the PKGBUILD missed the line)" >&2
+    return 1
+  fi
+}
+
 package_onnxruntime-core() {
   pkgdesc='Cross-platform inference engine for ONNX models: the C and C++ library with the CPU execution provider'
   # What libonnxruntime.so itself links (package() checks every library's
   # DT_NEEDED entries against these, _ortf_check_libs): it runs CPU-only
   # without any provider package. No zlib: libonnxruntime.so does not link
   # libz, and a libz in its DT_NEEDED entries in a future release fails the
-  # check rather than going unnoticed.
-  depends=('glibc' 'libgcc' 'libstdc++')
+  # check rather than going unnoticed. With NCCL, the build's NCCL package
+  # (_ortf_core_nccl_deps: CMake links it in, though -Wl,--as-needed likely
+  # drops it from the DT_NEEDED entries; the top of the file).
+  depends=('glibc' 'libgcc' 'libstdc++' "${_ortf_core_nccl_deps[@]}")
   # The provider packages of this build's inputs (_ortf_provider_optdepends).
   optdepends=("${_ortf_provider_optdepends[@]}")
   # libonnxruntime.so: makepkg turns a listed soname into the versioned
@@ -1686,14 +3384,18 @@ package_onnxruntime-core() {
   # provider library. replaces= acts on a sync upgrade only; with pacman -U
   # the conflict makes pacman offer to remove it in the same transaction
   # (the top of the file).
+  # onnxruntime-provider-cuda12-legacy before 1.29.0-2, and its -bin: built
+  # without the training ops, which this core has, so its provider bridge
+  # does not fit (the joint release rule, the top of the file).
   conflicts=(onnxruntime onnxruntime-cpu onnxruntime-cuda onnxruntime-opt-cuda
-    onnxruntime-rocm onnxruntime-opt-rocm onnxruntime-git onnxruntime-full)
+    onnxruntime-rocm onnxruntime-opt-rocm onnxruntime-git onnxruntime-full
+    'onnxruntime-provider-cuda12-legacy<1.29.0-2' 'onnxruntime-provider-cuda12-legacy-bin<1.29.0-2')
   replaces=(onnxruntime-full)
+  _ortf_nccloff_names
 
   _ortf_check_names || return 1
   local stage=$srcdir/stage lib f left
-  rm -rf -- "$stage"
-  DESTDIR=$stage cmake --install "$srcdir/build"
+  _ortf_stage
 
   # The library, headers, pkg-config and CMake files only: the bundled
   # dependencies' own install rules (abseil, protobuf, ...) would otherwise
@@ -1730,25 +3432,33 @@ package_onnxruntime-core() {
     [[ -e $pkgdir/$f ]] || { echo "the package lacks /$f" >&2; return 1; }
   done
 
-  # Its libraries need system libraries only: a vendor library maps to a
-  # package not in depends, and fails.
+  # Its libraries need system libraries only, and the build's NCCL: a
+  # vendor library maps to a package not in depends, and fails; and they
+  # load: no undefined symbol (_ortf_check_symbols).
   _ortf_check_libs || return 1
+  _ortf_check_runpaths || return 1
+  _ortf_check_symbols || return 1
+  _ortf_drop_bare_depends
 
   _ortf_licenses
 }
 
 # _ortf_package_provider <provider>: writes the package of
-# libonnxruntime_providers_<provider>.so, from the stage onnxruntime-core's
-# package() installed, and adds the version bounds of its vendor runtimes
-# to depends: TensorRT's, openvino's, migraphx's and hip-runtime-amd's from
-# the versions prepare() recorded, cuda's from the sonames and cudnn's from
-# the build-time cuDNN (_ortf_check_libs). The
+# libonnxruntime_providers_<provider>.so, from the stage the first package
+# of the run installs (_ortf_stage: onnxruntime-core's, or this one's when
+# it is the first, as in the cuda12 line), and adds the version bounds of
+# its vendor runtimes to depends: TensorRT's, openvino's, migraphx's and
+# hip-runtime-amd's from the versions prepare() recorded, cuda's from the
+# sonames and cudnn's from the build-time cuDNN (_ortf_check_libs). The
 # caller has set depends.
 _ortf_package_provider() {
   local ep=$1 name=libonnxruntime_providers_$1.so lib trt='' trt_home trt_libdir runpath bounds rpath
   _ortf_check_names || return 1
+  if [[ ${pkgname[0]} == "${_ortf_pkgname[0]}" ]]; then
+    _ortf_stage || return 1
+  fi
   if [[ ! -f $srcdir/stage/usr/lib/$name ]]; then
-    echo "$srcdir/stage/usr/lib/$name not found (onnxruntime-core is packaged first; a build without $ep?)" >&2
+    echo "$srcdir/stage/usr/lib/$name not found (the first package of the run stages the install; a build without $ep?)" >&2
     return 1
   fi
   install -d "$pkgdir/usr/lib"
@@ -1805,6 +3515,12 @@ _ortf_package_provider() {
   fi
 
   _ortf_check_libs "$trt" || return 1
+  # trt is set for the TensorRT provider alone, whose RUNPATH names the
+  # library directory of its TensorRT.
+  _ortf_check_runpaths ${trt:+"$trt_libdir"} || return 1
+  # The library loads: every symbol it leaves undefined is defined by its
+  # NEEDED libraries, or by the provider bridge (_ortf_check_symbols).
+  _ortf_check_symbols || return 1
   if [[ $ep == migraphx ]]; then
     # _ortf_check_libs checks the majors of the sonames a library has; the
     # provider must link both, or a build that linked neither would pass.
@@ -1838,11 +3554,40 @@ _ortf_package_provider() {
 # major (a -cuda12 build) out as well, which is right: every one installs
 # /usr/lib/libonnxruntime_providers_cuda.so. glibc, libgcc and libstdc++:
 # every provider library links them (_ortf_check_libs).
+#
+# Its onnxruntime-core is that of the same build, pkgver-pkgrel; in the
+# cuda12 line, which makes no onnxruntime-core, the main line's of the same
+# pkgver, of a pkgrel from _ortf_core_abi_pkgrel on (_ortf_core_dep):
+# onnxruntime-core links no CUDA library, and the provider bridge between
+# the two depends on the ONNX Runtime version and build defines only (the
+# training ops among them), not on the CUDA of either side.
+# The cuda12 line's vendor depends are its bounds, written out in the
+# order package() gives them (the released package's .PKGINFO), so that
+# .SRCINFO, the built package and its -bin list the same: CUDA 12 and
+# cuDNN 9.10, the only ones prepare() accepts there, and the guard in
+# _ortf_check_libs fails a build whose bounds differ. The main line's are
+# the bare names, the bounds added at package time (_ortf_check_libs,
+# _ortf_drop_bare_depends).
+# Single-quoted: $pkgver and $pkgrel expand in the function's body.
+# shellcheck disable=SC2016
+if [[ $_ortf_line == cuda12 ]]; then
+  _ortf_cuda_vendor_deps="'nvidia-utils' 'cuda>=12' 'cuda<13' 'cudnn>=9.10' 'cudnn<9.11'"
+  _ortf_cuda_pkgdesc=$_ortf_cuda12_pkgdesc
+else
+  _ortf_cuda_vendor_deps="'cuda' 'cudnn' 'nvidia-utils'"
+  _ortf_cuda_pkgdesc='The CUDA execution provider of ONNX Runtime, for onnxruntime-core (NVIDIA GPUs)'
+fi
+# With NCCL, the build's NCCL package (unbounded, the top of the file):
+# the CUDA provider links libnccl.so.2
+# (cmake/onnxruntime_providers_cuda.cmake), in both lines; Arch's nccl,
+# or in the cuda12 line the AUR's nccl-cuda12.9 by name (_ortf_nccl_pkg).
+[[ -n $_ortf_nccl_sfx ]] || _ortf_cuda_vendor_deps+=" '$_ortf_nccl_pkg'"
 eval "package_onnxruntime-provider-cuda$_ortf_cuda_major-$_ortf_sfx() {
-  pkgdesc='The CUDA execution provider of ONNX Runtime, for onnxruntime-core (NVIDIA GPUs)'
-  depends=(\"onnxruntime-core=\$pkgver-\$pkgrel\" 'glibc' 'libgcc' 'libstdc++' 'cuda' 'cudnn' 'nvidia-utils')
+  pkgdesc='$_ortf_cuda_pkgdesc'
+  depends=(\"\${_ortf_core_dep[@]}\" 'glibc' 'libgcc' 'libstdc++' $_ortf_cuda_vendor_deps)
   provides=(\"onnxruntime-provider-cuda=\$pkgver\" \"onnxruntime-provider-cuda$_ortf_cuda_major=\$pkgver\")
-  conflicts=('onnxruntime-provider-cuda' 'onnxruntime-provider-cuda$_ortf_cuda_major')
+  conflicts=('onnxruntime-provider-cuda' 'onnxruntime-provider-cuda$_ortf_cuda_major' \"\${_ortf_nccl_conflicts[@]}\")
+  _ortf_nccloff_names
   _ortf_package_provider cuda
   _ortf_cudnn_frontend_license
 }"
@@ -1857,18 +3602,22 @@ eval "package_onnxruntime-provider-cuda$_ortf_cuda_major-$_ortf_sfx() {
 # onnxruntime-provider-tensorrt, the name the optdepends use.
 eval "package_onnxruntime-provider-tensorrt-cuda$_ortf_cuda_major() {
   pkgdesc='The TensorRT execution provider of ONNX Runtime, for onnxruntime-core (NVIDIA GPUs)'
-  depends=(\"onnxruntime-core=\$pkgver-\$pkgrel\" \"onnxruntime-provider-cuda$_ortf_cuda_major=\$pkgver\"
+  depends=(\"\${_ortf_core_dep[@]}\" \"onnxruntime-provider-cuda$_ortf_cuda_major=\$pkgver\"
     'glibc' 'libgcc' 'libstdc++' 'cuda' 'cudnn' 'nvidia-utils')
   provides=(\"onnxruntime-provider-tensorrt=\$pkgver\")
-  conflicts=('onnxruntime-provider-tensorrt')
+  conflicts=('onnxruntime-provider-tensorrt' \"\${_ortf_nccl_conflicts[@]}\")
+  _ortf_nccloff_names
   _ortf_package_provider tensorrt
 }"
 
 # The OpenVINO package's bounds on openvino's year.minor are added at
-# package time (_ortf_package_provider).
+# package time (_ortf_package_provider). It provides nothing, and
+# conflicts with onnxruntime-core-nccloff only (_ortf_nccl_conflicts).
 package_onnxruntime-provider-openvino() {
   pkgdesc='The OpenVINO execution provider of ONNX Runtime, for onnxruntime-core (Intel CPU, GPU and NPU)'
-  depends=("onnxruntime-core=$pkgver-$pkgrel" 'glibc' 'libgcc' 'libstdc++' 'openvino')
+  depends=("${_ortf_core_dep[@]}" 'glibc' 'libgcc' 'libstdc++' 'openvino')
+  conflicts=("${_ortf_nccl_conflicts[@]}")
+  _ortf_nccloff_names
   optdepends=(
     'openvino-intel-gpu-plugin: the OpenVINO GPU device (Intel graphics)'
     'openvino-intel-npu-plugin: the OpenVINO NPU device (Intel NPU)'
@@ -1879,53 +3628,148 @@ package_onnxruntime-provider-openvino() {
   _ortf_package_provider openvino
 }
 
+# The oneDNN package: libonnxruntime_providers_dnnl.so with oneDNN linked in
+# statically (_ortf_patch_dnnl), so no onednn in depends and no libdnnl in
+# its NEEDED entries (_ortf_lib_depends fails on one); libgomp is oneDNN's
+# OpenMP runtime. It carries oneDNN's licence (Apache-2.0, in license=())
+# and its third-party notices. Like the OpenVINO package, it provides
+# nothing: its own name is the one the optdepends use.
+package_onnxruntime-provider-dnnl() {
+  pkgdesc='The oneDNN execution provider of ONNX Runtime, for onnxruntime-core (CPU)'
+  depends=("${_ortf_core_dep[@]}" 'glibc' 'libgcc' 'libstdc++' 'libgomp')
+  conflicts=("${_ortf_nccl_conflicts[@]}")
+  _ortf_nccloff_names
+  _ortf_package_provider dnnl
+  _ortf_dep_license onednn LICENSE onednn-LICENSE || return 1
+  _ortf_dep_license onednn THIRD-PARTY-PROGRAMS onednn-THIRD-PARTY-PROGRAMS
+}
+
 # The MIGraphX package (AMD GPUs; built and checked here, never run on AMD
-# hardware). Its library is host C++ only (no per-GPU code, so no suffix):
+# hardware), the migraphx line's provider package. Its library is host C++ only (no per-GPU code, so no suffix):
 # MIGraphX compiles each model for the GPU it finds at run time, with the
 # GPU kernels of Arch's ROCm libraries it depends on. migraphx and
 # hip-runtime-amd are what it links (libmigraphx_c, libamdhip64), never
 # rocm-hip-sdk; their bounds on the major of the installed package
-# versions are added at package time (_ortf_package_provider). Like the
-# OpenVINO package, it provides nothing: its own name is the one the
-# optdepends use.
+# versions are added at package time (_ortf_package_provider). No rccl:
+# its CMake target links no RCCL, the NCCL of the migraphx line (the top
+# of the file). Like the OpenVINO package, it provides nothing: its own
+# name is the one the optdepends use. Its onnxruntime-core: the same
+# build's, or in the migraphx line the main line's pin pair
+# (_ortf_core_dep). Like every provider, it conflicts with
+# onnxruntime-core-nccloff (_ortf_nccl_conflicts). Its link into the
+# Python module: below (_ortf_mgx_pylink) in a main-line build with the
+# Python module, else its add-on's (package_python-onnxruntime-provider-
+# migraphx, the migraphx line's), an optdepend.
 package_onnxruntime-provider-migraphx() {
-  pkgdesc='The MIGraphX execution provider of ONNX Runtime, for onnxruntime-core (AMD GPUs; untested on AMD hardware)'
-  depends=("onnxruntime-core=$pkgver-$pkgrel" 'glibc' 'libgcc' 'libstdc++' 'migraphx' 'hip-runtime-amd')
+  pkgdesc=$_ortf_migraphx_pkgdesc
+  depends=("${_ortf_core_dep[@]}" 'glibc' 'libgcc' 'libstdc++' 'migraphx' 'hip-runtime-amd')
+  optdepends=("${_ortf_mgx_optdepends[@]}")
+  conflicts=("${_ortf_nccl_conflicts[@]}")
+  _ortf_nccloff_names
   _ortf_package_provider migraphx
   # The wheel of a migraphx build has no MIGraphX provider library
-  # (upstream's setup.py bundles it only with --use_migraphx), so the Python
-  # module could not load that provider. This package therefore links its
-  # own library into the module's capi directory, where the module looks for
-  # its providers, when the build also makes python-onnxruntime-core. The
-  # link points at this package's own file, so it never dangles. No python
-  # in depends: without python the link is inert.
-  if [[ " ${_ortf_pkgname[*]} " == *' python-onnxruntime-core '* ]]; then
+  # (upstream's setup.py bundles it only with --use_migraphx), so the
+  # Python module could not load that provider. In a main-line build that
+  # makes python-onnxruntime-core, this package therefore links its own
+  # library into the module's capi directory, where the module looks for
+  # its providers (and lists this one, _ortf_patch_pybind_providers), in
+  # the system python's site-packages (_ortf_py_site), the one
+  # python-onnxruntime-core installs into. The link points at this
+  # package's own file, so it never dangles; the same build's
+  # python-onnxruntime-core bounds python to that site-packages' minor,
+  # and the two are rebuilt together.
+  if ((_ortf_mgx_pylink)); then
     local site
-    site=$(_ortf_py_site "$_ortf_system_python") || return 1
+    if ! site=$(_ortf_py_site "$_ortf_system_python"); then
+      echo "$_ortf_system_python does not run (install python): no site-packages for the Python module's link" >&2
+      return 1
+    fi
     install -d -- "$pkgdir$site/onnxruntime/capi"
     ln -sf -- /usr/lib/libonnxruntime_providers_migraphx.so \
       "$pkgdir$site/onnxruntime/capi/libonnxruntime_providers_migraphx.so"
   fi
 }
 
+# The migraphx line's Python add-on (Raul's split, 2026-11-18): the
+# MIGraphX provider's library linked into the main line's Python module,
+# python-onnxruntime-core, in the system python's site-packages
+# (_ortf_py_site): $site/onnxruntime/capi/libonnxruntime_providers_migraphx.so
+# -> /usr/lib/libonnxruntime_providers_migraphx.so, its one file, and
+# its licence directory a link to the provider package's. The module looks for its providers there (and lists this
+# one, _ortf_patch_pybind_providers). So the provider package itself
+# needs no Python, and a C/C++ user of MIGraphX installs none. It depends
+# on the MIGraphX package of this build exactly (the link's target, and
+# the provider it makes the module load), on python-onnxruntime-core by
+# the pin pair (_ortf_pycore_dep), and on python bounded at package time
+# to the minor of that site-packages (python3.14: python>=3.14,
+# python<3.15), as python-onnxruntime-core is to the minor its module is
+# built for: pacman refuses the Python upgrade that would leave the link
+# in the old minor's directory until this line is rebuilt. Like every
+# package of the NCCL plug, it conflicts with onnxruntime-core-nccloff
+# (_ortf_nccl_conflicts), whose python-onnxruntime-core-nccloff provides
+# python-onnxruntime-core. Written after the MIGraphX package
+# (_ortf_pkgnames), whose library it checks is in that package.
+package_python-onnxruntime-provider-migraphx() {
+  pkgdesc='The MIGraphX execution provider of ONNX Runtime in its Python module, python-onnxruntime-core (AMD GPUs; untested on AMD hardware)'
+  depends=("onnxruntime-provider-migraphx$_ortf_nccl_sfx=$pkgver-$pkgrel" "${_ortf_pycore_dep[@]}" 'python')
+  conflicts=("${_ortf_nccl_conflicts[@]}")
+  _ortf_nccloff_names
+
+  _ortf_check_names || return 1
+  local site minor provider=onnxruntime-provider-migraphx$_ortf_nccl_sfx
+  local lib=libonnxruntime_providers_migraphx.so
+  if [[ ! -f ${pkgdir%/*}/$provider/usr/lib/$lib ]]; then
+    echo "${pkgdir%/*}/$provider/usr/lib/$lib not found: the link's target is the MIGraphX package of this build, which makepkg writes first" >&2
+    return 1
+  fi
+  if ! site=$(_ortf_py_site "$_ortf_system_python"); then
+    echo "$_ortf_system_python does not run (install python): no site-packages for the Python module's link" >&2
+    return 1
+  fi
+  if [[ ! $site =~ ^/usr/lib/python([0-9]+[.][0-9]+)/site-packages$ ]]; then
+    echo "$_ortf_system_python gives the site-packages $site, not /usr/lib/python<major.minor>/site-packages: no Python minor to bound the dependency on python with" >&2
+    return 1
+  fi
+  install -d -- "$pkgdir$site/onnxruntime/capi"
+  ln -sf -- "/usr/lib/$lib" "$pkgdir$site/onnxruntime/capi/$lib"
+  minor=$(_ortf_minor_bounds python "${BASH_REMATCH[1]}") || return 1
+  mapfile -t -O "${#depends[@]}" depends <<<"$minor"
+  _ortf_drop_bare_depends
+  echo "${pkgname[0]} depends: ${depends[*]}"
+
+  # No licence texts of its own: its licence directory is a link to that of
+  # the provider package it depends on exactly (Arch's usual practice for a
+  # split package that adds a file or two), instead of 334 KiB of copies.
+  # namcap warns license-dir-in-external-pkg, and nothing else.
+  install -d -- "$pkgdir/usr/share/licenses"
+  ln -s -- "$provider" "$pkgdir/usr/share/licenses/${pkgname[0]}"
+}
+
 package_python-onnxruntime-core() {
   pkgdesc='The Python module of ONNX Runtime, the cross-platform inference engine for ONNX models (onnxruntime-core)'
   # import onnxruntime needs numpy (onnxruntime/__init__.py and
   # capi/onnxruntime_inference_collection.py import it, and the module's
-  # C++ side uses its C API); flatbuffers, packaging and protobuf are the
-  # wheel's other unconditional requirements (Requires-Dist), which
-  # importlib.metadata and pip check see, used by onnxruntime.tools,
-  # quantization and transformers. python: bounded to the minor version the
-  # module is built for, at package time.
-  depends=("onnxruntime-core=$pkgver-$pkgrel" 'glibc' 'libgcc' 'libstdc++'
-    'python' 'python-numpy' 'python-flatbuffers' 'python-packaging' 'python-protobuf')
+  # C++ side uses its C API); the rest are the wheel's other unconditional
+  # requirements (Requires-Dist, requirements-training.txt: the wheel is
+  # built with --enable_training), which importlib.metadata and pip check
+  # see: flatbuffers, packaging and protobuf, used by onnxruntime.tools,
+  # quantization and transformers; cerberus, h5py, onnx and sympy, used by
+  # onnxruntime.training (onnx and sympy by the tools too); setuptools,
+  # with which ortmodule's C++ extensions are built. python: bounded to
+  # the minor version the module is built for, at package time. With NCCL,
+  # onnxruntime-core's NCCL package: CMake links it into the module too
+  # (cmake/onnxruntime_python.cmake), which without -Wl,--as-needed would
+  # have libnccl among its DT_NEEDED entries (_ortf_core_nccl_deps).
+  depends=("${_ortf_core_dep[@]}" 'glibc' 'libgcc' 'libstdc++' "${_ortf_core_nccl_deps[@]}"
+    'python' 'python-numpy' 'python-flatbuffers' 'python-packaging' 'python-protobuf'
+    'python-cerberus' 'python-h5py' 'python-onnx' 'python-sympy' 'python-setuptools')
   # The provider packages (_ortf_provider_optdepends), then the Python
-  # modules imported only by the tools that need them, not by import
-  # onnxruntime.
+  # modules imported only by the parts that need them, not by import
+  # onnxruntime. PyTorch: onnxruntime.training imports torch (its optim
+  # and ortmodule).
   optdepends=("${_ortf_provider_optdepends[@]}"
-    'python-onnx: the quantization, transformers optimisation and model tools'
+    'python-pytorch: onnxruntime.training.ortmodule (import onnxruntime.training needs it)'
     'python-ml-dtypes: 4-bit and float8 quantization (the wheel'"'"'s quantization extra)'
-    'python-sympy: symbolic shape inference (onnxruntime.tools)'
     'python-psutil: the transformers optimisation and benchmark tools'
     'python-py-cpuinfo: the transformers optimisation and benchmark tools'
   )
@@ -1934,11 +3778,12 @@ package_python-onnxruntime-core() {
   # onnxruntime-core's replaces).
   conflicts=(python-onnxruntime python-onnxruntime-cpu python-onnxruntime-cuda
     python-onnxruntime-opt-cuda python-onnxruntime-rocm python-onnxruntime-opt-rocm
-    python-onnxruntime-full)
+    python-onnxruntime-full "${_ortf_nccl_conflicts[@]}")
   replaces=(python-onnxruntime-full)
+  _ortf_nccloff_names
 
   _ortf_check_names || return 1
-  local python wheels site lib base outside f sibling owner bounds
+  local python wheels site lib base outside f sibling owner bounds runpath
   python=$(_ortf_get ORTF_PYTHON_EXE)
   wheels=("$srcdir"/dist/onnxruntime-*.whl)
   if ((${#wheels[@]} != 1)) || [[ ! -f ${wheels[0]} ]]; then
@@ -1960,6 +3805,16 @@ package_python-onnxruntime-core() {
   fi
   if [[ ! -d $pkgdir$site/onnxruntime/capi ]]; then
     echo "the wheel did not install into $site (the system python's site-packages)" >&2
+    return 1
+  fi
+  # The training Python package (--enable_training, build()), under the
+  # distribution name onnxruntime (_ortf_patch_setup).
+  if [[ ! -f $pkgdir$site/onnxruntime/training/ortmodule/__init__.py ]]; then
+    echo "the wheel has no onnxruntime.training.ortmodule (built without --enable_training?)" >&2
+    return 1
+  fi
+  if [[ ! -d $pkgdir$site/onnxruntime-$pkgver.dist-info ]]; then
+    echo "the wheel did not install as the distribution onnxruntime $pkgver: $(cd "$pkgdir$site" && echo *.dist-info)" >&2
     return 1
   fi
   # installer writes the running interpreter into the scripts' #! line.
@@ -1985,7 +3840,7 @@ package_python-onnxruntime-core() {
   # provider-migraphx). (On Linux, setup.py copies no ROCm library into the
   # wheel either.) Should a wheel ever carry that library, this package
   # drops it, so that the two packages never own the same path.
-  if [[ " ${_ortf_pkgname[*]} " == *' onnxruntime-provider-migraphx '* ]]; then
+  if _ortf_makes onnxruntime-provider-migraphx; then
     rm -f -- "$pkgdir$site"/onnxruntime/capi/libonnxruntime_providers_migraphx.so
   fi
   for lib in "$pkgdir$site"/onnxruntime/capi/libonnxruntime.so* \
@@ -2001,12 +3856,29 @@ package_python-onnxruntime-core() {
     fi
     ln -sf -- "/usr/lib/$base" "$lib"
   done
+  # The module's RUNPATH is $ORIGIN (setup.py's linker flag), which is
+  # right: it finds libonnxruntime.so and the providers beside it. With the
+  # oneDNN provider CMake adds the build's link directory for oneDNN
+  # (<build>/dnnl/install/lib, from link_directories() in
+  # cmake/external/dnnl.cmake) to it, a build path that namcap calls an
+  # insecure RUNPATH and that means nothing on the system. Set again to
+  # $ORIGIN, the module's RUNPATH without oneDNN, by patchelf after the
+  # install, as the TensorRT provider's is (_ortf_package_provider).
+  # shellcheck disable=SC2016 # $ORIGIN is the dynamic loader's, not the shell's
   for lib in "$pkgdir$site"/onnxruntime/capi/onnxruntime_pybind11_state*.so; do
     [[ -f $lib ]] || { echo "the wheel has no onnxruntime_pybind11_state module" >&2; return 1; }
+    patchelf --set-rpath '$ORIGIN' "$lib"
+    runpath=$(readelf -d -- "$lib" | sed -n 's/.*(RUNPATH).*\[\(.*\)\]$/\1/p')
+    if [[ $runpath != '$ORIGIN' ]]; then
+      echo "${lib##*/}: RUNPATH '$runpath', not \$ORIGIN" >&2
+      return 1
+    fi
   done
   # The module and any other library of the wheel need no vendor runtime:
-  # a vendor library maps to a package not in depends, and fails.
+  # a vendor library maps to a package not in depends, and fails; nor a
+  # RUNPATH other than $ORIGIN (_ortf_check_runpaths).
   _ortf_check_libs || return 1
+  _ortf_check_runpaths || return 1
   bounds=$(_ortf_recorded_bounds ORTF_PYTHON_VERSION python) || return 1
   mapfile -t -O "${#depends[@]}" depends <<<"$bounds"
   _ortf_drop_bare_depends
@@ -2014,3 +3886,18 @@ package_python-onnxruntime-core() {
 
   _ortf_licenses
 }
+
+# Without NCCL (ORTF_NCCL=0), every package is named <name>-nccloff (the
+# top of the file): its package function is a copy of <name>'s, under the
+# new name, so that its body, which `makepkg --printsrcinfo` reads, is
+# the same (the -nccloff provides, conflicts and core pin are in it,
+# from _ortf_nccl_sfx).
+if [[ -n $_ortf_nccl_sfx ]]; then
+  for _ortf_f in "${_ortf_pkgname[@]}"; do
+    _ortf_b=${_ortf_f%"$_ortf_nccl_sfx"}
+    _ortf_def=$(declare -f "package_$_ortf_b")
+    _ortf_def=${_ortf_def/$'\n'"    _ortf_nccloff_names;"$'\n'/$'\n'"    provides+=(\"$_ortf_b=\$pkgver-\$pkgrel\");"$'\n'"    conflicts+=('$_ortf_b');"$'\n'}
+    eval "package_$_ortf_f ${_ortf_def#"package_$_ortf_b"}"
+  done
+  unset _ortf_f _ortf_b _ortf_def
+fi
