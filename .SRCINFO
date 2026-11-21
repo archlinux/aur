@@ -1,6 +1,6 @@
 pkgbase = hum-bin
 	pkgdesc = Terminal Spotify client
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/shurizzle/hum
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = hum-bin
 	options = !strip
 	source = LICENSE
 	sha256sums = 2c3b4fdd3a8cc2935b26589628de020fa1a701455797080901b8191bd6ae0eb2
-	source_x86_64 = hum-x86_64-0.1.0.tar.gz::https://github.com/shurizzle/hum/releases/download/v0.1.0/hum-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = e36d954960aa2074db58438d779672da999d94d29e926e4ba6f287af3d24fa0e
-	source_aarch64 = hum-aarch64-0.1.0.tar.gz::https://github.com/shurizzle/hum/releases/download/v0.1.0/hum-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 25d536bba76e5a992bd499e6d06f12df68502a55d763812a453b60c34c70a286
+	source_x86_64 = hum-x86_64-0.1.1.tar.gz::https://github.com/shurizzle/hum/releases/download/v0.1.1/hum-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 52ffc35bd76312f2c61e6e7cc2e6f85cbbebf68110a2613850001f62c6b8561b
+	source_aarch64 = hum-aarch64-0.1.1.tar.gz::https://github.com/shurizzle/hum/releases/download/v0.1.1/hum-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 8eca7c3d9a5e2b948f623289500614d4fe1de2b0a0e5ee5f64be012033844a51
 
 pkgname = hum-bin
