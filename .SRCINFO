@@ -1,10 +1,11 @@
 pkgbase = rats-search-git
-	pkgdesc = High-performance BitTorrent P2P search engine with integrated torrent client
-	pkgver = 2.0.26.r0.g0000000
+	pkgdesc = BitTorrent P2P search engine with an integrated torrent client
+	pkgver = 2.3.6.r1.g826b2bd
 	pkgrel = 1
 	url = https://github.com/librats/rats-search
 	arch = x86_64
 	license = MIT
+	license = GPL-3.0-only
 	makedepends = cmake>=3.16
 	makedepends = git
 	makedepends = ninja
@@ -12,15 +13,23 @@ pkgbase = rats-search-git
 	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
+	depends = mariadb-libs
 	depends = qt6-base>=6.9
 	depends = qt6-websockets>=6.9
+	depends = zlib
 	provides = rats-search
 	conflicts = rats-search
 	source = rats-search-git::git+https://github.com/librats/rats-search.git
-	source = manticore-binary::git+https://github.com/DEgITx/manticore-binary.git
 	source = librats::git+https://github.com/librats/librats.git
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
+	source = manticore-binary::git+https://github.com/DEgITx/manticore-binary.git
+	source = manticore-LICENSE::https://raw.githubusercontent.com/manticoresoftware/manticoresearch/9d4cd4df2d8a3758099dd77009394003f809c615/LICENSE
+	source = rats-search-git.desktop
+	source = 0001-disable-startup-update-check.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = a03e5803cb4226c5a3141308e17a20944737c0bac96ebbf120816ef82e7a04ed
+	sha256sums = 4f91f3e63ad7714206f96715601b7908b71fe8ff530cda021936495317dc5401
 
 pkgname = rats-search-git

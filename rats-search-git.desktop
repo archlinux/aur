@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Rats Search
+GenericName=BitTorrent Search Engine
+Comment=Search the BitTorrent DHT network and download torrents
+Exec=rats-search
+Icon=rats-search
+Terminal=false
+Categories=Network;P2P;FileTransfer;
+Keywords=torrent;bittorrent;dht;search;p2p;
+StartupNotify=true

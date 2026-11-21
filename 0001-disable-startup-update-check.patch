@@ -1,0 +1,20 @@
+--- a/src/app/config_store.cpp
++++ b/src/app/config_store.cpp
+@@ -80,7 +80,7 @@
+         // UI
+         { "language", "en" }, { "darkMode", false }, { "uiFontFamily", "" }, { "uiFontScale", kDefaultUiFontScale },
+         { "safeSearch", false }, { "searchHistory", true }, { "trayOnClose", false }, { "trayOnMinimize", true },
+-        { "startMinimized", false }, { "confirmExit", true }, { "checkUpdatesOnStartup", true },
++        { "startMinimized", false }, { "confirmExit", true }, { "checkUpdatesOnStartup", false },
+ 
+         // Legal
+         { "agreementAccepted", false },
+@@ -546,7 +546,7 @@
+ 
+ bool ConfigStore::checkUpdatesOnStartup() const
+ {
+-    return config_["checkUpdatesOnStartup"].toBool(true);
++    return config_["checkUpdatesOnStartup"].toBool(false);
+ }
+ void ConfigStore::setCheckUpdatesOnStartup(bool enabled)
+ {
