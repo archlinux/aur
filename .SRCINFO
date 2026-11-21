@@ -1,0 +1,19 @@
+pkgbase = gputaskman-bin
+	pkgdesc = An htop for what is inside your GPU: per-process VRAM, engines and LLM buffer breakdown
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/shanselman/gputaskman
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = zlib
+	optdepends = nvidia-utils: NVIDIA telemetry via NVML (AMD/Intel GPUs use DRM fdinfo, no extra deps)
+	provides = gputaskman=0.4.4
+	conflicts = gputaskman
+	options = !debug
+	source_x86_64 = gputaskman-0.4.4-x86_64.tar.gz::https://github.com/shanselman/gputaskman/releases/download/v0.4.4/gputaskman-0.4.4-linux-x64.tar.gz
+	sha256sums_x86_64 = 94391fe0b2198883a8ca19a653cb05374be355f63652eab50ea01b30af265dff
+	source_aarch64 = gputaskman-0.4.4-aarch64.tar.gz::https://github.com/shanselman/gputaskman/releases/download/v0.4.4/gputaskman-0.4.4-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7265950df77c04f4e7b50292779480d55447a45cef457ee2a3f0c31f293770e9
+
+pkgname = gputaskman-bin
