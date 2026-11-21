@@ -1,7 +1,7 @@
 # Maintainer: lucas <lucaszhou007@163.com>
 pkgname=unsloth-studio-rocm-gfx90a-updater
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc='nvchecker-based scheduled updater for Unsloth Studio on ROCm gfx90a (PyTorch stack + unsloth library)'
 arch=('any')
 url='https://aur.archlinux.org/packages/unsloth-studio-rocm-gfx90a-updater'
@@ -20,11 +20,11 @@ source=(
 )
 sha256sums=('1c005a3f03ada52fa373d41365e53af35dc99b5b34c345ef56cf7e2950ffcfc8'
             '37ebd21256226a578b313fae943ac550be788331c6fe5501a8b922fc8f55841c'
-            '2f4e7bff2e0643fa40175a07352df0fd897a5d871769d72965a26864793fc1a0'
+            '6d0112f4b5264cb062d94ba04540164e48de2369f66d89016f9f8e5e0524b6fa'
             'cf1087ab9233f356578fd2b0945b8647e7d6ea6d77a4ae7cfb78341fd2af6974'
             '70b24bdc77a41712eeed101354f1639d85515eca187405852e535ab73c1601d2'
             '2dcb800fc043ad0a96d0e5f2c3b141546fdf9e1de928a2bdc58d8494cc7c2d88'
-            'c992e55847b9c9afe1fa0ec4e2df4934e1b2bc6f3108e3811a232906d16fcbbf'
+            '1970f2333d20046317d05f2c8ce2bb379d9abdb785d7761b56ca1fae6d674cf9'
             '693e0b55505186e9ec38e236bed0841f65311846f39a74cc232daf0a6a724605')
 
 package() {

@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 # unsloth-updater.sh — scheduled updater for the Unsloth Studio ROCm/gfx90a stack.
 #
-# Checks with nvchecker (nvchecker.toml), then applies what changed:
-#   pytorch_rocm / unsloth -> re-run the official installer, then pin the newest
-#                             torch/torchvision/torchaudio of the newest ROCm line
+# Checks with nvchecker (nvchecker.toml). The update is ATOMIC: if ANY module
+# satisfies the update condition, the whole stack is reinstalled as one unit
+# (unsloth library via the official installer + the newest torch/torchvision/
+# torchaudio pins on the newest ROCm line). Any failure keeps the old state
+# committed, so the next timer tick retries the whole thing.
 #
 # The llama.cpp/whisper.cpp/audio.cpp trees under ~/.unsloth are intentionally
 # NOT updated here: their release tarballs do not match Studio's on-disk layout
@@ -101,15 +103,6 @@ if [[ ! -f $STATE/oldver.json && ${UNSLOTH_UPDATER_FORCE:-0} != 1 ]]; then
     exit 0
 fi
 
-is_changed() { local l; for l in "${CHANGED[@]}"; do [[ $l == "$1 "* ]] && return 0; done; return 1; }
-get_new() { # name -> new version string (empty if not in changed list)
-    local l
-    for l in "${CHANGED[@]}"; do
-        [[ $l == "$1 "* ]] && { echo "${l##* -> }"; return 0; }
-    done
-    return 1
-}
-
 # ------------------------------------------------------------- stack updates
 update_stack() {
     log "re-running the Unsloth installer"
@@ -120,29 +113,30 @@ update_stack() {
 
     [[ -x $VENV_PY || -f $VENV_PY ]] || { log "venv python not found: $VENV_PY"; return 1; }
 
-    if is_changed pytorch_rocm; then
-        local ROCM_VER TORCH_VER TV_VER TA_VER
-        eval "$(python3 "$LIBEXEC/amd_pytorch.py" --eval)" \
-            || { log "could not resolve AMD pins"; return 1; }
-        log "installing torch pins: rocm=$ROCM_VER torch=$TORCH_VER torchvision=$TV_VER torchaudio=$TA_VER"
-        "$VENV_PY" -m pip install --index-url "$WHL_INDEX" \
-            "torch[device-gfx90a]==${TORCH_VER}" \
-            "torchvision[device-gfx90a]==${TV_VER}" \
-            "torchaudio==${TA_VER}" || return 1
+    # Atomic: ANY module change reinstalls the whole stack, so pin and verify
+    # torch unconditionally here -- not only when pytorch_rocm itself changed.
+    local ROCM_VER TORCH_VER TV_VER TA_VER
+    eval "$(python3 "$LIBEXEC/amd_pytorch.py" --eval)" \
+        || { log "could not resolve AMD pins"; return 1; }
+    log "installing torch pins: rocm=$ROCM_VER torch=$TORCH_VER torchvision=$TV_VER torchaudio=$TA_VER"
+    "$VENV_PY" -m pip install --index-url "$WHL_INDEX" \
+        "torch[device-gfx90a]==${TORCH_VER}" \
+        "torchvision[device-gfx90a]==${TV_VER}" \
+        "torchaudio==${TA_VER}" || return 1
 
-        log "verifying torch sees the GPU"
-        [[ $("$VENV_PY" -c "import torch; print(torch.cuda.is_available())" 2>&1) == True ]] || {
-            log "torch.cuda.is_available() is not True after update"
-            return 1
-        }
-    fi
+    log "verifying torch sees the GPU"
+    [[ $("$VENV_PY" -c "import torch; print(torch.cuda.is_available())" 2>&1) == True ]] || {
+        log "torch.cuda.is_available() is not True after update"
+        return 1
+    }
     return 0
 }
 
 # ---------------------------------------------------------------- apply phase
 FAILED=()
 
-if is_changed pytorch_rocm || is_changed unsloth; then
+if [[ ${#CHANGED[@]} -gt 0 ]]; then
+    log "one or more modules changed -- reinstalling the full stack atomically"
     update_stack || FAILED+=("stack")
 fi
 
