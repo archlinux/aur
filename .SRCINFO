@@ -1,6 +1,6 @@
 pkgbase = suzuri-bin
 	pkgdesc = Writing environment built on Zed: Obsidian-style live preview, Typst/LaTeX preview, PDF pane
-	pkgver = 0.6.6
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/harrywang/suzuri
 	arch = x86_64
@@ -34,9 +34,9 @@ pkgbase = suzuri-bin
 	provides = suzuri
 	conflicts = suzuri
 	conflicts = suzuri-git
-	source_x86_64 = suzuri-bin-0.6.6-x86_64.tar.gz::https://github.com/harrywang/suzuri/releases/download/suzuri-v0.6.6/suzuri-linux-x86_64.tar.gz
-	sha256sums_x86_64 = fb95f22aad00ab742eb0d9b3f406467fcb88c8033641acae2fb07eaecaf67a53
-	source_aarch64 = suzuri-bin-0.6.6-aarch64.tar.gz::https://github.com/harrywang/suzuri/releases/download/suzuri-v0.6.6/suzuri-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 65736e36c0d0efb08de0db476d443ed89c121816c67a9babb364a7ba6442c8a1
+	source_x86_64 = suzuri-bin-0.7.0-x86_64.tar.gz::https://github.com/harrywang/suzuri/releases/download/suzuri-v0.7.0/suzuri-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 22d3cd2e5cb20dc3fd269b8881a7f7e9320e193f2f45c5d30326c79585fdf485
+	source_aarch64 = suzuri-bin-0.7.0-aarch64.tar.gz::https://github.com/harrywang/suzuri/releases/download/suzuri-v0.7.0/suzuri-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 29e3ed0ae470646f7b94a7896e6e9a765df1f4055ee222302869915279d9918c
 
 pkgname = suzuri-bin
