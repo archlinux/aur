@@ -1,16 +1,16 @@
 pkgbase = plink2-bin
 	pkgdesc = Whole-genome association analysis toolset for large-scale variant data
-	pkgver = 2.0a7.13
+	pkgver = 2.0a7.15
 	pkgrel = 1
 	url = https://www.cog-genomics.org/plink/2.0/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	license = LicenseRef-Intel-Simplified-Software-License
-	provides = plink2=2.0a7.13
+	provides = plink2=2.0a7.15
 	conflicts = plink2
 	options = !strip
 	options = !debug
-	source = https://s3.amazonaws.com/plink2-assets/alpha7/plink2_linux_x86_64_20261015.zip
-	sha256sums = c91851a41a53d42c79781c580a99be3a752dcd7e6ab891baf411a02e4815e700
+	source = https://s3.amazonaws.com/plink2-assets/alpha7/plink2_linux_x86_64_20261107.zip
+	sha256sums = 8f931c1f5147b53171530ce9f41e4fb1312e7d3e3729c9db7f81c5dd34bb4297
 
 pkgname = plink2-bin
