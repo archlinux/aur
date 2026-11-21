@@ -1,7 +1,7 @@
 # Maintainer: delaosa <dev@delaosa.xyz>
 pkgname=cero
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Native Music Assistant player (GTK4, Sendspin, MPRIS2)'
 arch=('any')
 url='https://github.com/delaosa/cero'
@@ -38,12 +38,12 @@ sha256sums=('aed74848271d61be3fb490b0d1b0c8a52c88d939800f27535b2d0a62bfd6eb73'
 
 build() {
   cd "$pkgname-$pkgver"
-  python -m build --wheel --no-isolation
+  /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
   local lib="$pkgdir/usr/lib/cero"
-  pip install --no-deps --no-compile --target "$lib" \
+  /usr/bin/python -m pip install --no-deps --no-compile --target "$lib" \
     --disable-pip-version-check --root-user-action=ignore \
     "$srcdir/$pkgname-$pkgver"/dist/*.whl "$srcdir"/*.whl
   rm -rf "$lib/bin" "$lib/examples"

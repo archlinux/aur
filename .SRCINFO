@@ -1,7 +1,7 @@
 pkgbase = cero
 	pkgdesc = Native Music Assistant player (GTK4, Sendspin, MPRIS2)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/delaosa/cero
 	arch = any
 	license = MIT
