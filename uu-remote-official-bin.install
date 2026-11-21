@@ -1,0 +1,98 @@
+# Reimplements the Debian maintainer-script work (postinst/preinst/prerm).
+# Debian user-data purge on remove is intentionally not replicated: removing the
+# package keeps ~/.config/Netease/uuyc, ~/.local/share/Netease/uuyc and
+# /var/lib/Netease/uuyc so configs survive a reinstall. Delete them by hand to
+# wipe the product entirely.
+
+_uuyc_dirs() {
+  # /var/lib/Netease/uuyc is the machine state root: install_config.ini, cache
+  # and the FTP metadata key material. Created by the Debian postinst.
+  install -dm755 /var/lib/Netease/uuyc
+  install -dm700 /var/lib/Netease/uuyc/cache
+  install -dm700 /var/lib/Netease/uuyc/ftp_metadata
+  if [[ ! -e /var/lib/Netease/uuyc/install_config.ini ]]; then
+    install -m644 /usr/lib/uuyc/install_config.ini /var/lib/Netease/uuyc/install_config.ini
+  else
+    chmod 644 /var/lib/Netease/uuyc/install_config.ini
+  fi
+
+  # Product logs live beside the binaries; world-writable trees are sticky so
+  # multiple desktop users can log without deleting each other's files.
+  install -dm755 /opt/uuyc/log
+  local entry dir mode
+  for entry in \
+    'client 1777' 'client/log 1777' \
+    'server 755' 'server/log 755' \
+    'healthd 755' 'healthd/log 755' \
+    'upgrade 1777' 'upgrade/log 1777' \
+    'service 755' 'service/log 755' \
+    'launcher 1777' 'launcher/log 1777' \
+    'uuyc-cli 1777' 'uuyc-cli/log 1777' \
+    'webview_host 1777' \
+    'wow_helper_plugin 1777' 'wow_helper_plugin/log 1777'
+  do
+    dir=${entry% *}
+    mode=${entry##* }
+    install -dm"$mode" "/opt/uuyc/log/$dir"
+  done
+}
+
+_uuyc_apparmor_configure() {
+  if [[ -x /usr/lib/uuyc/webview-apparmor ]]; then
+    /usr/lib/uuyc/webview-apparmor configure \
+      || printf '%s\n' 'uuyc: AppArmor WebView profile not applied; the webview may fail under restricted user namespaces.' >&2
+  fi
+}
+
+_uuyc_enable_units() {
+  if [[ -d /run/systemd/system ]]; then
+    systemctl daemon-reload
+    systemctl enable uuyc.socket uuyc.service
+    systemctl start uuyc.socket
+  fi
+}
+
+post_install() {
+  _uuyc_dirs
+  _uuyc_apparmor_configure
+  _uuyc_enable_units
+  printf '%s\n' 'uuyc: start the client from a normal desktop user (uuyc / 网易UU远程 in the menu).'
+}
+
+pre_upgrade() {
+  # Debian preinst stops the supervisor and GUI clients before replacing the
+  # binaries; the socket keeps the supervisor from being re-spawned meanwhile.
+  if [[ -d /run/systemd/system ]]; then
+    systemctl stop uuyc.socket uuyc.service 2>/dev/null || true
+  fi
+  if [[ -x /opt/uuyc/bin/Upgrade ]]; then
+    /opt/uuyc/bin/Upgrade stop-clients || true
+  fi
+}
+
+post_upgrade() {
+  _uuyc_dirs
+  _uuyc_apparmor_configure
+  _uuyc_enable_units
+}
+
+pre_remove() {
+  if [[ -x /usr/lib/uuyc/webview-apparmor ]]; then
+    /usr/lib/uuyc/webview-apparmor remove || true
+  fi
+  if [[ -d /run/systemd/system ]]; then
+    systemctl stop uuyc.socket uuyc.service 2>/dev/null || true
+    systemctl disable uuyc.socket uuyc.service 2>/dev/null || true
+  fi
+  if [[ -x /opt/uuyc/bin/Upgrade ]]; then
+    /opt/uuyc/bin/Upgrade stop-clients || true
+  fi
+}
+
+post_remove() {
+  if [[ -d /run/systemd/system ]]; then
+    systemctl daemon-reload
+  fi
+  # Only empty directories go; the machine state root and user data survive.
+  rmdir /opt/uuyc/log 2>/dev/null || true
+}
