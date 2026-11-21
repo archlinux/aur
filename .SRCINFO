@@ -1,7 +1,7 @@
 pkgbase = kanidm-bin
 	pkgdesc = Modern identity management platform (prebuilt binaries)
 	pkgver = 1.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kanidm.com
 	arch = x86_64
 	arch = aarch64
@@ -25,6 +25,7 @@ pkgname = kanidm-clients-bin
 
 pkgname = kanidm-unixd-clients-bin
 	pkgdesc = Kanidm UNIX integration daemons and PAM/NSS modules (prebuilt)
+	install = kanidm-unixd-clients-bin.install
 	depends = glibc
 	depends = gcc-libs
 	depends = openssl

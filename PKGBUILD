@@ -3,7 +3,7 @@
 pkgbase=kanidm-bin
 pkgname=(kanidm-clients-bin kanidm-unixd-clients-bin kanidm-server-bin kanidm-bin)
 pkgver=1.12.1
-pkgrel=1  # set by CI: 1 per new pkgver, +1 per packaging change
+pkgrel=2  # set by CI: 1 per new pkgver, +1 per packaging change
 pkgdesc='Modern identity management platform (prebuilt binaries)'
 arch=(x86_64 aarch64)
 url='https://kanidm.com'
@@ -42,6 +42,7 @@ package_kanidm-unixd-clients-bin() {
   provides=(kanidm-unixd-clients "kanidm-unixd-clients=${pkgver}")
   conflicts=(kanidm-unixd-clients kanidm-unix-modules)
   replaces=(kanidm-unix-modules)
+  install=kanidm-unixd-clients-bin.install
   local src; src=$(_srcdir)
   install -Dm755 "${srcdir}/${src}/lib/libpam_kanidm.so" \
                  "${pkgdir}/usr/lib/security/pam_kanidm.so"

@@ -1,0 +1,16 @@
+# Every process loads the new NSS/PAM modules from this package as soon as
+# it is installed, but kanidm_unixd keeps running the old binary until it is
+# restarted. The socket protocol between them is not stable across releases:
+# 1.12 clients send a Ping that a 1.11 daemon rejects, so every user lookup
+# and login looped until the daemon was restarted.
+#
+# Mark the resolver units for restart. systemd's own pacman hook
+# (35-systemd-enqueue-marked) then try-restarts them after daemon-reload at
+# the end of the transaction; units that are not running stay stopped.
+# Without a running systemd (chroot, container build) there is nothing to do.
+post_upgrade() {
+  [ -d /run/systemd/system ] || return 0
+  for unit in kanidm-unixd.service kanidm-unixd-tasks.service; do
+    systemctl set-property --runtime "$unit" Markers=needs-restart >/dev/null 2>&1 || :
+  done
+}
