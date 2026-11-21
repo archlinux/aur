@@ -1,7 +1,7 @@
 # Maintainer: theorangeguo
 # Packaging Repo: https://github.com/theorangeguo/aur-packages/tree/main/packages/dumate-bin
 pkgname=dumate-bin
-pkgver=1.0.94
+pkgver=1.0.95
 pkgrel=1
 pkgdesc=Baidu\ DuMate\ desktop\ AI\ client
 arch=(x86_64 )
@@ -17,8 +17,8 @@ conflicts=(dumate qianfan-desktop-app )
 validpgpkeys=()
 install=dumate-bin.install
 source=()
-sha256sums_x86_64=('d2baa3fe06ff0d3dd7bc0386ac84c80f5ff0c93df4f7196df624035c864aa6ea')
-source_x86_64=(dumate-bin-1.0.94-x86_64.deb::https://dumate-app-public.cdn.bcebos.com/release-info/linux-artifacts/Dumate-linux-amd64-latest.deb )
+sha256sums_x86_64=('b6df0b4c2722daeb37d7f66b0f211c74f79e1afae455c36182fbae65e2ee8eb2')
+source_x86_64=(dumate-bin-1.0.95-x86_64.deb::https://dumate-app-public.cdn.bcebos.com/release-info/linux-artifacts/Dumate-linux-amd64-latest.deb )
 
 _deb_relocate_usr_local=false
 _install_bin_path=/usr/bin/dumate
@@ -32,7 +32,7 @@ _license_files=()
 prepare() {
     local _deb_source_file
     case "$CARCH" in
-        x86_64) _deb_source_file=dumate-bin-1.0.94-x86_64.deb ;;
+        x86_64) _deb_source_file=dumate-bin-1.0.95-x86_64.deb ;;
         *)
             echo "Unsupported architecture: $CARCH" >&2
             return 1
