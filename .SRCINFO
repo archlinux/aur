@@ -1,0 +1,46 @@
+pkgbase = bilibilive
+	pkgdesc = Native Bilibili streaming studio with CLI, MCP, zuse and zgpui
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/bilibilive
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = libx11
+	makedepends = freetype2
+	makedepends = fontconfig
+	makedepends = libglvnd
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = obs-studio
+	makedepends = qt6-base
+	makedepends = simde
+	options = !lto
+	source = bilibilive::git+https://github.com/LIghtJUNction/bilibilive.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = bilibilive
+	depends = libgcc
+	depends = glibc
+	depends = libx11
+	depends = freetype2
+	depends = fontconfig
+	depends = libglvnd
+	optdepends = obs-studio: OBS WebSocket integration
+	optdepends = bilibilive-obs-plugin: native PK audio/video capture from OBS
+	optdepends = libdatachannel: native WebRTC media transport
+	optdepends = ffmpeg: camera capture, media decoding and preview
+	optdepends = dbus: desktop tray and Secret Service transport
+	optdepends = xorg-xwayland: native window under a Wayland desktop
+	optdepends = noto-fonts-cjk: Chinese interface glyph coverage
+	optdepends = gnome-keyring: Secret Service credential storage
+	optdepends = kwallet: alternative Secret Service credential storage
+
+pkgname = bilibilive-obs-plugin
+	pkgdesc = Native OBS PK audio/video capture for bilibilive
+	depends = obs-studio
+	depends = qt6-base
+	optdepends = bilibilive: Bilibili PK control and native media transport
