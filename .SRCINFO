@@ -28,6 +28,6 @@ pkgbase = i4tools-bin
 	source = cn.i4Tools_9.03.003_amd64.deb::https://d-updater.i4.cn/i4tools9/download/linux/x64/cn.i4Tools_9.03.003_amd64.deb
 	source = https://www.i4.cn/copyright.html
 	sha256sums = 316671202b5bbbbb5763b0cc078acba88346288fbb30689fa2e2f68e22ef5ee6
-	sha256sums = 948973435189790b7502594f195db40e29e5cbc68408523226f38a258676e3e6
+	sha256sums = SKIP
 
 pkgname = i4tools-bin

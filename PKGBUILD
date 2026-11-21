@@ -34,7 +34,7 @@ source=(
     "https://www.i4.cn/copyright.html"
 )
 sha256sums=('316671202b5bbbbb5763b0cc078acba88346288fbb30689fa2e2f68e22ef5ee6'
-            '948973435189790b7502594f195db40e29e5cbc68408523226f38a258676e3e6')
+            'SKIP')
 
 install=i4Tools.install
 
