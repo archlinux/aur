@@ -2,5 +2,6 @@ nzbhydra2wrapper-*.py
 *.gz
 *.xz
 *.zip
+*.log
 pkg
 src
