@@ -1,0 +1,5 @@
+[klyv]
+source = "github"
+github = "vlasky/klyv"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,17 @@
+pkgbase = klyv
+	pkgdesc = Redis-compatible embedded key-value store backed by SQLite
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/vlasky/klyv
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = klyv
+	options = !lto
+	options = !strip
+	source = klyv-0.5.0.tgz::https://github.com/vlasky/klyv/archive/v0.5.0.tar.gz
+	sha256sums = c0c7313b7435b61cee01c4c197b88bd1185048d644955ca4fd97c2c6b9500426
+
+pkgname = klyv
