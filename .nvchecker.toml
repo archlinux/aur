@@ -1,12 +1,10 @@
 [wiso-steuer-2026]
-# Not using `htmlparser` because the version number is scattered
-# across nodes.
-# Even if nvchecker supported XPath expressions such as `concat`
-# (which it doesn’t because it expects queries to return nodesets),
-# the result would still contain leading zeroes, which we’d have to
-# carve out using regex anyway.
+# To avoid unnecessary load on the shop, use the documented endpoint
+# (adaptation of rmrfwindows’s GitHub gist) instead of scraping
+# `https://www.buhl.de/shop/updates?category=9`.
+#
 source = "regex"
-url = "https://www.buhl.de/shop/updates?category=9"
-regex = "(?ms)<h3 class=\"pname\">\\s*(?:WISO )?Steuer 2026\\s*</h3>.*?\\.exe"
-from_pattern = "(?ms).*Version:.*?<span.*?>([0-9]+).0*([0-9]+)</span>.*2026Update..([0-9]+)\\.exe"
-to_pattern = "\\1.\\2.\\3"
+url = "https://drm.buhl.de/json/ServiceRest.svc/GetUpdate"
+post_data = "{\"soap\":{\"ApplicationName\":\"wmain26.dll\",\"ProgKey\":\"SB_STD2026\",\"SerialExtension\":\"2026\",\"ApplicationVersion\":\"33.00.2600\",\"Value\":\"<Value>\\n <Value modul=\\\"WST2026\\\" name=\\\"Update\\\" version=\\\"33.00.2600\\\"/>\\n</Value>\\n\"}}"
+post_data_type = "application/json"
+regex = "actualversion=\\\\\"(.*?)\\\\\""
