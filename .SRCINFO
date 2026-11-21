@@ -1,5 +1,5 @@
 pkgbase = ferronweb
-	pkgdesc = Ferron web server
+	pkgdesc = A fast, modern web server written in Rust (prebuilt binaries)
 	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://ferron.sh
@@ -9,13 +9,23 @@ pkgbase = ferronweb
 	arch = armv7h
 	arch = aarch64
 	arch = riscv64
-	license = custom
-	depends = libcap
-	depends = unzip
-	provides = ferron
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = ca-certificates
+	provides = ferron=2.8.1
 	conflicts = ferron
-	backup = etc/ferron.kdl
-	source = https://dl.ferron.sh/2.8.1/ferron-2.8.1-x86_64-unknown-linux-gnu.zip
-	sha256sums = 3cf41cb1758c9fc653354a7fa5be2ca88a10a03a764cd82df67545216a3c5302
+	conflicts = ferron-git
+	conflicts = ferron-rc
+	conflicts = ferron-bin
+	conflicts = ferronweb-bin
+	conflicts = ferronweb-git
+	options = !strip
+	source = ferron-2.8.1-x86_64-unknown-linux-gnu.zip::https://dl.ferron.sh/2.8.1/ferron-2.8.1-x86_64-unknown-linux-gnu.zip
+	source = LICENSE::https://raw.githubusercontent.com/ferronweb/ferron/8ac3f138f1a37c2c18bb74338d718e06946dcb83/LICENSE
+	sha256sums_x86_64 = 3cf41cb1758c9fc653354a7fa5be2ca88a10a03a764cd82df67545216a3c5302
+	sha256sums_i686 = f6143583f9b78c3e9fb75c09844fb87eca2f1173c91230f87ee63f950d3432d4
+	sha256sums_aarch64 = d4b5174146cbbd57a83f61b52dc2f969c5afbcaeb212531416ae7d5aa9769d07
+	sha256sums_riscv64 = a29e9cb38b4d5245dcecdd64cd035c50f9ef7b96efb617eab2d3caa2ee9804e0
 
 pkgname = ferronweb
