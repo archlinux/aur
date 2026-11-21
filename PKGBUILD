@@ -2,7 +2,7 @@
 # Maintainer: Daniel Lee Harple <git@dlh.dev>
 
 pkgname='vedi'
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='Pager for colored text; select with the keyboard and copy'
 url='https://github.com/dlh/vedi'
@@ -13,7 +13,7 @@ conflicts=('vedi')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/dlh/vedi/releases/download/v${pkgver}/vedi-${pkgver}.tar.gz")
-sha256sums=('39377f1a9f274136992cb11fa3fde38bf18efbd2b6bae18be23a6ea53c586218')
+sha256sums=('7b05899d616e1c8ce0c478ecf378b5b376cceec9562751c3dfa5499ad6df8391')
 prepare() {
   cd "${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
@@ -33,5 +33,6 @@ package() {
   install -Dm644 vedi/completions/vedi.bash "${pkgdir}/usr/share/bash-completion/completions/vedi"
   install -Dm644 vedi/completions/_vedi "${pkgdir}/usr/share/zsh/site-functions/_vedi"
   install -Dm644 vedi/completions/vedi.fish "${pkgdir}/usr/share/fish/vendor_completions.d/vedi.fish"
+  install -Dm644 -t "${pkgdir}/usr/share/vedi/themes" vedi/themes/*.conf
   install -Dm644 -t "${pkgdir}/usr/share/doc/vedi" README.md CHANGELOG.md docs/*.md
 }
