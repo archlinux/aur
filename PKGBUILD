@@ -2,7 +2,7 @@
 # Contributor: Sajid Ahamed <crxssrazr93@gmail.com>
 
 pkgname=voquill
-pkgver=0.0.657
+pkgver=0.0.659
 pkgrel=1
 pkgdesc="AI voice dictation with local Whisper transcription"
 arch=('x86_64')
@@ -24,7 +24,7 @@ conflicts=('voquill-gpu')
 options=('!debug')
 _debname=voquill-desktop
 source=("${_debname}_${pkgver}_amd64.deb::https://github.com/josiahsrc/voquill/releases/download/desktop-v${pkgver}/${_debname}_${pkgver}_amd64.deb")
-sha256sums=('0e8b2441a2e85dc3df7ede2295a9d5f5513d5208c2c29776f9da7dfdbfad1231')
+sha256sums=('aae9e8fe8b8d01bbc3c055f6cca3760829e472ce7d78cb31d2823472f497e969')
 
 latestver() {
   gh api --paginate repos/josiahsrc/voquill/tags --jq '.[].name' |
