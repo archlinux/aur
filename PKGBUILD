@@ -2,8 +2,8 @@
 
 pkgbase='zl-limiter'
 pkgname=('zl-limiter-vst3' 'zl-limiter-lv2' 'zl-limiter')
-pkgver='0.0.1'
-pkgrel=2
+pkgver='0.1.0'
+pkgrel=1
 pkgdesc='Mastering limiter plugin'
 arch=('x86_64' 'aarch64')
 url='https://zl-audio.github.io/plugins/zllimiter/'
@@ -29,14 +29,14 @@ makedepends=(
   'ninja'
 )
 
-_jucecommit=388cba6a326c0704e58ba74b866309d5f775f2d6
+_jucecommit=e4b04d7d2ffea1e780eb5ac4288f7bd2ae7a1961
 
 source=(
   "${pkgbase}_${pkgver}.zip::https://github.com/ZL-Audio/ZLLimiter/archive/refs/tags/${pkgver}.tar.gz"
   "juce_${_jucecommit}.zip::https://github.com/ZL-Audio/JUCE/archive/${_jucecommit}.zip"
 )
-sha256sums=('f5b2898c872326e27c05af56016a20c2d4626210ec08372984c38b7c067ec223'
-            'a42f50c1cdc19ecf047f5e97c92750b863d35dd69a9006e2727ed2508645bd7e')
+sha256sums=('4680214a0e67dcd9bc53cfb8ae7e76ecfdcc089df0eda2b39dc3384ce2c04d51'
+            '17a5ed36f1f7b38b07a793b10ae76dc0d1c9ab7362de1527d67c23bc5130f8b3')
 
 prepare() {
   cd "ZLLimiter-${pkgver}/"

@@ -1,7 +1,7 @@
 pkgbase = zl-limiter
 	pkgdesc = Mastering limiter plugin
-	pkgver = 0.0.1
-	pkgrel = 2
+	pkgver = 0.1.0
+	pkgrel = 1
 	url = https://zl-audio.github.io/plugins/zllimiter/
 	arch = x86_64
 	arch = aarch64
@@ -23,10 +23,10 @@ pkgbase = zl-limiter
 	depends = libxinerama
 	depends = libxrandr
 	depends = libxrender
-	source = zl-limiter_0.0.1.zip::https://github.com/ZL-Audio/ZLLimiter/archive/refs/tags/0.0.1.tar.gz
-	source = juce_388cba6a326c0704e58ba74b866309d5f775f2d6.zip::https://github.com/ZL-Audio/JUCE/archive/388cba6a326c0704e58ba74b866309d5f775f2d6.zip
-	sha256sums = f5b2898c872326e27c05af56016a20c2d4626210ec08372984c38b7c067ec223
-	sha256sums = a42f50c1cdc19ecf047f5e97c92750b863d35dd69a9006e2727ed2508645bd7e
+	source = zl-limiter_0.1.0.zip::https://github.com/ZL-Audio/ZLLimiter/archive/refs/tags/0.1.0.tar.gz
+	source = juce_e4b04d7d2ffea1e780eb5ac4288f7bd2ae7a1961.zip::https://github.com/ZL-Audio/JUCE/archive/e4b04d7d2ffea1e780eb5ac4288f7bd2ae7a1961.zip
+	sha256sums = 4680214a0e67dcd9bc53cfb8ae7e76ecfdcc089df0eda2b39dc3384ce2c04d51
+	sha256sums = 17a5ed36f1f7b38b07a793b10ae76dc0d1c9ab7362de1527d67c23bc5130f8b3
 
 pkgname = zl-limiter-vst3
 	pkgdesc = Mastering limiter plugin (VST3 version)
