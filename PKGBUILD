@@ -1,7 +1,7 @@
 # Maintainer: xihale <i@xihale.top>
 # Contributor: xihale <i@xihale.top>
 pkgname=snirect-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Local HTTP/HTTPS proxy that rewrites TLS SNI by rules to bypass SNI-based censorship (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -19,9 +19,9 @@ options=('!strip')
 source=('LICENSE::https://raw.githubusercontent.com/xihale/snirect/v'"$pkgver"'/LICENSE')
 sha256sums=('9170853f5f6a075badb2db222f98d1ae66eaac2f9a9bde463aa085f7711c25fc')
 source_x86_64=("$pkgname-$pkgver-$CARCH::https://github.com/xihale/snirect/releases/download/v$pkgver/snirect-linux-amd64")
-sha256sums_x86_64=('c75537a49c64c16011e98a43f5cb5661a382d08d4498e0392ae2fd57f083bcd1')
+sha256sums_x86_64=('c00c4bb1b2cb3315bb7a27a94f1464f1d23a915386184c86cc48c23769d33242')
 source_aarch64=("$pkgname-$pkgver-aarch64::https://github.com/xihale/snirect/releases/download/v$pkgver/snirect-linux-arm64")
-sha256sums_aarch64=('cf5c3f374cf8402cf123cd6f6fb1c87d9e67f4a5936901ddd1609280b43b1f65')
+sha256sums_aarch64=('331613bfc966315a593a9b32b727e4ee264c5985ab6a33a42e2f65febaa4ccca')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver-${CARCH}" "$pkgdir/usr/bin/snirect"
