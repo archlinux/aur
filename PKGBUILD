@@ -1,6 +1,6 @@
 # Maintainer: radnus <radnus@gmail.com>
 pkgname=tamil-assistant
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="AI-powered Tamil language learning companion for i3 window manager"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
     'dmenu: Alternative application launcher'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jalabulajunx/tamil-assistant/archive/v$pkgver.tar.gz")
-sha256sums=('e176a8fcb13042795d8c1dcfc4ce5d676b46f2bbbb587dfb2e83c2892c202ecc')
+sha256sums=('900fbcaca1a7c407005e53fafd87414da0c413a4e4878c41947faa1e183b9f3a')
 install=tamil-assistant.install
 
 package() {
