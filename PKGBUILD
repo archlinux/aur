@@ -4,7 +4,7 @@
 pkgname=dissent-bin
 _pkgname="${pkgname%-bin}"
 _fqpn=so.libdb.${_pkgname}
-pkgver=0.0.41
+pkgver=0.0.50
 pkgrel=1
 pkgdesc='Discord client written in go and gtk4 (binary version)'
 arch=(x86_64 aarch64)
@@ -32,8 +32,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source_x86_64=("dissent-linux-amd64-${pkgver}.tar.zst::https://github.com/diamondburned/dissent/releases/download/v${pkgver}/dissent-linux-amd64.tar.zst")
 source_aarch64=("dissent-linux-arm64-${pkgver}.tar.zst::https://github.com/diamondburned/dissent/releases/download/v${pkgver}/dissent-linux-arm64.tar.zst")
-sha256sums_x86_64=('eb6003d8c2d1b5c28d337279b6abc061e4707900b5e634220e820ba373b901f1')
-sha256sums_aarch64=('6e039d69043fc64520f6ce63b3ff378abe0c0b07f84dbd38d9243f5748e6588b')
+sha256sums_x86_64=('a9dc0ca5a83c43c21ef4420e55bddc9129c0ad210503805499b61e1f51a5baec')
+sha256sums_aarch64=('2cafbdf3008f0d98244f73251485f4844e614048cd087c72286ac90658eda239')
 
 package() {
   install -Dm755 "bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
