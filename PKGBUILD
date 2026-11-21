@@ -1,9 +1,9 @@
 # Maintainer: Dheeraj Vittal Shenoy <dheerajshenoy22@gmail.com>
 pkgname=lektra-bin
 pkgver=0.8.0
-pkgrel=0
+pkgrel=1
 pkgdesc="High-performance Document and Image viewer that prioritizes screen space and control"
-arch=('x86_64')
+arch=('$CARCH')
 url="https://codeberg.org/lektra/lektra"
 license=('AGPL-3.0-only')
 depends=(
@@ -11,6 +11,8 @@ depends=(
     'qt6-svg'
     'qt6-imageformats'
     'libarchive'
+    'fontconfig'
+    'zlib'
 )
 optdepends=(
     'djvulibre: DjVu documents'
@@ -24,11 +26,9 @@ optdepends=(
 )
 provides=("lektra=${pkgver}")
 conflicts=('lektra' 'lektra-git')
-# The release binary keeps its debug info (for symbolized crash reports);
-# makepkg would strip it into a separate -debug package.
-options=('!strip' '!debug')
+options=('!strip')
 source=(
-    "lektra-${pkgver}-x86_64.tar.gz::https://codeberg.org/lektra/lektra/releases/download/v${pkgver}/lektra-${pkgver}-x86_64.tar.gz"
+    "lektra-${pkgver}-$CARCH.tar.gz::https://codeberg.org/lektra/lektra/releases/download/v${pkgver}/lektra-${pkgver}-$CARCH.tar.gz"
 )
 
 sha256sums=('8bacad86cf30e6dcf42fdd7ab5d6c22baa0f239b39517f4d12a487839ae517fe')
