@@ -5,7 +5,7 @@ _variant='DVD-1'
 _upstream_arch='amd64'
 _image_id='debian-offline'
 pkgname='libvirt-iso-debian-offline-bin'
-pkgver=13.7.0
+pkgver=13.8.0
 pkgrel=1
 pkgdesc='Official Debian stable DVD-1 offline installation ISO for libvirt'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
 )
 noextract=("${_iso}")
 sha512sums=(
-	'305cc7a3f0d4e293ff979cc6c047d7fe46454853a0f170a0520acd8aab37c2f8839969c817afac2b4324ef5944e0038502b7fcca5dfcd48b5b77544ef1f14cee'
+	'1f0d11daf546bf7e081fb2064aba1d8e3a6208a4ee71dcc4818c298beca23b63f852c4e48fb558702c6471521c3d72e0a84b83b6cf44eeda4e27498192cd9e43'
 	'SKIP'
 	'SKIP'
 	'4750f195399fb0d348dedd081d23f82c9fcd5545af7dc27a1af7084bbc23d14ea4cc86e91ae7e3e7be696e2c300632610e08a576797782d837028e5a265e8b78'
