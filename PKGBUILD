@@ -1,6 +1,6 @@
 # Maintainer: Pranav Kannepalli <pranav.kannepalli@gmail.com>
 pkgname=archductor
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Archductor parallel coding-agent workflow tool built around Git worktrees"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('git' 'github-cli' 'openssh' 'sqlite'
 # rust/cargo build the sidecars; nodejs/pnpm build + bundle the Electron GUI.
 makedepends=('rust' 'cargo' 'pkgconf' 'nodejs' 'pnpm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b92a3a2057759e7599becc15056024636fb59807288a57bccbebcc2e9f920ce1')
+sha256sums=('0e91734bbdedd63f177e1dc83883999621a1b675168a0f6fd2320eea3ca7c078')
 
 build() {
     cd "conductor-arch-$pkgver"
