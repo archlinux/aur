@@ -72,7 +72,7 @@
 # library, no model files). The host never loads module code; the worker
 # does. Enable it with
 #   systemctl --user enable --now omarchy-broadcast-mic.service
-# It is the alternative to the ADR 0014 units above: run one of them.
+# It is the alternative to the single-engine units above: run one of them.
 # DeepFilterNet is a git dependency (the upstream repository, pinned by commit
 # in Cargo.lock): `cargo fetch` in prepare() needs network access for it, and
 # the build cannot be done offline without a prepared vendor directory.
@@ -169,7 +169,7 @@ optdepends=(
   'nvidia-utils: CUDA driver and NVML, needed for the CUDA video path on NVIDIA GPUs'
   'omarchy: the Omarchy shell, for the bar widget in the separate omarchy-broadcast-plugin repository'
   'v4l2loopback-utils: runtime-only loopback setup without modprobe.d'
-  'pipewire: the optional PipeWire camera node ([pipewire] enabled in config.toml), the optional noise-removed microphone (ADR 0014) and the microphone host with its audio worker (omarchy-broadcast-mic.service, omarchy-broadcast-audiod)'
+  'pipewire: the optional PipeWire camera node ([pipewire] enabled in config.toml), the optional noise-removed microphone and the microphone host with its audio worker (omarchy-broadcast-mic.service, omarchy-broadcast-audiod)'
   'noise-suppression-for-voice: RNNoise engine for the noise-removed microphone (default)'
   'deepfilternet-ladspa: DeepFilterNet engine for the noise-removed microphone'
   'omarchy-broadcast-maxine-vfx-git: NVIDIA Maxine video effects module (background blur and replacement, video noise removal)'
@@ -352,7 +352,7 @@ package_omarchy-broadcast-git() {
     { echo 'omarchy-broadcast-mic@.service: the ExecStart rewrite did not take' >&2; return 1; }
 
   # The microphone host of the audio modules: its configuration (beside the
-  # ADR 0014 ones; the glob above matches only the "-<engine>.conf" names), the
+  # single-engine ones; the glob above matches only the "-<engine>.conf" names), the
   # LADSPA forwarding plugin where the configuration finds it by name
   # (plugin = "libomarchy_broadcast_mic" is searched in /usr/lib/ladspa), and
   # the unit, whose ExecStart= names the packaged configuration by absolute
