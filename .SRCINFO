@@ -1,0 +1,21 @@
+pkgbase = hyprfetch-git
+	pkgdesc = Hyprland-native fetch utility for system, session, and rice state
+	pkgver = 0.3.1.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/polarours/hyprfetch
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	optdepends = hyprland: runtime Hyprland session data
+	optdepends = pipewire: audio backend detection
+	optdepends = pulseaudio: audio backend detection
+	optdepends = iw: WiFi SSID, signal and link speed for drivers without the wireless sysfs files
+	optdepends = wireless_tools: WiFi details as a fallback when iw is missing
+	source = hyprfetch::git+https://github.com/polarours/hyprfetch.git
+	sha256sums = SKIP
+
+pkgname = hyprfetch-git
