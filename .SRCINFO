@@ -1,6 +1,6 @@
 pkgbase = kander-bin
 	pkgdesc = Kanban board for coordinating multiple AI coding agents, with isolated git worktrees and independent reviewer agents
-	pkgver = 1.4.7
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/dualface/kander
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = kander-bin
 	conflicts = kander
 	options = !strip
 	options = !debug
-	source = LICENSE::https://raw.githubusercontent.com/dualface/kander/v1.4.7/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/dualface/kander/v1.5.0/LICENSE
 	sha256sums = 365a3932a1297fc06250ea4ee0f23ee99da5a8a567b3c84b3e879877170c0836
-	source_x86_64 = kander-linux-amd64.tar.gz::https://github.com/dualface/kander/releases/download/v1.4.7/kander-linux-amd64.tar.gz
-	sha256sums_x86_64 = f137577a1bb66ebb9793b3b7b688fdc94dc766020a431df6d88b309b8ecdce1b
-	source_aarch64 = kander-linux-arm64.tar.gz::https://github.com/dualface/kander/releases/download/v1.4.7/kander-linux-arm64.tar.gz
-	sha256sums_aarch64 = c520bdb75f7b8029015612acc5e45a5fd8487f07f03371e88330bb57b08d1bcf
+	source_x86_64 = kander-linux-amd64.tar.gz::https://github.com/dualface/kander/releases/download/v1.5.0/kander-linux-amd64.tar.gz
+	sha256sums_x86_64 = 2ebfb9bea4dd6788d42cec3c909fe93d622c8c4d51c80fe9460b5069ff96f0dc
+	source_aarch64 = kander-linux-arm64.tar.gz::https://github.com/dualface/kander/releases/download/v1.5.0/kander-linux-arm64.tar.gz
+	sha256sums_aarch64 = 5a8ccc4438cb0fdc88ef91cee82438563e03128ef4c7ad0cea99ed6de0bfbe23
 
 pkgname = kander-bin
