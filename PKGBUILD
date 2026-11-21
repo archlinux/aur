@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=uu-remote-bin
-pkgver=0.2.62
+pkgver=0.2.64
 pkgrel=1
 pkgdesc="非官方 UU 远程 Linux 被控端，纯 Rust 实现，可用官方客户端远程控制 Linux 桌面"
 arch=('x86_64')
@@ -11,6 +11,8 @@ depends=('gtk3' 'ffmpeg' 'libpulse' 'pam' 'systemd')
 optdepends=(
     'wl-clipboard: Wayland clipboard sync'
     'libpipewire: Wayland portal screen capture'
+    'libei: GNOME/KDE Wayland portal input injection'
+    'sdl2: experimental native remote viewer (uuremote-viewer)'
     'xorg-server-xvfb: virtual desktop for monitorless servers (uu-virtual-desktop)'
     'xfce4: default desktop session for the virtual desktop'
     'nvidia-utils: NVENC hardware encoding on NVIDIA GPUs'
@@ -27,13 +29,24 @@ source_x86_64=("uu-remote-linux-v${pkgver}-x86_64-linux.tar.gz::https://github.c
 sha256sums=('910d0627d7b1b7edc2408d9def0dacecf92db01e43c094f10f250a22e7efbdc6'
             'ee8a778fe9367f1dffe2482940b70ec627e414dcaa409731560cd37481ed4feb'
             '822b332b88276aba6b91997a17c543e2d77656cbbfbda65dab0b1f827efe8b03')
-sha256sums_x86_64=('85d3bc82d88e783f19924a957eaf526e459dc0879e2a4536b91359777b136a12')
+sha256sums_x86_64=('54f84421c5c93fbf00b827d407d5443da0385a75813f9398c7e7d95f39c1e56b')
 
 package() {
     local _dir="uu-remote-linux-v${pkgver}-x86_64-linux"
 
     install -Dm755 "${srcdir}/${_dir}/uuremote-server" "${pkgdir}/usr/bin/uuremote-server"
+    install -Dm755 "${srcdir}/${_dir}/uuremote-viewer" "${pkgdir}/usr/bin/uuremote-viewer"
+    install -Dm644 "${srcdir}/${_dir}/libuu-wayland.so" "${pkgdir}/usr/lib/uu-remote-linux/libuu-wayland.so"
+    install -Dm644 "${srcdir}/${_dir}/libuu-portal.so" "${pkgdir}/usr/lib/uu-remote-linux/libuu-portal.so"
     install -Dm644 "${srcdir}/${_dir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # Desktop entries and icon
+    install -Dm644 "${srcdir}/${_dir}/contrib/desktop/uu-remote-linux.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/uu-remote-linux.svg"
+    install -Dm644 "${srcdir}/${_dir}/contrib/desktop/uu-remote-linux.desktop" \
+        "${pkgdir}/usr/share/applications/uu-remote-linux.desktop"
+    install -Dm644 "${srcdir}/${_dir}/contrib/desktop/uu-remote-linux-viewer.desktop" \
+        "${pkgdir}/usr/share/applications/uu-remote-linux-viewer.desktop"
 
     # systemd user services: main host + optional virtual desktop (Xvfb)
     install -Dm644 "${srcdir}/uu-remote-native.service" \
