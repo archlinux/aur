@@ -2,14 +2,14 @@
 
 pkgname="orca-slicer"
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
 url="https://github.com/OrcaSlicer/OrcaSlicer"
 license=('AGPL-3.0-only')
-depends=('bash' 'cairo' 'dbus' 'expat' 'fontconfig' 'ffmpeg' 'gdk-pixbuf2' 'glib2' 'glibc' 'gspell' 'gst-plugins-bad-libs'
-         'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libdrm' 'libva' 'libgcc' 'libglvnd' 'libjpeg-turbo' 'libstdc++' 'libx11' 
+depends=('bash' 'cairo' 'dbus' 'expat' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'glibc' 'gspell' 'gst-plugins-bad-libs'
+         'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libdrm' 'libva' 'libgcc' 'libglvnd' 'libstdc++' 'libx11' 
          'libxkbcommon' 'mesa' 'mesa-utils' 'pango' 'python' 'python-matplotlib' 'python-numpy' 'python-shapely'
          'python-trimesh' 'wayland' 'webkit2gtk-4.1' 'zlib')
 makedepends=('awk' 'ccache' 'cmake' 'extra-cmake-modules' 'git' 'glew' 'libigl' 'libmspack' 'libnotify' 'm4' 'nasm'
@@ -23,7 +23,7 @@ source=("OrcaSlicer-v${pkgver}.tar.gz::https://codeload.github.com/OrcaSlicer/Or
         "ffmpeg.patch::https://patch-diff.githubusercontent.com/raw/OrcaSlicer/OrcaSlicer/pull/17523.patch"
         "boost.patch")
 sha256sums=('7f04a53c7680816d2b54063dc4b88950607e5486240f2d0292919f8b6652cdb3'
-            'c1ca1fadba5f5c088af80f076f911c74fa594e8200cee7be65e4330f43909e7d'
+            '9c492877cc058adee9a53e1626fb147327a683f9654a68747aacf0f62a73f271'
             '6b7c48550c12db4c20ad564c47a232eec0e069b9dc6c18b4e184139faf3a23ea'
             'd9a8148fa091d6ce2fae3f3eae9f7fa3169b0586d3dcc8cdbe4bcf1a2208aa13')
 
@@ -33,7 +33,6 @@ prepare() {
   patch -Np1 -i "${srcdir}"/ffmpeg.patch
   patch -Np1 -i "${srcdir}"/boost.patch
   sed -i 's|CMAKE_INSTALL_PREFIX}/lib|CMAKE_INSTALL_PREFIX}/lib/OrcaSlicer|' CMakeLists.txt
-  sed -i 's|parent_path() / "lib" / "python";|parent_path().parent_path() / "lib" / "OrcaSlicer" / "python";|' src/slic3r/plugin/PythonInterpreter.cpp
 }
 
 build() {

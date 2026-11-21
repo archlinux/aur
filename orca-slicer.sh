@@ -1,6 +1,7 @@
 #!/bin/bash
 DIR="/usr/lib/OrcaSlicer"
-export LD_LIBRARY_PATH="$DIR/bin:$LD_LIBRARY_PATH"
+
+export LD_LIBRARY_PATH="$DIR/python/lib:$DIR:$DIR/bin${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 
 # FIXME: OrcaSlicer segfault workarounds
 # 1) OrcaSlicer will segfault on systems where locale info is not as expected (i.e. Holo-ISO arch-based distro)
