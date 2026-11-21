@@ -1,5 +1,5 @@
 pkgname=chaptarrng-bin
-pkgver=0.9.1027
+pkgver=0.9.1031
 pkgrel=1
 pkgdesc='Standalone audiobook and ebook library manager'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("https://github.com/snapetech/chaptarrng/releases/download/v${pkgver}/Ch
         'chaptarrng.tmpfiles'
         'chaptarrng.package_info'
         'chaptarrng.install')
-sha256sums=('34e86f8e04dbb2925e43a48f9c3accb072336b1ccbf6a47f8820797a61dfb1d8' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('532f7fe1efedb17b6276fff09920d8e58bed32952f9f4d6257c9f46e15090950' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
   install -d "${pkgdir}/usr/lib/chaptarrng/bin" "${pkgdir}/usr/bin"
