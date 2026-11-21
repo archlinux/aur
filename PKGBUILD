@@ -1,7 +1,7 @@
 # Maintainer: Your Name <you@example.com>
 
 pkgname=port-ex-machina-bin
-pkgver=2026.11.20.0b062125
+pkgver=2026.11.20.8685d71a
 pkgrel=1
 pkgdesc='Deus Ex source port with DXLauncher and DXEngine (prebuilt Linux release)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("DX-linux-x86_64-${_tag}.tar.gz::${url}/releases/download/${_tag}/DX-lin
         'port-ex-machina.desktop')
 # Upstream's release-asset checksum must be obtained before AUR submission.
 # Run updpkgsums after verifying the release archive. Never publish with SKIP.
-sha256sums=('ebe93b0fb0937b687ef58444390da5a8eae886b173efa51479f5c235cf916b20'
+sha256sums=('167be17dee8b29cfc048dc5242ffab812a1a5a1afc702809ba46279e6c22df76'
             'e8b9608e93cbf2675b666a86ffb9bfbe9712291ddbdb8bce13ab0df770dcd78a'
             '15b9204aacef8b9806b3bd1d01a13a008e6f0df8b63e49ff5aece3c2f39a14e6')
 
