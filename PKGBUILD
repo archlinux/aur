@@ -5,8 +5,8 @@
 
 pkgname=meta-package-manager
 _pkgname=${pkgname//-/_}
-pkgver=8.3.0
-pkgrel=2
+pkgver=8.3.1
+pkgrel=1
 pkgdesc='A wrapper around all package managers'
 url='https://mpm.run/'
 makedepends=(python-build python-installer python-uv-build)
@@ -39,7 +39,7 @@ optdepends=('apt: support for apt packages'
 license=('GPL-2.0-or-later')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('4436cf879b033e9bbc19b5021a33b9c6b02f6b10fb5658726e2e6cfedc9d7c41b7bfb7a35cd8bde0963e6e4147aee920b312c52b4115344db5a4d58c321cae47')
+sha512sums=('0cbfd1ceb95aaa1a771b95eb1ea57b573979ed422711e7190299e708039af8329b51ee3052a801ebe2c82c305c5599fd94e303491313425aed7b5666b1006fcd')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
