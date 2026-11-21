@@ -1,6 +1,6 @@
 # Maintainer: Anysets <anysets@qq.com>
 pkgname=spark-store
-pkgver=5.3.1
+pkgver=5.3.4
 pkgrel=1
 pkgdesc="A community powered app store."
 arch=('x86_64' 'aarch64')
@@ -35,8 +35,8 @@ source_x86_64=("https://www.gitlink.org.cn/shenmo7192/spark-store/releases/downl
 # source_aarch64=("https://gitee.com/spark-store-project/spark-store/releases/download/${pkgver}/spark-store_${pkgver}_arm64.deb")
 source_aarch64=("https://www.gitlink.org.cn/shenmo7192/spark-store/releases/download/${pkgver}/spark-store_${pkgver}_arm64.deb")
 
-sha256sums_x86_64=('b3dce8008a429535b2ef1491f14915b6490c0274a4d3c5804b6fed543d170212')
-sha256sums_aarch64=('e3b095a4b4481e7ed7a267c57116b9a9e4bf2d23039899c149eada1c326d91e3')
+sha256sums_x86_64=('fad5b38da9061ff564f226501040c1041a57aa2f9cef9d62ed7f15f244898ea7')
+sha256sums_aarch64=('1745063e93578f48bf9e0c1fb44d2165559b90ed8191fdbc0767877de2c0953f')
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
     rm -rf "${pkgdir}/lib"
