@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=popt-git
-pkgver=1.19.r34.g63f0967
+pkgver=1.19.r44.g972a325
 pkgrel=1
 pkgdesc="C library for parsing command line parameters"
 arch=('i686' 'x86_64')
@@ -9,9 +9,8 @@ url="https://github.com/rpm-software-management/popt"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'cmake')
-provides=("popt=$pkgver")
+provides=("popt=$pkgver" 'libpopt.so')
 conflicts=('popt')
-options=('staticlibs')
 source=("git+https://github.com/rpm-software-management/popt.git")
 sha256sums=('SKIP')
 
