@@ -6,8 +6,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=polkit-consolekit
-pkgver=127
-pkgrel=2
+pkgver=128
+pkgrel=1
 pkgdesc="PolicyKit with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
 license=('LGPL-2.0-or-later')
@@ -25,7 +25,7 @@ source=($url/archive/refs/tags/$pkgver.tar.gz
         99-consolekit.rules
         patch-src_polkitbackend_polkitbackendsessionmonitor.diff
         patch-src_polkit_polkitunixsession.diff)
-sha256sums=('9b7bc16f086479dcc626c575976568ba4a85d34297a750d8ab3d2e57f6d8b988'
+sha256sums=('6edb06bf1448e49e428f9597a97af6a05d62146dd0b58f86eeaebcee3f5ecfaa'
             'f12f590cf5ad621710f75a40b5af88e186d3a0a17d682a8bbe03b833525a3a39'
             'c7f887e1a8429106b43e8e81849c731e18b3055ef5e9ce0d44706ec23e9ef99e'
             'fb4d33d08547ad412bbb900463fb984147114b3a62b4336be65262b327da5bd8'
