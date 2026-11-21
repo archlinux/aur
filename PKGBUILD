@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=bladebro
-pkgver=4.8.2
+pkgver=4.8.3
 pkgrel=1
 pkgdesc='Agentic browser driver for AI: five MCP tools over a real Chromium session'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=(
 conflicts=('bladebro-bin')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('56172c8486d64edb43fd1c321b96a11c94374ae95887885469347e8c6f379dea')
+sha256sums=('0a3368dd343c440c9a98d1ac26554b0557da49ef512fd6ff267196bbbe4a1416')
 
 latestver() {
   gh api repos/dondai44423/bladebro/releases/latest --jq .tag_name |
