@@ -1,6 +1,6 @@
 pkgbase = obs-rust
 	pkgdesc = Free, open source software for live streaming and recording
-	pkgver = 1.0.1beta.20261120
+	pkgver = 1.0.1beta.20261121
 	pkgrel = 1
 	url = https://github.com/obs-rust
 	arch = x86_64
@@ -37,11 +37,11 @@ pkgbase = obs-rust
 	depends = qrcodegencpp-cmake
 	depends = python
 	depends = luajit
-	source = obs-rust::git+https://github.com/obs-rust/obs-studio.git#tag=obs-studio-rust-v1.0.1-beta.20261120
+	source = obs-rust::git+https://github.com/obs-rust/obs-studio.git#tag=obs-studio-rust-v1.0.1-beta.20261121
 	source = obs-rust-libdshowcapture::git+https://github.com/obs-rust/libdshowcapture.git
 	source = obs-rust-obs-browser::git+https://github.com/obs-rust/obs-browser.git
 	source = obs-rust-obs-websocket::git+https://github.com/obs-rust/obs-websocket.git
-	sha256sums = 5cd56113f037aab6f7ac07a3e85d8c39512c128f42ccd4430f3be78a8b5cded4
+	sha256sums = eacdfcab4e2bdb1dcc6bb723adef7282c37a5b2eafa6dde00d02789dc07dc3c9
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
