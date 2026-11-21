@@ -14,8 +14,8 @@ from torch_tensorrt.executorch.serialization import (
 
 expected = Path(os.environ.get("TORCHTRT_CHECK_SITE", sysconfig.get_path("platlib"))).resolve()
 assert Path(torch_tensorrt.__file__).resolve().is_relative_to(expected)
-assert importlib.metadata.version("torch_tensorrt") == "2.15.0rc3"
-assert torch_tensorrt.__version__ == "2.15.0rc3"
+assert importlib.metadata.version("torch_tensorrt") == "2.15.0"
+assert torch_tensorrt.__version__ == "2.15.0"
 assert torch_tensorrt.ENABLED_FEATURES.torch_tensorrt_runtime
 assert torch_tensorrt.ENABLED_FEATURES.torchscript_frontend
 assert not torch.cuda.is_available()

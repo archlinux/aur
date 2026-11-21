@@ -66,7 +66,7 @@
 +    assert len(requirements) == 1
 +    assert requirements[0].name == "tensorrt"
 +    assert requirements[0].marker is None
-+    assert requirements[0].specifier == Requirement("tensorrt>=11.4.0,<11.5").specifier
++    assert requirements[0].specifier == Requirement("tensorrt>=11.5.0,<11.6").specifier
 +    chosen = {r.name for r in requirements if r.marker is None or r.marker.evaluate(dict(environment))}
      assert chosen == expected
 +    installed = [Requirement(r) for r in requires("torch_tensorrt")

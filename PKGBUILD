@@ -2,9 +2,10 @@
 
 pkgname=python-torch-tensorrt
 _pkgname=torch-tensorrt
-pkgver=2.15.0rc3
-_upstreamver=2.15.0-rc3
-pkgrel=2
+pkgver=2.15.0
+_upstreamver=2.15.0
+_executorch_commit=4776f71b6f0daa5dfc7d758d5836fc1cc0d40154
+pkgrel=1
 pkgdesc="Easily achieve the best inference performance for any PyTorch model on the NVIDIA platform"
 arch=('x86_64')
 url="https://github.com/pytorch/TensorRT"
@@ -24,11 +25,11 @@ depends=(
     'python-pytorch-cuda>=2.15'
     'python-pytorch-cuda<2.16'
     'python-sympy'
-    'python-tensorrt>=11.4.0'
-    'python-tensorrt<11.5'
+    'python-tensorrt>=11.5.0'
+    'python-tensorrt<11.6'
     'python-typing_extensions>=4.7'
-    'tensorrt>=11.4.0'
-    'tensorrt<11.5'
+    'tensorrt>=11.5.0'
+    'tensorrt<11.6'
 )
 makedepends=(
     'bazel>=8.4.2'
@@ -56,7 +57,10 @@ checkdepends=(
     'python-pytest-xdist>=3.6.1'
 )
 optdepends=(
-    'python-executorch>=1.6.0.dev20261009: optional Python export integration (requires version <1.7)'
+    'python-cuda: CUDA Python bindings for torch_tensorrt.kernels custom ops'
+    'python-cuda-core: NVRTC-compiled CUDA C++ kernel ops in torch_tensorrt.kernels'
+    'python-cuda-tile: cuTile kernel ops in torch_tensorrt.kernels (requires version <2)'
+    'python-executorch>=1.6.0: optional Python export integration (requires version <1.7)'
     'python-graphviz: graph visualization utilities'
     'python-nvidia-modelopt: model quantization integrations'
     'python-pydot: engine visualization'
@@ -70,6 +74,16 @@ optdepends=(
 options=('!debug' '!strip')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/pytorch/TensorRT/archive/refs/tags/v$_upstreamver.tar.gz"
+    # ExecuTorch release source for the native executorch_core build, plus the
+    # submodules that build uses; their revisions come from the pinned gitlinks.
+    "torchtrt-executorch::git+https://github.com/pytorch/executorch.git#commit=$_executorch_commit"
+    "torchtrt-executorch-json::git+https://github.com/nlohmann/json.git"
+    "torchtrt-executorch-gflags::git+https://github.com/gflags/gflags.git"
+    "torchtrt-executorch-flatbuffers::git+https://github.com/google/flatbuffers.git"
+    "torchtrt-executorch-flatcc::git+https://github.com/dvidelabs/flatcc.git"
+    "torchtrt-executorch-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git"
+    "torchtrt-executorch-cpuinfo::git+https://github.com/pytorch/cpuinfo.git"
+    "torchtrt-executorch-pthreadpool::git+https://github.com/google/pthreadpool.git"
     'arch-system-dependencies.patch'
     'arch-runtime-compat.patch'
     'fix-glog-0.7.patch'
@@ -82,17 +96,25 @@ source=(
     'arch-cpu-tests.patch'
 )
 sha256sums=(
-    '9cd469b08f60f2a0e93315cd3bed84b04f3e056dea92db78280989fa9cc3b6e8'
-    'c06b5bf89e1b5d07659922da6187477f2457df93f0a19851db0771c861387f9e'
+    '0d11b31e24c0d1d0251676af9f43b45e3889ff87a9b85e945e5841365d121c0f'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'b7e7e2f33928caf9cdbb7a5526aeb441b94d311c29b6017672b1ce95fdf209b6'
     'aebdf557caf8105d3def808b49e470c87edc5236d47a7ce3ed0c88537e1e40f4'
     'e873d8f155e9bf0b0a9bb10d7569098c6830f8dec9d7b8a86f184d79a037f8e7'
     '05b95713e42f909badf9e267ef25f25059cadb1d1b82b8b2cc2277afb2582ef0'
-    'e9742287e0ed9f24c68f7b2eccc8bedab9fcda7c7452d606605a66b60d46eff6'
+    '905e2ec69867450b458ae3b67c4db3fcd8ebb4c5ef42f58774ee577f0e87b8f7'
     'c8689415fef531cbb3a5fbc1ddd728a8fd4cbf1c6848934896bbad8267564858'
     '7dc462cde4a6504e5cc055716cecf7d8405bd2d14076c4441657d6026a2aa707'
     '43d699430132a75f7948bb9b0bf1babc9892d1b7868b9d2fe7d769f640fe4c50'
     '608c89d5060ae9921adccf3236695bc654a9946e12323ef6c021dfa04e294d48'
-    'df64fd3666e8fc97f14238fb939fe43c9c35d489c30f6436d847d37096efdbed'
+    '912dd06d507bda29aab558c2ab01b95040b3b82550f7c7e80986bf06cfb02c0b'
 )
 
 prepare() {
@@ -147,6 +169,56 @@ prepare() {
     # ExecuTorch enables an installed ccache even when Bazel makes its cache
     # read-only. Disable caching within Bazel actions for this build.
     printf '\nbuild:linux --action_env=CCACHE_DISABLE=1\n' >> .bazelrc
+
+    # Bazel 9's git_repository ignores a failing `git submodule update`, which
+    # can leave ExecuTorch's third-party trees empty and break executorch_core.
+    # Build the same pinned ExecuTorch release from makepkg's sources instead:
+    # check out its submodules from the local mirrors at their gitlinked
+    # revisions, then recreate upstream's patch_cmds overlay for the BUILD file.
+    local _et="$srcdir/torchtrt-executorch"
+    [[ "$(git -C "$_et" rev-parse HEAD)" == "$_executorch_commit" ]]
+    local _sub _path _paths=()
+    for _sub in \
+        json:third-party/json \
+        gflags:third-party/gflags \
+        flatbuffers:third-party/flatbuffers \
+        flatcc:third-party/flatcc \
+        FXdiv:backends/xnnpack/third-party/FXdiv \
+        cpuinfo:backends/xnnpack/third-party/cpuinfo \
+        pthreadpool:backends/xnnpack/third-party/pthreadpool; do
+        _path=${_sub#*:}
+        git -C "$_et" submodule init -- "$_path"
+        git -C "$_et" config "submodule.$_path.url" "$srcdir/torchtrt-executorch-${_sub%%:*}"
+        _paths+=("$_path")
+    done
+    git -C "$_et" -c protocol.file.allow=always submodule update -- "${_paths[@]}"
+    # Keep the overlay outside the main Bazel workspace.
+    local _et_local="$srcdir/executorch_local"
+    rm -rf "$_et_local"
+    install -d "$_et_local"
+    cp -a "$_et" "$_et_local/executorch"
+    find "$_et_local/executorch" -name .git -prune -exec rm -rf {} +
+    # Matches upstream's patch_cmds: no nested Bazel packages inside the overlay.
+    find "$_et_local/executorch" \( -name BUILD -o -name BUILD.bazel \) -delete
+    rm -f "$_et_local/executorch/REPO.bazel"
+    for _path in "${_paths[@]}"; do
+        [[ -n "$(ls -A "$_et_local/executorch/$_path")" ]]
+    done
+    python - "$_et_local" "$_executorch_commit" <<'PY'
+import sys
+from pathlib import Path
+path = Path("MODULE.bazel")
+text = path.read_text()
+start = text.index('new_git_repository(\n    name = "executorch",')
+end = text.index("\n)\n", start) + 3
+block = text[start:end]
+assert f'commit = "{sys.argv[2]}"' in block and "recursive_init_submodules = True" in block
+local = ('new_local_repository(\n    name = "executorch",\n'
+         '    build_file = "@//third_party/executorch:BUILD",\n'
+         f'    path = "{sys.argv[1]}",\n)\n')
+path.write_text(text[:start] + local + text[end:])
+PY
+    grep -q "path = \"$_et_local\"" MODULE.bazel
 }
 
 build() {
@@ -160,8 +232,19 @@ build() {
     export CFLAGS CXXFLAGS
 
     export PATH="/opt/cuda/bin:$PATH"
-    # Select the declared JDK without changing the system Java default.
-    export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+    # Select a JDK 21 (the declared jdk21-openjdk capability) without changing
+    # the system Java default. Alternative providers of that capability install
+    # under their own /usr/lib/jvm/java-21-* directory names.
+    unset JAVA_HOME
+    local _jdk
+    for _jdk in /usr/lib/jvm/java-21-openjdk /usr/lib/jvm/java-21-*/; do
+        _jdk=${_jdk%/}
+        if [[ -x $_jdk/bin/javac ]]; then
+            export JAVA_HOME=$_jdk
+            break
+        fi
+    done
+    [[ -n ${JAVA_HOME:-} ]]
     export CUDA_HOME=/opt/cuda
     export CUDACXX=/opt/cuda/bin/nvcc
     export CC=/usr/bin/gcc-15 CXX=/usr/bin/g++-15
@@ -209,8 +292,18 @@ check() {
     export RELEASE=1 BUILD_VERSION="$pkgver"
 
     # Run the original CPU-capable suite against the installed wheel. Optional
-    # Python ExecuTorch tests retain upstream importorskip behavior. Only the
-    # six Git-index scans are omitted because release archives contain no .git.
+    # Python ExecuTorch tests retain upstream importorskip behavior. Five
+    # Git-index scans are omitted because release archives contain no .git.
+    # The ExecuTorch pin-update tooling suite runs below against a pristine
+    # copy of the release, since prepare() rewrites the MODULE.bazel pin site.
+    # Narrow environment exclusions, each needing a resource absent here:
+    # - test_packaging installs throwaway wheels with pip, which is not part
+    #   of this pip-free build environment;
+    # - three test_artifact_guard configure cases expect the TensorRT library
+    #   check to fail after the ExecuTorch checks pass, so they need an
+    #   installed ExecuTorch distribution with its CUDA extension library and
+    #   a non-empty CMAKE_PREFIX_PATH from that distribution's metadata (the
+    #   other parametrizations of the same tests still run).
     python -P - <<'PYCHECK'
 import os
 from pathlib import Path
@@ -228,7 +321,14 @@ for test in ("test_every_requirement_matches_the_pin", "test_every_source_commit
              "test_the_no_nightly_marker_only_exempts_main_wheel_installs",
              "test_every_requirement_file_install_names_both_executorch_channels"):
     args += ["--deselect", "tests/py/dynamo/executorch/test_executorch_pin.py::" + test]
-args += ["--deselect", "tests/py/dynamo/executorch/test_update_executorch_pin.py::test_write_pins_requires_a_separate_lock_refresh"]
+args += ["--ignore", "tests/py/dynamo/executorch/test_update_executorch_pin.py"]
+for test in ("test_editable_outputs_survive_backend_cleanup", "test_editable_install_rejects_removed_fix",
+             "test_ordinary_wheel_payload_is_unchanged"):
+    args += ["--deselect", "tests/py/dynamo/executorch/test_packaging.py::" + test]
+for test in ("test_a_tensorrt_without_its_plugin_library_stops_at_configure[py/torch-tensorrt-executorch-runtime/native-False]",
+             "test_a_tensorrt_without_its_plugin_library_stops_at_configure[cpp/src/torch_tensorrt/executorch-False]",
+             "test_a_lean_build_without_the_matching_lean_library_stops_at_configure[None]"):
+    args += ["--deselect", "tests/py/dynamo/executorch/test_artifact_guard.py::" + test]
 args.append(str(Path.cwd().parent / "test_runtime_cache_lock.py"))
 result = pytest.main(args)
 for name, module in list(sys.modules.items()):
@@ -236,6 +336,17 @@ for name, module in list(sys.modules.items()):
         assert Path(module.__file__).resolve().is_relative_to(site), (name, module.__file__)
 raise SystemExit(result)
 PYCHECK
+    # Upstream's pin-update tooling validates the release's own pin sites.
+    rm -rf "$srcdir/_pristine"
+    mkdir "$srcdir/_pristine"
+    bsdtar -xf "$srcdir/$pkgname-$pkgver.tar.gz" -C "$srcdir/_pristine"
+    (
+        cd "$srcdir/_pristine/TensorRT-$_upstreamver"
+        python -P -m pytest -ra -p no:cacheprovider --import-mode=importlib \
+            tests/py/dynamo/executorch/test_update_executorch_pin.py \
+            --deselect tests/py/dynamo/executorch/test_update_executorch_pin.py::test_write_pins_requires_a_separate_lock_refresh
+    )
+
     python -P "$srcdir/cpu-check.py"
 }
 

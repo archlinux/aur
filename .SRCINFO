@@ -1,7 +1,7 @@
 pkgbase = python-torch-tensorrt
 	pkgdesc = Easily achieve the best inference performance for any PyTorch model on the NVIDIA platform
-	pkgver = 2.15.0rc3
-	pkgrel = 2
+	pkgver = 2.15.0
+	pkgrel = 1
 	url = https://github.com/pytorch/TensorRT
 	arch = x86_64
 	license = BSD-3-Clause
@@ -41,12 +41,15 @@ pkgbase = python-torch-tensorrt
 	depends = python-pytorch-cuda>=2.15
 	depends = python-pytorch-cuda<2.16
 	depends = python-sympy
-	depends = python-tensorrt>=11.4.0
-	depends = python-tensorrt<11.5
+	depends = python-tensorrt>=11.5.0
+	depends = python-tensorrt<11.6
 	depends = python-typing_extensions>=4.7
-	depends = tensorrt>=11.4.0
-	depends = tensorrt<11.5
-	optdepends = python-executorch>=1.6.0.dev20261009: optional Python export integration (requires version <1.7)
+	depends = tensorrt>=11.5.0
+	depends = tensorrt<11.6
+	optdepends = python-cuda: CUDA Python bindings for torch_tensorrt.kernels custom ops
+	optdepends = python-cuda-core: NVRTC-compiled CUDA C++ kernel ops in torch_tensorrt.kernels
+	optdepends = python-cuda-tile: cuTile kernel ops in torch_tensorrt.kernels (requires version <2)
+	optdepends = python-executorch>=1.6.0: optional Python export integration (requires version <1.7)
 	optdepends = python-graphviz: graph visualization utilities
 	optdepends = python-nvidia-modelopt: model quantization integrations
 	optdepends = python-pydot: engine visualization
@@ -57,7 +60,15 @@ pkgbase = python-torch-tensorrt
 	optdepends = python-tensorrt-llm: LLM inference support
 	options = !debug
 	options = !strip
-	source = python-torch-tensorrt-2.15.0rc3.tar.gz::https://github.com/pytorch/TensorRT/archive/refs/tags/v2.15.0-rc3.tar.gz
+	source = python-torch-tensorrt-2.15.0.tar.gz::https://github.com/pytorch/TensorRT/archive/refs/tags/v2.15.0.tar.gz
+	source = torchtrt-executorch::git+https://github.com/pytorch/executorch.git#commit=4776f71b6f0daa5dfc7d758d5836fc1cc0d40154
+	source = torchtrt-executorch-json::git+https://github.com/nlohmann/json.git
+	source = torchtrt-executorch-gflags::git+https://github.com/gflags/gflags.git
+	source = torchtrt-executorch-flatbuffers::git+https://github.com/google/flatbuffers.git
+	source = torchtrt-executorch-flatcc::git+https://github.com/dvidelabs/flatcc.git
+	source = torchtrt-executorch-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git
+	source = torchtrt-executorch-cpuinfo::git+https://github.com/pytorch/cpuinfo.git
+	source = torchtrt-executorch-pthreadpool::git+https://github.com/google/pthreadpool.git
 	source = arch-system-dependencies.patch
 	source = arch-runtime-compat.patch
 	source = fix-glog-0.7.patch
@@ -68,16 +79,24 @@ pkgbase = python-torch-tensorrt
 	source = test_runtime_cache_lock.py
 	source = filelock-MIT-LICENSE
 	source = arch-cpu-tests.patch
-	sha256sums = 9cd469b08f60f2a0e93315cd3bed84b04f3e056dea92db78280989fa9cc3b6e8
-	sha256sums = c06b5bf89e1b5d07659922da6187477f2457df93f0a19851db0771c861387f9e
+	sha256sums = 0d11b31e24c0d1d0251676af9f43b45e3889ff87a9b85e945e5841365d121c0f
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = b7e7e2f33928caf9cdbb7a5526aeb441b94d311c29b6017672b1ce95fdf209b6
 	sha256sums = aebdf557caf8105d3def808b49e470c87edc5236d47a7ce3ed0c88537e1e40f4
 	sha256sums = e873d8f155e9bf0b0a9bb10d7569098c6830f8dec9d7b8a86f184d79a037f8e7
 	sha256sums = 05b95713e42f909badf9e267ef25f25059cadb1d1b82b8b2cc2277afb2582ef0
-	sha256sums = e9742287e0ed9f24c68f7b2eccc8bedab9fcda7c7452d606605a66b60d46eff6
+	sha256sums = 905e2ec69867450b458ae3b67c4db3fcd8ebb4c5ef42f58774ee577f0e87b8f7
 	sha256sums = c8689415fef531cbb3a5fbc1ddd728a8fd4cbf1c6848934896bbad8267564858
 	sha256sums = 7dc462cde4a6504e5cc055716cecf7d8405bd2d14076c4441657d6026a2aa707
 	sha256sums = 43d699430132a75f7948bb9b0bf1babc9892d1b7868b9d2fe7d769f640fe4c50
 	sha256sums = 608c89d5060ae9921adccf3236695bc654a9946e12323ef6c021dfa04e294d48
-	sha256sums = df64fd3666e8fc97f14238fb939fe43c9c35d489c30f6436d847d37096efdbed
+	sha256sums = 912dd06d507bda29aab558c2ab01b95040b3b82550f7c7e80986bf06cfb02c0b
 
 pkgname = python-torch-tensorrt
