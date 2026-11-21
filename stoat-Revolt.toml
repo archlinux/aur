@@ -1,53 +1,447 @@
-# Stoat server configuration template for Arch Linux.
-# IMPORTANT: THIS IS NOT A WORKING PRODUCTION CONFIGURATION.
-# Configure domain names, database credentials, AMQP and S3 before starting Stoat.
-# Local test endpoints and dev secrets from upstream are intentionally NOT copied.
-# On an existing installation pacman preserves your customized config (or creates .pacnew).
-# See /usr/share/doc/stoat-server/README.arch.md for setup and permissions.
+# =============================================================================
+# Stoat Server — /etc/stoat/Revolt.toml
+# Full configuration reference for upstream v0.16.5 (Rust Settings).
+# =============================================================================
+# This file keeps the minimal settings enabled. Other available options
+# are listed BELOW as commented examples with explanations and sample values.
+# To enable an option, uncomment BOTH its [section] header AND the field.
+# If the section is already active, uncomment only the desired field.
+#
+# Values labeled as "upstream defaults" come from the embedded configuration
+# file crates/core/config/Revolt.toml in the v0.16.5 release. They are NOT
+# necessarily appropriate for production. Omitted fields inherit those values.
+#
+# IMPORTANT: this is NOT a ready-to-use production configuration. Replace
+# CHANGE_ME and example.invalid; configure RabbitMQ, MongoDB, Redis/Valkey and S3.
+# Set your own files.encryption_key and pushd.vapid.private_key as well:
+# the embedded development values are shared by all installs and are unsafe!
+# Never copy the embedded S3, LiveKit or VAPID keys from upstream.
+#
+# Each setting can also be overridden with an environment variable such as REVOLT__DATABASE__REDIS.
+# Overrides: Revolt.overrides.toml in the working directory (/etc/stoat).
+# systemd sets WorkingDirectory=/etc/stoat so that Revolt.toml can be found.
+# During package upgrades pacman preserves local changes (see .pacnew files).
+# =============================================================================
 
+# --- General settings --------------------------------------------------------
+# Production mode (upstream: false). Set this to true in production.
+# production = true
+# Environment name for diagnostics and separating deployments (upstream: "dev").
+# environment = "production"
+# Disable events; dangerous debugging switch. DO NOT enable.
+# disable_events_dont_use = false
+
+# --- Databases and cache -----------------------------------------------------
 [database]
-# Configure authentication and TLS when connecting to real production servers.
+# MongoDB connection URI, Stoat's primary database; add credentials/TLS as needed.
 mongodb = "mongodb://127.0.0.1:27017"
+# Redis/Valkey URI used for caching, sessions and internal data structures.
 redis = "redis://127.0.0.1:6379/"
+# Separate Redis/Valkey URI for pub/sub (Option<String>); omit if not needed.
+# redis_pubsub = "redis://127.0.0.1:6379/1"
 
+# --- RabbitMQ ----------------------------------------------------------------
 [rabbit]
+# AMQP server address; 127.0.0.1 is suitable for an all-in-one deployment.
 host = "127.0.0.1"
+# AMQP port (upstream: 5672).
 port = 5672
+# RabbitMQ user and password: replace before starting the server.
 username = "CHANGE_ME"
 password = "CHANGE_ME"
+# Exchange for core messages (upstream: "revolt.default").
+# default_exchange = "revolt.default"
 
+# RabbitMQ queue names used by internal message handlers.
+# [rabbit.queues]
+# Acknowledgement queue (upstream: "internal.ack").
+# acks = "internal.ack"
+# Internal event queue (upstream: "internal.event").
+# events = "internal.event"
+
+# --- Public service URLs -----------------------------------------------------
 [hosts]
-# Replace all example.invalid URLs with your external HTTPS/WSS routes.
+# Public HTTPS/WSS URLs served through nginx or another reverse proxy. Do not use .invalid.
+# Web client (public URL).
 app = "https://chat.example.invalid"
+# API (public URL).
 api = "https://chat.example.invalid/api"
+# WebSocket events (public WSS URL).
 events = "wss://chat.example.invalid/ws"
+# Autumn file and attachment service (public URL).
 autumn = "https://chat.example.invalid/autumn"
+# January link metadata and proxy service (public URL).
 january = "https://chat.example.invalid/january"
+# URL for static assets when hosted separately (upstream: "").
+# assets = "https://assets.example.invalid"
+# These fields are retained from the previous template for compatibility;
+# they are not required fields of the Rust Hosts type in v0.16.5.
+# Legacy public GIFbox URL; not part of the Hosts type in v0.16.5.
 gifbox = "https://chat.example.invalid/gifbox"
-voso_legacy = ""
-voso_legacy_ws = ""
+# Legacy Voso HTTP address (deprecated voice integration).
+# voso_legacy = ""
+# Legacy Voso WebSocket address; unnecessary for new installations.
+# voso_legacy_ws = ""
 
-# Optional: add public LiveKit URLs only when voice calls are configured.
 [hosts.livekit]
+# Arbitrary node names mapping to public LiveKit WebSocket URLs.
+# A node name must match its [api.livekit.nodes.<name>] section.
+# worldwide = "wss://voice.example.invalid"
+
+# --- REST API: registration, SMTP, security ---------------------------------
+# [api]
+# This empty section is optional; individual settings are grouped below.
+
+# [api.registration]
+# Require an invitation to register (upstream: false).
+# invite_only = false
 
 [api.smtp]
-# An empty host disables email sending; configure secure SMTP if needed.
+# SMTP server hostname; an empty value disables outgoing email.
 host = ""
+# SMTP account name (unused if host is empty).
 username = ""
+# SMTP password or authentication token.
 password = ""
+# Sender email address (set a working address when SMTP is enabled).
 from_address = ""
+# Reply-To email address (optional).
 reply_to = ""
+# SMTP port; usually 587 for STARTTLS (Option<i32>).
 port = 587
+# Use TLS immediately on connection (usually port 465).
 use_tls = false
+# Upgrade the connection to TLS using STARTTLS (usually port 587).
 use_starttls = true
 
-# Optional: add matching LiveKit node keys/secrets when voice is configured.
+# [api.smtp.expiry]
+# Email verification link lifetime, seconds (upstream: 604800 = 7 days).
+# expire_verification = 604800
+# Password reset token lifetime, seconds (upstream: 86400 = 1 day).
+# expire_password_reset = 86400
+# Account deletion code lifetime, seconds (upstream: 86400).
+# expire_account_deletion = 86400
+
+# [api.security]
+# Trust Cloudflare headers only if requests actually arrive through Cloudflare.
+# trust_cloudflare = false
+# easypwned password-checking URL/endpoint; empty means unset (upstream: "").
+# easypwned = ""
+# Tenor API key for GIF search (upstream: "").
+# tenor_key = ""
+# Administrator keys for management APIs and fetching reported images.
+# admin_keys = []
+
+# [api.security.captcha]
+# Private hCaptcha secret used to verify responses (NOT the public site key).
+# hcaptcha_key = "CHANGE_ME_HCAPTCHA_SECRET"
+# Public hCaptcha site key used by the frontend.
+# hcaptcha_sitekey = "CHANGE_ME_HCAPTCHA_SITEKEY"
+
+# [api.security.shield]
+# Address of the external Authifier Shield service (upstream: empty).
+# host = ""
+# Authentication key for Authifier Shield (upstream: empty).
+# key = ""
+
+# [api.workers]
+# Maximum concurrent connections to the proxy (upstream: 50).
+# max_concurrent_connections = 50
+
+# [api.users]
+# Minimum permitted username length (upstream: 2).
+# min_username_length = 2
+# Unix timestamp marking the end of the early-adopter period (Option<u64>).
+# early_adopter_cutoff = 1760000000
+
+# [api.audit_logs]
+# Audit log retention in seconds (upstream: 2592000 = 30 days).
+# expires_after = 2592000
+
+# [api.livekit]
+# Duration of ringing before a call times out, seconds (upstream: 30).
+# call_ring_duration = 30
+
 [api.livekit.nodes]
+# Create a separate table for each node, for example worldwide.
+# [api.livekit.nodes.worldwide]
+# INTERNAL LiveKit API URL reachable from the Stoat backend.
+# url = "http://127.0.0.1:7880"
+# Node latitude used for geographic selection, in decimal degrees.
+# lat = 0.0
+# Node longitude used for geographic selection, in decimal degrees.
+# lon = 0.0
+# LiveKit API key (must match the LiveKit server).
+# key = "CHANGE_ME_LIVEKIT_KEY"
+# LiveKit API secret (must match the LiveKit server).
+# secret = "CHANGE_ME_LIVEKIT_SECRET"
+# Hide the node from the available-node list (default: false).
+# private = false
+
+# --- Push notifications ------------------------------------------------------
+# [pushd]
+# Production/test routing-key suffixes (upstream: true); distinct from top-level production.
+# production = true
+# AMQP exchange for push notifications (upstream: "revolt.notifications").
+# exchange = "revolt.notifications"
+# Number of recipients processed per batch for mass mentions (upstream: 200).
+# mass_mention_chunk_size = 200
+# Cache lifetime for resolved display names in pushd, seconds (upstream: 60).
+# render_cache_time = 60
+# Incoming queue of new-message events.
+# message_queue = "notifications.origin.message"
+# Queue for messages containing @everyone/@role mentions.
+# mass_mention_queue = "notifications.origin.mass_mention"
+# Queue for incoming voice calls in direct/group conversations.
+# dm_call_queue = "notifications.ingest.dm_call"
+# Queue for accepted friend requests.
+# fr_accepted_queue = "notifications.ingest.fr_accepted"
+# Queue for received friend requests.
+# fr_received_queue = "notifications.ingest.fr_received"
+# Queue for generic system push events.
+# generic_queue = "notifications.ingest.generic"
+# Delivery acknowledgement queue, including Apple badge counters.
+# ack_queue = "notifications.process.ack"
+
+# [pushd.vapid]
+# Outgoing Web Push/VAPID queue.
+# queue = "notifications.outbound.vapid"
+# PRIVATE VAPID key: generate your own; NEVER copy the upstream value!
+# private_key = "CHANGE_ME_BASE64_VAPID_PRIVATE_KEY"
+# Public counterpart of the VAPID key, distributed to clients.
+# public_key = "CHANGE_ME_VAPID_PUBLIC_KEY"
+
+# [pushd.fcm]
+# Firebase Cloud Messaging outgoing push queue.
+# queue = "notifications.outbound.fcm"
+# Service account credential type (usually service_account).
+# key_type = "service_account"
+# Firebase/GCP Project ID.
+# project_id = "CHANGE_ME"
+# Private-key identifier for the service account.
+# private_key_id = "CHANGE_ME"
+# PEM service account key; TOML strings can contain escaped \n sequences.
+# private_key = "CHANGE_ME"
+# Service account email address.
+# client_email = "CHANGE_ME"
+# Numeric service account client_id (stored as a string here).
+# client_id = "CHANGE_ME"
+# OAuth authorization endpoint from the service account JSON.
+# auth_uri = "https://accounts.google.com/o/oauth2/auth"
+# OAuth token endpoint from the service account JSON.
+# token_uri = "https://oauth2.googleapis.com/token"
+# Provider certificate URL from the service account JSON.
+# auth_provider_x509_cert_url = "https://www.googleapis.com/oauth2/v1/certs"
+# Certificate URL for this specific service account, from its JSON credentials.
+# client_x509_cert_url = "CHANGE_ME"
+
+# [pushd.apn]
+# Apple Push Notification service (APNs) outgoing queue for iOS/macOS.
+# queue = "notifications.outbound.apn"
+# Use the Apple sandbox environment rather than production (upstream: false).
+# sandbox = false
+# Apple Push private key in PKCS#8 format.
+# pkcs8 = "CHANGE_ME"
+# Key ID Apple Push.
+# key_id = "CHANGE_ME"
+# Apple Developer account Team ID.
+# team_id = "CHANGE_ME"
+
+# --- January link service ----------------------------------------------------
+# [january]
+# Domains blocked from link processing (upstream: []).
+# blocked_domains = []
+
+# --- Files, images and S3 ----------------------------------------------------
+# [files]
+# Secret file encryption key: generate with `openssl rand -base64 32`.
+# You MUST set your own key for production; the embedded dev value is unsafe.
+# DO NOT rotate the key without a migration plan for existing encrypted files.
+# encryption_key = "CHANGE_ME_GENERATE_BASE64_32_BYTES"
+# WebP preview quality, 0–100 (upstream: 80.0).
+# webp_quality = 80.0
+# MIME types disallowed for upload or delivery (upstream: []).
+# blocked_mime_types = ["application/vnd.android.package-archive"]
+# ClamAV address (host:port); empty disables antivirus scanning.
+# clamd_host = "127.0.0.1:3310"
+# MIME types to scan for malware; [] means scan all types.
+# scan_mime_types = ["application/zip", "application/vnd.android.package-archive"]
+
+# [files.limit]
+# Minimum accepted file size, bytes (upstream: 1).
+# min_file_size = 1
+# Minimum image width and height, pixels (upstream: [1, 1]).
+# min_resolution = [1, 1]
+# Maximum image size in megapixels (upstream: 40).
+# max_mega_pixels = 40
+# Maximum image side length, pixels (upstream: 10000).
+# max_pixel_side = 10000
+
+# [files.preview]
+# Attachment preview dimensions [width, height] in pixels.
+# attachments = [1280, 1280]
+# Avatar preview dimensions, pixels.
+# avatars = [128, 128]
+# Background image preview dimensions, pixels.
+# backgrounds = [1280, 720]
+# Server icon preview dimensions, pixels.
+# icons = [128, 128]
+# Banner preview dimensions, pixels.
+# banners = [480, 480]
+# Custom emoji preview dimensions, pixels.
+# emojis = [128, 128]
+# Arbitrary additional category names with [w, h] dimensions are also accepted.
 
 [files.s3]
-# Must be an actual reachable S3-compatible storage endpoint.
+# S3-compatible storage (MinIO, AWS S3, Backblaze B2 and others).
+# S3 endpoint reachable from the Stoat backend; replace the example URL.
 endpoint = "https://s3.example.invalid"
+# S3 region (depends on the MinIO or other storage configuration).
 region = "us-east-1"
+# S3 Access Key ID.
 access_key_id = "CHANGE_ME"
+# S3 Secret Access Key.
 secret_access_key = "CHANGE_ME"
+# Bucket name for newly uploaded objects.
 default_bucket = "revolt-uploads"
+# Use path-style URLs for buckets (upstream: false; depends on the S3 provider).
+# path_style_buckets = false
+
+# --- Permissions, limits and features ----------------------------------------
+# [features]
+# Enable webhooks (upstream: false).
+# webhooks_enabled = false
+# Send push notifications for mass mentions (upstream: true).
+# mass_mentions_send_notifications = true
+# Permit @everyone/@role mentions (upstream: true).
+# mass_mentions_enabled = true
+
+# [features.limits.global]
+# Maximum group conversation size, members (upstream: 100).
+# group_size = 100
+# Maximum message embeds (upstream: 5).
+# message_embeds = 5
+# Maximum referenced messages in replies (upstream: 5).
+# message_replies = 5
+# Maximum reactions per message (upstream: 20).
+# message_reactions = 20
+# Maximum custom emojis per server (upstream: 100).
+# server_emoji = 100
+# Maximum roles per server (upstream: 200).
+# server_roles = 200
+# Maximum channels per server (upstream: 200).
+# server_channels = 200
+# Time since registration during which a user is considered new, hours (upstream: 72).
+# new_user_hours = 72
+# Maximum HTTP upload request body size, bytes (upstream: 20000000).
+# body_limit_size = 20000000
+# Restrict server creation to the specified user IDs; [] permits everyone.
+# restrict_server_creation = []
+# Maximum invitation lifetime, days (upstream: 30).
+# max_invite_duration_days = 30
+
+# [features.limits.new_user]
+# New users: maximum outgoing friend requests (upstream: 5).
+# outgoing_friend_requests = 5
+# Maximum owned bots (upstream: 2).
+# bots = 2
+# Maximum message length, characters (upstream: 2000).
+# message_length = 2000
+# Maximum attachments per message (upstream: 5).
+# message_attachments = 5
+# Maximum servers a user may create or join (upstream: 50).
+# servers = 50
+# Voice audio frequency, Hz (upstream: 16000).
+# voice_quality = 16000
+# Whether video calls are available (upstream: true).
+# video = true
+# Maximum video resolution [width, height] (upstream: [1080, 720]).
+# video_resolution = [1080, 720]
+# Allowed video aspect ratio range [min, max].
+# video_aspect_ratio = [0.3, 2.5]
+
+# [features.limits.new_user.file_upload_size_limit]
+# Per-file-category size limits for new users, in bytes.
+# attachments = 20000000  # attachments
+# avatars = 4000000       # avatars
+# backgrounds = 6000000   # backgrounds
+# icons = 2500000         # icons
+# banners = 6000000       # banners
+# emojis = 500000         # emoji
+
+# [features.limits.default]
+# Default users: maximum outgoing friend requests (upstream: 10).
+# outgoing_friend_requests = 10
+# Maximum owned bots (upstream: 5).
+# bots = 5
+# Maximum message length, characters (upstream: 2000).
+# message_length = 2000
+# Maximum attachments per message (upstream: 5).
+# message_attachments = 5
+# Maximum servers a user may create or join (upstream: 100).
+# servers = 100
+# Voice audio frequency, Hz (upstream: 16000).
+# voice_quality = 16000
+# Allow video in calls (upstream: true).
+# video = true
+# Maximum video resolution [width, height] (upstream: [1280, 720]).
+# video_resolution = [1280, 720]
+# Allowed video aspect ratio range [min, max].
+# video_aspect_ratio = [0.3, 2.5]
+
+# [features.limits.default.file_upload_size_limit]
+# Per-file-category size limits for default users, in bytes.
+# attachments = 20000000  # attachments
+# avatars = 4000000       # avatars
+# backgrounds = 6000000   # backgrounds
+# icons = 2500000         # icons
+# banners = 6000000       # banners
+# emojis = 500000         # emoji
+
+# [features.limits.premium]
+# Additional per-role limit profiles use #[serde(flatten)] in Rust.
+# The name "premium" is an example role key, NOT a nested roles section.
+# Specify every field as in [features.limits.default] for such a profile.
+# outgoing_friend_requests = 10
+# bots = 5
+# message_length = 2000
+# message_attachments = 5
+# servers = 100
+# voice_quality = 16000
+# video = true
+# video_resolution = [1280, 720]
+# video_aspect_ratio = [0.3, 2.5]
+# [features.limits.premium.file_upload_size_limit]
+# attachments = 20000000
+# avatars = 4000000
+# backgrounds = 6000000
+# icons = 2500000
+# banners = 6000000
+# emojis = 500000
+# NOTE: roles are dynamic keys at the [features.limits] level.
+
+# [features.advanced]
+# Delay threshold before forcing processing of a channel's pending messages (upstream: 5).
+# process_message_delay_limit = 5
+# Bonfire event-ID cache size; larger values consume more RAM (upstream: 2048).
+# seen_events_cache_size = 2048
+
+# [features.legal_links]
+# Public Terms of Service URL (upstream: "").
+# terms_of_service = "https://chat.example.invalid/terms"
+# Public Privacy Policy URL (upstream: "").
+# privacy_policy = "https://chat.example.invalid/privacy"
+# Public Community Guidelines URL (upstream: "").
+# guidelines = "https://chat.example.invalid/guidelines"
+
+# --- Sentry error telemetry --------------------------------------------------
+# [sentry]
+# Sentry DSNs for individual services. An empty value disables Sentry.
+# api = ""             # REST API
+# events = ""          # WebSocket/Bonfire
+# voice_ingress = ""   # Voice ingress
+# files = ""           # Autumn
+# proxy = ""           # January
+# pushd = ""           # Push daemon
+# crond = ""           # Scheduled background jobs
+# gifbox = ""          # GIF service

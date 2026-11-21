@@ -1,0 +1,38 @@
+--- a/crates/core/database/src/util/email.rs
++++ b/crates/core/database/src/util/email.rs
+@@ -1,6 +1,7 @@
+ use std::{collections::HashSet, sync::LazyLock};
+ 
+ use lettre::{
++    message::{header::{ContentTransferEncoding, ContentType}, MultiPart, SinglePart},
+     transport::smtp::{authentication::Credentials, client::Tls},
+     SmtpTransport,
+ };
+@@ -213,13 +214,22 @@
+ 
+     let text = render_template(&template.text, &variables).expect("valid `template`");
+ 
++    // Base64 avoids quoted-printable soft line breaks inside verification URLs.
++    let text_part = SinglePart::builder()
++        .header(ContentType::TEXT_PLAIN)
++        .header(ContentTransferEncoding::Base64)
++        .body(text);
++
+     let m = if let Some(html) = &template.html {
+-        m.multipart(lettre::message::MultiPart::alternative_plain_html(
+-            text,
+-            render_template(html, &variables).expect("valid `template`"),
+-        ))
++        let html_part = SinglePart::builder()
++            .header(ContentType::TEXT_HTML)
++            .header(ContentTransferEncoding::Base64)
++            .body(render_template(html, &variables).expect("valid `template`"));
++        m.multipart(MultiPart::alternative()
++            .singlepart(text_part)
++            .singlepart(html_part))
+     } else {
+-        m.body(text)
++        m.singlepart(text_part)
+     }
+     .expect("valid `message`");
+ 

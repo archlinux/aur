@@ -2,7 +2,7 @@
 # Source fetched by upstream release tag; patch old redis-rs for newer Rust.
 pkgname=stoat-server
 pkgver=0.16.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Stoat chat server'
 arch=('x86_64')
 url='https://stoat.chat'
@@ -72,6 +72,7 @@ source=(
     'stoat-Revolt.toml'
     'README.arch.md'
     'redis-rs-never-type.patch'
+    'stoat-email-base64.patch'
 )
 sha256sums=(
     'SKIP'
@@ -86,13 +87,17 @@ sha256sums=(
     '5c00305ecc75cf3a4910400df38034f3e40554eabfa38ccff39452091c4301a4'
     '380ba8357ae5a2ccba4da80c5389bdf25af81b92bbc93878eeb36286739a31c6'
     'f59cc377a9e7532b73244e57c3a8646f49c43d81f51b560c2e700f5983596c77'
-    'da3bc55cac5b5778afd04d900c488fea5a3b4b6254a042292480206eab59f281'
+    '560e8aabf96299f597f533c70febb441c64f94815d58163351641a75620cb4b4'
     '692e041a8207ba28a8b64d0ae3973994003860aff3c497ea8a1fd890f30492ef'
     '78a75f79f700c9c063cae5c853bd3beb63654146ab65b479b7a87e79f7898466'
+    '7fda96ed82712343362119b86c1b76a06538e9f8ecf5c44f2cd5dfb41899cc0b'
 )
 
 prepare() {
     cd "$srcdir/stoatchat"
+
+    # Patch email template for fix verify links
+    patch -Np1 -i "${srcdir}/stoat-email-base64.patch"
 
     # Avoid downloading a rustup-managed compiler during the Arch build.
     rm -f rust-toolchain.toml
