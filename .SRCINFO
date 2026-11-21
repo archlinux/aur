@@ -1,6 +1,6 @@
 pkgbase = freelens-bin
 	pkgdesc = Free Open Source Kubernetes IDE
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://freelens.app/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = freelens-bin
 	options = !emptydirs
 	source = freelens.desktop
 	b2sums = e2fe3e0c27ab531419ebaf2b233dd25ef09e9c5d8da607295ce5438c5277461bfa653fba07f94021788b758bb05af4c2295e815a7c3254385ec1829650260154
-	source_x86_64 = Freelens-2.0.0-x86_64.AppImage::https://github.com/freelensapp/freelens/releases/download/v2.0.0/Freelens-2.0.0-linux-amd64.AppImage
-	b2sums_x86_64 = 4b60cf8275bbdc483422d40573359c214ad3e5017d158586e4eac1a0878d24d1dacdf59f0d6a820b7a142d71a0f0579adecb1f09719c59b773fa37968c40aedb
-	source_aarch64 = Freelens-2.0.0-aarch64.AppImage::https://github.com/freelensapp/freelens/releases/download/v2.0.0/Freelens-2.0.0-linux-arm64.AppImage
-	b2sums_aarch64 = b1baf4ef0dd4f0ada87980386aeea8e6c7a2e61b81fd6622d31df7de31bf92b278a2d4d85f54c95db0e6e457ca9eb53b33f6ba73ef683bf10a15f1cf298082dc
+	source_x86_64 = Freelens-2.1.0-x86_64.AppImage::https://github.com/freelensapp/freelens/releases/download/v2.1.0/Freelens-2.1.0-linux-amd64.AppImage
+	b2sums_x86_64 = 7c164ddd9572e9132ccc876cd70a980986ea5f2df0651773c5b19c6fe237ef8d4af9cfed4ddcc1f2fcae065717cc15842b5d03e6f54f4fa3b239474b07df575d
+	source_aarch64 = Freelens-2.1.0-aarch64.AppImage::https://github.com/freelensapp/freelens/releases/download/v2.1.0/Freelens-2.1.0-linux-arm64.AppImage
+	b2sums_aarch64 = 9478e99d5f8cf993968e198d041d0895864b9e40fdcafd030e1539c44bc18b6fef2e6b62ad0069b07099cd990015bfc33053c820bc8c3bf4b89f6d0fbc2d4ae9
 
 pkgname = freelens-bin
