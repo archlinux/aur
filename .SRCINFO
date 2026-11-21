@@ -30,3 +30,9 @@ pkgname = restish-mcp
 	install = restish-plugin.install
 	depends = restish=2.3.0
 	depends = glibc
+
+pkgname = restish-pkcs11
+	pkgdesc = Restish TLS signer plugin for PKCS#11 devices like YubiKey
+	depends = restish=2.3.0
+	depends = glibc
+	optdepends = opensc: default PKCS#11 module

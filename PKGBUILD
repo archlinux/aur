@@ -3,7 +3,7 @@
 # Contributor: Ben Edwards <aur at artfuldodge dot io>
 
 pkgbase=restish
-pkgname=(restish restish-bulk restish-csv restish-mcp)
+pkgname=(restish restish-bulk restish-csv restish-mcp restish-pkcs11)
 pkgver=2.3.0
 pkgrel=1
 pkgdesc='A CLI for interacting with REST-ish HTTP APIs'
@@ -91,5 +91,13 @@ package_restish-mcp() {
   pkgdesc='Restish plugin that exposes registered APIs as MCP tools'
   depends=("restish=$pkgver" glibc)
   install=restish-plugin.install
+  _package_plugin
+}
+
+# No install hint: restish finds TLS signers on PATH
+package_restish-pkcs11() {
+  pkgdesc='Restish TLS signer plugin for PKCS#11 devices like YubiKey'
+  optdepends=('opensc: default PKCS#11 module')
+  depends=("restish=$pkgver" glibc)
   _package_plugin
 }
