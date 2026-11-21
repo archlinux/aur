@@ -1,5 +1,5 @@
 pkgname=jdk25-zulu-fx-bin
-pkgver=25.38.109
+pkgver=25.38.201
 pkgrel=1
 pkgdesc='Azul Zulu JDK 25 with JavaFX'
 arch=(
@@ -11,10 +11,10 @@ license=('custom')
 
 _jvm='java-25-zulu-fx'
 _javaver=25
-_zuluver=25.38.109
-_jdkver=25.0.5.0.3
-_sha256_x86_64='58da871f1d12ff834e408cfa9c10ad3e5ca590bc4623dfb2421c449b1971518a'
-_sha256_aarch64='d51b1dd9f0cdc43bb1236786506c3a7940e04afc6f7a34dbd1a5f48ef62512f1'
+_zuluver=25.38.201
+_jdkver=25.0.5.1
+_sha256_x86_64='ebb82dc36a1409683ad01911ada28187eba4e553099a69350be6b1250c9c59d0'
+_sha256_aarch64='b4b59cef91e27d4de1b632112e0e8aa1fc9dd1cbf2b1b1ef1eb44458579fa2ff'
 
 depends=(
     'java-runtime-common'
