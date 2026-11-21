@@ -1,6 +1,6 @@
 pkgbase = uu-remote-official-bin
 	pkgdesc = UU远程官方 Linux 客户端
-	pkgver = 4.48.3.33459
+	pkgver = 4.48.4.59255
 	pkgrel = 1
 	url = https://uuyc.163.com/
 	install = uu-remote-official-bin.install
@@ -55,6 +55,6 @@ pkgbase = uu-remote-official-bin
 	options = !strip
 	options = !debug
 	source = uuyc.deb::https://api.nrd.nie.163.com/api/v1/release/dl/8?channel=gwqd
-	sha256sums = ed21136ee051df2583091018d750abd48d0668d0f7e0aaeef5463fbe011730d6
+	sha256sums = ef493ff2fe194ae03c045d2674869c5277c2b846efdb29e93a02270cd653af06
 
 pkgname = uu-remote-official-bin

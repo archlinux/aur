@@ -6,7 +6,7 @@
 # maintainer-script work is reimplemented in uu-remote-official-bin.install.
 
 pkgname=uu-remote-official-bin
-pkgver=4.48.3.33459
+pkgver=4.48.4.59255
 pkgrel=1
 pkgdesc='UU远程官方 Linux 客户端'
 arch=('x86_64')
@@ -35,7 +35,7 @@ install="$pkgname.install"
 # The installer verifies package name/arch/version only; we pin the checksum
 # instead - a new upstream release fails verification and needs `updpkgsums`.
 source=("uuyc.deb::https://api.nrd.nie.163.com/api/v1/release/dl/8?channel=gwqd")
-sha256sums=('ed21136ee051df2583091018d750abd48d0668d0f7e0aaeef5463fbe011730d6')
+sha256sums=('ef493ff2fe194ae03c045d2674869c5277c2b846efdb29e93a02270cd653af06')
 makedepends=('libarchive')
 
 # Re-derives pkgver from the control member so a release bump is just
