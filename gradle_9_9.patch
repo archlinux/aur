@@ -1,0 +1,4 @@
+3c3
+< distributionUrl=https\://services.gradle.org/distributions/gradle-9.4.1-bin.zip
+---
+> distributionUrl=https\://services.gradle.org/distributions/gradle-9.9.2-bin.zip

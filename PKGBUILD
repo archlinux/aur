@@ -3,25 +3,28 @@
 # shellcheck disable=SC2164,SC2154,SC2034
 _pkgname=recaf
 _jdkver=25
+_gradlever=9_9
 pkgname=${_pkgname}-git
-pkgver=r5296.ee4707a49
-pkgrel=2
+pkgver=r5626.42368be51
+pkgrel=1
 pkgdesc="The modern Java bytecode editor"
 arch=("any")
 url="https://github.com/Col-E/Recaf"
 license=("MIT")
-depends=("java-environment>=$_jdkver" "ttf-font")
-makedepends=("git" "java-environment>=$_jdkver")
+depends=("jre$_jdkver-openjdk" "ttf-font")
+makedepends=("git" "jdk$_jdkver-openjdk")
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-bin")
 replaces=("recaf")
 source=(
     "recaf::git+https://github.com/Col-E/Recaf#branch=master"
     "remove_jetbrains_annotations.patch"
+    "gradle_$_gradlever.patch"
 )
 sha256sums=(
     "SKIP"
     "ac6c4a2128628aa398898fcdc1b68020c2d6b719a0695fee436b60dd313738e8"
+    "50b6aa4098c6c8addb326afcfbf11936fcaa2041cbe7417d8931efe39d5deb1e"
 )
 
 pkgver() {
@@ -31,42 +34,25 @@ pkgver() {
 
 prepare() {
 	patch "$srcdir/$_pkgname/build.gradle" "../remove_jetbrains_annotations.patch"
+	patch "$srcdir/$_pkgname/gradle/wrapper/gradle-wrapper.properties" "../gradle_$_gradlever.patch"
 }
 
-get_java_home() {
-    local jvm
-    jvm="$(archlinux-java get)"
-    ver=$("/usr/lib/jvm/$jvm/bin/java" -version 2>&1 | awk -F'"' '/version/{print $2}' | cut -d. -f1)
-    if [[ "$ver" -ge "$_jdkver" ]]; then
-        echo "  ==> NOTE: using currently selected jvm $jvm" >&2
-        echo "$jvm"
-        return
-    else
-        echo "  ==> NOTE: current jvm $jvm is not version $_jdkver or later, will scan for available jvm" >&2
-        echo "  ==> NOTE: use \`archlinux-java set <JVM>' to select a specific jvm for this build" >&2
-    fi
-
-    for jvm in /usr/lib/jvm/java-*; do
-        [[ -x "$jvm/bin/javac" ]] || continue
-        local ver
-        ver=$("$jvm/bin/java" -version 2>&1 | awk -F'"' '/version/{print $2}' | cut -d. -f1)
-        if [[ "$ver" -ge "$_jdkver" ]]; then
-            echo "  ==> NOTE: using found matching jvm at $jvm" >&2
-            echo "$jvm"
-            return
-        fi
-    done
-
-    echo "  ==> ERROR: no matching jvm version $_jdkver or later found in /usr/lib/jvm" >&2
-    return 1
+_gradle_env() {
+    export JAVA_HOME="/usr/lib/jvm/java-$_jdkver-openjdk"
+    export TARGET_VERSION="$_jdkver"
+    export GRADLE_USER_HOME="$srcdir/$_pkgname/.gradle"
 }
 
 build() {
     cd "$srcdir/$_pkgname"
-    export JAVA_HOME="$(get_java_home)"
-    export TARGET_VERSION="$_jdkver"
-    export GRADLE_USER_HOME="$srcdir/$_pkgname/.gradle"
-    ./gradlew --no-daemon build
+    _gradle_env
+    ./gradlew --no-daemon build -x test
+}
+
+check() {
+    cd "$srcdir/$_pkgname"
+    _gradle_env
+    ./gradlew --no-daemon test
 }
 
 package() {

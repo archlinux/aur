@@ -1,13 +1,13 @@
 pkgbase = recaf-git
 	pkgdesc = The modern Java bytecode editor
-	pkgver = r5296.ee4707a49
-	pkgrel = 2
+	pkgver = r5626.42368be51
+	pkgrel = 1
 	url = https://github.com/Col-E/Recaf
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = java-environment>=25
-	depends = java-environment>=25
+	makedepends = jdk25-openjdk
+	depends = jre25-openjdk
 	depends = ttf-font
 	provides = recaf
 	conflicts = recaf
@@ -15,7 +15,9 @@ pkgbase = recaf-git
 	replaces = recaf
 	source = recaf::git+https://github.com/Col-E/Recaf#branch=master
 	source = remove_jetbrains_annotations.patch
+	source = gradle_9_9.patch
 	sha256sums = SKIP
 	sha256sums = ac6c4a2128628aa398898fcdc1b68020c2d6b719a0695fee436b60dd313738e8
+	sha256sums = 50b6aa4098c6c8addb326afcfbf11936fcaa2041cbe7417d8931efe39d5deb1e
 
 pkgname = recaf-git
