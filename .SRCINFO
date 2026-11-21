@@ -13,6 +13,7 @@ pkgbase = rmpcd-git
 	optdepends = libnotify: for the notify plugin
 	optdepends = xdg-utils: for the lastfm plugin
 	optdepends = rmpc: for the lyrics plugin
+	optdepends = git: for installing and upgrading remote plugins (rmpcd pkg)
 	provides = rmpcd
 	conflicts = rmpcd
 	options = !lto

@@ -1,7 +1,7 @@
 # Maintainer: MieraK <mrkpwnz@gmail.com>
 pkgname=rmpcd-git
 _pkgname=rmpcd
-pkgver=0.1.0.r801.g1506013
+pkgver=0.1.0.r821.g51c5652
 pkgrel=1
 pkgdesc='A companion MPD client to rmpc intended to run as a daemon'
 url='https://rmpc.mierak.dev/'
@@ -11,7 +11,8 @@ depends=(libgcc glibc)
 optdepends=(
     'libnotify: for the notify plugin'
     'xdg-utils: for the lastfm plugin'
-    'rmpc: for the lyrics plugin')
+    'rmpc: for the lyrics plugin'
+    'git: for installing and upgrading remote plugins')
 conflicts=('rmpcd')
 provides=('rmpcd')
 makedepends=(cargo git)
