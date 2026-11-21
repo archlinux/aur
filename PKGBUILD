@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=arrow
-_pkgver=26.0.1
+_pkgver=26.0.1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -61,8 +61,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5e2300ab556c3e1ee9cedc3660a5c8c4')
-b2sums=('9acf77e209442141b403798249558d51587be69e9443fa0f1848859334f6aa125fd39ae03b20418a96aec9581c99ec5de2d4e15ebdeb095a6017ab294ceed526')
+md5sums=('2742553165b2d561699fabde63d01845')
+b2sums=('97dd4d0d90ff248272222173db21cd70986fad692c4a601aa44c1ffa576460306b29cf2506168707bd3ddd93258ecd6d0e58e35895d66e816283d8dba479c658')
 
 build() {
   mkdir build
