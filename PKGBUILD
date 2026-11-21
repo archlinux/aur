@@ -5,7 +5,7 @@
 
 pkgbase=xzram
 pkgname=('xzram' 'xzram-gui')
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Cross-distro Linux swap management (zram, swap files, sysctl tuning)"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ _srcname=XZram
 source=("$_srcname-$pkgver.tar.gz::https://github.com/asafelobotomy/XZram/archive/refs/tags/v$pkgver.tar.gz")
 # Pinned from the published v$pkgver tag archive (release CI: scripts/ci-aur-package.sh
 # AUR_MODE=release). Re-pin on every version bump.
-sha256sums=('e312b9557f209bcab3dae058d36c05f0540e22fc09d196084d5ea70c5c380196')
+sha256sums=('81135b5d4d897828c6732682e8f6b8ecb8df578d1e63a42f8ffae9413e4cd839')
 
 prepare() {
   cd "$_srcname-$pkgver"
