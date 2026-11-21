@@ -1,7 +1,7 @@
 # Maintainer: koh11235813 <koh11235813@gmail.com>
 # Contributor: togatoga <>
 pkgname='karukan-git'
-pkgver=0.1.0.r103.g4ed2450
+pkgver=0.1.0.r109.g2f0a00a
 pkgrel=1
 pkgdesc="Japanese Input Method System for Linux, Neural Kana-Kanji Conversion Engine + fcitx5 IME"
 arch=('x86_64')
@@ -28,10 +28,10 @@ pkgver() {
     if desc=$(git describe --long --abbrev=7 2>/dev/null); then
         printf '%s' "$desc" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
     else
-        # No reachable tag: prefix with the crate version instead
-        [[ -f $_crate/Cargo.toml ]] &&
-            cargo_ver=$(grep -m1 '^version' "$_crate/Cargo.toml" | cut -d'"' -f2)
-        # Falls back to no version prefix if Cargo.toml ever stops declaring a literal version
+        # No reachable tag: prefix with the workspace version instead. Upstream keeps it
+        # only in the root Cargo.toml's [workspace.package]; every crate inherits it
+        cargo_ver=$(awk -F'"' '/^\[/ { s = ($0 == "[workspace.package]") } s && /^version[[:space:]]*=/ { print $2; exit }' Cargo.toml)
+        # Falls back to no version prefix if the root Cargo.toml ever stops declaring a literal version
         printf '%sr%s.g%s' "${cargo_ver:+$cargo_ver.}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     fi
 }
