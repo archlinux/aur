@@ -6,7 +6,7 @@
 
 pkgname=stm32cubeprog
 pkgver=2.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An all-in-one multi-OS software tool for programming STM32 products.'
 arch=('x86_64')
 url='https://www.st.com/en/development-tools/stm32cubeprog.html'
@@ -18,49 +18,53 @@ depends=(
 )
 
 optdepends=(
+  'archlinux-java-run: System Java runtime for STM32CubeProgrammer (For Wayland Launcher Only)'
+  'java-openjfx-bin: System JavaFX runtime for STM32CubeProgrammer (For Wayland Launcher Only)'
   'stlink: udev rules for ST-LINK devices'
 )
 
 makedepends=(
   'gendesk'
   'icoutils'
-  'java-environment'
-  'java-runtime'
-  'p7zip'
 )
 
 provides=('stm32cubeprogrammer')
 options=('!strip' '!debug')
 
-_installer="SetupSTM32CubeProgrammer_${pkgver}_linux-${arch}.zip"
-
 source=(
-  "local://${_installer}"
   'SLA0048_STM32CubeProg.pdf'
-  'ShortcutProgrammerPanelConsoleHelper.java'
+  'STM32CubeProgrammer_Wayland'
 )
 
-sha256sums=('c450051932af9050852ea34f0a31f5178dd9785e7ee084de8d0b30fb8e0f1f76'
-            'c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702'
-            '4896e0f705090cba54437a95ab19a109d07abd2d42b47626347250c772e6d79c')
+sha256sums=('c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702'
+            'b6b231ef58cac7a46f3eacd5ee6a6969cba3cf57532265d12489f3c9bbaedc25')
 
-prepare() {
-  if [ ! -f "${startdir}/${_installer}" ]; then
-  echo ""
-  echo "  ==> ERROR: Source package '${_installer}' not found in build directory!"
-  echo "  ==> Please download the Linux installer manually from:"
-  echo "      ${url}"
-  echo "  ==> And place it in: ${startdir}"
-  echo ""
+_installer="SetupSTM32CubeProgrammer_${pkgver}_linux-${arch}.zip"
+_installer_sha256='c450051932af9050852ea34f0a31f5178dd9785e7ee084de8d0b30fb8e0f1f76'
+
+verify() {
+  if [[ ! -f "${_installer}" ]]; then
+    cat >&2 <<EOF
+
+  ==> ERROR: Source package '${_installer}' not found in build directory!
+
+  ST requires users to sign in before downloading the Linux installer.
+
+  1. Download the Linux installer manually from:
+     ${url}
+
+  2. Place the downloaded file in the same directory as PKGBUILD.
+
+EOF
+    return 1
   fi
 
+  printf '%s  %s\n' "${_installer_sha256}" "${_installer}" | sha256sum --check -
+}
+
+prepare() {
   cd "${srcdir}"
-
-  chmod u+x jre/bin/java
-
-  javac --release 8 -cp "SetupSTM32CubeProgrammer-${pkgver}.exe" -d . ShortcutProgrammerPanelConsoleHelper.java
-
-  7z a "SetupSTM32CubeProgrammer-${pkgver}.exe" com/st/CustomPanels/ShortcutProgrammerPanelConsoleHelper.class
+  bsdtar -xf "${startdir}/${_installer}"
 
   gendesk -f -n \
     --pkgname "${pkgname}" \
@@ -68,6 +72,15 @@ prepare() {
     --path "/opt/${pkgname}/bin" \
     --name "STM32CubeProgrammer" \
     --exec "/opt/${pkgname}/bin/STM32CubeProgrammer" \
+    --icon "${pkgname}" \
+    --categories "Development"
+
+  gendesk -f -n \
+    --pkgname "${pkgname}_wayland" \
+    --pkgdesc "${pkgdesc}" \
+    --path "/opt/${pkgname}/bin" \
+    --name "STM32CubeProgrammer (Wayland)" \
+    --exec "/opt/${pkgname}/bin/STM32CubeProgrammer_Wayland" \
     --icon "${pkgname}" \
     --categories "Development"
 
@@ -91,7 +104,7 @@ build() {
   rm -rf build icon
   mkdir -p build icon
 
-  ./jre/bin/java "-DINSTALL_PATH=${srcdir}/build" -jar "SetupSTM32CubeProgrammer-${pkgver}.exe" -options-system
+  ./jre/bin/java "-DINSTALL_PATH=${srcdir}/build" -jar "SetupSTM32CubeProgrammer-${pkgver}.exe" -auto
 
   icotool -x "build/util/Programmer.ico" -o "icon"
   icotool -x "build/util/STM32TrustedPackageCreator.ico" -o "icon"
@@ -124,12 +137,16 @@ package() {
 
   # desktop entries
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/${pkgname}_wayland.desktop" "${pkgdir}/usr/share/applications/${pkgname}_wayland.desktop"
   install -Dm644 "${srcdir}/${pkgname}-trusted-package-creator.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}-trusted-package-creator.desktop"
+
+  install -Dm755 "${srcdir}/STM32CubeProgrammer_Wayland" "${pkgdir}/opt/${pkgname}/bin/STM32CubeProgrammer_Wayland"
 
   # command wrappers
   for entry in \
     'stm32cubeprogrammer:STM32CubeProgrammer' \
+    'stm32cubeprogrammer_wayland:STM32CubeProgrammer_Wayland' \
     'stm32_programmer_cli:STM32_Programmer.sh' \
     'stm32_keygen_cli:STM32_KeyGen_CLI' \
     'stm32_signingtool_cli:STM32_SigningTool_CLI' \
