@@ -1,6 +1,6 @@
 pkgbase = rasusa
 	pkgdesc = Random subsampling of sequencing reads and alignments to a specified coverage
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://github.com/mbhall88/rasusa
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = rasusa
 	depends = xz
 	options = !lto
 	options = !debug
-	source = rasusa-5.1.0.tar.gz::https://github.com/mbhall88/rasusa/archive/5.1.0.tar.gz
-	sha256sums = c58ee8cdb2e40c921fbef4b8ceffcb7999687b473152f942a6bda0089da6b256
+	source = rasusa-5.1.1.tar.gz::https://github.com/mbhall88/rasusa/archive/5.1.1.tar.gz
+	sha256sums = c9674624e2a24af5924b55709969e761e2b6abb43fe8cf45abfd40d693b65c26
 
 pkgname = rasusa

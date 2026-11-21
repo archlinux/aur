@@ -2,8 +2,8 @@
 
 pkgname=rasusa
 _pkgname=rasusa
-_tag=5.1.0
-pkgver=5.1.0
+_tag=5.1.1
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Random subsampling of sequencing reads and alignments to a specified coverage"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('rust' 'cmake' 'pkgconf')
 # Upstream's release profile already strips symbols and enables Rust LTO.
 options=('!lto' '!debug')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/$_tag.tar.gz")
-sha256sums=('c58ee8cdb2e40c921fbef4b8ceffcb7999687b473152f942a6bda0089da6b256')
+sha256sums=('c9674624e2a24af5924b55709969e761e2b6abb43fe8cf45abfd40d693b65c26')
 
 prepare() {
     cd "$_pkgname-$_tag"
