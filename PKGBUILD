@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=bladebro-bin
-pkgver=4.8.2
+pkgver=4.8.3
 pkgrel=1
 pkgdesc='Agentic browser driver for AI: five MCP tools over a real Chromium session'
 arch=('x86_64' 'aarch64')
@@ -22,13 +22,13 @@ options=('!strip' '!debug')
 
 source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
+sha256sums_x86_64=('c288a3e1bdc914639e9b187f151e4094b532f76b57a0fe0c1287a8a5f9e2c6bc')
+sha256sums_aarch64=('e904d5cda53b42ef2a0d890a683245f76cfcc8e9e40d51dfdd982a47d36e589c')
 
 # spelled out per architecture rather than with $CARCH: .SRCINFO records what the build host
 # expanded, so $CARCH would write the x86_64 filename into source_aarch64
 source_x86_64=("bladebro-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/bladebro-linux-x86_64")
 source_aarch64=("bladebro-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/bladebro-linux-aarch64")
-sha256sums_x86_64=('6c363d5611d2f804c90431e2141645e5dc77af35c766e040afaef3077c384736')
-sha256sums_aarch64=('2b0157d7ed13879325ff53e2c0a65b705a1a8f095e24a61701f0b99fae79416b')
 
 latestver() {
   gh api repos/dondai44423/bladebro/releases/latest --jq .tag_name |
