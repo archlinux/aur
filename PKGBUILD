@@ -2,20 +2,20 @@
 # Contributor: Jan Dolinar <dolik.rce@gmail.com>
 # Contributor: Andre Klitzing <andre () incubo () de>
 pkgname=dput
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="Debian package upload tool"
 arch=('any')
 url="http://packages.qa.debian.org/dput"
 license=('GPL')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 depends=('python' 'python-debian' 'python-gpgme' 'python-pyxdg')
 source=(
   http://http.debian.net/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz
   pyxdg-compatibility.patch
 )
-sha256sums=('fa6daa3fe08ff2332330ac44236bc405850fc9d001870bc24caa47ba8a122be0'
-            'dbc27b9921bb19f0aca769f4ba1ef20c7033d2fd7869641c61660fdd7f04991c')
+sha256sums=('000137ee683a6b896da56ce3f8616e109610231b7b87a45aa7da222386bb6a01'
+            '06dfc762aa3c8b3a956b48db8eadf5e22461321f0d3a4270525875195c6086f4')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -26,13 +26,13 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   mv ${pkgdir}/usr/bin/{execute-,}dput
   mv ${pkgdir}/usr/bin/{execute-,}dcut
@@ -45,6 +45,10 @@ package() {
   for bc in dput dcut; do
     install -m644 bash-completion/${bc}.bash "${pkgdir}/usr/share/bash-completion/completions/$bc"
   done
+
+  # license
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 LICENSE.GPL-3 "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # docs
   install -d "${pkgdir}/usr/share/doc/${pkgname}"
