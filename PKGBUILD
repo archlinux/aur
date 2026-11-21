@@ -1,7 +1,7 @@
 # Maintainer: Dheeraj Vittal Shenoy <dheerajshenoy22@gmail.com>
 pkgname=lektra-git
 pkgver=0.8.0.r26.gf4ba3a8
-pkgrel=3
+pkgrel=4
 pkgdesc="High-performance document and image viewer that prioritizes screen space and control."
 arch=('x86_64')
 url="https://codeberg.org/lektra/lektra"
@@ -11,6 +11,8 @@ depends=(
     'qt6-svg'
     'qt6-imageformats'
     'libarchive'
+    'fontconfig'
+    'zlib'
 )
 optdepends=(
     'djvulibre: DjVu documents'
@@ -22,7 +24,13 @@ optdepends=(
     'kvantum: Kvantum theme engine'
     'lua-language-server: completion for init.lua, using the installed Lua stubs'
 )
-makedepends=('git' 'cmake' 'pkgconf')
+makedepends=(
+    'git'
+    'cmake'
+    'pkgconf'
+    'qt6-tools'
+    'unzip'
+)
 provides=('lektra')
 conflicts=('lektra' 'lektra-bin')
 source=(
