@@ -21,7 +21,7 @@ noextract=("$_deb")
 options=('!strip' '!debug')
 
 package() {
-    bsdtar -xOf "$srcdir/$_deb" data.tar.xz | bsdtar -xf - -C "$pkgdir"
+    bsdtar -xOf "$srcdir/$_deb" data.tar.xz | bsdtar --no-same-owner -xf - -C "$pkgdir"
     install -Dm644 "$pkgdir/usr/share/doc/avernella/copyright" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
