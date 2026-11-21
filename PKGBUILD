@@ -1,7 +1,7 @@
 # Maintainer: Nemo <archlinux at captnemo dot in>
 # Co-maintainer: Eduard T <edu4rdshl>
 pkgname=signal-desktop-beta-bin
-pkgrel=1
+pkgrel=2
 pkgdesc="Private messaging from your desktop"
 arch=('x86_64')
 url='https://signal.org'
