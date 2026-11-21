@@ -2,26 +2,26 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 
 pkgname='tabdance-elvish-bin'
-pkgver=0.21.0_tabdance.3
+pkgver=0.21.0_tabdance.4
 pkgrel=1
 pkgdesc='An Elvish fork with completion enhancements'
 url='https://github.com/tab-dance/elvish'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('BSD-2-Clause')
-provides=('tabdance-elvish')
-conflicts=('tabdance-elvish')
+provides=('elvish')
+conflicts=('elvish')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tab-dance/tabdance-elvish/releases/download/v0.21.0-tabdance.3/elvish_0.21.0-tabdance.3_linux_arm64.tar.gz")
-sha256sums_aarch64=('c618be10a6e9dd78cec4a8794f1a49e492405aa3bc87bc446cf94b70c711d287')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tab-dance/tabdance-elvish/releases/download/v0.21.0-tabdance.4/elvish_0.21.0-tabdance.4_linux_arm64.tar.gz")
+sha256sums_aarch64=('1e626b5501b39429e0bb6ec680a2fbe3ee9b1533ad60741159cf5c335102c0aa')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/tab-dance/tabdance-elvish/releases/download/v0.21.0-tabdance.3/elvish_0.21.0-tabdance.3_linux_armv7.tar.gz")
-sha256sums_armv7h=('16b678b4bbd128edade0307c72df8fa34e61da19823c442766fe99dea4797a8a')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/tab-dance/tabdance-elvish/releases/download/v0.21.0-tabdance.4/elvish_0.21.0-tabdance.4_linux_armv7.tar.gz")
+sha256sums_armv7h=('3665cea3729313674fd8e6483570f10e293de85e075c096ed8197cb702891b69')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/tab-dance/tabdance-elvish/releases/download/v0.21.0-tabdance.3/elvish_0.21.0-tabdance.3_linux_386.tar.gz")
-sha256sums_i686=('6b8acd1d90ed89568f811107633c54e83f347e5b8b2bf84a1a877b263a160b46')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/tab-dance/tabdance-elvish/releases/download/v0.21.0-tabdance.4/elvish_0.21.0-tabdance.4_linux_386.tar.gz")
+sha256sums_i686=('021dec04195284ec49ffdb4b601f6975130fbf912ec787756735a4ad005a724a')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tab-dance/tabdance-elvish/releases/download/v0.21.0-tabdance.3/elvish_0.21.0-tabdance.3_linux_amd64.tar.gz")
-sha256sums_x86_64=('c169b0c9fb5690e32784eaae2821c740d5160087b231462c784858a7632892e3')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tab-dance/tabdance-elvish/releases/download/v0.21.0-tabdance.4/elvish_0.21.0-tabdance.4_linux_amd64.tar.gz")
+sha256sums_x86_64=('08a1ad35793658c1b568b85664cf01a026a063a606940e3fdc0857d0134cbe1c')
 
 package() {
   install -Dm755 "./elvish" "${pkgdir}/usr/bin/elvish"
