@@ -1,0 +1,35 @@
+# pacman install scriptlet of omarchy-broadcast-git: prints the steps that
+# the package does not take itself. It changes nothing on the system.
+
+_doc=/usr/share/doc/omarchy-broadcast
+
+_next_steps() {
+  cat <<EOF
+==> omarchy-broadcast: nothing is enabled. Next steps:
+  1. Configure the v4l2loopback device (needs root, once), as in
+     $_doc/docs/setup/loopback.md:
+       sudo install -Dm644 $_doc/examples/modprobe.d/omarchy-broadcast.conf \\
+         /etc/modprobe.d/omarchy-broadcast.conf
+     If /etc/modprobe.d already sets "options v4l2loopback", merge the two
+     lines instead (loopback.md, "Several devices"). Then load the module
+     at boot and reload it:
+       echo v4l2loopback | sudo tee /etc/modules-load.d/v4l2loopback.conf
+       sudo modprobe -r v4l2loopback && sudo modprobe v4l2loopback
+  2. As each user, start the daemon and enable it at login:
+       systemctl --user enable --now omarchy-broadcastd
+  3. Optional, the noise-removed microphone:
+       omarchy-broadcast mic on
+EOF
+}
+
+post_install() {
+  _next_steps
+}
+
+post_upgrade() {
+  cat <<EOF
+==> omarchy-broadcast: restart the daemon to run the new version:
+       systemctl --user try-restart omarchy-broadcastd
+    First-time setup: $_doc/docs/setup/daemon.md
+EOF
+}
