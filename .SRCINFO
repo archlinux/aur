@@ -1,7 +1,7 @@
 pkgbase = firedragon
 	pkgdesc = FireDragon is a cross-platform, feature-rich and privacy-focused web browser
 	pkgver = 13.13.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://gitlab.com/garuda-linux/firedragon/firedragon13
 	install = firedragon.install
