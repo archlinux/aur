@@ -1,28 +1,27 @@
 pkgbase = appzones
 	pkgdesc = Long-lived sandboxes for desktop apps, dev tools and AI agents (bubblewrap, pasta, nftables)
-	pkgver = 0.11.3
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/mirql/appzones
 	install = appzones.install
 	arch = x86_64
 	license = MIT
-	makedepends = pkgconf
-	makedepends = wayland
-	depends = python>=3.11
+	makedepends = cargo
 	depends = bubblewrap
 	depends = passt
 	depends = nftables
 	depends = iproute2
-	optdepends = wayland: desktop apps (each zone's own Wayland socket, zone-wayland)
+	depends = glibc
+	depends = gcc-libs
 	optdepends = xdg-dbus-proxy: the session bus in zones (portals, notifications, tray)
 	optdepends = dbus: apps with bus = "zone" (their own bus in the zone)
 	optdepends = sudo: appzones mount (for members of the appzones group)
 	optdepends = hyprland: zone border colours and window tags
 	optdepends = nix: the packages setting
 	backup = etc/sudoers.d/appzones
-	source = appzones-0.11.3.tar.gz::https://github.com/mirql/appzones/archive/refs/tags/v0.11.3.tar.gz
+	source = appzones-0.12.0.tar.gz::https://github.com/mirql/appzones/archive/refs/tags/v0.12.0.tar.gz
 	source = appzones.sysusers
-	sha256sums = 1f816212419c0d41efd604cca871eb998d64f1669fae154d29154957613a4d36
+	sha256sums = 6e077d023ae0f8a3300c5ca235d362189763d46e43dcef2a82b238ff1b491479
 	sha256sums = SKIP
 
 pkgname = appzones
