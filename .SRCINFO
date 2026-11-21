@@ -1,12 +1,14 @@
 pkgbase = luxtide-git
 	pkgdesc = Automatic screen brightness that follows the sun, for DDC/CI monitors and laptop panels (development version)
-	pkgver = 2.0.0.r17.g2c29bca
+	pkgver = 2.0.0.r18.gb319302
 	pkgrel = 1
 	url = https://github.com/MikolajQ/luxtide
 	install = luxtide.install
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = fakeroot
+	makedepends = make
 	depends = gtk4
 	depends = python
 	depends = python-gobject
@@ -17,6 +19,8 @@ pkgbase = luxtide-git
 	provides = luxtide
 	conflicts = luxtide
 	conflicts = ddc-sun-dimmer
+	options = !strip
+	options = !debug
 	source = git+https://github.com/MikolajQ/luxtide.git
 	sha256sums = SKIP
 

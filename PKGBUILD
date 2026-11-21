@@ -2,14 +2,16 @@
 
 pkgname=luxtide-git
 _name=luxtide
-pkgver=2.0.0.r17.g2c29bca
+pkgver=2.0.0.r18.gb319302
 pkgrel=1
 pkgdesc='Automatic screen brightness that follows the sun, for DDC/CI monitors and laptop panels (development version)'
 arch=('any')
 url='https://github.com/MikolajQ/luxtide'
 license=('MIT')
 depends=('gtk4' 'python' 'python-gobject')
-makedepends=('git')
+# fakeroot and make are part of base-devel, which AUR packages usually take
+# for granted; listed so that an AUR helper installs them where it is missing.
+makedepends=('git' 'fakeroot' 'make')
 optdepends=('ddcutil: external monitors over DDC/CI'
             'gnome-shell-extension-appindicator: tray icon on GNOME'
             'geoclue: find the location automatically'
@@ -17,6 +19,9 @@ optdepends=('ddcutil: external monitors over DDC/CI'
 provides=("$_name")
 # ddc-sun-dimmer is the project's former name.
 conflicts=("$_name" 'ddc-sun-dimmer')
+# Python only, no binaries: nothing to strip, no debug package, and no need
+# for strip or debugedit at build time.
+options=('!strip' '!debug')
 install=$_name.install
 source=("git+$url.git")
 sha256sums=('SKIP')
