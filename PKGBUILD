@@ -31,13 +31,9 @@ makedepends=(
 provides=('stm32cubeprogrammer')
 options=('!strip' '!debug')
 
-source=(
-  'SLA0048_STM32CubeProg.pdf'
-  'STM32CubeProgrammer_Wayland'
-)
+source=('STM32CubeProgrammer_Wayland')
 
-sha256sums=('c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702'
-            'b6b231ef58cac7a46f3eacd5ee6a6969cba3cf57532265d12489f3c9bbaedc25')
+sha256sums=('b6b231ef58cac7a46f3eacd5ee6a6969cba3cf57532265d12489f3c9bbaedc25')
 
 _installer="SetupSTM32CubeProgrammer_${pkgver}_linux-${arch}.zip"
 _installer_sha256='c450051932af9050852ea34f0a31f5178dd9785e7ee084de8d0b30fb8e0f1f76'
@@ -133,7 +129,6 @@ package() {
   # documentation
   install -Dm644 "${pkgdir}/opt/${pkgname}/doc/Readme.txt" -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 "${pkgdir}/opt/${pkgname}/doc/license.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 "${srcdir}/SLA0048_STM32CubeProg.pdf" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # desktop entries
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"

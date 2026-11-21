@@ -15,9 +15,7 @@ pkgbase = stm32cubeprog
 	provides = stm32cubeprogrammer
 	options = !strip
 	options = !debug
-	source = SLA0048_STM32CubeProg.pdf
 	source = STM32CubeProgrammer_Wayland
-	sha256sums = c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702
 	sha256sums = b6b231ef58cac7a46f3eacd5ee6a6969cba3cf57532265d12489f3c9bbaedc25
 
 pkgname = stm32cubeprog
