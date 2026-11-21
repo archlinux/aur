@@ -2,7 +2,7 @@
 
 pkgname=dx-rust-bin
 _pkgname=dx-rust
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 _tag="v${pkgver}"
 # Upstream's Linux asset has no version in its name, so the download is
@@ -40,7 +40,7 @@ source=(
   "${_pkgname}.desktop"
 )
 noextract=("${_pkgname}-${pkgver}-linux.tar.xz")
-sha256sums=('57935a2f1ee34174c1c1f79862defbc1049d8e0039426e5b6a3cd1acb0af3fc3'
+sha256sums=('353f743518d0916e1e5a79e34bb8c696ea90ecfeb6f859b3626aa02672ad37c2'
             'c8cf5930f4aa89e38e1463d58ee3059894d024b0f6a28fc2db9113d749faa105'
             '292667d49ea4e8b11d048b38c9c0e5b52b6e0c5e3a62b6a9b986fad00a712d8f')
 

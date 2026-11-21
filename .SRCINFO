@@ -1,6 +1,6 @@
 pkgbase = dx-rust-bin
 	pkgdesc = Deus Ex rebuilt from scratch in Rust on the Bevy engine (prebuilt release, needs your own Deus Ex: GOTY)
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/Grissyelda/dx-rust
 	install = dx-rust-bin.install
@@ -23,13 +23,13 @@ pkgbase = dx-rust-bin
 	optdepends = steam: install Deus Ex: GOTY; DX RUST searches Steam libraries itself
 	provides = dx-rust
 	conflicts = dx-rust
-	noextract = dx-rust-0.12.0-linux.tar.xz
+	noextract = dx-rust-0.13.0-linux.tar.xz
 	options = !strip
 	options = !debug
-	source = dx-rust-0.12.0-linux.tar.xz::https://github.com/Grissyelda/dx-rust/releases/download/v0.12.0/dxrust-steamdeck.tar.xz
+	source = dx-rust-0.13.0-linux.tar.xz::https://github.com/Grissyelda/dx-rust/releases/download/v0.13.0/dxrust-steamdeck.tar.xz
 	source = dx-rust.sh
 	source = dx-rust.desktop
-	sha256sums = 57935a2f1ee34174c1c1f79862defbc1049d8e0039426e5b6a3cd1acb0af3fc3
+	sha256sums = 353f743518d0916e1e5a79e34bb8c696ea90ecfeb6f859b3626aa02672ad37c2
 	sha256sums = c8cf5930f4aa89e38e1463d58ee3059894d024b0f6a28fc2db9113d749faa105
 	sha256sums = 292667d49ea4e8b11d048b38c9c0e5b52b6e0c5e3a62b6a9b986fad00a712d8f
 
