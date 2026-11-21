@@ -1,6 +1,6 @@
 pkgbase = parrot-tts-bin
 	pkgdesc = A free, offline, private AI text-to-speech desktop app built on Rust 🦜
-	pkgver = 26.10.1
+	pkgver = 26.11.1
 	pkgrel = 1
 	url = https://github.com/rishiskhare/parrot
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = parrot-tts-bin
 	depends = pcaudiolib
 	provides = parrot-tts
 	conflicts = parrot-tts
-	source = LICENSE_26.10.1::https://raw.githubusercontent.com/rishiskhare/parrot/refs/tags/v26.10.1/LICENSE
+	source = LICENSE_26.11.1::https://raw.githubusercontent.com/rishiskhare/parrot/refs/tags/v26.11.1/LICENSE
 	sha256sums = 568d7ad8cb341b4926f7e4038c2bf8b6a9a0e69569cb6ee9f191f4e106e71cd0
-	source_x86_64 = parrot-tts-bin-26.10.1-.deb::https://github.com/rishiskhare/parrot/releases/download/v26.10.1/Parrot_26.10.1_.deb
-	sha256sums_x86_64 = f7a37562465f8e9595edcc42dbfa157a92cee0748b459c1146621900c70ce7f5
-	source_aarch64 = parrot-tts-bin-26.10.1-.deb::https://github.com/rishiskhare/parrot/releases/download/v26.10.1/Parrot_26.10.1_.deb
-	sha256sums_aarch64 = f7a37562465f8e9595edcc42dbfa157a92cee0748b459c1146621900c70ce7f5
+	source_x86_64 = parrot-tts-bin-26.11.1-.deb::https://github.com/rishiskhare/parrot/releases/download/v26.11.1/Parrot_26.11.1_.deb
+	sha256sums_x86_64 = fa015815cb88854e7cb13d8ba5239832e7c5a6d99b60dd696c955ced3eceeddd
+	source_aarch64 = parrot-tts-bin-26.11.1-.deb::https://github.com/rishiskhare/parrot/releases/download/v26.11.1/Parrot_26.11.1_.deb
+	sha256sums_aarch64 = fa015815cb88854e7cb13d8ba5239832e7c5a6d99b60dd696c955ced3eceeddd
 
 pkgname = parrot-tts-bin
