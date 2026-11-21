@@ -1,15 +1,15 @@
 # Maintainer: Sohimaster
 pkgname=traur
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Trust scoring for AUR packages'
 arch=('x86_64')
 url='https://github.com/Sohimaster/traur'
 license=('MIT')
-depends=('git' 'pacman' 'gcc-libs' 'glibc')
-makedepends=('cargo' 'rust')
+depends=('git' 'pacman' 'gcc-libs' 'glibc' 'libssl.so' 'libcrypto.so')
+makedepends=('cargo' 'rust' 'openssl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8e5c36caef5e2ff53bc1989157357d6af60a9dcdd9441319b2c99054cdfba07d')
+sha256sums=('b8ef9a85872a4239f20cbcfba1bfd343e9c2a84a0015de0826bd9cea8f334c23')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -39,6 +39,8 @@ package() {
     install -Dm0755 target/release/traur "$pkgdir/usr/bin/traur"
     install -Dm0755 target/release/traur-hook "$pkgdir/usr/bin/traur-hook"
     install -Dm0644 hook/traur.hook "$pkgdir/usr/share/libalpm/hooks/traur.hook"
+    install -Dm0644 hook/traur-configure.hook "$pkgdir/usr/share/libalpm/hooks/traur-configure.hook"
+    install -Dm0644 hook/configure-pacman-hook.sh "$pkgdir/usr/share/traur/configure-pacman-hook.sh"
     install -Dm0644 hook/traur-scan.service "$pkgdir/usr/lib/systemd/system/traur-scan.service"
     install -Dm0644 hook/traur-scan.timer "$pkgdir/usr/lib/systemd/system/traur-scan.timer"
     install -Dm0755 hook/makepkg-wrapper.sh "$pkgdir/usr/share/traur/makepkg-wrapper.sh"
