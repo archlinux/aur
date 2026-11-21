@@ -9,9 +9,9 @@
 # archives are flat (brygge, LICENSE, build-info.txt at the tar root; see release.yml's `build` job), so
 # package() installs directly from $srcdir with no subdirectory to enter.
 pkgname=brygge-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
-pkgdesc="A VCS history to IR converter (Git, Mercurial, Subversion, CVS), the release's attested binary"
+pkgdesc="Carries version-control history between systems: decodes Git, Mercurial, Subversion and CVS into a verifiable IR (the release's attested binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/prikk-vcs/brygge"
 license=('Apache-2.0')
@@ -31,12 +31,15 @@ depends=('glibc' 'gcc-libs')
 options=('!strip' '!debug')
 provides=('brygge')
 conflicts=('brygge')
-# $CARCH, not a literal "x86_64"/"aarch64" (namcap), matches both this array's own arch and the Linux
-# target triple's first segment (release.yml's `build` job names its targets x86_64/aarch64-unknown-linux-gnu).
-source_x86_64=("https://github.com/prikk-vcs/brygge/releases/download/$pkgver/brygge-$CARCH-unknown-linux-gnu.tar.gz")
-source_aarch64=("https://github.com/prikk-vcs/brygge/releases/download/$pkgver/brygge-$CARCH-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('b6fc05d11d002f6a87496383f99b85b7ee90c252314ced2cdb68c5b923591175')
-sha256sums_aarch64=('7269dcc0b1d537628de9cd0fff8fdd2cb32d9def50b92b065a89d66ca6655227')
+# Literal architectures, not $CARCH: makepkg --printsrcinfo always runs on the x86_64 runner that renders
+# this template, so $CARCH in a per-architecture array would write "x86_64" into both lines, and the
+# published .SRCINFO's source_aarch64 would then name the wrong tarball (review 110). A build on an
+# aarch64 machine still evaluates the PKGBUILD itself and gets the right file either way; it is the
+# .SRCINFO that AUR helpers read, and that must be correct without evaluating the PKGBUILD.
+source_x86_64=("https://github.com/prikk-vcs/brygge/releases/download/$pkgver/brygge-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("https://github.com/prikk-vcs/brygge/releases/download/$pkgver/brygge-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('b4f55c24c97091c70f74f0136e0f958f74274910e554b8d49ceafbdb27007226')
+sha256sums_aarch64=('95d84721f5f7172f4c40fdcdd74977510d13e11aa0800cd3c98406b804fc58fe')
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" brygge
