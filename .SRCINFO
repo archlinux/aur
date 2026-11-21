@@ -1,10 +1,10 @@
 pkgbase = python-hatch-rs
 	pkgdesc = Hatch plugin for Rust builds
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/hatch-rs/
 	arch = x86_64
-	license = None
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -12,6 +12,7 @@ pkgbase = python-hatch-rs
 	depends = python-hatchling
 	depends = python-packaging
 	depends = python-pydantic
+	depends = python-hatch-na
 	source = https://files.pythonhosted.org/packages/source/h/hatch_rs/hatch_rs-0.6.1.tar.gz
 	sha256sums = 93349b93f378426fecf78a57e60b47afec8ee77c2c01d1346b8db5e914de22d0
 
