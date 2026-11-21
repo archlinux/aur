@@ -6,6 +6,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ffmpeg-libfdk_aac
 pkgver=9.1
@@ -50,6 +51,7 @@ depends=(
   libplacebo
   libpulse
   libraw1394
+  librist
   librsvg
   libsoxr
   libssh
@@ -182,6 +184,7 @@ build() {
     --enable-libplacebo \
     --enable-libpulse \
     --enable-librav1e \
+    --enable-librist \
     --enable-librsvg \
     --enable-librubberband \
     --enable-libsnappy \
@@ -234,6 +237,7 @@ package() {
     libopenmpt.so
 #    libplacebo.so
     librav1e.so
+#   librist.so
     librsvg-2.so
     librubberband.so
     libva.so
