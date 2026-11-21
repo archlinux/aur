@@ -3,17 +3,24 @@
 # Contributor: Donald Webster <fryfrog@gmail.com>
 
 pkgname=jackett
-pkgver=0.24.3082
+pkgver=0.25.8
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
 license=('GPL-2.0-or-later')
 url='https://github.com/Jackett/Jackett'
-depends=('aspnet-runtime-9.0' 'glibc' 'gcc-libs')
+depends=(
+  'aspnet-runtime-10.0'
+  'glibc'
+  'gcc-libs'
+)
 optdepends=(
   'flaresolverr: A proxy server to bypass Cloudflare protection'
 )
-makedepends=('dotnet-sdk-9.0')
+makedepends=(
+  'aspnet-targeting-pack-10.0'
+  'dotnet-sdk-10.0'
+)
 options=('!strip' 'staticlibs' '!debug')
 
 source=(
@@ -23,7 +30,7 @@ source=(
   'jackett.tmpfiles'
 )
 
-sha256sums=('82c925a0e37537408e2c2c6a64c19054bc1c943d8b552b6d310512cf8ca74f31'
+sha256sums=('08d1fca77280d66c2f25d3fedbb5b934913328d97b15ce900956817cbcd92622'
             '41fbd667538c84662757f923b440d8b250ee3819cd333bd5dd561094d4ef5c3c'
             'f865c06ffd21a12d37bf05953d9b483819c0f4e43d243a56db33986113fc40e4'
             '64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1')
@@ -38,7 +45,7 @@ build() {
   esac
 
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
-  dotnet publish src/Jackett.Server -f net9.0 --no-self-contained -r linux-${_CARCH} -c Release -o build/ /p:AssemblyVersion=${pkgver} /p:FileVersion=${pkgver} /p:InformationalVersion=${pkgver} /p:Version=${pkgver}
+  dotnet publish src/Jackett.Server -f net10.0 --no-self-contained -r linux-${_CARCH} -c Release -o build/ /p:AssemblyVersion=${pkgver} /p:FileVersion=${pkgver} /p:InformationalVersion=${pkgver} /p:Version=${pkgver}
   # This is required because dotnet build servers do not terminate even after the parent process does
   dotnet build-server shutdown
 }
