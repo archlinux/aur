@@ -1,0 +1,99 @@
+# Maintainer: Christopher Patrick Fair <christopherpatrickfair@gmail.com>
+pkgname=propsandproofs
+pkgver=0.1.0
+pkgrel=1
+_gdext_ver=0.17.1
+pkgdesc="Propositional and Modal Logic (K/T/S4/S5) tabletop dice, Fitch proof, and Kripke worlds game"
+arch=('x86_64' 'aarch64')
+url="https://github.com/chrisfair/propsandproofs"
+license=('GPL-3.0-or-later')
+depends=(
+  'godot>=4.6'
+  'glibc'
+  'hicolor-icon-theme'
+)
+makedepends=(
+  'nim>=2.2.0'
+  'git'
+  'python'
+)
+provides=('propsandproofs')
+conflicts=('propsandproofs')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/chrisfair/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+  "gdext-nim-${_gdext_ver}.tar.gz::https://github.com/godot-nim/gdext-nim/archive/refs/tags/v${_gdext_ver}.tar.gz"
+)
+sha256sums=(
+  '4c1a45fc307f3035c3184713f4e1d5bac02f0b77ecbc0f447a9c4e24913b7c83'
+  'e446f3d682e49c609552bee599d21de01ebc86b47889559ab267655b3e887f2d'
+)
+
+prepare() {
+  local _nimble_dir="${srcdir}/${pkgname}-${pkgver}/.nimble"
+  local _fake_home="${srcdir}/home"
+  mkdir -p "${_fake_home}"
+
+  # Apply Nim 2.4+ compatibility fixes to gdext-nim v0.17.1 before local install
+  python3 "${srcdir}/${pkgname}-${pkgver}/packaging/patch_gdext_nim24.py" "${srcdir}/gdext-nim-${_gdext_ver}"
+
+  cd "${srcdir}/gdext-nim-${_gdext_ver}"
+  if [ ! -d .git ]; then
+    git init -q
+    git -c user.name="makepkg" -c user.email="makepkg@localhost" add -A
+    git -c user.name="makepkg" -c user.email="makepkg@localhost" commit -q -m "source"
+  fi
+  HOME="${_fake_home}" NIMBLE_DIR="${_nimble_dir}" nimble install -y
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  local _nimble_dir="${PWD}/.nimble"
+  local _fake_home="${srcdir}/home"
+  mkdir -p .godot "${_fake_home}/.cache" "${_fake_home}/.local/share" "${_fake_home}/.config"
+  printf "res://nim/PropsAndProofs.gdextension\n" > .godot/extension_list.cfg
+
+  (
+    cd nim
+    HOME="${_fake_home}" NIMBLE_DIR="${_nimble_dir}" \
+      nim c -d:release -d:target=debug --nimcache:"${srcdir}/nimcache_ext_dbg" bootstrap.nim
+    HOME="${_fake_home}" NIMBLE_DIR="${_nimble_dir}" \
+      nim c -d:release -d:target=release --nimcache:"${srcdir}/nimcache_ext_rel" bootstrap.nim
+  )
+
+  # Pre-import Godot icon and UID cache so /usr/share/propsandproofs runs read-only
+  HOME="${_fake_home}" godot --headless --path . --import
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  local _nimble_dir="${PWD}/.nimble"
+  local _fake_home="${srcdir}/home"
+  HOME="${_fake_home}" NIMBLE_DIR="${_nimble_dir}" \
+    nim c -r \
+      --path:nim/src \
+      --nimCache:"${srcdir}/nimcache_check" \
+      -o:"${srcdir}/test_runner" \
+      tests/test_all.nim
+  HOME="${_fake_home}" godot --headless --path . --quit-after 5
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  install -Dm755 "packaging/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "packaging/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -dm755 "${pkgdir}/usr/share/${pkgname}/nim/lib"
+  cp -a project.godot icon.svg scenes .godot "${pkgdir}/usr/share/${pkgname}/"
+  if [ -f "icon.svg.import" ]; then
+    cp -a icon.svg.import "${pkgdir}/usr/share/${pkgname}/"
+  fi
+  install -Dm644 "nim/PropsAndProofs.gdextension" "${pkgdir}/usr/share/${pkgname}/nim/PropsAndProofs.gdextension"
+  if [ -f "nim/PropsAndProofs.gdextension.uid" ]; then
+    install -Dm644 "nim/PropsAndProofs.gdextension.uid" "${pkgdir}/usr/share/${pkgname}/nim/PropsAndProofs.gdextension.uid"
+  fi
+  install -Dm755 nim/lib/libPropsAndProofs.linux.*.so "${pkgdir}/usr/share/${pkgname}/nim/lib/"
+}
