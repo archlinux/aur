@@ -1,12 +1,14 @@
 pkgbase = noti
 	pkgdesc = Monitor a process and trigger a notification
-	pkgver = 3.8.0
+	pkgver = 3.9.0
 	pkgrel = 1
-	url = https://github.com/variadico/noti
+	url = https://codeberg.org/roble/noti
 	arch = x86_64
 	license = MIT
-	makedepends = go
-	source = noti-3.8.0.tar.gz::https://github.com/variadico/noti/archive/refs/tags/3.8.0.tar.gz
-	sha256sums = b637b4b4e5eb10b3ea2c5b2cf0fbd1904ab8fd26eaec4b911f4ce2db3ab881a2
+	makedepends = go>=1.25
+	depends = glibc
+	options = !lto
+	source = noti-3.9.0.tar.gz::https://codeberg.org/roble/noti/releases/download/3.9.0/noti3.9.0.tar.gz
+	sha256sums = 02b18016f6a78a1adf3cdcc5b20d884437edd0cf21588415e022d637372619b8
 
 pkgname = noti
