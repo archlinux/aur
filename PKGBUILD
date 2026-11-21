@@ -1,7 +1,7 @@
 # Maintainer: Damon Blais <damon.blais@gmail.com>
 
 pkgname=engined
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Local model door: one OpenAI-shaped endpoint that owns every inference container on the box"
 arch=('any')
@@ -10,16 +10,17 @@ arch=('any')
 options=('!strip' '!debug')
 url="https://github.com/Rethunk-Tech/engined"
 license=('MIT')
-depends=('bun')
+depends=('bun>=1.4.2')
 optdepends=(
   'docker: run the inference engines and the Cursor TLS bridge'
   'bubblewrap: sandbox every agentic engine runs under'
   'passt: network namespace every agentic engine runs under'
+  'libsecret: keyring for engine API keys'
 )
 install=engined.install
 # The release workflow builds this tarball once; nothing is built here.
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('1db1ef13925640a2ec56a6cb147a7cef3f977025755f087a1bfbc7d632c8653c')
+sha256sums=('1b1d2a33adde529716565a83763cb8d1b66efb1488a58f950ef23221233619cf')
 
 package() {
   cd "$pkgname-$pkgver"
@@ -33,7 +34,7 @@ package() {
   # message names run through this.
   install -Dm0755 /dev/stdin "$pkgdir/usr/bin/engined" <<'LAUNCHER'
 #!/bin/sh
-exec /usr/bin/bun /usr/lib/engined/main.js "$@"
+ENGINED_INSTALL_DIR=/usr/lib/engined ENGINED_BUNX=/usr/bin/bunx exec /usr/bin/bun /usr/lib/engined/main.js "$@"
 LAUNCHER
 
   # install.sh's own renderer, so the packaged units cannot drift from the
