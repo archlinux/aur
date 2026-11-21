@@ -2,8 +2,8 @@
 # Contributor: lyj <lyj404@gmail.com>
 pkgname=bettbox-bin
 _pkgname=Bettbox
-pkgver=1.19.8
-pkgrel=3
+pkgver=1.19.9
+pkgrel=1
 pkgdesc="Another Better Network Toolbox"
 arch=('x86_64' 'aarch64')
 url="https://github.com/appshubcc/Bettbox"
@@ -39,15 +39,15 @@ source=("restart-bettbox.hook"
 # so a name shared with another package makes updpkgsums hash that other
 # package's file and publish its checksum here.
 source_x86_64=(
-    "${pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
+    "${pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64-standard.deb"
 )
 source_aarch64=(
-    "${pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb"
+    "${pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64-standard.deb"
 )
 sha256sums=('25e4c72f27aeecb3499f236b20a1aac26288710e855c8f13bb526cda94b9e287'
             '40d61c873b4a66e936b05df4c2c0f5b014ca9933bfc9578dedc2571325079187')
-sha256sums_x86_64=('2c522c41bd7b13a320b6a329fe3c5c56864436d30025b75251fd3cf9723f0b86')
-sha256sums_aarch64=('a814e6ef74387d086c66f0b113022e60e8f8fc52ea2e25fd090c2acce2f83808')
+sha256sums_x86_64=('d7f9d085c95af0df8d2e3fd59091a695afb870fdaf9c640ecb63765c74440db8')
+sha256sums_aarch64=('91c3db178601895249a38fa912d9306dd023b9b3b1142f81d1b19bf70c521183')
 
 prepare() {
   bsdtar -xf "${srcdir}/data."*
