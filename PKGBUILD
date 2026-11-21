@@ -24,6 +24,9 @@ optdepends=(
 makedepends=(
   'gendesk'
   'icoutils'
+  'java-environment'
+  'java-runtime'
+  'p7zip'
 )
 
 provides=('stm32cubeprogrammer')
@@ -38,19 +41,19 @@ source=(
 )
 
 sha256sums=('c450051932af9050852ea34f0a31f5178dd9785e7ee084de8d0b30fb8e0f1f76'
-  'c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702'
-  '4896e0f705090cba54437a95ab19a109d07abd2d42b47626347250c772e6d79c')
+            'c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702'
+            '4896e0f705090cba54437a95ab19a109d07abd2d42b47626347250c772e6d79c')
 
-if [ ! -f "${startdir}/${_installer}" ]; then
+prepare() {
+  if [ ! -f "${startdir}/${_installer}" ]; then
   echo ""
   echo "  ==> ERROR: Source package '${_installer}' not found in build directory!"
   echo "  ==> Please download the Linux installer manually from:"
   echo "      ${url}"
   echo "  ==> And place it in: ${startdir}"
   echo ""
-fi
+  fi
 
-prepare() {
   cd "${srcdir}"
 
   chmod u+x jre/bin/java
