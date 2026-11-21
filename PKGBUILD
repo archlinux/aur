@@ -3,7 +3,7 @@
 basename=trinityrnaseq
 pkgname=('trinityrnaseq' 'trinityrnaseq-doc' 'trinityrnaseq-extra')
 _pkgname=Trinity
-pkgver=2.16.0
+pkgver=2.16.1
 pkgrel=1
 pkgdesc="Transcriptome assembler for RNA-seq reads \
 	 https://doi.org/10.1038%2Fnbt.1883"
@@ -12,7 +12,7 @@ license=('BSD-3-Clause')
 arch=('x86_64')
 makedepends=('git' 'cmake' 'make' 'python' 'rsync')
 source=("git+https://github.com/trinityrnaseq/trinityrnaseq.git#tag=$_pkgname-v$pkgver")
-sha256sums=('40f15b5b7c46c5cc05ff0d691c39da6638c1ae24de8af2daba1a42679eab4fd9')
+sha256sums=('25c7c13367c0015a79ea116be063506a976fd1c97c7d2f74d8f2d7ea30ba3427')
 
 prepare(){
   cd $srcdir/$pkgname
