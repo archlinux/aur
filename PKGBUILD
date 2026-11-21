@@ -1,4 +1,4 @@
-# Maintainer: Your Name <you@example.com>
+Maintainer: Caleb Mignano <swagcalebwolf@.com>
 pkgname=aurora-viewer-bin
 _pkgname=aurora-viewer
 pkgver=0.9.12
