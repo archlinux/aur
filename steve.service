@@ -1,0 +1,14 @@
+[Unit]
+Description=steve GNU make-compatible jobserver
+After=systemd-udevd.service
+
+[Service]
+Type=exec
+# Starts as root to open /dev/cuse, then drops to the steve user.
+EnvironmentFile=-/etc/conf.d/steve
+ExecStart=/usr/bin/steve --user steve $STEVE_OPTS
+CPUSchedulingPolicy=fifo
+CPUSchedulingPriority=10
+
+[Install]
+WantedBy=multi-user.target

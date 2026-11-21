@@ -1,0 +1,1 @@
+ACTION=="add", ENV{DEVNAME}=="/dev/steve", OWNER="steve", GROUP="jobserver", MODE="660"
