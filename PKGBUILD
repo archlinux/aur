@@ -1,7 +1,7 @@
 # Maintainer: Nicholas Glazer <nicholasglazer at protonmail dot com>
 pkgname=teru
-pkgver=0.15.1
-pkgrel=2
+pkgver=0.16.0
+pkgrel=1
 pkgdesc="AI-first terminal emulator, multiplexer, and tiling manager"
 arch=('x86_64' 'aarch64')
 url="https://teru.sh"
@@ -9,9 +9,10 @@ license=('MIT')
 depends=('libxcb' 'libxkbcommon' 'wayland')
 optdepends=('xclip: clipboard support on X11'
             'wl-clipboard: clipboard support on Wayland')
-makedepends=('zig>=0.17')
+# Builds on stable Zig 0.17 (extra/zig). Zig master (0.18-dev) rejects this source.
+makedepends=('zig>=0.17' 'zig<0.18')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nicholasglazer/teru/archive/v$pkgver.tar.gz")
-sha256sums=('ca37857d05f518b5b62194ac032bfe3a81224f085d4a7179cc2ce64daed2f040')
+sha256sums=('429cc4c1422877061da70aff02dd9355f82fffb49ed853b2e76ad1147cc24528')
 
 build() {
     cd "$pkgname-$pkgver"
