@@ -1,0 +1,4 @@
+# Removes the relay runtime environments that earlier versions provisioned beside the packaged binary
+post_upgrade() {
+    rm -rf /usr/lib/icebath/venv /usr/lib/icebath/venv-runtime
+}

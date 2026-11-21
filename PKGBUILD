@@ -2,7 +2,7 @@
 # Maintainer: Nicholas W. Heyer <nick at heyer dot app>
 
 pkgname='icebath'
-pkgver=1.0.15
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Tiling agentic harness and netrunner toolkit'
 url='https://icebath.app'
@@ -11,9 +11,10 @@ license=('MIT')
 provides=('icebath')
 conflicts=('icebath-bin')
 depends=('glibc')
-makedepends=('go' 'git')
+makedepends=('go')
+install=icebath.install
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/nickheyer/icebath/releases/download/v${pkgver}/icebath-${pkgver}.tar.gz")
-sha256sums=('ba589fadf25c9af37445e31b791de5b5567ed66b39f80f38aca02bdebc0aa613')
+sha256sums=('767f5a968623ba347b0102026dd53f0003f7057b45d967a67fbac7451928f6b3')
 prepare() {
   go mod download
 }
@@ -23,9 +24,15 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -o icebath -ldflags="-linkmode=external -X main.version=v${pkgver}" ./cmd/icebath
+  go build -tags goolm -o icebath -ldflags="-linkmode=external -X main.version=v${pkgver}" ./cmd/icebath
 }
 package() {
-  install -Dm755 ./icebath "${pkgdir}/usr/bin/icebath"
+  install -Dm755 ./icebath "${pkgdir}/usr/lib/icebath/icebath"
+  printf 'pacman\n' | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/icebath/.install_method"
+  install -Dm644 ./cli-config.yaml.example "${pkgdir}/usr/lib/icebath/cli-config.yaml.example"
+  install -Dm644 ./.env.example "${pkgdir}/usr/lib/icebath/.env.example"
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s /usr/lib/icebath/icebath "${pkgdir}/usr/bin/icebath"
   install -Dm644 ./LICENSE "${pkgdir}/usr/share/licenses/icebath/LICENSE"
+  install -Dm644 ./THIRD_PARTY_NOTICES "${pkgdir}/usr/share/licenses/icebath/THIRD_PARTY_NOTICES"
 }
