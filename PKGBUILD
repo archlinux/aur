@@ -320,7 +320,7 @@ package_omarchy-broadcast-git() {
   # shipped files resolve. Links to files that are not shipped (decision
   # records, benchmarks, tests, sources) refer to the repository.
   local doc="$pkgdir/usr/share/doc/$_pkgname"
-  install -Dm644 -t "$doc" README.md
+  install -Dm644 -t "$doc" README.md INSTALL.md
   install -Dm644 -t "$doc/docs" docs/dbus-api.md docs/cli-json.md docs/config.example.toml
   install -Dm644 -t "$doc/docs/setup" docs/setup/*.md
 
