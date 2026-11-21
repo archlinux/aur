@@ -22,7 +22,7 @@ license=('MIT')
 provides=("${_appname}")
 conflicts=("${pkgname%-bin}")
 
-depends=('glibc' 'libgcc')
+depends=('glibc' 'libgcc' 'alsa-lib')
 
 options=('!strip')
 

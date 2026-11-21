@@ -8,6 +8,7 @@ pkgbase = directory-navigator-bin
 	license = MIT
 	depends = glibc
 	depends = libgcc
+	depends = alsa-lib
 	provides = dn
 	conflicts = directory-navigator
 	options = !strip
