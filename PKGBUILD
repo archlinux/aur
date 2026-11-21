@@ -10,7 +10,7 @@ _gentoo_exclude=(0014-bgo-940031-wasm-support-firefox-155.patch)
 
 pkgname=$__pkgname
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="FireDragon is a cross-platform, feature-rich and privacy-focused web browser"
 url="https://gitlab.com/garuda-linux/firedragon/firedragon13"
@@ -180,7 +180,7 @@ END
 
     echo "Building optimized browser..."
     cat > .mozconfig ../mozconfig - << END
-ac_add_options --enable-lto=cross,full
+ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
