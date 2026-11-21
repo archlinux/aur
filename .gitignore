@@ -1,0 +1,16 @@
+# makepkg output
+/pkg/
+/src/
+/*.pkg.tar.*
+/*.log
+
+# Downloaded upstream assets
+/*.zip
+/*.tar.gz
+/*.AppImage
+
+# Local package build helpers
+*.part
+*.aria2
+
+# Keep PKGBUILD and .SRCINFO tracked for AUR submission
