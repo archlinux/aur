@@ -6,7 +6,7 @@ pkgname=(
   libgweather-4-precipitation
   libgweather-4-precipitation-docs
 )
-pkgver=4.6.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc="Location and timezone database and weather-lookup library"
 url="https://gitlab.gnome.org/GNOME/libgweather"

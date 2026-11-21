@@ -1,6 +1,6 @@
 pkgbase = libgweather-4-precipitation
 	pkgdesc = Location and timezone database and weather-lookup library
-	pkgver = 4.6.0
+	pkgver = 4.6.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libgweather
 	arch = x86_64
@@ -26,12 +26,12 @@ pkgbase = libgweather-4-precipitation
 	b2sums = SKIP
 
 pkgname = libgweather-4-precipitation
-	provides = libgweather-4=4.6.0
+	provides = libgweather-4=4.6.1
 	provides = libgweather-4.so
 	conflicts = libgweather-4
 
 pkgname = libgweather-4-precipitation-docs
 	pkgdesc = Location and timezone database and weather-lookup library (documentation)
 	depends = 
-	provides = libgweather-4-docs=4.6.0
+	provides = libgweather-4-docs=4.6.1
 	conflicts = libgweather-4-docs
