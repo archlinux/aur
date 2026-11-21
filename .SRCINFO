@@ -1,6 +1,6 @@
 pkgbase = uu-remote-linux-private-bin
 	pkgdesc = 自用维护：非官方 UU 远程 Linux 被控端 + 实验性控制端（网易 UU 远程），上游 VallierDev/uu-remote-linux
-	pkgver = 0.2.62
+	pkgver = 0.2.63
 	pkgrel = 1
 	url = https://github.com/VallierDev/uu-remote-linux
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = uu-remote-linux-private-bin
 	optdepends = wayland: Wayland 原生支持
 	optdepends = libxkbcommon: X11/wayland 键盘布局
 	optdepends = xdg-desktop-portal: 桌面通知
-	provides = uu-remote-linux=0.2.62
+	provides = uu-remote-linux=0.2.63
 	conflicts = uu-remote-linux
-	source_x86_64 = https://gh-proxy.com/https://github.com/VallierDev/uu-remote-linux/releases/download/v0.2.62/uu-remote-linux-v0.2.62-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 85d3bc82d88e783f19924a957eaf526e459dc0879e2a4536b91359777b136a12
-	source_aarch64 = https://gh-proxy.com/https://github.com/VallierDev/uu-remote-linux/releases/download/v0.2.62/uu-remote-linux-v0.2.62-aarch64-linux.tar.gz
-	sha256sums_aarch64 = 90deebc3b906e24c5357b1f1a3487d47289bbeb0fd4255770980a7968344d0e7
+	source_x86_64 = https://gh-proxy.com/https://github.com/VallierDev/uu-remote-linux/releases/download/v0.2.63/uu-remote-linux-v0.2.63-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 282bf26968e50815c8133b66e155c3ed166e9e501e8ab8cfb1a4ff6302f043b6
+	source_aarch64 = https://gh-proxy.com/https://github.com/VallierDev/uu-remote-linux/releases/download/v0.2.63/uu-remote-linux-v0.2.63-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 50c344ee7e1f87266010ed0c4ab6360f8f1c5090f8b1580ce8bfb97846a9e8eb
 
 pkgname = uu-remote-linux-private-bin

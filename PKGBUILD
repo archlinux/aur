@@ -4,7 +4,7 @@
 #   布局镜像官方 .deb：libs → /usr/lib/uu-remote-linux，二进制 → /usr/bin。
 #   sha256 锁上游伴随 .sha256 文件，source 走 gh-proxy.com 加速（大陆直连 GitHub 慢）。
 pkgname=uu-remote-linux-private-bin
-pkgver=0.2.62
+pkgver=0.2.63
 pkgrel=1
 pkgdesc='自用维护：非官方 UU 远程 Linux 被控端 + 实验性控制端（网易 UU 远程），上游 VallierDev/uu-remote-linux'
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ provides=("uu-remote-linux=$pkgver")
 conflicts=('uu-remote-linux')
 source_x86_64=("https://gh-proxy.com/https://github.com/VallierDev/uu-remote-linux/releases/download/v${pkgver}/uu-remote-linux-v${pkgver}-x86_64-linux.tar.gz")
 source_aarch64=("https://gh-proxy.com/https://github.com/VallierDev/uu-remote-linux/releases/download/v${pkgver}/uu-remote-linux-v${pkgver}-aarch64-linux.tar.gz")
-sha256sums_x86_64=('85d3bc82d88e783f19924a957eaf526e459dc0879e2a4536b91359777b136a12')
-sha256sums_aarch64=('90deebc3b906e24c5357b1f1a3487d47289bbeb0fd4255770980a7968344d0e7')
+sha256sums_x86_64=('282bf26968e50815c8133b66e155c3ed166e9e501e8ab8cfb1a4ff6302f043b6')
+sha256sums_aarch64=('50c344ee7e1f87266010ed0c4ab6360f8f1c5090f8b1580ce8bfb97846a9e8eb')
 
 package() {
   # 顶层目录名随版本/架构变化：uu-remote-linux-v<ver>-<arch>-linux/
