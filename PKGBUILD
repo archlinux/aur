@@ -1,8 +1,8 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=openkermit
-pkgver=11.1.518
-pkgrel=2
+pkgver=11.1.519
+pkgrel=1
 pkgdesc='Portable network and serial communication and automation software'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/OpenKermit/ckermit'
@@ -11,7 +11,7 @@ depends=('glibc' 'ncurses' 'openssl' 'pam')
 checkdepends=('check')
 conflicts=('ckermit')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('25a349adbdd37ce79de003a9f0b1ac16e5a3c61a55e9d03bd6e54df5a2292087')
+sha256sums=('6239cb015812706a13cf604a68be154613ee5011519fef4c0a4309ecf0a90549')
 
 build() {
   cd "ckermit-${pkgver}"
