@@ -1,3 +1,5 @@
 [linecast]
-source = "pypi"
-pypi = "linecast"
+source = "github"
+github = "ashuttl/linecast"
+use_latest_release = true
+prefix = "v"
