@@ -2,7 +2,7 @@
 
 pkgname=dissent
 _fqpn=so.libdb.${pkgname}
-pkgver=0.0.41
+pkgver=0.0.50
 pkgrel=1
 pkgdesc='Discord client written in go and gtk4'
 arch=(x86_64 aarch64)
@@ -22,10 +22,11 @@ depends=(
   libadwaita
   libspelling
   pango
+  webkitgtk-6.0
 )
 makedepends=(git go)
 source=("git+https://github.com/diamondburned/dissent#tag=v${pkgver}")
-sha256sums=('b1e97f43c68df93129c1b6070aee5a165cd47751a5c3a26475f896344eb693fc')
+sha256sums=('53e86837c81fe05d1f121df6127dba247208c7cc75cbd4afd54bee5da88f5a1a')
 
 prepare() {
   cd "${pkgname}"

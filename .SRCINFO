@@ -1,6 +1,6 @@
 pkgbase = dissent
 	pkgdesc = Discord client written in go and gtk4
-	pkgver = 0.0.41
+	pkgver = 0.0.50
 	pkgrel = 1
 	url = https://github.com/diamondburned/dissent
 	arch = x86_64
@@ -21,7 +21,8 @@ pkgbase = dissent
 	depends = libadwaita
 	depends = libspelling
 	depends = pango
-	source = git+https://github.com/diamondburned/dissent#tag=v0.0.41
-	sha256sums = b1e97f43c68df93129c1b6070aee5a165cd47751a5c3a26475f896344eb693fc
+	depends = webkitgtk-6.0
+	source = git+https://github.com/diamondburned/dissent#tag=v0.0.50
+	sha256sums = 53e86837c81fe05d1f121df6127dba247208c7cc75cbd4afd54bee5da88f5a1a
 
 pkgname = dissent
