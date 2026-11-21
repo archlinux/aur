@@ -1,0 +1,21 @@
+pkgbase = rmx-fast-bin
+	pkgdesc = A faster rm written in Rust: parallel unlink, rm-compatible flags, never follows symlinks (prebuilt static binary)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/ismoilovdevml/rmx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = rmx
+	conflicts = rmx
+	conflicts = rmx-bin
+	options = !strip
+	options = !debug
+	source = rmx-0.9.0-LICENSE::https://github.com/ismoilovdevml/rmx/raw/v0.9.0/LICENSE
+	sha256sums = 9bfaf98568c30bcbc3c016d5ff23e22a1f2213523c6c55de035b2e9f81943c13
+	source_x86_64 = rmx-0.9.0-x86_64.tar.gz::https://github.com/ismoilovdevml/rmx/releases/download/v0.9.0/rmx-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 7004f0fdcc8260fc9c930fb2ee7011e9c600ffe3432b949c26d8f38e1c06bf16
+	source_aarch64 = rmx-0.9.0-aarch64.tar.gz::https://github.com/ismoilovdevml/rmx/releases/download/v0.9.0/rmx-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 9903c6ef8afd48a09ef1e6ae0358b0a119b36940012819830cce0f44d23d9e3e
+
+pkgname = rmx-fast-bin
