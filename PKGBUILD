@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.267
+pkgver=1.4.268
 pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
@@ -56,13 +56,13 @@ conflicts=('stably-orca-bin' 'stably-orca-git' 'orca-ide' 'orca-ide-bin')
 options=('!strip' '!debug')
 install=stably-orca.install
 
-_pnpmver=12.14.0
+_pnpmver=12.18.0
 _electronmajor=43
 # GitHub tag archives are mutable: a retag keeps the same URL and silently
 # changes the payload, so pin the peeled commit of tag v$pkgver instead.
 # Version bumps must resolve `git ls-remote $url "refs/tags/v<ver>^{}"` and
 # update _commit together with pkgver and the source checksum.
-_commit=baf9c2c328fa95c0ba9c25fda4836b479162d232
+_commit=5dc5548b4570b276f231d81fbb51f8f7a066e40d
 source=(
   "$pkgname-$pkgver-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "pnpm-$_pnpmver.tgz::https://registry.npmjs.org/pnpm/-/pnpm-$_pnpmver.tgz"
@@ -83,8 +83,8 @@ source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
 )
 sha256sums=(
-  '5311832bdb2aab0f97d048a4e3da4d2d4cf6cb2929f11d1736840370978c3568'
-  'ea206e35474bf87be9564a85ca70ed1c8ebdc45da55aafb0a3bf09d1ba69b179'
+  '138794fd56adfc8d73df15b118bffeaf1b13b64f823d873f151e628fb0561840'
+  '29d1d7d99bf6ec6d0a3dbb0ec5656f0d16e997e8be676ca45c581d11cb71f753'
   'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
   '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
   '77a10524dc1b971fecd99a5be47b13f93021b0882495ed32a37d12a2f7fed835'
@@ -95,8 +95,8 @@ sha256sums=(
   'c97fe80d1e55c274207f62c6b388ae4573627028624ae73bcabd0eabcc7d76e5'
   'eacec99a44af83ed452e367f343e69042a21f8d9750f15a6447b7de2991146a0'
 )
-sha256sums_x86_64=('1de98ed2e9621113b0887b06322b461efb9df73d913fc1d151039b10b7117a41')
-sha256sums_aarch64=('e7ca24224eb626a032828ec584c67903ad2f389911b849d009ed70a19f70d8d3')
+sha256sums_x86_64=('679df2eedf158f639db6d1f00e713d766d0d7afc6a931bc51497a625d1e1bdf7')
+sha256sums_aarch64=('2e326930b9b670712df1c93849d725c85f6b897cdf9239ee724b587c50ddd5bc')
 noextract=(
   "pnpm-$_pnpmver.tgz"
   "pnpm-exe-linux-x64-$_pnpmver.tgz"
@@ -463,6 +463,10 @@ package() {
     "$node_pty/build/Release/node-addon-api@"*/node_modules/node-addon-api/node_addon_api_except.stamp.d \
     "$node_pty/node-addon-api@"*/node_modules/node-addon-api/node_addon_api_except.stamp \
     "$node_modules/ssh2/util/pagent.exe"
+  find "$node_pty" -type f \
+    \( -name 'node_addon_api_except.stamp' \
+    -o -name 'node_addon_api_except.stamp.d' \) \
+    -delete
   rm -rf \
     "$node_pty/build/Release/.deps" \
     "$node_pty/build/Release/obj.target"
