@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/safe-git/
+/*.pkg.tar.*
+/*.src.tar.*
+/*.log

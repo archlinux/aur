@@ -1,0 +1,17 @@
+pkgbase = safe-git-git
+	pkgdesc = Restricted SSH Git client for fetch, working-tree fast-forward, and push
+	pkgver = 0.1.0.r1.g1694e3b
+	pkgrel = 1
+	url = https://github.com/futpib/safe-git
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = safe-git=0.1.0.r1.g1694e3b
+	conflicts = safe-git
+	source = safe-git::git+https://github.com/futpib/safe-git.git#branch=master
+	sha256sums = SKIP
+
+pkgname = safe-git-git
