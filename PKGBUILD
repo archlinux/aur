@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=emaki-bin
-pkgver=0.5.4 # renovate: datasource=github-releases depName=alkaline-software/emaki
+pkgver=0.5.5 # renovate: datasource=github-releases depName=alkaline-software/emaki
 pkgrel=1
 pkgdesc="An agentic development environment"
 arch=('x86_64' 'aarch64')
@@ -33,5 +33,5 @@ package() {
 }
 
 sha256sums=('7c7aa1f981bbd6e9285dc04212226c84ea31caec4e01fbce6ebcc9f035d95324')
-sha256sums_x86_64=('d151cede491b615b816ac338e5a36adcbee0b7e51f230474cdc41bf5dd82be62')
-sha256sums_aarch64=('e6bb8ad4c2c22c05b7fbd39fb039e4b89f3258d2bc7c351d7ddf530c2ad61613')
+sha256sums_x86_64=('a5e6d3cc1c78a27a98a22cbb388c6ce09a621157a7a34c229b6026d74d487b36')
+sha256sums_aarch64=('18fdb50ad8fb9a17c60f2e8842445653a16190d67ba014496730494f5e6bed56')
