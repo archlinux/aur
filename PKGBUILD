@@ -1,5 +1,5 @@
 pkgname=pleazyng-bin
-pkgver=3.0.44
+pkgver=3.0.45
 pkgrel=1
 pkgdesc='Plex client with Jellyfin and Emby support, offline downloads, and HDR'
 arch=('x86_64' 'aarch64')
@@ -11,13 +11,13 @@ depends=('alsa-lib' 'glib2' 'gtk3' 'webkit2gtk-4.1' 'libsecret' 'gst-plugins-bas
 depends+=('bubblewrap' 'xdg-dbus-proxy')
 makedepends=('python' 'binutils' 'zstd' 'gdk-pixbuf2' 'pkgconf')
 provides=('pleazyng')
-_webkit_version=2.52.6-0ubuntu0.24.04.1
+_webkit_version=2.52.6-0ubuntu0.24.04.2
 source=('pleazyng.desktop' 'LICENSE' 'install-webkit-helpers.py' 'webkit-runtime.json' 'rebuild-pixbuf-cache.py')
-source_x86_64=("$pkgname-$pkgver-linux-x64.tar.gz::https://github.com/snapetech-org/pleazyng/releases/download/v3.0.44/pleazyng-linux-x64.tar.gz" "webkit-x64.deb::https://security.ubuntu.com/ubuntu/pool/main/w/webkit2gtk/libwebkit2gtk-4.1-0_${_webkit_version}_amd64.deb")
-source_aarch64=("$pkgname-$pkgver-linux-arm64.tar.gz::https://github.com/snapetech-org/pleazyng/releases/download/v3.0.44/pleazyng-linux-arm64.tar.gz" "webkit-arm64.deb::https://ports.ubuntu.com/ubuntu-ports/pool/main/w/webkit2gtk/libwebkit2gtk-4.1-0_${_webkit_version}_arm64.deb")
-sha256sums=('128aa0babfce8d659c4a407b59fb8af85138c630e0b53c69a3f2159b871f324b' '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986' 'fc28ccb4ff06df8fd5ff4212f84d221143560b9309ad497cf47b72c366ed71ba' 'ed208c117b5d7d403c0527fdba489d061b757842106c4c8f7f256158f35f4a6e' 'ab9ae42d2061af4f6b1dfd9aab2abd88416cefd0082a31217d0ea7e9b3251325')
-sha256sums_x86_64=('b25d746bc5f0f36d8801e1742a7f647d8e30c55088eef480d75f6ed6924e0100' '3b3f7e2c36c679fd60392f6526b8c5659d6c5db324ebe792003831dc8108ac03')
-sha256sums_aarch64=('ce998f9ef9d61e21b73d80d30e00406440e80389af944f8e056e7b26f6f6648e' '508f97ca47c45464c0e43480ebe983a0b4b484dd1a76031272f762662943b7c9')
+source_x86_64=("$pkgname-$pkgver-linux-x64.tar.gz::https://github.com/snapetech-org/pleazyng/releases/download/v3.0.45/pleazyng-linux-x64.tar.gz" "webkit-x64.deb::https://security.ubuntu.com/ubuntu/pool/main/w/webkit2gtk/libwebkit2gtk-4.1-0_${_webkit_version}_amd64.deb")
+source_aarch64=("$pkgname-$pkgver-linux-arm64.tar.gz::https://github.com/snapetech-org/pleazyng/releases/download/v3.0.45/pleazyng-linux-arm64.tar.gz" "webkit-arm64.deb::https://ports.ubuntu.com/ubuntu-ports/pool/main/w/webkit2gtk/libwebkit2gtk-4.1-0_${_webkit_version}_arm64.deb")
+sha256sums=('128aa0babfce8d659c4a407b59fb8af85138c630e0b53c69a3f2159b871f324b' '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986' 'fc28ccb4ff06df8fd5ff4212f84d221143560b9309ad497cf47b72c366ed71ba' 'ba063a1b775207f249dd74bc5f00096257f9cd32893266df1add49e962e104f9' 'ab9ae42d2061af4f6b1dfd9aab2abd88416cefd0082a31217d0ea7e9b3251325')
+sha256sums_x86_64=('9f0f1d2eb30d0363ea9116ea079524fcba10c6ead766da0b209cdc46b02330ec' '0f0278776be4250283a2120e849f9d0d856d5f3e45e886e2ced92fa93f58a969')
+sha256sums_aarch64=('63a6fb788d5041127228c571ae044aa2edf6bb8a21319a90ccaaaabbd2a5d94c' '85629246d18ac069b80f05854007931356357d9108627ce5ace6bb90ae320b1b')
 noextract=("$pkgname-$pkgver-linux-x64.tar.gz" "$pkgname-$pkgver-linux-arm64.tar.gz" 'webkit-x64.deb' 'webkit-arm64.deb')
 
 package() {
