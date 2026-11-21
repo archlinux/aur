@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction <https://github.com/LIghtJUNction>
 pkgbase=bilibilive
 pkgname=('bilibilive' 'bilibilive-obs-plugin')
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Native Bilibili streaming studio with CLI, MCP, zuse and zgpui'
 arch=('x86_64' 'aarch64')
