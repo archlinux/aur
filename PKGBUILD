@@ -1,7 +1,7 @@
 # Maintainer: Dheeraj Vittal Shenoy <dheerajshenoy22@gmail.com>
 pkgname=lektra-git
 pkgver=0.8.0.r26.gf4ba3a8
-pkgrel=2
+pkgrel=3
 pkgdesc="High-performance document and image viewer that prioritizes screen space and control."
 arch=('x86_64')
 url="https://codeberg.org/lektra/lektra"
@@ -50,10 +50,9 @@ build() {
     cmake -S . -B build \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DWITH_LUA=on \
         -DWITH_LLM_SUPPORT=on
 
-    cmake --build build --parallel
+    cmake --build build
 }
 
 package() {
