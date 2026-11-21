@@ -89,7 +89,7 @@ def build(name):
     item = components[name]
     path = source(item)
     env = os.environ.copy()
-    env.update(npm_config_cache=str(work / 'npm' / str(item['index'])),
+    env.update(npm_config_cache=str(work / 'npm'),
                npm_config_audit='false', npm_config_fund='false', CI='1',
                PUPPETEER_SKIP_DOWNLOAD='true', PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD='1',
                COREPACK_HOME=str(work / 'corepack'), COREPACK_ENABLE_DOWNLOAD_PROMPT='0',
@@ -109,7 +109,16 @@ def build(name):
             for key in ['http_proxy', 'https_proxy']:
                 if key in env:
                     env['YARN_' + key.upper()] = env[key]
-    for cmd in commands[name]:
+    yarn_cache = work / 'yarn'
+    if name == 'katex' and yarn_cache.is_dir():
+        env.update(YARN_CACHE_FOLDER=str(yarn_cache), YARN_ENABLE_GLOBAL_CACHE='false',
+                   YARN_ENABLE_NETWORK='false', YARN_ENABLE_IMMUTABLE_CACHE='true')
+    for original in commands[name]:
+        cmd = original
+        if original[:3] == ['corepack', 'pnpm', 'install']:
+            store = work / 'pnpm' / {'streamdown': '0', 'remend': '1', 'unpdf': '2'}[name]
+            if store.is_dir():
+                cmd = original + ['--offline', '--store-dir', str(store)]
         if name == 'unpdf' and cmd[-1] == 'build:pdfjs':
             dep = (path / 'node_modules/pdfjs-dist').resolve()
             assert dep.is_relative_to(path)

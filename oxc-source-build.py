@@ -38,6 +38,7 @@ def save_report():
 env = dict(os.environ, NODE_USE_ENV_PROXY='1', CI='1', HUSKY='0',
            COREPACK_HOME=str(srcdir / 'oxc-corepack-cache'),
            COREPACK_ENABLE_DOWNLOAD_PROMPT='0',
+           XDG_CACHE_HOME=str(srcdir / 'oxc-pnpm-meta'),
            CARGO_HOME=str(srcdir / 'oxc-cargo-cache'),
            CARGO_NET_OFFLINE='true',
            CARGO_TERM_COLOR='never',
@@ -103,7 +104,12 @@ for source in manifest['sources']:
     for component in source['components']:
         assert sha(root / component['path'] / 'package.json') == component['metadata_sha256']
     filters = ['oxc-parser...', 'oxc-transform...'] if source['index'] == 0 else ['oxlint-app...']
-    command = ['corepack', 'pnpm']
+    command = [
+        'corepack', 'pnpm',
+        '--store-dir', str(srcdir / 'oxc-pnpm-store'),
+    ]
+    if env.get('npm_config_offline') == 'true':
+        command += ['--offline']
     for name in filters:
         command += ['--filter', name]
     command += ['install', '--frozen-lockfile', '--ignore-scripts']

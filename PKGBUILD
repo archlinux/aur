@@ -2,11 +2,10 @@
 
 pkgname=python-unsloth
 _pkgname=unsloth
-pkgver=2026.11.4
-# Upstream tags releases with the Studio version. v0.1.917-beta carries
-# unsloth/_version.py 2026.11.4 and was published with the 2026.11.4 release.
-# Pin the commit of that annotated tag.
-_commit=475ceee98d8d141423201193c9cf2be2da30e600
+pkgver=2026.11.9
+# Upstream's Studio tag corresponds to 2026.11.5. This later commit
+# contains the 2026.11.9 Python release version in unsloth/_version.py.
+_commit=e581061a11dd2cc74fc56380ae2f617b4cf6a498
 _source="${_pkgname}-${_commit}"
 pkgrel=1
 pkgdesc="2-5x faster LLM fine-tuning with 70% less memory"
@@ -23,7 +22,7 @@ depends=(
     'glibc'
     'gcc-libs'
     'python'
-    'python-unsloth-zoo>=2026.11.4'
+    'python-unsloth-zoo>=2026.11.8'
     'python-pytorch>=2.4'
     'python-pytorch<2.16'
     'python-torchvision'
@@ -200,11 +199,11 @@ source=(
     'oxc-notice-c71d239df91726fc519c.txt::https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/LICENSE-sonic'
 )
 sha256sums=(
-    'c957fbaef2727e90f07b7c3047495b3d017b7dc48afb14e1fc8bce9386e3f59a'
+    'b43ed4c3957bd2fb2a8c137b6bbf09f63648b6399239f8cd52a8e92002c7f4fe'
     '25fd9c2f251904b0ff5547c3b6023b22295028ebb33d436f2070dc395965fe1a'
     '7a6a453af08875e984ef1addb673122b0232bf3979c282435a96111e1183aa3f'
     '6f76ab18ae09ee637f89058bedafcf3c031f31e289922e78e23d83af9c3b4fba'
-    'c95ef2e47f478d6d5fc2ef5a4e588e0ae0ea7548a8eacc38688d7072f62c4008'
+    '96778c766519fd65650f00dc808fb7ae2bad49f4e0852ee03ec3addd6498533c'
     '4123d9e19553658e388a25e2377b4405dba4a80c98278c05da86977c19bb1f39'
     '5ccf5e89f69b80acbce09bff9a3a90ce38785b1c97b0eb25a6f3d33ec5a9f0c4'
     'ce4f5e9b1e49deb17675625d78c2a61f7c65b1e567de823655b69828f5da1b94'
@@ -247,7 +246,7 @@ sha256sums=(
     'c06b587892173a82f6d923ce24bcefd49d2b4dd18f36afe2dc06b3aea1e6af76'
     'e078ab4217332db9ac446cdf23e932eabd21d6db7c239a6495df4d3802251f20'
     'a568830569a01ce0075873bba1637dc2b188939b87b11eb63a20df7cc3460e13'
-    'c07421d0e2622fb095e3ef334c23edf8fdf9d06960aec571f0fbe47ae9d90d42'
+    '3554d15691c9e23c3f90b0ea0315bdded30d5e75d6c613b656f09c4fb7155f65'
     '9e700233b65df166274d89f914e1df2a52dc579ff812672bda8a20c7c0877ddc'
     '328efe7c8b370c990ca3136a59ae865d682c106df18f6d4d79cec9e8a2521011'
     '1239e7c6132a67a3e9dffb8debe00de420d1887c4f24dc9dc8ad162ee16d909c'
@@ -280,6 +279,26 @@ prepare() {
     printf '%s  %s\n' 'bbfff7584a71e1775f8aef0a20efb983adcf70b8f1bf9376206c648f509e194d' "$srcdir/docs-ui-swagger-package-lock.json" | sha256sum -c -
     cd "$_source"
     patch -Np1 --fuzz=0 -i "$srcdir/arch-torchvision-pair.patch"
+    # TRL 0.28 exposes both a deprecated GKD shim and the experimental class.
+    # Patch the actual class before the legacy walk can patch only its config.
+    python - <<'PYGKD'
+from pathlib import Path
+
+path = Path("unsloth/models/rl.py")
+source = path.read_text()
+shim = 'if f"{name}_trainer" in available:'
+walk = 'for trainer in all_trainers:\n        try:'
+assert source.count(shim) == 1 and source.count(walk) == 1
+source = source.replace(shim, shim[:-1] + ' and name != "gkd":')
+source = source.replace(
+    walk,
+    'for trainer in all_trainers:\n'
+    '        if trainer == "gkd_trainer" and "gkd" in experimental:\n'
+    '            continue\n'
+    '        try:',
+)
+path.write_text(source)
+PYGKD
     # Arch supplies the build backend; retain the upstream feature floors
     # without requiring its exact bootstrap patch versions.
     sed -i 's/setuptools==84.1.0/setuptools>=84.1.0/' pyproject.toml
@@ -347,7 +366,7 @@ check() {
 from pathlib import Path
 import hashlib, sys
 root = Path(sys.argv[1])
-changes = [{'path': 'studio/frontend/tests/helpers/vite-env-loader.mjs', 'before_sha256': 'b69f78749189e7b45584a2c1a6aef2e9a63208607079f7fc0985eaeee793c813', 'after_sha256': '305f8ac561f583c9f52f9b0ed11ae9a9396252d134d4a33e3e30ab4b2fa120b4', 'changes': [{'before': 'export async function load(url, context, next) {', 'after': 'const sourceRoot = new URL("../../src/", import.meta.url).href;\n\nexport async function load(url, context, next) {'}, {'before': 'if (!url.includes("/src/") || result.source === undefined) return result;', 'after': 'if (!url.startsWith(sourceRoot) || result.source == null) return result;'}], 'test_declarations_unchanged': 0, 'assertion_calls_unchanged': 0}, {'path': 'studio/frontend/tests/desktop-stop-intent.test.ts', 'before_sha256': '31f95cc3fa405571b010e75cba855cada79bb4d8e583b69648e4f998a05dcec1', 'after_sha256': 'f205f9ede5b6dd66c98896529ae993918e81190c5ec5ec740b84eebce788026b', 'changes': [{'before': 'owners.map((f) => f.slice(f.indexOf("/src/"))),', 'after': 'owners.map((f) => "/src/" + f.slice(new URL("../src/", import.meta.url).pathname.length)),'}], 'test_declarations_unchanged': 15, 'assertion_calls_unchanged': 33}, {'path': 'studio/frontend/tests/low-disk-cache-notice.test.ts', 'before_sha256': '51fffa97cddf70d389cd6ee009c11d942d370e8629a24d1545884cd4e15aa1a7', 'after_sha256': '0a77c6778ceca9255c80f03fc9706e1b8422a4fa4ebb226afee6aa39b3714538', 'changes': [{'before': 'callers.map((file) => file.pathname.split("/src/")[1]),', 'after': 'callers.map((file) => file.pathname.slice(new URL("../src/", import.meta.url).pathname.length)),'}], 'test_declarations_unchanged': 26, 'assertion_calls_unchanged': 80}]
+changes = [{'path': 'studio/frontend/tests/helpers/vite-env-loader.mjs', 'before_sha256': 'b69f78749189e7b45584a2c1a6aef2e9a63208607079f7fc0985eaeee793c813', 'after_sha256': '305f8ac561f583c9f52f9b0ed11ae9a9396252d134d4a33e3e30ab4b2fa120b4', 'changes': [{'before': 'export async function load(url, context, next) {', 'after': 'const sourceRoot = new URL("../../src/", import.meta.url).href;\n\nexport async function load(url, context, next) {'}, {'before': 'if (!url.includes("/src/") || result.source === undefined) return result;', 'after': 'if (!url.startsWith(sourceRoot) || result.source == null) return result;'}], 'test_declarations_unchanged': 0, 'assertion_calls_unchanged': 0}, {'path': 'studio/frontend/tests/desktop-stop-intent.test.ts', 'before_sha256': '7b3957a3ec96cfd7f4a1c9f034e85b667a20bbd493688c3cb09750ca31193137', 'after_sha256': '5cc35cd910a042eac99bec1af6d6faf11332d3812a00617594cfeedc86942960', 'changes': [{'before': 'owners.map((f) => f.slice(f.indexOf("/src/"))),', 'after': 'owners.map((f) => "/src/" + f.slice(new URL("../src/", import.meta.url).pathname.length)),'}], 'test_declarations_unchanged': 16, 'assertion_calls_unchanged': 33}, {'path': 'studio/frontend/tests/low-disk-cache-notice.test.ts', 'before_sha256': '51fffa97cddf70d389cd6ee009c11d942d370e8629a24d1545884cd4e15aa1a7', 'after_sha256': '0a77c6778ceca9255c80f03fc9706e1b8422a4fa4ebb226afee6aa39b3714538', 'changes': [{'before': 'callers.map((file) => file.pathname.split("/src/")[1]),', 'after': 'callers.map((file) => file.pathname.slice(new URL("../src/", import.meta.url).pathname.length)),'}], 'test_declarations_unchanged': 26, 'assertion_calls_unchanged': 80}]
 for row in changes:
     path = root / row['path']
     data = path.read_text()
