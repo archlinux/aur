@@ -1,6 +1,6 @@
 pkgbase = omarchy-broadcast-git
 	pkgdesc = GPU virtual camera daemon for v4l2loopback, with a D-Bus API and a CLI
-	pkgver = 0.57.2
+	pkgver = 0.57.3
 	pkgrel = 1
 	url = https://github.com/rsd/omarchy-broadcast
 	arch = x86_64
