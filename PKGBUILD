@@ -5,9 +5,9 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 pkgname='firefox-clearurls'
-pkgver=1.27.3
+pkgver=1.28.0
 _rules_commit=84aad0507669711a12e6ab652abcd0fac7d874bd
-pkgrel=4
+pkgrel=1
 pkgdesc="Remove tracking elements from URL's."
 arch=('any')
 url="https://gitlab.com/ClearURLs/ClearUrls"
@@ -16,7 +16,7 @@ depends=('firefox')
 makedepends=('git' 'jq' 'zip')
 source=("$pkgname::git+$url.git#tag=$pkgver"
         "data::git+https://gitlab.com/ClearURLs/rules.git#commit=$_rules_commit")
-sha256sums=('92fbf6f534f255a9b7b87bc0332deb2a562a65da75495b6242506668b9138742'
+sha256sums=('4fc721076b726d44ced226456a993c2273197326dda6aa157c150a1a1ba4ebb0'
             'f475cdc90239374af0cbc58ef9c2e3ebda68efccc2864476e8e51dcac250c70c')
 
 prepare() {
