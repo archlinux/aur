@@ -3,10 +3,10 @@
 pkgname=python-hatch-native
 _origpkgname=hatch_native
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="Hatch plugin for Rust builds"
+pkgrel=2
+pkgdesc="Shared native-build helpers for hatch plugins"
 arch=("x86_64")
-url='https://pypi.org/project/hatch-rs/'
+url='https://pypi.org/project/hatch-native/'
 license=("Apache-2.0")
 depends=(
 	"python-hatchling"
