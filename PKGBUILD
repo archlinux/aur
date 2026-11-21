@@ -11,7 +11,7 @@ provides=('aethersdr')
 conflicts=('aethersdr')
 options=('!strip' '!debug')
 _appimage="AetherSDR-v${pkgver}-${CARCH}.AppImage"
-source=("${_appimage}::https://github.com/aethersdr/AetherSDR/releases/download/${pkgver}/${_appimage}")
+source=("${_appimage}::https://github.com/aethersdr/AetherSDR/releases/download/v${pkgver}/${_appimage}")
 sha256sums=('93ec14fca3e33cfc7f7f0fcd3922549f81d4d2e47de2321c390ef6b447fa90e7')
 
 prepare() {
