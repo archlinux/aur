@@ -1,0 +1,18 @@
+pkgbase = ui-craft-bin
+	pkgdesc = Installer CLI for the UI Craft design system for AI coding agents
+	pkgver = 1.0.21
+	pkgrel = 1
+	url = https://github.com/educlopez/ui-craft
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	optdepends = npm: npx runtime used by the MCP-gate and detector components
+	provides = ui-craft=1.0.21
+	conflicts = ui-craft
+	options = !debug
+	source_x86_64 = ui-craft-1.0.21-x86_64.tar.gz::https://github.com/educlopez/ui-craft/releases/download/v1.0.21/ui-craft_1.0.21_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6a77f486e0f05e38ff62aaed7473a06e0f8038dc04ccd1b9f7e1280cf1aea874
+	source_aarch64 = ui-craft-1.0.21-aarch64.tar.gz::https://github.com/educlopez/ui-craft/releases/download/v1.0.21/ui-craft_1.0.21_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5eb1f55601030f186f4ac0b602fef14fac58623081bebd55b06c7d9745f53609
+
+pkgname = ui-craft-bin
