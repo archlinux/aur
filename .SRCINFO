@@ -1,6 +1,6 @@
 pkgbase = poe-waytrade
 	pkgdesc = In-game Vulkan price-check overlay for Path of Exile on Wayland
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Maselkov/poe-waytrade
 	install = poe-waytrade.install
@@ -21,10 +21,10 @@ pkgbase = poe-waytrade
 	optdepends = chromium: trade search for rare items (or google-chrome)
 	optdepends = xdg-utils: open trade searches in your browser
 	options = !lto
-	source = poe-waytrade-1.0.0.tar.gz::https://github.com/Maselkov/poe-waytrade/archive/v1.0.0.tar.gz
+	source = poe-waytrade-1.0.1.tar.gz::https://github.com/Maselkov/poe-waytrade/archive/v1.0.1.tar.gz
 	source = https://ocrs-models.s3-accelerate.amazonaws.com/text-detection.onnx
 	source = https://ocrs-models.s3-accelerate.amazonaws.com/text-recognition.onnx
-	sha256sums = 719e424b5b44270330b650370adab2433136111d8aade9c4bb4e0a4d8657710f
+	sha256sums = db0184eec0a03aa9e5d1e481d072eb1ace90f2cd3e7d4a8b8811c876454a1119
 	sha256sums = a917b23dbd9524b465df7e922641b3ff2981623df4ded5a0234004ef2fee7cfe
 	sha256sums = 86c145c2edb96c8caed5b1ebb8f44d706408922211451c309c625157dd6061c5
 
