@@ -1,26 +1,28 @@
 # Maintainer: deadYokai
 
 pkgname=ds4u
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="DualSense 4 You — DualSense controller manager for Linux"
 arch=('x86_64')
 url="https://git.yokai.digital/deadYokai/ds4u"
 license=('MIT')
 provides=('ds4u')
 conflicts=('ds4u-git')
-depends=('hidapi' 'libxkbcommon' 'openssl')
-makedepends=('rust' 'cargo' 'clang' 'lld' 'alsa-lib')
+depends=('hidapi' 'libxkbcommon' 'openssl' 'alsa-lib')
+makedepends=('rust' 'cargo' 'clang' 'lld')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('42e9e036bfbffaaf5025782aa14048fe726571fda94e44c82b1fa0edfa739bf1')
+sha256sums=('3aa44671d31064f6036d75ef5343a61c051744140609372e7e99b78099357599')
 
-prepare() {
+prepare()
+{
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
-build() {
+build()
+{
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
@@ -30,7 +32,8 @@ build() {
     cargo build --release
 }
 
-package() {
+package()
+{
     cd "$pkgname"
 
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
@@ -39,13 +42,13 @@ package() {
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 
     install -Dm644 /dev/stdin \
-        "$pkgdir/usr/lib/udev/rules.d/70-$pkgname.rules" << 'EOF'
+        "$pkgdir/usr/lib/udev/rules.d/70-$pkgname.rules" <<'EOF'
 SUBSYSTEM=="hidraw", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="0ce6", MODE="0664", GROUP="input", TAG+="uaccess"
 SUBSYSTEM=="hidraw", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="0df2", MODE="0664", GROUP="input", TAG+="uaccess"
 EOF
 
     install -Dm644 /dev/stdin \
-        "$pkgdir/usr/lib/systemd/user/$pkgname-daemon.service" << 'EOF'
+        "$pkgdir/usr/lib/systemd/user/$pkgname-daemon.service" <<'EOF'
 [Unit]
 Description=DS4U daemon
 After=network.target
@@ -59,7 +62,7 @@ WantedBy=default.target
 EOF
 
     install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/applications/$pkgname.desktop" << 'EOF'
+        "$pkgdir/usr/share/applications/$pkgname.desktop" <<'EOF'
 [Desktop Entry]
 Name=DS4U
 Comment=DualSense controller manager for Linux
