@@ -7,7 +7,8 @@ pkgdesc='Quickshell QML runtime as a shared library with a C entry point'
 arch=(x86_64 aarch64)
 url="https://github.com/duxlabs-dev/$pkgname"
 license=(LGPL-3.0-only)
-depends=(gcc-libs
+depends=(cpptrace
+         gcc-libs
          glib2
          libdrm
          libglvnd
