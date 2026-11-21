@@ -4,7 +4,7 @@
 pkgname=i4tools-bin
 _pkgname=cn.i4Tools
 pkgver=9.03.003
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='爱思助手是一款集“高效管理 iOS 设备数据”，“智能刷机”和“免费下载海量应用游戏、铃声壁纸”等为一体的 iOS 设备管理工具。'
 arch=('x86_64')
