@@ -1,21 +1,23 @@
 # Maintainer: YOUNES-2-wq <YOUNES-2-wq@users.noreply.github.com>
 pkgname=cachymonitor
-pkgver=1.5.2
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Gaming-oriented system monitor: FPS, 1% low, frametime, CPU/GPU/RAM/VRAM via MangoHud"
 arch=('any')
-url="https://github.com/YOUNES-2-wq/cachymonitor"
+url="https://github.com/YOUNES-2-wq/cachymonitor-linux"
 license=('MIT')
 depends=('python' 'pyside6')
 optdepends=('mangohud: in-game stats (FPS, 1% low, frametime)'
             'nvidia-utils: NVIDIA GPU readings via nvidia-smi'
             'pciutils: GPU marketing name via lspci'
-            'dmidecode: RAM type and speed (requires root)')
+            'dmidecode: RAM type and speed (requires root)'
+            'yay: in-app updates (or paru)'
+            'polkit: password prompt for in-app updates')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b94fa336eebc911185e59bb14f851df834954aa6c568ed84135f1bf09538cdc9')
+sha256sums=('7bd82c0e158f56eb31de50cb45ad8bd117915a06f4c58555782e6954f737d538')
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-linux-$pkgver"
 
     # Application (le .py cherche son icone a cote de lui : on l'y installe aussi)
     install -Dm644 cachymonitor.py "$pkgdir/usr/share/cachymonitor/cachymonitor.py"
