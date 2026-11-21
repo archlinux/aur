@@ -8,17 +8,19 @@ arch=('x86_64' 'aarch64')
 url="https://www.raylib.com/"
 license=('Zlib')
 options=(!debug)
-depends=('wayland' 'libxkbcommon' 'glu')
-makedepends=('git' 'cmake' 'wayland-protocols')
+depends=('wayland' 'libxkbcommon' 'glu' 'sdl3')
+makedepends=('git' 'cmake' 'wayland-protocols' 'sdl3')
 provides=('raylib')
 conflicts=('raylib')
 source=("git+https://github.com/raysan5/raylib.git")
 sha256sums=('SKIP')
 
+
 pkgver() {
   cd "${_pkgname}"
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
 
 build() {
   export CFLAGS="${CFLAGS} -O3"
@@ -29,9 +31,12 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DPLATFORM=SDL \
-    -DBUILD_SHARED_LIBS=ON
-  cmake --build build
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_EXAMPLES=OFF
+
+  cmake --build build --parallel "$(nproc)"
 }
+
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
