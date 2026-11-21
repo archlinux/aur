@@ -1,27 +1,33 @@
 # Maintainer: fam007e <faisalmoshiur@gmail.com>
 pkgname=libexecinfo
-pkgver=1.1.0.19
-pkgrel=2
+pkgver=1.1.0.25
+pkgrel=1
 pkgdesc="BSD-licensed clone of backtrace facility found in GNU libc"
-arch=('x86_64' 'i686' 'aarch64' 'armv7h')
+# armv7h/aarch64 intentionally absent: GCC does not implement
+# __builtin_return_address(N>0) on ARM32 and returns NULL for it on
+# AArch64, so backtrace() would always return 0 frames there.
+arch=('x86_64' 'i686')
 url="https://github.com/fam007e/libexecinfo"
 license=('BSD')
 depends=('glibc')
 makedepends=('python')
 provides=('libexecinfo.so')
 conflicts=('libexecinfo-git')
+# Keep libexecinfo.a in the package: makepkg's default !staticlibs would
+# otherwise silently strip it during tidying.
+options=('staticlibs')
 
-# Use the GitHub release asset (latest) produced by CI.
-source=("$pkgname-$pkgver.tar.gz::https://github.com/fam007e/libexecinfo/releases/latest/download/libexecinfo-$pkgver.tar.gz")
-sha256sums=('4a44750572d27dcc1e8764cf9b6625d3231e8ac87000ae4c985e681fd1c96b68')
+# Pinned to the exact tagged release asset, not releases/latest/download/.
+# "latest" follows whatever release is newest at *build* time, so the
+# sha256sum below would silently stop matching the moment a new release
+# is published, even though pkgver here hasn't changed.
+source=("$pkgname-$pkgver.tar.gz::https://github.com/fam007e/libexecinfo/releases/download/v$pkgver/libexecinfo-$pkgver.tar.gz")
+sha256sums=('4547e37b20f006626ed118999ef8e6a71bc98f9f561a9939287c35853e1e7b8f')
 
-prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    # Fix libexecinfo.pc generation to use absolute paths
-    sed -i 's/\$\${libdir}/$(LIBDIR)/g' Makefile
-    sed -i 's/\$\${includedir}/$(INCLUDEDIR)/g' Makefile
-    sed -i 's/\$\${prefix}/$(PREFIX)/g' Makefile
-}
+# No prepare()/sed step: since libexecinfo 1.1.0.25 the Makefile
+# generates libexecinfo.pc directly from libexecinfo.pc.in with correct
+# PREFIX/LIBDIR/INCLUDEDIR substitution, so there is nothing for
+# makepkg to patch around.
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -30,6 +36,9 @@ build() {
 
 check() {
     cd "$srcdir/$pkgname-$pkgver"
+    # Since 1.1.0.25 the Makefile's `test` target builds AND runs the
+    # test binary (test_runner) and propagates its exit code, so check()
+    # actually gates packaging.
     make test
 }
 
