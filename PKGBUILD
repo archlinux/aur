@@ -2,9 +2,9 @@
 
 pkgname=mmseqs2-bin
 _pkgname=mmseqs
-_tag=18-8cc5c
-pkgver=18_8cc5c
-pkgrel=2
+_tag=19-ab57c
+pkgver=19_ab57c
+pkgrel=1
 pkgdesc="Ultra fast and sensitive sequence search and clustering suite"
 arch=('x86_64')
 url="https://github.com/soedinglab/mmseqs2"
@@ -14,7 +14,7 @@ provides=("mmseqs2=${pkgver}")
 conflicts=('mmseqs2')
 options=('!strip' '!debug')
 source=("${url}/releases/download/${_tag}/mmseqs-linux-avx2.tar.gz")
-sha256sums=('bd9b0234da5949ad528d5b5f9ea4cda9c1e23dce14b46c0791d4d919a76e61ce')
+sha256sums=('f085b64d1cf72e9c559c1cbd45741665d9af1262a2a5b05e2d9d51a034667054')
 
 # Upstream ships a statically-linked binary (ldd: not a dynamic executable).
 # The tarball keeps substitution matrices in ../matrices relative to bin/,
