@@ -6,16 +6,18 @@
 #   4. Build and test (run: makepkg -sf)
 _pkgname=radiance-inference
 pkgname=${_pkgname}-git
-pkgver=2.2.0.r1094
-# pkgrel 2: ships the 7-patch scheduler-governance series on base b6b8751c
+pkgver=2.2.0.r1097
+# pkgrel 2: ships the 10-patch scheduler-governance series on base b6b8751c
 # ("radiance 2.2.0"): 0001-0003 "head-class governance" (prefill-interleave:
 # head — each step governed by the oldest active request's class), 0004 a
-# head-mode steps_held_decode undercount fix found by live load testing, and
+# head-mode steps_held_decode undercount fix found by live load testing,
 # 0005-0007 "cohort-epoch governance" (prefill-interleave: epoch — the oldest
 # active request's class governs until every same-class request present at
-# epoch start finishes that phase; preemption revokes cohort membership).
-# NB: makepkg runs prepare() BEFORE pkgver(), so pkgver carries the +7 patch
-# commits (r1094 = 1087 on main + 7); and when upstream moves, makepkg's
+# epoch start finishes that phase; preemption revokes cohort membership), and
+# 0008-0010 the epoch cohort JOIN WINDOW (requests created within 5 s of
+# epoch formation join the cohort with full membership). NB: makepkg runs
+# prepare() BEFORE pkgver(), so pkgver carries the +10 patch commits
+# (r1097 = 1087 on main + 10); and when upstream moves, makepkg's
 # pkgver rewrite resets pkgrel to 1 — re-set it to 2 on rebuilds so
 # `pacman -Q` keeps distinguishing the patched build. Patches touch no build
 # files (core/sched/config/server-metrics + tests + docs only), so the VOPD
@@ -46,7 +48,10 @@ source=("${_pkgname}::git+${url}.git#branch=main"
         0004-sched-head-mode-steps_held_decode-counts-the-frozen-.patch
         0005-sched-prefill-interleave-epoch-mode-cohort-epoch-gov.patch
         0006-tests-epoch-governance-coverage.patch
-        0007-docs-document-prefill-interleave-epoch.patch)
+        0007-docs-document-prefill-interleave-epoch.patch
+        0008-sched-epoch-cohort-join-window-arrivals-within-5-s-o.patch
+        0009-tests-epoch-join-window-coverage.patch
+        0010-docs-document-the-epoch-cohort-join-window.patch)
 sha256sums=('SKIP'
             'c903669f221faea09545b70525f780001d73648c66cfc472ac9b23df23956400'
             'cc76ea474ab22a0a2ef24a00c1dbb936df444c83c522ebcd667fd0eafce49112'
@@ -57,7 +62,10 @@ sha256sums=('SKIP'
             'aaa09367edce9a1d536cfcd1678efe2f446b2e2d9edb2b8561473c11efe05b32'
             '1b383f08e53ce9147441971084a6c489c5116ca9e371ff7fd64af8048d4109a7'
             '959716d3ced50db15d60637dea7a9ff325de6572fe4b1110b367af9f8319b413'
-            'ae7b6f818ad65d03064cae61c7eb818813069a84aef397fd7122935cd1b5f1c8')
+            'ae7b6f818ad65d03064cae61c7eb818813069a84aef397fd7122935cd1b5f1c8'
+            'e8049113a9f994c3386ef6d21a6e3fe440ebc25f891492a9271c335b427684af'
+            '3c5b56023b51a0ffe39faeb7fc9aee9dfe1f7c8ae4728018f7b35d48a4db86f1'
+            '43dc59a9d51d6968b9ed6af322e40924f45392bafd13fe35bcaf39a0b76098d2')
 
 # Edit for other hardware: run `offload-arch`.
 _hip_archs='gfx1201'
@@ -89,7 +97,8 @@ prepare() {
   # clone, not papered over here.
   git am --3way "${srcdir}"/0001-*.patch "${srcdir}"/0002-*.patch "${srcdir}"/0003-*.patch \
               "${srcdir}"/0004-*.patch "${srcdir}"/0005-*.patch "${srcdir}"/0006-*.patch \
-              "${srcdir}"/0007-*.patch
+              "${srcdir}"/0007-*.patch "${srcdir}"/0008-*.patch "${srcdir}"/0009-*.patch \
+              "${srcdir}"/0010-*.patch
 }
 
 build() {

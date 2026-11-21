@@ -1,0 +1,47 @@
+From 9653ae6cf55971c4b6cb12bd408c63a01bd5e53a Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Fri, 20 Nov 2026 22:39:21 -0500
+Subject: [PATCH 3/3] docs: document the epoch cohort join window
+
+---
+ docs/GUIDE.md | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/docs/GUIDE.md b/docs/GUIDE.md
+index fe00ad66..35d51c26 100644
+--- a/docs/GUIDE.md
++++ b/docs/GUIDE.md
+@@ -1328,7 +1328,11 @@ class present at formation -- the cohort, queued ones included -- is guaranteed
+ end. An epoch forms when the previous one's last member finishes its phase, and when an idle
+ engine gets work; never mid-epoch. A PREFILL epoch runs every member's prompt to completion with
+ no decode sawtooth between its chunks; a DECODE epoch runs every member's decoding to its end,
+-and prompts queued behind it wait for it whole. Mid-epoch arrivals of the governed class run
++and prompts queued behind it wait for it whole. A request created within 5 s of the epoch's
++formation JOINS its cohort with full membership -- the drain waits for it, it is not a boundary
++cut, and preemption still revokes it (`epoch_cohort_joins`); the window is anchored at formation
++and never re-anchored by a joiner, so an epoch's cohort is fixed 5 s after its formation instant.
++Later arrivals of the governed class run
+ beside the cohort but hold no membership and no guarantee. KNOWN TRADES: at an epoch boundary a
+ running request of the other class is frozen where it stands -- a mid-prompt cut
+ (`midarrival_cuts`) that keeps its KV occupied while the epoch it missed runs -- and a DECODE
+@@ -1341,7 +1345,8 @@ net applies: a step that would idle the engine lifts the freeze once, and expert
+ at each epoch boundary (`head_staging_disarms`, counted as under head). `/stats` counts the
+ formations as `epochs`, the summed closed-epoch length in steps as `epoch_len_steps` (divide by
+ `epochs` for the average), the boundary cuts as
+-`midarrival_cuts` and the revoked guarantees as `cohort_preempt_removals`; the head-mode counters
++`midarrival_cuts`, the revoked guarantees as `cohort_preempt_removals` and the join-window
++arrivals as `epoch_cohort_joins`; the head-mode counters
+ (`steps_held_decode`, `head_flips`, `head_freeze_releases`) count the same events here. `head`
+ governs the step, `epoch` the phase: choose `epoch` when a prompt's chunks and a session's
+ generation each matter more uninterrupted than interleaved.
+@@ -4590,6 +4595,7 @@ always 1 and carries the cache's settings as labels: `cache_dtype`, `block_size`
+ | `engine_epoch_len_steps_total` | summed closed-epoch length in steps under `prefill-interleave: epoch`; divide by `engine_epochs_total` for the average (§4.5) |
+ | `engine_midarrival_cuts_total` | requests frozen mid-phase by a class flip at an epoch boundary under `prefill-interleave: epoch` (§4.5) |
+ | `engine_cohort_preempt_removals_total` | epoch cohort members whose preemption revoked the finish-guarantee (§4.5; watch ~0) |
++| `engine_epoch_cohort_joins_total` | requests created within 5 s of an epoch's formation that joined its cohort with full membership under `prefill-interleave: epoch` (§4.5) |
+ | `mixed_step_target_steps_total`, `mixed_step_target_misses_total` | mixed steps observed by `mixed-step-target-ms`, and those whose completed engine service time exceeded its soft target (§4.5) |
+ | `mixed_step_target_prefill_cap` | current learned aggregate prefill-row cap; absent while the policy is off (§4.5) |
+ | `attn_cached_tokens_total`, `linear_cached_tokens_total` | prefix reuse, both halves |
+-- 
+2.56.1
+

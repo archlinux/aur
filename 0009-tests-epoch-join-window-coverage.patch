@@ -1,0 +1,323 @@
+From 773bdd2a6a588349f29695486239b2fe115abeae Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Fri, 20 Nov 2026 22:39:21 -0500
+Subject: [PATCH 2/3] tests: epoch join-window coverage
+
+---
+ tests/sched_test.cpp  | 217 +++++++++++++++++++++++++++++++++++++++++-
+ tests/server_test.cpp |   8 +-
+ 2 files changed, 222 insertions(+), 3 deletions(-)
+
+diff --git a/tests/sched_test.cpp b/tests/sched_test.cpp
+index 6d150e36..f8f1fd45 100644
+--- a/tests/sched_test.cpp
++++ b/tests/sched_test.cpp
+@@ -273,6 +273,11 @@ struct Fixture {
+ 
+     /* Commit a step in which every sequence produced one token and none ended. */
+     void commit_plain(int32_t token = 7) { CHECK_OK(commit(token)); }
++
++    /* Move the scheduler's monotonic clock (Scheduler::test_advance_clock_us): a submit after
++     * this reads `ms` later than one before it. The epoch tests use it to place an arrival
++     * inside or outside the 5 s cohort join window without sleeping. */
++    void advance_clock_ms(int64_t ms) { sch.test_advance_clock_us(ms * 1000); }
+ };
+ 
+ /* A uniformly random number of `e`'s drafts accepted, 0..n_spec, from an LCG. */
+@@ -4209,8 +4214,11 @@ static Headed head_run(bool decoder_first, int steps) {
+ /* --prefill-interleave: epoch. The oldest active request's class governs an epoch that forms at
+  * epoch end and idle->busy only; the cohort -- every same-class request in running_ or waiting_
+  * at formation -- is guaranteed that phase, and the epoch closes when the last one finishes it.
+- * Mid-epoch arrivals run (right class) without a guarantee; preemption revokes membership.
+- * These timelines run with the prefix cache off: the shapes below are the policy, not a hit. */
++ * Mid-epoch arrivals run (right class) without a guarantee; preemption revokes membership. A
++ * request created within 5 s of formation JOINS the live cohort with full membership (the W
++ * tests); timelines that want mid-arrival semantics advance the clock past the window before
++ * submitting. These timelines run with the prefix cache off: the shapes below are the policy,
++ * not a hit. */
+ 
+ /* Commit the planned step with every row producing `token` and only the rows whose seq appears
+  * in `ends` ending. */
+@@ -4336,6 +4344,8 @@ TEST(epoch_E3_midarrival_runs_and_is_cut) {
+     const uint64_t b = f.submit(128, 8);             /* short member: leaves budget beside it */
+     CHECK(f.sch.step() != nullptr);                  /* PF epoch {a, b} */
+     f.commit_plain(12);
++    /* Past the 5 s cohort join window: c must stay a mid-arrival, not join epoch {a, b}. */
++    f.advance_clock_ms(5001);
+     const uint64_t c = f.submit(512, 8);             /* mid-arrival: same class, no membership */
+     bool c_ran = false;
+     for (int k = 0; k < 20; ++k) {                   /* run to the boundary */
+@@ -4378,6 +4388,9 @@ TEST(epoch_E4a_midarrival_joins_the_decode_cohort) {
+     const uint64_t b = f.submit(2000, 8);
+     CHECK(f.sch.step() != nullptr);                  /* PF epoch {a, b} */
+     f.commit_plain(12);
++    /* Past the 5 s cohort join window: c stays the mid-arrival this test is about, rather
++     * than joining epoch {a, b} and being a member when it finishes its chunk. */
++    f.advance_clock_ms(5001);
+     const uint64_t c = f.submit(256, 8);             /* mid-arrival: one chunk */
+     for (int k = 0; k < 20; ++k) {
+         CHECK(f.sch.step() != nullptr);
+@@ -4424,6 +4437,9 @@ TEST(epoch_E4b_no_decoders_at_the_boundary) {
+     const uint64_t b = f.submit(512, 1);
+     CHECK(f.sch.step() != nullptr);                  /* PF epoch {a, b} */
+     f.commit_plain(12);
++    /* Past the 5 s cohort join window: c stays a mid-arrival, so the epoch closes when a and
++     * b close with it mid-prompt, rather than waiting for c as its member. */
++    f.advance_clock_ms(5001);
+     const uint64_t c = f.submit(2000, 8);            /* mid-arrival */
+     for (int k = 0; k < 20; ++k) {
+         CHECK(f.sch.step() != nullptr);
+@@ -4550,6 +4566,9 @@ TEST(epoch_victim_prefers_the_frozen_cut) {
+     const uint64_t b = f.submit(128, 512);
+     CHECK(f.sch.step() != nullptr);                  /* PF epoch {a, b} */
+     f.commit_plain(12);
++    /* Past the 5 s cohort join window: c stays a mid-arrival, so the DECODE epoch cuts it at
++     * the boundary and it is the preferred victim, rather than being a protected member. */
++    f.advance_clock_ms(5001);
+     const uint64_t c = f.submit(300, 512);           /* mid-arrival: runs beside the cohort */
+     for (int k = 0; k < 20 && f.sch.metrics().epochs < 2; ++k) {
+         CHECK(f.sch.step() != nullptr);
+@@ -4571,6 +4590,200 @@ TEST(epoch_victim_prefers_the_frozen_cut) {
+     CHECK_EQ(f.sch.metrics().epochs, 2);             /* the epoch holds for its cohort */
+ }
+ 
++/* W1 (join window): the owner's spawn burst. Two prompts staggered 1 s -- the second arrives
++ * after the epoch formed, inside the 5 s window -- form ONE PREFILL epoch: the second joins at
++ * arrival with full membership, and the epoch closes only after BOTH last chunks. This is the
++ * load-test miss: before the window the first arrival ran a solo burst and the second opened a
++ * second epoch. */
++TEST(epoch_W1_window_join_forms_one_cohort) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    const uint64_t a = f.submit(1024, 8);            /* longer than one chunk: leads the epoch */
++    CHECK(f.sch.step() != nullptr);                  /* PF epoch {a} forms */
++    CHECK_EQ(f.sch.metrics().epochs, 1);
++    f.commit_plain(12);
++    f.advance_clock_ms(1000);                        /* in-window stagger */
++    const uint64_t b = f.submit(2000, 8);            /* joins at arrival: full membership */
++    CHECK_EQ(f.sch.metrics().epoch_cohort_joins, 1);
++    for (int k = 0; k < 40; ++k) {                   /* run to a's last chunk */
++        CHECK(f.sch.step() != nullptr);
++        CHECK_EQ(f.sch.metrics().epochs, 1);         /* one epoch throughout: b joined, no re-form */
++        bool b_row = false;
++        for (const StepEntry& e : f.sch.plan().e) if (e.seq == b && e.is_prefill) b_row = true;
++        CHECK(b_row);                                /* the member is admitted and chunking */
++        f.commit_plain(12);
++        if (f.sch.find(a)->n_computed >= 1024) break;
++    }
++    CHECK(f.sch.find(a)->n_computed >= 1024);
++    CHECK(f.sch.step() != nullptr);                  /* a's phase done: the drain waits for b */
++    CHECK_EQ(f.sch.metrics().epochs, 1);             /* the epoch does NOT close at a's last chunk */
++    for (int k = 0; k < 60; ++k) {                   /* to b's last chunk */
++        f.commit_plain(12);
++        if (f.sch.find(b)->n_computed >= 2000) break;
++        CHECK(f.sch.step() != nullptr);
++        CHECK_EQ(f.sch.metrics().epochs, 1);
++    }
++    CHECK(f.sch.find(b)->n_computed >= 2000);
++    CHECK(f.sch.step() != nullptr);                  /* both phases done: close, DECODE epoch forms */
++    CHECK_EQ(f.sch.metrics().epochs, 2);
++    CHECK_EQ(f.sch.metrics().epoch_cohort_joins, 1); /* the join, counted once */
++    CHECK_EQ(f.sch.metrics().midarrival_cuts, 0);    /* a joined member is not a cut */
++}
++
++/* W2 (join window boundary): a third request at +5.001 s is outside the window -- it keeps
++ * today's mid-arrival semantics (runs beside the cohort, no guarantee, cut at the boundary)
++ * and the joins counter does not move. The window is anchored at formation and never extended
++ * by a joiner: b's join at +1 s does not re-anchor it for c. */
++TEST(epoch_W2_outside_window_stays_midarrival) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    const uint64_t a = f.submit(1024, 8);
++    CHECK(f.sch.step() != nullptr);                  /* PF epoch {a} forms at t0 */
++    f.commit_plain(12);
++    f.advance_clock_ms(1000);
++    const uint64_t b = f.submit(1024, 8);            /* in-window: joins */
++    CHECK_EQ(f.sch.metrics().epoch_cohort_joins, 1);
++    f.advance_clock_ms(4001);                        /* +5.001 s from formation: outside */
++    const uint64_t c = f.submit(2000, 8);            /* mid-arrival, not a joiner */
++    CHECK_EQ(f.sch.metrics().epoch_cohort_joins, 1); /* the boundary did not join */
++    for (int k = 0; k < 60; ++k) {                   /* run to the cohort's drain */
++        CHECK(f.sch.step() != nullptr);
++        if (f.sch.metrics().epochs >= 2) break;      /* this step formed the DECODE epoch */
++        f.commit_plain(12);
++    }
++    CHECK(f.sch.find(c)->n_computed < 2000);         /* c is still mid-prompt at the boundary */
++    CHECK_EQ(f.sch.metrics().epochs, 2);
++    CHECK_EQ(f.sch.metrics().midarrival_cuts, 1);    /* c: the frozen opposite-class row */
++    CHECK_EQ(f.sch.metrics().epoch_cohort_joins, 1);
++    bool c_row = false;
++    for (const StepEntry& e : f.sch.plan().e) if (e.seq == c) c_row = true;
++    CHECK(!c_row);                                   /* cut: frozen through the decode epoch */
++}
++
++/* W3 (join window extends the drain): the cohort's own member A finishes its phase, but the
++ * member B that joined at +2 s is still prefilling -- the epoch stays open and A sits frozen
++ * in the decode lane (R3, like any early finisher) until B's last chunk closes it. */
++TEST(epoch_W3_join_extends_the_drain) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    const uint64_t a = f.submit(1024, 8);            /* the cohort: two chunks */
++    CHECK(f.sch.step() != nullptr);                  /* PF epoch {a} */
++    f.commit_plain(12);
++    f.advance_clock_ms(2000);
++    const uint64_t b = f.submit(2000, 8);            /* joins at +2 s, longer prompt */
++    CHECK_EQ(f.sch.metrics().epoch_cohort_joins, 1);
++    for (int k = 0; k < 40; ++k) {
++        CHECK(f.sch.step() != nullptr);
++        f.commit_plain(12);
++        if (f.sch.find(a)->n_computed >= 1024) break;
++    }
++    CHECK(f.sch.find(a)->n_computed >= 1024);
++    CHECK(f.sch.step() != nullptr);                  /* A's last chunk landed */
++    CHECK_EQ(f.sch.metrics().epochs, 1);             /* the epoch does not close: B is cohort */
++    bool a_row = false, b_row = false;
++    for (const StepEntry& e : f.sch.plan().e) {
++        if (e.seq == a) a_row = true;
++        if (e.seq == b && e.is_prefill) b_row = true;
++    }
++    CHECK(!a_row);                                   /* A frozen in the decode lane (R3) */
++    CHECK(b_row);
++    for (int k = 0; k < 60; ++k) {
++        f.commit_plain(12);
++        if (f.sch.find(b)->n_computed >= 2000) break;
++        CHECK(f.sch.step() != nullptr);
++    }
++    CHECK(f.sch.step() != nullptr);                  /* B's last chunk: now it closes */
++    CHECK_EQ(f.sch.metrics().epochs, 2);
++}
++
++/* W4 (join window, class condition): a request created inside the window of a DECODE epoch
++ * arrives prefill-class -- the epoch governs decode -- so it does not join, and the planning-
++ * pass flip scan never joins it either. The flip into the epoch's class is unreachable while a
++ * DECODE epoch is live: prefill admission is frozen, and the liveness net -- the only unfreeze
++ * -- needs an empty plan, whose precondition (the frozen rows hold the pool the decoders need)
++ * makes the frozen prefill the preferred preemption victim [R7 tier 0] before the net can
++ * fire. The scan stays as the spec's rule (2) for the exotic resumed/degenerate cases; what
++ * is observable here is the class guard: no join, no drain extension, and the request becomes
++ * cohort at the NEXT formation under OD2 -- formation stamping is not a join. */
++TEST(epoch_W4_decode_epoch_join_respects_class) {
++    Fixture f;
++    f.build();
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    const uint64_t o = f.submit(100, 512);
++    CHECK(f.sch.step() != nullptr);                  /* PF epoch {o} */
++    f.commit_plain(12);                              /* o decodes: epoch 1 drains */
++    CHECK(f.sch.step() != nullptr);                  /* DECODE epoch {o} */
++    CHECK_EQ(f.sch.metrics().epochs, 2);
++    f.advance_clock_ms(1000);                        /* inside the window of epoch 2's formation */
++    const uint64_t x = f.submit(256, 8);             /* in-window, class-mismatched */
++    for (int k = 0; k < 3; ++k) {
++        CHECK(f.sch.step() != nullptr);
++        CHECK_EQ(f.sch.metrics().epoch_cohort_joins, 0);   /* the class guard: no join */
++        CHECK_EQ((int)f.sch.find(x)->state, (int)ReqState::Waiting);   /* admission frozen */
++        f.commit_plain(12);
++    }
++    CHECK_EQ(f.sch.metrics().epochs, 2);             /* no drain extension either */
++    CHECK(f.sch.step() != nullptr);
++    commit_eos_on(f, {o});                           /* o ends: the epoch closes */
++    CHECK(f.sch.step() != nullptr);                  /* PF epoch: x is cohort under OD2 */
++    CHECK_EQ(f.sch.metrics().epochs, 3);
++    CHECK_EQ(f.sch.metrics().epoch_cohort_joins, 0); /* stamped at formation, not joined */
++    CHECK_EQ(f.sch.metrics().midarrival_cuts, 0);
++    bool x_row = false;
++    for (const StepEntry& e : f.sch.plan().e) if (e.seq == x && e.is_prefill) x_row = true;
++    CHECK(x_row);
++}
++
++/* W5 (join window, OD1 after a join): a joined member is preempted -- membership is revoked
++ * like any cohort member's, the counter moves, and the revocation is permanent for the epoch:
++ * the join window does not hand the guarantee back on the next planning pass (the request is
++ * still in-window and right-class, only the revocation keeps it out). The revocation drains
++ * the epoch: it closes without waiting for the revoked one's replay, and the revoked request
++ * stays out of every cohort the scan sees. */
++TEST(epoch_W5_preemption_after_join_is_permanent) {
++    Fixture f;
++    f.build(/*blocks=*/100, /*states=*/64);          /* both prompts fit; the frozen leader's KV
++                                                      * plus the joiner's growth does not */
++    f.cfg.prefill_interleave = Config::kPrefillInterleaveEpoch;
++    f.cfg.prefix_cache = false;
++    CHECK_OK(f.start());
++    const uint64_t a = f.submit(1000, 512);
++    CHECK(f.sch.step() != nullptr);                  /* PF epoch {a} */
++    f.commit_plain(12);
++    f.advance_clock_ms(1000);
++    const uint64_t b = f.submit(1000, 512);          /* joins: the drain is two */
++    CHECK_EQ(f.sch.metrics().epoch_cohort_joins, 1);
++    bool preempted = false;
++    for (int k = 0; k < 400 && !preempted; ++k) {
++        CHECK(f.sch.step() != nullptr);
++        Request* rb = f.sch.find(b);
++        if (rb && rb->state == ReqState::Preempted) preempted = true;   /* the joined member */
++        if (preempted) break;
++        f.commit_plain(12);
++    }
++    REQUIRE(preempted);
++    CHECK_EQ(f.sch.metrics().cohort_preempt_removals, 1);  /* the joined member's, revoked */
++    CHECK_EQ(f.sch.metrics().epoch_cohort_joins, 1);       /* and it does not re-join */
++    CHECK_EQ(f.sch.metrics().epochs, 1);             /* the revocation drained the last member */
++    for (int k = 0; k < 400 && f.sch.metrics().epochs < 2; ++k) {
++        CHECK(f.sch.step() != nullptr);
++        CHECK_EQ(f.sch.metrics().epoch_cohort_joins, 1);   /* the scan skips the revoked one */
++        f.commit_plain(12);
++    }
++    CHECK_EQ(f.sch.metrics().epochs, 2);             /* the next epoch formed without a re-join */
++}
++
+ /* The prompt is the oldest: its class governs, the decoder admitted beside it is frozen while
+  * the prompt runs, and the chunk takes the whole step the frozen row would have shared. When
+  * the prompt's last chunk lands, the head turns into a decoder and the lanes reopen. */
+diff --git a/tests/server_test.cpp b/tests/server_test.cpp
+index 04e1fe04..e56dc794 100644
+--- a/tests/server_test.cpp
++++ b/tests/server_test.cpp
+@@ -2641,7 +2641,8 @@ TEST(the_head_governance_counters_are_exported) {
+ }
+ 
+ /* The epoch-mode governance counters are counters beside them: the formations, the summed
+- * closed-epoch length, the boundary cuts, and the revoked finish-guarantees. */
++ * closed-epoch length, the boundary cuts, the revoked finish-guarantees, and the cohort joins
++ * made inside the 5 s join window. */
+ TEST(the_epoch_governance_counters_are_exported) {
+     Metrics m("m", 1024);
+     server::SchedMetrics s;
+@@ -2649,6 +2650,7 @@ TEST(the_epoch_governance_counters_are_exported) {
+     s.epoch_len_steps = 41;
+     s.midarrival_cuts = 2;
+     s.cohort_preempt_removals = 1;
++    s.epoch_cohort_joins = 3;
+     m.sample(s);
+     PromDoc d = parse_prom(m.render());
+     CHECK_EQ((int)d.errors.size(), 0);
+@@ -2656,6 +2658,7 @@ TEST(the_epoch_governance_counters_are_exported) {
+     CHECK_EQ(d.type["radiance:engine_epoch_len_steps_total"], std::string("counter"));
+     CHECK_EQ(d.type["radiance:engine_midarrival_cuts_total"], std::string("counter"));
+     CHECK_EQ(d.type["radiance:engine_cohort_preempt_removals_total"], std::string("counter"));
++    CHECK_EQ(d.type["radiance:engine_epoch_cohort_joins_total"], std::string("counter"));
+     const auto ep = d.samples.find(
+         "radiance:engine_epochs_total{model_name=\"m\",engine=\"0\"}");
+     CHECK(ep != d.samples.end() && ep->second == 5.0);
+@@ -2668,6 +2671,9 @@ TEST(the_epoch_governance_counters_are_exported) {
+     const auto pr = d.samples.find(
+         "radiance:engine_cohort_preempt_removals_total{model_name=\"m\",engine=\"0\"}");
+     CHECK(pr != d.samples.end() && pr->second == 1.0);
++    const auto jn = d.samples.find(
++        "radiance:engine_epoch_cohort_joins_total{model_name=\"m\",engine=\"0\"}");
++    CHECK(jn != d.samples.end() && jn->second == 3.0);
+ }
+ 
+ TEST(the_mixed_step_target_controller_is_observable) {
+-- 
+2.56.1
+

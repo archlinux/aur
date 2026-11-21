@@ -1,0 +1,352 @@
+From 52710343b7bb9ed7adad45719bd0a4ecc9cb97d9 Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Fri, 20 Nov 2026 22:39:21 -0500
+Subject: [PATCH 1/3] =?UTF-8?q?sched:=20epoch=20cohort=20join=20window=20?=
+ =?UTF-8?q?=E2=80=94=20arrivals=20within=205=20s=20of=20formation=20join?=
+ =?UTF-8?q?=20with=20full=20membership?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ core/sched/metrics.h      |  6 ++-
+ core/sched/scheduler.cpp  | 81 ++++++++++++++++++++++++++++++++++-----
+ core/sched/scheduler.h    | 40 ++++++++++++++++++-
+ core/server/adapters.h    |  1 +
+ core/server/dashboard.cpp |  1 +
+ core/server/iface.h       |  1 +
+ core/server/metrics.cpp   |  5 +++
+ core/server/metrics.h     |  1 +
+ 8 files changed, 123 insertions(+), 13 deletions(-)
+
+diff --git a/core/sched/metrics.h b/core/sched/metrics.h
+index 2e5de494..b3cc7e42 100644
+--- a/core/sched/metrics.h
++++ b/core/sched/metrics.h
+@@ -48,12 +48,14 @@ struct SchedMetrics {
+     int64_t head_staging_disarms = 0;
+     /* --prefill-interleave epoch: cohort-epoch formations, the summed length of closed epochs
+      * in steps (divide by epochs for the average), running requests frozen by a class flip at
+-     * an epoch boundary (the E3 cut), and cohort members whose preemption revoked the
+-     * finish-guarantee [OD1]. */
++     * an epoch boundary (the E3 cut), cohort members whose preemption revoked the
++     * finish-guarantee [OD1], and arrivals within the cohort join window (5 s of formation)
++     * that joined a live epoch with full membership. */
+     int64_t epochs = 0;
+     int64_t epoch_len_steps = 0;
+     int64_t midarrival_cuts = 0;
+     int64_t cohort_preempt_removals = 0;
++    int64_t epoch_cohort_joins = 0;
+     int64_t decode_rows_unspeculated = 0;
+     /* Steps whose forward pass was enqueued behind the previous step before it committed
+      * (Scheduler::step_next). Every other step leaves the card idle during the host's commit and
+diff --git a/core/sched/scheduler.cpp b/core/sched/scheduler.cpp
+index 07b7fe6f..4aa191bf 100644
+--- a/core/sched/scheduler.cpp
++++ b/core/sched/scheduler.cpp
+@@ -15,11 +15,13 @@
+ 
+ namespace rad {
+ 
+-/* Microseconds on the monotonic clock, for the live request table only; the step path keeps its
+- * own steady_clock points. */
+-static int64_t mono_us() {
++/* Microseconds on the monotonic clock, for the live request table and the epoch join window;
++ * the step path keeps its own steady_clock points. The offset is the test seam's
++ * (test_advance_clock_us) and 0 in production. */
++int64_t Scheduler::mono_us() const {
+     return (int64_t)std::chrono::duration_cast<std::chrono::microseconds>(
+-               std::chrono::steady_clock::now().time_since_epoch()).count();
++               std::chrono::steady_clock::now().time_since_epoch()).count() +
++           clock_offset_us_;
+ }
+ 
+ /* Reclaiming KV from the prefix cache for a request: at most kEvictRounds rounds of
+@@ -85,13 +87,27 @@ void Scheduler::epoch_drop_member(int32_t slot, bool preempted) {
+     if (!epoch_member_at(slot)) return;
+     epoch_member_[(size_t)slot] = false;
+     --epoch_drain_;
+-    if (preempted) ++m_.cohort_preempt_removals;
++    if (preempted) {
++        ++m_.cohort_preempt_removals;
++        /* The revocation is permanent for this epoch: the join window must not hand back the
++         * guarantee preemption just took (epoch_joinable_locked). */
++        if (reqs_[(size_t)slot]) reqs_[(size_t)slot]->epoch_revoked = true;
++    }
+     if (epoch_drain_ <= 0) {
+         epoch_live_ = false;
++        epoch_formation_us_ = 0;
+         m_.epoch_len_steps += step_ - epoch_start_step_;
+     }
+ }
+ 
++/* Epoch cohort join window: a request created within this span of the epoch's formation joins
++ * its cohort with full membership. Owner-specified value (2026-11-20): a spawn burst whose
++ * sessions stagger sub-5s must form ONE epoch, not a solo burst followed by a second epoch for
++ * the rest. Hard-coded -- no config knob until the owner asks. The window is anchored at
++ * formation and never re-anchored by a joiner, so an epoch's cohort is fixed 5 s after its
++ * formation instant: the anti-indefinite-precedence bound survives. */
++static constexpr int64_t kEpochCohortJoinWindowMs = 5000;
++
+ /* Formation: the leader is the oldest active request (head_slot_locked's rule), the epoch class
+  * is its current class -- a waiting leader enters as a prefill, the head_class_prefill rule --
+  * and the cohort is every request of that class present in running_ or waiting_: queued
+@@ -128,9 +144,49 @@ void Scheduler::epoch_form_locked() {
+     }
+     epoch_live_ = true;
+     epoch_start_step_ = step_;
++    epoch_formation_us_ = mono_us();            /* the join window's anchor; never moved again */
+     ++m_.epochs;
+ }
+ 
++/* The join window's predicate: an arrival after formation (one created before it is cohort
++ * under OD2, and one the window excludes keeps today's mid-arrival semantics), not revoked by
++ * a preemption [OD1], created within the window of formation, and of the epoch's governing
++ * class at this moment. mu_ held. */
++bool Scheduler::epoch_joinable_locked(const SchedReq& s) const {
++    if (!epoch_live_ || s.epoch_revoked) return false;
++    if (s.arrived_us < epoch_formation_us_) return false;
++    if (s.arrived_us - epoch_formation_us_ > kEpochCohortJoinWindowMs * 1000) return false;
++    return req_class_prefill(s) == epoch_class_prefill_;
++}
++
++/* A join is a full membership: the drain waits for the joiner (that is the point -- the epoch
++ * closes at the last member's phase completion, joined ones included), it is not a
++ * midarrival_cut, and preemption revokes it like any membership [OD1]. The member vector is
++ * sized at formation; a joiner can hold a newer slot. */
++void Scheduler::epoch_join_locked(int32_t slot) {
++    if (epoch_member_.size() < reqs_.size()) epoch_member_.resize(reqs_.size(), false);
++    epoch_member_[(size_t)slot] = true;
++    ++epoch_drain_;
++    ++m_.epoch_cohort_joins;
++}
++
++/* The window's second evaluation point: a request that arrived inside it while class-mismatched
++ * joins when its class flips into the epoch's. The scan runs every planning pass; arrivals that
++ * match at once joined at add_locked already (a new request is prefill-class, so a PREFILL
++ * epoch's in-window arrivals all join there and the scan is a no-op). mu_ held. */
++void Scheduler::epoch_join_scan_locked() {
++    for (int32_t slot : running_) {
++        const SchedReq& s = *reqs_[(size_t)slot];
++        if (!s.req || !s.running || epoch_member_at(slot)) continue;
++        if (epoch_joinable_locked(s)) epoch_join_locked(slot);
++    }
++    for (int32_t slot : waiting_) {
++        const SchedReq& s = *reqs_[(size_t)slot];
++        if (!s.req || epoch_member_at(slot)) continue;
++        if (epoch_joinable_locked(s)) epoch_join_locked(slot);
++    }
++}
++
+ void Scheduler::queue_insert(std::vector<int32_t>& q, int32_t slot) {
+     auto it = std::lower_bound(q.begin(), q.end(), slot,
+                                [&](int32_t a, int32_t b) { return ahead_of(a, b); });
+@@ -248,9 +304,10 @@ int Scheduler::init(Program& prog, const Config& cfg, IKVManager* kv, IPrefixCac
+     else if (cfg.prefill_interleave == Config::kPrefillInterleaveEpoch)
+         RAD_INFO("scheduler: --prefill-interleave epoch: cohort-epoch governance: the oldest "
+                  "active request's class governs until every same-class request present at epoch "
+-                 "start finishes that phase; mid-epoch arrivals run (right class) without a "
+-                 "finish-guarantee; preemption revokes membership; a step that would idle the "
+-                 "engine lifts the freeze once");
++                 "start finishes that phase; a request created within 5 s of epoch formation "
++                 "joins the cohort with full membership; later arrivals run (right class) "
++                 "without a finish-guarantee; preemption revokes membership; a step that would "
++                 "idle the engine lifts the freeze once");
+     else if (cfg.prefill_interleave == -1)
+         RAD_INFO("scheduler: --prefill-interleave auto: after a prefill chunk that leaves its "
+                  "prompt unfinished while other sequences decode, decode-only steps follow for up "
+@@ -592,6 +649,7 @@ int Scheduler::add_locked(std::unique_ptr<Request> r) {
+      * release and its restore would be cut. */
+     s.restore_waited = false;
+     s.restore_cut = false;
++    s.epoch_revoked = false;
+     s.req->state = ReqState::Waiting;
+ 
+     /* The step path appends to `output`, so its capacity is settled here, on the arrival thread.
+@@ -608,6 +666,9 @@ int Scheduler::add_locked(std::unique_ptr<Request> r) {
+     if (waiting_.capacity() < waiting_.size() + (size_t)cfg_.max_seqs + 1)
+         waiting_.reserve(waiting_.size() + (size_t)cfg_.max_seqs + 1);
+     queue_insert(waiting_, slot);
++    /* Epoch join window, evaluation point (1): an arrival inside the window whose class matches
++     * the live epoch's joins at once -- drain +1, membership stamped. */
++    if (epoch_live_ && epoch_joinable_locked(s)) epoch_join_locked(slot);
+     return RAD_OK;
+ }
+ 
+@@ -2296,8 +2357,10 @@ const RadBatch* Scheduler::step_locked() {
+         /* The epoch's class governs, not the live head: it was fixed at formation and holds
+          * until the cohort drains -- an early class flip of a member re-governs nothing (E1).
+          * Formation runs only while no epoch is live -- epoch end or idle->busy -- never
+-         * mid-epoch. */
++         * mid-epoch. While one is live the join window's scan runs: a request that arrived
++         * inside it class-mismatched joins when its class flips into the epoch's. */
+         if (!epoch_live_) epoch_form_locked();
++        else epoch_join_scan_locked();
+         head_govern_prefill_ = epoch_class_prefill_;
+         hold_decode  = epoch_class_prefill_ && !head_unfreeze_once_;
+         hold_prefill = !epoch_class_prefill_ && !head_unfreeze_once_;
+diff --git a/core/sched/scheduler.h b/core/sched/scheduler.h
+index 4680715a..a89e0be6 100644
+--- a/core/sched/scheduler.h
++++ b/core/sched/scheduler.h
+@@ -53,6 +53,10 @@ struct SchedReq {
+                                   * the wait for admission (GUIDE); this excludes it. */
+     int64_t  preempted_us = 0;   /* when this state became Preempted; 0 otherwise. Bounds the
+                                   * whole-recompute admission wait (--preempt-wait-ms). */
++    /* Set when a preemption revoked this request's epoch membership [OD1]: the join window
++     * never re-admits what preemption revoked (epoch_joinable_locked). A later epoch's own
++     * formation still stamps it under OD2; reset on arrival (a recycled slot). */
++    bool     epoch_revoked = false;
+ 
+     /* The drafter's proposal for the next step, and the conv-window read cursor a rejection
+      * moves rather than rolls back (§10). */
+@@ -490,6 +494,16 @@ public:
+     LookupGate&          lookup_gate() { return lookup_; }
+     SchedMetrics         metrics() const;
+ 
++    /* Test seam: shifts the scheduler's monotonic clock (mono_us) by `delta_us`, so a test can
++     * place an arrival inside or outside the epoch cohort join window without sleeping. The
++     * offset moves every stamp together (arrival, admission, first token, preemption), so all
++     * elapsed-time arithmetic — aging aside, which keys on the `arrival` counter — reads the
++     * same as a real wait. Production never calls it; the offset is 0 there. */
++    void test_advance_clock_us(int64_t delta_us) {
++        std::lock_guard<std::mutex> lk(mu_);
++        clock_offset_us_ += delta_us;
++    }
++
+     /* The observers' copy. Dashboards, scrapers and admin calls read what the engine thread last
+      * published, never the scheduler's state behind the step lock, so an observer cannot slow
+      * the step. publish() runs on the engine thread once a step (at most every 20 ms while idle),
+@@ -836,6 +850,9 @@ private:
+     std::vector<int32_t> block_mask_;
+     int      step_ = 0;
+     uint64_t arrival_ = 0;
++    /* The test seam's shift on the monotonic clock (test_advance_clock_us); 0 in production.
++     * Added to every mono_us() stamp, so elapsed-time reads are unaffected. */
++    int64_t  clock_offset_us_ = 0;
+ 
+     /* mu_ held everywhere it is touched (prefill_continues() is const and counts the head-mode
+      * staging disarms into it), hence mutable like mu_ itself. */
+@@ -867,13 +884,16 @@ private:
+     /* --prefill-interleave epoch: the cohort-epoch state. The governing class (meaningful while
+      * epoch_live_), the members stamped at formation indexed by slot (cleared at phase
+      * completion, close and preemption), the members not yet drained -- the epoch closes at zero
+-     * and re-forms on the next planning pass -- and the step the epoch opened on, for the length
+-     * accounting. mu_ held. */
++     * and re-forms on the next planning pass -- the step the epoch opened on, for the length
++     * accounting, and the formation instant (mono_us), the anchor of the cohort join window:
++     * a request created within kEpochCohortJoinWindowMs of it joins the cohort (never
++     * re-anchored by a joiner, so the cohort is fixed 5 s after formation). mu_ held. */
+     bool epoch_live_ = false;
+     bool epoch_class_prefill_ = true;
+     std::vector<bool> epoch_member_;
+     int64_t epoch_drain_ = 0;
+     int64_t epoch_start_step_ = 0;
++    int64_t epoch_formation_us_ = 0;
+     /* --prefill-interleave auto: the decode-only steps after a chunk (interleave_steps), sized by
+      * the running means of a step that carried a chunk and of a decode step, in seconds, fed by
+      * step_finished. */
+@@ -901,6 +921,11 @@ private:
+     /* The single-sequence decode floor (rad::DecodeFloor), fed by step_finished. */
+     DecodeFloor decode_floor_;
+ 
++    /* Microseconds on the monotonic clock, plus the test seam's offset (test_advance_clock_us);
++     * the step path keeps its own steady_clock points. mu_ held by every caller but publish()'s,
++     * which reads it outside the lock like the offset it adds is only ever written by a test. */
++    int64_t mono_us() const;
++
+     /* arrival; mu_ held */
+     int  add_locked(std::unique_ptr<Request> r);
+ 
+@@ -934,6 +959,17 @@ private:
+     }
+     void epoch_drop_member(int32_t slot, bool preempted);
+     void epoch_form_locked();
++    /* The cohort join window. A request that arrived after formation -- one created before it
++     * is cohort under OD2, and a preemption revocation [OD1] is permanent for the epoch --
++     * joins iff its creation is within kEpochCohortJoinWindowMs of epoch_formation_us_ and its
++     * current class matches the epoch's governing class. Joined members hold full membership:
++     * the drain waits for them, they are not midarrival_cuts, and preemption still revokes.
++     * Evaluated at arrival (add_locked) and on every planning pass (the scan, which catches a
++     * request that arrived inside the window class-mismatched and later flips into the epoch's
++     * class). mu_ held. */
++    bool epoch_joinable_locked(const SchedReq& s) const;
++    void epoch_join_locked(int32_t slot);
++    void epoch_join_scan_locked();
+ 
+     /* lifecycle */
+     /* Ends a request: counts it by `st` and queues its id for take_completed. `publish` is
+diff --git a/core/server/adapters.h b/core/server/adapters.h
+index 47af9d74..e12e18ac 100644
+--- a/core/server/adapters.h
++++ b/core/server/adapters.h
+@@ -162,6 +162,7 @@ inline SchedMetrics bridge_metrics(const rad::SchedMetrics& m) {
+     o.epoch_len_steps = m.epoch_len_steps;
+     o.midarrival_cuts = m.midarrival_cuts;
+     o.cohort_preempt_removals = m.cohort_preempt_removals;
++    o.epoch_cohort_joins = m.epoch_cohort_joins;
+     o.mixed_step_target_steps = m.mixed_step_target_steps;
+     o.mixed_step_target_misses = m.mixed_step_target_misses;
+     o.mixed_step_target_prefill_cap = m.mixed_step_target_prefill_cap;
+diff --git a/core/server/dashboard.cpp b/core/server/dashboard.cpp
+index 66f5dba3..9e8fe20c 100644
+--- a/core/server/dashboard.cpp
++++ b/core/server/dashboard.cpp
+@@ -380,6 +380,7 @@ HttpResponse Server::handle_stats(const HttpRequest&) {
+         o["epoch_len_steps"] = m.epoch_len_steps;
+         o["midarrival_cuts"] = m.midarrival_cuts;
+         o["cohort_preempt_removals"] = m.cohort_preempt_removals;
++        o["epoch_cohort_joins"] = m.epoch_cohort_joins;
+         o["mixed_step_target_steps"] = m.mixed_step_target_steps;
+         o["mixed_step_target_misses"] = m.mixed_step_target_misses;
+         o["mixed_step_target_prefill_cap"] = m.mixed_step_target_prefill_cap;
+diff --git a/core/server/iface.h b/core/server/iface.h
+index 2f4c54f8..220ac326 100644
+--- a/core/server/iface.h
++++ b/core/server/iface.h
+@@ -156,6 +156,7 @@ struct SchedMetrics {
+     int64_t epoch_len_steps = 0;      /* epoch: summed closed-epoch length in steps (avg: /epochs) */
+     int64_t midarrival_cuts = 0;      /* epoch: requests frozen by a class flip at a boundary */
+     int64_t cohort_preempt_removals = 0; /* epoch: members whose preemption revoked the guarantee */
++    int64_t epoch_cohort_joins = 0;    /* epoch: in-window arrivals that joined a live cohort */
+     int64_t mixed_step_target_steps = 0; /* mixed steps observed by --mixed-step-target-ms */
+     int64_t mixed_step_target_misses = 0;      /* those whose completed wall time exceeded the target */
+     int64_t mixed_step_target_prefill_cap = 0; /* current learned mixed-prefill row cap */
+diff --git a/core/server/metrics.cpp b/core/server/metrics.cpp
+index 77e82fde..000912b7 100644
+--- a/core/server/metrics.cpp
++++ b/core/server/metrics.cpp
+@@ -192,6 +192,7 @@ void Metrics::sample(const SchedMetrics& m) {
+     c_epoch_len_steps_.advance_to(m.epoch_len_steps);
+     c_midarrival_cuts_.advance_to(m.midarrival_cuts);
+     c_cohort_preempt_removals_.advance_to(m.cohort_preempt_removals);
++    c_epoch_cohort_joins_.advance_to(m.epoch_cohort_joins);
+     c_mixed_step_target_steps_.advance_to(m.mixed_step_target_steps);
+     c_mixed_step_target_misses_.advance_to(m.mixed_step_target_misses);
+     c_rows_unspec_.advance_to(m.decode_rows_unspeculated);
+@@ -454,6 +455,10 @@ std::string Metrics::render() const {
+     w.counter("radiance:engine_cohort_preempt_removals_total",
+               "Cohort members whose preemption revoked the epoch finish-guarantee "
+               "(--prefill-interleave epoch).", L, c_cohort_preempt_removals_.get());
++    w.counter("radiance:engine_epoch_cohort_joins_total",
++              "Requests created within 5 s of an epoch's formation that joined its cohort "
++              "with full membership (--prefill-interleave epoch).",
++              L, c_epoch_cohort_joins_.get());
+     w.counter("radiance:mixed_step_target_steps_total",
+               "Mixed prefill/decode steps observed by --mixed-step-target-ms.",
+               L, c_mixed_step_target_steps_.get());
+diff --git a/core/server/metrics.h b/core/server/metrics.h
+index 92de0371..282dd7a1 100644
+--- a/core/server/metrics.h
++++ b/core/server/metrics.h
+@@ -151,6 +151,7 @@ private:
+     Counter c_prefill_capped_, c_steps_held_;
+     Counter c_steps_held_decode_, c_head_flips_, c_head_freeze_releases_;
+     Counter c_epochs_, c_epoch_len_steps_, c_midarrival_cuts_, c_cohort_preempt_removals_;
++    Counter c_epoch_cohort_joins_;
+     Counter c_mixed_step_target_steps_, c_mixed_step_target_misses_;
+     Gauge   g_mixed_step_target_cap_;
+     /* Seconds inside a step, all shapes and decode-only. Wall clock over a step count is not a
+-- 
+2.56.1
+
