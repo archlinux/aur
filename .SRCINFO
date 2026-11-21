@@ -1,0 +1,17 @@
+pkgbase = niri-settings-app
+	pkgdesc = Safe graphical settings app for the niri compositor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/pantarune/niri-settings
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = dbus
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = gtk4
+	depends = libadwaita
+	depends = niri
+	source = niri-settings-app-0.1.0.tar.gz::https://github.com/pantarune/niri-settings/releases/download/v0.1.0/niri-settings-app-0.1.0.tar.gz
+	sha256sums = a73985e32193122f8c7bbc3383ed06e6e5cea6e7ec2be54561420338c1abf6f5
+
+pkgname = niri-settings-app
