@@ -2,7 +2,7 @@
 # Contributor: Rowan <rowan@zeusteam.dev>
 pkgname=ferronweb
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast, modern web server written in Rust (prebuilt binaries)'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'riscv64')
 url='https://ferron.sh'

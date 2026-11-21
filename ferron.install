@@ -49,7 +49,7 @@ reseedroot() {
 }
 
 fixperms() {
-    chown -R ferron:ferron /var/log/ferron /var/www/ferron 2>/dev/null
+    chown -R ferron:ferron /var/log/ferron /var/www/ferron /var/lib/ferron 2>/dev/null
     find /var/log/ferron -type d -exec chmod 755 {} + 2>/dev/null
     find /var/log/ferron -type f -exec chmod 644 {} + 2>/dev/null
     find /var/www/ferron -type d -exec chmod 755 {} + 2>/dev/null
