@@ -1,0 +1,18 @@
+pkgbase = readwebform
+	pkgdesc = CLI tool that spawns a one-shot web server to collect user input through an HTML form instead of the terminal
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://moulti.run/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	provides = readwebform
+	conflicts = python-readwebform
+	source = readwebform-0.4.1.tar.gz::https://github.com/vlasky/readwebform/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 748ec776c82a888b3a7383f607caec03c4f070dbc2082bfecf0621df20c96440
+
+pkgname = readwebform
