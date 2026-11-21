@@ -1,15 +1,16 @@
-# Maintainer: Yardena Cohen <yardenack@gmail.com>
+# Maintainer: yar cohen <yardenack@gmail.com>
 # Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=python-httpx-git
 _pkgname=httpx
 # https://github.com/encode/httpx/blob/master/CHANGELOG.md
-pkgver=0.28.1.r18.g652f051f
+pkgver=0.28.1.r31.gbe3f3ca
 pkgrel=1
 pkgdesc="A next generation HTTP client for Python"
 arch=('any')
 url="https://github.com/encode/${_pkgname}"
+myurl="https://github.com/yardenac/${_pkgname}"
 license=('BSD')
 depends=(
     'python-anyio'
@@ -53,7 +54,7 @@ checkdepends=(
 provides=(python-httpx=$pkgver)
 conflicts=(python-httpx)
 replaces=(python-httpx)
-source=("git+${url}.git"
+source=("git+${myurl}.git#branch=fix-tests"
         "uvicorn-test-server-use-h11.diff")
 sha512sums=('SKIP'
             'd3e6a9df365aff5e4e7b724469672c6da9c7e95cc5d79339ebd1ea249236802d81b8792efb0826f89747424fa1bef20d4965ddb75b3b67e9cd320b5fcc738f18')

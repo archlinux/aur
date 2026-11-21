@@ -1,3 +1,4 @@
 /httpx/
+/httpx.*/
 /src/
 /python-httpx-*.log
