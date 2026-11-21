@@ -2,7 +2,7 @@
 pkgname=mewline-qs
 pkgver=2.4.0
 pkgrel=1
-pkgdesc="Quickshell shell for Hyprland and bspwm — bar, widgets and menus (successor of mewline)"
+pkgdesc="Quickshell shell for Hyprland, niri and bspwm — bar, widgets and menus (successor of mewline)"
 arch=('any')
 url="https://github.com/meowrch/mewline-qs"
 license=('GPL-3.0-only')
@@ -33,7 +33,7 @@ optdepends=(
 )
 install=mewline-qs.install
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c0a435813091e36f9f3ab2325904f46609ebbe6fd82b5483c76f9849b0d5218c')
+sha256sums=('93f32f9ea62de6f374c9cdfe17490c7cb9a032975c7a5e425abecf79e9e3eb70')
 
 package() {
   cd "$srcdir/mewline-qs-$pkgver"
