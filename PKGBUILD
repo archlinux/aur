@@ -1,7 +1,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=chronytop
 # renovate: datasource=github-releases depName=geerlingguy/chronytop
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='TUI for chrony NTP time server monitoring'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ depends=('glibc')
 makedepends=('go')
 conflicts=("${pkgname}-bin")
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('92cda48899ec53d61e759b7a7a06f53cff7a444d236331631042c2e195c199dabe12269c2a69e25eab0a71963d5782472aa459372b81cbad54608d7ceb84e290')
-b2sums=('2ee46b269a95a26d1683ee84c69470be6685152e213ef1cc6edd40a1534a64c17096bb6ca0defded414d37b4c7ab7a94fa72924f87d6b34db659a4f75ae80305')
+sha512sums=('9f47279ac36f9a1b71935e4108017af78adfa39112f4e222dfcd1cd0f94c2aa4b7b7aa78f364547debd268bd4aa67d9d51965b86a035fb73713ba5c0a3b47880')
+b2sums=('0247cfde628325ace3e2f6f1dd9d56e6c83447be66e5f5374d61dd100bef6efd292896ec1e6a1d3694972ba5fa7ccd8f462afcb4f291430a0aab698a19467686')
 
 build() {
   local _x _commit
