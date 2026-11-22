@@ -1,6 +1,6 @@
 pkgbase = tdrive-bin
 	pkgdesc = TDrive-compatible Telegram-backed cloud drive client — prebuilt binary
-	pkgver = 0.1.4
+	pkgver = 0.2.0
 	pkgrel = 2
 	url = https://github.com/Coobyk/tdrive-rs
 	arch = x86_64
@@ -14,6 +14,6 @@ pkgbase = tdrive-bin
 	provides = tdrive
 	conflicts = tdrive
 	source = tdrive-rs-linux-x86_64-$pkgver.tar.gz::https://github.com/Coobyk/tdrive-rs/releases/download/v$pkgver/tdrive-rs-linux-x86_64-$pkgver.tar.gz
-	sha256sums = d5c5c9d175c4458a03095c032b36a37ff9223d39daff8ebc5b64e552c130de0f
+	sha256sums = 73dc1107f918e11d3ab45651b068e1332997d1ef015b4e6a48726211ac95cede
 
 pkgname = tdrive-bin
