@@ -1,0 +1,19 @@
+pkgbase = spot-go-bin
+	pkgdesc = A Spotify terminal UI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/spot-go/spot-go
+	license = MIT
+	conflicts = spot-go
+	provides = spot-go
+	arch = aarch64
+	source_aarch64 = spot-go-bin_0.1.0_aarch64.tar.gz::https://github.com/spot-go/spot-go/releases/download/v0.1.0/spot-go_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6bb54ccec22c31d549ab72c8a7b6ee21de65ad63a283eeef7167a8d0a9b93d55
+	arch = armv7h
+	source_armv7h = spot-go-bin_0.1.0_armv7h.tar.gz::https://github.com/spot-go/spot-go/releases/download/v0.1.0/spot-go_linux_armv7.tar.gz
+	sha256sums_armv7h = c869e3c01d4d206c63a41092f366c5761106c35a46622ae4d3b51bfedbcc7ec1
+	arch = x86_64
+	source_x86_64 = spot-go-bin_0.1.0_x86_64.tar.gz::https://github.com/spot-go/spot-go/releases/download/v0.1.0/spot-go_linux_amd64.tar.gz
+	sha256sums_x86_64 = 613b815aba232ed7b2cee351f6a5248fad7b87ef8b18add644f12a0a226afa7c
+	
+pkgname = spot-go-bin
