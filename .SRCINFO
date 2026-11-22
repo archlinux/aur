@@ -1,0 +1,21 @@
+pkgbase = youta-bin
+	pkgdesc = An audio player for YouTube, Yandex Music, podcasts, audiobooks, radio, and local files
+	pkgver = 1.25.7
+	pkgrel = 1
+	url = https://github.com/vitaly-zdanevich/youta
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = youta
+	conflicts = youta
+	options = !debug
+	source = youta-bin-1.25.7-LICENSE::https://raw.githubusercontent.com/vitaly-zdanevich/youta/v1.25.7/LICENSE
+	sha256sums = 40c6322f9ff7ec63f0c23e61a7b9d0d72eb83ca27d468a4704539d6ffbe6e4d5
+	source_x86_64 = youta-bin-1.25.7-x86_64::https://github.com/vitaly-zdanevich/youta/releases/download/v1.25.7/youta-1.25.7-linux-amd64
+	sha256sums_x86_64 = 0e98f65d1f1ab8ee73aa757d63e68d83bcf93894067150e0338188aa1927ff7f
+	source_aarch64 = youta-bin-1.25.7-aarch64::https://github.com/vitaly-zdanevich/youta/releases/download/v1.25.7/youta-1.25.7-linux-arm64
+	sha256sums_aarch64 = 7d8fc247ac0900931e305f6dba0827845718a39f28511f566b51548e7ced79b8
+
+pkgname = youta-bin
