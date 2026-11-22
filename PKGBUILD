@@ -6,7 +6,7 @@
 # Contributor: gue5t <gue5t@aur.archlinux.org>
 _base=Mastodon.py
 pkgname=python-mastodon
-pkgver=2.2.2
+pkgver=2.3.3
 pkgrel=2
 pkgdesc="Python wrapper for the Mastodon API"
 arch=(any)
@@ -37,7 +37,7 @@ checkdepends=(
     python-magic
 )
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c33f16170a34bb404190a32c2607739b9d22bc8c88906b36e513ec75a026dc03a25283db1b5f0901fba0787a6765090cd37e7caab7a48f4fe110e5716ee800c9')
+sha512sums=('0036509e27ef7cca9942c39af1b0a2a75c6e1f0a3b5483b7730f4fc867a4f09ec7b5e17452ff91615a84ca2afa9f60b01a43e4436090389ba5d3d9c20596254b')
 
 build() {
   cd ${_base}-${pkgver}
