@@ -1,0 +1,19 @@
+pkgbase = confetty_rs-git
+	pkgdesc = Particle system (fireworks, stars) rendered in the terminal
+	pkgver = r15.2012f53
+	pkgrel = 1
+	url = https://github.com/Handfish/confetty_rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = confetty_rs
+	conflicts = confetty_rs
+	options = !lto
+	source = confetty_rs::git+https://github.com/Handfish/confetty_rs.git
+	sha256sums = SKIP
+
+pkgname = confetty_rs-git
