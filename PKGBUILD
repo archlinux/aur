@@ -2,10 +2,12 @@
 # 自用维护：仅信任官方 GitHub release 资产，sha256 锁定官方 SHA256SUMS.txt。
 pkgname=photocraft-private-bin
 pkgver=0.23.1
-pkgrel=1
+pkgrel=2
 pkgdesc='自用维护：开源 clean-room 版 Adobe Photoshop 替代（图像编辑），上游 storytold/photocraft'
 arch=('x86_64')
 url='https://getartcraft.com/apps/photocraft'
+# GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
+_gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
 license=('MIT' 'Apache')
 provides=("photocraft=$pkgver")
 conflicts=('photocraft' 'photocraft-bin' 'photocraft-git' 'ai.storyteller.photocraft')
@@ -23,7 +25,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://gh-proxy.com/https://github.com/storytold/photocraft/releases/download/v${pkgver}/photocraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("${_gh_mirror}https://github.com/storytold/photocraft/releases/download/v${pkgver}/photocraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('6f55b05a7880a6db38374ac7985730304bcc9b499dae0f18f9d2dbd6bbb8d201')
 
 package() {
