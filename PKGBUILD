@@ -1,8 +1,8 @@
 # Maintainer: Eric Renfro <psi-jack@linux-help.org>
 pkgname=clamaurscan-git
 pkgver=r1.0f5b135
-pkgrel=6
-pkgdesc="Automatically scan AUR packages with ClamAV before building them with Paru."
+pkgrel=7
+pkgdesc="Automatically scan AUR packages with ClamAV before building them with Paru or Yay."
 url="https://codeberg.org/psi-jack/clamaurscan.git"
 license=("GPL-3.0-or-later")
 source=("git+$url")
