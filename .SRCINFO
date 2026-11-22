@@ -1,0 +1,20 @@
+pkgbase = nipovpn
+	pkgdesc = Powerful and secure HTTP proxy with agent and server modes
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/MortezaBashsiz/nipovpn
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = boost
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = openssl
+	depends = yaml-cpp
+	backup = etc/nipovpn/config.yaml
+	source = nipovpn-2.1.0.tar.gz::https://github.com/MortezaBashsiz/nipovpn/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = 413b5acf3b8da5226dc274e73c75279eac746e3b671be9df37ecd0362f6f7a58
+
+pkgname = nipovpn
