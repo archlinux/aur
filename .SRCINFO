@@ -1,0 +1,17 @@
+pkgbase = material
+	pkgdesc = A material design color palette for the terminal
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/azorng/material
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = libxcb
+	options = !lto
+	source = material-0.1.1.tar.gz::https://github.com/azorng/material/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 40e27d87d56babf091e37efc6d5ed1c407c09851baedfafee04c1356966da2bf
+
+pkgname = material
