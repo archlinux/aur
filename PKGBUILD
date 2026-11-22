@@ -3,16 +3,17 @@
 
 pkgname=tgif
 pkgver=4.2.5
-pkgrel=10
+pkgrel=11
 pkgdesc="Vector-based drawing tool (for technical, not artistic, stuff)"
 arch=('i686' 'x86_64')
 url="http://bourbon.usc.edu/tgif/"
 license=('custom:QPL')
 depends=('libxt' 'zlib' 'desktop-file-utils')
 makedepends=('imake')
-source=(tgif-QPL-$pkgver.tar.gz::http://sourceforge.net/projects/tgif/files/tgif/4.2.5/tgif-QPL-4.2.5.tar.gz/download 2024-11-17.patch)
+source=(tgif-QPL-$pkgver.tar.gz::http://sourceforge.net/projects/tgif/files/tgif/4.2.5/tgif-QPL-4.2.5.tar.gz/download 2024-11-17.patch 2026-11-22.patch)
 md5sums=('a622240ce2377f15b6d8261e4c49b8f6'
-         'c140b13f0bdb0f4913ae5d61a00548fe')
+         'c140b13f0bdb0f4913ae5d61a00548fe'
+         '283ff3f8e41d1a9f3ae508f312c69b26')
 install=tgif.install
 
 build() {
@@ -21,6 +22,7 @@ build() {
   sed -i -e '/^LOCAL_LIBRARIES\s*= /s/=.*/=/' Makefile
   sed -i -e '/^SYS_LIBRARIES\s*= /s/=.*/= -lXt -lX11 -lz -lm -lpthread -ldl/' Makefile
   patch < "$srcdir/2024-11-17.patch"
+  patch < "$srcdir/2026-11-22.patch"
   make tgif
 }
 
