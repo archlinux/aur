@@ -1,11 +1,11 @@
 # Maintainer: Mathis <999frostz@gmail.com>
 pkgname=screenix-bin
 pkgver=2.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional screen recorder with smooth zoom effects"
 arch=('x86_64')
 url="https://github.com/mathisdev7/screenix"
-license=('MIT')
+license=('LicenseRef-proprietary')
 depends=(
   'webkit2gtk-4.1'
   'gtk3'
