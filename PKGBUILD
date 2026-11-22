@@ -1,5 +1,5 @@
 pkgname=sfptool
-pkgver=1.10.2
+pkgver=1.10.5
 pkgrel=1
 pkgdesc="Desktop utility for reading and programming SFP and QSFP transceivers"
 arch=('x86_64' 'aarch64')
@@ -10,14 +10,14 @@ makedepends=('cargo' 'cmake' 'conan' 'desktop-file-utils' 'emscripten' 'fmt' 'gi
 provides=('sfptool')
 conflicts=('sfptool-bin')
 source=(
-  "sfp-tool-v${pkgver}.tar.gz::https://jonasled.dev/jonasled/sfp-tool/-/archive/v1.10.2/sfp-tool-v1.10.2.tar.gz"
+  "sfp-tool-v${pkgver}.tar.gz::https://jonasled.dev/jonasled/sfp-tool/archive/v1.10.5.tar.gz"
   "transceivertool-811da32d7b3bc7b8138fee5b18ae847da470c161.tar.gz::https://github.com/robinchrist/TransceiverTool/archive/811da32d7b3bc7b8138fee5b18ae847da470c161.tar.gz"
   "cppcodec-v0.2.tar.gz::https://github.com/tplgy/cppcodec/archive/refs/tags/v0.2.tar.gz"
 )
-sha256sums=('b4ccefa3c552c5fe95e83b08d3f05ca45d03e3220b3697d5ed9134d263aac961' 'f1e568c1e4dcf1e8e02d4e90d53e285457a8a77db7c39a54ba3ea6106545f6d0' '0edaea2a9d9709d456aa99a1c3e17812ed130f9ef2b5c2d152c230a5cbc5c482')
+sha256sums=('0b847fe4f645ecac28e430cb6496d1b6575697fd499bee5725b60ce41965d303' 'f1e568c1e4dcf1e8e02d4e90d53e285457a8a77db7c39a54ba3ea6106545f6d0' '0edaea2a9d9709d456aa99a1c3e17812ed130f9ef2b5c2d152c230a5cbc5c482')
 
 prepare() {
-  cd "$srcdir/sfp-tool-v${pkgver}"
+  cd "$srcdir/sfp-tool"
   rm -rf external/TransceiverTool external/cppcodec
   mkdir -p external
   mv "$srcdir/TransceiverTool-811da32d7b3bc7b8138fee5b18ae847da470c161" external/TransceiverTool
@@ -25,8 +25,8 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/sfp-tool-v${pkgver}/software/App/SFP-Tool"
-  export CPP_CODEC_DIR="$srcdir/sfp-tool-v${pkgver}/external/cppcodec"
+  cd "$srcdir/sfp-tool/software/App/SFP-Tool"
+  export CPP_CODEC_DIR="$srcdir/sfp-tool/external/cppcodec"
   export CARGO_TARGET_DIR="$srcdir/target"
   pnpm install --frozen-lockfile --store-dir "$srcdir/pnpm-store"
   bash scripts/build-transceiver-wasm.sh
@@ -36,7 +36,7 @@ from pathlib import Path
 
 config_path = Path("src-tauri/tauri.conf.json")
 config = json.loads(config_path.read_text())
-config["version"] = "1.10.2"
+config["version"] = "1.10.5"
 config.setdefault("bundle", {})["createUpdaterArtifacts"] = False
 config_path.write_text(json.dumps(config, indent=2))
 PY
