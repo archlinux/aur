@@ -6,7 +6,7 @@
 # checkout instead.
 
 pkgname=hauler
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Fast, resumable download manager: segmented engine, systemd daemon and Kirigami app'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('uq: Downloads widget in the bar, "Download with hauler" in look=see
 # Rust links its own LTO; makepkg's C/C++ LTO flags break the cxx-qt objects.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('af7f5b76a95490da8e7bac0680f920bd584cfbb89298fe7aefc7961ac9742ced')
+sha256sums=('51bc17980c0ef54d9edad3e6d7381c37c277823d8929925018d6ca190b2fb4c7')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -47,6 +47,7 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/uq/shell/widgets/hauler" uq/widgets/hauler/widget.toml uq/widgets/hauler/Widget.qml
   install -Dm644 -t "$pkgdir/usr/share/uq/launcher" uq/launcher/hauler.provider
   install -Dm644 -t "$pkgdir/usr/share/uq/settings/pages/hauler" uq/pages/hauler/*
+  install -Dm644 -t "$pkgdir/usr/share/uq/diag" uq/diag/hauler.toml
   install -Dm644 -t "$pkgdir/usr/share/dbus-1/services" uq/dbus/org.hauler.Hauler1.service
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING LICENSE-MIT LICENSE-APACHE
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
