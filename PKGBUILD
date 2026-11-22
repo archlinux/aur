@@ -85,6 +85,11 @@ package() {
   install -dm755 "${pkgdir}/opt/${pkgname}"
   cp -a --no-preserve=ownership "${srcdir}"/{api,bin,doc,lib,util,Data_Base,Drivers,SVD} "${pkgdir}/opt/${pkgname}/"
 
+  # util/rights*.sh
+  chmod a+x "${pkgdir}/opt/${pkgname}/bin/"{STM32CubeProgrammer,STM32CubeProgrammerLauncher,STM32_Programmer.sh,STM32_Programmer_CLI} \
+    "${pkgdir}/opt/${pkgname}/bin/"{STM32TrustedPackageCreator,STM32TrustedPackageCreator_CLI,STM32_KeyGen_CLI,STM32_SigningTool_CLI} \
+    "${pkgdir}/opt/${pkgname}/bin/Utilities/Linux/PSA_ADAC"
+
   # icons
   for entry in \
     'Programmer:stm32cubeprog' \
