@@ -1,0 +1,19 @@
+pkgbase = miditui-git
+	pkgdesc = A terminal MIDI player and multi-track piano roll visualizer with SoundFont synthesis
+	pkgver = r4.95829a6
+	pkgrel = 1
+	url = https://github.com/pinkpixel-dev/miditui
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = miditui
+	conflicts = miditui
+	options = !lto
+	source = miditui::git+https://github.com/pinkpixel-dev/miditui.git
+	sha256sums = SKIP
+
+pkgname = miditui-git
