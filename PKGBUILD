@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=spitfire
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Tiling Wayland compositor with a live-reloadable Lua config, in the spirit of dwm"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,8 @@ depends=('wayland' 'libxkbcommon' 'mesa' 'seatd' 'libinput' 'libdisplay-info'
          'pixman' 'dbus' 'gcc-libs' 'glibc')
 makedepends=('cargo' 'git' 'wayland-protocols')
 optdepends=(
-  'xorg-xwayland: run X11-only apps (XWayland support)'
+  'xwayland-satellite: run X11-only apps (preferred: menus and popups behave like native ones)'
+  'xorg-xwayland: run X11-only apps with the built-in XWayland support'
   'xdg-desktop-portal: file-open dialogs, notifications and other portal prompts'
   'iw: wifi widget in the bar'
   'alacritty: terminal bound to Mod4+Return in the example config'
@@ -23,7 +24,7 @@ backup=('etc/xdg-desktop-portal/spitfire-portals.conf')
 # (undefined lua_* symbols).
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f8421ad2a838d8cd98c1444254fae4aa049d71c69e349649f30deea603e3451c')
+sha256sums=('070ac35dfe8704855b5f072cefb0e7e38b1e773bd768120dac79c0779aca4191')
 
 # Smithay is pinned as a git dependency in Cargo.lock, so prepare() needs
 # network access (hence git in makedepends).
@@ -50,8 +51,8 @@ check() {
 
 package() {
     cd "$pkgname-$pkgver"
-    # The Makefile's install target depends on build, which is a no-op here
-    # since build() already produced target/release with the same features.
+    # The Makefile's install target depends on target/release/spitfire,
+    # already up to date here since build() produced it with the same features.
     make install DESTDIR="$pkgdir" PREFIX=/usr
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
