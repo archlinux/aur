@@ -1,0 +1,16 @@
+pkgbase = keybr-tui-bin
+	pkgdesc = Adaptive touch-typing practice that finds the keys slowing you down and drills them
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/y0sif/keybr-tui
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	provides = keybr-tui
+	conflicts = keybr-tui
+	options = !debug
+	source_x86_64 = keybr-tui-bin-0.3.2-x86_64.tar.gz::https://github.com/y0sif/keybr-tui/releases/download/v0.3.2/keybr-tui-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c43f8028332da1ebcc1ec7e4e925898d0acc716ccfd59e85de4227dbba37b26c
+
+pkgname = keybr-tui-bin
