@@ -1,13 +1,13 @@
 # Maintainer: Felix Kauselmann <licorn@gmail.com>
 
 pkgname=libpdfium-nojs
-pkgver=8103.r2.a4d199fba7
+pkgver=8127.r3.65a1784fbc
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium/"
 license=('BSD')
-depends=('freetype2' 'lcms2' 'libjpeg-turbo' 'openjpeg2' 'icu' 'harfbuzz')
+depends=('freetype2' 'lcms2' 'libjpeg-turbo' 'openjpeg2' 'icu' 'harfbuzz' 'highway' )
 conflicts=('libpdfium-bin')
 provides=('libpdfium')
 makedepends=('git' 'python' 'gn' 'ninja' 'fast_float')
@@ -62,17 +62,16 @@ prepare() {
 
   # Extract build repo revision needed from DEPS file and do a checkout
   cd "$srcdir/pdfium/build"
-  # Use a newer build revision to work around a build system bug in v6367
-  if [[ $chrome_version -gt 7049 ]]
-  then
-    git checkout $(awk '/build_revision/ {print substr($2,2,40)}' $srcdir/pdfium/DEPS) -q
-  else
-    git checkout 3dd73ffc3708962da298795d99f35fc06ed0defc -q
-  fi
-  
+
   # Extract abseil-cpp repo revision needed from DEPS file and do a checkout
   cd "$srcdir/pdfium/third_party/abseil-cpp"
-  git checkout $(awk '/abseil_revision/ {print substr($2,2,40)}' $srcdir/pdfium/DEPS) -q
+  # Pdfium v8127 refers an abseil version that is not compatible with it's build checkout - use a newer version 
+  if [[ $chrome_version -gt 8127 ]]
+  then
+    git checkout $(awk '/abseil_revision/ {print substr($2,2,40)}' $srcdir/pdfium/DEPS) -q
+  else
+    git checkout 56722f9eb6f40fb1a140caffd36e8f1f61b57aaf -q
+  fi
 
   # Patch abseil build to be static
   sed -i 's/component(/static_library(/' BUILD.gn
@@ -85,6 +84,16 @@ prepare() {
   # Use system provided icu library (unbundling)
   mkdir -p "$srcdir/pdfium/third_party/icu"
   ln -sf "$srcdir/build/linux/unbundle/icu.gn" "$srcdir/pdfium/third_party/icu/BUILD.gn"
+  
+  # Unbundle highway dependency
+  ln -sf "$srcdir/build/linux/unbundle/highway.gn" "$srcdir/pdfium/third_party/highway/BUILD.gn"
+  sed -i \
+    -e '/^import("src\/hwy.gni")/d' \
+    -e '/^shim_headers("libhwy_shim") {/,/^}/d' \
+    -e '/public_deps = \[ ":libhwy_shim" \]/d' \
+    "$srcdir/pdfium/third_party/highway/BUILD.gn"
+  mkdir -p "$srcdir/pdfium/third_party/highway/src"
+  ln -sf ln -s /usr/include/hwy "$srcdir/pdfium/third_party/highway/src/"
 
   # Fix jpeg headers
   sed -i '/public_deps +=.*libjpeg_headers/s/^/# /' $srcdir/pdfium/core/fxcodec/BUILD.gn
