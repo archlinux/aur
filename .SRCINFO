@@ -1,0 +1,22 @@
+pkgbase = maelstrom-tui-bin
+	pkgdesc = A fast test runner that runs every test in its own container locally or distributed
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/maelstrom-software/maelstrom
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = maelstrom-tui
+	conflicts = maelstrom-tui
+	options = !debug
+	source = maelstrom-tui-bin-0.14.0-LICENSE::https://raw.githubusercontent.com/maelstrom-software/maelstrom/v0.14.0/LICENSE-MIT
+	sha256sums = 23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3
+	source_x86_64 = maelstrom-tui-bin-0.14.0-x86_64.tgz::https://github.com/maelstrom-software/maelstrom/releases/download/v0.14.0/maelstrom-run-x86_64-unknown-linux-gnu.tgz
+	sha256sums_x86_64 = bd825aa0e61de698615a0da30ef207e93145bf8e7ba4ae67c95a02482469d927
+	source_aarch64 = maelstrom-tui-bin-0.14.0-aarch64.tgz::https://github.com/maelstrom-software/maelstrom/releases/download/v0.14.0/maelstrom-run-aarch64-unknown-linux-gnu.tgz
+	sha256sums_aarch64 = 43dec6f87d6e05ed3692a7cbe93dd67c73d6b97621ef30cfa9dd549b5c9ca794
+
+pkgname = maelstrom-tui-bin
