@@ -1,6 +1,6 @@
 pkgbase = dropwatch-music
 	pkgdesc = Shows which albums by the artists in your music library you are missing
-	pkgver = 0.1.5
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/carnager/dropwatch
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = dropwatch-music
 	depends = xz
 	conflicts = dropwatch
 	backup = etc/dropwatch.env
-	source = dropwatch-0.1.5.tar.gz::https://github.com/carnager/dropwatch/archive/v0.1.5.tar.gz
-	sha256sums = ce0ac0ee06797e3b1063c9d899cca51fd50852d3b50018d39e8d8d25d9e0a514
+	source = dropwatch-0.1.7.tar.gz::https://github.com/carnager/dropwatch/archive/v0.1.7.tar.gz
+	sha256sums = 27c9969a3efc9eb07cda3e90b6c7574af36762ac8511a66083cadf6167e1cb53
 
 pkgname = dropwatch-music

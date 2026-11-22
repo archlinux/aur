@@ -1,7 +1,7 @@
 # Maintainer: Rasi <rasi@xssn.at>
 
 pkgname=dropwatch-music
-pkgver=0.1.5
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='Shows which albums by the artists in your music library you are missing'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('go>=2:1.27')
 conflicts=('dropwatch')
 backup=('etc/dropwatch.env')
 source=("dropwatch-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ce0ac0ee06797e3b1063c9d899cca51fd50852d3b50018d39e8d8d25d9e0a514')
+sha256sums=('27c9969a3efc9eb07cda3e90b6c7574af36762ac8511a66083cadf6167e1cb53')
 
 prepare() {
   cd "dropwatch-$pkgver"
