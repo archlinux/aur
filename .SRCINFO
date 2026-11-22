@@ -1,0 +1,16 @@
+pkgbase = partly-claudy
+	pkgdesc = Terminal view of Claude status page (status.claude.com)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/taho-inc/partly-claudy
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = partly-claudy-0.1.1.tar.gz::https://github.com/taho-inc/partly-claudy/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 086585357fa6ef24e1b6302c28b772792b633aea17cb3a59af81365f8cc7bd25
+
+pkgname = partly-claudy
