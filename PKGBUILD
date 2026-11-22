@@ -1,7 +1,7 @@
 # Maintainer: Gaou Piou <i.am.piou@gmail.com>
 
 pkgname=anycode-bin
-pkgver=0.0.104
+pkgver=0.0.105
 pkgrel=1
 pkgdesc='Desktop workspace for AI coding agents (Claude Code, Codex and native)'
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=("AnyCode-${pkgver}.AppImage::https://github.com/incadawr/anycode/release
         'anycode.desktop'
         'anycode.sh'
         'anycode-patches.mjs')
-sha256sums=('11952f91311a6808786bab90d5c5e2d1793f480d377edbcf4062385e844a26bc'
+sha256sums=('1e8a5c4b35bddfe32aeb28007116d3776767f1b0b70f0965797dcbbd063cd551'
             'f65fd74511d34e143f022c7fdf7f8ee7d4ca9321d80e7390ce3f5147f0f94e34'
             'eb3d3a4a865f5cff62ff2a3a3bb77f5e660ee4f0376a90a9d8e238241034df81'
             'd2173b4ad832386fdef35329734ebf7900c4910460792039992b0ebc712cde83'
