@@ -1,0 +1,16 @@
+pkgbase = astray
+	pkgdesc = TUI-based space strategy game
+	pkgver = 0.1.0beta1
+	pkgrel = 1
+	url = https://github.com/ekosachev/astray
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = astray-0.1.0beta1.tar.gz::https://github.com/ekosachev/astray/archive/refs/tags/v0.1.0-beta-1.tar.gz
+	sha256sums = 74558c33296773c4f481f78f34c2d6b32b9f91a669c648de71b76ba31efca3c8
+
+pkgname = astray
