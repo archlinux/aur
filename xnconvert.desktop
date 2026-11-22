@@ -1,11 +1,10 @@
 [Desktop Entry]
-Encoding=UTF-8
-Terminal=0
-Exec=xnconvert
-Icon=xnconvert
 Type=Application
+Name=XnConvert
+GenericName=Batch Image Converter
+Exec=xnconvert %F
+Icon=xnconvert
+Terminal=false
 Categories=Graphics;
 StartupNotify=true
-Name=XnConvert
-GenericName=XnConvert
-MimeType=image/bmp;image/gif;image/x-portable-bitmap;image/x-portable-pixmap;image/x-psd;image/x-tga;image/x-xbitmap;image/tiff;image/jpeg;image/x-psd;image/png;image/x-icon;image/x-xpixmap;image/svg+xml;
+MimeType=image/bmp;image/gif;image/x-portable-bitmap;image/x-portable-pixmap;image/vnd.adobe.photoshop;image/x-tga;image/x-xbitmap;image/tiff;image/jpeg;image/png;image/vnd.microsoft.icon;image/x-xpixmap;image/svg+xml;

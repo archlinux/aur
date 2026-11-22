@@ -1,38 +1,42 @@
-# Maintainer: Jonian Guveli <jonian@hardpixel.eu>
+# Maintainer: Pablo Romano <promano7@hotmail.com>
+# Contributor: Jonian Guveli <jonian@hardpixel.eu>
 # Contributor: Kewl <lfxm@bmup.fv.psh (rot1)>
 # Contributor: Bjoern Franke <bjo@nord-west.org>
 _watch=("https://www.xnview.com/en/xnconvert" ">Version (\d[\d.]*\d+)\b")
 
 pkgname=xnconvert
-pkgver=1.111.0
+pkgver=1.118.0
 pkgrel=1
-pkgdesc="A powerful batch image-converter and resizer."
-url="https://www.xnview.com/en/xnconvert"
-arch=("x86_64" "i686")
-license=("custom")
-depends=("qt5-svg" "qt5-sensors" "libwebp" "gtk3")
-source=(
-  "${pkgname}.desktop"
-  "icons.tar.gz"
-  "XnConvert-linux-x64_${pkgver}.tgz::https://download.xnview.com/old_versions/XnConvert/XnConvert-${pkgver}-linux-x64.tgz"
+pkgdesc='Batch image converter and resizer'
+arch=('x86_64')
+url='https://www.xnview.com/en/xnconvert/'
+license=('LicenseRef-XnSoft-EULA')
+depends=(
+  'coreutils' 'dbus' 'fontconfig' 'freetype2' 'glib2' 'glibc'
+  'hicolor-icon-theme' 'krb5' 'libdrm' 'libgcc' 'libglvnd' 'libstdc++'
+  'libx11' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'wayland'
+  'xcb-util' 'xcb-util-cursor' 'xcb-util-image' 'xcb-util-keysyms'
+  'xcb-util-renderutil' 'xcb-util-wm' 'zlib' 'zstd'
 )
-sha256sums=('3c85bfca539dd2e4b0310eead5a50aae6ed66a5a63b370dd1b622043c69a15b5'
-            '2ff8c57a0603c1811de45df55df59c0abdd77a15d61a9482789c9c78ce6cdf74'
-            'e2f1ad8d9f6d0b8297016e45319929248dae491faa7fa439d891da315b3cb32e')
+optdepends=('gtk3: GTK desktop integration')
+options=('!strip' '!debug')
+source=(
+  'xnconvert.desktop'
+  "https://download.xnview.com/versions/XnConvert/XnConvert-${pkgver}-linux-x64.tgz"
+)
+sha256sums=(
+  '9fcbb276b849630afb8b4c1b5d6fb8a5abfced17e25ee8ae5372c0f0f7f367c9'
+  'b1678a13bb1dc232be5b118b79fe11dda887e0431294269e3a0fde2ed3ea377f'
+)
 
 package() {
-  install -dm755 "${pkgdir}/opt/${pkgname}"
-  cp -dr XnConvert/* "${pkgdir}/opt/${pkgname}"
-
-  install -dm755 "${pkgdir}/usr/bin"
-  ln -s /opt/${pkgname}/xnconvert.sh "${pkgdir}/usr/bin/${pkgname}"
-
-  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 XnConvert/license.txt "${pkgdir}/usr/share/licenses/$pkgname/license.txt"
-
-  install -dm755 "$pkgdir/usr/share/icons"
-  cp -a "$srcdir/icons/." "$pkgdir/usr/share/icons/hicolor"
-  cp -a "$srcdir/icons/." "$pkgdir/usr/share/icons/gnome"
-
+  install -d "${pkgdir}/opt/${pkgname}" "${pkgdir}/usr/bin"
+  cp -a --no-preserve=ownership "${srcdir}/XnConvert/." "${pkgdir}/opt/${pkgname}/"
   rm "${pkgdir}/opt/${pkgname}/XnConvert.desktop"
+  ln -s "/opt/${pkgname}/xnconvert.sh" "${pkgdir}/usr/bin/${pkgname}"
+
+  install -Dm644 "${srcdir}/xnconvert.desktop" "${pkgdir}/usr/share/applications/xnconvert.desktop"
+  install -Dm644 "${srcdir}/XnConvert/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/XnConvert/xnconvert.png" \
+    "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
 }
