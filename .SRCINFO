@@ -1,7 +1,7 @@
 pkgbase = yapfast-bin
 	pkgdesc = Native Discord client that stays light on memory (prebuilt binary)
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://yapfast.com
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -34,6 +34,7 @@ pkgbase = yapfast-bin
 	optdepends = libxrandr: screen sharing on X11
 	provides = yapfast
 	conflicts = yapfast
+	conflicts = yapfast-nightly-bin
 	options = !strip
 	options = !debug
 	source = https://github.com/yapfast/yapfast/releases/download/v0.4.1/yapfast-0.4.1-1-x86_64.pkg.tar.zst

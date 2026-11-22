@@ -2,13 +2,13 @@
 
 pkgname=yapfast-bin
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Native Discord client that stays light on memory (prebuilt binary)'
 arch=('x86_64')
 url='https://yapfast.com'
 license=('GPL-3.0-or-later')
 provides=('yapfast')
-conflicts=('yapfast')
+conflicts=('yapfast' 'yapfast-nightly-bin')
 options=('!strip' '!debug')
 
 # DT_NEEDED carries glibc, libstdc++, libgcc, glib2, libpulse, fontconfig.
