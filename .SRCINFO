@@ -1,0 +1,19 @@
+pkgbase = fastcards-bin
+	pkgdesc = A CLI spaced-repetition flashcard study tool
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/indium114/fastcards
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = fastcards
+	conflicts = fastcards
+	options = !debug
+	source = fastcards-bin-2.0.3-LICENSE::https://raw.githubusercontent.com/indium114/fastcards/2.0.3/LICENSE.md
+	sha256sums = da0978e7ef06fe0df9a199ea21f5e3466295bb3e78123c898f8098486dda14a8
+	source_x86_64 = fastcards-bin-2.0.3-x86_64::https://github.com/indium114/fastcards/releases/download/2.0.3/fastcards_Linux_x86_64
+	sha256sums_x86_64 = a42b0a585e83b5621a68b2dbbb14c5f91acf10ecbfcf50678a35abd36686a7a9
+	source_aarch64 = fastcards-bin-2.0.3-aarch64::https://github.com/indium114/fastcards/releases/download/2.0.3/fastcards_Linux_arm64
+	sha256sums_aarch64 = c6dcca0506da183618f3c837b7e199333ccb4983957e31fc981bde31f8f17f4f
+
+pkgname = fastcards-bin
