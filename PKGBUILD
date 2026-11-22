@@ -1,7 +1,7 @@
 # Maintainer: username227 [gfrank227 [at] gmail [dot] com
 
 pkgname=viper4linux-re
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='ViPERDSP audio effects for PipeWire with a Qt6 interface'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'pkgconf' 'git')
 conflicts=('viper4linux-re-git' 'viper4linux' 'viper4linux-git')
 options=('!debug')
 source=("https://github.com/username227/viper4linux-re/releases/download/v${pkgver}/viper4linux-re-${pkgver}-unified-source.tar.xz")
-sha256sums=('7b171beec05cf56c0674ab784a8b98c49ee588669aa10508adf949dfbb4ddfe1')
+sha256sums=('24099e33a7955d88ec344c3098b06dea6935df5a65455f95298d27d2af56da01')
 
 build() {
     local tree="$srcdir/viper4linux-re-$pkgver"
