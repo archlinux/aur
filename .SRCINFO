@@ -1,0 +1,16 @@
+pkgbase = trollstov
+	pkgdesc = A music player for the terminal where your files and their metadata are all you need
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hikikones/troll
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = trollstov-0.1.0.tar.gz::https://github.com/hikikones/troll/archive/refs/tags/trollstov-v0.1.0.tar.gz
+	sha256sums = 7cc558f7edfe5d13bbe0ea489e03440b6fb57c22059c0796a830b906ea5189c0
+
+pkgname = trollstov
