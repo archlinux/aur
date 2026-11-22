@@ -1,0 +1,21 @@
+pkgbase = mtui-bin
+	pkgdesc = A terminal client for Modbus industrial devices
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/inowattio/mtui
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	depends = glibc
+	depends = libgcc
+	provides = mtui
+	conflicts = mtui
+	options = !debug
+	source = mtui-bin-1.10.0-LICENSE::https://raw.githubusercontent.com/inowattio/mtui/v1.10.0/LICENSE
+	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
+	source_x86_64 = mtui-bin-1.10.0-x86_64::https://github.com/inowattio/mtui/releases/download/v1.10.0/mtui-v1.10.0-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = b8eaf06c9e7ce03883c6f10112d9cceb85f4b959d4856607a2d7ebdb668ed93c
+	source_aarch64 = mtui-bin-1.10.0-aarch64::https://github.com/inowattio/mtui/releases/download/v1.10.0/mtui-v1.10.0-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 3966825b72f6bc8b6fa7dce8779045e0f786789621518eff26686155e5c56166
+
+pkgname = mtui-bin
