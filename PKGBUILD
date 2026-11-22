@@ -1,6 +1,6 @@
 # Maintainer: jarbowski <jarbowski@laposte.net>
 pkgname=tape16-bin
-pkgver=0.9.550
+pkgver=0.9.560
 pkgrel=1
 pkgdesc="Destructive tape-style 16-track DAW (X11-backed, XWayland on Wayland sessions)"
 arch=('x86_64')
@@ -17,15 +17,27 @@ depends=(
   curl
   fontconfig
   freetype2
+  glib2
   libx11
+  libxext
+  libxrandr
+  libxinerama
+  libxcursor
+  libxss
+  libglvnd
   'libjack.so=0-64'
 )
 makedepends=('unzip')
 optdepends=(
+  'pipewire-jack: recommended JACK backend via PipeWire (provides pw-jack)'
+  'jack2: alternative JACK implementation'
   'wireplumber: recommended audio session manager'
   'xorg-xwayland: XWayland for plugin editors and Wayland sessions'
   'realtime-privileges: realtime scheduling for low latency'
   'xdg-desktop-portal: portal integration'
+  'gst-plugins-base: movie playback (GStreamer)'
+  'gst-plugins-good: movie playback (GStreamer)'
+  'gst-libav: extra movie codecs (H.264 and others)'
   'yabridge: Windows VST via Wine'
   'wine: Windows VST host support'
 )
@@ -34,17 +46,22 @@ conflicts=('tape16' 'tape16-wayland-bin' 'tape16-x11-bin')
 options=('!strip' '!debug')
 install=tape16-bin.install
 source=("TAPE-16-v${pkgver}-Linux-Release.zip::https://github.com/jackpaterson1/TAPE-16-Public-Releases/releases/download/${pkgver}/TAPE-16-v${pkgver}-Linux-Release.zip")
-sha256sums=('3ebb7d89243d79d8ca06d17307bf6a12ea8fbe92a46b2a3412edaaafff0d2aa1')
+sha256sums=('d9cd022fa7bc0786214a30f09f789c5a053860fb3b2e3936d070c6704193b014')
 
 package() {
-  # Note: upstream folder is TAPE-16-v${pkgver}-10-Linux-Release (extra -10)
-  local deb="${srcdir}/TAPE-16-v${pkgver}-Linux-Release/TAPE 16 Wayland Deb/INSTALL-TAPE16.deb"
+  # Upstream zip root is typically TAPE-16-v${pkgver}-Linux-Release;
+  # older drops sometimes added a build suffix (e.g. -10). Glob the .deb.
+  local deb=( "${srcdir}"/TAPE-16-v${pkgver}*/"TAPE 16 Wayland Deb"/INSTALL-TAPE16.deb )
+  if (( ${#deb[@]} != 1 )) || [[ ! -f ${deb[0]} ]]; then
+    echo "error: expected exactly one INSTALL-TAPE16.deb, found: ${deb[*]:-none}" >&2
+    return 1
+  fi
   local extract="${srcdir}/deb-extract"
 
   mkdir -p "$extract"
 
   # .deb is an ar archive; extract data.tar.* then its content
-  bsdtar -xOf "$deb" data.tar.* | bsdtar -x -C "$extract"
+  bsdtar -xOf "${deb[0]}" data.tar.* | bsdtar -x -C "$extract"
 
   # App + resources
   install -dm755 "${pkgdir}/usr/lib"
@@ -85,7 +102,7 @@ if [[ -z "$session_type" ]]; then
 fi
 
 # Source matching profile
-profile_env="$SHARE_DIR/profiles/tape16-${session_type}.env"
+profile_env="$SHARE_DIR/profiles/${session_type}.env"
 [[ -r "$profile_env" ]] && . "$profile_env"
 
 # Export profile vars
@@ -102,11 +119,18 @@ export TAPE16_AUDIO_AUTHORITY=tape16
 export TAPE16_FILE_CHOOSER=internal
 export TAPE16_REMOTE_LAN=1
 export GDK_BACKEND=x11,wayland
+export TAPE_AUDIO_BACKEND="${TAPE_AUDIO_BACKEND:-JACK}"
+export TAPE_PREFER_JACK="${TAPE_PREFER_JACK:-1}"
 
 if [[ "$session_type" == wayland && -n "${DISPLAY:-}" ]]; then
   export TAPE16_LINUX_DISPLAY_MODE=wayland-xwayland
 fi
 
+# If PipeWire's JACK shim is installed, prefer it (Debian wrappers do the same
+# even when the app owns buffer/rate selection).
+if command -v pw-jack >/dev/null 2>&1; then
+  exec pw-jack "$APP_BIN" "$@"
+fi
 exec "$APP_BIN" "$@"
 LAUNCHER
 
