@@ -1,16 +1,16 @@
 pkgbase = cherry-font-git
 	pkgdesc = cherry, yet another bitmap font
-	pkgver = 1.0
-	pkgrel = 3
+	pkgver = 1.4.r13.g34a94dc
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/turquoise-hexagon/cherry
-	install = cherry-font-git.install
 	arch = any
+	license = MIT
 	makedepends = git
 	makedepends = xorg-fonttosfnt
 	provides = cherry-font
 	conflicts = cherry-font
-	source = cherry-font-git::git+https://github.com/turquoise-hexagon/cherry
-	md5sums = SKIP
+	source = cherry-font-git::git+https://github.com/turquoise-hexagon/cherry.git#branch=master
 	sha256sums = SKIP
 
 pkgname = cherry-font-git
