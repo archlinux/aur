@@ -1,0 +1,19 @@
+pkgbase = toptop-bin
+	pkgdesc = System monitor with a local-inference view: live tokens/sec, GPU compute-vs-bandwidth
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/ur-grue/toptop
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = libgcc
+	provides = toptop
+	conflicts = toptop
+	options = !debug
+	source_x86_64 = toptop-bin-1.1.1-x86_64.tar.gz::https://github.com/ur-grue/toptop/releases/download/v1.1.1/toptop-1.1.1-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 9355ce7d26652220b1b9f675a3721d1f78d675a74d2754af6d39d5a94933dac3
+	source_aarch64 = toptop-bin-1.1.1-aarch64.tar.gz::https://github.com/ur-grue/toptop/releases/download/v1.1.1/toptop-1.1.1-aarch64-linux.tar.gz
+	sha256sums_aarch64 = dca496e25075842744401c5d3383b5295d2bc44a89eae69728f4a6d6eb1ab294
+
+pkgname = toptop-bin
