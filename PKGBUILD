@@ -5,7 +5,7 @@
 
 pkgname=wowtype-core
 pkgver=0.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc='WeChat-style pinyin input method for fcitx5, with bundled dictionaries and language model'
 arch=('x86_64')
 url='https://github.com/Gloridust/WowType'
@@ -19,6 +19,7 @@ install="$pkgname.install"
 
 # gh-proxy.com 前缀用于国内加速；换镜像只需 export GH_MIRROR=https://另一镜像/
 _gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
+_gh_mirror="${_gh_mirror%/}/"
 _pkgfile="wowtype-$pkgver-1-x86_64.pkg.tar.zst"
 source=(
   "$_pkgfile::${_gh_mirror}https://github.com/Gloridust/WowType/releases/download/v$pkgver/$_pkgfile"
