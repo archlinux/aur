@@ -1,0 +1,20 @@
+pkgbase = modder-rs-git
+	pkgdesc = A practical TUI to manage and install mods for Minecraft
+	pkgver = r31.4424186
+	pkgrel = 1
+	url = https://github.com/JayanAXHF/modder-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = modder-rs
+	conflicts = modder-rs
+	options = !lto
+	source = modder-rs::git+https://github.com/JayanAXHF/modder-rs.git
+	sha256sums = SKIP
+
+pkgname = modder-rs-git
