@@ -1,6 +1,6 @@
 pkgbase = python-torch-einops-utils
 	pkgdesc = PyTorch and einops tensor utilities used by lucidrains' model libraries
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/lucidrains/torch-einops-utils
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-torch-einops-utils
 	depends = python-numpy
 	depends = python-packaging
 	depends = python-pytorch>=2.5
-	source = python-torch-einops-utils-57c571ed0b3e1734ac8d6d8bb95d48890e742a17.tar.gz::https://github.com/lucidrains/torch-einops-utils/archive/57c571ed0b3e1734ac8d6d8bb95d48890e742a17.tar.gz
-	sha256sums = 98f59e9f190f83cbb85f796563dd8f070a279ed8d9772b73ca3f5bb4d4df63ae
+	source = python-torch-einops-utils-54823d08f30e7a68f33a7689669620ee85427f30.tar.gz::https://github.com/lucidrains/torch-einops-utils/archive/54823d08f30e7a68f33a7689669620ee85427f30.tar.gz
+	sha256sums = 3917ba52ba11d1c4e51c3c3d1f34082963843bba641392b38c49347c5dd57e8f
 
 pkgname = python-torch-einops-utils

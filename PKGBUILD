@@ -2,10 +2,10 @@
 
 pkgname=python-torch-einops-utils
 _name=torch-einops-utils
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
-# Upstream does not tag releases. Pin the commit that set version 0.2.8.
-_commit=57c571ed0b3e1734ac8d6d8bb95d48890e742a17
+# Upstream does not tag releases. Pin the commit that set version 0.2.9.
+_commit=54823d08f30e7a68f33a7689669620ee85427f30
 pkgdesc="PyTorch and einops tensor utilities used by lucidrains' model libraries"
 arch=('any')
 url="https://github.com/lucidrains/torch-einops-utils"
@@ -27,7 +27,7 @@ checkdepends=(
     'python-setuptools'
 )
 source=("$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('98f59e9f190f83cbb85f796563dd8f070a279ed8d9772b73ca3f5bb4d4df63ae')
+sha256sums=('3917ba52ba11d1c4e51c3c3d1f34082963843bba641392b38c49347c5dd57e8f')
 
 build() {
     cd "$_name-$_commit"
