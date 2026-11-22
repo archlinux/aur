@@ -1,25 +1,31 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=paleta
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Extract the dominant colors from any image."
 arch=('x86_64')
 url="https://github.com/nate-xyz/paleta"
 license=('GPL-3.0-or-later')
-depends=('libadwaita')
+depends=(
+  'gtk4'
+  'libadwaita'
+)
 makedepends=(
   'cargo'
   'git'
   'meson'
 )
-checkdepends=('appstream-glib')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 source=("git+https://github.com/nate-xyz/paleta.git#tag=v$pkgver")
 sha256sums=('e4fd896fc1ab4112b8c26c5d24cb9a9262b10cb6c97551d84f6521bd1d19ca7c')
 
 prepare() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target host-tuple
 }
 
 build() {
@@ -30,7 +36,12 @@ build() {
 }
 
 check() {
-  meson test -C build --no-rebuild --print-errorlogs || :
+
+  # Only validate schema & desktop file
+  meson test -C build "Validate schema file" "Validate desktop file" --no-rebuild --print-errorlogs
+
+  # Use appstreamcli instead of appstream-util
+  appstreamcli validate --no-net build/data/io.github.nate_xyz.Paleta.appdata.xml || :
 }
 
 package () {
