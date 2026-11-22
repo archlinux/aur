@@ -1,7 +1,7 @@
 pkgbase = lightcraft-private-bin
 	pkgdesc = 自用维护：开源 clean-room 版 Adobe Lightroom 替代（照片管理与 raw），上游 storytold/lightcraft
 	pkgver = 0.21.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getartcraft.com/apps/lightcraft
 	arch = x86_64
 	license = MIT
