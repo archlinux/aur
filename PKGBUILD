@@ -1,5 +1,5 @@
 pkgname=jdk17-zulu-fx-bin
-pkgver=17.70.113
+pkgver=17.70.201
 pkgrel=1
 pkgdesc='Azul Zulu JDK 17 with JavaFX'
 arch=(
@@ -12,11 +12,11 @@ license=('custom')
 
 _jvm='java-17-zulu-fx'
 _javaver=17
-_zuluver=17.70.113
-_jdkver=17.0.21.0.3
-_sha256_x86_64='5337e0507ed539f1c35f9e0d3c4c7669d594a66e5acb937f84b65a9777a14ebd'
-_sha256_i686='9b5e554b105849d60822c99d7d4360229465b4cca1eb45f0fd4e4762cffb5355'
-_sha256_aarch64='e8b6db8fd7bea86e31fad36e9cdb60e922ea8196286043fbd7d8c514d8bf83eb'
+_zuluver=17.70.201
+_jdkver=17.0.21.1
+_sha256_x86_64='0a95b801a084875dfdaae8ff3a87d92494aadb5a2bceb7b59760b9dbfd4fd30f'
+_sha256_i686='cf2b08efd0d65082c759a9f1f58dcc24dba64af35f6a3fa3de6b1ac886915c70'
+_sha256_aarch64='f19fdd136437408f5d4777892a466ded3045f43597b787b5cf0e4edcad9e82db'
 
 depends=(
     'java-runtime-common'
