@@ -1,0 +1,16 @@
+pkgbase = norte
+	pkgdesc = Two-pane file manager on one Rust core: terminal, native window, CLI and MCP server for AI agents
+	pkgver = 0.3.0alpha.16
+	pkgrel = 1
+	url = https://github.com/compilando/norte
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = norte-0.3.0alpha.16.tar.gz::https://github.com/compilando/norte/archive/refs/tags/v0.3.0-alpha.16.tar.gz
+	sha256sums = 0f1b751a3f5a944a2c37339e9d62d362eaadbb7bf734cb066fdc94c55ffa2a95
+
+pkgname = norte
