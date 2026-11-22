@@ -1,5 +1,5 @@
 pkgname=proton-vpn-qt-app
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="A Qt GUI frontend for the ProtonVPN CLI"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ makedepends=(
 source=(
   "git+https://github.com/wheat32/proton-vpn-qt-app.git#tag=v${pkgver}"
 )
-sha256sums=('b9d1bc9a29a3abbf1dd3bf5056654587fb88deca16386055a4d7c93163cee8c9')
+sha256sums=('c688278f09c91fccc25cde745bdb4adc8592c28d563c71b7fdc52a6f85a73cc3')
 
 build() {
     cmake -S "${srcdir}/${pkgname}/src" \
