@@ -1,6 +1,6 @@
 pkgbase = moli-bin
 	pkgdesc = Best headless browser for AI agents. Lite, Fast, High-Compatibility.
-	pkgver = 1.1.26
+	pkgver = 1.1.27
 	pkgrel = 1
 	url = https://github.com/lexmount/moli
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = moli-bin
 	conflicts = moli
 	conflicts = moli-git
 	options = !strip
-	source = moli-1.1.26-x86_64-unknown-linux-gnu.tar.gz::https://github.com/lexmount/moli/releases/download/v1.1.26/moli-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = b57b1b7aa97548669234908f094a44c93e39d91b4c4246c55720c2eff3f93bb5
+	source = moli-1.1.27-x86_64-unknown-linux-gnu.tar.gz::https://github.com/lexmount/moli/releases/download/v1.1.27/moli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 2ede138ca107f16313183be06ef137c0760eaeb83598570d7f4a4263595cd1a6
 
 pkgname = moli-bin
