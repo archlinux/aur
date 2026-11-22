@@ -2,7 +2,7 @@
 
 pkgname=openbot
 pkgver=0.76.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Local-first desktop workspace for persistent AI teammates."
 arch=("x86_64" "aarch64")
 url="https://openbot.run"
@@ -202,19 +202,8 @@ package() {
 
   # User update preferences
   local _config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/OpenBot"
-  local _config_file="${_config_dir}/openbot-update-preference-v1.json"
   mkdir -p "${_config_dir}"
-  if [[ -f "${_config_file}" ]]; then
-    if command -v jq >/dev/null 2>&1; then
-      local _tmp
-      _tmp=$(mktemp "${_config_dir}/.pref.XXXXXX")
-      jq '.autoDownload = false | .allowRemoteUpdates = false | .autoInstall = false' "${_config_file}" > "${_tmp}" && mv -f "${_tmp}" "${_config_file}"
-    elif command -v python3 >/dev/null 2>&1; then
-      python3 -c 'import json, sys; d = json.load(open(sys.argv[1])); d.update({"autoDownload": False, "allowRemoteUpdates": False, "autoInstall": False}); json.dump(d, open(sys.argv[1], "w"))' "${_config_file}"
-    fi
-  else
-    cat > "${_config_file}" << 'EOF'
+  cat > "${_config_dir}/openbot-update-preference-v1.json" << 'EOF'
 {"version":1,"autoDownload":false,"allowRemoteUpdates":false,"autoInstall":false}
 EOF
-  fi
 }

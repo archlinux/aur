@@ -1,7 +1,7 @@
 pkgbase = openbot
 	pkgdesc = Local-first desktop workspace for persistent AI teammates.
 	pkgver = 0.76.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://openbot.run
 	arch = x86_64
 	arch = aarch64
