@@ -1,0 +1,16 @@
+pkgbase = lazy-etherscan
+	pkgdesc = A Simple Terminal UI for the Ethereum Blockchain Explorer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/woxjro/lazy-etherscan
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = lazy-etherscan-1.0.0.tar.gz::https://github.com/woxjro/lazy-etherscan/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 3a0bbfc0055bd680db1be1c234458e4a842c8fff3ba7d0e7aa7ec378d51d0965
+
+pkgname = lazy-etherscan
