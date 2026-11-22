@@ -1,0 +1,21 @@
+pkgbase = cc-code-bin
+	pkgdesc = Fast, lightweight Claude Code alternative built in Rust with Ratatui TUI, ACP protocol support
+	pkgver = 0.6.298
+	pkgrel = 1
+	url = https://github.com/cc-claws/cc-code
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = cc-code
+	conflicts = cc-code
+	options = !debug
+	source = cc-code-bin-0.6.298-LICENSE::https://raw.githubusercontent.com/cc-claws/cc-code/npm-v0.6.298/LICENSE
+	sha256sums = c408d05766b1622a522880f05e98f54feb738686113a9427ac7bdbf39c0b5144
+	source_x86_64 = cc-code-bin-0.6.298-x86_64.tar.gz::https://github.com/cc-claws/cc-code/releases/download/npm-v0.6.298/cc-code-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 45d9165449170d61bc836f045aedb5b9a501f27ed064f13c591733b1424157be
+	source_aarch64 = cc-code-bin-0.6.298-aarch64.tar.gz::https://github.com/cc-claws/cc-code/releases/download/npm-v0.6.298/cc-code-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 42b1444c2955c851b006e3b140b33fbff1fb5c3ff18cc71f630f6e67c7b06c69
+
+pkgname = cc-code-bin
