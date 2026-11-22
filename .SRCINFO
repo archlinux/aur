@@ -1,9 +1,9 @@
 pkgbase = python-pandare
 	pkgdesc = Python interface for PANDA dynamic analysis
 	pkgver = 1.8.85
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/panda-re/panda
-	arch = x86_64
+	arch = any
 	license = GPL-2.0-only
 	makedepends = python-build
 	makedepends = python-installer
@@ -13,6 +13,8 @@ pkgbase = python-pandare
 	depends = python-protobuf
 	depends = python-colorama
 	depends = panda-re
+	optdepends = python-z3-solver: symbolic execution support
+	optdepends = python-flask: PyPlugin web interface support
 	source = pandare-1.8.85-py3-none-any.whl::https://github.com/panda-re/panda/releases/download/v1.8.85/pandare-1.8.85-py3-none-any.whl
 	sha256sums = e5a29834f854729a394ce0f701c1386fa12b7b7bc07dfd95290c5ce7a4152623
 

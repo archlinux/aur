@@ -3,12 +3,14 @@
 pkgname=python-pandare
 _pkgname=pandare
 pkgver=1.8.85
-pkgrel=1
+pkgrel=2
 pkgdesc='Python interface for PANDA dynamic analysis'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/panda-re/panda'
 license=('GPL-2.0-only')
 depends=('python' 'python-cffi' 'python-protobuf' 'python-colorama' 'panda-re')
+optdepends=('python-z3-solver: symbolic execution support'
+            'python-flask: PyPlugin web interface support')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("${_pkgname}-${pkgver}-py3-none-any.whl::https://github.com/panda-re/panda/releases/download/v${pkgver}/${_pkgname}-${pkgver}-py3-none-any.whl")
 sha256sums=('e5a29834f854729a394ce0f701c1386fa12b7b7bc07dfd95290c5ce7a4152623')
@@ -38,4 +40,9 @@ package() {
     purelib=$(python -c 'import sysconfig; print(sysconfig.get_path("purelib"))')
     sed -i 's|system_build = "/usr/local/bin/"|system_build = "/usr/bin/"|' \
         "${pkgdir}${purelib}/pandare/utils.py"
+    sed -i \
+        -e 's|if build_dir == "/usr/local/bin/":|if build_dir == "/usr/bin/":|' \
+        -e 's|# Installed - use /usr/local/lib/panda/plugins|# Installed - use /usr/lib/panda/plugins|' \
+        -e 's|f"/usr/local/lib/panda/{self.arch_name}"|f"/usr/lib/panda/{self.arch_name}"|' \
+        "${pkgdir}${purelib}/pandare/panda.py"
 }
