@@ -1,0 +1,19 @@
+pkgbase = b4n-bin
+	pkgdesc = A terminal-based tool for browsing Kubernetes resources
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/fioletoven/b4n
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = b4n
+	conflicts = b4n
+	options = !debug
+	source_x86_64 = b4n-bin-1.4.0-x86_64.tar.gz::https://github.com/fioletoven/b4n/releases/download/v1.4.0/b4n-1.4.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 0f800cd4f7a51ce27e38a440cab5037f92712fc88e8a5d9495e001820f7a51fe
+	source_aarch64 = b4n-bin-1.4.0-aarch64.tar.gz::https://github.com/fioletoven/b4n/releases/download/v1.4.0/b4n-1.4.0-aarch64-linux.tar.gz
+	sha256sums_aarch64 = feb6081678e3c148f0a6648ab73b6b3c98b9e4f636fa48731a49c638873a06fa
+
+pkgname = b4n-bin
