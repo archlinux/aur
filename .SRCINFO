@@ -1,11 +1,11 @@
 pkgbase = filezilla-server
 	pkgdesc = A simple FTP, FTPS or SFTP server
 	pkgver = 1.12.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://filezilla-project.org/download.php?type=server
 	arch = x86_64
 	license = AGPL-3.0-only
-	makedepends = gcc15
+	makedepends = clang
 	makedepends = wxwidgets-gtk3
 	depends = libfilezilla
 	depends = libfilezilla.so

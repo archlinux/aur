@@ -2,7 +2,7 @@
 
 pkgname=filezilla-server
 pkgver=1.12.6
-pkgrel=1
+pkgrel=3
 pkgdesc="A simple FTP, FTPS or SFTP server"
 arch=(x86_64)
 url="https://filezilla-project.org/download.php?type=server"
@@ -12,8 +12,8 @@ depends=(
     pugixml
     )
 makedepends=(
-    #clang
-    gcc15
+    clang
+    #gcc15
     wxwidgets-gtk3
     )
 optdepends=(wxwidgets-gtk3)
@@ -24,12 +24,15 @@ source=("https://sourceforge.net/projects/fabiololix-os-archive/files/src/FileZi
 sha512sums=('9d0673c0337b0fbe880cb54bbf0097e85bea1fa9d7b2886e743766c47ce794dc58b5962aeeae23d404ab52a0b344fdea0cc02f83d41b2b586f67fdc6a90bba09'
             '8981c2e10e12b627fc3b68e271e3449b05062fc717c537b6bf8cc38e8e2ea6bd79b47fb326ec5c36b718c7054f50b40e282fcd70b9cb902f25213602d6e52e3f')
 
-  #export CC=/usr/bin/clang CXX=/usr/bin/clang++
-  export CC=/usr/bin/gcc-15 CXX=/usr/bin/g++-15
+  export CC=/usr/bin/clang CXX=/usr/bin/clang++
+  #export CC=/usr/bin/gcc-15 CXX=/usr/bin/g++-15
 
 prepare() {
   cd "filezilla-server-${pkgver}"
   patch -Np2 -i ../filezilla-server-Remove-demos-leftovers.patch
+
+  cd src/filezilla/authentication
+  sed -i 's|fz::get_user_uid(account);|fz::get_user_id(account);|g' system_identity_provider.cpp
 }
 
 build() {
@@ -39,6 +42,10 @@ build() {
 }
 
 package() {
+  # Disable all warnings
+  export CFLAGS+=" -w"
+  export CXXFLAGS+=" -w"
+
   cd "filezilla-server-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
