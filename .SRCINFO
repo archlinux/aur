@@ -1,6 +1,6 @@
 pkgbase = btmux-bin
 	pkgdesc = A browser-based terminal manager with tmux-inspired UI
-	pkgver = 0.0.216
+	pkgver = 0.0.217
 	pkgrel = 1
 	url = https://github.com/buntec/btmux
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = btmux-bin
 	provides = btmux
 	conflicts = btmux
 	options = !strip
-	source = README-0.0.216.md::https://raw.githubusercontent.com/buntec/btmux/v0.0.216/README.md
-	source = LICENSE-0.0.216::https://raw.githubusercontent.com/buntec/btmux/v0.0.216/LICENSE
+	source = README-0.0.217.md::https://raw.githubusercontent.com/buntec/btmux/v0.0.217/README.md
+	source = LICENSE-0.0.217::https://raw.githubusercontent.com/buntec/btmux/v0.0.217/LICENSE
 	sha256sums = 1d93403ac102d825c9556568b5595d6ac9885cfa625609c03cde927a7bd8e320
 	sha256sums = 6767451d6f8834c148d0403d2a55fde5d5b70984059d28fe1c614ec8f08a3250
-	source_x86_64 = btmux-x86_64-0.0.216::https://github.com/buntec/btmux/releases/download/v0.0.216/btmux-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 58c3afe23cf501d1906305b770dfcbc577a0564367625432429d02637facdd7a
-	source_aarch64 = btmux-aarch64-0.0.216::https://github.com/buntec/btmux/releases/download/v0.0.216/btmux-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = 4115e3be3332e4dce5c203d5577841f61ed621b031682ac8b58a68d17eb0a1b2
+	source_x86_64 = btmux-x86_64-0.0.217::https://github.com/buntec/btmux/releases/download/v0.0.217/btmux-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 2738adf0f4408454313540d89d69326c48c0cd0e6d5776db87f1015c175afa15
+	source_aarch64 = btmux-aarch64-0.0.217::https://github.com/buntec/btmux/releases/download/v0.0.217/btmux-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = e11ba0e90a707e230234988ebe53c4f2bf1f364e7cb5f5b379ccf8e374b9af59
 
 pkgname = btmux-bin

@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A browser-based terminal manager with tmux-inspired UI"
 
-pkgver=0.0.216
+pkgver=0.0.217
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,8 +32,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('1d93403ac102d825c9556568b5595d6ac9885cfa625609c03cde927a7bd8e320'
             '6767451d6f8834c148d0403d2a55fde5d5b70984059d28fe1c614ec8f08a3250')
-sha256sums_x86_64=('58c3afe23cf501d1906305b770dfcbc577a0564367625432429d02637facdd7a')
-sha256sums_aarch64=('4115e3be3332e4dce5c203d5577841f61ed621b031682ac8b58a68d17eb0a1b2')
+sha256sums_x86_64=('2738adf0f4408454313540d89d69326c48c0cd0e6d5776db87f1015c175afa15')
+sha256sums_aarch64=('e11ba0e90a707e230234988ebe53c4f2bf1f364e7cb5f5b379ccf8e374b9af59')
 
 
 package() {
