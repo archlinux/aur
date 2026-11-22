@@ -1,6 +1,6 @@
 pkgbase = shadps4-pre-release-bin
 	pkgdesc = Sony PlayStation 4 emulator (Pre-release version - SDL)
-	pkgver = 20260812.23392e1
+	pkgver = 20261120.bf08ce9
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = x86_64
