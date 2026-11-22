@@ -1,0 +1,23 @@
+pkgbase = noctavox-bin
+	pkgdesc = A lightweight, customizable TUI music player for local files
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/Jaxx497/noctavox
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = alsa-lib
+	depends = dbus
+	depends = glibc
+	depends = libgcc
+	provides = noctavox
+	conflicts = noctavox
+	options = !debug
+	source = noctavox-bin-0.3.5-LICENSE::https://raw.githubusercontent.com/Jaxx497/noctavox/v0.3.5/LICENSE
+	sha256sums = 7cbc985f885351ef59496d7c7cce3f5ed6e12c70019a99fb00d45ab24ae668ed
+	source_x86_64 = noctavox-bin-0.3.5-x86_64.tar.gz::https://github.com/Jaxx497/noctavox/releases/download/v0.3.5/noctavox-v0.3.5-linux-x64.tar.gz
+	sha256sums_x86_64 = 149067ee1edacb8637a0a1d8666ed6a729944b23b1104f6d8bb3112ac7dcf074
+	source_aarch64 = noctavox-bin-0.3.5-aarch64.tar.gz::https://github.com/Jaxx497/noctavox/releases/download/v0.3.5/noctavox-v0.3.5-linux-arm64.tar.gz
+	sha256sums_aarch64 = fb671882c564ac18b16357f38ce29230d33dfaac7a667198b29e3fd5f1178d49
+
+pkgname = noctavox-bin
