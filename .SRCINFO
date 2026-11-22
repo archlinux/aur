@@ -1,0 +1,19 @@
+pkgbase = raymon-bin
+	pkgdesc = A terminal UI and Model Context Protocol (MCP) server
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/bnomei/raymon
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = raymon
+	conflicts = raymon
+	options = !debug
+	source = raymon-bin-0.7.0-LICENSE::https://raw.githubusercontent.com/bnomei/raymon/v0.7.0/LICENSE
+	sha256sums = 077d138387dd107179fec3cefab95ced64f27c20845d014488fc542c4093c962
+	source_x86_64 = raymon-bin-0.7.0-x86_64.tar.gz::https://github.com/bnomei/raymon/releases/download/v0.7.0/raymon-v0.7.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = bee12d3e2bf1b22237ac9f1babfa8e081b0448755fd03b40c512d02fdb3126b8
+	source_aarch64 = raymon-bin-0.7.0-aarch64.tar.gz::https://github.com/bnomei/raymon/releases/download/v0.7.0/raymon-v0.7.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = fc8b0f5318da201fc6cef6f387e212511db64cf3764fd82c65f99e25cf80f3eb
+
+pkgname = raymon-bin
