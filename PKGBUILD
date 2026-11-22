@@ -1,8 +1,8 @@
-# Maintainer: Marco Huenseler <marco@wuthoehle.de>
+# Maintainer: Hec <hec@heccraft.com>
 
 pkgname=bootupd-git
 _pkgname=bootupd
-pkgver=0.2.34.r13.ge2c0dc9
+pkgver=0.4.0.r1.g8a66d87
 pkgrel=1
 pkgdesc="Bootloader updater"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -16,14 +16,11 @@ makedepends=(cargo
   git)
 provides=("bootupd=$pkgver")
 conflicts=('bootupd')
-source=("git+$url.git"
-  "0001-Modify-grub-paths-to-match-Arch-Linux.patch")
-sha256sums=('SKIP'
-            '331cee421eab47415f9e4f0101ada3b0154db8ab42d2b2a4b4b7218ffb2ff3ca')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 prepare() {
   cd "$_pkgname"
-  patch -Np1 -i "${srcdir}/0001-Modify-grub-paths-to-match-Arch-Linux.patch"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
