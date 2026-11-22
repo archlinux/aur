@@ -1,0 +1,17 @@
+pkgbase = r-watcher
+	pkgdesc = Watch the File System for Changes
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=watcher
+	arch = x86_64
+	license = MIT
+	checkdepends = r-testthat
+	depends = r
+	depends = r-later
+	depends = r-r6
+	depends = r-rlang
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/watcher_0.2.2.tar.gz
+	sha256sums = 4080b9aabbb3902cc39bf830fc9748239eafe54ddcded6c12f0bf0c237d8aa08
+
+pkgname = r-watcher
