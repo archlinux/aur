@@ -1,14 +1,18 @@
 # Maintainer: HanHaocheng <hanhaocheng@archlinux>
 pkgname=deveco-cli
 pkgver=1.3.12
-pkgrel=1
+pkgrel=2
 pkgdesc='HarmonyOS application development command line tool (DevEco CLI)'
 arch=('x86_64')
 url='https://developer.huawei.com/consumer/cn/deveco-studio/'
 license=('MIT')
 depends=('nodejs>=22')
 makedepends=('npm')
-optdepends=('deveco-command-line-tools: hvigor/ohpm/hdc toolchain, required on Linux via DEVECO_CLI_CLT_PATH')
+optdepends=(
+  'deveco-command-line-tools: hvigor/ohpm/hdc toolchain, required on Linux via DEVECO_CLI_CLT_PATH'
+  'python: bundled skill scripts (crash/dfx analysis)'
+  'python-pillow: design2arkts UI reconstruction scoring'
+)
 options=('!strip' '!debug')
 source=("https://registry.npmjs.org/@deveco/deveco-cli/-/deveco-cli-${pkgver}.tgz")
 sha256sums=('SKIP')
