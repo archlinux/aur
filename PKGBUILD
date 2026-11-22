@@ -1,6 +1,6 @@
 # Maintainer: Haven Software <havensoftware@zohomail.com>
 pkgname=haven-desktop-bin
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Matrix chat and social client, built on Element Web/Desktop (prebuilt binary)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ depends=(
 )
 source=("https://github.com/Haven-Organization/haven-desktop/releases/download/haven-v${pkgver}/haven-desktop-${pkgver}.pacman"
         "LICENSE::https://raw.githubusercontent.com/Haven-Organization/haven-desktop/haven-v${pkgver}/LICENSE")
-sha256sums=('bce45492d4f46e492a881c173c0b1efa29e4c5ec4826611b07540060f279759b'
+sha256sums=('981383b8f749607b2a91ec64bbf3b81f0e6de07b0a3780bfb31399a3b66abdb7'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 install=haven-desktop-bin.install
 
