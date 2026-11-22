@@ -1,0 +1,17 @@
+pkgbase = llmtrim-bin
+	pkgdesc = A local proxy that compresses large-language-model API requests to reduce token costs
+	pkgver = 0.13.8
+	pkgrel = 1
+	url = https://github.com/fkiene/llmtrim
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	provides = llmtrim
+	conflicts = llmtrim
+	options = !debug
+	source_x86_64 = llmtrim-bin-0.13.8-x86_64.tar.gz::https://github.com/fkiene/llmtrim/releases/download/v0.13.8/llmtrim-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 812d092460dbf880910b46b7ebac686ef0bfdae201006391cb8d8b1144731ca8
+	source_aarch64 = llmtrim-bin-0.13.8-aarch64.tar.gz::https://github.com/fkiene/llmtrim/releases/download/v0.13.8/llmtrim-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4f421db37334afd57f0b5b46fddef47a69724ec446de14621b0528a39ae0a713
+
+pkgname = llmtrim-bin
