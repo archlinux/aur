@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=repo-notes-git
-pkgver=1.1.0.r139.g5e7ae66
+pkgver=1.1.0.r140.ge2261d1
 epoch=2
 pkgrel=1
 pkgdesc="Standalone CLI and MCP server for repo-scoped Markdown notes (git version)"
