@@ -1,0 +1,16 @@
+pkgbase = tts-tui
+	pkgdesc = Text to speech app that reads from clipboard
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/lesleyrs/tts-tui
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = tts-tui-0.1.5.tar.gz::https://github.com/lesleyrs/tts-tui/archive/refs/tags/0.1.5.tar.gz
+	sha256sums = 79dfca54b7f3646792f3f49d3200425e5b1102ae246f9a0bb4bb34fba1bb1bf4
+
+pkgname = tts-tui
