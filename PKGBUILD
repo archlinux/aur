@@ -1,6 +1,6 @@
 # Maintainer: Coobyk <mail@coobyk.com>
 pkgname=tdrive
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=2
 pkgdesc="TDrive-compatible Telegram-backed cloud drive client — Rust + GPUI desktop app"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 provides=('tdrive')
 conflicts=('tdrive')
 source=("tdrive-rs-$pkgver.tar.gz::https://github.com/Coobyk/tdrive-rs/archive/v$pkgver.tar.gz")
-sha256sums=('364e16670248cc2d08f648c7e3ad9f70ec6294643b67d6a4298a73d9518ecd35')
+sha256sums=('f26de5a7cc8262a095a989263687630feb65f63c766ed70178c5e80cb0acd9f9')
 
 prepare() {
     cd "tdrive-rs-$pkgver"
