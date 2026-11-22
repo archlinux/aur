@@ -1,7 +1,7 @@
 pkgbase = uu-remote-linux-private-bin
 	pkgdesc = 自用维护：非官方 UU 远程 Linux 被控端 + 实验性控制端（网易 UU 远程），上游 VallierDev/uu-remote-linux
 	pkgver = 0.2.64
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/VallierDev/uu-remote-linux
 	arch = x86_64
 	arch = aarch64

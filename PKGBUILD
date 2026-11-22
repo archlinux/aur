@@ -5,7 +5,7 @@
 #   sha256 锁上游伴随 .sha256 文件，source 走 gh-proxy.com 加速（大陆直连 GitHub 慢）。
 pkgname=uu-remote-linux-private-bin
 pkgver=0.2.64
-pkgrel=3
+pkgrel=4
 pkgdesc='自用维护：非官方 UU 远程 Linux 被控端 + 实验性控制端（网易 UU 远程），上游 VallierDev/uu-remote-linux'
 arch=('x86_64' 'aarch64')
 url='https://github.com/VallierDev/uu-remote-linux'
@@ -33,9 +33,16 @@ package() {
   install -Dm755 uuremote-viewer "$pkgdir/usr/bin/uuremote-viewer"
   install -Dm644 libuu-wayland.so "$pkgdir/usr/lib/uu-remote-linux/libuu-wayland.so"
   install -Dm644 libuu-portal.so "$pkgdir/usr/lib/uu-remote-linux/libuu-portal.so"
-  install -Dm644 contrib/desktop/uu-remote-linux.desktop "$pkgdir/usr/share/applications/uu-remote-linux.desktop"
-  install -Dm644 contrib/desktop/uu-remote-linux-viewer.desktop "$pkgdir/usr/share/applications/uu-remote-linux-viewer.desktop"
-  install -Dm644 contrib/desktop/uu-remote-linux.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/uu-remote-linux.svg"
+  # desktop/图标目录随上游版本变动：0.2.64 起从 contrib/desktop/ 挪到了
+  # packaging/common/desktop/。两处都找，避免上游再挪一次就构建失败。
+  local ddir=""
+  for d in packaging/common/desktop contrib/desktop; do
+    if [[ -d "$d" ]]; then ddir="$d"; break; fi
+  done
+  [[ -n "$ddir" ]] || { echo "!! 找不到 desktop 文件目录（上游布局又变了）" >&2; exit 1; }
+  install -Dm644 "$ddir/uu-remote-linux.desktop" "$pkgdir/usr/share/applications/uu-remote-linux.desktop"
+  install -Dm644 "$ddir/uu-remote-linux-viewer.desktop" "$pkgdir/usr/share/applications/uu-remote-linux-viewer.desktop"
+  install -Dm644 "$ddir/uu-remote-linux.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/uu-remote-linux.svg"
 
   # 官方同款 systemd 用户单元（install.sh 生成、deb 自带）
   install -d "$pkgdir/usr/lib/systemd/user"
