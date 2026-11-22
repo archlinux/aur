@@ -5,7 +5,7 @@
 # this file and on ../vgshell/PKGBUILD. makepkg rewrites pkgver from pkgver().
 
 pkgname=vgshell-git
-pkgver=0.1.4.r148.gec08c7e
+pkgver=0.1.4.r633.gea7fc14
 pkgrel=1
 pkgdesc='Desktop shell for Hyprland, built on Quickshell (development version)'
 arch=('any')
@@ -39,6 +39,7 @@ depends=(
   'gum'
   'imagemagick'
   'iproute2'
+  'kendex-bin'
   'less'
   'libnotify'
   'libpulse'
@@ -67,11 +68,17 @@ depends=(
   'xdg-utils'
 )
 optdepends=(
+  'hyprpm: turn layer glass on or off in the Windows plugin'
+  'cpio: install layer glass in the Windows plugin'
+  'cmake: install layer glass in the Windows plugin'
+  'pkgconf: install layer glass in the Windows plugin'
+  'gcc: install layer glass in the Windows plugin'
   'chromium: browser features in the bar and Jarvis'
   'uv: Jarvis local voice model setup'
   'agent-browser-bin: Jarvis browser actions'
   'wlrctl: Jarvis desktop input'
   'ttfx: animates the Screensaver text art'
+  'upower: reads battery state and controls charging limits in the Power plugin'
   'power-profiles-daemon: switches the power profile in the Power plugin'
   'hdparm: lets idle hard disks stop spinning in the Power plugin'
   'bandwhich: See all network traffic in the Network Traffic plugin'
@@ -81,7 +88,6 @@ optdepends=(
   'openai-codex: sign in to Codex and use its account as the Jarvis AI model'
   'voxtype-bin: Voice dictation engine'
   'tmux: several Jarvis coding tasks at once'
-  'kendex-bin: the mail tool Jarvis hands a request for your agent fleet with'
   'ydotool: Jarvis pointer fallback with an already running input service'
   'bluez-utils: bluetoothctl, the Bluetooth pairing agent that answers pairing prompts'
   'bluez: the Bluetooth service the Bluetooth plugin connects your devices through'
@@ -110,8 +116,11 @@ optdepends=(
   'brave-bin: opens a calendar day in a Brave profile'
   'vivaldi: opens a calendar day in a Vivaldi profile'
   'microsoft-edge-stable-bin: opens a calendar day in a Microsoft Edge profile'
+  'inotify-tools: notices when a copy starts in the Local Sync plugin'
+  'rsync: runs the sync jobs that copy with rsync in the Local Sync plugin'
+  'unison: runs the two-way sync jobs that use Unison in the Local Sync plugin'
 )
-makedepends=('git')
+makedepends=('git' 'qt6-shadertools')
 install=vgshell-git.install
 
 # REVISIT(D123): AUR helpers need the standard VCS source to track main.
@@ -130,6 +139,15 @@ pkgver() {
     return 1
   fi
   printf '%s\n' "$out"
+}
+
+# The package ships the shader packs this compiles, never the committed
+# ones, so a source review needs only the .frag files, qsb and this one
+# command. The judge compiles every pack git tracks under shell/ and fails
+# on a pack it has no row for, or with no qsb (exit 77).
+build() {
+  cd "$srcdir/vgshell"
+  python3 scripts/check-voiceorb-shader.py --write
 }
 
 package() {
