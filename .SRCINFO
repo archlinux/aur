@@ -1,0 +1,19 @@
+pkgbase = claudash-bin
+	pkgdesc = The control room for Claude Code
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/jguajardo/claudash
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = claudash
+	conflicts = claudash
+	options = !debug
+	source_x86_64 = claudash-bin-1.3.0-x86_64.tar.xz::https://github.com/jguajardo/claudash/releases/download/v1.3.0/claudash-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 152839207f01e200404f63ac5351a6c10e5af29c07e68eaaadeb5ebbdb9194dc
+	source_aarch64 = claudash-bin-1.3.0-aarch64.tar.xz::https://github.com/jguajardo/claudash/releases/download/v1.3.0/claudash-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 801644062d0af3f45cd4c3ece36dec2ef04d44f91e757420cbc36514b96bd01b
+
+pkgname = claudash-bin
