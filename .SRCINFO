@@ -1,0 +1,16 @@
+pkgbase = reeve-tui-bin
+	pkgdesc = A terminal cockpit for AI agents: watch a run live, score it, and step in when it goes sideways
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Dancode-188/reeve
+	arch = x86_64
+	license = Apache-2.0
+	provides = reeve-tui
+	conflicts = reeve-tui
+	options = !debug
+	source = reeve-tui-bin-1.2.0-LICENSE::https://raw.githubusercontent.com/Dancode-188/reeve/v1.2.0/LICENSE
+	sha256sums = 498a648147f2a76bf94739e3046725c331b395b6a94d27aaaa2e0b9a85433f21
+	source_x86_64 = reeve-tui-bin-1.2.0-x86_64::https://github.com/Dancode-188/reeve/releases/download/v1.2.0/reeve-linux-x86_64
+	sha256sums_x86_64 = 9c9971f3f10d20fa45ba52f41403584db0c53cd5473eb67e66539b62011dfcb5
+
+pkgname = reeve-tui-bin
