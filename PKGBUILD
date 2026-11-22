@@ -1,14 +1,14 @@
 # Maintainer: yiming564 <yiming564@proton.me>
 pkgname=croaring
-pkgver=4.5.1
-pkgrel=2
+pkgver=5.5.5
+pkgrel=1
 epoch=
 pkgdesc="Roaring bitmaps in C (and C++), with SIMD (AVX2, AVX-512 and NEON) optimizations: used by Apache Doris, ClickHouse, Alibaba Tair, Redpanda, YDB and StarRocks"
 arch=('x86_64')
 url="https://github.com/RoaringBitmap/CRoaring"
 license=('Apache-2.0' 'MIT')
 groups=()
-depends=()
+depends=("glibc")
 makedepends=('cmake')
 checkdepends=()
 optdepends=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=($pkgname-$pkgver.tar.gz::https://github.com/RoaringBitmap/CRoaring/archive/refs/tags/v$pkgver.tar.gz)
 noextract=()
-sha256sums=('73dd38565ab68c210d72d80bf13eebaf01431950b8d74b8dd0f2e82170c0ccdb')
+sha256sums=('f78a93b8cf373fe4a3d31075cf2b3dc21dcfd7bbbc17674df35071ec8e461aef')
 validpgpkeys=()
 
 build() {
