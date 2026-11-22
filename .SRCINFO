@@ -1,6 +1,6 @@
 pkgbase = retiretui-bin
 	pkgdesc = A local-first retirement planner for the terminal
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/kenianbei/retiretui
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = retiretui-bin
 	provides = retiretui
 	conflicts = retiretui
 	options = !debug
-	source_x86_64 = retiretui-bin-0.6.0-x86_64.tar.gz::https://github.com/kenianbei/retiretui/releases/download/v0.6.0/retiretui-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 86dfa5c3fa20c2d0e46b2c5ace171b3aacb9120703b3eab5e87e9c463176c178
-	source_aarch64 = retiretui-bin-0.6.0-aarch64.tar.gz::https://github.com/kenianbei/retiretui/releases/download/v0.6.0/retiretui-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = cc1471766e5dedae8d7a06e865a833457e1a12b13b588a5cf39f375f8192af2c
+	source_x86_64 = retiretui-bin-0.7.0-x86_64.tar.gz::https://github.com/kenianbei/retiretui/releases/download/v0.7.0/retiretui-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1477bc6dd7ff3f141021667247e49c8745a9b2e7996e659d13dc1bc823fd5c5b
+	source_aarch64 = retiretui-bin-0.7.0-aarch64.tar.gz::https://github.com/kenianbei/retiretui/releases/download/v0.7.0/retiretui-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9f521b7f3caa38731016b88c66c85d1d4569decf6e00486108bca3d9252d761f
 
 pkgname = retiretui-bin
