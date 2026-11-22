@@ -1,0 +1,19 @@
+pkgbase = dfdisk-bin
+	pkgdesc = Modern forensic disk imaging, damaged media rescue and evidence management
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/tylerstyle/dfdisk
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = dfdisk
+	conflicts = dfdisk
+	options = !debug
+	source_x86_64 = dfdisk-bin-0.2.1-x86_64.tar.gz::https://github.com/tylerstyle/dfdisk/releases/download/v0.2.1/dfdisk-v0.2.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4d64631cbbc290d73f6afb115c1b36356d645be594171d82ed8a97dccafac60b
+	source_aarch64 = dfdisk-bin-0.2.1-aarch64.tar.gz::https://github.com/tylerstyle/dfdisk/releases/download/v0.2.1/dfdisk-v0.2.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5c980637c1a169725b28010902e0f584c15a45b339dd0561018d2f5e578cbb3d
+
+pkgname = dfdisk-bin
