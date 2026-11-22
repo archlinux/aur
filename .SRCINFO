@@ -1,6 +1,6 @@
 pkgbase = monochrome-desktop-bin
 	pkgdesc = Stream and download millions of Hi-Res FLACs, all for free on Monochrome.
-	pkgver = 2.0.18
+	pkgver = 2.0.19
 	pkgrel = 1
 	url = https://github.com/monochrome-music/monochrome
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = monochrome-desktop-bin
 	provides = monochrome-desktop-bin
 	conflicts = monochrome-desktop-bin
 	options = !strip
-	source = https://github.com/monochrome-music/desktop-app/releases/download/v2.0.18/Monochrome.Desktop_2.0.18_amd64.deb
-	sha256sums = 197a71d2c7de49e8a0b01fa1868052083019d475d15cdf1ed8b03fa3f4a77f41
+	source = https://github.com/monochrome-music/desktop-app/releases/download/v2.0.19/Monochrome.Desktop_2.0.19_amd64.deb
+	sha256sums = 97a52ae7719ed6135754e589aef2da16393b6a020a9b6927e3b1f4f6ea829b96
 
 pkgname = monochrome-desktop-bin
