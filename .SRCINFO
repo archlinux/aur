@@ -1,0 +1,16 @@
+pkgbase = tonus
+	pkgdesc = Minimal terminal music player for offline playback
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lekspa/tonus
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = tonus-0.1.0.tar.gz::https://github.com/lekspa/tonus/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = e7d62c038b587d68c4cabc55ee57f6f44c91f159c289ff2fb0288f876ab91803
+
+pkgname = tonus
