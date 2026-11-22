@@ -1,6 +1,6 @@
 pkgbase = openaula
 	pkgdesc = TUI, CLI y API para configurar el teclado AULA/Epomaker F108 Pro en Linux
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/ldgnu/openaula
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = openaula
 	makedepends = go
 	conflicts = openaula-bin
 	provides = openaula
-	source = openaula-0.1.8.tar.gz::https://github.com/ldgnu/openaula/archive/refs/tags/v0.1.8.tar.gz
-	sha256sums = 298de244a9e683396d86cd132ca7de5f4a59b0eca0cd0982dcf1a8cc50cfc406
+	source = openaula-0.1.9.tar.gz::https://github.com/ldgnu/openaula/archive/refs/tags/v0.1.9.tar.gz
+	sha256sums = a01d3a16713f4543e9e114434fa233a473fa7ac876310ce01a88583f625788b1
 
 pkgname = openaula
