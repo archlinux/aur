@@ -1,0 +1,17 @@
+pkgbase = readio-bin
+	pkgdesc = A terminal ebook reader for EPUB, PDF, Markdown, and plain text with optional local text-to-speech
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hrhrng/readio
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = readio
+	conflicts = readio
+	options = !debug
+	source_x86_64 = readio-bin-0.1.0-x86_64.tar.gz::https://github.com/hrhrng/readio/releases/download/tui-v0.1.0/readio-tui-v0.1.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 7a2198283dd056bf0afdc96c80ec8940ba4025918ae725fcc377e14fdfeede77
+	source_aarch64 = readio-bin-0.1.0-aarch64.tar.gz::https://github.com/hrhrng/readio/releases/download/tui-v0.1.0/readio-tui-v0.1.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 3708b63e9abbe8279b9a81886ebff3258195594d16dd054304a2ea1e3cf7832d
+
+pkgname = readio-bin
