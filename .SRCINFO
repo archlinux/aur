@@ -1,0 +1,16 @@
+pkgbase = yadb
+	pkgdesc = A TUI for discovering hidden directories and files on web servers
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/izya4ka/yadb
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = yadb-0.3.5.tar.gz::https://github.com/izya4ka/yadb/archive/refs/tags/v0.3.5.tar.gz
+	sha256sums = 4b3d52092bb20b86085e377ca0356787d1041a0d2a9216e08a0e961219134559
+
+pkgname = yadb
