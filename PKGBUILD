@@ -2,8 +2,8 @@
 
 pkgname=muse-code-bin
 _pkgname=muse
-_realver="1.4.24-R9131.1"
-pkgver=1.4.24.r9131.1
+_realver="1.4.25-R9361.1"
+pkgver=1.4.25.r9361.1
 pkgrel=1
 pkgdesc="Terminal-based AI coding agent powered by Meta's Muse Spark (dev.meta.ai)"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64::https://lookaside.facebook.com/look
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://lookaside.facebook.com/lookaside/muse/download/?channel=muse&version=${_realver}&file=muse-aarch64-linux")
 
 sha256sums=('596efb580ea11892824063c79d8d6dae49af5c655e8f0d388c5683af50c9989e' 'a1fe34c465c57feccf4bc4eeb992f96827815a475d840753a8f0a974ddae2f94' '4de84ac87ab129d081a064c11f2d55226c9c1ae478897cd02b17c0c28adbf7c0' 'e1b73add774113722e0452c860f83bc4ec3e8d5189897c302cd8856a681fa050')
-sha256sums_x86_64=('d752c45dce079ee29e118804b091d81ac2b1b89b67f317b4a162fa1af1206465')
-sha256sums_aarch64=('31d4c1fdf382e6711b1c8854d976a6095fe4743eb17b2a8f9a5bb43aef5bad63')
+sha256sums_x86_64=('c1b728fb9732503c5e1869e3ad2f2c9bdb5b2638fb4cf398d6e2c46aa6d8f94a')
+sha256sums_aarch64=('8fe089115ef137879fca46986d55edf18d5d3ab9cfdb6441c67e9d1807b4108a')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/lib/muse/muse"
