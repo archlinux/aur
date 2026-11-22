@@ -1,12 +1,13 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-archivo-narrow
-pkgver=3.100
-pkgrel=2
+pkgver=3.002
+pkgrel=1
+epoch=1
 pkgdesc='Grotesque sans-serif typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/archivo-narrow/'
 license=('OFL')
-_commit='b426cd5284c8171d4396f297c0c51ebf51095a7a'
+_commit='9793ec77b6682a26bc7a6ed523ca65cc3cb90aec'
 source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/${_commit}/OFL.txt"
         "https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/${_commit}/fonts/otf/ArchivoNarrow-Bold.otf"
         "https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/${_commit}/fonts/otf/ArchivoNarrow-BoldItalic.otf"
@@ -16,15 +17,15 @@ source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.c
         "https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/${_commit}/fonts/otf/ArchivoNarrow-Regular.otf"
         "https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/${_commit}/fonts/otf/ArchivoNarrow-SemiBold.otf"
         "https://raw.githubusercontent.com/Omnibus-Type/ArchivoNarrow/${_commit}/fonts/otf/ArchivoNarrow-SemiBoldItalic.otf")
-sha256sums=('a4087edf95fb2a6bd38073ad005ced611695dc9d7d8fd5d04a888ef4f9c748ea'
-            '4be36985bdbfcf70970ae1a48200063ef3a46228d32231ff01b9289af57bdcfc'
-            'b9c5b17d1ccec6f624c9bf3f314f8807c8f1672a1a4c538ecbd61a58427097f2'
-            '755717a8e5a24ce5073528e516cee43478416eb5c333d86905048e403b899fd1'
-            'fa8d5eb4e1d35f2ad39a75610b8589c43a9de9ea2b2365db6cb9b6a86db7068d'
-            '5c8924376a27c9ec72448adfbe77fd5e210950bebdd4acc424cb109f7bfa5641'
-            '8238a3e8757bb965d3b0b6bf38001161ca510b88e2ded704a76c5ef8746f2ab4'
-            '48724f3b306d76d1b9128bed1d0948f51169b97202961fc6f6850496ccfde27f'
-            'e3eb15166ad802fdb1116ac731bab527ab8ca38c1694827dff95251a7d26bab0')
+sha256sums=('b2087ef3fb91248e346600d19021249152a9688efea72905aa1996bb16a4c8de'
+            '01abc409a11b765da6955fbc8243e2e8e660034cadf91d0822e2172cde26158b'
+            'f6c6f56b154cc093fd939bcd5a73221d547caf3730048810c78954be67e100f3'
+            '66d6909fded858d3ee0643994dbb8e50086bd282ef6497d96c5dcad094c99d0b'
+            '53bad44aa071c9a1d2ef215d180fd0673f66104fbb85153bbc17ea654edbf92a'
+            'f5f6123e320905c88471952d971a8cbcfc358fac5662cd988c158fe849ff59cb'
+            '056b9173ebbf38670032127442fca81a5412530f0a9fdddf0ee83617f8c5a081'
+            '3e196dd117ccfaf460652743bfaee5651f0956e8b4c2d71eb5e640697a1e11ad'
+            'ff92bec20ba3e8fa3248a489192fd139b50911baffbe4b2321762648c840b7c3')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/OTF/
