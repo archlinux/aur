@@ -16,7 +16,7 @@ _cef_commit=6028375a4532fb89d23b58635f5c0d3a82c93959
 # the chromium version must match CHROMIUM_BUILD_COMPATIBILITY.txt in the CEF repo
 _chromium_ver=156.0.8078.93
 _system_clang=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)"
 provides=("cef=$pkgver")  # provides="cef=$pkgver"
 conflicts=('cef')  # conflicts='cef'
@@ -59,7 +59,6 @@ makedepends=(
   'ninja'
   'nodejs'
   'npm'
-  'opus'
   'pipewire'
   'python'
   'python-httplib2'
@@ -78,13 +77,9 @@ source=(
   chromium-138-nodejs-version-check.patch
   chromium-145-fix-SYS_SECCOMP.patch
   chromium-147-rust-1.95-bytemuck.patch
-  chromium-147-simdutf-8.0-base-char.patch
   chromium-149-use-of-undeclared-identifier-ERROR.patch
   chromium-150-revert-avx-flag-change.patch
-  chromium-152-unbundle-minizip-undo-unicode.patch
-  chromium-152-unbundle-opus-devtools.patch
   chromium-153-hermetic-python.patch
-  chromium-153-iamf-tools-unbundled-opus.patch
   chromium-155-use-system-esbuild.patch
   chromium-156-crubit.patch
   chromium-156-remove-private_verification_tokens.patch
@@ -95,7 +90,6 @@ source=(
   increase-fortify-level.patch
   glibc-2.42-baud-rate-fix.patch
   cef-no-sysroot.patch
-  cef-no-libxml-visibility-patch.patch
   cef-native-pixmaps.diff
   chromium-disable-font-tests.patch
   FindCEF.cmake
@@ -106,13 +100,9 @@ sha256sums=('858bac041597aee091865adef72e39d469f40d3ed1da2136dab2073c60480a88'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
             'b9e6339221efe03540ffb360c161d93604a1fc93a5a1c53e5e9849066f987d05'
-            '80e445d7a5cbd61d1252ecf46c5eaf0fb4a5e63bd1b9c976261df778a4586640'
             '951514535be65f0e2f84e82305d96292be1da353c1427ba1048ea24be70003c4'
             '5f6ccb7b945c8a13c690493723bad816b36f2f25792d47e677b56f8200907e60'
-            '890e5d98088ef1c7c075a551442f03385d1db266cad8a65576704a22720683f9'
-            '3276453f2ce655b6286476f48d4df837be952d9447afa46583f79ec71f2288c3'
             'ebf74154266d0b6d6cc957c413f845052c5fcfce7745befb8821595cdf3f7d49'
-            '2ab9fbe653829ce692f83ee780aad07e8c83a6686e51ab9459ad736cfa2850ee'
             'ded2abcb912ac4b6ad139e56384eea8f3b470cf57ecb0baa2c2d042df7575a23'
             '0c8bd7769496ab71116cd73ac17c096b0979fa70fb2e76676f76d34c7424449e'
             '8170368b531a0ae70071da054db4a09a6902b8b7854083d5505570f86a73e644'
@@ -123,7 +113,6 @@ sha256sums=('858bac041597aee091865adef72e39d469f40d3ed1da2136dab2073c60480a88'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '1c1898f263eaacbc069a8e1a3e732852350350d1dad4cb1a6bba430e3b796cd0'
             'cdc046c3da5a57dae8fba0de49cadbe65d4f8fbfffb172f7a768222232595faa'
-            '6695d7bcac489f74b8290a05dac540c2b5c5fed997ee119ae05419d36509445d'
             'ad30ec1686dfa5b74fc2dc9f4613fb9384df646a745e48842a44f9ebbc558057'
             '44dcc0da55a8c6c6af875addcfb9c552c722b56a31479eb7d99f16d0a27f4ebb'
             'e576250c4d0f3dd307bd22c6d4f9f7aba54fdf4d5899520c0bd1c3527aec65ed'
@@ -132,34 +121,9 @@ sha256sums=('858bac041597aee091865adef72e39d469f40d3ed1da2136dab2073c60480a88'
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  [brotli]=brotli
-  [dav1d]=dav1d
-  [double-conversion]=double-conversion
-  #[ffmpeg]=ffmpeg    # YouTube playback stopped working in Chromium 120
-  [flac]=flac
+  # cef-vaapi bundles every other library, see update-from-arch-cef.sh
   [fontconfig]=fontconfig
-  [freetype]=freetype2
-  [harfbuzz]=harfbuzz
-  [highway]=highway
-  #[icu]=icu
-  #[jsoncpp]=jsoncpp  # needs libstdc++
-  #[libaom]=aom
-  #[libavif]=libavif  # needs -DAVIF_ENABLE_EXPERIMENTAL_GAIN_MAP=ON
   [libdrm]=libdrm
-  [libjpeg]=libjpeg-turbo
-  # [libpng]=libpng
-  #[libvpx]=libvpx
-  [libwebp]=libwebp
-  [libxml]=libxml2
-  [libxslt]=libxslt
-  [openh264]=openh264
-  [opus]=opus
-  #[re2]=re2          # needs libstdc++
-  [simdutf]=simdutf
-  #[snappy]=snappy    # needs libstdc++
-  #[woff2]=woff2      # needs libstdc++
-  [zlib]=minizip
-  [zstd]=zstd
 )
 _unwanted_bundled_libs=(
   $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
@@ -296,21 +260,9 @@ prepare() {
   # Credit: https://github.com/ungoogled-software/ungoogled-chromium/pull/3837
   patch -Np1 -i ../chromium-150-revert-avx-flag-change.patch
 
-  # To unbundle simdutf
-  patch -Np1 -i ../chromium-147-simdutf-8.0-base-char.patch
-
-  patch -Np1 -i ../chromium-152-unbundle-minizip-undo-unicode.patch
-
-  patch -Np1 -i ../chromium-152-unbundle-opus-devtools.patch
-
   # Use system python3 instead of the hermetic cpython3 interpreter
   # https://github.com/ungoogled-software/ungoogled-chromium/pull/3946
   patch -Np1 -i ../chromium-153-hermetic-python.patch
-
-  # third_party/iamf_tools includes vendored Opus via relative "include/opus.h"
-  # paths that only resolve against a real bundled Opus checkout; fix them up
-  # for the unbundled system Opus build
-  patch -Np1 -i ../chromium-153-iamf-tools-unbundled-opus.patch
 
   patch -Np1 -i ../chromium-155-use-system-esbuild.patch
 
@@ -333,9 +285,6 @@ prepare() {
   # use_gtk/use_qt are disabled, so FallbackLinuxUi receives the portal color
   # scheme; make it reach web content (prefers-color-scheme), crbug.com/536445418
   patch -Np1 -i ../chromium-154-fallback-linux-ui-portal-color-scheme.patch
-
-  # CEF: Remove libxml_visibility patch (fails with system libxml2)
-  patch -Np1 -i ../cef-no-libxml-visibility-patch.patch
 
   # CEF: Override clang_exe to use system clang
   echo 'clang_exe = "clang"' >>cef/tools/clang_util.py
