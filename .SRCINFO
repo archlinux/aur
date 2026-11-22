@@ -1,0 +1,19 @@
+pkgbase = commandok-bin
+	pkgdesc = A Spotlight-like terminal command generator powered by major large-language-model providers
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/64bit/commandOK
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = commandok
+	conflicts = commandok
+	options = !debug
+	source_x86_64 = commandok-bin-0.1.7-x86_64.tar.xz::https://github.com/64bit/commandOK/releases/download/v0.1.7/commandok-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 2b34ae0eaa2dd5616eca344ba6c580dfff1e718f09348dc8635a5718a98cb658
+	source_aarch64 = commandok-bin-0.1.7-aarch64.tar.xz::https://github.com/64bit/commandOK/releases/download/v0.1.7/commandok-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = d37d9aca6427f9b87b86fcdf98403ca7a5ec95ab16109d2ec37fe300c7372225
+
+pkgname = commandok-bin
