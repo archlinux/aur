@@ -1,7 +1,7 @@
 pkgbase = mesa-aliveos
 	pkgdesc = Open-source OpenGL and VA-API drivers (AliveOS patched Mesa)
 	pkgver = 26.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Twilight0/mesa-aliveos
 	arch = x86_64
 	license = MIT AND BSD-3-Clause AND SGI-B-2.0
@@ -38,9 +38,9 @@ pkgbase = mesa-aliveos
 	depends = zlib
 	depends = zstd
 	optdepends = opengl-man-pages: for the OpenGL API man pages
-	provides = mesa=1:26.3.1-1
-	provides = libva-mesa-driver=1:26.3.1-1
-	provides = mesa-libgl=1:26.3.1-1
+	provides = mesa=1:26.3.1-2
+	provides = libva-mesa-driver=1:26.3.1-2
+	provides = mesa-libgl=1:26.3.1-2
 	provides = libva-driver
 	provides = opengl-driver
 	conflicts = mesa
@@ -56,11 +56,13 @@ pkgbase = mesa-aliveos
 	source = 0003-nouveau-vaapi-vp4-fix-teardown-sync-and-m2mf-bounds.patch
 	source = 0004-vl-compositor-fix-yuv420p-plane-order-and-v-plane.patch
 	source = 0005-nvc0-increase-ra-spill-retries-and-glsl-460.patch
+	source = 0006-nouveau-nvc0-progressive-nv12-msppp-and-yuv-modifiers.patch
 	sha256sums = 4e4e438eac7b840a9383988cbb7c08dad8041da544b9319fc26d319fa7348961
 	sha256sums = c637763ede739aaedd7527e2cc224243d661156fde7983e6ed52a30a7db8961d
 	sha256sums = 91306d2f4d5373d6db98ea53dc4824ccf2ddd5d6c8be352081aabe75f4000a56
 	sha256sums = e7fee31b145500b795f4e551ff6da37c0001216789b3cf38923cf497448b58fd
 	sha256sums = b90431e9382805a1018632572da38fce895a8836068b662bc5aea61458fe4cc0
 	sha256sums = d084d055d5270c843262314f4322ee103f5cd6a47a733c33d164692e34a08581
+	sha256sums = cc2f7bc15f798d5ed1aefb374ed89dae6799dbfbbe6622b9d80495f560c4bad9
 
 pkgname = mesa-aliveos

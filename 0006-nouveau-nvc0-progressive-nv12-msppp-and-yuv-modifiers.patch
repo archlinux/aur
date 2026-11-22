@@ -1,0 +1,122 @@
+From 9bc47c750590e8a16fcce7fc574b2bd41fac8b53 Mon Sep 17 00:00:00 2001
+From: Twilight0 <twilight0@vivaldi.net>
+Date: Sun, 22 Nov 2026 19:24:36 +0200
+Subject: [PATCH] nouveau,nvc0: decode progressive NV12 directly from MSPPP and
+ support YUV modifiers
+
+- Return chipset >= 0xc0 for PIPE_VIDEO_CAP_SUPPORTS_PROGRESSIVE in
+  nouveau_vp3_screen_get_video_param() and allocate a progressive
+  PIPE_TEXTURE_2D (array_size = 1, PIPE_BIND_SHARED) NV12 video buffer
+  in nouveau_vp3_video_buffer_create() when !templat->interlaced.
+- Clear the MSPPP field-split bit (low700 &= ~0x10) in
+  nvc0_decoder_setup_ppp() when decoding to a progressive target so
+  MSPPP writes full progressive NV12 planes directly with zero VPP copy
+  or extra VRAM.
+- Return tile_flags = 0xfe for util_format_is_yuv(format) in
+  nvc0_choose_tiled_storage_type() so nvc0_is_dmabuf_modifier_supported()
+  and gbm_bo_import() accept block-linear DRM_FORMAT_NV12 DMABUFs in
+  Chromium (VaapiVideoDecoder) and mpv.
+---
+ .../drivers/nouveau/nouveau_vp3_video.c       | 22 +++++++++++--------
+ .../drivers/nouveau/nvc0/nvc0_miptree.c       |  4 ++++
+ .../drivers/nouveau/nvc0/nvc0_video_ppp.c     |  8 ++++++-
+ 3 files changed, 24 insertions(+), 10 deletions(-)
+
+diff --git a/src/gallium/drivers/nouveau/nouveau_vp3_video.c b/src/gallium/drivers/nouveau/nouveau_vp3_video.c
+index 32adf19..8b5fd48 100644
+--- a/src/gallium/drivers/nouveau/nouveau_vp3_video.c
++++ b/src/gallium/drivers/nouveau/nouveau_vp3_video.c
+@@ -117,17 +117,17 @@ nouveau_vp3_video_buffer_create(struct pipe_context *pipe,
+    buffer->base.get_sampler_view_planes = nouveau_vp3_video_buffer_sampler_view_planes;
+    buffer->base.get_sampler_view_components = nouveau_vp3_video_buffer_sampler_view_components;
+    buffer->base.get_surfaces = nouveau_vp3_video_buffer_surfaces;
+-   buffer->base.interlaced = true;
++   buffer->base.interlaced = templat->interlaced;
+ 
+    memset(&templ, 0, sizeof(templ));
+-   templ.target = PIPE_TEXTURE_2D_ARRAY;
++   templ.target = buffer->base.interlaced ? PIPE_TEXTURE_2D_ARRAY : PIPE_TEXTURE_2D;
+    templ.depth0 = 1;
+-   templ.bind = PIPE_BIND_SAMPLER_VIEW | PIPE_BIND_RENDER_TARGET;
++   templ.bind = PIPE_BIND_SAMPLER_VIEW | PIPE_BIND_RENDER_TARGET | PIPE_BIND_SHARED;
+    templ.format = PIPE_FORMAT_R8_UNORM;
+    templ.width0 = buffer->base.width;
+-   templ.height0 = (buffer->base.height + 1)/2;
++   templ.height0 = buffer->base.interlaced ? (buffer->base.height + 1) / 2 : buffer->base.height;
+    templ.flags = flags;
+-   templ.array_size = 2;
++   templ.array_size = buffer->base.interlaced ? 2 : 1;
+ 
+    buffer->resources[0] = pipe->screen->resource_create(pipe->screen, &templ);
+    if (!buffer->resources[0])
+@@ -167,10 +167,14 @@ nouveau_vp3_video_buffer_create(struct pipe_context *pipe,
+    for (j = 0; j < buffer->num_planes; ++j) {
+       u_surface_default_template(&surf_templ, buffer->resources[j]);
+       surf_templ.first_layer = surf_templ.last_layer = 0;
+-      buffer->surfaces[j * 2] = surf_templ;
++      if (buffer->base.interlaced) {
++         buffer->surfaces[j * 2] = surf_templ;
+ 
+-      surf_templ.first_layer = surf_templ.last_layer = 1;
+-      buffer->surfaces[j * 2 + 1] = surf_templ;
++         surf_templ.first_layer = surf_templ.last_layer = 1;
++         buffer->surfaces[j * 2 + 1] = surf_templ;
++      } else {
++         buffer->surfaces[j] = surf_templ;
++      }
+    }
+ 
+    return &buffer->base;
+@@ -529,7 +533,7 @@ nouveau_vp3_screen_get_video_param(struct pipe_screen *pscreen,
+          return 0;
+       }
+    case PIPE_VIDEO_CAP_SUPPORTS_PROGRESSIVE:
+-      return false;
++      return chipset >= 0xc0;
+    case PIPE_VIDEO_CAP_MAX_MACROBLOCKS:
+       switch (codec) {
+       case PIPE_VIDEO_FORMAT_MPEG12:
+diff --git a/src/gallium/drivers/nouveau/nvc0/nvc0_miptree.c b/src/gallium/drivers/nouveau/nvc0/nvc0_miptree.c
+index 26c1df0..3ad5529 100644
+--- a/src/gallium/drivers/nouveau/nvc0/nvc0_miptree.c
++++ b/src/gallium/drivers/nouveau/nvc0/nvc0_miptree.c
+@@ -132,6 +132,10 @@ nvc0_choose_tiled_storage_type(struct pipe_screen *pscreen,
+          tile_flags = 0xc3;
+       break;
+    default:
++      if (util_format_is_yuv(format)) {
++         tile_flags = 0xfe;
++         break;
++      }
+       switch (util_format_get_blocksizebits(format)) {
+       case 128:
+          if (compressed)
+diff --git a/src/gallium/drivers/nouveau/nvc0/nvc0_video_ppp.c b/src/gallium/drivers/nouveau/nvc0/nvc0_video_ppp.c
+index 8a5295d..d9159db 100644
+--- a/src/gallium/drivers/nouveau/nvc0/nvc0_video_ppp.c
++++ b/src/gallium/drivers/nouveau/nvc0/nvc0_video_ppp.c
+@@ -47,6 +47,9 @@ nvc0_decoder_setup_ppp(struct nouveau_vp3_decoder *dec, struct nouveau_vp3_video
+       bo_refs[i].bo = mt->base.bo;
+    }
+ 
++   if (!target->base.interlaced)
++      low700 &= ~0x10;
++
+    PUSH_REFN(push, bo_refs, num_refs);
+    nouveau_vp3_ycbcr_offsets(dec, &y2, &cbcr, &cbcr2);
+ 
+@@ -67,7 +70,10 @@ nvc0_decoder_setup_ppp(struct nouveau_vp3_decoder *dec, struct nouveau_vp3_video
+       struct nv50_miptree *mt = (struct nv50_miptree *)target->resources[i];
+ 
+       PUSH_DATA (push, mt->base.address >> 8);
+-      PUSH_DATA (push, (mt->base.address + mt->total_size/2) >> 8);
++      if (target->base.interlaced)
++         PUSH_DATA (push, (mt->base.address + mt->total_size/2) >> 8);
++      else
++         PUSH_DATA (push, mt->base.address >> 8);
+       mt->base.status |= NOUVEAU_BUFFER_STATUS_GPU_WRITING;
+    }
+ }
+-- 
+2.56.1
+
