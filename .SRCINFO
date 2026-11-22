@@ -1,13 +1,13 @@
 pkgbase = lib32-flex
 	pkgdesc = A tool for generating text-scanning programs
-	pkgver = 2.6.15
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/westes/flex
 	arch = x86_64
-	license = custom
-	depends = flex>=2.6.15
+	license = custom:flex
 	depends = lib32-glibc
-	source = https://github.com/westes/flex/releases/download/v2.6.15/flex-2.6.15.tar.gz
-	sha256sums = ba38801d12d38782e36f2ddd66c118aa9ed3cbed9849194c4e68d9894cd739d9
+	depends = flex>=2.7.1
+	source = https://github.com/westes/flex/releases/download/v2.7.1/flex-2.7.1.tar.gz
+	sha256sums = 336715b27262c7eefab99ba46b06f05e54a1a39d7bc36c79b826a51bbe4fcb81
 
 pkgname = lib32-flex

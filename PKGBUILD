@@ -5,16 +5,18 @@
 # Contributor: Felipe Contreras <felipe.contreras@gmail.com>
 
 pkgname=lib32-flex
-pkgver=2.6.15
+pkgver=2.7.1
 pkgrel=1
-pkgdesc='A tool for generating text-scanning programs'
+pkgdesc="A tool for generating text-scanning programs"
 arch=('x86_64')
 #url='http://flex.sourceforge.net'
-url='https://github.com/westes/flex'
-license=('custom')
-depends=("flex>=${pkgver}" 'lib32-glibc')
-source=("https://github.com/westes/flex/releases/download/v${pkgver}/flex-${pkgver}.tar.gz")
-sha256sums=('ba38801d12d38782e36f2ddd66c118aa9ed3cbed9849194c4e68d9894cd739d9')
+url="https://github.com/westes/flex"
+license=('custom:flex')
+depends=('glibc')
+depends=("${depends[@]/#/lib32-}")
+depends+=("flex>=${pkgver}")
+source=("https://github.com/westes/flex/releases/download/v$pkgver/flex-$pkgver.tar.gz")
+sha256sums=('336715b27262c7eefab99ba46b06f05e54a1a39d7bc36c79b826a51bbe4fcb81')
 
 build() {
   cd flex-${pkgver}
@@ -32,7 +34,7 @@ build() {
 package() {
   cd flex-${pkgver}
 
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
   rm -rf "${pkgdir}"/usr/{include,share,bin}
 
   install -dm 755 "${pkgdir}"/usr/share/licenses
