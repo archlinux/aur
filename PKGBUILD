@@ -1,6 +1,6 @@
 # Maintainer: mp0rta <3p0rta26@gmail.com>
 pkgname=mqvpn-bin
-pkgver=0.19.2
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Multipath VPN using MASQUE CONNECT-IP (RFC 9484) and Multipath QUIC (prebuilt binary)"
 arch=(x86_64 aarch64)
@@ -12,8 +12,8 @@ conflicts=(mqvpn)
 options=(!strip !debug)
 source_x86_64=("https://github.com/mp0rta/mqvpn/releases/download/v${pkgver}/mqvpn_${pkgver}_amd64.tar.gz")
 source_aarch64=("https://github.com/mp0rta/mqvpn/releases/download/v${pkgver}/mqvpn_${pkgver}_arm64.tar.gz")
-sha256sums_x86_64=('d337086464b04ae90653a2a4402aa56f19fb001dcea60d0eb4e404d1e4bba863')
-sha256sums_aarch64=('a4b7dfe9510a949c7d9cd81679071589c6d2efea2dfd735623f5cadc8abd6c5a')
+sha256sums_x86_64=('92436de87cbeb0e12abf5d45abcc35414b24417ea0e75a4b5fc40c2992f9e1b5')
+sha256sums_aarch64=('52cf53b57685892d9b3289daba2207a7eb90ac721c36117cb963d4ee8d184be9')
 
 package() {
   install -Dm755 bin/mqvpn "${pkgdir}/usr/bin/mqvpn"
