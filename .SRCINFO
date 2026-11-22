@@ -1,0 +1,16 @@
+pkgbase = kktypr-bin
+	pkgdesc = Terminal touch typing academy and developer code syntax trainer in pure Rust
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/kk376/kktypr
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = kktypr
+	conflicts = kktypr
+	options = !debug
+	source_x86_64 = kktypr-bin-0.1.1-x86_64.tar.gz::https://github.com/kk376/kktypr/releases/download/v0.1.1/kktypr-0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 5279d5ef2d70634e226a3fa21a82e2b16c01b698a50514c9c862153a336d8971
+
+pkgname = kktypr-bin
