@@ -1,0 +1,18 @@
+pkgbase = fileview-bin
+	pkgdesc = A terminal file browser with image previews, Git status, search, and an MCP server
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://github.com/Hiro-Chiba/fileview
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = fileview
+	conflicts = fileview
+	options = !debug
+	source = fileview-bin-3.1.2-LICENSE::https://raw.githubusercontent.com/Hiro-Chiba/fileview/v3.1.2/LICENSE
+	sha256sums = 0a40b4c2cd3ffb7a03c37af716fe0caa6ddfe62ac07f3005f9c4443906ceb40c
+	source_x86_64 = fileview-bin-3.1.2-x86_64.tar.gz::https://github.com/Hiro-Chiba/fileview/releases/download/v3.1.2/fileview-v3.1.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b990a7add32f0c2b0169ce3bad418775ab8390bc4846c3654ca2b7284c145866
+
+pkgname = fileview-bin
