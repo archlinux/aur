@@ -1,7 +1,7 @@
 # Maintainer: Jay Man <jhollis.ga@gmail.com>
 
 pkgname=ffmpeg-cuda-full
-pkgver=9.0.1
+pkgver=9.1
 pkgrel=1
 epoch=2
 pkgdesc='FFmpeg with CUDA/NVENC and all codecs including nonfree libfdk-aac'
@@ -131,7 +131,7 @@ source=(
     "git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=n${pkgver}"
     "0001-Add-av_stream_get_first_dts-for-Chromium.patch"
 )
-b2sums=('e22f57e76d587eecfdfe3ba0fbfaa37c6c95b43d4fc60da9d4feb11a2c87dcaf7ac891fbaa649289bec4ef40378743d61c77128b7127e8dc42d95f95a60aee69'
+b2sums=('e1aaa1362a3c5bdc4db84bae74d5df76c30f78cfe2be44bd210f0891deb5816a25be1fe9b2a945dfa46b7776d943a544930b3831fd2bc3505d8f69673ecd5349'
         'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64') # Michael Niedermayer <michael@niedermayer.cc>
 
@@ -256,7 +256,6 @@ build() {
         --enable-nvdec \
         --enable-nvenc \
         --enable-opencl \
-        --enable-opengl \
         --enable-pthreads \
         --enable-sdl2 \
         --enable-shared \
