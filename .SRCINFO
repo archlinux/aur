@@ -1,0 +1,16 @@
+pkgbase = enimtui
+	pkgdesc = Terminal-based minesweeper knockoff
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://codeberg.org/tranzystorekk/enimtui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = enimtui-0.2.0.tar.gz::https://codeberg.org/tranzystorekk/enimtui/archive/v0.2.0.tar.gz
+	sha256sums = 37e5d089f46bccf6d82660e0590b0e465b3f51d558389d8c3ac3b3537987ce73
+
+pkgname = enimtui
