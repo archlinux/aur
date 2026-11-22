@@ -1,18 +1,18 @@
 # Maintainer: zevaryx <zevaryx@gmail.com>
 pkgname=rettui-desktop-bin
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Reticulum client in a window of its own (rettui's web UI): LXMF messaging, NomadNet browsing and hosting, and RRC chat"
 arch=('x86_64' 'aarch64')
-url="https://github.com/zevaryx/rettui"
+url="https://github.com/rettui-dev/rettui"
 license=('LicenseRef-Reticulum')
 depends=('glibc' 'gcc-libs' 'gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator')
 provides=('rettui-desktop')
 conflicts=('rettui-desktop')
-source_x86_64=("https://github.com/zevaryx/rettui/releases/download/v${pkgver}/rettui-desktop-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("https://github.com/zevaryx/rettui/releases/download/v${pkgver}/rettui-desktop-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('14135ab482cf59186733683dbfbe3ca56d6a388b88f4a5d7cf9ab172f402def5')
-sha256sums_aarch64=('337ecb39660404c9a1949404ee7a6ae9f9eefd1b65071c01891b25f08137b80a')
+source_x86_64=("https://github.com/rettui-dev/rettui/releases/download/v${pkgver}/rettui-desktop-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("https://github.com/rettui-dev/rettui/releases/download/v${pkgver}/rettui-desktop-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('5ddb034ad0f81d5ec22626410b70441ceed3a30f4684e73ed328d03953244ee1')
+sha256sums_aarch64=('c9146d6d0ba8fe6aad32dbe28b02419f79027aa388a3c2ae347a559c8c2b6502')
 
 package() {
   cd "rettui-desktop-v${pkgver}-${CARCH}-unknown-linux-gnu"
