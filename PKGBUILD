@@ -1,12 +1,12 @@
-# Maintainer: Bao Trinh <qubidt at gmail dot com>
+# Maintainer: bipin kumar <kbipinkumar at pm dot me>
+# Contributor: Bao Trinh <qubidt at gmail dot com>
 
 pkgbase=edlib
-pkgname=(edlib python-edlib)
-pkgver=1.2.7
-_commit=ce008ea6c2c3d8c40a7a85e668f8fb75127d454a  # tag: python-1.3.9
-pkgrel=5
+pkgname=('edlib' 'python-edlib')
+pkgver=1.3.9.post1
+pkgrel=1
 pkgdesc='Lightweight, super fast C/C++ (& Python) library for sequence alignment using edit (Levenshtein) distance'
-arch=('any')
+arch=(x86_64)
 url=https://github.com/Martinsos/edlib
 license=('MIT')
 depends=()
@@ -21,10 +21,14 @@ makedepends=(
 	'python-wheel'
 	'python-cogapp'
 )
-source=("${pkgbase}-${pkgver}::git+${url}.git#commit=${_commit}")
-sha512sums=('e319f73b1e3047509ac9b827e7aafa86a8a8ff63b219a5c737382355546752a16b1914ff7f4061d61c7eb5a4b8b00ff4e9f1d67515b9e7df492db51941ce0616')
+source=("https://github.com/Martinsos/edlib/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('cd6209de5c3ac7e0fd817ed14fd9a0f3606655cbbad87e9cd4025ef6208bba7a')
 
 prepare() {
+    # patch Makefile to use recommended meson options as stated in Archwiki 
+    sed -i 's|meson setup|arch-meson --prefix=/usr|g' "${srcdir}/${pkgname}-${pkgver}"/Makefile
+    sed -i "/compiler_directives/d" "${srcdir}/${pkgbase}-${pkgver}/bindings/python/setup.py"
+
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make configure
 	sed -Ei '/pip install (cython|cogapp)/d' "${srcdir}/${pkgbase}-${pkgver}/bindings/python/Makefile"
@@ -32,11 +36,11 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${pkgbase}-${pkgver}"
-	make build
-	cd "${srcdir}/${pkgbase}-${pkgver}/bindings/python"
-	cp -rf ../../edlib .
-	make pyedlib.bycython.cpp README.rst
-	python -m build --wheel --no-isolation
+        make build
+        cd "${srcdir}/${pkgbase}-${pkgver}/bindings/python"
+        cp -rf ../../edlib .
+        cython --cplus edlib.pyx -o edlib.bycython.cpp
+        EDLIB_OMIT_README_RST=1 python -m build --wheel --no-isolation
 }
 
 check() {
@@ -45,14 +49,19 @@ check() {
 }
 
 package_edlib() {
+    depends=('glibc' 'gcc-libs')
+    pkgdesc='Lightweight, super fast C/C++ library for sequence alignment using edit (Levenshtein) distance'
 	cd "${srcdir}/${pkgbase}-${pkgver}"
 	install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgbase}"
 	DESTDIR="${pkgdir}" make install
+    install -Dm644 ${srcdir}/${pkgbase}-${pkgver}/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 package_python-edlib() {
 	pkgdesc="Python bindings for edlib"
+    depends=('python' 'glibc' 'gcc-libs' 'edlib')
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/bindings/python"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 ${srcdir}/${pkgbase}-${pkgver}/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
