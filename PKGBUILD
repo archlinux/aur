@@ -3,7 +3,7 @@
 package='withoutbg'
 pkgname="python-${package}"
 pkgdesc="AI-powered background removal with local and cloud options"
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 
 _pypi_package=${package}
@@ -22,7 +22,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 #source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0ee34f6f16fc9a670eff335cd0f1d2ae43bdedc38f3e706918fd130870f10c34')
+sha256sums=('e6ad2329afd76256fdea8fc7a0da48115acfb9b54886579304f2e0113cf8660c')
 
 
 build() {
