@@ -20,6 +20,140 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 Unreleased changes are in [`.changeset/`](.changeset/), one file per change. Run `cargo xtask changeset preview` to see them as release notes.
 
+# [1.1.0] - 2026-11-19
+
+## 🚀 Features
+
+- **`rover plugin install` reports each plugin and a summary when installing several - @SharkBaitDLS part of ROVER-448**
+
+  Installing more than one plugin prints each plugin's outcome as it completes, including each failure in full, and ends with a summary such as `3 plugins: 2 installed, 1 already installed.` When any plugin failed, the summary is the command's error and carries the first failure's code. With `--format json`, `data.plugins` lists what installed, `data.failed` lists every failure as its own error object, and the top-level `error` is the first failure.
+
+- **`rover plugin install` attempts every plugin when one fails - @SharkBaitDLS part of ROVER-447**
+
+  A plugin that fails to install no longer stops the rest: every plugin is attempted, and the command exits non-zero if any failed. Each plugin that succeeds is recorded in the lockfile as it installs, so re-running installs only what failed. A plugin that's already installed now says so as `` `supergraph` v2.9.3 is already installed in this project. `` (or `globally`).
+
+- **`rover plugin install` installs several plugins at once - @SharkBaitDLS part of ROVER-445**
+
+  Name any number of plugins, as in `rover plugin install supergraph@=2.9.3 router@2`, to install each in one run. Naming the same plugin twice is refused before anything installs, since the lockfile records one release per plugin.
+
+- **Rover logs the request trace ID, and the IDs of any failed attempt, at the debug level - @dotdat**
+
+  With `--log debug`, Rover logs the trace ID shared by every Platform API request in a run, once, when the first request is sent. Each attempt that fails is also logged with the trace ID, that attempt's parent ID, and its retry count, so you can give them to support to have the failure found.
+
+- **Rover sends a `tracestate` header with the retry count on every Platform API request - @dotdat**
+
+  Every Platform API request, and every retry of it, now carries a `tracestate` header alongside `traceparent`. Its one entry, `rover=retries:<n>`, says how many earlier attempts of the same request there were: `0` for the first attempt, `1` for the first retry, and so on. It carries nothing else, and no identifier for you, your machine, or your account.
+
+- **Rover sends a `traceparent` header on every Platform API request - @dotdat**
+
+  Every Platform API request, and every retry of it, carries a W3C Trace Context `traceparent` header. All requests in one run share a randomly generated trace ID, and each attempt has its own parent ID, so a set of failures from one command can be followed together. The ID is generated fresh for each run and isn't derived from your telemetry session, machine, or account.
+
+  Requests to other destinations don't carry it: introspection endpoints, the plugin registry, OAuth, and telemetry. Turning telemetry off doesn't stop Rover sending it.
+
+- **Add `rover plugin uninstall` to remove installed plugins - @SharkBaitDLS part of ROVER-473**
+
+  `rover plugin uninstall supergraph` removes every installed version of a plugin, and `rover plugin uninstall supergraph@=2.9.3` removes just that one. It removes from the project in scope, or globally outside a project; `--global` and `--manifest-path` choose the level as they do for `rover plugin install`. When no copy of a plugin is left, its entries are removed from `rover.yaml` and `plugin-versions.lock` too, keeping the rest of `rover.yaml` exactly as written. It never removes another level's copy: it says where the plugin is installed instead. A floating version such as `supergraph@2` is refused as ambiguous before anything is removed. It never contacts the plugin registry.
+
+- **Add `rover plugin list` to show which plugins are installed - @SharkBaitDLS part of ROVER-473**
+
+  `rover plugin list` lists every installed copy of every plugin, with its version and install location, in this project and globally. It marks the copy Rover uses for each plugin, going by `rover.yaml` and `plugin-versions.lock`. `--global` lists only the global level, `--manifest-path` names the project, and `--format json` carries the same fields. It never contacts the plugin registry.
+
+- **Composition errors hint at Federation 1 subgraphs that need migrating - @dotdat**
+
+  When composition fails, no federation version was specified, and none of the subgraphs uses the `@link` directive, Rover now adds a suggestion that the subgraphs may have been written for Federation 1, which Rover no longer supports, with a link to the migration guide. Rover can't tell a Federation 1 subgraph from a Federation 2 subgraph that uses no federation directives, so the suggestion only appears after composition has failed, and only says the subgraphs may need migrating. The errors themselves are unchanged.
+
+- **Anonymous usage telemetry includes an identifier for the graph a command ran against - @dotdat part of ROVER-424**
+
+  When a command has a graph ref, Rover's anonymous usage data now includes a `graph_id_hash` derived from it, so usage can be grouped by graph without revealing the graph. It is a keyed hash: the key is a random value Rover generates on first use and stores in `install_salt.txt` beside `machine.txt`, and never sends. Nobody can reproduce the identifier by hashing known graph refs, and it groups invocations from one install only, because other installs have different keys. Deleting `install_salt.txt` resets it. Commands without a graph ref send no `graph_id_hash`, and nothing is generated or stored when telemetry is disabled.
+
+- **Anonymous usage telemetry includes command duration and invocation environment - @dotdat part of ROVER-424**
+
+  Rover's anonymous usage data now includes how long the command ran, in milliseconds, including writing its output, and an `invocation_mode`: whether the invocation looks `automated` (CI was detected, or standard input isn't a terminal) or `interactive`. Neither identifies a machine or a person.
+
+- **Anonymous usage telemetry includes how a command ended - @dotdat part of ROVER-424**
+
+  Rover's anonymous usage data now records the command's outcome: `success`, `user_error` (a failure the user can correct, or a command that completes by design with a non-zero exit code, such as a failed check), `internal_error`, or `connection_error` (Rover couldn't reach a server, the connection dropped, or the request timed out). An HTTP 4xx response is a `user_error` and a 5xx an `internal_error`. An error that could plausibly be either is an `internal_error`. The outcome carries no error message or detail.
+
+## 🐛 Fixes
+
+- **Git remote URLs using `ssh://`, or `https://` with a `git` user, are sent to GraphOS as valid URLs - @dotdat**
+
+  Rover sends the repository's `origin` remote, with credentials stripped, as git context on publishes and checks. Remotes written as `ssh://host/path` were sent as `ssh://host:path`, which isn't a valid URL, and `ssh://git@host/path` came out as `git@ssh://host:path`. Both are now sent as `ssh://host/path` and `ssh://git@host/path`. Likewise, `https://git@host/path` was sent as `git@https://host/path` and is now sent as `https://git@host/path`.
+
+- **Schema check reports show failed tasks that Studio returned no details for - @SharkBaitDLS**
+
+  The text report of `rover subgraph check` and `rover graph check` now adds a section for a failed task that has no result to show, with a link to its details in Studio. A build that failed without Studio returning its composition errors now says so, instead of reporting "There were no changes detected in the composed schema."
+
+- **Schema checks name the task that failed instead of "an unknown check task" - @SharkBaitDLS**
+
+  When a `rover subgraph check` or `rover graph check` workflow failed because of a task with no result to show, such as a build that failed without Studio returning its composition errors or a contract filter task, Rover said the change "resulted in an unknown check task to fail". The error now names the failed task.
+
+  With `--format json`, `data.task_statuses` lists every task in the check with its status and Studio link, as `{"task", "status", "target_url"}`, so a script can tell which task failed without reading the error message. `task` is one of `build`, `contract_filter`, `operations`, `lint`, `proposals`, `custom` or `downstream`. `json_version` is unchanged.
+
+- **`rover dev` reads settings from a `.env` file as it does from the environment - @dotdat**
+
+  `rover dev` loads a `.env` file in the working directory, but a setting in it was missed when Rover had already read it from the environment: a graph ref in `APOLLO_GRAPH_REF`, which was ignored, and the settings that have a flag, such as `APOLLO_ELV2_LICENSE`, `APOLLO_ROVER_DEV_ROUTER_VERSION` and `APOLLO_LOG_LEVEL`. `rover dev` now loads `.env` before it reads any of them. A variable that is already set in the environment still takes precedence over the same one in `.env`, and other commands still don't read `.env`.
+
+- **`rover subgraph check` no longer says no API schema changes were detected when the operations check lists them - @theJC PR #4132 fixes #4131**
+
+  Since v0.16.0, the Build Check section said "There were no changes detected in the composed API schema, but the core schema was modified." whenever the core schema changed, even when the operations check in the same output listed API schema changes, such as every field removed by a subgraph removal. The Build Check now reports "The composed API schema was modified." when the operations check found API schema changes, keeps the existing message only when it found none, and says "The composed schema was modified." when no operations check result is available. JSON output is unchanged.
+
+- **`rover subgraph check` JSON output reports when a proposals check was overridden in Studio - @SharkBaitDLS**
+
+  With `--format json`, the proposals task has a new `overridden` field, `true` when someone overrode the task's result in Studio. `json_version` is unchanged.
+
+- **`rover subgraph check` says when a proposals check was overridden in Studio - @SharkBaitDLS**
+
+  When someone overrode a proposals check's result in Studio, the check output described the proposal coverage and severity level as if no override had happened, so a check that passed after an override could say that changes not in an approved proposal fail the check. The proposals section now says the result was overridden in Studio.
+
+- **`rover subgraph check` reports when a change has too many diffs for the proposals check - @SharkBaitDLS**
+
+  When a change has more schema diffs than Studio allows for a proposals check, Studio fails the proposals check without comparing the changes against proposals, whatever the proposals check severity level. The proposals section of the check output now says so, instead of saying that no proposals are associated with the changes and describing what the severity level means.
+
+- **`rover subgraph check` JSON output reports when a change has too many diffs for the proposals check - @SharkBaitDLS**
+
+  With `--format json`, the proposals task has a new `has_exceeded_max_diffs` field: `true` when the change has more schema diffs than Studio allows for a proposals check, `false` when it doesn't, and `null` for checks run before Studio reported it. `json_version` is unchanged.
+
+- **Schema checks no longer link to a proposal page when no proposals are associated with the changes - @SharkBaitDLS**
+
+  When the proposals task of `rover graph check` or `rover subgraph check` found no proposals related to the changes, the output linked to a proposal detail page that didn't correspond to any proposal. It now links to the check itself, or to the variant's list of checks when no link to the check is available, and explains what the configured proposals check severity level means for the result, or that the proposals check didn't run because an earlier task failed. JSON output is unchanged.
+
+- **`rover init --mcp` creates a graph API key only after you confirm the template - @gocamille**
+
+  When adding MCP to an existing graph, Rover now shows the files it will create and asks for confirmation before it creates or reuses a graph API key. If you decline, nothing is created.
+
+- **`rover init --mcp` writes the API key only to `.env` - @gocamille**
+
+  Other generated files, such as the MCP server configuration, now read the key from the environment instead, and on macOS and Linux `.env` is created readable only by its owner. `rover init --mcp` also no longer changes other files that were already in the directory.
+
+- **`rover init --mcp` shows the port the generated MCP server listens on - @gocamille**
+
+  The MCP endpoint, the `docker run` command in next steps, and the generated README now point at the same port as the MCP configuration that `rover init --mcp` creates, so the printed instructions work as written.
+
+- **`rover init --mcp` shows the API key masked and points to `.env` - @gocamille**
+
+  The summary printed after `rover init --mcp` now shows a shortened, masked form of the graph's API key and notes that the full key is saved in the project's `.env` file.
+
+  When the MCP template doesn't provide a `.env`, `rover init --mcp` now adds the graph's credentials to the project's `.env` itself, so the key is always saved there.
+
+- **Anonymous usage telemetry is reported when a command panics or is stopped by a signal - @dotdat part of ROVER-424**
+
+  When a command panics, Rover reports an `internal_error` outcome before it exits. When `SIGTERM` or `SIGINT` stops a command, Rover reports a `terminated` outcome, without a duration, then exits with the same status it would have had if the signal had stopped it directly. Reporting waits at most 250 milliseconds and never changes a command's output or exit code. Rover now stops every command as soon as it receives `SIGTERM` or `SIGINT`, including `rover dev` and commands blocked reading input, without waiting for the command's own interrupt handling. When a `SIGTERM` or `SIGINT` is sent to Rover's process alone (not a Ctrl-C in a terminal), as `docker stop` and IDE task runners do, Rover also stops the router and MCP server that `rover dev` started, within the same 250 milliseconds, so they don't keep holding their ports.
+
+- **Anonymous usage telemetry delays exit by at most 250 milliseconds - @dotdat part of ROVER-424**
+
+  Rover now reports its anonymous usage data after a command finishes and waits at most 250 milliseconds for the request, however slow or unreachable the telemetry endpoint is. Previously it could wait up to a second. Command output and exit codes are unchanged.
+
+- **Anonymous usage telemetry reports flag names, not flag values - @dotdat part of ROVER-424**
+
+  Rover's anonymous usage data now contains the names of the flags a command was run with, under their long names, and never their values, except for flags whose every value is non-identifying, such as `--format`. Positional arguments are no longer reported. Previously, argument values that weren't explicitly excluded were sent as typed.
+
+## 🛠 Maintenance
+
+- **Add a layer that stamps a W3C `traceparent` header on HTTP requests - @dotdat**
+
+  The building block for request tracing: it gives each request the trace's ID and a new random parent ID.
+
 # [1.0.1] - 2026-10-21
 
 ## 🐛 Fixes
