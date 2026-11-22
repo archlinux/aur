@@ -21,6 +21,6 @@ prepare() {
 
 package() {
     install -Dm755 squashfs-root/usr/bin/flacora "$pkgdir/usr/bin/flacora"
-    install -Dm644 squashfs-root/flacora.png "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/flacora.png"
+    install -Dm644 squashfs-root/flacora.png "$pkgdir/usr/share/pixmaps/flacora.png"
     install -Dm644 squashfs-root/flacora.desktop "$pkgdir/usr/share/applications/flacora.desktop"
 }
