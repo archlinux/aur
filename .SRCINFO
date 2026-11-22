@@ -1,0 +1,16 @@
+pkgbase = hncli
+	pkgdesc = Hacker News read-only TUI
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/pierreyoda/hncli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = hncli-0.4.0.tar.gz::https://github.com/pierreyoda/hncli/archive/refs/tags/0.4.0.tar.gz
+	sha256sums = 669fb6b9ac3ef5c2542dc40f841fd46a47a0b1ac347205792687bb6c09bfca42
+
+pkgname = hncli
