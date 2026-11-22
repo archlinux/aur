@@ -1,0 +1,5 @@
+[fast-text-editor-bin]
+source = "github"
+github = "Fast-Text-editor/Fast-text-editor"
+use_latest_release = true
+prefix = "v"
