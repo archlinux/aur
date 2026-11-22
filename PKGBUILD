@@ -7,9 +7,13 @@
 # or
 #   DEVECO_DEVICETOOL_URL='<signed url>' makepkg -si
 # or drop devicetool-linux-tool-<version>.zip next to this PKGBUILD.
+#
+# The vendor installer refuses a non-empty target, so the payload lives in
+# /usr/share/deveco-devicetool/installer and only the wrapper triggers it; the
+# actual tool lands in /opt/Huawei/DevEco-Device-Tool at first run.
 pkgname=deveco-devicetool
 pkgver=4.0.0.400
-pkgrel=5
+pkgrel=6
 pkgdesc='HUAWEI DevEco Device Tool for OpenHarmony device development (VS Code toolchain bundle)'
 arch=('x86_64')
 url='https://device.harmonyos.com/cn/develop/ide/'
@@ -21,6 +25,7 @@ source=()
 sha256sums=()
 
 _zip_glob=devicetool-linux-tool-*.zip
+_installer=usr/share/$pkgname/installer
 
 pkgver() {
   local f v
@@ -68,14 +73,13 @@ prepare() {
   fi
   chmod +x "$shf"
   sh "$shf" --noexec --nox11 --target "$srcdir/extracted"
-  # the payload stores helpers non-executable; the vendor installer expects them executable
   chmod 755 "$srcdir/extracted/"*.sh 2>/dev/null || true
 }
 
 package() {
-  install -d "$pkgdir/opt/Huawei/DevEco-Device-Tool/installer"
-  cp -r --no-preserve=ownership "$srcdir/extracted/." "$pkgdir/opt/Huawei/DevEco-Device-Tool/installer/"
-  chmod 755 "$pkgdir/opt/Huawei/DevEco-Device-Tool/installer/"*.sh
+  install -d "$pkgdir/$_installer"
+  cp -r --no-preserve=ownership "$srcdir/extracted/." "$pkgdir/$_installer/"
+  chmod 755 "$pkgdir/$_installer/"*.sh
 
   install -d "$pkgdir/usr/lib/udev/rules.d"
   install -m644 "$srcdir/extracted"/*.rules "$pkgdir/usr/lib/udev/rules.d/"
@@ -85,15 +89,21 @@ package() {
   install -d "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/deveco-devicetool" <<'EOF'
 #!/bin/sh
-# vendor installer needs root and installs per-user VS Code plugins
-cd /opt/Huawei/DevEco-Device-Tool/installer || exit 1
+# The vendor installer insists on creating its own target directory, so it is
+# started from the payload directory and only writes /opt on first run.
+cd /usr/share/deveco-devicetool/installer || exit 1
 exec sudo -E bash ./run.sh --system "$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/deveco-devicetool"
 
   install -d "$pkgdir/usr/share/doc/$pkgname"
   printf '%s\n' \
-    'DevEco Device Tool is installed under /opt/Huawei/DevEco-Device-Tool.' \
-    'Run deveco-devicetool once to install the VS Code extensions per user.' \
+    'The DevEco Device Tool payload lives in /usr/share/deveco-devicetool/installer.' \
+    'Run deveco-devicetool once to install it into /opt/Huawei/DevEco-Device-Tool' \
+    'and to install the bundled VS Code extensions for the invoking user.' \
+    '' \
+    'The vendor installer refuses a non-empty target: remove' \
+    '  /opt/Huawei/DevEco-Device-Tool' \
+    'if an earlier attempt left files there.' \
     > "$pkgdir/usr/share/doc/$pkgname/README"
 }
