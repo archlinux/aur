@@ -2,7 +2,7 @@
 
 pkgname=honk-bin
 pkgver=0.1.0beta.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Experimental Linux eBPF transparent proxy engine (prebuilt musl static full build)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/daeuniverse/honk'
@@ -47,7 +47,7 @@ _dir_aarch64="honk-core-v0.1.0-beta.6-aarch64-unknown-linux-musl-full"
 # A trailing slash is optional. The sha256s below pin the exact upstream bytes,
 # so a broken or hostile mirror fails the build instead of shipping a different
 # binary.
-_github_mirror="${GITHUB_MIRROR:-}"
+_github_mirror="${GITHUB_MIRROR:-https://gh-proxy.cn}"
 [[ -n "$_github_mirror" ]] && _github_mirror="${_github_mirror%/}/"
 _dl_base="${_github_mirror}${url}/releases/download/v${_upver}"
 
