@@ -1,0 +1,27 @@
+pkgbase = proxybridge-bin
+	pkgdesc = Universal proxy client that routes any Linux application's TCP and UDP traffic through an HTTP/SOCKS5 proxy
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://interceptsuite.com/what-is-interceptsuite?github=proxybridge
+	install = proxybridge-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk3
+	depends = libnetfilter_queue
+	depends = libnfnetlink
+	optdepends = iptables: alternative packet redirect setup
+	provides = proxybridge
+	conflicts = proxybridge
+	options = !strip
+	options = !debug
+	source = proxybridge-4.1.0-LICENSE::https://raw.githubusercontent.com/InterceptSuite/ProxyBridge/v4.1.0_Linux/LICENSE
+	source = proxybridge-bin.install
+	sha256sums = 525ad01340fd97de6bef499c80f730aed28042d5387b2460f6626184ccb688cb
+	sha256sums = 932687c17f00ec601e1886c48a234e3c0f232162ffdcdf7465718b0d744ac894
+	source_x86_64 = ProxyBridge-Linux-x64-v4.1.0_Linux.tar.gz::https://github.com/InterceptSuite/ProxyBridge/releases/download/v4.1.0_Linux/ProxyBridge-Linux-x64-v4.1.0_Linux.tar.gz
+	sha256sums_x86_64 = 761fa0bdcf58c5ece01747321ded7a7cae457f4db4adabde258d0f29c679bb8f
+	source_aarch64 = ProxyBridge-Linux-arm64-v4.1.0_Linux.tar.gz::https://github.com/InterceptSuite/ProxyBridge/releases/download/v4.1.0_Linux/ProxyBridge-Linux-arm64-v4.1.0_Linux.tar.gz
+	sha256sums_aarch64 = e12f1c04391882f7e9b2cb5e3f6aa4893c5f2e6899f0afc9c912e585b21a08b8
+
+pkgname = proxybridge-bin
