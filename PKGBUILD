@@ -1,8 +1,8 @@
 # Contributor: Thomas Ward <github.com/teward>
 # Maintainer: Pika Kolendo <pikakolendo02[a]gmail.c0m>
 pkgname='vmfs6-tools'
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Tools to access VMFS6 filesystems"
 arch=('x86_64')
 url="https://github.com/teward/vmfs6-tools"
@@ -15,7 +15,7 @@ optdepends=('pkgconf'
             'util-linux-libs: for libuuid.so' )
 provides=('vmfs6-tools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('647485a97e6a1f0a8b8687e4df8eeb1d660d35e5faec9dfae695be087f96afbf')
+sha256sums=('ef69aa9f74be992fedfb13c4a831945b0567d5c2bff50cdd4f0a987778addafc')
 
 build() {
 	cd "$pkgname-$pkgver"
