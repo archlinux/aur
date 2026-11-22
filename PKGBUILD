@@ -11,7 +11,7 @@ _execname=thr
 pkgname=${_cratename}
 pkgdesc="A blazingly fast terminal log viewer"
 
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -28,7 +28,7 @@ depends=('glibc' 'libgcc')
 provides=("${_execname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('f96734a6f547c30919997c500fd7e980f4ed0bd952b053990a832abf128ef8e2')
+sha256sums=('01820072c9eac983083360ee1918eb9825b8390093cd6744303eb001f2f3b9db')
 
 
 prepare() {
