@@ -1,14 +1,14 @@
 # Maintainer: lumexren <lumexren@gmail.com>
 
 pkgname=vulcanium-bin
-pkgver=157.0.8103.78
+pkgver=158.0.8127.36
 pkgrel=1
 pkgdesc="Chromium with native Wayland Vulkan rendering and Vulkan Video decoding/encoding (prebuilt)"
 arch=('x86_64')
 url="https://github.com/lumexren/vulcanium"
 license=('BSD-3-Clause')
 provides=('vulcanium' 'chromium')
-conflicts=('vulcanium')
+conflicts=('chromium' 'ungoogled-chromium' 'vulcanium' 'ungoogled-vulcanium' 'ungoogled-vulcanium-bin')
 depends=(
   'alsa-lib'
   'at-spi2-core'
@@ -60,7 +60,7 @@ backup=('etc/vulcanium/default-flags.conf')
 options=('!strip')
 source=("https://github.com/lumexren/vulcanium/releases/download/v${pkgver}-${pkgrel}/vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('0a195a6df03c23fd3707c29374b1560b33b90b140c2ed339c7f0fbdc702c7f4a')
+sha256sums=('7deeb903ba3594b8ff281a2c19d6cc5829982cdbec258ec795caf049bd09c745')
 
 package() {
   bsdtar -xf "${srcdir}/vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" \
