@@ -1,6 +1,6 @@
 pkgbase = deveco-commandline-tools
 	pkgdesc = HUAWEI Command Line Tools for HarmonyOS: hvigorw, ohpm, hstack, codelinter, SDK tools
-	pkgver = 26.0.0.851
+	pkgver = 6.1.1.460
 	pkgrel = 1
 	url = https://developer.huawei.com/consumer/cn/download/
 	arch = x86_64
