@@ -1,5 +1,5 @@
 pkgname=jdk21-zulu-fx-bin
-pkgver=21.54.109
+pkgver=21.54.201
 pkgrel=1
 pkgdesc='Azul Zulu JDK 21 with JavaFX'
 arch=(
@@ -11,10 +11,10 @@ license=('custom')
 
 _jvm='java-21-zulu-fx'
 _javaver=21
-_zuluver=21.54.109
-_jdkver=21.0.13.0.3
-_sha256_x86_64='8f5168f564c67cef3c4c371e6eb26f480799565659999da9aa3c142f9604e7ac'
-_sha256_aarch64='47d96a157a09ed9bb0d306ffc4b63ef90ee556a542df3f5318ca330b14f171a4'
+_zuluver=21.54.201
+_jdkver=21.0.13.1
+_sha256_x86_64='0666c4f91f6bf39f25e8b3ef784f2905a3cb6c1a6a9411d668e589077317ebb5'
+_sha256_aarch64='818b76430c376983a12892974aeb7ed8143d3eee9c70d5589dcab04088864202'
 
 depends=(
     'java-runtime-common'
