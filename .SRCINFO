@@ -1,0 +1,21 @@
+pkgbase = hustle-tracker-bin
+	pkgdesc = A privacy-first TUI to track what apps you use and how long you spend on them
+	pkgver = 0.4.20
+	pkgrel = 1
+	url = https://github.com/adolfousier/hustle-tracker
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libx11
+	depends = libxcb
+	depends = libxtst
+	provides = hustle-tracker
+	conflicts = hustle-tracker
+	options = !debug
+	source = hustle-tracker-bin-0.4.20-LICENSE::https://raw.githubusercontent.com/adolfousier/hustle-tracker/v0.4.20/LICENSE
+	sha256sums = d5737e8e3680c0f1a72cf8bdd7faad19ef8cfd6192a0897622965cc941b4a202
+	source_x86_64 = hustle-tracker-bin-0.4.20-x86_64::https://github.com/adolfousier/hustle-tracker/releases/download/v0.4.20/hustle_tracker-linux-x86_64
+	sha256sums_x86_64 = 73283ec7735fda1c46d62a64d4bce2d57b71e3e3d8316e82ca0f772eaa475384
+
+pkgname = hustle-tracker-bin
