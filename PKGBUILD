@@ -1,7 +1,7 @@
 # Maintainer: nahdd123 <nahdd123@gmail.com>
 pkgname=ieumoffice-bin
 _name=IeumOffice
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc='IeumOffice - desktop office suite for DOCX/XLSX/PPTX/PDF/HWP/Markdown (prebuilt binary)'
 arch=('x86_64')
@@ -13,10 +13,10 @@ depends=('gtk3' 'nss' 'libxss' 'libnotify' 'alsa-lib' 'libxtst'
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 options=('!strip' '!debug')
-source=("https://github.com/pblsketch/openoffice/releases/download/v0.13.0/ieumoffice-0.13.0.x86_64.rpm"
-        "https://raw.githubusercontent.com/pblsketch/openoffice/v0.13.0/LICENSE"
+source=("https://github.com/pblsketch/openoffice/releases/download/v0.13.1/ieumoffice-0.13.1.x86_64.rpm"
+        "https://raw.githubusercontent.com/pblsketch/openoffice/v0.13.1/LICENSE"
 )
-sha512sums=('ed59caa6098a8d254aa07bd866212cb2f8ea195cd8af2527c594637c94c45be84f6aff0ea2a0e2d45050485be3fd81473173e58020c2b0e1b66a1ab60c4507d5'
+sha512sums=('6748c1a1b686541d4a1b68adb448caaa31213a2901bfd813714f3cab0f56b7e666b3b840f2cee01b2149a1046ec84185168b3a6919062e974b2768b5f39a899b'
             'e351f5ca50c8c31fb7c97043090d20afe7a3a1d725123f3e811236b7a83b1e7f2443ebf58e2cbd229e2b8d5a9ebc8c04c7c06bdacb8fa88973b9aaf1696e8811'
 )
 
