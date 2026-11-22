@@ -1,0 +1,16 @@
+pkgbase = seqsizzle-bin
+	pkgdesc = A terminal pager for viewing and searching FASTA and FASTQ DNA sequence files
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/ChangqingW/SeqSizzle
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	provides = seqsizzle
+	conflicts = seqsizzle
+	options = !debug
+	source = seqsizzle-bin-0.5.0-LICENSE::https://raw.githubusercontent.com/ChangqingW/SeqSizzle/v0.5.0/LICENSE.md
+	sha256sums = 8d56b405468aad11f87ab5763f901e276e08d9646ff5c8481b1762b6b789e9ed
+	source_x86_64 = seqsizzle-bin-0.5.0-x86_64.tar.gz::https://github.com/ChangqingW/SeqSizzle/releases/download/v0.5.0/seqsizzle-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 5f482297f5bc9c99b6df47c978139086072d8b1391748eeb0b78a96cd0c3701d
+
+pkgname = seqsizzle-bin
