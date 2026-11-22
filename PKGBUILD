@@ -18,11 +18,11 @@ depends=(
   'python-gobject'
   'which'
 )
-makedepends=('meson')
-checkdepends=(
-  'appstream'
+makedepends=(
   'desktop-file-utils'
+  'meson'
 )
+checkdepends=('appstream')
 optdepends=(
   'dotool: Automatically paste emojis (Wayland)'
   'wl-clipboard: Backend for clipboard action (Wayland)'
