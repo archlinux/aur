@@ -2,7 +2,7 @@
 
 pkgname=caveman-bin
 _pkgname=caveman
-pkgver=4.1.0
+pkgver=4.2.0
 # Companion binary release the CLI pins (BINARY_RELEASE in the npm tarball).
 # Usually equals pkgver; when upstream diverges, prepare() fails: set it literally.
 _binver=$pkgver
@@ -45,27 +45,27 @@ source_aarch64=("caveman-proxy-$_binver-aarch64::$_rel/caveman-proxy_linux_arm64
     "caveman-shrink-$_binver-aarch64::$_rel/caveman-shrink_linux_arm64"
     "caveman-blocks-$_binver-aarch64::$_rel/caveman-blocks_linux_arm64")
 # Release binaries/notices: from upstream's signed checksums.txt (bin-v$_binver).
-sha256sums=('2019c87fd765183071bf383d765833aed804e320054e81ac0f3becb9f05a2b8c'
-            'c5daee04c83eddbc9fb8a7791ee9221397ec800b6bb414b4dc9f567b5feabb61'
+sha256sums=('010938f5f2b369360e248aabd62089e9a894a88d005ace29b24a82da9bbcc4cc'
+            '7a4a6d86714171105fa5509030c2085494aea368d59a1a527c7f994b3f129a06'
             'ac8b226fb6e5d7ca20804794bf3da9c5bad3030191c312a89d6c55c0c14e104f'
             'bb4dec62bfc539d7f7edf66d4fac1edfb84eeb705733f8f63611e0aa87171378'
             'f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af'
             '5c537d6853e005298a285d508cff9ac7192cea23576c840d485b2b586a7ff177'
             'f33fe8679d5b2abecc4f1313ce6c6bfa58262964de5f7bca146596a7318047af'
             '1e74cb82bf476843e97c2596297b04219b1a7e51f7238944a8c031cb9401fa87')
-sha256sums_x86_64=('393b4e9b58f52eddcf77a24d32fd98aa0be011f8cff77498cf7ef55d9901195c'
-                   '91813a148c82308973b854e888f4997d52918af9feb01571b06acc946386f20f'
-                   '23334424cf813117c497d49e1410d4b02f033db0a5f12ff8859e9bb62317f3cf'
-                   'ef11cb6d070a2217853330df19a842a2a94cb712bc2ae1a2fb1137e292e2653b'
-                   'ef3f72384536a65589badd15ba3f8b2f901c4d48af99eac80c4d1c7569729dd9'
-                   '079dff3478fba2aa91a558942e5e4a2ab4e5bfe317b530095615008ce62b9b73'
+sha256sums_x86_64=('15674af7d23e53a2caa994dfe02108b8cde81f901035b450f713bb7c5c1a6d9f'
+                   '8844668345b094ff46ee6037ab2e8453dfc97b979f3e9c3a9b520c509bdef860'
+                   '2579992faa94f2c68f91a5b544ad99faa77d87b1ca87b3e6bc634caa21fb8d73'
+                   '3c5eaf897fa01d35d54d56175cc1bebe817814571f6d3caeec796db10f37c607'
+                   '42a7782779b33bf05eb0be8c9389c4d507f349ae6d6ed4b63b0eed8016723d20'
+                   '84ab4f69a1a5a8a86af0d49eefda90e07ae8a425c16e11e88aafc01360dc9af5'
                    'edb917309d776e5b12aa009334049da1ca8ea4de33679490df284e6f7682a006')
-sha256sums_aarch64=('92ef7d4d1a1481642cb404d9fd7fa927f105bdaa8af04d1ccbcb95ce68230f64'
-                    'd77fed78f840bee9e9d97788ac67af2f5a4c6e0aef73ac1101b206da359d49b9'
-                    'd619fd13ed0da1178a84471eb19377254259901220a4e31afc66e032c7f6b72d'
-                    '8dd08345a565d4ba6a65d55a34aab30b8564c5f5124edaa989eea8884b9a248f'
-                    '12b4afdfa66493bf385894f381c82811e334a2ed8af2b92f5f511fe1c1c2dfa5'
-                    '22a30101f71a81de2f2174ac71722480778cc8415bb47e6a25fc579065d4e2b2'
+sha256sums_aarch64=('3124ef687136fdac8f622b1862cdc553e60f423cb6db51ca2f2655086c491c15'
+                    '2e1617562020863e8e77e0cbea85793d9d3827d74747526b1a076d6bfa1db849'
+                    'ac16e252c31b91224173ea57992fc8fc4fa1e4ab5cacc66727f423a8c069dafe'
+                    '677b9211fe93c92edb17a7efe3800cc6a47c720bb3ed77835a8e94a0d840e9a9'
+                    'be87b21c3a4750da5b6c69006af4b66efa6ee12d17eca89abc22756abdbda25c'
+                    '5795ca8dddbd35330b0bd66a75ba5692a22338d64841a719ce2bd5abd457d8c2'
                     '33b38b27e326fcee794c2dbba14883cd081e6e08c2dfd6ac9e0b491f7f4d292f')
 
 prepare() {
