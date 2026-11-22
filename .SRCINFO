@@ -6,6 +6,7 @@ pkgbase = aurynk
 	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
+	checkdepends = desktop-file-utils
 	makedepends = meson
 	depends = gtk4
 	depends = libadwaita

@@ -20,7 +20,10 @@ depends=(
   'xdg-utils'
 )
 makedepends=('meson')
-checkdepends=('appstream-glib')
+checkdepends=(
+  'appstream-glib'
+  'desktop-file-utils'
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/IshuSinghSE/aurynk/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('9ffb00871539bd9b81a667b30e10be3834dc9121abc54235243915138ef0a6a4')
 
