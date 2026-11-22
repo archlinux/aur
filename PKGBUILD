@@ -16,13 +16,12 @@
 # does not have to be edited for every upstream release.
 pkgname=deveco-commandline-tools
 pkgver=7.0.0.123
-pkgrel=1
+pkgrel=4
 pkgdesc='HUAWEI Command Line Tools for HarmonyOS: hvigorw, ohpm, hstack, codelinter, SDK tools'
 arch=('x86_64')
 url='https://developer.huawei.com/consumer/cn/download/'
 license=('LicenseRef-Huawei-EULA')
 depends=('glibc' 'java-runtime' 'nodejs')
-optdepends=('deveco-cli: CLI front-end that consumes these tools via DEVECO_CLI_CLT_PATH')
 options=('!strip')
 source=()
 sha256sums=()
