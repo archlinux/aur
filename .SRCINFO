@@ -1,0 +1,16 @@
+pkgbase = vib-tui
+	pkgdesc = A terminal file browser with LocalSend built in
+	pkgver = 0.1.0beta.1
+	pkgrel = 1
+	url = https://github.com/ayanchavand/vib
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = vib-tui-0.1.0beta.1.tar.gz::https://github.com/ayanchavand/vib/archive/refs/tags/v0.1.0-beta.1.tar.gz
+	sha256sums = fd6359e98585988054161b987f80aef76a8219e70f6a0787c8afe9f837590d21
+
+pkgname = vib-tui
