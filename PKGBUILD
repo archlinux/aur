@@ -2,7 +2,7 @@
 # Maintainer: bnema <b at bnema dot dev>
 
 pkgname='neferwl-bin'
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='A Wayland compositor that spends its frames on your apps, not on itself'
 url='https://git.bnema.dev/neferwl'
@@ -15,10 +15,10 @@ optdepends=('xorg-xwayland: X11 apps (built-in window manager)' 'foot: default t
 install=neferwl.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://git.bnema.dev/neferwl/releases/download/v${pkgver}/neferwl_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('0e406f3529afc53c44627578973e7615448e5b26cf846d8a2a085c6e657f0b43')
+sha256sums_aarch64=('d2e0c490511080049a0f515049cfec1ff28c31208e938644983e83d802013399')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://git.bnema.dev/neferwl/releases/download/v${pkgver}/neferwl_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('0788b9332d5f9148dd2e745f461abebbd01d26416ad4a70236c197003f88649b')
+sha256sums_x86_64=('cd13e9b4a61cbfb0aeddeb1db5c8d4a6a44f1244fab689ebb1890f64fdcf1e77')
 
 package() {
   install -Dm755 ./neferwl "${pkgdir}/usr/bin/neferwl"
