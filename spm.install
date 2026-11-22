@@ -1,14 +1,12 @@
 post_install() {
-    echo "==> Enabling SPM update cache timer..."
-    systemctl enable --now spm_updates.timer 2>/dev/null || true
-    
     echo
     echo "==> SPM installed successfully!"
     echo
     echo "Run 'spm' to start the interactive menu"
     echo "Run 'spm --help' for command-line options"
     echo
-    echo "Timer status: systemctl status spm_updates.timer"
+    echo "==> Optional: enable the background update-cache timer:"
+    echo "    systemctl enable --now spm_updates.timer"
 }
 
 post_upgrade() {
@@ -24,4 +22,8 @@ post_upgrade() {
 pre_remove() {
     systemctl disable --now spm_updates.timer 2>/dev/null || true
     echo "==> SPM timer disabled"
+}
+
+post_remove() {
+    rm -rf /var/lib/spm
 }
