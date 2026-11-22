@@ -1,0 +1,16 @@
+pkgbase = wrtag
+	pkgdesc = Fast automated music tagging and organisation based on MusicBrainz
+	pkgver = 0.34.0
+	pkgrel = 1
+	url = https://github.com/sentriz/wrtag
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go
+	depends = glibc
+	optdepends = rsgain: ReplayGain addon support
+	options = !lto
+	source = wrtag-0.34.0.tar.gz::https://github.com/sentriz/wrtag/archive/refs/tags/v0.34.0.tar.gz
+	sha256sums = d364156026160473b6280321911fc41810203bbca4905e7d135a9c7dbba71562
+
+pkgname = wrtag
