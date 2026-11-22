@@ -1,6 +1,6 @@
 pkgbase = wayscrollshot-bin
 	pkgdesc = A scrolling screenshot tool for Wayland
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/jswysnemc/wayscrollshot
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = wayscrollshot-bin
 	depends = slurp
 	optdepends = wl-clipboard: copy screenshots to the Wayland clipboard
 	optdepends = xclip: X11 clipboard fallback
-	provides = wayscrollshot=0.1.9
+	provides = wayscrollshot=0.1.10
 	conflicts = wayscrollshot
 	conflicts = wayscrollshot-git
-	source = wayscrollshot-bin-0.1.9.tar.gz::https://github.com/jswysnemc/wayscrollshot/releases/download/v0.1.9/wayscrollshot-archlinux-x86_64.tar.gz
-	sha256sums = 719b0a734da9ecb87fe15f469886cd5e617fb8a6dc3f6d38c73bfd1ac8233480
+	source = wayscrollshot-bin-0.1.10.tar.gz::https://github.com/jswysnemc/wayscrollshot/releases/download/v0.1.10/wayscrollshot-archlinux-x86_64.tar.gz
+	sha256sums = 67c40a3964dc97c215712d721049907f9bb537cb3212bbeb9ee7f10178f59416
 
 pkgname = wayscrollshot-bin
