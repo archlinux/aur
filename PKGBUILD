@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=codanna
-pkgver=0.17.1 # renovate: datasource=github-tags depName=bartolli/codanna
+pkgver=0.18.0 # renovate: datasource=github-tags depName=bartolli/codanna
 pkgrel=1
 pkgdesc="X-ray vision for your agent - Code assistant with understanding of functions, relationships, and implementations"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('openssl')
 makedepends=('rust' 'cargo' 'pkg-config')
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ea3cbe407e92395f670f990bd4be875685791e768a65eba1895dfd41f35b28b2')
+sha256sums=('0a98241d0abea775eadb8849a9d9fc3b25408c3f93c585b5d6973cdd250270d8')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
