@@ -1,7 +1,7 @@
 # Maintainer: Edmundo Sanchez <zomundo at gmail dot com>
 pkgname=colibri-bin
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='Tiny local inference engine for large MoE models (prebuilt)'
 arch=('x86_64')
 url='https://github.com/JustVugg/colibri'
@@ -20,8 +20,8 @@ source=(
     # Release tarball ships an empty web/dist, so build the `coli web` dashboard from source
     "colibri-src-${pkgver}.tar.gz::https://github.com/JustVugg/colibri/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('d54b4c57c12417fc9e784b649249ac1aa3480eec44ece2777d4cbc639a25e66a'
-            '040077036d6c6183e99281e1a7304d195e60b6b0984c7deb53f027819d2a5bc4')
+sha256sums=('b1e2bc8a650b2b216e17357614cfcb4355a83fb9d3077d61f8e1d63beea14d72'
+            '8b4f2fa5b6433b72d8a12c1b169c4437d3cb0d8301d11f1abf9456e85b9df65a')
 
 build() {
     cd "${srcdir}/colibri-${pkgver}/web"

@@ -1,7 +1,7 @@
 pkgbase = colibri-bin
 	pkgdesc = Tiny local inference engine for large MoE models (prebuilt)
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/JustVugg/colibri
 	arch = x86_64
 	license = Apache-2.0
@@ -13,9 +13,9 @@ pkgbase = colibri-bin
 	optdepends = python-huggingface-hub: model download helpers for convert
 	provides = colibri
 	conflicts = colibri
-	source = https://github.com/JustVugg/colibri/releases/download/v2.1.0/colibri-v2.1.0-linux-x86_64.tar.gz
-	source = colibri-src-2.1.0.tar.gz::https://github.com/JustVugg/colibri/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = d54b4c57c12417fc9e784b649249ac1aa3480eec44ece2777d4cbc639a25e66a
-	sha256sums = 040077036d6c6183e99281e1a7304d195e60b6b0984c7deb53f027819d2a5bc4
+	source = https://github.com/JustVugg/colibri/releases/download/v2.2.0/colibri-v2.2.0-linux-x86_64.tar.gz
+	source = colibri-src-2.2.0.tar.gz::https://github.com/JustVugg/colibri/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = b1e2bc8a650b2b216e17357614cfcb4355a83fb9d3077d61f8e1d63beea14d72
+	sha256sums = 8b4f2fa5b6433b72d8a12c1b169c4437d3cb0d8301d11f1abf9456e85b9df65a
 
 pkgname = colibri-bin
