@@ -1,6 +1,6 @@
 # Maintainer: KafCoppelia <k740677208@gmail.com>
 pkgname=easycli-git
-pkgver=0.3.107
+pkgver=0.3.119
 pkgrel=1
 pkgdesc="A desktop GUI from CLIProxyAPI"
 arch=('x86_64')
@@ -10,13 +10,13 @@ depends=('bash' 'coreutils' 'glibc' 'libgcc' 'gtk3' 'glib2' 'gdk-pixbuf2' 'cairo
 conflicts=('easycli')
 provides=('easycli')
 options=('!debug')
-_commit=84891391683b40c6450bc8aec78f180377510ae8
+_commit=ad2d33f9570a9de4b73d9ab2572c9c514edccb2d
 source=("${url}/releases/download/v${pkgver}/EasyCLIProxyAPI-v${pkgver}-Linux-amd64.tar.gz"
         "EasyCLIProxyAPI-${pkgver}-LICENSE::https://raw.githubusercontent.com/router-for-me/EasyCLIProxyAPI/${_commit}/LICENSE"
         "EasyCLIProxyAPI-${pkgver}-icon.png::https://raw.githubusercontent.com/router-for-me/EasyCLIProxyAPI/${_commit}/src-tauri/icons/128x128.png"
         'easycli.sh'
         'EasyCLI.desktop')
-sha256sums=('0a1e5a47ee30e9cd28db4906deea8787dc92a641b13c47222c81ea9c8c7d4ecf'
+sha256sums=('025a3e76bfb53a0d5cb032bfa6cd1c7d95ff4116240747dac0f93435bb0fd796'
             '6bd5d3c4fb6a34c0b83e91acd53a52fb8fd1ae9e19ba55b23788ec1dc52dbac7'
             '978f2987b1098a662a0fb969a1710ae3577093f381833e85a96c853172565e9b'
             'eeae736e07d9e680f2f1bc5eebcc03dfd638d8a7836f17ab6e772cbc649c9571'
