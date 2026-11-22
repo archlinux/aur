@@ -1,0 +1,16 @@
+pkgbase = nano-lean
+	pkgdesc = Small parallel Lean 4 type checker based on unbound de Bruijn indices
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/sdiehl/nano-lean
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = nano-lean-0.4.2.tar.gz::https://github.com/sdiehl/nano-lean/archive/refs/tags/v0.4.2.tar.gz
+	b2sums = 687b8f9197c014913b21488401f8aee798f59ef1ed662bd7ccade8599346bb555508455be0fbc90d5707bfc5b958b7f50e9544be686fe90b9ed0082cd4c6856c
+
+pkgname = nano-lean
