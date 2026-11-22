@@ -1,0 +1,18 @@
+pkgbase = tomatui-bin
+	pkgdesc = A terminal Pomodoro timer with a one-line mode, a full-screen display, and local focus statistics
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/Hiro-Chiba/tomatui
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = tomatui
+	conflicts = tomatui
+	options = !debug
+	source = tomatui-bin-0.2.2-LICENSE::https://raw.githubusercontent.com/Hiro-Chiba/tomatui/v0.2.2/LICENSE
+	sha256sums = 0a40b4c2cd3ffb7a03c37af716fe0caa6ddfe62ac07f3005f9c4443906ceb40c
+	source_x86_64 = tomatui-bin-0.2.2-x86_64.tar.gz::https://github.com/Hiro-Chiba/tomatui/releases/download/v0.2.2/tomatui-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = af750c9c41dfba8efca78fe65af347d139662203209a2b34d43f351b0ccd3c08
+
+pkgname = tomatui-bin
