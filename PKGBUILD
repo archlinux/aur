@@ -3,10 +3,10 @@
 pkgname=python-unsloth-zoo
 _pkgname=unsloth_zoo
 _archive=unsloth-zoo
-pkgver=2026.11.8
+pkgver=2026.11.9
 # Upstream does not tag releases. This is the version-bump commit immediately
 # preceding the PyPI upload.
-_commit=d67ccdf457e18bd752c4602feeb6497185db5a4c
+_commit=d388203918ab6a1071cfa2b70a0664b94f2d4127
 # Match the Unsloth 2026.11.8 source release used as the staged test companion.
 _unsloth_commit=8fe1882def85bdae35bf5e88b2caee8b11c45fac
 _source="${_archive}-${_commit}"
@@ -41,7 +41,7 @@ depends=(
     'python-peft>=0.18.0'
     'python-peft<1'
     'python-trl>=0.18.2'
-    'python-trl<=1.15.0'
+    'python-trl<=1.18.2'
     'python-huggingface-hub>=0.34'
     # Arch's package has epoch 1; retain compatibility with its current 2.x line.
     'python-huggingface-hub<1:3'
@@ -84,7 +84,7 @@ source=(
     'preserve-installed-triton.patch'
     'arch-torchvision-pair.patch'
 )
-sha256sums=('d0bd87b7b08c68c4384132ccf0d9090fc43b3d8fe5cffc2448ae348a8b5e112a'
+sha256sums=('fb9741cd40509ea0f215485ce6164c135fba2dbc981010c5d118e8eb5df60eb4'
             '74112d668b1c966a55c0f33763766daaeaafaf8b4350e277aa989ff1d98fabbd'
             '9cf5a611d5e2490dbd7e77726c8c4115202b675221392676682b8d25388eda69'
             '6f76ab18ae09ee637f89058bedafcf3c031f31e289922e78e23d83af9c3b4fba')
