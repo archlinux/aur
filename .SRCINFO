@@ -1,0 +1,19 @@
+pkgbase = xfce4-net-visual
+	pkgdesc = Futuristic Xfce panel network monitor with a rotating wire-mesh globe and traffic chart
+	pkgver = 0.1.0
+	pkgrel = 9
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	depends = xfce4-panel
+	depends = libxfce4ui
+	depends = libxfce4util
+	depends = gtk3
+	depends = libsoup3
+	depends = json-glib
+	depends = libmaxminddb
+	depends = iputils
+
+pkgname = xfce4-net-visual
