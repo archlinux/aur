@@ -16,7 +16,7 @@ pkgbase = druglord2
 	options = !debug
 	source = druglord2-port.tar.gz::https://github.com/burecar/druglord2-linux/releases/download/v1.0/druglord2-port.tar.gz
 	source = druglord2.exe::http://www.geekhideout.com/downloads/druglord2.exe
-	sha256sums = 7d0062e80a06529cbdee804a683094cd5b0c14a40ab97903cc061314a4705d18
+	sha256sums = 62968e7dcdafd0775e4d2f029ee84953fc286e1f1da5d26ed1976a19710b40cb
 	sha256sums = 187515f94d434567c58ecee5ced5c909c3fa6a0cb5054f81987ddb04be5aa5fb
 
 pkgname = druglord2
