@@ -9,7 +9,7 @@
 
 pkgname='corsix-th'
 _pkgname='CorsixTH'
-pkgver=0.70.2
+pkgver=0.70.3
 pkgrel=1
 pkgdesc='Reimplementation of the game engine of Theme Hospital'
 url='https://corsixth.com/'
@@ -45,7 +45,7 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CorsixTH/CorsixTH/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('bba0218e903294f41691529411e680549f549a887a4707df01b10e031e1fc2dc03806fe191d8ba0ddb2ed817aa1c565ad246d0ebd80c363e0b930041f5b445f4')
+b2sums=('f3e4576fa26ba546c9a99705ae6ca05f5ad9f9f364f66cf30261a4f5cbf367008d717cd15f305e585fa8f6ba5c101bd18bbbcd7f0a6cf63e22265a60f12e854a')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
