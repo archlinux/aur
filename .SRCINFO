@@ -1,0 +1,16 @@
+pkgbase = deadline
+	pkgdesc = A haunted late-90s BBS text adventure for your terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pinkpixel-dev/deadline
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = deadline-1.0.0.tar.gz::https://github.com/pinkpixel-dev/deadline/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 979d0a2f9c01d2615bac32fc8852e19be87ce1f360b6d1c261b553b50da0f631
+
+pkgname = deadline
