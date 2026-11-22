@@ -1,0 +1,20 @@
+pkgbase = peep-tui-bin
+	pkgdesc = Terminal file explorer with media, Markdown and Mermaid previews
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/lancekrogers/peep
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = ffmpeg
+	depends = mpv
+	conflicts = peep
+	conflicts = peep-bin
+	conflicts = peep-tui
+	options = !strip
+	source_x86_64 = https://github.com/lancekrogers/peep/releases/download/v0.2.0/peep_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0e4723197213c616637860f0ba2eb739bad6ddf6e0a62c7ea327269cf2518408
+	source_aarch64 = https://github.com/lancekrogers/peep/releases/download/v0.2.0/peep_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 001c9f19675a533b3074aa9b1dfae297a05417069f43126fa47390265ed7d7ba
+
+pkgname = peep-tui-bin
