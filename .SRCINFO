@@ -1,0 +1,16 @@
+pkgbase = traxor
+	pkgdesc = A TUI for managing Transmission torrents
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/kristoferssolo/traxor
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = traxor-0.2.0.tar.gz::https://github.com/kristoferssolo/traxor/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 94369b5a67b4da9e5e972f62d239476a55c5d06e764a9a6ecd77099d89374223
+
+pkgname = traxor
