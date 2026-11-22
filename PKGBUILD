@@ -2,7 +2,8 @@
 
 pkgname=fcitx5-wetypex
 pkgver=3.0.1.684
-pkgrel=9
+pkgrel=10
+_source_revision=${pkgrel%%.*}
 pkgdesc="Native Linux compatibility layer for WeType on Fcitx5"
 arch=('x86_64' 'aarch64')
 url="https://github.com/panxuc/fcitx5-wetypex"
@@ -14,9 +15,6 @@ depends=(
     'libime>=1.1.15'
     'libc++'
     'json-c'
-    'curl'
-    'libssl.so'
-    'libcrypto.so'
     'bubblewrap'
     'util-linux'
     'python'
@@ -35,45 +33,52 @@ depends=(
     'polkit'
 )
 
-makedepends=('rust' 'cmake' 'clang' 'git' 'boost' 'openssl')
+makedepends=('rust' 'cmake' 'clang' 'git' 'boost')
 optdepends=('fcitx5-configtool: manage input methods'
             'zenity: update installation dialog when notification actions are unavailable'
             'kdialog: KDE update installation dialog when notification actions are unavailable'
             'qemu-user: original-engine compatibility for CPUs missing required instructions')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}-${pkgrel}/${pkgname}-${pkgver}.tar.gz"
-    'https://curl.se/download/curl-8.22.0.tar.xz'
+    "${pkgname}-${pkgver}-${_source_revision}.tar.gz::${url}/releases/download/v${pkgver}-${_source_revision}/${pkgname}-${pkgver}.tar.gz"
     'libkqueue::git+https://github.com/mheily/libkqueue.git#commit=46a3e130f88b0b0742575dcb01d77e336538024b'
 )
-sha256sums=("3cc40e7e8f1b005b7079ef29279b4378fe3c720c7d639c7f73348da3583e2205" "f7ef3ae8a22e521f289803fe93543eb64c329b58aa73a9e224dfd915a2a5f4f7" "SKIP") # first checksum is filled by the release workflow
+sha256sums=("916531a272a4c56bb45395cae235c45625a447934d1785ab5345940f76577433" "SKIP") # first checksum is filled by the release workflow
 install=fcitx5-wetypex.install
 
 
+depends_x86_64=('curl>=8.9' 'libcurl.so')
+depends_aarch64=('curl' 'libssl.so' 'libcrypto.so')
+makedepends_aarch64=('openssl')
+
 source_aarch64=(
+  'https://curl.se/download/curl-8.22.0.tar.xz'
   'https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/libcxx-18.1.8.src.tar.xz'
   'https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/libcxxabi-18.1.8.src.tar.xz'
   'https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/cmake-18.1.8.src.tar.xz'
   'https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/runtimes-18.1.8.src.tar.xz'
 )
-sha256sums_aarch64=('bdecf90be0072bc720fd5c9c8ab061cdb197edd0c8ad3e170dc3e6bfaa49f388'
+sha256sums_aarch64=('f7ef3ae8a22e521f289803fe93543eb64c329b58aa73a9e224dfd915a2a5f4f7'
+  'bdecf90be0072bc720fd5c9c8ab061cdb197edd0c8ad3e170dc3e6bfaa49f388'
   '256c30d724eeb72713bc08ae1692f53aaf4ebe8a1d662c92bf59e69d6c53dce9'
   '59badef592dd34893cd319d42b323aaa990b452d05c7180ff20f23ab1b41e837'
   '9997c2e91e5438e2963306ba5019d85b5384b467535632738d8670ced8f07cb3')
 
 build() {
-  local arm_args=()
-  if [[ "$CARCH" == aarch64 ]]; then
-    arm_args=(-DFETCHCONTENT_SOURCE_DIR_WETYPEX_LIBCXX="${srcdir}/libcxx-18.1.8.src"
-      -DFETCHCONTENT_SOURCE_DIR_WETYPEX_LIBCXXABI="${srcdir}/libcxxabi-18.1.8.src"
-      -DFETCHCONTENT_SOURCE_DIR_WETYPEX_CMAKE="${srcdir}/cmake-18.1.8.src"
-      -DFETCHCONTENT_SOURCE_DIR_WETYPEX_RUNTIMES="${srcdir}/runtimes-18.1.8.src")
-  fi
+    local transport_args=(-DWETYPE_BUNDLED_CURL=OFF)
+    if [[ "$CARCH" == aarch64 ]]; then
+        transport_args=(-DWETYPE_BUNDLED_CURL=ON
+            -DFETCHCONTENT_SOURCE_DIR_WETYPEX_CURL="${srcdir}/curl-8.22.0"
+            -DFETCHCONTENT_SOURCE_DIR_WETYPEX_LIBCXX="${srcdir}/libcxx-18.1.8.src"
+            -DFETCHCONTENT_SOURCE_DIR_WETYPEX_LIBCXXABI="${srcdir}/libcxxabi-18.1.8.src"
+            -DFETCHCONTENT_SOURCE_DIR_WETYPEX_CMAKE="${srcdir}/cmake-18.1.8.src"
+            -DFETCHCONTENT_SOURCE_DIR_WETYPEX_RUNTIMES="${srcdir}/runtimes-18.1.8.src")
+    fi
     cmake -S "${srcdir}/${pkgname}-${pkgver}" -B "${srcdir}/build" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib -DWETYPE_LAYER_SHELL=ON \
         -DFETCHCONTENT_SOURCE_DIR_KQUEUE="${srcdir}/libkqueue" \
-        -DFETCHCONTENT_SOURCE_DIR_WETYPEX_CURL="${srcdir}/curl-8.22.0" "${arm_args[@]}"
+        "${transport_args[@]}"
     cmake --build "${srcdir}/build" --parallel
 }
 
