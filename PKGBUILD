@@ -1,10 +1,8 @@
 # Maintainer: screwy <screwygit@proton.me>
 # Maintainer: Seppia <$(base64 -d <<< 'YXJjaGxpbnV4QHNlcHBpYS5uZXQK')>
-# shellcheck shell=bash disable=SC2034
 
-_reponame="Rufin"
 pkgname=rufin
-pkgver=0.17.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc='Native music player for Jellyfin, Navidrome/OpenSubsonic, Plex, and Emby servers;  local folders,  WebDAV including a direct Nextcloud browser login path, Samba and NAS shares.'
 arch=('x86_64' 'aarch64')
@@ -35,18 +33,18 @@ makedepends=(
 )
 provides=('rufin')
 options=('!lto')
-source=("https://github.com/screwys/${_reponame}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4326f8555cdd0109f47400be2825dfe5a7d5fd9c75be70e7b551bac80c67a5d0')
+source=("https://github.com/${pkgname}-app/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('3d1c6a318ffde67f347d793701fc20650400b1c717d171d50f40cc81f333745c')
 
 prepare() {
-  cd ${_reponame}-${pkgver}
+  cd ${pkgname}-${pkgver}
 
   export CARGO_TARGET_DIR=target
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')"
 }
 
 build() {
-  cd ${_reponame}-${pkgver}
+  cd ${pkgname}-${pkgver}
 
   export CARGO_TARGET_DIR=target
   cmake \
@@ -61,7 +59,7 @@ build() {
 }
 
 package() {
-  cd ${_reponame}-${pkgver}
+  cd ${pkgname}-${pkgver}
 
   DESTDIR="$pkgdir" cmake --install build-cmake
 }
