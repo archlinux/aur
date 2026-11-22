@@ -7,7 +7,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A simple and easy to use api testing tools aims to help developers to test their api endpoints. It support http and grpc protocols."
 
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=(!strip)
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-linux-${_gitversion}-${_barch[0]}.tar.xz")
-sha256sums=('7fa7f56922fb56cebf27c4457199ab722748bff134c46cd9f329c788a2d817d6')
-sha256sums_x86_64=('f413ecaacc303e3c0b224bce4732567fe0803e628f4e39f4fb8551b6a42ff336')
+sha256sums=('c766b818f57a400891f6f4d3f63b591264e16a551c74d7f0cedb843ed1ebf5c1')
+sha256sums_x86_64=('f64a1832f744ba240aba54c3c7310f927757d84f2c2b55587e11ffede39e545f')
 
 
 prepare() {
