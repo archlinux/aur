@@ -1,6 +1,6 @@
 pkgbase = typst-ide
 	pkgdesc = A modern IDE for Typst
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/gnoooo/typst-ide
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = typst-ide
 	depends = pango
 	depends = webkit2gtk-4.1
 	options = !strip
-	source = https://github.com/gnoooo/typst-ide/archive/v1.8.0.tar.gz
+	source = https://github.com/gnoooo/typst-ide/archive/v1.8.1.tar.gz
 	source = typst-ide.desktop
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 2d40553ff2a1bbef42d7702b5638e4cae0b6be93470a19bbcbfb2a5119d5e55f
+	sha256sums = 1d5284711e5c6fb212093845eb3c74c17ac0221f4f4d0025c9b14633646b3f84
 
 pkgname = typst-ide

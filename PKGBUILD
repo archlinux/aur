@@ -1,7 +1,7 @@
 # Maintainer: gnoooo
 
 pkgname=typst-ide
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="A modern IDE for Typst"
 arch=('x86_64')
@@ -31,7 +31,10 @@ options=('!strip')
 
 source=("${url}/archive/v${pkgver}.tar.gz" "typst-ide.desktop")
 
-sha256sums=('SKIP' 'SKIP')
+# Verify against the SHA256SUMS published with the GitHub release.
+# The tarball sum must be recomputed after each new tag.
+sha256sums=('2d40553ff2a1bbef42d7702b5638e4cae0b6be93470a19bbcbfb2a5119d5e55f'
+            '1d5284711e5c6fb212093845eb3c74c17ac0221f4f4d0025c9b14633646b3f84')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -46,7 +49,9 @@ build() {
   export CFLAGS="${CFLAGS/-flto=auto}"
   export RUSTFLAGS="${RUSTFLAGS:-} -C linker=cc -C link-arg=-Wl,--no-as-needed -C link-arg=-fuse-ld=lld"
 
-  cargo build --release -p typst-ide-app
+  # --locked honore le Cargo.lock audite, une crate transitive
+  # neuve ne doit pas se compiler sans verification.
+  cargo build --release --locked -p typst-ide-app
 }
 
 package() {
