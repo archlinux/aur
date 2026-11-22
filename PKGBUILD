@@ -2,7 +2,7 @@
 
 pkgname='python-graphemeu'
 _module='grapheme'
-pkgver='0.10.0'
+pkgver='0.11.0'
 pkgrel=1
 pkgdesc="Unicode grapheme helpers (updated fork of python-grapheme)"
 url="https://github.com/timendum/grapheme"
@@ -14,7 +14,7 @@ conflicts=('python-grapheme')
 license=('MIT')
 arch=('any')
 source=("${_module}-${pkgver}.tar.gz::https://github.com/timendum/${_module}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('89fe9c2fb80210addeab7ea4db0a6270fc6d4d2c4387a95ed3fb89a1c317674a')
+sha256sums=('cd00c9d3abb8a691ddcc07d024ab420e572600f853c85e98bf42645b2c77ee56')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
