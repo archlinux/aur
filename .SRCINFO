@@ -1,0 +1,19 @@
+pkgbase = aven-bin
+	pkgdesc = A local-first task manager for power users and agents, with a keyboard-driven TUI
+	pkgver = 0.1.56
+	pkgrel = 1
+	url = https://github.com/raine/aven
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = aven
+	conflicts = aven
+	options = !debug
+	source = aven-bin-0.1.56-LICENSE::https://raw.githubusercontent.com/raine/aven/v0.1.56/LICENSE
+	sha256sums = dfc0be306ac621b63914bf0f4854538a2e0a8d09ad24f20e7edd9a80ece241b2
+	source_x86_64 = aven-bin-0.1.56-x86_64.tar.gz::https://github.com/raine/aven/releases/download/v0.1.56/aven-linux-amd64.tar.gz
+	sha256sums_x86_64 = ec3a8066aaa2e014bc40bd30973b9f7a8603b262efa33690f407ded00238cbb1
+	source_aarch64 = aven-bin-0.1.56-aarch64.tar.gz::https://github.com/raine/aven/releases/download/v0.1.56/aven-linux-arm64.tar.gz
+	sha256sums_aarch64 = f8e36e9ef62642fa62f5a1999acafcd4bb15a11686995f23ea2b518a17f4057f
+
+pkgname = aven-bin
