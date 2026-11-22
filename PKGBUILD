@@ -1,5 +1,5 @@
 # Build from this source tree:  cd packaging/arch && makepkg -si
-pkgname=xfce4-net-visual
+pkgname=xfce4-net-visualizer-plugin
 pkgver=0.1.0
 pkgrel=9
 pkgdesc="Futuristic Xfce panel network monitor with a rotating wire-mesh globe and traffic chart"
