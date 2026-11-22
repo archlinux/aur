@@ -9,7 +9,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Terminal file manager"
 
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,10 +31,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}")
-sha256sums=('8b24512cec1691926cc3517a4302e1eff29c6e8f947789d71a6a481b566a508f'
+sha256sums=('ee7c54bf4d5828e89ac823f899aa5d44af6963703fe370d21bcfe39c1d2c542c'
             'd63a8c4f17dde022f8d1f96a4b2c744821f65bcae926b4de4ee77230a70cdee4')
-sha256sums_x86_64=('7c3b6e28fd0eee20170a07be5ceae001e466d8948b32feb005c447f4cf7c3c21')
-sha256sums_aarch64=('42664c11d54d1e7f7ca5131c34197de120f03d535238d6cadbe03bba8303ebc8')
+sha256sums_x86_64=('00d2555d0cc3d5cee71f89724f57150e3ebc4ed1c38fa9da78023e76744dbd3b')
+sha256sums_aarch64=('3cb402abb7a281dda2933739afc8d4c7289097f75a162a5f246a61470acb1f0e')
 
 
 package() {
