@@ -3,7 +3,7 @@
 pkgname=pideck-bin
 _appname=PiDeck
 _binname=pideck
-pkgver=0.13.0
+pkgver=0.13.2
 pkgrel=1
 pkgdesc='Desktop workbench for managing local AI coding agent sessions (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -58,8 +58,8 @@ noextract=(
   "${_appname}_${pkgver}_arm64.deb"
 )
 sha256sums=('032c3da0b36939e15b0ba21974baeecf2d0afbdf410a66bd76c2ba28e5baccab')
-sha256sums_x86_64=('7bbd19879dd929a24204ddb26c05f5282aa64d3c377ca2451dfff3d9746ebeaa')
-sha256sums_aarch64=('1fdfd9d5beaef5cbd3f66808d1468b60db5e79728c0885bc87410484c07c99f9')
+sha256sums_x86_64=('a6899b5778e08d642b95136420e5d4d42c52cff56944b720621ea8d6660db5aa')
+sha256sums_aarch64=('e3f9ef73d09977bcc117a4f49d697111e56e20d4d88b8a21fc3791d332b35720')
 
 package() {
   local deb_arch
