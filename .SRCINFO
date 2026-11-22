@@ -1,0 +1,21 @@
+pkgbase = dsnitch-bin
+	pkgdesc = Real-time network and DNS egress inspector TUI for Docker containers powered by eBPF
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/infomaniac777/dsnitch
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = libgcc
+	provides = dsnitch
+	conflicts = dsnitch
+	options = !debug
+	source = dsnitch-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/infomaniac777/dsnitch/v0.1.0/LICENSE
+	sha256sums = f891e12d75c1d914547a88ca8914530c7c89d5088e0adac37f06da85439be987
+	source_x86_64 = dsnitch-bin-0.1.0-x86_64.tar.gz::https://github.com/infomaniac777/dsnitch/releases/download/v0.1.0/dsnitch-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d61acd8ddcfb0902a0e1abfd57d348a1bac7f1b5abbdf0ac30310e0d958fbbe6
+	source_aarch64 = dsnitch-bin-0.1.0-aarch64.tar.gz::https://github.com/infomaniac777/dsnitch/releases/download/v0.1.0/dsnitch-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = dea309fa5130722b0cbb76668e16245eb0594d470ed4c42985cfd99efae3fe22
+
+pkgname = dsnitch-bin
