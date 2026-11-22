@@ -1,0 +1,20 @@
+pkgbase = libosi-bin
+	pkgdesc = Operating-system introspection library for PANDA
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://github.com/panda-re/libosi
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = glib2
+	depends = gcc-libs
+	depends = glibc
+	provides = libosi=0.1.12
+	conflicts = libosi
+	options = !strip
+	options = !debug
+	source = libosi_0.1.12.deb::https://github.com/panda-re/libosi/releases/download/v0.1.12/libosi_24.04.deb
+	source = libosi-0.1.12-LICENSE.md::https://raw.githubusercontent.com/panda-re/libosi/v0.1.12/LICENSE.md
+	sha256sums = 1aa44ee58ed8514723ba5cd26f5b0ebea4910873bd7fae99d1571ba1fe68fb7e
+	sha256sums = 102407a4c15e7fb3e7c7c7957dc9e771d82a3c3aa3dcdecce4e5ffdcfea0c5b0
+
+pkgname = libosi-bin
