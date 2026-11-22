@@ -13,7 +13,7 @@ pkgbase = clamaurscan-git
 	optdepends = paru
 	optdepends = yay
 	conflicts = aurscan-git
-	source = git+https://git.linux-help.org/psi-jack/aurscan.git
+	source = git+https://codeberg.org/psi-jack/clamaurscan.git
 	md5sums = SKIP
 
 pkgname = myaurscan-git
