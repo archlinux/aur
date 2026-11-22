@@ -1,0 +1,19 @@
+pkgbase = quick-note-git
+	pkgdesc = A simple note-taking tool
+	pkgver = r3.535b7e1
+	pkgrel = 1
+	url = https://github.com/daniel-valencia-ts/quick-note
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = quick-note
+	conflicts = quick-note
+	options = !lto
+	source = quick-note::git+https://github.com/daniel-valencia-ts/quick-note.git
+	sha256sums = SKIP
+
+pkgname = quick-note-git
