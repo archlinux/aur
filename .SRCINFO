@@ -1,0 +1,16 @@
+pkgbase = depot-rs
+	pkgdesc = A TUI for managing crates
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/quietpigeon/depot-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = depot-rs-0.1.1.tar.gz::https://github.com/quietpigeon/depot-rs/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 00d17810a013014381c5424614475a89aeb38f244db48c0a8f032011d3b0b73a
+
+pkgname = depot-rs
