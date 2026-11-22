@@ -29,12 +29,20 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
   RUSTFLAGS='-C link-args=-Wl,-z,shstk' cargo build --frozen --release
+
+  local shell
+  for shell in bash zsh fish; do
+    target/release/sonora completions "${shell}" > "completion.${shell}"
+  done
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
 
   install -Dm0755 target/release/sonora "${pkgdir}/usr/bin/sonora"
+  install -Dm644 completion.bash "${pkgdir}/usr/share/bash-completion/completions/sonora"
+  install -Dm644 completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_sonora"
+  install -Dm644 completion.fish "${pkgdir}/usr/share/fish/vendor_completions.d/sonora.fish"
   install -Dm644 assets/linux/sonora.desktop \
     "${pkgdir}/usr/share/applications/sonora.desktop"
   install -Dm644 assets/linux/sonora.svg \
