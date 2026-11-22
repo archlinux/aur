@@ -2,9 +2,9 @@
 
 _majorver=25
 _minorver=0
-_securityver=5.0.3
-_updatever=1
-_zulu_build="38.109"
+_securityver=5.1
+_updatever=2
+_zulu_build="38.201"
 pkgname=jre${_majorver}-zulu-bin
 pkgver=${_majorver}.${_minorver}.${_securityver}+${_updatever}
 pkgrel=1
@@ -49,11 +49,11 @@ source_x86_64=(
   "freedesktop-java.desktop"
 )
 sha256sums_aarch64=(
-  '604d65f811f942d49099b7c1c1b865ff8b700d51299be0afffa24447a033b866'
+  '164c7293bc17dcd21e56f84778cacfe57501a66c7ad3265b7f9f36c4cd9ec1e0'
   '58ec2bb43ff9bc98e6d14a5c5559d6768cc1b6e16443f4891134a8406fd4482c'
 )
 sha256sums_x86_64=(
-  '740a9a3ed6b60de7ae2c22633f122147572024c1a66663f69aa7672ec48c4b09'
+  '12277af4957cd249dc7aa50017ddde967a826fa48971b2411752fefe48e5ca8b'
   '58ec2bb43ff9bc98e6d14a5c5559d6768cc1b6e16443f4891134a8406fd4482c'
 )
 
