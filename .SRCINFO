@@ -1,0 +1,16 @@
+pkgbase = tree-ring-memory-bin
+	pkgdesc = A local-first memory system for AI agents with SQLite full-text search, auditing, forgetting
+	pkgver = 0.15.13
+	pkgrel = 1
+	url = https://github.com/TerminallyLazy/Tree-Ring-Memory
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = tree-ring-memory
+	conflicts = tree-ring-memory
+	options = !debug
+	source_x86_64 = tree-ring-memory-bin-0.15.13-x86_64.tar.gz::https://github.com/TerminallyLazy/Tree-Ring-Memory/releases/download/v0.15.13/tree-ring-memory-0.15.13-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a83d9c9fde6c1e4f280394c50aba34ca8b5e3c408d1b70ea9bc50e7485b7554d
+
+pkgname = tree-ring-memory-bin
