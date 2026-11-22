@@ -1,6 +1,6 @@
 pkgbase = zimbr
 	pkgdesc = Native Wayland iMessage client using a self-hosted macOS relay
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/hspak/zimbr
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = zimbr
 	makedepends = librsvg
 	makedepends = patch
 	makedepends = pkgconf
-	makedepends = zig>=0.16.0
-	makedepends = zig<0.17
+	makedepends = zig>=0.17.1
+	makedepends = zig<0.18
 	depends = cairo
 	depends = curl
 	depends = dbus
@@ -40,7 +40,7 @@ pkgbase = zimbr
 	optdepends = ttf-font: text rendering
 	optdepends = vulkan-driver: hardware Vulkan rendering
 	options = !debug
-	source = zimbr-0.4.1.tar.gz::https://github.com/hspak/zimbr/archive/0.4.1.tar.gz
-	sha256sums = 58c387592b14d63320c9c1b09978dae54ec25dbc1a6b3f1d2642dada5347fbba
+	source = zimbr-0.4.2.tar.gz::https://github.com/hspak/zimbr/archive/0.4.2.tar.gz
+	sha256sums = 4bb5d554be5bb0d5ab4450a7ec652e7da5337ca806ef99241ea16ab9c2b6ee0b
 
 pkgname = zimbr

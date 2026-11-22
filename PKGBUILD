@@ -1,7 +1,7 @@
 # Maintainer: Hong Shick Pak <hong@hspak.com>
 
 pkgname=zimbr
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Native Wayland iMessage client using a self-hosted macOS relay"
 arch=("x86_64")
@@ -27,7 +27,7 @@ depends=(
   "vulkan-icd-loader"
   "wayland"
 )
-makedepends=("libdecor" "libibus" "librsvg" "patch" "pkgconf" "zig>=0.16.0" "zig<0.17")
+makedepends=("libdecor" "libibus" "librsvg" "patch" "pkgconf" "zig>=0.17.1" "zig<0.18")
 checkdepends=("desktop-file-utils")
 optdepends=(
   "ibus: input method support"
@@ -40,23 +40,23 @@ optdepends=(
 )
 options=("!debug")
 # release.sh pins the version and source checksum before building or publishing.
-_ref=0.4.1
+_ref=0.4.2
 source=("$pkgname-$_ref.tar.gz::$url/archive/$_ref.tar.gz")
-sha256sums=("58c387592b14d63320c9c1b09978dae54ec25dbc1a6b3f1d2642dada5347fbba")
+sha256sums=("4bb5d554be5bb0d5ab4450a7ec652e7da5337ca806ef99241ea16ab9c2b6ee0b")
 
 prepare() {
   cd "$pkgname-$_ref"
   export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-cache"
   # --fetch=needed skips lazy dependencies without evaluating the build graph.
   # Help configures that graph and fetches its dependencies without running build steps.
-  zig build -Dprofile=release client --help -Doptimize=ReleaseSafe -Dcpu=baseline \
+  zig build -Dprofile=release client --help -Doptimize=safe -Dcpu=baseline \
     -Dibus=true >/dev/null
 }
 
 build() {
   cd "$pkgname-$_ref"
   export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-cache"
-  zig build -Dprofile=release client -Doptimize=ReleaseSafe -Dcpu=baseline \
+  zig build -Dprofile=release client -Doptimize=safe -Dcpu=baseline \
     -Dibus=true --system zig-pkg
 
   # Bake SVG lighting into PNG fallbacks for desktop icon renderers.
@@ -71,7 +71,7 @@ build() {
 check() {
   cd "$pkgname-$_ref"
   export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-cache"
-  zig build -Dprofile=release test-client -Doptimize=ReleaseSafe -Dcpu=baseline \
+  zig build -Dprofile=release test-client -Doptimize=safe -Dcpu=baseline \
     -Dibus=true --system zig-pkg
   desktop-file-validate zig-out/share/applications/zimbr.desktop
   python packaging/linux/provision.py --help >/dev/null
@@ -94,7 +94,7 @@ package() {
   done
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   # Install only notices for dependencies linked into the client.
-  for license_file in zig-out/share/zimbr/licenses/{SDL,SDL-yuv2rgb,gemoji}.txt; do
+  for license_file in zig-out/share/zimbr/licenses/{SDL,SDL-yuv2rgb,gemoji,translate-c}.txt; do
     install -Dm644 "$license_file" "$pkgdir/usr/share/licenses/$pkgname/${license_file##*/}"
   done
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
