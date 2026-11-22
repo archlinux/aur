@@ -1,0 +1,20 @@
+pkgbase = oak-keyring-bin
+	pkgdesc = A local-first, keyboard-driven password manager
+	pkgver = 0.8.0preview.3
+	pkgrel = 1
+	url = https://github.com/OpenKeyring/oak-keyring
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = xz
+	provides = oak-keyring
+	conflicts = oak-keyring
+	options = !debug
+	source_x86_64 = oak-keyring-bin-0.8.0preview.3-x86_64.tar.gz::https://github.com/OpenKeyring/oak-keyring/releases/download/v0.8.0-preview.3/ok-v0.8.0-preview.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a3d52e5222471b2918f2410db94ce825996751c0c963eecde98f31071d6ccae2
+	source_aarch64 = oak-keyring-bin-0.8.0preview.3-aarch64.tar.gz::https://github.com/OpenKeyring/oak-keyring/releases/download/v0.8.0-preview.3/ok-v0.8.0-preview.3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9527bfc52cc09ec7bd7556ac8f6309c82f7f2eca8a71e85746fd7031974d049c
+
+pkgname = oak-keyring-bin
