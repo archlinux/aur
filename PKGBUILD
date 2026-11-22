@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=python-ouroboros-ai
 _name=${pkgname#python-}
-pkgver=0.65.2
+pkgver=0.65.3
 pkgrel=1
 pkgdesc="Specification-first workflow engine for AI coding agents"
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   'python-watchdog: Live skill hot-reload support'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('153aff3f31fed7f257d47727c6d668d8df553cfad6deca511df105b75cf5ea77')
+sha256sums=('a26e88d066e62a49ab51d93a2e66277d1611a1e8d6584c93eb625cc75712ebd5')
 install=${pkgname}.install
 
 build() {
