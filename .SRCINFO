@@ -1,0 +1,18 @@
+pkgbase = kdwarn-pgtui
+	pkgdesc = A PostgreSQL TUI client that uses your terminal editor for inserts and updates
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://codeberg.org/kdwarn/pgtui
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	conflicts = pgtui
+	conflicts = pgtui-bin
+	options = !lto
+	source = kdwarn-pgtui-0.17.0.tar.gz::https://codeberg.org/kdwarn/pgtui/archive/v0.17.0.tar.gz
+	sha256sums = 66ae85ae6a2c60ecb513804778fe2258a32c0e3a431a42f10ef828495a2d4fb6
+
+pkgname = kdwarn-pgtui
