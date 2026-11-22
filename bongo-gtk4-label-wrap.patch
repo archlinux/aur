@@ -1,0 +1,14 @@
+--- a/platforms/linux/ui/bongo_settings.py
++++ b/platforms/linux/ui/bongo_settings.py
+@@ -1957,7 +1957,10 @@
+         res_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+         self.num_words_disp = Gtk.Label(label="শূন্য টাকা মাত্র")
+         self.num_words_disp.set_xalign(0.0)
+-        self.num_words_disp.set_line_wrap(True)
++        if gtk_version == '4.0':
++            self.num_words_disp.set_wrap(True)
++        else:
++            self.num_words_disp.set_line_wrap(True)
+         self.append_widget(res_box, self.num_words_disp)
+         self.set_card_content(res_card, res_box)
+         self.append_widget(card2_box, res_card)

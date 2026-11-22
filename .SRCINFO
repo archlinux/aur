@@ -1,7 +1,7 @@
 pkgbase = bongo
 	pkgdesc = Bangla phonetic input method with native fcitx5 and IBus frontends
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mehedishakeel/Bongo
 	install = bongo.install
 	arch = x86_64
@@ -27,8 +27,10 @@ pkgbase = bongo
 	source = bongo-1.2.1.tar.gz::https://github.com/mehedishakeel/Bongo/archive/refs/tags/v1.2.1.tar.gz
 	source = bongo-input-settings.patch
 	source = bongo-converter-path.patch
+	source = bongo-gtk4-label-wrap.patch
 	sha256sums = 8c22962e391d60d071bf7b4976ec28495b2d302b2566b5ddde68faf2c4596c89
 	sha256sums = 23c44411c726978bbd56626df1295c9e7cb00069fb204d1029fcdb48992a443d
 	sha256sums = 12bd34e75816b03264effeee2dfc9acbecfa600b55291a73d4cd080462c43417
+	sha256sums = c6627a673d41f93a26cf4a3b7c704aafa126a3b62b547fbfdd2a9ee93dd6439e
 
 pkgname = bongo
