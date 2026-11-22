@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=apkscope-bin
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Android APK decompiler, xrefs, API recon and MCP server, with native viewer"
 arch=('x86_64' 'aarch64')
@@ -33,12 +33,12 @@ options=('!strip' '!debug')
 # unversioned alias would hand a bumped PKGBUILD the previous release's binary.
 source=("NOTICE::$url/raw/v$pkgver/NOTICE")
 sha256sums=('4a44da57791f5b44965c0eb0af6ac43e65a643af7a44afdc6cca28bdb17d687c')
+sha256sums_x86_64=('15db5f6ac67734b02b55c257c440bed17e5b9c540aa611fc332575f614ad91d3')
+sha256sums_aarch64=('6e811464bbdf6b4d801f9cec96bcc7186e684f2c185601e760c0436d353246dc')
 
 source_x86_64=("apkscope_linux_x86_64-$pkgver::$url/releases/download/v$pkgver/apkscope_linux_x86_64")
-sha256sums_x86_64=('e8652fe48200741a7cffae954849252aaaacf705db126732452d01d6424f548b')
 
 source_aarch64=("apkscope_linux_aarch64-$pkgver::$url/releases/download/v$pkgver/apkscope_linux_aarch64")
-sha256sums_aarch64=('938387e4a22c01506270dd284ee3260c2560dbeec05904de89ce83689a0d4355')
 
 # The musl assets are not packaged: they are built without the `gui` feature and
 # refuse `apkscope gui` outright, because a static binary cannot load the desktop's
