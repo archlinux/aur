@@ -1,6 +1,6 @@
 pkgbase = your-szu-life-git
 	pkgdesc = 泥深 - 你的SZU助手
-	pkgver = 0.17.2.r1595b4b
+	pkgver = 0.17.3.r606517c
 	pkgrel = 1
 	url = https://github.com/rinnein/your-szu-life
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = your-szu-life-git
 	provides = your-szu-life
 	conflicts = your-szu-life-bin
 	conflicts = your-szu-life
-	source = your-szu-life-git::git+https://github.com/rinnein/your-szu-life.git#branch=main
+	source = your-szu-life-git::git+https://cnb.cool/rinnein/szu/your-szu-life.git#branch=main
 	sha256sums = SKIP
 
 pkgname = your-szu-life-git

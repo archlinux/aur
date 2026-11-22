@@ -1,6 +1,6 @@
 # Maintainer: Rinne <aur@rinne.in>
 pkgname=your-szu-life-git
-pkgver=0.17.2.r1595b4b
+pkgver=0.17.3.r606517c
 pkgrel=1
 pkgdesc="泥深 - 你的SZU助手"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('libayatana-appindicator' 'webkit2gtk-4.1' 'gtk3' 'aria2')
 provides=('your-szu-life')
 conflicts=('your-szu-life-bin' 'your-szu-life')
 makedepends=('base-devel' 'git' 'pnpm' 'rust' 'libarchive')
-source=("$pkgname::git+https://github.com/rinnein/your-szu-life.git#branch=main")
+source=("$pkgname::git+https://cnb.cool/rinnein/szu/your-szu-life.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
