@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=pi-bolt-bin
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Pi coding agent compiled ahead of time to native code (prebuilt binary, x86-64 baseline and ARM64)'
 arch=('x86_64' 'aarch64')
@@ -35,8 +35,8 @@ esac
 
 source_x86_64=("${_payload_x86_64}-${pkgver}.tar.xz::${_release_url}/${_payload_x86_64}.tar.xz")
 source_aarch64=("${_payload_aarch64}-${pkgver}.tar.xz::${_release_url}/${_payload_aarch64}.tar.xz")
-sha256sums_x86_64=('b25a15ae164f169d60316379b6197d444bf7f52b46c056ed4bd9e12d0cddc79a')
-sha256sums_aarch64=('f0b99778ed246bf1acaeb3d0e5e632a4fc8570880a35381c6169f8b9aa5f9cc4')
+sha256sums_x86_64=('eaf4ddea023da590a0a1c14d2e22fca72b0726e4cf8a464aafa5ad452072e71f')
+sha256sums_aarch64=('2a1a1e242bb04f6984aeeb82cf5907f2b6b8d83064c20fb6b5de983669844277')
 
 latestver() {
   git ls-remote --tags "https://github.com/${_repo}.git" 'bolt-v[0-9]*' |
