@@ -22,7 +22,7 @@
 
 pkgname=bastionguard
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="BastionGuard - transparent security control plane for Linux desktops "
 arch=('x86_64')
 url="https://bastionguard.eu/"
