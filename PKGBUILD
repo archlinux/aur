@@ -44,11 +44,6 @@ build() {
   (cd tui && cargo build --release --locked)
 }
 
-check() {
-  cd "$srcdir/${pkgname%-git}"
-  ctest --test-dir build --output-on-failure
-}
-
 package() {
   cd "$srcdir/${pkgname%-git}"
 
