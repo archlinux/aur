@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A command line tool for datetime arithmetic, parsing, formatting and more"
 
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('4bf2e657f7b04ddcd73861c825f8622f8fd8994e860d756e8fa7e02f01acebcd')
-sha256sums_aarch64=('0a052cb1744d6571fe839f36ea12230da03cf6f9054a307337c20d1aac5a7c23')
+sha256sums_x86_64=('c01f70d980972f2d1fdbb222574f04ea02140fafaf9b161c5aa74f6cd5f059bd')
+sha256sums_aarch64=('1baa05bc322050d18ebe3ba5a64931250a4a86e9a6510af917c8a17d7afad234')
 
 
 case ${CARCH} in
