@@ -1,0 +1,19 @@
+pkgbase = vtui-bin
+	pkgdesc = Explore vSphere in style, with vCenter and ESXi both included
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/noclue/vtui
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = vtui
+	conflicts = vtui
+	options = !debug
+	source_x86_64 = vtui-bin-0.2.9-x86_64.tar.xz::https://github.com/noclue/vtui/releases/download/v0.2.9/vtui-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 9d7b482ac4e67d597754e8123904a184b9dccea0ab0f47bbb07156afc848284f
+	source_aarch64 = vtui-bin-0.2.9-aarch64.tar.xz::https://github.com/noclue/vtui/releases/download/v0.2.9/vtui-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 35ecdcd5edef722fdf587a50d085d39210a06ad4f6f980b725a30fbcb00b998e
+
+pkgname = vtui-bin
