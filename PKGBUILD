@@ -1,11 +1,11 @@
 # Maintainer: Lukas "DerGeneralFluff" Lichten <lichtenrider@hotmail.de>
 _reponame=BeamMP-Launcher
-_vcpkg_version=2024.12.16
+_vcpkg_version=2026.10.16
 # Why use a fixed version instead of git? Because it is a giant repo,
 # and updates way too often slowing system updates down when it really isn't needed.
 
 pkgname=beammp-launcher-git
-pkgver=r457.c22ea1e
+pkgver=r612.92f41b6
 pkgrel=1
 pkgdesc="Multiplayer Launcher/Client for BeamMP, providing multiplayer for BeamNG.drive"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=("beammp-launcher")
 source=("git+https://github.com/BeamMP/BeamMP-Launcher"
         "https://github.com/microsoft/vcpkg/archive/refs/tags/${_vcpkg_version}.tar.gz")
 b2sums=('SKIP'
-        'ea33199c37661c88eb054630f54877d742b6434cc44eed2cb20e0b8a14d66fc9eb4726f3281dff4595a9bd813bc497e314a8906663bb8c53dfb1d6da4faa7f5c')
+        'ad12c58820c0dcb7395e7b720234054bb9ca6e935548f324a291989d0ec044b1efcf28b3671ab336ff3d43b905afccc45ba58d74e97945a7f21e1fca2b6aa118')
 
 pkgver() {
 	cd "$srcdir/${_reponame}"
