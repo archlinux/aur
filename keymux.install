@@ -5,6 +5,8 @@ post_install() {
 
     if [ -d "/run/systemd/system" ]; then
         echo "    sudo systemctl enable --now keymux.service"
+        echo "    (the user services below follow keymux.service: they restart when it restarts"
+        echo "     and wait while it is stopped; see the README, 'How the helpers follow the daemon')"
         if pacman -Qq niri &>/dev/null; then
             echo "    systemctl --user enable --now keymux-niri.service"
         fi

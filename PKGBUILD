@@ -1,11 +1,11 @@
 # Maintainer: noahlyk <noahlykins@gmail.com>
 pkgname=keymux
-pkgver=1.16.2
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Keyboard middleware for gaming with low-level input interception"
 arch=('x86_64' 'aarch64')
 url="https://github.com/noahlyk/keymux"
-license=('MIT')
+license=('GPL-3.0-or-later')
 depends=('udev' 'libevdev')
 makedepends=()
 optdepends=('systemd: for systemd service files (or use OpenRC/runit scripts)'
@@ -30,6 +30,7 @@ fi
 source=(
     "https://github.com/noahlyk/keymux/releases/download/v${pkgver}/keymux-${pkgver}-${_arch}.tar.gz"
     "LICENSE::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/LICENSE"
+    "NOTICE::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/NOTICE"
     "keymux.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux.service"
     "keymux-niri.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux-niri.service"
     "keymux-steno.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux-steno.service"
@@ -56,7 +57,7 @@ source=(
     "runit-keymux-bspwm-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-bspwm/run"
     "runit-keymux-bspwm-log-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-bspwm/log/run"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     install -Dm755 "$srcdir/keymux" "$pkgdir/usr/bin/keymux"
@@ -140,7 +141,8 @@ package() {
 
     install -Dm644 "$srcdir/config.example.ron" "$pkgdir/usr/share/doc/keymux/config.example.ron"
     install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/keymux/README.md"
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/keymux/LICENSE"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/NOTICE" "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
     install -dm755 "$pkgdir/usr/share/bash-completion/completions"
     install -dm755 "$pkgdir/usr/share/zsh/site-functions"
     install -dm755 "$pkgdir/usr/share/fish/vendor_completions.d"
