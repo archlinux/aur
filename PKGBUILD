@@ -3,7 +3,7 @@
 pkgname=bettbox-lite-compatible
 _pkgname=Bettbox
 pkgver=1.19.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core. (Lite build: no EasyTier/Tailscale/ZeroTier/fake-TCP/gVisor; Build with GOAMD64=v1)"
 arch=('x86_64')
 options=('!lto')
@@ -43,20 +43,20 @@ build () {
 	export FLUTTER_ROOT="$(pwd)/.fvm/flutter_sdk"
 	local app_env=stable
 	fvm dart run build_runner build
-	# Lite: upstream's --lite swaps the core tags to
-	# no_easytier,no_tailscale,no_zerotier,no_fake_tcp,with_low_memory and
-	# passes APP_LITE to the app (see upstream .github/workflows/build.yaml).
-	fvm dart ./setup.dart linux --arch amd64 --out core --compatible --lite
-	fvm flutter build linux --no-pub --release --target-platform linux-x64 --dart-define=APP_ENV="$app_env" --dart-define=APP_LITE=true
+	# Lite is upstream's default variant: no --standard flag, and the app reads
+	# APP_STANDARD as false (see upstream .github/workflows/build.yaml).
+	fvm dart ./setup.dart linux --arch amd64 --out core --compatible
+	fvm flutter build linux --no-pub --release --target-platform linux-x64 --dart-define=APP_ENV="$app_env"
 }
 
 # Waiting for https://github.com/appshubcc/Bettbox/pull/159
 # Once merged, setup.dart gains --out app --build-only (-B) which builds the
-# core, sets setuid, and runs flutter build in one step (with --env for APP_ENV
-# and --lite for APP_LITE). --arch is omitted since setup.dart now auto-detects
-# the host CPU architecture (ArchExt.same). With --build-only, flutter build
-# runs inside setup.dart, which derives --target-platform from the auto-detected
-# arch, so neither $_arch nor $_flutter_arch are used in PKGBUILD anymore.
+# core, sets setuid, and runs flutter build in one step (with --env for APP_ENV;
+# lite is the default, so no --standard).
+# --arch is omitted since setup.dart now auto-detects the host CPU architecture
+# (ArchExt.same). With --build-only, flutter build runs inside setup.dart, which
+# derives --target-platform from the auto-detected arch, so neither $_arch nor
+# $_flutter_arch are used in PKGBUILD anymore.
 # Replace the build() above with:
 # build() {
 # 	cd "${_pkgname}-${pkgver}"
@@ -64,7 +64,7 @@ build () {
 # 	local app_env=stable
 # 	[[ "${pkgver}" == *pre* ]] && app_env=pre
 # 	fvm dart run build_runner build
-# 	fvm dart ./setup.dart linux --compatible --lite --build-only --env "$app_env"
+# 	fvm dart ./setup.dart linux --compatible --build-only --env "$app_env"
 # }
 
 package () {
