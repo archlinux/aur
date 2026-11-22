@@ -1,6 +1,6 @@
 # Maintainer: tak0dan
 pkgname=sunshine-store
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Microsoft-Store-style app shop for Arch: pacman, AUR, Flatpak, AppImage and Snap with an instant, always-available catalogue and related-software discovery"
 arch=('any')
@@ -19,8 +19,8 @@ optdepends=('libjxl: icons of repository apps'
             'snapd: install Snap packages'
             'inter-font: interface font'
             'ttf-cormorant: heading font')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ac06890d662eb7195800a05342a894685b3ebf87a017831f9052973f1a4b2b5c')
+source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/tak0dan/sunshine-store/tar.gz/refs/tags/v$pkgver")
+sha256sums=('002ea1e3a525278b429aa109e9d74667368456041ae929a86b24afccfeb0bba8')
 
 package() {
   cd "$pkgname-$pkgver"

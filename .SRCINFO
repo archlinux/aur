@@ -1,6 +1,6 @@
 pkgbase = sunshine-store
 	pkgdesc = Microsoft-Store-style app shop for Arch: pacman, AUR, Flatpak, AppImage and Snap with an instant, always-available catalogue and related-software discovery
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/tak0dan/sunshine-store
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = sunshine-store
 	optdepends = snapd: install Snap packages
 	optdepends = inter-font: interface font
 	optdepends = ttf-cormorant: heading font
-	source = sunshine-store-0.4.0.tar.gz::https://github.com/tak0dan/sunshine-store/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = ac06890d662eb7195800a05342a894685b3ebf87a017831f9052973f1a4b2b5c
+	source = sunshine-store-0.4.1.tar.gz::https://codeload.github.com/tak0dan/sunshine-store/tar.gz/refs/tags/v0.4.1
+	sha256sums = 002ea1e3a525278b429aa109e9d74667368456041ae929a86b24afccfeb0bba8
 
 pkgname = sunshine-store
