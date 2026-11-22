@@ -1,0 +1,16 @@
+pkgbase = hearts-rs
+	pkgdesc = Windows 95 style Hearts for Wayland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/adelmonte/hearts-rs
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	options = !lto
+	source = hearts-rs-0.1.0.tar.gz::https://github.com/adelmonte/hearts-rs/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 4b62baed25bf001aff943c825d67df548e0a22a01434001290f8268351a760e8
+
+pkgname = hearts-rs
