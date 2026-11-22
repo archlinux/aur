@@ -34,13 +34,11 @@ pkgbase = oh-my-pi
 	source = system-grammars-for-aur.patch
 	source = stable-rust-const.patch
 	source = relative-json-assets.patch
-	source = rephrase-tool-docs-prompt.patch
 	sha256sums = 51879f1b2104e0942f872a145d831cbafd3647d5027ce3cbd2eff4bdd51aa482
 	sha256sums = 33718946cc77d4032911d4efe03a66dbcbfbd2bb16c3da06aaeadcc637c32216
 	sha256sums = 0f4c3a662fac5dc6420d260c7439ab0399061a1501dbbc1692e8fdf3e8db1785
 	sha256sums = 64e7ad5941b4578c59529ba30ffc8b18a5e2c21c333c52007aa20060096127b8
 	sha256sums = 687a39858c877258bc7d3fd96853646df4835ac8896bf6f86b745bcc47fdf3ba
 	sha256sums = aa9a59cc6d6edce378a79e6c1b9194f49318d8ee777c6f58caf92faac67cbdaf
-	sha256sums = 248aad459652770b71e0f43986535ddcc932a3b6ecca8c6932d7e09e82ea0244
 
 pkgname = oh-my-pi
