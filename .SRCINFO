@@ -1,0 +1,16 @@
+pkgbase = erldash-bin
+	pkgdesc = A simple, terminal-based Erlang dashboard
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/sile/erldash
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	provides = erldash
+	conflicts = erldash
+	options = !debug
+	source = erldash-bin-0.4.0-LICENSE::https://raw.githubusercontent.com/sile/erldash/v0.4.0/LICENSE-MIT
+	sha256sums = e0c480abbf512eb7e21fd0286bc66778a9fe68193bdf8629e8d99aa6a1e30d91
+	source_x86_64 = erldash-bin-0.4.0-x86_64::https://github.com/sile/erldash/releases/download/v0.4.0/erldash-0.4.0.x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 7ac1954efd05b26232a4aeeebf801c54d27efe4cd0371fa078cd00b89d57e7af
+
+pkgname = erldash-bin
