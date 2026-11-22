@@ -1,15 +1,23 @@
 pkgbase = cecilia
-	pkgdesc = Audio signal processing environment aimed at sound designers
-	pkgver = 5.4.1
+	pkgdesc = Keyboard-first editor and player for guitar tab, standard notation and Gregorian chant
+	pkgver = 0.51.0
 	pkgrel = 1
-	url = http://ajaxsoundstudio.com/software/cecilia
-	arch = any
-	license = GPL3
-	depends = python>=3.6.0
-	depends = python-pyo>=1.0.3
-	depends = python-numpy>=1.18
-	depends = python-wxpython
-	source = cecilia-5.4.1-1.tar.gz::https://github.com/belangeo/cecilia5/archive/5.4.1.tar.gz
-	sha256sums = 66063803e3f4935febabd975eca77b4dea17329ded939d72ab5bd5a53205b4fd
+	url = https://kjmcnamara1.github.io/cecilia/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	optdepends = vulkan-icd-loader: GPU drawing in the window
+	optdepends = libxkbcommon: keyboard input in the window
+	optdepends = wayland: Wayland window
+	optdepends = libx11: X11 window
+	optdepends = libxcursor: X11 mouse cursors
+	options = !lto
+	source = cecilia-0.51.0.tar.gz::https://github.com/kjmcnamara1/cecilia/archive/v0.51.0.tar.gz
+	sha256sums = 76924b55839afe3e1ac3572c2763d0ffcccf19566c29144273b0addb5bdcdf96
 
 pkgname = cecilia

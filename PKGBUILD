@@ -1,44 +1,44 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
-pkgname='cecilia'
-_reponame="${pkgname}5"
-pkgver='5.4.1'
-pkgrel='1'
-pkgdesc='Audio signal processing environment aimed at sound designers'
-arch=('any')
-url="http://ajaxsoundstudio.com/software/$pkgname"
-license=('GPL3')
-depends=('python>=3.6.0' 'python-pyo>=1.0.3' 'python-numpy>=1.18' 'python-wxpython')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/belangeo/$_reponame/archive/$pkgver.tar.gz")
-sha256sums=('66063803e3f4935febabd975eca77b4dea17329ded939d72ab5bd5a53205b4fd')
+# Maintainer: Kevin McNamara (github.com/kjmcnamara1)
+pkgname=cecilia
+pkgver=0.51.0
+pkgrel=1
+pkgdesc='Keyboard-first editor and player for guitar tab, standard notation and Gregorian chant'
+arch=('x86_64' 'aarch64')
+url='https://kjmcnamara1.github.io/cecilia/'
+_repo='https://github.com/kjmcnamara1/cecilia'
+license=('MIT' 'Apache-2.0')
+depends=('alsa-lib' 'gcc-libs' 'glibc')
+makedepends=('cargo')
+# makepkg's -flto breaks the C++ in signalsmith-stretch (undefined symbols at link time).
+options=('!lto')
+# The window (--gui) loads these at run time; the terminal UI needs none of them.
+optdepends=('vulkan-icd-loader: GPU drawing in the window'
+            'libxkbcommon: keyboard input in the window'
+            'wayland: Wayland window'
+            'libx11: X11 window'
+            'libxcursor: X11 mouse cursors')
+source=("$pkgname-$pkgver.tar.gz::$_repo/archive/v$pkgver.tar.gz")
+sha256sums=('76924b55839afe3e1ac3572c2763d0ffcccf19566c29144273b0addb5bdcdf96')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
+  cargo build --release --frozen -p cecilia
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
+  cargo test --release --frozen --workspace
+}
 
 package() {
-	cd "$srcdir/$_reponame-$pkgver/"
-
-	local _libdir="usr/lib/$pkgname"
-
-	install -Dm644 "${_reponame^}.py" "$pkgdir/$_libdir/${_reponame^}.py"
-	cp -r --no-preserve=ownership --preserve=mode 'Resources/' "$pkgdir/$_libdir/Resources/"
-
-	install -dm755 "$pkgdir/usr/bin/"
-	cat << EOF > "$pkgdir/usr/bin/$pkgname"
-#!/bin/sh
-cd '/usr/lib/$pkgname/'
-exec python '${_reponame^}.py' "\$@"
-EOF
-	chmod +x "$pkgdir/usr/bin/$pkgname"
-
-	install -dm755 "$pkgdir/usr/share/applications/"
-	cat << EOF > "$pkgdir/usr/share/applications/$pkgname.desktop"
-[Desktop Entry]
-Type=Application
-Name=${pkgname^}
-Comment=Audio signal processing environment aimed at sound designers
-Icon=$pkgname
-Exec=/usr/bin/$pkgname
-Terminal=false
-Categories=AudioVideo;Audio;
-EOF
-
-	install -dm755 "$pkgdir/usr/share/pixmaps/"
-	ln -sf "/$_libdir/Resources/${_reponame^}.ico" "$pkgdir/usr/share/pixmaps/$pkgname.ico"
+  cd "$pkgname-$pkgver"
+  packaging/linux/stage.sh "$pkgdir" /usr target/release/cecilia
 }
