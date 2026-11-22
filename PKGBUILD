@@ -1,14 +1,14 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 
 pkgname=proton-drive-for-linux
-pkgver=3.8.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="Unofficial Proton Drive client: files-on-demand FUSE mount, CLI, GTK4 app and tray"
 arch=('x86_64')
 url="https://proton-drive.narl.io"
 _repo="https://github.com/narrrl/proton-drive-linux"
 license=('MIT')
-depends=('fuse3' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'dbus' 'gcc-libs' 'glibc'
+depends=('fuse3' 'polkit' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'dbus' 'gcc-libs' 'glibc'
          'hicolor-icon-theme')
 makedepends=('cargo' 'gettext')
 optdepends=('perl-image-exiftool: thumbnails for camera RAW files'
@@ -25,8 +25,10 @@ conflicts=('proton-drive-linux' 'proton-drive-for-linux-bin' 'proton-drive-for-l
 options=('!lto')
 # Stops the running daemon before removal, so the mount stops mirroring deletes.
 install=proton-drive.install
-source=("$pkgname-$pkgver.tar.gz::$_repo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('095186fa108f27ff2b175188bb13466a94cc8ecfd71088df47a41d4d9baa58c1')
+source=("$pkgname-$pkgver.tar.gz::$_repo/archive/refs/tags/v$pkgver.tar.gz"
+        "basemap-v1.pmtiles::https://github.com/narrrl/proton-rs/releases/download/basemap-v1/basemap-v1.pmtiles")
+sha256sums=('181abf766bed0ab7b3a7f1c1c0092e93d18ce945eb98816f5eb2c549dc8f13ad'
+            'ce9acab1b7ed7f15b23e2365b1b6a580db79f4bc4421851ee673eff4c920d280')
 
 _srcname="proton-drive-linux-$pkgver"
 
@@ -72,6 +74,13 @@ package() {
   # systemd user unit for the auto-mount daemon; enabled per user, not by pacman.
   install -Dm644 packaging/proton-drive.service \
     "$pkgdir/usr/lib/systemd/user/proton-drive.service"
+
+  install -Dm644 "packaging/io.narl.proton-drive-linux.policy" \
+    "$pkgdir/usr/share/polkit-1/actions/io.narl.proton-drive-linux.policy"
+
+  # The offline Places basemap.
+  install -Dm644 "$srcdir/basemap-v1.pmtiles" \
+    "$pkgdir/usr/share/proton-drive-linux/basemap-v1.pmtiles"
 
   # Translations: compiled from po/ into /usr/share/locale.
   po/build.sh "$pkgdir/usr/share/locale"
