@@ -1,0 +1,19 @@
+pkgbase = crmux-bin
+	pkgdesc = A TUI viewer for monitoring and managing multiple Claude Code sessions
+	pkgver = 0.20.3
+	pkgrel = 1
+	url = https://github.com/maedana/crmux
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = crmux
+	conflicts = crmux
+	options = !debug
+	source = crmux-bin-0.20.3-LICENSE::https://raw.githubusercontent.com/maedana/crmux/v0.20.3/LICENSE
+	sha256sums = d6a873066c714d094dd86fc2bd250dd239c199748112f78ec66577a7606e7871
+	source_x86_64 = crmux-bin-0.20.3-x86_64.tar.gz::https://github.com/maedana/crmux/releases/download/v0.20.3/crmux-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 826c2f6cc2c9cc136afe734c00a08e7d867e54f350ac9aa2403b75b2a2232471
+
+pkgname = crmux-bin
