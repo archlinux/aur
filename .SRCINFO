@@ -1,0 +1,19 @@
+pkgbase = crossword-git
+	pkgdesc = Terminal-based crossword puzzle player
+	pkgver = r58.8307c24
+	pkgrel = 1
+	url = https://github.com/matrixfrog/crossword
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = crossword
+	conflicts = crossword
+	options = !lto
+	source = crossword::git+https://github.com/matrixfrog/crossword.git
+	sha256sums = SKIP
+
+pkgname = crossword-git
