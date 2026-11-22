@@ -1,5 +1,5 @@
 pkgname=hyprism-shell-git
-pkgver=0.1.21
+pkgver=0.1.22
 pkgrel=1
 pkgdesc='Hyprland and Quickshell desktop environment with dynamic theming (development version)'
 arch=('any')
@@ -31,7 +31,7 @@ depends=(
   'qt5ct'
   'qt6-imageformats'
   'qt6ct'
-  'quickshell'
+  'quickshell>=0.2.0'
   'sassc'
   'satty'
   'slurp'
@@ -65,6 +65,7 @@ optdepends=(
   'zathura: generated document viewer theme'
   'zathura-pdf-mupdf: PDF support for Zathura'
 )
+backup=('etc/pam.d/hyprism-lock')
 makedepends=('git')
 provides=("hyprism-shell=${pkgver}")
 conflicts=('hyprism-shell')
