@@ -1,0 +1,6 @@
+pkg/
+src/
+*.pkg
+*.pkg.tar.*
+nimsync-*-linux-*
+nimsync-LICENSE-*
