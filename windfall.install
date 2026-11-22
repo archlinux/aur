@@ -1,8 +1,7 @@
 post_install() {
   echo "==> Windfall is an app: launch it from your application menu (or run: windfall)."
-  echo "    It starts in the tray, and running it again opens the controller. It starts with your Hyprland session"
-  echo "    (XDG autostart; uwsm and dex honour it). Otherwise add one line to your Hyprland config:"
-  echo "        exec-once = windfall"
+  echo "    It detects the session at launch: Hyprland gets full window/bar integration; Plasma Wayland and X11 get"
+  echo "    transparent screen-edge effects. It starts through XDG autostart; running it again opens the controller."
 }
 
 post_upgrade() {

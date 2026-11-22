@@ -1,19 +1,19 @@
 # Maintainer: tak0dan <200241398+tak0dan@users.noreply.github.com>
 pkgname=windfall
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="Weather overlay for Hyprland: snow, leaves, petals and rain fall and pile up, flowers grow where they land (tray icon, GTK4 controller, pixel-art mode)"
+pkgdesc="Weather overlay for Hyprland, Plasma Wayland/X11 and Windows, with a GTK4 controller"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tak0dan/windfall"
 license=('GPL-3.0-or-later')
-depends=('gtk4' 'libadwaita' 'libglvnd' 'wayland' 'gcc-libs' 'glibc')
+depends=('gtk4' 'libadwaita' 'libglvnd' 'wayland' 'xorg-xprop' 'gcc-libs' 'glibc')
 makedepends=('cargo')
 optdepends=('ttf-jetbrains-mono: pixel-theme font fallback'
             'ttf-press-start-2p: authentic pixel font for the controller in pixel mode')
 options=('!lto' '!debug')
 install=windfall.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0b4f952bc258a80ed9093c4a293b8390d3f738edb2b3ee85b7b81a18cb4ffbde')
+sha256sums=('7db9fea1dfa8a38646e30256fd4e889fec267142ffaa35d15e11f570b2caf13c')
 
 prepare() {
   cd "$pkgname-$pkgver"

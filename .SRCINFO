@@ -1,6 +1,6 @@
 pkgbase = windfall
-	pkgdesc = Weather overlay for Hyprland: snow, leaves, petals and rain fall and pile up, flowers grow where they land (tray icon, GTK4 controller, pixel-art mode)
-	pkgver = 0.6.0
+	pkgdesc = Weather overlay for Hyprland, Plasma Wayland/X11 and Windows, with a GTK4 controller
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/tak0dan/windfall
 	install = windfall.install
@@ -12,13 +12,14 @@ pkgbase = windfall
 	depends = libadwaita
 	depends = libglvnd
 	depends = wayland
+	depends = xorg-xprop
 	depends = gcc-libs
 	depends = glibc
 	optdepends = ttf-jetbrains-mono: pixel-theme font fallback
 	optdepends = ttf-press-start-2p: authentic pixel font for the controller in pixel mode
 	options = !lto
 	options = !debug
-	source = windfall-0.6.0.tar.gz::https://github.com/tak0dan/windfall/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 0b4f952bc258a80ed9093c4a293b8390d3f738edb2b3ee85b7b81a18cb4ffbde
+	source = windfall-0.7.0.tar.gz::https://github.com/tak0dan/windfall/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 7db9fea1dfa8a38646e30256fd4e889fec267142ffaa35d15e11f570b2caf13c
 
 pkgname = windfall
