@@ -1,16 +1,19 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 # Contributor: Alad Wenter <alad@archlinux.org>
 # Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Daniel Plaza <daniel.plaza.espi@gmail.com>
 
-_pkgname=pcsclite
-pkgname=lib32-$_pkgname
 # https://gitlab.archlinux.org/archlinux/packaging/packages/pcsclite/-/commits/main
 # https://salsa.debian.org/rousseau/PCSC/blob/master/ChangeLog
-pkgver=2.5.1
+
+set -u
+pkgname=pcsclite
+pkgver=2.5.4
 pkgrel=1
-pkgdesc="PC/SC Architecture smartcard middleware library (32-bit)"
+pkgdesc="PC/SC Architecture smartcard middleware library"
+pkgdesc+=" (32-bit)"
 arch=('x86_64')
 url='https://pcsclite.apdu.fr/'
 # https://salsa.debian.org/rousseau/PCSC/-/blob/2.0.3/COPYING
@@ -24,7 +27,7 @@ depends=(
   'libsystemd.so'
   'libudev.so'
   'libpolkit-gobject-1.so'
-  $_pkgname
+  "${pkgname}>=${pkgver}"
 )
 makedepends=(
   'git'
@@ -44,21 +47,47 @@ source=(
   "systemd-unit-conflicts.diff"
   "0001-Allow-to-run-32-bit-pcscd-on-64-bit-systems.patch"
 )
-sha256sums=('fb396681125b89569e3513e80b11f8636dba144dae6b49d480fe292cbb759b1d'
-            '782db4be00202c5a8ea305bfbf6c8a6da17ccdbf370b3b79bb0c0eea3f4c6bf1'
-            '207a2109c954ae75ba31e607f8da587f7053c6fe2f9e3ae17090acfb0c680b36'
+sha256sums=('ca20712dfd41f1384a2a933c34b00f69001ed2a7271e93398c5906fa557301ec'
+            'f174b131908f6e8104e7a07654bba5a7b038f2cee97eed19389fbca85f922946'
+            '30c1c2bdf57d8d27bd0b717d0804cbfba549d6507f74450a7924fc5b998a3067'
             '6623cfd64ce75c3c8a4274210a437f3d192908bd3b5505f5c529c2aebd581581')
 
+pkgname="lib32-${pkgname}"
+
 prepare() {
+  local -; set -u
   cd PCSC
-  patch -Np1 -i ../program-suffix.patch
+
+  local _patches=()
+  _patches+=('program-suffix.patch')
   # Seems pcscd-32 needs exclusive access to devices
-  patch -Np1 -i ../systemd-unit-conflicts.diff
-  patch -Np1 -i ../0001-Allow-to-run-32-bit-pcscd-on-64-bit-systems.patch
+  _patches+=('systemd-unit-conflicts.diff')
+  _patches+=('0001-Allow-to-run-32-bit-pcscd-on-64-bit-systems.patch')
+
+  local _pt _ptf=() _pts=()
+  for _pt in "${_patches[@]}"; do
+    set +u; msg2 "Patch ${_pt}"; set -u
+    if patch -Nup1 --no-backup-if-mismatch -i "${srcdir}/${_pt}"; then
+      _pts+=("${_pt}")
+    else
+      _ptf+=("${_pt}")
+    fi
+  done
+  if [ "${#_ptf[@]}" -gt 0 ]; then
+     if [ "${#_pts[@]}" -gt 0 ]; then
+       printf 'Patch success %s\n' "${_pts[@]}"
+       printf 'Warning: Some old patches may need to be removed even if they are successful\n'
+     fi
+     printf 'Patch failed %s\n' "${_ptf[@]}"
+     set +x
+     false
+  fi
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 }
 
 build() {
-  local meson_options=(
+  local _meson_options=(
     --cross-file lib32
     -D program_suffix="-32"
     -D libsystemd=true
@@ -68,7 +97,7 @@ build() {
     -D systemdunit=system
     -D usbdropdir=/usr/lib32/pcsc/drivers
   )
-  arch-meson PCSC build "${meson_options[@]}"
+  arch-meson PCSC build "${_meson_options[@]}"
   meson compile -C build
 
   # namcap requires separate files for each "uncommon" license (ex: BSD* ones), so splitting the upstream COPYING file
@@ -90,5 +119,6 @@ package() {
   install -D -m0644 LICENSE.* -t "${pkgdir}"/usr/share/licenses/$pkgname
   install -d "${pkgdir}"/usr/lib32/pcsc/drivers
 }
+set +u
 
 # vim:set sw=2 sts=-1 et:

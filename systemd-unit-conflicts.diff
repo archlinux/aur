@@ -15,7 +15,7 @@ index 86b3ec9e..60732c17 100644
 @@ -2,6 +2,7 @@
  Description=PC/SC Smart Card Daemon
  Requires=pcscd@program_suffix@.socket
- @requires_polkit@
+ @polkit_dependencies@
 +Conflicts=pcscd.service
  Documentation=man:pcscd(8)
  
