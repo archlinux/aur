@@ -1,0 +1,19 @@
+pkgbase = absorb-bin
+	pkgdesc = Quickly read a file without moving your eyes
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/kloki/absorb
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = absorb
+	conflicts = absorb
+	options = !debug
+	source_x86_64 = absorb-bin-0.1.5-x86_64.tar.xz::https://github.com/kloki/absorb/releases/download/v0.1.5/absorb-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 6b76c579fcd3270589d01dabf9d8356aa274c9f32a65e7b8e84321187a564ce1
+	source_aarch64 = absorb-bin-0.1.5-aarch64.tar.xz::https://github.com/kloki/absorb/releases/download/v0.1.5/absorb-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = a6c8e52aa7af0433255a723061819abbd93b2a97463cae60688b277c13ffb7b1
+
+pkgname = absorb-bin
