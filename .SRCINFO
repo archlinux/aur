@@ -1,0 +1,27 @@
+pkgbase = hyprshare-git
+	pkgdesc = Linux-native sharing platform for Hyprland and Wayland (CLI, TUI, desktop GUI and web UI) - git version
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/polarours/hyprshare
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = pkgconf
+	depends = openssl
+	depends = sdbus-cpp
+	depends = pipewire
+	depends = gcc-libs
+	depends = glibc
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	optdepends = avahi: mDNS discovery support
+	source = hyprshare::git+https://github.com/polarours/hyprshare.git
+	sha256sums = SKIP
+
+pkgname = hyprshare-git
