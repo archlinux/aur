@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=frost-d77
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Wayland desktop shell and session locker written in Rust"
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
   'curl: weather forecast'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a7a8ce1e854eb4950bdf01325897e8138c401c41ddf9df99ca8914488524a3c8')
+sha256sums=('a1633384cc9f493b274ad4a3faae7730d50c13741f379eff8caf13d6508a2021')
 
 prepare() {
     cd "frost-$pkgver"
