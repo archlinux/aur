@@ -1,0 +1,15 @@
+pkgbase = clip-bridge
+	pkgdesc = Wayland clipboard persistence, history forwarding to an external manager like cliphist, and copy/paste helpers for scripting
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/pakhromov/clip-bridge
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = wayland
+	optdepends = cliphist: clipboard history backend (default command)
+	optdepends = clipvault: alternative clipboard history backend
+	source = clip-bridge-0.1.tar.gz::https://github.com/pakhromov/clip-bridge/archive/refs/tags/v0.1.tar.gz
+	sha256sums = 70cafd7cb265f643e383efb2c02b9e0a8e41673130b46033b8055628cd85ffd6
+
+pkgname = clip-bridge
