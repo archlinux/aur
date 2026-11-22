@@ -1,0 +1,21 @@
+pkgbase = ratifact-bin
+	pkgdesc = Track and manage build artifacts from multiple programming languages
+	pkgver = 0.1.16
+	pkgrel = 1
+	url = https://github.com/adolfousier/ratifact
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ratifact
+	conflicts = ratifact
+	options = !debug
+	source = ratifact-bin-0.1.16-LICENSE::https://raw.githubusercontent.com/adolfousier/ratifact/v0.1.16/LICENSE
+	sha256sums = 0b5d652f1859f0f11971ad6e3dfc1f0856948fbbba253b1eb85bb1e512cc44e1
+	source_x86_64 = ratifact-bin-0.1.16-x86_64.tar.gz::https://github.com/adolfousier/ratifact/releases/download/v0.1.16/ratifact-v0.1.16-linux-amd64.tar.gz
+	sha256sums_x86_64 = abfc0844592cb5f557ece62ce06e7ef3e747603d9e8f5dcdc0b67bbdf22097de
+	source_aarch64 = ratifact-bin-0.1.16-aarch64.tar.gz::https://github.com/adolfousier/ratifact/releases/download/v0.1.16/ratifact-v0.1.16-linux-arm64.tar.gz
+	sha256sums_aarch64 = 09517d5db484edbcf209e9734aaf4cb27e1f601982dc6cb35f4d42b053c32615
+
+pkgname = ratifact-bin
