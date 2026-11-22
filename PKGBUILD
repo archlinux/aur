@@ -9,7 +9,7 @@
 # or drop devicetool-linux-tool-<version>.zip next to this PKGBUILD.
 pkgname=deveco-devicetool
 pkgver=4.0.0.400
-pkgrel=3
+pkgrel=5
 pkgdesc='HUAWEI DevEco Device Tool for OpenHarmony device development (VS Code toolchain bundle)'
 arch=('x86_64')
 url='https://device.harmonyos.com/cn/develop/ide/'
@@ -46,7 +46,7 @@ prepare() {
       f="$srcdir/$name"
       msg "fetching $name"
       curl -fL --retry 3 -o "$f" "$DEVECO_DEVICETOOL_URL" ||
-        { error "download failed: $DEVECO_DEVICETOOL_URL"; return 1; }
+        { error "download failed"; return 1; }
     else
       error "No DevEco Device Tool archive found."
       error ""
@@ -68,11 +68,14 @@ prepare() {
   fi
   chmod +x "$shf"
   sh "$shf" --noexec --nox11 --target "$srcdir/extracted"
+  # the payload stores helpers non-executable; the vendor installer expects them executable
+  chmod 755 "$srcdir/extracted/"*.sh 2>/dev/null || true
 }
 
 package() {
   install -d "$pkgdir/opt/Huawei/DevEco-Device-Tool/installer"
   cp -r --no-preserve=ownership "$srcdir/extracted/." "$pkgdir/opt/Huawei/DevEco-Device-Tool/installer/"
+  chmod 755 "$pkgdir/opt/Huawei/DevEco-Device-Tool/installer/"*.sh
 
   install -d "$pkgdir/usr/lib/udev/rules.d"
   install -m644 "$srcdir/extracted"/*.rules "$pkgdir/usr/lib/udev/rules.d/"
@@ -83,7 +86,8 @@ package() {
   cat > "$pkgdir/usr/bin/deveco-devicetool" <<'EOF'
 #!/bin/sh
 # vendor installer needs root and installs per-user VS Code plugins
-exec sudo -E /opt/Huawei/DevEco-Device-Tool/installer/run.sh --system "$@"
+cd /opt/Huawei/DevEco-Device-Tool/installer || exit 1
+exec sudo -E bash ./run.sh --system "$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/deveco-devicetool"
 
