@@ -2,12 +2,13 @@
 # 自用维护：仅信任官方 GitHub release 资产，sha256 锁定官方 SHA256SUMS.txt。
 pkgname=gridcraft-private-bin
 pkgver=0.19.1
-pkgrel=2
+pkgrel=3
 pkgdesc='自用维护：开源 clean-room 版 Microsoft Excel 替代（电子表格），上游 storytold/gridcraft'
 arch=('x86_64')
 url='https://getartcraft.com/apps/gridcraft'
 # GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
 _gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
+_gh_mirror="${_gh_mirror%/}/"
 license=('MIT' 'Apache')
 provides=("gridcraft=$pkgver")
 conflicts=('gridcraft' 'gridcraft-bin' 'gridcraft-git' 'ai.storyteller.gridcraft')

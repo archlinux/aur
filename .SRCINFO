@@ -1,7 +1,7 @@
 pkgbase = gridcraft-private-bin
 	pkgdesc = 自用维护：开源 clean-room 版 Microsoft Excel 替代（电子表格），上游 storytold/gridcraft
 	pkgver = 0.19.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getartcraft.com/apps/gridcraft
 	arch = x86_64
 	license = MIT
