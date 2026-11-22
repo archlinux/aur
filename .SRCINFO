@@ -1,0 +1,16 @@
+pkgbase = tuitar
+	pkgdesc = A portable guitar training tool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/orhun/tuitar
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = tuitar-0.1.0.tar.gz::https://github.com/orhun/tuitar/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 9cdff617bbbf3cfa9883682946e02908cb93911dbc218e33d97ecfef71fe2e47
+
+pkgname = tuitar
