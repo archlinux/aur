@@ -1,0 +1,391 @@
+From c5bd070772cac8d5a20b3cabb6f9df2958441a2a Mon Sep 17 00:00:00 2001
+From: Twilight0 <twilight0@vivaldi.net>
+Date: Sun, 22 Nov 2026 16:14:58 +0200
+Subject: [PATCH 1/3] nouveau,va: fix VP4 teardown ordering, fence sync, M2MF
+ bounds, and VA surface handling
+
+- Set obj->parent = &drm->client in nouveau_object_subchan_new() so engine
+  objects can be destroyed after their parent channel.
+- Wait on active BOs and destroy the pushbuf/channel before deleting VP4
+  engine subchannel objects in nouveau_vp3_decoder_destroy(),
+  firmware_present(), and nvc0_screen_destroy() to avoid Fermi GPU hangs.
+- Implement nouveau_vp3_decoder_fence_wait/destroy_fence and export
+  out_fence in nvc0_decoder_end_frame(); pass NULL to
+  nouveau_pushbuf_create() for the decoder channel so its kick callback
+  does not corrupt the 3D screen fence sequence.
+- Guard _nouveau_fence_update() in nouveau_pushbuf_cb() to only fire for
+  the screen channel and promote EMITTED fences to FLUSHED even when
+  sequence_ack == sequence.
+- Clamp nvc0_m2mf_transfer_rect() dimensions defensively to avoid
+  XY_OUT_OF_BOUNDS hardware faults.
+- Fix VA-API interlaced surface sizing, upload clamping, surface interlaced
+  flag propagation, and H.264 decoder recreation when num_ref_frames exceeds
+  max_references.
+---
+ src/gallium/drivers/nouveau/nouveau_fence.c   | 33 +++++----
+ src/gallium/drivers/nouveau/nouveau_screen.c  |  2 +-
+ .../drivers/nouveau/nouveau_vp3_video.c       | 73 +++++++++++++++----
+ .../drivers/nouveau/nvc0/nvc0_screen.c        | 20 +++--
+ .../drivers/nouveau/nvc0/nvc0_transfer.c      | 10 +++
+ src/gallium/drivers/nouveau/nvc0/nvc0_video.c |  7 +-
+ src/gallium/frontends/va/image.c              |  9 ++-
+ src/gallium/frontends/va/picture_h264.c       |  2 +-
+ src/gallium/frontends/va/surface.c            |  1 +
+ src/gallium/winsys/nouveau/drm/nouveau.c      |  4 +
+ 10 files changed, 116 insertions(+), 45 deletions(-)
+
+diff --git a/src/gallium/drivers/nouveau/nouveau_fence.c b/src/gallium/drivers/nouveau/nouveau_fence.c
+index e3f4da9..727cb0d 100644
+--- a/src/gallium/drivers/nouveau/nouveau_fence.c
++++ b/src/gallium/drivers/nouveau/nouveau_fence.c
+@@ -40,7 +40,8 @@ nouveau_fence_new(struct nouveau_context *nv, struct nouveau_fence **fence)
+    if (!new_fence)
+       return false;
+ 
+-   int ret = nouveau_bo_new(nv->screen->device, NOUVEAU_BO_GART, 0x1000, 0x1000, NULL, &new_fence->bo);
++   int ret = nouveau_bo_new(nv->screen->device, NOUVEAU_BO_GART, 0x1000, 0x1000, NULL,
++                            &new_fence->bo);
+    if (ret) {
+       FREE(new_fence);
+       return false;
+@@ -165,28 +166,28 @@ _nouveau_fence_update(struct nouveau_screen *screen, bool flushed)
+    if (unlikely(screen->disable_fences))
+       sequence = screen->fence.sequence;
+ 
+-   if (fence_list->sequence_ack == sequence)
+-      return;
+-   fence_list->sequence_ack = sequence;
++   if (fence_list->sequence_ack != sequence) {
++      fence_list->sequence_ack = sequence;
+ 
+-   for (fence = fence_list->head; fence; fence = next) {
+-      next = fence->next;
+-      sequence = fence->sequence;
++      for (fence = fence_list->head; fence; fence = next) {
++         next = fence->next;
++         sequence = fence->sequence;
+ 
+-      fence->state = NOUVEAU_FENCE_STATE_SIGNALLED;
++         fence->state = NOUVEAU_FENCE_STATE_SIGNALLED;
+ 
+-      nouveau_fence_trigger_work(fence);
+-      _nouveau_fence_ref(NULL, &fence);
++         nouveau_fence_trigger_work(fence);
++         _nouveau_fence_ref(NULL, &fence);
+ 
+-      if (sequence == fence_list->sequence_ack)
+-         break;
++         if (sequence == fence_list->sequence_ack)
++            break;
++      }
++      fence_list->head = next;
++      if (!next)
++         fence_list->tail = NULL;
+    }
+-   fence_list->head = next;
+-   if (!next)
+-      fence_list->tail = NULL;
+ 
+    if (flushed) {
+-      for (fence = next; fence; fence = fence->next)
++      for (fence = fence_list->head; fence; fence = fence->next)
+          if (fence->state == NOUVEAU_FENCE_STATE_EMITTED)
+             fence->state = NOUVEAU_FENCE_STATE_FLUSHED;
+    }
+diff --git a/src/gallium/drivers/nouveau/nouveau_screen.c b/src/gallium/drivers/nouveau/nouveau_screen.c
+index b144b89..63b4e34 100644
+--- a/src/gallium/drivers/nouveau/nouveau_screen.c
++++ b/src/gallium/drivers/nouveau/nouveau_screen.c
+@@ -228,7 +228,7 @@ nouveau_pushbuf_cb(struct nouveau_pushbuf *push)
+    if (p->context) {
+       if (!p->context->kick_notify(p->context))
+          return false;
+-   } else {
++   } else if (push->channel == p->screen->channel) {
+       _nouveau_fence_update(p->screen, true);
+    }
+ 
+diff --git a/src/gallium/drivers/nouveau/nouveau_vp3_video.c b/src/gallium/drivers/nouveau/nouveau_vp3_video.c
+index 5130ed6..32adf19 100644
+--- a/src/gallium/drivers/nouveau/nouveau_vp3_video.c
++++ b/src/gallium/drivers/nouveau/nouveau_vp3_video.c
+@@ -102,7 +102,6 @@ nouveau_vp3_video_buffer_create(struct pipe_context *pipe,
+    if (templat->buffer_format != PIPE_FORMAT_NV12)
+       return vl_video_buffer_create(pipe, templat);
+ 
+-   assert(templat->interlaced);
+    assert(pipe_format_to_chroma_format(templat->buffer_format) == PIPE_VIDEO_CHROMA_FORMAT_420);
+ 
+    buffer = CALLOC_STRUCT(nouveau_vp3_video_buffer);
+@@ -201,12 +200,66 @@ nouveau_vp3_decoder_end_frame(struct pipe_video_codec *decoder,
+    return 0;
+ }
+ 
++static int
++nouveau_vp3_decoder_fence_wait(struct pipe_video_codec *decoder,
++                               struct pipe_fence_handle *fence,
++                               uint64_t timeout)
++{
++   struct nouveau_vp3_decoder *dec = (struct nouveau_vp3_decoder *)decoder;
++   struct nouveau_bo *bo = (struct nouveau_bo *)fence;
++   uint32_t access = NOUVEAU_BO_RDWR;
++
++   if (!bo)
++      return 1;
++   if (!timeout)
++      access |= NOUVEAU_BO_NOBLOCK;
++
++   return nouveau_bo_wait(bo, access, dec->client) == 0;
++}
++
++static void
++nouveau_vp3_decoder_destroy_fence(struct pipe_video_codec *decoder,
++                                  struct pipe_fence_handle *fence)
++{
++   struct nouveau_bo *bo = (struct nouveau_bo *)fence;
++
++   nouveau_bo_ref(NULL, &bo);
++}
++
+ static void
+ nouveau_vp3_decoder_destroy(struct pipe_video_codec *decoder)
+ {
+    struct nouveau_vp3_decoder *dec = (struct nouveau_vp3_decoder *)decoder;
+    int i;
+ 
++   if (dec->ref_bo)
++      nouveau_bo_wait(dec->ref_bo, NOUVEAU_BO_RDWR, dec->client);
++   if (dec->inter_bo[0])
++      nouveau_bo_wait(dec->inter_bo[0], NOUVEAU_BO_RDWR, dec->client);
++   if (dec->inter_bo[1])
++      nouveau_bo_wait(dec->inter_bo[1], NOUVEAU_BO_RDWR, dec->client);
++   for (i = 0; i < NOUVEAU_VP3_VIDEO_QDEPTH; ++i) {
++      if (dec->bsp_bo[i])
++         nouveau_bo_wait(dec->bsp_bo[i], NOUVEAU_BO_RDWR, dec->client);
++   }
++
++   /* Free the channel(s) before deleting the subchannel engine objects so
++    * that nouveau_channel_idle() inside DRM_NOUVEAU_CHANNEL_FREE runs while
++    * the MSVLD/MSPDEC/MSPPP engine contexts are still bound and powered on. */
++   if (dec->channel[0] != dec->channel[1]) {
++      for (i = 0; i < 3; ++i) {
++         nouveau_pushbuf_destroy(&dec->pushbuf[i]);
++         nouveau_object_del(&dec->channel[i]);
++      }
++   } else {
++      nouveau_pushbuf_destroy(dec->pushbuf);
++      nouveau_object_del(dec->channel);
++   }
++
++   nouveau_object_del(&dec->bsp);
++   nouveau_object_del(&dec->vp);
++   nouveau_object_del(&dec->ppp);
++
+    nouveau_bo_ref(NULL, &dec->ref_bo);
+    nouveau_bo_ref(NULL, &dec->bitplane_bo);
+    nouveau_bo_ref(NULL, &dec->inter_bo[0]);
+@@ -219,20 +272,6 @@ nouveau_vp3_decoder_destroy(struct pipe_video_codec *decoder)
+    for (i = 0; i < NOUVEAU_VP3_VIDEO_QDEPTH; ++i)
+       nouveau_bo_ref(NULL, &dec->bsp_bo[i]);
+ 
+-   nouveau_object_del(&dec->bsp);
+-   nouveau_object_del(&dec->vp);
+-   nouveau_object_del(&dec->ppp);
+-
+-   if (dec->channel[0] != dec->channel[1]) {
+-      for (i = 0; i < 3; ++i) {
+-         nouveau_pushbuf_destroy(&dec->pushbuf[i]);
+-         nouveau_object_del(&dec->channel[i]);
+-      }
+-   } else {
+-      nouveau_pushbuf_destroy(dec->pushbuf);
+-      nouveau_object_del(dec->channel);
+-   }
+-
+    FREE(dec);
+ }
+ 
+@@ -243,6 +282,8 @@ nouveau_vp3_decoder_init_common(struct pipe_video_codec *dec)
+    dec->flush = nouveau_vp3_decoder_flush;
+    dec->begin_frame = nouveau_vp3_decoder_begin_frame;
+    dec->end_frame = nouveau_vp3_decoder_end_frame;
++   dec->fence_wait = nouveau_vp3_decoder_fence_wait;
++   dec->destroy_fence = nouveau_vp3_decoder_destroy_fence;
+ }
+ 
+ static void vp3_getpath(enum pipe_video_profile profile, char *path)
+@@ -408,8 +449,8 @@ firmware_present(struct pipe_screen *pscreen, enum pipe_video_profile profile)
+                                NULL, 0, &bsp);
+          if (bsp)
+             screen->firmware_info.profiles_present |= 1;
+-         nouveau_object_del(&bsp);
+          nouveau_object_del(&channel);
++         nouveau_object_del(&bsp);
+       }
+       screen->firmware_info.profiles_checked |= 1;
+    }
+diff --git a/src/gallium/drivers/nouveau/nvc0/nvc0_screen.c b/src/gallium/drivers/nouveau/nvc0/nvc0_screen.c
+index 07fa13d..0ebd2bf 100644
+--- a/src/gallium/drivers/nouveau/nvc0/nvc0_screen.c
++++ b/src/gallium/drivers/nouveau/nvc0/nvc0_screen.c
+@@ -443,6 +443,19 @@ nvc0_screen_destroy(struct pipe_screen *pscreen)
+       FREE(screen->pm.prog);
+    }
+ 
++   if (screen->fence.bo)
++      nouveau_bo_wait(screen->fence.bo, NOUVEAU_BO_RDWR, screen->base.client);
++
++   nouveau_pushbuf_destroy(&screen->base.pushbuf);
++   nouveau_object_del(&screen->base.channel);
++
++   nouveau_object_del(&screen->eng3d);
++   nouveau_object_del(&screen->eng2d);
++   nouveau_object_del(&screen->m2mf);
++   nouveau_object_del(&screen->copy);
++   nouveau_object_del(&screen->compute);
++   nouveau_object_del(&screen->nvsw);
++
+    nouveau_bo_ref(NULL, &screen->text);
+    nouveau_bo_ref(NULL, &screen->uniform_bo);
+    nouveau_bo_ref(NULL, &screen->tls);
+@@ -455,13 +468,6 @@ nvc0_screen_destroy(struct pipe_screen *pscreen)
+ 
+    FREE(screen->tic.entries);
+ 
+-   nouveau_object_del(&screen->eng3d);
+-   nouveau_object_del(&screen->eng2d);
+-   nouveau_object_del(&screen->m2mf);
+-   nouveau_object_del(&screen->copy);
+-   nouveau_object_del(&screen->compute);
+-   nouveau_object_del(&screen->nvsw);
+-
+    nouveau_screen_fini(&screen->base);
+    simple_mtx_destroy(&screen->state_lock);
+ 
+diff --git a/src/gallium/drivers/nouveau/nvc0/nvc0_transfer.c b/src/gallium/drivers/nouveau/nvc0/nvc0_transfer.c
+index 7a2531e..e1f4f81 100644
+--- a/src/gallium/drivers/nouveau/nvc0/nvc0_transfer.c
++++ b/src/gallium/drivers/nouveau/nvc0/nvc0_transfer.c
+@@ -29,6 +29,16 @@ nvc0_m2mf_transfer_rect(struct nvc0_context *nvc0,
+ 
+    assert(dst->cpp == src->cpp);
+ 
++   if (src->x >= src->width || dst->x >= dst->width ||
++       src->y >= src->height || dst->y >= dst->height)
++      return;
++
++   nblocksx = MIN3(nblocksx, src->width - src->x, dst->width - dst->x);
++   nblocksy = MIN3(nblocksy, src->height - src->y, dst->height - dst->y);
++   if (!nblocksx || !nblocksy)
++      return;
++   height = nblocksy;
++
+    nouveau_bufctx_refn(bctx, 0, src->bo, src->domain | NOUVEAU_BO_RD);
+    nouveau_bufctx_refn(bctx, 0, dst->bo, dst->domain | NOUVEAU_BO_WR);
+    nouveau_pushbuf_bufctx(push, bctx);
+diff --git a/src/gallium/drivers/nouveau/nvc0/nvc0_video.c b/src/gallium/drivers/nouveau/nvc0/nvc0_video.c
+index 9df9c33..5577ee5 100644
+--- a/src/gallium/drivers/nouveau/nvc0/nvc0_video.c
++++ b/src/gallium/drivers/nouveau/nvc0/nvc0_video.c
+@@ -85,6 +85,11 @@ nvc0_decoder_end_frame(struct pipe_video_codec *decoder,
+ 
+    nvc0_decoder_vp(dec, desc, target, comm_seq, vp_caps, is_ref, refs);
+    nvc0_decoder_ppp(dec, desc, target, comm_seq);
++
++   if (picture->out_fence) {
++      struct nv50_miptree *mt = (struct nv50_miptree *)target->resources[0];
++      nouveau_bo_ref(mt->base.bo, (struct nouveau_bo **)picture->out_fence);
++   }
+    return 0;
+ }
+ 
+@@ -159,7 +164,7 @@ nvc0_create_decoder(struct pipe_context *context,
+                                   data, size, &dec->channel[i]);
+ 
+          if (!ret)
+-            ret = nouveau_pushbuf_create(screen, &nvc0->base, nvc0->base.client, dec->channel[i],
++            ret = nouveau_pushbuf_create(screen, NULL, nvc0->base.client, dec->channel[i],
+                                          4, 32 * 1024, &dec->pushbuf[i]);
+          if (ret)
+             break;
+diff --git a/src/gallium/frontends/va/image.c b/src/gallium/frontends/va/image.c
+index 5095676..c347cd7 100644
+--- a/src/gallium/frontends/va/image.c
++++ b/src/gallium/frontends/va/image.c
+@@ -87,7 +87,7 @@ vlVaVideoSurfaceSize(vlVaSurface *p_surf, int component,
+ 
+    vl_video_buffer_adjust_size(width, height, component,
+                                pipe_format_to_chroma_format(p_surf->templat.buffer_format),
+-                               p_surf->templat.interlaced);
++                               p_surf->buffer ? p_surf->buffer->interlaced : p_surf->templat.interlaced);
+ }
+ 
+ VAStatus
+@@ -564,12 +564,13 @@ vlVaGetImage(VADriverContextP ctx, VASurfaceID surface, int x, int y,
+       unsigned box_x = x & ~1;
+       unsigned box_y = y & ~1;
+       if (!view_resources[i]) continue;
++      bool interlaced = surf->buffer ? surf->buffer->interlaced : surf->templat.interlaced;
+       vl_video_buffer_adjust_size(&box_w, &box_h, i,
+                                   pipe_format_to_chroma_format(surf->templat.buffer_format),
+-                                  surf->templat.interlaced);
++                                  interlaced);
+       vl_video_buffer_adjust_size(&box_x, &box_y, i,
+                                   pipe_format_to_chroma_format(surf->templat.buffer_format),
+-                                  surf->templat.interlaced);
++                                  interlaced);
+       for (j = 0; j < view_resources[i]->array_size; ++j) {
+          struct pipe_box box;
+          u_box_3d(box_x, box_y, j, box_w, box_h, 1, &box);
+@@ -631,6 +632,8 @@ vlVaUploadImage(vlVaDriver *drv, vlVaSurface *surf, vlVaBuffer *buf, VAImage *im
+       tex = view_resources[i];
+ 
+       vlVaVideoSurfaceSize(surf, i, &width, &height);
++      width = MIN2(width, tex->width0);
++      height = MIN2(height, tex->height0);
+       for (unsigned j = 0; j < tex->array_size; ++j) {
+          struct pipe_box dst_box;
+          u_box_3d(0, 0, j, width, height, 1, &dst_box);
+diff --git a/src/gallium/frontends/va/picture_h264.c b/src/gallium/frontends/va/picture_h264.c
+index 71a8938..498f273 100644
+--- a/src/gallium/frontends/va/picture_h264.c
++++ b/src/gallium/frontends/va/picture_h264.c
+@@ -119,7 +119,7 @@ void vlVaHandlePictureParameterBufferH264(vlVaDriver *drv, vlVaContext *context,
+       h264->pic_fields.bits.field_pic_flag &&
+       (h264->CurrPic.flags & VA_PICTURE_H264_BOTTOM_FIELD) != 0;
+ 
+-   if (context->decoder && (context->templat.max_references != context->desc.h264.num_ref_frames)) {
++   if (context->decoder && (context->templat.max_references < MIN2(context->desc.h264.num_ref_frames, 16))) {
+       context->templat.max_references = MIN2(context->desc.h264.num_ref_frames, 16);
+       pipe_video_codec_reference(&context->decoder, NULL);
+    } else if (!context->decoder && context->desc.h264.num_ref_frames > 0)
+diff --git a/src/gallium/frontends/va/surface.c b/src/gallium/frontends/va/surface.c
+index 170718f..dff3829 100644
+--- a/src/gallium/frontends/va/surface.c
++++ b/src/gallium/frontends/va/surface.c
+@@ -738,6 +738,7 @@ vlVaHandleSurfaceAllocate(vlVaDriver *drv, vlVaSurface *surface,
+    }
+    if (!surface->buffer)
+       return VA_STATUS_ERROR_ALLOCATION_FAILED;
++   surface->templat.interlaced = surface->buffer->interlaced;
+ 
+    if (drv->pipe->screen->get_video_param(drv->pipe->screen,
+                                           PIPE_VIDEO_PROFILE_UNKNOWN,
+diff --git a/src/gallium/winsys/nouveau/drm/nouveau.c b/src/gallium/winsys/nouveau/drm/nouveau.c
+index 14de23b..877882c 100644
+--- a/src/gallium/winsys/nouveau/drm/nouveau.c
++++ b/src/gallium/winsys/nouveau/drm/nouveau.c
+@@ -171,6 +171,10 @@ nouveau_object_subchan_new(struct nouveau_object *parent, uint64_t handle, uint3
+       },
+    };
+ 
++   /* Point obj->parent at the top-level drm client so subchannel objects
++    * can be deleted after their parent channel has been freed. */
++   obj->parent = &drm->client;
++
+    return drmCommandWrite(drm->fd, DRM_NOUVEAU_NVIF, &args, sizeof(args));
+ }
+ 
+-- 
+2.56.1
+

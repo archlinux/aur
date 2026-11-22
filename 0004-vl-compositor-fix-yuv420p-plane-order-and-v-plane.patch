@@ -1,0 +1,115 @@
+From 53da4654d88a6eb5432bddb04aa5a95e2cf7746b Mon Sep 17 00:00:00 2001
+From: Twilight0 <twilight0@vivaldi.net>
+Date: Sun, 22 Nov 2026 16:14:58 +0200
+Subject: [PATCH 2/3] vl/compositor: fix YUV420p plane order and V-plane gfx
+ sampling
+
+- Index destination surfaces through vl_video_buffer_plane_order() in
+  vl_compositor_yuv_deint_full() and vl_compositor_convert_rgb_to_yuv().
+- In set_yuv_layer(), bind sampler_views[1] = sampler_views[2] when
+  rendering VL_COMPOSITOR_PLANE_V on the graphics shader path so
+  fs_yuv.weave.uv does not duplicate the U plane into V.
+---
+ src/gallium/auxiliary/vl/vl_compositor.c | 26 ++++++++++++++++--------
+ 1 file changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/src/gallium/auxiliary/vl/vl_compositor.c b/src/gallium/auxiliary/vl/vl_compositor.c
+index efce666..e13f189 100644
+--- a/src/gallium/auxiliary/vl/vl_compositor.c
++++ b/src/gallium/auxiliary/vl/vl_compositor.c
+@@ -29,6 +29,7 @@
+ 
+ #include "vl_compositor_gfx.h"
+ #include "vl_compositor_cs.h"
++#include "vl_video_buffer.h"
+ 
+ static bool
+ init_shaders(struct vl_compositor *c)
+@@ -399,6 +400,13 @@ set_yuv_layer(struct vl_compositor_state *s, struct vl_compositor *c,
+           s->layers[layer].cs = (y) ? c->cs_yuv.weave.y : c->cs_yuv.weave.uv;
+       break;
+    }
++
++   /* The gfx deinterlace fragment shaders (fs_yuv.bob.uv / fs_yuv.weave.uv)
++    * output (sampler[1], sampler[2]) to fragment.xy. When rendering the V
++    * plane into a single-channel R8 target, bind V to sampler[1] so it lands
++    * in fragment.x instead of duplicating U. */
++   if (plane == VL_COMPOSITOR_PLANE_V && !s->layers[layer].cs)
++      s->layers[layer].sampler_views[1] = sampler_views[2];
+ }
+ 
+ static void
+@@ -724,12 +732,13 @@ vl_compositor_yuv_deint_full(struct vl_compositor_state *s,
+                              enum vl_compositor_deinterlace deinterlace)
+ {
+    struct pipe_surface *dst_surfaces;
++   const unsigned *plane_order = vl_video_buffer_plane_order(dst->buffer_format);
+ 
+    dst_surfaces = dst->get_surfaces(dst);
+ 
+    set_yuv_layer(s, c, 0, src, src_rect, NULL, VL_COMPOSITOR_PLANE_Y, deinterlace);
+    vl_compositor_set_layer_dst_area(s, 0, dst_rect);
+-   vl_compositor_render(s, c, &dst_surfaces[0], NULL, false);
++   vl_compositor_render(s, c, &dst_surfaces[plane_order[0]], NULL, false);
+ 
+    if (dst_surfaces[1].texture) {
+       bool clear = util_format_get_nr_components(src->buffer_format) == 1;
+@@ -745,9 +754,9 @@ vl_compositor_yuv_deint_full(struct vl_compositor_state *s,
+          struct u_rect clear_rect = *dst_rect;
+          s->used_layers = 0;
+          vl_compositor_set_clear_color(s, &clear_color);
+-         vl_compositor_render(s, c, &dst_surfaces[1], &clear_rect, true);
++         vl_compositor_render(s, c, &dst_surfaces[plane_order[1]], &clear_rect, true);
+       } else {
+-         vl_compositor_render(s, c, &dst_surfaces[1], NULL, false);
++         vl_compositor_render(s, c, &dst_surfaces[plane_order[1]], NULL, false);
+       }
+ 
+       if (dst_surfaces[2].texture) {
+@@ -757,9 +766,9 @@ vl_compositor_yuv_deint_full(struct vl_compositor_state *s,
+             struct u_rect clear_rect = *dst_rect;
+             s->used_layers = 0;
+             vl_compositor_set_clear_color(s, &clear_color);
+-            vl_compositor_render(s, c, &dst_surfaces[2], &clear_rect, true);
++            vl_compositor_render(s, c, &dst_surfaces[plane_order[2]], &clear_rect, true);
+          } else {
+-            vl_compositor_render(s, c, &dst_surfaces[2], NULL, false);
++            vl_compositor_render(s, c, &dst_surfaces[plane_order[2]], NULL, false);
+          }
+       }
+    }
+@@ -776,6 +785,7 @@ vl_compositor_convert_rgb_to_yuv(struct vl_compositor_state *s,
+ {
+    struct pipe_sampler_view *sv, sv_templ;
+    struct pipe_surface *dst_surfaces;
++   const unsigned *plane_order = vl_video_buffer_plane_order(dst->buffer_format);
+ 
+    dst_surfaces = dst->get_surfaces(dst);
+ 
+@@ -785,7 +795,7 @@ vl_compositor_convert_rgb_to_yuv(struct vl_compositor_state *s,
+ 
+    set_rgb_to_yuv_layer(s, c, 0, sv, src_rect, NULL, VL_COMPOSITOR_PLANE_Y);
+    vl_compositor_set_layer_dst_area(s, 0, dst_rect);
+-   vl_compositor_render(s, c, &dst_surfaces[0], NULL, false);
++   vl_compositor_render(s, c, &dst_surfaces[plane_order[0]], NULL, false);
+ 
+    if (dst_surfaces[1].texture) {
+       dst_rect->x0 = util_format_get_plane_width(dst->buffer_format, 1, dst_rect->x0);
+@@ -795,12 +805,12 @@ vl_compositor_convert_rgb_to_yuv(struct vl_compositor_state *s,
+       set_rgb_to_yuv_layer(s, c, 0, sv, src_rect, NULL, dst_surfaces[2].texture ? VL_COMPOSITOR_PLANE_U :
+                            VL_COMPOSITOR_PLANE_UV);
+       vl_compositor_set_layer_dst_area(s, 0, dst_rect);
+-      vl_compositor_render(s, c, &dst_surfaces[1], NULL, false);
++      vl_compositor_render(s, c, &dst_surfaces[plane_order[1]], NULL, false);
+ 
+       if (dst_surfaces[2].texture) {
+          set_rgb_to_yuv_layer(s, c, 0, sv, src_rect, NULL, VL_COMPOSITOR_PLANE_V);
+          vl_compositor_set_layer_dst_area(s, 0, dst_rect);
+-         vl_compositor_render(s, c, &dst_surfaces[2], NULL, false);
++         vl_compositor_render(s, c, &dst_surfaces[plane_order[2]], NULL, false);
+       }
+    }
+ 
+-- 
+2.56.1
+

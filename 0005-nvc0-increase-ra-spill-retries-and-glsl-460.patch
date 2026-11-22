@@ -1,0 +1,46 @@
+From f02ef93085f639b9db896767f764d561d3787cd8 Mon Sep 17 00:00:00 2001
+From: Twilight0 <twilight0@vivaldi.net>
+Date: Sun, 22 Nov 2026 16:14:58 +0200
+Subject: [PATCH 3/3] nvc0: increase RA spill retry limit to 8 and bump GLSL
+ feature level to 460
+
+- Raise RegAlloc::execFunc() spill retry limit from 3 to 8 for
+  high-register-pressure shaders.
+- Raise caps->glsl_feature_level and caps->glsl_feature_level_compatibility
+  from 430 to 460 on nvc0.
+---
+ src/gallium/drivers/nouveau/codegen/nv50_ir_ra.cpp | 2 +-
+ src/gallium/drivers/nouveau/nvc0/nvc0_screen.c     | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/gallium/drivers/nouveau/codegen/nv50_ir_ra.cpp b/src/gallium/drivers/nouveau/codegen/nv50_ir_ra.cpp
+index ea80acd..6086a8f 100644
+--- a/src/gallium/drivers/nouveau/codegen/nv50_ir_ra.cpp
++++ b/src/gallium/drivers/nouveau/codegen/nv50_ir_ra.cpp
+@@ -1793,7 +1793,7 @@ RegAlloc::execFunc()
+       goto out;
+ 
+    // TODO: need to fix up spill slot usage ranges to support > 1 retry
+-   for (retries = 0; retries < 3; ++retries) {
++   for (retries = 0; retries < 8; ++retries) {
+       if (retries && (prog->dbgFlags & NV50_IR_DEBUG_REG_ALLOC))
+          INFO("Retry: %i\n", retries);
+       if (prog->dbgFlags & NV50_IR_DEBUG_REG_ALLOC)
+diff --git a/src/gallium/drivers/nouveau/nvc0/nvc0_screen.c b/src/gallium/drivers/nouveau/nvc0/nvc0_screen.c
+index 0ebd2bf..4629e77 100644
+--- a/src/gallium/drivers/nouveau/nvc0/nvc0_screen.c
++++ b/src/gallium/drivers/nouveau/nvc0/nvc0_screen.c
+@@ -202,8 +202,8 @@ nvc0_init_screen_caps(struct nvc0_screen *screen)
+    caps->min_texture_gather_offset = -32;
+    caps->max_texture_gather_offset = 31;
+    caps->max_texel_buffer_elements = 128 * 1024 * 1024;
+-   caps->glsl_feature_level = 430;
+-   caps->glsl_feature_level_compatibility = 430;
++   caps->glsl_feature_level = 460;
++   caps->glsl_feature_level_compatibility = 460;
+    caps->max_render_targets = 8;
+    caps->max_dual_source_render_targets = 1;
+    caps->viewport_subpixel_bits =
+-- 
+2.56.1
+
