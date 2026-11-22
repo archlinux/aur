@@ -7,7 +7,7 @@ _appid=io.winspace.Development
 pkgname=${_gitname}-bin
 pkgdesc="Windows File Explorer-inspired file manager for Linux"
 
-pkgver=2.0.21
+pkgver=2.0.23
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ optdepends=('polkit: deleting a whole folder as administrator under admin://'
             'gvfs: the Recycle Bin and the drive and phone list'
             'gvfs-smb: SMB shares'
             'gvfs-mtp: phones'
-            'gnome-keyring: remembering SMB passwords'
             'xdg-utils: making OpenXplorer the default file manager'
-            'file-roller: Open in archive manager'
             'xdg-desktop-portal-gtk: Share on GNOME (its Email portal)'
+            'gnome-keyring: remembering SMB passwords'
+            'file-roller: Open in archive manager'
             'cifs-utils: the persistent SMB mount helper, openxplorer-mount-share')
 
 options=('!strip')
@@ -42,8 +42,8 @@ source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE" "THIRD_PARTY_NOTICES-${pkgver}
 source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-${arch[0]}.tzst::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${pkgver}-${pkgrel}-${arch[0]}.pkg.tar.zst")
 sha256sums=('fa330b7ec7715da6050bb6cd8cc5ec86c61d0671da711fcc79460cf69193d260'
             'e692556113c0d1f1ed7e5eb8710d354f55ad881fb131832218d715ade8bb14ec'
-            'd74c2c3b58cd0f4bf032cea974933994c0d404b69cc68f955cf5a8140758cdd5')
-sha256sums_x86_64=('2cfb8b2e386aa0669efe8dc40308981dca7154e14babbf573c5dc3942f3698e1')
+            '5cc3bdd0e0db7d0bb4f1b8194af858add2f8fe12c41191a0f4ddc225333982bd')
+sha256sums_x86_64=('ee7bfa35f9db66b3e08d2f32a114e3898590046ed26968f851f52bc385daa8d3')
 
 noextract=("${source_x86_64[@]%%::*}")
 
