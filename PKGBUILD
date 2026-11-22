@@ -1,7 +1,7 @@
 # Maintainer: Krzysztof Demir Kuźniak <krzysztofdemirkuzniak@gmail.com>
 
 pkgname=fla2anim
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Convert XFL-based Flash projects to Pencil2D, Synfig, SWF and image sequences"
 arch=('any')
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/kuznix-code/fla2anim/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha256sums=('4e75c0ef0362b1fb62c63d284ba6dc1ff8c543f8c9f2c936ea5fe2fa18f2bd0b')
+sha256sums=('f8a1688baf9794be7f4fca77ceff97e10dcbeceddf4307be8bc0cd30227ae149')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

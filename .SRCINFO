@@ -1,6 +1,6 @@
 pkgbase = fla2anim
 	pkgdesc = Convert XFL-based Flash projects to Pencil2D, Synfig, SWF and image sequences
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/kuznix-code/fla2anim
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = fla2anim
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pillow
-	source = fla2anim-0.1.0.tar.gz::https://github.com/kuznix-code/fla2anim/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 4e75c0ef0362b1fb62c63d284ba6dc1ff8c543f8c9f2c936ea5fe2fa18f2bd0b
+	source = fla2anim-0.1.1.tar.gz::https://github.com/kuznix-code/fla2anim/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = f8a1688baf9794be7f4fca77ceff97e10dcbeceddf4307be8bc0cd30227ae149
 
 pkgname = fla2anim
