@@ -52,29 +52,6 @@ _build_env() {
     export npm_config_pm_on_fail=ignore
 }
 
-# @element-hq/element-call-component is a git dependency (a subdirectory of the element-call
-# repository) that only exists once its prepare script has built it from the whole repository
-# with element-call's own dependencies; apps/web's webpack config and Call.ts import its output.
-# "pnpm install --ignore-scripts" skips that prepare script, so build the component from the
-# commit apps/web pins and put the component directory - what the dependency resolves to - in
-# place of what the install left. Only the JS build runs: Haven's webpack build doesn't read the
-# component's type declarations.
-_build_element_call_component() {
-    local _ec_commit _component
-    _ec_commit=$(node -p 'require("./apps/web/package.json").dependencies["@element-hq/element-call-component"].match(/#([0-9a-f]{40})/)[1]')
-    rm -rf "$srcdir/element-call"
-    git clone --filter=blob:none --no-checkout https://github.com/element-hq/element-call.git "$srcdir/element-call"
-    git -C "$srcdir/element-call" checkout --quiet "$_ec_commit"
-    (
-        cd "$srcdir/element-call"
-        PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 pnpm install --frozen-lockfile
-        pnpm build:component:js
-    )
-    _component=$(realpath apps/web/node_modules/@element-hq/element-call-component)
-    find "$_component" -mindepth 1 -delete
-    cp -r "$srcdir/element-call/component/." "$_component/"
-}
-
 prepare() {
     # This is a unified fork repo, not a plain element-web checkout - the pnpm workspace root
     # lives under element-web/.
@@ -93,8 +70,7 @@ prepare() {
 
     # HAVEN_NO_BRANDING/HAVEN_LOGIN_BACKGROUND/HAVEN_NOTIFICATION_SOUND are real source-tree
     # mutations handled by scripts/setup.sh, which also runs a full "pnpm install" (scripts
-    # included, so the Element Call component's own prepare script builds it). Only pay that
-    # cost on the opt-in path.
+    # included). Only pay that cost on the opt-in path.
     if [ -n "${HAVEN_NO_BRANDING:-}${HAVEN_LOGIN_BACKGROUND:-}${HAVEN_NOTIFICATION_SOUND:-}" ]; then
         bash "$srcdir/${pkgname%-git}/scripts/setup.sh"
     else
@@ -103,7 +79,6 @@ prepare() {
         # project - a native-module rebuild pass this build doesn't need, and one that spiked
         # memory hard enough to get the build OOM-killed.
         pnpm install --frozen-lockfile=false --ignore-scripts
-        _build_element_call_component
         # setup.sh runs this itself on the other path.
         node "$srcdir/${pkgname%-git}/scripts/fetch-ruffle.mjs"
     fi
@@ -133,8 +108,10 @@ build() {
     sed -i 's#export default config;#config.publish = null; export default config;#' electron-builder.ts
 
     # VERSION must be plain X.Y.Z; HAVEN_FULL_VERSION is the descriptive string Help & About
-    # shows (haven-v<version>+element-v<tag>...).
-    VERSION="${pkgver%%.r*}" \
+    # shows (haven-v<version>+element-v<tag>...). CI is unset for this step: with it set,
+    # electron-builder.ts fails the build when a native module needs a newer glibc than the
+    # release builds allow, and pkcs11js is compiled here against this system's own glibc.
+    CI= VERSION="${pkgver%%.r*}" \
         HAVEN_FULL_VERSION="$("$srcdir/${pkgname%-git}/scripts/compute-haven-version.sh")" \
         pnpm build -- --publish=never
 }
