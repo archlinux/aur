@@ -1,0 +1,17 @@
+pkgbase = toktop
+	pkgdesc = A terminal dashboard for monitoring OpenAI and Anthropic token usage
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/htin1/toktop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	options = !lto
+	source = toktop-0.1.5.tar.gz::https://github.com/htin1/toktop/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = 9e01566757971e7cf42dd881ea9e8a8a53bbda4dade210a3c80df71638418ee4
+
+pkgname = toktop
