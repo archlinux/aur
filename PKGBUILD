@@ -1,5 +1,5 @@
 # Maintainer: DMK_X
-# Prebuilt binary package — installs the GitHub release artifact with pacman -U
+# Prebuilt binary package — installs the published release asset with pacman -U
 # (through an AUR helper), so no compiler or Qt development headers are needed.
 
 pkgname=lumalarm
@@ -19,7 +19,7 @@ optdepends=(
     'kwindowsystem: native KDE/KWin blur-behind (binary is built with blur off; source rebuild required)'
 )
 install=lumalarm.install
-source=("lumalarm-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst::https://github.com/shinigami1231111/lumalarm/releases/download/v${pkgver}/lumalarm-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst")
+source=("lumalarm-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst::https://raw.githubusercontent.com/shinigami1231111/lumalarm/release-assets/lumalarm-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst")
 sha256sums=('190a842a4f8f71b01674d055539b7f2ee0612d5d616aa135ba8df4ba30ebf367')
 noextract=("lumalarm-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst")
 
