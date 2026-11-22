@@ -1,6 +1,8 @@
 #!/hint/bash -e
 #
-# Maintainer: Jonian Guveli <https://github.com/jonian/>
+# Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
+# Contributor: Jonian Guveli <https://github.com/jonian/>
+
 pkgname=gnome-shell-extension-clipboard-indicator
 _uuid=clipboard-indicator@tudmotu.com
 pkgver=73
