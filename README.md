@@ -53,13 +53,13 @@ external Intel CVS ownership driver used by this camera stack. The package uses
 DKMS's force-install registry because it intentionally replaces an unversioned
 in-tree module.
 
-The package requires `linux>=7.2`, `linux<7.3`, and matching `linux-headers`.
+The package requires `linux>=7.2`, `linux<7.4`, and matching `linux-headers`.
 These constraints intentionally block an incompatible kernel upgrade until the
 bridge override has been updated and tested for the next kernel series.
 
 The complete tested platform is:
 
-- `linux` and `linux-headers`: `>=7.2` and `<7.3`
+- `linux` and `linux-headers`: `>=7.2` and `<7.4`
 - `wireplumber` and `libwireplumber`: `0.5.18` (`0.5.15` remains a known-good fallback)
 
 Pacman reports the Linux constraints directly if dependency resolution fails.
@@ -215,7 +215,7 @@ releases it when the last client closes.
 - `v4l2-relayd-ipu7.service`: exposes an on-demand 640x480 I420 camera.
 - `v4l2loopback-ipu7.conf`: creates the Chromium-compatible loopback device.
 - `ipu7-legacy-cvs.patch`: restores the direct sensor-to-IPU media topology.
-- `ipu-bridge-dkms.conf`: limits the bridge override to Linux 7.2 kernels.
+- `ipu-bridge-dkms.conf`: limits the bridge override to Linux 7.2 and 7.3 kernels.
 - `cs35l56-ot25.patch`: backports the missing upstream OT25 codec interface.
 - `cs35l56-ot25-Makefile`: builds the two replacement Cirrus audio modules.
 - `cs35l56-ot25-dkms.conf`: limits the audio override to `7.2.11-arch1-1`.

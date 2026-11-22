@@ -8,7 +8,7 @@ pkgname=(
   v4l2-relayd-ipu7-ov08x40
 )
 pkgver=0.7.2
-pkgrel=3.16
+pkgrel=3.17
 pkgdesc="Patched libcamera for Intel IPU7 with OV08X40"
 arch=(x86_64)
 url="https://libcamera.org/"
@@ -81,7 +81,7 @@ sha256sums=('SKIP'
             '212f95ba5d3bf97d17d427b4528adf14568c146b00d926be7d8a989e5752b9fb'
             'a926313180a96bc7d9f16920dbc269aed78bdd63796d8602996d88f79e3b7939'
             'd0372ef887d9029177bc4ba9a2dcd4a26e4dc454d85313185c211023ccffb507'
-            '3c520c0c2da92a8bbaaa3328839ebc54f08ff71fd9b0284307ddcdbcd57e8a64'
+            '1f60aedfaa13581fdf5052371421d6377560266a1324b8d226f824c06f27329c'
             '63286d6f510c9477ca357b58904391388d5df483148bd68d4dca37f69bc83df5'
             '0b6b514e9f9582c350b7fe7bd266e53676925c03ffb057777a0dd84eeab3ff3b'
             'b521db7e5e67fafa2f6fa474be5d636a8ea45d513ae85d856acec6de565797eb'
@@ -124,9 +124,9 @@ package_ipu-bridge-legacy-cvs-dkms() {
   depends=(
     dkms
     'linux>=7.2'
-    'linux<7.3'
+    'linux<7.4'
     'linux-headers>=7.2'
-    'linux-headers<7.3'
+    'linux-headers<7.4'
   )
 
   local source_dir="$pkgdir/usr/src/ipu-bridge-legacy-cvs-$pkgver"
