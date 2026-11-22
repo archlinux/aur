@@ -2,14 +2,16 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=flowtime
 pkgver=6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Get what motivates you done, without losing concentration"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Diego-Ivan/Flowtime"
 license=('GPL-3.0-or-later')
 depends=(
+  'gtk4'
   'libadwaita'
   'libgee'
+  'libportal'
   'libportal-gtk4'
   'libxml2'
 )
@@ -19,7 +21,10 @@ makedepends=(
   'meson'
   'vala'
 )
-checkdepends=('appstream-glib')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 source=("git+https://github.com/Diego-Ivan/Flowtime.git#tag=v$pkgver")
 sha256sums=('c00589598d5ede19365f1d3eb4107df230b4b43951ce4c5d42e19b6ba734d0c0')
 
@@ -29,7 +34,12 @@ build() {
 }
 
 check() {
-  meson test -C build --no-rebuild --print-errorlogs || :
+
+  # Only validate schema & desktop file
+  meson test -C build "Validate schema file" "Validate desktop file" --no-rebuild --print-errorlogs
+
+  # Use appstreamcli instead of failing with appstream-util
+  appstreamcli validate --no-net build/data/io.github.diegoivanme.flowtime.appdata.xml
 }
 
 package() {
