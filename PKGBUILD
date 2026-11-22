@@ -1,13 +1,22 @@
 # Maintainer: HanHaocheng <hanhaocheng@archlinux>
 #
 # Huawei serves Command Line Tools behind a logged-in download page whose URL is
-# signature-bearing and rotates per session, so no public, stable URL exists.
-# The source list is therefore intentionally empty: provide the zip's signed URL
-# at build time, either as DEVECO_CLT_URL=<url> makepkg -si, or by dropping the
-# zip next to the PKGBUILD as commandline-tools-linux-x64.zip.
+# signature-bearing and rotates per session, so no public, stable URL exists and
+# the source list is intentionally empty. Provide the archive at build time:
+#
+#   1. download it in a browser from
+#      https://developer.huawei.com/consumer/cn/download/
+#   2. copy the download link, then either
+#        ./deveco-clt-url          # reads the link from the clipboard
+#      or
+#        DEVECO_CLT_URL='<signed url>' makepkg -si
+#      or drop the zip next to this PKGBUILD.
+#
+# pkgver() derives the real version from the archive filename, so this PKGBUILD
+# does not have to be edited for every upstream release.
 pkgname=deveco-commandline-tools
 pkgver=6.1.1.460
-pkgrel=2
+pkgrel=3
 pkgdesc='HUAWEI Command Line Tools for HarmonyOS: hvigorw, ohpm, hstack, codelinter, SDK tools'
 arch=('x86_64')
 url='https://developer.huawei.com/consumer/cn/download/'
@@ -17,33 +26,46 @@ optdepends=('deveco-cli: CLI front-end that consumes these tools via DEVECO_CLI_
 options=('!strip')
 source=()
 sha256sums=()
-_zip=commandline-tools-linux-x64.zip
+
+_zip_glob=commandline-tools-linux-x64-*.zip
+
+pkgver() {
+  local f v
+  f=$(compgen -G "$srcdir/$_zip_glob" | head -1)
+  if [[ -n "$f" ]]; then
+    v=$(basename "$f" | sed -nE 's/^commandline-tools-linux-x64-([0-9][0-9.]*)\.zip$/\1/p')
+    [[ -n "$v" ]] && { printf '%s' "$v"; return; }
+  fi
+  printf '%s' "${pkgver:-0}"
+}
 
 prepare() {
-  if [[ ! -f "$srcdir/$_zip" ]]; then
+  local zip f
+  f=$(compgen -G "$srcdir/$_zip_glob" | head -1)
+  if [[ -z "$f" ]]; then
     if [[ -n "${DEVECO_CLT_URL:-}" ]]; then
-      msg "fetching $srcdir/$_zip from DEVECO_CLT_URL"
-      curl -fL --retry 3 -o "$srcdir/$_zip" "$DEVECO_CLT_URL"
+      f="$srcdir/$(basename "${DEVECO_CLT_URL%%\?*}")"
+      [[ "$f" == *.zip ]] || f="$srcdir/commandline-tools-linux-x64.zip"
+      msg "fetching $(basename "$f")"
+      curl -fL --retry 3 -o "$f" "$DEVECO_CLT_URL"
     else
       error "No Command Line Tools archive found."
       error ""
-      error "  1. sign in at https://developer.huawei.com/consumer/cn/download/"
-      error "     and copy the 'Command Line Tools' Linux download link"
-      error "  2. either place the zip next to this PKGBUILD as $_zip"
-      error "     or pass the link:"
-      error "       DEVECO_CLT_URL='<signed url>' makepkg -si"
+      error "  Download it from https://developer.huawei.com/consumer/cn/download/"
+      error "  then either copy the link and run"
+      error "    DEVECO_CLT_URL='<signed url>' makepkg -si"
+      error "  or place the zip next to this PKGBUILD."
       return 1
     fi
   fi
   rm -rf "$srcdir/clt"
   mkdir -p "$srcdir/clt"
-  bsdtar -xf "$srcdir/$_zip" -C "$srcdir/clt"
+  bsdtar -xf "$f" -C "$srcdir/clt"
   if [[ -d "$srcdir/clt/command-line-tools" ]]; then
-    _clt="$srcdir/clt/command-line-tools"
+    chmod +x "$srcdir/clt/command-line-tools/bin/"* 2>/dev/null || true
   else
-    _clt="$srcdir/clt"
+    chmod +x "$srcdir/clt/bin/"* 2>/dev/null || true
   fi
-  chmod +x "$_clt/bin/"* 2>/dev/null || true
 }
 
 package() {
