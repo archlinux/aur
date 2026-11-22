@@ -10,7 +10,7 @@
 
 pkgname=morgan-git
 _nombre=morgan
-pkgver=0.3.1.r0.g0000000
+pkgver=0.3.2.r0.g0000000
 pkgrel=1
 pkgdesc='Shell de escritorio para Hyprland: barra, centro de control, notificaciones, launcher, OSD y bloqueo'
 arch=('x86_64' 'aarch64')
@@ -24,6 +24,8 @@ depends=(
     'glib2'
     'libxkbcommon'
     'fontconfig'
+    # Los íconos de la interfaz son glifos de esta fuente.
+    'ttf-jetbrains-mono-nerd'
     # El motor dibuja con wgpu, que carga Vulkan al arrancar.
     'vulkan-icd-loader'
     'pam'
@@ -48,7 +50,8 @@ optdepends=(
     'gpu-screen-recorder-ui: indicador y control de grabación'
     'papirus-folders: color de las carpetas del tema de íconos'
     'greetd: morgan-greet, la pantalla de inicio de sesión'
-    'jq: morgan-cuota (cuotas de Claude Code y Antigravity)'
+    'xdg-desktop-portal-gtk: que navegadores y apps de Electron sigan el modo claro u oscuro'
+    'jq: morgan-cuota (cuotas de Claude Code y Antigravity) y umbriel-ciclar (atajos que ciclan apps en Umbriel)'
 )
 provides=('morgan' 'notification-daemon')
 conflicts=('morgan' 'morgan-bin')
