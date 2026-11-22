@@ -1,0 +1,21 @@
+pkgbase = streamtop-bin
+	pkgdesc = A terminal monitor for live video streams with real-time health checks
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/Jorji49/streamtop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = streamtop
+	conflicts = streamtop
+	options = !debug
+	source = streamtop-bin-1.8.0-LICENSE::https://raw.githubusercontent.com/Jorji49/streamtop/v1.8.0/LICENSE
+	sha256sums = 17ae2f4382f88ddcc4dafa488d59401dbb0d3a59d7f1a967c715cd13fbfa9f3d
+	source_x86_64 = streamtop-bin-1.8.0-x86_64.tar.gz::https://github.com/Jorji49/streamtop/releases/download/v1.8.0/streamtop-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4cf390ca11bdff5aa69d0f5e83a3951abd21a91776ecbeec26e889b109e1477e
+	source_aarch64 = streamtop-bin-1.8.0-aarch64.tar.gz::https://github.com/Jorji49/streamtop/releases/download/v1.8.0/streamtop-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e49c3a2ed7d07ad8c0892d329144488b056240c38ee2a566b6f72731c0d42fa2
+
+pkgname = streamtop-bin
