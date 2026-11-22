@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal typing tutor built with Rust and Ratatui"
 
-pkgver=0.4.6
+pkgver=0.5.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums=('4ac4316fa10d5ba4104b9f9407bfcf2bc6da21326941a662962018a925727cb3'
+sha256sums=('0396b484c67890d5c91f1720d5d934778e474d902badae0a6fcfe554c27208c1'
             '58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd')
-sha256sums_x86_64=('4e6e188425346035cb0217811af1e11d7de08d0acd44ae058be63a2fff99c0d4')
+sha256sums_x86_64=('97c618ad4e286f17e329773a1acac352679911b88174349e263667ea1dec46f0')
 
 
 package() {
