@@ -1,0 +1,18 @@
+pkgbase = sharad_ratatui-bin
+	pkgdesc = A text-based Shadowrun role-playing game
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/ProHaller/sharad_ratatui
+	arch = x86_64
+	license = Apache-2.0
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = sharad_ratatui
+	conflicts = sharad_ratatui
+	options = !debug
+	source_x86_64 = sharad_ratatui-bin-0.2.9-x86_64.tar.xz::https://github.com/ProHaller/sharad_ratatui/releases/download/0.2.9/sharad_ratatui-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 4f8fdd9bb924789b27d9afc0791e26fbb74902b8b0f1d08fc0f578a11a2cfb48
+
+pkgname = sharad_ratatui-bin
