@@ -8,17 +8,17 @@
 # Maintainer: Eser KUBALI <eserlxl@gmail.com>
 
 pkgname=aurgen
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Generate, test and publish AUR packages for GitHub projects'
 arch=('any')
 url='https://github.com/eserlxl/aurgen'
 license=('GPL-3.0-or-later')
 validpgpkeys=('2B0541BF62E91D538C55739DF677BC1E3BD7246E')
-depends=('curl' 'jq' 'util-linux' 'bash' 'coreutils' 'diffutils' 'findutils' 'gawk' 'git' 'gnupg' 'grep' 'gzip' 'make' 'pacman' 'pacman-contrib' 'sed' 'tar')
+depends=('curl' 'jq' 'util-linux' 'bash' 'coreutils' 'diffutils' 'findutils' 'gawk' 'git' 'gnupg' 'grep' 'gzip' 'make' 'pacman' 'pacman-contrib' 'perl' 'sed' 'tar')
 optdepends=('github-cli: create GitHub releases and upload assets in aur mode' 'shellcheck: lint mode' 'namcap: PKGBUILD checks in test mode' 'bubblewrap: sandboxed make install for runtime dependency detection')
-source=("https://github.com/eserlxl/aurgen/releases/download/v1.12.0/aurgen-1.12.0.tar.gz" "https://github.com/eserlxl/aurgen/releases/download/v1.12.0/aurgen-1.12.0.tar.gz.sig")
-b2sums=('bd5712aed3cc5ba4aa3ae8fafec37ce2ccd6abb657eea33505ea560174f1c8354bc76f7f9b066f0a4232b336cec0c0d9778c18cd6f00becee39558dc37504476'
+source=("https://github.com/eserlxl/aurgen/releases/download/v1.13.0/aurgen-1.13.0.tar.gz" "https://github.com/eserlxl/aurgen/releases/download/v1.13.0/aurgen-1.13.0.tar.gz.sig")
+b2sums=('b9fdc480b4165bafe50d1fb817d9b70a5885b794bd71c11aa972592097562f09a7dea296dc0af7e42fd4eb77d55dc440c808d5c0ba01f32769119af9e31b74bd'
         'SKIP')
 
 build() {
