@@ -1,0 +1,16 @@
+pkgbase = zch
+	pkgdesc = A competitive programming dashboard that runs Codeforces samples
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/prsweet/zch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = zch-3.1.0.tar.gz::https://github.com/prsweet/zch/archive/refs/tags/v3.1.0.tar.gz
+	sha256sums = aec7b848e9c3f1b627e942d64883ff41d642e13084b21ea32f8b6e9924513776
+
+pkgname = zch
