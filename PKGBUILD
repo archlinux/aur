@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=utumno
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Minimal Quickshell shell for Wayland compositors, lighter sibling of quickshell-d77"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   'matugen: wallpaper-based color palette'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2a606880fbe2530fa0ec9bbf172db118e37899b5fcd800a699caafc859d5bfbe')
+sha256sums=('6196f6bd080c04f3b646a87f6b882a15c0144352c25a6549586e8be4a1bbb555')
 
 package() {
     cd "$pkgname-$pkgver"
