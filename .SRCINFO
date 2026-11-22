@@ -1,6 +1,6 @@
 pkgbase = mmseqs2
 	pkgdesc = ultra fast and sensitive search and clustering suite. https://doi.org/10.1038/nbt.3988
-	pkgver = 18.8cc5c
+	pkgver = 19.ab57c
 	pkgrel = 1
 	url = https://github.com/soedinglab/mmseqs2
 	install = bash-completion.install
@@ -11,10 +11,11 @@ pkgbase = mmseqs2
 	makedepends = openmp
 	makedepends = vim
 	makedepends = perl
-	source = MMseqs2-18-8cc5c.tar.gz::https://github.com/soedinglab/MMseqs2/archive/refs/tags/18-8cc5c.tar.gz
+	makedepends = rust
+	source = MMseqs2-19-ab57c.tar.gz::https://github.com/soedinglab/MMseqs2/archive/refs/tags/19-ab57c.tar.gz
 	source = bash-completion.patch
 	source = fix_util_installation.patch
-	sha256sums = 3541b67322aee357fd9ca529750d36cb1426aa9bcd1efb2dc916e35219e1a41c
+	sha256sums = 68b20700b82c93f2a30a8a7fbe545ab6ec715bfccb13ddcab144d3f3f504c5a4
 	sha256sums = 39432896625dca6240e7f4f6dffebd05f40a1d0de2c724d7123cb63e2464e791
 	sha256sums = ca25afde5447ec6b72e0a6ca9874eb6b5b93c2ec52ff3f10e4b3929d1aea1e71
 
