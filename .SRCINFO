@@ -1,0 +1,16 @@
+pkgbase = suzui-rs
+	pkgdesc = A terminal viewer for Suzuki engine data over the Suzuki Serial Data Line
+	pkgver = 2.1.7
+	pkgrel = 1
+	url = https://github.com/thatdevsherry/suzui-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = suzui-rs-2.1.7.tar.gz::https://github.com/thatdevsherry/suzui-rs/archive/refs/tags/v2.1.7.tar.gz
+	sha256sums = 590e82070f3bb649a6326d3948f95710a91485a2b676b220f226574b2f11b335
+
+pkgname = suzui-rs
