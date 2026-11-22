@@ -1,0 +1,19 @@
+pkgbase = yscan-bin
+	pkgdesc = A TUI-first network scanner with ARP, mDNS, and SSDP discovery
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/yetidevworks/yscan
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = yscan
+	conflicts = yscan
+	options = !debug
+	source = yscan-bin-0.1.1-LICENSE::https://raw.githubusercontent.com/yetidevworks/yscan/0.1.1/LICENSE
+	sha256sums = 6a546e3c5311c3d00eff8e8ccc190701aaab88c57fe180093d819ace9c3ad2a0
+	source_x86_64 = yscan-bin-0.1.1-x86_64.tar.gz::https://github.com/yetidevworks/yscan/releases/download/0.1.1/yscan-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 847a35b6c6d2089e2be0cf734da9cd84bdf2c8bd4854370c0d2f5a2780e71ba2
+	source_aarch64 = yscan-bin-0.1.1-aarch64.tar.gz::https://github.com/yetidevworks/yscan/releases/download/0.1.1/yscan-linux-aarch64.tar.gz
+	sha256sums_aarch64 = d55977f26e5fffaec1b269d66eae8c23a3a96138a650afba33dc124bb124cfda
+
+pkgname = yscan-bin
