@@ -1,6 +1,6 @@
 pkgbase = uqbit
 	pkgdesc = uQ's torrent app: a Qt Quick front-end for qBittorrent-nox that follows the uQ theme
-	pkgver = 0.2.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/uqbit
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = uqbit
 	optdepends = python: search through search plugins
 	optdepends = networkmanager: find the VPN for the kill switch (else by interface name)
 	optdepends = uq: Torrents page in uQ Settings, bar icon and quick settings tile
-	source = uqbit-0.2.0.tar.gz::https://github.com/asafelobotomy/uqbit/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = dba95b57f18f160f54d72411c55570b9e2f2c6b9a9a8182f0059dd2d668831e7
+	source = uqbit-0.5.1.tar.gz::https://github.com/asafelobotomy/uqbit/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = c1850eacc2b57fc8be8baaec5ee125b349d381adfb9d9475a689e95cab79d101
 
 pkgname = uqbit
