@@ -1,0 +1,27 @@
+#!/bin/sh
+# deveco-devicetool-url - build deveco-devicetool from the link in the clipboard
+set -eu
+cd "$(dirname "$(readlink -f "$0")")"
+
+get_clip() {
+  if command -v wl-paste >/dev/null 2>&1 && [ -n "${WAYLAND_DISPLAY:-}" ]; then
+    wl-paste -n 2>/dev/null && return 0
+  fi
+  command -v xclip >/dev/null 2>&1 && { xclip -selection clipboard -o 2>/dev/null && return 0; }
+  command -v xsel >/dev/null 2>&1 && { xsel --clipboard --output 2>/dev/null && return 0; }
+  return 1
+}
+
+url="$(get_clip || true)"
+case "$url" in
+  *contentcenter*devicetool-linux-tool*.zip*)
+    ;;
+  *)
+    printf '%s\n' "剪贴板里没有命中 Device Tool 下载链接。" >&2
+    printf '%s\n' "请先在浏览器里登录 https://device.harmonyos.com/cn/develop/ide" >&2
+    printf '%s\n' "点开 Linux 版下载，复制下载链接后重试。" >&2
+    exit 1
+    ;;
+esac
+
+DEVECO_DEVICETOOL_URL="$url" exec makepkg -si "$@"
