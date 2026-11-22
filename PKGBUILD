@@ -2,7 +2,7 @@
 pkgname=shadps4-qtlauncher-pre-release-bin
 _pkgname=shadPS4QtLauncher
 _pkgid=net.shadps4.shadps4-qtlauncher
-pkgver=20260808.a12b988
+pkgver=20261119.1c35b9b
 pkgrel=1
 pkgdesc="The official Qt launcher for shadps4 emulator (Pre-release version)"
 arch=('x86_64')
@@ -22,6 +22,7 @@ depends=(
     'libgpg-error'
     'libgcc'
     'libstdc++'
+    'alsa-lib'
 )
 optdepends=('wayland')
 makedepends=('curl' 'jq' 'unzip')
