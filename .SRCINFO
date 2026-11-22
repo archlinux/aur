@@ -1,6 +1,6 @@
 pkgbase = privacynotes-bin
 	pkgdesc = End-to-end encrypted notes, tasks, files, passwords, journal and bookmarks. (deb version)
-	pkgver = 0.780.8
+	pkgver = 0.819.1
 	pkgrel = 1
 	url = https://github.com/LifetimeLabsDev/PrivacyNotes.app
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = privacynotes-bin
 	depends = libsoup3
 	depends = webkit2gtk-4.1
 	provides = privacynotes
-	provides = privacynotes=0.780.8
+	provides = privacynotes=0.819.1
 	conflicts = privacynotes
 	conflicts = privacynotes-appimage-bin
 	options = !debug
-	source_x86_64 = privacynotes-0.780.8-x86_64.deb::https://github.com/LifetimeLabsDev/PrivacyNotes.app/releases/download/v0.780.8/PrivacyNotes_0.780.8_amd64.deb
-	sha256sums_x86_64 = 57ca7170ab4931bbc68cd2e7058290b9f30fb004c9d1896b2b192bf4cc8772b1
-	source_aarch64 = privacynotes-0.780.8-aarch64.deb::https://github.com/LifetimeLabsDev/PrivacyNotes.app/releases/download/v0.780.8/PrivacyNotes_0.780.8_arm64.deb
-	sha256sums_aarch64 = 63b5952ab3bfc6d3f55f3c2d0b8aba8e32827341aa26ca12f5cd5c209dd0c139
+	source_x86_64 = privacynotes-0.819.1-x86_64.deb::https://github.com/LifetimeLabsDev/PrivacyNotes.app/releases/download/v0.819.1/PrivacyNotes_0.819.1_amd64.deb
+	sha256sums_x86_64 = 4665dda61f3d713a76557d00c58e17d33a0f32592df0c0376bcad32037034f9f
+	source_aarch64 = privacynotes-0.819.1-aarch64.deb::https://github.com/LifetimeLabsDev/PrivacyNotes.app/releases/download/v0.819.1/PrivacyNotes_0.819.1_arm64.deb
+	sha256sums_aarch64 = 8616fc4646d133f0c7f8aa4f52e1f5bc2b70926bb0f711147f1db82140c0317d
 
 pkgname = privacynotes-bin
