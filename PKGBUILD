@@ -1,5 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Co-Maintainer: Slimbook <dev at slimbook dot es>
+# Maintainer: Slimbook <dev at slimbook dot es>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=slimbookintelcontroller
 pkgver=1.0beta
 pkgrel=2
