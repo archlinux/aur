@@ -1,9 +1,9 @@
 # Maintainer: Raul Dias <raul@dias.com.br>
 
 pkgname=msi-gpu-mux-switch
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc='Inspect and switch the GPU MUX mode on the MSI Vector 16 HX AI A2XWIG'
+pkgdesc='Inspect and switch the GPU MUX mode on supported MSI laptops'
 arch=(x86_64)
 url='https://github.com/steelbrain/msi-gpu-mux-switch'
 license=(MIT)
@@ -11,7 +11,7 @@ depends=(libgcc glibc)
 makedepends=(cargo)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('005d6155b36fea66c0c07304438c28df04f3aacfa00db06507a93cb27d65f5ef')
+sha256sums=('952a56d6d1027ef6b14d13c790b9cc3f0ce38527a8da4a83778b1d3860e6994d')
 
 prepare() {
   cd "$pkgname-$pkgver"
