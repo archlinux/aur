@@ -1,0 +1,19 @@
+pkgbase = termca-git
+	pkgdesc = Interactive TUI Cellular Automata simulator
+	pkgver = r96.bbd6a9d
+	pkgrel = 1
+	url = https://github.com/fabiooo4/termCA
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = termca
+	conflicts = termca
+	options = !lto
+	source = termca::git+https://github.com/fabiooo4/termCA.git
+	sha256sums = SKIP
+
+pkgname = termca-git
