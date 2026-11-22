@@ -1,0 +1,19 @@
+pkgbase = raijin-git
+	pkgdesc = A free, simple weather TUI that pulls data without the need for an API key, account, or subscription
+	pkgver = r70.bca81a3
+	pkgrel = 1
+	url = https://github.com/MasonStooksbury/Raijin
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = raijin
+	conflicts = raijin
+	options = !lto
+	source = raijin::git+https://github.com/MasonStooksbury/Raijin.git
+	sha256sums = SKIP
+
+pkgname = raijin-git
