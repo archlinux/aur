@@ -3,7 +3,7 @@
 
 pkgname=bongo-bin
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern Bangla phonetic & Bijoy keyboard with native Fcitx5 and IBus support"
 arch=('x86_64' 'aarch64')
 url="https://getbongo.app"
@@ -14,10 +14,10 @@ depends=(
     'python'
     'python-gobject'
     'hicolor-icon-theme'
+    'fcitx5'
+    'fcitx5-configtool'
 )
 optdepends=(
-    'fcitx5: Native Fcitx5 input method addon (recommended for KDE, Hyprland, Omarchy, Sway)'
-    'fcitx5-configtool: Graphical Fcitx5 configuration tool used by "Open Input Settings"'
     'ibus: IBus input method engine (recommended for GNOME)'
 )
 provides=('bongo' 'fcitx5-bongo' 'ibus-bongo')
