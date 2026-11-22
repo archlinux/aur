@@ -21,11 +21,11 @@ conflicts=('dusk-lang' 'dawn')
 # that release's stage ladder proved. A release binary is guaranteed to build
 # the next release's source, so bump this pin as the tree moves ahead; the
 # preflight in build() names the mismatch loudly when the pin has gone stale.
-_seedver=1.17.2
+_seedver=1.17.3
 source=("dusk::git+https://github.com/choice404/dusk.git"
         "dusk-seed-${_seedver}.ll.xz::https://github.com/choice404/dusk/releases/download/v${_seedver}/dusk.ll.xz")
 sha256sums=('SKIP'
-            '5cf059c5fd6810ef66982ad238373df35210723a0db778c559ecf201eb2406ba')
+            '7289e83ab27e6fcb550f3f98a08e97fd0f4db37c1d525cf1f07bf54efd03c8bd')
 
 pkgver() {
   cd dusk
