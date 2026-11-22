@@ -1,0 +1,19 @@
+pkgbase = bunflared-bin
+	pkgdesc = Share localhost on a temporary public HTTPS link through a Cloudflare quick tunnel
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/mirkobozzetto/bunflared
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = bunflared
+	conflicts = bunflared
+	options = !debug
+	source_x86_64 = bunflared-bin-0.9.0-x86_64.tar.xz::https://github.com/mirkobozzetto/bunflared/releases/download/v0.9.0/bunflared-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 387687ff3ee8582eb7dbdd4caace8ae3a8567c40b03d5f2ba801b564ca00b80f
+	source_aarch64 = bunflared-bin-0.9.0-aarch64.tar.xz::https://github.com/mirkobozzetto/bunflared/releases/download/v0.9.0/bunflared-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = e611628baa766218aa929624b852ba3e88c6d3dc7c45247f05944f22d6b1f5b8
+
+pkgname = bunflared-bin
