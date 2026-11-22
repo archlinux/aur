@@ -1,6 +1,6 @@
 # Maintainer: Novaturiente
 pkgname=novabrowser
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 pkgdesc="AVX2-optimized keyboard-driven web browser on Chromium (CEF), configured in TypeScript"
 arch=(x86_64)
@@ -18,12 +18,12 @@ optdepends=('wl-clipboard: primary selection and paste on Wayland'
 conflicts=(novabrowser-bin novabrowser-git)
 # libcef.so ships with debug info; strip keeps ~280 MB
 options=(strip !lto !debug)
-# Our CEF build (packaging/cef-patches: H.264/AAC, privacy patch, PartitionAlloc), x86-64-v3
-_cef=cef-154.0.34-novabrowser-x86_64-v3
+# Our CEF build (packaging/cef-patches: H.264/AAC, privacy, Dark Reader dark mode, OSR fixes), x86-64-v3
+_cef=cef-158.0.3-novabrowser-x86_64-v3
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        "$_cef.tar.zst::$url/releases/download/cef-154.0.34-nova1/$_cef.tar.zst")
-sha256sums=('81304b8bc5db97c11c41ba55528cbae12f2282be08f090110acc1d41be4f9b66'
-            'a88ace6b3f2857e28a9ca9446c041a5cd729a15aa2e838caa7e3d8f9906e285f')
+        "$_cef.tar.zst::$url/releases/download/cef-158.0.3-nova1/$_cef.tar.zst")
+sha256sums=('e21364debde6fa4a7b0e26b5bc15969237bd928ba22aa667bee612f058e49f43'
+            '51288605db103cb5454322cc54228e5ee993fe4490f8cbacb6c80745b051441a')
 _src=nova-browser-$pkgver
 
 prepare() {
