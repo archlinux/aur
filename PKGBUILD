@@ -32,7 +32,7 @@ optdepends=(
   'pawlette: palette/theme engine the shell follows live'
 )
 install=mewline-qs.install
-source=("$url/archive/refs/tags/${TAG}.tar.gz")
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('dc712dfb65dc88f6080be007aa1620bae7c4e2afd0f3494e594a2c31270bf6e4')
 
 package() {
