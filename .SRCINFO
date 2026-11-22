@@ -1,6 +1,6 @@
 pkgbase = r-scde
 	pkgdesc = Single Cell Differential Expression
-	pkgver = 2.38.0
+	pkgver = 2.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scde
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = r-scde
 	optdepends = r-org.hs.eg.db
 	optdepends = r-rmarkdown
 	optdepends = r-wgcna
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scde_2.38.0.tar.gz
-	sha256sums = c6654f3a6a92abca67c1348e4d39ea0b9d7e7929ea6d7f9a97c194d530fdb8b2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scde_2.40.0.tar.gz
+	sha256sums = c122cf41de24a6cc2a9fcae79923d92915b3cc4b3088daa7d585fee9de0afecf
 
 pkgname = r-scde
