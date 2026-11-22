@@ -1,0 +1,21 @@
+post_install() {
+  cat <<'MSG'
+==> goloco needs the game data of the original Chris Sawyer's Locomotion,
+    which is not packaged: use your own copy (e.g. from GOG or Steam).
+    goloco wants the game folder that holds Data/g1.DAT (and ObjData/,
+    Scenarios/). It looks, in order, at:
+      - $GOLOCO_DATA (the game folder, or its Data folder)
+      - loco_install_path in ~/.config/goloco/openloco.yml
+      - OpenLoco's own loco_install_path (~/.config/OpenLoco/openloco.yml)
+      - ~/Locomotion, ~/locomotion, ./locomotion, ../locomotion,
+        ~/.local/share/Steam/steamapps/common/Locomotion,
+        ~/.steam/steam/steamapps/common/Locomotion,
+        /usr/share/games/locomotion
+    A folder found this way is remembered in ~/.config/goloco/openloco.yml.
+    Without the data goloco starts with placeholder graphics.
+MSG
+}
+
+post_upgrade() {
+  :
+}

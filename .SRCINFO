@@ -1,0 +1,26 @@
+pkgbase = goloco-git
+	pkgdesc = Reimplementation of Chris Sawyer's Locomotion in Go, ported from OpenLoco (needs the original game data)
+	pkgver = r1191.3e9d392
+	pkgrel = 1
+	url = https://github.com/LaPingvino/goloco
+	install = goloco.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxi
+	depends = libxxf86vm
+	depends = alsa-lib
+	provides = goloco
+	conflicts = goloco
+	source = goloco::git+https://github.com/LaPingvino/goloco.git
+	sha256sums = SKIP
+
+pkgname = goloco-git
