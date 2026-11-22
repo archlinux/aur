@@ -1,7 +1,7 @@
 # Maintainer: dcreager@dcreager.net
 pkgname=jj-musubi-bin
 pkgver=0.47.1
-pkgrel=1
+pkgrel=2
 pkgdesc="jj-musubi: live sync for jujutsu"
 arch=('x86_64' 'aarch64')
 url="https://www.serpentine.com/software/jj-musubi/"
@@ -21,7 +21,7 @@ package() {
         -C "${pkgdir}/opt/jj-musubi" --strip-components=1
 
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s /opt/jj-musubi/bin/musubi "${pkgdir}/usr/bin/musubi"
+    ln -s /opt/jj-musubi/musubi "${pkgdir}/usr/bin/musubi"
 
     # Upstream tarball carries the builder's uid; pacman packages must be root-owned
     chown -R root:root "${pkgdir}"
