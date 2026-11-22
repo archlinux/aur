@@ -2,7 +2,7 @@
 pkgname=glide-browser-bin
 _binaryname=glide-bin
 pkgver=0.1.65a
-pkgrel=1
+pkgrel=2
 pkgdesc="An extensible and keyboard-focused web browser built on Firefox"
 arch=('x86_64' 'aarch64')
 url="https://github.com/glide-browser/glide"
@@ -22,26 +22,26 @@ sha256sums_aarch64=('af1a9b96a01e60db6bfe3adc79d26ec69fb8babbd891853f1b9a09a19ea
 
 package() {
 # Create directories
-mkdir -p "$pkgdir"/usr/bin
-mkdir -p "$pkgdir"/usr/share/applications
-mkdir -p "$pkgdir"/opt/"$pkgname"
+mkdir -p "$pkgdir/usr/bin"
+mkdir -p "$pkgdir/usr/share/applications"
+mkdir -p "$pkgdir/opt/$pkgname"
 
 # Copy extracted binary contents to /opt/$pkgname
-cp -r glide/* "$pkgdir"/opt/"$pkgname"/
+cp -r glide/* "$pkgdir/opt/$pkgname"/
 
 # Create launcher script in /usr/bin
-cat > "$pkgdir"/usr/bin/"$_binaryname" << EOF
+cat > "$pkgdir/usr/bin/$_binaryname" << EOF
 #!/bin/bash
 exec "/opt/$pkgname/$_binaryname" "\$@"
 EOF
-chmod 755 "$pkgdir"/usr/bin/"$_binaryname"
+chmod 755 "$pkgdir/usr/bin/$_binaryname"
 
 # Create desktop file
-cat > "$pkgdir"/usr/share/applications/"$pkgname".desktop << EOF
+cat > "$pkgdir/usr/share/applications/$pkgname".desktop << EOF
 [Desktop Entry]
 Name=Glide Browser
 Comment=${pkgdesc}
-Exec=/usr/bin/"$_binaryname" %u
+Exec=/usr/bin/$_binaryname %u
 Terminal=false
 Type=Application
 Icon=${_binaryname}
@@ -54,22 +54,22 @@ Categories=Network;WebBrowser;
 StartupWMClass=Glide Browser
 
 [Desktop Action new-window]
-Exec=/usr/bin/"$_binaryname" --new-window %u
+Exec=/usr/bin/$_binaryname --new-window %u
 Name=New Window
 
 [Desktop Action new-private-window]
-Exec=/usr/bin/"$_binaryname" --private-window %u
+Exec=/usr/bin/$_binaryname --private-window %u
 Name=New Private Window
 
 [Desktop Action open-profile-manager]
-Exec=/usr/bin/"$_binaryname" --ProfileManager
+Exec=/usr/bin/$_binaryname --ProfileManager
 Name=Open Profile Manager
 EOF
 
 # Icons
 for i in 16x16 32x32 48x48 64x64 128x128; do
-    install -d "$pkgdir"/usr/share/icons/hicolor/$i/apps/
-    ln -s /opt/$pkgname/browser/chrome/icons/default/default${i/x*}.png \
-          "$pkgdir"/usr/share/icons/hicolor/$i/apps/$_binaryname.png
+    install -d "$pkgdir/usr/share/icons/hicolor/$i/apps/"
+    ln -s "/opt/$pkgname/browser/chrome/icons/default/default${i/x*}.png" \
+          "$pkgdir/usr/share/icons/hicolor/$i/apps/$_binaryname.png"
 done
 }
