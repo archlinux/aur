@@ -1,6 +1,6 @@
 # Maintainer: Ilyas Turki <ilyasturki at gmail dot com>
 pkgname=ordo
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="Terminal-first, single-user project planning tool"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('go')
 provides=('ordo')
 conflicts=('ordo-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b65b4db4cbe6186c2e1eb001a0a394d79ddbb7f389e2eddffc48a54302b28c6e')
+sha256sums=('bc922bdbc8c6fd7da2ebd4db37df51278ba0add92859d3cbb5f6677c35567de9')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
