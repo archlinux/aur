@@ -4,10 +4,12 @@
 pkgname=flclash-myflavor-bin
 _pkgname=FlClash
 pkgver=1.19.34
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free, follows the mainline mihomo core updates. (Forked by myflavor)"
 arch=('x86_64')
 url="https://github.com/myflavor/FlClash"
+# GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
+_gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
@@ -26,7 +28,7 @@ source=(
 
 
 source_x86_64=(
-    "${pkgname%-bin}-${pkgver}-x86_64.deb::https://gh-proxy.com/${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
+    "${pkgname%-bin}-${pkgver}-x86_64.deb::${_gh_mirror}${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
 )
 
 
