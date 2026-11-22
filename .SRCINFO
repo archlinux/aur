@@ -1,0 +1,18 @@
+pkgbase = miniam-bin
+	pkgdesc = Apple Music in the terminal with true-color album art
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Wian1977/miniam
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = miniam
+	conflicts = miniam
+	options = !debug
+	source = miniam-bin-0.1.2-LICENSE::https://raw.githubusercontent.com/Wian1977/miniam/v0.1.2/LICENSE
+	sha256sums = 25f7129255c1c8686e8bddde752b751901ff362342c65185d8259b80bffc7427
+	source_x86_64 = miniam-bin-0.1.2-x86_64.tar.gz::https://github.com/Wian1977/miniam/releases/download/v0.1.2/miniam-v0.1.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 04f9c388436148b1aa074a760e987e85464343e21d1d449ee9b7f9670d9fb8b3
+
+pkgname = miniam-bin
