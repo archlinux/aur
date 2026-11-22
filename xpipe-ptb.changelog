@@ -112,3 +112,4 @@ A lot of memory leaks have been fixed, which reduces memory usage when XPipe run
 - Fix connection drops during file transfers being shown as an unexpected error instead of an interrupted connection
 - Fix background sessions of a host with broken streams not being restarted, causing actions to fail repeatedly
 - Fix terminal launches being delayed by several seconds on Windows as every CLI call to the daemon took a long time to complete
+- Fix webtop docker deployments always using the PTB image instead of the release image
