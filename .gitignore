@@ -1,0 +1,9 @@
+*
+!.gitignore
+!.SRCINFO
+!LICENSE
+!LICENSE.MIT
+!PKGBUILD
+!mintme-wallet.desktop
+!mintme-wallet.sh
+!mintme-wallet.svg

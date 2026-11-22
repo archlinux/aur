@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=MintMe Coin Wallet
+Comment=Desktop wallet for MintMe Coin
+Exec=mintme-wallet %U
+Icon=mintme-wallet
+Terminal=false
+Type=Application
+Categories=Office;Finance;
+Keywords=MintMe;cryptocurrency;wallet;
+StartupNotify=true
+StartupWMClass=MintMe Coin Wallet
