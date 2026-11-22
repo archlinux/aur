@@ -1,15 +1,19 @@
 pkgbase = viber-appimage
-	pkgdesc = Proprietary cross-platform IM and VoIP software (appimage)
-	pkgver = 27.3.0.2
-	pkgrel = 2
-	url = https://www.viber.com
+	pkgdesc = Cross-platform VoIP and instant messaging application (official AppImage)
+	pkgver = 29.4.0.7
+	pkgrel = 1
+	url = https://www.viber.com/
 	arch = x86_64
-	license = LicenseRef-viber
+	license = LicenseRef-proprietary
+	depends = fuse2
 	depends = glibc
+	depends = hicolor-icon-theme
 	provides = viber
 	conflicts = viber
-	noextract = viber-appimage-27.3.0.2.AppImage
-	source = viber-appimage-27.3.0.2.AppImage::https://download.cdn.viber.com/cdn/desktop/Linux/viber.AppImage
-	sha256sums = 72005fe438b45902c64845cdbfce9aa9ae689a07f220ed4c9706b06bae0daecf
+	noextract = viber.AppImage
+	options = !strip
+	options = !debug
+	source = viber.AppImage::https://download.cdn.viber.com/desktop/Linux/viber.AppImage
+	sha256sums = SKIP
 
 pkgname = viber-appimage

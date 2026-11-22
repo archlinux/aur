@@ -1,0 +1,4 @@
+viber.AppImage
+src/
+pkg/
+*.pkg.tar.zst
