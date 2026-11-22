@@ -1,0 +1,18 @@
+pkgbase = litemiyu-bin
+	pkgdesc = Single-process agent harness for the terminal, one static program; also a fallback when Miyu cannot start (--rescue)
+	pkgver = 2026.11.0rc2
+	pkgrel = 1
+	url = https://github.com/miyu-agent/litemiyu
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	provides = litemiyu=2026.11.0rc2
+	conflicts = litemiyu
+	options = !strip
+	options = !debug
+	source_x86_64 = litemiyu-2026.11.0-rc.2-linux-x86_64.tar.gz::https://github.com/miyu-agent/litemiyu/releases/download/v2026.11.0-rc.2/litemiyu-2026.11.0-rc.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 491ae23f787ef53290282a5003098bada699f3cc4bb842ac6f08a09c754e1420
+	source_aarch64 = litemiyu-2026.11.0-rc.2-linux-aarch64.tar.gz::https://github.com/miyu-agent/litemiyu/releases/download/v2026.11.0-rc.2/litemiyu-2026.11.0-rc.2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 1dc59af31233ad181931e8a5494374647d1c567f2b3f72021ec3aa0d6a953908
+
+pkgname = litemiyu-bin
