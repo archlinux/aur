@@ -1,0 +1,19 @@
+pkgbase = anthropometer-bin
+	pkgdesc = A btop-style TUI that renders a Claude Code session's live context window as a memory map
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/arian-shamaei/anthropometer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = anthropometer
+	conflicts = anthropometer
+	options = !debug
+	source_x86_64 = anthropometer-bin-0.7.0-x86_64.tar.gz::https://github.com/arian-shamaei/anthropometer/releases/download/v0.7.0/amtr-v0.7.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 941712ab52f77abbde8442953cef3925883be0a9918c91026cdd4ebb115901d0
+	source_aarch64 = anthropometer-bin-0.7.0-aarch64.tar.gz::https://github.com/arian-shamaei/anthropometer/releases/download/v0.7.0/amtr-v0.7.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 56f78c57a17ddc3835ee608e52862e134d0f011ad0b71dc888965a9fb95cafc1
+
+pkgname = anthropometer-bin
