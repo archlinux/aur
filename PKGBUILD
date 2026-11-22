@@ -1,7 +1,7 @@
 # Maintainer: lumexren <lumexren@gmail.com>
 
 pkgname=plasma-nm-networkd
-pkgver=6.8.2
+pkgver=6.8.3
 pkgrel=1
 pkgdesc="Plasma applet and System Settings module powered by systemd-networkd & NetworkManager, drop-in replacement for plasma-nm"
 arch=('x86_64' 'aarch64')

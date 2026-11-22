@@ -1,4 +1,9 @@
-*.pkg.tar*
-src/
 pkg/
-plasma-nm-networkd/
+src/
+*.pkg.tar.*
+__pycache__/
+*.pyc
+kcm/moc_*.cpp
+kcm/qrc_*.cpp
+kcm/*.so
+kcm/*.desktop
