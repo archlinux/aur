@@ -1,6 +1,6 @@
 pkgbase = orbis-reframe
 	pkgdesc = Native Linux editor for 360° footage
-	pkgver = 0.9.1
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/Schabo/orbis-reframe
 	arch = x86_64
@@ -28,9 +28,7 @@ pkgbase = orbis-reframe
 	optdepends = vulkan-intel: Intel Vulkan
 	optdepends = libva-mesa-driver: AMD/Mesa VA-API export
 	optdepends = intel-media-driver: Intel VA-API export
-	source = https://github.com/Schabo/orbis-reframe/releases/download/v0.9.1/orbis-reframe-0.9.1-source.tar.xz
-	source = system-ncnn.patch
-	sha256sums = 8dfe353e56f5d8f87d730f0531ec5b0f0d6dc11b0fcec8b815ce206e2b3befa4
-	sha256sums = e2bfeb1c3369ee05b2288ee3aba7d1ec2425837caedd2443912811922c783ba1
+	source = https://github.com/Schabo/orbis-reframe/releases/download/v0.10.1/orbis-reframe-0.10.1-source.tar.xz
+	sha256sums = 8212e1c90604c658fae6b0796250ec936ad95e09aecbd96ad0cd73446182f3cc
 
 pkgname = orbis-reframe

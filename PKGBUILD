@@ -1,7 +1,7 @@
 # Maintainer: Marco Scardovi <scardracs at disroot dot org>
 
 pkgname=orbis-reframe
-pkgver=0.9.1
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='Native Linux editor for 360° footage'
 arch=('x86_64')
@@ -38,18 +38,11 @@ optdepends=(
 )
 source=(
   "$url/releases/download/v$pkgver/$pkgname-$pkgver-source.tar.xz"
-  'system-ncnn.patch'
 )
 sha256sums=(
-  '8dfe353e56f5d8f87d730f0531ec5b0f0d6dc11b0fcec8b815ce206e2b3befa4'
-  'e2bfeb1c3369ee05b2288ee3aba7d1ec2425837caedd2443912811922c783ba1'
+  '8212e1c90604c658fae6b0796250ec936ad95e09aecbd96ad0cd73446182f3cc'
 )
 # Wayland + Vulkan GPU required at runtime (NVIDIA tested upstream; AMD/Intel best-effort).
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  patch -Np1 -i "$srcdir/system-ncnn.patch"
-}
 
 build() {
   local cmake_options=(
