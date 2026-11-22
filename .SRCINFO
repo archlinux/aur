@@ -1,0 +1,21 @@
+pkgbase = tatayoyoh-deezer-tui-bin
+	pkgdesc = Deezer music TUI with included background player
+	pkgver = 1.21.1
+	pkgrel = 1
+	url = https://github.com/Tatayoyoh/deezer-tui
+	arch = x86_64
+	arch = aarch64
+	license = WTFPL
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = tatayoyoh-deezer-tui
+	conflicts = tatayoyoh-deezer-tui
+	options = !debug
+	source_x86_64 = tatayoyoh-deezer-tui-bin-1.21.1-x86_64::https://github.com/Tatayoyoh/deezer-tui/releases/download/v1.21.1/deezer-tui-linux-x86_64
+	sha256sums_x86_64 = 9dcd0b50e7ae6512a54b76993ed8f03dce27d11a057663f80899f546d649f4df
+	source_aarch64 = tatayoyoh-deezer-tui-bin-1.21.1-aarch64::https://github.com/Tatayoyoh/deezer-tui/releases/download/v1.21.1/deezer-tui-linux-aarch64
+	sha256sums_aarch64 = 24b844308d3c83b496371b7554cd5ac9da912f41a65628a371ff60074f620fa3
+
+pkgname = tatayoyoh-deezer-tui-bin
