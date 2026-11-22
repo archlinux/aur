@@ -1,0 +1,19 @@
+pkgbase = hostkeep-bin
+	pkgdesc = A TUI for editing /etc/hosts: toggle entries, organize them into groups, save with a diff preview
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/volodymyr-malishevskyi/hostkeep
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = hostkeep
+	conflicts = hostkeep
+	options = !debug
+	source_x86_64 = hostkeep-bin-0.2.1-x86_64.tar.xz::https://github.com/volodymyr-malishevskyi/hostkeep/releases/download/v0.2.1/hostkeep-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = a0923d11809f2b5c78047afd13c3c76920a94bff82d922f81a5423b77f227a6e
+	source_aarch64 = hostkeep-bin-0.2.1-aarch64.tar.xz::https://github.com/volodymyr-malishevskyi/hostkeep/releases/download/v0.2.1/hostkeep-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 1c3877bfb3e26d5f7fdf85f41b8bff68fc164b73faa1f8c4de1dca8970be6947
+
+pkgname = hostkeep-bin
