@@ -1,0 +1,85 @@
+#!/bin/sh
+# Share an existing graphical X11 session with x0vncserver.
+# Can be enabled at boot; waits for an X11 session to appear.
+set -eu
+exec 2>&1
+
+config=/etc/conf.d/tigervnc-runit
+if [ ! -r "$config" ]; then
+    echo "tigervnc-share: missing $config" >&2
+    exit 1
+fi
+# The config file is a root-controlled POSIX shell fragment.
+. "$config"
+
+if [ "$(id -u)" -ne 0 ]; then
+    echo 'tigervnc-share: service must be started as root (drops privileges)' >&2
+    exit 1
+fi
+if [ -z "${VNC_USER:-}" ] || ! id "$VNC_USER" >/dev/null 2>&1; then
+    echo 'tigervnc-share: set VNC_USER to an existing Linux account' >&2
+    exit 1
+fi
+if [ "$(id -u "$VNC_USER")" -eq 0 ]; then
+    echo 'tigervnc-share: VNC_USER must not be root' >&2
+    exit 1
+fi
+
+# DISPLAY=:0 or :1; remote displays and arguments are intentionally rejected.
+case "${SHARE_DISPLAY:-}" in
+    :[0-9]*)
+        case "${SHARE_DISPLAY#:}" in
+            *[!0-9]*)
+                echo 'tigervnc-share: SHARE_DISPLAY must be :0, :1, ...' >&2
+                exit 1
+                ;;
+        esac
+        ;;
+    *)
+        echo 'tigervnc-share: SHARE_DISPLAY must be :0, :1, ...' >&2
+        exit 1
+        ;;
+esac
+
+case "${SHARE_PORT:-}" in
+    ''|*[!0-9]*)
+        echo 'tigervnc-share: SHARE_PORT must be 1024..65535' >&2
+        exit 1
+        ;;
+esac
+if [ "$SHARE_PORT" -lt 1024 ] || [ "$SHARE_PORT" -gt 65535 ]; then
+    echo 'tigervnc-share: SHARE_PORT must be 1024..65535' >&2
+    exit 1
+fi
+
+home=$(getent passwd "$VNC_USER" | cut -d: -f6)
+if [ -z "$home" ] || [ ! -d "$home" ]; then
+    echo 'tigervnc-share: cannot find user home directory' >&2
+    exit 1
+fi
+
+authfile=${SHARE_XAUTHORITY:-"$home/.Xauthority"}
+passwordfile=${SHARE_PASSWORD_FILE:-"$home/.config/tigervnc/passwd"}
+
+# Never expose unencrypted VncAuth on the network. SSH-tunnel to localhost.
+# Wait for the physical/local X server and the requisite auth files.
+# If X exits later, runit restarts this script and waits for the next login.
+xsocket="/tmp/.X11-unix/X${SHARE_DISPLAY#:}"
+while [ ! -S "$xsocket" ] || [ ! -r "$authfile" ] || [ ! -r "$passwordfile" ]; do
+    sleep 2
+done
+
+# Prevent fast runit restart loops if X becomes available but auth fails.
+sleep 2
+
+# Explicit environment, drop root privileges, and exec in the foreground.
+exec /usr/bin/chpst -u "$VNC_USER" /usr/bin/env -i \
+    "HOME=$home" "USER=$VNC_USER" "LOGNAME=$VNC_USER" \
+    "PATH=/usr/local/bin:/usr/bin:/bin" \
+    "DISPLAY=$SHARE_DISPLAY" "XAUTHORITY=$authfile" \
+    /usr/bin/x0vncserver \
+        -display "$SHARE_DISPLAY" \
+        -rfbport "$SHARE_PORT" \
+        -PasswordFile "$passwordfile" \
+        -SecurityTypes=VncAuth \
+        -localhost -AlwaysShared

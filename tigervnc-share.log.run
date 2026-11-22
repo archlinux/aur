@@ -1,0 +1,4 @@
+#!/bin/sh
+set -eu
+mkdir -p /var/log/tigervnc-share
+exec /usr/bin/svlogd -tt /var/log/tigervnc-share
