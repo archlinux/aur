@@ -88,6 +88,12 @@ You can now choose which local X11 server should be used for SSH X11 forwarding 
 
 ![](https://xpipe.io/assets/images/BlogPage/x11.png)
 
+## Terminal exit behaviour
+
+You now have the option to control how the terminal session should behave once it exits. If you don't like the press any key prompt, you remove it that way. If you often disconnect due to an unstable connection, you can also use this to automatically reconnect the session:
+
+![](https://xpipe.io/assets/images/BlogPage/terminal-exit.png)
+
 ## Performance improvements
 
 A lot of memory leaks have been fixed, which reduces memory usage when XPipe runs for a longer time. The styling and font handling has also been reworked, which improves the rendering performance of the user interface. Startup performance has also been improved.
