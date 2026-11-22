@@ -1,6 +1,6 @@
 pkgbase = helcanium-bin
 	pkgdesc = Helium Browser with native Wayland Vulkan rendering and Vulkan Video decoding/encoding (prebuilt)
-	pkgver = 157.0.8103.78
+	pkgver = 158.0.8127.36
 	pkgrel = 1
 	url = https://github.com/lumexren/vulcanium
 	arch = x86_64
@@ -50,10 +50,10 @@ pkgbase = helcanium-bin
 	optdepends = upower: Battery Status API support
 	provides = helcanium
 	conflicts = helcanium
-	noextract = helcanium-157.0.8103.78-1-x86_64.pkg.tar.zst
+	noextract = helcanium-158.0.8127.36-1-x86_64.pkg.tar.zst
 	options = !strip
 	backup = etc/helcanium/default-flags.conf
-	source = https://github.com/lumexren/vulcanium/releases/download/v157.0.8103.78-1/helcanium-157.0.8103.78-1-x86_64.pkg.tar.zst
-	sha256sums = 6f85e6ec8169cdc6d4b5474da91e50521cb88c2d1bab5a820002415d6655ef7c
+	source = https://github.com/lumexren/vulcanium/releases/download/v158.0.8127.36-1/helcanium-158.0.8127.36-1-x86_64.pkg.tar.zst
+	sha256sums = 4d880067d595253af15ede462aebb569d6e2f777ac03c83079b23b697dcea46e
 
 pkgname = helcanium-bin
