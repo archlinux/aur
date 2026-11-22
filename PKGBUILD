@@ -2,7 +2,7 @@
 # Contributor: Will Handley <wh260@cam.ac.uk>
 
 pkgname=liquidsoap
-pkgver=2.4.4
+pkgver=2.4.6
 pkgrel=1
 pkgdesc='Swiss-army knife for multimedia streaming — scriptable live-audio engine used by Radio France, AzuraCast, Libretime'
 arch=('x86_64')
@@ -25,8 +25,8 @@ makedepends=(
   'unzip'
   'python'
 )
-source=("https://github.com/savonet/liquidsoap/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ed5ce71363f28e4f5a0d11eca2426cd973f9d0d929e1b864de93973a18e2d39c')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/savonet/liquidsoap/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('001feb5efc851f30af110b1b7892b1da02697c9282e352c603ea2b87b56273c2')
 
 _opam_packages=(
   # Core deps from liquidsoap.opam

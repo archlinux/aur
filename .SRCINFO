@@ -1,6 +1,6 @@
 pkgbase = liquidsoap
 	pkgdesc = Swiss-army knife for multimedia streaming — scriptable live-audio engine used by Radio France, AzuraCast, Libretime
-	pkgver = 2.4.4
+	pkgver = 2.4.6
 	pkgrel = 1
 	url = https://www.liquidsoap.info/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = liquidsoap
 	depends = ffmpeg
 	depends = openssl
 	depends = libsamplerate
-	source = https://github.com/savonet/liquidsoap/archive/refs/tags/v2.4.4.tar.gz
-	sha256sums = ed5ce71363f28e4f5a0d11eca2426cd973f9d0d929e1b864de93973a18e2d39c
+	source = liquidsoap-2.4.6.tar.gz::https://github.com/savonet/liquidsoap/archive/refs/tags/v2.4.6.tar.gz
+	sha256sums = 001feb5efc851f30af110b1b7892b1da02697c9282e352c603ea2b87b56273c2
 
 pkgname = liquidsoap
