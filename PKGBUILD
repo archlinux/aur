@@ -12,7 +12,7 @@ arch=('any')
 depends=("bash" "clamav" "pacman" "findutils")
 optdepends=("paru" "yay")
 makedepends=("git")
-conflicts=("aurscan-git" "clamaurscan")
+conflicts=("clamaurscan")
 
 package() {
     cd "${_pkgbase}"
