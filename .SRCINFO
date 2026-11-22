@@ -1,6 +1,6 @@
 pkgbase = msi-gpu-mux-switch-bin
-	pkgdesc = Inspect and switch the GPU MUX mode on the MSI Vector 16 HX AI A2XWIG (prebuilt upstream release)
-	pkgver = 0.2.0
+	pkgdesc = Inspect and switch the GPU MUX mode on supported MSI laptops (prebuilt upstream release)
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/steelbrain/msi-gpu-mux-switch
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = msi-gpu-mux-switch-bin
 	depends = glibc
 	provides = msi-gpu-mux-switch
 	conflicts = msi-gpu-mux-switch
-	noextract = msi-gpu-mux-switch-0.2.0-linux-amd64.zip
+	noextract = msi-gpu-mux-switch-0.3.0-linux-amd64.zip
 	options = !strip
 	options = !debug
-	source = msi-gpu-mux-switch-0.2.0-linux-amd64.zip::https://github.com/steelbrain/msi-gpu-mux-switch/releases/download/v0.2.0/linux-amd64-msi-mux-switch.zip
-	source = msi-gpu-mux-switch-0.2.0.tar.gz::https://github.com/steelbrain/msi-gpu-mux-switch/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 8b7f7421571602697400da8007415721192576bf8ccd4fc72cb0ac6fd34c744f
-	sha256sums = 005d6155b36fea66c0c07304438c28df04f3aacfa00db06507a93cb27d65f5ef
+	source = msi-gpu-mux-switch-0.3.0-linux-amd64.zip::https://github.com/steelbrain/msi-gpu-mux-switch/releases/download/v0.3.0/linux-amd64-msi-mux-switch.zip
+	source = msi-gpu-mux-switch-0.3.0.tar.gz::https://github.com/steelbrain/msi-gpu-mux-switch/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 1dd61f8f44e376717e261b81a99cafb3f59b8cf7f0d1630e72f785b4107d5f46
+	sha256sums = 952a56d6d1027ef6b14d13c790b9cc3f0ce38527a8da4a83778b1d3860e6994d
 
 pkgname = msi-gpu-mux-switch-bin

@@ -2,9 +2,9 @@
 
 pkgname=msi-gpu-mux-switch-bin
 _pkgname=msi-gpu-mux-switch
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc='Inspect and switch the GPU MUX mode on the MSI Vector 16 HX AI A2XWIG (prebuilt upstream release)'
+pkgdesc='Inspect and switch the GPU MUX mode on supported MSI laptops (prebuilt upstream release)'
 arch=(x86_64)
 url='https://github.com/steelbrain/msi-gpu-mux-switch'
 license=(MIT)
@@ -17,8 +17,8 @@ options=(!strip !debug)
 source=("$_pkgname-$pkgver-linux-amd64.zip::$url/releases/download/v$pkgver/linux-amd64-msi-mux-switch.zip"
         "$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=("$_pkgname-$pkgver-linux-amd64.zip")
-sha256sums=('8b7f7421571602697400da8007415721192576bf8ccd4fc72cb0ac6fd34c744f'
-            '005d6155b36fea66c0c07304438c28df04f3aacfa00db06507a93cb27d65f5ef')
+sha256sums=('1dd61f8f44e376717e261b81a99cafb3f59b8cf7f0d1630e72f785b4107d5f46'
+            '952a56d6d1027ef6b14d13c790b9cc3f0ce38527a8da4a83778b1d3860e6994d')
 
 prepare() {
   mkdir -p bin
