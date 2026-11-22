@@ -1,0 +1,16 @@
+pkgbase = blippy-bin
+	pkgdesc = A keyboard-first TUI for GitHub issues and pull requests
+	pkgver = 0.1.15
+	pkgrel = 1
+	url = https://github.com/AksharP5/blippy
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = blippy
+	conflicts = blippy
+	options = !debug
+	source_x86_64 = blippy-bin-0.1.15-x86_64.tar.gz::https://github.com/AksharP5/blippy/releases/download/v0.1.15/blippy-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0e3eef4cd4d9fb788eded7aaf13c2a2ca1b9b50593a6dc0a167c193deda4c29f
+
+pkgname = blippy-bin
