@@ -1,0 +1,15 @@
+--- mainloop.c.orig	2011-06-28 04:04:58.000000000 +0200
++++ mainloop.c	2026-11-22 19:52:53.052154771 +0100
+@@ -134,9 +134,9 @@
+       cleanup_routine, userdata)
+    Window win;
+    int mapped, raise;
+-   void (*expose_handler)();
+-   int (*ev_handler)();
+-   void (*cleanup_routine)();
++   void (*expose_handler)ARGS_DECL((XEvent*, struct WinInfoRec *));
++   int (*ev_handler)ARGS_DECL((XEvent*, struct WinInfoRec *));
++   void (*cleanup_routine)ARGS_DECL(( struct WinInfoRec *));
+    void *userdata;
+ {
+    register int i;
