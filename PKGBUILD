@@ -4,7 +4,7 @@ _godot=4.7.2
 _system_godot=${MAKEPKG_THRIVE_SYSTEM_GODOT:-false}
 
 pkgname=thrive
-pkgver=1.7.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="the evolution game Thrive."
 arch=("x86_64" "aarch64")
@@ -19,7 +19,7 @@ source=("git+https://github.com/Revolutionary-Games/Thrive.git#tag=v$pkgver"
         "git+https://github.com/godotengine/godot-cpp.git"
         "git+https://github.com/Revolutionary-Games/Arch.Extended.git"
         "git+https://github.com/Revolutionary-Games/Arch.git")
-sha256sums=('463341b7fdabbfe1a2d4bd912715d6330393874525b1e907b866f0fd8d5bef0d'
+sha256sums=('607c9a2b31cff06ddbb6b5edf2649e974a6eedbe410d986ab9584196d39a2088'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -37,9 +37,6 @@ else
     source_aarch64+=("godot-$_godot-aarch64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_arm64.zip")
     source+=("godot-mono-export-templates-$_godot.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_export_templates.tpz")
     noextract+=("godot-mono-export-templates-$_godot.zip")
-    sha256sums_x86_64+=('129f82db7bafd54ae14bb5bb284041c73860e8c7a009a3a026ca5e946cbff247')
-    sha256sums_aarch64+=('0dc8ad63feacc6c19d7cb5c89ae828085b0ac3fa8039bc816a08a0537744e523')
-    sha256sums+=('92f8681e349ef1f90891b792da95e3b2b0bd1ed610b78018c58feb2d87e15a9d')
 fi
 
 options=("!lto") # -flto=thin is added in CMakeLists.txt
