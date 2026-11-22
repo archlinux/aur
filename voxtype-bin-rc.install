@@ -400,7 +400,7 @@ post_upgrade() {
     echo "    This is a release candidate. To go back to stable:"
     echo "      yay -R voxtype-bin-rc && yay -S voxtype-bin"
     echo ""
-    echo "    What's new in 1.3.2-rc1:"
+    echo "    What's new in 1.3.2-rc2:"
     echo "      * Soniox sends its key in the WebSocket handshake. Soniox"
     echo "        requires this from January 15, 2027, so upgrade before then"
     echo "        if you use Soniox."
@@ -413,6 +413,8 @@ post_upgrade() {
     echo "        model."
     echo "      * Feedback cues no longer go silent after suspend or spin a"
     echo "        core after an audio error."
+    echo "      * rc2: Whisper retries when it loops on a phrase and drops a"
+    echo "        restarted copy, and history works on atomic Fedora."
     echo ""
     _print_omarchy_hint
     echo "    Restart the daemon to apply updates:"
