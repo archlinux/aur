@@ -1,14 +1,14 @@
-# Maintainer: Marcus Rosado <marcusbanditten@gmail.com>
+# Maintainer: Marcus Rosado <22052802+marcusbandit@users.noreply.github.com>
 # The AUR's anibeam: the native Qt shell built from a release tag. Publish it with
 # apps/linux/packaging/aur/publish.sh after the tag is on GitHub.
 pkgname=anibeam
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Browse, play and track a local anime library (Qt 6 and libmpv)"
 arch=(x86_64 aarch64)
-url="https://github.com/marcusbandit/AniBeam"
+url="https://github.com/marcusbandit/Anibeam"
 license=(GPL-3.0-or-later)
-# anirss and qbittorrent-nox are the Downloads page's: AniBeam runs both itself, and uses a
+# anirss and qbittorrent-nox are the Downloads page's: Anibeam runs both itself, and uses a
 # qBittorrent you already run instead when one answers.
 depends=(qt6-base qt6-declarative qt6-svg mpvqt mpv gcc-libs glibc hicolor-icon-theme
          'anirss>=0.6.0' qbittorrent-nox)
@@ -21,9 +21,9 @@ optdepends=(
 # symbols. Rust's own LTO is a Cargo profile matter, not a makepkg one.
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('98e73d74233f9aadbaf989d91f3a7ed92b57084ed4ad4d3349aaaa6d1d4fbbc9')
+sha256sums=('112c2dc59997e060a878c48bf4b1f040225d87c999c5e1dc7af64e0317b2ee53')
 
-_src() { cd "$srcdir/AniBeam-$pkgver"; }
+_src() { cd "$srcdir/Anibeam-$pkgver"; }
 
 prepare() {
   _src
@@ -39,6 +39,8 @@ build() {
   # keep git from finding whatever repository the build directory sits in (an AUR clone)
   # and let the binary say the Cargo version, which is the tag's.
   export GIT_CEILING_DIRECTORIES="$srcdir"
+  # A release built from source: the release icon, not the dev one a checkout gets.
+  export ANIBEAM_ICON=release
   cargo build --frozen --release -p anibeam
 }
 
@@ -47,6 +49,7 @@ check() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   export GIT_CEILING_DIRECTORIES="$srcdir"
+  export ANIBEAM_ICON=release
   cargo test --frozen --release -p anibeam
 }
 
