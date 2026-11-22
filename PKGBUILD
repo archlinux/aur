@@ -6,7 +6,7 @@ _appname=gos
 pkgname=${_gitname}-bin
 pkgdesc="The Gossamer programming language and tooling"
 
-pkgver=0.84.0
+pkgver=0.84.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,8 +29,8 @@ options=('!strip' 'staticlibs')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('d85704e590ba9ab57ecae50b433fdc2e8a00bf6a90d5d30b77e9ed1197fd29c1')
-sha256sums_aarch64=('5181756f6f5b5344cb589159ac175078a554b90122f7edcb52b9467c5dbb9b94')
+sha256sums_x86_64=('929ef4ad1e97b23aaaddcad642acc6a92a494216f92a7a3d970b50ffbeb7c45c')
+sha256sums_aarch64=('de12178af275c3f39541da89490a3144e2c63e12cd580ac8385ead871979cf20')
 
 
 case ${CARCH} in
