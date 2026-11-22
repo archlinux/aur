@@ -1,7 +1,7 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
 # Created with assistance from GLM 5.3 Flash.
 pkgname=opencadstudio
-pkgver=2026.46.0
+pkgver=2026.47.0
 pkgrel=1
 pkgdesc="A CAD application built with Rust — 2D/3D drawing, DWG/DXF support, and GPU-accelerated rendering"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=(
 options=(!debug !lto)
 # The tag drops the trailing .0: pkgver 2026.44.0 -> tag v2026.44 -> extracts to OpenCADStudio-2026.44
 source=("$pkgname-$pkgver.tar.gz::https://github.com/HakanSeven12/OpenCADStudio/archive/refs/tags/v${pkgver%.*}.tar.gz")
-sha256sums=('8ba3b7ad9f8fdc53fc0416d2b32b88b13b9e73e6612c51303a372f5039a96615')
+sha256sums=('c4f4c79ee62c1bd4e54271e7c55859fa650d9511f65103202796b4a50a384165')
 
 _pkgdir="OpenCADStudio-${pkgver%.*}"
 
