@@ -1,0 +1,19 @@
+pkgbase = degra02-nordvpn-tui-git
+	pkgdesc = A TUI
+	pkgver = r21.60231f4
+	pkgrel = 1
+	url = https://github.com/Degra02/nordvpn-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = degra02-nordvpn-tui
+	conflicts = degra02-nordvpn-tui
+	options = !lto
+	source = degra02-nordvpn-tui::git+https://github.com/Degra02/nordvpn-tui.git
+	sha256sums = SKIP
+
+pkgname = degra02-nordvpn-tui-git
