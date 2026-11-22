@@ -3,7 +3,7 @@
 # Contributor: Siddhartha Das bablu.boy@gmail.com>
 pkgname=nutty-git
 _app_id=com.github.babluboy.nutty
-pkgver=1.2.0.r10.g23c4712
+pkgver=1.2.0.r16.gaaf630e
 pkgrel=1
 pkgdesc="A network utility with a user interface for common command line tools"
 arch=('x86_64')
@@ -11,6 +11,7 @@ url="https://babluboy.github.io/nutty"
 license=('GPL-3.0-or-later')
 depends=(
   'granite'
+  'gtk3'
   'iproute2'
   'libgee'
   'libnotify'
@@ -31,7 +32,10 @@ makedepends=(
   'meson'
   'vala'
 )
-checkdepends=('appstream-glib')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 optdepends=('cronie: background device monitoring')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
