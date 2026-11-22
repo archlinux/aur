@@ -3,7 +3,7 @@ _bin=TF2DecalVault_linux64
 _pkgname=tf2decalvault
 pkgname=$_pkgname-bin
 pkgdesc="A user interface to upload and download UGC images for TF2's decal system."
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 
 arch=(x86_64)
@@ -17,7 +17,7 @@ source=(
 	"$_pkgname.desktop"
 	"$_pkgname.svg::https://raw.githubusercontent.com/arclight-servers/TF2-Decal-Vault/$pkgver/icon.svg"
 )
-sha256sums=('235d4e76ed3b025916c46aa8ba2011e7a323948729aa4dc12f09f48b1e4114a7'
+sha256sums=('612b1357ebb8af55820b572025c7ad019267de42369802c8f36135357b4a0941'
             '88fa576e334ff68fb20449b2c8ec5d0d7b13dc7d7494441d7306794d8f6bbe85'
             '6c80384360a5b269d1054bfb27241258154e2cc8167c522016fdc1820e84e0f8')
 
