@@ -6,7 +6,7 @@ _appname=${_gitname%-fm}
 pkgname=${_gitname}-bin
 pkgdesc="Material 3 Expressive File Manager built with Qt6 Quick and Rust"
 
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -34,7 +34,7 @@ options=('!strip')
 # source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 # 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tzst::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${pkgrel}-${arch[0]}.pkg.tar.zst")
-sha256sums_x86_64=('d5aad9211be1923a299f65283820a3b0666fbcd7c2a2389560d07b82aec1b3f5')
+sha256sums_x86_64=('4842de65bebc65a0a40b757bfe1ae75b2285c7357b8fc5254cf48c0087768b67')
 
 noextract=("${source_x86_64[@]%%::*}")
 
