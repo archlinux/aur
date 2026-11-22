@@ -1,0 +1,17 @@
+pkgbase = tapin-bin
+	pkgdesc = An inbox for your AI coding agents (Claude Code, Codex): approve requests, answer questions
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Thevi99/tapin
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tapin
+	conflicts = tapin
+	options = !debug
+	source_x86_64 = tapin-bin-0.2.1-x86_64.tar.xz::https://github.com/Thevi99/tapin/releases/download/v0.2.1/tapin-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = da2967531365360949fa33285438d148d2e3d62647cf980515fb1b1da8c83d86
+	source_aarch64 = tapin-bin-0.2.1-aarch64.tar.xz::https://github.com/Thevi99/tapin/releases/download/v0.2.1/tapin-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = 9edc8152df940786c50c1a4841c958bc3fdb84139637ff4173626a0a8c678415
+
+pkgname = tapin-bin
