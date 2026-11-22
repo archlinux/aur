@@ -80,13 +80,10 @@ provides=('python-vllm')
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
 sha256sums=('c807cb17a533bd8837875ff109551b1fb4670f9e411d3a2e8bb2386ad8893d57')
 
-_jobs=$(($(nproc) / 2))
-
 build() {
   cd "$srcdir/$_pkgname"
 
-  # Limit the number of parallel jobs to avoid OOM
-  export MAX_JOBS=$_jobs
+  export MAX_JOBS=$NPROC
   export VLLM_TARGET_DEVICE=rocm
   if [[ -z "$PYTORCH_ROCM_ARCH" ]]; then
     PYTORCH_ROCM_ARCH="gfx906;gfx908;gfx90a;gfx942;gfx950;gfx1030;gfx1100;gfx1101;gfx1150;gfx1151;gfx1152;gfx1153;gfx1200;gfx1201"
