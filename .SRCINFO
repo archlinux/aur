@@ -1,7 +1,7 @@
 pkgbase = mactahoe-icon-theme
 	pkgdesc = macOS Tahoe 风格的图标与鼠标指针主题（预编译，无需渲染工具）
 	pkgver = 2026.09.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vinceliuice/MacTahoe-icon-theme
 	arch = any
 	license = GPL-3.0-or-later

@@ -1,12 +1,13 @@
 # Maintainer: illusory
 pkgname=mactahoe-icon-theme
 pkgver=2026.09.10
-pkgrel=2
+pkgrel=3
 pkgdesc='macOS Tahoe 风格的图标与鼠标指针主题（预编译，无需渲染工具）'
 arch=('any')
 url='https://github.com/vinceliuice/MacTahoe-icon-theme'
 # GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
 _gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
+_gh_mirror="${_gh_mirror%/}/"
 license=('GPL-3.0-or-later')
 depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
 options=('!strip')
