@@ -1,0 +1,16 @@
+pkgbase = hotpath
+	pkgdesc = A Rust profiler for CPU, memory, async, SQL, I/O, and lock contention with a live TUI dashboard
+	pkgver = 0.32.1
+	pkgrel = 1
+	url = https://github.com/hotpath-rs/hotpath
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = hotpath-0.32.1.tar.gz::https://github.com/hotpath-rs/hotpath/archive/refs/tags/v0.32.1.tar.gz
+	sha256sums = 685889dcfaab8e14dfbd0ed3165a2237e84fac8bd41def065c78f01ffe2cb1f6
+
+pkgname = hotpath
