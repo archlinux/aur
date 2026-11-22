@@ -1,0 +1,21 @@
+pkgbase = sprout-tui-bin
+	pkgdesc = A terminal habit tracker with GitHub-style activity heatmap, streak tracking and goal management
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/kb019/sprout
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = sprout-tui
+	conflicts = sprout-tui
+	options = !debug
+	source = sprout-tui-bin-0.1.5-LICENSE::https://raw.githubusercontent.com/kb019/sprout/v0.1.5/LICENSE
+	sha256sums = 1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685
+	source_x86_64 = sprout-tui-bin-0.1.5-x86_64.tar.gz::https://github.com/kb019/sprout/releases/download/v0.1.5/sprout-v0.1.5-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 105e225b3319faa19fa6147bc011e9dd06d6fe8bfa12ae2267cb4ee99b4a58d8
+	source_aarch64 = sprout-tui-bin-0.1.5-aarch64.tar.gz::https://github.com/kb019/sprout/releases/download/v0.1.5/sprout-v0.1.5-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9e2d45d8e9b06c7858a85b2cb06fd56febb016ae4921c64eccdac6fe19ab1a33
+
+pkgname = sprout-tui-bin
