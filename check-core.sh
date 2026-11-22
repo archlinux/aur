@@ -4,15 +4,20 @@ source_dir=$1
 python -m venv --without-pip --system-site-packages venv
 venv/bin/python -m installer --overwrite-existing "$source_dir"/dist/*.whl
 
-tests="$source_dir/tests"
-venv/bin/python -I -m pytest -q -p no:cacheprovider \
-  "$tests/test_fonts.py::test_registered_resources_leave_font_selection_to_each_style" \
-  "$tests/test_import_ass.py::test_timing_tags_offsets_static_prefix_and_ruby_continuation" \
-  "$tests/test_structured_lyrics.py::test_structured_literal_text_repeats_ruby_and_precision_survive_without_records" \
-  "$tests/test_structured_lyrics.py::test_structured_cue_uses_same_measurement_and_occupancy" \
-  "$tests/test_lyric_layout.py::test_two_rows_trim_optional_windows_without_moving_singing" \
-  "$tests/test_raster.py::test_pixel_geometry_has_exact_position_and_no_adjacent_seams" \
-  "$tests/test_gpu_scene.py::test_gpu_scene_keeps_clocks_and_reuses_coverage_after_seek"
+python_bin=$PWD/venv/bin/python
+(
+  cd "$source_dir"
+  # Use the installed distribution even while pytest reads the sdist's config.
+  "$python_bin" -I - <<'PYTHON'
+import sys
+from pathlib import Path
+
+import kara_templater
+
+assert Path(kara_templater.__file__).resolve().is_relative_to(sys.prefix)
+PYTHON
+  "$python_bin" -I -m pytest -q -p no:cacheprovider
+)
 
 venv/bin/kara-templater "$source_dir/examples/karaoke.ass" output.ass
 grep -q '^Dialogue:' output.ass
