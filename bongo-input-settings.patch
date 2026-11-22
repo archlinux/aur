@@ -1,8 +1,7 @@
-diff --git a/platforms/linux/ui/bongo_settings.py b/platforms/linux/ui/bongo_settings.py
-index ec51604..7db652d 100755
---- a/platforms/linux/ui/bongo_settings.py
-+++ b/platforms/linux/ui/bongo_settings.py
-@@ -200,6 +200,37 @@ def scan_bengali_fonts():
+diff -ruN a/platforms/linux/ui/bongo_settings.py d/platforms/linux/ui/bongo_settings.py
+--- a/platforms/linux/ui/bongo_settings.py	2026-11-15 01:09:31.000000000 +0600
++++ d/platforms/linux/ui/bongo_settings.py	2026-11-23 01:42:14.757266069 +0600
+@@ -216,6 +216,37 @@
      return font_list
  
  
@@ -40,7 +39,7 @@ index ec51604..7db652d 100755
  # CSS Styling matching modern Bongo design language
  BONGO_CSS = """
  /* Bongo Global Application Theme */
-@@ -763,7 +794,8 @@ class BongoSettingsApp:
+@@ -783,7 +814,8 @@
              label=(
                  "GNOME / IBus: Settings -> Keyboard -> Input Sources -> Add, "
                  "then choose Bengali (Bongo).\n"
@@ -50,7 +49,7 @@ index ec51604..7db652d 100755
                  "add Bongo under Input Method."
              )
          )
-@@ -845,24 +877,9 @@ class BongoSettingsApp:
+@@ -865,24 +897,9 @@
          return box
  
      def open_system_keyboard_settings(self, _btn):
@@ -77,7 +76,7 @@ index ec51604..7db652d 100755
          for cmd in commands:
              if not shutil.which(cmd[0]):
                  continue
-@@ -872,6 +889,14 @@ class BongoSettingsApp:
+@@ -892,6 +909,14 @@
              except OSError:
                  continue
  
