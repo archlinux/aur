@@ -11,7 +11,7 @@
 
 pkgbase=hotaru
 pkgname=(hotaru hotaru-gui)
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc='RGB lighting and AIO cooler control for Linux'
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=('go' 'libglvnd' 'libx11' 'libxcursor' 'libxrandr' 'libxinerama'
 # it should not mean reading two shell functions.
 depends=('glibc')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('70be7a8601457882ccd70a1e11f920a3324ea2f92baad9b2ecd60c89189ca865')
+sha256sums=('c961562d5bb6ccd18d6d46db9bf42213347ec6b5274d5e3bb74a7040b6adf736')
 
 _module='github.com/ushineko/hotaru'
 
