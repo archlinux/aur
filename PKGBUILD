@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('5691657031ec9019f1ee75208be52aa0315581cc7574b4c7a906fa10d589c90e'
             'dbe5edfa9b17a1f85083b5aae16ef7a186a0d0035e6a81761cf73d0e1121ce58'
-            'fa870de0d4ec5be2dfc93405f7e618541737533a34705893274fdfea7dae0600')
+            '89c0674b1e79e74ad4bb9ff0850e845f3937dc1225f57e8a84ff116676eef2db')
 
 package() {
     install -Dm755 -t "$pkgdir/usr/bin/" "$pkgname"
