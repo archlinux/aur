@@ -2,7 +2,7 @@
 
 pkgname=linuxdeploy-plugin-qt
 pkgver=1_alpha_20250213_1
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt plugin for linuxdeploy, bundling Qt resources, plugins, QML files and a lot more"
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeploy/linuxdeploy-plugin-qt"
@@ -24,25 +24,10 @@ sha256sums_aarch64=('bf1c24aff6d749b5cf423afad6f15abd4440f81dec1aab95706b25f6667
 # 加引号，避免在有已下载 AppImage 的目录里被 shell 展开，导致 .SRCINFO 不稳定
 noextract=('linuxdeploy-plugin-qt-*.AppImage')
 
-build() {
-    cd "$srcdir"
-    # Make AppImages executable
-    chmod +x linuxdeploy-plugin-qt-*.AppImage
-}
-
 package() {
     cd "$srcdir"
 
-    local appimage_arch="$CARCH"
-    case "$CARCH" in
-        x86_64|aarch64) ;;
-        *)
-            echo "Unsupported architecture: $CARCH" >&2
-            return 1
-            ;;
-    esac
-
-    install -Dm755 "${pkgname}-${appimage_arch}.AppImage" "$pkgdir/usr/bin/${pkgname}"
+    install -Dm755 "${pkgname}-${CARCH}.AppImage" "$pkgdir/usr/bin/${pkgname}"
 
     # AppImage 里没有许可证文件，从上游同一 tag 取 LICENSE.txt
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt"

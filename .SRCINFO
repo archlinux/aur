@@ -1,7 +1,7 @@
 pkgbase = linuxdeploy-plugin-qt
 	pkgdesc = Qt plugin for linuxdeploy, bundling Qt resources, plugins, QML files and a lot more
 	pkgver = 1_alpha_20250213_1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/linuxdeploy/linuxdeploy-plugin-qt
 	arch = x86_64
 	arch = aarch64
