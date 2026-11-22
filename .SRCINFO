@@ -1,0 +1,19 @@
+pkgbase = ratslate-bin
+	pkgdesc = An infinite-canvas whiteboard driven by the mouse
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/azihsoyn/ratslate
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = ratslate
+	conflicts = ratslate
+	options = !debug
+	source_x86_64 = ratslate-bin-0.4.0-x86_64.tar.xz::https://github.com/azihsoyn/ratslate/releases/download/v0.4.0/ratslate-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 3fcf094228d8dc21c0e6358265a1fc82fecad58cc0fc0089a3cfcfa027dc3590
+	source_aarch64 = ratslate-bin-0.4.0-aarch64.tar.xz::https://github.com/azihsoyn/ratslate/releases/download/v0.4.0/ratslate-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 54a784006dfd0085c736c09c78450df9aa1189fd187fbfbd7679e707d6b0868d
+
+pkgname = ratslate-bin
