@@ -1947,7 +1947,7 @@ diff -ruN a/nvkm/subdev/fb/ramgf100.c b/nvkm/subdev/fb/ramgf100.c
  };
  
  static void
-@@ -123,6 +128,482 @@
+@@ -123,6 +128,490 @@
  	}
  }
  
@@ -2096,20 +2096,28 @@ diff -ruN a/nvkm/subdev/fb/ramgf100.c b/nvkm/subdev/fb/ramgf100.c
 +		if (out_head)
 +			*out_head = head;
 +
-+		deadline = jiffies + msecs_to_jiffies(30);
++		deadline = jiffies + msecs_to_jiffies(40);
 +		while (time_before(jiffies, deadline)) {
 +			vline = nvkm_rd32(device, 0x616340 + rgpos_off) & 0xffff;
 +			vpos = gf100_ram_calc_vpos(vblanks, vblanke, vtotal, vline,
 +						   &vblank_lines, &vdisplay);
 +
-+			/* Pre-VBlank approach zone: last 40 active lines before VBlank onset.
-+			 * Tight-poll in 1us increments for the exact leading edge of VBlank. */
-+			if (vdisplay > 45 && vpos >= vdisplay - 40) {
-+				for (i = 0; i < 650; i++) {
++			/* If we woke up right at the start of VBlank with plenty of blanking
++			 * remaining, fire immediately instead of skipping to the next frame. */
++			if (vpos < 0 && vpos <= -(vblank_lines - 6))
++				return vpos;
++
++			/* Pre-VBlank approach zone: last 160 active lines (~1.17ms at 120Hz,
++			 * ~2.37ms at 60Hz) so usleep_range(80, 150) cannot jump past VBlank.
++			 * Trigger 10 lines before VBlank (~73us at 120Hz) so even the ~530us
++			 * 324->900 MHz transition + 0x001548 PHY commit latch completes inside
++			 * 120Hz's 466us VBlank without spilling into active lines 0..7. */
++			if (vdisplay > 165 && vpos >= vdisplay - 160) {
++				for (i = 0; i < 2500; i++) {
 +					vline = nvkm_rd32(device, 0x616340 + rgpos_off) & 0xffff;
 +					vpos = gf100_ram_calc_vpos(vblanks, vblanke, vtotal, vline,
 +								   &vblank_lines, &vdisplay);
-+					if (vpos < 0 || vpos >= vdisplay - 2)
++					if (vpos < 0 || vpos >= vdisplay - 10)
 +						return vpos;
 +					udelay(1);
 +				}
