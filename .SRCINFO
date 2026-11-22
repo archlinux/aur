@@ -1,0 +1,18 @@
+pkgbase = iris-tui-bin
+	pkgdesc = Live supervisor for every active Claude Code session - status, tokens, estimated cost
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/itzenata/iris-tui
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = iris-tui
+	conflicts = iris-tui
+	options = !debug
+	source = iris-tui-bin-0.2.0-LICENSE::https://raw.githubusercontent.com/itzenata/iris-tui/v0.2.0/LICENSE
+	sha256sums = 1e9777c449a1c6a43247af66d1919ac46336f848380a8cec1d8d73f21658d412
+	source_x86_64 = iris-tui-bin-0.2.0-x86_64.tar.gz::https://github.com/itzenata/iris-tui/releases/download/v0.2.0/iris-v0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 025dc1518676aa72a791dc2d691272983f64b9fa7d4b3399f11de8d3969c3438
+
+pkgname = iris-tui-bin
