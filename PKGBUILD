@@ -1,16 +1,16 @@
 # Maintainer: Matteo Nista <m.nista@hotmail.it>
 pkgname=gtk4-polkit-agent-bin
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal GTK4 polkit authentication agent for Wayland (prebuilt)"
 arch=('x86_64')
-url="https://gitlab.com/nisby/gtk4-polkit-agent"
+url="https://gitlab.com/nisby/myApps"
 license=('MIT')
-depends=('gtk4' 'gtk4-layer-shell' 'polkit')
+depends=('gtk4' 'libadwaita' 'gtk4-layer-shell' 'polkit')
 provides=('gtk4-polkit-agent')
 conflicts=('gtk4-polkit-agent')
 options=('!strip' '!debug')
-source=("$pkgname-$pkgver.tar.gz::$url/-/releases/v$pkgver/downloads/gtk4-polkit-agent-v$pkgver-x86_64.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/-/releases/gtk4-polkit-agent/v$pkgver/downloads/gtk4-polkit-agent-v$pkgver-x86_64.tar.gz")
 sha256sums=('d6da98ce8329348a30e08483d7dd7a52c9d4d9b9711f4537d638175f65ff466b')
 
 package() {
