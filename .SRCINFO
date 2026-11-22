@@ -1,6 +1,6 @@
 pkgbase = stroke-nightly-bin
 	pkgdesc = Stroke Nightly: the daily build of the native database client, installed next to Stroke
-	pkgver = 3.6.8.nightly.202611221429
+	pkgver = 3.6.9.nightly.202611221624
 	pkgrel = 1
 	url = https://stroke.click
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = stroke-nightly-bin
 	conflicts = stroke-nightly
 	options = !strip
 	options = !debug
-	source = stroke-nightly-3.6.8.nightly.202611221429.deb::https://github.com/stroke-app/stroke/releases/download/nightly/stroke-nightly_amd64.deb
-	source = LICENSE-3.6.8.nightly.202611221429::https://raw.githubusercontent.com/stroke-app/stroke/aaa9d0a4dbc8e2be11cc55093750cf7324ce6497/LICENSE
-	sha256sums = 44bea7e802b2c6cd2ca6bfcc2c4998825f7b1bd85b5236c94e307a525d9d1835
+	source = stroke-nightly-3.6.9.nightly.202611221624.deb::https://github.com/stroke-app/stroke/releases/download/nightly/stroke-nightly_amd64.deb
+	source = LICENSE-3.6.9.nightly.202611221624::https://raw.githubusercontent.com/stroke-app/stroke/f61c85d269814d1fa04ab9fe4ecd9f11fe99668e/LICENSE
+	sha256sums = b6844d85c5921551d6baa4537d3db2c22e5112349053290ae3a0d880caeb6d01
 	sha256sums = SKIP
 
 pkgname = stroke-nightly-bin
