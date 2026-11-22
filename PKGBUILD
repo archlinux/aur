@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Canvas file editor compatible with Obsidian .canvas files"
 
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,8 +29,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${pkgver}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('3cc35c27d507e82af018c4df4b8a19f39a1681dd86371467db4ae5097643bd33')
-sha256sums_aarch64=('e066e7fc2b12095eea5d1f94b6068fcb5dfeb9f1eacfbd6c1e6a0c35d1429aeb')
+sha256sums_x86_64=('1dd33257224fc95d6a3ab2547addd5fcee4a30516e338fef749c1d961611a077')
+sha256sums_aarch64=('4eb7acc679f911b3988e0c720dcdcf2b210ce0c4c21770549809805a3b1c0288')
 
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = pinstar-bin
 	pkgdesc = Canvas file editor compatible with Obsidian .canvas files
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/reekta92/pinstar
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = pinstar-bin
 	provides = pinstar
 	conflicts = pinstar
 	options = !strip
-	source_x86_64 = pinstar-x86_64-1.1.5.txz::https://github.com/reekta92/pinstar/releases/download/v1.1.5/pinstar-1.1.5-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 3cc35c27d507e82af018c4df4b8a19f39a1681dd86371467db4ae5097643bd33
-	source_aarch64 = pinstar-aarch64-1.1.5.txz::https://github.com/reekta92/pinstar/releases/download/v1.1.5/pinstar-1.1.5-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = e066e7fc2b12095eea5d1f94b6068fcb5dfeb9f1eacfbd6c1e6a0c35d1429aeb
+	source_x86_64 = pinstar-x86_64-1.1.6.txz::https://github.com/reekta92/pinstar/releases/download/v1.1.6/pinstar-1.1.6-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 1dd33257224fc95d6a3ab2547addd5fcee4a30516e338fef749c1d961611a077
+	source_aarch64 = pinstar-aarch64-1.1.6.txz::https://github.com/reekta92/pinstar/releases/download/v1.1.6/pinstar-1.1.6-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 4eb7acc679f911b3988e0c720dcdcf2b210ce0c4c21770549809805a3b1c0288
 
 pkgname = pinstar-bin
