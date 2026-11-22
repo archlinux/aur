@@ -1,16 +1,5 @@
-# Maintainer: Will Handley <wh260@cam.ac.uk>
-#
-# Liquidsoap is an OCaml-based scripting language and runtime for live audio
-# composition. Upstream is built with opam (the OCaml package manager), which
-# pulls in ~80 OCaml libraries. Rather than packaging each OCaml dependency
-# as its own Arch package, this PKGBUILD uses opam at build time with a
-# private OPAM root scoped to the build directory. The resulting native
-# binary is then installed into $pkgdir via `dune install`.
-#
-# Build deps come from Arch (opam, ocaml, dune, system C libs); OCaml deps
-# come from opam-repository at build time. Runtime deps are only the C
-# shared libraries the binary links against, since `dune build --release`
-# produces a self-contained native executable.
+# Maintainer: agony <27015 at riseup dot net>
+# Contributor: Will Handley <wh260@cam.ac.uk>
 
 pkgname=liquidsoap
 pkgver=2.4.4
