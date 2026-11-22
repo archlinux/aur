@@ -1,0 +1,12 @@
+pkgbase = lixun-ocr
+	pkgdesc = Lixun OCR metapackage: pulls in tesseract + English language data
+	pkgver = 0.7.10
+	pkgrel = 1
+	url = https://lixun.app
+	arch = any
+	license = MIT OR Apache-2.0
+	depends = lixun=0.7.10
+	depends = tesseract
+	depends = tesseract-data-eng
+
+pkgname = lixun-ocr
