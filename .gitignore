@@ -2,4 +2,4 @@ pkg/
 src/
 *.pkg.tar.zst
 build.log
-npmcache/
+devicetool-*.zip
