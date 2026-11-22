@@ -1,0 +1,19 @@
+pkgbase = asus-vs229h-edid-firmware
+	pkgdesc = Fixed EDID for the ASUS VS229H monitor (its EEPROM checksum byte is corrupt, so drivers reject the real EDID and offer only 1024x768)
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/asus-vs229h-edid-firmware
+	arch = any
+	license = GPL3
+	license = custom
+	optdepends = i2c-tools: re-read the EDID from your own monitor with "asus-vs229h-edid refresh"
+	source = asus-vs229h.edid.hex
+	source = asus-vs229h-edid
+	source = asus-vs229h-edid.service
+	source = README.md
+	sha256sums = f942ebba6757ae58df56d1b5d16a62de69eaa926daa01927f9946475ac472dd0
+	sha256sums = ad5fd9de0d84949e31beb3901db08425a89f218c5ada49f2fa07a04bd3938913
+	sha256sums = 8583590500f66cd6f832f53ab9fb3e54f4d6227233848332b450ca034dfe96e8
+	sha256sums = a367771b8550d4da5ee5cfecaab3c3b10dc0147b66090a6b4b37bf31f1207a05
+
+pkgname = asus-vs229h-edid-firmware

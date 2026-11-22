@@ -1,0 +1,16 @@
+[Unit]
+Description=Apply fixed EDID for the ASUS VS229H HDMI monitor
+Documentation=file:/usr/share/doc/asus-vs229h-edid-firmware/README.md
+Wants=systemd-udev-settle.service
+After=systemd-udev-settle.service
+Before=gdm.service lightdm.service sddm.service ly.service greetd.service
+ConditionPathExists=/usr/lib/firmware/edid/asus-vs229h.bin
+ConditionPathExists=/sys/module/drm/parameters/edid_firmware
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/asus-vs229h-edid apply
+
+[Install]
+WantedBy=multi-user.target

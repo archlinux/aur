@@ -1,0 +1,218 @@
+#!/usr/bin/env bash
+# asus-vs229h-edid — manage the EDID override for the ASUS VS229H monitor.
+#
+# The monitor reports an EDID whose block-0 checksum byte is wrong (0xa6 where
+# 0x07 is required), so DRM/NVIDIA discard it and keep only 1024x768/800x600.
+# This package ships the same EDID with a recomputed checksum in
+# /usr/lib/firmware/edid/; this tool installs, checks and removes the override.
+set -euo pipefail
+
+CONNECTOR="${EDID_CONNECTOR:-HDMI-A-1}"
+BLOB=/usr/lib/firmware/edid/asus-vs229h.bin
+HEX=/usr/share/doc/asus-vs229h-edid-firmware/asus-vs229h.edid.hex
+GRUB=/etc/default/grub
+VALUE="${CONNECTOR}:edid/asus-vs229h.bin"
+PARAM="drm.edid_firmware=${VALUE}"
+SYSFS=/sys/module/drm/parameters/edid_firmware
+
+connector_dir() {
+    local d
+    # in sysfs a connector is "card0-HDMI-A-1", not a directory under card0
+    for d in /sys/class/drm/card*-"${CONNECTOR}" /sys/class/drm/card*/"${CONNECTOR}"; do
+        [[ -d $d ]] && { echo "$d"; return 0; }
+    done
+    return 1
+}
+
+verify() {
+    [[ -f $BLOB ]] || { echo "EDID file not found: $BLOB" >&2; return 1; }
+    local size blocks ok=1 i sum hdr
+    size=$(stat -c %s "$BLOB")
+    (( size % 128 == 0 )) || { echo "size $size is not a multiple of 128" >&2; return 1; }
+    blocks=$(( size / 128 ))
+    for (( i = 0; i < blocks; i++ )); do
+        sum=$(dd if="$BLOB" bs=1 skip=$(( i * 128 )) count=128 status=none |
+              od -An -tu1 -v | awk '{for(n=1;n<=NF;n++)s+=$n} END{print s%256}')
+        if (( sum == 0 )); then
+            echo "block $i: checksum OK"
+        else
+            echo "block $i: BAD checksum (sum%256=$sum)" >&2; ok=0
+        fi
+    done
+    hdr=$(od -An -tx1 -N8 -v "$BLOB" | tr -d ' \n')
+    [[ $hdr == 00ffffffffffff00 ]] && echo "header: OK ($hdr)" \
+        || { echo "header: NOT an EDID ($hdr)" >&2; ok=0; }
+    (( ok )) || return 1
+    echo "EDID is usable: $BLOB ($size bytes, $blocks block(s))"
+}
+
+override_state() {
+    if [[ -r $GRUB ]]; then
+        grep -qF -- "$PARAM" "$GRUB" && echo "bootloader parameter (GRUB): enabled" \
+            || echo "bootloader parameter (GRUB): disabled"
+    else
+        echo "bootloader parameter: $PARAM"
+    fi
+    if [[ -e $SYSFS ]]; then
+        local v; v=$(cat "$SYSFS")
+        if [[ $v == "$VALUE" ]]; then
+            echo "kernel value: '$v' — as expected"
+        else
+            echo "kernel value: '${v}' — unexpected (expected '$VALUE')"
+        fi
+    fi
+    echo "expected parameter: $PARAM"
+}
+
+status() {
+    echo "=== EDID file ==="
+    verify || true
+    echo
+    echo "=== override ==="
+    override_state
+    echo
+    echo "=== connector ==="
+    local dir
+    if dir=$(connector_dir); then
+        echo "path: $dir"
+        echo "status: $(cat "$dir/status"), EDID in sysfs: $(stat -c %s "$dir/edid") bytes"
+        echo "modes: $(wc -l < "$dir/modes"), first: $(head -1 "$dir/modes")"
+        grep -qx 1920x1080 "$dir/modes" && echo "1920x1080: PRESENT" || echo "1920x1080: MISSING"
+    else
+        echo "connector ${CONNECTOR} not found (monitor unplugged?)"
+    fi
+}
+
+apply() {
+    [[ -e $SYSFS ]] || { echo "$SYSFS is missing (is drm loaded?)" >&2; return 1; }
+    local dir before
+    before=$(cat "$SYSFS")
+    echo "$VALUE" > "$SYSFS"
+    echo "kernel value: '$(cat "$SYSFS")'  (was: '${before}')"
+    if dir=$(connector_dir); then
+        echo detect > "$dir/status" 2>/dev/null || true
+        sleep 1
+        echo "modes after re-probe: $(wc -l < "$dir/modes"), first: $(head -1 "$dir/modes")"
+        if grep -qx 1920x1080 "$dir/modes"; then
+            echo "1920x1080: PRESENT. The compositor re-reads the mode list on the next"
+            echo "cable re-plug or at the next session start."
+        else
+            echo "1920x1080: MISSING. Some drivers only honour the EDID file when the"
+            echo "connector is registered — reboot (or re-plug the cable) instead."
+            return 1
+        fi
+    else
+        echo "connector ${CONNECTOR} not found — the value is set and will apply when the monitor is connected"
+    fi
+}
+
+grub_rewrite() {
+    local mode=$1
+    [[ $EUID -eq 0 ]] || { echo "root is required" >&2; return 1; }
+    if [[ $mode == on ]]; then
+        [[ -f $BLOB ]] || { echo "missing $BLOB" >&2; return 1; }
+        if grep -qF -- "$PARAM" "$GRUB"; then
+            echo "already enabled in $GRUB"
+        else
+            sed -i "s|^\(GRUB_CMDLINE_LINUX_DEFAULT=\"[^\"]*\)\"|\1 ${PARAM}\"|" "$GRUB"
+            echo "parameter added to $GRUB"
+        fi
+    else
+        if grep -qF -- "$PARAM" "$GRUB"; then
+            sed -i "s| *${PARAM}||" "$GRUB"; echo "parameter removed from $GRUB"
+        else
+            echo "no parameter in $GRUB"
+        fi
+    fi
+    if command -v grub-mkconfig >/dev/null; then
+        grub-mkconfig -o /boot/grub/grub.cfg >/dev/null && echo "grub.cfg regenerated"
+    else
+        echo "grub-mkconfig not found — add this parameter to your bootloader yourself:"
+        echo "    $PARAM"
+    fi
+    echo "A reboot is required."
+}
+
+refresh() {
+    local bus=${1:-}
+    if [[ -z $bus ]]; then
+        echo "usage: $0 refresh <i2c bus number>" >&2
+        echo "       list the buses with: i2cdetect -l" >&2
+        return 1
+    fi
+    command -v i2ctransfer >/dev/null || { echo "the i2c-tools package is required" >&2; return 1; }
+    local off line i v sum out b changed=0
+    : > /tmp/.edid-new.bin
+    for off in 0 128; do
+        if ! line=$(i2ctransfer -f -y "$bus" "w1@0x50" "$(printf '0x%02x' "$off")" r128@0x50 2>/dev/null); then
+            [[ $off == 128 ]] && break
+            echo "cannot read the EDID block at offset $off" >&2; return 1
+        fi
+        local -a vals=(); read -ra vals <<< "$line"
+        (( ${#vals[@]} == 128 )) || { echo "read ${#vals[@]} bytes, expected 128" >&2; return 1; }
+        local -a bytes=(); sum=0
+        for i in "${!vals[@]}"; do bytes[i]=$(( vals[i] )); (( sum += bytes[i] )); done
+        (( sum %= 256 ))
+        if (( sum )); then
+            b=${bytes[127]}; bytes[127]=$(( (b - sum) % 256 ))
+            printf 'block @%d: checksum 0x%02x => 0x%02x\n' "$off" "$b" "${bytes[127]}"
+            changed=1
+        else
+            printf 'block @%d: checksum already correct\n' "$off"
+        fi
+        out=''
+        for i in "${!bytes[@]}"; do out+=$(printf '\\x%02x' "${bytes[i]}"); done
+        printf '%b' "$out" >> /tmp/.edid-new.bin
+    done
+    local size; size=$(stat -c %s /tmp/.edid-new.bin)
+    if (( size != 256 )); then
+        echo "read $size bytes — nothing written" >&2
+        rm -f /tmp/.edid-new.bin
+        return 1
+    fi
+    cp -a "$BLOB" "${BLOB}.bak" 2>/dev/null || true
+    mv /tmp/.edid-new.bin "$BLOB"
+    if (( changed )); then
+        echo "written: $BLOB (${size} bytes), checksums repaired (backup: ${BLOB}.bak)"
+    else
+        echo "written: $BLOB (${size} bytes), the monitor EDID is already valid — the override can be removed"
+    fi
+    verify
+}
+
+notice() {
+    cat <<H
+asus-vs229h-edid-firmware: to make the EDID override effective from the very
+start of boot, add this kernel parameter:
+    $PARAM
+  GRUB: run  asus-vs229h-edid on   (edits /etc/default/grub + grub-mkconfig)
+Alternative without touching the bootloader:
+    systemctl enable asus-vs229h-edid.service
+H
+}
+
+usage() {
+    cat <<'H'
+usage: asus-vs229h-edid <command>
+  status   — EDID file, override state and connector modes
+  verify   — check the header and the block checksums of the EDID file
+  on|off   — enable/disable drm.edid_firmware in /etc/default/grub (+ grub-mkconfig)
+  apply    — apply the override immediately, without a reboot
+  refresh <bus> — re-read the EDID from the monitor and rebuild the file (i2c-tools)
+  notice   — print the post-install reminder
+
+EDID_CONNECTOR overrides the connector name (default: HDMI-A-1).
+H
+    exit 1
+}
+
+case "${1:-status}" in
+    status)  status;;
+    verify)  verify;;
+    apply)   apply;;
+    on)      grub_rewrite on;;
+    off)     grub_rewrite off;;
+    refresh) shift; refresh "$@";;
+    notice)  notice;;
+    *)       usage;;
+esac
