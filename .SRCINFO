@@ -16,4 +16,4 @@ pkgbase = clamaurscan-git
 	source = git+https://codeberg.org/psi-jack/clamaurscan.git
 	md5sums = SKIP
 
-pkgname = myaurscan-git
+pkgname = clamaurscan-git

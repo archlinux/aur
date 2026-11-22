@@ -1,1 +1,5 @@
+src/*
+pkg/*
 aurscan/*
+clamaurscan/*
+clamaurscan-git-*.pkg.tar.zst
