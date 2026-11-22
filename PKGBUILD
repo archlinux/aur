@@ -1,7 +1,7 @@
 # Maintainer: ray0rfire
 # Dependencies follow Nexora's tested Hyprland 0.57.2 package recipe.
 pkgname=hyprland-plus
-pkgver=0.57.2.p2
+pkgver=0.57.2.p3
 pkgrel=1
 _udis86=5336633af70f3917760a6d441ff02d93477b0c86
 pkgdesc="Hyprland 0.57.2 with Halcyon window features, app-scoped pen pressure curves and Surface touchD integration"
@@ -25,7 +25,7 @@ optdepends=(
 provides=("hyprland=${pkgver%.p*}" wayland-compositor)
 conflicts=('hyprland')
 source=(
-  "hyprland-plus::git+https://github.com/trail-b1az3r/hyprland-plus.git#commit=89377a04631f456fc8a3f69f1b40f38d9136d6f5"
+  "hyprland-plus::git+https://github.com/trail-b1az3r/hyprland-plus.git#commit=832cb04a2798d3488f06332126bb112ae09f9e34"
   "udis86::git+https://github.com/canihavesomecoffee/udis86.git#commit=${_udis86}"
 )
 sha256sums=('SKIP' 'SKIP')
