@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="The verbose ed — a drop-in compatible ed clone with friendly errors, written in pure-stdlib Rust"
 
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}-${pkgrel}_${_barch[0]}.deb")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}-${pkgrel}_${_barch[1]}.deb")
-sha256sums=('5143564c65e6703021dd682d38971bdf776b6413f4d896db39653f03ef6d616f'
+sha256sums=('cb73ae23cc8169c7eb1045f027e18311d11925ce950901abec6949024b899de1'
             '3f497ab835deeb8c179da91c333f2e0be83b27bf1d2dadcc76a625f6c8da8405')
-sha256sums_x86_64=('16e3362afcbf753b403bc23304b7f1d2c85b80dfb5022ceceb4e94e54243faa3')
-sha256sums_aarch64=('edbac4956b777ba9f1b2d678a7ce22f0b157bc9e6abdaab020e567c443af839b')
+sha256sums_x86_64=('50e473852965a9dd7d768dc4ba59dd80960c796fd84a3fdbe7eb4530ba9c2f70')
+sha256sums_aarch64=('88bdb5cc2fba6921d4e7c91a6aec44a4df00d30245e01eba8af42b18b4e12c96')
 
 
 package() {
