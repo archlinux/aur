@@ -1,7 +1,7 @@
 # Maintainer: chuanshanjia <1845776552@qq.com>
 
 pkgname=belt-bin
-pkgver=1.29.1
+pkgver=1.29.8
 pkgrel=1
 pkgdesc="CLI for inference.sh - run AI apps, manage skills, connect MCP servers"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source_x86_64=("inferencesh-cli-v${pkgver}-linux-amd64.tar.gz::https://dist.infe
 source_aarch64=("inferencesh-cli-v${pkgver}-linux-arm64.tar.gz::https://dist.inference.sh/cli/v${pkgver}/inferencesh-cli-v${pkgver}-linux-arm64.tar.gz")
 
 sha256sums=('2b8447683453e9a1eab7364b149fcb2066f68ef0e1db1dd1fade2792f6d4cc96')
-sha256sums_x86_64=('1f300ecd37bcb84af3554a2f63447223d5495a8ddbd02b01cfa9ebd1ef5586db')
-sha256sums_aarch64=('c5b64e88cc7ebc7104d7154b104dc99fe38eba1d40b87543eae294511b1d1a22')
+sha256sums_x86_64=('802fe8104f00aab7d108d0aa4c25cc05cd13f33fa377c447566c25f7550ab455')
+sha256sums_aarch64=('9fd2f20f201c7f2e76049720a4ad5a7f30029a743f329b1f633d20397de9adaf')
 
 package() {
     local _dist_arch
