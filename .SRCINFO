@@ -1,0 +1,17 @@
+pkgbase = chaos-rpg-bin
+	pkgdesc = A roguelike where every hit, heal and loot drop is decided by chaining real math
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/Mattbusel/chaos-rpg
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	provides = chaos-rpg
+	conflicts = chaos-rpg
+	options = !debug
+	source_x86_64 = chaos-rpg-bin-2.3.0-x86_64.tar.gz::https://github.com/Mattbusel/chaos-rpg/releases/download/v2.3.0/chaos-rpg-v2.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 332098c07739b624e062eedf5b6a0e097927d692b97fa3d82583431968a56789
+
+pkgname = chaos-rpg-bin
