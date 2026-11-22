@@ -4,7 +4,7 @@
 
 pkgname=lumalarm
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Glassmorphism alarm clock for Linux with rtcwake, D-Bus wake helper, multilingual UI and emoji-density control"
 arch=('x86_64')
 url="https://github.com/shinigami1231111/lumalarm"
@@ -20,7 +20,7 @@ optdepends=(
 )
 install=lumalarm.install
 source=("lumalarm-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst::https://raw.githubusercontent.com/shinigami1231111/lumalarm/v${pkgver}/assets/lumalarm-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst")
-sha256sums=('b57e8073a334f3bfc1622edad8fea2b2327d4bb820bad0fe4aadfaf08111332d')
+sha256sums=('8d90033b8b80f3fccb79a989c7885739fb4d9d1d07c4962f94d54aa74dc56a60')
 noextract=("lumalarm-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst")
 
 package() {

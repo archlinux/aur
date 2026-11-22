@@ -1,7 +1,7 @@
 pkgbase = lumalarm
 	pkgdesc = Glassmorphism alarm clock for Linux with rtcwake, D-Bus wake helper, multilingual UI and emoji-density control
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shinigami1231111/lumalarm
 	install = lumalarm.install
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = lumalarm
 	depends = qt6-declarative
 	depends = util-linux
 	optdepends = kwindowsystem: native KDE/KWin blur-behind (binary is built with blur off; source rebuild required)
-	noextract = lumalarm-1.0.5-2-x86_64.pkg.tar.zst
-	source = lumalarm-1.0.5-2-x86_64.pkg.tar.zst::https://raw.githubusercontent.com/shinigami1231111/lumalarm/v1.0.5/assets/lumalarm-1.0.5-2-x86_64.pkg.tar.zst
-	sha256sums = b57e8073a334f3bfc1622edad8fea2b2327d4bb820bad0fe4aadfaf08111332d
+	noextract = lumalarm-1.0.5-3-x86_64.pkg.tar.zst
+	source = lumalarm-1.0.5-3-x86_64.pkg.tar.zst::https://raw.githubusercontent.com/shinigami1231111/lumalarm/v1.0.5/assets/lumalarm-1.0.5-3-x86_64.pkg.tar.zst
+	sha256sums = 8d90033b8b80f3fccb79a989c7885739fb4d9d1d07c4962f94d54aa74dc56a60
 
 pkgname = lumalarm
