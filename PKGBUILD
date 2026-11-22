@@ -1,8 +1,8 @@
 # Maintainer: adelmonte
 pkgname=langis-gui
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
-_langisver=0.1.0
+_langisver=0.1.1
 pkgdesc='A native Signal desktop client for Linux on the langis library, drawn with egui (unofficial)'
 arch=('x86_64')
 url='https://github.com/adelmonte/langis-gui'
@@ -15,8 +15,8 @@ optdepends=('noto-fonts-emoji: color emoji'
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "langis-$_langisver.tar.gz::https://github.com/adelmonte/langis/archive/v$_langisver.tar.gz")
-sha256sums=('041ffed30ffa71281e79b38c4066ab25d6409933e0e72ca054d9c303e2b76ac5'
-            '5d163a2abc5cf5baeda2e3b56c9ade28d067cf0ae1864a0d762e4107c467aee2')
+sha256sums=('fb275433e4569973ea40db5d3700138706e8e626cf181e22ec8bc77934a1ab6b'
+            '94215f411e4a86cd914b44549b6fc0b6663ed4dbdcb72132134a01a72150cf04')
 
 prepare() {
   # langis-gui builds against langis checked out next to it (../langis).

@@ -1,6 +1,6 @@
 pkgbase = langis-gui
 	pkgdesc = A native Signal desktop client for Linux on the langis library, drawn with egui (unofficial)
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/adelmonte/langis-gui
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = langis-gui
 	optdepends = xdg-desktop-portal: screen sharing
 	options = !lto
 	options = !debug
-	source = langis-gui-0.1.0.tar.gz::https://github.com/adelmonte/langis-gui/archive/v0.1.0.tar.gz
-	source = langis-0.1.0.tar.gz::https://github.com/adelmonte/langis/archive/v0.1.0.tar.gz
-	sha256sums = 041ffed30ffa71281e79b38c4066ab25d6409933e0e72ca054d9c303e2b76ac5
-	sha256sums = 5d163a2abc5cf5baeda2e3b56c9ade28d067cf0ae1864a0d762e4107c467aee2
+	source = langis-gui-0.1.2.tar.gz::https://github.com/adelmonte/langis-gui/archive/v0.1.2.tar.gz
+	source = langis-0.1.1.tar.gz::https://github.com/adelmonte/langis/archive/v0.1.1.tar.gz
+	sha256sums = fb275433e4569973ea40db5d3700138706e8e626cf181e22ec8bc77934a1ab6b
+	sha256sums = 94215f411e4a86cd914b44549b6fc0b6663ed4dbdcb72132134a01a72150cf04
 
 pkgname = langis-gui
