@@ -1,7 +1,7 @@
 # Maintainer: pika02 <pikakolendo02 at gmail dot com>
 
 pkgname=codex-x-bin
-pkgver=0.3.33
+pkgver=0.3.35
 pkgrel=1
 pkgdesc='OpenAI Codex 桌面端/CLI 的可视化管理工具，具有 Provider/API 切换、会话同步、提示词注入、Skills/MCP 管理、TOML 配置可视化'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('codex-x')
 conflicts=('codex-x')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Codex-X-${pkgver}-linux-x64.deb"
         "LICENSE::${url}/raw/v${pkgver}/LICENSE")
-sha256sums=('68b974a82a8ba7edf3dd783457748201f7c5918c79a25b63a4efb2b48dc39438'
+sha256sums=('7046d565c44dcb75b1624d410cf7ecc7f290be2fc345158348617092318bd09c'
             '7003c0131cc654fc3aae1633fcd0c2ee53d75b945b25d9dbd7070f9abe6b3c0c')
 
 prepare() {
