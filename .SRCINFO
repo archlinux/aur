@@ -1,7 +1,7 @@
 pkgbase = thrive
 	pkgdesc = the evolution game Thrive.
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://revolutionarygamesstudio.com/
 	arch = x86_64
 	arch = aarch64
@@ -35,8 +35,11 @@ pkgbase = thrive
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 92f8681e349ef1f90891b792da95e3b2b0bd1ed610b78018c58feb2d87e15a9d
 	source_x86_64 = godot-4.7.2-x86_64.zip::https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_mono_linux_x86_64.zip
+	sha256sums_x86_64 = 129f82db7bafd54ae14bb5bb284041c73860e8c7a009a3a026ca5e946cbff247
 	source_aarch64 = godot-4.7.2-aarch64.zip::https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_mono_linux_arm64.zip
+	sha256sums_aarch64 = 0dc8ad63feacc6c19d7cb5c89ae828085b0ac3fa8039bc816a08a0537744e523
 
 pkgname = thrive
 	depends = libgcc

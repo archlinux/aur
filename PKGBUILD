@@ -5,7 +5,7 @@ _system_godot=${MAKEPKG_THRIVE_SYSTEM_GODOT:-false}
 
 pkgname=thrive
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="the evolution game Thrive."
 arch=("x86_64" "aarch64")
 url="https://revolutionarygamesstudio.com/"
@@ -37,6 +37,9 @@ else
     source_aarch64+=("godot-$_godot-aarch64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_arm64.zip")
     source+=("godot-mono-export-templates-$_godot.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_export_templates.tpz")
     noextract+=("godot-mono-export-templates-$_godot.zip")
+    sha256sums_x86_64+=('129f82db7bafd54ae14bb5bb284041c73860e8c7a009a3a026ca5e946cbff247')
+    sha256sums_aarch64+=('0dc8ad63feacc6c19d7cb5c89ae828085b0ac3fa8039bc816a08a0537744e523')
+    sha256sums+=('92f8681e349ef1f90891b792da95e3b2b0bd1ed610b78018c58feb2d87e15a9d')
 fi
 
 options=("!lto") # -flto=thin is added in CMakeLists.txt
