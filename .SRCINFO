@@ -1,0 +1,21 @@
+pkgbase = snipt-tui-bin
+	pkgdesc = A text snippet expansion tool with a TUI for managing snippets
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/snipt/snipt
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libx11
+	depends = libxtst
+	depends = xdotool
+	provides = snipt-tui
+	conflicts = snipt-tui
+	options = !debug
+	source = snipt-tui-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/snipt/snipt/v0.1.0/LICENSE
+	sha256sums = f1fc2b85ff2be37f681afce68fc721f8e1897f7a7379b27e8ec16a2d4f4ccf7c
+	source_x86_64 = snipt-tui-bin-0.1.0-x86_64.tar.gz::https://github.com/snipt/snipt/releases/download/v0.1.0/snipt-v0.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5e23a17f23a0767081b78dba03183a93ef2fa03939efa8ba5b728dbae207007e
+
+pkgname = snipt-tui-bin
