@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: M.Reynolds <blackboxnetworkproject@gmail.com>
 # Contributor: Bjoern Franke <bjo at nord-west.org>
 # Contributor: flan_suse
