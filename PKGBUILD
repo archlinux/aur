@@ -1,17 +1,17 @@
-# Generated from src/install/autostart.rs by cargo xtask generate
+# Generated from src/install/autostart/packaging.rs by cargo xtask generate
 
 # Maintainer: AlphaJack <19962243+AlphaJack at users dot noreply dot github dot com>
 
 _name=rusticlone
 pkgname=$_name-bin
 # Set by .github/workflows/aur.yml at each release.
-pkgver=2.0.4
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Scheduled 3-2-1-1-0 backups for desktops and servers built on rustic profiles, with UI and notifications"
 arch=('x86_64' 'aarch64')
 url="https://github.com/AlphaJack/rusticlone"
 license=('AGPL-3.0-or-later')
-depends=('rustic')
+depends=('rustic>=0.12')
 optdepends=('rclone: use rclone remotes for rustic repositories')
 provides=("$_name")
 conflicts=("$_name")
@@ -19,8 +19,8 @@ options=('!strip' '!debug')
 backup=("etc/$_name/$_name.env")
 source_x86_64=("$pkgname-$pkgver-x86_64-unknown-linux-musl.tar.gz::$url/releases/download/v$pkgver/$_name-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64-unknown-linux-musl.tar.gz::$url/releases/download/v$pkgver/$_name-aarch64-unknown-linux-musl.tar.gz")
-b2sums_x86_64=('4292ce98fe6fe1667c0f7a7a7525f1a88b93929a5a7e08e03d6b8e838efc896223eabfa9a2068a7b2bb2d36f0f810eae317efd40c6a96d3ab793861c7e7f874c')
-b2sums_aarch64=('f5b671c468cc89064e198f3dc4e055cff486d087fe5321ebd18b5baf3c70e9c75322491a4d56d47ebc4b7a08b3d065140d4c59e9a48c33703777e69b216445f1')
+b2sums_x86_64=('04046ec99e3e7786bc7ed1f0c0e0e291330b5d99af440011c42507afe90fbc0607892e5ef12c2916c39c6c3f509d837da433b3262c13b092995e035b1fe12ba6')
+b2sums_aarch64=('25fa2139b51075258bf090dfa60f5d4623d9c7619492c7119dcb7526707be1574d811730295c946419f85223a6fff5a255eed95897f4fe4398fc84e2d7982d32')
 
 
 _completion(){

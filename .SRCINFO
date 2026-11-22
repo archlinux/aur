@@ -1,21 +1,21 @@
 pkgbase = rusticlone-bin
 	pkgdesc = Scheduled 3-2-1-1-0 backups for desktops and servers built on rustic profiles, with UI and notifications
-	pkgver = 2.0.4
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/AlphaJack/rusticlone
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-or-later
-	depends = rustic
+	depends = rustic>=0.12
 	optdepends = rclone: use rclone remotes for rustic repositories
 	provides = rusticlone
 	conflicts = rusticlone
 	options = !strip
 	options = !debug
 	backup = etc/rusticlone/rusticlone.env
-	source_x86_64 = rusticlone-bin-2.0.4-x86_64-unknown-linux-musl.tar.gz::https://github.com/AlphaJack/rusticlone/releases/download/v2.0.4/rusticlone-x86_64-unknown-linux-musl.tar.gz
-	b2sums_x86_64 = 4292ce98fe6fe1667c0f7a7a7525f1a88b93929a5a7e08e03d6b8e838efc896223eabfa9a2068a7b2bb2d36f0f810eae317efd40c6a96d3ab793861c7e7f874c
-	source_aarch64 = rusticlone-bin-2.0.4-aarch64-unknown-linux-musl.tar.gz::https://github.com/AlphaJack/rusticlone/releases/download/v2.0.4/rusticlone-aarch64-unknown-linux-musl.tar.gz
-	b2sums_aarch64 = f5b671c468cc89064e198f3dc4e055cff486d087fe5321ebd18b5baf3c70e9c75322491a4d56d47ebc4b7a08b3d065140d4c59e9a48c33703777e69b216445f1
+	source_x86_64 = rusticlone-bin-2.1.0-x86_64-unknown-linux-musl.tar.gz::https://github.com/AlphaJack/rusticlone/releases/download/v2.1.0/rusticlone-x86_64-unknown-linux-musl.tar.gz
+	b2sums_x86_64 = 04046ec99e3e7786bc7ed1f0c0e0e291330b5d99af440011c42507afe90fbc0607892e5ef12c2916c39c6c3f509d837da433b3262c13b092995e035b1fe12ba6
+	source_aarch64 = rusticlone-bin-2.1.0-aarch64-unknown-linux-musl.tar.gz::https://github.com/AlphaJack/rusticlone/releases/download/v2.1.0/rusticlone-aarch64-unknown-linux-musl.tar.gz
+	b2sums_aarch64 = 25fa2139b51075258bf090dfa60f5d4623d9c7619492c7119dcb7526707be1574d811730295c946419f85223a6fff5a255eed95897f4fe4398fc84e2d7982d32
 
 pkgname = rusticlone-bin
