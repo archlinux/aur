@@ -3,7 +3,7 @@
 # Contributor: Joe Davison <joe@warhaggis.com>
 
 pkgname=lgogdownloader
-pkgver=3.19
+pkgver=3.20
 pkgrel=1
 pkgdesc="Open source downloader for GOG.com games, uses the GOG.com API"
 url="https://github.com/Sude-/lgogdownloader"
@@ -26,7 +26,7 @@ makedepends=(
     help2man
     )
 source=("https://github.com/Sude-/lgogdownloader/releases/download/v${pkgver}/lgogdownloader-${pkgver}.tar.gz")
-sha256sums=('0fd3622f1cee4627048aafbbebd17dc38fd3ddb220c979e4a118eeab2cc665d4')
+sha256sums=('14dbbaf7d6764143444dbb5be8a53d8fdea6d8647204e05ed81f8dd5e80a4fde')
 
 build() {
   local _flags=(
