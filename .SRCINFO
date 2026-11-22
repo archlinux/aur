@@ -1,7 +1,7 @@
 pkgbase = next-ai-draw-io-bin
 	pkgdesc = Next AI Powered Draw.io (Desktop version). Built for system-wide electron.
 	pkgver = 0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DayuanJiang/next-ai-draw-io
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,6 @@ pkgbase = next-ai-draw-io-bin
 	depends = electron39
 	depends = hicolor-icon-theme
 	provides = next-ai-draw-io
-	provides = next-ai-draw-io-bin
 	conflicts = next-ai-draw-io
 	conflicts = next-ai-draw-io-bin-autoupdate
 	options = !strip

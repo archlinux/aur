@@ -4,21 +4,20 @@ pkgname=next-ai-draw-io-bin
 _pkgname=next-ai-draw-io
 _dist_name="Next AI Draw.io"
 pkgver=0.5.1
-_pkgver=0.5.1
 _electronversion=39
-pkgrel=2
+pkgrel=3
 pkgdesc="Next AI Powered Draw.io (Desktop version). Built for system-wide electron."
 arch=('x86_64' 'aarch64')
 url="https://github.com/DayuanJiang/next-ai-draw-io"
 license=('Apache-2.0')
 depends=("electron${_electronversion}" 'hicolor-icon-theme')
-provides=('next-ai-draw-io' 'next-ai-draw-io-bin')
+provides=('next-ai-draw-io')
 conflicts=('next-ai-draw-io' 'next-ai-draw-io-bin-autoupdate')
 makedepends=('asar')
 options=('!strip' '!emptydirs')
 
-source_x86_64=("${url}/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_amd64.deb")
-source_aarch64=("${url}/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_arm64.deb")
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
+source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 source=("${_pkgname}.sh")
 
 sha256sums=('83c45b7af305f75c312c9cf75a08c7b997a2484ebcd31943f1f0ace20457adac')
