@@ -7,7 +7,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A fast, lightweight, command-line Steam launcher and library manager written in Rust"
 
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -22,7 +22,7 @@ license=('GPL-3.0-or-later' 'MIT')
 
 provides=("${_appname}")
 conflicts=("${_appname}")
-depends=('glibc' 'libgcc' 'xz' 'bzip2' 'openssl' 'vulkan-driver' 'vulkan-icd-loader')
+depends=('glibc' 'libgcc' 'xz' 'dbus' 'vulkan-driver' 'vulkan-icd-loader')
 optdepends=('lib32-vulkan-driver: 32-bit Windows games via Proton (multilib)'
             'lib32-vulkan-icd-loader: 32-bit Windows games via Proton (multilib)'
             'lib32-freetype2: fonts in 32-bit Windows games (multilib)'
@@ -36,10 +36,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}")
-sha256sums=('ea0ffeae23469a8881edb59a2627a68cd9f74ec7bd62164b5229e0272731ae49'
+sha256sums=('96d02240f25c2419093c04f506cee5035c3e2fc44341d8cb59dea3d462348936'
             'f2be9195b5ecdd8f2b71db80d4794361f90a2bdb91894f3c811f025c6578db5b')
-sha256sums_x86_64=('168b38894d225a3a014d126180566bca11509df26c85b4bd5a10307457262d61')
-sha256sums_aarch64=('ba80725a2a31602bd5584fa1205daf0c8907dcd5f960e27fc1c792526d3b295f')
+sha256sums_x86_64=('a0af85e0dab7b8829d33add6ca9743255fc545140550e29554708c524192edd5')
+sha256sums_aarch64=('8a7d0f0d6d5921a7b8908228d7fae36e1919e8aaabee9fde4b64d749aa7be957')
 
 
 package() {
