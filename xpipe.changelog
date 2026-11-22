@@ -1,1 +1,6 @@
-- Fix slow terminal and CLI startup since v24.0 due to inefficient initialization
+- Fix the webtop deployment generator dialog using the PTB image instead of the stable one
+- Fix generating the public key of a passphrase-protected private key failing
+- Fix Konsole sessions not starting in the home directory
+- Fix the XPIPE_API_SERVER environment variable for the webtop not being respected
+- Fix Homebrew installations not being detected on Intel Macs
+- Fix the AUR desktop entry not being associated with the app window and icons being broken
