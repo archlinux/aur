@@ -1,6 +1,6 @@
 # Maintainer: Seratym < {replace_by_handle} at proton dot me>
 pkgname=dh-to-do
-pkgver=3.3.2
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='A to-do app with a floating reminder of the task you are on, simple lists, and easy time tracking'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   "$pkgname-$pkgver-source.tar.gz::https://github.com/digitalhabits/dh-to-do/archive/refs/tags/v$pkgver.tar.gz"
   "$pkgname.desktop"
 )
-sha256sums=('9a07587c7faa741a25bf64c93cc89e869a99eb4e4e4915dda82b3cc12f6c7d77'
+sha256sums=('c42ef4fb40a94c9c17db187ed9def88a4c934afeba36d3173a68abf18349b57d'
             '924410004b2b07d3f5278663162fcf8bca79e2b440b79ce08945d2b2298f7a7d')
 
 prepare() {
