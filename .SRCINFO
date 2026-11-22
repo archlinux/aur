@@ -1,0 +1,19 @@
+pkgbase = bigbrainwordle-bin
+	pkgdesc = A tool to help you cheat with the daily wordle
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/kloki/bigbrainwordle
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = bigbrainwordle
+	conflicts = bigbrainwordle
+	options = !debug
+	source_x86_64 = bigbrainwordle-bin-0.3.2-x86_64.tar.xz::https://github.com/kloki/bigbrainwordle/releases/download/v0.3.2/bigbrainwordle-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = d4756533fb29ddf8246f13701e3ba768278d810768f507de5c4e7e86dae6e829
+	source_aarch64 = bigbrainwordle-bin-0.3.2-aarch64.tar.xz::https://github.com/kloki/bigbrainwordle/releases/download/v0.3.2/bigbrainwordle-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = d7fd0d7426f9e380378b5b3c3b2776bdca87b502962a26fac06ce84d2139c161
+
+pkgname = bigbrainwordle-bin
