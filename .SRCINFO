@@ -1,6 +1,6 @@
 pkgbase = rustgis-bin
 	pkgdesc = Fast, free and open-source GIS for mapping, analyzing and sharing geospatial data
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://rustgis.app
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = rustgis-bin
 	optdepends = gdal: reading the vector formats GDAL supports
 	provides = rustgis
 	conflicts = rustgis
-	noextract = rustgis-0.7.0-x86_64.deb
+	noextract = rustgis-0.8.0-x86_64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = rustgis-0.7.0-x86_64.deb::https://github.com/opengeos/RustGIS/releases/download/v0.7.0/rustgis_0.7.0_amd64.deb
-	sha256sums_x86_64 = c61743c9a0c9e0891b3708f72a8373a161dd5f94ee6e4769abe1673fc99e226a
-	source_aarch64 = rustgis-0.7.0-aarch64.deb::https://github.com/opengeos/RustGIS/releases/download/v0.7.0/rustgis_0.7.0_arm64.deb
-	sha256sums_aarch64 = 5c2106d13c3553e3f9a605df40fe0e239ce433665b4614f52eaf60c507930d9f
+	source_x86_64 = rustgis-0.8.0-x86_64.deb::https://github.com/opengeos/RustGIS/releases/download/v0.8.0/rustgis_0.8.0_amd64.deb
+	sha256sums_x86_64 = d42163f4ed0dc09d3e16f5b5f4f2ff534701883c92d220df6a9a01781044c28b
+	source_aarch64 = rustgis-0.8.0-aarch64.deb::https://github.com/opengeos/RustGIS/releases/download/v0.8.0/rustgis_0.8.0_arm64.deb
+	sha256sums_aarch64 = 377ca722845183d3b95ffba4dd19d0fcae49a61dfb3b3683faaaee7ddb3ed356
 
 pkgname = rustgis-bin
