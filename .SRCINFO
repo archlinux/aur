@@ -1,0 +1,19 @@
+pkgbase = ygrep-tui-bin
+	pkgdesc = A fast, local, indexed code-search tool with a TUI for AI coding assistants
+	pkgver = 4.0.4
+	pkgrel = 1
+	url = https://github.com/yetidevworks/ygrep
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ygrep-tui
+	conflicts = ygrep-tui
+	options = !debug
+	source = ygrep-tui-bin-4.0.4-LICENSE::https://raw.githubusercontent.com/yetidevworks/ygrep/v4.0.4/LICENSE
+	sha256sums = 16ee06b4e61fdc0d83101ee85e1d859b6bdaaa27567b9fd48904f8b1e5d04cad
+	source_x86_64 = ygrep-tui-bin-4.0.4-x86_64.tar.gz::https://github.com/yetidevworks/ygrep/releases/download/v4.0.4/ygrep-4.0.4-linux-x86_64-musl.tar.gz
+	sha256sums_x86_64 = 351fc4c554a930143c43f74ab390db7915a1ab5df04c4893c4363cc4d8eaff64
+	source_aarch64 = ygrep-tui-bin-4.0.4-aarch64.tar.gz::https://github.com/yetidevworks/ygrep/releases/download/v4.0.4/ygrep-4.0.4-linux-aarch64-musl.tar.gz
+	sha256sums_aarch64 = d06092544ba7de83c607ab68b7f80cd4a52b2618e6cc42d7ef26502a62a72b9c
+
+pkgname = ygrep-tui-bin
