@@ -1,0 +1,18 @@
+pkgbase = lazyslurm-bin
+	pkgdesc = A lazygit-style terminal UI
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/hill/lazyslurm
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = lazyslurm
+	conflicts = lazyslurm
+	options = !debug
+	source = lazyslurm-bin-0.5.1-LICENSE::https://raw.githubusercontent.com/hill/lazyslurm/v0.5.1/LICENSE
+	sha256sums = 77c8c6c9c240fabdf5e323c26ce10b5402fdcf9f2446924d2caf6b411dab0eb3
+	source_x86_64 = lazyslurm-bin-0.5.1-x86_64.tar.gz::https://github.com/hill/lazyslurm/releases/download/v0.5.1/lazyslurm-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 50759c00fcb58b83690d80f4e1c6dfe02f1c899e69e18933881ca9db73fce7aa
+
+pkgname = lazyslurm-bin
