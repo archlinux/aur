@@ -1,0 +1,11 @@
+pkgbase = ttf-courier-badi
+	pkgdesc = Courier Badi, a monospace typewriter font based on Courier Prime, extended for Bahá'í usage
+	pkgver = 1.101
+	pkgrel = 1
+	url = https://github.com/LaPingvino/courier-badi
+	arch = any
+	license = OFL-1.1
+	source = https://github.com/LaPingvino/courier-badi/releases/download/v1.101/courier-badi-v1.101.zip
+	sha256sums = 0745a35aded8b1762065fa2d6c074d7a4f8aeed00ecd268799c4fabd533aeb5c
+
+pkgname = ttf-courier-badi
