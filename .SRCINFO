@@ -1,0 +1,19 @@
+pkgbase = hedos-bin
+	pkgdesc = A terminal shelf for the local AI models already on your machine
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/theiskaa/hedos
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = hedos
+	conflicts = hedos
+	options = !debug
+	source_x86_64 = hedos-bin-1.6.1-x86_64.tar.xz::https://github.com/theiskaa/hedos/releases/download/v1.6.1/hedos-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 14efc11708724282cf72a5aab2ccf6e019cad656f5413d0adce3a1d9f3d2d81f
+	source_aarch64 = hedos-bin-1.6.1-aarch64.tar.xz::https://github.com/theiskaa/hedos/releases/download/v1.6.1/hedos-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 22f2fce1ca54a4179aaece13a91a1e0d17c31bd96b260347d9cae6d0778f052c
+
+pkgname = hedos-bin
