@@ -1,0 +1,18 @@
+pkgbase = inertia-bin
+	pkgdesc = A 3D physics simulator in your terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/aclfe/inertia
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = inertia
+	conflicts = inertia
+	options = !debug
+	source = inertia-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/aclfe/inertia/v0.1.0/LICENSE-MIT
+	sha256sums = fbf9337dd2ab3c5c79e5947380110debcf490afd523b60e95b926b120d084877
+	source_x86_64 = inertia-bin-0.1.0-x86_64.tar.gz::https://github.com/aclfe/inertia/releases/download/v0.1.0/inertia-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 863827f90df8f63053bef81598335d61f8246e23e2e5034fc3d7e179ea08dce2
+
+pkgname = inertia-bin
