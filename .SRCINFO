@@ -1,0 +1,17 @@
+pkgbase = rada-fm-bin
+	pkgdesc = A terminal file manager that shows a plan before every operation, with a journal, undo
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/FormikaDesk/rada-fm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = rada-fm
+	conflicts = rada-fm
+	options = !debug
+	source_x86_64 = rada-fm-bin-0.6.1-x86_64.tar.gz::https://github.com/FormikaDesk/rada-fm/releases/download/v0.6.1/rada-0.6.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 996ce078d0180c6e55f89336cc52d91f686b6807a35447d8b4b0c54a115740d4
+	source_aarch64 = rada-fm-bin-0.6.1-aarch64.tar.gz::https://github.com/FormikaDesk/rada-fm/releases/download/v0.6.1/rada-0.6.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 755e820920794a5bb981818c381e1ab012f11dd60fa692401628d42a23295019
+
+pkgname = rada-fm-bin
