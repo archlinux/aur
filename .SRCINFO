@@ -1,0 +1,19 @@
+pkgbase = jdtui-bin
+	pkgdesc = A TUI for JDownloader 2 over the My.JDownloader API: downloads, link grabber, accounts
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = https://github.com/rylos/jdtui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = jdtui
+	conflicts = jdtui
+	options = !debug
+	source = jdtui-bin-1.9.2-LICENSE::https://raw.githubusercontent.com/rylos/jdtui/v1.9.2/LICENSE
+	sha256sums = 9d92a434674980f6d221eda9ff3514305ac4f6a8735f118c012e62e25aeeb25b
+	source_x86_64 = jdtui-bin-1.9.2-x86_64.tar.gz::https://github.com/rylos/jdtui/releases/download/v1.9.2/jdtui-1.9.2-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 6735dec287e7f7fbedee599000cccded5953c1e3bd55c5b96287e1b9308bb49d
+	source_aarch64 = jdtui-bin-1.9.2-aarch64.tar.gz::https://github.com/rylos/jdtui/releases/download/v1.9.2/jdtui-1.9.2-aarch64-linux.tar.gz
+	sha256sums_aarch64 = b3d41caf5ab19b8c8e98beec13f0a40d8a48b041da32359b2652275e09e7565c
+
+pkgname = jdtui-bin
