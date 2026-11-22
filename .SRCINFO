@@ -1,6 +1,6 @@
 pkgbase = everythingx-bin
 	pkgdesc = A blazing fast file name search tool
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/AlanKK/everythingx
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = everythingx-bin
 	provides = everythingx
 	conflicts = everythingx
 	options = !strip
-	source = README-1.1.0.md::https://raw.githubusercontent.com/AlanKK/everythingx/v1.1.0/README.md
-	source = LICENSE-1.1.0::https://raw.githubusercontent.com/AlanKK/everythingx/v1.1.0/LICENSE.txt
+	source = README-1.1.1.md::https://raw.githubusercontent.com/AlanKK/everythingx/v1.1.1/README.md
+	source = LICENSE-1.1.1::https://raw.githubusercontent.com/AlanKK/everythingx/v1.1.1/LICENSE.txt
 	sha256sums = 28c5949361556779253f761be5b96b2b73e3e257468b6c3729ff9656af4964a7
 	sha256sums = b47b5eeb5533dc7ebe52f56d65d161a624504ff8ee6653882c55b02a2affcea6
-	source_x86_64 = everythingx-x86_64-1.1.0.rpm::https://github.com/AlanKK/everythingx/releases/download/v1.1.0/everythingx_linux_amd64.rpm
-	sha256sums_x86_64 = dbd6b6f1bf6f305a5e9cb74dfb5e6500e27a1aa17bae6195cdf37cef556088b8
-	source_aarch64 = everythingx-aarch64-1.1.0.rpm::https://github.com/AlanKK/everythingx/releases/download/v1.1.0/everythingx_linux_arm64.rpm
-	sha256sums_aarch64 = 0dc08ebc25ddc2d01bff3455f2f88fec256b470f396c8e340a7eded93f3f2401
+	source_x86_64 = everythingx-x86_64-1.1.1.rpm::https://github.com/AlanKK/everythingx/releases/download/v1.1.1/everythingx_linux_amd64.rpm
+	sha256sums_x86_64 = 3069edd3267db26cb090d6ef414d17c742ba36aa0bc2e108aa7eadaedfb45d72
+	source_aarch64 = everythingx-aarch64-1.1.1.rpm::https://github.com/AlanKK/everythingx/releases/download/v1.1.1/everythingx_linux_arm64.rpm
+	sha256sums_aarch64 = c0ceaf5d2c39859daf5b92a560f2a4e01a0b17b1618d7ca033133174db9a5e32
 
 pkgname = everythingx-bin
