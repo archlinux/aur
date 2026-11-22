@@ -1,0 +1,17 @@
+pkgbase = rtg
+	pkgdesc = Fast, vim-like Telegram TUI client, built on TDLib
+	pkgver = 0.1.19
+	pkgrel = 1
+	url = https://github.com/bercly0b/rtg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = libc++
+	options = !lto
+	source = rtg-0.1.19.tar.gz::https://github.com/bercly0b/rtg/archive/refs/tags/v0.1.19.tar.gz
+	sha256sums = 0b2f558835047eb38183ce3512da789fefa0ebaaf54daa2594b84ee3e1c9c768
+
+pkgname = rtg
