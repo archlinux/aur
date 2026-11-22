@@ -1,0 +1,17 @@
+pkgbase = nereid-bin
+	pkgdesc = Create and explore Mermaid diagrams with AI agents through a terminal UI
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/bnomei/nereid
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Nereid
+	provides = nereid
+	conflicts = nereid
+	options = !debug
+	source_x86_64 = nereid-bin-0.9.0-x86_64.tar.gz::https://github.com/bnomei/nereid/releases/download/v0.9.0/nereid-v0.9.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 781e5ec4b0db2cf40e47efda5410345d0872db3c4a90aaf92a98023bf1b81817
+	source_aarch64 = nereid-bin-0.9.0-aarch64.tar.gz::https://github.com/bnomei/nereid/releases/download/v0.9.0/nereid-v0.9.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 17b42741ab1953aea3bbb33636ec0f5f69b7835c5edb5b3d5ac25656f114dee5
+
+pkgname = nereid-bin
