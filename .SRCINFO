@@ -1,0 +1,16 @@
+pkgbase = discovery-rs
+	pkgdesc = A TUI for discovering services on your local network
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/JustPretender/discovery-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = discovery-rs-0.1.3.tar.gz::https://github.com/JustPretender/discovery-rs/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = d57848bb6ea4f157dcd45c256bae7c0e4714e0bd7b5b8655520b7d3f2f07fe98
+
+pkgname = discovery-rs
