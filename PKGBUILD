@@ -32,7 +32,7 @@ options=('!strip' '!debug')
 # Normal AUR builds fetch the public fork. The local packaging helper can explicitly
 # select an existing clone, including its committed-but-not-yet-pushed submodules.
 _xerahs_repo_root="${XERAHS_REPO_ROOT:-}"
-source=('xerahs::git+https://github.com/KovaForge/XerahS.git#branch=develop')
+source=('xerahs::git+https://github.com/KovaForge/XerahS.git#commit=c6e7c77a')
 if [[ -n "$_xerahs_repo_root" ]]; then
     source=("xerahs::git+file://${_xerahs_repo_root}")
     # The caller explicitly selected this trusted local clone. Permit upload-pack

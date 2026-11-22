@@ -44,7 +44,7 @@ pkgbase = xerahs-git
 	conflicts = xerahs
 	options = !strip
 	options = !debug
-	source = xerahs::git+https://github.com/KovaForge/XerahS.git#branch=develop
+	source = xerahs::git+https://github.com/KovaForge/XerahS.git#commit=c6e7c77a
 	sha256sums = SKIP
 
 pkgname = xerahs-git
