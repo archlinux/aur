@@ -7,7 +7,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}
 pkgdesc="A fast, lightweight, command-line Steam launcher and library manager written in Rust"
 
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -20,8 +20,9 @@ url=${_ghurl}
 license=('GPL-3.0-or-later' 'MIT')
 
 provides=("${_appname}")
-makedepends=('rust' 'cargo')
-depends=('glibc' 'libgcc' 'xz' 'bzip2' 'openssl' 'vulkan-driver' 'vulkan-icd-loader')
+# Needs Rust 1.100 (rust-toolchain.toml); rustup installs it.
+makedepends=('rustup')
+depends=('glibc' 'libgcc' 'xz' 'dbus' 'vulkan-driver' 'vulkan-icd-loader')
 optdepends=('lib32-vulkan-driver: 32-bit Windows games via Proton (multilib)'
             'lib32-vulkan-icd-loader: 32-bit Windows games via Proton (multilib)'
             'lib32-freetype2: fonts in 32-bit Windows games (multilib)'
@@ -32,20 +33,18 @@ install=aurelia.install
 options=(!strip !lto)
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_gitversion}.tar.gz")
-sha256sums=('287132d6177227441f0da96997aab386125a66bf878d23923990a2526cfb95a4')
+sha256sums=('5d89cb5f5560e480f0143355d07c97f7055a0308c621dd725fdc59e1e59a2c3d')
 
 
 prepare() {
 	cd ${srcdir}/${_gitname}-${pkgver} || exit 1
 
-	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
 	cd ${srcdir}/${_gitname}-${pkgver} || exit 1
 
-	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --release --frozen
 }
@@ -53,9 +52,12 @@ build() {
 check() {
 	cd ${srcdir}/${_gitname}-${pkgver} || exit 1
 
-	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo test --frozen --release
+	# Some tests read Steam data under $HOME.
+	export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
+	export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
+	mkdir -p "${srcdir}/test-home"
+	HOME="${srcdir}/test-home" cargo test --frozen --release
 }
 
 package() {
