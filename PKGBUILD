@@ -1,14 +1,14 @@
 # Maintainer: lumexren <lumexren@gmail.com>
 
 pkgname=ungoogled-vulcanium-bin
-pkgver=157.0.8103.78
+pkgver=158.0.8127.36
 pkgrel=1
 pkgdesc="ungoogled-chromium with native Wayland Vulkan rendering and Vulkan Video decoding/encoding (prebuilt)"
 arch=('x86_64')
 url="https://github.com/lumexren/vulcanium"
 license=('BSD-3-Clause')
-provides=('chromium' 'ungoogled-chromium' 'ungoogled-vulcanium')
-conflicts=('chromium' 'ungoogled-chromium' 'ungoogled-vulcanium')
+provides=('vulcanium' 'chromium' 'ungoogled-chromium' 'ungoogled-vulcanium')
+conflicts=('chromium' 'ungoogled-chromium' 'vulcanium' 'vulcanium-bin' 'ungoogled-vulcanium')
 depends=(
   'alsa-lib'
   'at-spi2-core'
@@ -56,11 +56,11 @@ optdepends=(
   'org.freedesktop.secrets: password storage backend on GNOME, KDE and Xfce'
   'upower: Battery Status API support'
 )
-backup=('etc/chromium/default-flags.conf')
+backup=('etc/vulcanium/default-flags.conf')
 options=('!strip')
 source=("https://github.com/lumexren/vulcanium/releases/download/v${pkgver}-${pkgrel}/ungoogled-vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("ungoogled-vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('2bec31149458ff9fa7a3aca5b1189ab3af5f5189ee1a356535d63e574c2ad40a')
+sha256sums=('c2d98482c133afb6521cae5e04478a44d20bd4f6f4cf419a38d2d7f34cccedb2')
 
 package() {
   bsdtar -xf "${srcdir}/ungoogled-vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" \
