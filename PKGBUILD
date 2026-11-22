@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=dffy-render-markdown-bin
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="dffy renderer plugin that draws Markdown as rendered text for the diff view: headings, lists, quotes, tables and links, with Mermaid fences drawn as diagrams"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_aarch64=("${_tar_aarch64}::https://github.com/amalucelli/dffy/releases/do
 # Both archives hold a file called dffy-render-markdown, so they are unpacked
 # by arch below instead of into the same source directory.
 noextract=("${_tar_x86_64}" "${_tar_aarch64}")
-sha256sums_x86_64=('dcdf295c19bfa197557ede6f7ac52e3defe83577cbd27e3c685b1efe5e45ecbf')
-sha256sums_aarch64=('b26958f2df8b88cd256d0edba9ab1ce9d6591328838f3204e74a2fbf0af82c05')
+sha256sums_x86_64=('57b2c8dab5526ea601597b4689b7a3e8617a46a5400dd48482dd7281831a49ea')
+sha256sums_aarch64=('58feef01751c1961d0449e49251a8da2359c45c6f3650174901de8318e6d0e9c')
 
 package() {
   local tar_var="_tar_${CARCH}"
