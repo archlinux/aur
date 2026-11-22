@@ -1,0 +1,10 @@
+pkgbase = code-remove-copilot-hook
+	pkgdesc = Pacman hook to remove bundled Copilot from VS Code
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org
+	arch = any
+	license = GPL-3.0-or-later
+	depends = code
+
+pkgname = code-remove-copilot-hook
