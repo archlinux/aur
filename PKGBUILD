@@ -5,7 +5,7 @@ _pkgname=sunflower
 pkgname=${_pkgname}-bin
 pkgdesc="Small and highly customizable twin-panel file manager for Linux with support for plugins"
 
-pkgver=0.6.64
+pkgver=0.7.65
 pkgrel=1
 
 _pkgversion="${pkgver%.*}-${pkgver##*.}"
@@ -24,7 +24,7 @@ optdepends=('libnotify'
             'gvfs: mount-management')
 
             source=("https://github.com/MeanEYE/Sunflower/releases/download/${_pkgversion}/${_pkgname}-${pkgver}-${pkgrel}.all.deb")
-sha256sums=('72bf0eea021db3ceb8f0f48c12acf3d6a6244edcf8447a47b157c3213750278f')
+sha256sums=('d2f8189a9774f05034474ff6a35f158220c5912ec6478212be89cb9af822a20e')
 
 package() {
     cd "${pkgdir}"
