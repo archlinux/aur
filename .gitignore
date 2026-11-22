@@ -1,0 +1,7 @@
+src/*
+pkg/*
+aurscan/*
+clamaurscan/*
+*.tar.gz
+clamaurscan-*.pkg.tar.zst
+clamaurscan-*.log
