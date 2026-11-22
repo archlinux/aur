@@ -1,0 +1,19 @@
+pkgbase = rigtop-bin
+	pkgdesc = System monitor for workstations, laptops and NAS with storage health, per-process GPU memory
+	pkgver = 0.35.1
+	pkgrel = 1
+	url = https://github.com/akivajp/rigtop
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = rigtop
+	conflicts = rigtop
+	options = !debug
+	source_x86_64 = rigtop-bin-0.35.1-x86_64.tar.gz::https://github.com/akivajp/rigtop/releases/download/v0.35.1/rigtop-v0.35.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = eb529b56765c04d2e63cf002542188fc925fa7556e7871b8160c4d8737cc5df6
+	source_aarch64 = rigtop-bin-0.35.1-aarch64.tar.gz::https://github.com/akivajp/rigtop/releases/download/v0.35.1/rigtop-v0.35.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0b81fbd38a991c803cc533d33b96889c1e31fd267fb5d2d4b0429ed1d83b7faf
+
+pkgname = rigtop-bin
