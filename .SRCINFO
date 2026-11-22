@@ -1,0 +1,17 @@
+pkgbase = angry-duiker
+	pkgdesc = A TUI for streaming music from network media servers using DLNA
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://gitlab.com/fizzizist/angry-duiker-2
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	options = !lto
+	source = angry-duiker-0.6.0.tar.gz::https://gitlab.com/fizzizist/angry-duiker-2/-/archive/v0.6.0/angry-duiker-2-v0.6.0.tar.gz
+	sha256sums = c6cf911e4a919499d3f2fd5eed5728edb0a001fb677f3fa5b9395cfa32201c94
+
+pkgname = angry-duiker
