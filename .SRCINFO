@@ -1,0 +1,16 @@
+pkgbase = wryme
+	pkgdesc = That calm window where agents come to meet you, as a TUI and desktop app
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/adiled/wryme
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = wryme-1.11.0.tar.gz::https://github.com/adiled/wryme/archive/refs/tags/v1.11.0.tar.gz
+	sha256sums = 6354ff5d51446c6b4d0d9a38bcec370a1708d0c1c06034157686764f74f6992a
+
+pkgname = wryme
