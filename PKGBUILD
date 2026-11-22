@@ -5,7 +5,7 @@
 # with apps/linux/packaging/aur/publish.sh after the release is on GitHub.
 pkgname=anibeam-bin
 _pkgname=anibeam
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Browse, play and track a local anime library (Qt 6 and libmpv), prebuilt"
 arch=(x86_64)
@@ -23,7 +23,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("Anibeam-$pkgver-linux-x86_64.tar.zst::$url/releases/download/v$pkgver/Anibeam-$pkgver-linux-x86_64.tar.zst")
 noextract=("Anibeam-$pkgver-linux-x86_64.tar.zst")
-sha256sums=('537b59f5a699c5ce2fb2e2ce7352652ccbaafe3f22a0dd5b1faad3fff0b3cdad')
+sha256sums=('f992e5685833e3e6a46136dfecfa8d51e48c3fbc8e46da79c38ead463918242f')
 
 package() {
   bsdtar -xf "$srcdir/Anibeam-$pkgver-linux-x86_64.tar.zst" -C "$pkgdir"

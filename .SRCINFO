@@ -1,6 +1,6 @@
 pkgbase = anibeam-bin
 	pkgdesc = Browse, play and track a local anime library (Qt 6 and libmpv), prebuilt
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/marcusbandit/Anibeam
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = anibeam-bin
 	depends = anirss>=0.6.0
 	depends = qbittorrent-nox
 	optdepends = org.freedesktop.secrets: tracker sign-ins kept in the keyring rather than a file
-	provides = anibeam=2.5.0
+	provides = anibeam=2.5.1
 	conflicts = anibeam
-	noextract = Anibeam-2.5.0-linux-x86_64.tar.zst
+	noextract = Anibeam-2.5.1-linux-x86_64.tar.zst
 	options = !strip
 	options = !debug
-	source = Anibeam-2.5.0-linux-x86_64.tar.zst::https://github.com/marcusbandit/Anibeam/releases/download/v2.5.0/Anibeam-2.5.0-linux-x86_64.tar.zst
-	sha256sums = 537b59f5a699c5ce2fb2e2ce7352652ccbaafe3f22a0dd5b1faad3fff0b3cdad
+	source = Anibeam-2.5.1-linux-x86_64.tar.zst::https://github.com/marcusbandit/Anibeam/releases/download/v2.5.1/Anibeam-2.5.1-linux-x86_64.tar.zst
+	sha256sums = f992e5685833e3e6a46136dfecfa8d51e48c3fbc8e46da79c38ead463918242f
 
 pkgname = anibeam-bin
