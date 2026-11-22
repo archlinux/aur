@@ -1,0 +1,19 @@
+pkgbase = tuistash-bin
+	pkgdesc = A TUI for monitoring Logstash
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/edmocosta/tuistash
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = tuistash
+	conflicts = tuistash
+	options = !debug
+	source = tuistash-bin-0.7.3-LICENSE::https://raw.githubusercontent.com/edmocosta/tuistash/v0.7.3/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = tuistash-bin-0.7.3-x86_64.tar.gz::https://github.com/edmocosta/tuistash/releases/download/v0.7.3/tuistash-v0.7.3-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = f3999288dff8df0cfb9246af3f286946c74e27debfa9aefb92bc5e7b9776b99e
+	source_aarch64 = tuistash-bin-0.7.3-aarch64.tar.gz::https://github.com/edmocosta/tuistash/releases/download/v0.7.3/tuistash-v0.7.3-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = f21416f05bd60247575f32af496b1f9e63ebf3e9a48154c3d5ec27e06f4284e7
+
+pkgname = tuistash-bin
