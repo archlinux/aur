@@ -1,0 +1,5 @@
+[blood-bin]
+source = "github"
+github = "navid-m/blood"
+use_latest_release = true
+prefix = "v"

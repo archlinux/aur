@@ -1,0 +1,14 @@
+post_install() {
+  grep -qx /bin/blood /etc/shells || echo /bin/blood >> /etc/shells
+  grep -qx /usr/bin/blood /etc/shells || echo /usr/bin/blood >> /etc/shells
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  sed -i -r '/^(\/usr)?\/bin\/blood$/d' etc/shells
+}
+
+# vim:set ts=2 sw=2 et:
