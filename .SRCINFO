@@ -1,0 +1,17 @@
+pkgbase = ytmusic-tui
+	pkgdesc = A TUI client for YouTube Music with Vim-style navigation and desktop media-control integration
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/WakaTaira/ytmusic-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = mpv
+	options = !lto
+	source = ytmusic-tui-0.2.1.tar.gz::https://github.com/WakaTaira/ytmusic-tui/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 0de0f99702119dbb53fa3a9e6a6abd68baaf3206dd572b6f4dae2e90a0135e88
+
+pkgname = ytmusic-tui
