@@ -2,10 +2,12 @@
 # 自用维护：仅信任官方 GitHub release 资产，sha256 锁定官方 SHA256SUMS.txt。
 pkgname=cadcraft-private-bin
 pkgver=0.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc='自用维护：开源 clean-room 版 AutoCAD 替代（CAD 制图），上游 storytold/cadcraft'
 arch=('x86_64')
 url='https://getartcraft.com/apps/cadcraft'
+# GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
+_gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
 license=('MIT' 'Apache')
 provides=("cadcraft=$pkgver")
 conflicts=('cadcraft' 'cadcraft-bin' 'cadcraft-git' 'ai.storyteller.cadcraft')
@@ -23,7 +25,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://gh-proxy.com/https://github.com/storytold/cadcraft/releases/download/v${pkgver}/cadcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("${_gh_mirror}https://github.com/storytold/cadcraft/releases/download/v${pkgver}/cadcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('856959a0bbd6f589a68a6c4a17d8f7dde2984f2f443b363519fb388da10ab0ea')
 
 package() {
