@@ -1,0 +1,18 @@
+pkgbase = flowlens-bin
+	pkgdesc = A cross-platform network traffic analyzer with process, IP, and outbound-domain attribution
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/power4j/flowlens
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	provides = flowlens
+	conflicts = flowlens
+	options = !debug
+	source_x86_64 = flowlens-bin-0.7.3-x86_64.tar.gz::https://github.com/power4j/flowlens/releases/download/v0.7.3/flowlens-v0.7.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 46eaf291ea49e44c21064bd4de3e11f567233792a6db9fddb516e5926c3817f7
+	source_aarch64 = flowlens-bin-0.7.3-aarch64.tar.gz::https://github.com/power4j/flowlens/releases/download/v0.7.3/flowlens-v0.7.3-linux-aarch64.tar.gz
+	sha256sums_aarch64 = d6ee0067fd6ae8ef85566b44105ac553672e14e6ff31617c386e0872a1c24cb8
+
+pkgname = flowlens-bin
