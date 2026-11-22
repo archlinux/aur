@@ -1,0 +1,17 @@
+pkgbase = opencode-stats-bin
+	pkgdesc = A terminal dashboard for OpenCode usage statistics and cost breakdowns
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/Cateds/opencode-stats
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = opencode-stats
+	conflicts = opencode-stats
+	options = !debug
+	source = opencode-stats-bin-1.4.2-LICENSE::https://raw.githubusercontent.com/Cateds/opencode-stats/v1.4.2/LICENSE
+	sha256sums = 08a2f13038865b865ae8ff29c4afa7ff4222e5ff220945fd6d3d066595aa2095
+	source_x86_64 = opencode-stats-bin-1.4.2-x86_64.tar.gz::https://github.com/Cateds/opencode-stats/releases/download/v1.4.2/oc-stats-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 52d2f3c65ead7e6deb942cdc8ad422ceb9f024f7f324022035c52efcd015311b
+
+pkgname = opencode-stats-bin
