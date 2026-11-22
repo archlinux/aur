@@ -1,6 +1,6 @@
 pkgbase = netronome-bin
 	pkgdesc = A modern network speed testing and monitoring tool
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/autobrr/netronome
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = netronome-bin
 	options = !strip
 	source = netronome.service
 	sha256sums = 5656181fd7951c3a7b20fa32777c7564101e5824fd2471521748ed52cb261cb5
-	source_x86_64 = netronome-x86_64-0.16.0.tgz::https://github.com/autobrr/netronome/releases/download/v0.16.0/netronome_0.16.0_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 0d179ef53e187dcb5e3954438043e5017277e583036dc3696fb87731bb95d163
-	source_aarch64 = netronome-aarch64-0.16.0.tgz::https://github.com/autobrr/netronome/releases/download/v0.16.0/netronome_0.16.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2359bb679f0ea4710ffa5df71e431b1d8839331031eefe336a026740442fc8ff
+	source_x86_64 = netronome-x86_64-0.17.0.tgz::https://github.com/autobrr/netronome/releases/download/v0.17.0/netronome_0.17.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 4b772dea84f85ecc2b92d7e8ca8caffe4a39f0459d743551fa90fa770a9b951f
+	source_aarch64 = netronome-aarch64-0.17.0.tgz::https://github.com/autobrr/netronome/releases/download/v0.17.0/netronome_0.17.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ad8d770dadc18b30b3fbfceaffa1dbb7b185952d641c7c6b2f0ec2268cfff618
 
 pkgname = netronome-bin
