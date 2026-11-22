@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=kirocrew-bin
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc='Persistent workspace for development work that self-improves across sessions (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ install=kirocrew.install
 _release="${url}/releases/download/v${pkgver}"
 source_x86_64=("${_release}/KiroCrew-${pkgver}-x86_64.rpm")
 source_aarch64=("${_release}/KiroCrew-${pkgver}-aarch64.rpm")
-sha256sums_x86_64=('2c4d411b14ca4999096827849f48d46a9cd1a3bf2377875a441c6d57e2a3b838')
-sha256sums_aarch64=('f09c574745ed005a671377e4e12a343d95fa607449a522dce614d6ad4e93e077')
+sha256sums_x86_64=('4c4f1b737d3a86206f60a6eefa12dc7849b65a3d358789d4d7867831b2d1a65a')
+sha256sums_aarch64=('8ac7ae03caf8428b1d263cada194a3841c98117080d372a301644f88b8384dbb')
 
 package() {
   install -d "${pkgdir}/usr/lib" "${pkgdir}/usr/bin"
