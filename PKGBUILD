@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=chainloop-cli
-pkgver=1.136.1
+pkgver=1.137.0
 pkgrel=1
 pkgdesc='CLI for signed, policy-checked records of AI coding agents and CI/CD pipelines'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 install=chainloop-cli.install
 source=("chainloop-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('18b0cf3025b98d6259d74515063ab078f467c5850f8edfd8b08c60edfa5402b7')
+sha256sums=('3b12d375b78a7546411d53ca5191ee7b1984442df81aeb1c83f214e400ebea57')
 
 _go_env() {
   export HOME="${srcdir}/home"
