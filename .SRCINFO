@@ -1,6 +1,6 @@
 pkgbase = python-click-extra
 	pkgdesc = Drop-in replacement for Click to make user-friendly and colorful CLI.
-	pkgver = 10.3.0
+	pkgver = 10.3.1
 	pkgrel = 1
 	url = https://github.com/kdeldycke/click-extra
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = python-click-extra
 	optdepends = python-sphinx: click:source and click:run directives for Sphinx
 	optdepends = mkdocs: ANSI color rendering in MkDocs code blocks
 	optdepends = python-pymdown-extensions: ANSI color rendering in MkDocs code blocks
-	source = python-click-extra-10.3.0.tar.gz::https://github.com/kdeldycke/click-extra/archive/refs/tags/v10.3.0.tar.gz
-	sha512sums = bb9f3c48ff3b0316ae830835402545bfb14aae1231d5087763e59c4b2d6490b70f6c05203eacdbf2133834107c5ab6dd68cf510226c71d8bf608a285bc9538f5
+	source = python-click-extra-10.3.1.tar.gz::https://github.com/kdeldycke/click-extra/archive/refs/tags/v10.3.1.tar.gz
+	sha512sums = 9718abbd337fb6bc5ac1ccd95bb01813caeb93ee42f7bed9e6cd256581f850886bd5a13f862299247445530bffc1239b36abf02973654fe908b5edb475958512
 
 pkgname = python-click-extra
