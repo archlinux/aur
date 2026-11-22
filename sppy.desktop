@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=sppy
+GenericName=Synchronized video watching
+Comment=Watch videos in sync with friends
+Exec=sppy
+Icon=sppy
+Terminal=false
+Categories=AudioVideo;Video;
+Keywords=watch;together;mpv;vlc;
