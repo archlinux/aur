@@ -2,7 +2,7 @@
 
 _pkgname=gputaskman
 pkgname=$_pkgname-bin
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='An htop for what is inside your GPU: per-process VRAM, engines and LLM buffer breakdown'
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ provides=("gputaskman=$pkgver")
 conflicts=('gputaskman')
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/${_pkgname}-$pkgver-linux-x64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/${_pkgname}-$pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('94391fe0b2198883a8ca19a653cb05374be355f63652eab50ea01b30af265dff')
-sha256sums_aarch64=('7265950df77c04f4e7b50292779480d55447a45cef457ee2a3f0c31f293770e9')
+sha256sums_x86_64=('acf640b0d2782c63614744cd970eaa9112353261e7e1fd514abbc983d203762f')
+sha256sums_aarch64=('28050ddf6041bfb26700b63fa67ae4c9b65a50dd80bd73b84f5c2fddf40bd16e')
 options=('!debug')
 
 package() {
