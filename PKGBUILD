@@ -1,6 +1,6 @@
 # Maintainer: cantti <cantti@outlook.com>
 pkgname=tagselecta-bin
-pkgver=2.6.4
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Vim-inspired tool for managing audio file metadata"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!strip' '!debug')
 provides=("tagselecta=${pkgver}")
 conflicts=('tagselecta')
 source=("${pkgname}-${pkgver}.zip::https://github.com/cantti/tagselecta/releases/download/v${pkgver}/tagselecta-linux-x64.zip")
-sha256sums=('1877db6424af687df547d8e1b0e73f31f195dda4a888f28c530b913a4d0cf228')
+sha256sums=('76e85bcbfe9c78af9cc99db78b31782ef1dfc7d9c49d6ee3c37371b35d4b8bcc')
 package() {
   install -Dm755 "${srcdir}/tagselecta" "${pkgdir}/usr/bin/tagselecta"
 }
