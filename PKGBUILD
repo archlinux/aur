@@ -15,7 +15,7 @@
 pkgname=linux-wallpaperengine-v3-bin
 _pkgname=linux-wallpaperengine
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Wallpaper Engine backgrounds for Linux (prebuilt x86-64-v3)"
 arch=('x86_64')
 url="https://github.com/Become-ILLUSORY/linux-wallpaperengine"
@@ -68,7 +68,10 @@ depends=(
     'sdl2-compat'
     'vulkan-icd-loader'
     'wayland'
-    'zlib-ng-compat'
+    # 二进制只 NEEDED libz.so.1，不关心是 zlib 还是 zlib-ng-compat。
+    # 直接依赖 zlib-ng-compat 会在标准 Arch（装的是 zlib）上因两者 conflicts
+    # 而装不上；依赖 zlib 则两者都能满足（zlib-ng-compat provides zlib）。
+    'zlib'
 )
 
 source=("${pkgname}-${pkgver}.tar.zst::${_gh_mirror}https://github.com/Become-ILLUSORY/linux-wallpaperengine/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.tar.zst")

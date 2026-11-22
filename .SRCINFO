@@ -1,7 +1,7 @@
 pkgbase = linux-wallpaperengine-v3-bin
 	pkgdesc = Wallpaper Engine backgrounds for Linux (prebuilt x86-64-v3)
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Become-ILLUSORY/linux-wallpaperengine
 	arch = x86_64
 	license = GPL-3.0-only
@@ -42,7 +42,7 @@ pkgbase = linux-wallpaperengine-v3-bin
 	depends = sdl2-compat
 	depends = vulkan-icd-loader
 	depends = wayland
-	depends = zlib-ng-compat
+	depends = zlib
 	provides = linux-wallpaperengine=1.0.1
 	provides = linux-wallpaperengine
 	conflicts = linux-wallpaperengine
