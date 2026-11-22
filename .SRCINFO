@@ -1,0 +1,17 @@
+pkgbase = bt-w
+	pkgdesc = CLI and tray icon for the Creative BT-W5 and BT-W6 Bluetooth audio dongles
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/emaspa/bt-w
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = systemd-libs
+	options = !lto
+	source = bt-w-0.1.0.tar.gz::https://github.com/emaspa/bt-w/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ccfccc3c276292abb20b45353976c18a2228d4842337a4f6ff007788d11e0048
+
+pkgname = bt-w
