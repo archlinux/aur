@@ -2,7 +2,7 @@
 # Contributor: Rowan <rowan@zeusteam.dev>
 pkgname=ferron
 pkgver=2.8.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A fast, modern web server written in Rust'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'riscv64')
 url='https://ferron.sh'
@@ -17,9 +17,6 @@ sha256sums=('32354ffed4fbe8caede924d420e6a7ac84127f264c47e1e738b462d9479c0680')
 build() {
     cd "$srcdir/ferron-$pkgver"
     export CARGO_TARGET_DIR="$srcdir/target"
-    # makepkg's -flto=auto breaks the static mimalloc the 2.x crates link
-    # against, with undefined mi_malloc_aligned and friends. Drop LTO from the
-    # flags and keep the hardening.
     CFLAGS=${CFLAGS//-flto=auto/}
     CXXFLAGS=${CXXFLAGS//-flto=auto/}
     LDFLAGS=${LDFLAGS//-flto=auto/}
@@ -29,7 +26,6 @@ build() {
 
 check() {
     cd "$srcdir/ferron-$pkgver"
-    # 2.x has no validate subcommand, so check the binary reports the tag
     local version
     version=$("$srcdir/target/release/ferron" --version)
     printf '%s\n' "${version%%$'\n'*}" | grep -xF "Ferron $pkgver"
@@ -53,8 +49,6 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     cp -r wwwroot "$pkgdir/usr/share/ferron/wwwroot"
     cp -r docs "$pkgdir/usr/share/doc/$pkgname/html"
-    # seeded into /etc by the install script, so an upgrade can tell a stock
-    # config from one the user has edited
     cat > "$pkgdir/usr/share/ferron/ferron.kdl.default" << 'EOF'
 // Global-only configuration
 * {
