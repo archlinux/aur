@@ -2,10 +2,12 @@
 # 自用维护：仅信任官方 GitHub release 资产，sha256 锁定官方 SHA256SUMS.txt。
 pkgname=lightcraft-private-bin
 pkgver=0.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc='自用维护：开源 clean-room 版 Adobe Lightroom 替代（照片管理与 raw），上游 storytold/lightcraft'
 arch=('x86_64')
 url='https://getartcraft.com/apps/lightcraft'
+# GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
+_gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
 license=('MIT' 'Apache')
 provides=("lightcraft=$pkgver")
 conflicts=('lightcraft' 'lightcraft-bin' 'lightcraft-git' 'ai.storyteller.lightcraft')
@@ -23,7 +25,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://gh-proxy.com/https://github.com/storytold/lightcraft/releases/download/v${pkgver}/lightcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("${_gh_mirror}https://github.com/storytold/lightcraft/releases/download/v${pkgver}/lightcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('84c8ac2a29611665f7e4b1078b7b1503b0564225f4ab1285448963aa92f4fec0')
 
 package() {
