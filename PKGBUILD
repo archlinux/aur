@@ -2,7 +2,7 @@
 
 pkgname=voicefox-git
 _pkgname="${pkgname%-git}"
-pkgver=0.6.0.r3.gad84a2b
+pkgver=0.9.1.r2.g6c4c553
 pkgrel=1
 epoch=1
 pkgdesc="Rust + ratatui + libmpv 驱动的键盘优先终端音乐播放器：多音源、歌词、本地音乐、下载、收藏与歌单。"
@@ -14,7 +14,6 @@ depends=(
 	"glibc"
 	"hicolor-icon-theme"
 	"libgcc"
-	"openssl"
 	"mpv"
 )
 makedepends=(
