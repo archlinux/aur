@@ -2,7 +2,7 @@
 
 pkgname=kicad-routing-tools
 _name=KiCadRoutingTools
-pkgver=0.24.1
+pkgver=0.24.2
 pkgrel=1
 pkgdesc='Rust-accelerated autorouter and routing tools for KiCad (pcbnew plugin and CLI)'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ options=('!lto')
 # The bus routing step also needs OR-Tools (ortools), which Arch does not package.
 optdepends=('python-pillow: board and placement rendering')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cfb6a14066d4ade82f66c557ff37dcf2feaa567459a74a6e48e3ec5c4466e298')
+sha256sums=('6c787fe723907fbd0858b095c7303c5eca374a81be52e80f49326c6ee5602314')
 
 prepare() {
     cd "$_name-$pkgver/rust_router"
