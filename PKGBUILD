@@ -3,7 +3,7 @@
 # canonical forge repository is the source, so this recipe and the crates.io crate (cksk) are built
 # from the same commit.
 pkgname=cksk
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Server-monitor boards for a clck kiosk display"
 arch=('x86_64')
