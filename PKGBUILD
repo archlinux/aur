@@ -2,10 +2,12 @@
 # 自用维护：仅信任官方 GitHub release 资产，sha256 锁定官方 SHA256SUMS.txt。
 pkgname=effectcraft-private-bin
 pkgver=0.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc='自用维护：开源 clean-room 版 Adobe After Effects 替代（动效合成），上游 storytold/effectcraft'
 arch=('x86_64')
 url='https://getartcraft.com/apps/effectcraft'
+# GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
+_gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
 license=('MIT' 'Apache')
 provides=("effectcraft=$pkgver")
 conflicts=('effectcraft' 'effectcraft-bin' 'effectcraft-git' 'ai.storyteller.effectcraft')
@@ -23,7 +25,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://gh-proxy.com/https://github.com/storytold/effectcraft/releases/download/v${pkgver}/effectcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("${_gh_mirror}https://github.com/storytold/effectcraft/releases/download/v${pkgver}/effectcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('438cec894542593369b90ddc6842501e12fb39ee34a5f210f09e93255417eed4')
 
 package() {
