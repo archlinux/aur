@@ -1,16 +1,16 @@
 pkgbase = lib32-lz4
 	pkgdesc = Extremely fast compression algorithm (32-bit)
-	pkgver = 1.10.0
-	pkgrel = 3
+	pkgver = 1.11.1
+	pkgrel = 1
 	url = https://lz4.github.io/lz4/
 	arch = x86_64
 	license = GPL-2.0-or-later
 	checkdepends = diffutils
 	makedepends = git
-	depends = lz4
+	depends = lz4>=1.11.1
 	depends = lib32-glibc
 	provides = liblz4.so
-	source = git+https://github.com/lz4/lz4.git#tag=v1.10.0
-	sha256sums = 487f9bc24fdaf589e2f4bb23dd98b1f21a71b643db09251145616587c9468555
+	source = git+https://github.com/lz4/lz4.git#tag=v1.11.1
+	sha256sums = aa0cfb1377f46ae4697892f16ac6b5ebda4f3ad66cc6db13b45682b20a4a65cf
 
 pkgname = lib32-lz4

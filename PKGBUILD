@@ -1,20 +1,25 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Sébastien Luttringer
 
-_pkgname=lz4
-pkgname=lib32-lz4
-pkgver=1.10.0
-pkgrel=3
-pkgdesc='Extremely fast compression algorithm (32-bit)'
+set -u
+pkgname=lz4
+pkgver=1.11.1
+pkgrel=1
+pkgdesc='Extremely fast compression algorithm'
+pkgdesc+=' (32-bit)'
 arch=('x86_64')
 url='https://lz4.github.io/lz4/'
 license=('GPL-2.0-or-later')
 makedepends=('git')
 checkdepends=('diffutils')
-depends=('lz4' 'lib32-glibc')
+depends=("lz4>=${pkgver}" 'lib32-glibc')
 provides=('liblz4.so')
 source=("git+https://github.com/lz4/lz4.git#tag=v$pkgver")
-sha256sums=('487f9bc24fdaf589e2f4bb23dd98b1f21a71b643db09251145616587c9468555')
+sha256sums=('aa0cfb1377f46ae4697892f16ac6b5ebda4f3ad66cc6db13b45682b20a4a65cf')
+
+_pkgname="${pkgname}"
+pkgname="lib32-${pkgname}"
 
 build() {
   cd ${_pkgname}
@@ -44,5 +49,6 @@ package() {
     DESTDIR="${pkgdir}"
   rm -rf "${pkgdir}"/usr/{share,include,bin}
 }
+set +u
 
 # vim: ts=2 sw=2 et:
