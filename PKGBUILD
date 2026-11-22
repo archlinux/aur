@@ -4,28 +4,13 @@
 pkgname=liquidsoap
 pkgver=2.4.6
 pkgrel=1
-pkgdesc='Swiss-army knife for multimedia streaming — scriptable live-audio engine used by Radio France, AzuraCast, Libretime'
+pkgdesc='Audio and video streaming language'
 arch=('x86_64')
 url='https://www.liquidsoap.info/'
 license=('GPL-2.0-or-later')
-depends=(
-  'glibc'
-  'gcc-libs'
-  'curl'
-  'ffmpeg'         # HLS input, audio/video decoding (linked by build)
-  'openssl'        # HTTPS sources, TLS output (linked by build)
-  'libsamplerate'  # high-quality resampling (linked by build)
-)
-makedepends=(
-  'opam'
-  'ocaml'
-  'dune'
-  'pkgconf'
-  'git'
-  'unzip'
-  'python'
-  'pandoc-cli'
-)
+depends=('curl' 'ffmpeg' 'glibc' 'libsamplerate' 'openssl')
+makedepends=('git' 'ocaml' 'opam' 'pandoc-cli' 'unzip')
+optdepends=('bubblewrap: sandbox for external processes')
 install=liquidsoap.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/savonet/liquidsoap/archive/refs/tags/v${pkgver}.tar.gz"
         'liquidsoap.sysusers'
