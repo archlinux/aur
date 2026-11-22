@@ -1,0 +1,19 @@
+pkgbase = termfarm-bin
+	pkgdesc = A simple idle farming game
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/indium114/termfarm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = termfarm
+	conflicts = termfarm
+	options = !debug
+	source = termfarm-bin-2.2.1-LICENSE::https://raw.githubusercontent.com/indium114/termfarm/2.2.1/LICENSE.md
+	sha256sums = 3c6655af7d1c7f38dd4a741d5d1c07e37a4342cafc42f6d11fe7d47e94bfcd62
+	source_x86_64 = termfarm-bin-2.2.1-x86_64::https://github.com/indium114/termfarm/releases/download/2.2.1/termfarm_Linux_x86_64
+	sha256sums_x86_64 = 32c5e220ec62e03296d9d053424cd8c87818b27ee0a05b22350725945025e17d
+	source_aarch64 = termfarm-bin-2.2.1-aarch64::https://github.com/indium114/termfarm/releases/download/2.2.1/termfarm_Linux_arm64
+	sha256sums_aarch64 = 28afd2e93fd08ee345d2bec4a224a62d5bb1c86d3defbd4bbe6cce8ddbf1068c
+
+pkgname = termfarm-bin
