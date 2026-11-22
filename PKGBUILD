@@ -2,8 +2,8 @@
 
 pkgname=wfweb-appimage
 _appname=wfweb
-pkgver=0.9.5
-pkgrel=2
+pkgver=0.9.6
+pkgrel=1
 pkgdesc='Headless wfview fork: control Icom transceivers from a web browser (AppImage release)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/adecarolis/wfweb'
@@ -39,5 +39,5 @@ package() {
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 sha256sums=('8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
-sha256sums_x86_64=('13580644afe3e5b008ccf168e4a203301a620091c5c92d86bc3b0af457fc981d')
-sha256sums_aarch64=('c62d9bf282d85be5cf2ad28461666655aa4f8768c863ec6ff52d5d8e6f11dc6e')
+sha256sums_x86_64=('5e3fe1addc8ee1daeeb366843c3475d7a5ffee6d92872bb4d8232a36c2589227')
+sha256sums_aarch64=('966ae2662e166e9f6ccaf643dfdf651ee63589ceab8e15201b6b2b518a62940c')
