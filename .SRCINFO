@@ -1,0 +1,18 @@
+pkgbase = coven-bin
+	pkgdesc = Local-first runtime and TUI for running Codex, Claude Code
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/OpenCoven/coven
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = coven
+	conflicts = coven
+	options = !debug
+	source = coven-bin-0.5.0-LICENSE::https://raw.githubusercontent.com/OpenCoven/coven/v0.5.0/LICENSE
+	sha256sums = 8d7f1b6fc46dad4f5cb473e2fb4dc010a3236c731cb24f5f89bdfbab5c321a35
+	source_x86_64 = coven-bin-0.5.0-x86_64.tar.gz::https://github.com/OpenCoven/coven/releases/download/v0.5.0/coven-v0.5.0-linux-x64.tar.gz
+	sha256sums_x86_64 = 60c329e1f598794c17324804b50f6981a50f925ef1d9696624db828fce014128
+
+pkgname = coven-bin
