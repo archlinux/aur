@@ -78,6 +78,7 @@ package() {
     rm -f "$pkgdir/usr/bin/qemu-img" "$pkgdir/usr/bin/qemu-io" \
         "$pkgdir/usr/bin/qemu-nbd"
     find "$pkgdir/usr/share/locale" -type f -name 'qemu.mo' -delete 2>/dev/null || true
+    rm -f "$pkgdir/usr/share/panda/s390-ccw.img"
 
     find "$pkgdir/usr/lib/panda" -type f -name '*_dso_info_*.so' -exec chrpath -d {} +
 
