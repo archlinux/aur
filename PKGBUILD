@@ -62,8 +62,8 @@ install -Dm644 "${srcdir}/squashfs-root/LICENSE.electron.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
 # MIME类型处理
-install -Dm644 "${srcdir}/squashfs-root/usr/share/mime/imfile.xml" \
--t "${pkgdir}/usr/share/mime/packages/"
+install -Dm644 "${srcdir}/squashfs-root/usr/share/mime/packages/imfile.xml" \
+    "${pkgdir}/usr/share/mime/packages/imfile.xml"
 }
 
 post_install() {
