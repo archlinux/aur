@@ -1,33 +1,54 @@
 pkgbase = cef-vaapi-bin
 	pkgdesc = Chromium Embedded Framework with VAAPI and proprietary codecs enabled (binary distribution)
 	pkgver = 156.0.30
-	pkgrel = 2
+	pkgrel = 3
 	url = https://chromiumembedded.github.io/cef
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = alsa-lib
 	depends = at-spi2-core
-	depends = dav1d
 	depends = dbus
+	depends = fontconfig
+	depends = glibc
+	depends = libasound.so=2-64
+	depends = libatk-1.0.so=0-64
+	depends = libatk-bridge-2.0.so=0-64
+	depends = libatspi.so=0-64
+	depends = libdbus-1.so=3-64
 	depends = libdrm
+	depends = libexpat.so=1-64
 	depends = libffi
+	depends = libffi.so=8-64
+	depends = libfontconfig.so=1-64
+	depends = libgcc_s.so=1-64
+	depends = libgio-2.0.so=0-64
+	depends = libglib-2.0.so=0-64
+	depends = libgobject-2.0.so=0-64
 	depends = libpulse
+	depends = libpulse.so=0-64
+	depends = libudev.so=1-64
 	depends = libva
+	depends = libx11
+	depends = libxcb
 	depends = libxcomposite
 	depends = libxdamage
+	depends = libxext
+	depends = libxfixes
 	depends = libxkbcommon
+	depends = libxkbcommon.so=0-64
 	depends = libxrandr
 	depends = mesa
+	depends = nspr
 	depends = nss
-	depends = openh264
 	depends = pango
+	depends = systemd-libs
 	depends = vulkan-icd-loader
 	optdepends = libva-mesa-driver: VAAPI driver for AMD GPUs
 	optdepends = intel-media-driver: VAAPI driver for modern Intel GPUs
 	optdepends = libva-utils: VAAPI diagnostics such as vainfo
 	provides = cef=156.0.30
 	conflicts = cef
-	source = cef-vaapi-156.0.30-2-x86_64.pkg.tar.zst::https://github.com/bnema/cef-vaapi/releases/download/cef-vaapi-v156.0.30-2/cef-vaapi-156.0.30-2-x86_64.pkg.tar.zst
-	sha256sums = 216d920b1be2c7a990544da73147cf5a259c09d1a1d225d4bafb9eba5fee6bd2
+	source = cef-vaapi-156.0.30-3-x86_64.pkg.tar.zst::https://github.com/bnema/cef-vaapi/releases/download/cef-vaapi-v156.0.30-3/cef-vaapi-156.0.30-3-x86_64.pkg.tar.zst
+	sha256sums = d98fa349b49e5316cd2b180196a3d6879005500d2346b13b8d3333c1ecb2d808
 
 pkgname = cef-vaapi-bin
