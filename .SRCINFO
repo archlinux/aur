@@ -1,7 +1,7 @@
 pkgbase = modern-weather-enhanced
 	pkgdesc = Weather widget for KDE Plasma with meteogram and extensive customization
-	pkgver = v1.0.7.r60.g7c6d8d3
-	pkgrel = 1
+	pkgver = v1.0.7.r65.g9d87462
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/samy879/modern-weather-enhanced
 	arch = any

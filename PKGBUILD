@@ -1,8 +1,8 @@
 # Maintainer: MaoYaoTang <maoyaotang@163.com>
 
 pkgname=modern-weather-enhanced
-pkgver=v1.0.7.r60.g7c6d8d3
-pkgrel=1
+pkgver=v1.0.7.r65.g9d87462
+pkgrel=2
 epoch=2
 pkgdesc="Weather widget for KDE Plasma with meteogram and extensive customization"
 arch=('any')
@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
     cd $pkgname
+    mv translate/zh_cn.po translate/zh_CN.po
     sh translate/tools/build.sh
 }
 
