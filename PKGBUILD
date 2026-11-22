@@ -16,7 +16,7 @@ _version=2026.11.0
 pkgver=2026.11.0
 pkgrel=1
 # namcap 不许说明里带包名（照子串比）：这里不写 litemiyu。
-pkgdesc='Single-process agent harness for the terminal, one static program; also a fallback when Miyu cannot start (--rescue)'
+pkgdesc='Distilled Miyu: under 5 MB of RAM, yet capable enough for everyday work and for rescue'
 arch=('x86_64' 'aarch64')
 url='https://github.com/miyu-agent/litemiyu'
 license=('AGPL-3.0-or-later')

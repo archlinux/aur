@@ -1,5 +1,5 @@
 pkgbase = litemiyu-bin
-	pkgdesc = Single-process agent harness for the terminal, one static program; also a fallback when Miyu cannot start (--rescue)
+	pkgdesc = Distilled Miyu: under 5 MB of RAM, yet capable enough for everyday work and for rescue
 	pkgver = 2026.11.0
 	pkgrel = 1
 	url = https://github.com/miyu-agent/litemiyu
