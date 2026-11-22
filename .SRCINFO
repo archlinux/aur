@@ -18,7 +18,7 @@ pkgbase = python-click-extra
 	makedepends = python-installer
 	makedepends = python-uv-build
 	depends = python
-	depends = python-click>=8.5
+	depends = python-click>=8.5.1
 	depends = python-cloup
 	depends = python-extra-platforms
 	depends = python-tabulate

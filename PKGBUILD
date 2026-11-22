@@ -16,7 +16,7 @@ arch=('any')
 
 makedepends=('python-build' 'python-installer' 'python-uv-build')
 checkdepends=('git' 'python-hjson' 'python-jsonschema' 'python-pygments' 'python-pytest' 'python-pytest-httpserver' 'python-requests' 'python-tomlrt' 'python-yaml')
-depends=('python' 'python-click>=8.5' 'python-cloup' 'python-extra-platforms' 'python-tabulate' 'python-wcmatch' 'python-wcwidth')
+depends=('python' 'python-click>=8.5.1' 'python-cloup' 'python-extra-platforms' 'python-tabulate' 'python-wcmatch' 'python-wcwidth')
 optdepends=('python-hjson: HJSON configuration files and table format'
             'python-json5: JSON5 configuration files'
             'python-tomlrt: TOML table format and configuration export'
