@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=TerraTactician Expandoria
+Icon=terratactician-expandoria
+StartupWMClass=terratactician-expandoria
+#I18N: Generic name in desktop file entry, summary in AppData and short description in Google Play
+GenericName[fr]=Jeux de strategie où vous placez des tuiles sur une carte.
+GenericName=Strategy puzzle where you arrange tiles on the map.
+Exec=/usr/share/terratactician-expandoria/terratactician-expandoria
+Path=/usr/share/terratactician-expandoria
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Game;PuzzleGame;StrategyGame;
+#I18N: Keywords in desktop entry, translators please keep it separated with semicolons
+Keywords[fr]=jeu;casse tête;strategie;
+Keywords=game;puzzle;strategy;
+PrefersNonDefaultGPU=true

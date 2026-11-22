@@ -1,0 +1,20 @@
+pkgbase = terratactician-expandoria-bin
+	pkgdesc = Open-source strategy puzzle video game, inspired by games like Dorfromantik. Binary version
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://terratactician-expandoria.codeberg.page
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = libx11
+	depends = pkgconf
+	depends = alsa-lib
+	depends = libxcursor
+	depends = libxrandr
+	depends = libxi
+	depends = vulkan-driver
+	source = terratactician-expandoria-bin-0.4.2.tar.gz::https://codeberg.org/terratactician-expandoria/game/releases/download/v0.4.2/tte-linux-amd64-v0.4.2.tar.gz
+	source = terratactician-expandoria.desktop
+	sha256sums = e2162ae53adc0ea968387a52d9ab829eebc47b78cbf409a9dfb29472754d620d
+	sha256sums = 06c0c95f10ec50eda229a951d91f7670a17f11590b8b0776100a82a43f5f341c
+
+pkgname = terratactician-expandoria-bin
