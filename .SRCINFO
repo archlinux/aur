@@ -1,0 +1,36 @@
+pkgbase = snipline-bin
+	pkgdesc = Wayland screenshot, recording, QR and OCR selector (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lufimio/snipline
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base>=6.5
+	depends = qt6-declarative
+	depends = qt6-wayland
+	depends = qt6-svg
+	depends = layer-shell-qt
+	depends = wayland
+	depends = grim
+	depends = gstreamer>=1.20
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-ugly
+	depends = gst-libav
+	depends = libpulse
+	depends = zxing-cpp>=2.0
+	optdepends = tesseract: OCR recognition
+	optdepends = ffmpeg: GIF export
+	optdepends = gst-plugins-bad: optional hardware encoders and additional codecs
+	provides = snipline=0.1.0
+	conflicts = snipline
+	options = !strip
+	options = !debug
+	source = snipline-0.1.0-1-x86_64.pkg.tar.zst::https://github.com/lufimio/snipline/releases/download/v0.1.0/snipline-0.1.0-1-x86_64.pkg.tar.zst
+	sha256sums = d4b7e5a369b7bab3e0cb6459ed2f26a7b82da58ba7ac43388076a9deecac07a0
+
+pkgname = snipline-bin
