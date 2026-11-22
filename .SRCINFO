@@ -1,0 +1,19 @@
+pkgbase = herdfold-bin
+	pkgdesc = A book reader that lays long text out as facing pages, with notes, vertical Japanese
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/azihsoyn/herdfold
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = herdfold
+	conflicts = herdfold
+	options = !debug
+	source_x86_64 = herdfold-bin-0.6.0-x86_64.tar.xz::https://github.com/azihsoyn/herdfold/releases/download/v0.6.0/herdfold-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = cd0d1e115167179753831d8a2ef1208a3d3d44d75dfa501b7a2a9fe6fcd0f16e
+	source_aarch64 = herdfold-bin-0.6.0-aarch64.tar.xz::https://github.com/azihsoyn/herdfold/releases/download/v0.6.0/herdfold-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 42e09829781085baabb33509ca74de3f6ac6fcfbf951194be11178a47e158522
+
+pkgname = herdfold-bin
