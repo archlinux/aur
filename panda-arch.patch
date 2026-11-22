@@ -1,0 +1,511 @@
+diff --git a/block/nfs.c b/block/nfs.c
+index 7e1bea1..d6c2df6 100644
+--- a/block/nfs.c
++++ b/block/nfs.c
+@@ -268,12 +268,38 @@ static int coroutine_fn nfs_co_preadv(BlockDriverState *bs, uint64_t offset,
+     NFSRPC task;
+ 
+     nfs_co_init_task(bs, &task);
++#ifdef LIBNFS_API_V2
++    /* libnfs >= 6 reads straight into a caller supplied buffer */
++    char *buf = NULL;
++    bool my_buffer = false;
++
++    if (iov->niov != 1) {
++        buf = g_try_malloc(bytes);
++        if (bytes && buf == NULL) {
++            return -ENOMEM;
++        }
++        my_buffer = true;
++    } else {
++        buf = iov->iov[0].iov_base;
++    }
++#else
+     task.iov = iov;
++#endif
+ 
+     qemu_mutex_lock(&client->mutex);
++#ifdef LIBNFS_API_V2
++    if (nfs_pread_async(client->context, client->fh,
++                        buf, bytes, offset, nfs_co_generic_cb, &task) != 0) {
++#else
+     if (nfs_pread_async(client->context, client->fh,
+                         offset, bytes, nfs_co_generic_cb, &task) != 0) {
++#endif
+         qemu_mutex_unlock(&client->mutex);
++#ifdef LIBNFS_API_V2
++        if (my_buffer) {
++            g_free(buf);
++        }
++#endif
+         return -ENOMEM;
+     }
+ 
+@@ -283,6 +309,15 @@ static int coroutine_fn nfs_co_preadv(BlockDriverState *bs, uint64_t offset,
+         qemu_coroutine_yield();
+     }
+ 
++#ifdef LIBNFS_API_V2
++    if (my_buffer) {
++        if (task.ret > 0) {
++            qemu_iovec_from_buf(iov, 0, buf, MIN((size_t)task.ret, bytes));
++        }
++        g_free(buf);
++    }
++#endif
++
+     if (task.ret < 0) {
+         return task.ret;
+     }
+@@ -318,9 +353,15 @@ static int coroutine_fn nfs_co_pwritev(BlockDriverState *bs, uint64_t offset,
+     }
+ 
+     qemu_mutex_lock(&client->mutex);
++#ifdef LIBNFS_API_V2
++    if (nfs_pwrite_async(client->context, client->fh,
++                         buf, bytes, offset,
++                         nfs_co_generic_cb, &task) != 0) {
++#else
+     if (nfs_pwrite_async(client->context, client->fh,
+                          offset, bytes, buf,
+                          nfs_co_generic_cb, &task) != 0) {
++#endif
+         qemu_mutex_unlock(&client->mutex);
+         if (my_buffer) {
+             g_free(buf);
+diff --git a/crypto/cipher-nettle.c b/crypto/cipher-nettle.c
+index dfc9030..7be1787 100644
+--- a/crypto/cipher-nettle.c
++++ b/crypto/cipher-nettle.c
+@@ -47,23 +47,119 @@ typedef const void * cipher_ctx_t;
+ typedef size_t       cipher_length_t;
+ #endif
+ 
++#if CONFIG_NETTLE_VERSION_MAJOR >= 4
++typedef struct QCryptoNettleAES {
++    union {
++        struct aes128_ctx aes128;
++        struct aes192_ctx aes192;
++        struct aes256_ctx aes256;
++    } enc, dec;
++    size_t key_size;
++} QCryptoNettleAES;
++
++static void qcrypto_aes_set_encrypt_key(QCryptoNettleAES *ctx,
++                                        size_t key_size, const uint8_t *key)
++{
++    ctx->key_size = key_size;
++    switch (key_size) {
++    case 16:
++        aes128_set_encrypt_key(&ctx->enc.aes128, key);
++        break;
++    case 24:
++        aes192_set_encrypt_key(&ctx->enc.aes192, key);
++        break;
++    case 32:
++        aes256_set_encrypt_key(&ctx->enc.aes256, key);
++        break;
++    default:
++        abort();
++    }
++}
++
++static void qcrypto_aes_set_decrypt_key(QCryptoNettleAES *ctx,
++                                        size_t key_size, const uint8_t *key)
++{
++    ctx->key_size = key_size;
++    switch (key_size) {
++    case 16:
++        aes128_set_decrypt_key(&ctx->dec.aes128, key);
++        break;
++    case 24:
++        aes192_set_decrypt_key(&ctx->dec.aes192, key);
++        break;
++    case 32:
++        aes256_set_decrypt_key(&ctx->dec.aes256, key);
++        break;
++    default:
++        abort();
++    }
++}
++
++static void qcrypto_aes_encrypt(const QCryptoNettleAES *ctx,
++                                size_t length, uint8_t *dst,
++                                const uint8_t *src)
++{
++    switch (ctx->key_size) {
++    case 16:
++        aes128_encrypt(&ctx->enc.aes128, length, dst, src);
++        break;
++    case 24:
++        aes192_encrypt(&ctx->enc.aes192, length, dst, src);
++        break;
++    case 32:
++        aes256_encrypt(&ctx->enc.aes256, length, dst, src);
++        break;
++    default:
++        abort();
++    }
++}
++
++static void qcrypto_aes_decrypt(const QCryptoNettleAES *ctx,
++                                size_t length, uint8_t *dst,
++                                const uint8_t *src)
++{
++    switch (ctx->key_size) {
++    case 16:
++        aes128_decrypt(&ctx->dec.aes128, length, dst, src);
++        break;
++    case 24:
++        aes192_decrypt(&ctx->dec.aes192, length, dst, src);
++        break;
++    case 32:
++        aes256_decrypt(&ctx->dec.aes256, length, dst, src);
++        break;
++    default:
++        abort();
++    }
++}
++#else
+ typedef struct QCryptoNettleAES {
+     struct aes_ctx enc;
+     struct aes_ctx dec;
+ } QCryptoNettleAES;
+ 
++#define qcrypto_aes_set_encrypt_key(ctx, key_size, key) \
++    aes_set_encrypt_key(&(ctx)->enc, key_size, key)
++#define qcrypto_aes_set_decrypt_key(ctx, key_size, key) \
++    aes_set_decrypt_key(&(ctx)->dec, key_size, key)
++#define qcrypto_aes_encrypt(ctx, length, dst, src) \
++    aes_encrypt(&(ctx)->enc, length, dst, src)
++#define qcrypto_aes_decrypt(ctx, length, dst, src) \
++    aes_decrypt(&(ctx)->dec, length, dst, src)
++#endif
++
+ static void aes_encrypt_native(cipher_ctx_t ctx, cipher_length_t length,
+                                uint8_t *dst, const uint8_t *src)
+ {
+     const QCryptoNettleAES *aesctx = ctx;
+-    aes_encrypt(&aesctx->enc, length, dst, src);
++    qcrypto_aes_encrypt(aesctx, length, dst, src);
+ }
+ 
+ static void aes_decrypt_native(cipher_ctx_t ctx, cipher_length_t length,
+                                uint8_t *dst, const uint8_t *src)
+ {
+     const QCryptoNettleAES *aesctx = ctx;
+-    aes_decrypt(&aesctx->dec, length, dst, src);
++    qcrypto_aes_decrypt(aesctx, length, dst, src);
+ }
+ 
+ static void des_encrypt_native(cipher_ctx_t ctx, cipher_length_t length,
+@@ -130,14 +226,14 @@ static void aes_encrypt_wrapper(const void *ctx, size_t length,
+                                 uint8_t *dst, const uint8_t *src)
+ {
+     const QCryptoNettleAES *aesctx = ctx;
+-    aes_encrypt(&aesctx->enc, length, dst, src);
++    qcrypto_aes_encrypt(aesctx, length, dst, src);
+ }
+ 
+ static void aes_decrypt_wrapper(const void *ctx, size_t length,
+                                 uint8_t *dst, const uint8_t *src)
+ {
+     const QCryptoNettleAES *aesctx = ctx;
+-    aes_decrypt(&aesctx->dec, length, dst, src);
++    qcrypto_aes_decrypt(aesctx, length, dst, src);
+ }
+ 
+ static void des_encrypt_wrapper(const void *ctx, size_t length,
+@@ -317,20 +413,20 @@ QCryptoCipher *qcrypto_cipher_new(QCryptoCipherAlgorithm alg,
+             ctx->ctx_tweak = g_new0(QCryptoNettleAES, 1);
+ 
+             nkey /= 2;
+-            aes_set_encrypt_key(&((QCryptoNettleAES *)ctx->ctx)->enc,
+-                                nkey, key);
+-            aes_set_decrypt_key(&((QCryptoNettleAES *)ctx->ctx)->dec,
+-                                nkey, key);
+-
+-            aes_set_encrypt_key(&((QCryptoNettleAES *)ctx->ctx_tweak)->enc,
+-                                nkey, key + nkey);
+-            aes_set_decrypt_key(&((QCryptoNettleAES *)ctx->ctx_tweak)->dec,
+-                                nkey, key + nkey);
++            qcrypto_aes_set_encrypt_key((QCryptoNettleAES *)ctx->ctx,
++                                        nkey, key);
++            qcrypto_aes_set_decrypt_key((QCryptoNettleAES *)ctx->ctx,
++                                        nkey, key);
++
++            qcrypto_aes_set_encrypt_key((QCryptoNettleAES *)ctx->ctx_tweak,
++                                        nkey, key + nkey);
++            qcrypto_aes_set_decrypt_key((QCryptoNettleAES *)ctx->ctx_tweak,
++                                        nkey, key + nkey);
+         } else {
+-            aes_set_encrypt_key(&((QCryptoNettleAES *)ctx->ctx)->enc,
+-                                nkey, key);
+-            aes_set_decrypt_key(&((QCryptoNettleAES *)ctx->ctx)->dec,
+-                                nkey, key);
++            qcrypto_aes_set_encrypt_key((QCryptoNettleAES *)ctx->ctx,
++                                        nkey, key);
++            qcrypto_aes_set_decrypt_key((QCryptoNettleAES *)ctx->ctx,
++                                        nkey, key);
+         }
+ 
+         ctx->alg_encrypt_native = aes_encrypt_native;
+diff --git a/crypto/hash-nettle.c b/crypto/hash-nettle.c
+index 6a206dc..a679e7c 100644
+--- a/crypto/hash-nettle.c
++++ b/crypto/hash-nettle.c
+@@ -22,7 +22,12 @@
+ #include "qapi/error.h"
+ #include "crypto/hash.h"
+ #include <nettle/md5.h>
++#if CONFIG_NETTLE_VERSION_MAJOR >= 4
++#include <nettle/sha1.h>
++#include <nettle/sha2.h>
++#else
+ #include <nettle/sha.h>
++#endif
+ #include <nettle/ripemd160.h>
+ 
+ typedef void (*qcrypto_nettle_init)(void *ctx);
+diff --git a/panda/plugins/config.llvm.panda b/panda/plugins/config.llvm.panda
+index b6ca567..4102f10 100644
+--- a/panda/plugins/config.llvm.panda
++++ b/panda/plugins/config.llvm.panda
+@@ -1,7 +1,7 @@
+ file_taint
+ ida_taint2
+-pri_taint
+-pri_trace
++# pri_taint depends on the disabled dwarf2 plugin
++# pri_trace depends on the disabled pri_taint plugin
+ serial_taint
+ taint2
+ tainted_branch
+diff --git a/panda/plugins/config.panda b/panda/plugins/config.panda
+index d6e9cf8..4f699e1 100644
+--- a/panda/plugins/config.panda
++++ b/panda/plugins/config.panda
+@@ -37,9 +37,9 @@ osi_linux
+ osi_test
+ pc_search
+ pri
+-pri_dwarf
+-dwarf2
+-pri_simple
++# pri_dwarf uses libdwarf APIs removed after libdwarf 0.8
++# dwarf2 depends on the disabled pri_dwarf plugin
++# pri_simple depends on the disabled pri_dwarf plugin
+ proc_start_linux
+ proc_trace
+ recctrl
+diff --git a/panda/plugins/network/network.cpp b/panda/plugins/network/network.cpp
+index 3938db9..6f44074 100644
+--- a/panda/plugins/network/network.cpp
++++ b/panda/plugins/network/network.cpp
+@@ -19,9 +19,14 @@
+ 
+ #include "panda/plugin.h"
+ 
+-#include <wireshark/config.h>
++#include <wireshark/ws_version.h>
++#define VERSION_MAJOR WIRESHARK_VERSION_MAJOR
++#define VERSION_MINOR WIRESHARK_VERSION_MINOR
++#define VERSION_MICRO WIRESHARK_VERSION_MICRO
++#include <wsutil/file_compressed.h>
+ #include <wiretap/wtap.h>
+ #include <wiretap/wtap_opttypes.h>
++#include <wsutil/buffer.h>
+ 
+ // These need to be extern "C" so that the ABI is compatible with
+ // QEMU/PANDA, which is written in C
+@@ -35,23 +40,24 @@ extern uint64_t rr_get_guest_instr_count(void);
+ panda_arg_list *args;
+ wtap_dumper *plugin_log;
+ 
+-#if ((VERSION_MAJOR > 4) || (VERSION_MAJOR==4 && VERSION_MINOR > 2))
+-#define TOONEW
++#if (VERSION_MAJOR > 4 || (VERSION_MAJOR == 4 && VERSION_MINOR >= 3))
++#define WTAP_MODERN_API 1
+ #endif
+ 
+ bool init_plugin(void *self) {
+-#ifdef TOONEW
+-    printf("Wireshark too new. Please update the network plugin\n");
+-    return false;
+-#else
+-
+     panda_cb pcb;
+     int err;
+     int i;
+     char *tblog_filename = NULL;
+     args = panda_get_args("network");
+ 
+-    #if (VERSION_MAJOR>=3)
++    #ifdef WTAP_MODERN_API
++    wtap_dump_params wdparams = WTAP_DUMP_PARAMS_INIT;
++    wdparams.encap = WTAP_ENCAP_ETHERNET;
++    wdparams.snaplen = 65535;
++    wdparams.tsprec = WTAP_TSPREC_USEC;
++    #define PANDA_WTAP_UNCOMPRESSED WS_FILE_UNCOMPRESSED
++    #elif (VERSION_MAJOR>=3)
+     const wtap_dump_params wdparams = {
+     .encap = WTAP_ENCAP_ETHERNET,
+     .snaplen = 65535,
+@@ -81,7 +87,9 @@ bool init_plugin(void *self) {
+         fprintf(stderr, "Plugin 'network' needs argument: -panda-arg network:file=<file>\n");
+         return false;
+     }
+-    #if (VERSION_MAJOR == 2 && VERSION_MINOR >= 6 ) || (VERSION_MAJOR>=3)
++    #ifdef WTAP_MODERN_API
++    wtap_init(false, NULL, NULL, 0);
++    #elif (VERSION_MAJOR == 2 && VERSION_MINOR >= 6 ) || (VERSION_MAJOR>=3)
+     wtap_init(false);
+     #elif VERSION_MAJOR == 2 && VERSION_MINOR == 2 && VERSION_MICRO >= 4
+     wtap_init();
+@@ -94,7 +102,7 @@ bool init_plugin(void *self) {
+     plugin_log = wtap_dump_open(
+             tblog_filename,
+             file_type,
+-            WTAP_UNCOMPRESSED,   // assuming this...
++            PANDA_WTAP_UNCOMPRESSED,   // assuming this...
+             &wdparams,            // the new structure that wraps all the ng params
+             &err
+     #if (VERSION_MAJOR>=4 || VERSION_MINOR>=4)
+@@ -124,7 +132,6 @@ bool init_plugin(void *self) {
+     pcb.replay_handle_packet = handle_packet;
+     panda_register_callback(self, PANDA_CB_REPLAY_HANDLE_PACKET, pcb);
+     return true;
+-#endif
+ }
+ 
+ void uninit_plugin(void *self) {
+@@ -136,7 +143,11 @@ void uninit_plugin(void *self) {
+     #else
+     wtap_dump_flush(plugin_log);
+     #endif
+-    #if (VERSION_MAJOR>=4)
++    #ifdef WTAP_MODERN_API
++    char *write_err_info;
++    bool needs_reload;
++    bool ret = wtap_dump_close(plugin_log, &needs_reload, &err, &write_err_info);
++    #elif (VERSION_MAJOR>=4)
+     gchar *write_err_info;
+     gboolean needs_reload;
+     gboolean ret = wtap_dump_close(plugin_log, &needs_reload, &err, &write_err_info);
+@@ -153,7 +164,6 @@ void uninit_plugin(void *self) {
+     }
+ }
+ 
+-#ifndef TOONEW
+ void handle_packet(CPUState *env, uint8_t *buf, size_t size, uint8_t direction,
+                    uint64_t buf_addr_rec) {
+     int err;
+@@ -182,6 +192,13 @@ void handle_packet(CPUState *env, uint8_t *buf, size_t size, uint8_t direction,
+     rec.opt_comment = comment_buf;
+     rec.has_comment_changed = true;
+     #endif
++    #ifdef WTAP_MODERN_API
++    wtap_rec_init(&rec, size);
++    rec.tsprec = WTAP_TSPREC_USEC;
++    ws_buffer_append(&rec.data, buf, size);
++    ret = wtap_dump(plugin_log, &rec, &err, &err_info);
++    wtap_rec_cleanup(&rec);
++    #else
+     ret = wtap_dump(
+         /*wtap_dumper*/ plugin_log,
+         /*wtap_rec*/ &rec,
+@@ -192,6 +209,7 @@ void handle_packet(CPUState *env, uint8_t *buf, size_t size, uint8_t direction,
+     /* this will also dereference pkt_block */
+     wtap_rec_reset(&rec);
+     #endif
++    #endif
+     #else
+     struct wtap_pkthdr header;
+         #if VERSION_MAJOR >= 2
+@@ -226,4 +244,3 @@ void handle_packet(CPUState *env, uint8_t *buf, size_t size, uint8_t direction,
+     }
+     return;
+ }
+-#endif
+diff --git a/panda/plugins/pri_dwarf/pri_dwarf.cpp b/panda/plugins/pri_dwarf/pri_dwarf.cpp
+index 645dcb7..bde0ed0 100644
+--- a/panda/plugins/pri_dwarf/pri_dwarf.cpp
++++ b/panda/plugins/pri_dwarf/pri_dwarf.cpp
+@@ -71,8 +71,8 @@ void on_global_livevar_iter(CPUState *cpu, target_ulong pc, liveVarCB f, void *a
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ #include <fcntl.h>
+-#include <libdwarf/dwarf.h>
+-#include <libdwarf/libdwarf.h>
++#include <dwarf.h>
++#include <libdwarf.h>
+ 
+ }
+ 
+diff --git a/panda/plugins/pri_dwarf/pri_dwarf_types.h b/panda/plugins/pri_dwarf/pri_dwarf_types.h
+index 983d42a..d2b5015 100644
+--- a/panda/plugins/pri_dwarf/pri_dwarf_types.h
++++ b/panda/plugins/pri_dwarf/pri_dwarf_types.h
+@@ -1,5 +1,5 @@
+ 
+-#include <libdwarf/libdwarf.h>
++#include <libdwarf.h>
+ 
+ typedef void (*dwarfTypeCB)(target_ulong buf, LocType loc_t, target_ulong buf_len, const char *astnodename);
+ 
+diff --git a/panda/plugins/pri_dwarf/pri_dwarf_util.h b/panda/plugins/pri_dwarf/pri_dwarf_util.h
+index 1c8d66b..c6c3067 100644
+--- a/panda/plugins/pri_dwarf/pri_dwarf_util.h
++++ b/panda/plugins/pri_dwarf/pri_dwarf_util.h
+@@ -2,9 +2,9 @@
+ #ifndef __PRI_DWARF_UTIL_H
+ #define __PRI_DWARF_UTIL_H
+ 
+-#include <libdwarf/libdwarf.h>
++#include <libdwarf.h>
+ #include "panda/plugin.h"
+-#include <libdwarf/dwarf.h>
++#include <dwarf.h>
+ #include "pri/pri_types.h"
+ 
+ 
+diff --git a/panda/plugins/taint2/taint_ops.cpp b/panda/plugins/taint2/taint_ops.cpp
+index 4f6e017..ac6f01e 100644
+--- a/panda/plugins/taint2/taint_ops.cpp
++++ b/panda/plugins/taint2/taint_ops.cpp
+@@ -24,8 +24,10 @@ PANDAENDCOMMENT */
+ #define __STDC_FORMAT_MACROS
+ #endif
+ 
++#include <cstdint>
+ #include <cstdio>
+ #include <cstdarg>
++#include <sstream>
+ 
+ #include <llvm/IR/Constants.h>
+ #include <llvm/IR/Instructions.h>
+diff --git a/panda/tools/helper_call_modifier.cpp b/panda/tools/helper_call_modifier.cpp
+index 1020383..e1a4c84 100644
+--- a/panda/tools/helper_call_modifier.cpp
++++ b/panda/tools/helper_call_modifier.cpp
+@@ -24,6 +24,7 @@ PANDAENDCOMMENT */
+  * to call these LLVM versions of helper functions.
+  */
+ 
++#include <cstdint>
+ #include <cstdio>
+ #include <iostream>
+ #include <regex>
+diff --git a/rules.mak b/rules.mak
+index acdff32..fbd2b24 100644
+--- a/rules.mak
++++ b/rules.mak
+@@ -21,7 +21,7 @@ MAKEFLAGS += -rR
+ clean-target:
+ 
+ # Additional C++ flags. Note that QEMU_CFLAGS have already been appended by configure.
+-QEMU_CXXFLAGS += -Wno-sign-compare -std=c++11 -fPIC -fpermissive
++QEMU_CXXFLAGS += -Wno-sign-compare -std=c++17 -fPIC -fpermissive
+ 
+ # Flags for dependency generation
+ QEMU_DGFLAGS += -MMD -MP -MT $@ -MF $(@D)/$(*F).d
