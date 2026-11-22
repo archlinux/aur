@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A blazing fast file name search tool"
 
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE.txt")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.rpm::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.rpm")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.rpm::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.rpm")
-sha256sums=('201a474ca03af9a75d11f9fe97555d18c1495c4694d8e1d916be37e53e6a4787'
+sha256sums=('28c5949361556779253f761be5b96b2b73e3e257468b6c3729ff9656af4964a7'
             'b47b5eeb5533dc7ebe52f56d65d161a624504ff8ee6653882c55b02a2affcea6')
-sha256sums_x86_64=('1efbd633d1df7fa5c813a820e5dcaf908a3ec53c7fd09a97c7409326117a227d')
-sha256sums_aarch64=('54a4bc2e93add3f1861503df3043894cce8a920edb836a06bbc1d0b852379873')
+sha256sums_x86_64=('dbd6b6f1bf6f305a5e9cb74dfb5e6500e27a1aa17bae6195cdf37cef556088b8')
+sha256sums_aarch64=('0dc08ebc25ddc2d01bff3455f2f88fec256b470f396c8e340a7eded93f3f2401')
 
 
 prepare() {
