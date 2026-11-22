@@ -1,7 +1,7 @@
 # Maintainer: Hec <hec@heccraft.com>
 
 pkgbase=linux-ogc
-_ogcver=7.3.4-ogc5
+_ogcver=7.3.4-ogc9
 pkgver=${_ogcver/-/.}
 pkgrel=1
 pkgdesc='Linux'
@@ -40,10 +40,10 @@ source=(
   config
 )
 sha256sums=('b11b6df8295e8e991ff040b71aaa4994a8b55caa23b6b092907f195b5840fd1f'
-            'fd02cde809caf06b1d9ed7dd1df8881228d200b2aba018af563f0a98d43eda77'
+            '2232bf5e98142bdf51696631f0fd93a5e9f65a93d0deb0a5008203bf00d5e1a2'
             'b8a9a90002e45e31cf607f520fca5500512d66a0a90ab628fd575c6556650b14')
 b2sums=('9b75f615d0a03d6627d7e3db4397882d602161db13cd5efd6226e0e5c5f970d1baea676d9d01edd0f09ed0b7207b6421e6340f1b8e9bd4e8152491ddddcc9021'
-        'd2af0c4499b70f8123858f97985954b3cf3dacb2ee2ef3d1e55d0bdf81cf58e6b29de8306ae66ee26fa3c1bbad6bed4985f217463fe228075d0d7efe7c111b01'
+        '48ee91c26a01c67f6ff71bce4f14f0e8c630419dbdfcada3f4c25385637116eac63d345a0b5be156dcbc2d6638d17cac389f8871375aca9140383315ea4ce500'
         'fe0b163da2ca5752e26173f043de808664f2d80ab0667c018336db85f0ddc6a28a0231d64c385e6b774bec80288645723c4b032a45f06a633cbf8a114c39d347')
 
 export KBUILD_BUILD_HOST=archlinux
