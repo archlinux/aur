@@ -6,12 +6,13 @@
 #   sha256 锁构建时产物，source 走 gh-proxy 加速。
 pkgname=oplus-connect-private-bin
 pkgver=1.0.0.r19.gfd752ee
-pkgrel=4
+pkgrel=5
 pkgdesc='Linux client for OPPO and OnePlus device connectivity（自用维护，CI 自编译重打包版）'
 arch=('x86_64')
 url='https://github.com/YuKongA/oplus-connect'
 # GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
 _gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
+_gh_mirror="${_gh_mirror%/}/"
 license=('MIT')
 depends=(
   'glibc' 'gcc-libs' 'glib2' 'fontconfig' 'freetype2' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11'

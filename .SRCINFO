@@ -1,7 +1,7 @@
 pkgbase = oplus-connect-private-bin
 	pkgdesc = Linux client for OPPO and OnePlus device connectivity（自用维护，CI 自编译重打包版）
 	pkgver = 1.0.0.r19.gfd752ee
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/YuKongA/oplus-connect
 	arch = x86_64
 	license = MIT
