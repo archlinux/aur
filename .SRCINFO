@@ -1,0 +1,19 @@
+pkgbase = revw-bin
+	pkgdesc = A vim-like TUI for managing notes
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/rlelf/revw
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = revw
+	conflicts = revw
+	options = !debug
+	source = revw-bin-0.2.9-LICENSE::https://raw.githubusercontent.com/rlelf/revw/v0.2.9/LICENSE
+	sha256sums = 1cbb5502dd3eefe9e65f5ad5cc2c264f8ae50647eebc80a0504adc12b8ac161c
+	source_x86_64 = revw-bin-0.2.9-x86_64.tar.gz::https://github.com/rlelf/revw/releases/download/v0.2.9/revw-linux-x86_64-musl.tar.gz
+	sha256sums_x86_64 = fdaedc9068fba081d55f3d06f3a647409e35d161291ba072967b65a006f17188
+	source_aarch64 = revw-bin-0.2.9-aarch64.tar.gz::https://github.com/rlelf/revw/releases/download/v0.2.9/revw-linux-aarch64-musl.tar.gz
+	sha256sums_aarch64 = 1e8bb8f377b71868e54d09ed37fba66e07c430e42d186c661f0ffcb532e51216
+
+pkgname = revw-bin
