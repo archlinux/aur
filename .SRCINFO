@@ -1,0 +1,16 @@
+pkgbase = deputui
+	pkgdesc = Review and install JavaScript package updates from npm
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/twiddler/deputui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = deputui-0.3.0.tar.gz::https://github.com/twiddler/deputui/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = f3fe6019a9665c11b2fefa346c950f5ff79060f8920f2be8e4f99ae0dc396aa0
+
+pkgname = deputui
