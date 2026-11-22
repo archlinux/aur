@@ -3,7 +3,7 @@
 _pkgauthor=Zouuup
 _pkgname=landrun
 pkgname=${_pkgname}-bin
-pkgver=0.1.17
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Run any Linux process in a secure, unprivileged sandbox using Landlock LSM"
 arch=('x86_64')
@@ -19,8 +19,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64")
 sha256sums=('f613c30920743111429f7c1cb801f49ccaafe8ae3319b3b0a5f8aca94e5fc082'
-            '725359806416cf255e70a612657956a7528c054a02b243bbbb5bdb25f7e20c0c')
-sha256sums_x86_64=('6ada66a06669e8994e174a7271af2db636308e55a0d6ec896cc7d326b46727f6')
+            '5960a69b6bfd2f4f6499eb95d8b5c41a826443dd26963e79b769d5b779705787')
+sha256sums_x86_64=('2738aa171a83246d98a24ef8afa756512b1f013b6ca7dcc95313276f8d41a8d6')
 
 
 prepare() {
