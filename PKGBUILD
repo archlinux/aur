@@ -1,7 +1,7 @@
 # Maintainer: psi4j <116757358+psi4j@users.noreply.github.com>
 
 pkgname=sunsetr
-pkgver=0.12.6
+pkgver=0.12.7
 pkgrel=1
 pkgdesc="Automatic blue-light filter for Hyprland, Niri, and everything Wayland"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('sunsetr-bin' 'sunsetr-git')
 replaces=('sunsetr-git-debug')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('cd2f4de2cdaf4092c9716c8468c14c5b8f97698aaf9ff3181d35fb394a895dc5')
+sha256sums=('257a4c3ce0535bdfb3647cb06e231205a1e99496be1eb2d0cb76084624828e5d')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
