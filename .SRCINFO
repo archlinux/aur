@@ -1,6 +1,6 @@
 pkgbase = che
 	pkgdesc = 💥 Blazing fast terminal file manager written in Rust, based on async I/O with true dual panel mode
-	pkgver = 26.10.12
+	pkgver = 26.11.21
 	pkgrel = 1
 	url = https://github.com/aroum/che
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = che
 	provides = che
 	provides = ch
 	options = !strip
-	source = che-26.10.12.tgz::https://github.com/aroum/che/archive/v26.10.12.tar.gz
-	sha256sums = b902dc1f7b3862be6a2b62abd5f243b586802d567a4a48106ed58614c9cded76
+	source = che-26.11.21.tgz::https://github.com/aroum/che/archive/v26.11.21.tar.gz
+	sha256sums = efcfc0a60a989e3e0b95cb5c8f43b8606bb4cdff2c5aafac41f6617d0c0c0f9c
 
 pkgname = che
