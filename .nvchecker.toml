@@ -1,0 +1,5 @@
+[musica-bin]
+source = "github"
+github = "leonidsergueigr/Musica"
+use_latest_release = true
+prefix = "v"

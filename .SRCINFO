@@ -1,0 +1,16 @@
+pkgbase = musica-bin
+	pkgdesc = Terminal music player with folder browser, queue, playlists, live spectrum, cover art and mouse support
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/leonidsergueigr/Musica
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	provides = musica
+	conflicts = musica
+	options = !strip
+	source_x86_64 = musica-x86_64-0.1.0.tgz::https://github.com/leonidsergueigr/Musica/releases/download/v0.1.0/musica-0.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 42fcec386c173665a20fc9a47679748db0d681eb51362243a5440db01fc23930
+
+pkgname = musica-bin
