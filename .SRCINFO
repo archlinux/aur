@@ -1,7 +1,7 @@
 pkgbase = ante-bin
 	pkgdesc = Ante CLI (prebuilt static binary from the official release)
-	pkgver = 0.3.7
-	pkgrel = 2
+	pkgver = 0.3.8
+	pkgrel = 1
 	url = https://ante.run
 	arch = x86_64
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = ante-bin
 	options = !strip
 	source = BINARY-TERMS.md
 	sha256sums = 8704fc36dc5f6f29d1764aa26058c70452f9d75687bb815b0efe7cb01ce46dac
-	source_x86_64 = ante-v0.3.7-linux-x86_64-musl.tar.gz::https://download.ante.run/releases/v0.3.7/ante-v0.3.7-linux-x86_64-musl.tar.gz
-	sha256sums_x86_64 = 6f7ccd960b2eb4416b1ffb8cdae1232b312debb245340be3d368a5ea8c242538
-	source_aarch64 = ante-v0.3.7-linux-arm64-musl.tar.gz::https://download.ante.run/releases/v0.3.7/ante-v0.3.7-linux-arm64-musl.tar.gz
-	sha256sums_aarch64 = 5fb65c3e275688230a493e6448fa0411deff33d015a1858554ef901f02746f79
+	source_x86_64 = ante-v0.3.8-linux-x86_64-musl.tar.gz::https://download.ante.run/releases/v0.3.8/ante-v0.3.8-linux-x86_64-musl.tar.gz
+	sha256sums_x86_64 = 3dc24f3d1502179bc64df28bca8fed655b44e84b92c766fb1bbba159f7de9c20
+	source_aarch64 = ante-v0.3.8-linux-arm64-musl.tar.gz::https://download.ante.run/releases/v0.3.8/ante-v0.3.8-linux-arm64-musl.tar.gz
+	sha256sums_aarch64 = f68ce33e03c775a2b5128f9ecf3113df833dd13925c0368dfb935aa4cd8a4b29
 
 pkgname = ante-bin
