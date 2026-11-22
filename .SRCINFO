@@ -1,7 +1,7 @@
 pkgbase = nagram-desktop
 	pkgdesc = An independent Telegram client built with Qt.
-	pkgver = 7.4.1.3
-	pkgrel = 2
+	pkgver = 7.4.4.1
+	pkgrel = 1
 	url = https://github.com/NextAlone/Nagram-Qt
 	arch = x86_64
 	license = GPL-3.0-or-later WITH OpenSSL-exception
@@ -69,7 +69,7 @@ pkgbase = nagram-desktop
 	optdepends = webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1 (gtk3)
 	optdepends = webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (gtk4)
 	optdepends = xdg-desktop-portal: desktop integration
-	source = git+https://github.com/NextAlone/Nagram-Qt.git#tag=v7.4.1.3
+	source = git+https://github.com/NextAlone/Nagram-Qt.git#tag=v7.4.4.1
 	source = git+https://github.com/tdlib/td.git#commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
 	source = wallet-engine-0.0.7.tar.gz::https://github.com/i582/wallet-engine/archive/refs/tags/v0.0.7.tar.gz
 	source = https://github.com/desktop-app/patches/raw/69f23a834024d6064da209076151393582b3c966/wallet-engine.patch
@@ -114,7 +114,7 @@ pkgbase = nagram-desktop
 	source = git+https://gitlab.com/mnauw/cppgir.git
 	source = git+https://github.com/martinmoene/expected-lite.git
 	source = git+https://github.com/TelegramMessenger/quickjs.git
-	sha512sums = e1ae5f775fdb312d94ccc83d8fb170847ffed8e0c2e4b412e45b5da5a1aa8d75b16e6d9cc11d27730bf35a90312afb642acc26fdb04f92e31441975a09b9afe7
+	sha512sums = aed53d54ef0367fa18ae7bbaa393088b3346072d33a94c65d4c89c40732cf7dc11e143b41c58a1927eb45a115320a135260a96c04e576b9f4ad0680d6a780cda
 	sha512sums = dd4741b3621c5e76ba7c9eee44ffd41b1e6b6c24fdb19988efd780d307aff79a9dcfd710be9ad63db6857cbbd71c273c54d82be524a5326fc22f1233d9eb6ca2
 	sha512sums = f1a38de20459c5b780c98aaab037fdf34357980e7f3b93c4b523636d016ca4ffc9d9679c2ee4a246b138ef0474b8190d2db1874b204c006b0f30b3c950c62ff6
 	sha512sums = 71c9b0aacef42e87febee042d251c2835e3d30b8000f9b00afb48d74a7e7aba93a36530c1ef0d6da69bb4d115e7a852a8888f1bcf868d1bd60d9e3f55a024088
