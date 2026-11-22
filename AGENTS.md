@@ -2,7 +2,9 @@
 
 AUR `-bin` package for xdg-desktop-portal-gtk4, prebuilt from upstream `master`.
 The Print portal fixes that used to live in `print-single-call.patch` are
-upstream since commit `3461d7e`, so the recipe builds the upstream tree as is.
+upstream since `3461d7e`; the page-setup warning fix is `34f8de3`, so the recipe
+builds the upstream tree as is. This package is a stopgap until
+`xdg-desktop-portal-gtk4-bin` is adopted on AUR.
 The package installs a prebuilt binary and does not compile anything.
 
 ## Files
