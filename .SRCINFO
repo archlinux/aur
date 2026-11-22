@@ -1,6 +1,6 @@
 pkgbase = rivermonad
 	pkgdesc = xmonad-style tiling window manager for the river Wayland compositor
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/prietus/rivermonad
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = rivermonad
 	optdepends = fuzzel: the default launcher (mod-p)
 	optdepends = kanshi: monitor resolution and scale, started by the session
 	optdepends = libnotify: notifications when the configuration fails to compile
-	source = rivermonad-0.2.0.tar.gz::https://github.com/prietus/rivermonad/archive/v0.2.0.tar.gz
-	sha256sums = 73dda2ea9441ebcb2089e02c998192a5af8c745e8470fe81d249fa64087c6ac6
+	source = rivermonad-0.3.0.tar.gz::https://github.com/prietus/rivermonad/archive/v0.3.0.tar.gz
+	sha256sums = 1fda8c43d2c90c39d22a34eea97c6c98aecb5962094f86de896d28ec9e7c1737
 
 pkgname = rivermonad
 	optdepends = foot: the default terminal
@@ -28,11 +28,12 @@ pkgname = rivermonad
 pkgname = rivermonad-dotfiles
 	pkgdesc = A complete river + rivermonad desktop: bar, living wallpaper, widgets, launcher, screenshots
 	arch = any
-	depends = rivermonad=0.2.0
-	depends = waymobar>=0.2.0
+	depends = rivermonad=0.3.0
+	depends = waymobar>=0.3.0
 	depends = bgmonad
 	depends = hasklets
-	depends = shotlet
+	depends = shotlet>=0.1.1
+	depends = locklet
 	depends = foot
 	depends = fuzzel
 	depends = mako
@@ -52,5 +53,7 @@ pkgname = rivermonad-dotfiles
 	depends = noto-fonts-emoji
 	depends = ttf-material-symbols-variable
 	optdepends = powerline-fonts: Ubuntu Mono derivative Powerline, the font of foot.ini
+	optdepends = geoclue: location for the weather (rivermonad.hs starts its agent)
+	optdepends = glib2: dark GTK themes set by rivermonad-setup (gsettings)
 	optdepends = firefox: the browser on Super+B
 	optdepends = waybar: the alternative bar (needs the rivermonad modules, see contrib/waybar)

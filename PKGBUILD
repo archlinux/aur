@@ -2,7 +2,7 @@
 
 pkgbase=rivermonad
 pkgname=('rivermonad' 'rivermonad-dotfiles')
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='xmonad-style tiling window manager for the river Wayland compositor'
 url='https://github.com/prietus/rivermonad'
@@ -16,7 +16,7 @@ optdepends=('foot: the default terminal'
             'kanshi: monitor resolution and scale, started by the session'
             'libnotify: notifications when the configuration fails to compile')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('73dda2ea9441ebcb2089e02c998192a5af8c745e8470fe81d249fa64087c6ac6')
+sha256sums=('1fda8c43d2c90c39d22a34eea97c6c98aecb5962094f86de896d28ec9e7c1737')
 
 build() {
   cd $pkgbase-$pkgver
@@ -73,7 +73,8 @@ package_rivermonad() {
 package_rivermonad-dotfiles() {
   pkgdesc='A complete river + rivermonad desktop: bar, living wallpaper, widgets, launcher, screenshots'
   arch=('any')
-  depends=("rivermonad=$pkgver" 'waymobar>=0.2.0' 'bgmonad' 'hasklets' 'shotlet'
+  depends=("rivermonad=$pkgver" 'waymobar>=0.3.0' 'bgmonad' 'hasklets' 'shotlet>=0.1.1'
+           'locklet'                                               # lock screen, idle, Super+Shift+L
            'foot' 'fuzzel' 'mako' 'kanshi' 'libnotify'
            'grim' 'slurp' 'swappy' 'wl-clipboard' 'wf-recorder'    # shot, screenrec
            'wtype' 'unicode-emoji'                                 # emoji
@@ -81,6 +82,8 @@ package_rivermonad-dotfiles() {
            'xdg-desktop-portal-wlr' 'xdg-desktop-portal-gtk'
            'inter-font' 'noto-fonts-emoji' 'ttf-material-symbols-variable')
   optdepends=('powerline-fonts: Ubuntu Mono derivative Powerline, the font of foot.ini'
+              'geoclue: location for the weather (rivermonad.hs starts its agent)'
+              'glib2: dark GTK themes set by rivermonad-setup (gsettings)'
               'firefox: the browser on Super+B'
               'waybar: the alternative bar (needs the rivermonad modules, see contrib/waybar)')
 
