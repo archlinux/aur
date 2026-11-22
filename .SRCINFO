@@ -1,16 +1,22 @@
 pkgbase = yt-tui
 	pkgdesc = Curses TUI for yt-dlp with search and queueing
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Twilight0/yt-tui
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = yt-dlp
 	depends = ffmpeg
-	source = yt-tui-1.2.1.tar.gz::https://github.com/Twilight0/yt-tui/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = 01a738a9de034ee24325fa35c2ee68703021aa80f8608ad0d6dbba02d872af40
+	optdepends = mpv: video and native audio playback
+	optdepends = alsa-utils: ALSA audio playback and amixer volume control
+	optdepends = libpulse: PipeWire/PulseAudio playback and volume control
+	optdepends = bluez-alsa: Bluetooth A2DP volume control
+	source = yt-tui-1.3.0.tar.gz::https://github.com/Twilight0/yt-tui/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = d3e6975adfd2efe5c20fa16ea5291f7df0092fe7816cd88fb0b85955920b2e35
 
 pkgname = yt-tui
