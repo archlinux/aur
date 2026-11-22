@@ -1,0 +1,23 @@
+pkgbase = tola-bin
+	pkgdesc = Typst-based static site generator (prebuilt binary)
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/tola-rs/tola-ssg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = zlib
+	provides = tola
+	conflicts = tola
+	options = !strip
+	options = !debug
+	source = tola-0.8.2-LICENSE::https://raw.githubusercontent.com/tola-rs/tola-ssg/v0.8.2/LICENSE
+	sha256sums = efb41367738efb01c9965212f13325a0ca932aca185c1a29b6f56896efaa8a80
+	source_x86_64 = https://github.com/tola-rs/tola-ssg/releases/download/v0.8.2/tola-0.8.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = cae954b7b3fa24e422d0e428e9402bbe01b00c5ad06d9882a692465e248d5432
+	source_aarch64 = https://github.com/tola-rs/tola-ssg/releases/download/v0.8.2/tola-0.8.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 67a4cd9ae6d2c7cedd725e44f1785c129474846ae87013a6fa1fe6f53c29d614
+
+pkgname = tola-bin
