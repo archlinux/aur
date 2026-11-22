@@ -18,19 +18,19 @@
 # symbol table. All three warnings are expected.
 
 pkgname=xunhen
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
-_version=1.0.3
-_commit=9c63469041da3cb357e7bc27d8f960cb142ee8e3
+_version=1.0.4
+_commit=af8256f574ad028ee120dc1f529931936da309dc
 pkgdesc="Browse the editing history that survived in Neovim undo files"
 arch=('x86_64')
 url="https://github.com/nuggocto/xunhen"
 license=('Apache-2.0')
 depends=()
-makedepends=('go>=2:1.27.3')
+makedepends=('go>=2:1.27.4')
 checkdepends=('git')
 source=("xunhen_${_version}_source.tar.gz::https://github.com/nuggocto/xunhen/releases/download/v${_version}/xunhen_${_version}_source.tar.gz")
-sha256sums=('d966bcb8794ee06c9664943ed0c2242e4fa949e41e0a0e4d79b98bdc131b9849')
+sha256sums=('eb4e9766c732e1ed1918cb4bb927f3907a77ccedb4073bcb4c20df28de12076b')
 
 # The go command's environment for every step: no go.env file, no
 # workspace, no toolchain download, and a module cache inside $srcdir.
