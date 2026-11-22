@@ -1,0 +1,21 @@
+pkgbase = agent-console-tui-bin
+	pkgdesc = A local dashboard for Codex and Claude Code
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/buhuipao/agent-console
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = agent-console-tui
+	conflicts = agent-console-tui
+	options = !debug
+	source = agent-console-tui-bin-0.3.7-LICENSE::https://raw.githubusercontent.com/buhuipao/agent-console/v0.3.7/LICENSE-MIT
+	sha256sums = 159e4fccea4a5c0615203a34e1425f12c29647e974d3242abe1ec2aff90b8998
+	source_x86_64 = agent-console-tui-bin-0.3.7-x86_64.tar.gz::https://github.com/buhuipao/agent-console/releases/download/v0.3.7/agent-console-v0.3.7-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a5156714c8a87002982bc1e1bd04a9fb8b654267bbece40b3b11b02f2a249b13
+	source_aarch64 = agent-console-tui-bin-0.3.7-aarch64.tar.gz::https://github.com/buhuipao/agent-console/releases/download/v0.3.7/agent-console-v0.3.7-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 529288065f82b37d52e33002f983c1e4a7c859775d775583e7bb94d0a1a03c30
+
+pkgname = agent-console-tui-bin
