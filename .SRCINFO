@@ -1,6 +1,6 @@
 pkgbase = task-maker-rust
 	pkgdesc = Tool for building tasks for informatics competitions, with support for cache, distributed computations and more
-	pkgver = 0.7.5
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://github.com/olimpiadi-informatica/task-maker-rust
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = task-maker-rust
 	optdepends = cargo: for running Rust solutions
 	optdepends = bash: for running Bash solutions
 	options = !lto
-	source = https://github.com/olimpiadi-informatica/task-maker-rust/archive/v0.7.5.tar.gz
-	sha256sums = d2b7870580b5ee438869b1a01d7f0a7ad5401d120688dc7ae09109c4d0219149
+	source = https://github.com/olimpiadi-informatica/task-maker-rust/archive/v0.7.6.tar.gz
+	sha256sums = 3e97b8b4c2e16fe4833cef1ed5e1ac3b6ae90bf22eedd8a0bc60c9e0873b2135
 
 pkgname = task-maker-rust
