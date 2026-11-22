@@ -1,0 +1,5 @@
+[scribe-tui-bin]
+source = "github"
+github = "programmersd21/scribe"
+use_latest_release = true
+prefix = "v"
