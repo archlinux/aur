@@ -1,6 +1,6 @@
 pkgbase = goloco-git
 	pkgdesc = Reimplementation of Chris Sawyer's Locomotion in Go, ported from OpenLoco (needs the original game data)
-	pkgver = r1191.3e9d392
+	pkgver = r1191.669c40a
 	pkgrel = 1
 	url = https://github.com/LaPingvino/goloco
 	install = goloco.install

@@ -1,7 +1,7 @@
 # Maintainer: Joop Kiefte <ikojba at gmail dot com>
 pkgname=goloco-git
 _pkgname=goloco
-pkgver=r1191.3e9d392
+pkgver=r1191.669c40a
 pkgrel=1
 pkgdesc="Reimplementation of Chris Sawyer's Locomotion in Go, ported from OpenLoco (needs the original game data)"
 arch=('x86_64' 'aarch64')
