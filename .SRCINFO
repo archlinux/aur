@@ -1,6 +1,6 @@
 pkgbase = realvnc-vnc-viewer
 	pkgdesc = RealVNC Connect Viewer remote desktop client
-	pkgver = 8.6.1
+	pkgver = 8.6.2
 	pkgrel = 1
 	url = https://www.realvnc.com/
 	arch = x86_64
@@ -22,10 +22,10 @@ pkgbase = realvnc-vnc-viewer
 	optdepends = cups: remote printing support
 	optdepends = xorg-xwayland: X11 compatibility under Wayland
 	conflicts = realvnc-rvncconnect
-	noextract = RealVNC-Connect-Viewer-8.6.1-Linux-x64.deb
+	noextract = RealVNC-Connect-Viewer-8.6.2-Linux-x64.deb
 	source = LICENSE
 	sha256sums = d15f7cbc21aab009fac5243a8d27f92de0234f2cbb53bbc238985a843a4c7520
-	source_x86_64 = https://downloads.realvnc.com/download/file/realvnc-connect-viewer/RealVNC-Connect-Viewer-8.6.1-Linux-x64.deb
-	sha256sums_x86_64 = 29b1f64ddf456d3d7e518b304e19cc593fdd1cdd7f45b87adbf64b103f3a6e11
+	source_x86_64 = https://downloads.realvnc.com/download/file/realvnc-connect-viewer/RealVNC-Connect-Viewer-8.6.2-Linux-x64.deb
+	sha256sums_x86_64 = 5b9338ece7cb892350c69260f71cf190011a61d027a3e62b1ef47193389ef01f
 
 pkgname = realvnc-vnc-viewer

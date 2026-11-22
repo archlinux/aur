@@ -13,7 +13,7 @@ _watch=(
 )
 
 pkgname=realvnc-vnc-viewer
-pkgver=8.6.1
+pkgver=8.6.2
 pkgrel=1
 pkgdesc='RealVNC Connect Viewer remote desktop client'
 arch=('x86_64')
@@ -51,7 +51,7 @@ source_x86_64=(
 )
 
 sha256sums=('d15f7cbc21aab009fac5243a8d27f92de0234f2cbb53bbc238985a843a4c7520')
-sha256sums_x86_64=('29b1f64ddf456d3d7e518b304e19cc593fdd1cdd7f45b87adbf64b103f3a6e11')
+sha256sums_x86_64=('5b9338ece7cb892350c69260f71cf190011a61d027a3e62b1ef47193389ef01f')
 
 
 noextract=("RealVNC-Connect-Viewer-${pkgver}-Linux-x64.deb")
