@@ -3,7 +3,7 @@
 post_install() {
     echo ""
     echo "      Do not forget to delete the cache of thumbnails:"
-    echo "          rm rf ~/.thumbnails"
-    echo "          rm rf ~/.cache/thumbnails"
+    echo "          rm -rf ~/.thumbnails"
+    echo "          rm -rf ~/.cache/thumbnails"
     echo ""
 }

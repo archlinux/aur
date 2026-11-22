@@ -1,13 +1,18 @@
 pkgbase = cover-thumbnailer
 	pkgdesc = Python-based thumbnailer that supports album covers and picture folders
-	pkgver = 0.10.1
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://github.com/flozz/cover-thumbnailer
 	install = cover-thumbnailer.install
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
+	depends = glib2
+	depends = gtk3
+	depends = python
+	depends = python-gobject
 	depends = python-pillow
-	source = cover-thumbnailer-0.10.1.tar.gz::https://github.com/flozz/cover-thumbnailer/archive/v0.10.1.tar.gz
-	sha256sums = 3b5fd373554376a74ea88bb42ad21f0d109b456ed660fe9703468523e1eda279
+	conflicts = cover-thumbnailer-git
+	source = cover-thumbnailer-0.10.4.tar.gz::https://github.com/flozz/cover-thumbnailer/archive/v0.10.4.tar.gz
+	sha256sums = bc8e3131d67ee9d64ad0ec84edf2b6a9b46cdb839f02656e3f0365444506c14f
 
 pkgname = cover-thumbnailer
