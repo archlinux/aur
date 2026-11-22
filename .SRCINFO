@@ -1,0 +1,19 @@
+pkgbase = judo-git
+	pkgdesc = A multi-database TUI for ToDo lists
+	pkgver = r145.3b2cd74
+	pkgrel = 1
+	url = https://github.com/giacomopiccinini/judo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = judo
+	conflicts = judo
+	options = !lto
+	source = judo::git+https://github.com/giacomopiccinini/judo.git
+	sha256sums = SKIP
+
+pkgname = judo-git
