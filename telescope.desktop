@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Telescope
+GenericName=Phone webcam
+Comment=Phone camera as a webcam
+Exec=telescope-webcam
+Icon=/home/hussien/.local/share/icons/hicolor/256x256/apps/telescope.png
+StartupWMClass=telescope
+Terminal=false
+Categories=AudioVideo;Video;
+Keywords=webcam;camera;phone;android;

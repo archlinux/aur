@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /opt/telescope-webcam-bin/Telescope.AppImage "$@"
