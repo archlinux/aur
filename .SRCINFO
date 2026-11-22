@@ -1,17 +1,15 @@
 pkgbase = jalview
 	pkgdesc = Bioinformatics Multiple Alignment Editor
-	pkgver = 2.11.5.0
+	pkgver = 2.11.5.3
 	pkgrel = 1
 	url = https://www.jalview.org/
 	arch = any
 	license = GPL3
-	makedepends = tar
 	depends = java-runtime
-	noextract = jalview-2_11_5_0-unix-java_8.tar.gz
-	source = http://www.jalview.org/getdown/release/install4j/1.8/jalview-2_11_5_0-unix-java_8.tar.gz
+	source = https://www.jalview.org/getdown/release/jalview-all-2.11.5.3-j1.8.jar
 	source = jalview
 	source = jalview.desktop
-	sha256sums = 8e6da00cae9e655bdcf1d3c8e1b0eb2800e8f9b7c49922a64fd3b9e1b49db982
+	sha256sums = 5691657031ec9019f1ee75208be52aa0315581cc7574b4c7a906fa10d589c90e
 	sha256sums = dbe5edfa9b17a1f85083b5aae16ef7a186a0d0035e6a81761cf73d0e1121ce58
 	sha256sums = fa870de0d4ec5be2dfc93405f7e618541737533a34705893274fdfea7dae0600
 
