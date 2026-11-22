@@ -11,7 +11,7 @@ depends=('gcc-libs')
 optdepends=('ffmpeg: video previews; AVIF/HEIC/JPEG XL decoding'
             'imagemagick: AVIF/HEIC/JPEG XL decoding (preferred over ffmpeg)'
             'wl-clipboard: copy image/path to the clipboard on Wayland'
-            'xclip: copy image/path to the clipboard on X11')
+            'xclip: copy image/path to the clipboard on X11 ')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
