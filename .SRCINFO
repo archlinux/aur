@@ -1,0 +1,19 @@
+pkgbase = battleship-rs-git
+	pkgdesc = Terminal-based Battleship game
+	pkgver = r24.43f6eed
+	pkgrel = 1
+	url = https://github.com/deepu105/battleship-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = battleship-rs
+	conflicts = battleship-rs
+	options = !lto
+	source = battleship-rs::git+https://github.com/deepu105/battleship-rs.git
+	sha256sums = SKIP
+
+pkgname = battleship-rs-git
