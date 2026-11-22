@@ -1,7 +1,7 @@
 pkgbase = filmcraft-private-bin
 	pkgdesc = 自用维护：开源 clean-room 版 Adobe Premiere Pro 替代（视频编辑），上游 storytold/filmcraft
 	pkgver = 0.20.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getartcraft.com/apps/filmcraft
 	arch = x86_64
 	license = MIT
