@@ -1,12 +1,12 @@
 pkgbase = freellmapi-desktop-bin
 	pkgdesc = FreeLLMAPI menu-bar app — local OpenAI-compatible LLM router
-	pkgver = 0.16.36
+	pkgver = 0.16.38
 	pkgrel = 1
 	url = https://github.com/tashfeenahmed/freellmapi
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = FreeLLMAPI-0.16.36.AppImage::https://github.com/tashfeenahmed/freellmapi/releases/download/v0.16.36/FreeLLMAPI-0.16.36.AppImage
-	sha256sums = a86ebbb5dae1e90e163ea3d779ae7331b6614af3fca39a4e0d9f561914b4ba76
+	source = FreeLLMAPI-0.16.38.AppImage::https://github.com/tashfeenahmed/freellmapi/releases/download/v0.16.38/FreeLLMAPI-0.16.38.AppImage
+	sha256sums = d54e0465e7210706f601f7919f8b677c6f98498f5d5232ad797dc5918ff3671c
 
 pkgname = freellmapi-desktop-bin
