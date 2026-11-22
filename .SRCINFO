@@ -3,21 +3,21 @@ pkgbase = rui-bin
 	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/j4y-w4lk3r/rui
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
 	license = MIT
+	depends = glibc
 	optdepends = chromium: --capture mode (records router web UI traffic) needs a Chrome/Chromium binary
 	optdepends = xdg-utils: ergonomic clipboard support for `y`/`Y` device-copy keys
-	depends = glibc
+	provides = rui
 	conflicts = rui
 	conflicts = rui-git
-	provides = rui
-	arch = aarch64
 	source_aarch64 = rui-bin_0.1.8_aarch64.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.8/rui_0.1.8_Linux_arm64.tar.gz
 	sha256sums_aarch64 = 0ec7255887cee9589c2243b005ab638ea41e267feb6672fd45e6969c82fb3bbe
-	arch = armv7h
 	source_armv7h = rui-bin_0.1.8_armv7h.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.8/rui_0.1.8_Linux_armv7.tar.gz
 	sha256sums_armv7h = fdf78b5d8f54a83cef61d840eedacbab77efd84c85cf6a19eba63e5262f84162
-	arch = x86_64
 	source_x86_64 = rui-bin_0.1.8_x86_64.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.8/rui_0.1.8_Linux_x86_64.tar.gz
 	sha256sums_x86_64 = 91940015356dfb6ad43d05d618e8f1fb5ce661f0e05d1ea345b83e9d87ce660e
-	
+
 pkgname = rui-bin
