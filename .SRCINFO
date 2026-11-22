@@ -1,0 +1,16 @@
+pkgbase = sshattrick
+	pkgdesc = A multiplayer terminal version of the Hattrick football-management game, playable over SSH
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ricott1/sshattrick
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = sshattrick-0.1.1.tar.gz::https://github.com/ricott1/sshattrick/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 417590e667bce9bafec30d4d496a68a8d5ba1e17eee9445fcd73914bea2e2b4e
+
+pkgname = sshattrick
