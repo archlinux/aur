@@ -1,0 +1,19 @@
+pkgbase = ilmari-bin
+	pkgdesc = A tmux popup dashboard for monitoring AI coding agents
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/bnomei/ilmari
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ilmari
+	conflicts = ilmari
+	options = !debug
+	source = ilmari-bin-0.11.0-LICENSE::https://raw.githubusercontent.com/bnomei/ilmari/v0.11.0/LICENSE
+	sha256sums = 077d138387dd107179fec3cefab95ced64f27c20845d014488fc542c4093c962
+	source_x86_64 = ilmari-bin-0.11.0-x86_64.tar.gz::https://github.com/bnomei/ilmari/releases/download/v0.11.0/ilmari-v0.11.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = dd70295018fbf9078b06337e0dac27a8d244f86841cc5a98607b01059ef444dd
+	source_aarch64 = ilmari-bin-0.11.0-aarch64.tar.gz::https://github.com/bnomei/ilmari/releases/download/v0.11.0/ilmari-v0.11.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = b0bb47b4bad999e227ae57fe4e5467acf88183d8dc5b41de2a609c8f22250866
+
+pkgname = ilmari-bin
