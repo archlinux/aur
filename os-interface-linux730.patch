@@ -1,0 +1,16 @@
+diff -aur a/kernel-open/nvidia/os-interface.c b/kernel-open/nvidia/os-interface.c
+--- a/kernel-open/nvidia/os-interface.c	2026-07-28 22:45:23.000000000 -0400
++++ b/kernel-open/nvidia/os-interface.c	2026-11-22 14:56:18.328466587 -0500
+@@ -2817,7 +2817,12 @@
+ 
+ void* NV_API_CALL os_dmem_cgroup_register_region(NvU64 size, const char *name)
+ {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 3, 0)
++    void *region = dmem_cgroup_register_region(
++        &(struct dmem_cgroup_init){ .size = size }, "%s", name);
++#else
+     void *region = dmem_cgroup_register_region(size, name);
++#endif
+     if (IS_ERR(region))
+     {
+         return NULL;
