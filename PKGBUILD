@@ -1,6 +1,6 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 pkgname=libunarr
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/selmf/unarr"
@@ -23,4 +23,4 @@ package() {
   cd "${srcdir}/unarr-${pkgver}"
   DESTDIR=$pkgdir ninja -C build install
 }
-sha256sums=('051a2f4ce66949e42924e5af02b721d81722dfa09b69df0f473719f9b8e946aa')
+sha256sums=('ce00fee4dd1c8c3429c3e97c2f274ba69341077c674368714fd5d81f84bae3b4')
