@@ -1,19 +1,19 @@
 pkgname=privli-bin
-pkgver=3.1.0
+pkgver=3.1.2
 pkgrel=1
-pkgdesc='Privacy-focused nearby file sharing'
+pkgdesc='Private AirDrop-style file and clipboard sharing with iPhone, Android, Mac and Windows (Quick Share compatible)'
 arch=('x86_64')
-url='https://github.com/Local1stDotApp/paste_share_open_source'
+url='https://nearby.local1st.app'
 license=('custom')
 options=('!debug' '!strip')
 depends=('gtk3' 'glib2' 'wayland' 'curl' 'systemd-libs' 'sdbus-cpp')
 optdepends=('nautilus-python: Send with Privli in the Files context menu')
 source=(
-  'Privli-3.1.0-linux-x86_64.tar.gz::https://github.com/Local1stDotApp/paste_share_open_source/releases/download/latest/Privli-3.1.0-linux-x86_64.tar.gz'
+  'Privli-3.1.2-linux-x86_64.tar.gz::https://github.com/Local1stDotApp/paste_share_open_source/releases/download/latest/Privli-3.1.2-linux-x86_64.tar.gz'
   'LICENSE.privli'
 )
 sha256sums=(
-  '960d1a55b941cea829109296378b6edb2dced7dfe2da6997825d8b9936cc6753'
+  '0d627272a9ad3c6cf1169514060c48319854c59bcf830fe2456327036540114b'
   'SKIP'
 )
 
@@ -22,7 +22,7 @@ package() {
 
   rm -rf "${bundle_dir}"
   mkdir -p "${bundle_dir}"
-  bsdtar -xpf "${srcdir}/Privli-3.1.0-linux-x86_64.tar.gz" -C "${bundle_dir}"
+  bsdtar -xpf "${srcdir}/Privli-3.1.2-linux-x86_64.tar.gz" -C "${bundle_dir}"
 
   install -dm755 "${pkgdir}/opt/privli"
   cp -a "${bundle_dir}/." "${pkgdir}/opt/privli/"
