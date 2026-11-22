@@ -1,6 +1,6 @@
 # Maintainer: mrfrok
 pkgname=anirust-bin
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Desktop client for Anixart with an mpv player (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,9 @@ source=("https://raw.githubusercontent.com/mrFrok/AniRust/v$pkgver/packaging/lin
         "https://raw.githubusercontent.com/mrFrok/AniRust/v$pkgver/packaging/linux/$_app_id.metainfo.xml")
 source_x86_64=("$url/releases/download/v$pkgver/anirust-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/anirust-$pkgver-linux-aarch64.tar.gz")
-sha256sums=('5ec162600363123a4fa2b624308b4ef6baa7e6e5457671daa7d844c6360d1f1c' '45e4d846b2e68d93b5ea909b1bd01519627ebdf25ac2cae8b87f6db33381dba6')
-sha256sums_x86_64=('4e7467f62764171eac66019a9ed75db95d50bd17f00ed1f07970d30056c5a80d')
-sha256sums_aarch64=('55b10c6f9499351cec18d66dc672ca299a485f2a2ebea15aa0fa5586a46ed03f')
+sha256sums=('5ec162600363123a4fa2b624308b4ef6baa7e6e5457671daa7d844c6360d1f1c' 'ba9f812ddcde8a1cb09fce69b145faed70f6baebaacbc040d9fee63f64721575')
+sha256sums_x86_64=('0550b875f9ddac8be5ca3143b8949a97dfe81331fbd8d3cea553297a8f2512e9')
+sha256sums_aarch64=('1931200b3cd605692a150be278fb1132a15aa50e1c305b4198e1e6cc20497ac7')
 
 package() {
   cd "anirust-$pkgver-linux-$CARCH"

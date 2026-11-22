@@ -1,6 +1,6 @@
 pkgbase = anirust-bin
 	pkgdesc = Desktop client for Anixart with an mpv player (prebuilt)
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/mrFrok/AniRust
 	arch = x86_64
@@ -20,17 +20,17 @@ pkgbase = anirust-bin
 	optdepends = xdg-desktop-portal: desktop file chooser
 	optdepends = gnome-keyring: store the Anixart session token
 	optdepends = vapoursynth: frame generation on x86_64
-	provides = anirust=1.1.2
+	provides = anirust=1.1.3
 	conflicts = anirust
 	options = !strip
 	options = !debug
-	source = https://raw.githubusercontent.com/mrFrok/AniRust/v1.1.2/packaging/linux/io.github.mrfrok.AniRust.desktop
-	source = https://raw.githubusercontent.com/mrFrok/AniRust/v1.1.2/packaging/linux/io.github.mrfrok.AniRust.metainfo.xml
+	source = https://raw.githubusercontent.com/mrFrok/AniRust/v1.1.3/packaging/linux/io.github.mrfrok.AniRust.desktop
+	source = https://raw.githubusercontent.com/mrFrok/AniRust/v1.1.3/packaging/linux/io.github.mrfrok.AniRust.metainfo.xml
 	sha256sums = 5ec162600363123a4fa2b624308b4ef6baa7e6e5457671daa7d844c6360d1f1c
-	sha256sums = 45e4d846b2e68d93b5ea909b1bd01519627ebdf25ac2cae8b87f6db33381dba6
-	source_x86_64 = https://github.com/mrFrok/AniRust/releases/download/v1.1.2/anirust-1.1.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 4e7467f62764171eac66019a9ed75db95d50bd17f00ed1f07970d30056c5a80d
-	source_aarch64 = https://github.com/mrFrok/AniRust/releases/download/v1.1.2/anirust-1.1.2-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 55b10c6f9499351cec18d66dc672ca299a485f2a2ebea15aa0fa5586a46ed03f
+	sha256sums = ba9f812ddcde8a1cb09fce69b145faed70f6baebaacbc040d9fee63f64721575
+	source_x86_64 = https://github.com/mrFrok/AniRust/releases/download/v1.1.3/anirust-1.1.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 0550b875f9ddac8be5ca3143b8949a97dfe81331fbd8d3cea553297a8f2512e9
+	source_aarch64 = https://github.com/mrFrok/AniRust/releases/download/v1.1.3/anirust-1.1.3-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 1931200b3cd605692a150be278fb1132a15aa50e1c305b4198e1e6cc20497ac7
 
 pkgname = anirust-bin
