@@ -1,9 +1,11 @@
 [Desktop Entry]
 Type=Application
 Name=Metrolist
-Comment=YouTube Music client for desktop
-Exec=metrolist
-Icon=metrolist
+Exec=env "/opt/metrolist-desktop-bin/metrolist.AppImage" %u
+Icon=/home/hussien/.local/share/icons/hicolor/512x512/apps/Metrolist.png
+StartupWMClass=Metrolist
+Comment=Metrolist music client
+Categories=AudioVideo;Player;
 Terminal=false
-Categories=AudioVideo;Audio;Player;
-StartupNotify=true
+MimeType=x-scheme-handler/metrolist;x-scheme-handler/metrolist-auth;
+X-Metrolist-AppImage=true
