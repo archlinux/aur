@@ -1,0 +1,20 @@
+pkgbase = rex-tui-bin
+	pkgdesc = A TUI for managing Incomes
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/TheRustyPickle/Rex
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = wayland
+	provides = rex-tui
+	conflicts = rex-tui
+	options = !debug
+	source_x86_64 = rex-tui-bin-0.4.0-x86_64.tar.xz::https://github.com/TheRustyPickle/Rex/releases/download/v0.4.0/rex-tui-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 326b96c244d11cd2e616ee10b47e1af877e1f3baad94d61ebc1a2a7c9b7d092c
+	source_aarch64 = rex-tui-bin-0.4.0-aarch64.tar.xz::https://github.com/TheRustyPickle/Rex/releases/download/v0.4.0/rex-tui-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = c7de57d81d7b03d5699163182abd0d592af75311f43893860b54d1bfc9db3245
+
+pkgname = rex-tui-bin
