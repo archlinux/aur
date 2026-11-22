@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Performant and expressive shell"
 
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md" "SPECIFICATION-${pkgver}.adoc::${_ghurlraw}/docs/SPECIFICATION.adoc")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums=('a62faa4c2eae1f204fb66adb2e3a502ca21ed4bc4a9cb0fc776cf1f93a31c5bb'
-            'd4ccb01624a16b2d9a97f36d7e6ab54b25f52dee30dac101490634e83002f6af')
-sha256sums_x86_64=('4da44415c64c1f4bc10cd57c6a617c721bfa13173e719dcad1d44c41cead550f')
-sha256sums_aarch64=('191729e83a1f424194174dedc17ebe87d924975fca9dccff35a41e7c31b939e9')
+sha256sums=('6119158375bcb39a39f76b9f0f57bc78bafcabec2baf7ccbc630ce420b91aa1a'
+            '46139ac971e64e4a0f68d229f667df9269c07d49cf9247c99fd15d58c269cff6')
+sha256sums_x86_64=('2d63a22e1d6436786bdcc8eceb2fb80fcf021698a2574cf3dc78b223756ab0ac')
+sha256sums_aarch64=('49686ea77adee8049f93f00f2efc757836a8f3ac08d0f77ca2941d9459cb5c13')
 
 
 prepare() {
