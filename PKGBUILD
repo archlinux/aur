@@ -70,16 +70,15 @@ package() {
   _opam_env
   local switch="${OPAMROOT}/${OPAMSWITCH}" stage="${srcdir}/stage" slashes
   PATH="${switch}/bin:${PATH}" "${switch}/bin/dune" install --prefix /usr \
-    --destdir "${stage}" --docdir /usr/share/doc --mandir /usr/share/man \
-    liquidsoap-lang liquidsoap
+    --destdir "${stage}" --mandir /usr/share/man liquidsoap-lang liquidsoap
 
   install -Dm755 "${stage}/usr/bin/liquidsoap" -t "${pkgdir}/usr/bin/"
-  install -d "${pkgdir}/usr/share/liquidsoap" "${pkgdir}/usr/share/doc"
+  install -d "${pkgdir}/usr/share/liquidsoap"
   cp -r "${stage}/usr/share/liquidsoap-lang/libs" "${pkgdir}/usr/share/liquidsoap/"
-  cp -r "${stage}/usr/share/doc/liquidsoap" "${pkgdir}/usr/share/doc/"
   install -Dm644 "${stage}/usr/share/man/man1/liquidsoap.1" -t "${pkgdir}/usr/share/man/man1/"
   install -Dm644 "${stage}/usr/share/bash_completion/completions/liquidsoap" \
     -t "${pkgdir}/usr/share/bash-completion/completions/"
+  install -Dm644 README.md CHANGES.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
   install -Dm644 "${srcdir}/liquidsoap.sysusers" "${pkgdir}/usr/lib/sysusers.d/liquidsoap.conf"
   install -Dm644 "${srcdir}/liquidsoap.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/liquidsoap.conf"
 
