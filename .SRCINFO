@@ -34,6 +34,8 @@ pkgbase = proton-drive-for-linux-git
 	conflicts = proton-drive-for-linux-bin
 	options = !lto
 	source = proton-drive-for-linux-git::git+https://github.com/narrrl/proton-drive-linux.git
+	source = basemap-v1.pmtiles::https://github.com/narrrl/proton-rs/releases/download/basemap-v1/basemap-v1.pmtiles
 	sha256sums = SKIP
+	sha256sums = ce9acab1b7ed7f15b23e2365b1b6a580db79f4bc4421851ee673eff4c920d280
 
 pkgname = proton-drive-for-linux-git

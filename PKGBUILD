@@ -25,8 +25,10 @@ conflicts=('proton-drive-linux' 'proton-drive-for-linux' 'proton-drive-for-linux
 options=('!lto')
 # Stops the running daemon before removal, so the mount stops mirroring deletes.
 install=proton-drive.install
-source=("$pkgname::git+$_repo.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+$_repo.git"
+        "basemap-v1.pmtiles::https://github.com/narrrl/proton-rs/releases/download/basemap-v1/basemap-v1.pmtiles")
+sha256sums=('SKIP'
+            'ce9acab1b7ed7f15b23e2365b1b6a580db79f4bc4421851ee673eff4c920d280')
 
 pkgver() {
   cd "$pkgname"
@@ -80,6 +82,10 @@ package() {
 
   install -Dm644 "packaging/io.narl.proton-drive-linux.policy" \
     "$pkgdir/usr/share/polkit-1/actions/io.narl.proton-drive-linux.policy"
+
+  # The offline Places basemap.
+  install -Dm644 "$srcdir/basemap-v1.pmtiles" \
+    "$pkgdir/usr/share/proton-drive-linux/basemap-v1.pmtiles"
 
   # Translations: compiled from po/ into /usr/share/locale.
   po/build.sh "$pkgdir/usr/share/locale"
