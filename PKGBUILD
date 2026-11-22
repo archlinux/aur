@@ -2,7 +2,7 @@
 
 pkgname=mailcraft-bin
 _pkgname=mailcraft
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Open-source native mail, calendar, contacts and tasks app, Outlook alternative (binary release)'
 arch=('x86_64' 'aarch64')
@@ -65,15 +65,21 @@ depends=(
   'vulkan-icd-loader'
   'wayland'
 )
+# An attachment opens with gio open, once gio info has told its kind
+# from the shared MIME database (glib2 does not depend on it). kde-open
+# is tried only where gio is missing, which kde-cli-tools rules out
+# (qt6-base needs glib2). xdg-open only shows the data folder.
 optdepends=(
+  'glib2: open attachments with gio'
   'gnupg: OpenPGP keys kept in GnuPG'
   'opensc: S/MIME keys on smart cards and USB tokens (PKCS#11)'
   'org.freedesktop.secrets: remember sign-ins between sessions (e.g. gnome-keyring)'
   'pdfcraft: preview PDF attachments (off by default)'
   'photocraft: preview image attachments (off by default)'
+  'shared-mime-info: tell attachment kinds apart, needed to open them'
   'vulkan-driver: Vulkan rendering (falls back to OpenGL/EGL without one)'
   'xdg-desktop-portal: native open and save dialogs'
-  'xdg-utils: open attachments with xdg-open'
+  'xdg-utils: show the data folder (File > Info) with xdg-open'
 )
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -97,8 +103,8 @@ sha256sums=('24cae84af9daaafda42a085ebdbbfcd33e14b713b6449e312a018e32c2d3e07a'
             '56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             'cfc1cc505827f4c23eedc297975a0fd038268d41293f389dd8ff3b574aefab19')
-sha256sums_x86_64=('d67a5beeedc24cfe07c8f8184735810c5e2d3e565118121448aec61e40012f10')
-sha256sums_aarch64=('47f74f7bf98958fb657fbca6f695db7781b33bd750cbc09ccfa369c8c4815b74')
+sha256sums_x86_64=('d9f9321d6dfe636fb7ad0758517311a416e8906d370d4fbbdefb0cd268fd5081')
+sha256sums_aarch64=('1b0bf8d9aef8e92460b83e46e5dbd39ff8aedb4d18a2ccd583f0bd99e6079413')
 
 package() {
   cd "$_pkgname-$pkgver-linux-$CARCH"
