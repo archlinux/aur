@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
 	pkgver = 158.0.8127.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
 	license = BSD-3-Clause
@@ -29,7 +29,6 @@ pkgbase = ungoogled-chromium
 	depends = at-spi2-core
 	depends = cairo
 	depends = dbus
-	depends = desktop-file-utils
 	depends = expat
 	depends = glib2
 	depends = glibc
