@@ -1,7 +1,7 @@
 pkgbase = panda-re
 	pkgdesc = Platform for Architecture-Neutral Dynamic Analysis
 	pkgver = 1.8.85
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/panda-re/panda
 	arch = x86_64
 	license = GPL-2.0-only
@@ -21,7 +21,6 @@ pkgbase = panda-re
 	makedepends = protobuf
 	makedepends = protobuf-c
 	makedepends = z3
-	makedepends = libdwarf
 	makedepends = rapidjson
 	makedepends = libnfs
 	makedepends = wireshark-cli
@@ -124,6 +123,6 @@ pkgbase = panda-re
 	source = panda-re-1.8.85.tar.gz::https://github.com/panda-re/panda/archive/refs/tags/v1.8.85.tar.gz
 	source = panda-arch.patch
 	sha256sums = 0d5eb59a900a792de250297dda4cc6e900b6a73c425915aa92c625bcfde8427a
-	sha256sums = a262f73d264553a54a0ee18ddb623acc9d714d33656500a240118047565dd3f3
+	sha256sums = c6f187cb57ec611031e19af64dd0fc055561231da83a6f8e3c55d08519219cf9
 
 pkgname = panda-re

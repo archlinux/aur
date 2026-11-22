@@ -267,20 +267,20 @@ index 6a206dc..a679e7c 100644
  #include <nettle/ripemd160.h>
  
  typedef void (*qcrypto_nettle_init)(void *ctx);
-diff --git a/panda/plugins/config.llvm.panda b/panda/plugins/config.llvm.panda
-index b6ca567..4102f10 100644
---- a/panda/plugins/config.llvm.panda
-+++ b/panda/plugins/config.llvm.panda
-@@ -1,7 +1,7 @@
- file_taint
- ida_taint2
--pri_taint
--pri_trace
-+# pri_taint depends on the disabled dwarf2 plugin
-+# pri_trace depends on the disabled pri_taint plugin
- serial_taint
- taint2
- tainted_branch
+diff --git a/panda/plugins/dwarf2/dwarf2.proto b/panda/plugins/dwarf2/dwarf2.proto
+--- a/panda/plugins/dwarf2/dwarf2.proto
++++ b/panda/plugins/dwarf2/dwarf2.proto
+@@ -1,2 +1,10 @@
++message DwarfCall {
++    required string file_callee = 1;
++    required string function_name_callee = 2;
++    required uint64 line_number_callee = 3;
++    required string file_caller = 4;
++    required uint64 line_number_caller = 5;
++}
++
+ optional DwarfCall dwarf2_call = 64;
+ optional DwarfCall dwarf2_ret = 65;
 diff --git a/panda/plugins/config.panda b/panda/plugins/config.panda
 index d6e9cf8..4f699e1 100644
 --- a/panda/plugins/config.panda
@@ -290,10 +290,9 @@ index d6e9cf8..4f699e1 100644
  pc_search
  pri
 -pri_dwarf
--dwarf2
--pri_simple
 +# pri_dwarf uses libdwarf APIs removed after libdwarf 0.8
-+# dwarf2 depends on the disabled pri_dwarf plugin
+ dwarf2
+-pri_simple
 +# pri_simple depends on the disabled pri_dwarf plugin
  proc_start_linux
  proc_trace
@@ -427,48 +426,6 @@ index 3938db9..6f44074 100644
      return;
  }
 -#endif
-diff --git a/panda/plugins/pri_dwarf/pri_dwarf.cpp b/panda/plugins/pri_dwarf/pri_dwarf.cpp
-index 645dcb7..bde0ed0 100644
---- a/panda/plugins/pri_dwarf/pri_dwarf.cpp
-+++ b/panda/plugins/pri_dwarf/pri_dwarf.cpp
-@@ -71,8 +71,8 @@ void on_global_livevar_iter(CPUState *cpu, target_ulong pc, liveVarCB f, void *a
- #include <sys/stat.h>
- #include <sys/types.h>
- #include <fcntl.h>
--#include <libdwarf/dwarf.h>
--#include <libdwarf/libdwarf.h>
-+#include <dwarf.h>
-+#include <libdwarf.h>
- 
- }
- 
-diff --git a/panda/plugins/pri_dwarf/pri_dwarf_types.h b/panda/plugins/pri_dwarf/pri_dwarf_types.h
-index 983d42a..d2b5015 100644
---- a/panda/plugins/pri_dwarf/pri_dwarf_types.h
-+++ b/panda/plugins/pri_dwarf/pri_dwarf_types.h
-@@ -1,5 +1,5 @@
- 
--#include <libdwarf/libdwarf.h>
-+#include <libdwarf.h>
- 
- typedef void (*dwarfTypeCB)(target_ulong buf, LocType loc_t, target_ulong buf_len, const char *astnodename);
- 
-diff --git a/panda/plugins/pri_dwarf/pri_dwarf_util.h b/panda/plugins/pri_dwarf/pri_dwarf_util.h
-index 1c8d66b..c6c3067 100644
---- a/panda/plugins/pri_dwarf/pri_dwarf_util.h
-+++ b/panda/plugins/pri_dwarf/pri_dwarf_util.h
-@@ -2,9 +2,9 @@
- #ifndef __PRI_DWARF_UTIL_H
- #define __PRI_DWARF_UTIL_H
- 
--#include <libdwarf/libdwarf.h>
-+#include <libdwarf.h>
- #include "panda/plugin.h"
--#include <libdwarf/dwarf.h>
-+#include <dwarf.h>
- #include "pri/pri_types.h"
- 
- 
 diff --git a/panda/plugins/taint2/taint_ops.cpp b/panda/plugins/taint2/taint_ops.cpp
 index 4f6e017..ac6f01e 100644
 --- a/panda/plugins/taint2/taint_ops.cpp

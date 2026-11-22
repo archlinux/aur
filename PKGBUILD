@@ -2,7 +2,7 @@
 
 pkgname=panda-re
 pkgver=1.8.85
-pkgrel=1
+pkgrel=2
 pkgdesc='Platform for Architecture-Neutral Dynamic Analysis'
 arch=('x86_64')
 url='https://github.com/panda-re/panda'
@@ -18,7 +18,7 @@ depends=('glib2' 'zlib' 'libpng' 'pixman' 'ncurses' 'gnutls' 'nettle'
          'pango' 'sdl2' 'snappy' 'util-linux-libs' 'vte3')
 makedepends=('cmake' 'ninja' 'pkgconf' 'python' 'cargo' 'chrpath'
              'llvm14-bin' 'glib2' 'pixman' 'libslirp' 'dtc' 'capstone'
-             'protobuf' 'protobuf-c' 'z3' 'libdwarf' 'rapidjson' 'libnfs'
+             'protobuf' 'protobuf-c' 'z3' 'rapidjson' 'libnfs'
              'wireshark-cli' 'libarchive' 'openssl' 'libaio' 'libiscsi'
              'spice' 'libcacard' 'usbredir' 'brltty' 'rdma-core' 'mesa'
              'libepoxy' 'libjpeg-turbo' 'libssh2' 'libseccomp' 'vde2'
@@ -30,7 +30,7 @@ options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/panda-re/panda/archive/refs/tags/v${pkgver}.tar.gz"
         'panda-arch.patch')
 sha256sums=('0d5eb59a900a792de250297dda4cc6e900b6a73c425915aa92c625bcfde8427a'
-            'a262f73d264553a54a0ee18ddb623acc9d714d33656500a240118047565dd3f3')
+            'c6f187cb57ec611031e19af64dd0fc055561231da83a6f8e3c55d08519219cf9')
 
 _targets='x86_64-softmmu,i386-softmmu,arm-softmmu,aarch64-softmmu,ppc-softmmu,mips-softmmu,mipsel-softmmu,mips64-softmmu,mips64el-softmmu'
 
@@ -59,7 +59,7 @@ build() {
         --prefix=/usr \
         --enable-llvm \
         --with-llvm=/usr/lib/llvm14 \
-        --extra-cflags='-std=gnu11 -DLIBNFS_API_V2 -I/usr/include/libdwarf-2 -Wno-error' \
+        --extra-cflags='-std=gnu11 -DLIBNFS_API_V2 -Wno-error' \
         --extra-cxxflags='-Wno-error' \
         --disable-docs
     make
@@ -78,6 +78,8 @@ package() {
     rm -f "$pkgdir/usr/bin/qemu-img" "$pkgdir/usr/bin/qemu-io" \
         "$pkgdir/usr/bin/qemu-nbd"
     find "$pkgdir/usr/share/locale" -type f -name 'qemu.mo' -delete 2>/dev/null || true
+
+    find "$pkgdir/usr/lib/panda" -type f -name '*_dso_info_*.so' -exec chrpath -d {} +
 
     install -Dm644 "$srcdir/panda-${pkgver}/COPYING" \
         "$pkgdir/usr/share/licenses/$pkgname/COPYING"
