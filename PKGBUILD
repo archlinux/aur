@@ -11,6 +11,7 @@ license=('GPL-2.0-or-later')
 depends=('curl' 'ffmpeg' 'glibc' 'libsamplerate' 'openssl')
 makedepends=('git' 'opam' 'pandoc-cli' 'unzip')
 optdepends=('bubblewrap: sandbox for external processes')
+options=('!lto')
 install=liquidsoap.install
 _ver=${pkgver/rc/-rc}
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/savonet/liquidsoap/archive/refs/tags/v${_ver}.tar.gz"
