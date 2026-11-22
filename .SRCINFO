@@ -1,0 +1,16 @@
+pkgbase = git-time-machine-tui
+	pkgdesc = Visual Git reflog TUI for undoing Git mistakes
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/dinakars777/git-time-machine
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = git-time-machine-tui-0.4.0.tar.gz::https://github.com/dinakars777/git-time-machine/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 077f81e24c7c698474957188744c2347da42b98094b830a1faa85df735014c64
+
+pkgname = git-time-machine-tui
