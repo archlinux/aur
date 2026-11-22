@@ -1,7 +1,7 @@
 # Maintainer: asafelobotomy
 # Source build of a tagged release. The release workflow's `aur` job fills pkgver and the checksum.
 pkgname=uqview
-pkgver=0.1.3
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Fast image viewer for uQ: view, mark up and set as wallpaper'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Keep !lto: makepkg's LTO flags make the cxx-qt C++ objects unreadable to the linker
 # (undefined reference to cxx_qt_init_crate_*), as in uq's PKGBUILD.
 options=(!lto)
-sha256sums=('d8fc8ac6a9b9d2f9bc9238aab50b39913e83054b6ae4de8d1be28d27f0198be2')
+sha256sums=('93ec2230272d4429f515786d53978c268ce8a825fff8b8d869adfafdc610bf2e')
 
 prepare() {
   cd "$pkgname-$pkgver"
