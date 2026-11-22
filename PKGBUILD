@@ -14,7 +14,7 @@
 
 _pkgname="waterfox"
 pkgname="$_pkgname"
-pkgver=6.7.8
+pkgver=6.7.9
 pkgrel=1
 pkgdesc="A customizable, privacy‑focused web browser"
 url="https://github.com/BrowserWorks/waterfox"
@@ -112,8 +112,8 @@ source=(
   "$_pkgsrc-locales.$_pkgext"::"https://github.com/BrowserWorks/l10n/archive/$_commit_l10n.$_pkgext"
   "$_pkgname.desktop"
 )
-sha256sums=('e7f4f23d79f6954ce75f1551a8fcf4fe47afa2ca622f8a0e5f7fcf03e8174797'
-  'e91f923f4d3c9a18e29ef04582cdd1ea5aa23c15e8130cdef2901f5f6bf94ea9'
+sha256sums=('eacacad4b78f4ec825428c8b948bf39a114c6b0e1291600e689e57d5b4065353'
+  'a83def09fc8f367676bf7b2fcef4e49d2fb099238e79cf8bdaa9583103fca743'
   '9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286')
 
 _calc_parallel_jobs() {
