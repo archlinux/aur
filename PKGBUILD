@@ -1,6 +1,6 @@
 # Maintainer: YOUNES-2-wq <YOUNES-2-wq@users.noreply.github.com>
 pkgname=cachymonitor
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="Gaming-oriented system monitor: FPS, 1% low, frametime, CPU/GPU/RAM/VRAM via MangoHud"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('mangohud: in-game stats (FPS, 1% low, frametime)'
             'yay: in-app updates (or paru)'
             'polkit: password prompt for in-app updates')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('425d6aedf98ffa4b7b0286dc9642175518a777734d54486505fdb904dcae8ba5')
+sha256sums=('ec88dacce3a883cd7929d2e687415dc8c559dc6ea7044cd4e738c2bd17a8af0a')
 
 package() {
     cd "$srcdir/$pkgname-linux-$pkgver"
@@ -53,6 +53,9 @@ EOF
     # Fiche AppStream (descriptions et captures dans les logitheques, ex. CachyOS Package Installer)
     install -Dm644 packaging/aur/io.github.YOUNES_2_wq.CachyMonitor.metainfo.xml \
         "$pkgdir/usr/share/metainfo/io.github.YOUNES_2_wq.CachyMonitor.metainfo.xml"
+    # Meme fiche au format catalogue : le CachyOS Package Installer ne lit que celui-la
+    install -Dm644 packaging/aur/io.github.YOUNES_2_wq.CachyMonitor.catalog.xml \
+        "$pkgdir/usr/share/swcatalog/xml/io.github.YOUNES_2_wq.CachyMonitor.xml"
 
     # Licence
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
