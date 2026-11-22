@@ -1,6 +1,6 @@
 pkgbase = waymobar
 	pkgdesc = Wayland status bar written and configured in Haskell, with rivermonad widgets
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/prietus/waymobar
 	arch = x86_64
@@ -19,7 +19,9 @@ pkgbase = waymobar
 	optdepends = ttf-nerd-fonts-symbols: icons
 	optdepends = ttf-material-symbols-variable: icons (the ones of rivermonad-dotfiles)
 	optdepends = libnotify: notifications when the configuration fails to compile
-	source = waymobar-0.2.0.tar.gz::https://github.com/prietus/waymobar/archive/v0.2.0.tar.gz
-	sha256sums = 201d0fe9b91a8523f1d325b7ab6eb0e81680cec166259b4575de785a0e30e301
+	optdepends = geoclue: locate the weather without a fixed place
+	optdepends = power-profiles-daemon: the power profile widget
+	source = waymobar-0.3.0.tar.gz::https://github.com/prietus/waymobar/archive/v0.3.0.tar.gz
+	sha256sums = db26f477255cdfdaff1cae424adc20c0c27b5143546dcd35a66aa486bc0f379e
 
 pkgname = waymobar

@@ -1,7 +1,7 @@
 # Maintainer: Carlos Prieto Ortiz <prietus@live.com>
 
 pkgname=waymobar
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Wayland status bar written and configured in Haskell, with rivermonad widgets'
 url='https://github.com/prietus/waymobar'
@@ -14,9 +14,11 @@ optdepends=('rivermonad: workspaces, layout and window title widgets'
             'curl: weather and calendar widgets'
             'ttf-nerd-fonts-symbols: icons'
             'ttf-material-symbols-variable: icons (the ones of rivermonad-dotfiles)'
-            'libnotify: notifications when the configuration fails to compile')
+            'libnotify: notifications when the configuration fails to compile'
+            'geoclue: locate the weather without a fixed place'
+            'power-profiles-daemon: the power profile widget')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('201d0fe9b91a8523f1d325b7ab6eb0e81680cec166259b4575de785a0e30e301')
+sha256sums=('db26f477255cdfdaff1cae424adc20c0c27b5143546dcd35a66aa486bc0f379e')
 
 build() {
   cd $pkgname-$pkgver
