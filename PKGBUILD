@@ -1,7 +1,7 @@
 # Maintainer: Martin Alstrup <martin@rcz.dk>
 pkgname=triforce-oot
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Triforce build tools"
 arch=('x86_64')
 url="https://triforceproject.com"
@@ -29,19 +29,10 @@ source=("triforce::git+https://git.triforceproject.com/triforce/source.git#tag=v
         "VulkanMemoryAllocator-${_vma}.tar.gz::https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/archive/refs/tags/v${_vma}.tar.gz"
         'triforce-oot'
         'triforce-oot.desktop')
-sha256sums=('51469c806703506842800e5f123355db2712f4b58ded21ca2dd9c56c220fcf35'
+sha256sums=('71f734e8651d0d7b33220948b2281d26579c334a3251b26d7f135826b47b2c51'
             'c4f6bbe6b5a45c2eb610ca9d231158e313086d5b1a40c9922cb42b597419b14e'
             '77140ae7e5ba3a598f6b3a9be69326a34184d3ae35c85ed263ad3fd4066df0ba'
             '4f37d03357611b1774964bca33950e7f1aa2f99604c9c226196b71fc60dc3a6e')
-
-prepare() {
-  cd "$srcdir/triforce"
-  # v0.6.0: host/nvn_native.c creates its unnamed held-submits event with CreateEventW, which the Linux Win32 shim
-  # (host/posix/windows.h) does not have, so the game's link fails ("undefined symbol: CreateEventW"). Unnamed, the A
-  # call makes the same event.
-  sed -i 's/hold_event = CreateEventW(NULL, FALSE, FALSE, NULL);/hold_event = CreateEventA(NULL, FALSE, FALSE, NULL);/' host/nvn_native.c
-  ! grep -rq 'CreateEventW' host gpu
-}
 
 build() {
   cd "$srcdir/triforce"
