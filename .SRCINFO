@@ -1,0 +1,21 @@
+pkgbase = invoicepilot-bin
+	pkgdesc = A TUI for automating invoice and bank statement fetching from Gmail to Google Drive
+	pkgver = 0.1.24
+	pkgrel = 1
+	url = https://github.com/adolfousier/invoicepilot
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = invoicepilot
+	conflicts = invoicepilot
+	options = !debug
+	source = invoicepilot-bin-0.1.24-LICENSE::https://raw.githubusercontent.com/adolfousier/invoicepilot/v0.1.24/LICENSE
+	sha256sums = 5a07370e7acf7e4d4030e84f86a90b07b83f00e3f656c8742663de057c250586
+	source_x86_64 = invoicepilot-bin-0.1.24-x86_64.tar.gz::https://github.com/adolfousier/invoicepilot/releases/download/v0.1.24/invoicepilot-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = eb3aa480a0ecec7584c37ac62924490544e6aa998cc60041775193f79e22294c
+	source_aarch64 = invoicepilot-bin-0.1.24-aarch64.tar.gz::https://github.com/adolfousier/invoicepilot/releases/download/v0.1.24/invoicepilot-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 139584f13047c61a79022e156202505320f9bca93223ae19c0426a21b7f8fa05
+
+pkgname = invoicepilot-bin
