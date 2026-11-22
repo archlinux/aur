@@ -1,0 +1,16 @@
+pkgbase = termcourse
+	pkgdesc = Terminal UI client for browsing and posting to Discourse forums
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/merefield/termcourse
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.27.4
+	depends = glibc
+	optdepends = chafa: colored symbol image rendering fallback
+	optdepends = viu: secondary image rendering fallback
+	source = termcourse-0.4.0.tar.gz::https://github.com/merefield/termcourse/archive/v0.4.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = termcourse
