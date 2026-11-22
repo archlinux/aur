@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=onair
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR"
 arch=('x86_64' 'aarch64')
@@ -24,6 +24,8 @@ optdepends=('codec2: FreeDV and M17 speech (dlopened at run time, searched in /u
             'mbelib-neo: the same voice codecs from the mbelib-neo fork (dlopened at run time; use one of the two)'
             'hamlib: rig control (CAT) over serial or network for transceivers (dlopened at run time)'
             'zenity: file dialogs'
+            'ardopcf-bin: external ARDOP TNC for Winlink and ARDOP HF sessions (run it separately; OnAir talks to its 8515/8516 ports)'
+            'vara-hf: external VARA HF modem for Winlink HF sessions, run under Wine'
             'soapyrtlsdr: RTL-SDR support through SoapySDR'
             'soapyairspy: Airspy support through SoapySDR'
             'soapysdrplay: SDRplay support through SoapySDR'
@@ -44,10 +46,12 @@ optdepends=('codec2: FreeDV and M17 speech (dlopened at run time, searched in /u
             'libiio: native IIO/PlutoSDR driver (dlopened at run time)'
             'libuhd: native USRP/UHD driver (dlopened at run time)'
             'libsdrplay: native SDRplay driver (dlopened at run time)'
+            'limesuite: native LimeSDR / Lime radios driver (dlopened at run time)'
+            'airspyhf-git: native Airspy HF+ driver (dlopened at run time; AUR only, no stable package)'
             'libsecret: store credentials for the plugin store (dlopened at run time)')
 conflicts=('onair-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4747d3b700ce97ac008d114cf4399d5e67b93b6c765b685dbf0c5ef33ce98295')
+sha256sums=('84ba5b03d1669a658331c1c030200628a488b3af3713d7886d59ddafac906e70')
 
 prepare() {
     # The udev-rule / blacklist fix-it hints tell the user to run
