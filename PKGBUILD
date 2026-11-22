@@ -7,7 +7,7 @@ _appname=(netdoc{,-sim})
 pkgname=${_gitname}
 pkgdesc="A network troubleshooting TUI that turns interface, DNS, TCP, TLS, HTTP, proxy, and path-MTU checks into one plain-English diagnosis"
 
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ makedepends=('git' 'go')
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_gitversion}.tar.gz")
-sha256sums=('3739b4e1a6686c381cb06af46988b6b9c9a3995822b1dd42363a0e66cffe3e8d')
+sha256sums=('75bcabcf83939d522690f4ee8637507b1169ce5550ec356ac0b3501c2b7bce96')
 
 
 build() {

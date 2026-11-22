@@ -1,6 +1,6 @@
 pkgbase = network-doctor
 	pkgdesc = A network troubleshooting TUI that turns interface, DNS, TCP, TLS, HTTP, proxy, and path-MTU checks into one plain-English diagnosis
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/heymaikol/network-doctor
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = network-doctor
 	provides = netdoc
 	provides = netdoc-sim
 	options = !strip
-	source = network-doctor-2.2.1.tgz::https://github.com/heymaikol/network-doctor/archive/v2.2.1.tar.gz
-	sha256sums = 3739b4e1a6686c381cb06af46988b6b9c9a3995822b1dd42363a0e66cffe3e8d
+	source = network-doctor-2.2.2.tgz::https://github.com/heymaikol/network-doctor/archive/v2.2.2.tar.gz
+	sha256sums = 75bcabcf83939d522690f4ee8637507b1169ce5550ec356ac0b3501c2b7bce96
 
 pkgname = network-doctor
