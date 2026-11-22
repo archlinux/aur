@@ -1,0 +1,7 @@
+# Keep the AUR repository to the sources only: ignore everything, then
+# force-add the tracked files with `git add -f`.
+*
+!.gitignore
+!.SRCINFO
+!LICENSE
+!PKGBUILD
