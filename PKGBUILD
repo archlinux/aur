@@ -4,7 +4,7 @@
 # copy of this file and its .SRCINFO (makepkg --printsrcinfo > .SRCINFO).
 
 pkgname=pila-git
-pkgver=0.8.3.r774.gd1897e3
+pkgver=0.9.0.r800.gfd5e115
 pkgrel=1
 pkgdesc='A stacking Wayland compositor built on Smithay'
 arch=(x86_64 aarch64)
@@ -19,19 +19,23 @@ depends=(
     libgcc
     libglvnd
     libinput
+    libpipewire
     libxkbcommon
     mesa
     seatd
     systemd-libs
 )
-makedepends=(cargo git pkgconf)
+# clang: the PipeWire bindings are generated at build time (bindgen).
+makedepends=(cargo clang git pkgconf)
 # The desktop's tools (bar, launcher, notifications, lock, the keys' programs)
 # are pila-desktop's (packaging/aur/pila-desktop): this is the compositor
 # alone, and the defaults that aren't installed are skipped.
 optdepends=(
     'pila-desktop: the bar, launcher, notifications, lock and keys of the default configuration'
     'xorg-xwayland: X11 apps (games, older programs)'
-    'xdg-desktop-portal-wlr: screen sharing'
+    'xdg-desktop-portal: screen sharing (Pila serves its own backend) and other portals'
+    'pipewire: screen sharing'
+    'xdg-desktop-portal-wlr: screenshots through the portal'
     'xdg-desktop-portal-gtk: file chooser and other portals'
     'xdg-utils: opening links and files from programs such as kitty (xdg-open)'
 )
