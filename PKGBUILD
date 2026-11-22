@@ -1,7 +1,7 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
 pkgname=fladder-bin
 _pkgname=fladder
-pkgver=0.11.1
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="A cross-platform Jellyfin Frontend built on top of Flutter"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
     "https://raw.githubusercontent.com/DonutWare/Fladder/refs/heads/main/LICENSE"
     "${_pkgname}.desktop"
 )
-sha256sums=('f5441e90329002b65eb58dfc5fd1bf88e5dd8b75d432d4e11c222109f3c7e66f'
+sha256sums=('4ba358639e47b5b0eb3300c8baa3fbdee6bc6d73327ad270a98c95cc49defcf9'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             'a5b94f011895864fa2c3fa641ad578595d519ec51c867d76eb32da67877a5ccb')
 
