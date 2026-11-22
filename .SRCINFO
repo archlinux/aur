@@ -1,4 +1,4 @@
-pkgbase = xfce4-net-visual
+pkgbase = xfce4-net-visualizer-plugin
 	pkgdesc = Futuristic Xfce panel network monitor with a rotating wire-mesh globe and traffic chart
 	pkgver = 0.1.0
 	pkgrel = 9
@@ -16,4 +16,4 @@ pkgbase = xfce4-net-visual
 	depends = libmaxminddb
 	depends = iputils
 
-pkgname = xfce4-net-visual
+pkgname = xfce4-net-visualizer-plugin
