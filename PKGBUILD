@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=helium-d77
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Wayland shell built with the Helium shell framework"
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   'matugen: theme colors from the wallpaper'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b85abc73b8b39578058bf97c0a4f1b2e0d82282ddf07109b77a7b1e79e2feacb')
+sha256sums=('141caab87cc05a577bc070c0603b585a61c7b7dfaac233af5bd139bb4a1b4078')
 
 prepare() {
     cd "$pkgname-$pkgver"
