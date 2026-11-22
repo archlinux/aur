@@ -1,0 +1,5 @@
+#!/bin/sh
+# Capture supervisor stdout/stderr via svlogd.
+set -eu
+mkdir -p /var/log/tigervnc
+exec svlogd -tt /var/log/tigervnc

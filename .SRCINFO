@@ -1,0 +1,26 @@
+pkgbase = tigervnc-runit
+	pkgdesc = runit service to supervise independent TigerVNC X11 sessions on Artix
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://tigervnc.org/
+	arch = any
+	license = 0BSD
+	depends = tigervnc
+	depends = runit
+	optdepends = dwm: for the bundled dwm-vnc session example
+	optdepends = openssh: for encrypted SSH tunnelling to the VNC server
+	backup = etc/conf.d/tigervnc-runit
+	source = tigervnc.run
+	source = tigervnc.log.run
+	source = tigervnc-runit.conf
+	source = dwm-vnc.desktop
+	source = README.md
+	source = LICENSE
+	sha256sums = e2b046ce7888229c138248bc6d29508250767d9aec557a0a60fa08b506984808
+	sha256sums = aad9bca13cfe0e63bc84ec79b9caca28ec6a4b629c98bba0e20c7d31a5e9e5a3
+	sha256sums = 5417186636781471e3c8d035180b97db324695a4502a94cd6ddf96f95169eabb
+	sha256sums = 88b908c474d4fcbe2364fa62669ff1ed77357e5727ef4e3f2585a08693a1f1e1
+	sha256sums = 7f8f32c5156b4612495200e65daa382830ba5aca1cb93375a419cec5f6a3c153
+	sha256sums = a40568aafe45739ab5987f31fddcfc98a1980ab7bc96b919c6440eac4d88187c
+
+pkgname = tigervnc-runit

@@ -1,0 +1,46 @@
+#!/bin/sh
+# TigerVNC virtual-session supervisor for Artix runit.
+set -eu
+exec 2>&1
+
+config=/etc/conf.d/tigervnc-runit
+if [ ! -r "$config" ]; then
+    echo "tigervnc-runit: missing $config" >&2
+    exit 1
+fi
+
+# The configuration is a root-controlled POSIX shell fragment.
+. "$config"
+
+if [ -z "${VNC_USER:-}" ]; then
+    echo 'tigervnc-runit: set VNC_USER in /etc/conf.d/tigervnc-runit' >&2
+    exit 1
+fi
+
+# Only accept displays :1, :2, ... (not :0 or arbitrary arguments).
+case "${VNC_DISPLAY:-}" in
+    :[1-9]*)
+        case "${VNC_DISPLAY#:}" in
+            *[!0-9]*)
+                echo 'tigervnc-runit: VNC_DISPLAY must be :1, :2, ...' >&2
+                exit 1
+                ;;
+        esac
+        ;;
+    *)
+        echo 'tigervnc-runit: VNC_DISPLAY must be :1, :2, ...' >&2
+        exit 1
+        ;;
+esac
+
+if ! id "$VNC_USER" >/dev/null 2>&1; then
+    echo "tigervnc-runit: user $VNC_USER does not exist" >&2
+    exit 1
+fi
+
+if [ "$(id -u)" -ne 0 ]; then
+    echo 'tigervnc-runit: vncsession must be started as root' >&2
+    exit 1
+fi
+
+exec /usr/bin/vncsession -D "$VNC_USER" "$VNC_DISPLAY"

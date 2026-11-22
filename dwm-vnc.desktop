@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=dwm-vnc
+Comment=Minimal dwm desktop for an independent TigerVNC session
+Exec=dwm
+Type=Application
+DesktopNames=dwm
