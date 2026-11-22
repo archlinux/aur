@@ -1,0 +1,23 @@
+pkgbase = orangtask-bin
+	pkgdesc = Native desktop client for OrangTask (prebuilt binary)
+	pkgver = 2
+	pkgrel = 1
+	url = https://task.oranges.lt
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-websockets
+	depends = qtkeychain-qt6
+	depends = layer-shell-qt
+	depends = hicolor-icon-theme
+	optdepends = krunner: search tasks from KRunner
+	optdepends = kwallet: store sign-in tokens in KWallet
+	provides = orangtask
+	conflicts = orangtask
+	conflicts = orangtask-git
+	source = orangtask-v2-linux-x86_64.tar.gz::https://github.com/Orang-Studio/OrangTask/releases/download/v2/orangtask-v2-linux-x86_64.tar.gz
+	sha256sums = c63e9c64c29cf2f2ec2a7aea4cfe3b70b931b140b9eddd6a850762b55248fc79
+
+pkgname = orangtask-bin
