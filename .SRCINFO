@@ -1,0 +1,16 @@
+pkgbase = jj-musubi-bin
+	pkgdesc = jj-musubi: live sync for jujutsu
+	pkgver = 0.47.1
+	pkgrel = 1
+	url = https://www.serpentine.com/software/jj-musubi/
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/bos/jj-musubi/releases/download/v0.47.1/jj-musubi-0.47.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 787dc51e2b7fb9cbda04f70f44cb4d612959a6dc7deef8404de65fc05ba81a89
+	source_aarch64 = https://github.com/bos/jj-musubi/releases/download/v0.47.1/jj-musubi-0.47.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 638fec68d00642b3755f70a678ba069efb84380d9448913594c5ab87c12e4d66
+
+pkgname = jj-musubi-bin
