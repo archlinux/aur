@@ -1,14 +1,14 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 
 pkgname=proton-drive-for-linux-bin
-pkgver=3.8.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="Unofficial Proton Drive client: FUSE files-on-demand mount, CLI, GTK4 app, tray (binaries)"
 arch=('x86_64')
 url="https://proton-drive.narl.io"
 _repo="https://github.com/narrrl/proton-drive-linux"
 license=('MIT')
-depends=('fuse3' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'dbus' 'gcc-libs' 'glibc'
+depends=('fuse3' 'polkit' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'dbus' 'gcc-libs' 'glibc'
          'hicolor-icon-theme')
 optdepends=('perl-image-exiftool: thumbnails for camera RAW files'
             'ffmpeg: video thumbnails'
@@ -29,7 +29,7 @@ _tag="v$pkgver"
 # (desktop files, icon, user service, translations, completions) in a /usr-like
 # tree under one directory.
 source=("proton-drive-linux-$pkgver-x86_64.tar.gz::$_repo/releases/download/$_tag/proton-drive-linux-$pkgver-x86_64.tar.gz")
-sha256sums=('99348fbf9121624701ae43e52776e5d1c469ff5cd5e52cd216bf8cb969e0bab2')
+sha256sums=('464986f2516ecbe249f98570189bfd36c2f372205c4095eccd515325f113c651')
 
 package() {
   cd "$srcdir/proton-drive-linux-$pkgver-x86_64"
@@ -48,6 +48,10 @@ package() {
   # systemd user unit for the auto-mount daemon; enabled per user, not by pacman.
   install -Dm644 lib/systemd/user/proton-drive.service \
     "$pkgdir/usr/lib/systemd/user/proton-drive.service"
+
+  # The offline Places basemap.
+  install -Dm644 share/proton-drive-linux/basemap-v1.pmtiles \
+    "$pkgdir/usr/share/proton-drive-linux/basemap-v1.pmtiles"
 
   # Translations and shell completion for bash, zsh and fish.
   install -dm755 "$pkgdir/usr/share"
