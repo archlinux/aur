@@ -1,6 +1,6 @@
 pkgbase = zrk-bin
 	pkgdesc = A constant/linear throughput load generator in Zig ⚡
-	pkgver = 3.0.2
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/zoxy-io/zrk
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = zrk-bin
 	provides = zrk
 	conflicts = zrk
 	options = !strip
-	source = LICENSE-3.0.2::https://raw.githubusercontent.com/zoxy-io/zrk/v3.0.2/LICENSE
-	source = README-3.0.2.md::https://raw.githubusercontent.com/zoxy-io/zrk/v3.0.2/README.md
+	source = LICENSE-3.0.4::https://raw.githubusercontent.com/zoxy-io/zrk/v3.0.4/LICENSE
+	source = README-3.0.4.md::https://raw.githubusercontent.com/zoxy-io/zrk/v3.0.4/README.md
 	sha256sums = a9e7a0b2ca0bb923c316c0cc1b9f60e8407ebbeb974467cea6b808644b5dd611
 	sha256sums = fe9c8d815923afea1ed3a04bac9a9a686ed85ce11f9f1947cf70686c2fc5c291
-	source_x86_64 = zrk-x86_64-3.0.2.tgz::https://github.com/zoxy-io/zrk/releases/download/v3.0.2/zrk-3.0.2-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 339ade3ba435f14ea3c15ab8e97a880d931e14604857cde01aea1797e7430cbf
-	source_aarch64 = zrk-aarch64-3.0.2.tgz::https://github.com/zoxy-io/zrk/releases/download/v3.0.2/zrk-3.0.2-aarch64-linux.tar.gz
-	sha256sums_aarch64 = ca375a4801df5aab86e837bf5183895194af0ec500a762482e4603ba3e109d05
+	source_x86_64 = zrk-x86_64-3.0.4.tgz::https://github.com/zoxy-io/zrk/releases/download/v3.0.4/zrk-3.0.4-x86_64-linux.tar.gz
+	sha256sums_x86_64 = bfbaf585cc9a4ede7728ed4f2d5a5da8b0ec26fe9fb173fe1c6bc3f13d4e0d15
+	source_aarch64 = zrk-aarch64-3.0.4.tgz::https://github.com/zoxy-io/zrk/releases/download/v3.0.4/zrk-3.0.4-aarch64-linux.tar.gz
+	sha256sums_aarch64 = bdb5a9f9898667fe8ca33c425d095c88b0242a8134c9e8a73db02a3a3f786f24
 
 pkgname = zrk-bin
