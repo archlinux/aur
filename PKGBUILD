@@ -1,6 +1,6 @@
 # Maintainer: adelmonte
 pkgname=ukigen
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Fast UKI and initramfs builder; drop-in for ukify/eukify and booster'
 arch=('x86_64')
@@ -16,7 +16,7 @@ backup=('etc/ukigen.toml')
 # zstd-sys compiles C; makepkg's -flto=auto turns it into GCC bitcode rust-lld can't link.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ef753d76e6b25a7820abc670ce4bbd6590423cad40c3d3a7c5c0276dba92b404')
+sha256sums=('673a4163a18bcb391910cfdbc66b9e763634f27fcf08aac7785bd86cfc3f3d9d')
 
 prepare() {
   cd "$pkgname-$pkgver"

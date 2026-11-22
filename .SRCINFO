@@ -1,6 +1,6 @@
 pkgbase = ukigen
 	pkgdesc = Fast UKI and initramfs builder; drop-in for ukify/eukify and booster
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/adelmonte/ukigen
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = ukigen
 	conflicts = systemd-ukify
 	options = !lto
 	backup = etc/ukigen.toml
-	source = ukigen-0.1.0.tar.gz::https://github.com/adelmonte/ukigen/archive/v0.1.0.tar.gz
-	sha256sums = ef753d76e6b25a7820abc670ce4bbd6590423cad40c3d3a7c5c0276dba92b404
+	source = ukigen-0.1.1.tar.gz::https://github.com/adelmonte/ukigen/archive/v0.1.1.tar.gz
+	sha256sums = 673a4163a18bcb391910cfdbc66b9e763634f27fcf08aac7785bd86cfc3f3d9d
 
 pkgname = ukigen
