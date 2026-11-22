@@ -2,10 +2,12 @@
 # 自用维护：仅信任官方 GitHub release 资产，sha256 锁定官方 SHA256SUMS.txt。
 pkgname=soundcraft-private-bin
 pkgver=0.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc='自用维护：开源 clean-room 版 Pro Tools 替代（DAW 音频），上游 storytold/soundcraft'
 arch=('x86_64')
 url='https://getartcraft.com/apps/soundcraft'
+# GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
+_gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
 license=('MIT' 'Apache')
 provides=("soundcraft=$pkgver")
 conflicts=('soundcraft' 'soundcraft-bin' 'soundcraft-git' 'ai.storyteller.soundcraft')
@@ -23,7 +25,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://gh-proxy.com/https://github.com/storytold/soundcraft/releases/download/v${pkgver}/soundcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("${_gh_mirror}https://github.com/storytold/soundcraft/releases/download/v${pkgver}/soundcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('fa629b37c70c03ed89e5e20617a049de725fc28cbb50a7f4cbcd4c3c26a3727d')
 
 package() {
