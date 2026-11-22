@@ -1,7 +1,7 @@
 pkgbase = mcumgrctl-bin
 	pkgdesc = Rust CLI for Zephyr MCUmgr (prebuilt binary)
 	pkgver = 0.20.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Finomnis/mcumgr-toolkit
 	arch = x86_64
 	license = MIT

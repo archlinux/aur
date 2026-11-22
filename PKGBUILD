@@ -1,7 +1,7 @@
 # Maintainer: Jonatan R. Fischer <jonafischer at gmail dot com>
 pkgname=mcumgrctl-bin
 pkgver=0.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Rust CLI for Zephyr MCUmgr (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/Finomnis/mcumgr-toolkit"
