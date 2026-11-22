@@ -2,4 +2,6 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!minecraft-c.desktop
+!minecraft-c.png
 
