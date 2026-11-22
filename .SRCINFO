@@ -1,22 +1,27 @@
 pkgbase = jucy
-	pkgdesc = Jucy is a client for the DirectConnect protocol.
+	pkgdesc = A client for the DirectConnect protocol.
 	pkgver = 0.87.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://web.archive.org/web/20210516161142/http://www.jucy.eu/
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = imagemagick
-	depends = java-runtime
+	depends = gtk2
+	depends = jre8-openjdk
 	options = !strip
-	source = jucy.linux.gtk.x86_64.zip::https://web.archive.org/web/20210516161142/http://www.jucy.eu/download.php?filename=jucy.linux.gtk.x86_64.zip
-	source = jucy.desktop
-	source = jucy.sh
-	md5sums = 6819fe2b6122eefbb54c0a88bb430712
-	md5sums = 059c1f5e917db6d62d610467562ae641
-	md5sums = 718e2ef6e7cd5f5aef5d939cc0325076
-	sha1sums = 21a2fe798b119db2aaec9b4463c46b327969ef27
-	sha1sums = e137d39eefe9070f21630de450908ac9c791553c
-	sha1sums = 61d44329ebc2d7f86a6e345c552f9cb9fdccf59c
+	options = !debug
+	source_i686 = jucy.linux.gtk.x86.zip::https://web.archive.org/web/20210516161142/http://www.jucy.eu/download.php?filename=jucy.linux.gtk.x86.zip
+	source_i686 = jucy.desktop
+	source_i686 = jucy.sh
+	sha256sums_i686 = fd78f19c17a178793750c2d4422c3af3630528dde28ed9f061f79bf80911d32a
+	sha256sums_i686 = aab0ea76378d67459a26d73f2b1501152ab357908e03e651192c2f932b787020
+	sha256sums_i686 = 92358309ed0616103d5d23230b0d6ac0248c5fc9e04ceb4d23e50183ff32e741
+	source_x86_64 = jucy.linux.gtk.x86_64.zip::https://web.archive.org/web/20210516161142/http://www.jucy.eu/download.php?filename=jucy.linux.gtk.x86_64.zip
+	source_x86_64 = jucy.desktop
+	source_x86_64 = jucy.sh
+	sha256sums_x86_64 = 7fbab47c9f8cfecdf2392dfe70ebf1b92bc3ae11676a13b4cc2bde2e72d35c76
+	sha256sums_x86_64 = aab0ea76378d67459a26d73f2b1501152ab357908e03e651192c2f932b787020
+	sha256sums_x86_64 = 92358309ed0616103d5d23230b0d6ac0248c5fc9e04ceb4d23e50183ff32e741
 
 pkgname = jucy
