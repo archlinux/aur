@@ -1,0 +1,16 @@
+pkgbase = private_poker
+	pkgdesc = A poker library, server, client
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/theOGognf/private_poker
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = private_poker-4.1.0.tar.gz::https://github.com/theOGognf/private_poker/archive/refs/tags/private_poker-v4.1.0.tar.gz
+	sha256sums = 66e7af5f00c6f977283d754b90f40258816c9abf2fca32f9e3c7ef289d119ca8
+
+pkgname = private_poker
