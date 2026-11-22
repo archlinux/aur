@@ -1,0 +1,22 @@
+pkgbase = druglord2
+	pkgdesc = Native Linux port of Drug Lord 2 by Fred Bulback (Geek Hideout)
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.geekhideout.com/druglord2.shtml
+	arch = x86_64
+	license = custom
+	makedepends = gcc
+	makedepends = make
+	makedepends = python
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = fontconfig
+	depends = ttf-liberation
+	noextract = druglord2.exe
+	options = !debug
+	source = druglord2-port.tar.gz::https://github.com/burecar/druglord2-linux/releases/download/v1.0/druglord2-port.tar.gz
+	source = druglord2.exe::http://www.geekhideout.com/downloads/druglord2.exe
+	sha256sums = 7d0062e80a06529cbdee804a683094cd5b0c14a40ab97903cc061314a4705d18
+	sha256sums = 187515f94d434567c58ecee5ced5c909c3fa6a0cb5054f81987ddb04be5aa5fb
+
+pkgname = druglord2
