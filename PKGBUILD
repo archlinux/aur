@@ -15,10 +15,12 @@
 pkgname=linux-wallpaperengine-v3-bin
 _pkgname=linux-wallpaperengine
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Wallpaper Engine backgrounds for Linux (prebuilt x86-64-v3)"
 arch=('x86_64')
 url="https://github.com/Become-ILLUSORY/linux-wallpaperengine"
+# GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
+_gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
 license=('GPL-3.0-only')
 provides=("${_pkgname}=${pkgver}" "linux-wallpaperengine")
 conflicts=("${_pkgname}" "linux-wallpaperengine-git" "linux-wallpaperengine-core-git")
@@ -68,7 +70,7 @@ depends=(
     'zlib-ng-compat'
 )
 
-source=("${pkgname}-${pkgver}.tar.zst::https://github.com/Become-ILLUSORY/linux-wallpaperengine/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.tar.zst")
+source=("${pkgname}-${pkgver}.tar.zst::${_gh_mirror}https://github.com/Become-ILLUSORY/linux-wallpaperengine/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.tar.zst")
 sha256sums=('108ca1eeb6ebadf83a41c3269d6e762a5441f92842b54103d6c5cd6ac5e746a6')
 
 # The tarball is already a complete, correctly laid out install tree; makepkg
