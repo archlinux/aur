@@ -1,22 +1,36 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer: Felipe BF <fprgw32 at gmail dot com>
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Falk Alexander Seidl <fa@terminal.run>
 
 # shellcheck disable=SC2034
 pkgname=sequeler
-pkgver=0.8.2
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc='Friendly SQL Client'
 arch=('x86_64')
-url='https://github.com/Alecaddd/sequeler'
-license=('GPL3')
-depends=('granite' 'libgda-mysql' 'libgda-postgres')
+url="https://github.com/Alecaddd/$pkgname"
+license=('GPL-3.0-or-later')
+depends=('granite' 'libgda5-mysql' 'libgda5-postgres' 'gtksourceview4' 'libsecret')
 makedepends=('meson' 'vala')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('66ae40d8fc6bf5aa0f5608ffc32c3b66c2ff78deb675d301112a8eca7f050876')
+
+source=(
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+)
+sha256sums=('780b5066cce3a7ef333b0d2033b947623804cfbb8ff9a89ab273954845049292')
 
 build() {
-  arch-meson "${pkgname}-${pkgver}" build
+  local more_c_flags=(
+    '-Wno-unused-but-set-variable'
+    '-Wno-unused-value'
+    '-Wno-unused-variable'
+    '-Wno-unused-function'
+    '-Wno-discarded-qualifiers'
+    '-Wno-deprecated-declarations'
+  )
+  local nostrict=$(IFS=' '; echo "${more_c_flags[*]}")
+
+  arch-meson "${pkgname}-${pkgver}" build -Dc_args="$nostrict"
   meson compile -C build
 }
 
