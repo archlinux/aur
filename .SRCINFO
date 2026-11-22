@@ -1,8 +1,8 @@
 pkgbase = clamaurscan-git
 	pkgdesc = Automatically scan AUR packages with ClamAV before building them with Paru or Yay.
 	pkgver = r1.0f5b135
-	pkgrel = 7
-	url = https://codeberg.org/psi-jack/clamaurscan.git
+	pkgrel = 8
+	url = https://codeberg.org/psi-jack/clamaurscan
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
