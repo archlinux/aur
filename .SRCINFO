@@ -1,0 +1,19 @@
+pkgbase = text_expander
+	pkgdesc = Minimal Wayland text expander compatible with espanso config format
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/adelmonte/text_expander
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = wtype
+	depends = libxkbcommon
+	depends = gcc-libs
+	depends = glibc
+	optdepends = wl-clipboard: clipboard variables
+	options = !lto
+	source = text_expander-0.2.0.tar.gz::https://github.com/adelmonte/text_expander/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = a41e73c174fef9e3f6e96a4a1849b59c35b50b706353dba759ae38c946317e34
+
+pkgname = text_expander
