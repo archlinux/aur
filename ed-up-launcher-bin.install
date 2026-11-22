@@ -1,0 +1,21 @@
+post_install() {
+  echo "==> ED-UP is not applied to the game yet. Run Elite Dangerous once from Steam"
+  echo "    and close it. If you change its Proton version later, launch it once more"
+  echo "    first. Then, as your normal user (no sudo):"
+  echo "      ed-up-launcher"
+  echo "    Install, Update, Repair and Uninstall are buttons in the launcher window."
+  echo "    To see what would run without changing anything: ed-up-launcher --dry-run"
+  echo "    Epic copies (Heroic, Legendary, Lutris): ed-up-launcher --store epic"
+  echo "    More options: /usr/share/doc/ed-up-launcher-bin/README-launcher-linux.txt"
+  echo "    A copy placed by the old EDVR Linux installer can only be removed by hand."
+}
+
+post_upgrade() {
+  echo "==> The launcher package was updated. The game folder was not touched."
+  echo "    Run 'ed-up-launcher' as your normal user to update ED-UP in the game."
+}
+
+pre_remove() {
+  echo "==> Removing this package does not remove ED-UP from the game."
+  echo "    To do that first, use Uninstall in the launcher window."
+}

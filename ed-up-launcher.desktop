@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ED-UP Launcher
+GenericName=Elite Dangerous patch launcher
+Comment=Install and update ED-UP (formerly EDVR), the unofficial patch for Elite Dangerous
+Exec=ed-up-launcher
+Icon=applications-games
+Terminal=false
+Categories=Game;
+Keywords=Elite;Dangerous;EDVR;ED-UP;VR;Proton;Steam;

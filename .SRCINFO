@@ -1,0 +1,22 @@
+pkgbase = ed-up-launcher-bin
+	pkgdesc = Launcher for ED-UP (formerly EDVR), the unofficial patch for Elite Dangerous, running in its Proton/Wine prefix
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://github.com/characterecho-sean/ed-unofficial-patch
+	install = ed-up-launcher-bin.install
+	arch = any
+	license = MIT
+	depends = python
+	optdepends = steam: Elite Dangerous runs through its Proton
+	replaces = ed-up-installer-bin
+	replaces = edvr-installer-bin
+	source = https://github.com/characterecho-sean/ed-unofficial-patch/releases/download/v0.23.0/ed-up-launcher-linux-0.23.0.zip
+	source = LICENSE::https://raw.githubusercontent.com/characterecho-sean/ed-unofficial-patch/v0.23.0/LICENSE
+	source = ed-up-launcher-wrapper.sh
+	source = ed-up-launcher.desktop
+	sha256sums = 4cdabc688ac23aa3a8a5895d5a56e7d7fa467eb6461106de46267744012b312a
+	sha256sums = e7d606f57bea13cad4819c81efc9e6ccb65802ffa7001f9618684cb5184ed3b5
+	sha256sums = a666e97a1cb77c53054c14f0a6ccbd72a8db5691e74e0d9f5f497ad1335438e0
+	sha256sums = 7f72a299b7fbe93e2b560f9f2b1a19be942b3aadc804064654754af29dc8d593
+
+pkgname = ed-up-launcher-bin
