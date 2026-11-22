@@ -1,0 +1,16 @@
+pkgbase = rustfm-bin
+	pkgdesc = Terminal file manager with a sidebar, multiple panels, live preview, and a task queue
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/CanReader/rustfm
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = rustfm
+	conflicts = rustfm
+	options = !debug
+	source_x86_64 = rustfm-bin-0.2.0-x86_64.tar.gz::https://github.com/CanReader/rustfm/releases/download/v0.2.0/rustfm-v0.2.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = eafbd0ce70ff78389e78c4da3c6207606296e26e51981b816ecb3ad8c64b9978
+
+pkgname = rustfm-bin
