@@ -1,6 +1,6 @@
 # Maintainer: Christopher Patrick Fair <christopherpatrickfair@gmail.com>
 pkgname=propsandproofs
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 _gdext_ver=0.17.1
 pkgdesc="Propositional and Modal Logic (K/T/S4/S5) tabletop dice, Fitch proof, and Kripke worlds game"
@@ -24,7 +24,7 @@ source=(
   "gdext-nim-${_gdext_ver}.tar.gz::https://github.com/godot-nim/gdext-nim/archive/refs/tags/v${_gdext_ver}.tar.gz"
 )
 sha256sums=(
-  '4c1a45fc307f3035c3184713f4e1d5bac02f0b77ecbc0f447a9c4e24913b7c83'
+  'd9fde47b2843462cb2b729059472efae0ff273ecf7ac8891721cf3fae05375a7'
   'e446f3d682e49c609552bee599d21de01ebc86b47889559ab267655b3e887f2d'
 )
 
