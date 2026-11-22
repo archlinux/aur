@@ -1,0 +1,22 @@
+pkgbase = owl-dictionary-bin
+	pkgdesc = Owl: a web dictionary app supporting MDX/MDD dictionary files
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ca-x/owl
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Proprietary
+	depends = gtk4
+	optdepends = webkitgtk-6.0: built-in web view for the dictionary reader
+	provides = owl-dictionary
+	conflicts = owl-dictionary
+	noextract = owl-dictionary-0.2.0-linux-x64.deb
+	noextract = owl-dictionary-0.2.0-linux-arm64.deb
+	options = !strip
+	options = !debug
+	source_x86_64 = owl-dictionary-0.2.0-linux-x64.deb::https://github.com/ca-x/owl/releases/download/v0.2.0/owl-dictionary-0.2.0-linux-x64.deb
+	sha256sums_x86_64 = fa09f7c2f4997f0772bde1fc1ab16342528e04d3206d6406c8dad3fc88c2d18e
+	source_aarch64 = owl-dictionary-0.2.0-linux-arm64.deb::https://github.com/ca-x/owl/releases/download/v0.2.0/owl-dictionary-0.2.0-linux-arm64.deb
+	sha256sums_aarch64 = 77f561b14ff5cabba093ebdc8a9f81e8f82f48986b83f54785241dcaa1f1c4f4
+
+pkgname = owl-dictionary-bin
