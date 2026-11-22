@@ -1,0 +1,16 @@
+pkgbase = tgv-bin
+	pkgdesc = A terminal genome browser with Vim-style navigation
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/zeqianli/tgv
+	arch = x86_64
+	license = MIT
+	provides = tgv
+	conflicts = tgv
+	options = !debug
+	source = tgv-bin-0.4.0-LICENSE::https://raw.githubusercontent.com/zeqianli/tgv/v0.4.0/LICENSE.md
+	sha256sums = 840dd0ca931d843d95d19d61d1b54d1b8b1f9ec9ebfc4239f68ac1867a29b7b3
+	source_x86_64 = tgv-bin-0.4.0-x86_64.tar.gz::https://github.com/zeqianli/tgv/releases/download/v0.4.0/tgv-x86_64-linux-musl.tar.gz
+	sha256sums_x86_64 = 25b5a8eeecffb05e8d700022e542c80e343f5dd1c85c795b40d9eb50cf445482
+
+pkgname = tgv-bin
