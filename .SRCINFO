@@ -1,0 +1,19 @@
+pkgbase = llm-cost-dashboard-bin
+	pkgdesc = Prices every LLM API call from OpenAI, Anthropic and Claude Code logs, with a budget
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/Mattbusel/llm-cost-dashboard
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = llm-cost-dashboard
+	conflicts = llm-cost-dashboard
+	options = !debug
+	source_x86_64 = llm-cost-dashboard-bin-1.4.2-x86_64.tar.gz::https://github.com/Mattbusel/llm-cost-dashboard/releases/download/v1.4.2/llm-cost-dashboard-v1.4.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d40c300558b8dcd0cff0fb6cff3fde57710112cd307ff7f619ede9dbaed55187
+	source_aarch64 = llm-cost-dashboard-bin-1.4.2-aarch64.tar.gz::https://github.com/Mattbusel/llm-cost-dashboard/releases/download/v1.4.2/llm-cost-dashboard-v1.4.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2fa2a89f75d858342dfeac66a6bb46bfa36deab3e4fbb6b7526cd58a48d9ac49
+
+pkgname = llm-cost-dashboard-bin
