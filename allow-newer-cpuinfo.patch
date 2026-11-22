@@ -1,0 +1,11 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 62030d2..4aa5b73 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["py-cpuinfo==9.0.0", "setuptools>=77.0.0"]
++requires = ["py-cpuinfo2>=10.0.0", "setuptools>=77.0.0"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
