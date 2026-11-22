@@ -1,8 +1,8 @@
 pkgbase = percolator-git
 	pkgdesc = Percolator and qvality, two post processors for shotgun proteomics data
-	pkgver = 3.08.r264.ga90106b
-	pkgrel = 2
-	url = https://percolator.ms/
+	pkgver = 4.00.r7.g6f91cf6
+	pkgrel = 1
+	url = https://github.com/percolator/percolator
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git

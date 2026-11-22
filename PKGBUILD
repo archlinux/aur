@@ -1,10 +1,10 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgbase=percolator-git
 pkgname=percolator-git
-pkgver=3.08.r264.ga90106b
+pkgver=4.00.r7.g6f91cf6
 pkgrel=1
 pkgdesc="Percolator and qvality, two post processors for shotgun proteomics data"
-url="https://percolator.ms/"
+url="https://github.com/percolator/percolator"
 license=(Apache-2.0)
 arch=(x86_64)
 depends=(gcc-libs libgomp)
