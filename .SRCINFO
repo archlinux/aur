@@ -1,0 +1,21 @@
+pkgbase = lixun-semantic
+	pkgdesc = Lixun semantic sidecar worker: dense-vector hybrid retrieval via fastembed + LanceDB
+	pkgver = 0.7.10
+	pkgrel = 1
+	url = https://lixun.app
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	makedepends = clang
+	makedepends = cmake
+	makedepends = protobuf
+	depends = lixun=0.7.10
+	depends = gcc-libs
+	depends = xz
+	depends = libheif
+	options = !debug
+	options = !lto
+	source = lixun-0.7.10.tar.gz::https://github.com/dengkeping/lixun/archive/8e7e8d5a9fba14df49c24a40a3abcd04eb9c1371.tar.gz
+	sha256sums = a85f4e04fcf1705c7d41f8eed5e4d29cdc71af363df8e4e565a6f600434fc9dc
+
+pkgname = lixun-semantic
