@@ -1,6 +1,6 @@
 pkgbase = python-albumentationsx
 	pkgdesc = Fast image augmentation library and easy to use wrapper around other libraries
-	pkgver = 2.5.1
+	pkgver = 2.6.7
 	pkgrel = 1
 	url = https://github.com/albumentations-team/albumentationsx
 	arch = any
@@ -11,17 +11,19 @@ pkgbase = python-albumentationsx
 	makedepends = python-wheel
 	makedepends = python-hatchling
 	depends = python-albucore
+	depends = python-numkong
 	depends = python-numpy
 	depends = python-opencv
 	depends = python-pydantic
 	depends = python-scipy
+	depends = python-stringzilla
 	depends = python-typing_extensions
 	depends = python-yaml
 	optdepends = python-pytorch: for transforms from pytorch
 	optdepends = python-torchvision: for transforms from torchvision
-	provides = python-albumentations=2.5.1
+	provides = python-albumentations=2.6.7
 	conflicts = python-albumentations
-	source = AlbumentationsX-2.5.1.tar.gz::https://github.com/albumentations-team/albumentationsx/archive/2.5.1.tar.gz
-	sha512sums = 37ba460d85ce90884f723cc8909e08f8cc2c70b3666e7853ea096aaa6e53c84d4017ab72b5da38112cc2286c4bbe95f19c5f0d494c8aa59c158e6ce90fa95921
+	source = AlbumentationsX-2.6.7.tar.gz::https://github.com/albumentations-team/albumentationsx/archive/2.6.7.tar.gz
+	sha512sums = 64c26c04d05ac18a0cd41e1c3a789e48a6f74d57f19cf83cba27fa08396d2d45b5c1c8c6e09d0f506270bf99deafd687a2569cc6888acc477ebad12c7700b7c3
 
 pkgname = python-albumentationsx
