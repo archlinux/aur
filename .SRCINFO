@@ -1,6 +1,6 @@
 pkgbase = skykeep
 	pkgdesc = Native iCloud apps: Notes, Reminders, Calendar, Contacts, Drive and Photos, offline and in sync
-	pkgver = 0.1.36
+	pkgver = 0.1.37
 	pkgrel = 1
 	url = https://github.com/YashwanthKamireddi/Skykeep
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = skykeep
 	optdepends = gst-plugins-bad: the iPhone camera decoded on the graphics chip
 	options = !lto
 	options = !debug
-	source = skykeep-0.1.36.tar.gz::https://github.com/YashwanthKamireddi/Skykeep/archive/refs/tags/v0.1.36.tar.gz
-	sha256sums = 7ec80fd48d377c8b64ea2ce53c50c30b68e855ba7e245a025e94825a81551f5c
+	source = skykeep-0.1.37.tar.gz::https://github.com/YashwanthKamireddi/Skykeep/archive/refs/tags/v0.1.37.tar.gz
+	sha256sums = 7c5db6ad12aff11d947f262f92f9c0ce09f962f2e16d9fa2ff0c8ecbb26f88fc
 
 pkgname = skykeep
