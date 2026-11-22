@@ -88,7 +88,8 @@ package() {
   # util/rights*.sh
   chmod a+x "${pkgdir}/opt/${pkgname}/bin/"{STM32CubeProgrammer,STM32CubeProgrammerLauncher,STM32_Programmer.sh,STM32_Programmer_CLI} \
     "${pkgdir}/opt/${pkgname}/bin/"{STM32TrustedPackageCreator,STM32TrustedPackageCreator_CLI,STM32_KeyGen_CLI,STM32_SigningTool_CLI} \
-    "${pkgdir}/opt/${pkgname}/bin/Utilities/Linux/PSA_ADAC"
+    "${pkgdir}/opt/${pkgname}/bin/Utilities/Linux/PSA_ADAC" \
+    "${pkgdir}/opt/${pkgname}/bin/jre/bin/java"
 
   # icons
   for entry in \
