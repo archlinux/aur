@@ -1,7 +1,7 @@
 pkgbase = pdfcraft-private-bin
 	pkgdesc = 自用维护：开源 clean-room 版 Adobe Acrobat 替代（PDF 阅读整理保护），上游 storytold/pdfcraft
 	pkgver = 0.21.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getartcraft.com/apps/pdfcraft
 	arch = x86_64
 	license = MIT
