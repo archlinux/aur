@@ -1,0 +1,26 @@
+pkgbase = wlens
+	pkgdesc = An image viewer for Wayland, configured and extended with Lua
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Nynxz/wlens
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gst-plugins-base-libs
+	depends = gstreamer
+	depends = libxkbcommon
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = gst-libav: more video formats
+	optdepends = gst-plugins-good: more video formats
+	optdepends = libnotify: a notification when wlens fails to start
+	optdepends = wl-clipboard: copying paths and images
+	options = !lto
+	source = wlens-0.1.0.tar.gz::https://github.com/Nynxz/wlens/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = d42d2d0c12e4cb8d701c374c018f04070465a18894e7db261d73f1bcc86336ea
+
+pkgname = wlens
