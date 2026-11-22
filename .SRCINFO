@@ -1,7 +1,7 @@
 pkgbase = uu-remote-linux-private-bin
 	pkgdesc = 自用维护：非官方 UU 远程 Linux 被控端 + 实验性控制端（网易 UU 远程），上游 VallierDev/uu-remote-linux
 	pkgver = 0.2.64
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/VallierDev/uu-remote-linux
 	arch = x86_64
 	arch = aarch64
@@ -21,6 +21,9 @@ pkgbase = uu-remote-linux-private-bin
 	optdepends = wayland: Wayland 原生支持
 	optdepends = libxkbcommon: X11/wayland 键盘布局
 	optdepends = xdg-desktop-portal: 桌面通知
+	optdepends = libpipewire: Wayland 屏幕共享（libuu-portal.so）
+	optdepends = libei: Wayland 输入注入（libuu-portal.so）
+	optdepends = wl-clipboard: Wayland 剪贴板同步
 	provides = uu-remote-linux=0.2.64
 	conflicts = uu-remote-linux
 	source_x86_64 = https://gh-proxy.cn/https://github.com/VallierDev/uu-remote-linux/releases/download/v0.2.64/uu-remote-linux-v0.2.64-x86_64-linux.tar.gz

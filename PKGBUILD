@@ -5,7 +5,7 @@
 #   sha256 锁上游伴随 .sha256 文件，source 走 gh-proxy.com 加速（大陆直连 GitHub 慢）。
 pkgname=uu-remote-linux-private-bin
 pkgver=0.2.64
-pkgrel=4
+pkgrel=5
 pkgdesc='自用维护：非官方 UU 远程 Linux 被控端 + 实验性控制端（网易 UU 远程），上游 VallierDev/uu-remote-linux'
 arch=('x86_64' 'aarch64')
 url='https://github.com/VallierDev/uu-remote-linux'
@@ -18,7 +18,12 @@ depends=('gtk3' 'gdk-pixbuf2' 'cairo' 'glib2' 'pango' 'gcc-libs'
 optdepends=('sdl2: 控制端画面渲染'
             'wayland: Wayland 原生支持'
             'libxkbcommon: X11/wayland 键盘布局'
-            'xdg-desktop-portal: 桌面通知')
+            'xdg-desktop-portal: 桌面通知'
+            # libuu-portal.so 由 uuremote-server 运行时 dlopen，用到屏幕共享/
+            # 输入注入才加载。上游 deb 把这两个列为 Suggests，缺了不影响主功能。
+            'libpipewire: Wayland 屏幕共享（libuu-portal.so）'
+            'libei: Wayland 输入注入（libuu-portal.so）'
+            'wl-clipboard: Wayland 剪贴板同步')
 provides=("uu-remote-linux=$pkgver")
 conflicts=('uu-remote-linux')
 source_x86_64=("${_gh_mirror}https://github.com/VallierDev/uu-remote-linux/releases/download/v${pkgver}/uu-remote-linux-v${pkgver}-x86_64-linux.tar.gz")
