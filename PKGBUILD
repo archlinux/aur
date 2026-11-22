@@ -62,7 +62,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath"
-  export PATH="${PATH}:$srcdir/gopath/bin"
+  export PATH="$GOPATH/bin:$PATH"
   _ensure_local_nvm
   wails build \
     -ldflags "-linkmode=external -extldflags \"${LDFLAGS}\" \
