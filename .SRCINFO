@@ -1,0 +1,19 @@
+pkgbase = raygun-bin
+	pkgdesc = A terminal-based receiver for Spatie's Ray debugger
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/yetidevworks/raygun
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = raygun
+	conflicts = raygun
+	options = !debug
+	source = raygun-bin-1.0.5-LICENSE::https://raw.githubusercontent.com/yetidevworks/raygun/1.0.5/LICENSE
+	sha256sums = 3894231411ec27c0faf5a840ebd7ce47af3c9e74dcc99da35eec091cfc2f19ab
+	source_x86_64 = raygun-bin-1.0.5-x86_64.tar.gz::https://github.com/yetidevworks/raygun/releases/download/1.0.5/raygun-1.0.5-linux-x86_64-musl.tar.gz
+	sha256sums_x86_64 = 5ff6c5dc2429ffd3d934e0bcdef9bef9a756e4a61042ff7b1967605f57ca0ab6
+	source_aarch64 = raygun-bin-1.0.5-aarch64.tar.gz::https://github.com/yetidevworks/raygun/releases/download/1.0.5/raygun-1.0.5-linux-aarch64-musl.tar.gz
+	sha256sums_aarch64 = 95a8aa71c47b4369ced3371d06f24e3e9d0d6d05870a1c29d048b87abc538230
+
+pkgname = raygun-bin
