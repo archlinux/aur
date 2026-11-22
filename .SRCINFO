@@ -1,0 +1,37 @@
+pkgbase = lixun-bin
+	pkgdesc = Spotlight-like launcher for Linux (core: daemon, gui, cli, preview)
+	pkgver = 0.7.10
+	pkgrel = 1
+	url = https://lixun.app
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = xdg-utils
+	depends = poppler-glib
+	depends = zstd
+	depends = sqlite
+	depends = gcc-libs
+	depends = xz
+	depends = libheif
+	optdepends = lixun-semantic: dense-vector hybrid retrieval via the sidecar worker
+	optdepends = lixun-ocr: OCR for scanned PDFs and images via tesseract
+	optdepends = antiword: legacy .doc preview
+	optdepends = catdoc: legacy .xls/.ppt preview
+	optdepends = libreoffice-fresh: full office-suite preview
+	optdepends = gst-plugins-good: audio/video preview
+	optdepends = gst-plugins-bad: extra audio/video codecs
+	optdepends = gst-plugins-ugly: extra audio/video codecs
+	optdepends = gst-libav: ffmpeg-backed codec coverage
+	optdepends = xdg-terminal-exec: terminal-launching shell hits
+	provides = lixun=0.7.10
+	conflicts = lixun
+	conflicts = lupa
+	conflicts = lupa-bin
+	noextract = lixun-0.7.10-1-x86_64.pkg.tar.zst
+	options = !debug
+	options = !strip
+	source = https://github.com/dengkeping/lixun/releases/download/v0.7.10/lixun-0.7.10-1-x86_64.pkg.tar.zst
+	sha256sums = 202f640f15d09d80339f5763ef5ac5916d34ac68be7dde88ea01bfc9cda43498
+
+pkgname = lixun-bin
