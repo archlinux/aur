@@ -1,0 +1,21 @@
+pkgbase = sensor-vision-git
+	pkgdesc = TUI Client for TeamViewer IoT MQTT API for managing IoT Sensors
+	pkgver = r29.a4dd0de
+	pkgrel = 1
+	url = https://github.com/jcfromsiberia/sensor-vision
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = sensor-vision
+	conflicts = sensor-vision
+	options = !lto
+	source = sensor-vision::git+https://github.com/jcfromsiberia/sensor-vision.git
+	sha256sums = SKIP
+
+pkgname = sensor-vision-git
