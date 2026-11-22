@@ -1,0 +1,16 @@
+pkgbase = salti-bin
+	pkgdesc = A fast, feature rich multiple sequence alignment browser for FASTA files, built for the terminal
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/Sam-Sims/salti
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = salti
+	conflicts = salti
+	options = !debug
+	source_x86_64 = salti-bin-0.10.0-x86_64.tar.xz::https://github.com/Sam-Sims/salti/releases/download/salti-0.10.0/salti-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = bf6efcaf2dae6e9782c5a49b01359e45207052843d8163772f1d7079aa070c39
+
+pkgname = salti-bin
