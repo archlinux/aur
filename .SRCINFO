@@ -1,10 +1,10 @@
 pkgbase = folly-git
-	pkgdesc = An open-source C++ library developed and used at Facebook
-	pkgver = 2021.05.31.00.r0.g99fbca1df
+	pkgdesc = An open-source C++ library developed and used at Meta
+	pkgver = 2026.10.26.00.r667.gb20004566
 	pkgrel = 1
-	url = https://github.com/facebook/folly
+	url = https://github.com/meta/folly
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = cmake
 	makedepends = gtest
 	makedepends = gmock
@@ -27,7 +27,7 @@ pkgbase = folly-git
 	depends = libsodium
 	provides = folly
 	conflicts = folly
-	source = git+https://github.com/facebook/folly.git
-	md5sums = SKIP
+	source = git+https://github.com/meta/folly.git#branch=main
+	sha256sums = SKIP
 
 pkgname = folly-git
