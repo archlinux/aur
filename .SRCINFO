@@ -1,6 +1,6 @@
 pkgbase = lib32-libpaper
 	pkgdesc = Library for handling paper characteristics (32-bit)
-	pkgver = 2.2.6
+	pkgver = 2.2.8
 	pkgrel = 1
 	url = https://github.com/rrthomas/libpaper
 	arch = x86_64
@@ -11,14 +11,14 @@ pkgbase = lib32-libpaper
 	license = FSFAP
 	license = MIT
 	depends = lib32-glibc
-	depends = libpaper
+	depends = libpaper>=2.2.8
 	provides = lib32-paper
 	provides = libpaper.so
 	conflicts = lib32-paper
 	replaces = lib32-paper
-	source = libpaper-2.2.6.tar.gz::https://github.com/rrthomas/libpaper/releases/download/v2.2.6/libpaper-2.2.6.tar.gz
+	source = https://github.com/rrthomas/libpaper/releases/download/v2.2.8/libpaper-2.2.8.tar.gz
 	source = localepaper.c
-	sha256sums = 500d39dc58768ee09688738c8b5bfe07640ba2fd6c25a6dc78810eb69c719e93
+	sha256sums = 1e330571690191874eca415ec76889dd11bab9887a2302d6a3665cd081c4d77b
 	sha256sums = 7e49c6ce67fbaea77929ab5849026412d0f91f692a902805c0134a071cccde22
 
 pkgname = lib32-libpaper
