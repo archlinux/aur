@@ -1,0 +1,18 @@
+pkgbase = gtm-tui-git
+	pkgdesc = Feature rich audio player built for terminal enthusiasts
+	pkgver = r874.ced137c
+	pkgrel = 1
+	url = https://github.com/craftty-org/gtm
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	conflicts = gtm-bin
+	options = !lto
+	source = gtm::git+https://github.com/craftty-org/gtm.git
+	sha256sums = SKIP
+
+pkgname = gtm-tui-git
