@@ -2,10 +2,12 @@
 # 自用维护：仅信任官方 GitHub release 资产，sha256 锁定官方 SHA256SUMS.txt。
 pkgname=vectorcraft-private-bin
 pkgver=0.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc='自用维护：开源 clean-room 版 Adobe Illustrator 替代（矢量插画），上游 storytold/vectorcraft'
 arch=('x86_64')
 url='https://getartcraft.com/apps/vectorcraft'
+# GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
+_gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
 license=('MIT' 'Apache')
 provides=("vectorcraft=$pkgver")
 conflicts=('vectorcraft' 'vectorcraft-bin' 'vectorcraft-git' 'ai.storyteller.vectorcraft')
@@ -23,7 +25,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://gh-proxy.com/https://github.com/storytold/vectorcraft/releases/download/v${pkgver}/vectorcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("${_gh_mirror}https://github.com/storytold/vectorcraft/releases/download/v${pkgver}/vectorcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('8fe8af94743dce6d6129947e860341bcb76356178149b6de8b1ef30792d5c6fe')
 
 package() {
