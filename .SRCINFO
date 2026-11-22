@@ -1,0 +1,18 @@
+pkgbase = proxy-scraper-checker-bin
+	pkgdesc = Scrapes HTTP, SOCKS4 and SOCKS5 proxies from public sources and checks which ones work
+	pkgver = 4143
+	pkgrel = 1
+	url = https://github.com/monosans/proxy-scraper-checker
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = proxy-scraper-checker
+	conflicts = proxy-scraper-checker
+	options = !debug
+	source_x86_64 = proxy-scraper-checker-bin-4143-x86_64.zip::https://github.com/monosans/proxy-scraper-checker/releases/download/build-4143/proxy-scraper-checker-binary-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 5c21d209770cea1e8e99357aaf266b689160f2ba7d8daa275695eeb2b9982300
+	source_aarch64 = proxy-scraper-checker-bin-4143-aarch64.zip::https://github.com/monosans/proxy-scraper-checker/releases/download/build-4143/proxy-scraper-checker-binary-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 4b7235de48c83ab2cfa3a4d5a7db53e99bda56798a0c40018327619905cdfa52
+
+pkgname = proxy-scraper-checker-bin
