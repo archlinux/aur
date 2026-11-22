@@ -1,0 +1,33 @@
+pkgbase = lib32-nvidia-610xx-utils
+	pkgver = 610.57.04
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/610.57.04/NVIDIA-Linux-x86_64-610.57.04.run
+	sha512sums = 4c9566625716ba7257ed2203dbbabfbc7a2dfdfc8bcb16678212ec809dc7ff470d12973ad86ce5f925b271d04239425f43088e8e591cb4ed7f77ec0c8612ffc0
+
+pkgname = lib32-nvidia-610xx-utils
+	pkgdesc = NVIDIA drivers utilities (32-bit) (610xx)
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	depends = lib32-libglvnd
+	depends = nvidia-610xx-utils=610.57.04
+	optdepends = lib32-opencl-nvidia-610xx
+	provides = lib32-vulkan-driver
+	provides = lib32-opengl-driver
+	provides = lib32-nvidia-libgl
+	provides = lib32-nvidia-utils
+	conflicts = lib32-nvidia-libgl
+	conflicts = lib32-nvidia-utils
+	replaces = lib32-nvidia-libgl
+
+pkgname = lib32-opencl-nvidia-610xx
+	pkgdesc = OpenCL implemention for NVIDIA (32-bit) (610xx)
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	optdepends = opencl-headers: headers necessary for OpenCL development
+	provides = lib32-opencl-driver
+	provides = lib32-opencl-nvidia
+	conflicts = lib32-opencl-nvidia
