@@ -1,0 +1,19 @@
+pkgbase = terminal.pong-git
+	pkgdesc = Terminal based ping pong game
+	pkgver = r18.aff432e
+	pkgrel = 1
+	url = https://github.com/IshmamR/terminal.pong
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = terminal.pong
+	conflicts = terminal.pong
+	options = !lto
+	source = terminal.pong::git+https://github.com/IshmamR/terminal.pong.git
+	sha256sums = SKIP
+
+pkgname = terminal.pong-git
