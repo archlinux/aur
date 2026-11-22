@@ -24,6 +24,7 @@ makedepends=(
   'git'
   'unzip'
   'python'
+  'pandoc-cli'
 )
 install=liquidsoap.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/savonet/liquidsoap/archive/refs/tags/v${pkgver}.tar.gz"
@@ -49,11 +50,13 @@ _opam_env() {
 
 prepare() {
   cd "${pkgname}-${pkgver}"
+  sed -i "s/@version@/${pkgver}/" doc/liquidsoap.1.md
+  sed -i 's/--highlight=pygments/--syntax-highlighting=pygments/' doc/dune.inc
 
-  # The four features go into depends, so opam solves them together with
-  # the conflicts of liquidsoap
+  # The four features and the doc filter pandoc-include go into depends, so
+  # opam solves them together with the conflicts of liquidsoap
   sed -i -e '/^depopts: \[$/,/^\]$/{/^  "\(ffmpeg\|posix-time2\|samplerate\|ssl\)"$/d}' \
-    -e 's/^depends: \[$/&\n  "ffmpeg"\n  "posix-time2"\n  "samplerate"\n  "ssl"/' \
+    -e 's/^depends: \[$/&\n  "ffmpeg"\n  "posix-time2"\n  "samplerate"\n  "ssl"\n  "pandoc-include"/' \
     opam/liquidsoap.opam
 
   _opam_env
@@ -75,17 +78,23 @@ package() {
   cd "${pkgname}-${pkgver}"
   _opam_env
   local switch="${OPAMROOT}/${OPAMSWITCH}" stage="${srcdir}/stage" slashes
-  "${switch}/bin/dune" install --prefix /usr --destdir "${stage}" liquidsoap-lang liquidsoap
+  "${switch}/bin/dune" install --prefix /usr --destdir "${stage}" \
+    --docdir /usr/share/doc --mandir /usr/share/man liquidsoap-lang liquidsoap
 
   install -Dm755 "${stage}/usr/bin/liquidsoap" -t "${pkgdir}/usr/bin/"
-  install -d "${pkgdir}/usr/share/liquidsoap"
+  install -d "${pkgdir}/usr/share/liquidsoap" "${pkgdir}/usr/share/doc"
   cp -r "${stage}/usr/share/liquidsoap-lang/libs" "${switch}/share/camomile" \
     "${pkgdir}/usr/share/liquidsoap/"
+  cp -r "${stage}/usr/share/doc/liquidsoap" "${pkgdir}/usr/share/doc/"
+  install -Dm644 "${stage}/usr/share/man/man1/liquidsoap.1" -t "${pkgdir}/usr/share/man/man1/"
   install -Dm644 "${stage}/usr/share/bash_completion/completions/liquidsoap" \
     -t "${pkgdir}/usr/share/bash-completion/completions/"
   install -Dm644 "${srcdir}/liquidsoap.sysusers" "${pkgdir}/usr/lib/sysusers.d/liquidsoap.conf"
   install -Dm644 "${srcdir}/liquidsoap.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/liquidsoap.conf"
 
+  # The settings page shows the $HOME and $TMPDIR of the build
+  sed -i -e "s|${HOME}|\$HOME|g" -e "s|[^;=]*/build_[0-9a-f]*_dune|\$TMPDIR|g" \
+    "${pkgdir}/usr/share/doc/liquidsoap/html/settings.html"
   # ctypes and camomile keep their paths in the opam switch, which liquidsoap
   # never reads; slashes of the same length overwrite them
   slashes=$(printf '%*s' "${#switch}" '' | tr ' ' /)

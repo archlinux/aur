@@ -13,6 +13,7 @@ pkgbase = liquidsoap
 	makedepends = git
 	makedepends = unzip
 	makedepends = python
+	makedepends = pandoc-cli
 	depends = glibc
 	depends = gcc-libs
 	depends = curl
