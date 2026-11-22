@@ -1,0 +1,19 @@
+pkgbase = wopr_tui_2026-git
+	pkgdesc = A WarGames-inspired Cold War simulation TUI with AI-powered scenarios, DEFCON escalation
+	pkgver = r29.13cb3d1
+	pkgrel = 1
+	url = https://github.com/ankurCES/WOPR_TUI_2026
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = wopr_tui_2026
+	conflicts = wopr_tui_2026
+	options = !lto
+	source = wopr_tui_2026::git+https://github.com/ankurCES/WOPR_TUI_2026.git
+	sha256sums = SKIP
+
+pkgname = wopr_tui_2026-git
