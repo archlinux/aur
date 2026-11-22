@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=autotrace
-pkgver=0.31.11
+pkgver=0.31.12
 pkgrel=1
 pkgdesc='A program for converting bitmap to vector graphics'
 arch=('x86_64')
@@ -20,7 +20,7 @@ checkdepends=(
     'ffmpeg'
     'procps-ng')
 source=("https://github.com/autotrace/autotrace/archive/${pkgver}/autotrace-${pkgver}.tar.gz")
-sha256sums=('da595b49d2419ef7f771533f46710c92a0267e380b8ff8a4ca8b9f2f41a76093')
+sha256sums=('0db44ad1be129ccc679f5c314d3f041528fcc111e1210c27f2546dad9793cb6f')
 
 prepare() {
     cd "autotrace-${pkgver}"

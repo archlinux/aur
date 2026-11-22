@@ -1,6 +1,6 @@
 pkgbase = autotrace
 	pkgdesc = A program for converting bitmap to vector graphics
-	pkgver = 0.31.11
+	pkgver = 0.31.12
 	pkgrel = 1
 	url = https://github.com/autotrace/autotrace/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = autotrace
 	depends = libgcc
 	depends = libpng
 	depends = pstoedit
-	source = https://github.com/autotrace/autotrace/archive/0.31.11/autotrace-0.31.11.tar.gz
-	sha256sums = da595b49d2419ef7f771533f46710c92a0267e380b8ff8a4ca8b9f2f41a76093
+	source = https://github.com/autotrace/autotrace/archive/0.31.12/autotrace-0.31.12.tar.gz
+	sha256sums = 0db44ad1be129ccc679f5c314d3f041528fcc111e1210c27f2546dad9793cb6f
 
 pkgname = autotrace
