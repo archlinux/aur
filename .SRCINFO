@@ -1,7 +1,7 @@
 pkgbase = wordcraft-private-bin
 	pkgdesc = 自用维护：开源 clean-room 版 Microsoft Word 替代（纯 Rust 字处理器），上游 storytold/wordcraft
 	pkgver = 0.18.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getartcraft.com/apps/wordcraft
 	arch = x86_64
 	license = MIT
