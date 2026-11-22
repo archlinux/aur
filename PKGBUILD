@@ -1,7 +1,7 @@
 # Maintainer: Dux Labs <DuxLabsDev at gmail dot com>
 
 pkgname=dux-icons
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Icon theme generator that follows your Material colors'
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT Apache-2.0)
 depends=(hicolor-icon-theme
          python)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('072432876c98fbbdb9d9cf7c0ad268b2af31e7201fe9963156779931a4d43095')
+sha256sums=('c7c1ab7e3e3677dbd12835e97928e317a36c59553ad4ce364a242ee66e6a9f13')
 
 check() {
   cd "$pkgname-$pkgver"
