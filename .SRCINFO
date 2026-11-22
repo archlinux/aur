@@ -1,0 +1,16 @@
+pkgbase = wiretui
+	pkgdesc = A minimal keyboard-driven TUI to manage WireGuard VPN connections
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/robin-thoene/wiretui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = wiretui-0.0.1.tar.gz::https://github.com/robin-thoene/wiretui/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = b7ab06eedfb2ea249d075566297cde1dd63a84536334b3e03fa32bb92b55fdbe
+
+pkgname = wiretui
