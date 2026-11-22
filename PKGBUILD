@@ -4,7 +4,7 @@
 #   ssh://aur@aur.archlinux.org/ps-vulkanplay-bin.git
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=ps-vulkanplay-bin
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Remote Play client for PS5 and PS4 consoles, with its own Vulkan renderer"
 arch=('x86_64')
@@ -37,9 +37,9 @@ source=("$url/releases/download/v$pkgver/PS-VulkanPlay-$pkgver-linux-x64.tar.gz"
         "ps-vulkanplay-$pkgver-64.png::$_raw/icons/hicolor/64x64/apps/$_id.png"
         "ps-vulkanplay-$pkgver-128.png::$_raw/icons/hicolor/128x128/apps/$_id.png"
         "ps-vulkanplay-$pkgver-256.png::$_raw/icons/hicolor/256x256/apps/$_id.png")
-sha256sums=('a53e0879e982075031f3dccd2f140a7e787483d3a0c7a1489fd605c7f03e246c'
+sha256sums=('52778b1e186f50f240185b267cd848802313670393cca9ef3d44addfed9cba16'
             '7550fcf0217ed6035dcf75212918d3c812942a7df3b2d8afb2ad6918878c1c2e'
-            '5b454a5e8fb56a492480cacd36ee8eda4e1b643ebeec0eb2cf4b02a471a2d836'
+            '472758bd6d8a1009c4ce3e874fe12b99e30413f5ac543eb0581ce4eb543a8c8d'
             'f20847f3df2dd0e13075a7b569ad2a754e438719756bbef5cf63cf96c0ac5f95'
             'eda0bd9a618eda2cbbb102f9a902c68e365f06ce5b2dd635a7fe30f8226b51b4'
             'f042d4a92955082e788fca572bc6ad429696d5eca11ef772ecbeb97acca5aab3'
