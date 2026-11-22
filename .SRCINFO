@@ -1,24 +1,22 @@
 pkgbase = python-tokenizers-bin
 	pkgdesc = Fast state-of-the-art tokenizers optimized for research and production (official wheel)
-	pkgver = 0.23.2
-	pkgrel = 2
+	pkgver = 0.23.3
+	pkgrel = 1
 	url = https://github.com/huggingface/tokenizers
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = python-installer
 	depends = python
-	depends = python-huggingface-hub<1:2.0
-	provides = python-tokenizers=0.23.2
+	depends = python-huggingface-hub
+	provides = python-tokenizers=0.23.3
 	conflicts = python-tokenizers
-	noextract = tokenizers-0.23.2-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-	noextract = tokenizers-0.23.2-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+	noextract = tokenizers-0.23.3-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	noextract = tokenizers-0.23.3-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
 	options = !strip
-	source = LICENSE-0.23.2::https://raw.githubusercontent.com/huggingface/tokenizers/v0.23.2/LICENSE
-	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = https://files.pythonhosted.org/packages/2c/ca/ca6b93c7820df123b2662a9469e8facc826ccc94e98fdd0d615f6431e73a/tokenizers-0.23.2-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-	sha256sums_x86_64 = 41c2f84d172449b4dadb9cdc508e3e364076613c35b16e76ecfe47a60d1e3305
-	source_aarch64 = https://files.pythonhosted.org/packages/2e/4d/8f569ed49372a3ed8e57099bd515055fd48d7c95912c4307cda6973c2168/tokenizers-0.23.2-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
-	sha256sums_aarch64 = a37039b5dfc4af84eb3ef0a92f4307e28936c8f9adccba2629d36f652e9bf7a2
+	source_x86_64 = https://files.pythonhosted.org/packages/cp310/t/tokenizers/tokenizers-0.23.3-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums_x86_64 = 376851d22bcf9d650a5c3090bb83e6cf9e895fbf0595369fa4cd43c1f69b5f87
+	source_aarch64 = https://files.pythonhosted.org/packages/cp310/t/tokenizers/tokenizers-0.23.3-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+	sha256sums_aarch64 = ec82e80e65a862275b97c3d90b7a523df8d9519ee48aeb4e9625b2cc909274e0
 
 pkgname = python-tokenizers-bin
