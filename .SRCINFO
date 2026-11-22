@@ -1,0 +1,15 @@
+pkgbase = deveco-devicetool
+	pkgdesc = HUAWEI DevEco Device Tool for OpenHarmony device development (VS Code toolchain bundle)
+	pkgver = 4.0.0.400
+	pkgrel = 1
+	url = https://device.harmonyos.com/cn/develop/ide/
+	arch = x86_64
+	license = LicenseRef-Huawei-EULA
+	depends = python
+	depends = unzip
+	optdepends = code: load the bundled DevEco Device Tool extensions
+	options = !strip
+	source = devicetool-linux-tool-4.0.0.400.zip::https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_package_901_9/4e/v3/lGclRHBmTLWHOm_LkEJ46g/devicetool-linux-tool-4.0.0.400.zip?HW-CC-KV=V1&HW-CC-Date=20230904T063206Z&HW-CC-Expire=315360000&HW-CC-Sign=9FCEEF20362FDAAE404DA2B838BF6EBDC5074446A4209F487E75059BB471EF6E
+	sha256sums = SKIP
+
+pkgname = deveco-devicetool
