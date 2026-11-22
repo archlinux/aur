@@ -7,6 +7,8 @@ url="https://github.com/godlikemouse/xfce4-net-visualizer-plugin"
 license=('GPL-2.0-or-later')
 depends=('xfce4-panel' 'libxfce4ui' 'libxfce4util' 'gtk3' 'libsoup3' 'json-glib' 'libmaxminddb' 'iputils')
 makedepends=('meson' 'ninja')
+source=("git+https://github.com/godlikemouse/$pkgname.git")
+md5sums=('SKIP')
 
 build() {
   arch-meson "$startdir/../.." build
