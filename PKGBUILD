@@ -6,7 +6,7 @@
 # is the same build for a local makepkg.
 
 pkgname=emobie
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Compact emoji palette with macros and optional text expansion"
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   'acl: setfacl for instant keyboard access after Grant without logout'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('219c5927663e388ce56e27d5a1217973236a815010dfb5150c37be3cd89d66e7')
+sha256sums=('16ee09db48f193425f06dcbab0084b9be3152bb887664426f7076d6a9a081996')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -57,6 +57,7 @@ package() {
   install -Dm644 uq/dbus/org.emobie.Provider.service \
     "$pkgdir/usr/share/dbus-1/services/org.emobie.Provider.service"
   install -Dm644 -t "$pkgdir/usr/share/uq/settings/pages/emobie" uq/pages/emobie/*
+  install -Dm644 uq/diag/emobie.toml "$pkgdir/usr/share/uq/diag/emobie.toml"
   install -Dm644 packaging/systemd/emobie-inputd.service \
     "$pkgdir/usr/lib/systemd/user/emobie-inputd.service"
   install -Dm755 packaging/setup-input-access.sh \
