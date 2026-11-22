@@ -1,0 +1,18 @@
+pkgbase = slurmer-bin
+	pkgdesc = A TUI for monitoring and managing SLURM jobs
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/wjwei-handsome/Slurmer
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = slurmer
+	conflicts = slurmer
+	options = !debug
+	source = slurmer-bin-0.1.2-LICENSE::https://raw.githubusercontent.com/wjwei-handsome/Slurmer/v0.1.2/LICENSE
+	sha256sums = 65604d4fd90dde5618857ce6f3c1a8df196f562ee3579ff2d16ea8566a85631e
+	source_x86_64 = slurmer-bin-0.1.2-x86_64.tar.gz::https://github.com/wjwei-handsome/Slurmer/releases/download/v0.1.2/slurmer-v0.1.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 58825682814138dfad50db487b013bf2f59493a597764aabb57cd19b89ee2e2c
+
+pkgname = slurmer-bin
