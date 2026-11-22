@@ -1,0 +1,23 @@
+pkgbase = freedoom-bin
+	pkgdesc = Free game based on the Doom engine
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://freedoom.github.io/
+	arch = any
+	license = BSD-3-Clause
+	source = https://github.com/freedoom/freedoom/releases/download/v0.13.0/freedm-0.13.0.zip
+	source = https://github.com/freedoom/freedoom/releases/download/v0.13.0/freedoom-0.13.0.zip
+	sha256sums = b420f13508ef745d7b38e83d15e55e0fc0b09d9a503c96741cddd9773d43f7c9
+	sha256sums = 3f9b264f3e3ce503b4fb7f6bdcb1f419d93c7b546f4df3e874dd878db9688f59
+
+pkgname = freedoom-bin
+	pkgdesc = Battle monsters in two massive campaigns
+	provides = freedoom1
+	provides = freedoom2
+	conflicts = freedoom1
+	conflicts = freedoom2
+
+pkgname = freedm-bin
+	pkgdesc = Fight friends and enemies in competitive deathmatch
+	provides = freedm
+	conflicts = freedm

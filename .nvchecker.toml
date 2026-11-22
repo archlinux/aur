@@ -1,0 +1,4 @@
+[freedoom-bin]
+source = "git"
+git = "https://github.com/freedoom/freedoom.git"
+prefix = "v"
