@@ -6,12 +6,12 @@ pkgver=2026.4
 pkgrel=1
 pkgdesc='Almighty Lightweight Fact Remote Exchange Daemon'
 arch=('x86_64')
-url='http://www.open-mesh.net/'
+url='https://www.open-mesh.org/projects/alfred'
 license=('GPL-2.0-only')
-source=("http://downloads.open-mesh.net/batman/releases/batman-adv-${pkgver}/alfred-${pkgver}.tar.gz"
-	"http://downloads.open-mesh.net/batman/releases/batman-adv-${pkgver}/alfred-${pkgver}.tar.gz.asc")
+source=("https://downloads.open-mesh.org/batman/releases/batman-adv-${pkgver}/alfred-${pkgver}.tar.gz"{,.asc})
 sha256sums=('9d1f5c784608d0f8f0dba5b4601f5c3c5cd1edeb6c671fe3212b08f855fd70a9'
             'SKIP')
+validpgpkeys=('2DE9541A85CC87D5D9836D5E0C8A47A2ABD72DF9')
 depends=('glibc' 'gpsd' 'libnl' 'libcap')
 
 build(){
