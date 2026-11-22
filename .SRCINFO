@@ -1,6 +1,6 @@
 pkgbase = frost-d77
 	pkgdesc = Wayland desktop shell and session locker written in Rust
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/dani-77/frost
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = frost-d77
 	optdepends = matugen: wallpaper-based color palette
 	optdepends = curl: weather forecast
 	backup = etc/pam.d/frost-locker
-	source = frost-d77-0.2.0.tar.gz::https://github.com/dani-77/frost/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 4fd843105ecd8f468058339bc3e3b9508f0a6e6f04a9870073b0eab602277df3
+	source = frost-d77-0.2.1.tar.gz::https://github.com/dani-77/frost/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = e92435e14b7072589f3d39f0a6e238a308e6ed9104f3cd5ae01539826ff56191
 
 pkgname = frost-d77
