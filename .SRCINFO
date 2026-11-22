@@ -1,0 +1,19 @@
+pkgbase = hnr-git
+	pkgdesc = A terminal UI for Hacker News: browse feeds, read threaded comments, vote, reply, search
+	pkgver = r66.6092641
+	pkgrel = 1
+	url = https://github.com/prasanthj/hnr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = hnr
+	conflicts = hnr
+	options = !lto
+	source = hnr::git+https://github.com/prasanthj/hnr.git
+	sha256sums = SKIP
+
+pkgname = hnr-git
