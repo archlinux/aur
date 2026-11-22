@@ -1,7 +1,7 @@
 # Maintainer: Fluree <development@flur.ee>
 
 pkgname=fluree-bin
-pkgver=4.2.8
+pkgver=4.2.9
 pkgrel=1
 pkgdesc='Fluree — semantic graph database (CLI and embedded server)'
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ _release_url="https://github.com/fluree/db/releases/download/v${pkgver}"
 source_x86_64=("${_archive_x86_64}-${pkgver}.tar.xz::${_release_url}/${_archive_x86_64}.tar.xz")
 source_aarch64=("${_archive_aarch64}-${pkgver}.tar.xz::${_release_url}/${_archive_aarch64}.tar.xz")
 
-sha256sums_x86_64=('ea02646b5645afb21a13368fc9159c23993c5a6f3a57d99ca040d9fd0320e56f')
-sha256sums_aarch64=('e01c84233dab30d01088bd9bf67f7fcbe35318a333ef3c0ee64a5dcc21adc9e2')
+sha256sums_x86_64=('d26e0f69ec27282ed0172d34d6c540334bf95e5f07f3c011924915cdddd22d38')
+sha256sums_aarch64=('cdb5c44bb522c42b9bb4185342276f6bcc64b8302a0604d565fc561432e6658f')
 
 package() {
   local _archive_var="_archive_${CARCH}"
