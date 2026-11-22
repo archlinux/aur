@@ -38,7 +38,7 @@ sha256sums_aarch64=('4c2acc9d8bae4e84ab08fb4e02e32853a8a04bcf5cd710e92f36267b5ef
 prepare() {
 	cd "${srcdir}/" || exit
 
-	sed -i '1s/^/#! \/bin\/reshell\n/' *.rsh
+	sed -i '1s/^/#!\/bin\/reshell\n/' *.rsh
 }
 
 package() {
