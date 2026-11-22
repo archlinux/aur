@@ -4,7 +4,7 @@ pkgname=netron-with-mime-bin
 _pkgname=Netron
 pkgver=9.3.7
 _electronversion=45
-pkgrel=1
+pkgrel=2
 pkgdesc="Visualizer for neural network, deep learning and machine learning models (Prebuilt, system-wide electron, with MIME file associations)"
 arch=('x86_64')
 url="https://netron.app/"
@@ -24,7 +24,7 @@ source=(
 )
 source_x86_64=("netron-${pkgver}-amd64.deb::${_ghurl}/releases/download/v${pkgver}/Netron-${pkgver}-amd64.deb")
 sha256sums=('535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d'
+            'bfc878da35b701d2ddf602b89c44c85ba409b908d5c03842c5044ce80e6b2bb0'
             'b65f75c354a52e15610c45d5e92359ee7af2c919ff6af204badaa2ead7833e2b')
 sha256sums_x86_64=('401a1101e47faa69574cd6bbaa8b23f4490d765eeb3948b544d76e1db4ac92cc')
 
@@ -65,14 +65,12 @@ prepare() {
     _check_electron_version
     # Fix desktop Exec path from /opt/Netron/ to /usr/bin/
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/netron.desktop"
-    # Append MimeType to desktop file
-    sed -i '/^Categories=/a MimeType=application/x-onnx;application/x-ort;application/x-tflite;application/x-tensorflow-pb;application/x-tensorflow-pbtxt;application/x-pytorch;application/x-safetensors;application/x-gguf;application/x-keras;application/x-coreml;application/x-mlnet;application/x-caffe;application/x-caffe-prototxt;application/x-cntk;application/x-paddle;application/x-mindir;application/x-openvino;application/x-tensorrt;application/x-ncnn;application/x-mnn;application/x-tnn;application/x-mlir;application/x-rknn;application/x-ascend-om;application/x-cambricon;application/x-megengine;application/x-kmodel;application/x-xmodel;application/x-bigdl;application/x-mar;application/x-armnn;application/x-circle;application/x-nnef;application/x-torch7;application/x-uff;application/x-kann;application/x-netron;application/x-catboost;application/x-xgboost;application/x-espdl;application/x-litertlm;' "${srcdir}/usr/share/applications/netron.desktop"
 }
 
 package() {
     # Install launch script and app resources
     install -Dm755 "${srcdir}/netron.sh" "${pkgdir}/usr/bin/netron"
-    install -Dm755 -d "${pkgdir}/usr/lib/netron"
+    install -dm755 "${pkgdir}/usr/lib/netron"
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
     cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/netron/"
 
@@ -129,6 +127,13 @@ package() {
     for _type in "${_mime_types[@]}"; do
         ln -sf "/usr/share/pixmaps/netron.png" "${_mime_icons_dir}/${_type}.png"
     done
+
+    # desktop 的 MimeType 与图标共用同一份 MIME 列表，避免两处维护
+    local _mime_line=""
+    for _type in "${_mime_types[@]}"; do
+        _mime_line+="${_type/-//};"
+    done
+    sed -i "/^Categories=/a MimeType=${_mime_line}" "${srcdir}/usr/share/applications/netron.desktop"
 
     install -Dm644 "${srcdir}/usr/share/applications/netron.desktop" -t "${pkgdir}/usr/share/applications"
 

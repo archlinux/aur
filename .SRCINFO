@@ -1,7 +1,7 @@
 pkgbase = netron-with-mime-bin
 	pkgdesc = Visualizer for neural network, deep learning and machine learning models (Prebuilt, system-wide electron, with MIME file associations)
 	pkgver = 9.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://netron.app/
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = netron-with-mime-bin
 	source = netron.sh
 	source = netron-mime.xml
 	sha256sums = 535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = bfc878da35b701d2ddf602b89c44c85ba409b908d5c03842c5044ce80e6b2bb0
 	sha256sums = b65f75c354a52e15610c45d5e92359ee7af2c919ff6af204badaa2ead7833e2b
 	source_x86_64 = netron-9.3.7-amd64.deb::https://github.com/lutzroeder/netron/releases/download/v9.3.7/Netron-9.3.7-amd64.deb
 	sha256sums_x86_64 = 401a1101e47faa69574cd6bbaa8b23f4490d765eeb3948b544d76e1db4ac92cc
