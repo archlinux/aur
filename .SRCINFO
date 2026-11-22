@@ -1,0 +1,19 @@
+pkgbase = cgol-tui-rs-bin
+	pkgdesc = Conway's Game of Life viewer with a TUI
+	pkgver = 0.6.10
+	pkgrel = 1
+	url = https://github.com/jarjk/cgol-tui-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = cgol-tui-rs
+	conflicts = cgol-tui-rs
+	options = !debug
+	source_x86_64 = cgol-tui-rs-bin-0.6.10-x86_64::https://github.com/jarjk/cgol-tui-rs/releases/download/v0.6.10/cgol-tui-rs-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = a7b00111c6c27fcfdba186dd660d2618da03aa5b69caa43645bcf76d9f297dad
+	source_aarch64 = cgol-tui-rs-bin-0.6.10-aarch64::https://github.com/jarjk/cgol-tui-rs/releases/download/v0.6.10/cgol-tui-rs-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 6fb05b6de7796ebd41dfcd2c5869594314aa50443c708030d6f749a271d62cd3
+
+pkgname = cgol-tui-rs-bin
