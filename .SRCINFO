@@ -1,6 +1,6 @@
 pkgbase = openkermit
 	pkgdesc = Portable network and serial communication and automation software
-	pkgver = 11.1.519
+	pkgver = 11.1.520
 	pkgrel = 1
 	url = https://github.com/OpenKermit/ckermit
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = openkermit
 	depends = openssl
 	depends = pam
 	conflicts = ckermit
-	source = openkermit-11.1.519.tar.gz::https://github.com/OpenKermit/ckermit/archive/refs/tags/v11.1.519.tar.gz
-	sha256sums = 6239cb015812706a13cf604a68be154613ee5011519fef4c0a4309ecf0a90549
+	source = openkermit-11.1.520.tar.gz::https://github.com/OpenKermit/ckermit/archive/refs/tags/v11.1.520.tar.gz
+	sha256sums = a0b8454a651c56339c5ef7e1091eedbc340a34e6189755d99c1ca861abaa8bef
 
 pkgname = openkermit
