@@ -1,7 +1,7 @@
 # Contributor: Scott Alfter <scott@alfter.us>
 
 pkgname=caddy-analyzer
-pkgver=0.9.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Fast, zero-dependency access log analyzer, security threat inspector, and TUI dashboard for Caddy v2"
 arch=(any)
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("go")
 makedepends=("go")
 source=( "${pkgname}-${pkgver}.tar.gz::https://github.com/lenny-ts/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz" )
-sha512sums=( "1a2db882b1213f42e341cbe08d76d5a8b56b3a105f95f8c05235b719ab4025d5057824372f06b25cbb5d0066339d5f52acca24305c7780c0df7a71399e7ec56d" )
+sha512sums=( "5a9567d2c0c9d555235c41db736b240833769b9b30de00be16e393125206382ad87089fcd99b7697c37144697884cfb4ace3cc70bf995fe58b5a0eeac7462a63" )
 
 build() {
   cd ${pkgname}-${pkgver}
