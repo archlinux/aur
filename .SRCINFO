@@ -1,17 +1,17 @@
 pkgbase = nebula-ai-bin
 	pkgdesc = CLI/TUI for the nebula.gg AI task orchestration platform
-	pkgver = 0.1.43
+	pkgver = 0.1.44
 	pkgrel = 1
 	url = https://github.com/agent-labs-dev/nebula-desktop/tree/main/apps/cli
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = nebula-ai=0.1.43
+	provides = nebula-ai=0.1.44
 	conflicts = nebula-ai
 	options = !strip
-	source_x86_64 = nebula-ai-v0.1.43-linux-x64.tar.gz::https://app-assets.nebula.gg/cli/stable/v0.1.43/linux-x64/nebula-ai-v0.1.43-linux-x64.tar.gz
-	sha256sums_x86_64 = 1b7c3e55fcb4574cca6fe8a0350d2ad9c0f389af8f9616bb55a557c9940e95b0
-	source_aarch64 = nebula-ai-v0.1.43-linux-arm64.tar.gz::https://app-assets.nebula.gg/cli/stable/v0.1.43/linux-arm64/nebula-ai-v0.1.43-linux-arm64.tar.gz
-	sha256sums_aarch64 = 91b2a4ec0e53712c75814b437cb8391bf5c4e3a081bb37245af000fdda81ae27
+	source_x86_64 = nebula-ai-v0.1.44-linux-x64.tar.gz::https://app-assets.nebula.gg/cli/stable/v0.1.44/linux-x64/nebula-ai-v0.1.44-linux-x64.tar.gz
+	sha256sums_x86_64 = 7a8c93de6105cf191dd94099b1c09c22aaea2a1b79cf570b3cf6fa6222dc206f
+	source_aarch64 = nebula-ai-v0.1.44-linux-arm64.tar.gz::https://app-assets.nebula.gg/cli/stable/v0.1.44/linux-arm64/nebula-ai-v0.1.44-linux-arm64.tar.gz
+	sha256sums_aarch64 = b333d507ce0c4a7ee67a4162b49e92ff7e803bb922c72a361d374f2c40cbde85
 
 pkgname = nebula-ai-bin
