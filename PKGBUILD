@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Extract rich information from any text (raw, JSON, HTML, YAML, etc.)"
 
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('c7b84f9920d20b5f8dfa615d0e294528b17e80282ac27ce93737241aae515d85')
-sha256sums_aarch64=('3107adc441d0c0d5602c8d29eb0dcbd9a8614596f555b64206fc5613e7747d1f')
+sha256sums_x86_64=('ad20fcf59b71a93d35676ebb68e8c13eb12d70a457ac13e4f356ce0866ee9815')
+sha256sums_aarch64=('608ac2373b972d0db96e535416b9ebefb8fc8c02ab92ada30c6c51af4f86a0b2')
 
 
 package() {
