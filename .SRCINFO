@@ -1,0 +1,19 @@
+pkgbase = comfygit-bin
+	pkgdesc = All-In-One: Centralised multi-project management, Changelog generator
+	pkgver = 0.39.1
+	pkgrel = 1
+	url = https://github.com/comfy-home/ComfyGit
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-SA-PS
+	depends = glibc
+	depends = libgcc
+	provides = comfygit
+	conflicts = comfygit
+	options = !debug
+	source_x86_64 = comfygit-bin-0.39.1-x86_64.tar.gz::https://github.com/comfy-home/ComfyGit/releases/download/v0.39.1/comfygit-0.39.1-linux-amd64-portable.tar.gz
+	sha256sums_x86_64 = ffb01aee3e8ec7bffa2ced4ff9f86f80684a38819c885899a28f59f3155e44bf
+	source_aarch64 = comfygit-bin-0.39.1-aarch64.tar.gz::https://github.com/comfy-home/ComfyGit/releases/download/v0.39.1/comfygit-0.39.1-linux-arm64-portable.tar.gz
+	sha256sums_aarch64 = e4d9a68bcfa8094488d67e8dd31669951e4ccf98fe87a48662d7e196d97efdc6
+
+pkgname = comfygit-bin
