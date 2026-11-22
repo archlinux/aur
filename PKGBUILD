@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=pi-bolt-avx2-bin
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Pi coding agent compiled ahead of time to native code (prebuilt binary, x86-64 with AVX2)'
 arch=('x86_64')
@@ -27,7 +27,7 @@ _payload=pi-bolt-linux-x64
 _label=linux-x64
 
 source_x86_64=("${_payload}-${pkgver}.tar.xz::${_release_url}/${_payload}.tar.xz")
-sha256sums_x86_64=('db1caa7f07a733a402677569fe44fda15c19a42402f0940d5a6934ebcc9df4da')
+sha256sums_x86_64=('6d15e573d7eeebfecf10c1e1bab288deb0ffd773d9315b682c0c32fedb3aea58')
 
 latestver() {
   git ls-remote --tags "https://github.com/${_repo}.git" 'bolt-v[0-9]*' |
