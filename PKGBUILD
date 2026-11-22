@@ -1,5 +1,5 @@
 pkgname=jdk8-zulu-fx-bin
-pkgver=8.98.0.111
+pkgver=8.98.0.201
 pkgrel=1
 pkgdesc='Azul Zulu JDK 8 with JavaFX'
 arch=(
@@ -12,11 +12,11 @@ license=('custom')
 
 _jvm='java-8-zulu-fx'
 _javaver=8
-_zuluver=8.98.0.111
-_jdkver=8.0.512
-_sha256_x86_64='b5e5a8607bab3b70f8bc9a1e527a45e94fb2099d9bad89d1c8e0defc17976bb2'
-_sha256_i686='b3a87a612aa709f2d7da12db6abd8274918f46a24cb585b26582afa98a69592e'
-_sha256_aarch64='dbfb12e9ba601f198ed4ed4b3721a326ba1bb8cafe63a8d4c7718a4d29f81627'
+_zuluver=8.98.0.201
+_jdkver=8.0.514
+_sha256_x86_64='8eadc06f4225cdb7580a91042a6008ed63d8d53615d4fad7255fa0e1dff63b78'
+_sha256_i686='992487cae384e46a036886ff647762fcdd4871403634e51d3121c5dd3d94692d'
+_sha256_aarch64='ef32638c2c3ecbd059d87571b4481e97dcbd80d26d8c1eacc8b17fa6c06b10f5'
 
 depends=(
     'java-runtime-common'
