@@ -1,5 +1,5 @@
 pkgname=hyprism-shell
-pkgver=0.1.22
+pkgver=0.1.23
 pkgrel=1
 pkgdesc='Hyprland and Quickshell desktop environment with dynamic theming'
 arch=('any')
@@ -67,7 +67,7 @@ optdepends=(
 )
 backup=('etc/pam.d/hyprism-lock')
 source=("hyprism-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('de1344976c4f824e9790a5e6c2e237493ec0324bf171f5e9905932e24c3bbb49')
+sha256sums=('a8ffdcef3b906c9ce1587bf000faea5a66680de5da637047fb962c16dc5cdaf1')
 
 package() {
   cd "hyprism-${pkgver}"
