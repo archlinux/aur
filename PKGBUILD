@@ -1,50 +1,71 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
-# Conitrbutor: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
 
-_name="tesseract"
-pkgname="lib32-${_name}"
-pkgver=5.5.1
+set -u
+pkgname=tesseract
+pkgver=5.5.4
 pkgrel=1
-pkgdesc="An OCR program (32-bit)"
-arch=('x86_64')
-url="https://tesseract-ocr.github.io"
-_url="https://github.com/tesseract-ocr/${_name}"
+pkgdesc='An OCR program'
+pkgdesc+=' (32-bit)'
+arch=(x86_64)
+#url="https://tesseract-ocr.github.io"
+_url="https://github.com/tesseract-ocr/tesseract"
+url="https://github.com/tesseract-ocr/tesseract"
 license=('Apache-2.0')
-depends=('lib32-curl' 'lib32-gcc-libs' 'lib32-glibc' 'lib32-leptonica>=1.74'
-         'lib32-libarchive' "${_name}>=${pkgver}")
-provides=("lib${_name}.so")
-_pkgsrc="${_name}-${pkgver}"
+depends=(
+  curl
+  gcc-libs
+  glibc
+  libarchive
+  'leptonica>=1.74'
+)
+depends=("${depends[@]/#/lib32-}")
+depends+=("${pkgname}>=${pkgver}")
+provides=("lib${pkgname}.so=${pkgver}")
+_pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
-        "${_name}_only_target_libraries.patch")
-sha256sums=('a7a3f2a7420cb6a6a94d80c24163e183cf1d2f1bed2df3bbc397c81808a57237'
+        "${pkgname}_only_target_libraries.patch")
+sha256sums=('a8dbf8b8c8ee427ff6ad1d99116502feaf59440af1adb893caf60a6576826cf4'
             'cebf0b3f6768ad483ad224f3b7d12ebfcb9a6002828d8133e85d14d4129bfd2c')
 
+_name="${pkgname}"
+pkgname="lib32-${pkgname}"
+
 prepare() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd "${_pkgsrc}"
   patch -Np1 -i "${srcdir}/${_name}_only_target_libraries.patch"
 }
 
 build() {
+  cd "${_pkgsrc}"
+
   export CFLAGS+=" -m32"
   export CXXFLAGS+=" -m32"
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  cd "${srcdir}/${_pkgsrc}"
+if [ ! -s 'configure' ]; then
   ./autogen.sh
+fi
+if [ ! -s 'Makefile' ]; then
   ./configure \
     --prefix='/usr' \
     --program-suffix='-32' \
     --lib{exec,}dir='/usr/lib32' \
     --build=i686-pc-linux-gnu \
     --disable-doc
+fi
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd "${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
 
   cd "${pkgdir}/usr"
   rm -rf "bin" "include" "share"
 }
+set +u
