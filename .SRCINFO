@@ -1,7 +1,7 @@
 pkgbase = linux-wallpaperengine-v3-bin
 	pkgdesc = Wallpaper Engine backgrounds for Linux (prebuilt x86-64-v3)
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Become-ILLUSORY/linux-wallpaperengine
 	arch = x86_64
 	license = GPL-3.0-only
