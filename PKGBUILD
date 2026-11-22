@@ -25,168 +25,70 @@ makedepends=(
   'unzip'
   'python'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/savonet/liquidsoap/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('001feb5efc851f30af110b1b7892b1da02697c9282e352c603ea2b87b56273c2')
-
-_opam_packages=(
-  # Core deps from liquidsoap.opam
-  'dune-build-info'
-  'dune-site'
-  'mm'
-  're'
-  'curl'
-  'camomile'
-  'uri'
-  'menhirLib'
-  'mem_usage'
-  'metadata'
-  'magic-mime'
-  'ppx_string'
-  'base-bytes'
-  # Optional but wanted for our use case
-  'ffmpeg'    # HLS input + decoding
-  'ssl'       # HTTPS sources
-  'samplerate' # Resampling
-  'posix-time2'
-)
+install=liquidsoap.install
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/savonet/liquidsoap/archive/refs/tags/v${pkgver}.tar.gz"
+        'liquidsoap.sysusers'
+        'liquidsoap.tmpfiles')
+sha256sums=('001feb5efc851f30af110b1b7892b1da02697c9282e352c603ea2b87b56273c2'
+            'a8a759a71362cd405d12381effc4d41a9f70dcfb3b039b7a6236ab82e363c6d0'
+            '8ea34e0054bcb937c86121abd8b230801a73ca1874ac5769708a049f699a6522')
 
 _opam_env() {
-  export OPAMROOT="${srcdir}/.opam"
+  export HOME="${srcdir}/home"
+  export DUNE_CACHE=disabled
+  export OPAMROOT="${srcdir}/opam"
+  export OPAMSWITCH=build
   export OPAMYES=1
-  export OPAMCONFIRMLEVEL=unsafe-yes
-  export OPAMVERBOSE=0
   export OPAMCOLOR=never
-  # Use system OCaml, don't recompile it
-  export OPAMNOEXTERNALSOLVERFETCH=true
-  # opam's sandboxing uses bubblewrap which can clash with makepkg's
-  # restrictions; disable for the build.
-  export OPAMSANDBOXING=false
+  export OPAMNODEPEXTS=1
+  export LIQUIDSOAP_BUILD_TARGET=posix
+  export IS_SNAPSHOT=false
+  export GIT_DIR="${srcdir}/no-git"
+  mkdir -p "${HOME}"
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
+
+  # The four features go into depends, so opam solves them together with
+  # the conflicts of liquidsoap
+  sed -i -e '/^depopts: \[$/,/^\]$/{/^  "\(ffmpeg\|posix-time2\|samplerate\|ssl\)"$/d}' \
+    -e 's/^depends: \[$/&\n  "ffmpeg"\n  "posix-time2"\n  "samplerate"\n  "ssl"/' \
+    opam/liquidsoap.opam
 
   _opam_env
-
-  if [[ ! -d "${OPAMROOT}" ]]; then
-    opam init \
-      --bare \
-      --no-setup \
-      --disable-shell-hook \
-      --disable-sandboxing \
-      --shell=bash \
-      --reinit
-  fi
-
-  if ! opam switch list --short 2>/dev/null | grep -qx build-switch; then
-    opam switch create build-switch --packages=ocaml-system --no-install
-  fi
-
-  eval "$(opam env --switch=build-switch --set-switch)"
-
-  # Pin local liquidsoap-* opam packages from this source tree so opam
-  # resolves deps against this version and doesn't pull liquidsoap-lang
-  # from opam-repository.
-  cd opam
-  for f in liquidsoap-lang.opam liquidsoap.opam; do
-    opam pin add --no-action --kind=path "${f%.opam}" "${srcdir}/${pkgname}-${pkgver}"
-  done
+  opam init --bare --no-setup --disable-sandboxing
+  opam switch create build ocaml-system
+  opam pin add --no-action --kind=path liquidsoap-lang .
+  opam pin add --no-action --kind=path liquidsoap .
+  opam install --deps-only --download-only liquidsoap-lang liquidsoap
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
+  cd "${pkgname}-${pkgver}"
   _opam_env
-  eval "$(opam env --switch=build-switch --set-switch)"
-
-  opam install --yes "${_opam_packages[@]}"
-  opam install --yes --deps-only liquidsoap-lang liquidsoap
-
-  dune build --release --profile=release
+  opam install --deps-only liquidsoap-lang liquidsoap
+  opam exec -- dune build -p liquidsoap-lang,liquidsoap @install
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
+  cd "${pkgname}-${pkgver}"
   _opam_env
-  eval "$(opam env --switch=build-switch --set-switch)"
+  local switch="${OPAMROOT}/${OPAMSWITCH}" stage="${srcdir}/stage" slashes
+  "${switch}/bin/dune" install --prefix /usr --destdir "${stage}" liquidsoap-lang liquidsoap
 
-  # dune install lays out bin/, share/liquidsoap/, share/man/, etc.
-  # --docdir is required because dune's default doc target is /usr/doc on Arch.
-  dune install --release \
-    --destdir="${pkgdir}" \
-    --prefix=/usr \
-    --docdir=/usr/share/doc \
-    liquidsoap-lang liquidsoap
+  install -Dm755 "${stage}/usr/bin/liquidsoap" -t "${pkgdir}/usr/bin/"
+  install -d "${pkgdir}/usr/share/liquidsoap"
+  cp -r "${stage}/usr/share/liquidsoap-lang/libs" "${switch}/share/camomile" \
+    "${pkgdir}/usr/share/liquidsoap/"
+  install -Dm644 "${stage}/usr/share/bash_completion/completions/liquidsoap" \
+    -t "${pkgdir}/usr/share/bash-completion/completions/"
+  install -Dm644 "${srcdir}/liquidsoap.sysusers" "${pkgdir}/usr/lib/sysusers.d/liquidsoap.conf"
+  install -Dm644 "${srcdir}/liquidsoap.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/liquidsoap.conf"
 
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-
-  # OCaml source files leak into the installed lib dir; only the compiled
-  # .cmxs/.cmi are needed at runtime.
-  find "${pkgdir}/usr/lib/liquidsoap-lang" \( -name '*.ml' -o -name '*.mli' \) -delete
-
-  # Camomile (Unicode lib) uses dune-site to encode its data directory at
-  # link time, pointing into the opam build switch. Ship the data under our
-  # own namespace (a future Arch camomile package would own /usr/share/camomile)
-  # and patch the encoded path in the binary in place.
-  local cam_src="${OPAMROOT}/build-switch/share/camomile"
-  install -d "${pkgdir}/usr/share/liquidsoap/camomile"
-  cp -a "${cam_src}/." "${pkgdir}/usr/share/liquidsoap/camomile/"
-
-  # dune-site encodes "=<len>:<path><padding>" with a fixed total field
-  # width. Replace the srcdir path with /usr/share/liquidsoap/camomile,
-  # preserving the total byte count by adjusting length prefix and padding.
-  python3 - "${pkgdir}/usr/bin/liquidsoap" <<'PY'
-import sys, re
-path = sys.argv[1]
-with open(path, 'rb') as f:
-    data = f.read()
-# Match =<len>:<srcdir>/.opam/build-switch/share/camomile<spaces>
-pat = re.compile(rb'=(\d+):(/[^\x00]*?\.opam/build-switch/share/camomile)( +)', re.DOTALL)
-def sub(m):
-    new = b'/usr/share/liquidsoap/camomile'
-    orig_total = len(m.group(0))
-    new_prefix = b'=%d:%s' % (len(new), new)
-    pad = orig_total - len(new_prefix)
-    assert pad >= 0, f"camomile path replacement overflow: {orig_total} vs {len(new_prefix)}"
-    return new_prefix + b' ' * pad
-new_data, n = pat.subn(sub, data)
-if n == 0:
-    sys.exit("camomile encoded path not found in binary")
-with open(path, 'wb') as f:
-    f.write(new_data)
-print(f"patched {n} camomile path(s)")
-PY
-
-  # Two more residual srcdir paths embedded in the binary:
-  #   - a ctypes -I include flag (NUL-terminated string) used by runtime FFI
-  #     stub compilation in Ctypes.Foreign, almost never invoked by scripts;
-  #   - the OCaml library search path that dune-site bakes into an `=N:hardcoded
-  #     \0/usr/lib/ocaml\0<srcdir>/lib<padding>` block used by Dynlink for
-  #     plugin discovery. /usr/lib/ocaml is already in that list, so blanking
-  #     the srcdir entry leaves a working search path on the user system.
-  # Blank both to space-padded empty fields so any caller sees a no-op rather
-  # than a stale build-host path.
-  python3 - "${pkgdir}/usr/bin/liquidsoap" "${srcdir}" <<'PY'
-import sys, re
-binpath, srcdir = sys.argv[1], sys.argv[2].encode()
-with open(binpath, 'rb') as f:
-    data = f.read()
-escaped = re.escape(srcdir + b'/.opam/build-switch/lib')
-# Match the path followed by trailing C-string NULs OR dune-site padding spaces.
-pat = re.compile(escaped + rb'(/ctypes)?( +|\x00+)')
-def sub(m):
-    return b' ' * len(m.group(0)) if m.group(2).startswith(b' ') else b'\x00' * len(m.group(0))
-data, n = pat.subn(sub, data)
-if n == 0:
-    sys.exit("expected residual lib/ctypes srcdir paths in binary, found none")
-with open(binpath, 'wb') as f:
-    f.write(data)
-print(f"nulled {n} residual path(s)")
-PY
-  # Remaining $srcdir hits at this point live in DWARF debug sections (OCaml
-  # _build/default paths). makepkg's default strip pass removes them after
-  # package() returns. A final check would have to run post-strip, which is
-  # outside this hook's reach; rely on makepkg's own "reference to $srcdir"
-  # check for that final assertion.
+  # ctypes and camomile keep their paths in the opam switch, which liquidsoap
+  # never reads; slashes of the same length overwrite them
+  slashes=$(printf '%*s' "${#switch}" '' | tr ' ' /)
+  LC_ALL=C sed -i -e "s|${switch}/lib/ctypes|${slashes}/lib/ctypes|g" \
+    -e "s|${switch}/share/camomile|${slashes}/share/camomile|g" "${pkgdir}/usr/bin/liquidsoap"
 }

@@ -1,0 +1,2 @@
+d /var/cache/liquidsoap 0775 liquidsoap liquidsoap -
+d /var/log/liquidsoap 0755 liquidsoap liquidsoap -
