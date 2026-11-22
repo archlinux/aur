@@ -1,0 +1,18 @@
+pkgbase = invocra-bin
+	pkgdesc = A terminal dashboard for GitLab CI across projects and servers, with per-project branch selection
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/dsszs3333/invocra
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = invocra
+	conflicts = invocra
+	options = !debug
+	source = invocra-bin-0.3.0-LICENSE::https://raw.githubusercontent.com/dsszs3333/invocra/v0.3.0/LICENSE
+	sha256sums = 066e03e8962b6c5b088bea744134186355f57bbf2b7d0f0e97dcafc2fd5ae755
+	source_x86_64 = invocra-bin-0.3.0-x86_64.tar.gz::https://github.com/dsszs3333/invocra/releases/download/v0.3.0/invocra-v0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e9315d2b3497b6af9846fdf9a143a81ed3cc011bbd3e390b98dc91be298f78bc
+
+pkgname = invocra-bin
