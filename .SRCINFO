@@ -1,6 +1,6 @@
 pkgbase = suzumushi-bin
 	pkgdesc = A calm, fully local terminal audio player for Linux
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/nuggocto/suzumushi
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = suzumushi-bin
 	depends = glibc
 	depends = libgcc
 	depends = libpipewire
-	provides = suzumushi=1.4.1
+	provides = suzumushi=1.4.2
 	conflicts = suzumushi
 	options = !debug
-	source_x86_64 = suzumushi-v1.4.1-x86_64-unknown-linux-gnu.tar.xz::https://github.com/nuggocto/suzumushi/releases/download/v1.4.1/suzumushi-v1.4.1-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 31953d73269c1778a178096849056213f4056cb5a27df0de6a049fb4ea740e5d
+	source_x86_64 = suzumushi-v1.4.2-x86_64-unknown-linux-gnu.tar.xz::https://github.com/nuggocto/suzumushi/releases/download/v1.4.2/suzumushi-v1.4.2-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 827dbc10b0a897c680c79d3cbf9b7d8f9e4e364f2a01a737adc0701f25d69077
 
 pkgname = suzumushi-bin
