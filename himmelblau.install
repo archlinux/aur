@@ -113,6 +113,16 @@ post_upgrade() {
         echo
     fi
 
+    # Before 4.0.8-4 the display manager pulled himmelblaud in on every boot,
+    # so a configured daemon could be running without being enabled.
+    if [ "$(vercmp "$2" 4.0.8-4)" -lt 0 ] &&
+        ! systemctl -q is-enabled himmelblaud.service 2>/dev/null; then
+        echo "The display manager no longer starts himmelblaud at boot. Once your"
+        echo "domain is set in /etc/himmelblau/himmelblau.conf, enable the daemons:"
+        echo "    systemctl enable --now himmelblaud himmelblaud-tasks"
+        echo
+    fi
+
     echo "Restart the daemons to run the new version:"
     echo "    systemctl try-restart himmelblaud himmelblaud-tasks"
 }

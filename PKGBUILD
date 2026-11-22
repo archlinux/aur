@@ -12,7 +12,12 @@
 #   keep a matching library installed rather than leave PAM and NSS unloadable
 # - RUSTUP_TOOLCHAIN/CARGO_TARGET_DIR exports for builds outside a chroot
 # - the HSM PIN helper in /usr/lib/himmelblau instead of /usr/libexec
-# - a package-specific name for the display-manager drop-in
+# - a package-specific name for the display-manager drop-in, which only orders
+#   the display manager after himmelblaud (After=) and no longer pulls it in
+#   (Wants=): the daemon runs once the admin enables it. Pulled in with no
+#   domain set, it exits 1 and is restarted at once until its start limit
+#   trips; where each start takes longer than that limit allows for, the limit
+#   never trips and boot never reached the login screen
 # - every installed /etc file in backup, so local edits survive upgrades
 # - service units generated for systemd 257 rather than the build host's
 #   detected version, which falls back to weaker units (User=root) if detection
@@ -30,7 +35,7 @@
 
 pkgname=himmelblau
 pkgver=4.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Azure Entra ID authentication for Linux (daemon, PAM, NSS, broker, SSO)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/himmelblau-idm/himmelblau"
@@ -192,8 +197,14 @@ package() {
     "$pkgdir/usr/lib/systemd/user/himmelblau-compliance-check.service"
   install -Dm644 platform/opensuse/himmelblau-compliance-check.timer \
     "$pkgdir/usr/lib/systemd/user/himmelblau-compliance-check.timer"
-  install -Dm644 src/config/gdm3_service_override.conf \
-    "$pkgdir/usr/lib/systemd/system/display-manager.service.d/himmelblau.conf"
+  local dm_dropin="$pkgdir/usr/lib/systemd/system/display-manager.service.d/himmelblau.conf"
+  install -Dm644 src/config/gdm3_service_override.conf "$dm_dropin"
+  sed -i '/^Wants=himmelblaud\.service$/d' "$dm_dropin"
+  if grep -q '^Wants=' "$dm_dropin"; then
+    echo "error: the display-manager drop-in still pulls in units" >&2
+    return 1
+  fi
+  grep -qx 'After=himmelblaud.service' "$dm_dropin"
 
   install -Dm644 src/daemon/src/himmelblaud.tmpfiles.conf \
     "$pkgdir/usr/lib/tmpfiles.d/himmelblaud.conf"
