@@ -1,0 +1,21 @@
+pkgbase = mxr-bin
+	pkgdesc = Local-first email client with Vim-style navigation, multi-account sync, and full-text search
+	pkgver = 0.6.248
+	pkgrel = 1
+	url = https://github.com/planetaryescape/mxr
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	depends = alsa-lib
+	depends = dbus
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = openssl-3
+	depends = pcre2
+	provides = mxr
+	conflicts = mxr
+	options = !debug
+	source_x86_64 = mxr-bin-0.6.248-x86_64.tar.gz::https://github.com/planetaryescape/mxr/releases/download/v0.6.248/mxr-v0.6.248-linux-x86_64.tar.gz
+	sha256sums_x86_64 = b68b2b3882ab13604e84d852efd3ad398d3879e71f5cc4cbb3b90929d9764771
+
+pkgname = mxr-bin
