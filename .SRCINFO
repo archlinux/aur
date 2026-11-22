@@ -1,0 +1,16 @@
+pkgbase = bytebeat-rs
+	pkgdesc = A terminal tool for generating music from bytebeat expressions
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/chaosprint/bytebeat-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = bytebeat-rs-0.1.0.tar.gz::https://github.com/chaosprint/bytebeat-rs/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = b9361c3d452648241f6e698ca9a6b5256e9999255e668de01822848671c8ee69
+
+pkgname = bytebeat-rs
