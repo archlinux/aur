@@ -1,0 +1,50 @@
+[Unit]
+Description=Immich Public Proxy – upload service
+Documentation=https://docs.ipp.nz
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=exec
+DynamicUser=yes
+WorkingDirectory=/usr/lib/immich-public-proxy-upload
+Environment=NODE_ENV=production
+Environment=APP_VERSION=@PKGVER@
+EnvironmentFile=/etc/immich-public-proxy-upload/environment
+LoadCredential=config.json:/etc/immich-public-proxy-upload/config.json
+Environment=IPP_CONFIG=%d/config.json
+ExecStart=/usr/bin/node /usr/lib/immich-public-proxy-upload/dist/index.js
+Restart=on-failure
+RestartSec=5s
+
+# Loopback only; add remote Immich / notification endpoints via drop-in
+IPAddressDeny=any
+IPAddressAllow=localhost
+
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,29 @@
+pkgbase = immich-public-proxy
+	pkgdesc = Share Immich photos and albums publicly without exposing your Immich instance
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://github.com/alangrainger/immich-public-proxy
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = npm
+	depends = nodejs
+	source = immich-public-proxy-4.2.0.tar.gz::https://github.com/alangrainger/immich-public-proxy/archive/refs/tags/v4.2.0.tar.gz
+	source = immich-public-proxy.service
+	source = immich-public-proxy-upload.service
+	source = immich-public-proxy.env
+	source = immich-public-proxy-upload.env
+	sha256sums = 766aa9fbb2ecf1712aedf44e13fdc63cf40f1bc94e985c3c46fa8e9b5a2a7a3f
+	sha256sums = 6734e1ae8f507fc9c0bba211d057fa130d7b22102a03ac2b7b1b4350fc4ef629
+	sha256sums = e530739d37990ec767dd8bbbebb5040bbc95ff22e08cad6c5acf48078e6d63bd
+	sha256sums = e27b4e6b775d425d9ce86a2d1564119ac26b96dd3bc9f65db70de9b4ea2dca24
+	sha256sums = f30fa855c502013597e8495ac0a311b998db6d7f4d55a150e2697d76d48111a9
+
+pkgname = immich-public-proxy
+	optdepends = immich-public-proxy-upload: let share visitors upload photos to Immich
+	backup = etc/immich-public-proxy/config.json
+	backup = etc/immich-public-proxy/environment
+
+pkgname = immich-public-proxy-upload
+	pkgdesc = Upload service for Immich Public Proxy: lets share visitors send photos back to Immich
+	backup = etc/immich-public-proxy-upload/config.json
+	backup = etc/immich-public-proxy-upload/environment

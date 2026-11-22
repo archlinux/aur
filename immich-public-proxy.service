@@ -1,0 +1,56 @@
+[Unit]
+Description=Immich Public Proxy
+Documentation=https://docs.ipp.nz
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=exec
+DynamicUser=yes
+# Static files are served from the relative path 'public'
+WorkingDirectory=/usr/lib/immich-public-proxy
+Environment=NODE_ENV=production
+Environment=APP_VERSION=@PKGVER@
+EnvironmentFile=/etc/immich-public-proxy/environment
+# Config as a separate file: systemd (root) reads it and provides it read-only
+# in $CREDENTIALS_DIRECTORY for the DynamicUser
+LoadCredential=config.json:/etc/immich-public-proxy/config.json
+Environment=IPP_CONFIG=%d/config.json
+ExecStart=/usr/bin/node /usr/lib/immich-public-proxy/dist/index.js
+Restart=on-failure
+RestartSec=5s
+
+# The app always binds to all interfaces; only allow loopback traffic
+# (local reverse proxy in, local Immich out). For a remote Immich add its
+# address via drop-in: IPAddressAllow=<immich-ip>
+IPAddressDeny=any
+IPAddressAllow=localhost
+
+# Hardening (do not use MemoryDenyWriteExecute: Node's JIT needs W+X memory)
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
+

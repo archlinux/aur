@@ -1,0 +1,9 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!*.patch
+!immich-public-proxy.service
+!immich-public-proxy.env
+!immich-public-proxy-upload.service
+!immich-public-proxy-upload.env
