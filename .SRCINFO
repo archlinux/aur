@@ -1,0 +1,16 @@
+pkgbase = a-puzzle-a-day
+	pkgdesc = Generate and browse all solutions to A-Puzzle-A-Day
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/mrbjarksen/a-puzzle-a-day
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = a-puzzle-a-day-0.1.1.tar.gz::https://github.com/mrbjarksen/a-puzzle-a-day/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 89a501ee3e6261419ade2c1439e9159ef0cb22008cb0d1a61a644120a8bebd94
+
+pkgname = a-puzzle-a-day
