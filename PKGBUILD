@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Almighty Lightweight Fact Remote Exchange Daemon'
 arch=('x86_64')
 url='https://www.open-mesh.org/projects/alfred'
-license=('GPL-2.0-only')
+license=('GPL-2.0-only AND MIT')
 source=("https://downloads.open-mesh.org/batman/releases/batman-adv-${pkgver}/alfred-${pkgver}.tar.gz"{,.asc})
 sha256sums=('9d1f5c784608d0f8f0dba5b4601f5c3c5cd1edeb6c671fe3212b08f855fd70a9'
             'SKIP')
@@ -24,5 +24,6 @@ package() {
 	cd "${srcdir}/alfred-${pkgver}"
 
 	make DESTDIR="${pkgdir}"  PREFIX=/usr SBINDIR=/usr/bin install
+	install -Dm644 LICENSES/preferred/MIT -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
