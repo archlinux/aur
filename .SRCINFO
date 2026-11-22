@@ -1,0 +1,12 @@
+pkgbase = wibo-bin
+	pkgdesc = A minimal, low-fuss wrapper that can run simple command-line 32-bit Windows binaries on Linux and macOS.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/decompals/wibo
+	arch = x86_64
+	license = MIT
+	provides = wibo
+	source = wibo-bin-1.2.0::https://github.com/decompals/wibo/releases/download/1.2.0/wibo-x86_64
+	sha256sums = 13f86a2d618f0dbe67179d349625345eabf9b46450295cb4c904e49f6aff85af
+
+pkgname = wibo-bin
