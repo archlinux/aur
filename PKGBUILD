@@ -2,19 +2,23 @@
 pkgname=conjure
 _app_id=io.github.nate_xyz.Conjure
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Magically transform your images."
 arch=('any')
 url="https://github.com/nate-xyz/conjure"
 license=('GPL-3.0-or-later')
 depends=(
+  'gtk4'
   'libadwaita'
   'python-gobject'
   'python-loguru'
   'python-wand'
 )
 makedepends=('meson')
-checkdepends=('appstream-glib')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('1866d146217ca47219f42c2e415bd597f301e29a25b4a454c022827f6c16788e')
 
@@ -29,7 +33,12 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+
+  # Only validate schema & desktop file
+  meson test -C build "Validate schema file" "Validate desktop file" --no-rebuild --print-errorlogs
+
+  # Use appstreamcli instead of appstream-util
+  appstreamcli validate --no-net build/data/${_app_id}.appdata.xml || :
 }
 
 package() {
