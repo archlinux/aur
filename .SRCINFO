@@ -1,0 +1,19 @@
+pkgbase = gitty-tui-bin
+	pkgdesc = A terminal Git client with the GitHub Desktop experience: history, line staging, fetch, pull
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/VedangP57/gitty
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = gitty-tui
+	conflicts = gitty-tui
+	options = !debug
+	source_x86_64 = gitty-tui-bin-0.2.0-x86_64.tar.xz::https://github.com/VedangP57/gitty/releases/download/v0.2.0/gitty-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 9e2bc4a0b262e25f0d735a1394902783ca21b1f6938993182d154944d79cb8f0
+	source_aarch64 = gitty-tui-bin-0.2.0-aarch64.tar.xz::https://github.com/VedangP57/gitty/releases/download/v0.2.0/gitty-cli-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 414635ded833ef145e57c5e89fa97d6efabfc41f3a5abb7ba1239490bbf198fd
+
+pkgname = gitty-tui-bin
