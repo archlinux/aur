@@ -3,7 +3,7 @@
 
 pkgname=franklyn-bin
 _pkgname=franklyn-sentinel
-pkgver=0.9.7
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Franklyn Sentinel - streams student screen activity to the teacher during exams'
 arch=('x86_64' 'aarch64')
@@ -36,8 +36,8 @@ source_aarch64=("$_release/$_pkgname-$pkgver-aarch64-linux-dist.tar.zst")
 noextract=("$_dist")
 
 sha256sums=('8e92bd7fda5283e189f6163c88fae59f922a72df5de47c39c233c7e9ee6acae4')
-sha256sums_x86_64=('5e2b8a1828504f20aaff5a763329387f9b10c20b6c757d5c7dd10a62ea1e718a')
-sha256sums_aarch64=('6e22a79e25c1cd8ab42472a14e060b5eabb55fe85f55de72e75ca69289d619ba')
+sha256sums_x86_64=('cce668f567afabcc0576212b7ec78051d63b377c173542f3e684cb59fd170b7a')
+sha256sums_aarch64=('706df43feda47674f04141ccc20932a29aba18bc98dc2fd252f6a291608ea472')
 
 prepare() {
   if [[ -d dist ]]; then
