@@ -1,6 +1,6 @@
 pkgname=oranglauncher
-pkgver=8.5.1
-pkgrel=2
+pkgver=9.0.1
+pkgrel=1
 pkgdesc="built from source with Nuitka"
 arch=(x86_64)
 url="https://oranges.lt"
@@ -16,7 +16,7 @@ source=("OrangLaunch-${pkgver}.tar.gz::https://github.com/Orang-Studio/OrangLaun
         "oranglauncher.sh"
         "LICENSE"
         "oranglauncher-mime.xml")
-sha256sums=('ed315180e426ba632c4dfe720557a84061c515ff4eee74b32774eeb6a3cf3b95'
+sha256sums=('706f613eb4e8b88d4ff1fd158ea48d46667a48c8315e0031b321de62953485f7'
             'f9aca31c4c3e1e789c7047fed380019744cf13a1e03d7857ac0f7b488d8cc607'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '2d0cdbad857e3b7fe79c41f981a89ad1c595d54e43884b3fd5d89892ec0bf07c')
