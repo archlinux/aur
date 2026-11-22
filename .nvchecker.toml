@@ -1,0 +1,5 @@
+[tuimessenger-bin]
+source = "github"
+github = "whyyor/tuimessenger"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,17 @@
+pkgbase = tuimessenger-bin
+	pkgdesc = WhatsApp, Telegram, Slack and Instagram in one terminal app
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/whyyor/tuimessenger
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0
+	provides = tuimessenger
+	conflicts = tuimessenger
+	options = !strip
+	source_x86_64 = tuimessenger-x86_64-0.1.6.tgz::https://github.com/whyyor/tuimessenger/releases/download/v0.1.6/tuimessenger_v0.1.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 82a5d389c9452154ba386cf393f59ec7252f0d532990cc48cf273392f9753d8a
+	source_aarch64 = tuimessenger-aarch64-0.1.6.tgz::https://github.com/whyyor/tuimessenger/releases/download/v0.1.6/tuimessenger_v0.1.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3d46af4b06cd4af1bed5d0db9655947d2f05f512658f6fec7e703c4d0585240a
+
+pkgname = tuimessenger-bin
