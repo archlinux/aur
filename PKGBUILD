@@ -9,10 +9,12 @@ _upstream=anefzaoui/misterdownloadmanager
 _distname=MisterDownloadManager
 _iconrev=8d68f9bf6dc7a84d16a0b7088d916a7ca16368b7
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='自用维护：多线程/断点续传/浏览器接管/BT 下载管理器，上游 anefzaoui/misterdownloadmanager'
 arch=('x86_64')
 url="https://github.com/${_upstream}"
+# GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
+_gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
 license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs' 'gtk3' 'libglvnd' 'libx11' 'libxcursor' 'libxi'
          'libxkbcommon' 'libxkbcommon-x11' 'libxrender' 'wayland' 'dbus'
@@ -22,7 +24,7 @@ makedepends=('python-pillow')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
-source=("${_distname}-${pkgver}-linux-x86_64.tar.gz::https://gh-proxy.com/https://github.com/${_upstream}/releases/download/v${pkgver}/${_distname}-${pkgver}-linux-x86_64.tar.gz"
+source=("${_distname}-${pkgver}-linux-x86_64.tar.gz::${_gh_mirror}https://github.com/${_upstream}/releases/download/v${pkgver}/${_distname}-${pkgver}-linux-x86_64.tar.gz"
         "misterdownloadmanager.png::https://raw.githubusercontent.com/${_upstream}/${_iconrev}/art/Mister%20Download%20Manager.png")
 sha256sums=('3327ebd6b5565186c3e1286bbfdc85ffc95fa681cc2a57a51b0bc07ff42a009f'
             '0bd9403acd085b2bbe8c8c2ebcc9f082faba8d0c0a649327164b0ea95d77d425')
