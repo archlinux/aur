@@ -1,11 +1,11 @@
 pkgbase = xtop-git
 	pkgdesc = A TUI system monitor written in Rust for X
-	pkgver = r45.0500176
+	pkgver = r64.484718a
 	pkgrel = 1
 	url = https://github.com/xtop-cli/xtop
 	arch = x86_64
 	arch = aarch64
-	license = MIT
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs
