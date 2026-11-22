@@ -1,7 +1,7 @@
 pkgbase = effectcraft-private-bin
 	pkgdesc = 自用维护：开源 clean-room 版 Adobe After Effects 替代（动效合成），上游 storytold/effectcraft
 	pkgver = 0.24.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getartcraft.com/apps/effectcraft
 	arch = x86_64
 	license = MIT
