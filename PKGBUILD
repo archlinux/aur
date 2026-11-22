@@ -3,8 +3,9 @@
 
 _name=minecraft-c
 pkgname="${_name}-git"
-pkgver=v1.2.r4.5f6cb39
-pkgrel=2
+epoch=1
+pkgver=1.2.r4.5f6cb39
+pkgrel=1
 pkgdesc="Minecraft Classic 0.0.30a reimplemented in C (bleeding-edge version)."
 arch=(x86_64)
 url="https://github.com/johnpayne-dev/MinecraftC"
@@ -24,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_name}"
-  git describe --tags --long | sed "s/\-/.r/;s/\-g/./"
+  git describe --tags --long | sed "s/^v//g; s/\-/.r/;s/\-g/./"
 }
 
 build() {
@@ -54,12 +55,12 @@ build() {
 }
 
 package() {
-    cd "$srcdir"
-    install -Dm644 "${_name}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"
-	install -Dm644 "${_name}.png" "${pkgdir}/usr/share/pixmaps/${_name}.png"
+  cd "$srcdir"
+  install -Dm644 "${_name}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"
+  install -Dm644 "${_name}.png" "${pkgdir}/usr/share/pixmaps/${_name}.png"
 
-    cd "${_name}"
-	install -Dm755 "Output/MinecraftC" "${pkgdir}/usr/bin/MinecraftC"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${_name}"
+  install -Dm755 "Output/MinecraftC" "${pkgdir}/usr/bin/MinecraftC"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
