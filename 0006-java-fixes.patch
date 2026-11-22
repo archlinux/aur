@@ -1,0 +1,42 @@
+diff --git a/m4/java.m4 b/m4/java.m4
+index 57a4f2a41..83a10ffc0 100644
+--- a/m4/java.m4
++++ b/m4/java.m4
+@@ -178,9 +178,34 @@ m4_define([_JAVA_CHECK_INTERNAL],
+ 		    JTYPE="Sun JRE 1.8"
+ 		    JFLAGS="-Xlint:unchecked -Xlint:deprecation"
+ 		    ;;
+-                JRE11.0.*)
++                JRE11.*)
+ 		    try_java=true
+-		    JTYPE="Sun JRE 11.0"
++		    JTYPE="Sun JRE 11.x"
++		    JFLAGS="-Xlint:unchecked -Xlint:deprecation"
++		    ;;
++                JRE17.*)
++            try_java=true
++		    JTYPE="Sun JRE 17.x"
++		    JFLAGS="-Xlint:unchecked -Xlint:deprecation"
++		    ;;
++                JRE21.*)
++            try_java=true
++		    JTYPE="Sun JRE 21.x"
++		    JFLAGS="-Xlint:unchecked -Xlint:deprecation"
++		    ;;
++                JRE25.*)
++            try_java=true
++		    JTYPE="Sun JRE 25.x"
++		    JFLAGS="-Xlint:unchecked -Xlint:deprecation"
++		    ;;
++                JRE26.*)
++            try_java=true
++		    JTYPE="Sun JRE 26.x"
++		    JFLAGS="-Xlint:unchecked -Xlint:deprecation"
++		    ;;
++                JRE27.*)
++            try_java=true
++		    JTYPE="Sun JRE 27.x"
+ 		    JFLAGS="-Xlint:unchecked -Xlint:deprecation"
+ 		    ;;
+                 JREgcj-4*)
+

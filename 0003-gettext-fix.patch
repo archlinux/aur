@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 4ea2aa632..b36dbbc3f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -157,6 +157,7 @@ dnl ******************************
+ GETTEXT_PACKAGE=libgda-$LIBGDA_ABI_VERSION
+ AC_SUBST(GETTEXT_PACKAGE)
+ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
++AM_GNU_GETTEXT_VERSION([0.24.1])
+ AM_GLIB_GNU_GETTEXT
+ 
+ 
+

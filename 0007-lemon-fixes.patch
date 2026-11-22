@@ -1,0 +1,24 @@
+diff --git a/libgda/sql-parser/lemon.c b/libgda/sql-parser/lemon.c
+index afab40fd8..73258c0ad 100644
+--- a/libgda/sql-parser/lemon.c
++++ b/libgda/sql-parser/lemon.c
+@@ -70,12 +70,12 @@ static struct action *Action_new(void);
+ static struct action *Action_sort(struct action *);
+ 
+ /********** From the file "build.h" ************************************/
+-void FindRulePrecedences();
+-void FindFirstSets();
+-void FindStates();
+-void FindLinks();
+-void FindFollowSets();
+-void FindActions();
++void FindRulePrecedences(struct lemon *);
++void FindFirstSets(struct lemon *);
++void FindStates(struct lemon *);
++void FindLinks(struct lemon *);
++void FindFollowSets(struct lemon *);
++void FindActions(struct lemon *);
+ 
+ /********* From the file "configlist.h" *********************************/
+ void Configlist_init(void);
+

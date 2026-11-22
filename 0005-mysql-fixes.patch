@@ -1,0 +1,21 @@
+diff --git a/m4/mysql.m4 b/m4/mysql.m4
+index c3a16319d..2182c967f 100644
+--- a/m4/mysql.m4
++++ b/m4/mysql.m4
+@@ -131,6 +131,7 @@ m4_define([_MYSQL_CHECK_INTERNAL],
+   	                save_LIBS="$LIBS"
+ 	                LIBS="$LIBS -L$d/$mysql_loclibdir -lmysql"
+    	                AC_LINK_IFELSE([AC_LANG_SOURCE([
++#include <stdio.h>
+ #include <winsock.h>
+ #include <mysql.h>
+ int main() {
+@@ -175,6 +176,7 @@ int main() {
+ 	    LIBS="$LIBS $MYSQL_LIBS"
+ 
+             AC_LINK_IFELSE([AC_LANG_SOURCE([
++#include <stdio.h>
+ #include <mysql.h>
+ int main() {
+     printf("%p", mysql_real_connect);
+

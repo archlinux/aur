@@ -1,0 +1,30 @@
+diff --git a/autogen.sh b/autogen.sh
+old mode 100755
+new mode 100644
+index 1eaa12be5..48f3ae494
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -14,13 +14,15 @@ PKG_NAME="GNOME Data Access"
+     exit 1
+ }
+ 
+-which gnome-autogen.sh || {
+-    echo "You need to install gnome-common package"
+-    exit 1
+-}
+-
+ # Work around usage of gettext macros (AM_ICONV) without calling gettextize.
+-# intltoolize is used intead. https://bugzilla.gnome.org/show_bug.cgi?id=660537
+ touch config.rpath
+ 
+-USE_GNOME2_MACROS=1 USE_COMMON_DOC_BUILD=yes . gnome-autogen.sh
++# 1. Populate gettext infrastructure (needed so aclocal can find AM_ICONV).
++autopoint --force
++
++# 2. Run autoreconf. NOTE: autoreconf -i internally re-runs autopoint,
++#    which overwrites po/Makefile.in.in with the non-intltool version.
++autoreconf -f -i
++
++# 3. Run intltoolize LAST so its version of po/Makefile.in.in wins.
++intltoolize --force --copy
+
