@@ -1,0 +1,20 @@
+pkgbase = kubectl-watch-bin
+	pkgdesc = A kubectl plugin to provide a pretty delta change view of being watched Kubernetes resources
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/imuxin/kubectl-watch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = kubectl-watch
+	conflicts = kubectl-watch
+	options = !debug
+	source_x86_64 = kubectl-watch-bin-0.2.4-x86_64.tar.gz::https://github.com/imuxin/kubectl-watch/releases/download/v0.2.4/kubectl-watch-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c3129e4cfc67a2655f0e489e69444179a06ea43ad4d735260a84692256b6ce3b
+	source_aarch64 = kubectl-watch-bin-0.2.4-aarch64.tar.gz::https://github.com/imuxin/kubectl-watch/releases/download/v0.2.4/kubectl-watch-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0df9551652b374e5f98ba94bc88cbb214090fdde09808e4411f395002334bc3e
+
+pkgname = kubectl-watch-bin
