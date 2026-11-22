@@ -1,7 +1,7 @@
 pkgbase = photocraft-private-bin
 	pkgdesc = 自用维护：开源 clean-room 版 Adobe Photoshop 替代（图像编辑），上游 storytold/photocraft
 	pkgver = 0.23.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getartcraft.com/apps/photocraft
 	arch = x86_64
 	license = MIT
