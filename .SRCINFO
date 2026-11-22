@@ -1,0 +1,21 @@
+pkgbase = claude-code-rust-bin
+	pkgdesc = A native terminal interface for Claude Code that renders inline into the terminal's scrollback
+	pkgver = 0.16.3
+	pkgrel = 1
+	url = https://github.com/srothgan/claude-code-rust
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = claude-code-rust
+	conflicts = claude-code-rust
+	options = !strip
+	options = !debug
+	options = !emptydirs
+	source_x86_64 = claude-code-rust-bin-0.16.3-x86_64.tar.gz::https://github.com/srothgan/claude-code-rust/releases/download/v0.16.3/claude-code-rust-0.16.3-linux-x64-gnu.tar.gz
+	sha256sums_x86_64 = 4e999f361153b63c5fe6a48dea29d049a1a1939f24b5670c86c6b21dafa466b4
+	source_aarch64 = claude-code-rust-bin-0.16.3-aarch64.tar.gz::https://github.com/srothgan/claude-code-rust/releases/download/v0.16.3/claude-code-rust-0.16.3-linux-arm64-gnu.tar.gz
+	sha256sums_aarch64 = 5c4ddbd83fdf322fb45aa82d8831c8eb9896aa0d8005384483eac3de90f5361e
+
+pkgname = claude-code-rust-bin
