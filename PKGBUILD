@@ -3,7 +3,7 @@
 # Maintainer: Kaleb
 pkgname=rpcs3-bin
 _pkgname=rpcs3
-pkgver=0.0.42.19734
+pkgver=0.0.43.20644
 pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator (Latest Binary)'
 arch=('x86_64')
@@ -29,6 +29,8 @@ depends=(
     'gmp'
     'libdrm'
     'libgpg-error'
+    'libsm'
+    'libice'
 )
 optdepends=('wayland')
 makedepends=('curl' 'jq')
