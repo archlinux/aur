@@ -1,0 +1,20 @@
+pkgbase = rvirc-git
+	pkgdesc = A TUI client
+	pkgver = r67.95a9376
+	pkgrel = 1
+	url = https://github.com/KaraZajac/rvIRC
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = rvirc
+	conflicts = rvirc
+	options = !lto
+	source = rvirc::git+https://github.com/KaraZajac/rvIRC.git
+	sha256sums = SKIP
+
+pkgname = rvirc-git
