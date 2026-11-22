@@ -1,0 +1,22 @@
+pkgbase = g-view
+	pkgdesc = Minimal image viewer (GTK3 port of qView)
+	pkgver = 0.1.0
+	pkgrel = 3
+	url = https://github.com/adelmonte/g-view
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gtk3
+	depends = lcms2
+	depends = gdk-pixbuf2
+	depends = cairo
+	depends = pango
+	depends = glib2
+	depends = hicolor-icon-theme
+	options = !lto
+	options = !debug
+	source = g-view-0.1.0.tar.gz::https://github.com/adelmonte/g-view/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 7f06498f5422e2c4708e8740f3bd00ab5f962e38374c600ce4dfd3c978e7c033
+
+pkgname = g-view
