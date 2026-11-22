@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=mailflow
-pkgver=4.5.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc='Self-hosted unified webmail client'
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
     "node-v${_nodever}-linux-x64.tar.xz::https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.xz"
 )
 noextract=("node-v${_nodever}-linux-x64.tar.xz")
-sha512sums=('5b323d2e73409ae382b09141fcf1da42c787778c6eedf08763afa97f5fc317df25e4cbbc487eb293b30a455801938e30a5227836f7ff2547c05998e77e95d4b7'
+sha512sums=('a3259ec792d24cb5e5fc0d4fdb535da4a7f40d0d27a985a6a0230e81db8144a21a644d37d7091df91cedb44020ba0d02b0018be0828d0511de08a6574177ecfb'
             '1ec6fa4942d64b0b58f357a40cfc7ef2b9bccfb23025b6e2160b4241c17469862c57fe320189bb45072d75438f625c29882071fa61c702ade48b8c1df1bb633f'
             '9497cc71fabd85126821ee2c13a5a5c5247c336704bad24d56f39b6dafad6e79a4249671c3811a0ede2fe45272711ac5e2b87cf7bf6daeaba4b1005f222a884f'
             '28a031baab898730af2377cbce2f840f166d8df38113b07f2a5a817aed48fa06f7e126d7e54c7b02866bcbac9fc09260d70c233f0a16800856700c459de95dba'
