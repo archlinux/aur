@@ -1,0 +1,19 @@
+pkgbase = declutter-diff-bin
+	pkgdesc = A diff viewer for reviewing AI-written code that hides comments, tests, imports, logging
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/NikolajMosbaek/declutter-diff
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = declutter-diff
+	conflicts = declutter-diff
+	options = !debug
+	source_x86_64 = declutter-diff-bin-0.2.0-x86_64.tar.xz::https://github.com/NikolajMosbaek/declutter-diff/releases/download/v0.2.0/declutter-diff-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = e208e20f5526223f54dedbda9871d838861cfa4cfc5dadbef388e3977419dbfd
+	source_aarch64 = declutter-diff-bin-0.2.0-aarch64.tar.xz::https://github.com/NikolajMosbaek/declutter-diff/releases/download/v0.2.0/declutter-diff-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = e806ba93aaed499d6c20af36a323f334f7e0759c66fbdb7e21cf4db57c638484
+
+pkgname = declutter-diff-bin
