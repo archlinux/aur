@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Seurat
-_pkgver=5.5.1
+_pkgver=6.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,7 +13,6 @@ license=('MIT')
 depends=(
   r-cowplot
   r-fastdummies
-  r-fitdistrplus
   r-future
   r-future.apply
   r-generics
@@ -26,12 +25,11 @@ depends=(
   r-irlba
   r-jsonlite
   r-lifecycle
-  r-lmtest
   r-matrixstats
-  r-miniui
+  r-parallelly
   r-patchwork
   r-pbapply
-  r-plotly
+  r-pls
   r-png
   r-progressr
   r-rann
@@ -39,25 +37,20 @@ depends=(
   r-rcpp
   r-rcppannoy
   r-rcpphnsw
-  r-reticulate
   r-rlang
-  r-rocr
   r-rspectra
   r-rtsne
   r-scales
   r-scattermore
   r-sctransform
   r-seuratobject
-  r-shiny
-  r-spatstat.explore
-  r-spatstat.geom
-  r-tibble
   r-uwot
 )
 
 makedepends=(
   r-rcppeigen
   r-rcppprogress
+  r-rcppthread
 )
 checkdepends=(
   r-ape
@@ -76,13 +69,16 @@ optdepends=(
   r-arrow
   r-base64enc
   r-biobase
-  r-biocgenerics
+  r-blosc
   r-bpcells
+  r-circlize
+  r-complexheatmap
   r-data.table
   r-delayedarray
   r-deseq2
+  r-destiny
   r-enrichr
-  r-genomeinfodb
+  r-fitdistrplus
   r-genomicranges
   r-ggrastr
   r-glmgampoi
@@ -91,27 +87,35 @@ optdepends=(
   r-iranges
   r-leidenbase
   r-limma
-  r-magrittr
+  r-lmtest
   r-mast
   r-metap
+  r-miniui
   r-mixtools
   r-monocle
+  r-plotly
   r-presto
   r-r.utils
+  r-rbioformats
+  r-reticulate
   r-rfast2
+  r-rocr
   r-rsvd
-  r-rtracklayer
   r-s4vectors
   r-sf
+  r-shiny
   r-singlecellexperiment
   r-sp
+  r-spatstat.explore
+  r-spatstat.geom
+  r-spls
   r-summarizedexperiment
   r-testthat
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b07be078da2106bfa6cd0572744fdbb6')
-b2sums=('518fe46b4dfb11f2ee8d5741d10ae981aa076e15be48305c80ed2c4388e887fffa62c3b1741d14007d52af92be26807741740e5cae0d1a5055d9c55e89f7bdac')
+md5sums=('f7a70cc3afd42f7f556386ad4bd53234')
+b2sums=('8d12d5814a39af9947116653d30df3d3166fc2dec0058a5cd35b026b6ae99fb228d58058e547d365ff70b43edb7436a0941cf60a1debe5d018de235a87bfdbed')
 
 prepare() {
   # skip test that requires BPCells
