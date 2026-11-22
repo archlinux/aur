@@ -1,17 +1,16 @@
 pkgbase = percolator-bin
 	pkgdesc = Software for postprocessing of shotgun proteomics data
-	pkgver = 3.09
+	pkgver = 4.00.01
 	pkgrel = 1
-	url = http://percolator.ms/
+	url = https://github.com/percolator/percolator
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = patchelf
 	depends = gcc-libs
-	depends = boost-libs
+	depends = unzip
 	conflicts = percolator-git
-	source = percolator-v3.09-linux-amd64.deb::https://github.com/percolator/percolator/releases/download/rel-3-09/percolator-v3-09-linux-amd64.deb
-	source = license.txt::https://raw.githubusercontent.com/percolator/percolator/rel-3-09/license.txt
-	sha256sums = 3488743548d607d468f5b1bdbc06e7d99d03af4f0bf00264a0a086e32d662cf1
+	source = ubuntu-packages.zip::https://github.com/percolator/percolator/releases/download/rel-4-00-01/ubuntu-packages.zip
+	source = license.txt::https://raw.githubusercontent.com/percolator/percolator/rel-4-00-01/license.txt
+	sha256sums = 83a19401babb08eff65eaeaa223539949fd627a02bb2e542dddc95be21e65c47
 	sha256sums = 47af14373dcd046971a95e3c1d5cf9a9612aae9efa9545b66311f942c7902d1a
 
 pkgname = percolator
