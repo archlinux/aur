@@ -1,0 +1,17 @@
+pkgbase = wireguard-tui-bin
+	pkgdesc = A Linux TUI for managing WireGuard tunnels with live status, configuration editing, QR import
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/JamilleJung/wireguard-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = wireguard-tui
+	conflicts = wireguard-tui
+	options = !debug
+	source_x86_64 = wireguard-tui-bin-1.10.0-x86_64.tar.gz::https://github.com/JamilleJung/wireguard-tui/releases/download/v1.10.0/wireguard-tui-1.10.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = b1b08836933f5e7605f6d9d169f8e381c822fd1834d582138511798b8d3cf971
+	source_aarch64 = wireguard-tui-bin-1.10.0-aarch64.tar.gz::https://github.com/JamilleJung/wireguard-tui/releases/download/v1.10.0/wireguard-tui-1.10.0-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 46b74db206f5e62409af76c157cc0a681554f65b682b3b87b435aa473aafead1
+
+pkgname = wireguard-tui-bin
