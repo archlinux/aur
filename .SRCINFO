@@ -1,0 +1,16 @@
+pkgbase = ario-tui-bin
+	pkgdesc = A terminal download manager powered by aria2, with scheduled queues, daemon, batch clipboard imports
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/peymanAzad/ario
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ario-tui
+	conflicts = ario-tui
+	options = !debug
+	source_x86_64 = ario-tui-bin-0.2.4-x86_64.tar.gz::https://github.com/peymanAzad/ario/releases/download/v0.2.4/ario-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 00ddf56dd9444da6d4a536fdd51a43d1faf576e9ba274c4837785982523f2b7f
+
+pkgname = ario-tui-bin
