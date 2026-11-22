@@ -3,3 +3,4 @@ src/
 *.pkg.tar.zst
 build.log
 npmcache/
+deveco-cli-*.tgz
