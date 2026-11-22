@@ -7,7 +7,7 @@
 #
 pkgname=unifiedsysmon-bin
 _appname=unifiedSysMon
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="System monitor and port scanner desktop app with multi-server support"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('unifiedsysmon')
 # The bundled backend is a PyInstaller one-file binary; stripping it breaks it.
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb")
-sha256sums=('14b22c3bc526be7950774842d79ea89668ea42f41348bd935cf7955d42be4745')
+sha256sums=('6a0ff48364afaf638b3a61fc992a4c99b7c2bb291482b1732517873611657786')
 
 package() {
   # dpkg has used gzip, xz and zstd for data.tar over the years; take whichever.

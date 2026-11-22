@@ -1,6 +1,6 @@
 pkgbase = unifiedsysmon-bin
 	pkgdesc = System monitor and port scanner desktop app with multi-server support
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/BibekTripathy/unifiedSysMon
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = unifiedsysmon-bin
 	conflicts = unifiedsysmon
 	options = !strip
 	options = !debug
-	source = unifiedsysmon-bin-2.2.0.deb::https://github.com/BibekTripathy/unifiedSysMon/releases/download/v2.2.0/unifiedSysMon_2.2.0_amd64.deb
-	sha256sums = 14b22c3bc526be7950774842d79ea89668ea42f41348bd935cf7955d42be4745
+	source = unifiedsysmon-bin-2.2.1.deb::https://github.com/BibekTripathy/unifiedSysMon/releases/download/v2.2.1/unifiedSysMon_2.2.1_amd64.deb
+	sha256sums = 6a0ff48364afaf638b3a61fc992a4c99b7c2bb291482b1732517873611657786
 
 pkgname = unifiedsysmon-bin
