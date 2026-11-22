@@ -1,0 +1,26 @@
+pkgbase = barwatch-git
+	pkgdesc = Watch Beyond All Reason replays together in rooms on a barwatch server
+	pkgver = 0.4.0.r65.g54cf06d
+	pkgrel = 1
+	url = https://github.com/u6bkep/barwatch
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = hicolor-icon-theme
+	depends = vulkan-icd-loader
+	depends = libxkbcommon
+	depends = wayland
+	depends = xdg-utils
+	optdepends = p7zip: fallback when an engine archive cannot be unpacked natively
+	optdepends = libx11: run under X11 instead of Wayland
+	provides = barwatch
+	conflicts = barwatch
+	options = !lto
+	options = !debug
+	source = git+https://github.com/u6bkep/barwatch.git
+	sha256sums = SKIP
+
+pkgname = barwatch-git
