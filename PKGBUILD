@@ -1,6 +1,6 @@
 # Maintainer: Ludovico Massaccesi <lmassach at gmail dot com>
 pkgname=cosmic-ext-connected-git
-pkgver=0.5.2.r5.ge18b9f9
+pkgver=0.9.0.r45.gdfe2da8
 pkgrel=1
 pkgdesc="Cosmic extension for KDEConnect support"
 arch=('x86_64')
@@ -28,11 +28,17 @@ prepare() {
 
 build() {
   cd cosmic-ext-connected
-  cargo build --release
+  just update
+  just build-release
+}
+
+check() {
+  cd cosmic-ext-connected
+  just test
 }
 
 package() {
   cd cosmic-ext-connected
   mkdir -p "$pkgdir"/usr
-  just prefix="$pkgdir/usr" install
+  just rootdir="$pkgdir" prefix=/usr install
 }
