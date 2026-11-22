@@ -1,0 +1,16 @@
+pkgbase = git-cow-worktree-git
+	pkgdesc = Drop-in replacement for git worktree add using copy-on-write reflinks
+	pkgver = r4.0f6852c
+	pkgrel = 1
+	url = https://github.com/josharian/git-cow-worktree
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = git
+	provides = git-cow-worktree
+	conflicts = git-cow-worktree
+	source = git+https://github.com/josharian/git-cow-worktree.git
+	sha256sums = SKIP
+
+pkgname = git-cow-worktree-git
