@@ -15,8 +15,8 @@
 # pkgver() derives the real version from the archive filename, so this PKGBUILD
 # does not have to be edited for every upstream release.
 pkgname=deveco-commandline-tools
-pkgver=6.1.1.460
-pkgrel=3
+pkgver=7.0.0.123
+pkgrel=1
 pkgdesc='HUAWEI Command Line Tools for HarmonyOS: hvigorw, ohpm, hstack, codelinter, SDK tools'
 arch=('x86_64')
 url='https://developer.huawei.com/consumer/cn/download/'
