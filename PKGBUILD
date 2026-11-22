@@ -2,7 +2,7 @@
 pkgname="powerlevel11k-git"
 pkgver=r488.0d95d5b
 pkgdesc="Powerlevel10k continuation for all shells. (git version)"
-pkgrel=2
+pkgrel=1
 arch=("x86_64")
 conflicts=('powerlevel11k')
 provides=('powerlevel11k')
