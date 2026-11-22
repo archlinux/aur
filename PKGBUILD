@@ -4,7 +4,7 @@ _appauthor="open-meteo"
 _appname="openmeteo-sdk"
 
 pkgname="python-${_appname}"
-pkgver=1.30.0
+pkgver=1.31.0
 pkgrel=1
 pkgdesc="Open-Meteo Python SDK"
 
@@ -23,7 +23,7 @@ depends=('python' 'python-flatbuffers')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
-sha256sums=('9b643ce593a557eddc880f8526da9c3700ef96f4388e6f43b5e2cadb6d92cff4')
+sha256sums=('a1e9f7392aff96b147c57ce3390618bbd9df1edaa47437ff814cd054da9771c5')
 
 
 build() {
