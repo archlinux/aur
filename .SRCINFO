@@ -1,0 +1,16 @@
+pkgbase = taskui
+	pkgdesc = Simple Terminal UI for Task / taskfile.dev
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/thmshmm/taskui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = taskui-0.7.0.tar.gz::https://github.com/thmshmm/taskui/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 99e2415ce9302c8ef513eab31f748e131f4f803ad558939b1e20d40393945d0b
+
+pkgname = taskui
