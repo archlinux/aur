@@ -3,7 +3,7 @@
 pkgname=bettbox-compatible
 _pkgname=Bettbox
 pkgver=1.19.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core. (Build with GOAMD64=v1)"
 arch=('x86_64')
 options=('!lto')
@@ -43,13 +43,16 @@ build () {
 	export FLUTTER_ROOT="$(pwd)/.fvm/flutter_sdk"
 	local app_env=stable
 	fvm dart run build_runner build
-	fvm dart ./setup.dart linux --arch amd64 --out core --compatible
-	fvm flutter build linux --no-pub --release --target-platform linux-x64 --dart-define=APP_ENV="$app_env"
+	# Standard: upstream's --standard selects the full core tags (with_gvisor),
+	# and the app needs APP_STANDARD=true (see upstream .github/workflows/build.yaml).
+	fvm dart ./setup.dart linux --arch amd64 --out core --compatible --standard
+	fvm flutter build linux --no-pub --release --target-platform linux-x64 --dart-define=APP_ENV="$app_env" --dart-define=APP_STANDARD=true
 }
 
 # Waiting for https://github.com/appshubcc/Bettbox/pull/159
 # Once merged, setup.dart gains --out app --build-only (-B) which builds the
-# core, sets setuid, and runs flutter build in one step (with --env for APP_ENV).
+# core, sets setuid, and runs flutter build in one step (with --env for APP_ENV;
+# --standard selects the standard variant, which also sets APP_STANDARD).
 # --arch is omitted since setup.dart now auto-detects the host CPU architecture
 # (ArchExt.same). With --build-only, flutter build runs inside setup.dart, which
 # derives --target-platform from the auto-detected arch automatically.
@@ -59,7 +62,7 @@ build () {
 # 	export FLUTTER_ROOT="$(pwd)/.fvm/flutter_sdk"
 # 	local app_env=stable
 # 	fvm dart run build_runner build
-# 	fvm dart ./setup.dart linux --compatible --build-only --env "$app_env"
+# 	fvm dart ./setup.dart linux --compatible --standard --build-only --env "$app_env"
 # }
 
 package () {
