@@ -10,8 +10,8 @@ pkgbase = zramswap
 	source = zramctrl
 	source = zramswap.conf
 	source = zramswap.service
-	md5sums = fb633774fb523b7107ca62b2647aec89
-	md5sums = 2137bd73c7d87a6ded0011a8f27f478e
-	md5sums = a746969adc521826c14b0796968f3ca6
+	sha256sums = fa8306b6110e07c89ac9790252db63f62300eae8bce1953da85d897383f78270
+	sha256sums = 02bc0f3e239e56e4bc4bf1e12dc8f17270c35e1f112ec0d1d0dd735f3ed91d72
+	sha256sums = da2026d7b130b53e9acf41eeb2724e85e0a8f9d0868baae4a462b4a8e6925844
 
 pkgname = zramswap
