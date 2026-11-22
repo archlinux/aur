@@ -1,13 +1,13 @@
 pkgbase = xunhen
 	pkgdesc = Browse the editing history that survived in Neovim undo files
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/nuggocto/xunhen
 	arch = x86_64
 	license = Apache-2.0
 	checkdepends = git
 	makedepends = go>=2:1.27.3
-	source = xunhen_1.0.2_source.tar.gz::https://github.com/nuggocto/xunhen/releases/download/v1.0.2/xunhen_1.0.2_source.tar.gz
-	sha256sums = 96ab069e5da88685804ebd23b1ec3fcb03864a4b82db19eb11757b4ef47e8d66
+	source = xunhen_1.0.3_source.tar.gz::https://github.com/nuggocto/xunhen/releases/download/v1.0.3/xunhen_1.0.3_source.tar.gz
+	sha256sums = d966bcb8794ee06c9664943ed0c2242e4fa949e41e0a0e4d79b98bdc131b9849
 
 pkgname = xunhen
