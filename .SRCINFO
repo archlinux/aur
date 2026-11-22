@@ -1,0 +1,22 @@
+pkgbase = grubmgr-git
+	pkgdesc = Grub2 Config manager (themes and config)
+	pkgver = r2.19fe9a7
+	pkgrel = 1
+	url = https://github.com/iReyzer/Grub-Manager
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	depends = python
+	depends = grub
+	depends = polkit
+	optdepends = pyside6: graphical interface (grubmgr-gui)
+	optdepends = os-prober: detect other operating systems
+	provides = grubmgr
+	conflicts = grubmgr
+	source = grubmgr::git+https://github.com/iReyzer/Grub-Manager.git
+	sha256sums = SKIP
+
+pkgname = grubmgr-git
