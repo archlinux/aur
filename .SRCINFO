@@ -1,0 +1,19 @@
+pkgbase = holly-hacker-td-git
+	pkgdesc = A graph-based TUI to-do app
+	pkgver = r103.4a11a72
+	pkgrel = 1
+	url = https://github.com/holly-hacker/td
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = holly-hacker-td
+	conflicts = holly-hacker-td
+	options = !lto
+	source = holly-hacker-td::git+https://github.com/holly-hacker/td.git
+	sha256sums = SKIP
+
+pkgname = holly-hacker-td-git
