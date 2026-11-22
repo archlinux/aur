@@ -2,13 +2,14 @@
 
 pkgname=softmaker-office-2024-bin
 pkgver=1238
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary office suite; word processing, spreadsheets, presentations"
 url="https://www.softmaker.com"
 arch=('x86_64')
 license=('LicenseRef-custom')
-depends=('bash' 'curl' 'glib2' 'glibc' 'gst-plugins-base-libs' 'gstreamer' 'hicolor-icon-theme' 'libgcc'
-         'libgl' 'libstdc++' 'libx11' 'libxext' 'libxmu' 'libxmu' 'libxrandr' 'libxrender' 'zlib')
+depends=('bash' 'cairo' 'curl' 'glib2' 'glibc' 'gst-plugins-base-libs' 'gstreamer' 'gtk3'
+         'hicolor-icon-theme' 'libdecor' 'libgcc' 'libgl' 'libstdc++' 'libx11' 'libxext'
+         'libxmu' 'libxmu' 'libxrandr' 'libxrender' 'pango' 'zlib')
 source=('planmaker-2024.desktop'
         'presentations-2024.desktop'
         'textmaker-2024.desktop'
