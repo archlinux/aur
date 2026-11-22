@@ -1,7 +1,7 @@
 # Maintainer: ramisotti13-eng
 pkgname=basecamp-linux
 pkgver=3.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Linux companion app for Mountain peripherals (Everest Max/60 keyboards, Makalu 67/Max mouse, DisplayPad)"
 arch=('x86_64')
 url="https://github.com/ramisotti13-eng/BaseCamp-Linux"
@@ -16,16 +16,21 @@ optdepends=('xdotool: keypress/text actions on X11'
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/ramisotti13-eng/BaseCamp-Linux/releases/download/v${pkgver}/BaseCamp-Linux-x86_64-fedora.AppImage"
         "99-mountain.rules::https://raw.githubusercontent.com/ramisotti13-eng/BaseCamp-Linux/v${pkgver}/99-mountain.rules"
         "app_icon_256.png::https://raw.githubusercontent.com/ramisotti13-eng/BaseCamp-Linux/v${pkgver}/resources/app_icon_256.png"
-        "basecamp-linux.desktop")
+        "basecamp-linux.desktop"
+        "basecamp-linux.sh")
 sha256sums=('cb4e92a293f1b84551e9a10a1d52ae56c8ff9fc8d75df0f779ef9f8983708083'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'ca5e538dea94f775584c1074551b5c878f8f28331a0b11f90ddb61b298728046')
 options=(!strip)
 
 package() {
-    # Install AppImage
-    install -Dm755 "${pkgname}-${pkgver}.AppImage" "${pkgdir}/usr/bin/basecamp-linux"
+    # Install the AppImage, started through a wrapper that points its
+    # Fedora-built OpenSSL at Arch's certificates (no HTTPS without it)
+    install -Dm755 "${pkgname}-${pkgver}.AppImage" \
+        "${pkgdir}/opt/basecamp-linux/basecamp-linux.AppImage"
+    install -Dm755 "basecamp-linux.sh" "${pkgdir}/usr/bin/basecamp-linux"
 
     # Install udev rule
     install -Dm644 "99-mountain.rules" \

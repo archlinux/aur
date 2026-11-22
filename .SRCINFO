@@ -1,7 +1,7 @@
 pkgbase = basecamp-linux
 	pkgdesc = Unofficial Linux companion app for Mountain peripherals (Everest Max/60 keyboards, Makalu 67/Max mouse, DisplayPad)
 	pkgver = 3.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ramisotti13-eng/BaseCamp-Linux
 	arch = x86_64
 	license = GPL3
@@ -16,9 +16,11 @@ pkgbase = basecamp-linux
 	source = 99-mountain.rules::https://raw.githubusercontent.com/ramisotti13-eng/BaseCamp-Linux/v3.1.4/99-mountain.rules
 	source = app_icon_256.png::https://raw.githubusercontent.com/ramisotti13-eng/BaseCamp-Linux/v3.1.4/resources/app_icon_256.png
 	source = basecamp-linux.desktop
+	source = basecamp-linux.sh
 	sha256sums = cb4e92a293f1b84551e9a10a1d52ae56c8ff9fc8d75df0f779ef9f8983708083
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = ca5e538dea94f775584c1074551b5c878f8f28331a0b11f90ddb61b298728046
 
 pkgname = basecamp-linux
