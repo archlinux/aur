@@ -1,5 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Co-Maintainer: Slimbook <dev at slimbook dot es>
+# Maintainer: Slimbook <dev at slimbook dot es>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: tioguda <guda.flavio@gmail.com>
 pkgname=slimbookbattery
 pkgver=4.0.9beta
