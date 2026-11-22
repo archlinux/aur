@@ -1,0 +1,19 @@
+pkgbase = axyl1410-tetris-tui-git
+	pkgdesc = Terminal Tetris following the Tetris Guideline
+	pkgver = r1.c0055d3
+	pkgrel = 1
+	url = https://github.com/Axyl1410/tetris-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = axyl1410-tetris-tui
+	conflicts = axyl1410-tetris-tui
+	options = !lto
+	source = axyl1410-tetris-tui::git+https://github.com/Axyl1410/tetris-tui.git
+	sha256sums = SKIP
+
+pkgname = axyl1410-tetris-tui-git
