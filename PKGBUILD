@@ -26,6 +26,8 @@ prepare() {
 build() {
   cd Squeak-$pkgver-src/
 
+  # fix build with cmake 4
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
   ./unix/cmake/configure --prefix=/usr --without-quartz --with-x \
     --enable-mpg-mmx
 

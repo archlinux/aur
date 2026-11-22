@@ -1,4 +1,4 @@
 [squeak-vm]
 source = 'regex'
 url = 'http://squeakvm.org/unix/release/'
-regex = 'Squeak-([\d.]+)-linux_x86_64'
+regex = 'Squeak-([\d.]+)-src'
