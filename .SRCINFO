@@ -1,16 +1,15 @@
 pkgbase = python-krpc
 	pkgdesc = Client library for kRPC, a Remote Procedure Call server for Kerbal Space Program
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/krpc/krpc
 	arch = any
 	license = LGPL-3.0-only
-	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-hatchling
 	depends = python
 	depends = python-protobuf
-	source = https://github.com/krpc/krpc/releases/download/v0.7.0/krpc-python-0.7.0.tar.gz
-	b2sums = 3178b52adb31155c59a4952bc7a41c4df9aa31745d96aae1c3bb23c55f071c537ae3d312b2c9f1a3345a0d64a78b2fec8091af8bdfd36d3904c191e06805c5a7
+	noextract = krpc-0.8.0-py3-none-any.whl
+	source = https://github.com/krpc/krpc/releases/download/v0.8.0/krpc-0.8.0-py3-none-any.whl
+	sha256sums = b2bae6c1b032d3c17faf67564f097acc7477f30e7af85091c2caa6bbf6512bb6
 
 pkgname = python-krpc
