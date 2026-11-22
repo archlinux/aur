@@ -1,0 +1,19 @@
+pkgbase = sgram-tui-bin
+	pkgdesc = A calibrated spectrogram analyzer for live mic or audio files, with labeled PNG figure export
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/arian-shamaei/sgram-tui
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	provides = sgram-tui
+	conflicts = sgram-tui
+	options = !debug
+	source = sgram-tui-bin-0.4.0-LICENSE::https://raw.githubusercontent.com/arian-shamaei/sgram-tui/v0.4.0/LICENSE
+	sha256sums = cca9e6c986bff7944b68df6934ae4babbab3379f3de8776e832ecb3c23f7dadb
+	source_x86_64 = sgram-tui-bin-0.4.0-x86_64::https://github.com/arian-shamaei/sgram-tui/releases/download/v0.4.0/sgram-tui-linux-amd64
+	sha256sums_x86_64 = e82ad28fce5464800c6bf8c09fbcacede75ffc98a4a4ecaf7bfc469aede51189
+
+pkgname = sgram-tui-bin
