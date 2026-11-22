@@ -1,0 +1,17 @@
+pkgbase = noble-bin
+	pkgdesc = A HUD terminal workspace with tabs and splits, git projects, system sensors and AI coding quota
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://github.com/MertSoylu/noble
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = noble
+	conflicts = noble
+	options = !debug
+	source_x86_64 = noble-bin-1.15.0-x86_64.tar.gz::https://github.com/MertSoylu/noble/releases/download/v1.15.0/noble-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 636f77f568a774d3160bdc82d980387910edca695fcf7e7c53a779a74a7714e2
+	source_aarch64 = noble-bin-1.15.0-aarch64.tar.gz::https://github.com/MertSoylu/noble/releases/download/v1.15.0/noble-linux-aarch64.tar.gz
+	sha256sums_aarch64 = d96d6b74b5f20fb5cbaa7dedf537251453ea294ff0b7274cf483fcbb82866eba
+
+pkgname = noble-bin
