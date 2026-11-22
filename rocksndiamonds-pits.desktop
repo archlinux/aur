@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Rocks'n'Diamonds
+GenericName=Arcade puzzle game
+Comment=Boulder Dash style game, with a The Puzzle Pits engine and level set
+Exec=rocksndiamonds
+Icon=rocksndiamonds
+Terminal=false
+Categories=Game;ArcadeGame;
+Keywords=boulderdash;supaplex;emerald;puzzle;pits;

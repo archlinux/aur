@@ -1,0 +1,27 @@
+pkgbase = rocksndiamonds-pits-git
+	pkgdesc = Rocks'n'Diamonds with a game engine and level set for The Puzzle Pits
+	pkgver = 4.4.2.4.r50.f5c7e31
+	pkgrel = 1
+	url = https://github.com/LaPingvino/rocksndiamonds-pits
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	license = Apache-2.0
+	makedepends = git
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_net
+	depends = zlib
+	depends = rocksndiamonds-data
+	optdepends = rocksndiamonds-contrib: more level sets
+	provides = rocksndiamonds=4.4.2.4
+	conflicts = rocksndiamonds
+	source = rocksndiamonds-pits::git+https://github.com/LaPingvino/rocksndiamonds-pits.git
+	source = rocksndiamonds-pits.desktop
+	sha256sums = SKIP
+	sha256sums = b086f9654297d2dcc4095e5578d7f333b3efddd4d23c2825b99b1bfe136f835f
+
+pkgname = rocksndiamonds-pits-git
