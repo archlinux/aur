@@ -1,0 +1,18 @@
+pkgbase = thom-cameron-isw
+	pkgdesc = A simple terminal stopwatch application for pomodoro etc
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://gitlab.com/thom-cameron/isw
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	conflicts = isw
+	conflicts = isw-git
+	options = !lto
+	source = thom-cameron-isw-0.3.8.tar.gz::https://gitlab.com/thom-cameron/isw/-/archive/0.3.8/isw-0.3.8.tar.gz
+	sha256sums = f07cb24ba626889f4f0ed0c8049c5b74ce5370312f02ad01e31761445855e992
+
+pkgname = thom-cameron-isw
