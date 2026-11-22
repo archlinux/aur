@@ -1,6 +1,6 @@
 pkgbase = bootupd
 	pkgdesc = Bootloader updater
-	pkgver = 0.2.34
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/coreos/bootupd
 	arch = x86_64
@@ -13,9 +13,7 @@ pkgbase = bootupd
 	depends = glibc
 	depends = grub
 	depends = efibootmgr
-	source = git+https://github.com/coreos/bootupd.git#tag=v0.2.34
-	source = 0001-Modify-grub-paths-to-match-Arch-Linux.patch
-	sha256sums = e2e75bc31710b3ae16481a73c72cc9db0219e077f21af88d476756dcef5631cb
-	sha256sums = 331cee421eab47415f9e4f0101ada3b0154db8ab42d2b2a4b4b7218ffb2ff3ca
+	source = git+https://github.com/coreos/bootupd.git#tag=v0.4.0
+	sha256sums = c1587c45bc6a679d0da7b4419c34cc5ac8d1499168da62cf23d00b4d1860aebb
 
 pkgname = bootupd

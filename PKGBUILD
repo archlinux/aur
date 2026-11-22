@@ -1,7 +1,7 @@
 # Maintainer: Hec <hec@heccraft.com>
 
 pkgname=bootupd
-pkgver=0.2.34 # renovate: datasource=github-releases depName=coreos/bootupd
+pkgver=0.4.0 # renovate: datasource=github-releases depName=coreos/bootupd
 pkgrel=1
 pkgdesc="Bootloader updater"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -12,14 +12,11 @@ depends=(gcc-libs
   grub
   efibootmgr)
 makedepends=(cargo)
-source=("git+$url.git#tag=v$pkgver"
-  "0001-Modify-grub-paths-to-match-Arch-Linux.patch")
-sha256sums=('e2e75bc31710b3ae16481a73c72cc9db0219e077f21af88d476756dcef5631cb'
-            '331cee421eab47415f9e4f0101ada3b0154db8ab42d2b2a4b4b7218ffb2ff3ca')
+source=("git+$url.git#tag=v$pkgver")
+sha256sums=('c1587c45bc6a679d0da7b4419c34cc5ac8d1499168da62cf23d00b4d1860aebb')
 
 prepare() {
   cd "$pkgname"
-  patch -Np1 -i "${srcdir}/0001-Modify-grub-paths-to-match-Arch-Linux.patch"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
