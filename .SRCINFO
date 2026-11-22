@@ -1,0 +1,21 @@
+pkgbase = mlbt-bin
+	pkgdesc = A tui for the MLB Statcast API
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/mlb-rs/mlbt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = mlbt
+	conflicts = mlbt
+	options = !debug
+	source = mlbt-bin-0.6.0-LICENSE::https://raw.githubusercontent.com/mlb-rs/mlbt/v0.6.0/LICENSE
+	sha256sums = e273bbf774a576be27a00d906cdaa0348e859d6a9fec80649fed065bb9aef2f4
+	source_x86_64 = mlbt-bin-0.6.0-x86_64.tar.gz::https://github.com/mlb-rs/mlbt/releases/download/v0.6.0/mlbt-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 06c8c43ec9acbab4470e8857cc199a09174bb7a784943946dffd0307cf8ca771
+	source_aarch64 = mlbt-bin-0.6.0-aarch64.tar.gz::https://github.com/mlb-rs/mlbt/releases/download/v0.6.0/mlbt-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 61c4f74365f367e86225819948e5c20d9d74dc295a95069d0ed5f79821b604fc
+
+pkgname = mlbt-bin
