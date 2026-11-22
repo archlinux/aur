@@ -1,18 +1,18 @@
 # Maintainer: Nero Blackstone <gf7600gs@gmail.com>
 
 pkgname=owlplug-bin
-pkgver=1.31.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Audio plugin manager. Small tool to manage VST / AU / LV2 plugins on Windows, MacOS and Linux."
 arch=('x86_64')
 url="https://owlplug.com/"
 license=('GPL-3.0')
-source=("https://github.com/DropSnorz/OwlPlug/releases/download/${pkgver}/OwlPlug-${pkgver}.deb")
-sha256sums=('183b65f216688e7f1f279c71abab3cb90f514bab007178ffeb5601d7e08bd157')
+source=("https://github.com/DropSnorz/OwlPlug/releases/download/${pkgver}/OwlPlug-${pkgver}-linux-x64.deb")
+sha256sums=('1028911cd4714d337abe02415784e61b93a01be799c956e4d35b8c8024b9c65c')
 
 prepare() {
     cd "$srcdir"
-    ar x OwlPlug-${pkgver}.deb
+    ar x OwlPlug-${pkgver}-linux-x64.deb
     tar -xf data.tar.*
     find . -type d -exec chmod 755 {} +
     find . -type f -exec chmod 644 {} +
