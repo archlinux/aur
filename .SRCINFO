@@ -1,0 +1,16 @@
+pkgbase = gentooplz
+	pkgdesc = A live terminal dashboard for Gentoo package builds
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/JustRoccat/gentooplz
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = gentooplz-0.3.1.tar.gz::https://github.com/JustRoccat/gentooplz/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = fe32a65d358f6b465d8981ba7d9b5f801e723672ee6132957e146fb19d9e6934
+
+pkgname = gentooplz
