@@ -1,16 +1,21 @@
 pkgbase = virtualmoonatlas
 	pkgdesc = Software for Moon observation and survey
-	pkgver = 8.2
+	pkgver = 9.1
 	pkgrel = 1
 	url = https://www.ap-i.net/avl/en/start
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	depends = gtk2
+	depends = libpasastro
+	depends = xdg-utils
+	depends = libglvnd
+	depends = libxxf86vm
+	depends = glu
 	provides = virtualmoonatlas
 	conflicts = virtualmoonatlas-git
-	source = virtualmoon_8.2_amd64.deb::https://sourceforge.net/projects/virtualmoon/files/1-%20virtualmoon/Version%208.0/virtualmoon_8.2_amd64.deb/download
-	source = virtualmoon-basedata_8.2_all.deb::https://sourceforge.net/projects/virtualmoon/files/1-%20virtualmoon/Version%208.0/virtualmoon-basedata_8.2_all.deb/download
-	sha256sums = 2c41599fc15c759794857d8ca15c681dfac7c8e2eb5eb0b71aab3b5d6a43ef30
-	sha256sums = 860d4b6a545721bcb420b4b45ad7b1487697af1888c2e2acb3f582dc79e9cb91
+	source = virtualmoon_9.1_amd64.deb::https://sourceforge.net/projects/virtualmoon/files/1-%20virtualmoon/Version%209.0/virtualmoon_9.1_amd64.deb/download
+	source = virtualmoon-basedata_9.1_all.deb::https://sourceforge.net/projects/virtualmoon/files/1-%20virtualmoon/Version%209.0/virtualmoon-basedata_9.0_all.deb/download
+	sha256sums = adee70a7e8995831b1618ae8afe581714a5e4372dbc3881e09fe34a1f2891d86
+	sha256sums = 449cbd7c9759cfa70ac57ac4d99bf33d62a275cb6efc48f7efffc1d35252ef15
 
 pkgname = virtualmoonatlas
