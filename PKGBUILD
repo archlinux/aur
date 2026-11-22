@@ -1,6 +1,6 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 pkgname=shisa
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Application lock for Linux desktops, enforced at exec time through fanotify'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
 )
 install=shisa.install
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('25f5b5eafd26300a217ab780add52c4443cc1cc269904eee6257ee70dac55dc9')
+sha256sums=('b48e3621841c64b1a27f2240348a02a4b9f8f8b81b02c43cec78fa3cb26203aa')
 
 prepare() {
     cd "$pkgname-$pkgver"
