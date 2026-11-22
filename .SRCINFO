@@ -1,0 +1,19 @@
+pkgbase = unifiedsysmon-bin
+	pkgdesc = System monitor and port scanner desktop app with multi-server support
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/BibekTripathy/unifiedSysMon
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	optdepends = docker: container management
+	provides = unifiedsysmon
+	conflicts = unifiedsysmon
+	options = !strip
+	options = !debug
+	source = unifiedsysmon-bin-2.2.0.deb::https://github.com/BibekTripathy/unifiedSysMon/releases/download/v2.2.0/unifiedSysMon_2.2.0_amd64.deb
+	sha256sums = 14b22c3bc526be7950774842d79ea89668ea42f41348bd935cf7955d42be4745
+
+pkgname = unifiedsysmon-bin
