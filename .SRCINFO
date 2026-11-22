@@ -1,0 +1,17 @@
+pkgbase = fishtanks-bin
+	pkgdesc = An ASCII aquarium for the terminal
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/daniel-retamal/fishtanks
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = fishtanks
+	conflicts = fishtanks
+	options = !debug
+	source_x86_64 = fishtanks-bin-1.6.2-x86_64.tar.xz::https://github.com/daniel-retamal/fishtanks/releases/download/v1.6.2/fishtanks-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = ca39a860d57fe82f1bed9ed45520debed62d7931ace2b5ed78506efa7d6cf918
+	source_aarch64 = fishtanks-bin-1.6.2-aarch64.tar.xz::https://github.com/daniel-retamal/fishtanks/releases/download/v1.6.2/fishtanks-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = c68fc744fcbe79759b182c0fb2bff1502e0a87f1dbb1d3bdf7409c8d8362c8e4
+
+pkgname = fishtanks-bin
