@@ -1,0 +1,17 @@
+pkgbase = sc-cli
+	pkgdesc = A TUI for Shortcut (formerly know as Clubhouse) a project management tool
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/lnds/sc-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	options = !lto
+	source = sc-cli-0.3.2.tar.gz::https://github.com/lnds/sc-cli/archive/refs/tags/0.3.2.tar.gz
+	sha256sums = f5385b378ec056470e4a92056ff9778b2435c08caf3bbdd9ac6280c03eb92080
+
+pkgname = sc-cli
