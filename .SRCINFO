@@ -1,0 +1,27 @@
+pkgbase = accolade
+	pkgdesc = Screenplay editor for Fountain, with PDF/HTML/FDX export
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/LaPingvino/accolade
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = go
+	makedepends = pkgconf
+	makedepends = mesa
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgl
+	depends = libx11
+	depends = libxcursor
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxi
+	depends = libxxf86vm
+	depends = libxkbcommon
+	depends = wayland
+	conflicts = accolade-git
+	source = accolade-0.6.0.tar.gz::https://github.com/LaPingvino/accolade/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = a8baedd81c6e6982752102674cb352d8bf0fa4e8510897d48fd8e38afd29c878
+
+pkgname = accolade
