@@ -1,7 +1,7 @@
 # Maintainer: isaacangello <isaacangello@inf.ufpell.edu.br>
 # Binários standalone do Bun (~100 MB por arquitetura), publicados no GitHub Releases.
 pkgname=nimsync-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Sync free-first AI provider models (NVIDIA NIM, Google AI Studio, Groq, OpenRouter, AIHubMix, custom) with the OpenCode model whitelist"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("nimsync-LICENSE-${pkgver}::https://raw.githubusercontent.com/isaacangel
 sha256sums=('75cdde8fdba948258a170beb8095fac4a0967a04e213d51a58eaafdd78c3f9ac')
 source_x86_64=("${_url}/nimsync-${pkgver}-linux-x64")
 source_aarch64=("${_url}/nimsync-${pkgver}-linux-arm64")
-sha256sums_x86_64=('c46a7ee6e8c76de0ad0683d7fdeb1450344badb29cbbc8a36f4e851939ffc627')
-sha256sums_aarch64=('616718d21608edacdd8f612ad26f53db7df6aa3edac4f28761477704f53f3a7e')
+sha256sums_x86_64=('da8bdd5a997791f99d42158a40ac4da1baee43a5fd4e5b442d5d99b4925e035f')
+sha256sums_aarch64=('a9a9fd0c70f681adbb6a0b1c38d986bd2e1d6254c213fcc4dee0ccc5141dd308')
 
 case "${CARCH}" in
   x86_64) _bin="nimsync-${pkgver}-linux-x64" ;;
