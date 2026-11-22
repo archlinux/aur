@@ -1,4 +1,5 @@
-# Maintainer: Thomas Weißschuh <thomas t-8ch de>
+# Maintainer: agony <27015 at riseup dot net>
+# Contributor: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=batman-alfred
 pkgver=2024.4
