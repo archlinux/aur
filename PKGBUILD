@@ -2,7 +2,7 @@
 
 _pkgname=roast
 pkgname="$_pkgname"
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc='Adversarial cross-model code review'
 url='https://github.com/bluesky-social/roast'
@@ -13,7 +13,7 @@ makedepends=('git' 'go')
 provides=("$_pkgname")
 conflicts=("$_pkgname-git" "$_pkgname-bin")
 source=("${url}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('dd89d73682f079bf3869bf4ddfb2a4dbda24dc2f5740381cdc9e8dc89b2ab65b')
+sha256sums=('27a5640953bdcf1fa1f28ac03e242e3b3c2dd1186132ca2db81d14eefb591601')
 
 prepare() {
 	cd "$_pkgname-$pkgver/cmd/roast"
