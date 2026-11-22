@@ -1,7 +1,7 @@
 # Maintainer: lumexren <lumexren@gmail.com>
 
 pkgname=vulcanium
-pkgver=157.0.8103.78
+pkgver=158.0.8127.36
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -9,13 +9,13 @@ _system_clang=1
 # Check the CRUBIT_REVISION found in tools/rust/update_rust.py
 #_crubit_rev=20dc640430bd60ff2f7f8dbf69c311c5f807adde
 # The commit above cannot be built successfully, use the last known good commit for stable toolchain
-_crubit_rev=25d2c01bde904c3333bb2d48201e5cbb186a1c7f
+_crubit_rev=d757594f6f7ac27c0cf9c8ea63d9136f8e1f77ae
 pkgdesc="Chromium with native Wayland Vulkan rendering and Vulkan Video decoding/encoding"
 arch=('x86_64')
 url="https://github.com/lumexren/vulcanium"
 license=('BSD-3-Clause')
 provides=('chromium')
-conflicts=('vulcanium-bin')
+conflicts=('chromium' 'ungoogled-chromium' 'vulcanium-bin' 'ungoogled-vulcanium' 'ungoogled-vulcanium-bin')
 depends=(
   'alsa-lib'
   'at-spi2-core'
@@ -88,8 +88,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         "git+https://chromium.googlesource.com/external/github.com/google/crubit.git#commit=$_crubit_rev"
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         "git+https://github.com/lumexren/vulcanium.git")
-sha256sums=('9fdce9d3c866f97f14f7a4250915e8e5b729dc952fcfb3a35507b126233f0660'
-            'a9c0f429c7a45d31cecd8bd36fc636fbedaf49ff57264a22e3f1eabd4cab523a'
+sha256sums=('8a93030a68231ea046479c47d6b26dfae43becef1b5343cf95f8146109291d6d'
+            'fa10e66c8078c2e02cf7e1df0810b7c7d77b89592cc27fca7a756cc4a5ba06cb'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'SKIP')
 
@@ -121,7 +121,7 @@ declare -gA _system_libs=(
   #[libvpx]=libvpx
   [libwebp]=libwebp
   [libxml]=libxml2
-  [libxslt]=libxslt
+  #[libxslt]=libxslt
   [openh264]=openh264
   [opus]=opus
   #[re2]=re2          # needs libstdc++
@@ -190,8 +190,6 @@ prepare() {
   # https://crbug.com/456677057
   patch -Np1 -i "$srcdir/vulcanium/arch/glibc-2.42-baud-rate-fix.patch"
 
-  patch -Np1 -i "$srcdir/vulcanium/arch/chromium-149-use-of-undeclared-identifier-ERROR.patch"
-
   # Fix issue about missing AVX functions
   # Credit: https://github.com/ungoogled-software/ungoogled-chromium/pull/3837
   patch -Np1 -i "$srcdir/vulcanium/arch/chromium-150-revert-avx-flag-change.patch"
@@ -214,11 +212,9 @@ prepare() {
 
   patch -Np1 -i "$srcdir/vulcanium/arch/chromium-155-use-system-esbuild.patch"
 
-  patch -Np1 -i "$srcdir/vulcanium/arch/chromium-157-crubit.patch"
+  patch -Np1 -i "$srcdir/vulcanium/arch/chromium-158-revert-gn-check-includes.patch"
 
-  patch -Np1 -i "$srcdir/vulcanium/arch/chromium-157-revert-gn-check-includes.patch"
-
-  patch -Np1 -i "$srcdir/vulcanium/arch/chromium-156-isolatedDeclarations.patch"
+  patch -Np1 -i "$srcdir/vulcanium/arch/chromium-158-isolatedDeclarations.patch"
 
   # Work around TypeScript becoming a build dependency: disable tsgo for the
   # WebUI and point devtools at the system tsc binary
@@ -236,6 +232,9 @@ prepare() {
       patch -Np1 -i "$_vpatch_dir/$_line"
     done < "$_vpatch_dir/series"
   fi
+
+  msg2 "Applying Vulcanium internal logo assets"
+  "$srcdir/vulcanium/scripts/apply-branding-icons.sh" vulcanium ./ "$srcdir/vulcanium"
 
   # The unbundled brotli doesn't provide brotli:headers
   sed -i '/brotli:headers/ d' third_party/pdfium/core/fxcodec/BUILD.gn
@@ -382,6 +381,7 @@ build() {
       "rust_sysroot_absolute=\"$_rust_sysroot\""
       'rust_bindgen_root="/usr"'
       "rustc_version=\"$(rustc --version | awk '{ print $2 ;}')\""
+      'added_rust_stdlib_libs=["addr2line","adler2","gimli","miniz_oxide"]'
     )
   fi
 
@@ -438,7 +438,7 @@ build() {
     install -Dm755 -t ../chromium-$pkgver/third_party/rust-toolchain/crubit/bin/ target/release/cc_bindings_from_rs
   )
   gn gen out/Release --args="${_flags[*]}"
-  ninja -C out/Release chrome chrome_sandbox chromedriver.unstripped
+  ninja -j6 -C out/Release chrome chrome_sandbox chromedriver.unstripped
 }
 
 package() {
@@ -511,6 +511,7 @@ if (( ${#_disable_features[@]} > 0 )); then
   _flags+=("--disable-features=$(IFS=,; echo "${_disable_features[*]}")")
 fi
 
+export CHROME_DESKTOP="vulcanium.desktop"
 export CHROME_VERSION_EXTRA="vulcanium"
 export CHROME_WRAPPER="$(readlink -f "$0")"
 exec /usr/lib/vulcanium/vulcanium "${_flags[@]}"
@@ -526,7 +527,7 @@ EOF
     -e 's/@@PACKAGE/vulcanium/g' \
     -e 's/@@desktop_exec/vulcanium/g' \
     -e 's/@@desktop_icon/vulcanium/g' \
-    -e 's/@@startup_wm_class/vulcanium/g' \
+    -e '/^StartupWMClass=/d' \
     -e 's|@@uri_scheme|x-scheme-handler/vulcanium;|g' \
     -e 's/@@extra_desktop_entries//g' \
     "$pkgdir/usr/share/applications/vulcanium.desktop" \

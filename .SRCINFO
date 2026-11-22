@@ -1,6 +1,6 @@
 pkgbase = vulcanium
 	pkgdesc = Chromium with native Wayland Vulkan rendering and Vulkan Video decoding/encoding
-	pkgver = 157.0.8103.78
+	pkgver = 158.0.8127.36
 	pkgrel = 1
 	url = https://github.com/lumexren/vulcanium
 	arch = x86_64
@@ -77,7 +77,6 @@ pkgbase = vulcanium
 	depends = minizip
 	depends = opus
 	depends = double-conversion
-	depends = libxslt
 	depends = harfbuzz
 	depends = freetype2
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
@@ -87,14 +86,18 @@ pkgbase = vulcanium
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME, KDE and Xfce
 	optdepends = upower: Battery Status API support
 	provides = chromium
+	conflicts = chromium
+	conflicts = ungoogled-chromium
 	conflicts = vulcanium-bin
+	conflicts = ungoogled-vulcanium
+	conflicts = ungoogled-vulcanium-bin
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-157.0.8103.78-lite.tar.xz
-	source = git+https://chromium.googlesource.com/external/github.com/google/crubit.git#commit=25d2c01bde904c3333bb2d48201e5cbb186a1c7f
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-158.0.8127.36-lite.tar.xz
+	source = git+https://chromium.googlesource.com/external/github.com/google/crubit.git#commit=d757594f6f7ac27c0cf9c8ea63d9136f8e1f77ae
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = git+https://github.com/lumexren/vulcanium.git
-	sha256sums = 9fdce9d3c866f97f14f7a4250915e8e5b729dc952fcfb3a35507b126233f0660
-	sha256sums = a9c0f429c7a45d31cecd8bd36fc636fbedaf49ff57264a22e3f1eabd4cab523a
+	sha256sums = 8a93030a68231ea046479c47d6b26dfae43becef1b5343cf95f8146109291d6d
+	sha256sums = fa10e66c8078c2e02cf7e1df0810b7c7d77b89592cc27fca7a756cc4a5ba06cb
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = SKIP
 
