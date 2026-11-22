@@ -1,0 +1,19 @@
+pkgbase = trnovel-bin
+	pkgdesc = A terminal novel reader for local and network novels, with AI-assisted book-source generation
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = https://github.com/yexiyue/TRNovel
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = trnovel
+	conflicts = trnovel
+	options = !debug
+	source_x86_64 = trnovel-bin-0.19.0-x86_64.tar.xz::https://github.com/yexiyue/TRNovel/releases/download/trnovel-v0.19.0/trnovel-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = e98eb5db05efcc015d1f101dfff6eac1e5dc9cb2f77e3f76daafc5fb8a76d7d4
+	source_aarch64 = trnovel-bin-0.19.0-aarch64.tar.xz::https://github.com/yexiyue/TRNovel/releases/download/trnovel-v0.19.0/trnovel-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = 44cb766b6333daf541084b40e91e79e8adcf7d4f1d8a177ca688d4e40ee24ed9
+
+pkgname = trnovel-bin
