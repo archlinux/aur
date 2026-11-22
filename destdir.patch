@@ -1,13 +1,15 @@
---- a/Makefile.in	2024-12-08 21:29:35.849412907 +0100
-+++ b/Makefile.in	2024-12-08 21:30:16.666791142 +0100
-@@ -19,14 +19,14 @@
+--- a/Makefile.in	2026-11-22 10:12:34.843552905 +0100
++++ b/Makefile.in	2026-11-22 10:13:15.661551131 +0100
+@@ -22,15 +22,15 @@
  all: $(TARGETS)
-
+ 
  install: $(TARGETS)
 -	$(INSTALL) -d $(bindir)
 -	$(INSTALL) -m 755 try $(bindir)
+-	$(INSTALL) -m 755 utils/try-parse-trace $(bindir)
 +	$(INSTALL) -d $(DESTDIR)$(bindir)
 +	$(INSTALL) -m 755 try $(DESTDIR)$(bindir)
++	$(INSTALL) -m 755 utils/try-parse-trace $(DESTDIR)$(bindir)
  ifeq (@enable_utils@, yes)
 -	$(INSTALL) -m 755 utils/try-summary $(bindir)
 -	$(INSTALL) -m 755 utils/try-commit $(bindir)
@@ -18,6 +20,6 @@
 -	$(INSTALL) -m 644 man/try.1.gz $(mandir)/man1
 +	$(INSTALL) -d $(DESTDIR)$(mandir)/man1
 +	$(INSTALL) -m 644 man/try.1.gz $(DESTDIR)$(mandir)/man1
-
+ 
  dist: $(DISTTGZ)
-
+ 

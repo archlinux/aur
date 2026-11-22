@@ -1,6 +1,6 @@
 pkgbase = try-git
 	pkgdesc = Run a command and inspect its effects before changing your live system.
-	pkgver = r204.b63d1e7
+	pkgver = r258.833624c
 	pkgrel = 1
 	url = https://github.com/binpash/try
 	arch = x86_64
@@ -18,9 +18,7 @@ pkgbase = try-git
 	conflicts = try
 	source = try::git+https://github.com/binpash/try.git
 	source = destdir.patch
-	source = ldflags.patch
 	sha256sums = SKIP
-	sha256sums = 03f9e5caf8cfe3ef18c997d149a58947fa952483e3b9fd34e3ff269277065b09
-	sha256sums = dead4d4f8c201f4ed38f05b5e7f12d995a5b132e3e12d214cc0834d39482ad75
+	sha256sums = d89dfdbc0432c4e67a0dc0aa9716ad425e1a3d5608c1469b40ad4250fa2b727d
 
 pkgname = try-git

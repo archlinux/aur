@@ -1,6 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
+
 pkgname=try-git
-pkgver=r204.b63d1e7
+pkgver=r258.833624c
 pkgrel=1
 pkgdesc="Run a command and inspect its effects before changing your live system."
 arch=('x86_64')
@@ -13,32 +14,27 @@ optdepends=('bash-completion: to have CLI completions')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('try::git+https://github.com/binpash/try.git'
-        'destdir.patch'
-        'ldflags.patch')
+        'destdir.patch')
 sha256sums=('SKIP'
-            '03f9e5caf8cfe3ef18c997d149a58947fa952483e3b9fd34e3ff269277065b09'
-            'dead4d4f8c201f4ed38f05b5e7f12d995a5b132e3e12d214cc0834d39482ad75')
+            'd89dfdbc0432c4e67a0dc0aa9716ad425e1a3d5608c1469b40ad4250fa2b727d')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
 
     # fix missing DESTDIR in Makefile
     patch -p1 < $srcdir/destdir.patch
-
-    # fix missing LDFLAGS
-    patch -p1 < $srcdir/ldflags.patch
 
     autoconf
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
 
     msg2 "Note that the Kernel module \`overlay' might need to be manually loaded!"
     ./configure --prefix=/usr --enable-manpage
@@ -46,13 +42,13 @@ build() {
 }
 
 check() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
 
     make test
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
 
     make DESTDIR=$pkgdir install
 
