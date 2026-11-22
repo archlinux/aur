@@ -1,0 +1,19 @@
+pkgbase = forgetop-bin
+	pkgdesc = Pull requests, work items, and CI pipelines from GitHub, GitLab, Azure DevOps, Bitbucket, Linear
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://github.com/magna-nz/forgetop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = forgetop
+	conflicts = forgetop
+	options = !debug
+	source_x86_64 = forgetop-bin-1.12.0-x86_64.tar.xz::https://github.com/magna-nz/forgetop/releases/download/v1.12.0/forgetop-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 5741ced894059bc3cc2f628b40a80fb31bb602c94f009a56ad5244af5de0bd85
+	source_aarch64 = forgetop-bin-1.12.0-aarch64.tar.xz::https://github.com/magna-nz/forgetop/releases/download/v1.12.0/forgetop-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 56a1cca35debd9be04bae88b09128322e13532316a7550cca55f5f01b3c1a1dc
+
+pkgname = forgetop-bin
