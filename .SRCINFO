@@ -1,0 +1,19 @@
+pkgbase = oeis-tui-bin
+	pkgdesc = A TUI and CLI for browsing the On-Line Encyclopedia of Integer Sequences (OEIS) in the terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hako/oeis-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = oeis-tui
+	conflicts = oeis-tui
+	options = !debug
+	source_x86_64 = oeis-tui-bin-1.0.0-x86_64.tar.gz::https://github.com/hako/oeis-tui/releases/download/1.0.0/oeis-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = fdd05624601714cfcf5c1edae40b415668a6b69e9d6df5ebd31648621676c6d8
+	source_aarch64 = oeis-tui-bin-1.0.0-aarch64.tar.gz::https://github.com/hako/oeis-tui/releases/download/1.0.0/oeis-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ea6ca42cc4c8f2c90d97a0c8ea9ede14f3e5bfc65e5e12144545636c8199c24e
+
+pkgname = oeis-tui-bin
