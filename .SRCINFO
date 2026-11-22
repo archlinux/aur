@@ -1,13 +1,12 @@
 pkgbase = liquidsoap
 	pkgdesc = Audio and video streaming language
-	pkgver = 2.4.6
+	pkgver = 2.5.0rc2
 	pkgrel = 1
 	url = https://www.liquidsoap.info/
 	install = liquidsoap.install
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = ocaml
 	makedepends = opam
 	makedepends = pandoc-cli
 	makedepends = unzip
@@ -17,10 +16,10 @@ pkgbase = liquidsoap
 	depends = libsamplerate
 	depends = openssl
 	optdepends = bubblewrap: sandbox for external processes
-	source = liquidsoap-2.4.6.tar.gz::https://github.com/savonet/liquidsoap/archive/refs/tags/v2.4.6.tar.gz
+	source = liquidsoap-2.5.0rc2.tar.gz::https://github.com/savonet/liquidsoap/archive/refs/tags/v2.5.0-rc2.tar.gz
 	source = liquidsoap.sysusers
 	source = liquidsoap.tmpfiles
-	sha256sums = 001feb5efc851f30af110b1b7892b1da02697c9282e352c603ea2b87b56273c2
+	sha256sums = 2cbdfa5e3e43cfa81b25ddf9b85a166a9a8c2cbc02ae2b9a2f4e9e6096fb91a8
 	sha256sums = a8a759a71362cd405d12381effc4d41a9f70dcfb3b039b7a6236ab82e363c6d0
 	sha256sums = 8ea34e0054bcb937c86121abd8b230801a73ca1874ac5769708a049f699a6522
 
