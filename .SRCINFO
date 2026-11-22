@@ -1,6 +1,6 @@
 pkgbase = dune-cli
 	pkgdesc = Dune Analytics CLI
-	pkgver = 0.1.18
+	pkgver = 0.1.23
 	pkgrel = 1
 	url = https://github.com/duneanalytics/cli
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = dune-cli
 	conflicts = dune-cli
 	conflicts = dune-cli-git
 	conflicts = dune-cli-bin
-	source = https://github.com/duneanalytics/cli/archive/refs/tags/v0.1.18.tar.gz
-	sha256sums = b208897086157e8bc15c5311ad38c2b416c6d83e3da2f45d6ceb3f5868cf4645
+	source = https://github.com/duneanalytics/cli/archive/refs/tags/v0.1.23.tar.gz
+	sha256sums = 1eebfa88c585cfbbf2b404d37456ec0a4c192af3cb7bbeb70ec4739fea27838f
 
 pkgname = dune-cli
