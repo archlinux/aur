@@ -1,11 +1,12 @@
 pkgbase = xfce4-net-visualizer-plugin
 	pkgdesc = Futuristic Xfce panel network monitor with a rotating wire-mesh globe and traffic chart
-	pkgver = 0.1.0
-	pkgrel = 10
+	pkgver = 0.1.0.r4.g11a9f80
+	pkgrel = 1
 	url = https://github.com/godlikemouse/xfce4-net-visualizer-plugin
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-or-later
+	makedepends = git
 	makedepends = meson
 	makedepends = ninja
 	depends = xfce4-panel
@@ -16,5 +17,7 @@ pkgbase = xfce4-net-visualizer-plugin
 	depends = json-glib
 	depends = libmaxminddb
 	depends = iputils
+	source = xfce4-net-visualizer-plugin::git+https://github.com/godlikemouse/xfce4-net-visualizer-plugin.git#branch=main
+	sha256sums = SKIP
 
 pkgname = xfce4-net-visualizer-plugin
