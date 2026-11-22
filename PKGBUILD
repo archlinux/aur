@@ -1,9 +1,8 @@
 # Maintainer: Chuanshanjia <1845776552@qq.com>
-# Based on Qualcomm Software Center 1.32.1
 
 pkgname=qualcomm-software-center
 pkgver=1.32.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Qualcomm Software Center - Discover and download software distributions, service tasks, tools and change requests"
 arch=('x86_64')
 url="https://www.qualcomm.com/developer/software/qualcomm-software-center"
@@ -76,7 +75,11 @@ package() {
     # 创建必要的目录并复制桌面文件
     install -d "${pkgdir}/usr/share/applications"
     cp temp_extract/usr/share/applications/qualcommsoftwarecenter.desktop "${pkgdir}/usr/share/applications/"
-    sed -i "s|Exec=/opt/qcom/softwarecenter/bin/softwarecenter %u|Exec=/usr/bin/${pkgname} %u|g" "${pkgdir}/usr/share/applications/qualcommsoftwarecenter.desktop"
+    sed -i "s|Exec=.*|Exec=/usr/bin/${pkgname} %u|" "${pkgdir}/usr/share/applications/qualcommsoftwarecenter.desktop"
+    if ! grep -q "^Exec=/usr/bin/${pkgname} %u$" "${pkgdir}/usr/share/applications/qualcommsoftwarecenter.desktop"; then
+        error "desktop 文件的 Exec 补丁失败，上游 desktop 结构可能已变化"
+        return 1
+    fi
 
     # 复制图标
     install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
@@ -86,8 +89,4 @@ package() {
     
     # 复制许可证
     install -Dm644 "temp_extract/opt/qcom/softwarecenter/bin/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    # 清理临时文件
-    rm -rf temp_extract
-    rm -f control.tar.xz control.tar.zst data.tar.xz data.tar.zst debian-binary
 }

@@ -1,7 +1,7 @@
 pkgbase = qualcomm-software-center
 	pkgdesc = Qualcomm Software Center - Discover and download software distributions, service tasks, tools and change requests
 	pkgver = 1.32.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.qualcomm.com/developer/software/qualcomm-software-center
 	install = qualcomm-software-center.install
 	arch = x86_64
