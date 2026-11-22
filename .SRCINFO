@@ -1,0 +1,19 @@
+pkgbase = trex-tui-bin
+	pkgdesc = A fast tmux session manager with fuzzy finding, per session stats and AI Agent tracking
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/blackopsrepl/trex
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	provides = trex-tui
+	conflicts = trex-tui
+	options = !debug
+	source = trex-tui-bin-0.6.4-LICENSE::https://raw.githubusercontent.com/blackopsrepl/trex/v0.6.4/LICENSE
+	sha256sums = 90c9a7ef0f0fa2ab1cc89c9f1484b030df05cb8dad4f21967f12619406b7115e
+	source_x86_64 = trex-tui-bin-0.6.4-x86_64.tar.gz::https://github.com/blackopsrepl/trex/releases/download/v0.6.4/trex-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 365b73c358ca1699cc66889421b26d18dab61c9e296ef050d5cbeb153aa8991f
+	source_aarch64 = trex-tui-bin-0.6.4-aarch64.tar.gz::https://github.com/blackopsrepl/trex/releases/download/v0.6.4/trex-linux-aarch64.tar.gz
+	sha256sums_aarch64 = b9568ce3022715e7596d370aa02637c61c3907836a46db3a7de9392c59cb1daa
+
+pkgname = trex-tui-bin
