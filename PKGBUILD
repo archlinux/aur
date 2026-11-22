@@ -1,7 +1,7 @@
 # Maintainer: Lian <yichengxin7@gmail.com>
 pkgname=lianwalld-bin
-pkgver=6.0.0
-pkgrel=2
+pkgver=6.0.1
+pkgrel=1
 pkgdesc="LianWall daemon - built-in Vulkan image/video wallpaper engine"
 arch=('x86_64')
 options=('!strip' '!debug')
@@ -14,9 +14,9 @@ optdepends=('awww>=0.12.1: optional external image backend'
             'rocm-smi-lib: AMD VRAM monitoring')
 provides=("lianwalld=$pkgver")
 conflicts=('lianwalld')
-source=("https://github.com/Yueosa/lianwall/releases/download/v${pkgver}/lianwalld_${pkgver}-${pkgrel}_linux_x86_64")
-sha256sums=('fc659494e769c46b8f68018e7fe391b4b9716ec1aa95772ed378fb3fda9a1100')
+source=("https://github.com/Yueosa/lianwall/releases/download/v${pkgver}/lianwalld_${pkgver}_linux_x86_64")
+sha256sums=('49edf992a1294885be274f32e5fa59c4ff09910f0e422b7802f7b5aeefc94232')
 
 package() {
-    install -Dm755 "lianwalld_${pkgver}-${pkgrel}_linux_x86_64" "$pkgdir/usr/bin/lianwalld"
+    install -Dm755 "lianwalld_${pkgver}_linux_x86_64" "$pkgdir/usr/bin/lianwalld"
 }
