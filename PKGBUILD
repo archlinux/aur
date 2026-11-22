@@ -6,11 +6,11 @@
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=2.29.0
+pkgver=2.30.0
 pkgrel=1
 pkgdesc="Canonical's display server"
 url="https://github.com/canonical/mir"
-arch=(x86_64 i686)
+arch=(x86_64 aarch64)
 license=('GPL-2.0-or-later OR GPL-3.0-or-later')
 depends=(
     boost-libs
@@ -60,13 +60,15 @@ makedepends=(
     wlcs
     xorg-xwayland
     )
-optdepends=('qterminal: required for miral demos'
-            'ttf-ubuntu-font-family: required for miral demos'
-            'qt5-wayland: required for miral demos'
-            'xcursor-dmz: opt requirement for miral demos')
+optdepends=(
+    'qt5-wayland: required for miral demos'
+    'qterminal: required for miral demos'
+    'ttf-ubuntu-font-family: required for miral demos'
+    'xcursor-dmz: optional requirement for miral demos'
+    )
 options=(!lto)
 source=("git+https://github.com/canonical/mir.git#tag=v${pkgver}") # build issue with 2.26.0 archive
-sha256sums=('939612b79c86a7115a42f655c7d8d6b3f4e3ef3fa4ae2e3e1400eea43a7ebfae')
+sha256sums=('bf679072726c346b1795117462b05f53a5f59b7a0e8405ef981d8c5412ad1326')
 
 build() {
   local _flags=(
