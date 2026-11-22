@@ -1,0 +1,24 @@
+pkgbase = shiyi-translator-bin
+	pkgdesc = Desktop translator with configurable translation services
+	pkgver = 0.3.7
+	pkgrel = 11
+	url = https://github.com/leychan/shiyi-translator
+	arch = x86_64
+	license = unknown
+	depends = glibc>=2.34
+	depends = gcc-libs
+	depends = gtk3
+	depends = libsecret
+	depends = libayatana-appindicator
+	depends = espeak-ng
+	optdepends = wl-clipboard: Wayland selection capture
+	optdepends = xclip: X11 selection capture
+	provides = shiyi-translator=0.3.7
+	conflicts = shiyi-translator
+	noextract = shiyi-translator-0.3.7-11-x86_64.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source = https://github.com/leychan/shiyi-translator/releases/download/v0.3.7/shiyi-translator-0.3.7-11-x86_64.pkg.tar.zst
+	sha256sums = db135c467cb7b5ac717a552e6448b11780a48f987b1a775e202a989b73bc8b64
+
+pkgname = shiyi-translator-bin
