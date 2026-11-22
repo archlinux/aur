@@ -1,7 +1,7 @@
 pkgbase = cef-vaapi
 	pkgdesc = Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)
 	pkgver = 156.0.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chromiumembedded.github.io/cef
 	arch = x86_64
 	license = BSD-3-Clause
@@ -93,6 +93,7 @@ pkgbase = cef-vaapi
 	source = cef-native-pixmaps.diff
 	source = chromium-disable-font-tests.patch
 	source = FindCEF.cmake
+	source = chromium-154-fallback-linux-ui-portal-color-scheme.patch
 	sha256sums = 858bac041597aee091865adef72e39d469f40d3ed1da2136dab2073c60480a88
 	sha256sums = 4ef2e056035b6772a30416fcb744de696fff4ed9b6619c9fe458990005decfd0
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
@@ -119,5 +120,6 @@ pkgbase = cef-vaapi
 	sha256sums = ad30ec1686dfa5b74fc2dc9f4613fb9384df646a745e48842a44f9ebbc558057
 	sha256sums = 44dcc0da55a8c6c6af875addcfb9c552c722b56a31479eb7d99f16d0a27f4ebb
 	sha256sums = e576250c4d0f3dd307bd22c6d4f9f7aba54fdf4d5899520c0bd1c3527aec65ed
+	sha256sums = 0038f0d9130305f8375ac12569dc0467432545202eab149ae2b08aedf1a03ff9
 
 pkgname = cef-vaapi

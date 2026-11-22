@@ -16,7 +16,7 @@ _cef_commit=6028375a4532fb89d23b58635f5c0d3a82c93959
 # the chromium version must match CHROMIUM_BUILD_COMPATIBILITY.txt in the CEF repo
 _chromium_ver=156.0.8078.93
 _system_clang=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)"
 provides=("cef=$pkgver")  # provides="cef=$pkgver"
 conflicts=('cef')  # conflicts='cef'
@@ -99,6 +99,7 @@ source=(
   cef-native-pixmaps.diff
   chromium-disable-font-tests.patch
   FindCEF.cmake
+  chromium-154-fallback-linux-ui-portal-color-scheme.patch
 )
 sha256sums=('858bac041597aee091865adef72e39d469f40d3ed1da2136dab2073c60480a88'
             '4ef2e056035b6772a30416fcb744de696fff4ed9b6619c9fe458990005decfd0'
@@ -125,7 +126,8 @@ sha256sums=('858bac041597aee091865adef72e39d469f40d3ed1da2136dab2073c60480a88'
             '6695d7bcac489f74b8290a05dac540c2b5c5fed997ee119ae05419d36509445d'
             'ad30ec1686dfa5b74fc2dc9f4613fb9384df646a745e48842a44f9ebbc558057'
             '44dcc0da55a8c6c6af875addcfb9c552c722b56a31479eb7d99f16d0a27f4ebb'
-            'e576250c4d0f3dd307bd22c6d4f9f7aba54fdf4d5899520c0bd1c3527aec65ed')
+            'e576250c4d0f3dd307bd22c6d4f9f7aba54fdf4d5899520c0bd1c3527aec65ed'
+            '0038f0d9130305f8375ac12569dc0467432545202eab149ae2b08aedf1a03ff9')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -327,6 +329,10 @@ prepare() {
 
   # CEF: Remove sysroot requirement for non-x64 builds
   patch -Np1 -i ../cef-no-sysroot.patch
+
+  # use_gtk/use_qt are disabled, so FallbackLinuxUi receives the portal color
+  # scheme; make it reach web content (prefers-color-scheme), crbug.com/536445418
+  patch -Np1 -i ../chromium-154-fallback-linux-ui-portal-color-scheme.patch
 
   # CEF: Remove libxml_visibility patch (fails with system libxml2)
   patch -Np1 -i ../cef-no-libxml-visibility-patch.patch
