@@ -1,0 +1,19 @@
+pkgbase = meteo-tui-git
+	pkgdesc = French weather app in the command line
+	pkgver = r8.bc9bea8
+	pkgrel = 1
+	url = https://github.com/16arpi/meteo-tui
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = meteo-tui
+	conflicts = meteo-tui
+	options = !lto
+	source = meteo-tui::git+https://github.com/16arpi/meteo-tui.git
+	sha256sums = SKIP
+
+pkgname = meteo-tui-git
