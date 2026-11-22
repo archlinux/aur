@@ -14,9 +14,7 @@ makedepends=("git")
 conflicts=("aurscan-git")
 
 package() {
-    cd "$srcdir/clamaurscan"
+    cd "clamaurscan"
     install -Dm755 --no-target-directory "clamaurscan" "${pkgdir}/usr/bin/clamaurscan"
-    echo "Remember to add \"PreBuildCommand = clamaurscan\" to the \"[bin]\" section of your paru.conf (usually \"/etc/paru.conf\" or \"~/.config/paru/paru.conf\")"
-    echo "Check out the README.md for more information on how to use this package:"
-    echo "https://codeberg.org/psi-jack/clamaurscan/src/branch/main/README.md"
+    install -Dm755 --no-target-directory "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

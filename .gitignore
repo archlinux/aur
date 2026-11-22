@@ -3,3 +3,4 @@ pkg/*
 aurscan/*
 clamaurscan/*
 clamaurscan-git-*.pkg.tar.zst
+clamaurscan-git-*.log
