@@ -1,0 +1,16 @@
+pkgbase = deveco-commandline-tools
+	pkgdesc = HUAWEI Command Line Tools for HarmonyOS: hvigorw, ohpm, hstack, codelinter, SDK tools
+	pkgver = 26.0.0.851
+	pkgrel = 1
+	url = https://developer.huawei.com/consumer/cn/download/
+	arch = x86_64
+	license = LicenseRef-Huawei-EULA
+	depends = glibc
+	depends = java-runtime
+	depends = nodejs
+	optdepends = deveco-cli: CLI front-end that consumes these tools via DEVECO_CLI_CLT_PATH
+	options = !strip
+	source = commandline-tools-linux-x64.zip
+	sha256sums = SKIP
+
+pkgname = deveco-commandline-tools
