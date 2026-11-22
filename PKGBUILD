@@ -1,0 +1,27 @@
+# Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
+
+pkgname=crossfyre-toolchain-bin
+pkgver=0.1.44
+pkgrel=1
+pkgdesc="Recon and vulnerability scanning engines with live dashboards for finding subdomains, open ports"
+arch=('x86_64' 'aarch64')
+url="https://github.com/clickswave/crossfyre-toolchain"
+license=('Apache-2.0')
+depends=('glibc' 'libgcc')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+options=('!strip' '!debug' '!emptydirs')
+_dl="${url}/releases/download/v${pkgver}"
+source=("${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/clickswave/crossfyre-toolchain/v${pkgver}/LICENSE")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/crossfyre-toolchain-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/crossfyre-toolchain-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums=('153d5b1a5996146d0aa1594b1418c467220291e00931c3e0383515ad5779c9be')
+sha256sums_x86_64=('3cf87ac47d02c66a3e8c765bccc761420cfa1d774a69932848148080492ad3df')
+sha256sums_aarch64=('39276259e77a52db1a3fdccb38d015542124faa4af7d53c0684ea2c75525c0ea')
+
+package() {
+  install -d "${pkgdir}/opt/${pkgname}" "${pkgdir}/usr/bin"
+  cp -a . "${pkgdir}/opt/${pkgname}/"
+  ln -s "/opt/${pkgname}/crossfyre" "${pkgdir}/usr/bin/crossfyre"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
