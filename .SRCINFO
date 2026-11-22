@@ -1,7 +1,7 @@
 pkgbase = openbot
-	pkgdesc = Local-first desktop workspace for persistent AI teammates. Run AI with dedicated workspaces, task queues, file sharing, browser control, and agent-to-agent collaboration.
+	pkgdesc = Local-first desktop workspace for persistent AI teammates.
 	pkgver = 0.76.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openbot.run
 	arch = x86_64
 	arch = aarch64
@@ -50,8 +50,13 @@ pkgbase = openbot
 	optdepends = nodejs: Local scripts API command-line client
 	optdepends = numactl: upstream x86_64 remote-desktop runtime
 	optdepends = socat: workspace isolation for Claude agents
+	provides = openbot=0.76.1
+	provides = openbot-desktop=0.76.1
+	provides = openbot-cli=0.76.1
 	provides = openbot-bin=0.76.1
 	conflicts = openbot-bin
+	conflicts = openbot-desktop
+	conflicts = openbot-cli
 	noextract = OpenBot-0.76.1-x86_64.AppImage
 	noextract = OpenBot-0.76.1-arm64.AppImage
 	options = !strip
