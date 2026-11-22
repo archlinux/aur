@@ -1,0 +1,17 @@
+pkgbase = rsfrac
+	pkgdesc = Terminal based fractal explorer, including Mandelbrot, Burning Ship
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/SkwalExe/rsfrac
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	options = !lto
+	source = rsfrac-1.1.2.tar.gz::https://github.com/SkwalExe/rsfrac/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = f43fc114b348c94b96ea7bc0b3bdc21ce8e0e4583d0ed142718d79e787a15248
+
+pkgname = rsfrac
