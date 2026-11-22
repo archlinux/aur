@@ -1,0 +1,16 @@
+pkgbase = stevedore
+	pkgdesc = A fast, keyboard-driven terminal UI for managing Docker containers and Compose stacks
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/takumiymd/stevedore
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = stevedore-0.1.1.tar.gz::https://github.com/takumiymd/stevedore/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 613b959de1ec6ba7b3de20b61b391ba49d8d8da910aeb90473169e43a7a459ca
+
+pkgname = stevedore
