@@ -1,6 +1,6 @@
 pkgbase = python-pytorch-cuda12.9
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support)
-	pkgver = 2.12.1
+	pkgver = 2.15.0
 	pkgrel = 2
 	url = https://pytorch.org
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = python-pytorch-cuda12.9
 	makedepends = shaderc
 	makedepends = vulkan-headers
 	depends = abseil-cpp
+	depends = cpuinfo
 	depends = eigen
 	depends = gcc14-libs
 	depends = gflags
@@ -44,6 +45,7 @@ pkgbase = python-pytorch-cuda12.9
 	depends = python-jinja
 	depends = python-networkx
 	depends = python-numpy
+	depends = python-scikit-build-core
 	depends = python-sympy
 	depends = python-typing_extensions
 	depends = python-yaml
@@ -52,15 +54,16 @@ pkgbase = python-pytorch-cuda12.9
 	optdepends = python-onnxscript: for the ONNX exporter
 	options = !lto
 	options = !debug
-	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.12.1
+	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.15.0
 	source = python-pytorch-cuda12.9-FP16::git+https://github.com/Maratyszcza/FP16.git
 	source = python-pytorch-cuda12.9-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git
+	source = python-pytorch-cuda12.9-MSLK::git+https://github.com/meta-pytorch/MSLK.git
 	source = python-pytorch-cuda12.9-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git
 	source = python-pytorch-cuda12.9-NVTX::git+https://github.com/NVIDIA/NVTX.git
 	source = python-pytorch-cuda12.9-PeachPy::git+https://github.com/malfet/PeachPy.git
 	source = python-pytorch-cuda12.9-VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
-	source = python-pytorch-cuda12.9-aiter::git+https://github.com/ROCm/aiter.git
 	source = python-pytorch-cuda12.9-XNNPACK::git+https://github.com/google/XNNPACK.git
+	source = python-pytorch-cuda12.9-aiter::git+https://github.com/ROCm/aiter.git
 	source = python-pytorch-cuda12.9-benchmark::git+https://github.com/google/benchmark.git
 	source = python-pytorch-cuda12.9-composable_kernel::git+https://github.com/ROCm/composable_kernel.git
 	source = python-pytorch-cuda12.9-cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git
@@ -78,28 +81,25 @@ pkgbase = python-pytorch-cuda12.9
 	source = python-pytorch-cuda12.9-ideep::git+https://github.com/intel/ideep
 	source = python-pytorch-cuda12.9-ittapi::git+https://github.com/intel/ittapi.git
 	source = python-pytorch-cuda12.9-json::git+https://github.com/nlohmann/json.git
-	source = python-pytorch-cuda12.9-kineto::git+https://github.com/pytorch/kineto
 	source = python-pytorch-cuda12.9-kleidiai::git+https://github.com/ARM-software/kleidiai.git
 	source = python-pytorch-cuda12.9-mimalloc::git+https://github.com/microsoft/mimalloc.git
 	source = python-pytorch-cuda12.9-onnx::git+https://github.com/onnx/onnx.git
-	source = python-pytorch-cuda12.9-opentelemetry-cpp::git+https://github.com/open-telemetry/opentelemetry-cpp.git
 	source = python-pytorch-cuda12.9-pocketfft::git+https://github.com/mreineck/pocketfft
 	source = python-pytorch-cuda12.9-protobuf::git+https://github.com/protocolbuffers/protobuf.git
 	source = python-pytorch-cuda12.9-psimd::git+https://github.com/Maratyszcza/psimd.git
-	source = python-pytorch-cuda12.9-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git
+	source = python-pytorch-cuda12.9-pthreadpool::git+https://github.com/google/pthreadpool.git
 	source = python-pytorch-cuda12.9-pybind11::git+https://github.com/pybind/pybind11.git
 	source = python-pytorch-cuda12.9-sleef::git+https://github.com/shibatch/sleef
 	source = python-pytorch-cuda12.9-tensorpipe::git+https://github.com/pytorch/tensorpipe.git
 	source = fix_include_system.patch
 	source = use-system-libuv.patch
-	source = 87773.patch
 	source = glog-0.7.patch
 	source = fix_cmake_prefix_path.patch
-	source = add_gpu_targets_rocm.patch
 	source = aotriton_disable_install.patch
 	source = pyproject.patch
-	b2sums = 98f5a0196764acd7b8595f43473a544f3b515f25546a526a58b0fa7f57854025990860efa4e3d765dadb94b308b40c5b0b5344a13dd23f62207d15f0956d6214
-	b2sums = SKIP
+	source = fix_noinline_macro.h
+	source = python-pytorch-cuda12.9-187006.patch::https://github.com/pytorch/pytorch/pull/187006.patch
+	b2sums = 229332601a80fc49d6fefe393e98ddee27db12e587f8fb222790a0d023bb97f846921e94544b7db8af973078febd81429f5abf39e80c829ebcc26df39ab468c9
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -137,17 +137,18 @@ pkgbase = python-pytorch-cuda12.9
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = 8c91e931f34fcc1cc5d916572e9808435bbc4a853d80af92a5484b4bb1111ef3b2a1c58283b97c2c3071de3177a124669004855f7ebad0734b0941714e3baf4f
-	b2sums = af8c724ed80898ae3875a295ad6bd4d18d90f8a9124f6cff6d1b2f525bf7806fe61306e739c1f7362fbd8d0e4f8ba57d0e3bf925ea3f7a78a0a98f26722db147
-	b2sums = 0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18
-	b2sums = 20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e
+	b2sums = c19aa4fc8d6416789453163d53bfd4f52682a68746bc6ad6ac2b7520ecbca1bb6363afc969e98738206b6374ceec4ca6769724d4653e677c2be514ddee20fdef
+	b2sums = b9bb1ac1260a55db9126c7568f1cb4daea071c20609f0117e186c85caad163d41053e43ddda988e8969e074e2323d1de1bece9086bc3222396e8817a79bd0079
 	b2sums = eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980
-	b2sums = 007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c
 	b2sums = ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0
-	b2sums = 21234592e20b5ff1bf43f926bdda72b089cc2b32b92d4287e5aa6b20dc8ebbb2e30135ba8b881d64c35d98be457366bcfd9982cf2e38fd3fc13901955fa571da
+	b2sums = bf0a737c76e44186ef4df121290eb6ac6203c9366b8e8b74b41ab24b920a88d7a3ac95a918dc9aef591719e5df3ff206f512728a8af47999af0635bccc6e0623
+	b2sums = ccfa6616257ed9df0efa4ae5c7491b980e0b87667cef53b2f1164909791ac7aa36aadcadb199b12acebd0781a29126b4289d5266beb3488141f0253c96704c93
+	b2sums = 8b7d8ee806613a5e3ce5ecf6be09b3f1bb31fed193b644dc17b1caad2212e2774e0f67452199bc00c5655fea6b6401ad00e4e99b4fd858fcb3749f1e1f4c9d04
 
 pkgname = python-pytorch-cuda12.9
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support) (with CUDA 12.9)
 	depends = abseil-cpp
+	depends = cpuinfo
 	depends = eigen
 	depends = gcc14-libs
 	depends = gflags
@@ -169,6 +170,7 @@ pkgname = python-pytorch-cuda12.9
 	depends = python-jinja
 	depends = python-networkx
 	depends = python-numpy
+	depends = python-scikit-build-core
 	depends = python-sympy
 	depends = python-typing_extensions
 	depends = python-yaml
@@ -178,13 +180,14 @@ pkgname = python-pytorch-cuda12.9
 	depends = nccl-cuda12.9
 	depends = cudnn9.10-cuda12.9
 	depends = onednn
-	provides = python-pytorch=2.12.1
-	provides = python-pytorch-cuda=2.12.1
+	provides = python-pytorch=2.15.0
+	provides = python-pytorch-cuda=2.15.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-cuda12.9
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support) (with CUDA 12.9 and AVX2 CPU optimizations)
 	depends = abseil-cpp
+	depends = cpuinfo
 	depends = eigen
 	depends = gcc14-libs
 	depends = gflags
@@ -206,6 +209,7 @@ pkgname = python-pytorch-opt-cuda12.9
 	depends = python-jinja
 	depends = python-networkx
 	depends = python-numpy
+	depends = python-scikit-build-core
 	depends = python-sympy
 	depends = python-typing_extensions
 	depends = python-yaml
@@ -215,7 +219,7 @@ pkgname = python-pytorch-opt-cuda12.9
 	depends = nccl-cuda12.9
 	depends = cudnn9.10-cuda12.9
 	depends = onednn
-	provides = python-pytorch=2.12.1
-	provides = python-pytorch-cuda=2.12.1
-	provides = python-pytorch-cuda12.9=2.12.1
+	provides = python-pytorch=2.15.0
+	provides = python-pytorch-cuda=2.15.0
+	provides = python-pytorch-cuda12.9=2.15.0
 	conflicts = python-pytorch

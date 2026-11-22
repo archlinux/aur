@@ -9,7 +9,7 @@ pkgbase="python-${_pkgname}-cuda12.9"
 pkgname=("${pkgbase}" "python-${_pkgname}-opt-cuda12.9")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.12.1
+pkgver=2.15.0
 pkgrel=2
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support)'
 arch=('x86_64')
@@ -17,6 +17,7 @@ url="https://pytorch.org"
 license=('BSD-3-Clause-Modification')
 depends=(
   abseil-cpp
+  cpuinfo
   eigen
   gcc14-libs
   gflags
@@ -38,6 +39,7 @@ depends=(
   python-jinja
   python-networkx
   python-numpy
+  python-scikit-build-core
   python-sympy
   python-typing_extensions
   python-yaml
@@ -71,12 +73,13 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         # generated using parse-submodules
         "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
         "${pkgname}-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git"
+        "${pkgname}-MSLK::git+https://github.com/meta-pytorch/MSLK.git"
         "${pkgname}-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git"
         "${pkgname}-NVTX::git+https://github.com/NVIDIA/NVTX.git"
         "${pkgname}-PeachPy::git+https://github.com/malfet/PeachPy.git"
         "${pkgname}-VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
-        "${pkgname}-aiter::git+https://github.com/ROCm/aiter.git"
         "${pkgname}-XNNPACK::git+https://github.com/google/XNNPACK.git"
+        "${pkgname}-aiter::git+https://github.com/ROCm/aiter.git"
         "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
         "${pkgname}-composable_kernel::git+https://github.com/ROCm/composable_kernel.git"
         "${pkgname}-cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git"
@@ -94,29 +97,26 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         "${pkgname}-ideep::git+https://github.com/intel/ideep"
         "${pkgname}-ittapi::git+https://github.com/intel/ittapi.git"
         "${pkgname}-json::git+https://github.com/nlohmann/json.git"
-        "${pkgname}-kineto::git+https://github.com/pytorch/kineto"
         "${pkgname}-kleidiai::git+https://github.com/ARM-software/kleidiai.git"
         "${pkgname}-mimalloc::git+https://github.com/microsoft/mimalloc.git"
         "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
-        "${pkgname}-opentelemetry-cpp::git+https://github.com/open-telemetry/opentelemetry-cpp.git"
         "${pkgname}-pocketfft::git+https://github.com/mreineck/pocketfft"
         "${pkgname}-protobuf::git+https://github.com/protocolbuffers/protobuf.git"
         "${pkgname}-psimd::git+https://github.com/Maratyszcza/psimd.git"
-        "${pkgname}-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git"
+        "${pkgname}-pthreadpool::git+https://github.com/google/pthreadpool.git"
         "${pkgname}-pybind11::git+https://github.com/pybind/pybind11.git"
         "${pkgname}-sleef::git+https://github.com/shibatch/sleef"
         "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
         fix_include_system.patch
         use-system-libuv.patch
-        87773.patch
         glog-0.7.patch
         fix_cmake_prefix_path.patch
-        add_gpu_targets_rocm.patch
         aotriton_disable_install.patch
         pyproject.patch
+        fix_noinline_macro.h
+        $pkgname-187006.patch::https://github.com/pytorch/pytorch/pull/187006.patch
         )
-b2sums=('98f5a0196764acd7b8595f43473a544f3b515f25546a526a58b0fa7f57854025990860efa4e3d765dadb94b308b40c5b0b5344a13dd23f62207d15f0956d6214'
-        'SKIP'
+b2sums=('229332601a80fc49d6fefe393e98ddee27db12e587f8fb222790a0d023bb97f846921e94544b7db8af973078febd81429f5abf39e80c829ebcc26df39ab468c9'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -154,13 +154,13 @@ b2sums=('98f5a0196764acd7b8595f43473a544f3b515f25546a526a58b0fa7f57854025990860e
         'SKIP'
         'SKIP'
         '8c91e931f34fcc1cc5d916572e9808435bbc4a853d80af92a5484b4bb1111ef3b2a1c58283b97c2c3071de3177a124669004855f7ebad0734b0941714e3baf4f'
-        'af8c724ed80898ae3875a295ad6bd4d18d90f8a9124f6cff6d1b2f525bf7806fe61306e739c1f7362fbd8d0e4f8ba57d0e3bf925ea3f7a78a0a98f26722db147'
-        '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
-        '20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e'
+        'c19aa4fc8d6416789453163d53bfd4f52682a68746bc6ad6ac2b7520ecbca1bb6363afc969e98738206b6374ceec4ca6769724d4653e677c2be514ddee20fdef'
+        'b9bb1ac1260a55db9126c7568f1cb4daea071c20609f0117e186c85caad163d41053e43ddda988e8969e074e2323d1de1bece9086bc3222396e8817a79bd0079'
         'eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980'
-        '007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c'
         'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
-        '21234592e20b5ff1bf43f926bdda72b089cc2b32b92d4287e5aa6b20dc8ebbb2e30135ba8b881d64c35d98be457366bcfd9982cf2e38fd3fc13901955fa571da')
+        'bf0a737c76e44186ef4df121290eb6ac6203c9366b8e8b74b41ab24b920a88d7a3ac95a918dc9aef591719e5df3ff206f512728a8af47999af0635bccc6e0623'
+        'ccfa6616257ed9df0efa4ae5c7491b980e0b87667cef53b2f1164909791ac7aa36aadcadb199b12acebd0781a29126b4289d5266beb3488141f0253c96704c93'
+        '8b7d8ee806613a5e3ce5ecf6be09b3f1bb31fed193b644dc17b1caad2212e2774e0f67452199bc00c5655fea6b6401ad00e4e99b4fd858fcb3749f1e1f4c9d04')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -198,12 +198,11 @@ prepare() {
   git config submodule."third_party/googletest".url "${srcdir}/${pkgname}"-googletest
   git config submodule."third_party/ideep".url "${srcdir}/${pkgname}"-ideep
   git config submodule."third_party/ittapi".url "${srcdir}/${pkgname}"-ittapi
-  git config submodule."third_party/kineto".url "${srcdir}/${pkgname}"-kineto
   git config submodule."third_party/kleidiai".url "${srcdir}/${pkgname}"-kleidiai
   git config submodule."third_party/mimalloc".url "${srcdir}/${pkgname}"-mimalloc
+  git config submodule."third_party/mslk".url "${srcdir}/${pkgname}"-MSLK
   git config submodule."third_party/nlohmann".url "${srcdir}/${pkgname}"-json
   git config submodule."third_party/onnx".url "${srcdir}/${pkgname}"-onnx
-  git config submodule."third_party/opentelemetry-cpp".url "${srcdir}/${pkgname}"-opentelemetry-cpp
   git config submodule."third_party/pocketfft".url "${srcdir}/${pkgname}"-pocketfft
   git config submodule."third_party/protobuf".url "${srcdir}/${pkgname}"-protobuf
   git config submodule."third_party/pybind11".url "${srcdir}/${pkgname}"-pybind11
@@ -219,14 +218,8 @@ prepare() {
   # Use system libuv
   patch -Np1 -i "${srcdir}"/use-system-libuv.patch
 
-  # Fix building against glog 0.6
-  patch -Np1 -i "${srcdir}/87773.patch"
-
   # Fix building against glog 0.7
   patch -p1 -i "${srcdir}/glog-0.7.patch"
-
-  # ROCm 6.4.2+ requires architectures to appear as cmake arguments too
-  patch -p1 -i "${srcdir}/add_gpu_targets_rocm.patch"
 
   # If using prebuilt aotriton, pytorch attempts to copy /usr/lib and /user/include
   # into the torch folder. Disable this behavior.
@@ -239,6 +232,15 @@ prepare() {
 
   # patch python dependencies in pyproject.toml
   patch -p1 -i "${srcdir}/pyproject.patch"
+
+  # Skip building RowwiseScaledMM.cu and GroupMM.cu for sm_103f, it results in this error:
+  # nvcc fatal   : The same GPU code (`sm_103f`) generated for non family-specific and family-specific GPU arch
+  patch -p1 -i "${srcdir}/$pkgname-187006.patch"
+
+  # hipFile is required for ROCm >= 7.14, but is not packaged. Without it,
+  # the build disables USE_CUFILE.
+  sed -i 's/find_package_and_print_version(hipfile REQUIRED)/find_package_and_print_version(hipfile)/' \
+    cmake/public/LoadHIP.cmake
 
   cd "${srcdir}"
 
@@ -267,6 +269,7 @@ _prepare() {
   export USE_SYSTEM_NCCL=ON
   export USE_SYSTEM_PYBIND11=ON
   export USE_SYSTEM_EIGEN_INSTALL=ON
+  export USE_SYSTEM_CPUINFO=ON
   export USE_GOLD_LINKER=ON
   export NCCL_VERSION=$(pkg-config nccl --modversion)
   export NCCL_VER_CODE=$(sed -n 's/^#define NCCL_VERSION_CODE\s*\(.*\).*/\1/p' /usr/include/nccl.h)
@@ -354,6 +357,7 @@ _package() {
 
   # Clean up duplicates with Arch packages
   rm -vrf $(ls -d "${pkgdir}"/usr/include/* | grep -v "/ATen$\|/caffe2$\|/c10$\|/torch$\|/tensorpipe$")
+  rm -f "${pkgdir}"/usr/lib/libaotriton_v2.so*
 
   # Python module is hardcoded so look there at runtime
   ln -s /usr/include "${pkgdir}/${pytorchpath}/include"

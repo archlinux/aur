@@ -1,42 +1,29 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index 925742b4c33..1a97ec77faf 100644
+index e7648b0..650bf18 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -1,12 +1,9 @@
--# Package ######################################################################
- 
- [build-system]
- requires = [
-     # 70.1.0: min version for integrated bdist_wheel command from wheel package
-     # 77.0.0: min version for SPDX expression support for project.license
--    "setuptools>=70.1.0,<82",
--    "cmake>=3.27",
--    "ninja",
-+    "setuptools",
-     "numpy",
-     "packaging",
-     "pyyaml",
-@@ -22,9 +19,7 @@ dev = [
-     # in PyTorch root until the project fully migrates to pyproject.toml
+@@ -314,10 +314,8 @@ dev = [
      # after which this can be removed as it is already specified in the
      # [build-system] section
--    "setuptools>=70.1.0,<80.0",  # setuptools develop deprecated on 80.0
+     "scikit-build-core>=1.0",
+-    "setuptools>=77.0.0,<82",  # 77.0 is the first release with PEP 639 license-files support
++    "setuptools",  # 77.0 is the first release with PEP 639 license-files support
+     "spin",
 -    "cmake>=3.27",
 -    "ninja",
-+    "setuptools",  # setuptools develop deprecated on 80.0
      "numpy",
-     "packaging",
+     "packaging>=24.2",  # required by setuptools>=77 to validate PEP 639 license expressions
      "pyyaml",
-diff --git a/setup.py b/setup.py
-index 0decaf6..f0cf951 100644
---- a/setup.py
-+++ b/setup.py
-@@ -1703,7 +1703,7 @@ def main() -> None:
-     install_requires = [
-         "filelock",
-         "typing-extensions>=4.10.0",
--        "setuptools<82",
-+        "setuptools",
-         "sympy>=1.13.3",
-         "networkx>=2.5.1",
-         "jinja2",
+diff --git a/tools/metadata/dependencies.py b/tools/metadata/dependencies.py
+index 5daec86..4723162 100644
+--- a/tools/metadata/dependencies.py
++++ b/tools/metadata/dependencies.py
+@@ -29,7 +29,7 @@ __all__ = ["dynamic_metadata", "dynamic_wheel"]
+ BASE_DEPENDENCIES = [
+     "filelock",
+     "typing-extensions>=4.13.0",
+-    "setuptools>=77.0.3",
++    "setuptools",
+     "sympy>=1.13.3",
+     "networkx>=2.5.1",
+     "jinja2",
