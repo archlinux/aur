@@ -1,7 +1,7 @@
 # Maintainer: lumexren <lumexren@gmail.com>
 
 pkgname=helcanium
-pkgver=157.0.8103.78
+pkgver=158.0.8127.36
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -9,7 +9,7 @@ _system_clang=1
 # Check the CRUBIT_REVISION found in tools/rust/update_rust.py
 #_crubit_rev=20dc640430bd60ff2f7f8dbf69c311c5f807adde
 # The commit above cannot be built successfully, use the last known good commit for stable toolchain
-_crubit_rev=25d2c01bde904c3333bb2d48201e5cbb186a1c7f
+_crubit_rev=d757594f6f7ac27c0cf9c8ea63d9136f8e1f77ae
 # ungoogled chromium variables
 pkgdesc="Helium Browser with native Wayland Vulkan rendering and Vulkan Video decoding/encoding"
 arch=('x86_64')
@@ -88,13 +88,13 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=("https://tarballs.imput.net/chromium-$pkgver/chromium-$pkgver-base.tar.zst"
         "https://tarballs.imput.net/chromium-$pkgver/chromium-$pkgver-linux-x64.tar.zst"
         "git+https://chromium.googlesource.com/external/github.com/google/crubit.git#commit=$_crubit_rev"
-        "git+https://github.com/imputnet/helium-linux.git#tag=0.21.3.1"
-        "git+https://github.com/imputnet/helium.git#commit=a2d96a753a3e9f10e10170615f8eaed6b159e85b"
+        "git+https://github.com/imputnet/helium-linux.git#tag=0.22.2.1"
+        "git+https://github.com/imputnet/helium.git#commit=f32f2c066787492b9ba112dc1be1ad230b53658a"
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         "git+https://github.com/lumexren/vulcanium.git")
-sha256sums=('660fa7236e06f325da2c23df5f7fd1a4f613e3a5519771815ef103e27921b2e9'
-            'a21823bd958611f2368065d4dc831def595ed9f629d3c5b932fad5dbfe677c3e'
-            'a9c0f429c7a45d31cecd8bd36fc636fbedaf49ff57264a22e3f1eabd4cab523a'
+sha256sums=('0790d05b2ec7be328c373357f2410d21d8f9ca4ab2abd4c3d057dc470fb2497f'
+            'e3b64a9847b91176b5158ec3a217b11b9d91253dc3d4282551c956d601e8d22f'
+            'fa10e66c8078c2e02cf7e1df0810b7c7d77b89592cc27fca7a756cc4a5ba06cb'
             'SKIP'
             'SKIP'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
@@ -128,7 +128,7 @@ declare -gA _system_libs=(
   #[libvpx]=libvpx
   [libwebp]=libwebp
   [libxml]=libxml2
-  [libxslt]=libxslt
+  #[libxslt]=libxslt
   [openh264]=openh264
   [opus]=opus
   #[re2]=re2          # needs libstdc++
@@ -184,8 +184,6 @@ prepare() {
   # https://crbug.com/456677057
   patch -Np1 -i "$srcdir/vulcanium/arch/glibc-2.42-baud-rate-fix.patch"
 
-  patch -Np1 -i "$srcdir/vulcanium/arch/chromium-149-use-of-undeclared-identifier-ERROR.patch"
-
   # Fix issue about missing AVX functions
   # Credit: https://github.com/ungoogled-software/ungoogled-chromium/pull/3837
   patch -Np1 -i "$srcdir/vulcanium/arch/chromium-150-revert-avx-flag-change.patch"
@@ -204,11 +202,9 @@ prepare() {
 
   patch -Np1 -i "$srcdir/vulcanium/arch/chromium-155-use-system-esbuild.patch"
 
-  patch -Np1 -i "$srcdir/vulcanium/arch/chromium-157-crubit.patch"
+  patch -Np1 -i "$srcdir/vulcanium/arch/chromium-158-revert-gn-check-includes.patch"
 
-  patch -Np1 -i "$srcdir/vulcanium/arch/chromium-157-revert-gn-check-includes.patch"
-
-  patch -Np1 -i "$srcdir/vulcanium/arch/chromium-156-isolatedDeclarations.patch"
+  patch -Np1 -i "$srcdir/vulcanium/arch/chromium-158-isolatedDeclarations.patch"
 
   # Work around TypeScript becoming a build dependency: disable tsgo for the
   # WebUI and point devtools at the system tsc binary
@@ -263,6 +259,12 @@ prepare() {
     msg2 "Applying Vulcanium patch: $_line"
     patch -Np1 -i "$_vpatch_dir/$_line"
   done < "$_vpatch_dir/series"
+
+  msg2 "Applying Helcanium branding patch"
+  patch -Np1 -i "$_vpatch_dir/branding/0003-helcanium-branding.patch"
+
+  msg2 "Applying Helcanium internal logo assets"
+  "$srcdir/vulcanium/scripts/apply-branding-icons.sh" helcanium ./ "$srcdir/vulcanium"
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin \
@@ -391,6 +393,7 @@ build() {
       "rust_sysroot_absolute=\"$_rust_sysroot\""
       'rust_bindgen_root="/usr"'
       "rustc_version=\"$(rustc --version | awk '{ print $2 ;}')\""
+      'added_rust_stdlib_libs=["addr2line","adler2","gimli","miniz_oxide"]'
     )
   fi
 
@@ -441,7 +444,7 @@ build() {
   msg2 'Configuring Chromium'
   gn gen out/Release --args="${_flags[*]}"
   msg2 'Building Chromium'
-  ninja -C out/Release chrome chrome_sandbox chromedriver
+  ninja -j6 -C out/Release chrome chrome_sandbox chromedriver
 }
 
 package() {
@@ -513,7 +516,10 @@ if (( ${#_disable_features[@]} > 0 )); then
   _flags+=("--disable-features=$(IFS=,; echo "${_disable_features[*]}")")
 fi
 
-export CHROME_VERSION_EXTRA="vulcanium"
+export HELCANIUM_DESKTOP="helcanium.desktop"
+export HELIUM_DESKTOP="helcanium.desktop"
+export CHROME_DESKTOP="helcanium.desktop"
+export CHROME_VERSION_EXTRA="helcanium"
 export CHROME_WRAPPER="$(readlink -f "$0")"
 exec /usr/lib/helcanium/helcanium "${_flags[@]}"
 EOF
@@ -528,7 +534,7 @@ EOF
     -e 's/@@PACKAGE/helcanium/g' \
     -e 's/@@desktop_exec/helcanium/g' \
     -e 's/@@desktop_icon/helcanium/g' \
-    -e 's/@@startup_wm_class/helcanium/g' \
+    -e '/^StartupWMClass=/d' \
     -e 's|@@uri_scheme|x-scheme-handler/helcanium;|g' \
     -e 's/@@extra_desktop_entries//g' \
     "$pkgdir/usr/share/applications/helcanium.desktop" \
@@ -538,7 +544,7 @@ EOF
   (
     tmpl_file=chrome/installer/linux/common/appdata.xml.template
     info_file=chrome/installer/linux/common/chromium-browser.info
-    . $info_file; PACKAGE=chromium
+    . $info_file; PACKAGE=helcanium
     export $(grep -o '^[A-Z_]*' $info_file)
     sed -E -e 's/@@([A-Z_]*)/\${\1}/g' -e '/<update_contact>/d' $tmpl_file | envsubst
   ) \

@@ -1,6 +1,6 @@
 pkgbase = helcanium
 	pkgdesc = Helium Browser with native Wayland Vulkan rendering and Vulkan Video decoding/encoding
-	pkgver = 157.0.8103.78
+	pkgver = 158.0.8127.36
 	pkgrel = 1
 	url = https://github.com/lumexren/vulcanium
 	arch = x86_64
@@ -77,7 +77,6 @@ pkgbase = helcanium
 	depends = minizip
 	depends = opus
 	depends = double-conversion
-	depends = libxslt
 	depends = harfbuzz
 	depends = freetype2
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
@@ -89,16 +88,16 @@ pkgbase = helcanium
 	provides = helium-browser
 	conflicts = helcanium-bin
 	options = !lto
-	source = https://tarballs.imput.net/chromium-157.0.8103.78/chromium-157.0.8103.78-base.tar.zst
-	source = https://tarballs.imput.net/chromium-157.0.8103.78/chromium-157.0.8103.78-linux-x64.tar.zst
-	source = git+https://chromium.googlesource.com/external/github.com/google/crubit.git#commit=25d2c01bde904c3333bb2d48201e5cbb186a1c7f
-	source = git+https://github.com/imputnet/helium-linux.git#tag=0.21.3.1
-	source = git+https://github.com/imputnet/helium.git#commit=a2d96a753a3e9f10e10170615f8eaed6b159e85b
+	source = https://tarballs.imput.net/chromium-158.0.8127.36/chromium-158.0.8127.36-base.tar.zst
+	source = https://tarballs.imput.net/chromium-158.0.8127.36/chromium-158.0.8127.36-linux-x64.tar.zst
+	source = git+https://chromium.googlesource.com/external/github.com/google/crubit.git#commit=d757594f6f7ac27c0cf9c8ea63d9136f8e1f77ae
+	source = git+https://github.com/imputnet/helium-linux.git#tag=0.22.2.1
+	source = git+https://github.com/imputnet/helium.git#commit=f32f2c066787492b9ba112dc1be1ad230b53658a
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = git+https://github.com/lumexren/vulcanium.git
-	sha256sums = 660fa7236e06f325da2c23df5f7fd1a4f613e3a5519771815ef103e27921b2e9
-	sha256sums = a21823bd958611f2368065d4dc831def595ed9f629d3c5b932fad5dbfe677c3e
-	sha256sums = a9c0f429c7a45d31cecd8bd36fc636fbedaf49ff57264a22e3f1eabd4cab523a
+	sha256sums = 0790d05b2ec7be328c373357f2410d21d8f9ca4ab2abd4c3d057dc470fb2497f
+	sha256sums = e3b64a9847b91176b5158ec3a217b11b9d91253dc3d4282551c956d601e8d22f
+	sha256sums = fa10e66c8078c2e02cf7e1df0810b7c7d77b89592cc27fca7a756cc4a5ba06cb
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
