@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname="gearboy"
-pkgver=3.8.21
+pkgver=3.8.22
 pkgrel=1
 pkgdesc="Game Boy / Gameboy Color emulator"
 url="https://github.com/drhelius/Gearboy"
@@ -13,7 +13,7 @@ source=(
     "gearboy.desktop"
 )
 sha256sums=(
-    "f35ea9cdbdf7cb47e4b8d3a3cf61b188960110a9d71798fcefe5f549feb44ffa"
+    "f4e1e7fa3d8a0076de54d8b421f1e653219d9b7098bd83fed7214eb3d84ec1a6"
     "2508710d17e920a5d179c3c4ac737e240aec766eb8d63347f11eda00d7123de9"
 )
 
