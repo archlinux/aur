@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=helium-d77
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Wayland shell built with the Helium shell framework"
 arch=('x86_64')
@@ -18,9 +18,10 @@ optdepends=(
   'swaybg: wallpaper backend'
   'ollama: backend for helium-ollama'
   'pciutils: GPU detection in helium-ollama'
+  'matugen: theme colors from the wallpaper'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2b72337ac8e6971c4929fe6c070435c18dd23f42a387322938f055a30d87041d')
+sha256sums=('b85abc73b8b39578058bf97c0a4f1b2e0d82282ddf07109b77a7b1e79e2feacb')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -38,10 +39,11 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
 
-    # Same binaries as the Makefile's BINS and the Void template.
-    for bin in helium-shell helium-launcher helium-session helium-osd \
-               helium-wallpaper helium-backdrop helium-ollama helium-locker; do
-        install -Dm755 "target/release/$bin" "$pkgdir/usr/bin/$bin"
+    # One `helium` binary; every program is a helium-<applet> symlink to it,
+    # as in the Makefile and the Void template.
+    install -Dm755 target/release/helium "$pkgdir/usr/bin/helium"
+    for applet in shell launcher session osd wallpaper backdrop ollama locker; do
+        ln -s helium "$pkgdir/usr/bin/helium-$applet"
     done
     install -Dm644 assets/d77-logo.svg "$pkgdir/usr/share/helium-d77/d77-logo.svg"
     install -Dm755 monitor/d77-monitor "$pkgdir/usr/share/helium-d77/monitor/d77-monitor"
