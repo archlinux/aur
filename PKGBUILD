@@ -1,8 +1,8 @@
 # Maintainer: hizani
 
 pkgname=toxcore-c
-pkgver=0.2.24
-pkgrel=4
+pkgver=0.2.25
+pkgrel=1
 pkgdesc='C backend implementation of the Tox communication protocol'
 arch=('x86_64')
 url='https://tox.chat'
@@ -14,7 +14,7 @@ provides=('tox')
 conflicts=('tox')
 backup=('etc/tox-bootstrapd.conf')
 source=("https://github.com/TokTok/c-toxcore/releases/download/v${pkgver}/c-toxcore-v${pkgver}.tar.xz")
-sha512sums=('f7b40c12bc80e8b3b64595f49641953cd9cb628be316b4bd0ec2042b347978f1e73efe23250d8b35cc937fa64f0841721d411648c2a5f3dd8b82211e696840b3')
+sha512sums=('fa5fc1001285796ac7f55f3993e2bb0e197db365d06a8aca0bfcdbdf03703377d98754561308290a41be0cbf53f7c9996ad4c7833677c33900358ed0f16730fe')
 
 prepare() {
   sed -i "s|/usr/local|/usr|" "other/bootstrap_daemon/tox-bootstrapd.service"
