@@ -1,0 +1,18 @@
+pkgbase = puzzle-pits
+	pkgdesc = The Puzzle Pits, Abe Pralle's 1995 DOS puzzle game, on SDL2
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/LaPingvino/The-Puzzle-Pits
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = zig
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = sdl2
+	conflicts = puzzle-pits-git
+	options = !lto
+	source = puzzle-pits-0.1.0.tar.gz::https://github.com/LaPingvino/The-Puzzle-Pits/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 310b2c11fb37c1850096ad553e6b5793d514f6631d26840bf4763b8c4f10d181
+
+pkgname = puzzle-pits
