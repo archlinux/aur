@@ -1,0 +1,19 @@
+pkgbase = void-tui-bin
+	pkgdesc = A focus app with built-in task management, streak tracking, and customizable break schedules
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/p6laris/Void
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	provides = void-tui
+	conflicts = void-tui
+	options = !debug
+	source = void-tui-bin-1.0.0-LICENSE::https://raw.githubusercontent.com/p6laris/Void/v1.0.0/LICENSE
+	sha256sums = e034c381ec793605aa8413729d9a067841110465f4e022b910c40702c9abd97f
+	source_x86_64 = void-tui-bin-1.0.0-x86_64.tar.gz::https://github.com/p6laris/Void/releases/download/v1.0.0/void-linux-amd64.tar.gz
+	sha256sums_x86_64 = 7df4c54f04529740fcb7bcae64b2bfbeccda5edf2a10c46eb6ca21d3d4fdbcd2
+
+pkgname = void-tui-bin
