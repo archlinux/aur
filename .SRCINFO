@@ -1,6 +1,6 @@
 pkgbase = sfptool-bin
 	pkgdesc = Desktop utility for reading and programming SFP and QSFP transceivers
-	pkgver = 1.10.2
+	pkgver = 1.10.5
 	pkgrel = 1
 	url = https://jonasled.dev/jonasled/sfp-tool
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sfptool-bin
 	depends = libayatana-appindicator
 	provides = sfptool
 	conflicts = sfptool
-	source = sfp-tool_1.10.2_amd64.deb::https://s3.jonasled.de/sfp-tool/linux/x86_64/sfp-tool_1.10.2_amd64.deb
-	sha256sums = 4a3514f617a4e424a4c783eaebcc53f48fae3047acf47e404062087d874e5a4a
+	source = sfp-tool_1.10.5_amd64.deb::https://s3.jonasled.de/sfp-tool/linux/x86_64/sfp-tool_1.10.5_amd64.deb
+	sha256sums = 9a93be6ba78e8a7e9cc2c97ef8076f4b388fa4948f1542792c0a12db1bdc0718
 
 pkgname = sfptool-bin
