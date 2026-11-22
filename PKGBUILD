@@ -1,4 +1,4 @@
-# Maintainer: Aurel Farkasovsky <aurel1510+aur at gmail dot com>
+# Maintainer: aurel1510 <aurel1510+aur at gmail dot com>
 #
 # libfprint with the "validity" driver for the Synaptics 06cb:00a2 fingerprint
 # sensor (ThinkPad E480, E580, R480, E490, E590, R490, R590).
@@ -9,8 +9,8 @@
 
 pkgname=libfprint-00a2
 _pkgver=1.94.100
-_commit=5d48ca4059ba9a2925600123e81940e0f63e542e
-pkgver=1.94.100.r12.g5d48ca4
+_commit=3c84ef9bb7452d3fef77b8b9c9e55570a29cb851
+pkgver=1.94.100.r13.g3c84ef9
 pkgrel=1
 pkgdesc="libfprint for fprintd with a driver for the Synaptics/Validity 06cb:00a2 fingerprint sensor (ThinkPad E480, E580, R480, E490, E590, R490, R590)"
 url="https://codeberg.org/aurel1510/libfprint-00a2"

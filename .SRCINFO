@@ -1,6 +1,6 @@
 pkgbase = libfprint-00a2
 	pkgdesc = libfprint for fprintd with a driver for the Synaptics/Validity 06cb:00a2 fingerprint sensor (ThinkPad E480, E580, R480, E490, E590, R490, R590)
-	pkgver = 1.94.100.r12.g5d48ca4
+	pkgver = 1.94.100.r13.g3c84ef9
 	pkgrel = 1
 	url = https://codeberg.org/aurel1510/libfprint-00a2
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = libfprint-00a2
 	provides = libfprint-2.so
 	conflicts = libfprint
 	noextract = r0yfp10w.exe
-	source = libfprint::git+https://codeberg.org/aurel1510/libfprint-00a2.git#commit=5d48ca4059ba9a2925600123e81940e0f63e542e
+	source = libfprint::git+https://codeberg.org/aurel1510/libfprint-00a2.git#commit=3c84ef9bb7452d3fef77b8b9c9e55570a29cb851
 	source = https://download.lenovo.com/pccbbs/mobiles/r0yfp10w.exe
 	sha256sums = SKIP
 	sha256sums = 760c405f4f173abdf196cf1a3011f7147dea88c2177855f768efdeea254866bf
