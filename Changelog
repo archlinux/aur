@@ -1,15 +1,18 @@
 -------------------------------------------------------
  Changelog    : wg-client
- Tags         : 8.0.4 ➙ 9.1.1
-              : 2026-09-10 ➙ 2026-11-21
+ Tags         : 8.1.0 ➙ 9.1.2
+              : 2026-10-04 ➙ 2026-11-22
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-11-21   : 9.1.1
+ 2026-11-22   : 9.1.2
+              - 9.1.2 : Manual and man page updates (no code change)
+
+ 2026-11-21   : 9.1.1, origin/master
               - **9.1.1**
                 * Doc change: add thank you to `Claude (Anthropic) <https://claude.ai>`_
 
- 2026-11-21   : 9.0.0, origin/master
+ 2026-11-21   : 9.0.0
               - **9.0.0**
             
                 **Changes required**
@@ -73,12 +76,3 @@
                     * Could not register app ID: Connection already associated with an application ID
                     * Trying to disable 0xNNN but 0x0 is focused
               - pre-release commit for readthedocs
-
- 2026-09-10   : 8.0.4
-              - **8.0.4**
-            
-                * Change Arch package dependencies that have been renamed:
-            
-                  - pyconcurrent -> python-pyconcurrent
- 2026-09-03   ⋯
-              - add .gitattributes to mark docs as docs so github treats as docs not code
