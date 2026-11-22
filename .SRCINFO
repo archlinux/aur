@@ -1,0 +1,26 @@
+pkgbase = llvm14-bin
+	pkgdesc = LLVM 14 and Clang toolchain from upstream binaries
+	pkgver = 14.0.6
+	pkgrel = 1
+	url = https://llvm.org/
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = patchelf
+	depends = glibc
+	depends = libstdc++.so
+	depends = libgcc
+	depends = gcc
+	optdepends = python: analysis and scan-view scripts
+	optdepends = perl: scan-build scripts
+	provides = llvm14=14.0.6
+	provides = clang14=14.0.6
+	conflicts = llvm14
+	conflicts = clang14
+	options = !debug
+	options = staticlibs
+	source = clang+llvm-14.0.6-x86_64-linux-gnu-rhel-8.4.tar.xz::https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/clang%2Bllvm-14.0.6-x86_64-linux-gnu-rhel-8.4.tar.xz
+	source = llvm14-14.0.6-LICENSE.TXT::https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-14.0.6/llvm/LICENSE.TXT
+	sha256sums = 7412026be8bb8f6b4c25ef58c7a1f78ed5ea039d94f0fa633a386de9c60a6942
+	sha256sums = 8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee
+
+pkgname = llvm14-bin
