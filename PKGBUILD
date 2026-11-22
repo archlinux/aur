@@ -1,7 +1,7 @@
 # Maintainer: duanluan <duanluan@outlook.com>
 
 pkgname=mirasim
-pkgver=0.0.828
+pkgver=0.0.830
 pkgrel=1
 pkgdesc='Terminal, agent, model and tool orchestrator for shared team spaces'
 arch=('x86_64' 'aarch64')
@@ -54,10 +54,10 @@ noextract=(
   "Mirasim-${pkgver}-linux-arm64.deb"
 )
 sha256sums_x86_64=(
-  '53d775d713e4abf79fa468068b118c7ff9ff85aa37ac632c03f1e1776ee0cf79'
+  '3bd2b128da26dfabbbacbc64c6f504979ce54bed5c2a30f2e20083a4747b25f0'
 )
 sha256sums_aarch64=(
-  '2b0463667ef84ffbb327f2b7012e588ba5d6cf5d2c1738e4dd46b27d44d00985'
+  'eb4cb6796fcd20e009be072e9e227c25587b0b842955f92a62598c7cd6a1d823'
 )
 
 package() {
