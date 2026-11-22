@@ -1,0 +1,19 @@
+pkgbase = savras-bin
+	pkgdesc = A side panel that sees every Claude Code session you have running
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/Marijusaj/savras
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = savras
+	conflicts = savras
+	options = !debug
+	source_x86_64 = savras-bin-0.1.11-x86_64.tar.gz::https://github.com/Marijusaj/savras/releases/download/v0.1.11/savras-0.1.11-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 90e93be66d860c106a12300e39e261e56a506800e7779bf261547c84aa6d74bd
+	source_aarch64 = savras-bin-0.1.11-aarch64.tar.gz::https://github.com/Marijusaj/savras/releases/download/v0.1.11/savras-0.1.11-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 8cbfea4074978357565bce4961b5aa7dbe9839b069558517b66cae7c022d56c1
+
+pkgname = savras-bin
