@@ -1,0 +1,21 @@
+pkgbase = bbcli-tui-bin
+	pkgdesc = A terminal-based BBC News reader featuring a compact, numbered list interface
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/hako/bbcli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = bbcli-tui
+	conflicts = bbcli-tui
+	options = !debug
+	source = bbcli-tui-bin-1.0.3-LICENSE::https://raw.githubusercontent.com/hako/bbcli/1.0.3/LICENSE
+	sha256sums = 11223d8059b387fc66f8e2807bca33c4eccc90cf1e6a01a11e0905110e6f0e71
+	source_x86_64 = bbcli-tui-bin-1.0.3-x86_64.tar.gz::https://github.com/hako/bbcli/releases/download/1.0.3/bbcli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2e8df37dfedcea9e04ece8b6128e5905d0ceac094e1d2ef8e00b2d2609ea96e5
+	source_aarch64 = bbcli-tui-bin-1.0.3-aarch64.tar.gz::https://github.com/hako/bbcli/releases/download/1.0.3/bbcli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b5c22ef7e6b8da0e79463b8a8ba846f61a6e48162f24a93317bf11ed92b0d0bc
+
+pkgname = bbcli-tui-bin
