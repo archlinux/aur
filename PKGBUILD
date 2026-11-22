@@ -1,15 +1,15 @@
 # Maintainer: HanHaocheng <hanhaocheng@archlinux>
 #
 # DevEco Device Tool is behind a logged-in download page and its URL is
-# signature-bearing, so the source list is intentionally empty. Provide the zip
-# at build time: copy the download link and run
+# signature-bearing, so the source list is intentionally empty. Provide the
+# *Linux* zip at build time: copy its download link and run
 #   ./deveco-devicetool-url
 # or
 #   DEVECO_DEVICETOOL_URL='<signed url>' makepkg -si
 # or drop devicetool-linux-tool-<version>.zip next to this PKGBUILD.
 pkgname=deveco-devicetool
 pkgver=4.0.0.400
-pkgrel=2
+pkgrel=3
 pkgdesc='HUAWEI DevEco Device Tool for OpenHarmony device development (VS Code toolchain bundle)'
 arch=('x86_64')
 url='https://device.harmonyos.com/cn/develop/ide/'
@@ -33,18 +33,24 @@ pkgver() {
 }
 
 prepare() {
-  local f
+  local f name shf
   f=$(compgen -G "$srcdir/$_zip_glob" | head -1)
   if [[ -z "$f" ]]; then
     if [[ -n "${DEVECO_DEVICETOOL_URL:-}" ]]; then
-      f="$srcdir/$(basename "${DEVECO_DEVICETOOL_URL%%\?*}")"
-      [[ "$f" == *.zip ]] || f="$srcdir/devicetool-linux-tool.zip"
-      msg "fetching $(basename "$f")"
-      curl -fL --retry 3 -o "$f" "$DEVECO_DEVICETOOL_URL"
+      name=$(basename "${DEVECO_DEVICETOOL_URL%%\?*}")
+      if [[ "$name" != devicetool-linux-*.zip ]]; then
+        error "That URL is not the Linux DevEco Device Tool package: $name"
+        error "Pick the Linux download (devicetool-linux-tool-<version>.zip), not the Windows build."
+        return 1
+      fi
+      f="$srcdir/$name"
+      msg "fetching $name"
+      curl -fL --retry 3 -o "$f" "$DEVECO_DEVICETOOL_URL" ||
+        { error "download failed: $DEVECO_DEVICETOOL_URL"; return 1; }
     else
       error "No DevEco Device Tool archive found."
       error ""
-      error "  Download it from https://device.harmonyos.com/cn/develop/ide"
+      error "  Download the Linux build from https://device.harmonyos.com/cn/develop/ide"
       error "  then either copy the link and run"
       error "    DEVECO_DEVICETOOL_URL='<signed url>' makepkg -si"
       error "  or place devicetool-linux-tool-<version>.zip next to this PKGBUILD."
@@ -54,8 +60,14 @@ prepare() {
   rm -rf "$srcdir/payload" "$srcdir/extracted"
   mkdir -p "$srcdir/payload"
   unzip -q -o "$f" -d "$srcdir/payload"
-  chmod +x "$srcdir/payload/"*.sh
-  sh "$srcdir/payload/"*.sh --noexec --nox11 --target "$srcdir/extracted"
+  shf=$(compgen -G "$srcdir/payload/*.sh" | head -1)
+  if [[ -z "$shf" ]]; then
+    error "Archive $(basename "$f") contains no self-extracting .sh installer."
+    error "This is not the Linux DevEco Device Tool package; Windows builds are not supported."
+    return 1
+  fi
+  chmod +x "$shf"
+  sh "$shf" --noexec --nox11 --target "$srcdir/extracted"
 }
 
 package() {
