@@ -5,7 +5,7 @@
 pkgname=python-httpx-git
 _pkgname=httpx
 # https://github.com/encode/httpx/blob/master/CHANGELOG.md
-pkgver=0.28.1.r31.gbe3f3ca
+pkgver=0.28.1.r31.g440dd00
 pkgrel=1
 pkgdesc="A next generation HTTP client for Python"
 arch=('any')
