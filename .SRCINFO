@@ -1,7 +1,7 @@
 pkgbase = rewaita
 	pkgdesc = A tool for recoloring GTK4/LibAdwaita apps to popular color schemes.
 	pkgver = 1.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SwordPuffin/Rewaita
 	arch = any
 	license = GPL-3.0-or-later
@@ -19,7 +19,7 @@ pkgbase = rewaita
 	depends = python-numpy
 	depends = python-pillow
 	depends = xdg-desktop-portal-gtk
-	source = Rewaita-1.1.8.tar.gz::https://github.com/SwordPuffin/Rewaita/archive/refs/tags/v1.1.8.tar.gz
-	sha256sums = 73f133cb1f4c2a7b0e409f58ed33db5653bd56cfc3f924d3d8ea8deb87b3085e
+	source = Rewaita-1.1.8b.tar.gz::https://github.com/SwordPuffin/Rewaita/archive/refs/tags/v1.1.8b.tar.gz
+	sha256sums = 9396c2ba169692e84cb8b9ff0721306bea03fe59a02307380b1b2597dc3f48ea
 
 pkgname = rewaita
