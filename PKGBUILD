@@ -1,6 +1,6 @@
 # Maintainer: Gentrit Biba <gentritbiba@gmail.com>
 pkgname=cogpit-server
-pkgver=3.7.7
+pkgver=3.7.8
 pkgrel=1
 pkgdesc="Headless web server for Cogpit — Claude Code session dashboard"
 arch=('x86_64' 'aarch64')
