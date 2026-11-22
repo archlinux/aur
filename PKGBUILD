@@ -1,23 +1,37 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: GordonGR <gordongr@freemail.gr>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Ike Devolder <ike.devolder@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-_pkgname=taglib
-pkgname=lib32-taglib
-pkgver=2.3.1
+set -u
+pkgname=taglib
+pkgver=2.3.2
 pkgrel=1
-pkgdesc="A Library for reading and editing the meta-data of several popular audio formats (32 bit)"
-arch=('x86_64')
-url="https://developer.kde.org/~wheeler/taglib.html"
-license=('LGPL' 'MPL')
-depends=($_pkgname 'lib32-zlib' 'lib32-gcc-libs')
-makedepends=('cmake' 'utf8cpp')
-source=("https://taglib.github.io/releases/$_pkgname-$pkgver.tar.gz")
-md5sums=('b189dcfcf284179c04b97a89887e0ce6')
-sha256sums=('a19d90e6fd41d09a0281ec0fe762d51491d7a6ccffc923c4f7868c5e647ca230')
+pkgdesc='A Library for reading and editing the meta-data of several popular audio formats'
+pkgdesc+=' (32 bit)'
+arch=(x86_64)
+#url="https://developer.kde.org/~wheeler/taglib.html"
+url='https://taglib.github.io/'
+license=(LGPL-2.1-only
+         MPL-1.1)
+depends=(glibc
+         gcc-libs
+         zlib)
+depends=("${depends[@]/#/lib32-}")
+depends+=("${pkgname}>=${pkgver}" 'sh')
+makedepends=(cmake
+             git
+             utf8cpp)
+source=("https://taglib.github.io/releases/$pkgname-$pkgver.tar.gz")
+md5sums=('3c8f621c54d274d41f54edee93ee39a6')
+sha256sums=('3ca2d8afaa7f1cf7f6ed10e511ebc368bfacd6dcaa3dbfa690b89e502e8963dc')
+
+_pkgname="${pkgname}"
+pkgname="lib32-${pkgname}"
 
 build() {
   export CC='gcc -m32'
@@ -32,9 +46,10 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 
-  cd "$pkgdir/usr"
-  rm -rf {include,share}/
-  mv bin/taglib-config{,-32}
+  cd "$pkgdir"
+  rm -r usr/include/ # usr/share/
+  mv usr/bin/taglib-config{,-32}
 }
+set +u
