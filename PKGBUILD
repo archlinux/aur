@@ -1,11 +1,12 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: jtts <jussaar@mbnet.fi>
 # Contributor: GordonGR <gordongr@freemail.gr>
 
-pkgname=lib32-polkit
-pkgver=127
+pkgname=polkit
+pkgver=128
 pkgrel=1
 pkgdesc="Application development toolkit for controlling system-wide privileges"
 url="https://github.com/polkit-org/polkit"
@@ -15,7 +16,7 @@ depends=(
   lib32-glib2
   lib32-glibc
   lib32-systemd
-  polkit
+  "polkit>=${pkgver}"
 )
 makedepends=(
   dbus
@@ -32,9 +33,11 @@ source=(
   0001-meson-Support-explicit-GID.patch
   0002-meson-Detect-Arch-Linux-and-set-the-UID-and-GID.patch
 )
-b2sums=('6744385984906d97f79aedbfeb894ff274769212af44686b90f6c5ab7f3007d0e6db91b5439c95f344621aa447b570686d46eff7fac861854cfcd37fba5e73e5'
+b2sums=('c14ca008a1f2ba5c04fff3d0c0fd6cc4c4114fdd46709fca756f00ceb894ed0f9b8ff55df3656035172d9e6753fe862371e9ceb5368fdcba198b0359f574ec33'
         '5549570ecce8db08263167a52211befda69eca2dd65020d132c3001b621e7b6db8a092eefb29ad0e50ab980b0158ed15a79ab7f23e1754e890b51c6ef827eb72'
         '6d4d435c8af82270fb6720ca00bab14492fbf6f0d73ba0eba0ac909cc192452a78de56ceb2fe224ac68fcc0f7c9decc01771aaa3f1956ccfae9747620986948c')
+
+pkgname="lib32-${pkgname}"
 
 prepare() {
   cd polkit
@@ -43,7 +46,7 @@ prepare() {
 }
 
 build() {
-  local meson_options=(
+  local _meson_options=(
     --cross-file lib32
     -D gettext=true
     -D introspection=false
@@ -51,7 +54,7 @@ build() {
     -D tests=true
   )
 
-  arch-meson polkit build "${meson_options[@]}"
+  arch-meson polkit build "${_meson_options[@]}"
   meson compile -C build
 }
 

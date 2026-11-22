@@ -1,6 +1,6 @@
 pkgbase = lib32-polkit
 	pkgdesc = Application development toolkit for controlling system-wide privileges
-	pkgver = 127
+	pkgver = 128
 	pkgrel = 1
 	url = https://github.com/polkit-org/polkit
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = lib32-polkit
 	depends = lib32-glib2
 	depends = lib32-glibc
 	depends = lib32-systemd
-	depends = polkit
+	depends = polkit>=128
 	provides = libpolkit-agent-1.so
 	provides = libpolkit-gobject-1.so
-	source = git+https://github.com/polkit-org/polkit#tag=127
+	source = git+https://github.com/polkit-org/polkit#tag=128
 	source = 0001-meson-Support-explicit-GID.patch
 	source = 0002-meson-Detect-Arch-Linux-and-set-the-UID-and-GID.patch
-	b2sums = 6744385984906d97f79aedbfeb894ff274769212af44686b90f6c5ab7f3007d0e6db91b5439c95f344621aa447b570686d46eff7fac861854cfcd37fba5e73e5
+	b2sums = c14ca008a1f2ba5c04fff3d0c0fd6cc4c4114fdd46709fca756f00ceb894ed0f9b8ff55df3656035172d9e6753fe862371e9ceb5368fdcba198b0359f574ec33
 	b2sums = 5549570ecce8db08263167a52211befda69eca2dd65020d132c3001b621e7b6db8a092eefb29ad0e50ab980b0158ed15a79ab7f23e1754e890b51c6ef827eb72
 	b2sums = 6d4d435c8af82270fb6720ca00bab14492fbf6f0d73ba0eba0ac909cc192452a78de56ceb2fe224ac68fcc0f7c9decc01771aaa3f1956ccfae9747620986948c
 
