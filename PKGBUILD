@@ -1,52 +1,33 @@
-# Maintainer: Kimiblock Moe
+# Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=turnon
-pkgdesc="Turn on devices in your local network"
-url="https://codeberg.org/swsnr/turnon"
-license=("EUPL-1.2")
-arch=("x86_64" "aarch64")
-pkgver=3.2.2
+pkgver=2026.11
 pkgrel=1
-makedepends=("rust" "cargo" "git" "blueprint-compiler" "just")
-depends=(libadwaita gtk4 hicolor-icon-theme graphene dconf gcc-libs glib2 glibc)
-source=("git+https://codeberg.org/swsnr/turnon.git#tag=v${pkgver}")
-md5sums=('b357ce34830dacb0dccc0b78924f3081')
+pkgdesc='Turn on devices in your network'
+url='https://codeberg.org/swsnr/turnon'
+arch=(x86_64)
+license=(EUPL-1.2)
+depends=(glibc
+         libstdc++
+         kcoreaddons
+         kdbusaddons
+         kwindowsystem
+         ki18n
+         kirigami
+         qqc2-desktop-style
+         qt6-base
+         qt6-scxml
+         qt6-declarative)
+makedepends=(git extra-cmake-modules)
+source=("git+${url}#tag=v${pkgver}")
+sha256sums=('225f1a0cef4fb1ec252a92a851a458ec89a3f44d17a1f377f5a876e8e2801422')
 
-function prepare() {
-	export _app_id=de.swsnr.turnon
-	cd "${srcdir}/turnon"
-	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --target "$CARCH-unknown-linux-gnu"
-	#sed -i 's|@# Compile settings schemas after installation||g' justfile
-	#sed -i 's|glib-compile-schemas --strict '{{DESTPREFIX}}/share/glib-2.0/schemas'||g' justfile
+build() {
+  cmake -B build -S "${pkgname}" -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
-function build() {
-	export _app_id=de.swsnr.turnon
-	cd "${srcdir}/turnon"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	just APPID=de.swsnr.turnon compile
-	env cargo build --release --locked
-#	env make msgfmt
+package() {
+  DESTDIR="${pkgdir}" cmake --install build
 }
-
-function check() {
-	export _app_id=de.swsnr.turnon
-	cd "${srcdir}/turnon"
-	export RUSTUP_TOOLCHAIN=stable
-	env cargo test --frozen --all-features
-}
-
-function package() {
-	export _app_id=de.swsnr.turnon
-	cd "${srcdir}/turnon"
-	#make DESTPREFIX="${pkgdir}/usr" install
-	just APPID=de.swsnr.turnon DESTPREFIX="$pkgdir/usr" install
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "/usr/bin/${_app_id}" "$pkgdir/usr/bin/$pkgname"
-	rm "${pkgdir}/usr/share/glib-2.0/schemas/gschemas.compiled"
-}
-
-
 

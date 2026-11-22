@@ -1,25 +1,24 @@
 pkgbase = turnon
-	pkgdesc = Turn on devices in your local network
-	pkgver = 3.2.2
+	pkgdesc = Turn on devices in your network
+	pkgver = 2026.11
 	pkgrel = 1
 	url = https://codeberg.org/swsnr/turnon
 	arch = x86_64
-	arch = aarch64
 	license = EUPL-1.2
-	makedepends = rust
-	makedepends = cargo
 	makedepends = git
-	makedepends = blueprint-compiler
-	makedepends = just
-	depends = libadwaita
-	depends = gtk4
-	depends = hicolor-icon-theme
-	depends = graphene
-	depends = dconf
-	depends = gcc-libs
-	depends = glib2
+	makedepends = extra-cmake-modules
 	depends = glibc
-	source = git+https://codeberg.org/swsnr/turnon.git#tag=v3.2.2
-	md5sums = b357ce34830dacb0dccc0b78924f3081
+	depends = libstdc++
+	depends = kcoreaddons
+	depends = kdbusaddons
+	depends = kwindowsystem
+	depends = ki18n
+	depends = kirigami
+	depends = qqc2-desktop-style
+	depends = qt6-base
+	depends = qt6-scxml
+	depends = qt6-declarative
+	source = git+https://codeberg.org/swsnr/turnon#tag=v2026.11
+	sha256sums = 225f1a0cef4fb1ec252a92a851a458ec89a3f44d17a1f377f5a876e8e2801422
 
 pkgname = turnon
