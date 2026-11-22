@@ -3,7 +3,7 @@
 
 pkgname=ffms2-git
 pkgver=5.0.32.g3af2ef2
-pkgrel=1
+pkgrel=2
 pkgdesc="An FFmpeg/Libav based source library and Avisynth/Vapoursynth plugin for easy frame accurate access. (GIT version)"
 url='https://github.com/FFMS/ffms2'
 arch=('x86_64')
@@ -25,50 +25,35 @@ optdepends=(
   'vapoursynth: Vapoursynth support'
   'avisynthplus: Avisynth support'
 )
-source=(
-  'git+https://github.com/FFMS/ffms2.git'
-  'esee.patch'
-)
-sha256sums=(
-  'SKIP'    
-  'c029749df77ba816b43ad06421f7dec9b0b5164984eee6d7984220e231a298c9'
-)
+source=('git+https://github.com/FFMS/ffms2.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ffms2
-  echo "$(git describe --long --tags | tr - .)"
+  git describe --long --tags | tr - .
 }
 
 prepare() {
-  mkdir -p build
-
   cd ffms2
-
-  # use pkg-config for search Avisyhth/Vapoursynth
-  rm -fr src/vapoursynth/{Vapoursynth,VSHelper}.h
-  patch -p1 -i "${srcdir}/esee.patch"
-
+  sed -i 's/^VERSION_INFO="5:1:2"$/VERSION_INFO="5:0:0"/' configure.ac
   mkdir -p src/config
+  autoreconf -fiv
 }
 
 build() {
   cd ffms2
-  autoreconf -vfi
-  cd "${srcdir}/build"
-
   export CXXFLAGS="$CXXFLAGS $(pkg-config --cflags avisynth) -fpermissive"
-  ../ffms2/configure \
+  ./configure \
     --prefix=/usr \
-    --enable-shared=yes \
-    --enable-static=no \
-    --enable-avisynth
-
+    --enable-avisynth \
+    --enable-shared \
+    --disable-static
   make
 }
 
 package() {
   _plugindir=$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
-  make -C build DESTDIR="${pkgdir}" install
+  make -C ffms2 DESTDIR="${pkgdir}" install
   install -d "${pkgdir}${_plugindir}"
   install -d "${pkgdir}/usr/lib/avisynth"
   ln -s /usr/lib/libffms2.so "${pkgdir}${_plugindir}"
