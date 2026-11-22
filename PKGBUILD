@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/Finomnis/mcumgr-toolkit"
 license=('MIT' 'Apache-2.0')
 options=('!debug')  # avoids an empty -debug package: the binary is prebuilt and stripped
-depends=()          # statically linked (musl), needs nothing
+# statically linked (musl): no runtime dependencies
 provides=('mcumgrctl')
 conflicts=('mcumgrctl')
 
@@ -24,8 +24,11 @@ sha256sums=(
   'd4e182b6d0e8776794e0b59f70abb99aece14e745952711edbcdbdac9efcc931'
 )
 
-check() {
+prepare() {
   chmod +x "$srcdir/mcumgrctl"  # the download arrives without the executable bit
+}
+
+check() {
   "$srcdir/mcumgrctl" --version
 }
 
