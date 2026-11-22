@@ -51,6 +51,7 @@ depends=(
 makedepends=(
   git
   rocm-llvm
+  rocminfo
   cmake
   python-installer
   python-setuptools
@@ -89,7 +90,8 @@ build() {
     PYTORCH_ROCM_ARCH="gfx906;gfx908;gfx90a;gfx942;gfx950;gfx1030;gfx1100;gfx1101;gfx1150;gfx1151;gfx1152;gfx1153;gfx1200;gfx1201"
     if [[ -n "$ROCM_ARCH" ]]; then
       PYTORCH_ROCM_ARCH="$ROCM_ARCH"
-    elif [[ ! -v ROCM_ARCH && $(command -v rocminfo 2>/dev/null) ]]; then
+    elif [[ ! -v ROCM_ARCH ]]; then
+      . /etc/profile
       _detected_archs=$(rocminfo | grep -oP 'Name:\s+\Kgfx\d+' | sort -u | tr '\n' ';' | sed 's/;$//')
       if [[ -n "$_detected_archs" ]]; then
         PYTORCH_ROCM_ARCH="$_detected_archs"
