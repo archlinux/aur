@@ -1,7 +1,7 @@
 # Maintainer: pika02
 
 pkgname=opencode-studio
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Local GUI for managing OpenCode configurations (MCP, skills, plugins, auth, profiles)'
 # Native binaries from npm packages (sharp, @parcel/watcher, @swc/core) limit arch
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Microck/opencode-studio/arc
         "$pkgname.sh"
         "$pkgname.desktop"
         "LICENSE")
-sha256sums=('bafdcc4677fd36472f3f2394243f0175b40095da2a6f201b82f9afb7c97fbf05'
+sha256sums=('e8fd170d8e6d0080268be27142330b959a52b166c44301417ad23ff97637d80d'
             '157ade89329aa28a1ae016dafd3ebfe9a15a6311fd5e2745155fe78112868e1e'
             'd45166e04c2e00c3022e81ee8589c91af8d1b145a1a76cc096c753d07c1180c1'
             '0839da86c99f1925089db74e2dda71b102be8b29bc1a905ad20e3c13b71f1a77')
