@@ -1,0 +1,18 @@
+pkgbase = flacora-bin
+	pkgdesc = Download tracks in true FLAC from Tidal, Qobuz, Amazon Music & Deezer — no account required
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/spotbye/Flacora
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = webkit2gtk-4.1
+	provides = flacora
+	provides = spotiflac
+	conflicts = flacora
+	conflicts = spotiflac-bin
+	replaces = spotiflac-bin
+	options = !strip
+	source = flacora-bin-1.0.2.AppImage::https://github.com/spotbye/Flacora/releases/download/v1.0.2/Flacora-1.0.2-linux-x64.AppImage
+	sha256sums = 1765a3d71c5e5a44e09de5ffdd07b5dc62fc2bc4d96829aaa20dbf05c1e294ec
+
+pkgname = flacora-bin

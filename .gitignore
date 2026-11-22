@@ -1,0 +1,20 @@
+# Build directories
+src/
+pkg/
+
+# Package files
+*.AppImage
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.tar.gz
+
+# Logs
+*.log
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Icons
+*.svg
