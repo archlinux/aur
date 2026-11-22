@@ -1,0 +1,16 @@
+pkgbase = qmassa
+	pkgdesc = Displays GPU devices usage stats on Linux
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ulissesf/qmassa
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = qmassa-0.3.0.tar.gz::https://github.com/ulissesf/qmassa/archive/refs/tags/qmmd-v0.3.0.tar.gz
+	sha256sums = d0bffa414c1c8512155699dd956ad8a606f5e90b0fdbc8fe2f63cddd819923b1
+
+pkgname = qmassa
