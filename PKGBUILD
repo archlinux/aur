@@ -4,7 +4,7 @@
 pkgname=flclash-myflavor-bin
 _pkgname=FlClash
 pkgver=1.19.34
-pkgrel=4
+pkgrel=5
 pkgdesc="Multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free, follows the mainline mihomo core updates. (Forked by myflavor)"
 arch=('x86_64')
 url="https://github.com/myflavor/FlClash"
@@ -17,6 +17,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 
 depends=(
     'libayatana-appindicator'
+    'libayatana-indicator'
     'ayatana-ido'
     'libdbusmenu-glib'
     'libkeybinder3'
