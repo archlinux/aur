@@ -1,6 +1,6 @@
 pkgbase = aether-rescue-bin
 	pkgdesc = Initramfs rescue shell toolbox: PID 1 init flow + BusyBox-style rescue applets (prebuilt static nolibc binary)
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Fgaoxing/Aether
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = aether-rescue-bin
 	provides = aether
 	conflicts = aether-rescue-git
 	install = aether-rescue-bin.install
-	source = https://github.com/Fgaoxing/Aether/releases/download/v1.0.1/aether-x86_64-nolibc
+	source = https://github.com/Fgaoxing/Aether/releases/download/v1.0.2/aether-x86_64-nolibc
 	source = https://github.com/Fgaoxing/Aether/archive/refs/tags/v1.0.0.tar.gz
-	source = LICENSE::https://github.com/Fgaoxing/Aether/raw/v1.0.1/LICENSE
-	sha256sums = dab3c59a6e06a0abadb9786350fce410a80085a43b79bea87be3e249df393127
-	sha256sums = ea737a4cf5e5b2637030eb247be9975e9ee210b6e07b00ee489aa2c9e4a522f3
+	source = LICENSE::https://github.com/Fgaoxing/Aether/raw/v1.0.2/LICENSE
+	sha256sums = 79b276bebec5e2cd572f820dd77657ed151081a061a7ecd3b13f4486aee94a9e
+	sha256sums = 74c609e050a563e311e4213e0af527094e8e9131783cbd62f5932a3a95e71687
 	sha256sums = 59eb0390c73d9c7fa0a6d17085fa7a14758d027735299090a5f9705462f048ec
 
 pkgname = aether-rescue-bin
