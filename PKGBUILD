@@ -1,8 +1,8 @@
 # Maintainer: Nzo <0x6e7a6f at proton dot me>
 
 pkgname=suprow
-pkgver=0.9.9.0.beta
-_pkgver=0.9.9.0-beta
+pkgver=0.9.9.1.beta
+_pkgver=0.9.9.1-beta
 pkgrel=1
 pkgdesc="Privacy-first desktop browser with built-in ad blocking"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip' '!debug')
 source=("suprow-${_pkgver}.zip::https://suprow.app/downloads/releases/lnx/suprow-linux-x64-${_pkgver}.zip"
         "suprow.desktop"
         "suprow.svg")
-sha256sums=('6e348a366f8a8eee660cb312e29da89f397e94501ab51fb21bde1f0ff36b29a4'
+sha256sums=('64c897c5253aa329f3248a3208454318c90018460f5e258009840f74e5efd1cc'
             '933bb4042c8d2eca8a9bb81a5694ddec5275a326016ec0ca092a59adb9960d71'
             'fa94715957cf541271d4d05ba86f385bbf0ed42bcfb1387dc6c527fdd05305c0')
 
