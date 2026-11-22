@@ -1,7 +1,7 @@
 # Maintainer: tippkraft <impressum@tippkraft.com>
 pkgname=tippkraft-bin
-pkgver=0.1.22
-pkgrel=2
+pkgver=0.1.23
+pkgrel=1
 options=('!debug' '!strip')
 pkgdesc='Text expander for Linux on Wayland and X11 (desktop client, snippets sync through a tippkraft account)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ install=tippkraft.install
 source=("tippkraft-$pkgver::https://github.com/emmgeede/tippkraft-desktop/releases/download/v$pkgver/tippkraft-x86_64-linux"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/emmgeede/tippkraft-desktop/v$pkgver/LICENSE"
         "60-tippkraft-uinput.rules")
-sha256sums=('8e88a857d32d6075c19a86de2fc9f80bb16e8a2f9d07c3f9d924011996fe510a'
+sha256sums=('f260c682f7ff2f13ea26bd934486c39e6297bc9f6793656a7922443f4f92f033'
             '9ba052be04350ff7cd65f01491d5aba8df79edb7bcf53a9f2734133cee3d5386'
             '85abd3fb5c0351281a3e4a6001f138c251d791c92c0c45baf984fefa1bdb58c7')
 
