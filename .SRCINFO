@@ -1,0 +1,19 @@
+pkgbase = pgmon-bin
+	pkgdesc = A TUI for monitoring PostgreSQL databases
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/nbari/pgmon
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	provides = pgmon
+	conflicts = pgmon
+	options = !debug
+	source = pgmon-bin-0.8.1-LICENSE::https://raw.githubusercontent.com/nbari/pgmon/0.8.1/LICENSE
+	sha256sums = 04a054f6b24acdc987657cc2f2452b795e76dc2695431e5b8011b30220bff548
+	source_x86_64 = pgmon-bin-0.8.1-x86_64.tar.gz::https://github.com/nbari/pgmon/releases/download/0.8.1/pgmon-0.8.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 4de763d2915e7d84dcdb9153c0f41290d22d3ede5f6d652c0e0a89d0d11d6d4e
+	source_aarch64 = pgmon-bin-0.8.1-aarch64.tar.gz::https://github.com/nbari/pgmon/releases/download/0.8.1/pgmon-0.8.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 8b1d5b6aac9db2de5e2620d487233e38ba000a0a72b72a1fb4acb3a7eb1fce1c
+
+pkgname = pgmon-bin
