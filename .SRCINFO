@@ -1,0 +1,31 @@
+pkgbase = fcitx5-zaphodheads-git
+	pkgdesc = Next generation of fcitx with X11 ZaphodHeads multi-screen support
+	pkgver = 5.1.23.r53.g81e39861
+	pkgrel = 1
+	url = https://github.com/stellarx11/fcitx5
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1-or-later AND Unicode-DFS-2016
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = ninja
+	depends = cairo
+	depends = enchant
+	depends = iso-codes
+	depends = libgl
+	depends = libxkbcommon-x11
+	depends = pango
+	depends = xcb-imdkit
+	depends = xcb-util-wm
+	depends = libxkbfile
+	depends = fmt
+	depends = gdk-pixbuf2
+	provides = fcitx5=5.1.23.r53.g81e39861
+	conflicts = fcitx5
+	conflicts = fcitx
+	source = fcitx5-zaphodheads-git::git+https://github.com/stellarx11/fcitx5.git#branch=zaphodheads
+	source = en_dict-20121020.tar.gz::http://download.fcitx-im.org/data/en_dict-20121020.tar.gz
+	sha256sums = SKIP
+	sha256sums = c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4f5a6ceb
+
+pkgname = fcitx5-zaphodheads-git
