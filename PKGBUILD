@@ -2,12 +2,13 @@
 # 自用维护：仅信任官方 GitHub release 资产，sha256 锁定官方 SHA256SUMS.txt。
 pkgname=designcraft-private-bin
 pkgver=0.20.1
-pkgrel=2
+pkgrel=3
 pkgdesc='自用维护：开源 clean-room 版 Adobe InDesign 替代（排版出版），上游 storytold/designcraft'
 arch=('x86_64')
 url='https://getartcraft.com/apps/designcraft'
 # GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
 _gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
+_gh_mirror="${_gh_mirror%/}/"
 license=('MIT' 'Apache')
 provides=("designcraft=$pkgver")
 conflicts=('designcraft' 'designcraft-bin' 'designcraft-git' 'ai.storyteller.designcraft')
