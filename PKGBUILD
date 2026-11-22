@@ -1,6 +1,6 @@
 # Maintainer: rus364 <rus364@gmail.com>
 pkgname=agent-box
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 epoch=1
 pkgdesc='Run coding agents in rootless Podman workspace boxes'
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('python>=3.11' 'podman>=5' 'git')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('github-cli: forward GitHub authentication' 'tmux: detachable host sessions')
-source=("agent_box_tool-0.2.0.tar.gz::$url/releases/download/v$pkgver/agent_box_tool-0.2.0.tar.gz")
-sha256sums=('898f1c973e1a28ddcca1cf9d5caa89ec51b22715497ee4673bc34a0a444d258f')
+source=("agent_box_tool-0.3.0.tar.gz::$url/releases/download/v$pkgver/agent_box_tool-0.3.0.tar.gz")
+sha256sums=('2a32b7c5c69822498c9b6c18d7a2a0c8d530390f3e3aaa4a4b889275ff24063f')
 
 build() {
   cd "agent_box_tool-$pkgver"
