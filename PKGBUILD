@@ -1,6 +1,6 @@
 # Maintainer: Artem Shustrov <shustrov_a@inbox.ru>
 pkgname=evo-cli-bin
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='CLI and MCP server for Cloud.ru Evolution'
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ optdepends=('kubectl: Kubernetes commands' 'helm: Helm commands')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/evo_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/evo_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('fe0d6cdd0cef55ed93b000f3c948967dcf7cb863f4c199a0c61a1741ebc43a84')
-sha256sums_aarch64=('0d96c26927ecf0490aa567ba6d1fb7a62c65bd9eb86f53aeb39d512b240fdc01')
+sha256sums_x86_64=('52746b3b1417e6aeafa1500cde5da6bcc705654d8acc549ae1a894bcc3d0d901')
+sha256sums_aarch64=('f02e95ea59727de3108a72522264fde58384f475e6874523eb7434c7b6759321')
 
 package() {
     install -Dm755 "${srcdir}/evo" "${pkgdir}/usr/bin/evo"
