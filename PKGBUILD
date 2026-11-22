@@ -7,7 +7,7 @@
 # of that is reproduced here.
 
 pkgname=claude-desktop
-pkgver=6.28899.2
+pkgver=6.28899.6
 pkgrel=1
 pkgdesc="Official Claude AI desktop app from Anthropic — Chat, Cowork, and Claude Code"
 arch=('x86_64' 'aarch64')
@@ -95,8 +95,8 @@ source=("${pkgname}.sh")
 source_x86_64=("${_baseurl}/${pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_baseurl}/${pkgname}_${pkgver}_arm64.deb")
 sha256sums=('2b50c019e70b263750255c446bab8db6ab1e50c7396d37ef6547cf118131da65')
-sha256sums_x86_64=('b7cbcc47a8c37cfe409eb146885b0196ffcd9b1f29be1642eb78a894d89ef6b1')
-sha256sums_aarch64=('7ec2a354ecb8bafae3e3ccafe620144232b7429b216ab59a05a0d6cc340f1455')
+sha256sums_x86_64=('7e381601d86570149643d52e9b89c26575ab12fa788aa41ffdd4cca5b0638cf8')
+sha256sums_aarch64=('239c20d218456cacc656d48382fd59116325ac679aa4e476377af1456ac85715')
 
 package() {
   # A .deb is an ar archive, which makepkg unpacks like any other source:
