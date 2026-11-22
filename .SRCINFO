@@ -1,7 +1,7 @@
 pkgbase = ferron-git
 	pkgdesc = A fast, modern web server written in Rust (git)
 	pkgver = 3.0.0.rc.11.r22.g622271c
-	pkgrel = 4
+	pkgrel = 5
 	url = https://ferron.sh
 	install = ferron-git.install
 	arch = x86_64

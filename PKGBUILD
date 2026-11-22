@@ -2,7 +2,7 @@
 # Contributor: Rowan <rowan@zeusteam.dev>
 pkgname=ferron-git
 pkgver=3.0.0.rc.11.r22.g622271c
-pkgrel=4
+pkgrel=5
 pkgdesc='A fast, modern web server written in Rust (git)'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'riscv64')
 url='https://ferron.sh'
@@ -24,9 +24,6 @@ pkgver() {
 build() {
     cd "$srcdir/ferron"
     export CARGO_TARGET_DIR="$srcdir/target"
-    # makepkg's -flto=auto breaks the static mimalloc and aws-lc these crates
-    # link against, with undefined symbols. Drop LTO from the flags and keep
-    # the hardening.
     CFLAGS=${CFLAGS//-flto=auto/}
     CXXFLAGS=${CXXFLAGS//-flto=auto/}
     LDFLAGS=${LDFLAGS//-flto=auto/}
@@ -56,7 +53,6 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     cp -r wwwroot "$pkgdir/usr/share/ferron/wwwroot"
     [[ -d docs ]] && cp -r docs "$pkgdir/usr/share/doc/$pkgname/html"
-    # the packaged config is upstream's, with the webroot pointed at the Arch path
     local cfg="configs/ferron.pkgunix.conf"
     if [ ! -f "$cfg" ]; then
         echo "ERROR: $cfg missing, upstream may have renamed the packaged config"

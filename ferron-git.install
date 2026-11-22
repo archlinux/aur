@@ -1,5 +1,3 @@
-# Record what a previous package version seeded, so an upgrade can tell a file
-# the user has edited from one that is still stock.
 seedmanifest=/var/lib/ferron/wwwroot.seed
 
 seedroot() {
@@ -18,9 +16,6 @@ seedroot() {
     done
 }
 
-# Refresh stock files on upgrade. A file is stock when its hash matches what the
-# previous package seeded; anything else is the user's and is left alone. Files
-# that disappeared are restored. Nothing is ever deleted.
 reseedroot() {
     local src=/usr/share/ferron/wwwroot
     local dest=/var/www/ferron
@@ -76,9 +71,6 @@ post_install() {
 }
 
 post_upgrade() {
-    # 2.x /etc/ferron.kdl -> 3.x /etc/ferron/ferron.conf.
-    # 1.x YAML is a two-step path needing ferron-yaml2kdl, which only 2.x
-    # packages ship, so that case is left to ferron's own upgrade to handle first.
     if [ -f /etc/ferron.kdl ] && [ ! -f /etc/ferron/ferron.conf ]; then
         if command -v ferron-kdl2ferron >/dev/null 2>&1; then
             echo "==> Detected 2.x /etc/ferron.kdl, converting to /etc/ferron/ferron.conf"
