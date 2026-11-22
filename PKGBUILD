@@ -2,10 +2,12 @@
 # 自用维护：仅信任官方 GitHub release 资产，sha256 锁定官方 SHA256SUMS.txt。
 pkgname=filmcraft-private-bin
 pkgver=0.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc='自用维护：开源 clean-room 版 Adobe Premiere Pro 替代（视频编辑），上游 storytold/filmcraft'
 arch=('x86_64')
 url='https://getartcraft.com/apps/filmcraft'
+# GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
+_gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
 license=('MIT' 'Apache')
 provides=("filmcraft=$pkgver")
 conflicts=('filmcraft' 'filmcraft-bin' 'filmcraft-git' 'ai.storyteller.filmcraft')
@@ -23,7 +25,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://gh-proxy.com/https://github.com/storytold/filmcraft/releases/download/v${pkgver}/filmcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("${_gh_mirror}https://github.com/storytold/filmcraft/releases/download/v${pkgver}/filmcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('bbdee1fe9e8671094e4e548d3920a808b7c7411a802d743b19158753d951d722')
 
 package() {
