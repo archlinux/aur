@@ -1,5 +1,5 @@
 pkgname=pyrobbo
-pkgver=0.5.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Clone of an old 8-bit Atari game Robbo"
 url="http://github.com/macdems/pyrobbo"
@@ -12,7 +12,7 @@ source=(
     'pyrobbo.desktop'
     'robbo.png'
 )
-sha256sums=('23ecbba2235758ec5dd6d14bf1b76a5e642cc57d9f260c76db581d5ecdeddaaa'
+sha256sums=('b04229a2afe220cc86dd9d6699e15891f8716b2091bb64120f84ecd84d13d58d'
             'd29ae49f54b9ba159fd39b0132dad6f0fa252902533934e7021f6cd61a04db33'
             'cc89dcb37e7f2dde624e8db706f0b26c0493fc68a1af5716b615ee992d716a84')
 
@@ -23,7 +23,7 @@ build() {
 
 package() {
     cd "${srcdir}"
-    python -m pip install --no-deps --ignore-installed --root="${pkgdir}" PyRobbo-${pkgver}-py3-none-any.whl
+    python -m pip install --no-deps --ignore-installed --root="${pkgdir}" pyrobbo-${pkgver}-py3-none-any.whl
     mkdir -p "${pkgdir}/usr/share/applications"
     cp pyrobbo.desktop "${pkgdir}/usr/share/applications/"
     mkdir -p "${pkgdir}/usr/share/pixmaps"
