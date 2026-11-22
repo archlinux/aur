@@ -1,9 +1,10 @@
 # AGENTS.md
 
-AUR `-bin` package for xdg-desktop-portal-gtk4, prebuilt from upstream `master`.
-The Print portal fixes that used to live in `print-single-call.patch` are
-upstream since `3461d7e`; the page-setup warning fix is `34f8de3`, so the recipe
-builds the upstream tree as is. This package is a stopgap until
+AUR `-bin` package for xdg-desktop-portal-gtk4, prebuilt from upstream `master`
+plus the `feat/live-user-css` patch (upstream PR #6: reload the user
+`gtk.css` at runtime). The Print portal fixes that used to live in
+`print-single-call.patch` are upstream since `3461d7e`; the page-setup warning
+fix is `34f8de3`. This package is a stopgap until
 `xdg-desktop-portal-gtk4-bin` is adopted on AUR.
 The package installs a prebuilt binary and does not compile anything.
 
@@ -43,7 +44,7 @@ The binary is built outside this repository:
    consider dropping this package.
 
 The release asset URL lives under
-`https://gitlab.com/nisby/xdg-desktop-portal-gtk4-printfix-bin/-/releases/`.
+`https://gitlab.com/nisby/xdg-desktop-portal-gtk4-bin/-/releases/`.
 
 ## Publishing
 
