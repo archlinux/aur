@@ -1,0 +1,20 @@
+pkgbase = sued-rs-bin
+	pkgdesc = A horror-themed recreation of SueD, the 2000s Brazilian prank oracle
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Danilo-Guedes/sued-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	provides = sued-rs
+	conflicts = sued-rs
+	options = !debug
+	source_x86_64 = sued-rs-bin-0.1.2-x86_64.tar.xz::https://github.com/Danilo-Guedes/sued-rs/releases/download/v0.1.2/sued-rs-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = e9be3561a6b73d6b9f2914b8dff7cd9c7f029f9ee61c1e95ee6dbc76daa31a00
+	source_aarch64 = sued-rs-bin-0.1.2-aarch64.tar.xz::https://github.com/Danilo-Guedes/sued-rs/releases/download/v0.1.2/sued-rs-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 28902c7148cfc078d8864a8d27e33838ca5aca3c52687ebe279b4898711c02ef
+
+pkgname = sued-rs-bin
