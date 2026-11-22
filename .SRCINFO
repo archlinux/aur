@@ -1,7 +1,7 @@
 pkgbase = deckcraft-private-bin
 	pkgdesc = 自用维护：开源 clean-room 版 PowerPoint 替代（演示文稿），上游 storytold/deckcraft
 	pkgver = 0.18.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getartcraft.com/apps/deckcraft
 	arch = x86_64
 	license = MIT
