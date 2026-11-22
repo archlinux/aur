@@ -8,7 +8,7 @@ _appname=OpenXplorer
 pkgname=${_gitname}
 pkgdesc="Windows File Explorer-inspired file manager for Linux"
 
-pkgver=2.0.21
+pkgver=2.0.23
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,16 +30,16 @@ optdepends=('polkit: deleting a whole folder as administrator under admin://'
             'gvfs: the Recycle Bin and the drive and phone list'
             'gvfs-smb: SMB shares'
             'gvfs-mtp: phones'
-            'gnome-keyring: remembering SMB passwords'
             'xdg-utils: making OpenXplorer the default file manager'
-            'file-roller: Open in archive manager'
             'xdg-desktop-portal-gtk: Share on GNOME (its Email portal)'
+            'gnome-keyring: remembering SMB passwords'
+            'file-roller: Open in archive manager'
             'cifs-utils: the persistent SMB mount helper, openxplorer-mount-share')
 
 options=('!debug' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('d2e0df1ef92231853e16114fd01f2bca68635503ab53a02c1f352416eb4d4c5a')
+sha256sums=('614b147e70db204635aa98e9d0f7aafd44a10c2c7b0b57a679a9915a16a51b42')
 
 
 prepare() {
@@ -73,10 +73,10 @@ package() {
 	cd "${pkgname}-${pkgver}/"
 
 	# The shared install layout of every package format.
-	python native/tools/package_data.py --app-id "${_appid}" --layout fhs \
+	python native/tools/package_data.py --app-id "${_appid}" --layout fhs --destdir "${pkgdir}" \
 		--program target/release/openxplorer-native \
 		--mount-helper target/release/openxplorer-mount-share \
-		--admin-delete target/release/openxplorer-admin-delete --destdir "${pkgdir}"
+		--admin-delete target/release/openxplorer-admin-delete
 
 	rm -rf "${pkgdir}/usr/share/doc" "${pkgdir}/usr/share/licenses"
 
