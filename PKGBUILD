@@ -76,19 +76,14 @@ prepare() {
 
 build() {
   cd "${srcdir}"
-
-  rm -rf build icon
-  mkdir -p build icon
-
-  ./jre/bin/java "-DINSTALL_PATH=${srcdir}/build" -jar "SetupSTM32CubeProgrammer-${pkgver}.exe" -auto
-
-  icotool -x "build/util/Programmer.ico" -o "icon"
-  icotool -x "build/util/STM32TrustedPackageCreator.ico" -o "icon"
+  mkdir -p "desktop-icons"
+  icotool -x "util/Programmer.ico" -o "desktop-icons"
+  icotool -x "util/STM32TrustedPackageCreator.ico" -o "desktop-icons"
 }
 
 package() {
   install -dm755 "${pkgdir}/opt/${pkgname}"
-  cp -a --no-preserve=ownership "${srcdir}/build/." "${pkgdir}/opt/${pkgname}"
+  cp -a --no-preserve=ownership "${srcdir}"/{api,bin,doc,lib,util,Data_Base,Drivers,SVD} "${pkgdir}/opt/${pkgname}/"
 
   # icons
   for entry in \
@@ -97,7 +92,7 @@ package() {
     prefix=${entry%%:*}
     icon_name=${entry#*:}
 
-    for icon_file in "${srcdir}/icon/${prefix}_"*x32.png; do
+    for icon_file in "${srcdir}/desktop-icons/${prefix}_"*x32.png; do
       size=${icon_file##*_}
       size=${size%%x*}
 
