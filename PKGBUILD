@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=word-sys-pdf-editor
-pkgver=1.11.1
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="A simple and user-friendly PDF Editor"
 url="https://github.com/word-sys/word-sys-pdf-editor"
@@ -15,18 +15,15 @@ conflicts=('pardf' 'fospx-pdf-editor')
 replaces=('pardf' 'fospx-pdf-editor')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/word-sys/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
-        "icon_path.patch"
-        "license_path.patch")
-sha256sums=('753a482cc3ce7c5426de97122226b08cdb8d757685ee0edad4a2df45fead681b'
+        "icon_path.patch")
+sha256sums=('93c0db4e962d4a1e875ed823c16658df2709fa74af1dddd16f73c250b67e9204'
             '1d052114e538cb93da18668b2d4ac75c182619e72c9855ab3e849299540b76ad'
-            '0a18891f2c648c1d93a9abb7dec73d9a0952842072dfb82b9245a23a2c86af58'
-            '9f5f66c2ba5c32c186851e8a78b5a204cc19c23e032383a81263c1be3cb9f299')
+            'fdd48ac6e15c11774748766a52f2d4762598364ca2d60df7078ee3da9c0e0c66')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
   # Install patches
   patch -p1 -i "${srcdir}/icon_path.patch"
-  patch -p1 -i "${srcdir}/license_path.patch"
 }
 
 build() {

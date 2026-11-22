@@ -1,8 +1,8 @@
-diff -Naur word-sys-pdf-editor-1.11.1.orig/word_sys_pdf_editor/welcome_view.py word-sys-pdf-editor-1.11.1/word_sys_pdf_editor/welcome_view.py
---- word-sys-pdf-editor-1.11.1.orig/word_sys_pdf_editor/welcome_view.py	2026-10-02 14:50:22.000000000 +0200
-+++ word-sys-pdf-editor-1.11.1/word_sys_pdf_editor/welcome_view.py	2026-10-03 20:34:33.780195678 +0200
-@@ -32,7 +32,7 @@
-         main_box.set_margin_bottom(40)
+diff -Naur word-sys-pdf-editor-1.12.1.orig/word_sys_pdf_editor/welcome_view.py word-sys-pdf-editor-1.12.1/word_sys_pdf_editor/welcome_view.py
+--- word-sys-pdf-editor-1.12.1.orig/word_sys_pdf_editor/welcome_view.py	2026-11-22 10:59:24.000000000 +0100
++++ word-sys-pdf-editor-1.12.1/word_sys_pdf_editor/welcome_view.py	2026-11-23 00:19:29.855538191 +0100
+@@ -70,7 +70,7 @@
+         overlay.add_overlay(top_bar)
  
          try:
 -            app_icon = Gtk.Image.new_from_icon_name("f-pv1")
@@ -10,26 +10,26 @@ diff -Naur word-sys-pdf-editor-1.11.1.orig/word_sys_pdf_editor/welcome_view.py w
              app_icon.set_pixel_size(200)
              app_icon.set_valign(Gtk.Align.END)
              app_icon.set_halign(Gtk.Align.CENTER)
-@@ -292,4 +292,4 @@
-             self.parent_window.load_document(row._file_path)
-         elif hasattr(row, '_uri') and row._uri:
-             gfile = Gio.File.new_for_uri(row._uri)
--            self.parent_window.load_document(gfile.get_path())
+@@ -272,4 +272,4 @@
+             if not os.path.isfile(path):
+                 self._populate_recent_files()
+                 return
+-            self.parent_window.load_document(path)
 \ Manca newline alla fine del file
-+            self.parent_window.load_document(gfile.get_path())
-diff -Naur word-sys-pdf-editor-1.11.1.orig/word_sys_pdf_editor/window.py word-sys-pdf-editor-1.11.1/word_sys_pdf_editor/window.py
---- word-sys-pdf-editor-1.11.1.orig/word_sys_pdf_editor/window.py	2026-10-02 14:50:22.000000000 +0200
-+++ word-sys-pdf-editor-1.11.1/word_sys_pdf_editor/window.py	2026-10-03 20:34:57.192060907 +0200
-@@ -43,7 +43,7 @@
++            self.parent_window.load_document(path)
+diff -Naur word-sys-pdf-editor-1.12.1.orig/word_sys_pdf_editor/window.py word-sys-pdf-editor-1.12.1/word_sys_pdf_editor/window.py
+--- word-sys-pdf-editor-1.12.1.orig/word_sys_pdf_editor/window.py	2026-11-22 10:59:24.000000000 +0100
++++ word-sys-pdf-editor-1.12.1/word_sys_pdf_editor/window.py	2026-11-23 00:20:17.869250857 +0100
+@@ -664,7 +664,7 @@
          super().__init__(*args, **kwargs)
          self.set_title(constants.APP_NAME)
          self.set_default_size(1200, 800)
 -        self.set_icon_name("f-pv1")
 +        self.set_icon_name("word-sys-pdf-editor")
- 
-         self.sessions = []
-         self._active_session = DocumentSession(undo_manager=UndoManager(self))
-@@ -1762,7 +1762,7 @@
+         self._is_programmatic_scrolling = False
+         self._scroll_anim_id = None
+         self._scroll_tracker = ScrollVelocityTracker()
+@@ -3916,7 +3916,7 @@
          about_dialog.set_comments(_("about_comments"))
  
          try:
