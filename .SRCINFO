@@ -1,6 +1,6 @@
 pkgbase = podbox
 	pkgdesc = Podman-native container environment manager
-	pkgver = 0.9.6
+	pkgver = 0.9.7
 	pkgrel = 1
 	url = https://github.com/bethropolis/podbox
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = podbox
 	conflicts = podbox-bin
 	provides = podbox
 	
-	source = podbox_0.9.6.tar.gz::https://github.com/bethropolis/podbox/archive/refs/tags/v0.9.6.tar.gz
-	sha256sums = 57c0ae1a1bdb4b7058f1e92f8a984d2eaa65d5f8748492943315c001b33f6bff
+	source = podbox_0.9.7.tar.gz::https://github.com/bethropolis/podbox/archive/refs/tags/v0.9.7.tar.gz
+	sha256sums = a0345a4fb662fa8b70eddd1b47f8a82a129f6a7843178fb3a3f6619922e9e55b
 	
 pkgname = podbox
