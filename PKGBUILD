@@ -2,7 +2,7 @@
 # The AUR's anibeam: the native Qt shell built from a release tag. Publish it with
 # apps/linux/packaging/aur/publish.sh after the tag is on GitHub.
 pkgname=anibeam
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Browse, play and track a local anime library (Qt 6 and libmpv)"
 arch=(x86_64 aarch64)
@@ -21,7 +21,7 @@ optdepends=(
 # symbols. Rust's own LTO is a Cargo profile matter, not a makepkg one.
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('112c2dc59997e060a878c48bf4b1f040225d87c999c5e1dc7af64e0317b2ee53')
+sha256sums=('39cfd8c219fd5c7be74b9a5c6a3adc2f1d68e73338dd82cd1e075093db95b7e1')
 
 _src() { cd "$srcdir/Anibeam-$pkgver"; }
 
