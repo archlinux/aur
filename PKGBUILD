@@ -1,7 +1,7 @@
 # Maintainer: Renan BS <renan.biegel@gmail.com>
 pkgname=orca-ade-bin
 pkgver=1.4.269
-pkgrel=1
+pkgrel=2
 pkgdesc='Next-gen IDE for parallel agentic development'
 arch=('x86_64' 'aarch64')
 url='https://onorca.dev/'
@@ -77,6 +77,18 @@ package() {
   chmod 4755 "$pkgdir/opt/Orca/chrome-sandbox"
   install -d "$pkgdir/usr/bin"
   ln -s /opt/Orca/resources/bin/orca-ide "$pkgdir/usr/bin/orca-ide"
+
+  # Themes that ship an `orca` icon (Tela, for the GNOME screen reader) win the
+  # lookup for `orca-ide`: KDE drops the `-ide` suffix and returns the
+  # accessibility glyph. An underscore never collides with a theme icon name.
+  local icon
+  for icon in "$pkgdir"/usr/share/icons/hicolor/*/apps/orca-ide.png; do
+    mv -- "$icon" "${icon%orca-ide.png}orca_ide.png"
+  done
+  sed -i 's/^Icon=orca-ide$/Icon=orca_ide/' \
+    "$pkgdir/usr/share/applications/orca-ide.desktop"
+  grep -qx 'Icon=orca_ide' "$pkgdir/usr/share/applications/orca-ide.desktop" ||
+    { echo "error: upstream desktop entry no longer carries Icon=orca-ide" >&2; return 1; }
 
   install -Dm644 "LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   # Debian changelog; upstream's release notes live on GitHub.

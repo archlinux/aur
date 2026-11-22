@@ -1,7 +1,7 @@
 pkgbase = orca-ade-bin
 	pkgdesc = Next-gen IDE for parallel agentic development
 	pkgver = 1.4.269
-	pkgrel = 1
+	pkgrel = 2
 	url = https://onorca.dev/
 	arch = x86_64
 	arch = aarch64
