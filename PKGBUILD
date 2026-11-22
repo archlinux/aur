@@ -12,7 +12,7 @@
 # helper does not offer this package as an upgrade of the image viewer.
 pkgbase=vv
 pkgname=('vv' 'vv-gui')
-pkgver=1.35.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc="Universal data/genomic file viewer (Parquet, Arrow, HDF5, BAM, VCF, BED, …)"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ source=("$pkgbase-$pkgver.tar.gz::https://github.com/balwierz/$pkgbase/archive/r
 # Regenerate after every pkgver bump — `updpkgsums` (from pacman-contrib)
 # rewrites this line in place. Do NOT use SKIP: this is a network-fetched
 # release tarball, and the checksum is the only thing pinning it.
-sha256sums=('48f9ab9fde6ff7929bc1a859146f26b655003e5b02aa4d824e1b2664dd320ce4')
+sha256sums=('ab0fd33bad3797ac7ac930176cfd7151f6136ac76ab3b55ad09a08797382ac2d')
 
 build() {
     cmake -S "$pkgbase-$pkgver" -B build \
