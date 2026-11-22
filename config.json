@@ -1,0 +1,10 @@
+{
+	"client": {
+		"mode": "client",
+		"url": "http+unix://%2Fvar%2Flib%2Ftangram%2Fsocket"
+	},
+	"vfs": {
+		"kind": "fuse",
+		"passthrough": "auto"
+	}
+}

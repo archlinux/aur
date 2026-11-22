@@ -1,0 +1,17 @@
+[Unit]
+Description=Tangram server
+After=network.target
+
+[Service]
+Type=exec
+User=root
+Group=tangram
+UMask=0077
+StateDirectory=tangram
+StateDirectoryMode=0710
+ExecStart=/usr/lib/tangram/tangram serve --config /etc/tangram/config.json --directory /var/lib/tangram --group-access
+Delegate=yes
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
