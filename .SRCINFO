@@ -1,23 +1,23 @@
 pkgbase = rui-bin
 	pkgdesc = Terminal UI for managing home routers (Orange Livebox/Funbox today; Play/Fritz on the roadmap)
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/j4y-w4lk3r/rui
-	arch = aarch64
-	arch = armv7h
-	arch = x86_64
 	license = MIT
-	depends = glibc
 	optdepends = chromium: --capture mode (records router web UI traffic) needs a Chrome/Chromium binary
 	optdepends = xdg-utils: ergonomic clipboard support for `y`/`Y` device-copy keys
-	provides = rui
+	depends = glibc
 	conflicts = rui
 	conflicts = rui-git
-	source_aarch64 = rui-bin_0.1.8_aarch64.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.8/rui_0.1.8_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 0ec7255887cee9589c2243b005ab638ea41e267feb6672fd45e6969c82fb3bbe
-	source_armv7h = rui-bin_0.1.8_armv7h.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.8/rui_0.1.8_Linux_armv7.tar.gz
-	sha256sums_armv7h = fdf78b5d8f54a83cef61d840eedacbab77efd84c85cf6a19eba63e5262f84162
-	source_x86_64 = rui-bin_0.1.8_x86_64.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.8/rui_0.1.8_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 91940015356dfb6ad43d05d618e8f1fb5ce661f0e05d1ea345b83e9d87ce660e
-
+	provides = rui
+	arch = aarch64
+	source_aarch64 = rui-bin_0.1.9_aarch64.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.9/rui_0.1.9_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 99cbbcdaef9b7454b26af50ff7eaafeef966ed3baf84842fe9c8c45c9340424d
+	arch = armv7h
+	source_armv7h = rui-bin_0.1.9_armv7h.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.9/rui_0.1.9_Linux_armv7.tar.gz
+	sha256sums_armv7h = 1d509b0c621932d67455ab0b624599c308221a2f07440de32619696f4c7e574a
+	arch = x86_64
+	source_x86_64 = rui-bin_0.1.9_x86_64.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.9/rui_0.1.9_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = dea175df1661d55a4531302e4efa4a4e9827ef2cee8628349b88f5ad64f8e319
+	
 pkgname = rui-bin
