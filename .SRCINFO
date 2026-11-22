@@ -1,0 +1,16 @@
+pkgbase = every-other-token-bin
+	pkgdesc = Streams an LLM response and colours each token by the model's confidence from logprobs
+	pkgver = 5.0.2
+	pkgrel = 1
+	url = https://github.com/Mattbusel/Every-Other-Token
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = every-other-token
+	conflicts = every-other-token
+	options = !debug
+	source_x86_64 = every-other-token-bin-5.0.2-x86_64.tar.gz::https://github.com/Mattbusel/Every-Other-Token/releases/download/v5.0.2/every-other-token-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 097322cc7e1584018738cdbc4ab2c0986854352d8c7eb1d359bc99ce223b4ef2
+
+pkgname = every-other-token-bin
