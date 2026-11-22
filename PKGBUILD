@@ -2,7 +2,7 @@
 
 pkgname=metrolist-desktop-bin
 pkgver=14.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="YouTube Music client for desktop (Stable)"
 arch=('x86_64')
 url="https://github.com/MetrolistGroup/Metrolist"
@@ -20,7 +20,7 @@ source=(
 sha256sums=(
   'b3c363a95e391be4e26a52bf95ae07a69f59639cdc63edb1f34183c5ebca4230'
   '7e3493f95a180616ce9520273676af5849de2c912471e3e24ae8da08b3391c9e'
-  'b708baf8e479d2b0d94604dfa3f0c977416f9b09255da857c5b10686c703aedd'
+  '791504b8782fee259119bdfc94210dd3221b4ec96260586e8a0a36d3f0960c8c'
   '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
   'f0d70d56d2362c5f567ae732ffcd67a7376f7902b79ca2b60f95e08166ffa367'
 )
@@ -31,7 +31,7 @@ package() {
   install -Dm755 "$srcdir/metrolist" \
     "$pkgdir/usr/bin/metrolist"
   install -Dm644 "$srcdir/metrolist.desktop" \
-    "$pkgdir/usr/share/applications/metrolist.desktop"
+    "$pkgdir/usr/share/applications/Metrolist.desktop"
   install -Dm644 "$srcdir/LICENSE" \
     "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "$srcdir/metrolist.png" \
