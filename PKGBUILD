@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MEAL
-_pkgver=1.34.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Perform methylation analysis'
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c87681f7bb9fa4d40c7af6ba7200ce3c602660aa16c56c2bb3f63d434a6a58da')
+sha256sums=('e0c30514f95bc7c321b70c837169a5cac28f9c8196eda271e92166b2849a545f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
