@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=Signac
-_pkgver=1.15.0
+_pkgver=1.17.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,7 +20,6 @@ depends=(
   r-genomicranges
   r-ggplot2
   r-iranges
-  r-irlba
   r-lifecycle
   r-patchwork
   r-pbapply
@@ -28,9 +27,11 @@ depends=(
   r-rcpproll
   r-rlang
   r-rsamtools
+  r-rspectra
   r-s4vectors
   r-scales
   r-seuratobject
+  r-sparsematrixstats
   r-stringi
   r-tidyr
   r-tidyselect
@@ -44,7 +45,7 @@ optdepends=(
   r-biostrings
   r-biovizbase
   r-bsgenome
-  r-chromvar
+  r-fgsea
   r-ggforce
   r-ggrepel
   r-ggseqlogo
@@ -57,10 +58,11 @@ optdepends=(
   r-summarizedexperiment
   r-testthat
   r-tfbstools
+  r-wrswor
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d7e06226d082f987f379e72db9078e06')
-b2sums=('49dd16d2e0aadb46eec58ee33c1803f07540c24bb4d08e57bd1da54cd3ab05316bdaf1d7b4f3756fee0a02ddbe531b88177311bcd0cb3485b96674bb929f2aa4')
+md5sums=('0c8bcd5f753b464c6af918311ff49150')
+b2sums=('e2883e4098d8bcff5c5c3e3f974719bdd958fb8257009a54cf494d39eb3223d25dc10d4ea8d83d503bd6e3d0be562008e3ba1f566a53a3c7217d8b0430470653')
 
 build() {
   mkdir build
