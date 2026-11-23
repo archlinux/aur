@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=all-smi-bin
-pkgver=0.28.1
+pkgver=0.29.1
 pkgrel=1
 pkgdesc='Command-line utility for monitoring GPU hardware (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source_aarch64=("all-smi-${pkgver}-aarch64.tar.gz::${_release}/all-smi-linux-aar
 sha256sums=('64316c3974ec055c4edf9ace4366a658eb3f5f75bcd2d2d2eabe1eb698841d61'
             '3c515d5ed296f482bebc0ad16508cf4010004722adc959df1378f42bc4d20f1c'
             'e7d8f95f2c0511f675eb91ae351fc13333e065704047fce1f33268e9a77d7e5b')
-sha256sums_x86_64=('e1f67795c49f5271b71a18ffb70b1e519ebf0eab732ec0e3d42e2d2185d39369')
-sha256sums_aarch64=('655642f211678c9e64a8d51d4dfd58651cb6e745de0b7e25becb1700bf6a5979')
+sha256sums_x86_64=('69ab9e474e7eacc861b2fe6958a43e6d24b3593c0c2a0153760ef06317eb73e5')
+sha256sums_aarch64=('42c4a534159f6f02882b65c4ecdd068c6ad314812a62d6e8c392a63dc02918b0')
 
 package() {
   install -Dm755 all-smi -t "${pkgdir}/usr/bin"
