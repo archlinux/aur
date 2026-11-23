@@ -1,12 +1,12 @@
 # Maintainer: pierspad <pierpaolospadafora@proton.me>
 pkgname=clingo
-pkgver=5.8.2
+pkgver=5.8.3
 pkgrel=1
 pkgdesc='Grounding tools for (disjunctive) logic programs'
 arch=('i686' 'x86_64' 'pentium4')
 url='https://potassco.org/'
 license=('MIT')
-depends=('lua' 'python')
+depends=('lua' 'python' 'python-cffi')
 makedepends=('clang' 'cmake' 'git' 'ninja' 're2c')
 conflicts=('clasp')
 options=('!lto')
