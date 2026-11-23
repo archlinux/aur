@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RESOLVE
-_pkgver=1.6.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,6 +24,7 @@ depends=(
   r-mutationalpatterns
   r-nnls
   r-reshape2
+  r-rhpcblasctl
   r-s4vectors
 )
 checkdepends=(
@@ -36,8 +37,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('202f10a19b1ca124f5c29d64e69ae269')
-b2sums=('b7f1e1ba107ccdb1c8b43c5540cab2ca6c25b27828e00b99169f985fb4f78fb198b43cc94433276bb0ba8f35075f1736611d4d7cf150e97739eaf98684f64897')
+md5sums=('94db984b213da0a668ef1acc5b9c9dfb')
+b2sums=('755140fbf2edbeecc6bbd9a8ea9873d3e380aebf42c478b9da31876396557d838bad019ef4c6443ecbd2b646daff3d5a69484efe791600fa875ff6d0b0fb50fe')
 
 build() {
   mkdir build
