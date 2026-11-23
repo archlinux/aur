@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
 _app_id=io.ente.auth
-pkgver=4.4.26
+pkgver=4.4.27
 pkgrel=1
-_flutter_ver=3.47.2  ## Check .github/actions/setup-flutter/action.yml for FLUTTER_VERSION
+_flutter_ver=3.47.8  ## Check .github/actions/setup-flutter/action.yml for FLUTTER_VERSION
 pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
 arch=('x86_64' 'aarch64')
 url="https://ente.com/auth"
@@ -27,16 +27,22 @@ makedepends=(
   'java-environment'
   'ninja'
   'patchelf'
+  'rustup'
   'unzip'
 )
 checkdepends=(
   'appstream'
   'desktop-file-utils'
 )
+
+# Disable LTO to avoid undefined symbols
+# libente_auth_frb.so: undefined symbol: ring_core_0_17_14__LIMB_is_zero
+options=('!lto')
+
 source=("git+https://github.com/ente/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/simple-icons/simple-icons.git'
         'enteauth.sh')
-sha256sums=('fe13157113d1c1b2e41fa31d042b830d4a592c4b6ddcb3102eadc38a24694916'
+sha256sums=('a5b0047c6e270f10c9b2f9d52e82b117f6058f0c703efe851aeac6b92aa39215'
             'SKIP'
             '21df8c9d913d7f91e5078a3842eb5d8e609e44b4570ed2e9fe2a6299651fd289')
 
@@ -45,6 +51,9 @@ prepare() {
   git submodule init
   git config submodule.mobile/apps/auth/assets/simple-icons.url "$srcdir/simple-icons"
   git -c protocol.file.allow=always submodule update
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --manifest-path rust/Cargo.toml --locked --target host-tuple
 
   cd mobile/apps/auth
   export FVM_CACHE_PATH="$srcdir/fvm"
@@ -64,17 +73,28 @@ prepare() {
 build() {
   cd ente
   export FVM_CACHE_PATH="$srcdir/fvm"
-  export LIBSODIUM_USE_PKGCONFIG=1
-
-  # Treat deprecation errors as warnings & avoid build failure due to newer Clang versions
-  # https://github.com/juliansteenbakker/flutter_secure_storage/issues/965
-  CXXFLAGS+=" -Wno-error=deprecated-declarations -Wno-error=deprecated-literal-operator -Wno-error=incompatible-pointer-types-discards-qualifiers"
 
   # Disable analytics
   fvm flutter config --no-analytics
   fvm dart --disable-analytics
 
+  pushd rust
+  export RUSTUP_TOOLCHAIN=stable
+
+  # codegen runs dart directly, add Flutter SDK bin to PATH
+  export PATH="$FVM_CACHE_PATH/versions/${_flutter_ver}/bin:$PATH"
+
+  cargo codegen frb auth
+  popd
+
   cd mobile/apps/auth
+
+  # Avoid build failure due to newer Clang versions
+  # https://github.com/juliansteenbakker/flutter_secure_storage/issues/965
+  CXXFLAGS+=" -Wno-error=deprecated-literal-operator"
+
+  # Use system libsodium
+  export LIBSODIUM_USE_PKGCONFIG=1
 
   # Disable update notifications and auto-update functionality
   fvm flutter build linux --release --dart-define=app.flavor=independent
@@ -104,9 +124,6 @@ package() {
     FLUTTER_ARCH=x64
   fi
 
-  # Not required at runtime as it's only used on Android
-  rm -fv "build/linux/${FLUTTER_ARCH}/release/bundle/lib/libdartjni.so"
-
   install -Dm755 build/linux/${FLUTTER_ARCH}/release/bundle/enteauth -t \
     "$pkgdir/opt/$pkgname/"
   cp -r build/linux/${FLUTTER_ARCH}/release/bundle/{data,lib} "$pkgdir/opt/$pkgname"
@@ -133,6 +150,6 @@ package() {
   install -Dm644 linux/packaging/enteauth.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 linux/packaging/enteauth.appdata.xml -t "$pkgdir/usr/share/metainfo/"
 
-  # Remove insecure RUNPATH pointing to build dir
-  patchelf --remove-rpath "$pkgdir/opt/$pkgname"/lib/*.so
+  # Set RPATH
+  patchelf --set-rpath '$ORIGIN' "$pkgdir/opt/$pkgname/lib/libflutter_linux_gtk.so"
 }
