@@ -1,4 +1,4 @@
-# Maintainer: Agus <email@example.com>
+# Maintainer: Agustin Carrasco <asermax@gmail.com>
 
 pkgname=plasma-applet-claude-usage-git
 _pkgname=plasma-applet-claude-usage
