@@ -1,6 +1,6 @@
 pkgbase = r-scdblfinder
 	pkgdesc = scDblFinder
-	pkgver = 1.22.0
+	pkgver = 1.26.9
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scDblFinder
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = r-scdblfinder
 	depends = r-s4vectors
 	depends = r-scater
 	depends = r-scran
+	depends = r-scrapper
 	depends = r-scuttle
 	depends = r-singlecellexperiment
 	depends = r-summarizedexperiment
@@ -36,7 +37,7 @@ pkgbase = r-scdblfinder
 	optdepends = r-scrnaseq
 	optdepends = r-testthat
 	optdepends = r-viridislite
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scDblFinder_1.22.0.tar.gz
-	sha256sums = 1af9f77ab7257a021c94fafa82a63982cbcf279707a76a56a146d9388732d622
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scDblFinder_1.26.9.tar.gz
+	sha256sums = 8d09ea9982f0785d7e05989e3767f6daf56b32df2c4ba1a02a6e2e23740385f0
 
 pkgname = r-scdblfinder
