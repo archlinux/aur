@@ -1,5 +1,5 @@
 pkgname=hyprism-shell-git
-pkgver=0.1.23.r7.g7aa95db
+pkgver=0.1.24
 pkgrel=1
 pkgdesc='Hyprland and Quickshell desktop environment with dynamic theming (development version)'
 arch=('any')
@@ -28,12 +28,16 @@ depends=(
   'power-profiles-daemon'
   'python'
   'python-pillow'
+  'qt6-declarative'
   'qt5ct'
   'qt6-imageformats'
+  'qt6-svg'
   'qt6ct'
+  'qt6-virtualkeyboard'
   'quickshell>=0.2.0'
   'sassc'
   'satty'
+  'sddm'
   'slurp'
   'thunar'
   'ttf-jetbrains-mono-nerd'
@@ -53,8 +57,6 @@ optdepends=(
   'imagemagick: generated Fastfetch logo'
   'neovim: generated NvChad palette'
   'pacman-contrib: non-blocking update checks'
-  'qt6-virtualkeyboard: SDDM virtual keyboard'
-  'sddm: Hyprism login theme'
   'snapper: snapshot status widget'
   'starship: generated shell prompt theme'
   'tmux: generated terminal multiplexer theme'
