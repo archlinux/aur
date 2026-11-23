@@ -1,7 +1,7 @@
 # Maintainer: codekoala <arch@cloudlery.com>
 pkgname=aws-emulator-bin
 _pkgname=aws-emulator
-pkgver=1.0.322
+pkgver=1.0.587
 pkgrel=1
 pkgdesc='Local emulator for AWS services, for testing against the AWS CLI and SDKs (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -18,9 +18,9 @@ source=("${_pkgname}-LICENSE-${pkgver}::https://raw.githubusercontent.com/aws/aw
 source_x86_64=("${_dlurl}/${_pkgname}_${pkgver}-1_amd64.deb"{,.sig})
 source_aarch64=("${_dlurl}/${_pkgname}_${pkgver}-1_arm64.deb"{,.sig})
 sha256sums=('a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
-sha256sums_x86_64=('ef3c75e5d4196bf2c0170b55b75b01e340e0ef497e636b700a1efe68d68a60d7'
+sha256sums_x86_64=('b589d53569ca4a709261d3c0bad08a35599954174ba2fa884c95b6bfe22f6c9d'
                    'SKIP')
-sha256sums_aarch64=('8cfabb461ccfbfa75468393e8dfbf5216b07ef54fcf20584c11d02a9fc854b03'
+sha256sums_aarch64=('39e62d2ea23af993fe0c067dd9bc1e31f6b5c36e398c978dd2bfd9414e9828b7'
                     'SKIP')
 
 prepare() {
