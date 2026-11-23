@@ -1,7 +1,7 @@
 # Maintainer: Ilyas Turki <turki.ilyass@gmail.com>
 pkgbase=universe
 pkgname=(universe universe-desktop)
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 pkgdesc='Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope'
 arch=('x86_64')
@@ -23,7 +23,7 @@ checkdepends=('tzdata' 'xorg-server-xvfb' 'pipewire' 'wireplumber')
 # makepkg's -flto C objects (aws-lc's) are GCC bitcode that rust-lld cannot link; Cargo.toml strips, so a debug package would be empty
 options=('!lto' '!debug')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a56bafa54db405a745e57a9013b23f5c7c83518cd229bc8cc8a4aed5846cc053')
+sha256sums=('703a3359207d0898742293b8800e7604685c20fb99e63a0883b2619233607c92')
 
 prepare() {
   cd "$pkgbase-$pkgver"
@@ -46,8 +46,8 @@ build() {
 check() {
   cd "$pkgbase-$pkgver"
   export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
-  # the journal tests expect Paris local time, as the flake's check does; an unknown machine's load holds the speed budgets to their loose limits
-  TZ=Europe/Paris UNIVERSE_TEST_BUDGET_S=0 cargo test --frozen -p universe -p universe-desktop
+  # the journal tests expect Paris local time, as the flake's check does; an unknown machine's load holds the speed budgets to their loose limits and leaves out the tests that race processes, which tools/race-check replays in CI
+  TZ=Europe/Paris UNIVERSE_TEST_BUDGET_S=0 UNIVERSE_TEST_PACKAGER=1 cargo test --frozen -p universe -p universe-desktop
 }
 
 package_universe() {
