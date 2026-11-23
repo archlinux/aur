@@ -2,7 +2,7 @@
 
 pkgbase=rivermonad
 pkgname=('rivermonad' 'rivermonad-dotfiles')
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='xmonad-style tiling window manager for the river Wayland compositor'
 url='https://github.com/prietus/rivermonad'
@@ -16,7 +16,7 @@ optdepends=('foot: the default terminal'
             'kanshi: monitor resolution and scale, started by the session'
             'libnotify: notifications when the configuration fails to compile')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1fda8c43d2c90c39d22a34eea97c6c98aecb5962094f86de896d28ec9e7c1737')
+sha256sums=('e16c34fdcef492f9efd60423b0c9771c406053edf2c70db64e3eaf11b69ed602')
 
 build() {
   cd $pkgbase-$pkgver
@@ -75,6 +75,7 @@ package_rivermonad-dotfiles() {
   arch=('any')
   depends=("rivermonad=$pkgver" 'waymobar>=0.3.0' 'bgmonad' 'hasklets' 'shotlet>=0.1.1'
            'locklet'                                               # lock screen, idle, Super+Shift+L
+           'polkit-gnome'                                          # password prompts for admin actions
            'foot' 'fuzzel' 'mako' 'kanshi' 'libnotify'
            'grim' 'slurp' 'swappy' 'wl-clipboard' 'wf-recorder'    # shot, screenrec
            'wtype' 'unicode-emoji'                                 # emoji
