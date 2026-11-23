@@ -2,13 +2,14 @@
 
 pkgname=plasma-applet-claude-usage-git
 _pkgname=plasma-applet-claude-usage
-pkgver=r3.7b520bc
+pkgver=r34.8f20a9a
 pkgrel=1
-pkgdesc="A KDE Plasma 6 system tray widget that displays Claude Code usage statistics"
+pkgdesc="A KDE Plasma 6 system tray widget that displays AI coding assistant usage statistics (Claude, GLM, Codex/OpenAI, Antigravity)"
 arch=(any)
 url="https://github.com/asermax/plasma-applet-claude-usage"
 license=(MIT)
 depends=(plasma-workspace python)
+optdepends=('antigravity-cli: Antigravity quota tracking' 'claude-code: Claude usage tracking')
 makedepends=(git)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
