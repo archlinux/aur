@@ -40,7 +40,7 @@
 # The Widevine CDM is not in this package: Chromium downloads it from Google on first use.
 
 pkgname=uzumaki
-pkgver=0.4.1
+pkgver=0.4.2
 # The upstream build: 1 is tag v<version>, a rebuild of the same version is v<version>-<build>
 # (tarball uzumaki-<version>-<build>.tar.gz, still unpacking to uzumaki-<version>/).
 _build=1
@@ -101,7 +101,7 @@ options=('!lto')
 source=("$pkgname-$_rel.tar.gz::https://github.com/hanami117/uzumaki/releases/download/v$_rel/uzumaki-$_rel.tar.gz")
 # The tarball's sha256 (packaging/release.sh prints it; uzumaki-<version>.tar.gz.sha256 on the release).
 # Keep this line alone: the release workflow rewrites exactly `sha256sums=('...')`.
-sha256sums=('e6613f868567735cd12d4303a6918dc63eb524377ead9216521d2e149c795d8d')
+sha256sums=('2e46ebcd8e858c10c3d0404aa39a232ce91740aab16d152164ecbe53a1b495c4')
 # The AirPlay helper cliairplay at the tag scripts/airplay/build-cliairplay.sh pins (a test in
 # airplay/tests/packaging.rs keeps the two equal), with the libraop submodules its build reads
 # (libraop's prebuilt codec, mDNS and OpenSSL 3 archives; their own nested submodules, the codec and
