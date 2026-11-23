@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A cli tool to clean command shell history files"
 
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -33,9 +33,9 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 sha256sums=('2075c19e5f3978b83c61429e4a1eb707e109d0dbbde98b75166e79d3bce78205'
             'a46fc3252002c7f172a6ed91a79957e73b90726d03a50ee0121bfc14969fb893'
             'a032657897bbc1aa256dc9fb35781c9198e27fbab31a394c12586c6e53c6f4a6'
-            '941fb70030924b2ee91f8f2661fe0d7dee8eb614dfa57e06756e59fdb0cd4d4f'
+            'a72166783c0291de649f9695991d27ed21280c2c825620825f66b5f1c6eadf81'
             'df06e67e87dd5337a166b9449f35d92f254e8d60b536a0224aad920670ee2cc6')
-sha256sums_x86_64=('64377b006d8b3b59a6b16decc35384189b6e46572b1ae49f49ac3cc23756fd6e')
+sha256sums_x86_64=('0a2d78ca7f6159908c0c93f7f95da7efb2702a0d183a6551c6767098370bd1f6')
 
 
 package() {
