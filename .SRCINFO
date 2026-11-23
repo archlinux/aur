@@ -1,0 +1,19 @@
+pkgbase = exabind-git
+	pkgdesc = Animated TUI for viewing KDE shortcuts
+	pkgver = r101.781be73
+	pkgrel = 1
+	url = https://github.com/junkdog/exabind
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = exabind
+	conflicts = exabind
+	options = !lto
+	source = exabind::git+https://github.com/junkdog/exabind.git
+	sha256sums = SKIP
+
+pkgname = exabind-git
