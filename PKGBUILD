@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iClusterPlus
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=('GPL-2.0-or-later')
 depends=(
   blas
   lapack
-  r
+  r-irlba
 )
 makedepends=(
   gcc-fortran
@@ -22,8 +22,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5224ba028f4c480d5abc5f3d769658b8')
-b2sums=('ada2bdb0da92c26bdc531ba82acd2c28ca3c994b6b984b1a3cad55bce39798dedd81984b54237d7a7aa6b05162d70d2c22672903af46748ff2263b7d286ca325')
+md5sums=('6be13290ff87571d769f84f79113387d')
+b2sums=('76f224cd50516f1f0e2ece9fd1b12771cb0f942e352f6e9774c2fb136c7ca37b71f7563e810d17ff885d1f56f4fe7609fdd646a5fa84706ab90628f6ef889b35')
 
 build() {
   mkdir build

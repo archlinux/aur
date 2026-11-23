@@ -1,6 +1,6 @@
 pkgbase = r-iclusterplus
 	pkgdesc = Integrative clustering of multi-type genomic data
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/iClusterPlus
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = r-iclusterplus
 	makedepends = gcc-fortran
 	depends = blas
 	depends = lapack
-	depends = r
+	depends = r-irlba
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iClusterPlus_1.46.0.tar.gz
-	md5sums = 5224ba028f4c480d5abc5f3d769658b8
-	b2sums = ada2bdb0da92c26bdc531ba82acd2c28ca3c994b6b984b1a3cad55bce39798dedd81984b54237d7a7aa6b05162d70d2c22672903af46748ff2263b7d286ca325
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iClusterPlus_1.48.0.tar.gz
+	md5sums = 6be13290ff87571d769f84f79113387d
+	b2sums = 76f224cd50516f1f0e2ece9fd1b12771cb0f942e352f6e9774c2fb136c7ca37b71f7563e810d17ff885d1f56f4fe7609fdd646a5fa84706ab90628f6ef889b35
 
 pkgname = r-iclusterplus
