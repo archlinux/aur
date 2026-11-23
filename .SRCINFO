@@ -1,0 +1,26 @@
+pkgbase = python-k3fs
+	pkgdesc = File-system utilities for reading, writing, and directory operations
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/pykit3/k3fs
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	checkdepends = python-k3thread
+	checkdepends = python-k3proc
+	checkdepends = python-k3num
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-k3confloader
+	depends = python-psutil
+	provides = python-k3fs
+	conflicts = python-k3fs
+	source = k3fs::git+https://github.com/pykit3/k3fs.git#tag=v0.2.2
+	sha256sums = 0340d9b7a0c074cf8774b7a5d08948ac215a95e8df6f74942ae4b7d658f2b13a
+
+pkgname = python-k3fs
