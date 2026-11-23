@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=openkermit-git
-pkgver=r795.99174cf
+pkgver=r807.77ebfe4
 pkgrel=1
 pkgdesc='Portable network and serial communication and automation software (git version)'
 arch=('x86_64' 'aarch64' 'armv7h')
