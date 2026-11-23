@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=360-media-viewer-bin
 _pkgname='360 Media Viewer'
-pkgver=3.9.1
+pkgver=3.11.0
 _electronversion=45
 pkgrel=1
 pkgdesc="Interactive 360° photo and video viewer for Linux, built with Electron and React."
@@ -21,8 +21,8 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('a21a53602d2a26b2778442bfbedcf37baa0cd1b299a40ad1300217c5eecb15ec'
-            'aaaf3f54a6fd39182ef8512b4cd373d3cc4703c76d099a30e8b17e8e1a9bbbfa'
+sha256sums=('f525714cca31114226c6ed6c2edc678969f6af3219620bde348d703ec77f90e1'
+            'd476de0c3e43caf225fe3b36a65d38a9ee0841c196f6f985966de32435eef7db'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
