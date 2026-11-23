@@ -1,7 +1,7 @@
 # Maintainer: Daniel Micay <danielmicay@gmail.com>
 _gitname=kmscon
 pkgname=kmscon-git
-pkgver=v9.2.1.r50.g68b92fd
+pkgver=v10.1.2.r32.g95624aa
 pkgrel=1
 epoch=2
 pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS)'
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  git describe | sed 's/^kmscon\-//; s/\([^-]*-g\)/r\1/; s/-/./g'
+  git describe --tags | sed 's/^kmscon\-//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 build() {
