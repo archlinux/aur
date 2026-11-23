@@ -1,7 +1,7 @@
 pkgbase = libtas
 	pkgdesc = Tool-assisted speedrunning utility for Linux-native binaries
 	pkgver = 1.4.8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/clementgallet/libTAS
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -18,6 +18,8 @@ pkgbase = libtas
 	depends = zlib
 	optdepends = lib32-libtas: for 32-bit games support
 	source = https://github.com/clementgallet/libTAS/archive/v1.4.8.tar.gz
+	source = 0001-fix-savestate-crash-on-new-kernels.patch
 	b2sums = 8f65d0b4b88481ea05161f0ab67abc5eca0ceea100e57df1b0dd63d4ad346dcb4e3f3a87c10a5be8cb76ce8d843bc167bb708cfdd717fa6d97f4f0e2080ac435
+	b2sums = 9e4b8aaf35b341e982f34b352b913b825e90dfd6be2fe6a8b051b499d58acf83212af5e5e252716f314dc1f61ee74252532811129c80edfef7a7257d12b379f9
 
 pkgname = libtas
