@@ -1,7 +1,7 @@
 # Maintainer: Capricornus007 <sihaogang at gmail dot com>
 pkgname=xfce4-systemload-plugin-git
 _pkgname=${pkgname%-git}
-pkgver=1.4.0.r125.g3ae06ac
+pkgver=1.4.0.r126.g8756155
 pkgrel=1
 pkgdesc='System load plugin for the Xfce panel'
 arch=('i686' 'x86_64')
