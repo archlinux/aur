@@ -1,0 +1,20 @@
+pkgbase = syk-bin
+	pkgdesc = Search folder names, file names and file contents in one pass
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/remcostoeten/syk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = syk
+	conflicts = syk
+	options = !debug
+	options = !strip
+	source_x86_64 = syk-0.1.2-x86_64.tar.xz::https://github.com/remcostoeten/syk/releases/download/v0.1.2/syk-search-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 05162d1f734ca58764cb105c422692189c5ccee992e4ad62e30ff6df984da1c3
+	source_aarch64 = syk-0.1.2-aarch64.tar.xz::https://github.com/remcostoeten/syk/releases/download/v0.1.2/syk-search-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 0f7106b5aaecb3998fe507659fb70ed9ebedbae5b3fd9fa3209aad58e724f804
+
+pkgname = syk-bin
