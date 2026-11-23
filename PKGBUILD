@@ -20,12 +20,16 @@
 
 pkgname=libfprint-2-tod1-synaptics009a
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Native libfprint-2-tod1 driver + firmware/calibration tooling for the Synaptics 06cb:009a fingerprint reader (ThinkPad T480/T480s/X280/P52s)"
 arch=('x86_64')
 url="https://github.com/hustles/libfprint-2-tod1-synaptics009a"
 license=('MIT' 'LGPL-2.1-or-later')
 depends=('bash' 'fprintd' 'libfprint-tod-git' 'libusb' 'glib2')
+# The python-validity stack replaces fprintd and claims the same sensor: two
+# drivers cannot share one reader. pacman now refuses to install over it instead
+# of relying on the user reading the README.
+conflicts=('python-validity' 'open-fprintd' 'fprintd-clients-git')
 makedepends=('rust' 'pkgconf' 'innoextract')
 install="$pkgname.install"
 
