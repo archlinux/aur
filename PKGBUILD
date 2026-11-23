@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=canvast-bin
 _pkgname=Canvast
-pkgver=0.62.0
+pkgver=0.63.0
 _electronversion=44
 pkgrel=1
 pkgdesc="Your references, drawings and notes, in one place. A creative workspace on an endless canvas: reference boards, vector drawing, comics, a library of your files and linked notes. Offline: one HTML file or a desktop app, no account, no network."
@@ -24,8 +24,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-amd64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-x86_64.deb")
 sha256sums=('562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
-sha256sums_aarch64=('a865c51928502cba773d7f9b11659575acc728f2e962f0eb2d224803a32a2dde')
-sha256sums_x86_64=('3a37fc3b4d71e5b9f7a77e2dfbbd3a76b81b02ac73f13c2a723b2903673aa068')
+sha256sums_aarch64=('6ddfd410c79f47ddaffd57eb6cbb8dc8c23e8cb0446e98f6efdadbc663b3ee16')
+sha256sums_x86_64=('b2168197eba9231ca8a92f27d1c31d9a2612225a251930b83bf80f8b7a733ab0')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
