@@ -1,6 +1,6 @@
 pkgbase = badfish
 	pkgdesc = Redfish-based API tool for managing bare-metal systems via out-of-band management
-	pkgver = 1.8.3
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/quadsproject/badfish
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = badfish
 	depends = python-setuptools
 	depends = python-async-lru
 	depends = python-rich
-	source = badfish-1.8.3.tar.gz::https://github.com/quadsproject/badfish/archive/refs/tags/v1.5.0.tar.gz
-	sha256sums = 50a95abfbc13b4716459f85bb199437ba3ea92625d51623591e09362eb3b29d6
+	source = badfish-1.9.0.tar.gz::https://github.com/quadsproject/badfish/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = b0903b2e8fb7cd040c1fcf2b8935ecc075d90ba5ab8907144bac5a9948167ee9
 
 pkgname = badfish
