@@ -1,7 +1,7 @@
 # Maintainer: Simpson474
 
 pkgname=evcc-bin
-pkgver=0.319.0
+pkgver=0.319.1
 pkgrel=1
 pkgdesc="evcc is an extensible EV Charge Controller and home energy management system"
 arch=(x86_64 armv7h aarch64)
@@ -13,9 +13,9 @@ source_x86_64=("https://github.com/evcc-io/evcc/releases/download/${pkgver}/evcc
 source_armv7h=("https://github.com/evcc-io/evcc/releases/download/${pkgver}/evcc_${pkgver}_armhf.deb")
 source_aarch64=("https://github.com/evcc-io/evcc/releases/download/${pkgver}/evcc_${pkgver}_arm64.deb")
 sha256sums=('c2c931924d5eb62fc90d393e3567a5f41ae249b71ff491abd4b3999cee09f194')
-sha256sums_x86_64=('1917e94489ccf7b534fd74902acbcf4d1a5aac447e1ed9c71cbf6321b839908c')
-sha256sums_armv7h=('4bbb6aad120bc299b5ac947a7cd192dd7841f38cf42e4c4eec8292a9c23d0539')
-sha256sums_aarch64=('d6d422b8c71743f5c7af3c9b154d23e0ac07176572aa3e91f28877d5ae4d0a98')
+sha256sums_x86_64=('a515bd7efa94b64c172ed9e8f4a1f403c7411a189e81034b375d1d1434cc1933')
+sha256sums_armv7h=('f2a13ac8c17702e60b66f544252e0dbf4d964460a43367f25ef3b5c03330591e')
+sha256sums_aarch64=('04c1d99490a9dfbf2e21eed5aba8412d0cb12efa24e1f62334b82dd7bc656081')
 
 package() {
   cd "$srcdir"
