@@ -6,7 +6,7 @@
 # release. Don't edit the copy on the AUR; change this file.
 pkgname=goatty-bin
 _pkgname=goatty
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='GPU-rendered terminal with persistent sessions'
 arch=('x86_64')
@@ -30,7 +30,7 @@ conflicts=("$_pkgname")
 # Already stripped (the dist profile); the static remote goattyds must stay as built.
 options=('!strip' '!debug')
 source=("https://github.com/goatty-dev/goatty/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-linux.tar.gz")
-sha256sums=('3c3a22a7db151732ec1d1193d95bacb76e9c375f178f52c3d2ed9ddf9e5f7bae')
+sha256sums=('8af8efefb47e36db2c599f732285ca5823d31c9a11b9ba7fad53a95d10c636d8')
 
 package() {
     cd "$_pkgname-$pkgver-x86_64-linux"
