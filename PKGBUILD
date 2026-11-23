@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=phpantom_lsp
-pkgver=0.11.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Fast PHP language server with deep type intelligence."
 url="https://phpantom-dev.github.io/phpantom_lsp/"
@@ -17,7 +17,7 @@ depends=(
 makedepends=('cargo')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/PHPantom-dev/${pkgname}/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('78565cd863478ecccd63cdcca85e5f06ea130b88703031b86de08bb3b748f3d3204849248e47da5d6613280172f41068f9b8806bbdeacd58a4626fe312602251')
+b2sums=('4ee8cfdcd9a28aa8938d2c9abd7296a5e268957761a412dc7a76e1adf5382b7904caa924db766c81d43c027643d983ea303f91a0234a16ac4a04d9fe60f63af6')
 
 prepare() {
   cd "${srcdir}/${pkgname}-$pkgver"

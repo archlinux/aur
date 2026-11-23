@@ -1,6 +1,6 @@
 pkgbase = phpantom_lsp
 	pkgdesc = Fast PHP language server with deep type intelligence.
-	pkgver = 0.11.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://phpantom-dev.github.io/phpantom_lsp/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = phpantom_lsp
 	depends = libgcc
 	depends = bzip2
 	options = !lto
-	source = phpantom_lsp-0.11.1.tar.gz::https://github.com/PHPantom-dev/phpantom_lsp/archive/refs/tags/0.11.1.tar.gz
-	b2sums = 78565cd863478ecccd63cdcca85e5f06ea130b88703031b86de08bb3b748f3d3204849248e47da5d6613280172f41068f9b8806bbdeacd58a4626fe312602251
+	source = phpantom_lsp-1.0.0.tar.gz::https://github.com/PHPantom-dev/phpantom_lsp/archive/refs/tags/1.0.0.tar.gz
+	b2sums = 4ee8cfdcd9a28aa8938d2c9abd7296a5e268957761a412dc7a76e1adf5382b7904caa924db766c81d43c027643d983ea303f91a0234a16ac4a04d9fe60f63af6
 
 pkgname = phpantom_lsp
