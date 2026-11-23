@@ -1,0 +1,19 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,14 +3,15 @@
+ 
+ set(PYBIND11_NEWPYTHON ON)
+ find_package(pybind11 CONFIG REQUIRED)
++find_package(Eigen3 REQUIRED NO_MODULE)
+ 
+ include_directories(
+   "src/george/include"
+-  "vendor/eigen"
+ )
+ 
+ pybind11_add_module(kernel_interface "src/george/kernel_interface.cpp")
+ install(TARGETS kernel_interface LIBRARY DESTINATION .)
+ 
+ pybind11_add_module(_hodlr "src/george/solvers/_hodlr.cpp")
++target_link_libraries(_hodlr PRIVATE Eigen3::Eigen)
+ install(TARGETS _hodlr LIBRARY DESTINATION ./solvers)
