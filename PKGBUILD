@@ -1,17 +1,18 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RegionalST
-_pkgver=1.2.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Investigating regions of interest and performing cross-regional analysis with spatial transcriptomics data"
+pkgdesc="Investigating regions of interest and performing regional cell type-specific analysis with spatial transcriptomics data"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-3.0-only')
 depends=(
   r-assertthat
   r-bayesspace
+  r-biocstyle
   r-colorspace
   r-dplyr
   r-fgsea
@@ -32,15 +33,14 @@ checkdepends=(
   r-testthat
 )
 optdepends=(
-  r-biocstyle
   r-gplots
   r-knitr
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('09f2ca1e03d5642dc250df00c8f3baff')
-b2sums=('efd5284f3855ba18b58794570b44211c0a5b214bc2c5ddae3b43f065cb3ccafad162f7389ff0f6b6b9a059d0dd1b8f16f104212b4c7e7ca02dab37b3e8301d52')
+md5sums=('4389931e6a1b874cd28b9c9cdba4bf90')
+b2sums=('1e43d6fb74445f3e0071a66361c290bdc6356331a6ac5aaedb106a13b032ca3434fa5fead7074e145a22fb213ddb9920c225b2a9d153ea1ace8b8a282bef78a9')
 
 build() {
   mkdir build
