@@ -1,19 +1,22 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MsQuality
-_pkgver=1.8.3
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Quality metric calculation from Spectra and MsExperiment objects"
+pkgdesc="Quality metric calculation from Spectra, MsExperiment and Chromatograms objects"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-3.0-only')
 depends=(
   r-biocparallel
+  r-chromatograms
   r-ggplot2
   r-htmlwidgets
-  r-msdata
+  r-metabocoreutils
+  r-mscoreutils
+  r-msdatahub
   r-msexperiment
   r-plotly
   r-protgenerics
@@ -42,8 +45,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('af005f2f37bb40fc6c6d080ce339f7fb')
-b2sums=('0cebe5ab75dd7fa3eb4c9d473bd3a391f6c731eccebb86fc4d1938199a0b1db2486c7f09dcc23bc79d2cba369971dfe58d892be73c4afacdcac9d6b62874604b')
+md5sums=('49c5f3ab8944ab05cb90eb2a295ecb44')
+b2sums=('fc9c19666acdf944046cbf0120d3925fbae8ebc33fc92cc8a4ab7b20d6a2a6a92aa81b8f13a52e17dcb502f6361fd49438bb14d6eaa6b2bba01a59e70497bae8')
 
 build() {
   mkdir build
