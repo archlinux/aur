@@ -9,10 +9,21 @@ arch=('any')
 url='https://github.com/vietjtnguyen/argagg'
 license=('MIT')
 makedepends=('cmake' 'doxygen')
+options=('!lto')
 provides=('argagg')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('85634bff33236ffcb0aea03a6fa4b3529b6d1faa03f8e030f3c5401fc453bb5e1964f7d0644e4f3fc089ccd7751ea94c466e02b85f7c9701ce21adcc20c0b058')
+source=(
+        "$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+        "0001-gcc-werror.patch"
+)
+sha512sums=(
+        '85634bff33236ffcb0aea03a6fa4b3529b6d1faa03f8e030f3c5401fc453bb5e1964f7d0644e4f3fc089ccd7751ea94c466e02b85f7c9701ce21adcc20c0b058'
+        '50c877ac9a9e94896f6fa424470a13b9a4678dfe2959d8ff71a7694128b33def56cc806efc3ad0f6955712a78061608eae5c5669d772ddaceac195fa08e54483'
+)
 
+prepare() {
+    cd "$pkgname-$pkgver"
+    patch -Np1 -i ../0001-gcc-werror.patch  
+}
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \

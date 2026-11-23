@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 558cf34..4371969 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -146,6 +146,10 @@ if( ARGAGG_BUILD_TESTS )
+       COMPILE_FLAGS "${ARGAGG_TEST_COMPILE_FLAGS}"
+       RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+   )
++  if( CMAKE_CXX_COMPILER_ID STREQUAL "GNU" )
++    # GCC false positive, see https://github.com/vietjtnguyen/argagg/issues/46
++    target_compile_options( argagg_test PRIVATE -Wno-error=array-bounds )
++  endif()
+   add_test(
+     NAME argagg_test
+     COMMAND argagg_test
