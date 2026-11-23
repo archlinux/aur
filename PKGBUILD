@@ -1,7 +1,7 @@
 # Maintainer: Guoyi <kuoi@bioarchlinux.org>
 
 _pkgname=dartR.popgen
-_pkgver=1.0.0
+_pkgver=1.3.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
 pkgrel=1
@@ -11,6 +11,7 @@ url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL-3.0-or-later')
 depends=(
   r-adegenet
+  r-ape
   r-crayon
   r-dartr.base
   r-dartr.data
@@ -20,22 +21,30 @@ depends=(
   r-future
   r-ggdendro
   r-ggplot2
+  r-lea
   r-patchwork
+  r-pillar
+  r-plyr
+  r-purrr
+  r-r.utils
+  r-stampp
   r-stringr
+  r-terra
 )
 optdepends=(
+  r-assignpop
+  r-coda
+  r-directlabels
   r-expm
   r-fields
   r-gplots
   r-gridextra
-  r-gsubfn
   r-igraph
   r-iterpc
   r-label.switching
   r-leaflet
-  r-plyr
+  r-pegas
   r-proxy
-  r-purrr
   r-qvalue
   r-raster
   r-reshape2
@@ -43,13 +52,15 @@ optdepends=(
   r-siber
   r-snpstats
   r-sp
+  r-testthat
   r-tidyr
   r-viridis
+  r-withr
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c999e4cdae941ee78cb29fcbca7ed25e')
-b2sums=('9853f780c51b64da02c870949d5df6d77b9f98706161bc446c9154beb0bc077ec585e9208c7e9c8f6faaa329a276b3f0912242169c2caec24c4774bf3d4764ad')
+md5sums=('2aab3772bbe8d2dbeacb451ed3940980')
+b2sums=('b0e2e107efa665014702bd7ce33fc9b50087d3990ceedeafb7dd5d1d1e873166964006ebd7098e5a3c0c453add703a512abc6892a68bf7c706ddfff153240f2d')
 
 build() {
   mkdir build
