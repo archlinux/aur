@@ -1,0 +1,20 @@
+pkgbase = nsh-cli-bin
+	pkgdesc = Build and run nsh apps (prebuilt binary)
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/longbridge/nsh
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc>=2.35
+	options = !strip
+	options = !debug
+	source = nsh-LICENSE-0.6.1::https://raw.githubusercontent.com/longbridge/nsh/v0.6.1/LICENSE-APACHE
+	sha256sums = ec75427ad955e3c740f22e7dc3f6db6fc5b2cc1d9135c2af91cece8dd47a2d38
+	source_x86_64 = nsh-0.6.1-x86_64.tar.gz::https://github.com/longbridge/nsh/releases/download/v0.6.1/nsh-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 9a7ac692f1c229df476be8ff83a3c5912d271453b644e313f02cb19d18696070
+	source_aarch64 = nsh-0.6.1-aarch64.tar.gz::https://github.com/longbridge/nsh/releases/download/v0.6.1/nsh-linux-arm64.tar.gz
+	sha256sums_aarch64 = d7d54b8a62aa8bd4a9fb73fcc0abce8cc565185926f226aa90f48622f3e410a3
+
+pkgname = nsh-cli-bin
