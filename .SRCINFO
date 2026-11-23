@@ -1,6 +1,6 @@
 pkgbase = mirasim
 	pkgdesc = Terminal, agent, model and tool orchestrator for shared team spaces
-	pkgver = 0.0.830
+	pkgver = 0.0.833
 	pkgrel = 1
 	url = https://mirasim.ai/
 	arch = x86_64
@@ -37,12 +37,12 @@ pkgbase = mirasim
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: system tray icon support
 	conflicts = mirasim-bin
-	noextract = Mirasim-0.0.830-linux-amd64.deb
-	noextract = Mirasim-0.0.830-linux-arm64.deb
+	noextract = Mirasim-0.0.833-linux-amd64.deb
+	noextract = Mirasim-0.0.833-linux-arm64.deb
 	options = !strip
-	source_x86_64 = Mirasim-0.0.830-linux-amd64.deb::https://cdn-assets.mirasim.ai/mirasim/releases/v0.0.830/Mirasim-0.0.830-linux-amd64.deb
-	sha256sums_x86_64 = 3bd2b128da26dfabbbacbc64c6f504979ce54bed5c2a30f2e20083a4747b25f0
-	source_aarch64 = Mirasim-0.0.830-linux-arm64.deb::https://cdn-assets.mirasim.ai/mirasim/releases/v0.0.830/Mirasim-0.0.830-linux-arm64.deb
-	sha256sums_aarch64 = eb4cb6796fcd20e009be072e9e227c25587b0b842955f92a62598c7cd6a1d823
+	source_x86_64 = Mirasim-0.0.833-linux-amd64.deb::https://cdn-assets.mirasim.ai/mirasim/releases/v0.0.833/Mirasim-0.0.833-linux-amd64.deb
+	sha256sums_x86_64 = 3c8009cca2670efd6dec8c98e18daba4777e0c35ab2783c06216c785ad9fb604
+	source_aarch64 = Mirasim-0.0.833-linux-arm64.deb::https://cdn-assets.mirasim.ai/mirasim/releases/v0.0.833/Mirasim-0.0.833-linux-arm64.deb
+	sha256sums_aarch64 = c006fcf94726d1237d3742a82ae1b2a113b24933a0af830f4143538a18d5edc5
 
 pkgname = mirasim
