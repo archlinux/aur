@@ -1,0 +1,17 @@
+pkgbase = r-shinybiocloader
+	pkgdesc = Use a Shiny Bioconductor CSS loader
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = https://bioconductor.org/packages/shinybiocloader
+	arch = any
+	license = Artistic-2.0
+	depends = r-htmltools
+	depends = r-shiny
+	optdepends = r-quarto
+	optdepends = r-shinydashboard
+	optdepends = r-tinytest
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/shinybiocloader_1.2.0.tar.gz
+	md5sums = 095757c0264a196aa4ee1c78dec81670
+	b2sums = 900728684d1131fecbba478e8a30206dd3c210a87d0ada9fe234ef9a47893fb322c8d15714cf96e50ac0eab5a99e2dea2a7f60a7614daca0d6165fd1f3543e4a
+
+pkgname = r-shinybiocloader
