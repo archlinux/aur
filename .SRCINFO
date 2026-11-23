@@ -1,0 +1,14 @@
+pkgbase = r-deadwood
+	pkgdesc = Outlier Detection via Pruning Mutual Reachability Minimum Spanning Trees
+	pkgver = 0.9.2
+	pkgrel = 2
+	url = https://cran.r-project.org/package=deadwood
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = r-quitefastmst
+	depends = r-rcpp
+	source = https://cran.r-project.org/src/contrib/deadwood_0.9.2.tar.gz
+	md5sums = 3c11f155cb190560c5665cb915269f02
+	b2sums = bf66a7577d9d71dd3e26e809db8481faa959ac562de45e1062061a2202bb37cbf4aa51118fac362ffb1a015db7bf54abf7a66ef31a0a040a80ea59693baf8ee8
+
+pkgname = r-deadwood
