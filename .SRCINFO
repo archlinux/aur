@@ -1,7 +1,7 @@
 pkgbase = sysbox-ce-git
 	pkgdesc = Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)
 	pkgver = r1865.2ff4fa64
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nestybox/sysbox
 	install = install.sh
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = sysbox-ce-git
 	makedepends = inetutils
 	depends = rsync
 	depends = fuse2
-	optdepends = shiftfs: For uid-mapping on very old kernels without idmapped-mounts
 	provides = sysbox-ce
 	conflicts = sysbox-ce
 	source = git+https://github.com/nestybox/sysbox.git
