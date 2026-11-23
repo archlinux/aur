@@ -2,18 +2,17 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biodb
-_pkgver=1.14.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="a library and a development framework for connecting to chemical and biological databases"
+pkgdesc="a Library and a Development Framework for Connecting to Chemical and Biological Databases"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('AGPL-3.0-only')
 depends=(
-  r-biocfilecache
   r-chk
-  r-git2r
+  r-fscache
   r-jsonlite
   r-lgr
   r-lifecycle
@@ -23,8 +22,9 @@ depends=(
   r-r6
   r-rappdirs
   r-rcpp
-  r-rcurl
   r-rsqlite
+  r-sched
+  r-sqlq
   r-stringr
   r-withr
   r-xml
@@ -38,7 +38,6 @@ checkdepends=(
 )
 optdepends=(
   r-biocstyle
-  r-covr
   r-devtools
   r-knitr
   r-rmarkdown
@@ -47,8 +46,8 @@ optdepends=(
   r-xml2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a1b7adef44ebc05598d5e45645d6571e')
-b2sums=('7deb56b0aac4bdc784301a5c1b08b8dead0848ce91807d54c6854b37a0d27cbea3d3f9a0d71f20174a053d1a6772e860be372edd403526c77a934feb0679ccd1')
+md5sums=('67d07af59a171de80e1135a9207d71fd')
+b2sums=('b5ac10863aac68810e50269a2fa742dcc75470a0e485ef8d3a4fb07f9e7fa138b08960447f5c9b30450538b2696a650b601ffced46d4e1ee34eb427a79e7aca0')
 
 build() {
   mkdir build
