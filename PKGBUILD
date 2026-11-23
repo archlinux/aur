@@ -3,8 +3,7 @@
 
 pkgname=klogg-bin-git
 pkgver=26.10.28.1348
-_subversion=0
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-platform GUI application that helps browse and search through long and complex log files. It is designed with programmers and system administrators in mind and can be seen as a graphical, interactive combination of grep, less, and tail"
 arch=('x86_64')
 url='https://klogg.filimonov.dev'
@@ -23,7 +22,8 @@ depends=(
     'qt6-5compat'
     'qt6-svg'
     'hicolor-icon-theme'
-    'zlib-ng-compat'
+#    'zlib-ng-compat'
+    'zlib'
 )
 
 # source=("klogg_bin_${_klogg_version}.tar.gz::https://github.com/variar/klogg/releases/download/continuous-linux/klogg-${_klogg_version}-bin.tar.gz")
