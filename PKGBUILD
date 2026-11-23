@@ -5,11 +5,11 @@
 # pushes it to the AUR as ferry-app-bin.
 
 pkgname=ferry-app-bin
-pkgver=1.14.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc='Pair with your devices and share files and the clipboard over the local network'
 arch=(x86_64 aarch64)
-url='https://github.com/simophin/ferryapp'
+url='https://github.com/cloudwalkerlabs/ferryapp'
 license=(MIT)
 # The .deb's Depends under Arch's names: glibc and libgcc from the ELF files,
 # and the libraries winit and display-info load at runtime. The app draws in
@@ -26,14 +26,14 @@ provides=(ferry)
 conflicts=(ferry)
 # Ship the binaries exactly as they are in the .deb.
 options=(!strip !debug)
-_tag=v1.14.0
+_tag=v1.16.1
 _release=$url/releases/download/$_tag
-source=("LICENSE-$pkgver::https://raw.githubusercontent.com/simophin/ferryapp/$_tag/LICENSE")
-source_x86_64=("$_release/ferry_1.14.0_amd64.deb")
-source_aarch64=("$_release/ferry_1.14.0_arm64.deb")
+source=("LICENSE-$pkgver::https://raw.githubusercontent.com/cloudwalkerlabs/ferryapp/$_tag/LICENSE")
+source_x86_64=("$_release/ferry_1.16.1_amd64.deb")
+source_aarch64=("$_release/ferry_1.16.1_arm64.deb")
 sha256sums=('fa6cf94caa0ccb536b5313e9a851e53aba503d3ccfe4dd124b8e927cbd5d3eeb')
-sha256sums_x86_64=('5247ba78b2688e0a001b263ac22e98eaf6b0928acbe2ac7c02e6488e47c39e13')
-sha256sums_aarch64=('e4384d6e13afe39e4a371080c6863b021257a668c370fa9554cbee81d7e915c1')
+sha256sums_x86_64=('64cdc6a28f4815c72519ce1b4d491d421d60c17760146669e1a3696828c23ad4')
+sha256sums_aarch64=('028a21de733e4fb1e77d9d93c50c9a89d00174b0f91c0db459239224b431f50d')
 
 package() {
   bsdtar -xf data.tar.* -C "$pkgdir"
