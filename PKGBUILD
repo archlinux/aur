@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rayburst-git
 _pkgname=Rayburst
-pkgver=4.1.2.r0.g0c880e5
+pkgver=4.1.3_beta.2.r0.g0ae47d1
 _nodeversion=24
 pkgrel=1
 pkgdesc="Redefining the open-source download manager."
@@ -41,10 +41,10 @@ _get_project_dir() {
 		done
 }
 pkgver() {
-	cd "$(_get_project_dir)"
-	set -o pipefail
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$(_get_project_dir)" || return 1
+	local _t=$(git tag --list --sort=-v:refname | grep -m1 -E '^v?[0-9]+(\.[0-9]+)+(-[0-9A-Za-z][0-9A-Za-z.-]*)?$' || :)
+	local _n=$(git rev-list --count "${_t:+$_t..}HEAD") _s=$(git rev-parse --short=7 HEAD) _v=${_t#v}; _v=${_v//-/_}
+	[[ -n $_t ]] && printf '%s.r%s.g%s\n' "$_v" "$_n" "$_s" || printf 'r%s.%s\n' "$_n" "$_s"
 }
 _ensure_local_nvm() {
 	local NVM_DIR="${srcdir}/.nvm"
@@ -53,7 +53,9 @@ _ensure_local_nvm() {
 	nvm use "${_nodeversion}"
 }
 _get_app_dir() {
-	find "$(_get_project_dir)" -type d -name "release" -exec test -d "{}/.fingerprint" -a -d "{}/deps" \; -print -quit 2>/dev/null
+	find "$(_get_project_dir)" -type d -path '*/src-tauri/target/release' \
+		-exec sh -c 'for f in "$1"/*; do [ -f "$f" ] && [ -x "$f" ] && exit 0; done; exit 1' _ {} \; \
+		-print -quit 2>/dev/null
 }
 _set_pnpm_build_env() {
 	export HOME="${srcdir}/.home"
