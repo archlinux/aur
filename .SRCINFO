@@ -1,6 +1,6 @@
 pkgbase = r-ideal
 	pkgdesc = Interactive Differential Expression AnaLysis
-	pkgver = 1.28.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ideal
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-ideal
 	depends = r-iranges
 	depends = r-knitr
 	depends = r-limma
-	depends = r-pcaexplorer
+	depends = r-mosdef
 	depends = r-pheatmap
 	depends = r-plotly
 	depends = r-rentrez
@@ -48,7 +48,7 @@ pkgbase = r-ideal
 	optdepends = r-org.hs.eg.db
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ideal_1.28.0.tar.gz
-	sha256sums = e20edb643b7ee679a7229648655c4819933896e409eb1acd82bf9d473f57b8ba
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ideal_2.6.0.tar.gz
+	sha256sums = 7a158ea442fefef493ea82825f178b84e764aab77d183b587362cd4a0a89abb2
 
 pkgname = r-ideal
