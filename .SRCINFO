@@ -1,6 +1,6 @@
 pkgbase = python-assistant
 	pkgdesc = Your very own Assistant. Because you deserve it.
-	pkgver = 2.0.2b1
+	pkgver = 2.2.3b2
 	pkgrel = 1
 	url = https://github.com/waser-technologies/technologies/assistant
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-assistant
 	depends = python-psutil
 	noextract = assistant-2.0.2b1-py3-none-any.whl
 	source = PKGBUILD_EXTRAS
-	source = https://files.pythonhosted.org/packages/95/21/b5f776d0b723895e8d73dab204d4450850211f6622e910b7016ea06afec4/assistant-2.0.2b1-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/22/4c/49efac1907a74ff329f999ed134db7bfec28ef74bd5ad2f4d4c9e01ea216/assistant-2.2.3b2-py3-none-any.whl
 	source = LICENSE
 	source = assistant.service::https://gitlab.com/waser-technologies/technologies/assistant/-/raw/main/assistant.service.example
 	source = assistant.listen.service::https://gitlab.com/waser-technologies/technologies/assistant/-/raw/main/assistant.listen.service.example

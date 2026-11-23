@@ -3,18 +3,21 @@
 export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
 
-_servicename=assistant
+_pkgname=assistant
+_pkgarch=py3-none-any
+_servicename=$_pkgname
 _servicename_listen=$_servicename.listen
-pkgname=python-assistant
+pkgname=python-$_pkgname
 epoch=
-pkgver=2.0.2b1
+pkgver=2.2.3b2
 pkgrel=1
+pkgref=22/4c/49efac1907a74ff329f999ed134db7bfec28ef74bd5ad2f4d4c9e01ea216
 pkgdesc='Your very own Assistant. Because you deserve it.'
 arch=(any)
 url=https://github.com/waser-technologies/technologies/assistant
 license=(MIT)
 depends=(python python-requests python-halo python-prompt_toolkit xonsh)
-depends+=(python-tomli-w python-setproctitle python-tiktoken)
+depends+=(python-tomli-w python-setproctitle)
 depends+=(python-keyring python-rich python-pygments python-questionary)
 makedepends=()
 checkdepends=()
@@ -23,9 +26,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/95/21/b5f776d0b723895e8d73dab204d4450850211f6622e910b7016ea06afec4/assistant-$pkgver-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/$pkgref/$_pkgname-$pkgver-$_pkgarch.whl)
 md5sums+=('SKIP')
-noextract+=(assistant-$pkgver-py3-none-any.whl)
+noextract+=($_pkgname-$pkgver-$_pkgarch.whl)
 source+=(LICENSE)
 md5sums+=('SKIP')
 source+=("$_servicename.service::https://gitlab.com/waser-technologies/technologies/assistant/-/raw/main/$_servicename.service.example")
@@ -117,9 +120,16 @@ _package() {
     cd "$srcdir"
     # pypa/pip#3063: pip always checks for a globally installed version.
     python -mvenv --clear --system-site-packages _tmpenv
+    # Install the wheel matching the current pkgver (avoids stale wheels left in src/).
+    _wheels=("./assistant-$pkgver"-*.whl)
+    if [[ -e "${_wheels[0]}" ]]; then
+        _target="${_wheels[0]}"
+    else
+        _target=".$(_dist_name)"
+    fi
     _tmpenv/bin/pip install --prefix="$pkgdir/usr" \
         --no-deps --ignore-installed --no-warn-script-location \
-        "$(ls ./*.whl 2>/dev/null || echo ./"$(_dist_name)")"
+        "$_target"
     if [[ -d "$pkgdir/usr/bin" ]]; then  # Fix entry points.
         python="#!$(readlink -f _tmpenv)/bin/python"
         for f in "$pkgdir/usr/bin/"*; do
