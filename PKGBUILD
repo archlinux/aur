@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HIBAG
-_pkgver=1.46.0
+_pkgver=1.48.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-snprelate
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e3dca1f2ac222aeb104fbe628bdda6f9')
-b2sums=('bc6c765342ce7e6ce91ea503327e5bc2fb387ccae5d607e746ad8a576f3bd18b6a8e8ae2bfa962a573dc81d6555560a28af87105a79c57a01e8431ac12a2a3c3')
+md5sums=('a85d88c90ac8dc18f12b60991ddae68d')
+b2sums=('d6af6d649cf164c3854176211b41a6ee1d0d0fee55a6966e8d419255c4e89441c2b5661c6d00cc64685049f3d36c53616fbf707b1ee84b5fbe078679752be8f6')
 
 build() {
   mkdir build
