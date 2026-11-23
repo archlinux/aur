@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=MatchIt
-_pkgver=4.7.2
+_pkgver=4.8.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,8 +11,7 @@ arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
-  r-backports
-  r-chk
+  r-arg
   r-rcpp
   r-rlang
 )
@@ -37,13 +36,13 @@ optdepends=(
   r-rgenoud
   r-rglpk
   r-rmarkdown
-  r-rsymphony
   r-sandwich
   r-testthat
+  r-waldo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a25b7a5f996ac8525faf5e8e6d69b053')
-b2sums=('6c786e3a618fd028ccc4d12b5d3594609040582b86b4c9c609cd6d64f100e4c31e48b3d261355d116c82770246c33dc0dc7e51922c1466ece492ed3d3351d0da')
+md5sums=('99b05a812d5b1250f51697a9e57fae1a')
+b2sums=('86414c834f0f3a6989f25445e9bdddb09eb19d0009e04e5f7c57bc1398caa527327f9d1ce6a582d5a3bc8c80d793a767dc7c4c4c79f4621264be6bcb72802e6e')
 
 build() {
   mkdir build
