@@ -1,7 +1,7 @@
 # Maintainer: Sergey Kovalenko <seryoga.engineering@gmail.com>
 
 pkgname=simple-system-update
-pkgver=1.0.15
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="One-click update button for Linux users"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('grep'
          'jq'
          'wget')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SeryogaBrigada/SimpleSystemUpdate/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('ead1a35d4bb1050b4ba08c06671247edf93277cef30d68948e08bbadbad7dfc4b63ff09ed74ce5f46694f2727c0e9404c387d44150e8da8379b348d15db8c885')
+sha512sums=('55c5cf20f72045ad30dd80b6d383487d57c6be47f30f4f7797bfa25936ca20e527a7071e95feecd68b61a6833b0929028e179c7ca1519b7028b306460a96a060')
 
 package() {
   cd "SimpleSystemUpdate-$pkgver"
