@@ -38,4 +38,6 @@ package() {
 	tar -xf "${srcdir}/data.tar.gz"
 
 	install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	sed -e "s|Categories=?*|Categories=System;Monitor;Network;|g" -e "s|Comment=.*|Comment=Port Monitor|g" -i ${pkgdir}/usr/share/applications/*.desktop
 }
