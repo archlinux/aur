@@ -29,6 +29,7 @@ pkgbase = pila-git
 	provides = pila
 	conflicts = pila
 	options = !strip
+	options = !lto
 	backup = etc/xdg/xdg-desktop-portal/pila-portals.conf
 	source = pila::git+https://github.com/igalmarino/pila.git
 	sha256sums = SKIP

@@ -45,7 +45,10 @@ backup=(
 )
 # Not stripped: a crash is logged with a backtrace (`main::log_panics`), whose
 # frames need the function names (about 9 MB of 26).
-options=(!strip)
+# No makepkg LTO: its -flto=auto makes the C that crates build (libspa-sys'
+# wrappers) GCC LTO objects, which rust-lld, the linker Rust uses by default,
+# can't read ("undefined symbol: spa_buffer_find_meta_libspa_rs").
+options=(!strip !lto)
 source=("pila::git+$url.git")
 sha256sums=(SKIP)
 
