@@ -1,5 +1,5 @@
 pkgname=simple-deadlock-mod-manager
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="A simple mod manager for Deadlock"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v${pkgver}/simple-deadlock-mod-manager_${pkgver}_amd64.deb")
-sha256sums_x86_64=('bc1fce2e26b727bf1454f5ba69c55e93a18ca002ae1b935850a07171b881b06d')
+sha256sums_x86_64=('a75f4e77e1a836214cbe1dc4b57ee85e768c0d848737953823bf828844824852')
 
 package() {
   # Extract package data
