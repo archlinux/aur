@@ -1,0 +1,185 @@
+# Maintainer: Boris Shor <boris@bshor.com>
+
+_pkgname=marginaleffects
+_pkgver=1.0.0
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=1
+pkgdesc='Predictions, Comparisons, Slopes, Marginal Means, and Hypothesis Tests'
+arch=(any)
+url="https://marginaleffects.com/"
+license=('GPL-3.0-or-later')
+depends=(
+  r-backports
+  r-checkmate
+  r-data.table
+  r-formula
+  r-generics
+  r-insight
+  r-rlang
+)
+optdepends=(
+  r-adrftools
+  r-aer
+  r-afex
+  r-altdoc
+  r-amelia
+  r-aod
+  r-arrow
+  r-bayestestr
+  r-bench
+  r-betareg
+  r-bh
+  r-bife
+  r-biglm
+  r-blme
+  r-brglm2
+  r-brms
+  r-brmsmargins
+  r-broom
+  r-car
+  r-cardata
+  r-causaldata
+  r-cjoint
+  r-clarify
+  r-cobalt
+  r-collapse
+  r-conflicted
+  r-countrycode
+  r-covr
+  r-crch
+  r-dalextra
+  r-dbarts
+  r-dcchoice
+  r-declaredesign
+  r-dfidx
+  r-dirichletreg
+  r-distributional
+  r-dplyr
+  r-emmeans
+  r-equivalence
+  r-estimatr
+  r-fixest
+  r-flexsurv
+  r-fmeffects
+  r-fontquiver
+  r-future
+  r-future.apply
+  r-fwb
+  r-gam
+  r-gamlss
+  r-gamlss.dist
+  r-geepack
+  r-ggdist
+  r-ggokabeito
+  r-ggplot2
+  r-ggrepel
+  r-glmmtmb
+  r-glmtoolbox
+  r-glmx
+  r-haven
+  r-here
+  r-itsadug
+  r-ivreg
+  r-kableextra
+  r-knitr
+  r-lme4
+  r-lmertest
+  r-logistf
+  r-magrittr
+  r-margins
+  r-matchit
+  r-mclogit
+  r-mcmcglmm
+  r-mhurdle
+  r-mice
+  r-miceadds
+  r-missranger
+  r-mlogit
+  r-mlr3verse
+  r-mmrm
+  r-modelbased
+  r-modelsummary
+  r-multcomp
+  r-mvgam
+  r-mvtnorm
+  r-nanoparquet
+  r-nestedlogit
+  r-numderiv
+  r-nycflights13
+  r-optmatch
+  r-ordbetareg
+  r-ordinal
+  r-parameters
+  r-parsnip
+  r-partykit
+  r-patchwork
+  r-pbapply
+  r-phylolm
+  r-pkgdown
+  r-plm
+  r-polspline
+  r-posterior
+  r-probably
+  r-pscl
+  r-purrr
+  r-quantreg
+  r-quantregforest
+  r-quarto
+  r-rchoice
+  r-rcmdcheck
+  r-rdatasets
+  r-remotes
+  r-rendo
+  r-rmarkdown
+  r-rms
+  r-robust
+  r-robustbase
+  r-robustlmm
+  r-rsample
+  r-rstanarm
+  r-rstantools
+  r-rstpm2
+  r-rstudioapi
+  r-rsvg
+  r-sampleselection
+  r-sandwich
+  r-scam
+  r-speedglm
+  r-spelling
+  r-survey
+  r-svglite
+  r-svyvgam
+  r-systemfit
+  r-systemfonts
+  r-tibble
+  r-tictoc
+  r-tidymodels
+  r-tidyr
+  r-tidyverse
+  r-tinyplot
+  r-tinysnapshot
+  r-tinytable
+  r-tinytest
+  r-titanic
+  r-truncreg
+  r-tsmodel
+  r-vgam
+  r-withr
+  r-workflows
+  r-xgboost
+  r-yaml
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('c340cb63b3e36f2acdfd219b3456e442')
+b2sums=('8f170a60d86ba5dcdbb8050bf015f460cd65c1359674ba04ee634e8d2f6c748c9d0fca96aa46ea476f489b2f3d2d2ea471ef7b27e3f329c5b386597dd1e0da0a')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+}
+# vim:set ts=2 sw=2 et:
