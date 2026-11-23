@@ -1,7 +1,7 @@
 # Maintainer: Dmitriy Geels <dmitry.geels@gmail.com>
 
 pkgname=adcode-bin
-pkgver=2.6.2
+pkgver=2.6.4
 pkgrel=1
 pkgdesc="An ad-supported, AI-native IDE"
 arch=('x86_64')
@@ -28,7 +28,7 @@ conflicts=('adcode')
 source=(
     "${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/ADCode-amd64.deb"
 )
-sha256sums=('9c4bf4717d8edbfd26092c4d9a2356dba3d400e6b346c6348381b16cf887d625')
+sha256sums=('572f33ad487ec298c7014b20079d6f18a180ab4852bba540c43572b18907923e')
 
 noextract=("${pkgname}-${pkgver}.deb")
 
