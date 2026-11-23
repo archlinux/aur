@@ -8,7 +8,7 @@ index f9dc289d..93448f99 100644
  .cache
 +devplugins/krdc/*.so
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index ab7dc20b..e55bb982 100644
+index 9784ce59..77e2be79 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -91,6 +91,8 @@ option(WITH_RDP "Enable RDP support using FreeRDP" ON)
@@ -20,7 +20,7 @@ index ab7dc20b..e55bb982 100644
  
  ecm_set_disabled_deprecation_versions(QT 6.8
       KF 6.12
-@@ -215,6 +217,33 @@ ecm_qt_declare_logging_category(krdc
+@@ -216,6 +218,33 @@ ecm_qt_declare_logging_category(krdc
      EXPORT KRDC
  )
  
@@ -4370,12 +4370,12 @@ index f47b05ee..3bf1318c 100644
  
  install(FILES ${krdccore_HDRS} DESTINATION ${KDE_INSTALL_INCLUDEDIR}/krdc COMPONENT Devel)
 diff --git a/core/krdc.kcfg b/core/krdc.kcfg
-index 3a3bec37..6f6e8c1a 100644
+index 22ac5121..f802e82c 100644
 --- a/core/krdc.kcfg
 +++ b/core/krdc.kcfg
-@@ -30,6 +30,9 @@
-     <entry name="GrabAllKeysOnFullscreen" type="Bool">
-       <default>true</default>
+@@ -46,6 +46,9 @@
+       </choices>
+       <default>RightCtrl</default>
      </entry>
 +    <entry name="DarkModeFilter" type="Bool">
 +      <default>false</default>
@@ -4383,11 +4383,31 @@ index 3a3bec37..6f6e8c1a 100644
      <entry name="BackgroundColor" type="Color">
        <default>#00417F</default>
      </entry>
+@@ -206,6 +209,10 @@
+     <entry name="UseDefaultKerberosRealm" type="Bool">
+       <default>false</default>
+     </entry>
++    <entry name="IgnoreCertificate" type="Bool">
++      <label>Ignore certificate verification (insecure)</label>
++      <default>false</default>
++    </entry>
+   </group>
+   <group name="NX">
+     <entry name="NxWidth" type="Int">
 diff --git a/core/remoteview.cpp b/core/remoteview.cpp
-index cfb54769..070cc895 100644
+index 9ae8fb5a..ddc108b3 100644
 --- a/core/remoteview.cpp
 +++ b/core/remoteview.cpp
-@@ -383,6 +383,79 @@ bool RemoteView::acceptPasswordDialog(const KPasswordDialog &dialog)
+@@ -330,7 +330,7 @@ void RemoteView::setViewOnly(bool viewOnly)
+ 
+ bool RemoteView::keyboardCaptured() const
+ {
+-    return m_status == Connected && !m_viewOnly && !m_keyboardReleased;
++    return m_status == Connected && !m_viewOnly && !m_keyboardReleased && !m_keyboardGrabSuspended;
+ }
+ 
+ bool RemoteView::keyboardReleased() const
+@@ -463,6 +463,73 @@ bool RemoteView::acceptPasswordDialog(const KPasswordDialog &dialog)
      return dialog.keepPassword();
  }
  
@@ -4440,17 +4460,11 @@ index cfb54769..070cc895 100644
 +    }
 +    m_keyboardGrabSuspended = suspended;
 +
-+    if (suspended) {
-+        // Let the keys reach whatever widget outside the remote view now has
-+        // the focus, without touching the user's "grab all keys" setting.
-+        if (m_keyboardIsGrabbed) {
-+            m_keyboardIsGrabbed = false;
-+            releaseKeyboard();
-+        }
-+    } else if (m_grabAllKeys && hasFocus()) {
-+        m_keyboardIsGrabbed = true;
-+        grabKeyboard();
-+    }
++    // Let the keys reach whatever widget outside the remote view now has the
++    // focus, without touching the user's shortcut settings: while suspended
++    // keyboardCaptured() is false, and resuming lets updateKeyboardGrab()
++    // restore the grab wherever the settings still call for one.
++    updateKeyboardGrab();
 +}
 +
 +bool RemoteView::keyboardGrabSuspended() const
@@ -4467,16 +4481,7 @@ index cfb54769..070cc895 100644
  QString RemoteView::readWalletPassword(bool fromUserNameOnly)
  {
      return readWalletPasswordForKey(fromUserNameOnly ? m_url.userName() : m_url.toDisplayString(QUrl::StripTrailingSlash));
-@@ -492,7 +565,7 @@ QCursor RemoteView::localDefaultCursor() const
- 
- void RemoteView::focusInEvent(QFocusEvent *event)
- {
--    if (m_grabAllKeys) {
-+    if (m_grabAllKeys && !m_keyboardGrabSuspended) {
-         m_keyboardIsGrabbed = true;
-         grabKeyboard();
-     }
-@@ -550,6 +623,14 @@ bool RemoteView::event(QEvent *event)
+@@ -626,6 +693,14 @@ bool RemoteView::event(QEvent *event)
      case QEvent::MouseButtonPress:
      case QEvent::MouseButtonRelease:
      case QEvent::MouseMove:
@@ -4492,10 +4497,10 @@ index cfb54769..070cc895 100644
          return true;
          break;
 diff --git a/core/remoteview.h b/core/remoteview.h
-index fa3c9ef1..1dd73943 100644
+index 5ed91661..a4e75216 100644
 --- a/core/remoteview.h
 +++ b/core/remoteview.h
-@@ -298,6 +298,87 @@ public:
+@@ -313,6 +313,88 @@ public:
       */
      QUrl url();
  
@@ -4561,8 +4566,9 @@ index fa3c9ef1..1dd73943 100644
 +    /**
 +     * Temporarily gives up an exclusive keyboard grab, e.g. while the user is
 +     * typing into a widget outside the remote view such as the AI chat panel.
-+     * Unlike setGrabAllKeys() this does not change the user's setting: the
-+     * grab is restored as soon as the view is focused again.
++     * Unlike the host key this does not change any of the user's settings:
++     * suspending makes @ref keyboardCaptured() false, and resuming restores
++     * the grab wherever the settings still call for one.
 +     */
 +    void setKeyboardGrabSuspended(bool suspended);
 +    bool keyboardGrabSuspended() const;
@@ -4575,22 +4581,22 @@ index fa3c9ef1..1dd73943 100644
 +     * Enables or disables a client-side dark mode filter over the displayed
 +     * image: light window chrome is recolored to a dark scheme while photo
 +     * and video content keeps its colors (see SmartInvert). Nothing is sent
-+     * to the remote machine. Backends that do not render in software ignore
-+     * this.
++     * to the remote machine. The default implementation does nothing:
++     * backends that do not composite the image in software cannot offer it.
 +     */
 +    virtual void setDarkModeFilter(bool enabled);
 +
  public Q_SLOTS:
      /**
       * Called to enable or disable scaling.
-@@ -494,6 +575,7 @@ protected:
+@@ -522,6 +604,7 @@ protected:
+     int m_port;
      bool m_canceledByUser = false;
      bool m_viewOnly;
-     bool m_grabAllKeys;
 +    bool m_keyboardGrabSuspended = false;
      bool m_scale;
-     bool m_keyboardIsGrabbed;
      QUrl m_url;
+     qreal m_factor;
 diff --git a/core/smartinvert.cpp b/core/smartinvert.cpp
 new file mode 100644
 index 00000000..bf36689b
@@ -5308,10 +5314,10 @@ index 00000000..74adf254
 +KRDCCORE_EXPORT void apply(QImage &image);
 +}
 diff --git a/krdcui.rc b/krdcui.rc
-index 8dbfd755..9928190d 100644
+index 196843a5..0e8e7811 100644
 --- a/krdcui.rc
 +++ b/krdcui.rc
-@@ -18,6 +18,8 @@
+@@ -17,6 +17,8 @@
      <Action name="bookmark" />
      <Menu name="settings">
          <Action name="remote_desktop_dockwidget" />
@@ -5321,7 +5327,7 @@ index 8dbfd755..9928190d 100644
  </MenuBar>
  <ToolBar fullWidth="false" name="krdc_remote_view_toolbar" newline="false"><text>Remote View Toolbar</text>
 diff --git a/mainwindow.cpp b/mainwindow.cpp
-index d510551f..86487038 100644
+index 9c7f2a65..18b0a9cc 100644
 --- a/mainwindow.cpp
 +++ b/mainwindow.cpp
 @@ -7,6 +7,9 @@
@@ -5334,7 +5340,7 @@ index d510551f..86487038 100644
  #include "bookmarkmanager.h"
  #include "config/preferencesdialog.h"
  #include "connectiondelegate.h"
-@@ -33,6 +36,9 @@
+@@ -34,6 +37,9 @@
  #include <KToolBar>
  
  #include <QAbstractItemView>
@@ -5344,7 +5350,7 @@ index d510551f..86487038 100644
  #include <QClipboard>
  #include <QDockWidget>
  #include <QFontMetrics>
-@@ -102,6 +108,42 @@ MainWindow::MainWindow(QWidget *parent)
+@@ -116,6 +122,42 @@ MainWindow::MainWindow(QWidget *parent)
  
      createDockWidget();
  
@@ -5387,7 +5393,7 @@ index d510551f..86487038 100644
      setupGUI(ToolBar | Keys | Save | Create);
  
      connect(m_tabWidget, &QTabWidget::currentChanged, this, &MainWindow::tabChanged);
-@@ -211,6 +253,22 @@ void MainWindow::setupActions()
+@@ -234,6 +276,22 @@ void MainWindow::setupActions()
  
  void MainWindow::loadAllPlugins()
  {
@@ -5410,16 +5416,16 @@ index d510551f..86487038 100644
      const QVector<KPluginMetaData> offers = KPluginMetaData::findPlugins(QStringLiteral("krdc"));
      const KConfigGroup conf = KSharedConfig::openConfig()->group(QStringLiteral("Plugins"));
  
-@@ -449,6 +507,7 @@ void MainWindow::openConnection(const QUrl &newUrl,
-         insertIndex >= 0 ? m_tabWidget->insertTab(insertIndex, scrollArea, tabIcon, tabTitle) : m_tabWidget->addTab(scrollArea, tabIcon, tabTitle);
+@@ -475,6 +533,7 @@ void MainWindow::openConnection(const QUrl &newUrl,
+     m_tabWidget->setTabToolTip(newIndex, Qt::convertFromPlainText(tabTitle));
      m_tabWidget->setCurrentIndex(newIndex);
      m_remoteViewMap.insert(m_tabWidget->widget(newIndex), view);
 +    view->setDarkModeFilter(Settings::darkModeFilter());
      tabChanged(newIndex); // force to update m_currentRemoteView (tabChanged is not emitted when start page has been disabled)
  
      view->start();
-@@ -652,6 +711,11 @@ void MainWindow::applyFullscreenState(bool fullscreen)
-         m_savedGrabStatesBeforeFullscreen.clear();
+@@ -669,6 +728,11 @@ void MainWindow::applyFullscreenState(bool fullscreen)
+         }
  
          m_remoteDesktopsDockWidget->setVisible(m_guiItemsState.dockWidget);
 +#ifdef BUILD_AI_ASSISTANT
@@ -5430,7 +5436,7 @@ index d510551f..86487038 100644
          menuBar()->setVisible(m_guiItemsState.menuBar);
          statusBar()->setVisible(m_guiItemsState.statusBar);
          toolBars().first()->setVisible(m_guiItemsState.toolBar);
-@@ -684,7 +748,12 @@ void MainWindow::applyFullscreenState(bool fullscreen)
+@@ -702,7 +766,12 @@ void MainWindow::applyFullscreenState(bool fullscreen)
          m_guiItemsState = {.dockWidget = !m_remoteDesktopsDockWidget->isHidden(),
                             .menuBar = !menuBar()->isHidden(),
                             .statusBar = !statusBar()->isHidden(),
@@ -5444,7 +5450,7 @@ index d510551f..86487038 100644
  
          // Keep the group while autosaving is disabled: autoSaveConfigGroup()
          // returns an invalid group until autosaving is enabled again.
-@@ -695,6 +764,9 @@ void MainWindow::applyFullscreenState(bool fullscreen)
+@@ -713,6 +782,9 @@ void MainWindow::applyFullscreenState(bool fullscreen)
          }
  
          m_remoteDesktopsDockWidget->setVisible(false);
@@ -5454,19 +5460,17 @@ index d510551f..86487038 100644
          menuBar()->setVisible(false);
          statusBar()->setVisible(false);
          toolBars().first()->setVisible(false);
-@@ -861,6 +933,11 @@ void MainWindow::closeTab(int index)
-             return;
-         }
-         // else: an error tab whose view is gone
+@@ -862,6 +934,9 @@ void MainWindow::closeTab(int index)
+     if (!isNewConnectionPage) {
+         RemoteView *view = m_remoteViewMap.take(widget);
+         if (view) {
 +#ifdef BUILD_AI_ASSISTANT
-+        if (view) {
 +            m_aiPanel->removeConnection(view->connectionKey());
-+        }
 +#endif
-         widget->deleteLater();
-     }
- 
-@@ -1428,6 +1505,12 @@ void MainWindow::tabChanged(int index)
+             view->startQuitting();
+         } else if (!qobject_cast<RemoteViewScrollArea *>(widget)) {
+             return;
+@@ -1429,6 +1504,12 @@ void MainWindow::tabChanged(int index)
      const QString tabTitle = m_tabWidget->tabText(index).remove(QLatin1Char('&'));
      setCaption(tabTitle == i18n("New Connection") ? QString() : tabTitle);
  
@@ -5477,13 +5481,13 @@ index d510551f..86487038 100644
 +#endif
 +
      updateActionStatus();
+     updateKeyboardHint();
  }
- 
 diff --git a/mainwindow.h b/mainwindow.h
-index c7070f0d..ae414338 100644
+index e6d1b7d6..b1e7ffcc 100644
 --- a/mainwindow.h
 +++ b/mainwindow.h
-@@ -30,6 +30,9 @@ class RemoteDesktopsModel;
+@@ -31,6 +31,9 @@ class RemoteDesktopsModel;
  class RemoteView;
  class SystemTrayIcon;
  class TabbedViewWidget;
@@ -5493,7 +5497,7 @@ index c7070f0d..ae414338 100644
  
  class QDockWidget;
  class QScrollArea;
-@@ -133,12 +136,18 @@ private:
+@@ -138,12 +141,18 @@ private:
      RemoteDesktopsModel *m_remoteDesktopsModel;
      QWidget *m_newConnectionWidget;
      QDockWidget *m_remoteDesktopsDockWidget;
@@ -5513,7 +5517,7 @@ index c7070f0d..ae414338 100644
      GuiItemsState m_guiItemsState{};
      bool m_fullscreenActive = false;
 diff --git a/rdp/CMakeLists.txt b/rdp/CMakeLists.txt
-index f25734f0..53c8c193 100644
+index 7c157768..e79f4d08 100644
 --- a/rdp/CMakeLists.txt
 +++ b/rdp/CMakeLists.txt
 @@ -1,6 +1,7 @@
@@ -5779,11 +5783,32 @@ index 00000000..a1960f89
 + */
 +QVector<DWORD> modifierVirtualKeys(Qt::KeyboardModifiers modifiers);
 +}
+diff --git a/rdp/rdppreferences.ui b/rdp/rdppreferences.ui
+index 2459ea2e..a47e8df2 100644
+--- a/rdp/rdppreferences.ui
++++ b/rdp/rdppreferences.ui
+@@ -1054,6 +1054,16 @@
+            </property>
+           </spacer>
+          </item>
++         <item row="3" column="1">
++          <widget class="QCheckBox" name="kcfg_IgnoreCertificate">
++           <property name="text">
++            <string>Ignore certificate verification (insecure)</string>
++           </property>
++           <property name="toolTip">
++            <string>Skip host certificate verification for all RDP connections. Useful when servers use rotating self-signed certificates; only enable this on trusted networks.</string>
++           </property>
++          </widget>
++         </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
 diff --git a/rdp/rdpsession.cpp b/rdp/rdpsession.cpp
-index 4a5a4a51..61e98b39 100644
+index 4f24ac56..cdcbd026 100644
 --- a/rdp/rdpsession.cpp
 +++ b/rdp/rdpsession.cpp
-@@ -4,6 +4,7 @@
+@@ -4,10 +4,12 @@
   */
  
  #include "rdpsession.h"
@@ -5791,7 +5816,12 @@ index 4a5a4a51..61e98b39 100644
  #include "rdpcliprdr.h"
  #include "rdpdisp.h"
  #include "rdpgraphics.h"
-@@ -701,6 +702,35 @@ int RdpSession::clientContextStart(rdpContext *context)
+ #include "rdphostpreferences.h"
++#include "settings.h"
+ #include "sharedfolderfield.h"
+ #include "smartcardreaderfield.h"
+ #ifdef HAVE_RDPDR_HOTPLUG
+@@ -702,6 +704,37 @@ int RdpSession::clientContextStart(rdpContext *context)
      if (!freerdp_settings_set_bool(settings, FreeRDP_FrameMarkerCommandEnabled, true)) {
          return -1;
      }
@@ -5804,7 +5834,9 @@ index 4a5a4a51..61e98b39 100644
 +    // with plain grayscale antialiasing, which recolors cleanly and looks
 +    // no worse over a remote connection (it is what mstsc does when "font
 +    // smoothing" is unticked). The rest of the experience stays full:
-+    // wallpaper, themes, drag and animations are kept.
++    // wallpaper, themes, drag and animations are kept. A server under
++    // group policy may ignore this request; the filter then falls back to
++    // neutralizing the fringes itself.
 +    if (!freerdp_settings_set_bool(settings, FreeRDP_AllowFontSmoothing, false)) {
 +        return -1;
 +    }
@@ -5827,7 +5859,31 @@ index 4a5a4a51..61e98b39 100644
      if (!freerdp_settings_set_bool(settings, FreeRDP_SupportDynamicChannels, true)) {
          return -1;
      }
-@@ -1743,6 +1773,304 @@ bool RdpSession::onAuthenticateGateway(char **username, char **password, char **
+@@ -809,6 +842,15 @@ int RdpSession::clientContextStart(rdpContext *context)
+         break;
+     }
+ 
++    if (session->m_ignoreCertificate) {
++        // Escape hatch for environments whose RDP hosts use rotating
++        // self-signed certificates: skip certificate verification entirely
++        // instead of prompting on every rotation.
++        if (!freerdp_settings_set_bool(settings, FreeRDP_IgnoreCertificate, true)) {
++            return -1;
++        }
++    }
++
+     if (!freerdp_settings_set_bool(settings, FreeRDP_NlaSecurity, preferences->securityNLA())) {
+         return -1;
+     }
+@@ -1408,6 +1450,7 @@ RdpSession::RdpSession(RdpView *view)
+     : QObject(nullptr)
+     , m_view(view)
+     , m_firstPasswordTry(true)
++    , m_ignoreCertificate(Settings::self()->ignoreCertificate())
+ {
+     auto entry = RdpClientEntry();
+     m_context.rdp = freerdp_client_context_new(&entry);
+@@ -1747,6 +1790,304 @@ bool RdpSession::onAuthenticateGateway(char **username, char **password, char **
      return true;
  }
  
@@ -6133,7 +6189,7 @@ index 4a5a4a51..61e98b39 100644
  {
      Q_UNUSED(domain);
 diff --git a/rdp/rdpsession.h b/rdp/rdpsession.h
-index 2a9ff838..e6cd0137 100644
+index 2a9ff838..f210afa9 100644
 --- a/rdp/rdpsession.h
 +++ b/rdp/rdpsession.h
 @@ -147,6 +147,44 @@ public:
@@ -6181,8 +6237,16 @@ index 2a9ff838..e6cd0137 100644
      void initializeClipboard(RdpContext *krdp, CliprdrClientContext *cliprdr);
      void initializeDisplay(RdpContext *krdp, DispClientContext *disp);
      void destroyClipboard();
+@@ -265,6 +303,7 @@ private:
+     bool m_gatewayLoginEntered = false;
+     bool m_ignoreSavedGatewayPassword = false;
+     QString m_savedGatewayPassword;
++    bool m_ignoreCertificate;
+     bool m_needKeyStateSync = true;
+ 
+     std::thread m_thread;
 diff --git a/rdp/rdpview.cpp b/rdp/rdpview.cpp
-index 09bb26d6..3dafd15e 100644
+index d4d163cd..e347e795 100644
 --- a/rdp/rdpview.cpp
 +++ b/rdp/rdpview.cpp
 @@ -10,8 +10,10 @@
@@ -6196,15 +6260,15 @@ index 09bb26d6..3dafd15e 100644
  
  #include <KMessageDialog>
  #include <KPasswordDialog>
-@@ -20,6 +22,7 @@
- 
+@@ -21,6 +23,7 @@
+ #include <QApplication>
  #include <QChar>
  #include <QDir>
 +#include <QMimeData>
  #include <QEvent>
  #include <QInputDialog>
  #include <QKeyEvent>
-@@ -34,6 +37,14 @@
+@@ -35,6 +38,14 @@
  
  #include "rdpmonitorview.h"
  
@@ -6219,7 +6283,7 @@ index 09bb26d6..3dafd15e 100644
  RdpView::RdpView(QWidget *parent, const QUrl &url, KConfigGroup configGroup, const QString &user, const QString &domain, const QString &password)
      : RemoteView(parent)
      , m_user(user)
-@@ -74,6 +85,27 @@ RdpView::RdpView(QWidget *parent, const QUrl &url, KConfigGroup configGroup, con
+@@ -75,6 +86,27 @@ RdpView::RdpView(QWidget *parent, const QUrl &url, KConfigGroup configGroup, con
      }
  
      m_hostPreferences = std::make_unique<RdpHostPreferences>(configGroup);
@@ -6247,7 +6311,7 @@ index 09bb26d6..3dafd15e 100644
  }
  
  RdpView::~RdpView()
-@@ -646,6 +678,64 @@ QPixmap RdpView::takeScreenshot()
+@@ -649,6 +681,64 @@ QPixmap RdpView::takeScreenshot()
      return QPixmap{};
  }
  
@@ -6312,7 +6376,7 @@ index 09bb26d6..3dafd15e 100644
  bool RdpView::supportsScaling() const
  {
      return true;
-@@ -810,16 +900,23 @@ void RdpView::paintEvent(QPaintEvent *event)
+@@ -813,16 +903,23 @@ void RdpView::paintEvent(QPaintEvent *event)
  
      const auto &image = *m_session->videoBuffer();
  
@@ -6339,7 +6403,7 @@ index 09bb26d6..3dafd15e 100644
      const qreal outputScale = m_session->outputScale();
      scaledImage.setDevicePixelRatio(outputScale);
  
-@@ -831,6 +928,73 @@ void RdpView::paintEvent(QPaintEvent *event)
+@@ -834,6 +931,73 @@ void RdpView::paintEvent(QPaintEvent *event)
      painter.end();
  }
  
@@ -6413,7 +6477,7 @@ index 09bb26d6..3dafd15e 100644
  void RdpView::handleKeyEvent(QKeyEvent *event)
  {
      if (m_session) {
-@@ -862,6 +1026,7 @@ void RdpView::handleWheelEvent(QWheelEvent *event)
+@@ -865,6 +1029,7 @@ void RdpView::handleWheelEvent(QWheelEvent *event)
  
  void RdpView::onRectangleUpdated(const QRect &remoteRect, const QSize &remoteSize)
  {
@@ -6422,7 +6486,7 @@ index 09bb26d6..3dafd15e 100644
          const QRect intersection = remoteRect.intersected(m_fullscreenMonitorRect);
          if (intersection.isEmpty()) {
 diff --git a/rdp/rdpview.h b/rdp/rdpview.h
-index 5ccd2aca..96ba046a 100644
+index cf17b9f5..5ae954f5 100644
 --- a/rdp/rdpview.h
 +++ b/rdp/rdpview.h
 @@ -17,6 +17,7 @@
@@ -6433,7 +6497,7 @@ index 5ccd2aca..96ba046a 100644
  #include <QUrl>
  
  #define TCP_PORT_RDP 3389
-@@ -60,6 +61,15 @@ public:
+@@ -60,6 +61,16 @@ public:
  
      QPixmap takeScreenshot() override;
  
@@ -6444,12 +6508,13 @@ index 5ccd2aca..96ba046a 100644
 +    void aiKeyPress(int key, Qt::KeyboardModifiers modifiers, bool pressed) override;
 +    bool aiTypeText(const QString &text) override;
 +    bool aiSetClipboard(const QString &text) override;
++
 +    void setDarkModeFilter(bool enabled) override;
 +
  public Q_SLOTS:
      void scaleResize(int w, int h) override;
      void onAuthRequested();
-@@ -89,6 +99,23 @@ private:
+@@ -90,6 +101,23 @@ private:
      void handleError(unsigned int error);
      void updateRemoteCursor();
  
@@ -6474,7 +6539,7 @@ index 5ccd2aca..96ba046a 100644
      QString m_user;
      QString m_domain;
 diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
-index 1600b660..4fcfc2a4 100644
+index 1600b660..b8235052 100644
 --- a/test/CMakeLists.txt
 +++ b/test/CMakeLists.txt
 @@ -1,3 +1,45 @@
@@ -6523,6 +6588,33 @@ index 1600b660..4fcfc2a4 100644
  if(NOT NDEBUG)
      set(BUILD_TEST true)
  endif()
+@@ -6,6 +48,26 @@ if(NOT BUILD_TEST)
+     return()
+ endif()
+ 
++find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Test)
++
++# The dark mode filter's recolor rules are all tuned against real remote
++# desktop captures, which makes them worth pinning down: the test needs no
++# connection, no display and no mock server, just the filter and some
++# hand-built QImages mirroring those captures.
++add_executable(smartinvert_test smartinvert_test.cpp)
++set_target_properties(smartinvert_test PROPERTIES AUTOMOC TRUE)
++
++target_include_directories(smartinvert_test PRIVATE ${CMAKE_SOURCE_DIR}/core)
++
++target_link_libraries(smartinvert_test
++    Qt::Core
++    Qt::Gui
++    Qt::Test
++    krdccore
++)
++
++add_test(NAME smartinvert_test COMMAND smartinvert_test)
++
+ add_library(krdc_testplugin MODULE)
+ 
+ target_sources(krdc_testplugin PRIVATE
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
 index 00000000..4787a47b
@@ -7475,3 +7567,323 @@ index 00000000..dc0ed2b6
 +    "$build/bin/aiengine_test"
 +status=$?
 +exit $status
+diff --git a/test/smartinvert_test.cpp b/test/smartinvert_test.cpp
+new file mode 100644
+index 00000000..6c9eeb74
+--- /dev/null
++++ b/test/smartinvert_test.cpp
+@@ -0,0 +1,314 @@
++// SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
++// SPDX-License-Identifier: GPL-2.0-or-later
++
++// Test for the SmartInvert dark mode filter: the expectations are measured
++// from real Server 2012 captures (Explorer, GPMC/MMC consoles, the Start
++// menu and taskbar), so each check describes a behavior those screenshots
++// proved out.
++
++#include <QImage>
++#include <QtTest>
++
++#include "smartinvert.h"
++
++class SmartInvertTest : public QObject
++{
++    Q_OBJECT
++
++private Q_SLOTS:
++    /**
++     * A white window with text and an icon reads as a light theme, and the
++     * filter darkens the chrome, lifts the text, keeps saturated content,
++     * neutralizes ClearType fringes, lifts colored text off tinted bands,
++     * preserves light text on dark surfaces, and passes the taskbar through.
++     */
++    void testSmartInvert();
++};
++
++void SmartInvertTest::testSmartInvert()
++{
++    QImage img(64, 64, QImage::Format_RGB32);
++    img.fill(Qt::white);
++    // A realistic thin-stroked glyph, not a solid block: a filled 16x6 dark
++    // rectangle is structurally a small dark panel, and the flat dark
++    // surface rule (rightly) leaves panels alone. Real glyph strokes on a
++    // light page window-average bright and recolor.
++    for (int y = 4; y < 16; ++y) { // an "H" of 2px stems and a crossbar
++        for (int x = 4; x < 6; ++x) {
++            img.setPixel(x, y, qRgb(20, 20, 20));
++        }
++        for (int x = 10; x < 12; ++x) {
++            img.setPixel(x, y, qRgb(20, 20, 20));
++        }
++        if (y >= 8 && y < 10) {
++            for (int x = 6; x < 10; ++x) {
++                img.setPixel(x, y, qRgb(20, 20, 20));
++            }
++        }
++    }
++    for (int x = 30; x < 46; ++x) {
++        for (int y = 30; y < 46; ++y) {
++            img.setPixel(x, y, qRgb(225, 30, 40));
++        }
++    }
++
++    QVERIFY2(SmartInvert::medianLuma(img) > 150, "a white window with text and an icon reads as a light theme");
++
++    SmartInvert::apply(img);
++    const QRgb background = img.pixel(60, 60);
++    QVERIFY2(qRed(background) < 70 && qGreen(background) < 70 && qBlue(background) < 70,
++          "the white background becomes dark");
++    const QRgb text = img.pixel(10, 6);
++    QVERIFY2(qRed(text) > 170 && qGreen(text) > 170 && qBlue(text) > 170, "the dark text becomes light");
++    QVERIFY2(qRed(text) > 235, "the text lands near white, not cloudy grey");
++    const QRgb icon = img.pixel(38, 38);
++    QVERIFY2(qRed(icon) > 180 && qGreen(icon) < 90 && qBlue(icon) < 90, "the saturated red icon keeps its color");
++
++    // Antialiased edges are grey ramps; a smooth monotone curve keeps them
++    // smooth (no banding or halos around text).
++    QImage ramp(256, 16, QImage::Format_RGB32);
++    ramp.fill(Qt::white);
++    for (int v = 0; v < 256; ++v) {
++        ramp.setPixel(v, 0, qRgb(v, v, v));
++    }
++    SmartInvert::apply(ramp);
++    int previous = qRed(ramp.pixel(0, 0));
++    bool smooth = true;
++    for (int v = 1; v < 256; ++v) {
++        const int out = qRed(ramp.pixel(v, 0));
++        if (out > previous + 1) {
++            smooth = false;
++        }
++        previous = out;
++    }
++    QVERIFY2(smooth, "the grey curve is monotone and step-free");
++    QVERIFY2(qRed(ramp.pixel(255, 0)) < qRed(ramp.pixel(0, 0)), "light greys end up darker than dark greys");
++
++    // Saturated dark content passes through: a real Server 2012 taskbar is
++    // (0, 3, 8) - near-black but fully saturated - and the same for deep
++    // blue wallpaper. The saturation rule alone keeps them dark.
++    QImage taskbar(32, 32, QImage::Format_RGB32);
++    taskbar.fill(qRgb(0, 3, 8));
++    taskbar.setPixel(16, 16, qRgb(220, 170, 40)); // colorful icon
++    const QRgb barBefore = taskbar.pixel(4, 4);
++    const QRgb iconBefore = taskbar.pixel(16, 16);
++    SmartInvert::apply(taskbar);
++    QVERIFY2(taskbar.pixel(4, 4) == barBefore, "a saturated near-black taskbar is untouched");
++    QVERIFY2(taskbar.pixel(16, 16) == iconBefore, "a colorful taskbar icon is untouched");
++
++    // Picture content survives: a colorful gradient wallpaper is all
++    // saturated pixels and must come out unchanged.
++    QImage wallpaper(96, 96, QImage::Format_RGB32);
++    for (int y = 0; y < 96; ++y) {
++        for (int x = 0; x < 96; ++x) {
++            wallpaper.setPixel(x, y, qRgb((x * 7 + y * 3) % 256, 60 + (y * 5) % 190, 255 - (x * 3) % 200));
++        }
++    }
++    const QRgb wpBefore = wallpaper.pixel(10, 10);
++    SmartInvert::apply(wallpaper);
++    QVERIFY2(wallpaper.pixel(10, 10) == wpBefore, "colorful wallpaper pixels are untouched");
++
++    // The ClearType halo regression, measured from a real Server 2012 capture:
++    // a black glyph on white arrives with colored subpixel edges - warm
++    // (239,205,75) and cool (145,212,247) pixels. They sit between the dark
++    // core and flat white, so they flatten to grey and recolor with the
++    // glyph instead of surviving as colored sparks around the text.
++    // Link-blue text has no dark core within reach and keeps its color.
++    QImage glyph(96, 96, QImage::Format_RGB32);
++    glyph.fill(Qt::white);
++    for (int y = 40; y < 52; ++y) {
++        glyph.setPixel(40, y, qRgb(8, 8, 8)); // stem core
++        glyph.setPixel(41, y, qRgb(145, 212, 247)); // cool subpixel fringe
++        glyph.setPixel(39, y, qRgb(239, 205, 75)); // warm subpixel fringe
++    }
++    glyph.setPixel(70, 70, qRgb(0, 102, 204)); // link-blue text pixel on white
++    // The same ClearType sandwich on MMC's light-grey dialog chrome
++    // (luma ~206): the fringe must neutralize there too, not just on white.
++    for (int y = 70; y < 84; ++y) {
++        for (int x = 10; x < 30; ++x) {
++            glyph.setPixel(x, y, qRgb(212, 208, 200));
++        }
++    }
++    glyph.setPixel(15, 76, qRgb(8, 8, 8));
++    glyph.setPixel(16, 76, qRgb(145, 212, 247));
++
++    SmartInvert::apply(glyph);
++    const QRgb cool = glyph.pixel(41, 46);
++    QVERIFY2(qBlue(cool) - qRed(cool) < 30, "the cool ClearType fringe is neutralized to grey");
++    const QRgb warm = glyph.pixel(39, 46);
++    QVERIFY2(qRed(warm) - qBlue(warm) < 30, "the warm ClearType fringe is neutralized to grey");
++    QVERIFY2(qRed(glyph.pixel(40, 46)) > 235, "the glyph core they hug turns near-white");
++    const QRgb link = glyph.pixel(70, 70);
++    QVERIFY2(qBlue(link) - qRed(link) > 100 && qBlue(link) > 200,
++          "link-blue text lifts to a readable light blue instead of vanishing");
++    const QRgb greyFringe = glyph.pixel(16, 76);
++    QVERIFY2(qBlue(greyFringe) - qRed(greyFringe) < 30, "fringes on light-grey MMC chrome neutralize as well");
++
++    // The colored text lift, measured from a real GPMC capture: blue section
++    // headers ((49,49,209)) sit on cream bands ((255,246,215)); the filter
++    // darkens the band, so the protected dark-blue glyph must rise with its
++    // hue intact or it disappears. A big solid icon block sits in the same
++    // chrome but is surrounded by its own colors, not by chrome, and must
++    // keep its color.
++    QImage gpmc(96, 96, QImage::Format_RGB32);
++    gpmc.fill(qRgb(255, 246, 215)); // cream band
++    for (int y = 20; y < 32; ++y) {
++        for (int x = 10; x < 12; ++x) {
++            gpmc.setPixel(x, y, qRgb(49, 49, 209)); // blue glyph stroke, 2px like real text
++        }
++    }
++    for (int y = 56; y < 88; ++y) {
++        for (int x = 56; x < 88; ++x) {
++            gpmc.setPixel(x, y, qRgb(49, 49, 209)); // solid icon body
++        }
++    }
++    SmartInvert::apply(gpmc);
++    const QRgb lifted = gpmc.pixel(11, 26);
++    QVERIFY2(qBlue(lifted) > 200 && qRed(lifted) > 140, "blue text on a cream band lifts to readable light blue");
++    QVERIFY2(qBlue(lifted) - qRed(lifted) > 30, "and it stays blue, not grey");
++    const QRgb solid = gpmc.pixel(72, 72);
++    QVERIFY2(solid == qRgb(49, 49, 209), "a solid blue icon body in the same chrome keeps its color");
++
++    // GPMC's other band flavor: a mildly tinted blue-grey surface
++    // ((159, 183, 207), saturation 59) that the plain saturation rule leaves
++    // light while the window around it goes dark. The flat surface rule
++    // darkens it, and the near-black blue text standing on it lifts to match.
++    QImage band(64, 64, QImage::Format_RGB32);
++    band.fill(qRgb(159, 183, 207));
++    for (int y = 20; y < 32; ++y) {
++        for (int x = 20; x < 22; ++x) {
++            band.setPixel(x, y, qRgb(0, 0, 46)); // "Links" text, as captured
++        }
++    }
++    SmartInvert::apply(band);
++    const QRgb tint = band.pixel(40, 40);
++    QVERIFY2(qRed(tint) <= 60 && qGreen(tint) == qRed(tint), "the tinted band itself goes dark like any chrome");
++    const QRgb onTint = band.pixel(20, 26);
++    QVERIFY2(qBlue(onTint) > 200 && qRed(onTint) > 140, "dark blue text on the tinted band lifts to readable light blue");
++
++    // Light text protection, measured from the same capture: Windows paints
++    // desktop icon labels ((255,255,255)) and the taskbar clock over a
++    // wallpaper ((0,27,58)) that is dark before the filter runs. Darkening
++    // the white glyphs hid them; they must stay bright. The white page
++    // mirror case must NOT fire: a light-grey antialiasing pixel between a
++    // black glyph and a white page recolors dark with its page, or the
++    // darkened page gets white speckle around every letter.
++    QImage desktop(64, 64, QImage::Format_RGB32);
++    desktop.fill(qRgb(0, 27, 58)); // this remote's wallpaper
++    for (int y = 20; y < 32; ++y) {
++        for (int x = 10; x < 12; ++x) {
++            desktop.setPixel(x, y, qRgb(255, 255, 255)); // white label stroke
++        }
++    }
++    SmartInvert::apply(desktop);
++    QVERIFY2(qRed(desktop.pixel(10, 26)) > 200, "white label text over dark wallpaper stays bright");
++    QVERIFY2(desktop.pixel(40, 40) == qRgb(0, 27, 58), "and the wallpaper itself is untouched");
++
++    // The Start menu border trap, from a real capture: Windows paints the
++    // menu's translucent top border over the white window behind it, and
++    // over RDP it arrives as a dither - alternating light and dark neutral
++    // dots. Every white dot looks thin with dark neighbors, so the light
++    // text rule preserved 531 pixels of it as a glowing white band - until
++    // the broad dark surround was required to be colored dark (wallpaper,
++    // taskbar), not neutral dark (text, dither).
++    QImage glass(64, 64, QImage::Format_RGB32);
++    glass.fill(Qt::white);
++    for (int y = 22; y < 42; ++y) {
++        for (int x = 0; x < 64; ++x) {
++            if ((y % 4) == 0 || (x + y) % 2 == 0) {
++                glass.setPixel(x, y, qRgb(35, 35, 35));
++            }
++        }
++    }
++    SmartInvert::apply(glass);
++    QVERIFY2(qRed(glass.pixel(32, 31)) < 120, "a dithered translucent band over chrome darkens instead of glowing");
++    QImage page(64, 64, QImage::Format_RGB32);
++    page.fill(Qt::white);
++    for (int y = 20; y < 32; ++y) {
++        for (int x = 10; x < 12; ++x) {
++            page.setPixel(x, y, qRgb(8, 8, 8)); // black glyph stroke
++        }
++    }
++    page.setPixel(12, 26, qRgb(200, 200, 200)); // its antialiasing edge
++    SmartInvert::apply(page);
++    QVERIFY2(qRed(page.pixel(12, 26)) < 120, "white chrome beside dark text still goes dark, no speckle");
++
++    // brightFraction(), the disengage guard: a dark Start menu ((11,26,53))
++    // opened over a white desktop reads dark by median while a third of the
++    // screen is still white chrome - disengaging there unfiltered a wall of
++    // white windows. A native dark screen (or a video) keeps its bright
++    // pixels sparse: text and icons only.
++    QImage menuOverDesktop(64, 64, QImage::Format_RGB32);
++    menuOverDesktop.fill(qRgb(11, 26, 53));
++    for (int y = 0; y < 26; ++y) {
++        for (int x = 0; x < 64; ++x) {
++            menuOverDesktop.setPixel(x, y, qRgb(255, 255, 255)); // white windows
++        }
++    }
++    QVERIFY2(SmartInvert::medianLuma(menuOverDesktop) < 110, "a Start menu over a white desktop reads dark by median");
++    QVERIFY2(SmartInvert::brightFraction(menuOverDesktop) >= 15, "but its white chrome fraction keeps the filter engaged");
++    QImage nativeDark(64, 64, QImage::Format_RGB32);
++    nativeDark.fill(qRgb(24, 24, 24));
++    for (int y = 0; y < 64; ++y) {
++        nativeDark.setPixel(y, (y * 7) % 64, qRgb(255, 255, 255)); // sparse text dots
++    }
++    QVERIFY2(SmartInvert::medianLuma(nativeDark) < 110, "a native dark screen reads dark by median");
++    QVERIFY2(SmartInvert::brightFraction(nativeDark) < 15, "and its sparse whites let it pass through unfiltered");
++    QVERIFY2(SmartInvert::brightFraction(QImage()) == 0, "a null image has no bright pixels");
++
++    // The Start menu panel itself: the app list is painted over a flat
++    // (31, 31, 31) panel that the curve would flip to near-white, turning
++    // the menu into a glaring slab the moment the filter learned to stay
++    // engaged behind it. The flat dark surface rule leaves the panel alone,
++    // and the white text standing on it stays bright - while the dithered
++    // translucent border above (previous test) still darkens, because a
++    // dither window averages its bright dots in above any dark surface
++    // bound. The panel floats in the middle of a light screen so this tests
++    // the dark surface rule directly, not the edge strip.
++    QImage menuPanel(96, 96, QImage::Format_RGB32);
++    menuPanel.fill(Qt::white);
++    for (int y = 30; y < 70; ++y) {
++        for (int x = 30; x < 70; ++x) {
++            menuPanel.setPixel(x, y, qRgb(31, 31, 31)); // the dark panel
++        }
++    }
++    for (int y = 40; y < 52; ++y) {
++        for (int x = 40; x < 42; ++x) {
++            menuPanel.setPixel(x, y, qRgb(255, 255, 255)); // white glyph stroke
++        }
++    }
++    SmartInvert::apply(menuPanel);
++    QVERIFY2(menuPanel.pixel(60, 60) == qRgb(31, 31, 31), "a flat dark Start menu panel is left alone, not flipped to a white slab");
++    QVERIFY2(qRed(menuPanel.pixel(41, 45)) >= 200, "white text standing on the dark panel stays bright");
++    QVERIFY2(qRed(menuPanel.pixel(80, 80)) < 70, "the light screen around the panel is still darkened");
++
++    // The taskbar strip: a Windows taskbar is a band of flat dark fill on a
++    // screen edge with small bright islands (its clock glyphs, Start button,
++    // pinned icons). Those light-on-dark pixels are exactly what the per
++    // pixel rules mangle, so a mostly-dark band docked to an edge is passed
++    // through raw. Its dark fill and bright clock text both survive intact,
++    // while the light screen above the taskbar is still filtered - proving
++    // the band is bounded to the dark rows and cannot leave a window raw.
++    QImage taskbarStrip(96, 96, QImage::Format_RGB32);
++    taskbarStrip.fill(Qt::white);
++    for (int y = 76; y < 96; ++y) { // the (0, 3, 8) taskbar fill on the bottom edge
++        for (int x = 0; x < 96; ++x) {
++            taskbarStrip.setPixel(x, y, qRgb(0, 3, 8));
++        }
++    }
++    for (int y = 80; y < 90; ++y) { // a white clock glyph standing on it
++        for (int x = 40; x < 42; ++x) {
++            taskbarStrip.setPixel(x, y, qRgb(255, 255, 255));
++        }
++    }
++    taskbarStrip.setPixel(42, 85, qRgb(10, 8, 6)); // its antialiased saturated edge
++    SmartInvert::apply(taskbarStrip);
++    QVERIFY2(taskbarStrip.pixel(10, 90) == qRgb(0, 3, 8), "the dark taskbar fill is passed through, not recolored");
++    QVERIFY2(qRed(taskbarStrip.pixel(41, 85)) >= 200, "the taskbar clock text stays bright, not scribbled dark");
++    QVERIFY2(qRed(taskbarStrip.pixel(42, 85)) < 60, "the clock glyph antialiasing is not flipped to a white dot");
++    QVERIFY2(qRed(taskbarStrip.pixel(48, 20)) < 70, "the light desktop above the taskbar is still darkened");
++}
++
++QTEST_GUILESS_MAIN(SmartInvertTest)
++
++#include "smartinvert_test.moc"

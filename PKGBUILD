@@ -2,12 +2,20 @@
 # KRDC with an integrated AI assistant panel: a right-hand chat dock that can
 # screenshot the remote machine and drive its mouse and keyboard, with one
 # conversation per connection. The AI code lives entirely in ai/ plus small
-# hooks; upstream is otherwise untouched. Patch applies to the pinned commit;
-# to refresh, re-diff against a newer upstream commit at ../krdc.
+# hooks; upstream is otherwise untouched. Also carries a client-side dark mode
+# filter (SmartInvert) and an opt-in RDP certificate verification bypass.
+#
+# The patch is generated from the source branches, not edited by hand:
+#   https://github.com/Teejer/krdc-ai  branches ai-assistant + dark-mode-filter
+# Combine them on top of the pinned upstream commit and diff, e.g.
+#   git merge dark-mode-filter          # in a branch off ai-assistant
+#   git diff <upstream-commit>..HEAD > krdc-ai.patch
+# Editing the patch directly once worked, but it left the branches behind and
+# nearly lost those fixes on the next refresh; land fixes on the branch first.
 pkgname=krdc-ai
-_commit=b6755c569da2d0bcb2afc41682247eeb3e0b85d8
-pkgver=26.11.70
-pkgrel=45
+_commit=d47d17c86a88d437278c029b5c62b837c01d1e03
+pkgver=27.03.70
+pkgrel=1
 pkgdesc="KDE Remote Desktop Client with an integrated AI assistant panel and a client-side dark mode filter"
 arch=('x86_64')
 url="https://invent.kde.org/network/krdc"
