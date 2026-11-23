@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=trezor-suite-bin
 _pkgname=Trezor-Suite
-pkgver=26.11.1
+pkgver=26.11.2
 _electronversion=44
 pkgrel=1
 pkgdesc="Desktop app for Trezor hardware wallets."
@@ -48,6 +48,16 @@ _check_electron_version() {
 	(( _v == _electronversion )) && c=32 || c=31
 	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
 }
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+}
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
@@ -69,11 +79,7 @@ prepare() {
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "$(_get_app_dir)/${pkgname%-bin}.desktop"
-    local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
-	find "$(_get_app_dir)" -type d \
-		\( -name '*darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
-		-prune -exec rm -rf {} +
-    find "$(_get_app_dir)/resources" -type d -exec chmod 755 {} +
+    _delete_other_arch_files
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
