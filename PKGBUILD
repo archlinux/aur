@@ -2,7 +2,7 @@
 # Contributor: Tobias Markus < tobias AT miglix DOT eu >
 
 pkgname=libacars
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A library for decoding various ACARS message payloads"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('zlib' 'libxml2' 'jansson' 'glibc')
 makedepends=('cmake')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/szpajder/libacars/archive/v$pkgver.tar.gz")
-sha256sums=('f17ac4a1aa6bd0004cdcb76475e71e80c8bf228cd777ff0d11917e2b3715104e')
+sha256sums=('8539cc9570e43b1a9257bf33c724cb9b2825c034d43e81f2cfef21bb96a52a86')
 
 build() {
     cd "$srcdir"
