@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=APL
-_pkgver=1.8.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,9 +16,9 @@ depends=(
   r-org.hs.eg.db
   r-org.mm.eg.db
   r-plotly
-  r-reticulate
   r-rlang
-  r-seurat
+  r-rspectra
+  r-seuratobject
   r-singlecellexperiment
   r-summarizedexperiment
   r-topgo
@@ -36,11 +36,12 @@ optdepends=(
   r-scater
   r-scran
   r-scrnaseq
+  r-sparsematrixstats
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a0515d71d7bde81144faf297c5e384b2')
-b2sums=('d6abf45d5e625a3c69ea26a773d9d07d453662ac71f94c88072701868578ff41c9a729a24ea988dbee8d4946929c41520f7de55ae72e5b018f75baf082c98a51')
+md5sums=('ea5e824768573263a76130b20d121e6d')
+b2sums=('fc9c049f780166b6b8b2df3274cb1ce19dc673fd3825e4b61d27d2c467626870ee12b0c409ee5fd3841313d9e7a0b9f8e8b6588af1764b050770ab27c6865fb6')
 
 build() {
   mkdir build
