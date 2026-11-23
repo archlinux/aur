@@ -1,14 +1,14 @@
 # Maintainer: Jürg Rechsteiner <wergosam@gmail.com>
 pkgname=github-manager
-pkgver=1.0.8
-pkgrel=1
+pkgver=1.0.10
+pkgrel=2
 pkgdesc="PyQt6-Desktop-Tool zur Verwaltung von GitHub- und lokalen Git-Repositories ohne Terminal"
 arch=('any')
 url="https://github.com/wergosam/github-manager"
 license=('GPL3')
 depends=('python' 'python-pyqt6' 'python-pygithub' 'python-gitpython' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9e30360c6eecea6bda197c44b842a8823a1598b82e9630d489efa0b24e65fa19')
+sha256sums=('63bbe2fd20327c9b1dab8c08464617ba1edd04fb0cc6fc369ff9a82aeb06ff26')
 
 package() {
     cd "github-manager-$pkgver"
