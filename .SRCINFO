@@ -1,0 +1,18 @@
+pkgbase = sruman-git
+	pkgdesc = Steam Linux Runtime manager and launcher for native games, without Steam
+	pkgver = r69.gd256199
+	pkgrel = 1
+	url = https://github.com/Gigas002/sruman
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = sruman
+	conflicts = sruman
+	options = !lto
+	source = sruman::git+https://github.com/Gigas002/sruman.git
+	sha256sums = SKIP
+
+pkgname = sruman-git
