@@ -3,7 +3,7 @@
 # pkgver and sha256sums are filled in by .github/workflows/aur.yml for each release.
 pkgname=blink-markdown
 _name=blink
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='A Markdown editor with a live preview, for GNOME'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ depends=('gtk4>=1:4.20' 'libadwaita>=1:1.8' 'gtksourceview5' 'glib2' 'cairo' 'pa
 makedepends=('cargo' 'blueprint-compiler' 'just' 'gettext')
 conflicts=('blink')
 source=("$_name-$pkgver.tar.gz::$url/archive/v$pkgver/$_name-$pkgver.tar.gz")
-sha256sums=('34bf770a69071b985a658116cf447460d949b45de464add52c00936d1069833e')
+sha256sums=('b3caf2c501ae55676050088a2dc3e643bca5c891be8ccc40ff0340351004066d')
 
 prepare() {
   cd "$_name-$pkgver"
@@ -41,8 +41,4 @@ check() {
 package() {
   cd "$_name-$pkgver"
   DESTDIR="$pkgdir" just prefix=/usr install
-  # The install recipe refreshes the caches even when staged; pacman's hooks own them.
-  rm -f "$pkgdir/usr/share/glib-2.0/schemas/gschemas.compiled" \
-    "$pkgdir/usr/share/applications/mimeinfo.cache" \
-    "$pkgdir/usr/share/icons/hicolor/icon-theme.cache"
 }

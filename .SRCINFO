@@ -1,6 +1,6 @@
 pkgbase = blink-markdown
 	pkgdesc = A Markdown editor with a live preview, for GNOME
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/sachesi/blink
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = blink-markdown
 	depends = libgcc
 	depends = glibc
 	conflicts = blink
-	source = blink-0.8.0.tar.gz::https://github.com/sachesi/blink/archive/v0.8.0/blink-0.8.0.tar.gz
-	sha256sums = 34bf770a69071b985a658116cf447460d949b45de464add52c00936d1069833e
+	source = blink-0.8.1.tar.gz::https://github.com/sachesi/blink/archive/v0.8.1/blink-0.8.1.tar.gz
+	sha256sums = b3caf2c501ae55676050088a2dc3e643bca5c891be8ccc40ff0340351004066d
 
 pkgname = blink-markdown
