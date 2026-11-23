@@ -18,37 +18,15 @@ url="https://hex-rays.com/ida-free"
 license=('custom')
 makedepends=('fakechroot')
 depends=(
-	'libstdc++'
-	'libgcc'
-	'glib2'
-	'dbus'
-	'fontconfig'
-	'freetype2'
-	'zlib'
 	'libgl'
 	'libx11'
-	'libxcb'
 	'libxext'
-	'libxkbcommon'
-	'libxkbcommon-x11'
 	'libxtst'
-	'xcb-util'
-	'xcb-util-cursor'
-	'xcb-util-image'
-	'xcb-util-keysyms'
-	'xcb-util-renderutil'
-	'xcb-util-wm'
-	'krb5'
-	'pcre2'
-	'wayland'
+	'glib2'
+	'qt6-base'
 )
 optdepends=(
 	'gtk3: GTK platform theme integration (libqgtk3)'
-	'qt6-base: EGLFS and wl-shell platform plugins'
-	'qt6-wayland: Wayland compositor integration'
-	'openssl: TLS for the cloud decompiler'
-	'libsecret: Lumina credential storage'
-	'libunwind: stack traces'
 )
 options=('!strip' '!debug')
 
@@ -58,7 +36,7 @@ source=("local://${_installer}"
 		"${pkgname}.desktop")
 
 sha256sums=('c7828e9b3e87e6448fce171d42acb091a4318e67c28b9eb26ac11becb1e39c88'
-            '9852711adc130a2482ac6829ce3df3ea11d9b04c2e5e6453c40e699980124e4a')
+			'9852711adc130a2482ac6829ce3df3ea11d9b04c2e5e6453c40e699980124e4a')
 
 arch=('x86_64')
 
@@ -73,8 +51,8 @@ package() {
 	cp "${srcdir}"/${_installer} "${pkgdir}"/
 	chmod +x "${pkgdir}"/${_installer}
 
-    # The installer will write a desktop file in $HOME/.local/share/applications/, so we redirect
-    # it to /tmp to avoid including it in package
+	# The installer will write a desktop file in $HOME/.local/share/applications/, so we redirect
+	# it to /tmp to avoid including it in package
 	HOME=/tmp fakechroot chroot "${pkgdir}" /${_installer} --mode unattended --prefix "/opt/${pkgname}"
 	rm "${pkgdir}"/${_installer}
 	rm -Rf "${pkgdir}/tmp"
@@ -94,3 +72,5 @@ package() {
 	ln -s /opt/${pkgname}/license.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 	ln -s /opt/${pkgname}/ida "${pkgdir}/usr/bin/ida-free"
 }
+
+# vim:set noet:
