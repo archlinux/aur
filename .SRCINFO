@@ -1,0 +1,20 @@
+pkgbase = r-crs
+	pkgdesc = Categorical Regression Splines
+	pkgver = 0.15.46
+	pkgrel = 2
+	url = https://cran.r-project.org/package=crs
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = r-quantreg
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-logspline
+	optdepends = r-quadprog
+	optdepends = r-rgl
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/crs_0.15-46.tar.gz
+	md5sums = 0ef6a6366557ce73942dfae5e49a0202
+	b2sums = 6c5d040e930b3dd9f7d83fae0f708432f19507e533bd2ea9a35dd591df565cf4d70e5c415632f327f89ed62fe32943dfad2e8e155ca8fc085717d7af61d31f1f
+
+pkgname = r-crs
