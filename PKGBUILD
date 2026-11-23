@@ -17,7 +17,7 @@ sha512sums=(
   'SKIP'
   '532aa6e0c37d874eb9f080991bdbdaa7dd1085b37465bda1ecca83c046c9ab756308db28de7b4e7fd301bb161e2f7d1f109cc6931e422d1d85e161b2f8add628'
 )
-options=()
+options=(!lto)
 provides=(linphone=${pkgver})
 
 prepare() {
