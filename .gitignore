@@ -1,7 +1,9 @@
-/mapnik
+/geometry
+/mapnik-git
 /mapnik-vector-tile
 /pkg
 /polylabel
 /src
 /test-data
+/variant
 *.zst

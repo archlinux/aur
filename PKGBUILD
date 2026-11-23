@@ -6,87 +6,101 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=mapnik-git
-pkgver=4.3.2.r0.g84107b6
+pkgver=4.4.0.r0.g46b2ffc
 pkgrel=1
-pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
-arch=('i686' 'x86_64')
+pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps'
+arch=('aarch64' 'i686' 'x86_64')
 url='https://github.com/mapnik/mapnik'
-license=('LGPL-2.1-or-later')
-depends=('boost-libs'
-         'cairo'
-         'freetype2'
-         'gdal'
-         'harfbuzz'
-         'icu'
-         'libavif'
-         'libjpeg-turbo'
-         'libpng'
-         'libtiff'
-         'libwebp'
-         'libxml2'
-         'postgresql-libs'
-         'proj'
-         'sqlite'
-         'ttf-dejavu')
-makedepends=('boost'
-             'cmake'
-             'git'
-             'mapbox-geometry.hpp'
-             'mapbox-variant'
-             'protozero'
-             'sparsehash')
-conflicts=('mapnik')
-options=(staticlibs)
+license=(
+  'BSD-3-Clause'
+  'ISC'
+  'LGPL-2.1-or-later'
+  'LicenseRef-AGG'
+)
+depends=(
+  'boost-libs'
+  'cairo'
+  'freetype2'
+  'gdal'
+  'harfbuzz'
+  'icu'
+  'libavif'
+  'libjpeg-turbo'
+  'libpng'
+  'libtiff'
+  'libwebp'
+  'libxml2'
+  'postgresql-libs'
+  'proj'
+  'sqlite'
+  'ttf-dejavu'
+)
+makedepends=(
+  'boost'
+  'cmake'
+  'git'
+  'protozero'
+  'sparsehash'
+)
 provides=('mapnik')
-source=('git+https://github.com/mapnik/mapnik.git'
-        'git+https://github.com/mapnik/mapnik-vector-tile.git'
-        'git+https://github.com/mapnik/polylabel.git'
-        'mapnik-use-system-sparsehash.patch'
-        'git+https://github.com/mapnik/test-data.git')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'dabb1b99540a6df86b34511d0d94ef505f706419b7e6d1d69314797ebcdce72f'
-            'SKIP')
+conflicts=('mapnik')
+options=('staticlibs')
+source=(
+  "${pkgname}::git+${url}.git"
+  'geometry::git+https://github.com/mapbox/geometry.hpp.git'
+  'git+https://github.com/mapbox/variant.git'
+  'git+https://github.com/mapnik/mapnik-vector-tile.git'
+  'git+https://github.com/mapnik/polylabel.git'
+  'git+https://github.com/mapnik/test-data.git'
+  'mapnik-use-system-sparsehash.patch'
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'dabb1b99540a6df86b34511d0d94ef505f706419b7e6d1d69314797ebcdce72f'
+)
 
 pkgver() {
-  git -C mapnik describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "${pkgname}" describe --long --tags --abbrev=7 | sed --regexp-extended 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  patch -d mapnik -Np1 < mapnik-use-system-sparsehash.patch
+  git -C "${pkgname}" submodule init \
+    deps/mapbox/geometry \
+    deps/mapbox/mapnik-vector-tile \
+    deps/mapbox/polylabel \
+    deps/mapbox/variant \
+    test/data
 
-  git -C mapnik submodule init test/data
-  git -C mapnik config submodule.test/data.url "${srcdir}"/test-data
-  git -C mapnik -c protocol.file.allow=always submodule update test/data
+  git -C "${pkgname}" \
+    -c protocol.file.allow=always \
+    -c submodule.deps/mapbox/geometry.url="${srcdir}/geometry" \
+    -c submodule.deps/mapbox/mapnik-vector-tile.url="${srcdir}/mapnik-vector-tile" \
+    -c submodule.deps/mapbox/polylabel.url="${srcdir}/polylabel" \
+    -c submodule.deps/mapbox/variant.url="${srcdir}/variant" \
+    -c submodule.test/data.url="${srcdir}/test-data" \
+    submodule update
 
-  git -C mapnik submodule init deps/mapbox/mapnik-vector-tile
-  git -C mapnik config submodule.deps/mapbox/mapnik-vector-tile.url "${srcdir}"/mapnik-vector-tile
-  git -C mapnik -c protocol.file.allow=always submodule update deps/mapbox/mapnik-vector-tile
-
-  git -C mapnik submodule init deps/mapbox/polylabel
-  git -C mapnik config submodule.deps/mapbox/polylabel.url "${srcdir}"/polylabel
-  git -C mapnik -c protocol.file.allow=always submodule update deps/mapbox/polylabel
-
-  # Remove bundled sparsehash directory in favor of 'sparsehash' package
-  rm -rf deps/mapnik/sparsehash
-
-  export CXXFLAGS CFLAGS LDFLAGS
-  cmake -B build -S mapnik \
-    -D BUILD_BENCHMARK:BOOL=OFF \
-    -D BUILD_DEMO_CPP:BOOL=OFF \
-    -D BUILD_DEMO_VIEWER:BOOL=OFF \
-    -D CMAKE_INSTALL_PREFIX:PATH=/usr \
-    -D FONTS_INSTALL_DIR:PATH=share/fonts/TTF \
-    -D USE_EXTERNAL_MAPBOX_GEOMETRY:BOOL=ON \
-    -D USE_EXTERNAL_MAPBOX_POLYLABEL:BOOL=ON \
-    -D USE_EXTERNAL_MAPBOX_PROTOZERO:BOOL=ON \
-    -D USE_EXTERNAL_MAPBOX_VARIANT:BOOL=ON \
-    -W no-dev
+  # Use system 'sparsehash' package instead of bundled copy
+  patch --directory="${pkgname}" --strip=1 --input="${srcdir}/mapnik-use-system-sparsehash.patch"
+  rm --recursive --force "${pkgname}/deps/mapnik/sparsehash"
 }
 
 build() {
-  export MAKEFLAGS
+  cmake -B build -S "${pkgname}" \
+    -D BUILD_BENCHMARK:BOOL=OFF \
+    -D BUILD_DEMO_CPP:BOOL=OFF \
+    -D BUILD_DEMO_VIEWER:BOOL=OFF \
+    -D CMAKE_BUILD_TYPE:STRING=None \
+    -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+    -D FONTS_INSTALL_DIR:PATH=share/fonts/TTF \
+    -D USE_EXTERNAL_MAPBOX_PROTOZERO:BOOL=ON \
+    -W no-dev
+
   cmake --build build
 }
 
@@ -97,17 +111,20 @@ check() {
     --test-dir build
 }
 
-package(){
+package() {
   # Remove bundled dejavu fonts from cmake_install.cmake in favor of 'ttf-dejavu' package
-  sed -i '/dejavu-fonts-ttf/d' "${srcdir}"/build/cmake_install.cmake
+  sed --in-place '/dejavu-fonts-ttf/d' "${srcdir}/build/cmake_install.cmake"
 
   # Install to pkgdir
   DESTDIR="${pkgdir}" cmake --install build
 
-  # License
-  install -Dm644 "${srcdir}"/mapnik/COPYING "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  # Licenses (LGPL-2.1-or-later is provided by the 'licenses' package)
+  install -D --mode=644 "${srcdir}/${pkgname}/deps/agg/copying" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.agg"
+  install -D --mode=644 "${srcdir}/${pkgname}/deps/mapbox/geometry/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.geometry"
+  install -D --mode=644 "${srcdir}/${pkgname}/deps/mapbox/mapnik-vector-tile/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.mapnik-vector-tile"
+  install -D --mode=644 "${srcdir}/${pkgname}/deps/mapbox/polylabel/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.polylabel"
+  install -D --mode=644 "${srcdir}/${pkgname}/deps/mapbox/variant/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.variant"
 
   # Remove usr/share/fonts directory
-  pushd "${pkgdir}" || return
-  rm -rf usr/share/fonts
+  rm --recursive --force "${pkgdir}/usr/share/fonts"
 }
