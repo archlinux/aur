@@ -1,12 +1,16 @@
 # Maintainer: HanHaocheng <hanhaocheng@archlinux>
 #
-# DevEco Device Tool is behind a logged-in download page and its URL is
-# signature-bearing, so the source list is intentionally empty. Provide the
-# *Linux* zip at build time: copy its download link and run
-#   ./deveco-devicetool-url
-# or
-#   DEVECO_DEVICETOOL_URL='<signed url>' makepkg -si
-# or drop devicetool-linux-tool-<version>.zip next to this PKGBUILD.
+# DevEco Device Tool needs no login: the vendor page embeds a pre-signed
+# (HW-CC-*) URL that every anonymous visitor receives, valid for 10 years.
+# It is pinned in _devicetool_url below, so this package builds unattended:
+#   https://device.harmonyos.com/cn/develop/ide
+# The URL carries no account data; refresh it together with pkgver when
+# upstream ships a new build. Local override still works:
+#   DEVECO_DEVICETOOL_URL='<fresh url>' makepkg -si
+#   or drop devicetool-linux-tool-<version>.zip next to this PKGBUILD.
+#
+# Bundled EULA (agrType=1137), for LicenseRef-Huawei-EULA:
+#   https://terms-drcn.platform.hicloud.com/agreementservice/developer/getAgreementTemplate?agrType=1137&country=cn&language=zh_cn&version=2021053101
 #
 # The package acts as the installer: it runs the vendored install.py under
 # python3.9 into $pkgdir/opt (offline, --all-in-one 0), relocates the venv paths
@@ -23,8 +27,11 @@ depends=('python39' 'unzip')
 makedepends=('python39')
 optdepends=('code: IDE that loads the bundled DevEco Device Tool extensions')
 options=('!strip')
-source=()
-sha256sums=()
+# Pre-signed CDN link, same for anonymous visitors, expires 2033-09.
+_devicetool_url='https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_package_901_9/4e/v3/lGclRHBmTLWHOm_LkEJ46g/devicetool-linux-tool-4.0.0.400.zip?HW-CC-KV=V1&HW-CC-Date=20230904T063206Z&HW-CC-Expire=315360000&HW-CC-Sign=9FCEEF20362FDAAE404DA2B838BF6EBDC5074446A4209F487E75059BB471EF6E'
+source=("devicetool-linux-tool-${pkgver}.zip::${_devicetool_url}")
+# CDN ETag; a bare 32-hex ETag means single-part upload, i.e. the file's MD5.
+md5sums=('d7b28f2be0df786f7ad8566c4bf43dbf')
 
 _zip_glob=devicetool-linux-tool-*.zip
 _root=opt/Huawei/DevEco-Device-Tool

@@ -10,5 +10,7 @@ pkgbase = deveco-devicetool
 	depends = unzip
 	optdepends = code: IDE that loads the bundled DevEco Device Tool extensions
 	options = !strip
+	source = devicetool-linux-tool-4.0.0.400.zip::https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_package_901_9/4e/v3/lGclRHBmTLWHOm_LkEJ46g/devicetool-linux-tool-4.0.0.400.zip?HW-CC-KV=V1&HW-CC-Date=20230904T063206Z&HW-CC-Expire=315360000&HW-CC-Sign=9FCEEF20362FDAAE404DA2B838BF6EBDC5074446A4209F487E75059BB471EF6E
+	md5sums = d7b28f2be0df786f7ad8566c4bf43dbf
 
 pkgname = deveco-devicetool

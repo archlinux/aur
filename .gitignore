@@ -2,4 +2,7 @@ pkg/
 src/
 *.pkg.tar.zst
 build.log
+dt-build.log
 devicetool-*.zip
+.spike/
+*.log
