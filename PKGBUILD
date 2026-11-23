@@ -1,6 +1,13 @@
 # Maintainer: graysky <graysky AT proton DOT me>
 # Contributor: y0sif <https://github.com/y0sif>
 
+# Backends to build: any of cpu, cuda, vulkan (default: all three).
+# Only the matching packages and their makedepends are pulled in, e.g.
+#   _backends=vulkan makepkg -si         -> whisrs-vulkan only
+#   _backends="cpu cuda" makepkg -s      -> whisrs and whisrs-cuda
+: "${_backends:=cpu cuda vulkan}"
+_want() { [[ " $_backends " == *" $1 "* ]]; }
+
 # CUDA device architectures. 120a-real is Blackwell (RTX 50-series); add more
 # entries, e.g. "86-real;89-real;120a-real", to cover other cards. Leave empty
 # and ggml picks "native", which needs an NVIDIA card visible to nvcc while
@@ -8,15 +15,18 @@
 _cuda_arch=
 
 pkgbase=whisrs
-pkgname=(whisrs whisrs-cuda whisrs-vulkan)
+pkgname=()
+makedepends=(cargo clang cmake)
+_want cpu && pkgname+=(whisrs)
+_want cuda && pkgname+=(whisrs-cuda) && makedepends+=(cuda)
+_want vulkan && pkgname+=(whisrs-vulkan) && makedepends+=(vulkan-headers vulkan-icd-loader shaderc)
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-first voice-to-text dictation tool, written in Rust'
 arch=(x86_64)
 url='https://github.com/y0sif/whisrs'
 license=(MIT)
 depends=(gcc-libs alsa-lib libxkbcommon)
-makedepends=(cargo clang cmake cuda vulkan-headers vulkan-icd-loader shaderc)
 options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
@@ -54,9 +64,15 @@ build() {
 
   # One target dir per flavor: the GPU backend is a compile-time feature of
   # the bundled whisper.cpp, so each needs its own build of it.
-  CARGO_TARGET_DIR=target-cpu cargo build --frozen --release
-  (_cuda_env; CARGO_TARGET_DIR=target-cuda cargo build --frozen --release --features cuda)
-  CARGO_TARGET_DIR=target-vulkan cargo build --frozen --release --features vulkan
+  if _want cpu; then
+    CARGO_TARGET_DIR=target-cpu cargo build --frozen --release
+  fi
+  if _want cuda; then
+    (_cuda_env; CARGO_TARGET_DIR=target-cuda cargo build --frozen --release --features cuda)
+  fi
+  if _want vulkan; then
+    CARGO_TARGET_DIR=target-vulkan cargo build --frozen --release --features vulkan
+  fi
 }
 
 _package() {
