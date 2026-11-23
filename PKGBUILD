@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=pairedGSEA
-_pkgver=1.6.0
+_pkgver=1.12.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,7 +17,9 @@ depends=(
   r-fgsea
   r-ggplot2
   r-limma
+  r-msigdbr
   r-s4vectors
+  r-showtext
   r-summarizedexperiment
   r-sva
 )
@@ -32,7 +34,6 @@ optdepends=(
   r-biocstyle
   r-covr
   r-knitr
-  r-msigdbr
   r-plotly
   r-readr
   r-readxl
@@ -42,8 +43,8 @@ optdepends=(
   r-writexl
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d182fc70ccc15823d971e759d93a8ad9')
-b2sums=('734498c3562851937bc5d01f0e4beb7faf0c6d4415a192c74467dbd47c4b7c22d587d72432df57dde8a1c492f8430a85a0b6741f1628abbf0d0b511ab14f6284')
+md5sums=('2b1def61b8133c994947582fbab7a08c')
+b2sums=('cf90197f0d3c87908eedb644cf58462ae79a61f55e58013ffecf672d40616bc47e59755a031f80236a657061ef9ff17d4d73f31a526a17c7fbce93607eea27bc')
 
 build() {
   mkdir build
