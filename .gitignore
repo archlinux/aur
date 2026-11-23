@@ -1,0 +1,18 @@
+# makepkg output
+/pkg/
+/src/
+/*.pkg.tar*
+
+# Downloaded upstream release archives and AppImages
+/*.AppImage
+/*.zip
+/*.tar.gz
+/*.tar.xz
+/*.tar.zst
+
+# makepkg/AUR temporary files
+/*.log
+/*.log.*
+/*.part
+
+# Keep PKGBUILD and .SRCINFO tracked.
