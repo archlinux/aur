@@ -1,0 +1,21 @@
+pkgbase = leandoc-bin
+	pkgdesc = A focused, read-only offline viewer for Word documents
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://abooodbah.github.io/leandoc/
+	arch = x86_64
+	license = MIT
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = libgcc
+	depends = libsoup3
+	depends = libstdc++
+	depends = webkitgtk-6.0
+	depends = hicolor-icon-theme
+	provides = leandoc
+	conflicts = leandoc
+	source = https://github.com/abooodbah/leandoc/releases/download/v0.3.3/LeanDoc-v0.3.3-linux-x86_64.deb
+	sha256sums = 5e72fdbaa583c327d40e12f00827ea5fd4d6c27fb6d082a5670bc0dc29d8fbd8
+
+pkgname = leandoc-bin
