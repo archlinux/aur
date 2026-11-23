@@ -1,6 +1,6 @@
 pkgbase = z-code
 	pkgdesc = AI coding agent desktop app by Z.ai
-	pkgver = 3.18.2_10443
+	pkgver = 4.0.0_10870
 	pkgrel = 1
 	url = https://zcode.z.ai/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = z-code
 	depends = xdg-utils
 	depends = util-linux-libs
 	optdepends = libappindicator-gtk3: System tray support
-	provides = zcode=3.18.2_10443
+	provides = zcode=4.0.0_10870
 	conflicts = zcode
 	conflicts = zcode-bin
 	conflicts = z-code-bin
@@ -27,9 +27,9 @@ pkgbase = z-code
 	source = z-code.desktop
 	b2sums = eac2332eb52f8a6b079120c6d7b30124409f96eafc12d192074e9c8b26ddcb0b3e09876236ccf48894c1bf057c9c6376e090eae8bbdfa9ac361ddc42e3f17aee
 	b2sums = 0b3a5b925482fc438cdca38ec75e5dcdbbfdf034383a867cfbb0583c2cb5e2d6f535906c5d51fa71c7c2f0440f4fc781b89ae8bc8acfa747faa131cd98cceb7b
-	source_x86_64 = https://cdn-zcode.z.ai/zcode/electron/releases/3.18.2/linux-x64/ZCode-3.18.2-linux-x64.deb
-	b2sums_x86_64 = f4d52f63530123a58586c1f242a5a182b9321290c1ed0dc0335f3b371e8904919eca1da726a01493734b83faad7e684191fac16d6a28ae22ab055e3439e15712
-	source_aarch64 = https://cdn-zcode.z.ai/zcode/electron/releases/3.18.2/linux-arm64/ZCode-3.18.2-linux-arm64.deb
-	b2sums_aarch64 = aec404da23a860493b69dcb975c89cc70da7be2982c80e047234604433cc086d7033cceaa4b7075a1aad9067c25abcfceec43322a966f78afe1874b6148147b0
+	source_x86_64 = https://cdn-zcode.z.ai/zcode/electron/releases/4.0.0/linux-x64/ZCode-4.0.0-linux-x64.deb
+	b2sums_x86_64 = ca14d49ee8e82c45311abcb3bdc45e87b7162c98685cc351d8a7888b9fd5eb9bef059ed25fdd4aa57184917092a33043863ca279bc5db823b72d4c07e6233180
+	source_aarch64 = https://cdn-zcode.z.ai/zcode/electron/releases/4.0.0/linux-arm64/ZCode-4.0.0-linux-arm64.deb
+	b2sums_aarch64 = fade97ddf32f9952a1340a340ac45bb55b8e3d9947158c71cff79822b8b1e75c151dae2c98bd2f26e6a5b364095f135f8767279ec2f6cb6a4f2d92cd5a254fc9
 
 pkgname = z-code
