@@ -25,6 +25,7 @@ pkgbase = vcmi
 	depends = fuzzylite
 	depends = luajit
 	depends = libsquish
+	depends = qt6-svg
 	depends = minizip
 	optdepends = innoextract: required by vcmibuilder
 	optdepends = unshield: required by vcmibuilder
