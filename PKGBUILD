@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OmnipathR
-_pkgver=3.14.0
+_pkgver=4.0.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,7 +16,8 @@ depends=(
   r-curl
   r-digest
   r-dplyr
-  r-httr
+  r-fs
+  r-httr2
   r-igraph
   r-jsonlite
   r-later
@@ -30,7 +31,7 @@ depends=(
   r-readxl
   r-rlang
   r-rmarkdown
-  r-rvest
+  r-sessioninfo
   r-stringi
   r-stringr
   r-tibble
@@ -58,16 +59,15 @@ optdepends=(
   r-mlrmbo
   r-parallelmap
   r-paramhelpers
-  r-rgraphviz
+  r-sbmlr
   r-sigmajs
   r-smoof
-  r-suprahex
   r-testthat
   r-r.matlab
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d2e2da1697eb72a8c6313883043682ca')
-b2sums=('e6f82a9ae8bea3952bb6a0d5f54c0e904b8e280101007d771da274bdfeb5f57496dee11706666ec6dc1847375b1687307d2ddc84394f099443864b643e5bcd6e')
+md5sums=('7509a1181863f35a51c55fae5afec636')
+b2sums=('dbe47e7e842ce9879bb75db2efadfa4457e8eea71699473a376980ed2d6f79a1f414829590645bf954d20c85d4eac20b683f5cbdc07db6860a396be36d875a88')
 
 build() {
   mkdir build
