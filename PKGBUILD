@@ -9,7 +9,7 @@
 # changed their bytes before. The crate carries its own `Cargo.lock`, so `--locked`/`--frozen`
 # reproduce the dependency set the release was published with.
 pkgname=stikk
-pkgver=0.20.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc='A terminal UI for the prikk version control system'
 arch=('x86_64' 'aarch64')
@@ -36,7 +36,7 @@ options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 # From the crates.io index's own `cksum` for this version, and the downloaded crate is checked
 # against it before this file is written.
-sha256sums=('e92e9912bd6141a4c5cbf69447e8329f3e3086f9553ed74e35aa236ec57d6953')
+sha256sums=('1990ad527e67777f21a9e04633f7242488c6b956952b6dfa1dfd09db64b13292')
 
 prepare() {
   cd "$pkgname-$pkgver"
