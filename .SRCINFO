@@ -1,6 +1,6 @@
 pkgbase = r-superlearner
 	pkgdesc = Super Learner Prediction
-	pkgver = 2.0.40
+	pkgver = 2.0.42
 	pkgrel = 1
 	url = https://cran.r-project.org/package=SuperLearner
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = r-superlearner
 	depends = r-cvauc
 	depends = r-gam
 	depends = r-nnls
+	depends = r-rlang
 	optdepends = r-arm
 	optdepends = r-bartmachine
 	optdepends = r-biglasso
@@ -18,7 +19,6 @@ pkgbase = r-superlearner
 	optdepends = r-devtools
 	optdepends = r-e1071
 	optdepends = r-earth
-	optdepends = r-extratrees
 	optdepends = r-gbm
 	optdepends = r-genefilter
 	optdepends = r-ggplot2
@@ -49,7 +49,7 @@ pkgbase = r-superlearner
 	optdepends = r-sva
 	optdepends = r-testthat
 	optdepends = r-xgboost
-	source = https://cran.r-project.org/src/contrib/SuperLearner_2.0-40.tar.gz
-	sha256sums = 3f7af5bd2d077369aa2c4a157face7f2dc664984bd059fd76ca65b33cc981f92
+	source = https://cran.r-project.org/src/contrib/SuperLearner_2.0-42.tar.gz
+	sha256sums = e984a0e0f72d5d3ea4217293f8e278a9bcab06f412be728603689b09073fab3a
 
 pkgname = r-superlearner
