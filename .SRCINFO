@@ -1,6 +1,6 @@
 pkgbase = youtube-music-for-desktop-bin
 	pkgdesc = Beautiful Youtube Music desktop app with customizations for users and developers.
-	pkgver = 1.8.6
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://youtube-music.app/
 	arch = aarch64
@@ -8,15 +8,17 @@ pkgbase = youtube-music-for-desktop-bin
 	license = CC0-1.0
 	depends = electron43
 	depends = nodejs
-	provides = youtube-music-for-desktop=1.8.6
+	provides = youtube-music-for-desktop=1.9.0
 	conflicts = youtube-music-for-desktop
-	source = LICENSE-1.8.6::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v1.8.6/LICENSE
+	source = LICENSE-1.9.0::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v1.9.0/LICENSE
+	source = youtube-music-for-desktop.js
 	source = youtube-music-for-desktop.sh
 	sha256sums = 33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6
-	sha256sums = a175afba52c8032d84ffe4277eec56f2e4868ae55692a741266b806b98b89953
-	source_aarch64 = youtube-music-for-desktop-1.8.6-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.8.6/YouTube-Music-for-Desktop-1.8.6-arm64.AppImage
-	sha256sums_aarch64 = 3aad8f9d2846841d60ee5cdb95ba51030405872b23971661af19d5b56dc63d85
-	source_x86_64 = youtube-music-for-desktop-1.8.6-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.8.6/YouTube-Music-for-Desktop-1.8.6.AppImage
-	sha256sums_x86_64 = 2911cbc762df93e8c85181b98b8e65b207028747647785ec7d0817d1db5847d8
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = youtube-music-for-desktop-1.9.0-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.9.0/YouTube-Music-for-Desktop-1.9.0-arm64.AppImage
+	sha256sums_aarch64 = 023659e1ddc9449aaaef618318e43c8bf9b4c4a001822ac89400216fc045bbf3
+	source_x86_64 = youtube-music-for-desktop-1.9.0-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.9.0/YouTube-Music-for-Desktop-1.9.0.AppImage
+	sha256sums_x86_64 = 22fc1ffb2c525c5cf17171d3d6401a17e3622299603f5efe274eceafb5c85354
 
 pkgname = youtube-music-for-desktop-bin
