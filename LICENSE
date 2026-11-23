@@ -1,0 +1,11 @@
+Fly.io Sprites CLI — licensing notice
+
+Fly.io distributes the Sprites CLI binary but does not include a standalone
+CLI license with this release. This packaging notice is not a license and
+does not grant redistribution rights.
+
+Fly.io Terms of Service (see section 2.1, Fly.io Technology):
+https://fly.io/legal/terms-of-service/
+
+Official CLI distribution:
+https://docs.fly.io/sprites/cli/installation

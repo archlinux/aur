@@ -1,0 +1,20 @@
+pkgbase = sprites-bin
+	pkgdesc = Command-line client for managing Fly.io Sprites
+	pkgver = 2026.11.03
+	pkgrel = 1
+	url = https://sprites.dev/
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Proprietary
+	provides = sprites
+	conflicts = sprites
+	options = !strip
+	options = !debug
+	source = LICENSE
+	sha256sums = b0886302042a3e96605770ac26268912fe226da9135dbc5a67740e05e0711bde
+	source_x86_64 = sprite-2026-11-03-linux-x86_64::https://sprites.dev/dl/client/2026-11-03/sprite-linux-x86_64
+	sha256sums_x86_64 = 731af477ecf7328fd188c67b3649874c9107b6f0097c25888d0dd17aad823527
+	source_aarch64 = sprite-2026-11-03-linux-aarch64::https://sprites.dev/dl/client/2026-11-03/sprite-linux-aarch64
+	sha256sums_aarch64 = c82c83bfed28e4b67c2c6bf63b0aecb9addc4c568eccb6aef399f21bfcc6d486
+
+pkgname = sprites-bin
