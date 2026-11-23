@@ -1,7 +1,7 @@
 # Maintainer: Carlos Prieto Ortiz <prietus@live.com>
 
 pkgname=hasklets
-pkgver=0.1.2.0
+pkgver=0.1.3.0
 pkgrel=1
 pkgdesc='Desktop widgets for Wayland (weather, system, media, disks, processes, calendar) in Haskell'
 url='https://github.com/prietus/hasklets'
@@ -9,7 +9,8 @@ arch=('x86_64' 'aarch64')
 license=('BSD-3-Clause')
 depends=('gtk4' 'gtk4-layer-shell' 'cairo' 'pango' 'gdk-pixbuf2' 'glib2'
          'gobject-introspection-runtime' 'gmp' 'libffi')
-optdepends=('curl: weather, calendars and cover art served over HTTP')
+optdepends=('curl: weather, calendars and cover art served over HTTP'
+            'inter-font: the font of most themes')
 # hasklets is a plain program, nothing is compiled against it at run time,
 # and Arch has no packages of the GTK 4 bindings it uses (gi-gtk4,
 # gi-gtk4-layer-shell). So the Haskell libraries come from Hackage and are
@@ -18,7 +19,7 @@ makedepends=('ghc' 'ghc-static' 'cabal-install' 'gobject-introspection')
 # The C parts of the libraries end up in archives that GHC links, without LTO.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('66ea725c7ec365a9898d0b64d25092b369d8cd2ea70e93cb95f17ea8b1777f9b')
+sha256sums=('3814911c6b0dda6fc51e0a3265b74c055e4dd85e5a7e35c0bd518ae44172700f')
 
 # Arch's haskell-* packages (cabal-install itself depends on some) are
 # registered in GHC's global package database, so cabal would pick them
