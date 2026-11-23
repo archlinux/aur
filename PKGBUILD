@@ -4,7 +4,7 @@
 pkgname=claude-desktop-aegix-bin
 _pkgname=claude-desktop
 pkgver=6.28899.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop application for Claude.ai (official Linux build, repackaged for Arch/Artix/Aegix)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/aegixlinux/claude-desktop-aegix"

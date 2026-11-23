@@ -5,14 +5,17 @@
 #   ${XDG_CONFIG_HOME:-~/.config}/claude-desktop-flags.conf
 # (lines starting with # are ignored). If that file exists, it fully decides
 # the flags. If it does not exist and the NVIDIA proprietary driver is in use
-# on X11, flags known to fix "eglInitialize ... Could not create a backing
-# OpenGL context" are applied automatically.
+# on X11, the app runs with software rendering (--disable-gpu). GPU rendering
+# on that driver either fails at startup ("eglInitialize ... Could not create
+# a backing OpenGL context") or, with --use-angle=gl-egl, starts and then
+# stops presenting frames: the window turns see-through or freezes on its
+# last picture while the app keeps running. See the README.
 conf="${XDG_CONFIG_HOME:-$HOME/.config}/claude-desktop-flags.conf"
 flags=""
 if [ -r "$conf" ]; then
   flags=$(grep -v '^[[:space:]]*#' "$conf" | tr '\n' ' ')
 elif [ -e /proc/driver/nvidia/version ] && [ "${XDG_SESSION_TYPE:-x11}" != "wayland" ] && [ -z "$WAYLAND_DISPLAY" ]; then
-  flags="--ozone-platform=x11 --use-angle=gl-egl"
+  flags="--ozone-platform=x11 --disable-gpu"
 fi
 # shellcheck disable=SC2086
 exec /usr/lib/claude-desktop/claude-desktop $flags "$@"
