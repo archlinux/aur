@@ -15,6 +15,7 @@ depends=(
   python-cachetools
   python-cbor2
   python-cloudpickle
+  python-compressed-tensors
   python-diskcache
   python-einops
   python-fastapi
@@ -26,7 +27,9 @@ depends=(
   python-mistral-common
   python-msgspec
   python-openai
+  python-openai-harmony
   python-opencv
+  python-orjson
   python-partial-json-parser
   python-prometheus-fastapi-instrumentator
   python-psutil
@@ -43,6 +46,7 @@ depends=(
   python-tqdm
   python-transformers
   python-triton
+  python-tvm-ffi
   python-uvloop
   python-watchfiles
   rocblas
@@ -56,6 +60,7 @@ makedepends=(
   python-installer
   python-setuptools
   python-setuptools-scm
+  python-setuptools-rust
   python-build
 )
 
@@ -65,7 +70,6 @@ optdepends=(
   'python-outlines: guided text generation'
   'python-lark: parsing toolkit'
   'python-typing_extensions: typing hints'
-  'python-compressed-tensors: required to load compressed tensor files (eg. for GPT OSS)'
   'python-torchaudio: required for image processor of minicpm-o-2.6'
   'python-datasets: tools to benchmark scripts'
 #not currently in aur
