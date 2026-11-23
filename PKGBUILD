@@ -1,6 +1,6 @@
 # Maintainer: KADHIRAVANEG <kadhiravanegk@gmail.com>
 pkgname=nodewipe
-pkgver=0.9.9
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Find and reclaim disk space from stray dev artifacts (node_modules, Python venvs, Rust/Java/JS build caches, and more)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 provides=('nodewipe')
 conflicts=('nodewipe-bin')
 source=("nodewipe-${pkgver}::https://github.com/KADHIRAVANEG/nodewipe/releases/download/v${pkgver}/nodewipe-linux-x86_64")
-sha256sums=('22e7e97ed58d031b67e5e07985082d58356173849cd61bc06a4ff1222dc8d29a')
+sha256sums=('8b7830e08039409621e70ddb5ce6a72704519a6fcdff89b3b201c3c4fb4b41f9')
 
 package() {
     local bin="${pkgdir}/usr/bin/nodewipe"
