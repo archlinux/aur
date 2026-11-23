@@ -1,35 +1,36 @@
-# Maintainer: Maxim Balashov <me@rsg.su>
+# Maintainer: Youknow-sys <samani0019 at gmail dot com>
 
 pkgname=ayugram-desktop-bin
-pkgver=7.0.9
-pkgrel=5
+pkgver=7.2.9
+_cachyrel=4
+pkgrel=1
 pkgdesc="Desktop Telegram client with good customization and Ghost mode"
-arch=(x86_64)
+arch=('x86_64')
 url="https://github.com/AyuGram/AyuGramDesktop"
 license=('GPL-3.0-or-later')
 depends=(
     'abseil-cpp' 'ada' 'ffmpeg' 'glib2' 'glibc' 'hicolor-icon-theme'
-    'hunspell' 'kcoreaddons' 'libavif' 'libdispatch' 'libgcc' 'libheif'
-    'libjpeg-turbo' 'libjxl' 'libstdc++' 'libvpx' 'libx11' 'libxcb'
-    'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon'
-    'libxrandr' 'libxtst' 'lz4' 'minizip' 'openal' 'openh264' 'openssl'
-    'opus' 'libpipewire' 'protobuf' 'qt6-base' 'qt6-declarative'
-    'qt6-svg' 'qt6-wayland' 'rnnoise'
-    'xcb-util-keysyms' 'xxhash' 'zlib' 'libfido2' 'qt6-imageformats'
+    'hunspell' 'kcoreaddons' 'libavif' 'libfido2' 'libgcc' 'libheif'
+    'libjpeg-turbo' 'libjxl' 'libpipewire' 'libsrtp' 'libstdc++' 'libvpx'
+    'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes'
+    'libxkbcommon' 'libxrandr' 'libxtst' 'lz4' 'minizip' 'openal'
+    'openh264' 'openssl' 'opus' 'qt6-base' 'qt6-declarative'
+    'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'rnnoise' 'tlottie'
+    'xxhash' 'zlib'
 )
 optdepends=(
     'geoclue: geoinformation support'
-    'geocode-glib-2: geocoding support'
-    'webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1'
-    'webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (Wayland only)'
+    'crow-translate: translation provider'
+    'webkit2gtk-4.1: embedded browser (GTK3)'
+    'webkitgtk-6.0: embedded browser (GTK4)'
     'xdg-desktop-portal: desktop integration'
 )
 provides=('ayugram-desktop')
 conflicts=('ayugram-desktop')
-options=('!debug')
+options=('!debug' '!strip')
 
-source=("https://cdn77.cachyos.org/repo/${CARCH}/cachyos/ayugram-desktop-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst")
-sha256sums=('b927bd5510e236b18ae67fb59a0b19bf927d203e37239ae0e65ff893a89ef73b')
+source=("https://cdn77.cachyos.org/repo/${CARCH}/cachyos/ayugram-desktop-${pkgver}-${_cachyrel}-${CARCH}.pkg.tar.zst")
+sha256sums=('d411231c15ecf2b78dadf839a0f1f93b84c855f0506e51c50babb04b6f4a64a8')
 
 package() {
     # Binary
