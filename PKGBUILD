@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDRstyle
-_pkgver=1.4.3
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,15 +25,17 @@ depends=(
   r-biocstyle
 )
 checkdepends=(
+  r-pkgdown
   r-testthat
 )
 optdepends=(
   r-knitr
+  r-pkgdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('01a503b44970dfcbe8cb651ad5521470')
-b2sums=('57b932f328f400c41f51eb83fd12b538b9be08a7a914e63f6bebec4822baf2e93cd17b95b4c2df528beed399bd8e059c1fae60e6c4fd744923566706631f0e09')
+md5sums=('8da61129e0a206c6d788a5cabb841c40')
+b2sums=('5225b4b66f4a7812c46a55df9fe314f6425d30434c88fc94be79103c80efa22b25078e76deee3a92eb2ef61dda3b545982a7e28c44bcfb0cfa61f41f215dc190')
 
 build() {
   mkdir build
