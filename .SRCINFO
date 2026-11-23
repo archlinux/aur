@@ -1,6 +1,6 @@
 pkgbase = pi-harness-bin
 	pkgdesc = Operational Superset Harness and Desktop Control Plane for Pi Coding Agent.
-	pkgver = 2.4.12
+	pkgver = 2.4.17
 	pkgrel = 1
 	url = https://github.com/wangmiaozero/pi-harness
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = pi-harness-bin
 	depends = npm
 	depends = python
 	depends = python-packaging
-	provides = pi-harness=2.4.12
+	provides = pi-harness=2.4.17
 	conflicts = pi-harness
 	options = !strip
 	options = !emptydirs
-	source = pi-harness-2.4.12-x86_64.AppImage::https://github.com/wangmiaozero/pi-harness/releases/download/v2.4.12/Pi-Harness-2.4.12.AppImage
+	source = pi-harness-2.4.17-x86_64.AppImage::https://github.com/wangmiaozero/pi-harness/releases/download/v2.4.17/Pi-Harness-2.4.17.AppImage
 	source = pi-harness.js
 	source = pi-harness.sh
-	sha256sums = 93156f0f618052e32c47b5ad75a171705594ffe3bf2fa15563aceb7a37fc6969
+	sha256sums = 273d69b4e02b1910ea38e02609591b987f0d0fbfed92ef5deb05ea362f36b91b
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
