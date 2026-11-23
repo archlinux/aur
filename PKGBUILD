@@ -1,6 +1,6 @@
 # Maintainer: washan
 pkgname=kandev-bin
-pkgver=0.102.0
+pkgver=0.103.0
 pkgrel=1
 pkgdesc='Orchestrate AI coding agents in a Kanban workspace (prebuilt CLI)'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ conflicts=('kandev')
 options=('!strip' '!debug')
 source_x86_64=("kandev-${pkgver}-linux-x64-full.tar.gz::${url}/releases/download/v${pkgver}/kandev-linux-x64-full.tar.gz")
 source_aarch64=("kandev-${pkgver}-linux-arm64-full.tar.gz::${url}/releases/download/v${pkgver}/kandev-linux-arm64-full.tar.gz")
-sha256sums_x86_64=('4c3da6006f5efbc23cc1154b1157fa0aca61f750df22484efa73520af7bd0b36')
-sha256sums_aarch64=('7c96b4f3793d8f3f5d31ee0c9fb911edb0d3eb911a13dafca3487370dd8e4a0b')
+sha256sums_x86_64=('451ce3ae1399f226e909ad99f861aa1e7af46e2aa0f14ab704f1cfc8d78a992e')
+sha256sums_aarch64=('196d949465cbaa7eb792fe5df3d940c6d311205ae07430bb2b185ba6a33d2776')
 
 package() {
   cd "${srcdir}/kandev"
