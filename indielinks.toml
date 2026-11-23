@@ -4,7 +4,7 @@ log-file = "/var/log/indielinks/indielinks.log"
 public-address = "0.0.0.0:20676"
 private-address = "127.0.0.1:20677"
 raft-grpc-address = "127.0.0.1:20678"
-user-agent = "indielinks/0.0.1; +sp1ff@pobox.com"
+user-agent = "indielinks/0.0.11; +sp1ff@pobox.com"
 assets = "/usr/share/indielinks/assets"
 collection-page-size = 64
 contact-email = "admin@indiemark.local"
@@ -67,7 +67,7 @@ port = 18443
 Ipv4Address = "127.0.0.1"
 
 [background-tasks]
-default-timeout = { secs = 5, nanos = 0 }
+task-timeout = { secs = 300, nanos = 0 } # five minutes
 max-concurrent-tasks = 16
 sleep-duration = { secs = 600, nanos = 0 } # ten minutes
 shutdown-timeout = { secs = 0, nanos = 500000000 } # "500ms"
@@ -85,7 +85,7 @@ LogsSinceLast = 5000
 
 [client-configuration]
 timeout = [
-    5,
+    10,
     0,
 ]
 
@@ -107,7 +107,7 @@ secs = 1
 
 [general-purpose-client-configuration]
 timeout = [
-    3,
+    5,
     0,
 ]
 

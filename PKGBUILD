@@ -2,7 +2,7 @@
 
 pkgname=indielinks-git
 _pkgname=${pkgname%-git}
-pkgver=v0.0.8.r18.g4ba045b
+pkgver=v0.0.10.r13.g7b77274
 pkgrel=1
 pkgdesc="del.icio.us in the Fediverse (git version)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("${_pkgname}::git+https://github.com/sp1ff/indielinks.git"
         'indielinks.toml'
         'indielinks.service')
 sha256sums=('SKIP'
-            '432b623bccb75500ebf420cab8d039e9580f8ca42352f611cfd89185b26a9b24'
+            '8bccb6a0437b85965dbb8ee18a82cb49e7c22937f5a88022dbe18d151194f427'
             '4254ea7c35897861c280e540d2a467227ac66451c3b19730ef59efb512848493')
 _nproc=$(($(nproc)/4))
 if [ $_nproc -eq 0 ]; then
@@ -56,6 +56,8 @@ package() {
     install -Dm644 indielinks/assets/docs.md             "$pkgdir/usr/share/indielinks/templates/docs.md"
     install -Dm644 indielinks/assets/privacy-policy.md   "$pkgdir/usr/share/indielinks/templates/privacy-policy.md"
     install -Dm644 indielinks/assets/terms-of-service.md "$pkgdir/usr/share/indielinks/templates/terms-of-service.md"
+    install -Dm644 indielinks/assets/robots.txt          "$pkgdir/usr/share/indielinks/assets/robots.txt"
+    install -Dm644 indielinks/assets/llms.txt            "$pkgdir/usr/share/indielinks/assets/llms.txt"
     
     cd indielinks-fe/dist
     wasm=$(ls -1 indielinks-fe*.wasm)
@@ -68,10 +70,10 @@ package() {
     sed -i -e "s@${js}@indielinks-fe.js@g" index.html
     sed -i -e "s@${css}@style.css@g" index.html
 
-    install -Dm644 index.html         "$pkgdir/usr/share/indielinks/assets/index.html"
-    install -Dm644 indielinks-fe.js   "$pkgdir/usr/share/indielinks/assets/indielinks-fe.js"
-    install -Dm644 style.css          "$pkgdir/usr/share/indielinks/assets/style.css"
-    install -Dm644 indielinks-fe.wasm "$pkgdir/usr/share/indielinks/assets/indielinks-fe.wasm"
+    install -Dm644 index.html                   "$pkgdir/usr/share/indielinks/assets/index.html"
+    install -Dm644 indielinks-fe.js             "$pkgdir/usr/share/indielinks/assets/indielinks-fe.js"
+    install -Dm644 style.css                    "$pkgdir/usr/share/indielinks/assets/style.css"
+    install -Dm644 indielinks-fe.wasm           "$pkgdir/usr/share/indielinks/assets/indielinks-fe.wasm"
 
     cd ../../..
     install -Dm644 indielinks.service "$pkgdir/usr/lib/systemd/system/indielinks.service"
