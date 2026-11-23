@@ -5,7 +5,7 @@
 # Contributor: Alex Branham <alex.branham@gmail.com>
 
 _pkgname=covr
-_pkgver=3.6.4
+_pkgver=4.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=2
@@ -14,49 +14,55 @@ arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
-  r-crayon
+  r-cli
+  r-curl
   r-digest
-  r-httr
+  r-httr2
   r-jsonlite
   r-rex
+  r-rlang
+  r-sys
   r-withr
   r-yaml
 )
 checkdepends=(
+  r-box
   r-dt
   r-htmltools
+  r-httpuv
   r-memoise
-  r-mockery
   r-rstudioapi
+  r-s7
   r-testthat
   r-xml2
 )
 optdepends=(
+  r-box
+  r-callr
   r-covr
-  r-curl
-  r-dt
   r-htmltools
   r-knitr
   r-memoise
-  r-mockery
+  r-pkgbuild
+  r-pkgload
   r-r6
-  r-rlang
   r-rmarkdown
   r-rstudioapi
+  r-s7
+  r-shiny
+  r-shinytest2
   r-testthat
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "fix-tests.patch")
-md5sums=('8fadf3538ed1edfefb3a20bd5c5e887d'
-         'd3729dbb95789a8622860678ed9fdb7a')
-b2sums=('0d986635c4fb04e327d142e49290d3f4c8f062b8873f7a30cf8ee642be4cb1a8cde4882580eeba58565cfaf113e1bc94ff2ceb35fe1272d160a07f0e9f60a4f3'
-        '8f4241f4d0836c42b2c5257adbf418413681a9610c6fc105dc0022e923fa93b25752ce5c5aa5cd12b1571307fa022bb79cd70b3b6ac00a27e55fb609110d6df1')
+        )
+md5sums=('1ec88f503a5f9e8cf9f42dc45b313fec')
+b2sums=('4d3ed7d2869275da92e565c013597993851798df5dc58082d49ea9cf060ac9c68656c73d50faae5a3abdcc9a089e8e105f4187c7a9a3337e19463618e75a0fa7')
 
-prepare() {
-  # skip failing test
-  patch -Np1 -i fix-tests.patch
-}
+# prepare() {
+#   # skip failing test
+#   patch -Np1 -i fix-tests.patch
+# }
 
 build() {
   mkdir build
