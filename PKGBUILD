@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio-git
 _pkgname="Cherry Studio"
-pkgver=2.0.9.r1758.gfe8c911
+pkgver=2.2.3.r80.g743a6b0
 _electronversion=45
 _nodeversion=24
 pkgrel=1
@@ -49,10 +49,10 @@ _get_project_dir() {
 	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
 }
 pkgver() {
-	cd "$(_get_project_dir)"
-	set -o pipefail
-	git describe --long --tags --abbrev=7 --match '[0-9]*' --match 'v[0-9]*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$(_get_project_dir)" || return 1
+	local _t=$(git tag --list --sort=-v:refname | grep -m1 -E '^v?[0-9]+(\.[0-9]+)+(-[0-9A-Za-z][0-9A-Za-z.-]*)?$' || :)
+	local _n=$(git rev-list --count "${_t:+$_t..}HEAD") _s=$(git rev-parse --short=7 HEAD) _v=${_t#v}; _v=${_v//-/_}
+	[[ -n $_t ]] && printf '%s.r%s.g%s\n' "$_v" "$_n" "$_s" || printf 'r%s.%s\n' "$_n" "$_s"
 }
 _ensure_local_nvm() {
 	local NVM_DIR="${srcdir}/.nvm"
@@ -65,12 +65,10 @@ _get_app_dir() {
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _get_electron_version() {
-	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
-		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
-		| grep -oE '[0-9]+' | head -1)
-	[[ -z "${_elec_ver}" ]] && return 1
-	(( _elec_ver == _electronversion )) && c=32 || c=31
-	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
+	local _v=$(find "$(_get_project_dir)" -name package.json ! -path '*/node_modules/*' -exec jq -r '.. | (.electron? // empty) | strings' {} + 2>/dev/null | sed 's/^[^0-9]*//' | grep -E '^[0-9]' | head -1 | sed 's/\..*//')
+	_v=${_v:-$(grep -hoE 'electron[@":][^0-9]*[0-9]+\.[0-9.]+' "$(_get_project_dir)"/*lock* 2>/dev/null | grep -oE '[0-9]+\.[0-9.]+' | head -1 | sed 's/\..*//')}
+	[[ "$_v" =~ ^[0-9] ]] || return 1
+	(( ${_v} == _electronversion )) && echo -e "\033[1;32mElectron version: ${_v}\033[0m" || echo -e "\033[1;31mElectron version: ${_v} (expected ${_electronversion})\033[0m"
 }
 _set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -110,6 +108,16 @@ _set_pnpm_build_env() {
 		npm install -g "pnpm@${_ver}" --prefix "${HOME}/.pnpm" \
 			--registry "${COREPACK_NPM_REGISTRY}"
 	fi
+}
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 prepare() {
     cd "$(_get_project_dir)"
@@ -159,11 +167,7 @@ build() {
     echo "${_rg_ver}" > "${_bindir}/.rg-version"
     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.yml"
     find "$(_get_app_dir)/resources" -type d -exec chmod 755 {} +
-	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
-	find "$(_get_app_dir)" -type d \
-		\( -name '*darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
-		-prune -exec rm -rf {} +
-    rm -rf "$(_get_app_dir)/resources/default_app.asar"
+	_delete_other_arch_files
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
