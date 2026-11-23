@@ -1,16 +1,14 @@
 pkgbase = zramswap
-	pkgdesc = Sets up zram-based swap devices on boot
-	pkgver = 7
-	pkgrel = 3
+	pkgdesc = Set up swap in zram to compress memory (zram-tools)
+	pkgver = 0.3.7
+	pkgrel = 1
 	url = https://wiki.archlinux.org/title/Zram
 	arch = any
-	license = GPL
-	backup = etc/zramswap.conf
-	source = zramctrl
-	source = zramswap.conf
-	source = zramswap.service
-	sha256sums = fa8306b6110e07c89ac9790252db63f62300eae8bce1953da85d897383f78270
-	sha256sums = 32b88ecc8b9b0d17d2aeb2326316487b210c2e9c5929063ee371c2e862a9c5d8
-	sha256sums = da2026d7b130b53e9acf41eeb2724e85e0a8f9d0868baae4a462b4a8e6925844
+	license = ISC
+	provides = zram-tools
+	options = !debug
+	backup = etc/default/zramswap
+	source = https://deb.debian.org/debian/pool/main/z/zram-tools/zram-tools_0.3.7-1_all.deb
+	sha256sums = 2c14b4bf37f84197cd0f6b8928d3b44009e524ef9a0b26bbd8028d65e746af6a
 
 pkgname = zramswap

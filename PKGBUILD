@@ -1,33 +1,38 @@
 # Maintainer: Heptazhou <zhou at 0h7z dot com>
-# Contributor: ifaigios <ifaigios_at_gmail_dot_com>
-# Contributor: Alyssa Hung <deciare@isisiew.org>
-# Contributor: Matt Brennan
-# Contributor: falconindy
-# Contributor: adee
-# Contributor: mystilleef
-# Contributor: Radek Podgorny <radek@podgorny.cz>
 
+pkgbase_=zram-tools
+pkgname_=$pkgbase_
 pkgname=zramswap
-pkgver=7
-pkgrel=3
-pkgdesc="Sets up zram-based swap devices on boot"
+debver=0.3.7-1
+pkgver=0.3.7
+pkgrel=1
+pkgdesc="Set up swap in zram to compress memory ($pkgbase_)"
 arch=("any")
 url="https://wiki.archlinux.org/title/Zram"
-license=("GPL")
-backup=("etc/zramswap.conf")
-source=(
-	"zramctrl"
-	"zramswap.conf"
-	"zramswap.service"
-)
-sha256sums=(
-	"fa8306b6110e07c89ac9790252db63f62300eae8bce1953da85d897383f78270"
-	"32b88ecc8b9b0d17d2aeb2326316487b210c2e9c5929063ee371c2e862a9c5d8"
-	"da2026d7b130b53e9acf41eeb2724e85e0a8f9d0868baae4a462b4a8e6925844"
-)
+url_="https://deb.debian.org/debian/pool/main/${pkgbase_:0:1}/$pkgbase_"
+license=("ISC")
+options=(!debug)
+provides=("$pkgname_")
+backup=("etc/default/$pkgname")
+source=(${url_}/${pkgname_}_${debver}_all.deb)
+sha256sums=("2c14b4bf37f84197cd0f6b8928d3b44009e524ef9a0b26bbd8028d65e746af6a")
+# https://tracker.debian.org/pkg/zram-tools
 
 package() {
-	install -Dm755 -t "$pkgdir/usr/lib/systemd/scripts/" zramctrl
-	install -Dm644 -t "$pkgdir/etc/" zramswap.conf
-	install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" zramswap.service
+	cd -- "$srcdir/"
+	tar fx "data.tar.xz"
+
+	mkdir "usr/share/licenses/$pkgname_/" -p
+	mv -T "usr/share"/{"doc/$pkgname_/copyright","licenses/$pkgname_/LICENSE"}
+	rm -r "usr/share"/{"doc","lintian"} -f
+	mv -T "usr"/{"sbin","bin"}
+	cp -t "$pkgdir/" -a "usr" "etc"
+
+	cd -- "$pkgdir/"
+	sed -e 's|/usr/sbin/|/usr/bin/|g' -i "usr/lib/systemd/system/$pkgname.service"
+	sed -r 's|(ALGO):=lz4|\1:=zstd|i' -i "usr/bin/$pkgname"
+	sed -r 's|(SIZE):=512|\1:=8192|i' -i "usr/bin/$pkgname"
+	sed -r 's|^(ALGO)=lz4$|\1=zstd|i' -i "etc/default/$pkgname"
+	sed -r 's|^(PERCENT)=50$|\1=20|i' -i "etc/default/$pkgname"
+	sed -r 's|^(SIZE)=512$|\1=8192|i' -i "etc/default/$pkgname"
 }
