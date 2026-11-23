@@ -1,6 +1,6 @@
 pkgbase = magnolia-bin
 	pkgdesc = Torrent streaming client for PCs
-	pkgver = 2.8.2
+	pkgver = 2.8.4
 	pkgrel = 1
 	url = https://github.com/chwair/magnolia
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = magnolia-bin
 	depends = libpipewire
 	provides = magnolia
 	conflicts = magnolia
-	noextract = magnolia-bin-2.8.2.deb
+	noextract = magnolia-bin-2.8.4.deb
 	options = !strip
 	options = !debug
-	source = magnolia-bin-2.8.2.deb::https://github.com/chwair/magnolia/releases/download/v2.8.2/Magnolia_2.8.2_amd64.deb
-	source = LICENSE-2.8.2::https://github.com/chwair/magnolia/raw/v2.8.2/LICENSE-MIT
-	sha256sums = 5aa5328fbc9e0eb563bb20054a60a7dd4f2949aeeae2d2519095f75c0738493e
+	source = magnolia-bin-2.8.4.deb::https://github.com/chwair/magnolia/releases/download/v2.8.4/Magnolia_2.8.4_amd64.deb
+	source = LICENSE-2.8.4::https://github.com/chwair/magnolia/raw/v2.8.4/LICENSE-MIT
+	sha256sums = 7e2360149a1c3d003bc89880c15e1a3d9f488a4f66762a7477acbb62fadfa974
 	sha256sums = e0d124d15a52e371bc20830765d7d874fde8e88abc5c2dd4debd71117f4b7ed7
 
 pkgname = magnolia-bin
