@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=oxideterm-bin
 _pkgname=OxideTerm
-pkgver=2.3.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="AI-native workspace for local shells and remote machines.Zero Webview, zero OpenSSL, zero telemetry, and no app subscription."
 arch=(
@@ -26,8 +26,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_x64.deb")
-sha256sums_aarch64=('ff0ad113575c4ffc7a2f392244315afcbc703334569e4126a991229f6a589bdf')
-sha256sums_x86_64=('07a11a131d10fc268fa2c6f97f02bb9f68896b3e77868c603b7dba6a73e79943')
+sha256sums_aarch64=('81f8873b2b5640fa9261e075e60ee688b819584e6d27fc27b1ee6b6ad5f2c409')
+sha256sums_x86_64=('48c9ee4bb452da2e4131efd2abf51a3338a3e978a1ca3b4ddabd356af91e88ca')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
