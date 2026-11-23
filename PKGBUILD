@@ -6,7 +6,7 @@
 pkgauthor=sysid
 pkgname=bkmr
 pkgver=8.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Unified CLI Tool for Bookmark, Snippet, and Knowledge Management"
 
 url="https://github.com/${pkgauthor}/${pkgname}"
@@ -52,12 +52,12 @@ package() {
 
   install -Dm0755 -t "${pkgdir}/usr/bin" target/release/${pkgname}
 
+  install -Dm644 _completion.bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm644 _completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -Dm644 _completion.fish "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -Dm644 _completion.nushell "${pkgdir}/usr/share/nushell/vendor/autoload/${pkgname}.nu"
+
   install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 
   install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-
-  install -Dm644 _completion.bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm644 _completion.zsh  "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  install -Dm644 _completion.fish "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-  install -Dm644 _completion.nushell  "${pkgdir}/usr/share/nushell/completions/${pkgname}.nu"
 }
