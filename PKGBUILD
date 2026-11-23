@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=awakened-poe-trade-bin
 _pkgname=Awakened-PoE-Trade
-pkgver=3.30.101
+pkgver=3.30.102
 _electronversion=40
 pkgrel=1
 pkgdesc="💲 🔨 Path of Exile app for price checking."
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('11d9718c3c53f586f2401dd9e308dd1477022bcf36dcb25631a3981b048f3fe2'
+sha256sums=('87f8535aebaf16f1d7fa5bc549673cac077911eca5a77799043cd6916bbbcc63'
             '5c8de7f881b34dc31f872531a1eee1eabc79e10acd8fc91c026e10c5a8258c3f'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
