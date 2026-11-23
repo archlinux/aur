@@ -1,13 +1,21 @@
 pkgbase = python-bpylist2
-	pkgdesc = Parse and Generate binary plists and NSKeyedArchiver archives
+	pkgdesc = Parse and generate NSKeyedArchiver archives
 	pkgver = 4.1.1
-	pkgrel = 2
-	url = https://github.com/parabolala/bpylist2
+	pkgrel = 3
+	url = https://pypi.org/project/bpylist2
 	arch = any
 	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.io/packages/source/b/bpylist2/bpylist2-4.1.1.tar.gz
-	md5sums = 6f284eb91f997cfa0df3b4401aadf49e
+	provides = python-bpylist2
+	conflicts = python-bpylist2
+	options = !strip
+	options = !debug
+	source = bpylist2-4.1.1.tar.gz::https://files.pythonhosted.org/packages/source/b/bpylist2/bpylist2-4.1.1.tar.gz
+	sha256sums = 0cc63284aee42f5c7e0ec87f8f59cdd35aaed05ad12d866b1868ea0c0caaafe1
 
 pkgname = python-bpylist2
