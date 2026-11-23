@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=bandle
-_pkgver=1.8.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,16 +16,20 @@ depends=(
   r-biocparallel
   r-biocstyle
   r-circlize
+  r-coda
   r-dplyr
   r-ggalluvial
   r-ggplot2
   r-ggrepel
+  r-gridextra
+  r-gtools
   r-knitr
   r-lbfgs
   r-msnbase
   r-plyr
   r-proloc
   r-prolocdata
+  r-rcolorbrewer
   r-rcpp
   r-rlang
   r-robustbase
@@ -40,7 +44,6 @@ checkdepends=(
   r-testthat
 )
 optdepends=(
-  r-coda
   r-fields
   r-interp
   r-pheatmap
@@ -50,8 +53,8 @@ optdepends=(
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b9b2e7b766d268691f9e7bc45b5fb2d8')
-b2sums=('2e8602874294d28ee422c124b14586fdba0cf698172dd4c95c1fe50e4aa86220988f1a6b5fa62d63ecfc28fa342f006fe87a12c1f0ade56d32206d7342d886ab')
+md5sums=('1930934a956a53a438268f91196717b9')
+b2sums=('cf54645c35ee51271685e6459d79e7f1145a54ad7183fd5458885d4a8b26f5a354bab7c31d5dacc3d188bb03fed6d685bbfe35d5b89ebdb86fcf806674e94560')
 
 build() {
   mkdir build
