@@ -3,7 +3,7 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 pkgname=vnote-bin
 _pkgname=VNote
-pkgver=4.14.4
+pkgver=4.15.1
 pkgrel=1
 pkgdesc="A Qt-based, free and open source note-taking application, focusing on Markdown now."
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d1054600a9db72799b9959493d2f5db1d44a01a2d4ba03c057e179f9bd697553'
+sha256sums=('c5ea9356905f8c851e85fa63eec1f8e1e1432f8f8d504193b294936006632ae0'
             'b7809c741076bf1cefd65d9a2c3b9d32e12e7cff606d2b5552007c4291d8e65d')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
