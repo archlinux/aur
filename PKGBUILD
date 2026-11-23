@@ -1,8 +1,8 @@
 # Maintainer: HorneroOS contributors <https://github.com/HorneroOS/shell>
 
 pkgname=hornero-shell
-pkgver=1.3.5
-pkgrel=1
+pkgver=1.3.6
+pkgrel=2
 pkgdesc="Hornero OS desktop shell, built with Quickshell, QML and Qt for Wayland"
 arch=('x86_64')
 url="https://github.com/HorneroOS/shell"
@@ -17,8 +17,7 @@ license=('GPL-3.0-or-later')
 depends=(
   'aubio'
   'hornero-config>=0.4.3'
-  'horneroctl-bin>=0.2.0_preview49'
-  'libcava'
+  'horneroctl-bin>=0.2.0_preview51'
   'libqalculate'
   'pipewire'
   'python'
@@ -37,6 +36,7 @@ makedepends=(
 )
 optdepends=(
   'app2unit: launch apps as systemd user units'
+  'libcava: audio spectrum visualiser (resolved at runtime; a missing or ABI-broken libcava only silences the spectrum)'
   'brightnessctl: laptop backlight control'
   'ddcutil: external monitor brightness control'
   'ffmpeg: Hornero Chromatic colours from video wallpapers (one frame)'
@@ -48,7 +48,7 @@ optdepends=(
   'swappy: screenshot annotation'
   'wl-clipboard: clipboard integration via wl-copy'
 )
-source=("$pkgname::git+https://github.com/HorneroOS/shell.git#commit=5a219353f0649323b29b4547c7923d8a8e373bc5")
+source=("$pkgname::git+https://github.com/HorneroOS/shell.git#commit=d705083a885db653dbc07d61780754db3ef9a3bb")
 sha256sums=('SKIP')
 
 build() {
