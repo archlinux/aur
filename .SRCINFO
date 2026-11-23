@@ -1,6 +1,6 @@
 pkgbase = r-prolocgui
 	pkgdesc = Interactive visualisation of spatial proteomics data
-	pkgver = 2.18.0
+	pkgver = 2.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pRolocGUI
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-prolocgui
 	optdepends = r-prolocdata
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pRolocGUI_2.18.0.tar.gz
-	sha256sums = 8ccb34f56f832da5a37c8a2c7be899888335cfa274c60f064f72dad9a5de2481
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pRolocGUI_2.22.0.tar.gz
+	sha256sums = 5d710c97d8e98dc91f9dac1a878920fa1eefa2d9365399338555aefe1b7e0bc7
 
 pkgname = r-prolocgui

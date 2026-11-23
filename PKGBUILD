@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pRolocGUI
-_pkgver=2.18.0
+_pkgver=2.22.0
 pkgname=r-${_pkgname,,}
-pkgver=2.18.0
+pkgver=2.22.0
 pkgrel=1
 pkgdesc='Interactive visualisation of spatial proteomics data'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8ccb34f56f832da5a37c8a2c7be899888335cfa274c60f064f72dad9a5de2481')
+sha256sums=('5d710c97d8e98dc91f9dac1a878920fa1eefa2d9365399338555aefe1b7e0bc7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
