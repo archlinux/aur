@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rowel-bin
 _pkgname=Rowel
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Free Offline-first Password Manager."
 arch=('x86_64')
@@ -17,8 +17,8 @@ depends=(
     'libayatana-indicator'
     'libappindicator'
 )
-source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('03a52aeb1f0e7ec4d8e482ac96f86eca10aa7ff3b0330f930087ce642289d441')
+source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
+sha256sums=('7affe2c516ba3fe8beb72d9a5d0909a61401d2404bb4217bfdf1c442dc194832')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
@@ -31,6 +31,7 @@ _install_icons() {
 	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
+    bsdtar -xf "${srcdir}/data."*
     sed -i "s/Categories=/Categories=System;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
