@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BioTIP
-_pkgver=1.22.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='BioTIP: An R package for characterization of Biological Tipping-Point'
 arch=('any')
@@ -11,6 +11,8 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-doparallel
+  r-foreach
   r-genomicranges
   r-igraph
   r-psych
@@ -25,7 +27,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8c461fb63820a37454314c92e26dcaf4c28f45a55db0a25b2c3a7efb44b43a77')
+sha256sums=('45a55d891ff7de621e5304e7f42851e33fed9357ee28c65129904ca5dfebdc0b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
