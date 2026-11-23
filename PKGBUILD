@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bigrquery
-_pkgver=1.5.1
+_pkgver=1.6.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,6 +21,7 @@ depends=(
   r-httr
   r-jsonlite
   r-lifecycle
+  r-nanoparquet
   r-prettyunits
   r-rlang
   r-tibble
@@ -37,6 +38,7 @@ checkdepends=(
   r-wk
 )
 optdepends=(
+  r-bigrquerystorage
   r-blob
   r-covr
   r-dbplyr
@@ -49,8 +51,8 @@ optdepends=(
   r-wk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('376d3dd9cc24238405bea427af4bab97')
-b2sums=('a33316684152a954f002b5350ff772f2333b1a6ab0f202a4782eb7199a3a83ee848f2aab38266ea0ee6aaec0927a5f7b6a8509a3c4ec56157bde12a5867a83ec')
+md5sums=('ce2336eaa24ba2b57141ab18d58a20f6')
+b2sums=('7a9519182c8c24a0ee37903fdfacece8ad7329d0697be42a1f03da044db14e3b2995a08cf3f8779c5a47bf2d8e6a7ef4fbaa32756c78d72b7f074c4755269c51')
 
 build() {
   mkdir build

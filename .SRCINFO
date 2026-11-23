@@ -1,6 +1,6 @@
 pkgbase = r-bigrquery
 	pkgdesc = An Interface to Google's 'BigQuery' 'API'
-	pkgver = 1.5.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=bigrquery
 	arch = x86_64
@@ -22,9 +22,11 @@ pkgbase = r-bigrquery
 	depends = r-httr
 	depends = r-jsonlite
 	depends = r-lifecycle
+	depends = r-nanoparquet
 	depends = r-prettyunits
 	depends = r-rlang
 	depends = r-tibble
+	optdepends = r-bigrquerystorage
 	optdepends = r-blob
 	optdepends = r-covr
 	optdepends = r-dbplyr
@@ -35,8 +37,8 @@ pkgbase = r-bigrquery
 	optdepends = r-testthat
 	optdepends = r-withr
 	optdepends = r-wk
-	source = https://cran.r-project.org/src/contrib/bigrquery_1.5.1.tar.gz
-	md5sums = 376d3dd9cc24238405bea427af4bab97
-	b2sums = a33316684152a954f002b5350ff772f2333b1a6ab0f202a4782eb7199a3a83ee848f2aab38266ea0ee6aaec0927a5f7b6a8509a3c4ec56157bde12a5867a83ec
+	source = https://cran.r-project.org/src/contrib/bigrquery_1.6.2.tar.gz
+	md5sums = ce2336eaa24ba2b57141ab18d58a20f6
+	b2sums = 7a9519182c8c24a0ee37903fdfacece8ad7329d0697be42a1f03da044db14e3b2995a08cf3f8779c5a47bf2d8e6a7ef4fbaa32756c78d72b7f074c4755269c51
 
 pkgname = r-bigrquery
