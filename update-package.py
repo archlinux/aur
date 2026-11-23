@@ -40,9 +40,12 @@ history:
   The script takes the build number from a build-number tag on the same
   commit, then from YouTrack, and otherwise asks for it. Help > About in the
   closed-source build from snap shows it.
-- A tag name can disagree with the real product version
-  (``idea/2026.2.1-preview`` was 2026.2.0.1), so a version found in YouTrack
-  wins over the tag's.
+- A tag name can disagree with the product version Help > About shows
+  (``idea/2026.3.1-rc`` is 2026.3.0.1, with no RC suffix). The package
+  version's yyyy.r.n.m comes from IdeaApplicationInfo.xml, expanded to four
+  components. The pre-release identifier (``eap_2``, ``rc``, ``preview``)
+  still comes from the tag and is placed after the build number. YouTrack
+  is only a source for the build number.
 - To build from specific commits, for example after JetBrains moves a tag,
   set both ``_git_hash_override_idea`` and ``_git_hash_override_android``.
   The script sets them itself when JetBrains' ``android`` repository lacks
@@ -76,11 +79,11 @@ import tempfile
 import urllib.error
 import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field, replace
 from datetime import UTC, datetime, timedelta
 from enum import Enum, auto
 from pathlib import Path
-from types import MappingProxyType
 from typing import NoReturn
 
 # date/time given to a tag with no known date/time, so it ranks below every dated tag
@@ -93,15 +96,8 @@ PKGBUILD_NAME = "PKGBUILD"
 PKGNAME = "intellij-idea-open-eap"
 INSTALLED_PRODUCT_INFO = Path("/usr/share/idea/product-info.json")
 PRODUCT_INFO_TAR_MEMBER = "usr/share/idea/product-info.json"
-# tag pre-release kind to the `versionSuffix` that `product-info.json` and About show
-KIND_TO_VERSION_SUFFIX = MappingProxyType(
-    {
-        "eap": "EAP",
-        "beta": "Beta",
-        "rc": "RC",
-        "preview": "Preview",
-    }
-)
+IDEA_APPLICATION_INFO = "community-resources/resources/idea/IdeaApplicationInfo.xml"
+ABOUT_VERSION_RE = re.compile(r"^\d{4}(?:\.\d+){1,3}$")
 
 BUILD_NUMBER_RE = re.compile(r"^\d{3}\.\d+\.\d+$")
 VERSION_CORE_RE = re.compile(
@@ -898,12 +894,13 @@ def resolve_build_number(
         if youtrack_version.yyyy_r_n_m != parsed_from_tag.yyyy_r_n_m:
             warn(
                 f"YouTrack gives version {youtrack_version.yyyy_r_n_m}, but the tag "
-                f"suggests {parsed_from_tag.yyyy_r_n_m}; using YouTrack's"
+                f"suggests {parsed_from_tag.yyyy_r_n_m}; the package version comes "
+                "from IdeaApplicationInfo.xml"
             )
         return ResolvedBuild(
             build_number=build,
             source=f"YouTrack {article_id}",
-            parsed=youtrack_version,
+            parsed=parsed_from_tag,
         )
 
     build = prompt_build_number(version_tag, idea_sha)
@@ -936,6 +933,8 @@ def discover_release(
         chosen.sha,
         chosen.parsed,
     )
+    about = read_application_info_version(repo, chosen.sha)
+    parsed = parsed_with_about_version(resolved.parsed, about.version)
     info(
         f"chose {format_tag(chosen.name, chosen.sha)}; "
         f"build {resolved.build_number} via {resolved.source}"
@@ -943,7 +942,7 @@ def discover_release(
     release = DiscoveredRelease(
         version_tag=chosen.name,
         idea_sha=chosen.sha,
-        parsed=resolved.parsed,
+        parsed=parsed,
         build_number=resolved.build_number,
         build_number_source=resolved.source,
     )
@@ -1263,22 +1262,119 @@ def build_install_and_check(repo: Path, plan: UpdatePlan) -> None:
 # Check the installed release.
 
 
-def expected_product_info(plan: UpdatePlan) -> ProductInfo:
+@dataclass(frozen=True)
+class ApplicationInfoVersion:
+    """Hold the version and suffix from ``IdeaApplicationInfo.xml``."""
+
+    version: str
+    version_suffix: str
+
+
+def parse_application_info_version(xml_text: str) -> ApplicationInfoVersion:
+    """Read the About version and suffix from ``IdeaApplicationInfo.xml`` text.
+
+    The version is ``major.minor``. The suffix is the ``suffix`` attribute, or
+    ``EAP`` when ``eap`` is true and there is no suffix. That is what
+    ``product-info.json`` copies into ``version`` and ``versionSuffix``.
+    """
+    # The file is the product's ApplicationInfo from the local Git mirror.
+    root = ET.fromstring(xml_text)  # noqa: S314
+    version_element = next(
+        (
+            element
+            for element in root.iter()
+            if element.tag.rsplit("}", 1)[-1] == "version" and element.get("major")
+        ),
+        None,
+    )
+    if version_element is None:
+        die("IdeaApplicationInfo.xml has no version element")
+    minor = version_element.get("minor")
+    if not minor:
+        die("IdeaApplicationInfo.xml version element lacks minor")
+    full_format = version_element.get("full")
+    if full_format not in {None, "{0}.{1}"}:
+        die(
+            "IdeaApplicationInfo.xml version full="
+            f"{full_format!r} is not the major.minor form"
+        )
+    suffix = version_element.get("suffix") or ""
+    if not suffix and (version_element.get("eap") or "").lower() == "true":
+        suffix = "EAP"
+    major = version_element.get("major")
+    return ApplicationInfoVersion(f"{major}.{minor}", suffix)
+
+
+def read_application_info_version(repo: Path, rev: str) -> ApplicationInfoVersion:
+    """Read ``IdeaApplicationInfo.xml`` at ``rev`` from the local mirror."""
+    git_dir = repo / "intellij-community"
+    completed = run(
+        [
+            "git",
+            "--git-dir",
+            str(git_dir),
+            "show",
+            f"{rev}:{IDEA_APPLICATION_INFO}",
+        ],
+        capture=True,
+        check=False,
+    )
+    if completed.returncode != 0 or not completed.stdout.strip():
+        die(
+            f"could not read {IDEA_APPLICATION_INFO} at {short_sha(rev)} "
+            f"from the {git_dir.name} mirror"
+        )
+    return parse_application_info_version(completed.stdout)
+
+
+def yyyy_r_n_m_from_about_version(version: str) -> str:
+    """Expand an About version to yyyy.r.n.m (``2026.3`` becomes ``2026.3.0.0``)."""
+    if ABOUT_VERSION_RE.fullmatch(version) is None:
+        die(f"product version {version!r} is not yyyy.r[.n[.m]]")
+    parts = version.split(".")
+    return ".".join(parts + ["0"] * (4 - len(parts)))
+
+
+def parsed_with_about_version(
+    parsed: ParsedVersion, about_version: str
+) -> ParsedVersion:
+    """Return ``parsed`` with its version numbers replaced by the About version.
+
+    The tag's pre-release identifier stays, so ``idea/2026.3.1-rc`` whose
+    product version is 2026.3.0.1 is packaged as 2026.3.0.1 with ``rc``.
+    """
+    yyyy_r_n_m = yyyy_r_n_m_from_about_version(about_version)
+    if yyyy_r_n_m == parsed.yyyy_r_n_m:
+        return parsed
+    warn(
+        f"tag {parsed.tag_core} parses as {parsed.yyyy_r_n_m}, but the product "
+        f"version is {about_version}; using {yyyy_r_n_m} in the package version"
+    )
+    yyyy, release, bugfix, patch = (int(part) for part in yyyy_r_n_m.split("."))
+    return ParsedVersion(
+        key=VersionKey(yyyy, release, bugfix, patch),
+        yyyy_r_n_m=yyyy_r_n_m,
+        pre_snake=parsed.pre_snake,
+        tag_core=parsed.tag_core,
+        pre_num=parsed.pre_num,
+    )
+
+
+def expected_product_info(repo: Path, plan: UpdatePlan) -> ProductInfo:
     """Return the version that ``product-info.json`` and Help > About should show.
 
-    The version is yyyy.r.n.m with trailing zero parts dropped, down to yyyy.r
-    (2026.3.0.0 shows as 2026.3, and 2026.3.1.0 as 2026.3.1). The suffix is the
-    pre-release kind without the tag's number (``eap_2`` shows as EAP).
+    Both come from ``IdeaApplicationInfo.xml`` at the planned commit. The
+    package version expands that version to yyyy.r.n.m and still appends the
+    tag's pre-release identifier, which About does not always show.
     """
-    parts = plan.version_yyyy_r_n_m.split(".")
-    if len(parts) < 2:
-        die(f"invalid plan version_yyyy_r_n_m: {plan.version_yyyy_r_n_m}")
-    while len(parts) > 2 and parts[-1] == "0":
-        parts.pop()
-    version = ".".join(parts)
-    kind = plan.pre_snake.split("_", 1)[0]
-    suffix = KIND_TO_VERSION_SUFFIX.get(kind, kind.upper()) if kind else ""
-    return ProductInfo(version, suffix, plan.build_number)
+    about = read_application_info_version(repo, plan.idea_sha)
+    package_version = yyyy_r_n_m_from_about_version(about.version)
+    if package_version != plan.version_yyyy_r_n_m:
+        die(
+            f"PKGBUILD version {plan.version_yyyy_r_n_m} does not match "
+            f"product version {about.version}"
+        )
+    return ProductInfo(about.version, about.version_suffix, plan.build_number)
 
 
 def format_about_version(product: ProductInfo) -> str:
@@ -1357,7 +1453,7 @@ def confirm_release_and_launch(
     package file also has to exist and match. Otherwise the package file is
     checked only if it is there.
     """
-    expected = expected_product_info(plan)
+    expected = expected_product_info(repo, plan)
     package_path = find_built_package(repo, plan)
     if package_path is not None:
         verify_product_info(
