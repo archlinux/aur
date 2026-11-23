@@ -1,0 +1,15 @@
+pkgbase = chphp
+	pkgdesc = Manage multiple PHP installations on Arch Linux and install via php.new
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/isaacangello/chphp
+	arch = any
+	license = MIT
+	depends = bash
+	depends = curl
+	depends = coreutils
+	optdepends = sudo: required to replace /usr/bin/php when running as a normal user
+	source = https://github.com/isaacangello/chphp/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = eadbc293331f97f395732bb1e7851c7bbd65c1de8bdbb149b66f8dc0e1ebba02
+
+pkgname = chphp
