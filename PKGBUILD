@@ -58,7 +58,8 @@ build() {
     -DPROJ4_TESTS=ON \
     -DSELFTEST=OFF \
     -DUSE_THREAD=ON \
-    -DUSE_EXTERNAL_GTEST=ON
+    -DUSE_EXTERNAL_GTEST=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.10
   cmake --build build
 }
 
