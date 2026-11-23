@@ -1,0 +1,18 @@
+pkgbase = r-dfba
+	pkgdesc = Distribution-Free Bayesian Analysis
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://cran.r-project.org/package=DFBA
+	arch = any
+	license = GPL-2.0-only
+	depends = r
+	optdepends = r-bookdown
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/DFBA_0.1.0.tar.gz
+	md5sums = 95271b65193650d50ea27705f59da6b6
+	b2sums = 0b20396a52dab00f6e4ab5b0a225178862d8c0ea117f6fdcd285cbb29626e34e5888f6ace8a53948ade71f1af9b80ae66812c43b34bcd0c03d8c2916722e85cf
+
+pkgname = r-dfba
