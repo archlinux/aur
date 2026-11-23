@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=omicsViewer
-_pkgver=1.12.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,6 +20,7 @@ depends=(
   r-flatxml
   r-ggplot2
   r-ggseqlogo
+  r-htmltools
   r-htmlwidgets
   r-httr
   r-matrixstats
@@ -35,6 +36,7 @@ depends=(
   r-shiny
   r-shinybusy
   r-shinycssloaders
+  r-shinydashboard
   r-shinyjs
   r-shinythemes
   r-shinywidgets
@@ -49,8 +51,8 @@ optdepends=(
   r-unittest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('12f1ac1893426b899e6b4c57e3ad51be')
-b2sums=('90d3b495705fdc006b062764818e1ed2e3e2ede67a480be49711032dd49f0814f8ae59b08c05386dec0974831f79ef4f5afb9260527dce473734de7a2ce9ad5f')
+md5sums=('2fdf431922e0e5fcd3dd33dc864e2ef1')
+b2sums=('ffa734e47a58e995a46b4501dee092f0a758457dcaf4e75384d28b5959d7768ebfb92f2f9cc8d51d00bcd5c868e6f731f6a5ff9e35058918aca0d32341c72ee6')
 
 build() {
   mkdir build
