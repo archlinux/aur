@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=spatialLIBD
-_pkgver=1.18.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,11 +14,12 @@ depends=(
   r-benchmarkme
   r-biocfilecache
   r-biocgenerics
+  r-circlize
+  r-complexheatmap
   r-cowplot
   r-dt
   r-edger
   r-experimenthub
-  r-fields
   r-genomicranges
   r-ggplot2
   r-golem
@@ -30,7 +31,6 @@ depends=(
   r-paletteer
   r-plotly
   r-png
-  r-rcolorbrewer
   r-rlang
   r-rtracklayer
   r-s4vectors
@@ -58,15 +58,16 @@ optdepends=(
   r-here
   r-knitr
   r-lobstr
+  r-rcolorbrewer
   r-refmanager
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('a261eafe19ca77ff46ca694974b64923'
+md5sums=('1541074600de520ae2fb1d19923e3a91'
          'ff2fc6d00615921ec62383cabcea1afb')
-b2sums=('6ebf05315d1122b3bc32fce1d157caa0c0fe8eaf2d30508b6e88c46d53e452b9ccf82cb9dda81d30530093b7133dcfe585899de90b86fa9fd0bdc53289e5571d'
+b2sums=('75a4c53883fe270d47d62710eb500de4c5b61cd8fd41715004aed6ba6ae901d5af68a398d776cca27d4d2233d1f4b6dec2d5c3887442e25282d52ef6f820a00d'
         '637e4f2e31c0e77dfefacffd24c5e8a90b3bc70b36d68ec2fffebc41ca0bafe94707f02e67d42f22497d354a36b91157219d795661e80c173361fd33b20ae523')
 
 #prepare() {
