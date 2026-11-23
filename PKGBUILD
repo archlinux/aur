@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=5.11.8
+pkgver=5.12.6
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -30,7 +30,7 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('6e5fb3fe0231e1a9987c5e86b6b9e2445eb2dc2737847643e3349d1991f5b8b1'
+sha256sums=('d912b35f9bab42a191d3d18529c0b120cf8e809636961c9a749cfdc9e10b7323'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
