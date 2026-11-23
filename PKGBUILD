@@ -9,7 +9,7 @@
 # archives are flat (brygge, LICENSE, build-info.txt at the tar root; see release.yml's `build` job), so
 # package() installs directly from $srcdir with no subdirectory to enter.
 pkgname=brygge-bin
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Carries version-control history between systems: decodes Git, Mercurial, Subversion and CVS into a verifiable IR (the release's attested binary)"
 arch=('x86_64' 'aarch64')
@@ -38,8 +38,8 @@ conflicts=('brygge')
 # .SRCINFO that AUR helpers read, and that must be correct without evaluating the PKGBUILD.
 source_x86_64=("https://github.com/prikk-vcs/brygge/releases/download/$pkgver/brygge-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/prikk-vcs/brygge/releases/download/$pkgver/brygge-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('b4f55c24c97091c70f74f0136e0f958f74274910e554b8d49ceafbdb27007226')
-sha256sums_aarch64=('95d84721f5f7172f4c40fdcdd74977510d13e11aa0800cd3c98406b804fc58fe')
+sha256sums_x86_64=('930fb6a731e53c348a0cb693cfa5cc31e7bbd3fff77941ad314135db02df161d')
+sha256sums_aarch64=('80db5483b2cbfa188080f0fe4daca41f7f23fc5e4290d9d85290ae0b110ec82b')
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" brygge
