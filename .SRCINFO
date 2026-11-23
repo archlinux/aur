@@ -1,0 +1,33 @@
+pkgbase = r-spatialreg
+	pkgdesc = Spatial Regression Analysis
+	pkgver = 1.4.3
+	pkgrel = 2
+	url = https://cran.r-project.org/package=spatialreg
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = blas
+	depends = lapack
+	depends = r-coda
+	depends = r-learnbayes
+	depends = r-marginaleffects
+	depends = r-multcomp
+	depends = r-mvtnorm
+	depends = r-sf
+	depends = r-spdata
+	depends = r-spdep
+	optdepends = r-codingmatrices
+	optdepends = r-expm
+	optdepends = r-igraph
+	optdepends = r-knitr
+	optdepends = r-lmtest
+	optdepends = r-rmarkdown
+	optdepends = r-rspectra
+	optdepends = r-sandwich
+	optdepends = r-spam
+	optdepends = r-tinytest
+	optdepends = r-tmap
+	source = https://cran.r-project.org/src/contrib/spatialreg_1.4-3.tar.gz
+	md5sums = d93d3644df84362beaff02f474ed351b
+	b2sums = 3a1ebd96a891212fce8198fbf754d8b6be076b86a0029ebf2c8d090e8a3143388056a9f95aa92cdbd7d98d31716701815418efbbb37a0b37122cb708fdcc116a
+
+pkgname = r-spatialreg
