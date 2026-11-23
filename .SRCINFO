@@ -1,7 +1,7 @@
 pkgbase = uu-remote-bin
 	pkgdesc = 非官方 UU 远程 Linux 被控端，纯 Rust 实现，可用官方客户端远程控制 Linux 桌面
 	pkgver = 0.2.64
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VallierDev/uu-remote-linux
 	install = uu-remote-bin.install
 	arch = x86_64

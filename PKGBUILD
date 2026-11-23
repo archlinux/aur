@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=uu-remote-bin
 pkgver=0.2.64
-pkgrel=1
+pkgrel=2
 pkgdesc="非官方 UU 远程 Linux 被控端，纯 Rust 实现，可用官方客户端远程控制 Linux 桌面"
 arch=('x86_64')
 url="https://github.com/VallierDev/uu-remote-linux"
@@ -40,12 +40,19 @@ package() {
     install -Dm644 "${srcdir}/${_dir}/libuu-portal.so" "${pkgdir}/usr/lib/uu-remote-linux/libuu-portal.so"
     install -Dm644 "${srcdir}/${_dir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    # Desktop entries and icon
-    install -Dm644 "${srcdir}/${_dir}/contrib/desktop/uu-remote-linux.svg" \
+    # Desktop entries and icon: upstream moved them from contrib/desktop/ to
+    # packaging/common/desktop/ around v0.2.62; try the new location first and
+    # fall back to the old one so both release layouts work.
+    if [ -d "${srcdir}/${_dir}/packaging/common/desktop" ]; then
+        _desktop_dir="${_dir}/packaging/common/desktop"
+    else
+        _desktop_dir="${_dir}/contrib/desktop"
+    fi
+    install -Dm644 "${srcdir}/${_desktop_dir}/uu-remote-linux.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/uu-remote-linux.svg"
-    install -Dm644 "${srcdir}/${_dir}/contrib/desktop/uu-remote-linux.desktop" \
+    install -Dm644 "${srcdir}/${_desktop_dir}/uu-remote-linux.desktop" \
         "${pkgdir}/usr/share/applications/uu-remote-linux.desktop"
-    install -Dm644 "${srcdir}/${_dir}/contrib/desktop/uu-remote-linux-viewer.desktop" \
+    install -Dm644 "${srcdir}/${_desktop_dir}/uu-remote-linux-viewer.desktop" \
         "${pkgdir}/usr/share/applications/uu-remote-linux-viewer.desktop"
 
     # systemd user services: main host + optional virtual desktop (Xvfb)
