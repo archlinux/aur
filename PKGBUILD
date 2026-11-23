@@ -2,8 +2,8 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=youki
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='A container runtime written in Rust'
 arch=(x86_64 aarch64)
 url="https://containers.github.io/$pkgname"
@@ -19,7 +19,7 @@ makedepends=(cargo
 optdepends=('docker: run via docker'
             'podman: run via podman')
 source=("git+https://github.com/containers/youki.git#tag=v$pkgver")
-sha256sums=('2dbc7be5edccd269fcce7f1509294bb056764cceaea3e64608476e8a2eb13c31')
+sha256sums=('c437de12228566cb70454e8148849480d6765088c331ecfa8de2c052bc22f975')
 
 _srcenv() {
 	cd "$pkgname"
