@@ -1,0 +1,17 @@
+pkgbase = markmarkoh-lt
+	pkgdesc = An unofficial TUI client to view and interact with Linear.app issues
+	pkgver = 0.0.12
+	pkgrel = 1
+	url = https://github.com/markmarkoh/lt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	options = !lto
+	source = markmarkoh-lt-0.0.12.tar.gz::https://github.com/markmarkoh/lt/archive/refs/tags/v0.0.12.tar.gz
+	sha256sums = c763943267fd2f5fc7453114f479055458883e5a07af1ae2da3738f43b91c0be
+
+pkgname = markmarkoh-lt
