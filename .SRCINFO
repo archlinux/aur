@@ -1,0 +1,16 @@
+pkgbase = hue-jackman-bin
+	pkgdesc = Control Chroma RGB lighting on the Razer Wolverine V2 Chroma from Linux.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://hue-jackman.wimpys.world/
+	license = BlueOak-1.0.0
+	conflicts = hue-jackman
+	provides = hue-jackman
+	arch = aarch64
+	source_aarch64 = https://github.com/wimpysworld/hue-jackman/releases/download/v0.1.0/hue-jackman_0.1.0_arm64.tar.gz
+	sha256sums_aarch64 = d50e51d58c893ac69be07f42009001ad0defc9888bba4ba72e7a34022570d7c8
+	arch = x86_64
+	source_x86_64 = https://github.com/wimpysworld/hue-jackman/releases/download/v0.1.0/hue-jackman_0.1.0_amd64.tar.gz
+	sha256sums_x86_64 = fd7cffa221274c0f30d381c243062502166c5f5628b6b9d250769a74fb9c14c2
+	
+pkgname = hue-jackman-bin
