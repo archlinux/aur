@@ -1,6 +1,6 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 pkgname=proton-gallery-git
-pkgver=0.4.0.r2.g20da1b4
+pkgver=0.5.0.r0.g593c78e
 pkgrel=1
 pkgdesc="Unofficial Proton Photos and Drive gallery with a native photo and video viewer (git main)"
 arch=('x86_64')
