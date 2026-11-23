@@ -1,8 +1,7 @@
 diff --git a/block/nfs.c b/block/nfs.c
-index 7e1bea1..d6c2df6 100644
 --- a/block/nfs.c
 +++ b/block/nfs.c
-@@ -268,12 +268,38 @@ static int coroutine_fn nfs_co_preadv(BlockDriverState *bs, uint64_t offset,
+@@ -268,12 +268,38 @@
      NFSRPC task;
  
      nfs_co_init_task(bs, &task);
@@ -41,7 +40,7 @@ index 7e1bea1..d6c2df6 100644
          return -ENOMEM;
      }
  
-@@ -283,6 +309,15 @@ static int coroutine_fn nfs_co_preadv(BlockDriverState *bs, uint64_t offset,
+@@ -283,6 +309,15 @@
          qemu_coroutine_yield();
      }
  
@@ -57,7 +56,7 @@ index 7e1bea1..d6c2df6 100644
      if (task.ret < 0) {
          return task.ret;
      }
-@@ -318,9 +353,15 @@ static int coroutine_fn nfs_co_pwritev(BlockDriverState *bs, uint64_t offset,
+@@ -318,9 +353,15 @@
      }
  
      qemu_mutex_lock(&client->mutex);
@@ -74,10 +73,9 @@ index 7e1bea1..d6c2df6 100644
          if (my_buffer) {
              g_free(buf);
 diff --git a/crypto/cipher-nettle.c b/crypto/cipher-nettle.c
-index dfc9030..7be1787 100644
 --- a/crypto/cipher-nettle.c
 +++ b/crypto/cipher-nettle.c
-@@ -47,23 +47,119 @@ typedef const void * cipher_ctx_t;
+@@ -47,23 +47,119 @@
  typedef size_t       cipher_length_t;
  #endif
  
@@ -199,7 +197,7 @@ index dfc9030..7be1787 100644
  }
  
  static void des_encrypt_native(cipher_ctx_t ctx, cipher_length_t length,
-@@ -130,14 +226,14 @@ static void aes_encrypt_wrapper(const void *ctx, size_t length,
+@@ -130,14 +226,14 @@
                                  uint8_t *dst, const uint8_t *src)
  {
      const QCryptoNettleAES *aesctx = ctx;
@@ -216,7 +214,7 @@ index dfc9030..7be1787 100644
  }
  
  static void des_encrypt_wrapper(const void *ctx, size_t length,
-@@ -317,20 +413,20 @@ QCryptoCipher *qcrypto_cipher_new(QCryptoCipherAlgorithm alg,
+@@ -317,20 +413,20 @@
              ctx->ctx_tweak = g_new0(QCryptoNettleAES, 1);
  
              nkey /= 2;
@@ -251,7 +249,6 @@ index dfc9030..7be1787 100644
  
          ctx->alg_encrypt_native = aes_encrypt_native;
 diff --git a/crypto/hash-nettle.c b/crypto/hash-nettle.c
-index 6a206dc..a679e7c 100644
 --- a/crypto/hash-nettle.c
 +++ b/crypto/hash-nettle.c
 @@ -22,7 +22,12 @@
@@ -267,38 +264,7 @@ index 6a206dc..a679e7c 100644
  #include <nettle/ripemd160.h>
  
  typedef void (*qcrypto_nettle_init)(void *ctx);
-diff --git a/panda/plugins/dwarf2/dwarf2.proto b/panda/plugins/dwarf2/dwarf2.proto
---- a/panda/plugins/dwarf2/dwarf2.proto
-+++ b/panda/plugins/dwarf2/dwarf2.proto
-@@ -1,2 +1,10 @@
-+message DwarfCall {
-+    required string file_callee = 1;
-+    required string function_name_callee = 2;
-+    required uint64 line_number_callee = 3;
-+    required string file_caller = 4;
-+    required uint64 line_number_caller = 5;
-+}
-+
- optional DwarfCall dwarf2_call = 64;
- optional DwarfCall dwarf2_ret = 65;
-diff --git a/panda/plugins/config.panda b/panda/plugins/config.panda
-index d6e9cf8..4f699e1 100644
---- a/panda/plugins/config.panda
-+++ b/panda/plugins/config.panda
-@@ -37,9 +37,9 @@ osi_linux
- osi_test
- pc_search
- pri
--pri_dwarf
-+# pri_dwarf uses libdwarf APIs removed after libdwarf 0.8
- dwarf2
--pri_simple
-+# pri_simple depends on the disabled pri_dwarf plugin
- proc_start_linux
- proc_trace
- recctrl
 diff --git a/panda/plugins/network/network.cpp b/panda/plugins/network/network.cpp
-index 3938db9..6f44074 100644
 --- a/panda/plugins/network/network.cpp
 +++ b/panda/plugins/network/network.cpp
 @@ -19,9 +19,14 @@
@@ -317,7 +283,7 @@ index 3938db9..6f44074 100644
  
  // These need to be extern "C" so that the ABI is compatible with
  // QEMU/PANDA, which is written in C
-@@ -35,23 +40,24 @@ extern uint64_t rr_get_guest_instr_count(void);
+@@ -35,23 +40,24 @@
  panda_arg_list *args;
  wtap_dumper *plugin_log;
  
@@ -350,7 +316,7 @@ index 3938db9..6f44074 100644
      const wtap_dump_params wdparams = {
      .encap = WTAP_ENCAP_ETHERNET,
      .snaplen = 65535,
-@@ -81,7 +87,9 @@ bool init_plugin(void *self) {
+@@ -81,7 +87,9 @@
          fprintf(stderr, "Plugin 'network' needs argument: -panda-arg network:file=<file>\n");
          return false;
      }
@@ -361,7 +327,7 @@ index 3938db9..6f44074 100644
      wtap_init(false);
      #elif VERSION_MAJOR == 2 && VERSION_MINOR == 2 && VERSION_MICRO >= 4
      wtap_init();
-@@ -94,7 +102,7 @@ bool init_plugin(void *self) {
+@@ -94,7 +102,7 @@
      plugin_log = wtap_dump_open(
              tblog_filename,
              file_type,
@@ -370,7 +336,7 @@ index 3938db9..6f44074 100644
              &wdparams,            // the new structure that wraps all the ng params
              &err
      #if (VERSION_MAJOR>=4 || VERSION_MINOR>=4)
-@@ -124,7 +132,6 @@ bool init_plugin(void *self) {
+@@ -124,7 +132,6 @@
      pcb.replay_handle_packet = handle_packet;
      panda_register_callback(self, PANDA_CB_REPLAY_HANDLE_PACKET, pcb);
      return true;
@@ -378,7 +344,7 @@ index 3938db9..6f44074 100644
  }
  
  void uninit_plugin(void *self) {
-@@ -136,7 +143,11 @@ void uninit_plugin(void *self) {
+@@ -136,7 +143,11 @@
      #else
      wtap_dump_flush(plugin_log);
      #endif
@@ -391,7 +357,7 @@ index 3938db9..6f44074 100644
      gchar *write_err_info;
      gboolean needs_reload;
      gboolean ret = wtap_dump_close(plugin_log, &needs_reload, &err, &write_err_info);
-@@ -153,7 +164,6 @@ void uninit_plugin(void *self) {
+@@ -153,7 +164,6 @@
      }
  }
  
@@ -399,7 +365,7 @@ index 3938db9..6f44074 100644
  void handle_packet(CPUState *env, uint8_t *buf, size_t size, uint8_t direction,
                     uint64_t buf_addr_rec) {
      int err;
-@@ -182,6 +192,13 @@ void handle_packet(CPUState *env, uint8_t *buf, size_t size, uint8_t direction,
+@@ -182,6 +192,13 @@
      rec.opt_comment = comment_buf;
      rec.has_comment_changed = true;
      #endif
@@ -413,7 +379,7 @@ index 3938db9..6f44074 100644
      ret = wtap_dump(
          /*wtap_dumper*/ plugin_log,
          /*wtap_rec*/ &rec,
-@@ -192,6 +209,7 @@ void handle_packet(CPUState *env, uint8_t *buf, size_t size, uint8_t direction,
+@@ -192,6 +209,7 @@
      /* this will also dereference pkt_block */
      wtap_rec_reset(&rec);
      #endif
@@ -421,16 +387,412 @@ index 3938db9..6f44074 100644
      #else
      struct wtap_pkthdr header;
          #if VERSION_MAJOR >= 2
-@@ -226,4 +244,3 @@ void handle_packet(CPUState *env, uint8_t *buf, size_t size, uint8_t direction,
+@@ -226,4 +244,3 @@
      }
      return;
  }
 -#endif
+diff --git a/panda/plugins/pri_dwarf/pri_dwarf.cpp b/panda/plugins/pri_dwarf/pri_dwarf.cpp
+--- a/panda/plugins/pri_dwarf/pri_dwarf.cpp
++++ b/panda/plugins/pri_dwarf/pri_dwarf.cpp
+@@ -71,8 +71,8 @@
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ #include <fcntl.h>
+-#include <libdwarf/dwarf.h>
+-#include <libdwarf/libdwarf.h>
++#include <dwarf.h>
++#include <libdwarf.h>
+ 
+ }
+ 
+@@ -594,11 +594,11 @@
+         if (dwarf_attr_fn(the_die, DW_AT_data_member_location, &locationAttr, &err) != DW_DLV_OK)
+             die("Error obtaining location attr\n");
+         // dwarf_formexprloc(attr, expr_len, block_ptr, &err);
+-        else if (dwarf_loclist_n(locationAttr, &locdesclist, &loccnt, &err) != DW_DLV_OK){
++        else if (panda_dwarf_loclist_n(locationAttr, &locdesclist, &loccnt, &err) != DW_DLV_OK){
+             dwarf_whatform_fn(locationAttr, &attrform, &err);
+             //die("DEBUG Whatform %x\n", attrform);
+             if (dwarf_whatform_fn(locationAttr, &attrform, &err) == DW_DLV_OK
+-               && (attrform == DW_FORM_data1 
++               && (attrform == DW_FORM_data1
+                    || attrform == DW_FORM_data2
+                    || attrform == DW_FORM_data4
+                    || attrform == DW_FORM_data8))
+@@ -1190,7 +1190,7 @@
+             die("Error obtaining location attr\n");
+         // dwarf_formexprloc(attr, expr_len, block_ptr, &err);
+         // this is slow, figure out a faster way to get the location information
+-        else if (dwarf_loclist_n(locationAttr, &locdesclist, loccnt, &err) != DW_DLV_OK){
++        else if (panda_dwarf_loclist_n(locationAttr, &locdesclist, loccnt, &err) != DW_DLV_OK){
+             char *die_name = 0;
+             if (dwarf_diename_fn(the_die, &die_name, &err) != DW_DLV_OK){
+                 die("Not able to get location list for var without a name.  Probably optimized out\n");
+@@ -1728,7 +1728,7 @@
+         return false;
+     }
+ 
+-    if (dwarf_init(fd, DW_DLC_READ, 0, 0, dbg, &err) != DW_DLV_OK) {
++    if (dwarf_init_b(fd, DW_GROUPNUMBER_ANY, 0, 0, dbg, &err) != DW_DLV_OK) {
+         fprintf(stderr, "Failed DWARF initialization\n");
+         return false;
+     }
+@@ -1786,7 +1786,7 @@
+             fprintf(stderr, "Couldn't open %s; will not load symbols for it.\n", lib_name);
+             return;
+         }
+-        if (looking_for_libc && 
++        if (looking_for_libc &&
+             lib.find(libc_name) != std::string::npos) {
+ //        if (lib.find("libc-2.13") != std::string::npos)  {
+             lib_name = strdup(libc_host_path);
+@@ -2420,7 +2420,7 @@
+     const char *asid_s = panda_parse_string_opt(args_gen, "asid", NULL, "asid of the process to follow for pri_trace");
+     if (asid_s) {
+         target_ulong asid = strtoul(asid_s, NULL, 16);
+-        monitored_asid.insert(asid); 
++        monitored_asid.insert(asid);
+         std::cout << "Tracking process by ASID: " << std::hex << asid << "\n";
+     } else {
+ //        monitored_asid = 0;
+@@ -2431,7 +2431,7 @@
+     host_mount_path = panda_parse_string_opt(args, "host_mount_path", "dbg", "path to mounted guest file system");
+     proc_to_monitor = panda_parse_string_req(args, "proc", "name of process to follow with dwarf info");
+     libc_host_path = panda_parse_string_opt(args, "host_libc_path", "None", "path to guest libc on host");
+-    // this option allows dwarf/elf processing to continue if no 
++    // this option allows dwarf/elf processing to continue if no
+     // dwarf symbols are including.  presumably only using plt symbols
+     // for line range data.  could be useful for tracking calls to functions
+     allow_just_plt = panda_parse_bool_opt(args, "allow_just_plt", "allow parsing of elf for dynamic symbol information if dwarf is not available");
+diff --git a/panda/plugins/pri_dwarf/pri_dwarf_types.h b/panda/plugins/pri_dwarf/pri_dwarf_types.h
+--- a/panda/plugins/pri_dwarf/pri_dwarf_types.h
++++ b/panda/plugins/pri_dwarf/pri_dwarf_types.h
+@@ -1,5 +1,5 @@
+ 
+-#include <libdwarf/libdwarf.h>
++#include <libdwarf.h>
+ 
+ typedef void (*dwarfTypeCB)(target_ulong buf, LocType loc_t, target_ulong buf_len, const char *astnodename);
+ 
+diff --git a/panda/plugins/pri_dwarf/pri_dwarf_util.h b/panda/plugins/pri_dwarf/pri_dwarf_util.h
+--- a/panda/plugins/pri_dwarf/pri_dwarf_util.h
++++ b/panda/plugins/pri_dwarf/pri_dwarf_util.h
+@@ -2,11 +2,178 @@
+ #ifndef __PRI_DWARF_UTIL_H
+ #define __PRI_DWARF_UTIL_H
+ 
+-#include <libdwarf/libdwarf.h>
++#include <libdwarf.h>
+ #include "panda/plugin.h"
+-#include <libdwarf/dwarf.h>
++#include <dwarf.h>
++#include <stdlib.h>
+ #include "pri/pri_types.h"
+ 
++typedef struct PandaDwarfLoc_s {
++    Dwarf_Small lr_atom;
++    Dwarf_Unsigned lr_number;
++    Dwarf_Unsigned lr_number2;
++    Dwarf_Unsigned lr_offset;
++} PandaDwarfLoc;
++
++typedef PandaDwarfLoc Dwarf_Loc;
++
++typedef struct PandaDwarfLocdesc_s {
++    Dwarf_Addr ld_lopc;
++    Dwarf_Addr ld_hipc;
++    Dwarf_Unsigned ld_cents;
++    PandaDwarfLoc *ld_s;
++    Dwarf_Unsigned ld_section_offset;
++} PandaDwarfLocdesc;
++
++typedef PandaDwarfLocdesc Dwarf_Locdesc;
++
++static int panda_dwarf_loclist_n(Dwarf_Attribute attr,
++        PandaDwarfLocdesc ***out, Dwarf_Signed *count, Dwarf_Error *err)
++{
++    Dwarf_Loc_Head_c head = 0;
++    Dwarf_Unsigned entry_count = 0;
++    int rc = dwarf_get_loclist_c(attr, &head, &entry_count, err);
++    if (rc != DW_DLV_OK) {
++        return rc;
++    }
++
++    PandaDwarfLocdesc **list =
++        (PandaDwarfLocdesc **)calloc(entry_count, sizeof(*list));
++    if (list == NULL) {
++        dwarf_dealloc_loc_head_c(head);
++        return DW_DLV_ERROR;
++    }
++
++    Dwarf_Unsigned i;
++    PandaDwarfLocdesc *desc = NULL;
++    for (i = 0; i < entry_count; i++) {
++        desc = NULL;
++        Dwarf_Small lle_value = 0;
++        Dwarf_Small loclist_source = 0;
++        Dwarf_Unsigned rawlowpc = 0;
++        Dwarf_Unsigned rawhighpc = 0;
++        Dwarf_Bool debug_addr_unavailable = FALSE;
++        Dwarf_Addr lowpc_cooked = 0;
++        Dwarf_Addr hipc_cooked = 0;
++        Dwarf_Unsigned op_count = 0;
++        Dwarf_Locdesc_c entry = 0;
++        Dwarf_Unsigned expression_offset = 0;
++        Dwarf_Unsigned locdesc_offset = 0;
++
++        rc = dwarf_get_locdesc_entry_d(head, i, &lle_value, &rawlowpc,
++                &rawhighpc, &debug_addr_unavailable, &lowpc_cooked,
++                &hipc_cooked, &op_count, &entry, &loclist_source,
++                &expression_offset, &locdesc_offset, err);
++        if (rc != DW_DLV_OK) {
++            goto fail;
++        }
++
++        desc = (PandaDwarfLocdesc *)calloc(1, sizeof(*desc));
++        if (desc == NULL) {
++            rc = DW_DLV_ERROR;
++            goto fail;
++        }
++        desc->ld_lopc = (loclist_source == DW_LKIND_expression) ? 0 : rawlowpc;
++        desc->ld_hipc = (loclist_source == DW_LKIND_expression) ?
++            (Dwarf_Addr)-1 : rawhighpc;
++        desc->ld_cents = op_count;
++        desc->ld_section_offset = locdesc_offset;
++
++        list[i] = desc;
++        desc->ld_s = (PandaDwarfLoc *)calloc(
++            op_count ? op_count : 1, sizeof(*desc->ld_s));
++        if (desc->ld_s == NULL) {
++            rc = DW_DLV_ERROR;
++            goto fail;
++        }
++
++        Dwarf_Unsigned j;
++        for (j = 0; j < op_count; j++) {
++            Dwarf_Small op = 0;
++            Dwarf_Unsigned operand1 = 0;
++            Dwarf_Unsigned operand2 = 0;
++            Dwarf_Unsigned operand3 = 0;
++            Dwarf_Unsigned offset_for_branch = 0;
++            rc = dwarf_get_location_op_value_c(entry, j, &op, &operand1,
++                    &operand2, &operand3, &offset_for_branch, err);
++            if (rc != DW_DLV_OK) {
++                goto fail;
++            }
++            desc->ld_s[j].lr_atom = op;
++            desc->ld_s[j].lr_number = operand1;
++            desc->ld_s[j].lr_number2 = operand2;
++            desc->ld_s[j].lr_offset = offset_for_branch;
++        }
++        continue;
++
++fail:
++        for (Dwarf_Unsigned k = 0; k <= i; k++) {
++            if (list[k] != NULL) {
++                free(list[k]->ld_s);
++                free(list[k]);
++            }
++        }
++        free(list);
++        dwarf_dealloc_loc_head_c(head);
++        return rc;
++    }
++
++    dwarf_dealloc_loc_head_c(head);
++    *out = list;
++    *count = (Dwarf_Signed)entry_count;
++    return DW_DLV_OK;
++}
++
++static int dwarf_next_cu_header(Dwarf_Debug dbg,
++        Dwarf_Unsigned *cu_header_length, Dwarf_Half *version_stamp,
++        Dwarf_Unsigned *abbrev_offset, Dwarf_Half *address_size,
++        Dwarf_Unsigned *next_cu_header, Dwarf_Error *err)
++{
++    Dwarf_Off abbrev = 0;
++    Dwarf_Half addr_size = 0;
++    Dwarf_Half length_size = 0;
++    Dwarf_Half extension_size = 0;
++    Dwarf_Sig8 type_signature;
++    Dwarf_Unsigned type_offset = 0;
++    Dwarf_Half header_cu_type = 0;
++    int rc = dwarf_next_cu_header_d(dbg, 1, cu_header_length, version_stamp,
++            &abbrev, &addr_size, &length_size, &extension_size,
++            &type_signature, &type_offset, next_cu_header,
++            &header_cu_type, err);
++    if (rc == DW_DLV_OK) {
++        *abbrev_offset = (Dwarf_Unsigned)abbrev;
++        *address_size = addr_size;
++    }
++    return rc;
++}
++
++static Dwarf_Line_Context panda_line_context = 0;
++
++static int dwarf_srclines(Dwarf_Die cu_die, Dwarf_Line **linebuf,
++        Dwarf_Signed *linecount, Dwarf_Error *err)
++{
++    Dwarf_Unsigned version = 0;
++    Dwarf_Small table_count = 0;
++    int rc = dwarf_srclines_b(cu_die, &version, &table_count,
++            &panda_line_context, err);
++    if (rc != DW_DLV_OK) {
++        return rc;
++    }
++    return dwarf_srclines_from_linecontext(panda_line_context, linebuf,
++            linecount, err);
++}
++
++static void dwarf_srclines_dealloc(Dwarf_Debug dbg, Dwarf_Line *linebuf,
++        Dwarf_Signed linecount)
++{
++    (void)dbg;
++    (void)linebuf;
++    (void)linecount;
++    if (panda_line_context != 0) {
++        dwarf_srclines_dealloc_b(panda_line_context);
++        panda_line_context = 0;
++    }
++}
+ 
+ /*
+ uint32_t guest_strncpy(CPUState *cpu, char *buf, size_t maxlen, target_ulong guest_addr) {
+@@ -87,65 +254,65 @@
+ } __attribute__ ((packed));
+ 
+ target_ulong
+-read_guest_pointer (CPUState *cpu, target_ulong guest_addr) { 
++read_guest_pointer (CPUState *cpu, target_ulong guest_addr) {
+     target_ulong out;
+-    panda_virtual_memory_rw(cpu, guest_addr, (uint8_t *)&out, sizeof(target_ulong), 0); 
+-    return out; 
++    panda_virtual_memory_rw(cpu, guest_addr, (uint8_t *)&out, sizeof(target_ulong), 0);
++    return out;
+ }
+ 
+ static inline int
+-read_1u (CPUState *cpu, target_ulong guest_addr) { 
++read_1u (CPUState *cpu, target_ulong guest_addr) {
+     unsigned char c;
+-    panda_virtual_memory_rw(cpu, guest_addr, &c, 1, 0); 
++    panda_virtual_memory_rw(cpu, guest_addr, &c, 1, 0);
+     return c;
+ }
+ 
+ static inline int
+-read_1s (CPUState *cpu, target_ulong guest_addr) { 
++read_1s (CPUState *cpu, target_ulong guest_addr) {
+     unsigned char c;
+-    panda_virtual_memory_rw(cpu, guest_addr, &c, 1, 0); 
++    panda_virtual_memory_rw(cpu, guest_addr, &c, 1, 0);
+     return c;
+ }
+ 
+ static inline int
+-read_2u (CPUState *cpu, target_ulong guest_addr) { 
++read_2u (CPUState *cpu, target_ulong guest_addr) {
+     union unaligned up;
+-    panda_virtual_memory_rw(cpu, guest_addr, (uint8_t *) &up, sizeof(up), 0); 
++    panda_virtual_memory_rw(cpu, guest_addr, (uint8_t *) &up, sizeof(up), 0);
+     return up.u2;
+ }
+ 
+ static inline int
+-read_2s (CPUState *cpu, target_ulong guest_addr) { 
++read_2s (CPUState *cpu, target_ulong guest_addr) {
+     union unaligned up;
+-    panda_virtual_memory_rw(cpu, guest_addr, (uint8_t *) &up, sizeof(up), 0); 
++    panda_virtual_memory_rw(cpu, guest_addr, (uint8_t *) &up, sizeof(up), 0);
+     return up.s2;
+ }
+ 
+ static inline unsigned int
+-read_4u (CPUState *cpu, target_ulong guest_addr) { 
++read_4u (CPUState *cpu, target_ulong guest_addr) {
+     union unaligned up;
+-    panda_virtual_memory_rw(cpu, guest_addr, (uint8_t *) &up, sizeof(up), 0); 
++    panda_virtual_memory_rw(cpu, guest_addr, (uint8_t *) &up, sizeof(up), 0);
+     return up.u4;
+ }
+ 
+ static inline int
+-read_4s (CPUState *cpu, target_ulong guest_addr) { 
++read_4s (CPUState *cpu, target_ulong guest_addr) {
+     union unaligned up;
+-    panda_virtual_memory_rw(cpu, guest_addr, (uint8_t *) &up, sizeof(up), 0); 
++    panda_virtual_memory_rw(cpu, guest_addr, (uint8_t *) &up, sizeof(up), 0);
+     return up.s4;
+ }
+ 
+ static inline unsigned long
+-read_8u (CPUState *cpu, target_ulong guest_addr) { 
++read_8u (CPUState *cpu, target_ulong guest_addr) {
+     union unaligned up;
+-    panda_virtual_memory_rw(cpu, guest_addr, (uint8_t *) &up, sizeof(up), 0); 
++    panda_virtual_memory_rw(cpu, guest_addr, (uint8_t *) &up, sizeof(up), 0);
+     return up.u8;
+ }
+ 
+ static inline unsigned long
+-read_8s (CPUState *cpu, target_ulong guest_addr) { 
++read_8s (CPUState *cpu, target_ulong guest_addr) {
+     union unaligned up;
+-    panda_virtual_memory_rw(cpu, guest_addr, (uint8_t *) &up, sizeof(up), 0); 
++    panda_virtual_memory_rw(cpu, guest_addr, (uint8_t *) &up, sizeof(up), 0);
+     return up.s8;
+ }
+ 
+@@ -168,7 +335,7 @@
+      * We need this last else because otherwise this function in this
+      * plugin breaks build on new architectures.
+     */
+-    return 0; 
++    return 0;
+ #endif
+ }
+ 
+@@ -964,7 +1131,7 @@
+                     assert (1==0);
+                 result = stack[stack_elt - 2];
+                 break;
+-           
++
+             // variable doesn't have location
+             // but dwarf information says it's VALUE
+             // at this point in the program
+@@ -1042,7 +1209,7 @@
+                             }
+                         }
+                         break;
+-            
++
+                     case DW_OP_GNU_deref_type:
+                     case DW_OP_deref_type:
+                         //printf(" DW_OP_[GNU]_deref_type: need to dereference an address with a particular type\n");
+@@ -1189,7 +1356,7 @@
+ 
+             default:
+                 //process_dwarf_locs(loc_list, loc_cnt);
+-                return LocErr; 
++                return LocErr;
+                 //assert (1==0);
+         }
+ 
+@@ -1204,7 +1371,7 @@
+        at top of stack.  */
+     if (--stack_elt < 0)
+         assert (1==0);
+-    
++
+     *ret_loc = stack[stack_elt];
+     if (inReg)
+         return LocReg;
 diff --git a/panda/plugins/taint2/taint_ops.cpp b/panda/plugins/taint2/taint_ops.cpp
-index 4f6e017..ac6f01e 100644
 --- a/panda/plugins/taint2/taint_ops.cpp
 +++ b/panda/plugins/taint2/taint_ops.cpp
-@@ -24,8 +24,10 @@ PANDAENDCOMMENT */
+@@ -24,8 +24,10 @@
  #define __STDC_FORMAT_MACROS
  #endif
  
@@ -442,10 +804,9 @@ index 4f6e017..ac6f01e 100644
  #include <llvm/IR/Constants.h>
  #include <llvm/IR/Instructions.h>
 diff --git a/panda/tools/helper_call_modifier.cpp b/panda/tools/helper_call_modifier.cpp
-index 1020383..e1a4c84 100644
 --- a/panda/tools/helper_call_modifier.cpp
 +++ b/panda/tools/helper_call_modifier.cpp
-@@ -24,6 +24,7 @@ PANDAENDCOMMENT */
+@@ -24,6 +24,7 @@
   * to call these LLVM versions of helper functions.
   */
  
@@ -454,10 +815,9 @@ index 1020383..e1a4c84 100644
  #include <iostream>
  #include <regex>
 diff --git a/rules.mak b/rules.mak
-index acdff32..fbd2b24 100644
 --- a/rules.mak
 +++ b/rules.mak
-@@ -21,7 +21,7 @@ MAKEFLAGS += -rR
+@@ -21,7 +21,7 @@
  clean-target:
  
  # Additional C++ flags. Note that QEMU_CFLAGS have already been appended by configure.

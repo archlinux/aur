@@ -12,7 +12,7 @@ depends=('glib2' 'zlib' 'libpng' 'pixman' 'ncurses' 'gnutls' 'nettle'
          'libaio' 'libiscsi' 'openssl' 'libarchive' 'libsasl' 'libcap-ng'
          'libcap' 'spice' 'libcacard' 'usbredir' 'brltty' 'rdma-core' 'mesa'
          'libepoxy' 'libjpeg-turbo' 'libssh2' 'libseccomp' 'vde2'
-         'wireshark-cli' 'libosi-bin' 'gcc-libs' 'libatomic' 'systemd-libs' 'abseil-cpp' 'acl'
+         'wireshark-cli' 'libosi-bin' 'libdwarf' 'gcc-libs' 'libatomic' 'systemd-libs' 'abseil-cpp' 'acl'
          'at-spi2-core' 'bluez-libs' 'bzip2' 'cairo' 'curl' 'gdk-pixbuf2'
          'glusterfs' 'gtk3' 'harfbuzz' 'jsoncpp' 'libusb' 'libx11' 'lzo'
          'pango' 'sdl2' 'snappy' 'util-linux-libs' 'vte3')
@@ -22,7 +22,7 @@ makedepends=('cmake' 'ninja' 'pkgconf' 'python' 'cargo' 'chrpath'
              'wireshark-cli' 'libarchive' 'openssl' 'libaio' 'libiscsi'
              'spice' 'libcacard' 'usbredir' 'brltty' 'rdma-core' 'mesa'
              'libepoxy' 'libjpeg-turbo' 'libssh2' 'libseccomp' 'vde2'
-             'libosi-bin' 'libatomic' 'systemd-libs' 'abseil-cpp' 'acl' 'at-spi2-core' 'bluez-libs'
+             'libosi-bin' 'libdwarf' 'libatomic' 'systemd-libs' 'abseil-cpp' 'acl' 'at-spi2-core' 'bluez-libs'
              'bzip2' 'cairo' 'curl' 'gdk-pixbuf2' 'glusterfs' 'gtk3'
              'harfbuzz' 'jsoncpp' 'libusb' 'libx11' 'lzo' 'pango' 'sdl2'
              'snappy' 'util-linux-libs' 'vte3')
@@ -30,7 +30,7 @@ options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/panda-re/panda/archive/refs/tags/v${pkgver}.tar.gz"
         'panda-arch.patch')
 sha256sums=('0d5eb59a900a792de250297dda4cc6e900b6a73c425915aa92c625bcfde8427a'
-            'c6f187cb57ec611031e19af64dd0fc055561231da83a6f8e3c55d08519219cf9')
+            '7be6685f70d39abd9d1114da342099355b2172089b98f609ecb8940fa15972c7')
 
 _targets='x86_64-softmmu,i386-softmmu,arm-softmmu,aarch64-softmmu,ppc-softmmu,mips-softmmu,mipsel-softmmu,mips64-softmmu,mips64el-softmmu'
 
@@ -46,10 +46,13 @@ prepare() {
 
 build() {
     # PANDA's LLVM pass manager code requires LLVM 14; newer LLVM removed those APIs.
-    export CFLAGS='-O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2'
+    # Keep the build directory out of binary strings and debug metadata.
+    export CFLAGS="-O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -ffile-prefix-map=${srcdir}/="
     export CXXFLAGS="$CFLAGS"
     export LDFLAGS=''
     unset PKG_CONFIG_PATH
+    # Arch installs libdwarf headers in a versioned include directory.
+    _libdwarf_cflags=$(pkg-config --cflags libdwarf)
 
     cd "panda-${pkgver}"
     mkdir -p build
@@ -59,8 +62,8 @@ build() {
         --prefix=/usr \
         --enable-llvm \
         --with-llvm=/usr/lib/llvm14 \
-        --extra-cflags='-std=gnu11 -DLIBNFS_API_V2 -Wno-error' \
-        --extra-cxxflags='-Wno-error' \
+        --extra-cflags="-std=gnu11 -DLIBNFS_API_V2 -Wno-error $_libdwarf_cflags" \
+        --extra-cxxflags="-Wno-error $_libdwarf_cflags" \
         --disable-docs
     make
 }
@@ -81,6 +84,11 @@ package() {
     rm -f "$pkgdir/usr/share/panda/s390-ccw.img"
 
     find "$pkgdir/usr/lib/panda" -type f -name '*_dso_info_*.so' -exec chrpath -d {} +
+
+    # Generated helpers embed the build path; keep it out of the package.
+    find "$pkgdir/usr/lib/panda" -type f -name root-output -delete
+    _srcdir_mask=${srcdir//?/x}
+    grep -RlZ -- "$srcdir" "$pkgdir" | xargs -0 -r sed -i "s|${srcdir//./\\.}|$_srcdir_mask|g"
 
     install -Dm644 "$srcdir/panda-${pkgver}/COPYING" \
         "$pkgdir/usr/share/licenses/$pkgname/COPYING"
