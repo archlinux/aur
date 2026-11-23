@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ReactomeGSA
-_pkgver=1.20.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,13 +11,16 @@ url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
   r-biobase
+  r-biocsingular
   r-dplyr
   r-ggplot2
   r-gplots
   r-httr
+  r-igraph
   r-jsonlite
   r-progress
   r-rcolorbrewer
+  r-summarizedexperiment
   r-tidyr
 )
 optdepends=(
@@ -25,11 +28,17 @@ optdepends=(
   r-knitr
   r-reactomegsa.data
   r-rmarkdown
+  r-scater
+  r-scran
+  r-scrnaseq
+  r-scuttle
+  r-seurat
+  r-singlecellexperiment
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9ac75169cf50f17bee67fe2487c30a57')
-b2sums=('5be890335b6fd3e9dd4ef8958028a4ceb4b11dd15e6906e22c0971f0681899f9756c8934eafcf9559569c0705b50171e7ddc5ea4fa45b6b184d16bd391e1dc4c')
+md5sums=('ac3c12d24f4dd4dc280d89fa82f32a9c')
+b2sums=('9163be542c39487981347c1fa21f84b286c7bf96339e670a019fc3348b5083682809c2ecb9f6845cfb72e48651ec75aaecde19a8cb6ce90d15886c56b2aa6c82')
 
 build() {
   mkdir build
