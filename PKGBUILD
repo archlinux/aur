@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DropletUtils
-_pkgver=1.28.1
+_pkgver=1.32.1
 pkgname=r-${_pkgname,,}
-pkgver=1.28.1
+pkgver=1.32.1
 pkgrel=1
 pkgdesc='Utilities for Handling Single-Cell Droplet Data'
 arch=('x86_64')
@@ -13,7 +13,6 @@ license=('GPL')
 depends=(
   r
   r-beachmat
-  r-bh
   r-biocgenerics
   r-biocparallel
   r-delayedarray
@@ -26,13 +25,18 @@ depends=(
   r-r.utils
   r-rcpp
   r-rhdf5
-  r-rhdf5lib
   r-s4vectors
   r-scuttle
   r-singlecellexperiment
+  r-sparsearray
   r-summarizedexperiment
   gcc
   make
+)
+makedepends=(
+  r-assorthead
+  r-bh
+  r-rhdf5lib
 )
 optdepends=(
   r-biocstyle
@@ -43,7 +47,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a05909bb08a7e5701e612156b52cfce40846b03e756d8003ba8d61ce5ca9e8b9')
+sha256sums=('7eb51272528522fcd23ea142f6642cb27794c79632e7a7f58f77b572cd809a7c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
