@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocNeighbors
-_pkgver=2.4.0
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
-pkgver=2.4.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Nearest Neighbor Detection for Bioconductor Packages'
 arch=('x86_64')
@@ -12,26 +12,24 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-biocparallel
   r-rcpp
-  r-rcpphnsw
-  r-s4vectors
-  r-assorthead
 )
 makedepends=(
   gcc
+  r-assorthead
+  r-beachmat
 )
 optdepends=(
+  r-beachmat
+  r-biocparallel
   r-biocstyle
-  r-fnn
+  r-delayedarray
   r-knitr
-  r-rcppannoy
-  r-rcpphnsw
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7367c7f5ca7c58a3f5b610b3babae2c31f3f310cfde349067da48897494fa0fb')
+sha256sums=('2a6dbae3f7877777730c4377eedfadfafbf597d5aef378a2eb8f3155c645f98d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
