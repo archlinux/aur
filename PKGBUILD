@@ -2,7 +2,7 @@
 # Contributor: Mikhail Velichko <efklid@gmail.com>
 
 pkgname=lolka-x-bin
-pkgver=2.0.33
+pkgver=2.0.34
 pkgrel=1
 pkgdesc='Native desktop client for lolka.app - chat and voice with friends'
 arch=('x86_64')
@@ -37,14 +37,14 @@ optdepends=(
   'nvidia-utils: hardware video encoding (NVENC) on NVIDIA'
   'gtk3: native GTK dialogs and theme'
 )
-provides=('lolka-x=2.0.33')
+provides=('lolka-x=2.0.34')
 conflicts=('lolka-x')
 options=('!strip' '!debug')
-source=('lolka-x-2.0.33-x86_64.pkg.tar.zst::https://cdn.lolka.app/desktop/linux/2.0.33/lolka-x-bin-2.0.33-1-x86_64.pkg.tar.zst')
-noextract=('lolka-x-2.0.33-x86_64.pkg.tar.zst')
-sha512sums=('8a19955a373b434f607f8092f6b08dcb27b00e29eaac7eb383bd8cf951e253cfdd4d93e21d8db955743f46c5758b957b4c66a6c037008e948192ae7089153ac7')
+source=('lolka-x-2.0.34-x86_64.pkg.tar.zst::https://cdn.lolka.app/desktop/linux/2.0.34/lolka-x-bin-2.0.34-1-x86_64.pkg.tar.zst')
+noextract=('lolka-x-2.0.34-x86_64.pkg.tar.zst')
+sha512sums=('dfac2b4f08882373b0074c36c4eedb7989120013939d692ff06524d043909193040fc1ead59f00872393d835fc44f5c518ad386a68bd7c12cb21ce060f562d2e')
 
 package() {
-  bsdtar -xpf "${srcdir}/lolka-x-2.0.33-x86_64.pkg.tar.zst" -C "${pkgdir}" \
+  bsdtar -xpf "${srcdir}/lolka-x-2.0.34-x86_64.pkg.tar.zst" -C "${pkgdir}" \
     --exclude='.BUILDINFO' --exclude='.MTREE' --exclude='.PKGINFO' --exclude='.INSTALL' --exclude='.CHANGELOG'
 }
