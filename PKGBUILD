@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=conos
-_pkgver=1.5.2
+_pkgver=1.5.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,6 +25,7 @@ depends=(
   r-leidenalg
   r-magrittr
   r-n2r
+  r-pagoda2
   r-r6
   r-reshape2
   r-rlang
@@ -51,7 +52,6 @@ optdepends=(
   r-org.hs.eg.db
   r-org.mm.eg.db
   r-p2data
-  r-pagoda2
   r-plyr
   r-pma
   r-rhdf5
@@ -66,8 +66,8 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ebbd6a030dabdbcff607dee0bd937081')
-b2sums=('a75b7e6a25e3f41feb1884d6bf266c7f8feeefb458b27c6adb5195e029f11b32172bdff694a7a081a3309ba920b71d46468d14d93b770ca6dee05a12c7a3ff56')
+md5sums=('bee312a8b31f3de1bdc31d35dbc012e0')
+b2sums=('f2e26ad19c6c0bb700c25f26b8be66ceeb418649045156217d99c17fc9d8414ba0062c5dd633f1484c1df08e12fdbf725288896e636060ebff79861c7e9f8227')
 
 build() {
   mkdir build

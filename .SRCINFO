@@ -1,6 +1,6 @@
 pkgbase = r-conos
 	pkgdesc = Clustering on Network of Samples
-	pkgver = 1.5.2
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=conos
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = r-conos
 	depends = r-leidenalg
 	depends = r-magrittr
 	depends = r-n2r
+	depends = r-pagoda2
 	depends = r-r6
 	depends = r-reshape2
 	depends = r-rlang
@@ -42,7 +43,6 @@ pkgbase = r-conos
 	optdepends = r-org.hs.eg.db
 	optdepends = r-org.mm.eg.db
 	optdepends = r-p2data
-	optdepends = r-pagoda2
 	optdepends = r-plyr
 	optdepends = r-pma
 	optdepends = r-rhdf5
@@ -55,8 +55,8 @@ pkgbase = r-conos
 	optdepends = r-tibble
 	optdepends = r-uwot
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/conos_1.5.2.tar.gz
-	md5sums = ebbd6a030dabdbcff607dee0bd937081
-	b2sums = a75b7e6a25e3f41feb1884d6bf266c7f8feeefb458b27c6adb5195e029f11b32172bdff694a7a081a3309ba920b71d46468d14d93b770ca6dee05a12c7a3ff56
+	source = https://cran.r-project.org/src/contrib/conos_1.5.4.tar.gz
+	md5sums = bee312a8b31f3de1bdc31d35dbc012e0
+	b2sums = f2e26ad19c6c0bb700c25f26b8be66ceeb418649045156217d99c17fc9d8414ba0062c5dd633f1484c1df08e12fdbf725288896e636060ebff79861c7e9f8227
 
 pkgname = r-conos
