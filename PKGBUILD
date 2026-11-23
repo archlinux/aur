@@ -16,7 +16,7 @@
 # does not have to be edited for every upstream release.
 pkgname=deveco-commandline-tools
 pkgver=26.0.1.290
-pkgrel=5
+pkgrel=6
 pkgdesc='HUAWEI Command Line Tools for HarmonyOS: hvigorw, ohpm, hstack, codelinter, SDK tools'
 arch=('x86_64')
 url='https://developer.huawei.com/consumer/cn/download/'
@@ -83,18 +83,27 @@ package() {
   find "$pkgdir/opt/deveco/command-line-tools" \( -type f -o -type d \) -exec chmod 755 {} +
 
   install -d "$pkgdir/usr/bin"
-  local t
-  for t in hvigorw ohpm hstack arktsdoc; do
-    [[ -e "$pkgdir/opt/deveco/command-line-tools/bin/$t" ]] &&
-      ln -s "/opt/deveco/command-line-tools/bin/$t" "$pkgdir/usr/bin/$t"
+  local t name src
+  for t in hvigorw ohpm hstack arktsdoc codelinter Emulator; do
+    src="/opt/deveco/command-line-tools/bin/$t"
+    [[ -e "$pkgdir$src" ]] || continue
+    case "$t" in
+      codelinter) name=hcodelinter ;;
+      Emulator)   name=hemulator ;;
+      *)          name=$t ;;
+    esac
+    # These upstream launchers locate their payload via $(dirname "$0")/.. without
+    # readlink, so a /usr/bin symlink resolves to /usr/hvigor/... and dies.
+    # Exec the real path instead: the launcher then sees /opt/... as $0.
+    printf '#!/bin/sh\nexec %s "$@"\n' "$src" > "$pkgdir/usr/bin/$name"
+    chmod 755 "$pkgdir/usr/bin/$name"
   done
-  [[ -e "$pkgdir/opt/deveco/command-line-tools/bin/codelinter" ]] &&
-    ln -s /opt/deveco/command-line-tools/bin/codelinter "$pkgdir/usr/bin/hcodelinter"
-  [[ -e "$pkgdir/opt/deveco/command-line-tools/bin/Emulator" ]] &&
-    ln -s /opt/deveco/command-line-tools/bin/Emulator "$pkgdir/usr/bin/hemulator"
   local _hdc
   _hdc=$(find "$pkgdir/opt/deveco/command-line-tools" -type f -name hdc 2>/dev/null | head -1)
-  [[ -n "$_hdc" ]] && ln -s "${_hdc#$pkgdir}" "$pkgdir/usr/bin/hdc"
+  if [[ -n "$_hdc" ]]; then
+    printf '#!/bin/sh\nexec %s "$@"\n' "${_hdc#$pkgdir}" > "$pkgdir/usr/bin/hdc"
+    chmod 755 "$pkgdir/usr/bin/hdc"
+  fi
 
   install -d "$pkgdir/usr/share/doc/$pkgname"
   printf '%s\n' \
