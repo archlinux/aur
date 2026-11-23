@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r92495.ddd3c0ca887
+pkgver=r95322.49fc4afec64
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -82,6 +82,10 @@ prepare() {
   sed -e 's/mi_heap_get_default/mi_heap_main/' -i ladybird/AK/kmalloc.cpp
   sed -e 's/\(lib[a-z]*\)-ladybird)/\1)/' -i ladybird/Meta/CMake/check_for_dependencies.cmake
   sed -e '/^add_cxx_compile_options(-Werror)$/i add_cxx_compile_options(-Wno-restrict)' -i ladybird/Meta/CMake/compile_options.cmake
+  # Upstream carries a patch for this to ffmpeg, drop it for now.
+  sed -e 's/AV_HWACCEL_FLAG_LADYBIRD_CLEAR_UNUSED_REF_FRAME_MVS;/0;/' -i ladybird/Libraries/LibMediaCodecs/FFmpeg/FFmpegVulkanVideoDecoder.cpp
+  # SSL_set1_host is deprecated in ossl4.
+  sed -e '/^add_cxx_compile_options(-Werror)$/i add_cxx_compile_options(-Wno-error=deprecated-declarations)' -i ladybird/Meta/CMake/compile_options.cmake
 }
 
 build() {
@@ -95,6 +99,7 @@ build() {
     -B build \
     -S ladybird \
     -DENABLE_RUST=YES \
+    -DBUILD_TESTING=OFF \
     -DBUILD_SHARED_LIBS=OFF \
     -DLADYBIRD_CACHE_DIR="${srcdir}/build/Build/caches" \
     -DCMAKE_BUILD_TYPE=Release \
