@@ -1,0 +1,20 @@
+pkgbase = r-instantiate
+	pkgdesc = Pre-Compiled 'CmdStan' Models in R Packages
+	pkgver = 0.2.4
+	pkgrel = 2
+	url = https://cran.r-project.org/package=instantiate
+	arch = x86_64
+	license = MIT
+	depends = r-callr
+	depends = r-fs
+	depends = r-rlang
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/instantiate_0.2.4.tar.gz
+	md5sums = e38a8972daa798df88aac21c25aefdcb
+	b2sums = d25c19efffcad36385e5789323566ad0f8bbc556dadbdde221cd547382dcd583db988c28691b4e2d55a713cf8f3dac7fa3403c4d50c2150196164dccd3aa5714
+
+pkgname = r-instantiate
