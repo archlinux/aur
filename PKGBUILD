@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CompoundDb
-_pkgver=1.10.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,6 +15,7 @@ depends=(
   r-biocgenerics
   r-biocparallel
   r-chemminer
+  r-data.table
   r-dbi
   r-dbplyr
   r-dplyr
@@ -26,6 +27,7 @@ depends=(
   r-rsqlite
   r-s4vectors
   r-spectra
+  r-stringi
   r-tibble
   r-xml2
 )
@@ -40,8 +42,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c79d6a2cc057e9505a1016d679642870')
-b2sums=('4d273a4481778213b3a4568e97e768d26063e48e845705574103fa0a3247e56c6b21de442984e58bbd5cecfc684ee63165af02ce0630c5e607889b77599ac44b')
+md5sums=('a82271539f1d2e0fce912869011f5d1a')
+b2sums=('9968b94c83021503549551d519d073255c6f9add986aa0dedb107759df23b4a313c1a5c6fc9bf9c0a1b5bee0d9df4a682cb4ee18fff9c23fac6aafae409d14a7')
 
 build() {
   mkdir build
