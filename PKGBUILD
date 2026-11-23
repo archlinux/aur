@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DataVisualizations
-_pkgver=1.3.3
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Visualizations of High-Dimensional Data'
 arch=('x86_64')
@@ -15,20 +15,19 @@ depends=(
   r-ggplot2
   r-pracma
   r-rcpp
-  r-rcpparmadillo
+  r-rcppparallel
   r-reshape2
   r-sp
   gcc
 )
 optdepends=(
   r-abcanalysis
-  r-choroplethr
   r-colorspace
   r-diptest
-  r-dplyr
   r-ggextra
   r-ggmap
   r-ggrepel
+  r-gridextra
   r-htmlwidgets
   r-knitr
   r-mass
@@ -38,7 +37,6 @@ optdepends=(
   r-plotly
   r-plotrix
   r-plyr
-  r-r6
   r-rgl
   r-rmarkdown
   r-rocit
@@ -49,7 +47,7 @@ optdepends=(
   r-viridis
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b737db909b5650044852db0d6ac67bff207ed03a7952708c8dd704dda4d1bef3')
+sha256sums=('0ca92815176873dde104a74f117fa6ce2f36c06d7ba9dcf8b89a455e34dd53bb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
