@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CaDrA
-_pkgver=1.2.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,6 +14,7 @@ depends=(
   r-ggplot2
   r-gplots
   r-gtable
+  r-knnmi
   r-misc3d
   r-plyr
   r-ppcor
@@ -33,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5269578a8ed6576b2c3090d4713005b1')
-b2sums=('7dc6fe35080f6edc5e9b3c5119c3a65009521138f355c233b966b7514aa01499e609098eb4680652dc820d4c283c6149e5252eb330c6e6579f1975074d1f041d')
+md5sums=('5fcb4317557b640cb3a7dfea55f271da')
+b2sums=('72bc4a9dc862d3def062f9a1dc752d5be05f441a6ba6807cc2c5da524ea79435e4377f896682b70462630a8795357b10527e3092381e30b7b7ea1bed02502f92')
 
 build() {
   mkdir build
