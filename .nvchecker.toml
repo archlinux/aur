@@ -1,0 +1,4 @@
+[kiri-lite]
+source = "git"
+git = "https://github.com/libracoder/kiri.git"
+prefix = "v"
