@@ -1,0 +1,25 @@
+pkgbase = r-gpvecchia
+	pkgdesc = Scalable Gaussian-Process Approximations
+	pkgver = 0.1.8
+	pkgrel = 2
+	url = https://cran.r-project.org/package=GPvecchia
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = r-bh
+	makedepends = r-rcpparmadillo
+	depends = blas
+	depends = lapack
+	depends = r-fields
+	depends = r-fnn
+	depends = r-gpgp
+	depends = r-rcpp
+	depends = r-sparseinv
+	optdepends = r-knitr
+	optdepends = r-mvtnorm
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/GPvecchia_0.1.8.tar.gz
+	md5sums = dd5ef8322abb616b8f4d5edd76f0010d
+	b2sums = eb5f7e6f531fc40a0640e61e01c2c4cd86aae43cf20baa6e328dbf70ae809a6f119b19a75952732ae0d65fe28732b8a7573cf6e3a28030bab729730b7c4b4d1e
+
+pkgname = r-gpvecchia
