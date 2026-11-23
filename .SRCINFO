@@ -1,0 +1,16 @@
+pkgbase = r-fastmatrix
+	pkgdesc = Fast Computation of some Matrices Useful in Statistics
+	pkgver = 0.6.6
+	pkgrel = 2
+	url = https://cran.r-project.org/package=fastmatrix
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = gcc-fortran
+	depends = r
+	depends = blas
+	depends = lapack
+	source = https://cran.r-project.org/src/contrib/fastmatrix_0.6-6.tar.gz
+	md5sums = 68a59c07134d881015f9154496b7228b
+	b2sums = c285ede9cf89eda10a3c3dba5320e18523be65116dd580630c8bdfbecbc809fd2a7644ebbeff1b8d62eb260dcff42fe3a71b64075d4bedbdff59532feacc0ef0
+
+pkgname = r-fastmatrix
