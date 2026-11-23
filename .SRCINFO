@@ -1,6 +1,6 @@
 pkgbase = stackablectl
 	pkgdesc = Command line tool to interact with a Stackable Data Platform
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/stackabletech/stackablectl/
@@ -15,7 +15,7 @@ pkgbase = stackablectl
 	conflicts = stackablectl-bin
 	conflicts = stackablectl-git
 	options = !lto
-	source = stackablectl::git+https://github.com/stackabletech/stackablectl.git#commit=6222f3219c260ad50231c313ce843dd7d7f13938
-	b2sums = e650a53bbaaed3f20b41b468cb1e0fbf39f4cabcc6498a3e9e75a82c9a410bf3dddcdb5d716c3464acdf1dca1aa16cb0946147e62f72309b5a026db0a804e0eb
+	source = stackablectl::git+https://github.com/stackabletech/stackablectl.git#commit=7840b64c22bffa0c912e09b92d604282507e3680
+	b2sums = 4bf3444f15b9622c716daac9f275a746db0cf7029692e93bba35484809be4b5493eed3ee271b4db6d4cffb94613913e3f99578765b80b054a7b9a881e1b3f3b2
 
 pkgname = stackablectl
