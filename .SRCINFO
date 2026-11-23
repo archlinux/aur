@@ -1,0 +1,21 @@
+pkgbase = clove
+	pkgdesc = Fast dithered-storage file manager
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ZeroiJ/clove-win
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	depends = fontconfig
+	depends = libxkbcommon
+	depends = wayland
+	depends = vulkan-icd-loader
+	options = !debug
+	source = clove-0.1.1.tar.gz::https://github.com/ZeroiJ/clove-win/archive/refs/tags/v0.1.1.tar.gz
+	source = rune-db301c06ab0d68b70c4822a542fffc6615bbd419.tar.gz::https://github.com/anomalyco/rune/archive/db301c06ab0d68b70c4822a542fffc6615bbd419.tar.gz
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = clove
