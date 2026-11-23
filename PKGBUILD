@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=transite
-_pkgver=1.26.1
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.1
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='RNA-binding protein motif analysis'
 arch=('x86_64')
@@ -17,10 +17,10 @@ depends=(
   r-dplyr
   r-genomicranges
   r-ggplot2
-  r-ggseqlogo
   r-gridextra
   r-rcpp
   r-scales
+  r-stringr
   r-tfmpvalue
   gcc
 )
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('42e1df3884956ca2bc4e65e82b5df255232ec08138076eecfadd07fe604358ba')
+sha256sums=('878f4570e3d3af6cc03120bf2fa8c46bec8b9900094dcd05fe680bcf06bf2195')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
