@@ -1,6 +1,6 @@
 # Maintainer: Ulises Jeremias <ulisescf.24@gmail.com>
 pkgname=veasel-code-bin
-pkgver=0.100.1.next.0
+pkgver=0.101.0.next.0
 pkgrel=1
 pkgdesc="V-native AI coding agent (official prebuilt Linux release)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
 )
 noextract=('veasel-Linux.tar.gz')
 sha256sums=(
-  '2e001183d727a801516980dc32cd05a2d980019850fe229a754f8374ab92e300'
+  '0efb65e27dd03267792aa5cd18b242fbfdd6fb2e5df7ee8ca7bb74ceeb348766'
   'e150ff1e9cd21b388ec966f3d77ed4731e86e4731b17f127e879f72ff5b2e3d5'
 )
 
@@ -25,6 +25,10 @@ package() {
   local bundle="${srcdir}/veasel-bundle"
   install -d "${bundle}"
   tar -xzf "${srcdir}/veasel-Linux.tar.gz" -C "${bundle}" veasel veasel-tui build.json
+  if tar -tzf "${srcdir}/veasel-Linux.tar.gz" | grep -Fx veasel-tui.desktop >/dev/null; then
+    tar -xzf "${srcdir}/veasel-Linux.tar.gz" -C "${bundle}" veasel-tui.desktop
+    install -Dm644 "${bundle}/veasel-tui.desktop" "${pkgdir}/usr/share/applications/veasel-tui.desktop"
+  fi
   install -Dm755 "${bundle}/veasel" "${pkgdir}/usr/lib/veasel-code/veasel"
   install -Dm755 "${bundle}/veasel-tui" "${pkgdir}/usr/lib/veasel-code/veasel-tui"
   install -Dm644 "${bundle}/build.json" "${pkgdir}/usr/share/veasel-code/build.json"
