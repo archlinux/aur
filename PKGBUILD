@@ -2,14 +2,14 @@
 
 _pkgname=exceptions4c
 pkgname=${_pkgname}-git
-pkgver=cce5399 
+pkgver=20250222.9f78795 
 pkgrel=1
 pkgdesc="Bring the power of exceptions to your C applications with this tiny, portable library."
-arch=('any')
+arch=('x86_64')
 url="https://exceptions4c.guillermo.in/"
-license=('LGPL')
+license=('Apache-2.0')
 depends=('glibc')
-makedepends=('automake' 'autoconf')
+makedepends=('git' 'automake' 'autoconf')
 source=("${_pkgname}::git+https://github.com/guillermocalvo/exceptions4c.git")
 sha256sums=('SKIP')
 
@@ -38,5 +38,5 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" docs_DATA= install
 }
