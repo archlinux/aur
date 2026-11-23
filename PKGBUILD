@@ -1,20 +1,25 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RJSONIO
-_pkgver=2.0.0
+_pkgver=2.0.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Serialize R Objects to JSON, JavaScript Object Notation"
+pkgdesc="Serialize R Objects to JSON"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('BSD-3-Clause')
 depends=(
   r
 )
+optdepends=(
+  r-knitr
+  r-rmarkdown
+  r-testthat
+)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f43a5bc14ece5584ebde01731845bc59')
-b2sums=('f3121114d8d4a9d4cedb711995d5a1c5fa08155ad98a619418f63be41c6a55733bc7235ad6c299190882993c2445b1f5925b784faff85c68b680c3c7bd855321')
+md5sums=('358d7433ec8da681b17c4e29994f8d12')
+b2sums=('c62dbb375d810f5bfffa87212fa534fa9712beb5c2e6c6e129d750de781eba14951660e38cb3d7824f34e15ff228dee5614d65f75eda27c9db2bfa24fdbb3b6e')
 
 build() {
   mkdir build
