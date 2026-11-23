@@ -13,7 +13,7 @@ source=("git+https://github.com/f32c/tools"
         "Makefile")
 sha256sums=('SKIP'
             '8ca346c65ca04f8b06e6877180b2f1eed7b7dbd8ce3ee5ad2d80da7158175686'
-            'df040cc999654bb8357a66df4bf4fb4d8335716b2a728a0edeecb7918be00a0a')
+            '39211a1bd1b116c01bf6a7f9c05051b11f1524b348fcf0a2fc943607ddb16e9e')
 options=(!strip)
 
 prepare() {

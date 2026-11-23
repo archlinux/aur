@@ -9,15 +9,15 @@ ARCHNAME = $(shell uname -m)-linux-gnu
 
 #FTLIB = /usr/lib/${ARCHNAME}/libftdi.a
 #USBLIB = /usr/lib/${ARCHNAME}/libusb.a
-FTLIB = -lftdi1 
+FTLIB = -I/usr/include/libftdi1 -lftdi1 
 USBLIB = -lusb
 USBLIB-1.0 = -I/usr/include/libusb-1.0/ -lusb-1.0
 
 ujprog:	${SRCS}
-	${CC} ${CFLAGS} ${FTLIB} ${USBLIB} ${SRCS}  -o ujprog
+	${CC} ${CFLAGS} ${FTLIB} ${USBLIB-1.0} ${SRCS}  -o ujprog
 
 flash:	ft232r_flash.c
-	${CC} ${CFLAGS} ${USBLIB-1.0} ft232r_flash.c ${FTLIB} -o ft232r_flash
+	${CC} ${CFLAGS} ${USBLIB-1.0} ft232r_flash.c -lftdi -o ft232r_flash
 	
 install: ujprog
 	install -m 4755 ujprog ${INSTALL_DIR}

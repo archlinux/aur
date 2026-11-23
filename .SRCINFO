@@ -18,7 +18,6 @@ pkgbase = f32c-tools
 	source = Makefile
 	sha256sums = SKIP
 	sha256sums = 8ca346c65ca04f8b06e6877180b2f1eed7b7dbd8ce3ee5ad2d80da7158175686
-	sha256sums = df040cc999654bb8357a66df4bf4fb4d8335716b2a728a0edeecb7918be00a0a
+	sha256sums = 39211a1bd1b116c01bf6a7f9c05051b11f1524b348fcf0a2fc943607ddb16e9e
 
 pkgname = f32c-tools
-
