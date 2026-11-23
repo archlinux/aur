@@ -2,7 +2,7 @@
 
 _pkgname=kicad-library-cern
 pkgname="${_pkgname}-git"
-pkgver=r141.20261021.674a9e7
+pkgver=r171.20261123.290105c2
 pkgrel=1
 pkgdesc="Electronics component libraries used at CERN for electronics design using KiCad, regularly converted from the original Altium
 Designer source libraries at CERN's Electronics Design Office."
