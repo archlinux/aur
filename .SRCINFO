@@ -1,6 +1,6 @@
 pkgbase = modrinth-enhanced-bin
 	pkgdesc = Modrinth App without ads or telemetry, with offline and Ely.by accounts and Linux fixes (upstream binary)
-	pkgver = 0.23.5
+	pkgver = 0.23.5.r2
 	pkgrel = 1
 	url = https://github.com/Felitendo/Modrinth-Enhanced
 	arch = x86_64
@@ -25,13 +25,13 @@ pkgbase = modrinth-enhanced-bin
 	optdepends = xorg-xrandr: for older Minecraft versions
 	provides = modrinth-enhanced
 	conflicts = modrinth-enhanced
-	noextract = modrinth-enhanced-bin-0.23.5.deb
+	noextract = modrinth-enhanced-bin-0.23.5.r2.deb
 	options = !strip
 	options = !debug
-	source = modrinth-enhanced-bin-0.23.5.deb::https://github.com/Felitendo/Modrinth-Enhanced/releases/download/v0.23.5/Modrinth.Enhanced_0.23.5_amd64.deb
+	source = modrinth-enhanced-bin-0.23.5.r2.deb::https://github.com/Felitendo/Modrinth-Enhanced/releases/download/v0.23.5-2/Modrinth.Enhanced_0.23.5_amd64.deb
 	source = vblank-shim.c
 	source = modrinth-enhanced.sh
-	sha256sums = 6c12dda9bd1dce7ad2a54dff9d9c17a2ce67cf1d5cb933ca8acf602f2f6f5bef
+	sha256sums = ddb0cda4156e54e87d3305e7313b2a1aaa7e89b2bfdb5eb7964aec9b39fa4e39
 	sha256sums = 0190921b8ff2fb1deec3209cba71c01541ca1f013e3ba41680f1636e185fd455
 	sha256sums = b24872f82645c52ee4804599cd678d138876fb193c754403fa9c5cf92bd745b9
 
