@@ -2,7 +2,7 @@
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
 _pkgname='Cherry Studio'
-pkgver=2.2.2
+pkgver=2.2.3
 _electronversion=45
 pkgrel=1
 pkgdesc="AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs."
@@ -42,8 +42,8 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/downloa
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
-sha256sums_aarch64=('2fb6b76753792132ca5109ab415ca82573a0fb8da2baae77a7b33c5289e406cd')
-sha256sums_x86_64=('b4fa17f65a01881a5fd1bca7f741b48acaa7c7911da5ea01727fa398ab82ab27')
+sha256sums_aarch64=('38c0e03457635b852f3aeef4b2ce4e559cd6f0d3536729fc6439584c29c1af83')
+sha256sums_x86_64=('c3b23daed85b081361b04d4e7c3ccacaf0a8b5e87da5ed2b5979c019d09ddc31')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
