@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 license=('LGPL')
 url="https://www.videolan.org/developers/libbdplus.html"
 depends=('libaacs>=0.7.0')
-source=("ftp://ftp.videolan.org/pub/videolan/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
+source=("https://download.videolan.org/pub/videolan/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
         "gcrypt.diff")
 
 build() {
