@@ -1,17 +1,18 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.78
-pkgver=1.0.0beta78
+_tag=v1.0.0-beta.79
+pkgver=1.0.0beta79
 pkgrel=1
 pkgdesc="A desktop shell for niri, built on Genoma: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
 url="https://github.com/AkusenArcade/Bioma"
 license=('GPL-3.0-or-later')
 # Everything Bioma draws or runs is a dependency, so the package is the whole
-# shell and nothing is left to fetch by hand. Only two things stay optional:
-# dictation, half a gigabyte of model for one button, and the company network
-# wizard, which serves one kind of machine.
+# shell and nothing is left to fetch by hand. What stays optional serves one
+# button or one kind of machine: dictation (half a gigabyte of model), the
+# company network wizard, online calendars, GameMode, and screen recording,
+# whose AUR recorder must build for the package to install at all.
 depends=(
     'niri'
     # The runtime the shell, the lock screen and the greeter run on: at least
@@ -54,12 +55,13 @@ depends=(
     'xdg-utils'
     # The weather organism: Open-Meteo, through the proxy when one is on.
     'curl'
-    # Capture: screenshots, text recognition (capture.ocr_language is eng),
-    # screen recording.
+    # Capture: screenshots, text recognition (capture.ocr_language is eng).
+    # Screen recording's wl-screenrec is optional: it is built from the AUR,
+    # and when it stopped building against ffmpeg 9.1 (2026-11-23) a hard
+    # dependency on it kept Bioma from installing at all.
     'grim'
     'tesseract'
     'tesseract-data-eng'
-    'wl-screenrec'
     # Audio: pw-play for the alarm and the sound effects, pw-record for the
     # microphone.
     'pipewire'
@@ -103,6 +105,7 @@ optdepends=(
     'gnome-online-accounts: the calendars of Google, Microsoft, Nextcloud and WebDAV accounts in the clock'
     'gnome-online-accounts-gtk: adding those accounts outside GNOME Settings'
     'gamemode: performance mode, on by itself while a game runs'
+    'wl-screenrec: screen recording in the capture cell (AUR)'
 )
 # libspa builds a small C shim that makepkg's LTO turns into bitcode, which
 # Rust's linker cannot resolve (undefined spa_format_parse_libspa_rs).
@@ -112,7 +115,7 @@ install=bioma-shell.install
 # but one switched off here must not come back with the next update.
 backup=('etc/xdg/autostart/bioma.desktop')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('b078c38313848d363a37f87f2b8022b1a8da7c3b086ab0a065196c39aebac153')
+sha256sums=('acdc46a681b897f703b4855467d9b952d7b02eb5db309bed823583a523a6eccf')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
