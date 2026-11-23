@@ -1,7 +1,7 @@
 # Maintainer: Guoyi <kuoi@bioarchlinux.org>
 
 _pkgname=dartR.sim
-_pkgver=0.71
+_pkgver=1.3.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
 pkgrel=1
@@ -18,23 +18,28 @@ depends=(
   r-ggplot2
   r-hierfstat
   r-rcpp
-  r-reshape2
   r-shiny
   r-shinybs
   r-shinyjs
   r-shinythemes
   r-shinywidgets
   r-stringi
-  r-stringr
   r-doparallel
   r-ggrepel
   r-foreach
   r-dplyr
   r-dartr.popgen
+  r-bigsnpr
+)
+optdepends=(
+  r-bigstatsr
+  r-knitr
+  r-rmarkdown
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3a0b4a11dcaf2902339ebaccc22eb04f')
-b2sums=('2eff5f7d31097d6fbfd77c2308d3d947c6e32e7d8c0d89419f2e71b249ea1a2ca4924e9b35c1077ed00aff5098310711409e8317f4e0fc5bb6a14a0783abc7d5')
+md5sums=('0dbf733e1fef724ce0c86e92ba6cce55')
+b2sums=('f2946d7cac74c2bf63400785c11e52e976eee9b2f233455a03fd0e3ac2252f40335a2c4b467454ad22ee4e5e6716a1530ba33f5dc020ff855922169bbbd6ebb7')
 
 build() {
   mkdir build

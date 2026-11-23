@@ -1,6 +1,6 @@
 pkgbase = r-dartr.sim
 	pkgdesc = Computer Simulations of 'SNP' Data
-	pkgver = 0.71
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dartR.sim
 	arch = any
@@ -13,21 +13,24 @@ pkgbase = r-dartr.sim
 	depends = r-ggplot2
 	depends = r-hierfstat
 	depends = r-rcpp
-	depends = r-reshape2
 	depends = r-shiny
 	depends = r-shinybs
 	depends = r-shinyjs
 	depends = r-shinythemes
 	depends = r-shinywidgets
 	depends = r-stringi
-	depends = r-stringr
 	depends = r-doparallel
 	depends = r-ggrepel
 	depends = r-foreach
 	depends = r-dplyr
 	depends = r-dartr.popgen
-	source = https://cran.r-project.org/src/contrib/dartR.sim_0.71.tar.gz
-	md5sums = 3a0b4a11dcaf2902339ebaccc22eb04f
-	b2sums = 2eff5f7d31097d6fbfd77c2308d3d947c6e32e7d8c0d89419f2e71b249ea1a2ca4924e9b35c1077ed00aff5098310711409e8317f4e0fc5bb6a14a0783abc7d5
+	depends = r-bigsnpr
+	optdepends = r-bigstatsr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/dartR.sim_1.3.0.tar.gz
+	md5sums = 0dbf733e1fef724ce0c86e92ba6cce55
+	b2sums = f2946d7cac74c2bf63400785c11e52e976eee9b2f233455a03fd0e3ac2252f40335a2c4b467454ad22ee4e5e6716a1530ba33f5dc020ff855922169bbbd6ebb7
 
 pkgname = r-dartr.sim
