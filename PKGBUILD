@@ -5,6 +5,7 @@ pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/GoogleCloudPlatform/cloudsql-proxy"
 license=('Apache')
+conflicts=(cloud-sql-proxy)
 provides=(cloud-sql-proxy=$pkgver)
 _bin_file=cloud-sql-proxy-$pkgver
 source_i686=($_bin_file-i686::https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v$pkgver/cloud-sql-proxy.linux.386)

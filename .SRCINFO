@@ -8,6 +8,7 @@ pkgbase = cloud-sql-proxy-bin
 	arch = aarch64
 	license = Apache
 	provides = cloud-sql-proxy=2.28.0
+	conflicts = cloud-sql-proxy
 	source_i686 = cloud-sql-proxy-2.28.0-i686::https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.28.0/cloud-sql-proxy.linux.386
 	sha256sums_i686 = 31d09a4e56c9c7bb86597167dc9249fbaf1aa5817263f9ed29ee2965495ec1e2
 	source_x86_64 = cloud-sql-proxy-2.28.0-x86_64::https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.28.0/cloud-sql-proxy.linux.amd64
