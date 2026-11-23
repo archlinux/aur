@@ -2,8 +2,8 @@
 pkgbase=mmseqs2
 pkgname=('mmseqs2-sse4' 'mmseqs2-avx2')
 _pkgbase=${pkgbase//mm/MM}
-pkgver=19.ab57c
-_pkgver=19-ab57c
+pkgver=20.ae60e
+_pkgver=20-ae60e
 pkgrel=1
 pkgdesc="ultra fast and sensitive search and clustering suite. https://doi.org/10.1038/nbt.3988"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("$_pkgbase-$_pkgver.tar.gz::https://github.com/soedinglab/MMseqs2/archiv
         "fix_util_installation.patch"
         )
 install=bash-completion.install
-sha256sums=('68b20700b82c93f2a30a8a7fbe545ab6ec715bfccb13ddcab144d3f3f504c5a4'
+sha256sums=('0245e45b705bbcd14e46291d82c977aff0a3600200f36c4d04dceb57d211dabc'
             '39432896625dca6240e7f4f6dffebd05f40a1d0de2c724d7123cb63e2464e791'
             'ca25afde5447ec6b72e0a6ca9874eb6b5b93c2ec52ff3f10e4b3929d1aea1e71')
 prepare() {
