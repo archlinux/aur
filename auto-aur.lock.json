@@ -1,0 +1,5 @@
+{
+  "pkgver": "3.18.2+openzwork.4",
+  "pkgrel": 1,
+  "fingerprint": "v3.18.2+openzwork.4|2026-11-22T06:59:13Z||OpenZWork-3.18.2+openzwork.4-linux-amd64.deb:194043704:2026-11-22T06:58:10Z|OpenZWork-3.18.2+openzwork.4-linux-x64.pkg.tar.zst:171683360:2026-11-22T06:58:16Z|OpenZWork-3.18.2+openzwork.4-linux-x86_64.AppImage:257407521:2026-11-22T06:58:25Z|OpenZWork-3.18.2+openzwork.4-linux-x86_64.rpm:152273095:2026-11-22T06:58:31Z|OpenZWork-3.18.2+openzwork.4-mac-arm64.dmg:251498034:2026-11-22T06:58:40Z|OpenZWork-3.18.2+openzwork.4-mac-arm64.zip:242109227:2026-11-22T06:58:48Z|OpenZWork-3.18.2+openzwork.4-win-x64.exe:209672838:2026-11-22T06:58:56Z|OpenZWork-CLI-3.18.2+openzwork.4-linux-amd64.tar.gz:64449966:2026-11-22T06:59:00Z|OpenZWork-CLI-3.18.2+openzwork.4-macos-arm64.tar.gz:62257371:2026-11-22T06:59:03Z|OpenZWork-CLI-3.18.2+openzwork.4-windows-amd64.tar.gz:62452322:2026-11-22T06:59:07Z|PROVENANCE.json:10813:2026-11-22T06:59:09Z|SHA256SUMS:1220:2026-11-22T06:59:10Z"
+}

@@ -1,0 +1,27 @@
+pkgbase = openzwork-electron-bin
+	pkgdesc = AI coding workbench with a desktop app, browser UI and terminal agent
+	pkgver = 3.18.2+openzwork.4
+	pkgrel = 1
+	url = https://github.com/BlueSkyXN/OpenZWork
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = asar
+	depends = electron44
+	depends = python
+	depends = python-reportlab
+	depends = python-lxml
+	depends = python-pillow
+	depends = python-defusedxml
+	depends = libstdc++
+	depends = libgcc
+	depends = nodejs
+	depends = ripgrep
+	depends = xdg-utils
+	provides = openzwork
+	conflicts = openzwork
+	noextract = OpenZWork-3.18.2+openzwork.4-linux-x64.pkg.tar.zst
+	options = !strip
+	source_x86_64 = OpenZWork-3.18.2+openzwork.4-linux-x64.pkg.tar.zst::https://github.com/BlueSkyXN/OpenZWork/releases/download/v3.18.2%2Bopenzwork.4/OpenZWork-3.18.2%2Bopenzwork.4-linux-x64.pkg.tar.zst
+	sha256sums_x86_64 = 292eb3393184957ad036aaada4159e558b00db4c1bf067dc02e6d7c725ff8860
+
+pkgname = openzwork-electron-bin
