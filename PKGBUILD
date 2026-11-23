@@ -12,6 +12,7 @@
 # Layout: the same as `uzumaki`, so the app behaves the same (both conflict):
 #   /usr/lib/uzumaki/uzumaki, uzu      the binaries; /usr/bin/uzumaki and /usr/bin/uzu link to them
 #   /usr/lib/uzumaki/bridge/           the playback bridge with castLabs Electron
+#   /usr/lib/uzumaki/cliairplay        the AirPlay helper (GPL-3.0), from the AppImage (0.4.1 on)
 #   /usr/share/applications, /usr/share/icons/hicolor, /usr/share/uzumaki/icons/<variant>,
 #   /usr/share/licenses/uzumaki-bin
 # Not /opt: the app decides from its own path whether it is a package install (app/src/update.rs,
@@ -38,7 +39,7 @@
 
 pkgname=uzumaki-bin
 _name=uzumaki
-pkgver=0.4.0
+pkgver=0.4.1
 # The upstream build: 1 is tag v<version>, a rebuild of the same version is v<version>-<build>.
 _build=1
 if ((_build > 1)); then _rel=$pkgver-$_build; else _rel=$pkgver; fi
@@ -46,7 +47,8 @@ pkgrel=1
 pkgdesc='Native desktop client for Apple Music, GPU-rendered in Rust (needs a subscription; prebuilt)'
 arch=('x86_64')
 url='https://getuzumaki.app'
-license=('GPL-3.0-or-later')
+# Uzumaki: GPL-3.0-or-later. cliairplay (/usr/lib/uzumaki/cliairplay): GPL-3.0 (its LICENSE, no "or later" notice).
+license=('GPL-3.0-or-later' 'GPL-3.0-only')
 # The same run-time needs as `uzumaki` (see its PKGBUILD for why each is listed by hand).
 depends=(
   'alsa-lib'
@@ -93,7 +95,7 @@ options=('!strip' '!debug')
 _appimage=Uzumaki-$_rel-x86_64.AppImage
 source=("$_appimage::https://github.com/hanami117/uzumaki/releases/download/v$_rel/$_appimage")
 noextract=("$_appimage")
-sha256sums=('09f57974d49c9efe4a71b4513d77e6307495a5327b006dec7287bce2d2abd370')
+sha256sums=('97e5240262cbf5b320ff278329827afd1d419e536cb442582a01647bbca5fa7a')
 
 prepare() {
   # The AppImage's runtime unpacks its own squashfs into squashfs-root/ (no FUSE needed). Nothing
@@ -152,4 +154,9 @@ package() {
   install -Dm644 "usr/share/licenses/$_name/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "usr/share/licenses/$_name/THIRD_PARTY_NOTICES.md" \
     "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_NOTICES.md"
+  # The AirPlay helper's note (AppImages from 0.4.1 on carry the helper and this note).
+  if [[ -f usr/share/licenses/$_name/CLIAIRPLAY_LICENSE.txt ]]; then
+    install -Dm644 "usr/share/licenses/$_name/CLIAIRPLAY_LICENSE.txt" \
+      "$pkgdir/usr/share/licenses/$pkgname/CLIAIRPLAY_LICENSE.txt"
+  fi
 }
