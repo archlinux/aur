@@ -1,0 +1,21 @@
+pkgbase = python-k3thread
+	pkgdesc = Thread utilities for daemon threads and exception sending
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/pykit3/k3thread
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3thread
+	conflicts = python-k3thread
+	source = k3thread::git+https://github.com/pykit3/k3thread.git#tag=v0.1.10
+	sha256sums = dbf7a07017c4188c707f3d6a3039efd25573afa29dfefe9b3d0965a8430c501c
+
+pkgname = python-k3thread
