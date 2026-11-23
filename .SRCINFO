@@ -1,6 +1,6 @@
 pkgbase = schildichat-revenge-git
 	pkgdesc = Matrix client for desktop written in Kotlin and using the Matrix Rust SDK, designed to be fully keyboard controllable, multi account, hirarchical spaces. Design in the tradition of SchildiChat clients.
-	pkgver = 26.10.18+1.r3416.20261020.eec91b4c
+	pkgver = 26.11.22+2.r3598.20261122.f41a2647
 	pkgrel = 1
 	url = https://schildi.chat/revenge/
 	arch = aarch64
@@ -34,9 +34,9 @@ pkgbase = schildichat-revenge-git
 	depends = libxrender
 	depends = libxtst
 	depends = zlib
-	provides = schildichat-revenge=26.10.18+1.r3416.20261020.eec91b4c
-	provides = schildi-revenge=26.10.18+1.r3416.20261020.eec91b4c
-	provides = schildi-revenge-git=26.10.18+1.r3416.20261020.eec91b4c
+	provides = schildichat-revenge=26.11.22+2.r3598.20261122.f41a2647
+	provides = schildi-revenge=26.11.22+2.r3598.20261122.f41a2647
+	provides = schildi-revenge-git=26.11.22+2.r3598.20261122.f41a2647
 	conflicts = schildichat-revenge
 	conflicts = schildichat-revenge-bin
 	conflicts = schildi-revenge
