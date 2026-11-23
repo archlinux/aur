@@ -1,5 +1,5 @@
 [lsfg-vk]
 source = "git"
-git = "https://github.com/PancakeTAS/lsfg-vk.git"
+git = "https://git.lsfg-vk.dev/lsfg-vk.git"
 prefix = "v"
-exclude_regex = ".*(dev).*"
+exclude_regex = ".*(dev|rc).*"
