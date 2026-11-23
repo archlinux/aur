@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PCAtools
-_pkgver=2.22.1
+_pkgver=2.24.0
 pkgname=r-${_pkgname,,}
-pkgver=2.22.1
+pkgver=2.24.0
 pkgrel=1
 pkgdesc='PCAtools: Everything Principal Components Analysis'
 arch=('x86_64')
@@ -13,7 +13,6 @@ license=('GPL')
 depends=(
   r
   r-beachmat
-  r-bh
   r-biocparallel
   r-biocsingular
   r-cowplot
@@ -26,14 +25,18 @@ depends=(
   r-reshape2
   gcc
 )
+makedepends=(
+  r-assorthead
+  r-bh
+)
 optdepends=(
   r-airway
-  r-beachmat
   r-biobase
   r-biocgenerics
+  r-concaveman
   r-deseq2
   r-geoquery
-  r-ggalt
+  r-ggforce
   r-ggplotify
   r-hgu133a.db
   r-knitr
@@ -45,7 +48,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9fffd590d9bf1b5da3e8bfe81c184a3a673a248c45b082ab644ec57d8418f5d9')
+sha256sums=('0c7effae352b2490f0d11e3485a65e446555a46b61979791e858ac32169c5a9f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
