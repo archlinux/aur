@@ -12,7 +12,11 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 noextract=("${_pkgname}_${pkgver}-1_amd64.deb" "${_pkgname}_${pkgver}-1_arm64.deb")
-validpgpkeys=('98BCF336A3BE53B734E967C52E5BF49BD940F624') # SSM Publishing <ssm-publishing@amazon.com>
+# AWS signing key (SSM Publishing <ssm-publishing@amazon.com>). It is not on any keyserver; AWS
+# publishes it at https://downloads.aws.com/keys/gpg/current.asc and documents the fingerprint at
+# https://docs.aws.amazon.com/emulator/latest/userguide/getting-started-linux.html#getting-started-linux-verify
+# A copy is in keys/pgp/. If makepkg reports an unknown key, run: gpg --import keys/pgp/*.asc
+validpgpkeys=('98BCF336A3BE53B734E967C52E5BF49BD940F624')
 _dlurl="https://downloads.aws.com/aws-emulator/packages/aws-emulator/LTS"
 source=("${_pkgname}-LICENSE-${pkgver}::https://raw.githubusercontent.com/aws/aws-emulator/v${pkgver}/LICENSE")
 source_x86_64=("${_dlurl}/${_pkgname}_${pkgver}-1_amd64.deb"{,.sig})
