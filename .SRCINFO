@@ -1,13 +1,13 @@
 pkgbase = pgmq
 	pkgdesc = A lightweight message queue. Like AWS SQS and RSMQ but on Postgres.
-	pkgver = 1.13.1
+	pkgver = 1.13.2
 	pkgrel = 1
 	url = https://github.com/pgmq/pgmq
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = postgresql
-	source = https://github.com/pgmq/pgmq/archive/refs/tags/v1.13.1.tar.gz
-	sha256sums = 67221f288f42f95c002a64df40f7d660e765e32df8ada0f2672ba915a14827f7
+	source = https://github.com/pgmq/pgmq/archive/refs/tags/v1.13.2.tar.gz
+	sha256sums = a09f6db254a72a8b240f7071f8adf6540108cd959adf0f7ddfcfa118ee345ccc
 
 pkgname = pgmq
