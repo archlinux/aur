@@ -8,7 +8,7 @@
 # `makepkg --printsrcinfo > .SRCINFO`, and push both.
 
 pkgname=omascan
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Keyboard-first document scanner for Omarchy, from SANE scanner to PDF"
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ depends=(
 optdepends=('ipp-usb: driverless scanners connected over USB')
 makedepends=('gcc' 'make')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f83d8d7494160c96c76bef373826555502862904f25cfae77ae6b153b649ea41')
+sha256sums=('a5841bf0979b07f869e4b92833c20e2d2f4d0ed09efd29e5f27252475288ed76')
 
 build() {
   mkdir -p build
