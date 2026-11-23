@@ -4,7 +4,7 @@
 _pkgname='tizonia'
 _githubname="${_pkgname}-openmax-il"
 pkgname="${_pkgname}-all-git"
-pkgver=0.22.0+66.r3941.20260905.627d10c0
+pkgver=0.22.0+69.r3944.20260929.d509ad8e
 pkgrel=1
 pkgdesc="Command-line cloud music player and downloader for Linux with support for YouTube, SoundCloud, Plex servers, Chromecast devices and generic streams and websites."
 arch=(
@@ -179,6 +179,7 @@ build() {
   export SAMUFLAGS="-j1"                                 # Eats a lot of ram, so restrict to one build job at a time.
   export PKG_CONFIG_PATH=/usr/lib/taglib1/pkgconfig      # Also search for taglib1 pkgconfig file.
   meson setup --prefix=/usr --buildtype=plain \
+    -Dsoundcloud=false \
     -Dplayer=true \
     -Dalsa=true \
     -Daac=true \
