@@ -1,15 +1,15 @@
 pkgbase = r-snpassoc
 	pkgdesc = SNPs-Based Whole Genome Association Studies
-	pkgver = 2.1.2
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=SNPassoc
-	arch = any
+	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = r-ggplot2
-	depends = r-haplo.stats
 	depends = r-mvtnorm
 	depends = r-plyr
 	depends = r-poisbinom
+	depends = r-rms
 	depends = r-tidyr
 	optdepends = r-biomart
 	optdepends = r-genomicranges
@@ -21,8 +21,8 @@ pkgbase = r-snpassoc
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
 	optdepends = r-variantannotation
-	source = https://cran.r-project.org/src/contrib/SNPassoc_2.1-2.tar.gz
-	md5sums = 398070bec2a73f75ec861ba6897414ac
-	b2sums = c75c15cc38097abdaa32f9ce31812f78d35310c1be8ab73252ab93e3dd0f0f0989e10a301983ed824ef7a9fbcf968c41b18bcea7f88d2704a486f77a9f224ac6
+	source = https://cran.r-project.org/src/contrib/SNPassoc_2.3.1.tar.gz
+	md5sums = c3b1207026803e967917929dc3ba1fc1
+	b2sums = eed65f4837b549ddbd59cc0838200af594c96cf287fd06b64befe525e7e07996c9c5c8d70b0b5bb7b6b2091cae41cfa586c4377f83583f40d7e42fef658fca09
 
 pkgname = r-snpassoc
