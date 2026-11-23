@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDRutils
-_pkgver=1.6.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,17 +14,18 @@ depends=(
   r-bumpymatrix
   r-checkmate
   r-data.table
+  r-digest
   r-drc
   r-jsonlite
   r-jsonvalidate
   r-multiassayexperiment
+  r-qs2
   r-s4vectors
   r-stringr
   r-summarizedexperiment
 )
 checkdepends=(
   r-gdrtestdata
-  r-qs
   r-testthat
   r-yaml
 )
@@ -38,17 +39,17 @@ optdepends=(
   r-knitr
   r-lintr
   r-purrr
-  r-qs
   r-rcmdcheck
   r-rmarkdown
   r-testthat
   r-yaml
   r-scales
   r-mockery
+  r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b5d35b8fcda56b7fdea1aa550d77d5f7')
-b2sums=('75cfa08bb72330795b62e10e3f0da5dd205a9d11eaf2f6c4e6c9cc26b698bbb27fa7b76f2e236494e3ee49a95a8e99dabb79080bf918212415b14f90b47185ff')
+md5sums=('027bd9457b1d092be70271fbf348d03c')
+b2sums=('2ac4eb86518769a3e83ef9cea0b912a98d12f60eeca5ba488d3bfab707c755dbcdd7f365c7214e4c3335ea311022d7269f7bc8298c4124cccee1192ceb7e4895')
 
 build() {
   mkdir build
