@@ -1,0 +1,21 @@
+pkgbase = snippets-manager
+	pkgdesc = Simple manager for text and code snippets, with folders, tags, rich text and quick search
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/netean/Snippets-Manager
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = qt6-base
+	depends = syntax-highlighting
+	depends = hicolor-icon-theme
+	depends = libstdc++
+	depends = libgcc
+	depends = glibc
+	source = snippets-manager-2.0.tar.gz::https://github.com/netean/Snippets-Manager/archive/refs/tags/2.0.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/netean/Snippets-Manager/fd589bc60b3a66f1a62f5af43a40d92092d082c2/LICENSE
+	sha256sums = 134b351acaf624976390fe9f9bebdd7e8ee351e03d1772a81ce0730fabd52273
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+
+pkgname = snippets-manager
