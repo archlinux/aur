@@ -1,14 +1,13 @@
 pkgbase = mrbayes
 	pkgdesc = A program for the Bayesian estimation of phylogeny
-	pkgver = 3.2.9
+	pkgver = 3.2.10
 	pkgrel = 1
 	url = http://nbisweden.github.io/MrBayes/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = readline
-	optdepends = beagle-lib: for using GPU calculations among other enhancements - rebuild package after installing this dep
-	source = https://github.com/NBISweden/MrBayes/archive/v3.2.9.tar.gz
-	sha256sums = 03d86cbf6ef52336d3dc6d7cd73cde415bb368bba6994f0586b47083426ac17c
+	source = https://github.com/NBISweden/MrBayes/archive/v3.2.10.tar.gz
+	sha256sums = 09cfab9898ae6c8e0976add7745db14b13a07110080a9f56d892a49493121193
 
 pkgname = mrbayes
