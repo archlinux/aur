@@ -1,6 +1,6 @@
 pkgbase = augustus-bin
 	pkgdesc = LLM security testing framework for detecting prompt injection, jailbreaks, and adversarial attacks with 190+ probes and 28 providers
-	pkgver = 0.14.50
+	pkgver = 0.14.55
 	pkgrel = 1
 	url = https://github.com/praetorian-inc/augustus
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = augustus-bin
 	provides = augustus
 	conflicts = augustus
 	options = !strip
-	source_x86_64 = augustus-x86_64-0.14.50.tgz::https://github.com/praetorian-inc/augustus/releases/download/v0.14.50/augustus_0.14.50_linux_amd64.tar.gz
-	sha256sums_x86_64 = 75658070af11fb5774ec22e84f2b099932aebc061814e9798f051b96334b8b0e
-	source_aarch64 = augustus-aarch64-0.14.50.tgz::https://github.com/praetorian-inc/augustus/releases/download/v0.14.50/augustus_0.14.50_linux_arm64.tar.gz
-	sha256sums_aarch64 = c42da967d339d75b68e61b3b7b2fbc0aebd82b6ce45c65e6e278a87b26521e46
+	source_x86_64 = augustus-x86_64-0.14.55.tgz::https://github.com/praetorian-inc/augustus/releases/download/v0.14.55/augustus_0.14.55_linux_amd64.tar.gz
+	sha256sums_x86_64 = c94ca101d889603b6d8994c69ad38304ad7eda94a324aa464803b2cb0d471810
+	source_aarch64 = augustus-aarch64-0.14.55.tgz::https://github.com/praetorian-inc/augustus/releases/download/v0.14.55/augustus_0.14.55_linux_arm64.tar.gz
+	sha256sums_aarch64 = 94f411f94cb3979d26b98d4267d3cc101015cf17513dfa85bb7ac02ed23620ed
 
 pkgname = augustus-bin
