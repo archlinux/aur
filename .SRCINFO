@@ -1,6 +1,6 @@
 pkgbase = graf-rs-bin
 	pkgdesc = Terminal-based force-directed graph visualizer for markdown wikilinks
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/reekta92/graf
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = graf-rs-bin
 	provides = graf
 	conflicts = graf-rs
 	options = !strip
-	source_x86_64 = graf-x86_64-1.1.3.txz::https://github.com/reekta92/graf/releases/download/v1.1.3/graf-rs-1.1.3-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 4a0b5f3a1ed836c7acb8a4618d0d10fb4fe02fdd1efc64dc74de258072400fc2
-	source_aarch64 = graf-aarch64-1.1.3.txz::https://github.com/reekta92/graf/releases/download/v1.1.3/graf-rs-1.1.3-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = e384f0dd75921be8ed34a86a69bdc896fc9d754c81bd6072155643cbe7dc6cdf
+	source_x86_64 = graf-x86_64-1.1.4.txz::https://github.com/reekta92/graf/releases/download/v1.1.4/graf-rs-1.1.4-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = cc8110705fedbe06621513626427337d6c28556fe4e01dcc6f952f340c73d260
+	source_aarch64 = graf-aarch64-1.1.4.txz::https://github.com/reekta92/graf/releases/download/v1.1.4/graf-rs-1.1.4-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = cddb669d0e241877a736175b71a0905ec9f77d371813ee7841724cbe961035a6
 
 pkgname = graf-rs-bin
