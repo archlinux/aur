@@ -1,6 +1,7 @@
-# Maintainer: Matteo Nista <m.nista@hotmail.it>
+# Maintainer: Navon John Lukose <67406856+Magniquick@users.noreply.github.com>
+# Contributor: Matteo Nista <m.nista@hotmail.it>
 pkgname=xdg-desktop-portal-gtk4-bin
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 pkgdesc='GTK4 backend for xdg-desktop-portal (prebuilt release binary)'
 arch=('x86_64')
@@ -14,8 +15,8 @@ options=('!strip' '!debug')
 # The release binary is unpatched: the local Print fixes live in the -printfix package.
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/xdg-desktop-portal-gtk4-linux-x86_64.tar.gz"
         "xdg-desktop-portal-gtk4-$pkgver.tar.gz::$url/releases/download/v$pkgver/xdg-desktop-portal-gtk4-$pkgver.tar.gz")
-sha256sums=('97383a6c2efacbdb6da68e23407b61249f80e58ab0f3007b034c50c1b7ba0085'
-            '884a04d217dda4d0bf8872724e5c91fb6be76eb04d4d10f0301262f3f6b9f5bd')
+sha256sums=('7ab7e37188207f7530d33d4a8f6b4211110b84b6ab2e4bc4c78755a3db41d8d8'
+            '0d63001f7b97673f45cd32fa677bee5d1e0322b3511b2359e4a8165cd8d35867')
 
 package() {
   install -Dm755 "$srcdir/xdg-desktop-portal-gtk4" "$pkgdir/usr/lib/xdg-desktop-portal-gtk4"
