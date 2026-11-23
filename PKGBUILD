@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRSM
-_pkgver=2.4.0
+_pkgver=2.8.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,9 +10,7 @@ arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-3.0-only')
 depends=(
-  r-bibitr
   r-bicare
-  r-biclust
   r-biobase
   r-clusterprofiler
   r-dbscan
@@ -23,10 +21,8 @@ depends=(
   r-flashclust
   r-gfa
   r-gseabase
-  r-ibbig
   r-igraph
   r-isa2
-  r-linkcomm
   r-matrixcorrelation
   r-mcl
   r-mclust
@@ -34,12 +30,11 @@ depends=(
   r-org.hs.eg.db
   r-pma
   r-ppclust
+  r-rcolorbrewer
   r-rcpp
   r-reactomepa
-  r-rqubic
-  r-s4vd
+  r-rjava
   r-sombrero
-  r-subspace
   r-summarizedexperiment
   r-wgcna
 )
@@ -50,8 +45,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8647e33c0068c43785a6b21abb0d8b7e')
-b2sums=('e2664cff8e958e755305c7dc9c55ffca6e03292064d061d3df01384e936b7e1a89534a08d584bf87977dd1243fc7c975555a521de0e2dcb5edd7a3d22c4355d6')
+md5sums=('7ed193525a814f85ad2cd809a1b20a67')
+b2sums=('a03d2af12ad7637266087d167b29c0b711c4582df370c7b7ff686cee1150fc85dc36a2fb10cb6fb627530ef407489c227e72ea441e72539a829bb91c4a9d0963')
 
 build() {
   mkdir build
