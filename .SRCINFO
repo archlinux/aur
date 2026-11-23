@@ -1,6 +1,6 @@
 pkgbase = geetree-bin
 	pkgdesc = GPU-rendered Git client built for very large repositories
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://geetree.app
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = geetree-bin
 	depends = wayland
 	provides = geetree
 	conflicts = geetree
-	noextract = geetree-0.7.0-amd64.deb
+	noextract = geetree-0.7.1-amd64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = geetree-0.7.0-amd64.deb::https://github.com/cmzy/geetree/releases/download/v0.7.0/GeeTree_amd64.deb
-	sha256sums_x86_64 = ad2d00556f99dee7b82d59fe8d95bcccb3a77b22cb5995d6b3cbef2ef2240ecd
+	source_x86_64 = geetree-0.7.1-amd64.deb::https://github.com/cmzy/geetree/releases/download/v0.7.1/GeeTree_amd64.deb
+	sha256sums_x86_64 = bd0e81411f5d1588c51dab3d21dcbb856effa72652ef3dc5aa24d5fb27dc9115
 
 pkgname = geetree-bin
