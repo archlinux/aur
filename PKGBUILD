@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=kissDE
-_pkgver=1.28.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Retrieves Condition-Specific Variants in RNA-Seq Data'
 arch=('any')
@@ -23,15 +23,17 @@ depends=(
   r-ggplot2
   r-gplots
   r-matrixstats
+  r-rlang
   r-shiny
   r-shinycssloaders
 )
 optdepends=(
   r-biocstyle
+  r-quarto
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d3770f2cd0119079d748b6de3f7ef63d57cb5e34044bc7767b14a6b2229f75f2')
+sha256sums=('dbc503c708e6381d7c1d477293ab0e4b9cfb7c85f92bfc50039e3aadea11ccfd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
