@@ -1,0 +1,19 @@
+pkgbase = hrx-loom
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ROCm/hrx-system
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = python-installer
+	noextract = hrx_loom-0.3.0-py3-none-manylinux_2_39_x86_64.whl
+	options = !strip
+	options = !debug
+	source = https://github.com/ROCm/hrx-system/releases/download/v0.3.0/hrx_loom-0.3.0-py3-none-manylinux_2_39_x86_64.whl
+	sha256sums = 6252bb0df262351175bdb2c4aaca22ffa63d80d791659aa4d2fa5c92a0af426f
+
+pkgname = hrx-loom
+	depends = python
+	depends = gcc-libs
+	depends = glibc
+	optdepends = python-huggingface-hub: loom-fetch from Hugging Face
+	optdepends = vulkan-icd-loader: Vulkan execution
