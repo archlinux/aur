@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=anser-client-bin
-pkgver=0.5.1
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Native desktop client for Anser (雁字): the inbox, the sender and the delivery log of a self-hosted notification service"
 arch=('x86_64')
@@ -20,7 +20,7 @@ _tarball="anser-client-${pkgver}-linux-x86_64.tar.gz"
 source=("LICENSE-${pkgver}::https://github.com/ca-x/anser/raw/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${_tarball}::https://github.com/ca-x/anser/releases/download/v${pkgver}/anser-client-linux-x86_64.tar.gz")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('576dd584dbc0408e10817ec20bfd98321ed31ed448ccbb144409c10975d04b31')
+sha256sums_x86_64=('3197cfacc342c00f8d481485e08cd4d8281a4b71c5fbf8250e4f97d08ae4ae73')
 
 package() {
     # The program looks for its data next to itself, so the whole directory of
