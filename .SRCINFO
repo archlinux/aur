@@ -1,6 +1,6 @@
 pkgbase = vleer-nightly-bin
 	pkgdesc = Music, but without the subscription (nightly build)
-	pkgver = 0.2.1_nightly.20261119.444
+	pkgver = 0.2.1_nightly.20261123.448
 	pkgrel = 1
 	url = https://vleer.app
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = vleer-nightly-bin
 	conflicts = vleer-git
 	options = !strip
 	options = !debug
-	source_x86_64 = https://cdn.vleer.app/nightly/Vleer-0.2.1-nightly.20261119.444-x86_64.tar.gz
-	source_x86_64 = https://cdn.vleer.app/nightly/Vleer-0.2.1-nightly.20261119.444-x86_64.tar.gz.minisig
-	sha256sums_x86_64 = 2cd0a36529c726868a54fa1d839ab070a808bedec28623660eb329b484ab84f4
+	source_x86_64 = https://cdn.vleer.app/nightly/Vleer-0.2.1-nightly.20261123.448-x86_64.tar.gz
+	source_x86_64 = https://cdn.vleer.app/nightly/Vleer-0.2.1-nightly.20261123.448-x86_64.tar.gz.minisig
+	sha256sums_x86_64 = 4824f9257a791e10b9127178491d5b7ef060c70c02bb3a2e17b9cb15ec454969
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://cdn.vleer.app/nightly/Vleer-0.2.1-nightly.20261119.444-aarch64.tar.gz
-	source_aarch64 = https://cdn.vleer.app/nightly/Vleer-0.2.1-nightly.20261119.444-aarch64.tar.gz.minisig
-	sha256sums_aarch64 = b6931eafc0f406f47e7c5d4e667754ff6754d278feaf9f57ee94ce5e2a45dbc7
+	source_aarch64 = https://cdn.vleer.app/nightly/Vleer-0.2.1-nightly.20261123.448-aarch64.tar.gz
+	source_aarch64 = https://cdn.vleer.app/nightly/Vleer-0.2.1-nightly.20261123.448-aarch64.tar.gz.minisig
+	sha256sums_aarch64 = 4225bd99819879d5c39311d620d4848b83e374ebb76a997ff610b051db8b7e28
 	sha256sums_aarch64 = SKIP
 
 pkgname = vleer-nightly-bin
