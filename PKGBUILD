@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=tailchat
 pkgname="${_pkgname}-desktop"
-pkgver=1.11.20
+pkgver=1.11.22
 _electronversion=18
 _nodeversion=16
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname}.js"
 	"${pkgname}.sh"
 )
-sha256sums=('f4591cec590d0d185a33d111290827941b8c826a3f24d384e49bbf33b9325442'
+sha256sums=('702a147a46899779f12ccf5ca05be7fa1e33a6a2b761ff89c7e030e3b0a30521'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
