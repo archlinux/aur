@@ -7,7 +7,7 @@
 # Import the key once: gpg --import keys/pgp/*.asc, or
 # gpg --recv-keys 33F9B54FD2A4B6A4110749B3BA464FC9847A832A.
 # The console is built for an ordinary desktop or laptop, with the features
-# images logind gpu bidi libseat and hwaccel on (ADR-1500 D8), and
+# images logind gpu bidi libseat filters and hwaccel on (ADR-1500 D8), and
 # VTIUM_FEATURES in makepkg's environment names other features (below).
 #
 # pkgver is the tag without its v and without the hyphen before a
@@ -82,8 +82,9 @@ package_vtium() {
 
 # The console's features while VTIUM_FEATURES is unset, and the default of
 # hwaccel, the same as vtium-git's: the build for an ordinary desktop or
-# laptop, with right-to-left text, seat mode through libseat and logind, and
-# the GPU path on by default (ADR-1500 D8).
+# laptop, with right-to-left text, seat mode through libseat and logind, the
+# frame filters that draw a look's effects, and the GPU path on by default
+# (ADR-1500 D8).
 _features='images logind gpu bidi libseat filters'
 _hwaccel=on
 
