@@ -38,10 +38,13 @@ build() {
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  cmake -B build -S ${_pkgname}-${pkgver} \
+  local _conf=(
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib32 \
     -DBUILD_SHARED_LIBS=ON
+    -DCMAKE_INSTALL_LIBDIR=lib32
+    -DBUILD_TESTING=OFF
+  )
+  cmake -B build -S ${_pkgname}-${pkgver} "${_conf[@]}"
   cmake --build build
 }
 
