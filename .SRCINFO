@@ -1,6 +1,6 @@
 pkgbase = autopkgtest
 	pkgdesc = automatic as-installed testing for Debian packages
-	pkgver = 6.2
+	pkgver = 6.5
 	pkgrel = 1
 	url = https://salsa.debian.org/ci-team/autopkgtest
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = autopkgtest
 	depends = python-debian
 	depends = python-docutils
 	depends = python-mock
-	source = https://salsa.debian.org/ci-team/autopkgtest/-/archive/debian/6.2/autopkgtest-debian-6.2.tar.gz
-	sha512sums = f3ebfb3a0a55d23504c29e5516953c0c0cee6b29d820750033f1a7286cd573a0ee8a38aa4a17717ad41fc659ad68edc9a47dac1e3ed8324ea2642f04f238b021
+	source = https://salsa.debian.org/ci-team/autopkgtest/-/archive/debian/6.5/autopkgtest-debian-6.5.tar.gz
+	sha512sums = 1f1ea4d4f0714ab59614594441ff783a68f3d4691bfa7ab78f379c3d2db9daf003315f767391bbd0d69a561501b0e1741614e169fb5efe79d0be50e0982eaacd
 
 pkgname = autopkgtest
