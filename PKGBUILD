@@ -1,6 +1,6 @@
 pkgname=dpibreak
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="System-wide DPI circumvention with minimal configuration"
 arch=('x86_64')
 url="https://github.com/dilluti0n/dpibreak"
@@ -12,6 +12,8 @@ sha256sums=('3a61d445b6f25f895cb9d5c976079e0dc7fb8d9fac592e497f9fc703df82c905')
 
 build() {
     cd "dpibreak-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cargo build --release
 }
 

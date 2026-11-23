@@ -1,7 +1,7 @@
 pkgbase = dpibreak
 	pkgdesc = System-wide DPI circumvention with minimal configuration
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dilluti0n/dpibreak
 	arch = x86_64
 	license = GPL-3.0-or-later
