@@ -1,7 +1,7 @@
 pkgbase = clove-linux
 	pkgdesc = Fast dithered-storage file manager
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ZeroiJ/clove-win
 	arch = x86_64
 	license = MIT
