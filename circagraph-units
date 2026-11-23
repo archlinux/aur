@@ -1,0 +1,39 @@
+#!/bin/sh
+# Copyright (c) 2026 Athan Clark. SPDX-License-Identifier: GPL-3.0-only
+# The services' system users, for the Debian and RPM packages' installation and upgrade. Their
+# units run as circagraph and circagraph-logs, with state folders named after them. An
+# installation from before the rename keeps openchronology and openchronology-logs, its
+# /var/lib/openchronology-github and its database: each unit gets a drop-in naming them, in
+# /etc/systemd/system/<unit>.service.d/50-users.conf, removed again when the users are
+# circagraph's. Each unit's first name still starts and stops it (Alias= in its [Install]).
+# Usage, as root: circagraph-units <the server's user>
+set -eu
+user=${1:?Usage: circagraph-units <the server user>}
+logs=$user-logs
+for unit in circagraph circagraph-mail circagraph-syslog circagraph-github circagraph-journald; do
+  dir=/etc/systemd/system/$unit.service.d
+  if [ "$user" = circagraph ]; then
+    rm -f "$dir/50-users.conf"
+    rmdir "$dir" 2>/dev/null || true
+    continue
+  fi
+  mkdir -p "$dir"
+  case $unit in
+    circagraph | circagraph-mail) lines="User=$user
+Group=$user" ;;
+    # The journald follower reads the journal as systemd-journal, and its files as its user's group.
+    circagraph-journald) lines="User=$logs
+SupplementaryGroups=
+SupplementaryGroups=$logs
+StateDirectory=
+StateDirectory=$user-journald" ;;
+    circagraph-github) lines="User=$logs
+Group=$logs
+StateDirectory=
+StateDirectory=$user-github" ;;
+    *) lines="User=$logs
+Group=$logs" ;;
+  esac
+  printf '# Written by circagraph-units: this installation keeps the system users it had before\n# the rename to Circagraph.\n[Service]\n%s\n' "$lines" >"$dir/50-users.conf.new"
+  mv "$dir/50-users.conf.new" "$dir/50-users.conf"
+done

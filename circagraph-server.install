@@ -1,0 +1,68 @@
+# Copyright (c) 2026 Athan Clark. SPDX-License-Identifier: GPL-3.0-only
+# pacman's scripts for circagraph-server (#331). Installing leaves PostgreSQL and the database
+# to the administrator, as Arch packages do: circagraph-setup does both. An upgrade stops the
+# services, which circagraph-migrate starts again on the new version.
+# Installed in place of openchronology-server (its name until 0.30), whose removal has run
+# already, it takes the upgrade path: circagraph-setup moves /etc/openchronology to
+# /etc/circagraph and keeps that installation's users and database.
+services='circagraph.service circagraph-mail.service circagraph-syslog.service
+  circagraph-github.service circagraph-journald.service'
+
+post_install() {
+  # Set up before, under either name: an upgrade.
+  if [ -e /etc/circagraph/circagraph.env ] || [ -e /etc/openchronology/openchronology.env ]; then
+    /usr/bin/circagraph-setup upgrade || true
+    return 0
+  fi
+  cat <<'MSG'
+
+To finish installing Circagraph, run:
+
+  sudo circagraph-setup
+
+It initializes PostgreSQL if it is not yet, creates the circagraph database with the pgmp
+extension, writes /etc/circagraph/circagraph.env and starts the server on
+http://127.0.0.1:5173. See /usr/share/doc/circagraph-server/README.Arch.
+
+MSG
+}
+
+pre_upgrade() {
+  if [ -d /run/systemd/system ]; then
+    # shellcheck disable=SC2086
+    systemctl stop $services >/dev/null 2>&1 || true
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  if [ -d /run/systemd/system ]; then
+    # shellcheck disable=SC2086
+    systemctl disable --now $services >/dev/null 2>&1 || true
+  fi
+}
+
+post_remove() {
+  # The server's user, and with it the database's name: circagraph, or openchronology for an
+  # installation from before the rename.
+  user=circagraph
+  if [ -e /etc/circagraph/circagraph.env ]; then
+    user=$(stat -c %G /etc/circagraph/circagraph.env)
+  fi
+  caches=/var/cache/circagraph
+  if [ "$user" != circagraph ]; then caches="/var/cache/$user $caches"; fi
+  cat <<MSG
+Circagraph was removed. Its configuration (/etc/circagraph, including AUTH_ENCRYPTION_KEY),
+the PostgreSQL database and the $user and $user-logs system users remain. To delete them
+as well:
+  sudo rm -rf /etc/circagraph /etc/openchronology /var/lib/$user $caches \\
+    /etc/systemd/system/circagraph*.service.d
+  sudo -u postgres dropdb $user
+  sudo -u postgres dropuser $user
+  sudo userdel $user
+  sudo userdel $user-logs
+MSG
+}

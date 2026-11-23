@@ -1,0 +1,6 @@
+# The Circagraph server's system users: the server and mail worker run as circagraph (#331), the
+# log receivers as circagraph-logs, which has no access to the server's configuration or
+# database (#501). An installation moved from openchronology-server keeps running as its
+# openchronology and openchronology-logs (circagraph-setup); these two are then created but unused.
+u circagraph - "Circagraph server" /var/lib/circagraph
+u circagraph-logs - "Circagraph log receivers" -

@@ -1,0 +1,11 @@
+#!/bin/sh
+# Copyright (c) 2026 Athan Clark. SPDX-License-Identifier: GPL-3.0-only
+# Imports log files into Circagraph timelines: cg-import-logs --help, and
+# /usr/share/doc/circagraph-server/log-import.md. OCH_API_URL and OCH_API_KEY come from
+# the environment or, when it has none and the file is readable, /etc/circagraph/syslog.env.
+APP=/usr/lib/circagraph
+CONFIG=/etc/circagraph/syslog.env
+if [ -z "${OCH_API_KEY:-}" ] && [ -r "$CONFIG" ]; then
+  exec env OCH_CONFIG="$CONFIG" "$APP/node/bin/node" "$APP/server/import-logs.mjs" "$@"
+fi
+exec "$APP/node/bin/node" "$APP/server/import-logs.mjs" "$@"
