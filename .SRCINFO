@@ -1,13 +1,13 @@
 pkgbase = elite-insights-cli-bin
 	pkgdesc = Guild Wars 2 Elite Insights CLI (prebuilt binary)
-	pkgver = 3.33.0.0
+	pkgver = 3.33.1.0
 	pkgrel = 1
 	url = https://github.com/baaron4/GW2-Elite-Insights-Parser
 	arch = x86_64
 	license = MIT
 	depends = dotnet-runtime-10.0
 	options = !strip
-	source = https://github.com/baaron4/GW2-Elite-Insights-Parser/releases/download/v3.33.0.0/GW2EICLI.zip
-	sha256sums = b4314827b9eee6d81ad89913da6a0c9d46b5f52364f1de11589398ace958c07b
+	source = https://github.com/baaron4/GW2-Elite-Insights-Parser/releases/download/v3.33.1.0/GW2EICLI.zip
+	sha256sums = 4495af63254d881cdac6c16a2107187a2d6364f8c0c3db321645e0b253bad3ef
 
 pkgname = elite-insights-cli-bin
