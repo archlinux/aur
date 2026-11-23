@@ -6,7 +6,7 @@
 # after each successful build before pushing to AUR.
 
 pkgname=polify-bin
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Cross-platform music manager with multi-source library, audio fingerprinting, and ID3 tag editing"
 arch=('x86_64')
@@ -21,8 +21,8 @@ conflicts=('polify' 'polify-git')
 validpgpkeys=('EF27591A48D4B6F7C7E55F49EC8E0E98E7C13D19')
 source=("polify-${pkgver}-linux-x86_64.tar.zst::https://hut.buildr.fun/api/apps/Polify/latest/linux/x86_64/tar.zst"
         "polify-${pkgver}-linux-x86_64.tar.zst.sig::https://hut.buildr.fun/api/apps/Polify/latest/linux/x86_64/tar.zst/signature")
-sha256sums=('ae6fc657474863e8754dcb191e9930195aa68ec61c1dec879bbfd5d4a5269b50' 'SKIP')
-b2sums=('40f2700b6c6d511c1e31fbfe37f01da422d674c5007a78fcaf982cc4c0795eb81a770c76945f901704e3455bfe78eb5fef39e5a3886c102b083d855a8e07ca49' 'SKIP')
+sha256sums=('6a4dc123667a7b88beb3fd8805b5d4fa8224f59f214bfddf6589f714c2e89701' 'SKIP')
+b2sums=('d900f59faedbe01921541c6e71c404ce88586a191bab9b8acd384f5e8af5b3bb4d52cdbcdb729c5dfad28a8535165e20e760d348c759a98fabce5b7a20932e9f' 'SKIP')
 
 # Expected tarball layout (from make release):
 #   bundle/          — Flutter Linux release bundle contents (includes onnxruntime libs)
