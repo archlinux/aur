@@ -1,5 +1,5 @@
 pkgname=oranglauncher-bin
-pkgver=9.0.1
+pkgver=9.0.2
 pkgrel=1
 pkgdesc="Orange Launcher for Arch Linux"
 arch=(x86_64)
@@ -10,10 +10,10 @@ provides=(oranglauncher)
 conflicts=(oranglauncher)
 options=(!debug)
 
-source=("https://github.com/Orang-Studio/OrangLaunch/releases/download/9.0.1-Linux/launcher_x64_linux_9.0.1.tar.gz"
+source=("https://github.com/Orang-Studio/OrangLaunch/releases/download/9.0.2-Linux/launcher_x64_linux_9.0.2.tar.gz"
         "LICENSE"
         "oranglauncher-mime.xml")
-sha256sums=('355ff31d9758e4ee8baf0e663e4da2edfe1f6e9a17021e2d985061c3fd01f3b7'
+sha256sums=('4bbf941cda257f9a0ccbb7f32864905d88a6298cd57c1b1367c4f7cd3dc165a1'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '2d0cdbad857e3b7fe79c41f981a89ad1c595d54e43884b3fd5d89892ec0bf07c')
 
