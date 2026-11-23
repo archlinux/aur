@@ -19,7 +19,7 @@ pkgver=0.1.1
 pkgrel=1
 pkgdesc="System tray radio player for your RadioPit.fm library"
 arch=(x86_64)
-url="https://radiopit.fm"
+url="https://github.com/idovitz/radiopittray"
 license=(GPL-3.0)
 depends=(
     # gtk::init() and the GLib main context the tray menu is pumped on
