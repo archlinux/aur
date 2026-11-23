@@ -1,6 +1,9 @@
-# Maintainer: Terrabade <terrabade@protonmail.com>
+# Contributor: Terrabade <terrabade@protonmail.com>
 # Upstream Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Upstream Maintainer: Caroline Snyder <hirpeng@gmail.com>
+#
+# This package is no longer maintained and is superseded by
+# upstream Shelly.
 pkgbase=shelly-gnome
 pkgname=('shelly-gnome' 'shelly-gnome-flatpak-backend')
 pkgver=3.1.9.gnome1
