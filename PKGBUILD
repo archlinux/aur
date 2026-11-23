@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wild-git
-pkgver=0.11.0.r91.g7d888d20
+pkgver=0.11.0.r204.gc1cba811
 pkgrel=1
 pkgdesc="A linker with the goal of being very fast for iterative development"
 arch=('i686' 'x86_64')
