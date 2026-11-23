@@ -5,9 +5,9 @@
 
 pkgname=sonora-nightly-bin
 _pkgname=sonora
-pkgver=0.50.3.nightly.20261122
+pkgver=0.50.3.nightly.20261123
 pkgrel=1
-_commit=8f01fd7fd59103bf0103906712955ddea392d135
+_commit=e14c5b9a2133f94ae7074e6a122fb53fd8f7d9ff
 pkgdesc='A native, familiar music streaming client (nightly build of main)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sonorahq/sonora'
@@ -27,15 +27,28 @@ source=("${_pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz"
         "sonora-build-${pkgver}.json::${url}/releases/download/nightly-build/sonora-build.json")
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/nightly-build/sonora-nightly-x86_64-unknown-linux-gnu")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/nightly-build/sonora-nightly-aarch64-unknown-linux-gnu")
-sha256sums=('a8afeb625dd941291c95d7cccf760df23e566e5043527d5ac849bd50d0c1464b' '5038927d0ba558fb12b98964a2493b002dbdfd2583a5b6487c523dfe35036854')
-sha256sums_x86_64=('69a577dbb5ada88e4ec2e981cc2b66a25c9e7d643878a2d3ca1cdb61da760929')
-sha256sums_aarch64=('667c0867e996878889e480611e1b47dce2923342721dbaf8c3b144da7dda2530')
+sha256sums=('46c91030768443127f34ce7354be2633cf960750bf5975b13ac219ddd5a53afa' '740f722403b4475cb9db1428897b96bad3db7e4ac3a2b0a6b58341936b94ff82')
+sha256sums_x86_64=('f144ef77f52e27d24a13c27f0474e99bc3684852b252a06fdad5e4f0cf91359c')
+sha256sums_aarch64=('34a1d2a1e0dabf0d3e4331a0cf9b244a4d408f478806f2f59da9e49b62b772fd')
 
 package() {
   cd "${_pkgname}-${_commit}"
 
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "${srcdir}/sonora-build-${pkgver}.json" "${pkgdir}/usr/lib/sonora/build.json"
+
+  # The executable prints its own completion scripts, so they always match its commands.
+  local shell
+  for shell in bash zsh fish; do
+    "${pkgdir}/usr/bin/${_pkgname}" completions "${shell}" > "${srcdir}/completion.${shell}"
+  done
+  install -Dm644 "${srcdir}/completion.bash" \
+    "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm644 "${srcdir}/completion.zsh" \
+    "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  install -Dm644 "${srcdir}/completion.fish" \
+    "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+
   install -Dm644 assets/linux/sonora.desktop \
     "${pkgdir}/usr/share/applications/sonora.desktop"
   install -Dm644 assets/linux/sonora.svg \
