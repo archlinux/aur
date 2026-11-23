@@ -1,0 +1,24 @@
+pkgbase = circagraph-desktop-bin
+	pkgdesc = Exact timelines, shared on your terms: the Circagraph desktop app
+	pkgver = 0.31.0
+	pkgrel = 1
+	url = https://github.com/circagraph/timeline-app
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gmp
+	depends = sqlite
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = circagraph-desktop
+	provides = openchronology-desktop
+	provides = openchronology-desktop-bin=0.31.0
+	conflicts = circagraph-desktop
+	conflicts = openchronology-desktop-bin<0.31
+	replaces = openchronology-desktop-bin<0.31
+	noextract = circagraph-desktop-0.31.0.deb
+	options = !strip
+	options = !debug
+	source = circagraph-desktop-0.31.0.deb::https://github.com/circagraph/timeline-app/releases/download/v0.31.0/circagraph-desktop-linux-amd64.deb
+	sha256sums = 86307e8ad4e20f0cef68d3a7de824979085f49bc1b69f9d71db1e4921113486c
+
+pkgname = circagraph-desktop-bin
