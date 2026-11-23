@@ -1,4 +1,4 @@
-_FORCE_ts=20261116152344
+_FORCE_ts=20261123091604
 # Maintainer: Geequlim
 #
 # The LayaAir CLI runtime is published by Layabox as a versioned ZIP on their
@@ -9,12 +9,12 @@ _FORCE_ts=20261116152344
 
 pkgname=layaair-cli
 pkgver=3.4.3
-pkgrel=3
+pkgrel=4
 _upstream_ver=3.4.3
 _url=https://ldc-1251285021.file.myqcloud.com/layaair3/layaair-3.4/cli/layaair-cli-3.4.3-linux-x64.zip
 pkgdesc='LayaAir command-line tool (official runtime)'
 arch=('x86_64')
-url='https://github.com/layabox/layaair-cli'
+url='https://github.com/Geequlim/aur-packages/tree/main/packages/layaair-cli'
 license=('custom')
 depends=('nodejs>=22.12.0')
 options=('!strip')
@@ -22,7 +22,7 @@ options=('!strip')
 # whenever a file with this name already exists in the build dir, so the name
 # must change whenever the upstream checksum can change.
 source=("layaair-cli-${pkgver}-${pkgrel}.zip::${_url}")
-sha256sums=('f2b83ca96e56512861b276bf96996c321f9ad9ee1c11e1b502c66922eb5d9358')
+sha256sums=('5ada2db78c288af70d8ae208036ca8169b7a0e28a1fa14f27d41ef39335d27c7')
 
 prepare() {
   cd "$srcdir"
