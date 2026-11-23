@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd $_gitname
-  meson setup --prefix=/usr --buildtype=plain . build
+  meson setup --prefix=/usr --buildtype=plain -Dtests=false . build
   meson compile -C build
 }
 
