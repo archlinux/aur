@@ -5,8 +5,8 @@
 # shellcheck shell=bash
 
 pkgname="modsecurity-crs"
-pkgver=4.30.0
-pkgrel=4
+pkgver=4.31.0
+pkgrel=1
 pkgdesc="OWASP ModSecurity Core Rule Set"
 _modsecver=3.0.17
 url="https://github.com/coreruleset/coreruleset"
@@ -22,11 +22,11 @@ source=("coreruleset-$pkgver.tar.gz::https://github.com/coreruleset/coreruleset/
   "https://github.com/coreruleset/coreruleset/releases/download/v$pkgver/coreruleset-$pkgver.tar.gz.asc"
   "modsecurity-$_modsecver.conf-recommended::https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v$_modsecver/modsecurity.conf-recommended"
   "unicode-$_modsecver.mapping::https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v$_modsecver/unicode.mapping")
-sha512sums=('e18fdb8e757c73d2dc92f6d41b52ab25f9a0626e189f5180516a85ba41c060d4de0aa39ad09d7f72f751597b997ef73d55764d7410ef370013df4d771a4491c3'
+sha512sums=('02768b9bdcb4b59454b65e0a2f85aa7e56f91a61103aaf7da2e0ba20335fb176294fab8d56874096c341b4342d223c5511a52fff97af646395323639742f4152'
   'SKIP'
   '95f56e02c9ae14fad6a670b8973a8f29ed85485c9b6ed7aa70485ca5ba5b879b342c7a2589f0650da0cad1bfdcbca5c17375c03a215311799dc92762f55f6948'
   'da4a211a1791e4fc68b7cf18917c892d72fd6e1c22b312a21ae21ff8fba25365a9efeee4a9a00352ada25b3b0f6226e844f7f9bbedbcb7ab6424349841c3d42e')
-b2sums=('d4e97140a46983544b199c4f1bfd0e75bd76891312368d97745873e67298693f4d6eadf815ef5d7ad98b91b3211ae1805a8eb64a62ce202dac6986926dcda621'
+b2sums=('23411cbbe5d492a2a9d5d257522ba91e3b8e3575be2225113f6dce3444acd564d0a1ae054938665d9be39222a4088a724d202642c167b920047bf7adda18626c'
   'SKIP'
   '5d2c6c7d252930c26b8cb2b886191eda5c1aadb6179c2fe648c68f1078d2749f9dc7ea829e5d9f334f8250775eca757946dd69a3767f6d79ec942af916d2c822'
   '81760f570952b472dcdd3a5b5a2214136e21d1a1cdf65b6d16c615ef4ac6df056b37eebe9ce1f175aa72c664fa7405b1e6edc57847e64511cc64d969ad4490e7')
