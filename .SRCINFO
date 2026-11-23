@@ -1,0 +1,26 @@
+pkgbase = anville
+	pkgdesc = Slop-free HTTP server
+	pkgver = v0.2.1+tojiko
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/shirakumo/libmixed
+	install = anville.install
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = riscv64
+	license = MIT
+	license = EUPL
+	makedepends = rust
+	options = !lto
+	source = https://codeberg.org/sugar700/anville/archive/v0.2.1+tojiko.zip
+	source = config.kdl
+	source = anville.install
+	source = anville.service
+	sha1sums = cce9ece8694c24bf98d080c08534ca020d99cc1e
+	sha1sums = a7c65eb4813f3ffcd80e68330623cff6cee6ffa8
+	sha1sums = e9a011594bd13ebff55a1f3273e3c487e5bdd18c
+	sha1sums = d8f914710626d78595783dc475bbd71f153a8b00
+
+pkgname = anville

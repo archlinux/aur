@@ -1,0 +1,18 @@
+[Unit]
+Description="HTTP Server"
+After=network-online.target remote-fs.target nss-lookup.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/anville run /etc/anville/config.kdl
+ExecReload=/bin/kill -HUP $MAINPID
+Environment="RUST_LOG=info"
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+Restart=always
+User=anville
+PrivateDevices=yes
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
