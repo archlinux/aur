@@ -1,3 +1,4 @@
+# Maintainer: MCB-SMART-BOY <2720838051@qq.com>
 pkgname=mcbtodo
 pkgver=0.1.0
 pkgrel=1
