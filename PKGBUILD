@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=musicatk
-_pkgver=1.14.1
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Mutational Signature Comprehensive Analysis Toolkit'
 arch=('any')
@@ -20,7 +20,6 @@ depends=(
   r-complexheatmap
   r-data.table
   r-decomptumor2sig
-  r-deconstructsigs
   r-dplyr
   r-factoextra
   r-genomeinfodb
@@ -41,6 +40,7 @@ depends=(
   r-plotly
   r-rlang
   r-s4vectors
+  r-scales
   r-shiny
   r-stringi
   r-stringr
@@ -69,14 +69,13 @@ optdepends=(
   r-shinyjs
   r-shinywidgets
   r-sortable
-  r-survival
   r-tcgabiolinks
   r-testthat
   r-withr
   r-xvector
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8c04d829d6e37040d4c0293d63a1d52515b02f31ac0eb02e1172cb5ee900e3af')
+sha256sums=('edb5cc02cd37149bd314896965c6c313d5d56b7cfaaf0dc3983710a22d0d4505')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
