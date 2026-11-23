@@ -2,8 +2,8 @@
 
 pkgname=python-k3ut
 _name=${pkgname#python-}
-pkgver=0.1.22
-pkgrel=1
+pkgver=0.1.23
+pkgrel=3
 pkgdesc="Unittest utilities with debug logging and test helpers"
 provides=(${pkgname})
 conflicts=(${pkgname})
@@ -25,7 +25,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('fc35ce451f21a8b4b523176b2bd6a3a14ab0b0b463edce3cf573c2ed075215dc')
+sha256sums=('45b7acb6f412c777a40be0fe0ef837c275abc5e3a63c82349016d42d804fab9e')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
