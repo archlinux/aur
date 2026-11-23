@@ -1,6 +1,6 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 pkgname=proton-gallery
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Unofficial Proton Photos and Drive gallery with a native photo and video viewer"
 arch=('x86_64')
@@ -22,7 +22,7 @@ conflicts=('proton-gallery-bin' 'proton-gallery-git')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$_repo/archive/refs/tags/v$pkgver.tar.gz"
         "basemap-v1.pmtiles::https://github.com/narrrl/proton-rs/releases/download/basemap-v1/basemap-v1.pmtiles")
-sha256sums=('d740f432f0bf9fd5fbea70c42308b363c7b5b6b3520dbf0c596d7e73a8f9ca23'
+sha256sums=('ad1b731edc091338f97c9805abd883300f778b3f9e90029face56caa211a958b'
             'ce9acab1b7ed7f15b23e2365b1b6a580db79f4bc4421851ee673eff4c920d280')
 _srcname="proton-gallery-$pkgver"
 
