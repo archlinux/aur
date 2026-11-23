@@ -1,6 +1,6 @@
 pkgbase = android-knot-bin
 	pkgdesc = An intelligent multi-scenario recording tool inspired by the minimalist concept of ancient 'knot-tying' memorization.
-	pkgver = 26.11.12
+	pkgver = 26.11.20
 	pkgrel = 1
 	url = https://github.com/ic005k/Knot
 	arch = x86_64
@@ -15,14 +15,14 @@ pkgbase = android-knot-bin
 	optdepends = fcitx5-qt: Fcitx5 input method support
 	optdepends = ibus: IBus input method support
 	optdepends = cups: Print support
-	provides = android-knot=26.11.12
+	provides = android-knot=26.11.20
 	conflicts = android-knot
 	options = !strip
 	options = !emptydirs
-	source = android-knot-26.11.12.deb::https://github.com/ic005k/Knot/releases/download/26.11.12/Knot-26.11.12-amd64.deb
-	source = LICENSE-26.11.12::https://raw.githubusercontent.com/ic005k/Knot/26.11.12/LICENSE
+	source = android-knot-26.11.20.deb::https://github.com/ic005k/Knot/releases/download/26.11.20/Knot-26.11.20-amd64.deb
+	source = LICENSE-26.11.20::https://raw.githubusercontent.com/ic005k/Knot/26.11.20/LICENSE
 	source = android-knot.sh
-	sha256sums = fea1447d55bb50bb66f290ee462671ac923e01d68ee0d3bf5724c12539b7d0a4
+	sha256sums = 8dd8d24402334a7d2c0a301b2439322ea85155560373a29aa0cec8a553fb2efd
 	sha256sums = 5076e0113e6e491d04559dd9ec0a80a35392bec88928393d47b8dd620aa96d66
 	sha256sums = 216b754c5be3b7d33ebc915743a3bc4d6663a63b0a07468c88cc26bf20908cb4
 
