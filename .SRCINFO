@@ -1,6 +1,6 @@
 pkgbase = r-ggiraph
 	pkgdesc = Make 'ggplot2' Graphics Interactive
-	pkgver = 0.9.6
+	pkgver = 0.9.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggiraph
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = r-ggiraph
 	depends = libpng
 	depends = ttf-dejavu
 	depends = r
+	depends = r-cli
 	depends = r-dplyr
 	depends = r-gdtools
 	depends = r-ggplot2
@@ -17,9 +18,10 @@ pkgbase = r-ggiraph
 	depends = r-purrr
 	depends = r-rcpp
 	depends = r-rlang
+	depends = r-s7
 	depends = r-systemfonts
-	depends = r-uuid
 	depends = r-vctrs
+	optdepends = r-ggbeeswarm
 	optdepends = r-ggrepel
 	optdepends = r-hexbin
 	optdepends = r-knitr
@@ -30,7 +32,7 @@ pkgbase = r-ggiraph
 	optdepends = r-shiny
 	optdepends = r-tinytest
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/ggiraph_0.9.6.tar.gz
-	sha256sums = 715f1ef27f0e3ab7775c90684ce8932aa0739ba2a2103713eb0a20eac1b7b645
+	source = https://cran.r-project.org/src/contrib/ggiraph_0.9.7.tar.gz
+	sha256sums = 9eb748d31858d632f26bf646d0d43423e79e5a1150050b1a91159d8b5e66abce
 
 pkgname = r-ggiraph
