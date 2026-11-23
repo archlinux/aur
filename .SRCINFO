@@ -1,13 +1,13 @@
 pkgbase = proxyguard
 	pkgdesc = Proxy WireGuard UDP connections over HTTP(S)
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://codeberg.org/eduVPN/proxyguard
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	options = !lto
-	source = https://codeberg.org/eduVPN/proxyguard/archive/v2.2.0.tar.gz
-	sha256sums = 764ed364f5ec5e66ae9ae60120db9eb1e8e68c1cf4a165943bbcc594fee87fed
+	source = https://codeberg.org/eduVPN/proxyguard/archive/v2.2.1.tar.gz
+	sha256sums = e4fc369da3fd3dc7f2b6fdfcef18815fb4f5b9feec64cd929c64e237fa73f537
 
 pkgname = proxyguard

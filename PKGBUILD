@@ -1,7 +1,7 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=proxyguard
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='Proxy WireGuard UDP connections over HTTP(S)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://codeberg.org/eduVPN/proxyguard'
 source=("$url/archive/v$pkgver.tar.gz")
 makedepends=('go')
 options=(!lto)
-sha256sums=('764ed364f5ec5e66ae9ae60120db9eb1e8e68c1cf4a165943bbcc594fee87fed')
+sha256sums=('e4fc369da3fd3dc7f2b6fdfcef18815fb4f5b9feec64cd929c64e237fa73f537')
 
 prepare() {
     cd "$pkgname"
