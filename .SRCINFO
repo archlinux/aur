@@ -1,6 +1,6 @@
 pkgbase = dot-cli-git
 	pkgdesc = Declarative dotfiles CLI for macOS, Linux, WSL, and PowerShell
-	pkgver = 0.2.550
+	pkgver = 0.2.551
 	pkgrel = 1
 	url = https://github.com/sebastienrousseau/dotfiles
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = dot-cli-git
 	provides = dotfiles
 	conflicts = dot
 	conflicts = dotfiles
-	source = dot-0.2.550.tar.gz::https://github.com/sebastienrousseau/dotfiles/releases/download/v0.2.550/dot-0.2.550.tar.gz
-	sha256sums = 00fc628206aa5c796e16822299cba26b723d33e949a4cd3155cb118002c0f514
+	source = dot-0.2.551.tar.gz::https://github.com/sebastienrousseau/dotfiles/releases/download/v0.2.551/dot-0.2.551.tar.gz
+	sha256sums = d712126247b266bfd40028ec1414c2af2765fbd34283ab078d87017145d88d30
 
 pkgname = dot-cli-git
