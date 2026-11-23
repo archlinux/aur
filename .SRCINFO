@@ -1,0 +1,20 @@
+pkgbase = r-dpq
+	pkgdesc = Density, Probability, Quantile ('DPQ') Computations
+	pkgver = 0.6.2
+	pkgrel = 2
+	url = https://cran.r-project.org/package=DPQ
+	arch = x86_64
+	license = GPL-2.0-or-later AND GPL-3.0-only
+	makedepends = gcc-fortran
+	depends = r-sfsmisc
+	optdepends = r-cobs
+	optdepends = r-dpqmpfr
+	optdepends = r-gmp
+	optdepends = r-interp
+	optdepends = r-rmpfr
+	optdepends = r-scatterplot3d
+	source = https://cran.r-project.org/src/contrib/DPQ_0.6-2.tar.gz
+	md5sums = 8c7a10b665bc6897f2fa649deeb32fe5
+	b2sums = 870bf91b4ce157f07a68b2af8470ad4584c543b6fab0ac80661b11d8c7d5fbf1bf03d73701c995e7d0c94aa1d5a35ffea596b00ce8bc394142a81c1301e1e0d5
+
+pkgname = r-dpq
