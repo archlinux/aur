@@ -1,0 +1,15 @@
+pkgbase = r-knnmi
+	pkgdesc = k-Nearest Neighbor Mutual Information Estimator
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://cran.r-project.org/package=knnmi
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = r
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/knnmi_1.0.tar.gz
+	md5sums = f33a1eb2e0bbddefac3a72ce27d96b1d
+	b2sums = ac83dafd24990405bf96c056f49cbcd24aec12e63b32024d5ae1c0889779754d6e0f71806ca0af1e5002885fd51a9625898dcb678c664bc30f52f648382b0d3a
+
+pkgname = r-knnmi
