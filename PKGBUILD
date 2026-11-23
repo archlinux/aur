@@ -2,7 +2,7 @@
 # AUR: rynas-agent-bin (the static binary of the GitHub release). Copy to PKGBUILD in the AUR
 # repository; `pkgver` and the checksums follow each release.
 pkgname=rynas-agent-bin
-pkgver=0.8.30
+pkgver=0.8.31
 pkgrel=1
 pkgdesc="rynas PC backup agent: file backups to a rynas NAS and bare-metal restore from any live Linux"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source=("rynas-agent.service::https://raw.githubusercontent.com/rylos/rynas/v${p
 source_x86_64=("rynas-agent-x86_64-${pkgver}::https://github.com/rylos/rynas/releases/download/v${pkgver}/rynas-agent-x86_64")
 source_aarch64=("rynas-agent-aarch64-${pkgver}::https://github.com/rylos/rynas/releases/download/v${pkgver}/rynas-agent-aarch64")
 sha256sums=('60959dd72e5416461e666d9c27b27aaa935ad63f1f9b1fbff1f2afaf20151538')
-sha256sums_x86_64=('c4f391640df82164ee1df0eec66dd223031d08b0c0ba165e839f02d5e33f2318')
-sha256sums_aarch64=('9acf5d0a0bdfbc75e95119755f485c010507c5e76e090c6957f014e57da50470')
+sha256sums_x86_64=('75966cd7eb82c380bae99e8107266cbe50bd6f53f7f493f289ad90c06e9f3adb')
+sha256sums_aarch64=('d3992b594174a9ba80233a9a2e00eff292621e7677c9f173f3ba97dc4c361362')
 
 package() {
   install -Dm755 "rynas-agent-${CARCH}-${pkgver}" "$pkgdir/usr/bin/rynas-agent"
