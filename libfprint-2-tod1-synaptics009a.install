@@ -1,0 +1,39 @@
+post_install() {
+  cat <<'EOF'
+
+==> Synaptics 06cb:009a fingerprint reader (libfprint-2-tod1-synaptics009a)
+
+The driver plugin is installed, but the reader needs a ONE-TIME setup before it
+will work: the sensor's QMatcher firmware extension has to be flashed, and a
+per-sensor host calibration generated.  Both are done by:
+
+    sudo synaptics009a-setup
+
+Then enrol and verify a finger:
+
+    fprintd-enroll -f right-index-finger    # 12 presses; press the oval, lift, vary the angle
+    fprintd-verify                          # must print: verify-match
+
+Optionally use the reader for sudo and login too (one reversible line in
+/etc/pam.d/system-auth; undo with --undo):
+
+    sudo synaptics009a-pam
+
+Full notes: /usr/share/doc/libfprint-2-tod1-synaptics009a/README.md
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  cat <<'EOF'
+
+==> The sensor's firmware extension and host calibration are left in place.
+    If this reader is no longer wanted, remove the PAM line with:
+        sudo synaptics009a-pam --undo
+
+EOF
+}

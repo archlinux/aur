@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+#
+# Wire pam_fprintd into /etc/pam.d/system-auth so the fingerprint reader can be
+# used for sudo, display-manager login and tty login.  Reversible: --undo.
+#
+# On Arch everything funnels through system-auth:
+#     sudo    -> include system-auth
+#     sddm    -> include system-login -> include system-auth
+#     login   -> include system-local-login -> include system-login -> include system-auth
+# so a single line covers all of them.
+#
+# Caveat: because the module is `sufficient`, a successful swipe short-circuits
+# the whole auth stack.  That means (a) any background process can satisfy sudo
+# with a swipe (fingerprint hijacking, CVE-2024-37408 - any `sufficient`-based
+# fingerprint setup has this property) and (b) pam_env and the faillock preauth
+# are skipped on the fingerprint path.  Fine for a personal laptop; know it.
+set -euo pipefail
+
+TARGET=/etc/pam.d/system-auth
+LINE='auth       sufficient                  pam_fprintd.so'
+
+die() { printf 'error: %s\n' "$*" >&2; exit 1; }
+
+[[ ${EUID} -eq 0 ]] || die "run as root:  sudo synaptics009a-pam [--undo]"
+[[ -f $TARGET ]] || die "no $TARGET - is this an Arch-like system?"
+
+if [[ ${1:-} == --undo ]]; then
+    if ! grep -qxF "$LINE" "$TARGET"; then
+        echo "not enabled - nothing to undo"
+        exit 0
+    fi
+    tmp=$(mktemp)
+    grep -vxF "$LINE" "$TARGET" > "$tmp"
+    install -m 0644 -o root -g root "$tmp" "$TARGET"
+    rm -f "$tmp"
+    echo "fingerprint line removed from $TARGET"
+    exit 0
+fi
+
+if grep -qxF "$LINE" "$TARGET"; then
+    echo "already enabled in $TARGET"
+    exit 0
+fi
+
+cp -a "$TARGET" "$TARGET.synaptics009a.bak"
+tmp=$(mktemp)
+# Insert immediately before the first `auth` line, i.e. at the top of the auth
+# stack and ahead of pam_unix; on failure the module falls through to it.
+awk -v line="$LINE" '!done && /^auth/ { print line; done = 1 } { print }' "$TARGET" > "$tmp"
+install -m 0644 -o root -g root "$tmp" "$TARGET"
+rm -f "$tmp"
+
+echo "enabled in $TARGET (backup: $TARGET.synaptics009a.bak)"
+echo
+echo "Test it in a NEW terminal before logging out:"
+echo "    sudo -k; sudo -v"
+echo
+echo "If sudo misbehaves, restore the backup from a root shell:"
+echo "    cp -a $TARGET.synaptics009a.bak $TARGET"
+echo "or run: sudo synaptics009a-pam --undo"

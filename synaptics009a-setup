@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+#
+# One-time setup for the Synaptics 06cb:009a fingerprint reader.
+#
+#   1. flash the QMatcher firmware extension if the sensor does not have it
+#   2. generate the per-sensor host calibration if it is missing
+#   3. leave fprintd running
+#
+# Safe to re-run: each step is skipped when it is already done.
+set -euo pipefail
+
+FW=/usr/share/libfprint-2-tod1-synaptics009a/6_07f_lenovo_mis_qm.xpfwext
+CALIB=/var/lib/fprint/.synaptics_06cb_009a_calib.bin
+FPRINTD_DIR=/var/lib/fprint
+
+die() { printf 'error: %s\n' "$*" >&2; exit 1; }
+note() { printf '==> %s\n' "$*"; }
+
+[[ ${EUID} -eq 0 ]] || die "run as root:  sudo synaptics009a-setup"
+[[ -f $FW ]] || die "firmware image missing: $FW (reinstall the package?)"
+
+# Make the udev rule and the fprintd drop-in take effect.
+udevadm control --reload-rules || true
+udevadm trigger --subsystem-match=usb --attr-match=idVendor=06cb || true
+systemctl daemon-reload || true
+
+note "stopping fprintd (it must not hold the sensor)"
+systemctl stop fprintd.service 2>/dev/null || true
+# Always bring it back, even if a step below fails.
+trap 'systemctl start fprintd.service 2>/dev/null || true' EXIT
+
+# --- 1. firmware extension -------------------------------------------------
+if synaptics009a-upload-fwext --check; then
+    note "firmware extension already present - skipping"
+else
+    note "flashing firmware extension to sensor flash partition 2"
+    synaptics009a-upload-fwext "$FW"
+    note "sensor rebooted; waiting for it to re-enumerate"
+    sleep 5
+fi
+
+# --- 2. host calibration ---------------------------------------------------
+install -d -m 0700 "$FPRINTD_DIR"
+if [[ -f $CALIB ]]; then
+    note "host calibration already present - skipping"
+else
+    note "calibrating - KEEP YOUR HANDS OFF THE READER for the whole run"
+    synaptics009a-calibrate --output "$CALIB"
+fi
+
+# --- 3. done ---------------------------------------------------------------
+cat <<'EOF'
+
+Setup complete.
+
+Next steps:
+  1. enrol a finger:   fprintd-enroll -f right-index-finger
+                       (12 touches: press the whole oval firmly, lift, vary the angle)
+  2. verify it:        fprintd-verify        # must print: verify-match
+  3. optional (sudo and login):
+       sudo synaptics009a-pam
+
+EOF

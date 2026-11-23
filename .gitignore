@@ -1,0 +1,14 @@
+# AUR: only package sources are tracked here.
+# Keep makepkg output, downloaded sources and the extracted build tree local.
+*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/*.install
+!/*.patch
+!/Cargo.lock
+!/*.rules
+!/*.conf
+!/synaptics009a-setup
+!/synaptics009a-pam
+!/README.md

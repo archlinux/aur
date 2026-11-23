@@ -1,0 +1,554 @@
+diff --git a/src/bin/synaptics009a-upload-fwext.rs b/src/bin/synaptics009a-upload-fwext.rs
+new file mode 100644
+index 0000000..2a7d930
+--- /dev/null
++++ b/src/bin/synaptics009a-upload-fwext.rs
+@@ -0,0 +1,134 @@
++//! Upload a Synaptics `.xpfwext` firmware extension to the `06cb:009a` sensor's
++//! flash partition 2, or check whether one is already loaded.
++//!
++//! `--check` only reports — exit 0 if the extension is present, 3 if absent —
++//! and never writes flash. The default uploads, skipping when one is already
++//! present; `--force` rewrites it.
++
++use std::path::PathBuf;
++use t480s_fingerprint_v2::{DriverError, SensorSession, SynapticsUsbTransport};
++
++/// Exit status of `--check` when no extension is loaded.
++const EXIT_NOT_PRESENT: i32 = 3;
++
++const HELP: &str = "\
++Usage: synaptics009a-upload-fwext [--check] [--force] [FILE.xpfwext]
++
++Stop fprintd first. Writes the Synaptics firmware extension to sensor flash
++partition 2 only (not the TLS pairing, calibration, or template partitions).
++Reboots the sensor at the end; the USB device will disconnect and re-enumerate.
++
++  --check   report whether an extension is loaded; write nothing
++            (exit 0 = present, 3 = absent)
++  --force   rewrite even if an extension is already present";
++
++enum Action {
++    Check,
++    Upload { path: PathBuf, force: bool },
++}
++
++fn parse_args() -> Result<Action, Box<dyn std::error::Error>> {
++    let mut check = false;
++    let mut force = false;
++    let mut files: Vec<PathBuf> = Vec::new();
++
++    for arg in std::env::args_os().skip(1) {
++        match arg.to_str() {
++            Some("-h" | "--help") => {
++                println!("{HELP}");
++                std::process::exit(0);
++            }
++            Some("--check") => check = true,
++            Some("--force") => force = true,
++            Some(s) if s.starts_with("--") => {
++                return Err(format!("Unknown option {s}; see --help").into());
++            }
++            _ => files.push(PathBuf::from(arg)),
++        }
++    }
++
++    if check {
++        if !files.is_empty() {
++            return Err("--check takes no file argument".into());
++        }
++        return Ok(Action::Check);
++    }
++    match files.len() {
++        1 => Ok(Action::Upload {
++            path: files.remove(0),
++            force,
++        }),
++        0 => Err("Expected a FILE.xpfwext argument; see --help".into()),
++        _ => Err("Expected exactly one FILE.xpfwext argument; see --help".into()),
++    }
++}
++
++/// Open the sensor, run the pre-TLS init and establish the TLS session.
++fn open_session() -> Result<SensorSession<SynapticsUsbTransport>, Box<dyn std::error::Error>> {
++    let mut session = SensorSession::new(SynapticsUsbTransport::open()?);
++    let version = session.initialize_metallica()?;
++    if version.product != 0x30 {
++        return Err(Box::new(DriverError::Protocol(
++            "Expected Metallica product 0x30".into(),
++        )));
++    }
++    let bundle = session.read_tls_flash_bundle()?;
++    session.establish_tls_session(&bundle)?;
++    Ok(session)
++}
++
++fn run() -> Result<i32, Box<dyn std::error::Error>> {
++    let action = parse_args()?;
++
++    // Read the image before touching the sensor so a bad path fails fast.
++    let file = match &action {
++        Action::Upload { path, .. } => Some(std::fs::read(path)?),
++        Action::Check => None,
++    };
++
++    let mut session = open_session()?;
++    let present = session.fwext_present()?;
++
++    match &action {
++        Action::Check => {
++            println!(
++                "firmware extension: {}",
++                if present { "present" } else { "ABSENT" }
++            );
++            let _ = session.reboot_sensor();
++            Ok(if present { 0 } else { EXIT_NOT_PRESENT })
++        }
++        Action::Upload { path, force } => {
++            if present && !*force {
++                eprintln!(
++                    "A firmware extension is already loaded; nothing to do \
++                     (use --force to rewrite it)."
++                );
++                let _ = session.reboot_sensor();
++                return Ok(0);
++            }
++            let file = file.expect("image is read for the upload action");
++            eprintln!("Loaded {} bytes from {}", file.len(), path.display());
++            let uploaded = session.upload_fwext(&file);
++            // Reboot so the sensor loads the new extension (also releases the
++            // TLS session on failure). It re-enumerates on the bus afterwards.
++            let reboot = session.reboot_sensor();
++            let image_len = uploaded?;
++            eprintln!(
++                "Wrote {image_len} bytes to flash partition 2; reboot requested \
++                 ({reboot:?}). Give the sensor a few seconds to re-enumerate."
++            );
++            Ok(0)
++        }
++    }
++}
++
++fn main() {
++    match run() {
++        Ok(code) => std::process::exit(code),
++        Err(error) => {
++            eprintln!("Firmware upload failed: {error}");
++            std::process::exit(1);
++        }
++    }
++}
+diff --git a/src/calibration.rs b/src/calibration.rs
+index 0b5fdea..7d23fbc 100644
+--- a/src/calibration.rs
++++ b/src/calibration.rs
+@@ -12,26 +12,24 @@ const ROWS: usize = 112;
+ pub const CALIBRATION_BYTES: usize = ROW_BYTES * ROWS;
+ const FRAME_BYTES: usize = CALIBRATION_BYTES * 2; // two interleaved lines per row
+ 
+-/// Discard the first of three frames, then average the remaining four samples
+-/// for each byte (two frames, each with two interleaved lines).
++/// Discard the first of three frames, then average the two interleaved lines of
++/// the second frame (2 samples per pixel), matching python-validity's `average()`.
+ fn average_frames(raw: &[u8]) -> Result<Vec<u8>> {
+-    if raw.len() < 3 * FRAME_BYTES {
++    if raw.len() < 2 * FRAME_BYTES {
+         return Err(DriverError::ShortResponse {
+             context: "calibration frames on EP 0x82",
+-            expected: 3 * FRAME_BYTES,
++            expected: 2 * FRAME_BYTES,
+             actual: raw.len(),
+         });
+     }
+     let mut averaged = vec![0; CALIBRATION_BYTES];
+     for row in 0..ROWS {
+         for col in 0..ROW_BYTES {
+-            let mut total = 0u16;
+-            for frame in 1..3 {
+-                for line in 0..2 {
+-                    total += raw[frame * FRAME_BYTES + (2 * row + line) * ROW_BYTES + col] as u16;
+-                }
++            let mut total = 0u32;
++            for line in 0..2 {
++                total += raw[FRAME_BYTES + (2 * row + line) * ROW_BYTES + col] as u32;
+             }
+-            averaged[row * ROW_BYTES + col] = (total / 4) as u8;
++            averaged[row * ROW_BYTES + col] = (total / 2) as u8;
+         }
+     }
+     Ok(averaged)
+@@ -83,8 +81,12 @@ impl SensorSession<SynapticsUsbTransport> {
+                 self.execute_cmd(&command, 2)?;
+                 self.transport.read_calibration_frames()
+             })();
+-            // Always stop acquisition, including when a bulk read fails.
+-            let _ = self.execute_raw(&[0x04], 2);
++            // python-validity's calibration loop does not send a 0x04 stop between
++            // iterations: the AcqStart `req_lines` field makes the sensor stop after
++            // the requested frames. Sending 0x04 here resets the sensor on this
++            // firmware (06cb:009a FW 6.07.0164), so the next AcqStart fails with
++            // "No such device". Leave the sensor armed and let the next AcqStart
++            // re-arm it, matching the reference implementation.
+             correction = update_correction(&capture?, &correction)?;
+         }
+         Ok(correction)
+@@ -106,8 +108,8 @@ mod tests {
+                 }
+             }
+         }
+-        assert_eq!(average_frames(&raw).unwrap(), vec![25; CALIBRATION_BYTES]);
+-        assert!(average_frames(&raw[..3 * FRAME_BYTES - 1]).is_err());
++        assert_eq!(average_frames(&raw).unwrap(), vec![15; CALIBRATION_BYTES]);
++        assert!(average_frames(&raw[..2 * FRAME_BYTES - 1]).is_err());
+     }
+ 
+     #[test]
+diff --git a/src/fwext.rs b/src/fwext.rs
+new file mode 100644
+index 0000000..e99c119
+--- /dev/null
++++ b/src/fwext.rs
+@@ -0,0 +1,215 @@
++//! Firmware-extension (`xpfwext`) upload for `06cb:009a`.
++//!
++//! Mirrors python-validity's `validitysensor/upload_fwext.py` and
++//! `validitysensor/flash.py`. This DOES write sensor flash — partition 2 only
++//! (the firmware extension). It does not touch the TLS pairing partition (1),
++//! the calibration partition (6), or the template database (4).
++//!
++//! Sequence (identical to the reference): strip the file at its first `0x1a`
++//! byte, split off the trailing 256-byte signature, poke two hardware
++//! registers, carve the image into 4 KB `0x41` flash writes, write the
++//! signature with `0x42`, then reboot so the sensor loads the extension.
++
++use crate::protocol::{SensorSession, WireOpcode};
++use crate::usb::Transport;
++use crate::{DriverError, Result};
++
++const PART_FWEXT: u8 = 2;
++const FLASH_CHUNK: usize = 0x1000;
++const SIGNATURE_LEN: usize = 0x100;
++const HW_REG_MODE_SET: u32 = 0x8000_205c;
++const HW_REG_MODE_GET: u32 = 0x8000_2080;
++
++// --- Wire request builders ---------------------------------------------------
++// Each mirrors one `struct.pack` in python-validity. Kept as pure functions so
++// the byte layouts can be unit-tested: a wrong byte here writes garbage to
++// sensor flash.
++
++/// `pack('<BLB', 7, addr, 4)` — read a 32-bit hardware register.
++fn hw_reg_read_request(addr: u32) -> Vec<u8> {
++    let mut req = Vec::with_capacity(6);
++    req.push(0x07);
++    req.extend_from_slice(&addr.to_le_bytes());
++    req.push(4);
++    req
++}
++
++/// `pack('<BLLB', 8, addr, value, 4)` — write a 32-bit hardware register.
++fn hw_reg_write_request(addr: u32, value: u32) -> Vec<u8> {
++    let mut req = Vec::with_capacity(10);
++    req.push(0x08);
++    req.extend_from_slice(&addr.to_le_bytes());
++    req.extend_from_slice(&value.to_le_bytes());
++    req.push(4);
++    req
++}
++
++/// `pack('<BBBHLL', 0x41, partition, 1, 0, addr, len) + buf` — write flash.
++fn flash_write_request(partition: u8, addr: u32, buf: &[u8]) -> Vec<u8> {
++    let mut req = Vec::with_capacity(13 + buf.len());
++    req.push(0x41);
++    req.push(partition);
++    req.push(1);
++    req.extend_from_slice(&0u16.to_le_bytes()); // `H` field, always 0
++    req.extend_from_slice(&addr.to_le_bytes());
++    req.extend_from_slice(&(buf.len() as u32).to_le_bytes());
++    req.extend_from_slice(buf);
++    req
++}
++
++/// `pack('<BBxH', 0x42, partition, len(sig)) + sig` — write the firmware signature.
++fn fw_signature_request(partition: u8, signature: &[u8]) -> Vec<u8> {
++    let mut req = Vec::with_capacity(5 + signature.len());
++    req.push(0x42);
++    req.push(partition);
++    req.push(0);
++    req.extend_from_slice(&(signature.len() as u16).to_le_bytes());
++    req.extend_from_slice(signature);
++    req
++}
++
++impl<T: Transport> SensorSession<T> {
++    /// Read a 32-bit hardware register.
++    pub fn read_hw_reg32(&mut self, addr: u32) -> Result<u32> {
++        let payload = self.execute_cmd(&hw_reg_read_request(addr), 8)?;
++        if payload.len() < 4 {
++            return Err(DriverError::ShortResponse {
++                context: "read_hw_reg32 response",
++                expected: 4,
++                actual: payload.len(),
++            });
++        }
++        Ok(u32::from_le_bytes([payload[0], payload[1], payload[2], payload[3]]))
++    }
++
++    /// Write a 32-bit hardware register.
++    pub fn write_hw_reg32(&mut self, addr: u32, value: u32) -> Result<()> {
++        let _ = self.execute_cmd(&hw_reg_write_request(addr, value), 8)?;
++        Ok(())
++    }
++
++    /// Write one `0x41` flash chunk, bracketed by `db_write_enable` and the
++    /// `0x1a` cleanup exactly as python-validity's `flash.write_flash` does.
++    pub fn write_flash_chunk(&mut self, partition: u8, addr: u32, buf: &[u8]) -> Result<()> {
++        self.db_write_enable()?;
++        let write = (|| {
++            let _ = self.execute_cmd(&flash_write_request(partition, addr, buf), 8)?;
++            Ok::<(), DriverError>(())
++        })();
++        // Always release the write lock, even if the write failed.
++        let cleanup = self.db_call_cleanups();
++        write.and(cleanup)
++    }
++
++    /// Write the 256-byte firmware signature.
++    pub fn write_fw_signature(&mut self, partition: u8, signature: &[u8]) -> Result<()> {
++        let _ = self.execute_cmd(&fw_signature_request(partition, signature), 8)?;
++        Ok(())
++    }
++
++    /// Whether a firmware extension is loaded on the sensor (flash partition 2),
++    /// i.e. whether `0x43 0x02` (`GetFwextInfo`) returns an OK status.
++    pub fn fwext_present(&mut self) -> Result<bool> {
++        let raw = self.execute_raw(&[WireOpcode::GetFwextInfo as u8, 0x02], 0xf0)?;
++        if raw.len() < 2 {
++            return Ok(false);
++        }
++        Ok(u16::from_le_bytes([raw[0], raw[1]]) == 0)
++    }
++
++    /// Split an `.xpfwext` file into (image, trailing 256-byte signature),
++    /// discarding everything up to and including the first `0x1a` byte.
++    pub fn split_fwext(file: &[u8]) -> Result<(&[u8], &[u8])> {
++        let marker = file
++            .iter()
++            .position(|&b| b == 0x1a)
++            .ok_or_else(|| DriverError::Protocol("No 0x1a marker in firmware file".into()))?;
++        let body = &file[marker + 1..];
++        if body.len() <= SIGNATURE_LEN {
++            return Err(DriverError::Protocol(format!(
++                "Firmware payload too small after marker: {} bytes",
++                body.len()
++            )));
++        }
++        Ok(body.split_at(body.len() - SIGNATURE_LEN))
++    }
++
++    /// Upload a firmware extension to flash partition 2. Returns the number of
++    /// image bytes written (excluding the signature). Does NOT reboot — the
++    /// caller must, so the sensor picks up the new extension.
++    pub fn upload_fwext(&mut self, file: &[u8]) -> Result<usize> {
++        let (image, signature) = Self::split_fwext(file)?;
++
++        self.write_hw_reg32(HW_REG_MODE_SET, 7)?;
++        let mode = self.read_hw_reg32(HW_REG_MODE_GET)?;
++        if mode != 2 && mode != 3 {
++            return Err(DriverError::Protocol(format!(
++                "Unexpected hw register 0x{HW_REG_MODE_GET:08x} = {mode} (expected 2 or 3); \
++                 refusing to write flash"
++            )));
++        }
++
++        let mut addr = 0u32;
++        for chunk in image.chunks(FLASH_CHUNK) {
++            self.write_flash_chunk(PART_FWEXT, addr, chunk)?;
++            addr += chunk.len() as u32;
++        }
++        self.write_fw_signature(PART_FWEXT, signature)?;
++        Ok(image.len())
++    }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    use crate::usb::SynapticsUsbTransport;
++    use crate::SensorSession;
++
++    fn hex(s: &str) -> Vec<u8> {
++        (0..s.len())
++            .step_by(2)
++            .map(|i| u8::from_str_radix(&s[i..i + 2], 16).unwrap())
++            .collect()
++    }
++
++    // Expected bytes are python-validity's own `struct.pack` output.
++    #[test]
++    fn request_layouts_match_python_validity() {
++        assert_eq!(hw_reg_read_request(0x8000_2080), hex("078020008004"));
++        assert_eq!(hw_reg_write_request(0x8000_205c, 7), hex("085c2000800700000004"));
++        assert_eq!(
++            flash_write_request(2, 0x1000, &[0u8; 0x1000])[..13].to_vec(),
++            hex("41020100000010000000100000")
++        );
++        assert_eq!(
++            flash_write_request(2, 0, &[0u8; 16])[..13].to_vec(),
++            hex("41020100000000000010000000")
++        );
++        assert_eq!(fw_signature_request(2, &[0u8; 256])[..5].to_vec(), hex("4202000001"));
++    }
++
++    #[test]
++    fn flash_write_request_appends_payload() {
++        let req = flash_write_request(2, 0, &[0xaa, 0xbb]);
++        assert_eq!(req.len(), 13 + 2);
++        assert_eq!(&req[13..], &[0xaa, 0xbb]);
++    }
++
++    #[test]
++    fn split_fwext_matches_reference_offsets() {
++        // 2 bytes of preamble, the 0x1a marker, then 300 bytes of payload.
++        let mut file = vec![0u8; 2];
++        file.push(0x1a);
++        file.extend_from_slice(&[1u8; 300]);
++        let (image, sig) = SensorSession::<SynapticsUsbTransport>::split_fwext(&file).unwrap();
++        assert_eq!(image.len(), 300 - 256);
++        assert_eq!(sig.len(), 256);
++        assert!(image.iter().all(|&b| b == 1));
++    }
++
++    #[test]
++    fn split_fwext_rejects_missing_marker() {
++        let file = vec![0u8; 1000];
++        assert!(SensorSession::<SynapticsUsbTransport>::split_fwext(&file).is_err());
++    }
++}
+diff --git a/src/lib.rs b/src/lib.rs
+index 21ffd97..4122059 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -24,6 +24,7 @@ pub mod calibration;
+ pub mod capture;
+ pub mod db2;
+ pub mod error;
++pub mod fwext;
+ pub mod log;
+ pub mod moc;
+ pub mod protocol;
+diff --git a/src/protocol.rs b/src/protocol.rs
+index dc7c87f..c2b1165 100644
+--- a/src/protocol.rs
++++ b/src/protocol.rs
+@@ -350,6 +350,29 @@ const INIT_HARDCODED_009A: [u8; 581] = decode_hex_const(concat!(
+     "2999d1c0e7acf67e598696cd58cc4bdb1b7c037ee9a085f784c4"
+ ));
+ 
++/// 741-byte "clean slate" initialization security blob (`0x06 0x02 ...`) for `06cb:009a`,
++/// decoded at compile time. Sent in addition to [`INIT_HARDCODED_009A`] when the sensor
++/// reports a non-zero fwext status (no firmware extension loaded). Matches
++/// python-validity's `init_hardcoded_clean_slate`.
++const INIT_HARDCODED_CLEAN_SLATE_009A: [u8; 741] = decode_hex_const(concat!(
++    "06020000012c40c9d271378bc0912ef5dced69bd81b7fc16972c7b46e621af54a00e2cc6baca6eb83ea30222dfc6c925",
++    "262006ae93412eacf482f2034ee7b13297474b7e1e91f279cac2ccb7195443e4dd3328cfd292ade073fcc2eaa8f07b77",
++    "231130ba997f921b9be7b4fb6cc6910d2976b3e050913b27dbe73afd6e964260b9435ebab5117e71f7cb68464d4b6f8a",
++    "fc7e1a421f671f5854a1d0c8ab93ed3b88b2bc1a42875e40b15f0e78496ac40e4a4a7fd39a97534ce1866479e0384f07",
++    "89bbfc2fea0ce982bf7a9df97d60b237edbe1b26c9791043a96b81e435d6de5971c758d374905df95b0cddabfbf53174",
++    "9ba191f07a6f5e2722852f137a53513a9ec6ab30c3f09aa6ce21b391e55cf81dcda6422011bf163317a9a4382546141d",
++    "45f2274bd660103bd3af705f3ed12e493bc4f834d5d7f162e2c3405cf857b00129789a3353bf7fab7796e267e3062d55",
++    "660dbbb857911ac8e871c460dd31c56a86a5631475f0f2ee5e9ce2af0faec0931a640ba2394025f29ffeca3a7e99c15a",
++    "78ce1f1f7808cedd7601b9b6382d72ca873257d4f6af70e29e22afea15e36e0282b8f0bfc68ffa3417d212b8bbe11bb7",
++    "3b363a19872e6e947d45de30fbc493ca083a0a4650615d8628606362081ca6df5d67527971d1776ad76a7a28c932f031",
++    "7b59cb4a82a14b2bcb7b01fb662be1496d24d919140ec80068b21a818daa2fb8e05f63edbd4bd5797c74a28b3e7cf81c",
++    "9045248584977711341fca3f08ba91ff853b62dc24ce4bba4ed57f47bd458545d805b6bb14fe0cde01440b60bf7be937",
++    "f6444a8e2a10ed8fa9ddb8604bb95fe411b97112e78dbf5a4a0f004669c93765a9f38665cb55f5658895c1c06a7aedf6",
++    "94bfb3afa9b8b1dea5ab85c821ac20b0663b95023642fda36ad78e3e00140b966f404f7e55f0b416ea43b4c74c399008",
++    "30abc6906a1004bef1b5b7dbbbeb5ec1b22604ac86429b9f56511b746a7124c449b8c9498f49144abc2d64f6a114f1d7",
++    "f91aa41249faeef4d838e280cb5d6fc19cfe86c75f"
++));
++
+ impl<T: Transport> SensorSession<T> {
+     /// Create a new unencrypted [`SensorSession`] wrapping `transport`.
+     ///
+@@ -521,12 +544,34 @@ impl<T: Transport> SensorSession<T> {
+         drv_debug!("Init step 2/4: Querying SensorConfig (0x19)");
+         let _ = self.get_config()?;
+ 
+-        drv_debug!("Init step 3/4: Querying Partition 2 FwextInfo (0x43 0x02)");
+-        let _ = self.execute_cmd(&[WireOpcode::GetFwextInfo as u8, 0x02], 0xf0);
+-
+-        drv_debug!("Init step 4/4: Sending Metallica security init blob (0x06 0x02)");
++        drv_debug!("Init step 3/5: Querying Partition 2 FwextInfo (0x43 0x02)");
++        // A non-zero status here is not fatal: it means no firmware extension
++        // (fwext) is loaded, which is the "clean slate" case. Read the status
++        // word directly with execute_raw rather than execute_cmd, which would
++        // turn the non-zero status into an error.
++        let fwext_status = self
++            .execute_raw(&[WireOpcode::GetFwextInfo as u8, 0x02], 0xf0)
++            .ok()
++            .and_then(|r| {
++                (r.len() >= 2).then(|| u16::from_le_bytes([r[0], r[1]]))
++            })
++            .unwrap_or(0);
++
++        drv_debug!("Init step 4/5: Sending Metallica security init blob (0x06 0x02)");
+         let _ = self.execute_cmd(&INIT_HARDCODED_009A, 64)?;
+ 
++        // Without a firmware extension the generic init blob is not enough:
++        // the sensor accepts the TLS session but fault-resets on the first
++        // capture program (e.g. the calibration AcqStart) unless the clean-slate
++        // init blob is also sent first. This mirrors python-validity's
++        // send_init(), which sends init_hardcoded_clean_slate when fwext != 0.
++        if fwext_status != 0 {
++            drv_debug!(
++                "Init step 5/5: no firmware extension (fwext status 0x{fwext_status:04x}); sending clean-slate init blob"
++            );
++            let _ = self.execute_cmd(&INIT_HARDCODED_CLEAN_SLATE_009A, 64)?;
++        }
++
+         Ok(version)
+     }
+ 
+diff --git a/src/usb.rs b/src/usb.rs
+index 9b3c6c5..6d83bf0 100644
+--- a/src/usb.rs
++++ b/src/usb.rs
+@@ -224,16 +224,28 @@ impl Transport for SynapticsUsbTransport {
+             request.len()
+         );
+ 
+-        let written = self
+-            .handle
+-            .write_bulk(EP_CMD_OUT, request, self.timeout)
+-            .map_err(|e| {
+-                drv_error!(
+-                    "USB Bulk OUT error on EP 0x{EP_CMD_OUT:02x} (len={} B, cmd=0x{opcode:02x}): {e}",
+-                    request.len()
+-                );
+-                DriverError::Usb(e)
+-            })?;
++        // Send large commands in bounded chunks. The sensor's firmware resets when a
++        // single bulk OUT exceeds ~4 KB on this firmware (06cb:009a FW 6.07.0164), so
++        // split the TLS record into smaller transfers while keeping the byte stream
++        // contiguous. USB bulk transfers are stream-like; the device reassembles them.
++        const WRITE_CHUNK: usize = 4096;
++        let mut written = 0usize;
++        for chunk in request.chunks(WRITE_CHUNK) {
++            let n = self
++                .handle
++                .write_bulk(EP_CMD_OUT, chunk, self.timeout)
++                .map_err(|e| {
++                    drv_error!(
++                        "USB Bulk OUT error on EP 0x{EP_CMD_OUT:02x} (len={} B, cmd=0x{opcode:02x}): {e}",
++                        request.len()
++                    );
++                    DriverError::Usb(e)
++                })?;
++            written += n;
++            if n != chunk.len() {
++                break;
++            }
++        }
+ 
+         if written != request.len() {
+             drv_warn!(

@@ -1,0 +1,5 @@
+# Keep the Synaptics 06cb:009a (Metallica MIS Touch) fingerprint reader powered.
+# Default USB autosuspend (power/control=auto, ~2 s) lets the sensor fall off the
+# bus the instant a capture starts, so enrolment/verification fail with
+# "No such device (it may have been disconnected)" until it re-enumerates.
+ACTION=="add|change", SUBSYSTEM=="usb", ATTR{idVendor}=="06cb", ATTR{idProduct}=="009a", ATTR{power/control}="on", ATTR{power/persist}="1"
