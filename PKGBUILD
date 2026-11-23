@@ -2,18 +2,18 @@
 pkgbase=wireview-hwmon
 pkgname=('wireview-hwmon' 'wireview-hwmon-dkms')
 # Must match the top-level VERSION file ("make check-version").
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="WireView Pro II hwmon daemon, CLI and DKMS kernel module"
 arch=('x86_64')
 url="https://github.com/emaspa/wireview-hwmon"
-license=('GPL-2.0-only')
+license=('GPL-3.0-or-later' 'GPL-2.0-only')
 makedepends=('gcc')
 options=('!debug')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgbase.sysusers"
         "$pkgbase.tmpfiles")
-sha256sums=('7a227dcd91bfabcc14a35dfdccc5ae03fea18a9c0a6119268ab797b6cbd1be27'
+sha256sums=('8d2ed775c351eee47cf073508aa9e7633b12f3005aecba51a220c7550f0f3aea'
             'dec7ef8e8cc0bcfb7a692a0484b9df3fbd8909f89ee63658f1c3f77ab20d7660'
             '01ca092a9409307d362c4edbe4421d21837b02f7de443cc34c053284952407cf')
 
@@ -26,6 +26,7 @@ build() {
 
 package_wireview-hwmon() {
   pkgdesc="WireView Pro II hwmon daemon and CLI (userspace)"
+  license=('GPL-3.0-or-later')
   depends=('glibc')
   # 1.7.0 shipped the firmware image in a package of its own
   replaces=('wireview-hwmon-firmware')
@@ -69,6 +70,7 @@ package_wireview-hwmon() {
 
 package_wireview-hwmon-dkms() {
   pkgdesc="WireView Pro II hwmon kernel module (DKMS)"
+  license=('GPL-2.0-only')
   depends=('dkms')
   cd "$pkgbase-$pkgver"
   # DKMS module source. The dkms pacman hooks build/install it on the host.
