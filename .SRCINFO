@@ -1,0 +1,15 @@
+pkgbase = r-drat
+	pkgdesc = 'Drat' R Archive Template
+	pkgver = 0.2.5
+	pkgrel = 2
+	url = https://cran.r-project.org/package=drat
+	arch = any
+	license = GPL-2.0-or-later
+	depends = r
+	optdepends = r-git2r
+	optdepends = r-simplermarkdown
+	source = https://cran.r-project.org/src/contrib/drat_0.2.5.tar.gz
+	md5sums = 76f35412953cc74e81e4279821860bde
+	b2sums = 441494f6f3d506c5146f501bfd4ab16b0fc0369a81aab62919f0bf1b07b3909b80bdc086e33b3087d29f12d526e8be17d3b393cc604077321112a669a04626be
+
+pkgname = r-drat
