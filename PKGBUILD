@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ANCOMBC
-_pkgver=2.12.0
+_pkgver=2.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,7 +11,6 @@ arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
 depends=(
-  r-cvxr
   r-desctools
   r-doparallel
   r-dorng
@@ -23,6 +22,7 @@ depends=(
   r-lmertest
   r-multcomp
   r-nloptr
+  r-quadprog
   r-rdpack
 )
 checkdepends=(
@@ -47,8 +47,8 @@ optdepends=(
   r-treesummarizedexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('510fcf30fb4105da098313d20bc57266')
-b2sums=('358860e57376816b9c8b323d43e194c64a99fba425ce3d20275fde66fa2f50a44290ae4a01aba1cfb03a7e37a799ab7f10df41a461d4933da3c628453a2cebba')
+md5sums=('53eb2ddca4dff9679ddd52ed31ae1f4d')
+b2sums=('f6b302fa7d0105ff80afcd9f14922d11aca10d36db7388a5c545ac7e9e230e3bbd9047d6ae1ad77faf34e9debe6c54c8dcee4d498bf857239c4f753c13dbb0f3')
 
 build() {
   mkdir build
