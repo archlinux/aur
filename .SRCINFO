@@ -1,6 +1,6 @@
 pkgbase = r-beclear
 	pkgdesc = Correction of batch effects in DNA methylation data
-	pkgver = 2.26.0
+	pkgver = 2.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BEclear
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = r-beclear
 	depends = r-biocparallel
 	depends = r-data.table
 	depends = r-dixontest
-	depends = r-futile.logger
 	depends = r-ids
+	depends = r-logger
 	depends = r-rcpp
 	depends = r-rdpack
 	optdepends = r-biocstyle
@@ -21,7 +21,7 @@ pkgbase = r-beclear
 	optdepends = r-rmarkdown
 	optdepends = r-seewave
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BEclear_2.26.0.tar.gz
-	sha256sums = c128bcaa7e179af3bc1e7f34e08f4f889cbf39c04140f91a196bf495fd870323
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BEclear_2.28.0.tar.gz
+	sha256sums = d3eecd22316626ebd039d345508bd8d12a944093f2558e17a898e57a7e0d4a02
 
 pkgname = r-beclear
