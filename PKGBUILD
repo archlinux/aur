@@ -4,7 +4,7 @@
 # copy of this file and its .SRCINFO (makepkg --printsrcinfo > .SRCINFO).
 
 pkgname=pila-git
-pkgver=0.9.0.r800.gfd5e115
+pkgver=0.9.1.r810.gbf9bcee
 pkgrel=1
 pkgdesc='A stacking Wayland compositor built on Smithay'
 arch=(x86_64 aarch64)
@@ -35,7 +35,6 @@ optdepends=(
     'xorg-xwayland: X11 apps (games, older programs)'
     'xdg-desktop-portal: screen sharing (Pila serves its own backend) and other portals'
     'pipewire: screen sharing'
-    'xdg-desktop-portal-wlr: screenshots through the portal'
     'xdg-desktop-portal-gtk: file chooser and other portals'
     'xdg-utils: opening links and files from programs such as kitty (xdg-open)'
 )
@@ -43,7 +42,6 @@ provides=(pila)
 conflicts=(pila)
 backup=(
     etc/xdg/xdg-desktop-portal/pila-portals.conf
-    etc/xdg/xdg-desktop-portal-wlr/pila
 )
 # Not stripped: a crash is logged with a backtrace (`main::log_panics`), whose
 # frames need the function names (about 9 MB of 26).
