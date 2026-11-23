@@ -1,6 +1,6 @@
 pkgbase = kiro-crew-bin
 	pkgdesc = A persistent workspace for development work that self-improves and continues beyond one session
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://kiro.dev/crew
 	arch = aarch64
@@ -37,9 +37,9 @@ pkgbase = kiro-crew-bin
 	conflicts = kiro-crew
 	options = !strip
 	options = !debug
-	source_aarch64 = kiro-crew-bin-0.13.0-aarch64.AppImage::https://github.com/kirodotdev/KiroCrew/releases/download/v0.13.0/KiroCrew-0.13.0-arm64.AppImage
-	b2sums_aarch64 = 6c6d1d3208a2b12eeee59b548290d54a83fc095454054433f384ab33ae57e5a3700257e1479419907c2757fffa21b16859151ab9f0080a8f5a97cb8610219e01
-	source_x86_64 = kiro-crew-bin-0.13.0-x86_64.AppImage::https://github.com/kirodotdev/KiroCrew/releases/download/v0.13.0/KiroCrew-0.13.0-x86_64.AppImage
-	b2sums_x86_64 = bcf80955c7add3406f53af150140641d5a84ab6ffef335dae75f2700381c761d2e3c8e35cb06ea526a04f060247e4371f11b478a9b9978d6d6b74e7132ae4f04
+	source_aarch64 = kiro-crew-bin-0.13.1-aarch64.AppImage::https://github.com/kirodotdev/KiroCrew/releases/download/v0.13.1/KiroCrew-0.13.1-arm64.AppImage
+	b2sums_aarch64 = 9aae0e9b585cb9fcaf79c51909125674630e49c976a3bd561def02f21267c462e9ebf17680b627130cb1aaa375fac84ad50aa1a9e50761c2fa5d2325fac8d6ed
+	source_x86_64 = kiro-crew-bin-0.13.1-x86_64.AppImage::https://github.com/kirodotdev/KiroCrew/releases/download/v0.13.1/KiroCrew-0.13.1-x86_64.AppImage
+	b2sums_x86_64 = 8a2cfc66a2c39278cd86cb9acf0ddbb0623364af75456bae6e7147a7dcd3d0322c35d2c94e3e3e230f9c735a459057111eaed34df57c669b40776a99d02b8c51
 
 pkgname = kiro-crew-bin
