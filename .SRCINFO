@@ -1,6 +1,6 @@
 pkgbase = agent-glovebox
 	pkgdesc = Hardware-isolated, firewalled microVM sandbox for AI agent evals and coding
-	pkgver = 0.109.0
+	pkgver = 0.110.0
 	pkgrel = 1
 	url = https://github.com/AlexanderMattTurner/agent-glovebox
 	install = agent-glovebox.install
@@ -16,7 +16,7 @@ pkgbase = agent-glovebox
 	optdepends = docker-buildx: the build plugin that local sandbox image build runs through
 	optdepends = nodejs: runtime backing pnpm and the in-image install
 	optdepends = npm: package manager backing the in-image install
-	source = agent-glovebox-0.109.0.tar.gz::https://github.com/AlexanderMattTurner/agent-glovebox/releases/download/v0.109.0/agent-glovebox-0.109.0.tar.gz
-	sha256sums = 9991408e6b9201e16a67ec88164322107638a19daa61268d44759fc7942775b2
+	source = agent-glovebox-0.110.0.tar.gz::https://github.com/AlexanderMattTurner/agent-glovebox/releases/download/v0.110.0/agent-glovebox-0.110.0.tar.gz
+	sha256sums = ddd4ac7c799083cf1e567e2ff44b3127b9d40c73d953b8b27923cdf12ec206a2
 
 pkgname = agent-glovebox
