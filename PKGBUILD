@@ -1,14 +1,14 @@
 # Maintainer: Alexandre Leconte <aleconte@dwightstudio.fr>
 pkgname=jarmemu
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple ARMv7 simulator written in Java, intended for educational purpose"
 arch=('any')
 url="https://dwightstudio.fr/jarmemu"
 license=('GPL-3')
 groups=()
 depends=("java-runtime>=21")
-makedepends=()
+makedepends=("desktop-file-utils")
 optdepends=()
 provides=()
 conflicts=()
