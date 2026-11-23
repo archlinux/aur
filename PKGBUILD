@@ -1,30 +1,38 @@
-# Contributor: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Jon Nordby <jononor@gmail.com>
 
 pkgname=libwebp-git
-pkgver=1.0.0.r17.gf9df0081a
-pkgrel=1
+pkgver=1.6.0.r334.g68dd1c304
+pkgrel=2
 pkgdesc="WebP library and conversion tools"
 arch=(x86_64 i686)
 url="https://developers.google.com/speed/webp/"
-license=(BSD)
-depends=(libpng libjpeg libtiff giflib)
-makedepends=('git')
-conflicts=('libwebp')
-provides=('libwebp')
-source=("${pkgname}::git+https://chromium.googlesource.com/webm/libwebp")
+license=(BSD-3-Clause)
+depends=(
+    freeglut
+    giflib
+    glibc
+    libglvnd
+    libjpeg-turbo
+    libpng
+    libtiff
+    )
+makedepends=(git)
+conflicts=(libwebp)
+provides=(libwebp)
+source=("libwebp-chromium::git+https://chromium.googlesource.com/webm/libwebp")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd libwebp-chromium
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${pkgname}
+  cd libwebp-chromium
 
   ./autogen.sh 
   ./configure --prefix=/usr \
@@ -40,8 +48,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}
-
+  cd libwebp-chromium
   make DESTDIR="$pkgdir/" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }

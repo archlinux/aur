@@ -1,20 +1,22 @@
 pkgbase = libwebp-git
 	pkgdesc = WebP library and conversion tools
-	pkgver = 1.0.0.r17.gf9df0081a
-	pkgrel = 1
+	pkgver = 1.6.0.r334.g68dd1c304
+	pkgrel = 2
 	url = https://developers.google.com/speed/webp/
 	arch = x86_64
 	arch = i686
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
-	depends = libpng
-	depends = libjpeg
-	depends = libtiff
+	depends = freeglut
 	depends = giflib
+	depends = glibc
+	depends = libglvnd
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libtiff
 	provides = libwebp
 	conflicts = libwebp
-	source = libwebp-git::git+https://chromium.googlesource.com/webm/libwebp
+	source = libwebp-chromium::git+https://chromium.googlesource.com/webm/libwebp
 	sha256sums = SKIP
 
 pkgname = libwebp-git
-
