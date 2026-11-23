@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=modelharbor-bin
 _pkgname=ModelHarbor
-pkgver=1.7.0
+pkgver=1.7.4
 _electronversion=45
 pkgrel=1
 pkgdesc="Lokale KI-Chatmodelle mit einem Klick: Hardware-Erkennung, llama.cpp-Backends (CUDA/ROCm/Vulkan/Metal/SYCL/CPU), HuggingFace-Downloads, vier Presets."
@@ -19,7 +19,7 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('4232acb5755860dbcad7f3090d30bd1f61772c3be263232de537bb3166c2b999'
+sha256sums=('f0034f5cdbad4d627559619bc5692dc26fcd228461523f6ee4bbf4fbf6fe66be'
             'e167ae19419045aef48ea5eb6ec5685e7410b8f5fca2c8772533790391f79d90'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
