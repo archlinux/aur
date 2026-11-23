@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDRimport
-_pkgver=1.6.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,6 +21,7 @@ depends=(
   r-multiassayexperiment
   r-openxlsx
   r-pharmacogx
+  r-qs2
   r-readxl
   r-rio
   r-s4vectors
@@ -31,7 +32,6 @@ depends=(
   r-yaml
 )
 checkdepends=(
-  r-qs
   r-testthat
 )
 optdepends=(
@@ -40,12 +40,11 @@ optdepends=(
   r-gdrtestdata
   r-knitr
   r-purrr
-  r-qs
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('41d154f693ba371239b248a591d0601e')
-b2sums=('a57658e04158fe8d0e97f42744cda1fe06abf0d093d695d6f2b012d24aafdbafd7c115ce6336f8a2f7649d84dd8145ac5f6e4f314a82c097d40d8ca03e1bb002')
+md5sums=('4e0ffcc86650277b520974df909d4362')
+b2sums=('c4f0907fdcdf1853c4c278834d0d6ca6f4262cfa8e4414d774c2706a0984a61e43dc4ccc1b1e1c6dc9248085437c769ff22c0cddd8249cf18af67158aa162498')
 
 build() {
   mkdir build
