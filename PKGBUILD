@@ -10,7 +10,7 @@
 
 pkgname=morgan-git
 _nombre=morgan
-pkgver=0.3.2.r0.g0000000
+pkgver=0.3.3.r0.g0000000
 pkgrel=1
 pkgdesc='Shell de escritorio para Hyprland: barra, centro de control, notificaciones, launcher, OSD y bloqueo'
 arch=('x86_64' 'aarch64')
