@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-diffpy.structure
 pkgshort=diffpy.structure
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Storage and manipulation of crystal structure data in python"
 arch=('any')
@@ -37,4 +37,4 @@ package() {
   install -Dm644 LICENSE.rst -t "$pkgdir"/usr/share/licenses/$pkgname
 }
 
-sha256sums=('a46159361fd9ba9ce743f177532b217ffe65dbe198a231e2a092bd6e78454fb9')
+sha256sums=('e264cde68b16cf743a2509c71e08b2e5aaf666b2f6fcba520ac47121ae667fb7')
