@@ -2,13 +2,13 @@
 
 _pkgname=kiauto
 pkgname=kiauto-git
-pkgver=891.f489865
+pkgver=998.e2864e3
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="KiCad automation scripts."
 url="https://github.com/INTI-CMNB/KiAuto"
-license=('Apache2.0')
-depends=( 'python' 'kicad' 'xdotool' 'xclip' 'libxslt' 'python-xvfbwrapper')
+license=('Apache-2.0')
+depends=('python' 'kicad' 'xdotool' 'xclip' 'libxslt' 'python-xvfbwrapper' 'python-psutil')
 makedepends=('git' 'python-setuptools')
 source=("${_pkgname}::git+https://github.com/INTI-CMNB/KiAuto")
 md5sums=('SKIP')
