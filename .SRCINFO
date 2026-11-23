@@ -1,14 +1,14 @@
 pkgbase = lib32-libtirpc
 	pkgdesc = Transport Independent RPC library (SunRPC replacement)
 	pkgver = 1.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.linux-nfs.org/?p=steved/libtirpc.git;a=summary
 	arch = x86_64
 	license = SISSL
 	license = BSD-3-Clause
-	depends = krb5
-	depends = glibc
-	depends = libtirpc>=1.3.8
+	depends = lib32-krb5
+	depends = lib32-glibc
+	depends = lib32-e2fsprogs
 	depends = libtirpc>=1.3.8
 	source = https://downloads.sourceforge.net/sourceforge/libtirpc/libtirpc-1.3.8.tar.bz2
 	sha1sums = fe35ce7e81ccfa974c74ced9ac725207af9fa318

@@ -10,13 +10,14 @@
 set -u
 pkgname=libtirpc
 pkgver=1.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Transport Independent RPC library (SunRPC replacement)"
 arch=('x86_64')
 url="https://git.linux-nfs.org/?p=steved/libtirpc.git;a=summary"
 license=('SISSL' 'BSD-3-Clause')
 depends=('krb5' 'glibc')
-depends+=("${pkgname}>=${pkgver%%.r*}")
+depends+=('e2fsprogs')
+depends=("${depends[@]/#/lib32-}")
 depends+=("libtirpc>=${pkgver%%.r*}")
 # git tree: git://linux-nfs.org/~steved/libtirpc
 _srcdir="${pkgname}-${pkgver%%.r*}"
