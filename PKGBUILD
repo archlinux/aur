@@ -2,7 +2,7 @@
 
 _pkgname=python-libpulse
 pkgname="${_pkgname}-git"
-pkgver=0.7.1.r59.20260617.cc042b0
+pkgver=0.7.1+6.r65.20261118.203b7d9
 pkgrel=1
 pkgdesc="Asyncio interface to the Pulseaudio and Pipewire pulse library."
 arch=(
