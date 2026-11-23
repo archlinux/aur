@@ -2,11 +2,11 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatialHeatmap
-_pkgver=2.10.2
+_pkgver=2.18.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Creating spatial heatmaps from R and Shiny"
+pkgdesc='Visualizing Spatial Assays in Anatomical Images and Large-Scale Data Extensions'
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
@@ -17,16 +17,12 @@ depends=(
   r-genefilter
   r-ggplot2
   r-ggplotify
-  r-gplots
   r-gridextra
   r-grimport
   r-igraph
   r-reshape2
   r-rsvg
   r-s4vectors
-  r-scater
-  r-scran
-  r-scuttle
   r-shiny
   r-shinydashboard
   r-singlecellexperiment
@@ -53,7 +49,9 @@ optdepends=(
   r-biocparallel
   r-biocsingular
   r-biocstyle
+  r-bluster
   r-cachem
+  r-delayedarray
   r-dendextend
   r-deseq2
   r-dt
@@ -65,6 +63,7 @@ optdepends=(
   r-hdf5array
   r-htmltools
   r-htmlwidgets
+  r-jsonlite
   r-kableextra
   r-knitr
   r-limma
@@ -80,9 +79,9 @@ optdepends=(
   r-rappdirs
   r-rhdf5
   r-rmarkdown
-  r-rols
   r-rtsne
   r-runit
+  r-scrapper
   r-seurat
   r-shinybs
   r-shinyjs
@@ -96,10 +95,12 @@ optdepends=(
   r-wgcna
   r-xlsx
   r-yaml
+  r-gplots
+  r-scater
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4b23dab35de4ffbebd99e27b327de846')
-b2sums=('5e32432ed03b0b92de0ef6ef5d215696c99503c85a46917d34f89ef19d53269768ebdadc7be00e6e931ad5c6df2f1f8dda1bd12f76ece4231e2c98b621b47ac2')
+md5sums=('b3f1d49c2c3b32704f7f7d9ac5b01342')
+b2sums=('92601c5f6fbd617dab5a1401c5096c8f1101727c80df30d36dec09c6568e32a2450d2ca28cbe9a6374d48a2ba081de86a0340c8ebd5fec67a1b7b210fad92edd')
 
 build() {
   mkdir build
