@@ -1,0 +1,24 @@
+pkgbase = r-sched
+	pkgdesc = Request Scheduler
+	pkgver = 1.0.3
+	pkgrel = 2
+	url = https://cran.r-project.org/package=sched
+	arch = any
+	license = AGPL-3.0-only
+	depends = r-chk
+	depends = r-fscache
+	depends = r-lgr
+	depends = r-openssl
+	depends = r-r6
+	depends = r-rcurl
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-lintr
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/sched_1.0.3.tar.gz
+	md5sums = 12c143de647554440a0978bc9322d342
+	b2sums = 37a7c90b6c7d1e9a0eedee988384e358c974deef2330ff537ce23779f46cf0c80519aacdd70eb5283be2d95ae616964a589d26da6461748fa59dd9b4d2575797
+
+pkgname = r-sched
