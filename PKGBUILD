@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mogan-bin
 _pkgname='Mogan STEM'
-pkgver=2026.3.9
+pkgver=2026.3.11
 pkgrel=1
 pkgdesc="Mogan STEM Suite (based on GNU TeXmacs): Enjoy exploring science and technology!"
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-stem-v${pkgver}-debian13-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9d0feeb0c678a1b9de443e71f4f8b455063399cdd492497c4577a3c569556c5f'
+sha256sums=('6359dc7227434f4aa90323de9fc31a582cd61be69bd962420f61ad6e54e2b87b'
             '0995ecbfb6b721d08c61ff98c05501e4f74a5cee57c2c9a3864d0c7171ea2e82')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest

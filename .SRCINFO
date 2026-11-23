@@ -1,6 +1,6 @@
 pkgbase = mogan-bin
 	pkgdesc = Mogan STEM Suite (based on GNU TeXmacs): Enjoy exploring science and technology!
-	pkgver = 2026.3.9
+	pkgver = 2026.3.11
 	pkgrel = 1
 	url = https://mogan.app/
 	arch = x86_64
@@ -18,12 +18,12 @@ pkgbase = mogan-bin
 	depends = libxkbcommon
 	depends = fcitx5-qt
 	depends = hicolor-icon-theme
-	provides = mogan=2026.3.9
+	provides = mogan=2026.3.11
 	conflicts = mogan
 	options = !strip
-	source = mogan-2026.3.9.deb::https://github.com/XmacsLabs/mogan/releases/download/v2026.3.9/mogan-stem-v2026.3.9-debian13-amd64.deb
+	source = mogan-2026.3.11.deb::https://github.com/XmacsLabs/mogan/releases/download/v2026.3.11/mogan-stem-v2026.3.11-debian13-amd64.deb
 	source = mogan.sh
-	sha256sums = 9d0feeb0c678a1b9de443e71f4f8b455063399cdd492497c4577a3c569556c5f
+	sha256sums = 6359dc7227434f4aa90323de9fc31a582cd61be69bd962420f61ad6e54e2b87b
 	sha256sums = 0995ecbfb6b721d08c61ff98c05501e4f74a5cee57c2c9a3864d0c7171ea2e82
 
 pkgname = mogan-bin
