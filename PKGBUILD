@@ -3,7 +3,7 @@
 pkgname=ante-bin
 pkgver=0.3.8
 pkgrel=1
-pkgdesc="Ante CLI (prebuilt static binary from the official release)"
+pkgdesc="Ante — A self-contained coding agent."
 arch=('x86_64' 'aarch64')
 url="https://ante.run"
 license=('LicenseRef-ante-binary-preview')
