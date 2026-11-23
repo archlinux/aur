@@ -1,0 +1,17 @@
+pkgbase = cargo-thesaurust
+	pkgdesc = A terminal-based dictionary app
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/quietpigeon/cargo-thesaurust
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	options = !lto
+	source = cargo-thesaurust-0.1.2.tar.gz::https://github.com/quietpigeon/cargo-thesaurust/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 10d33985c94ddb1ebb550681a1849e5619ada83fb46e6867ad3c687270d50645
+
+pkgname = cargo-thesaurust
