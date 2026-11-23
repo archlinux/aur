@@ -5,11 +5,13 @@
 _name=runawk
 pkgname="${_name}-git"
 pkgver=1.7.0.r1.f2755d4
-pkgrel=1
+pkgrel=2
 pkgdesc="AWK wrapper that provides support for modules"
 arch=('i686' 'x86_64')
 url="https://github.com/cheusov/${_name}"
 license=('MIT')
+provides=("${_name}")
+conflicts=("${_name}")
 depends=('bash')
 makedepends=('git' 'bmake' 'mk-configure')
 
@@ -37,7 +39,7 @@ build() {
   export PREFIX=/usr SYSCONFDIR=/etc MANDIR=/usr/share/man
   export SUBPRJ_DFLT='runawk modules examples a_getopt doc'
   
-  LC_ALL=C mkcmake all
+  mkcmake all
 }
 
 check() {

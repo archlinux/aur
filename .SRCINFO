@@ -1,7 +1,7 @@
 pkgbase = runawk-git
 	pkgdesc = AWK wrapper that provides support for modules
 	pkgver = 1.7.0.r1.f2755d4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cheusov/runawk
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = runawk-git
 	makedepends = bmake
 	makedepends = mk-configure
 	depends = bash
+	provides = runawk
+	conflicts = runawk
 	source = runawk::git+https://github.com/cheusov/runawk.git#branch=master
 	sha256sums = SKIP
 
