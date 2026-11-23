@@ -1,6 +1,6 @@
 pkgbase = zccache
 	pkgdesc = compiler cache for C/C++/Rust; drop in replacement for sccache and ccache
-	pkgver = 1.15.16
+	pkgver = 1.15.18
 	pkgrel = 1
 	url = https://github.com/zackees/zccache
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = zccache
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = https://github.com/zackees/zccache/archive/refs/tags/1.15.16/zccache-1.15.16.tar.gz
-	sha256sums = 8f2143c7a03691ca4c04c37d59bdb047df4d811e68b70999d2709857e622bc9c
+	source = https://github.com/zackees/zccache/archive/refs/tags/1.15.18/zccache-1.15.18.tar.gz
+	sha256sums = 2dfedb1c6ff95f71cd6c4b5f57279e05378c8c99239a2a1afad35a7902af486a
 
 pkgname = zccache
 	depends = glibc
