@@ -1,0 +1,24 @@
+pkgbase = python-k3handy
+	pkgdesc = Handy alias of mostly used functions
+	pkgver = 0.1.15
+	pkgrel = 1
+	url = https://github.com/pykit3/k3handy
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-k3fs
+	depends = python-k3proc
+	depends = python-k3str
+	provides = python-k3handy
+	conflicts = python-k3handy
+	source = k3handy::git+https://github.com/pykit3/k3handy.git#tag=v0.1.15
+	sha256sums = d4befbd88861767c10bb3966c2fc7c5e8ef6a0d0167d61d130529bb2e504ea10
+
+pkgname = python-k3handy
