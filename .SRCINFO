@@ -1,6 +1,6 @@
 pkgbase = bilibili-bin
 	pkgdesc = Bilibili official desktop client.哔哩哔哩官方客户端linux移植版。
-	pkgver = 1.20.0_2
+	pkgver = 1.20.0_3
 	pkgrel = 1
 	epoch = 5
 	url = https://github.com/msojocs/bilibili-linux
@@ -11,17 +11,17 @@ pkgbase = bilibili-bin
 	depends = electron43
 	depends = libappindicator
 	depends = libinput
-	provides = bilibili=1.20.0_2
+	provides = bilibili=1.20.0_3
 	conflicts = bilibili
-	source = LICENSE-1.20.0_2::https://raw.githubusercontent.com/msojocs/bilibili-linux/v1.20.0-2/license
+	source = LICENSE-1.20.0_3::https://raw.githubusercontent.com/msojocs/bilibili-linux/v1.20.0-3/license
 	source = bilibili.js
 	source = bilibili.sh
 	sha256sums = 21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
-	source_aarch64 = bilibili-1.20.0_2-aarch64.rpm::https://github.com/msojocs/bilibili-linux/releases/download/v1.20.0-2/bilibili-1.20.0.aarch64.rpm
-	sha256sums_aarch64 = b3d42b2db5ea9647f198c514f831430e3ad0698e3ba2455ceaa0a990ec81a5e4
-	source_x86_64 = bilibili-1.20.0_2-x86_64.rpm::https://github.com/msojocs/bilibili-linux/releases/download/v1.20.0-2/bilibili-1.20.0.x86_64.rpm
-	sha256sums_x86_64 = 3c423f701c8f6126e1f6daffd65e43cf5213bc53ae18d2af5b339d04f0298ae7
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = bilibili-1.20.0_3-aarch64.AppImage::https://github.com/msojocs/bilibili-linux/releases/download/v1.20.0-3/bilibili-1.20.0-arm64.AppImage
+	sha256sums_aarch64 = fbb0f13ff44607bd80b146e9a33e5ff1080419e88d7ef8f70cea1a71dcb2f6a8
+	source_x86_64 = bilibili-1.20.0_3-x86_64.AppImage::https://github.com/msojocs/bilibili-linux/releases/download/v1.20.0-3/bilibili-1.20.0-x86_64.AppImage
+	sha256sums_x86_64 = 04da150f423df9bc7a0ee0dd792b9ac103db037f659c788d9bfe2844ff12e8cd
 
 pkgname = bilibili-bin

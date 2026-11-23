@@ -9,7 +9,7 @@
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
 _pkgver=1.20.0
-_subver=2
+_subver=3
 pkgver="${_pkgver}_${_subver}"
 _electronversion=43
 epoch=5
@@ -29,8 +29,8 @@ depends=(
     'libappindicator'
     'libinput'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${_pkgver}-${_subver}/${pkgname%-bin}-${_pkgver}.aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${_pkgver}-${_subver}/${pkgname%-bin}-${_pkgver}.x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${_pkgver}-${_subver}/${pkgname%-bin}-${_pkgver}-arm64.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${_pkgver}-${_subver}/${pkgname%-bin}-${_pkgver}-x86_64.AppImage")
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/msojocs/bilibili-linux/v${_pkgver}-${_subver}/license"
     "${pkgname%-bin}.js"
@@ -38,9 +38,9 @@ source=(
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-sha256sums_aarch64=('b3d42b2db5ea9647f198c514f831430e3ad0698e3ba2455ceaa0a990ec81a5e4')
-sha256sums_x86_64=('3c423f701c8f6126e1f6daffd65e43cf5213bc53ae18d2af5b339d04f0298ae7')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+sha256sums_aarch64=('fbb0f13ff44607bd80b146e9a33e5ff1080419e88d7ef8f70cea1a71dcb2f6a8')
+sha256sums_x86_64=('04da150f423df9bc7a0ee0dd792b9ac103db037f659c788d9bfe2844ff12e8cd')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -69,14 +69,17 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+	rm -rf "${srcdir}/squashfs-root"
+	"${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
-    sed -i "s/\/opt\/${pkgname%-bin}\///g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "$(_get_app_dir)/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     _install_icons
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "$(_get_app_dir)/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
