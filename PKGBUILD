@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bsseq
-_pkgver=1.42.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Analyze, manage and store bisulfite sequencing data'
 arch=('x86_64')
@@ -21,7 +21,6 @@ depends=(
   r-data.table
   r-delayedarray
   r-delayedmatrixstats
-  r-genomeinfodb
   r-genomicranges
   r-gtools
   r-hdf5array
@@ -34,12 +33,15 @@ depends=(
   r-rhdf5
   r-s4vectors
   r-scales
+  r-seqinfo
   r-summarizedexperiment
   gcc
 )
+makedepends=(
+  r-assorthead
+)
 optdepends=(
   r-batchtools
-  r-beachmat
   r-biocstyle
   r-bsgenome.hsapiens.ucsc.hg38
   r-bsseqdata
@@ -51,7 +53,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bd395ef0560092c73759ac9ab1524ff00e495c8f2edde34a3007f02c7ae8b23f')
+sha256sums=('749014668ce1a756a1fa000f9c8c7ac4a707a60de5c92ee0aa67de1559f97de6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
