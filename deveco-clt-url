@@ -1,0 +1,440 @@
+#!/usr/bin/env python3
+"""deveco-clt-url - 取 DevEco Command Line Tools 的签名下载链接（可选直接构建）。
+
+为什么是 python3 而不是 sh: 接口返回是「JSON 套 JSON 字符串」，还要读 SQLite
+cookie 库、必要时解 AES，sh 里靠 jq/sqlite3 拼这些不可维护。Arch 自带 python3。
+
+用法:
+  deveco-clt-url                      # 自动取最新 Linux x64 版本，打印签名链接
+  deveco-clt-url --version 26.0.1.290
+  deveco-clt-url --list                # 列出可用版本
+  deveco-clt-url --makepkg             # 取到链接后直接 makepkg -si
+  deveco-clt-url --json                # 输出 JSON（含 sha256/大小）
+  deveco-clt-url --login-cookie        # 从剪贴板读取 Cookie 头并缓存（30 天一次）
+  deveco-clt-url --cookie-file ~/xx    # 指定 cookie 文件
+  deveco-clt-url --from-firefox        # 直接从 Firefox 的 cookies.sqlite 取
+  deveco-clt-url --from-brave          # 从 Brave 取（实验性，需要能解出密钥）
+  deveco-clt-url --cookie-names        # 只打印 cookie 名称，不打印值（排障用）
+  deveco-clt-url --url '<已签名链接>'   # 直接透传
+
+凭据来源优先级: --url > --cookie-file/-stdin > ~/.cache/deveco/cookie > 浏览器
+链接缓存: ~/.cache/deveco/clt-url (0600)，成功后写入
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+import random
+import shutil
+import sqlite3
+import string
+import subprocess
+import sys
+import tempfile
+import time
+import urllib.error
+import urllib.request
+
+__version__ = "0.2.0"
+
+API = "https://svc-drcn.developer.huawei.com/svc/community/common/v1/delegate"
+SVC_LIST = "PartnerCommunityService/v1/developer/downloadCenter/getToolVersionList"
+SVC_URL = "PartnerCommunityService/v1/developer/downloadCenter/getToolVersionDownloadUrl"
+TOOL_ALIAS = "command-line-tools-for-hmos"
+PAGE = "https://developer.huawei.com/consumer/cn/download/command-line-tools-for-hmos"
+
+OS_TYPE = {1: "windows-x64", 2: "mac-x64", 3: "mac-arm64", 4: "linux-x64", 6: "harmonyos", 7: "linux-arm64"}
+HOME = os.path.expanduser("~")
+CACHE = os.path.join(HOME, ".cache", "deveco")
+COOKIE_CACHE = os.path.join(CACHE, "cookie")
+URL_CACHE = os.path.join(CACHE, "clt-url")
+
+ERRS = {
+    "90910005": "登录态缺失、已过期或 cookie 不完整：authInfo 必须是登录后浏览器里那份 JSON 值。",
+    "90910006": "X-HD-DATE 格式不对：必须是紧凑 ISO8601 的 UTC 时间，如 20261123T075812Z。",
+    "90910008": "服务端没收到 X-HD-DATE 头。",
+    "90910011": "cookie 里找不到 hdc_csrf/csrfToken，无法生成 X-HD-CSRF 头。",
+}
+
+
+def die(msg: str, code: int = 1) -> "NoReturn":  # noqa: F821
+    print(msg, file=sys.stderr)
+    sys.exit(code)
+
+
+def warn(msg: str) -> None:
+    print(msg, file=sys.stderr)
+
+
+def ensure_cache_dir() -> None:
+    os.makedirs(CACHE, mode=0o700, exist_ok=True)
+
+
+# ---------------------------------------------------------------- http
+
+def _headers(cookie: str, csrf: str) -> dict:
+    return {
+        "Content-Type": "application/json",
+        "Origin": "https://developer.huawei.com",
+        "Referer": PAGE,
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:160.0) Gecko/20100101 Firefox/160.0",
+        "Accept": "application/json, text/plain, */*",
+        "X-HD-DATE": time.strftime("%Y%m%dT%H%M%SZ", time.gmtime()),
+        "X-HD-SERIALNO": "".join(random.choices(string.ascii_letters + string.digits, k=7)),
+        "X-HD-CSRF": csrf,
+        "Cookie": cookie,
+    }
+
+
+def delegate(svc: str, req: dict, cookie: str, csrf: str) -> dict:
+    body = json.dumps({"svc": svc, "reqType": 1,
+                       "reqJson": json.dumps(req, separators=(",", ":"))}).encode()
+    rq = urllib.request.Request(API, data=body, headers=_headers(cookie, csrf), method="POST")
+    try:
+        with urllib.request.urlopen(rq, timeout=30) as resp:
+            raw = resp.read()
+    except urllib.error.HTTPError as e:
+        die("接口返回 HTTP %s: %s" % (e.code, e.read()[:200].decode("utf-8", "replace")))
+    except urllib.error.URLError as e:
+        die("连不上 %s: %s" % (API, e.reason))
+
+    try:
+        outer = json.loads(raw)
+    except json.JSONDecodeError:
+        die("接口返回的不是 JSON: %r" % raw[:200])
+
+    rc = str(outer.get("returnCode"))
+    if rc != "0":
+        hint = ERRS.get(rc, "")
+        die("接口拒绝 (returnCode=%s): %s\n%s" % (rc, outer.get("description", ""), hint))
+    try:
+        return json.loads(outer["resJson"])
+    except (KeyError, json.JSONDecodeError):
+        die("resJson 解析失败: %r" % str(outer.get("resJson"))[:200])
+
+
+# ---------------------------------------------------------------- cookies
+
+BROWSERS = {
+    "brave": os.path.join(HOME, ".config/BraveSoftware/Brave-Browser"),
+    "chrome": os.path.join(HOME, ".config/google-chrome"),
+    "chromium": os.path.join(HOME, ".config/chromium"),
+}
+
+
+def _cookie_header(pairs) -> str:
+    return "; ".join("%s=%s" % (k, v) for k, v in pairs)
+
+
+def parse_cookie_header(text: str) -> list:
+    pairs = []
+    for part in text.split(";"):
+        part = part.strip()
+        if "=" in part:
+            k, v = part.split("=", 1)
+            pairs.append((k.strip(), v.strip()))
+    return pairs
+
+
+def cookies_from_firefox() -> list:
+    base = os.path.join(HOME, ".mozilla", "firefox")
+    ini = os.path.join(base, "profiles.ini")
+    if not os.path.exists(ini):
+        die("找不到 %s：这台机器的 Firefox 没有 profile。" % ini)
+    prof = None
+    cur = {}
+    default = None
+    for line in open(ini, encoding="utf-8", errors="replace"):
+        line = line.strip()
+        if line.startswith("[Profile"):
+            if cur.get("Path") and (cur.get("Default") == "1" or default is None):
+                default = dict(cur)
+            cur = {}
+        elif "=" in line:
+            k, v = line.split("=", 1)
+            cur[k.strip()] = v.strip()
+    if cur.get("Path") and default is None:
+        default = dict(cur)
+    if not default:
+        die("%s 里没有可用 profile。" % ini)
+    path = default["Path"]
+    if default.get("IsRelative", "1") == "1":
+        path = os.path.join(base, path)
+    db = os.path.join(path, "cookies.sqlite")
+    if not os.path.exists(db):
+        die("找不到 %s。" % db)
+    tmp = tempfile.NamedTemporaryFile(prefix="ffcookies-", suffix=".sqlite", delete=False)
+    tmp.close()
+    try:
+        subprocess.run(["sqlite3", "file:%s?mode=ro" % db, ".backup %s" % tmp.name], check=True)
+        con = sqlite3.connect(tmp.name)
+        rows = con.execute(
+            "SELECT name, value FROM moz_cookies WHERE host LIKE '%huawei.com' ORDER BY name").fetchall()
+        con.close()
+    finally:
+        os.unlink(tmp.name)
+    if not rows:
+        die("Firefox 里没有 huawei.com 的 cookie：请先在 Firefox 登录 %s。" % PAGE)
+    return rows
+
+
+def _chromium_password(browser: str) -> str:
+    for app in (browser, "chrome", "chromium"):
+        try:
+            out = subprocess.run(["secret-tool", "lookup", "application", app],
+                                 capture_output=True, text=True, timeout=10)
+            if out.returncode == 0 and out.stdout.strip():
+                return out.stdout.strip()
+        except (OSError, subprocess.TimeoutExpired):
+            pass
+    return "peanuts"  # Chromium 在无 keyring 时的历史默认口令
+
+
+def _decrypt_v10(blob: bytes, password: str) -> str:
+    if not blob.startswith(b"v10"):
+        return blob.decode("utf-8", "replace")
+    key = hashlib.pbkdf2_hmac("sha1", password.encode(), b"saltysalt", 1, 16)
+    iv = b" " * 16
+    p = subprocess.run(["openssl", "enc", "-aes-128-cbc", "-d", "-K", key.hex(), "-iv", iv.hex(), "-nopad"],
+                       input=blob[3:], capture_output=True)
+    out = p.stdout
+    if not out:
+        return ""
+    pad = out[-1]
+    if 0 < pad <= 16:
+        out = out[:-pad]
+    try:
+        return out.decode("utf-8")
+    except UnicodeDecodeError:
+        return ""
+
+
+def cookies_from_chromium(browser: str) -> list:
+    root = BROWSERS.get(browser)
+    if not root or not os.path.isdir(root):
+        die("找不到 %s 的配置目录。" % browser)
+    cands = []
+    try:
+        for entry in sorted(os.listdir(root)):
+            cand = os.path.join(root, entry, "Cookies")
+            if os.path.isfile(cand):
+                cands.append(cand)
+    except OSError as exc:
+        die("读不到 %s: %s" % (root, exc))
+    if not cands:
+        die("%s 下没有 Cookies 数据库（profile 可能不在这里）。" % root)
+    db = max(cands, key=os.path.getmtime)
+    tmp = tempfile.NamedTemporaryFile(prefix="crcookies-", suffix=".sqlite", delete=False)
+    tmp.close()
+    try:
+        subprocess.run(["sqlite3", "file:%s?mode=ro" % db, ".backup %s" % tmp.name], check=True)
+        con = sqlite3.connect(tmp.name)
+        rows = con.execute(
+            "SELECT name, value, encrypted_value FROM cookies WHERE host_key LIKE '%huawei.com' ORDER BY name").fetchall()
+        con.close()
+    finally:
+        os.unlink(tmp.name)
+    if not rows:
+        die("%s 里没有 huawei.com 的 cookie：请先在浏览器登录 %s。" % (browser, PAGE))
+    pw = _chromium_password(browser)
+    pairs = []
+    for name, val, enc in rows:
+        if val:
+            pairs.append((name, val))
+            continue
+        if enc and pw:
+            dec = _decrypt_v10(enc, pw)
+            if dec:
+                pairs.append((name, dec))
+    if not pairs:
+        die("能读到 cookie 记录但解不开密文（keyring 未启动或用了 --password-store=basic 以外的方案）。\n"
+            "建议改用: deveco-clt-url --login-cookie （从剪贴板读 Cookie 头，30 天一次）。")
+    return pairs
+
+
+def cookies_from_clipboard() -> list:
+    cmds = [["wl-paste", "-n"], ["xclip", "-selection", "clipboard", "-o"], ["xsel", "--clipboard", "--output"]]
+    text = ""
+    for cmd in cmds:
+        if not shutil.which(cmd[0]):
+            continue
+        try:
+            out = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
+            if out.returncode == 0 and out.stdout.strip():
+                text = out.stdout.strip()
+                break
+        except subprocess.TimeoutExpired:
+            continue
+    if not text:
+        die("剪贴板里没有内容：请先在浏览器 DevTools 里复制请求头里的 Cookie 一整行。")
+    if ";" not in text and "=" not in text:
+        die("剪贴板内容不像 Cookie 头（应形如 a=1; b=2）。")
+    return parse_cookie_header(text)
+
+
+def load_cookies(args) -> list:
+    if args.cookie_file:
+        text = open(os.path.expanduser(args.cookie_file), encoding="utf-8").read().strip()
+        if not text:
+            die("%s 是空的。" % args.cookie_file)
+        return parse_cookie_header(text)
+    if args.cookie_stdin:
+        text = sys.stdin.read().strip()
+        if not text:
+            die("标准输入里没有 Cookie 头。")
+        return parse_cookie_header(text)
+    if args.from_firefox:
+        return cookies_from_firefox()
+    for b in ("brave", "chrome", "chromium"):
+        if getattr(args, "from_" + b):
+            return cookies_from_chromium(b)
+    if os.path.exists(COOKIE_CACHE):
+        text = open(COOKIE_CACHE, encoding="utf-8").read().strip()
+        if text:
+            return [tuple(p.split("=", 1)) for p in text.split(";") if "=" in p]
+    die("没有可用的登录态。任选一种：\n"
+        "  deveco-clt-url --login-cookie        # 从剪贴板读 Cookie 头并缓存（推荐，约 30 天一次）\n"
+        "  deveco-clt-url --from-firefox        # Firefox 直读\n"
+        "  deveco-clt-url --from-brave          # Brave 直读（实验性）\n"
+        "  deveco-clt-url --cookie-file PATH    # 指定文件")
+
+
+# ---------------------------------------------------------------- flow
+
+def fetch_url(args) -> dict:
+    pairs = load_cookies(args)
+    if args.cookie_names:
+        for k, v in pairs:
+            print("%s\t%d" % (k, len(v)))
+        sys.exit(0)
+    cookie = _cookie_header(pairs)
+    d = dict(pairs)
+    csrf = d.get("hdc_csrf") or d.get("csrfToken") or ""
+    if not csrf and os.environ.get("DEVECO_CLT_CSRF"):
+        csrf = os.environ["DEVECO_CLT_CSRF"]
+    if not csrf:
+        die("cookie 里没有 hdc_csrf/csrfToken，无法生成 X-HD-CSRF。\n"
+            "可手动补: DEVECO_CLT_CSRF='<DevTools 里 x-hd-csrf 的值>' deveco-clt-url ...")
+
+    listing = delegate(SVC_LIST, {"toolAlias": TOOL_ALIAS, "language": "cn"}, cookie, csrf)
+    value = listing.get("value") or {}
+    groups = value.get("versionTypeList") or []
+    if args.list:
+        for g in groups:
+            plat = OS_TYPE.get(g.get("osType"), "osType%s" % g.get("osType"))
+            vers = [v.get("buildVersion", "?") for v in (g.get("versionList") or [])]
+            print("%-12s %2d 个版本  最新 %s" % (plat, len(vers), vers[0] if vers else "-"))
+        sys.exit(0)
+
+    want_plat = args.platform
+    if want_plat == "auto":
+        want_plat = "linux-arm64" if os.uname().machine in ("aarch64", "arm64") else "linux-x64"
+    os_type = {v: k for k, v in OS_TYPE.items()}.get(want_plat)
+    if os_type is None:
+        die("未知平台 %s（可选: %s）" % (want_plat, ", ".join(k for k in OS_TYPE.values() if k != "harmonyos")))
+    group = next((g for g in groups if g.get("osType") == os_type), None)
+    if group is None:
+        die("接口里没有 %s 的版本组（osType=%s）。" % (want_plat, os_type))
+    versions = group.get("versionList") or []
+    if not versions:
+        die("%s 的版本列表为空。" % want_plat)
+
+    def keyf(s):
+        return [int(x) for x in str(s).split(".") if x.isdigit()]
+
+    versions.sort(key=lambda v: keyf(v.get("buildVersion", "0")), reverse=True)
+    if args.version:
+        versions = [v for v in versions if str(v.get("buildVersion", "")).startswith(args.version)]
+        if not versions:
+            die("没有匹配 %s 的版本。" % args.version)
+    ver = versions[0]
+    pkgs = ver.get("packageList") or []
+    if not pkgs:
+        die("版本 %s 没有 packageList。" % ver.get("buildVersion"))
+    pkg = pkgs[0]
+    if args.platform != "harmonyos" and not str(pkg.get("packageName", "")).endswith(".zip"):
+        die("拿到的不是 Linux 包: %s" % pkg.get("packageName"))
+
+    signed = delegate(SVC_URL, {"sdkId": pkg.get("sdkId"), "versionId": ver.get("versionId"),
+                                "packageId": pkg.get("packageId")}, cookie, csrf)
+    url = ((signed.get("value") or {}).get("downloadUrl") or "")
+    if not url.startswith("https://"):
+        die("接口没返回 downloadUrl: %r" % signed)
+    return {"url": url, "version": ver.get("buildVersion"), "platform": want_plat,
+            "packageName": pkg.get("packageName"), "sha256": pkg.get("sha256"),
+            "size": pkg.get("packageSize"), "publishTime": ver.get("publishTime")}
+
+
+def verify_link(url: str) -> None:
+    rq = urllib.request.Request(url, headers={"Range": "bytes=0-1023",
+                                              "User-Agent": "Mozilla/5.0"})
+    try:
+        with urllib.request.urlopen(rq, timeout=30) as resp:
+            got = len(resp.read())
+            warn("链接可用：HTTP %s，读到 %d 字节（%s）。" % (resp.status, got, resp.headers.get("content-type")))
+    except urllib.error.HTTPError as e:
+        die("链接不可用：HTTP %s（签名可能已失效）。" % e.code)
+    except urllib.error.URLError as e:
+        die("链接不可达: %s" % e.reason)
+
+
+def main() -> None:
+    p = argparse.ArgumentParser(add_help=True, description="取 DevEco Command Line Tools 签名下载链接")
+    p.add_argument("-V", "--tool-version", action="version", version="%(prog)s " + __version__)
+    p.add_argument("--version", help="指定 CLT 版本前缀，如 26.0.1.290")
+    p.add_argument("--platform", default="auto", help="auto|linux-x64|linux-arm64")
+    p.add_argument("--list", action="store_true", help="列出可用版本")
+    p.add_argument("--json", action="store_true", help="输出 JSON")
+    p.add_argument("--makepkg", action="store_true", help="取到链接后执行 makepkg -si")
+    p.add_argument("--cache", action="store_true", default=True, help="写入 ~/.cache/deveco/clt-url（默认开）")
+    p.add_argument("--no-cache", dest="cache", action="store_false")
+    p.add_argument("--url", help="直接使用已签名链接")
+    p.add_argument("--verify", action="store_true", help="取到后做一次 1KB Range 请求验证链接可用")
+    p.add_argument("--login-cookie", action="store_true", help="从剪贴板读取 Cookie 头并缓存")
+    p.add_argument("--cookie-file")
+    p.add_argument("--cookie-stdin", action="store_true")
+    p.add_argument("--cookie-names", action="store_true", help="只打印 cookie 名称与长度")
+    p.add_argument("--from-firefox", action="store_true")
+    p.add_argument("--from-brave", action="store_true")
+    p.add_argument("--from-chrome", action="store_true")
+    p.add_argument("--from-chromium", action="store_true")
+    args = p.parse_args()
+
+    if args.login_cookie:
+        pairs = cookies_from_clipboard()
+        ensure_cache_dir()
+        with open(COOKIE_CACHE, "w", encoding="utf-8") as f:
+            os.chmod(COOKIE_CACHE, 0o600)
+            f.write(_cookie_header(pairs))
+        warn("已缓存 %d 项 cookie 到 %s（0600）。" % (len(pairs), COOKIE_CACHE))
+        return
+
+    if args.url:
+        info = {"url": args.url}
+    else:
+        info = fetch_url(args)
+
+    url = info["url"]
+    if args.cache:
+        ensure_cache_dir()
+        with open(URL_CACHE, "w", encoding="utf-8") as f:
+            os.chmod(URL_CACHE, 0o600)
+            f.write(url + "\n")
+
+    if args.verify:
+        verify_link(url)
+
+    if args.json:
+        print(json.dumps(info, ensure_ascii=False, indent=1))
+    elif args.makepkg:
+        env = dict(os.environ, DEVECO_CLT_URL=url)
+        os.chdir(os.path.dirname(os.path.abspath(__file__)))
+        os.execvpe("makepkg", ["makepkg", "-si"], env)
+    else:
+        print(url)
+
+
+if __name__ == "__main__":
+    main()

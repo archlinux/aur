@@ -1,0 +1,18 @@
+pkgbase = deveco-clt-url
+	pkgdesc = Mint signed download URLs for HUAWEI DevEco Command Line Tools / Device Tool
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://developer.huawei.com/consumer/cn/download/command-line-tools-for-hmos
+	arch = any
+	license = MIT
+	depends = python
+	depends = sqlite
+	optdepends = openssl: decrypt cookies stored by Chromium-family browsers
+	optdepends = libsecret: read the keyring password those browsers use
+	optdepends = firefox: read cookies straight from a Firefox profile
+	source = deveco-clt-url
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = deveco-clt-url
