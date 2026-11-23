@@ -4,7 +4,7 @@
 # published copy (version and checksum filled in, plus .SRCINFO) into its `aur` artifact.
 
 pkgname=reelo
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="uQ's media player: mpv's engine in a Qt Quick window that follows the uQ theme, with MPRIS"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=('yt-dlp: play video pages (YouTube and the like) from an address'
             'qt6-wayland: run natively on Wayland'
             'uq: Media player page in uQ Settings')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ba45037c6ee0ec55138b59ba3017d3e8646b4b79ee2de20d68352c8453825e89')
+sha256sums=('7749ddbed86bc929fc23d0618e68e0407d09f8463822980a441347ce08389b96')
 
 build() {
   cmake -S "$pkgname-$pkgver" -B build -G Ninja \
