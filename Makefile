@@ -14,10 +14,10 @@ USBLIB = -lusb
 USBLIB-1.0 = -I/usr/include/libusb-1.0/ -lusb-1.0
 
 ujprog:	${SRCS}
-	${CC} ${CFLAGS} ${FTLIB} ${USBLIB-1.0} ${SRCS}  -o ujprog
+	${CC} ${CFLAGS} -I/usr/include/libftdi1 -I/usr/include/libusb-1.0/ ${LDFLAGS} ${SRCS} -lftdi1 -lusb-1.0 -o ujprog
 
 flash:	ft232r_flash.c
-	${CC} ${CFLAGS} ${USBLIB-1.0} ft232r_flash.c -lftdi -o ft232r_flash
+	${CC} ${CFLAGS} -I/usr/include/libusb-1.0/ ${LDFLAGS} ft232r_flash.c -lftdi -lusb-1.0 -o ft232r_flash
 	
 install: ujprog
 	install -m 4755 ujprog ${INSTALL_DIR}
