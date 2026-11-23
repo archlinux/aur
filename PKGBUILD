@@ -1,6 +1,6 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 pkgname=proton-stream-bin
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Unofficial media library for Proton Drive: browse and stream public links and your own Drive folders (binaries)"
 arch=('x86_64')
@@ -22,9 +22,9 @@ _archive="proton-stream-$pkgver-x86_64-unknown-linux-gnu"
 source=("$_archive.tar.gz::$_repo/releases/download/$_tag/$_archive.tar.gz"
         "io.narl.proton-stream-$pkgver.desktop::https://raw.githubusercontent.com/narrrl/proton-stream/$_tag/packaging/io.narl.proton-stream.desktop"
         "io.narl.proton-stream-$pkgver.metainfo.xml::https://raw.githubusercontent.com/narrrl/proton-stream/$_tag/packaging/io.narl.proton-stream.metainfo.xml")
-sha256sums=('64094597f26efdbf8a72baa6850f644101ba10a708012327114d219dc906b2bc'
+sha256sums=('999b434839900d8fb5fa121708e824861d5a05c3c73d5e9a195cce1aa81005a4'
             '0fea5c03a0caf500ee985a235aa25c269ac19857fb099c7b38b24acd7029221e'
-            '1ac61494440ce04d3bc5578295f61befb0a48d4ccce2518d2ff809072c4a1915')
+            '9230d9750bc31aa6ed1f22dc5682dfa9d72e7a34b23f0224327989c5faec077d')
 
 package() {
   cd "$srcdir/$_archive"
