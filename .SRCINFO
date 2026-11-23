@@ -1,6 +1,6 @@
 pkgbase = nightjar-desktop-bin
 	pkgdesc = Moonlight-protocol game-streaming client
-	pkgver = 6.1.0
+	pkgver = 6.3.1
 	pkgrel = 1
 	url = https://github.com/RamazanKara/nightjar
 	install = nightjar-desktop-bin.install
@@ -26,11 +26,11 @@ pkgbase = nightjar-desktop-bin
 	conflicts = nightjar
 	options = !strip
 	options = !debug
-	source = https://raw.githubusercontent.com/RamazanKara/nightjar/v6.1.0/LICENSE.txt
+	source = https://raw.githubusercontent.com/RamazanKara/nightjar/v6.3.1/LICENSE.txt
 	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
-	source_x86_64 = https://github.com/RamazanKara/nightjar/releases/download/v6.1.0/nightjar-desktop-6.1.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 59094f6007cab17a37e801c5829a1af7a7c8f78d97898ae575479a43ab314d1f
-	source_aarch64 = https://github.com/RamazanKara/nightjar/releases/download/v6.1.0/nightjar-desktop-6.1.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 33dbd96039470d98ad4cf00496f979a2558fd93c63bb4c936218a644fdc3c52a
+	source_x86_64 = https://github.com/RamazanKara/nightjar/releases/download/v6.3.1/nightjar-desktop-6.3.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = d1bd9d1c533a9d2adb91468961651567a1a85658b1d7823a22898cd090ccb61d
+	source_aarch64 = https://github.com/RamazanKara/nightjar/releases/download/v6.3.1/nightjar-desktop-6.3.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = a377f6d9014c5d819635d729fdc19a5f449b9db9565b2e5045fd4ad3b7e99c32
 
 pkgname = nightjar-desktop-bin
