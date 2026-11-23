@@ -1,7 +1,7 @@
 # Maintainer: Joern <joernhofmann@web.de>
 pkgname=tessera-deck
 _pkgname=tessera
-pkgver=1.2.4
+pkgver=1.2.8
 pkgrel=1
 pkgdesc='Host application (tray, USB host and editor) for the Tessera deck panel'
 arch=('any')
@@ -16,13 +16,16 @@ optdepends=('libpulse: volume, mute and mixer actions'
             'gtk3: themed tray menu'
             'tk: fallback tray menu'
             'librsvg: vector program icons'
-            'gnome-keyring: secret storage for plugin passwords')
+            'gnome-keyring: secret storage for plugin passwords'
+            'ydotool: keys, typing and mouse on Wayland'
+            'kdotool-bin: window actions on KDE Plasma Wayland'
+            'wl-clipboard: clipboard on Wayland'
+            'libayatana-appindicator: tray icon on GNOME and other Wayland desktops'
+            'webkit2gtk-4.1: the editor in its own window')
 install=tessera-deck.install
 source=("tessera-host-v${pkgver}.zip::${url}/releases/download/v${pkgver}/tessera-host-v${pkgver}.zip"
-        'tessera-deck.sh'
-        'tessera-deck.desktop')
-sha256sums=('c5475f0730f32f93013e655e836d073a997fcc2eeaa3e73410f0dcba57d3715d'
-            'SKIP'
+        'tessera-deck.sh')
+sha256sums=('7ceae1275c410f9f1d3211733da8fc58f59ea14661e4ef1e30dc108041084082'
             'SKIP')
 
 package() {
@@ -37,13 +40,17 @@ package() {
   echo "$pkgrel" > "$dest/.pkgrel"
 
   # Windows-only pieces and development leftovers
-  rm -rf "$dest/host/platform_windows" "$dest/host/Enable-HWiNFO.ps1" "$dest/host/requirements.lock" "$dest/host/requirements.txt"
+  rm -rf "$dest"/host/linux/*.desktop "$dest/host/platform_windows" "$dest/host/Enable-HWiNFO.ps1" "$dest/host/requirements.lock" "$dest/host/requirements.txt"
   find "$dest" -name __pycache__ -prune -exec rm -rf {} +
   find "$dest" -type d -exec chmod 755 {} +
   find "$dest" -type f -exec chmod 644 {} +
 
   install -Dm755 "$srcdir/tessera-deck.sh" "$pkgdir/usr/bin/tessera"
-  install -Dm644 "$srcdir/tessera-deck.desktop" "$pkgdir/usr/share/applications/tessera.desktop"
+  # The menu entries are the files of the program (host/linux/*.desktop); only the launcher's path differs here.
+  install -d "$pkgdir/usr/share/applications"
+  for entry in tessera-tray tessera-editor; do
+    sed 's|^Exec=Tessera.sh|Exec=tessera|' "host/linux/$entry.desktop" > "$pkgdir/usr/share/applications/$entry.desktop"
+  done
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   python -I - "host/tessera.ico" "$pkgdir/usr/share/icons/hicolor/256x256/apps/tessera.png" <<'PY'

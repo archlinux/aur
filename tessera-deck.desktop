@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Tessera
-Comment=Host for the Tessera deck panel
-Exec=tessera
-Icon=tessera
-Terminal=false
-Categories=Utility;

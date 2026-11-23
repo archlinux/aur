@@ -1,5 +1,5 @@
 post_install() {
-  echo ">> Run 'tessera' to start the tray icon, USB host and editor (X11 session)."
+  echo ">> Start 'Tessera' (tray icon and USB host) and 'Tessera Editor' from the application menu, or run 'tessera' (tray) and 'tessera --app' (tray and editor). It runs on X11, and on KDE Plasma or GNOME on Wayland."
   echo ">> Serial access needs your user in the 'uucp' group:  sudo usermod -aG uucp \$USER  (then log in again)."
   echo ">> Per-user data and a writable copy live in ~/.local/share/tessera."
 }
