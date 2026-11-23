@@ -1,6 +1,6 @@
 # Maintainer: Martin Kopecký <kopecky@thekrew.app>
 pkgname=spot-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='TOML+CSS dialog runtime for Wayland (layer-shell overlays), prebuilt binary'
 arch=('x86_64')
@@ -15,8 +15,8 @@ _release="$url/releases/download/v$pkgver"
 source=("spot-linux-x64-$pkgver::$_release/spot-linux-x64"
         "spot-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=("spot-linux-x64-$pkgver")
-sha256sums=('5902236e61ed17585bc97851b6ed5488770d632319f10e74e61c36fa778dd81b'
-            '8c11d182a4e48cde48a2bc6a767d39f8adb949c0a7d8e5f8e81dfe63f1c6663c')
+sha256sums=('93a61b558f30a00f55fdcb7194b631679dbd86998c17ee3683c3cd492654a7c9'
+            '94e6dd6577771b0d7538e853ef23e600e70a2b1e9d1e2fcb0379855c1356392b')
 
 package() {
   install -Dm755 "$srcdir/spot-linux-x64-$pkgver" "$pkgdir/usr/bin/spot"
@@ -26,4 +26,6 @@ package() {
   # examples/ has a demo/ subdirectory, which `install -t ... examples/*` would refuse
   cp -r examples "$pkgdir/usr/share/doc/spot/"
   [ ! -d docs ] || cp -r docs "$pkgdir/usr/share/doc/spot/"   # absent before v0.2.1
+  [ ! -f packaging/systemd/spot.service ] ||   # absent before v0.4.1
+    install -Dm644 packaging/systemd/spot.service "$pkgdir/usr/lib/systemd/user/spot.service"
 }
