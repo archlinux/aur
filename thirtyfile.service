@@ -1,0 +1,23 @@
+[Unit]
+Description=ThirtyFile web file manager
+Documentation=https://thirtyfile.github.io/ThirtyFile/
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=thirtyfile
+Group=thirtyfile
+StateDirectory=thirtyfile
+StateDirectoryMode=0700
+WorkingDirectory=/var/lib/thirtyfile
+EnvironmentFile=/etc/thirtyfile/thirtyfile.conf
+ExecStart=/usr/bin/thirtyfile
+Restart=on-failure
+TimeoutStopSec=60
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
