@@ -1,5 +1,0 @@
-# The OpenChronology server's directories (#331): its home, and its configuration, listed by its
-# group and passed through by the log receivers' user (#501) to their files
-# (openchronology-setup writes the files once, each 0640).
-d /var/lib/openchronology 0750 openchronology openchronology -
-d /etc/openchronology 0751 root openchronology -
