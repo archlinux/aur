@@ -1,0 +1,14 @@
+Pin the layer-shell surface to the selected output. QWindow::screen() can
+change while the platform window is created on a multi-monitor desktop.
+Passing the screen directly to LayerShellQt preserves the selected wl_output.
+
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -343,6 +343,7 @@
+         resize(config.width, popupHeight);
+ 
+         layerWindow = LayerShellQt::Window::get(this);
++        layerWindow->setScreen(screen);
+ 
+         const bool anchorTop = config.position.startsWith(QStringLiteral("top-"));
+         const bool anchorLeft = config.position.endsWith(QStringLiteral("-left"));

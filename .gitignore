@@ -1,0 +1,9 @@
+/src/
+/pkg/
+/build/
+/.validation/
+/*.tar.gz
+/*.pkg.tar.*
+/*.src.tar.*
+/*.log
+/*.log.*
