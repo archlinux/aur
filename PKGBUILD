@@ -1,7 +1,7 @@
 # Maintainer: xmengnet <my@liyp.cc>
 
 pkgname=quiet-md
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc='本地优先的富文本笔记，GPUI 绘制，兼容飞书 DocxXML，可直接编辑 Markdown 文件'
 arch=('x86_64')
@@ -22,13 +22,14 @@ optdepends=(
   'xdg-desktop-portal: 打开、保存文件时的选择框'
 )
 makedepends=('rust' 'pkgconf' 'freetype2')
+options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/s1dashu/quiet-md/archive/v$pkgver.tar.gz"
         com.s1dashu.quietmd-48.png
         com.s1dashu.quietmd-64.png
         com.s1dashu.quietmd-128.png
         com.s1dashu.quietmd-256.png
         com.s1dashu.quietmd-512.png)
-sha256sums=('c5953465c959326988d7fd14c1186c14bc63fe2988ecb5df2d3c00cd5f38e15b'
+sha256sums=('b2f3ccd08aebf9284c314b888ade85a708ca726ade9402cd25f99b3f176238aa'
             '63b00415e37f34af5aebdb7ae5a1b27b7f2e75989e81ea3f737f618f002beff2'
             'b3063a03af3a78d542a2b978ac022754e5975611168903a92800ab92bad12fcb'
             'e9df11d99c25190983f2985209512284a7f5d91b4e4d198da3b40faf1d685b08'
