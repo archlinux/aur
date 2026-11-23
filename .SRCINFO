@@ -1,24 +1,25 @@
 pkgbase = sharefi-electron-bin
 	pkgdesc = Effortlessly share files and folders across your local network. It is fast, secure, free, easy to use and cross platform.
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://sharefi.app
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron44
-	provides = sharefi-electron=1.0.5
+	depends = wireless_tools
+	provides = sharefi-electron=1.0.6
 	conflicts = sharefi-electron
 	conflicts = sharefi
-	source = LICENSE-1.0.5::https://raw.githubusercontent.com/lucafornerone/sharefi-electron/v1.0.5/LICENSE
+	source = LICENSE-1.0.6::https://raw.githubusercontent.com/lucafornerone/sharefi-electron/v1.0.6/LICENSE
 	source = sharefi-electron.js
 	source = sharefi-electron.sh
 	sha256sums = 2b0d534627dfbc884d4fbb0fbbaea1c1d5d2ff12d7b3e71b2faffd12cf990f47
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = 0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328
-	source_aarch64 = sharefi-electron-1.0.5-aarch64.deb::https://github.com/lucafornerone/sharefi-electron/releases/download/v1.0.5/sharefi_1.0.5_arm64.deb
-	sha256sums_aarch64 = f481f51a5a50328dc4d89c3f4c21222bd3965df5898ccaf4ee8a32fdd4b43794
-	source_x86_64 = sharefi-electron-1.0.5-x86_64.deb::https://github.com/lucafornerone/sharefi-electron/releases/download/v1.0.5/sharefi_1.0.5_amd64.deb
-	sha256sums_x86_64 = 0f59266cb30e66147d80da56ca3e084af6a43df0e63df3bd475dad5ba5a02079
+	source_aarch64 = sharefi-electron-1.0.6-aarch64.deb::https://github.com/lucafornerone/sharefi-electron/releases/download/v1.0.6/sharefi_1.0.6_arm64.deb
+	sha256sums_aarch64 = ac4f9573018b9fe371430bc75371c4aa4d2ac05e6d478120adc57dba04cd9828
+	source_x86_64 = sharefi-electron-1.0.6-x86_64.deb::https://github.com/lucafornerone/sharefi-electron/releases/download/v1.0.6/sharefi_1.0.6_amd64.deb
+	sha256sums_x86_64 = cf4ed88541930f5586e8a76730de5af5444ae16d965e2bcd4d2e12ccbfa726f4
 
 pkgname = sharefi-electron-bin
