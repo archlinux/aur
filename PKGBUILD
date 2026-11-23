@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=padma
-_pkgver=1.18.1
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.1
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Individualized Multi-Omic Pathway Deviation Scores Using Multiple Factor Analysis'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5ac83d29778cb41b247b00447d5bb7df6da285d596f8afa29eb062f192a7ef67')
+sha256sums=('07383e0947af8c773107658d25b820be6ff2e0bf0bc2eaea684f64499886d9d8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
