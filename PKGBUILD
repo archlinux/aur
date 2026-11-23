@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mineradio-vision-git
 _pkgname=Mineradio-Vision
-pkgver=3.3.1.r2.gd255220
+pkgver=3.3.4.r0.g9f7e7b4
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -26,6 +26,10 @@ source=(
     "${pkgname%-git}.git::git+${url}"
     "${pkgname%-git}.js"
     "${pkgname%-git}.sh"
+)
+options=(
+    '!strip'
+    '!emptydirs'
 )
 sha256sums=('SKIP'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
@@ -80,6 +84,16 @@ _set_bun_build_env() {
 	export BUN_JOBS="$(nproc)"
 	mkdir -p "${HOME}" "${BUN_INSTALL_CACHE_DIR}" "${BUN_INSTALL_GLOBAL_DIR}" "${BUN_INSTALL_BIN}"
 }
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+}
 prepare() {
     cd "$(_get_project_dir)"
     _get_electron_version
@@ -109,7 +123,7 @@ build() {
     _set_electron_build_env
     _set_bun_build_env
     bunx electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}"
-    rm -rf "$(_get_app_dir)/resources/default_app.asar"
+    _delete_other_arch_files
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
