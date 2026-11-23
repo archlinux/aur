@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=dunn.test
-_pkgver=1.4.2
+_pkgver=1.4.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-rlang
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4293e09cd56e6a2c35d944c68ab62897')
-b2sums=('868734a9cc178351d4175281f5fa97b1bf1fb91700d7f11fc9e1452dd069cc74f8794163f8dd189865262fb9d83835d7d55d491da45923533bd277d2f4a71a59')
+md5sums=('ca22c2ab351a7a865b5c8ee3eebd509c')
+b2sums=('397029d0c8de5a501270e4314b8e2f5aeabd9f43dc4f94e69e5f5417b7b37848d1ddd5b8b68943cb86a99f74908d3e0faee70d5e6ae8e8dc42d37dcd874d018e')
 
 build() {
   mkdir build
