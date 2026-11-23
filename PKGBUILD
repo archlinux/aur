@@ -2,7 +2,7 @@
 
 pkgname=plasma-applet-claude-usage-git
 _pkgname=plasma-applet-claude-usage
-pkgver=r34.8f20a9a
+pkgver=r37.781d6e5
 pkgrel=1
 pkgdesc="A KDE Plasma 6 system tray widget that displays AI coding assistant usage statistics (Claude, GLM, Codex/OpenAI, Antigravity)"
 arch=(any)
