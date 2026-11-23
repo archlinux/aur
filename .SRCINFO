@@ -1,6 +1,6 @@
 pkgbase = python-k3str
 	pkgdesc = String operation utilities for encoding conversion
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/pykit3/k3str
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-k3str
 	depends = python
 	provides = python-k3str
 	conflicts = python-k3str
-	source = k3str::git+https://github.com/pykit3/k3str.git#tag=v0.1.11
-	sha256sums = 36e32f9eaec38eae26b1f0c4bec54b673cc8785c0ad60d1a3b0f0662e5f2cb12
+	source = k3str::git+https://github.com/pykit3/k3str.git#tag=v0.1.12
+	sha256sums = 3a895ee0d9d76cfcf6aafd2037aa10a75e00810fb3efd6b5cc428341992a2fe0
 
 pkgname = python-k3str

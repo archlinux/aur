@@ -2,7 +2,7 @@
 
 pkgname=python-k3str
 _name=${pkgname#python-}
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="String operation utilities for encoding conversion"
 provides=(${pkgname})
@@ -26,7 +26,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('36e32f9eaec38eae26b1f0c4bec54b673cc8785c0ad60d1a3b0f0662e5f2cb12')
+sha256sums=('3a895ee0d9d76cfcf6aafd2037aa10a75e00810fb3efd6b5cc428341992a2fe0')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
