@@ -1,6 +1,6 @@
 pkgbase = epixnet-bin
 	pkgdesc = Decentralized peer-to-peer web platform (official binary AppImage release)
-	pkgver = 0.6.8
+	pkgver = 0.6.10
 	pkgrel = 1
 	url = https://github.com/EpixZone/EpixNet
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = epixnet-bin
 	provides = epixnet
 	conflicts = epixnet
 	conflicts = epixnet-git
-	noextract = EpixNet-0.6.8-x86_64.AppImage
+	noextract = EpixNet-0.6.10-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = EpixNet-0.6.8-x86_64.AppImage::https://github.com/EpixZone/EpixNet/releases/download/v0.6.8/EpixNet-0.6.8-x86_64.AppImage
-	sha256sums_x86_64 = 47e4ebe8dd93d5d2546bc1b4fdd7022681e64662f330ef18d84cd79486c36fc2
+	source_x86_64 = EpixNet-0.6.10-x86_64.AppImage::https://github.com/EpixZone/EpixNet/releases/download/v0.6.10/EpixNet-0.6.10-x86_64.AppImage
+	sha256sums_x86_64 = f14450dcff297c8af7bd4612b4ad01f2a5098638974be99fe4d3ee7df339ad9f
 
 pkgname = epixnet-bin

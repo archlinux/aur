@@ -1,7 +1,7 @@
 # Maintainer: 3ri4nG0ld <brianldg92@gmail.com>
 pkgname=epixnet-bin
 _pkgname=epixnet
-pkgver=0.6.8
+pkgver=0.6.10
 pkgrel=1
 pkgdesc="Decentralized peer-to-peer web platform (official binary AppImage release)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ _appimage="EpixNet-${pkgver}-${CARCH}.AppImage"
 source_x86_64=(
   "${_appimage}::https://github.com/EpixZone/EpixNet/releases/download/v${pkgver}/${_appimage}"
 )
-sha256sums_x86_64=('47e4ebe8dd93d5d2546bc1b4fdd7022681e64662f330ef18d84cd79486c36fc2')
+sha256sums_x86_64=('f14450dcff297c8af7bd4612b4ad01f2a5098638974be99fe4d3ee7df339ad9f')
 noextract=("${_appimage}")
 
 prepare() {
