@@ -9,6 +9,19 @@ If this project saves you or your company time, consider [sponsoring](https://gi
 
 <!-- ## [Unreleased] -->
 
+## [2.26.0] - 2026-11-23
+
+### Added
+- Reset all units "failed" state feature
+- Reset unit "failed" state feature
+- Systemd Manager detail window
+
+### Changed
+- Russian translation
+
+### Fixed
+- Improve (a bit) Daemon Reload freeze
+
 ## [2.25.0] - 2026-11-13
 
 ### Added
