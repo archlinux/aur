@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miaViz
-_pkgver=1.16.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Microbiome Analysis Plotting and Visualization'
 arch=('any')
@@ -23,9 +23,10 @@ depends=(
   r-ggrepel
   r-ggtree
   r-mia
-  r-purrr
+  r-patchwork
   r-rlang
   r-s4vectors
+  r-scales
   r-scater
   r-singlecellexperiment
   r-summarizedexperiment
@@ -38,17 +39,26 @@ depends=(
   r-viridis
 )
 optdepends=(
+  r-beeswarm
   r-biocstyle
   r-bluster
+  r-circlize
+  r-complexheatmap
+  r-ggh4x
+  r-ggpubr
   r-knitr
-  r-microbiomedatasets
-  r-patchwork
+  r-maaslin3
+  r-mediation
+  r-miatime
   r-rmarkdown
+  r-rstatix
+  r-shadowtext
   r-testthat
   r-vegan
+  r-vipor
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2afc95fa6a853078751ec25abd5accd6a187a008a1a806603bd4f0648df0b600')
+sha256sums=('436115872a89a9d973c04e9a78ca42a7ea2912a072b224a03ffea0f142e2e467')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
