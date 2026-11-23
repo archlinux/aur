@@ -1,0 +1,28 @@
+_rescan() {
+  udevadm control --reload
+  for dev in /sys/bus/hid/devices/0005:054C:0CE6.* /sys/bus/hid/devices/0005:054C:0DF2.*; do
+    [ -e "$dev" ] && udevadm trigger --action="$1" --parent-match="$dev"
+  done
+  return 0
+}
+
+post_install() {
+  _rescan add
+  echo ":: ds5bridge is active: Bluetooth DualSenses now appear as wired controllers."
+  echo ":: Check with 'ds5bridge status'; turn off with 'sudo ds5bridge disable'."
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  systemctl try-restart 'ds5bridge@*.service'
+  _rescan add
+}
+
+pre_remove() {
+  systemctl stop 'ds5bridge@*.service'
+}
+
+post_remove() {
+  rm -rf /run/ds5bridge /etc/ds5bridge
+  _rescan change
+}

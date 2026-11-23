@@ -1,0 +1,21 @@
+pkgbase = ds5bridge-git
+	pkgdesc = Use a Bluetooth DualSense as a wired controller (native PlayStation support in Proton games)
+	pkgver = 0.1.0.r1.gaa3b148
+	pkgrel = 1
+	url = https://github.com/daedlock/ds5bridge
+	install = ds5bridge.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = systemd
+	provides = ds5bridge
+	conflicts = ds5bridge
+	source = git+https://github.com/daedlock/ds5bridge.git
+	sha256sums = SKIP
+
+pkgname = ds5bridge-git
