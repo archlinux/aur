@@ -1,0 +1,18 @@
+pkgbase = ib-clientportal-bin
+	pkgdesc = Interactive Brokers Client Portal Gateway for the Web API
+	pkgver = 20230424
+	pkgrel = 1
+	url = https://www.interactivebrokers.com/campus/ibkr-api-page/cpapi-v1/
+	arch = any
+	license = LicenseRef-proprietary
+	depends = java-runtime-headless>=11
+	depends = sh
+	noextract = clientportal.gw-20230424.zip
+	options = !strip
+	options = !debug
+	source = clientportal.gw-20230424.zip::https://download2.interactivebrokers.com/portal/clientportal.gw.zip
+	source = ib-clientportal-gw.sh
+	sha256sums = 2f2d380b2f9424520ff5f9c11fe45e82ef39459329ac056258a3274bea6f76f9
+	sha256sums = 59b1566e72c44d92cc32e063be74d481a7df5bc782a4bd0b15c00115df40f1e7
+
+pkgname = ib-clientportal-bin
