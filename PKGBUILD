@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=updateObject
-_pkgver=1.8.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,6 +20,7 @@ checkdepends=(
 )
 optdepends=(
   r-biocstyle
+  r-biseq
   r-genomicranges
   r-interactionset
   r-knitr
@@ -28,11 +29,10 @@ optdepends=(
   r-singlecellexperiment
   r-summarizedexperiment
   r-testthat
-  r-timirgen
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b89ed6f6a78a7c9bc7e602cdc9b6aae6')
-b2sums=('94edf1065369125c5f6d32642d68742fd1b74b29dbbb01062674d9f58a981b551a7344484b5719fc2ed87f05253a9c236074b740dc1c5043add7c63e441c9564')
+md5sums=('2826c0eccbdfa046e15b45518fb3a918')
+b2sums=('f9c4ec39846abf75d7e4d3648d4eb9c69dcda8ba2ea42f3f481bae53d5b84cc2de54aa26f5ebd35ca96637af77ee1c09360bb9ed2538b23754dc47defa0f4bdc')
 
 build() {
   mkdir build
