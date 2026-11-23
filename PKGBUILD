@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DeMixT
-_pkgver=1.24.0
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Cell type-specific deconvolution of heterogeneous tumor samples with two or three components using expression data from RNAseq or microarray platforms'
 arch=('x86_64')
@@ -13,20 +13,27 @@ depends=(
   r
   r-base64enc
   r-ggplot2
-  r-knitr
   r-matrixcalc
   r-matrixstats
   r-rcpp
-  r-rmarkdown
   r-summarizedexperiment
   r-truncdist
-  r-dss
   r-dendextend
   r-psych
   r-sva
+  r-fitdistrplus
+  r-magrittr
+  r-pbapply
+  r-s4vectors
+)
+optdepends=(
+  r-biocstyle
+  r-calibrate
+  r-knitr
+  r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('352dcd57c454e3c0ad0ab14c1586ac18dbec4c1e62fe30a0f4f2fb2de2e94fb1')
+sha256sums=('c228591f7973cb1cb2463bd381201891f43df3eb5f855101d81403e24e4fe924')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
