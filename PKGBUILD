@@ -5,12 +5,12 @@
 #   sha256 锁上游伴随 .sha256 文件，source 走 gh-proxy.com 加速（大陆直连 GitHub 慢）。
 pkgname=uu-remote-linux-private-bin
 pkgver=0.2.64
-pkgrel=5
+pkgrel=6
 pkgdesc='自用维护：非官方 UU 远程 Linux 被控端 + 实验性控制端（网易 UU 远程），上游 VallierDev/uu-remote-linux'
 arch=('x86_64' 'aarch64')
 url='https://github.com/VallierDev/uu-remote-linux'
 # GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
-_gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
+_gh_mirror="${GH_MIRROR:-https://gh-proxy.com/}"
 _gh_mirror="${_gh_mirror%/}/"
 license=('GPL3')
 depends=('gtk3' 'gdk-pixbuf2' 'cairo' 'glib2' 'pango' 'gcc-libs'
