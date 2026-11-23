@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flclash-bin
 _pkgname=FlClash
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free."
 arch=(
@@ -28,8 +28,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 sha256sums=('a46613b6df5ea182d243b68fa5ed3df97f307cf9d81788c9ff4c0e1d6f671dfe')
-sha256sums_aarch64=('86789e784786e7d53dce44858ff9bdcd8f430a3bd1366bc9d071bf68622be7a7')
-sha256sums_x86_64=('4064254329bb39c6289c743e16e5726ae56b5853e86d9f88e0145e2af032351b')
+sha256sums_aarch64=('8882ca6e0c21784dacd52351ee457193e4b208d112a1e18143abc6c99a76ece7')
+sha256sums_x86_64=('72c6b892d7467aefdc67cd8a3b0515fa5a337e88d192d372cda1c21c9d24d47f')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
