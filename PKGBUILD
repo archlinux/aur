@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=protGear
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -56,8 +56,8 @@ optdepends=(
   r-shinywidgets
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c8f0a89d044620a6ce32640128bd4e27')
-b2sums=('e46b41788ed21107989d03b5a9d14edf088f3528cbd0a3a743c5d810847b2faae9abb3c3937218f13970dcd1b32c42085b5f447fbc721fa10243e70ccc160c03')
+md5sums=('9ca827fc6f43c523053600d0fc177aef')
+b2sums=('cc1b56a68dd404a39218fd6a9b915a9840e404bc6ae1c7abfc5e0975031c7c8be91ba4537b5b0a5fe0158b52ac06072d9fd1ca19cdbfd09facf8a00ee7621f70')
 
 build() {
   mkdir build
