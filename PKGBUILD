@@ -1,20 +1,23 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=xlsxjars
-_pkgver=0.6.1
+_pkgver=0.9.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=8
-pkgdesc="Package required POI jars for the xlsx package"
+pkgrel=1
+pkgdesc="Package Required POI Jars for the xlsx Package"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-3.0-only')
 depends=(
   r-rjava
 )
+optdepends=(
+  r-testthat
+)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5a1721d5733cb42f3a29e3f353e39166')
-b2sums=('3d3bb780c6078cfe6af6684fa56cdc2153700a6d53ce4ff6ffd8018a8b983eaab4bcafe8fc8d7e1cf7b9c51de7f8c51afce7f9f4bf64240e369aae8945713137')
+md5sums=('1dacce14c99d62dbf280f975d05298f2')
+b2sums=('b065e03285b8590bc79ee14a68435eab544e6334dc300dc6f0695a5461503f27b3c052f6cdb90e21699919d19fac61b999808df7f09d17df4f3a2b36352bbff7')
 
 build() {
   mkdir build
