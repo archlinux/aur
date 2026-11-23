@@ -1,11 +1,14 @@
 pkgbase = universe-git
 	pkgdesc = Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope (latest commit)
-	pkgver = 0.0.6.r160.g030024d
+	pkgver = 0.0.17.r0.gcccd7bd
 	pkgrel = 1
 	url = https://github.com/ilyasturki/universe
 	arch = x86_64
 	license = MIT
 	checkdepends = tzdata
+	checkdepends = xorg-server-xvfb
+	checkdepends = pipewire
+	checkdepends = wireplumber
 	makedepends = blueprint-compiler
 	makedepends = cargo
 	makedepends = git
@@ -20,9 +23,7 @@ pkgbase = universe-git
 	options = !lto
 	options = !debug
 	source = universe::git+https://github.com/ilyasturki/universe.git
-	source = GalaxyCommunication-comet-0.3.2.exe::https://github.com/imLinguin/comet/releases/download/v0.3.2/GalaxyCommunication-dummy.exe
 	sha256sums = SKIP
-	sha256sums = c7695267da363a861af99db95cafe68b732ae743e5830b4feea1bc7ee745f99d
 
 pkgname = universe-git
 	depends = libgcc
@@ -30,7 +31,6 @@ pkgname = universe-git
 	depends = hicolor-icon-theme
 	depends = python
 	depends = pyside6>=6.11
-	depends = python-pysdl2
 	depends = python-qrcode
 	depends = python-xkbcommon
 	depends = qt6-5compat
@@ -39,7 +39,7 @@ pkgname = universe-git
 	depends = qt6-multimedia
 	depends = qt6-svg
 	depends = qt6-wayland
-	depends = sdl2
+	depends = sdl3
 	depends = systemd
 	optdepends = gamescope: games run inside it
 	optdepends = mangohud: the frame rate limit and the in-game HUD
@@ -47,16 +47,17 @@ pkgname = universe-git
 	optdepends = umu-launcher: Proton launches; fetched on first use when missing
 	optdepends = heroic-gogdl: the GOG source; fetched on first use when missing
 	optdepends = legendary: the Epic Games source; fetched on first use when missing
+	optdepends = ludusavi: save backups; fetched on first use when missing
 	optdepends = butler: the itch.io source; fetched on first use when missing
 	optdepends = steam: the Steam source
 	optdepends = gpu-screen-recorder: the capture module's recordings
 	optdepends = ffmpeg: the capture module's thumbnails and cuts
 	optdepends = trash-cli: recordings deleted to the trash
-	optdepends = game-devices-udev: /dev/uinput for the controller's key macros
+	optdepends = game-devices-udev: udev rules that make pads readable by your session
 	optdepends = grim: screenshots on sway, hyprland and niri
 	optdepends = spectacle: screenshots on KDE Plasma
 	optdepends = universe-desktop-git: the library in a GTK app for mouse and keyboard
-	provides = universe=0.0.6.r160.g030024d
+	provides = universe=0.0.17.r0.gcccd7bd
 	conflicts = universe
 
 pkgname = universe-desktop-git
@@ -68,8 +69,8 @@ pkgname = universe-desktop-git
 	depends = gtk4>=1:4.22
 	depends = hicolor-icon-theme
 	depends = libadwaita>=1:1.9
-	depends = universe=0.0.6.r160.g030024d
+	depends = universe=0.0.17.r0.gcccd7bd
 	optdepends = gst-libav: recordings played in the app (H.264, HEVC)
 	optdepends = gst-plugins-bad: recordings played in the app (AV1, VA-API)
-	provides = universe-desktop=0.0.6.r160.g030024d
+	provides = universe-desktop=0.0.17.r0.gcccd7bd
 	conflicts = universe-desktop

@@ -1,7 +1,7 @@
 # Maintainer: Ilyas Turki <turki.ilyass@gmail.com>
 pkgbase=universe-git
 pkgname=(universe-git universe-desktop-git)
-pkgver=0.0.6.r160.g030024d
+pkgver=0.0.17.r0.gcccd7bd
 pkgrel=1
 pkgdesc='Gamepad-first game launcher: a Rust core, a PySide6 UI, games inside gamescope (latest commit)'
 arch=('x86_64')
@@ -20,16 +20,11 @@ makedepends=(
   'python-setuptools'
   'scdoc'
 )
-checkdepends=('tzdata')
-# makepkg's -flto C objects (ring's) are GCC bitcode that rust-lld cannot link; Cargo.toml strips, so a debug package would be empty
+checkdepends=('tzdata' 'xorg-server-xvfb' 'pipewire' 'wireplumber')
+# makepkg's -flto C objects (aws-lc's) are GCC bitcode that rust-lld cannot link; Cargo.toml strips, so a debug package would be empty
 options=('!lto' '!debug')
-# the stub is the flake's galaxyServiceStub
-source=(
-  "universe::git+$url.git"
-  'GalaxyCommunication-comet-0.3.2.exe::https://github.com/imLinguin/comet/releases/download/v0.3.2/GalaxyCommunication-dummy.exe'
-)
-sha256sums=('SKIP'
-            'c7695267da363a861af99db95cafe68b732ae743e5830b4feea1bc7ee745f99d')
+source=("universe::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd universe
@@ -57,8 +52,8 @@ build() {
 check() {
   cd universe
   export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
-  # the journal tests expect Paris local time, as the flake's check does
-  TZ=Europe/Paris cargo test --frozen -p universe -p universe-desktop
+  # the journal tests expect Paris local time, as the flake's check does; an unknown machine's load holds the speed budgets to their loose limits and leaves out the tests that race processes, which tools/race-check replays in CI
+  TZ=Europe/Paris UNIVERSE_TEST_BUDGET_S=0 UNIVERSE_TEST_PACKAGER=1 cargo test --frozen -p universe -p universe-desktop
 }
 
 package_universe-git() {
@@ -68,7 +63,6 @@ package_universe-git() {
     'hicolor-icon-theme'
     'python'
     'pyside6>=6.11'
-    'python-pysdl2'
     'python-qrcode'
     'python-xkbcommon'
     'qt6-5compat'
@@ -77,7 +71,7 @@ package_universe-git() {
     'qt6-multimedia'
     'qt6-svg'
     'qt6-wayland'
-    'sdl2'
+    'sdl3'
     'systemd'
   )
   optdepends=(
@@ -87,12 +81,13 @@ package_universe-git() {
     'umu-launcher: Proton launches; fetched on first use when missing'
     'heroic-gogdl: the GOG source; fetched on first use when missing'
     'legendary: the Epic Games source; fetched on first use when missing'
+    'ludusavi: save backups; fetched on first use when missing'
     'butler: the itch.io source; fetched on first use when missing'
     'steam: the Steam source'
     "gpu-screen-recorder: the capture module's recordings"
     "ffmpeg: the capture module's thumbnails and cuts"
     'trash-cli: recordings deleted to the trash'
-    "game-devices-udev: /dev/uinput for the controller's key macros"
+    'game-devices-udev: udev rules that make pads readable by your session'
     'grim: screenshots on sway, hyprland and niri'
     'spectacle: screenshots on KDE Plasma'
     'universe-desktop-git: the library in a GTK app for mouse and keyboard'
@@ -102,17 +97,21 @@ package_universe-git() {
   cd universe
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm755 target/release/universe -t "$pkgdir/usr/bin"
+  install -Dm755 target/release/universe-system-install -t "$pkgdir/usr/lib/universe"
   for kind in modules sources; do
     install -d "$pkgdir/usr/share/universe/$kind"
     cp -r "$kind/." "$pkgdir/usr/share/universe/$kind"
-    rm -rf "$pkgdir/usr/share/universe/$kind"/*/tests
+    rm -rf "$pkgdir/usr/share/universe/$kind"/*/tests "$pkgdir/usr/share/universe/$kind"/conftest.py "$pkgdir/usr/share/universe/$kind"/test_*.py
   done
-  install -Dm644 "$srcdir/GalaxyCommunication-comet-0.3.2.exe" "$pkgdir/usr/share/universe/sources/gog/GalaxyCommunication.exe"
   install -Dm644 extension/metadata.json extension/extension.js -t "$pkgdir/usr/share/gnome-shell/extensions/universe@ilyasturki.github.io"
   install -Dm644 gen/man/*.1 -t "$pkgdir/usr/share/man/man1"
   install -Dm644 gen/universe.fish "$pkgdir/usr/share/fish/vendor_completions.d/universe.fish"
   install -Dm644 gen/universe.bash "$pkgdir/usr/share/bash-completion/completions/universe"
   install -Dm644 gen/_universe "$pkgdir/usr/share/zsh/site-functions/_universe"
+  install -Dm644 packaging/system/70-universe.rules -t "$pkgdir/usr/lib/udev/rules.d"
+  install -Dm644 packaging/system/universe.conf -t "$pkgdir/usr/lib/modules-load.d"
+  install -Dm644 packaging/system/universe.desktop -t "$pkgdir/usr/share/wayland-sessions"
+  install -Dm644 packaging/system/io.github.ilyasturki.universe.policy -t "$pkgdir/usr/share/polkit-1/actions"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 ui/universe-ui.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 ui/icons/hicolor/scalable/apps/universe-ui.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
