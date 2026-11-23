@@ -3,11 +3,13 @@ Date: Mon, 21 Sep 2026 14:02:50 +0530
 Subject: [PATCH] fix input capture for Deskflow on Wayland
 
 Refreshed for upstream 1.2.0 (zbus 6 OwnedVariant/Variant and let-chain
-on_relative_motion). Keeps the original Deskflow InputCapture behavior.
+on_relative_motion) and again for 2.0.1 (context only: src/lib.rs now
+builds SessionResources before the disconnect monitor). Keeps the
+original Deskflow InputCapture behavior.
 
 diff -Naur a/data/xdg-desktop-portal-generic.service b/data/xdg-desktop-portal-generic.service
---- a/data/xdg-desktop-portal-generic.service	2026-11-07 13:34:59.000000000 +0800
-+++ b/data/xdg-desktop-portal-generic.service	2026-11-09 09:54:14.228023600 +0800
+--- a/data/xdg-desktop-portal-generic.service	2026-11-23 09:28:33.502095511 +0800
++++ b/data/xdg-desktop-portal-generic.service	2026-11-23 09:28:33.514095099 +0800
 @@ -1,7 +1,6 @@
  [Unit]
  Description=Generic XDG Desktop Portal Backend for Wayland Compositors
@@ -17,9 +19,9 @@ diff -Naur a/data/xdg-desktop-portal-generic.service b/data/xdg-desktop-portal-g
  [Service]
  Type=dbus
 diff -Naur a/src/dbus/input_capture.rs b/src/dbus/input_capture.rs
---- a/src/dbus/input_capture.rs	2026-11-07 13:34:59.000000000 +0800
-+++ b/src/dbus/input_capture.rs	2026-11-09 09:54:38.272553579 +0800
-@@ -242,6 +242,25 @@
+--- a/src/dbus/input_capture.rs	2026-11-23 09:28:33.502095511 +0800
++++ b/src/dbus/input_capture.rs	2026-11-23 09:28:33.514095099 +0800
+@@ -249,6 +249,25 @@
          Some((x1, y1, x2, y2))
      }
  
@@ -45,7 +47,7 @@ diff -Naur a/src/dbus/input_capture.rs b/src/dbus/input_capture.rs
      /// Validate that a session exists, belongs to the caller, and was
      /// created via `InputCapture` (not `RemoteDesktop`/`ScreenCast`).
      fn validate_input_capture_session(
-@@ -797,6 +816,22 @@
+@@ -811,6 +830,22 @@
  
          let cursor_position = self.current_cursor_position(&session_handle.to_string());
  
@@ -68,7 +70,7 @@ diff -Naur a/src/dbus/input_capture.rs b/src/dbus/input_capture.rs
          if let Some(tx) = &self.input_capture_tx {
              let _ = tx.send(InputCaptureCommand::DestroySession {
                  session_id: session_handle.to_string(),
-@@ -838,9 +873,7 @@
+@@ -852,9 +887,7 @@
          app_id: &str,
          options: HashMap<String, OwnedVariant>,
          #[zbus(header)] header: zbus::message::Header<'_>,
@@ -78,7 +80,7 @@ diff -Naur a/src/dbus/input_capture.rs b/src/dbus/input_capture.rs
          let sender = header
              .sender()
              .ok_or_else(|| zbus::fdo::Error::Failed("Missing sender".to_string()))?
-@@ -855,24 +888,42 @@
+@@ -869,24 +902,42 @@
          let activation_id = session.end_input_capture_activation();
          drop(manager);
  
@@ -132,7 +134,7 @@ diff -Naur a/src/dbus/input_capture.rs b/src/dbus/input_capture.rs
          Ok(())
      }
  
-@@ -1213,6 +1264,16 @@
+@@ -1227,6 +1278,16 @@
      }
  
      #[test]
@@ -150,8 +152,8 @@ diff -Naur a/src/dbus/input_capture.rs b/src/dbus/input_capture.rs
          let zones = vec![InputCaptureZone {
              width: 1920,
 diff -Naur a/src/lib.rs b/src/lib.rs
---- a/src/lib.rs	2026-11-07 13:34:59.000000000 +0800
-+++ b/src/lib.rs	2026-11-09 09:54:14.228023600 +0800
+--- a/src/lib.rs	2026-11-23 09:28:33.502095511 +0800
++++ b/src/lib.rs	2026-11-23 09:28:33.514095099 +0800
 @@ -344,17 +344,29 @@
              let session_manager = Arc::clone(&self.session_manager);
              let input_backend = Arc::clone(&self.input_backend);
@@ -181,8 +183,8 @@ diff -Naur a/src/lib.rs b/src/lib.rs
 +
          // Spawn periodic session cleanup task
          let session_manager = Arc::clone(&self.session_manager);
-         tokio::spawn(async move {
-@@ -705,6 +717,7 @@
+         let dbus_conn = connection.clone();
+@@ -665,6 +677,7 @@
          connection: zbus::Connection,
          session_manager: Arc<Mutex<SessionManager>>,
          input_backend: Arc<Mutex<Box<dyn InputBackend>>>,
@@ -190,7 +192,7 @@ diff -Naur a/src/lib.rs b/src/lib.rs
          mut activation_rx: tokio::sync::mpsc::UnboundedReceiver<
              wayland::InputCaptureActivationEvent,
          >,
-@@ -716,6 +729,7 @@
+@@ -676,6 +689,7 @@
                  &connection,
                  &session_manager,
                  &input_backend,
@@ -198,7 +200,7 @@ diff -Naur a/src/lib.rs b/src/lib.rs
                  event,
              )
              .await;
-@@ -730,6 +744,7 @@
+@@ -690,6 +704,7 @@
          connection: &zbus::Connection,
          session_manager: &Arc<Mutex<SessionManager>>,
          input_backend: &Arc<Mutex<Box<dyn InputBackend>>>,
@@ -206,7 +208,7 @@ diff -Naur a/src/lib.rs b/src/lib.rs
          event: wayland::InputCaptureActivationEvent,
      ) {
          use wayland::InputCaptureActivationEvent;
-@@ -744,6 +759,7 @@
+@@ -704,6 +719,7 @@
                      connection,
                      session_manager,
                      input_backend,
@@ -214,7 +216,7 @@ diff -Naur a/src/lib.rs b/src/lib.rs
                      session_id,
                      barrier_id,
                      cursor_position,
-@@ -761,6 +777,21 @@
+@@ -721,6 +737,21 @@
                      backend.forward_captured_pointer_motion(&session_id, dx, dy, time_usec);
                  Self::log_forward_error(&session_id, "pointer motion", result);
              }
@@ -236,7 +238,7 @@ diff -Naur a/src/lib.rs b/src/lib.rs
              InputCaptureActivationEvent::Key {
                  session_id,
                  keycode,
-@@ -837,6 +868,7 @@
+@@ -797,6 +828,7 @@
          connection: &zbus::Connection,
          session_manager: &Arc<Mutex<SessionManager>>,
          input_backend: &Arc<Mutex<Box<dyn InputBackend>>>,
@@ -244,7 +246,7 @@ diff -Naur a/src/lib.rs b/src/lib.rs
          session_id: String,
          barrier_id: u32,
          cursor_position: Option<(f64, f64)>,
-@@ -876,6 +908,16 @@
+@@ -836,6 +868,16 @@
              if let Some(session) = manager.get_session_mut(&handle) {
                  let _ = session.end_input_capture_activation();
              }
@@ -261,7 +263,7 @@ diff -Naur a/src/lib.rs b/src/lib.rs
              return;
          }
  
-@@ -903,6 +945,28 @@
+@@ -863,6 +905,28 @@
          );
      }
  
@@ -291,8 +293,8 @@ diff -Naur a/src/lib.rs b/src/lib.rs
      /// is still open -- `None` means `Disable()`/`Release()` already ended
      /// it synchronously, so this skips emitting a duplicate signal), tell
 diff -Naur a/src/services/input/eis_backend.rs b/src/services/input/eis_backend.rs
---- a/src/services/input/eis_backend.rs	2026-11-07 13:34:59.000000000 +0800
-+++ b/src/services/input/eis_backend.rs	2026-11-09 09:54:14.228023600 +0800
+--- a/src/services/input/eis_backend.rs	2026-11-23 09:28:33.502095511 +0800
++++ b/src/services/input/eis_backend.rs	2026-11-23 09:28:33.514095099 +0800
 @@ -38,7 +38,7 @@
  
  use crate::{
@@ -582,8 +584,8 @@ diff -Naur a/src/services/input/eis_backend.rs b/src/services/input/eis_backend.
          assert!(session.send_modifiers(0, 0, 0, 0).is_err());
          assert!(session.send_text_utf8("hello").is_err());
 diff -Naur a/src/services/input/eis_bridge.rs b/src/services/input/eis_bridge.rs
---- a/src/services/input/eis_bridge.rs	2026-11-07 13:34:59.000000000 +0800
-+++ b/src/services/input/eis_bridge.rs	2026-11-09 09:54:14.228023600 +0800
+--- a/src/services/input/eis_bridge.rs	2026-11-23 09:28:33.502095511 +0800
++++ b/src/services/input/eis_bridge.rs	2026-11-23 09:28:33.514095099 +0800
 @@ -721,6 +721,19 @@
              .send_pointer_motion(dx, dy, time_usec)
      }
@@ -605,9 +607,9 @@ diff -Naur a/src/services/input/eis_bridge.rs b/src/services/input/eis_bridge.rs
          self.sessions
              .get_mut(session_id)
 diff -Naur a/src/services/input/mod.rs b/src/services/input/mod.rs
---- a/src/services/input/mod.rs	2026-11-07 13:34:59.000000000 +0800
-+++ b/src/services/input/mod.rs	2026-11-09 09:54:14.228023600 +0800
-@@ -231,6 +231,22 @@
+--- a/src/services/input/mod.rs	2026-11-23 09:28:33.502095511 +0800
++++ b/src/services/input/mod.rs	2026-11-23 09:28:33.514095099 +0800
+@@ -232,6 +232,22 @@
          })
      }
  
@@ -631,8 +633,8 @@ diff -Naur a/src/services/input/mod.rs b/src/services/input/mod.rs
      /// input has stopped (`InputCapture.Deactivated`). Same default-error
      /// rationale as [`Self::start_input_capture`].
 diff -Naur a/src/wayland/dispatch.rs b/src/wayland/dispatch.rs
---- a/src/wayland/dispatch.rs	2026-11-07 13:34:59.000000000 +0800
-+++ b/src/wayland/dispatch.rs	2026-11-09 09:54:14.228023600 +0800
+--- a/src/wayland/dispatch.rs	2026-11-23 09:28:33.502095511 +0800
++++ b/src/wayland/dispatch.rs	2026-11-23 09:28:33.514095099 +0800
 @@ -145,6 +145,27 @@
              source_type: crate::types::SourceType::Monitor,
          }
@@ -748,8 +750,8 @@ diff -Naur a/src/wayland/dispatch.rs b/src/wayland/dispatch.rs
 +    }
  }
 diff -Naur a/src/wayland/input_capture.rs b/src/wayland/input_capture.rs
---- a/src/wayland/input_capture.rs	2026-11-07 13:34:59.000000000 +0800
-+++ b/src/wayland/input_capture.rs	2026-11-09 09:54:38.272553579 +0800
+--- a/src/wayland/input_capture.rs	2026-11-23 09:28:33.502095511 +0800
++++ b/src/wayland/input_capture.rs	2026-11-23 09:28:33.514095099 +0800
 @@ -3,8 +3,8 @@
  //! Creates invisible `wlr-layer-shell-v1` surfaces positioned at each
  //! accepted [`PointerBarrier`], drives the `configure -> ack_configure ->
@@ -1269,8 +1271,8 @@ diff -Naur a/src/wayland/input_capture.rs b/src/wayland/input_capture.rs
          InputCaptureZone {
              width,
 diff -Naur a/src/wayland/mod.rs b/src/wayland/mod.rs
---- a/src/wayland/mod.rs	2026-11-07 13:34:59.000000000 +0800
-+++ b/src/wayland/mod.rs	2026-11-09 09:54:14.228023600 +0800
+--- a/src/wayland/mod.rs	2026-11-23 09:28:33.502095511 +0800
++++ b/src/wayland/mod.rs	2026-11-23 09:28:33.514095099 +0800
 @@ -175,6 +175,10 @@
      ReleaseActiveLock {
          /// Session handle.
