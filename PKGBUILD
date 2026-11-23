@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pixelviewer-bin
 _pkgname=PixelViewer
-pkgver=2026.1.5
+pkgver=2026.1.6
 pkgrel=1
 pkgdesc="A cross-platform image viewer which supports reading raw Luminance/YUV/RGB/ARGB/Bayer pixels data from file and rendering it."
 arch=(
@@ -29,8 +29,8 @@ source=(
 )
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
             'f96446b452c48cb8b0306c4f999ab6729927c8b3a27f2355abbb484e3e63cf6f')
-sha256sums_aarch64=('a24b60eb37965ca7f110fcb0452c23c53745fc32ef19586e8951dbcd6ded1f36')
-sha256sums_x86_64=('344461135982694053d156aa91449d3db55b34356939d5c5255ae0d50a24f565')
+sha256sums_aarch64=('854cba490c4583d5de411941c5f3f60872334682896823d9f3b1e732018664d2')
+sha256sums_x86_64=('bde3c535182af3eb2b1ca42997c3f81911dff98caa3e45f5605269330890deb2')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
@@ -53,6 +53,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     cp -a "${srcdir}/usr/lib" "${pkgdir}/usr"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
-    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
