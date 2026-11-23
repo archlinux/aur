@@ -1,13 +1,13 @@
 # Maintainer: Jenrikku (JkKU)
 pkgname=autumn-git
-pkgver=r298.dc10c6e
+pkgver=r609.8b59552
 pkgrel=1
 pkgdesc="A WIP 3D Land stage editor."
 arch=('x86_64')
 url="https://github.com/Jenrikku/Autumn"
 license=('GPL-3.0-only')
-depends=('dotnet-runtime>=8.0' 'hicolor-icon-theme')
-makedepends=('dotnet-sdk-8.0' 'git')
+depends=('dotnet-runtime>=10.0' 'hicolor-icon-theme')
+makedepends=('dotnet-sdk-10.0' 'git')
 source=("git+https://github.com/Jenrikku/Autumn.git"
         "autumn.desktop"
         "autumn.svg")
@@ -32,9 +32,6 @@ build() {
 	dotnet publish -c Release -r linux-x64 -o "$srcdir/publish" ./Autumn
 
 	cd "$srcdir/publish/"
-	mv "runtimes/linux-x64/native/libtinyfiledialogs.so" .
-	rm -r runtimes/
-
 	rm *.pdb
 }
 
