@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=POMA
-_pkgver=1.14.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,7 +16,9 @@ depends=(
   r-dbscan
   r-deseq2
   r-dplyr
+  r-fgsea
   r-fsa
+  r-ggcorrplot
   r-ggplot2
   r-ggrepel
   r-glmnet
@@ -26,6 +28,9 @@ depends=(
   r-lme4
   r-magrittr
   r-mixomics
+  r-msigdbr
+  r-multcomp
+  r-purrr
   r-randomforest
   r-rankprod
   r-rlang
@@ -48,8 +53,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2319e020f51efe618ec87124847cfbc4')
-b2sums=('992e5eafcebcc30a9d52249b86008f28b47d01925a1ffd396cbc204f12a34006f29c4e1139af44fdc7bd924a7853bd84528df4e24d58c76af03a8df47cfa4437')
+md5sums=('f19ee12429469ff7e069a22a5c19a3d7')
+b2sums=('ca6a1f783a870ce44593386459e022b472813b155f044aeacb569225199970688f5044fc0e0157ed005e2dbfc51062f7cfac7ea0b854baffd7d97aae8de7021b')
 
 build() {
   mkdir build
