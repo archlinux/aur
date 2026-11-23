@@ -1,0 +1,6 @@
+post_install() {
+  cat <<'MSG'
+==> Log out and pick "Hyprland with Digit" or "niri with Digit" on the login screen.
+==> Install hyprland or niri first if neither is installed.
+MSG
+}
