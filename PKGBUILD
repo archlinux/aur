@@ -1,6 +1,6 @@
 # Maintainer: Defined Networking, Inc. <support@defined.net>
 pkgname=dnclient
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Managed Nebula client for Defined Networking overlay networks"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ sha256sums=('615e58a3a8d05e1a8de9ecbde0c491df150d4c7c0b000b959d8ef82908346d4a'
             '6b9f46edf3641d106f3d8e375ddbc8d4d89705842311ba6e51c5a662e264c83e'
             'ecdce0108e62d88853513bc5ec0e95601293558bc16738f7e2cbcf174ffd0d74'
             '7f753320cbb045dd01674a227acb69368baa92dfb3da50bcd4a9c5598bcb8d7c')
-sha256sums_x86_64=('d5e9210bf045dfe2b25fb8caa47253f52aa133eafff68bb360e27c344d39acbd')
-sha256sums_aarch64=('9180a9b1001458a71308796dfe199317c63e4f2b9d844c4a8c52280258d3a764')
+sha256sums_x86_64=('2e7fe6f91960e6894864542d9597531aa4d3ce76290377bd55f9639ffc0a9d73')
+sha256sums_aarch64=('52fbb5cc03d9430aae16947ad60ea3c8a6c08bcdff5e685a9cd87d06e60a56f8')
 
 case "$CARCH" in
 	x86_64) _debarch=amd64 ;;
