@@ -1,26 +1,33 @@
 pkgname=catgirldownloader
-pkgver=0.5
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="GTK4 application that downloads images from nekos.moe"
 arch=('any')
 url="https://github.com/NyarchLinux/CatgirlDownloader"
 license=('GPL-3.0-only')
-
 depends=(
   'python'
   'python-gobject'
   'python-requests'
   'gtk4'
   'libadwaita'
-  'glib2'   # for gsettings schemas runtime
+  'glib2'
 )
+makedepends=('meson')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('a0ea7e8f89b7bfe3d800eb611d56260d89451bd127ca81795c1956bd921fc87d')
 
-source=(
-  "${pkgname}-v${pkgver}.tar.gz::https://github.com/NyarchLinux/CatgirlDownloader/releases/download/${pkgver}/catgirldownloader-v${pkgver}.tar.gz"
-)
-sha256sums=('f27f2a42b294dedea7afb673adc08634433c4c52d55e0350b208bb2a7250a81a')
+prepare() {
+  cd CatgirlDownloader-${pkgver}
+  # upstream forgot to bump the version in meson.build (shown in the About dialog)
+  sed -i "s/^\( *version: \)'[^']*'/\1'${pkgver}'/" meson.build
+}
+
+build() {
+  arch-meson CatgirlDownloader-${pkgver} build
+  meson compile -C build
+}
 
 package() {
-  # Install the whole filesystem tree from the tarball
-  cp -a "${srcdir}/usr" "${pkgdir}/"
+  meson install -C build --destdir "${pkgdir}"
 }

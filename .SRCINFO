@@ -1,17 +1,18 @@
 pkgbase = catgirldownloader
 	pkgdesc = GTK4 application that downloads images from nekos.moe
-	pkgver = 0.5
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/NyarchLinux/CatgirlDownloader
 	arch = any
 	license = GPL-3.0-only
+	makedepends = meson
 	depends = python
 	depends = python-gobject
 	depends = python-requests
 	depends = gtk4
 	depends = libadwaita
 	depends = glib2
-	source = catgirldownloader-v0.5.tar.gz::https://github.com/NyarchLinux/CatgirlDownloader/releases/download/0.5/catgirldownloader-v0.5.tar.gz
-	sha256sums = f27f2a42b294dedea7afb673adc08634433c4c52d55e0350b208bb2a7250a81a
+	source = catgirldownloader-0.6.1.tar.gz::https://github.com/NyarchLinux/CatgirlDownloader/archive/refs/tags/0.6.1.tar.gz
+	sha256sums = a0ea7e8f89b7bfe3d800eb611d56260d89451bd127ca81795c1956bd921fc87d
 
 pkgname = catgirldownloader
