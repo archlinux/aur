@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=autonomics
-_pkgver=1.14.9
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,6 +11,7 @@ url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-3.0-only')
 depends=(
   r-abind
+  r-arrow
   r-biocfilecache
   r-biocgenerics
   r-bit64
@@ -24,6 +25,7 @@ depends=(
   r-ggrepel
   r-gridextra
   r-limma
+  r-lme4
   r-magrittr
   r-matrixstats
   r-multiassayexperiment
@@ -51,19 +53,24 @@ optdepends=(
   r-biocmanager
   r-biocstyle
   r-biostrings
+  r-coin
   r-dbi
   r-diagram
   r-ensembldb
   r-genomicdatacommons
   r-genomicranges
   r-geoquery
+  r-ggridges
+  r-ggstance
+  r-ggtext
   r-hgu95av2.db
   r-icsnp
   r-jsonlite
   r-knitr
-  r-lme4
   r-lmertest
+  r-mclust
   r-mixomics
+  r-mixtools
   r-mpm
   r-olinkanalyze
   r-org.hs.eg.db
@@ -81,15 +88,14 @@ optdepends=(
   r-rsubread
   r-rtracklayer
   r-statmod
-  r-survminer
   r-testthat
   r-uniprot.ws
   r-writexl
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a96f0d7aec7e57cabce980db286a5c64')
-b2sums=('07a6d80a6d95b8ad568edb3b11961391eafbde318d195d797d9f5a0e5811776cf8e9e0e925f2644213304d45863f915cf0c3043c1ee723c39073de4307e31041')
+md5sums=('0303dc9d33cacbe341bafb42e374c39e')
+b2sums=('c97507fefbaf8ce20e3bfc0d76465f089e404a42ab46538e8e340295bbccf07e02adcddb5e4dd1f9635e66f238d31835197efabafb38b026ccb3468bbe92d6db')
 
 build() {
   mkdir build
