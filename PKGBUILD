@@ -1,11 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=capushe
-_pkgver=1.1.2
+_pkgver=1.1.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
-pkgdesc="CAlibrating Penalities Using Slope HEuristics"
+pkgrel=1
+pkgdesc="Data-Driven Slope Estimation and Dimension Jump"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-or-later')
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c80cfe276d1f4f27bf3ff80ac1872232')
-b2sums=('5ed3b67256c341e39c59d968c4838e1b5b293303955a95167f68c6146999631b8cfad0b13281c7945497339875c6ee5f527b4dae357692d6e9d43d24a8c5b38a')
+md5sums=('b752f5debc0660b423bc812d6a9deb56')
+b2sums=('11f39a0687d9a6dae295f5fc37c5a4ab6216f221a3cb79fe48290e431e2f4741fc4a81fb035ecabdf095f930e35014e980d8cfd422d271d84cfe52f8b31e0ca1')
 
 build() {
   mkdir build
