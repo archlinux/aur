@@ -1,20 +1,23 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sparsepca
-_pkgver=0.1.2
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
-pkgdesc="Sparse Principal Component Analysis (SPCA)"
+pkgrel=1
+pkgdesc="Sparse Principal Component Analysis"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-3.0-or-later')
 depends=(
   r-rsvd
 )
+optdepends=(
+  r-testthat
+)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fbbc7e20a66da7f318e3d8f87791a201')
-b2sums=('5a484f636279744d341f83c50280821b3fe72daee1de596a22e07f743879674f654e5935bfd29779980f2b9c1ff5251a94c45403f9396b378e1c59db959b3ad8')
+md5sums=('01fb3483e1f2b4967be50d64ffca81bb')
+b2sums=('08ec3d022598b06e73027972276c5f74dbbca4b81cd1903628cd09f4e797bbf92b060bc310eea60e0a3d692858139ede1acc8bc44fd210e0a5773bc77ad1bb0a')
 
 build() {
   mkdir build
