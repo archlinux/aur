@@ -1,27 +1,27 @@
 pkgbase = ccusage-statusline-rs-bin
 	pkgdesc = Fast statusline for Claude Code w/usage tracking, billing blocks, burn rate monitoring
-	pkgver = 1.17.1
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/ticpu/ccusage-statusline-rs
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = ccusage-statusline-rs=1.17.1
+	provides = ccusage-statusline-rs=1.18.0
 	conflicts = ccusage-statusline-rs
 	options = !strip
 	options = !debug
-	source = ccusage-statusline-rs-1.17.1.tar.xz::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.17.1/ccusage-statusline-rs-1.17.1.tar.xz
-	source = ccusage-statusline-rs-1.17.1.tar.xz.asc::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.17.1/ccusage-statusline-rs-1.17.1.tar.xz.asc
+	source = ccusage-statusline-rs-1.18.0.tar.xz::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.18.0/ccusage-statusline-rs-1.18.0.tar.xz
+	source = ccusage-statusline-rs-1.18.0.tar.xz.asc::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.18.0/ccusage-statusline-rs-1.18.0.tar.xz.asc
 	validpgpkeys = E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD
-	sha256sums = 14dd6e001dc37a7e5dc9e03e9a7f153ae633010c8be12e9fa948d5ed89f90650
+	sha256sums = 7f36eec211848d4a20e9646d5d873ef988047eb85a58fdeecb267c2bd11b8a33
 	sha256sums = SKIP
-	source_x86_64 = ccusage-statusline-rs-1.17.1-x86_64::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.17.1/ccusage-statusline-rs-linux-x86_64
-	source_x86_64 = ccusage-statusline-rs-1.17.1-x86_64.asc::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.17.1/ccusage-statusline-rs-linux-x86_64.asc
-	sha256sums_x86_64 = bfcbeb355364b5920ec28decd4e074c40a62dda02bd4e3cf56e1f99f2063198a
+	source_x86_64 = ccusage-statusline-rs-1.18.0-x86_64::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.18.0/ccusage-statusline-rs-linux-x86_64
+	source_x86_64 = ccusage-statusline-rs-1.18.0-x86_64.asc::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.18.0/ccusage-statusline-rs-linux-x86_64.asc
+	sha256sums_x86_64 = 773eaf045f7aaf28d0a40e639f46208aef8593240cd1252a0480b6591c58cdb7
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = ccusage-statusline-rs-1.17.1-aarch64::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.17.1/ccusage-statusline-rs-linux-aarch64
-	source_aarch64 = ccusage-statusline-rs-1.17.1-aarch64.asc::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.17.1/ccusage-statusline-rs-linux-aarch64.asc
-	sha256sums_aarch64 = 3b7f08e41ed052766d80a68189bb87bdfa1a4177966f0653c3bca1cef5439253
+	source_aarch64 = ccusage-statusline-rs-1.18.0-aarch64::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.18.0/ccusage-statusline-rs-linux-aarch64
+	source_aarch64 = ccusage-statusline-rs-1.18.0-aarch64.asc::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.18.0/ccusage-statusline-rs-linux-aarch64.asc
+	sha256sums_aarch64 = 55e1991a984812f09fde32a1f141803b1d07c39d9127030790d6d9b27f6de9fa
 	sha256sums_aarch64 = SKIP
 
 pkgname = ccusage-statusline-rs-bin
