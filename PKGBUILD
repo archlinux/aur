@@ -7,7 +7,7 @@
 # build() y package() siguen el layout actual (Cargo + data/ + flatpak/).
 pkgname=quadrahq-git
 _name=Quadra
-pkgver=0.50.4.r16.g91f7bad
+pkgver=0.50.4.r24.geb0eb15
 pkgrel=4
 pkgdesc="Bootstrapper for the macOS Roblox client on Linux through Rosemary"
 arch=('x86_64')
