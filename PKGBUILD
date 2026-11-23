@@ -1,12 +1,12 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mia
-_pkgver=1.16.1
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.1
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Microbiome analysis'
-arch=('any')
+arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
@@ -22,21 +22,21 @@ depends=(
   r-delayedmatrixstats
   r-dirichletmultinomial
   r-dplyr
+  r-ecodive
   r-iranges
   r-matrixgenerics
   r-multiassayexperiment
+  r-rcpp
   r-rlang
   r-s4vectors
   r-scater
-  r-scuttle
   r-singlecellexperiment
+  r-stringr
   r-summarizedexperiment
   r-tibble
   r-tidyr
   r-treesummarizedexperiment
   r-vegan
-  r-mediation
-  r-rbiom 
 )
 optdepends=(
   r-ade4
@@ -44,17 +44,25 @@ optdepends=(
   r-biomformat
   r-dada2
   r-knitr
+  r-mediation
+  r-miatime
+  r-miaviz
   r-microbiomedatasets
+  r-nmf
   r-patchwork
+  r-philr
   r-phyloseq
   r-reldist
+  r-rhdf5
   r-rmarkdown
-  r-stringr
+  r-scuttle
   r-testthat
+  r-topicdoc
+  r-topicmodels
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('16e145b56f2c5ad4662f2304efdd5eac06267aed9f9fa30c658f3c8ec31b4fac')
+sha256sums=('4bfd53ffb5c9944f982d8acb95d61c5df04055cd97e03a968613b5aa6a4ef284')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
