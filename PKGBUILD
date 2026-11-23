@@ -2,13 +2,16 @@
 _appname=affine
 pkgname="${_appname}-canary-bin"
 _pkgname=AFFiNE-canary
-_pkgver=2026.11.13
-_subver=canary.905
+_pkgver=2026.11.23
+_subver=canary.455
 pkgver="${_pkgver}_${_subver}"
 _electronversion=43
 pkgrel=1
 pkgdesc="A privacy-focused, local-first, open-source, and ready-to-use alternative for Notion & Miro.One hyper-fused platform for wildly creative minds. "
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://affine.pro/"
 _ghurl="https://github.com/toeverything/AFFiNE"
 license=(
@@ -24,17 +27,19 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${_pkgver}-${_subver}/${_appname}-${pkgver//_/-}-canary-linux-x64.deb"
     "LICENSE-MIT-${pkgver}::https://raw.githubusercontent.com/toeverything/AFFiNE/v${_pkgver}-${_subver}/LICENSE-MIT"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/toeverything/AFFiNE/v${_pkgver}-${_subver}/LICENSE"
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('101cf6ce70b3701060bdefe8582fa216cd7e16f72decc350d1e9df432fa8f527'
-            '1cdeca52d4f740361f103926144eb8b3f265975b2337d4e27b3313f72465897f'
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${_pkgver}-${_subver}/${_appname}-${pkgver//_/-}-canary-linux-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${_pkgver}-${_subver}/${_appname}-${pkgver//_/-}-canary-linux-x64.deb")
+sha256sums=('1cdeca52d4f740361f103926144eb8b3f265975b2337d4e27b3313f72465897f'
             'c107c8088fe42bce6def95d313cfe7b5984d3bb2c1608b67f855327da45f497b'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+sha256sums_aarch64=('fa4c465b0eec77ef0dd45ab2d53c0c9bf28ddde9cea536c18d20b8a8f1946269')
+sha256sums_x86_64=('049013b5c1b83e5b7d0fcceb046769c790d92899e404ed234943236e7c7a5a74')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
