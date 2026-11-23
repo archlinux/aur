@@ -1,0 +1,24 @@
+pkgbase = python-k3git
+	pkgdesc = wrapper of git command-line
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/pykit3/k3git
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	checkdepends = python-k3fs
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-k3str
+	depends = python-k3handy
+	provides = python-k3git
+	conflicts = python-k3git
+	source = k3git::git+https://github.com/pykit3/k3git.git#tag=v0.2.0
+	sha256sums = 61fe7475241e5b40b8a788eda62c106adf8b2622847386b4a82f7f5a2aa233ff
+
+pkgname = python-k3git
