@@ -1,0 +1,163 @@
+diff '--exclude=.git' -ura --new-file ./actionswf-actionswf-1.187-0/oaas/main.oc actionswfnew/oaas/main.oc
+--- ./actionswf-actionswf-1.187-0/oaas/main.oc	2026-11-23 13:49:29.000000000 +0200
++++ actionswfnew/oaas/main.oc	2026-11-23 16:58:10.735742938 +0200
+@@ -22,7 +22,8 @@
+ 
+ import "_resolve" _resolve
+ ^import "_firstline" _firstline
+-^import "_secondlinerequired" _secondlinerequired
++^import "_secondline" _secondline
++#^import "_oneline" _oneline
+ ^import "offset_get_p" offset_get_p
+ ^import "offsetsize_get" offsetsize_get
+ 
+@@ -129,12 +130,18 @@
+ 	set a# (FALSE)
+ 	return b
+ end
+-functionx secondlinerequired()
+-	ss a;set a _secondlinerequired()
++functionx secondline()
++	ss a;set a _secondline()
+ 	ss ?b;set b a#
+ 	set a# (FALSE)
+ 	return b
+ end
++#functionx oneline()
++#	ss a;set a _oneline()
++#	ss ?b;set b a#
++#	set a# (FALSE)
++#	return b
++#end
+ functionx offset()
+ 	sv offs#1
+ 	set offs offset_get_p()
+diff '--exclude=.git' -ura --new-file ./actionswf-actionswf-1.187-0/oaas/mw actionswfnew/oaas/mw
+--- ./actionswf-actionswf-1.187-0/oaas/mw	2026-11-23 13:49:29.000000000 +0200
++++ actionswfnew/oaas/mw	2026-11-23 16:58:12.115742343 +0200
+@@ -1,4 +1,4 @@
+ set -e
+-./mwa
++./mwa $@
+ cd ../tests/as3
+ ./aw $@
+diff '--exclude=.git' -ura --new-file ./actionswf-actionswf-1.187-0/oaas/solve.oc actionswfnew/oaas/solve.oc
+--- ./actionswf-actionswf-1.187-0/oaas/solve.oc	2026-11-23 13:49:29.000000000 +0200
++++ actionswfnew/oaas/solve.oc	2026-11-23 16:58:13.045741943 +0200
+@@ -9,7 +9,8 @@
+ #                            zflash.net. SharedObject\0
+ #                            yDELETE KEY\0
+ char firstline=FALSE
+-char secondlinerequired=FALSE
++char secondline=FALSE
++#char oneline=FALSE
+ value offset=-1
+ valuexu offsetsize#1
+ #
+@@ -56,9 +57,12 @@
+ function _firstline()
+ 	return #globals.firstline
+ end
+-function _secondlinerequired()
+-	return #globals.secondlinerequired
++function _secondline()
++	return #globals.secondline
+ end
++#function _oneline()
++#	return #globals.oneline
++#end
+ function offset_get_p()
+ 	return #globals.offset
+ end
+@@ -163,6 +167,7 @@
+ 	end
+ 	set c strcmp(value,#globals.bool_str_string)
+ 	if c=0
++		set globals.secondline (TRUE) #it is not erroring but if that will happen will catch
+ 		call sprintf(#globals.outvalue,"%c",(compare_null_char))
+ 		return #globals.outvalue
+ 	end
+@@ -183,7 +188,7 @@
+ 	char this_string="Cannot access this from a static function"
+ 	set c strcmp(value,#this_string) #with null to setFlag/return
+ 	if c=0
+-		set globals.firstline (TRUE)
++		#set globals.oneline (TRUE)
+ 		call sprintf(#globals.outvalue,"%c%c",(search_char),(this_char))
+ 		return #globals.outvalue
+ 	end
+@@ -197,6 +202,7 @@
+ 		#		end
+ 		#	end
+ 		set globals.firstline (TRUE)
++		#set globals.oneline (TRUE) #same like Void case but for first can be marked if required
+ 		call sprintf(#globals.outvalue,"%c",(compare_char)) #this is only for !comp side
+ 		return #globals.outvalue
+ 		#end
+@@ -219,7 +225,7 @@
+ 				call sprintf(#globals.outvalue,"%c",(Evfunc_char))
+ 				return #globals.outvalue
+ 			end
+-			set globals.secondlinerequired (TRUE)
++			set globals.secondline (TRUE)
+ 			set globals.offset offset_marker2
+ 			sub globals.offset offset_marker
+ 			set globals.offsetsize value
+@@ -232,24 +238,28 @@
+ 	char align_string="String should be flash.text.TextFormatAlign"^
+ 	set c strncmp(value,#align_string,\.align_string)
+ 	if c=0
++		#set globals.oneline (TRUE)
+ 		call sprintf(#globals.outvalue,"%c",(align_char))
+ 		callret solver_end(value,\.align_string)
+ 	end
+ 	char arrconstr_string="Too many arguments"^
+ 	set c strncmp(value,#arrconstr_string,\.arrconstr_string)
+ 	if c=0
++		#set globals.oneline (TRUE)
+ 		set globals.stored_char (arrconstr_char)
+ 		callret solver_endb(value,\.arrconstr_string)
+ 	end
+ 	char vartype_string="Variable requires type-hint or initialization"^
+ 	set c strncmp(value,#vartype_string,\.vartype_string)
+ 	if c=0
++		#set globals.oneline (TRUE)
+ 		call sprintf(#globals.outvalue,"%cDynamic",(vartype_char))
+ 		callret solver_end(value,\.vartype_string)
+ 	end
+ 	char evfunc_string="() -> Void should be Dynamic -> Void"^
+ 	set c strncmp(value,#evfunc_string,\.evfunc_string)
+ 	if c=0
++		#this is second , but on some second=first cases is not always returning useful even if last error, can be useful to add oneline
+ 		call sprintf(#globals.outvalue,"%c",(evfunc_char))
+ 		callret solver_end(value,\.evfunc_string)
+ 	end
+diff '--exclude=.git' -ura --new-file ./actionswf-actionswf-1.187-0/oaas3 actionswfnew/oaas3
+--- ./actionswf-actionswf-1.187-0/oaas3	2026-11-23 13:49:29.000000000 +0200
++++ actionswfnew/oaas3	2026-11-23 16:58:31.375734350 +0200
+@@ -82,7 +82,8 @@
+ 		lib.dualmode.restype = ctypes.c_char
+ 		lib.singlemode.restype = ctypes.c_char
+ 		lib.firstline.restype = ctypes.c_char
+-		lib.secondlinerequired.restype = ctypes.c_char
++		lib.secondline.restype = ctypes.c_char
++		#lib.oneline.restype = ctypes.c_char
+ 		lib.offset.restype = ctypes.c_ssize_t #a lib is a lib, stay independent
+ 		lib.offsetsize.restype = ctypes.c_size_t
+ 		lib.postpone_char.restype = ctypes.c_char
+@@ -881,10 +882,12 @@
+ 													if lib.firstline()[0]:
+ 														#was demonstrated that it also can not have a firstline
+ 														if firstline!=None: #at compare without exclamations is from if, not this case
+-															if solved: # it is no having ""
++															#if solved: # it is no having ""
+ 															#if firstline: #at compare without exclamations is from if, not this case
+-																line=firstline   # undo the jump, apply the fix on the original line
+-													elif lib.secondlinerequired()[0]: #is only 1 case at the moment
++															line=firstline   # undo the jump, apply the fix on the original line
++														#else:
++														#	line=None not required at the moment but can be useful, combined with oneline
++													elif lib.secondline()[0]:
+ 														if firstline!=None:
+ 															off = lib.offset()
+ 															if off != -1: #eNAME
