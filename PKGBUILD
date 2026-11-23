@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CeTF
-_pkgver=1.20.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Coexpression for Transcription Factors using Regulatory Impact Factors and Partial Correlation and Information Theory analysis'
 arch=('x86_64')
@@ -31,10 +31,12 @@ depends=(
   r-igraph
   r-network
   r-rcpp
-  r-rcpparmadillo
   r-rcy3
   r-s4vectors
   r-summarizedexperiment
+)
+makedepends=(
+  r-rcpparmadillo
 )
 optdepends=(
   r-airway
@@ -45,7 +47,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e48039edade6fe71650948c0c283a7956da87ee8cabaf6e9a978001ef5bd99b6')
+sha256sums=('3d3acac5f026ff59dcc7d668caa273b7649e054003833034263f9d8804ace715')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
