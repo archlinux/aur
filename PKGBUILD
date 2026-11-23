@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=cytofQC
-_pkgver=1.8.0
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ depends=(
   r-flowcore
   r-gbm
   r-ggplot2
-  r-hrbrthemes
   r-matrixstats
+  r-mixtools
   r-randomforest
   r-rmarkdown
   r-s4vectors
@@ -36,8 +36,8 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('550d38d16388b37eb673a524357de799')
-b2sums=('24136fe0b872383d9611cd48238434da55e7a97c1aab093bd606c4f90f262465dac1bab063bc786278ce7ffbad62ca2f8a49c99d6e75ff1ae1267cf67fc38c60')
+md5sums=('75aaf1cc9b991bc61c585fa9deea7277')
+b2sums=('bf88c3bc76edea0b0f6b7c0e5f81e3889360233a0e804c61b061494f3302b820f1d4f680a6967271f392f68798c59aa29121c6c13c4fc8bdec99f60999d9dab7')
 
 build() {
   mkdir build
