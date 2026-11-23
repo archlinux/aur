@@ -1,6 +1,6 @@
 pkgbase = oblyx-gui-bin
 	pkgdesc = Convert GoodNotes notebooks to SVG, PDF, PNG, and Notability .ntb (GUI, prebuilt binary)
-	pkgver = 0.1.0.r78
+	pkgver = 0.1.0.r80
 	pkgrel = 1
 	url = https://github.com/Coobyk/oblyx
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = oblyx-gui-bin
 	optdepends = oblyx-bin: command-line converter
 	provides = oblyx-gui
 	conflicts = oblyx-gui
-	source = oblyx-linux-x64-0.1.0.r78.tar.gz::https://github.com/Coobyk/oblyx/releases/download/v0.1.0.r78/oblyx-0.1.0.r78-linux-x64.tar.gz
-	source = oblyx-gui.desktop::https://raw.githubusercontent.com/Coobyk/oblyx/v0.1.0.r78/assets/oblyx-gui.desktop
-	source = oblyx.svg::https://raw.githubusercontent.com/Coobyk/oblyx/v0.1.0.r78/assets/oblyx.svg
-	sha256sums = bb69bc837fef9e7b5172977c815e7999fe4f160ec2111f8e228cacd14caa6fef
+	source = oblyx-linux-x64-0.1.0.r80.tar.gz::https://github.com/Coobyk/oblyx/releases/download/v0.1.0.r80/oblyx-0.1.0.r80-linux-x64.tar.gz
+	source = oblyx-gui.desktop::https://raw.githubusercontent.com/Coobyk/oblyx/v0.1.0.r80/assets/oblyx-gui.desktop
+	source = oblyx.svg::https://raw.githubusercontent.com/Coobyk/oblyx/v0.1.0.r80/assets/oblyx.svg
+	sha256sums = 134c15009ea5a7ea1435e7ac9f3a2c299e258df018b80c5f8e534c352c53e409
 	sha256sums = 30f23f6b9a8bafd261bd9d2f7ae3bcffff0615982ff1a1c7021cc37b568c0fbd
 	sha256sums = 606ddf346df5758cccb52c746850088947ad4dd07701988331134a0aeb734ea1
 
