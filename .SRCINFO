@@ -1,10 +1,11 @@
 pkgbase = easypostman-bin
 	pkgdesc = An open-source API debugging and stress testing tool inspired by Postman and JMeter
-	pkgver = 6.3.1
+	pkgver = 6.3.4
 	pkgrel = 1
 	url = https://github.com/lakernote/easy-postman
 	arch = x86_64
 	license = Apache-2.0
+	makedepends = imagemagick
 	depends = alsa-lib
 	depends = brotli
 	depends = bzip2
@@ -25,9 +26,9 @@ pkgbase = easypostman-bin
 	conflicts = easypostman
 	options = !strip
 	options = !debug
-	source = https://github.com/lakernote/easy-postman/releases/download/v6.3.1/EasyPostman-6.3.1-linux-amd64.deb
-	source = LICENSE::https://github.com/lakernote/easy-postman/raw/v6.3.1/LICENSE
-	sha256sums = 15692066fb68157c06edc89403dfee92b05998f76be2bfa034f143ac450bea2e
+	source = https://github.com/lakernote/easy-postman/releases/download/v6.3.4/EasyPostman-6.3.4-linux-amd64.deb
+	source = LICENSE::https://github.com/lakernote/easy-postman/raw/v6.3.4/LICENSE
+	sha256sums = dcc8c6c19236d63dc58e5e9ded290849a131bcd07a63a1747b8a505b4bdc6e3c
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 
 pkgname = easypostman-bin

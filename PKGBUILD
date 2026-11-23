@@ -5,7 +5,7 @@
 # The upstream .deb already bundles a trimmed Java runtime.
 
 pkgname=easypostman-bin
-pkgver=6.3.1
+pkgver=6.3.4
 pkgrel=1
 pkgdesc='An open-source API debugging and stress testing tool inspired by Postman and JMeter'
 arch=('x86_64')
@@ -32,13 +32,14 @@ depends=(
 provides=('easypostman')
 conflicts=('easypostman')
 options=('!strip' '!debug')
+makedepends=('imagemagick')
 
 source=(
   "${url}/releases/download/v${pkgver}/EasyPostman-${pkgver}-linux-amd64.deb"
   "LICENSE::${url}/raw/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '15692066fb68157c06edc89403dfee92b05998f76be2bfa034f143ac450bea2e'
+  'dcc8c6c19236d63dc58e5e9ded290849a131bcd07a63a1747b8a505b4bdc6e3c'
   'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
 )
 
@@ -57,18 +58,26 @@ prepare() {
 
 package() {
   install -d "$pkgdir/opt"
-  cp -a 'opt/easypostman' "$pkgdir/opt/"
+  # Ownership is normalised to root by fakeroot when the package is built, so
+  # there is no need to carry the source uid/gid over.
+  cp -a --no-preserve=ownership 'opt/easypostman' "$pkgdir/opt/"
 
   # Drop the Debian-only bits: upstream desktop entries live next to the
   # application and the doc directory only carries a copyright stub.
   rm -f "$pkgdir/opt/easypostman/lib/"*.desktop
   rm -rf "$pkgdir/opt/easypostman/share"
 
-  # Icons: 192x192 from the jar, 32x32 from the Debian package.
+  # Icons: the upstream .deb ships an ugly 32x32 bitmap next to the launchers,
+  # so every hicolor size is derived from the 192x192 icon embedded in the jar.
+  # The desktop entry points straight at the 192x192 file, which keeps small
+  # panels and launchers from picking a low-resolution variant.
   install -Dm644 'easypostman-192.png' \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/easypostman.png"
-  install -Dm644 'opt/easypostman/lib/EasyPostman.png' \
-    "$pkgdir/usr/share/icons/hicolor/32x32/apps/easypostman.png"
+  for size in 16 22 24 32 48 64 128; do
+    install -d "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
+    magick 'easypostman-192.png' -background none -resize "${size}x${size}" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/easypostman.png"
+  done
 
   # Command line launchers.
   install -d "$pkgdir/usr/bin"
@@ -85,7 +94,7 @@ Name=EasyPostman
 GenericName=API Testing Tool
 Comment=An open-source API debugging and stress testing tool
 Exec=/opt/easypostman/bin/EasyPostman %U
-Icon=easypostman
+Icon=/usr/share/icons/hicolor/192x192/apps/easypostman.png
 Terminal=false
 Categories=Development;
 Keywords=api;http;rest;postman;testing;debug;
