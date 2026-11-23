@@ -1,6 +1,6 @@
 pkgbase = hauler
 	pkgdesc = Fast, resumable download manager: segmented engine, systemd daemon and Kirigami app
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/hauler
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = hauler
 	depends = qqc2-desktop-style
 	optdepends = uq: Downloads widget in the bar, "Download with hauler" in look=see>do_ and the Downloads page in Settings
 	options = !lto
-	source = hauler-0.2.4.tar.gz::https://github.com/asafelobotomy/hauler/archive/refs/tags/v0.2.4.tar.gz
-	sha256sums = 51bc17980c0ef54d9edad3e6d7381c37c277823d8929925018d6ca190b2fb4c7
+	source = hauler-0.2.5.tar.gz::https://github.com/asafelobotomy/hauler/archive/refs/tags/v0.2.5.tar.gz
+	sha256sums = ace80d980d0c7cc654c2e1b22e21f52034a791d4b397f2828748a43765124453
 
 pkgname = hauler

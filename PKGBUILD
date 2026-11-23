@@ -6,7 +6,7 @@
 # checkout instead.
 
 pkgname=hauler
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='Fast, resumable download manager: segmented engine, systemd daemon and Kirigami app'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('uq: Downloads widget in the bar, "Download with hauler" in look=see
 # Rust links its own LTO; makepkg's C/C++ LTO flags break the cxx-qt objects.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('51bc17980c0ef54d9edad3e6d7381c37c277823d8929925018d6ca190b2fb4c7')
+sha256sums=('ace80d980d0c7cc654c2e1b22e21f52034a791d4b397f2828748a43765124453')
 
 prepare() {
   cd "$pkgname-$pkgver"
