@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GenomicFiles
-_pkgver=1.44.1
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.1
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Distributed computing by file or by range'
 arch=('any')
@@ -11,6 +11,7 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
+  r-biocbaseutils
   r-biocgenerics
   r-biocparallel
   r-genomeinfodb
@@ -21,6 +22,7 @@ depends=(
   r-rsamtools
   r-rtracklayer
   r-s4vectors
+  r-seqinfo
   r-summarizedexperiment
   r-variantannotation
 )
@@ -36,7 +38,7 @@ optdepends=(
   r-snpstats
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d60f84b1e6abf7e644c640e72515773bec8909e0a44979d91e3c96f0b49c28cc')
+sha256sums=('30b4ce1c9ba49a948453386bf5269c38111c9ef258119ab67b50e8e515c9eb26')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
