@@ -1,34 +1,34 @@
 # Maintainer: Coobyk <mail@coobyk.com>
 pkgname=tdrive
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=2
 pkgdesc="TDrive-compatible Telegram-backed cloud drive client — Rust + GPUI desktop app"
 arch=('x86_64' 'aarch64')
-url="https://github.com/Coobyk/tdrive-rs"
+url="https://github.com/Coobyk/tdrive"
 license=('MIT')
 depends=('fuse3' 'openssl' 'fontconfig' 'libxcb' 'libxkbcommon' 'wayland')
 makedepends=('cargo')
 provides=('tdrive')
 conflicts=('tdrive')
-source=("tdrive-rs-$pkgver.tar.gz::https://github.com/Coobyk/tdrive-rs/archive/v$pkgver.tar.gz")
-sha256sums=('9073a3c6401a897b60ecf49e60a5959aba364db67f88499d8c0660f6af102bd1')
+source=("tdrive-$pkgver.tar.gz::https://github.com/Coobyk/tdrive/archive/v$pkgver.tar.gz")
+sha256sums=('36ac041930275b131bd994bae02086c82cacc579f41641b72471693493422143')
 
 prepare() {
-    cd "tdrive-rs-$pkgver"
+    cd "tdrive-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "tdrive-rs-$pkgver"
+    cd "tdrive-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
 
 package() {
-    cd "tdrive-rs-$pkgver"
-    install -Dm755 "target/release/tdrive-rs" "$pkgdir/usr/bin/tdrive"
+    cd "tdrive-$pkgver"
+    install -Dm755 "target/release/tdrive" "$pkgdir/usr/bin/tdrive"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 packaging/tdrive.desktop "$pkgdir/usr/share/applications/tdrive.desktop"
     install -Dm644 assets/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/tdrive.svg"
