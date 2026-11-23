@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=missForest
-_pkgver=1.5
+_pkgver=1.6.1
 pkgname=r-${_pkgname,,}
-pkgver=1.5
-pkgrel=6
+pkgver=1.6.1
+pkgrel=1
 pkgdesc='Nonparametric Missing Value Imputation using Random Forest'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,12 +16,16 @@ depends=(
   r-iterators
   r-itertools
   r-randomforest
+  r-ranger
+  r-rdpack
 )
 optdepends=(
   r-doparallel
+  r-knitr
+  r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('417055a03b02ad8359cf1bdc8f89d49531a3a8ee2c98edf90c8a01432f44838d')
+sha256sums=('895a13c10c694f3de3347d56988d8c69abe527e55cff2f83ebf128369de0739f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
