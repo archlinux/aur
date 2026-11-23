@@ -1,6 +1,6 @@
 pkgbase = r-rexposome
 	pkgdesc = Exposome exploration and outcome data analysis
-	pkgver = 1.30.0
+	pkgver = 1.34.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rexposome
 	arch = any
@@ -21,7 +21,6 @@ pkgbase = r-rexposome
 	depends = r-lme4
 	depends = r-lsr
 	depends = r-mice
-	depends = r-pryr
 	depends = r-reshape2
 	depends = r-s4vectors
 	depends = r-scales
@@ -34,8 +33,8 @@ pkgbase = r-rexposome
 	optdepends = r-mclust
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rexposome_1.30.0.tar.gz
-	md5sums = 1f4bc5e1021eaf6c77d0ce384f4a074f
-	b2sums = 6b07ad1ffc6a45c20345f9e3fc828cb060a25b8e093e90dcf8955995271065a0a52b1f1cd21d8d53a8a7d840dfb5e16e0cccdb76a7c683481647dc80eebf7925
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rexposome_1.34.2.tar.gz
+	md5sums = 115b1388033dbd8aa722bb3c05dcbac8
+	b2sums = 95778cfef322451f016c1f40774cb105b7fbcf424c8b5b1e65870704c7a1f4022d77c54d12667c9d7418a9cbcb3f7a7c900404c3a13b79f406b3c38a04ab985c
 
 pkgname = r-rexposome
