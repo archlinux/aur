@@ -1,0 +1,20 @@
+pkgbase = python-k3ut
+	pkgdesc = Unittest utilities with debug logging and test helpers
+	pkgver = 0.1.22
+	pkgrel = 1
+	url = https://github.com/pykit3/k3ut
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3ut
+	conflicts = python-k3ut
+	source = k3ut::git+https://github.com/pykit3/k3ut.git#tag=v0.1.22
+	sha256sums = fc35ce451f21a8b4b523176b2bd6a3a14ab0b0b463edce3cf573c2ed075215dc
+
+pkgname = python-k3ut
