@@ -1,16 +1,17 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=arsenal
-_pkgver=3.6.3
+_pkgver=3.7.4
 pkgname=r-${_pkgname,,}
-pkgver=3.6.3
-pkgrel=4
+pkgver=3.7.4
+pkgrel=1
 pkgdesc="An Arsenal of 'R' Functions for Large-Scale Statistical Summaries"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-glue
   r-knitr
 )
 optdepends=(
@@ -24,13 +25,14 @@ optdepends=(
   r-rmarkdown
   r-rpart
   r-splines
+  r-stddiff
   r-survival
   r-testthat
   r-xtable
   r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bace6e1cf66574db8edb142a2cc4f81feda511e612c3f69e955636241a1d7a63')
+sha256sums=('c478e918a2f0c778c9c3ee10d200f70d14870310769640c1e8771bab2ca3c112')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
