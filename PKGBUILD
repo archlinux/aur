@@ -1,6 +1,6 @@
 # Maintainer: Nick <evilnick002 at gmail dot com>
 pkgname=orpheus-desktop-bin
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Desktop app for the Orpheus Discord music bot, with the full dashboard, media controls and a tray remote"
 arch=('x86_64')
@@ -25,7 +25,7 @@ provides=('orpheus-desktop')
 conflicts=('orpheus-desktop')
 
 source=("$pkgname-$pkgver.deb::https://downloads.evilnick.net/orpheus-desktop/$pkgver/Orpheus_${pkgver}_amd64.deb")
-sha256sums=('e7735260d42df93d0af6103711b4e5606b858ced54e275c2731c4ec4a5da4b06')
+sha256sums=('8eadc02705a18cb032ee4af92bfbbb444e9bb549e39845e222c3de02e7e9f0b3')
 
 prepare() {
     cd "$srcdir"
