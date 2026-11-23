@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bilibili
 _pkgver=1.20.0
-_subver=2
+_subver=3
 pkgver="${_pkgver}_${_subver}"
 _electronversion=43
 _nodeversion=24
@@ -46,9 +46,9 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('9d0b2f116756cddccd043bed65efaedd5272e9f40231d71ce093d7a5b7282f74'
+sha256sums=('7890b564690dcb491562d6a0689176f20326f771a943c32d14e7566c1dbfcb34'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -141,6 +141,9 @@ build() {
     sh tools/extension.sh
     mv tmp/bili/resources/* app
     find "$(_get_project_dir)/app" -type d \( -name "*win32*" -o -name "*darwin*" \) -exec rm -rf {} +
+    rm -rf \
+        "$(_get_project_dir)/app/app/node_modules/@nut-tree/node-mac-permissions" \
+        "$(_get_project_dir)/app/app.asar.unpacked/node_modules/clipboardy/fallbacks/windows"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"

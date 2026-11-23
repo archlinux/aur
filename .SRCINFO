@@ -1,6 +1,6 @@
 pkgbase = bilibili
 	pkgdesc = Linux version based on Beilai official client porting supports roaming.基于哔哩哔哩官方客户端移植的Linux版本,支持漫游
-	pkgver = 1.20.0_2
+	pkgver = 1.20.0_3
 	pkgrel = 1
 	url = https://www.jysafe.cn/
 	arch = aarch64
@@ -25,11 +25,11 @@ pkgbase = bilibili
 	conflicts = bilibili
 	options = !strip
 	options = !emptydirs
-	source = bilibili-1.20.0_2.tar.gz::https://github.com/msojocs/bilibili-linux/archive/refs/tags/v1.20.0-2.tar.gz
+	source = bilibili-1.20.0_3.tar.gz::https://github.com/msojocs/bilibili-linux/archive/refs/tags/v1.20.0-3.tar.gz
 	source = bilibili.js
 	source = bilibili.sh
-	sha256sums = 9d0b2f116756cddccd043bed65efaedd5272e9f40231d71ce093d7a5b7282f74
+	sha256sums = 7890b564690dcb491562d6a0689176f20326f771a943c32d14e7566c1dbfcb34
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
 pkgname = bilibili
