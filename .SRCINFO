@@ -1,6 +1,6 @@
 pkgbase = fcitx5-windinput-bin
 	pkgdesc = 基于 Debian 发行包重打包的清风输入法 Fcitx5 Linux 预览版
-	pkgver = 0.132.0
+	pkgver = 0.133.0
 	pkgrel = 1
 	url = https://windinput.com
 	install = windinput.install
@@ -30,17 +30,17 @@ pkgbase = fcitx5-windinput-bin
 	optdepends = xdg-utils: open links and associated files
 	optdepends = xdg-desktop-portal: file dialogs, requires a desktop-specific portal backend
 	optdepends = zenity: fallback file dialogs
-	provides = windinput=0.132.0
-	provides = windinput-bin=0.132.0
+	provides = windinput=0.133.0
+	provides = windinput-bin=0.133.0
 	conflicts = windinput
 	conflicts = windinput-bin
 	options = !strip
 	options = !debug
-	source = WindInput-0.132.0-LICENSE::https://raw.githubusercontent.com/huanfeng/WindInput/v0.132.0/LICENSE
+	source = WindInput-0.133.0-LICENSE::https://raw.githubusercontent.com/huanfeng/WindInput/v0.133.0/LICENSE
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	source_x86_64 = https://github.com/huanfeng/WindInput/releases/download/v0.132.0/WindInput-0.132.0-linux-amd64.deb
-	sha256sums_x86_64 = 7b2f0e286e4b5b7c815a46aabd55f017b96b569077a4df2ad791c48c907a0819
-	source_aarch64 = https://github.com/huanfeng/WindInput/releases/download/v0.132.0/WindInput-0.132.0-linux-arm64.deb
-	sha256sums_aarch64 = e298592af45dd871260122d6704204eddee15de878db30f3bba83c14c9e11620
+	source_x86_64 = https://github.com/huanfeng/WindInput/releases/download/v0.133.0/WindInput-0.133.0-linux-amd64.deb
+	sha256sums_x86_64 = 3fc94444ae4a473854f2c17d762fd3c0cac67f567e22067154b21c930b26af6d
+	source_aarch64 = https://github.com/huanfeng/WindInput/releases/download/v0.133.0/WindInput-0.133.0-linux-arm64.deb
+	sha256sums_aarch64 = db73b75e18e277abb778b7adc8587450cc8d77a97df0d6102b7c511a360c77d7
 
 pkgname = fcitx5-windinput-bin
