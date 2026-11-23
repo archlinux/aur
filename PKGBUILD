@@ -13,7 +13,7 @@
 
 pkgbase=vim-classic
 pkgname=('vim-classic' 'gvim-classic' 'vim-classic-runtime')
-pkgver=8.3.0
+pkgver=8.3.1
 _versiondir=83
 pkgrel=1
 pkgdesc='a fork of Vim 8.x for long-term maintenance'
@@ -39,17 +39,26 @@ source=(vim-classic-v${pkgver}.tar.gz::https://git.sr.ht/~sircmpwn/vim-classic/a
         https://git.sr.ht/~sircmpwn/vim-classic/refs/download/v${pkgver}/vim-classic-v${pkgver}.tar.gz.sig
         vimrc
         archlinux.vim
-        vimdoc.hook)
-sha256sums=('6e1c97c8269e9354bbc474f0efa7e1e0b23fcdb6075067474d731a9bfac6e8ef'
+        vimdoc.hook
+        0001-ruby-fix.patch)
+sha256sums=('1d9baef8dab6751145b7c4460e85c0af1f4c432bf8ff03d8db13b977fca31e8c'
             'SKIP'
             'b16e85e457397ab2043a7ee0a3c84307c6b4eac157fd0b721694761f25b3ed5b'
             'cc3d931129854c298eb22e993ec14c2ad86cc1e70a08a64496f5e06559289972'
-            '8e9656934d9d7793063230d15a689e10455e6db9b9fe73afa0f294792795d8ae')
+            '8e9656934d9d7793063230d15a689e10455e6db9b9fe73afa0f294792795d8ae'
+            'd53a3e04ddfa20c642a56180cdbd533c4dfe47132d6c16ac9c68b955d9893149')
 validpgpkeys=('9FB5E737DC25B29D8EEC469142F3F1862E3CC4B8') # Drew DeVault <drew@ddevault.org>
 
 prepare() {
-  (cd vim-classic-v${pkgver}/src
+  (cd vim-classic-v${pkgver}
+    # Fix build error until it gets fixed upstream
+    # reported at <https://todo.sr.ht/~sircmpwn/vim-classic/19>
+    # I made this patch and other packagers have told me on IRC that they use it
+    # so that's what I'll use for now. This patch will be removed once the issue
+    # is no longer upstream
+    patch -Np1 -i ../0001-ruby-fix.patch
     # define the place for the global (g)vimrc file (set to /etc/vimrc)
+    cd src
     sed -E 's|^.*(#define SYS_.*VIMRC_FILE.*").*$|\1|g' -i feature.h
     sed -E 's|^.*(#define VIMRC_FILE.*").*$|\1|g' -i feature.h
     autoconf
