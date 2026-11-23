@@ -2,7 +2,7 @@
 
 pkgname=sweet-gtk-theme-git
 _pkgname=Sweet
-pkgver=r821.d2fd1da
+pkgver=r822.78cf722
 pkgrel=1
 pkgdesc="A dark, colorful theme for GTK 3, GTK 4 and GNOME Shell"
 arch=('any')
