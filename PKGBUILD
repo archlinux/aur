@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=Statial
-_pkgver=1.6.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,6 +14,7 @@ depends=(
   r-concaveman
   r-data.table
   r-dplyr
+  r-edger
   r-ggplot2
   r-limma
   r-magrittr
@@ -30,6 +31,7 @@ depends=(
   r-tibble
   r-tidyr
   r-tidyselect
+  r-treekor
 )
 checkdepends=(
   r-testthat
@@ -44,8 +46,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2c77e967b17130dd31b95ecf030b4fa8')
-b2sums=('0d02fb255a51254884b5a8ae42ab4307aa4c65534abb6aeadfda99ae3a7362187b04e316fd29a4b647142152cd0ec661906841f1274e24673bca25bd07a22be3')
+md5sums=('67e13cc0855e76ac4c4ead4e07ba630a')
+b2sums=('b5611ad77e3a21ad0d4d2cd033e898c21f8757891f4c7f71dc5240d2e20c6ea7e156e5482db7b460723215beedd0572d8d6a19de6c6a4cb8992fd1045ec76dd6')
 
 build() {
   mkdir build
