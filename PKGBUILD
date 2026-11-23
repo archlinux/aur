@@ -1,6 +1,6 @@
 # Maintainer: Renan BS <renan.biegel@gmail.com>
 pkgname=orca-ade-bin
-pkgver=1.4.271
+pkgver=1.4.272
 pkgrel=1
 pkgdesc='Next-gen IDE for parallel agentic development'
 arch=('x86_64' 'aarch64')
@@ -31,8 +31,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/stablyai/orca/v${p
 source_x86_64=("${_debrel}/orca-ide_${pkgver}_amd64.deb")
 source_aarch64=("${_debrel}/orca-ide_${pkgver}_arm64.deb")
 sha512sums=('faaf3b47b8ad4018071f90277e350ec5a6f393f0b43cf7f8d8ce94ac5553a57c94476ed282491e6899da0543fcdecd08598931e3ef1bb06ca8aaa388da13e70f')
-sha512sums_x86_64=('4e092860a81b3e09c2d122b8c35d82a43e76ec4b8ca3ac04f577abd4b34bff5ec11e0e69597432f947fc2094fbd7d63c209535f74bd2ba27a8a4d0cab47308dc')
-sha512sums_aarch64=('6d52cdae84f5396ee87f5219b1b880e75a20995bd53b4c9b6c11d2ade8bf34691a7dd632ebea4bfe5565e044c7ba3256d2383b5ac86b1d6971602286286463cf')
+sha512sums_x86_64=('681c8c8ff2dff01e08591d2bce9346e7bc89dd6b6133a914aa4742d78a57a349a6c582fcd504f7df72397f35d051adb164a8d416a9efcc2565af4bfc4dcbd058')
+sha512sums_aarch64=('8ac81ad998fa0e78f7c6e179e22ed0314204c88aac13d06dda323a364a211b98ec9f24390cf0e4523e3414c480a1e5d940f4624f2d3f9e0b83740b246d5a3f65')
 
 _debname() {
   case $CARCH in
