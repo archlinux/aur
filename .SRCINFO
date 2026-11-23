@@ -1,6 +1,6 @@
 pkgbase = r-rtf
-	pkgdesc = Rich Text Format (RTF) Output
-	pkgver = 0.4.14.1
+	pkgdesc = Rich Text Format ('RTF') Output
+	pkgver = 0.4.15
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rtf
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = r-rtf
 	depends = r-r.methodss3
 	depends = r-r.oo
 	optdepends = r-ggplot2
-	optdepends = r-gsubfn
 	optdepends = r-xtable
-	source = https://cran.r-project.org/src/contrib/rtf_0.4-14.1.tar.gz
-	md5sums = b3afa99fabe3b95a92937812db98acbc
-	b2sums = 7a4a1c15f4744ca88d3781ae064a2bd7e63cccb534cac955e5485ba551d0b72d2112037d67d56f10b82acb61048cc1bb827e3a346859d29b127a4b3da848fa4d
+	source = https://cran.r-project.org/src/contrib/rtf_0.4-15.tar.gz
+	md5sums = f0c0f543503b2dc8c3def05f14fe44d7
+	b2sums = ec4894359e1eebfdefdd1d9bae75dae445bfffd438d118c0fd21d2d03b838e934a8ab352cd7729b708b270e3ae649144e51432ba37e38266889f370ba4d94ebf
 
 pkgname = r-rtf
