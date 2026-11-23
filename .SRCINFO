@@ -1,6 +1,6 @@
 pkgbase = meshcore-cli-git
 	pkgdesc = Command line interface to MeshCore node.
-	pkgver = 1.6.6.r632.20261014.dfcc74e
+	pkgver = 1.6.10.r640.20261111.34355c9
 	pkgrel = 1
 	url = https://github.com/meshcore-dev/meshcore-cli
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = meshcore-cli-git
 	optdepends = geoclue: For example script '/usr/share/doc/meshcore-cli/scripts/getpos.py'.
 	optdepends = glib2: For example script '/usr/share/doc/meshcore-cli/scripts/getpos.py'.
 	optdepends = python-gobject: For example script '/usr/share/doc/meshcore-cli/scripts/getpos.py'.
-	provides = meshcore-cli=1.6.6.r632.20261014.dfcc74e
+	provides = meshcore-cli=1.6.10.r640.20261111.34355c9
 	conflicts = meshcore-cli
 	source = meshcore-cli::git+https://github.com/meshcore-dev/meshcore-cli.git
 	sha256sums = SKIP
