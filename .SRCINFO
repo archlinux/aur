@@ -1,5 +1,5 @@
 pkgbase = lumalarm
-	pkgdesc = Glassmorphism alarm clock for Linux with rtcwake, D-Bus wake helper, multilingual UI and emoji-density control
+	pkgdesc = Glassmorphism alarm clock for Linux with RTC wake-up, D-Bus wake helper, multilingual interface, and emoji density control
 	pkgver = 1.0.5
 	pkgrel = 3
 	url = https://github.com/shinigami1231111/lumalarm
