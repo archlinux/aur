@@ -1,6 +1,6 @@
 # Maintainer: thefangeddeity
 pkgname=laptop-livecam
-pkgver=7.2.2
+pkgver=7.2.3
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -39,7 +39,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/laptop-livec
         "laptop-livecam.install"
         "$_model::https://github.com/thefangeddeity/laptop-livecam/releases/download/$_model_tag/$_model")
 noextract=("$_model")
-sha256sums=('98ab3f13b790f533a986043e280297e90cddf45b79feacec3299f2efa529ad75'
+sha256sums=('37676273a78b3be34afd0e7c378dcb51b1753246aa22af418595ab1c3cb33b67'
             '8841120a91604403eac4fc5ee27ec05dcb970284cf17b34693ffe151dc4dafda'
             'b2bc52f40e8e1c532427d5bde3575a5d5b571b739fab2c6df443733ed1589cbd')
 
@@ -85,6 +85,8 @@ package() {
                    "$pkgdir/usr/share/hls-livecam-server/llc-configure"
     install -Dm644 pkg/usr/share/hls-livecam-server/device.env.legacy-comments \
                    "$pkgdir/usr/share/hls-livecam-server/device.env.legacy-comments"
+    install -Dm755 pkg/usr/share/hls-livecam-server/wait-for-network \
+                   "$pkgdir/usr/share/hls-livecam-server/wait-for-network"
     install -Dm755 pkg/usr/share/hls-livecam-server/hls-livecam-setup-arch \
                    "$pkgdir/usr/share/hls-livecam-server/hls-livecam-setup"
     install -Dm755 pkg/usr/share/hls-livecam-server/hls-livecam-repair \
