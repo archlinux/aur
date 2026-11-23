@@ -2,7 +2,7 @@
 pkgname=saber-bin
 _appname="com.adilhanney.${pkgname%-bin}"
 _pkgname=Saber
-pkgver=1.37.2
+pkgver=1.38.0
 pkgrel=1
 pkgdesc="The cross-platform open-source app built for handwriting."
 arch=(
@@ -26,8 +26,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz")
 source=("${pkgname%-bin}.sh")
 sha256sums=('a46613b6df5ea182d243b68fa5ed3df97f307cf9d81788c9ff4c0e1d6f671dfe')
-sha256sums_aarch64=('a679e44e16c76bebe400e49750bdd589bd7eca327f8fa6aace6dc34c7d903c41')
-sha256sums_x86_64=('24138828ad8a2988d2421203bae7a0aab7372de3fcc730acd5967a5479b3199f')
+sha256sums_aarch64=('51f04c42ad80554976aa735fdd7526b2d660d7b0baeb84094ae34bb6a7ab33c4')
+sha256sums_x86_64=('d24491bd140c4481b7f722eed4157a90197a19a0665f08a3b48fb93ebdbf517f')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
