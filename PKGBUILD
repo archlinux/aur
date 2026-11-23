@@ -3,7 +3,7 @@
 _pkgname=csv2md
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=1.8.0.r78.20261110.a893db8
+pkgver=1.8.0.r79.20261121.e965130
 pkgrel=1
 pkgdesc='Command line tool for converting CSV files into Markdown tables.'
 url='https://pypi.org/project/csv2md/'
