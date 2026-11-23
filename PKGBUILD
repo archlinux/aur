@@ -3,7 +3,7 @@ pkgver=4.5.6
 pkgrel=1
 pkgdesc='Douyin mini game and mini app developer tools repackaged for Linux'
 arch=('x86_64')
-url='https://github.com/Geequlim/-douyin-game-devtools-linux'
+url='https://github.com/Geequlim/aur-packages/tree/main/packages/douyin-devtools-bin'
 license=('custom')
 depends=(
   'alsa-lib'
@@ -20,7 +20,7 @@ options=('!debug' '!strip')
 
 _appimage='DouyinDevTools-4.5.6-x86_64.AppImage'
 source=(
-  'DouyinDevTools-4.5.6-x86_64.AppImage::https://github.com/Geequlim/-douyin-game-devtools-linux/releases/download/v4.5.6/DouyinDevTools-4.5.6-x86_64.AppImage'
+  'DouyinDevTools-4.5.6-x86_64.AppImage::https://github.com/Geequlim/aur-packages/releases/download/douyin-devtools-v4.5.6/DouyinDevTools-4.5.6-x86_64.AppImage'
   'douyin-devtools.desktop'
   'douyin-devtools.png'
 )
