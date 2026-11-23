@@ -8,24 +8,26 @@
 #   DEVECO_DEVICETOOL_URL='<signed url>' makepkg -si
 # or drop devicetool-linux-tool-<version>.zip next to this PKGBUILD.
 #
-# The vendor installer refuses a non-empty target, so the payload lives in
-# /usr/share/deveco-devicetool/installer and only the wrapper triggers it; the
-# actual tool lands in /opt/Huawei/DevEco-Device-Tool at first run.
+# The package acts as the installer: it runs the vendored install.py under
+# python3.9 into $pkgdir/opt (offline, --all-in-one 0), relocates the venv paths
+# from the build directory to /opt, and unpacks the bundled VS Code extensions
+# system-wide instead of shelling out to 'code'.
 pkgname=deveco-devicetool
 pkgver=4.0.0.400
-pkgrel=6
+pkgrel=7
 pkgdesc='HUAWEI DevEco Device Tool for OpenHarmony device development (VS Code toolchain bundle)'
 arch=('x86_64')
 url='https://device.harmonyos.com/cn/develop/ide/'
 license=('LicenseRef-Huawei-EULA')
-depends=('python' 'unzip')
-optdepends=('code: load the bundled DevEco Device Tool extensions')
+depends=('python39' 'unzip')
+makedepends=('python39')
+optdepends=('code: IDE that loads the bundled DevEco Device Tool extensions')
 options=('!strip')
 source=()
 sha256sums=()
 
 _zip_glob=devicetool-linux-tool-*.zip
-_installer=usr/share/$pkgname/installer
+_root=opt/Huawei/DevEco-Device-Tool
 
 pkgver() {
   local f v
@@ -50,15 +52,11 @@ prepare() {
       fi
       f="$srcdir/$name"
       msg "fetching $name"
-      curl -fL --retry 3 -o "$f" "$DEVECO_DEVICETOOL_URL" ||
-        { error "download failed"; return 1; }
+      curl -fL --retry 3 -o "$f" "$DEVECO_DEVICETOOL_URL" || { error "download failed"; return 1; }
     else
       error "No DevEco Device Tool archive found."
-      error ""
       error "  Download the Linux build from https://device.harmonyos.com/cn/develop/ide"
-      error "  then either copy the link and run"
-      error "    DEVECO_DEVICETOOL_URL='<signed url>' makepkg -si"
-      error "  or place devicetool-linux-tool-<version>.zip next to this PKGBUILD."
+      error "  then run: DEVECO_DEVICETOOL_URL='<signed url>' makepkg -si"
       return 1
     fi
   fi
@@ -73,37 +71,63 @@ prepare() {
   fi
   chmod +x "$shf"
   sh "$shf" --noexec --nox11 --target "$srcdir/extracted"
-  chmod 755 "$srcdir/extracted/"*.sh 2>/dev/null || true
+}
+
+build() {
+  cd "$srcdir/extracted"
+  if [[ -d "$srcdir/stage" ]]; then
+    chmod -R u+rwX "$srcdir/stage" 2>/dev/null || true
+    rm -rf "$srcdir/stage"
+  fi
+  rm -rf "$srcdir/fakehome"
+  mkdir -p "$srcdir/fakehome"
+  python3.9 install.py \
+    --install-path "$srcdir/stage" \
+    --home-dir "$srcdir/fakehome" \
+    --json-path "$srcdir/fakehome/settings.json" \
+    --py-version 3.9 --all-in-one 0
 }
 
 package() {
-  install -d "$pkgdir/$_installer"
-  cp -r --no-preserve=ownership "$srcdir/extracted/." "$pkgdir/$_installer/"
-  chmod 755 "$pkgdir/$_installer/"*.sh
+  install -d "$pkgdir/$_root"
+  cp -r --no-preserve=ownership "$srcdir/stage/." "$pkgdir/$_root/"
+
+  # The venv and helper scripts bake in the staging path; rewrite it to the
+  # final location so the tree is relocatable.
+  local staged="$srcdir/stage" final="/$_root"
+  grep -rIl "$staged" "$pkgdir/$_root" 2>/dev/null | while read -r f; do
+    sed -i "s|${staged}|${final}|g" "$f"
+  done
+
+  # VS Code extensions: unpack system-wide instead of running 'code'
+  install -d "$pkgdir/usr/lib/code/extensions"
+  local vsix name ver dir
+  for vsix in "$srcdir/extracted/"*.vsix; do
+    name=$(bsdtar -xOf "$vsix" extension/package.json 2>/dev/null |
+      python3 -c 'import json,sys; d=json.load(sys.stdin); print(d.get("publisher","")+"."+d.get("name",""))')
+    ver=$(bsdtar -xOf "$vsix" extension/package.json 2>/dev/null |
+      python3 -c 'import json,sys; print(json.load(sys.stdin).get("version",""))')
+    if [[ -z "$name" || -z "$ver" ]]; then
+      warning "cannot read identity from $(basename "$vsix"), skipping"
+      continue
+    fi
+    dir="$pkgdir/usr/lib/code/extensions/${name}-${ver}"
+    tmpdir=$(mktemp -d)
+    unzip -q "$vsix" -d "$tmpdir"
+    install -d "$dir"
+    cp -r --no-preserve=ownership "$tmpdir/extension/." "$dir/"
+    rm -rf "$tmpdir"
+  done
 
   install -d "$pkgdir/usr/lib/udev/rules.d"
   install -m644 "$srcdir/extracted"/*.rules "$pkgdir/usr/lib/udev/rules.d/"
 
   install -Dm644 "$srcdir/extracted/privacy_statement.txt" "$pkgdir/usr/share/licenses/$pkgname/EULA.txt"
 
-  install -d "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/deveco-devicetool" <<'EOF'
-#!/bin/sh
-# The vendor installer insists on creating its own target directory, so it is
-# started from the payload directory and only writes /opt on first run.
-cd /usr/share/deveco-devicetool/installer || exit 1
-exec sudo -E bash ./run.sh --system "$@"
-EOF
-  chmod 755 "$pkgdir/usr/bin/deveco-devicetool"
-
   install -d "$pkgdir/usr/share/doc/$pkgname"
   printf '%s\n' \
-    'The DevEco Device Tool payload lives in /usr/share/deveco-devicetool/installer.' \
-    'Run deveco-devicetool once to install it into /opt/Huawei/DevEco-Device-Tool' \
-    'and to install the bundled VS Code extensions for the invoking user.' \
-    '' \
-    'The vendor installer refuses a non-empty target: remove' \
-    '  /opt/Huawei/DevEco-Device-Tool' \
-    'if an earlier attempt left files there.' \
+    'DevEco Device Tool is installed under /opt/Huawei/DevEco-Device-Tool.' \
+    'VS Code extensions are unpacked into /usr/lib/code/extensions.' \
+    'See /opt/Huawei/DevEco-Device-Tool/core/setenv.sh for the runtime env.' \
     > "$pkgdir/usr/share/doc/$pkgname/README"
 }
