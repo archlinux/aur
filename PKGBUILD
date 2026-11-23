@@ -4,13 +4,14 @@
 # signature-bearing and rotates per session, so no public, stable URL exists and
 # the source list is intentionally empty. Provide the archive at build time:
 #
-#   1. download it in a browser from
-#      https://developer.huawei.com/consumer/cn/download/command-line-tools-for-hmos
-#   2. copy the download link, then either
-#        ./deveco-clt-url          # reads the link from the clipboard
-#      or
-#        DEVECO_CLT_URL='<signed url>' makepkg -si
-#      or drop the zip next to this PKGBUILD.
+#   1. install the helper once and sign in once:
+#        yay -S deveco-clt-url && deveco-clt-url --login-cookie
+#   2. build; prepare() asks the helper for a signed URL automatically
+#      (or pass one yourself: DEVECO_CLT_URL='<signed url>' makepkg -si,
+#       or drop commandline-tools-linux-x64-<ver>.zip next to this PKGBUILD)
+#
+# The helper only mints a link for a session you already created in a browser;
+# it is an optional convenience, not a build dependency.
 #
 # pkgver() derives the real version from the archive filename, so this PKGBUILD
 # does not have to be edited for every upstream release.
@@ -22,6 +23,7 @@ arch=('x86_64')
 url='https://developer.huawei.com/consumer/cn/download/command-line-tools-for-hmos'
 license=('LicenseRef-Huawei-EULA')
 depends=('glibc' 'java-runtime' 'nodejs')
+optdepends=('deveco-clt-url: mint the signed download URL from a logged-in session')
 options=('!strip')
 source=()
 sha256sums=()
@@ -39,21 +41,45 @@ pkgver() {
 }
 
 prepare() {
-  local zip f
+  local zip f line
+  local url=${DEVECO_CLT_URL:-}
   f=$(compgen -G "$srcdir/$_zip_glob" | head -1)
+  if [[ -n "$f" ]] && ! bsdtar -tf "$f" >/dev/null 2>&1; then
+    warn "cached $(basename "$f") is truncated or corrupt; discarding it"
+    rm -f "$f"
+    f=
+  fi
   if [[ -z "$f" ]]; then
-    if [[ -n "${DEVECO_CLT_URL:-}" ]]; then
-      f="$srcdir/$(basename "${DEVECO_CLT_URL%%\?*}")"
+    if [[ -z "$url" ]] && command -v deveco-clt-url >/dev/null 2>&1; then
+      msg "DEVECO_CLT_URL is not set; asking deveco-clt-url for a signed link"
+      if ! url=$(deveco-clt-url --version "$pkgver" 2>"$srcdir/deveco-clt-url.err"); then
+        error "deveco-clt-url could not mint a download URL for $pkgver:"
+        while IFS= read -r line; do error "  $line"; done < <(head -4 "$srcdir/deveco-clt-url.err")
+        error "  sign in at https://developer.huawei.com/consumer/cn/download/command-line-tools-for-hmos"
+        error "  then run: deveco-clt-url --login-cookie"
+        return 1
+      fi
+      url=${url%%$'\n'*}
+      [[ -n "$url" ]] || { error "deveco-clt-url returned an empty URL"; return 1; }
+      msg "deveco-clt-url: got a signed URL"
+    fi
+    if [[ -n "$url" ]]; then
+      f="$srcdir/$(basename "${url%%\?*}")"
       [[ "$f" == *.zip ]] || f="$srcdir/commandline-tools-linux-x64.zip"
+      [[ "$(basename "$f")" == *"$pkgver"* ]] || warn "archive name does not mention pkgver $pkgver"
       msg "fetching $(basename "$f")"
-      curl -fL --retry 3 -o "$f" "$DEVECO_CLT_URL"
+      curl -fL --retry 3 -o "$f" "$url" || { error "download failed"; return 1; }
+      bsdtar -tf "$f" >/dev/null 2>&1 || { error "downloaded archive is not a valid zip: $(basename "$f")"; return 1; }
     else
       error "No Command Line Tools archive found."
       error ""
-      error "  Download it from https://developer.huawei.com/consumer/cn/download/command-line-tools-for-hmos"
-      error "  then either copy the link and run"
+      error "  Option 1 (automatic, needs a session created in a browser):"
+      error "    yay -S deveco-clt-url"
+      error "    deveco-clt-url --login-cookie   # paste the Cookie header from DevTools"
+      error "    then re-run this build."
+      error "  Option 2 (manual link):"
       error "    DEVECO_CLT_URL='<signed url>' makepkg -si"
-      error "  or place the zip next to this PKGBUILD."
+      error "  Option 3 (offline): place commandline-tools-linux-x64-<ver>.zip here."
       return 1
     fi
   fi
