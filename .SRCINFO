@@ -1,6 +1,6 @@
 pkgbase = gixy-ng
 	pkgdesc = NGINX configuration static analyzer focused on security (maintained fork of yandex/gixy)
-	pkgver = 0.2.63
+	pkgver = 0.2.64
 	pkgrel = 1
 	url = https://gixy.getpagespeed.com/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = gixy-ng
 	optdepends = python-rich: prettier terminal output
 	provides = gixy
 	conflicts = gixy
-	source = https://files.pythonhosted.org/packages/source/g/gixy_ng/gixy_ng-0.2.63.tar.gz
-	sha256sums = ccff12aa3fdda85e125d7540aa4b51219ed7ab7e59adbafafffb47d6e4b348a5
+	source = https://files.pythonhosted.org/packages/source/g/gixy_ng/gixy_ng-0.2.64.tar.gz
+	sha256sums = 3cb264372f5ab70316a0221a62488891fd89665b115a15926efa753f90392278
 
 pkgname = gixy-ng
