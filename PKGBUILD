@@ -4,7 +4,7 @@
 # Maintaner: Polar Phoenix <polarphoenixx at gmail dot com>
 
 pkgname=slime
-pkgver=2.31
+pkgver=2.32
 pkgrel=1
 pkgdesc="The Superior Lisp Interaction Mode for Emacs"
 arch=('any')
