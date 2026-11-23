@@ -2,8 +2,8 @@
 
 _pkgname=ps-printer-app
 pkgname="${_pkgname}-git"
-pkgver=1.0+r273.20260109.e54d07c
-pkgrel=2
+pkgver=1.0+r274.20261111.5985255
+pkgrel=1
 pkgdesc="PostScript Printer Application"
 url='https://github.com/OpenPrinting/ps-printer-app'
 license=("Apache-2.0")
