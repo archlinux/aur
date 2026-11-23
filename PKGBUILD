@@ -3,8 +3,8 @@
 # shellcheck shell=bash
 
 pkgname=ltex-ls-plus
-pkgver=18.7.0
-pkgrel=2
+pkgver=19.0.0
+pkgrel=1
 pkgdesc="Language server for LanguageTool with support for LaTeX, Markdown, and others"
 arch=(any)
 url="https://github.com/ltex-plus/ltex-ls-plus"
@@ -12,8 +12,8 @@ license=(MPL-2.0)
 depends=('java-runtime>=21' bash)
 makedepends=(maven)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('45989e544f717448954fbf96c185a4f0cabc7e4555fd629c4dce7b0bcee94b3d4e7f8a2a0bda7f2164d53c2d9cce7a0d125cf35cff49a30b90be3e9514458ba1')
-b2sums=('4125c5000f0d3913fa9a58686aeddc5223a1b62088ce8cbfa6db49b9d277c393a67f8d5a1437fd164551de62becbb023b534a2248fe132492df29c991669c4d6')
+sha512sums=('98810851421517400af34fa0cc562ae98ceb1adb9130f6b6873e12a053fab14d0cdf513685e31cbd8b46bbb0da0ac1f9f2c2b510a7a43732cfda481a4a6e2125')
+b2sums=('a6f5c37bcdc7fd5691b61cb078c177d82307a9822d0fe41d077d918e06d1a25c221c930c434947e2c886446980227164d8c106c4ddd42d27b323f25a23f4281b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || exit
