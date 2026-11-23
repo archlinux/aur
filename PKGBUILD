@@ -1,0 +1,27 @@
+# Maintainer: Hilton Medeiros <medeiros.hilton@gmail.com>
+
+pkgname=ttf-cantrip
+pkgver=0.45
+pkgrel=1
+pkgdesc='A font family for Software Alchemists'
+arch=(any)
+url='https://charredutensil.github.io/cantrip/'
+license=(OFL-1.1)
+source=(
+  "https://charredutensil.github.io/cantrip/cantrip_mono.ttf"
+  'OFL.txt'
+)
+sha512sums=('81d9227754adedc46945cdd5228ec1c37d91c7c75b766094b85028ccb7db959afbdefbaefb87eb1ce06bff7ebf47177c32f7610401bc6c502c9bb25a779c0d78'
+            'f03e6fd882f690eefb27a36f9e398aa4b109d6a2af9be5a1a4e36805fc273122313a2f08b912428e3105844eb84575ed1b94d735af7f6f165ebd7c2d5c3459bc')
+b2sums=('894b62bc4bc3af1f23330b28e9a993b15450acffb76d4a02c010974a8190f1aa81abe13f2d36c9440ec74e2fb47eac11df48a85e4c5c94c2e264676eab3dddcc'
+        '427744a47a3bf85975a282928d71862a9100fad4079af9151b41cea7185b9875c55220ac5883f145d3d7388352cffdc8c026123d1164a9febcbd647295cd637a')
+
+# WARNING: Couldn't find a versioned release so the package will break with a
+# new release until the checksums are updated
+package() {
+  # font
+  install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" cantrip_mono.ttf
+
+  # license
+  install -vDm644 "OFL.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
