@@ -12,7 +12,7 @@ _zip_url=https://cosbrowser.cloud.tencent.com/cosbrowser-latest-linux.zip
 pkgrel=5
 pkgdesc='Tencent Cloud COS client (repacked from official AppImage)'
 arch=('x86_64')
-url='https://cosbrowser.cloud.tencent.com/'
+url='https://github.com/Geequlim/aur-packages/tree/main/packages/cosbrowser-bin'
 license=('custom')
 depends=('hicolor-icon-theme' 'desktop-file-utils')
 provides=("${pkgname%-bin}=${pkgver}")
