@@ -1,0 +1,14 @@
+pkgbase = uniwill-ec-hwmon-dkms
+	pkgdesc = Read-only hwmon driver for Uniwill/Tongfang ECs over ACPI-WMI (fan RPM, CPU/GPU temps, PWM)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/renanbs/uniwill-ec-hwmon
+	install = uniwill-ec-hwmon.install
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	source = git+https://github.com/renanbs/uniwill-ec-hwmon.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = uniwill-ec-hwmon-dkms

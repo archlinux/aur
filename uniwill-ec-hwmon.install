@@ -1,0 +1,20 @@
+post_install() {
+	dkms add -m uniwill-ec-hwmon -v 0.1.0 || true
+	dkms build -m uniwill-ec-hwmon -v 0.1.0
+	dkms install -m uniwill-ec-hwmon -v 0.1.0
+	depmod -a
+	echo "uniwill-ec-hwmon: read-only fan RPM/temps via ACPI-WMI."
+	echo "Verify with: sensors | grep -A8 uniwill_ec"
+	echo "The module loads automatically on next boot (modules-load.d)."
+}
+
+post_upgrade() {
+	dkms build -m uniwill-ec-hwmon -v 0.1.0
+	dkms install -m uniwill-ec-hwmon -v 0.1.0
+	depmod -a
+}
+
+pre_remove() {
+	dkms remove -m uniwill-ec-hwmon -v 0.1.0 --all || true
+	depmod -a
+}
