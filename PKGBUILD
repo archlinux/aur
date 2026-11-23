@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miloR
-_pkgver=2.0.0
+_pkgver=2.8.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,6 +31,7 @@ depends=(
   r-matrixstats
   r-numderiv
   r-patchwork
+  r-pracma
   r-rcolorbrewer
   r-rcpp
   r-s4vectors
@@ -58,12 +59,13 @@ optdepends=(
   r-scran
   r-scrnaseq
   r-scuttle
+  r-sparsematrixstats
   r-testthat
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f02be1539df5c6cfd31ae8042f78f274')
-b2sums=('2a01b1ed954a83da6b5640145b41d25c3f67343a28307291f8bfe66f8ecb0462d024361e83882066409b2735fa824630d9903c28d857daf6655bc1dcc5f2e8a5')
+md5sums=('073954f6f91066bbdd21c4f92f3eccf0')
+b2sums=('bb70e1639cd5ca0fc3d7f6aa902407ed23fcbbc97fc4d14f19a27c0b25321c7bb0aa5d191871742f9c5d25071134c3d3f9a8882266c14cad309fb101f4fc1ef2')
 
 build() {
   mkdir build
