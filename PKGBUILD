@@ -1,6 +1,6 @@
 pkgname=python-vllm-omni-git
 _pkgname=vllm-omni
-pkgver=0.20.0.r171.ge7644da
+pkgver=0.34.0rc1.r185.gefcd8f2
 pkgrel=1
 pkgdesc='A framework for efficient model inference with omni-modality models'
 arch=('any')
