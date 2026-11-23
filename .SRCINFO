@@ -11,7 +11,7 @@ pkgbase = pandoc-crossref-static-git
 	makedepends = ghc
 	makedepends = pandoc-cli
 	depends = gmp
-	depends = pandoc-cli=3.13
+	depends = pandoc-cli=3.14
 	depends = zlib
 	provides = pandoc-crossref=0.3.26
 	conflicts = pandoc-crossref
