@@ -3,8 +3,8 @@
 # Contributor: TDY <tdy@gmx.com>
 # Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 pkgname=git-cola
-pkgver=4.19.0
-pkgrel=2
+pkgver=4.20.0
+pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.gitlab.io"
@@ -16,6 +16,7 @@ depends=(
   'python-polib'
   'python-pyqt6'
   'python-qtpy'
+  'qt6-svg'
 )
 makedepends=(
   'python-build'
@@ -31,21 +32,24 @@ checkdepends=(
   'appstream'
   'desktop-file-utils'
   'garden-tools'
+  'python-msgpack'
   'python-pytest'
+  'python-websockets'
 )
 optdepends=(
   'aspell: Aspell based spell checking support'
   'hunspell: Hunspell based checking support'
+  'python-msgpack: Enables server/client functionality'
   'python-notify2: Enables desktop notifications'
   'python-pygments: Syntax highlighting'
   'python-pyinotify: Enable file system change monitoring'
-  'python-pyqt6-webengine'
+  'python-websockets: Enables server/client functionality'
   'python-send2trash: Enables "Send to Trash" functionality'
   'tk: Fallback built-in ssh-askpass handler'
   'x11-ssh-askpass: Default askpass credential helper'
 )
 source=("git+https://github.com/git-cola/git-cola.git#tag=v$pkgver?signed")
-sha256sums=('36138d4ef4c71a60137465b246a8afdd987d1f035352282024eb8d0880e590f6')
+sha256sums=('647121c1a54b530ef485ba045d3f23252573f6972adea2cd6f7403e1a59de8c5')
 validpgpkeys=('FA41BF59C1B48E8C5F3DA61C8CE26BF4A9F606B0') # David Aguilar <davvid@gmail.com>
 
 prepare() {
@@ -62,7 +66,6 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --no-isolation
 
   # Limit to 1 job to avoid build failure
