@@ -1,7 +1,7 @@
 # Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 
 pkgname=shed-tui
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Terminal app for keeping your projects in order: workbench, shelf and attic'
 arch=('x86_64' 'aarch64')
@@ -33,7 +33,7 @@ build() {
   cd "$pkgname"
   export CGO_ENABLED=0
   export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
-  go build -ldflags "-X main.version=v$pkgver" -o shed ./cmd/
+  go build -ldflags "-X main.version=v$pkgver" -o shed ./cmd/shed/
 }
 
 check() {

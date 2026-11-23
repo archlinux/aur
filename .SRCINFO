@@ -1,6 +1,6 @@
 pkgbase = shed-tui
 	pkgdesc = Terminal app for keeping your projects in order: workbench, shelf and attic
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://git.okoyono.de/f/shed
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = shed-tui
 	optdepends = zenity: password prompt when fixing ownership (GNOME/GTK)
 	optdepends = kdialog: password prompt when fixing ownership (KDE)
 	conflicts = shed
-	source = shed-tui::git+https://git.okoyono.de/f/shed.git#tag=v0.4.1
+	source = shed-tui::git+https://git.okoyono.de/f/shed.git#tag=v0.4.2
 	sha256sums = SKIP
 
 pkgname = shed-tui
