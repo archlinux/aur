@@ -1,0 +1,21 @@
+pkgbase = r-r2r
+	pkgdesc = R-Object to R-Object Hash Maps
+	pkgver = 0.1.2
+	pkgrel = 2
+	url = https://cran.r-project.org/package=r2r
+	arch = any
+	license = GPL-3.0-or-later
+	depends = r-digest
+	depends = r-rlang
+	optdepends = r-covr
+	optdepends = r-hash
+	optdepends = r-knitr
+	optdepends = r-microbenchmark
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tibble
+	source = https://cran.r-project.org/src/contrib/r2r_0.1.2.tar.gz
+	md5sums = 8e398a83499849d554782004ab7d01ad
+	b2sums = 0993e14eeb9e1ac4cfc6178250d6b136c942fdcab48779576cddc24e686751800e4a0c246157920f1b2b90f3de7ae5ec74e9ae90f657a26d170a1f6c77dd7e17
+
+pkgname = r-r2r
