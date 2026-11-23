@@ -2,11 +2,11 @@
 
 pkgname=sweet-folders-git
 _pkgname=Sweet-folders
-pkgver=r29.40a5d36
+pkgver=r37.23a572f
 pkgrel=1
 arch=('any')
 pkgdesc="Folder icons from the Sweet GTK Theme for Linux desktop environments"
-url="https://github.com/EliverLara/${_pkgname}"
+url="https://github.com/Gigas002/${_pkgname}"
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=(
@@ -15,17 +15,8 @@ conflicts=(
 )
 license=('GPL-3.0-only')
 options=('!strip')
-source=(
-    "${_pkgname}::git+${url}"
-    "21.patch"
-)
-b2sums=('SKIP'
-        'b86edf2d974c4b4c62f4955628180bb2b4f7d211800410d3be16c1c011da0150871e5c13affd2f0fb90ec0205855c486486147cd50f55f3113b1fbd227112625')
-
-prepare() {
-    cd "${srcdir}/${_pkgname}"
-    patch -p1 -N -i "${srcdir}/21.patch" || true
-}
+source=("${_pkgname}::git+${url}.git")
+b2sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -33,9 +24,11 @@ pkgver() {
 }
 
 package() {
-    install -dm755 "${pkgdir}/usr/share/icons"
     cd "${srcdir}/${_pkgname}"
-    cp -r [^.]* "${pkgdir}/usr/share/icons/"
-    find "${pkgdir}/usr" -type f -exec chmod 644 {} +
-    find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+    install -dm755 "${pkgdir}/usr/share/icons"
+    cp -r Sweet-* "${pkgdir}/usr/share/icons/"
+    find "${pkgdir}/usr/share/icons" -type f -exec chmod 644 {} +
+    find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 {} +
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
