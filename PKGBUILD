@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=pRolocdata
-_pkgver=1.46.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e217ea5ab1b36862973db5694f80d8d6')
-b2sums=('ace4e5af80f436c20b1e7e8cb9b9079ea353d813cdce98d6faad438958a32b8800517fe09a86308f22b184721ee4574f747da8fd99d630de5c5b7b1e2e985aba')
+md5sums=('36e3214506de387e74994e278da475da')
+b2sums=('4273d9acf87d0e9cfda23577af803e5f72ef648c0b27f2c8c4df1b2ec7d871bccb6a3462c821d88f7ee536bced0ee1a7386033b90ea06e56ee8d1528a3418cb4')
 
 build() {
   mkdir build
