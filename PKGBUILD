@@ -4,7 +4,7 @@
 # published copy (version and checksum filled in, plus .SRCINFO) into its `aur` artifact.
 
 pkgname=uqbit
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="uQ's torrent app: a Qt Quick front-end for qBittorrent-nox that follows the uQ theme"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ optdepends=('qt6-wayland: run natively on Wayland'
             'networkmanager: find the VPN for the kill switch (else by interface name)'
             'uq: Torrents page in uQ Settings, bar icon and quick settings tile')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('72a292fba6348eebca907a9f047a7bc4b9aba3027cfd8d4f0930a2b1003e5326')
+sha256sums=('f64d8d0e32d50145dfd2ffe0420eedffa673cfeda431f6fb7298b4ccedde8919')
 
 build() {
   cmake -S "$pkgname-$pkgver" -B build -G Ninja \
