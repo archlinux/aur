@@ -1,3 +1,4 @@
 [gnome-shell-extension-mosaic]
 source = "git"
 git = "https://github.com/jardon/gnome-mosaic.git"
+exclude_regex = ".*(alpha|beta|rc).*"
