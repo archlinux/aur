@@ -28,7 +28,7 @@ pkgbase = kmscon-git
 	conflicts = kmscon
 	conflicts = kmscon-terminfo
 	options = !libtool
-	backup = etc/kmscon/kmscon.conf
+	backup = etc/kmscon/kmscon.conf.example
 	source = git+https://github.com/kmscon/kmscon.git
 	md5sums = SKIP
 
