@@ -16,7 +16,7 @@
 # does not have to be edited for every upstream release.
 pkgname=deveco-commandline-tools
 pkgver=26.0.1.290
-pkgrel=7
+pkgrel=8
 pkgdesc='HUAWEI Command Line Tools for HarmonyOS: hvigorw, ohpm, hstack, codelinter, SDK tools'
 arch=('x86_64')
 url='https://developer.huawei.com/consumer/cn/download/'
@@ -75,18 +75,18 @@ package() {
     _clt="$srcdir/clt"
   fi
 
-  install -d "$pkgdir/opt/deveco/command-line-tools"
-  cp -r --no-preserve=ownership "$_clt/." "$pkgdir/opt/deveco/command-line-tools/"
+  install -d "$pkgdir/opt/huawei/command-line-tools"
+  cp -r --no-preserve=ownership "$_clt/." "$pkgdir/opt/huawei/command-line-tools/"
 
   # the upstream zip ships 0700/0750 modes meant for a root installer; make the
   # tree usable for normal users
-  find "$pkgdir/opt/deveco/command-line-tools" \( -type f -o -type d \) -exec chmod 755 {} +
+  find "$pkgdir/opt/huawei/command-line-tools" \( -type f -o -type d \) -exec chmod 755 {} +
 
   install -d "$pkgdir/usr/bin"
   local t name src
   # Wrap *every* launcher the CLT ships, not a hand-picked list: 26.x added
   # api-compat, appanalyzer, arkts-lsp and codescanner next to the older ones.
-  for src in "$pkgdir/opt/deveco/command-line-tools/bin/"*; do
+  for src in "$pkgdir/opt/huawei/command-line-tools/bin/"*; do
     [[ -f "$src" ]] || continue
     t=$(basename "$src")
     case "$t" in
@@ -97,11 +97,11 @@ package() {
     # These upstream launchers locate their payload via $(dirname "$0")/.. without
     # readlink, so a /usr/bin symlink resolves to /usr/hvigor/... and dies.
     # Exec the real path instead: the launcher then sees /opt/... as $0.
-    printf '#!/bin/sh\nexec /opt/deveco/command-line-tools/bin/%s "$@"\n' "$t" > "$pkgdir/usr/bin/$name"
+    printf '#!/bin/sh\nexec /opt/huawei/command-line-tools/bin/%s "$@"\n' "$t" > "$pkgdir/usr/bin/$name"
     chmod 755 "$pkgdir/usr/bin/$name"
   done
   local _hdc
-  _hdc=$(find "$pkgdir/opt/deveco/command-line-tools" -type f -name hdc 2>/dev/null | head -1)
+  _hdc=$(find "$pkgdir/opt/huawei/command-line-tools" -type f -name hdc 2>/dev/null | head -1)
   if [[ -n "$_hdc" ]]; then
     printf '#!/bin/sh\nexec %s "$@"\n' "${_hdc#$pkgdir}" > "$pkgdir/usr/bin/hdc"
     chmod 755 "$pkgdir/usr/bin/hdc"
@@ -109,8 +109,8 @@ package() {
 
   install -d "$pkgdir/usr/share/doc/$pkgname"
   printf '%s\n' \
-    'Huawei Command Line Tools, installed to /opt/deveco/command-line-tools.' \
+    'Huawei Command Line Tools, installed to /opt/huawei/command-line-tools.' \
     '' \
     'Point DevEco CLI at it:' \
-    '  export DEVECO_CLI_CLT_PATH=/opt/deveco/command-line-tools' > "$pkgdir/usr/share/doc/$pkgname/README"
+    '  export DEVECO_CLI_CLT_PATH=/opt/huawei/command-line-tools' > "$pkgdir/usr/share/doc/$pkgname/README"
 }
