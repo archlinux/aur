@@ -31,6 +31,12 @@ easypaint-ui-font --help
 
 If GSettings is unavailable, the setter reads `~/.config/gtk-3.0/settings.ini` or `~/.config/gtk-4.0/settings.ini`, and falls back to `Noto Sans 16` / `Noto Sans Mono 15`.
 
+## Save formats
+
+Save As has no explicit format picker: EasyPaint derives the format from the extension you type, or from the MIME type of an existing file. The package ships translators for PNG, JPEG, BMP, GIF, TIFF, TGA, WebP, PPM and ICO, so those extensions work. ICO accepts only 16×16, 32×32 and 48×48 images; otherwise — as with `avif`, `jp2`, `psd` and an unknown extension — the file falls back to PNG.
+
+For example, typing `ribbon.webp` in Save As produces a WebP file.
+
 ## Building
 
 Normally:

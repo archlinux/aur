@@ -7,7 +7,7 @@
 # actually needs.
 pkgname=easypaint
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple bitmap graphics editor (Cosmoe/Hokku-based, built from source)"
 arch=('x86_64')
 url="https://github.com/idumych/EasyPaint"
@@ -45,8 +45,8 @@ sha256sums=(
   '77d003aafd34715e783d1ed6a2acb97eda7809bbc80df0429fe661d01dd4456b'
   '522b2bd5f9053fa246616cca5de4d3df16171e604d9e6f17454455efbda27954'
   'f2589da74f91b90a2fa0c284c6dfafcefab4a6baf559fea418f6f47d10ab5e53'
-  'a4ef9a73ec51be107def0ad7dbfd0eb1a315dfe36ec9273896f627c315064b92'
-  'b23142eaec23552a3ab8ba5e50b3b9ea4846e5e1d42c23d0d940e8646161a744'
+  '66341583934b813de59ef3593e9509734aa390e81cb1fc8afe74aeb1465203f0'
+  'cd457bae34776579fdb8f4d0e6166995ba6945f509cd23f7df5db69880585d16'
 )
 
 prepare() {
@@ -109,7 +109,7 @@ package() {
 
   # Only the image translators EasyPaint uses.
   local t
-  for t in BMP GIF JPEG PNG PPM TGA TIFF WebP; do
+  for t in BMP GIF ICO JPEG PNG PPM TGA TIFF WebP; do
     install -m755 "$srcdir/cosmoe/usr/lib/addons/Translators/${t}Translator.so" \
       "$dest/lib/addons/Translators/"
   done
