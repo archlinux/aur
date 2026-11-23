@@ -1,15 +1,16 @@
 pkgbase = ruby-down
-	pkgdesc = Robust streaming downloads using Net::HTTP, HTTP.rb or wget.
-	pkgver = 5.4.0
+	pkgdesc = Robust streaming downloads using Net::HTTP, http.rb or HTTPX.
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/janko/down
 	arch = any
 	license = MIT
 	depends = ruby
+	depends = ruby-base64
 	depends = ruby-addressable
-	noextract = down-5.4.0.gem
+	noextract = down-6.0.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/down-5.4.0.gem
-	sha1sums = 5564c5528232c60998aba8d53c18d54e74bd2b6c
+	source = https://rubygems.org/downloads/down-6.0.0.gem
+	sha1sums = f18b4dbedbd7f7314fee1d8c15b5636ab2b0e9e1
 
 pkgname = ruby-down
