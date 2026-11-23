@@ -1,26 +1,30 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alphahull
-_pkgver=2.5
+_pkgver=3.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Generalization of the Convex Hull of a Sample of Points in the Plane"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-only OR GPL-3.0-only')
 depends=(
+  r-geometry
   r-ggplot2
-  r-interp
   r-r.utils
   r-sgeostat
   r-spatstat.geom
   r-spatstat.random
   r-splancs
 )
+optdepends=(
+  r-knitr
+  r-rmarkdown
+)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1ea4cc665f6cde31c63cc9e50a6c801f')
-b2sums=('ed8f9c06843683039b34d90e3c45613f60e49deeb5a16efecb58032a67e7b019ba4e9f10b831585f312c854eb54f5ede644182783992309d36f308eeb4a86f7f')
+md5sums=('3f1cc3022b4f6daa6bffe1d432be9eb3')
+b2sums=('6ab4ad22cba7c592d8e60e4afeca05cf65178d7c592adcac1ec21c78b64bb24b4de62f1c42f4571076ab3b75e659b8dc6edcee9398f352fbc63ddf6162796bbb')
 
 build() {
   mkdir build
