@@ -1,7 +1,7 @@
 # Maintainer: Lukas Lipinsky <6032558+Mr-Tao@users.noreply.github.com>
 
 pkgname=python-androidtvremote2
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Python implementation of the Android TV Remote protocol v2'
 arch=('any')
@@ -18,9 +18,10 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/a/androidtvremote2/androidtvremote2-$pkgver.tar.gz")
-sha256sums=('11f8e33d76d8c539d26fd3002c423d21ca9264a8281bf895c0f169dab513fca1')
+checkdepends=('python-pytest' 'python-pytest-asyncio')
+# The PyPI sdist omits test helpers.
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('e67fb0ad6bfc6d7d2ce0f60c77b07a5705ac332c1aad1e9a021fc454209eb0a2')
 
 build() {
   cd "androidtvremote2-$pkgver"
@@ -29,7 +30,7 @@ build() {
 
 check() {
   cd "androidtvremote2-$pkgver"
-  pytest -q
+  PYTHONPATH=src python -m pytest -q
 }
 
 package() {
