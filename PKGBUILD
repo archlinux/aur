@@ -3,7 +3,7 @@ pkgname=altus-bin
 _pkgname=Altus
 pkgver=5.8.3
 _electronversion=45
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support."
 arch=('x86_64')
 url="https://github.com/amanharwara/altus"
@@ -71,7 +71,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     _install_icons
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
