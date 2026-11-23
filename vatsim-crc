@@ -98,6 +98,8 @@ wineUpdate() {
   if [ -f "/opt/rpc-bridge/bridge.exe" ] ; then
     wine "/opt/rpc-bridge/bridge.exe" --install
   fi
+  ### might be optional for you but it at least crashes when using EGL with my nvidia driver
+  wine reg add 'HKCU\Software\Wine\X11 Driver' /v UseEGL /d N /f
   touch "$WINEPREFIX/.installed.$CURRVER"
   saveEnvs
 }
