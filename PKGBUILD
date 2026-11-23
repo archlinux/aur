@@ -5,7 +5,7 @@
 # Edit this file only to change packaging (dependencies, install steps, ...).
 
 pkgname=decaf
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Suspend the system after a while: a scriptable sleep timer"
 arch=('any')
@@ -13,7 +13,7 @@ url="https://github.com/Davi-S/decaf"
 license=('MIT')
 depends=('bash' 'systemd' 'glib2' 'libnotify')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4ab083d6c950e43d7af266002c2fc9cc733a74750319e0a2283507d50eeba7b2')
+sha256sums=('70c17bcbf28f76f6e4dda749743943fbbb06ecdfacb4b7bf1b3e9f60be3a666b')
 
 package() {
     cd "$pkgname-$pkgver"
