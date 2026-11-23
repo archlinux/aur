@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=xylem-bin
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="An XTree/ZTreeWin-style file manager with a directory tree, tagging, batch operations"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/xy-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/xy-v${pkgver}-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('aecdaabc6a3cd90eb60d4a8c61aaa6c9d70ad4cf9b727609b836bb39bfe30f0e')
-sha256sums_aarch64=('8698b568cd5944bb48d1a2f4b1fecdbb58f638eecc275a1a6b9ad480c2105293')
+sha256sums_x86_64=('32257926c4462da67f44607398cfe99564ffab27d3e18970b1d6755eef28b536')
+sha256sums_aarch64=('495731d6056f0137b35f20ddb54a05a399c946f1ea70df22b5f3e3d3fa2c1cf4')
 
 package() {
   local _dir
