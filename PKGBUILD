@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 pkgname=mdsilo-bin
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Lightweight Knowledge Base and Feed Reader."
 arch=(
@@ -19,8 +19,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/${pkgname%-bin}-v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgname%-bin}-v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums_aarch64=('8176f33ab6e6d2453e9e8095998d64487a1ae7888dc1afa45feb9d86351881ca')
-sha256sums_x86_64=('7e85dbbbbda45702243e270de3e89617c7169b2f1333c0c61db9d17ea1a87c8f')
+sha256sums_aarch64=('597dcfb0cbe0292b7bf66e516913fd5ae1ab4a4858e469ea7176f49671454011')
+sha256sums_x86_64=('3ad0e207b896dfb80192d7b8acf3c4ff7c7e1ee95a9d89a4e731102cacc979f5')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
