@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yogurt-bin
 _pkgname=Yogurt
-pkgver=0.3.48
+pkgver=0.3.65
 _electronversion=44
 pkgrel=1
 pkgdesc="Private AI meeting notes that stay on your computer."
@@ -17,13 +17,17 @@ depends=(
     'vulkan-icd-loader'
     'libpulse'
 )
+options=(
+	'!strip'
+	'!emptydirs'
+)
 source=(
 	"${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-${CARCH}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/FrigadeHQ/yogurt/v${pkgver}/LICENSE"
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('daa1ff155af4cbf4a275d97cb5564b72d1bd934cf597701178f572ccc11ccb28'
+sha256sums=('af794d56034128b322f7dd45191d11fdc7ee7f9bd5fb8f04389e6e9427df0bef'
             '5c7f0de8bbe8ee8a29540939bfdd83adf000e8c2817587d618c9637347dd34ec'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
