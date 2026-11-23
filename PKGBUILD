@@ -2,7 +2,7 @@
 
 _name=databricks-sdk
 pkgname=python-$_name
-pkgver=0.169.0
+pkgver=0.170.0
 pkgrel=1
 pkgdesc='Databricks SDK for Python (Beta).'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=('ipython: notebook'
             'python-protobuf: sandbox'
             'python-grpcio: sandbox')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0065707ac686acf4aa22a84e1d096aac84a5b700677e00d09dc34c28fcf668b6')
+sha256sums=('8a11b989a2cec04e30d452d278f51e06711194e9d78756f66331af66c78b0736')
 
 prepare() {
   cd "$_name-py-$pkgver"
