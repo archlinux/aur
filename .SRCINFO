@@ -1,6 +1,6 @@
 pkgbase = clin-rs-bin
 	pkgdesc = Encrypted terminal note-taking app
-	pkgver = 0.14.1
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://github.com/reekta92/clin-rs
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = clin-rs-bin
 	provides = clin
 	conflicts = clin-rs
 	options = !strip
-	source_x86_64 = clin-x86_64-0.14.1.txz::https://github.com/reekta92/clin-rs/releases/download/v0.14.1/clin-rs-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 2aa71d560b3956d2da359e70aeb6e17915ed844b596615ac6c3f2bbe9bdd1caa
-	source_aarch64 = clin-aarch64-0.14.1.txz::https://github.com/reekta92/clin-rs/releases/download/v0.14.1/clin-rs-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = eb68454f576294f2e0e055a248fde282b7e649dd5838f04b5edb279d351fd33a
+	source_x86_64 = clin-x86_64-0.14.2.txz::https://github.com/reekta92/clin-rs/releases/download/v0.14.2/clin-rs-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 92a5798328e3e7ec0f6248e44cf21a97ad4a2834320622fbc6073d9fb40dbea2
+	source_aarch64 = clin-aarch64-0.14.2.txz::https://github.com/reekta92/clin-rs/releases/download/v0.14.2/clin-rs-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = b73b0cef108682c7d96338125c5007ec3d3c699fc970491c204c046c20b4f563
 
 pkgname = clin-rs-bin
