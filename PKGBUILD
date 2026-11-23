@@ -1,7 +1,7 @@
 # Maintainer: leychan <leychan_@outlook.com>
 pkgname=shiyi-translator-bin
-pkgver=0.3.7
-pkgrel=11
+pkgver=0.3.8
+pkgrel=12
 pkgdesc='Desktop translator with configurable translation services'
 arch=('x86_64')
 url=https://github.com/leychan/shiyi-translator
@@ -11,10 +11,10 @@ optdepends=('wl-clipboard: Wayland selection capture' 'xclip: X11 selection capt
 provides=("shiyi-translator=$pkgver")
 conflicts=('shiyi-translator')
 options=('!strip' '!debug')
-_archive=shiyi-translator-0.3.7-11-x86_64.pkg.tar.zst
-source=(https://github.com/leychan/shiyi-translator/releases/download/v0.3.7/shiyi-translator-0.3.7-11-x86_64.pkg.tar.zst)
+_archive=shiyi-translator-0.3.8-12-x86_64.pkg.tar.zst
+source=(https://github.com/leychan/shiyi-translator/releases/download/v0.3.8/shiyi-translator-0.3.8-12-x86_64.pkg.tar.zst)
 noextract=("$_archive")
-sha256sums=('db135c467cb7b5ac717a552e6448b11780a48f987b1a775e202a989b73bc8b64')
+sha256sums=('ef87ff42e888e989c462ff34908eb5874d30b410c0718d6518a9c68b3a7dc24a')
 
 package() {
     # Let makepkg set ownership and generate fresh metadata for the -bin package.
