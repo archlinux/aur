@@ -12,8 +12,8 @@
 # 包名带 -bin：AUR 的规矩，有源码而装的是编好的程序的包要这么叫。它提供 litemiyu，和 Release 上那个 Arch 的包
 # （litemiyu-<版本>-<架构>.pkg.tar.zst，包名 litemiyu）装的是同一个文件，两个不能同时装。
 pkgname=litemiyu-bin
-_version=2026.11.0
-pkgver=2026.11.0
+_version=2026.11.1
+pkgver=2026.11.1
 pkgrel=1
 # namcap 不许说明里带包名（照子串比）：这里不写 litemiyu。
 pkgdesc='Distilled Miyu: under 5 MB of RAM, yet capable enough for everyday work and for rescue'
@@ -26,8 +26,8 @@ conflicts=('litemiyu')
 options=('!strip' '!debug')
 source_x86_64=("litemiyu-${_version}-linux-x86_64.tar.gz::${url}/releases/download/v${_version}/litemiyu-${_version}-linux-x86_64.tar.gz")
 source_aarch64=("litemiyu-${_version}-linux-aarch64.tar.gz::${url}/releases/download/v${_version}/litemiyu-${_version}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('7771be01c95409116e5585c899da9e0a8800801845b5ff51ff6e5fb3072bf556')
-sha256sums_aarch64=('e5774f69d8082516f8d9356222925f43c8fc96fcd8bc8d705e1d78d1507ac0c2')
+sha256sums_x86_64=('86a1ef986b07833edaae6dd3571671ebc534e242d3af6af5c583031a944fe91c')
+sha256sums_aarch64=('66c6574f1094463313ae0bfed43804c4d80babfbfc58557dbd19e3ddcd9fb245')
 
 package() {
   local dir="litemiyu-${_version}-linux-${CARCH}"
