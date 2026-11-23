@@ -4,7 +4,7 @@
 
 _pkgname=flet
 pkgname=python-${_pkgname}
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
@@ -31,11 +31,11 @@ arch=('x86_64')
 source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-dev/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	'flet-linux.patch')
-sha256sums=('818b087be460f6ef5321452f136d38dae1059b7f2ec2ece768049962525670e8'
+sha256sums=('2abc37c9d676fbdb38278f5092a99a85304f921a87e0b0a4447930c52d5c72f7'
             'e252e4eec325886d76dfc54c90604ea81ec0d6791b7e22bb93f63cec6378c50c')
 
 _srcdir="${_pkgname}-${pkgver}"
-_engine_version=3.47.7
+_engine_version=3.50.1
 
 prepare() {
 	cd "${_srcdir}"
@@ -53,10 +53,8 @@ build() {
 	pushd 'client'
 		fvm install "$_engine_version"
 		fvm use -f "$_engine_version"
-
 		fvm flutter --disable-analytics
 
-		fvm flutter --no-version-check pub get
 		fvm flutter build linux --release -v
 	popd
 
