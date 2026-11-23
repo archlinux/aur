@@ -2,61 +2,51 @@
 pkgname=yuview-bin
 _pkgname=YUView
 _appname="de.rwth_aachen.ient.${_pkgname}"
-pkgver=2.13
-pkgrel=5
-pkgdesc="The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset.(Prebuilt version)"
+pkgver=2.16
+pkgrel=1
+pkgdesc="The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset."
 arch=('x86_64')
 url="http://ient.github.io/YUView"
 _ghurl="https://github.com/IENT/YUView"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
-    'libgpg-error'
-    'harfbuzz'
-    'fontconfig'
-    'libx11'
-    'libice'
-    'libsm'
-    'libglvnd'
+	'qt6-base'
+	'hicolor-icon-theme'
 )
 makedepends=(
-    'fuse2'
+	'python3'
 )
 options=("!strip")
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}.AppImage"
-    "${pkgname%-bin}.sh"
+	"${pkgname%-bin}-${pkgver}.flatpak::${_ghurl}/releases/download/v${pkgver}/${_pkgname}.flatpak"
+    "yufpak_unpack.py"
+	"${pkgname%-bin}.sh"
 )
-sha256sums=('91b521f1b55fb396e5b873c633d464d4fd33fb1ca95eeaedff3a7b8a06cf774f'
-            'fac8a8f216777a45004e1b3c016a3c8aeecb713eb0a0e9bab429a155c75b7cbb')
+sha256sums=('088a3aab4b09fa8cc81e4d8ef7491859692fbd8e5619e79756114af9b8ebd731'
+            'e9ccc53d7547948350effc4d1ae5689f9f387ca391cda64390d3d50ee4330a39'
+            '216b754c5be3b7d33ebc915743a3bc4d6663a63b0a07468c88cc26bf20908cb4')
 prepare() {
-    sed -i -e "
-        s/@appname@/${pkgname%-bin}/g
-        s/@runname@/${_pkgname}/g
-    " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
-    fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -i -e "
-        s/${_pkgname} %F/${pkgname%-bin} %F/g
-        s/${_appname}/${pkgname%-bin}/g
-    " "${srcdir}/squashfs-root/${_appname}.desktop"
+	sed -i -e "
+		s/@appname@/${pkgname%-bin}/g
+		s/@runname@/${_pkgname}/g
+	" "${srcdir}/${pkgname%-bin}.sh"
+	python3 "${srcdir}/yufpak_unpack.py" "${srcdir}/${pkgname%-bin}-${pkgver}.flatpak" "${srcdir}"
+	sed -i -e "
+		s/${_pkgname} %F/${pkgname%-bin} %F/g
+		s/${_appname}/${pkgname%-bin}/g
+	" "${srcdir}/YUView.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/local/"{bin,lib,plugins} "${pkgdir}/usr/lib/${pkgname%-bin}"
-    _icon_sizes=(64x64 128x128 256x256 512x512)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/squashfs-root/local/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
-    done
-    install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/squashfs-root/local/share/mime/packages/${_appname}.xml" \
-        "${pkgdir}/usr/share/mime/packages/${pkgname%-bin}.xml"
-    install -Dm644 "${srcdir}/squashfs-root/local/share/metainfo/${_appname}.appdata.xml" \
-        "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.appdata.xml"
+	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+	install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/lib/${pkgname%-bin}/bin/${_pkgname}"
+	install -Dm755 "${srcdir}/lib_"*.so "${pkgdir}/usr/lib/${pkgname%-bin}/lib/libde265.so"
+	for _icons in 32x32 48x48 64x64 128x128 256x256 512x512;do
+		install -Dm644 "${srcdir}/icon_${_icons}.png" \
+			"${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
+	done
+	install -Dm644 "${srcdir}/YUView.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+	install -Dm644 "${srcdir}/yuview.mime.xml" "${pkgdir}/usr/share/mime/packages/${pkgname%-bin}.xml"
+	install -Dm644 "${srcdir}/yuview.appdata.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.appdata.xml"
 }
