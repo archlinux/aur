@@ -1,6 +1,6 @@
 pkgbase = libreget-bin
 	pkgdesc = Open-source download manager for courses (Udemy/Hotmart), YouTube, music & 1,800+ sites.
-	pkgver = 0.16.6
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://t.me/OpenSelena
 	arch = aarch64
@@ -11,11 +11,12 @@ pkgbase = libreget-bin
 	depends = webkit2gtk-4.1
 	depends = libayatana-indicator
 	depends = libappindicator
-	provides = libreget=0.16.6
+	depends = openssl-3
+	provides = libreget=1.0.0
 	conflicts = libreget
-	source_aarch64 = libreget-0.16.6-aarch64.deb::https://github.com/OpenSelena/libreget/releases/download/v0.16.6/OmniGet_0.16.6_arm64.deb
-	sha256sums_aarch64 = 256298549f8421c75764399871179bb58c88a85440149468f5297b8c2a30e58d
-	source_x86_64 = libreget-0.16.6-x86_64.deb::https://github.com/OpenSelena/libreget/releases/download/v0.16.6/OmniGet_0.16.6_amd64.deb
-	sha256sums_x86_64 = 3710b73a51511db291d1268f4ebb162caf823e599a8969841a1e71d26dd9a52a
+	source_aarch64 = libreget-1.0.0-aarch64.deb::https://github.com/OpenSelena/libreget/releases/download/v1.0.0/LibreGet_1.0.0_arm64.deb
+	sha256sums_aarch64 = 5926673b65c14a5544050938b9654f23ee2702fb831b11c316fe12f9019b14f6
+	source_x86_64 = libreget-1.0.0-x86_64.deb::https://github.com/OpenSelena/libreget/releases/download/v1.0.0/LibreGet_1.0.0_amd64.deb
+	sha256sums_x86_64 = 44076eb2280a8745285f67b2c9c53bb1f2af3240d787df81cad5eb8cd6964242
 
 pkgname = libreget-bin

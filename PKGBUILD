@@ -1,9 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=libreget-bin
 _pkgname=LibreGet
-_orginame=omniget
-_orgipkgname=OmniGet
-pkgver=0.16.6
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Open-source download manager for courses (Udemy/Hotmart), YouTube, music & 1,800+ sites."
 arch=(
@@ -21,11 +19,12 @@ depends=(
     'webkit2gtk-4.1'
     'libayatana-indicator'
     'libappindicator'
+    'openssl-3'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_orgipkgname}_${pkgver}_arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_orgipkgname}_${pkgver}_amd64.deb")
-sha256sums_aarch64=('256298549f8421c75764399871179bb58c88a85440149468f5297b8c2a30e58d')
-sha256sums_x86_64=('3710b73a51511db291d1268f4ebb162caf823e599a8969841a1e71d26dd9a52a')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
+sha256sums_aarch64=('5926673b65c14a5544050938b9654f23ee2702fb831b11c316fe12f9019b14f6')
+sha256sums_x86_64=('44076eb2280a8745285f67b2c9c53bb1f2af3240d787df81cad5eb8cd6964242')
 _install_icons() {
     local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
     while IFS= read -r -d '' _icon; do
@@ -39,14 +38,10 @@ _install_icons() {
 }
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -i -e "
-        s/${_orgipkgname}/${_pkgname}/g
-        s/${_orginame}/${pkgname%-bin}/g
-    " "${srcdir}/usr/share/applications/${_orgipkgname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/usr/bin/${_orginame}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     [ -d "${srcdir}/usr/lib" ] && cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
     _install_icons
-    install -Dm644 "${srcdir}/usr/share/applications/${_orgipkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
