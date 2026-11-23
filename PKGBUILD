@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=runjags
-_pkgver=2.3.0-5
+_pkgver=2.3.1-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ca664cb768059de1929a5cb66168d8f7')
-b2sums=('a4144ef4580cb8dfb3dcc77e5ccffda05b7be66d6bbd2bebc272812cf6de0d65d56485f86686f64ea4a954d75122514c9e3544c821ff30926f3e9063766572ff')
+md5sums=('3a6faa31d3cf99692faf9125975f76f1')
+b2sums=('7ecb9f47d309a916fa4444dbf51a6cab6b73a774337c578df91c4b98d94940b6cca38ac5a1758fef54a0a02402a159b593e3df42c7befccaa19cf861516ea361')
 
 build() {
   mkdir build
