@@ -1,6 +1,6 @@
 pkgbase = skirk-desktop
 	pkgdesc = Socks over Google Drive
-	pkgver = 0.1.59
+	pkgver = 0.1.60
 	pkgrel = 1
 	url = https://github.com/ShahabSL/Skirk
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = skirk-desktop
 	depends = webkit2gtk-4.1
 	provides = skirk
 	conflicts = skirk
-	source = git+https://github.com/ShahabSL/Skirk.git#tag=v0.1.59
-	sha256sums = 1da55b32aad4faef77220f9e938f241911d9e7d4d0271f85b3b98aec4614466b
+	source = git+https://github.com/ShahabSL/Skirk.git#tag=v0.1.60
+	sha256sums = f8c24ae19d15e38e9cdb586ccccdefc56c7434590b57ad4cb565407150fc7c43
 
 pkgname = skirk-desktop

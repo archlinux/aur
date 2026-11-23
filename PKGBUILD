@@ -2,7 +2,7 @@
 
 _pkgname=Skirk
 pkgname=skirk-desktop
-pkgver=0.1.59
+pkgver=0.1.60
 pkgrel=1
 pkgdesc="Socks over Google Drive"
 arch=("any")
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("gtk3" "webkit2gtk-4.1")
 makedepends=("git" "go" "make" "npm" "cargo")
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('1da55b32aad4faef77220f9e938f241911d9e7d4d0271f85b3b98aec4614466b')
+sha256sums=('f8c24ae19d15e38e9cdb586ccccdefc56c7434590b57ad4cb565407150fc7c43')
 conflicts=('skirk')
 provides=('skirk')
 
