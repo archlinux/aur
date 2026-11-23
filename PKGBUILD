@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=goSorensen
-_pkgver=1.8.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -38,10 +38,15 @@ optdepends=(
   r-org.ss.eg.db
   r-org.pt.eg.db
   r-org.xl.eg.db
+  r-dt
+  r-ggplot2
+  r-ggrepel
+  r-go.db
+  r-magick
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('aba6bdd63cc6e5ee46dac40d3297caca')
-b2sums=('5e7bde9097e22529679cfb9ffb15e2eb8ec6afb3a64a897d0dab195b9112db2dc179a29d2610679c0cf1fda1cfc23e2cc1e736606b674d35e74098b125eb0e7d')
+md5sums=('0db3f01975cc5c46cd233ea5f8beb362')
+b2sums=('e65e232417d86f9a029d8dc4736a15bb76d0d1c3dc8adeb6ebf7c1b38c220be752f191c2390518431b8f6067dd6e51b055cfd87f49223a50f0bae971426618a8')
 
 build() {
   mkdir build
