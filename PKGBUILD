@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=markflowy-bin
 _pkgname=MarkFlowy
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A local-first Markdown editor. Write visually or in source, organize your own folders, and bring in AI when it helps. Local editing works without an account or an AI provider."
 arch=('x86_64')
@@ -15,9 +15,9 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_amd64.deb"
 )
-sha256sums=('6d8156c87f487c97a9ab78ff82e0b6a25bb7f54b581b30fcbe6df19007ac7fab')
+sha256sums=('5a7e46eaa0f80fdb77a1d4467b77c27cedcd4ada2de79ef1b27dd0e2ffcaac3c')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
@@ -30,6 +30,7 @@ _install_icons() {
 	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
+	bsdtar -xf "${srcdir}/data."*
     sed -i "s/Development/Utility/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
