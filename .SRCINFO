@@ -1,6 +1,6 @@
 pkgbase = neocities-deploy-git
 	pkgdesc = Command-line tool for deploying your Neocities site
-	pkgver = v0.1.27.97c2e957
+	pkgver = v0.1.27.7c9221ab
 	pkgrel = 1
 	url = https://github.com/kugland/neocities-deploy
 	arch = any
