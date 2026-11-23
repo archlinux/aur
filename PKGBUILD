@@ -1,79 +1,133 @@
 # Maintainer: duanluan <duanluan@outlook.com>
 
 pkgname=reasonix-desktop-bin
-_pkgname=reasonix-desktop
-pkgver=1.39.11
+_pkgname=reasonix-studio
+pkgver=2.61.0
 pkgrel=1
-pkgdesc='Terminal-native AI coding agent with DeepSeek API (Electron desktop GUI, repackaged from .deb)'
-arch=('x86_64')
+pkgdesc='Electron desktop GUI for the Reasonix terminal-native AI coding agent (repackaged from upstream .deb)'
+arch=('x86_64' 'aarch64')
 url='https://github.com/esengine/DeepSeek-Reasonix'
 license=('MIT')
 # The bundle ships its own pinned Electron runtime; these are only the
 # shared-library / desktop-integration dependencies it loads at runtime.
-depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'gcc-libs' 'glib2' 'gtk3'
-         'hicolor-icon-theme' 'libcups' 'libnotify' 'libx11' 'libxcb'
-         'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon'
-         'libxrandr' 'libxss' 'mesa' 'nss' 'pango' 'systemd-libs' 'xdg-utils')
-provides=('reasonix-desktop')
-conflicts=('reasonix-desktop' 'deepseek-reasonix-desktop' 'deepseek-reasonix-desktop-bin')
+depends=(
+  'alsa-lib'
+  'at-spi2-core'
+  'cairo'
+  'dbus'
+  'gdk-pixbuf2'
+  'glib2'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libcloudproviders'
+  'libcups'
+  'libdrm'
+  'libepoxy'
+  'libnotify'
+  'libsecret'
+  'libx11'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxkbcommon'
+  'libxrandr'
+  'libxss'
+  'libxtst'
+  'mesa'
+  'nspr'
+  'nss'
+  'pango'
+  'systemd-libs'
+  'util-linux-libs'
+  'wayland'
+  'xdg-utils'
+)
+optdepends=(
+  'bubblewrap: sandboxed shell execution for the agent host'
+  'libappindicator-gtk3: system tray icon support'
+)
+# The former desktop package name keeps resolving, and the Studio names are
+# claimed so this package never lands beside another copy of the same app.
+provides=('reasonix-desktop' 'reasonix-studio')
+conflicts=('reasonix-desktop' 'reasonix-studio' 'deepseek-reasonix-desktop'
+           'deepseek-reasonix-desktop-bin')
 options=('!strip' '!debug')
-source=("${_pkgname}_${pkgver}_amd64.deb::${url}/releases/download/desktop-v${pkgver}/Reasonix-linux-amd64.deb")
-noextract=("${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('1d55aa9bb025406b462a597b64ddd43f46da7f5d46703a1bb8acf0571f151690')
+source=('LICENSE')
+source_x86_64=(
+  "ReasonixStudio-${pkgver}-amd64.deb::${url}/releases/download/studio-v${pkgver}/ReasonixStudio-linux-amd64.deb"
+)
+source_aarch64=(
+  "ReasonixStudio-${pkgver}-arm64.deb::${url}/releases/download/studio-v${pkgver}/ReasonixStudio-linux-arm64.deb"
+)
+noextract=(
+  "ReasonixStudio-${pkgver}-amd64.deb"
+  "ReasonixStudio-${pkgver}-arm64.deb"
+)
+sha256sums=('dc024237821ac82056c37f8d82e3be919bd51e39a4529ec12a8ab3e2a346dc4c')
+sha256sums_x86_64=('c8ee9d27725df44a476f20e2bb407f0d5f2ebf836ea3b25b2257200c64ec2d19')
+sha256sums_aarch64=('19587c6e3147c2b499fc98e9a1025dbc502f0bb896500ce6f9d9ab564ea9959a')
 
 prepare() {
+  local deb_arch
+  case "${CARCH}" in
+    x86_64) deb_arch='amd64' ;;
+    aarch64) deb_arch='arm64' ;;
+    *)
+      echo "Unsupported architecture: ${CARCH}" >&2
+      return 1
+      ;;
+  esac
+
   mkdir -p "${srcdir}/debroot"
-  bsdtar -xf "${srcdir}/${_pkgname}_${pkgver}_amd64.deb" -C "${srcdir}/debroot"
-  # Upstream switched data.tar.gz to data.tar.xz in newer releases;
+  bsdtar -xf "${srcdir}/ReasonixStudio-${pkgver}-${deb_arch}.deb" -C "${srcdir}/debroot"
+  # Upstream has shipped data.tar.gz and data.tar.xz at different points;
   # extract whichever member the .deb actually carries.
   bsdtar -xf "${srcdir}/debroot"/data.tar.* -C "${srcdir}/debroot"
 }
 
 package() {
   cd "${srcdir}/debroot"
-  install -d "${pkgdir}/usr/lib/reasonix" "${pkgdir}/usr/bin"
 
-  # Electron shell with its pinned runtime
-  cp -a --no-preserve=ownership usr/lib/reasonix/app "${pkgdir}/usr/lib/reasonix/"
-  chmod 755 "${pkgdir}/usr/lib/reasonix/app"
+  # Upstream installs into /opt/Reasonix Studio (the directory name carries a
+  # space and is referenced by the apparmor profile and the app's own path
+  # lookups), so the bundle is copied verbatim instead of being renamed.
+  install -d "${pkgdir}/opt"
+  cp -a --no-preserve=ownership 'opt/Reasonix Studio' "${pkgdir}/opt/"
 
-  # The desktop service resolves app/Reasonix and its private CLI beside
-  # itself; keep all three binaries together under /usr/lib/reasonix. The
-  # private reasonix CLI must NOT go to /usr/bin — that path belongs to the
-  # separate reasonix TUI packages.
-  local _bin
-  for _bin in reasonix reasonix-desktop reasonix-launcher; do
-    install -Dm755 "usr/bin/${_bin}" "${pkgdir}/usr/lib/reasonix/${_bin}"
-  done
-  ln -s ../lib/reasonix/reasonix-desktop "${pkgdir}/usr/bin/reasonix-desktop"
-  ln -s ../lib/reasonix/reasonix-launcher "${pkgdir}/usr/bin/reasonix-launcher"
+  # Electron's sandbox helper keeps its renderer sandbox only when setuid root.
+  chmod 4755 "${pkgdir}/opt/Reasonix Studio/chrome-sandbox"
 
-  # Chromium SUID sandbox helper; without root:root 4755 the app can only
-  # start with --no-sandbox
-  chmod 4755 "${pkgdir}/usr/lib/reasonix/app/chrome-sandbox"
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s '/opt/Reasonix Studio/reasonix-studio-electron' \
+    "${pkgdir}/usr/bin/reasonix-studio"
 
-  # Desktop entry — upstream's Exec=reasonix-launcher is installed above.
-  # Native Wayland windows map to StartupWMClass "Reasonix" (case-sensitive).
-  install -Dm644 usr/share/applications/reasonix.desktop \
-    "${pkgdir}/usr/share/applications/reasonix.desktop"
-  sed -i 's/^StartupWMClass=.*/StartupWMClass=Reasonix/' \
-    "${pkgdir}/usr/share/applications/reasonix.desktop"
+  # Upstream's desktop entry points at the absolute /opt path and already
+  # declares StartupWMClass "Reasonix Studio" for native Wayland windows.
+  # Icon= keeps upstream's launcher name, so the icons below carry that name
+  # too; the entry itself is renamed to match the package.
+  install -Dm644 usr/share/applications/reasonix-studio-electron.desktop \
+    "${pkgdir}/usr/share/applications/reasonix-studio.desktop"
 
-  # Icons
+  # Icons; upstream ships one 512x512 png keyed to its own launcher name.
   local _icon _dir
-  for _icon in usr/share/icons/hicolor/*/apps/reasonix-desktop.*; do
+  for _icon in usr/share/icons/hicolor/*/apps/reasonix-studio-electron.*; do
     _dir="$(basename "$(dirname "$(dirname "${_icon}")")")"
     install -Dm644 "${_icon}" \
       "${pkgdir}/usr/share/icons/hicolor/${_dir}/apps/$(basename "${_icon}")"
   done
-  install -Dm644 usr/share/pixmaps/reasonix-desktop.png \
-    "${pkgdir}/usr/share/pixmaps/reasonix-desktop.png"
 
-  # License shipped inside the bundle
-  install -Dm644 usr/lib/reasonix/app/LICENSE \
+  # Licenses: upstream's MIT text plus the Electron/Chromium notices shipped
+  # inside the bundle.
+  install -Dm644 "${srcdir}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 'opt/Reasonix Studio/LICENSE.electron.txt' \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
+  install -Dm644 'opt/Reasonix Studio/LICENSES.chromium.html' \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
 
-  # Deliberately not installed: reasonix-update-helper and its polkit action —
-  # pacman owns upgrades, and an in-app self-update would overwrite tracked
-  # files and corrupt the package.
+  # Deliberately not installed: reasonix-studio-update-helper and its polkit
+  # action — pacman owns upgrades, and an in-app self-update would overwrite
+  # tracked files and corrupt the package.
 }
