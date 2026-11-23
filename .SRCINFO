@@ -1,7 +1,7 @@
 pkgbase = trilium-cn-bin
 	pkgdesc = Trilium Notes Chinese version
 	pkgver = 0.64.2_20261117
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nriver/trilium-translation
 	install = trilium-cn.install
 	arch = x86_64

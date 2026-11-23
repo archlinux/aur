@@ -1,7 +1,7 @@
 # Maintainer: Nriver <6752679+Nriver@users.noreply.github.com>
 pkgname="trilium-cn-bin"
 pkgver=0.64.2_20261117
-pkgrel=1
+pkgrel=2
 pkgdesc="Trilium Notes Chinese version"
 arch=('x86_64')
 url="https://github.com/Nriver/trilium-translation"
