@@ -2,14 +2,14 @@
 
 pkgname=wild-git
 pkgver=0.11.0.r204.gc1cba811
-pkgrel=1
+pkgrel=2
 pkgdesc="A linker with the goal of being very fast for iterative development"
 arch=('i686' 'x86_64')
 url="https://github.com/davidlattimore/wild"
 license=('Apache-2.0' 'MIT')
-depends=('glibc' 'libgcc')
+depends=('glibc' 'libgcc' 'zstd')
 makedepends=('git' 'cargo')
-checkdepends=('clang' 'lld' 'rust-musl')
+checkdepends=('clang' 'lld' 'rust-musl' 'taplo-cli' 'wabt' 'wasi-libc' 'wasm-tools' 'wasmtime')
 provides=("wild=$pkgver")
 conflicts=('wild')
 options=('!lto')
@@ -42,18 +42,26 @@ pkgver() {
 check() {
   cd "wild"
 
+  #ZSTD_SYS_USE_PKG_CONFIG=1 \
   #cargo test \
-  #  --frozen
+  #  --frozen \
+  #  -- \
+  #  --skip "wasm/wasm32/rust-println/default"
 }
 
 package() {
   cd "wild"
 
+  ZSTD_SYS_USE_PKG_CONFIG=1 \
   cargo install \
     --frozen \
     --no-track \
     --root "$pkgdir/usr" \
     --path "$srcdir/wild/wild"
+
+  ln -s "wild" "$pkgdir/usr/bin/ld.wild"
+  install -dm755 "$pkgdir/usr/lib/wild"
+  ln -s "../../bin/wild" "$pkgdir/usr/lib/wild/ld"
 
   install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/wild"
 }
