@@ -1,0 +1,19 @@
+pkgbase = open-max-bin
+	pkgdesc = Minimal Rust terminal harness for coding agents, small, fast and self-extensible
+	pkgver = 2026.11.6
+	pkgrel = 1
+	url = https://github.com/Max17190/open-max
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = open-max
+	conflicts = open-max
+	options = !debug
+	source_x86_64 = open-max-bin-2026.11.6-x86_64.tar.xz::https://github.com/Max17190/open-max/releases/download/v2026.11.6/openmax-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = ba4e5e17e52d7374cf2eb151ea58899a4c18ad6010d530fe8d3a4cbc85319fc6
+	source_aarch64 = open-max-bin-2026.11.6-aarch64.tar.xz::https://github.com/Max17190/open-max/releases/download/v2026.11.6/openmax-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = e84ac89f1bc6658b0242e7c0bbea24500799471d9baf9b24cc9f09c7042b2cee
+
+pkgname = open-max-bin
