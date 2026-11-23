@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A minimal OBS CLI for obs-websocket v5"
 
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,7 +30,7 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 sha256sums=('e9f19975f3092457d5831f53ce6608952aeb3bcaa29e64ad5624bb88f0dfefde'
             'ba4889412c2cfdd1c0b7d0453202de9264a90a7665a0cd799e6c1ec2f3c062c3')
-sha256sums_x86_64=('327544c476199c8f1f06e6fe95aeb90bdb9a74959724013575fb47d9eaddbbfe')
+sha256sums_x86_64=('9086f7082435227d45215bbb8af93dbc8729ed452a68b6073a6f1d4bdd025c02')
 
 
 package() {
