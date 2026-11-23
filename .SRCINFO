@@ -1,0 +1,19 @@
+pkgbase = r-ieugwasr
+	pkgdesc = Interface to the 'OpenGWAS' Database API
+	pkgver = 1.2.1
+	pkgrel = 2
+	url = https://cran.r-project.org/package=ieugwasr
+	arch = any
+	license = MIT
+	depends = r-dplyr
+	depends = r-httr
+	depends = r-jsonlite
+	depends = r-magrittr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/ieugwasr_1.2.1.tar.gz
+	md5sums = e294f461d44953e8f35ef5f5f7302656
+	b2sums = 78217f5f07002125c86ee721d2323c727efddc590d3787e35fe41a3774511f3c62c0a9a3d05f43a8c9a4e785391a7317344990b311101f0d5ff7f943ab1837be
+
+pkgname = r-ieugwasr
