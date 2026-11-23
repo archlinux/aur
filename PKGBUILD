@@ -1,10 +1,10 @@
-# Maintainer: The Enclave contributors <security@enclave.chat>
+# Maintainer: The Enclave contributors <ari@aricummings.com>
 #
 # Built from the release tag: both Rust workspaces and lyrebird (Go), as
 # `cargo xtask dist` builds them. release.yml's `aur` job sets pkgver,
 # regenerates .SRCINFO and pushes.
 pkgname=enclave-messenger
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Private messages without a phone number, through Tor and the Nym mixnet'
 arch=('x86_64' 'aarch64')
