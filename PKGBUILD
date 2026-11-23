@@ -1,7 +1,7 @@
 # TEMPLATE ONLY: approved release source and checksum are required for each release.
 # Source/checksum approval is required before even metadata generation proceeds.
 pkgname=pivra
-pkgver=0.2.5
+pkgver=0.2.7
 pkgrel=1
 # Prevent makepkg from generating a separate pivra-debug package.
 options=('!debug')
@@ -161,7 +161,7 @@ package() {
   install -Dm644 docs/diagnostics/VIDEO_ADAPTER_REBUILD.md \
     "$pkgdir/usr/share/doc/pivra/corresponding-source/VIDEO_ADAPTER_REBUILD.md" || return 1
   local doc
-  for doc in PIVRA_V0.2.5_RELEASE_NOTES.md PIVRA_V0.2.5_RC_VALIDATION.md; do
+  for doc in PIVRA_V0.2.7_RELEASE_NOTES.md PIVRA_V0.2.7_RC_VALIDATION.md; do
     install -Dm644 "docs/releases/$doc" "$pkgdir/usr/share/doc/pivra/$doc" || return 1
   done
 }
