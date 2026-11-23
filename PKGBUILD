@@ -1,12 +1,12 @@
 # Maintainer: Axel H. <noirbizarre@gmail.com>
 #
-# Source package. `0.6.0` and `8b344911e6ad70dad3a6852de7d824d30219852dc0a68b34ce9caba56f664a7c` are substituted by
+# Source package. `0.6.1` and `116de2484eaf07771532614c57477f0fbdf8ca4f79882c86ac1b398d94d309d6` are substituted by
 # .github/workflows/aur.yaml from the published release, and the result is
 # pushed to the AUR. Edit this template, never the PKGBUILD in the AUR
 # repository: that one is regenerated at every release.
 
 pkgname=over
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A git-based file overlay manager (dotfiles as overlays)"
 arch=('x86_64' 'aarch64')
@@ -39,7 +39,7 @@ conflicts=('over-bin')
 options=('!lto' '!debug')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('8b344911e6ad70dad3a6852de7d824d30219852dc0a68b34ce9caba56f664a7c')
+sha256sums=('116de2484eaf07771532614c57477f0fbdf8ca4f79882c86ac1b398d94d309d6')
 
 prepare() {
 	cd "$pkgname-$pkgver"
