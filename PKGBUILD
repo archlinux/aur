@@ -2,7 +2,7 @@
 # Contributor: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 pkgname=vieb
 _pkgname=Vieb
-pkgver=12.11.0
+pkgver=12.12.0
 _electronversion=45
 _nodeversion=24
 pkgrel=1
@@ -27,9 +27,9 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('9989a0511789b499da3beb593b22d2e306bc74e6926d4a379576c0da8dc536c8'
+sha256sums=('6178199f3c8e57bfb4b20bc8784a393432333bd04b599e01eb6c240d58630f96'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -73,6 +73,16 @@ _set_npm_build_env() {
 	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
 	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
 }
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+}
 prepare() {
     cd "$(_get_project_dir)"
     _get_electron_version
@@ -102,6 +112,7 @@ build() {
     npm run tsc
     export NODE_ENV=production
     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
+    _delete_other_arch_files
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
