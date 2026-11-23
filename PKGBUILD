@@ -1,11 +1,11 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggimage
-_pkgver=0.3.6
+_pkgver=0.3.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Use Image in 'ggplot2'"
+pkgdesc="Use Images in 'ggplot2'"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('Artistic-2.0')
@@ -25,16 +25,14 @@ depends=(
   r-yulab.utils
 )
 optdepends=(
-  r-ape
-  r-ggtree
-  r-gridgraphics
   r-httr
+  r-quarto
   r-rsvg
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f23d5b0043616481e9609f2f2917d6e0')
-b2sums=('37c5930c1d4315bba1a729ac77cab026127a2a08919aec5f3fa14ed49d6b5991fa52605b25f379b78ed3246a3a8f38474fba4e989cd0f4ff4f63fbbcbd741815')
+md5sums=('bda424d16b4875797f75001b1c34b482')
+b2sums=('f9cc08aa0d8003722572ca9df855f98decac85ccce1c8b254d57f2c724780a25ae45c30a0a1dd4faf0eb419995ac7fe1c2017849420d91bb909037df809f6329')
 
 build() {
   mkdir build

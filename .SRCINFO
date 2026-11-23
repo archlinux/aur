@@ -1,6 +1,6 @@
 pkgbase = r-ggimage
-	pkgdesc = Use Image in 'ggplot2'
-	pkgver = 0.3.6
+	pkgdesc = Use Images in 'ggplot2'
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggimage
 	arch = any
@@ -18,14 +18,12 @@ pkgbase = r-ggimage
 	depends = r-tibble
 	depends = r-withr
 	depends = r-yulab.utils
-	optdepends = r-ape
-	optdepends = r-ggtree
-	optdepends = r-gridgraphics
 	optdepends = r-httr
+	optdepends = r-quarto
 	optdepends = r-rsvg
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/ggimage_0.3.6.tar.gz
-	md5sums = f23d5b0043616481e9609f2f2917d6e0
-	b2sums = 37c5930c1d4315bba1a729ac77cab026127a2a08919aec5f3fa14ed49d6b5991fa52605b25f379b78ed3246a3a8f38474fba4e989cd0f4ff4f63fbbcbd741815
+	source = https://cran.r-project.org/src/contrib/ggimage_0.3.8.tar.gz
+	md5sums = bda424d16b4875797f75001b1c34b482
+	b2sums = f9cc08aa0d8003722572ca9df855f98decac85ccce1c8b254d57f2c724780a25ae45c30a0a1dd4faf0eb419995ac7fe1c2017849420d91bb909037df809f6329
 
 pkgname = r-ggimage
