@@ -3,23 +3,23 @@
 
 pkgname=comfy-desktop
 _name=Comfy-Desktop
-pkgver=1.1.9
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="The desktop app for ComfyUI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Comfy-Org/Comfy-Desktop"
 license=('AGPL-3.0-or-later')
-_electron=electron40
+_electron=electron45
 depends=('bash' "${_electron}" 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'python' 'python-pygit2')
 makedepends=('gendesk' 'nodejs' 'pnpm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('28864e1f84fac21700b5d1718b186f10760ead70e12a4b46cd89e5a8b78eaf30'
+sha256sums=('737085095a23c34833fa16d2b46a034796d0a633d1699a61e1dde03da89c300b'
             '392aa4a63d71a463dcf7345271eac74fb3ca867d57ae99bc47a3a90117805fdd')
 
 prepare() {
     cd "${_name}-${pkgver}"
-    sed -i "s/process.resourcesPath/path.dirname(app.getAppPath())/g" \
+    sed -i "s|process.resourcesPath|'/usr/lib/${pkgname}'|g" \
         src/main/lib/bundledScript.ts \
         src/main/lib/disk.ts \
         src/main/lib/git.ts
