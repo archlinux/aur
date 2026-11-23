@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=RadioPit Tray
+Comment=Play your RadioPit library from the system tray
+Exec=radiopittray
+Icon=radio
+Terminal=false
+Categories=Audio;AudioVideo;Player;
+Keywords=radio;radiopit;tray;
