@@ -1,6 +1,6 @@
 pkgbase = qdirstat
 	pkgdesc = Qt-based directory statistics (KDirStat/K4DirStat without any KDE - from the original KDirStat author)
-	pkgver = 2.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/shundhammer/qdirstat
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = qdirstat
 	optdepends = perl: For use with scripts
 	optdepends = perl-uri: For use with scripts
 	conflicts = qdirstat-git
-	source = qdirstat-2.0.tar.gz::https://github.com/shundhammer/qdirstat/archive/2.0.tar.gz
-	sha256sums = a0b2ba91caf68ec4ee7705d5063bc542ac8aea4d421451103245c69d272bf19f
+	source = qdirstat-2.0.1.tar.gz::https://github.com/shundhammer/qdirstat/archive/2.0.1.tar.gz
+	sha256sums = 5d7e3dd5ed7db7d8aa9090c50ee48e699666277196a4d90ad39000de4538a5bf
 
 pkgname = qdirstat
