@@ -1,0 +1,18 @@
+pkgbase = dcg
+	pkgdesc = A hook that blocks destructive commands before AI coding agents run them
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = https://github.com/Dicklesworthstone/destructive_command_guard
+	arch = x86_64
+	license = custom:MIT-with-OpenAI-Anthropic-Rider
+	depends = gcc-libs
+	depends = glibc
+	provides = destructive-command-guard
+	conflicts = destructive-command-guard
+	options = !debug
+	source = dcg-0.17.1.tar.xz::https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.17.1/dcg-x86_64-unknown-linux-musl.tar.xz
+	source = LICENSE::https://raw.githubusercontent.com/Dicklesworthstone/destructive_command_guard/v0.17.1/LICENSE
+	sha256sums = 34ede837d5ef03df1fd98769718a6f6eaacaf6fca01d2455281567ccd2e1afde
+	sha256sums = 32a82e0a5754e72e51fae44b65a936c831c07376f21c90f5fb9e76897fcc3509
+
+pkgname = dcg
