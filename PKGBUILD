@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=neo4j-mcp
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='Neo4j official MCP server'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 install=neo4j-mcp.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8597bc20aad4ff3aa94fa66d1a0cfbda44517289570b237d68ce2d2fc35c6237')
+sha256sums=('bbb679c6b1e7c7e7c2350875720be9fe666469c4842a0b65e2e531cc83fe1792')
 
 prepare() {
   cd "mcp-${pkgver}"

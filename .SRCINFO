@@ -1,6 +1,6 @@
 pkgbase = neo4j-mcp
 	pkgdesc = Neo4j official MCP server
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/neo4j/mcp
 	install = neo4j-mcp.install
@@ -9,7 +9,7 @@ pkgbase = neo4j-mcp
 	license = GPL-3.0-only
 	makedepends = go
 	depends = glibc
-	source = neo4j-mcp-2.1.1.tar.gz::https://github.com/neo4j/mcp/archive/refs/tags/v2.1.1.tar.gz
-	sha256sums = 8597bc20aad4ff3aa94fa66d1a0cfbda44517289570b237d68ce2d2fc35c6237
+	source = neo4j-mcp-2.1.2.tar.gz::https://github.com/neo4j/mcp/archive/refs/tags/v2.1.2.tar.gz
+	sha256sums = bbb679c6b1e7c7e7c2350875720be9fe666469c4842a0b65e2e531cc83fe1792
 
 pkgname = neo4j-mcp
