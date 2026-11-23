@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ViSEAGO
-_pkgver=1.18.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='ViSEAGO: a Bioconductor package for clustering biological functions using Gene Ontology and semantic similarity'
 arch=('any')
@@ -14,6 +14,8 @@ depends=(
   r-annotationdbi
   r-annotationforge
   r-biomart
+  r-circlize
+  r-complexheatmap
   r-data.table
   r-dendextend
   r-diagrammer
@@ -27,7 +29,6 @@ depends=(
   r-htmlwidgets
   r-igraph
   r-plotly
-  r-processx
   r-r.utils
   r-rcolorbrewer
   r-scales
@@ -42,12 +43,13 @@ optdepends=(
   r-knitr
   r-limma
   r-org.mm.eg.db
+  r-processx
   r-remotes
   r-rgraphviz
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('26f084c11f0e1179432abf0e353c4456e73ef904fc58b8cfeaaf36bb11ea9819')
+sha256sums=('0f387a0193a461fc2d622501e9869db13a0c1054a25b2493068c11d0fcf5d73d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
