@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=context-git
-pkgver=1.1.0.r522.g27918c4
+pkgver=1.1.0.r525.g4160eba
 pkgrel=2
 pkgdesc="Standalone CLI and MCP server for deterministic repository context (git version)"
 arch=('x86_64' 'aarch64')
