@@ -1,12 +1,12 @@
 pkgbase = r-rex
 	pkgdesc = Friendly Regular Expressions
-	pkgver = 1.2.1
-	pkgrel = 7
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rex
 	arch = any
 	license = MIT
 	depends = r
-	depends = r-lazyeval
+	depends = r-withr
 	optdepends = r-covr
 	optdepends = r-dplyr
 	optdepends = r-ggplot2
@@ -18,7 +18,7 @@ pkgbase = r-rex
 	optdepends = r-rvest
 	optdepends = r-stringr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rex_1.2.1.tar.gz
-	sha256sums = af42e649c06e4bbdba94d5a1870a7e8347903571c90cd5e5ca40f52307a3bfd6
+	source = https://cran.r-project.org/src/contrib/rex_1.2.2.tar.gz
+	sha256sums = 5c6a6f9bc45507038ae528e71a7f6cd69a77c24c2fed86383a34fd5c86c2ee48
 
 pkgname = r-rex
