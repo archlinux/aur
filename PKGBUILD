@@ -2,7 +2,7 @@
 
 pkgname=python-django-axes
 _name=${pkgname#python-}
-pkgver=9.0.0
+pkgver=9.1.0
 pkgrel=1
 pkgdesc='Keep track of failed login attempts in Django-powered sites'
 arch=(any)
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("python" "python-django")
 makedepends=("python-build" "python-installer" "python-setuptools-scm")
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e99ca4b6d1531eb4baf8c5315008d799e2cf5e40a96d01f6205307842fd5a746')
+sha256sums=('5562f714127eb1c40a254f1eeea099c02477d7607a72daa9a8837b80a21cb027')
 
 build() {
     export SETUPTOOLS_SCM_PRETEND_VERSION_FOR_DJANGO_AXES="$pkgver"
