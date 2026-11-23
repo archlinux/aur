@@ -1,6 +1,6 @@
 pkgbase = localbell-bin
 	pkgdesc = Forward Android push notifications to your Linux desktop via D-Bus
-	pkgver = 1.4.34
+	pkgver = 1.4.35
 	pkgrel = 1
 	url = https://github.com/fredjunior54/localbell
 	arch = x86_64
@@ -11,17 +11,17 @@ pkgbase = localbell-bin
 	depends = libxkbcommon
 	depends = libglvnd
 	optdepends = xdg-utils: open the project page in the default browser
-	provides = localbell=1.4.34
+	provides = localbell=1.4.35
 	conflicts = localbell
 	options = !strip
-	source = https://github.com/fredjunior54/localbell/releases/download/v1.4.34/localbell-1.4.34-linux-amd64.tar.gz
-	source = https://raw.githubusercontent.com/fredjunior54/localbell/v1.4.34/packaging/localbell.desktop
-	source = https://raw.githubusercontent.com/fredjunior54/localbell/v1.4.34/server/assets/localbell-icon.png
-	source = https://raw.githubusercontent.com/fredjunior54/localbell/v1.4.34/LICENSE
-	source = https://raw.githubusercontent.com/fredjunior54/localbell/v1.4.34/server/assets/NERD-FONTS.txt
-	source = https://raw.githubusercontent.com/fredjunior54/localbell/v1.4.34/server/assets/CaskaydiaCove-LICENSE.txt
-	source = https://raw.githubusercontent.com/fredjunior54/localbell/v1.4.34/server/assets/Symbols-Nerd-LICENSE.txt
-	sha256sums = 6fef9f188cf801eb06fef714fe8b98cab49098754bf1456c2561f059a47685de
+	source = https://github.com/fredjunior54/localbell/releases/download/v1.4.35/localbell-1.4.35-linux-amd64.tar.gz
+	source = https://raw.githubusercontent.com/fredjunior54/localbell/v1.4.35/packaging/localbell.desktop
+	source = https://raw.githubusercontent.com/fredjunior54/localbell/v1.4.35/server/assets/localbell-icon.png
+	source = https://raw.githubusercontent.com/fredjunior54/localbell/v1.4.35/LICENSE
+	source = https://raw.githubusercontent.com/fredjunior54/localbell/v1.4.35/server/assets/NERD-FONTS.txt
+	source = https://raw.githubusercontent.com/fredjunior54/localbell/v1.4.35/server/assets/CaskaydiaCove-LICENSE.txt
+	source = https://raw.githubusercontent.com/fredjunior54/localbell/v1.4.35/server/assets/Symbols-Nerd-LICENSE.txt
+	sha256sums = f6a5fc76c44799e41d0c0c23c78b962d73c5f48ecdf588f4667f74e570349414
 	sha256sums = ab31c794624618ee0c1a6e9c77f9b1766567591ad117b8ec5fd3376d79706165
 	sha256sums = bd3ab4d40c5521c16649f6b2613c7197095455d21eb982af5555e6c71be4e230
 	sha256sums = a9d185a0f74c027a02e64737085182dc514f759b2d9e86bb64e68478c94c0910
