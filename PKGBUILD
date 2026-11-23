@@ -4,7 +4,7 @@
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 _pkgname=ggpmisc
-_pkgver=0.6.1
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,15 +13,13 @@ arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
+  r-catools
   r-confintr
   r-dplyr
   r-generics
   r-ggplot2
   r-ggpp
-  r-lmodel2
   r-lubridate
-  r-multcomp
-  r-multcompview
   r-plyr
   r-polynom
   r-quantreg
@@ -29,6 +27,7 @@ depends=(
   r-scales
   r-splus2r
   r-tibble
+  r-tidyr
 )
 checkdepends=(
   r-broom
@@ -43,15 +42,27 @@ optdepends=(
   r-ggrepel
   r-ggtext
   r-knitr
+  r-lmodel2
+  r-lspline
+  r-marquee
+  r-mixtools
+  r-multcomp
+  r-multcompview
+  r-onls
+  r-ragg
   r-rmarkdown
+  r-robustbase
+  r-segmented
+  r-smatr
   r-testthat
   r-vdiffr
+  r-xdvir
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('1535dc89bf7c6a72d7f01cad1823ccd4'
+md5sums=('c8ce0ca5565f5f01fc0f9ffec3c8f601'
          '733f754ce3c1486851d08acad34f7dba')
-b2sums=('5e4974c1a800ebea2178166c15a044b4482418a8a75f4f32edb597d8077b19052985a2a784fef9879a221a4408ea8e840e4154e866e27ad156f92a30ed61b99d'
+b2sums=('66fd76e91cc653bbbf86f9541bf57ec0afe5b6b476bb672730fd7be23e96e6f3bb243c9ed8c8fd2c81bfb35de8b1be95aaefa23864f6178062793adc745ef182'
         '0d6b5f2c056d6c4badfb880f3c47f7f1aa87c28f0d3c972a7df0e039ba0f68ffb6663ccafe790be759711a879d001aa53ed96ef9de2fd620382d31eb2b9a9c1b')
 
 #prepare() {
