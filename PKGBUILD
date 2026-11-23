@@ -4,7 +4,7 @@ _appauthor="open-meteo"
 _appname="openmeteo-requests"
 
 pkgname="python-${_appname}"
-pkgver=1.7.5
+pkgver=1.7.6
 pkgrel=1
 pkgdesc="Open-Meteo Python Library using 'requests'"
 
@@ -23,7 +23,7 @@ depends=('python' 'python-openmeteo-sdk' 'python-niquests')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
-sha256sums=('5557b5df957aa00f5e673d85ddc47f8b5bcadde6c72a98c0ec1999b538db39f9')
+sha256sums=('ae6778e4b46f20402d056fb1d25ea0e312eb06df5df295e7cadbfd125a5d7426')
 
 
 build() {
