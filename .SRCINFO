@@ -1,6 +1,6 @@
 pkgbase = basic256
 	pkgdesc = Educational BASIC programming environment
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://basic256.org/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = basic256
 	depends = qt6-multimedia
 	depends = qt6-serialport
 	depends = qt6-speech
-	source = basic256-2.3.1.tar.gz::https://github.com/uglymike17/basic256/archive/refs/tags/v2.3.1.tar.gz
+	source = basic256-2.3.2.tar.gz::https://github.com/uglymike17/basic256/archive/refs/tags/v2.3.2.tar.gz
 	source = basic256.desktop
-	sha256sums = 0ea2d9ed5dad0a10529d67d088e0899ef75e4eb452bd685e2984a9ed32a75c16
+	sha256sums = 0d45458e138482cb6de8473c6904e2f7794339de79980f648ec2d160f93b7703
 	sha256sums = 601fe0147cc4b394e2c01afa20e371f7dffc9e7787ce9360ae0332545f6e62ec
 
 pkgname = basic256

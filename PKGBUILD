@@ -4,7 +4,7 @@
 # Contributor: Eric Waller <ewwaller@gmail.com>
 
 pkgname=basic256
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Educational BASIC programming environment"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('qt6-base' 'qt6-multimedia' 'qt6-serialport' 'qt6-speech')
 makedepends=('cmake' 'bison' 'flex' 'qt6-tools' 'qt6-declarative')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/uglymike17/basic256/archive/refs/tags/v${pkgver}.tar.gz"
         "basic256.desktop")
-sha256sums=('0ea2d9ed5dad0a10529d67d088e0899ef75e4eb452bd685e2984a9ed32a75c16'
+sha256sums=('0d45458e138482cb6de8473c6904e2f7794339de79980f648ec2d160f93b7703'
             '601fe0147cc4b394e2c01afa20e371f7dffc9e7787ce9360ae0332545f6e62ec')
 
 build() {
