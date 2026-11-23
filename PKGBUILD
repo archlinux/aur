@@ -42,6 +42,7 @@ EOF
   printf '%s\n' \
     'DevEco CLI needs the Huawei Command Line Tools on Linux:' \
     '  - install AUR: deveco-commandline-tools (requires a login-gated zip)' \
+    '      download page: https://developer.huawei.com/consumer/cn/download/command-line-tools-for-hmos' \
     '  - or point at an existing toolchain:' \
     '      export DEVECO_CLI_CLT_PATH=/path/to/command-line-tools' \
     '  - the toolchain must report version >= 26.0.0, older 6.x builds are rejected' \
