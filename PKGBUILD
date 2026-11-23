@@ -2,7 +2,7 @@
 
 pkgname=browser-use-cli
 _pyname=browser_use
-pkgver=1.0.6
+pkgver=1.0.8
 pkgrel=1
 _pydantic_ai_ver=2.66.0
 pkgdesc='CLI for browser automation with AI agents'
@@ -59,7 +59,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/p/pydantic_ai_slim/pydantic_ai_slim-$_pydantic_ai_ver.tar.gz"
   "https://files.pythonhosted.org/packages/source/p/pydantic_graph/pydantic_graph-$_pydantic_ai_ver.tar.gz"
 )
-sha256sums=('7c1dcfc40d4bd4de8249f8bdc350e1c90705c44239a9443e1b2278f016e0f59a'
+sha256sums=('a3843cc083fb5764a4f10dc838ff1841cbe9076dd26e49aa3276ac016ff4d319'
             '284dc547a042c309feafd9a9f4a74b2a8651b7963ea3ac6cb2f2d64889f6a8f3'
             '0da3a32df46336a03ff5a22bc6bc442cd7d2f2d50a118fd4856f29d37f6d26a0'
             '9511987d4907ec6dac501e21d66946d10098f66b5d21bc2aba4189cd81ba189a'
