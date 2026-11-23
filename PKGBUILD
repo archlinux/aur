@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=phantasus
-_pkgver=1.24.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,6 +11,7 @@ url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
   r-annotationdbi
+  r-apeglm
   r-assertthat
   r-biobase
   r-ccapp
@@ -35,7 +36,6 @@ depends=(
   r-protolite
   r-rhdf5
   r-rhdf5client
-  r-rook
   r-scales
   r-stringr
   r-svglite
@@ -51,8 +51,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2f928065c75c3581ae26e7129339f1bc')
-b2sums=('66b0cd827bc5b3b77654daa61898521ca97090d94843f0552614302edaac7599283fcf6442dcdd638526c58380fbe888c171a8f79b7b7de67fe94b1f94d75c11')
+md5sums=('58fab5a3c5c66eebcbfc771417cc687a')
+b2sums=('174327e5aaef64c27bc45c7e29971dcb676268206f0663e5f514e201caa78d7669be38fe24a5ce98da2ec73c1c75b35a35fec0aec552afd267da3e737de543a6')
 
 build() {
   mkdir build
