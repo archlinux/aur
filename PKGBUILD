@@ -1,6 +1,6 @@
 pkgname=python-vllm-rocm
 _pkgname=vllm
-pkgver=0.32.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs (ROCm support)"
 arch=('x86_64')
@@ -83,7 +83,7 @@ optdepends=(
 provides=('python-vllm')
 
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
-sha256sums=('c807cb17a533bd8837875ff109551b1fb4670f9e411d3a2e8bb2386ad8893d57')
+sha256sums=('86d017605f3a70d8adae331f5c8c6a778e8a4931d94e207c11296f9cc58b212c')
 
 build() {
   cd "$srcdir/$_pkgname"
