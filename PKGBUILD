@@ -1,6 +1,6 @@
 # Maintainer: Samueru-sama xdglawyer@outlook.com
 pkgname=zenity-rs-bin
-pkgver=0.3.0
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Rust rewrite of zenity, much smaller and faster"
 arch=('aarch64' 'loongarch64' 'ppc64' 'ppc64le' 'riscv64' 'x86_64')
@@ -14,12 +14,12 @@ source_ppc64=("https://github.com/QaidVoid/zenity-rs/releases/download/v$pkgver/
 source_ppc64le=("https://github.com/QaidVoid/zenity-rs/releases/download/v$pkgver/zenity-rs-ppc64le-linux")
 source_riscv64=("https://github.com/QaidVoid/zenity-rs/releases/download/v$pkgver/zenity-rs-riscv64-linux")
 source_x86_64=("https://github.com/QaidVoid/zenity-rs/releases/download/v$pkgver/zenity-rs-x86_64-linux")
-sha256sums_aarch64=('a75c846e9461aef13120686cdf62750025e8fa2f234d71cd6b9846cace50c561')
-sha256sums_loongarch64=('419b835f6b9360964e1b6af49de875c908edc833fb8e141b2ee37233793e52c5')
-sha256sums_ppc64=('35156779b7ad889b28599bfa0e8011e0ee2411d16d1a5b5bd0f7a87a8342f025')
-sha256sums_ppc64le=('ece6a9349041b059dc8af81c9a9cd26c2f78557c9a79fc46568fa28afb67aeba')
-sha256sums_riscv64=('a153287464925819d13ed7e2bb57996f8d83078be67518d1e6ea2eb6ac48e170')
-sha256sums_x86_64=('f7a351180f364501855181420ceecd40b42ff84742ab79eca7aec43fe8ec074a')
+sha256sums_aarch64=('4907a96c0e239e56682eca5c20728f7c8284ab9ff388b0a871263c97d16b0d78')
+sha256sums_loongarch64=('4248309aa5b6e344cc438d5c62969b7323ef4f8edb44a39415c9485fa33e1bed')
+sha256sums_ppc64=('a11ac22368b9ebd244da15fd752a662497e949caa0c91ee63da0bb668d6c3bc4')
+sha256sums_ppc64le=('9c339a9ec0bf5aae0c993e501fa84eb7b0b0801f92fa9b9179aeefef1565b210')
+sha256sums_riscv64=('9e3a905ddd5452a763787ffa701b50d7dfb9cb6d402ae43d27096a8ccb9b3de8')
+sha256sums_x86_64=('d9aeeeb6d50150e8f4562393a79083124df55b6dc5f8893cbc89b58058e117aa')
 package() {
     cd "${srcdir}" || exit
     install -Dm755 "${srcdir}"/zenity-rs-"${CARCH}"-linux "${pkgdir}"/usr/bin/zenity
