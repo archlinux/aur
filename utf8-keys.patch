@@ -1,0 +1,87 @@
+diff --git a/src/backends/X11/window.c b/src/backends/X11/window.c
+index 2d11f358..93d32f89 100644
+--- a/src/backends/X11/window.c
++++ b/src/backends/X11/window.c
+@@ -1555,14 +1555,7 @@ window_handle_key_press(struct window *window, XKeyEvent *event)
+ 	/* X11 keycodes have an offset of 8 compared to Linux input codes */
+ 	xkb_keycode_t keycode = event->keycode - 8;
+ 	
+-	char buf[32];
+-	int count = xkb_state_key_get_utf8(window->display->xkb_state, event->keycode, buf, sizeof(buf));
+-	uint32_t unicode = 0;
+-	if (count > 0) {
+-		buf[count] = '\0';
+-		/* Simple UTF-8 to unicode conversion for ASCII */
+-		unicode = (uint32_t)buf[0];
+-	}
++	uint32_t unicode = xkb_keysym_to_utf32(keysym);
+ 
+ 	/* event->state is the modifier mask before this key. Force the C0
+ 	 * control character when Control is held, even if the xkb state has
+diff --git a/src/backends/wayland/clients/window.c b/src/backends/wayland/clients/window.c
+index d1d10e9a..78e0fcce 100644
+--- a/src/backends/wayland/clients/window.c
++++ b/src/backends/wayland/clients/window.c
+@@ -4967,16 +4967,7 @@ keyboard_handle_key(void *data, struct wl_keyboard *keyboard,
+ 		if (state == WL_KEYBOARD_KEY_STATE_PRESSED)
+ 			keysym = process_key_press(keysym, input);
+ 
+-		/* Convert the key to UTF-8 (prefer the state->utf8 like X11 path) */
+-		char buf[32];
+-		int count = xkb_state_key_get_utf8(input->xkb.state, code, buf, sizeof(buf));
+-		uint32_t unicode = 0;
+-		if (count > 0) {
+-			/* simple ASCII conversion for now (first byte) */
+-			unicode = (uint32_t)(unsigned char)buf[0];
+-		} else if (keysym != XKB_KEY_NoSymbol) {
+-			unicode = xkb_keysym_to_utf32(keysym);
+-		}
++		uint32_t unicode = xkb_keysym_to_utf32(keysym);
+ 
+ 		/* Normalize carriage return to line feed for B_ENTER */
+ 		if (unicode == 13)
+diff --git a/src/kits/interface/Window.cpp b/src/kits/interface/Window.cpp
+index 94b5dc55..9483711f 100755
+--- a/src/kits/interface/Window.cpp
++++ b/src/kits/interface/Window.cpp
+@@ -1460,9 +1460,28 @@ void BWindow::SendKeyEvent(BWindow* win, uint32 key, uint32 sym, int32 what, uin
+ {
+ 	_set_key_state(key, what == B_KEY_DOWN);
+ 
+-	char string[2];
+-	string[0] = sym;
+-	string[1] = 0;
++	char string[5] = {0, 0, 0, 0, 0};
++	int32 length;
++	if (sym <= 0x7f) {
++		string[0] = (char)sym;
++		length = 1;
++	} else if (sym <= 0x7ff) {
++		string[0] = (char)(0xc0 | (sym >> 6));
++		string[1] = (char)(0x80 | (sym & 0x3f));
++		length = 2;
++	} else if (sym <= 0xffff) {
++		string[0] = (char)(0xe0 | (sym >> 12));
++		string[1] = (char)(0x80 | ((sym >> 6) & 0x3f));
++		string[2] = (char)(0x80 | (sym & 0x3f));
++		length = 3;
++	} else {
++		string[0] = (char)(0xf0 | (sym >> 18));
++		string[1] = (char)(0x80 | ((sym >> 12) & 0x3f));
++		string[2] = (char)(0x80 | ((sym >> 6) & 0x3f));
++		string[3] = (char)(0x80 | (sym & 0x3f));
++		length = 4;
++	}
++	string[length] = 0;
+ 	uint8 states[16];
+ 	_get_key_states(states);
+ 
+@@ -1475,7 +1494,7 @@ void BWindow::SendKeyEvent(BWindow* win, uint32 key, uint32 sym, int32 what, uin
+ 	msg->AddInt32("key", key);
+ 	msg->AddInt32("modifiers", modifiers);
+ 	msg->AddInt8("byte", (int8)string[0]);
+-	msg->AddData("bytes", B_STRING_TYPE, string, 2);
++	msg->AddData("bytes", B_STRING_TYPE, string, length + 1);
+ 	msg->AddInt32("raw_char", sym);
+ 	if (what == B_KEY_DOWN)
+ 		msg->AddInt32("be:key_repeat", 1);

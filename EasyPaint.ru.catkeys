@@ -1,0 +1,117 @@
+1	russian	x-vnd.EasyPaint	152058525
+Don't save	PaintWindow		Не сохранять
+Canvas size…	PaintWindow		Размер холста…
+Size:	TextWindow		Размер:
+Custom…	PaintWindow		Другое…
+There isn't enough memory for an image that size.	App		Недостаточно памяти для изображения такого размера.
+Percent	SizeWindow		Проценты
+About EasyPaint…	PaintWindow		О EasyPaint…
+OK	App		ОК
+Apply	EffectWindow		Применить
+Width:	SettingsWindow		Ширина:
+Image size	SizeWindow		Размер изображения
+EasyPaint %s\n\nA simple bitmap graphics editor.\n\nWritten in Qt by the EasyPaint team (2012): Nikita Grishko, Artem Stepanyuk, Denis Klimenko and Bahdan Siamionau.\nMoved to Qt 5 for Haiku by Michel Clasquin-Johnson.\nPorted to Haiku's own interface in 2026.\n\nhttps://github.com/Gr1N/EasyPaint\n\nDistributed under the MIT license.	App		EasyPaint %s\n\nПростой растровый графический редактор.\n\nНаписан на Qt командой EasyPaint (2012): Никита Гришко, Артём Степанюк, Денис Клименко и Бахдан Сиамёнов.\nПеренесён на Qt 5 для Haiku: Мишель Клакен-Джонсон.\nПортирован на собственный интерфейс Haiku в 2026 году.\n\nhttps://github.com/Gr1N/EasyPaint\n\nРаспространяется по лицензии MIT.
+View	PaintWindow		Вид
+New image	SizeWindow		Новое изображение
+Select all	PaintWindow		Выделить всё
+OK	ColorWindow		ОК
+EasyPaint: Save image	PaintWindow		EasyPaint: Сохранить изображение
+Gamma	PaintWindow		Гамма
+Error opening file	App		Ошибка открытия файла
+Rectangle	ToolBox		Прямоугольник
+Pen size	ToolBox		Размер пера
+Redo	PaintWindow		Повторить
+Every (seconds):	SettingsWindow		Каждые (секунд):
+Rotate clockwise	PaintWindow		Повернуть по часовой стрелке
+Untitled	PaintWindow		Без имени
+Cancel	PaintWindow		Отмена
+OK	EffectWindow		ОК
+Primary colour: click to change	ToolBox		Основной цвет: нажмите для изменения
+Secondary colour	ColorWindow		Дополнительный цвет
+Intensity	EffectWindow		Интенсивность
+File	PaintWindow		Файл
+Save automatically	SettingsWindow		Сохранять автоматически
+OK	SizeWindow		ОК
+Spray	ToolBox		Аэрограф
+Undo	PaintWindow		Отменить
+Can't save \"%s\": %s	PaintWindow		Не удалось сохранить \"%s\": %s
+Tools	PaintWindow		Инструменты
+Fill	ToolBox		Заливка
+Curve	ToolBox		Кривая
+Secondary colour: click to change	ToolBox		Дополнительный цвет: нажмите для изменения
+Text	ToolBox		Текст
+Select all	Tools		Выделить всё
+Canvas size	SizeWindow		Размер холста
+Cut	Tools		Вырезать
+Original size:	SizeWindow		Исходный размер:
+Cancel	EffectWindow		Отмена
+OK	SettingsWindow		ОК
+Cut	PaintWindow		Вырезать
+Sharpen	EffectWindow		Резкость
+Image	PaintWindow		Изображение
+Zoom out	PaintWindow		Уменьшить
+Cancel	SizeWindow		Отмена
+About EasyPaint	App		О EasyPaint
+Save as…	PaintWindow		Сохранить как…
+Copy	Tools		Копировать
+Magnifier	ToolBox		Лупа
+Page setup…	PaintWindow		Параметры страницы…
+Primary colour	ColorWindow		Основной цвет
+Ask for the size of new images	SettingsWindow		Запрашивать размер новых изображений
+Cancel	SettingsWindow		Отмена
+EasyPaint: Open image	App		EasyPaint: Открыть изображение
+Paste	Tools		Вставить
+New image size:	SettingsWindow		Размер нового изображения:
+Gaussian blur…	PaintWindow		Размытие по Гауссу…
+Keep aspect ratio	SizeWindow		Сохранять пропорции
+Untitled image	PaintWindow		Изображение без имени
+Pen	ToolBox		Перо
+Rotate counter-clockwise	PaintWindow		Повернуть против часовой стрелки
+Zoom in	PaintWindow		Увеличить
+Image	SettingsWindow		Изображение
+Height:	SizeWindow		Высота:
+Font:	TextWindow		Шрифт:
+Click: primary colour\nRight-click: secondary colour	ToolBox		Нажатие: основной цвет\nПравый щелчок: дополнительный цвет
+Binarization	PaintWindow		Бинаризация
+New…	PaintWindow		Создать…
+Height:	SettingsWindow		Высота:
+Settings	SettingsWindow		Настройки
+OK	PaintWindow		ОК
+Delete	Tools		Удалить
+New image	App		Новое изображение
+Undo steps:	SettingsWindow		Число шагов отмены:
+OK	TextWindow		ОК
+Pixels	SizeWindow		Пиксели
+Close	PaintWindow		Закрыть
+Line	ToolBox		Линия
+Settings…	PaintWindow		Настройки…
+Print…	PaintWindow		Печать…
+New size:	SizeWindow		Новый размер:
+Delete	PaintWindow		Удалить
+Effects	PaintWindow		Эффекты
+Open windows where the last one was closed	SettingsWindow		Открывать новые окна на месте закрытого
+Eraser	ToolBox		Ластик
+Edit	PaintWindow		Правка
+Save	PaintWindow		Сохранить
+Cancel	ColorWindow		Отмена
+Image size…	PaintWindow		Размер изображения…
+Cancel	TextWindow		Отмена
+Text	TextWindow		Текст
+Quit	PaintWindow		Выход
+Can't open file \"%s\".	App		Не удалось открыть файл \"%s\".
+Paste	PaintWindow		Вставить
+Help	PaintWindow		Справка
+Colour picker	ToolBox		Пипетка
+Gaussian blur	EffectWindow		Размытие по Гауссу
+Selection	ToolBox		Выделение
+Save changes to \"%s\" before closing?	PaintWindow		Сохранить изменения в \"%s\" перед закрытием?
+Open…	PaintWindow		Открыть…
+Copy	PaintWindow		Копировать
+Windows	SettingsWindow		Окна
+Sharpen…	PaintWindow		Резкость…
+Custom effect	EffectWindow		Пользовательский эффект
+Ellipse	ToolBox		Эллипс
+Negative	PaintWindow		Негатив
+Error saving file	PaintWindow		Ошибка сохранения файла
+Width:	SizeWindow		Ширина:
+Gray	PaintWindow		Оттенки серого
