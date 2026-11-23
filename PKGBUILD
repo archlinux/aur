@@ -13,11 +13,13 @@ sha256sums=('a8ffe024602d46b6d766f9e1ce30c324ad2a24daeacd3efc2642d436a0c157ac')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver-src"
+  # Avoid chdir race
+  curl -L https://github.com/nsis-dev/nsis/commit/a96303e.patch | patch -p1
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver-src"
-  scons VERSION=$pkgver PREFIX=/usr PREFIX_CONF=/etc SKIPUTILS='NSIS Menu' STRIP_CP=false TARGET_ARCH=amd64 ZLIB_W32=/usr/x86_64-w64-mingw32/ NSIS_MAX_STRLEN=8192 NSIS_CONFIG_LOG=yes
+  scons VERSION=$pkgver PREFIX=/usr PREFIX_CONF=/etc SKIPUTILS='NSIS Menu' STRIP_CP=false TARGET_ARCH=amd64 ZLIB_W32=/usr/x86_64-w64-mingw32/ NSIS_MAX_STRLEN=8192 NSIS_CONFIG_LOG=yes -j$(nproc)
 }
 
 package() {
