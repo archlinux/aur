@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher
-pkgver=10.4.0.0
+pkgver=10.5.0.0
 pkgrel=1
 pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('any')
@@ -38,7 +38,7 @@ options=('!strip')
 source=("PixelFlasher-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'git+https://android.googlesource.com/platform/system/update_engine.git'
         'PixelFlasher.desktop')
-sha256sums=('8563c80c38fef8efc038b35b6d5abbcac6247d51cd37687ad80ad5e6b9f97e7f'
+sha256sums=('7dad4e72846fa3e9d03c74349234250453753c81779dbb1f8bf8f08d1e03e3a3'
             'SKIP'
             'cd96ad8759d7cb5b530aa7b542b422be5f08d92ad92f28fcdf8413d3015dc7cb')
 
@@ -47,6 +47,11 @@ prepare() {
   # Regenerate protos
   protoc --proto_path=update_engine --python_out=. update_metadata.proto
   cp -vf update_metadata_pb2.py "PixelFlasher-$pkgver/update_metadata_pb2.py"
+
+  cd "PixelFlasher-$pkgver"
+
+  # Disable self-update check
+  sed -i 's/self.update_check = True/self.update_check = False/g' config.py
 }
 
 build() {
