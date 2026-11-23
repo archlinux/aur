@@ -1,7 +1,7 @@
 # Maintainer: Kozika <kozikakkozika+aur at gmail dot com>
 
 pkgname=luma-bin
-pkgver=1.2.3
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Official Frida GUI for interactive dynamic instrumentation (prebuilt binary)'
 arch=('x86_64')
@@ -10,33 +10,48 @@ license=('MIT')
 depends=(
   'at-spi2-core'
   'cairo'
+  'curl'
   'fontconfig'
   'freetype2'
   'gcc-libs'
   'gdk-pixbuf2'
   'glib2'
+  'glibc'
   'graphene'
   'graphite'
   'gtk4'
+  'gtksourceview5'
   'harfbuzz'
   'json-glib'
   'libadwaita'
+  'libelf'
   'libepoxy'
+  'libffi'
+  'libgee'
+  'libnghttp2'
   'libnice'
   'librsvg'
   'libsoup3'
+  'libunwind'
+  'libx11'
   'libzip'
+  'openssl-3'
   'pango'
+  'qemu-img'
+  'qemu-system-aarch64'
+  'qemu-system-arm'
+  'qemu-system-x86'
   'sqlite'
+  'util-linux-libs'
   'vulkan-icd-loader'
-  'webkitgtk-6.0'
+  'xz'
   'zlib'
 )
 provides=('luma')
 conflicts=('luma')
 options=('!strip')
 source=("${pkgname}-${pkgver}.deb::https://github.com/frida/luma/releases/download/${pkgver}/luma-${pkgver}-ubuntu-26.04-x86_64.deb")
-sha256sums=('8e5c44320080e256093abefd40c33ce6c4e74416e16dc826204ace5c2aacd86a')
+sha256sums=('25126ebe31d255fe863cd594fc80065f4a0092be67d189366038eb9533cbd7e2')
 
 package() {
   bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.deb" -C "${srcdir}" data.tar.zst
