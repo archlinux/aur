@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggmsa
-_pkgver=1.14.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="Plot Multiple Sequence Alignment using 'ggplot2'"
 arch=('any')
@@ -14,7 +14,6 @@ depends=(
   r-aplot
   r-biostrings
   r-dplyr
-  r-ggalt
   r-ggforce
   r-ggplot2
   r-magrittr
@@ -22,24 +21,26 @@ depends=(
   r-rcolorbrewer
   r-seqmagick
   r-tidyr
-  r-statebins
   r-ggtree
+  r-ggfun
 )
 optdepends=(
   r-ape
-  r-biocstyle
   r-cowplot
   r-gggenes
   r-ggnewscale
   r-ggtreeextra
   r-kableextra
   r-knitr
+  r-prettydoc
   r-readxl
   r-rmarkdown
+  r-statebins
   r-testthat
+  r-yulab.utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0e5df41982d4d15a8f997562b092881391a15bc13c93db9dc0c79c3bfadea541')
+sha256sums=('c6f55d47cde41e81f19e83c1a6084004fe139f5a8850eb0ab11b29055630d82c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
