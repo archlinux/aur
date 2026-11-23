@@ -1,7 +1,7 @@
 # Maintainer: Fred Junior <https://github.com/fredjunior54>
 # Original packaging: Alessandro Lattao
 pkgname=localbell-bin
-pkgver=1.4.27
+pkgver=1.4.34
 pkgrel=1
 pkgdesc="Forward Android push notifications to your Linux desktop via D-Bus"
 arch=('x86_64')
@@ -22,8 +22,8 @@ source=("${url}/releases/download/v${pkgver}/localbell-${pkgver}-linux-amd64.tar
         "${_raw}/server/assets/Symbols-Nerd-LICENSE.txt"
 )
 sha256sums=(
-    'e2c8d6ef5ff4df040201424d214bedeb0f7fe927d0bfce8e6e4854adfa872c09'
-    'e16eeaeda23945b13fe1519e32aac5ee193c1661762a8a419339dd9a34db731c'
+    '6fef9f188cf801eb06fef714fe8b98cab49098754bf1456c2561f059a47685de'
+    'ab31c794624618ee0c1a6e9c77f9b1766567591ad117b8ec5fd3376d79706165'
     'bd3ab4d40c5521c16649f6b2613c7197095455d21eb982af5555e6c71be4e230'
     'a9d185a0f74c027a02e64737085182dc514f759b2d9e86bb64e68478c94c0910'
     '08bde34f8617c4e48a8ded2b2ff910490d5ff14fb5c17c8fdda6dab58cacca45'
