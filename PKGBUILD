@@ -6,9 +6,9 @@
 _gitname="hidapi"
 _pkgname="hidapi-testgui"
 pkgname="${_pkgname}-git"
-pkgver=0.15.0+28.r705.20260814.852cc68
+pkgver=0.16.0+4.r726.20261116.378a53a
 _pkgmajorver="$(awk -F. '{print $1}' <<<"${pkgver}")"
-pkgrel=2
+pkgrel=1
 epoch=0
 pkgdesc="'hidapi-hidraw-testgui' and 'hidapi-libusb-testgui' for hidapi."
 arch=(
