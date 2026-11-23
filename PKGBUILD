@@ -5,7 +5,7 @@
 # the source list is intentionally empty. Provide the archive at build time:
 #
 #   1. download it in a browser from
-#      https://developer.huawei.com/consumer/cn/download/
+#      https://developer.huawei.com/consumer/cn/download/command-line-tools-for-hmos
 #   2. copy the download link, then either
 #        ./deveco-clt-url          # reads the link from the clipboard
 #      or
@@ -19,7 +19,7 @@ pkgver=26.0.1.290
 pkgrel=8
 pkgdesc='HUAWEI Command Line Tools for HarmonyOS: hvigorw, ohpm, hstack, codelinter, SDK tools'
 arch=('x86_64')
-url='https://developer.huawei.com/consumer/cn/download/'
+url='https://developer.huawei.com/consumer/cn/download/command-line-tools-for-hmos'
 license=('LicenseRef-Huawei-EULA')
 depends=('glibc' 'java-runtime' 'nodejs')
 options=('!strip')
@@ -50,7 +50,7 @@ prepare() {
     else
       error "No Command Line Tools archive found."
       error ""
-      error "  Download it from https://developer.huawei.com/consumer/cn/download/"
+      error "  Download it from https://developer.huawei.com/consumer/cn/download/command-line-tools-for-hmos"
       error "  then either copy the link and run"
       error "    DEVECO_CLT_URL='<signed url>' makepkg -si"
       error "  or place the zip next to this PKGBUILD."

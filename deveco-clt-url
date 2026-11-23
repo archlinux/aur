@@ -1,7 +1,7 @@
 #!/bin/sh
 # deveco-clt-url - build deveco-commandline-tools from the link in the clipboard
 #
-# 1. sign in at https://developer.huawei.com/consumer/cn/download/
+# 1. sign in at https://developer.huawei.com/consumer/cn/download/command-line-tools-for-hmos
 # 2. start the Command Line Tools (Linux) download, then copy its link
 #    (right click -> copy link address, or from DevTools)
 # 3. run ./deveco-clt-url
@@ -27,7 +27,7 @@ case "$url" in
     ;;
   *)
     printf '%s\n' "剪贴板里没有命中 CLT 下载链接。" >&2
-    printf '%s\n' "请先在浏览器里登录 https://developer.huawei.com/consumer/cn/download/" >&2
+    printf '%s\n' "请先在浏览器里登录 https://developer.huawei.com/consumer/cn/download/command-line-tools-for-hmos" >&2
     printf '%s\n' "点开 Command Line Tools (Linux) 的下载，复制下载链接后重试。" >&2
     exit 1
     ;;
