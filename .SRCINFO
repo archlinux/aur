@@ -1,0 +1,20 @@
+pkgbase = r-cpp11bigwig
+	pkgdesc = Read bigWig and bigBed Files
+	pkgver = 0.3.1
+	pkgrel = 2
+	url = https://cran.r-project.org/package=cpp11bigwig
+	arch = x86_64
+	license = MIT
+	makedepends = r-cpp11
+	depends = curl
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-s4vectors
+	depends = r-tibble
+	depends = zlib
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/cpp11bigwig_0.3.1.tar.gz
+	md5sums = b92c5b7fa1499b12d6b85114cf9b3ad3
+	b2sums = ea9a046cc5055921f4821281a43a0284dc0644e3886f65a0b36b7aa66c9329ae9e2f0c7ccb54959fa6f04bfe5a17a1a8083f702ab7f8813845657b908b59730a
+
+pkgname = r-cpp11bigwig
