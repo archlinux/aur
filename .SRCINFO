@@ -1,0 +1,23 @@
+pkgbase = sonar
+	pkgdesc = A file manager inspired by KDE Dolphin
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/samtoxie/sonar
+	arch = x86_64
+	arch = aarch64
+	license = EUPL-1.2
+	makedepends = cargo
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = shared-mime-info
+	depends = xdg-utils
+	depends = libarchive
+	optdepends = udisks2: mount and eject removable drives from the sidebar
+	optdepends = breeze-icons: file and folder icons (or another icon theme)
+	conflicts = sonar-bin
+	conflicts = sonar-git
+	source = sonar-0.1.0.tar.gz::https://github.com/samtoxie/sonar/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ed93a22083e1dd42f216ced2e4e8f9bea642453a74296efe745728e1f155db67
+
+pkgname = sonar
