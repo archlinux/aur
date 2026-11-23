@@ -1,14 +1,14 @@
 pkgbase = plio
 	pkgdesc = PLIO Image Viewer - the Image Viewer with many sort options
 	pkgver = 2026_05_14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/klartext/plio
 	arch = x86_64
 	license = GPL3
 	depends = sdl3>=3.4.0
 	depends = sdl3_image
 	depends = sdl3_ttf
-	depends = freeimage
+	depends = freeimagere-git
 	depends = ttf-roboto-mono
 	source = git+https://codeberg.org/klartext/plio.git
 	sha256sums = SKIP
