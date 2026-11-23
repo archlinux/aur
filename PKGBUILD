@@ -15,7 +15,7 @@
 
 pkgbase=skwir
 pkgname=(skwir skwir-mermaid skwir-math skwir-mupdf)
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents'
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ license=('Apache-2.0')
 makedepends=(
   'cargo' 'clang' 'cmake' 'python'
   'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'sqlite' 'libarchive'
-  'cairo' 'glib2' 'poppler-glib' 'djvulibre' 'gstreamer' 'gst-plugins-base-libs'
+  'cairo' 'glib2' 'poppler-glib' 'djvulibre' 'libheif' 'gstreamer' 'gst-plugins-base-libs'
   'fontconfig' 'vulkan-icd-loader' 'vulkan-driver'
 )
 # makepkg's LTO compiles the C that crates build (MuPDF) into GCC's
@@ -39,7 +39,7 @@ source_x86_64=("pdfium-linux-x64-$_pdfium.tgz::https://github.com/bblanchon/pdfi
 source_aarch64=("pdfium-linux-arm64-$_pdfium.tgz::https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F$_pdfium/pdfium-linux-arm64.tgz")
 # skwir's: filled by aur-prepare after the release tag is pushed; PDFium's: as
 # tools/package/pdfium.lock pins them.
-sha256sums=('e65e6b0e0d1289840f6817763cf60dca29cb373d3adf8c7c932c8c1a57515860')
+sha256sums=('fd5684dbe9a40440a2fa823ac100a3530f1ea607980cba2d6169c3c08ea61033')
 sha256sums_x86_64=('e1c3ce6e270cb5e0c20816b379ad9f2c1309972697c505f508de92bf5e7d6659')
 sha256sums_aarch64=('8b8818f2ec57d1b213d952ca6d7f0ffeca9d0110487d0e20ad83ba918bc92efa')
 
@@ -78,6 +78,7 @@ package_skwir() {
     'gst-libav: more audio and video formats'
     'poppler-glib: PDFs through Poppler, beside the PDFium skwir carries'
     'djvulibre: DjVu through DjVuLibre, beside the djvu-rs reader skwir carries'
+    'libheif: HEIC and AVIF pictures shown sharp at any size'
     'skwir-mermaid: Mermaid diagrams drawn in Markdown previews'
     'skwir-math: formulas typeset in Markdown, notebooks and HTML'
     'skwir-mupdf: the MuPDF engine, PDFs and books laid out into pages'
