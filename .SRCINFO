@@ -1,6 +1,6 @@
 pkgbase = f32c-tools
 	pkgdesc = ULX2S / ULX3S FPGA JTAG programmer & tools (Lattice XP2 / ECP5)
-	pkgver = 0698352
+	pkgver = e2f63f8
 	pkgrel = 1
 	url = https://github.com/f32c/tools
 	arch = any

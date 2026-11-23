@@ -1,5 +1,5 @@
 pkgname=f32c-tools
-pkgver=0698352
+pkgver=e2f63f8
 pkgrel=1
 pkgdesc="ULX2S / ULX3S FPGA JTAG programmer & tools (Lattice XP2 / ECP5)"
 arch=('any')
