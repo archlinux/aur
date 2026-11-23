@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=4.9.0
+pkgver=4.10.0
 _nodeversion=24
 pkgrel=1
 pkgdesc="Transparent chat overlay for streamers. Twitch, YouTube, and Kick in one window."
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "modifiers_linux.go"
 )
-sha256sums=('a1de9e2788ea271949669cc2b8aca0f08a87f4426a777e9247002a1adbab96ca'
+sha256sums=('6bbc783cf224e1b506fb4487108732861b338ed100a54ff6cde692967733d2da'
             '131035c2816a154359af542ff002e53f48419311e6ab083eb9f944a5e2f0d24c')
 _get_project_dir() {
 	local d
