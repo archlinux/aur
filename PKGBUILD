@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flagme
-_pkgver=1.64.0
+_pkgver=1.68.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
+pkgver=1.68.0
 pkgrel=1
 pkgdesc='Analysis of Metabolomics GC/MS Data'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
   r-xcms
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4eff0f7785713f33091c73d40aebcfbea849349f434d4ebc5d877f6f9997704b')
+sha256sums=('fd907b159d781454e1e52428fc66bdf7c3dba85042c47616a110ff7b1cdde072')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
