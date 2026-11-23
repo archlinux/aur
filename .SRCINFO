@@ -1,31 +1,31 @@
 pkgbase = r-rvest
 	pkgdesc = Easily Harvest (Scrape) Web Pages
-	pkgver = 1.0.4
-	pkgrel = 1
+	pkgver = 1.0.5
+	pkgrel = 2
 	url = https://cran.r-project.org/package=rvest
 	arch = any
 	license = MIT
-	depends = r>=3.6
-	depends = r-glue
+	depends = r
 	depends = r-cli
-	depends = r-httr>=0.5
-	depends = r-lifecycle>=1.0.3
+	depends = r-glue
+	depends = r-httr
+	depends = r-lifecycle
 	depends = r-magrittr
-	depends = r-rlang>=1.1.0
+	depends = r-rlang
 	depends = r-selectr
 	depends = r-tibble
-	depends = r-xml2>=1.3
 	depends = r-withr
+	depends = r-xml2
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-readr
 	optdepends = r-repurrrsive
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
-	optdepends = r-stringi>=0.3.1
-	optdepends = r-testthat>=3.0.2
+	optdepends = r-stringi
+	optdepends = r-testthat
 	optdepends = r-webfakes
-	source = https://cran.r-project.org/src/contrib/rvest_1.0.4.tar.gz
-	sha256sums = 7d707c6b2994cf7b6c1d665bec872d2ef5c55f30e7c343c447a8a386a6049ca6
+	source = https://cran.r-project.org/src/contrib/rvest_1.0.5.tar.gz
+	sha256sums = 1e7c34a0b4467887195b1cd66388919989e82ca096d08df283c675d87e53bc00
 
 pkgname = r-rvest
