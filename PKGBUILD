@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pRoloc
-_pkgver=1.48.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc='A unifying bioinformatics framework for spatial proteomics'
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=(
   r-biomart
   r-caret
   r-coda
+  r-colorspace
   r-dendextend
   r-e1071
   r-fnn
@@ -36,9 +37,11 @@ depends=(
   r-randomforest
   r-rcolorbrewer
   r-rcpp
-  r-rcpparmadillo
   r-sampling
   r-scales
+)
+makedepends=(
+  r-rcpparmadillo
 )
 optdepends=(
   r-akima
@@ -57,11 +60,12 @@ optdepends=(
   r-roxygen2
   r-rtsne
   r-testthat
+  r-umap
   r-vegan
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7be85ac81438415e5935e4353f4c018e8c154607fc7f41025400c1fdc344b982')
+sha256sums=('b09e42b0ed0f4c4ccfd24b5cd18cdcde4ea395a7efe2bd5528a557699584e6f1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
