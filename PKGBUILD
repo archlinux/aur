@@ -10,7 +10,7 @@ pkgname=('pidgin-gnutls' 'libpurple-gnutls' 'finch-gnutls')
 pkgbase=pidgin-gnutls
 _pkgname=pidgin
 pkgver=2.14.14
-pkgrel=2
+pkgrel=6
 arch=('x86_64')
 url="https://pidgin.im/"
 license=('GPL')
@@ -22,12 +22,14 @@ options=('!emptydirs')
 source=(https://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/$_pkgname-$pkgver.tar.bz2{,.asc}
         libpurple-fix-media-manager-gst-device-reference.patch
         libpurple-unref-gst-devices-from-messages.patch
-        pidgin-scale-buddy-icons-for-window.patch)
+        pidgin-scale-buddy-icons-for-window.patch
+        finch-no-gnt-disable-deprecated.patch)
 sha256sums=('0ffc9994def10260f98a55cd132deefa8dc4a9835451cc0e982747bd458e2356'
             'SKIP'
             '7ac937705681460e42028e6ad2d3609b8d21108d534547c87991753c74a8fb5f'
             'd02eb86645d1692b51ed570c83069daee9f31ead481581906c771ee46e248889'
-            '6542aa377bb5c7eb44472a11b1673a8b3a729fc5c532774a0299e5344f53697b')
+            '6542aa377bb5c7eb44472a11b1673a8b3a729fc5c532774a0299e5344f53697b'
+            'de41e318fdaaedcb8ddbd00e6b1dec878bccfbbc9b1a10373d2f561b84ab8aba')
 validpgpkeys=('40DE1DC7288FE3F50AB938C548F66AFFD9BDB729') # Gary Kramlich <grim@reaperworld.com>
 
 prepare() {
@@ -36,6 +38,7 @@ prepare() {
   patch -Np1 -i ../libpurple-fix-media-manager-gst-device-reference.patch
   patch -Np1 -i ../libpurple-unref-gst-devices-from-messages.patch
   patch -Np1 -i ../pidgin-scale-buddy-icons-for-window.patch
+  patch -Np1 -i ../finch-no-gnt-disable-deprecated.patch
 }
 
 build() {
