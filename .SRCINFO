@@ -1,6 +1,6 @@
 pkgbase = r-rogue
 	pkgdesc = Identify Rogue Taxa in Sets of Phylogenetic Trees
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=Rogue
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = r-rogue
 	depends = r-fastmatch
 	depends = r-matrixstats
 	depends = r-rdpack
-	depends = r-rfast
 	depends = r-treedist
 	depends = r-treetools
 	optdepends = r-knitr
@@ -18,8 +17,8 @@ pkgbase = r-rogue
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/Rogue_2.2.0.tar.gz
-	md5sums = 8b4cf50f0b42d6264b227c8b03e0e747
-	b2sums = fbd0a10cd34e59c3d3aad80a59deef6ec3e7da4d9dfd33ec0c5ed28ec995d3ffdb48f945bdb162a253561997b7dda2c9692d8af30c9a3f9c2a9cc65322d66626
+	source = https://cran.r-project.org/src/contrib/Rogue_2.2.1.tar.gz
+	md5sums = f38d56efe1387adf8fedd8c10a629492
+	b2sums = b8bffd62aec380bd128347f4b32f6e9c500592ae6e0543f4ba09c605760d20b136fc0577dd4ec2f1072c46dd1a51877454212d311392c43f8a5b084aa54dbad6
 
 pkgname = r-rogue
