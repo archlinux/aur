@@ -2,7 +2,7 @@
 # Maintainer: Dylan Harkleroad <deehark87@gmail.com>
 
 pkgname=gt3-revisited-bin
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Open reimplementation of the Gran Turismo 3 A-Spec engine"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 provides=('gt3-revisited')
 conflicts=('gt3-revisited')
 source=("$url/releases/download/v${pkgver}/gt3r-linux-$CARCH.tar.gz" "gt3r.png::https://raw.githubusercontent.com/sxdot/GT3-revisited/master/gt3r.png")
-sha256sums=('82d77bf60fa220d84c2a0c83eca2d5c971fca4e1b1e5e6280298835afc7c4a3f'
+sha256sums=('9c12c466d39ddcf7c986ad606880d766a7b035befb143d01f121b3dfd228c0b4'
             '60736ba89a11a51688e010119ad6b87d59732cadb041da28e7424b96168f3bfa')
 
 package() {
