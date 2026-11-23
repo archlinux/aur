@@ -1,6 +1,6 @@
 # Maintainer: Christopher Patrick Fair <christopherpatrickfair@gmail.com>
 pkgname=pegsofur
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 _gdext_ver=0.17.1
 pkgdesc="Ancient city-states dice and wooden pegboard strategy game for 1-4 Human/AI players"
@@ -24,7 +24,7 @@ source=(
   "gdext-nim-${_gdext_ver}.tar.gz::https://github.com/godot-nim/gdext-nim/archive/refs/tags/v${_gdext_ver}.tar.gz"
 )
 sha256sums=(
-  '1b25525f383167a2124b4d996cda6fec97a4d2e078b2fc04b916ab2f0549b345'
+  'badd1249ed3f50aba6386f65142da589faf97e4ff5a917646df996a7198769cd'
   'e446f3d682e49c609552bee599d21de01ebc86b47889559ab267655b3e887f2d'
 )
 
