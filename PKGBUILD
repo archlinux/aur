@@ -3,7 +3,7 @@
 
 _pkgname=squawk
 pkgname="${_pkgname}-cli"
-pkgver=2.73.0
+pkgver=2.74.0
 pkgrel=1
 pkgdesc="Linter for PostgreSQL, focused on migrations"
 arch=(x86_64)
@@ -24,7 +24,7 @@ source=(
 	prevent-rebuild.patch
 	use-system-openssl.patch
 )
-sha256sums=('d228174e0b4c4adc157f6ec2b66fd0136d01fe664440174d3d4d369e3164d78a'
+sha256sums=('e26d3f3be773acc671973976bfce2baf4f3b85c45bb9590f75e8d6b9de71efbc'
             'e63a32b66331fe4b8952b6e4e9153cb3c8789a5e1229353e7c25f1271bd4d14e'
             'd524c128516732626fa14acff4ce74de3fcb275405a89130a0d5857d23b3c447')
 
