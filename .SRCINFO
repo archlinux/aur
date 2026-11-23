@@ -1,6 +1,6 @@
 pkgbase = quint-bin
 	pkgdesc = An executable specification language with delightful tooling based on the temporal logic of actions (TLA)
-	pkgver = 0.33.1
+	pkgver = 0.34.0
 	pkgrel = 1
 	url = https://github.com/informalsystems/quint
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = quint-bin
 	license = Apache
 	provides = quint
 	conflicts = quint
-	source = https://github.com/informalsystems/quint/raw/v0.33.1/LICENSE
+	source = https://github.com/informalsystems/quint/raw/v0.34.0/LICENSE
 	sha256sums = 0f8c4f9a99d4861ee62ade9a9526d09570844bdeab3e6bca500383d5ae7d9495
-	source_x86_64 = quint_0.33.1_x86_64::https://github.com/informalsystems/quint/releases/download/v0.33.1/quint-linux-amd64
-	sha256sums_x86_64 = acd153075b7edc6fc8f889930c5ff3ebdf94ada381a45a26a2d41b18b9f10db7
-	source_aarch64 = quint_0.33.1_aarch64::https://github.com/informalsystems/quint/releases/download/v0.33.1/quint-linux-arm64
-	sha256sums_aarch64 = ffc0549933db6787ffb932aa5c0e9a778018fe027e10d21ce4895c57502c11fc
+	source_x86_64 = quint_0.34.0_x86_64::https://github.com/informalsystems/quint/releases/download/v0.34.0/quint-linux-amd64
+	sha256sums_x86_64 = 5091d7d1ea944e794d9106c7e62e3b844d70f77ddbbcbb4feb5ee5a6025b5ac7
+	source_aarch64 = quint_0.34.0_aarch64::https://github.com/informalsystems/quint/releases/download/v0.34.0/quint-linux-arm64
+	sha256sums_aarch64 = a077b08bd912a9e44566b322ffce138aa5f60fe1d944a92d61a5dd98f7cdfd61
 
 pkgname = quint-bin
