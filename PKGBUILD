@@ -1,7 +1,7 @@
 # Maintainer: antiquete <antiquete@proton.me>
 
 pkgname=opencode-sandbox-git
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Run OpenCode inside an isolated container (git master)"
 arch=("any")
