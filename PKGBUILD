@@ -7,7 +7,7 @@
 # shellcheck shell=bash
 
 pkgname=sope
-pkgver=5.12.13
+pkgver=5.12.14
 pkgrel=1
 pkgdesc="Application server and libraries of SOGo, the groupware server"
 arch=(x86_64 aarch64)
@@ -29,8 +29,8 @@ depends=(
 )
 makedepends=(gcc-objc gnustep-make)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/SOPE-$pkgver.tar.gz")
-sha512sums=('fbd065abade5a928f648e0079ff536c7c2b8a06669ce86b4228256448113bcbfdb56fbec6342ef1a67cf4443732348a49d87a87332a960588bc0cba6020a3b4b')
-b2sums=('f5a64d74543182ca4a30e88660b7c2297b91ca6519b94638cece8166dfcf3e5f1c1451299ed7877f2da9d3f3bf34d07a8f7a2d14c1e148b7c4fc834c931601c3')
+sha512sums=('734603bce3c63eeecf028419925a7e3baeab55392599ad6437dc04b97c2bb34a1ee6e6f44238bf203324d247119b88a194b11c508dd10fb884696eb96566c18f')
+b2sums=('4f209f54a54e8a2fc839e53dfd91586e5e98993c77b3c5cb68236a21ad87bf29d56df5cc9a0d53f83ecf054c3a13b82a2dba9343053329276f5bbed45d9a4b1d')
 
 build() {
   cd "$pkgname-SOPE-$pkgver" || exit
