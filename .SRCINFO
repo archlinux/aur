@@ -1,0 +1,13 @@
+pkgbase = r-quitefastmst
+	pkgdesc = Euclidean and Mutual Reachability Minimum Spanning Trees
+	pkgver = 0.9.2
+	pkgrel = 2
+	url = https://cran.r-project.org/package=quitefastmst
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = r-rcpp
+	source = https://cran.r-project.org/src/contrib/quitefastmst_0.9.2.tar.gz
+	md5sums = 6544d9e0daa88613f886421425b3d8c6
+	b2sums = 08c7cff164dd754bd79c7e55e627b7e888cd480b5d0f9620e4718c071cddf1b8bd6d1f92c941f9fe2612fb131f78aca454f53e3ec5a70a748c7ca9e0ee123227
+
+pkgname = r-quitefastmst
