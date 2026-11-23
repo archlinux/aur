@@ -1,7 +1,7 @@
 # Maintainer: Adrian Valcarcel-Schott <avalsch at pm dot me>
 
 pkgname=schemat
-pkgver=0.5.15
+pkgver=0.5.16
 pkgrel=1
 pkgdesc='Code formatter for Scheme, Lisp, and any S-expressions'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('Unlicense')
 depends=('glibc' 'libgcc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('7ac1cc9df09a8ab425098cdc48c8942dd0bf3db24510ed2a487139c6959ea3f7cffa27c06f681fc9102be5d33460bfa18ebea925510308a49dd9c93db9b964eb')
+b2sums=('43d8feead251446e8324ab8745554a003aeca27d21d8e01d4e0deb49a9ccc34bb15cad3674537134f5542c1c1299ed341dea7c4ebf3918bb880e3f228e3b5aff')
 
 prepare() {
     cd "$pkgname-$pkgver"
