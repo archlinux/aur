@@ -3,8 +3,8 @@
 _pkgname='cachyos'
 _profile='desktop'
 pkgname="libvirt-iso-${_pkgname}-bin"
-pkgver=260809
-pkgrel=3
+pkgver=261123
+pkgrel=1
 pkgdesc='Official CachyOS desktop installation ISO for libvirt'
 arch=('x86_64')
 url='https://cachyos.org/'
@@ -22,7 +22,7 @@ source=(
 )
 noextract=("${_iso}")
 sha256sums=(
-	'959f6577f45e25ee9fd8c220fd221b08e4ea79412c7315c0f922dd6d86d5e33c'
+	'bb9d4c4091ef6445e78f1a67052d9d3f22bdff2608f3b2e226bac99bb0b708ec'
 	'SKIP'
 	'360daceb5db049402207e21a780c03c0695947a06a02ee9da195afe4ccc258cd'
 )
