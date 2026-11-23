@@ -8,11 +8,11 @@
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
 #
-# Builds the latest commit of https://github.com/KennyStier/warmux
+# Builds the latest commit of the main branch of https://github.com/KennyStier/warmux
 # (kept in sync with packaging/arch/PKGBUILD there)
 
 pkgname=warmux-git
-pkgver=12.0.0.r0.g246bd33
+pkgver=12.0.3.r0.g3431649
 pkgrel=1
 pkgdesc="Turn-based artillery game with free-software mascots (maintained fork, includes index/game servers)"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ depends=('sdl2' 'sdl2_image' 'sdl2_gfx' 'sdl2_ttf' 'sdl2_mixer' 'sdl2_net'
 makedepends=('git' 'autoconf' 'automake')
 provides=('warmux')
 conflicts=('warmux' 'warmux-data')
-source=("warmux::git+https://github.com/KennyStier/warmux.git")
+source=("warmux::git+https://github.com/KennyStier/warmux.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -48,7 +48,7 @@ prepare() {
 
 build() {
   cd warmux
-  # To make clients find your own lobby by default, add:
+  # Clients find the lobby at index.warmux.net by default; to use another:
   #   --with-index-server=your.host[:9997]
   ./configure --prefix=/usr --enable-servers
   make

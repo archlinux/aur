@@ -1,6 +1,6 @@
 pkgbase = warmux-git
 	pkgdesc = Turn-based artillery game with free-software mascots (maintained fork, includes index/game servers)
-	pkgver = 12.0.0.r0.g246bd33
+	pkgver = 12.0.3.r0.g3431649
 	pkgrel = 1
 	url = https://github.com/KennyStier/warmux
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = warmux-git
 	provides = warmux
 	conflicts = warmux
 	conflicts = warmux-data
-	source = warmux::git+https://github.com/KennyStier/warmux.git
+	source = warmux::git+https://github.com/KennyStier/warmux.git#branch=main
 	sha256sums = SKIP
 
 pkgname = warmux-git
