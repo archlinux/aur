@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=celldex
-_pkgver=1.16.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ba3dc1f475b673ee0303293d6d997194')
-b2sums=('cc5f7f01359f01245dfec977579256fa3d79910298ee89b9ffab91f57bb397448d6c1ce5601a08dd8152c7d4c7acbcd0fd0c53bd627d0a534f25e371855b7e6c')
+md5sums=('daa4b4c65ab46e20f9cc57e692ddaafb')
+b2sums=('8994c23cbe5fc67c4e782e5859459e9cea047183451b564be43668711853a055a5c8354d92267d52254e607f490571c2a605b22cd09faad823dff92c1e72622b')
 
 build() {
   mkdir build
