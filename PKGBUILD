@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=noop-bin
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Desktop client for Noop: your own team of Claude Code and Codex agents runs on your own machines and only asks when it really needs you"
 arch=('x86_64')
@@ -22,7 +22,7 @@ _tarball="noop-${pkgver}-linux-x86_64.tar.gz"
 source=("LICENSE-${pkgver}::https://github.com/huacnlee/noop/raw/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${_tarball}::https://github.com/huacnlee/noop/releases/download/v${pkgver}/${_tarball}")
 sha256sums=('a7bb7bac82b24d5ad7c89d01121ff8a144bf147e043624811458266d4ed423bc')
-sha256sums_x86_64=('4224757935e1c3f137195f65e630c0bf03e49198f78e240a8030c204b4fee4e3')
+sha256sums_x86_64=('856c22bc1af6a134cc533bc1a024469531879d96efae6e784df99726a4fa1138')
 
 package() {
     # The program looks for its data next to itself, so the whole directory

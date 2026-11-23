@@ -1,6 +1,6 @@
 pkgbase = noop-bin
 	pkgdesc = Desktop client for Noop: your own team of Claude Code and Codex agents runs on your own machines and only asks when it really needs you
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://huacnlee.github.io/noop/
 	arch = x86_64
@@ -28,9 +28,9 @@ pkgbase = noop-bin
 	optdepends = gst-libav: play H.264 videos
 	options = !strip
 	options = !debug
-	source = LICENSE-1.0.7::https://github.com/huacnlee/noop/raw/refs/tags/v1.0.7/LICENSE
+	source = LICENSE-1.0.8::https://github.com/huacnlee/noop/raw/refs/tags/v1.0.8/LICENSE
 	sha256sums = a7bb7bac82b24d5ad7c89d01121ff8a144bf147e043624811458266d4ed423bc
-	source_x86_64 = noop-1.0.7-linux-x86_64.tar.gz::https://github.com/huacnlee/noop/releases/download/v1.0.7/noop-1.0.7-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 4224757935e1c3f137195f65e630c0bf03e49198f78e240a8030c204b4fee4e3
+	source_x86_64 = noop-1.0.8-linux-x86_64.tar.gz::https://github.com/huacnlee/noop/releases/download/v1.0.8/noop-1.0.8-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 856c22bc1af6a134cc533bc1a024469531879d96efae6e784df99726a4fa1138
 
 pkgname = noop-bin
