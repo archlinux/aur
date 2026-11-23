@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xpipe-bin
 _pkgname=XPipe
-pkgver=24.12
+pkgver=24.13
 pkgrel=1
 pkgdesc="Access your entire server infrastructure from your local desktop."
 arch=(
@@ -21,16 +21,17 @@ depends=(
     'ffmpeg'
 )
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-installer-linux-arm64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-installer-linux-x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-installer-linux-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-installer-linux-x86_64.deb")
 sha256sums=('c12f8021fc72dc6378d9f80d7fb98053918811b360aa7b15a9b102b65d0bc698')
-sha256sums_aarch64=('458f8819491b58c992ebf08907494a7a1203267e77f52b288672ebda86950e95')
-sha256sums_x86_64=('326261c528ec667010a65c6f63ca52b640823cee45f1c5d30234f2266eccae94')
+sha256sums_aarch64=('113b26dd3b8c6fd7012303810f0d7ecbcce2ffabfa5629d320818026b10269e7')
+sha256sums_x86_64=('0cea623cca919f3fcf5820dbc4600f94e87d74f0d1544621f69d8976f28c9910')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
     sed -i -e "
         s/TryExec=\/opt\/${pkgname%-bin}\/bin\/${pkgname%-bin}d/TryExec=\/usr\/lib\/${pkgname%-bin}\/bin\/${pkgname%-bin}d/g
         s/Exec=\/opt\/${pkgname%-bin}\/bin\/${pkgname%-bin}/Exec=${pkgname%-bin}/g
