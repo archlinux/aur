@@ -22,6 +22,9 @@ prepare() {
   cd "${srcdir}/clove-win-${pkgver}"
   mkdir -p prototypes
   tar -xf "${srcdir}/rune-${_runerev}.tar.gz" -C prototypes
+  if [ ! -d prototypes/_rune-upstream ]; then
+    mv prototypes/rune-${_runerev} prototypes/_rune-upstream
+  fi
 }
 
 build() {
