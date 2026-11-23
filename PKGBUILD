@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=cc-code-bin
-pkgver=0.6.298
+pkgver=0.6.299
 pkgrel=1
 pkgdesc="Fast, lightweight Claude Code alternative built in Rust with Ratatui TUI, ACP protocol support"
 arch=('x86_64' 'aarch64')
@@ -17,10 +17,10 @@ source=("${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/cc-claw
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/cc-code-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/cc-code-linux-aarch64.tar.gz")
 sha256sums=('c408d05766b1622a522880f05e98f54feb738686113a9427ac7bdbf39c0b5144')
-sha256sums_x86_64=('45d9165449170d61bc836f045aedb5b9a501f27ed064f13c591733b1424157be')
-sha256sums_aarch64=('42b1444c2955c851b006e3b140b33fbff1fb5c3ff18cc71f630f6e67c7b06c69')
+sha256sums_x86_64=('bd0445f223569d81a3b5e149953e72de63aa22559029699a536564671acd9141')
+sha256sums_aarch64=('e72e23fa9d164e9393dee0c2c927a0e8144f1cd183e55e109e936685f867b5f0')
 
 package() {
-  install -Dm755 "cc-code-linux-x86_64" "${pkgdir}/usr/bin/cc-code"
+  install -Dm755 "cc-code-linux-${CARCH}" "${pkgdir}/usr/bin/cc-code"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
