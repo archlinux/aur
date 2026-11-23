@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=compareGroups
-_pkgver=4.9.1
+_pkgver=4.10.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,6 +18,8 @@ depends=(
   r-officer
   r-pmcmrplus
   r-rmarkdown
+  r-rmdformats
+  r-rstatix
   r-writexl
 )
 optdepends=(
@@ -34,8 +36,8 @@ optdepends=(
   r-tcltk2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('467b9a6d3322a11c7e8f8dc0f47d6038')
-b2sums=('48cd93d095b137bca9e44a13502f2cfc58e8855337921e72f0cc42ff8252198f859431dd5acba1b72febc33a16aedd8d871deef803d3c1f9545a731e20299abd')
+md5sums=('940e7e52912247a02a8b273f6c0238d4')
+b2sums=('f08a19f4549c1e2a0ebcaf47dd7b84259b7c80153393b30ec66d1fd19fadacd52050868327b4a995af2cc2598d357aaae0dabcee7efe0e904cc2cf9243e4897a')
 
 build() {
   mkdir build
