@@ -101,7 +101,7 @@ wineUpdate() {
     wine "/opt/rpc-bridge/bridge.exe" --install
   fi
   touch "$WINEPREFIX/.installed.$CURRVER"
-  wine wineboot -e
+  saveEnvs
 }
 
 #### EXECUTIONS ####
