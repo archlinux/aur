@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BatchQC
-_pkgver=2.2.0
+_pkgver=2.8.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,22 +33,29 @@ depends=(
   r-shinythemes
   r-s4vectors
   r-shinyjs
+  r-edger
+  r-fnn
+  r-ggpubr
+  r-harman
+  r-umap
 )
 optdepends=(
   r-biocmanager
   r-biocstyle
   r-bladderbatch
+  r-curatedtbdata
   r-devtools
   r-knitr
   r-lintr
+  r-multiassayexperiment
   r-plotly
   r-rmarkdown
   r-spelling
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d0a36d52c86f8622c51921a5684684ef')
-b2sums=('382219e84814dea1b736afc2bc94b7cee7113e96b6eb051f1ce8d9d0391c5991ef5abb248cda5a8ea2269808ed3dcc07962f77023045523482370414ee11f19f')
+md5sums=('2342f1f2580591cef0a5d628062ad5f7')
+b2sums=('351530e5198b14fee06be5898740fe11225bda217404d9afe021c723a26f3ce024b45b340ddaad379a4691e74bba47ada7e45b2d6cfca4050c4f9697289441cd')
 
 build() {
   mkdir build
