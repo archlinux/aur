@@ -1,22 +1,23 @@
 pkgbase = wayshot
 	pkgdesc = Screenshot tool for wlroots compositors
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/waycrate/wayshot
 	arch = x86_64
 	license = GPL-3.0-or-later
+	license = BSD-2-Clause
 	makedepends = cargo
 	makedepends = git
 	makedepends = scdoc
 	depends = gcc-libs
 	depends = glibc
+	depends = cairo
+	depends = pango
+	depends = glib2
 	depends = libdrm
-	depends = libjxl
 	depends = mesa
 	depends = wayland
-	depends = pango
-	optdepends = slurp: region selection
-	optdepends = waysip: region selection
+	optdepends = slurp: alternative for region selection
 	source = git+https://github.com/waycrate/wayshot#tag=v1.6.0
 	b2sums = 87d5f365c55e71dffe9d1d283a59d420d84e38c6e51213a871dc539ad000b15d68e51e3370a43576f37821b77c85c878eb0c64c1c3bfc24b49a6b368d8ea2022
 
