@@ -6,7 +6,7 @@
 # is the same build for a local makepkg.
 
 pkgname=emobie
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="Compact emoji palette with macros and optional text expansion"
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   'acl: setfacl for instant keyboard access after Grant without logout'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('16ee09db48f193425f06dcbab0084b9be3152bb887664426f7076d6a9a081996')
+sha256sums=('ef49c54bfbf80a4ea4d5ea8d47444e6f87f9f540676b1e97bb8b7527dcf6dc78')
 
 prepare() {
   cd "$pkgname-$pkgver"

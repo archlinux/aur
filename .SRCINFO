@@ -1,6 +1,6 @@
 pkgbase = emobie
 	pkgdesc = Compact emoji palette with macros and optional text expansion
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/emobie
 	install = emobie.install
@@ -19,7 +19,7 @@ pkgbase = emobie
 	optdepends = uq: emoji search in uQ's look=see>do_ (type :) and following uQ's theme
 	optdepends = acl: setfacl for instant keyboard access after Grant without logout
 	options = !lto
-	source = emobie-0.9.4.tar.gz::https://github.com/asafelobotomy/emobie/archive/refs/tags/v0.9.4.tar.gz
-	sha256sums = 16ee09db48f193425f06dcbab0084b9be3152bb887664426f7076d6a9a081996
+	source = emobie-0.9.5.tar.gz::https://github.com/asafelobotomy/emobie/archive/refs/tags/v0.9.5.tar.gz
+	sha256sums = ef49c54bfbf80a4ea4d5ea8d47444e6f87f9f540676b1e97bb8b7527dcf6dc78
 
 pkgname = emobie
