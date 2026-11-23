@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-ai-usagebar
 _uuid=ai-usagebar@wilfison
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Show AI plan usage (Claude, Codex, OpenRouter and more) in the GNOME Shell top panel"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('gnome-shell>=1:47' 'libsoup3' 'libadwaita')
 makedepends=('gettext' 'glib2')
 checkdepends=('gjs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1093a25f94dbc8d25a724658d90617e504146e0f432aa51ab549dbc5302f5c14')
+sha256sums=('2c58ba9de20384f7d3174cfa9960edee897596b6326b09ad9705849cdf16bdb9')
 
 build() {
   cd "ai-usagebar-${pkgver}"
