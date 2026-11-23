@@ -1,6 +1,6 @@
 # Maintainer: jiutong <jiutong@localhost>
 pkgname=mayoi-bin
-pkgver=0.22.4
+pkgver=0.23.2
 pkgrel=1
 pkgdesc="A small, fast code editor written in Go with a native GPU-drawn UI (no webview, no Electron)"
 arch=('x86_64' 'aarch64')
@@ -12,9 +12,9 @@ source_x86_64=("https://github.com/sorrycc/Mayoi/releases/download/v${pkgver}/ma
 	"https://raw.githubusercontent.com/sorrycc/Mayoi/v${pkgver}/LICENSE")
 source_aarch64=("https://github.com/sorrycc/Mayoi/releases/download/v${pkgver}/mayoi-${pkgver}-linux-arm64.tar.gz"
 	"https://raw.githubusercontent.com/sorrycc/Mayoi/v${pkgver}/LICENSE")
-sha256sums_x86_64=('a8cf007b946a9ba6f2a1a1819f2d69c0062aacbe4ee7eff8182b9bf4ccc519de'
+sha256sums_x86_64=('ae0e4ddca97580bfe79130865238421648fe7f5d0a40bb2aec5d2bccebce5e38'
                    'd0ab3d39f23b23a30fdfff2039f533588c766cc7624ce6a8ac414975e76652e1')
-sha256sums_aarch64=('4458486de9908be1c0479fc7222e0c761d7ba51763c14e49b333253ebe91517e'
+sha256sums_aarch64=('f9c0245b7732b97f36c5f891954ebaaa41b0b984c18d986f6521fc9a9b0c5a8b'
                     'd0ab3d39f23b23a30fdfff2039f533588c766cc7624ce6a8ac414975e76652e1')
 
 package() {
