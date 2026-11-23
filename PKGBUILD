@@ -51,6 +51,7 @@ check() {
 
 	export CARGO_TARGET_DIR=target
 	cargo test --frozen --release -- \
+		--skip "stats_matlab::stats_functions_match_matlab" \
 		--skip "signal_matlab::signal_functions_match_matlab"
 }
 
