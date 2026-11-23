@@ -2,7 +2,7 @@
 
 pkgname=xremap-kde-bin
 pkgdesc='Dynamic key remapper for X11 and Wayland (KDE Wayland Version)'
-pkgver=0.15.18
+pkgver=0.15.19
 pkgrel=1
 provides=('xremap')
 license=('MIT')
@@ -12,8 +12,8 @@ source=("LICENSE")
 source_x86_64=("$url/releases/download/v$pkgver/xremap-linux-x86_64-kde.zip")
 source_aarch64=("$url/releases/download/v$pkgver/xremap-linux-aarch64-kde.zip")
 b2sums=('5caf7612d5d1e636a60ad68135f621413b3681e4cda0e2e5d5c76e05d3adf15bc7b5cc030c7b26270fa3dfef181456bfd07d1d3330008564f1e82921eef5d16a')
-b2sums_x86_64=('8ce744a6fa51ee349840de7e88b81a5a5ef9db3af2ad772c16792a5e03ea42e231317a531eb94948744ffa96db596db0df7a07777760137e5b965d49690ab189')
-b2sums_aarch64=('ba6de1e612ca2378fac8ec58c67fbe03686bb5b8f456a83c74703d4eb84d40a25269b87aa1f7ce26dd3ee34a06cd0d869d9093a63ba4b49a3d845b3ab0976597')
+b2sums_x86_64=('d5d4b2356c5cbf46ed661c8d9b02694e69610519b67a25d600da23abe72a9d9f81f5607214379b81fb4b152c041493b57dacd309cea194a2d1b6c46e8bb168b5')
+b2sums_aarch64=('82de6a7ac0312fdf82e2c9df88e747fc4853a53d73a109e419e76c4e4bf21ff2a88174e402a1b9982066dea54bb94243dfd348d0e9e8f0748e590cad5b6be0c7')
 
 package() {
   ./xremap --completions zsh > zsh_completions
