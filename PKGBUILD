@@ -15,8 +15,8 @@
 # pkgver() derives the real version from the archive filename, so this PKGBUILD
 # does not have to be edited for every upstream release.
 pkgname=deveco-commandline-tools
-pkgver=7.0.0.123
-pkgrel=4
+pkgver=26.0.1.290
+pkgrel=5
 pkgdesc='HUAWEI Command Line Tools for HarmonyOS: hvigorw, ohpm, hstack, codelinter, SDK tools'
 arch=('x86_64')
 url='https://developer.huawei.com/consumer/cn/download/'
@@ -77,6 +77,10 @@ package() {
 
   install -d "$pkgdir/opt/deveco/command-line-tools"
   cp -r --no-preserve=ownership "$_clt/." "$pkgdir/opt/deveco/command-line-tools/"
+
+  # the upstream zip ships 0700/0750 modes meant for a root installer; make the
+  # tree usable for normal users
+  find "$pkgdir/opt/deveco/command-line-tools" \( -type f -o -type d \) -exec chmod 755 {} +
 
   install -d "$pkgdir/usr/bin"
   local t
