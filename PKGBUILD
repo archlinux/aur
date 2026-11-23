@@ -2,7 +2,7 @@
 
 _pkgname=stackablectl
 pkgname="${_pkgname}-bin"
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 # We moved to epoch=1 because we moved from CalVer to SemVer
 epoch=1
@@ -12,7 +12,7 @@ url="https://github.com/stackabletech/stackablectl/"
 license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 source=("stackablectl-${pkgver}::https://github.com/stackabletech/stackablectl/releases/download/stackablectl-${pkgver}/stackablectl-$CARCH-unknown-linux-gnu")
-b2sums=('2484c54ee11cd5df69e5236d2f419615cc513e6fc51186a6a0bd1d30f171c44044715c16294b90e06be61f47c266f5b58d4fbce9b9065621070c148fc584a719')
+b2sums=('35b5d11f4c5c96f04e0dd8ea177bc9a54dae14cb36179bbf53807868dea83a0904338f006799b273a8d8bc84ad1453bb336db4b79cd9a9e504d71f7a214bf63c')
 provides=(${_pkgname})
 conflicts=(${_pkgname} ${_pkgname}-git)
 
