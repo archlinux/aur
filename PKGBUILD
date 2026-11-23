@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=all-smi
-pkgver=0.28.1
+pkgver=0.29.1
 pkgrel=1
 pkgdesc='Command-line utility for monitoring GPU hardware'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'protobuf')
 options=('!lto')
 backup=('etc/default/all-smi')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('611fd1efb0909fdbbb8371612988578a9fa515eb99f4b3200b2237eaf17c82aa')
+sha256sums=('37ddbd92f52ecfcc756de7fcf2d2f046c361c3caa5c1c67a77f797ee9f989996')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
