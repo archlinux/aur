@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GloScope
-_pkgver=1.6.0
+_pkgver=2.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,9 +15,13 @@ depends=(
   r-ggplot2
   r-mclust
   r-mvnfast
+  r-permute
+  r-pheatmap
   r-rann
+  r-rcolorbrewer
   r-rlang
   r-singlecellexperiment
+  r-vegan
 )
 checkdepends=(
   r-testthat
@@ -30,8 +34,8 @@ optdepends=(
   r-zellkonverter
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('686497275b93b8f5e40d5e594de254e9')
-b2sums=('74f7636f258d72351f6a44cb9a4c6ffeee3279c9717dc3a8f2337851a3680821ae9208f4df44cdd762a9cd23cb68f9651ae6949641d9e372801db8c364a5d1f8')
+md5sums=('fe8a054c4a9ae6e32c58e02b0a4fee95')
+b2sums=('eef6e848bb30effb769ebef351857ee91fe465569b6ff599503d3661ad44a8e037ab98e635c98e02a437f920a981d4c688504084d8975e5793cc088a76cd66f0')
 
 build() {
   mkdir build
