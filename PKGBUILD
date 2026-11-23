@@ -1,8 +1,8 @@
 # Maintainer: Samueru-sama xdglawyer@outlook.com
 
 pkgname=glycin-ng
-pkgver=0.5.3
-pkgrel=2
+pkgver=0.5.4
+pkgrel=1
 pkgdesc="In-process image decoder without bwrap dependency or useless bloat"
 arch=('x86_64' 'aarch64')
 url=https://github.com/QaidVoid/glycin-ng
