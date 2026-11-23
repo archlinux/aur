@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=sdrtop
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal monitor for SDR hardware'
 arch=('x86_64' 'aarch64')
 url='https://github.com/musithang/sdrtop'
@@ -34,6 +34,7 @@ build() {
 package() {
     cd "$srcdir/$pkgname" || exit 1
     install -Dm755 'target/release/sdrtop' "$pkgdir/usr/bin/sdrtop"
+    install -Dm755 'target/release/monasd' "$pkgdir/usr/bin/monasd"
     install -Dm644 'LICENSE'               "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 'README.md'             "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 'CHANGELOG.md'          "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
@@ -41,4 +42,5 @@ package() {
     install -Dm644 'SECURITY.md'           "$pkgdir/usr/share/doc/$pkgname/SECURITY.md"
     cp -r          'user_docs'             "$pkgdir/usr/share/doc/$pkgname/"
     install -Dm644 'target/man/sdrtop.1'   "$pkgdir/usr/share/man/man1/sdrtop.1"
+    install -Dm644 'target/man/monasd.1'   "$pkgdir/usr/share/man/man1/monasd.1"
 }
