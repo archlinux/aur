@@ -1,0 +1,16 @@
+pkgbase = r-prompter
+	pkgdesc = Add Tooltips in 'Shiny' Apps with 'Hint.css'
+	pkgver = 1.2.1
+	pkgrel = 2
+	url = https://cran.r-project.org/package=prompter
+	arch = any
+	license = MIT
+	depends = r-shiny
+	optdepends = r-htmltools
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/prompter_1.2.1.tar.gz
+	md5sums = 7ea31aaca314ad943990e21add4d643b
+	b2sums = 07cef1d4cab459cababc131ad68f59e85717383d2548973852a5148868c7cc31ee659f6f6fffee04024b5d92845c752edc6369c203895f7879fd5d102dde6c4a
+
+pkgname = r-prompter
