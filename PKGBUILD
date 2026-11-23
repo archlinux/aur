@@ -1,7 +1,7 @@
 # Maintainer: chadsr <git at ross dot ch>
 
 pkgname=sheprd
-pkgver=20261118.1 # renovate: datasource=github-releases depName=sheprd-labs/sheprd
+pkgver=20261123.1 # renovate: datasource=github-releases depName=sheprd-labs/sheprd
 pkgrel=1
 pkgdesc="Native GPUI client for an installed Herdr daemon (formerly herdr-gpui)"
 arch=('x86_64' 'aarch64')
@@ -19,11 +19,12 @@ depends=(
 	'vulkan-icd-loader'
 	'hicolor-icon-theme'
 )
-makedepends=('cargo' 'fontconfig' 'freetype2' 'sqlite') # -sys build scripts probe pkg-config
+makedepends=('cargo' 'fontconfig' 'freetype2') # -sys build scripts probe pkg-config
+checkdepends=('openssh')
 optdepends=(
 	'xdg-utils: open URLs in your browser'
 	'git: remote workspaces and unpushed-work checks'
-	'openssh: remote workspaces and git over SSH'
+	'openssh: remote workspaces and fleet/desktop pairing'
 	'wl-clipboard: clipboard on Wayland'
 	'xclip: clipboard on X11'
 	'vulkan-radeon: Vulkan driver for AMD GPUs'
@@ -34,7 +35,7 @@ conflicts=('herdr-gpui' "$pkgname-bin")
 replaces=('herdr-gpui')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('950d23086c0bea1f9b5afe04d35b2c82f82d48448b8c7f4d6c7d22de959b0655925c98ec008e7dc69070a235c81acb4bceddd41d3a69b23381fd429d9872fdb6')
+b2sums=('8c93362d40edc83c7e2785bd5169421cb5cbb55b1b4559b6c133a3a4cb5deb2a5370b79775641eef7842b9f1c37b20766ff5d19236b119edad6fc7399fa9e838')
 
 prepare() {
 	cd "$pkgname-$pkgver"
