@@ -2,8 +2,8 @@
 
 pkgname=python-k3num
 _name=${pkgname#python-}
-pkgver=0.1.13
-pkgrel=1
+pkgver=0.1.14
+pkgrel=3
 pkgdesc="Human-readable number formatting and hex string utilities"
 provides=(${pkgname})
 conflicts=(${pkgname})
@@ -26,7 +26,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('7784275956e3cbba49b87f69ba12249244a5de4fd709b5f25a50a48d6d28f045')
+sha256sums=('13b97c7afa3085b0adb5b79ffc440ae0b2dec3c322833fe8996f8facd2d5040f')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
