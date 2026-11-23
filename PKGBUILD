@@ -1,6 +1,6 @@
 # Maintainer: giosuel <me@giosuel.ch>
 pkgname=realer-xpad
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='Sticky notes with Markdown and drawing, native on Wayland and Hyprland'
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,12 @@ depends=('cairo' 'glib2' 'glibc' 'gtk4' 'hicolor-icon-theme' 'libadwaita' 'libgc
 makedepends=('cargo')
 options=('!debug') # the release profile strips the binary
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7dd27b12f98ddc71181cf263f64ba053ed8c788ae9511250652f7ed0291f9ea1')
+sha256sums=('76dcfec8abd0f670b07d82b806c28ea2d2e447538a1f3cd3cc8742cf4b614dc0')
 
 prepare() {
   cd "$pkgname-$pkgver"
+  # The repository is at version 0.0.0; releases take theirs from the tag.
+  tools/stamp-version.sh "$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
