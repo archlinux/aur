@@ -1,6 +1,6 @@
 pkgbase = python-demangle
 	pkgdesc = Read mangled symbol names in pure Python
-	pkgver = 0.9.0
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/r0ny123/demangle
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-demangle
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = python-demangle-0.9.0.tar.gz::https://github.com/r0ny123/demangle/archive/v0.9.0.tar.gz
-	sha256sums = 1ee10feabe786cdf1ff57c5ac97ec894da701a6893fbd472ed316b298beeb8a8
+	source = python-demangle-0.9.4.tar.gz::https://github.com/r0ny123/demangle/archive/v0.9.4.tar.gz
+	sha256sums = 72e5975df26ca26a34137cc326dc35d636a226cf9cee3606605e5454aeb5827d
 
 pkgname = python-demangle
