@@ -1,0 +1,25 @@
+_msg() {
+  cat <<'MSG'
+==> pyscrlink: a pacman hook grants cap_net_raw,cap_net_admin to
+    bluepy-helper (re-applied on every python-bluepy upgrade), so any
+    local user can scan/connect BLE devices.
+    Start:
+        scratch_link
+    and add the LEGO BOOST extension at https://scratch.mit.edu
+MSG
+}
+
+post_install() {
+  _msg
+}
+
+post_upgrade() {
+  _msg
+}
+
+post_remove() {
+  for h in /usr/lib/python3*/site-packages/bluepy/bluepy-helper; do
+    [ -f "$h" ] && setcap -r "$h" 2>/dev/null
+  done
+  true
+}

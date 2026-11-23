@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = python-bluepy
+Target = pyscrlink
+
+[Action]
+Description = Granting BLE capabilities to bluepy-helper (pyscrlink)...
+When = PostTransaction
+Depends = libcap
+Exec = /bin/sh -c 'for h in /usr/lib/python3*/site-packages/bluepy/bluepy-helper; do [ -f "$h" ] && setcap cap_net_raw,cap_net_admin+eip "$h"; done; true'

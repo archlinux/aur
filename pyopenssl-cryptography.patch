@@ -1,0 +1,95 @@
+--- a/pyscrlink/gencert.py
++++ b/pyscrlink/gencert.py
+@@ -5,7 +5,11 @@
+ import sys
+ import os
+ import re
+-from OpenSSL import crypto
++import datetime
++from cryptography import x509
++from cryptography.hazmat.primitives import hashes, serialization
++from cryptography.hazmat.primitives.asymmetric import rsa
++from cryptography.x509.oid import NameOID
+ 
+ import logging
+ logLevel = logging.INFO
+@@ -53,32 +57,39 @@
+         else:
+             logger.info(f"Certificate {cert_path} expired. Regenerate it.")
+ 
+-    key = crypto.PKey()
+-    key.generate_key(crypto.TYPE_RSA, 2048)
++    key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+ 
+-    cert = crypto.X509()
+-    cert.get_subject().CN = SCRATCH_CERT_NICKNAME
+-    cert.gmtime_adj_notBefore(9)
+-    cert.gmtime_adj_notAfter(10 * 365 * 24 * 60 * 60)  # ten years
+-    cert.set_version(2) # version 3 of X.509 (0 start)
+-    cert.set_pubkey(key)
+-    cert.set_issuer(cert.get_subject())
+-    cert.add_extensions([
+-        crypto.X509Extension(b"subjectAltName", False,
+-                             b"DNS:device-manager.scratch.mit.edu")
+-    ])
+-    cert.sign(key, 'sha256')
++    name = x509.Name([x509.NameAttribute(NameOID.COMMON_NAME,
++                                         SCRATCH_CERT_NICKNAME)])
++    now = datetime.datetime.now(datetime.timezone.utc)
++    cert = (x509.CertificateBuilder()
++            .subject_name(name)
++            .issuer_name(name)
++            .public_key(key.public_key())
++            .serial_number(x509.random_serial_number())
++            .not_valid_before(now)
++            .not_valid_after(now + datetime.timedelta(days=10 * 365))  # ten years
++            .add_extension(x509.SubjectAlternativeName(
++                [x509.DNSName(SCRATCH_CERT_NICKNAME)]), critical=False)
++            .sign(key, hashes.SHA256()))
+ 
+     with open(cert_path, "wb") as cf:
+-        cf.write(crypto.dump_certificate(crypto.FILETYPE_PEM, cert))
++        cf.write(cert.public_bytes(serialization.Encoding.PEM))
+     with open(key_path, "wb") as kf:
+-        kf.write(crypto.dump_privatekey(crypto.FILETYPE_PEM, key))
++        kf.write(key.private_bytes(serialization.Encoding.PEM,
++                                   serialization.PrivateFormat.TraditionalOpenSSL,
++                                   serialization.NoEncryption()))
+ 
+     logger.info(f"Generated certificate: {cert_path}")
+     logger.info(f"Generated key: {key_path}")
+ 
+ def certutil_db_name(dir):
+-    prefix = "dbm" if os.path.isfile(os.path.join(dir, "key3.db")) else "sql"
++    # Profiles migrated from old Firefox keep stale key3.db next to key4.db;
++    # modern NSS supports only the sql format, so prefer it when present.
++    if os.path.isfile(os.path.join(dir, "key4.db")):
++        prefix = "sql"
++    else:
++        prefix = "dbm" if os.path.isfile(os.path.join(dir, "key3.db")) else "sql"
+     return prefix + ":" + dir
+ 
+ def remove_cert(dir, nickname):
+@@ -97,9 +108,8 @@
+     Check if the certificate at specified path is valid
+     """
+     with open(cert_path, "rb") as cf:
+-        cbarr = cf.read()
+-        cert = crypto.load_certificate(crypto.FILETYPE_PEM, cbarr)
+-    return not cert.has_expired()
++        cert = x509.load_pem_x509_certificate(cf.read())
++    return cert.not_valid_after_utc > datetime.datetime.now(datetime.timezone.utc)
+ 
+ def has_cert(dir, cert, nickname):
+     """
+--- a/setup.py
++++ b/setup.py
+@@ -22,7 +22,7 @@
+     install_requires=[
+         'websockets',
+         'bluepy',
+-        'pyOpenSSL',
++        'cryptography',
+         ],
+     entry_points={
+         'console_scripts': [

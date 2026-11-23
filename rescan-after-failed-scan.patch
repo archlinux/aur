@@ -1,0 +1,12 @@
+--- a/pyscrlink/scratch_link.py
++++ b/pyscrlink/scratch_link.py
+@@ -339,6 +339,9 @@
+                             logger.debug(f"BLE iface #{i}: {me}");
+                     if found:
+                         break
++                if not found:
++                    # allow a new scan on the next discover request
++                    BLESession.scan_started = False
+             else:
+                 found = len(BLESession.found_devices) > 0
+         return found

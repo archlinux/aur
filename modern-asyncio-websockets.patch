@@ -1,0 +1,59 @@
+--- a/pyscrlink/scratch_link.py
++++ b/pyscrlink/scratch_link.py
+@@ -517,8 +517,12 @@
+             self.delegate.restart_notification_event.set()
+         return self.status == self.DONE
+ 
+-async def ws_handler(websocket, path):
++async def ws_handler(websocket, path=None):
+     sessionTypes = { '/scratch/ble': BLESession, '/scratch/bt': BTSession }
++    session = None
++    if path is None:
++        # websockets >= 14 passes only the connection object
++        path = websocket.request.path
+     try:
+         logger.info(f"Start session for web socket path: {path}")
+         loop = asyncio.get_event_loop()
+@@ -527,7 +531,8 @@
+     except Exception as e:
+         logger.error(f"Failure in session for web socket path: {path}")
+         logger.error(f"{type(e).__name__}: {e}")
+-        session.close()
++        if session:
++            session.close()
+ 
+ def stack_trace():
+     print("in stack_trace")
+@@ -573,15 +578,15 @@
+     localhost_key = gencert.key_file_path
+     ssl_context.load_cert_chain(localhost_cer, localhost_key)
+ 
+-    start_server = websockets.serve(
+-         ws_handler, HOSTNAME, 20110, ssl=ssl_context
+-    )
++    async def serve_forever():
++        async with websockets.serve(
++                ws_handler, HOSTNAME, 20110, ssl=ssl_context):
++            logger.info("Started scratch-link")
++            await asyncio.Future()
+ 
+     while True:
+         try:
+-            asyncio.get_event_loop().run_until_complete(start_server)
+-            logger.info("Started scratch-link")
+-            asyncio.get_event_loop().run_forever()
++            asyncio.run(serve_forever())
+         except KeyboardInterrupt as e:
+             stack_trace()
+             break
+--- a/pyscrlink/gencert.py
++++ b/pyscrlink/gencert.py
+@@ -159,7 +159,7 @@
+     nssdb = None
+     for root, dirs, files in os.walk(os.path.join(homedir, search_path)):
+         for name in files:
+-            if not re.match("key.*\.db", name):
++            if not re.match(r"key.*\.db", name):
+                 continue
+             nssdb = root
+             if prep_nss_cert(nssdb, cert, SCRATCH_CERT_NICKNAME):
