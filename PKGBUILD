@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=tinyetl
-pkgver=0.11.0 # renovate: datasource=github-releases depName=alrpal/TinyETL
+pkgver=0.11.1 # renovate: datasource=github-releases depName=alrpal/TinyETL
 pkgrel=1
 pkgdesc="Fast, zero-config ETL in a single binary"
 url="https://github.com/alrpal/TinyETL"
@@ -34,4 +34,4 @@ package() {
   install -Dm644 "${srcdir}/TinyETL-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('814f58888a787cadaa7f0a8360fa3ebecb11d92eb0ad9f202a085add5e1dbdc14f807b83d18c1907dbb4c2514d28c1aa279555ff7b3c9c10822c59fedb8ade69')
+sha512sums=('68d213dae88a1b0d3163536f3af8b6f195b243b47095f47416378462cc859132da01ba282e0d759dbde731b8f68cf6114924790deccdcec4e3e37776bf5e6d81')
