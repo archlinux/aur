@@ -5,7 +5,7 @@
 
 pkgname=dia-git
 _pkgname=dia
-pkgver=6975.ad68cc378
+pkgver=6976.60139a91e
 pkgrel=1
 pkgdesc="A GTK+ based diagram creation program"
 arch=('x86_64')
@@ -16,19 +16,12 @@ makedepends=('git' 'meson' 'intltool' 'dblatex' 'appstream-glib' 'glib2-devel')
 provides=('dia')
 conflicts=('dia')
 options=('docs' '!emptydirs')
-source=("git+https://gitlab.gnome.org/GNOME/dia.git"
-         0001-fix-build-for-poppler-26.06.patch)
-sha256sums=('SKIP'
-            '294d1f1af6da509495f996c00864203031117d935fede11200655a8fe2210b13')
+source=("git+https://gitlab.gnome.org/GNOME/dia.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${_pkgname}"
-  patch -p1 < ../0001-fix-build-for-poppler-26.06.patch
 }
 
 build() {
