@@ -1,6 +1,6 @@
 pkgbase = python-bloodhound-ce-git
 	pkgdesc = Python based ingestor for BloodHoundCE, based on Impacket
-	pkgver = 1.8.0.3def775
+	pkgver = 1.9.1.r345.gf7c0144
 	pkgrel = 1
 	url = https://github.com/dirkjanm/BloodHound.py
 	arch = any
@@ -17,6 +17,8 @@ pkgbase = python-bloodhound-ce-git
 	depends = python-dnspython
 	depends = python-pyasn1
 	depends = python-pycryptodome
+	provides = python-bloodhound-ce
+	conflicts = python-bloodhound-ce
 	conflicts = python-bloodhound
 	source = python-bloodhound-ce-git::git+https://github.com/dirkjanm/BloodHound.py#branch=bloodhound-ce
 	sha256sums = SKIP
