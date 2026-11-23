@@ -1,10 +1,11 @@
 pkgbase = r-alabaster.string
 	pkgdesc = Save and Load Biostrings to/from File
-	pkgver = 1.8.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/alabaster.string
 	arch = any
 	license = MIT
+	checkdepends = r-digest
 	checkdepends = r-testthat
 	depends = r-alabaster.base
 	depends = r-biostrings
@@ -13,8 +14,8 @@ pkgbase = r-alabaster.string
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.string_1.8.0.tar.gz
-	md5sums = 89e6592b234391de6ee18e5443ccfc6d
-	b2sums = 38d920303682b4d58b43907f082ac587e1e6262b4204cb74b11103083a3e25e1ee6ad6bc45ff507c04d304c7fbca37745599559d279842a9218358055c85784a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.string_1.12.0.tar.gz
+	md5sums = 2f3ea9bbfdf43a4b7ad2f512362b5d66
+	b2sums = 80ea60e6a5c524115e662500092beafb308cc942313071ddd6d12756f5718f79921c18c92c74aac3218f6a97ef530eeb2a4dd39f721c710b2f8784f14b64518a
 
 pkgname = r-alabaster.string
