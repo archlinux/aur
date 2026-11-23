@@ -1,7 +1,7 @@
 # Maintainer: Ahmet Diler <ahmet.diler@hotmail.de>
 pkgname=md-viewer-bin
 pkgver=0.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, lightweight markdown viewer with LaTeX math, mermaid diagrams, tabs, file explorer and live reload (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/aydiler/md-viewer"
@@ -25,12 +25,16 @@ optdepends=(
 )
 provides=('md-viewer')
 conflicts=('md-viewer' 'md-viewer-git')
+# Every local name carries ${pkgver}. makepkg reuses a source file that is
+# already in the build directory instead of downloading it, and AUR helpers
+# keep that directory between upgrades, so a fixed name serves the previous
+# version's copy once the file changes upstream and the checksum fails (#282).
 source=(
     "md-viewer-${pkgver}-linux-x86_64.tar.gz::https://github.com/aydiler/md-viewer/releases/download/v${pkgver}/md-viewer-${pkgver}-linux-x86_64.tar.gz"
-    "md-viewer.desktop::https://raw.githubusercontent.com/aydiler/md-viewer/v${pkgver}/data/md-viewer.desktop"
-    "io.github.aydiler.md-viewer.png::https://raw.githubusercontent.com/aydiler/md-viewer/v${pkgver}/data/io.github.aydiler.md-viewer.png"
-    "LICENSE::https://raw.githubusercontent.com/aydiler/md-viewer/v${pkgver}/LICENSE"
-    "THIRD_PARTY_NOTICES::https://raw.githubusercontent.com/aydiler/md-viewer/v${pkgver}/THIRD_PARTY_NOTICES"
+    "md-viewer-${pkgver}.desktop::https://raw.githubusercontent.com/aydiler/md-viewer/v${pkgver}/data/md-viewer.desktop"
+    "md-viewer-${pkgver}.png::https://raw.githubusercontent.com/aydiler/md-viewer/v${pkgver}/data/io.github.aydiler.md-viewer.png"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/aydiler/md-viewer/v${pkgver}/LICENSE"
+    "THIRD_PARTY_NOTICES-${pkgver}::https://raw.githubusercontent.com/aydiler/md-viewer/v${pkgver}/THIRD_PARTY_NOTICES"
 )
 sha256sums=(
     '621a00964ae246bba1be29172af3095b3f2f569963ad0ac587624f867f4f8024'
@@ -43,12 +47,12 @@ sha256sums=(
 package() {
     install -Dm755 "${srcdir}/md-viewer" \
         "${pkgdir}/usr/bin/md-viewer"
-    install -Dm644 "${srcdir}/md-viewer.desktop" \
+    install -Dm644 "${srcdir}/md-viewer-${pkgver}.desktop" \
         "${pkgdir}/usr/share/applications/md-viewer.desktop"
-    install -Dm644 "${srcdir}/io.github.aydiler.md-viewer.png" \
+    install -Dm644 "${srcdir}/md-viewer-${pkgver}.png" \
         "${pkgdir}/usr/share/pixmaps/io.github.aydiler.md-viewer.png"
-    install -Dm644 "${srcdir}/LICENSE" \
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${srcdir}/THIRD_PARTY_NOTICES" \
+    install -Dm644 "${srcdir}/THIRD_PARTY_NOTICES-${pkgver}" \
         "${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_NOTICES"
 }
