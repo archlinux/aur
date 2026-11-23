@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DaMiRseq
-_pkgver=2.18.0
+_pkgver=2.24.0
 pkgname=r-${_pkgname,,}
-pkgver=2.18.0
+pkgver=2.24.0
 pkgrel=1
 pkgdesc='Data Mining for RNA-seq data: normalization, feature selection and classification'
 arch=('any')
@@ -34,6 +34,7 @@ depends=(
   r-rcolorbrewer
   r-reshape2
   r-rsnns
+  r-seqinfo
   r-summarizedexperiment
   r-sva
 )
@@ -43,7 +44,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('66f808cd4f1f400ba58551d71d4f235bb3aa1f3ab3590bafccf09c4d1c33d830')
+sha256sums=('859ce82863a9fc2ae4fa9f995553adf598ce9aaf1b8ff5c5305eb20136d693e1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
