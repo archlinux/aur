@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scFeatures
-_pkgver=1.8.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,7 +30,6 @@ depends=(
   r-reshape2
   r-rmarkdown
   r-seurat
-  r-singlecellsignalr
   r-spatstat.explore
   r-spatstat.geom
   r-tidyr
@@ -39,14 +38,22 @@ optdepends=(
   r-biocstyle
   r-classifyr
   r-clusterprofiler
+  r-data.table
+  r-dose
+  r-enrichplot
+  r-ggplot2
+  r-igraph
   r-knitr
+  r-limma
   r-org.hs.eg.db
+  r-pheatmap
+  r-plotly
   r-s4vectors
   r-survminer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('93a1ca58024d060e279efaa97ac0d53a')
-b2sums=('ed5051f6a745da739bdeeee858e05bd112ae0b516af69f0c400ff3ca0c248cd635a4c0a31f5736a18f36398f90e709e46aa7de481fa84a06e732462da5233fc8')
+md5sums=('95d415fc95a7d35870ba957b0c49656c')
+b2sums=('6ca524c9cec219fbba29911a48496c312ddd1b5df9d8a81288867746e2bfb5827d7c4f383fce89e3bcb58d0b80db4f078490d9f38342648785a041b95afef083')
 
 build() {
   mkdir build
