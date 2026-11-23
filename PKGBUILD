@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=enrichplot
-_pkgver=1.28.0
+_pkgver=1.32.1
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.32.1
 pkgrel=1
 pkgdesc='Visualization of Functional Enrichment Result'
 arch=('any')
@@ -16,46 +16,44 @@ depends=(
   r-ggfun
   r-ggnewscale
   r-ggplot2
-  r-ggraph
   r-ggtree
   r-gosemsim
   r-igraph
-  r-magrittr
-  r-plyr
   r-purrr
   r-rcolorbrewer
   r-reshape2
   r-rlang
   r-scatterpie
-  r-shadowtext
   r-yulab.utils
   r-ggtangle
+  r-dplyr
+  r-enrichit
+  r-ggrepel
+  r-tidydr
 )
 optdepends=(
   r-annotationdbi
   r-clusterprofiler
-  r-dplyr
   r-europepmc
+  r-ggarchery
   r-ggforce
+  r-gghoriplot
   r-ggplotify
-  r-ggrepel
   r-ggridges
   r-ggstar
   r-ggtreeextra
   r-ggupset
-  r-grdevices
+  r-glue
   r-gridextra
-  r-knitr
+  r-gson
   r-org.hs.eg.db
-  r-prettydoc
-  r-rmarkdown
+  r-quarto
   r-scales
   r-tibble
-  r-tidydr
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fb269daf138112315afdbcef5ed1edfbe1d4a7d2b8ca99c02a3998d146425236')
+sha256sums=('abab78cd8a3620558056ffeb15073e579d3a8a0faf9403278752977c9f02d8cc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
