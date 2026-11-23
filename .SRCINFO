@@ -1,0 +1,19 @@
+pkgbase = python-k3proc
+	pkgdesc = Utility to create subprocess with support for timeout, tty, and text mode
+	pkgver = 0.2.20
+	pkgrel = 1
+	url = https://github.com/pykit3/k3proc
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3proc
+	conflicts = python-k3proc
+	source = k3proc::git+https://github.com/pykit3/k3proc.git#tag=v0.2.20
+	sha256sums = 87fd8c6be1662ef4eb8d7dd14c5bd1adb09a162c1caf5e7e898579163934a643
+
+pkgname = python-k3proc
