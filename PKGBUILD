@@ -1,7 +1,7 @@
 # Maintainer: Nogweii <packages@nogweii.net>
 pkgname=alpm-html
 # renovate: datasource=gitlab-tags depName=archlinux/alpm-html registryUrl=https://code.aether.earth
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Generate a static site for browsing an Arch repo, styled like the main website."
 arch=(any)
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('pyalpm' 'python-jinja' 'python-inflect' 'python-daiquiri')
 makedepends=('asciidoc')
 source=("https://code.aether.earth/nogweii/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('3361c8030b578206983b26c3858afaf55c7103574c59bb5eeea0a6a5e2289ae6d24124399a3ab69ee7f09eb92800a5802274976da35560cd41f407fdf560073e')
-b2sums=('2a801232c0ebadb7b9b5862ce30dcedeff62a9a2f8b6081238ab0c990fde75626c31e68b9e709ffad90db7086b016d7190d36667a684eaa308b2a5e05d7597a2')
+sha512sums=('8c59dc0c31e507ca3491ee5faf47499a6456e34c8efd424e8a4e6dbc7798d20e8f827a0469ab651ef41289127ceba60c8ec3e54a174746a68f84849a0c29f7c9')
+b2sums=('e34865ca8c870f56861fa7e02e478d64475b0c3d0703300228a9c9f6c3dd050a958b0f54635349b971f353ed141c7148ab0b7b9ceed792927b982d0adf388f6c')
 
 build() {
   cd "${srcdir}/$pkgname-v$pkgver"
