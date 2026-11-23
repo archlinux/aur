@@ -1,22 +1,20 @@
 pkgbase = sweet-kde-theme-git
 	pkgdesc = Sweet KDE Plasma theme
-	pkgver = r50.0feee61
+	pkgver = r67.051c50f
 	pkgrel = 1
 	url = https://github.com/Gigas002/Sweet-kde
 	arch = any
-	license = GPL-3.0-or-later
+	license = CC-BY-SA-4.0
 	makedepends = git
 	depends = candy-icons-git
 	optdepends = cantarell-fonts: tertiary font face defined
 	optdepends = beautyline: alternative icons set
 	optdepends = sweet-cursors-git: KDE cursors
 	optdepends = sweet-kvantum-git: kvantum theme
-	optdepends = sweet-konsole-git: konsole theme
-	optdepends = sweet-sddm-git: sddm theme
 	optdepends = sweet-folders-git: folder icons
 	conflicts = plasma5-themes-sweet-kde-git
 	conflicts = plasma5-themes-sweet-full-git
-	source = Sweet-kde::git+https://github.com/Gigas002/Sweet-kde.git#branch=plasma-6-migration
+	source = Sweet-kde::git+https://github.com/Gigas002/Sweet-kde.git
 	sha256sums = SKIP
 
 pkgname = sweet-kde-theme-git

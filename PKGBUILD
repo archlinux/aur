@@ -2,12 +2,12 @@
 
 pkgname=sweet-kde-theme-git
 _pkgname=Sweet-kde
-pkgver=r50.0feee61
+pkgver=r67.051c50f
 pkgrel=1
 pkgdesc="Sweet KDE Plasma theme"
 arch=('any')
 url="https://github.com/Gigas002/$_pkgname"
-license=('GPL-3.0-or-later')
+license=('CC-BY-SA-4.0')
 makedepends=(
 	'git'
 )
@@ -19,15 +19,13 @@ optdepends=(
 	'beautyline: alternative icons set'
 	'sweet-cursors-git: KDE cursors'
 	'sweet-kvantum-git: kvantum theme'
-	'sweet-konsole-git: konsole theme'
-	'sweet-sddm-git: sddm theme'
 	'sweet-folders-git: folder icons'
 )
 conflicts=(
 	'plasma5-themes-sweet-kde-git'
 	'plasma5-themes-sweet-full-git'
 )
-source=("$_pkgname::git+$url.git#branch=plasma-6-migration")
+source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -44,4 +42,7 @@ package() {
 
 	# look-and-feel and desktoptheme
 	cp -r "$srcdir/$_pkgname/plasma" "$pkgdir/usr/share/plasma"
+
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$_pkgname/LICENSE/"*.md
+	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "$srcdir/$_pkgname/README.md"
 }
