@@ -14,7 +14,7 @@
 # system-wide instead of shelling out to 'code'.
 pkgname=deveco-devicetool
 pkgver=4.0.0.400
-pkgrel=8
+pkgrel=10
 pkgdesc='HUAWEI DevEco Device Tool for OpenHarmony device development (VS Code toolchain bundle)'
 arch=('x86_64')
 url='https://device.harmonyos.com/cn/develop/ide/'
@@ -92,12 +92,9 @@ package() {
   install -d "$pkgdir/$_root"
   cp -r --no-preserve=ownership "$srcdir/stage/." "$pkgdir/$_root/"
 
-  # install.py applies a restrictive umask, which would leave the tree
-  # root-only (0750/0640) and unusable for normal users. Normalize it.
-  find "$pkgdir/$_root" -type d -exec chmod 755 {} +
-  while IFS= read -r -d '' f; do
-    if [[ -x "$f" ]]; then chmod 755 "$f"; else chmod 644 "$f"; fi
-  done < <(find "$pkgdir/$_root" -type f -print0)
+  # install.py applies umask 027 and its own 0750/0640 table, which leaves the
+  # tree root-only and unusable for normal users. Flatten everything to 0755.
+  find "$pkgdir/$_root" \( -type f -o -type d \) -exec chmod 755 {} +
 
   # The venv and helper scripts bake in the staging path; rewrite it to the
   # final location so the tree is relocatable.
@@ -125,6 +122,8 @@ package() {
     cp -r --no-preserve=ownership "$tmpdir/extension/." "$dir/"
     rm -rf "$tmpdir"
   done
+
+  find "$pkgdir/usr/lib/code/extensions" \( -type f -o -type d \) -exec chmod 755 {} + 2>/dev/null || true
 
   install -d "$pkgdir/usr/lib/udev/rules.d"
   install -m644 "$srcdir/extracted"/*.rules "$pkgdir/usr/lib/udev/rules.d/"
