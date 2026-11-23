@@ -7,7 +7,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.4.13
+pkgver=3.4.14
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -37,10 +37,10 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('0613470742cc0c94cdbc5e392a0343d71c0b8888f0a5e0c00258353d412359ff'
+sha256sums=('ec4fd8a30a4b701226d961448d8b71a20217c716263d6a629307682187836e66'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
