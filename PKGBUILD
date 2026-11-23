@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chat-overlay-bin
 _pkgname='Chat Overlay'
-pkgver=1.2.3
+pkgver=1.2.4
 _electronversion=45
 pkgrel=1
 pkgdesc="A modern, transparent chat overlay application for Bilibili live streaming,connects to the LAPLACE Event Bridge to display real-time chat messages, interactions, and viewer engagement metrics."
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0f339eeda073c80665d7c9b2a147e2c059c2ffdeb3da4c9bbc0ad76decfbc485'
+sha256sums=('2f03c308057359cc8722c2dc1fe2dda4afdb5708b477a5c61dace9e1d1911132'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
