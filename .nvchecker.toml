@@ -1,4 +1,4 @@
 [mullvad-vpn-beta]
-source = "git"
-git = "https://github.com/mullvad/mullvadvpn-app.git"
+source = "github"
+github = "mullvad/mullvadvpn-app"
 use_max_release = true
