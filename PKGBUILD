@@ -1,7 +1,7 @@
 # Maintainer: Rin <icealtria at gmail dot com>
 
 pkgname=geph5-client
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="The command-line Geph5 client"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgn
         "config.yml"
         "geph5-client.user.service"
         'geph5-client.service')
-md5sums=('d64ac0b71fbc0a3135f8b85ad8efc778'
+md5sums=('53928ffbcf4c4fb69cc31f0291767f8c'
          'eb2dd59b42f15985a35b9747a2a9ff79'
          '186cca941b1c4a510a71bf79a0ef8921'
          '7ddb81dd9b4a9f66559247565cdb49a7')
