@@ -1,7 +1,7 @@
 pkgbase = freeimagere-git
 	pkgdesc = Fork of freeimage (library project for developers who would like to support popular graphics image formats)
 	pkgver = 4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/agruzdev/FreeImageRe
 	arch = x86_64
 	license = GPL-2.0-only
@@ -15,7 +15,6 @@ pkgbase = freeimagere-git
 	depends = libpng
 	depends = libwebp
 	depends = libraw
-	provides = libFreeImage.so
 	conflicts = freeimage
 	source = freeimagere-git::git+https://github.com/agruzdev/FreeImageRe.git
 	sha512sums = SKIP

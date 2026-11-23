@@ -2,8 +2,7 @@
 
 pkgname=freeimagere-git
 pkgver=4.2
-pkgrel=3
-provides=('libFreeImage.so')
+pkgrel=4
 conflicts=('freeimage')
 pkgdesc="Fork of freeimage (library project for developers who would like to support popular graphics image formats)"
 arch=('x86_64')
@@ -36,7 +35,7 @@ build() {
     -D USE_SYSTEM_LIBOPENEXR=ON
     -D USE_SYSTEM_LIBPNG=ON
     -D USE_SYSTEM_LIBTIFF=OFF   # arch package does not provide tiffiop.h (jpegxl fails)
-    -D USE_SYSTEM_LIBWEBP=ON
+    -D USE_SYSTEM_LIBWEBP=OFF
     -D USE_SYSTEM_LIBRAW=ON
     -D USE_SYSTEM_LIBHEIF=ON
   )
@@ -46,8 +45,9 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-  ln -s "${INSTALL_PREFIX}/lib/libFreeImage.so" "${pkgdir}${INSTALL_PREFIX}/lib/libFreeImage.so.${pkgver/\.[0-9]/}"
-  ln -s "${INSTALL_PREFIX}/lib/libFreeImage.so" "${pkgdir}${INSTALL_PREFIX}/lib/libFreeImage.so.${pkgver}"
+  ln -s "${INSTALL_PREFIX}/lib/libFreeImage.so" "${pkgdir}${INSTALL_PREFIX}/lib/libfreeimage.so.${pkgver/\.[0-9]/}"
+  ln -s "${INSTALL_PREFIX}/lib/libFreeImage.so" "${pkgdir}${INSTALL_PREFIX}/lib/libfreeimage.so.${pkgver}"
   install -D -m644 "${srcdir}"/${pkgname}/license-fi.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  mv "${pkgdir}${INSTALL_PREFIX}/lib/libFreeImage.so" "${pkgdir}${INSTALL_PREFIX}/lib/libfreeimage.so"
 }
 
