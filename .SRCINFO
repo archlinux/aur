@@ -1,7 +1,7 @@
 pkgbase = deveco-cli
 	pkgdesc = HarmonyOS application development command line tool (DevEco CLI)
 	pkgver = 1.3.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://developer.huawei.com/consumer/cn/deveco-studio/
 	arch = x86_64
 	license = MIT
