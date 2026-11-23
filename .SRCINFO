@@ -1,0 +1,14 @@
+pkgbase = neovim-archevim
+	pkgdesc = archelinux dark colorscheme for Neovim and matching lualine theme
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://archelinux.github.io/archelinux.org/wiki/arch-tools.html
+	arch = any
+	license = GPL-3.0-only
+	depends = neovim
+	source = archevim-2.0.0.lua::https://raw.githubusercontent.com/archelinux/archelinux/259faec1ae8a8e2453709bfee72cd4f98958b5f6/airootfs/etc/skel/.config/nvim/colors/archevim.lua
+	source = archevim-lualine-2.0.0.lua::https://raw.githubusercontent.com/archelinux/archelinux/259faec1ae8a8e2453709bfee72cd4f98958b5f6/airootfs/etc/skel/.config/nvim/lua/lualine/themes/archevim.lua
+	sha256sums = d062fe8b368d52836855bc8180761bca05a2f423d9e5fdb33a824378820f013a
+	sha256sums = 50c8b97872c9fca42b9f4d59e715998f18b5418d9734c32a2937f137465d58aa
+
+pkgname = neovim-archevim
