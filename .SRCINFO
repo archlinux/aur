@@ -1,6 +1,6 @@
 pkgbase = oblyx-bin
 	pkgdesc = Convert GoodNotes notebooks to SVG, PDF, PNG, and Notability .ntb (CLI, prebuilt binary)
-	pkgver = 0.1.0.r80
+	pkgver = 0.1.0.r81
 	pkgrel = 1
 	url = https://github.com/Coobyk/oblyx
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = oblyx-bin
 	optdepends = oblyx-gui-bin: graphical interface
 	provides = oblyx
 	conflicts = oblyx
-	source = oblyx-linux-x64-0.1.0.r80.tar.gz::https://github.com/Coobyk/oblyx/releases/download/v0.1.0.r80/oblyx-0.1.0.r80-linux-x64.tar.gz
-	sha256sums = 134c15009ea5a7ea1435e7ac9f3a2c299e258df018b80c5f8e534c352c53e409
+	source = oblyx-linux-x64-0.1.0.r81.tar.gz::https://github.com/Coobyk/oblyx/releases/download/v0.1.0.r81/oblyx-0.1.0.r81-linux-x64.tar.gz
+	sha256sums = bd5d3fc01aaf8f570585795cbfc92045358f47533615288861e78d5c65750e48
 
 pkgname = oblyx-bin
