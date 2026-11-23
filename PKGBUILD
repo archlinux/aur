@@ -8,7 +8,7 @@
 # -> git add -A && git commit && git push（AUR 只接受 master 分支上的 PKGBUILD/.SRCINFO）。
 
 pkgname=basctl
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Control-plane CLI and agent for Beangle Bas Server"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=(
   "basctl.sysusers"
   "basctl.tmpfiles"
 )
-sha256sums=('7c19b8b0fee7e46451b50dd1d95d386294e724880506d2df3bc7b0118f895886'
+sha256sums=('59a6cbc1e2be7ff8f109231941863db0be10fe59b00aae7fb10206a98341a758'
             '5f2b07b290434ed54b959fb0dc38a2b5d240a994184bf1e7753c99c2ce4dcb5c'
             '661d5917c8b3cc94d9988e32f682394373bdc46a291e81a8ab7c78a430fd1f34')
 
@@ -78,6 +78,10 @@ package() {
     "$pkgdir/usr/lib/systemd/system/basproxy-apply@.service"
   install -Dm755 resources/basproxy/basproxy-apply \
     "$pkgdir/usr/libexec/basproxy-apply"
+  install -Dm644 resources/systemd/basmicdn-apply.service \
+    "$pkgdir/usr/lib/systemd/system/basmicdn-apply.service"
+  install -Dm755 resources/basmicdn/basmicdn-apply \
+    "$pkgdir/usr/libexec/basmicdn-apply"
   install -Dm440 resources/sudoers/basproxy \
     "$pkgdir/etc/sudoers.d/basproxy"
   install -Dm644 resources/logrotate/bas "$pkgdir/etc/logrotate.d/bas"

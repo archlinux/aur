@@ -1,6 +1,6 @@
 pkgbase = basctl
 	pkgdesc = Control-plane CLI and agent for Beangle Bas Server
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/beangle/basctl
 	install = basctl.install
@@ -19,10 +19,10 @@ pkgbase = basctl
 	optdepends = jre-openjdk: run Java container instances
 	optdepends = firewalld: basctl firewall
 	backup = etc/logrotate.d/bas
-	source = basctl-0.0.3.tar.gz::https://codeload.github.com/beangle/basctl/tar.gz/refs/tags/v0.0.3
+	source = basctl-0.0.4.tar.gz::https://codeload.github.com/beangle/basctl/tar.gz/refs/tags/v0.0.4
 	source = basctl.sysusers
 	source = basctl.tmpfiles
-	sha256sums = 7c19b8b0fee7e46451b50dd1d95d386294e724880506d2df3bc7b0118f895886
+	sha256sums = 59a6cbc1e2be7ff8f109231941863db0be10fe59b00aae7fb10206a98341a758
 	sha256sums = 5f2b07b290434ed54b959fb0dc38a2b5d240a994184bf1e7753c99c2ce4dcb5c
 	sha256sums = 661d5917c8b3cc94d9988e32f682394373bdc46a291e81a8ab7c78a430fd1f34
 
