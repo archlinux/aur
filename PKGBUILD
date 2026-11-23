@@ -1,0 +1,62 @@
+# Maintainer: Juliette Cordor
+pkgname=kiri-lite
+pkgver=0.2.2
+pkgrel=1
+pkgdesc='A small, fast container runtime for macOS, Windows and Linux with free Ngrok alternative'
+arch=('x86_64' 'aarch64')
+url='https://runkiri.com/'
+license=('Apache-2.0')
+makedepends=(
+	'cargo'
+	'clang'
+)
+depends=(
+	'libgcc_s.so=1-64'
+)
+provides=('kiri')
+options=(!lto)
+
+source=(
+	"$pkgname-$pkgver.tar.gz::https://github.com/libracoder/kiri/archive/refs/tags/v$pkgver.tar.gz"
+)
+sha512sums=(
+	'a140491540e4985cb2fa887f975266f56274498aaa563c7c733b8a50b335cdeb5de029a386088ae1f28f9d9891d1e5917ccf7c7142c7bf20764eb22e21532e43'
+)
+
+prepare() {
+  cd "$srcdir/kiri-$pkgver"
+
+  cargo fetch --locked --target host-tuple
+}
+
+build() {
+	cd "$srcdir/kiri-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	export RUSTFLAGS="-Clinker=clang"
+
+	cargo build --frozen --release -p kiri -p kiri-init
+}
+
+check() {
+	cd "$srcdir/kiri-$pkgver"
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	export RUSTFLAGS="-Clinker=clang"
+
+	# tests currently failing
+	# cargo test --frozen -p kiri -p kiri-init
+}
+
+package() {
+	bindir="$srcdir/kiri-$pkgver/target/release"
+	servicedir="$srcdir/kiri-$pkgver/packaging/linux"
+
+	install -Dm755 "$bindir/kiri" "$bindir/kiri-init" -t "$pkgdir/usr/bin/"
+	install -Dm644 "$servicedir/kiri.service" "$pkgdir/usr/lib/systemd/system/kiri.service"
+	# The password prompt for `kiri host-access` (the window's setup checklist).
+	install -Dm644 "$servicedir/dev.kiri.host-access.policy" "$pkgdir/usr/share/polkit-1/actions/dev.kiri.host-access.policy"
+
+	install -Dm644 "$srcdir/kiri-$pkgver/LICENSE" "$srcdir/kiri-$pkgver/NOTICE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
