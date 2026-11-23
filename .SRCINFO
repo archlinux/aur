@@ -1,0 +1,20 @@
+pkgbase = notion-cli-bin
+	pkgdesc = Notion CLI (beta), using the official prebuilt binary
+	pkgver = 0.23.31
+	pkgrel = 2
+	url = https://developers.notion.com
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = notion-cli=0.23.31
+	provides = ntn=0.23.31
+	conflicts = notion-cli
+	conflicts = ntn
+	options = !strip
+	options = !debug
+	source_x86_64 = ntn-0.23.31-x86_64.tar.gz::https://ntn.dev/releases/v0.23.31/ntn-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 05158fa909a5f442df158f2a24c12ce4b1abb9f99046c3aedfb471b305d18c68
+	source_aarch64 = ntn-0.23.31-aarch64.tar.gz::https://ntn.dev/releases/v0.23.31/ntn-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 0b833b776bfd4fb209f838f02956950f91c282deb54e035b7664abdc05b67544
+
+pkgname = notion-cli-bin
