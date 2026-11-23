@@ -1,0 +1,24 @@
+pkgbase = notes-src
+	pkgdesc = Self-hosted, end-to-end encrypted note taking (desktop app, built from the latest master)
+	pkgver = 1.0.0.r0.g0000000
+	pkgrel = 1
+	url = https://jonasled.dev/jonasled/notes
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = notes
+	conflicts = notes
+	conflicts = notes-bin
+	options = !strip
+	options = !lto
+	source = notes-src::git+https://jonasled.dev/jonasled/notes.git#branch=master
+	sha256sums = SKIP
+
+pkgname = notes-src
