@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+nw /usr/share/piskel/
+

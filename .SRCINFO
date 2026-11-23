@@ -1,0 +1,25 @@
+pkgbase = piskel-git
+	pkgdesc = A free online editor for animated sprites & pixel art (bleeding-edge version, uses system-wide NW.js)
+	pkgver = 0.15.0.r239.8b31df02
+	pkgrel = 1
+	url = https://github.com/piskelapp/piskel
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = npm
+	makedepends = rsync
+	depends = nwjs
+	depends = hicolor-icon-theme
+	provides = piskel
+	conflicts = piskel
+	options = !strip
+	source = piskel::git+https://github.com/piskelapp/piskel.git#branch=master
+	source = icons.tar.gz
+	source = piskel.sh
+	source = Piskel.desktop
+	sha256sums = SKIP
+	sha256sums = 69f7036d78072f3724e9dc11dd0df663ede6343982754a3ecd2684fd6343f468
+	sha256sums = 06174fd6c449e247a410a072ea9d5fa075e659d794a9f17174fae5b7199038eb
+	sha256sums = 0dba7d41b950b921406567ca64f154b1830896f91f5f09d2d5230c080b9655b6
+
+pkgname = piskel-git

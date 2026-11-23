@@ -1,0 +1,8 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!piskel.sh
+!Piskel.desktop
+!icons.tar.gz
+
