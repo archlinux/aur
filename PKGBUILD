@@ -1,7 +1,7 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=libtai
 pkgver=0.60
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="a library for storing and manipulating dates and times"
 arch=(x86_64)
@@ -16,7 +16,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(staticlibs)
 install=
 changelog=
 source=(
@@ -29,7 +29,6 @@ sha256sums=(
 9460bc74a58e7cd12bd73edb355e38d3729d3beec4591eb5675beb7542fa5d4a
 )
 validpgpkeys=()
-OPTIONS=(staticlibs)
 
 prepare() {
 	cd "$pkgname-$pkgver"
