@@ -2,7 +2,7 @@
 
 _pkgname=plannotator-tui
 pkgname=plannotator-tui-bin
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Annotate Markdown in the terminal: select, comment, looks-good, delete; send the review to your agent"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("LICENSE-v${pkgver}::https://raw.githubusercontent.com/plannotator/${_pk
 source_x86_64=("${_pkgname}-x86_64-v${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu")
 source_aarch64=("${_pkgname}-aarch64-v${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu")
 sha256sums=('5f1c1dc8da2d0456bd0ae1f6f88d75b807cdba3fe5cff3e71ec31632bd62915c')
-sha256sums_x86_64=('92a19c4c50cbde846fb78a52b320eeea8332a74ff31a1648d560fcdc2fb3beda')
-sha256sums_aarch64=('362dab310574c5efc531ae329ad08f7c5b57f4babb96df2e17bc28ed04eacf08')
+sha256sums_x86_64=('24d0709ca312772324e51fb6011a8730af2ec807954c3908f69b23f463191a0c')
+sha256sums_aarch64=('83d44018ff3254633532b39ad0b933c60e1fee76ceaaa62e05dafa200c0d2bb7')
 
 package() {
   install -Dm755 "${_pkgname}-${CARCH}-v${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
