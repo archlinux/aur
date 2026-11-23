@@ -2,7 +2,7 @@
 
 pkgbase=rivermonad
 pkgname=('rivermonad' 'rivermonad-dotfiles')
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='xmonad-style tiling window manager for the river Wayland compositor'
 url='https://github.com/prietus/rivermonad'
@@ -16,7 +16,7 @@ optdepends=('foot: the default terminal'
             'kanshi: monitor resolution and scale, started by the session'
             'libnotify: notifications when the configuration fails to compile')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('dc5402bffcac0bd27de0c242c87471595bbd96efdef83ed9fd8ce88ae6bbb951')
+sha256sums=('576bafa93d6eb7cb48be74636959b01b3596293efbc50c3cec9197ac593cc3bd')
 
 build() {
   cd $pkgbase-$pkgver
@@ -76,6 +76,8 @@ package_rivermonad-dotfiles() {
   depends=("rivermonad=$pkgver" 'waymobar>=0.4.0' 'bgmonad' 'hasklets' 'shotlet>=0.1.1'
            'locklet'                                               # lock screen, idle, Super+Shift+L
            'polkit-gnome'                                          # password prompts for admin actions
+           'cliphist'                                              # clipboard history (Super+C)
+           'gammastep' 'geoclue'                                   # night light, located by GeoClue
            'foot' 'fuzzel' 'mako' 'kanshi' 'libnotify'
            'grim' 'slurp' 'swappy' 'wl-clipboard' 'wf-recorder'    # shot, screenrec
            'wtype' 'unicode-emoji'                                 # emoji
@@ -83,7 +85,6 @@ package_rivermonad-dotfiles() {
            'xdg-desktop-portal-wlr' 'xdg-desktop-portal-gtk'
            'inter-font' 'noto-fonts-emoji' 'ttf-material-symbols-variable')
   optdepends=('powerline-fonts: Ubuntu Mono derivative Powerline, the font of foot.ini'
-              'geoclue: location for the weather (rivermonad.hs starts its agent)'
               'glib2: dark GTK themes set by rivermonad-setup (gsettings)'
               'firefox: the browser on Super+B'
               'waybar: the alternative bar (needs the rivermonad modules, see contrib/waybar)')
