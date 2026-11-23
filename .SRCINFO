@@ -1,6 +1,6 @@
 pkgbase = r-metams
 	pkgdesc = MS-based metabolomics annotation pipeline
-	pkgver = 1.44.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/metaMS
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-metams
 	depends = r-xcms
 	optdepends = r-metamsdata
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/metaMS_1.44.0.tar.gz
-	sha256sums = 5b7f9dca31b90ff39ff1a620ed6bc0004949974a4e0ed0a883b3a4c951d29af6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/metaMS_1.48.0.tar.gz
+	sha256sums = 688c716fb14e6bb047c7148361292eb871ec4b4ccd437c4697a1ecd71978fba2
 
 pkgname = r-metams

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=metaMS
-_pkgver=1.44.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='MS-based metabolomics annotation pipeline'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5b7f9dca31b90ff39ff1a620ed6bc0004949974a4e0ed0a883b3a4c951d29af6')
+sha256sums=('688c716fb14e6bb047c7148361292eb871ec4b4ccd437c4697a1ecd71978fba2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
