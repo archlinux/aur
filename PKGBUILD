@@ -4,7 +4,7 @@
 # checksums, then pushes this file to aur.archlinux.org/tcode-bin.git.
 
 pkgname=tcode-bin
-pkgver=0.4.7
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A native desktop app for the coding agents you already use."
 arch=('x86_64' 'aarch64')
@@ -29,8 +29,8 @@ optdepends=(
 )
 source_x86_64=("tcode-${pkgver}-linux-x64.tar.gz::https://github.com/Tryanks/tcode/releases/download/v${pkgver}/tcode-${pkgver}-linux-x64.tar.gz")
 source_aarch64=("tcode-${pkgver}-linux-arm64.tar.gz::https://github.com/Tryanks/tcode/releases/download/v${pkgver}/tcode-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('8bf320320c310a50dbc88a12b12a37ff9afb80d580ecc02b0ebb3ef7b75139f9')
-sha256sums_aarch64=('627f57c3b74f97440a4a40e3c60a08d0c6d137102686f63b29b603023564a455')
+sha256sums_x86_64=('dced43031221b6447a3f87408d3930b85603fb72d33ce922f5f052bf56acb97e')
+sha256sums_aarch64=('2391dcf701b535d613e51bbd4beec38b70f25a3901cf9d1be2dc22ed602185fd')
 
 package() {
   local _archdir
