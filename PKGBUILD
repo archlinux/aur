@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=methylGSA
-_pkgver=1.22.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Gene Set Analysis Using the Outcome of Differential Methylation'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1a04b8f97cd0f68555f3a1a262490af075a7336d5dc58f2b0dbe0a749888d157')
+sha256sums=('fef1964fd47c632f21f3a4e675118530396d645f212634b132053ec21deb5755')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
