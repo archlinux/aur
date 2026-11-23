@@ -1,18 +1,19 @@
-# Maintainer: hu3rror <hu3rror@protonmail.com>
+# Maintainer: hcamp <itshuntercamp@gmail.com>
+# Contributor: hu3rror <hu3rror@protonmail.com>
 # Contributor: ventusliberum <dafeinayius@gmail.com>
 
 pkgname=wonderpen-bin
-pkgver=2.6.8
-_pkgver=7816
+pkgver=3.4.2
+_pkgver=8515
 pkgrel=1
-pkgdesc='A professional writing app with a focused mode and markdown support'
+pkgdesc='Professional writing app with focused mode and Markdown support'
 arch=('x86_64')
 url='https://www.tominlab.com/en/wonderpen'
 license=('custom')
 depends=('libappindicator-gtk3' 'libnotify' 'libxss' 'nss' 'xdg-utils')
 provides=('wonderpen')
-source=("https://file.tominlab.com/WonderPen/${pkgver%.*}/WonderPen_linux_amd64_${pkgver}(${_pkgver}).deb")
-sha256sums=('f3579b2fca14ca0766cd7e63b5c92a66927d56551f5d271d393323f97882f072')
+source=("https://www.tominlab.com/to/get-file/cdn?file=WonderPen/desktop/${pkgver%.*}/WonderPen-v${pkgver}.${_pkgver}-linux-amd64.deb")
+sha256sums=('0f56dd5d11593a5101d3a0c2ca63148259d05ee0f437133e1e1d276ac17a15ac')
 
 package() {
 	# Install
@@ -20,6 +21,6 @@ package() {
 	tar -xJf data.tar.xz -C "${pkgdir}"
 	install -dm755 "${pkgdir}"/usr/bin
 	ln -s /opt/WonderPen/wonderpen "${pkgdir}"/usr/bin/wonderpen
-	sed -i 's|^Exec=/opt/WonderPen/wonderpen %U|Exec=wonderpen %F|g' "${pkgdir}"/usr/share/applications/wonderpen.desktop
-	install -Dm 644 "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/wonderpen.png "${pkgdir}"/usr/share/pixmaps/wonderpen.png
+	sed -i 's|^Exec=/opt/WonderPen/wonderpen %U|Exec=wonderpen %F|g' "${pkgdir}"/usr/share/applications/WonderPen.desktop
+	install -Dm 644 "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/WonderPen.png "${pkgdir}"/usr/share/pixmaps/wonderpen.png
 }
