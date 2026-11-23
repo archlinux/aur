@@ -1,7 +1,7 @@
 # Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 
 pkgname=shed-tui
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Terminal app for keeping your projects in order: workbench, shelf and attic'
 arch=('x86_64' 'aarch64')
