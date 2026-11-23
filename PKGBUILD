@@ -2,7 +2,7 @@
 
 _pkgname=ghostscript-printer-app
 pkgname="${_pkgname}-git"
-pkgver=1.0+r163.20261005.4afd157
+pkgver=1.0+r164.20261112.bfb61fc
 pkgrel=1
 pkgdesc="PostScript Printer Application"
 url='https://github.com/OpenPrinting/ghostscript-printer-app'

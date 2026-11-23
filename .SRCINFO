@@ -1,6 +1,6 @@
 pkgbase = ghostscript-printer-app-git
 	pkgdesc = PostScript Printer Application
-	pkgver = 1.0+r163.20261005.4afd157
+	pkgver = 1.0+r164.20261112.bfb61fc
 	pkgrel = 1
 	url = https://github.com/OpenPrinting/ghostscript-printer-app
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ghostscript-printer-app-git
 	depends = libppd
 	depends = pappl
 	depends = pappl-retrofit
-	provides = ghostscript-printer-app=1.0+r163.20261005.4afd157
+	provides = ghostscript-printer-app=1.0+r164.20261112.bfb61fc
 	conflicts = ghostscript-printer-app
 	options = emptydirs
 	source = git+https://github.com/OpenPrinting/ghostscript-printer-app.git
