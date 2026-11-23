@@ -4,7 +4,7 @@
 
 
 pkgname=metrolist-desktop-nightly-bin
-pkgver=20261123.r982.g06a4d11
+pkgver=20261123.r983.gc3aa26f
 pkgrel=1
 pkgdesc="YouTube Music client for desktop (Nightly)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=(
   'metrolist-nightly'
   'LICENSE'
 )
-sha256sums=('2b5dd9a2220d5763af0c8462d74e607f5756277695866d33a34a48addef929d0'
+sha256sums=('e2d17beaba5102aeb41d4d9bb3d67b6f87d1956c621f16a7671845c2335f9993'
             'e2f611b2a3ea170c12d38e42016e2abb0d2212e62c3946615a50aad6c97643bd'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
