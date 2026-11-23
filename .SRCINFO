@@ -1,17 +1,17 @@
 pkgbase = soulm8te-bin
 	pkgdesc = Electron browser with private sessions, tab sleeping and native Chromium tabs.
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/giddammit-crypto/MonkeyBuissnesBrowser
 	arch = x86_64
 	license = MIT
 	depends = electron45
-	provides = soulm8te=1.2.6
+	provides = soulm8te=1.2.7
 	conflicts = soulm8te
-	source = soulm8te-1.2.6.deb::https://github.com/giddammit-crypto/MonkeyBuissnesBrowser/releases/download/v1.2.6/soulm8te-1.2.6-linux-amd64.deb
+	source = soulm8te-1.2.7.deb::https://github.com/giddammit-crypto/MonkeyBuissnesBrowser/releases/download/v1.2.7/soulm8te-1.2.7-linux-amd64.deb
 	source = soulm8te.js
 	source = soulm8te.sh
-	sha256sums = 3f095dd06bb142ed4b9184304106f8336488f41806d6dd161095559b5f2da8b0
+	sha256sums = 8a973bd11ee2ad94f188c4fa72b54885d2d44579e8c2b043c438a3a65c8ebbfa
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
