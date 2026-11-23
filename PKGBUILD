@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=colamd-bin
 _pkgname=ColaMD
-pkgver=2.7.12
+pkgver=2.8.0
 _electronversion=44
 pkgrel=1
 pkgdesc="A free, elegant Markdown editor anyone can pick up. No toolbars, no clutter, and the file on disk is always what you see."
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7346df62b9b25397ac979faae567201e98ada10da9701df9c3878821b152faa8'
+sha256sums=('d89ccffef8a1052b733d989b18d34112ab11ee30189f69bf824fd25c4d9c371e'
             'b458eb0211ec5df71f8c32cfde43027bd0471337d36f1637fe229b76369fcc45'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
