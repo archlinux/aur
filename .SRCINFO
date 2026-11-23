@@ -1,0 +1,18 @@
+pkgbase = r-vicus
+	pkgdesc = Exploiting Local Structures to Improve Network-Based Analysis of Biological Data
+	pkgver = 0.99.0
+	pkgrel = 2
+	url = https://cran.r-project.org/package=Vicus
+	arch = any
+	license = MIT
+	depends = r-rann
+	depends = r-rspectra
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-scatterplot3d
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/Vicus_0.99.0.tar.gz
+	md5sums = 3be479ec81a40a4d94ecc3e7753a6898
+	b2sums = 71a0c129bf7a0aefb25ef66375b5d3542864217b256add1432ebf8129c89240ae836e9326c77c5841b7dbd1cd884bc10bb14494b922220d6039bdae1bfa1c3e7
+
+pkgname = r-vicus
