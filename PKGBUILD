@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
-pkgver=0.26.0
+pkgver=0.26.2
 pkgrel=1
 pkgdesc="Modern connection manager for SSH, RDP, VNC, SPICE and more"
 arch=('x86_64')
@@ -57,7 +57,7 @@ optdepends=(
   'waypipe: Wayland application forwarding for SSH connections'
 )
 source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cd147e7b988575bf97c343ae965a59a96bf89df66a244298cae72c592388b2e6')
+sha256sums=('b8fd587acbd6973980c9907dfc90a325aa836d2b7d6d8d30cf87d83593c832ec')
 
 prepare() {
   cd "RustConn-$pkgver"
