@@ -2,7 +2,7 @@
 
 _pkgname=lootrs
 pkgname=lootrs-git
-pkgver=r17.g43869c2
+pkgver=r44.g818f11a
 pkgrel=1
 pkgdesc='Minimal TUI and CLI for running Windows games through wine, Proton (umu) or natively'
 arch=('x86_64' 'aarch64')

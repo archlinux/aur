@@ -1,6 +1,6 @@
 pkgbase = lootrs-git
 	pkgdesc = Minimal TUI and CLI for running Windows games through wine, Proton (umu) or natively
-	pkgver = r17.g43869c2
+	pkgver = r44.g818f11a
 	pkgrel = 1
 	url = https://github.com/Gigas002/lootrs
 	arch = x86_64
