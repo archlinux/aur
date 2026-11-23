@@ -2,7 +2,7 @@
 # Based on the extra/llama-cpp PKGBUILD by Sven-Hendrik Haase and Maxime Gauduin
 
 pkgname=kvmem-cuda-git
-pkgver=0.19.1.r67.ga2d8d9b
+pkgver=0.19.1.r223.g7c934af
 pkgrel=1
 pkgdesc='llama.cpp server with KVMem long-context KV memory management (CUDA)'
 arch=(x86_64)
@@ -45,7 +45,7 @@ _cuda_arch=${CUDA_ARCHITECTURES:-75-real;86-real;89-real;120a-real}
 
 pkgver() {
   cd kvmem
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 --match 'v[0-9]*.[0-9]*.[0-9]*' --exclude '*-*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

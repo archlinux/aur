@@ -1,6 +1,6 @@
 pkgbase = kvmem-cuda-git
 	pkgdesc = llama.cpp server with KVMem long-context KV memory management (CUDA)
-	pkgver = 0.19.1.r67.ga2d8d9b
+	pkgver = 0.19.1.r223.g7c934af
 	pkgrel = 1
 	url = https://github.com/kvmem/kvmem
 	arch = x86_64
