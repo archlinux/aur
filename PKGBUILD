@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=VennDetail
-_pkgver=1.23.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.23.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='A package for visualization and extract details'
 arch=('any')
@@ -12,22 +12,29 @@ license=('GPL')
 depends=(
   r
   r-dplyr
-  r-futile.logger
+  r-dt
   r-ggplot2
+  r-gridextra
+  r-htmlwidgets
   r-magrittr
+  r-patchwork
+  r-plotly
   r-purrr
+  r-rlang
+  r-shiny
   r-tibble
-  r-upsetr
-  r-venndiagram
+  r-tidyr
 )
 optdepends=(
   r-knitr
   r-markdown
+  r-rcolorbrewer
   r-rmarkdown
+  r-rstudioapi
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f041d73832282549a89e4b801ec1b3d5f61a697ca590b4c4dfea2bc2c56cc430')
+sha256sums=('f850c89da992d906a209bf95597491306f1a1095edad11e3ffb909a25e8bc5c8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
