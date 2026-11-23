@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MsBackendSql
-_pkgver=1.6.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,15 +14,17 @@ depends=(
   r-biocparallel
   r-data.table
   r-dbi
+  r-fastmatch
   r-iranges
   r-mscoreutils
   r-progress
   r-protgenerics
   r-s4vectors
   r-spectra
+  r-stringi
 )
 checkdepends=(
-  r-msdata
+  r-msdatahub
   r-mzr
   r-rsqlite
   r-testthat
@@ -31,7 +33,7 @@ optdepends=(
   r-biocstyle
   r-knitr
   r-microbenchmark
-  r-msdata
+  r-msdatahub
   r-mzr
   r-rmarkdown
   r-roxygen2
@@ -39,8 +41,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8c744daa8fc956b4c7c99e1e4998f5db')
-b2sums=('b619f3afa94b010ef4972a884958d46f2814b21e2beea2923dd212a31e0448281aa4c86857e124698c3cee2fe86ae50c3a12df35c13a5845fe1613fb0a14440d')
+md5sums=('246f535e6509b3c03f4b607a7398a31c')
+b2sums=('e202e95abd40e56663260e314dc1420236fd753ecd066026fc28f7eb297b120ca0c6592b4968d06e4818ec0c7cb0a3c21ee2569f54bdc9b1f118f36fcbc94ee5')
 
 build() {
   mkdir build
