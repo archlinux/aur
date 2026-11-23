@@ -1,0 +1,30 @@
+pkgbase = r-crew
+	pkgdesc = A Distributed Worker Launcher Framework
+	pkgver = 1.3.3
+	pkgrel = 2
+	url = https://cran.r-project.org/package=crew
+	arch = any
+	license = MIT
+	depends = r-cli
+	depends = r-collections
+	depends = r-data.table
+	depends = r-later
+	depends = r-mirai
+	depends = r-nanonext
+	depends = r-processx
+	depends = r-promises
+	depends = r-ps
+	depends = r-r6
+	depends = r-rlang
+	depends = r-tibble
+	depends = r-tidyselect
+	optdepends = r-autometric
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/crew_1.3.3.tar.gz
+	md5sums = f582a10f9e89966df487a814fee4de90
+	b2sums = 53c4edfdc20f52a055ee4d2294cde85f7164a1290192392da514a503ac83b470dff74cf44f6147bb9eab8f37af92bc20cfb6ebe700bb7021e8f37fd9b7cb5e1e
+
+pkgname = r-crew
