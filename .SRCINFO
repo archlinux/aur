@@ -1,18 +1,18 @@
 pkgbase = repath-studio-bin
 	pkgdesc = A web-based vector graphics editor that combines procedural tooling with traditional design workflows.
-	pkgver = 0.4.28
+	pkgver = 0.4.29
 	pkgrel = 1
 	url = https://repath.studio/
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = electron45
-	provides = repath-studio=0.4.28
+	provides = repath-studio=0.4.29
 	conflicts = repath-studio
-	source = repath-studio-0.4.28-x86_64.AppImage::https://github.com/repath-studio/repath-studio/releases/download/v0.4.28/repath-studio-linux.AppImage
+	source = repath-studio-0.4.29-x86_64.AppImage::https://github.com/repath-studio/repath-studio/releases/download/v0.4.29/repath-studio-linux.AppImage
 	source = repath-studio.js
 	source = repath-studio.sh
-	sha256sums = 1da8b5b9ea366581d998e67679ebfbebda6df681aee04042ae08156e7ca18332
+	sha256sums = 1cadfd357f959620c05952423a158acda72dafec0687318050038c07848ed9af
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
 pkgname = repath-studio-bin
