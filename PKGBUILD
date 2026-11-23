@@ -1,6 +1,6 @@
 # Maintainer: Max Berggren <maxberggren@gmail.com>
 pkgname=jotite
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="A lightweight, fun, distraction-free markdown note-taking app with live markdown rendering"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gjs' 'gtk4' 'libadwaita' 'fontconfig')
 install=jotite.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7e90f05b483d508f28a9d257dd24729dc3607a4d309fa13940b6628d8ef1f5ad')
+sha256sums=('8393fcbf67e19918ce78c7428e399a83226699b7fa2bf5554268d43a52ef3f2d')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
