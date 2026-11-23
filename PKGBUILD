@@ -1,12 +1,10 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=lody-bin
 pkgver=0.113.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A development platform built for parallel AI Agent workflows'
 url='https://lody.ai'
-arch=(
-    'x86_64'
-)
+arch=('x86_64')
 license=(
     'LicenseRef-proprietary'
 )
@@ -14,6 +12,7 @@ depends=(
     'alsa-lib'
     'at-spi2-core'
     'gtk3'
+    'hicolor-icon-theme'
     'libnotify'
     'libsecret'
     'libxss'
@@ -62,6 +61,13 @@ package() {
 
     rm -rf "$pkgdir/usr/share/doc"
 
+    # Fix non-world-readable files (e.g. app icon) from upstream .deb
+    chmod -R u=rwX,go=rX "$pkgdir"
+
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/LICENSE" <<'EOF'
+Lody is proprietary software.
+Website: https://lody.ai
+EOF
     install -Dm644 "$pkgdir/opt/Lody/LICENSE.electron.txt" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE.electron.txt"
     install -Dm644 "$pkgdir/opt/Lody/LICENSES.chromium.html" \

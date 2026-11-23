@@ -1,13 +1,14 @@
 pkgbase = lody-bin
 	pkgdesc = A development platform built for parallel AI Agent workflows
 	pkgver = 0.113.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lody.ai
 	arch = x86_64
 	license = LicenseRef-proprietary
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = gtk3
+	depends = hicolor-icon-theme
 	depends = libnotify
 	depends = libsecret
 	depends = libxss
