@@ -2,7 +2,7 @@
 # Contributor: Lloyd <lloydzhou@qq.com>
 
 pkgname=bash-agent
-pkgver=4.4.2
+pkgver=4.4.3
 pkgrel=1
 pkgdesc="A lightweight coding agent that runs in your terminal - Bash/Go/Rust/C editions + tcode tmux UI"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('bash' 'curl' 'gawk')
 makedepends=('go' 'rust' 'make' 'gcc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lloydzhou/bash-agent/archive/refs/tags/v${pkgver}.tar.gz"
         "tcode::https://github.com/lloydzhou/bash-agent/releases/download/v${pkgver}/tcode")
-sha256sums=('e94fb99e9ae22ce16f3e86655f67e4bf7abc3e64f3903554ec906c81d0d65cf9'
+sha256sums=('cd5067cb0deb46f6bad5a6a939513589d4904c2e01f3d5db811ed98274495854'
             'b55157ce288da68af6f54870421d6d48eb7779a570e93c61073098ee55d846a2')
 options=('!strip')
 
