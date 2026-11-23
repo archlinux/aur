@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=rBeta2009
-_pkgver=1.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="The Beta Random Number and Dirichlet Random Vector Generating Functions"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('38000662ab8b2318b24447ca0bfa984b')
-b2sums=('d5858245bcbda9eb9b12d789922282db025c559159fa83d03f21927fb3d664b685abc4e5c4b571eaf9d6f806a5f0c3e883a6b46671efb453030af7efd4d21562')
+md5sums=('167a9e7cae10f102be802b43a7799b1a')
+b2sums=('18d2fa99efa44d165355daedea89dfa1f973f534aa62837768e947559045bfe5655b99d066083b5537e2ff1c8ce4b3542b08cffae98569bc1ac728c9c0925f3e')
 
 build() {
   mkdir build
