@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=InterCellar
-_pkgver=2.14.0
+_pkgver=2.18.0
 pkgname=r-${_pkgname,,}
-pkgver=2.14.0
+pkgver=2.18.0
 pkgrel=1
 pkgdesc='InterCellar: an R-Shiny app for interactive analysis and exploration of cell-cell communication in single-cell transcriptomics'
 arch=('any')
@@ -59,7 +59,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('44fdab853d27c6f7dbb979fc06c5a5f6fb33a7e345ce1e4713bac7c19fd7a757')
+sha256sums=('a15381c33f7bf9b420960755e94fee237d182578f13453bf59aaa3766d73c82d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
