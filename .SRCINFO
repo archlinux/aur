@@ -1,0 +1,13 @@
+pkgbase = r-bread
+	pkgdesc = Analyze Big Files Without Loading Them in Memory
+	pkgver = 0.4.1
+	pkgrel = 2
+	url = https://cran.r-project.org/package=bread
+	arch = any
+	license = GPL-3.0-or-later
+	depends = r-data.table
+	source = https://cran.r-project.org/src/contrib/bread_0.4.1.tar.gz
+	md5sums = c973a5515a6364533a26d52586f8e557
+	b2sums = b2aca3139d3951d17ee57ef343225a8bfddac70271e14f54903718195e34a7fac374ffadcf8a9a76a422af0926baef8d869bbaad8b60f32614395b3aa8b04e0b
+
+pkgname = r-bread
