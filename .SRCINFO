@@ -1,7 +1,7 @@
 pkgbase = libfprint-2-tod1-synaptics009a
-	pkgdesc = Native libfprint-2-tod1 driver + firmware/calibration tooling for the Synaptics 06cb:009a fingerprint reader (ThinkPad T480/T480s/X280/P52s)
+	pkgdesc = Native libfprint-2-tod1 driver for the Synaptics 06cb:009a fingerprint reader (ThinkPad T480/T480s/X280/P52s); no python-validity needed
 	pkgver = 0.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/hustles/libfprint-2-tod1-synaptics009a
 	install = libfprint-2-tod1-synaptics009a.install
 	arch = x86_64

@@ -20,11 +20,15 @@
 
 pkgname=libfprint-2-tod1-synaptics009a
 pkgver=0.1.0
-pkgrel=4
-pkgdesc="Native libfprint-2-tod1 driver + firmware/calibration tooling for the Synaptics 06cb:009a fingerprint reader (ThinkPad T480/T480s/X280/P52s)"
+pkgrel=5
+pkgdesc="Native libfprint-2-tod1 driver for the Synaptics 06cb:009a fingerprint reader (ThinkPad T480/T480s/X280/P52s); no python-validity needed"
 arch=('x86_64')
 url="https://github.com/hustles/libfprint-2-tod1-synaptics009a"
 license=('MIT' 'LGPL-2.1-or-later')
+# Keywords are NOT a PKGBUILD field the AUR reads: makepkg never writes them to
+# .SRCINFO. They live server-side on the package base — set them with
+#   ssh aur@aur.archlinux.org set-keywords libfprint-2-tod1-synaptics009a ...
+# (currently: fingerprint synaptics thinkpad t480s x280 p52s libfprint-tod fprintd 06cb)
 depends=('bash' 'fprintd' 'libfprint-tod-git' 'libusb' 'glib2')
 # The python-validity stack replaces fprintd and claims the same sensor: two
 # drivers cannot share one reader. pacman now refuses to install over it instead
