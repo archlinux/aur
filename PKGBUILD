@@ -2,7 +2,7 @@
 pkgname=ente-auth
 _app_id=io.ente.auth
 pkgver=4.4.27
-pkgrel=1
+pkgrel=2
 _flutter_ver=3.47.8  ## Check .github/actions/setup-flutter/action.yml for FLUTTER_VERSION
 pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
 arch=('x86_64' 'aarch64')
@@ -150,6 +150,7 @@ package() {
   install -Dm644 linux/packaging/enteauth.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 linux/packaging/enteauth.appdata.xml -t "$pkgdir/usr/share/metainfo/"
 
-  # Set RPATH
+  # Remove insecure RUNPATH pointing to build dir & set RPATH
+  patchelf --remove-rpath "$pkgdir/opt/$pkgname"/lib/*.so
   patchelf --set-rpath '$ORIGIN' "$pkgdir/opt/$pkgname/lib/libflutter_linux_gtk.so"
 }

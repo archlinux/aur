@@ -1,7 +1,7 @@
 pkgbase = ente-auth
 	pkgdesc = Open source 2FA authenticator, with end-to-end encrypted backups
 	pkgver = 4.4.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ente.com/auth
 	arch = x86_64
 	arch = aarch64
