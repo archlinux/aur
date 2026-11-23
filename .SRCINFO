@@ -1,6 +1,6 @@
 pkgbase = r-pcaexplorer
 	pkgdesc = Interactive Visualization of RNA-seq Data Using a Principal Components Approach
-	pkgver = 2.30.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pcaExplorer
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = r-pcaexplorer
 	depends = r-iranges
 	depends = r-knitr
 	depends = r-limma
+	depends = r-mosdef
 	depends = r-nmf
 	depends = r-pheatmap
 	depends = r-plotly
@@ -42,7 +43,7 @@ pkgbase = r-pcaexplorer
 	optdepends = r-markdown
 	optdepends = r-org.hs.eg.db
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pcaExplorer_2.30.0.tar.gz
-	sha256sums = 6790e499502d9bfba585e40e5acceb66c9aa48b0f82c062f69aa140efd13f4eb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pcaExplorer_3.6.0.tar.gz
+	sha256sums = 73bd9534b637aa45c22cb3679b4ccdf0643d2d0bc7ed93eafd59080102b0fa64
 
 pkgname = r-pcaexplorer
