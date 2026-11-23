@@ -10,7 +10,7 @@ pkgname=(
   'python-ctranslate2-cuda'
 )
 pkgbase=ctranslate2-cuda
-pkgver=4.8.5
+pkgver=4.9.1
 pkgrel=1
 pkgdesc="A C++ and Python library for efficient inference with Transformer models (with CUDA)."
 arch=('x86_64')
@@ -38,7 +38,7 @@ source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
         'git+https://github.com/google/ruy.git'
         'git+https://github.com/pytorch/cpuinfo.git'
         'git+https://github.com/NVIDIA/cutlass.git')
-sha256sums=('827b4c0706d0bb2a3e2df3602a6cb89d4b74d5dd1d139eca0fa0b6c7a49ed013'
+sha256sums=('e103d992baa5b53d19c6030ae45e64982e65ab688da92f609bb14878c61f97b5'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -68,8 +68,8 @@ prepare() {
   # Relax pybind11 version
   sed -i 's/pybind11==[0-9.]*/pybind11/' python/pyproject.toml
 
-  # Remove the /usr/local RUNPATH from the Python extension
-  sed -i '/-Wl,-rpath/d' python/setup.py
+  # Remove all RUNPATH entries from the Python extension
+  sed -i 's/ldflags\.append("-Wl,-rpath.*/pass/' python/setup.py
 }
 
 build() {
