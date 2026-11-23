@@ -18,7 +18,7 @@
 # when asked (TensorRT-RTX, OpenVINO) or come from ROCm (MIGraphX).
 
 pkgname=anirust
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 _mpv=0.41.0
 _nvh=n13.0.19.0
@@ -108,7 +108,7 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.mrfrok.AniRust.svg"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
-sha256sums=('9ea9ab741ad91a3cb377397e76bce59f9a961633f3504c1ed403ce9716b00ce1'
+sha256sums=('c958e7c6413da4f3bf218bb86096be749779caea227f361dc866b709371489f9'
             'ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209'
             '86d15d1a7c0ac73a0eafdfc57bebfeba7da8264595bf531cf4d8db1c22940116')
 sha256sums_x86_64=('18a00a5e3ac90a5dfcfdf85fdb81d977381a5a2560a4c45dbe9a469d007b1886'
@@ -118,4 +118,4 @@ sha256sums_x86_64=('18a00a5e3ac90a5dfcfdf85fdb81d977381a5a2560a4c45dbe9a469d007b
                    '94d58e30b75d7c7609cfa6f3bdad524deddd14f5f75e85c36d2f827ef5c64731'
                    'd37437f9a9276c5b5f966a4a314c8b08128b06d3fa5b7b5716b8db489dc4136a'
                    '7932fb49341512b959b1744a6d9cbb39e5a1ec89da438a34d0454d5d8df9fecd'
-                   '8e764ebd7cf787d3e92b5aedf54cf1d4b514ce1d964936ff360555a838d3dc40')
+                   '97a9cf792b53c1f95d1cdb6187dd68a9ba437478512c62dfa5b3166b1d28a14a')
