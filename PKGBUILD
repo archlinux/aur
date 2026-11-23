@@ -1,9 +1,9 @@
 # Maintainer: ido
 #
-# Builds radiopittray from the local git checkout.
+# Builds radiopittray from the public GitHub repository.
 #
 # Updating the package:
-#   1. commit your changes in the radiopittray repository,
+#   1. commit and push your changes in the radiopittray repository,
 #   2. bump pkgver (keep it in sync with version in Cargo.toml),
 #   3. bump _commit to the new HEAD (git rev-parse HEAD),
 #   4. regenerate the sha256sums array at the bottom of this file
@@ -18,7 +18,7 @@
 
 pkgname=radiopittray
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="System tray radio player for your RadioPit.fm library"
 arch=(x86_64)
 url="https://radiopit.fm"
@@ -43,11 +43,11 @@ makedepends=(
     rust
     pkgconf
 )
-# Local git checkout of radiopittray; the build is pinned to a commit so
-# makepkg stays reproducible.
-_commit="a4d9a6641af3b8cb2ee15751fe0b452ca2a8702d"
+# Public GitHub repository of radiopittray; the build is pinned to a commit
+# so makepkg stays reproducible.
+_commit="4e4642d2a91e18a8a03780c6bf48f999d9ab29bf"
 source=(
-    "radiopittray-$pkgver::git+file:///home/ido/workspaces/prive/radiopittray#commit=$_commit"
+    "radiopittray-$pkgver::git+https://github.com/idovitz/radiopittray#commit=$_commit"
     "$pkgname.desktop"
 )
 
@@ -70,8 +70,10 @@ package() {
         -D "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "$pkgname-$pkgver/README.md" \
         -D "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "$pkgname-$pkgver/LICENSE" \
+        -D "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "$srcdir/$pkgname.desktop" \
         -D "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
-sha256sums=('9ba63b9b5a9316854197d60831719c5a5bea13b7ec38ccb8a0595f506e405448'
+sha256sums=('e255ad1eddeff3a4077df8b51d9d4cd2463b51e4a13c202a8cf316fe9e940721'
             '7df4446a7f7059ed1403440d7af0087f82e481b5189fca7cfa1f600d7042843f')
