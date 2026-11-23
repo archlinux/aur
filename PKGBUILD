@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Real-time, glanceable interactive git status for the terminal"
 
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -27,7 +27,7 @@ depends=('glibc' 'libgcc' 'git')
 options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('776cb9414a98983129f521dc75fad0d6b523a86e03a50fcd2cf3bb1f99fde600')
+sha256sums=('ee768e698e4a21723015f2ac5a8ce0880e01c83fbd86ab95b1d01bcadf1e2e5c')
 
 
 prepare() {
