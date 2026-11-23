@@ -1,26 +1,25 @@
 pkgbase = r-dada2
 	pkgdesc = Accurate, high-resolution sample inference from amplicon sequencing data
-	pkgver = 1.30.0
+	pkgver = 1.40.0
 	pkgrel = 1
-	url = https://bioconductor.org/packages/release/bioc/html/dada2.html
-	arch = i686
+	url = https://bioconductor.org/packages/dada2
 	arch = x86_64
-	license = LGPL2
-	makedepends = make
-	depends = r>=3.4.0
-	depends = r-biocgenerics>=0.22.0
-	depends = r-biostrings>=2.42.1
-	depends = r-ggplot2>=2.1.0
-	depends = r-iranges>=2.6.0
-	depends = r-rcpp>=0.12.0
-	depends = r-rcppparallel>=4.3.0
-	depends = r-reshape2>=1.4.1
-	depends = r-shortread>=1.32.0
-	depends = r-xvector>=0.16.0
+	license = LGPL-2.0-only
+	depends = onetbb
+	depends = r-biocgenerics
+	depends = r-biostrings
+	depends = r-ggplot2
+	depends = r-iranges
+	depends = r-rcpp
+	depends = r-rcppparallel
+	depends = r-reshape2
+	depends = r-shortread
+	depends = r-xvector
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/dada2_1.30.0.tar.gz
-	sha256sums = c6653fe77c3d62dd91207bbbf6641ec143fb8a498967e240a97af26de7e27667
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/dada2_1.40.0.tar.gz
+	md5sums = 7b804276d0f5e33f11d07da065b5a716
+	b2sums = f516cae3fce2fee3e24176cc5001cf192a639ac861eb89f6aa63ec8a2ec74f9c4dbe52910dc78b6009b62b6a7d215cb18b63d697a8589d11724abcb43e04a0c1
 
 pkgname = r-dada2
