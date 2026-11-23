@@ -1,6 +1,6 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=owntone-server
-pkgver=29.3
+pkgver=29.4
 pkgrel=1
 pkgdesc='iTunes-compatible media server (fka forked-daapd) (rewrite of mt-daapd)'
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=(gperf)
 backup=(etc/owntone.conf)
 install=owntone.install
 source=(https://github.com/owntone/owntone-server/archive/$pkgver.tar.gz owntone.install override.conf)
-sha256sums=('b6677812d3535b9aab2889234ecff4b059d33723e94b3fb54e4e01a67a7bdabf'
+sha256sums=('ba763daa4b8e120d706da8d4ea855fb36bc5ec00f972ea3a05984f7eaf29794c'
             'c21617a866ecd4ae1ea81b372e7ad3a782e6b6bcf3b1c03e6f0666953b1844f2'
             '102a179eb7e0c022bf3f8c27656f66ffff0e0b0ae07d65b12d790b9c924f42b0')
 
