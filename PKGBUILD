@@ -3,7 +3,7 @@
 _pkgauthor=jdx
 _pkgname=packslip
 pkgname=${_pkgname}-bin
-pkgver=1.11.4
+pkgver=1.11.5
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="A signed release manifest for vendor binaries"
@@ -23,8 +23,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.xz::${url}/releases/downloa
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.xz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-linux-${_barch[1]}.tar.xz")
 sha256sums=('b88d66b6653e1c48856f66ad51b5a7c97e9496b85b9ae23fe7a1c9ec17fd02d8'
             '821abac2a5f69f55177241b3eeff61125a9f37e83b1d297639300ef8b93b0c73')
-sha256sums_x86_64=('011ccc784584a466bd12a96f76c8e7a3ff365a2c99aee53884140cecf020aadd')
-sha256sums_aarch64=('0cd0e3f96917dacbc0a993affacfc2a838df2503e3ac2017cee072c064cb30bc')
+sha256sums_x86_64=('8f69db2646f31a59ccbee65ffd907bd5d0fb7edca772fcdb416d69359ce8630f')
+sha256sums_aarch64=('22542a0243235de8edcdceb5e13dc56dd3351efd382cdbc6555f13f7ae9d6493')
 
 
 case ${CARCH} in
