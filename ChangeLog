@@ -1,10 +1,11 @@
 ## Changelog
-* 054e1462455e11657c2315c25872479de237c69b docs: backport v2.4.2 release notes (#5935) (#5937)
-* 860ef8d7093f9b6c824a7528010b15d782645e4f docs: prepare v2.4.3 security release notes (#6039)
-* 450765820c3cec9c66821d0446667b355783c899 fix(deps): update undici to 8.12.3 (#6035) (#6037)
-* ab80c48f88036fbe9c4f1480e057e64b7a552336 fix(security/high/): update module github.com/go-jose/go-jose/v4 to v4.1.6 [security] (#5966)
-* 064da62c375b92cc02aed1fc484d6013bfd669a6 fix(security/unknown/): update module golang.org/x/net to v0.62.0 [security] (#5973)
-* 584f609c00160e517d8f7bf94e0c38dc0c28b990 fix(security/unknown/api): update module golang.org/x/net to v0.62.0 [security] (#5974)
+* 4896fecbd05d21892fcbac13e4cb76d970cd394d chore(deps): lock file maintenance (#6108)
+* 13ad1de0422b6eb86ef0c9da7ba599273d00ef67 chore(release): prepare v2.4.4 (#6116)
+* 8438da5fb70e394ad24a2309e65839d358c2af29 fix(deps): update OpenTelemetry to v1.47.0 (release/v2.4) (#6102)
+* 421384f080909623abaeba8563c40b9416261693 fix(security/unknown/): update module github.com/klauspost/compress to v1.20.2 [security] (#6056)
+* f4063745e41e31e9270806f49d151abb82f939ef fix(security/unknown/): update module golang.org/x/crypto to v0.59.0 [security] (#6093)
+* f5d28fdee2fa348af621d2255bc8e31622a05050 fix(security/unknown/api): update go toolchain directive to v1.26.11 [security] (#6085)
+* fdb6a9c6aa3f0134ef251a9f87bcfc729416674f fix(security/unknown/lidia): update go toolchain directive to v1.26.11 [security] (#6086)
 
 As always, feedback is more than welcome, feel free to open issues/discussions.
 You can reach out to the team using:
@@ -19,7 +20,7 @@ You can reach out to the team using:
 - [grafana/pyroscope](https://hub.docker.com/r/grafana/pyroscope/tags)
 
 ```bash
-  docker pull grafana/pyroscope:2.4.3
+  docker pull grafana/pyroscope:2.4.4
 ```
 
 
