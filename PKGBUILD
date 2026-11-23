@@ -13,8 +13,8 @@
 # at run time, so they never appear in the binary's link list. Keep them.
 
 pkgname=sona-bin
-pkgver=0.6.0
-_ver=0.6.0
+pkgver=0.7.0
+_ver=0.7.0
 pkgrel=1
 pkgdesc='Native Apple Music client'
 arch=('x86_64')
@@ -30,7 +30,7 @@ conflicts=('sona')
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/coredev-uk/sona-go/releases/download/v${_ver}/sona-${_ver}-1-${CARCH}.pkg.tar.zst")
 noextract=("sona-${_ver}-1-${CARCH}.pkg.tar.zst")
-sha256sums_x86_64=('143f9b4865324a5da1ee0d679781c76b6e613c8e4da00e00b0c7d155e198eafa')
+sha256sums_x86_64=('2ffb2816c86652ae7bc988cce586fe3c195def934b3a38c2188a3856f836e47e')
 
 package() {
   bsdtar -xf "sona-${_ver}-1-${CARCH}.pkg.tar.zst" -C "$pkgdir" usr

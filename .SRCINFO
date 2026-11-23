@@ -1,6 +1,6 @@
 pkgbase = sona-bin
 	pkgdesc = Native Apple Music client
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/coredev-uk/sona-go
 	arch = x86_64
@@ -26,10 +26,10 @@ pkgbase = sona-bin
 	optdepends = gst-plugin-pipewire: native PipeWire audio output (pulsesink otherwise)
 	provides = sona
 	conflicts = sona
-	noextract = sona-0.6.0-1-x86_64.pkg.tar.zst
+	noextract = sona-0.7.0-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/coredev-uk/sona-go/releases/download/v0.6.0/sona-0.6.0-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 143f9b4865324a5da1ee0d679781c76b6e613c8e4da00e00b0c7d155e198eafa
+	source_x86_64 = https://github.com/coredev-uk/sona-go/releases/download/v0.7.0/sona-0.7.0-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 2ffb2816c86652ae7bc988cce586fe3c195def934b3a38c2188a3856f836e47e
 
 pkgname = sona-bin
