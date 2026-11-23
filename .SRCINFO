@@ -1,0 +1,19 @@
+pkgbase = rust-glancer
+	pkgdesc = Lightweight Rust language server optimized for low memory usage
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/rust-glancer/rust-glancer
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = rustup
+	depends = cargo
+	depends = rust-src
+	depends = zstd
+	depends = libgcc
+	depends = glibc
+	options = !lto
+	source = rust-glancer-0.5.0.tar.gz::https://github.com/rust-glancer/rust-glancer/archive/refs/tags/v0.5.0.tar.gz
+	b2sums = d2bcb9cf1a673990dfcc6d945e190e7a66fce14719ae54fd2d9a74898549cb4a99c75c60a2149d5dbc35131fcb72172b8f0bfafcd5a8746af4bdad1f8ae13afd
+
+pkgname = rust-glancer

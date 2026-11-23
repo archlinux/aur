@@ -1,0 +1,4 @@
+[rust-glancer]
+source = "git"
+git = "https://github.com/rust-glancer/rust-glancer.git"
+prefix = "v"
