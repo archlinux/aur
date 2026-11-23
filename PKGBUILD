@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=WRS2
-_pkgver=1.1-6
+_pkgver=1.1-7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-mediation
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1d680b11b9cdc32bfd9ea886b0754904')
-b2sums=('3c24050f90afa84677d2755e46c478dab6c3319a376ad8bb2fdbebc568cf449adecdc0cb2974b9390f70a1a7e64aa55aed9a9dba12155e902f879f24988604cc')
+md5sums=('18d56daac402dd9d24c539e6462f20d3')
+b2sums=('a671741f2f8e9315c783422d212dce60a5d19b702b605da831bc194424d7912a15840aee080078afc4740f31ad7c56f019c76b652d76d3608e8e1daf8a47dd7c')
 
 build() {
   mkdir build
