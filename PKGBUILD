@@ -1,20 +1,21 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rafalib
-_pkgver=1.0.0
+_pkgver=1.0.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Convenience Functions for Routine Data Exploration"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('Artistic-2.0')
 depends=(
+  r-biocmanager
   r-rcolorbrewer
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3ec2db844e21fa6b6ac29dc46d739a37')
-b2sums=('42d2c2cb943cb69e8b19c5a52fe22f0c9d0079b8433e9868e6db47e8c7615cce811550ac7581dabdbf3b0f5e55f955243aa9bb36a167a697846b0e6133e0c8c0')
+md5sums=('1f768fc8cff6fa7ef3fc5152923f05c3')
+b2sums=('30f0988222f138031204a535c17635e5b0ff54d785c7dddab16887f82b1a16c5d0bd2a444cb017ae78997c3e8958801069e37fbed12c28ad0a902dc0d8f58fde')
 
 build() {
   mkdir build
