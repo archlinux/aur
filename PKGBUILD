@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openhome-bin
 _pkgname=OpenHome
-pkgver=1.19.1
+pkgver=1.19.2
 pkgrel=1
 pkgdesc="Application for importing and transferring Pokémon between save files."
 arch=(
@@ -20,8 +20,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums_aarch64=('c6da8e8f4ea62de7bc4e88e541e7c0ab6233578442ed2dd29672b6486c370b6d')
-sha256sums_x86_64=('198dd62eee523e0d79b78277b9ee5b7ac82c941f7cb15048f459e25d7cac889a')
+sha256sums_aarch64=('89991c899cba33ebc0d810c4ad29c4604aedbe515c9a871df7e851fbcdf292f3')
+sha256sums_x86_64=('1f020f04812ef5d3af27ddb4bed44e2d78d4b8476fde2ce59c06bd6ea9ad7997')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
