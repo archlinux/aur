@@ -1,0 +1,25 @@
+pkgbase = gaki-git
+	pkgdesc = Headless Steam launcher and library manager: CLI and TUI
+	pkgver = r534.g9712da6
+	pkgrel = 1
+	url = https://github.com/Gigas002/gaki
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = dbus
+	optdepends = steam: the Steam client gaki works alongside
+	optdepends = gnome-keyring: Secret Service provider for the session tokens
+	optdepends = keepassxc: alternative Secret Service provider
+	optdepends = xdg-utils: open store and community links
+	provides = gaki
+	conflicts = gaki
+	options = !lto
+	source = gaki::git+https://github.com/Gigas002/gaki.git
+	sha256sums = SKIP
+
+pkgname = gaki-git
