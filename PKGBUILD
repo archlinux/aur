@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CRISPRseek
-_pkgver=1.46.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc='Design of target-specific guide RNAs in CRISPR-Cas9, genome-editing systems'
 arch=('any')
@@ -17,22 +17,31 @@ depends=(
   r-data.table
   r-delayedarray
   r-dplyr
-  r-genomeinfodb
+  r-genomicfeatures
   r-genomicranges
+  r-gtools
   r-hash
   r-iranges
   r-keras
   r-mltools
+  r-openxlsx
   r-reticulate
   r-rhdf5
+  r-rio
+  r-rlang
   r-s4vectors
+  r-seqinfo
   r-seqinr
+  r-stringr
   r-xvector
 )
 optdepends=(
+  r-biocfilecache
   r-biocstyle
   r-bsgenome.hsapiens.ucsc.hg19
+  r-bsgenome.hsapiens.ucsc.hg38
   r-bsgenome.mmusculus.ucsc.mm10
+  r-knitr
   r-lattice
   r-mass
   r-org.hs.eg.db
@@ -41,10 +50,11 @@ optdepends=(
   r-tensorflow
   r-testthat
   r-txdb.hsapiens.ucsc.hg19.knowngene
+  r-txdb.hsapiens.ucsc.hg38.knowngene
   r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2a55e6a3d73f6960c070560921f6db586bdcfff3e309c84a1432131ef640a9dc')
+sha256sums=('e12c806ebae7a28e5ec267fcc721046ce4a64eb5f42f09946d1697e5cdfbe048')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
