@@ -1,6 +1,6 @@
 pkgbase = python-typing-validation
 	pkgdesc = A simple library for runtime type-checking
-	pkgver = 2.2.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://typing-validation.readthedocs.io
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-typing-validation
 	makedepends = python-sphinx-autodoc-typehints
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-numpy
-	source = https://github.com/hashberg-io/typing-validation/archive/refs/tags/v2.2.1.tar.gz
-	md5sums = 31d0b957821dc2429d3961be08be8229
+	source = https://github.com/hashberg-io/typing-validation/archive/refs/tags/v2.3.0.tar.gz
+	md5sums = c85bcd680789f2c71f0b1848f735c102
 
 pkgname = python-typing-validation
 	depends = python>=3.14

@@ -5,7 +5,7 @@ _pname=${pkgbase#python-}
 #_pyname=${_pname//-/_}
 _pyname=${_pname}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A simple library for runtime type-checking"
 arch=('any')
@@ -22,14 +22,15 @@ checkdepends=('python-pytest'
               'mypy')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/hashberg-io/typing-validation/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('31d0b957821dc2429d3961be08be8229')
+md5sums=('c85bcd680789f2c71f0b1848f735c102')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 
     msg "Building Docs"
-    PYTHONPATH="${srcdir}/${_pyname}-${pkgver}" make -C docs html
+#   PYTHONPATH="${srcdir}/${_pyname}-${pkgver}" make -C docs html
+    PYTHONPATH="." make -C docs html
 }
 
 check() {
