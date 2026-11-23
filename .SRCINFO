@@ -1,6 +1,6 @@
 pkgbase = qodercli-bin
 	pkgdesc = Qoder Agentic CLI - Advanced AI coding agent from Alibaba
-	pkgver = 1.1.95
+	pkgver = 1.1.96
 	pkgrel = 1
 	url = https://qoder.com/cli
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = qodercli-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = qodercli_1.1.95_linux_amd64.tar.gz::https://qoder-ide.oss-accelerate.aliyuncs.com/qodercli/releases/1.1.95/qodercli-linux-x64.tar.gz
-	sha256sums_x86_64 = a3746d4ecc397bb3ee6bf7a4d0d4d1fb756ac06b6c69b09069c75ee8b6b0ad4f
-	source_aarch64 = qodercli_1.1.95_linux_arm64.tar.gz::https://qoder-ide.oss-accelerate.aliyuncs.com/qodercli/releases/1.1.95/qodercli-linux-arm64.tar.gz
-	sha256sums_aarch64 = 5ec474dab160e7aa3b62a6987df7c79e113056a1b6adc2a5e056b7bd23513c86
+	source_x86_64 = qodercli_1.1.96_linux_amd64.tar.gz::https://qoder-ide.oss-accelerate.aliyuncs.com/qodercli/releases/1.1.96/qodercli-linux-x64.tar.gz
+	sha256sums_x86_64 = c0a4465774f8ce7e23557476d4958dd84a8f6db2ed5e326c51c32811c61c1f1d
+	source_aarch64 = qodercli_1.1.96_linux_arm64.tar.gz::https://qoder-ide.oss-accelerate.aliyuncs.com/qodercli/releases/1.1.96/qodercli-linux-arm64.tar.gz
+	sha256sums_aarch64 = ce3b084078148141ee82a313f81e6fb0b614c4fee524476b2b6fa657f85f643e
 
 pkgname = qodercli-bin
