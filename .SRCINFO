@@ -1,0 +1,22 @@
+pkgbase = ghpill-bin
+	pkgdesc = GitHub pull requests, reviews and workflow runs as a Waybar pill with a fuzzel picker
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/polarn/ghpill
+	license = Apache-2.0
+	optdepends = waybar: the bar that shows the pill
+	optdepends = fuzzel: the picker behind a click
+	optdepends = libnotify: desktop notifications
+	optdepends = xdg-utils: opening pages in the browser
+	optdepends = ttf-nerd-fonts-symbols: the glyphs
+	depends = github-cli
+	conflicts = ghpill
+	provides = ghpill
+	arch = aarch64
+	source_aarch64 = ghpill-bin_0.1.0_aarch64.tar.gz::https://github.com/polarn/ghpill/releases/download/v0.1.0/ghpill_Linux_arm64.tar.gz
+	sha256sums_aarch64 = cacd27df4e0a6ca56f916d0df9b70513b64ff463f6b1438339e90ab7488f45a3
+	arch = x86_64
+	source_x86_64 = ghpill-bin_0.1.0_x86_64.tar.gz::https://github.com/polarn/ghpill/releases/download/v0.1.0/ghpill_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ff588a17159b68aaa828657f6a985f3caaeb98809d42033e9e6f6b66fcad1e05
+	
+pkgname = ghpill-bin
