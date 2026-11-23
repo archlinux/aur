@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gatom
-_pkgver=1.6.0
+_pkgver=1.10.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=('MIT')
 depends=(
   r-bionet
   r-data.table
-  r-ggally
+  r-ggnetwork
   r-ggplot2
   r-htmltools
   r-htmlwidgets
@@ -21,7 +21,7 @@ depends=(
   r-mwcsr
   r-network
   r-plyr
-  r-pryr
+  r-scales
   r-shinycyjs
   r-sna
   r-xml
@@ -45,8 +45,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dabd632fdb32f41eecb42f56a6fd1604')
-b2sums=('7d0b7b7dc689d2052473f8960cca9f53a8223447e26ba7d5815d97fce3adac1907786cd9e057c214d49023c85f7a8868ea8358a313c3f56a3e69df380cc07a0b')
+md5sums=('fe12f9a4a6a2065e617e647031992047')
+b2sums=('6a5b79c26a36f89fd8b0ab8706c4866becbddb36db5c2772cb38e45ed70e1ec55009a70e41790fe700bfee7234a780d0215f4beaea29e79c3f223a549dd4aec3')
 
 build() {
   mkdir build
