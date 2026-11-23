@@ -1,12 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=reqable-bin
-pkgver=3.3.13
+_pkgname=Reqable
+pkgver=3.3.14
 pkgrel=1
 pkgdesc="A cross platform professional HTTP development and Debugger that supports HTTP1, HTTP2, and HTTP3 (QUIC) protocols."
 arch=('x86_64')
 url="https://reqable.com"
 _ghurl="https://github.com/reqable/reqable-app"
-license=('LicenseRef-custom')
+license=("LicenseRef-${_pkgname}")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -26,7 +27,7 @@ source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('45ebe425c9da41b0b41613f050e455b1be9a311824f72885e53312966dbb9626'
+sha256sums=('3a84e0cb0c318d7a235d777e9c23c48bad04a25641f5eb62cc2093d5f1fbfafb'
             '94e84a48f1df9905d0fb29ce53bfa665427130859db7c7c5c02cce8f5c066ddb'
             'd7002fa1a9ae60749490e982fa8a4f4622f7381b02559f5b014df033c0773a3c')
 prepare() {
