@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OMICsPCA
-_pkgver=1.26.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='An R package for quantitative integration and analysis of multiple omics assays from heterogeneous samples'
 arch=('any')
@@ -18,7 +18,6 @@ depends=(
   r-factoextra
   r-factominer
   r-fpc
-  r-genomeinfodb
   r-ggplot2
   r-helloranges
   r-iranges
@@ -33,6 +32,7 @@ depends=(
   r-rgl
   r-rmarkdown
   r-rtracklayer
+  r-seqinfo
   r-tidyr
 )
 optdepends=(
@@ -41,7 +41,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('383a7670eb8638b592678b512278e5ca124fcf2cbb89320fed1de0b3c9a13d46')
+sha256sums=('f367ba4d7633727276656e1063a0a661ce2bff0996d642437ff68cab9a5a08fb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
