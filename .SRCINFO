@@ -1,24 +1,21 @@
 pkgbase = r-bff
 	pkgdesc = Bayes Factor Functions
-	pkgver = 4.4.1
-	pkgrel = 1
-	url = https://github.com/rshudde/bff
+	pkgver = 5.0.0
+	pkgrel = 2
+	url = https://cran.r-project.org/package=BFF
 	arch = any
-	license = GPL2
-	makedepends = git
-	depends = r
-	depends = r-grdevices
+	license = GPL-2.0-or-later
+	depends = r-dpq
 	depends = r-ggplot2
-	depends = r-matrix
 	depends = r-gsl
-	depends = r-stats
 	depends = r-rlang
-	optdepends = r-testthat
+	optdepends = r-bsda
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	optdepends = r-bsda
+	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = git+https://github.com/rshudde/bff.git
-	sha256sums = SKIP
+	source = https://cran.r-project.org/src/contrib/BFF_5.0.0.tar.gz
+	md5sums = 67d1a5001f4b5898c823536931704539
+	b2sums = eea9f5628017d51721a8ddd1a55186fe1e265afb3d87e417e2e74b0dbbccc490908d75871a5e6da34f02dcd9b43a891cfad6d1076bb5f98db9dd76016366e2b9
 
 pkgname = r-bff
