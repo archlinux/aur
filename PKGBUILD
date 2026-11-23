@@ -1,11 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TBRDist
-_pkgver=1.0.2
+_pkgver=2.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
-pkgdesc="Rearrangement Distances Between Unrooted Phylogenetic Trees"
+pkgrel=1
+pkgdesc="Rearrangement Distances Between Phylogenetic Trees"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-3.0-or-later')
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7a06099570b709d23bba2ffc586f7ffc')
-b2sums=('252f314b9a7a5685112e42826c39008ae52de5cd1ba6dc2d3af719aec21df533e69223373eda4a37784d36cdd5b2eb9eaeaf90bb7aae05f931879754552bd093')
+md5sums=('24af6ab80cf9a62d6a841bb7de0bcb59')
+b2sums=('1e90b68ca8a48771455775118e72a2c3c267bbade27b61985c44915c7162b223d49a1b6d3a427436416400592ac6cb9fc42381e622691e713e62923ab0cfa5b3')
 
 build() {
   mkdir build
