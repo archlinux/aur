@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scRepertoire
-_pkgver=2.2.1
+_pkgver=2.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,51 +10,43 @@ arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  r-cubature
   r-dplyr
   r-evmix
   r-ggalluvial
   r-ggdendro
   r-ggplot2
   r-ggraph
-  r-hash
   r-igraph
   r-inext
-  r-plyr
   r-quantreg
   r-rcpp
-  r-reshape2
   r-rjson
   r-rlang
   r-s4vectors
   r-seuratobject
   r-singlecellexperiment
-  r-stringdist
-  r-stringr
   r-summarizedexperiment
   r-tidygraph
-  r-truncdist
-  r-vgam
   r-lifecycle
   r-purrr
-  r-assertthat
+  r-immapex
 )
 optdepends=(
   r-biocmanager
   r-biocstyle
   r-circlize
   r-knitr
+  r-peptides
   r-rmarkdown
   r-scales
   r-scater
   r-seurat
   r-spelling
   r-testthat
-  r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6499720e8ba9e80e3472a9b575ffbabd')
-b2sums=('98eea08d458ebe8b5ca4fde1f830e4c53f9b9f1ce5a66ffb3c05eab6f16dc9e154c63285f38aa3ac8902f721d191dffc0a71f4ab2f5df745f022e524d80135e2')
+md5sums=('f01b5d5ee72dbda9f6e3af8ee4f90ed6')
+b2sums=('4f7164b9ffae588e265cfcb9081f30d2e5e43fcd46e987b1f30e2ea11c3e8325954d26bc1c3500edc3d87b54aa224706993ebc07a301ca7f9bbfd7d262e9b780')
 
 build() {
   mkdir build
