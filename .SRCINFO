@@ -1,6 +1,6 @@
 pkgbase = python-secure
 	pkgdesc = A small, focused library for adding modern security headers to Python web applications
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/TypeError/secure.py
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = python-secure
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = python-secure::git+https://github.com/TypeError/secure.py#commit=6c63f0e
+	source = python-secure::git+https://github.com/TypeError/secure.py#commit=bc2c33a
 	source = cak.keys
-	sha256sums = 4d67a90310afa5078bf2c653717d4c1f59b54f9ccc1802edc54b2cdf847aa5f0
+	sha256sums = 75cf85c71868390142d742ef9cdf50927e06db0c817baa86224ee53071941b65
 	sha256sums = d89159c1914232c1c6d5b5fe6263a0eb6ac85a0122bbb73d18a52e493a5eb249
 
 pkgname = python-secure

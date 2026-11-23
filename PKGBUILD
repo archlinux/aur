@@ -2,8 +2,8 @@
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=python-secure
-pkgver=2.0.1
-_commit=6c63f0e
+pkgver=2.0.2
+_commit=bc2c33a
 pkgrel=1
 pkgdesc="A small, focused library for adding modern security headers to Python web applications"
 url="https://github.com/TypeError/secure.py"
@@ -14,12 +14,13 @@ makedepends=(git openssh python-build python-installer python-wheel python-setup
 checkdepends=(python-pytest)
 source=("$pkgname::git+$url#commit=$_commit"
         cak.keys)
-sha256sums=('4d67a90310afa5078bf2c653717d4c1f59b54f9ccc1802edc54b2cdf847aa5f0'
+sha256sums=('75cf85c71868390142d742ef9cdf50927e06db0c817baa86224ee53071941b65'
             'd89159c1914232c1c6d5b5fe6263a0eb6ac85a0122bbb73d18a52e493a5eb249')
 
-prepare() {
-    git -C "$pkgname" -c gpg.ssh.allowedSignersFile="$srcdir/cak.keys" verify-commit "$_commit"
-}
+# Release 2.0.2 does not sign with the ssh key
+# prepare() {
+#     git -C "$pkgname" -c gpg.ssh.allowedSignersFile="$srcdir/cak.keys" verify-commit "$_commit"
+# }
 
 build() {
     cd "$pkgname"
