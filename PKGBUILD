@@ -1,29 +1,27 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=svMisc
-_pkgver=1.2.3
+_pkgver=1.4.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
-pkgdesc="'SciViews' - Miscellaneous Functions"
+pkgrel=1
+pkgdesc="Miscellaneous Functions for 'SciViews::R'"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-only')
 depends=(
-  r
+  r-cli
+  r-rlang
 )
 optdepends=(
-  r-covr
   r-knitr
-  r-markdown
-  r-rjava
   r-rmarkdown
   r-spelling
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b94227b8913984ed493eefca71c45975')
-b2sums=('4d43655c69ae092b5de164ccaf6cdc816de2534f6d61eb845d4f762d6bedf0b2bb57b5247d56e86d312a410c12034e74aab58ae215db04ef1574c2e5b40bf60e')
+md5sums=('e35aef4cb07d2dea8a51fc92fda3fbde')
+b2sums=('1d972aafa723b873c6dfa5715db6ac6a4798b906459b0c59e2b975f61c8340767ecd278448528412f1ab464fa7c65d90b475b90713d068d6271ce0ac460e7286')
 
 build() {
   mkdir build

@@ -1,20 +1,18 @@
 pkgbase = r-svmisc
-	pkgdesc = 'SciViews' - Miscellaneous Functions
-	pkgver = 1.2.3
-	pkgrel = 9
+	pkgdesc = Miscellaneous Functions for 'SciViews::R'
+	pkgver = 1.4.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=svMisc
 	arch = any
 	license = GPL-2.0-only
-	depends = r
-	optdepends = r-covr
+	depends = r-cli
+	depends = r-rlang
 	optdepends = r-knitr
-	optdepends = r-markdown
-	optdepends = r-rjava
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/svMisc_1.2.3.tar.gz
-	md5sums = b94227b8913984ed493eefca71c45975
-	b2sums = 4d43655c69ae092b5de164ccaf6cdc816de2534f6d61eb845d4f762d6bedf0b2bb57b5247d56e86d312a410c12034e74aab58ae215db04ef1574c2e5b40bf60e
+	source = https://cran.r-project.org/src/contrib/svMisc_1.4.3.tar.gz
+	md5sums = e35aef4cb07d2dea8a51fc92fda3fbde
+	b2sums = 1d972aafa723b873c6dfa5715db6ac6a4798b906459b0c59e2b975f61c8340767ecd278448528412f1ab464fa7c65d90b475b90713d068d6271ce0ac460e7286
 
 pkgname = r-svmisc
