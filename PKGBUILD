@@ -1,7 +1,7 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
 pkgname=pi-acp
-pkgver=0.0.34 # renovate: datasource=npm depName=pi-acp
+pkgver=0.0.35 # renovate: datasource=npm depName=pi-acp
 pkgrel=1
 pkgdesc="ACP adapter for the pi coding agent"
 arch=("any")
@@ -11,7 +11,7 @@ depends=("nodejs" "pi")
 makedepends=("npm")
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha512sums=('32b0a9dfb51ba54ce44e4cd320c2507f5458ad3fa4af87e0183185a0b981376e94ba9b82669d17c55218fbb5d8b0ca37c839f30de6542748cfc8cdd28ba06492')
+sha512sums=('259021606f4f449e474f27d09e42870d3b73aa7b8f14c3d6a0036db6b901c8dfba97f8fcc0b4aacc4fef50290658e7692f32e4148135544ca8c7dd73c908a74d')
 
 package() {
   npm install --omit=dev -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
