@@ -20,7 +20,7 @@
 
 pkgname=libfprint-2-tod1-synaptics009a
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Native libfprint-2-tod1 driver + firmware/calibration tooling for the Synaptics 06cb:009a fingerprint reader (ThinkPad T480/T480s/X280/P52s)"
 arch=('x86_64')
 url="https://github.com/hustles/libfprint-2-tod1-synaptics009a"
@@ -58,8 +58,7 @@ sha256sums=('5483619bd53ff2ddd0a9704cba1e025f2b0d273c80bb7e4c69bb11994a9c6823'
             '15bc58562244378cfa2df0c6ff2e7c67b1cb0edb6ca55ab78ee1818cd8eca410'
             '474769c18736a272afc5ec37373dbd70b63a2e425ad9d5f5e38bc1be63e9db80'
             '26b73bcaacfc9ab9b0efca8abd650cdd0226b715f52cae2b0f8c1f16c965bc5e'
-            '8a4416d3ffff506ed7ac7c396c942464d8d6e6b351bf13f9866a3d6373262702')
-
+            '9dc7081a6d826586670ce75ad797e7b472291717f0c810b3756d10310d384334')
 prepare() {
   cd "t480s-fingerprint-driver-for-linux-$_commit"
 
