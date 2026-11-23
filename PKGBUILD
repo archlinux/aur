@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=8.2.0
+pkgver=8.3.0
 _nodeversion=26
 pkgrel=1
 pkgdesc="Free video player for learning Japanese, Mandarin, Cantonese and Vietnamese from what you watch. Click any subtitle word for its reading and offline dictionary meaning. Plays local files and YouTube, with dual subtitles, karaoke lyrics and Anki export."
@@ -31,7 +31,7 @@ optdepends=(
     'mecab'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('21ba33a83869f6a8a051950cbb171f047b3afeeafc27d1c3d3ba2b91b4f08c2a')
+sha256sums=('ae7c56ff50c7c1af8cc11c1943530f8facb9982f1478f923430228d0f16a921e')
 _get_project_dir() {
 	find "${srcdir}" -name "src-tauri" -type d ! -path "*/node_modules/*" 2>/dev/null | \
 		while read -r tauri_dir; do
@@ -50,7 +50,9 @@ _ensure_local_nvm() {
 	nvm use "${_nodeversion}"
 }
 _get_app_dir() {
-	find "$(_get_project_dir)" -type d -name "release" -exec test -d "{}/.fingerprint" -a -d "{}/deps" \; -print -quit 2>/dev/null
+	find "$(_get_project_dir)" -type d -path '*/src-tauri/target/release' \
+		-exec sh -c 'for f in "$1"/*; do [ -f "$f" ] && [ -x "$f" ] && exit 0; done; exit 1' _ {} \; \
+		-print -quit 2>/dev/null
 }
 _set_npm_build_env() {
 	export HOME="${srcdir}/.home"
