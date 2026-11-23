@@ -31,7 +31,7 @@ sha256sums_x86_64=('37e4791bc37ec9dc6e0b1aea5107fd097ecfc91414f618bd9dab25f70acf
 build() {
 	cd "${srcdir}/${_appname}-${pkgver}" || exit
 
-	zig build -Doptimize=ReleaseSafe --prefix "outputs" --cache-dir "zig-cache" --global-cache-dir "zig-global-cache"
+	zig build -Doptimize=ReleaseSafe --prefix "outputs" --cache-dir "zig-cache"
 }
 
 check() {
