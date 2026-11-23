@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=sonora-tui-bin
-pkgver=0.18.1
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="A terminal music player for TIDAL, Spotify, Apple Music, Deezer, YouTube Music, Subsonic"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.xz::${_dl}/sonora-tui-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.xz::${_dl}/sonora-tui-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('e33bd16799770a172c7f282f4006bdb99af6df6fe32904e6426317761d66c59a')
-sha256sums_aarch64=('be6fe49e46596082412fe1068a7c6206420112ae20d6c90738bc12fa0d582be7')
+sha256sums_x86_64=('5322ab2938212881286086ce14e9b1a8c2c8d158bc4168c0fecb5bf3e743f1d6')
+sha256sums_aarch64=('bf1a2343ee0713d9b31c6072e5e33b36713145d02f20754cb08c0633d42ae94a')
 
 package() {
   local _dir
