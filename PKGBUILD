@@ -1,18 +1,20 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=baseline
-_pkgver=1.3-5
+_pkgver=1.3-8
 pkgname=r-${_pkgname,,}
-pkgver=1.3.5
+pkgver=1.3.8
 pkgrel=1
 pkgdesc='Baseline Correction of Spectra'
-arch=('any')
+arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-limsolve
   r-sparsem
+)
+makedepends=(
+  gcc-fortran
 )
 optdepends=(
   r-gwidgets2
@@ -21,9 +23,10 @@ optdepends=(
   r-lattice
   r-mass
   r-pls
+  r-roxygen2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a2d58ab311f8d4b947cb19a5075ca3ff8dcdf95ebb3cb7efec31a178c7a21450')
+sha256sums=('510812d991aed0e2ff9331740776625fe423fe6309a0fc7378cc3c6c584d1947')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
