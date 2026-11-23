@@ -4,7 +4,7 @@
 
 pkgname=vcluster
 pkgdesc='Create fully functional virtual Kubernetes clusters'
-pkgver=0.37.6
+pkgver=0.38.0
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://vcluster.com"
@@ -20,7 +20,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/loft-sh/vcluster/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha256sums=('1b93bd26ad5f707f4b5b2429eb984e2c76ac52c753fdc686c37784dc44683a81')
+sha256sums=('d2637e403b183d9aeeec795fbfbc71aa2bd64cc35bf5792dbd069e219123e7e8')
 
 prepare() {
     cd "$pkgname-$pkgver"
