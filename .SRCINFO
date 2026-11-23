@@ -1,7 +1,7 @@
 pkgbase = dpibreak-git
 	pkgdesc = fast and easy-to-use DPI circumvention tool in Rust.
 	pkgver = r357.f5c4f03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Dilluti0n/DPIBreak
 	arch = x86_64
 	license = GPL-3.0-or-later

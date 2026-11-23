@@ -1,6 +1,6 @@
 pkgname=dpibreak-git
 pkgver=r357.f5c4f03
-pkgrel=1
+pkgrel=2
 pkgdesc="fast and easy-to-use DPI circumvention tool in Rust."
 arch=('x86_64')
 url="https://github.com/Dilluti0n/DPIBreak"
@@ -19,6 +19,8 @@ pkgver() {
 
 build() {
     cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cargo build --release
 }
 
