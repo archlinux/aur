@@ -1,0 +1,21 @@
+pkgbase = python-k3num
+	pkgdesc = Human-readable number formatting and hex string utilities
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/pykit3/k3num
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3num
+	conflicts = python-k3num
+	source = k3num::git+https://github.com/pykit3/k3num.git#tag=v0.1.13
+	sha256sums = 7784275956e3cbba49b87f69ba12249244a5de4fd709b5f25a50a48d6d28f045
+
+pkgname = python-k3num
