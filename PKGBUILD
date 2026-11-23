@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=multicool
-_pkgver=1.0.1
+_pkgver=1.0.2
 pkgname=r-${_pkgname,,}
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Permutations of Multisets in Cool-Lex Order'
 arch=('x86_64')
@@ -12,11 +12,12 @@ url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-gmp
   r-rcpp
   gcc
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bd72de1fbd7ea32018d6af09ac2af80871ebe26bf9dfdf1ba53f87e6cff56c1f')
+sha256sums=('41b1cfbb9537b0c7c3aef6670d2bdda8a440c9cc1dffc944435cf2b0ecad0ab7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
