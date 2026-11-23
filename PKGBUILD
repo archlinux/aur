@@ -1,4 +1,4 @@
-# Maintainer: Klaus Tachtler (klaus@tachtler.net>
+# Maintainer: Klaus Tachtler <klaus@tachtler.net>
 # Contributor: Matt Day <matt@msday.co.uk>
 # Contributor: L. Bradley LaBoon <me@bradleylaboon.com>
 # Contributor: Anatol Pomozov <anatol.pomozov+arch@gmail.com>
@@ -6,7 +6,7 @@
 # Contributor: Tom K <tomk@runbox.com>
 
 pkgname=mod_perl
-pkgver=2.0.13
+pkgver=2.0.14
 pkgrel=2
 pkgdesc='Apache module that embeds the Perl interpreter within the server'
 arch=(i686 x86_64 armv6h armv7h)
@@ -15,7 +15,7 @@ license=(APACHE)
 depends=(perl apache db apr-util perl-linux-pid)
 options=(!emptydirs)
 source=(https://archive.apache.org/dist/perl/mod_perl-$pkgver.tar.gz)
-sha256sums=('ade3be31c447b8448869fecdfcace258d6d587b8c6c773c5f22735f70d82d6da')
+sha256sums=('c7e4981c07f1c9528b993f748747b58c960d51163d70bdec94b2619d9109e136')
 
 build() {
   cd mod_perl-$pkgver
