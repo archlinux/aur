@@ -2,9 +2,9 @@
 # riptide-browser: built from the release tag, against the CEF build its cef crate pins.
 # The versions and checksum are updated at each release.
 pkgname=riptide-browser
-pkgver=0.24.1
+pkgver=0.25.0
 pkgrel=1
-_cef=156.0.30+g6028375+chromium-156.0.8078.96
+_cef=156.0.31+ge603d97+chromium-156.0.8078.100
 pkgdesc="Keyboard-driven web browser with vim-like bindings, built on CEF"
 arch=('x86_64')
 url="https://joshzcold.github.io/riptide/"
@@ -19,7 +19,7 @@ source=("riptide::git+https://github.com/joshzcold/riptide.git#tag=v${pkgver}"
         "https://cef-builds.spotifycdn.com/cef_binary_${_cef}_linux64_minimal.tar.bz2")
 # The CEF index publishes SHA-1 checksums only.
 sha1sums=('SKIP'
-          '0b4c2189e3b93033bbef13add1a86f66849c1e62')
+          '0adb813face4ca098f17210fe471b172c2bc1950')
 
 prepare() {
     # Lay CEF out the way the cef-dll-sys build script expects it in CEF_PATH.
@@ -61,4 +61,5 @@ package() {
     install -Dm644 riptide.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/riptide.svg"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 LICENSE-EXCEPTION "$pkgdir/usr/share/licenses/$pkgname/LICENSE-EXCEPTION"
+    install -Dm644 THIRD-PARTY-LICENSES.txt "$pkgdir/usr/share/licenses/$pkgname/THIRD-PARTY-LICENSES.txt"
 }
