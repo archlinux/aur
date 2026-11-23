@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SAIGEgds
-_pkgver=2.8.1
+_pkgver=2.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,6 +19,7 @@ depends=(
   r-rcpp
   r-rcppparallel
   r-seqarray
+  r-skat
   r-survey
 )
 makedepends=(
@@ -35,8 +36,8 @@ optdepends=(
   r-snprelate
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('589bf458efed530fc3e34ec420dd2127')
-b2sums=('95088949cc3d59a7ef43891d304f99200d165193f5b3b71a5413560944b7841c9ce74badc8f87fcf229ac9bf87f3ff2b66504e2a012d3accf626733139a9a142')
+md5sums=('7a45dca7452b8deb0954218314c05c29')
+b2sums=('7915c6d9a5a43abca0263119ddeb10a23e9a518fc7ea5c495b21510d632d46bd66d55ce32e16ea390eb09706afdcc6fa1c27d727199fa64fc12821165ed22a75')
 
 prepare() {
   sed -i "$_pkgname"/src/Makevars \
