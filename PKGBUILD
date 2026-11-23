@@ -2,7 +2,7 @@
 
 pkgname=python-k3down2
 _name=${pkgname#python-}
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Convert markdown segments into images and other transferable media"
 provides=(${pkgname})
@@ -32,7 +32,7 @@ makedepends=(
 # )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('c956006feaf7f898053912c260fd43ce2984dbc4ccea9128c3eeac3f55de4ba5')
+sha256sums=('872d0c621e927dbfbe5dd7211a9836715041e55a499d540e9fa0ef14e4c80366')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx

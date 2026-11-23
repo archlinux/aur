@@ -1,6 +1,6 @@
 pkgbase = python-k3down2
 	pkgdesc = Convert markdown segments into images and other transferable media
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/pykit3/k3down2
 	arch = any
@@ -11,9 +11,14 @@ pkgbase = python-k3down2
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
+	depends = python-k3proc
+	depends = python-playwright
+	depends = python-pillow
+	depends = python-pylatexenc
+	depends = python-pygments
 	provides = python-k3down2
 	conflicts = python-k3down2
-	source = k3down2::git+https://github.com/pykit3/k3down2.git#tag=v0.2.0
-	sha256sums = c956006feaf7f898053912c260fd43ce2984dbc4ccea9128c3eeac3f55de4ba5
+	source = k3down2::git+https://github.com/pykit3/k3down2.git#tag=v0.2.1
+	sha256sums = 872d0c621e927dbfbe5dd7211a9836715041e55a499d540e9fa0ef14e4c80366
 
 pkgname = python-k3down2
