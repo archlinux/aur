@@ -1,6 +1,6 @@
 # Maintainer: Dmitriy Geels <dmitriy dot geels at gmail dot com>
 pkgname=rust-anything
-pkgver=2.0.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='Incrementally port applications to Rust and verify them against recorded behavior'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=(
   'java-environment: provide javac and java for the Java harness'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f1efdcc31c76a2cacfeec45c3e9be8a5262d0a2bcea209e55530616a8a5997cf')
+sha256sums=('2771ce130be663433dfd16cf4efd822d14d6ea3609ff49d5890c0b3a7bd044a3')
 
 prepare() {
   cd "$pkgname-$pkgver"

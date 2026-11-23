@@ -1,6 +1,6 @@
 pkgbase = rust-anything
 	pkgdesc = Incrementally port applications to Rust and verify them against recorded behavior
-	pkgver = 2.0.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/erkamyaman/rust-anything
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = rust-anything
 	optdepends = java-environment: provide javac and java for the Java harness
 	conflicts = rust-anything-bin
 	options = !lto
-	source = rust-anything-2.0.0.tar.gz::https://github.com/erkamyaman/rust-anything/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = f1efdcc31c76a2cacfeec45c3e9be8a5262d0a2bcea209e55530616a8a5997cf
+	source = rust-anything-3.3.0.tar.gz::https://github.com/erkamyaman/rust-anything/archive/refs/tags/v3.3.0.tar.gz
+	sha256sums = 2771ce130be663433dfd16cf4efd822d14d6ea3609ff49d5890c0b3a7bd044a3
 
 pkgname = rust-anything
