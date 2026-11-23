@@ -1,12 +1,13 @@
 pkgbase = r-cellxgenedp
 	pkgdesc = Discover and Access Single Cell Data Sets in the CELLxGENE Data Portal
-	pkgver = 1.8.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cellxgenedp
 	arch = any
 	license = Artistic-2.0
 	checkdepends = r-mockery
 	checkdepends = r-testthat
+	depends = r-cli
 	depends = r-curl
 	depends = r-dplyr
 	depends = r-dt
@@ -22,8 +23,8 @@ pkgbase = r-cellxgenedp
 	optdepends = r-testthat
 	optdepends = r-tidyr
 	optdepends = r-zellkonverter
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cellxgenedp_1.8.0.tar.gz
-	md5sums = 5fc4fa7d7c856fdb046c28183227a917
-	b2sums = 0bf8cbf6a01e302a157b6e8045c0322105944063d5df781ceb461f3b9e1e461b89a6c516e101b08a4578d07bbfabd94f9836e50680d38a8540b3ad7b8cc928df
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cellxgenedp_1.16.0.tar.gz
+	md5sums = b59f255ab1cda587269ab34d315a315f
+	b2sums = 56a228ca09daeca346e7fc4dd4ed8624a7996390ccb48757cbd24fc96765b5e18da4853a9f194d1f92f37ba2a02e4ee272afd110ef3487f780a5cbf1bbd6d929
 
 pkgname = r-cellxgenedp
