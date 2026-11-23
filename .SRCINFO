@@ -1,0 +1,32 @@
+pkgbase = python-md2zhihu
+	pkgdesc = convert markdown to zhihu compatible format
+	pkgver = 0.22
+	pkgrel = 1
+	url = https://github.com/drmingdrmer/md2zhihu
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-numpy
+	checkdepends = python-scikit-image
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-mistune
+	depends = python-k3down2
+	depends = python-k3fs
+	depends = python-k3git
+	depends = python-k3handy
+	depends = python-k3proc
+	depends = python-typing_extensions
+	depends = python-urllib3
+	depends = python-yaml
+	provides = python-md2zhihu
+	conflicts = python-md2zhihu
+	source = md2zhihu::git+https://github.com/drmingdrmer/md2zhihu.git#tag=v0.22
+	sha256sums = 9f1a728e5aec966870ce6d07a07e08e67fd5fbd89c78002b06825c3aec527bbd
+
+pkgname = python-md2zhihu
