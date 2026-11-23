@@ -1,11 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=svDialogs
-_pkgver=1.1.0
+_pkgver=1.1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=6
-pkgdesc="'SciViews' - Standard Dialog Boxes for Windows, MacOS and Linuxes"
+pkgrel=1
+pkgdesc="'SciViews::R' - Standard Dialog Boxes for Windows, MacOS and Linuxes"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-only')
@@ -23,8 +23,8 @@ optdepends=(
   zenity
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('221117c06ec3a116d6c55d6b6c104334')
-b2sums=('4a8fe472d9adee3684cba3c11a76ac8ca3725a3d60a75dbe1dd4e24619131cb6298ca3f38c78e9b67718c957e485568e881bfe5289a5734e87f96483da17b927')
+md5sums=('f78e4b16b1afe8a30572859898d84da3')
+b2sums=('1fc88f571ab0798a807c59822ad6be7317a5a2305f30a51d6381b348d585f2e02f1ddcc973701d2db4d4f058efd76fce6d4d484f8c662d5a1ad11b48cebd2125')
 
 build() {
   mkdir build
