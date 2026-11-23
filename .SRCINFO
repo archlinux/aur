@@ -1,6 +1,6 @@
 pkgbase = r-ggplotify
-	pkgdesc = Convert Plot to 'grob' or 'ggplot' Object
-	pkgver = 0.1.3
+	pkgdesc = Convert Almost Any Plot to a 'grob' or 'ggplot' Object
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggplotify
 	arch = any
@@ -11,14 +11,14 @@ pkgbase = r-ggplotify
 	depends = r-yulab.utils
 	optdepends = r-aplot
 	optdepends = r-colorspace
-	optdepends = r-cowplot
 	optdepends = r-ggimage
 	optdepends = r-knitr
-	optdepends = r-prettydoc
-	optdepends = r-rmarkdown
+	optdepends = r-patchwork
+	optdepends = r-quarto
+	optdepends = r-testthat
 	optdepends = r-vcd
-	source = https://cran.r-project.org/src/contrib/ggplotify_0.1.3.tar.gz
-	md5sums = 06f2d2b9f042fac7f4521b71a5ae49d9
-	b2sums = 214771421bd402b3f964fdae16f362deca56a9fc350af58353b430f45d886f2ee47ed2dc31ddab48530ca3d236f8bb19c2cb80e24a703a26e4b09c8903307d46
+	source = https://cran.r-project.org/src/contrib/ggplotify_0.1.4.tar.gz
+	md5sums = 39ec8abde205bdc56ceb6554fe0e4186
+	b2sums = 81a1911e7c8d27ef8add8807d0bdc356e76f2716b4244fb87fbb91737396f817b3c4bf6d10010c0e5cbc12c6ee59020c893ba7e833aaf87f0e257976dd5689fa
 
 pkgname = r-ggplotify

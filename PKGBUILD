@@ -2,11 +2,11 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggplotify
-_pkgver=0.1.3
+_pkgver=0.1.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Convert Plot to 'grob' or 'ggplot' Object"
+pkgdesc="Convert Almost Any Plot to a 'grob' or 'ggplot' Object"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('Artistic-2.0')
@@ -19,16 +19,16 @@ depends=(
 optdepends=(
   r-aplot
   r-colorspace
-  r-cowplot
   r-ggimage
   r-knitr
-  r-prettydoc
-  r-rmarkdown
+  r-patchwork
+  r-quarto
+  r-testthat
   r-vcd
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('06f2d2b9f042fac7f4521b71a5ae49d9')
-b2sums=('214771421bd402b3f964fdae16f362deca56a9fc350af58353b430f45d886f2ee47ed2dc31ddab48530ca3d236f8bb19c2cb80e24a703a26e4b09c8903307d46')
+md5sums=('39ec8abde205bdc56ceb6554fe0e4186')
+b2sums=('81a1911e7c8d27ef8add8807d0bdc356e76f2716b4244fb87fbb91737396f817b3c4bf6d10010c0e5cbc12c6ee59020c893ba7e833aaf87f0e257976dd5689fa')
 
 build() {
   mkdir build
