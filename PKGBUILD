@@ -5,7 +5,7 @@
 ## GPG key: https://github.com/rcaril.gpg
 
 pkgname=fastly
-pkgver=17.1.0
+pkgver=17.2.0
 pkgrel=1
 pkgdesc='CLI for the Fastly platform'
 url='https://github.com/fastly/cli'
@@ -15,7 +15,7 @@ depends=(glibc)
 makedepends=(git go tomlq)
 changelog=CHANGELOG.md
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
-sha256sums=('bcccd62890f8ad802c8751a31123ecc226934c2e914021aacf949c3267abdbe7')
+sha256sums=('4d9f4ef41ffc7ab4abf2c6d635ff8a9f56e0b70e7a88d84b95c9b8a062932d51')
 validpgpkeys=('A4C2C78656BA5E3DD5F122E4BCE379A5D550C407' ## Mark McDonnell (Integralist)
               '91CDBA857A8A0DE3940FDD90870BC2D54402CD1D' ## Anthony Gomez
               'ABB6449EDF2309D2E2922C695CB9C3D735851098' ## Richard Carillo
