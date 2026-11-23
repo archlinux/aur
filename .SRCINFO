@@ -1,6 +1,6 @@
 pkgbase = onq
 	pkgdesc = Search-oriented encrypted prompt vault
-	pkgver = 1.17.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/visorcraft/onQ
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = onq
 	conflicts = onq-git
 	noextract = onnxruntime-1.24.2-x86_64.tar.lzma2
 	options = !lto
-	source = onq-1.17.0.tar.gz::https://github.com/visorcraft/onQ/archive/refs/tags/v1.17.0.tar.gz
+	source = onq-1.18.0.tar.gz::https://github.com/visorcraft/onQ/archive/refs/tags/v1.18.0.tar.gz
 	source = com.visorcraft.onq.desktop
 	source = onnxruntime-1.24.2-x86_64.tar.lzma2::https://cdn.pyke.io/0/pyke:ort-rs/ms@1.24.2/x86_64-unknown-linux-gnu.tar.lzma2
 	source = onnxruntime-1.24.2-LICENSE::https://raw.githubusercontent.com/microsoft/onnxruntime/v1.24.2/LICENSE
