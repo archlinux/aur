@@ -1,7 +1,7 @@
 # Maintainer: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
 
 pkgname=organicmaps
-pkgver=2026.09.29_32
+pkgver=2026.11.11_39
 _tag="${pkgver%%_*}-${pkgver##*_}-android"
 pkgrel=1
 pkgdesc="Offline Maps"
