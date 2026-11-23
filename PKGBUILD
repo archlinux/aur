@@ -13,12 +13,12 @@ _upstream=kunkundi/crossdesk
 # 日期进版本号是为了让同版本号的重发（只改日期）能被 ver_cmp 检出。
 _tag=v1.7.6-20261112
 pkgver=1.7.6.20261112
-pkgrel=1
+pkgrel=2
 pkgdesc='自用维护：跨平台远程桌面（支持 Wayland portal 采集），上游 kunkundi/crossdesk'
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_upstream}"
 # GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
-_gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
+_gh_mirror="${GH_MIRROR:-https://gh-proxy.com/}"
 _gh_mirror="${_gh_mirror%/}/"
 license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs' 'libx11' 'libxext' 'libxrender' 'libxft' 'libxrandr'
