@@ -4,7 +4,7 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=kyko
-pkgver=0.2.2
+pkgver=1.3.1
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
 pkgdesc="Drop-down terminal for uQ and other Wayland desktops"
@@ -13,6 +13,10 @@ url="https://github.com/asafelobotomy/kyko"
 license=(MIT)
 depends=(gcc-libs qt6-base qt6-declarative qt6-wayland layer-shell-qt)
 makedepends=(cargo qt6-shadertools)
+optdepends=('xdg-utils: open links'
+            'less: Ctrl+Shift+H shows the scrollback in a pager'
+            'libcanberra: terminal.bell = "sound"'
+            'unicode-character-database: Ctrl+Shift+U finds characters by name')
 # The end-to-end tests run less as their full-screen program.
 checkdepends=(less)
 options=(!lto)
@@ -21,7 +25,7 @@ options=(!lto)
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
 # The release asset's sha256 for this tag; SKIP until the first release, then update it with
 # pkgver at each release.
-sha256sums=('2b9ef88bdc6ffc184bbe460cd41e8fc162854d06ec35adba30fb560f8968ded1')
+sha256sums=('4bf58318e175cb96cd2d27467a24f73b89fb4ad1c5bab8bdf70e24a8b2c4383d')
 
 prepare() {
   cd "$srcdir/$pkgname-$_tag"
@@ -54,9 +58,14 @@ package() {
   # `kyko toggle` and the first Run start the drop-down through D-Bus activation.
   install -Dm644 packaging/org.kyko.Terminal1.service "$pkgdir/usr/share/dbus-1/services/org.kyko.Terminal1.service"
   install -Dm644 packaging/org.kyko.Kyko.desktop "$pkgdir/usr/share/applications/org.kyko.Kyko.desktop"
+  install -Dm644 packaging/org.kyko.Kyko.metainfo.xml "$pkgdir/usr/share/metainfo/org.kyko.Kyko.metainfo.xml"
   install -Dm644 packaging/org.kyko.Kyko.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.kyko.Kyko.svg"
   # uQ's Spotlight lists kyko's open tabs.
   install -Dm644 packaging/kyko.provider "$pkgdir/usr/share/uq/launcher/kyko.provider"
+  # What each of kyko's problem codes means, for `uqctl explain` and Settings › Problems.
+  install -Dm644 uq/diag/kyko.toml "$pkgdir/usr/share/uq/diag/kyko.toml"
+  # The drop-down's page in uQ Settings (Apps > kyko).
+  install -Dm644 -t "$pkgdir/usr/share/uq/settings/pages/kyko/" uq/pages/kyko/*
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   # The built-in themes are uQ's; their credits and licences.
   install -Dm644 crates/kyko-core/themes/CREDITS.md "$pkgdir/usr/share/licenses/$pkgname/THEMES.md"
