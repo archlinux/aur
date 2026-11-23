@@ -8,6 +8,6 @@ pkgbase = rust-motd-bin
 	provides = rust-motd
 	conflicts = rust-motd
 	source = https://github.com/rust-motd/rust-motd/releases/download/v2.1.2/rust-motd-2.1.2-archlinux-x86_64.tar.gz
-	sha256sums = a185d0d47d26a1a69596fef2c8393c2b3084afef123f48c72f94e53cb7d5603f
+	sha256sums = 6fc8f587e0a83d5c82bf1a75a299e85fb7ebf69293c54ff7302f72095f07b281
 
 pkgname = rust-motd-bin
