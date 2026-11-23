@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jumble-bin
 _pkgname=Jumble
-pkgver=26.11.1
+pkgver=26.11.2
 _electronversion=45
 pkgrel=1
 pkgdesc="yet another nostr desktop client."
@@ -28,9 +28,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.deb")
 sha256sums=('636c9ac311004c9c7a64045f683eb1c05e907ea514b268b0cc09f935532d1fb9'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-sha256sums_aarch64=('7d4a06e31f5b0f7abb89bca40212ab211294e34232ccbdb9019b1b44ee7150bb')
-sha256sums_x86_64=('ec5715b656f58cc8902aa21190a7d5ae0fb0346112de53ab07787125fe9dcaa0')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+sha256sums_aarch64=('07056a66e6e32fbab5d1e1357f2a5021842b38f1a448250eaff38ea400c1753b')
+sha256sums_x86_64=('167d9b2d32aa2fb91b70c59ee7bda5f948ae52e2c75224a41639540653a4f68f')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done

@@ -1,24 +1,24 @@
 pkgbase = jumble-bin
 	pkgdesc = yet another nostr desktop client.
-	pkgver = 26.11.1
+	pkgver = 26.11.2
 	pkgrel = 1
 	url = https://github.com/CodyTseng/jumble
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron45
-	provides = jumble=26.11.1
+	provides = jumble=26.11.2
 	conflicts = jumble
 	options = !emptydirs
-	source = LICENSE-26.11.1::https://raw.githubusercontent.com/CodyTseng/jumble/v26.11.1/LICENSE
+	source = LICENSE-26.11.2::https://raw.githubusercontent.com/CodyTseng/jumble/v26.11.2/LICENSE
 	source = jumble.js
 	source = jumble.sh
 	sha256sums = 636c9ac311004c9c7a64045f683eb1c05e907ea514b268b0cc09f935532d1fb9
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
-	source_aarch64 = jumble-26.11.1-aarch64.deb::https://github.com/CodyTseng/jumble/releases/download/v26.11.1/Jumble-linux-arm64.deb
-	sha256sums_aarch64 = 7d4a06e31f5b0f7abb89bca40212ab211294e34232ccbdb9019b1b44ee7150bb
-	source_x86_64 = jumble-26.11.1-x86_64.deb::https://github.com/CodyTseng/jumble/releases/download/v26.11.1/Jumble-linux-amd64.deb
-	sha256sums_x86_64 = ec5715b656f58cc8902aa21190a7d5ae0fb0346112de53ab07787125fe9dcaa0
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = jumble-26.11.2-aarch64.deb::https://github.com/CodyTseng/jumble/releases/download/v26.11.2/Jumble-linux-arm64.deb
+	sha256sums_aarch64 = 07056a66e6e32fbab5d1e1357f2a5021842b38f1a448250eaff38ea400c1753b
+	source_x86_64 = jumble-26.11.2-x86_64.deb::https://github.com/CodyTseng/jumble/releases/download/v26.11.2/Jumble-linux-amd64.deb
+	sha256sums_x86_64 = 167d9b2d32aa2fb91b70c59ee7bda5f948ae52e2c75224a41639540653a4f68f
 
 pkgname = jumble-bin
