@@ -1,0 +1,14 @@
+pkgbase = r-skat
+	pkgdesc = SNP-Set (Sequence) Kernel Association Test
+	pkgver = 2.2.5
+	pkgrel = 2
+	url = https://cran.r-project.org/package=SKAT
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = r-rspectra
+	depends = r-spatest
+	source = https://cran.r-project.org/src/contrib/SKAT_2.2.5.tar.gz
+	md5sums = 1eeba626224438128a4d8b3d5e070c79
+	b2sums = 7b2d6d80a266e5abf27dcbebe17f8ec02552ca7149e94b409a15a9b491b0dd86acd81ae2579a8a28f1f150f132728697b859e5fe82218213d1f2be757414e8e1
+
+pkgname = r-skat
