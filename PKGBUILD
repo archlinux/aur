@@ -2,7 +2,7 @@
 
 pkgname=python-md2zhihu
 _name=${pkgname#python-}
-pkgver=0.22
+pkgver=0.23
 pkgrel=1
 pkgdesc="convert markdown to zhihu compatible format"
 provides=(${pkgname})
@@ -37,7 +37,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('9f1a728e5aec966870ce6d07a07e08e67fd5fbd89c78002b06825c3aec527bbd')
+sha256sums=('3412aa6ff9874e5ceb86c3e9d7e081b35541ee61de7c0e5c67f0e3619c3d5bb2')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx

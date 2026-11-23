@@ -1,6 +1,6 @@
 pkgbase = python-md2zhihu
 	pkgdesc = convert markdown to zhihu compatible format
-	pkgver = 0.22
+	pkgver = 0.23
 	pkgrel = 1
 	url = https://github.com/drmingdrmer/md2zhihu
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-md2zhihu
 	depends = python-yaml
 	provides = python-md2zhihu
 	conflicts = python-md2zhihu
-	source = md2zhihu::git+https://github.com/drmingdrmer/md2zhihu.git#tag=v0.22
-	sha256sums = 9f1a728e5aec966870ce6d07a07e08e67fd5fbd89c78002b06825c3aec527bbd
+	source = md2zhihu::git+https://github.com/drmingdrmer/md2zhihu.git#tag=v0.23
+	sha256sums = 3412aa6ff9874e5ceb86c3e9d7e081b35541ee61de7c0e5c67f0e3619c3d5bb2
 
 pkgname = python-md2zhihu
