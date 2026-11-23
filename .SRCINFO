@@ -1,13 +1,13 @@
 pkgbase = edor
 	pkgdesc = CUI text editor
-	pkgver = 1.99
+	pkgver = 1.100
 	pkgrel = 0
 	url = https://github.com/colin-i/edor
 	arch = any
 	license = 0BSD
 	makedepends = bc
 	depends = ncurses
-	source = edor-1.99-0.tar.gz::https://github.com/colin-i/edor/archive/edor-1.99-0.tar.gz
-	sha256sums = aca60caa88be549fab4e56c390d94c61e959c260f1469eab18fb344fe62c87db
+	source = edor-1.100-0.tar.gz::https://github.com/colin-i/edor/archive/edor-1.100-0.tar.gz
+	sha256sums = 19c7f83d738af0cf271265744e01feba867aa16b6a26069f80df6ca3bc91d905
 
 pkgname = edor
