@@ -21,7 +21,7 @@ optdepends=(
     'papirus-folders: folder icon theming'
     'gpu-screen-recorder: screen recorder'
 )
-makedepends=('git' 'cmake' 'ninja' 'qt6-wayland' 'wayland-protocols')
+makedepends=('git' 'cmake' 'ninja' 'qt6-wayland' 'wayland-protocols>=1.37')
 provides=($pkgname)
 conflicts=($pkgname-git)
 _pkg="${pkgname}-v${pkgver}"

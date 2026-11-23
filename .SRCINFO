@@ -10,7 +10,7 @@ pkgbase = caelestia-lib
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = qt6-wayland
-	makedepends = wayland-protocols
+	makedepends = wayland-protocols>=1.37
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = ffmpeg
