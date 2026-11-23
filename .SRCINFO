@@ -1,21 +1,22 @@
 pkgbase = mkfont
-	pkgdesc = A free (libre) tool to create & export fonts from existing assets. Component-based workflow, with advanced features to nit-pick & tweak metrics in a non-destructive way!(Use system-wide electron)
-	pkgver = 1.2.2
-	pkgrel = 10
+	pkgdesc = A free (libre) tool to create & export fonts from existing assets. Component-based workflow, with advanced features to nit-pick & tweak metrics in a non-destructive way!
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://nebukam.github.io/mkfont/
 	arch = any
 	license = MIT
 	makedepends = gendesk
-	makedepends = yarn
 	makedepends = npm
-	makedepends = nvm
 	makedepends = git
 	makedepends = nvm
-	depends = electron24
+	makedepends = jq
+	depends = electron45
 	conflicts = mkfont
-	source = mkfont-1.2.2::git+https://github.com/Nebukam/mkfont#tag=v1.2.2
+	source = mkfont-2.0.1.tar.gz::https://github.com/Nebukam/mkfont/archive/refs/tags/v2.0.1.tar.gz
+	source = mkfont.js
 	source = mkfont.sh
-	sha256sums = 98b83ebac816bb6bdb8258e2ed14067a4b0869d1d86ba71aa5cbdda26be9b0f1
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 1afe70417b6091305b37a3d553edbe57516270cd53010ec56590ddcc26d821ba
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
 pkgname = mkfont
