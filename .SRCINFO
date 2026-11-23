@@ -1,6 +1,6 @@
 pkgbase = omawarden-app-git-bin
 	pkgdesc = Omawarden desktop app for Bitwarden/Vaultwarden (prebuilt development build)
-	pkgver = 0.4.0.dev.dc92978
+	pkgver = 0.6.0.dev.f94459e
 	pkgrel = 1
 	url = https://github.com/omawarden/omawarden-app
 	install = omawarden-policy.install
@@ -12,14 +12,15 @@ pkgbase = omawarden-app-git-bin
 	depends = libsecret
 	depends = polkit
 	depends = wl-clipboard
+	depends = omawarden-bin
 	optdepends = libfido2: WebAuthn / Passkey / FIDO2 security key support
 	provides = omawarden-app
 	provides = omawarden-app-dev-bin
 	conflicts = omawarden-app
 	conflicts = omawarden-app-dev-bin
-	source_x86_64 = omawarden-app-x86_64.tar.gz::https://github.com/omawarden/omawarden-app/releases/download/dev/omawarden-app-0.4.0-dev-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = f6419cd756e7d6f917ebf00c984ed596444b45e77e57913cdaf7e9e2cf658c7b
-	source_aarch64 = omawarden-app-aarch64.tar.gz::https://github.com/omawarden/omawarden-app/releases/download/dev/omawarden-app-0.4.0-dev-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 876c352b937997928c610b6529eeb186dba237950debfada5466958c9760c03e
+	source_x86_64 = omawarden-app-x86_64.tar.gz::https://github.com/omawarden/omawarden-app/releases/download/dev/omawarden-app-0.6.0-dev-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1cbe88d43b6bf1321f63d49f07ece2aeb27d8172179747559577ef7b494c4b0a
+	source_aarch64 = omawarden-app-aarch64.tar.gz::https://github.com/omawarden/omawarden-app/releases/download/dev/omawarden-app-0.6.0-dev-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3312d7f51ecad67433af730f75ce6890bd179ecc700362c8d9c165866d7be2c9
 
 pkgname = omawarden-app-git-bin
