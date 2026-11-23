@@ -1,0 +1,26 @@
+pkgbase = zc
+	pkgdesc = Write like a high-level language, run like C; mysterious fork from the 5th dimension.
+	pkgver = 0.5.2.rc1.r107.g774e937
+	pkgrel = 1
+	url = https://github.com/zenc-lang-ce/zenc
+	arch = x86_64
+	arch = pentium4
+	arch = aarch64
+	arch = armv7h
+	arch = riscv64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	optdepends = gcc: gcc backend support
+	optdepends = clang: clang backend support
+	optdepends = zig: zig backend support
+	provides = zc
+	provides = zen-c
+	conflicts = zen-c
+	conflicts = zen-c-bin
+	replaces = zenc-git
+	source = zen-c::git+https://github.com/zenc-lang-ce/zenc.git#branch=main
+	b2sums = SKIP
+
+pkgname = zc
