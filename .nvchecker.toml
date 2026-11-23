@@ -1,0 +1,3 @@
+[perl-http-request-ascgi]
+source = "cpan"
+cpan = "HTTP-Request-AsCGI"
