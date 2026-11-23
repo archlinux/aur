@@ -1,5 +1,5 @@
 pkgbase = ante-bin
-	pkgdesc = Ante CLI (prebuilt static binary from the official release)
+	pkgdesc = Ante — A self-contained coding agent.
 	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://ante.run
