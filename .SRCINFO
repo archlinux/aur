@@ -1,6 +1,6 @@
 pkgbase = synk
 	pkgdesc = Generate OpenSSH config from Bitwarden profiles
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/nivek-sh/synk
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = synk
 	depends = bitwarden-cli
 	depends = openssh
 	options = !debug
-	source = synk-0.4.1.tar.gz::https://github.com/nivek-sh/synk/releases/download/v0.4.1/synk-0.4.1.tar.gz
-	sha256sums = 238f6016b78013863af19ddee5fd1c508f2f242f42ce65bed9a7bd05cdb255e2
+	source = synk-0.4.2.tar.gz::https://github.com/nivek-sh/synk/releases/download/v0.4.2/synk-0.4.2.tar.gz
+	sha256sums = 97966bf61558d007049a7a6f3107a620297c5565a501d7c8bf4efe5b24825d78
 
 pkgname = synk
