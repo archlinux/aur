@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RegEnrich
-_pkgver=1.18.1
+_pkgver=1.22.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,10 +16,13 @@ depends=(
   r-deseq2
   r-dose
   r-dplyr
+  r-enrichit
   r-fgsea
   r-ggplot2
+  r-gson
   r-limma
   r-magrittr
+  r-qvalue
   r-randomforest
   r-reshape2
   r-s4vectors
@@ -35,8 +38,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1798498bdc626d50024c63dc021c6ee9')
-b2sums=('34cf98528a9f252e25b298cf0ee2fd5d9bf71f7aeac464bccef7ef2852376e6d034cf8a7a190fd14ef82fb69ffb205857302bd500a62ea4569da69dcb955788d')
+md5sums=('e64d852114fcbcef58679b5497695c14')
+b2sums=('1b36c9d989e63e58c5501eebe49f8e5b534cdb59c9aee327e80a1fc5fa276aabe238bbb1fb2bdd23610826bd85a561f0760344f0226f4d4bee9c7a132b5c59e7')
 
 build() {
   mkdir build
