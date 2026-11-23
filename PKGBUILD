@@ -5,8 +5,8 @@
 # SRS is an independent project, not affiliated with SIV or its author.
 
 pkgname=srs-sysinfo
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="Linux system information viewer inspired by SIV64X (independent, not affiliated with SIV): GTK3 GUI, 558 report items, user guide, CPU and GPU burn-in, benchmarks"
 arch=('x86_64')
 url="https://github.com/eugenesflanagin-spec/srs-sysinfo"
@@ -49,7 +49,7 @@ optdepends=(
   'cuda: NVIDIA runtime compiler (libnvrtc) for SRS CUDA kernels, only a fallback since 2.3 (not needed with ZLUDA; may remove ZLUDA); can be installed later from Options'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('67414e1884ecf9403ea60db29847102ebf7102fdae291a135f12806f8ccca523')
+sha256sums=('1c29211baff21e865b2f2d9099bf851030461e04153fb3f0c12fcf80bc09a436')
 
 build() {
   cd "$pkgname-$pkgver"
