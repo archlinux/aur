@@ -1,7 +1,7 @@
 pkgbase = yamlresume
 	pkgdesc = Resumes as code in YAML
 	pkgver = 0.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yamlresume/yamlresume
 	arch = any
 	license = MIT

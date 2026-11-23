@@ -2,7 +2,7 @@
 
 pkgname=yamlresume
 pkgver=0.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Resumes as code in YAML"
 arch=('any')
 url="https://github.com/yamlresume/yamlresume"
@@ -19,7 +19,11 @@ package() {
         --prefix "${pkgdir}/usr" \
         "${srcdir}/${pkgname}-${pkgver}.tgz"
 
-    # Fix permissions
+    # Remove non-Linux prebuilt binaries from font-list so the arch=('any') package stays portable
+    rm -rf "${pkgdir}/usr/lib/node_modules/${pkgname}/node_modules/font-list/libs/"{darwin,win32}
+
+    # Fix ownership and permissions (npm may preserve build user uid/gid under fakeroot)
+    chown -R root:root "${pkgdir}"
     chmod -R go-w "${pkgdir}/usr"
 
     # Remove references to $pkgdir
