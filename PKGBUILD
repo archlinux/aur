@@ -31,11 +31,9 @@ optdepends=(
 
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/libracoder/kiri/archive/refs/tags/v$pkgver.tar.gz"
-	'kiri.sysusers'
 )
 sha512sums=(
 	'a140491540e4985cb2fa887f975266f56274498aaa563c7c733b8a50b335cdeb5de029a386088ae1f28f9d9891d1e5917ccf7c7142c7bf20764eb22e21532e43'
-	'1ef4eaf474069e760267a4152b380f7129804335593aa954da19265c015b1dd0f75bbd8795797454cc1f2b36db73aea3e36b4a7b5d703ca5a771f5bcf3836e20'
 )
 
 prepare() {
