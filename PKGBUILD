@@ -2,7 +2,7 @@
 # Maintainer: Daniel Lee Harple <git@dlh.dev>
 
 pkgname='vedi-bin'
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc='Pager for colored text; select with the keyboard and copy'
 url='https://github.com/dlh/vedi'
@@ -13,10 +13,10 @@ conflicts=('vedi')
 depends=('gcc-libs' 'glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/dlh/vedi/releases/download/v${pkgver}/vedi_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('5ed65ce748ce05d0e822ea9524b4503b9ff4c31b5900f89464cee845d5cb383a')
+sha256sums_aarch64=('80beab1885478c6db1e17d9c593170b7224168a08ad3e07e20b6ff18caef923e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/dlh/vedi/releases/download/v${pkgver}/vedi_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('0828f9019a70daea29c8fc8e81fa8302d9209395b79c67eab88a74cca5712b5a')
+sha256sums_x86_64=('d0ea0a88525f73b0574ac92d074c9d6bde91cc7c437cd30762dbdc529345b50f')
 
 package() {
   install -Dm755 vedi "${pkgdir}/usr/bin/vedi"
