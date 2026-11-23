@@ -1,6 +1,6 @@
 # Maintainer: Coobyk <mail@coobyk.com>
 pkgname=oblyx-gui
-pkgver=0.1.0.r77
+pkgver=0.1.0.r78
 pkgrel=1
 pkgdesc="Convert GoodNotes notebooks to SVG, PDF, PNG, and Notability .ntb (GUI)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('poppler: rasterize PDF page backgrounds for SVG/PNG output'
             'oblyx: command-line converter')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Coobyk/oblyx/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=(''fb91baeacac0cf95a72cddafae64dfd3d4672de1ed061ad9c67b40e8cd64b7e7'')
+sha256sums=(''c504ea8663ab7471f76812c177e8adeb9f2d75a599cec26315f2609700db12ed'')
 
 prepare() {
   cd "oblyx-$pkgver"
