@@ -1,7 +1,7 @@
 pkgbase = paexec-git
 	pkgdesc = Parallel executor, distributes tasks over network or CPUs (bleeding-edge version)
 	pkgver = 1.1.6.r1.eb4e1d4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cheusov/paexec
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = paexec-git
 	depends = glibc
 	depends = libmaa
 	depends = gawk
+	provides = paexec
+	conflicts = paexec
 	source = paexec::git+https://github.com/cheusov/paexec.git#branch=master
 	sha256sums = SKIP
 

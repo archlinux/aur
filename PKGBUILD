@@ -5,11 +5,13 @@
 _name=paexec
 pkgname="${_name}-git"
 pkgver=1.1.6.r1.eb4e1d4
-pkgrel=1
+pkgrel=2
 pkgdesc="Parallel executor, distributes tasks over network or CPUs (bleeding-edge version)"
 arch=('i686' 'x86_64')
 url="https://github.com/cheusov/${_name}"
 license=('MIT')
+provides=("${_name}")
+conflicts=("${_name}")
 depends=('runawk' 'bash' 'glibc' 'libmaa' 'gawk')
 makedepends=('git' 'bmake' 'mk-configure' 'clang')
 
@@ -18,7 +20,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_name}"
-  git describe --tags --long | sed "s/\-/.r/;s/\-g/./"
+  git describe --tags --long --match="paexec-*" \
+      | sed 's/^paexec-//;s/-/.r/;s/-g/./'
 }
 
 prepare() {
@@ -54,6 +57,6 @@ package() {
 
   mkcmake DESTDIR="$pkgdir" install
 
-  install -Dm644 <(sed -n '45,64p' Makefile) "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 <(sed -n '45,64p' Makefile | sed 's/^# //; s/^#//') "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
