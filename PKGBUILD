@@ -2,7 +2,7 @@
 
 pkgname=python-connexion
 _name=${pkgname#python-}
-pkgver=3.3.0
+pkgver=3.4.0.dev1
 pkgrel=1
 pkgdesc="Connexion is a modern Python web framework that makes spec-first and api-first development easy"
 arch=(any)
@@ -24,7 +24,7 @@ depends=(
 )
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('ee3a9ae364a0af8ecf19064cb5882833aed9378981ca9856b15422a8025bbcf9')
+sha256sums=('18ae3316e238fd2cdec6348ec9e1d176a057b74ba84550286bc3d23e2b6fc84c')
 
 build() {
     cd "$_name-$pkgver"
