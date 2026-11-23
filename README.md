@@ -8,13 +8,28 @@ login/unlock.
 
 ## Install
 
+**If you have the `python-validity` / `open-fprintd` stack installed, remove it
+first.** It replaces `fprintd` and claims the same reader, so the two cannot
+coexist:
+
+    paru -Rns python-validity open-fprintd fprintd-clients-git
+
+`fprintd-clients-git` is the patched client half of that stack and conflicts
+with stock `fprintd`, while `open-fprintd` and `python-validity` depend on it —
+leave either behind and you have two drivers competing for one sensor. Confirm
+the stock daemon is back before continuing:
+
+    sudo pacman -S --needed fprintd
+
+Then install this driver:
+
+    paru -S libfprint-2-tod1-synaptics009a
+
+Or from git:
+
     git clone https://github.com/hustles/libfprint-2-tod1-synaptics009a
     cd libfprint-2-tod1-synaptics009a
     makepkg -si
-
-Once the package is registered in the AUR, this also works:
-
-    paru -S libfprint-2-tod1-synaptics009a
 
 ## Then run the one-time setup
 
