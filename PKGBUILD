@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Ternary
-_pkgver=2.3.5
+_pkgver=2.3.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,8 +10,8 @@ arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
+  r-clue
   r-plottools
-  r-rcpphungarian
   r-shiny
   r-sp
 )
@@ -26,8 +26,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7bd5b26dc473a30c2d2a669d5fe0bbe9')
-b2sums=('94f3f047dcbf0d4acbb8112bff2a2a7eca5298eae39f156d0a889a05cd120915c3e017c1eeec5f617c7b78d1d6e7da615434e8807beb1fc7f5ed0c71bc6752c4')
+md5sums=('e0748bb78ef0530c203ca46082e57ff0')
+b2sums=('961b30b1901e77ef2c7b346f139544b4295e0c99ba1c98aa1f9b0c622e360b83451a7d03dd830044264827f738f81c1d778c2d8277f3413ddd6424e16e63fd97')
 
 build() {
   mkdir build
