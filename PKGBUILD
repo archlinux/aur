@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DAPAR
-_pkgver=1.40.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-biobase
   r-dapardata
   r-foreach
-  r-highcharter
   r-msnbase
+  r-plotly
 )
 checkdepends=(
   r-imp4p
@@ -64,8 +64,8 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('31a0bf6abf2596aa3249584dc402f60e')
-b2sums=('0f297217a8f307725205ea6315c204f41206ed668196d417c3b73bc3ac0a41342ce56685bdded9145c8be81334d55fa24a5325b2e7c4b5712d35b6ca6e518168')
+md5sums=('d3b8d1a3142534f962242b2d31cbab6b')
+b2sums=('588685201a32d2f159b8b8e7a82a50c60533a8a439c5b00626ff537c3b7a29e8557d21e440a2bfe348f3898da78b24cfe6c571b9df92eeb5d8984f1b2596eaf6')
 
 build() {
   mkdir build
