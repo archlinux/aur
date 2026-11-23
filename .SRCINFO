@@ -1,6 +1,6 @@
 pkgbase = qdre-viewer-git
 	pkgdesc = Simple image viewer with wide-gamut and 10-bit support
-	pkgver = 2.0.g26588a5
+	pkgver = 2.0.r8.g3a169b0
 	pkgrel = 1
 	url = https://github.com/zaps166/qdre-viewer
 	arch = x86_64

@@ -1,6 +1,6 @@
 _pkgname=qdre-viewer
 pkgname=${_pkgname}-git
-pkgver=2.0.g26588a5
+pkgver=2.0.r8.g3a169b0
 pkgrel=1
 pkgdesc='Simple image viewer with wide-gamut and 10-bit support'
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!lto !debug)
 
 pkgver() {
   cd ${_pkgname}
-  printf "%s.g%s" "$(sed -n '/^project(/,/^)/s/^    VERSION \([0-9.]*\)$/\1/p' CMakeLists.txt)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.g%s" "$(sed -n '/^project(/,/^)/s/^    VERSION \([0-9.]*\)$/\1/p' CMakeLists.txt)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
