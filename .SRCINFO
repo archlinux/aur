@@ -1,0 +1,23 @@
+pkgbase = r-gpgp
+	pkgdesc = Fast Gaussian Process Computation Using Vecchia's Approximation
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://cran.r-project.org/package=GpGp
+	arch = x86_64
+	license = MIT
+	makedepends = r-bh
+	makedepends = r-rcpparmadillo
+	depends = blas
+	depends = lapack
+	depends = r-fnn
+	depends = r-rcpp
+	optdepends = r-fields
+	optdepends = r-knitr
+	optdepends = r-maps
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/GpGp_1.0.0.tar.gz
+	md5sums = f1ab9b3a5bc579283cd9c3f218a19bd1
+	b2sums = a6856250bcf1f65290570ec89dca8e298b23f8a78cb8ba28ca190d6b49fb7520bed43319e5f2726ea2cbb72811137e31aebc7d105fac09f752404ba1a7efc7e7
+
+pkgname = r-gpgp
