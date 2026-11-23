@@ -1,6 +1,6 @@
 pkgbase = edit0
 	pkgdesc = run0edit - Script to edit a single file as root using run0
-	pkgver = 0.6.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/HastD/run0edit
 	arch = any
@@ -8,7 +8,8 @@ pkgbase = edit0
 	makedepends = meson
 	makedepends = pandoc-cli
 	depends = systemd>=256
-	source = run0edit-0.6.1.tar.gz::https://github.com/HastD/run0edit/archive/refs/tags/v0.6.1.tar.gz
-	b2sums = 1c2095eacc864a86652297403958d279b4bb39711539a86845b3684fcd9518dedba6f57e41c0976aee286587376b4fea61b32780802abbc3893bba5d9e8ba765
+	depends = python>=3.11
+	source = run0edit-0.7.2.tar.gz::https://github.com/HastD/run0edit/archive/refs/tags/v0.7.2.tar.gz
+	b2sums = b325fa8c68bc47fbbefc238116506ea82170f31507624995fe84bf5d4c0b09f8d7e348aaf13f113e64a7759d48fdaddf531cf9700d37c0d16985fe18ffb6d0f4
 
 pkgname = edit0
