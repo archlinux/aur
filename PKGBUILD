@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=rigtop-bin
-pkgver=0.35.1
+pkgver=0.36.2
 pkgrel=1
 pkgdesc="System monitor for workstations, laptops and NAS with storage health, per-process GPU memory"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/rigtop-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/rigtop-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('eb529b56765c04d2e63cf002542188fc925fa7556e7871b8160c4d8737cc5df6')
-sha256sums_aarch64=('0b81fbd38a991c803cc533d33b96889c1e31fd267fb5d2d4b0429ed1d83b7faf')
+sha256sums_x86_64=('c4849d2d00757167d8b50c196be15fbdbd252c8a7fefa229fdbadf61d751016e')
+sha256sums_aarch64=('df99440ac3c1e47f049b95af0c1dd6e7f54f7f04356d70c299a8ed7e328847d9')
 
 package() {
   local _dir
