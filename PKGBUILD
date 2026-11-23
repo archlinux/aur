@@ -1,7 +1,7 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=hiddify
-pkgver=5.5.5
+pkgver=5.9.15
 _flutter=3.38.5
 pkgrel=1
 pkgdesc="Multi-platform proxy client based on Sing-box universal proxy tool-chain"
@@ -20,7 +20,7 @@ depends=('at-spi2-core'
          'libgcc'
          'libstdc++'
          'pango')
-makedepends=('clang' 'cmake' 'fvm' 'gendesk' 'git' 'go' 'ninja' 'patchelf')
+makedepends=('chrpath' 'clang' 'cmake' 'fvm' 'gendesk' 'git' 'go' 'ninja')
 conflicts=("${pkgname}-next")
 replaces=("${pkgname}-next")
 source=("git+${url}.git#tag=v${pkgver}"
@@ -38,7 +38,7 @@ source=("git+${url}.git#tag=v${pkgver}"
         "git+https://github.com/hiddify/tailscale.git"
         "git+https://github.com/hiddify/wireguard-go.git"
         "git+https://github.com/hiddify/MasterDnsVPN.git")
-sha256sums=('8e4f23e5c5756d8ca59c9cb99b4a9f49be3081f27ef8ab0eedb558f577d33aa2'
+sha256sums=('918157cb75d18450ce66cab0ab2f91d602b6c658ab1628c5c84b1196b84655df'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -91,6 +91,7 @@ prepare() {
         --name "${pkgname^}" \
         --genericname "${pkgname^}" \
         --categories 'Network' \
+        --mimetypes 'x-scheme-handler/hiddify;x-scheme-handler/v2ray;x-scheme-handler/v2rayn;x-scheme-handler/v2rayng;x-scheme-handler/clash;x-scheme-handler/clashmeta;x-scheme-handler/sing-box' \
         --startupnotify \
         --custom 'Keywords=Hiddify;Proxy;VPN;V2ray;Nekoray;Xray;Psiphon;OpenVPN;AntiCensorship;'
 
@@ -112,20 +113,18 @@ build() {
             -linkmode=external
             -checklinkname=0
             -buildid=
-            -X github.com/hiddify/hiddify-core/v2/hcore/buildid.ID="$(uuidgen 2>/dev/null)"
-            -X github.com/hiddify/hiddify-core/v2/hcommon/constants.Version="$(git describe --tags --match 'v[0-9]*')"
-            -X github.com/sagernet/sing-box/constant.Version="$(cd hiddify-sing-box && go run ./cmd/internal/read_tag/ --nightly)"
+            -X "github.com/hiddify/hiddify-core/v2/hcore/buildid.ID=$(uuidgen 2>/dev/null)"
+            -X "github.com/hiddify/hiddify-core/v2/hcommon/constants.commit=$(git rev-parse --short=7 HEAD 2>/dev/null)"
+            -X "github.com/hiddify/hiddify-core/v2/hcommon/constants.Version=$(git describe --tags --match 'v[0-9]*')"
+            -X "github.com/sagernet/sing-box/constant.Version=$(cd hiddify-sing-box && go run ./cmd/internal/read_tag/ --nightly)"
         )
         local tags="$(make NAIVE=0 print-CLI_TAGS)"
         go build -buildmode c-shared -ldflags "${ldflags[*]}" -tags "${tags}" -o bin/lib/hiddify-core.so ./platform/desktop
-        CGO_LDFLAGS+=" ./bin/lib/hiddify-core.so"
+        CGO_LDFLAGS+=" -L./bin/lib -l:hiddify-core.so -Wl,-rpath,/usr/lib/${pkgname}/lib"
         go build -buildmode pie -ldflags "${ldflags[*]}" -o bin/HiddifyCli ./cmd/bydll
     )
-    fvm flutter build linux --release --target lib/main_prod.dart
-
-    cd build/linux/x64/release/bundle
-    patchelf --set-rpath "/usr/lib/${pkgname}/lib" lib/*plugin.so
-    patchelf --replace-needed ./bin/lib/hiddify-core.so "/usr/lib/${pkgname}/lib/hiddify-core.so" HiddifyCli
+    fvm flutter build linux --release --target lib/main_prod.dart --dart-define "commit=$(git rev-parse --short=7 HEAD 2>/dev/null)"
+    chrpath --replace "/usr/lib/${pkgname}/lib" build/linux/x64/release/bundle/lib/*plugin.so
 }
 
 package() {
