@@ -1,6 +1,6 @@
 # Maintainer: Martin Kopecký <kopecky@thekrew.app>
 pkgname=spot-git
-pkgver=0.4.0.r0.g14d15eb
+pkgver=0.5.0.r0.g3528402
 pkgrel=1
 pkgdesc='TOML+CSS dialog runtime for Wayland (layer-shell overlays), built from git'
 arch=('x86_64')
@@ -34,4 +34,6 @@ package() {
   # examples/ has a demo/ subdirectory, which `install -t ... examples/*` would refuse
   cp -r examples "$pkgdir/usr/share/doc/spot/"
   [ ! -d docs ] || cp -r docs "$pkgdir/usr/share/doc/spot/"   # absent before v0.2.1
+  [ ! -f packaging/systemd/spot.service ] ||   # absent before v0.4.1
+    install -Dm644 packaging/systemd/spot.service "$pkgdir/usr/lib/systemd/user/spot.service"
 }
