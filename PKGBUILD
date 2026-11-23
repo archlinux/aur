@@ -1,7 +1,7 @@
 # Maintainer: Guoyi <kuoi@bioarchlinux.org>
 
 _pkgname=IlluminaHumanMethylationEPICv2anno.20a1.hg38
-_pkgver=1.0.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8c352dbfcc084a2873a1a56d2fec1928')
-b2sums=('6ebe46256b12a3bdd55607bd953fe22dd158b905cc1596f1740cef82f49d0a89b99047342bffdf23358e6cb8a798b7e75883d4fa99dd6fc15737e5e6de69ec5c')
+md5sums=('5cae8500b75de3d1c2bd0458484aec2a')
+b2sums=('ff53f1035fbd49ecf9d67bee9f4b14800e7dda01a0b5061eb59a896072a1d45d55ef7ced5330574a4b662143f620a6a4fe38f467f149cf1a2601457e1a3808f8')
 
 build() {
   mkdir build
