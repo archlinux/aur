@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hihat
-pkgver=2.4.0
+pkgver=2.5.0
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -18,31 +18,14 @@ makedepends=(
     'npm'
     'jq'
 )
-_set_build_env() {
-	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
-	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	export ELECTRON_BUILDER_OFFLINE=true
-	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
-	export HOME="${srcdir}/.home"
-	export XDG_CACHE_HOME="${HOME}/.cache"
-	export XDG_CONFIG_HOME="${HOME}/.config"
-	export XDG_DATA_HOME="${HOME}/.local/share"
-	export npm_config_cache="${HOME}/.npm_cache"
-	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
-	export COREPACK_HOME="${HOME}/.corepack"
-	export npm_config_audit=false
-	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
-	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
-}
 source=(
     "${pkgname}-${pkgver}::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('1844f8690b17ea53c004225cf61cd4d31c46f187084861422ce1c8771774a112'
+sha256sums=('070972defbf9186f22891c235d6d8a9e20650c45f73ece65a229e78cec9f92dd'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -67,6 +50,35 @@ _get_electron_version() {
 	(( _elec_ver == _electronversion )) && c=32 || c=31
 	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
+_set_electron_build_env() {
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export ELECTRON_BUILDER_OFFLINE=true
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+}
+_set_npm_build_env() {
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export npm_config_cache="${HOME}/.npm_cache"
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${HOME}/.corepack"
+	export npm_config_audit=false
+	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
+	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
+}
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+}
 prepare() {
     cd "$(_get_project_dir)"
     _get_electron_version
@@ -81,7 +93,8 @@ prepare() {
         --name="${pkgname}" \
         --exec="${pkgname} %U"
     _ensure_local_nvm
-    _set_build_env
+    _set_electron_build_env
+    _set_npm_build_env
     jq '.bundle.active = false' src-tauri/tauri.conf.json > tmp.json && mv tmp.json src-tauri/tauri.conf.json
     export NODE_ENV=development
     npm install
@@ -89,12 +102,13 @@ prepare() {
 build() {
     cd "$(_get_project_dir)"
     _ensure_local_nvm
-    _set_build_env
+    _set_electron_build_env
+    _set_npm_build_env
     export NODE_ENV=production
     npx ts-node ./.erb/scripts/clean.js dist
     npm run build
     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
-    rm -rf "$(_get_app_dir)/resources/default_app.asar"
+    _delete_other_arch_files
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
