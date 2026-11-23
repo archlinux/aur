@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RiboCrypt
-_pkgver=1.13.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.13.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Interactive visualization in genomics'
 arch=('any')
@@ -15,9 +15,13 @@ depends=(
   r-biocparallel
   r-biostrings
   r-bslib
+  r-complexheatmap
+  r-cowplot
+  r-crosstalk
   r-data.table
   r-dplyr
-  r-genomeinfodb
+  r-dt
+  r-fst
   r-genomicfeatures
   r-genomicranges
   r-ggplot2
@@ -30,13 +34,19 @@ depends=(
   r-nglviewer
   r-orfik
   r-plotly
+  r-rclipboard
   r-rcurl
   r-rlang
+  r-rtracklayer
+  r-seqinfo
   r-shiny
   r-shinycssloaders
   r-shinyhelper
   r-shinyjqui
+  r-shinyjs
+  r-shinywidgets
   r-stringr
+  r-writexl
 )
 optdepends=(
   r-biocstyle
@@ -46,7 +56,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d75a35df135ddb1818b6cd06427ea02654d5bbaea34c135cc37b1077f311b26b')
+sha256sums=('d38bc27704859f6df24838ab7ac5644fabf40906375f6cabe0998619fed84051')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
