@@ -29,4 +29,5 @@ package() {
     install -Dm644 riptide.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/riptide.svg"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 LICENSE-EXCEPTION "$pkgdir/usr/share/licenses/$pkgname/LICENSE-EXCEPTION"
+    install -Dm644 THIRD-PARTY-LICENSES.txt "$pkgdir/usr/share/licenses/$pkgname/THIRD-PARTY-LICENSES.txt"
 }
