@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gemma.R
-_pkgver=3.2.0
+_pkgver=3.8.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,9 +19,11 @@ depends=(
   r-glue
   r-httr
   r-jsonlite
+  r-kableextra
   r-lubridate
   r-magrittr
   r-memoise
+  r-pheatmap
   r-r.utils
   r-rappdirs
   r-rlang
@@ -42,12 +44,10 @@ optdepends=(
   r-dplyr
   r-ggplot2
   r-ggrepel
-  r-kableextra
   r-knitr
   r-listviewer
   r-magick
   r-microbenchmark
-  r-pheatmap
   r-poolr
   r-purrr
   r-rmarkdown
@@ -56,8 +56,8 @@ optdepends=(
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7a91640afaf517a51ef99db1851a5afd')
-b2sums=('9e92ce1cd1b90318822ba8a8ea89d641bb347f47b0d8d8bb86aea0927e7f2f3183dd230c210d4a41df911d374d1e4e21e9cfc9a198b0c47b59d35f7daf6bd9d0')
+md5sums=('9dd9ba6447ff7f62be5b2f70fb893f3a')
+b2sums=('7407abcde70e61eb3f45ec418c282dc996092a85dea5b56a1ffbc204d63af97a5133c0a2f2108e5e32382b4ed1ee6a08f8108db17cb6ee99a58db9405a7dd204')
 
 build() {
   mkdir build
