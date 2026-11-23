@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=msigdbr
-_pkgver=10.0.2
+_pkgver=26.1.1
 pkgname=r-${_pkgname,,}
-pkgver=10.0.2
+pkgver=26.1.1
 pkgrel=1
 pkgdesc='MSigDB Gene Sets for Multiple Organisms in a Tidy Data Format'
 arch=('any')
@@ -13,19 +13,21 @@ depends=(
   r
   r-babelgene
   r-dplyr
-  r-magrittr
   r-rlang
   r-tibble
   r-tidyselect
   r-assertthat
+  r-curl
+  r-lifecycle
 )
 optdepends=(
   r-knitr
   r-rmarkdown
+  r-roxygen2
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('926dfef535da964cc58aef58bfdedc137fa42d10a5b51619cf537f848c36ee02')
+sha256sums=('b66ffc38bde56230da60f6d9af3dd363d0cb7a0b4b7693e5001c3634cb5eb58f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
