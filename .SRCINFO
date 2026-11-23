@@ -1,6 +1,6 @@
 pkgbase = wlens
 	pkgdesc = An image viewer for Wayland, configured and extended with Lua
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Nynxz/wlens
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = wlens
 	depends = glibc
 	depends = gst-plugins-base-libs
 	depends = gstreamer
+	depends = libarchive>=3.8.11
 	depends = libxkbcommon
 	depends = vulkan-icd-loader
 	depends = wayland
@@ -20,7 +21,7 @@ pkgbase = wlens
 	optdepends = libnotify: a notification when wlens fails to start
 	optdepends = wl-clipboard: copying paths and images
 	options = !lto
-	source = wlens-0.1.0.tar.gz::https://github.com/Nynxz/wlens/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = d42d2d0c12e4cb8d701c374c018f04070465a18894e7db261d73f1bcc86336ea
+	source = wlens-0.2.0.tar.gz::https://github.com/Nynxz/wlens/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = aa64a137b799278f3e83e660876e3eab172c35347ec2a86c259f778a4e8977bb
 
 pkgname = wlens

@@ -1,7 +1,7 @@
 # Maintainer: Nynxz
 
 pkgname=wlens
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="An image viewer for Wayland, configured and extended with Lua"
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,7 @@ depends=(
   'glibc'
   'gst-plugins-base-libs'
   'gstreamer'
+  'libarchive>=3.8.11'
   'libxkbcommon'
   'vulkan-icd-loader'
   'wayland'
@@ -27,7 +28,7 @@ optdepends=(
 # Lua is built from C; makepkg's LTO objects can't be linked by rustc.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d42d2d0c12e4cb8d701c374c018f04070465a18894e7db261d73f1bcc86336ea')
+sha256sums=('aa64a137b799278f3e83e660876e3eab172c35347ec2a86c259f778a4e8977bb')
 
 prepare() {
   cd "$pkgname-$pkgver"
