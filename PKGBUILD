@@ -1,32 +1,27 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: sukanka <su975853527@gmail.com>
 
-_bcname=BSgenome.Hsapiens.NCBI.GRCh38
-_bcver=1.3.1000
-pkgname="r-${_bcname,,}"
-pkgver="${_bcver//[:-]/.}"
-pkgrel=3
-pkgdesc="Full genome sequences for Homo sapiens (GRCh38)"
-arch=("any")
-url="https://bioconductor.org/packages/release/data/annotation/html/${_bcname}.html"
-license=("Artistic2.0")
+_pkgname=BSgenome.Hsapiens.NCBI.GRCh38
+_pkgver=1.3.1000
+pkgname=r-${_pkgname,,}
+pkgver=1.3.1000
+pkgrel=4
+pkgdesc='Full genome sequences for Homo sapiens (GRCh38)'
+arch=('any')
+url="https://bioconductor.org/packages/${_pkgname}"
+license=('Artistic2.0')
 depends=(
-    "r"
-	"r-bsgenome>=1.33.5"
+  r
+  r-bsgenome
 )
-
-source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("db497e7de36335b0d5716ffef6082e1f6e147557c9743362d0d7c59da17fb974521b59bff1ae65f1f16e8d146e5baf6c130a9536565d1384d00347b21034601a")
+source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('812538bdacfd0eb90714916203dec85b22de2a5f7aaf0d0431d0a15370c3e578')
 
 build() {
-    mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}/build/"
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-    install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${srcdir}/build/${_bcname}" "${pkgdir}/usr/lib/R/library"
-
-    if [[ -f "${_bcname}/LICENSE" ]]; then
-        install -Dm0644 "${_bcname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  fi
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
+# vim:set ts=2 sw=2 et:
