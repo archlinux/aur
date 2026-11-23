@@ -239,10 +239,6 @@ prepare() {
   _sg_patch \
     '($$$PRE,function(){$$$INIT}(),0)' \
     '($$$PRE,function(){$$$INIT}())'
-  # 7. the win32 branch was taking the Linux code path
-  _sg_patch_select ternary_expression \
-    '"win32"===process.platform?function($E,$T){$$$A}($E,$T):$ALT' \
-    '"linux"===process.platform?function($E,$T){$$$A}($E,$T):$ALT'
 
   # --- verify every patch landed ----------------------------------------
   # A pattern can match and still produce the wrong result, so assert the
