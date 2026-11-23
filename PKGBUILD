@@ -1,14 +1,14 @@
 # Maintainer: Yoann Laissus <yoann.laissus@gmail.com>
 # Co-Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=wireview-linux
-pkgver=1.4.2.0
+pkgver=1.5.0.0
 pkgrel=1
 pkgdesc="Unofficial Linux port of the Thermal Grizzly WireView Pro II desktop application, with WireView Mini"
 arch=('x86_64')
 url="https://github.com/emaspa/wireview-linux"
 license=('custom')
 depends=('glibc' 'gcc-libs' 'zlib' 'fontconfig' 'freetype2' 'libx11' 'dfu-util')
-optdepends=('wireview-hwmon: hwmon + daemon mode (1.8.1 or later takes the LAN port back from WireView Mini)')
+optdepends=('wireview-hwmon: hwmon + daemon mode (1.9.0 or later for several WireViews)')
 # clang: WireView Mini is compiled ahead of time (NativeAOT).
 makedepends=('dotnet-sdk' 'git' 'clang')
 options=('!strip')
