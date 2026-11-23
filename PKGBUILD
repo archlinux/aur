@@ -1,8 +1,9 @@
-# Maintainer: Florian Hülsmann <fh@cbix.de>
+# Maintainer: Marko Översti <marko.oversti@protonmail.com>
+# Contributor: Florian Hülsmann <fh@cbix.de>
 
 DLAGENTS=("https::./dlagent.sh %o %u")
 pkgname=vcvrack-pro
-pkgver=2.6.1
+pkgver=2.6.6
 pkgrel=1
 pkgdesc='Virtual modular synthesizer (requires logged in Pro account)'
 arch=(x86_64)
@@ -20,7 +21,7 @@ source=('vcvrack-pro.sh'
         'vcvrack-pro.desktop')
 sha256sums=('1d079a8ca01b2f36ab08f42f8abe408a1bc0109f296b91a181a7f845e9fbb01f'
             '850bab3769f7778e97293c0ecc5fd77e33d253504ebd8f3b60e937cc4584d418')
-sha256sums_x86_64=('f3d984113d7b88637c996f55d69d26962e08e5b1765f82aacfd036d4a903da48')
+sha256sums_x86_64=('88b170fb267dab127a09fb4502e5d629757b106e52578b01796cb94bbae6ab47')
 
 package() {
   depends+=(gcc-libs glibc libx11 libasound.so libGL.so libpulse.so libpulse-simple.so libjack.so)
