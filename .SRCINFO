@@ -1,6 +1,6 @@
 pkgbase = slick-mod-bundled
 	pkgdesc = The most powerful and versatile Slack client mod (bundled Electron version)
-	pkgver = 2.0.159
+	pkgver = 2.0.161
 	pkgrel = 1
 	url = https://github.com/3kh0/slick
 	install = slick-mod-bundled.install
@@ -14,10 +14,10 @@ pkgbase = slick-mod-bundled
 	provides = slick-mod
 	conflicts = slick-mod
 	options = !debug
-	source = slick-v159.tar.gz::https://github.com/3kh0/slick/archive/refs/tags/v159.tar.gz
+	source = slick-v161.tar.gz::https://github.com/3kh0/slick/archive/refs/tags/v161.tar.gz
 	source = slick-mod-bundled.install
 	source = dev.slick.byoe.desktop
-	sha256sums = 2c239a42d8f59ee587235189f823aad331bd931498c0ae53ceeffd9d5a5a0410
+	sha256sums = 7fb3503741e20429d38e4cb5f4d4a433259ce84a1afce6506e5df56ea0a9bce4
 	sha256sums = f2ec4e5998de279b20d7dff0003d10e49d05e56f4b8e9a22cf5f9b1818b0666a
 	sha256sums = 2473a343df0139faaeaa66a2bb1ca2ee77997499c40e3954944fba2c57313a9e
 
