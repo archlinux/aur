@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mediachips-bin
 _pkgname=MediaChips
-pkgver=2.0.0
+pkgver=2.1.0
 _electronversion=42
 pkgrel=1
 pkgdesc="Manage your videos, add any metadata to them and play them."
@@ -24,7 +24,7 @@ source=(
 options=(
     '!emptydirs'
 )
-sha256sums=('26c77381b7625fbe01cb91e78edfb19dfd4cc4af473cb13c5cb763b155b80c74'
+sha256sums=('fd9ee5cce43c417df4ba2bb752b5229a60178c7c878d2407c77e0bd1d868e81f'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
