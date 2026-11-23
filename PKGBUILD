@@ -2,7 +2,7 @@
 # Maintainer: Francisco Guimarães <3680556+franciscocpg at users dot noreply dot github dot com>
 
 pkgname='spot-go-bin'
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='A Spotify terminal UI'
 url='https://github.com/spot-go/spot-go'
@@ -12,13 +12,13 @@ provides=('spot-go')
 conflicts=('spot-go')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/spot-go/spot-go/releases/download/v${pkgver}/spot-go_linux_arm64.tar.gz")
-sha256sums_aarch64=('25afa1e29f25194bfe60545e908c87b51d9c686835ac6266c0d67f25a19ac0be')
+sha256sums_aarch64=('96ca132eb73c08f2fe5a5d314ee01860e28a144b51a3e888b1f1211609f10e5d')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/spot-go/spot-go/releases/download/v${pkgver}/spot-go_linux_armv7.tar.gz")
-sha256sums_armv7h=('c858ca073efe59a2be2faeaa9e6ea02a2ba780c82b4795f0ce9543afa72294b3')
+sha256sums_armv7h=('faadd5a8ba3ba26b732ee26a89104e1a7c3cad9cf442bda5dfaba78f002539c4')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/spot-go/spot-go/releases/download/v${pkgver}/spot-go_linux_amd64.tar.gz")
-sha256sums_x86_64=('518416f65aff0197f100d480c4817bbbc6e0efab3f973b5154c97309da341235')
+sha256sums_x86_64=('06161b9887343a541cd3634da1efb442adc31b0e36c53854aff46aca80accf1f')
 
 package() {
   install -Dm755 ./spot-go "${pkgdir}/usr/bin/spot-go"
