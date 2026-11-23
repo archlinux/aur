@@ -1,0 +1,37 @@
+pkgbase = linphone-desktop-gh-git
+	pkgdesc = A free VoIP and video softphone based on the SIP protocol
+	pkgver = 6.2.4
+	pkgrel = 1
+	url = http://linphone.org
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = coreutils
+	makedepends = git
+	makedepends = gendesk
+	makedepends = cmake
+	makedepends = meson
+	makedepends = ninja
+	makedepends = yasm
+	makedepends = nasm
+	makedepends = doxygen
+	makedepends = perl
+	makedepends = python-pystache
+	makedepends = python-six
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-networkauth
+	depends = qt6-svg
+	depends = qt6-multimedia
+	depends = qt6-speech
+	depends = qt6-tools
+	depends = libpulse
+	depends = libxcrypt-compat
+	depends = v4l-utils
+	depends = glew
+	provides = linphone=6.2.4
+	source = git+https://github.com/BelledonneCommunications/linphone-desktop.git#tag=6.2.4
+	source = linphone.png::https://raw.githubusercontent.com/BelledonneCommunications/linphone-desktop/refs/heads/master/Linphone/data/icon/hicolor/128x128/apps/icon.png
+	sha512sums = SKIP
+	sha512sums = 532aa6e0c37d874eb9f080991bdbdaa7dd1085b37465bda1ecca83c046c9ab756308db28de7b4e7fd301bb161e2f7d1f109cc6931e422d1d85e161b2f8add628
+
+pkgname = linphone-desktop-gh-git
