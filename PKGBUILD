@@ -2,7 +2,7 @@
 _pkgname=bttf
 pkgname=bttf
 # renovate: datasource=github-releases depName=BurntSushi/bttf
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='command line tool for datetime arithmetic, parsing, formatting and more'
 url='https://github.com/BurntSushi/bttf'
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=(
   "$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$_pkgname/$_pkgname-$pkgver.crate"
 )
-sha256sums=('4b2009adc3d337b9d9b135b2e679ef969fb731dd78458da629e8e21ce7ae1f3a')
+sha256sums=('2a6aae55b60a3f8990f866b4ecc4fbb6528cbb9125d0293dad63eae7788b6cc3')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
