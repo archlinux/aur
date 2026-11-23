@@ -8,7 +8,7 @@
 # publishing starts.
 
 # pacman sorts a prerelease such as 0.3.0rc.1 before 0.3.0 only without the `-`.
-_version=0.30.0
+_version=0.30.1-beta.1
 # The beta channel's wikistow-cli-beta-bin is this package, renamed
 # (docs/releasing.md).
 _channel=beta
@@ -38,8 +38,8 @@ source=("LICENSE-$_version::$_download/LICENSE")
 source_x86_64=("wikistow-$_version-x86_64::$_download/wikistow-linux-x64")
 source_aarch64=("wikistow-$_version-aarch64::$_download/wikistow-linux-arm64")
 sha256sums=('49e9b16003c5e96891265ca2f912087102de955704eda32482dfe2c4b8fbafd6')
-sha256sums_x86_64=('9db218286a1f39b4bc1cf7f9b6ec9767ed9e6d1546c2a11ada666e4bcd408c72')
-sha256sums_aarch64=('ede7a15f5b0998b13a7c6d86b62e3e9a006f32ac087ae8cf5bd2d50669d30668')
+sha256sums_x86_64=('364f6e632ebb204a9294bb23bc8442ecf0429dda13a9a12a7d0bf20b844776ce')
+sha256sums_aarch64=('312db3cc2e2b41e47dcc5e93d2d0c13d6525bb98546aafe777acf3e4be03c2d9')
 
 package() {
     install -Dm755 "wikistow-$_version-$CARCH" "$pkgdir/usr/bin/$_app"
