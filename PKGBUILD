@@ -7,7 +7,7 @@
 
 pkgname=mapnik-git
 pkgver=4.4.0.r0.g46b2ffc
-pkgrel=1
+pkgrel=2
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps'
 arch=('aarch64' 'i686' 'x86_64')
 url='https://github.com/mapnik/mapnik'
@@ -127,4 +127,7 @@ package() {
 
   # Remove usr/share/fonts directory
   rm --recursive --force "${pkgdir}/usr/share/fonts"
+
+  # Rename generic 'svg2png' binary to avoid conflicts
+  mv --verbose "${pkgdir}/usr/bin/svg2png" "${pkgdir}/usr/bin/mapnik-svg2png"
 }
