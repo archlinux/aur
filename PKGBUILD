@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=multiWGCNA
-_pkgver=1.6.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,14 +17,17 @@ depends=(
   r-flashclust
   r-ggalluvial
   r-ggplot2
+  r-ggraph
   r-ggrepel
   r-igraph
+  r-magrittr
   r-patchwork
   r-readr
   r-reshape2
   r-scales
   r-stringr
   r-summarizedexperiment
+  r-tidyr
   r-wgcna
 )
 checkdepends=(
@@ -42,8 +45,8 @@ optdepends=(
   r-vegan
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f2a47e58aa84aaa6db3c0b62251443bc')
-b2sums=('bf6e49a58b118242ba96164c102ab8c36a0acfb9db19dcf8165b81a45974141d654a92a07eaf5f7bae19a59219d4c717125d85bebfda845a35a4ef935c70312e')
+md5sums=('85fd0e78fd39cd7066537246fc6ac0ad')
+b2sums=('b04f65f58448543500666d2caebf66bf37b6d02c885698fd1d70a9c958b3206b6b4eea314c6cc928b72b269e7441fb5b3068b0f159d04140bb587952d5d7f766')
 
 build() {
   mkdir build
