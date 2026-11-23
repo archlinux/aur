@@ -1,0 +1,20 @@
+pkgbase = dreamcoder
+	pkgdesc = AI-powered coding assistant with semantic code search
+	pkgver = 1.0.16
+	pkgrel = 1
+	url = https://www.dreamcoder.ai
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libgomp
+	depends = libstdc++
+	depends = zlib
+	noextract = dreamcoder-1.0.16-amd64.deb
+	options = !strip
+	options = !debug
+	source = dreamcoder-1.0.16-amd64.deb::https://www.dreamcoder.ai/downloads/files/public/1.0.16/linux-deb/dreamcoder-dreamcoder_1.0.16_amd64.deb
+	sha256sums = add81b22741b71f34426a7651c449fe460c9790ab45190e3372e190472dfbeae
+
+pkgname = dreamcoder
