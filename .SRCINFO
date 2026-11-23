@@ -1,6 +1,6 @@
 pkgbase = vim-classic
 	pkgdesc = a fork of Vim 8.x for long-term maintenance
-	pkgver = 8.3.0
+	pkgver = 8.3.1
 	pkgrel = 1
 	url = https://vim-classic.org
 	arch = x86_64
@@ -18,20 +18,22 @@ pkgbase = vim-classic
 	makedepends = ruby
 	makedepends = tcl
 	makedepends = zlib
-	source = vim-classic-v8.3.0.tar.gz::https://git.sr.ht/~sircmpwn/vim-classic/archive/v8.3.0.tar.gz
-	source = https://git.sr.ht/~sircmpwn/vim-classic/refs/download/v8.3.0/vim-classic-v8.3.0.tar.gz.sig
+	source = vim-classic-v8.3.1.tar.gz::https://git.sr.ht/~sircmpwn/vim-classic/archive/v8.3.1.tar.gz
+	source = https://git.sr.ht/~sircmpwn/vim-classic/refs/download/v8.3.1/vim-classic-v8.3.1.tar.gz.sig
 	source = vimrc
 	source = archlinux.vim
 	source = vimdoc.hook
+	source = 0001-ruby-fix.patch
 	validpgpkeys = 9FB5E737DC25B29D8EEC469142F3F1862E3CC4B8
-	sha256sums = 6e1c97c8269e9354bbc474f0efa7e1e0b23fcdb6075067474d731a9bfac6e8ef
+	sha256sums = 1d9baef8dab6751145b7c4460e85c0af1f4c432bf8ff03d8db13b977fca31e8c
 	sha256sums = SKIP
 	sha256sums = b16e85e457397ab2043a7ee0a3c84307c6b4eac157fd0b721694761f25b3ed5b
 	sha256sums = cc3d931129854c298eb22e993ec14c2ad86cc1e70a08a64496f5e06559289972
 	sha256sums = 8e9656934d9d7793063230d15a689e10455e6db9b9fe73afa0f294792795d8ae
+	sha256sums = d53a3e04ddfa20c642a56180cdbd533c4dfe47132d6c16ac9c68b955d9893149
 
 pkgname = vim-classic
-	depends = vim-runtime=8.3.0-1
+	depends = vim-runtime=8.3.1-1
 	depends = gpm
 	depends = acl
 	depends = glibc
@@ -42,7 +44,7 @@ pkgname = vim-classic
 	optdepends = lua: Lua language support
 	optdepends = perl: Perl language support
 	optdepends = tcl: Tcl language support
-	provides = vim=8.3.0-1
+	provides = vim=8.3.1-1
 	provides = xxd
 	provides = vim-minimal
 	provides = vim-plugin-runtime
@@ -52,7 +54,7 @@ pkgname = vim-classic
 
 pkgname = gvim-classic
 	pkgdesc = a fork of Vim 8.x for long-term maintenance (with advanced features, such as a GUI)
-	depends = vim-runtime=8.3.0-1
+	depends = vim-runtime=8.3.1-1
 	depends = gpm
 	depends = libxt
 	depends = gtk3
@@ -65,8 +67,8 @@ pkgname = gvim-classic
 	optdepends = lua: Lua language support
 	optdepends = perl: Perl language support
 	optdepends = tcl: Tcl language support
-	provides = vim=8.3.0-1
-	provides = gvim=8.3.0-1
+	provides = vim=8.3.1-1
+	provides = gvim=8.3.1-1
 	provides = xxd
 	provides = vim-plugin-runtime
 	conflicts = vim-minimal
@@ -78,6 +80,6 @@ pkgname = vim-classic-runtime
 	optdepends = sh: support for some tools and macros
 	optdepends = python: demoserver example tool
 	optdepends = gawk: mve tools support
-	provides = vim-runtime=8.3.0-1
+	provides = vim-runtime=8.3.1-1
 	conflicts = vim-runtime
 	backup = etc/vimrc
