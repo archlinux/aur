@@ -1,23 +1,25 @@
+# Maintainer: KiWi42 <pullthisplug dash aur at yahoo dot com>
 # Maintainer: Thibaud Kehler <thibaud dot kehler at gmx dot net>
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 pkgname=python-aesedb
 _pkgname=aesedb
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Asynchronous parser for JET."
 url="https://github.com/skelsec/aesedb"
 arch=('any')
 license=('MIT')
-depends=('python' 'python-unicrypto' 'python-aiowinreg' 'python-tqdm' 'python-colorama' 'python-pycryptodomex')
+depends=('python' 'python-unicrypto>=0.0.12' 'python-aiowinreg>=0.0.13' 'python-tqdm' 'python-colorama' 'python-pycryptodomex')
 makedepends=(
   'python-build'
   'python-installer'
   'python-wheel'
   'python-setuptools'
   'python-pytest'
+  'python-pytest-asyncio'
 )
 source=("https://github.com/skelsec/${_pkgname}/archive/refs/tags/${pkgver}.zip")
-sha256sums=('b7b16a84c264de0e11e4a3f408b295e177518dc88cfc1b40779aa707b772ca6b')
+sha256sums=('617c4dfbc63f133f643c01584a0230c9bb089f2f1ddc1019951488e6b58a74e4')
 
 build() {
   cd ${_pkgname}-${pkgver}

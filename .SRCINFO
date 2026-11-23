@@ -1,6 +1,6 @@
 pkgbase = python-aesedb
 	pkgdesc = Asynchronous parser for JET.
-	pkgver = 0.1.6
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/skelsec/aesedb
 	arch = any
@@ -10,13 +10,14 @@ pkgbase = python-aesedb
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-pytest
+	makedepends = python-pytest-asyncio
 	depends = python
-	depends = python-unicrypto
-	depends = python-aiowinreg
+	depends = python-unicrypto>=0.0.12
+	depends = python-aiowinreg>=0.0.13
 	depends = python-tqdm
 	depends = python-colorama
 	depends = python-pycryptodomex
-	source = https://github.com/skelsec/aesedb/archive/refs/tags/0.1.6.zip
-	sha256sums = b7b16a84c264de0e11e4a3f408b295e177518dc88cfc1b40779aa707b772ca6b
+	source = https://github.com/skelsec/aesedb/archive/refs/tags/0.1.8.zip
+	sha256sums = 617c4dfbc63f133f643c01584a0230c9bb089f2f1ddc1019951488e6b58a74e4
 
 pkgname = python-aesedb
