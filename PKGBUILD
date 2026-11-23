@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=mxr-bin
-pkgver=0.6.248
+pkgver=0.6.251
 pkgrel=1
 pkgdesc="Local-first email client with Vim-style navigation, multi-account sync, and full-text search"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/mxr-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('b68b2b3882ab13604e84d852efd3ad398d3879e71f5cc4cbb3b90929d9764771')
+sha256sums_x86_64=('db013501078fa4977166f40d80ed40134663a485cfe36ef449b586f27767c846')
 
 package() {
   install -Dm755 "mxr-mailmerge" "${pkgdir}/usr/bin/mxr-mailmerge"
