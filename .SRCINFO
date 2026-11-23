@@ -1,6 +1,6 @@
 pkgbase = zz-beta-bin
 	pkgdesc = Terminal, browser, and agent workspace
-	pkgver = 0.29.0
+	pkgver = 0.30.0
 	pkgrel = 1
 	url = https://github.com/autistic-computer/zebrilus
 	arch = x86_64
@@ -38,9 +38,9 @@ pkgbase = zz-beta-bin
 	conflicts = zz-bin
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/autistic-computer/zebrilus/releases/download/v0.29.0/zz-0.29.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = f4ea503c8599fa543a2276b24df9bcb749caa219ece5bf424fe3a8993c43c4d5
-	source_aarch64 = https://github.com/autistic-computer/zebrilus/releases/download/v0.29.0/zz-0.29.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 7cefb6b89816ebf2aaf5af7a878307d164e562edb16a653f1254df8709b26e2d
+	source_x86_64 = https://github.com/autistic-computer/zebrilus/releases/download/v0.30.0/zz-0.30.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = cecae55b507e443993740025bb1818bf07ffab7f1ecadaf681cae4a7597b7c1f
+	source_aarch64 = https://github.com/autistic-computer/zebrilus/releases/download/v0.30.0/zz-0.30.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 6361dc364e2bf96241b3d1acb7784193b91e95547503c81c13cc142b05c77b9f
 
 pkgname = zz-beta-bin
