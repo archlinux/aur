@@ -2,7 +2,7 @@
 
 pkgname=python-k3confloader
 _name=${pkgname#python-}
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Load configuration for pykit3 modules"
 provides=(${pkgname})
@@ -28,7 +28,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('9963a49b2dd33e4c50becd6d854d6b88fd5d4e2223a2e54a45c347e596fde7c8')
+sha256sums=('267646789eea33bb85b594c36440c1837177e084ace98a0541c26aaae402180a')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
