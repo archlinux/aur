@@ -1,0 +1,11 @@
+--- a/etc/proftpd/proftpd.conf	2026-11-23 16:26:25.000000000 +0100
++++ b/etc/proftpd/proftpd.conf	2026-11-23 16:50:30.025853938 +0100
+@@ -27,7 +27,7 @@
+ 
+ # Set the user and group under which the server will run.
+ User				nobody
+-Group				nogroup
++Group				nobody
+ 
+ # To cause every FTP user to be "jailed" (chrooted) into their home
+ # directory, use this directive.
