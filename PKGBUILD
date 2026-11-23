@@ -1,30 +1,37 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
-_cranname=ankiR
-_cranver=0.6.6
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
+_pkgname=ankiR
+_pkgver=0.6.0
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
 pkgrel=3
-pkgdesc="Comprehensive R Toolkit for Anki Flashcard Analysis (137 functions)"
-arch=('any')
-url="https://github.com/chrislongros/ankiR"
+pkgdesc="Read and Analyze 'Anki' Flashcard Databases"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
-depends=(r r-jsonlite r-dbi r-rsqlite r-tibble r-rlang r-scales)
-makedepends=(r-knitr r-rmarkdown)
-optdepends=(
-  'r-testthat: testing'
-  'r-knitr: vignettes'
-  'r-rmarkdown: vignettes'
-  'r-ggplot2: plotting functions'
-  'r-shiny: interactive dashboard'
+depends=(
+  r-rlang
+  r-jsonlite
+  r-dbi
+  r-rsqlite
+  r-tibble
+  r-scales
 )
-source=("${_cranname}-${_cranver}.tar.gz::https://github.com/chrislongros/ankiR/archive/refs/tags/v${_cranver}.tar.gz")
-sha256sums=('1ed093e9685d8716183dc39a4b803f614eca0af4438da048636e5ef71f9e0ecf')
+optdepends=(
+  r-shiny
+  r-testthat
+  r-knitr
+  r-rmarkdown
+  r-ggplot2
+  r-withr
+  r-dplyr
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('f4349bc1a7ae403ed99ae1c34a69f0e8')
 build() {
-  cd "${srcdir}/${_cranname}-${_cranver}"
-  R CMD build .
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 package() {
-  install -dm755 "${pkgdir}/usr/lib/R/library"
-  cd "${srcdir}/${_cranname}-${_cranver}"
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
