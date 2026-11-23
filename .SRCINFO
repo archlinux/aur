@@ -1,6 +1,6 @@
 pkgbase = r-nntensor
 	pkgdesc = Non-Negative Tensor Decomposition
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=nnTensor
 	arch = any
@@ -11,11 +11,12 @@ pkgbase = r-nntensor
 	depends = r-plot3d
 	depends = r-rtensor
 	depends = r-tagcloud
+	depends = r-vicus
 	optdepends = r-dplyr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/nnTensor_1.3.0.tar.gz
-	sha256sums = 1331ebfcedb5e5873f537d552423061f9be4a7bfbb47d112d174408cd0197bce
+	source = https://cran.r-project.org/src/contrib/nnTensor_1.4.0.tar.gz
+	sha256sums = 54e9ea6d0cbda099bb5342e34860bb4ea7d91e3568bb6053b7d1b1fb8b28beac
 
 pkgname = r-nntensor

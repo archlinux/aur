@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nnTensor
-_pkgver=1.3.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Non-Negative Tensor Decomposition'
 arch=('any')
@@ -16,6 +16,7 @@ depends=(
   r-plot3d
   r-rtensor
   r-tagcloud
+  r-vicus
 )
 optdepends=(
   r-dplyr
@@ -24,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1331ebfcedb5e5873f537d552423061f9be4a7bfbb47d112d174408cd0197bce')
+sha256sums=('54e9ea6d0cbda099bb5342e34860bb4ea7d91e3568bb6053b7d1b1fb8b28beac')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
