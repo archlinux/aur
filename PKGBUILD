@@ -1,6 +1,6 @@
 pkgname=gephgui-wry-bin
-pkgver=5.9.1
-pkgrel=3
+pkgver=5.9.3
+pkgrel=1
 pkgdesc="Geph desktop GUI"
 arch=('x86_64')
 url="https://github.com/geph-official/gephgui-wry"
@@ -20,7 +20,7 @@ options=('!strip' '!debug')
 source=(
   "gephgui-wry-bin-$pkgver.flatpak::https://f001.backblazeb2.com/file/geph4-dl/geph-releases/linux-stable/$pkgver/Geph-x86_64.flatpak"
 )
-sha256sums=('26ecb44b550b3344fba528acc8d18fad113722300c8b7c844219293e0eeabb3a')
+sha256sums=('a037abeaade58e82678974b1bffa10b514f79a4ef16ea7c08e0ed0e8c6037859')
 
 prepare() {
   rm -rf geph-repo geph-app
