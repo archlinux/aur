@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=valr
-_pkgver=0.8.2
+_pkgver=0.10.0
 pkgname=r-${_pkgname,,}
-pkgver=0.8.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Genome Interval Arithmetic'
 arch=('x86_64')
@@ -15,15 +15,17 @@ depends=(
   r
   r-broom
   r-cli
+  r-cpp11bigwig
   r-dplyr
   r-ggplot2
   r-lifecycle
-  r-rcpp
   r-readr
   r-rlang
-  r-rtracklayer
   r-stringr
   r-tibble
+)
+makedepends=(
+  r-cpp11
 )
 optdepends=(
   r-bench
@@ -46,7 +48,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5078faca440d9373dd7a9a2dfdaa23873a7ce3693c46e71cb7ebf45b57036ad5')
+sha256sums=('e9039aab79acdf83cac40ea313ffc93cf644f9d2b22c0bd0dea07177e0891ac6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
