@@ -1,17 +1,19 @@
 pkgbase = r-consrank
 	pkgdesc = Compute the Median Ranking(s) According to the Kemeny's Axiomatic Approach
-	pkgver = 2.1.5
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ConsRank
-	arch = any
+	arch = x86_64
 	license = GPL-3.0-only
 	depends = r-gtools
 	depends = r-proxy
-	depends = r-rgl
+	depends = r-rcpp
 	depends = r-rlist
 	depends = r-tidyr
-	source = https://cran.r-project.org/src/contrib/ConsRank_2.1.5.tar.gz
-	md5sums = af460368b7d2d20aa088c11ece8ac97f
-	b2sums = 596b77f5347c52c51f79226798cf02f19c90b8ebd9b28479b552bc163ccba352c007d3502a024c4fb9647bb4db43a96da23179212b6680ed932f0180d4f3db7f
+	optdepends = r-rgl
+	optdepends = r-plotly
+	source = https://cran.r-project.org/src/contrib/ConsRank_3.0.tar.gz
+	md5sums = 579a83ccdd09138344ee5b3c2cbfd4b2
+	b2sums = 924ddefe4161fe2a0341fc43f87dd7a180c5b810b5642094c3ec958ac70121599f0fe57c1aac40916ae7b341e2b870136c67ed77336cf0ca4f370994457d0fd4
 
 pkgname = r-consrank
