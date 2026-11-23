@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggstar
-_pkgver=1.0.4
+_pkgver=1.0.6
 pkgname=r-${_pkgname,,}
-pkgver=1.0.4
-pkgrel=3
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="Multiple Geometric Shape Point Layer for 'ggplot2'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,18 +12,21 @@ license=('Artistic2.0')
 depends=(
   r
   r-cli
+  r-ggiraph
   r-ggplot2
   r-gridextra
+  r-rlang
   r-scales
 )
 optdepends=(
   r-knitr
   r-markdown
   r-prettydoc
+  r-purrr
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('eda19b1be4f5719fdb251666b90f4d664b90b882c452d4b015a60727c3b55354')
+sha256sums=('22182dd062c9f67a7e83eb47455ba7f2a8916a5214719c0b7ab03807effc02a8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
