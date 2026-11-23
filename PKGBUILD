@@ -1,10 +1,10 @@
-# Maintainer: The Enclave contributors <security@enclave.chat>
+# Maintainer: The Enclave contributors <ari@aricummings.com>
 #
 # The release's Linux programs (`cargo xtask dist`, built on AlmaLinux 9
 # for glibc 2.34 and newer). release.yml's `aur` job sets pkgver and the
 # checksums from the release, regenerates .SRCINFO and pushes.
 pkgname=enclave-messenger-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Private messages without a phone number, through Tor and the Nym mixnet'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ options=('!strip' '!debug')
 _v=${pkgver//_/-}
 source_x86_64=("https://github.com/0xnullsect0r/enclave-messenger/releases/download/v${_v}/enclave-${_v}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/0xnullsect0r/enclave-messenger/releases/download/v${_v}/enclave-${_v}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('dc3b4a05a91472a7a687f33cb8ac99a1a2ea83d5fa6a5743a01e26aef69f09f3')
-sha256sums_aarch64=('c2f04994e44d3e66daefd792894c60b80f4e77b16fa824b32fa8d36294812355')
+sha256sums_x86_64=('4b2859a97d5e8a9e1b8c1690c3a4761d0f74c51e910b0981b721dae629b29580')
+sha256sums_aarch64=('867207900f4d50298c912eb16c5d46160db205c6a6f64ff5c6eaf4f0d7efef24')
 
 package() {
   cd "enclave-${_v}-${CARCH}-unknown-linux-gnu"
