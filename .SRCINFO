@@ -1,6 +1,6 @@
 pkgbase = python-holospy
 	pkgdesc = Analysis of (off-axis) electron holography data with HyperSpy
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = http://hyperspy.org/holospy
 	arch = any
@@ -11,12 +11,12 @@ pkgbase = python-holospy
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	depends = python-hyperspy>=2.4
+	depends = python-hyperspy>=2.4.0
 	depends = python-lazy-loader>=0.1
 	depends = python-numpy>=1.20.0
 	depends = python-scipy>=1.5.0
 	provides = holospy
-	source = https://github.com/hyperspy/holospy/archive/v0.4.0.tar.gz
-	sha256sums = 422395209d049e89e247f1eb153d6cbf9779ab247ee129cfe7ac05e37cd0e080
+	source = https://github.com/hyperspy/holospy/archive/v0.4.1.tar.gz
+	sha256sums = d289de7d3b7431cfd8f0cf155d07c5781960cc02a100d3418e06c90733910811
 
 pkgname = python-holospy
