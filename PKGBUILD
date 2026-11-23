@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 
 pkgname=udon
-pkgver=0.064
+pkgver=0.065
 pkgrel=1
 epoch=1
 pkgdesc="Minimalistic CLI based End to End Encrypted (E2EE) message passing tool/service."
@@ -21,9 +21,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/treedavies/udon/archive/refs/tags/udon-v0.064.tar.gz")
+source=("https://github.com/treedavies/udon/archive/refs/tags/udon-v0.065.tar.gz")
 noextract=()
-sha256sums=("c470b2878c95cc05f572a9a31e774c1c6376b0863a6f28a48f21202a46eaf1a6")
+sha256sums=("4c4eead2d9cb534ca102ec9003590ea3939a1d4b91acc3dccec07d9401f6bf29")
 validpgpkeys=()
 
 package() {
