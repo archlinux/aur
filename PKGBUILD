@@ -4,8 +4,8 @@
 
 pkgname=dotnet-nerdbank-streams
 _nugetid=Nerdbank.Streams
-pkgver=2.14.411
-pkgrel=2
+pkgver=2.14.416
+pkgrel=1
 pkgdesc="Streams for full duplex in-proc communication, wrap a WebSocket, split a stream into multiple channels, Nerdbank.Streams (NuGet package)"
 arch=(any)
 url='https://github.com/dotnet/Nerdbank.Streams'
