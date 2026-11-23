@@ -47,7 +47,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-        -DUSE_PCH=ON \
+        -DUSE_FULL_PCH=ON \
         -DUSE_GIT_VERSION=ON
     time ninja
 }
