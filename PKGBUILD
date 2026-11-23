@@ -2,7 +2,7 @@
 pkgname=positron-ide-bin
 pkgver=2026.11.1.4
 _upstream_pkgver=${pkgver%.*}-${pkgver##*.}
-pkgrel=1
+pkgrel=2
 pkgdesc='A next-generation data science IDE from Posit'
 arch=(
     'x86_64'
@@ -52,6 +52,7 @@ provides=(
     'positron-ide'
 )
 conflicts=(
+    'positron-ide'
     'positron-ide-devel-bin'
 )
 options=(
