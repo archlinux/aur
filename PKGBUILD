@@ -2,13 +2,13 @@
 
 _pkgname="carboxyl"
 pkgname="${_pkgname}-git"
-pkgver=r297.g35a3342
+pkgver=r298.ga9f5aee
 pkgrel=1
 pkgdesc="Terminal browser built on Servo — community fork of Carbonyl"
 arch=('x86_64')
 url="https://github.com/carboxyl-rs/$_pkgname"
 license=('BSD-3-Clause')
-makedepends=(git cargo pkg-config cmake)
+makedepends=(git cargo pkg-config cmake clang)
 depends=(gcc-libs fontconfig)
 provides=(carboxyl)
 conflicts=(carboxyl)

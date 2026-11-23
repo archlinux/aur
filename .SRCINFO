@@ -1,6 +1,6 @@
 pkgbase = carboxyl-git
 	pkgdesc = Terminal browser built on Servo — community fork of Carbonyl
-	pkgver = r297.g35a3342
+	pkgver = r298.ga9f5aee
 	pkgrel = 1
 	url = https://github.com/carboxyl-rs/carboxyl
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = carboxyl-git
 	makedepends = cargo
 	makedepends = pkg-config
 	makedepends = cmake
+	makedepends = clang
 	depends = gcc-libs
 	depends = fontconfig
 	provides = carboxyl
