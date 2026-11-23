@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.7.2
+pkgrel=1
 epoch=2
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
@@ -10,23 +10,24 @@ license=('Apache-2.0')
 source=("git+https://github.com/nestybox/sysbox.git#tag=v$pkgver"
         # On a recursive clone, git submodule foreach --recursive git rev-parse HEAD
         "git+https://github.com/nestybox/dockerfiles.git#commit=c05538c1e33baf9d49695a9007e87462115d31da"
-        "git+https://github.com/nestybox/sysbox-fs.git#commit=c3d2ebc65102e32e74e383675f03b45556326888"
+        "git+https://github.com/nestybox/sysbox-fs.git#commit=201ec1380ba5af0c8a677b718c7c3805af2b280c"
         "git+https://github.com/nestybox/fuse.git#commit=5ce319439091b08f33b149cb2482039f1b0a24fe"
-        "git+https://github.com/nestybox/sysbox-ipc.git#commit=f05151f4b4c1df63d7fd241577ca032905c1bd0e"
-        "git+https://github.com/nestybox/sysbox-libs.git#commit=cacac19395528afa42b467a980b05d8d1c6d646c"
-        "git+https://github.com/nestybox/sysbox-mgr.git#commit=2d45af01bcfd8641e6641f76104c6003bf501cd7"
-        "git+https://github.com/nestybox/sysbox-pkgr.git#commit=b8403a90017795f42f02d5b2e1b6752d02ce4b57"
-        "git+https://github.com/nestybox/sysbox-runc.git#commit=081856cc5d17e7095f066b08d0eca6bb0b515c47"
+        "git+https://github.com/nestybox/sysbox-ipc.git#commit=2e39ef01a0aace7fb3c599c97a5f82d1e7117773"
+        "git+https://github.com/nestybox/sysbox-libs.git#commit=af547406cfca19a8a41f5830e06791d776f9ab7e"
+        "git+https://github.com/nestybox/sysbox-mgr.git#commit=a14866548fcbb62aba5052e73c81e7c1b9bfc8b2"
+        "git+https://github.com/nestybox/sysbox-pkgr.git#commit=71cf8a015b5e0ef11d35b33ae077a8b949c4c2ff"
+        "git+https://github.com/nestybox/sysbox-runc.git#commit=583e8008fcf5018a40201c28505a500292fe2c83"
         Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch)
-sha256sums=(481aea0544efe8b3cb6dac6149e7ec15818e04bf147451e5c6a84dccc9761b2b
+sha256sums=(f38c78f3d585f226fe4797284f41d5f7ad6f98c5e2338f2b978125424683d33e
+            # On a recursive clone, git submodule foreach --recursive sh -c "git -c core.abbrev=no archive --format tar HEAD | sha256sum"
             b0de3f8c452d7bf4ea17368794a9db440bdc23a9a04e1f97e6c13ecf4c0c55c3
-            67301826664d5e2005e177e918416a3386bea4710f4eafb4e98f24fcd1b48021
+            7313ff3a6587308f91eb236e7df49247638e24fc6edd14cd4e55bc0e92d9039d
             b2070599fd5181520ca6069940de16938f54e8d554c2d88fed06214a75ba0bf2
-            7f7e3e0f9acac2ea6ff2d9702fc4006f679cf005cf8abf2dbbb447c133b8455e
-            d82f23514e8124cec708c668b8d032676d5dd084e96caa8bad297b54701b8e1c
-            95007069e2c73becac2401934de43e825f817a4fa190a5cdbeee7c320aeccf1e
-            0ec269e7dd554fc94fd40af22ebb058c44fdc2fbff0ada72386d176cc89552d4
-            9674f68d2f2f00816ed36fe4ace8fd0f41b65644b698175c829f058d78edafa8
+            41310acf2cf2bcbbe7a69351b59608e63a82f209d225013cb7283575bd1f3427
+            b5129d17a6c26bdddff1a71a7be96c90fbaf5be92893887c6e4a12b06405dce0
+            a16aba4c49656d83cacb9b06a60299a5ef5952c0623b17dc3f659c738bfb039b
+            5f212582d5c6176adb3ceafdbb49095a9bf930c55b001631caa5d3f98f0bbd9c
+            c416b4f392e6c2d86343572a826d963b64ce89c3f7348aa18036e8e96c4a53ed
             5264ed0c448868083a9f1bedc2846d744c9ea90e58f8555c50bbc155008512e5)
 install=install.sh
 depends=('rsync' 'fuse2')
