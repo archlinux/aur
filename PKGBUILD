@@ -15,7 +15,7 @@ pkgname=(
 
 pkgdesc="A memory-safe programming language, and a standard library, for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives."
 
-pkgver=0.4.0+alpha.12+2.r4051.20261021.4be865da
+pkgver=0.4.0+alpha.12+36.r4085.20261118.a87f0bb8
 pkgrel=1
 
 arch=(
