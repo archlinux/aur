@@ -1,12 +1,12 @@
 pkgname=revo-panel-bin
-pkgver=0.1.0
+pkgver=0.1.3
 url=https://github.com/leychan/revo-panel
 license=(GPL-3.0-only)
 source=(LICENSE)
 sha256sums=(3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986)
-source_x86_64=(revo-panel-bin-0.1.0.deb::https://github.com/leychan/revo-panel/releases/download/v0.1.0/RevoPanel_0.1.0_amd64.deb)
-sha256sums_x86_64=(10cf46b100f1f6223667722acba17c5291dc47b518e5d8951e8769b4797cc27e)
-noextract=(revo-panel-bin-0.1.0.deb)
+source_x86_64=(revo-panel-bin-0.1.3.deb::https://github.com/leychan/revo-panel/releases/download/v0.1.3/RevoPanel_0.1.3_amd64.deb)
+sha256sums_x86_64=(9c084d68051461d0d987216ae68f28358ca013175ac781da2bf49338262b68dc)
+noextract=(revo-panel-bin-0.1.3.deb)
 pkgrel=1
 pkgdesc='Linux hardware control panel for MECHREVO laptops'
 arch=('x86_64')
