@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CluMSID
-_pkgver=1.24.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Clustering of MS2 Spectra for Metabolite Identification'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-xcms
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c2d76e89bfc06ac430644fdcc2f8f3be0d571ff15ff11977b79558ccc4a9ea6f')
+sha256sums=('1878efb362d2e1050d0bc03616bde9caf46c3dc029a24763e0eae438f1352bac')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
