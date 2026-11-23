@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Mashhad Metro
+GenericName=Metro Guide
+Comment=Navigate the Mashhad Metro: stations, lines and routes
+Exec=mashhad-metro
+Icon=mashhad-metro
+Terminal=false
+Categories=Utility;Maps;
+Keywords=metro;subway;mashhad;transit;map;
+StartupWMClass=com.example.mashhad_metro
