@@ -14,7 +14,7 @@
 # system-wide instead of shelling out to 'code'.
 pkgname=deveco-devicetool
 pkgver=4.0.0.400
-pkgrel=7
+pkgrel=8
 pkgdesc='HUAWEI DevEco Device Tool for OpenHarmony device development (VS Code toolchain bundle)'
 arch=('x86_64')
 url='https://device.harmonyos.com/cn/develop/ide/'
@@ -91,6 +91,13 @@ build() {
 package() {
   install -d "$pkgdir/$_root"
   cp -r --no-preserve=ownership "$srcdir/stage/." "$pkgdir/$_root/"
+
+  # install.py applies a restrictive umask, which would leave the tree
+  # root-only (0750/0640) and unusable for normal users. Normalize it.
+  find "$pkgdir/$_root" -type d -exec chmod 755 {} +
+  while IFS= read -r -d '' f; do
+    if [[ -x "$f" ]]; then chmod 755 "$f"; else chmod 644 "$f"; fi
+  done < <(find "$pkgdir/$_root" -type f -print0)
 
   # The venv and helper scripts bake in the staging path; rewrite it to the
   # final location so the tree is relocatable.
