@@ -1,6 +1,6 @@
 pkgbase = pulse-egoist-bin
 	pkgdesc = Everything your computer is doing, in one calm window.
-	pkgver = 0.1.29
+	pkgver = 0.1.31
 	pkgrel = 1
 	url = https://pulse.egoist.dev
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = pulse-egoist-bin
 	license = MIT
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	source_x86_64 = https://github.com/egoist/pulse-feedback/releases/download/v0.1.29/pulse_0.1.29_amd64.deb
-	sha256sums_x86_64 = 66734e8ad7b6ac7a7e930b89722be2e457a779e3c12f1ddd28c940ad8f6b1ca7
-	source_aarch64 = https://github.com/egoist/pulse-feedback/releases/download/v0.1.29/pulse_0.1.29_arm64.deb
-	sha256sums_aarch64 = b74857068186230d7a779e270337cb9f69e11daf0277609c691a13a297b170a4
+	source_x86_64 = https://github.com/egoist/pulse-feedback/releases/download/v0.1.31/pulse_0.1.31_amd64.deb
+	sha256sums_x86_64 = 62edb6fa31beb0ae9bfd094c991191f7889b30115f361f28127b5522b09197ad
+	source_aarch64 = https://github.com/egoist/pulse-feedback/releases/download/v0.1.31/pulse_0.1.31_arm64.deb
+	sha256sums_aarch64 = 48755cfd90cb6c64760667f7784cbc5a2b43a919a27b82cef41b82a524e32a4c
 
 pkgname = pulse-egoist-bin
