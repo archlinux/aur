@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-"""Update the intellij-idea-open-eap AUR package to the newest IDEA tag.
+"""Update the intellij-idea-open-eap AUR package to the highest IDEA build.
 
 This script was written by Grok and Claude with a mix of effort levels.
 
 Run the script in a terminal. It takes no options and asks questions as it
 goes. A run does these steps:
 
-1. Find the newest IDEA release tag in JetBrains' ``intellij-community``
-   repository and look up its build number.
+1. Find the IDEA tag with the highest build number at or above the
+   package's yyyy.r line, and look up that build number. A tag that ranks
+   newer by version or date but has a lower build number is ignored, and
+   the script says so.
 2. Write the new version to PKGBUILD with pkgrel set back to 1, update its
    checksums, check and format it, and regenerate ``.SRCINFO``.
 3. Build the package with ``makepkg -Csc`` and install it with
@@ -19,7 +21,7 @@ goes. A run does these steps:
 7. Show the commits that are not pushed yet and ask before pushing them.
 8. Offer to delete the package file.
 
-If the PKGBUILD is already at the newest tag, running the script again
+If the PKGBUILD is already at that build, running the script again
 continues where an earlier run stopped. It starts at step 3 if the PKGBUILD
 and ``.SRCINFO`` changes are not committed yet and at step 7 if they are
 committed but not pushed. Before step 7, it builds and checks a committed
@@ -53,9 +55,17 @@ history:
 - Tags created more than a year ago are ignored. A newer tag that looks like
   an IDEA tag but matches neither the version nor the build-number format
   stops the script, with a list of such tags and their date/times.
-- Tags with the same yyyy.r.n.m rank by the date/time each tag was created,
-  not by kind (EAP, beta, RC). The script fetches its local
-  ``intellij-community`` mirror first, so a moved tag has its new date/time.
+- The highest build number wins among tags at or above the yyyy.r floor.
+  ``263.8311.30`` is newer than ``263.7307.353`` because 8311 is greater
+  than 7307. The same build number then ranks by the tag's yyyy.r.n.m, then
+  by the date/time the tag was created, not by kind (EAP, beta, RC). The
+  script fetches its local ``intellij-community`` mirror first, so a moved
+  tag has its new date/time.
+- A tag created later can still be an older build. ``idea/2026.3.1-rc``
+  (build 263.7307.353, product version 2026.3.0.1) was created after
+  ``idea/2026.3.1-preview`` (build 263.8311.30, product version 2026.3.1
+  Preview). The script ignores the later tag, says that it is doing so,
+  and keeps the higher build number.
 
 Packages needed besides ``base-devel``:
 
@@ -167,11 +177,32 @@ class ParsedVersion:
 
 
 @dataclass(frozen=True, order=True)
+class BuildNumber:
+    """Hold a JetBrains build number so a higher one sorts as newer.
+
+    Components compare as integers from the left, so ``263.8311.30`` is newer
+    than ``263.7307.353``.
+    """
+
+    parts: tuple[int, ...]
+
+    @classmethod
+    def parse(cls, text: str) -> BuildNumber:
+        """Return the build number parsed from ``text``."""
+        if BUILD_NUMBER_RE.fullmatch(text) is None:
+            die(f"{text!r} is not a build number like 263.4732.28")
+        return cls(tuple(int(part) for part in text.split(".")))
+
+    def __str__(self) -> str:
+        return ".".join(str(part) for part in self.parts)
+
+
+@dataclass(frozen=True, order=True)
 class VersionCandidate:
-    """Hold a version tag and the fields that rank it when choosing the newest.
+    """Hold a version tag and the fields that rank it when builds are equal.
 
     The fields compare in order: version, tag date/time, pre-release number,
-    then tag name.
+    then tag name. A higher build number outranks this order.
     """
 
     key: VersionKey
@@ -180,6 +211,19 @@ class VersionCandidate:
     name: str
     sha: str = field(compare=False)
     parsed: ParsedVersion = field(compare=False)
+
+
+@dataclass(frozen=True, order=True)
+class ScoredRelease:
+    """Hold a version tag ranked by build number, then by tag order.
+
+    The highest build number is the newest IDEA. A later tag with a lower
+    build number sorts below an earlier tag on a higher build.
+    """
+
+    build: BuildNumber
+    candidate: VersionCandidate
+    build_number_source: str = field(compare=False)
 
 
 @dataclass
@@ -648,15 +692,17 @@ def filter_tags_older_than_one_year(
     return kept
 
 
-def choose_version_tag(
+def version_candidates(
     idea_tags: dict[str, str],
     floor: tuple[int, int],
     tag_datetimes: dict[str, datetime],
-) -> VersionCandidate:
-    """Pick the newest version tag on PKGBUILD's yyyy.r line or a newer line.
+) -> list[VersionCandidate]:
+    """List version tags on PKGBUILD's yyyy.r line or a newer line.
 
     Tags rank by yyyy.r.n.m, then by the date/time the tag was created, then by
     pre-release number, then by name. The kind (EAP, beta, RC) does not count.
+    The highest build number wins; this order breaks a tie and decides which
+    later tag is reported when its build number is lower.
     """
     candidates: list[VersionCandidate] = []
     for name, sha in idea_tags.items():
@@ -686,7 +732,7 @@ def choose_version_tag(
             "Expected names like idea/2026.3-eap-2 or 2025.3-rc-2. "
             f"Last 15 tags by name: {sample}"
         )
-    return max(candidates)
+    return candidates
 
 
 def fail_on_unrecognized_tags(
@@ -855,6 +901,15 @@ def prompt_build_tag(build_tags: list[str], version_tag: str, idea_sha: str) -> 
     return build_tags[index - 1]
 
 
+def matching_build_tags(idea_tags: dict[str, str], idea_sha: str) -> list[str]:
+    """Return the build-number tags on ``idea_sha``, sorted by name."""
+    return sorted(
+        name
+        for name, sha in idea_tags.items()
+        if classify_tag(name) is TagKind.BUILD and sha == idea_sha
+    )
+
+
 def resolve_build_number(
     idea_tags: dict[str, str],
     version_tag: str,
@@ -866,16 +921,12 @@ def resolve_build_number(
     Take it from a build-number tag on the same commit, then from YouTrack,
     and otherwise ask for it.
     """
-    matching_build_tags = sorted(
-        name
-        for name, sha in idea_tags.items()
-        if classify_tag(name) is TagKind.BUILD and sha == idea_sha
-    )
-    if matching_build_tags:
+    build_tags = matching_build_tags(idea_tags, idea_sha)
+    if build_tags:
         chosen = (
-            matching_build_tags[0]
-            if len(matching_build_tags) == 1
-            else prompt_build_tag(matching_build_tags, version_tag, idea_sha)
+            build_tags[0]
+            if len(build_tags) == 1
+            else prompt_build_tag(build_tags, version_tag, idea_sha)
         )
         return ResolvedBuild(
             build_number=tag_core_name(chosen),
@@ -911,40 +962,108 @@ def resolve_build_number(
     )
 
 
+def score_release(
+    candidate: VersionCandidate, idea_tags: dict[str, str]
+) -> ScoredRelease:
+    """Return ``candidate`` with the build number from its commit or a lookup.
+
+    One build-number tag on the commit supplies the number. Several tags, or
+    none, use the usual lookup, which can ask.
+    """
+    matches = matching_build_tags(idea_tags, candidate.sha)
+    if len(matches) == 1:
+        build_tag = matches[0]
+        return ScoredRelease(
+            build=BuildNumber.parse(tag_core_name(build_tag)),
+            candidate=candidate,
+            build_number_source=f"git tag {build_tag}",
+        )
+    resolved = resolve_build_number(
+        idea_tags,
+        candidate.name,
+        candidate.sha,
+        candidate.parsed,
+    )
+    return ScoredRelease(
+        build=BuildNumber.parse(resolved.build_number),
+        candidate=candidate,
+        build_number_source=resolved.source,
+    )
+
+
+def report_newer_tags_with_lower_builds(
+    winner: ScoredRelease, scored: list[ScoredRelease]
+) -> None:
+    """Say that each newer tag with a lower build number is ignored."""
+    ignored = sorted(
+        (
+            release
+            for release in scored
+            if release.candidate > winner.candidate and release.build < winner.build
+        ),
+        key=lambda release: release.candidate,
+        reverse=True,
+    )
+    for release in ignored:
+        created = (
+            "at an unknown date/time"
+            if release.candidate.moment == _OLDEST_MOMENT
+            else format_local_iso(release.candidate.moment)
+        )
+        info(
+            "ignoring "
+            f"`{format_tag(release.candidate.name, release.candidate.sha)}` "
+            f"(created {created}): it ranks as a newer tag, but its build number "
+            f"`{release.build}` is lower than `{winner.build}` from "
+            f"`{format_tag(winner.candidate.name, winner.candidate.sha)}`"
+        )
+
+
+def choose_release(
+    candidates: list[VersionCandidate],
+    idea_tags: dict[str, str],
+) -> ScoredRelease:
+    """Return the release with the highest build number.
+
+    Say when a tag that ranks newer by version or date is ignored because
+    its build number is lower.
+    """
+    scored = [score_release(candidate, idea_tags) for candidate in candidates]
+    winner = max(scored)
+    report_newer_tags_with_lower_builds(winner, scored)
+    return winner
+
+
 def discover_release(
     state: PkgState,
     idea_tags: dict[str, str],
     *,
     repo: Path,
 ) -> tuple[DiscoveredRelease, dict[str, str]]:
-    """Find the newest qualifying version tag and its build number.
+    """Find the qualifying tag with the highest build number.
 
     Return that release and the tags that are left after dropping tags older
-    than a year.
+    than a year. A newer tag with a lower build number is ignored first.
     """
     moments = load_local_tag_datetimes(repo)
     recent_tags = filter_tags_older_than_one_year(idea_tags, moments)
     floor = parse_pkgbuild_version_floor(state.version_yyyy_r_n_m)
     fail_on_unrecognized_tags(unrecognized_idea_tags(recent_tags), moments, recent_tags)
-    chosen = choose_version_tag(recent_tags, floor, moments)
-    resolved = resolve_build_number(
-        recent_tags,
-        chosen.name,
-        chosen.sha,
-        chosen.parsed,
+    chosen = choose_release(
+        version_candidates(recent_tags, floor, moments), recent_tags
     )
-    about = read_application_info_version(repo, chosen.sha)
-    parsed = parsed_with_about_version(resolved.parsed, about.version)
+    about = read_application_info_version(repo, chosen.candidate.sha)
+    parsed = parsed_with_about_version(chosen.candidate.parsed, about.version)
     info(
-        f"chose {format_tag(chosen.name, chosen.sha)}; "
-        f"build {resolved.build_number} via {resolved.source}"
+        f"chose {format_tag(chosen.candidate.name, chosen.candidate.sha)}; "
+        f"build {chosen.build} via {chosen.build_number_source}"
     )
     release = DiscoveredRelease(
-        version_tag=chosen.name,
-        idea_sha=chosen.sha,
+        version_tag=chosen.candidate.name,
+        idea_sha=chosen.candidate.sha,
         parsed=parsed,
-        build_number=resolved.build_number,
-        build_number_source=resolved.source,
+        build_number=str(chosen.build),
+        build_number_source=chosen.build_number_source,
     )
     return release, recent_tags
 
