@@ -9,7 +9,7 @@
 # into its `aur` artifact.
 
 pkgname=bindle
-pkgver=0.1.39
+pkgver=0.1.42
 pkgrel=1
 pkgdesc='Fresh-install setup wizard and system updater (bindleUP) for Arch Linux'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('snapper: a snapshot before each apply or update, and undo'
 # Rust does its own LTO; makepkg's C/C++ LTO flags break the cxx-qt objects.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('eccad411629fe5ea8cd51a20e51a26fae0b41938170a5edb7f3aeff37afd292d')
+sha256sums=('ef0ad78187112e6ac48535f1a1af826d55c1204b3d902b8d74f5db7b02275e1d')
 
 prepare() {
   cd "$pkgname-$pkgver"
