@@ -1,8 +1,9 @@
 #Maintainer: Antony Rinaldi <antony@atyrnal.dev>
 
 pkgname=swiftpoint-x1-control-panel
-pkgver=3.1.4.0
-pkgrel=3
+pkgver=3.2.1.0
+pkgrel=1
+_buildhash=4d4c83b9
 pkgdesc="Control panel for Swiftpoint devices"
 arch=('x86_64')
 url="https://support.swiftpoint.com/portal/en/kb/articles/swiftpoint-x1-control-panel-download"
@@ -13,12 +14,12 @@ conflicts=(swiftpoint-x1-control-panel)
 optdepends=('gnome-shell-extension-appindicator: tray icon on GNOME')
 backup=('etc/xdg/Swiftpoint X1 Control Panel/policy.ini') #Leave any user changes to policy.ini
 source=(
-   	"Swiftpoint_X1_Control_Panel_${pkgver}.tar.xz::https://swiftpointdrivers.blob.core.windows.net/pro/public/linux/Swiftpoint%20X1%20Control%20Panel%20${pkgver}-33507352.tar.xz"
+   	"Swiftpoint_X1_Control_Panel_${pkgver}.tar.xz::https://swiftpointdrivers.blob.core.windows.net/pro/public/linux/Swiftpoint%20X1%20Control%20Panel%20${pkgver}-${_buildhash}.tar.xz"
 	"com.swiftpoint.png::https://support.swiftpoint.com/portal/api/publicImages/236657000020283222?portalId=edbsn0d3aa90196a4e3b6b39dfa53f41ea57346e362747d42eef1744d58b0281647e9"
 	"com.swiftpoint.X1_Control_Panel.desktop"
 )
 install=Swiftpoint_X1_Control_Panel.install
-sha256sums=('59324a145e7fcc2f5a54b38789bea9d99aea941e7b29fc63d148da7e28411913'
+sha256sums=('c431e3bf0157339625cf19fe9bbddd24d8cbeefaa81fa93adfc5cb516f3a82cf'
             'a7117e87abf569325fe6257d5ec5e7043b156d06feebd9ac22bd54f181b936f9'
             '1f392375193f0ce122b0d0c8f10e3f50b6ca60f0fbfdd6e3f26f3b765ee14c0d')
 
