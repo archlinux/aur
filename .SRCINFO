@@ -1,0 +1,33 @@
+pkgbase = proton-stream-bin
+	pkgdesc = Unofficial media library for Proton Drive: browse and stream public links and your own Drive folders (binaries)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/narrrl/proton-stream
+	arch = x86_64
+	license = MIT
+	depends = mpv
+	depends = libsecret
+	depends = webkit2gtk-4.1
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = libx11
+	depends = wayland
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	depends = glibc
+	optdepends = gnome-keyring: credential storage over the Secret Service API
+	optdepends = kwallet: credential storage over the Secret Service API
+	provides = proton-stream=2.2.0
+	provides = pstr
+	conflicts = proton-stream
+	conflicts = proton-stream-git
+	options = !strip
+	options = !debug
+	source = proton-stream-2.2.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/narrrl/proton-stream/releases/download/v2.2.0/proton-stream-2.2.0-x86_64-unknown-linux-gnu.tar.gz
+	source = io.narl.proton-stream-2.2.0.desktop::https://raw.githubusercontent.com/narrrl/proton-stream/v2.2.0/packaging/io.narl.proton-stream.desktop
+	source = io.narl.proton-stream-2.2.0.metainfo.xml::https://raw.githubusercontent.com/narrrl/proton-stream/v2.2.0/packaging/io.narl.proton-stream.metainfo.xml
+	sha256sums = 64094597f26efdbf8a72baa6850f644101ba10a708012327114d219dc906b2bc
+	sha256sums = 0fea5c03a0caf500ee985a235aa25c269ac19857fb099c7b38b24acd7029221e
+	sha256sums = 1ac61494440ce04d3bc5578295f61befb0a48d4ccce2518d2ff809072c4a1915
+
+pkgname = proton-stream-bin
