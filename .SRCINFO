@@ -1,0 +1,13 @@
+pkgbase = r-learnbayes
+	pkgdesc = Functions for Learning Bayesian Inference
+	pkgver = 2.15.2
+	pkgrel = 2
+	url = https://cran.r-project.org/package=LearnBayes
+	arch = any
+	license = GPL-2.0-or-later
+	depends = r-coda
+	source = https://cran.r-project.org/src/contrib/LearnBayes_2.15.2.tar.gz
+	md5sums = 57c6224d3ecab1bcfc6a05a3f369b3e8
+	b2sums = 2988d2e9356f34d16b9bbddac1b25b68365836d50229e555968d18a491557113eecdf7e225228b056eeacbeb989f32f1a14bd7c582851df32f597205045f03c8
+
+pkgname = r-learnbayes
