@@ -2,7 +2,7 @@
 
 pkgname=python-k3handy
 _name=${pkgname#python-}
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc="Handy alias of mostly used functions"
 provides=(${pkgname})
@@ -29,7 +29,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('d4befbd88861767c10bb3966c2fc7c5e8ef6a0d0167d61d130529bb2e504ea10')
+sha256sums=('f1994bf0fa51951193a968b8dda9923ff2eeecb910b3532c44441245f977572f')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
