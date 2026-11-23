@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=missMethyl
-_pkgver=1.38.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Analysing Illumina HumanMethylation BeadChip Data'
 arch=('any')
@@ -31,6 +31,9 @@ depends=(
   r-statmod
   r-stringr
   r-summarizedexperiment
+  r-illuminahumanmethylationepicv2anno.20a1.hg38
+  r-illuminahumanmethylationepicv2manifest
+  r-genomeinfodb
 )
 optdepends=(
   r-biocstyle
@@ -43,7 +46,7 @@ optdepends=(
   r-tweedeseqcountdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3c4addab6ac17add59fcfa6964195144aa713cfded6d8bdb258d3e6af651d83a')
+sha256sums=('b265021597b46514f6adcaf7be83679c244a627be5f11c7bdbf12b4379cc288d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
