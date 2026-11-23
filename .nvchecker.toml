@@ -1,0 +1,5 @@
+[porter-app-bin]
+source = "github"
+github = "t21dev/porter-app"
+use_latest_release = true
+prefix = "v"

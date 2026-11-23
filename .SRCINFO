@@ -1,0 +1,25 @@
+pkgbase = porter-app-bin
+	pkgdesc = Port Monitor 📈
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/t21dev/porter-app
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = glib2
+	depends = gtk3
+	depends = libsoup3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = cairo
+	depends = hicolor-icon-theme
+	provides = Porter
+	conflicts = porter-app
+	options = !strip
+	source = LICENSE-0.8.1::https://raw.githubusercontent.com/t21dev/porter-app/v0.8.1/LICENSE
+	sha256sums = 3e6ec8b6bcef8ed4adeb55701eab79825d1dd5125f8bb0c8395131b32b0aff22
+	source_x86_64 = Porter-x86_64-0.8.1.deb::https://github.com/t21dev/porter-app/releases/download/v0.8.1/Porter_0.8.1_amd64.deb
+	sha256sums_x86_64 = 85eb53d555a5e55e31102b62dfd80a111a53a433df69ed818c5d019486e8cb9e
+
+pkgname = porter-app-bin
