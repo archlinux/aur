@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 pkgname=tbls-bin
-pkgver=1.96.1
+pkgver=1.97.0
 pkgrel=1
 pkgdesc="CI-Friendly tool for documenting a database.Written in Go."
 arch=(
@@ -17,24 +17,19 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/k1LoW/tbls/v${pkgv
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.rpm")
 sha256sums=('6eefa0bec6e7c3654bdc29cb8f8c4adbc1327d2e912b532aacc68f6e2fa9d63c')
-sha256sums_aarch64=('7fa1b6e4340005b92b932c6fabfa88c8d8573d18276de11b2630263dc1b69ebe')
-sha256sums_x86_64=('63831cf22e520713baf55918373e0d92126e14eef1d4f8086ecc8e550bca97f1')
+sha256sums_aarch64=('65c5610515ec867397eb67d8f3e71ed89c52a7b2e9b66d481e28c5989e3d71d9')
+sha256sums_x86_64=('0a7e4271571157f0bde0e23496f035abf558e453c754fd2dd42c2395e524e1c2')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    # 定义shell配置数组：[shell可执行路径, 补全命令参数, 输出目录, 输出文件名规则]
     local shell_configs=(
         "/usr/bin/bash:bash:usr/share/bash-completion/completions:${pkgname%-bin}"
         "/usr/bin/fish:fish:usr/share/fish/vendor_completions.d:${pkgname%-bin}.fish"
         "/usr/bin/zsh:zsh:usr/share/zsh/site-functions:_${pkgname%-bin}"
     )
-    # 遍历配置，统一处理补全逻辑
     printf "%s\n" "${shell_configs[@]}" | while IFS=':' read -r shell_path comp_arg out_dir out_file; do
-        # 判断shell是否存在
         if [ -f "${shell_path}" ]; then
-            # 创建输出目录（-p 自动创建父目录，无需额外判断，兼容install标准用法）
             install -Dm755 -d "${pkgdir}/${out_dir}"
-            # 生成补全文件
             "${srcdir}/usr/bin/${pkgname%-bin}" completion "${comp_arg}" > "${pkgdir}/${out_dir}/${out_file}"
         fi
     done
