@@ -3,7 +3,7 @@
 # Rendered by `scripts/package.sh render aur` (#22): it rewrites pkgver, pkgrel and the
 # sha256sums line from a release's SHA256SUMS. Edit the rest here.
 pkgname=toppingctl
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Control the TOPPING E2x2 USB audio interface over HID"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('gcc-libs' 'glibc' 'systemd-libs')
 makedepends=('cargo')
 conflicts=('toppingctl-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e03dc2d395e41cb2137a9c60870538a3d1066f6444f2913619b6a1d4b9273f3d')
+sha256sums=('d9ae4e73ebe4c2b70c307a71ade6a468d6fb6694db41a87d0a09cd3c5342300a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
