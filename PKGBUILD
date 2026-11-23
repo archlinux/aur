@@ -4,9 +4,9 @@ _gitauthor=t21dev
 _gitname=porter-app
 _appname=Porter
 pkgname=${_gitname}-bin
-pkgdesc="Port Monitor 📈"
+pkgdesc="A sleek, fast, and secure desktop port monitoring application built with Tauri, React, and TypeScript"
 
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,7 +29,7 @@ options=('!strip')
 source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.deb")
 sha256sums=('3e6ec8b6bcef8ed4adeb55701eab79825d1dd5125f8bb0c8395131b32b0aff22')
-sha256sums_x86_64=('85eb53d555a5e55e31102b62dfd80a111a53a433df69ed818c5d019486e8cb9e')
+sha256sums_x86_64=('93044ad1ee73bf7fa6f8539d16eb10b23713902e6f669c3bbf2c455c9205a9a1')
 
 
 package() {
