@@ -7,7 +7,7 @@
 
 pkgname=colord-kde
 pkgver=26.08.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Interfaces and session daemon to colord for KDE'
 arch=(x86_64)
 url='https://userbase.kde.org/Color_Management'
