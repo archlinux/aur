@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="A cli tool to clean command shell history files"
 
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ makedepends=('zig')
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums_x86_64=('1233fe63f89aab0b8767466aad2da49a52444ff4fe07b73e03871c059bd950b5')
+sha256sums_x86_64=('37e4791bc37ec9dc6e0b1aea5107fd097ecfc91414f618bd9dab25f70acfe3c6')
 
 
 build() {
