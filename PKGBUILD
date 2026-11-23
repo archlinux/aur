@@ -1,7 +1,7 @@
 # Maintainer: qnx <me at qnx dot sh>
 
 pkgname=mapset-verifier-bin
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=0
 
 pkgdesc="A modding tool for osu!"
@@ -19,7 +19,7 @@ source=(
     "mapset-verifier-icon.png"
 )
 
-sha256sums=('d3c822abc2bc63915310a1a2aca78cb6a3b42049e8ed7de8aa116f4bb93782ad'
+sha256sums=('040450bac82a72cf74f3c20a863a34f4377d8020d9d5ca798be451f56ae1b558'
             '2492d6899f2c3e856cc9499e0557acae8d7b1d5eb6fb9d14bc55ac3c3de4a3e9'
             '9e1730dabd75d584829e48bc879d53d649254fec35263e569dd6b2334325e982')
 
