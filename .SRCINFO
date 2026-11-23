@@ -1,11 +1,12 @@
 pkgbase = r-mspurity
 	pkgdesc = Automated Evaluation of Precursor Ion Purity for Mass Spectrometry Based Fragmentation in Metabolomics
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/msPurity
 	arch = any
 	license = GPL
 	depends = r
+	depends = r-biocfilecache
 	depends = r-dbi
 	depends = r-dbplyr
 	depends = r-dosnow
@@ -30,7 +31,7 @@ pkgbase = r-mspurity
 	optdepends = r-rpostgres
 	optdepends = r-testthat
 	optdepends = r-xcms
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/msPurity_1.36.0.tar.gz
-	sha256sums = 1764ed30548f7ceff366070c86e0c0beaf705b84648b10ba82abddd631ae9c00
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/msPurity_1.38.0.tar.gz
+	sha256sums = d6521796559283997fad0730d01e6e92cab675bd43e9b15142a0a8f9ad0e4042
 
 pkgname = r-mspurity
