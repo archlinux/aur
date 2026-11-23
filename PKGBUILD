@@ -2,13 +2,13 @@
 
 _pkgname=pcbdraw
 pkgname=pcbdraw-git
-pkgver=381.4cfcc70
+pkgver=410.81d3183
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Convert your KiCAD boards into nice looking 2D drawings suitable for pinout diagrams."
 url="https://github.com/INTI-CMNB/pcbdraw"
-license=('Apache2.0')
-depends=('python' 'kicad' 'python-svgpathtools' 'python-pcbnewtransition' 'python-mistune')
+license=('Apache-2.0')
+depends=('python' 'kicad' 'python-svgpathtools' 'python-pcbnewtransition' 'python-mistune' 'python-pillow' 'python-lxml' 'python-yaml' 'python-numpy' 'python-click' 'perl')
 makedepends=('git' 'python' 'python-setuptools' 'python-pip')
 source=("${_pkgname}::git+https://github.com/INTI-CMNB/pcbdraw")
 md5sums=('SKIP')
@@ -18,6 +18,7 @@ conflicts=('pcbdraw')
 prepare() {
   cd "${srcdir}/${_pkgname}"
   git submodule update --init
+  sed -i 's/SafeConfigParser/ConfigParser/g; s/\.readfp(/\.read_file(/g' versioneer.py
 }
 
 
