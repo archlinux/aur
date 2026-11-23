@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=beachmat.hdf5
-_pkgver=1.2.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,6 +17,7 @@ depends=(
   zlib
 )
 makedepends=(
+  r-assorthead
   r-rhdf5lib
 )
 checkdepends=(
@@ -30,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('54b709d85197696ae959603ea5d730ea')
-b2sums=('7d4715ea544ed0db6e74dcdd35e6393d5e0c150017038c08a6cae779c81af7c1023c70accbe599c309a5e376b3bad96a67b1df575ea221b445ed37bd471bd745')
+md5sums=('bac3066f851527d8982a861525e4d433')
+b2sums=('ef56de80c31bf85b0976f3817eb0fad0a6dd774292ca8387d18c6f946204b909331e4ef1cf33f32f4c8ee6613cd3338c2f3b00d94e68a0c7df9e7798110aef66')
 
 build() {
   mkdir build
