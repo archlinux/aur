@@ -3,7 +3,7 @@
 
 _name=deltalake
 pkgname="python-${_name}"
-pkgver=1.6.6
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Native Delta Lake Python binding based on delta-rs with Pandas integration"
 arch=(x86_64)
@@ -15,7 +15,7 @@ optdepends=('python-pandas: for interoperability with pandas frames'
             'python-pyspark: for spark integration')
 makedepends=(python-build python-installer python-wheel python-maturin)
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('0dbe06104d7088d92cbef1be68ecf4620de025293e99f6635ef2d136ba6c57e5cad409e1c7e91eb94ddc6aa36c4a856ca7cc248016b905649295a45805cf88fb')
+b2sums=('17683e2a2d0ae45de6228a6bd1a4220c45e1bd9f8c43ecddcc0dada2edc8b23d70a40ea4c07eb63cffbf62a3343d99c50fb176146702c2af20dcabcfe3e1b6f4')
 
 prepare() {
     cd "$_name-$pkgver"
