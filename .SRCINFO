@@ -1,0 +1,22 @@
+pkgbase = python-k3confloader
+	pkgdesc = Load configuration for pykit3 modules
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/pykit3/k3confloader
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3proc
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3confloader
+	conflicts = python-k3confloader
+	source = k3confloader::git+https://github.com/pykit3/k3confloader.git#tag=v0.1.7
+	sha256sums = 9963a49b2dd33e4c50becd6d854d6b88fd5d4e2223a2e54a45c347e596fde7c8
+
+pkgname = python-k3confloader
