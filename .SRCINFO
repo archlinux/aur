@@ -1,6 +1,6 @@
 pkgbase = aurora-viewer-bin
 	pkgdesc = Free, open source Second Life viewer built in Rust with a Vulkan renderer (prebuilt release)
-	pkgver = 0.9.12
+	pkgver = 0.9.13
 	pkgrel = 1
 	url = https://aurora-viewer.org
 	arch = x86_64
@@ -41,9 +41,9 @@ pkgbase = aurora-viewer-bin
 	conflicts = aurora-viewer-git
 	options = !strip
 	options = !debug
-	source = https://github.com/Aurora-Viewer/Aurora-Viewer/releases/download/v0.9.12/Aurora-Viewer-v0.9.12-linux-x64.tar.gz
-	source = https://github.com/Aurora-Viewer/Aurora-Viewer/releases/download/v0.9.12/Aurora-Viewer-v0.9.12-linux-x64.tar.gz.sha256
-	sha256sums = cf6cdd553759696c012de99109da9de708940fdb1b822121212daa59d479a399
-	sha256sums = c68771ead6eb34bcafe05115f5ad0901cebef768a641a4bac167efcaa96bdee1
+	source = https://github.com/Aurora-Viewer/Aurora-Viewer/releases/download/v0.9.13/Aurora-Viewer-v0.9.13-linux-x64.tar.gz
+	source = https://github.com/Aurora-Viewer/Aurora-Viewer/releases/download/v0.9.13/Aurora-Viewer-v0.9.13-linux-x64.tar.gz.sha256
+	sha256sums = 25ae42f988a11d4d5fb53c938b7fed403d392c9c4e483ef21502ccce19a2dced
+	sha256sums = 0d99e48194413de1444c080356e149fb2278e2e77acd66ebaaaa15e7b6c1216d
 
 pkgname = aurora-viewer-bin

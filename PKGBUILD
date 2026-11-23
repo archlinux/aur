@@ -1,7 +1,7 @@
 # Maintainer: Caleb Mignano <swagcalebwolf@gmail.com>
 pkgname=aurora-viewer-bin
 _pkgname=aurora-viewer
-pkgver=0.9.12
+pkgver=0.9.13
 pkgrel=1
 pkgdesc="Free, open source Second Life viewer built in Rust with a Vulkan renderer (prebuilt release)"
 arch=('x86_64')
@@ -34,8 +34,8 @@ _dir="Aurora-Viewer-${_tag}-linux-x64"
 _rel="https://github.com/Aurora-Viewer/Aurora-Viewer/releases/download/${_tag}"
 source=("${_rel}/${_dir}.tar.gz"
         "${_rel}/${_dir}.tar.gz.sha256")
-sha256sums=('cf6cdd553759696c012de99109da9de708940fdb1b822121212daa59d479a399'
-            'c68771ead6eb34bcafe05115f5ad0901cebef768a641a4bac167efcaa96bdee1')
+sha256sums=('25ae42f988a11d4d5fb53c938b7fed403d392c9c4e483ef21502ccce19a2dced'
+            '0d99e48194413de1444c080356e149fb2278e2e77acd66ebaaaa15e7b6c1216d')
 
 prepare() {
   # Cross-check the tarball against upstream's published checksum
