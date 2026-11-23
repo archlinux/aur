@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=PSMatch
-_pkgver=1.12.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,10 +15,10 @@ depends=(
   r-igraph
   r-mscoreutils
   r-protgenerics
+  r-ptmods
   r-qfeatures
   r-s4vectors
   r-spectra
-  r-iranges
 )
 checkdepends=(
   r-msdata
@@ -31,7 +31,6 @@ optdepends=(
   r-biocstyle
   r-factoextra
   r-knitr
-  r-msdata
   r-mzid
   r-mzr
   r-rmarkdown
@@ -39,10 +38,11 @@ optdepends=(
   r-vdiffr
   r-summarizedexperiment
   r-testthat
+  r-msdatahub
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5fc6c85bbcf8e253a156b84c168c96b7')
-b2sums=('26b1275c7da6c26aee5e22046b88ea8cb9ab36a45567dfc6bfdc84db67ad75acc98fff41ac08d519c6821fed1cae252e2cb8ef5e8318b7b63dbe42c95f2aac19')
+md5sums=('5d9ab339b8c4eddf61e3ac32893e210e')
+b2sums=('8b06a440d0ac9b9b1333800c003daa29fc6464ff6335ac8d739821508d8abc71d517b4308e7dc813acf64668135796b53f161b9ed12a7f84c73757497446f966')
 
 build() {
   mkdir build
