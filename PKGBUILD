@@ -3,7 +3,7 @@
 
 pkgname=kvmem-cuda-git
 pkgver=0.19.1.r223.g7c934af
-pkgrel=1
+pkgrel=2
 pkgdesc='llama.cpp server with KVMem long-context KV memory management (CUDA)'
 arch=(x86_64)
 url=https://github.com/kvmem/kvmem
@@ -57,6 +57,8 @@ prepare() {
 }
 
 build() {
+  # a reused build tree can link a shared libkvmem.so that package() does not ship
+  rm -rf build
   cmake -S kvmem -B build -G Ninja \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_CUDA_COMPILER=/opt/cuda/bin/nvcc \
