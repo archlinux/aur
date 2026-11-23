@@ -2,7 +2,7 @@
 
 _pkgname=gutenprint-printer-app
 pkgname="${_pkgname}-git"
-pkgver=1.0+r78.20260109.8712a9f
+pkgver=1.0+r79.20261112.a1d4eb2
 pkgrel=1
 pkgdesc="PostScript Printer Application"
 url='https://github.com/OpenPrinting/gutenprint-printer-app'
