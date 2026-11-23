@@ -1,0 +1,19 @@
+pkgbase = djdev64-git
+	pkgdesc = Libraries and headers implementing the DJ64 and DJ64STUB DPMI extensions for dj64 executables
+	pkgver = 0.5.r15.g0c9ec58
+	pkgrel = 1
+	url = https://github.com/dosemu2/djdev64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	depends = glibc
+	depends = libelf
+	provides = djdev64=0.5
+	provides = libdjdev64.so
+	provides = libdjstub64.so
+	conflicts = djdev64
+	source = git+https://github.com/dosemu2/djdev64.git
+	sha256sums = SKIP
+
+pkgname = djdev64-git
