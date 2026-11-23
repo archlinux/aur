@@ -1,6 +1,6 @@
 # Maintainer: Coobyk <mail@coobyk.com>
 pkgname=oblyx-gui-bin
-pkgver=0.1.0.r82
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Convert GoodNotes notebooks to SVG, PDF, PNG, and Notability .ntb (GUI, prebuilt binary)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('oblyx-gui')
 source=("oblyx-linux-x64-$pkgver.tar.gz::https://github.com/Coobyk/oblyx/releases/download/v$pkgver/oblyx-$pkgver-linux-x64.tar.gz"
         "oblyx-gui.desktop::https://raw.githubusercontent.com/Coobyk/oblyx/v$pkgver/assets/oblyx-gui.desktop"
         "oblyx.svg::https://raw.githubusercontent.com/Coobyk/oblyx/v$pkgver/assets/oblyx.svg")
-sha256sums=('8ceb20e49ee9bda0aa8a1ad7a62674edd1b58be3d92d6634bed9f99146dcee2b' '30f23f6b9a8bafd261bd9d2f7ae3bcffff0615982ff1a1c7021cc37b568c0fbd' '606ddf346df5758cccb52c746850088947ad4dd07701988331134a0aeb734ea1')
+sha256sums=('ed638b8894df3d31ffc77d420b260ed0c9ed055087791d1e2b7f36ed32d4b060' '30f23f6b9a8bafd261bd9d2f7ae3bcffff0615982ff1a1c7021cc37b568c0fbd' '606ddf346df5758cccb52c746850088947ad4dd07701988331134a0aeb734ea1')
 
 package() {
   install -Dm755 "oblyx-$pkgver-linux-x64/oblyx-gui" "$pkgdir/usr/bin/oblyx-gui"
