@@ -1,6 +1,6 @@
 pkgbase = traceview-bin
 	pkgdesc = Tracing and viewing your files and resource landscape
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/javaLux/traceview
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = traceview-bin
 	provides = traceview
 	conflicts = traceview
 	options = !debug
-	source = traceview-bin-2.2.0-LICENSE::https://raw.githubusercontent.com/javaLux/traceview/v2.2.0/LICENSE
+	source = traceview-bin-2.2.1-LICENSE::https://raw.githubusercontent.com/javaLux/traceview/v2.2.1/LICENSE
 	sha256sums = 7e3e27db1729df67915bde6fdf37420ca9977a96b3ed7d95f4d70f574a0d500d
-	source_x86_64 = traceview-bin-2.2.0-x86_64.tar.gz::https://github.com/javaLux/traceview/releases/download/v2.2.0/traceview_2.2.0-gnu-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 18da15c22207cf78412747264a5b1339926a2ba1e3da94bbfcd4b1b8712a4c10
-	source_aarch64 = traceview-bin-2.2.0-aarch64.tar.gz::https://github.com/javaLux/traceview/releases/download/v2.2.0/traceview_2.2.0-gnu-linux-aarch64.tar.gz
-	sha256sums_aarch64 = fd40f6fd82770066023470e034d6d16fb69e1fa8fec7971ad94b4ded67d3f714
+	source_x86_64 = traceview-bin-2.2.1-x86_64.tar.gz::https://github.com/javaLux/traceview/releases/download/v2.2.1/traceview_2.2.1-gnu-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 171f589e1ac41b2e0bda28beccc4c3f32513f29ababb77171c173a84a1a6af3d
+	source_aarch64 = traceview-bin-2.2.1-aarch64.tar.gz::https://github.com/javaLux/traceview/releases/download/v2.2.1/traceview_2.2.1-gnu-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 9fad13922b99e83d5d28d5ea0d168492382f561507803196496ca3e3c4b21130
 
 pkgname = traceview-bin
