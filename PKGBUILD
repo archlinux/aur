@@ -6,7 +6,7 @@
 # from a checkout instead.
 
 pkgname=appofholding
-pkgver=0.12.4
+pkgver=0.12.5
 pkgrel=1
 pkgdesc='AppImage manager: menu integration, updates, launch options and sandboxing'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=('zsync: delta updates for AppImages that publish .zsync files'
 # Rust does its own LTO; makepkg's C/C++ LTO flags break the cxx-qt objects.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7202ff53b9f4cc11080f97567a888117e570e262486990dc664238ee0c6e33b5')
+sha256sums=('bb7dc902dd1cd66bd955a4ef3e6b7ac3ce591606d51945cac7b7eb8fdbfdf91f')
 
 prepare() {
   cd "$pkgname-$pkgver"
