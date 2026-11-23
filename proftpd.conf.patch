@@ -1,5 +1,14 @@
 --- a/etc/proftpd/proftpd.conf	2026-11-23 16:26:25.000000000 +0100
-+++ b/etc/proftpd/proftpd.conf	2026-11-23 16:50:30.025853938 +0100
++++ b/etc/proftpd/proftpd.conf	2026-11-23 17:20:21.145481590 +0100
+@@ -11,7 +11,7 @@
+ Port				21
+ 
+ # Don't use IPv6 support by default.
+-UseIPv6				off
++UseIPv6				on
+ 
+ # Umask 022 is a good standard umask to prevent new dirs and files
+ # from being group and world writable.
 @@ -27,7 +27,7 @@
  
  # Set the user and group under which the server will run.
