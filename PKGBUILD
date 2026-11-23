@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=subcraft
-pkgver=0.4.5
+pkgver=0.5.0
 pkgrel=1
 url="https://aalzard.github.io/$pkgname"
 _url="https://github.com/Aalzard/$pkgname"
@@ -13,7 +13,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('8bea4b398f78aa68f27a7b42fd99095e7894e1d7c0d321038fe7db7ad637e4cf')
+sha256sums=('fa4e98c39c40b38526ae4750b09c40fa2a6f2a9f02422e3aaf41dc4c7ebb5e8a')
 
 _srcenv() {
 	cd "$_archive"
