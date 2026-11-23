@@ -1,7 +1,8 @@
+# system requirements: none
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ontoProc
-_pkgver=1.26.0
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,17 +12,21 @@ url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
 depends=(
   r-annotationhub
+  r-basilisk
   r-biobase
   r-biocfilecache
   r-dplyr
   r-dt
+  r-ellmer
   r-graph
   r-httr
   r-igraph
+  r-jsonlite
   r-magrittr
   r-ontologyindex
   r-ontologyplot
   r-r.utils
+  r-rbgl
   r-reticulate
   r-rgraphviz
   r-s4vectors
@@ -38,10 +43,11 @@ optdepends=(
   r-rmarkdown
   r-singlecellexperiment
   r-testthat
+  r-magick
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3b97b2891024222d839bce78e279df49')
-b2sums=('d64ba95b9d973b11d3222eac4a8665ea7522f79139dfe4abfc06940c868dfb9bb3668991e5444361f862e7b42427c9c82d9e2bdcfd515887492213e5c3c887d6')
+md5sums=('2e7d35cc300c4ca8189b45cfb2886c2d')
+b2sums=('5d4293ddd30e0859086dfe72b3ad1d40ff8dbfc7f6f5e23e3d111bf15405da1393c1ff51a4b705247a9354bd69de99b778f7c63cf2d51951ad869f910bc920d6')
 
 build() {
   mkdir build
