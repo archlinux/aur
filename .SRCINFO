@@ -1,6 +1,6 @@
 pkgbase = ulogviewer-bin
 	pkgdesc = Universal Log Viewer,supports reading, parsing and analysing various type of logs.
-	pkgver = 2026.2.3
+	pkgver = 2026.2.4
 	pkgrel = 1
 	url = https://carina-studio.github.io/ULogViewer/
 	arch = aarch64
@@ -13,17 +13,17 @@ pkgbase = ulogviewer-bin
 	optdepends = android-sdk-platform-tools
 	optdepends = git
 	optdepends = libimobiledevice
-	provides = ulogviewer=2026.2.3
+	provides = ulogviewer=2026.2.4
 	conflicts = ulogviewer
-	noextract = ulogviewer-2026.2.3-x86_64.zip
+	noextract = ulogviewer-2026.2.4-x86_64.zip
 	options = !strip
-	source = LICENSE-2026.2.3::https://raw.githubusercontent.com/carina-studio/ULogViewer/2026.2.3/LICENSE
+	source = LICENSE-2026.2.4::https://raw.githubusercontent.com/carina-studio/ULogViewer/2026.2.4/LICENSE
 	source = ulogviewer.sh
 	sha256sums = 4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea
-	sha256sums = 08c0a423317a93a254a6d6fbcb0575e8dde202ce46f5126dbf03eb58e02c8851
-	source_aarch64 = ulogviewer-2026.2.3-aarch64.zip::https://github.com/carina-studio/ULogViewer/releases/download/2026.2.3/ULogViewer-2026.2.3-linux-arm64.zip
-	sha256sums_aarch64 = b3346453d00b1285031f6f2eb0144d258f6f9f28aa6afb5252ac84f9c7f348d0
-	source_x86_64 = ulogviewer-2026.2.3-x86_64.zip::https://github.com/carina-studio/ULogViewer/releases/download/2026.2.3/ULogViewer-2026.2.3-linux-x64.zip
-	sha256sums_x86_64 = 9a4a03554f1f07d076d475a8075934126122ef54411c7d8543db49115ae1a187
+	sha256sums = 3cd76cf4d8109483e794c97ca9cfe3f19bd5b72da83a891b1ec51a0879b8ab85
+	source_aarch64 = ulogviewer-2026.2.4-aarch64.zip::https://github.com/carina-studio/ULogViewer/releases/download/2026.2.4/ULogViewer-2026.2.4-linux-arm64.zip
+	sha256sums_aarch64 = 00cfaae4d009998ee1c4d5564cb1e774c8af9a24bdc269a0606d41f892e9f7cc
+	source_x86_64 = ulogviewer-2026.2.4-x86_64.zip::https://github.com/carina-studio/ULogViewer/releases/download/2026.2.4/ULogViewer-2026.2.4-linux-x64.zip
+	sha256sums_x86_64 = 1d7aeaacb6cff471a41bb54b7a61b9db0e6116ddf07a68592d335d5d470512f1
 
 pkgname = ulogviewer-bin
