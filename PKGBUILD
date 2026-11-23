@@ -1,4 +1,5 @@
-# Maintainer: bill <beakless dot bill AT gmail DOT com>
+# Maintainer: Oliver Bandel <oliver _at_ first . in - berlin . de>
+# Contributor bill <beakless dot bill AT gmail DOT com>
 
 pkgname=freeimagere-git
 pkgver=4.2
