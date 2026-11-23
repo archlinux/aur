@@ -1,6 +1,6 @@
 pkgbase = python-pyserial-asyncio-fast-git
 	pkgdesc = Async I/O extension package for the Python Serial Port Extension.
-	pkgver = 0.16.r100.20250326.7db3b36
+	pkgver = 0.16+1.r101.20261023.a658ed8
 	pkgrel = 1
 	url = https://github.com/home-assistant-libs/pyserial-asyncio-fast
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-pyserial-asyncio-fast-git
 	makedepends = python-wheel
 	depends = python>=3.9
 	depends = python-pyserial>=3.1.1
-	provides = python-pyserial-asyncio-fast=0.16.r100.20250326.7db3b36
+	provides = python-pyserial-asyncio-fast=0.16+1.r101.20261023.a658ed8
 	conflicts = python-pyserial-asyncio-fast
 	source = python-pyserial-asyncio-fast::git+https://github.com/home-assistant-libs/pyserial-asyncio-fast.git
 	sha256sums = SKIP

@@ -3,7 +3,7 @@
 _pyname="pyserial-asyncio-fast"
 _pkgname="python-${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=0.16.r100.20250326.7db3b36
+pkgver=0.16+1.r101.20261023.a658ed8
 pkgrel=1
 pkgdesc="Async I/O extension package for the Python Serial Port Extension."
 arch=(
