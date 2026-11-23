@@ -2,12 +2,11 @@
 
 pkgname=yesplaymusic
 pkgver=0.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A third party music application for Netease Music"
 arch=('x86_64')
 url="https://github.com/qier222/YesPlayMusic"
 license=('MIT')
-provides=('yesplaymusic')
 conflicts=(
     'yesplaymusic-bin'
     'yesplaymusic-electron'
@@ -16,6 +15,7 @@ conflicts=(
 depends=(
     'alsa-lib'
     'gtk3'
+    'hicolor-icon-theme'
     'libxss'
     'nss'
 )
@@ -27,8 +27,9 @@ optdepends=(
 options=('!strip' '!debug')
 source=(
     "YesPlayMusic-${pkgver}.pacman::https://github.com/qier222/YesPlayMusic/releases/download/v${pkgver}/yesplaymusic-${pkgver}.pacman"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/qier222/YesPlayMusic/v${pkgver}/LICENSE"
+    "${pkgname}-LICENSE-${pkgver}::https://raw.githubusercontent.com/qier222/YesPlayMusic/v${pkgver}/LICENSE"
 )
+noextract=("YesPlayMusic-${pkgver}.pacman")
 sha256sums=('8b491f99736925f6cb4225b1eab80afcee89313c022ac0c15dc1eef13d2a2f8d'
             'c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6')
 
@@ -52,5 +53,5 @@ package() {
         >>"$pkgdir/usr/share/applications/yesplaymusic.desktop"
 
     # Install MIT license
-    install -Dm644 "$srcdir/LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/${pkgname}-LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
