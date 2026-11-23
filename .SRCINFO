@@ -1,10 +1,11 @@
 pkgbase = uzumaki
 	pkgdesc = Native desktop client for Apple Music, GPU-rendered in Rust (needs a subscription)
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://getuzumaki.app
 	arch = x86_64
 	license = GPL-3.0-or-later
+	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = npm
 	makedepends = git
@@ -43,7 +44,21 @@ pkgbase = uzumaki
 	optdepends = libsecret: Chromium can store its cookies encrypted with the keyring
 	optdepends = ffmpeg: animated album artwork (without it the covers stay still)
 	options = !lto
-	source = uzumaki-0.4.0.tar.gz::https://github.com/hanami117/uzumaki/releases/download/v0.4.0/uzumaki-0.4.0.tar.gz
-	sha256sums = 75585149c2e102c3c37a95ef32e6173c9eef9e15de5d970f13d9863fe2fb5df6
+	source = uzumaki-0.4.1.tar.gz::https://github.com/hanami117/uzumaki/releases/download/v0.4.1/uzumaki-0.4.1.tar.gz
+	source = airplay-cli::git+https://github.com/music-assistant/airplay-cli.git#tag=v0.5.10
+	source = libraop::git+https://github.com/philippe44/libraop.git
+	source = crosstools::git+https://github.com/philippe44/crosstools.git
+	source = dmap-parser::git+https://github.com/philippe44/dmap-parser.git
+	source = libcodecs::git+https://github.com/philippe44/libcodecs.git
+	source = libmdns::git+https://github.com/philippe44/libmdns.git
+	source = libopenssl::git+https://github.com/philippe44/libopenssl.git
+	sha256sums = e6613f868567735cd12d4303a6918dc63eb524377ead9216521d2e149c795d8d
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = uzumaki

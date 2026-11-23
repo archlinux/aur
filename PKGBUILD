@@ -14,6 +14,9 @@
 #   /usr/lib/uzumaki/uzumaki, uzu      the binaries; /usr/bin/uzumaki and /usr/bin/uzu link to them
 #   /usr/lib/uzumaki/bridge/           the playback bridge with castLabs Electron in node_modules
 #                                      (the app finds it beside its binary: bridge.rs, bridge_in_libdir)
+#   /usr/lib/uzumaki/cliairplay        the AirPlay helper (Music Assistant's airplay-cli, GPL-3.0),
+#                                      built from source at the tag _cliairplay; the app finds it
+#                                      beside its binary (airplay/src/helper.rs, find)
 #   /usr/share/applications, /usr/share/icons/hicolor, /usr/share/licenses/uzumaki
 #   /usr/share/uzumaki/icons/<variant>/<size>.png   the App icon choices (source for app_icon.rs)
 # Built with UZUMAKI_CHANNEL=aur (build() below): the app's update notice says "Update with your
@@ -37,7 +40,7 @@
 # The Widevine CDM is not in this package: Chromium downloads it from Google on first use.
 
 pkgname=uzumaki
-pkgver=0.4.0
+pkgver=0.4.1
 # The upstream build: 1 is tag v<version>, a rebuild of the same version is v<version>-<build>
 # (tarball uzumaki-<version>-<build>.tar.gz, still unpacking to uzumaki-<version>/).
 _build=1
@@ -47,7 +50,8 @@ pkgdesc='Native desktop client for Apple Music, GPU-rendered in Rust (needs a su
 # castLabs Electron is fetched for the build machine's architecture; only x86_64 is tested.
 arch=('x86_64')
 url='https://getuzumaki.app'
-license=('GPL-3.0-or-later')
+# Uzumaki: GPL-3.0-or-later. cliairplay (/usr/lib/uzumaki/cliairplay): GPL-3.0 (its LICENSE, no "or later" notice).
+license=('GPL-3.0-or-later' 'GPL-3.0-only')
 # Run time. The app (Rune/winit/wgpu) loads Vulkan, xkbcommon and the Wayland and X11 client
 # libraries with dlopen, so namcap cannot see them: they are listed by hand so both a Wayland and
 # an X11 session work. rodio: ALSA; MPRIS and the tray: D-Bus. The rest is castLabs Electron's
@@ -91,13 +95,48 @@ optdepends=(
 )
 # cargo is provided by rust and by rustup (rustup users need a default toolchain). git: npm
 # fetches castLabs Electron from its git repository.
+# gcc, g++, make, objdump (cliairplay): base-devel.
 makedepends=('cargo' 'npm' 'git' 'pkgconf')
 options=('!lto')
 source=("$pkgname-$_rel.tar.gz::https://github.com/hanami117/uzumaki/releases/download/v$_rel/uzumaki-$_rel.tar.gz")
 # The tarball's sha256 (packaging/release.sh prints it; uzumaki-<version>.tar.gz.sha256 on the release).
-sha256sums=('75585149c2e102c3c37a95ef32e6173c9eef9e15de5d970f13d9863fe2fb5df6')
+# Keep this line alone: the release workflow rewrites exactly `sha256sums=('...')`.
+sha256sums=('e6613f868567735cd12d4303a6918dc63eb524377ead9216521d2e149c795d8d')
+# The AirPlay helper cliairplay at the tag scripts/airplay/build-cliairplay.sh pins (a test in
+# airplay/tests/packaging.rs keeps the two equal), with the libraop submodules its build reads
+# (libraop's prebuilt codec, mDNS and OpenSSL 3 archives; their own nested submodules, the codec and
+# OpenSSL sources, are not needed). prepare() points the submodules at these clones, so build()
+# needs no network. Each submodule ends at the commit its parent pins, whatever branch is fetched.
+# Git, not snapshot tarballs: the commits then follow the tag by themselves, and `git describe` gives
+# the helper its version (a tarball build reports the stale literal in cliairplay.c). The first build
+# fetches about 820 MB of git history (libraop, libopenssl and libcodecs carry prebuilt archives);
+# makepkg keeps the mirrors in $SRCDEST and later builds fetch only what changed.
+_cliairplay=v0.5.10
+source+=(
+  "airplay-cli::git+https://github.com/music-assistant/airplay-cli.git#tag=$_cliairplay"
+  'libraop::git+https://github.com/philippe44/libraop.git'
+  'crosstools::git+https://github.com/philippe44/crosstools.git'
+  'dmap-parser::git+https://github.com/philippe44/dmap-parser.git'
+  'libcodecs::git+https://github.com/philippe44/libcodecs.git'
+  'libmdns::git+https://github.com/philippe44/libmdns.git'
+  'libopenssl::git+https://github.com/philippe44/libopenssl.git'
+)
+sha256sums+=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+
+_submodules() {
+  local dir=$1; shift
+  local m
+  for m in "$@"; do
+    git -C "$dir" submodule init "$m"
+    git -C "$dir" config "submodule.$m.url" "$srcdir/$m"
+  done
+  git -C "$dir" -c protocol.file.allow=always submodule update --quiet "$@"
+}
 
 prepare() {
+  _submodules airplay-cli libraop
+  _submodules airplay-cli/libraop crosstools dmap-parser libcodecs libmdns libopenssl
+
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -119,6 +158,8 @@ build() {
   # Read at compile time: the update notice points at the package manager, the check says "aur".
   export UZUMAKI_CHANNEL=aur
   cargo build --frozen --release -p uzumaki -p uzumaki-ctl
+  # Into target/cliairplay/cliairplay; links libstdc++/libatomic statically (needs only glibc).
+  CLIAIRPLAY_SRC="$srcdir/airplay-cli" scripts/airplay/build-cliairplay.sh
 }
 
 package() {
@@ -130,6 +171,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/usr/lib/$pkgname/uzumaki" "$pkgdir/usr/bin/uzumaki"
   ln -s "/usr/lib/$pkgname/uzu" "$pkgdir/usr/bin/uzu"
+  install -Dm755 target/cliairplay/cliairplay "$lib/cliairplay"
 
   # The bridge, as install.sh copies it.
   install -dm755 "$lib/bridge"
@@ -162,5 +204,6 @@ package() {
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 THIRD_PARTY_NOTICES.md "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_NOTICES.md"
+  install -Dm644 packaging/CLIAIRPLAY_LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/CLIAIRPLAY_LICENSE.txt"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
