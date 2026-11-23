@@ -35,16 +35,14 @@ loadSavedEnvs() {
 }
 
 saveEnvs() {
-  rm "$WINEPREFIX/.installed.$CURRVER"
-  if [[ -v SAVES ]]; then
-    declare -p SAVES >> "$WINEPREFIX/.installed.$CURRVER"
-  fi
-  if [[ -v PROTONPATH ]]; then
-    declare -p PROTONPATH >> "$WINEPREFIX/.installed.$CURRVER"
-  fi
-  if [[ -v USE_WINE ]]; then
-    declare -p USE_WINE >> "$WINEPREFIX/.installed.$CURRVER"
-  fi
+  local f="$WINEPREFIX/.installed.$CURRVER"
+  rm -f "$f"
+  local v
+  for v in SAVES PROTONPATH USE_WINE; do
+    if [[ -v $v ]]; then
+      declare -p "$v" | sed 's/^declare /declare -g /' >> "$f"
+    fi
+  done
 }
 
 probeUMU() {
