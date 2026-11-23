@@ -1,0 +1,21 @@
+pkgbase = pakku-bin
+	pkgdesc = Pacman wrapper and AUR helper with a pacman-like user interface
+	pkgver = 0.18
+	pkgrel = 1
+	url = https://github.com/zqqw/pakku
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = pacman
+	depends = libcurl.so
+	depends = git
+	provides = pakku
+	conflicts = pakku
+	options = !strip
+	options = !debug
+	backup = etc/pakku.conf
+	source = pakku-0.18-x86_64.tar.gz::https://github.com/zqqw/pakku/releases/download/v0.18/pakku-0.18-x86_64.tar.gz
+	source = COPYING-0.18::https://github.com/zqqw/pakku/raw/v0.18/COPYING
+	sha256sums = bff014012ce57f4d0f1a86c4a9c803a20f1555329c232d698613554d70fda658
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = pakku-bin
