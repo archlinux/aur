@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rms
-_pkgver=8.1-1
+_pkgver=8.2-1
 pkgname=r-${_pkgname,,}
-pkgver=8.1.1
+pkgver=8.2.1
 pkgrel=1
 pkgdesc='Regression Modeling Strategies'
 arch=('x86_64')
@@ -21,10 +21,13 @@ depends=(
   r-multcomp
   r-polspline
   r-quantreg
+  r-scales
   r-sparsem
+  r-tinytable
 )
 optdepends=(
   r-boot
+  r-icenreg
   r-kableextra
   r-lattice
   r-mice
@@ -38,7 +41,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1cffe91d1c0f984d6c98e73bb09102bbf157f8f77731721cde043dfd43ef53b0')
+sha256sums=('b82ff163aaee4e229b0b40507b3644867a463dadc6e854c39e83f36bcf96c863')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
