@@ -20,7 +20,6 @@ depends=(
     'alsa-utils'
     'pipewire'
     'rtkit'
-    'onnxruntime-cpu'
 )
 
 makedepends=(
@@ -82,8 +81,6 @@ build() {
     
     node scripts/download.js
     node scripts/prepare-zadark.js
-    install -d temp
-    ln -sf /usr/lib/libonnxruntime.so temp/libonnxruntime.so.1.30.0
     node scripts/prepare-app.js
     node scripts/clean-unused.js
     node scripts/integrate-zadark.js
@@ -96,8 +93,6 @@ package() {
     install -d "$_lib" "$_lib/plugins"
     cp -a main.js package.json app plugins "$_lib/"
     cp -a native/engines/zcall "$_lib/zcall-native"
-    rm -f "$_lib/app/native/ocr/libonnxruntime.so"
-    ln -s /usr/lib/libonnxruntime.so "$_lib/app/native/ocr/libonnxruntime.so"
     # gulp leaves the o+w bit on app/pc-dist/zadark; packages must not be world-writable
     chmod -R o-w "$_lib"
     
