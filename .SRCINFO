@@ -1,0 +1,20 @@
+pkgbase = plasma-notification-mirror
+	pkgdesc = Mirror KDE Plasma notification popups to additional monitors on Wayland
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/MysteriousAeon/plasma-notification-mirror
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = qt6-base
+	depends = layer-shell-qt
+	depends = systemd-libs
+	source = plasma-notification-mirror-0.2.0.tar.gz::https://github.com/MysteriousAeon/plasma-notification-mirror/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = cccf650fa4fc6bff2f4d733de99de2e7cf95468f086eb26d791f26e3c3bef5f8
+
+pkgname = plasma-notification-mirror
