@@ -2,11 +2,11 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proxyC
-_pkgver=0.5.2
+_pkgver=0.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Computes Proximity in Large Sparse Matrices"
+pkgdesc="Computes Proximity in Large Matrices"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-3.0-only')
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c14453641ed056c375ef88e0146d6708')
-b2sums=('634bb467d715215993146542096bd7c2e8eb922667c9da66aa879cbdf80ec23d82d049f2bf79dcabd1de2355b2e343886a654520e14142652a5b308ae8d7ce9e')
+md5sums=('0b3a2295525cb9d00dc660c22f82f861')
+b2sums=('0b6bc2e05f1fd6031eac38b9cbbdc6b5f92f4565badbd32c5443decd31fe38fa5ef0dc58c4e4c8ace8de1ce32aba177ab4f98718cbf8aa4778a485238791075b')
 
 build() {
   mkdir build
