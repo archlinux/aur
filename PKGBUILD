@@ -1,7 +1,7 @@
 # Maintainer: Juliette Cordor
 pkgname=kiri-lite
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A small, fast container runtime for macOS, Windows and Linux with free Ngrok alternative'
 arch=('x86_64' 'aarch64')
 url='https://runkiri.com/'
@@ -13,7 +13,6 @@ makedepends=(
 depends=(
 	'libgcc_s.so=1-64'
 )
-provides=('kiri')
 options=(!lto)
 
 source=(
@@ -57,8 +56,6 @@ package() {
 
 	install -Dm755 "$bindir/kiri" "$bindir/kiri-init" -t "$pkgdir/usr/bin/"
 	install -Dm644 "$servicedir/kiri.service" "$pkgdir/usr/lib/systemd/system/kiri.service"
-	# The password prompt for `kiri host-access` (the window's setup checklist).
-	install -Dm644 "$servicedir/dev.kiri.host-access.policy" "$pkgdir/usr/share/polkit-1/actions/dev.kiri.host-access.policy"
 
 	install -Dm644 "$srcdir/kiri-$pkgver/LICENSE" "$srcdir/kiri-$pkgver/NOTICE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 

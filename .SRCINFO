@@ -1,7 +1,7 @@
 pkgbase = kiri-lite
 	pkgdesc = A small, fast container runtime for macOS, Windows and Linux with free Ngrok alternative
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://runkiri.com/
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,6 @@ pkgbase = kiri-lite
 	makedepends = cargo
 	makedepends = clang
 	depends = libgcc_s.so=1-64
-	provides = kiri
 	options = !lto
 	source = kiri-lite-0.2.2.tar.gz::https://github.com/libracoder/kiri/archive/refs/tags/v0.2.2.tar.gz
 	source = kiri.sysusers
