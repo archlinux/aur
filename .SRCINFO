@@ -1,6 +1,6 @@
 pkgbase = proton-gallery-git
 	pkgdesc = Unofficial Proton Photos and Drive gallery with a native photo and video viewer (git main)
-	pkgver = 0.5.0.r0.g593c78e
+	pkgver = 0.6.0.r0.gc871458
 	pkgrel = 1
 	url = https://github.com/narrrl/proton-gallery
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = proton-gallery-git
 	optdepends = ttf-dejavu: fallback fonts for the desktop interface
 	optdepends = gst-plugin-va: hardware video decoding
 	optdepends = gst-plugins-ugly: older video formats
-	provides = proton-gallery=0.5.0.r0.g593c78e
+	provides = proton-gallery=0.6.0.r0.gc871458
 	conflicts = proton-gallery
 	conflicts = proton-gallery-bin
 	options = !lto
