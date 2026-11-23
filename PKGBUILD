@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=runjags
-_pkgver=2.2.2-5
+_pkgver=2.3.0-5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,18 +12,19 @@ license=('GPL-2.0-only')
 depends=(
   jags
   r-coda
+  r-rjags
 )
 optdepends=(
   r-knitr
+  r-litedown
   r-markdown
   r-modeest
-  r-rjags
   r-spelling
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3bc563e2c68a78b6933a2a73acb62602')
-b2sums=('c18a7a8eada0a3668db9db2edb5f36307c0de644627eb62e52e3243c77c633fb22c125fdfb0000c1e5ffe82c929e44a540ee3e86fccd94685a747a312189dc37')
+md5sums=('ca664cb768059de1929a5cb66168d8f7')
+b2sums=('a4144ef4580cb8dfb3dcc77e5ccffda05b7be66d6bbd2bebc272812cf6de0d65d56485f86686f64ea4a954d75122514c9e3544c821ff30926f3e9063766572ff')
 
 build() {
   mkdir build
