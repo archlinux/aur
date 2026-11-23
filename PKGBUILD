@@ -1,13 +1,11 @@
 # Maintainer: LUCKY / LuckySingh1 <luckysingh71826@gmail.com>
 pkgname=chillpill-shell
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Lightweight and feature rich dynamic pill bar for Hyprland"
 depends=(
        'cliphist'
        'nusgmon-git'
-       'inotify-tools'
-       'brightnessctl'
        'wl-clipboard'
        'quickshell'
        'qt6-multimedia'
@@ -29,7 +27,7 @@ license=('GPL-3.0')
 options=('!debug')
 url="https://github.com/LUCKYS1NGHH/ChillPill-Shell"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LUCKYS1NGHH/ChillPill-Shell/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('934f0073d0a50edce9a9ba0a4b633de3447762644920182b088fc4acb925e392')
+sha256sums=('e88093b035e6b058e7502cf1746e211a133cb8df104d2c3455b418b89936a268')
 
 package() {
   cd "ChillPill-Shell-$pkgver"
@@ -54,11 +52,13 @@ package() {
     "$pkgdir/usr/share/chillpill-shell/PillBackend"
 
   install -Dm755 launcher.sh "$pkgdir/usr/bin/chillpill-shell"
-  install -Dm755 config-launcher.sh "$pkgdir/usr/bin/chillpill-config"
+  install -Dm755 config-launcher.sh "$pkgdir/usr/local/bin/chillpill-config"
   install -Dm755 lockscreen.sh "$pkgdir/usr/bin/chillpill-lock"
   install -Dm644 chillpill.desktop "$pkgdir/usr/share/applications/chillpill.desktop"
   install -Dm644 chillpill-config.desktop "$pkgdir/usr/share/applications/chillpill-config.desktop"
   install -Dm644 config.jsonc "$pkgdir/usr/share/chillpill-shell/config.jsonc.example"
+
+  chmod 644 $pkgdir/usr/share/chillpill-shell/share/themes/*
 }
 
 install='chillpill-shell.install'
