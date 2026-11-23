@@ -1,7 +1,7 @@
 # Maintainer: lucas <lucaszhou007@163.com>
 pkgname=deepseek-harness-bin-autotrack
-pkgver=0.2.2~rc.5
-pkgrel=7
+pkgver=0.2.3~alpha.2
+pkgrel=1
 pkgdesc='DeepSeek Harness CLI and agent harness (auto-tracked npm releases)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/deepseek-ai/deepseek-harness'
@@ -17,7 +17,7 @@ conflicts=('dsh' 'dsh-bin' 'deepseek-harness' 'deepseek-harness-bin'
 # (0.2.2~rc.4 < 0.2.2); the registry tarball name uses "-", map it back.
 source=("dsh-${pkgver//\~/-}.tgz::https://registry.npmjs.org/@deepseek-ai/dsh/-/dsh-${pkgver//\~/-}.tgz"
         dsh-web.service)
-sha256sums=('67da5a3c458f46cd278e0eec6ad0e3a44e99fd13087c6f11a1b362268900a52c'
+sha256sums=('9900793a077ffa6c9794f7349c7c69120cd6a24dec4163837a7256167e61d250'
             '69613f7934e1062261bb47eda8db29fd54e0d6246ebb552dd3c75b31bbe6da27')
 
 prepare() {
