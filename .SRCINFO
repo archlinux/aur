@@ -1,7 +1,7 @@
 pkgbase = androidtvremote2-gtk
 	pkgdesc = Native GTK remote control for Android and Google TV devices
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Mr-Tao/androidtvremote2-gtk
 	arch = any
 	license = Apache-2.0
@@ -17,6 +17,8 @@ pkgbase = androidtvremote2-gtk
 	depends = python-gobject
 	depends = python-zeroconf
 	source = https://github.com/Mr-Tao/androidtvremote2-gtk/releases/download/v0.1.0/androidtvremote2_gtk-0.1.0.tar.gz
+	source = dns-sd-reconnect-f01e55a78ca7c7e6bb3bf881e9a2290e8c104191.patch::https://github.com/Mr-Tao/androidtvremote2-gtk/commit/f01e55a78ca7c7e6bb3bf881e9a2290e8c104191.patch
 	sha256sums = b2ca51280459042ae4d707681ca8dcc9030c1dc7c9b27d55263af8133c938761
+	sha256sums = 24ad9c6c4b32abadafc7bfce58d52c91d5ae114f9a5da7f0a028fe0267a686a7
 
 pkgname = androidtvremote2-gtk
