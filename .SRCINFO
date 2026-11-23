@@ -1,6 +1,6 @@
 pkgbase = sable-nightly-bin
 	pkgdesc = A Matrix client (nightly builds)
-	pkgver = 26.11.5.nightly.22.2237.g78e409
+	pkgver = 26.11.5.nightly.23.853.gd484a5
 	pkgrel = 1
 	url = https://git.sable.moe/SableClient/sable-next
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = sable-nightly-bin
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	provides = sable-nightly=26.11.5.nightly.22.2237.g78e409
+	provides = sable-nightly=26.11.5.nightly.23.853.gd484a5
 	conflicts = sable-nightly
 	options = !strip
 	options = !debug
-	noextract = sable-nightly-bin-26.11.5.nightly.22.2237.g78e409-amd64.deb
-	source_x86_64 = sable-nightly-bin-26.11.5.nightly.22.2237.g78e409-amd64.deb::https://git.sable.moe/SableClient/sable-next/releases/download/nightly-26.11.5-nightly.22.2237.g78e409/sable-26.11.5-nightly.22.2237.g78e409-amd64.deb
-	sha256sums_x86_64 = f6646b0ed6588b4e8197880bb92cc1facdb2ae96b57d3cf08946a7fa981d88c6
+	noextract = sable-nightly-bin-26.11.5.nightly.23.853.gd484a5-amd64.deb
+	source_x86_64 = sable-nightly-bin-26.11.5.nightly.23.853.gd484a5-amd64.deb::https://git.sable.moe/SableClient/sable-next/releases/download/nightly-26.11.5-nightly.23.853.gd484a5/sable-26.11.5-nightly.23.853.gd484a5-amd64.deb
+	sha256sums_x86_64 = 174bb3c1f3cf3659543918bf9b7f0333c2a339e39a64ff3eb36902269009059b
 
 pkgname = sable-nightly-bin
