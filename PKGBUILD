@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chaski-bin
 _pkgname=Chaski
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A content aggregator that helps you focus on what matters."
 arch=('x86_64')
@@ -16,9 +16,9 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/app-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/app-v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 )
-sha256sums=('dd15717edecc3933ba6707a5bf7bbbdb935f59073359a42ed8623f6401dfb375')
+sha256sums=('6d1aab0ff762ddad8a5c84e66eb39f75add2444f37322da3721eb6f1148190da')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
@@ -31,6 +31,7 @@ _install_icons() {
 	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
+    bsdtar -xf "${srcdir}/data."*
     sed -i "s/Categories=/Categories=Utility;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
