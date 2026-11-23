@@ -1,7 +1,7 @@
 # Maintainer: Hunter Grey <71165939+HunterGrey-cyber@users.noreply.github.com>
 #
-# eitri-bin -- the prebuilt release tarball's four binaries (shell, eitri-supervisor,
-# eitri-tmux-shim, eitri-claude-handoff), plus a Claude Agent SDK sidecar built here, on the
+# eitri-bin -- the prebuilt release tarball's six binaries (shell,
+# eitri-tmux-shim, eitri-claude-handoff, eitri-run-guard, eitri-editor-bridge, eitri-server), plus a Claude Agent SDK sidecar built here, on the
 # user's own machine, at install time.
 # Building it is not redistribution by this project; see the licence note below.
 #
@@ -21,15 +21,15 @@
 # only for packaging/aur/test-in-container.sh (a local, test-only source= override, never pushed).
 
 pkgname=eitri-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 # _realver: the release's own EITRI_VERSION, hyphenated (e.g. "0.2.0-rc.1"), as GitHub's release
 # tag and every asset filename actually spell it. pkgver above is that same string with '-' -> '_'
 # (makepkg's pkgver may not
 # contain a hyphen at all), so the two diverge for any prerelease and only _realver is right to use
 # in a download URL or an asset's on-disk name. bump-bin.sh sets both from the same RELEASE key.
-_realver=0.3.0
-pkgdesc="Your Neovim, tiled with your agents, terminals and the web pages you build, in one window (prebuilt binaries; builds its own sidecar on install)"
+_realver=0.4.0
+pkgdesc="A workspace for your own Neovim: coding agents, rendered Markdown and terminals, tiled in one window (prebuilt binaries; builds its own sidecar on install)"
 arch=('x86_64')
 url="https://github.com/HunterGrey-cyber/eitri"
 # This package's own MIT/Apache-2.0/LGPL-3.0-only/MPL-2.0 notices,
@@ -42,11 +42,13 @@ depends=('gtk4' 'webkitgtk-6.0' 'glibc' 'gcc-libs')
 # pass corrupts the sidecar (a Node SEA executable, whose fuse/injection mechanism does not
 # survive its ELF sections being restructured: "Loadable section \"\" outside of ELF segments",
 # "Can't find string offset for section name '.note.100'" from binutils, then the packaged binary
-# fails with "Exec format error"). Every other binary here is prebuilt and already stripped by
-# release.sh, so disabling makepkg's own pass costs nothing on them either.
+# fails with "Exec format error"). The prebuilt eitri-server needs it too: the window carries the
+# helper's SHA-256, so a stripped helper no longer matches it and is refused before it is installed on
+# a server. Every other binary here is prebuilt and already stripped by release.sh, so disabling
+# makepkg's own pass costs nothing on them either.
 options=('!strip')
 optdepends=(
-	'neovim: the editor (any nvim >= 0.10 on PATH)'
+	'neovim: the editor (any nvim >= 0.11 on PATH)'
 	'claude-code: the Claude Code CLI the panel drives'
 	'noto-fonts: the ⏵⏵ mode glyph'
 	'neovide: eitri split'
@@ -58,7 +60,7 @@ conflicts=('eitri')
 # _verdandi_source: the exact release asset name (varies with the pinned Verdandi revision --
 # RELEASE's own VERDANDI_SOURCE key); bump-bin.sh rewrites only this line, so build()/package()
 # below never need to know it.
-_verdandi_source=verdandi-842d54e-source.tar.gz
+_verdandi_source=verdandi-0de7cbf-source.tar.gz
 # _nodever: the Node the sidecar is built with -- RELEASE's own NODE_VERSION (packaging/pins.env's,
 # copied into RELEASE at build time). bump-bin.sh rewrites this line and the third sha256sums entry
 # together, from the same RELEASE, so the URL and its checksum never name two different Nodes.
@@ -73,8 +75,8 @@ source=(
 # NODE_SHA256_linux_x64, which bump-bin.sh writes along with _nodever above, so a Node bump in
 # packaging/pins.env reaches this PKGBUILD through the next release's RELEASE rather than through a
 # second, hand-edited copy of the pin.
-sha256sums=('4d1a3488648a285365e0d0a4e05e4e5b45e7fab739fc23d7ffb86611bd9dcc75'
-            '5e5a85e858cda7b94d576145fa28a6456cd036b216174d8ce8bd6c0ff27766d3'
+sha256sums=('4bdf060d506ca7af4b1b8031f1bb634e490e51bfd85435c5b9ff82715ee189b7'
+            'a15e9ee4c3d653a0f85d1cf1bd736694785d428d72e6610aea3411fe9eac9ed3'
             'd60acfe00a2932254bb0ad20e01b0d74397a0875595de719654b214f4b03f307')
 
 # A binary-repository maintainer considering rebuilding this package: build() downloads and links
@@ -104,9 +106,10 @@ package() {
 	install -d "$pkgdir/usr/lib/eitri"
 	install -m0644 "$top/lib/eitri/RELEASE" "$pkgdir/usr/lib/eitri/RELEASE"
 	install -m0755 "$top/lib/eitri/shell" "$pkgdir/usr/lib/eitri/shell"
-	install -m0755 "$top/lib/eitri/eitri-supervisor" "$pkgdir/usr/lib/eitri/eitri-supervisor"
 	install -m0755 "$top/lib/eitri/eitri-tmux-shim" "$pkgdir/usr/lib/eitri/eitri-tmux-shim"
 	install -m0755 "$top/lib/eitri/eitri-run-guard" "$pkgdir/usr/lib/eitri/eitri-run-guard"
+	install -m0755 "$top/lib/eitri/eitri-editor-bridge" "$pkgdir/usr/lib/eitri/eitri-editor-bridge"
+	install -m0755 "$top/lib/eitri/eitri-server" "$pkgdir/usr/lib/eitri/eitri-server"
 	install -m0755 "$top/lib/eitri/eitri-claude-handoff" "$pkgdir/usr/lib/eitri/eitri-claude-handoff"
 	install -m0755 "$top/lib/eitri/eitri-setup" "$pkgdir/usr/lib/eitri/eitri-setup"
 	install -m0755 "$srcdir/sidecar/verdandi-claude-sidecar" "$pkgdir/usr/lib/eitri/verdandi-claude-sidecar"
@@ -121,6 +124,8 @@ package() {
 	# lays out at share/eitri/eitri.nvim and the packages put at /usr/share/eitri/nvim/eitri.nvim.
 	install -Dm0644 "$top/share/applications/cn.huntergrey.eitri.Panel.desktop" \
 		"$pkgdir/usr/share/applications/cn.huntergrey.eitri.Panel.desktop"
+	install -Dm0644 "$top/share/applications/cn.huntergrey.eitri.Page.desktop" \
+		"$pkgdir/usr/share/applications/cn.huntergrey.eitri.Page.desktop"
 	local _icon _plugin _ext _pf
 	while IFS= read -r _plugin; do
 		install -Dm0644 "$top/share/eitri/eitri.nvim/$_plugin" "$pkgdir/usr/share/eitri/nvim/eitri.nvim/$_plugin"
@@ -134,20 +139,23 @@ package() {
 	while IFS= read -r _icon; do
 		install -Dm0644 "$top/share/icons/$_icon" "$pkgdir/usr/share/icons/$_icon"
 	done < <(cd "$top/share/icons" && find hicolor -type f | LC_ALL=C sort)
-	# The Markdown preview plugin directory: the tarball's lib/eitri/plugins/markdown, at the packages' place for it,
-	# every file found rather than listed (the build's fingerprint never ships).
-	if [ ! -f "$top/lib/eitri/plugins/markdown/eitri-plugin.toml" ]; then
-		echo "the tarball has no lib/eitri/plugins/markdown/eitri-plugin.toml" >&2
-		return 1
-	fi
-	while IFS= read -r _pf; do
-		install -Dm0644 "$top/lib/eitri/plugins/markdown/$_pf" "$pkgdir/usr/share/eitri/plugins/markdown/$_pf"
-	done < <(cd "$top/lib/eitri/plugins/markdown" && find . -type f ! -name .inputs-sha256 | sed 's#^\./##' | LC_ALL=C sort)
+	# Each bundled plugin keeps its manifest and built site at the same relative paths.
+	local _plugin_name
+	for _plugin_name in markdown agents-strips agents-top agents-pass; do
+		if [ ! -f "$top/lib/eitri/plugins/$_plugin_name/eitri-plugin.toml" ]; then
+			echo "the tarball has no lib/eitri/plugins/$_plugin_name/eitri-plugin.toml" >&2
+			return 1
+		fi
+		while IFS= read -r _pf; do
+			install -Dm0644 "$top/lib/eitri/plugins/$_plugin_name/$_pf" "$pkgdir/usr/share/eitri/plugins/$_plugin_name/$_pf"
+		done < <(cd "$top/lib/eitri/plugins/$_plugin_name" && find . -type f ! -name .inputs-sha256 | sed 's#^\./##' | LC_ALL=C sort)
+	done
 
 	# The tarball's own licences and SOURCE, plus the built SDK's LICENSE.md and Node's own
 	# licence, which eitri-setup --build-sidecar-into saves beside the sidecar when present.
 	install -d "$pkgdir/usr/share/licenses/$pkgname"
 	install -m0644 "$top/share/licenses/eitri/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -m0644 "$top/share/licenses/eitri/NOTICE" "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
 	install -m0644 "$top/share/licenses/eitri/THIRD-PARTY-LICENSES" "$pkgdir/usr/share/licenses/$pkgname/THIRD-PARTY-LICENSES"
 	install -m0644 "$top/share/licenses/eitri/SOURCE" "$pkgdir/usr/share/licenses/$pkgname/SOURCE"
 	if [ -f "$srcdir/sidecar/LICENSE.md" ]; then
