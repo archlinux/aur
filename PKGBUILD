@@ -2,7 +2,7 @@
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
 _pkgname=SiYuan
-pkgver=3.8.10
+pkgver=3.8.11
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -36,9 +36,9 @@ source=(
     "${pkgname}.js"
 	"${pkgname}.sh"
 )
-sha256sums=('fe25d7e116d90e17cb42d533ff8a1dc0150e94a69a32840e9fd9e2209d3d6211'
+sha256sums=('65c6fa93a575065f02a5bcd05f29b72fac690659fef7ecf988b41733968bb3ab'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -120,6 +120,16 @@ _set_go_build_env() {
 	: > "${GOENV}"
 	export PATH="${GOPATH}/bin:${PATH}"
 }
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+}
 prepare() {
     cd "$(_get_project_dir)/app"
     _get_electron_version
@@ -156,7 +166,7 @@ build() {
     cd "$(_get_project_dir)/app"
 	unset CGO_CFLAGS CGO_CXXFLAGS CGO_CPPFLAGS CGO_LDFLAGS
     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder-${_archbuild}.yml "
-	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+	_delete_other_arch_files
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
