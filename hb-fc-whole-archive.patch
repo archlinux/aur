@@ -1,12 +1,12 @@
 diff --git a/UI/Qt/CMakeLists.txt b/UI/Qt/CMakeLists.txt
 --- a/UI/Qt/CMakeLists.txt
 +++ b/UI/Qt/CMakeLists.txt
-@@ -79,7 +79,7 @@
-     )
+@@ -284,7 +284,7 @@
  endif()
  
--target_link_libraries(ladybird PRIVATE Qt::Core Qt::Gui Qt::Widgets)
-+target_link_libraries(ladybird PRIVATE Qt::Core Qt::Gui Qt::Widgets -Wl,--whole-archive harfbuzz fontconfig -Wl,--no-whole-archive)
+ qt_add_executable(ladybird main.cpp ladybird.qrc)
+-target_link_libraries(ladybird PRIVATE ladybird_impl)
++target_link_libraries(ladybird PRIVATE ladybird_impl -Wl,--whole-archive harfbuzz fontconfig -Wl,--no-whole-archive)
  
- if (TARGET Qt6::Positioning)
-     target_sources(ladybird PRIVATE GeolocationProviderQt.cpp GeolocationProviderQt.h)
+ if (LINUX AND NOT BUILD_SHARED_LIBS AND NOT (ENABLE_ADDRESS_SANITIZER OR ENABLE_MEMORY_SANITIZER OR ENABLE_THREAD_SANITIZER OR ENABLE_UNDEFINED_SANITIZER))
+     target_link_options(ladybird PRIVATE "LINKER:--exclude-libs=ALL")
