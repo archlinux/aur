@@ -62,6 +62,8 @@ The git sync also now properly handles cases where the remote repository history
 
 It will also handle any error state better, i.e. when your connection to the remote temporarily drops, the local side will still be updated so any changes made meanwhile still get pushed later on.
 
+There is also a new sync mode called squashed sync to sync instantly with one commit per save operation. This is useful if you don't want individual commits for every single change, e.g. when adding an entry with many children at once.
+
 ## Settings rework
 
 The settings menu has been reorganized into groups. Furthermore, the various integration choices for terminals, RDP clients, password managers, terminal multiplexers, and agents now show a list of capabilities for the selected option, so you can see which features are supported by it and whether it requires some additional setup. This can make your preferred integration choice much easier: 
@@ -106,6 +108,8 @@ A lot of memory leaks have been fixed, which reduces memory usage when XPipe run
 - The git vault now tags the vault version for better compatibility checks across different XPipe versions
 - The MCP server setting has been renamed to external MCP server as it is no longer needed for the agent CLI integration
 - Add integration for early access Rex terminal on macOS
+- Terminal startup fails in quick launch mode will now trigger XPipe to perform a full connection attempt on the next try.
+  This will fix situations where for example the host key changed but the failure was only present in the terminal
 
 ## Fixes
 
