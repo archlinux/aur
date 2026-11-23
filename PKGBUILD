@@ -3,7 +3,7 @@ _pkgbin=internxt
 pkgname=internxt-bin
 provides=('internxt')
 replaces=("internxt-drive-bin")
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Internxt cloud storage client"
 _package="Internxt-${pkgver}.AppImage"
@@ -11,7 +11,7 @@ arch=('x86_64')
 url='https://internxt.com'
 license=('AGPL3')
 source=("${_package}::https://github.com/internxt/drive-desktop-linux/releases/download/v${pkgver}/${_package}")
-sha256sums=('4b60dd82bfdeae2e62377369739067bd70b52f8b4f92df7faf93d0aeac9a3dd5')
+sha256sums=('cf1f8f3941f09e9403b7e6db175ce3e705d6edb1bc5152b4c56ceece176ea8c4')
 
 build() {
 	# Extract files from AppImage
