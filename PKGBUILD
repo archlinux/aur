@@ -1,8 +1,8 @@
 # Maintainer: jiangjie <kero_jiang at 126 dot com>
 
 pkgname=workdaddy-bin
-pkgver=1.2.22
-pkgrel=6
+pkgver=1.2.23
+pkgrel=1
 pkgdesc='WorkBuddy desktop enhancement assistant (WorkDaddy, official Linux DEB repack)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/babygoton/WorkDaddy'
@@ -20,8 +20,8 @@ source=('LICENSE.upstream')
 source_x86_64=("WorkDaddy_${pkgver}_amd64.deb::${_dl}/${pkgver}/WorkDaddy_${pkgver}_amd64.deb")
 source_aarch64=("WorkDaddy_${pkgver}_arm64.deb::${_dl}/${pkgver}/WorkDaddy_${pkgver}_arm64.deb")
 sha256sums=('5e28b0607630f125776a775a76e4c96453d593451a0c65be832ef1282b89c4b5')
-sha256sums_x86_64=('5b2fe8a44ce5ca1bd869bd1e27701f0a89f951719b0e29d80d826f5918b7b39c')
-sha256sums_aarch64=('adb63b440c29d23dfc36c453ece6477735c3a4efcbc428e21bd8e5831c211428')
+sha256sums_x86_64=('cf2731b069ef1b2bec00e212b4952b0f2d51c78c4c9f4cdb46c28da4edfd4367')
+sha256sums_aarch64=('8b3416af5242550fddf64f716aa449f3a57069382cd1cdbea5ea7ad81cf5e538')
 
 package() {
   case "$CARCH" in
