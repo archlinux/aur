@@ -15,7 +15,7 @@
 # CachyOS alike.
 
 pkgname=radiopittray
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="System tray radio player for your RadioPit.fm library"
 arch=(x86_64)
@@ -72,5 +72,5 @@ package() {
     install -Dm644 "$srcdir/$pkgname.desktop" \
         -D "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
-sha256sums=('1e5b834a2a6adaaa373b7a399db79a128797d3b36317a765fafa15bbaaa3c8e4'
+sha256sums=('c13fbd8442b01ad5ba349c3a2a7acb5ee6e30e607a1685b61fc2cd4b752379d0'
             '7df4446a7f7059ed1403440d7af0087f82e481b5189fca7cfa1f600d7042843f')
