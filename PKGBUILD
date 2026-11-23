@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=hotpath
-pkgver=0.32.1
+pkgver=0.33.0
 pkgrel=1
 _srcdir="hotpath-${pkgver}"
 pkgdesc="A Rust profiler for CPU, memory, async, SQL, I/O, and lock contention with a live TUI dashboard"
@@ -12,7 +12,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('685889dcfaab8e14dfbd0ed3165a2237e84fac8bd41def065c78f01ffe2cb1f6')
+sha256sums=('c3247785bcb8ced4c54e0f2b061799adafdcbc92546e05be3b858cf364cb9ae5')
 
 prepare() {
   cd "${_srcdir}"
