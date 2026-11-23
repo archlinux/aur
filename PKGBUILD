@@ -1,7 +1,7 @@
 # Maintainer: Sisanta Chhatoi <sisantachhatoi40@gmail.com>
   
 pkgname=open-code-review-bin
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc="Alibaba's open-source AI-powered code review CLI tool"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('ocr' 'open-code-review')
 conflicts=('ocr' 'open-code-review')
   
 source_x86_64=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/opencodereview-linux-amd64")
-sha256sums_x86_64=('7d31862a1b9c6f9cea02141673f7b814071d2f36f1a9e6ce2f14d39d959229f4')
+sha256sums_x86_64=('d4d718501742cad754210d85c6dcf8cb1664bd914fb370fa89c3776fc69e111f')
   
 package() {
     cd "${srcdir}"
