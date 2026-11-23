@@ -1,5 +1,5 @@
 pkgname=mbelib-neo-git
-pkgver=2.6.11.r3.g902729b
+pkgver=2.6.11.r4.g68b110e
 pkgrel=1
 pkgdesc="IMBE, AMBE and AMBE+2 vocoder library with TETRA ACELP decoding. Supports P25 Phase 1/2, DMR, NXDN, D-STAR, YSF, dPMR, X2-TDMA, ProVoice and TETRA."
 arch=('x86_64' 'aarch64')
@@ -24,9 +24,9 @@ pkgver() {
 }
 
 # BEGIN pinned PFFFT (tools/update_aur_pffft.py)
-_pffft_sha=b7ed3cdb8655426a77aa26f8c0f5154205427f45
-source+=("pffft-$_pffft_sha.tar.gz::https://codeload.github.com/arancormonk/pffft/tar.gz/$_pffft_sha")
-sha256sums+=('c35ca6cff0032fac89fbec1acced75868caac0a121d947f8931f325ceae17925')
+_pffft_sha=0a3abd82194444e6475efac08cfc620f299f3124
+source+=("pffft-neo-$_pffft_sha.tar.gz::https://codeload.github.com/arancormonk/pffft-neo/tar.gz/$_pffft_sha")
+sha256sums+=('0aa884b8443a902f8071b2efc921a5c4082a83ca9d626a94509afab489b787cc')
 # END pinned PFFFT
 
 build() {
@@ -43,7 +43,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DMBELIB_ENABLE_FAST_MATH=ON \
         -DMBELIB_ENABLE_NATIVE=OFF \
-        -DFETCHCONTENT_SOURCE_DIR_MBELIB_PFFFT="$srcdir/pffft-$_pffft_sha" \
+        -DFETCHCONTENT_SOURCE_DIR_MBELIB_PFFFT="$srcdir/pffft-neo-$_pffft_sha" \
         -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
         -DMBELIB_BUILD_TESTS=OFF \
         -DMBELIB_BUILD_EXAMPLES=OFF
