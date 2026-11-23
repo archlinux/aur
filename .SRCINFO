@@ -1,6 +1,6 @@
 pkgbase = proton-stream
 	pkgdesc = Unofficial media library for Proton Drive: browse and stream public links and your own Drive folders
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/narrrl/proton-stream
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = proton-stream
 	conflicts = proton-stream-bin
 	conflicts = proton-stream-git
 	options = !lto
-	source = proton-stream-2.2.0.tar.gz::https://github.com/narrrl/proton-stream/archive/refs/tags/v2.2.0.tar.gz
-	sha256sums = c665216ca0fba4580b2d52fdd1fce850506b8c65eda67c48975a1debfca89653
+	source = proton-stream-2.3.0.tar.gz::https://github.com/narrrl/proton-stream/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = 2cb6b7a20a5fbcc84c53a47f666959d84abbcfa55a7fb8c0a0ba271362ff7bad
 
 pkgname = proton-stream

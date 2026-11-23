@@ -1,6 +1,6 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 pkgname=proton-stream
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Unofficial media library for Proton Drive: browse and stream public links and your own Drive folders"
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=('pstr')
 conflicts=('proton-stream-bin' 'proton-stream-git')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$_repo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c665216ca0fba4580b2d52fdd1fce850506b8c65eda67c48975a1debfca89653')
+sha256sums=('2cb6b7a20a5fbcc84c53a47f666959d84abbcfa55a7fb8c0a0ba271362ff7bad')
 _srcname="proton-stream-$pkgver"
 
 prepare() {
