@@ -19,18 +19,18 @@ source=(
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
-  cd "${srcdir}/clove-${pkgver}"
+  cd "${srcdir}/clove-win-${pkgver}"
   mkdir -p prototypes
   tar -xf "${srcdir}/rune-${_runerev}.tar.gz" -C prototypes
 }
 
 build() {
-  cd "${srcdir}/clove-${pkgver}/clove-rs"
+  cd "${srcdir}/clove-win-${pkgver}/clove-rs"
   cargo build --release --locked -p clove-ui
 }
 
 package() {
-  cd "${srcdir}/clove-${pkgver}"
+  cd "${srcdir}/clove-win-${pkgver}"
   install -Dm755 "clove-rs/target/release/clove" "${pkgdir}/usr/bin/clove"
   install -Dm644 "packaging/arch/clove.desktop" "${pkgdir}/usr/share/applications/clove.desktop"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/clove/LICENSE"
