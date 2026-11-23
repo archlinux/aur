@@ -95,7 +95,7 @@ stage_engine() {
   rm -rf "$ENGINE_ROOT"
   local tmp sdk
   tmp="$(mktemp -d)"
-  tar -xzf "$ENGINE_TARBALL" -C "$tmp"
+  tar --no-same-owner -xzf "$ENGINE_TARBALL" -C "$tmp"
   sdk="$(find "$tmp" -type d -path '*/out/*/engine-sdk' | head -n1)"
   [ -n "$sdk" ] || die "engine-sdk directory not found in $ENGINE_TARBALL"
   [ -f "$sdk/include/flutter_embedder.h" ] || die "flutter_embedder.h missing from engine"
@@ -110,21 +110,39 @@ configure_cargo_vendor() {
   log "Configuring Cargo to build from vendored sources"
   mkdir -p "$VESHELL_SRC/.cargo"
   local cfg="$VESHELL_SRC/.cargo/config.toml"
+  local lock="$VESHELL_SRC/Cargo.lock"
   if ! grep -q 'vendored-sources' "$cfg" 2>/dev/null; then
-    cat >> "$cfg" <<EOF
+    # `cargo vendor` vendors the git dependencies with the crates, but Cargo
+    # only takes a git source from the vendor directory when it is replaced by
+    # name, revision included. Read them from Cargo.lock rather than pinning
+    # one here: a dependency bump would otherwise send the offline build to
+    # the network.
+    if grep '^source = "git+' "$lock" | grep -qv '^source = "git+[^?#"]*?rev=[^#"]*#'; then
+      die "Cargo.lock has a git dependency not pinned by rev; only rev pins can be vendored"
+    fi
+    {
+      cat <<EOF
 
 # Added by scripts/build-veshell.sh: build strictly offline.
 [source.crates-io]
 replace-with = "vendored-sources"
+EOF
+      sed -n 's/^source = "git+\([^?#"]*\)?rev=\([^#"]*\)#.*"$/\1 \2/p' "$lock" | sort -u |
+        while read -r url rev; do
+          cat <<EOF
 
-[source."git+https://github.com/Smithay/smithay.git?rev=4cf0b62028039661477d482ec4758b687d8f4392"]
-git = "https://github.com/Smithay/smithay.git"
-rev = "4cf0b62028039661477d482ec4758b687d8f4392"
+[source."git+$url?rev=$rev"]
+git = "$url"
+rev = "$rev"
 replace-with = "vendored-sources"
+EOF
+        done
+      cat <<EOF
 
 [source.vendored-sources]
 directory = "$CARGO_VENDOR_DIR"
 EOF
+    } >> "$cfg"
   fi
 }
 
@@ -134,11 +152,20 @@ build_shell() {
   export PUB_ENVIRONMENT="veshell-packaging"
   export FLUTTER_SUPPRESS_ANALYTICS=true
   # pub get must not consult pub.dev; the cache is complete by construction.
+  # The flutter tool first checks its own packages. The official archive ships
+  # their package config with paths from Flutter's build machine, so it would
+  # resolve them again, online: a sandbox without network retries forever.
+  # Resolve them from the pub cache first (it holds them, see
+  # generate-inputs.sh).
+  "$FLUTTER_SDK_DIR/bin/cache/dart-sdk/bin/dart" pub get --offline --enforce-lockfile \
+    --directory "$FLUTTER_SDK_DIR/packages/flutter_tools"
   ( cd "$VESHELL_SRC/src/shell"
     "$FLUTTER_SDK_DIR/bin/flutter" --no-version-check config --no-analytics >/dev/null 2>&1 || true
     "$FLUTTER_SDK_DIR/bin/flutter" --no-version-check pub get --offline
     "$FLUTTER_SDK_DIR/bin/dart" run build_runner build
-    "$FLUTTER_SDK_DIR/bin/flutter" --no-version-check build linux --release \
+    # --no-pub: the packages are resolved offline above; the build's own pub
+    # get runs online and, in a sandbox without network, retries forever.
+    "$FLUTTER_SDK_DIR/bin/flutter" --no-version-check build linux --release --no-pub \
       --dart-define="VESHELL_POLKIT_HELPER_PATH=$POLKIT_HELPER_PATH"
   )
   [ -f "$SHELL_BUNDLE/lib/libapp.so" ] || die "shell AOT library missing: $SHELL_BUNDLE/lib/libapp.so"
