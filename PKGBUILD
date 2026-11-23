@@ -11,7 +11,8 @@ license=('EUPL-1.2')
 depends=('webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme' 'shared-mime-info' 'xdg-utils' 'libarchive')
 makedepends=('cargo' 'git')
 optdepends=('udisks2: mount and eject removable drives from the sidebar'
-            'breeze-icons: file and folder icons (or another icon theme)')
+            'breeze-icons: file and folder icons (or another icon theme)'
+            'xdg-desktop-portal: let other apps use Sonar as their file chooser')
 provides=('sonar')
 conflicts=('sonar' 'sonar-bin')
 source=("$_pkgname::git+$url.git")
@@ -46,5 +47,7 @@ package() {
   install -Dm644 src-tauri/icons/128x128@2x.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/sonar.png"
   install -Dm644 src-tauri/icons/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/sonar.png"
   install -Dm644 src-tauri/icons/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/sonar.svg"
+  install -Dm644 src-tauri/linux/org.freedesktop.impl.portal.desktop.sonar.portal "$pkgdir/usr/share/xdg-desktop-portal/portals/org.freedesktop.impl.portal.desktop.sonar.portal"
+  install -Dm644 src-tauri/linux/org.freedesktop.impl.portal.desktop.sonar.service "$pkgdir/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.sonar.service"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
