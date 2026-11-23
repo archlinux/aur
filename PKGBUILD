@@ -1,13 +1,13 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=wireview-linux-bin
-pkgver=1.4.2.0
+pkgver=1.5.0.0
 pkgrel=1
 pkgdesc="Unofficial Linux GUI for the Thermal Grizzly WireView Pro II, with WireView Mini (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/emaspa/wireview-linux"
 license=('custom')
 depends=('glibc' 'gcc-libs' 'zlib' 'fontconfig' 'freetype2' 'libx11')
-optdepends=('wireview-hwmon: hwmon + daemon mode (1.8.1 or later takes the LAN port back from WireView Mini)'
+optdepends=('wireview-hwmon: hwmon + daemon mode (1.9.0 or later for several WireViews)'
             'dfu-util: in-app and WireView Mini firmware flashing')
 provides=('wireview-linux')
 conflicts=('wireview-linux')
@@ -18,7 +18,7 @@ options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/releases/download/v$pkgver/wireview-linux-$pkgver-linux-x64.tar.gz"
         "wireview-linux.desktop"
         "wireview-linux.png")
-sha256sums=('6edc04f8217ba080a7203dcc8801a956eb254b0a0f454a177835b4c472bbe26d'
+sha256sums=('4dafc335d6cbca9d4d8805721fcabb217fe0711361ded5a5b96d18a47314f976'
             '57c8565769d8ef620411bb40b2e59e82272eecd71802d5e8fd3f995591df6008'
             '5bdcde4399af5bd57824af8dcacdd05c6421eddbb18993210ddab805ef1aaff3')
 
