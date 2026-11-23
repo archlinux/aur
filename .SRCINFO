@@ -1,0 +1,27 @@
+pkgbase = cromma-code-bin
+	pkgdesc = The playful desktop terminal for Claude Code and Codex: watch agents work as a game and dispatch worker bees
+	pkgver = 0.3.56
+	pkgrel = 1
+	url = https://cromma.ai/code
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = curl
+	depends = alsa-lib
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	depends = mesa
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	optdepends = vulkan-radeon: AMD GPU support
+	optdepends = vulkan-intel: Intel GPU support
+	optdepends = nvidia-utils: NVIDIA GPU support
+	provides = crommacode
+	conflicts = crommacode
+	noextract = crommacode-0.3.56.deb
+	options = !strip
+	options = !debug
+	source = crommacode-0.3.56.deb::https://dl.cromma.ai/code/artifacts/0.3.56/CrommaCode-0.3.56-linux-amd64.deb
+	sha256sums = 0aea4e57a2194ecbf6a09759843293344d1f4ef3b47d8f29cfe90ae96ae99801
+
+pkgname = cromma-code-bin
