@@ -1,0 +1,28 @@
+pkgbase = r-enrichit
+	pkgdesc = 'C++' Implementations of Functional Enrichment Analysis
+	pkgver = 0.2.7
+	pkgrel = 2
+	url = https://cran.r-project.org/package=enrichit
+	arch = x86_64
+	license = Artistic-2.0
+	makedepends = r-rcppeigen
+	depends = r-rcpp
+	depends = r-rlang
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	depends = r-yulab.utils
+	optdepends = r-annotationdbi
+	optdepends = r-biasedurn
+	optdepends = r-clusterprofiler
+	optdepends = r-deseq2
+	optdepends = r-dose
+	optdepends = r-fgsea
+	optdepends = r-gson
+	optdepends = r-jsonlite
+	optdepends = r-qvalue
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/enrichit_0.2.7.tar.gz
+	md5sums = 4b99f352a49a102049417578d536bf60
+	b2sums = fe0b75fff3e743309ec95010a74c63de1ea6d003221d3d623b0b578c959949ad50f8f2819979be2fbb45b451c682ee61e24be1a3271930400f7a551d7a540d42
+
+pkgname = r-enrichit
