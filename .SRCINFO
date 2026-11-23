@@ -1,6 +1,6 @@
 pkgbase = skwir-git
 	pkgdesc = An augmented file manager, for humans and agents (its last commit)
-	pkgver = 0.6.0.r0.g3cb515d
+	pkgver = 0.6.1.r0.g67f6dbc
 	pkgrel = 1
 	url = https://skwir.org
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = skwir-git
 	makedepends = glib2
 	makedepends = poppler-glib
 	makedepends = djvulibre
+	makedepends = libheif
 	makedepends = gstreamer
 	makedepends = gst-plugins-base-libs
 	makedepends = fontconfig
@@ -57,6 +58,7 @@ pkgname = skwir-git
 	optdepends = gst-libav: more audio and video formats
 	optdepends = poppler-glib: PDFs through Poppler, beside the PDFium skwir carries
 	optdepends = djvulibre: DjVu through DjVuLibre, beside the djvu-rs reader skwir carries
+	optdepends = libheif: HEIC and AVIF pictures shown sharp at any size
 	optdepends = skwir-mermaid: Mermaid diagrams drawn in Markdown previews
 	optdepends = skwir-math: formulas typeset in Markdown, notebooks and HTML
 	optdepends = skwir-mupdf: the MuPDF engine, PDFs and books laid out into pages
@@ -83,7 +85,7 @@ pkgname = skwir-git
 	optdepends = wsdd: Windows PCs nearby
 	optdepends = inter-font: skwir's own interface font, when chosen
 	optdepends = ttf-jetbrains-mono: skwir's own code font, when chosen
-	provides = skwir=0.6.0.r0.g3cb515d
+	provides = skwir=0.6.1.r0.g67f6dbc
 	conflicts = skwir
 
 pkgname = skwir-mermaid-git
@@ -91,7 +93,7 @@ pkgname = skwir-mermaid-git
 	depends = skwir-git
 	depends = libgcc
 	depends = glibc
-	provides = skwir-mermaid=0.6.0.r0.g3cb515d
+	provides = skwir-mermaid=0.6.1.r0.g67f6dbc
 	conflicts = skwir-mermaid
 
 pkgname = skwir-math-git
@@ -99,7 +101,7 @@ pkgname = skwir-math-git
 	depends = skwir-git
 	depends = libgcc
 	depends = glibc
-	provides = skwir-math=0.6.0.r0.g3cb515d
+	provides = skwir-math=0.6.1.r0.g67f6dbc
 	conflicts = skwir-math
 
 pkgname = skwir-mupdf-git
@@ -108,5 +110,5 @@ pkgname = skwir-mupdf-git
 	depends = skwir-git
 	depends = libgcc
 	depends = glibc
-	provides = skwir-mupdf=0.6.0.r0.g3cb515d
+	provides = skwir-mupdf=0.6.1.r0.g67f6dbc
 	conflicts = skwir-mupdf

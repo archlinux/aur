@@ -9,7 +9,7 @@
 
 pkgbase=skwir-git
 pkgname=(skwir-git skwir-mermaid-git skwir-math-git skwir-mupdf-git)
-pkgver=0.6.0.r0.g3cb515d
+pkgver=0.6.1.r0.g67f6dbc
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents (its last commit)'
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ makedepends=(
   'git'
   'cargo' 'clang' 'cmake' 'python'
   'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'sqlite' 'libarchive'
-  'cairo' 'glib2' 'poppler-glib' 'djvulibre' 'gstreamer' 'gst-plugins-base-libs'
+  'cairo' 'glib2' 'poppler-glib' 'djvulibre' 'libheif' 'gstreamer' 'gst-plugins-base-libs'
   'fontconfig' 'vulkan-icd-loader' 'vulkan-driver'
 )
 # makepkg's LTO compiles the C that crates build (MuPDF) into GCC's
@@ -85,6 +85,7 @@ package_skwir-git() {
     'gst-libav: more audio and video formats'
     'poppler-glib: PDFs through Poppler, beside the PDFium skwir carries'
     'djvulibre: DjVu through DjVuLibre, beside the djvu-rs reader skwir carries'
+    'libheif: HEIC and AVIF pictures shown sharp at any size'
     'skwir-mermaid: Mermaid diagrams drawn in Markdown previews'
     'skwir-math: formulas typeset in Markdown, notebooks and HTML'
     'skwir-mupdf: the MuPDF engine, PDFs and books laid out into pages'
