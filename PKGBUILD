@@ -4,8 +4,8 @@
 
 _pkgname=lcd4linux
 pkgname="${_pkgname}-full-git"
-pkgver=0.11.0.r1245.20250802.63fffaf
-pkgrel=2
+pkgver=0.11.0.r1253.20261111.86c00bc
+pkgrel=1
 pkgdesc="Grabs information from the kernel and other systems and displays it on an LCD. Compiled with all possible drivers, also obscure ones."
 arch=(
   'i686'

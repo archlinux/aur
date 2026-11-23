@@ -1,7 +1,7 @@
 pkgbase = lcd4linux-full-git
 	pkgdesc = Grabs information from the kernel and other systems and displays it on an LCD. Compiled with all possible drivers, also obscure ones.
-	pkgver = 0.11.0.r1245.20250802.63fffaf
-	pkgrel = 2
+	pkgver = 0.11.0.r1253.20261111.86c00bc
+	pkgrel = 1
 	url = https://wiki.lcd4linux.tk/doku.php
 	arch = i686
 	arch = x86_64
@@ -39,9 +39,9 @@ pkgbase = lcd4linux-full-git
 	depends = libncursesw.so
 	depends = libsqlite3.so
 	depends = python>=3
-	provides = lcd4linux=0.11.0.r1245.20250802.63fffaf
-	provides = lcd4linux-full=0.11.0.r1245.20250802.63fffaf
-	provides = lcd4linux-git=0.11.0.r1245.20250802.63fffaf
+	provides = lcd4linux=0.11.0.r1253.20261111.86c00bc
+	provides = lcd4linux-full=0.11.0.r1253.20261111.86c00bc
+	provides = lcd4linux-git=0.11.0.r1253.20261111.86c00bc
 	conflicts = lcd4linux
 	options = staticlibs
 	backup = etc/lcd4linux.conf
