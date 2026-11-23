@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=qsvaR
-_pkgver=1.8.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,7 +10,9 @@ arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
 depends=(
+  r-dplyr
   r-ggplot2
+  r-rlang
   r-summarizedexperiment
   r-sva
 )
@@ -29,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dfcabbab85cfd51c933babbe84c9be1d')
-b2sums=('e58c16a50de82c3b4338fa99613098b021e8c7601121919039fdd545943133de5e0b5ac12db73485dae977611488c59908f88d3c704e5a7b9bb2080bcf17b6fb')
+md5sums=('7f647f9b7b94d4ec23fae53f75836a3e')
+b2sums=('e9337820c927e43b5488d6d55d399cb5b3f36cbc4c219d21e5a8022e1343821fadc8a5392b5592daa0c2629ec8fc5151a47882594a55512f34130f4a8bdce382')
 
 build() {
   mkdir build
