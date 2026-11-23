@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Prostar
-_pkgver=1.40.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,10 +21,10 @@ depends=(
   r-ggplot2
   r-gplots
   r-gtools
-  r-highcharter
   r-htmlwidgets
   r-later
   r-markdown
+  r-plotly
   r-promises
   r-r.utils
   r-rclipboard
@@ -52,8 +52,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('18222ba4c8063d75e974dbea3e7c9bf1')
-b2sums=('25077eab3b0ac0e5cd126be5d8c3369c27adcbd55151889686dd5d44c23a8903e43b40f8901580df2269555595dbb5b5474bb5f8060128253b6a75853045101b')
+md5sums=('3d2c872936c08cc8fe46e84d1e1f470f')
+b2sums=('6e5f306a2d7660f907f033ca87335a84fbdd193b74686cd8185bfa44b439b9da24a473eb3c020cce6d4a6757ed1d5e6053349ed03f05373258f1f0c3518f99cb')
 
 build() {
   mkdir build
