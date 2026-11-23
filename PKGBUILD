@@ -1,7 +1,7 @@
 # Maintainer: delaosa <dev@delaosa.xyz>
 pkgname=cero
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='Native Music Assistant player (GTK4, Sendspin, MPRIS2)'
 arch=('any')
 url='https://github.com/delaosa/cero'
@@ -26,7 +26,7 @@ noextract=(music_assistant_client-1.8.1-py3-none-any.whl music_assistant_models-
            aiosendspin-10.3.0-py3-none-any.whl mashumaro-3.23-py3-none-any.whl
            cpace-0.1.0-py3-none-any.whl noiseprotocol-0.3.1-py3-none-any.whl
            anyascii-0.3.3-py3-none-any.whl)
-sha256sums=('aed74848271d61be3fb490b0d1b0c8a52c88d939800f27535b2d0a62bfd6eb73'
+sha256sums=('9205c627ca34eaf25bb866c1f90b0ef08d9784b1eab15abe861264e835cfbcb9'
             'SKIP' 'SKIP'
             '136c8095cc831790a3da0b4a3292789cbd813b79e5f88975b64f32dcf85fa832'
             '666230889a2b41cd18230f3e9ee1abd473c9a5a0cc61b9dd255a6cd19290f323'
