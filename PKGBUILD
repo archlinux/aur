@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 
 url="https://github.com/ZerBea/${_bpn}"
 
-pkgver=7.1.2.r44.g6dc11f4
+pkgver=8.0.0.r1.gdc0620b
 pkgrel=1
 
 source=("git+$url")
