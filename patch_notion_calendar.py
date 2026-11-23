@@ -57,38 +57,38 @@ PATCHES = [
     #    the window is created, so the app silently fails to open.
     #    Setting enableNative:false skips the native crash reporter entirely.
     (
-        "f.init({dsn:void 0,release:Jt,",
-        "f.init({dsn:void 0,enableNative:!1,release:Jt,",
+        "f.init({dsn:void 0,release:",
+        "f.init({dsn:void 0,enableNative:!1,release:",
         "1 sentry native crash reporter disabled",
         True,
     ),
     # 2. single-instance lock: on Linux the lock may be held by another
     #    instance; only win32 should bail out. Already correct upstream.
     (
-        "var cn=p.default.app.requestSingleInstanceLock();process.platform===`win32`&&!cn&&p.default.app.quit();",
-        "var cn=p.default.app.requestSingleInstanceLock();process.platform===`win32`&&!cn&&p.default.app.quit();",
+        "var en=p.default.app.requestSingleInstanceLock();process.platform===`win32`&&!en&&p.default.app.quit();",
+        "var en=p.default.app.requestSingleInstanceLock();process.platform===`win32`&&!en&&p.default.app.quit();",
         "2 single-instance lock (already linux-safe)",
         False,
     ),
     # 3. second-instance event: handle on Linux as well
     (
-        "p.default.app.on(`second-instance`,(e,t)=>{process.platform===`win32`&&(mn(),On(t))});",
-        "p.default.app.on(`second-instance`,(e,t)=>{(mn(),On(t));});",
+        "p.default.app.on(`second-instance`,(e,t)=>{process.platform===`win32`&&(sn(),Sn(t))});",
+        "p.default.app.on(`second-instance`,(e,t)=>{(sn(),Sn(t));});",
         "3 second-instance event",
         True,
     ),
     # 4. argv / deep-link handler must run on Linux
     (
-        "process.platform===`win32`&&On(process.argv)",
-        "On(process.argv)",
+        "process.platform===`win32`&&Sn(process.argv)",
+        "Sn(process.argv)",
         "4 argv handler",
         True,
     ),
     # 5. On(): drop the win32-only early return
     (
-        "function On(e){if(process.platform!==`win32`)return;",
-        "function On(e){",
-        "5 On() win32 guard",
+        "function Sn(e){if(process.platform!==`win32`)return;",
+        "function Sn(e){",
+        "5 Sn() win32 guard",
         True,
     ),
     # 6. On(): don't treat "https://..." style args as file paths
@@ -115,8 +115,8 @@ PATCHES = [
     # 8. tray popup menu: macOS uses the simple form, everything else the
     #    positioned form. Use the positioned one everywhere.
     (
-        "function or(){if(V)if(process.platform===`darwin`)V.popUpContextMenu();else{let e=V.getBounds();V.popUpContextMenu(Qn,{x:e.x,y:e.y})}}",
-        "function or(){if(V){let e=V.getBounds();V.popUpContextMenu(Qn,{x:e.x,y:e.y})}}",
+        "function $n(){if(V)if(process.platform===`darwin`)V.popUpContextMenu();else{let e=V.getBounds();V.popUpContextMenu(Gn,{x:e.x,y:e.y})}}",
+        "function $n(){if(V){let e=V.getBounds();V.popUpContextMenu(Gn,{x:e.x,y:e.y})}}",
         "8 tray popup menu",
         True,
     ),
@@ -181,21 +181,23 @@ def main():
     # upstream re-minify from shipping a silently broken app.
     # ---------------------------------------------------------------------
     verify = [
-        ("sentry guard", "enableNative:!1", "f.init({dsn:void 0,release:Jt,"),
-        ("second-instance", "p.default.app.on(`second-instance`,(e,t)=>{(mn(),On(t));});",
-         "p.default.app.on(`second-instance`,(e,t)=>{process.platform===`win32`&&(mn(),On(t))});"),
-        ("argv handler", "On(process.argv)}),p.default.app.on(",
-         "process.platform===`win32`&&On(process.argv)"),
-        ("On() guard", "function On(e){let t=e.find(",
-         "function On(e){if(process.platform!==`win32`)return;"),
+        ("sentry guard", "enableNative:!1", "f.init({dsn:void 0,release:"),
+        ("second-instance", "p.default.app.on(`second-instance`,(e,t)=>{(sn(),Sn(t));});",
+         "p.default.app.on(`second-instance`,(e,t)=>{process.platform===`win32`&&(sn(),Sn(t))});"),
+        ("argv handler", "Sn(process.argv)}),p.default.app.on(",
+         "process.platform===`win32`&&Sn(process.argv)"),
+        ("Sn() guard", "function Sn(e){let t=e.find(",
+         "function Sn(e){if(process.platform!==`win32`)return;"),
         ("URL-as-path", "!e.includes('://')&&m.default.existsSync(e)",
          "let n=e.slice(1).find(e=>m.default.existsSync(e));"),
         # The chain is: setAsDefaultProtocolClient(...),<patched>,var F=...
         # so the patched form puts "true;" AFTER the protocol registration.
-        ("userModelId", "p.default.app.setAsDefaultProtocolClient(T.protocol,ln,un),true;var F=",
+        # Only the protocol-client args are minified names; the anchored tail
+        # (",true;var F=") is what proves the replacement kept the chain valid.
+        ("userModelId", "),true;var F=",
          "process.platform===`win32`&&p.default.app.setAppUserModelId(`com.cron.electron`);"),
-        ("tray menu", "function or(){if(V){let e=V.getBounds();",
-         "function or(){if(V)if(process.platform===`darwin`)V.popUpContextMenu();"),
+        ("tray menu", "function $n(){if(V){let e=V.getBounds();",
+         "function $n(){if(V)if(process.platform===`darwin`)V.popUpContextMenu();"),
         ("autoUpdater guard", 'if("linux"===process.platform)return;x.autoUpdater.disableDifferentialDownload',
          "x.autoUpdater.autoDownload=!1,x.autoUpdater.disableDifferentialDownload"),
     ]
