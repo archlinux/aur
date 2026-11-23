@@ -1,0 +1,22 @@
+pkgbase = omascan
+	pkgdesc = Keyboard-first document scanner for Omarchy, from SANE scanner to PDF
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alchemy/omascan
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-wayland
+	depends = xdg-desktop-portal
+	depends = sane
+	depends = sane-airscan
+	optdepends = ipp-usb: driverless scanners connected over USB
+	source = omascan-0.1.0.tar.gz::https://github.com/alchemy/omascan/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = f83d8d7494160c96c76bef373826555502862904f25cfae77ae6b153b649ea41
+
+pkgname = omascan
