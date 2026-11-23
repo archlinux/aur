@@ -1,6 +1,6 @@
 pkgbase = avernella-bin
 	pkgdesc = Native Linux client for LINE, packaged from the Avernella Ubuntu release
-	pkgver = 0.1+git28.c17a50e
+	pkgver = 0.1+git29.5f3575b
 	pkgrel = 1
 	url = https://github.com/novesce/avernella
 	arch = x86_64
@@ -27,12 +27,12 @@ pkgbase = avernella-bin
 	optdepends = vulkan-icd-loader: native GPU rendering with a Vulkan driver
 	optdepends = xdg-desktop-portal: screenshots and screen sharing
 	optdepends = zbar: scanning QR images
-	provides = avernella=0.1+git28.c17a50e
+	provides = avernella=0.1+git29.5f3575b
 	conflicts = avernella
-	noextract = avernella_0.1+git28.c17a50e_amd64.deb
+	noextract = avernella_0.1+git29.5f3575b_amd64.deb
 	options = !strip
 	options = !debug
-	source = https://github.com/novesce/avernella-packaging/releases/download/avernella-c17a50eb29a1d497ea1ddd0e1bc496186ec95577/avernella_0.1+git28.c17a50e_amd64.deb
-	sha256sums = a4bf9d1bbfba10b29f9d99fc7e7e479a70ca78602ba635bf66ad0cc04465a3a4
+	source = https://github.com/novesce/avernella-packaging/releases/download/avernella-5f3575b7d34066b5942be4f45699e1b5a9da6a1d/avernella_0.1+git29.5f3575b_amd64.deb
+	sha256sums = e6eedbbac2de5b4be83391cfd439111d4198b866ae691b2255e48da3f5f8e4ca
 
 pkgname = avernella-bin
