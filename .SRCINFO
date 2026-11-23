@@ -1,16 +1,16 @@
 pkgbase = r-feather
 	pkgdesc = R Bindings to the Feather 'API'
-	pkgver = 0.3.5
-	pkgrel = 7
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=feather
 	arch = x86_64
 	license = Apache
 	depends = r
-	depends = r-hms
-	depends = r-rcpp
-	depends = r-tibble
+	depends = r-arrow
+	optdepends = r-hms
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/feather_0.3.5.tar.gz
-	sha256sums = 50ff06d5e24d38b5d5d62f84582861bd353b82363e37623f95529b520504adbf
+	optdepends = r-tibble
+	source = https://cran.r-project.org/src/contrib/feather_0.4.0.tar.gz
+	sha256sums = 427d80378b5acbb2aa096d9c4b5d61a1acb0dae38b8df29a2adde06fe13bee7f
 
 pkgname = r-feather

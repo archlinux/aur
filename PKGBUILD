@@ -3,25 +3,25 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=feather
-_pkgver=0.3.5
+_pkgver=0.4.0
 pkgname=r-${_pkgname,,}
-pkgver=0.3.5
-pkgrel=7
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="R Bindings to the Feather 'API'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('Apache')
 depends=(
   r
-  r-hms
-  r-rcpp
-  r-tibble
+  r-arrow
 )
 optdepends=(
+  r-hms
   r-testthat
+  r-tibble
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('50ff06d5e24d38b5d5d62f84582861bd353b82363e37623f95529b520504adbf')
+sha256sums=('427d80378b5acbb2aa096d9c4b5d61a1acb0dae38b8df29a2adde06fe13bee7f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
