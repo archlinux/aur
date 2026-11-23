@@ -1,8 +1,8 @@
 # Maintainer: Audiolinux  audiolinux@fastmail.fm
 
 pkgname=audirvana-origin
-pkgver=3.1.1
-pkgrel=2
+pkgver=3.1.2
+pkgrel=1
 pkgdesc="Audirvana Origin audio player"
 arch=('x86_64' 'aarch64')
 url="https://audirvana.com/"
@@ -12,8 +12,8 @@ source_x86_64=("https://audirvana.com/delivery/linux/apt-repo/pool/non-free/audi
 source_aarch64=("https://audirvana.com/delivery/linux/apt-repo/pool/non-free/audirvana-origin/audirvana-origin_"$pkgver"_arm64.deb")
 source=('audirvanaOrigin.service')
 sha256sums=('2fbabeb03f921cf4f65993687e0669e544b37c5327d8df1e5f3e70de9b86d2e8')
-sha256sums_x86_64=('fe1939aabdc9a8113abdb7ca6736ce5a1f5af33f14c73fde22e761921e7efcdd')
-sha256sums_aarch64=('312fad1f6787f1cc526b1acef316fd93b07ec0f62207e6e1207ea496830db2d7')
+sha256sums_x86_64=('acf7825328a1dab69b6d8f3bddb3d514bb77749a3604d5537aea6a1cafb152d0')
+sha256sums_aarch64=('c2cb9dcadb228330aafee2f738958e7d48715b1f19afa0a773e8de7f64ee6e58')
 install=${pkgname}.install
 
 package() {
