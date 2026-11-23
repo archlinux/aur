@@ -1,0 +1,15 @@
+pkgbase = arche-rollback
+	pkgdesc = Restore a previous package version from configured pacman caches
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/archelinux/arch-tools
+	arch = any
+	license = GPL-3.0-only
+	depends = pacman
+	depends = bash
+	optdepends = sudo: escalate when invoked by a regular user
+	conflicts = arche-maintenance
+	source = arche-rollback-2.0.1::https://raw.githubusercontent.com/archelinux/arch-tools/v2.0.1/bin/arche-rollback
+	sha256sums = 46792513257792bd593795a20213976dc4f89011956a8c5d0e4ace60e0d2e5e8
+
+pkgname = arche-rollback
