@@ -1,10 +1,15 @@
 pkgbase = python-k3down2
 	pkgdesc = Convert markdown segments into images and other transferable media
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/pykit3/k3down2
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	checkdepends = python-scikit-image
+	checkdepends = python-numpy
+	checkdepends = pandoc
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
