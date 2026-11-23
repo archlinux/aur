@@ -1,0 +1,17 @@
+pkgbase = spacelet
+	pkgdesc = Overview of rivermonad's workspaces with live window thumbnails
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/prietus/spacelet
+	arch = any
+	license = BSD-3-Clause
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = grim>=1.5
+	depends = rivermonad>=0.4.3
+	source = spacelet-0.1.0.tar.gz::https://github.com/prietus/spacelet/archive/v0.1.0.tar.gz
+	sha256sums = e382577b1208472c4cccca25c35bcedf4784179e52eefe7ad1de6e26535e4f14
+
+pkgname = spacelet
