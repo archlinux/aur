@@ -5,7 +5,7 @@
 
 pkgname=python-anyconfig
 _name=anyconfig
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc='Provides common APIs to load and dump configuration files in various formats'
 url='https://github.com/ssato/python-anyconfig'
@@ -35,7 +35,7 @@ makedepends=(
     'python-wheel'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('6c98a0a0a5f53dfb5d4af88274e856f25f3f635b9fb2e02c6a6b6b0510f9d2b0dd3c1e7bf6704df3cae277309a079dec68cc48c0756f2365f985ee9442e92b56')
+b2sums=('5eb480be9806d7f35f1d7749f16c3b2bfa7cfd1724e585b5ad576a1f58f29495be1d8c5a7ace5ebec096d54bde1dbc184b8a57d86aa591212f086ce83d86fd2a')
 
 prepare() {
     cd "$_name-$pkgver"
