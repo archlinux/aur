@@ -1,6 +1,6 @@
 pkgbase = strata-terminal-bin
 	pkgdesc = Strata Terminal: run Qwen3.8-Flash-Next and DeepSeek V4.1-Flash locally with an OpenAI/Anthropic-compatible API (prebuilt)
-	pkgver = 0.1.64
+	pkgver = 0.1.66
 	pkgrel = 1
 	url = https://github.com/Niko1221/Strata
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = strata-terminal-bin
 	conflicts = strata-engine
 	conflicts = strata-bin
 	conflicts = strata-rocm
-	noextract = strata-terminal-0.1.64-linux-x86_64.tar.gz
+	noextract = strata-terminal-0.1.66-linux-x86_64.tar.gz
 	options = !strip
 	options = !debug
 	source = LICENSE
-	source = strata-terminal-0.1.64-linux-x86_64.tar.gz::https://github.com/Niko1221/Strata/releases/download/v0.2.18/strata-control-0.1.64-linux-x86_64.tar.gz
+	source = strata-terminal-0.1.66-linux-x86_64.tar.gz::https://github.com/Niko1221/Strata/releases/download/v0.2.20/strata-control-0.1.66-linux-x86_64.tar.gz
 	sha256sums = 949b9b0aada7476006469e58ee4ffb0e0f68c2d9137e90a356757b61a09d37f0
-	sha256sums = 85836931810ca5de5b078a3ada64d677acba1e77d5e8d9612f08e2557b326099
+	sha256sums = 5bd662d293ab4dc8b71156daafbb42995bddbb765dbeac48c5fd74165dfb2d0d
 
 pkgname = strata-terminal-bin
