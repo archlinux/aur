@@ -1,30 +1,49 @@
-# Maintainer: M0Rf30
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: M0Rf30
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
+# dropped from extra when Plasma 6.8 removed X11; carried past the last official 26.08.2-1
+
 pkgname=colord-kde
-pkgver=0.3.0
+pkgver=26.08.3
 pkgrel=2
-pkgdesc="Interfaces and session daemon to colord for KDE"
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/playground/graphics/colord-kde'
-license=('GPL')
-depends=('kdelibs' 'colord')
-makedepends=('cmake' 'automoc4')
-source=("http://download.kde.org/stable/colord-kde/$pkgver/src/$pkgname-$pkgver.tar.bz2"
-        'fix_check_include_files.patch')
+pkgdesc='Interfaces and session daemon to colord for KDE'
+arch=(x86_64)
+url='https://userbase.kde.org/Color_Management'
+license=(GPL-2.0-or-later)
+depends=(colord
+         glibc
+         kcmutils
+         kcoreaddons
+         kdbusaddons
+         ki18n
+         kirigami
+         kitemmodels # QML
+         kwidgetsaddons
+         lcms2
+         libstdc++
+         libx11
+         libxrandr
+         qt6-base
+         qt6-declarative)
+makedepends=(extra-cmake-modules
+             kwindowsystem) # fixx11h.h
+groups=(kde-applications
+        kde-graphics)
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('3e78ffac79dd3669ce9f0ac92d71665927fd4fa3543cd15ca5455aea0cc75958'
+            'SKIP')
+validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  patch -p1 -i "${srcdir}/fix_check_include_files.patch" "${srcdir}/${pkgname}-${pkgver}/CMakeLists.txt"
-  cmake . -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix`
-  make
+  cmake -B build -S $pkgname-$pkgver \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
-
-md5sums=('d7e3231fa0da675449aef587dc49ed58'
-         '4cbf6866d036b7397867f56c30009787')
