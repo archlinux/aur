@@ -9,6 +9,7 @@ pkgbase = proftpd-git
 	license = GPL-2.0-only
 	makedepends = git
 	depends = perl
+	depends = libsodium
 	depends = mariadb-libs
 	depends = postgresql-libs
 	depends = hiredis

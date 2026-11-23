@@ -8,7 +8,7 @@ pkgdesc='High-performance, scalable FTP server'
 arch=('x86_64' 'i686' 'aarch64')
 url='http://www.proftpd.org/'
 license=('GPL-2.0-only')
-depends=('perl' 'mariadb-libs' 'postgresql-libs' 'hiredis')
+depends=('perl' 'libsodium' 'mariadb-libs' 'postgresql-libs' 'hiredis')
 optdepends=('logrotate: automatically rotate Xfer log file')
 makedepends=('git')
 backup=('etc/proftpd/proftpd.conf' 'etc/proftpd/blacklist.dat' 'etc/proftpd/dhparams.pem')
@@ -38,10 +38,9 @@ build() {
       --sbindir=/usr/bin \
       --libexecdir=/usr/lib/proftpd \
       --localstatedir=/run/proftpd \
-      --disable-pam \
-      --enable-ipv6 \
-      --with-includes=/usr/include/mysql:/usr/include/postgresql \
-      --with-libraries=/usr/lib/mysql:/usr/lib/postgresql \
+      --enable-openssl \
+      --enable-sodium \
+      --enable-auth-pam \
       --enable-nls \
       --enable-redis \
       --enable-facl \
