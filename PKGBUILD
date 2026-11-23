@@ -1,4 +1,4 @@
-# Maintainer: ido
+# Maintainer: Ido van Verseveld <ido at vanverseveld dot org>
 #
 # Builds radiopittray from the official GitHub releases (tag source tarball).
 #
@@ -10,10 +10,9 @@
 #      PKGBUILD itself, not in a separate file),
 #   4. bump pkgrel only when this file itself changes.
 #
-# Package names note: this targets CachyOS, where the GStreamer plugin
-# packages are called gst-plugins-base / gst-plugins-good / gst-libav.
-# On plain Arch use gstreamer-plugins-base / gstreamer-plugins-good /
-# gstreamer-libav instead.
+# Note: Arch adopted the upstream GStreamer plugin package names in 2023,
+# so gst-plugins-base / gst-plugins-good / gst-libav work on Arch and
+# CachyOS alike.
 
 pkgname=radiopittray
 pkgver=0.1.1
