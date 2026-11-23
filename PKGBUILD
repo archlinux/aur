@@ -1,15 +1,14 @@
 # Maintainer: ido
 #
-# Builds radiopittray from the public GitHub repository.
+# Builds radiopittray from the official GitHub releases (tag source tarball).
 #
 # Updating the package:
-#   1. commit and push your changes in the radiopittray repository,
+#   1. tag the release in the radiopittray repository (vX.Y.Z),
 #   2. bump pkgver (keep it in sync with version in Cargo.toml),
-#   3. bump _commit to the new HEAD (git rev-parse HEAD),
-#   4. regenerate the sha256sums array at the bottom of this file
+#   3. regenerate the sha256sums array at the bottom of this file
 #      (makepkg -gi prints it; this makepkg keeps checksums in the
 #      PKGBUILD itself, not in a separate file),
-#   5. bump pkgrel only when this file itself changes.
+#   4. bump pkgrel only when this file itself changes.
 #
 # Package names note: this targets CachyOS, where the GStreamer plugin
 # packages are called gst-plugins-base / gst-plugins-good / gst-libav.
@@ -17,8 +16,8 @@
 # gstreamer-libav instead.
 
 pkgname=radiopittray
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="System tray radio player for your RadioPit.fm library"
 arch=(x86_64)
 url="https://radiopit.fm"
@@ -43,11 +42,10 @@ makedepends=(
     rust
     pkgconf
 )
-# Public GitHub repository of radiopittray; the build is pinned to a commit
-# so makepkg stays reproducible.
-_commit="4e4642d2a91e18a8a03780c6bf48f999d9ab29bf"
+# Official GitHub release; the source tarball of the tag v$pkgver, which
+# makes the build reproducible against a fixed release.
 source=(
-    "radiopittray-$pkgver::git+https://github.com/idovitz/radiopittray#commit=$_commit"
+    "$pkgname-$pkgver.tar.gz::https://github.com/idovitz/radiopittray/archive/refs/tags/v$pkgver.tar.gz"
     "$pkgname.desktop"
 )
 
@@ -75,5 +73,5 @@ package() {
     install -Dm644 "$srcdir/$pkgname.desktop" \
         -D "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
-sha256sums=('e255ad1eddeff3a4077df8b51d9d4cd2463b51e4a13c202a8cf316fe9e940721'
+sha256sums=('1e5b834a2a6adaaa373b7a399db79a128797d3b36317a765fafa15bbaaa3c8e4'
             '7df4446a7f7059ed1403440d7af0087f82e481b5189fca7cfa1f600d7042843f')

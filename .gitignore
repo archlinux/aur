@@ -1,5 +1,6 @@
 # makepkg build artifacts (recreated by makepkg)
 radiopittray-*/
+*.tar.gz
 src/
 pkg/
 *.pkg.tar.zst
