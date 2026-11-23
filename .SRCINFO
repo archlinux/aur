@@ -1,6 +1,6 @@
 pkgbase = r-spdep
 	pkgdesc = Spatial Dependence: Weighting Schemes, Statistics
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=spdep
 	arch = x86_64
@@ -30,8 +30,8 @@ pkgbase = r-spdep
 	optdepends = r-mipfp
 	optdepends = r-guerry
 	optdepends = r-codingmatrices
-	source = https://cran.r-project.org/src/contrib/spdep_1.4-2.tar.gz
-	md5sums = a7e843a3050ac31a114f7d68cc7d2599
-	b2sums = a32562a4d3b79c62e2a177da389e774bfa736a5f14b5e803d75b822ae3f5ab678c990c7a5052d8130667ef8ea7c1e81390153905d12727ee9944a0b12accb4e4
+	source = https://cran.r-project.org/src/contrib/spdep_1.4-3.tar.gz
+	md5sums = cb680130041f8d8f5433a56ea4eab948
+	b2sums = 0827d2c90be2c865e10a10e530a55bc49cd0bdeefe8e2d8fe63077fa485a88782fc7b89969a64730da20676c539969ef09316263d3d4d50c32a0dcc1ac592ea4
 
 pkgname = r-spdep
