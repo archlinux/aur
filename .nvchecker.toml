@@ -1,3 +1,4 @@
 [vimix-icon-theme]
-source = "git"
-git = "https://github.com/vinceliuice/vimix-icon-theme.git"
+source = "github"
+github = "vinceliuice/vimix-icon-theme"
+use_latest_release = "true"
