@@ -1,4 +1,4 @@
 [ytubic]
 source = "git"
-git = "https://github.com/NUber-dev/YTubic.git"
+git = "https://github.com/ameenalasady/YTubic.git"
 prefix = "v"
