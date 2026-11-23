@@ -2,7 +2,7 @@
 
 pkgname=python-k3git
 _name=${pkgname#python-}
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="wrapper of git command-line"
 provides=(${pkgname})
@@ -29,7 +29,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('61fe7475241e5b40b8a788eda62c106adf8b2622847386b4a82f7f5a2aa233ff')
+sha256sums=('fe930a494770436b0a2554c2e8bbb5ccb330c6ce4abed2647c0f7d55e4d13048')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx

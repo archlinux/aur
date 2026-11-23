@@ -1,6 +1,6 @@
 pkgbase = python-k3git
 	pkgdesc = wrapper of git command-line
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/pykit3/k3git
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-k3git
 	depends = python-k3handy
 	provides = python-k3git
 	conflicts = python-k3git
-	source = k3git::git+https://github.com/pykit3/k3git.git#tag=v0.2.0
-	sha256sums = 61fe7475241e5b40b8a788eda62c106adf8b2622847386b4a82f7f5a2aa233ff
+	source = k3git::git+https://github.com/pykit3/k3git.git#tag=v0.2.1
+	sha256sums = fe930a494770436b0a2554c2e8bbb5ccb330c6ce4abed2647c0f7d55e4d13048
 
 pkgname = python-k3git
