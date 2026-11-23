@@ -2,7 +2,7 @@
 
 pkgname=python-k3proc
 _name=${pkgname#python-}
-pkgver=0.2.20
+pkgver=0.2.21
 pkgrel=1
 pkgdesc="Utility to create subprocess with support for timeout, tty, and text mode"
 provides=(${pkgname})
@@ -20,9 +20,13 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
 )
+checkdepends=(
+    python-pytest
+    python-k3ut
+)
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('87fd8c6be1662ef4eb8d7dd14c5bd1adb09a162c1caf5e7e898579163934a643')
+sha256sums=('819b7116b8056abcc65995d2a8c180ad7b6b4ffb4aa5769ccd462928e3ecdde3')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
@@ -33,8 +37,15 @@ build() {
     python -m build --wheel --no-isolation
 }
 
+check() {
+	cd "${srcdir}/${_name}"
+	
+    export PYTHONPATH="${srcdir}${PYTHONPATH:+:${PYTHONPATH}}"
+	pytest -x
+}
+
 package() {
     cd "${srcdir}/${_name}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
