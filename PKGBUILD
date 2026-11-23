@@ -2,7 +2,7 @@
 
 _pkgname=proftpd
 pkgname="${_pkgname}"-git
-pkgver=1.3.8rc2.135.ga34cb3043
+pkgver=1.3.10rc6.r61.g4614e3475
 pkgrel=1
 pkgdesc='High-performance, scalable FTP server'
 arch=('x86_64' 'i686' 'aarch64')
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
 
 pkgver(){
     cd ${_pkgname}
-    git describe --tags | sed 's/^v//;s/-/./g'
+    git describe --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
