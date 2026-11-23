@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=profileplyr
-_pkgver=1.24.0
+_pkgver=1.28.3
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.28.3
 pkgrel=1
 pkgdesc='Visualization and annotation of read signal over genomic ranges with profileplyr'
 arch=('any')
@@ -13,12 +13,14 @@ depends=(
   r
   r-biocgenerics
   r-biocparallel
+  r-biostrings
   r-chipseeker
   r-circlize
   r-complexheatmap
   r-dplyr
   r-enrichedheatmap
   r-genomeinfodb
+  r-genomicalignments
   r-genomicfeatures
   r-genomicranges
   r-ggplot2
@@ -27,6 +29,7 @@ depends=(
   r-org.hs.eg.db
   r-org.mm.eg.db
   r-pheatmap
+  r-plyranges
   r-r.utils
   r-rgreat
   r-rjson
@@ -34,7 +37,6 @@ depends=(
   r-rsamtools
   r-rtracklayer
   r-s4vectors
-  r-soggi
   r-summarizedexperiment
   r-tidyr
   r-tiff
@@ -42,17 +44,19 @@ depends=(
   r-txdb.hsapiens.ucsc.hg38.knowngene
   r-txdb.mmusculus.ucsc.mm10.knowngene
   r-txdb.mmusculus.ucsc.mm9.knowngene
+  r-txdbmaker
 )
 optdepends=(
   r-biocstyle
   r-cairo
+  r-chipseq
   r-knitr
   r-png
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('09f8ea6693f1c1325beaf55fc53c26b5f4dbf0f2ca2be97851c0eac964826128')
+sha256sums=('0403609d812ffa285c5b11406764fc72bb9e89428181b6815eb29b9097006de3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
