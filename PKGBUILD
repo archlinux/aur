@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=mega-man-x-regenesis
-pkgver=1.02.0
+pkgver=1.03.0
 pkgrel=1
 pkgdesc="A fan-made Mega Man X game set in an alternate timeline where Sigma has won"
 arch=('x86_64')
