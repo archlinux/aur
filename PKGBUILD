@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="A Wave Link replacement for Linux: a PipeWire mixer with effects and an OpenDeck plugin for any microphone, plus full control of Elgato XLR interfaces and Wave microphones"
 arch=('x86_64')
@@ -34,7 +34,7 @@ _dfver=0.5.6
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz"
         "DeepFilterNet3_onnx-$_dfver.tar.gz::https://raw.githubusercontent.com/Rikorose/DeepFilterNet/v$_dfver/models/DeepFilterNet3_onnx.tar.gz")
 noextract=("DeepFilterNet3_onnx-$_dfver.tar.gz")
-sha256sums=('bb3ba5efa787e5f297f4957b9180aa4c0d803b88d2cc8277a5400edf51672efd'
+sha256sums=('fb3d84d8013ff67f0373a46d7766dd76e6bea8c2080a342bccda22bb4135d167'
             'c94d91f70911001c946e0fabb4aa9adc37045f45a03b56008cb0c8244cb63616')
 
 # DeepFilterNet's noise removal is a Rust library linked into the native
