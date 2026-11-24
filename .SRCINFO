@@ -1,0 +1,14 @@
+pkgbase = pdfjuicer
+	pkgdesc = Convert PDF pages to images with custom sizing and scaling
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dmikhr/pdfjuicer
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = go
+	depends = glibc
+	source = pdfjuicer-1.0.0.tar.gz::https://github.com/dmikhr/pdfjuicer/archive/v1.0.0.tar.gz
+	sha256sums = 37bcd0c436e2ad8cedaf954e0f04c52e0d08c4121fa3f33234d406742b3a58a8
+
+pkgname = pdfjuicer
