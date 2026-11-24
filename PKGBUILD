@@ -1,6 +1,6 @@
 # Maintainer: Tim Culverhouse <tim@timculverhouse.com>
 pkgname=monstar-bin
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="wayland terminal based on libghostty"
 arch=('x86_64' 'aarch64')
@@ -25,11 +25,11 @@ optdepends=(
   'xdg-desktop-portal: open links and files through a desktop portal'
   'xdg-utils: open links when a desktop portal is unavailable'
 )
-_release="https://github.com/rockorager/monstar/releases/download/v1.3.0"
-source_x86_64=("monstar-1.3.0-x86_64-linux.tar.gz::${_release}/monstar-1.3.0-x86_64-linux.tar.gz")
-source_aarch64=("monstar-1.3.0-aarch64-linux.tar.gz::${_release}/monstar-1.3.0-aarch64-linux.tar.gz")
-sha256sums_x86_64=('c2eaa9b8598d5456c24825592cef1e86311eec973714c016057b2dfbef163d1c')
-sha256sums_aarch64=('a6bf0f4708e7b1e27622613420f11c5798af80a657fa88e9cec81cde8b64328f')
+_release="https://github.com/rockorager/monstar/releases/download/v1.4.0"
+source_x86_64=("monstar-1.4.0-x86_64-linux.tar.gz::${_release}/monstar-1.4.0-x86_64-linux.tar.gz")
+source_aarch64=("monstar-1.4.0-aarch64-linux.tar.gz::${_release}/monstar-1.4.0-aarch64-linux.tar.gz")
+sha256sums_x86_64=('d03adc16e50d41488d5250def02c8e5f75a70f3d186deca8b0c86db47e1c360e')
+sha256sums_aarch64=('89b5c66f2990e50eaba05adf71987200c3bcf31567436c0b7b0f3a2564bc4709')
 
 build() {
   :
