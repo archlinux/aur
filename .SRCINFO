@@ -1,6 +1,6 @@
 pkgbase = pen-dev-bin
 	pkgdesc = Pen: AI-powered design canvas (formerly Pencil) (bin)
-	pkgver = 1.2.25
+	pkgver = 1.2.26
 	pkgrel = 1
 	url = https://www.pen.dev
 	arch = x86_64
@@ -30,8 +30,8 @@ pkgbase = pen-dev-bin
 	depends = nspr
 	depends = nss
 	depends = pango
-	provides = pen-dev=1.2.25
-	provides = pencil-dev=1.2.25
+	provides = pen-dev=1.2.26
+	provides = pencil-dev=1.2.26
 	conflicts = pen-dev
 	conflicts = pen-dev-appimage
 	conflicts = pencil-dev
@@ -45,9 +45,9 @@ pkgbase = pen-dev-bin
 	sha256sums = 8d8a5cacedc15daea8974cbf6e33edaace4b9542a2117cf1df082dd413a00138
 	sha256sums = 5898e0189970c8995fc14978ad9b91483d787d2842a01369e29da928b49cc75a
 	sha256sums = 42b82acedd61dfb095f44aaadbc58b703fabaa1c25d60b6e133231a0c70c8c53
-	source_x86_64 = https://github.com/highagency/pen-desktop-releases/releases/download/v1.2.25/Pen-1.2.25-linux-x64.tar.gz
-	sha256sums_x86_64 = e4dc188efc40312fc828ff02bb6ee8a9a6fcee473bb3c98f2e8c974553fba6b3
-	source_aarch64 = https://github.com/highagency/pen-desktop-releases/releases/download/v1.2.25/Pen-1.2.25-linux-arm64.tar.gz
-	sha256sums_aarch64 = 08f5bcb4aafadf2b95927a4649908aad10c28beabe3c7f9b5c09e5f6a4f9e952
+	source_x86_64 = https://github.com/highagency/pen-desktop-releases/releases/download/v1.2.26/Pen-1.2.26-linux-x64.tar.gz
+	sha256sums_x86_64 = 78f8013e3ee855e8468ff8b6ce52d692d0f98885167b43d8f53161ac9f62b104
+	source_aarch64 = https://github.com/highagency/pen-desktop-releases/releases/download/v1.2.26/Pen-1.2.26-linux-arm64.tar.gz
+	sha256sums_aarch64 = fcb3c7840ee51f1e5650114929ac7e8f8f68e40bc0ca7ddd94811173ab73b5b9
 
 pkgname = pen-dev-bin
