@@ -1,0 +1,16 @@
+pkgbase = purr-adb
+	pkgdesc = Browse and search Android logcat output with fzf
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/google/purr
+	arch = any
+	license = Apache-2.0
+	depends = android-tools
+	depends = fzf
+	depends = perl
+	depends = zsh
+	conflicts = purr
+	source = purr-adb-2.0.4.tar.gz::https://github.com/google/purr/archive/2.0.4.tar.gz
+	sha256sums = ce8b4d31d6b56e79808f12a37795ea15127f3e01eb94f2becb1ee1cd8724844a
+
+pkgname = purr-adb
