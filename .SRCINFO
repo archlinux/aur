@@ -1,0 +1,23 @@
+pkgbase = python-k3httpmultipart
+	pkgdesc = HTTP multipart form data encoder
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/pykit3/k3httpmultipart
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-k3fs
+	depends = python-k3mime
+	provides = python-k3httpmultipart
+	conflicts = python-k3httpmultipart
+	source = k3httpmultipart::git+https://github.com/pykit3/k3httpmultipart.git#tag=v0.1.8
+	sha256sums = 11fcd0d1a7d846f65156175e273fcac19116d9961131656ac65896d5ef437e77
+
+pkgname = python-k3httpmultipart
