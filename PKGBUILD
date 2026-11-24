@@ -9,11 +9,8 @@
 # under it is tracked - so the OBS tar_scm service packs the git checkout into a
 # tarball under a constant name, which is what source= below refers to.
 #
-# pkgver() below reads the newest tag reachable from the packed checkout, so a
-# tag-push-triggered rebuild (see .obs/workflows.yml) picks up the new version
-# on its own instead of needing a manual bump here. git tag --sort=-v:refname
-# was tried first, but its lexical version sort ranks 26.5mx5 above 26.09.1, so
-# it uses git describe, which walks history from HEAD instead.
+# The source archive does not contain Git metadata. Set pkgver explicitly
+# before each release; release-aur checks it against the requested tag.
 
 pkgname=gazelle-installer
 pkgver=26.10mx25
@@ -47,14 +44,13 @@ optdepends=(
 source=("https://github.com/gazelle-installer/gazelle-installer/archive/refs/tags/26.10mx25.tar.gz")
 sha256sums=('6656c1db33a6fdfa4d1643be6b86b0cbc538a1a68cde1acd3951a82371628499')
 
-# dpkg-source packed this tarball from a directory called "src", so that - not
-# ${pkgname}-${pkgver} - is what it unpacks to.
+# tar_scm uses the constant version "source" for the archive directory.
 _srcdir="gazelle-installer-26.10mx25"
 
 build() {
     cd "${srcdir}/${_srcdir}"
     local version_tag
-    version_tag="$(pkgver)"
+    version_tag="${pkgver}"
 
     # GAZELLE_VERSION_SOURCE=tag with an explicit tag: the default source reads
     # debian/changelog through dpkg-parsechangelog, which does not exist on
