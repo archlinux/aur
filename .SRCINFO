@@ -1,6 +1,6 @@
 pkgbase = cc-code-bin
 	pkgdesc = Fast, lightweight Claude Code alternative built in Rust with Ratatui TUI, ACP protocol support
-	pkgver = 0.6.299
+	pkgver = 0.6.300
 	pkgrel = 1
 	url = https://github.com/cc-claws/cc-code
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = cc-code-bin
 	provides = cc-code
 	conflicts = cc-code
 	options = !debug
-	source = cc-code-bin-0.6.299-LICENSE::https://raw.githubusercontent.com/cc-claws/cc-code/npm-v0.6.299/LICENSE
+	source = cc-code-bin-0.6.300-LICENSE::https://raw.githubusercontent.com/cc-claws/cc-code/npm-v0.6.300/LICENSE
 	sha256sums = c408d05766b1622a522880f05e98f54feb738686113a9427ac7bdbf39c0b5144
-	source_x86_64 = cc-code-bin-0.6.299-x86_64.tar.gz::https://github.com/cc-claws/cc-code/releases/download/npm-v0.6.299/cc-code-linux-x86_64.tar.gz
-	sha256sums_x86_64 = bd0445f223569d81a3b5e149953e72de63aa22559029699a536564671acd9141
-	source_aarch64 = cc-code-bin-0.6.299-aarch64.tar.gz::https://github.com/cc-claws/cc-code/releases/download/npm-v0.6.299/cc-code-linux-aarch64.tar.gz
-	sha256sums_aarch64 = e72e23fa9d164e9393dee0c2c927a0e8144f1cd183e55e109e936685f867b5f0
+	source_x86_64 = cc-code-bin-0.6.300-x86_64.tar.gz::https://github.com/cc-claws/cc-code/releases/download/npm-v0.6.300/cc-code-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c35b70d007123f4a33def9007c9adff140909cf69b7a63e2243cf321ca05daf6
+	source_aarch64 = cc-code-bin-0.6.300-aarch64.tar.gz::https://github.com/cc-claws/cc-code/releases/download/npm-v0.6.300/cc-code-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 5abf252db05c51b19e94977c7dabac572c01b40bbb88de29fa8acc83cd0a8b91
 
 pkgname = cc-code-bin
