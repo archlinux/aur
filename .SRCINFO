@@ -1,7 +1,7 @@
 pkgbase = aria2-next
 	pkgdesc = Maintained aria2 fork with extensive bug fixes and modernized architecture
-	pkgver = 3.1.1
-	pkgrel = 1
+	pkgver = 3.1.2
+	pkgrel = 3
 	url = https://github.com/AnInsomniacy/aria2-next
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -32,7 +32,7 @@ pkgbase = aria2-next
 	provides = rayburst
 	conflicts = aria2-next
 	conflicts = rayburst
-	source = aria2-next::git+https://github.com/AnInsomniacy/aria2-next.git#tag=v3.1.1
-	sha256sums = 9defb41e118763805dcec1a93a254d5cda4bd95cbb4480cc5c2ac43f5d6d37c8
+	source = aria2-next::git+https://github.com/AnInsomniacy/aria2-next.git#tag=v3.1.2
+	sha256sums = 1cefa4877eb81d07a3c500184312b168c94b5c4632dbba8dbeca04acde5881f4
 
 pkgname = aria2-next
