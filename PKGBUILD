@@ -2,7 +2,7 @@
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
 _pkgname=SiYuan
-pkgver=3.8.11
+pkgver=3.8.12
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -36,7 +36,7 @@ source=(
     "${pkgname}.js"
 	"${pkgname}.sh"
 )
-sha256sums=('65c6fa93a575065f02a5bcd05f29b72fac690659fef7ecf988b41733968bb3ab'
+sha256sums=('1f2e2ba7168d2a8d12a0023d5136ec1ca6ef06e78b859165ddb851d39911000f'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
