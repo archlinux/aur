@@ -1,0 +1,23 @@
+pkgbase = python-k3priorityqueue
+	pkgdesc = Priority queue with weighted producer support
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/pykit3/k3priorityqueue
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	checkdepends = python-k3thread
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-k3heap
+	provides = python-k3priorityqueue
+	conflicts = python-k3priorityqueue
+	source = k3priorityqueue::git+https://github.com/pykit3/k3priorityqueue.git#tag=v0.1.9
+	sha256sums = a8b4180405b0f7fbce10bc8834b4f0946834d28c62bed4e7b470428d81c11388
+
+pkgname = python-k3priorityqueue
