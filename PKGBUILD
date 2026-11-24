@@ -20,7 +20,7 @@ pkgdesc="Wallpaper Engine backgrounds for Linux (prebuilt x86-64-v3)"
 arch=('x86_64')
 url="https://github.com/Become-ILLUSORY/linux-wallpaperengine"
 # GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
-_gh_mirror="${GH_MIRROR:-https://gh-proxy.com/}"
+_gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
 _gh_mirror="${_gh_mirror%/}/"
 license=('GPL-3.0-only')
 provides=("${_pkgname}=${pkgver}" "linux-wallpaperengine")
