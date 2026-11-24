@@ -1,0 +1,16 @@
+pkgbase = oji
+	pkgdesc = Text emoticon maker
+	pkgver = 3.2.3
+	pkgrel = 1
+	url = https://github.com/xxczaki/oji
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = libx11
+	depends = nodejs
+	noextract = oji-3.2.3.tgz
+	source = oji-3.2.3.tgz::https://registry.npmjs.org/oji/-/oji-3.2.3.tgz
+	sha256sums = c4f043683fa1cecb75c7c19e0ab7bd57e50924eaa30cfb755beb3ef61acebf54
+
+pkgname = oji
