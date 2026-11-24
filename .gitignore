@@ -1,5 +1,6 @@
 # makepkg artifacts
 *.pacman
+*.tar.gz
 *.pkg.tar.*
 pkg/
 src/

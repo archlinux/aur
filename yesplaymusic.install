@@ -1,0 +1,11 @@
+post_upgrade() {
+    if (($(vercmp "$2" 3.0.0) < 0)); then
+        cat <<'EOF'
+==> YesPlayMusic 3.0 is a ground-up Flutter rewrite.
+==> NetEase Cloud Music is no longer built in; online sources are now
+==> provided via plugins (https://github.com/topics/yesplaymusic-plugin).
+==> If you still need the legacy 0.4.x NetEase client, switch to a
+==> community fork or legacy AUR package.
+EOF
+    fi
+}
