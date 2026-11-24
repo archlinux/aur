@@ -2,7 +2,7 @@
 
 pkgname=python-comicfn2dict
 _pkgname="${pkgname#python-}"
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Parse common comic filenames and return a dict of metadata attributes'
 arch=(any)
@@ -25,7 +25,7 @@ checkdepends=(
 )
 options=(!debug)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('13d495d9578e48fdd8e9cd9d7d2873caa52a92cefe63d48428a78cb090733f53')
+sha256sums=('355cf56f3a57f5c8e4d64256882d1264927e56a4445cf50361f8c0954e5321ab')
 
 build() {
   cd "${_pkgname}-${pkgver}"
