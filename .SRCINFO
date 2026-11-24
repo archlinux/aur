@@ -1,0 +1,20 @@
+pkgbase = groma-bin
+	pkgdesc = Keep your architecture as Markdown in Git
+	pkgver = 0.7.8
+	pkgrel = 1
+	url = https://github.com/mrlesk/groma.md
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = groma
+	conflicts = groma
+	options = !debug
+	source = groma-bin-0.7.8-LICENSE::https://raw.githubusercontent.com/mrlesk/groma.md/v0.7.8/LICENSE
+	sha256sums = b97c251e502d39094c7110c14f1c912d5b0cd30c4b03cd30b4f7a9f776960c48
+	source_x86_64 = groma-bin-0.7.8-x86_64::https://github.com/mrlesk/groma.md/releases/download/v0.7.8/groma-bun-linux-x64-baseline
+	sha256sums_x86_64 = bd7a83d04c75b7406d4107022ef3e6cc6959315fe4aa2efce6cea4367fe1162d
+	source_aarch64 = groma-bin-0.7.8-aarch64::https://github.com/mrlesk/groma.md/releases/download/v0.7.8/groma-bun-linux-arm64
+	sha256sums_aarch64 = b67d8d3aedc1ed2ee1e1b05d513e7b5cd014280aa3fda09b8db4bb414fc6024c
+
+pkgname = groma-bin
