@@ -1,6 +1,6 @@
 pkgbase = gomi-bin
 	pkgdesc = Rm alternative written in Go
-	pkgver = 1.10.1
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/b4b4r07/gomi
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = gomi-bin
 	license = MIT
 	provides = gomi
 	conflicts = gomi
-	source_x86_64 = gomi-1.10.1-x86_64.tar.gz::https://github.com/b4b4r07/gomi/releases/download/v1.10.1/gomi_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 5fcdd53768f0c89130b8b956b27682d742c09e130645bc8a4f06db433c75240a
-	source_aarch64 = gomi-1.10.1-aarch64.tar.gz::https://github.com/b4b4r07/gomi/releases/download/v1.10.1/gomi_linux_arm64.tar.gz
-	sha256sums_aarch64 = a6888feb24106b2772b548ee523e26c42a74bd1b7cf8964644d5cfe935da4b65
+	source_x86_64 = gomi-1.11.0-x86_64.tar.gz::https://github.com/b4b4r07/gomi/releases/download/v1.11.0/gomi_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 2f7562a82485e83953e7a047ac69b198703179970324ca3f67ae99f0247b7eb4
+	source_aarch64 = gomi-1.11.0-aarch64.tar.gz::https://github.com/b4b4r07/gomi/releases/download/v1.11.0/gomi_linux_arm64.tar.gz
+	sha256sums_aarch64 = 37165bf5170ede6c896dd9db5067e61d6dfdd9ab9086fc7c01288c569644b988
 
 pkgname = gomi-bin
