@@ -1,15 +1,15 @@
 pkgbase = mmseqs2-bin
 	pkgdesc = Ultra fast and sensitive sequence search and clustering suite
-	pkgver = 19_ab57c
+	pkgver = 20_ae60e
 	pkgrel = 1
 	url = https://github.com/soedinglab/mmseqs2
 	arch = x86_64
 	license = MIT
-	provides = mmseqs2=19_ab57c
+	provides = mmseqs2=20_ae60e
 	conflicts = mmseqs2
 	options = !strip
 	options = !debug
-	source = https://github.com/soedinglab/mmseqs2/releases/download/19-ab57c/mmseqs-linux-avx2.tar.gz
-	sha256sums = f085b64d1cf72e9c559c1cbd45741665d9af1262a2a5b05e2d9d51a034667054
+	source = https://github.com/soedinglab/mmseqs2/releases/download/20-ae60e/mmseqs-linux-avx2.tar.gz
+	sha256sums = 170e3e73e73449c43619ef9ee3de1401bc653df9ec3fe1761d00ee042846cc9d
 
 pkgname = mmseqs2-bin
