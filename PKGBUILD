@@ -7,7 +7,7 @@ _appid=io.winspace.Development
 pkgname=${_gitname}-bin
 pkgdesc="Windows File Explorer-inspired file manager for Linux"
 
-pkgver=2.0.23
+pkgver=2.0.25
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -37,13 +37,13 @@ optdepends=('polkit: deleting a whole folder as administrator under admin://'
 
 options=('!strip')
 
-source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE" "THIRD_PARTY_NOTICES-${pkgver}::${_ghurlraw}/THIRD_PARTY_NOTICES.md"
+source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE" "THIRD_PARTY_NOTICES-${pkgver}.md::${_ghurlraw}/THIRD_PARTY_NOTICES.md"
         "README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-${arch[0]}.tzst::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${pkgver}-${pkgrel}-${arch[0]}.pkg.tar.zst")
 sha256sums=('fa330b7ec7715da6050bb6cd8cc5ec86c61d0671da711fcc79460cf69193d260'
             'e692556113c0d1f1ed7e5eb8710d354f55ad881fb131832218d715ade8bb14ec'
-            '5cc3bdd0e0db7d0bb4f1b8194af858add2f8fe12c41191a0f4ddc225333982bd')
-sha256sums_x86_64=('ee7bfa35f9db66b3e08d2f32a114e3898590046ed26968f851f52bc385daa8d3')
+            '5e8bf8acc0db92b15769f50e9ea617ecf46471a645daa2d6943a6f368c3a0242')
+sha256sums_x86_64=('9eebb9d4df2c7bb34beba339d001d60c55adbcf415e26eecdaf81a30cc01a8d3')
 
 noextract=("${source_x86_64[@]%%::*}")
 
@@ -56,5 +56,5 @@ package() {
 	install -Dm644 ${srcdir}/README-${pkgver}.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
 
 	install -Dm644 ${srcdir}/LICENSE-${pkgver} ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-	install -Dm644 ${srcdir}/THIRD_PARTY_NOTICES-${pkgver} ${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_NOTICES
+	install -Dm644 ${srcdir}/THIRD_PARTY_NOTICES-${pkgver}.md ${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_NOTICES.md
 }
