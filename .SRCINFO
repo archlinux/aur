@@ -1,0 +1,14 @@
+pkgbase = mklicense
+	pkgdesc = Generate license files from the command line
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/cezaraugusto/mklicense
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = mklicense-0.3.3.tgz
+	source = mklicense-0.3.3.tgz::https://registry.npmjs.org/mklicense/-/mklicense-0.3.3.tgz
+	sha256sums = a5f67b3870f412d52341a0598aa018d066637bb4bb7689d51d20e0dbc21da6ec
+
+pkgname = mklicense
