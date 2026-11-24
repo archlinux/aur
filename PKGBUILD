@@ -2,16 +2,17 @@
 
 pkgname=lossless
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Bit-perfect music daemon for ALSA, with a CLI and a terminal UI'
 arch=('x86_64' 'aarch64')
 url='https://codeberg.org/comodino/lossless'
 license=('MIT')
 depends=('alsa-lib' 'gcc-libs' 'glibc')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 optdepends=('dbus: MPRIS media controls')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a909539f73f4e8c24f0bcb91109319d4f11342ee29534d77842a4095efdca534')
+source=("git+$url.git#tag=v$pkgver?signed")
+sha256sums=('39afcfb0f0e3e83e89dc4c3bb76fcb4e0fb835b09ee241fe9a7c36426613d763')
+validpgpkeys=('337E26D8DAE4DE178834A5F4EC00AAF65545F0B8') # comodino
 
 _features='lossless-daemon/mpris,lossless-tui/scripts'
 
