@@ -1,0 +1,28 @@
+pkgbase = python-k3zkutil
+	pkgdesc = Helper functions for ZooKeeper with kazoo
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/pykit3/k3zkutil
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	checkdepends = python-k3utdocker
+	checkdepends = python-k3thread
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-kazoo
+	depends = python-k3utfjson
+	depends = python-k3net
+	depends = python-k3txutil
+	depends = python-k3confloader
+	provides = python-k3zkutil
+	conflicts = python-k3zkutil
+	source = k3zkutil::git+https://github.com/pykit3/k3zkutil.git#tag=v0.1.9
+	sha256sums = d1a763e2ef7bfd5d8ddad81e14c821ba0753ea3f6367111392fe31300e0caee2
+
+pkgname = python-k3zkutil
