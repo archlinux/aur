@@ -1,0 +1,20 @@
+pkgbase = cliproxy-rs-bin
+	pkgdesc = Local endpoint to use DeepSeek, GLM, Kimi and OpenRouter models in Codex CLI and Claude Code
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/vayungodara/cliproxy-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = cliproxy-rs
+	conflicts = cliproxy-rs
+	options = !debug
+	source_x86_64 = cliproxy-rs-bin-0.4.5-x86_64.tar.gz::https://github.com/vayungodara/cliproxy-rs/releases/download/v0.4.5/cliproxy-0.4.5-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 683bc012b123c7759ba8f023c91bad63fdedd9e68b06ecc6b676e034ec0bfa7f
+	source_aarch64 = cliproxy-rs-bin-0.4.5-aarch64.tar.gz::https://github.com/vayungodara/cliproxy-rs/releases/download/v0.4.5/cliproxy-0.4.5-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0b317524ef836968c259b6fcb0c1f5a0a34e3420f9a7257037fbde90bb554cff
+
+pkgname = cliproxy-rs-bin
