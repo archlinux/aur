@@ -2,7 +2,7 @@
 
 pkgname=python-k3fs
 _name=${pkgname#python-}
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="File-system utilities for reading, writing, and directory operations"
 provides=(${pkgname})
@@ -31,7 +31,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('454906e8a8a69adeb03387beefffc2b0eb8f6a86d6dc7a69397575713763ace9')
+sha256sums=('b92389961de2a9e6fa3439953b5d565ed33105d70a1c59d5376c5f43e1550f91')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx

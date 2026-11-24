@@ -1,6 +1,6 @@
 pkgbase = python-k3fs
 	pkgdesc = File-system utilities for reading, writing, and directory operations
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/pykit3/k3fs
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-k3fs
 	depends = python-psutil
 	provides = python-k3fs
 	conflicts = python-k3fs
-	source = k3fs::git+https://github.com/pykit3/k3fs.git#tag=v0.2.3
-	sha256sums = 454906e8a8a69adeb03387beefffc2b0eb8f6a86d6dc7a69397575713763ace9
+	source = k3fs::git+https://github.com/pykit3/k3fs.git#tag=v0.2.4
+	sha256sums = b92389961de2a9e6fa3439953b5d565ed33105d70a1c59d5376c5f43e1550f91
 
 pkgname = python-k3fs
