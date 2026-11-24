@@ -1,0 +1,23 @@
+pkgbase = python-k3fmt
+	pkgdesc = Several string operation functions for formatting and manipulation
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/pykit3/k3fmt
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	checkdepends = python-k3proc
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-k3color
+	provides = python-k3fmt
+	conflicts = python-k3fmt
+	source = k3fmt::git+https://github.com/pykit3/k3fmt.git#tag=v0.1.7
+	sha256sums = c1fa527d6f79bf73c98e51445e92132ffbd3bd4c9fe837b771e2a1aa2fdcebd5
+
+pkgname = python-k3fmt
