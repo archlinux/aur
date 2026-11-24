@@ -1,12 +1,11 @@
 pkgbase = spinnaker-spin
 	pkgdesc = Command-line administration tool to manage Spinnaker applications, pipelines and configs
 	pkgver = 2026.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spinnaker/spinnaker/tree/main/spin
 	arch = x86_64
 	license = Apache-2.0
 	depends = glibc
-	provides = spin=2026.2.6
 	options = !strip
 	options = !debug
 	source = spin-2026.2.6-linux-amd64::https://storage.googleapis.com/spinnaker-artifacts/spin/2026.2.6/linux/amd64/spin
