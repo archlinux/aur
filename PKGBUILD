@@ -3,7 +3,7 @@
 pkgname=bioinformatics-mcp
 _pkgname=bioinformatics-mcp
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Independent MCP servers for bioinformatics data services"
 arch=('any')
 url="https://github.com/imjiaoyuan/$_pkgname"
@@ -12,16 +12,8 @@ depends=('python>=3.10' 'python-mcp>=2' 'python-mcp<3' 'python-httpx>=0.28.1' 'p
 makedepends=('python-build' 'python-installer' 'python-hatchling>=1.32' 'python-hatchling<2')
 checkdepends=('python-pytest')
 optdepends=('uv: generate client configurations that install on demand with uvx')
-source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        'validate-before-request.patch')
-sha256sums=('e0b04186397551ebe88282a392c7586f699852eddfdb48f02fd29c1fa482477f'
-            '7325d21b12a94b4dc255ed66804e8fa128e7373624c49b6f9674c89dacf52ddb')
-
-prepare() {
-    cd "$_pkgname-$pkgver"
-    # Reject invalid inputs before contacting providers (upstream regression tests).
-    patch -Np1 -i "$srcdir/validate-before-request.patch"
-}
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('399ff193df796d280a5264528f55348b7e5f8922bf56ba5784ec169acac3a757')
 
 build() {
     cd "$_pkgname-$pkgver"
