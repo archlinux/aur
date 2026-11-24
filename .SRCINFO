@@ -1,0 +1,21 @@
+pkgbase = claude-file-recovery
+	pkgdesc = Recover files created and modified by Claude Code from its session logs
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/hjtenklooster/claude-file-recovery
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-orjson
+	depends = python-rich
+	depends = python-textual
+	depends = python-typer
+	depends = python-yaml
+	source = https://files.pythonhosted.org/packages/source/c/claude_file_recovery/claude_file_recovery-0.2.0.tar.gz
+	sha256sums = 955211bb52994c127f0a23d13ef9183aa52527f2dc19a1930e792c18a25ddfd5
+
+pkgname = claude-file-recovery
