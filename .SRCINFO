@@ -1,0 +1,17 @@
+pkgbase = gcscope-bin
+	pkgdesc = Go garbage collector visualizer TUI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/timur-developer/gcscope
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gcscope
+	conflicts = gcscope
+	options = !debug
+	source_x86_64 = gcscope-bin-1.0.0-x86_64.tar.gz::https://github.com/timur-developer/gcscope/releases/download/v1.0.0/gcscope_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 77db69d8e98425bf47099c5886ad48a03095e54c222ec4e2070afff001366d3b
+	source_aarch64 = gcscope-bin-1.0.0-aarch64.tar.gz::https://github.com/timur-developer/gcscope/releases/download/v1.0.0/gcscope_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d07d05fdf6f8c98a72e965051ed04c589886acacd55b7a5150d86bc923449653
+
+pkgname = gcscope-bin
