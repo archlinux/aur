@@ -1,0 +1,17 @@
+pkgbase = tokui-bin
+	pkgdesc = Interactive TUI for visualizing code statistics from tokei
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/zdyxry/tokui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tokui
+	conflicts = tokui
+	options = !debug
+	source_x86_64 = tokui-bin-0.12.0-x86_64.tar.gz::https://github.com/zdyxry/tokui/releases/download/v0.12.0/tokui_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 320769010e07630a6bbe4f0b03650ef15f2a8541567526a49db66bbc36040f4b
+	source_aarch64 = tokui-bin-0.12.0-aarch64.tar.gz::https://github.com/zdyxry/tokui/releases/download/v0.12.0/tokui_linux_arm64.tar.gz
+	sha256sums_aarch64 = d8abefc92a4669c6156777a46c1446c9e04739180e340fa0e7f7bc9427c3ae05
+
+pkgname = tokui-bin
