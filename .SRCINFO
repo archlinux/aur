@@ -1,0 +1,17 @@
+pkgbase = drako-bin
+	pkgdesc = Grid-based command-deck launcher for the terminal
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/lucky7xz/drako
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = drako
+	conflicts = drako
+	options = !debug
+	source_x86_64 = drako-bin-0.4.3-x86_64.tar.gz::https://github.com/lucky7xz/drako/releases/download/v0.4.3/drako_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 7f143907844194610a9c33709bf2e9a969d4c55debb04e5090b8d38e20f6aff9
+	source_aarch64 = drako-bin-0.4.3-aarch64.tar.gz::https://github.com/lucky7xz/drako/releases/download/v0.4.3/drako_Linux_arm64.tar.gz
+	sha256sums_aarch64 = c023e43b306b7df81deb51333492db8ba2523bfb2fd89710ea9498654a4d5922
+
+pkgname = drako-bin
