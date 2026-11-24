@@ -8,7 +8,7 @@ arch=(any)
 url=https://github.com/vEnhance/borse
 license=(MIT)
 depends=(python python-tomli-w python-pyperclip)
-makedepends=(python-hatchling)
+makedepends=(python-build python-installer python-hatchling)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
   LICENSE)
 
