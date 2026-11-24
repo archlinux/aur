@@ -1,0 +1,21 @@
+pkgbase = uncomment-bin
+	pkgdesc = Remove comments from code in 300+ languages
+	pkgver = 3.12.1
+	pkgrel = 1
+	url = https://github.com/goldziher/uncomment
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = uncomment
+	conflicts = uncomment
+	options = !debug
+	source = uncomment-bin-3.12.1-LICENSE::https://raw.githubusercontent.com/goldziher/uncomment/v3.12.1/LICENSE
+	sha256sums = fbc71a32fa422bc4a06792e544a84608cb580c45ea4ca1fd5fca4512197dd7fe
+	source_x86_64 = uncomment-bin-3.12.1-x86_64.tar.gz::https://github.com/goldziher/uncomment/releases/download/v3.12.1/uncomment-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 67e89fcd7dd31273d8910944a0532ebb8b2aaa13cf7169849a39db862697e8b9
+	source_aarch64 = uncomment-bin-3.12.1-aarch64.tar.gz::https://github.com/goldziher/uncomment/releases/download/v3.12.1/uncomment-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = cbb5b32d4f0f5ec3a5a50ffdfc735003023132be19f5163c27ead679ac08f7cf
+
+pkgname = uncomment-bin
