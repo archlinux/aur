@@ -1,0 +1,21 @@
+pkgbase = python-k3pattern
+	pkgdesc = Find common prefix of strings, tuples, and nested structures
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/pykit3/k3pattern
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3pattern
+	conflicts = python-k3pattern
+	source = k3pattern::git+https://github.com/pykit3/k3pattern.git#tag=v0.1.7
+	sha256sums = 5b935eb7cfd2c91764e6513fcbfe6467626e9bfa5ef91bc1d6c4f6ce7ba870ff
+
+pkgname = python-k3pattern
