@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cpeditor-bin
 pkgver=7.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The IDE for competitive programming Fetch, Code, Compile, Run, Check, Submit."
 arch=('x86_64')
 url="https://cpeditor.org/"
@@ -11,15 +11,16 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
 depends=(
-    'qt5-base'
-    'libgpg-error'
+    'gtk3'
+    'qt6-base'
+    'qt6-5compat'
+    'qt6-declarative'
     'freetype2'
     'libx11'
-    'e2fsprogs'
     'fontconfig'
     'libglvnd'
     'libxcb'
-    'syntax-highlighting'
+    'icu73'
 )
 optdepends=(
     'cf-tool: submit to Codeforces'
@@ -34,7 +35,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c72ca965b3e9797334beb9024271395efb06f794e8ad9019e555e753aae1a00e'
-            '187af44879585688a89874e74896e13840b3bb8defc9190a16ff6962adae01eb')
+            '0995ecbfb6b721d08c61ff98c05501e4f74a5cee57c2c9a3864d0c7171ea2e82')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
@@ -49,5 +50,5 @@ package() {
     cp -a "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/usr/share/icons/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/icons/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
 }
