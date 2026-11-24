@@ -1,0 +1,18 @@
+pkgbase = chiko-bin
+	pkgdesc = gRPC client for the terminal
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/felangga/chiko
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = chiko
+	conflicts = chiko
+	options = !debug
+	source_x86_64 = chiko-bin-0.3.0-x86_64.tar.gz::https://github.com/felangga/chiko/releases/download/v0.3.0/chiko_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = af378779e2e643dc349a26f709436bc1e435dbe90ff7b39a9521b04215ba6964
+	source_aarch64 = chiko-bin-0.3.0-aarch64.tar.gz::https://github.com/felangga/chiko/releases/download/v0.3.0/chiko_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4b0af99fc967e77a3f85515a91742ba059fc69833e0759babeeff5f7d7f9b04c
+
+pkgname = chiko-bin
