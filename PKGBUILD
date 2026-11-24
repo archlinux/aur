@@ -3,7 +3,7 @@
 
 _pkgname=vgmtrans
 pkgname=${_pkgname}-git
-pkgver=r1550.b684e65
+pkgver=r1659.0762611
 pkgrel=1
 pkgdesc="Converter for sequenced videogame music"
 arch=("x86_64")
@@ -14,9 +14,11 @@ makedepends=("cmake" "git" "qt6-tools")
 source=("${_pkgname}::git+${url}"
         "git+https://github.com/fmtlib/fmt.git"
         "git+https://github.com/rtissera/libchdr.git"
+        "git+https://github.com/stdware/qwindowkit.git"
         "git+https://github.com/gabime/spdlog.git"
         "git+https://github.com/madler/zlib.git")
 sha256sums=("SKIP"
+            "SKIP"
             "SKIP"
             "SKIP"
             "SKIP"
@@ -27,7 +29,7 @@ prepare() {
 
 	# Setup the submodules
 	git submodule init
-	for module in fmt libchdr spdlog zlib; do
+	for module in fmt libchdr qwindowkit spdlog zlib; do
 		git config submodule.lib/"${module}".url "${srcdir}/${module}"
 		git -c protocol.file.allow=always submodule update lib/"${module}"
 	done
