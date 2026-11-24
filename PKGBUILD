@@ -9,7 +9,7 @@ arch=(any)
 url=https://github.com/vEnhance/von
 license=(MPL-2.0)
 depends=(python python-pyperclip python-yaml)
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
+makedepends=('python-build' 'python-installer' 'python-hatchling')
 optdepends=(
   'fzf: for fuzzy finding'
   'texlive-latex: for LaTeX support'

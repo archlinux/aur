@@ -7,7 +7,6 @@ pkgbase = python-vondb
 	license = MPL-2.0
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = python-hatchling
 	depends = python
 	depends = python-pyperclip
