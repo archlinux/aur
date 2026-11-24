@@ -193,18 +193,18 @@ index c141ea2..2805b17 100644
      In an interactive terminal the web UI opens in your browser once it
      answers. Use --no-open to skip that, --no-ui to start only the API server.
 diff --git a/packages/cli/src/repowise/cli/providers/vector_store.py b/packages/cli/src/repowise/cli/providers/vector_store.py
-index ac92903..a091c5a 100644
+index 1513692..291307d 100644
 --- a/packages/cli/src/repowise/cli/providers/vector_store.py
 +++ b/packages/cli/src/repowise/cli/providers/vector_store.py
-@@ -72,7 +72,7 @@ def embed_failure_message(embedder: str | None, embed_failed_pages: int) -> str
-     return (
+@@ -78,7 +78,7 @@ def embed_failure_message(embedder: str | None, embed_failed_pages: int) -> str
          f"Embedding failed for {embed_failed_pages} page(s), so semantic search is "
          "unavailable (full-text search still works). Fix the cause in the warning "
--        "above (for a broken LanceDB install: pip install --force-reinstall lancedb), "
-+        "above (for a broken LanceDB install, rebuild/reinstall the repowise AUR package), "
-         "then run: repowise reindex"
+         "above, then run: repowise reindex. Only when that warning names LanceDB "
+-        "as missing or broken: pip install --force-reinstall lancedb"
++        "as missing or broken: reinstall the repowise AUR package"
      )
- 
+
+
 diff --git a/packages/cli/src/repowise/cli/uninstall/inventory.py b/packages/cli/src/repowise/cli/uninstall/inventory.py
 index 447d22a..b1a947f 100644
 --- a/packages/cli/src/repowise/cli/uninstall/inventory.py
