@@ -1,0 +1,20 @@
+pkgbase = tstrip-bin
+	pkgdesc = Scrollable-tiling terminal multiplexer inspired by niri
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/dip-bash/tstrip
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = tstrip
+	conflicts = tstrip
+	options = !debug
+	source = tstrip-bin-0.5.1-LICENSE::https://raw.githubusercontent.com/dip-bash/tstrip/0.5.1/LICENSE
+	sha256sums = f22b3e59f84b7afee6e1341a2f8e0d928ff685c7111e78a2ff4e30ce501d2209
+	source_x86_64 = tstrip-bin-0.5.1-x86_64::https://github.com/dip-bash/tstrip/releases/download/0.5.1/tstrip-linux-x86_64
+	sha256sums_x86_64 = 97846bf4f1684372574ff3750c597c2a19a307caa5f94990104b1e7a2ab06e2b
+	source_aarch64 = tstrip-bin-0.5.1-aarch64::https://github.com/dip-bash/tstrip/releases/download/0.5.1/tstrip-linux-aarch64
+	sha256sums_aarch64 = 154e26fda42ef9dd4aff96c70fbcbdeb847c15ff99489e5cb378ed1b671d8b3e
+
+pkgname = tstrip-bin
