@@ -1,0 +1,17 @@
+pkgbase = pythonlings
+	pkgdesc = Rustlings-style Python exercises in a terminal UI
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/abhiksark/pythonlings
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-textual
+	source = https://files.pythonhosted.org/packages/source/p/pythonlings/pythonlings-0.4.4.tar.gz
+	sha256sums = be8a1ebb321fb4da6ca41b1c580a690b7b9ea26e3bbfc93068e4569427e9d785
+
+pkgname = pythonlings
