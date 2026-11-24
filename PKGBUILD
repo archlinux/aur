@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=mcp-grafana
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='MCP server for Grafana'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 install=mcp-grafana.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('90857dbd58efe2da1453ebbd56f85d3dab45dd9fc2942a0ea231cd81ad7fa659')
+sha256sums=('265b3541b97ec173c35bff992cab040aa4d1225279cb96dbb608dbc8182f6844')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
