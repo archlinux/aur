@@ -1,18 +1,19 @@
 # Maintainer: Rudy Matela <rudy@matela.com.br>
 # Contributor: Rudy Matela <rudy@matela.com.br>
+# Contributor: Joel Niemelä
 pkgname=kattis-problemtools
-pkgver=1.20260620
-pkgrel=2
+pkgver=1.20260907
+pkgrel=1
 pkgdesc="Tools to manage problem packages using the Kattis problem package format"
 arch=('x86_64')
 url="https://github.com/Kattis/problemtools"
 license=('MIT')
-depends=('python' 'python-yaml' 'python-unidecode' 'python-colorlog' 'python-nh3' 'python-pydantic' 'pandoc' 'gmp' 'plastex' 'ghostscript' 'texlive-fontsrecommended' 'texlive-langcyrillic' 'texlive-latexextra' 'texlive-plaingeneric' 'texlive-luatex' 'tidy' 'pdf2svg')
-makedepends=('git' 'make' 'boost' 'python-setuptools')
+depends=('python' 'python-yaml' 'python-unidecode' 'python-colorlog' 'python-nh3' 'python-pydantic' 'python-checktestdata' 'pandoc' 'plastex' 'ghostscript' 'texlive-fontsrecommended' 'texlive-langcyrillic' 'texlive-latexextra' 'texlive-plaingeneric' 'texlive-luatex' 'tidy' 'pdf2svg')
+makedepends=('make' 'python-setuptools' 'python-setuptools-scm')
 checkdepends=('python-pytest')
 provides=('problem2html'  'problem2pdf'  'verifyproblem')
 source=("https://pypi.org/packages/source/p/problemtools/problemtools-${pkgver}.tar.gz")
-sha256sums=('6324b13b4f6076b636b5790f2d90f80b26cfbc850f5bdf03aa2d04fb065375bc')
+sha256sums=('55f19b6a72ef5cb07daf0a4e612be963a15e7972891a3afb0fff89244b6228c6')
 
 build() {
 	cd "problemtools-$pkgver"
@@ -20,11 +21,10 @@ build() {
 	python3 setup.py build
 }
 
-# Failing as of v1.20260620
-# check() {
-# 	cd "problemtools-$pkgver"
-# 	PYTHONPATH=. pytest
-# }
+check() {
+	cd "problemtools-$pkgver"
+	PYTHONPATH=. pytest
+}
 
 package() {
 	cd "problemtools-$pkgver"
