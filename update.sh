@@ -285,6 +285,19 @@ else
 	warn "已跳过构建验证（--no-build）"
 fi
 
+# makepkg 把每次构建的 .pkg.tar.zst 留在当前目录，只保留最新一个，防止无限膨胀
+shopt -s nullglob
+zst_files=(*.pkg.tar.zst)
+if ((${#zst_files[@]} > 1)); then
+	keep=$(ls -1t -- "${zst_files[@]}" | head -n1)
+	for f in "${zst_files[@]}"; do
+		[[ $f == "$keep" ]] && continue
+		rm -f -- "$f"
+	done
+	log "已清理旧构建包，仅保留 ${keep}"
+fi
+shopt -u nullglob
+
 # ---------------------------------------------------------------- 提交并推送
 
 if ! git rev-parse --git-dir >/dev/null 2>&1; then
