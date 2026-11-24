@@ -2,7 +2,7 @@
 
 pkgname=python-k3stopwatch
 _name=${pkgname#python-}
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Hierarchical timing measurement with aggregated and tracing reports"
 provides=(${pkgname})
@@ -26,7 +26,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('6b5644740bcfe7c6718bb51f920f6b8197b5a78dea0b77a2776ef9c788b28eda')
+sha256sums=('263dc64af2f1a26af55201bc2ceb7707c4aa62855b99fb59d6a3ff2b95f31b04')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
