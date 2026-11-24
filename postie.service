@@ -6,6 +6,7 @@ After=network.target
 Type=simple
 User=postie
 Group=postie
+Environment=POSTIE_FRONTEND_DIR=/var/lib/postie/frontend
 ExecStart=/usr/bin/postie-web -p 8080
 Restart=on-failure
 
