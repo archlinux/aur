@@ -4,7 +4,7 @@ pkgver=0.0.0.8665570
 pkgrel=1
 pkgdesc='A USB based keys manager which integrates with PAM and SSH.'
 arch=('pentium4' 'x86_64')
-url='https://codeberg.org/ivan.zaera/peter'
+url='https://codeberg.org/ivan-zaera/peter'
 license=('GPL-3.0-or-later')
 depends=(
 	'bash'
