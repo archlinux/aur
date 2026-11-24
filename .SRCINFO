@@ -1,0 +1,18 @@
+pkgbase = perch-tui-bin
+	pkgdesc = Jump back into recent Claude Code and Codex projects from a TUI
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/baoyudu/perch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = perch-tui
+	conflicts = perch-tui
+	conflicts = perch-bin
+	options = !debug
+	source_x86_64 = perch-tui-bin-0.8.0-x86_64.tar.gz::https://github.com/baoyudu/perch/releases/download/v0.8.0/perch_0.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = de6878cc70ab954e4036b731a697019b7738099975ad2cb1e88c07ee2406f1f9
+	source_aarch64 = perch-tui-bin-0.8.0-aarch64.tar.gz::https://github.com/baoyudu/perch/releases/download/v0.8.0/perch_0.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 907beab3ce38a4df4a40dae596f0967226300d32452ea4fd0021f79ac0b16a63
+
+pkgname = perch-tui-bin
