@@ -1,0 +1,17 @@
+pkgbase = kanban-md-bin
+	pkgdesc = File-based kanban board for agent loops, with a CLI and TUI
+	pkgver = 0.39.0
+	pkgrel = 1
+	url = https://github.com/antopolskiy/kanban-md
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kanban-md
+	conflicts = kanban-md
+	options = !debug
+	source_x86_64 = kanban-md-bin-0.39.0-x86_64.tar.gz::https://github.com/antopolskiy/kanban-md/releases/download/v0.39.0/kanban-md_0.39.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6c3e49c1f4383faeda8d49e93f186e6302f1b33258f544345f7ad43d9e10b403
+	source_aarch64 = kanban-md-bin-0.39.0-aarch64.tar.gz::https://github.com/antopolskiy/kanban-md/releases/download/v0.39.0/kanban-md_0.39.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 886a4258b0925b3f0dec2ecd8262679717a0d59184c38a629601158db6e93fbb
+
+pkgname = kanban-md-bin
