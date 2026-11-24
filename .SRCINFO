@@ -1,0 +1,21 @@
+pkgbase = python-k3mime
+	pkgdesc = MIME type detection by filename
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/pykit3/k3mime
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3mime
+	conflicts = python-k3mime
+	source = k3mime::git+https://github.com/pykit3/k3mime.git#tag=v0.1.9
+	sha256sums = 631c66e4ee7d9af116e7b5d8ef0b795783583746559cf9081a4997cd9c70585c
+
+pkgname = python-k3mime
