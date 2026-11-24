@@ -5,19 +5,27 @@ set -e
 LOCALEGEN=/etc/locale.gen
 LOCALES=/usr/share/i18n/locales
 LOCALES_OVERRIDES=/usr/local/share/i18n/locales
+LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+LOCALE_ARCHIVE_BUILD_DIR="$LOCALE_ARCHIVE.build"
+LOCALE_ARCHIVE_BUILD="${LOCALE_ARCHIVE_BUILD_DIR}${LOCALE_ARCHIVE}"
 
 if [ -n "$POSIXLY_CORRECT" ]; then
   unset POSIXLY_CORRECT
 fi
 
-
 [ -f $LOCALEGEN -a -s $LOCALEGEN ] || exit 0;
 
-# Remove all old locale dir and locale-archive before generating new
-# locale data.
-rm -rf /usr/lib/locale/locale-archive || true
-
 umask 022
+
+# Cleanup on exit
+trap 'rm -rf "$LOCALE_ARCHIVE_BUILD_DIR"' EXIT
+trap 'exit 129' HUP
+trap 'exit 130' INT
+trap 'exit 143' TERM
+
+# And cleanup before starting
+rm -rf "$LOCALE_ARCHIVE_BUILD_DIR"
+mkdir -p "$(dirname "$LOCALE_ARCHIVE_BUILD")"
 
 is_entry_ok() {
   if [ -z "$locale" ] || [ -z "$charset" ]; then
@@ -57,7 +65,14 @@ while read -r locale charset; do
     fi
   fi
 
-  localedef -i "$input" -c -f "$charset" -A /usr/share/locale/locale.alias "$locale" || :
+  localedef --prefix="$LOCALE_ARCHIVE_BUILD_DIR" -i "$input" -c -f "$charset" -A /usr/share/locale/locale.alias "$locale" || :
   echo ' done'
 done < $LOCALEGEN
+
+if [ -f "$LOCALE_ARCHIVE_BUILD" ]; then
+  mv -f "$LOCALE_ARCHIVE_BUILD" "$LOCALE_ARCHIVE"
+else
+  rm -f "$LOCALE_ARCHIVE"
+fi
+
 echo "Generation complete."

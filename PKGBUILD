@@ -1,4 +1,4 @@
-# Maintainer: Based on core/glibc, synced on 2026-09-29
+# Maintainer: Based on core/glibc, synced on 2026-11-24
 export LDFLAGS+=" -Wl,--hash-style=both"
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->glibc->binutils->gcc
@@ -6,8 +6,8 @@ export LDFLAGS+=" -Wl,--hash-style=both"
 
 pkgbase=glibc-eac
 pkgname=(glibc-eac lib32-glibc-eac)
-pkgver=2.44+r50+g1848099f063e
-_commit=1848099f063e99d4ffecbd7667766d54862398b9
+pkgver=2.44+r83+g625054f30f0e
+_commit=625054f30f0e7a961519f045f2364aa3ca6c1c6b
 pkgrel=1
 arch=(x86_64 aarch64)
 url='https://www.gnu.org/software/libc'
@@ -44,9 +44,9 @@ source=(
 )
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
-b2sums=('91eb837659e2ced59a06cff6050d897cc28dc8467e05514db28b0ad6c4dbbe6d0ec0cd77024da016c4e6b0fc2b013fa8cb4d1eb78aab3e0fd44328050a0e6f46'
+b2sums=('b33b1273630230ec9c9572472a8522f6277a432bbe52edcca59280a72e12612250b7043b588c4951fc1f6e7ccf4b7c0d33c5e1ca7468b15c60b8eb9e406905b9'
         'c859bf2dfd361754c9e3bbd89f10de31f8e81fd95dc67b77d10cb44e23834b096ba3caa65fbc1bd655a8696c6450dfd5a096c476b3abf5c7e125123f97ae1a72'
-        'bdc313a77d7158768b06864fdee6419b25f9eda5b942a394713bf61e289a37993d003c779761be4a70d9febeee2377ba2912f459e879801e3d80f4d0550a2592'
+        '940a50410c60d07ee9d391f1f40ef58c56211a76053b6688b6c9a207f4458a0810bbd47216e9347f3b3c1c05d446c0f441f398811cfd7c7b09e876d072913cd1'
         '7c265e6d36a5c0dff127093580827d15519b6c7205c2e1300e82f0fb5b9dd00b6accb40c56581f18179c4fbbc95bd2bf1b900ace867a83accde0969f7b609f8a'
         'a6a5e2f2a627cc0d13d11a82458cfd0aa75ec1c5a3c7647e5d5a3bb1d4c0770887a3909bfda1236803d5bc9801bfd6251e13483e9adf797e4725332cd0d91a0e'
         '214e995e84b342fe7b2a7704ce011b7c7fc74c2971f98eeb3b4e677b99c860addc0a7d91b8dc0f0b8be7537782ee331999e02ba48f4ccc1c331b60f27d715678'
