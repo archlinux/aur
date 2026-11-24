@@ -1,0 +1,17 @@
+pkgbase = service-bus-tui-bin
+	pkgdesc = TUI explorer for Azure Service Bus
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/MonsieurTib/service-bus-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = service-bus-tui
+	conflicts = service-bus-tui
+	options = !debug
+	source_x86_64 = service-bus-tui-bin-1.7.0-x86_64.tar.gz::https://github.com/MonsieurTib/service-bus-tui/releases/download/v1.7.0/service-bus-tui_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 2eeedd4b3b5db01b96fbc00a032105ab060d86903733e6ac0ed35231cb588f63
+	source_aarch64 = service-bus-tui-bin-1.7.0-aarch64.tar.gz::https://github.com/MonsieurTib/service-bus-tui/releases/download/v1.7.0/service-bus-tui_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d8eaba715d12602a6e6e7a39ecb2c5ea86a9b1fc16f38095dc8a99ddc0cf98fa
+
+pkgname = service-bus-tui-bin
