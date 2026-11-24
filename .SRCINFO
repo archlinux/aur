@@ -1,0 +1,23 @@
+pkgbase = python-k3net
+	pkgdesc = Network utilities for IP address detection and classification
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/pykit3/k3net
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-netifaces
+	depends = python-yaml
+	provides = python-k3net
+	conflicts = python-k3net
+	source = k3net::git+https://github.com/pykit3/k3net.git#tag=v0.1.8
+	sha256sums = a3ccfe55490713747328912e6c686e722858ffad0eed6db8d5b9a75ea846718c
+
+pkgname = python-k3net
