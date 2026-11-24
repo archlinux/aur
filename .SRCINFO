@@ -1,0 +1,22 @@
+pkgbase = python-k3utdocker
+	pkgdesc = Docker client utilities for unit testing
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/pykit3/k3utdocker
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-docker
+	depends = python-k3ut
+	provides = python-k3utdocker
+	conflicts = python-k3utdocker
+	source = k3utdocker::git+https://github.com/pykit3/k3utdocker.git#tag=v0.1.7
+	sha256sums = 07cb27423aab538e31597e2163cf11f6ccd4181a8ce09433fb4cc2dce47e5b9d
+
+pkgname = python-k3utdocker
