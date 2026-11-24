@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=nsh-cli-bin
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Build and run nsh apps (prebuilt binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/longbridge/nsh'
