@@ -1,0 +1,18 @@
+pkgbase = aizen-bin
+	pkgdesc = AI coding agent for your PC or VPS that you can control from your phone
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/talmetis-labs/aizen
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = aizen
+	conflicts = aizen
+	options = !debug
+	source = aizen-bin-0.7.4-LICENSE::https://raw.githubusercontent.com/talmetis-labs/aizen/v0.7.4/LICENSE
+	sha256sums = e8d93eb072eb517dc7ecedc269fbfb84a10301ade2aad173ef5280f74ab1e8e5
+	source_x86_64 = aizen-bin-0.7.4-x86_64::https://github.com/talmetis-labs/aizen/releases/download/v0.7.4/aizen-v0.7.4-linux-x86_64
+	sha256sums_x86_64 = 8141128e9895b7ed803de5e95882154103b5c0685db8ed90ca4d99d3c0b1c5b1
+
+pkgname = aizen-bin
