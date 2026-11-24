@@ -1,13 +1,15 @@
 # Maintainer: Shaun Lastra <shaun@lastra.us>
 
-# Two packages from one build: hoja, and the thumbnailer for 3D printing files.
-# The thumbnailer is a package of its own because it is not a part of hoja.
-# hoja finds it as it finds every other thumbnailer, and other file managers
-# use it too.
+# Three packages from one build: hoja, the thumbnailer for 3D printing files,
+# and the desktop portal backend that makes hoja the file picker. The two are
+# packages of their own because they are not a part of hoja. hoja finds the
+# thumbnailer as it finds every other thumbnailer, and other file managers use
+# it too. The portal backend starts `hoja --pick`, and the portal uses it only
+# when the user's portals.conf names it.
 pkgbase=hoja-git
-pkgname=(hoja-git hoja-model-thumbnailer-git)
+pkgname=(hoja-git hoja-model-thumbnailer-git hoja-portal-git)
 _pkgname=hoja
-pkgver=r245.073131f
+pkgver=r253.9e0646b
 pkgrel=1
 pkgdesc='GPU-accelerated file manager with splittable panes, built on GPUI'
 arch=('x86_64')
@@ -37,6 +39,7 @@ depends=(
 # papers are one choice each, and totem, gst-thumbnailers or evince do as well.
 optdepends=(
   'hoja-model-thumbnailer-git: pictures of STL, 3MF and G-code files'
+  'hoja-portal-git: hoja as the file picker of other applications'
   'git: colour file names by version control status'
   'xdg-utils: open files with their default application'
   'wl-clipboard: copy and paste files with other applications'
@@ -81,22 +84,26 @@ build() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # `hoja --version` prints it, so a bug report names the commit.
+  export HOJA_REVISION="$pkgver"
   # No --all-features: neither crate declares any, so it does nothing today and
   # would silently opt in to whichever one gets added first.
   # Not the whole workspace: hoja-drag and hoja-transfer are libraries that
   # hoja links, and a plain `cargo build` at the root builds hoja alone.
-  cargo build --frozen --release -p hoja -p hoja-model-thumbnailer
+  cargo build --frozen --release -p hoja -p hoja-model-thumbnailer -p hoja-portal
 }
 
 check() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
+  # The same as build(), or cargo builds hoja again for the tests.
+  export HOJA_REVISION="$pkgver"
   # Only the application's own tests. The transfer engine's suite deliberately
   # straddles two filesystems — it puts one directory under CARGO_TARGET_TMPDIR
   # and another under /tmp to force EXDEV and exercise the copy fallback — so it
   # asserts something about the machine it runs on, not about the code, and
   # fails where a build root has both on the same filesystem.
-  cargo test --frozen --release -p hoja -p hoja-model-thumbnailer
+  cargo test --frozen --release -p hoja -p hoja-model-thumbnailer -p hoja-portal
 }
 
 package_hoja-git() {
@@ -119,5 +126,21 @@ package_hoja-model-thumbnailer-git() {
     "$pkgdir/usr/bin/hoja-model-thumbnailer"
   install -Dm644 packaging/hoja-model.thumbnailer \
     "$pkgdir/usr/share/thumbnailers/hoja-model.thumbnailer"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_hoja-portal-git() {
+  pkgdesc='Desktop portal backend that opens files with hoja'
+  depends=('hoja-git' 'xdg-desktop-portal' 'glibc' 'libgcc')
+  # Save dialogs go on to the GTK backend until hoja has its own.
+  optdepends=('xdg-desktop-portal-gtk: save dialogs')
+  provides=('hoja-portal')
+  conflicts=('hoja-portal')
+  cd "$_pkgname"
+  install -Dm755 target/release/hoja-portal "$pkgdir/usr/lib/hoja-portal"
+  install -Dm644 packaging/hoja.portal \
+    "$pkgdir/usr/share/xdg-desktop-portal/portals/hoja.portal"
+  install -Dm644 packaging/org.freedesktop.impl.portal.desktop.hoja.service \
+    "$pkgdir/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.hoja.service"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
