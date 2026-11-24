@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=structToolbox
-_pkgver=1.20.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Data processing & analysis tools for Metabolomics and other omics'
 arch=('any')
@@ -14,6 +14,9 @@ depends=(
   r-ggplot2
   r-ggthemes
   r-gridextra
+  r-httr
+  r-jsonlite
+  r-limma
   r-scales
   r-sp
   r-struct
@@ -42,7 +45,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b751dc2cde21615733b43fd4988b418962e9b89e2744125de02160a3065fc0f3')
+sha256sums=('38a33d774f091ead02220b9f8df995847324ffdd4d651cfc706bef3369853cd7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
