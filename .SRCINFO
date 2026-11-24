@@ -1,0 +1,20 @@
+pkgbase = pingtop-py
+	pkgdesc = Ping multiple servers and show results in a top-like TUI
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/laixintao/pingtop
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-click
+	depends = python-textual
+	conflicts = pingtop
+	conflicts = pingtop-bin
+	source = pingtop-py-0.5.1.tar.gz::https://github.com/laixintao/pingtop/archive/v0.5.1.tar.gz
+	sha256sums = 6cdfcd71c7f306a8ac47d273fa866b144655a5de8640d39a4d2b20e367b70b79
+
+pkgname = pingtop-py
