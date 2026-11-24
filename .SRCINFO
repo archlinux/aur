@@ -1,0 +1,16 @@
+pkgbase = herdr-file-viewer-bin
+	pkgdesc = Git-aware read-only file viewer for herdr
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://github.com/smarzban/herdr-file-viewer
+	arch = x86_64
+	license = MIT
+	provides = herdr-file-viewer
+	conflicts = herdr-file-viewer
+	options = !debug
+	source = herdr-file-viewer-bin-1.18.0-LICENSE::https://raw.githubusercontent.com/smarzban/herdr-file-viewer/v1.18.0/LICENSE
+	sha256sums = bd3074a1f3334de588ab22f748cbe5976faab1f66fdac58dd8e964c9f4a5a79a
+	source_x86_64 = herdr-file-viewer-bin-1.18.0-x86_64::https://github.com/smarzban/herdr-file-viewer/releases/download/v1.18.0/herdr-file-viewer-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = d87efee98e07f65daf3162d30c8cc5a5efeb6a8c992b7a9933a7cf5367e33186
+
+pkgname = herdr-file-viewer-bin
