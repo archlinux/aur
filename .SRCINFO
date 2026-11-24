@@ -1,6 +1,6 @@
 pkgbase = quadrahq-git
 	pkgdesc = Bootstrapper for the macOS Roblox client on Linux through Rosemary
-	pkgver = 0.50.4.r24.geb0eb15
+	pkgver = 0.51.0.r0.gcbc456d
 	pkgrel = 4
 	url = https://quadrahq.org
 	arch = x86_64
