@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=nsh-cli-bin
 pkgver=0.6.1
-pkgrel=7
+pkgrel=8
 pkgdesc='Build and run nsh apps (prebuilt binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/longbridge/nsh'
@@ -56,6 +56,12 @@ package() {
 
   # Install TUI host binary from extracted runtime
   install -Dm755 "$pkgdir/usr/lib/nsh/runtime/tui/nsh-tui-host" "$pkgdir/usr/bin/nsh-tui-host"
+
+  # Install component record files so nsh CLI detects installed components
+  install -dm755 "$pkgdir/usr/components"
+  bsdtar -xf "$srcdir/$gpui" --strip-components=2 -C "$pkgdir/usr/components" nsh/components/gpui.json 2>/dev/null || :
+  bsdtar -xf "$srcdir/$tui" --strip-components=2 -C "$pkgdir/usr/components" nsh/components/tui.json 2>/dev/null || :
+  bsdtar -xf "$srcdir/nsh-web-$pkgver.tar.gz" --strip-components=2 -C "$pkgdir/usr/components" nsh/components/web.json 2>/dev/null || :
 
   install -Dm644 "$srcdir/nsh-LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 }

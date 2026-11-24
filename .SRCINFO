@@ -1,7 +1,7 @@
 pkgbase = nsh-cli-bin
 	pkgdesc = Build and run nsh apps (prebuilt binary)
 	pkgver = 0.6.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/longbridge/nsh
 	install = nsh-cli-bin.install
 	arch = x86_64
