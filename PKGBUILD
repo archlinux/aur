@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.4.9
+pkgver=0.4.10
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults: Hornero Signal themes, compositor, terminal, GTK/Qt, fonts, XDG handlers"
 arch=('any')
@@ -65,7 +65,7 @@ optdepends=(
 # AUR chroot builds identical to local packaging/ builds.
 install=hornero-config.install
 backup=('etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf')
-source=("config::git+https://github.com/HorneroOS/config.git#commit=034c6266cae42664b9209c3135f7627cc0cc5801")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=59dfd26e2e65eeac66b53fcfc299df034e3a6c8b")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -350,6 +350,12 @@ package() {
     "$pkgdir/usr/share/ghostty/themes" \
     -type f -exec chmod 644 {} +
   chmod 755 "$pkgdir"/usr/share/hornero/bin/hornero-*
+
+  # Packaged user seeding for install-on-Arch adoption: seeds only
+  # files missing from an existing account (never overwrites), which
+  # is what horneroctl config materialize resolves on packaged installs.
+  install -Dm755 "$repo_root/scripts/seed-user.sh" \
+    "$pkgdir/usr/share/hornero/seed-user.sh"
 
   # Ship the license alongside the payload for offline inspection.
   install -Dm644 "$repo_root/LICENSE" \
