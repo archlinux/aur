@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ITALICS
-_pkgver=2.66.0
+_pkgver=2.72.0
 pkgname=r-${_pkgname,,}
-pkgver=2.66.0
+pkgver=2.72.0
 pkgrel=1
 pkgdesc='ITALICS'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-pd.mapping50k.hind240
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e1fe5c40494beebde84b3a1e69737b986ee325e62e7892a1861044e9c0c57ef3')
+sha256sums=('0c6a83a4241c6b11f7decb673490c9ae0a16f8356dbb1abefc09f2de5de4e967')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
