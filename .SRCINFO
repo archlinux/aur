@@ -1,16 +1,15 @@
 pkgbase = dockit-bin
 	pkgdesc = Agentic desktop GUI client for Elasticsearch, OpenSearch, DynamoDB, MongoDB & EasySearch. Natural language queries, visual management, and monitoring. Privacy-first. Open source.
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://www.geekfun.club/products/dockit/
 	arch = x86_64
 	license = Apache-2.0
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	depends = openssl-3
-	provides = dockit=2.0.3
+	provides = dockit=2.0.4
 	conflicts = dockit
-	source = dockit-2.0.3.rpm::https://github.com/geek-fun/dockit/releases/download/v2.0.3/DocKit-2.0.3-1.x86_64.rpm
-	sha256sums = ea653ac0370f43149fe70ce329045f6486dc29e4a5239d5be954db6f8d01196a
+	source = dockit-2.0.4.rpm::https://github.com/geek-fun/dockit/releases/download/v2.0.4/DocKit-2.0.4-1.x86_64.rpm
+	sha256sums = b58f5336844145cba647ebc9befce6c9f6973ad05453b2a89f4051b5f6820d77
 
 pkgname = dockit-bin

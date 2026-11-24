@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dockit-bin
 _pkgname=DocKit
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Agentic desktop GUI client for Elasticsearch, OpenSearch, DynamoDB, MongoDB & EasySearch. Natural language queries, visual management, and monitoring. Privacy-first. Open source."
 arch=('x86_64')
@@ -13,10 +13,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     'gtk3'
     'webkit2gtk-4.1'
-    'openssl-3'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('ea653ac0370f43149fe70ce329045f6486dc29e4a5239d5be954db6f8d01196a')
+sha256sums=('b58f5336844145cba647ebc9befce6c9f6973ad05453b2a89f4051b5f6820d77')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
