@@ -1,0 +1,20 @@
+pkgbase = g-systemctl-bin
+	pkgdesc = Terminal UI to manage systemd services and Docker containers
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/shakg/g-systemctl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = g-systemctl
+	conflicts = g-systemctl
+	options = !debug
+	source = g-systemctl-bin-2.6.0-LICENSE::https://raw.githubusercontent.com/shakg/g-systemctl/v2.6.0/LICENSE
+	sha256sums = 61244454d99d69f3e09a94b6d5fcbd6bd1eee9b3dfa39c5f191439679ceba5d5
+	source_x86_64 = g-systemctl-bin-2.6.0-x86_64.tar.gz::https://github.com/shakg/g-systemctl/releases/download/v2.6.0/g-systemctl-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 35d5e4a1a95946e323f5f343c1434b05a373cc45d81077d78a180c954995bd80
+	source_aarch64 = g-systemctl-bin-2.6.0-aarch64.tar.gz::https://github.com/shakg/g-systemctl/releases/download/v2.6.0/g-systemctl-linux-aarch64.tar.gz
+	sha256sums_aarch64 = bc7b24c6363c646815135d48d04d85a0573a3e34d4d389fa3a9357c3f0cbd84c
+
+pkgname = g-systemctl-bin
