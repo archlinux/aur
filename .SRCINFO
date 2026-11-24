@@ -1,6 +1,6 @@
 pkgbase = chromedriver
 	pkgdesc = Standalone server that implements the W3C WebDriver standard (for google-chrome)
-	pkgver = 158.0.8127.36
+	pkgver = 158.0.8127.88
 	pkgrel = 1
 	url = https://chromedriver.chromium.org/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = chromedriver
 	depends = xdg-utils
 	optdepends = google-chrome
 	conflicts = chromium
-	source = chromedriver_158.0.8127.36_linux64.zip::https://storage.googleapis.com/chrome-for-testing-public/158.0.8127.36/linux64/chromedriver-linux64.zip
-	sha512sums = 9dd838b204ef1eabeff5da0cd27271cbb96d0450f1100506774e062f4aa18b2dc7c4421a1415f684a93d3935e421bc7097989e308f9997b650041a78ff64f966
+	source = chromedriver_158.0.8127.88_linux64.zip::https://storage.googleapis.com/chrome-for-testing-public/158.0.8127.88/linux64/chromedriver-linux64.zip
+	sha512sums = abbd495e0102a22d39d2d9ef55e41f8f757c5346772b4980d1169d8b4b76b6c56658197134a4497682cba0b643dbc1b0b858f649ba991269b041a84daff42bbb
 
 pkgname = chromedriver
