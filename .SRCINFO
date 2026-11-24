@@ -1,0 +1,14 @@
+pkgbase = cosmo
+	pkgdesc = Real-time PostgreSQL health and query monitoring TUI
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/mujib77/cosmo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = cosmo-0.3.0.tar.gz::https://github.com/mujib77/cosmo/archive/v0.3.0.tar.gz
+	sha256sums = f1c4759f1a0cb12e06be3064734eab31cc1928c69b7a7435de0074e6a92eb294
+
+pkgname = cosmo
