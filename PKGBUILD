@@ -2,7 +2,7 @@
 
 pkgname=python-k3time
 _name=${pkgname#python-}
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="Time conversion utilities for parsing and formatting timestamps"
 provides=(${pkgname})
@@ -28,7 +28,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('0267354a72e7fb4c34603b091c9e849a540ba8cf513592b9469db0d6ba9a3a86')
+sha256sums=('9ffe5070d1873bbaddc743ab9210dbf622a0ea955569bdd952eb3d660439d8fc')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
