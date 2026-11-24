@@ -1,0 +1,25 @@
+pkgbase = python-k3etcd
+	pkgdesc = Python client for the etcd v2 API, for etcd server 2.3.x to 3.5.x
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/pykit3/k3etcd
+	arch = any
+	license = MIT
+	checkdepends = python-trustme
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	checkdepends = python-k3utdocker
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-k3http
+	depends = python-k3utfjson
+	provides = python-k3etcd
+	conflicts = python-k3etcd
+	source = k3etcd::git+https://github.com/pykit3/k3etcd.git#tag=v0.2.2
+	sha256sums = 216d83820bae3ed3649e32bf00fe300f6e857c9f2b5a85787d0ba31455668faf
+
+pkgname = python-k3etcd
