@@ -1,0 +1,15 @@
+pkgbase = agtop-ts
+	pkgdesc = top-style TUI for monitoring AI coding agent sessions
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/ldegio/agtop
+	arch = any
+	license = GPL-2.0-only
+	makedepends = npm
+	depends = nodejs
+	conflicts = agtop
+	noextract = agtop-ts-0.6.1.tgz
+	source = agtop-ts-0.6.1.tgz::https://registry.npmjs.org/@ldegio/agtop/-/agtop-0.6.1.tgz
+	sha256sums = 45515d7532be3721e4804b3fa921f6f4ff7dc95304378649e2b97f42ed045367
+
+pkgname = agtop-ts
