@@ -1,0 +1,18 @@
+pkgbase = mediafire_rs-bin
+	pkgdesc = Downloads files and folders from MediaFire (prebuilt)
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/NicKoehler/mediafire_rs
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = mediafire_rs=0.2.3
+	conflicts = mediafire_rs
+	source = mdrs-0.2.3-LICENSE::https://raw.githubusercontent.com/NicKoehler/mediafire_rs/v0.2.3/LICENSE
+	sha256sums = 944e7851267d83951e7f2249b633786f93bf6c6e6198efaa30742fc30ee561a2
+	source_x86_64 = mdrs-0.2.3-linux-x64.tar.gz::https://github.com/NicKoehler/mediafire_rs/releases/download/v0.2.3/mdrs-linux-x64.tar.gz
+	sha256sums_x86_64 = 3307f025bca4add4ffcc68437b198514dc40a0394bc90b51eddbb4c8e6f7339f
+
+pkgname = mediafire_rs-bin
