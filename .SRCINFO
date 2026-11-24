@@ -1,0 +1,18 @@
+pkgbase = giga-grabber-bin
+	pkgdesc = Fast Mega downloader
+	pkgver = 1.3.6
+	pkgrel = 1
+	url = https://github.com/chanderlud/giga-grabber
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = giga-grabber
+	conflicts = giga-grabber
+	options = !debug
+	source = giga-grabber-bin-1.3.6-LICENSE::https://raw.githubusercontent.com/chanderlud/giga-grabber/v1.3.6/LICENSE
+	sha256sums = 11da3e56f183654bf4add0932b07b33afa854b5d1d479bb794ff4dc878fa11ad
+	source_x86_64 = giga-grabber-bin-1.3.6-x86_64::https://github.com/chanderlud/giga-grabber/releases/download/v1.3.6/giga-grabber-1.3.6-linux-standalone-x86_64
+	sha256sums_x86_64 = bfec4c78688255ebabf45381405c47b67d17b9f6a3a79eec988af561467c346b
+
+pkgname = giga-grabber-bin
