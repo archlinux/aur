@@ -4,7 +4,7 @@ _appname=gusco
 pkgname=${_appname}-bin
 pkgdesc="An opinionated, orthodox file manager distilled from Commanders past, written in pure Go"
 
-pkgver=1.9.4
+pkgver=1.10.0
 pkgrel=1
 
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::https://gitlab.com/intestinate/gusco/-/releases/v${pkgver}/downloads/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::https://gitlab.com/intestinate/gusco/-/releases/v${pkgver}/downloads/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('c94085a3bf79f8a57890e878b84a9558de8837421ed5022c52386992ee241039')
-sha256sums_aarch64=('e175f90f1c51f839d8d877cd00063395bcdf75205a412d128c4981525c1de0ed')
+sha256sums_x86_64=('def089a01b0f7dc9bdda8890411f291b5feec198c555680cca127e16fa328bed')
+sha256sums_aarch64=('ffc07e9a28a6979dc88ce5368cf4413df99b92725a67bf10405022ccc108a49c')
 
 
 case ${CARCH} in
