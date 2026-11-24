@@ -1,0 +1,19 @@
+pkgbase = gitmoji-cli-bin
+	pkgdesc = Interactive gitmoji commit tool
+	pkgver = 9.7.0
+	pkgrel = 1
+	url = https://github.com/carloscuesta/gitmoji-cli
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = gitmoji-cli
+	conflicts = gitmoji-cli
+	options = !debug
+	source = gitmoji-cli-bin-9.7.0-LICENSE::https://raw.githubusercontent.com/carloscuesta/gitmoji-cli/v9.7.0/LICENSE
+	sha256sums = 463f3ada26f78ec3b566ce12fa09982e60e5f8c06e6e8dec1f32b559c4f4d5a6
+	source_x86_64 = gitmoji-cli-bin-9.7.0-x86_64::https://github.com/carloscuesta/gitmoji-cli/releases/download/v9.7.0/gitmoji-linux
+	sha256sums_x86_64 = db0051ef085b3230d3bf9140be567fadb63bf776503e6780180c904e6ddfcba6
+
+pkgname = gitmoji-cli-bin
