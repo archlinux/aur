@@ -1,0 +1,21 @@
+# Shown by pacman after installing or upgrading decaf.
+
+_decaf_group_hint() {
+    cat <<'MSG'
+==> decaf suspends past sleep locks held by your own programs, which needs
+    your password unless you are in the 'decaf' group. To let a timer suspend
+    while nobody is there:  sudo usermod -aG decaf "$USER"
+    See 'man decaf' (PERMISSIONS).
+MSG
+}
+
+post_install() {
+    _decaf_group_hint
+}
+
+post_upgrade() {
+    # The group first came with 2.3.0.
+    if (($(vercmp "$2" 2.3.0) < 0)); then
+        _decaf_group_hint
+    fi
+}
