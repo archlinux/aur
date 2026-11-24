@@ -1,0 +1,18 @@
+pkgbase = abacus-tui-bin
+	pkgdesc = Interactive terminal UI for visualizing and navigating Beads issue tracking projects
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/ChrisEdwards/abacus
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = abacus-tui
+	conflicts = abacus-tui
+	conflicts = abacus-git
+	options = !debug
+	source_x86_64 = abacus-tui-bin-0.12.0-x86_64.tar.gz::https://github.com/ChrisEdwards/abacus/releases/download/v0.12.0/abacus_0.12.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 66e1b6740a4e47e278f6bfa53dc13ad27eaa81f390944e478beb8f76e9c44835
+	source_aarch64 = abacus-tui-bin-0.12.0-aarch64.tar.gz::https://github.com/ChrisEdwards/abacus/releases/download/v0.12.0/abacus_0.12.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0aa5c244ca7d6d55ba4b85d877f1c77f4b0cd3b638d15e1135f988908e5c953c
+
+pkgname = abacus-tui-bin
