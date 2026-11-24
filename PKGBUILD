@@ -3,8 +3,9 @@
 # and fill in the checksum with `updpkgsums`.
 
 pkgname=sharky-shell-git
-pkgver=4.0.0_alpha.2.r408.gc38c086
+pkgver=0.1.0_alpha.1.r1.g2f8eceb
 pkgrel=1
+epoch=1
 pkgdesc="Unix-first interactive shell written in Rust (alpha)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mafuzyk/sharky-shell"
@@ -18,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd sharky-shell
-  printf '4.0.0_alpha.2.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf '0.1.0_alpha.1.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
