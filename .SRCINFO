@@ -1,7 +1,7 @@
 pkgbase = hashline
 	pkgdesc = Hash-anchored line editing for AI coding agents — O(1) line addressing via content-hashed anchors and drift-safe surgical patches
-	pkgver = 0.9.24
-	pkgrel = 2
+	pkgver = 0.9.26
+	pkgrel = 1
 	url = https://github.com/quangdang46/hashline
 	arch = x86_64
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = hashline
 	depends = libgcc
 	conflicts = hashline-bin
 	options = !lto
-	source = hashline-0.9.24.tar.gz::https://github.com/quangdang46/hashline/archive/refs/tags/v0.9.24.tar.gz
-	source = LICENSE-0.9.24::https://raw.githubusercontent.com/quangdang46/hashline/v0.9.24/LICENSE
-	sha256sums = 46474cafe9281e305603f5b75659c3c98832645893bfa610d699f492c5ea7197
+	source = hashline-0.9.26.tar.gz::https://github.com/quangdang46/hashline/archive/refs/tags/v0.9.26.tar.gz
+	source = LICENSE-0.9.26::https://raw.githubusercontent.com/quangdang46/hashline/v0.9.26/LICENSE
+	sha256sums = 7df4abbccfad832a0de41261e61ef319c82da4d872a5d01b591e80c94b8060e5
 	sha256sums = ebb5e71bc9cf9a2b324d71576d646d2f69d613672dc12fca3b7ecc0f040596d7
 
 pkgname = hashline
