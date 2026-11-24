@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=agentero-desktop-bin
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="Unified research workspace for humans and agents: PDF question answering with citations, a vault for research material and writing tools"
 arch=('x86_64' 'aarch64')
@@ -30,8 +30,8 @@ source=("LICENSE-${pkgver}::${url}/raw/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${_deb_x86_64}::${_releases}/${_deb_x86_64}")
 source_aarch64=("${_deb_aarch64}::${_releases}/${_deb_aarch64}")
 sha256sums=('f2b7f0cc6fb11f63654ac171d46640de6a8f63407a1a9fa77181a5c43a841fcf')
-sha256sums_x86_64=('bb2a583159b4cb278ec01b19a9ad3841a7217e0399cc0c07b4366e9ecd47295c')
-sha256sums_aarch64=('777f0208fc08aac2c2395d90200b09f9ad316f8511f7620d47b01e475ab66c54')
+sha256sums_x86_64=('93711d2d9d300803bc436b11b13acdb360d0e018cd18e269965d4da6a1cd73f8')
+sha256sums_aarch64=('cde827c72a2f0129f28a537278c3051238659bbc78fd6627b98e6693e0303eee')
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
 
 package() {
