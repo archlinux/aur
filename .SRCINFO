@@ -1,0 +1,18 @@
+pkgbase = trophy-tui-bin
+	pkgdesc = 3D model viewer for the terminal
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/taigrr/trophy
+	arch = x86_64
+	arch = aarch64
+	license = 0BSD
+	provides = trophy-tui
+	conflicts = trophy-tui
+	conflicts = trophy
+	options = !debug
+	source_x86_64 = trophy-tui-bin-1.4.1-x86_64.tar.gz::https://github.com/taigrr/trophy/releases/download/v1.4.1/trophy_1.4.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 67d7bb32e6d979b3f92ab510ea67cdb942ac770a0db6636b8729e5ab52f5a07e
+	source_aarch64 = trophy-tui-bin-1.4.1-aarch64.tar.gz::https://github.com/taigrr/trophy/releases/download/v1.4.1/trophy_1.4.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = e2180797e9c2444ca4a62d20bdb190077675ed3f92da988f460a2467071d3da5
+
+pkgname = trophy-tui-bin
