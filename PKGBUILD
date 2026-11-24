@@ -2,7 +2,7 @@
 
 pkgname=bettbox-compatible-bin
 _pkgname=Bettbox
-pkgver=1.19.10
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core. (Build with GOAMD64=v1)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ source_x86_64=(
 )
 sha256sums=('03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2'
             'c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b')
-sha256sums_x86_64=('dae6d7f9df670f0b44c9d7fbd9158907cb0963202b98aa0427753cb81336f3c3')
+sha256sums_x86_64=('9e4c3fbd46abd62f61adb2450635de79fa10ee68efd39325737621366db4bb0e')
 install=bettbox.install
 
 prepare() {
