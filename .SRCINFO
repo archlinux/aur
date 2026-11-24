@@ -1,0 +1,18 @@
+pkgbase = claude-swap
+	pkgdesc = Switch between Claude Code accounts with rate-limit rotation and a usage dashboard
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/realiti4/claude-swap
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-textual
+	depends = python-truststore
+	source = https://files.pythonhosted.org/packages/source/c/claude_swap/claude_swap-1.2.0.tar.gz
+	sha256sums = e338e2d3a715a58cca86a1c3f571854ee0f946e8dc1dc4b292e72afb406ccaf1
+
+pkgname = claude-swap
