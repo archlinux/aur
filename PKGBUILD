@@ -1,7 +1,7 @@
 # Maintainer: mzwing <mzwing@mzwing.eu.org>
 
 pkgname=latchshot
-_pkgver=0.3.0
+_pkgver=0.4.0
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc='A lightweight yet intelligent window-aware screenshot tool for Wayland'
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('cargo')
 depends=('gcc-libs' 'glibc' 'libxkbcommon' 'wayland' 'wl-clipboard')
 source=("$pkgname-$_pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=('ef0208ea76d5a637c66afd431fed8cc3dfbba0605363dddf9943f7c15b9a20ef')
+sha256sums=('8a0aebef68bef8be2a099b00d740a8f73e940532e8375152581b97484741ba99')
 
 prepare() {
     cd "$pkgname-$_pkgver"
