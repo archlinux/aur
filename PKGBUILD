@@ -5,7 +5,7 @@
 
 pkgname=niri-tracker-git
 _pkgname=niri-tracker
-pkgver=0.1.6.r61.g4df29ed
+pkgver=0.1.7.r67.gd2cc982
 pkgrel=1
 pkgdesc="Screen time tracking for the niri Wayland compositor"
 arch=('x86_64' 'aarch64')
