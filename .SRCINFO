@@ -1,0 +1,27 @@
+pkgbase = bo-music
+	pkgdesc = A modern Fluent-style music player
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/lyj404/bo-music
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libx11
+	depends = fontconfig
+	depends = vulkan-icd-loader
+	depends = libsecret
+	depends = mpv
+	depends = dbus
+	optdepends = libpulse: parec command for audio spectrum visualization
+	conflicts = bo_music
+	replaces = bo_music
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/lyj404/bo-music/releases/download/v0.0.4/bo-music_0.0.4_linux_x64.tar.gz
+	sha256sums_x86_64 = a31f8ecad1e4f4558304a72ae76a1951e2d52a00fcd564cc828115af82149533
+
+pkgname = bo-music
