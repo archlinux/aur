@@ -1,0 +1,16 @@
+pkgbase = sharing
+	pkgdesc = Share directories and files to phones over the local network with a QR code
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/parvardegr/sharing
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = libx11
+	depends = nodejs
+	noextract = sharing-1.4.0.tgz
+	source = sharing-1.4.0.tgz::https://registry.npmjs.org/easy-sharing/-/easy-sharing-1.4.0.tgz
+	sha256sums = 842337c147d271ac46a976a60b5927e1302d418d375a30680e0ccd81820c7a78
+
+pkgname = sharing
