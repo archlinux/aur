@@ -1,0 +1,22 @@
+pkgbase = httptap-py
+	pkgdesc = Break HTTP requests into DNS, connect, TLS, wait and transfer phases with waterfall timelines
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/ozeranskii/httptap
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-uv-build
+	depends = python
+	depends = python-argcomplete
+	depends = python-cryptography
+	depends = python-httpcore
+	depends = python-httpx
+	depends = python-rich
+	conflicts = httptap-bin
+	source = https://files.pythonhosted.org/packages/source/h/httptap/httptap-0.8.2.tar.gz
+	sha256sums = d28d5333c1f65b985895ce88b87ef9a90cfbdf73ab36b9c50e55fa161e5aeec3
+
+pkgname = httptap-py
