@@ -2,8 +2,8 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 
 pkgname=aqualung
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc="High quality music player with gapless support"
 arch=(x86_64 i686)
 url="https://github.com/jeremyevans/aqualung"
@@ -47,15 +47,13 @@ depends=(
     )
 makedepends=(git)
 source=("git+https://github.com/jeremyevans/aqualung.git#tag=${pkgver}"
-        "aqualung-avcodec.patch::https://github.com/jeremyevans/aqualung/commit/d830ac5898412280ea02faebe82509a8129dac59.patch"
         aqualung.desktop)
-sha256sums=('1f56f79ebeebf56ac16f87974f3979f7e12f8c04536bb75d6f84164aeaeeb3f7'
-            '2b6dbc8ea87c0b06705d9974ae6400d3b3d7926b4562c7a3f26aa38e4d30dafc'
+sha256sums=('4becb27eb0a07add472fe1796857b275527056a7d4d29bc02630d1cf47853a0b'
             '4d2aba2924b7c0bacbd377a6975f1cdbf09dc67a5d61c36bf2d52bddbab1b3b9')
 
 prepare() {
   cd "aqualung"
-  patch -Np1 -i ../aqualung-avcodec.patch
+  #patch -Np1 -i ../aqualung-avcodec.patch
 
   ./autogen.sh
 }
