@@ -2,17 +2,45 @@
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=icewm-git
-pkgver=3.9.0.r56.gd0bf414
+pkgver=4.1.0.r17.g9b5bec1
 pkgrel=1
 pkgdesc="A window manager designed for speed, usability, and consistency"
 arch=(x86_64 i686)
 url="https://github.com/bbidulock/icewm"
 license=(LGPL-2.0-only)
+depends=(
+  alsa-lib
+  fribidi
+  glibc
+  imlib2
+  libgcc
+  libice
+  #libjpeg-turbo
+  libsm
+  libsndfile
+  libstdc++
+  libx11
+  libxcomposite
+  libxcursor
+  libxdamage
+  libxext
+  libxfixes
+  libxft
+  libxinerama
+  #libxpm
+  libxrandr
+  libxrender
+  perl
+  sh
+  )
+makedepends=(
+  asciidoctor
+  git
+  xorg-mkfontdir
+  )
+optdepends=('icewm-extra-themes: extra themes')
 provides=(icewm icewm2)
 conflicts=(icewm icewm2)
-depends=(libxft libxinerama libxpm libjpeg libxrandr libsndfile fribidi libxcomposite libxcursor libxdamage libxfixes imlib2)
-makedepends=(git xorg-mkfontdir asciidoctor)
-optdepends=('icewm-extra-themes: extra themes')
 source=("git+https://github.com/bbidulock/icewm.git")
 sha256sums=('SKIP')
 
