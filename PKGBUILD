@@ -1,7 +1,7 @@
 # Maintainer: Lloyd <lloydzhou@qq.com>
 
 pkgname=oapi
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="OpenAPI command-line client written in Rust"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ options=('!lto')
 provides=('oapi')
 conflicts=('oapi-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lloydzhou/oapi/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('571b08ec26bc3acbbb647bb9000d7b2e1b8a1fa8bf53821ae62b9f4d87d9ce66')
+sha256sums=('d88ee6734c9c9f153665dba42daf06b337efec455399f243727ded15d71e3751')
 
 prepare() {
   cd "$pkgname-$pkgver"
