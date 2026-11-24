@@ -2,14 +2,14 @@
 
 pkgname=wild-git
 pkgver=0.11.0.r204.gc1cba811
-pkgrel=3
+pkgrel=4
 pkgdesc="A linker with the goal of being very fast for iterative development"
 arch=('i686' 'x86_64')
 url="https://github.com/wild-linker/wild"
 license=('Apache-2.0' 'MIT')
-depends=('glibc' 'libgcc' 'zstd')
-makedepends=('git' 'cargo')
-checkdepends=('clang' 'lld' 'rust-musl' 'taplo-cli' 'wabt' 'wasi-libc' 'wasm-tools' 'wasmtime')
+depends=('glibc' 'libgcc' libzstd.so)
+makedepends=('git' 'cargo' 'zstd')
+#checkdepends=('clang' 'lld' 'rust-musl' 'taplo-cli' 'wabt' 'wasi-libc' 'wasm-tools' 'wasmtime')
 provides=("wild=$pkgver")
 conflicts=('wild')
 options=('!lto')
