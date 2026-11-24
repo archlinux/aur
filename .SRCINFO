@@ -1,0 +1,20 @@
+pkgbase = hash-bin
+	pkgdesc = POSIX shell that can drive AI coding agents over ACP
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/tfcace/hash
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = hash
+	conflicts = hash
+	options = !debug
+	source = hash-bin-0.11.0-LICENSE::https://raw.githubusercontent.com/tfcace/hash/v0.11.0/LICENSE
+	sha256sums = 0f0b97729bf7e2fc97c9b7e26a83fa1b469c3b8361bf157896d7e18d0d1ceca1
+	source_x86_64 = hash-bin-0.11.0-x86_64.tar.gz::https://github.com/tfcace/hash/releases/download/v0.11.0/hash_v0.11.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4c922c7d4f3148b772c41580222fee1b3a08b9def55fd158e0e534d16e293a30
+	source_aarch64 = hash-bin-0.11.0-aarch64.tar.gz::https://github.com/tfcace/hash/releases/download/v0.11.0/hash_v0.11.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a3e97ecfa4d8dbf8dcdd9631d5d52e920e9792ff428958ea053e172a9571691e
+
+pkgname = hash-bin
