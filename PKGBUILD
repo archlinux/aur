@@ -8,13 +8,13 @@
 
 pkgname=chirp-next
 pkgver=20261120
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="GUI tool for programming ham radios"
 arch=('any')
 url="https://chirpmyradio.com/projects/chirp/wiki/Home"
 license=('GPL-3.0-or-later')
-depends=('python-pyserial' 'python-requests' 'python-suds'
+depends=('python' 'python-pyserial' 'python-requests' 'python-suds'
          'python-yattag' 'python-wxpython' 'python-lark-parser')
 optdepends=(
         'hamradio-menus: XDG menus for ham radio software'
@@ -26,10 +26,40 @@ conflicts=('chirp' 'chirp-daily' 'chirp-next-bin')
 provides=(chirp)
 install=$pkgname.install
 source=("https://github.com/GaryScottMartin/chirp-next-mirror/releases/download/${pkgver}/chirp-${pkgver}.tar.gz")
-# Checksums: https://github.com/GaryScottMartin/chirp-next-mirror/releases/download/20260814/checksums.txt
+# SHA256 verified against the upstream release SHA256SUM.
 sha256sums=('4cc34e141382289d87857d80c43176f23abd9dc3b463c3596ce85a8dcf5f7c45')
-# User-Agent override workaround for nitpicky Cloudflare config; see:
-# https://wiki.archlinux.org/title/Nonfree_applications_package_guidelines#Custom_DLAGENTS
+
+prepare() {
+    cd "chirp-${pkgver}"
+
+    # Restrict setuptools package discovery to the CHIRP namespace.
+    # Prevent installation of development tests into site-packages/tests,
+    # which conflicts with other Python applications (e.g. displaycal).
+    python - <<'PY'
+import pathlib
+import tomllib
+
+path = pathlib.Path("pyproject.toml")
+content = path.read_text()
+config = tomllib.loads(content)
+
+find = config["tool"]["setuptools"]["packages"]["find"]
+
+if find.get("include") == ["chirp", "chirp.*"]:
+    print("CHIRP package discovery already restricted upstream.")
+elif "include" in find or "exclude" in find:
+    raise SystemExit("Upstream package discovery changed; review PKGBUILD.")
+else:
+    header = "[tool.setuptools.packages.find]"
+    if content.count(header) != 1:
+        raise SystemExit("Unexpected setuptools configuration.")
+    path.write_text(content.replace(
+        header,
+        header + "\ninclude = ['chirp', 'chirp.*']",
+        1,
+    ))
+PY
+}
 
 build() {
     cd "chirp-${pkgver}"

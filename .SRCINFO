@@ -1,7 +1,7 @@
 pkgbase = chirp-next
 	pkgdesc = GUI tool for programming ham radios
 	pkgver = 20261120
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://chirpmyradio.com/projects/chirp/wiki/Home
 	install = chirp-next.install
@@ -11,6 +11,7 @@ pkgbase = chirp-next
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	depends = python
 	depends = python-pyserial
 	depends = python-requests
 	depends = python-suds
