@@ -1,0 +1,18 @@
+pkgbase = ttype-tui-bin
+	pkgdesc = Typing test for the terminal
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/alirezaudev/ttype
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ttype-tui
+	conflicts = ttype-tui
+	conflicts = ttype
+	options = !debug
+	source_x86_64 = ttype-tui-bin-1.3.2-x86_64.tar.gz::https://github.com/alirezaudev/ttype/releases/download/v1.3.2/ttype_1.3.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8f23dde63e06bc4c19280fe462ff7df6a76a2da57b2a0e7944f8ac62394e971a
+	source_aarch64 = ttype-tui-bin-1.3.2-aarch64.tar.gz::https://github.com/alirezaudev/ttype/releases/download/v1.3.2/ttype_1.3.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 43da954108f99ef0130792f742a82f1d9840d57af0403a49c798639f70c2b87b
+
+pkgname = ttype-tui-bin
