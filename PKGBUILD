@@ -1,5 +1,5 @@
 pkgname=fixplay-diagnosetool
-pkgver=0.4.6
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Cross-platform diagnostic tool for gaming consoles"
 arch=('x86_64')
