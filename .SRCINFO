@@ -1,6 +1,6 @@
 pkgbase = rustgis
 	pkgdesc = open-source GIS in pure Rust for mapping, analyzing and sharing geospatial data
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://rustgis.app/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = rustgis
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = https://github.com/opengeos/RustGIS/archive/refs/tags/v0.7.0/RustGIS-0.7.0.tar.gz
-	sha256sums = 429b90b73de859b024d117a3a5c9c8afaf8c4d242318227ca8372d1438511558
+	source = https://github.com/opengeos/RustGIS/archive/refs/tags/v0.8.0/RustGIS-0.8.0.tar.gz
+	sha256sums = b4b70573438992a11236ceca0da59988287f85b7dd698bfb34ed699855b6965a
 
 pkgname = rustgis
 	depends = glibc
