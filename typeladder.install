@@ -1,0 +1,31 @@
+post_install() {
+    echo ""
+    echo "==> typeladder installed. Start:"
+    echo ""
+    echo "    typeladder            # an adaptive typing test; the first run downloads Monkeytype's"
+    echo "                          #   word lists (about 600 KB) and works with no config at all"
+    echo "    typeladder vocab      # what it knows about each word, your level and goal"
+    echo "    typeladder where      # the folders in use"
+    echo ""
+    echo "==> Where things live (change with TYPELADDER_CONFIG_DIR / _DATA_DIR / _STATE_DIR):"
+    echo "    config:        \${XDG_CONFIG_HOME:-~/.config}/typeladder/config.toml  (optional)"
+    echo "    dictionaries:  \${XDG_CONFIG_HOME:-~/.config}/typeladder/dictionaries/  (optional)"
+    echo "    word lists:    \${XDG_DATA_HOME:-~/.local/share}/typeladder"
+    echo "    your progress: \${XDG_STATE_HOME:-~/.local/state}/typeladder  (vocab.json, history.jsonl)"
+    echo ""
+    echo "==> Coming from lyk practice?  typeladder import --from-lyk --dry-run"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> typeladder upgraded. Your vocab.json is read as it is; nothing to migrate."
+    echo ""
+}
+
+pre_remove() {
+    echo ""
+    echo "==> Removing typeladder leaves your files alone. Delete them yourself if you want them gone:"
+    echo "    rm -r \${XDG_CONFIG_HOME:-~/.config}/typeladder \${XDG_DATA_HOME:-~/.local/share}/typeladder \${XDG_STATE_HOME:-~/.local/state}/typeladder"
+    echo ""
+}
