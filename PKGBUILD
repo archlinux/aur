@@ -1,7 +1,7 @@
-# Contributor: nVjhNFGQWoBQEthk <nVjhNFGQWoBQEthk>
+# Contributor: nVjhNFGQWoBQEthk
 
 pkgname=mdbook-pandoc
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A mdbook backend powered by Pandoc."
 url="https://github.com/max-heller/mdbook-pandoc"
@@ -11,7 +11,7 @@ depends=(glibc gcc-libs pandoc mdbook)
 makedepends=(rust cargo)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('fccd4f16656dbbadefdc34129ac4ef464fc8d8b2de8f93d9dbafe43019fc062a')
+sha256sums=('f6e3811b9b5a2cee67c9d6224e0293ab3548cdeaf7f18116b2a1ee417bfb9bfc')
 
 build() {
   cd mdbook-pandoc-$pkgver

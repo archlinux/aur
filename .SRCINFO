@@ -1,6 +1,6 @@
 pkgbase = mdbook-pandoc
 	pkgdesc = A mdbook backend powered by Pandoc.
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/max-heller/mdbook-pandoc
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mdbook-pandoc
 	depends = pandoc
 	depends = mdbook
 	options = !lto
-	source = mdbook-pandoc-0.11.0.tar.gz::https://github.com/max-heller/mdbook-pandoc/archive/v0.11.0.tar.gz
-	sha256sums = fccd4f16656dbbadefdc34129ac4ef464fc8d8b2de8f93d9dbafe43019fc062a
+	source = mdbook-pandoc-0.11.1.tar.gz::https://github.com/max-heller/mdbook-pandoc/archive/v0.11.1.tar.gz
+	sha256sums = f6e3811b9b5a2cee67c9d6224e0293ab3548cdeaf7f18116b2a1ee417bfb9bfc
 
 pkgname = mdbook-pandoc
