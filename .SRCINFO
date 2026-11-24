@@ -1,0 +1,17 @@
+pkgbase = devtui-bin
+	pkgdesc = Collection of developer tools in one TUI
+	pkgver = 0.35.0
+	pkgrel = 1
+	url = https://github.com/skatkov/devtui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = devtui
+	conflicts = devtui
+	options = !debug
+	source_x86_64 = devtui-bin-0.35.0-x86_64.tar.gz::https://github.com/skatkov/devtui/releases/download/v0.35.0/devtui_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 99eadcb23838c4c018d793753e8d56536c27e3daafa0a10e94b38d68a94c16af
+	source_aarch64 = devtui-bin-0.35.0-aarch64.tar.gz::https://github.com/skatkov/devtui/releases/download/v0.35.0/devtui_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 0b7f3f300c3f1fd15f50dd73033413c70e2666110fae777b9233b82dc39b31c0
+
+pkgname = devtui-bin
