@@ -2,7 +2,7 @@
 
 pkgname=python-k3priorityqueue
 _name=${pkgname#python-}
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Priority queue with weighted producer support"
 provides=(${pkgname})
@@ -28,7 +28,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('a8b4180405b0f7fbce10bc8834b4f0946834d28c62bed4e7b470428d81c11388')
+sha256sums=('3e03f685fa4e313625c6a6cd12a1787fb9734e87da879f337eb480c6bcc2affb')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
