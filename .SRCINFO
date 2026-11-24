@@ -1,0 +1,18 @@
+pkgbase = threat-finder-bin
+	pkgdesc = Find CVEs in services running on a host
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/offseq/threat-finder
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = threat-finder
+	conflicts = threat-finder
+	options = !debug
+	source_x86_64 = threat-finder-bin-0.4.2-x86_64.tar.gz::https://github.com/offseq/threat-finder/releases/download/v0.4.2/threat-finder-v0.4.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 20713bc89bb070b4c2b2f4b8032124df42922c9b14df842e9d031e95e51af759
+	source_aarch64 = threat-finder-bin-0.4.2-aarch64.tar.gz::https://github.com/offseq/threat-finder/releases/download/v0.4.2/threat-finder-v0.4.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 080922258f0883239c52bad9412a19bcddf7a19e8a7088a96e71ab92393f7736
+
+pkgname = threat-finder-bin
