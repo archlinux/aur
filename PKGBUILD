@@ -2,7 +2,7 @@
 _appname=xiaohongshu
 pkgname="${_appname}-pake"
 _pkgname=XiaoHongShu
-pkgver=3.20.0
+pkgver=3.21.0
 pkgrel=1
 pkgdesc="Use Pake to package XiaoHongShu.小红书 App,是年轻人的生活方式社区,每月有超过2亿人在这里分享生活经验,发现真实、美好、多元的世界,找到想要的生活 。"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${pkgver}/LICENSE"
 )
-sha256sums=('4d3fc32b821434a2cdc39355f1663ebfab7d44ea20a13e01f3a8296a65b0e973'
+sha256sums=('1ff8aedebdf028bf0492fa5e8badd5515a88f7bbef9025ce8bf24068ca82c4b5'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
