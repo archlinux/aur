@@ -1,7 +1,7 @@
 pkgbase = akhenaten-git
 	pkgdesc = Open source engine for Pharaoh and Cleopatra
 	pkgver = 0.2.9.ra0.29.r211.g790ee246a
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/dalerank/Akhenaten
 	arch = x86_64
@@ -32,6 +32,6 @@ pkgbase = akhenaten-git
 	source = system-deps.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = df45904df29abe7715eefda67b266f735170e73c775ff8b46abf305597f95cc5
+	sha256sums = 2173a93c433a729914d786b47fcfac526de7f9ad99e022997cfcd06707f20343
 
 pkgname = akhenaten-git

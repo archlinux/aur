@@ -180,6 +180,21 @@ index e4918d7e2..418af156a 100644
      locale_determine_language();
      anti_scum_set_clock_reseed(!g_args.is_integral_tests());
  
+diff --git a/src/building/monument_mausoleum.cpp b/src/building/monument_mausoleum.cpp
+index 4e330a516..4296c80e6 100644
+--- a/src/building/monument_mausoleum.cpp
++++ b/src/building/monument_mausoleum.cpp
+@@ -782,7 +782,9 @@ void building_mausoleum::finish_all() {
+     walk_parts(m, [](building_mausoleum *p) {
+         auto &d = p->runtime_data();
+         d.phase = MONUMENT_FINISHED;
+-        d.part_stage = (p->part_kind() < MAUSOLEUM_KIND_GROUND_FIRST) ? MAUSOLEUM_BLOCK_FULL : MAUSOLEUM_GROUND_FINISHED;
++        d.part_stage = (p->part_kind() < MAUSOLEUM_KIND_GROUND_FIRST)
++            ? static_cast<uint16_t>(MAUSOLEUM_BLOCK_FULL)
++            : static_cast<uint16_t>(MAUSOLEUM_GROUND_FINISHED);
+         p->clear_worker_figure();
+         return false;
+     });
 diff --git a/src/content/dir.cpp b/src/content/dir.cpp
 index 4d5f6d6b8..782937799 100644
 --- a/src/content/dir.cpp
@@ -388,7 +403,7 @@ index 8f81485a7..ec6d38ed3 100644
      d.frame++;
      if (d.frame < 0 || d.frame >= frames) {
 diff --git a/src/js/test/js_test_monuments.cpp b/src/js/test/js_test_monuments.cpp
-index e8ac1c86b..edd64186e 100644
+index e8ac1c86b..d7f52a2eb 100644
 --- a/src/js/test/js_test_monuments.cpp
 +++ b/src/js/test/js_test_monuments.cpp
 @@ -361,7 +361,8 @@ static int __test_pyramid_park_waiting_mason(int bid, int fid) {
@@ -401,6 +416,16 @@ index e8ac1c86b..edd64186e 100644
      return frontier[0];
  }
  ANK_FUNCTION_2(__test_pyramid_park_waiting_mason);
+@@ -874,7 +875,8 @@ static int __test_royal_tomb_work(int fid, int max_ticks) {
+         if (tomb->work_tick(*f)) {
+             tomb->remove_worker(fid);
+             f->action_state
+-              = (f->type == FIGURE_STONEMASON) ? ACTION_6_MASON_RETURN_HOME : ACTION_16_TOMB_ARTISAN_RETURN_HOME;
++              = (f->type == FIGURE_STONEMASON) ? static_cast<int>(ACTION_6_MASON_RETURN_HOME)
++                                                : static_cast<int>(ACTION_16_TOMB_ARTISAN_RETURN_HOME);
+             return i;
+         }
+     }
 diff --git a/src/lame/libmp3lame/quantize.c b/src/lame/libmp3lame/quantize.c
 index 731221028..59f8cf88b 100644
 --- a/src/lame/libmp3lame/quantize.c

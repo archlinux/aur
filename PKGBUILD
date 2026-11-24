@@ -1,7 +1,7 @@
 # Maintainer: Paulo Fino <somepaulo>
 pkgname=akhenaten-git
 pkgver=0.2.9.ra0.29.r211.g790ee246a
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Open source engine for Pharaoh and Cleopatra'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("${pkgname}::git+${url}.git#branch=master"
         'system-deps.patch')
 sha256sums=('SKIP'
             'SKIP'
-            'df45904df29abe7715eefda67b266f735170e73c775ff8b46abf305597f95cc5')
+            '2173a93c433a729914d786b47fcfac526de7f9ad99e022997cfcd06707f20343')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
