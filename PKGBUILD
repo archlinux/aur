@@ -2,7 +2,7 @@
 
 pkgname=ffxiv-teamcraft
 pkgdesc="Collaborative crafting tool for Final Fantasy XIV"
-pkgver=11.4.32
+pkgver=11.4.34
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
@@ -12,7 +12,7 @@ source=(
     ffxiv-teamcraft
     FFXIV-Teamcraft.desktop
 )
-sha1sums=('bbc1059e6c3ea8425e5040255cfcff7ad0a91379'
+sha1sums=('23a2c120dc9a5c2f09cf0afc90d0b6b71137b73f'
           'de5f54a1a89d7a3fa22234349a64f0ce0f3d458e'
           '20530d0dcf352ebe04e9e8afe6973957a05f7a58')
 install=ffxiv-teamcraft.install
