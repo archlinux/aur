@@ -23,10 +23,10 @@ _build=0026dff0
 _hostver=5.6.2.40046327
 _hostbuild=c7b525f3
 _electron=37.10.3
-_sandbox=5.11.4
+_sandbox=5.13.0
 _harness=0.2.0-beta.16
 pkgver=${_pkgver}_${_build}
-pkgrel=3
+pkgrel=4
 pkgdesc='AI Agent for everyday office work - WorkBuddy international edition (unofficial Linux port)'
 arch=('x86_64' 'aarch64')
 url='https://www.workbuddy.ai'
@@ -85,13 +85,13 @@ sha256sums=(
 sha256sums_x86_64=(
   '0ac85622e03d1f22645519a1d73861c80badad3cdf14d884ebcd6d6b491aa8b7'
   '12149ad8c0cd748fd5062d8f62c7827d688d8095427ada99b1ae9e7019897523'
-  '324e1e43ea2dffa711755ed5aebd7212e08561953b3e58255ff1fe59366a6b77'
+  '7d025751a9005a182d1c2a99f4362454df494340cab27c8ddb625d9f0dd85785'
   '834fe6f1a07cecc42ffbd8ef263cc9a1eb08c515457ab1ca0121917cbb88ebe9'
 )
 sha256sums_aarch64=(
   '0ac85622e03d1f22645519a1d73861c80badad3cdf14d884ebcd6d6b491aa8b7'
   '561822578435d382a06d0a0b079a4b157f68b588c9fe72d589e2a88b2fd155fa'
-  'bab2dd39d01d74e07cf4148bdbfefc533491003787de4ed8267d4b77e0b87433'
+  'b6cde29df99abf3b082cc8f1e10801f279712423c9727fd7386b295c8cb2c50a'
   '6651fa80faac30d822a9ee3e44f342db26f381110c5da5ef3b931eb8c7d4e704'
 )
 
