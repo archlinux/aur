@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=amplican
-_pkgver=1.30.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Automated analysis of CRISPR experiments'
 arch=('x86_64')
@@ -15,8 +15,6 @@ depends=(
   r-biocparallel
   r-biostrings
   r-data.table
-  r-dplyr
-  r-genomeinfodb
   r-genomicranges
   r-ggplot2
   r-ggthemes
@@ -25,12 +23,14 @@ depends=(
   r-iranges
   r-knitr
   r-matrixstats
+  r-pwalign
   r-rcpp
+  r-rlang
   r-rmarkdown
   r-s4vectors
+  r-seqinfo
   r-shortread
   r-stringr
-  r-waffle
 )
 optdepends=(
   r-biocstyle
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4db320d1964a8e4001c40bf2389015bd897b111bbb0115c55c625063a79dab78')
+sha256sums=('731397ed6adce3c540ef3cc8ed0f29a3902b10541b1748172c8ade354cafb33f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
