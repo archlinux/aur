@@ -19,7 +19,7 @@ pkgbase = layrics-git
 	depends = python-diskcache
 	depends = python-pyaes
 	depends = python-appdirs
-	depends = python-kara-templater
+	depends = python-kara-templater>=1.1.0
 	provides = layrics
 	conflicts = layrics
 	source = layrics::git+https://github.com/sitiyou/layrics.git

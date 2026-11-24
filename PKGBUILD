@@ -20,7 +20,7 @@ depends=(
   'python-diskcache'
   'python-pyaes'
   'python-appdirs'
-  'python-kara-templater'
+  'python-kara-templater>=1.1.0'
 )
 makedepends=(
   'git'
