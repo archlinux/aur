@@ -1,7 +1,7 @@
 # Maintainer: maria-rcks <maria at kuuro dot net>
 
 pkgname=t3code-nightly-bin
-pkgver=0.1.12_nightly.20261124.5178
+pkgver=0.1.12_nightly.20261124.5191
 pkgrel=1
 pkgdesc='Nightly desktop control surface for local coding agents'
 arch=('x86_64' 'aarch64')
@@ -50,9 +50,9 @@ _asset_aarch64="T3-Code-Nightly-arm64.AppImage"
 source=("${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v${_upstream_version}/LICENSE")
 sha256sums=('935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43') # upstream license
 source_x86_64=("T3-Code-${_upstream_version}-x86_64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v${_upstream_version}/$_asset_x86_64")
-sha256sums_x86_64=('fc02abd112fcdf73cf60435ba20eb91684648cd2023b1a4aea4ba59861f366fe')
+sha256sums_x86_64=('08be3e5e4d93a792ab876074cffbe888336c4f6dd47d4ebf25626e1402304389')
 source_aarch64=("T3-Code-${_upstream_version}-arm64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v${_upstream_version}/$_asset_aarch64")
-sha256sums_aarch64=('3ceb0388a267938179daa8c738f2af651dcc49d29d1b9913b3bb6b6a039e0ad4')
+sha256sums_aarch64=('b076dedc77110c9aa3f92675f5af09f133eb5de38ebdcaecc3687374e7f586e2')
 
 prepare() {
   chmod +x "$srcdir/$_appimage"
