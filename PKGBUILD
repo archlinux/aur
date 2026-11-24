@@ -1,7 +1,7 @@
 # Maintainer: colegeming <collegeming@outlook.com>
 
 pkgname=genoffice-arch-bin
-pkgver=0.13.615
+pkgver=0.13.886
 pkgrel=1
 pkgdesc='Free, open-source AI office suite: docs, sheets, slides, PDF and markdown editors (built from source)'
 arch=('x86_64' 'aarch64')
@@ -19,10 +19,10 @@ options=('!strip' '!debug')
 
 # Built by this repository's build workflow on Arch (x86_64) and a native arm64
 # runner (aarch64); see [build] in metadata.toml. Installing needs no toolchain.
-source_x86_64=("genoffice-arch-bin-${pkgver}-1-x86_64.pkg.tar.zst::https://github.com/collegeming/aur-release/releases/download/aur-built-latest/genoffice-arch-bin-0.13.615-1-x86_64.pkg.tar.zst")
-sha256sums_x86_64=('298101cacb63ac190dfbcf2ec2b3d9fb9a66df3661f4cfb4b1f86edadaf78cf0')
-source_aarch64=("genoffice-arch-bin-${pkgver}-1-aarch64.pkg.tar.zst::https://github.com/collegeming/aur-release/releases/download/aur-built-latest/genoffice-arch-bin-0.13.615-1-aarch64.pkg.tar.zst")
-sha256sums_aarch64=('39d4ccbde1822f93f9826710c457ff388889229737874a9c09aea09ca78de49e')
+source_x86_64=("genoffice-arch-bin-${pkgver}-1-x86_64.pkg.tar.zst::https://github.com/collegeming/aur-release/releases/download/aur-built-latest/genoffice-arch-bin-0.13.886-1-x86_64.pkg.tar.zst")
+sha256sums_x86_64=('acc7e3bbe1ad17e2023200ea6b70048b4aa8e2d0b43265f1f7eeba9589416a0a')
+source_aarch64=("genoffice-arch-bin-${pkgver}-1-aarch64.pkg.tar.zst::https://github.com/collegeming/aur-release/releases/download/aur-built-latest/genoffice-arch-bin-0.13.886-1-aarch64.pkg.tar.zst")
+sha256sums_aarch64=('8f2913d7c1f9007d4caa3c67d60a52c03722cb74baec9415e3c523a002aa2341')
 
 package() {
     local pkg
