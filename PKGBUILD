@@ -2,7 +2,7 @@
 
 _name=spitch
 pkgname=python-$_name
-pkgver=1.51.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc='The official Python library for the spitch API.'
 arch=('any')
@@ -31,7 +31,7 @@ checkdepends=('python-respx'
 optdepends=('python-aiohttp: aiohttp'
             'python-httpx-aiohttp: aiohttp')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('986f953670aec7cb7a780501361b36a559f108892503d6f9a58bb449e7b3cdd9')
+sha256sums=('aa55cea25eb2f5908fc155ac439e8a7d78ad4f45614a43b924534e4d3f23d377')
 
 prepare() {
   cd "$_name-python-$pkgver"
