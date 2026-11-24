@@ -1,6 +1,6 @@
 pkgbase = invoiceninja-ui
 	pkgdesc = React administration frontend for Invoice Ninja
-	pkgver = 2026.10.18.1
+	pkgver = 2026.11.23.1
 	pkgrel = 1
 	url = https://github.com/invoiceninja/ui
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = invoiceninja-ui
 	makedepends = unzip
 	makedepends = python
 	depends = invoiceninja
-	source = invoiceninja-ui-2026.10.18.1.zip::https://github.com/invoiceninja/ui/releases/download/18.10.2026.1/invoiceninja-react.zip
-	source = LICENSE::https://raw.githubusercontent.com/invoiceninja/ui/18.10.2026.1/LICENSE
-	sha256sums = 23e501afd2358bbd2075bcb50bfe6f6d50c7f542c1546c3e2db5aaca96ab0d38
+	source = invoiceninja-ui-2026.11.23.1.zip::https://github.com/invoiceninja/ui/releases/download/23.11.2026.1/invoiceninja-react.zip
+	source = LICENSE::https://raw.githubusercontent.com/invoiceninja/ui/23.11.2026.1/LICENSE
+	sha256sums = d8cf37fe5ddeb75768aadb5890aa8dde752d9a2ea2268c325db8e21f394b3d3b
 	sha256sums = SKIP
 
 pkgname = invoiceninja-ui

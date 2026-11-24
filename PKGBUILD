@@ -4,9 +4,9 @@
 pkgname=invoiceninja-ui
 # Use YYYY.MM.DD.revision, unlike upstream DD.MM.YYYY.revision, so upgrades
 # remain monotonic across year boundaries according to pacman vercmp.
-pkgver=2026.10.18.1
+pkgver=2026.11.23.1
 pkgrel=1
-_upstream_tag=18.10.2026.1
+_upstream_tag=23.11.2026.1
 pkgdesc='React administration frontend for Invoice Ninja'
 arch=('any')
 url='https://github.com/invoiceninja/ui'
@@ -18,7 +18,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/invoiceninja/ui/${_upstream_tag}/LICENSE"
 )
 sha256sums=(
-  '23e501afd2358bbd2075bcb50bfe6f6d50c7f542c1546c3e2db5aaca96ab0d38'
+  'd8cf37fe5ddeb75768aadb5890aa8dde752d9a2ea2268c325db8e21f394b3d3b'
   'SKIP'
 )
 
