@@ -1,0 +1,21 @@
+pkgbase = laccy
+	pkgdesc = Lightweight, keyboard-first clipboard manager for Wayland
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/mlkonrad/laccy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = libgcc
+	depends = glibc
+	options = !lto
+	options = !debug
+	source = laccy-0.1.4.tar.gz::https://github.com/mlkonrad/laccy/archive/v0.1.4.tar.gz
+	sha256sums = 1e7a504b499c9806a85aa14cdc2f0c462d9454d07fd2bb113cbc5d3d8cf4d0c5
+
+pkgname = laccy
