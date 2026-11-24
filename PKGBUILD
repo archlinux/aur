@@ -1,6 +1,6 @@
 # Maintainer: pioner14
 pkgname=cerastilo
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Scheduler for the Life and Ministry meeting: assignments, letters, export (PySide6)"
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
   'hicolor-icon-theme'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pioner14/Cerastilo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d13b81fb462222c90efea4c168127770445cfcf730d8af35c7d7e48875e96bcd')
+sha256sums=('494df187fd6b9f762dd63fe024270019bcfe12b2c7b67be3b834a4950c704583')
 
 package() {
   cd "$srcdir"/*-"$pkgver" || return 1
@@ -43,6 +43,8 @@ package() {
 DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/cerastilo"
 mkdir -p "$DATA_DIR"
 export DB_PATH="$DATA_DIR/scheduler.db"
+# обновления приходят через AUR — автопроверку в программе по умолчанию выключаем
+export CERASTILO_UPDATE_CHECK_DEFAULT="${CERASTILO_UPDATE_CHECK_DEFAULT:-off}"
 cd "$DATA_DIR" || exit 1
 exec python /usr/share/cerastilo/main.py "$@"
 EOF
