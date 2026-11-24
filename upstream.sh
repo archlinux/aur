@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 
 pkg_detect_latest() {
-	local api_url="https://api.github.com/repos/xifan2333/fcitx5-vinput/releases/latest"
+	local api_url="https://api.github.com/repos/fcitx5-vinput/fcitx5-vinput/releases/latest"
 	local json_data version
 
 	json_data="$(curl -fsSL "${api_url}")"
@@ -22,7 +22,7 @@ pkg_detect_latest() {
 
 pkg_get_update_params() {
 	local version="$1"
-	local base_url="https://github.com/xifan2333/fcitx5-vinput/releases/download/v${version}"
+	local base_url="https://github.com/fcitx5-vinput/fcitx5-vinput/releases/download/v${version}"
 	local filename="fcitx5-vinput-${version}-1-x86_64.pkg.tar.zst"
 	local url="${base_url}/${filename}"
 
