@@ -1,0 +1,17 @@
+pkgbase = zmx-session-manager-bin
+	pkgdesc = TUI session manager for zmx
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/mdsakalu/zmx-session-manager
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = zmx-session-manager
+	conflicts = zmx-session-manager
+	options = !debug
+	source_x86_64 = zmx-session-manager-bin-0.7.0-x86_64.tar.gz::https://github.com/mdsakalu/zmx-session-manager/releases/download/v0.7.0/zmx-session-manager_0.7.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8f0f94b8d7049972826536ad896e2fd06e8078e4e23c7c38031f7a259e7054c3
+	source_aarch64 = zmx-session-manager-bin-0.7.0-aarch64.tar.gz::https://github.com/mdsakalu/zmx-session-manager/releases/download/v0.7.0/zmx-session-manager_0.7.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3dfd76e33f50b9eec68c3c2d17cd3955cfe7b88706e4c809249b327160d91720
+
+pkgname = zmx-session-manager-bin
