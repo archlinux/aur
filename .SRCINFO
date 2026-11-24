@@ -1,0 +1,23 @@
+pkgbase = python-k3log
+	pkgdesc = A collection of log utilities for Python logging
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/pykit3/k3log
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	checkdepends = python-k3proc
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-k3confloader
+	provides = python-k3log
+	conflicts = python-k3log
+	source = k3log::git+https://github.com/pykit3/k3log.git#tag=v0.1.11
+	sha256sums = fba160cdb9f22d7621aeced4d6d21d74e6903072d98d55919576113675382664
+
+pkgname = python-k3log
