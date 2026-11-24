@@ -5,9 +5,16 @@
 # proven kimi-bin layout (NSIS -> app-64.7z -> app.asar + daimon bundle) and
 # replaces the Windows-only launchers with offline wrappers running through
 # electron43's Node mode.
+#
+# LEGACY: this is the original single build and does not pin a region, so the
+# app picks China vs overseas from the login/account at runtime. New installs
+# should use kimi-work-intl-bin (region pinned to overseas) or
+# kimi-work-cn-bin (region pinned to china). Both use their own /opt prefix,
+# command and desktop id and can coexist with this package; only
+# kimi-work-intl-bin conflicts with it because both install /usr/bin/kimi-work.
 
 pkgname=kimi-work-bin
-pkgver=3.2.27
+pkgver=3.2.28
 pkgrel=1
 pkgdesc='Kimi Work desktop client, repackaged for the system Electron runtime'
 arch=('x86_64')
@@ -38,7 +45,7 @@ sha256sums=(
   '85e9c4268a8ee267755f0f3faa4b7cd957db27d57d0c22d53cb2c691d34f0ec2'
   '817e0d47bca30dfb87aa2e9df40fb94ba1d3704305d2b6b0f2b4359e4ab7e304'
 )
-sha256sums_x86_64=('91437498a5326b3d74ca98e19296ad440c0cc706392258a294f9d13a39731bac')
+sha256sums_x86_64=('68d70c748f3b227c0ec6bf75fd77704c639680f29148bcf0bea224f1117ab300')
 
 prepare() {
   local _res="${srcdir}/payload/resources/resources"
