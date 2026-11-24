@@ -1,7 +1,7 @@
 # Maintainer: Amir Husayn Panahifar <ahp@panahifar.ir>
 
 pkgname=dfdisk-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Modern forensic disk imaging, damaged media rescue and evidence management"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!debug')
 _dl="${url}/releases/download/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_dl}/dfdisk-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_dl}/dfdisk-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('4d64631cbbc290d73f6afb115c1b36356d645be594171d82ed8a97dccafac60b')
-sha256sums_aarch64=('5c980637c1a169725b28010902e0f584c15a45b339dd0561018d2f5e578cbb3d')
+sha256sums_x86_64=('b3f7e04b616e3ee685a47e435f5b96168ca81d5520fb60754be05187edbdefa2')
+sha256sums_aarch64=('20024af3453669a52ab2b65e28c066af1f055e7aa5a485c937afe0e7092e105d')
 
 package() {
   local _dir
