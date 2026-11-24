@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=uu-remote-bin
-pkgver=0.2.64
-pkgrel=2
+pkgver=0.2.65
+pkgrel=1
 pkgdesc="非官方 UU 远程 Linux 被控端，纯 Rust 实现，可用官方客户端远程控制 Linux 桌面"
 arch=('x86_64')
 url="https://github.com/VallierDev/uu-remote-linux"
@@ -29,7 +29,7 @@ source_x86_64=("uu-remote-linux-v${pkgver}-x86_64-linux.tar.gz::https://github.c
 sha256sums=('910d0627d7b1b7edc2408d9def0dacecf92db01e43c094f10f250a22e7efbdc6'
             'ee8a778fe9367f1dffe2482940b70ec627e414dcaa409731560cd37481ed4feb'
             '822b332b88276aba6b91997a17c543e2d77656cbbfbda65dab0b1f827efe8b03')
-sha256sums_x86_64=('54f84421c5c93fbf00b827d407d5443da0385a75813f9398c7e7d95f39c1e56b')
+sha256sums_x86_64=('7c7ecb6e1a1e52c474287b7ecaf40906ef1bf84576df22dbaef023711d96769d')
 
 package() {
     local _dir="uu-remote-linux-v${pkgver}-x86_64-linux"
