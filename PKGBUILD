@@ -2,7 +2,7 @@
 
 pkgname=shorin-pac-git
 _pkgname=shorin-pac
-pkgver=r43.c078fa2
+pkgver=r47.ba7ed17
 pkgrel=1
 pkgdesc="Simple fzf-based TUI to install/remove pacman, AUR and Flatpak packages on Arch, with AI-assisted AUR review and leftover cleanup"
 arch=('any')
@@ -18,7 +18,9 @@ optdepends=(
     'trash-cli: send leftovers to the trash instead of deleting'
     'claude-code: AI backend via the claude CLI subscription'
     'opencode: AI backend via the opencode CLI'
+    'litemiyu-bin: AI backend via LiteMiyu, and import of LiteMiyu provider settings'
     'miyu: AI backend via Miyu, and import of Miyu provider settings'
+    'python: read the LiteMiyu / Miyu configuration (TOML) for the import'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
