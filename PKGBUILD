@@ -1,6 +1,6 @@
 pkgname=tg-ws-proxy
-pkgver=1.11.4
-pkgrel=2
+pkgver=1.12.0
+pkgrel=1
 pkgdesc="Telegram Desktop WebSocket Bridge Proxy"
 arch=('any')
 url="https://github.com/Flowseal/tg-ws-proxy"
