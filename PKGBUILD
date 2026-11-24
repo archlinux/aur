@@ -38,13 +38,6 @@ package() {
   install -Dm755 frontend/src-tauri/target/release/notes "$pkgdir/usr/bin/notes"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 frontend/src-tauri/icons/128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/notes.png"
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/notes.desktop" <<DESKTOP
-[Desktop Entry]
-Type=Application
-Name=Notes
-Comment=$pkgdesc
-Exec=notes
-Icon=notes
-Categories=Office;Utility;
-DESKTOP
+  install -Dm644 frontend/public/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/notes.svg"
+  install -Dm644 packaging/aur/notes.desktop "$pkgdir/usr/share/applications/notes.desktop"
 }
