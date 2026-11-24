@@ -1,0 +1,16 @@
+pkgbase = desktop-tui
+	pkgdesc = Desktop environment in the terminal
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/julien-cpsn/desktop-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = desktop-tui-0.3.2.tar.gz::https://github.com/julien-cpsn/desktop-tui/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = fd83f9fd836f602e26e146b61b4d59620d18faada95f3e6770d9164f776b9421
+
+pkgname = desktop-tui
