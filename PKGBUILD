@@ -3,7 +3,7 @@ pkgname=thinkpoint
 # GitHub names its archives after the repository, which is capitalised, so the
 # extracted directory is not $pkgname-$pkgver.
 _repo=ThinkPoint
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="TUI for TrackPoint tuning, pointer button maps and libinput properties"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1c07e419e54e0bd8edd48b8a7e5c391e50e17614166e4ea74cd551f7f4160667')
+sha256sums=('1a0119d71aebf92b74e4cc038d16ff0b1b032de962c72ed5f65d3d3fd2fba361')
 
 prepare() {
   cd "$_repo-$pkgver"
