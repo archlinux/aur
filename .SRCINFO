@@ -1,6 +1,6 @@
 pkgbase = pideck-bin
 	pkgdesc = Desktop workbench for managing local AI coding agent sessions (prebuilt binary)
-	pkgver = 0.13.2
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/ayuayue/PiDeck
 	arch = x86_64
@@ -40,18 +40,18 @@ pkgbase = pideck-bin
 	optdepends = git: Git integration
 	optdepends = libappindicator: system tray support
 	optdepends = org.freedesktop.secrets: secret storage backend
-	provides = pideck=0.13.2
-	provides = pi-desktop=0.13.2
+	provides = pideck=0.14.0
+	provides = pi-desktop=0.14.0
 	conflicts = pideck
 	conflicts = pi-desktop
-	noextract = PiDeck_0.13.2_amd64.deb
-	noextract = PiDeck_0.13.2_arm64.deb
+	noextract = PiDeck_0.14.0_amd64.deb
+	noextract = PiDeck_0.14.0_arm64.deb
 	options = !strip
 	source = LICENSE
 	sha256sums = 032c3da0b36939e15b0ba21974baeecf2d0afbdf410a66bd76c2ba28e5baccab
-	source_x86_64 = PiDeck_0.13.2_amd64.deb::https://github.com/ayuayue/PiDeck/releases/download/v0.13.2/PiDeck_0.13.2_amd64.deb
-	sha256sums_x86_64 = a6899b5778e08d642b95136420e5d4d42c52cff56944b720621ea8d6660db5aa
-	source_aarch64 = PiDeck_0.13.2_arm64.deb::https://github.com/ayuayue/PiDeck/releases/download/v0.13.2/PiDeck_0.13.2_arm64.deb
-	sha256sums_aarch64 = e3f9ef73d09977bcc117a4f49d697111e56e20d4d88b8a21fc3791d332b35720
+	source_x86_64 = PiDeck_0.14.0_amd64.deb::https://github.com/ayuayue/PiDeck/releases/download/v0.14.0/PiDeck_0.14.0_amd64.deb
+	sha256sums_x86_64 = d6a489186a7b2fcf0e505692b715415b7f679100a0edea1cc36195da4d780f7b
+	source_aarch64 = PiDeck_0.14.0_arm64.deb::https://github.com/ayuayue/PiDeck/releases/download/v0.14.0/PiDeck_0.14.0_arm64.deb
+	sha256sums_aarch64 = 22f0c5e0b9ca0a70fc53a023eaf01f45c8f5592e9279519be8f6897a457e4747
 
 pkgname = pideck-bin
