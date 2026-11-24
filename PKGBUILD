@@ -1,5 +1,5 @@
 pkgname=stalker-gamma-server-bin
-pkgver=1.42.0
+pkgver=1.43.1
 pkgrel=1
 pkgdesc="companion server for stalker-gamma-cli (appimage)"
 arch=('x86_64' 'aarch64')
@@ -9,8 +9,8 @@ options=(!strip)
 depends=('fuse2')
 source_x86_64=("stalker-gamma-server+linux.x64-${pkgver}.AppImage::https://github.com/FaithBeam/stalker-gamma-cli/releases/download/${pkgver}/stalker-gamma-server+linux.x64.AppImage")
 source_aarch64=("stalker-gamma-server+linux.arm64-${pkgver}.AppImage::https://github.com/FaithBeam/stalker-gamma-cli/releases/download/${pkgver}/stalker-gamma-server+linux.arm64.AppImage")
-sha256sums_x86_64=('f2d297957e4c53192459317cde909b6d470ca435a6d22cd0831782ed5e526ee5')
-sha256sums_aarch64=('73b4a34f2e683ed03a5bda7a5c731fbe13b001320adc2eff254c4efbefb909c7')
+sha256sums_x86_64=('2ad8014c2773a0eaf64879f3af58a4a97e613629955f6ce268bc16bbdb75a7ad')
+sha256sums_aarch64=('4b991f4809221652cbbb8258ac525b520d75e75dc752a339359232e472ce5512')
 
 package() {
   install -Dm755 stalker-gamma-server+linux.*.AppImage "${pkgdir}/usr/bin/stalker-gamma-server"

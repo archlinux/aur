@@ -1,6 +1,6 @@
 pkgbase = stalker-gamma-server-bin
 	pkgdesc = companion server for stalker-gamma-cli (appimage)
-	pkgver = 1.42.0
+	pkgver = 1.43.1
 	pkgrel = 1
 	url = https://github.com/FaithBeam/stalker-gamma-cli
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = stalker-gamma-server-bin
 	license = GPL-3.0-or-later
 	depends = fuse2
 	options = !strip
-	source_x86_64 = stalker-gamma-server+linux.x64-1.42.0.AppImage::https://github.com/FaithBeam/stalker-gamma-cli/releases/download/1.42.0/stalker-gamma-server+linux.x64.AppImage
-	sha256sums_x86_64 = f2d297957e4c53192459317cde909b6d470ca435a6d22cd0831782ed5e526ee5
-	source_aarch64 = stalker-gamma-server+linux.arm64-1.42.0.AppImage::https://github.com/FaithBeam/stalker-gamma-cli/releases/download/1.42.0/stalker-gamma-server+linux.arm64.AppImage
-	sha256sums_aarch64 = 73b4a34f2e683ed03a5bda7a5c731fbe13b001320adc2eff254c4efbefb909c7
+	source_x86_64 = stalker-gamma-server+linux.x64-1.43.1.AppImage::https://github.com/FaithBeam/stalker-gamma-cli/releases/download/1.43.1/stalker-gamma-server+linux.x64.AppImage
+	sha256sums_x86_64 = 2ad8014c2773a0eaf64879f3af58a4a97e613629955f6ce268bc16bbdb75a7ad
+	source_aarch64 = stalker-gamma-server+linux.arm64-1.43.1.AppImage::https://github.com/FaithBeam/stalker-gamma-cli/releases/download/1.43.1/stalker-gamma-server+linux.arm64.AppImage
+	sha256sums_aarch64 = 4b991f4809221652cbbb8258ac525b520d75e75dc752a339359232e472ce5512
 
 pkgname = stalker-gamma-server-bin
