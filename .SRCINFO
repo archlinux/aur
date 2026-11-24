@@ -1,0 +1,16 @@
+pkgbase = albatross-cli
+	pkgdesc = Terminal-first AI coding agent
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/morganlinton/albatross
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = albatross-cli-2.5.0.tar.gz::https://github.com/morganlinton/albatross/archive/refs/tags/v2.5.0.tar.gz
+	sha256sums = 3ec38e21b27aeaca2effaffe40e2cdbb0c37b64f0076579a749e7aabd6dd7465
+
+pkgname = albatross-cli
