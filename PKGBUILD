@@ -22,5 +22,7 @@ package() {
   install -Dm755 bin/nsh "$pkgdir/usr/bin/nsh"
   install -dm755 "$pkgdir/usr/lib/nsh"
   cp -a runtime "$pkgdir/usr/lib/nsh/"
+  install -Dm755 runtime/linux/nsh-linux-host "$pkgdir/usr/bin/nsh-linux-host"
+  install -Dm755 runtime/linux/nsh-linux-app "$pkgdir/usr/bin/nsh-linux-app"
   install -Dm644 "$srcdir/nsh-LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 }
