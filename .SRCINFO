@@ -1,14 +1,12 @@
 pkgbase = yesplaymusic-bin
-	pkgdesc = A third party music application for Netease Music.高颜值的第三方网易云播放器.
-	pkgver = 0.4.11
+	pkgdesc = A better-looking desktop music player for local files, media servers, and plugins.高颜值的桌面音乐播放器，音乐源由插件提供
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://music.qier222.com/
-	arch = aarch64
-	arch = armv7h
+	url = https://yesplaymusic.0xtangerine.com
 	arch = x86_64
-	license = MIT
-	depends = electron13
-	provides = yesplaymusic=0.4.11
+	license = GPL-3.0-or-later
+	depends = gtk3
+	provides = yesplaymusic=3.0.0
 	conflicts = yesplaymusic
 	conflicts = yesplaymusic-electron
 	conflicts = yesplaymusicosd-electron
@@ -16,15 +14,11 @@ pkgbase = yesplaymusic-bin
 	conflicts = my-yesplaymusic
 	conflicts = r3play
 	conflicts = r3playx
-	source = LICENSE-0.4.11::https://raw.githubusercontent.com/qier222/YesPlayMusic/v0.4.11/LICENSE
+	source = yesplaymusic-3.0.0.tar.gz::https://github.com/qier222/YesPlayMusic/releases/download/v3.0.0/YesPlayMusic-3.0.0-linux-x64.tar.gz
+	source = LICENSE-3.0.0::https://raw.githubusercontent.com/qier222/YesPlayMusic/v3.0.0/LICENSE
 	source = yesplaymusic.sh
-	sha256sums = c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6
-	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
-	source_aarch64 = yesplaymusic-0.4.11-aarch64.deb::https://github.com/qier222/YesPlayMusic/releases/download/v0.4.11/yesplaymusic_0.4.11_arm64.deb
-	sha256sums_aarch64 = e956e2fa8fa2ecc12441e3718fab4d08db3b33efbdf95a475d00fe8cd852ed42
-	source_armv7h = yesplaymusic-0.4.11-armv7h.deb::https://github.com/qier222/YesPlayMusic/releases/download/v0.4.11/yesplaymusic_0.4.11_armv7l.deb
-	sha256sums_armv7h = 507078afcd0550ab01044a38093e0e3ab87ea1db092a196b291d5507c20aada0
-	source_x86_64 = yesplaymusic-0.4.11-x86_64.deb::https://github.com/qier222/YesPlayMusic/releases/download/v0.4.11/yesplaymusic_0.4.11_amd64.deb
-	sha256sums_x86_64 = 17a39a83ba5d799cbd517c2c182994cdb9b254cfba92fd10dbfb27cdcf421714
+	sha256sums = fab6f80713727b7009e475b8cb740117de58ae4350b8059e816cc09cb0381a03
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = d7002fa1a9ae60749490e982fa8a4f4622f7381b02559f5b014df033c0773a3c
 
 pkgname = yesplaymusic-bin
