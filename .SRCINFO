@@ -1,0 +1,14 @@
+pkgbase = grofer
+	pkgdesc = System and resource monitoring tool
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/pesos/grofer
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = grofer-1.4.1.tar.gz::https://github.com/pesos/grofer/archive/v1.4.1.tar.gz
+	sha256sums = fb620e7348f52e970e7435ab72614f3da1fbdf31ec11f50e131c6060d78a0495
+
+pkgname = grofer
