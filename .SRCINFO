@@ -1,0 +1,26 @@
+pkgbase = braindrop
+	pkgdesc = Terminal client for raindrop.io
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/davep/braindrop
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-uv-build
+	depends = python
+	depends = python-httpx
+	depends = python-humanize
+	depends = python-pyperclip
+	depends = python-pytz
+	depends = python-textual
+	depends = python-textual-enhanced
+	depends = python-typing_extensions
+	depends = python-xdg-base-dirs
+	source = https://files.pythonhosted.org/packages/source/b/braindrop/braindrop-1.1.1.tar.gz
+	source = braindrop-1.1.1-LICENSE::https://raw.githubusercontent.com/davep/braindrop/v1.1.1/LICENSE
+	sha256sums = b1361ba851330a757365e659158c911d620847389f5b44b4756f55a0abc5ce13
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = braindrop
