@@ -1,0 +1,14 @@
+pkgbase = postbear
+	pkgdesc = Lightweight terminal API client
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/carban/postbear
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = postbear-1.0.1.tar.gz::https://github.com/carban/postbear/archive/v1.0.1.tar.gz
+	sha256sums = 23579fa8f9244efe62d9d21fc599cc30bfe65876d8f9583494a488d251ee17e0
+
+pkgname = postbear
