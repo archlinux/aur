@@ -3,3 +3,4 @@
 !.SRCINFO
 !.gitignore
 !Makefile
+!pre-commit
