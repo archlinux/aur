@@ -1,0 +1,7 @@
+[network-sandbox-engine]
+source = "github"
+github = "onyks-os/NetworkSandboxEngine"
+use_latest_release = true
+prefix = "v"
+# source = "pypi"
+# pypi = "network-sandbox-engine"

@@ -1,0 +1,24 @@
+pkgbase = network-sandbox-engine
+	pkgdesc = A Linux engine for deterministic nftables firewall testing inside isolated network namespaces
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://github.com/onyks-os/NetworkSandboxEngine
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = tor
+	depends = nftables
+	depends = python
+	depends = python-stem
+	depends = python-rich
+	depends = python-typer
+	depends = python-transitions
+	provides = nse
+	source = git+https://github.com/onyks-os/NetworkSandboxEngine.git#tag=v2.5.1
+	sha256sums = e9b54c19abc962978107ab62e5b7f455c374d5015ff8b377aae1f941477dc715
+
+pkgname = network-sandbox-engine
