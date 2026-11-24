@@ -1,0 +1,23 @@
+pkgbase = python-k3time
+	pkgdesc = Time conversion utilities for parsing and formatting timestamps
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/pykit3/k3time
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytz
+	depends = python-tzlocal
+	provides = python-k3time
+	conflicts = python-k3time
+	source = k3time::git+https://github.com/pykit3/k3time.git#tag=v0.1.13
+	sha256sums = 0267354a72e7fb4c34603b091c9e849a540ba8cf513592b9469db0d6ba9a3a86
+
+pkgname = python-k3time
