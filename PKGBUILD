@@ -1,21 +1,20 @@
 # Maintainer: Jacob Burgess
 pkgname=eddie
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 # Commits on master at the tag, so Eddie can tell a newer build from this
 # one. The release workflow sets it.
-_build=152
+_build=200
 pkgdesc="The editor that watches the footage for you: a native Rust video editor that AI agents can drive"
 arch=('x86_64')
 url="https://github.com/BurgessTG/eddie"
-license=('MIT OR Apache-2.0')
+license=('MIT OR Apache-2.0' 'OFL-1.1')
 depends=('ffmpeg' 'gtk3' 'glib2' 'alsa-lib' 'fontconfig' 'libgcc' 'libstdc++'
          'glibc' 'libxkbcommon' 'wayland' 'libx11' 'vulkan-icd-loader'
          'hicolor-icon-theme')
 makedepends=('cargo' 'clang' 'cmake' 'pkgconf'
              'vulkan-headers' 'shaderc')
 optdepends=('inter-font: the interface font Eddie is designed with'
-            'ttf-liberation: a font for titles when fontconfig finds no other'
             'libva-nvidia-driver: hardware decode on NVIDIA (Settings, off by default)'
             'xdg-utils: Open folder after an export')
 conflicts=('eddie-git')
@@ -23,7 +22,7 @@ options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # v0.2.0 is not tagged yet. `updpkgsums` fills this in when it is
 # (packaging/README.md).
-sha256sums=('a36f7deeabfe9eb3e14830388330dddb2f1a1aa1ffbbb61bb3d9e77cd538a773')
+sha256sums=('fbc4c30f088a7c599609a4f2c3e93197e7d302c0cffa20aad86a4ee6b806798f')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -61,4 +60,11 @@ package() {
   install -Dm644 docs/agents.md "$pkgdir/usr/share/doc/$pkgname/agents.md"
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+  # The built-in stickers are Microsoft's Fluent Emoji (MIT).
+  install -Dm644 crates/media/src/graphic/stickers/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE-fluent-emoji"
+  # The fonts titles are drawn in are under the SIL Open Font License.
+  for font in crates/media/src/fonts/licenses/*.txt; do
+    install -Dm644 "$font" "$pkgdir/usr/share/licenses/$pkgname/$(basename "$font")"
+  done
 }
