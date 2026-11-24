@@ -1,7 +1,7 @@
 # Maintainer: 3ri4nG0ld <brianldg92@gmail.com>
 pkgname=epixnet-git
 _pkgname=epixnet
-pkgver=0.6.10.r0.gc6911d6
+pkgver=0.6.11.r1.g6f4ee73
 pkgrel=1
 _ffver="153.7.0esr"
 pkgdesc="Decentralized peer-to-peer web platform (node, browser launcher, and EVX worker)"

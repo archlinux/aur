@@ -1,6 +1,6 @@
 pkgbase = epixnet-git
 	pkgdesc = Decentralized peer-to-peer web platform (node, browser launcher, and EVX worker)
-	pkgver = 0.6.10.r0.gc6911d6
+	pkgver = 0.6.11.r1.g6f4ee73
 	pkgrel = 1
 	url = https://github.com/EpixZone/EpixNet
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = epixnet-git
 	depends = systemd-libs
 	depends = zlib
 	optdepends = libayatana-appindicator: system tray icon support (dlopened at runtime)
-	provides = epixnet=0.6.10.r0.gc6911d6
+	provides = epixnet=0.6.11.r1.g6f4ee73
 	conflicts = epixnet
 	conflicts = epixnet-bin
 	options = !lto
