@@ -1,6 +1,6 @@
 pkgbase = oxideterm-bin
 	pkgdesc = AI-native workspace for local shells and remote machines.Zero Webview, zero OpenSSL, zero telemetry, and no app subscription.
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://oxideterm.app/
 	arch = aarch64
@@ -15,11 +15,11 @@ pkgbase = oxideterm-bin
 	depends = libxkbcommon-x11
 	depends = libappindicator
 	depends = libayatana-appindicator
-	provides = oxideterm=2.4.0
+	provides = oxideterm=2.4.1
 	conflicts = oxideterm
-	source_aarch64 = oxideterm-2.4.0-aarch64.deb::https://github.com/AnalyseDeCircuit/oxideterm/releases/download/v2.4.0/OxideTerm_2.4.0_linux_arm64.deb
-	sha256sums_aarch64 = 81f8873b2b5640fa9261e075e60ee688b819584e6d27fc27b1ee6b6ad5f2c409
-	source_x86_64 = oxideterm-2.4.0-x86_64.deb::https://github.com/AnalyseDeCircuit/oxideterm/releases/download/v2.4.0/OxideTerm_2.4.0_linux_x64.deb
-	sha256sums_x86_64 = 48c9ee4bb452da2e4131efd2abf51a3338a3e978a1ca3b4ddabd356af91e88ca
+	source_aarch64 = oxideterm-2.4.1-aarch64.deb::https://github.com/AnalyseDeCircuit/oxideterm/releases/download/v2.4.1/OxideTerm_2.4.1_linux_arm64.deb
+	sha256sums_aarch64 = 3131c523739c95e451dbf34f88567ca0dfb52814a85c801880832836f55e2243
+	source_x86_64 = oxideterm-2.4.1-x86_64.deb::https://github.com/AnalyseDeCircuit/oxideterm/releases/download/v2.4.1/OxideTerm_2.4.1_linux_x64.deb
+	sha256sums_x86_64 = a82232e42146cb55b9550029940e68f87c4b27a15a83dc914feca9a073a623ed
 
 pkgname = oxideterm-bin
