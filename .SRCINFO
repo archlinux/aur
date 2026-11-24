@@ -1,0 +1,18 @@
+pkgbase = hive-tui-bin
+	pkgdesc = TUI for managing multiple AI agent sessions in isolated git environments
+	pkgver = 0.75.0
+	pkgrel = 1
+	url = https://github.com/colonyops/hive
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = hive-tui
+	conflicts = hive-tui
+	conflicts = hive-bin
+	options = !debug
+	source_x86_64 = hive-tui-bin-0.75.0-x86_64.tar.gz::https://github.com/colonyops/hive/releases/download/v0.75.0/hive_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = fa6b51a11b718cbac7432b50a29298df427acee801cdd34101c318e76e559ef4
+	source_aarch64 = hive-tui-bin-0.75.0-aarch64.tar.gz::https://github.com/colonyops/hive/releases/download/v0.75.0/hive_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 34be0b6272e7a5ac531259fb22b6fd6fa075b48dd6eb67be9ab501f5599c5296
+
+pkgname = hive-tui-bin
