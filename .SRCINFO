@@ -1,0 +1,23 @@
+pkgbase = python-k3daemonize
+	pkgdesc = Create daemon processes with CLI for start/stop/restart
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/pykit3/k3daemonize
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	checkdepends = python-k3proc
+	checkdepends = lsof
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3daemonize
+	conflicts = python-k3daemonize
+	source = k3daemonize::git+https://github.com/pykit3/k3daemonize.git#tag=v0.1.6
+	sha256sums = fdc11a38b372fb4b6905c3a86bb775d3cc5eb046489aab566acf7a94c11beb60
+
+pkgname = python-k3daemonize
