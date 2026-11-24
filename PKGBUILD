@@ -2,7 +2,7 @@
 
 pkgname=python-k3jobq
 _name=${pkgname#python-}
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Concurrent job queue manager with multi-threading support"
 provides=(${pkgname})
@@ -27,7 +27,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('9d43270014d6b4db97cedb304f91a53eb3fc43255399546b32b00b28d140fa7d')
+sha256sums=('f6037100158d8643b183b1a1d929aa910c314a7b16e59b51ff97d03059a96163')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
