@@ -1,8 +1,14 @@
 #!/bin/sh
+set -euo pipefail
 
-if kdialog --title "CachyOS (EAC) Rebooter" --warningcontinuecancel "Are you sure you want to <b>reboot</b> into CachyOS (EAC)"; then
-    sleep 2
-    systemctl reboot --boot-loader-entry=cachyos-eac.conf
+KDIALOG_OPTS=(
+    --title "CachyOS EAC Reboot Helper"
+)
+
+if kdialog "${KDIALOG_OPTS[@]}" --warningcontinuecancel "Are you sure you want to <b>reboot</b> into CachyOS's EAC kernel."; then
+    if ! EAC_BOOT_LOG=$(pkexec eac-setup boot); then
+        kdialog "${KDIALOG_OPTS[@]}" --error "Could not reboot using the <tt>eac-setup</tt> tool :(<br>Run <tt>eac-setup</tt> from the terminal and/or check the <a href='https://wiki.cachyos.org/configuration/easy_anti_cheat'>CachyOS EAC wiki page</a>."
+    fi
 else
     exit 1
 fi

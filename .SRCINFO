@@ -1,16 +1,17 @@
 pkgbase = eac-reboot-entry
 	pkgdesc = A script shim to make booting into an EAC kernel a bit easier
-	pkgver = 1.1.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	arch = any
-	license = Unlicense
-	depends = linux-cachyos-eac
-	depends = systemd
-	depends = hicolor-icon-theme
+	license = CC0-1.0
+	depends = cachyos-settings>=1.4.5
 	depends = kdialog
+	depends = linux-cachyos-eac
+	depends = polkit
+	optdepends = breeze-icons: default desktop entry references a Breeze icon
 	source = reboot-eac
 	source = reboot-eac.desktop
-	sha256sums = 43b9ce54e177b653a008e4de7d1d856d73641ede1785badcf3be591028abb47b
+	sha256sums = 54302c4064ada655a8472c22e51f2646baf0c682a7a8272e5be15f83bda85ab1
 	sha256sums = 726e5c11b86243e15cdfea0a23970eacb5bd0cecccec2e3bff91b9bb808fb6c9
 
 pkgname = eac-reboot-entry
