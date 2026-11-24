@@ -1,0 +1,17 @@
+pkgbase = cueitup-bin
+	pkgdesc = Inspect messages in an AWS SQS queue from the terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dhth/cueitup
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cueitup
+	conflicts = cueitup
+	options = !debug
+	source_x86_64 = cueitup-bin-1.0.0-x86_64.tar.gz::https://github.com/dhth/cueitup/releases/download/v1.0.0/cueitup_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e427e33fc6964b78cb070bdc88a6dc21469efc0957c923e556c3ffc0798cc15f
+	source_aarch64 = cueitup-bin-1.0.0-aarch64.tar.gz::https://github.com/dhth/cueitup/releases/download/v1.0.0/cueitup_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 25b6fd6aae5a58423540ed4140b5ec0f1ac6b5e96aa4930fd99d868ad142ce05
+
+pkgname = cueitup-bin
