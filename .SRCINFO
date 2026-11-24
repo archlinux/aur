@@ -1,0 +1,21 @@
+pkgbase = agf-bin
+	pkgdesc = Find, search and resume local AI coding agent sessions
+	pkgver = 0.15.1
+	pkgrel = 1
+	url = https://github.com/subinium/agf
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = agf
+	conflicts = agf
+	options = !debug
+	source = agf-bin-0.15.1-LICENSE::https://raw.githubusercontent.com/subinium/agf/v0.15.1/LICENSE
+	sha256sums = 26b7182e9a87bcd2c752aba2ded58aafa25f766a7f8de7460184bc0f0f53b33a
+	source_x86_64 = agf-bin-0.15.1-x86_64.tar.gz::https://github.com/subinium/agf/releases/download/v0.15.1/agf-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = db21c06f0a288f832879828278303cafa6d8f1e967751ee7da9962a3c0c0aeeb
+	source_aarch64 = agf-bin-0.15.1-aarch64.tar.gz::https://github.com/subinium/agf/releases/download/v0.15.1/agf-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 671f34411c49806ccc0e9f580f0c3205f6693d8e893dc114872107c60ff2645e
+
+pkgname = agf-bin
