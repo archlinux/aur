@@ -1,8 +1,9 @@
 pkgbase = qoder-cn-bin
 	pkgdesc = Qoder 全新形态，以编程智能体为核心引擎，从想法到实现，轻松搞定。
-	pkgver = 0.5.7
+	pkgver = 0.5.17
 	pkgrel = 1
 	url = https://qoder.cn
+	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron43
@@ -10,17 +11,19 @@ pkgbase = qoder-cn-bin
 	depends = nodejs
 	optdepends = bash
 	optdepends = zsh
-	provides = qoder-cn=0.5.7
+	provides = qoder-cn=0.5.17
 	conflicts = qoder-cn
 	options = !emptydirs
 	options = !strip
-	source = qoder-cn-0.5.7.rpm::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/latest/Qoder-CN-linux-x86_64.rpm
 	source = LICENSE.html
 	source = qoder-cn.js
 	source = qoder-cn.sh
-	sha256sums = SKIP
 	sha256sums = 64a79bddff14167a290d3547d7b4bd00cf693be6d11fb6b7018bca9d9d778ab4
-	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+	sha256sums = d0f201d4e9b0690ccfbe9034779bf95a7a92996cef63a957bf15ea11c7d83236
+	sha256sums = 6295de105284c8d173a862217d76eee1610dad92dd5543f3f9e6a08a6a77929a
+	source_aarch64 = qoder-cn-0.5.17-aarch64.deb::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/latest/Qoder-CN-linux-arm64.deb
+	sha256sums_aarch64 = bd18d5089a8c010484554a19d3734be1cd83cee5f3ddac7fa06468167959ea5d
+	source_x86_64 = qoder-cn-0.5.17-x86_64.deb::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/latest/Qoder-CN-linux-amd64.deb
+	sha256sums_x86_64 = 081a6bea067e8e651cc9b72e732780c82b64476ec7c3dd423c0058eaa9e00d3c
 
 pkgname = qoder-cn-bin

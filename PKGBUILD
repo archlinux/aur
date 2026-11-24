@@ -1,11 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qoder-cn-bin
 _pkgname=Qoder-CN
-pkgver=0.5.7
+pkgver=0.5.17
 _electronversion=43
 pkgrel=1
 pkgdesc="Qoder 全新形态，以编程智能体为核心引擎，从想法到实现，轻松搞定。"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://qoder.cn"
 license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}")
@@ -24,15 +27,17 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/latest/${_pkgname}-linux-${CARCH}.rpm"
     "LICENSE.html"
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('SKIP'
-            '64a79bddff14167a290d3547d7b4bd00cf693be6d11fb6b7018bca9d9d778ab4'
-            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/latest/${_pkgname}-linux-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/latest/${_pkgname}-linux-amd64.deb")
+sha256sums=('64a79bddff14167a290d3547d7b4bd00cf693be6d11fb6b7018bca9d9d778ab4'
+            'd0f201d4e9b0690ccfbe9034779bf95a7a92996cef63a957bf15ea11c7d83236'
+            '6295de105284c8d173a862217d76eee1610dad92dd5543f3f9e6a08a6a77929a')
+sha256sums_aarch64=('bd18d5089a8c010484554a19d3734be1cd83cee5f3ddac7fa06468167959ea5d')
+sha256sums_x86_64=('081a6bea067e8e651cc9b72e732780c82b64476ec7c3dd423c0058eaa9e00d3c')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
@@ -60,14 +65,15 @@ _install_icons() {
 	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
-    _check_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/control."*
+	sed -nE 's/^Version:[[:space:]]*([0-9]+:)?([0-9]+(\.[0-9]+)*).*/\2/p' "${srcdir}/control" | head -n1 > "${srcdir}/.pkgver"
+    bsdtar -xf "${srcdir}/data."*
+    _check_electron_version
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    ( cd "${srcdir}" && asar ef "$(_get_app_dir)/resources/app.asar" package.json )
-    grep -oP '"version":\s*"\K[^"]+' "${srcdir}/package.json" > "${srcdir}/.pkgver"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

@@ -3,15 +3,19 @@ set -e
 export _APPDIR="/usr/lib/@appname@"
 export CHROME_DESKTOP="@appname@.desktop"
 export LD_LIBRARY_PATH="${_APPDIR}/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+if [[ "${ELECTRON_RUN_AS_NODE}" == "1" ]]; then
+	exec electron@electronversion@ "$@"
+fi
 if [[ -f "${_APPDIR}/app.asar" ]]; then
 	_RUNNAME="${_APPDIR}/app.asar"
 elif [[ -d "${_APPDIR}/app" ]]; then
 	_RUNNAME="${_APPDIR}/app"
-elif [[ -d "${_APPDIR}/app.asar.unpacked" ]]; then
-	_RUNNAME="${_APPDIR}/app.asar.unpacked"
+else
+	echo "${0##*/}: no application entry found in ${_APPDIR} (need app.asar or app/)" >&2
+	exit 1
 fi
 _SANDBOX_ARG=()
-if [[ "${EUID}" -eq 0 ]] && [[ "${ELECTRON_RUN_AS_NODE}" != "1" ]]; then
+if [[ "${EUID}" -eq 0 ]]; then
 	_SANDBOX_ARG=("--no-sandbox")
 fi
 _ozone_var="${_APPDIR##*/}"
@@ -34,4 +38,4 @@ auto)
 	_OZONE_ARG=("--ozone-platform=x11")
 	;;
 esac
-exec electron@electronversion@ "${_SANDBOX_ARG[@]}" "${_OZONE_ARG[@]}" --require "${_APPDIR}/@appname@.js" --app "${_RUNNAME}" "$@"
+exec electron@electronversion@ "${_SANDBOX_ARG[@]}" "${_OZONE_ARG[@]}" --require "${_APPDIR}/@appname@.js" "${_RUNNAME}" "$@"
