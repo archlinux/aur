@@ -1,0 +1,16 @@
+pkgbase = oneiromancer
+	pkgdesc = Reverse engineering assistant using a locally running LLM
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/0xdea/oneiromancer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = oneiromancer-0.9.2.tar.gz::https://github.com/0xdea/oneiromancer/archive/refs/tags/v0.9.2.tar.gz
+	sha256sums = f9609544f1e499f0265276eff20ec87c1505fc0b93790f3939bc1d36d2cc95c1
+
+pkgname = oneiromancer
