@@ -1,8 +1,8 @@
 # Maintainer: Fangru Shao <matrixc7p@gmail.com>
 _pkgname=ant-browser
 pkgname="${_pkgname}-bin"
-pkgver=1.9.4
-_tag=v1.9.4
+pkgver=1.9.7
+_tag=v1.9.7
 pkgrel=1
 pkgdesc="Multi-profile anti-detect browser launcher with proxy management"
 arch=('x86_64')
@@ -25,7 +25,7 @@ options=('!strip' '!debug')
 # 全套 hicolor 图标和 AppStream metainfo，而 tar.gz 只有应用本体；
 # 且 deb 的 data.tar.zst 顶层就是 opt/ 和 usr/share/，正好对应 $pkgdir。
 source=("ant-browser_${pkgver}_amd64.deb::https://github.com/black-ant/Ant-Browser/releases/download/${_tag}/ant-browser_${pkgver}_amd64.deb")
-sha256sums=('ec8e0c200197a6e150f32be09d1f3c09f874084c8094c9d88a5c074433683fa2')
+sha256sums=('8340be2f5776f6bcf74c5ea2157fd62d80a8aa3b389bdc86b175ec179d7bcf07')
 
 prepare() {
     # makepkg 通常会把 .deb 当普通归档解开，data.tar.zst 已在 $srcdir；这里再显式
