@@ -2,7 +2,7 @@
 # Repository: https://github.com/aslafy-z/aur-packages
 
 pkgname=kftray-appimage
-pkgver=0.34.0 # renovate: datasource=github-releases depName=kftray packageName=hcavarsan/kftray
+pkgver=0.36.0 # renovate: datasource=github-releases depName=kftray packageName=hcavarsan/kftray
 pkgrel=1
 pkgdesc='kubectl port forward manager, with support for UDP and proxy connections through k8s clusters'
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ depends=('hicolor-icon-theme')
 conflicts=(kftray)
 source_x86_64=("kftray-${pkgver}.AppImage::https://github.com/hcavarsan/kftray/releases/download/v${pkgver}/kftray_${pkgver}_amd64.AppImage")
 source_aarch64=("kftray-${pkgver}.AppImage::https://github.com/hcavarsan/kftray/releases/download/v${pkgver}/kftray_${pkgver}_aarch64.AppImage")
-sha256sums_x86_64=('dd0f276edcbf384a17f514f361f51cef7aa18cbf521d4bef9239edd53b024e41')
-sha256sums_aarch64=('f4efffb4705696f9c6bfe495939e74df3d75ebc70815a6bb99dd2053812a58ce')
+sha256sums_x86_64=('2223b304b34e84b488dc8a63271cf0783943881449ccfe08355b98b389a25ab3')
+sha256sums_aarch64=('0d5630d7a21b9a1bb2480bd0d9923fe16035d66de17baacf13009b9dfb8d2a96')
 
 prepare() {
     chmod u+x "${srcdir}/kftray-${pkgver}.AppImage"
