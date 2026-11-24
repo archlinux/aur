@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=designcraft
-pkgver=0.20.1
+pkgver=0.21.1
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('6c422a7bb8db1ac8acec20586483231944e174f093532a26e66e3cffd5317b31')
+sha256sums=('e106fde2015783c69ad420ea9a3e5a1e33fa10d7261430a3515ed3a4021ccdac')
 
 _srcenv() {
 	cd "$_archive"
