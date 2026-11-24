@@ -1,6 +1,6 @@
 # Maintainer: EbadiDev <archnet@duck.com>
 pkgname=archnet-bin
-pkgver=0.9.107
+pkgver=0.9.108
 pkgrel=11
 pkgdesc="A VPN GUI client supporting v2ray, xray, sing-box, clash, and mihomo cores"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "archnet.desktop"
     "archnet.sh"
 )
-sha256sums=('d8a870e70af50c9b7c27a9d133d965b2e313c758080a6aa46705385f4d79b88e'
+sha256sums=('ce34ec3d4246b51f2a1dfee473ebb4d676705bf1ecd6f9a33fda2896924f2b41'
             'b23a236988a94cc8373fa6505cdf7ea6e247570d04f238463d160b37917723c6'
             '290420620f618e7cb4e423749f2bfb0e7cb8afdb4f6c5e5c494c55b4889c0fc2')
 
