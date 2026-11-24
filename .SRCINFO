@@ -1,0 +1,18 @@
+pkgbase = bit-tui-bin
+	pkgdesc = Logo designer for the terminal with ANSI fonts, gradients, shadows and multi-format export
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/paulilaaso/bit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = bit-tui
+	conflicts = bit-tui
+	conflicts = bit
+	options = !debug
+	source_x86_64 = bit-tui-bin-0.4.0-x86_64.tar.gz::https://github.com/paulilaaso/bit/releases/download/v0.4.0/bit_0.4.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = adba07649b2b803935ab6cda996f60ae05aa05743f87456ceaead0032ac2e108
+	source_aarch64 = bit-tui-bin-0.4.0-aarch64.tar.gz::https://github.com/paulilaaso/bit/releases/download/v0.4.0/bit_0.4.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 97d747953a8842858eb6d4f231a2386ad466da0a03c8eab7605680fa5f426bc2
+
+pkgname = bit-tui-bin
