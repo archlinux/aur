@@ -25,9 +25,9 @@
 : ${_build_limit_cores:=auto} # number of cores for parallelism; or auto, limited by RAM
 
 ## update
-_icver="153.7.0-1"
-_commit="6e1dcc3e2b75cb650324ff3d4754361b5c00cd88"
-_ffsum="7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0"
+_icver="153.8.0-1"
+_commit="65f2436c426d829bf72c5f2fe51a13c7cff5c219"
+_ffsum="824d5e0bbcae30825ee4ec3267d21018b01d33ac2fda50065de8c41153d4ec85"
 
 ## package
 _pkgname="icecat"
