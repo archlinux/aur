@@ -1,0 +1,14 @@
+pkgbase = groq-cli
+	pkgdesc = Run GROQ queries from the command line
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/sanity-io/groq-cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = groq-cli-0.5.0.tgz
+	source = groq-cli-0.5.0.tgz::https://registry.npmjs.org/groq-cli/-/groq-cli-0.5.0.tgz
+	sha256sums = 1998b2027ae8f84fb0f11a3fc0ab856b881a6b366d0b22e804c9477243354ce7
+
+pkgname = groq-cli
