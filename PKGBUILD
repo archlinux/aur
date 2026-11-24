@@ -4,7 +4,7 @@
 # Contributor : Ben Ellis <benx45h@gmail.com>
 
 pkgname=renode-bin
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="A virtual development framework for multinode embedded networks"
 url="https://www.renode.io"
@@ -29,7 +29,7 @@ depends=('dotnet-runtime'
 source=("$pkgname-$pkgver-$pkgrel.tar.xz::https://github.com/renode/renode/releases/download/v${pkgver}/renode-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz")
 
 # checksum from package at time of pkgbuild
-sha256sums=('91bf4d6e3ca4c65cda71706fe6fa579a5142d1f435cac4dcbd254a28fec176f9')
+sha256sums=('4ecac08793583c4d876c65912366a56e6a68c2eb39f655147d96dbf505934615')
 
 package() {
     cp -a "$srcdir/opt" "$pkgdir/opt" 
