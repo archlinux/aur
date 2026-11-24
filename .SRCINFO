@@ -1,0 +1,14 @@
+pkgbase = git-contrib-calendar
+	pkgdesc = Git contributions calendar for the terminal
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/giannisp/git-contrib-calendar
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = git-contrib-calendar-1.3.0.tgz
+	source = git-contrib-calendar-1.3.0.tgz::https://registry.npmjs.org/git-contrib-calendar/-/git-contrib-calendar-1.3.0.tgz
+	sha256sums = 595deedcc95ca5f2af4b8eadba203880b558f1d2400381578751b7c67c309f71
+
+pkgname = git-contrib-calendar
