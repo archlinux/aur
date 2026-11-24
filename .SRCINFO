@@ -1,26 +1,33 @@
 pkgbase = sunflower-git
 	pkgdesc = Small and highly customizable twin-panel file manager for Linux with support for plugins
-	pkgver = 0.4.62.r211.g52f1a0d
-	pkgrel = 2
-	url = https://sunflower-fm.org
+	pkgver = 0.6.64.r0.g4feeec4
+	pkgrel = 1
+	url = https://github.com/MeanEYE/Sunflower
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = python-setuptools
-	makedepends = libnotify
 	depends = gtk3
 	depends = vte3
 	depends = python
 	depends = python-gobject
 	depends = python-chardet
 	depends = python-cairo
-	depends = librsvg
-	optdepends = libnotify
-	optdepends = python-mutagen: audio-metadata support
+	depends = libnotify
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = pango
+	depends = python-mutagen
+	depends = gtk4
+	depends = graphene
+	depends = python-importlib-metadata
+	depends = gtksourceview4
+	depends = gtksourceview5
 	optdepends = gvfs: mount-management
+	optdepends = gnome-keyring
 	provides = sunflower
 	conflicts = sunflower
-	source = git+https://github.com/MeanEYE/Sunflower.git#branch=v0.5
+	source = git+https://github.com/MeanEYE/Sunflower.git#branch=v0.6
 	sha256sums = SKIP
 
 pkgname = sunflower-git
