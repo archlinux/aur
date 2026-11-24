@@ -1,14 +1,16 @@
 # Maintainer: Phil Kulak <phil@kulak.us>
 pkgname=matui
-pkgver=1.0.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="An opinionated Matrix TUI client."
 makedepends=('cargo')
+checkdepends=('ffmpeg')
+optdepends=('ffmpeg: thumbnails for uploaded videos and animated images')
 arch=('x86_64')
 url="https://github.com/pkulak/matui"
 license=('GPL2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pkulak/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('c24ca5ad205db1e3ac4205963cbf68284757d878ad7b887e0d3d996014bb13aeeb5a91bf96b8de3dff23064d6c5f4fc007bdc5e57e48f07743827238764d1c87')
+b2sums=('16a606b8305bb0d9fe429140f95a3d888822dac21b6c6d2925386219ba6b91a5f5f11a5de8aae0704a4a68f8e5ee1f98716ce4a8bb11e400b52e30e1e372b7ee')
 
 build() {
     cd "$pkgname-$pkgver"
