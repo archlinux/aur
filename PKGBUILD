@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=animathio-bin
 _pkgname=AniMathIO
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="AniMathIO revolutionizes the creation of mathematical videos, tailored for educators, students, and professionals seeking to bring complex concepts to life."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/AniMathIO/AniMathIO/v${pkgver}/LICENSE"
 )
-sha256sums=('9991ed751b339942959b569be4aabcfbfc3bcff00a9a5e12fa72e142f0c91803'
+sha256sums=('20ac36e8077a54c410eb76bc06c295ef41b9650042fe335465013724ca7c61cd'
             '48f6289b2552d107a41350b2ee3339010373d1e0dd59834b4c7de5ecab96df72')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
