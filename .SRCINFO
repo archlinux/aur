@@ -1,0 +1,15 @@
+pkgbase = yoyo-tui
+	pkgdesc = TUI command launcher
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/leolorenzato/yoyo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	conflicts = yoyo
+	source = yoyo-tui-0.8.0.tar.gz::https://github.com/leolorenzato/yoyo/archive/v0.8.0.tar.gz
+	sha256sums = de1472caf734b92acc80e3d5f18090f7b98d1eb795631d3da3de4a44cab3b0c7
+
+pkgname = yoyo-tui
