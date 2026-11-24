@@ -2,7 +2,7 @@
 
 name=casm
 pkgname=casm-cli
-pkgver=0.0.0r18.g26fb2a7
+pkgver=0.1.0.r0.g26fb2a7
 pkgrel=1
 pkgdesc="A small build system for NASM projects."
 arch=('i686' 'x86_64' 'aarch64')
