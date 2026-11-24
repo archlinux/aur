@@ -2,7 +2,7 @@
 
 pkgname=python-k3cacheable
 _name=${pkgname#python-}
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Cache data which access frequently"
 provides=(${pkgname})
@@ -27,7 +27,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('5a5975589861b2f7d8650ca69b025d8f42e9b9d34c70914d169f677c770eb8b4')
+sha256sums=('70328380b528a6618741f0f414692a228a201e8fe4a7429e5c42762c1d676241')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx

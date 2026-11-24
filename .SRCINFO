@@ -1,6 +1,6 @@
 pkgbase = python-k3cacheable
 	pkgdesc = Cache data which access frequently
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/pykit3/k3cacheable
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-k3cacheable
 	depends = python-msgpack
 	provides = python-k3cacheable
 	conflicts = python-k3cacheable
-	source = k3cacheable::git+https://github.com/pykit3/k3cacheable.git#tag=v0.1.5
-	sha256sums = 5a5975589861b2f7d8650ca69b025d8f42e9b9d34c70914d169f677c770eb8b4
+	source = k3cacheable::git+https://github.com/pykit3/k3cacheable.git#tag=v0.1.6
+	sha256sums = 70328380b528a6618741f0f414692a228a201e8fe4a7429e5c42762c1d676241
 
 pkgname = python-k3cacheable
