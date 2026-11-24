@@ -1,6 +1,6 @@
 # Maintainer: Frigyes Erdosi-Szucs <eszfrigyes06 at gmail dot com>
 pkgname=universal-android-debloater-git
-pkgver=1.0.3.r100.g0dbd9f9
+pkgver=1.3.1.r20.g61fda8b
 pkgrel=1
 epoch=
 pkgdesc="A cross-platform GUI debloater for android devices"
@@ -8,10 +8,13 @@ arch=('x86_64')
 url="https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation.git"
 license=('GPL-3.0-or-later')
 groups=()
-depends=('android-tools' 'gcc-libs')
-makedepends=('git' 'cargo' 'clang' 'cmake' 'mold')
+depends=('android-tools' 'dbus' 'glibc' 'libgcc' 'libglvnd'
+         'libx11' 'libxcb' 'libxcursor' 'libxi'
+         'libxkbcommon' 'libxkbcommon-x11' 'vulkan-icd-loader' 'wayland'
+         'xdg-desktop-portal' 'xdg-utils')
+makedepends=('git' 'cargo')
 checkdepends=()
-optdepends=()
+optdepends=('zenity: fallback file and message dialogs when desktop portals are unavailable')
 provides=(universal-android-debloater-git)
 conflicts=('universal-android-debloater-opengl'
         'universal-android-debloater-opengl-bin'
