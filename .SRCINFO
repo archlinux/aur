@@ -1,0 +1,20 @@
+pkgbase = spettro-bin
+	pkgdesc = Terminal coding assistant with multi-agent workflows
+	pkgver = 2.8.4
+	pkgrel = 1
+	url = https://github.com/Aploide/spettro
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	provides = spettro
+	conflicts = spettro
+	options = !debug
+	source = spettro-bin-2.8.4-LICENSE::https://raw.githubusercontent.com/Aploide/spettro/v2.8.4/LICENSE
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = spettro-bin-2.8.4-x86_64.tar.gz::https://github.com/Aploide/spettro/releases/download/v2.8.4/spettro_v2.8.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = e2f00eb09d40b293cedfdb5fce1d02bdc498f9f1c733f0030064eb8356776069
+	source_aarch64 = spettro-bin-2.8.4-aarch64.tar.gz::https://github.com/Aploide/spettro/releases/download/v2.8.4/spettro_v2.8.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = f4bcfca61d108012e8e6ff495cfe77de0a770b5a007bd5367dfedaeca98a46df
+
+pkgname = spettro-bin
