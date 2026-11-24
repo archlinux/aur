@@ -2,7 +2,7 @@
 
 pkgname=python-k3cat
 _name=${pkgname#python-}
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Like nix command cat or tail, continuously scan a file line by line"
 provides=(${pkgname})
@@ -32,7 +32,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('73924c7ff50a501610eb5ef66ecf06ccd0151c583ba83dd377c5e96eb3f44b48')
+sha256sums=('5915cc09a1aa038e27cb84b9baf333e877c697dcf463b7ff085439e766f7d071')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
