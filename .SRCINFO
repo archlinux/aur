@@ -1,6 +1,6 @@
 pkgbase = sonar-bin
 	pkgdesc = A file manager inspired by KDE Dolphin (prebuilt release)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/samtoxie/sonar
 	arch = x86_64
@@ -13,13 +13,14 @@ pkgbase = sonar-bin
 	depends = libarchive
 	optdepends = udisks2: mount and eject removable drives from the sidebar
 	optdepends = breeze-icons: file and folder icons (or another icon theme)
+	optdepends = xdg-desktop-portal: let other apps use Sonar as their file chooser
 	provides = sonar
 	conflicts = sonar
 	conflicts = sonar-git
 	options = !strip
-	source = sonar-0.1.0.deb::https://github.com/samtoxie/sonar/releases/download/v0.1.0/Sonar_0.1.0_amd64.deb
-	source = LICENSE-0.1.0::https://raw.githubusercontent.com/samtoxie/sonar/v0.1.0/LICENSE
-	sha256sums = b9b96e55afee7482bd53faee41e4a1ee0401fc05941fea9b7d0e8287e10d43ec
+	source = sonar-0.1.1.deb::https://github.com/samtoxie/sonar/releases/download/v0.1.1/Sonar_0.1.1_amd64.deb
+	source = LICENSE-0.1.1::https://raw.githubusercontent.com/samtoxie/sonar/v0.1.1/LICENSE
+	sha256sums = 42b77a7895aa496e3483e3a253c9c3aa824ccc0172bab0b68fd7d7e2b4070434
 	sha256sums = 57fb42fbcd0b037ce528ed8f72f1ec095d67bc6825ecf1448ff39be1fe68a4b4
 
 pkgname = sonar-bin
