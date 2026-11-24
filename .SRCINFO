@@ -1,6 +1,6 @@
 pkgbase = neko-cloud-music
 	pkgdesc = NekoMusic: Free High-Quality Cloud Music
-	pkgver = 2026.1124.73
+	pkgver = 2026.1124.74
 	pkgrel = 1
 	url = https://github.com/FantasyNetworkCN/NekoMusicForPc
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = neko-cloud-music
 	depends = qt6-websockets
 	depends = openssl
 	optdepends = vulkan-icd-loader: Vulkan 液态玻璃
-	source = neko-cloud-music-08c99abd27c07ab62789a5069086ee7d49069900.tar.gz::https://github.com/FantasyNetworkCN/NekoMusicForPc/archive/08c99abd27c07ab62789a5069086ee7d49069900.tar.gz
+	source = neko-cloud-music-c88e7383139fda504911c7d201e973cd8d6be312.tar.gz::https://github.com/FantasyNetworkCN/NekoMusicForPc/archive/c88e7383139fda504911c7d201e973cd8d6be312.tar.gz
 	sha256sums = SKIP
 
 pkgname = neko-cloud-music
