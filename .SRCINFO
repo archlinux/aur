@@ -1,6 +1,6 @@
 pkgbase = eddie-git
 	pkgdesc = The editor that watches the footage for you: a native Rust video editor that AI agents can drive
-	pkgver = r200.9775fff
+	pkgver = r201.588b34d
 	pkgrel = 1
 	url = https://github.com/BurgessTG/eddie
 	arch = x86_64
