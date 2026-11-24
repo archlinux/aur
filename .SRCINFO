@@ -1,0 +1,17 @@
+pkgbase = aocgo-bin
+	pkgdesc = CLI for Advent of Code: fetch puzzles and inputs and submit answers
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/DaltonSW/aocgo
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	provides = aocgo
+	conflicts = aocgo
+	options = !debug
+	source = aocgo-bin-0.11.0-LICENSE::https://raw.githubusercontent.com/DaltonSW/aocgo/aocli-v0.11.0/LICENSE
+	sha256sums = 575d2120c4a7d7eb6848eac24ccb76662085b7948f0b76bb6d71a85bf5fe2230
+	source_x86_64 = aocgo-bin-0.11.0-x86_64::https://github.com/DaltonSW/aocgo/releases/download/aocli-v0.11.0/aocli-linux-amd64
+	sha256sums_x86_64 = b33b77d0c92cd9cf94b5f6e76397602211d39db0a388dc745addd71375e7b05b
+
+pkgname = aocgo-bin
