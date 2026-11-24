@@ -1,0 +1,21 @@
+pkgbase = relic-secrets-bin
+	pkgdesc = End-to-end encrypted secrets for developers and AI agents
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/heycupola/relic
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = glibc
+	depends = libgcc
+	provides = relic-secrets
+	conflicts = relic-secrets
+	conflicts = relic
+	options = !debug
+	options = !strip
+	source = relic-secrets-bin-0.11.1-LICENSE::https://raw.githubusercontent.com/heycupola/relic/v0.11.1/LICENSE
+	sha256sums = c5a392b040aa7f06cfd78c6e19bb0a4fc2801d19585a46a036f9793bd908e53a
+	source_x86_64 = relic-secrets-bin-0.11.1-x86_64.tar.gz::https://github.com/heycupola/relic/releases/download/v0.11.1/relic-linux-x64.tar.gz
+	sha256sums_x86_64 = 1fc41d645ec558580ae9a7f409b7adb763525a4d5ee521343def8df37ac9e0ac
+
+pkgname = relic-secrets-bin
