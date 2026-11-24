@@ -1,0 +1,21 @@
+pkgbase = nanocore-bin
+	pkgdesc = NanoCore 8-bit CPU emulator
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/afaanbilal/nanocore
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = nanocore
+	conflicts = nanocore
+	options = !debug
+	source = nanocore-bin-0.3.0-LICENSE::https://raw.githubusercontent.com/afaanbilal/nanocore/v0.3.0/LICENSE
+	sha256sums = 1d44934ee5d71d4ca6d1f1aa5c4384b8cf74eb781844d5621db55c7fbe30a719
+	source_x86_64 = nanocore-bin-0.3.0-x86_64.tar.gz::https://github.com/afaanbilal/nanocore/releases/download/v0.3.0/nanocore-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c5f96acaf22a29534be8a01a4b010a4dfad9d922134d2a5f3852b9d6cf3fccab
+	source_aarch64 = nanocore-bin-0.3.0-aarch64.tar.gz::https://github.com/afaanbilal/nanocore/releases/download/v0.3.0/nanocore-linux-arm64.tar.gz
+	sha256sums_aarch64 = 869c02541f45108c5362935041d1cf25730351824db613a9e22b5e52edd94ff5
+
+pkgname = nanocore-bin
