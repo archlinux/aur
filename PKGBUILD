@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=tvpipe
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Low-latency video and audio mirroring to AirPlay, Google Cast and browsers"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ optdepends=(
 # ring's C/assembly objects are linked by Rust, not GCC's LTO linker.
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1aed0d632b68def0080a21cbd1698fe90f9eb6c7fef1a7ae9d87a1652ffe6fa6')
+sha256sums=('a04f5730b4187c984ed4408d94f97e0cb71185f34db5fa53a98f0524acff3263')
 
 prepare() {
   cd "$pkgname-$pkgver"

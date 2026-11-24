@@ -1,6 +1,6 @@
 pkgbase = tvpipe
 	pkgdesc = Low-latency video and audio mirroring to AirPlay, Google Cast and browsers
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/mitsuhiko/tvpipe
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = tvpipe
 	optdepends = firefox: alternative browser for web page sharing
 	optdepends = xdg-utils: opening preview and share pages in the default browser
 	options = !lto
-	source = tvpipe-0.4.0.tar.gz::https://github.com/mitsuhiko/tvpipe/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 1aed0d632b68def0080a21cbd1698fe90f9eb6c7fef1a7ae9d87a1652ffe6fa6
+	source = tvpipe-0.4.1.tar.gz::https://github.com/mitsuhiko/tvpipe/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = a04f5730b4187c984ed4408d94f97e0cb71185f34db5fa53a98f0524acff3263
 
 pkgname = tvpipe
