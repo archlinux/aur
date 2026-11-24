@@ -1,7 +1,7 @@
 pkgbase = kando-bin
 	pkgdesc = A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kando.menu/
 	arch = aarch64
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = kando-bin
 	source = kando.sh
 	sha256sums = fd6cb731b549de5452efacb0833cda7a328eb5263537d29ca18de9d7938f7bab
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = 9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 	source_aarch64 = kando-3.0.1-aarch64.rpm::https://github.com/kando-menu/kando/releases/download/v3.0.1/kando-3.0.1-1.arm64.rpm
 	sha256sums_aarch64 = 2960df70f4d4253c7164fcd446bd52253c7ddb322b553362b30e5cd45ca2e549
 	source_x86_64 = kando-3.0.1-x86_64.rpm::https://github.com/kando-menu/kando/releases/download/v3.0.1/kando-3.0.1-1.x86_64.rpm
