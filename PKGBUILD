@@ -1,7 +1,7 @@
 # Maintainer: mizorewww <mizorewww@users.noreply.github.com>
 # Generated from course2md/packaging/aur/PKGBUILD-gui.template on release.
 pkgname=course2md-gui-bin
-pkgver=2.0.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Native desktop app to turn course videos into illustrated notes'
 arch=(x86_64)
@@ -21,7 +21,7 @@ provides=(course2md-gui)
 conflicts=(course2md-gui)
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/course2md-desktop-linux-x86_64.tar.gz")
-sha256sums=('3e6e929ba233dc63a5657d585f1d6e6a1ee8503f87d06a05d6f278487f5e1f96')
+sha256sums=('671125e29618ae20a60061a9cb6dd940b507bee9ac52adea0df403755195c053')
 
 package() {
     cd "${srcdir}/course2md-desktop-linux-x86_64"
@@ -37,6 +37,6 @@ package() {
     install -Dm644 course2md.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/course2md.png"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 LICENSE-material-icons "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-material-icons"
-    install -Dm644 LICENSE-lucide-icons "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-lucide-icons"
+    install -Dm644 THIRD-PARTY-LICENSES.txt "${pkgdir}/usr/share/licenses/${pkgname}/THIRD-PARTY-LICENSES.txt"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
