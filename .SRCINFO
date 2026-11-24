@@ -1,0 +1,21 @@
+pkgbase = mtp-mount-git
+	pkgdesc = Mount MTP devices as local filesystems via FUSE (git version)
+	pkgver = r82.7dd0821
+	pkgrel = 1
+	url = https://github.com/vdavid/mtp-mount
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = fuse3
+	depends = glibc
+	depends = libgcc
+	optdepends = libmtp: udev rules that give the desktop user access to MTP devices
+	provides = mtp-mount
+	conflicts = mtp-mount
+	options = !lto
+	source = mtp-mount::git+https://github.com/vdavid/mtp-mount.git
+	sha256sums = SKIP
+
+pkgname = mtp-mount-git
