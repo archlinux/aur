@@ -1,0 +1,18 @@
+pkgbase = hermes-hud
+	pkgdesc = TUI monitor for the Hermes AI agent
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/joeynyc/hermes-hud
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-textual
+	depends = python-yaml
+	source = hermes-hud-0.5.0.tar.gz::https://github.com/joeynyc/hermes-hud/archive/v0.5.0.tar.gz
+	sha256sums = 742e8f47f9e53c938a22cdc9b544c9d6b1cd19395346cc7f128c89b2f151045c
+
+pkgname = hermes-hud
