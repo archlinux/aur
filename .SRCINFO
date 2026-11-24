@@ -1,0 +1,19 @@
+pkgbase = python-textual-enhanced
+	pkgdesc = Mildly-opinionated enhancements to Textual
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/davep/textual-enhanced
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-uv-build
+	depends = python
+	depends = python-textual
+	source = https://files.pythonhosted.org/packages/source/t/textual_enhanced/textual_enhanced-1.6.1.tar.gz
+	source = python-textual-enhanced-1.6.1-LICENSE::https://raw.githubusercontent.com/davep/textual-enhanced/v1.6.1/LICENSE
+	sha256sums = ec96ad5ef331bb428c71b78922ba635813272c43a18072bce51b12c1089250fa
+	sha256sums = a0210c75e9deafff2043c596e7824b726304aea6b2b3b8386be59c9b2eca3c20
+
+pkgname = python-textual-enhanced
