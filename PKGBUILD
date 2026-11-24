@@ -1,9 +1,9 @@
 # Maintainer: noahlyk <noahlykins@gmail.com>
 pkgname=keymux
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="Keyboard middleware for gaming with low-level input interception"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/noahlyk/keymux"
 license=('GPL-3.0-or-later')
 depends=('udev' 'libevdev')
@@ -20,15 +20,8 @@ optdepends=('systemd: for systemd service files (or use OpenRC/runit scripts)'
 options=('!debug' '!lto')
 install=keymux.install
 
-_arch="$CARCH"
-if [ "$_arch" = "x86_64" ]; then
-    _arch="x86_64"
-elif [ "$_arch" = "aarch64" ]; then
-    _arch="aarch64"
-fi
-
+source_x86_64=("https://github.com/noahlyk/keymux/releases/download/v${pkgver}/keymux-${pkgver}-x86_64.tar.gz")
 source=(
-    "https://github.com/noahlyk/keymux/releases/download/v${pkgver}/keymux-${pkgver}-${_arch}.tar.gz"
     "LICENSE::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/LICENSE"
     "NOTICE::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/NOTICE"
     "keymux.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux.service"
@@ -57,7 +50,35 @@ source=(
     "runit-keymux-bspwm-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-bspwm/run"
     "runit-keymux-bspwm-log-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-bspwm/log/run"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+# placeholders: the release workflow fills in the real sums (updpkgsums) and refuses to push a SKIP
+sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+            'b46bd0961fc585a1e2f79f948cc52ebe0cf0e2740781fd391bf94b531383b566'
+            'eb16807e3e33e128c103904aa795c879d89ea5f493089a23930aaf2dd0d56c98'
+            '3cf2c1b2ff8277e44c2a9ea75695077ab85660c5beba21926e41af7a01e530d3'
+            'a7304399130ad16fdfcd2161781bf582651f03590b39968106fd40be68cdcd47'
+            'fe7070257c44742cbda54563a59008d287ba04cd0fe50fbef43a5b0e7a01bf7a'
+            '05fc0d770ab6be7283ad6e5b7535bf119438770c9d31b2863a026f91de010d2a'
+            'd53cbda5d362470e4e634ff88cdcb1b2e19a86151a092486f0b87c99401f0eef'
+            '3ca1dee3ae2908dab49f697b54a006a92f535bab525fdd8d85bf114866f5472a'
+            '5057a03d8279dd9e6a61e1cae874c092f23bc41a4ddae7faf9d9414e30bae519'
+            '2a03ee53fe71371bf35e70d6c5141f2273e0226143a44dd9b9f0c2723fbd638a'
+            'fb388b9a5e2a5b7e8f61b10db66389269579a0c959c2c0f7f835ae81f6fd80ad'
+            'fd45430c1db8cfd365511b6b1212c62a4789abfe425687d72e3c68c4b23c534d'
+            '9504337b38ad38ac04c0d55be86e12d0726f485b4084cf6aff47cc0b72259f93'
+            'ba86e00351508fe423a4682ccfc3803cf1a10762f1174a3c5808c5706ab6df6a'
+            'd5ee7d050f79e1f2cd1ae0fd24741640618cb339b3ef8ccb477f122a4ba631b0'
+            'dd321b3a1632a99004f74f6bc7bffea3969e073f015c3c9b9a75a33516af630a'
+            'da7d15588857397e9eeeb9041374d6408b4968dbe34361629e1153d5a388f2e0'
+            '18a5f86bea7274843cf5d6ac6281eaf7928825c637c141751661458e7f197ef3'
+            'b9cbdded9024f03441907d01a46db1e2b7d3cdb87352f28324e2ea75165a8304'
+            'c8af897f0a85125683276aac18b619505e3430ce4a400f9eaecd00b6ee8b2eb4'
+            '5882faad10c8646efe466115718d603502c8ebcb0232d51e0e33e929298eab30'
+            'de611b7d3de4629aca11f585e63ef456f1902bbf290fce6b735709c8757eed29'
+            '3e4213e7df6d49c9797719ee921bc8b9e620deb9c24ad2e5f0517006605df9f3'
+            '4d67b22a10a311481018007eebca44d92c1d882f421f8e2657f0564f52f4b15d'
+            '09f1da1dd4e92fb9b8a3ffc6a3794b5aadb824a76adcef233b4aea90dbc5abe5'
+            '1ab640288c63ff78bd7941eecc27bde25f2189ee0a7c5bc43e7651710605f83d')
+sha256sums_x86_64=('0840a9fbdc2c2fe9cd2a888aebf5fb9cc703f024b20109ce9ed5e25e4e78988c')
 
 package() {
     install -Dm755 "$srcdir/keymux" "$pkgdir/usr/bin/keymux"
