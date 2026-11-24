@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A full-featured database client that lives in your terminal: light, fast, and safe by default"
 
-pkgver=0.41.7
+pkgver=0.42.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('a8b4198ad2e71e89c69acb9c6ce465ef7dc95220140f8c68ba82bb45ccae90af')
-sha256sums_aarch64=('401a440f0c3bfc1aa31c8e06459c99bc34505d786b6b7924d9a7de2e02b84d5c')
+sha256sums_x86_64=('f589ddba0e99728fe29af243155ee853806102aa749cd073787fafce476f53ea')
+sha256sums_aarch64=('8e885a8d6a35c0ac7327ae4122943f0d500e36be17f3a1b9166f40198ec4fc09')
 
 
 case ${CARCH} in
