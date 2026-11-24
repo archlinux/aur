@@ -1,0 +1,20 @@
+pkgbase = rustune-bin
+	pkgdesc = Terminal music player with YouTube search and local playback
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://github.com/dzulfikar08/rustune
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	provides = rustune
+	conflicts = rustune
+	options = !debug
+	source_x86_64 = rustune-bin-0.3.8-x86_64.tar.gz::https://github.com/dzulfikar08/rustune/releases/download/v0.3.8/rustune-0.3.8-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ee28cd13292202d6f00788e844ebaf4a3b64cba154613d85a72d41eb4dd126c5
+	source_aarch64 = rustune-bin-0.3.8-aarch64.tar.gz::https://github.com/dzulfikar08/rustune/releases/download/v0.3.8/rustune-0.3.8-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a6f4ec5f8e479070743cef1c02d04c7125652da4fe6330c3d2d697e6a93a6284
+
+pkgname = rustune-bin
