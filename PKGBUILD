@@ -2,7 +2,7 @@
 # Contributor: Markus Kaiser <markus dot kaiser at in dot tum dot de>
 _base=panel
 pkgname=python-${_base}
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="The powerful data exploration & web app framework for Python"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-bokeh python-pyviz_comms python-markdown python-markdown-it-py
   python-linkify-it-py python-mdit_py_plugins python-tqdm python-bleach python-packaging python-tqdm)
 makedepends=(python-build python-installer python-hatch-vcs python-wheel npm)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('e382f12d0729ff9dcfe8644898e66bcec5ef13bb423c1a2422cf8f029e90a19eeca8aca15d96cd19a86aa3694bea24089ecd9ed4655cfa639309a534a8e6dd60')
+sha512sums=('54fe96e3b9b8d244a1a4013a32652849d3a873a8903de54d134b5e0ec7a12068ce3b52f5f4a36e48f61a2a890970b3bb1baf85798192b19b13a76aa6f5b69cd0')
 
 build() {
   cd ${_base}-${pkgver}
