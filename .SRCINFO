@@ -1,0 +1,16 @@
+pkgbase = browser-use-terminal-bin
+	pkgdesc = Terminal UI for getting things done in the browser with browser-use
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/browser-use/terminal
+	arch = x86_64
+	license = MIT
+	provides = browser-use-terminal
+	conflicts = browser-use-terminal
+	options = !debug
+	source = browser-use-terminal-bin-0.1.8-LICENSE::https://raw.githubusercontent.com/browser-use/terminal/v0.1.8/LICENSE
+	sha256sums = 5afa3d97bf1e6f998d587fa101e3fe0d0c416840b7fe77bcd6ae97690a334631
+	source_x86_64 = browser-use-terminal-bin-0.1.8-x86_64.tar.gz::https://github.com/browser-use/terminal/releases/download/v0.1.8/browser-use-terminal-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 8d414a17d0dfb7df282fbc787b276e35feeed8a2ce8b7c3629b13eb4d37817e5
+
+pkgname = browser-use-terminal-bin
