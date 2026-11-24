@@ -1,7 +1,7 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname='sonarqube-cli'
-pkgver=1.12.0.17622
+pkgver=1.13.1.18209
 pkgrel=1
 pkgdesc="Command line interface for SonarQube Server and SonarQube Cloud"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc' 'icu')
 options=('!strip')
 makedepends=('bun')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0d714bbefe108de876aa5a8af4b21c504a4b93e849c95a5eddb9c59d5648836d')
+sha256sums=('386d944a2ad9e8819d84b155ad00001088b88bc379ed7ff50e2ca4a54eb595df')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
