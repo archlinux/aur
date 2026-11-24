@@ -3,7 +3,7 @@
 pkgname=triplea
 _tag=2026-11.16.15918
 pkgver=2026.11.16.15918
-pkgrel=1
+pkgrel=2
 pkgdesc='An online multiplayer turn based strategy game and board game engine.'
 arch=('any')
 _appname='game-headed'
@@ -27,4 +27,24 @@ cd /usr/share/${pkgname}
 exec java -jar /usr/share/${pkgname}/bin/${_appname}-${_tag}.jar "\$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/triplea"
+
+    for size in 16 32 48 64 128 256; do
+        install -Dm644 "${srcdir}/assets/icons/triplea_icon_${size}_${size}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+    done
+
+    install -d "${pkgdir}/usr/share/applications"
+    cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" << EOF
+[Desktop Entry]
+Type=Application
+Name=TripleA
+GenericName=Turn-Based Strategy Game
+Comment=Online multiplayer turn-based strategy game and board game engine
+Exec=/usr/bin/triplea
+Icon=${pkgname}
+Terminal=false
+Categories=Game;StrategyGame;BoardGame;
+Keywords=triplea;axis;allies;strategy;board;game;
+EOF
+    chmod 644 "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
