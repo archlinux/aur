@@ -1,0 +1,20 @@
+pkgbase = telert
+	pkgdesc = Alerts when commands finish, code runs or system events happen
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/navig-me/telert
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-ping3
+	depends = python-psutil
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/t/telert/telert-0.2.9.tar.gz
+	sha256sums = 3e629699feb370e52bf5127322d4ea199dcbb8e1721eccee8037c41dba831182
+
+pkgname = telert
