@@ -1,0 +1,19 @@
+post_install() {
+  cat <<'EOF'
+
+nsh is installed. For documentation and guides, see:
+  https://github.com/longbridge/nsh
+
+Key commands:
+  nsh init <app>       Create a new app
+  nsh run <app>        Run app in development
+  nsh build <app>      Build app for distribution
+  nsh package <app>    Package installable app
+  nsh component list   List available runtimes (gpui, tui, web)
+  nsh component add <name>  Add a runtime
+
+The web, GPUI, and TUI runtimes are installed under /usr/lib/nsh/runtime/.
+Linux host and app runtimes are at /usr/bin/nsh-linux-host and /usr/bin/nsh-linux-app.
+
+EOF
+}
