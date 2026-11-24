@@ -1,4 +1,4 @@
-# ro-cei-cert
+# ro-cei-cert-aur
 
 An Arch Linux package that installs the Romanian electronic identity card
 root and subordinate CA certificates into the system trust store.
