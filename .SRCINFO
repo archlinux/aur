@@ -1,0 +1,19 @@
+pkgbase = sidecar-bin
+	pkgdesc = Diffs, file trees, history and tasks next to your CLI coding agent
+	pkgver = 1.17.1
+	pkgrel = 1
+	url = https://github.com/marcus/sidecar
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sidecar
+	conflicts = sidecar
+	options = !debug
+	source = sidecar-bin-1.17.1-LICENSE::https://raw.githubusercontent.com/marcus/sidecar/v1.17.1/LICENSE
+	sha256sums = e7a3e9a3051ab2804b2fb9a1471a47489b78c44b7688274210a3a977779828aa
+	source_x86_64 = sidecar-bin-1.17.1-x86_64.tar.gz::https://github.com/marcus/sidecar/releases/download/v1.17.1/sidecar_1.17.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = f0122d00e1e991eaeb4a7547893da805932d85393213b4be180ef717a23ea0e8
+	source_aarch64 = sidecar-bin-1.17.1-aarch64.tar.gz::https://github.com/marcus/sidecar/releases/download/v1.17.1/sidecar_1.17.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = f1f9630d52ec02df47fe25f5ff21dfeaffbe6512bc3aaba6e674c98fa841fa9e
+
+pkgname = sidecar-bin
