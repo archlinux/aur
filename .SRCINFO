@@ -1,6 +1,6 @@
 pkgbase = hoja-git
 	pkgdesc = GPU-accelerated file manager with splittable panes, built on GPUI
-	pkgver = r229.20b2e14
+	pkgver = r245.073131f
 	pkgrel = 1
 	url = https://github.com/slastra/hoja
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = hoja-git
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
 	depends = vulkan-icd-loader
+	optdepends = hoja-model-thumbnailer-git: pictures of STL, 3MF and G-code files
 	optdepends = git: colour file names by version control status
 	optdepends = xdg-utils: open files with their default application
 	optdepends = wl-clipboard: copy and paste files with other applications
@@ -35,3 +36,11 @@ pkgbase = hoja-git
 	b2sums = SKIP
 
 pkgname = hoja-git
+
+pkgname = hoja-model-thumbnailer-git
+	pkgdesc = Thumbnailer for STL, 3MF and G-code files, drawn on the CPU
+	depends = glibc
+	depends = libgcc
+	optdepends = 
+	provides = hoja-model-thumbnailer
+	conflicts = hoja-model-thumbnailer

@@ -1,8 +1,13 @@
 # Maintainer: Shaun Lastra <shaun@lastra.us>
 
-pkgname=hoja-git
+# Two packages from one build: hoja, and the thumbnailer for 3D printing files.
+# The thumbnailer is a package of its own because it is not a part of hoja.
+# hoja finds it as it finds every other thumbnailer, and other file managers
+# use it too.
+pkgbase=hoja-git
+pkgname=(hoja-git hoja-model-thumbnailer-git)
 _pkgname=hoja
-pkgver=r229.20b2e14
+pkgver=r245.073131f
 pkgrel=1
 pkgdesc='GPU-accelerated file manager with splittable panes, built on GPUI'
 arch=('x86_64')
@@ -31,6 +36,7 @@ depends=(
 # from whatever freedesktop thumbnailer is installed: ffmpegthumbnailer and
 # papers are one choice each, and totem, gst-thumbnailers or evince do as well.
 optdepends=(
+  'hoja-model-thumbnailer-git: pictures of STL, 3MF and G-code files'
   'git: colour file names by version control status'
   'xdg-utils: open files with their default application'
   'wl-clipboard: copy and paste files with other applications'
@@ -77,7 +83,9 @@ build() {
   export CARGO_TARGET_DIR=target
   # No --all-features: neither crate declares any, so it does nothing today and
   # would silently opt in to whichever one gets added first.
-  cargo build --frozen --release
+  # Not the whole workspace: hoja-drag and hoja-transfer are libraries that
+  # hoja links, and a plain `cargo build` at the root builds hoja alone.
+  cargo build --frozen --release -p hoja -p hoja-model-thumbnailer
 }
 
 check() {
@@ -88,14 +96,28 @@ check() {
   # and another under /tmp to force EXDEV and exercise the copy fallback — so it
   # asserts something about the machine it runs on, not about the code, and
   # fails where a build root has both on the same filesystem.
-  cargo test --frozen --release -p hoja
+  cargo test --frozen --release -p hoja -p hoja-model-thumbnailer
 }
 
-package() {
+package_hoja-git() {
   cd "$_pkgname"
   install -Dm755 target/release/hoja "$pkgdir/usr/bin/hoja"
   install -Dm644 packaging/hoja.desktop \
     "$pkgdir/usr/share/applications/hoja.desktop"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_hoja-model-thumbnailer-git() {
+  pkgdesc='Thumbnailer for STL, 3MF and G-code files, drawn on the CPU'
+  depends=('glibc' 'libgcc')
+  optdepends=()
+  provides=('hoja-model-thumbnailer')
+  conflicts=('hoja-model-thumbnailer')
+  cd "$_pkgname"
+  install -Dm755 target/release/hoja-model-thumbnailer \
+    "$pkgdir/usr/bin/hoja-model-thumbnailer"
+  install -Dm644 packaging/hoja-model.thumbnailer \
+    "$pkgdir/usr/share/thumbnailers/hoja-model.thumbnailer"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
