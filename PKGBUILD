@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=deja-vu-bin
-pkgver=0.25.0
+pkgver=0.25.1
 pkgrel=1
 pkgdesc='Shared local memory, cross-agent handoff and code recovery for coding agents (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('deja-vu' 'deja')
 _release="${url}/releases/download/v${pkgver}"
 source_x86_64=("${_release}/deja-vu_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${_release}/deja-vu_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('3a95763c34884cb26b322157b3a56a8b4b675eb39f979ea5c54e927092689b72')
-sha256sums_aarch64=('605a54d0b67bac840d5bdfc4d7c045792507b20f7f545dde23229b5dae62a581')
+sha256sums_x86_64=('06fc206345fd11be884d78c9e0f87b080f8b64482131b6aac09e4d666f58acfc')
+sha256sums_aarch64=('8fbf9b0b3966caf3ecb54db33023b6b29cfd353a05506d84a0d190f99bb26c10')
 
 build() {
   for shell in bash fish zsh; do
