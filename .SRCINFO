@@ -1,0 +1,21 @@
+pkgbase = scythe-bin
+	pkgdesc = SQL formatting, linting and security auditing
+	pkgver = 0.20.2
+	pkgrel = 1
+	url = https://github.com/goldziher/scythe
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = zlib
+	provides = scythe
+	conflicts = scythe
+	options = !debug
+	source_x86_64 = scythe-bin-0.20.2-x86_64.tar.gz::https://github.com/goldziher/scythe/releases/download/v0.20.2/scythe-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 5320a713427c09d87d56790a5e1e8ac134e5b22439cf3d386b3bd2a0961f1976
+	source_aarch64 = scythe-bin-0.20.2-aarch64.tar.gz::https://github.com/goldziher/scythe/releases/download/v0.20.2/scythe-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 8e165518d6d4530e2fc84826fd15eed20dd80efe9d8773be9b89585c1c646fe2
+
+pkgname = scythe-bin
