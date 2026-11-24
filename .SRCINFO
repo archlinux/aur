@@ -1,0 +1,19 @@
+pkgbase = wptui-bin
+	pkgdesc = Keyboard-driven WhatsApp client for the terminal
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/andiveli/wptui
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = chafa
+	depends = glibc
+	depends = libgcc
+	depends = wayland
+	provides = wptui
+	conflicts = wptui
+	options = !debug
+	source_x86_64 = wptui-bin-0.4.0-x86_64.tar.gz::https://github.com/andiveli/wptui/releases/download/v0.4.0/wptui-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 8ebfc82765f7b36d4dca4d36a27fba2510d6f1bb1bc05d91ff3a4c8bf10a94fe
+
+pkgname = wptui-bin
