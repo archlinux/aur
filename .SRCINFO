@@ -1,0 +1,19 @@
+pkgbase = coddy-agent-bin
+	pkgdesc = General-purpose agent with a console TUI and an ACP server
+	pkgver = 1.4.45
+	pkgrel = 1
+	url = https://github.com/coddy-project/coddy-agent
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = coddy-agent
+	conflicts = coddy-agent
+	options = !debug
+	source = coddy-agent-bin-1.4.45-LICENSE::https://raw.githubusercontent.com/coddy-project/coddy-agent/1.4.45/LICENSE
+	sha256sums = c3e1be9b60cb2797323867b2cc7edd00d68ed96acc0efd6e82138b9af73cccfd
+	source_x86_64 = coddy-agent-bin-1.4.45-x86_64.tar.gz::https://github.com/coddy-project/coddy-agent/releases/download/1.4.45/coddy_1.4.45_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5757fe1a2894a951052025e61058ad457ff168d05c6b7bd35c6cdc398c44895a
+	source_aarch64 = coddy-agent-bin-1.4.45-aarch64.tar.gz::https://github.com/coddy-project/coddy-agent/releases/download/1.4.45/coddy_1.4.45_linux_arm64.tar.gz
+	sha256sums_aarch64 = c02460e032585e05567bbd374b4ecddd8fc16e28c9d3f27fd16fc34649523e26
+
+pkgname = coddy-agent-bin
