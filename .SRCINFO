@@ -1,6 +1,6 @@
 pkgbase = hornero-shell
 	pkgdesc = Hornero OS desktop shell, built with Quickshell, QML and Qt for Wayland
-	pkgver = 1.3.7
+	pkgver = 1.3.8
 	pkgrel = 2
 	url = https://github.com/HorneroOS/shell
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = hornero-shell
 	optdepends = qt6-imageformats: Hornero Chromatic colours from WebP, AVIF, TIFF and more wallpaper formats
 	optdepends = swappy: screenshot annotation
 	optdepends = wl-clipboard: clipboard integration via wl-copy
-	source = hornero-shell::git+https://github.com/HorneroOS/shell.git#commit=b3a98d820e281c49ca38525986c2cef6213b152a
+	source = hornero-shell::git+https://github.com/HorneroOS/shell.git#commit=8fbc5fcf877f70d202a8104da4c15f6cfb5d4444
 	sha256sums = SKIP
 
 pkgname = hornero-shell
