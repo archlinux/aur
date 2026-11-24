@@ -1,22 +1,37 @@
 pkgbase = akhenaten-git
-	pkgdesc = Open-source engine for Pharaoh (+Cleopatra) city-building game
-	pkgver = ra2506.51.g4e62e6f22
+	pkgdesc = Open source engine for Pharaoh and Cleopatra
+	pkgver = 0.2.9.ra0.29.r211.g790ee246a
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/dalerank/Akhenaten
 	arch = x86_64
 	license = AGPL-3.0-only
+	license = MIT
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
-	makedepends = glm
+	makedepends = pkgconf
+	makedepends = stb
+	depends = curl
+	depends = freetype2
+	depends = harfbuzz
+	depends = libglvnd
+	depends = libpng
 	depends = sdl2
 	depends = sdl2_mixer
-	depends = sdl2_image
+	depends = zlib
 	depends = hicolor-icon-theme
-	optdepends = libpng: needed for image loading
+	optdepends = innoextract: extract a GOG/Inno Setup Pharaoh installer
+	optdepends = 7zip: extract InstallShield installer archives
+	optdepends = unshield: extract InstallShield CAB archives
 	provides = akhenaten
 	conflicts = akhenaten
-	source = akhenaten-git::git+https://github.com/dalerank/Akhenaten.git
+	options = !debug
+	source = akhenaten-git::git+https://github.com/dalerank/Akhenaten.git#branch=master
+	source = imgui::git+https://github.com/ocornut/imgui.git#tag=v1.92.2
+	source = system-deps.patch
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = df45904df29abe7715eefda67b266f735170e73c775ff8b46abf305597f95cc5
 
 pkgname = akhenaten-git

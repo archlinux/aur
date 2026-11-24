@@ -1,0 +1,651 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 89c00cb45..d739f8a0b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -85,9 +85,7 @@ set(GAME_PROCESSOR_ARCH "x64")
+ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+ include("${CMAKE_MODULE_PATH}/CMakeRC.cmake")
+ 
+-# Force using zlib from FetchContent, ignore system zlib
+-# This prevents find_package(ZLIB) from finding system libraries
+-set(CMAKE_FIND_PACKAGE_PREFER_CONFIG TRUE)
++# Arch package: prefer the distribution libraries.
+ 
+ # Dependency versions
+ set(SDL2_VERSION "2.32.10")
+@@ -243,6 +241,7 @@ elseif(APPLE AND CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
+     set(MACOS_X64_BUILD ON)
+ endif()
+ 
++if(NOT AKHENATEN_SYSTEM_PACKAGE)
+ if(NOT WIN_EMSCRIPTEN AND NOT MACOS_X64_BUILD)
+     set(LOCAL_DEPS_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/_deps")
+     if (EXISTS "${LOCAL_DEPS_ROOT}/curl-src/CMakeLists.txt")
+@@ -762,6 +761,41 @@ FetchContent_Declare(
+ )
+ FetchContent_MakeAvailable(imgui)
+ 
++else()
++    # Distribution build: use the shared libraries from pacman.
++    find_package(PkgConfig REQUIRED)
++    pkg_check_modules(SDL2 REQUIRED IMPORTED_TARGET sdl2)
++    pkg_check_modules(SDL2_MIXER REQUIRED IMPORTED_TARGET SDL2_mixer)
++    pkg_check_modules(FREETYPE REQUIRED IMPORTED_TARGET freetype2)
++    pkg_check_modules(HARFBUZZ REQUIRED IMPORTED_TARGET harfbuzz)
++    pkg_check_modules(ZLIB REQUIRED IMPORTED_TARGET zlib)
++    pkg_check_modules(LIBPNG REQUIRED IMPORTED_TARGET libpng)
++    pkg_check_modules(CURL REQUIRED IMPORTED_TARGET libcurl)
++
++    set(SDL2_LIBRARY PkgConfig::SDL2)
++    set(SDL2_MAIN_LIBRARY "")
++    set(SDL2_INCLUDE_DIR ${SDL2_INCLUDE_DIRS})
++    set(SDL2_INCLUDE_ADD_DIR "")
++    set(SDL2_MIXER_LIBRARY PkgConfig::SDL2_MIXER)
++    set(SDL2_MIXER_INCLUDE_DIR ${SDL2_MIXER_INCLUDE_DIRS})
++    set(FREETYPE_LIBRARY PkgConfig::FREETYPE)
++    set(FREETYPE_INSTALL_DIR /usr)
++    set(HARFBUZZ_LIBRARY PkgConfig::HARFBUZZ)
++    set(HARFBUZZ_INSTALL_DIR /usr)
++    set(ZLIB_LIBRARY PkgConfig::ZLIB)
++    set(LIBPNG_LIBRARY PkgConfig::LIBPNG)
++    set(LIBPNG_INCLUDE_DIR ${LIBPNG_INCLUDE_DIRS})
++    set(CURL_LIBRARIES PkgConfig::CURL)
++    add_definitions(-DGAME_HAVE_CURL)
++
++    # Dear ImGui is supplied by the PKGBUILD at the pinned version.
++    if(NOT DEFINED AKHENATEN_IMGUI_SOURCE_DIR OR
++       NOT EXISTS "${AKHENATEN_IMGUI_SOURCE_DIR}/imgui.h")
++        message(FATAL_ERROR "Set AKHENATEN_IMGUI_SOURCE_DIR to Dear ImGui v1.92.2")
++    endif()
++    set(imgui_SOURCE_DIR "${AKHENATEN_IMGUI_SOURCE_DIR}")
++endif()
++
+ if (PLATFORM_ANDROID)
+     set(PROJECT_VERSION_MAJOR 0)
+     set(PROJECT_VERSION_MINOR 2)
+@@ -834,6 +868,26 @@ file(GLOB BZIP_FILES ${PROJECT_SOURCE_DIR}/src/bzip/*.c)
+ file(GLOB LAME_FILES ${PROJECT_SOURCE_DIR}/src/lame/libmp3lame/*.c)
+ file(GLOB MUJS_FILES ${PROJECT_SOURCE_DIR}/src/mujs/*.cpp)
+ 
++# These translation units are disabled by platform guards on Linux. Avoid
++# compiling empty objects in the distribution package build.
++if(AKHENATEN_SYSTEM_PACKAGE AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
++    list(REMOVE_ITEM PLATFORM_FILES
++        ${PROJECT_SOURCE_DIR}/src/platform/platform_android.cpp
++        ${PROJECT_SOURCE_DIR}/src/platform/platform_emscripten.cpp
++        ${PROJECT_SOURCE_DIR}/src/platform/platform_hw_timers_windows.cpp
++        ${PROJECT_SOURCE_DIR}/src/platform/platform_macos.cpp
++        ${PROJECT_SOURCE_DIR}/src/platform/platform_switch.cpp
++        ${PROJECT_SOURCE_DIR}/src/platform/platform_vita.cpp
++        ${PROJECT_SOURCE_DIR}/src/platform/platform_windows.cpp
++        ${PROJECT_SOURCE_DIR}/src/platform/windows_log.cpp)
++    list(REMOVE_ITEM CONTENT_FILES
++        ${PROJECT_SOURCE_DIR}/src/content/content_android.cpp
++        ${PROJECT_SOURCE_DIR}/src/content/content_emscripten.cpp
++        ${PROJECT_SOURCE_DIR}/src/content/content_vita.cpp)
++    list(REMOVE_ITEM JS_FILES
++        ${PROJECT_SOURCE_DIR}/src/js/js_folder_notifier_macos.cpp)
++endif()
++
+ if (PLATFORM_ANDROID)
+     add_definitions(-DANDROID_BUILD=ON)
+     file(GLOB ANDROID_BACKEND_FILES ${PROJECT_SOURCE_DIR}/src/platform/android/*.cpp)
+@@ -1204,6 +1258,9 @@ include_directories(${imgui_SOURCE_DIR}/backends)
+ include_directories(${imgui_SOURCE_DIR}/misc/cpp)
+ include_directories(${HARFBUZZ_INCLUDE_DIRS})
+ include_directories(ext)
++if(AKHENATEN_SYSTEM_PACKAGE)
++    include_directories(/usr/include/stb)
++endif()
+ include_directories(ext/gpupixel/utils)
+ 
+ if (PLATFORM_ANDROID OR WIN_EMSCRIPTEN OR APPLE)
+@@ -1308,6 +1365,7 @@ message(STATUS "freetype: Linked from ${FREETYPE_INSTALL_DIR}")
+ target_include_directories(${GAME} PRIVATE ${HARFBUZZ_INCLUDE_DIRS})
+ message(STATUS "harfbuzz: Linked from ${HARFBUZZ_INSTALL_DIR}")
+ 
++if(NOT AKHENATEN_SYSTEM_PACKAGE)
+ set(ZLIB_ROOT ${ZLIB_ROOT} CACHE PATH "" FORCE)
+ set(CMAKE_PREFIX_PATH "${ZLIB_ROOT};${CMAKE_PREFIX_PATH}" CACHE PATH "" FORCE)
+ 
+@@ -1367,9 +1425,13 @@ set(PNG_FOUND TRUE CACHE BOOL "Whether libpng was found" FORCE)
+ # libpng section end
+ #
+ 
++endif()
++
+ target_link_libraries(${GAME} ${LIBPNG_LIBRARY})
+ target_include_directories(${GAME} PRIVATE ${LIBPNG_INCLUDE_DIR})
+-message(STATUS "libpng: Linked via FetchContent from ${LIBPNG_SOURCE_DIR}")
++if(NOT AKHENATEN_SYSTEM_PACKAGE)
++    message(STATUS "libpng: Linked via FetchContent from ${LIBPNG_SOURCE_DIR}")
++endif()
+ 
+ if(WIN_EMSCRIPTEN)
+     # For Emscripten, SDL2 and SDL2_mixer are provided via ports (-sUSE_SDL=2 -sUSE_SDL_MIXER=2)
+diff --git a/ext/gpupixel/CMakeLists.txt b/ext/gpupixel/CMakeLists.txt
+index 21f2d1a9d..a096c98e7 100644
+--- a/ext/gpupixel/CMakeLists.txt
++++ b/ext/gpupixel/CMakeLists.txt
+@@ -21,7 +21,7 @@ include_directories(${PROJECT_SOURCE_DIR}/core)
+ if (MSVC)
+     # Suppress warning C4005: macro redefinition
+     target_compile_options(${PROJECT_NAME} PRIVATE /wd4005)
+-else()
++elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+   # Suppress warning about macro redefinition
+   target_compile_options(${PROJECT_NAME} PRIVATE -Wno-macro-redefined)
+ endif()
+@@ -73,4 +73,4 @@ set(GPUPIXEL_LIBRARY ${PROJECT_NAME}
+ # Link Tracy if it's available
+ if(TARGET Tracy::TracyClient)
+     target_link_libraries(${PROJECT_NAME} PUBLIC Tracy::TracyClient)
+-endif()
+\ No newline at end of file
++endif()
+diff --git a/ext/gpupixel/core/opengl3_loader.h b/ext/gpupixel/core/opengl3_loader.h
+index 14aad66e6..fedfbc973 100644
+--- a/ext/gpupixel/core/opengl3_loader.h
++++ b/ext/gpupixel/core/opengl3_loader.h
+@@ -190,10 +190,14 @@ extern "C" {
+ #define GL_TEXTURE_MAG_FILTER             0x2800
+ #define GL_TEXTURE_MIN_FILTER             0x2801
+ #define GL_CLAMP_TO_EDGE                  0x812F
++#ifndef GL_FRAMEBUFFER
+ #define GL_FRAMEBUFFER                    0x8d40
++#endif
+ #define GL_TEXTURE_WRAP_S                 0x2802
+ #define GL_TEXTURE_WRAP_T                 0x2803
++#ifndef GL_COLOR_ATTACHMENT0
+ #define GL_COLOR_ATTACHMENT0              0x8ce0
++#endif
+ #define GL_NO_ERROR                       0
+ #define GL_INVALID_ENUM                   0x0500
+ #define GL_INVALID_VALUE                  0x0501
+diff --git a/src/app/game_shell.cpp b/src/app/game_shell.cpp
+index e4918d7e2..418af156a 100644
+--- a/src/app/game_shell.cpp
++++ b/src/app/game_shell.cpp
+@@ -82,11 +82,13 @@ static int get_elapsed_ticks() {
+ bool game_t::check_valid() {
+     vfs::content_cache_paths();
+ 
++#if !defined(GAME_PLATFORM_LINUX)
+     vfs::path log_directory = vfs::platform_file_manager_get_base_path();
+     if (g_args.is_integral_tests()) {
+         log_directory = platform.user_directory();
+     }
+     logs::switch_output(log_directory.c_str());
++#endif
+     locale_determine_language();
+     anti_scum_set_clock_reseed(!g_args.is_integral_tests());
+ 
+diff --git a/src/content/dir.cpp b/src/content/dir.cpp
+index 4d5f6d6b8..782937799 100644
+--- a/src/content/dir.cpp
++++ b/src/content/dir.cpp
+@@ -5,6 +5,7 @@
+ #include "game/game_config.h"
+ #include "content/content.h"
+ #include "platform/platform.h"
++#include "platform/xdg_paths.h"
+ 
+ #include <stdlib.h>
+ #include <string.h>
+@@ -264,6 +265,12 @@ static bool correct_case_on_disk(pcstr relative, vfs::path& out) {
+ #endif
+ 
+ vfs::path content_path(pcstr path) {
++    if (akhenaten_xdg::game_data_path(path)) {
++        const auto data = akhenaten_xdg::data_directory();
++        if (!data.empty()) {
++            return vfs::path(data.string().c_str(), "/", path);
++        }
++    }
+     vfs::path uri_path = content_internal_path(path);
+     vfs::path orig_path = uri_path;
+     vfs::path lower = uri_path.tolower();
+@@ -339,6 +346,11 @@ vfs::path vfs::path::resolve() {
+     }
+ 
+     vfs::path from_content = content_path(filepath);
++    // Save/ and Maps/ are always user data, even if a legacy copy exists in
++    // the launch directory. Otherwise a save could overwrite the old copy.
++    if (akhenaten_xdg::game_data_path(filepath)) {
++        return from_content;
++    }
+     if (std::filesystem::exists(from_content.c_str())) {
+         return from_content;
+     }
+@@ -361,6 +373,18 @@ vfs::path vfs::path::resolve() {
+     }
+ #endif
+ 
++    // Engine assets are installed beside the executable in system packages.
++    // Only consult that read-only directory for data/ files, after user files.
++    if (strncmp(filepath, "data/", 5) == 0) {
++        if (char* base = SDL_GetBasePath()) {
++            vfs::path from_install(base, filepath);
++            SDL_free(base);
++            if (std::filesystem::exists(from_install.c_str())) {
++                return from_install;
++            }
++        }
++    }
++
+     // Not found anywhere (new file) — return game-dir path so writes go to the right place.
+     return from_content;
+ #else
+diff --git a/src/content/vfs.cpp b/src/content/vfs.cpp
+index df61fc933..a883f368d 100644
+--- a/src/content/vfs.cpp
++++ b/src/content/vfs.cpp
+@@ -3,6 +3,7 @@
+ #include "core/string.h"
+ #include "core/log.h"
+ #include "platform/platform.h"
++#include "platform/xdg_paths.h"
+ #include "zipreader.hpp"
+ #include "reader.h"
+ 
+@@ -13,6 +14,7 @@
+ #include <fstream>
+ #include <sstream>
+ #include <memory>
++#include <limits>
+ #include <string>
+ 
+ #if defined(GAME_PLATFORM_ANDROID)
+@@ -215,13 +217,29 @@ reader file_open(path path, pcstr mode) {
+ #if defined(GAME_PLATFORM_ANDROID)
+         return read_file_stream(path, f, false);
+ #else
+-        fseek(f, 0, SEEK_END);
+-        uint32_t size = ftell(f);
+-        fseek(f, 0, SEEK_SET);
+-        void *mem = malloc(size);
+-        fread(mem, 1, size, f);
++        if (fseek(f, 0, SEEK_END) != 0) {
++            fclose(f);
++            return reader();
++        }
++        const long file_size = ftell(f);
++        if (file_size < 0 || file_size > std::numeric_limits<int>::max() ||
++            fseek(f, 0, SEEK_SET) != 0) {
++            fclose(f);
++            return reader();
++        }
++        const size_t size = static_cast<size_t>(file_size);
++        void *mem = malloc(size ? size : 1);
++        if (!mem) {
++            fclose(f);
++            return reader();
++        }
++        const size_t bytes_read = fread(mem, 1, size, f);
+         fclose(f);
+-        return std::make_shared<data_reader>(path.c_str(), mem, size);
++        if (bytes_read != size) {
++            free(mem);
++            return reader();
++        }
++        return std::make_shared<data_reader>(path.c_str(), mem, static_cast<int>(size));
+ #endif
+     }
+ 
+@@ -236,6 +254,9 @@ bool file_remove(path filename) {
+     if (filename.empty()) {
+         return false;
+     }
++    if (akhenaten_xdg::game_data_path(filename.c_str())) {
++        filename = filename.resolve();
++    }
+     bool res = platform_file_manager_remove_file(filename.c_str());
+     sync_em_fs();
+     return res;
+@@ -246,6 +267,9 @@ bool file_rename_os(path from, path to) {
+         return false;
+     }
+ 
++    if (akhenaten_xdg::game_data_path(from.c_str())) from = from.resolve();
++    if (akhenaten_xdg::game_data_path(to.c_str())) to = to.resolve();
++
+ #if defined(GAME_PLATFORM_ANDROID)
+     if (::android_rename_file(from.c_str(), to.c_str())) {
+         sync_em_fs();
+@@ -367,6 +391,9 @@ bool mount_pack(path filename) {
+ }
+ 
+ void create_folders(path folder_path) {
++    if (akhenaten_xdg::game_data_path(folder_path.c_str())) {
++        folder_path = content_path(folder_path.c_str());
++    }
+ #if defined(GAME_PLATFORM_ANDROID)
+     if (!folder_path.empty()) {
+         ::android_create_directories(folder_path.c_str());
+diff --git a/src/core/bstring.h b/src/core/bstring.h
+index 8a7df8a63..5a870f825 100644
+--- a/src/core/bstring.h
++++ b/src/core/bstring.h
+@@ -193,7 +193,12 @@ public:
+ 
+     template <typename... Args>
+     inline ref printf(pcstr fmt, const Args&... args) {
+-        snprintf(_data, _size - 1, fmt, fmt_arg(args)...);
++        if constexpr (sizeof...(Args) == 0) {
++            // A plain message can contain '%' and need not be a format string.
++            concat(fmt);
++        } else {
++            snprintf(_data, _size - 1, fmt, fmt_arg(args)...);
++        }
+         _data[_size - 1] = 0;
+         return *this;
+     }
+diff --git a/src/core/log.cpp b/src/core/log.cpp
+index b97525649..f3f75aa9c 100644
+--- a/src/core/log.cpp
++++ b/src/core/log.cpp
+@@ -3,6 +3,7 @@
+ #include "platform/platform.h"
+ #include "core/core.h"
+ #include "core/svector.h"
++#include "platform/xdg_paths.h"
+ 
+ #include <SDL.h>
+ #include <SDL_log.h>
+@@ -15,6 +16,7 @@
+ #include <cstdlib>
+ #include <iostream>
+ #include <fstream>
++#include <filesystem>
+ #include <string>
+ #include <utility>
+ #include <core/flat_map.h>
+@@ -193,7 +195,12 @@ public:
+         }
+ 
+         register_default_sinks_();
+-        open_file_(nullptr);
++        const auto state_dir = akhenaten_xdg::state_directory();
++        if (!state_dir.empty()) {
++            std::error_code ec;
++            std::filesystem::create_directories(state_dir, ec);
++            open_file_(state_dir.string().c_str());
++        }
+ 
+         if (debugger_present()) {
+             return;
+diff --git a/src/figuretype/figure_flotsam.cpp b/src/figuretype/figure_flotsam.cpp
+index 8f81485a7..ec6d38ed3 100644
+--- a/src/figuretype/figure_flotsam.cpp
++++ b/src/figuretype/figure_flotsam.cpp
+@@ -123,7 +123,7 @@ void figure_flotsam::figure_action() {
+ 
+ void figure_flotsam::update_animation() {
+     auto& d = runtime_data();
+-    const int frames = (base.resource_id == FLOTSAM_KIND_BOBBING) ? (int)std::size(FLOTSAM_BOB_FRAMES)
++    const int frames = (base.resource_id == static_cast<e_resource>(FLOTSAM_KIND_BOBBING)) ? (int)std::size(FLOTSAM_BOB_FRAMES)
+                                                                   : (int)std::size(FLOTSAM_DEBRIS_FRAMES);
+     d.frame++;
+     if (d.frame < 0 || d.frame >= frames) {
+diff --git a/src/js/test/js_test_monuments.cpp b/src/js/test/js_test_monuments.cpp
+index e8ac1c86b..edd64186e 100644
+--- a/src/js/test/js_test_monuments.cpp
++++ b/src/js/test/js_test_monuments.cpp
+@@ -361,7 +361,8 @@ static int __test_pyramid_park_waiting_mason(int bid, int fid) {
+     g_monument_pyramid_figure.set_work_part_bid(f, frontier[0]);
+     g_monument_pyramid_figure.walk_mode(f) = PYRAMID_WALK_ON_LAYER;
+     f->action_state
+-      = f->type == FIGURE_BRICKLAYER ? ACTION_8_BRICKLAYER_WAIT_FOR_BLOCK : ACTION_19_MASON_WAIT_FOR_BLOCK;
++      = f->type == FIGURE_BRICKLAYER ? static_cast<int>(ACTION_8_BRICKLAYER_WAIT_FOR_BLOCK)
++                                    : static_cast<int>(ACTION_19_MASON_WAIT_FOR_BLOCK);
+     return frontier[0];
+ }
+ ANK_FUNCTION_2(__test_pyramid_park_waiting_mason);
+diff --git a/src/lame/libmp3lame/quantize.c b/src/lame/libmp3lame/quantize.c
+index 731221028..59f8cf88b 100644
+--- a/src/lame/libmp3lame/quantize.c
++++ b/src/lame/libmp3lame/quantize.c
+@@ -1338,7 +1338,7 @@ VBR_encode_granule(lame_internal_flags * gfc, gr_info * const cod_info, const FL
+  ************************************************************************/
+ 
+ static void
+-get_framebits(lame_internal_flags * gfc, int frameBits[15])
++get_framebits(lame_internal_flags * gfc, int frameBits[16])
+ {
+     SessionConfig_t const *const cfg = &gfc->cfg;
+     EncResult_t *const eov = &gfc->ov_enc;
+@@ -1497,7 +1497,7 @@ VBR_old_iteration_loop(lame_internal_flags * gfc, const FLOAT pe[2][2],
+ 
+     FLOAT   xrpow[576];
+     int     bands[2][2];
+-    int     frameBits[15];
++    int     frameBits[16];
+     int     used_bits;
+     int     bits;
+     int     min_bits[2][2], max_bits[2][2];
+@@ -1651,7 +1651,7 @@ VBR_new_iteration_loop(lame_internal_flags * gfc, const FLOAT pe[2][2],
+     FLOAT   l3_xmin[2][2][SFBMAX];
+ 
+     FLOAT   xrpow[2][2][576];
+-    int     frameBits[15];
++    int     frameBits[16];
+     int     used_bits;
+     int     max_bits[2][2];
+     int     ch, gr, analog_silence, pad;
+diff --git a/src/mujs/jsdate.cpp b/src/mujs/jsdate.cpp
+index f37f5bf87..f43a43a17 100644
+--- a/src/mujs/jsdate.cpp
++++ b/src/mujs/jsdate.cpp
+@@ -283,7 +283,7 @@ static double parseDateTime(const char *s) {
+ 
+ /* date formatting */
+ 
+-static char *fmtdate(char *buf, double t) {
++static const char *fmtdate(char *buf, double t) {
+     int y = YearFromTime(t);
+     int m = MonthFromTime(t);
+     int d = DateFromTime(t);
+@@ -293,7 +293,7 @@ static char *fmtdate(char *buf, double t) {
+     return buf;
+ }
+ 
+-static char *fmttime(char *buf, double t, double tza) {
++static const char *fmttime(char *buf, double t, double tza) {
+     int H = HourFromTime(t);
+     int M = MinFromTime(t);
+     int S = SecFromTime(t);
+@@ -311,7 +311,7 @@ static char *fmttime(char *buf, double t, double tza) {
+     return buf;
+ }
+ 
+-static char *fmtdatetime(char *buf, double t, double tza) {
++static const char *fmtdatetime(char *buf, double t, double tza) {
+     char dbuf[20], tbuf[20];
+     if (!isfinite(t))
+         return "Invalid Date";
+diff --git a/src/mujs/jsdtoa.cpp b/src/mujs/jsdtoa.cpp
+index 3bd9fe07b..c25caa8aa 100644
+--- a/src/mujs/jsdtoa.cpp
++++ b/src/mujs/jsdtoa.cpp
+@@ -381,7 +381,7 @@ enum
+ 	S7			/* _+#.#e+#	#S7 */
+ };
+ 
+-static	int	xcmp(char*, char*);
++static	int	xcmp(char*, const char*);
+ static	int	fpcmp(char*, ulong*);
+ static	void	frnorm(ulong*);
+ static	void	divascii(char*, int*, int*, int*);
+@@ -392,7 +392,7 @@ struct	Tab
+ {
+ 	int	bp;
+ 	int	siz;
+-	char*	cmp;
++	const char*	cmp;
+ };
+ 
+ double
+@@ -834,7 +834,7 @@ mulascii(char *a, int *na, int *dp, int *bp)
+ }
+ 
+ static int
+-xcmp(char *a, char *b)
++xcmp(char *a, const char *b)
+ {
+ 	int c1, c2;
+ 
+diff --git a/src/platform/integral_tests.cpp b/src/platform/integral_tests.cpp
+index 79149c4ac..131f64766 100644
+--- a/src/platform/integral_tests.cpp
++++ b/src/platform/integral_tests.cpp
+@@ -849,7 +849,7 @@ static std::string run_one_test(const xstring& name, const game_features::snapsh
+             stem_len -= 3;
+         }
+         bstring256 shot_name;
+-        shot_name.printf("end_");
++        shot_name.concat("end_");
+         shot_name.ncat(leaf, stem_len);
+         graphics_save_screenshot_as(SCREENSHOT_DISPLAY, shot_name.c_str());
+     }
+diff --git a/src/platform/options_window.cpp b/src/platform/options_window.cpp
+index e0ce6d4d3..1ba592f4d 100644
+--- a/src/platform/options_window.cpp
++++ b/src/platform/options_window.cpp
+@@ -4,6 +4,7 @@
+ #include "platform/innoextract_util.h"
+ #include "platform/integral_tests.h"
+ #include "platform/platform.h"
++#include "platform/xdg_paths.h"
+ #include "platform/prefs.h"
+ #include "core/xvalue.h"
+ #include "platform/renderer.h"
+@@ -511,6 +512,8 @@ void show_options_window(Arguments& args) {
+ 
+     IMGUI_CHECKVERSION();
+     ImGui::CreateContext();
++    const auto& ini_path = akhenaten_xdg::imgui_ini_path();
++    ImGui::GetIO().IniFilename = ini_path.empty() ? nullptr : ini_path.c_str();
+ 
+     // Setup Platform/Renderer backends
+     ImGui_ImplSDL2_InitForSDLRenderer(platform_window, renderer);
+diff --git a/src/platform/prefs.cpp b/src/platform/prefs.cpp
+index 23eedbc33..190c40ff9 100644
+--- a/src/platform/prefs.cpp
++++ b/src/platform/prefs.cpp
+@@ -19,7 +19,9 @@ static FILE* open_pref_file(pcstr filename, pcstr mode) {
+ #if defined(GAME_PLATFORM_MACOSX)
+     char* tmp_path = SDL_GetPrefPath("", "Akhenaten");
+ #else
+-    char* tmp_path = SDL_GetBasePath();
++    // System packages live in a read-only directory: keep the chosen game
++    // path under the user's XDG data directory instead of beside the binary.
++    char* tmp_path = SDL_GetPrefPath("dalerank", "Akhenaten");
+ #endif
+     bstring512 dir_path(tmp_path);
+     SDL_free(tmp_path);
+diff --git a/src/platform/xdg_paths.h b/src/platform/xdg_paths.h
+new file mode 100644
+index 000000000..66b9c5488
+--- /dev/null
++++ b/src/platform/xdg_paths.h
+@@ -0,0 +1,65 @@
++#pragma once
++
++// User-owned paths for the Linux system package. Pharaoh's installation is
++// read-only input; Akhenaten's own saves and settings live outside it.
++#include <cstdlib>
++#include <cstring>
++#include <filesystem>
++#include <string>
++
++#include <pwd.h>
++#include <unistd.h>
++
++namespace akhenaten_xdg {
++
++inline bool game_data_path(const char* path) {
++    if (!path) return false;
++    auto matches = [path](const char* folder, size_t length) {
++        return std::strncmp(path, folder, length) == 0 &&
++            (path[length] == '\0' || path[length] == '/' || path[length] == '\\');
++    };
++    return matches("Save", 4) || matches("Maps", 4);
++}
++
++inline std::filesystem::path user_home() {
++    if (const char* home = std::getenv("HOME")) {
++        if (std::filesystem::path(home).is_absolute()) return home;
++    }
++    if (const passwd* pw = getpwuid(getuid())) {
++        if (pw->pw_dir && std::filesystem::path(pw->pw_dir).is_absolute()) return pw->pw_dir;
++    }
++    return {};
++}
++
++inline std::filesystem::path directory(const char* variable, const char* fallback) {
++    if (const char* value = std::getenv(variable)) {
++        if (std::filesystem::path(value).is_absolute()) return std::filesystem::path(value) / "akhenaten";
++    }
++    const auto home = user_home();
++    return home.empty() ? home : home / fallback / "akhenaten";
++}
++
++inline std::filesystem::path data_directory() {
++    return directory("XDG_DATA_HOME", ".local/share");
++}
++
++inline std::filesystem::path config_directory() {
++    return directory("XDG_CONFIG_HOME", ".config");
++}
++
++inline std::filesystem::path state_directory() {
++    return directory("XDG_STATE_HOME", ".local/state");
++}
++
++inline const std::string& imgui_ini_path() {
++    static const std::string path = [] {
++        const auto dir = config_directory();
++        if (dir.empty()) return std::string{};
++        std::error_code ec;
++        std::filesystem::create_directories(dir, ec);
++        return (dir / "imgui.ini").string();
++    }();
++    return path;
++}
++
++} // namespace akhenaten_xdg
+diff --git a/src/scripts/ui_main_menu.js b/src/scripts/ui_main_menu.js
+index 4e76872cb..c23db1ea3 100644
+--- a/src/scripts/ui_main_menu.js
++++ b/src/scripts/ui_main_menu.js
+@@ -203,7 +203,8 @@ function main_menu_on_init(window) {
+ 		}
+ 	}
+ 
+-	if (!game.main_menu_commits_requested && !game.is_integral_tests && github_is_active() && __updater_state() != UPDATER_OFF) {
++	// Distribution packages receive updates through pacman.
++	if (__updater_available() && !game.main_menu_commits_requested && !game.is_integral_tests && github_is_active()) {
+ 		game.main_menu_commits_requested = true
+ 		github_get_recent_commits_async("dalerank", "Akhenaten")
+ 	}
+diff --git a/src/widget/debug_console.cpp b/src/widget/debug_console.cpp
+index d4c14523d..faa802d2f 100644
+--- a/src/widget/debug_console.cpp
++++ b/src/widget/debug_console.cpp
+@@ -7,6 +7,7 @@
+ #include "graphics/text.h"
+ #include "building/destruction.h"
+ #include "game/game.h"
++#include "platform/xdg_paths.h"
+ #include "dev/imgui_qconsole.h"
+ #include "building/building.h"
+ 
+@@ -394,6 +395,8 @@ void game_debug_cli_attach_log_sink() {
+ void game_imgui_overlay_init() {
+     IMGUI_CHECKVERSION();
+     ImGui::CreateContext();
++    const auto& ini_path = akhenaten_xdg::imgui_ini_path();
++    ImGui::GetIO().IniFilename = ini_path.empty() ? nullptr : ini_path.c_str();
+ 
+     // The game manages the mouse cursor itself via SDL_SetCursor (see platform/cursor.cpp,
+     // called every frame from input_cursor_update). The ImGui SDL2 backend also sets the SDL
