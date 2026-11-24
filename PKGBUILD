@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=mocinha
-pkgver=0.1.6
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Small, modular, platform-aware live-system installer (work in progress)"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
   'iwd: connect to Wi-Fi from Mocinha (iwctl)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ca99f2a963cd2c12bb6b5047f1afcb888f752c3a764054806e7165c55224c378')
+sha256sums=('e2f245b45d6d9dbcc10e1591a5bbe75c0d7899d6f0c449bd6942c8c410dd2888')
 
 check() {
     cd "$pkgname-$pkgver"
