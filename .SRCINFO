@@ -1,0 +1,19 @@
+pkgbase = future-os-bin
+	pkgdesc = AI agent for the terminal and beyond
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/futuregene/future-os
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = future-os
+	conflicts = future-os
+	options = !debug
+	source = future-os-bin-2.1.1-LICENSE::https://raw.githubusercontent.com/futuregene/future-os/v2.1.1/LICENSE
+	sha256sums = b20ef48ed582c0f4b39c29f81217fedfb0fd836c7bd7448eccf28fb27a2e786d
+	source_x86_64 = future-os-bin-2.1.1-x86_64.tar.gz::https://github.com/futuregene/future-os/releases/download/v2.1.1/FutureOS_2.1.1_linux_x86_64-cli.tar.gz
+	sha256sums_x86_64 = 30adbc1abee742a0121b867e33894a1ced960985fb4865743edd4ecc4c5124f7
+	source_aarch64 = future-os-bin-2.1.1-aarch64.tar.gz::https://github.com/futuregene/future-os/releases/download/v2.1.1/FutureOS_2.1.1_linux_aarch64-cli.tar.gz
+	sha256sums_aarch64 = 2c597520b1298b11f3392fa6c69a9aa53ee127243317ee0090de995476886ecd
+
+pkgname = future-os-bin
