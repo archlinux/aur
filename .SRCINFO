@@ -1,0 +1,16 @@
+pkgbase = tttui
+	pkgdesc = Typing test for the terminal
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/reidoboss/tttui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = tttui-2.0.2.tar.gz::https://github.com/reidoboss/tttui/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = 92223b631bc3b3fb3df98c1ba42fe485938656afe27fccddb89dc4974290c325
+
+pkgname = tttui
