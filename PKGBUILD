@@ -2,7 +2,7 @@
 
 pkgname=python-k3pattern
 _name=${pkgname#python-}
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Find common prefix of strings, tuples, and nested structures"
 provides=(${pkgname})
@@ -26,7 +26,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('5b935eb7cfd2c91764e6513fcbfe6467626e9bfa5ef91bc1d6c4f6ce7ba870ff')
+sha256sums=('05993e0905504ef31cddb55bd84a2f51c548a42c3c4ad9298cb8f633d2498060')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
