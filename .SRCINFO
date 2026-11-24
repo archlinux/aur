@@ -1,6 +1,6 @@
 pkgbase = r-scan.upc
 	pkgdesc = Single-channel array normalization (SCAN) and Universal exPression Codes (UPC)
-	pkgver = 2.48.0
+	pkgver = 2.54.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SCAN.UPC
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-scan.upc
 	depends = r-oligo
 	depends = r-sva
 	optdepends = r-pd.hg.u95a
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SCAN.UPC_2.48.0.tar.gz
-	sha256sums = b15292f13f83adba017e235428ffbd5c4ac411d4c53b041103ded745d3f38b63
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SCAN.UPC_2.54.0.tar.gz
+	sha256sums = 3f98fdd969c98e5dd0d23df91350c61e92f74605d169b3d13a5d3befa943502c
 
 pkgname = r-scan.upc
