@@ -1,6 +1,6 @@
 pkgbase = bioma-shell
-	pkgdesc = A desktop shell for niri, built on Genoma: living surfaces rather than a bar
-	pkgver = 1.0.0beta81
+	pkgdesc = Desktop shell for niri, Hyprland and Umbriel: living surfaces rather than a bar
+	pkgver = 1.0.0beta82
 	pkgrel = 1
 	url = https://github.com/AkusenArcade/Bioma
 	install = bioma-shell.install
@@ -10,7 +10,7 @@ pkgbase = bioma-shell
 	makedepends = cargo
 	makedepends = clang
 	depends = niri
-	depends = genoma>=0.1.22
+	depends = genoma>=0.1.24
 	depends = genoma<0.2.0
 	depends = python
 	depends = python-dateutil
@@ -67,7 +67,7 @@ pkgbase = bioma-shell
 	optdepends = wl-screenrec: screen recording in the capture cell (AUR)
 	options = !lto
 	backup = etc/xdg/autostart/bioma.desktop
-	source = bioma-shell-1.0.0beta81.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.81.tar.gz
-	sha256sums = e2bbd0e891dad7e38383d6c7ea789f0a66f608777da2a2f187f24eadab101f89
+	source = bioma-shell-1.0.0beta82.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.82.tar.gz
+	sha256sums = 668ce4d15adfeb85553db69541c80822efdf93140d7727c5ecff86ca08151e98
 
 pkgname = bioma-shell
