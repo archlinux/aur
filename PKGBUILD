@@ -4,7 +4,7 @@
 # Inspiration for service and config files: https://github.com/Bisa/factorio-init
 
 pkgname=factorio-headless
-pkgver=2.1.24
+pkgver=2.1.25
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories - Server version (stable branch)"
 arch=('x86_64' 'aarch64')
@@ -39,8 +39,8 @@ sha256sums=('e15ac4bbd0ccf3956a0a281535045e0ffb163bf10f0e3fde6b71642921bf6310'
             '40931abfd15db6027c02471c20f86923e74471a9eb91453638c42e0f968027f5'
             '87dae15d1bcfb4683faea9c66498bd916bd27f8aa0dc724c4e21076dcf17da64'
             '76d9de57f9a7b14266e09f77f176a8430508d8778ebfec3c5c5125a54806bb90')
-sha256sums_x86_64=('c49b66cff90aceff87b30f2973af0df7f51712cb2ee3153e0169d9bed46a964f')
-sha256sums_aarch64=('141bd7aaa199fcf7e223dcaca8877aec1d6deaa9c4ac03b7a8c60ef37b6afb98')
+sha256sums_x86_64=('78da2f5aa99e9e0af7586d6bf82c04aae91165d53036720dabb26e855688f3ae')
+sha256sums_aarch64=('c10ab4008043713b6e37097850c69ff675acac7ab965e87d768ce46d0c1753fd')
 
 # no modifications needed, the executable looks for:
 # - data in /usr/share/factorio

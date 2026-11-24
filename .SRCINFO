@@ -1,6 +1,6 @@
 pkgbase = factorio-headless
 	pkgdesc = A 2D game about building and maintaining factories - Server version (stable branch)
-	pkgver = 2.1.24
+	pkgver = 2.1.25
 	pkgrel = 1
 	url = http://www.factorio.com/
 	install = factorio-headless.install
@@ -26,9 +26,9 @@ pkgbase = factorio-headless
 	sha256sums = 40931abfd15db6027c02471c20f86923e74471a9eb91453638c42e0f968027f5
 	sha256sums = 87dae15d1bcfb4683faea9c66498bd916bd27f8aa0dc724c4e21076dcf17da64
 	sha256sums = 76d9de57f9a7b14266e09f77f176a8430508d8778ebfec3c5c5125a54806bb90
-	source_x86_64 = factorio_headless_x64_2.1.24.tar.xz::https://www.factorio.com/get-download/2.1.24/headless/linux64
-	sha256sums_x86_64 = c49b66cff90aceff87b30f2973af0df7f51712cb2ee3153e0169d9bed46a964f
-	source_aarch64 = factorio_headless_arm64_2.1.24.tar.xz::https://www.factorio.com/get-download/2.1.24/headless/linux-arm64
-	sha256sums_aarch64 = 141bd7aaa199fcf7e223dcaca8877aec1d6deaa9c4ac03b7a8c60ef37b6afb98
+	source_x86_64 = factorio_headless_x64_2.1.25.tar.xz::https://www.factorio.com/get-download/2.1.25/headless/linux64
+	sha256sums_x86_64 = 78da2f5aa99e9e0af7586d6bf82c04aae91165d53036720dabb26e855688f3ae
+	source_aarch64 = factorio_headless_arm64_2.1.25.tar.xz::https://www.factorio.com/get-download/2.1.25/headless/linux-arm64
+	sha256sums_aarch64 = c10ab4008043713b6e37097850c69ff675acac7ab965e87d768ce46d0c1753fd
 
 pkgname = factorio-headless
