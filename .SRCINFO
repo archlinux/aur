@@ -1,6 +1,6 @@
 pkgbase = docker-sbx-bin
 	pkgdesc = Run AI coding agents in isolated Docker microVM sandboxes
-	pkgver = 0.54.0
+	pkgver = 0.54.1
 	pkgrel = 1
 	url = https://www.docker.com/products/docker-sandboxes/
 	arch = x86_64
@@ -27,9 +27,9 @@ pkgbase = docker-sbx-bin
 	conflicts = docker-sbx
 	conflicts = sbx
 	options = !debug
-	source_x86_64 = docker-sbx-bin-0.54.0-amd64.tar.gz::https://github.com/docker/sbx-releases/releases/download/v0.54.0/DockerSandboxes-linux-amd64.tar.gz
-	sha256sums_x86_64 = eded29017121a857c98d4a91cad593f6a9e00f4010e830679bd385f4a5edba4d
-	source_aarch64 = docker-sbx-bin-0.54.0-arm64.tar.gz::https://github.com/docker/sbx-releases/releases/download/v0.54.0/DockerSandboxes-linux-arm64.tar.gz
-	sha256sums_aarch64 = 40498341fd6b7f67d8f6ff4b1a17c73f516811fc6184a3bd554f9b3442a91115
+	source_x86_64 = docker-sbx-bin-0.54.1-amd64.tar.gz::https://github.com/docker/sbx-releases/releases/download/v0.54.1/DockerSandboxes-linux-amd64.tar.gz
+	sha256sums_x86_64 = 98ebf37efac8def632439ae54a90a8cb76bd602ec470e839779487828857aeae
+	source_aarch64 = docker-sbx-bin-0.54.1-arm64.tar.gz::https://github.com/docker/sbx-releases/releases/download/v0.54.1/DockerSandboxes-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9b7e4788a8ef8304a2bf5c781adb0aa5b6542c6f9d6318a53bd476e1e0998bf2
 
 pkgname = docker-sbx-bin

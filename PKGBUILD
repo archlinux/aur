@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=docker-sbx-bin
-pkgver=0.54.0
+pkgver=0.54.1
 pkgrel=1
 pkgdesc="Run AI coding agents in isolated Docker microVM sandboxes"
 arch=('x86_64' 'aarch64')
@@ -34,8 +34,8 @@ conflicts=('docker-sbx' 'sbx')
 _releases_url="https://github.com/docker/sbx-releases"
 source_x86_64=("${pkgname}-${pkgver}-amd64.tar.gz::${_releases_url}/releases/download/v${pkgver}/DockerSandboxes-linux-amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-arm64.tar.gz::${_releases_url}/releases/download/v${pkgver}/DockerSandboxes-linux-arm64.tar.gz")
-sha256sums_x86_64=('eded29017121a857c98d4a91cad593f6a9e00f4010e830679bd385f4a5edba4d')
-sha256sums_aarch64=('40498341fd6b7f67d8f6ff4b1a17c73f516811fc6184a3bd554f9b3442a91115')
+sha256sums_x86_64=('98ebf37efac8def632439ae54a90a8cb76bd602ec470e839779487828857aeae')
+sha256sums_aarch64=('9b7e4788a8ef8304a2bf5c781adb0aa5b6542c6f9d6318a53bd476e1e0998bf2')
 
 package() {
     local _src="${srcdir}/docker-sbx"
