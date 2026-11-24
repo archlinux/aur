@@ -1,7 +1,7 @@
 pkgbase = zotero-bin
-	pkgdesc = Zotero Standalone. Is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources.
+	pkgdesc = [Deprecated: use extra/zotero, see comments in AUR] Zotero Standalone. Is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources.
 	pkgver = 10.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.zotero.org/download
 	arch = x86_64
 	arch = i686
