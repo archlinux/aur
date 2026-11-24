@@ -1,0 +1,19 @@
+pkgbase = herdr-bar-bin
+	pkgdesc = Fuzzy tab jumping and automatic tab titles for herdr
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/jeffarese/herdr-bar
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = herdr-bar
+	conflicts = herdr-bar
+	options = !debug
+	source = herdr-bar-bin-0.14.0-LICENSE::https://raw.githubusercontent.com/jeffarese/herdr-bar/v0.14.0/LICENSE
+	sha256sums = 419fe6a868a6b8cbbf364023506960dd97dcc28b288d53d9d28f9be5e6630fad
+	source_x86_64 = herdr-bar-bin-0.14.0-x86_64::https://github.com/jeffarese/herdr-bar/releases/download/v0.14.0/herdr-bar-linux-x86_64
+	sha256sums_x86_64 = 7f05aada8fe064cae004322a0a40d44a48a962cb4ca50b2d89aacc3ba50845b0
+	source_aarch64 = herdr-bar-bin-0.14.0-aarch64::https://github.com/jeffarese/herdr-bar/releases/download/v0.14.0/herdr-bar-linux-aarch64
+	sha256sums_aarch64 = 0514b3a399dbddc04016aa4e6664a835cdda34e830356e5ae5eefbdc0042a38c
+
+pkgname = herdr-bar-bin
