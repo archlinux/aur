@@ -1,0 +1,27 @@
+pkgbase = transparent-tor-proxy
+	pkgdesc = A Linux CLI tool that transparently routes all system traffic through the Tor network using nftables
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/onyks-os/TransparentTorProxy
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = tor
+	depends = nftables
+	depends = python
+	depends = python-stem
+	depends = python-rich
+	depends = python-typer
+	depends = python-transitions
+	optdepends = networkmanager: required VPN mode
+	optdepends = wireguard-tools: required VPN mode
+	optdepends = apparmor: required for managed Tor when the kernel selects AppArmor
+	provides = ttp
+	source = git+https://github.com/onyks-os/TransparentTorProxy.git#tag=v0.5.1
+	sha256sums = 21c7c748a5e8b7827a7ede3d20deba4295c980c654a76e85959a8ebf2bbfe549
+
+pkgname = transparent-tor-proxy

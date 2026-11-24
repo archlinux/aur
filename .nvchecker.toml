@@ -1,0 +1,7 @@
+[transparent-tor-proxy]
+source = "github"
+github = "onyks-os/TransparentTorProxy"
+use_latest_release = true
+prefix = "v"
+# source = "pypi"
+# pypi = "transparent-tor-proxy"
