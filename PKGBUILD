@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Omron LUNA-I/LUNA-88K, Sharp X68030, and NEWS NWS-1750 emulator'
 pkgname=nono
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 url=http://www.pastel-flower.jp/~isaki/nono
 license=(custom)
@@ -9,7 +9,7 @@ arch=(x86_64)
 depends=(alsa-lib libbsd libkqueue libslirp termcap wxwidgets-gtk3)
 makedepends=(bmake freebsd-mk gettext)
 source=("${url}/archive/${pkgname}-${pkgver}.tar.gz")
-b2sums=('5a3766d0fcf7bd8850f0250b6038ca040051c3218508e74eb06ece850aa0aabf08847e6114db52170b19cf99e0a38dcea40d8188ab34bcb8237a74cf33c6035e')
+b2sums=('f0518ecdecbf0d292955ed8bdd4c31398ff8900ddb1a11b4ad9ce80d9884c86d7fd1a3da1f0036a590db53a9f9f16b25c3d75c991179892c3fc5886d31e07e40')
 
 prepare ()
 {
@@ -38,6 +38,7 @@ build ()
 	CXXFLAGS+= -Wno-error=deprecated-declarations
 	CXXFLAGS+= -Wno-error=format-truncation
 	CXXFLAGS+= -Wno-error=template-id-cdtor
+	CXXFLAGS+= -Wno-error=array-bounds
 	EOF
 
 	bmake -DNOTEST -m/usr/share/mk-freebsd
