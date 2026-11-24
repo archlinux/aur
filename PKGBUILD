@@ -73,8 +73,6 @@ prepare() {
 }
 
 build() {
-  export CFLAGS="${CFLAGS} -Wno-incompatible-pointer-types"
-
   cmake -B build -S "${pkgname}" \
     -D CMAKE_BUILD_TYPE:STRING=None \
     -D CMAKE_INSTALL_PREFIX:PATH=/usr \
