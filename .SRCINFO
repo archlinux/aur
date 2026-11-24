@@ -1,6 +1,6 @@
 pkgbase = python-selenium
 	pkgdesc = Python language bindings for Selenium WebDriver
-	pkgver = 4.53.0
+	pkgver = 4.54.0
 	pkgrel = 1
 	url = https://github.com/SeleniumHQ/selenium
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = python-selenium
 	depends = zlib
 	conflicts = python-selenium-bin
 	options = !lto
-	source = https://files.pythonhosted.org/packages/source/s/selenium/selenium-4.53.0.tar.gz
-	sha256sums = efb45b129cbd7f46da99c82e7d327978bda29ed987223465c341f96404a86a2c
+	source = https://files.pythonhosted.org/packages/source/s/selenium/selenium-4.54.0.tar.gz
+	sha256sums = ed5ad5a8c77372ac824ed736ac627d02f41c5bf38be33467f15aaf5a4e038888
 
 pkgname = python-selenium
