@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Obby
+GenericName=IRC Client
+Comment=Modern IRC client for the web, desktop and mobile
+Exec=obby %U
+Icon=obby
+Terminal=false
+Categories=Network;Chat;InstantMessaging;
+Keywords=irc;chat;messaging;
+StartupWMClass=Obby
+MimeType=x-scheme-handler/irc;x-scheme-handler/ircs;
