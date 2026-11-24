@@ -1,0 +1,16 @@
+pkgbase = rp2350sim
+	pkgdesc = RP2350 emulator with a headless runner and a Shirei desktop UI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/akhenakh/rp2350sim
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go>=1.27
+	optdepends = mesa: GPU rendering for rp2350sim-ui (falls back to the software renderer)
+	optdepends = libxkbcommon: keyboard layout support for rp2350sim-ui
+	optdepends = alsa-lib: sound playback for the Audio tab
+	source = rp2350sim-0.1.0.tar.gz::https://github.com/akhenakh/rp2350sim/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 6c2c5b117085516f6d83c28ebfac669c55ea67a5cc429d9f8a06d37eb3c2f442
+
+pkgname = rp2350sim
