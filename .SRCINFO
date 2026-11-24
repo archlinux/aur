@@ -1,6 +1,6 @@
 pkgbase = pypy3-packaging
 	pkgdesc = Core utilities for Python packages
-	pkgver = 26.3
+	pkgver = 26.4
 	pkgrel = 1
 	url = https://packaging.pypa.io
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = pypy3-packaging
 	makedepends = pypy3-installer
 	makedepends = pypy3-flit-core
 	depends = pypy3
-	source = packaging-26.3.tar.gz::https://github.com/pypa/packaging/archive/26.3.tar.gz
-	sha512sums = 7559e4f0376c775f57c362394ba276451bee0952012fc461458ee450e86fe89909166bb11c217be100b7909f0958f4ee9df4b51c3019e664186fda06a48d810d
+	source = packaging-26.4.tar.gz::https://github.com/pypa/packaging/archive/26.4.tar.gz
+	sha512sums = 563375fad8898080ac1afec4b9deede5bc822892101ba7029781220e0b103cce61fadc359561a0d79689aed464ca3777a7164e2459107cd54401974e29a2d411
 
 pkgname = pypy3-packaging
