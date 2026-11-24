@@ -1,0 +1,21 @@
+pkgbase = nav-ls-bin
+	pkgdesc = Terminal navigator for interactive ls workflows
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/dkaslovsky/nav
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = nav-ls
+	conflicts = nav-ls
+	conflicts = nav
+	conflicts = nav-bin
+	options = !debug
+	source = nav-ls-bin-1.2.0-LICENSE::https://raw.githubusercontent.com/dkaslovsky/nav/v1.2.0/LICENSE
+	sha256sums = a6f749145b4b536bce6e016c4a86b1ac1c7956535be8cc134495d96ffa4231a8
+	source_x86_64 = nav-ls-bin-1.2.0-x86_64::https://github.com/dkaslovsky/nav/releases/download/v1.2.0/nav_linux_amd64
+	sha256sums_x86_64 = 97a832fa49bd894b42d72a52d2dc8a0a57a68de3e6232c70426b564923e99c8a
+	source_aarch64 = nav-ls-bin-1.2.0-aarch64::https://github.com/dkaslovsky/nav/releases/download/v1.2.0/nav_linux_arm64
+	sha256sums_aarch64 = 698a5d62f04eb6ed4c8925ec4c248753b831702bf58d2b7c406334d3d0f0684e
+
+pkgname = nav-ls-bin
