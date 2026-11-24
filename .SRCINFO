@@ -29,6 +29,7 @@ pkgbase = neostation-bin
 	provides = neostation=1.0.0rc2.3002
 	conflicts = neostation
 	noextract = neostation-1.0.0-rc.2+3002-x86_64.AppImage
+	noextract = neostation-1.0.0-rc.2+3002-aarch64.AppImage
 	options = !strip
 	options = !debug
 	source = neostation

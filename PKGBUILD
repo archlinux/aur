@@ -46,7 +46,10 @@ source=(
 )
 source_x86_64=("neostation-${_upstream_version}-x86_64.AppImage::${_release_url}/neostation-linux-x86_64-${_upstream_version/+/%2B}.AppImage")
 source_aarch64=("neostation-${_upstream_version}-aarch64.AppImage::${_release_url}/neostation-linux-arm64-${_upstream_version/+/%2B}.AppImage")
-noextract=("neostation-${_upstream_version}-${CARCH}.AppImage")
+noextract=(
+  "neostation-${_upstream_version}-x86_64.AppImage"
+  "neostation-${_upstream_version}-aarch64.AppImage"
+)
 sha256sums=('aab86a36bd72436893fb2f7197745c80d2c4312a5bef7e877bc01b7d9558eac2' '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 sha256sums_x86_64=('082d4ed8204459b1fbc44ed0a1c799e00edf0db4c948f78caaccdcaa90a88906')
 sha256sums_aarch64=('a4127c7dbd0cdcd58fee9857629299111389b46620176ab8b0c63825cf9a90d1')
