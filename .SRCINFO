@@ -1,0 +1,23 @@
+pkgbase = python-k3awssign
+	pkgdesc = A python lib for adding AWS signature version 4 to requests
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/pykit3/k3awssign
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	checkdepends = python-k3http
+	checkdepends = python-k3httpmultipart
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3awssign
+	conflicts = python-k3awssign
+	source = k3awssign::git+https://github.com/pykit3/k3awssign.git#tag=v0.1.8
+	sha256sums = 00f23172c08901f5eb9c19d1f58d99b6c799a8ebe0bbcab605db401348d8f30a
+
+pkgname = python-k3awssign
