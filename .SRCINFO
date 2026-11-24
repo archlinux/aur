@@ -1,0 +1,18 @@
+pkgbase = lazyagent-go-bin
+	pkgdesc = Monitor all your coding agents from one terminal
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/illegalstudio/lazyagent
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lazyagent-go
+	conflicts = lazyagent-go
+	conflicts = lazyagent-bin
+	options = !debug
+	source_x86_64 = lazyagent-go-bin-0.16.0-x86_64.tar.gz::https://github.com/illegalstudio/lazyagent/releases/download/v0.16.0/lazyagent-cli_0.16.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = f0f6940e19ccc712f0d309a064859a450a30792859b4e4144f03b40299c4c040
+	source_aarch64 = lazyagent-go-bin-0.16.0-aarch64.tar.gz::https://github.com/illegalstudio/lazyagent/releases/download/v0.16.0/lazyagent-cli_0.16.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 44c562e971c4fd8dc7e099110b43fc940ab72c9f095f7e7fae68fe814a8e8cbf
+
+pkgname = lazyagent-go-bin
