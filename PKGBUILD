@@ -1,9 +1,9 @@
 # Maintainer: DBeidachazi <a269502169@gmail.com>
 
 pkgname=antigravity-latest-bin
-pkgver=2.34.0
+pkgver=2.35.0
 pkgrel=1
-_build=5887025308631040
+_build=6394266482769920
 pkgdesc='Google Antigravity 2.0 multi-agent orchestration platform (Prebuilt binary)'
 arch=('aarch64' 'x86_64')
 url='https://antigravity.google/product/antigravity-2'
@@ -44,8 +44,8 @@ source_aarch64=("Antigravity-${pkgver}-${_build}-aarch64.tar.gz::https://storage
 source_x86_64=("Antigravity-${pkgver}-${_build}-x86_64.tar.gz::https://storage.googleapis.com/antigravity-public/antigravity-hub/${pkgver}-${_build}/linux-x64/Antigravity.tar.gz")
 b2sums=('ec2c74f0e6f2458f2ef1c67b1321c058a3f7c422e364d8871a0a933220ec52ee5736e449cb797b6f135cff1f4adfe6f81e0fdbc76d3ec67c245aea002b8577d8'
         '772849ebf4574dccc7d2fc30751baed10b4a5d4091c524f3d69938192387693501c0c54ea5b43fa2ed382f70ecdff369a4c65ce3d0f778c68712fa0c2b5e84b8')
-b2sums_aarch64=('7bc6e16056760cad0f4853ee819658e0a3447ec7fb329d3cd74088750924e4e90ba5ff5ea76a000f94aa01db489eb3caaede4fc41641defb007898ac6c36c309')
-b2sums_x86_64=('34dfc4cb8caba43a60d1f395a3b70bc79c3946ea8f865b955df4ce9d00b5bebdbc12032346b191c2bc70b42db502aba73c3e1e6dd9e9763bb97d65ddbb735cbe')
+b2sums_aarch64=('4d338fd9fbf5adba7df8c4fb87381d7549d16f68c548d8a78b0783099f4e7239ae9bb2fa3671121b92034e0a0fd784338fa2e52635d913eef05670aae88b1b95')
+b2sums_x86_64=('40215e3f0ee134bcc4649444b47362ceabd797827c81b4d6df8268019b13a4bee879a849b8967815e68c1b06247e7bb4db33fb65c9f9fa2402acc2f03587947d')
 
 package() {
     install -d "$pkgdir/opt"
