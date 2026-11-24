@@ -1,6 +1,6 @@
 pkgbase = atlas-filemanager-bin
 	pkgdesc = Modern file manager built with Rust and GPUI
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://atlasnative.com
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = atlas-filemanager-bin
 	conflicts = atlas
 	conflicts = atlas-filemanager
 	options = !strip
-	source = https://github.com/neondeex/atlas-filemanager/releases/download/v0.1.6/atlas-0.1.6-linux-x86_64.tar.gz
-	sha256sums = 3748463ba9906895fb4933df2a59695d69004ef72226835e253a8280899671c0
+	source = https://github.com/neondeex/atlas-filemanager/releases/download/v0.1.7/atlas-0.1.7-linux-x86_64.tar.gz
+	sha256sums = 9cda2819ba19208128dd0da6822ba51caf5d46a0060408a2c12eae6ab230857f
 
 pkgname = atlas-filemanager-bin
