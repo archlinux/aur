@@ -1,0 +1,19 @@
+pkgbase = fen-bin
+	pkgdesc = Terminal file manager
+	pkgver = 1.7.28
+	pkgrel = 1
+	url = https://github.com/kivattt/fen
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = fen
+	conflicts = fen
+	options = !debug
+	source = fen-bin-1.7.28-LICENSE::https://raw.githubusercontent.com/kivattt/fen/v1.7.28/LICENSE
+	sha256sums = 9c155540f838683ad44be7a5728ba422c64afcf82532f84b3e3efa53c99d7e3e
+	source_x86_64 = fen-bin-1.7.28-x86_64::https://github.com/kivattt/fen/releases/download/v1.7.28/fen-linux-amd64
+	sha256sums_x86_64 = 49fdaf84e81ce72ad4ecbef594ce9886d5c923e0eaf6f03fb0a9225f7cc4f03c
+	source_aarch64 = fen-bin-1.7.28-aarch64::https://github.com/kivattt/fen/releases/download/v1.7.28/fen-linux-arm64
+	sha256sums_aarch64 = 104ea4b376dec04c23adca8c1c69ee9a09906be48642695024bb2a30c9634310
+
+pkgname = fen-bin
