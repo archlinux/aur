@@ -1,0 +1,18 @@
+pkgbase = vibe-log-cli
+	pkgdesc = Log and analyze Claude Code and Cursor sessions
+	pkgver = 0.8.14
+	pkgrel = 1
+	url = https://github.com/vibe-log/vibe-log-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = libcap
+	depends = libx11
+	depends = nodejs
+	depends = openssl-3
+	noextract = vibe-log-cli-0.8.14.tgz
+	source = vibe-log-cli-0.8.14.tgz::https://registry.npmjs.org/vibe-log-cli/-/vibe-log-cli-0.8.14.tgz
+	sha256sums = 9ff3c3378e020c884529d206c68e2b6a78eae5400b85dbfef7b0858e61911758
+
+pkgname = vibe-log-cli
