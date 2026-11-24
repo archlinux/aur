@@ -6,7 +6,7 @@
 
 pkgname=niri-tracker-bin
 _pkgname=niri-tracker
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Screen time tracking for the niri Wayland compositor (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ conflicts=("$_pkgname" "${_pkgname}-git")
 options=('!strip')
 source_x86_64=("$pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('8e9d528bdc72b82fc3da4912aa8b6c7601be0890fa1f03f9172b37d4798119df')
-sha256sums_aarch64=('91a2a47293ebc854132aa9f23ed026594ee34771fb1d81d11a7c2e073d7e4f07')
+sha256sums_x86_64=('8de9d07f4d2e6724ca260e62365d0e39c60c8b1d5d8fe5aa6875d92479481e42')
+sha256sums_aarch64=('8cec714123e4327fab44ddad368dd9f97b97e718fd0e88d3bf72b4e26a122c43')
 
 package() {
   local _target _dir
