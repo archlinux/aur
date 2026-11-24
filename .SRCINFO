@@ -1,0 +1,19 @@
+pkgbase = drift-tui-bin
+	pkgdesc = Lightweight project tracker for AI-assisted coding, with a TUI and CLI
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/snowtema/drift
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = drift-tui
+	conflicts = drift-tui
+	conflicts = drift-bin
+	conflicts = drift-git
+	options = !debug
+	source_x86_64 = drift-tui-bin-0.1.2-x86_64.tar.gz::https://github.com/snowtema/drift/releases/download/v0.1.2/drift_0.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = dc51aec0d46d524ac07ff9d853347fe3d6d29ab205716d24ed1249c482c5d13a
+	source_aarch64 = drift-tui-bin-0.1.2-aarch64.tar.gz::https://github.com/snowtema/drift/releases/download/v0.1.2/drift_0.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 09e1f13e0b8b535e142bd4521b816a88b8f3e9f91b984122757fc575dc938fa2
+
+pkgname = drift-tui-bin
