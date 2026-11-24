@@ -1,6 +1,6 @@
 pkgbase = lynx-imager-bin
 	pkgdesc = YNX Imager is open-source desktop software designed for flashing system images onto development boards
-	pkgver = 0.1+rc4
+	pkgver = 0.1+rc5
 	pkgrel = 1
 	url = https://github.com/dshanpi/lynx-imager
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = lynx-imager-bin
 	conflicts = lynx-imager
 	options = !strip
 	options = !debug
-	source = https://github.com/dshanpi/lynx-imager/releases/download/v0.1-rc4/LYNX-Imager_0.1.0-rc.4_linux-amd64.deb
-	sha256sums = b4fa75a30ba1cc177d64956025f1a1a6af42fc0bde39490ae240b7ea3ce694e9
+	source = https://github.com/dshanpi/lynx-imager/releases/download/v0.1-rc5/LYNX-Imager_0.1.0-rc.5_linux-amd64.deb
+	sha256sums = 563373281694b1255afdf5f9721de9fbdfe310e838331c584d7093c2646f74aa
 
 pkgname = lynx-imager-bin
