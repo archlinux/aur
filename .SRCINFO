@@ -1,6 +1,6 @@
 pkgbase = lig-bin
 	pkgdesc = Fig-style IDE autocomplete for your terminal: subcommands, options, branches and paths in a popup (zsh, bash, fish)
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/KevenGoncalves/lig
 	install = lig-bin.install
@@ -12,13 +12,13 @@ pkgbase = lig-bin
 	provides = lig
 	conflicts = lig
 	conflicts = lig-git
-	noextract = lig_1.4.1_amd64.deb
-	noextract = lig_1.4.1_arm64.deb
+	noextract = lig_1.4.2_amd64.deb
+	noextract = lig_1.4.2_arm64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = lig_1.4.1_amd64.deb::https://github.com/KevenGoncalves/lig/releases/download/v1.4.1/lig_1.4.1_amd64.deb
-	sha256sums_x86_64 = 13fad5f75abfecf721f1cf32bc28b57b98910a62e215f21137cd91e13c0fc417
-	source_aarch64 = lig_1.4.1_arm64.deb::https://github.com/KevenGoncalves/lig/releases/download/v1.4.1/lig_1.4.1_arm64.deb
-	sha256sums_aarch64 = 250928b60f425de048ce330e48323a1a9e0c39f3292e40121b248f4d10b5a63d
+	source_x86_64 = lig_1.4.2_amd64.deb::https://github.com/KevenGoncalves/lig/releases/download/v1.4.2/lig_1.4.2_amd64.deb
+	sha256sums_x86_64 = 697c3e0e92ea676dbe266ce5fdef3f6c0461ba3775345e187650e26bf7a95e07
+	source_aarch64 = lig_1.4.2_arm64.deb::https://github.com/KevenGoncalves/lig/releases/download/v1.4.2/lig_1.4.2_arm64.deb
+	sha256sums_aarch64 = 1aa603a2100927c30438b8c0a5974ff4e94a287922cf3bfa71aca8ab043369f1
 
 pkgname = lig-bin

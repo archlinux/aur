@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=lig-bin
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Fig-style IDE autocomplete for your terminal: subcommands, options, branches and paths in a popup (zsh, bash, fish)"
 arch=('x86_64' 'aarch64')
@@ -25,8 +25,8 @@ _deb_aarch64="lig_${pkgver}_arm64.deb"
 source_x86_64=("${_deb_x86_64}::https://github.com/KevenGoncalves/lig/releases/download/v${pkgver}/${_deb_x86_64}")
 source_aarch64=("${_deb_aarch64}::https://github.com/KevenGoncalves/lig/releases/download/v${pkgver}/${_deb_aarch64}")
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
-sha256sums_x86_64=('13fad5f75abfecf721f1cf32bc28b57b98910a62e215f21137cd91e13c0fc417')
-sha256sums_aarch64=('250928b60f425de048ce330e48323a1a9e0c39f3292e40121b248f4d10b5a63d')
+sha256sums_x86_64=('697c3e0e92ea676dbe266ce5fdef3f6c0461ba3775345e187650e26bf7a95e07')
+sha256sums_aarch64=('1aa603a2100927c30438b8c0a5974ff4e94a287922cf3bfa71aca8ab043369f1')
 
 package() {
   local deb_var="_deb_${CARCH}"
