@@ -1,6 +1,6 @@
 # Maintainer: sougstron
 pkgname=kanban4ai-git
-pkgver=0.8.26.r1.g1dfeef6
+pkgver=0.8.27.r1.g2458c69
 pkgrel=1
 pkgdesc='Native kanban board CLI and TUI driven by AI coding agents (Git version)'
 arch=('x86_64' 'aarch64')
