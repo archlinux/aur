@@ -2,14 +2,16 @@
 
 pkgname=python-kara-templater
 _pkgname=kara-templater
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Python karaoke effects engine for standard ASS subtitles and libplacebo shaders'
 arch=('x86_64')
 url='https://github.com/sitiyou/python-kara-templater'
-license=('MIT' 'ISC')
+license=('MIT')
 depends=(
   'python>=3.12'
+  'python-aggdraw'
+  'python-pillow'
   'glibc'
   'libgcc'
   'libstdc++'
@@ -26,10 +28,10 @@ makedepends=(
   'libpng'
 )
 checkdepends=('python-pytest' 'ttf-dejavu')
-source=("https://files.pythonhosted.org/packages/03/fc/29ef9136e4d27145f453e110facbe0913cabd1e6e2aecf8463a8572b00e6/kara_templater-$pkgver.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/k/kara-templater/kara_templater-$pkgver.tar.gz"
         "check-core.sh")
-sha256sums=('48c70f88596f25d294be6f178215668fe0bc36cc0b9d6dcfd9ee2cdd8a8eda1a'
-            '6c7287c58cda09ae1dfa96b80afc9ac000338b8f09edd81b5d1a83ca719f7073')
+sha256sums=('66e34dc827fa09c1fb53a14e5fcbe87d561d575c76c0a279521e7c24b53796e9'
+            'c774ecc49cccd39a9772d27e697a21eba4ae71742021cc435301cb9ae5ed2177')
 
 build() {
   cd "${_pkgname//-/_}-$pkgver"
@@ -45,5 +47,4 @@ package() {
   cd "${_pkgname//-/_}-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 vendor/LICENSE.libass "$pkgdir/usr/share/licenses/$pkgname/LICENSE.libass"
 }
