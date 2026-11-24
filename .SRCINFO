@@ -1,6 +1,6 @@
 pkgbase = omasnap-bin
 	pkgdesc = Native Wayland screenshot and annotation editor for Hyprland (prebuilt binary)
-	pkgver = 1.26.2
+	pkgver = 1.26.3
 	pkgrel = 1
 	url = https://github.com/tobi/omasnap
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = omasnap-bin
 	depends = wl-clipboard
 	optdepends = tesseract: extract text from screenshots (OCR)
 	optdepends = tesseract-data-eng: English training data for OCR
-	provides = omasnap=1.26.2
+	provides = omasnap=1.26.3
 	conflicts = omasnap
 	options = !strip
 	options = !debug
-	source = omasnap-1.26.2-archlinux-x86_64.tar.gz::https://github.com/tobi/omasnap/releases/download/v1.26.2/omasnap-1.26.2-archlinux-x86_64.tar.gz
-	source = LICENSE-1.26.2::https://raw.githubusercontent.com/tobi/omasnap/v1.26.2/LICENSE
-	sha256sums = 46cd8c31593023fe83e33d43554a23f9123391fe652b5ea145ed166488a24ab6
+	source = omasnap-1.26.3-archlinux-x86_64.tar.gz::https://github.com/tobi/omasnap/releases/download/v1.26.3/omasnap-1.26.3-archlinux-x86_64.tar.gz
+	source = LICENSE-1.26.3::https://raw.githubusercontent.com/tobi/omasnap/v1.26.3/LICENSE
+	sha256sums = 1c52ee5d153b6a33850251d92a2c56cf0567125bd10137e16a6b5eb1834f9f9f
 	sha256sums = SKIP
 
 pkgname = omasnap-bin
