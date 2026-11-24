@@ -5,7 +5,7 @@
 # the upstream generated binary version.
 
 pkgname=mattermost-plugin-calls
-pkgver=1.12.6
+pkgver=2.0.15
 pkgrel=1
 epoch=1
 pkgdesc='enables voice calling and screen sharing functionality in Mattermost channels'
@@ -17,7 +17,7 @@ options=(!strip)
 _plugin="com.mattermost.${pkgname##*-}"
 _archive="$pkgname-v$pkgver-linux-amd64"
 source=("$url/releases/download/v$pkgver/$_archive.tar.gz"{,.asc})
-sha256sums=('c990503779a56bb62e84f52ab664a73069843a577d7d3344b24cd835da35326b'
+sha256sums=('70fb72e379802b43b44830afd9ff1eff0ef9cc4fb49125b351c6deea0ff21368'
             'SKIP')
 validpgpkeys=(C55881B80F69E863B85AD5D1D1B54B47A5CEFEC4) # Mattermost, Inc. <support@mattermost.com>
 
