@@ -2,7 +2,7 @@
 # Created with assistance from Qwen3.8 Flash Next.
 
 pkgname=zxc-full
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Asymmetric lossless compression library for ultra-fast decode (development: CLI + C library + headers + CMake — source build)"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=('zxc')
 conflicts=('zxc')
 makedepends=('cmake' 'gcc')
 options=('!debug')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hellobertrand/zxc/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('57d7b5486d2d6a59c85a1de046db38f069af45725d1144986ab2b54c2811b09e')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v${pkgver}/zxc-${pkgver}.tar.gz")
+sha256sums=('7e833f3f74dfbbe0bb466976b11fd575be3a83f843720d83ba1e810e05f5a3d0')
 
 # makepkg's `lto` option appends -flto=auto to CFLAGS and its safe_strip_lto pass
 # then runs `strip -R .gnu.lto_*` over installed .a files. Upstream only emits fat
