@@ -1,0 +1,17 @@
+pkgbase = xpdig-bin
+	pkgdesc = Dig into Crossplane traces via a k9s-like TUI
+	pkgver = 1.27.0
+	pkgrel = 1
+	url = https://github.com/brunoluiz/xpdig
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = xpdig
+	conflicts = xpdig
+	options = !debug
+	source_x86_64 = xpdig-bin-1.27.0-x86_64.tar.gz::https://github.com/brunoluiz/xpdig/releases/download/v1.27.0/xpdig_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = a91c7a15c59097b384e9abd07b77a582dfdc53c8c09e467334368b41e6e88e18
+	source_aarch64 = xpdig-bin-1.27.0-aarch64.tar.gz::https://github.com/brunoluiz/xpdig/releases/download/v1.27.0/xpdig_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 5be6914a46e4550e04351b444364f2d7b427d7bbeab5db8abaea2c5bca500017
+
+pkgname = xpdig-bin
