@@ -1,0 +1,21 @@
+pkgbase = filecast-lan-bin
+	pkgdesc = Fast LAN file transfer over UDP broadcast with packet loss recovery
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/gistrec/filecast
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = filecast-lan
+	conflicts = filecast-lan
+	conflicts = filecast
+	options = !debug
+	source = filecast-lan-bin-1.2.0-LICENSE::https://raw.githubusercontent.com/gistrec/filecast/v1.2.0/LICENSE
+	sha256sums = 2ef8044bb3c9692990ff1e33d4da27163cd4e1e9b724a588a9c38a010cb0b6b4
+	source_x86_64 = filecast-lan-bin-1.2.0-x86_64::https://github.com/gistrec/filecast/releases/download/v1.2.0/filecast-linux-x86_64
+	sha256sums_x86_64 = 533e3a581ef5363eddaddefc02a094c9743f6eff5e02bf14ab50b1137cfd0304
+	source_aarch64 = filecast-lan-bin-1.2.0-aarch64::https://github.com/gistrec/filecast/releases/download/v1.2.0/filecast-linux-arm64
+	sha256sums_aarch64 = 8f52f4f0236947deeb0430f31b61e7f3fccd7091dafee744e5efb11404b4cbfe
+
+pkgname = filecast-lan-bin
