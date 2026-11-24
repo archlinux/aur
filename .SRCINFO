@@ -1,7 +1,7 @@
 pkgbase = fcitx5-windinput-bin
 	pkgdesc = 基于 Debian 发行包重打包的清风输入法 Fcitx5 Linux 预览版
 	pkgver = 0.133.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://windinput.com
 	install = windinput.install
 	arch = x86_64
