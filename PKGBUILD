@@ -37,14 +37,17 @@ build() {
   gendesk -f -n \
      --pkgname="linphone-desktop" \
      --pkgdesc="$pkgdesc" \
-      --name="Linphone Desktop 6" \
+     --name="Linphone Desktop 6" \
      --genericname="VoIP Client" \
-     --categories=Network \
+     --categories="Network;Telephony" \
      --icon=linphone.png \
-     --exec=/opt/linphone/linphone-launcher \
+     --exec="/opt/linphone/linphone-launcher %u" \
      --terminal=false \
      --startupnotify=true \
-     --comment "Linphone"
+     --comment "Linphone" \
+     --mimetypes="x-scheme-handler/tel;x-scheme-handler/sip;x-scheme-handler/sips;x-scheme-handler/sip-linphone;x-scheme-handler/callto" 
+
+  sed -i 's/;;/;/g' linphone-desktop.desktop
 }
 
 package() {
