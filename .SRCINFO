@@ -1,6 +1,6 @@
 pkgbase = cerastilo
 	pkgdesc = Scheduler for the Life and Ministry meeting: assignments, letters, export (PySide6)
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/pioner14/Cerastilo
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = cerastilo
 	depends = python-docx
 	depends = python-openpyxl
 	depends = hicolor-icon-theme
-	source = cerastilo-0.1.1.tar.gz::https://github.com/pioner14/Cerastilo/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 494df187fd6b9f762dd63fe024270019bcfe12b2c7b67be3b834a4950c704583
+	source = cerastilo-0.2.0.tar.gz::https://github.com/pioner14/Cerastilo/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 7458bac18361401a1d25e66dfedd4f8e104f374da571f8eea32e2254ebb8371a
 
 pkgname = cerastilo

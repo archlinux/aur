@@ -1,6 +1,6 @@
 # Maintainer: pioner14
 pkgname=cerastilo
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Scheduler for the Life and Ministry meeting: assignments, letters, export (PySide6)"
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
   'hicolor-icon-theme'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pioner14/Cerastilo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('494df187fd6b9f762dd63fe024270019bcfe12b2c7b67be3b834a4950c704583')
+sha256sums=('7458bac18361401a1d25e66dfedd4f8e104f374da571f8eea32e2254ebb8371a')
 
 package() {
   cd "$srcdir"/*-"$pkgver" || return 1
