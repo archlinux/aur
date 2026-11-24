@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=watchman-bin
-pkgver=2026.07.27.00
+pkgver=2026.11.23.00
 pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
@@ -11,10 +11,8 @@ depends=(
   glibc
   libgcc
   libstdc++
-  openssl
 )
 makedepends=(
-  patchelf
   python
 )
 provides=("watchman=$pkgver")
@@ -27,7 +25,7 @@ source=(
   "https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip"
   "watchman-v$pkgver-LICENSE::https://github.com/facebook/watchman/raw/v$pkgver/LICENSE"
 )
-b2sums=('ca1b2443278fac091c1093a13d64260981ea91af72a4106f9046ff10dae221c2d38df8b1ce6b9c68dc5169a4076584ac55857dd5a02a95372510c4d9f78065cb'
+b2sums=('0952dc4bd828655e80e187c88a8b9eec60c607115e8ce6a29521603a2b46bec37ae0f544b25c0b9d93ad5a21ba3013ff59b5a1564a42e6815ec6de2e078c82fe'
         'b9c1c046dc0cd3c6bbf977f3e6d3f448a5fa26ac4d27aa3e2bf1c1a2f6bf97484a79f76c19bf5d5b3cf92400f951015a5036dfd8e183a2fdb0634ce992b12469')
 
 prepare() {
@@ -47,21 +45,12 @@ data = data.replace(badpath, goodpath)
 
 Path("bin/watchman").write_bytes(data)
 END
-
-  patchelf \
-    --replace-needed {/usr/local/lib/,}libgflags.so.2.3 \
-    --replace-needed {/usr/local/lib/,}libglog.so.1 \
-    --replace-needed {/usr/local/lib/,}libsnappy.so.1 \
-    bin/* lib/*
-
-  patchelf --set-rpath /usr/lib/watchman bin/* lib/*
 }
 
 package() {
   cd watchman-v$pkgver-linux
 
   install -Dt "$pkgdir/usr/bin" bin/*
-  install -Dt "$pkgdir/usr/lib/watchman" lib/*
 
   install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/watchman.conf" <<END
 d /run/watchman 1777 root root
