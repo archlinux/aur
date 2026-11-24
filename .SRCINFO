@@ -1,0 +1,16 @@
+pkgbase = hatter-icon-theme
+	pkgdesc = Rounded-square icon theme for GNOME with colour and Yaru variants
+	pkgver = 4.2
+	pkgrel = 1
+	url = https://github.com/Mibea/Hatter
+	arch = any
+	license = GPL-3.0-only
+	makedepends = rsync
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	optdepends = adwaita-icon-theme: fallback for icons not covered by Hatter
+	options = !strip
+	source = hatter-icon-theme-4.2.tar.gz::https://github.com/Mibea/Hatter/archive/refs/tags/V4.2.tar.gz
+	sha256sums = e82a1a5a8049c0778b454fbb2a746cb344d65ad2f59ad3b715106ea1b7fea095
+
+pkgname = hatter-icon-theme

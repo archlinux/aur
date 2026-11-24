@@ -1,0 +1,7 @@
+src/
+pkg/
+dist/
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.zip
