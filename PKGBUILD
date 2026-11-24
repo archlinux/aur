@@ -9,7 +9,7 @@
 # extensions.gnome.org.
 
 pkgname=laccy
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Lightweight, keyboard-first clipboard manager for Wayland'
 arch=(x86_64 aarch64)
@@ -22,7 +22,7 @@ makedepends=(cargo)
 # release profile strips the binaries, so a debug package would be empty.
 options=(!lto !debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1e7a504b499c9806a85aa14cdc2f0c462d9454d07fd2bb113cbc5d3d8cf4d0c5')
+sha256sums=('bdf20795bf6b5fdcdd2d86379cf68400860b385ff8dd8d5bd537e1d0d28f6eca')
 
 prepare() {
   cd "$pkgname-$pkgver"
