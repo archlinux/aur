@@ -78,11 +78,11 @@ package() {
     find "$srcdir/clt" -maxdepth 2 -type d | head -10
     return 1
   fi
-  install -d "$pkgdir/opt/huawei/harmonyos-sdk"
-  cp -a --no-preserve=ownership "$_sdk/." "$pkgdir/opt/huawei/harmonyos-sdk/"
+  install -d "$pkgdir/opt/deveco-sdk"
+  cp -a --no-preserve=ownership "$_sdk/." "$pkgdir/opt/deveco-sdk/"
   install -d "$pkgdir/usr/share/doc/$pkgname"
   cat > "$pkgdir/usr/share/doc/$pkgname/README" <<'EOF'
 HarmonyOS SDK, cut out of the HUAWEI Command Line Tools archive.
-Installed to /opt/huawei/harmonyos-sdk; consumers symlink their own sdk/ here.
+Installed to /opt/deveco-sdk; consumers point DEVECO_SDK_HOME / ide.harmonyos.sdk.location here.
 EOF
 }
