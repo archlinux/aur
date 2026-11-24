@@ -1,0 +1,17 @@
+pkgbase = chezit-bin
+	pkgdesc = Terminal UI for chezmoi dotfile management
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/daptify14/chezit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = chezit
+	conflicts = chezit
+	options = !debug
+	source_x86_64 = chezit-bin-0.4.0-x86_64.tar.gz::https://github.com/daptify14/chezit/releases/download/v0.4.0/chezit_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6879e4c10ceac39b9d835649f28f859b33d1407146b5e3d58a33b23a72c6400f
+	source_aarch64 = chezit-bin-0.4.0-aarch64.tar.gz::https://github.com/daptify14/chezit/releases/download/v0.4.0/chezit_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 05333003c43110439a25423b1f0e83521ded93d4555c7e0d20b4d41403fa6c92
+
+pkgname = chezit-bin
