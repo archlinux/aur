@@ -1,14 +1,14 @@
 # Maintainer: sfnemis <sfnemis@linnote.app>
 pkgname=linnote
-pkgver=1.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="A fast, keyboard-driven scratchpad for Linux with smart calculator, OCR, timers, and 14+ themes"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://linnote.app"
 license=('MIT')
 depends=(
     'qt6-base'
-    'qt6-svg'
+    'openssl'
     'kwindowsystem'
     'kglobalaccel'
     'layer-shell-qt'
@@ -27,12 +27,11 @@ optdepends=(
     'tesseract-data-fra: French OCR support'
     'tesseract-data-rus: Russian OCR support'
 )
-# Use main branch directly until next release tag
-source=("$pkgname-$pkgver.tar.gz::https://github.com/sfnemis/linnote/archive/refs/heads/main.tar.gz")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sfnemis/linnote/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('335ae794d9a082f4510cf7619097e18b967a86f206cf1355d7d21444c3129fea')
 
 build() {
-    cd "$srcdir/$pkgname-main"
+    cd "$srcdir/$pkgname-$pkgver"
     cmake -B build \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -41,7 +40,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname-main"
+    cd "$srcdir/$pkgname-$pkgver"
     DESTDIR="$pkgdir" cmake --install build
     
     # Install license
