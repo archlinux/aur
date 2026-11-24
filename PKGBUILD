@@ -7,7 +7,7 @@
 # release workflow (ticket 14) publishes a `cargo aur` tarball, this file's
 # fields already match cargo-aur's output layout.
 pkgname=voisu-bin
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Voice dictation for Linux desktops (prebuilt binaries)"
 arch=('x86_64')
@@ -57,7 +57,7 @@ install="$pkgname.install"
 # ring's tree must keep those UPSTREAM names and paths so the cross-references
 # inside ring's own LICENSE manifest resolve once installed.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Anuraj-Dev/voisu/releases/download/v$pkgver/voisu-$pkgver-${CARCH}.tar.gz")
-sha256sums=('91f2d698f168220d8123ee31f0204be9c808833b4d2a945272704c8c7c83b4b2')
+sha256sums=('2a7830cefae021c68a82e4199f5a29ccbd49680538ad0795107931627edfe2b7')
 
 package() {
     install -Dm755 voisu "$pkgdir/usr/bin/voisu"
