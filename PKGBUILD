@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=baler
-pkgver=0.2.0 # renovate: datasource=github-releases depName=baler-dev/baler
+pkgver=0.2.1 # renovate: datasource=github-releases depName=baler-dev/baler
 pkgrel=1
 pkgdesc="A Cargo-style package manager for {box} modules"
 url="https://github.com/baler-dev/baler"
@@ -34,4 +34,4 @@ package() {
   install -Dm755 "${srcdir}/baler-${pkgver}/target/release/baler"  "${pkgdir}/usr/bin/baler"
   install -Dm644 "${srcdir}/baler-${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums=('94bb76f3e46b9b7c682efb9059956d46a045f4d6e3b0c65734e891b746012624')
+sha256sums=('370d29bf2857106e1731fffa8f4f2ea24a41b322475ef904c8811fc7444fa2a7')
