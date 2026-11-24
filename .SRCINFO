@@ -1,0 +1,20 @@
+pkgbase = mtp-mount
+	pkgdesc = Mount MTP devices as local filesystems via FUSE
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/vdavid/mtp-mount
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = fuse3
+	depends = glibc
+	depends = libgcc
+	optdepends = libmtp: udev rules that give the desktop user access to MTP devices
+	options = !lto
+	source = mtp-mount-0.6.0.tar.gz::https://github.com/vdavid/mtp-mount/archive/refs/tags/v0.6.0.tar.gz
+	source = mtp-mount-LICENSE-MIT::https://raw.githubusercontent.com/vdavid/mtp-mount/2064badae7adffdacc4c3eaf2c602d42bf5b9fb8/LICENSE-MIT
+	sha256sums = 38d03fa518b96061d0b28b3ca22e3b884edfeecc1bf506ef044016e1740977b6
+	sha256sums = 7012cb461f4ef84bce314d2a2e6cadcc773ed34fa509cec5a602c52077958ef6
+
+pkgname = mtp-mount
