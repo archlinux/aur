@@ -1,0 +1,22 @@
+pkgbase = python-k3cacheable
+	pkgdesc = Cache data which access frequently
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/pykit3/k3cacheable
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-msgpack
+	provides = python-k3cacheable
+	conflicts = python-k3cacheable
+	source = k3cacheable::git+https://github.com/pykit3/k3cacheable.git#tag=v0.1.5
+	sha256sums = 5a5975589861b2f7d8650ca69b025d8f42e9b9d34c70914d169f677c770eb8b4
+
+pkgname = python-k3cacheable
