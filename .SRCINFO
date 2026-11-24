@@ -1,6 +1,6 @@
 pkgbase = capri-desktop
 	pkgdesc = Unofficial Capri desktop companion: she sits on your windows, chats and does things for you
-	pkgver = 0.9.7
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://github.com/lachydotmcg/capri-desktop
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = capri-desktop
 	optdepends = scrot: screenshots on X11
 	options = !strip
 	options = !debug
-	source = capri-desktop-0.9.7.tar.gz::https://github.com/lachydotmcg/capri-desktop/archive/refs/tags/v0.9.7.tar.gz
-	sha256sums = 5af46cda83e2ae51ea094f5a02e0f773220a0fd08d13f04b88f76e922abe0e06
+	source = capri-desktop-0.9.8.tar.gz::https://github.com/lachydotmcg/capri-desktop/archive/refs/tags/v0.9.8.tar.gz
+	sha256sums = 94f7f642c7b0aa66050e06f19d3048a5a7d34055b758b1dfdc4a4642e944a346
 
 pkgname = capri-desktop
