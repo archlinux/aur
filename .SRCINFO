@@ -1,6 +1,6 @@
 pkgbase = dsd-neo-git
 	pkgdesc = Modular C/C++ digital voice decoder with SDR support and trunking. Supports DMR, P25 Phase 1/2, NXDN, D-STAR, YSF, M17, dPMR, X2-TDMA, EDACS/ProVoice and TETRA.
-	pkgver = 2.13.0.r0.g56cc137
+	pkgver = 2.13.0.r10.g8bd50f3
 	pkgrel = 1
 	url = https://github.com/arancormonk/dsd-neo
 	arch = x86_64
@@ -26,10 +26,10 @@ pkgbase = dsd-neo-git
 	provides = dsd-neo
 	conflicts = dsd-neo
 	source = dsd-neo-git::git+https://github.com/arancormonk/dsd-neo.git#branch=main
-	source = pffft-b7ed3cdb8655426a77aa26f8c0f5154205427f45.tar.gz::https://codeload.github.com/arancormonk/pffft/tar.gz/b7ed3cdb8655426a77aa26f8c0f5154205427f45
+	source = pffft-neo-0a3abd82194444e6475efac08cfc620f299f3124.tar.gz::https://codeload.github.com/arancormonk/pffft-neo/tar.gz/0a3abd82194444e6475efac08cfc620f299f3124
 	source = TETRA_crypto-defed030f6155ac70ff5d8bea97b348cb92ee1f6.tar.gz::https://codeload.github.com/MidnightBlueLabs/TETRA_crypto/tar.gz/defed030f6155ac70ff5d8bea97b348cb92ee1f6
 	sha256sums = SKIP
-	sha256sums = c35ca6cff0032fac89fbec1acced75868caac0a121d947f8931f325ceae17925
+	sha256sums = 0aa884b8443a902f8071b2efc921a5c4082a83ca9d626a94509afab489b787cc
 	sha256sums = 41043b60890297f87b5cfc9d3b2d06eec57fe89022ce676fe1ca393e00b814c0
 
 pkgname = dsd-neo-git

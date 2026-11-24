@@ -1,5 +1,5 @@
 pkgname=dsd-neo-git
-pkgver=2.13.0.r0.g56cc137
+pkgver=2.13.0.r10.g8bd50f3
 pkgrel=1
 pkgdesc="Modular C/C++ digital voice decoder with SDR support and trunking. Supports DMR, P25 Phase 1/2, NXDN, D-STAR, YSF, M17, dPMR, X2-TDMA, EDACS/ProVoice and TETRA."
 arch=('x86_64' 'aarch64')
@@ -42,9 +42,9 @@ pkgver() {
 }
 
 # BEGIN pinned PFFFT (tools/update_aur_pffft.py)
-_pffft_sha=b7ed3cdb8655426a77aa26f8c0f5154205427f45
-source+=("pffft-$_pffft_sha.tar.gz::https://codeload.github.com/arancormonk/pffft/tar.gz/$_pffft_sha")
-sha256sums+=('c35ca6cff0032fac89fbec1acced75868caac0a121d947f8931f325ceae17925')
+_pffft_sha=0a3abd82194444e6475efac08cfc620f299f3124
+source+=("pffft-neo-$_pffft_sha.tar.gz::https://codeload.github.com/arancormonk/pffft-neo/tar.gz/$_pffft_sha")
+sha256sums+=('0aa884b8443a902f8071b2efc921a5c4082a83ca9d626a94509afab489b787cc')
 # END pinned PFFFT
 
 # BEGIN pinned TETRA_crypto (tools/update_aur_tetra_crypto.py)
@@ -76,7 +76,7 @@ build() {
         -DDSD_ENABLE_FAST_MATH=ON \
         -DDSD_ENABLE_NATIVE=OFF \
         -DFETCHCONTENT_SOURCE_DIR_DSD_TETRA_CRYPTO="$srcdir/TETRA_crypto-$_tetra_crypto_sha" \
-        -DFETCHCONTENT_SOURCE_DIR_DSD_PFFFT="$srcdir/pffft-$_pffft_sha" \
+        -DFETCHCONTENT_SOURCE_DIR_DSD_PFFFT="$srcdir/pffft-neo-$_pffft_sha" \
         -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
         -DBUILD_TESTING=OFF \
         -Wno-dev
