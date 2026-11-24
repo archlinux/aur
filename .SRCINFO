@@ -1,0 +1,19 @@
+pkgbase = waveloom-bin
+	pkgdesc = Terminal coding agent optimized for DeepSeek prefix caching
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/Menfre01/waveloom
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = waveloom
+	conflicts = waveloom
+	options = !debug
+	source = waveloom-bin-0.10.0-LICENSE::https://raw.githubusercontent.com/Menfre01/waveloom/v0.10.0/LICENSE
+	sha256sums = 64f7ff5bbe686f5cd9efeb0ba5cf78040823fa67147aaa6169178d2b918da0ba
+	source_x86_64 = waveloom-bin-0.10.0-x86_64.tar.gz::https://github.com/Menfre01/waveloom/releases/download/v0.10.0/waveloom_linux_amd64.tar.gz
+	sha256sums_x86_64 = b85fbe7f73fe999ede1e75f0601d0e088c83431ec54dc503c710f3232e0421b0
+	source_aarch64 = waveloom-bin-0.10.0-aarch64.tar.gz::https://github.com/Menfre01/waveloom/releases/download/v0.10.0/waveloom_linux_arm64.tar.gz
+	sha256sums_aarch64 = 393eb67fb4b1f9183c9b8d58f886da1c76fb6c65bedcb4c5a62ae3a855794c23
+
+pkgname = waveloom-bin
