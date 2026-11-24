@@ -1,0 +1,19 @@
+post_install() {
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor 2>/dev/null || true
+  echo "T3 Code (private build): no analytics, no T3 account or Connect relay, no auto-updates."
+  echo "Phone/tailnet access: Settings > Connections > Enable network access, then pair with"
+  echo "a code from Authorized clients, e.g. http://<host>:3773 or http://<magicdns-name>:3773."
+  echo "Updates arrive through pacman (yay -Syu or your AUR helper)."
+}
+
+post_upgrade() {
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor 2>/dev/null || true
+}
+
+post_remove() {
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor 2>/dev/null || true
+  echo "T3 Code user data remains in ~/.t3 unless you remove it."
+}
