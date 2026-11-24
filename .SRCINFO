@@ -1,6 +1,6 @@
 pkgbase = effectcraft-private-bin
 	pkgdesc = 自用维护：开源 clean-room 版 Adobe After Effects 替代（动效合成），上游 storytold/effectcraft
-	pkgver = 0.24.1
+	pkgver = 0.25.1
 	pkgrel = 4
 	url = https://getartcraft.com/apps/effectcraft
 	arch = x86_64
@@ -25,12 +25,12 @@ pkgbase = effectcraft-private-bin
 	optdepends = vulkan-driver: GPU rendering through Vulkan
 	optdepends = xdg-desktop-portal: native desktop integration and file dialogs
 	optdepends = cups: printing support
-	provides = effectcraft=0.24.1
+	provides = effectcraft=0.25.1
 	conflicts = effectcraft
 	conflicts = effectcraft-bin
 	conflicts = effectcraft-git
 	conflicts = ai.storyteller.effectcraft
-	source = https://gh-proxy.com/https://github.com/storytold/effectcraft/releases/download/v0.24.1/effectcraft-0.24.1-linux-x86_64.pkg.tar.zst
-	sha256sums = 438cec894542593369b90ddc6842501e12fb39ee34a5f210f09e93255417eed4
+	source = https://gh-proxy.cn/https://github.com/storytold/effectcraft/releases/download/v0.25.1/effectcraft-0.25.1-linux-x86_64.pkg.tar.zst
+	sha256sums = 3ad504e2ed230c50a6eaa1058026bf7805405c54bb001aead23ad3d1123278ba
 
 pkgname = effectcraft-private-bin
