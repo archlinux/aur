@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Santiago Burgos <santiago.burgos1089@gmail.com>
 pkgname=fingwit
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="Fingerprint Configuration Tool"
 url="https://github.com/xapp-project/fingwit"
 arch=('x86_64')
@@ -25,7 +25,7 @@ checkdepends=('desktop-file-utils')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'license.patch'
         'fingwit_pam.conf')
-sha256sums=('3f0a9dc6f961cfa6519b00dc6380ac207721ae6438bb79ba841db30e3248c83b'
+sha256sums=('1df9f9f82a95edc50934f6b06c17e1a66bc80f57f02f3ba0930e9a4a98ae7bf2'
             'c93378f42af280a724960c895b2007dabaa028368d1aba70d0cde6044f475222'
             'a5df2e143c32f1a92d4f56e26f630165340ef988fcedae73f380987d4dc3d0ab')
 
