@@ -1,5 +1,5 @@
 pkgbase = linphone-desktop-gh-git
-	pkgdesc = A free VoIP and video softphone based on the SIP protocol
+	pkgdesc = A free VoIP and video softphone based on the SIP protocol (GitHub releases)
 	pkgver = 6.2.4
 	pkgrel = 1
 	url = http://linphone.org
@@ -29,6 +29,7 @@ pkgbase = linphone-desktop-gh-git
 	depends = v4l-utils
 	depends = glew
 	provides = linphone=6.2.4
+	options = !lto
 	source = git+https://github.com/BelledonneCommunications/linphone-desktop.git#tag=6.2.4
 	source = linphone.png::https://raw.githubusercontent.com/BelledonneCommunications/linphone-desktop/refs/heads/master/Linphone/data/icon/hicolor/128x128/apps/icon.png
 	sha512sums = SKIP
