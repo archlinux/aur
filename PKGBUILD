@@ -10,7 +10,7 @@
 # the uploaded helper.
 _pkgname=muxflow
 pkgname=muxflow-teejer-git
-pkgver=0.1.39.r2220.gcabc198a
+pkgver=0.1.39.r2221.gba075f5d
 pkgrel=1
 pkgdesc='Graphical IDE for local and remote tmux sessions (Teejer fork, source build)'
 url='https://github.com/Teejer/muxflow'

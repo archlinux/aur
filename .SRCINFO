@@ -1,6 +1,6 @@
 pkgbase = muxflow-teejer-git
 	pkgdesc = Graphical IDE for local and remote tmux sessions (Teejer fork, source build)
-	pkgver = 0.1.39.r2220.gcabc198a
+	pkgver = 0.1.39.r2221.gba075f5d
 	pkgrel = 1
 	url = https://github.com/Teejer/muxflow
 	arch = x86_64
