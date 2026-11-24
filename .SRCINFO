@@ -1,0 +1,17 @@
+pkgbase = pi-go-bin
+	pkgdesc = Go implementation of the pi coding agent
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/dimetron/pi-go
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pi-go
+	conflicts = pi-go
+	options = !debug
+	source_x86_64 = pi-go-bin-0.4.4-x86_64.tar.gz::https://github.com/dimetron/pi-go/releases/download/v0.4.4/pi-go_0.4.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9f8e02bb3de7bdc502def3676d106453e8ed9564a1faf4b7d3609a2d8219fdb8
+	source_aarch64 = pi-go-bin-0.4.4-aarch64.tar.gz::https://github.com/dimetron/pi-go/releases/download/v0.4.4/pi-go_0.4.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 090dd604411d1987dd8d4cc8b8074635db0f0ac07ab1d84b55638777d82d000f
+
+pkgname = pi-go-bin
