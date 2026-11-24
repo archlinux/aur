@@ -1,0 +1,19 @@
+pkgbase = x360tm-bin
+	pkgdesc = Browse and install Xbox 360 mods, trainers, saves and homebrew to a console over FTP
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/wb2024/wbs360studiotui
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	provides = x360tm
+	conflicts = x360tm
+	options = !debug
+	options = !strip
+	source = x360tm-bin-3.0.0-LICENSE::https://raw.githubusercontent.com/wb2024/wbs360studiotui/v3.0.0/LICENSE
+	sha256sums = df8ef21d1ec750faf43e62378de07741f1342d9ef68f066c0827c210ff5fd1dc
+	source_x86_64 = x360tm-bin-3.0.0-x86_64.tar.gz::https://github.com/wb2024/wbs360studiotui/releases/download/v3.0.0/x360tm-linux.tar.gz
+	sha256sums_x86_64 = 223169ad5c395d0fdc603868dc4601f75675ab714ea76125f1ff51236b8f4fa8
+
+pkgname = x360tm-bin
