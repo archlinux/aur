@@ -1,6 +1,6 @@
 pkgbase = python-k3log
 	pkgdesc = A collection of log utilities for Python logging
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/pykit3/k3log
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-k3log
 	depends = python-k3confloader
 	provides = python-k3log
 	conflicts = python-k3log
-	source = k3log::git+https://github.com/pykit3/k3log.git#tag=v0.1.11
-	sha256sums = fba160cdb9f22d7621aeced4d6d21d74e6903072d98d55919576113675382664
+	source = k3log::git+https://github.com/pykit3/k3log.git#tag=v0.1.12
+	sha256sums = 7e21ddba8ac758ecf5e502ff6caaa98b8e9229728c67616618670e17a9db0ab2
 
 pkgname = python-k3log

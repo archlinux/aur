@@ -2,7 +2,7 @@
 
 pkgname=python-k3log
 _name=${pkgname#python-}
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="A collection of log utilities for Python logging"
 provides=(${pkgname})
@@ -28,7 +28,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('fba160cdb9f22d7621aeced4d6d21d74e6903072d98d55919576113675382664')
+sha256sums=('7e21ddba8ac758ecf5e502ff6caaa98b8e9229728c67616618670e17a9db0ab2')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
