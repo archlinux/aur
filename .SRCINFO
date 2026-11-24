@@ -1,6 +1,6 @@
 pkgbase = emutastic-bin
 	pkgdesc = Beautiful retro game library and emulation frontend (libretro)
-	pkgver = 1.9.4
+	pkgver = 1.9.5
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/Emutastic-For-Linux
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = emutastic-bin
 	optdepends = vulkan-icd-loader: the Xbox core (Midway Verdant) draws with Vulkan
 	provides = emutastic
 	conflicts = emutastic
-	noextract = Emutastic-1.9.4-linux-x64.tar.gz
+	noextract = Emutastic-1.9.5-linux-x64.tar.gz
 	options = !strip
-	source = https://github.com/codingncaffeine/Emutastic-For-Linux/releases/download/v1.9.4/Emutastic-1.9.4-linux-x64.tar.gz
-	source = https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v1.9.4/LICENSE
-	source = emutastic-logo.png::https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v1.9.4/src/Emutastic/Assets/banners%20and%20icons/emutastic-logo.png
-	sha256sums = e2a9a1df651e656d6586d85aaeab172a0dabee2f33edc5a617aaae1b469c8036
+	source = https://github.com/codingncaffeine/Emutastic-For-Linux/releases/download/v1.9.5/Emutastic-1.9.5-linux-x64.tar.gz
+	source = https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v1.9.5/LICENSE
+	source = emutastic-logo.png::https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v1.9.5/src/Emutastic/Assets/banners%20and%20icons/emutastic-logo.png
+	sha256sums = 31760941b333b265e2c73639f50e6daf3eeee3f4e8d90faadb30c72878d92221
 	sha256sums = SKIP
 	sha256sums = SKIP
 
