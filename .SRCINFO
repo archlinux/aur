@@ -1,0 +1,17 @@
+pkgbase = sacha-bin
+	pkgdesc = Keyboard-first AWS TUI inspired by two-pane file managers
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/sachamama/sacha
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sacha
+	conflicts = sacha
+	options = !debug
+	source_x86_64 = sacha-bin-1.5.0-x86_64.tar.gz::https://github.com/sachamama/sacha/releases/download/v1.5.0/sacha_1.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 25121959011923edae91ff7d151948a7f86dc3d8976844869bc379d2e83c9dce
+	source_aarch64 = sacha-bin-1.5.0-aarch64.tar.gz::https://github.com/sachamama/sacha/releases/download/v1.5.0/sacha_1.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = e56534cd67dcd62c4942b8bea63a85de2ba0fd6633a72626a572ae658e2a2795
+
+pkgname = sacha-bin
