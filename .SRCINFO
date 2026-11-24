@@ -1,0 +1,16 @@
+pkgbase = mediafire_rs
+	pkgdesc = Downloads files and folders from MediaFire
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/NicKoehler/mediafire_rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	options = !lto
+	source = mediafire_rs-0.2.3.tar.gz::https://github.com/NicKoehler/mediafire_rs/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = e32879bd7f6d69844b9755d4eded29d67846dec8fb9747ce86c5542d2ef18464
+
+pkgname = mediafire_rs
