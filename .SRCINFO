@@ -1,0 +1,22 @@
+pkgbase = python-k3jobq
+	pkgdesc = Concurrent job queue manager with multi-threading support
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/pykit3/k3jobq
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-k3thread
+	provides = python-k3jobq
+	conflicts = python-k3jobq
+	source = k3jobq::git+https://github.com/pykit3/k3jobq.git#tag=v0.1.9
+	sha256sums = 9d43270014d6b4db97cedb304f91a53eb3fc43255399546b32b00b28d140fa7d
+
+pkgname = python-k3jobq
