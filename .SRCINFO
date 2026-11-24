@@ -1,5 +1,5 @@
 pkgbase = rust-dos
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://github.com/dividebysandwich/rust-dos
 	arch = x86_64
@@ -7,8 +7,8 @@ pkgbase = rust-dos
 	license = GPL-2.0-or-later
 	makedepends = cargo
 	options = !lto
-	source = rust-dos-1.9.2.tar.gz::https://github.com/dividebysandwich/rust-dos/archive/refs/tags/v1.9.2.tar.gz
-	sha256sums = fcdf92e1556198fe1b75390b568f98c1d38e8f70ba67a48cb7590bb7371329c3
+	source = rust-dos-1.9.3.tar.gz::https://github.com/dividebysandwich/rust-dos/archive/refs/tags/v1.9.3.tar.gz
+	sha256sums = 9b8d9f047aa719d309b8139eef522df0fb374c434e9f76311b72d4d303d0c6f1
 
 pkgname = rust-dos
 	pkgdesc = A fast x86 DOS emulator with optional VR support featuring 386 to Pentium CPUs, DPMI host, VGA/VESA/S3/Voodoo, SB16/GUS/MT-32/GM, IDE, PnP, PCI, Win3x, Win95, NE2000 with NAT, IPX and serial multiplayer, RetroAchievements, save states, rewind, and WASM.
