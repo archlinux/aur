@@ -2,7 +2,7 @@
 
 pkgname=python-k3mime
 _name=${pkgname#python-}
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="MIME type detection by filename"
 provides=(${pkgname})
@@ -23,10 +23,11 @@ makedepends=(
 checkdepends=(
     python-pytest
     python-k3ut
+    python-pip
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('631c66e4ee7d9af116e7b5d8ef0b795783583746559cf9081a4997cd9c70585c')
+sha256sums=('cf4b40775812ce4ba5988e66feb018d3fd13aa7148f42cc2f1b5a250531cab03')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
