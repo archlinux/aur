@@ -1,10 +1,10 @@
 # Maintainer: lzsnyy <710080675@qq.com>
 #
-# Domestic counterpart of zcode-intl-bin, built from the same official ZCode
-# Linux deb. Upstream does not publish a separate domestic build, so the split
-# is made at package level: this package defaults to the Chinese UI and puts
-# the BigModel / 智谱 account providers first, while the international package
-# keeps upstream's Z.ai defaults.
+# Domestic BigModel edition, built from the same official ZCode Linux deb as
+# zcode-zai-cn-bin (Z.ai CN) and zcode-intl-bin (Z.ai global). Upstream ships
+# all three login sources in one binary and lets it choose at runtime; this
+# package pins the OAuth provider list to BigModel / 智谱 only.
+# UI language follows the system locale.
 #
 # Installs under /opt/zcode-cn with its own desktop file, icon, command and
 # user data directory, so both editions can run at the same time.
@@ -24,8 +24,8 @@
 
 pkgname=zcode-cn-bin
 pkgver=4.0.0_10870
-pkgrel=3
-pkgdesc='ZCode — agentic development environment for GLM (official Linux build, BigModel defaults)'
+pkgrel=5
+pkgdesc='ZCode — agentic development environment for GLM (official Linux build, BigModel login only)'
 arch=('x86_64' 'aarch64')
 url='https://zcode.z.ai/cn'
 license=('LicenseRef-Proprietary')
@@ -45,7 +45,7 @@ depends=(
   'xdg-utils'
 )
 optdepends=('libappindicator-gtk3: tray icon support')
-makedepends=('libarchive' 'nodejs' 'imagemagick' 'ttf-dejavu')
+makedepends=('asar' 'libarchive' 'nodejs' 'imagemagick' 'ttf-dejavu')
 install="${pkgname}.install"
 conflicts=('zcode-cn' 'z-code-bin' 'zcode-bin' 'zcode-desktop-bin')
 provides=('zcode-cn')
@@ -54,13 +54,13 @@ source=("${pkgname}.sh" 'patch.cjs')
 source_x86_64=("ZCode-4.0.0-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/4.0.0/linux-x64/ZCode-4.0.0-linux-x64.deb")
 source_aarch64=("ZCode-4.0.0-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/4.0.0/linux-arm64/ZCode-4.0.0-linux-arm64.deb")
 noextract=('ZCode-4.0.0-linux-x64.deb' 'ZCode-4.0.0-linux-arm64.deb')
-sha256sums=('6f4fbd5d8f8e6a1cd8b920c2a867e20eca10dd61404a20aee399168f5be9035e'
-            '2700a8d1d447a6805b1e600bdc12cc05afa16948896696a5a3a0ffb341e1d090')
+sha256sums=('87499d60c8de436735c7f8ce192909ff1bb4b891275ef485f37fc1b4b1df37e2'
+            'fce42a4e7a25700b43c8c4407ce3a205458dbe5f9c52f6de38c07b0c65579b43')
 sha256sums_x86_64=('402f0eea0e3dfa23e3176525ae08d0f4101ced64ddbbe77c88ade87c53ab256a')
 sha256sums_aarch64=('961a872c505473b03649faf5f4eff8055b214dd017d5a79da532fabbca17de25')
 
-# 上游同一份包里只有一张 zcode.png；国内版图标右下角合成 CN 角标，避免两版
-# 在启动器/任务栏里完全一样。
+# 上游同一份包里只有一张 zcode.png；BigModel 国内版图标右下角合成 CN 角标，
+# 与 Z.ai 中国版的 ZCN、国际版的 INTL 区分。
 _badge_icon() {
     local src="$1" dst="$2" size="$3" label="${4:-CN}" bg="${5:-#C8102E}"
     local bw pad ring pointsize tmp
@@ -104,7 +104,15 @@ package() {
 
   _app="${pkgdir}/opt/zcode-cn"
   cp -a "${_extractdir}/opt/ZCode" "${_app}"
-  node "${srcdir}/patch.cjs" "${_app}"
+
+  # Pin the OAuth login source to BigModel (China). The three upstream login
+  # sources (BigModel, Z.ai CN, Z.ai global) live in the host bundle, so the
+  # asar is rebuilt with only the BigModel factory left in the provider list.
+  asar extract "${_app}/resources/app.asar" "${srcdir}/asar-${pkgname}"
+  node "${srcdir}/patch.cjs" "${_app}" bigmodel "${srcdir}/asar-${pkgname}"
+  rm -rf "${_app}/resources/app.asar.unpacked"
+  asar pack "${srcdir}/asar-${pkgname}" "${_app}/resources/app.asar" --unpack '*.node'
+  rm -rf "${srcdir}/asar-${pkgname}"
 
   # Rewrite the upstream AppArmor profile (Debian paths and profile name) for
   # this package's prefix; the .install hook loads it.
@@ -123,7 +131,7 @@ package() {
   install -Dm644 "${_extractdir}/usr/share/applications/zcode.desktop" \
     "${pkgdir}/usr/share/applications/zcode.desktop"
   sed -i \
-    -e 's|^Name=.*|Name=ZCode（国内版）|' \
+    -e 's|^Name=.*|Name=ZCode（BigModel 国内版）|' \
     -e 's|^Exec=.*|Exec=/usr/bin/zcode-cn %U|' \
     -e 's|^Icon=.*|Icon=zcode-cn|' \
     -e 's|^StartupWMClass=.*|StartupWMClass=zcode|' \
