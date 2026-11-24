@@ -1,0 +1,23 @@
+pkgbase = gibr
+	pkgdesc = Create Git branches from issue trackers
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/ytreister/gibr
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	depends = python
+	depends = python-click
+	depends = python-dotenv
+	depends = python-gitpython
+	depends = python-requests
+	depends = python-slugify
+	depends = python-tabulate
+	source = https://files.pythonhosted.org/packages/source/g/gibr/gibr-0.10.2.tar.gz
+	sha256sums = 2f278040f5fc8c3e48ea78bb8f9ddb3c6ab86106864afc82bb8b9f12849bbb7f
+
+pkgname = gibr
