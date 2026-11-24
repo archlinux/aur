@@ -4,10 +4,10 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full-git
-pkgver=9.1.r126780.ga6e5d5ff99
+pkgver=9.2.r129276.gb09fc689d6
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
-_whispercpp_ver='1.9.4'
+_whispercpp_ver='1.9.5'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD, including libfdk-aac; git version)'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -109,7 +109,7 @@ depends=(
     'srt'
     'svt-av1'
     'svt-hevc'
-    'svt-jpeg-xs-git'
+    'svt-jpeg-xs'
     'svt-vp9'
     'tesseract'
     'twolame'
@@ -141,7 +141,6 @@ makedepends=(
     'git'
     'glslang'
     'gmp'
-    'libgl'
     'lv2'
     'nasm'
     'opencl-headers'
@@ -171,11 +170,11 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         'LICENSE')
 sha256sums=('SKIP'
             'SKIP'
-            '57e280cee375ab02425b806ad5146b99f6eb9357e3c2b31357c8a6af2e2e44ae'
-            'be900abcf53220704c575eb7f28ba956189777bb5d2f2e3319258b78e358503e'
+            'ff1a9053feb509ff9d7729703355541ae9690073a6b1c40eb692c962e0dc1720'
+            'bf222066441afd11473dc755a6dcaacfa78a7b0a1f3bcb95d36ce54fc95f96e2'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '682cff03dece2f4d1d7b0a12f7602413ce1f15a59a3c445133d1db599bbb287d'
-            '9e883bab6260fef1841f2f6d5b8525ce106dceb58eaeddae75a8c9370548cf86'
+            'b55beed25b9377e0c9c9727e19307f219c6d750094ac37a38887309e26e4b116'
+            '141981e5596b6f7031825f117036fe152121c255ea3be7b3baf8871a87f64599'
             'c39addf190d25d1182c5c5658677f77ee7c1ae542969b2004441c62a425d324b'
             '2c846c629ad129ae8ce50791de4f1d390714db6d6420a35406b83b9b44999d4a'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
@@ -284,6 +283,7 @@ build() {
         --enable-libdvdnav \
         --enable-libdvdread \
         --enable-libfdk-aac \
+        --enable-libfdk-xhe-aac \
         --enable-libflite \
         --enable-libfontconfig \
         --enable-libfreetype \
@@ -392,7 +392,6 @@ build() {
         --disable-nvenc \
         --disable-ohcodec \
         --enable-opencl \
-        --enable-opengl \
         --disable-rkmpp \
         --enable-v4l2-m2m \
         --disable-vdpau \
