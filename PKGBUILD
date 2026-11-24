@@ -1,7 +1,7 @@
 # Maintainer: johnpetersa19 <johnppetersa at gmail dot com>
 
 pkgname=temporal-explorer
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Browse Git repository history as a time-navigable file tree'
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ checkdepends=(
 )
 conflicts=('temporal-explorer-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f5e73d40fc2975b03ab6226e225c218a370e7683f129cd5d6dfb5e699c62a13d')
+sha256sums=('b80537a4ea15a28b33f40b44385258a02c4eb5155bcad8aadae5054bbfda7389')
 
 build() {
   arch-meson "Temporal-Explorer-$pkgver" build --buildtype=release

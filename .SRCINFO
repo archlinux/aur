@@ -1,6 +1,6 @@
 pkgbase = temporal-explorer
 	pkgdesc = Browse Git repository history as a time-navigable file tree
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/johnpetersa19/Temporal-Explorer
 	arch = x86_64
@@ -20,8 +20,7 @@ pkgbase = temporal-explorer
 	conflicts = temporal-explorer-git
 	options = !debug
 	options = !lto
-	source = temporal-explorer-0.2.0.tar.gz::https://github.com/johnpetersa19/Temporal-Explorer/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = f5e73d40fc2975b03ab6226e225c218a370e7683f129cd5d6dfb5e699c62a13d
+	source = temporal-explorer-0.3.0.tar.gz::https://github.com/johnpetersa19/Temporal-Explorer/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = b80537a4ea15a28b33f40b44385258a02c4eb5155bcad8aadae5054bbfda7389
 
 pkgname = temporal-explorer
-
