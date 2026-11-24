@@ -1,0 +1,21 @@
+pkgbase = python-k3portlock
+	pkgdesc = Cross-process lock using socket binding
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/pykit3/k3portlock
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3portlock
+	conflicts = python-k3portlock
+	source = k3portlock::git+https://github.com/pykit3/k3portlock.git#tag=v0.1.10
+	sha256sums = d861a9b146b41da52e672d7affaafbca13621f6de1b250ffa98db1815ee4b88e
+
+pkgname = python-k3portlock
