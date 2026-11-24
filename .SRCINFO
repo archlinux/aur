@@ -1,6 +1,6 @@
 pkgbase = fallow-bin
 	pkgdesc = Codebase intelligence for TypeScript and JavaScript (prebuilt)
-	pkgver = 3.47.0
+	pkgver = 3.48.0
 	pkgrel = 1
 	url = https://github.com/fallow-rs/fallow
 	install = fallow.install
@@ -9,15 +9,15 @@ pkgbase = fallow-bin
 	license = MIT
 	depends = glibc
 	depends = libgcc
-	provides = fallow=3.47.0
+	provides = fallow=3.48.0
 	conflicts = fallow
-	source = fallow-3.47.0-LICENSE::https://raw.githubusercontent.com/fallow-rs/fallow/v3.47.0/LICENSE
-	source = fallow-similar-code-3.47.0-LICENSE::https://raw.githubusercontent.com/fallow-rs/fallow/v3.47.0/tools/similar-code-sidecar/LICENSE
+	source = fallow-3.48.0-LICENSE::https://raw.githubusercontent.com/fallow-rs/fallow/v3.48.0/LICENSE
+	source = fallow-similar-code-3.48.0-LICENSE::https://raw.githubusercontent.com/fallow-rs/fallow/v3.48.0/tools/similar-code-sidecar/LICENSE
 	sha256sums = b291c8e1e0cac7a3646cd5539d7c728f2ce425678eedd1afeeea3c35838c29a9
 	sha256sums = efd3a4139905e009f1f321ab6b38b73b7b6ec2ed655d12f68df69472e4dd1981
-	source_x86_64 = fallow-3.47.0-x86_64.tar.gz::https://github.com/fallow-rs/fallow/releases/download/v3.47.0/fallow-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = adb24b56982ca7e1cc37e6c5fe16a48051ffacc5bafc6c1c35e27561d41c1062
-	source_aarch64 = fallow-3.47.0-aarch64.tar.gz::https://github.com/fallow-rs/fallow/releases/download/v3.47.0/fallow-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = ddb0121c7bd0358972ef7061483f1d63d1955db6af18af0f42031c4b99ad5d0d
+	source_x86_64 = fallow-3.48.0-x86_64.tar.gz::https://github.com/fallow-rs/fallow/releases/download/v3.48.0/fallow-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = fba946ce5094c5b77edf338a08d58783d6c26294b73d42a8e7c252699fe32f6a
+	source_aarch64 = fallow-3.48.0-aarch64.tar.gz::https://github.com/fallow-rs/fallow/releases/download/v3.48.0/fallow-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 35a9c5a5935cca541627f9ff3417ead30d8b70c72a791b37d189c24da19e9f60
 
 pkgname = fallow-bin
