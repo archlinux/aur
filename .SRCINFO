@@ -1,0 +1,17 @@
+pkgbase = showagent-bin
+	pkgdesc = Find local coding agent sessions and switch agents mid-task without losing the conversation
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/aytzey/showagent
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = showagent
+	conflicts = showagent
+	options = !debug
+	source_x86_64 = showagent-bin-0.16.0-x86_64.tar.gz::https://github.com/aytzey/showagent/releases/download/v0.16.0/showagent_v0.16.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = adaa828be04411bef9dc0a438f61daab4460b1d781754febbd5d48b8539e7177
+	source_aarch64 = showagent-bin-0.16.0-aarch64.tar.gz::https://github.com/aytzey/showagent/releases/download/v0.16.0/showagent_v0.16.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 042c6c9d59081b3847853a5af419a7f0171856bb1f4dc1b94cd5b6edb73701e2
+
+pkgname = showagent-bin
