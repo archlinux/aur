@@ -1,0 +1,16 @@
+pkgbase = spritefusion-pixel-snapper
+	pkgdesc = Snap pixel art to a clean grid
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hugo-dz/spritefusion-pixel-snapper
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = spritefusion-pixel-snapper-1.0.0.tar.gz::https://github.com/hugo-dz/spritefusion-pixel-snapper/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 5505968af26218816d7255c43f48c9dec2a7dabf958d5cd355ee1cb468d65021
+
+pkgname = spritefusion-pixel-snapper
