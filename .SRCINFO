@@ -1,0 +1,18 @@
+pkgbase = specter-tui-bin
+	pkgdesc = Deploy AI agents to dedicated VMs from an interactive TUI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ghostwright/specter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = specter-tui
+	conflicts = specter-tui
+	conflicts = specter
+	options = !debug
+	source_x86_64 = specter-tui-bin-0.1.0-x86_64.tar.gz::https://github.com/ghostwright/specter/releases/download/v0.1.0/specter_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = a1a43139efdf176ca83a98ca4e700be7a95c6db91c12f5e38c204b32dca099ef
+	source_aarch64 = specter-tui-bin-0.1.0-aarch64.tar.gz::https://github.com/ghostwright/specter/releases/download/v0.1.0/specter_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9a61418914017933f87976947ff269119cbcaf9287038bbb28dc898d76c7a7fe
+
+pkgname = specter-tui-bin
