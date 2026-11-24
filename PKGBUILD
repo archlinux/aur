@@ -4,7 +4,7 @@ _pkgname=neocities-deploy
 pkgname=$_pkgname-git
 pkgdesc='Command-line tool for deploying your Neocities site'
 url="https://github.com/kugland/$_pkgname"
-pkgver=v0.1.27.7c9221ab
+pkgver=v0.1.29.325d4f14
 pkgrel=1
 arch=('any')
 source=("$_pkgname::git+${url}#branch=master")
