@@ -1,0 +1,17 @@
+pkgbase = cooldeck-bin
+	pkgdesc = Keyboard-first terminal dashboard for Coolify deployments and live logs
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/resetnak/cooldeck
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cooldeck
+	conflicts = cooldeck
+	options = !debug
+	source_x86_64 = cooldeck-bin-0.6.0-x86_64.tar.gz::https://github.com/resetnak/cooldeck/releases/download/v0.6.0/cooldeck_0.6.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = be2f47db6995fff9154bb59ba1d1652b6cd2590b2a36dfee7a7fbecac656e9d4
+	source_aarch64 = cooldeck-bin-0.6.0-aarch64.tar.gz::https://github.com/resetnak/cooldeck/releases/download/v0.6.0/cooldeck_0.6.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 94890037b96181b70ac7215d2d21c41efeb3b44ae392ee4934675663c742ade1
+
+pkgname = cooldeck-bin
