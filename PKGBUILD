@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CEMiTool
-_pkgver=1.32.0
+_pkgver=1.36.1
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.36.1
 pkgrel=1
 pkgdesc='Co-expression Modules identification Tool'
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('554e5f56862e8f801787ec41a274a611228b277552f11a38a86d83a85ec55bc1')
+sha256sums=('c30445d9294cf2806a9ba3ca0285cfac7f7f6c6d584f8e2e354c805eaf38a2f3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
