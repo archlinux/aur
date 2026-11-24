@@ -2,7 +2,7 @@
 
 pkgname=drmcru-bin
 _pkgname=drmcru
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Linux DRM/KMS custom resolution and EDID override utility"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
 )
 options=('!strip' '!debug')
 source_x86_64=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-musl")
-sha256sums_x86_64=('29f9882ead6828e657b3b339eb5b14f148ddc88c659793e55e7a66f4b1145798')
+sha256sums_x86_64=('b3e74e59515dec4cb5c831e631547e37a9ce26488928165e40c4987866bd428f')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
