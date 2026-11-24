@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=river-bsp-layout
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Binary space partitioned layout for the tiling Wayland compositor River (classic only)"
 arch=('x86_64')
 url="https://github.com/areif-dev/river-bsp-layout"
@@ -20,7 +20,7 @@ provides=(
 source=(
   "${pkgname}"::"git+${url}#tag=v${pkgver}"
 )
-b2sums=('f7fb18ae209b7cae9e3a0e6ec4d238a22f390028bb2b00ccc77b95b1aac55813147376737d32a38c1c19f7093f132c7b7a35504c9f5239ef60698ed9b52b6f24')
+b2sums=('a4ac10a80a5dd5c372467f3a2fd740010267bbfd05fe0b05a9c40ef5b27e070c9126524ee7df1e0bcd0e69acee67e932933b9777914ce82f2f47166cfc1a69cf')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
