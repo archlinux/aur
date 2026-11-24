@@ -1,0 +1,20 @@
+pkgbase = ruby-simplecov-cobertura
+	pkgdesc = SimpleCov formatter that produces Cobertura XML coverage reports
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/jessebs/simplecov-cobertura
+	arch = any
+	license = Apache-2.0
+	checkdepends = ruby-bundler
+	checkdepends = ruby-nokogiri
+	checkdepends = ruby-rake
+	checkdepends = ruby-test-unit
+	makedepends = git
+	depends = ruby
+	depends = ruby-rexml
+	depends = ruby-simplecov
+	options = !emptydirs
+	source = simplecov-cobertura-4.0.0.tar.gz::https://github.com/jessebs/simplecov-cobertura/archive/refs/tags/v4.0.0.tar.gz
+	sha256sums = af63b0b6bca0d30fe0e95cf1c3ceda4f32ac6bbc43a523655a4600aa3629b5b1
+
+pkgname = ruby-simplecov-cobertura
