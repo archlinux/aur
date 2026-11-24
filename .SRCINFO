@@ -1,0 +1,18 @@
+pkgbase = python-littletable
+	pkgdesc = In-memory ORM database for Python
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/ptmcg/littletable
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-rich: rich table output
+	optdepends = python-pandas: import and export with pandas
+	source = https://files.pythonhosted.org/packages/source/l/littletable/littletable-3.0.2.tar.gz
+	sha256sums = 6c3c310344e0105eb5ca882443977d7aba83095daa25562af4621c95a5ea67ae
+
+pkgname = python-littletable
