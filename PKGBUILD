@@ -2,7 +2,7 @@
 
 pkgname=python-k3portlock
 _name=${pkgname#python-}
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Cross-process lock using socket binding"
 provides=(${pkgname})
@@ -26,7 +26,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('d861a9b146b41da52e672d7affaafbca13621f6de1b250ffa98db1815ee4b88e')
+sha256sums=('aefa29f846486750d794c6ad831a0ba05016890d3c543d37872477a714b8677b')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
