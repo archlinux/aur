@@ -1,0 +1,17 @@
+pkgbase = helm-tui-bin
+	pkgdesc = Simple terminal UI for Helm
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/pidanou/helm-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = helm-tui
+	conflicts = helm-tui
+	options = !debug
+	source_x86_64 = helm-tui-bin-0.6.0-x86_64.tar.gz::https://github.com/pidanou/helm-tui/releases/download/v0.6.0/helm-tui_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = efba516280765dcfa290383c3f38f5817bbe043fd2d10c93118a1fd31bd24cee
+	source_aarch64 = helm-tui-bin-0.6.0-aarch64.tar.gz::https://github.com/pidanou/helm-tui/releases/download/v0.6.0/helm-tui_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 7330dd3fd09e9c21bbffff2ab0ffcc794d5d6a70a12a99acbd33b9a476a830c1
+
+pkgname = helm-tui-bin
