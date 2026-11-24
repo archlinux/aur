@@ -1,6 +1,6 @@
 pkgbase = icecream-cpp
 	pkgdesc = Single header library for print debugging in C++11 and forward
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/renatogarcia/icecream-cpp
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = icecream-cpp
 	checkdepends = cmake>=3.16
 	checkdepends = boost>=1.71.0
 	provides = icecream-debugging
-	source = icecream-cpp-1.0.0.tar.gz::https://github.com/renatogarcia/icecream-cpp/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 35fdbd012a4f7990c404c59b8291e04dc6103232323371ea7a2b18613b1b7900
+	source = icecream-cpp-1.1.0.tar.gz::https://github.com/renatogarcia/icecream-cpp/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = efad02e4fec7173fe87ae36f6179cbcee1dd3aa48240c7a02fcb80c5e956805e
 
 pkgname = icecream-cpp

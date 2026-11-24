@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=icecream-cpp
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Single header library for print debugging in C++11 and forward"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 checkdepends=('cmake>=3.16' 'boost>=1.71.0')
 provides=('icecream-debugging')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('35fdbd012a4f7990c404c59b8291e04dc6103232323371ea7a2b18613b1b7900')
+sha256sums=('efad02e4fec7173fe87ae36f6179cbcee1dd3aa48240c7a02fcb80c5e956805e')
 
 check() {
   export CPP_STANDARD=11
