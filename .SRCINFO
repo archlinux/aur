@@ -1,6 +1,6 @@
 pkgbase = containerbase
 	pkgdesc = docker base configuration
-	pkgver = 1.0.264
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://tsickert.com/containerbase
 	arch = any
