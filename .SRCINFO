@@ -1,0 +1,23 @@
+pkgbase = artui
+	pkgdesc = Read and track recent arXiv papers in a TUI
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/fjonasalice/artui
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-arxiv
+	depends = python-pygments
+	depends = python-pyinspirehep
+	depends = python-pyperclip
+	depends = python-requests
+	depends = python-textual
+	depends = python-yaml
+	source = https://files.pythonhosted.org/packages/source/a/artui/artui-1.1.2.tar.gz
+	sha256sums = 15e1de8d97477b2e7a418e0cb249fd177527b56342ebdf3ec8872da80a6982f7
+
+pkgname = artui
