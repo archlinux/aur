@@ -1,0 +1,17 @@
+pkgbase = rote-bin
+	pkgdesc = Job scheduler with persistent run history and a live terminal dashboard
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/zhh2001/rote
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = rote
+	conflicts = rote
+	options = !debug
+	source_x86_64 = rote-bin-1.0.1-x86_64.tar.gz::https://github.com/zhh2001/rote/releases/download/v1.0.1/rote_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c69a189d5b17c0bc67a313163f294e71dfbb74cec680763e7ba748713886b62d
+	source_aarch64 = rote-bin-1.0.1-aarch64.tar.gz::https://github.com/zhh2001/rote/releases/download/v1.0.1/rote_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 719fb9cbc836bbaf34e4fc398b72830abb3c2cf3041fe534c2e00138c0ad6e61
+
+pkgname = rote-bin
