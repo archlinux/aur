@@ -2,7 +2,7 @@
 # Maintainer: Lajos Deme <l@deme.ventures>
 
 pkgname='mole-research-bin'
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Deep-research agent with an enforced budget and verified quotes'
 url='https://github.com/lajosdeme/mole'
@@ -12,10 +12,10 @@ provides=('mole')
 conflicts=('mole' 'mole-bin')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/lajosdeme/mole/releases/download/v${pkgver}/mole_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('022b4a221a5d97caff00b3fa7e75e4ab7d5c8a0348a08382dab3640680ec286d')
+sha256sums_aarch64=('a363e2b256e80be80016d5c028c3e7e31586ea3010d560e787ac336c5f91d36e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/lajosdeme/mole/releases/download/v${pkgver}/mole_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('4989e4c3af8515e606838cfdd220a16fea5748ed7493df8172fdc0f5e18a9a7b')
+sha256sums_x86_64=('59116f757f2ef1c6fb468f3aa43738c0d9e332f7940273a68ce200342f093444')
 
 package() {
   install -Dm755 "./mole" "${pkgdir}/usr/bin/mole"
