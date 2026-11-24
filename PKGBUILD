@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url="http://nbisweden.github.io/MrBayes/"
 depends=('readline')
-optdepends9=('beagle-lib: for using GPU calculations among other enhancements - rebuild package after installing this dep')
+optdepends=('beagle-lib: for using GPU calculations among other enhancements - rebuild package after installing this dep')
 source=(https://github.com/NBISweden/MrBayes/archive/v${pkgver}.tar.gz)
 sha256sums=('09cfab9898ae6c8e0976add7745db14b13a07110080a9f56d892a49493121193')
 
