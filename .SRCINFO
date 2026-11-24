@@ -1,0 +1,17 @@
+pkgbase = d4s-bin
+	pkgdesc = Keyboard-driven TUI for Docker containers, Compose stacks and Swarm
+	pkgver = 0.49.114
+	pkgrel = 1
+	url = https://github.com/jr-k/d4s
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = d4s
+	conflicts = d4s
+	options = !debug
+	source_x86_64 = d4s-bin-0.49.114-x86_64.tar.gz::https://github.com/jr-k/d4s/releases/download/v0.49.114/d4s_0.49.114_linux_amd64.tar.gz
+	sha256sums_x86_64 = 646be76165b2c88cdaa8ff220d20bfce645b1b99f63749932d492ac21ba28eb9
+	source_aarch64 = d4s-bin-0.49.114-aarch64.tar.gz::https://github.com/jr-k/d4s/releases/download/v0.49.114/d4s_0.49.114_linux_arm64.tar.gz
+	sha256sums_aarch64 = 726ee933e6894cfd9422589ff7ad57963d8a9443d5a1523951674aa59163387d
+
+pkgname = d4s-bin
