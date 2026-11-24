@@ -1,0 +1,16 @@
+pkgbase = clawea
+	pkgdesc = Weather forecast TUI
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/cladamos/clawea
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = clawea-1.2.1.tar.gz::https://github.com/cladamos/clawea/archive/v1.2.1.tar.gz
+	source = clawea-LICENSE::https://raw.githubusercontent.com/cladamos/clawea/5b730dc3a08bbe8b3b28a9a3f655551a53769187/LICENSE
+	sha256sums = 939e15ba6bc99c42ceb280e487596f58a4c12967bdb9c8c7d4910439a7a40df4
+	sha256sums = b3664abc7d73b310106cb3953497d74144a9a19524988d267f93101585dabd1b
+
+pkgname = clawea
