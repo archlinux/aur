@@ -17,7 +17,7 @@
 # does not have to be edited for every upstream release.
 pkgname=deveco-commandline-tools
 pkgver=26.0.1.290
-pkgrel=8
+pkgrel=9
 pkgdesc='HUAWEI Command Line Tools for HarmonyOS: hvigorw, ohpm, hstack, codelinter, SDK tools'
 arch=('x86_64')
 url='https://developer.huawei.com/consumer/cn/download/command-line-tools-for-hmos'
