@@ -1,0 +1,21 @@
+pkgbase = ddqa-bin
+	pkgdesc = Datadog's QA manager for GitHub repository releases
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/datadog/ddqa
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ddqa
+	conflicts = ddqa
+	options = !debug
+	source = ddqa-bin-0.9.0-LICENSE::https://raw.githubusercontent.com/datadog/ddqa/v0.9.0/LICENSE.txt
+	sha256sums = 0f0895f459e2884a4240a187374e0045673518902993f827c98e54c7867b3eac
+	source_x86_64 = ddqa-bin-0.9.0-x86_64.tar.gz::https://github.com/datadog/ddqa/releases/download/v0.9.0/ddqa-0.9.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 77d627bee937a1b4b45625f752b981b12a84c3c4b77b6406a165afa06bb96052
+	source_aarch64 = ddqa-bin-0.9.0-aarch64.tar.gz::https://github.com/datadog/ddqa/releases/download/v0.9.0/ddqa-0.9.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = fabaffdda397e34ce6c98f006b5cdb8d7c03b5e2bd45dcbe0d00739f542d71a2
+
+pkgname = ddqa-bin
