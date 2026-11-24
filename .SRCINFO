@@ -1,0 +1,18 @@
+pkgbase = hacksguard-bin
+	pkgdesc = Multi-threaded TUI malware analysis tool
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/rhacknarok/hacksguard
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = hacksguard
+	conflicts = hacksguard
+	options = !debug
+	source = hacksguard-bin-0.3-LICENSE::https://raw.githubusercontent.com/rhacknarok/hacksguard/0.3/LICENSE.md
+	sha256sums = ecabd58850d5823b34f390f2fb2d52496376c8d302f646b8eff85271329c73c4
+	source_x86_64 = hacksguard-bin-0.3-x86_64::https://github.com/rhacknarok/hacksguard/releases/download/0.3/x86_64-unknown-linux-gnu-hacksguard
+	sha256sums_x86_64 = ac91f1fb8dbd952b15d4b4bbfab5cc6636293394ad70adf43461aa1c48073006
+
+pkgname = hacksguard-bin
