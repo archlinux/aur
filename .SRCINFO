@@ -1,6 +1,6 @@
 pkgbase = chan-desktop-bin
 	pkgdesc = Supercharged terminal emulator, desktop app (prebuilt)
-	pkgver = 0.133.0
+	pkgver = 0.134.0
 	pkgrel = 1
 	url = https://chan.app
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = chan-desktop-bin
 	depends = systemd
 	depends = webkit2gtk-4.1
 	depends = xdg-utils
-	provides = chan=0.133.0
-	provides = chan-desktop=0.133.0
+	provides = chan=0.134.0
+	provides = chan-desktop=0.134.0
 	conflicts = chan
 	conflicts = chan-desktop
 	options = !strip
 	options = !debug
-	source = https://github.com/fiorix/chan/releases/download/v0.133.0/chan-desktop-bin-0.133.0-1-x86_64.tar.zst
-	sha256sums = 6dda702a37ca18dd556ec302a154f8da5d4d55ef467a2d15da0d88a6dc4104ba
+	source = https://github.com/fiorix/chan/releases/download/v0.134.0/chan-desktop-bin-0.134.0-1-x86_64.tar.zst
+	sha256sums = 078d99e40baf829c10f339e7c514c06fc66d2ad471167af5e7f6fdd72181171b
 
 pkgname = chan-desktop-bin
