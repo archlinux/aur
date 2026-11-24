@@ -1,5 +1,5 @@
 pkgname=python-home-assistant-frontend
-pkgver=20260930.4
+pkgver=20261028.8
 pkgrel=1
 pkgdesc="The Home Assistant frontend"
 arch=(any)
