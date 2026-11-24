@@ -1,6 +1,6 @@
 pkgbase = python-k3confloader
 	pkgdesc = Load configuration for pykit3 modules
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/pykit3/k3confloader
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-k3confloader
 	depends = python
 	provides = python-k3confloader
 	conflicts = python-k3confloader
-	source = k3confloader::git+https://github.com/pykit3/k3confloader.git#tag=v0.1.8
-	sha256sums = 267646789eea33bb85b594c36440c1837177e084ace98a0541c26aaae402180a
+	source = k3confloader::git+https://github.com/pykit3/k3confloader.git#tag=v0.1.9
+	sha256sums = f1844f1b7dffb5ad5b79e5614fcc6c77b22a84ec0fb2f226e46cfd1d99298be8
 
 pkgname = python-k3confloader
