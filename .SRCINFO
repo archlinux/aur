@@ -1,10 +1,11 @@
 pkgbase = vpcs
 	pkgdesc = Simple virtual PC simulator
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GNS3/vpcs
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	makedepends = make
 	makedepends = gcc
