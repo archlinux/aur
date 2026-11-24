@@ -1,7 +1,7 @@
 pkgbase = pgbot-bin
 	pkgdesc = Postgres intelligence for ai agents & apps
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pgrundev/pgbot
 	arch = x86_64
 	license = Apache-2.0

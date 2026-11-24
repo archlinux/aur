@@ -3,7 +3,7 @@
 pkgname=pgbot-bin
 _pkgbin=pgbot
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Postgres intelligence for ai agents & apps"
 arch=('x86_64')
 url="https://github.com/pgrundev/pgbot"
@@ -23,9 +23,9 @@ package() {
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 
-  "$_pkgbin" completion bash >"$_pkgbin".bash
-  "$_pkgbin" completion zsh >_"$_pkgbin"
-  "$_pkgbin" completion fish >"$_pkgbin".fish
+  "$srcdir/$_pkgbin" completion bash >"$_pkgbin".bash
+  "$srcdir/$_pkgbin" completion zsh >_"$_pkgbin"
+  "$srcdir/$_pkgbin" completion fish >"$_pkgbin".fish
 
   install -Dm644 "${_pkgbin}.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgbin"
   install -Dm644 "_${_pkgbin}" "$pkgdir/usr/share/zsh/site-functions/_$_pkgbin"
