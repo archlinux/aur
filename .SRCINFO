@@ -1,6 +1,6 @@
 pkgbase = poshbuddy
 	pkgdesc = TUI manager for Oh My Posh
-	pkgver = 0.6.2
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/pitahayaDevSoft/poshbuddy
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = poshbuddy
 	depends = oh-my-posh
 	provides = poshbuddy
 	options = !strip
-	source = poshbuddy-0.6.2.tgz::https://github.com/pitahayaDevSoft/poshbuddy/archive/v0.6.2.tar.gz
-	sha256sums = 3af9ad2c617daa24fa4e6ce474a307330eaeac6d5626a453c4b9b224dc09d664
+	source = poshbuddy-0.8.1.tgz::https://github.com/pitahayaDevSoft/poshbuddy/archive/v0.8.1.tar.gz
+	sha256sums = dc95812b7aadc5b0c89bf7826e248740e965bf5d64e72de821f4b9614c1f3503
 
 pkgname = poshbuddy

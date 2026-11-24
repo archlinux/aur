@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="TUI manager for Oh My Posh"
 
-pkgver=0.6.2
+pkgver=0.8.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ depends=('glibc' 'libgcc' 'fontconfig' 'oh-my-posh')
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('3af9ad2c617daa24fa4e6ce474a307330eaeac6d5626a453c4b9b224dc09d664')
+sha256sums=('dc95812b7aadc5b0c89bf7826e248740e965bf5d64e72de821f4b9614c1f3503')
 
 
 prepare() {
