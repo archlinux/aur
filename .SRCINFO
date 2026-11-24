@@ -1,0 +1,21 @@
+pkgbase = aisw-bin
+	pkgdesc = Switch between multiple Claude Code, Codex and Gemini accounts
+	pkgver = 0.3.11
+	pkgrel = 1
+	url = https://github.com/burakdede/aisw
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = aisw
+	conflicts = aisw
+	options = !debug
+	source = aisw-bin-0.3.11-LICENSE::https://raw.githubusercontent.com/burakdede/aisw/v0.3.11/LICENSE
+	sha256sums = 289c2b9adb07c4ccc42e2d9b6bba18d5f6099a87f0c25b2633262754eebc34d6
+	source_x86_64 = aisw-bin-0.3.11-x86_64::https://github.com/burakdede/aisw/releases/download/v0.3.11/aisw-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 27a4f1623206b3413ed1303fc4b2ae80d1806fe11c0909bcce1671886389f023
+	source_aarch64 = aisw-bin-0.3.11-aarch64::https://github.com/burakdede/aisw/releases/download/v0.3.11/aisw-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = a2ad252f6cfca9acecfba43338246eb43935dfac1558aa6f19e0804239e03f52
+
+pkgname = aisw-bin
