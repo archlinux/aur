@@ -1,19 +1,45 @@
-#!/bin/env sh
+#!/bin/bash
 
-repo_url=http://repos.tixeo.com/debian/pool/non-free/t/tixeoclient/
-latest_deb_name=$(curl -s ${repo_url} | \
-    grep 'amd64\.deb' | \
-    cut -d'"' -f2 | \
-    tail -1 | \
-    tr -d "\n")
-latest_deb_url="${repo_url}${latest_deb_name}"
-wget -qO "${latest_deb_name}" "${latest_deb_url}" | cut -d' ' -f1
-md5=$(md5sum -b "${latest_deb_name}" | cut -d' ' -f1)
-rm "${latest_deb_name}"
-pkgver=$(echo "${latest_deb_name}" | cut -d_ -f2)
-sed -e "s/^pkgver=.\+$/pkgver=${pkgver}/" PKGBUILD | \
-sed -e "s/^md5sums=.\+$/md5sums=('${md5}')/" > PKGBUILD.tmp
-mv PKGBUILD.tmp PKGBUILD
+set -eo pipefail +H
+
+DEB_REPO=https://packages.tixeo.com/tcc/18.2/latest/deb
+SUITE=bookworm
+COMPONENT=non-free
+ARCH=amd64
+PACKAGE=tixeoclient
+
+s_dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd $s_dir
+
+built_ver=`grep ^pkgver= PKGBUILD | cut -d= -f2`
+
+t_packages=`mktemp`
+trap 'rm -f $t_packages' EXIT
+curl -Ls $DEB_REPO/dists/$SUITE/$COMPONENT/binary-$ARCH/Packages | sed -n -e "/^Package: $PACKAGE$/,/^$/{/^$/!p}" > $t_packages
+
+upstream_ver=`grep "^Version:" $t_packages | sed -e 's/\w\+: //'`
+
+if [ -z "$upstream_ver" ] ; then
+    echo "Unable to retrieve latest upstream $PACKAGE version"
+    exit 1
+fi
+
+if [ $upstream_ver = $built_ver ] ; then
+    exit
+fi
+
+echo "New upstream version available : $upstream_ver (last build is $built_ver)"
+
+sed -i -e "s/^pkgver=.*/pkgver=$upstream_ver/" PKGBUILD
+sed -i -e "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
+sed -i -e "s|^source=.*|source=(\"$DEB_REPO/pool/non-free/t/tixeoclient/\${pkgname}_\${pkgver}_amd64.deb\")|" PKGBUILD
+updpkgsums -m
+
+echo "Building package"
+makepkg --skippgpcheck -CcLmfd | tee $s_dir/build.log
+
+# Build is successful, will push to aur
 makepkg --printsrcinfo > .SRCINFO
-echo "pkgver=${pkgver}"
-echo "md5sums=('${md5}')"
+git add PKGBUILD .SRCINFO
+git commit -m "Released $upstream_ver"
+git push
