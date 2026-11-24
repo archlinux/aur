@@ -34,12 +34,6 @@ sha256sums_i686=('4a78e23c0a82add7b403389a2245b10540df5c903e75492e4f6ab1db87a372
 sha256sums_aarch64=('bc11fe8a072677faca31e592b5c5c03a3c02bc7ad5fb9907e0120c13fd90b41f')
 
 
-prepare() {
-	cd "${srcdir}/" || exit
-
-	mv THIRD_PARTY_NOTICES.md THIRD_PARTY_NOTICES
-}
-
 package() {
 	cd "${srcdir}/" || exit
 
@@ -49,5 +43,5 @@ package() {
 	install -Dm644 docs/*.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -Dm644 THIRD_PARTY_NOTICES -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 THIRD_PARTY_NOTICES.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
