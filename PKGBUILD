@@ -1,6 +1,6 @@
 # Maintainer: Pavel Khromov <pakhromov@gmail.com>
 pkgname=yzf
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Interactive fzf front-end for yay that preserves yay's original formatting"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('bash' 'yay' 'fzf' 'expac' 'gawk' 'pacman-contrib' 'ncurses')
 optdepends=('xdg-utils: open package upstream URLs in a browser')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b26348fa7ca0ebfd7e775f8eb5199a1b639f89dc0ffb0ad625410f0a59a9d146')
+sha256sums=('29af0a9b6b6592bb7ae103b7750fed09e42f26985d71931baf2b55056bb22360')
 
 package() {
       cd "$pkgname-$pkgver"
