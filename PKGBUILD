@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dbptk-desktop-bin
 _pkgname='DBPTK Desktop'
-pkgver=4.2.1
+pkgver=4.3.1
 _electronversion=34
 pkgrel=1
 pkgdesc="A cross-platform app built on Electron that uses DBPTK UI as a viewer for relational databases."
@@ -21,9 +21,9 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ee90646fa6514caeebb10f57d2c7176ce6f19841751a4860ac67214a61a8417d'
+sha256sums=('bd32ea0e93111ce8c6528a3d0be7b44bc9156e79ca51b07c1a612246992ba317'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
