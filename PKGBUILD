@@ -2,7 +2,7 @@
 
 pkgname=python-k3dict
 _name=${pkgname#python-}
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="Dict operation utilities including iteration, getter/setter makers, and attribute access"
 provides=(${pkgname})
@@ -26,7 +26,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('e057b4435e368b766c15b78b40ef147d0db9e1e47b8137934a3c439bcd9d70b1')
+sha256sums=('11552a7ae2d15166dcfea45be4f6dddb0bbd4340757118c09992d144dbd0e124')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
