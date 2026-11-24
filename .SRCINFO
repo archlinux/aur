@@ -1,0 +1,23 @@
+pkgbase = svm-rs-bin
+	pkgdesc = Solidity compiler version manager
+	pkgver = 0.5.32
+	pkgrel = 1
+	url = https://github.com/alloy-rs/svm-rs
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = svm-rs
+	conflicts = svm-rs
+	conflicts = solidity
+	conflicts = solidity-bin
+	options = !debug
+	source = svm-rs-bin-0.5.32-LICENSE::https://raw.githubusercontent.com/alloy-rs/svm-rs/v0.5.32/LICENSE-APACHE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = svm-rs-bin-0.5.32-x86_64.tar.gz::https://github.com/alloy-rs/svm-rs/releases/download/v0.5.32/svm-rs-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 29778a89fc6158b403ccc911f18b5bfc2a90b76cf01d9d0646045a4536fff9d5
+	source_aarch64 = svm-rs-bin-0.5.32-aarch64.tar.gz::https://github.com/alloy-rs/svm-rs/releases/download/v0.5.32/svm-rs-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 935d34adb4b348bf79902fd85df6242ff66c645194d93e2c9033d9494bc992c5
+
+pkgname = svm-rs-bin
