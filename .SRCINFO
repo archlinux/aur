@@ -1,0 +1,14 @@
+pkgbase = carboncode
+	pkgdesc = Terminal coding tool built on DeepSeek
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/yapie0/carboncode
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = carboncode-0.2.7.tgz
+	source = carboncode-0.2.7.tgz::https://registry.npmjs.org/@carboncode/cli/-/cli-0.2.7.tgz
+	sha256sums = b652152aa02c8c69bad9c5b17060a34e1dd1f5592d0891f02bcd06eace950e18
+
+pkgname = carboncode
