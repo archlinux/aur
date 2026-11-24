@@ -1,6 +1,6 @@
 pkgbase = python-k3txutil
 	pkgdesc = Compare-and-swap (CAS) loop utilities for transactional operations
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/pykit3/k3txutil
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-k3txutil
 	depends = python
 	provides = python-k3txutil
 	conflicts = python-k3txutil
-	source = k3txutil::git+https://github.com/pykit3/k3txutil.git#tag=v0.1.7
-	sha256sums = 8114ad5dd7d5fcb27b99b89c65dadb252c8eda0641e6d16ab56acdcf0fa06934
+	source = k3txutil::git+https://github.com/pykit3/k3txutil.git#tag=v0.1.8
+	sha256sums = 3c6d67349772ba90239d6111c04e897beeb54010bfd1d0f8f52cba79895b0df7
 
 pkgname = python-k3txutil

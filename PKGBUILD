@@ -2,7 +2,7 @@
 
 pkgname=python-k3txutil
 _name=${pkgname#python-}
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Compare-and-swap (CAS) loop utilities for transactional operations"
 provides=(${pkgname})
@@ -27,7 +27,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('8114ad5dd7d5fcb27b99b89c65dadb252c8eda0641e6d16ab56acdcf0fa06934')
+sha256sums=('3c6d67349772ba90239d6111c04e897beeb54010bfd1d0f8f52cba79895b0df7')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
