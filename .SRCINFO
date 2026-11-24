@@ -1,0 +1,26 @@
+pkgbase = passel
+	pkgdesc = A pass-compatible password manager for GNOME
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Pierrotws/passel
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = blueprint-compiler
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = gpgme
+	depends = libgit2
+	depends = libssh2
+	depends = gnupg
+	conflicts = gnome-vault
+	conflicts = gnome-vault-bin
+	replaces = gnome-vault
+	source = passel-0.2.0::git+https://github.com/Pierrotws/passel.git#tag=v0.2.0
+	sha256sums = a5ff4cca9439b76d3682c5c940e5e13347c577000c2e1a0d22b398c154d6bb9e
+
+pkgname = passel
