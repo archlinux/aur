@@ -1,23 +1,23 @@
 # Maintainer: Connor Prussin <connor@prussin.net>
 # Written by packages/distro/aur.sh in https://github.com/cprussin/domicile.
 pkgname=domicile-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc=A\ Wayland\ compositor\ whose\ renderer\ is\ a\ web\ engine.\ Installs\ the\ \`domicile\`\ login\ session\,\ the\ engine\,\ the\ manganese\ and\ simple\ shells\,\ the\ PAM\ service\ the\ lock\ uses\ and\ the\ \`domicile\`\ group.
 arch=(x86_64)
 url=https://github.com/cprussin/domicile
 license=( MIT\ AND\ BSD-3-Clause )
 depends=( glibc\>=2.34 gcc-libs glib2 nss nspr at-spi2-core dbus libcups expat libxkbcommon alsa-lib mesa systemd-libs libinput cairo pango pipewire libglvnd wayland pam gstreamer gst-plugins-base gst-plugins-good gst-plugin-pipewire systemd )
-optdepends=( upower:\ the\ battery\ readout rtkit:\ smooth\ drawing\ while\ the\ machine\ is\ busy\,\ without\ the\ domicile\ group hwdata:\ monitor\ makers\'\ names libpulse:\ pactl\,\ for\ the\ volume\ readout curl:\ bookmark\ icons\ and\ the\ captive\ portal\ check xdg-desktop-portal:\ portals\ for\ apps gsettings-desktop-schemas:\ the\ engine\'s\ GSettings\ schemas\,\ without\ which\ it\ logs\ errors networkmanager:\ Miracast\ casts\ to\ TVs\ over\ Wi-Fi\ Direct avahi:\ Miracast\ casts\ to\ TVs\ on\ the\ LAN gst-plugins-bad:\ Miracast\ casts\,\ and\ screen\ recordings\ encoded\ on\ the\ GPU gst-plugins-ugly:\ Miracast\ casts\ without\ a\ hardware\ H.264\ encoder gst-libav:\ sound\ in\ Miracast\ casts )
+optdepends=( upower:\ the\ battery\ readout rtkit:\ smooth\ drawing\ while\ the\ machine\ is\ busy\,\ without\ the\ domicile\ group hwdata:\ monitor\ makers\'\ names libpulse:\ pactl\,\ for\ the\ volume\ readout curl:\ bookmark\ icons\ and\ the\ captive\ portal\ check wl-clipboard:\ Electron\ apps\'\ clipboard xdg-utils:\ Electron\ apps\'\ link\ handlers xdg-desktop-portal:\ portals\ for\ apps gsettings-desktop-schemas:\ the\ engine\'s\ GSettings\ schemas\,\ without\ which\ it\ logs\ errors networkmanager:\ Miracast\ casts\ to\ TVs\ over\ Wi-Fi\ Direct avahi:\ Miracast\ casts\ to\ TVs\ on\ the\ LAN gst-plugins-bad:\ Miracast\ casts\,\ and\ screen\ recordings\ encoded\ on\ the\ GPU gst-plugins-ugly:\ Miracast\ casts\ without\ a\ hardware\ H.264\ encoder gst-libav:\ sound\ in\ Miracast\ casts )
 provides=(domicile)
 conflicts=(domicile)
 backup=( etc/pam.d/domicile etc/security/limits.d/10-domicile.conf )
 install=domicile.install
-source=("domicile-1.2.0-1-x86_64.pkg.tar.zst::https://packages.domicile-desktop.com/arch/x86_64/domicile-1.2.0-1-x86_64.pkg.tar.zst")
-noextract=("domicile-1.2.0-1-x86_64.pkg.tar.zst")
-sha256sums=(8249b1ff3a4c862b1fc2ebf48eb7bd50b3743a8728c30935bf67b5cf55a01d17)
+source=("domicile-1.3.0-1-x86_64.pkg.tar.zst::https://packages.domicile-desktop.com/arch/x86_64/domicile-1.3.0-1-x86_64.pkg.tar.zst")
+noextract=("domicile-1.3.0-1-x86_64.pkg.tar.zst")
+sha256sums=(64172f20e66ae8612886bf6cd426179488d0234d9825b8e2c2850dd4936ed763)
 
 package() {
-  bsdtar -xpf "$srcdir/domicile-1.2.0-1-x86_64.pkg.tar.zst" -C "$pkgdir" \
+  bsdtar -xpf "$srcdir/domicile-1.3.0-1-x86_64.pkg.tar.zst" -C "$pkgdir" \
     --exclude .PKGINFO --exclude .MTREE --exclude .BUILDINFO --exclude .INSTALL
 }
