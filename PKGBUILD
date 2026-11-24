@@ -2,7 +2,7 @@
 
 pkgname=python-k3utdocker
 _name=${pkgname#python-}
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Docker client utilities for unit testing"
 provides=(${pkgname})
@@ -27,7 +27,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('07cb27423aab538e31597e2163cf11f6ccd4181a8ce09433fb4cc2dce47e5b9d')
+sha256sums=('5fe66c04b22edae8f904e3610b6e4c3f1919e33e6fa3e3139893a36a3df73d65')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
