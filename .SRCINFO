@@ -1,6 +1,6 @@
 pkgbase = tsuki-bin
 	pkgdesc = Native Linux game launcher for Wine, Proton, and native titles (prebuilt binary)
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/muzammilshafique/tsuki
 	install = tsuki.install
@@ -27,10 +27,10 @@ pkgbase = tsuki-bin
 	provides = tsuki
 	conflicts = tsuki
 	conflicts = tsuki-git
-	noextract = tsuki-0.2.3-1-x86_64.pkg.tar.zst
+	noextract = tsuki-0.2.4-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source_x86_64 = tsuki-0.2.3-1-x86_64.pkg.tar.zst::https://github.com/muzammilshafique/tsuki/releases/download/v0.2.3/tsuki-0.2.3-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = f78db3cc8b795e18b628670bfe2a0665a934a80f279bb2f0083a0cf47fc4c1d9
+	source_x86_64 = tsuki-0.2.4-1-x86_64.pkg.tar.zst::https://github.com/muzammilshafique/tsuki/releases/download/v0.2.4/tsuki-0.2.4-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = c0aeb5438b983a5cefd33fbe95c340484d745a23022c71b83cd83403ec19bd29
 
 pkgname = tsuki-bin
