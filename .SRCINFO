@@ -1,0 +1,15 @@
+pkgbase = openseek
+	pkgdesc = Terminal coding agent with multiple model providers
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://github.com/lichamnesia/openseek
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = openseek-0.0.11.tgz
+	source = openseek-0.0.11.tgz::https://registry.npmjs.org/openseek/-/openseek-0.0.11.tgz
+	sha256sums = a080232555872491e22d02d062eb8e0cf68ee26dfe6f400699178bba0e398380
+
+pkgname = openseek
