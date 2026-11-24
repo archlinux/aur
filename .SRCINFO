@@ -1,0 +1,17 @@
+pkgbase = zoetrope-bin
+	pkgdesc = Watch a Claude Code or Codex session as a live flow graph
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/furkankly/zoetrope
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = zoetrope
+	conflicts = zoetrope
+	options = !debug
+	source_x86_64 = zoetrope-bin-0.2.0-x86_64.tar.gz::https://github.com/furkankly/zoetrope/releases/download/v0.2.0/zoetrope-0.2.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 62e73697984c1228c55367a224598374a241d3638881af88949929ea33eb5bef
+	source_aarch64 = zoetrope-bin-0.2.0-aarch64.tar.gz::https://github.com/furkankly/zoetrope/releases/download/v0.2.0/zoetrope-0.2.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 364142829c15beed1c81695b85433e3994fd8b5b2c49ccd326b3d4722e9f331b
+
+pkgname = zoetrope-bin
