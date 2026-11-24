@@ -1,0 +1,14 @@
+pkgbase = cli-wechat-bridge
+	pkgdesc = Bridge WeChat and Telegram to local coding agents
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/unlinearity/cli-wechat-bridge
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = npm
+	depends = nodejs
+	noextract = cli-wechat-bridge-1.5.0.tgz
+	source = cli-wechat-bridge-1.5.0.tgz::https://registry.npmjs.org/cli-wechat-bridge/-/cli-wechat-bridge-1.5.0.tgz
+	sha256sums = 1c275aa8bf00781a76a9da7ef41502d450f305e1eee912082dcb12d3e5141cc1
+
+pkgname = cli-wechat-bridge
