@@ -6,7 +6,7 @@
 
 pkgname=stm32cubeprog
 pkgver=2.24.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An all-in-one multi-OS software tool for programming STM32 products.'
 arch=('x86_64')
 url='https://www.st.com/en/development-tools/stm32cubeprog.html'
@@ -34,10 +34,12 @@ options=('!strip' '!debug')
 _installer="STM32CubeProgrammer${pkgver}_linux64.zip"
 source=(
   "${_installer}::https://sw-center.st.com/packs/cubeprog_test/Updater/Linux/${_installer}"
-  'STM32CubeProgrammer_Wayland')
+  'STM32CubeProgrammer_Wayland'
+  'pathfix.c')
 
 sha256sums=('273975212fcf80f71a31ed091559f9289b589d5eb3cbbd090b6068abe80f317c'
-  'b6b231ef58cac7a46f3eacd5ee6a6969cba3cf57532265d12489f3c9bbaedc25')
+            'dde835c8c11db23fee8b35c84fa37d17e4a093ff5eb1128b8c2178c08134e096'
+            '652c2a57b83e6b25a273fbaad804c63fee32aa9cc61d48a42c84727ef28b5723')
 
 prepare() {
   cd "${srcdir}"
@@ -79,11 +81,15 @@ build() {
   mkdir -p "desktop-icons"
   icotool -x "util/Programmer.ico" -o "desktop-icons"
   icotool -x "util/STM32TrustedPackageCreator.ico" -o "desktop-icons"
+
+  gcc -shared -fPIC "${srcdir}/pathfix.c" -o "${srcdir}/libstm32-pathfix.so" -ldl
 }
 
 package() {
   install -dm755 "${pkgdir}/opt/${pkgname}"
   cp -a --no-preserve=ownership "${srcdir}"/{api,bin,doc,lib,util,Data_Base,Drivers,SVD} "${pkgdir}/opt/${pkgname}/"
+
+  install -Dm644 "${srcdir}/libstm32-pathfix.so" "${pkgdir}/opt/${pkgname}/lib/libstm32-pathfix.so"
 
   # util/rights*.sh
   chmod a+x "${pkgdir}/opt/${pkgname}/bin/"{STM32CubeProgrammer,STM32CubeProgrammerLauncher,STM32_Programmer.sh,STM32_Programmer_CLI} \

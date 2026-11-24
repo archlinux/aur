@@ -1,7 +1,7 @@
 pkgbase = stm32cubeprog
 	pkgdesc = An all-in-one multi-OS software tool for programming STM32 products.
 	pkgver = 2.24.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.st.com/en/development-tools/stm32cubeprog.html
 	arch = x86_64
 	license = custom:SLA0048
@@ -17,7 +17,9 @@ pkgbase = stm32cubeprog
 	options = !debug
 	source = STM32CubeProgrammer2.24.0_linux64.zip::https://sw-center.st.com/packs/cubeprog_test/Updater/Linux/STM32CubeProgrammer2.24.0_linux64.zip
 	source = STM32CubeProgrammer_Wayland
+	source = pathfix.c
 	sha256sums = 273975212fcf80f71a31ed091559f9289b589d5eb3cbbd090b6068abe80f317c
-	sha256sums = b6b231ef58cac7a46f3eacd5ee6a6969cba3cf57532265d12489f3c9bbaedc25
+	sha256sums = dde835c8c11db23fee8b35c84fa37d17e4a093ff5eb1128b8c2178c08134e096
+	sha256sums = 652c2a57b83e6b25a273fbaad804c63fee32aa9cc61d48a42c84727ef28b5723
 
 pkgname = stm32cubeprog

@@ -28,6 +28,11 @@ fi
 
 cd /opt/stm32cubeprog/bin || exit 1
 
+# STM32CubeProgrammer's JLink loader appends "../lib/libjlinkarm.so" to the
+# JVM's bin dir (bin../lib/... under system Java), so dlopen fails. The
+# bundled shim redirects only that malformed path to the bundled library.
+export LD_PRELOAD="/opt/stm32cubeprog/lib/libstm32-pathfix.so${LD_PRELOAD:+:${LD_PRELOAD}}"
+
 exec archlinux-java-run --min "${javafx_major}" -- \
   --enable-native-access=javafx.graphics,ALL-UNNAMED \
   --module-path "${javafx_lib}" \
