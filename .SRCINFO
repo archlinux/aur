@@ -1,6 +1,6 @@
 pkgbase = fcitx5-ngosen
 	pkgdesc = Ngó Sen, a Vietnamese input method for fcitx5
-	pkgver = 1.14.0
+	pkgver = 1.14.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ngosen/ngosen
@@ -27,7 +27,7 @@ pkgbase = fcitx5-ngosen
 	optdepends = python-gobject: settings window in GTK, opened on GNOME, Cinnamon and Xfce
 	optdepends = libadwaita: settings window in GTK, opened on GNOME, Cinnamon and Xfce
 	options = !debug
-	source = ngosen-1.14.0-1.tar.gz::https://github.com/ngosen/ngosen/archive/refs/tags/ngosen-1.14.0-1.tar.gz
-	sha256sums = fac096a8a2df587a5daf0a6cde0ee5dd9aae72527f5f5272138921aae192d84c
+	source = ngosen-1.14.1-1.tar.gz::https://github.com/ngosen/ngosen/archive/refs/tags/ngosen-1.14.1-1.tar.gz
+	sha256sums = 690f8b4477038857cae251e79e6a384ddb526bd57065eedbb2b88df57ac1d7c4
 
 pkgname = fcitx5-ngosen
