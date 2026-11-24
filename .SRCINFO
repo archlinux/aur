@@ -1,0 +1,17 @@
+pkgbase = httpmon-bin
+	pkgdesc = Terminal HTTP/HTTPS debugging proxy with MITM intercept and a TUI
+	pkgver = 0.1.16
+	pkgrel = 1
+	url = https://github.com/kostyay/httpmon
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = httpmon
+	conflicts = httpmon
+	options = !debug
+	source_x86_64 = httpmon-bin-0.1.16-x86_64.tar.gz::https://github.com/kostyay/httpmon/releases/download/v0.1.16/httpmon_0.1.16_linux_amd64.tar.gz
+	sha256sums_x86_64 = 941b6f05c19688efe1fe70b44d50b7ab6cff8999a811b1140e1c395ec223e832
+	source_aarch64 = httpmon-bin-0.1.16-aarch64.tar.gz::https://github.com/kostyay/httpmon/releases/download/v0.1.16/httpmon_0.1.16_linux_arm64.tar.gz
+	sha256sums_aarch64 = 41c32064fe3670bf2762d1c4c076bce10fb82a18fdb62c03a97838d2d0b3f229
+
+pkgname = httpmon-bin
