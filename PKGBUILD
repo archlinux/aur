@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
 pkgver=2127.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
@@ -26,10 +26,6 @@ fi
 
 prepare() {
 	cd "$srcdir/$pkgname-unified-source-$pkgver"
-
-	#Fix cubeb
-	sed -i '4i #include <cstring>' src/audio_core/{cubeb_input,cubeb_sink}.cpp
-
 }
 
 build() {
