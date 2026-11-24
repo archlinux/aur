@@ -15,7 +15,7 @@ pkgbase = minot
 	conflicts = librat
 	options = !lto
 	options = !debug
-	source = minot::git+https://minot.steado.tech.git#tag=v0.15.2
+	source = minot::git+https://codeberg.org/stelzo/minot.git#tag=v0.15.2
 	sha256sums = SKIP
 
 pkgname = minot
