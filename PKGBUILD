@@ -1,7 +1,7 @@
 # Maintainer: Pedrojok01 <pedrojok@pm.me>
 pkgname=linux-broadcast-bin
 _pkgname=linux-broadcast
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 # Debian revision baked into the upstream .deb filename by cargo-deb.
 # Unrelated to AUR's pkgrel — bump only if [package.metadata.deb].revision
@@ -18,9 +18,8 @@ depends=(
   'gst-plugins-good'
   'gst-plugins-bad'
   'gst-libav'
-  'gtk3'
-  'libayatana-appindicator'
   'v4l2loopback-dkms'
+  'v4l2loopback-utils'
 )
 optdepends=(
   'pipewire: pipewiresrc support if you swap GStreamer source backends'
@@ -29,7 +28,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 install="$_pkgname.install"
 source=("$_pkgname-$pkgver.deb::$url/releases/download/v$pkgver/${_pkgname}_${pkgver}-${_debrev}_amd64.deb")
-sha256sums=('4c87a9903c21e567cae7eddf86ea231ad4ea681985b1669872562708741aa626')
+sha256sums=('3f714984eb7a6869f8cd7b985b96a6b11b302427b6a58d9503d6c0d6b8d7f73d')
 options=('!strip')
 
 package() {
