@@ -14,7 +14,7 @@ pkgbase = flclash-myflavor-bin
 	conflicts = flclash-myflavor
 	source = flclash-myflavor.sh
 	sha256sums = debddc0c8728bcbc552d0826ef0b5a4cd33e20df01752baa85e54498ec8ec3d5
-	source_x86_64 = flclash-myflavor-1.19.34-x86_64.deb::https://gh-proxy.com/https://github.com/myflavor/FlClash/releases/download/v1.19.34/FlClash-1.19.34-linux-amd64.deb
+	source_x86_64 = flclash-myflavor-1.19.34-x86_64.deb::https://gh-proxy.cn/https://github.com/myflavor/FlClash/releases/download/v1.19.34/FlClash-1.19.34-linux-amd64.deb
 	sha256sums_x86_64 = 2ef67f3ccf2e09b26b9d22d6a73e75ff1138a03887b97f34f4d1814669c52180
 
 pkgname = flclash-myflavor-bin
