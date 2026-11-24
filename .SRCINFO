@@ -1,7 +1,7 @@
 pkgbase = music-assistant-desktop-git
 	pkgdesc = Music Assistant Desktop Companion App
-	pkgver = 0.7.2.r3.g43a056a
-	pkgrel = 1
+	pkgver = 0.7.4.r10.g6e9e348
+	pkgrel = 2
 	url = https://github.com/music-assistant/desktop-app
 	arch = x86_64
 	license = Apache-2.0
@@ -27,6 +27,7 @@ pkgbase = music-assistant-desktop-git
 	depends = openssl
 	depends = libayatana-appindicator
 	depends = webkit2gtk-4.1
+	depends = xdg-desktop-portal
 	provides = music-assistant-desktop
 	conflicts = music-assistant-desktop
 	conflicts = music-assistant-desktop-bin

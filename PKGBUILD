@@ -1,8 +1,8 @@
 # Maintainer: James Tucker <jftucker@gmail.com>
 # Contributor: Chris Sutcliff <chris@sutcliff.me>
 pkgname=music-assistant-desktop-git
-pkgver=0.7.2.r3.g43a056a
-pkgrel=1
+pkgver=0.7.4.r10.g6e9e348
+pkgrel=2
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
 url="https://github.com/music-assistant/desktop-app"
@@ -22,6 +22,7 @@ depends=(
     'openssl'
     'libayatana-appindicator'
     'webkit2gtk-4.1'
+    'xdg-desktop-portal'
 )
 makedepends=(
     'cargo'
@@ -82,7 +83,9 @@ build() {
     export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
     export CARGO_PROFILE_RELEASE_LTO=true
 
-    cargo tauri build --no-bundle
+    # Tauri requires SemVer. Keep the Git revision as build metadata.
+    local app_version="${pkgver/.r/+r}"
+    cargo tauri build --no-bundle --config "{\"version\":\"$app_version\"}"
 }
 
 package() {
