@@ -1,0 +1,17 @@
+pkgbase = claude-dashboard-bin
+	pkgdesc = k9s-style TUI for managing Claude Code sessions via tmux
+	pkgver = 0.18.1
+	pkgrel = 1
+	url = https://github.com/seunggabi/claude-dashboard
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = claude-dashboard
+	conflicts = claude-dashboard
+	options = !debug
+	source_x86_64 = claude-dashboard-bin-0.18.1-x86_64.tar.gz::https://github.com/seunggabi/claude-dashboard/releases/download/v0.18.1/claude-dashboard_0.18.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4ce955923739e8b62d852601ff477900dbfa327d59052afd6c52423f8618a214
+	source_aarch64 = claude-dashboard-bin-0.18.1-aarch64.tar.gz::https://github.com/seunggabi/claude-dashboard/releases/download/v0.18.1/claude-dashboard_0.18.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = f5ef72c137d38163275602a2f0dddeb777b0f44fb3a16130b38bc871913037d2
+
+pkgname = claude-dashboard-bin
