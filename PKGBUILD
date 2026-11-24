@@ -2,7 +2,7 @@
 
 pkgname=mytonwallet-appimage
 pkgver=26.11.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Feature rich TON wallet"
 provides=('mytonwallet')
 conflicts=('mytonwallet')

@@ -1,7 +1,7 @@
 pkgbase = mytonwallet-appimage
 	pkgdesc = Feature rich TON wallet
 	pkgver = 26.11.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mytonwallet.io/
 	arch = x86_64
 	depends = fuse2
