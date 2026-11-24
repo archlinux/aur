@@ -8,7 +8,7 @@
 
 pkgname=long-multiplication-bin
 _name=long-multiplication
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Long multiplication step by step, as taught in school: carries, column sums and subtotals (pre-built binary)'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ options=('!strip' '!debug')
 _release="${url}/releases/download/v${pkgver}"
 source_x86_64=("${_name}-${pkgver}-x86_64.tar.gz::${_release}/${_name}-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${_name}-${pkgver}-aarch64.tar.gz::${_release}/${_name}-v${pkgver}-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('3b3c827476e453d8a3284b404795165b9a68547a58deebf9cc857092d355c316')
-sha256sums_aarch64=('a4064b868e5679b060a50998bdff101a776c728f0df0f27840a28fd2c7c22651')
+sha256sums_x86_64=('f185edb00796bb88eec1781457f3921319cc4e74720e108f33480a6db30a3095')
+sha256sums_aarch64=('10b89413b68724c3c5fdc3b941d329943bf1a13a20eae3ef7ef8dff1fb736a4d')
 
 check() {
   cd "${_name}-v${pkgver}-${CARCH}-unknown-linux-musl"

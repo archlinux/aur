@@ -1,6 +1,6 @@
 pkgbase = long-multiplication-bin
 	pkgdesc = Long multiplication step by step, as taught in school: carries, column sums and subtotals (pre-built binary)
-	pkgver = 2.3.2
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/airvzxf/long-multiplication-calculator
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = long-multiplication-bin
 	conflicts = long-multiplication
 	options = !strip
 	options = !debug
-	source_x86_64 = long-multiplication-2.3.2-x86_64.tar.gz::https://github.com/airvzxf/long-multiplication-calculator/releases/download/v2.3.2/long-multiplication-v2.3.2-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 3b3c827476e453d8a3284b404795165b9a68547a58deebf9cc857092d355c316
-	source_aarch64 = long-multiplication-2.3.2-aarch64.tar.gz::https://github.com/airvzxf/long-multiplication-calculator/releases/download/v2.3.2/long-multiplication-v2.3.2-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = a4064b868e5679b060a50998bdff101a776c728f0df0f27840a28fd2c7c22651
+	source_x86_64 = long-multiplication-2.4.0-x86_64.tar.gz::https://github.com/airvzxf/long-multiplication-calculator/releases/download/v2.4.0/long-multiplication-v2.4.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = f185edb00796bb88eec1781457f3921319cc4e74720e108f33480a6db30a3095
+	source_aarch64 = long-multiplication-2.4.0-aarch64.tar.gz::https://github.com/airvzxf/long-multiplication-calculator/releases/download/v2.4.0/long-multiplication-v2.4.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 10b89413b68724c3c5fdc3b941d329943bf1a13a20eae3ef7ef8dff1fb736a4d
 
 pkgname = long-multiplication-bin
