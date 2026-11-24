@@ -5,7 +5,7 @@
 
 pkgname=lightzone-git
 _pkgname=lightzone
-pkgver=5.1.0.r4.gf4c30f66
+pkgver=5.1.1.r0.g4e8eeb4f
 pkgrel=1
 pkgdesc="A professional photo browser and editor, like Aperture or Lightroom (latest git version)"
 url="http://lightzoneproject.org/"
