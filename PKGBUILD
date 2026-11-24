@@ -14,8 +14,11 @@ epoch=1
 # ngx_devel_kit, the version of Arch Linux's nginx-mod-ndk, whose headers the module is built
 # against for ndk.set_var
 _ndkver=0.3.4
-# Test::Nginx, upstream's test scaffold, for check()
-_testnginxver=0.32
+# Test::Nginx, upstream's test scaffold, for check(): a commit of its master after its release
+# 0.32, whose random ports collide between the test files prove runs in parallel (a port is free
+# between a file's blocks, when another file can take it), which master fixes with lock files
+# (openresty/test-nginx@58cf0d5); back to a release once there's one after 0.32
+_testnginxcommit=ee25abdaa38f8506309aafb8a1949aec92873488
 # lua-resty-core, for its tests, which need the module and run in check(): the release that goes
 # with pkgver, as in depends
 _restycorever=0.1.35rc3
@@ -71,16 +74,16 @@ backup=(etc/nginx/modules.d/30-lua.conf)
 source=(
   "lua-nginx-module-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "ngx_devel_kit-$_ndkver.tar.gz::https://github.com/vision5/ngx_devel_kit/archive/refs/tags/v$_ndkver.tar.gz"
-  "test-nginx-$_testnginxver.tar.gz::https://github.com/openresty/test-nginx/archive/refs/tags/v$_testnginxver.tar.gz"
+  "test-nginx-$_testnginxcommit.tar.gz::https://github.com/openresty/test-nginx/archive/$_testnginxcommit.tar.gz"
   "lua-resty-core-$_restycorever.tar.gz::https://github.com/openresty/lua-resty-core/archive/refs/tags/v$_restycorever.tar.gz"
 )
 sha512sums=('94b5aa3687bdba5338fd8c9e55f2b4f5eb5e973665e609dcb1b5d082c0eb5c782fa3e9397651de8c8ab78fd1fed97bcb7fe3e4ad059a5b80135a8255dc092cbb'
   '6bc2f4d3b7ad22527e6c7c343884f8b0d5810ae9b7b09d6c2988b50afbd9c7a79e387667bfb980e93c5e204c163544f79634b2862895d8ee004a4393245ee185'
-  'c8ddec5dc21c23ded4ea974f4d6fca01ea498f728e5f8dc87224b1151bf9fcfb1921d971359ee79e3984b23fd6cb2f510259b077f79b867b95a437d28af48b97'
+  'dd56f713f519d054bc18363144c28ceda5ccb126713928538d2e638da57f20549efe33f7837c1ac014060a1290add12fa63e320d1117b7d429c15263c3827abb'
   '989768a37e9818317c1cc0b46d0a2ef0c14eb17a0494f3649e9f406f1a4572bab4dfb635ca749ba18dbd893e16bf6949a3fb26bcbb48bf6c0831de35b827730f')
 b2sums=('49349bc66dab093435437c86d1e918fedce4f5045b445d10dead830dba7915863b9ba86f6f3815299044e4f66fe66836ae2a2504c18caa94417ee6f5fed0064b'
   '3b5ed36517f27ea83881d2fb1e6ba2839c173a833ec563fa94dc9b633b3ebe9ea24c7bb5676aa811267b09a2504d74b306ee7268b8a0d56b230886fd955289e9'
-  '5b98a9764d2fb322199ecf839feed2d995f4ab3e2c9488eebe698fad00e852c45862b94774232d4d8043e2850018c1699ea055a0da211b88211eddfc26e380ed'
+  '318d73950a599fa4b4f31d9a03b5f5c2828c5fdf9680a9ec197779e4a30b44cef1772be6a938737ba911a1414e4a5cfb4c9bd4bd349efa10cea11bb90215fa04'
   'fa78bdebd7819a8f304ab87a067c2a1d312d64cecfb4e42d1c090103d3176fb5acf4ac37e29c9c1d2cacebe6ee7df73cc1e143d7f056ddb2b6ca0c8a0f2563cc')
 
 # The version of the installed nginx, empty without it
@@ -306,7 +309,7 @@ build() {
 # which another test running at the same time can take before nginx binds it (bind(): address in
 # use). A failure of a test itself fails the second run too. In a subshell, for its cd
 _run_tests() (
-  local _prove=(prove -I . -I "$srcdir/test-nginx-$_testnginxver/lib") _log _test _rerun=()
+  local _prove=(prove -I . -I "$srcdir/test-nginx-$_testnginxcommit/lib") _log _test _rerun=()
   cd "$1" || return
   _log=$(mktemp)
   "${_prove[@]}" -j "$(nproc)" t 2>&1 | tee "$_log"
