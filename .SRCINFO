@@ -1,0 +1,30 @@
+pkgbase = chelsea
+	pkgdesc = Discover and watch movies and series from your Stremio addons (libadwaita, built-in mpv player)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/riyaniii/Chelsea
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = appstream
+	checkdepends = desktop-file-utils
+	makedepends = blueprint-compiler
+	makedepends = meson
+	depends = glib2
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = libepoxy
+	depends = libglvnd
+	depends = libsecret
+	depends = mpv
+	depends = nuvio-engine>=0.1.6
+	depends = python
+	depends = python-diskcache
+	depends = python-gobject
+	depends = python-httpx
+	depends = python-mpv
+	optdepends = org.freedesktop.secrets: keep Stremio sign-in between sessions
+	source = chelsea-0.1.2.tar.gz::https://github.com/riyaniii/Chelsea/archive/refs/tags/0.1.2.tar.gz
+	sha256sums = abc915af2e72360d14aba357644b7465cec7b3c3d23ce2e65418d3aa3b4190d8
+
+pkgname = chelsea
