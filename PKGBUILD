@@ -2,7 +2,7 @@
 
 _name=vercel-sandbox
 pkgname=python-$_name
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Python SDK for Vercel Sandbox.'
 arch=('any')
@@ -27,7 +27,7 @@ checkdepends=('python-pytest'
               'python-hypothesis'
               'python-trio')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name-v$pkgver.tar.gz")
-sha256sums=('104c2e74740d59d3f5f5b1efdcb0816b3e0d68323c87ee4391165030a14200c3')
+sha256sums=('c30f1c0d691f4e188a7f61d835b4fe224f2a9bf5e23fe9fbed57d821fd61a6da')
 
 prepare() {
   cd "vercel-py-$_name-v$pkgver/src/$_name"
