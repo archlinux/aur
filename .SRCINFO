@@ -1,0 +1,17 @@
+pkgbase = red-editor-bin
+	pkgdesc = Vim-like modal text editor
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/codersauce/red
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = red-editor
+	conflicts = red-editor
+	conflicts = red
+	options = !debug
+	source_x86_64 = red-editor-bin-0.12.0-x86_64.tar.gz::https://github.com/codersauce/red/releases/download/v0.12.0/red-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0732742fc90d796e5a28ccc507ca2f437530e58308da10587175415df5999097
+
+pkgname = red-editor-bin
