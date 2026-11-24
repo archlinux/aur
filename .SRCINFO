@@ -1,0 +1,17 @@
+pkgbase = run-cli-bin
+	pkgdesc = Interactive terminal UI for Google Cloud Run
+	pkgver = 0.31.0
+	pkgrel = 1
+	url = https://github.com/julienbreux/run-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = run-cli
+	conflicts = run-cli
+	options = !debug
+	source_x86_64 = run-cli-bin-0.31.0-x86_64.tar.gz::https://github.com/julienbreux/run-cli/releases/download/v0.31.0/run_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5e7268cb88eec89f2577b4dc5f761f2521db844bdc24edcb5a934da247c7730e
+	source_aarch64 = run-cli-bin-0.31.0-aarch64.tar.gz::https://github.com/julienbreux/run-cli/releases/download/v0.31.0/run_Linux_arm64.tar.gz
+	sha256sums_aarch64 = c5238fe3122c41573fbd71152ac1084c324a37bb5a118b2ce56859d7eff5ad15
+
+pkgname = run-cli-bin
