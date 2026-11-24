@@ -1,0 +1,16 @@
+pkgbase = codeleveler-bin
+	pkgdesc = Local coding agent that leaves reviewable changes
+	pkgver = 1.0.28
+	pkgrel = 1
+	url = https://github.com/dengmengmian/codeleveler
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = codeleveler
+	conflicts = codeleveler
+	options = !debug
+	source_x86_64 = codeleveler-bin-1.0.28-x86_64.tar.gz::https://github.com/dengmengmian/codeleveler/releases/download/v1.0.28/leveler-v1.0.28-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2cd0dbbe4975e7e4afedee011c02b4ceef8273ae11f78719a8679c43bc3210b3
+
+pkgname = codeleveler-bin
