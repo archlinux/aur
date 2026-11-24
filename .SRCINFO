@@ -1,6 +1,6 @@
 pkgbase = hplip-printer-app-git
 	pkgdesc = HPLIP Printer Application
-	pkgver = 1.0+r143.20261112.ecac10d
+	pkgver = 1.0+r144.20261124.90478d9
 	pkgrel = 1
 	url = https://github.com/OpenPrinting/hplip-printer-app
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = hplip-printer-app-git
 	depends = sh
 	optdepends = avahi: To be able to use ZeroConf names instead of IP addresses.
 	optdepends = bind: To be able to use hostnames instead of IP addresses. ('host' executable.)
-	provides = hplip-printer-app=1.0+r143.20261112.ecac10d
+	provides = hplip-printer-app=1.0+r144.20261124.90478d9
 	conflicts = hplip-printer-app
 	options = emptydirs
 	source = git+https://github.com/OpenPrinting/hplip-printer-app.git

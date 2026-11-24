@@ -3,7 +3,7 @@
 
 _pkgname=hplip-printer-app
 pkgname="${_pkgname}-git"
-pkgver=1.0+r143.20261112.ecac10d
+pkgver=1.0+r144.20261124.90478d9
 pkgrel=1
 pkgdesc="HPLIP Printer Application"
 url='https://github.com/OpenPrinting/hplip-printer-app'
