@@ -1,17 +1,17 @@
 pkgbase = wechat-devtools-appimage
 	pkgdesc = The development tools for wechat projects
-	pkgver = 2.02.2608080
+	pkgver = 2.02.2609250
 	pkgrel = 1
 	url = https://github.com/msojocs/wechat-web-devtools-linux
 	arch = x86_64
 	license = MIT
 	provides = wechat-devtools-bin
 	provides = wechat-devtools
-	noextract = wechat-devtools-appimage-2.02.2608080.AppImage
+	noextract = wechat-devtools-appimage-2.02.2609250.AppImage
 	options = !strip
-	source_x86_64 = wechat-devtools-appimage-2.02.2608080.AppImage::https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v2.02.2608080-1/WeChat_Dev_Tools_v2.02.2608080-1_x86_64_linux.AppImage
+	source_x86_64 = wechat-devtools-appimage-2.02.2609250.AppImage::https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v2.02.2609250-1/WeChat_Dev_Tools_v2.02.2609250-1_x86_64_linux.AppImage
 	source_x86_64 = wechat-devtools.desktop
-	sha256sums_x86_64 = fb72fcbd1c55ef82b4b7b97174d93cdfbcdeb2df72c364298cb1616e016e1aca
+	sha256sums_x86_64 = ce78d9e81cfbbfec1b2fd6b859f921d2602ef0cc3afac57136bd56ed3d457e11
 	sha256sums_x86_64 = 1b8e7f7315a7c845d1a3bd7d998bc32b7dd33e2a8921d67d9052db7f982e2ebe
 
 pkgname = wechat-devtools-appimage
