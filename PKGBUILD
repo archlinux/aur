@@ -2,7 +2,7 @@
 # 本地手动同步：./packaging/aur/sync-aur.sh
 pkgname=neko-cloud-music
 pkgver=2026.1123.72
-pkgrel=1
+pkgrel=2
 pkgdesc="NekoMusic: Free High-Quality Cloud Music"
 arch=('x86_64' 'aarch64')
 url="https://github.com/FantasyNetworkCN/NekoMusicForPc"
@@ -11,7 +11,7 @@ depends=('qt6-base' 'qt6-multimedia' 'qt6-svg' 'qt6-websockets' 'openssl')
 makedepends=('cmake' 'ninja' 'vulkan-headers' 'shaderc')
 optdepends=('vulkan-icd-loader: Vulkan 液态玻璃')
 
-_commit=d14e5b8b29a9174479a3be36380a05fcf71d5ccf
+_commit=322aebd7fc280f2852555130703fb5c22f8b4580
 source=("${pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz")
 sha256sums=('SKIP')
 
