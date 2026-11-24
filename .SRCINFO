@@ -1,0 +1,18 @@
+pkgbase = claude-code-statusline-bin
+	pkgdesc = Status line for Claude Code showing model, git and usage details
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/glauberlima/claude-code-statusline
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = claude-code-statusline
+	conflicts = claude-code-statusline
+	options = !debug
+	source = claude-code-statusline-bin-1.2.0-LICENSE::https://raw.githubusercontent.com/glauberlima/claude-code-statusline/v1.2.0/LICENSE
+	sha256sums = d923589f245a7e802901fce0967009eb11b5fc92cd5f74eac1edf9c866c498cf
+	source_x86_64 = claude-code-statusline-bin-1.2.0-x86_64::https://github.com/glauberlima/claude-code-statusline/releases/download/v1.2.0/statusline-linux-x64
+	sha256sums_x86_64 = 81a8f73b2cbc4302d1c8321d7967253e1123751bdef175c542811795ee6b214e
+
+pkgname = claude-code-statusline-bin
