@@ -1,0 +1,37 @@
+pkgbase = qwen-work-cn-bin
+	pkgdesc = 千问办公 (QwenWork) - Alibaba AI office desktop client
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://qwenwork.cn/
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = electron37
+	depends = python
+	depends = python-numpy
+	depends = python-reportlab
+	depends = python-beautifulsoup4
+	depends = python-defusedxml
+	depends = python-lxml
+	depends = python-pygments
+	depends = python-pillow
+	depends = python-keyring
+	depends = libsecret
+	depends = libxt
+	depends = nodejs
+	provides = qwen-work-cn=1.3.1
+	conflicts = qwen-work-cn
+	options = !strip
+	options = !debug
+	source = LICENSE.html::https://terms.alicdn.com/legal-agreement/terms/privacy_policy_full/20260709092132640/20260709092132640.html
+	source = qwen-work-cn.js
+	source = qwen-work-cn.sh
+	sha256sums = 7fcf55b68e954bd779f5f0907e5d3820da72a8aa751616eb49e00bca43371971
+	sha256sums = f6d64b3c1271114e0036c34f4b774949b8bda5d6afa1e2b82784eeafea8d6a7a
+	sha256sums = b728201bc9b6edc7627aa801bd875d802cffd85035406afe8eae44cca001611e
+	source_aarch64 = qwen-work-cn-1.3.1-aarch64.deb::https://assets.qwenwork.cn/release/latest/qwenworkcn-linux-arm64.deb
+	sha256sums_aarch64 = 175356487839ff5727f02301a992a9e19bad87161ccc996ecf1b522f2a2e8cf3
+	source_x86_64 = qwen-work-cn-1.3.1-x86_64.deb::https://assets.qwenwork.cn/release/latest/qwenworkcn-linux-amd64.deb
+	sha256sums_x86_64 = 74351965032763946e5d8995b48ff9a360014406f8ba5786e7247fde9987fce5
+
+pkgname = qwen-work-cn-bin
