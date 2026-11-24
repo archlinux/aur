@@ -16,6 +16,10 @@ os.environ.setdefault("HERMES_LAZY_INSTALL_TARGET", os.path.join(
     os.environ.get("XDG_DATA_HOME") or os.path.expanduser("~/.local/share"),
     "hermes-agent", "python"))
 
+# browser-harness tells the agent to run its self-update when PyPI has a newer
+# release; that cannot write to the root-owned venv either.
+os.environ.setdefault("BH_UPDATE_CHECK", "0")
+
 # The webapp bundle this package ships (`hermes webapp`, served by the
 # gateway): hermes serves it as it is instead of building one into the
 # root-owned tree.
