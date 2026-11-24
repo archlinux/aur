@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce-bin
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
@@ -12,7 +12,7 @@ source_aarch64=("https://github.com/nestybox/sysbox/releases/download/v${pkgver}
 sha256sums_x86_64=('50cde0e1124c2f028792ca66ab6b3949730ec38768dca1ef93d669802275ddd9')
 sha256sums_aarch64=('b565c1ae4fbd4df4892e771edf121e4308db5b4699402b45768d00cda52ea2e9')
 install=install.sh
-depends=('rsync' 'fuse2')
+depends=('rsync' 'fuse3')
 provides=('sysbox-ce')
 conflicts=('sysbox-ce')
 

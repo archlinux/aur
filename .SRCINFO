@@ -1,7 +1,7 @@
 pkgbase = sysbox-ce-bin
 	pkgdesc = Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/nestybox/sysbox
 	install = install.sh
@@ -9,7 +9,7 @@ pkgbase = sysbox-ce-bin
 	arch = aarch64
 	license = Apache-2.0
 	depends = rsync
-	depends = fuse2
+	depends = fuse3
 	provides = sysbox-ce
 	conflicts = sysbox-ce
 	source_x86_64 = https://github.com/nestybox/sysbox/releases/download/v0.7.2/sysbox-ce_0.7.2.linux_amd64.deb
