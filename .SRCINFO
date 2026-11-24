@@ -1,0 +1,20 @@
+pkgbase = dotenvhub
+	pkgdesc = Centrally manage .env files from a TUI
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/Zaloog/dotenvhub
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-platformdirs
+	depends = python-pyperclip
+	depends = python-textual
+	depends = python-textual-jumper
+	source = https://files.pythonhosted.org/packages/source/d/dotenvhub/dotenvhub-0.6.1.tar.gz
+	sha256sums = 64bc755fe5037148145c4206c219ff20c78a15ca8357da007424537a298ddcc8
+
+pkgname = dotenvhub
