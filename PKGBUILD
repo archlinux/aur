@@ -1,7 +1,7 @@
 # Maintainer: 3ri4nG0ld <brianldg92@gmail.com>
 pkgname=epixnet
 _reponame=EpixNet
-pkgver=0.6.10
+pkgver=0.6.11
 pkgrel=1
 _ffver="153.7.0esr"
 pkgdesc="Decentralized peer-to-peer web platform (node, browser launcher, and EVX worker)"
@@ -41,7 +41,7 @@ _archive="${_reponame}-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("firefox-${_ffver}-x86_64.tar.xz::https://download-installer.cdn.mozilla.net/pub/firefox/releases/${_ffver}/linux-${CARCH}/en-US/firefox-${_ffver}.tar.xz")
 source_aarch64=("firefox-${_ffver}-aarch64.tar.xz::https://download-installer.cdn.mozilla.net/pub/firefox/releases/${_ffver}/linux-${CARCH}/en-US/firefox-${_ffver}.tar.xz")
-sha256sums=('fa8d267cde102ecb9470011823cdd9a0dfa81d324131e88ede1d202b380c3674')
+sha256sums=('27dd650c2a08ac42d3bed95a5903cecb34d7e5de7b612f7700169ed1d0f38bfb')
 sha256sums_x86_64=('7d2eb92ca3a7b2a83de092eb9b94c853980214de2fbfdccb2ac39d61c593c5a5')
 sha256sums_aarch64=('6dbe169c1be4fdcecab414f748237d792a9f02b07a735f31a887e577b5140b8f')
 

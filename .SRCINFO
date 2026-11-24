@@ -1,6 +1,6 @@
 pkgbase = epixnet
 	pkgdesc = Decentralized peer-to-peer web platform (node, browser launcher, and EVX worker)
-	pkgver = 0.6.10
+	pkgver = 0.6.11
 	pkgrel = 1
 	url = https://github.com/EpixZone/EpixNet
 	arch = x86_64
@@ -26,13 +26,13 @@ pkgbase = epixnet
 	depends = systemd-libs
 	depends = zlib
 	optdepends = libayatana-appindicator: system tray icon support (dlopened at runtime)
-	provides = epixnet=0.6.10
+	provides = epixnet=0.6.11
 	conflicts = epixnet-bin
 	conflicts = epixnet-git
 	options = !lto
 	options = !strip
-	source = epixnet-0.6.10.tar.gz::https://github.com/EpixZone/EpixNet/archive/refs/tags/v0.6.10.tar.gz
-	sha256sums = fa8d267cde102ecb9470011823cdd9a0dfa81d324131e88ede1d202b380c3674
+	source = epixnet-0.6.11.tar.gz::https://github.com/EpixZone/EpixNet/archive/refs/tags/v0.6.11.tar.gz
+	sha256sums = 27dd650c2a08ac42d3bed95a5903cecb34d7e5de7b612f7700169ed1d0f38bfb
 	source_x86_64 = firefox-153.7.0esr-x86_64.tar.xz::https://download-installer.cdn.mozilla.net/pub/firefox/releases/153.7.0esr/linux-x86_64/en-US/firefox-153.7.0esr.tar.xz
 	sha256sums_x86_64 = 7d2eb92ca3a7b2a83de092eb9b94c853980214de2fbfdccb2ac39d61c593c5a5
 	source_aarch64 = firefox-153.7.0esr-aarch64.tar.xz::https://download-installer.cdn.mozilla.net/pub/firefox/releases/153.7.0esr/linux-x86_64/en-US/firefox-153.7.0esr.tar.xz
