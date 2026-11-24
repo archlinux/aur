@@ -6,8 +6,8 @@
 _base=yaml
 pkgbase=pypy-${_base}
 pkgname=pypy3-${_base}
-pkgver=6.0.3
-pkgrel=2
+pkgver=6.0.4
+pkgrel=1
 pkgdesc="YAML parser and emitter for Python"
 arch=(i686 x86_64)
 url="https://github.com/${_base}/py${_base}"
@@ -15,7 +15,7 @@ license=(MIT)
 makedepends=(pypy3-setuptools pypy3-cython)
 install=${pkgbase}.install
 source=(py${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('a0da43e32d127409ad61b11dc1d733b2e9c743977b3d72c05c81fc2ab183b40bc284452b0874dbeae1a736e1cd4a34f0df641ceefd5e9df38b3e53155fc5f633')
+sha512sums=('201f0b4dc59293facd9563ae0d9ceed1d8c379c8b82eb5b2e6109376e5804d18dc0e4b98324b37b28c83959816f2e394f4bd17b73bea4f98f8ac26f056881b89')
 
 build() {
   cd py${_base}-${pkgver}
