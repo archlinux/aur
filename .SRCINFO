@@ -1,0 +1,17 @@
+pkgbase = tblogs-bin
+	pkgdesc = Terminal reader for developer blogs
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/ezeoleaf/tblogs
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = tblogs
+	conflicts = tblogs
+	options = !debug
+	source = tblogs-bin-1.1.1-LICENSE::https://raw.githubusercontent.com/ezeoleaf/tblogs/v1.1.1/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = tblogs-bin-1.1.1-x86_64::https://github.com/ezeoleaf/tblogs/releases/download/v1.1.1/tblogs-linux-amd64
+	sha256sums_x86_64 = 912beadb17290aa091c08d2f5a4072d44c793b5a5515843215a6b16edc11aece
+
+pkgname = tblogs-bin
