@@ -5,7 +5,7 @@ _pkgname=Mediarium
 _appname=${_pkgname,,}
 pkgname=${_appname}-bin
 
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -30,8 +30,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${_gurl}/releases/downl
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${_gurl}/releases/download/${_pkgvername}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
 sha256sums=('b9ed5becafa699a8c3f058473ccc997a853c63ed5ad1167716d1d3fc0e30dccf'
             '4227a0b0f667a3821d2924a84089f76df8d3b6c5dcd861ae0c881f942f04ca9a')
-sha256sums_x86_64=('0c27ee121892c05481d461dfd0e41f8ee29a471b1af45541bb20002f4a6124c7')
-sha256sums_aarch64=('f0616cbf7ea0710410d517aa5449671700a280a3a566b86b612e3f68bf291db0')
+sha256sums_x86_64=('1e94adc94ea47aeae5b24e2bb09356702fae76719703d49633cb8202b9cc9243')
+sha256sums_aarch64=('407e21294ea519913970cb10d5a4e8d70284494a832395101fc28fb5835ee930')
 
 
 case ${CARCH} in
