@@ -1,6 +1,6 @@
 pkgbase = zcode-pro
-	pkgdesc = ZCode Pro — ZCode 桌面版增强启动器（壁纸引擎、皮肤主题等，不修改客户端文件）
-	pkgver = 1.10.0
+	pkgdesc = ZCode 桌面版增强包：壁纸引擎、皮肤主题等三十余项增强，不修改客户端文件
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/duanluan/zcode-pro
 	install = zcode-pro.install
@@ -9,7 +9,7 @@ pkgbase = zcode-pro
 	depends = zcode
 	optdepends = nodejs>=22: 使用系统 Node 运行启动器（缺省复用 ZCode 内置运行时，无需安装 Node）
 	options = !strip
-	source = zcode-pro-1.10.0.tar.gz::https://github.com/duanluan/zcode-pro/releases/download/v1.10.0/zcode-pro-1.10.0.tar.gz
-	sha256sums = fb3802d51cbba15a2bb401d3fbff8de96904c313325c85f42d9c805b53b2c591
+	source = zcode-pro-1.11.0.tar.gz::https://github.com/duanluan/zcode-pro/releases/download/v1.11.0/zcode-pro-1.11.0.tar.gz
+	sha256sums = 0112bca98211540baf29f5aa3292121d1dee5482318c3581d06c4e4102b06512
 
 pkgname = zcode-pro
