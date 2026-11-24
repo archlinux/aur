@@ -2,7 +2,7 @@
 
 pkgname=python-k3awssign
 _name=${pkgname#python-}
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="A python lib for adding AWS signature version 4 to requests"
 provides=(${pkgname})
@@ -28,7 +28,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('00f23172c08901f5eb9c19d1f58d99b6c799a8ebe0bbcab605db401348d8f30a')
+sha256sums=('7c2c198d9bc1e69612edf7ac12ea5d233cf22513b1a13169f84ce054b6353b97')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
