@@ -13,7 +13,7 @@ _subver=3
 pkgver="${_pkgver}_${_subver}"
 _electronversion=43
 epoch=5
-pkgrel=1
+pkgrel=2
 pkgdesc="Bilibili official desktop client.哔哩哔哩官方客户端linux移植版。"
 arch=(
     'aarch64'
@@ -73,7 +73,7 @@ prepare() {
 	rm -rf "${srcdir}/squashfs-root"
 	"${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "$(_get_app_dir)/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun/${pkgname%-bin}/g" "$(_get_app_dir)/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
