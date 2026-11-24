@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=nmail
-pkgver=5.16.4
+pkgver=5.17.26
 pkgrel=1
 pkgdesc="Terminal-based email client"
 arch=(x86_64)
@@ -18,7 +18,7 @@ depends=(
   'python')
 makedepends=(cmake)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c0104f0b1c3a0464a1507acbaf94b657e2ce54afe099a42c3685adb229a30ff9deb619bbdc4c60e684eec3435e3c66a6f4a1a069560fb045f760b31cc6982a69')
+sha512sums=('804a732288492397664834aa680d92014d33dadf147dca1d53a5497426a47b9b91a005880d38182918c66a961e9385b77be298fe2e209a60ebac343c1d3086d1')
 
 build() {
   cmake \
