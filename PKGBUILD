@@ -7,9 +7,11 @@ arch=('x86_64')
 url="https://www.navicat.com/products/navicat-premium-lite"
 license=('proprietary')
 dependencies=('systemd-libs')
+# upstream download urls carry the major version
+_major=${pkgver%%.*}
 source_x86_64=(
-	"${pkgbase}-en-x86_64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat18-premium-lite-en-x86_64.AppImage"
-	"${pkgbase}-cs-x86_64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat18-premium-lite-cs-x86_64.AppImage"
+	"${pkgbase}-en-x86_64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat${_major}-premium-lite-en-x86_64.AppImage"
+	"${pkgbase}-cs-x86_64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat${_major}-premium-lite-cs-x86_64.AppImage"
 )
 sha256sums_x86_64=('5562ab8297c896ab97d0e392c8ce1599c9f2840b4bf23ea0d5ef4be7949cf62c'
                    'bce833aec7b6b58b4dc381fd4e691d96946b8798d856f5288a3276655e4af8ec')
