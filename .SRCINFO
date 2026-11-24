@@ -1,6 +1,6 @@
 pkgbase = pomotui-git
 	pkgdesc = Terminal Pomodoro timer with TUI, CLI, and Waybar frontends (git build)
-	pkgver = r260.gd10870d99981
+	pkgver = r265.g97771f288caf
 	pkgrel = 1
 	url = https://github.com/SaintFore/pomotui
 	install = pomotui.install
