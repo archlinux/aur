@@ -1,6 +1,6 @@
 pkgbase = coova-chilli-arch
 	pkgdesc = An open-source software access controller
-	pkgver = 1.9
+	pkgver = 1.10
 	pkgrel = 1
 	url = https://coova.github.io/
 	install = chilli.install
@@ -15,9 +15,9 @@ pkgbase = coova-chilli-arch
 	conflicts = coova-chilli
 	replaces = coova-chilli
 	backup = etc/chilli.conf
-	source = coova-chilli-arch-1.9.tar.gz::https://github.com/coova/coova-chilli/archive/1.9.tar.gz
+	source = coova-chilli-arch-1.10.tar.gz::https://github.com/coova/coova-chilli/archive/1.10.tar.gz
 	source = chilli.service
-	sha256sums = 78b58189a3f031ab7b6346fe814bd64337940fe1fdbb7e45e32a32f146e7d421
+	sha256sums = d138c29b600e01b8dcc3e036a8bbc40d88d13c0ae2a1f44deb599d90c38452cc
 	sha256sums = f93473100b7c09898f2450cdddc1a2f9cd2317fb5943f7dd4962c4fde2ba8865
 
 pkgname = coova-chilli-arch

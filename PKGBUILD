@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=coova-chilli-arch
-pkgver=1.9 # renovate: datasource=github-tags depName=coova/coova-chilli
+pkgver=1.10 # renovate: datasource=github-tags depName=coova/coova-chilli
 pkgrel=1
 pkgdesc='An open-source software access controller'
 arch=('x86_64')
@@ -55,5 +55,5 @@ package() {
   rm -rf "${pkgdir}/etc/init.d"
 }
 
-sha256sums=('78b58189a3f031ab7b6346fe814bd64337940fe1fdbb7e45e32a32f146e7d421'
-  'f93473100b7c09898f2450cdddc1a2f9cd2317fb5943f7dd4962c4fde2ba8865')
+sha256sums=('d138c29b600e01b8dcc3e036a8bbc40d88d13c0ae2a1f44deb599d90c38452cc'
+            'f93473100b7c09898f2450cdddc1a2f9cd2317fb5943f7dd4962c4fde2ba8865')
