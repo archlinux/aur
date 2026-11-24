@@ -1,0 +1,19 @@
+pkgbase = taskline-js
+	pkgdesc = Tasks, boards and notes for the command line
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/perryrh0dan/taskline
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = libx11
+	depends = nodejs
+	conflicts = taskline
+	noextract = taskline-js-1.6.0.tgz
+	source = taskline-js-1.6.0.tgz::https://registry.npmjs.org/@perryrh0dan/taskline/-/taskline-1.6.0.tgz
+	source = taskline-js-1.6.0-LICENSE::https://raw.githubusercontent.com/perryrh0dan/taskline/v1.6.0/license.md
+	sha256sums = b27122b0578c6890342ec3742ef14f89aca4315853282f982c1b6dad6b6faba2
+	sha256sums = 0bebeb783df72dceaf30c1f930f6b6225b50f16af68f1d09930f82880db0c20f
+
+pkgname = taskline-js
