@@ -12,9 +12,9 @@
 # hence the conflicts list.
 
 pkgname=strata-terminal-bin
-_relver=0.2.20
-pkgver=0.1.66
-pkgrel=3
+_relver=0.2.21
+pkgver=0.1.67
+pkgrel=1
 pkgdesc='Strata Terminal: run Qwen3.8-Flash-Next and DeepSeek V4.1-Flash locally with an OpenAI/Anthropic-compatible API (prebuilt)'
 arch=('x86_64')
 url='https://github.com/Niko1221/Strata'
@@ -29,7 +29,7 @@ source=(
 )
 noextract=("strata-terminal-${pkgver}-linux-x86_64.tar.gz")
 sha256sums=('949b9b0aada7476006469e58ee4ffb0e0f68c2d9137e90a356757b61a09d37f0'
-            '5bd662d293ab4dc8b71156daafbb42995bddbb765dbeac48c5fd74165dfb2d0d')
+            '08947dfbbe5f8f5545ac3d36407d5d6872ffc18b71c924d53d5d96c93469387f')
 
 package() {
   install -dm755 "${pkgdir}/opt/strata-terminal"
