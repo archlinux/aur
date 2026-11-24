@@ -1,6 +1,6 @@
 pkgbase = appzones
 	pkgdesc = Long-lived sandboxes for desktop apps, dev tools and AI agents (bubblewrap, pasta, nftables)
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/mirql/appzones
 	install = appzones.install
@@ -19,9 +19,9 @@ pkgbase = appzones
 	optdepends = hyprland: zone border colours and window tags
 	optdepends = nix: the packages setting
 	backup = etc/sudoers.d/appzones
-	source = appzones-0.12.0.tar.gz::https://github.com/mirql/appzones/archive/refs/tags/v0.12.0.tar.gz
+	source = appzones-0.13.0.tar.gz::https://github.com/mirql/appzones/archive/refs/tags/v0.13.0.tar.gz
 	source = appzones.sysusers
-	sha256sums = 6e077d023ae0f8a3300c5ca235d362189763d46e43dcef2a82b238ff1b491479
+	sha256sums = 4baa56ac7502101c6abe09839e7e7f4f337332f68511b8f7b1fa35faf7ebd8b1
 	sha256sums = SKIP
 
 pkgname = appzones
