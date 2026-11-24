@@ -9,7 +9,7 @@
 # the udev rule, and shipping the tree that was actually tested keeps the
 # package honest about what was verified.
 pkgname=fcitx5-ainput-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Voice input addon for fcitx5: push-to-talk ASR via CapsLock (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -30,8 +30,8 @@ provides=('fcitx5-ainput')
 # building on, so an aarch64 user never needs the x86_64 artifact.
 source_x86_64=("fcitx5-ainput-$pkgver-x86_64.tar.zst::$url/releases/download/$pkgver/fcitx5-ainput-$pkgver-x86_64.tar.zst")
 source_aarch64=("fcitx5-ainput-$pkgver-aarch64.tar.zst::$url/releases/download/$pkgver/fcitx5-ainput-$pkgver-aarch64.tar.zst")
-sha256sums_x86_64=('83fd962ef7acb1b2a83349d04cf21bb0d994dd42c4039824db97de4c9c9a87fa')
-sha256sums_aarch64=('f2d2ce401998ac415e009a372687ef521a84a915409b34d2a28318abafa9576c')
+sha256sums_x86_64=('5885258553f11c05e8977701faa29f29aff6561e6c4a5b913b595b593e3e3cd5')
+sha256sums_aarch64=('d09c8e9114a8a64f96bdc2ea7357fa763bb0861d0b6ec58efd440e74012d9024')
 
 package() {
     # The archive is a DESTDIR image, so it already carries the usr/ prefix and
