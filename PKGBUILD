@@ -1,7 +1,7 @@
 # Maintainer: Y.K. Goon
 # AUR Package for ClickDown - A fast and responsive ClickUp terminal client
 pkgname=clickdown-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=2
 pkgdesc="A fast and responsive ClickUp terminal client"
 arch=('x86_64')
