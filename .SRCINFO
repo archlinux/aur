@@ -1,0 +1,19 @@
+pkgbase = feeling-bin
+	pkgdesc = Terminal mood tracker
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/qiz-li/feeling
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = feeling
+	conflicts = feeling
+	options = !debug
+	source = feeling-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/qiz-li/feeling/v0.1.0/license
+	sha256sums = 91e44552a7f7a14883bb60cb26592164dff3b7f90b6d7ee6640c3ce77d3bb020
+	source_x86_64 = feeling-bin-0.1.0-x86_64.tar.gz::https://github.com/qiz-li/feeling/releases/download/v0.1.0/feeling-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = a725a3bea03ec235025f53d0b7fcd1251d63bffca1b31c7c65fb3fb31c346cbb
+	source_aarch64 = feeling-bin-0.1.0-aarch64.tar.gz::https://github.com/qiz-li/feeling/releases/download/v0.1.0/feeling-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 74062f88b43b35089e6b0ddd442e8346acba4d06ba39c39e63ea36d25ba31888
+
+pkgname = feeling-bin
