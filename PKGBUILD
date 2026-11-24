@@ -1,7 +1,7 @@
 # Maintainer: hyperpuncher
 pkgname=nemo-speech-vulkan-bin
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Native speech recognition, synthesis, and translation with Vulkan support'
 arch=('x86_64' 'aarch64')
 url='https://github.com/NVIDIA/NeMo-Speech.cpp'
@@ -12,7 +12,7 @@ license=(
 	'MIT-0'
 	'GPL-3.0-or-later WITH GCC-exception-3.1'
 )
-depends=('glibc' 'gcc-libs' 'vulkan-icd-loader' 'vulkan-driver')
+depends=('glibc' 'libgcc' 'libstdc++' 'vulkan-icd-loader' 'vulkan-driver')
 optdepends=(
 	'curl: model downloads'
 	'alsa-lib: microphone capture through ALSA'
