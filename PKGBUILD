@@ -78,10 +78,12 @@ build() {
 }
 
 # The suite CI runs. It needs no display, GPU, network, session bus, or
-# installed fonts, so it can run in a clean chroot.
+# installed fonts, so it can run in a clean chroot. setsid runs it in a session
+# of its own, as in CI: some tests start interactive shells, which would take
+# over the terminal makepkg runs in and stop the build.
 check() {
   cd "${srcdir}/${_pkgname}"
-  CARGO_TARGET_DIR="${srcdir}/target" cargo test \
+  CARGO_TARGET_DIR="${srcdir}/target" setsid --wait cargo test \
     --workspace --locked
 }
 
