@@ -1,0 +1,22 @@
+pkgbase = rbitcoin-bin
+	pkgdesc = Bitcoin full node with a relational archive, pure-Rust consensus and Electrum (prebuilt)
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/rbitcoin-org/rbitcoin
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	provides = rbitcoin=0.9.2
+	conflicts = rbitcoin
+	source = rbitcoin-0.9.2-LICENSE-MIT::https://raw.githubusercontent.com/rbitcoin-org/rbitcoin/v0.9.2/LICENSE-MIT
+	sha256sums = 5271ec10e88487a5637dd41fd3d18dd4969eec4f90f77fd44169772bdcfa6215
+	source_x86_64 = rbitcoin-node-0.9.2-x86_64::https://github.com/rbitcoin-org/rbitcoin/releases/download/v0.9.2/rbitcoin-node-x86_64-linux
+	source_x86_64 = rbitcoin-cli-0.9.2-x86_64::https://github.com/rbitcoin-org/rbitcoin/releases/download/v0.9.2/rbitcoin-cli-x86_64-linux
+	sha256sums_x86_64 = 4d1ccd59a15f30807a895bc1924e8b5706dac4566588c8c69f7b7dce361ef409
+	sha256sums_x86_64 = 0d0fba5ebaf4e688d5ace48a77afa223822dcfd8818709cb827151c5ca1ad9d6
+	source_aarch64 = rbitcoin-node-0.9.2-aarch64::https://github.com/rbitcoin-org/rbitcoin/releases/download/v0.9.2/rbitcoin-node-aarch64-linux
+	source_aarch64 = rbitcoin-cli-0.9.2-aarch64::https://github.com/rbitcoin-org/rbitcoin/releases/download/v0.9.2/rbitcoin-cli-aarch64-linux
+	sha256sums_aarch64 = 1cb35314b0d2066b5949cc3ca4aea5c0e0ca8484301ca0b465ee81b12ff679c3
+	sha256sums_aarch64 = f7b11a682b25fcd506b54ef270e92c671a87789cf2f41b1720a110a82ec6f84b
+
+pkgname = rbitcoin-bin
