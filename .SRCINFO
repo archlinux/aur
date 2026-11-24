@@ -1,0 +1,21 @@
+pkgbase = logmerger
+	pkgdesc = View multiple log files on one merged timeline
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/ptmcg/logmerger
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-littletable
+	depends = python-rich
+	depends = python-textual
+	depends = python-typing_extensions
+	optdepends = python-orjson: faster parsing of JSON log lines
+	source = https://files.pythonhosted.org/packages/source/l/logmerger/logmerger-0.13.0.tar.gz
+	sha256sums = 66e97e0db2bda2d97022bb8d730bed730ed8b6b8a0b60e4e70bfe3c2278ecc04
+
+pkgname = logmerger
