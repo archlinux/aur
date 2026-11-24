@@ -1,0 +1,17 @@
+pkgbase = tfui-bin
+	pkgdesc = Interactive TUI for Terraform workflows
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/SayYoungMan/tfui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tfui
+	conflicts = tfui
+	options = !debug
+	source_x86_64 = tfui-bin-0.4.0-x86_64.tar.gz::https://github.com/SayYoungMan/tfui/releases/download/v0.4.0/tfui_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3aef74ac63586ac476d165af041c7b4e4679ab9559e6fb3d87195dcc434d0890
+	source_aarch64 = tfui-bin-0.4.0-aarch64.tar.gz::https://github.com/SayYoungMan/tfui/releases/download/v0.4.0/tfui_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5e83aa40302a399f7bcf72f1fe84a91ea319f0a8493e3699d6d77dabb1e96c28
+
+pkgname = tfui-bin
