@@ -1,0 +1,19 @@
+pkgbase = statui-bin
+	pkgdesc = API health check TUI dashboard
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/mohamed-badry/statui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = statui
+	conflicts = statui
+	options = !debug
+	source = statui-bin-0.3.0-LICENSE::https://raw.githubusercontent.com/mohamed-badry/statui/v0.3.0/LICENSE
+	sha256sums = d6b11628d92bc8529931d7ed4a7d33e7d05b5c87acc72f5a3048630ba729105b
+	source_x86_64 = statui-bin-0.3.0-x86_64.tar.gz::https://github.com/mohamed-badry/statui/releases/download/v0.3.0/statui-v0.3.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 08f5c449f14367bf975e23a58cef123d629c4d3090ead43d724980f7ad90088c
+	source_aarch64 = statui-bin-0.3.0-aarch64.tar.gz::https://github.com/mohamed-badry/statui/releases/download/v0.3.0/statui-v0.3.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = c76f4cb09a4bc498befec64a604dc9c518f6f2978282f1920b6fcffbfe6caa6b
+
+pkgname = statui-bin
