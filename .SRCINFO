@@ -1,6 +1,6 @@
 pkgbase = neferwl-bin
 	pkgdesc = A Wayland compositor that spends its frames on your apps, not on itself
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://git.bnema.dev/neferwl
 	install = neferwl.install
@@ -27,9 +27,9 @@ pkgbase = neferwl-bin
 	provides = neferwl
 	conflicts = neferwl
 	conflicts = neferwl-git
-	source_aarch64 = neferwl-bin_0.17.0_aarch64.tar.gz::https://git.bnema.dev/neferwl/releases/download/v0.17.0/neferwl_0.17.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 69dad3dd44490eb46f56725384f2a0997ffad38cd9aea11f9bb0d57190432db3
-	source_x86_64 = neferwl-bin_0.17.0_x86_64.tar.gz::https://git.bnema.dev/neferwl/releases/download/v0.17.0/neferwl_0.17.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6d0cecd02a125740c008c0b736a2eca9a727a5196dc4b2bded06b2d3c02a70e3
+	source_aarch64 = neferwl-bin_0.17.1_aarch64.tar.gz::https://git.bnema.dev/neferwl/releases/download/v0.17.1/neferwl_0.17.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 80b203eec8012a1028927448a4c8bc95d1054225d6a0c0458898f0e1a6cc2a10
+	source_x86_64 = neferwl-bin_0.17.1_x86_64.tar.gz::https://git.bnema.dev/neferwl/releases/download/v0.17.1/neferwl_0.17.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = bba5cbdbe750cbb0cb5fd7f79b5e5afc2707157dbf2d8ca005e183d1399ad4f4
 
 pkgname = neferwl-bin
