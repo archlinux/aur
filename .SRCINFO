@@ -1,0 +1,17 @@
+pkgbase = lazyagents-bin
+	pkgdesc = TUI for managing AI coding agent skills, sessions, usage, providers and hooks
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/rogeriojunior31/lazyagents
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lazyagents
+	conflicts = lazyagents
+	options = !debug
+	source_x86_64 = lazyagents-bin-0.2.3-x86_64.tar.gz::https://github.com/rogeriojunior31/lazyagents/releases/download/v0.2.3/lazyagents_0.2.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 62966cc919f1eb5218d8fc220acebfbdf012c7d5b1597cf914e77c15e71f7373
+	source_aarch64 = lazyagents-bin-0.2.3-aarch64.tar.gz::https://github.com/rogeriojunior31/lazyagents/releases/download/v0.2.3/lazyagents_0.2.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = deb65a77a8cc8362cbe3164e9b5199682d07694b54f43ff8897399bb7a6ec4da
+
+pkgname = lazyagents-bin
