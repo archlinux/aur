@@ -1,0 +1,19 @@
+pkgbase = lazytrivy-bin
+	pkgdesc = TUI for Trivy vulnerability scanning
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/owenrumney/lazytrivy
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = lazytrivy
+	conflicts = lazytrivy
+	options = !debug
+	source = lazytrivy-bin-1.4.2-LICENSE::https://raw.githubusercontent.com/owenrumney/lazytrivy/v1.4.2/LICENSE
+	sha256sums = 2b254cb4d9ffc0206152d3448f7782af2cc71faee98f3aaeebfa21b8ca1af243
+	source_x86_64 = lazytrivy-bin-1.4.2-x86_64::https://github.com/owenrumney/lazytrivy/releases/download/v1.4.2/lazytrivy-linux-amd64
+	sha256sums_x86_64 = 1a5ea163145ef816da9f6d95471ee8eb43ca16e089de132da9fc844519a7129e
+	source_aarch64 = lazytrivy-bin-1.4.2-aarch64::https://github.com/owenrumney/lazytrivy/releases/download/v1.4.2/lazytrivy-linux-arm64
+	sha256sums_aarch64 = db4f3b640399e0764c8353646868d446bd744b104606b9672cb57fdd2e7c800a
+
+pkgname = lazytrivy-bin
