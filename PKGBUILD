@@ -7,10 +7,10 @@ pkgname="${_pkgname}"-ptt-fix
 pkgver=6.8.2
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
-pkgdesc='Daemon providing Global Keyboard Shortcut (Accelerator) functionality patched with MR !130'
+pkgdesc='Daemon providing Global Keyboard Shortcut (Accelerator) functionality patched with MR !144'
 
 arch=(x86_64)
-url='https://invent.kde.org/plasma/kglobalacceld/-/merge_requests/130'
+url='https://invent.kde.org/plasma/kglobalacceld/-/merge_requests/144'
 license=(LGPL-2.0-or-later)
 
 depends=(glibc
