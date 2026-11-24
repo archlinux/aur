@@ -9,7 +9,7 @@ normal resize path, including for Thunderbolt-attached devices.
 diff --git a/kernel-open/nvidia/nv-pci.c b/kernel-open/nvidia/nv-pci.c
 --- a/kernel-open/nvidia/nv-pci.c
 +++ b/kernel-open/nvidia/nv-pci.c
-@@ -2353,9 +2353,14 @@ nv_pci_probe
+@@ -1318,9 +1318,14 @@
          goto err_zero_dev;
  
      if (nv_resize_pcie_bars(pci_dev)) {

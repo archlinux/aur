@@ -1,4 +1,10 @@
 # Changelog
+## [1:620.73.04-1] - 2026-11-24
+
+### Changed
+- Update NVIDIA open kernel module source to 620.73.04 and migrate the Thunderbolt eGPU hotplug patchset
+- Refresh package patch context for the new source release
+
 ## [1:620.70.06-1] - 2026-11-09
 
 ### Changed

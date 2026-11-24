@@ -1,6 +1,6 @@
 # nvidia-open-egpu
 
-Arch Linux packages for NVIDIA's open kernel modules with Thunderbolt eGPU hotplug support. The current package is based on NVIDIA open-gpu-kernel-modules 620.70.06; see `PKGBUILD` for the package release and `CHANGELOG.md` for recent changes.
+Arch Linux packages for NVIDIA's open kernel modules with Thunderbolt eGPU hotplug support. The current package is based on NVIDIA open-gpu-kernel-modules 620.73.04; see `PKGBUILD` for the package release and `CHANGELOG.md` for recent changes.
 
 The patch set adds guards for GPU surprise removal and reconnect cleanup. Udev loads the NVIDIA modules when an NVIDIA display GPU appears and starts eGPU cleanup when a Thunderbolt device is removed. Cleanup tracks NVIDIA-classified external GPUs by PCI address and device nodes, so it can target the GPU that disappeared without relying on device numbering.
 

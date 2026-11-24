@@ -11,7 +11,7 @@ pkgbase=nvidia-open-egpu
 pkgname=(
     'nvidia-open-egpu'
     'nvidia-open-egpu-dkms')
-pkgver=620.70.06
+pkgver=620.73.04
 pkgrel=1
 epoch=1
 pkgdesc='NVIDIA open kernel modules with thunderbolt 4 force egpu and hotplug patches'
@@ -35,20 +35,20 @@ source=("https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-
         '220-nvidia-open-procfs-external-gpu.patch'
         'nvidia-egpu-hotplug.rules'
         'nvidia-egpu-hotplug.sh')
-sha256sums=('d65c8bbea3abebc64f83119e4fb7ecb6601fc43d718dbecbec8e3758a246355e'
+sha256sums=('3a107b31b22d6f5c8da34e5e22a66e38ccdb7a92ee23266d0e064d3b9635c93f'
             '70a13159e43b78df1fb03601cd594d9c39893e8351b0318daa7a3cf1fd692738'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
-            '5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501'
-            '22aa6f5be5d3c23762230df4322b1edabb16217c6b40b95b63fbe92753c33e30'
-        '4bfc22d234fa1b1a51c2e030d610bf6f75aa276a61c3c0f495d46d20662aed17'
-        'fb18cacdf323f985208dae3fcd174c9f6aad42a77d06229be082849a9d7d9f42'
-        '7762f80d131ed1a8fee86f46d86d33a3a01f9a9fd1d6a66f95336df42aa0e5a1'
-        '954254e280f819cd14b06abb219700b9b93aee4c4e50ecd01b76297fbe064c09'
-        'de65235573dce384ee4b865f4164c67af84fd11a78c4f58f7ce8d52d77c12a91'
-        '85c9dd29bca475e4d8d816191bb36d4a8c67f76a074c67c2928a0683ca3fef42'
-        'e40eb621ef6832f7bd3f577e1c041e9fc280334040f8dc4b3c8fb32d83c6648c'
-        '570f66dd11212511193ddadf606dcda611a72584b3bf86c6e55273a6b7945567'
-        'dfbdc05ccc3af945d8429b46f06f3b6b81ecf27144dd21272109f3912e7e27b0')
+            '607fa6d1cc79a6cee76dcbd2035078269b33d3a2db943ab4e0981cd4acd5da15'
+            'ea282df2d5dcc85a402c084aba90e60b78df2af0be922d75ee068bf437c13f91'
+            '0e9a89b484b6b38548a2e207308e28b6c27477d9b8f2a92c3a33e3541697a4af'
+            'd507ad460af2f97a82ddea29ce28e03dab16ef997cbdf53a0a890c344ce05096'
+            '3bfd672d6d38956d35a0673234704eb3cdf28ff345b0463c15aab0a21c147bcf'
+            '6dc2f757334e4aed649087aa2dd345e1c5d768fe38a6fa1dda8ff4cd0cdc7ee3'
+            'b050581e401adcb826c47e8ced7bcc9a7d6e01e351e06ae4c27f3ecd5a726764'
+            '85c9dd29bca475e4d8d816191bb36d4a8c67f76a074c67c2928a0683ca3fef42'
+            '5a2ef1ba7b4bd4c2d066c03a1d0956c4f65f434ac854ce735eb1a62ef02ca476'
+            '570f66dd11212511193ddadf606dcda611a72584b3bf86c6e55273a6b7945567'
+            'dfbdc05ccc3af945d8429b46f06f3b6b81ecf27144dd21272109f3912e7e27b0')
 
 prepare() {
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"

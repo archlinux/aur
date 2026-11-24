@@ -10,7 +10,7 @@ and use the common cleanup path.
 diff --git a/src/nvidia/src/libraries/mapping_reuse/mapping_reuse.c b/src/nvidia/src/libraries/mapping_reuse/mapping_reuse.c
 --- a/src/nvidia/src/libraries/mapping_reuse/mapping_reuse.c
 +++ b/src/nvidia/src/libraries/mapping_reuse/mapping_reuse.c
-@@ -88,7 +88,7 @@ reusemappingdbUnmap
+@@ -88,7 +88,7 @@
  {
      ReuseMappingDbEntry *pEntry = mapFindGEQ(&(pReuseMappingDb->virtualMap), range.start);
      NvU64 curOffset = range.start;
@@ -19,7 +19,7 @@ diff --git a/src/nvidia/src/libraries/mapping_reuse/mapping_reuse.c b/src/nvidia
  
      while (pEntry != NULL)
      {
-@@ -101,14 +101,13 @@ reusemappingdbUnmap
+@@ -100,14 +100,13 @@
          // Only unmap ranges contained within the desired unmap range
          if (!mrangeContains(range, revRange))
          {
@@ -30,21 +30,24 @@ diff --git a/src/nvidia/src/libraries/mapping_reuse/mapping_reuse.c b/src/nvidia
 +                unmapLimit = revOffset;
              }
 -            return;
-+            break;
-         }
- 
+-        }
+-
 -        bFirstRange = NV_FALSE;
++            break;
++        }
++
          curOffset = mrangeLimit(revRange);
  
          // Unmap any partial range not tracked by data structure
-@@ -136,9 +135,9 @@ reusemappingdbUnmap
+@@ -136,9 +135,9 @@
      }
  
      // Take care of any overhang.
 -    if (mrangeLimit(range) != curOffset)
-+    if (unmapLimit > curOffset)
-     {
+-    {
 -        MemoryRange diffRange = mrangeMake(curOffset, mrangeLimit(range) - curOffset);
++    if (unmapLimit > curOffset)
++    {
 +        MemoryRange diffRange = mrangeMake(curOffset, unmapLimit - curOffset);
          pReuseMappingDb->pUnmapCb(pReuseMappingDb->pGlobalCtx, pAllocCtx, diffRange);
      }

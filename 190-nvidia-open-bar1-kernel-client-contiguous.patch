@@ -9,7 +9,7 @@ BAR1 ranges; ordinary userspace clients retain discontiguous mappings.
 diff --git a/src/nvidia/src/kernel/rmapi/mapping_cpu.c b/src/nvidia/src/kernel/rmapi/mapping_cpu.c
 --- a/src/nvidia/src/kernel/rmapi/mapping_cpu.c
 +++ b/src/nvidia/src/kernel/rmapi/mapping_cpu.c
-@@ -484,7 +484,15 @@ memMap_IMPL
+@@ -445,7 +445,15 @@
                  // Below, we only map one GPU's address for CPU access, so we can use UNICAST here
                  NvU32 busMapFbFlags = BUS_MAP_FB_FLAGS_MAP_UNICAST;
  #if defined(NV_UNIX)

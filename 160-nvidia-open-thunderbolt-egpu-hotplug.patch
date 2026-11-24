@@ -21,10 +21,10 @@ index 736e0353..210b0c5d 100644
       * Grab ownership of device, ownership is required to do modeset.
       *
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-crtc.c b/kernel-open/nvidia-drm/nvidia-drm-crtc.c
-index 30e76dd7..8f3beda9 100644
+index f4841c69..d3e12b8e 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-crtc.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-crtc.c
-@@ -3266,6 +3266,7 @@ static void nv_drm_vblank_enable_fn(void *t)
+@@ -3307,6 +3307,7 @@ static void nv_drm_vblank_enable_fn(void *t)
  {
      struct nv_drm_crtc *nv_crtc = t;
      struct nv_drm_device *nv_dev = to_nv_device(nv_crtc->base.dev);
@@ -32,7 +32,7 @@ index 30e76dd7..8f3beda9 100644
      struct drm_device *dev = nv_crtc->base.dev;
      unsigned long irqflags;
  
-@@ -3279,9 +3280,11 @@ static void nv_drm_vblank_enable_fn(void *t)
+@@ -3320,9 +3321,11 @@ static void nv_drm_vblank_enable_fn(void *t)
      nv_crtc->vblank_intr_fired = false;
      spin_unlock_irqrestore(&dev->vblank_time_lock, irqflags);
  
@@ -46,7 +46,7 @@ index 30e76dd7..8f3beda9 100644
                  nv_drm_crtc_vblank_callback, (NvU64)(NvUPtr)nv_crtc);
      }
  
-@@ -3293,13 +3296,17 @@ static void nv_drm_vblank_disable_fn(void *t)
+@@ -3334,13 +3337,17 @@ static void nv_drm_vblank_disable_fn(void *t)
      struct nv_drm_crtc *nv_crtc = t;
      struct drm_device *dev = nv_crtc->base.dev;
      struct nv_drm_device *nv_dev = to_nv_device(dev);
@@ -67,10 +67,10 @@ index 30e76dd7..8f3beda9 100644
      }
  
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-drv.c b/kernel-open/nvidia-drm/nvidia-drm-drv.c
-index de784e28..ca3bf8b2 100644
+index 486731ea..b7922428 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-drv.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-drv.c
-@@ -1042,6 +1042,56 @@ static void nv_drm_dev_unload(struct drm_device *dev)
+@@ -1046,6 +1046,56 @@ static void nv_drm_dev_unload(struct drm_device *dev)
          return;
      }
  
@@ -127,7 +127,7 @@ index de784e28..ca3bf8b2 100644
      /* Release modeset ownership if fbdev is enabled */
  
  #if defined(NV_DRM_FBDEV_AVAILABLE)
-@@ -1088,8 +1138,8 @@ static void nv_drm_dev_unload(struct drm_device *dev)
+@@ -1092,8 +1142,8 @@ static void nv_drm_dev_unload(struct drm_device *dev)
  
      /* Unset NvKmsKapiDevice */
  
@@ -138,7 +138,7 @@ index de784e28..ca3bf8b2 100644
  
      mutex_unlock(&nv_dev->lock);
  
-@@ -2045,6 +2095,8 @@ static const struct drm_ioctl_desc nv_drm_ioctls[] = {
+@@ -2049,6 +2099,8 @@ static const struct drm_ioctl_desc nv_drm_ioctls[] = {
                        DRM_UNLOCKED|DRM_MASTER),
  };
  
@@ -147,7 +147,7 @@ index de784e28..ca3bf8b2 100644
  static struct drm_driver nv_drm_driver = {
  
      .driver_features        =
-@@ -2117,6 +2169,7 @@ static struct drm_driver nv_drm_driver = {
+@@ -2121,6 +2173,7 @@ static struct drm_driver nv_drm_driver = {
  #endif
  
      .load                   = nv_drm_load_noop,
@@ -155,7 +155,7 @@ index de784e28..ca3bf8b2 100644
  
      .postclose              = nv_drm_postclose,
      .open                   = nv_drm_open,
-@@ -2309,10 +2362,13 @@ failed_drm_register:
+@@ -2313,10 +2366,13 @@ failed_drm_register:
  failed_drm_load:
  
      drm_dev_put(dev);
@@ -170,7 +170,7 @@ index de784e28..ca3bf8b2 100644
  }
  
  /*
-@@ -2384,7 +2440,44 @@ static void nv_drm_dev_destroy(struct nv_drm_device *nv_dev)
+@@ -2388,7 +2444,44 @@ static void nv_drm_dev_destroy(struct nv_drm_device *nv_dev)
  
      nv_drm_dev_unload(dev);
      drm_dev_put(dev);
@@ -216,7 +216,7 @@ index de784e28..ca3bf8b2 100644
  }
  
  /*
-@@ -2395,7 +2488,42 @@ void nv_drm_remove(NvU32 gpuId)
+@@ -2399,7 +2492,42 @@ void nv_drm_remove(NvU32 gpuId)
      struct nv_drm_device *nv_dev = nv_drm_find_and_remove_device(gpuId);
  
      if (nv_dev) {
@@ -522,7 +522,7 @@ index 61204017..8a72bc4e 100644
      struct drm_property *nv_input_colorspace_property;
      struct drm_property *nv_hdcp_level_property;
 diff --git a/kernel-open/nvidia-modeset/nvidia-modeset-linux.c b/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
-index a2392389..febe65da 100644
+index 69f853fe..01387b36 100644
 --- a/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
 +++ b/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
 @@ -552,6 +552,9 @@ NvBool nvkms_syncpt_op(
@@ -583,7 +583,7 @@ index a2392389..febe65da 100644
  {
      return __rm_ops.enumerate_gpus(gpu_info);
 diff --git a/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h b/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h
-index f6b11a53..1d6937d7 100644
+index 80979415..868b2a69 100644
 --- a/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h
 +++ b/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h
 @@ -319,6 +319,12 @@ void* nvkms_get_per_open_data(int fd);
@@ -599,7 +599,7 @@ index f6b11a53..1d6937d7 100644
  
  /*!
   * Enumerate nvidia gpus.
-@@ -395,4 +401,3 @@ nvkms_register_backlight(NvU32 gpu_id, NvU32 display_id, void *drv_priv,
+@@ -406,4 +412,3 @@ nvkms_register_backlight(NvU32 gpu_id, NvU32 display_id, void *drv_priv,
  void nvkms_unregister_backlight(struct nvkms_backlight_device *nvkms_bd);
  
  #endif /* _NVIDIA_MODESET_OS_INTERFACE_H_ */
@@ -1608,7 +1608,7 @@ index 736e0353..210b0c5d 100644
       * Grab ownership of device, ownership is required to do modeset.
       *
 diff --git a/src/nvidia-modeset/kapi/src/nvkms-kapi.c b/src/nvidia-modeset/kapi/src/nvkms-kapi.c
-index 2d6550ce..99e89104 100644
+index 242b3e61..25606e33 100644
 --- a/src/nvidia-modeset/kapi/src/nvkms-kapi.c
 +++ b/src/nvidia-modeset/kapi/src/nvkms-kapi.c
 @@ -629,6 +629,78 @@ static void FreeDevice(struct NvKmsKapiDevice *device)
@@ -1690,7 +1690,7 @@ index 2d6550ce..99e89104 100644
  NvBool nvKmsKapiAllocateSystemMemory(struct NvKmsKapiDevice *device,
                                       NvU32 hRmHandle,
                                       enum NvKmsSurfaceMemoryLayout layout,
-@@ -4179,6 +4251,7 @@ NvBool nvKmsKapiGetFunctionsTableInternal
+@@ -4196,6 +4268,7 @@ NvBool nvKmsKapiGetFunctionsTableInternal
  
      funcsTable->allocateDevice = AllocateDevice;
      funcsTable->freeDevice     = FreeDevice;
@@ -1699,7 +1699,7 @@ index 2d6550ce..99e89104 100644
      funcsTable->grabOwnership    = GrabOwnership;
      funcsTable->releaseOwnership = ReleaseOwnership;
 diff --git a/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h b/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h
-index f6b11a53..1d6937d7 100644
+index 80979415..868b2a69 100644
 --- a/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h
 +++ b/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h
 @@ -319,6 +319,12 @@ void* nvkms_get_per_open_data(int fd);
@@ -1715,7 +1715,7 @@ index f6b11a53..1d6937d7 100644
  
  /*!
   * Enumerate nvidia gpus.
-@@ -395,4 +401,3 @@ nvkms_register_backlight(NvU32 gpu_id, NvU32 display_id, void *drv_priv,
+@@ -406,4 +412,3 @@ nvkms_register_backlight(NvU32 gpu_id, NvU32 display_id, void *drv_priv,
  void nvkms_unregister_backlight(struct nvkms_backlight_device *nvkms_bd);
  
  #endif /* _NVIDIA_MODESET_OS_INTERFACE_H_ */
@@ -2118,10 +2118,10 @@ index 5b72247c..69cc3e30 100644
      }
  
 diff --git a/src/nvidia-modeset/src/nvkms-hw-flip.c b/src/nvidia-modeset/src/nvkms-hw-flip.c
-index cd4fffb4..c2e99aea 100644
+index a8dd83c2..058baa94 100644
 --- a/src/nvidia-modeset/src/nvkms-hw-flip.c
 +++ b/src/nvidia-modeset/src/nvkms-hw-flip.c
-@@ -2869,6 +2869,11 @@ static void LowerDispBandwidth(void *dataPtr, NvU32 dataU32)
+@@ -2884,6 +2884,11 @@ static void LowerDispBandwidth(void *dataPtr, NvU32 dataU32)
      NvU32 head;
      NvBool ret;
  
@@ -2133,7 +2133,7 @@ index cd4fffb4..c2e99aea 100644
      guaranteedAndCurrent =
          nvCalloc(1, sizeof(*guaranteedAndCurrent) * NVKMS_MAX_HEADS_PER_DISP);
      if (guaranteedAndCurrent == NULL) {
-@@ -3055,6 +3060,11 @@ TryToDoPostFlipIMP(void *dataPtr, NvU32 dataU32)
+@@ -3070,6 +3075,11 @@ TryToDoPostFlipIMP(void *dataPtr, NvU32 dataU32)
  
      pDevEvo->postFlipIMPTimer = NULL;
  
@@ -2823,10 +2823,10 @@ index 0755fa37..06b1aad1 100644
  }
  
 diff --git a/src/nvidia/src/kernel/gpu/gr/kernel_graphics.c b/src/nvidia/src/kernel/gpu/gr/kernel_graphics.c
-index a2a2c9c4..14b2bb12 100644
+index 967e8ede..ca6295c4 100644
 --- a/src/nvidia/src/kernel/gpu/gr/kernel_graphics.c
 +++ b/src/nvidia/src/kernel/gpu/gr/kernel_graphics.c
-@@ -2694,7 +2694,7 @@ void kgraphicsFreeGlobalCtxBuffers_IMPL
+@@ -2691,7 +2691,7 @@ void kgraphicsFreeGlobalCtxBuffers_IMPL
      {
          NV_STATUS status;
          status = kmemsysCacheOp_HAL(pGpu, pKernelMemorySystem, NULL, FB_CACHE_VIDEO_MEMORY, FB_CACHE_EVICT);
