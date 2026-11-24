@@ -1,6 +1,6 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=tributary-git
-pkgver=0.7.2.r0.g1a61fd9
+pkgver=0.7.4.r0.ged92147
 pkgrel=1
 pkgdesc="A high-performance, Rhythmbox-style media manager (Git version)"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/jm2/tributary"
 license=('GPL-3.0-or-later')
 options=(!lto)
 depends=(
-  'gtk4'
-  'libadwaita'
+  'gtk4>=4.16'
+  'libadwaita>=1.6'
   'gstreamer'
   'gst-plugins-good'
   'gst-plugins-bad'
@@ -60,6 +60,9 @@ package() {
       "data/icons/hicolor/${size}x${size}/apps/io.github.jm2.tributary.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/io.github.jm2.tributary.png"
   done
+  install -Dm644 \
+    "data/icons/hicolor/scalable/actions/io.github.jm2.tributary-equalizer-symbolic.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/actions/io.github.jm2.tributary-equalizer-symbolic.svg"
 
   # License
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
