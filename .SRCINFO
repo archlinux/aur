@@ -1,0 +1,27 @@
+pkgbase = imza-bin
+	pkgdesc = Model-agnostic terminal coding agent
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://github.com/umutsevdi/imza
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = curl
+	depends = glib2
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libsecret
+	provides = imza
+	conflicts = imza
+	noextract = imza-bin-0.7.6-x86_64.deb
+	noextract = imza-bin-0.7.6-aarch64.deb
+	options = !debug
+	source = imza-bin-0.7.6-LICENSE::https://raw.githubusercontent.com/umutsevdi/imza/v0.7.6/LICENSE
+	sha256sums = 35805e210349253055aa9d46b5d4534c5b00b0388a7061c75fc649c79156bcbc
+	source_x86_64 = imza-bin-0.7.6-x86_64.deb::https://github.com/umutsevdi/imza/releases/download/v0.7.6/imza-0.7.6-linux-x64.deb
+	sha256sums_x86_64 = c639f59799417a22d9adddf6d2c907fb34ae931c8342e22aa3246cf5667b1a9f
+	source_aarch64 = imza-bin-0.7.6-aarch64.deb::https://github.com/umutsevdi/imza/releases/download/v0.7.6/imza-0.7.6-linux-arm64.deb
+	sha256sums_aarch64 = b69ea954c6f013303f821c5cdda2198eb6206636e2e26796ac5c7293f85e4b76
+
+pkgname = imza-bin
