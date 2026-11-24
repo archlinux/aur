@@ -2,11 +2,14 @@
 _appname=qoder
 pkgname="${_appname}-ide-bin"
 _pkgname='Qoder IDE'
-pkgver=1.39.1
+pkgver=1.41.1
 _electronversion=42
 pkgrel=1
 pkgdesc="AI native IDE for real-world software development."
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://qoder.com/"
 _ghurl="https://github.com/QoderAI/changelog-zh_CN"
 license=('LicenseRef-custom')
@@ -27,15 +30,17 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::https://download.qoder.com/release/latest/${pkgname%-bin}_${CARCH}.rpm"
     "LICENSE.html"
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('SKIP'
-            'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
-            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::https://download.qoder.com/release/latest/${pkgname%-bin}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://download.qoder.com/release/latest/${pkgname%-bin}_amd64.deb")
+sha256sums=('d93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
+            'd0f201d4e9b0690ccfbe9034779bf95a7a92996cef63a957bf15ea11c7d83236'
+            '6295de105284c8d173a862217d76eee1610dad92dd5543f3f9e6a08a6a77929a')
+sha256sums_aarch64=('SKIP')
+sha256sums_x86_64=('SKIP')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
@@ -62,16 +67,27 @@ _install_icons() {
 		install -Dm644 "${_icon}" "${pkgdir}/usr/share/${_dest}/${_name}.${_ext}"
 	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
+_delete_other_arch_files() {
+	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
+	find "$(_get_app_dir)" -mindepth 1 -type d \
+		\( -name '*darwin*' -o -name '*android*' -o -name "*bsd*" -o -name "*musl*" -o -name "*loong*" -o -name "*riscv*" -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
+		-prune -exec rm -rf {} +
+	find "$(_get_app_dir)" -mindepth 1 -type f \
+		\( -name '*darwin*.node' -o -name '*android*.node' -o -name 'win32*.node' -o -name "*ia32*.node" -o -name "*${_archrem}*.node" \) \
+		-prune -exec rm -rf {} +
+	rm -rf "$(_get_app_dir)/resources/default_app.asar"
+}
 prepare() {
-    _check_electron_version
-    grep '"version":' "$(_get_app_dir)/resources/app/featureFlags.json" | awk -F'"version": "' '{print $2}' | awk -F',' '{print $1}' | tr -d '"' > "${srcdir}/.pkgver"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/${pkgname%-bin}.js/g
-    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/control."*
+	sed -nE 's/^Version:[[:space:]]*([0-9]+:)?([0-9]+(\.[0-9]+)*).*/\2/p' "${srcdir}/control" | head -n1 > "${srcdir}/.pkgver"
+    bsdtar -xf "${srcdir}/data."*
+    _check_electron_version
     sed -i "s/\/usr\/share\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}"*.desktop
-    find "$(_get_app_dir)/resources/app" -type d \( -name "*win32*" -o -name "*darwin*" -o -name "*arm*" \) -exec rm -rf {} +
+    _delete_other_arch_files
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
@@ -82,6 +98,6 @@ package() {
     install -Dm644 "${srcdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml" -t "${pkgdir}/usr/share/appdata"
     install -Dm644 "${srcdir}/usr/share/mime/packages/${pkgname%-bin}-workspace.xml" -t "${pkgdir}/usr/share/mime/packages"
     [[ -x /usr/bin/bash ]] && install -Dm644 "${srcdir}/usr/share/bash-completion/completions/${_appname}" "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-bin}"
-    [[ -x /usr/bin/zsh ]] && install -Dm644 "${srcdir}/usr/share/zsh/site-functions/_${_appname}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname%-bin}"
+    [[ -x /usr/bin/zsh ]] && install -Dm644 "${srcdir}/usr/share/zsh/vendor-completions/_${_appname}" "${pkgdir}/usr/share/zsh/vendor-completions/_${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
