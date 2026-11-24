@@ -2,7 +2,7 @@
 
 pkgname=triplea
 pkgver=2.7.14900
-pkgrel=1
+pkgrel=2
 pkgdesc='An online multiplayer turn based strategy game and board game engine.'
 arch=('any')
 appname="triplea-game-headed"

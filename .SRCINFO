@@ -8,7 +8,7 @@ pkgbase = triplea
 	license = GPL
 	depends = gtk-update-icon-cache
 	depends = java-runtime
-	source = https://github.com/triplea-game/triplea/releases/download/2.6.586/triplea-game-headed.zip
+	source = https://github.com/triplea-game/triplea/releases/download/2.7.14900/triplea-game-headed.zip
 	sha256sums = 09f6683ac7468dbbecbb7e8d19d1abdd0fcc63f29b07145ba56268c82c17a760
 
 pkgname = triplea
