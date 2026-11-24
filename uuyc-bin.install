@@ -1,0 +1,57 @@
+# Replaces the vendor's Debian maintainer scripts. Directories come from
+# /usr/lib/tmpfiles.d/uuyc.conf. The socket is enabled here because the GUI and
+# uuyc-cli reach the service only through /run/uuyc-control.sock, so the client
+# does not work until it is active. Removal keeps /var/lib/Netease/uuyc and the
+# per-user data, so a reinstall keeps the device binding.
+
+_uuyc_reload() {
+  [[ -d /run/systemd/system ]] && systemctl daemon-reload
+  return 0
+}
+
+_uuyc_stop() {
+  [[ -d /run/systemd/system ]] || return 0
+  systemctl stop uuyc.socket uuyc.service 2>/dev/null || true
+}
+
+_uuyc_stop_clients() {
+  [[ -x /opt/uuyc/bin/Upgrade ]] || return 0
+  # The payload has no RPATH for the bundled libraries, so they need this path.
+  LD_LIBRARY_PATH=/opt/uuyc/lib /opt/uuyc/bin/Upgrade stop-clients 2>/dev/null || true
+}
+
+_uuyc_start() {
+  [[ -d /run/systemd/system ]] || return 0
+  systemctl enable --now uuyc.socket
+}
+
+post_install() {
+  _uuyc_reload
+  _uuyc_start
+  echo 'uuyc: start the client from a normal desktop user (网易UU远程 in the menu).'
+}
+
+pre_upgrade() {
+  # Replace the running supervisor and clients before their files change.
+  _uuyc_stop
+  _uuyc_stop_clients
+}
+
+post_upgrade() {
+  _uuyc_reload
+  _uuyc_start
+}
+
+pre_remove() {
+  _uuyc_stop
+  [[ -d /run/systemd/system ]] && systemctl disable uuyc.socket 2>/dev/null
+  _uuyc_stop_clients
+  _uuyc_reload
+  return 0
+}
+
+post_remove() {
+  # tmpfiles created this tree, so pacman does not own it. rmdir keeps logs.
+  rmdir /opt/uuyc/log/*/log /opt/uuyc/log/* /opt/uuyc/log /opt/uuyc 2>/dev/null
+  return 0
+}

@@ -1,0 +1,27 @@
+# Mirrors the state and log directories the vendor's Debian postinst creates.
+# Shared log trees are sticky so several desktop users can write without
+# deleting each other's files.
+d /var/lib/Netease 0755 root root -
+d /var/lib/Netease/uuyc 0755 root root -
+d /var/lib/Netease/uuyc/cache 0700 root root -
+d /var/lib/Netease/uuyc/ftp_metadata 0700 root root -
+C /var/lib/Netease/uuyc/install_config.ini 0644 root root - /usr/lib/uuyc/install_config.ini
+
+d /opt/uuyc/log 0755 root root -
+d /opt/uuyc/log/client 1777 root root -
+d /opt/uuyc/log/client/log 1777 root root -
+d /opt/uuyc/log/server 0755 root root -
+d /opt/uuyc/log/server/log 0755 root root -
+d /opt/uuyc/log/healthd 0755 root root -
+d /opt/uuyc/log/healthd/log 0755 root root -
+d /opt/uuyc/log/upgrade 1777 root root -
+d /opt/uuyc/log/upgrade/log 1777 root root -
+d /opt/uuyc/log/service 0755 root root -
+d /opt/uuyc/log/service/log 0755 root root -
+d /opt/uuyc/log/launcher 1777 root root -
+d /opt/uuyc/log/launcher/log 1777 root root -
+d /opt/uuyc/log/uuyc-cli 1777 root root -
+d /opt/uuyc/log/uuyc-cli/log 1777 root root -
+d /opt/uuyc/log/webview_host 1777 root root -
+d /opt/uuyc/log/wow_helper_plugin 1777 root root -
+d /opt/uuyc/log/wow_helper_plugin/log 1777 root root -
