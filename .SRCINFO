@@ -1,0 +1,13 @@
+pkgbase = journalot
+	pkgdesc = Minimal git-backed journaling CLI for developers
+	pkgver = 5.6.2
+	pkgrel = 1
+	url = https://github.com/jtaylortech/journalot
+	arch = any
+	license = MIT
+	depends = bash
+	depends = git
+	source = journalot-5.6.2.tar.gz::https://github.com/jtaylortech/journalot/archive/v5.6.2.tar.gz
+	sha256sums = ccd9bc43020bfe7f20becf94bd2edc74a4f2b77074566fab3c8b84def99c3c92
+
+pkgname = journalot
