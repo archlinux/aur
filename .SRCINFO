@@ -1,0 +1,21 @@
+pkgbase = python-k3stopwatch
+	pkgdesc = Hierarchical timing measurement with aggregated and tracing reports
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/pykit3/k3stopwatch
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3stopwatch
+	conflicts = python-k3stopwatch
+	source = k3stopwatch::git+https://github.com/pykit3/k3stopwatch.git#tag=v0.2.2
+	sha256sums = 6b5644740bcfe7c6718bb51f920f6b8197b5a78dea0b77a2776ef9c788b28eda
+
+pkgname = python-k3stopwatch
