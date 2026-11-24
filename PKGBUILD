@@ -2,7 +2,7 @@
 
 pkgname=nsc-bin
 _pkgname=nsc
-pkgver=2.15.0
+pkgver=2.15.1
 pkgrel=1
 pkgdesc="Tool for creating NATS operator, account and user access configurations (prebuilt binary)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -16,9 +16,9 @@ source_x86_64=("${_pkgname}-${pkgver}-amd64.zip::${_release}/nsc-linux-amd64.zip
 source_aarch64=("${_pkgname}-${pkgver}-arm64.zip::${_release}/nsc-linux-arm64.zip")
 source_armv7h=("${_pkgname}-${pkgver}-armv7.zip::${_release}/nsc-linux-armv7.zip")
 # From upstream SHA256SUMS-nsc.txt
-sha256sums_x86_64=('7d55eda757dc9f233675a3038fcf8779bcda99753b1603f7009fc8537e126b7e')
-sha256sums_aarch64=('4556613503e2d3e91c970e2c78f17b3f369a3b987c00aa4ffe95d08ea5059a0c')
-sha256sums_armv7h=('1ae3dfc8f3852127e19e51c892d19db550fbbf91088c88e891a1a69eb492f7f0')
+sha256sums_x86_64=('d0a69120fd81ed3b5ccff8285f866b16a807eaedd50f4d75a2c9300539aecab1')
+sha256sums_aarch64=('eeace5acb08faaf91d2079ad2977ec8cce922c7567edb8a593dee32c07a3f0ac')
+sha256sums_armv7h=('8a1a82b154d709dc2c97986022fe883af5b26c1ff967259cad3d729a29539dce')
 
 build() {
   # Completions; nsc writes a config dir on first run, so keep it out of $HOME.
