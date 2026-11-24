@@ -1,0 +1,20 @@
+pkgbase = token-tracker
+	pkgdesc = Local token usage tracker for Claude Code and Codex with a status line and cost analysis
+	pkgver = 0.5.9
+	pkgrel = 1
+	url = https://github.com/stormzhang/token-tracker
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-prompt_toolkit
+	depends = python-questionary
+	depends = python-rich
+	depends = python-textual
+	source = https://files.pythonhosted.org/packages/source/t/token_tracker/token_tracker-0.5.9.tar.gz
+	sha256sums = 05c07870b6dd89a9c288170b71a2d9e11d5d182ee690ef317373cbfcf64f00b8
+
+pkgname = token-tracker
