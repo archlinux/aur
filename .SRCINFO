@@ -1,0 +1,15 @@
+pkgbase = tweakcc
+	pkgdesc = Customize Claude Code system prompts, toolsets, themes and input behaviour
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = https://github.com/Piebald-AI/tweakcc
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = tweakcc-4.4.0.tgz
+	source = tweakcc-4.4.0.tgz::https://registry.npmjs.org/tweakcc/-/tweakcc-4.4.0.tgz
+	sha256sums = 125b94a0c97743f3374071c78a3fc22829c5ee9497a7740a5f652ba7629d8d9d
+
+pkgname = tweakcc
