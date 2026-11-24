@@ -1,0 +1,19 @@
+pkgbase = birda-bin
+	pkgdesc = Bird species detection from audio with BirdNET and Perch models
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/tphakala/birda
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = birda
+	conflicts = birda
+	options = !debug
+	options = !strip
+	source_x86_64 = birda-bin-1.8.1-x86_64.tar.gz::https://github.com/tphakala/birda/releases/download/v1.8.1/birda-linux-x64-v1.8.1.tar.gz
+	sha256sums_x86_64 = ac154cd56a427c1ded8b2fcc4b25d556648f27d3e1e7607b49d64b802cd5b0dd
+
+pkgname = birda-bin
