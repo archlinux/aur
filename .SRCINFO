@@ -1,6 +1,6 @@
 pkgbase = yamusic-rs-bin
 	pkgdesc = Unofficial Yandex Music client written in Rust and Slint (no Electron)
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/SpolzerMod/yamusic-rs
 	arch = x86_64
@@ -28,10 +28,10 @@ pkgbase = yamusic-rs-bin
 	optdepends = noto-fonts-cjk: CJK song and artist names
 	provides = yamusic-rs
 	conflicts = yamusic-rs
-	noextract = yamusic-rs_1.1.5-1_amd64.deb
+	noextract = yamusic-rs_1.1.6-1_amd64.deb
 	options = !strip
 	options = !debug
-	source = yamusic-rs_1.1.5-1_amd64.deb::https://github.com/SpolzerMod/yamusic-rs/releases/download/v1.1.5/yamusic-rs_1.1.5-1_amd64.deb
-	sha256sums = d4c220a260577aec976ad3056e7f530340ca05b8af7ae39ccddd7810843a536d
+	source = yamusic-rs_1.1.6-1_amd64.deb::https://github.com/SpolzerMod/yamusic-rs/releases/download/v1.1.6/yamusic-rs_1.1.6-1_amd64.deb
+	sha256sums = e11310292b0cf40d54b1d6da5279bd3f12435ea886e1d5d3bad229fd89b9b9c4
 
 pkgname = yamusic-rs-bin
