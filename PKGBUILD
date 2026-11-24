@@ -2,7 +2,7 @@
 
 pkgname=python-k3daemonize
 _name=${pkgname#python-}
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Create daemon processes with CLI for start/stop/restart"
 provides=(${pkgname})
@@ -28,7 +28,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('fdc11a38b372fb4b6905c3a86bb775d3cc5eb046489aab566acf7a94c11beb60')
+sha256sums=('8dcf9e36d6a7f3b365793fd746ebd02464920bdcec91e7d23505c52862f508fe')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx

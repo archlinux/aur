@@ -1,6 +1,6 @@
 pkgbase = python-k3daemonize
 	pkgdesc = Create daemon processes with CLI for start/stop/restart
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/pykit3/k3daemonize
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-k3daemonize
 	depends = python
 	provides = python-k3daemonize
 	conflicts = python-k3daemonize
-	source = k3daemonize::git+https://github.com/pykit3/k3daemonize.git#tag=v0.1.6
-	sha256sums = fdc11a38b372fb4b6905c3a86bb775d3cc5eb046489aab566acf7a94c11beb60
+	source = k3daemonize::git+https://github.com/pykit3/k3daemonize.git#tag=v0.1.7
+	sha256sums = 8dcf9e36d6a7f3b365793fd746ebd02464920bdcec91e7d23505c52862f508fe
 
 pkgname = python-k3daemonize
