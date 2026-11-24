@@ -1,7 +1,7 @@
 # Maintainer: belst <aur at bel dot st>
 _pkgbasename=minizip
 pkgname=lib32-minizip
-pkgver=1.3.1
+pkgver=1.4
 pkgrel=1
 pkgdesc="ZIP file extraction library (32-bit)"
 url="http://www.winimage.com/zLibDll/minizip.html"
@@ -11,7 +11,7 @@ makedepends=('gcc-multilib' 'lib32-gcc-libs' 'libtool-multilib')
 options=(!libtool)
 depends=('lib32-glibc' "$_pkgbasename" 'lib32-zlib')
 source=(https://github.com/madler/zlib/releases/download/v$pkgver/zlib-$pkgver.tar.xz)
-sha512sums=('1e8e70b362d64a233591906a1f50b59001db04ca14aaffad522198b04680be501736e7d536b4191e2f99767e7001ca486cd802362cca2be05d5d409b83ea732d')
+sha512sums=('c6701ef216f2ea451056466794c520df62af0a7ddf57c907c3263678dc625f3d6466e0187106dec0d7721ad6fc6cf105e0f93a4cac82fbcc2ba919eebd29c0b0')
 validpgpkeys=('5ED46A6721D365587791E2AA783FCD8E58BCAFBA') # Mark Adler <madler@alumni.caltech.edu>
 
 build() {
