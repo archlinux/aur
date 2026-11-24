@@ -1,6 +1,6 @@
 # Maintainer: Jochem Kuipers <jochem@kuipers.cc>
 pkgname=oled-care
-pkgver=2026.11.24.1
+pkgver=2026.11.24.2
 pkgrel=1
 pkgdesc='HDMI-safe OLED blanker for KDE/Wayland — black screens without killing your AVR'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'pyside6' 'python-pywayland')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('be9dce7e7e99b378f988ee185427d4956780352d9d14068bcdf7fe272d7bd21c')
+sha256sums=('7491efa6050dc55ac60923a1f5ba7a60cd0ca3a7c93c45b76bd030762b89b921')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

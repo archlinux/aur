@@ -1,6 +1,6 @@
 pkgbase = oled-care
 	pkgdesc = HDMI-safe OLED blanker for KDE/Wayland — black screens without killing your AVR
-	pkgver = 2026.11.24.1
+	pkgver = 2026.11.24.2
 	pkgrel = 1
 	url = https://github.com/JochemKuipers/oled-care
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = oled-care
 	depends = python
 	depends = pyside6
 	depends = python-pywayland
-	source = oled-care-2026.11.24.1.tar.gz::https://github.com/JochemKuipers/oled-care/archive/refs/tags/v2026.11.24.1.tar.gz
-	sha256sums = be9dce7e7e99b378f988ee185427d4956780352d9d14068bcdf7fe272d7bd21c
+	source = oled-care-2026.11.24.2.tar.gz::https://github.com/JochemKuipers/oled-care/archive/refs/tags/v2026.11.24.2.tar.gz
+	sha256sums = 7491efa6050dc55ac60923a1f5ba7a60cd0ca3a7c93c45b76bd030762b89b921
 
 pkgname = oled-care
