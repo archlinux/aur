@@ -1,6 +1,6 @@
 pkgbase = anser-client-bin
 	pkgdesc = Native desktop client for Anser (雁字): the inbox, the sender and the delivery log of a self-hosted notification service
-	pkgver = 0.5.6
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/ca-x/anser
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = anser-client-bin
 	depends = webkitgtk-6.0
 	options = !strip
 	options = !debug
-	source = LICENSE-0.5.6::https://github.com/ca-x/anser/raw/refs/tags/v0.5.6/LICENSE
+	source = LICENSE-0.7.1::https://github.com/ca-x/anser/raw/refs/tags/v0.7.1/LICENSE
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = anser-client-0.5.6-linux-x86_64.tar.gz::https://github.com/ca-x/anser/releases/download/v0.5.6/anser-client-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 2444a8bc732336ad64071c11de18b36f61c5cd87cab72a37912a0e611e3125b1
+	source_x86_64 = anser-client-0.7.1-linux-x86_64.tar.gz::https://github.com/ca-x/anser/releases/download/v0.7.1/anser-client-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a821107acb9a3e55de0a3bef49d50270a6a1deba0d8efaf4e4a64d8fb1743b53
 
 pkgname = anser-client-bin
