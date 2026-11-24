@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=puma
-_pkgver=3.48.0
+_pkgver=3.54.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,9 +28,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-lto.patch")
-md5sums=('6d7a6b96c444d8e8321bd9d616fb0950'
+md5sums=('eff5a2c0db855e58f5abcf4c48c77810'
          '885d25cbb9335808ed144d24c323737c')
-b2sums=('b4e6014b9106622af10de19a3fc012a27e3afe6f121e0f5a9bde102aa32e89e330985eadca71bdf23b774ac6ce974321f0bc8c59948b7766f3846ea6c96edee5'
+b2sums=('a020f1a5be3b4628859190bf9e7ea18a41927586b7ca3c53c82dc69f563083c2b8edd3680933cd94b7cbb59d03894ba7121f6c803fde522a8ab60fa6133a6b1f'
         'f896fbaf21a3812527640043cb322e51ca2d4365306619deba7dcbd3f47ed0d68656c898dd84a69ad32dd8823c8e00ec93eef877e49f9b0d0816de9607a38b04')
 
 prepare() {
