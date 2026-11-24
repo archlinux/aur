@@ -2,7 +2,7 @@
 
 pkgname=termeric
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GPU-accelerated terminal emulator themed around roots and rhizomes"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Tjemmmic/termeric"
@@ -70,10 +70,12 @@ build() {
 }
 
 # The suite CI runs. It needs no display, GPU, network, session bus, or
-# installed fonts, so it can run in a clean chroot.
+# installed fonts, so it can run in a clean chroot. setsid runs it in a session
+# of its own, as in CI: some tests start interactive shells, which would take
+# over the terminal makepkg runs in and stop the build.
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  CARGO_TARGET_DIR="${srcdir}/target" cargo test \
+  CARGO_TARGET_DIR="${srcdir}/target" setsid --wait cargo test \
     --workspace --locked
 }
 

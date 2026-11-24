@@ -1,7 +1,7 @@
 pkgbase = termeric
 	pkgdesc = GPU-accelerated terminal emulator themed around roots and rhizomes
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tjemmmic/termeric
 	arch = x86_64
 	arch = aarch64
