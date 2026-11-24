@@ -1,7 +1,7 @@
 pkgbase = ydiskarc
 	pkgdesc = Command-line tool to backup public resources from Yandex.Disk
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ruarxive/ydiskarc
 	arch = any
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = ydiskarc
 	depends = python-typer
 	depends = python-yaml
 	depends = python-requests
+	depends = python-rich
 	depends = python-urllib3
 	depends = python-tqdm
 	source = https://files.pythonhosted.org/packages/source/y/ydiskarc/ydiskarc-1.1.0.tar.gz
