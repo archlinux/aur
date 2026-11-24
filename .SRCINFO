@@ -1,6 +1,6 @@
 pkgbase = python-rich-gradient
 	pkgdesc = This is a python library built on textualize/rich that allows the printing of gradient colored text to the console
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/maxludden/rich-gradient
 	arch = any
@@ -16,9 +16,9 @@ pkgbase = python-rich-gradient
 	depends = python-pygments
 	depends = python-loguru
 	depends = python-rich-color-ext
-	source = https://files.pythonhosted.org/packages/source/r/rich_gradient/rich_gradient-0.4.4.tar.gz
+	source = https://files.pythonhosted.org/packages/source/r/rich_gradient/rich_gradient-0.4.5.tar.gz
 	source = LICENSE
-	sha256sums = 03c867a96a9face05c0c7ce8db03e91283abac71e82e8a6192c28499ca2ec873
+	sha256sums = ac618748456f496c862fcb78337636f400115491d8a96a2d139567249b106bd1
 	sha256sums = ce03c1e0e64ef777f23081460c6474be87d9298b649dca8a01059c51ad9e1b30
 
 pkgname = python-rich-gradient
