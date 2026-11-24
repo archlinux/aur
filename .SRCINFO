@@ -1,0 +1,27 @@
+pkgbase = kanban-tui
+	pkgdesc = Kanban task manager with a TUI that agents can use
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = https://github.com/Zaloog/kanban-tui
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-click
+	depends = python-dateutil
+	depends = python-pydantic
+	depends = python-pydantic-settings
+	depends = python-textual
+	depends = python-textual-autocomplete
+	depends = python-textual-jumper
+	depends = python-textual-plotext
+	depends = python-tomli-w
+	depends = python-tzdata
+	depends = python-xdg-base-dirs
+	source = https://files.pythonhosted.org/packages/source/k/kanban_tui/kanban_tui-0.22.0.tar.gz
+	sha256sums = 08a471539193df1bd92f17074e3c39781d22db75c3854770fe3504ca58e80f05
+
+pkgname = kanban-tui
