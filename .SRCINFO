@@ -1,6 +1,6 @@
 pkgbase = yksresults-git
-	pkgdesc = An application to track the rehearsal results of TYT and AYT exams
-	pkgver = 0.1.0.r19.gfead1b0
+	pkgdesc = A TUI application to track the rehearsal results of TYT and AYT exams
+	pkgver = 0.1.0.r20.gec6d576
 	pkgrel = 1
 	url = https://github.com/chlorine3539/yksresults
 	arch = x86_64
