@@ -1,6 +1,6 @@
 pkgbase = oysterav
 	pkgdesc = Linux security orchestrator: oyst-cli backend + oysterAV GTK4 GUI
-	pkgver = 0.4.8
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/oysterAV
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = oysterav
 	optdepends = chkrootkit: rootkit checks
 	optdepends = lynis: hardening audits
 	optdepends = uq: security tile and Settings page in the uQ desktop
-	source = oysterav-0.4.8.tar.gz::https://github.com/asafelobotomy/oysterAV/archive/refs/tags/v0.4.8.tar.gz
-	sha256sums = 849f84f3a79374b5880e56213fbcef01313bece412cbc49ebbf2f4d033408dc1
+	source = oysterav-0.5.0.tar.gz::https://github.com/asafelobotomy/oysterAV/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = f92a20a5d62bcbd5789678e1521e78904f534cfc3e337f0198acfefb3e11d903
 
 pkgname = oysterav
