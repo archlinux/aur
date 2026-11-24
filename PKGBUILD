@@ -4,7 +4,7 @@
 
 pkgname=amber-package-manager
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='bwrap wrapper for install and running debs inside a Amber-PM container'
 arch=('x86_64' 'aarch64')
 url='https://gitee.com/amber-ce/amber-pm/'
@@ -39,7 +39,7 @@ install=amber-package-manager.install
 _pkgdlver=v2.0.0
 
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://cdn09022024.gitlink.org.cn/api/v1/repos/shenmo7192/amber-pm/archive/${_pkgdlver}.tar.gz")
-sha256sums=('dbecd5b3fb9515830a7b36a390d71b2c5988a86f4f936dae44ef29c65478fb05')
+sha256sums=('afb8012306ea8e4a58c10f7b98a11acebd3b04980ad29e87dfdfd268dc6685cb')
 
 build() {
     cd "$srcdir/amber-pm" || return 1
