@@ -1,22 +1,18 @@
 pkgbase = flexbv6-bin
 	pkgdesc = Paid version of the FlexBV6 boardview software
-	pkgver = 6.0407
-	pkgrel = 2
+	pkgver = 6.0423
+	pkgrel = 1
 	url = https://pldaniels.com/flexbv/
 	arch = x86_64
 	license = custom
 	makedepends = patchelf
 	depends = glibc
 	depends = zlib
-	depends = fontconfig
-	depends = freetype2
-	depends = libc++
-	depends = libgcc
 	conflicts = flexbv5-bin
 	conflicts = flexbv6-free-bin
 	conflicts = flexbv5-free-bin
-	source = flexbv-std-6.0407-linux-x86_64.tar.gz::https://pldaniels.com/flexbv6/releases/flexbv-std-6.0407-linux-x86_64.tar.gz
-	sha512sums = 0026e95d2dd4f0ce66bf54d793e16301d04e8d860a58926008461e7a60f481727f8acdee9c2cde06535c098553362685d153fb955f695857367ce3baad76acde
-	b2sums = f5796da27f9370d395ebf61db62da188dade809ad47401c23076ac22656f5a2586ab0cab3e4fb4af022a3710cbbb69665ec62237a87d81ea4e62566e30d03021
+	source = flexbv-std-6.0423-linux-x86_64.tar.gz::https://pldaniels.com/flexbv6/releases/flexbv-std-6.0423-linux-x86_64.tar.gz
+	sha512sums = 9dd46ee3bd246da754b09e6862ac0f25deb85f740bb8205cd56abd7ef2cc6536f3af99bc7fe18b7817828b0518eb345897b54a1dcdf054d850ece49edd47cb53
+	b2sums = 4680c5aefce5066818da5de798912f0cc54b8e72cb51f123bc59bb8a24e35b113798b09d94a47f21266eef629818b131ee194ed0899ae19d342b7d2cd04d1c31
 
 pkgname = flexbv6-bin
