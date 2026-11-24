@@ -2,7 +2,7 @@
 
 pkgname=yksresults-git
 # Placeholder only: pkgver() computes the real version on every build.
-pkgver=0.1.0.r5.g5769e09
+pkgver=0.1.0.r19.gfead1b0
 pkgrel=1
 pkgdesc='An application to track the rehearsal results of TYT and AYT exams'
 arch=('x86_64' 'aarch64')
