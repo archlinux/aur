@@ -1,7 +1,7 @@
 pkgbase = python-sphinx-markdown-builder
 	pkgdesc = A Sphinx extension to add markdown generation support.
 	pkgver = 0.6.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/liran-funaro/sphinx-markdown-builder
 	arch = any
 	license = MIT
@@ -12,6 +12,8 @@ pkgbase = python-sphinx-markdown-builder
 	depends = python
 	depends = python-markdown
 	depends = python-sphinx
+	depends = python-tabulate
+	depends = python-docutils
 	source = python-sphinx-markdown-builder-0.6.11.tar.gz::https://github.com/liran-funaro/sphinx-markdown-builder/archive/refs/tags/0.6.11.tar.gz
 	sha256sums = 3a5175543fd68371f96aca9806a3b6e62c407a51a23802ef9a0863eec1f42b20
 

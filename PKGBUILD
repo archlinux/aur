@@ -3,7 +3,7 @@
 pkgname=python-sphinx-markdown-builder
 _pkgname="${pkgname##python-}"
 pkgver=0.6.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A Sphinx extension to add markdown generation support."
 arch=('any')
 url="https://github.com/liran-funaro/sphinx-markdown-builder"
@@ -15,6 +15,8 @@ depends=(
   'python'
   'python-markdown'
   'python-sphinx'
+  'python-tabulate'
+  'python-docutils'
 )
 
 makedepends=(
