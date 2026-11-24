@@ -1,7 +1,7 @@
 # Maintainer: Simon Pera <simon@nextmiracle.eu>
 # Contributor: Previous maintainer's Jonne Haß <me@jhass.eu>
 pkgname=workflowy
-pkgver=4.3.2611191205
+pkgver=4.3.2611241705
 pkgrel=1
 pkgdesc="Desktop app for workflowy.com, a note taking tool based on lists"
 arch=('x86_64')
