@@ -1,0 +1,18 @@
+pkgbase = collidertracker-bin
+	pkgdesc = Terminal music tracker using SuperCollider for synthesis
+	pkgver = 4.5.3
+	pkgrel = 1
+	url = https://github.com/schollz/collidertracker
+	arch = x86_64
+	license = MIT
+	depends = supercollider
+	optdepends = sc3-plugins: extra SuperCollider UGens
+	provides = collidertracker
+	conflicts = collidertracker
+	options = !debug
+	source = collidertracker-bin-4.5.3-LICENSE::https://raw.githubusercontent.com/schollz/collidertracker/v4.5.3/LICENSE
+	sha256sums = 528836b889665b7f29a69166930adb1ffdfe62f18d3cb97a95a52f59f579a6a0
+	source_x86_64 = collidertracker-bin-4.5.3-x86_64.zip::https://github.com/schollz/collidertracker/releases/download/v4.5.3/collidertracker_linux_static.zip
+	sha256sums_x86_64 = ec92661c45f6c9db800c6b89150f6f06d7749f51fac8493fee683474aa8f70bd
+
+pkgname = collidertracker-bin
