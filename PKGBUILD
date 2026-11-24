@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=cotengra
 pkgname=python-${_name}
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Hyper optimized contraction trees for large tensor networks and einsums"
 arch=(any)
@@ -35,7 +35,7 @@ optdepends=(
     "python-ray: support for distributed applications"
 )
 source=($_name::git+https://github.com/jcmgray/$_name.git#tag=v$pkgver)
-b2sums=('2f9cda157e111ba599a38b13929ac87eaf0ec0a363b726cf5a3b6aedb864afc5b5931bc1188f6a076bb7365be483ca1e2d6e8e28937aa7633629d4094657993d')
+b2sums=('a58a37b7d94df55e623727754d2d91a6bef2e30efb9cad3d8559f69e5818f5cab7b2ea70133c9d797a056b7fc96ecea822c4c329da290fc48c00858973e824a0')
 
 build() {
     cd $_name
