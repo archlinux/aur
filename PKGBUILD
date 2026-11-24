@@ -1,6 +1,6 @@
 # Maintainer: sanjeebmahala <sanjeebmahala at mail dot ru>
 pkgname=rein-git
-pkgver=r1342.26331bb
+pkgver=r1653.194022e
 pkgrel=1
 pkgdesc="Minimalist engine for 2d games & demos"
 url="https://github.com/hugeping/rein"
