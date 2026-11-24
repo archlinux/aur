@@ -1,0 +1,19 @@
+pkgbase = k10s-bin
+	pkgdesc = Clickable Kubernetes TUI with search, logs, exec and port-forwarding
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/p10node/k10s
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = k10s
+	conflicts = k10s
+	options = !debug
+	source = k10s-bin-0.1.10-LICENSE::https://raw.githubusercontent.com/p10node/k10s/v0.1.10/LICENSE
+	sha256sums = 768e5363a9f3f32e005e6b7f6d1dc80dcb3816725bd69120aeaa2d536b77f281
+	source_x86_64 = k10s-bin-0.1.10-x86_64.tar.gz::https://github.com/p10node/k10s/releases/download/v0.1.10/k10s_v0.1.10_linux_amd64.tar.gz
+	sha256sums_x86_64 = c1e62eb672db3c8ffcb0142e36ac8ca5ca6c57baaf5104a2a6933361c0acd868
+	source_aarch64 = k10s-bin-0.1.10-aarch64.tar.gz::https://github.com/p10node/k10s/releases/download/v0.1.10/k10s_v0.1.10_linux_arm64.tar.gz
+	sha256sums_aarch64 = fb83a5f310a647421dc3720828ad711b096577d261213862b6cd25cb2971de2b
+
+pkgname = k10s-bin
