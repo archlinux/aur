@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.79
-pkgver=1.0.0beta79
+_tag=v1.0.0-beta.80
+pkgver=1.0.0beta80
 pkgrel=1
 pkgdesc="A desktop shell for niri, built on Genoma: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ depends=(
     # the version this release was made against, within the same minor series.
     # Never an exact pin: AUR helpers install a rebuilt dependency in its own
     # transaction, and an exact pin on the installed shell refuses it.
-    'genoma>=0.1.21'
+    'genoma>=0.1.22'
     'genoma<0.2.0'
     'python'
     # The calendar's recurrences, and the feed addresses it keeps in the
@@ -115,7 +115,7 @@ install=bioma-shell.install
 # but one switched off here must not come back with the next update.
 backup=('etc/xdg/autostart/bioma.desktop')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('acdc46a681b897f703b4855467d9b952d7b02eb5db309bed823583a523a6eccf')
+sha256sums=('a8bc7359cd065e919a5d6a4bc05ed72dbe796abf95cb1bc838edaa28107f84fd')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
@@ -141,8 +141,7 @@ package() {
     install -d "$share"
 
     # What the shell, the lock screen and the greeter read at runtime. The
-    # design documents and their media stay in the repository, and so does
-    # the Quickshell version (quickshell/), kept there as a backup.
+    # design documents and their media stay in the repository.
     cp -r --no-preserve=ownership \
         assets config genoma scripts \
         "$share/"
