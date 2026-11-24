@@ -1,7 +1,7 @@
 # Maintainer: Max Harmathy <harmathy@alumni.tum.de>
 pkgname=openstack_cli
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI for the OpenStack written in Rust"
 arch=('x86_64')
 url="https://github.com/gtema/openstack"
@@ -22,7 +22,6 @@ sha256sums=('fe3efc192cd10605cb9171ec865f064037d0f930949db9bd7cde772edfd44296')
 prepare() {
   cd openstack
   export RUSTUP_TOOLCHAIN=stable
-  git cherry-pick -n 7c6af0a378b1b8ba6b2b55baaf61041a35d76661 # patch for respecting hint option
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
