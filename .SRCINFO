@@ -1,6 +1,6 @@
 pkgbase = tippkraft-bin
 	pkgdesc = Text expander for Linux on Wayland and X11 (desktop client, snippets sync through a tippkraft account)
-	pkgver = 0.1.23
+	pkgver = 0.1.24
 	pkgrel = 1
 	url = https://tippkraft.com
 	install = tippkraft.install
@@ -13,10 +13,10 @@ pkgbase = tippkraft-bin
 	conflicts = tippkraft
 	options = !debug
 	options = !strip
-	source = tippkraft-0.1.23::https://github.com/emmgeede/tippkraft-desktop/releases/download/v0.1.23/tippkraft-x86_64-linux
-	source = LICENSE-0.1.23::https://raw.githubusercontent.com/emmgeede/tippkraft-desktop/v0.1.23/LICENSE
+	source = tippkraft-0.1.24::https://github.com/emmgeede/tippkraft-desktop/releases/download/v0.1.24/tippkraft-x86_64-linux
+	source = LICENSE-0.1.24::https://raw.githubusercontent.com/emmgeede/tippkraft-desktop/v0.1.24/LICENSE
 	source = 60-tippkraft-uinput.rules
-	sha256sums = f260c682f7ff2f13ea26bd934486c39e6297bc9f6793656a7922443f4f92f033
+	sha256sums = aa892556f5bf504e904db93a4fae5c81e820a23228b29f175cdaeae4ea9f24c0
 	sha256sums = 9ba052be04350ff7cd65f01491d5aba8df79edb7bcf53a9f2734133cee3d5386
 	sha256sums = 85abd3fb5c0351281a3e4a6001f138c251d791c92c0c45baf984fefa1bdb58c7
 
