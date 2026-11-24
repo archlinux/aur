@@ -1,5 +1,5 @@
 pkgname=glimpse-desktop-bin
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Desktop shell suite for Wayland compositors: panel, wallpaper, lock screen and night light"
 arch=('x86_64')
@@ -33,7 +33,7 @@ backup=(
 provides=('glimpse-desktop')
 conflicts=('glimpse-desktop')
 source_x86_64=("glimpse-$pkgver-x86_64.tar.zst::$url/releases/download/v$pkgver/glimpse-$pkgver-x86_64.tar.zst")
-b2sums_x86_64=('b09406b89938e102c10dfa7f5a5a2acd7f4dce8a2d6bd2e7aad51287f0329c247f3ce3f5a6f181fc7a5fae852e710d862f6fbaaba39f1d20c373ef5acc8a68b8')
+b2sums_x86_64=('55627ee4d737f8e537d851c959c8a102926c9f82f3484759ad3e97eeb0fd3f356f6fd5dab2e9820c3a2d6b5524f476c304419ae43196f304b947a3321c95c50c')
 
 package() {
     cp -a "$srcdir/usr" "$pkgdir/"
