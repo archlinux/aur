@@ -2,7 +2,7 @@
 
 pkgname=python-k3wsjobd
 _name=${pkgname#python-}
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Gevent-based WebSocket server for async job processing"
 provides=(${pkgname})
@@ -34,7 +34,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('72467e1640c9b1077d4669dd05d96807c9a6f4706b5706025a908a023114a5dd')
+sha256sums=('6b38d43ccc3a4acc50080791db015abb5eadeac53704b493c887fceedfab1653')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
