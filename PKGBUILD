@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Todoist TUI and CLI for the terminal"
 
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ provides=("${_appname}")
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('caf53ea07b3812822ec8ca2122d6fd72eb32bab3ad804b9395182bac20308930')
+sha256sums=('c28ccb4327c3e2a62d512e68ebecae675a4c51e2cb5baa7ea0eda80eb6ddd2b4')
 
 
 prepare() {
