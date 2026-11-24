@@ -1,0 +1,20 @@
+--- a/src/components/ui/imageUpload/index.tsx
++++ b/src/components/ui/imageUpload/index.tsx
+@@ -1,5 +1,6 @@
+ import { mdiDelete, mdiFileImage } from '@mdi/js';
+ import classnames from 'classnames';
++import { webUtils } from 'electron';
+ import { observer } from 'mobx-react';
+ import prettyBytes from 'pretty-bytes';
+ import { Component, type ReactElement } from 'react';
+@@ -46,7 +47,9 @@
+     this.setState({ errorState: false });
+ 
+     for (const file of acceptedFiles) {
+-      const imgPath = isWindows ? file.path.replaceAll('\\', '/') : file.path;
++      // Electron >= 32 removed File.path; react-dropzone then fills it with the bare file name
++      const filePath = webUtils.getPathForFile(file);
++      const imgPath = isWindows ? filePath.replaceAll('\\', '/') : filePath;
+       this.setState({
+         path: imgPath,
+       });
