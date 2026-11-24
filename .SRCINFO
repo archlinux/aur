@@ -1,0 +1,16 @@
+pkgbase = python-striprtf
+	pkgdesc = Convert RTF to plain text
+	pkgver = 0.0.35
+	pkgrel = 1
+	url = https://github.com/joshy/striprtf
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/striprtf/striprtf-0.0.35.tar.gz
+	sha256sums = a21e8c4f73a791c3f23561df96701488c691ab1749a92487cc9e5fee6ea08455
+
+pkgname = python-striprtf
