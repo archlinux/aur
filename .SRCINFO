@@ -1,6 +1,6 @@
 pkgbase = unifyterm-bin
 	pkgdesc = One terminal for Windows, macOS and Linux: the same Unix commands everywhere, a command history you can search as you type, pictures and markdown in the terminal
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/newdee/unifyterm
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = unifyterm-bin
 	optdepends = ffmpeg: play video and audio inside the terminal
 	provides = unifyterm
 	conflicts = unifyterm
-	noextract = unifyterm_0.3.0-1_amd64.deb
+	noextract = unifyterm_0.4.0-1_amd64.deb
 	options = !strip
 	options = !debug
-	source = unifyterm_0.3.0-1_amd64.deb::https://github.com/newdee/unifyterm/releases/download/v0.3.0/unifyterm_0.3.0-1_amd64.deb
-	sha256sums = dc325ed1d36229da617d5fbf68585e9909bfa3fb3f43d6c2d469fe89a6263237
+	source = unifyterm_0.4.0-1_amd64.deb::https://github.com/newdee/unifyterm/releases/download/v0.4.0/unifyterm_0.4.0-1_amd64.deb
+	sha256sums = c397c943974683ef6d6e26b1d5e5c1a69c69cdaeb8ff3f6f8c99c5cc72ac2c76
 
 pkgname = unifyterm-bin
