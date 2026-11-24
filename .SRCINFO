@@ -1,12 +1,13 @@
 pkgbase = ca-certificates-ssl-expert
-	pkgdesc = root certificates for ssl-expert.de (40C3 community CA)
+	pkgdesc = root certificate for ssl-expert.de (40C3 community CA)
 	pkgver = 20261123
 	pkgrel = 1
 	url = https://ssl-expert.de
 	arch = any
 	license = 0BSD
+	makedepends = openssl
 	depends = ca-certificates-utils
-	source = ssl-expert.crt
-	b2sums = SKIP
+	source = root.der::https://ssl-expert.de/root
+	b2sums = 2c0ce535b6bef0ce110d6eff7e85be60d99a36c116844d7cbd64cdaddacdf220a88bc591b56e1fcbecc11a5577defbb00d484c410f5f6a3b61ba392d1dd1f120
 
 pkgname = ca-certificates-ssl-expert
