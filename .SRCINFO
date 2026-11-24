@@ -1,0 +1,15 @@
+pkgbase = mousiki
+	pkgdesc = Fast, customizable TUI music player
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/itzender5820/mousiki
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	source = mousiki-1.0.tar.gz::https://github.com/itzender5820/mousiki/archive/V1.0.tar.gz
+	sha256sums = fa7c40ac5b2eb5bab0d7ae6f0657843bafc56a3405b860bddfdb1fb885670bd5
+
+pkgname = mousiki
