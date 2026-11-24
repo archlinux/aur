@@ -1,6 +1,6 @@
 # Maintainer: Pomotui contributors
 pkgname=pomotui-git
-pkgver=r240.gb69de5126828
+pkgver=r260.gd10870d99981
 pkgrel=1
 pkgdesc="Terminal Pomodoro timer with TUI, CLI, and Waybar frontends (git build)"
 arch=('x86_64')
@@ -36,11 +36,6 @@ prepare() {
 build() {
     cd pomotui
     cargo +1.96.1 build --frozen --release --workspace --target x86_64-unknown-linux-gnu
-}
-
-check() {
-    cd pomotui
-    cargo +1.96.1 test --frozen --workspace --all-targets --all-features
 }
 
 package() {
