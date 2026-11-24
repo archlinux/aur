@@ -1,0 +1,21 @@
+pkgbase = portview-bin
+	pkgdesc = List listening ports and their processes
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/mapika/portview
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = portview
+	conflicts = portview
+	options = !debug
+	source = portview-bin-2.1.0-LICENSE::https://raw.githubusercontent.com/mapika/portview/v2.1.0/LICENSE
+	sha256sums = f660e7620ff45e138c1eb3adb59dfd21a02283248f4dc6ff6b12c0d6c538e57c
+	source_x86_64 = portview-bin-2.1.0-x86_64.tar.gz::https://github.com/mapika/portview/releases/download/v2.1.0/portview-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 3cb79f81ff75a3f11c3d955b87993486ab8a9b0e0ecc331fcc15ff01fd5947ce
+	source_aarch64 = portview-bin-2.1.0-aarch64.tar.gz::https://github.com/mapika/portview/releases/download/v2.1.0/portview-linux-aarch64.tar.gz
+	sha256sums_aarch64 = eb3077a0e30086b26debf7aab2efd84471471d429c90e2cabe36cf053403aa30
+
+pkgname = portview-bin
