@@ -3,7 +3,7 @@
 
 pkgname=python-selenium-bin
 _pkgname=selenium
-pkgver=4.53.0
+pkgver=4.54.0
 pkgrel=1
 pkgdesc="Python language bindings for Selenium WebDriver (build from wheel)"
 arch=(x86_64)
@@ -27,7 +27,7 @@ conflicts=(python-selenium)
 provides=(python-selenium)
 options=(!lto)
 source=("https://files.pythonhosted.org/packages/py3/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-${pkgver}-py3-none-any.whl")
-sha256sums=('f0906a56324f5dfb19b87971a7cfd2162ea473e5afa25ee458aaa5a3816b98ac')
+sha256sums=('8345ac0da0f62171f234baf4e2f7b85a92a5aafa47f9a5be281e3a94137dcd7a')
 
 package() {
   python -m installer --destdir="${pkgdir}" "selenium-${pkgver}-py3-none-any.whl"
