@@ -1,0 +1,26 @@
+pkgbase = mapstick-bin
+	pkgdesc = Unofficial navigation map updater for Hyundai, Kia and Genesis: downloads the firmware onto a USB drive (precompiled binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MikolajQ/mapstick
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gcc-libs
+	depends = glibc
+	depends = fontconfig
+	depends = freetype2
+	depends = libxkbcommon
+	depends = udisks2
+	depends = hicolor-icon-theme
+	optdepends = exfatprogs: format drives as exFAT
+	optdepends = libglvnd: hardware-accelerated rendering
+	optdepends = wayland: run on Wayland
+	optdepends = libx11: run on X11
+	optdepends = libxcursor: cursor themes on X11
+	provides = mapstick
+	conflicts = mapstick
+	options = !strip
+	source_x86_64 = mapstick-bin-0.1.0-x86_64.tar.gz::https://github.com/MikolajQ/mapstick/releases/download/v0.1.0/mapstick-0.1.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = b2cd797196d3c2a4c07e13bf04740db272ffd13fd8a5d4e1a219ae3dcfa603c4
+
+pkgname = mapstick-bin
