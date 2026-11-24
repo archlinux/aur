@@ -2,7 +2,7 @@
 
 pkgname=python-k3kroki
 _name=${pkgname#python-}
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Convert diagrams to images via the kroki.io API — zero local dependencies"
 provides=(${pkgname})
@@ -30,7 +30,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('2bc6a34c03d4179094c52f3c4affa26abbe6e239ef836f321c56f796421dd382')
+sha256sums=('a7861ef29886107fb75c1e49d200526fa775c2835b37bec1029a4589f4831016')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
