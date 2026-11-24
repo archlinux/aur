@@ -1,0 +1,15 @@
+pkgbase = tuiboard
+	pkgdesc = Kanban board in the terminal on plain Markdown files
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/nazzarenogiannelli/tuiboard
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = tuiboard-0.16.0.tgz
+	source = tuiboard-0.16.0.tgz::https://registry.npmjs.org/tuiboard/-/tuiboard-0.16.0.tgz
+	sha256sums = 18fb11180032b75cf146659314a8b652ea586410fd81455a1b597860d16e6262
+
+pkgname = tuiboard
