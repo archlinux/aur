@@ -1,0 +1,17 @@
+pkgbase = observer_ward-bin
+	pkgdesc = Web application and service fingerprinting tool
+	pkgver = 2026.11.3
+	pkgrel = 1
+	url = https://github.com/emo-crab/observer_ward
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = observer_ward
+	conflicts = observer_ward
+	options = !debug
+	source_x86_64 = observer_ward-bin-2026.11.3-x86_64.tar.gz::https://github.com/emo-crab/observer_ward/releases/download/v2026.11.3/observer_ward_v2026.11.3_x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 14324448a6eccd2f2f13ab2c987344dd46a980442d8ac397569ff6606194424d
+	source_aarch64 = observer_ward-bin-2026.11.3-aarch64.tar.gz::https://github.com/emo-crab/observer_ward/releases/download/v2026.11.3/observer_ward_v2026.11.3_aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b9923edbe9f41a6e0b796ff3603b1fccade03662c635c39ac04c9758c889d981
+
+pkgname = observer_ward-bin
