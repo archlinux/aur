@@ -1,0 +1,17 @@
+pkgbase = lossless
+	pkgdesc = Bit-perfect music daemon for ALSA, with a CLI and a terminal UI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/comodino/lossless
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	optdepends = dbus: MPRIS media controls
+	source = lossless-0.1.0.tar.gz::https://codeberg.org/comodino/lossless/archive/v0.1.0.tar.gz
+	sha256sums = a909539f73f4e8c24f0bcb91109319d4f11342ee29534d77842a4095efdca534
+
+pkgname = lossless
