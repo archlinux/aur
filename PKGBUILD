@@ -1,7 +1,7 @@
 # Maintainer: Karlach-xd <zarieltiefling@protonmail.com>
 
 pkgname=ante-bin
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="Ante — A self-contained coding agent."
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_x86_64=("ante-v${pkgver}-linux-x86_64-musl.tar.gz::${_baseurl}/ante-v${pk
 source_aarch64=("ante-v${pkgver}-linux-arm64-musl.tar.gz::${_baseurl}/ante-v${pkgver}-linux-arm64-musl.tar.gz")
 
 sha256sums=('8704fc36dc5f6f29d1764aa26058c70452f9d75687bb815b0efe7cb01ce46dac')
-sha256sums_x86_64=('3dc24f3d1502179bc64df28bca8fed655b44e84b92c766fb1bbba159f7de9c20')
-sha256sums_aarch64=('f68ce33e03c775a2b5128f9ecf3113df833dd13925c0368dfb935aa4cd8a4b29')
+sha256sums_x86_64=('359a54fe35a4d4b502b882573d5f4545bf34c02504e8e329d6441e7bd8117c5f')
+sha256sums_aarch64=('9cef8c3248c6e3935b997f31c085226d30e12459262f3b5666c1b6b3942e1212')
 
 package() {
     install -Dm755 "$srcdir/ante" "$pkgdir/usr/bin/ante"
