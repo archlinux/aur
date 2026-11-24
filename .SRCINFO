@@ -1,0 +1,15 @@
+pkgbase = capcut-cli
+	pkgdesc = Unofficial CLI for editing CapCut and JianYing projects
+	pkgver = 0.37.1
+	pkgrel = 1
+	url = https://github.com/renezander030/capcut-cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	optdepends = python: helper scripts
+	noextract = capcut-cli-0.37.1.tgz
+	source = capcut-cli-0.37.1.tgz::https://registry.npmjs.org/capcut-cli/-/capcut-cli-0.37.1.tgz
+	sha256sums = 58fbe9113a385ced8e274049d8771521a18a9251553e2d37f4ad65ae5e6a6592
+
+pkgname = capcut-cli
