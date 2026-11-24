@@ -1,0 +1,14 @@
+pkgbase = cclog
+	pkgdesc = Convert Claude Code conversations to Markdown, with a TUI
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/annenpolka/cclog
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = cclog-0.7.4.tar.gz::https://github.com/annenpolka/cclog/archive/v0.7.4.tar.gz
+	sha256sums = 6cdd2ccdc28eb4dd8ac446d29d914657bf5600b99bf7b70959becb6181c2b247
+
+pkgname = cclog
