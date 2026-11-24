@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=frma
-_pkgver=1.58.0
+_pkgver=1.64.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
+pkgver=1.64.0
 pkgrel=1
 pkgdesc='Frozen RMA and Barcode'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-hgu133afrmavecs
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('06e329e32b721c2324fa34e377b6ca6015eb6b9eff0d861ee4e67082df35a393')
+sha256sums=('07ea644c9890c9963e0cb5af29a50c92b047210e599fb1c386e5332f61d3e84b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
