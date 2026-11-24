@@ -1,7 +1,7 @@
 pkgbase = openshell
 	pkgdesc = The safe, private runtime for autonomous AI agents.
-	pkgver = 0.1.9
-	pkgrel = 2
+	pkgver = 0.1.10
+	pkgrel = 1
 	url = https://github.com/ai-openshell/openshell
 	install = openshell.install
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = openshell
 	conflicts = openshell-bin
 	conflicts = openshell-git
 	options = !lto
-	source = openshell-0.1.9.tar.gz::https://github.com/ai-openshell/openshell/archive/refs/tags/v0.1.9.tar.gz
-	b2sums = ac4f6ba8bb832f2885ba790fb90855392ba548ff538a144275bb26f3873b74d0705e44c8b7acb09db6c7f7ae949c2f9755379c523f381096559baf1497e9a460
+	source = openshell-0.1.10.tar.gz::https://github.com/ai-openshell/openshell/archive/refs/tags/v0.1.10.tar.gz
+	b2sums = 3733c40fe4040b7b408edf75649bd14a2a167a19cc8cd95e99c9466a3cb396c1f915db65d958d2c86749972c727a96e7b7cb3596318c621664319d30bd353269
 
 pkgname = openshell

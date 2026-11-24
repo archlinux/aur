@@ -1,8 +1,8 @@
 # Maintainer: chadsr <git at ross dot ch>
 
 pkgname=openshell
-pkgver=0.1.9 # renovate: datasource=github-releases depName=ai-openshell/openshell
-pkgrel=2
+pkgver=0.1.10 # renovate: datasource=github-releases depName=ai-openshell/openshell
+pkgrel=1
 pkgdesc="The safe, private runtime for autonomous AI agents."
 arch=('x86_64' 'aarch64')
 url='https://github.com/ai-openshell/openshell'
@@ -24,7 +24,7 @@ optdepends=(
 conflicts=("$pkgname-bin" "$pkgname-git")
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('ac4f6ba8bb832f2885ba790fb90855392ba548ff538a144275bb26f3873b74d0705e44c8b7acb09db6c7f7ae949c2f9755379c523f381096559baf1497e9a460')
+b2sums=('3733c40fe4040b7b408edf75649bd14a2a167a19cc8cd95e99c9466a3cb396c1f915db65d958d2c86749972c727a96e7b7cb3596318c621664319d30bd353269')
 
 prepare() {
 	cd "openshell-$pkgver"
