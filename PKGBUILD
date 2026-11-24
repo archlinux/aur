@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=frugalrgb
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Lightweight standalone RGB controller for PC hardware (no bloat, just LEDs)"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc' 'fontconfig' 'systemd-libs' 'libxkbcommon' 'wayland'
 makedepends=('cargo')
 install=frugalrgb.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dc7a65d53c3ff07e2ad8b42e2ac26eb1d76110cb92b91c1abcef76367b2b2322')
+sha256sums=('d52197a61db41542053eb52cc6627bc7fd3eb599cf90f760e3ab70c67fc71a99')
 
 # The same flags for build and check, or check compiles everything again.
 # The remap keeps the build directory out of the binary.

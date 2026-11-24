@@ -1,6 +1,6 @@
 pkgbase = frugalrgb
 	pkgdesc = Lightweight standalone RGB controller for PC hardware (no bloat, just LEDs)
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/emaspa/frugalRGB
 	install = frugalrgb.install
@@ -18,7 +18,7 @@ pkgbase = frugalrgb
 	depends = libxcursor
 	depends = libxi
 	depends = libxrandr
-	source = frugalrgb-0.5.2.tar.gz::https://github.com/emaspa/frugalRGB/archive/refs/tags/v0.5.2.tar.gz
-	sha256sums = dc7a65d53c3ff07e2ad8b42e2ac26eb1d76110cb92b91c1abcef76367b2b2322
+	source = frugalrgb-0.5.3.tar.gz::https://github.com/emaspa/frugalRGB/archive/refs/tags/v0.5.3.tar.gz
+	sha256sums = d52197a61db41542053eb52cc6627bc7fd3eb599cf90f760e3ab70c67fc71a99
 
 pkgname = frugalrgb
