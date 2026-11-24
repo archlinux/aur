@@ -1,0 +1,20 @@
+pkgbase = gruyere
+	pkgdesc = View and kill processes listening on ports
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/savannahostrowski/gruyere
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-psutil
+	depends = python-readchar
+	depends = python-rich
+	depends = python-typer
+	source = https://files.pythonhosted.org/packages/source/g/gruyere/gruyere-0.1.1.tar.gz
+	sha256sums = de848e041a461629b9e76c5b6118c1ac84e0f4faa2cd14dc4b390298ea49a32e
+
+pkgname = gruyere
