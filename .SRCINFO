@@ -1,0 +1,19 @@
+pkgbase = pikpaktui-bin
+	pkgdesc = TUI and CLI client for PikPak cloud storage
+	pkgver = 0.0.65
+	pkgrel = 1
+	url = https://github.com/bengerthelorf/pikpaktui
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = pikpaktui
+	conflicts = pikpaktui
+	options = !debug
+	source = pikpaktui-bin-0.0.65-LICENSE::https://raw.githubusercontent.com/bengerthelorf/pikpaktui/v0.0.65/LICENSE
+	sha256sums = 9e388e61362a57c3ae5bc5661089f23ed9ed898fcb3ccf351a4b7fbab64b12d3
+	source_x86_64 = pikpaktui-bin-0.0.65-x86_64.tar.gz::https://github.com/bengerthelorf/pikpaktui/releases/download/v0.0.65/pikpaktui-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 6712f59baad684074dcbf67b60f70f15687f4922b1b585e20238b5c8a3665e8c
+	source_aarch64 = pikpaktui-bin-0.0.65-aarch64.tar.gz::https://github.com/bengerthelorf/pikpaktui/releases/download/v0.0.65/pikpaktui-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 9f801610e436c9e9716953fd3d881d956eb728e0a60fdf1dae24119e1c1bbfac
+
+pkgname = pikpaktui-bin
