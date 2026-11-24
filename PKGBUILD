@@ -8,7 +8,7 @@ arch=(any)
 url=https://github.com/cjquines/lastlint
 license=(MIT)
 depends=(python)
-makedepends=(python-hatchling)
+makedepends=(python-build python-installer python-hatchling)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 
 build() {
