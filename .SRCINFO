@@ -1,0 +1,17 @@
+pkgbase = etcd-walker-bin
+	pkgdesc = TUI tool for browsing etcd
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/nexusriot/etcd-walker
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = etcd-walker
+	conflicts = etcd-walker
+	options = !debug
+	source = etcd-walker-bin-0.7.0-LICENSE::https://raw.githubusercontent.com/nexusriot/etcd-walker/0.7.0/LICENSE
+	sha256sums = 7aa6c2f07f1198b208c321b6c8a466b72c315ebdedf88314424feee1fe9f9bfd
+	source_x86_64 = etcd-walker-bin-0.7.0-x86_64::https://github.com/nexusriot/etcd-walker/releases/download/0.7.0/etcd-walker-0.7.0-linux-amd64
+	sha256sums_x86_64 = 0ac1534566f1221000b8ce6f3f7833f56266dc51d553b09397669f956d29e3fa
+
+pkgname = etcd-walker-bin
