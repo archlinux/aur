@@ -1,5 +1,5 @@
 pkgname=selfsync
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Self-hosted Chrome Sync server."
 arch=(x86_64)
@@ -10,14 +10,14 @@ makedepends=(cargo protobuf)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loyalpartner/selfsync/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname-user.service")
-sha256sums=('05a3559186e4fb10a1856620155ed5f768048433c286b833a014bd8562a1d849'
+sha256sums=('720d98624580e1c442763a6ddc8a67c859985dc6440a544f027bbd7bf12f61e4'
             '5011a12b92faf53af85ff81dea14383579b6f247b0ba8dcb59617c7e02b9049c'
             '1329f53ab77afa9168890f3530f1d76e4765c65a1f4584a168263b3b2dff7ea5')
 
 prepare() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target host-tuple
+    cargo fetch --target host-tuple
 }
 build() {
     cd "$pkgname-$pkgver"
