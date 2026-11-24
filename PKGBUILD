@@ -1,6 +1,6 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=ampscan
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc='Audit IPv4/IPv6 networks for ports exploitable in DDoS amplification attacks'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 conflicts=('ampscan-bin')
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d4227e9599be45e01fef308ac1bbfe1381b2953753eb8391553d59319d78d02b')
+sha256sums=('5c0ccdabbcf5031050d4de8545c7219b54f00ccb9a88ca9b841dc7ce32b13def')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
