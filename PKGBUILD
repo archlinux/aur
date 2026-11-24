@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=meru-bin
 _pkgname=Meru
-pkgver=3.64.2
+pkgver=3.65.0
 _electronversion=45
 pkgrel=1
 pkgdesc="📮 Nifty Gmail desktop app.(previously Gmail Desktop)."
@@ -30,8 +30,8 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v
 sha256sums=('96c1d04d710fd54233ab3a7a799ebb23926c683300f1e0cee2a54ff9a18ed791'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
-sha256sums_aarch64=('bff6441f09603ae4a7e31406e8ff775a4d94d9b5ce33708570c143edb0d585e0')
-sha256sums_x86_64=('97059f61135c28e137202c7ed19070673d0e72a2077b2ded98a493c3508ac770')
+sha256sums_aarch64=('ddf5869b49f97a9e98da8273c440159210b01418a29a8324d5ff5b36985978f8')
+sha256sums_x86_64=('28566c3424ef36534dba4d970ecb57cc09b5955f08c947ca6c313ae0812b74fc')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
