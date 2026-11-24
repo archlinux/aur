@@ -36,12 +36,6 @@ sha256sums_i686=('ac7df9d3805c71db49e14dfeb880c20d818b45dc5589d61cb724d8fb57b09b
 sha256sums_aarch64=('fc9feb7893d98404e8b3b4f5f85d818a5e9445de9d08197555612cc8b449f741')
 
 
-prepare() {
-	cd "${srcdir}/" || exit
-
-	mv THIRD_PARTY_NOTICES.md THIRD_PARTY_NOTICES
-}
-
 package() {
 	cd "${srcdir}/" || exit
 
@@ -58,5 +52,5 @@ package() {
 	install -Dm644 etc/jobman-control/*.example.json -t "${pkgdir}/usr/share/doc/${pkgname}/config/"
 
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -Dm644 THIRD_PARTY_NOTICES -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 THIRD_PARTY_NOTICES.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
