@@ -2,7 +2,7 @@
 # Maintainer: coolapso <c4s@coolapso.sh>
 
 pkgname='notekpr-cli-bin'
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='Command-line client for notekpr, end-to-end encrypted Markdown notes'
 url='https://notekpr.md'
@@ -13,14 +13,15 @@ conflicts=('notekpr-cli')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v${pkgver}/notekpr-cli_linux_arm64.tar.gz")
-sha256sums_aarch64=('73441dbc24ec17ff594323e961392ab6ce6f949c28c6be83a365248d2a65a4bc')
+sha256sums_aarch64=('ad63a84e66d0a98b90973571272238a82a4dcf84519d893c41c6f57b6b93b0e8')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v${pkgver}/notekpr-cli_linux_amd64.tar.gz")
-sha256sums_x86_64=('e3c4bd7c43c3414b47381f149a3832661129c8904725c6931397c5c024585775')
+sha256sums_x86_64=('534d3b988e1bca05697991d791bfd09163be1e3b571d13f416a19b27eb287b33')
 
 package() {
   install -Dm755 notekpr "$pkgdir/usr/bin/notekpr"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/notekpr-cli/LICENSE"
+  install -Dm644 THIRD_PARTY_LICENSES.md "$pkgdir/usr/share/licenses/notekpr-cli/THIRD_PARTY_LICENSES.md"
   install -Dm644 completions/notekpr.bash "$pkgdir/usr/share/bash-completion/completions/notekpr"
   install -Dm644 completions/_notekpr "$pkgdir/usr/share/zsh/site-functions/_notekpr"
   install -Dm644 completions/notekpr.fish "$pkgdir/usr/share/fish/vendor_completions.d/notekpr.fish"
