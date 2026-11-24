@@ -6,7 +6,7 @@
 # tools), linksy (the GTK app) and linksy-qt (the Qt app, for KDE Plasma).
 pkgbase=linksy
 pkgname=(linksy-common linksy linksy-qt)
-pkgver=0.16.1
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='Your phone and your Linux computer, working as one: files, clipboard, screens, webcam'
 arch=('x86_64')
@@ -17,7 +17,7 @@ license=('AGPL-3.0-or-later')
 options=(!debug !lto)
 makedepends=('cargo' 'lld' 'gtk4' 'libadwaita' 'gstreamer' 'gst-plugins-base' 'qt6-base' 'qt6-declarative')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e8ba7b74c2bf16f3e84cf935a263e384ccce46ea52f925d8e8608db49bb3d08d')
+sha256sums=('c08e7c119676975680bc615fac30a42116de04e11a6495c520e30a2ce98419ce')
 
 prepare() {
   cd linksy-desktop-$pkgver
@@ -29,7 +29,7 @@ build() {
   cd linksy-desktop-$pkgver
   _prepare_rust
   export CARGO_TARGET_DIR=target QMAKE=/usr/bin/qmake6
-  cargo build --frozen --release -p linksyd -p linksy -p linksy-app -p linksy-screen -p linksy-qt
+  cargo build --frozen --release -p linksyd -p linksy -p linksy-handover -p linksy-app -p linksy-screen -p linksy-qt
 }
 
 check() {
@@ -68,11 +68,11 @@ package_linksy-common() {
   # Before 0.8.4, one linksy package held everything
   conflicts=('linksy<0.8.4')
   cd linksy-desktop-$pkgver
-  for b in linksyd linksy linksy-screen; do
+  for b in linksyd linksy linksy-screen linksy-handover; do
     install -Dm755 "target/release/$b" "$pkgdir/usr/bin/$b"
   done
   install -Dm755 data/linksy-open "$pkgdir/usr/bin/linksy-open"
-  for s in linksy-camera-setup linksy-usb-setup linksy-system-setup; do
+  for s in linksy-camera-setup linksy-usb-setup linksy-handover-setup linksy-system-setup; do
     install -Dm755 "data/$s" "$pkgdir/usr/lib/linksy/$s"
   done
   sed 's|@BINDIR@|/usr/bin|' data/linksyd.service | install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/user/linksyd.service"
