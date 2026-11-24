@@ -1,0 +1,17 @@
+pkgbase = punchout-bin
+	pkgdesc = Log time on JIRA from the terminal
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/dhth/punchout
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = punchout
+	conflicts = punchout
+	options = !debug
+	source_x86_64 = punchout-bin-1.5.0-x86_64.tar.gz::https://github.com/dhth/punchout/releases/download/v1.5.0/punchout_1.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 244049e49d6d99c96a4283ab37432058cda7b29a7fa86f2c035ab3dcebab049a
+	source_aarch64 = punchout-bin-1.5.0-aarch64.tar.gz::https://github.com/dhth/punchout/releases/download/v1.5.0/punchout_1.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 44eaef3a23d967d5b53cf88f13e22f137ac9fea72ae8726bf44153e32befb2f3
+
+pkgname = punchout-bin
