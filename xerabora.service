@@ -1,0 +1,11 @@
+[Unit]
+Description=xerabora RetroAchievements client
+Documentation=https://github.com/hacan359/xerabora
+
+[Service]
+ExecStart=/usr/bin/xerabora --server
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
