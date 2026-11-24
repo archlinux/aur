@@ -1,6 +1,6 @@
 pkgbase = course2md-bin
 	pkgdesc = Turn online course videos (YouTube/Bilibili/local) into image+transcript markdown/html notes
-	pkgver = 2.0.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/mizorewww/course2md
 	arch = x86_64
@@ -17,11 +17,13 @@ pkgbase = course2md-bin
 	optdepends = python-openvino: OpenVINO Python runtime for NPU
 	provides = course2md
 	conflicts = course2md
-	source = LICENSE-2.0.1::https://github.com/mizorewww/course2md/raw/v2.0.1/LICENSE
+	source = LICENSE-3.0.0::https://github.com/mizorewww/course2md/raw/v3.0.0/LICENSE
+	source = THIRD-PARTY-LICENSES-3.0.0.txt::https://github.com/mizorewww/course2md/releases/download/v3.0.0/course2md-third-party-licenses.txt
 	sha256sums = f588737788750da8ab407e66c13f5004f8933176307add92f64b6c458f486212
-	source_x86_64 = course2md-bin-2.0.1-x86_64::https://github.com/mizorewww/course2md/releases/download/v2.0.1/course2md-linux-x86_64
-	sha256sums_x86_64 = 3899be0f2006251187519fce79e78fc9f9a6c4bc944dd78b9d1954876ece219a
-	source_aarch64 = course2md-bin-2.0.1-aarch64::https://github.com/mizorewww/course2md/releases/download/v2.0.1/course2md-linux-aarch64
-	sha256sums_aarch64 = 06c4618994972be2984bee677ca0205dc1789266a725ad97424bdf12a9e05d41
+	sha256sums = 0f2dd981dfc88c940d3b91786c73b4485d5d679ff0a1ce332735014fca15defc
+	source_x86_64 = course2md-bin-3.0.0-x86_64::https://github.com/mizorewww/course2md/releases/download/v3.0.0/course2md-linux-x86_64
+	sha256sums_x86_64 = ac24b1d1bb8c193fda3071894a5381c58d34949fedc363a25e07bf42d19491fa
+	source_aarch64 = course2md-bin-3.0.0-aarch64::https://github.com/mizorewww/course2md/releases/download/v3.0.0/course2md-linux-aarch64
+	sha256sums_aarch64 = 2f9dacb7a6436eec6ba4f6d461b48f8f54efcfcb1c4047ba989d07107b56b9dc
 
 pkgname = course2md-bin
