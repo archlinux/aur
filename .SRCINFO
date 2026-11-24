@@ -1,0 +1,21 @@
+pkgbase = trx-pkg-bin
+	pkgdesc = TUI package manager
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/pie-314/trx
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl-3
+	provides = trx-pkg
+	conflicts = trx-pkg
+	conflicts = trx
+	conflicts = trx-bin
+	options = !debug
+	source = trx-pkg-bin-0.1.13-LICENSE::https://raw.githubusercontent.com/pie-314/trx/v0.1.13/LICENSE
+	sha256sums = 3515d6f214d63cd29ebb6b7b9194c447e58092e28f7a448a7159246caa565c2b
+	source_x86_64 = trx-pkg-bin-0.1.13-x86_64.tar.gz::https://github.com/pie-314/trx/releases/download/v0.1.13/trx-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 373bb777be02519a946482888bdd7a53dc4973c833fac2f41b8a548098da9321
+
+pkgname = trx-pkg-bin
