@@ -1,6 +1,6 @@
 pkgbase = mir
 	pkgdesc = Canonical's display server
-	pkgver = 2.30.0
+	pkgver = 2.31.0
 	pkgrel = 1
 	url = https://github.com/canonical/mir
 	arch = x86_64
@@ -22,7 +22,6 @@ pkgbase = mir
 	makedepends = wlcs
 	makedepends = xorg-xwayland
 	depends = boost-libs
-	depends = egl-wayland
 	depends = freetype2
 	depends = glib2
 	depends = glibc
@@ -55,7 +54,7 @@ pkgbase = mir
 	optdepends = ttf-ubuntu-font-family: required for miral demos
 	optdepends = xcursor-dmz: optional requirement for miral demos
 	options = !lto
-	source = git+https://github.com/canonical/mir.git#tag=v2.30.0
-	sha256sums = bf679072726c346b1795117462b05f53a5f59b7a0e8405ef981d8c5412ad1326
+	source = git+https://github.com/canonical/mir.git#tag=v2.31.0
+	sha256sums = ea858a76dc9180c6a6b850afb0d4185f73d8dc9f8a0d0ffe57a798d922d71a8b
 
 pkgname = mir

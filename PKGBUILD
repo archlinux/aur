@@ -6,7 +6,7 @@
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=2.30.0
+pkgver=2.31.0
 pkgrel=1
 pkgdesc="Canonical's display server"
 url="https://github.com/canonical/mir"
@@ -14,7 +14,7 @@ arch=(x86_64 aarch64)
 license=('GPL-2.0-or-later OR GPL-3.0-or-later')
 depends=(
     boost-libs
-    egl-wayland
+    #egl-wayland
     freetype2
     glib2
     glibc
@@ -68,7 +68,7 @@ optdepends=(
     )
 options=(!lto)
 source=("git+https://github.com/canonical/mir.git#tag=v${pkgver}") # build issue with 2.26.0 archive
-sha256sums=('bf679072726c346b1795117462b05f53a5f59b7a0e8405ef981d8c5412ad1326')
+sha256sums=('ea858a76dc9180c6a6b850afb0d4185f73d8dc9f8a0d0ffe57a798d922d71a8b')
 
 build() {
   local _flags=(
