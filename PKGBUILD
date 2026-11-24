@@ -6,7 +6,7 @@ _name=talkey
 # A placeholder. makepkg runs pkgver() against the clone and rewrites this line
 # in place, so whatever is committed here is only what the AUR page shows until
 # the next build.
-pkgver=0.2.0.r0.g724272f
+pkgver=0.2.0.r3.gc9f8e8e
 pkgrel=1
 pkgdesc="Push-to-talk voice input for X11/i3 - hold a key, speak, the text is typed. Offline, no API key."
 arch=('any')
@@ -115,7 +115,8 @@ package() {
   done
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md CHANGELOG.md
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/docs" docs/architecture.md
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/docs/screenshots" docs/screenshots/*.png
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/docs" docs/architecture.md docs/translate.md
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/docs/screenshots" docs/screenshots/*.png docs/screenshots/*.gif
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/docs/media" docs/media/*.mp4
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
