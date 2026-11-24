@@ -1,0 +1,3 @@
+[python-ntc-templates]
+source = "pypi"
+pypi = "ntc-templates"
