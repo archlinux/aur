@@ -1,0 +1,15 @@
+pkgbase = neovate-code
+	pkgdesc = Terminal coding agent
+	pkgver = 0.28.5
+	pkgrel = 1
+	url = https://github.com/neovateai/neovate-code
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = neovate-code-0.28.5.tgz
+	source = neovate-code-0.28.5.tgz::https://registry.npmjs.org/@neovate/code/-/code-0.28.5.tgz
+	sha256sums = 47df168fe7f6e9031c1d8e0b18dc38440a618c027e4edb94570727836625c7ba
+
+pkgname = neovate-code
