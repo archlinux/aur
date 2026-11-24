@@ -3686,3 +3686,47 @@ diff -ruN a/nvkm/subdev/fb/ramgf100.c b/nvkm/subdev/fb/ramgf100.c
  			  "none (memory reclock skipped)");
  	}
  
+--- a/nvkm/engine/fifo/runl.c
++++ b/nvkm/engine/fifo/runl.c
+@@ -63,7 +63,7 @@
+ 	struct nvkm_engn *engn;
+ 	unsigned long flags;
+ 	int rc, state, i;
+-	bool reset;
++	bool reset, reset_failed = false;
+ 
+ 	/* Runlist is blocked before scheduling recovery - fetch count. */
+ 	BUG_ON(!mutex_is_locked(&runl->mutex));
+@@ -114,7 +114,8 @@
+ 
+ 		ENGN_DEBUG(engn, "resetting...");
+ 		/*TODO: can we do something less of a potential catastrophe on failure? */
+-		WARN_ON(nvkm_engine_reset(engn->engine));
++		if (WARN_ON(nvkm_engine_reset(engn->engine)))
++			reset_failed = true;
+ 	}
+ 
+ 	/* Submit runlist update, and clear any remaining exception state. */
+@@ -125,7 +126,21 @@
+ 	/* Unblock runlist processing. */
+ 	while (rc--)
+ 		nvkm_runl_allow(runl);
+-	runl->func->wait(runl);
++	if (runl->func->wait(runl) || reset_failed) {
++		/*
++		 * If runlist recovery or engine reset failed, remaining
++		 * channels on this runlist will never make forward progress.
++		 * Error them out so pending dma_fence waiters (display atomic
++		 * commits, TTM BO deletions) do not deadlock in D state.
++		 */
++		RUNL_ERROR(runl, "rc recovery failed - killing remaining channels");
++		nvkm_runl_foreach_cgrp_safe(cgrp, gtmp, runl) {
++			nvkm_cgrp_foreach_chan_safe(chan, ctmp, cgrp) {
++				nvkm_chan_error(chan, false);
++				nvkm_chan_remove_locked(chan);
++			}
++		}
++	}
+ }
+ 
+ static void
