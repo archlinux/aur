@@ -1,8 +1,9 @@
 pkgbase = qoder-bin
 	pkgdesc = Qoder new form, with programming agents as the core engine, from idea to implementation, easy to handle.
-	pkgver = 0.5.6
+	pkgver = 0.5.17
 	pkgrel = 1
 	url = https://qoder.com/
+	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron43
@@ -10,17 +11,19 @@ pkgbase = qoder-bin
 	depends = nodejs
 	optdepends = bash
 	optdepends = zsh
-	provides = qoder=0.5.6
+	provides = qoder=0.5.17
 	conflicts = qoder
 	options = !emptydirs
 	options = !strip
-	source = qoder-0.5.6.rpm::https://download.qoder.com/qoder-app/releases/latest/Qoder-linux-x86_64.rpm
 	source = LICENSE.html
 	source = qoder.js
 	source = qoder.sh
-	sha256sums = SKIP
 	sha256sums = d93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61
-	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+	sha256sums = d0f201d4e9b0690ccfbe9034779bf95a7a92996cef63a957bf15ea11c7d83236
+	sha256sums = 6295de105284c8d173a862217d76eee1610dad92dd5543f3f9e6a08a6a77929a
+	source_aarch64 = qoder-0.5.17-aarch64.deb::https://download.qoder.com/qoder-app/releases/latest/Qoder-linux-arm64.deb
+	sha256sums_aarch64 = SKIP
+	source_x86_64 = qoder-0.5.17-x86_64.deb::https://download.qoder.com/qoder-app/releases/latest/Qoder-linux-amd64.deb
+	sha256sums_x86_64 = SKIP
 
 pkgname = qoder-bin
