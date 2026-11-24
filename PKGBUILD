@@ -1,7 +1,7 @@
 # Maintainer: Lloyd <lloydzhou@qq.com>
 
 pkgname=mcpc
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="MCP client CLI with daemon-held sessions (rmcp based)"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'cmake' 'perl')
 provides=('mcpc')
 conflicts=('mcpc-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lloydzhou/mcpc/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e1e61e79cf91cad8a5369e6bb6115dabadc4d2e68a009853ecc6d31544d738d6')
+sha256sums=('1a6572bb6ac177fbe2bff0f6c8f0fda970da6cb2e648a62b3ed7b1774994ec2e')
 # makepkg's -flto in CFLAGS turns ring/aws-lc C objects into LTO bitcode that
 # rust-lld cannot link against (undefined ring_core_* symbols)
 options=('!lto')
