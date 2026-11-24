@@ -2,7 +2,7 @@
 
 pkgname=vulcanium-bin
 pkgver=158.0.8127.36
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium with native Wayland Vulkan rendering and Vulkan Video decoding/encoding (prebuilt)"
 arch=('x86_64')
 url="https://github.com/lumexren/vulcanium"
@@ -12,21 +12,32 @@ conflicts=('chromium' 'ungoogled-chromium' 'vulcanium' 'ungoogled-vulcanium' 'un
 depends=(
   'alsa-lib'
   'at-spi2-core'
+  'brotli'
   'cairo'
+  'dav1d'
   'dbus'
   'desktop-file-utils'
+  'double-conversion'
   'expat'
+  'flac'
+  'fontconfig'
+  'freetype2'
   'glib2'
   'glibc'
   'gtk3'
+  'harfbuzz'
   'hicolor-icon-theme'
+  'highway'
   'libcups'
+  'libdrm'
   'libffi'
   'libgcc'
   'libgcrypt'
+  'libjpeg-turbo'
   'libpulse'
   'libstdc++'
   'libva'
+  'libwebp'
   'libx11'
   'libxcb'
   'libxcomposite'
@@ -34,19 +45,25 @@ depends=(
   'libxext'
   'libxfixes'
   'libxkbcommon'
+  'libxml2'
   'libxrandr'
   'libxss'
   'mesa'
+  'minizip'
   'nspr'
   'nss'
+  'openh264'
+  'opus'
   'pango'
   'pciutils'
+  'simdutf'
   'systemd'
   'systemd-libs'
   'ttf-liberation'
   'vulkan-icd-loader'
   'xdg-utils'
   'zlib'
+  'zstd'
 )
 optdepends=(
   'pipewire: WebRTC desktop sharing under Wayland'
@@ -60,7 +77,7 @@ backup=('etc/vulcanium/default-flags.conf')
 options=('!strip')
 source=("https://github.com/lumexren/vulcanium/releases/download/v${pkgver}-${pkgrel}/vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('7deeb903ba3594b8ff281a2c19d6cc5829982cdbec258ec795caf049bd09c745')
+sha256sums=('e238babb8ba9bbbe3bd8f66bceb83cb7ca36052eafb2ed7ba96159d97129b473')
 
 package() {
   bsdtar -xf "${srcdir}/vulcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" \
