@@ -1,0 +1,17 @@
+pkgbase = amtui-bin
+	pkgdesc = Terminal UI for Prometheus Alertmanager
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/pehlicd/amtui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = amtui
+	conflicts = amtui
+	options = !debug
+	source_x86_64 = amtui-bin-0.1.6-x86_64.tar.gz::https://github.com/pehlicd/amtui/releases/download/v0.1.6/amtui_v0.1.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = bdad80f42018df4ee0fc53ad6902dcf99732639a454de95841e7cc595462a312
+	source_aarch64 = amtui-bin-0.1.6-aarch64.tar.gz::https://github.com/pehlicd/amtui/releases/download/v0.1.6/amtui_v0.1.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6fe3a0dc9907c9c8a285a6859ed8bd2fbaf7bfb9c15f0e182472f48c2ff4184f
+
+pkgname = amtui-bin
