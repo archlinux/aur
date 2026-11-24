@@ -1,7 +1,7 @@
 # Maintainer: Kozika <kozikakkozika+aur at gmail dot com>
 
 pkgname=luma-bin
-pkgver=2.1.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Official Frida GUI for interactive dynamic instrumentation (prebuilt binary)'
 arch=('x86_64')
@@ -47,11 +47,16 @@ depends=(
   'xz'
   'zlib'
 )
+optdepends=(
+  'alsa-lib: ALSA audio backend'
+  'jack: JACK audio backend'
+  'libpulse: PulseAudio audio backend'
+)
 provides=('luma')
 conflicts=('luma')
 options=('!strip')
 source=("${pkgname}-${pkgver}.deb::https://github.com/frida/luma/releases/download/${pkgver}/luma-${pkgver}-ubuntu-26.04-x86_64.deb")
-sha256sums=('25126ebe31d255fe863cd594fc80065f4a0092be67d189366038eb9533cbd7e2')
+sha256sums=('014d99f8a4dcfe458c1e66aa57bd9e629b38f739e1d9de6a3e85c0e42d68210f')
 
 package() {
   bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.deb" -C "${srcdir}" data.tar.zst

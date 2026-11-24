@@ -1,6 +1,6 @@
 pkgbase = luma-bin
 	pkgdesc = Official Frida GUI for interactive dynamic instrumentation (prebuilt binary)
-	pkgver = 2.1.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://luma.frida.re/
 	arch = x86_64
@@ -43,10 +43,13 @@ pkgbase = luma-bin
 	depends = vulkan-icd-loader
 	depends = xz
 	depends = zlib
+	optdepends = alsa-lib: ALSA audio backend
+	optdepends = jack: JACK audio backend
+	optdepends = libpulse: PulseAudio audio backend
 	provides = luma
 	conflicts = luma
 	options = !strip
-	source = luma-bin-2.1.1.deb::https://github.com/frida/luma/releases/download/2.1.1/luma-2.1.1-ubuntu-26.04-x86_64.deb
-	sha256sums = 25126ebe31d255fe863cd594fc80065f4a0092be67d189366038eb9533cbd7e2
+	source = luma-bin-3.0.0.deb::https://github.com/frida/luma/releases/download/3.0.0/luma-3.0.0-ubuntu-26.04-x86_64.deb
+	sha256sums = 014d99f8a4dcfe458c1e66aa57bd9e629b38f739e1d9de6a3e85c0e42d68210f
 
 pkgname = luma-bin
