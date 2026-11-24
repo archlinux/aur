@@ -22,7 +22,7 @@ pkgbase = wowtype-core
 	optdepends = curl: translate mode
 	provides = wowtype
 	conflicts = wowtype
-	source = wowtype-0.7.4-1-x86_64.pkg.tar.zst::https://gh-proxy.com/https://github.com/Gloridust/WowType/releases/download/v0.7.4/wowtype-0.7.4-1-x86_64.pkg.tar.zst
+	source = wowtype-0.7.4-1-x86_64.pkg.tar.zst::https://gh-proxy.cn/https://github.com/Gloridust/WowType/releases/download/v0.7.4/wowtype-0.7.4-1-x86_64.pkg.tar.zst
 	sha256sums = dfcdb18419867bde68f1f0e9932aa0a48f532704bb67f8b88e76fbcf94e6b845
 
 pkgname = wowtype-core
