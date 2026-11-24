@@ -1,0 +1,19 @@
+pkgbase = bake-rs-bin
+	pkgdesc = Simple script runner
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/ali77gh/bake-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = bake-rs
+	conflicts = bake-rs
+	options = !debug
+	source = bake-rs-bin-1.2.0-LICENSE::https://raw.githubusercontent.com/ali77gh/bake-rs/1.2.0/LICENSE
+	sha256sums = aa5d988bd787d8ea19fdb55a16361f6d2a7203c62e3c7115f7c387ea837821ef
+	source_x86_64 = bake-rs-bin-1.2.0-x86_64.tar.gz::https://github.com/ali77gh/bake-rs/releases/download/1.2.0/bake-Linux-musl-x86_64.tar.gz
+	sha256sums_x86_64 = 278e4895d20275a5f5d103bfc3a1ba77e95fd01b9117b89fe8e45b5971ad4e9b
+	source_aarch64 = bake-rs-bin-1.2.0-aarch64.tar.gz::https://github.com/ali77gh/bake-rs/releases/download/1.2.0/bake-Linux-musl-arm64.tar.gz
+	sha256sums_aarch64 = 4b1957896a25e5fd7a4c42f2689b4613d7bbe3c06d1cf9eba39e5ea623fff1e8
+
+pkgname = bake-rs-bin
