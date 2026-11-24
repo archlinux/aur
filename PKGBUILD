@@ -1,9 +1,9 @@
 # Maintainer: lzsnyy <710080675@qq.com>
 pkgname=qoder-cn-agent
 _pkgname=Qoder-CN
-pkgver=0.5.16
+pkgver=0.5.18
 _electronversion=43
-pkgrel=4
+pkgrel=1
 pkgdesc="Qoder 全新形态，以编程智能体为核心引擎，从想法到实现，轻松搞定。"
 arch=('x86_64')
 url="https://qoder.cn"
@@ -32,7 +32,7 @@ source=(
     "qoder-cn.js"
     "qoder-cn.sh"
 )
-sha256sums=('616018e6f7d38f4001e2232171bd4df3a968e63f7fe4bb4d112e2e74510b3651'
+sha256sums=('8df354ea846a71e8d93a58417e4dc0d4d676c511b565ae4569588d2f22c8f01f'
             '64a79bddff14167a290d3547d7b4bd00cf693be6d11fb6b7018bca9d9d778ab4'
             '40b6fe2dac644f8052fedf84edc90f973942c4cf7d3ab7579d036e6d49c125fe'
             '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
