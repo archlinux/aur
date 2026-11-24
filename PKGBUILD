@@ -2,7 +2,7 @@
 # Maintainer: coolapso <c4s@coolapso.sh>
 
 pkgname='notekpr-desktop-bin'
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='notekpr, the desktop app for end-to-end encrypted Markdown notes'
 url='https://notekpr.md'
@@ -13,10 +13,10 @@ conflicts=('notekpr-desktop')
 depends=('glibc' 'webkit2gtk-4.1' 'libayatana-appindicator' 'xdg-utils')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v${pkgver}/notekpr-desktop_linux_arm64.tar.gz")
-sha256sums_aarch64=('b625099104dd4e71d1814844c79b015ad4d93052b194ea157b98343ce495bc40')
+sha256sums_aarch64=('a71949a54cef7663bb763a3e9a686fedd4dbd3af6d1b8f2ef0da3c5b2015e555')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v${pkgver}/notekpr-desktop_linux_amd64.tar.gz")
-sha256sums_x86_64=('5041d79725be14f06cdca432e497738a8266893f3149eb84d441b52aef39007e')
+sha256sums_x86_64=('481ef48686207c1e41dca6bb745cc156c84da1d819427f8956871fc3971a9c3e')
 
 package() {
   install -Dm755 notekpr-desktop "$pkgdir/usr/bin/notekpr-desktop"
@@ -27,4 +27,5 @@ package() {
   install -Dm644 icons/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/md.notekpr.Notekpr.png"
   install -Dm644 icons/favicon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/md.notekpr.Notekpr.svg"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/notekpr-desktop/LICENSE"
+  install -Dm644 THIRD_PARTY_LICENSES.md "$pkgdir/usr/share/licenses/notekpr-desktop/THIRD_PARTY_LICENSES.md"
 }
