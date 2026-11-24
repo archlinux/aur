@@ -1,0 +1,19 @@
+pkgbase = kubenodeusage-bin
+	pkgdesc = Kubernetes node and pod resource usage in the terminal
+	pkgver = 3.0.4
+	pkgrel = 1
+	url = https://github.com/aksarav/kubenodeusage
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kubenodeusage
+	conflicts = kubenodeusage
+	options = !debug
+	source = kubenodeusage-bin-3.0.4-LICENSE::https://raw.githubusercontent.com/aksarav/kubenodeusage/v3.0.4/LICENSE
+	sha256sums = 777c7a3de313755342baddb53d0f4cf07adaaa00f6a8f497fc145a86b19c0d8c
+	source_x86_64 = kubenodeusage-bin-3.0.4-x86_64.zip::https://github.com/aksarav/kubenodeusage/releases/download/v3.0.4/KubeNodeUsage-linux-amd64-v3.0.4.zip
+	sha256sums_x86_64 = 9e3b94c342c4365e7aa4aa9825c4cbfccf7b8770d9addc55493346219bb5e9d1
+	source_aarch64 = kubenodeusage-bin-3.0.4-aarch64.zip::https://github.com/aksarav/kubenodeusage/releases/download/v3.0.4/KubeNodeUsage-linux-arm64-v3.0.4.zip
+	sha256sums_aarch64 = 4b9806c904e0a9142193bba9e55da6afe2980cbe3ae1ee9968669a109c0f4141
+
+pkgname = kubenodeusage-bin
