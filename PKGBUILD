@@ -4,7 +4,7 @@
 
 pkgname=python-fastcore
 _pkgname=fastcore
-pkgver=2.2.33
+pkgver=2.2.46
 pkgrel=1
 pkgdesc='Python supercharged for the fastai library'
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
   python-setuptools
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/fastai/fastcore/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('df34494a136a1211a21d2451154832765f0da728bd467f5a9706d4f9e4cb45c40ebb8f452e623fa6a585d10d8bc3fac74e9c46dcb7ebc6177e4b2e15eb69bd56')
+sha512sums=('27c6f396521b54f06dd35646523b6f7fa68524cd4359c9c1c7aeea1b64d5442b7e8e813d28834b21a0642d966fc11c16d5126785cec5d9724611835f6107a771')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
