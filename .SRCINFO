@@ -1,0 +1,21 @@
+pkgbase = orca-agent-bin
+	pkgdesc = Terminal coding agent for DeepSeek
+	pkgver = 0.5.23
+	pkgrel = 1
+	url = https://github.com/echovic/orca-agent
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = orca-agent
+	conflicts = orca-agent
+	options = !debug
+	source = orca-agent-bin-0.5.23-LICENSE::https://raw.githubusercontent.com/echovic/orca-agent/v0.5.23/LICENSE
+	sha256sums = ca3956b24fe4d01f280e49f616774a467372007a090ebe9f56b1df7dbfb1de86
+	source_x86_64 = orca-agent-bin-0.5.23-x86_64.tgz::https://github.com/echovic/orca-agent/releases/download/v0.5.23/blade-ai-orca-0.5.23-linux-x64.tgz
+	sha256sums_x86_64 = d86dba2d94f38f39bcc4e8921792ff77c574d4fee537117701bc14449a207b31
+	source_aarch64 = orca-agent-bin-0.5.23-aarch64.tgz::https://github.com/echovic/orca-agent/releases/download/v0.5.23/blade-ai-orca-0.5.23-linux-arm64.tgz
+	sha256sums_aarch64 = 41abf956173b3b517335c3c1228132dd289ca5c463a960738f7e51f7817d6f47
+
+pkgname = orca-agent-bin
