@@ -1,6 +1,6 @@
 # Maintainer: yurisuki <30354739+yurisuki@users.noreply.github.com>
 pkgname=ic-sync
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Native iCloud Drive sync client with a system tray GUI'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,24 @@ makedepends=('rust' 'cmake' 'pkgconf' 'libxkbcommon' 'wayland' 'libx11' 'libxran
              'libxi' 'libxcursor' 'libxinerama' 'mesa' 'systemd-libs')
 optdepends=('gnome-keyring: Secret Service provider for credential storage'
             'kwallet: Secret Service provider for KDE Plasma')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/yurisuki/ic-sync/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1104552d3c62df79d0a1076c204b57e9d9a94255ed7e9663b001168dacfa467c')
+# Checksums are not hard-coded: both downloads are verified in prepare()
+# against the SHA256SUMS file published with the GitHub release, so a new
+# version only needs a pkgver bump in this file.
+source=("$pkgname-$pkgver.tar.gz::https://github.com/yurisuki/ic-sync/archive/refs/tags/v$pkgver.tar.gz"
+        "SHA256SUMS::https://github.com/yurisuki/ic-sync/releases/download/v$pkgver/SHA256SUMS")
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+  cd "$srcdir"
+
+  local archive="$pkgname-$pkgver.tar.gz"
+  local expected
+  expected=$(awk -v name="$archive" '$2 == name { print $1 }' SHA256SUMS)
+  if [[ -z "$expected" ]]; then
+    error "No checksum for $archive in the GitHub SHA256SUMS"
+  fi
+  printf '%s  %s\n' "$expected" "$archive" | sha256sum --check --strict
+}
 
 build() {
   cd "$srcdir/ic-sync-$pkgver"

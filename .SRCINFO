@@ -1,6 +1,6 @@
 pkgbase = ic-sync
 	pkgdesc = Native iCloud Drive sync client with a system tray GUI
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/yurisuki/ic-sync
 	arch = x86_64
@@ -24,7 +24,9 @@ pkgbase = ic-sync
 	depends = hicolor-icon-theme
 	optdepends = gnome-keyring: Secret Service provider for credential storage
 	optdepends = kwallet: Secret Service provider for KDE Plasma
-	source = ic-sync-0.1.0.tar.gz::https://github.com/yurisuki/ic-sync/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 1104552d3c62df79d0a1076c204b57e9d9a94255ed7e9663b001168dacfa467c
+	source = ic-sync-0.1.1.tar.gz::https://github.com/yurisuki/ic-sync/archive/refs/tags/v0.1.1.tar.gz
+	source = SHA256SUMS::https://github.com/yurisuki/ic-sync/releases/download/v0.1.1/SHA256SUMS
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ic-sync
