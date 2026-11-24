@@ -1,6 +1,6 @@
 pkgbase = python-k3modutil
 	pkgdesc = Utilities for loading and inspecting Python submodules
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/pykit3/k3modutil
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-k3modutil
 	depends = python
 	provides = python-k3modutil
 	conflicts = python-k3modutil
-	source = k3modutil::git+https://github.com/pykit3/k3modutil.git#tag=v0.1.7
-	sha256sums = 4a5b6d8bed380dea1182f04ac3e959c01c3a8aa3e6912ae1f3aa3a60126a4eeb
+	source = k3modutil::git+https://github.com/pykit3/k3modutil.git#tag=v0.1.8
+	sha256sums = e940c3ee9669ea116126ad0602c2e341dd3e4537ff3d53c8c2a53fa58305b44c
 
 pkgname = python-k3modutil

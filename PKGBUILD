@@ -2,7 +2,7 @@
 
 pkgname=python-k3modutil
 _name=${pkgname#python-}
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Utilities for loading and inspecting Python submodules"
 provides=(${pkgname})
@@ -26,7 +26,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('4a5b6d8bed380dea1182f04ac3e959c01c3a8aa3e6912ae1f3aa3a60126a4eeb')
+sha256sums=('e940c3ee9669ea116126ad0602c2e341dd3e4537ff3d53c8c2a53fa58305b44c')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
