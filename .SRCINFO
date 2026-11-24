@@ -1,0 +1,17 @@
+pkgbase = tsk-bin
+	pkgdesc = Terminal task board for you and your agents
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/smarzban/tsk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tsk
+	conflicts = tsk
+	options = !debug
+	source_x86_64 = tsk-bin-0.14.1-x86_64.tar.gz::https://github.com/smarzban/tsk/releases/download/v0.14.1/tsk-v0.14.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 05a6c4ac8ea3f7ca37ab0b103d6b29e790d562d8dc6560825a58ff41533eb26b
+	source_aarch64 = tsk-bin-0.14.1-aarch64.tar.gz::https://github.com/smarzban/tsk/releases/download/v0.14.1/tsk-v0.14.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 778198d50cfbe49898ccb7230568304939a2536d1fd3f04be303c191e0e48ab5
+
+pkgname = tsk-bin
