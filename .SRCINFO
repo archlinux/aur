@@ -1,0 +1,15 @@
+pkgbase = loadtest
+	pkgdesc = Run load tests against a URL
+	pkgver = 8.2.1
+	pkgrel = 1
+	url = https://github.com/alexfernandez/loadtest
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = loadtest-8.2.1.tgz
+	source = loadtest-8.2.1.tgz::https://registry.npmjs.org/loadtest/-/loadtest-8.2.1.tgz
+	sha256sums = 7830574a544349f0ffd77a94481aa0591bec3777905708f5d4f4114a6f72aff8
+
+pkgname = loadtest
