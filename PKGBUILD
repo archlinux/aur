@@ -27,8 +27,8 @@
 # architecture is pinned separately below.
 
 pkgname=zcode-intl-bin
-pkgver=3.18.2_10443
-pkgrel=2
+pkgver=4.0.0_10870
+pkgrel=1
 pkgdesc='ZCode — agentic development environment for GLM (official Linux build, Z.ai defaults)'
 arch=('x86_64' 'aarch64')
 url='https://zcode.z.ai/'
@@ -55,12 +55,12 @@ conflicts=('zcode' 'z-code-bin' 'zcode-bin' 'zcode-desktop-bin')
 provides=('zcode')
 options=('!strip')
 source=("${pkgname}.sh")
-source_x86_64=("ZCode-3.18.2-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.18.2/linux-x64/ZCode-3.18.2-linux-x64.deb")
-source_aarch64=("ZCode-3.18.2-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.18.2/linux-arm64/ZCode-3.18.2-linux-arm64.deb")
-noextract=('ZCode-3.18.2-linux-x64.deb' 'ZCode-3.18.2-linux-arm64.deb')
+source_x86_64=("ZCode-4.0.0-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/4.0.0/linux-x64/ZCode-4.0.0-linux-x64.deb")
+source_aarch64=("ZCode-4.0.0-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/4.0.0/linux-arm64/ZCode-4.0.0-linux-arm64.deb")
+noextract=('ZCode-4.0.0-linux-x64.deb' 'ZCode-4.0.0-linux-arm64.deb')
 sha256sums=('ab210858bfe149fe257d70c1fb3d9690891c0d091aa0c43faf35dd61ff1c4453')
-sha256sums_x86_64=('a7e066eeb018d15e403546a14dd3692220fc9976769b1f3525a0620cfa974f73')
-sha256sums_aarch64=('be3de63f57b1351d921bd977a21cff212d9e5a0710e3af8eae8abcfc2147b714')
+sha256sums_x86_64=('402f0eea0e3dfa23e3176525ae08d0f4101ced64ddbbe77c88ade87c53ab256a')
+sha256sums_aarch64=('961a872c505473b03649faf5f4eff8055b214dd017d5a79da532fabbca17de25')
 
 # 国际版与国内版共用上游图标，右下角合成 INTL 角标以与国内版区分。
 _badge_icon() {
@@ -92,7 +92,7 @@ package() {
     *) echo "unsupported architecture: ${CARCH}" >&2; return 1 ;;
   esac
 
-  bsdtar -C "${_extractdir}" -xf "${srcdir}/ZCode-3.18.2-linux-${_arch}.deb"
+  bsdtar -C "${_extractdir}" -xf "${srcdir}/ZCode-4.0.0-linux-${_arch}.deb"
   _data="$(find "${_extractdir}" -maxdepth 1 -name 'data.tar.*' -print)"
   [[ -n "${_data}" ]] || { echo 'no data.tar.* in deb' >&2; return 1; }
   bsdtar -C "${_extractdir}" -xf "${_data}"
