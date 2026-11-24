@@ -1,6 +1,6 @@
 pkgname=v2ray-rs-bin
 _pkgname=v2ray-rs
-pkgver=0.21.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc="Linux desktop GUI for v2ray/xray/sing-box proxy management (prebuilt)"
 arch=('x86_64')
@@ -17,19 +17,23 @@ optdepends=(
 )
 install=v2ray-rs.install
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/v2ray-rs-$CARCH-linux.tar.gz")
-sha256sums=('bd4531418f62de8686e81d70ac709ee2651596b531bbfec7f5370ebce2eb6ac0')
+sha256sums=('82a5f38f8e90e2147b4aaf394ff450d58dc3a76d17d87c65d171c1317b423e3b')
 
 package() {
     cd "$_pkgname-$pkgver-$CARCH-linux"
 
     install -Dm755 "bin/v2ray-rs" "$pkgdir/usr/bin/v2ray-rs"
-    # Privileged TUN helpers. The install hook creates the `v2ray-rs` group,
-    # restricts these to it (netctl 0750 + cap_net_admin, run 4750 setuid), and
-    # creates the bypass user. Modes here are the pre-hook defaults.
+    # Privileged helpers. The install hook creates the `v2ray-rs` group,
+    # restricts these to it (netctl 0750 + cap_net_admin, antidpi 0750 +
+    # cap_net_admin,cap_net_raw, run 4750 setuid), and creates the bypass user.
+    # Modes here are the pre-hook defaults.
     install -Dm755 "bin/v2ray-rs-netctl" "$pkgdir/usr/bin/v2ray-rs-netctl"
     # Archives never carry the setuid bit: the install hook applies root:v2ray-rs
     # and 4750 after systemd-sysusers has created the group and bypass user.
     install -Dm755 "bin/v2ray-rs-run" "$pkgdir/usr/bin/v2ray-rs-run"
+    # Anti-DPI engine (NFQUEUE desync strategies): the hook applies the
+    # cap_net_admin,cap_net_raw file capabilities.
+    install -Dm755 "bin/v2ray-rs-antidpi" "$pkgdir/usr/bin/v2ray-rs-antidpi"
 
     install -Dm644 "share/applications/com.github.v2ray-rs.desktop" \
         "$pkgdir/usr/share/applications/com.github.v2ray-rs.desktop"

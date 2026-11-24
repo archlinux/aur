@@ -1,11 +1,22 @@
 # Grant the route helper CAP_NET_ADMIN so TUN mode can program routes without
-# elevating the whole GUI, and restrict both privileged helpers to the
-# `v2ray-rs` group so they are not executable by every local process. The
-# backend binary (xray/sing-box) is system-managed and not owned by this
-# package; the app grants its capabilities on demand via a one-time pkexec setcap.
+# elevating the whole GUI, grant the anti-DPI helper cap_net_admin +
+# cap_net_raw for its NFQUEUE re-injection sockets, and restrict all privileged
+# helpers to the `v2ray-rs` group so they are not executable by every local
+# process. The backend binary (xray/sing-box) is system-managed and not owned
+# by this package; the app grants its capabilities on demand via a one-time
+# pkexec setcap.
 
 NETCTL=/usr/bin/v2ray-rs-netctl
 RUN=/usr/bin/v2ray-rs-run
+ANTIDPI=/usr/bin/v2ray-rs-antidpi
+
+# Exact normalized capability postconditions: the canonical pair-list key from
+# _capset_key -- one "name=flags" pair per capability, flag letters sorted
+# within each pair, pairs sorted and space-joined. Anything beyond the exact
+# pair list -- wrong flags, a duplicate capability, or an extra one -- is a
+# mismatch, never a match by capability name.
+NETCTL_CAPSET='cap_net_admin=ep'
+ANTIDPI_CAPSET='cap_net_admin=ep cap_net_raw=ep'
 
 _helper_matches() {
     local _owner=$1 _mode=$2 _bin=$3
@@ -14,25 +25,191 @@ _helper_matches() {
         [[ $(stat -c '%a' "$_bin" 2>/dev/null) == "$_mode" ]]
 }
 
-_revoke_helpers() {
-    local _failed=""
+# Canonical form of a capability specification: one "name=flags" pair per
+# capability, flag letters sorted and unique within each pair, pairs sorted
+# and joined with single spaces. getcap renders clauses as "names=flags"
+# where the comma-joined names share the flags, and setcap accepts '=' or
+# '+', so both spellings are accepted. Malformed records are rejected, never
+# matched: empty names or flag sets (including empty comma-separated fields,
+# which word splitting would drop), repeated flag letters, names outside the
+# capability identifier shape (which also rejects glob metacharacters),
+# flag letters outside e/p/i, duplicate names, and clauses without flags.
+_capset_key() {
+    local _pieces=() _piece _clause_names _names=() _name _flags _sorted _prev _i _pairs=()
 
-    setcap -r "$NETCTL" 2>/dev/null || true
-    chmod 0750 "$NETCTL" 2>/dev/null || _failed="route helper mode"
-    chmod 0750 "$RUN" 2>/dev/null ||
-        _failed="${_failed:+$_failed and }wrapper mode"
+    # read -ra splits on whitespace but never performs pathname expansion, so
+    # a word like cap_*=ep stays literal and is rejected as a malformed name.
+    IFS=$' \t\n' read -ra _pieces <<<"$1" || return 1
+    for _piece in "${_pieces[@]}"; do
+        case $_piece in
+            *=*) _clause_names=${_piece%%=*} _flags=${_piece#*=} ;;
+            *+*) _clause_names=${_piece%%+*} _flags=${_piece#*+} ;;
+            *) return 1 ;;
+        esac
+        [[ -n $_clause_names && -n $_flags ]] || return 1
+        case $_flags in
+            *[!epi]*) return 1 ;;
+        esac
+        _sorted=$(printf '%s\n' "$_flags" | fold -w 1 | LC_ALL=C sort | tr -d '\n')
+        for (( _i = 1; _i < ${#_sorted}; _i++ )); do
+            [[ ${_sorted:_i-1:1} != "${_sorted:_i:1}" ]] || return 1
+        done
+        _flags=$_sorted
+        # read -ra keeps empty comma-separated fields; word splitting dropped
+        # them, which let cap_net_admin,,cap_net_raw=ep pass as two names.
+        IFS=',' read -ra _names <<<"$_clause_names" || return 1
+        for _name in "${_names[@]}"; do
+            [[ -n $_name ]] || return 1
+            [[ $_name =~ ^[A-Za-z0-9_]+$ ]] || return 1
+            for _prev in "${_pairs[@]}"; do
+                case $_prev in "$_name="*) return 1 ;; esac
+            done
+            _pairs+=("$_name=$_flags")
+        done
+    done
+    [[ ${#_pairs[@]} -gt 0 ]] || return 1
+    _sorted=$(printf '%s\n' "${_pairs[@]}" | LC_ALL=C sort) || return 1
+    printf '%s\n' "${_sorted//$'\n'/ }"
+}
 
-    if getcap "$NETCTL" 2>/dev/null | grep -q 'cap_net_admin'; then
-        _failed="${_failed:+$_failed and }route helper capability"
+# Classifies a capability postcondition from evidence. The readback must be
+# successful, diagnostic-free, and about exactly this file: a nonzero getcap
+# exit, any stderr, output naming another file, a second record, or an
+# unparseable capset is "unverified", never absence. Returns "unverified",
+# "absent" for an empty capset, or the canonical pair-list key read back from
+# the file.
+_caps_state() {
+    local _bin=$1 _line _out _st=0 _tmp _err _key="" _lines=0
+
+    _tmp=$(mktemp) || { echo unverified; return 0; }
+    _out=$(getcap "$_bin" 2>"$_tmp") || _st=$?
+    _err=$(cat "$_tmp")
+    rm -f "$_tmp"
+    if [[ $_st -ne 0 || -n $_err ]]; then
+        echo unverified
+        return 0
     fi
-
-    if [[ -n $_failed ]]; then
-        echo "==> Could not revoke partial TUN privileges from: $_failed" >&2
-        echo "==> Repair the helper permissions manually; TUN mode stays unavailable." >&2
+    while IFS= read -r _line; do
+        [[ -n $_line ]] || continue
+        _lines=$((_lines + 1))
+        [[ $_lines -eq 1 ]] || continue
+        if [[ $_line != "$_bin "* ]]; then
+            _key=""
+            continue
+        fi
+        _key=$(_capset_key "${_line#"$_bin" }") || _key=""
+    done <<<"$_out"
+    if [[ $_lines -eq 0 ]]; then
+        echo absent
+    elif [[ $_lines -eq 1 && -n $_key ]]; then
+        echo "$_key"
     else
-        echo "==> Partial TUN privileges were removed. TUN mode stays unavailable" >&2
-        echo "    until the helper permissions are repaired." >&2
+        echo unverified
     fi
+}
+
+# Classifies the restricted-mode postcondition the same way: an unreadable
+# state is "unverified", a wrong owner or mode is "present".
+_mode_state() {
+    local _bin=$1 _owner _mode _bad=0
+    _owner=$(stat -c '%U:%G' "$_bin" 2>/dev/null) || _bad=1
+    _mode=$(stat -c '%a' "$_bin" 2>/dev/null) || _bad=1
+    if [[ $_bad -ne 0 ]]; then
+        echo unverified
+    elif [[ $_owner == 'root:v2ray-rs' && $_mode == 750 ]]; then
+        echo ok
+    else
+        echo present
+    fi
+}
+
+# Revokes every helper's privileges. A capability removal is skipped only when
+# absence is already verified; otherwise the mutation must succeed and the
+# final readback must verify absence. Modes follow the same rule against the
+# restricted 0750 root:v2ray-rs postcondition. Every helper is checked even
+# when one fails, and the caller sees failure unless everything verified.
+_revoke_helpers() {
+    local _present="" _unverified=""
+    local _st_netctl=0 _st_antidpi=0 _st_mode1=0 _st_mode2=0 _st_mode3=0
+    local _before _after _st
+
+    _before=$(_caps_state "$NETCTL")
+    if [[ $_before != absent ]]; then
+        _st=0
+        setcap -r "$NETCTL" 2>/dev/null || _st=$?
+        [[ $_st -ne 0 ]] && _st_netctl=$_st
+        _after=$(_caps_state "$NETCTL")
+        if [[ $_st -ne 0 || $_after == unverified ]]; then
+            _unverified="route helper capability"
+        elif [[ $_after != absent ]]; then
+            _present="route helper capability"
+        fi
+    fi
+
+    _before=$(_caps_state "$ANTIDPI")
+    if [[ $_before != absent ]]; then
+        _st=0
+        setcap -r "$ANTIDPI" 2>/dev/null || _st=$?
+        [[ $_st -ne 0 ]] && _st_antidpi=$_st
+        _after=$(_caps_state "$ANTIDPI")
+        if [[ $_st -ne 0 || $_after == unverified ]]; then
+            _unverified="${_unverified:+$_unverified and }anti-DPI helper capability"
+        elif [[ $_after != absent ]]; then
+            _present="${_present:+$_present and }anti-DPI helper capability"
+        fi
+    fi
+
+    _before=$(_mode_state "$NETCTL")
+    if [[ $_before != ok ]]; then
+        _st=0
+        chmod 0750 "$NETCTL" 2>/dev/null || _st=$?
+        [[ $_st -ne 0 ]] && _st_mode1=$_st
+        _after=$(_mode_state "$NETCTL")
+        if [[ $_st -ne 0 || $_after == unverified ]]; then
+            _unverified="${_unverified:+$_unverified and }route helper mode"
+        elif [[ $_after != ok ]]; then
+            _present="${_present:+$_present and }route helper mode"
+        fi
+    fi
+
+    _before=$(_mode_state "$RUN")
+    if [[ $_before != ok ]]; then
+        _st=0
+        chmod 0750 "$RUN" 2>/dev/null || _st=$?
+        [[ $_st -ne 0 ]] && _st_mode2=$_st
+        _after=$(_mode_state "$RUN")
+        if [[ $_st -ne 0 || $_after == unverified ]]; then
+            _unverified="${_unverified:+$_unverified and }wrapper mode"
+        elif [[ $_after != ok ]]; then
+            _present="${_present:+$_present and }wrapper mode"
+        fi
+    fi
+
+    _before=$(_mode_state "$ANTIDPI")
+    if [[ $_before != ok ]]; then
+        _st=0
+        chmod 0750 "$ANTIDPI" 2>/dev/null || _st=$?
+        [[ $_st -ne 0 ]] && _st_mode3=$_st
+        _after=$(_mode_state "$ANTIDPI")
+        if [[ $_st -ne 0 || $_after == unverified ]]; then
+            _unverified="${_unverified:+$_unverified and }anti-DPI helper mode"
+        elif [[ $_after != ok ]]; then
+            _present="${_present:+$_present and }anti-DPI helper mode"
+        fi
+    fi
+
+    if [[ -n $_present || -n $_unverified ]]; then
+        [[ -n $_present ]] &&
+            echo "==> Privileges could not be revoked from: $_present" >&2
+        [[ -n $_unverified ]] &&
+            echo "==> Revocation could not be verified for: $_unverified" >&2
+        echo "==> Revocation command statuses (diagnostic): setcap ${_st_netctl}/${_st_antidpi}, chmod ${_st_mode1}/${_st_mode2}/${_st_mode3}" >&2
+        echo "==> Repair the helper permissions manually; TUN mode stays unavailable." >&2
+        return 1
+    fi
+
+    echo "==> Privilege cleanup verified: no capabilities remain and the helpers are mode 0750." >&2
+    return 0
 }
 
 _fail_helpers() {
@@ -43,22 +220,22 @@ _fail_helpers() {
 
 post_install() {
     getent group v2ray-rs >/dev/null || groupadd --system v2ray-rs ||
-        { echo "==> Could not create the v2ray-rs group; TUN mode is unavailable" >&2; return 1; }
+        { echo "==> Could not create the v2ray-rs group; TUN mode and the anti-DPI engine are unavailable" >&2; return 1; }
     id v2ray-rs-bypass &>/dev/null ||
         useradd --system --no-create-home --shell /usr/bin/nologin v2ray-rs-bypass ||
         { echo "==> Could not create v2ray-rs-bypass; TUN mode is unavailable" >&2; return 1; }
 
     local _bin
-    for _bin in "$NETCTL" "$RUN"; do
+    for _bin in "$NETCTL" "$RUN" "$ANTIDPI"; do
         [[ -f $_bin ]] ||
-            { echo "==> Missing helper $_bin; TUN mode is unavailable" >&2; return 1; }
+            { echo "==> Missing helper $_bin; TUN mode or the anti-DPI engine is unavailable" >&2; return 1; }
     done
 
     # Start from group-restricted helpers without capabilities or setuid. chown
     # clears the setuid bit and any file capabilities, so modes follow it.
-    chown root:v2ray-rs "$NETCTL" "$RUN" 2>/dev/null ||
+    chown root:v2ray-rs "$NETCTL" "$RUN" "$ANTIDPI" 2>/dev/null ||
         { _fail_helpers "could not set root:v2ray-rs ownership"; return 1; }
-    chmod 0750 "$NETCTL" "$RUN" 2>/dev/null ||
+    chmod 0750 "$NETCTL" "$RUN" "$ANTIDPI" 2>/dev/null ||
         { _fail_helpers "could not restrict helper access to mode 0750"; return 1; }
 
     if ! _helper_matches root:v2ray-rs 750 "$NETCTL"; then
@@ -69,29 +246,39 @@ post_install() {
         _fail_helpers "wrapper is not root:v2ray-rs with mode 0750"
         return 1
     fi
+    if ! _helper_matches root:v2ray-rs 750 "$ANTIDPI"; then
+        _fail_helpers "anti-DPI helper is not root:v2ray-rs with mode 0750"
+        return 1
+    fi
 
     local _failed=""
     setcap 'cap_net_admin+ep' "$NETCTL" 2>/dev/null || _failed="cap_net_admin grant"
+    setcap 'cap_net_admin,cap_net_raw+ep' "$ANTIDPI" 2>/dev/null ||
+        _failed="${_failed:+$_failed and }anti-DPI capability grant"
     chmod 4750 "$RUN" 2>/dev/null ||
         _failed="${_failed:+$_failed and }setuid mode"
 
     if [[ -z $_failed ]]; then
-        if ! getcap "$NETCTL" 2>/dev/null | grep -q 'cap_net_admin'; then
+        if [[ $(_caps_state "$NETCTL") != "$NETCTL_CAPSET" ]]; then
             _failed="cap_net_admin verification"
+        elif [[ $(_caps_state "$ANTIDPI") != "$ANTIDPI_CAPSET" ]]; then
+            _failed="anti-DPI capability verification"
         elif ! _helper_matches root:v2ray-rs 750 "$NETCTL"; then
             _failed="route helper mode verification"
         elif ! _helper_matches root:v2ray-rs 4750 "$RUN"; then
             _failed="wrapper mode verification"
+        elif ! _helper_matches root:v2ray-rs 750 "$ANTIDPI"; then
+            _failed="anti-DPI helper mode verification"
         fi
     fi
 
     [[ -z $_failed ]] || { _fail_helpers "$_failed"; return 1; }
 
     cat <<'EOF'
-==> TUN mode requires your user to be in the 'v2ray-rs' group:
+==> TUN mode and the anti-DPI engine require your user to be in the 'v2ray-rs' group:
         sudo usermod -aG v2ray-rs "$USER"
-    then log out and back in. Until then, TUN connect fails with a
-    permission error.
+    then log out and back in. Until then, TUN connect and the anti-DPI
+    engine fail with a permission error.
 EOF
 }
 
@@ -100,9 +287,16 @@ post_upgrade() {
 }
 
 pre_remove() {
-    setcap -r "$NETCTL" 2>/dev/null || true
+    local _status=0
+    if ! _revoke_helpers; then
+        echo "==> Unresolved: helper privilege cleanup did not verify; repair manually." >&2
+        _status=1
+    fi
     # Keep the v2ray-rs group and the v2ray-rs-bypass account: removing them
     # would change the identity, UID, GID, and group memberships that a
     # reinstall and the bypass wrapper depend on.
     echo "==> Retaining the v2ray-rs group and v2ray-rs-bypass user across removal."
+    echo "==> Capabilities granted earlier to your system backend are not revoked automatically;"
+    echo "==> review the actual backend binary with its administrator before relying on them."
+    return $_status
 }
