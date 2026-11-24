@@ -1,0 +1,17 @@
+pkgbase = aptui-bin
+	pkgdesc = TUI package manager for APT-based distributions
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/mexirica/aptui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = aptui
+	conflicts = aptui
+	options = !debug
+	source_x86_64 = aptui-bin-0.8.2-x86_64.tar.gz::https://github.com/mexirica/aptui/releases/download/v0.8.2/aptui_0.8.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5d24e954200e71eec645bc4878fd84064c430e74b03ba7f8bb501fbbd2581c50
+	source_aarch64 = aptui-bin-0.8.2-aarch64.tar.gz::https://github.com/mexirica/aptui/releases/download/v0.8.2/aptui_0.8.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = e386e3475467c8cdcb5071a60b9e9d5059393dfa7d272714bba9b46d77842816
+
+pkgname = aptui-bin
