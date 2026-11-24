@@ -1,9 +1,8 @@
 pkgbase = wild-git
 	pkgdesc = A linker with the goal of being very fast for iterative development
 	pkgver = 0.11.0.r204.gc1cba811
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/wild-linker/wild
-	arch = i686
 	arch = x86_64
 	license = Apache-2.0
 	license = MIT

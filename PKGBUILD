@@ -2,9 +2,9 @@
 
 pkgname=wild-git
 pkgver=0.11.0.r204.gc1cba811
-pkgrel=4
+pkgrel=5
 pkgdesc="A linker with the goal of being very fast for iterative development"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/wild-linker/wild"
 license=('Apache-2.0' 'MIT')
 depends=('glibc' 'libgcc' libzstd.so)
