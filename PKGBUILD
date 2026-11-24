@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=Kaleido
 pkgname=python-${_base,,}-bin
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Static image export for web-based visualization libraries with zero dependencies"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(python-installer)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=(${url}/releases/download/v${pkgver}/${_base,,}-${pkgver}-py3-none-any.whl)
-sha512sums=('540ed2a7603518a9d4c005cdd046d5ea3fff725c5e2d711099acea8b93d5c41793761fd696031130342bf35698a03a3d6e0bebf0f0adea60618fca9ac85c7731')
+sha512sums=('4ed6cca0aa850987f2a9b9505cef9676fc52a42f1eefc90e8f07fd890dc891192c328b946d84298b9c90801a487c6aea83e2b1bd6147a7f7aae3d8e29bc53194')
 
 package() {
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" ${_base,,}-${pkgver}-*.whl
