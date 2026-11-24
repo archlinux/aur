@@ -1,0 +1,18 @@
+pkgbase = bashcov
+	pkgdesc = Code coverage tool for Bash
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://github.com/infertux/bashcov
+	arch = any
+	license = MIT
+	checkdepends = ruby-rspec
+	makedepends = git
+	depends = bash
+	depends = ruby
+	depends = ruby-simplecov
+	provides = ruby-bashcov=4.0.3
+	options = !emptydirs
+	source = bashcov-4.0.3.tar.gz::https://github.com/infertux/bashcov/archive/refs/tags/v4.0.3.tar.gz
+	sha256sums = f722a48133cbebb3063bde9d0eb92afdd1a6c08a5f3772b66ce421687769165e
+
+pkgname = bashcov
