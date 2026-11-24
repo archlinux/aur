@@ -6,7 +6,7 @@
 # Contributor: joel schaerer <joel.schaerer@laposte.net>
 
 pkgname=itk-lite
-pkgver=5.4.7
+pkgver=5.4.8
 pkgrel=1
 pkgdesc="Cross-platform system that provides developers with an extensive suite of software tools for image analysis"
 arch=(x86_64)
@@ -35,7 +35,7 @@ conflicts=(itk insight-toolkit)
 source=("https://github.com/InsightSoftwareConsortium/ITK/releases/download/v${pkgver}/InsightToolkit-${pkgver}.tar.gz"
         #"${pkgname}-${pkgver}.tar.gz::https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v${pkgver}.tar.gz"
         )
-sha512sums=('5642b736fb209687d69e7064d96c9193589a8a862831627a66f7d169f3d7d9284637578c60785b4df967f0671b963b4ae465edf38d95b77b6bff01d16178d70a')
+sha512sums=('87d40f5b393567ec11983b2d69213331cdf01d1699d9e43254cf10d71f353981b299acdd65060e5b34db651ff941b3a2d8e9d3f0e2e28dde85799084ceffe99d')
 
 build() {
   local _flags=(
@@ -60,7 +60,7 @@ build() {
     -DModule_SimpleITKFilters:BOOL=ON
   )
 
-  cmake -B build -S "InsightToolkit-${pkgver}" -Wno-dev \
+  cmake -B build -S "InsightToolkit-${pkgver}" -Wno-author \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
