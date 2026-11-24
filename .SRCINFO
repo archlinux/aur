@@ -1,0 +1,14 @@
+pkgbase = updates
+	pkgdesc = Update npm, uv, cargo, go, docker and Actions dependencies
+	pkgver = 20.0.2
+	pkgrel = 1
+	url = https://github.com/silverwind/updates
+	arch = any
+	license = BSD-2-Clause
+	makedepends = npm
+	depends = nodejs
+	noextract = updates-20.0.2.tgz
+	source = updates-20.0.2.tgz::https://registry.npmjs.org/updates/-/updates-20.0.2.tgz
+	sha256sums = 2b54acfa935623499623b5e0f6023f869adbad1013743171581da175f46ec165
+
+pkgname = updates
