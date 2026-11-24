@@ -2,16 +2,16 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=optparse
-_pkgver=1.7.5
+_pkgver=1.8.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Command Line Option Parser"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
-  r-getopt
+  r
 )
 checkdepends=(
   r-stringr
@@ -19,12 +19,13 @@ checkdepends=(
 )
 optdepends=(
   r-knitr
+  r-rmarkdown
   r-stringr
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8c943a4299157ea22967309e8c7158c2')
-b2sums=('4379ce2a3947934ca2e6c83a34fddd77ca49313ea77d91908a13b8ef583259af0c31f1d6c9f1cf15405fb5068165aed56395edcce52c3d2843b8691ed2bb000a')
+md5sums=('b22bd49a9cfb0a880695359ad94c7f43')
+b2sums=('96ce16504c274cb56d53791ba3af0283554fc6a13611237602327825299d9baa4812bba2ebd2dddcb6dcc8c983a0d78d79d68a77a77f9bda42acdf85e8a214b2')
 
 build() {
   mkdir build
@@ -33,7 +34,7 @@ build() {
 
 check() {
   cd "$_pkgname/tests"
-  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla run-all.R
+  R_LIBS="$srcdir/build" NOT_CRAN=true R --vanilla -s -f run-all.R
 }
 
 package() {

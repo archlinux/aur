@@ -1,18 +1,19 @@
 pkgbase = r-optparse
 	pkgdesc = Command Line Option Parser
-	pkgver = 1.7.5
-	pkgrel = 3
+	pkgver = 1.8.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=optparse
 	arch = any
 	license = GPL-2.0-or-later
 	checkdepends = r-stringr
 	checkdepends = r-testthat
-	depends = r-getopt
+	depends = r
 	optdepends = r-knitr
+	optdepends = r-rmarkdown
 	optdepends = r-stringr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/optparse_1.7.5.tar.gz
-	md5sums = 8c943a4299157ea22967309e8c7158c2
-	b2sums = 4379ce2a3947934ca2e6c83a34fddd77ca49313ea77d91908a13b8ef583259af0c31f1d6c9f1cf15405fb5068165aed56395edcce52c3d2843b8691ed2bb000a
+	source = https://cran.r-project.org/src/contrib/optparse_1.8.2.tar.gz
+	md5sums = b22bd49a9cfb0a880695359ad94c7f43
+	b2sums = 96ce16504c274cb56d53791ba3af0283554fc6a13611237602327825299d9baa4812bba2ebd2dddcb6dcc8c983a0d78d79d68a77a77f9bda42acdf85e8a214b2
 
 pkgname = r-optparse
