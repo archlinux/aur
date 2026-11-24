@@ -10,7 +10,7 @@ url=https://github.com/vEnhance/fate-casino
 license=(MIT)
 depends=(python python-tomli python-gitpython python-tomli python-tomlkit)
 optdepends=(fd)
-makedepends=(python-hatchling)
+makedepends=(python-build python-installer python-hatchling)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
   LICENSE)
 
