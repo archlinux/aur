@@ -1,0 +1,23 @@
+pkgbase = scratch-link-gtk
+	pkgdesc = Bluetooth bridge for Scratch 3 hardware extensions
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yetist/scratch-link-gtk
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = bluez
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = json-glib
+	depends = libsoup3
+	provides = scratch-link
+	conflicts = scratch-link
+	source = scratch-link-gtk-0.1.0.tar.gz::https://github.com/yetist/scratch-link-gtk/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 90aaedb3ff32b271e73761ba0cab0c1a9000bc7df7bd111a3cbd3c400c651cbf
+
+pkgname = scratch-link-gtk
