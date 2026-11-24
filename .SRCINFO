@@ -8,7 +8,7 @@ pkgbase = mactahoe-icon-theme
 	depends = gtk-update-icon-cache
 	depends = hicolor-icon-theme
 	options = !strip
-	source = https://gh-proxy.com/https://github.com/vinceliuice/MacTahoe-icon-theme/archive/refs/tags/2026-09-10.tar.gz
+	source = https://gh-proxy.cn/https://github.com/vinceliuice/MacTahoe-icon-theme/archive/refs/tags/2026-09-10.tar.gz
 	sha256sums = 6330369e9e10a28cfc8da598ebf63a7204be705403519963ff84e1cb84719d35
 
 pkgname = mactahoe-icon-theme
