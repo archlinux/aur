@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bitwarden-cli-bin
-pkgver=2026.11.0
+pkgver=2026.11.1
 pkgrel=1
 pkgdesc="The command line vault"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source=("LICENSE_BITWARDEN-$pkgver.txt::https://raw.githubusercontent.com/bitwar
 source_x86_64=("https://github.com/bitwarden/clients/releases/download/cli-v$pkgver/bw-bit-linux-$pkgver.zip")
 source_aarch64=("https://github.com/bitwarden/clients/releases/download/cli-v$pkgver/bw-bit-linux-arm64-$pkgver.zip")
 sha256sums=('955ba776275f22852e50034ca83acff1e9fffea58e7ffde9f5d1b0c6f0bce79a')
-sha256sums_x86_64=('bfc7643cbc20f970bf04b994f96489703fcf77217a2384f1743e43848363b0ba')
-sha256sums_aarch64=('39e8336376739bbe5306471df0667793757ef1e243df3846461f66be9166e9d8')
+sha256sums_x86_64=('4c074b8d7a4365075d6628a224f65f29e6797d806b0896850973997464346622')
+sha256sums_aarch64=('6e85ed7939414a768a58aa40fff53e2ba79584bb7de73e47b97b206bfb532497')
 
 build() {
 
