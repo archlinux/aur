@@ -1,0 +1,17 @@
+pkgbase = asciimol
+	pkgdesc = Curses-based ASCII molecule viewer
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://github.com/dewberryants/asciimol
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/a/asciimol/asciimol-1.2.7.tar.gz
+	sha256sums = 4aac1588e9d5c754dca58f0a7795500a0d40f0a4270612fc6aaf46b2bc1eaf79
+
+pkgname = asciimol
