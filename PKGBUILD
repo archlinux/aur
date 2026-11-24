@@ -5,7 +5,7 @@
 # `sudostamp` package's installer. A package of its own so a server's `sudostamp` stays arch=any
 # with no compiler. Updated per release by scripts/publish-aur.sh.
 pkgname=sudostamp-desktop
-pkgver=1.7.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="SudoStamp on the desktop: tray status, sudo notifications, pause, pairing and health"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,9 @@ url="https://gitlab.com/ritwick7/sudostamp"
 # Ubuntu-font-1.0 (see NOTICE).
 license=('MIT' 'Apache-2.0' 'OFL-1.1' 'LicenseRef-Ubuntu-Font-1.0')
 # The window opens Wayland/X11, EGL and xkbcommon at run time (not linked), hence named here.
-depends=('sudostamp' 'polkit' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libglvnd' 'libxkbcommon' 'wayland')
+# sudostamp>=1.7.0: the installer's `doctor --json`/`setup --json` and the probe's events (1.6.0),
+# and QR pairing (`discover --qr-stdin`, `setup --json --qr`, 1.7.0). An older one breaks the window.
+depends=('sudostamp>=1.7.0' 'polkit' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libglvnd' 'libxkbcommon' 'wayland')
 makedepends=('cargo')
 optdepends=('libx11: the window on an X11 session'
             'libxcursor: the window on an X11 session'
@@ -23,7 +25,7 @@ optdepends=('libx11: the window on an X11 session'
             'libxkbcommon-x11: the window on an X11 session')
 options=('!lto' '!debug')
 source=("sudostamp-v$pkgver.tar.gz::$url/-/archive/v$pkgver/sudostamp-v$pkgver.tar.gz")
-sha256sums=('e0e392c7a9c779f1fe4236383377892f5b058102f2288fc675942dc2aa60ab06')
+sha256sums=('7dcfec202f95d2b439dd371c9b96dfb467c48a04f22243896209e3135fd43518')
 
 _src() { cd "$srcdir"/sudostamp-v"$pkgver"*/desktop; }
 
