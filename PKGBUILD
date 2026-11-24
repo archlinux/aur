@@ -2,10 +2,8 @@
 
 pkgname=cleanuparr
 pkgver=2.11.2
-_pkgver_qbittorrent=1.0.3
-_pkgver_transmission=1.0.3
-pkgrel=1
-pkgdesc='Tool for automating the cleanup of unwanted or blocked files in Sonarr, Radarr, and supported download clients like qBittorrent, Deluge and Transmission.'
+pkgrel=2
+pkgdesc='Automate the cleanup of unwanted or blocked files in Sonarr, Radarr, and supported download clients like qBittorrent, Deluge and Transmission.'
 arch=(x86_64 aarch64)
 url='https://github.com/Cleanuparr/Cleanuparr'
 license=('GPL-3.0-or-later')
@@ -21,16 +19,12 @@ depends=(
 makedepends=(dotnet-sdk aspnet-targeting-pack git nodejs npm)
 source=(
   "git+$url.git#tag=v${pkgver}"
-  "git+${url%/*}/qbittorrent-net-client.git"
-  "git+${url%/*}/Transmission.API.RPC.git"
   cleanuparr.service
   cleanuparr.sysusers
   cleanuparr.tmpfiles
   cleanuparr.install
 )
 sha256sums=('ed2baee979d46b057c6e4749a4be880dfda33979825da1141b193f9bf3a37b0b'
-            'SKIP'
-            'SKIP'
             'e64633347d71185ef886314a74881f81ea70cbb896f285547dfd7739ecbe0188'
             '4606d163398bbfa37f8f6b8967c0bee7c950823f766983699194828f0f8b008e'
             '9a16872bfaeb80898641efc70a92a559c49f3893b792b2ce9be9a4cf7143dbe4'
@@ -48,20 +42,6 @@ _artifacts="${pkgname^}/artifacts/$pkgname-$pkgver-linux-$_CARCH"
 build() {
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-  # We need to add a local nuget source to store QBittorrent and Transmission dependencies
-  dotnet nuget add source --name "$pkgname-$pkgver" "$srcdir"
-
-  # Build and publish Transmission.API.RPC
-  dotnet publish Transmission.API.RPC --configuration Release --runtime linux-"$_CARCH" \
-    /p:DebugSymbols=false /p:Version="$_pkgver_transmission"
-  dotnet pack Transmission.API.RPC
-  dotnet nuget push Transmission.API.RPC/Transmission.API.RPC/bin/Release/FLM.Transmission.$_pkgver_transmission.nupkg --source "$srcdir"
-
-  # Build and publish qbittorrent-net-client
-  dotnet publish qbittorrent-net-client/src/QBittorrent.Client/QBittorrent.Client.csproj --configuration Release --runtime linux-"$_CARCH" \
-    /p:DebugSymbols=false /p:Version="$_pkgver_qbittorrent"
-  dotnet nuget push qbittorrent-net-client/src/QBittorrent.Client/bin/Release/FLM.QBittorrent.$_pkgver_qbittorrent.nupkg --source "$srcdir"
-
   # Build and publish Cleanuparr
   dotnet publish ${pkgname^}/code/backend/${pkgname^}.Api/${pkgname^}.Api.csproj \
     --framework ${_framework} \
@@ -71,9 +51,6 @@ build() {
     -o "$_artifacts" \
     /p:PublishSingleFile=true /p:Version=$pkgver /p:DebugSymbols=false \
     && dotnet build-server shutdown # Build servers do not terminate automatically
-
-  # Clean nuget source
-  dotnet nuget remove source "$pkgname-$pkgver"
 
   # Build frontend
   (
