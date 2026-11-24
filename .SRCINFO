@@ -1,0 +1,14 @@
+pkgbase = confluence-cli
+	pkgdesc = Command-line interface for Atlassian Confluence
+	pkgver = 2.31.3
+	pkgrel = 1
+	url = https://github.com/pchuri/confluence-cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = confluence-cli-2.31.3.tgz
+	source = confluence-cli-2.31.3.tgz::https://registry.npmjs.org/confluence-cli/-/confluence-cli-2.31.3.tgz
+	sha256sums = 7c21ecb065b8685b5146a17365fa7b8060fd02740b029051ae8f4d622ec0cc65
+
+pkgname = confluence-cli
