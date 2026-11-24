@@ -1,15 +1,15 @@
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Maintainer: Luca Weiss <aur (at) lucaweiss (dot) eu>
 
 _servicename=download_url
 pkgname=obs-service-$_servicename
-pkgver=0.1.3
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="An OBS source service: download URL"
 arch=('any')
 url="https://github.com/openSUSE/obs-service-$_servicename"
 license=('GPL2')
 source=("https://github.com/openSUSE/obs-service-$_servicename/archive/$pkgver.tar.gz")
-sha512sums=('b2cf5b7d3fa2c67635833274956a89543acaf6d896e27a67d2e770d9dbb1014ec056dbfef60a2fce2b41f3e50faff978080ae108b36984e4e4224c89413ebdd0')
+sha512sums=('c647d78e36a5a0eff6f19cd664b42e94ebaa847411455eec71294f6ded2e7c7d10bccbcaaf93bdabeff91a33a8a8f0702b11c7aa0981dba94d9c66ffa3678645')
 
 package() {
     cd "$pkgname-$pkgver"
