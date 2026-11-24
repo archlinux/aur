@@ -1,7 +1,7 @@
 pkgbase = zcode-cn-bin
 	pkgdesc = ZCode — agentic development environment for GLM (official Linux build, BigModel defaults)
 	pkgver = 4.0.0_10870
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zcode.z.ai/cn
 	install = zcode-cn-bin.install
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = zcode-cn-bin
 	options = !strip
 	source = zcode-cn-bin.sh
 	source = patch.cjs
-	sha256sums = 6f4fbd5d8f8e6a1cd8b920c2a867e20eca10dd61404a20aee399168f5be9035e
+	sha256sums = 1bf4af0534a4bc5a112beb481329d5500e75fffa33925dd3d6960216b67e37e6
 	sha256sums = 2700a8d1d447a6805b1e600bdc12cc05afa16948896696a5a3a0ffb341e1d090
 	source_x86_64 = ZCode-4.0.0-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/4.0.0/linux-x64/ZCode-4.0.0-linux-x64.deb
 	sha256sums_x86_64 = 402f0eea0e3dfa23e3176525ae08d0f4101ced64ddbbe77c88ade87c53ab256a
