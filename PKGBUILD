@@ -2,7 +2,7 @@
 
 pkgname=python-k3redisutil
 _name=${pkgname#python-}
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Redis utilities for easier client management and proxy support"
 provides=(${pkgname})
@@ -34,7 +34,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('5ca02e3654d6cfe4d19eca18c88160a208ec3f007be35f58ed2ac6d827f652c4')
+sha256sums=('9b195fb36d683fee0089f198fd7161912e178a60143ecb31a2137d5b3d7f3a81')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
