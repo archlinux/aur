@@ -1,6 +1,6 @@
 pkgbase = atmosphera
 	pkgdesc = Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/alexindigo/atmosphera
 	install = atmosphera.install
@@ -8,13 +8,16 @@ pkgbase = atmosphera
 	license = GPL-3.0-or-later
 	depends = quickshell
 	depends = qt6-dbusqml>=1.1.0
-	depends = qt6-configqml>=0.5.1
+	depends = qt6-configqml>=0.5.5
 	depends = qt6-pipewirespectrum
 	depends = qt6-xdgiconqml-git
 	depends = imagemagick
 	depends = brightnessctl
 	depends = ffmpeg
 	depends = qt6-multimedia
+	depends = qt6-imageformats
+	depends = libwebp
+	depends = libheif
 	depends = python
 	depends = python-dbus
 	depends = python-gobject
@@ -27,7 +30,7 @@ pkgbase = atmosphera
 	optdepends = wlsunset: For supporting NightLight
 	optdepends = power-profiles-daemon: For power profile management
 	optdepends = ddcutil: For external display brightness control
-	optdepends = qt6-niriqml: niri IPC integration (workspaces, windows, session config)
+	optdepends = qt6-niriqml>=0.3.0: niri IPC integration (workspaces, windows, session config)
 	optdepends = qt6-mangowcqml: mangowc IPC integration (workspaces, windows, session config)
 	optdepends = keyd: hardware-level keyboard remapping (bindings environments)
 	optdepends = xremap-niri-bin: session-level app-scoped keymaps (macos bindings)
@@ -42,7 +45,7 @@ pkgbase = atmosphera
 	provides = atmosphera
 	provides = xdg-desktop-portal-impl
 	conflicts = atmosphera-git
-	source = atmosphera-0.10.0.tar.gz::https://github.com/alexindigo/atmosphera/archive/refs/tags/v0.10.0.tar.gz
-	sha256sums = 91dcf9001416931045863664e9a15c8fec2957f3b43549376cc01065346af9c4
+	source = atmosphera-0.11.0.tar.gz::https://github.com/alexindigo/atmosphera/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = ea8d956a45c6f65da59f341184cafc4506eae828b99535fd316e1891829a25ed
 
 pkgname = atmosphera

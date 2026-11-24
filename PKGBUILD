@@ -1,7 +1,7 @@
 # Maintainer: Atmosphera App <atmosphera-app@proton.me>
 
 pkgname=atmosphera
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 _gitname="$pkgname-$pkgver"
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell"
@@ -12,13 +12,16 @@ makedepends=()
 depends=(
   'quickshell'
   'qt6-dbusqml>=1.1.0'
-  'qt6-configqml>=0.5.1'
+  'qt6-configqml>=0.5.5'
   'qt6-pipewirespectrum'
   'qt6-xdgiconqml-git'
   'imagemagick'
   'brightnessctl'
   'ffmpeg'
   'qt6-multimedia'
+  'qt6-imageformats'
+  'libwebp'
+  'libheif'
   'python'
   'python-dbus'
   'python-gobject'
@@ -33,7 +36,7 @@ optdepends=(
   'wlsunset: For supporting NightLight'
   'power-profiles-daemon: For power profile management'
   'ddcutil: For external display brightness control'
-  'qt6-niriqml: niri IPC integration (workspaces, windows, session config)'
+  'qt6-niriqml>=0.3.0: niri IPC integration (workspaces, windows, session config)'
   'qt6-mangowcqml: mangowc IPC integration (workspaces, windows, session config)'
   'keyd: hardware-level keyboard remapping (bindings environments)'
   'xremap-niri-bin: session-level app-scoped keymaps (macos bindings)'
@@ -50,7 +53,7 @@ provides=('atmosphera' 'xdg-desktop-portal-impl')
 conflicts=('atmosphera-git')
 install=atmosphera.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('91dcf9001416931045863664e9a15c8fec2957f3b43549376cc01065346af9c4')
+sha256sums=('ea8d956a45c6f65da59f341184cafc4506eae828b99535fd316e1891829a25ed')
 
 package() {
   cd "$srcdir/$_gitname"
