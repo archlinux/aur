@@ -1,10 +1,9 @@
-_gh=Orang-Studio/OrangChat
 pkgname=orangchat-bin
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="OrangChat desktop - a Discord-like real-time messaging client"
 arch=('x86_64')
-url="https://github.com/${_gh}"
+url="https://chat.oranges.lt"
 license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib')
 optdepends=('libnotify: desktop notifications'
@@ -13,9 +12,9 @@ optdepends=('libnotify: desktop notifications'
 provides=('orangchat')
 conflicts=('orangchat')
 options=('!strip')
-source=("orangchat-${pkgver}.tar.gz::https://github.com/${_gh}/releases/download/${pkgver}/OrangChat-${pkgver}-x64.tar.gz"
+source=("orangchat-${pkgver}.tar.gz::https://chat.oranges.lt/download/linux/OrangChat-${pkgver}-x64.tar.gz"
         "orangchat.png")
-sha256sums=('da6f7aa54a0e0c5a83ffafac1e78aac620fab9282a674704150ee813cef4a350'
+sha256sums=('55ea1f742d3ec721153f81e61d0b5d3cbc8d15f3bf878ed05f57d1f17166aeb8'
             '3018de2f89a912f38ae31a1c42284df05f90ce726cb1f64211774a7bc9fac71a')
 
 package() {
