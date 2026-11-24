@@ -7,7 +7,7 @@ _pkgname=fcitx5-ainput
 # pkgver()). Keep it at the current real version so the AUR listing is not
 # stale; the authoritative version is computed from git history by pkgver()
 # below at build time. Bump this + regenerate .SRCINFO before pushing to AUR.
-pkgver=0.1.1.r193.2d215e3
+pkgver=0.1.2.r202.f968039
 pkgrel=1
 pkgdesc="Voice input addon for fcitx5: push-to-talk ASR via CapsLock"
 # Both are first-class: nothing in the addon is architecture specific (the
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    printf "0.1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.1.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
