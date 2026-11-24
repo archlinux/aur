@@ -1,7 +1,7 @@
 pkgbase = trezor-suite-bin
 	pkgdesc = Desktop app for Trezor hardware wallets.
 	pkgver = 26.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://trezor.io/trezor-suite
 	arch = aarch64
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = trezor-suite-bin
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 	source_aarch64 = trezor-suite-26.11.2-aarch64.AppImage::https://github.com/trezor/trezor-suite/releases/download/v26.11.2/Trezor-Suite-26.11.2-linux-arm64.AppImage
-	sha256sums_aarch64 = dad5d03c36c9945c4709faa126fc3c86c619248a613619cad478ed17d2e5d842
+	sha256sums_aarch64 = 08636f19bf55c7114fa9f8dc514d2ac3182559a9d1d5b471cfab1004de944d4f
 	source_x86_64 = trezor-suite-26.11.2-x86_64.AppImage::https://github.com/trezor/trezor-suite/releases/download/v26.11.2/Trezor-Suite-26.11.2-linux-x86_64.AppImage
-	sha256sums_x86_64 = e206a8da516894ffa03cda0ac9e8e0c82445f9c3d94768c532e9f88713e53041
+	sha256sums_x86_64 = ec440525be7f52607168226fbb15d412353023573b79724cdad688692f848e3d
 
 pkgname = trezor-suite-bin

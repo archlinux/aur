@@ -3,7 +3,7 @@ pkgname=trezor-suite-bin
 _pkgname=Trezor-Suite
 pkgver=26.11.2
 _electronversion=44
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop app for Trezor hardware wallets."
 arch=(
     'aarch64'
@@ -34,8 +34,8 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/do
 sha256sums=('0bb9e6855d6aa4f013a87ed9ceb2ef47b6eddc44858cc85ed3faf5d53677f67a'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
-sha256sums_aarch64=('dad5d03c36c9945c4709faa126fc3c86c619248a613619cad478ed17d2e5d842')
-sha256sums_x86_64=('e206a8da516894ffa03cda0ac9e8e0c82445f9c3d94768c532e9f88713e53041')
+sha256sums_aarch64=('08636f19bf55c7114fa9f8dc514d2ac3182559a9d1d5b471cfab1004de944d4f')
+sha256sums_x86_64=('ec440525be7f52607168226fbb15d412353023573b79724cdad688692f848e3d')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
