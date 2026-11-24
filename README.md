@@ -32,7 +32,7 @@ netpad-vnext
 ## Upstream
 
 - GitHub: https://github.com/tareqimbasher/NetPad
-- Official Website: https://netpad.app (if exists)
+- Official Website: https://netpad.app
 
 ## License
 
