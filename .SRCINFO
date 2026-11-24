@@ -1,6 +1,6 @@
 pkgbase = typbase
 	pkgdesc = Local-first knowledge base made for Typst and the Atmosphere.
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/lemueldls/typbase
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = typbase
 	depends = openssl
 	options = !strip
 	options = !emptydirs
-	source = typbase-v0.5.0.tar.gz::https://github.com/lemueldls/typbase/archive/refs/tags/typbase-v0.5.0.tar.gz
-	sha256sums = 120fce154ff0e72eb01ab901eddd6e436e1b098853ee59d379408f3fd31bf9f0
+	source = typbase-v0.5.1.tar.gz::https://github.com/lemueldls/typbase/archive/refs/tags/typbase-v0.5.1.tar.gz
+	sha256sums = d7d508a6e7ee67349569c91f12585ac6d237be48f3d8a43e3e7c43a0bc20270f
 
 pkgname = typbase
