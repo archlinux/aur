@@ -1,0 +1,16 @@
+pkgbase = buffrs
+	pkgdesc = Package manager for Protocol Buffers
+	pkgver = 0.13.3
+	pkgrel = 1
+	url = https://github.com/helsing-ai/buffrs
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = buffrs-0.13.3.tar.gz::https://github.com/helsing-ai/buffrs/archive/refs/tags/v0.13.3.tar.gz
+	sha256sums = a073cbe7c3f2e059caf9fda3f33716b28481d4493e4adb8fe971d0fa1bdbb65b
+
+pkgname = buffrs
