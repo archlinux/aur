@@ -11,7 +11,7 @@
 # See https://creativecommons.org/licenses/by/4.0/deed.de
 # endregion
 pkgname=bashlink
-pkgver=1.0.297
+pkgver=1.0.298
 pkgrel=1
 pkgdesc='A high reliable bash library.'
 arch=(any)
@@ -25,7 +25,7 @@ optdepends=(
 provides=(bashlink bashlink-doctest bashlink-document)
 # NOTE: The published package keeps the folder structure (e.g. "prompt/").
 source=("https://registry.npmjs.org/bashlink/-/bashlink-${pkgver}.tgz")
-sha256sums=('dcc0d4699c418588e4fe9f034fedea06a76cbde8ac39d3d3af4dd3cb25863741')
+sha256sums=('f1e3bf9c0cfc018edf964bfd64e41071b5c051dd5c111db521e6e16dbb39ad8a')
 copy_to_aur=true
 
 package() {
