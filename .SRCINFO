@@ -1,0 +1,17 @@
+pkgbase = provenant-bin
+	pkgdesc = Scan for licenses, copyrights, package metadata and SBOM data
+	pkgver = 1.0.18
+	pkgrel = 1
+	url = https://github.com/getprovenant/provenant
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = provenant
+	conflicts = provenant
+	options = !debug
+	source_x86_64 = provenant-bin-1.0.18-x86_64.tar.gz::https://github.com/getprovenant/provenant/releases/download/v1.0.18/provenant-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c89e47d1cd069721b298de1fee3c83f8d5d78d0041d48666339f6482d9b42cc4
+	source_aarch64 = provenant-bin-1.0.18-aarch64.tar.gz::https://github.com/getprovenant/provenant/releases/download/v1.0.18/provenant-linux-aarch64.tar.gz
+	sha256sums_aarch64 = bee9ebf47a77638e87e54ab4a60a4c4455b3573d7c8d6e1da2d1cb17fddc8066
+
+pkgname = provenant-bin
