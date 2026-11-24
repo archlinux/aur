@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=zigzag-bin
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Embroidery editor: turn SVG artwork into machine embroidery files (PES, DST, JEF, VP3 and more), adjust the stitches visually, and drive a Brother Skitch over Bluetooth"
 arch=('x86_64')
@@ -33,7 +33,7 @@ options=('!strip' '!debug')
 _tarname="ZigZag-${pkgver}-${CARCH}-linux.tar.gz"
 source_x86_64=("${_tarname}::https://github.com/simpsoka/zigzag/releases/download/v${pkgver}/${_tarname}")
 sha256sums=('d1f149d732148e59075e27e1ba292bb28226d5814233d44fc6363df753481982')
-sha256sums_x86_64=('10763a1912d9c090e3e4af3471880f8bcf67cac8efbe9c9225fb6835e8f0c4ea')
+sha256sums_x86_64=('68ae87a030f9d78c3851d0c1555162a6a3d300926a33ddaed3215cc8b8fee909')
 # Upstream ships no Linux icon or .desktop file, so the launcher below uses the
 # application icon upstream keeps for its Mac and Windows builds; the tag in
 # the URL follows pkgver, so an icon can never lag behind the binaries.
