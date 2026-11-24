@@ -1,0 +1,19 @@
+pkgbase = 1history-bin
+	pkgdesc = Merge your shell histories into one file
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/localfirstapp/1history
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = 1history
+	conflicts = 1history
+	options = !debug
+	source = 1history-bin-0.4.1-LICENSE::https://raw.githubusercontent.com/localfirstapp/1history/v0.4.1/LICENSE
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = 1history-bin-0.4.1-x86_64.tar.gz::https://github.com/localfirstapp/1history/releases/download/v0.4.1/onehistory-v0.4.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 38e0916d47b5d3da210e9eb1e15f682219478479dd532e484dc8e5d79b6dcfc8
+	source_aarch64 = 1history-bin-0.4.1-aarch64.tar.gz::https://github.com/localfirstapp/1history/releases/download/v0.4.1/onehistory-v0.4.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = acacd054534efdffd31e7c62aa66c00132f69073d59c46031dde914e7bfd6450
+
+pkgname = 1history-bin
