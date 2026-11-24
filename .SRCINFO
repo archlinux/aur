@@ -1,0 +1,14 @@
+pkgbase = tunnelmole-client
+	pkgdesc = Expose local servers to the internet through Tunnelmole
+	pkgver = 2.4.3
+	pkgrel = 1
+	url = https://github.com/robbie-cahill/tunnelmole-client
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = tunnelmole-client-2.4.3.tgz
+	source = tunnelmole-client-2.4.3.tgz::https://registry.npmjs.org/tunnelmole/-/tunnelmole-2.4.3.tgz
+	sha256sums = 092b60bcba1fbfd65d91ef69a173c9fc799b45780dcdbc00c17dc617fa8f27f1
+
+pkgname = tunnelmole-client
