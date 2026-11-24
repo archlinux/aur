@@ -1,6 +1,6 @@
 pkgbase = python-k3heap
 	pkgdesc = Binary min heap implemented with reference
-	pkgver = 0.1.13
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/pykit3/k3heap
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-k3heap
 	depends = python
 	provides = python-k3heap
 	conflicts = python-k3heap
-	source = k3heap::git+https://github.com/pykit3/k3heap.git#tag=v0.1.13
-	sha256sums = 5bdb20bf24deca5676bc2c9a65b1bba3ff6b94d0b111f691c4b26aa76bc58cef
+	source = k3heap::git+https://github.com/pykit3/k3heap.git#tag=v0.1.14
+	sha256sums = 4040323e9c5b46f9c0b894631728cb259fb883d9ad23c2be00b9905dfceb84ba
 
 pkgname = python-k3heap

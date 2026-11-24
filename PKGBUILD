@@ -2,7 +2,7 @@
 
 pkgname=python-k3heap
 _name=${pkgname#python-}
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="Binary min heap implemented with reference"
 provides=(${pkgname})
@@ -26,7 +26,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('5bdb20bf24deca5676bc2c9a65b1bba3ff6b94d0b111f691c4b26aa76bc58cef')
+sha256sums=('4040323e9c5b46f9c0b894631728cb259fb883d9ad23c2be00b9905dfceb84ba')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
