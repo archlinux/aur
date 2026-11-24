@@ -1,7 +1,7 @@
-# Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
+# Maintainer: Jonathan Grotelüschen <tippfehlr@archlinux.org>
 
 pkgname=ravedude
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="avrdude wrapper for embedded rust development"
 url="https://github.com/Rahix/avr-hal/tree/main/ravedude"
@@ -9,13 +9,13 @@ license=("MIT OR Apache-2.0")
 arch=("x86_64" "aarch64")
 # this fetches all of avr-hal. An alternative could be crates.io, but the license would be missing.
 source=("git+https://github.com/Rahix/avr-hal#tag=ravedude-$pkgver")
-depends=("avrdude")
+depends=("avrdude" "systemd-libs" "glibc" "libgcc")
 makedepends=("git" "cargo")
-sha512sums=('118659e4f1b349e0b4316b5b39bfc6809216bc4458533b4186c258900000797b678e81c091c5dbf3a4d6d10bbe2014435b42c9fbb71902d155a8206213c77fd9')
+sha512sums=('ce91af211b7c7a61ec17c04ead30ddb57eb51a2dc7dc3e5d921759b6929d2d03fe2d7f918a813145dff88e74c3ccf59f3c1a1ce614b962c859398d6c9583902f')
 
 prepare() {
 	cd avr-hal/ravedude
-	cargo fetch --locked --target $(rustc --print host-tuple)
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
