@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=chainloop-cli-bin
-pkgver=1.137.0
+pkgver=1.138.0
 pkgrel=1
 pkgdesc='CLI for signed, policy-checked records of AI coding agents and CI/CD pipelines (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ install=chainloop-cli.install
 _release="${url}/releases/download/v${pkgver}"
 source_x86_64=("chainloop-${pkgver}-linux-amd64::${_release}/chainloop-linux-amd64")
 source_aarch64=("chainloop-${pkgver}-linux-arm64::${_release}/chainloop-linux-arm64")
-sha256sums_x86_64=('1f208d4dd0f0ae10a02a66ba40b4ee2c908edde53f5a41c4423d022813ff3865')
-sha256sums_aarch64=('86c5c7d601087e71699e8565f64a86bc6b072a9aece18de2ac8812788b4ac069')
+sha256sums_x86_64=('1dce9953b74fddb2317be18adb9cca97f079df8e0416b72e996dff82b20d300c')
+sha256sums_aarch64=('23c8e38eca6fb7432a7aa061dd6790420078b5310a855cb504cd7e405e237f56')
 
 _chainloop_env() {
   export HOME="${srcdir}/home"
