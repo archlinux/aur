@@ -1,6 +1,6 @@
 pkgbase = llm-visuals-git
 	pkgdesc = Live truecolor terminal dashboard for a locally running LLM
-	pkgver = 0.14.0.r12.gc8596a2
+	pkgver = 0.14.0.r32.gde6b1a0
 	pkgrel = 1
 	url = https://github.com/DingoOz/llm-visuals/
 	arch = x86_64
