@@ -1,0 +1,18 @@
+pkgbase = klirr-bin
+	pkgdesc = Generate invoices for services and expenses
+	pkgver = 0.2.15
+	pkgrel = 1
+	url = https://github.com/sajjon/klirr
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = klirr
+	conflicts = klirr
+	options = !debug
+	source = klirr-bin-0.2.15-LICENSE::https://raw.githubusercontent.com/sajjon/klirr/v0.2.15/LICENSE.txt
+	sha256sums = 08adbdd9b30e478ac8e3e21865743326530abaa1b06eeff666602d53eb89def1
+	source_x86_64 = klirr-bin-0.2.15-x86_64::https://github.com/sajjon/klirr/releases/download/v0.2.15/klirr-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 14c54f5b36a3152b5fcc406c309a088216ac8e80dc1fff330894502fff93baa8
+
+pkgname = klirr-bin
