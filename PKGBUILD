@@ -3,9 +3,9 @@
 _gitname=atmosphera
 
 pkgname=atmosphera-git
-_release_ver=0.10.0.r0
+_release_ver=0.11.0.r0
 pkgver=0.6.0.r0.g0000000
-pkgrel=14
+pkgrel=15
 install=atmosphera-git.install
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell (git version)"
 arch=('any')
@@ -15,13 +15,16 @@ makedepends=('git')
 depends=(
   'quickshell'
   'qt6-dbusqml>=1.1.0'
-  'qt6-configqml>=0.5.1'
+  'qt6-configqml>=0.5.5'
   'qt6-pipewirespectrum'
   'qt6-xdgiconqml-git'
   'imagemagick'
   'brightnessctl'
   'ffmpeg'
   'qt6-multimedia'
+  'qt6-imageformats'
+  'libwebp'
+  'libheif'
   'python'
   'python-dbus'
   'python-gobject'
@@ -36,7 +39,7 @@ optdepends=(
   'wlsunset: For supporting NightLight'
   'power-profiles-daemon: For power profile management'
   'ddcutil: For external display brightness control'
-  'qt6-niriqml: niri IPC integration (workspaces, windows, session config)'
+  'qt6-niriqml>=0.3.0: niri IPC integration (workspaces, windows, session config)'
   'qt6-mangowcqml: mangowc IPC integration (workspaces, windows, session config)'
   'keyd: hardware-level keyboard remapping (bindings environments)'
   'xremap-niri-bin: session-level app-scoped keymaps (macos bindings)'
