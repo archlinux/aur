@@ -1,6 +1,6 @@
 pkgbase = lituus-bin
 	pkgdesc = Settings for Hyprland: network, Bluetooth, sound and displays (prebuilt binary)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/giosuel/lituus
 	arch = x86_64
@@ -27,12 +27,12 @@ pkgbase = lituus-bin
 	optdepends = hyprland: the Displays page
 	optdepends = xdg-desktop-portal: file dialogs (certificates, VPN files, files to send)
 	optdepends = gnome-keyring: passwords kept "for me only" (or KWallet)
-	provides = lituus=0.2.0
+	provides = lituus=0.3.0
 	conflicts = lituus
 	options = !debug
-	source_x86_64 = https://github.com/giosuel/lituus/releases/download/v0.2.0/Lituus-0.2.0-linux-x64.tar.gz
-	sha256sums_x86_64 = 59a8f59e685acb96d0c584ff9cad895535fb401a98f7a1275da04433c321a993
-	source_aarch64 = https://github.com/giosuel/lituus/releases/download/v0.2.0/Lituus-0.2.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 1a1c29186eeaf8437bff207df4fea60d64fb20d6009622814a8e760da8c88a3f
+	source_x86_64 = https://github.com/giosuel/lituus/releases/download/v0.3.0/Lituus-0.3.0-linux-x64.tar.gz
+	sha256sums_x86_64 = c956bb3b8db686885d14cbdb3a3a34ff7ada4b8cd1e048724cca7c35aeb852fa
+	source_aarch64 = https://github.com/giosuel/lituus/releases/download/v0.3.0/Lituus-0.3.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = f255dd9b59e8f8b92adc18ada23339f31fa325e4e12ba472de9d9afbcd50253f
 
 pkgname = lituus-bin
