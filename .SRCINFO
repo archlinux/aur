@@ -1,0 +1,17 @@
+pkgbase = portato-bin
+	pkgdesc = SSH port-forwarding manager with a TUI
+	pkgver = 1.11.1
+	pkgrel = 1
+	url = https://github.com/portuber/portato
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = portato
+	conflicts = portato
+	options = !debug
+	source_x86_64 = portato-bin-1.11.1-x86_64.tar.gz::https://github.com/portuber/portato/releases/download/v1.11.1/portato_1.11.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 56fede09ac2cb4bbe584e8d401ce03e03c3ba9912310737500cc74a618a50fec
+	source_aarch64 = portato-bin-1.11.1-aarch64.tar.gz::https://github.com/portuber/portato/releases/download/v1.11.1/portato_1.11.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = d54240404226601a78a8ad5fec9f4d839dcd1e3e1d9052859c1ce3e3f6c28d45
+
+pkgname = portato-bin
