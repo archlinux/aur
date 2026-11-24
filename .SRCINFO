@@ -1,6 +1,6 @@
 pkgbase = genoma
 	pkgdesc = A Wayland shell toolkit: a Rust core drawing through Vulkan, interfaces written in Luau and reloaded live
-	pkgver = 0.1.22
+	pkgver = 0.1.24
 	pkgrel = 1
 	url = https://github.com/AkusenArcade/Genoma
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = genoma
 	optdepends = wl-screenrec: screen recording (@genoma/kit/record)
 	optdepends = wf-recorder: screen recording without wl-screenrec
 	options = !lto
-	source = genoma-0.1.22.tar.gz::https://github.com/AkusenArcade/Genoma/archive/refs/tags/v0.1.22.tar.gz
-	sha256sums = e005d07a67025253c86b4ff008532717465bc7e77243cb90defbafcc9cebe887
+	source = genoma-0.1.24.tar.gz::https://github.com/AkusenArcade/Genoma/archive/refs/tags/v0.1.24.tar.gz
+	sha256sums = 2e7959f9f75d6d85739e4d33aa81fd16dc0f26202ef3943414f43bac39f67614
 
 pkgname = genoma
