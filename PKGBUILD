@@ -1,13 +1,13 @@
 # Maintainer: illusory <becomeillusory@gmail.com>
 # 自用维护：仅信任官方 GitHub release 资产，sha256 锁定官方 SHA256SUMS.txt。
 pkgname=designcraft-private-bin
-pkgver=0.20.1
+pkgver=0.21.1
 pkgrel=4
 pkgdesc='自用维护：开源 clean-room 版 Adobe InDesign 替代（排版出版），上游 storytold/designcraft'
 arch=('x86_64')
 url='https://getartcraft.com/apps/designcraft'
 # GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
-_gh_mirror="${GH_MIRROR:-https://gh-proxy.com/}"
+_gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
 _gh_mirror="${_gh_mirror%/}/"
 license=('MIT' 'Apache')
 provides=("designcraft=$pkgver")
@@ -27,7 +27,7 @@ optdepends=('alsa-lib: sound support'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
 source=("${_gh_mirror}https://github.com/storytold/designcraft/releases/download/v${pkgver}/designcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
-sha256sums=('50744692323feb1805ffe2bab1dc30af3d5d958e88b94cc9f36959bbb46fac67')
+sha256sums=('4be739a87993ec20054e63677175f29538f8f5d537ef98bde4ddc2bdd253e1dd')
 
 package() {
   bsdtar -xf "$srcdir/designcraft-$pkgver-linux-x86_64.pkg.tar.zst" \

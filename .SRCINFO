@@ -1,6 +1,6 @@
 pkgbase = designcraft-private-bin
 	pkgdesc = 自用维护：开源 clean-room 版 Adobe InDesign 替代（排版出版），上游 storytold/designcraft
-	pkgver = 0.20.1
+	pkgver = 0.21.1
 	pkgrel = 4
 	url = https://getartcraft.com/apps/designcraft
 	arch = x86_64
@@ -25,12 +25,12 @@ pkgbase = designcraft-private-bin
 	optdepends = vulkan-driver: GPU rendering through Vulkan
 	optdepends = xdg-desktop-portal: native desktop integration and file dialogs
 	optdepends = cups: printing support
-	provides = designcraft=0.20.1
+	provides = designcraft=0.21.1
 	conflicts = designcraft
 	conflicts = designcraft-bin
 	conflicts = designcraft-git
 	conflicts = ai.storyteller.designcraft
-	source = https://gh-proxy.com/https://github.com/storytold/designcraft/releases/download/v0.20.1/designcraft-0.20.1-linux-x86_64.pkg.tar.zst
-	sha256sums = 50744692323feb1805ffe2bab1dc30af3d5d958e88b94cc9f36959bbb46fac67
+	source = https://gh-proxy.cn/https://github.com/storytold/designcraft/releases/download/v0.21.1/designcraft-0.21.1-linux-x86_64.pkg.tar.zst
+	sha256sums = 4be739a87993ec20054e63677175f29538f8f5d537ef98bde4ddc2bdd253e1dd
 
 pkgname = designcraft-private-bin
