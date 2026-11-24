@@ -2553,3 +2553,1136 @@ diff -ruN a/nvkm/subdev/fb/ramgf100.c b/nvkm/subdev/fb/ramgf100.c
  	return 0;
  }
  
+diff -ruN a/nvkm/subdev/clk/base.c b/nvkm/subdev/clk/base.c
+--- a/nvkm/subdev/clk/base.c	2026-11-24 15:10:31.226072031 +0000
++++ b/nvkm/subdev/clk/base.c	2026-11-24 15:10:58.581284554 +0000
+@@ -449,9 +449,12 @@
+ 	cstate->voltage = perfE.voltage;
+ 	/* Class A (universal boards): trust VBIOS voltage first. GF106M
+ 	 * L702X VBIOS undervolts 0f (862.5 mV vs factory 1.030 V VID 0x01),
+-	 * so raise to 0x67 only when VBIOS asks for less. Other boards
+-	 * (e.g. GF119M 410M) keep their own factory VID untouched. */
+-	if (pstate->pstate == 0x0f && perfE.voltage < 0x67)
++	 * so raise to 0x67 only when VBIOS asks for less. The clamp is
++	 * limited to GF106 (NVC3): other boards keep their own factory VID
++	 * (e.g. GF119M 410M, or the GF108 Quadro 600 whose 0f asks for VID
++	 * 0x63, which the ungated clamp would have raised). */
++	if (clk->subdev.device->chipset == 0xc3 &&
++	    pstate->pstate == 0x0f && perfE.voltage < 0x67)
+ 		cstate->voltage = 0x67;
+ 	cstate->domain[nv_clk_src_core] = perfE.core;
+ 	cstate->domain[nv_clk_src_shader] = perfE.shader;
+diff -ruN a/nvkm/subdev/fb/ramgf100.c b/nvkm/subdev/fb/ramgf100.c
+--- a/nvkm/subdev/fb/ramgf100.c	2026-11-24 15:10:31.231350325 +0000
++++ b/nvkm/subdev/fb/ramgf100.c	2026-11-24 15:10:58.582147366 +0000
+@@ -26,6 +26,7 @@
+ #include "ramfuc.h"
+ 
+ #include <core/option.h>
++#include <core/pci.h>
+ #include <subdev/bios.h>
+ #include <subdev/bios/perf.h>
+ #include <subdev/bios/pll.h>
+@@ -106,6 +107,13 @@
+ 	 * Zero = undiscovered, callers fall back to GF106M 324/900. */
+ 	u32 ddr3_lo;
+ 	u32 ddr3_hi;
++	/* Which captured executor script this board may run.  Anything
++	 * else: memory reclock is skipped, never attempted. */
++	enum {
++		GF100_DDR3_NONE = 0,
++		GF100_DDR3_L702X,	/* 10de:0dcd 1028:04b7, GF106M, fexec_code.inc */
++	} ddr3_board;
++	bool ddr3_skip_logged;
+ };
+ 
+ static void
+@@ -572,6 +580,19 @@
+ 	u32 cur = nvkm_clk_read(device->clk, nv_clk_src_mem);
+ 	u32 lo, hi;
+ 
++	/* Board gate: the executor scripts are board-specific captures. */
++	switch (ram->ddr3_board) {
++	case GF100_DDR3_L702X:
++		break;
++	default:
++		if (!ram->ddr3_skip_logged) {
++			nvkm_info(subdev, "DDR3: no executor script for this board (chip %02x), memory stays at %u kHz\n",
++				  device->chipset, cur);
++			ram->ddr3_skip_logged = true;
++		}
++		return 0;	/* core/shader/voltage of the pstate still apply */
++	}
++
+ 	/* Class A: accept any VBIOS memory clock, not just the GF106M pair.
+ 	 * lo/hi are discovered from the board's own pstate table at init
+ 	 * (gf100_ram_init); unknown boards fall back to the GF106M pair
+@@ -1158,6 +1179,20 @@
+ 		return ret;
+ 	}
+ 
++	/* The executor scripts are captures from exact boards. */
++	if (ram->base.type == NVKM_RAM_TYPE_DDR3 && subdev->device->func->pci) {
++		struct nvkm_device *device = subdev->device;
++		struct pci_dev *pdev = device->func->pci(device)->pdev;
++
++		if (device->chipset == 0xc3 && pdev->vendor == 0x10de &&
++		    pdev->device == 0x0dcd && pdev->subsystem_vendor == 0x1028 &&
++		    pdev->subsystem_device == 0x04b7)
++			ram->ddr3_board = GF100_DDR3_L702X;
++		nvkm_info(subdev, "DDR3: memory reclock script: %s\n",
++			  ram->ddr3_board == GF100_DDR3_L702X ? "GF106M L702X" :
++			  "none (memory reclock skipped)");
++	}
++
+ 	ram->fuc.r_0x10fe20 = ramfuc_reg(0x10fe20);
+ 	ram->fuc.r_0x10fe24 = ramfuc_reg(0x10fe24);
+ 	ram->fuc.r_0x137320 = ramfuc_reg(0x137320);
+diff -ruN a/nvkm/subdev/fb/ramgf100.c b/nvkm/subdev/fb/ramgf100.c
+--- a/nvkm/subdev/fb/ramgf100.c	2026-11-24 15:10:58.582147366 +0000
++++ b/nvkm/subdev/fb/ramgf100.c	2026-11-24 15:10:58.704459775 +0000
+@@ -981,18 +981,37 @@
+ 	 * 410M report 405/800 here instead of our GF106M 324/900. */
+ 	if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
+ 		do {
++			u32 mem;
++
+ 			data = nvbios_perfEp(bios, i++, &ver, &hdr, &cnt,
+ 					     &size, &perfE);
+-			if (!data || ver < 0x25 || ver >= 0x40 || size < 2)
++			if (!data || ver < 0x25 || ver > 0x40)
+ 				break;
+-			if (!perfE.memory)
++			mem = perfE.memory;
++			if (ver == 0x40) {
++				/* perf v0x40 keeps clocks in sub-entries; memory
++				 * is domain 0x05 (gf100 clk domain index of
++				 * nv_clk_src_mem).  Skip the unused 0xff entries. */
++				struct nvbios_perfS perfS;
++				u8 sver = ver, shdr = hdr;
++
++				if (perfE.pstate == 0xff)
++					continue;
++				if (!nvbios_perfSp(bios, data, 0x05, &sver, &shdr,
++						   cnt, size, &perfS) || sver != 0x40)
++					continue;
++				mem = perfS.v40.freq;
++			} else if (size < 2) {
++				break;
++			}
++			if (!mem)
+ 				continue;
+ 			for (idx = 0; idx < nmems; idx++) {
+-				if (mems[idx] == perfE.memory)
++				if (mems[idx] == mem)
+ 					break;
+ 			}
+ 			if (idx == nmems && nmems < 8)
+-				mems[nmems++] = perfE.memory;
++				mems[nmems++] = mem;
+ 		} while (data);
+ 		if (nmems >= 2) {
+ 			u32 lo = mems[0], hi = mems[0];
+@@ -1014,9 +1033,9 @@
+ 			if (lo < hi) {
+ 				ram->ddr3_lo = lo;
+ 				ram->ddr3_hi = hi;
+-				nvkm_debug(&ram->base.fb->subdev,
+-					   "DDR3: board memory pair %u/%u kHz from VBIOS (%d states)\n",
+-					   lo, hi, nmems);
++				nvkm_info(&ram->base.fb->subdev,
++					  "DDR3: board memory pair %u/%u kHz from VBIOS (%d states)\n",
++					  lo, hi, nmems);
+ 			}
+ 		}
+ 		if (!ram->ddr3_lo) {
+diff -ruN a/nvkm/subdev/clk/gf100.c b/nvkm/subdev/clk/gf100.c
+--- a/nvkm/subdev/clk/gf100.c	2026-11-24 15:10:58.654770001 +0000
++++ b/nvkm/subdev/clk/gf100.c	2026-11-24 15:10:58.783884662 +0000
+@@ -76,7 +76,12 @@
+ 		P = 1;
+ 		break;
+ 	case 0x132000:
+-		sclk = nvkm_clk_read(&clk->base, nv_clk_src_mpllsrc);
++		/* GF108 has no 0x132020 refpll (PRIVRING fault on read): the
++		 * MPLL reference is the 0x137320/0x137330 divider. */
++		if (device->chipset == 0xc1)
++			sclk = nvkm_clk_read(&clk->base, nv_clk_src_mpllsrcref);
++		else
++			sclk = nvkm_clk_read(&clk->base, nv_clk_src_mpllsrc);
+ 		break;
+ 	case 0x132020:
+ 		sclk = nvkm_clk_read(&clk->base, nv_clk_src_mpllsrcref);
+@@ -177,6 +182,8 @@
+ 	case nv_clk_src_mpllsrcref:
+ 		return read_div(clk, 0, 0x137320, 0x137330);
+ 	case nv_clk_src_mpllsrc:
++		if (device->chipset == 0xc1)	/* 0x132020/0x132024 absent on GF108 */
++			return 0;
+ 		return read_pll(clk, 0x132020);
+ 	case nv_clk_src_mpll:
+ 		return read_pll(clk, 0x132000);
+@@ -184,6 +191,21 @@
+ 		return read_div(clk, 0, 0x137300, 0x137310);
+ 	case nv_clk_src_mem: {
+ 		u32 f = 0;
++		/* GF108: the MPLL reference is the 0x137320/0x137330 divider
++		 * (no 0x132020 refpll), and 0x137360 bit 0 selects the mdiv
++		 * bypass.  Quadro 600: 405 MHz * N / M / P (793/324 MHz). */
++		if (device->chipset == 0xc1 &&
++		    !(nvkm_rd32(device, 0x137360) & 0x00000001) &&
++		    (nvkm_rd32(device, 0x132000) & 0x00000001)) {
++			u32 coef = nvkm_rd32(device, 0x132004);
++			u32 P = (coef & 0x003f0000) >> 16;
++			u32 N = (coef & 0x0000ff00) >> 8;
++			u32 M = (coef & 0x000000ff) >> 0;
++			u32 ref = nvkm_clk_read(&clk->base, nv_clk_src_mpllsrcref);
++
++			if (M && P)
++				return ref * N / M / P;
++		}
+ 		if (nvkm_rd32(device, 0x1373f0) & 0x00000001) {
+ 			u32 coef = nvkm_rd32(device, 0x132004);
+ 			if (coef == 0x0002230b)
+diff -ruN a/nvkm/subdev/fb/fexec_code_gf108.inc b/nvkm/subdev/fb/fexec_code_gf108.inc
+--- a/nvkm/subdev/fb/fexec_code_gf108.inc	1970-01-01 01:00:00.000000000 +0100
++++ b/nvkm/subdev/fb/fexec_code_gf108.inc	2026-11-24 15:10:58.785727628 +0000
+@@ -0,0 +1,584 @@
++/* Resident Falcon executor for the Quadro 600 (GF108, 10de:0df8 103c:0835).
++ * GENERATED by tools/gen-fexec-gf108.py from the GF106M fexec_code.inc
++ * (helpers reused verbatim) and NVIDIA 390.157 PMU memx blocks 20/28/54
++ * captured on that card.  Do not edit by hand.
++ *   cmd 0: probe (DONE, no register writes)
++ *   cmd 1: block 28, 324 MHz (MPLL, either form) -> 800 MHz
++ *   cmd 2: to 324 MHz: 0x137360 bit 0 set (boot bypass) -> block 20,
++ *          clear (MPLL 800) -> block 54
++ * block28 @ 0x0f58, block20 @ 0x1690, block54 @ 0x1bb4, cmd2 dispatch @ 0x2394,
++ * err_in @ 0x0e90, err_pre @ 0x0f07, wait_in @ 0x0f1f, wait_pre @ 0x0f3b, 9144 bytes */
++static const u32 fexec_code_gf108[] = {
++	0xfe1e0ef4, 0x97f101ca, 0x94b60080, 0x009ad006,
++	0xf11832f4, 0xfe5ff097, 0x0ef50094, 0x97f100b7,
++	0x94fe5ff0, 0x0397f000, 0xf40093fe, 0x32f41032,
++	0x1832f411, 0xb61497f0, 0xb7f10694, 0xb3f1ffff,
++	0x9bd0ffff, 0x0497f000, 0xf10694b6, 0xf1ffffb7,
++	0xd0ffffb3, 0x97f0009b, 0x0694b628, 0x9bd0b4bd,
++	0x3897f000, 0xbd0694b6, 0x009bd0b4, 0x008497f1,
++	0xcf0694b6, 0xa6b0009a, 0x230bf401, 0xf402a6b0,
++	0x0ef4240b, 0x8097f103, 0x0694b600, 0x0001b7f1,
++	0xe1ecb3f1, 0xbd009bd0, 0x380ef404, 0x0f5821f5,
++	0xf50a0ef4, 0xf4239421, 0x97f1030e, 0x94fe5ff0,
++	0x8497f100, 0x0694b600, 0x9bd0b4bd, 0x8097f100,
++	0x0694b600, 0x0001b7f1, 0xe1ecb3f1, 0xbd009bd0,
++	0x8497f104, 0x0694b600, 0x00c877f1, 0xb00172b6,
++	0x1bf40076, 0x009acffa, 0xf401a6b0, 0xa6b0b10b,
++	0xb20bf402, 0xf1e40ef4, 0xb6008097, 0xb7f10694,
++	0xb3f10000, 0x9bd0dead, 0xf404bd00, 0xe7f1c60e,
++	0xe3f07300, 0x03d7f113, 0x3521f501, 0x70e7f10e,
++	0x13e3f073, 0xf507d7f0, 0xf10e3521, 0xf07380e7,
++	0xd7f013e3, 0x3521f501, 0x08e7f10e, 0x10e3f0f8,
++	0x0004d7f1, 0x4802d3f1, 0x0e3521f5, 0xf824e7f1,
++	0xf110e3f0, 0xf07867d7, 0x21f502d3, 0x77f10e35,
++	0x21f50548, 0xe7f10cec, 0xe3f00b0c, 0x12d7f110,
++	0x08d3f000, 0x0e3521f5, 0x0cf721f5, 0x1200e7f1,
++	0xf161e3f0, 0xf53300d7, 0xf50e3521, 0xf10d0621,
++	0xf0f200e7, 0xd7f110e3, 0xd3f08000, 0x3521f502,
++	0x08e7f10e, 0x10e3f0f8, 0x0004d7f1, 0x4c02d3f1,
++	0x0e3521f5, 0x02a477f1, 0x0cec21f5, 0x73ece7f1,
++	0xf113e3f0, 0xf00909d7, 0x21f502d3, 0xe7f10e35,
++	0xe3f0f290, 0x13d7f110, 0x1ad3f192, 0x3521f506,
++	0x14e7f10e, 0x10e3f0f3, 0xf501d7f0, 0xf10e3521,
++	0xf0f210e7, 0xd4bd10e3, 0x0e3521f5, 0xf310e7f1,
++	0xf010e3f0, 0x21f501d7, 0xe7f10e35, 0xe3f0f310,
++	0x01d7f010, 0x0e3521f5, 0xf56477f0, 0xf10cec21,
++	0xf0f090e7, 0xd7f010e3, 0x3521f560, 0x90e7f10e,
++	0x10e3f0f0, 0x007ed7f1, 0xc000d3f1, 0x0e3521f5,
++	0x7360e7f1, 0xf013e3f0, 0x21f501d7, 0xe7f10e35,
++	0xe3f07370, 0xf5d4bd13, 0xf10e3521, 0xf07380e7,
++	0xd4bd13e3, 0x0e3521f5, 0x2000e7f1, 0xf113e3f0,
++	0xf10000d7, 0xf51803d3, 0xf10e3521, 0xf0fe20e7,
++	0xd7f110e3, 0xd3f10000, 0x21f52003, 0xe7f10e35,
++	0xe3f07320, 0x03d7f113, 0x3521f501, 0x30e7f10e,
++	0x13e3f073, 0x0600d7f1, 0x8120d3f1, 0x0e3521f5,
++	0xfe20e7f1, 0xf110e3f0, 0xf10001d7, 0xf52003d3,
++	0xf10e3521, 0xf07390e7, 0x57f113e3, 0x53f00000,
++	0x0047f102, 0x0243f000, 0x000077f1, 0xf51073f0,
++	0xf10cd021, 0xf0fe20e7, 0xd7f110e3, 0xd3f10005,
++	0x21f52003, 0xe7f10e35, 0xe3f02004, 0x0bd7f113,
++	0x02d3f023, 0x0e3521f5, 0x2000e7f1, 0xf113e3f0,
++	0xf10001d7, 0xf51803d3, 0xf10e3521, 0xf07390e7,
++	0x57f013e3, 0x0247f002, 0x000077f1, 0xf51073f0,
++	0xf10cd021, 0xf0f874e7, 0xd4bd10e3, 0x0e3521f5,
++	0xf824e7f1, 0xf110e3f0, 0xf01867d7, 0x21f502d3,
++	0x77f10e35, 0x21f50548, 0xe7f10cec, 0xe3f02018,
++	0x00d7f113, 0x3521f550, 0xe877f10e, 0xec21f503,
++	0x10e7f10c, 0x10e3f0f9, 0x2000d7f1, 0x0e3521f5,
++	0xf914e7f1, 0xf110e3f0, 0xf52000d7, 0xf10e3521,
++	0xf0f658e7, 0xd4bd10e3, 0x0e3521f5, 0xf830e7f1,
++	0xf010e3f0, 0x21f511d7, 0x77f10e35, 0x21f50548,
++	0xe7f10cec, 0xe3f07370, 0x07d7f013, 0x0e3521f5,
++	0x7380e7f1, 0xf013e3f0, 0x21f501d7, 0xe7f10e35,
++	0xe3f07360, 0xf5d4bd13, 0xf10e3521, 0xf0f090e7,
++	0xd7f110e3, 0xd3f1007f, 0x21f54000, 0xe7f10e35,
++	0xe3f0f210, 0x00d7f110, 0x00d3f100, 0x3521f580,
++	0x6477f00e, 0x0cec21f5, 0xf300e7f1, 0xf110e3f0,
++	0xf51520d7, 0xf00e3521, 0x21f56477, 0xe7f10cec,
++	0xe3f0f300, 0x20d7f110, 0x3521f514, 0x6477f00e,
++	0x0cec21f5, 0xf320e7f1, 0xf110e3f0, 0xf000a0d7,
++	0x21f520d3, 0x77f00e35, 0xec21f564, 0x00e7f10c,
++	0x10e3f0f3, 0x1e04d7f1, 0x0e3521f5, 0xf56477f0,
++	0xf10cec21, 0xf0f224e7, 0xd7f110e3, 0xd3f10c07,
++	0x21f50e07, 0xe7f10e35, 0xe3f0f290, 0x2ed7f110,
++	0x44d3f192, 0x3521f50e, 0x94e7f10e, 0x10e3f0f2,
++	0x848cd7f1, 0x4ce3d3f1, 0x0e3521f5, 0xf298e7f1,
++	0xf110e3f0, 0xf10711d7, 0xf5440ed3, 0xf10e3521,
++	0xf0f29ce7, 0xd7f110e3, 0x21f550b6, 0xe7f10e35,
++	0xe3f0f2a0, 0x69d7f110, 0xe3d3f180, 0x3521f542,
++	0x00e7f10e, 0x10e3f0f2, 0x9000d7f1, 0xf502d3f0,
++	0xf10e3521, 0xf0f604e7, 0xd7f110e3, 0xd3f10000,
++	0x21f5f100, 0xe7f10e35, 0xe3f0f614, 0x77d7f110,
++	0x04d3f14e, 0x3521f540, 0x10e7f10e, 0x10e3f0f6,
++	0x4e77d7f1, 0x4004d3f1, 0x0e3521f5, 0xf808e7f1,
++	0xf110e3f0, 0xf10000d7, 0xf55692d3, 0xf10e3521,
++	0xf50a9077, 0xf10cec21, 0xf073f8e7, 0xd7f113e3,
++	0x21f52040, 0xe7f10e35, 0xe3f0f870, 0xaad7f110,
++	0xaad3f1aa, 0x3521f5aa, 0xa477f10e, 0xec21f502,
++	0x00e7f10c, 0x10e3f00c, 0x0124d7f1, 0x0400d3f1,
++	0x0e3521f5, 0xf300e7f1, 0xf110e3f0, 0xf51f04d7,
++	0xf00e3521, 0x21f56477, 0xe7f10cec, 0xe3f0f300,
++	0x04d7f110, 0x3521f51e, 0x6477f00e, 0x0cec21f5,
++	0xf56477f0, 0xf10cec21, 0xf0f830e7, 0xd7f110e3,
++	0xd3f10011, 0x21f50100, 0xe7f10e35, 0xe3f0f830,
++	0x11d7f010, 0x0e3521f5, 0x0d7d21f5, 0x054877f1,
++	0x0cec21f5, 0x0b0ce7f1, 0xf110e3f0, 0xf00028d7,
++	0x21f508d3, 0xe7f10e35, 0xe3f01200, 0x30d7f161,
++	0x3521f533, 0x00e7f10e, 0x10e3f0f2, 0x9800d7f1,
++	0xf502d3f0, 0xf10e3521, 0xf0f824e7, 0xd7f110e3,
++	0xd3f01e67, 0x3521f502, 0x48e7f10e, 0x00e3f015,
++	0x0102d7f1, 0x0e3521f5, 0xf468e7f1, 0xf110e3f0,
++	0xf00020d7, 0x21f502d3, 0xe7f10e35, 0xe3f0f420,
++	0x43d7f010, 0x0e3521f5, 0xf430e7f1, 0xf010e3f0,
++	0x21f541d7, 0xe7f10e35, 0xe3f0f400, 0x1fd7f110,
++	0x3521f517, 0x10e7f10e, 0x10e3f0f4, 0x0107d7f1,
++	0x0e3521f5, 0xf444e7f1, 0xf110e3f0, 0xf1883fd7,
++	0xf504ccd3, 0xf10e3521, 0xf01548e7, 0xd7f100e3,
++	0x21f50101, 0xe7f10e35, 0xe3f01548, 0x01d7f100,
++	0x00d3f101, 0x3521f580, 0x50e7f10e, 0x10e3f0f0,
++	0x1050d7f1, 0xff00d3f1, 0x0e3521f5, 0xe7f100f8,
++	0xe3f07300, 0x03d7f113, 0x3521f501, 0x70e7f10e,
++	0x13e3f073, 0xf507d7f0, 0xf10e3521, 0xf07380e7,
++	0xd7f013e3, 0x3521f501, 0x24e7f10e, 0x10e3f0f8,
++	0x1867d7f1, 0xf502d3f0, 0xf10e3521, 0xf502a477,
++	0xf10cec21, 0xf00b0ce7, 0xd7f110e3, 0xd3f00012,
++	0x3521f508, 0xf721f50e, 0x00e7f10c, 0x61e3f012,
++	0x3300d7f1, 0x0e3521f5, 0x0d0621f5, 0xf200e7f1,
++	0xf110e3f0, 0xf09000d7, 0x21f502d3, 0xe7f10e35,
++	0xe3f0f314, 0x01d7f010, 0x0e3521f5, 0xf210e7f1,
++	0xbd10e3f0, 0x3521f5d4, 0x10e7f10e, 0x10e3f0f3,
++	0xf501d7f0, 0xf10e3521, 0xf0f310e7, 0xd7f010e3,
++	0x3521f501, 0x6477f00e, 0x0cec21f5, 0xf090e7f1,
++	0xf010e3f0, 0x21f560d7, 0xe7f10e35, 0xe3f0f090,
++	0x7ed7f110, 0x00d3f100, 0x3521f5c0, 0x60e7f10e,
++	0x13e3f073, 0xf501d7f0, 0xf10e3521, 0xf0f830e7,
++	0xd7f010e3, 0x3521f517, 0xa477f10e, 0xec21f502,
++	0x70e7f10c, 0x13e3f073, 0x21f5d4bd, 0xe7f10e35,
++	0xe3f07380, 0xf5d4bd13, 0xf10e3521, 0xf02018e7,
++	0xd7f113e3, 0x21f51000, 0xe7f10e35, 0xe3f02000,
++	0x00d7f113, 0x03d3f100, 0x3521f518, 0x20e7f10e,
++	0x10e3f0fe, 0x0000d7f1, 0x2003d3f1, 0x0e3521f5,
++	0x7320e7f1, 0xf113e3f0, 0xf50103d7, 0xf10e3521,
++	0xf07330e7, 0xd7f113e3, 0xd3f10600, 0x21f58120,
++	0xe7f10e35, 0xe3f0fe20, 0x01d7f110, 0x03d3f100,
++	0x3521f520, 0x90e7f10e, 0x13e3f073, 0x000057f1,
++	0xf10253f0, 0xf0000047, 0x77f10243, 0x73f00000,
++	0xd021f510, 0x20e7f10c, 0x10e3f0fe, 0x0005d7f1,
++	0x2003d3f1, 0x0e3521f5, 0x2004e7f1, 0xf113e3f0,
++	0xf01806d7, 0x21f507d3, 0xe7f10e35, 0xe3f02000,
++	0x01d7f113, 0x03d3f100, 0x3521f518, 0x90e7f10e,
++	0x13e3f073, 0xf00257f0, 0x77f10247, 0x73f00000,
++	0xd021f510, 0x74e7f10c, 0x10e3f0f8, 0x0000d7f1,
++	0x0400d3f1, 0x0e3521f5, 0xf658e7f1, 0xf110e3f0,
++	0xf08989d7, 0x21f591d3, 0x77f10e35, 0x21f50548,
++	0xe7f10cec, 0xe3f02018, 0x00d7f113, 0x00d3f110,
++	0x3521f510, 0x60e7f10e, 0x10e3f0f6, 0x1010d7f1,
++	0x0e3521f5, 0xf910e7f1, 0xbd10e3f0, 0x3521f5d4,
++	0x14e7f10e, 0x10e3f0f9, 0x21f5d4bd, 0xe7f10e35,
++	0xe3f0f824, 0x67d7f110, 0x02d3f078, 0x0e3521f5,
++	0x054877f1, 0x0cec21f5, 0x7370e7f1, 0xf013e3f0,
++	0x21f507d7, 0xe7f10e35, 0xe3f07380, 0x01d7f013,
++	0x0e3521f5, 0x7360e7f1, 0xbd13e3f0, 0x3521f5d4,
++	0x90e7f10e, 0x10e3f0f0, 0x007fd7f1, 0x4000d3f1,
++	0x0e3521f5, 0xf210e7f1, 0xf110e3f0, 0xf10000d7,
++	0xf58000d3, 0xf00e3521, 0x21f56477, 0xe7f10cec,
++	0xe3f0f300, 0x04d7f110, 0x3521f51f, 0x6477f00e,
++	0x0cec21f5, 0xf300e7f1, 0xf110e3f0, 0xf51e04d7,
++	0xf00e3521, 0x21f56477, 0xe7f10cec, 0xe3f0f320,
++	0x80d7f110, 0x20d3f000, 0x0e3521f5, 0xf56477f0,
++	0xf10cec21, 0xf0f300e7, 0xd7f110e3, 0x21f51420,
++	0x77f00e35, 0xec21f564, 0x24e7f10c, 0x10e3f0f2,
++	0x0c07d7f1, 0x0e05d3f1, 0x0e3521f5, 0xf290e7f1,
++	0xf110e3f0, 0xf13813d7, 0xf5061ad3, 0xf10e3521,
++	0xf0f294e7, 0xd7f110e3, 0xd3f18286, 0x21f54c61,
++	0xe7f10e35, 0xe3f0f298, 0x11d7f110, 0x06d3f104,
++	0x3521f544, 0x9ce7f10e, 0x10e3f0f2, 0x1e6ad7f1,
++	0x0e3521f5, 0xf2a0e7f1, 0xf110e3f0, 0xf18069d7,
++	0xf542e2d3, 0xf10e3521, 0xf0f200e7, 0xd7f110e3,
++	0xd3f08000, 0x3521f502, 0x04e7f10e, 0x10e3f0f6,
++	0x0000d7f1, 0xf000d3f1, 0x0e3521f5, 0xf614e7f1,
++	0xf110e3f0, 0xf14f77d7, 0xf54004d3, 0xf10e3521,
++	0xf0f610e7, 0xd7f110e3, 0xd3f14f77, 0x21f54004,
++	0xe7f10e35, 0xe3f0f808, 0x04d7f110, 0x02d3f100,
++	0x3521f548, 0x9077f10e, 0xec21f50a, 0xece7f10c,
++	0x13e3f073, 0x0909d7f1, 0x0e3521f5, 0x73f8e7f1,
++	0xf113e3f0, 0xf52055d7, 0xf10e3521, 0xf0f870e7,
++	0xd7f110e3, 0xd3f1aaaa, 0x21f5aaaa, 0x77f10e35,
++	0x21f502a4, 0xe7f10cec, 0xe3f00c00, 0x24d7f110,
++	0x00d3f101, 0x3521f50c, 0x00e7f10e, 0x10e3f0f3,
++	0x1520d7f1, 0x0e3521f5, 0xf56477f0, 0xf10cec21,
++	0xf0f300e7, 0xd7f110e3, 0x21f51420, 0x77f00e35,
++	0xec21f564, 0x6477f00c, 0x0cec21f5, 0xf324e7f1,
++	0xf110e3f0, 0xf503cbd7, 0xf10e3521, 0xf0f324e7,
++	0xd7f110e3, 0x21f506cb, 0xe7f10e35, 0xe3f0f324,
++	0xcbd7f110, 0x3521f501, 0x24e7f10e, 0x10e3f0f3,
++	0x03cad7f1, 0x0e3521f5, 0xf324e7f1, 0xf110e3f0,
++	0xf506cad7, 0xf10e3521, 0xf0f324e7, 0xd7f110e3,
++	0x21f501ca, 0xe7f10e35, 0xe3f0f830, 0x17d7f110,
++	0x00d3f100, 0x3521f501, 0x30e7f10e, 0x10e3f0f8,
++	0xf517d7f0, 0xf50e3521, 0xf10d7d21, 0xf5054877,
++	0xf10cec21, 0xf00b0ce7, 0xd7f110e3, 0xd3f00028,
++	0x3521f508, 0x00e7f10e, 0x61e3f012, 0x3330d7f1,
++	0x0e3521f5, 0xf200e7f1, 0xf110e3f0, 0xf08800d7,
++	0x21f502d3, 0xe7f10e35, 0xe3f02018, 0x00d7f113,
++	0x00d3f110, 0x3521f510, 0x24e7f10e, 0x10e3f0f8,
++	0x79e7d7f1, 0xf502d3f0, 0xf10e3521, 0xf0f808e7,
++	0xd7f110e3, 0xd3f10004, 0x21f50802, 0xe7f10e35,
++	0xe3f01548, 0x02d7f100, 0x3521f501, 0x68e7f10e,
++	0x10e3f0f4, 0x1005d7f1, 0x0e3521f5, 0xf420e7f1,
++	0xf010e3f0, 0x21f542d7, 0xe7f10e35, 0xe3f0f430,
++	0x40d7f010, 0x0e3521f5, 0xf400e7f1, 0xf110e3f0,
++	0xf51707d7, 0xf10e3521, 0xf0f410e7, 0xd7f110e3,
++	0x21f50307, 0xe7f10e35, 0xe3f0f444, 0x1fd7f110,
++	0xccd3f100, 0x3521f504, 0x48e7f10e, 0x00e3f015,
++	0x0101d7f1, 0x0e3521f5, 0x1548e7f1, 0xf100e3f0,
++	0xf10101d7, 0xf58000d3, 0xf10e3521, 0xf0f050e7,
++	0xd7f110e3, 0xd3f10450, 0x21f5ff00, 0x00f80e35,
++	0x0dde21f5, 0xb804d5fd, 0x0bf406d4, 0x0172b610,
++	0xf40076b0, 0x0ef5ed1b, 0x00f8f411, 0xb00172b6,
++	0x1bf40076, 0xf100f8fa, 0xb603e877, 0x76b00172,
++	0xfa1bf400, 0x67f100f8, 0x77f11620, 0x73f1f55d,
++	0x6eb9ffff, 0xde21f502, 0x04d7fd0d, 0x0e3521f5,
++	0xfffe77f1, 0xffff73f1, 0xf5026eb9, 0xfd0dde21,
++	0x21f504d7, 0x67f10e35, 0x6eb926f0, 0xde21f502,
++	0x04d7fd0d, 0x0e3521f5, 0x07e097f1, 0xf00694b6,
++	0x9bd004b7, 0xf104bd00, 0xf1010073, 0xb607c097,
++	0x99cf0694, 0x0494f000, 0xf40096b0, 0x72b6101b,
++	0x0076b001, 0xf5e71bf4, 0xf801190e, 0xe497f100,
++	0x0694b607, 0xd004b7f0, 0x04bd009b, 0x010073f1,
++	0x07c097f1, 0xcf0694b6, 0x94f00099, 0x0096b004,
++	0xb6100bf4, 0x76b00172, 0xe71bf400, 0x00e40ef5,
++	0x26f067f1, 0xf5026eb9, 0xf10dde21, 0xfd000177,
++	0x21f505d7, 0x67f10e35, 0x6eb91620, 0xde21f502,
++	0xa377f10d, 0x05d7fd0a, 0x0e3521f5, 0x07f100f8,
++	0x04b607a0, 0x000ed006, 0xd7f104bd, 0xd3f00001,
++	0xac07f101, 0x0604b607, 0xbd000dd0, 0x10c3f004,
++	0x07acd7f1, 0xcf06d4b6, 0xd4f100dd, 0xd6b17000,
++	0x1bf41000, 0x01c2b610, 0xf400c6b0, 0x0ef5e51b,
++	0xd6b0f2d9, 0xd21bf500, 0xa4d7f1f2, 0x06d4b607,
++	0xf800ddcf, 0xa007f100, 0x0604b607, 0xbd000ed0,
++	0xa407f104, 0x0604b607, 0xbd000dd0, 0xf2d7f104,
++	0x01d3f000, 0x07ac07f1, 0xd00604b6, 0x04bd000d,
++	0xf110c3f0, 0xb607acd7, 0xddcf06d4, 0x00d4f100,
++	0x00d6b170, 0x101bf410, 0xb001c2b6, 0x1bf400c6,
++	0x760ef5e5, 0x00d6b0f2, 0xf26f1bf5, 0x000000f8,
++	0x07e497f1, 0xf00694b6, 0x9bd004b7, 0xf104bd00,
++	0xf1010073, 0xb607c097, 0x99cf0694, 0x0494f000,
++	0xf40096b0, 0x72b6100b, 0x0076b001, 0xf5e71bf4,
++	0xf100040e, 0xb926f067, 0x21f5026e, 0x77f10dde,
++	0xd7fd0001, 0x3521f505, 0x2067f10e, 0x026eb916,
++	0x0dde21f5, 0x0aa377f1, 0xf505d7fd, 0xf10e3521,
++	0xb6008097, 0xb7f10694, 0xb3f10108, 0x9bd0dead,
++	0xf504bd00, 0xf1f1ce0e, 0xb6008097, 0xb7f10694,
++	0xb3f10020, 0x9bd0dead, 0xf504bd00, 0xf5f1b60e,
++	0xfd0dde21, 0xd4b804d5, 0x100bf406, 0xb00172b6,
++	0x1bf40076, 0x5b0ef5ed, 0xf500f8ff, 0xfd0dde21,
++	0xd4b804d5, 0x100bf406, 0xb00172b6, 0x1bf40076,
++	0xb60ef5ed, 0x0000f8ff, 0xf468e7f1, 0x0010e3f1,
++	0x1005d7f1, 0x0000d3f1, 0x0e3521f5, 0xf420e7f1,
++	0x0010e3f1, 0x0042d7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf430e7f1, 0x0010e3f1, 0x0040d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf400e7f1, 0x0010e3f1, 0x1707d7f1,
++	0x0000d3f1, 0x0e3521f5, 0xf410e7f1, 0x0010e3f1,
++	0x0307d7f1, 0x0000d3f1, 0x0e3521f5, 0xf444e7f1,
++	0x0010e3f1, 0x881fd7f1, 0x04ccd3f1, 0x0e3521f5,
++	0x1548e7f1, 0x0000e3f1, 0x0102d7f1, 0x8000d3f1,
++	0x0e3521f5, 0x7310e7f1, 0x0013e3f1, 0x0608d7f1,
++	0x8120d3f1, 0x0e3521f5, 0x7300e7f1, 0x0013e3f1,
++	0x0103d7f1, 0x0000d3f1, 0x0e3521f5, 0x7370e7f1,
++	0x0013e3f1, 0x0003d7f1, 0x0000d3f1, 0x0e3521f5,
++	0x7380e7f1, 0x0013e3f1, 0x0001d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf808e7f1, 0x0010e3f1, 0x0004d7f1,
++	0x4802d3f1, 0x0e3521f5, 0xf824e7f1, 0x0010e3f1,
++	0x7867d7f1, 0x0040d3f1, 0x0e3521f5, 0x054877f1,
++	0x000073f1, 0x0cec21f5, 0x0b0ce7f1, 0x0010e3f1,
++	0x0012d7f1, 0x0008d3f1, 0x0e3521f5, 0x0cf721f5,
++	0x0cf721f5, 0x1200e7f1, 0x0061e3f1, 0x3300d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x0d0621f5, 0xf200e7f1,
++	0x0010e3f1, 0x8000d7f1, 0x0002d3f1, 0x0e3521f5,
++	0xf808e7f1, 0x0010e3f1, 0x0004d7f1, 0x4c02d3f1,
++	0x0e3521f5, 0x02a477f1, 0x000073f1, 0x0cec21f5,
++	0x73ece7f1, 0x0013e3f1, 0x0707d7f1, 0x0002d3f1,
++	0x0e3521f5, 0xf290e7f1, 0x0010e3f1, 0x5d11d7f1,
++	0x0518d3f1, 0x0e3521f5, 0xf314e7f1, 0x0010e3f1,
++	0x0001d7f1, 0x0000d3f1, 0x0e3521f5, 0xf210e7f1,
++	0x0010e3f1, 0x0000d7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf310e7f1, 0x0010e3f1, 0x0001d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf310e7f1, 0x0010e3f1, 0x0001d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x006477f1, 0x000073f1,
++	0x0cec21f5, 0xf090e7f1, 0x0010e3f1, 0x0060d7f1,
++	0x0000d3f1, 0x0e3521f5, 0xf090e7f1, 0x0010e3f1,
++	0x007ed7f1, 0xc000d3f1, 0x0e3521f5, 0x7360e7f1,
++	0x0013e3f1, 0x0003d7f1, 0x0000d3f1, 0x0e3521f5,
++	0x7370e7f1, 0x0013e3f1, 0x0000d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x7380e7f1, 0x0013e3f1, 0x0000d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x2000e7f1, 0x0013e3f1,
++	0x0000d7f1, 0x1803d3f1, 0x0e3521f5, 0x7320e7f1,
++	0x0013e3f1, 0x0103d7f1, 0x0000d3f1, 0x0e3521f5,
++	0x7330e7f1, 0x0013e3f1, 0x0606d7f1, 0x8120d3f1,
++	0x0e3521f5, 0x2004e7f1, 0x0013e3f1, 0x2f08d7f1,
++	0x0003d3f1, 0x0e3521f5, 0x2000e7f1, 0x0013e3f1,
++	0x0001d7f1, 0x1803d3f1, 0x0e3521f5, 0x7390e7f1,
++	0x0013e3f1, 0x000257f1, 0x000053f1, 0x000247f1,
++	0x000043f1, 0x000077f1, 0x000273f1, 0x0f1f21f5,
++	0xf874e7f1, 0x0010e3f1, 0x0000d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf824e7f1, 0x0010e3f1, 0x1867d7f1,
++	0x0040d3f1, 0x0e3521f5, 0x054877f1, 0x000073f1,
++	0x0cec21f5, 0x2018e7f1, 0x0013e3f1, 0x5000d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x07d077f1, 0x000073f1,
++	0x0cec21f5, 0xf910e7f1, 0x0010e3f1, 0x2000d7f1,
++	0x0000d3f1, 0x0e3521f5, 0xf914e7f1, 0x0010e3f1,
++	0x2000d7f1, 0x0000d3f1, 0x0e3521f5, 0xf658e7f1,
++	0x0010e3f1, 0x0000d7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf830e7f1, 0x0010e3f1, 0x0011d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x054877f1, 0x000073f1, 0x0cec21f5,
++	0x7370e7f1, 0x0013e3f1, 0x0003d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x7380e7f1, 0x0013e3f1, 0x0001d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x7360e7f1, 0x0013e3f1,
++	0x0002d7f1, 0x0000d3f1, 0x0e3521f5, 0xf090e7f1,
++	0x0010e3f1, 0x007fd7f1, 0x4000d3f1, 0x0e3521f5,
++	0xf210e7f1, 0x0010e3f1, 0x0000d7f1, 0x8000d3f1,
++	0x0e3521f5, 0x006477f1, 0x000073f1, 0x0cec21f5,
++	0xf300e7f1, 0x0010e3f1, 0x1520d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x006477f1, 0x000073f1, 0x0cec21f5,
++	0xf300e7f1, 0x0010e3f1, 0x1420d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x006477f1, 0x000073f1, 0x0cec21f5,
++	0xf320e7f1, 0x0010e3f1, 0x0098d7f1, 0x0020d3f1,
++	0x0e3521f5, 0x006477f1, 0x000073f1, 0x0cec21f5,
++	0xf300e7f1, 0x0010e3f1, 0x1c70d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x006477f1, 0x000073f1, 0x0cec21f5,
++	0xf224e7f1, 0x0010e3f1, 0x0a07d7f1, 0x0c07d3f1,
++	0x0e3521f5, 0xf290e7f1, 0x0010e3f1, 0x5d2ad7f1,
++	0x0c3cd3f1, 0x0e3521f5, 0xf294e7f1, 0x0010e3f1,
++	0x040bd7f1, 0x4cc3d3f1, 0x0e3521f5, 0xf298e7f1,
++	0x0010e3f1, 0x0711d7f1, 0x440cd3f1, 0x0e3521f5,
++	0xf29ce7f1, 0x0010e3f1, 0x48b5d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf2a0e7f1, 0x0010e3f1, 0x8035d7f1,
++	0x42e3d3f1, 0x0e3521f5, 0xf200e7f1, 0x0010e3f1,
++	0x9000d7f1, 0x0002d3f1, 0x0e3521f5, 0xf604e7f1,
++	0x0010e3f1, 0x0000d7f1, 0xf100d3f1, 0x0e3521f5,
++	0xf614e7f1, 0x0010e3f1, 0x4e77d7f1, 0x4004d3f1,
++	0x0e3521f5, 0xf610e7f1, 0x0010e3f1, 0x5e77d7f1,
++	0x4005d3f1, 0x0e3521f5, 0xf808e7f1, 0x0010e3f1,
++	0x0000d7f1, 0x5692d3f1, 0x0e3521f5, 0x0a9077f1,
++	0x000073f1, 0x0cec21f5, 0x73f8e7f1, 0x0013e3f1,
++	0x2050d7f1, 0x0000d3f1, 0x0e3521f5, 0x0c00e7f1,
++	0x0010e3f1, 0x0124d7f1, 0x0409d3f1, 0x0e3521f5,
++	0xf300e7f1, 0x0010e3f1, 0x1d70d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x006477f1, 0x000073f1, 0x0cec21f5,
++	0xf300e7f1, 0x0010e3f1, 0x1c70d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x006477f1, 0x000073f1, 0x0cec21f5,
++	0x006477f1, 0x000073f1, 0x0cec21f5, 0xf830e7f1,
++	0x0010e3f1, 0x0011d7f1, 0x0100d3f1, 0x0e3521f5,
++	0xf830e7f1, 0x0010e3f1, 0x0011d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x0d7d21f5, 0x054877f1, 0x000073f1,
++	0x0cec21f5, 0x0b0ce7f1, 0x0010e3f1, 0x0028d7f1,
++	0x0008d3f1, 0x0e3521f5, 0x1200e7f1, 0x0061e3f1,
++	0x3330d7f1, 0x0000d3f1, 0x0e3521f5, 0xf200e7f1,
++	0x0010e3f1, 0x9800d7f1, 0x0002d3f1, 0x0e3521f5,
++	0xf824e7f1, 0x0010e3f1, 0x1e67d7f1, 0x0040d3f1,
++	0x0e3521f5, 0x1548e7f1, 0x0000e3f1, 0x0102d7f1,
++	0x0000d3f1, 0x0e3521f5, 0xf468e7f1, 0x0010e3f1,
++	0x0020d7f1, 0x0002d3f1, 0x0e3521f5, 0xf420e7f1,
++	0x0010e3f1, 0x0043d7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf430e7f1, 0x0010e3f1, 0x0041d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf400e7f1, 0x0010e3f1, 0x171fd7f1,
++	0x0000d3f1, 0x0e3521f5, 0xf410e7f1, 0x0010e3f1,
++	0x0107d7f1, 0x0000d3f1, 0x0e3521f5, 0xf444e7f1,
++	0x0010e3f1, 0x883fd7f1, 0x04ccd3f1, 0x0e3521f5,
++	0x1548e7f1, 0x0000e3f1, 0x0101d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x1548e7f1, 0x0000e3f1, 0x0101d7f1,
++	0x8000d3f1, 0x0e3521f5, 0xf050e7f1, 0x0010e3f1,
++	0x1050d7f1, 0xff00d3f1, 0x0e3521f5, 0x000000f8,
++	0xf468e7f1, 0x0010e3f1, 0x1005d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf420e7f1, 0x0010e3f1, 0x0042d7f1,
++	0x0000d3f1, 0x0e3521f5, 0xf430e7f1, 0x0010e3f1,
++	0x0040d7f1, 0x0000d3f1, 0x0e3521f5, 0xf400e7f1,
++	0x0010e3f1, 0x1707d7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf410e7f1, 0x0010e3f1, 0x0307d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf444e7f1, 0x0010e3f1, 0x881fd7f1,
++	0x04ccd3f1, 0x0e3521f5, 0x1548e7f1, 0x0000e3f1,
++	0x0102d7f1, 0x8000d3f1, 0x0e3521f5, 0x2000e7f1,
++	0x0013e3f1, 0x0002d7f1, 0x1801d3f1, 0x0e3521f5,
++	0x2000e7f1, 0x0013e3f1, 0x0000d7f1, 0x1801d3f1,
++	0x0e3521f5, 0x7320e7f1, 0x0013e3f1, 0x0103d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x7330e7f1, 0x0013e3f1,
++	0x0606d7f1, 0x8120d3f1, 0x0e3521f5, 0x2004e7f1,
++	0x0013e3f1, 0x1806d7f1, 0x0005d3f1, 0x0e3521f5,
++	0x2000e7f1, 0x0013e3f1, 0x0001d7f1, 0x1801d3f1,
++	0x0e3521f5, 0x7390e7f1, 0x0013e3f1, 0x000257f1,
++	0x000053f1, 0x000247f1, 0x000043f1, 0x000077f1,
++	0x000273f1, 0x0f3b21f5, 0x2018e7f1, 0x0013e3f1,
++	0x1000d7f1, 0x1000d3f1, 0x0e3521f5, 0x7370e7f1,
++	0x0013e3f1, 0x0003d7f1, 0x0000d3f1, 0x0e3521f5,
++	0x7380e7f1, 0x0013e3f1, 0x0001d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x0b0ce7f1, 0x0010e3f1, 0x0012d7f1,
++	0x0008d3f1, 0x0e3521f5, 0x0cf721f5, 0x0cf721f5,
++	0x1200e7f1, 0x0061e3f1, 0x3300d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x0d0621f5, 0xf200e7f1, 0x0010e3f1,
++	0x8000d7f1, 0x0002d3f1, 0x0e3521f5, 0xf314e7f1,
++	0x0010e3f1, 0x0001d7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf210e7f1, 0x0010e3f1, 0x0000d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf310e7f1, 0x0010e3f1, 0x0001d7f1,
++	0x0000d3f1, 0x0e3521f5, 0xf310e7f1, 0x0010e3f1,
++	0x0001d7f1, 0x0000d3f1, 0x0e3521f5, 0x006477f1,
++	0x000073f1, 0x0cec21f5, 0xf090e7f1, 0x0010e3f1,
++	0x0060d7f1, 0x0000d3f1, 0x0e3521f5, 0xf090e7f1,
++	0x0010e3f1, 0x007ed7f1, 0xc000d3f1, 0x0e3521f5,
++	0xf660e7f1, 0x0010e3f1, 0x1010d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf824e7f1, 0x0010e3f1, 0x79e7d7f1,
++	0x0040d3f1, 0x0e3521f5, 0x054877f1, 0x000073f1,
++	0x0cec21f5, 0x7370e7f1, 0x0013e3f1, 0x0003d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x7380e7f1, 0x0013e3f1,
++	0x0001d7f1, 0x0000d3f1, 0x0e3521f5, 0x7360e7f1,
++	0x0013e3f1, 0x0002d7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf090e7f1, 0x0010e3f1, 0x007fd7f1, 0x4000d3f1,
++	0x0e3521f5, 0xf210e7f1, 0x0010e3f1, 0x0000d7f1,
++	0x8000d3f1, 0x0e3521f5, 0x00c877f1, 0x000073f1,
++	0x0cec21f5, 0xf300e7f1, 0x0010e3f1, 0x1520d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x006477f1, 0x000073f1,
++	0x0cec21f5, 0xf300e7f1, 0x0010e3f1, 0x1420d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x006477f1, 0x000073f1,
++	0x0cec21f5, 0xf300e7f1, 0x0010e3f1, 0x1520d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x006477f1, 0x000073f1,
++	0x0cec21f5, 0xf808e7f1, 0x0010e3f1, 0x0004d7f1,
++	0x0802d3f1, 0x0e3521f5, 0xf300e7f1, 0x0010e3f1,
++	0x1520d7f1, 0x0000d3f1, 0x0e3521f5, 0x006477f1,
++	0x000073f1, 0x0cec21f5, 0xf300e7f1, 0x0010e3f1,
++	0x1420d7f1, 0x0000d3f1, 0x0e3521f5, 0x006477f1,
++	0x000073f1, 0x0cec21f5, 0x00c877f1, 0x000073f1,
++	0x0cec21f5, 0xf830e7f1, 0x0010e3f1, 0x0017d7f1,
++	0x0100d3f1, 0x0e3521f5, 0xf830e7f1, 0x0010e3f1,
++	0x0017d7f1, 0x0000d3f1, 0x0e3521f5, 0x0d7d21f5,
++	0x07ec77f1, 0x000073f1, 0x0cec21f5, 0x0b0ce7f1,
++	0x0010e3f1, 0x0028d7f1, 0x0008d3f1, 0x0e3521f5,
++	0x1200e7f1, 0x0061e3f1, 0x3330d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf200e7f1, 0x0010e3f1, 0x8800d7f1,
++	0x0002d3f1, 0x0e3521f5, 0x2018e7f1, 0x0013e3f1,
++	0x1000d7f1, 0x1000d3f1, 0x0e3521f5, 0xf824e7f1,
++	0x0010e3f1, 0x79e7d7f1, 0x0040d3f1, 0x0e3521f5,
++	0xf824e7f1, 0x0010e3f1, 0x79e7d7f1, 0x0040d3f1,
++	0x0e3521f5, 0xf808e7f1, 0x0010e3f1, 0x0004d7f1,
++	0x0802d3f1, 0x0e3521f5, 0x1548e7f1, 0x0000e3f1,
++	0x0102d7f1, 0x0000d3f1, 0x0e3521f5, 0xf468e7f1,
++	0x0010e3f1, 0x1005d7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf420e7f1, 0x0010e3f1, 0x0042d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf430e7f1, 0x0010e3f1, 0x0040d7f1,
++	0x0000d3f1, 0x0e3521f5, 0xf400e7f1, 0x0010e3f1,
++	0x1707d7f1, 0x0000d3f1, 0x0e3521f5, 0xf410e7f1,
++	0x0010e3f1, 0x0307d7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf444e7f1, 0x0010e3f1, 0x881fd7f1, 0x04ccd3f1,
++	0x0e3521f5, 0x1548e7f1, 0x0000e3f1, 0x0101d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x1548e7f1, 0x0000e3f1,
++	0x0101d7f1, 0x8000d3f1, 0x0e3521f5, 0xf050e7f1,
++	0x0010e3f1, 0x0450d7f1, 0xff00d3f1, 0x0e3521f5,
++	0x000000f8, 0xf050e7f1, 0x0010e3f1, 0x0450d7f1,
++	0xff00d3f1, 0x0e3521f5, 0xf468e7f1, 0x0010e3f1,
++	0x1005d7f1, 0x0000d3f1, 0x0e3521f5, 0xf420e7f1,
++	0x0010e3f1, 0x0042d7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf430e7f1, 0x0010e3f1, 0x0040d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf400e7f1, 0x0010e3f1, 0x1707d7f1,
++	0x0000d3f1, 0x0e3521f5, 0xf410e7f1, 0x0010e3f1,
++	0x0307d7f1, 0x0000d3f1, 0x0e3521f5, 0xf444e7f1,
++	0x0010e3f1, 0x881fd7f1, 0x04ccd3f1, 0x0e3521f5,
++	0x1548e7f1, 0x0000e3f1, 0x0102d7f1, 0x8000d3f1,
++	0x0e3521f5, 0x7300e7f1, 0x0013e3f1, 0x0103d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x7370e7f1, 0x0013e3f1,
++	0x0003d7f1, 0x0000d3f1, 0x0e3521f5, 0x7380e7f1,
++	0x0013e3f1, 0x0001d7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf824e7f1, 0x0010e3f1, 0x1867d7f1, 0x0040d3f1,
++	0x0e3521f5, 0x02a477f1, 0x000073f1, 0x0cec21f5,
++	0x0b0ce7f1, 0x0010e3f1, 0x0012d7f1, 0x0008d3f1,
++	0x0e3521f5, 0x1548e7f1, 0x0000e3f1, 0x0101d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x0cf721f5, 0x0cf721f5,
++	0x1200e7f1, 0x0061e3f1, 0x3300d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x0d0621f5, 0xf200e7f1, 0x0010e3f1,
++	0x9000d7f1, 0x0002d3f1, 0x0e3521f5, 0xf314e7f1,
++	0x0010e3f1, 0x0001d7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf210e7f1, 0x0010e3f1, 0x0000d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf310e7f1, 0x0010e3f1, 0x0001d7f1,
++	0x0000d3f1, 0x0e3521f5, 0xf310e7f1, 0x0010e3f1,
++	0x0001d7f1, 0x0000d3f1, 0x0e3521f5, 0x006477f1,
++	0x000073f1, 0x0cec21f5, 0xf090e7f1, 0x0010e3f1,
++	0x0060d7f1, 0x0000d3f1, 0x0e3521f5, 0xf090e7f1,
++	0x0010e3f1, 0x007ed7f1, 0xc000d3f1, 0x0e3521f5,
++	0x7360e7f1, 0x0013e3f1, 0x0003d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf830e7f1, 0x0010e3f1, 0x0017d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x02a477f1, 0x000073f1,
++	0x0cec21f5, 0x7370e7f1, 0x0013e3f1, 0x0000d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x7380e7f1, 0x0013e3f1,
++	0x0000d7f1, 0x0000d3f1, 0x0e3521f5, 0x2018e7f1,
++	0x0013e3f1, 0x1000d7f1, 0x0000d3f1, 0x0e3521f5,
++	0x2000e7f1, 0x0013e3f1, 0x0000d7f1, 0x1803d3f1,
++	0x0e3521f5, 0x7320e7f1, 0x0013e3f1, 0x0103d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x7330e7f1, 0x0013e3f1,
++	0x0606d7f1, 0x8120d3f1, 0x0e3521f5, 0x2004e7f1,
++	0x0013e3f1, 0x1806d7f1, 0x0005d3f1, 0x0e3521f5,
++	0x2000e7f1, 0x0013e3f1, 0x0001d7f1, 0x1803d3f1,
++	0x0e3521f5, 0x7390e7f1, 0x0013e3f1, 0x000257f1,
++	0x000053f1, 0x000247f1, 0x000043f1, 0x000077f1,
++	0x000273f1, 0x0f1f21f5, 0xf874e7f1, 0x0010e3f1,
++	0x0000d7f1, 0x0400d3f1, 0x0e3521f5, 0xf658e7f1,
++	0x0010e3f1, 0x8888d7f1, 0x008cd3f1, 0x0e3521f5,
++	0x054877f1, 0x000073f1, 0x0cec21f5, 0x2018e7f1,
++	0x0013e3f1, 0x1000d7f1, 0x1000d3f1, 0x0e3521f5,
++	0xf660e7f1, 0x0010e3f1, 0x1010d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf910e7f1, 0x0010e3f1, 0x0000d7f1,
++	0x0000d3f1, 0x0e3521f5, 0xf914e7f1, 0x0010e3f1,
++	0x0000d7f1, 0x0000d3f1, 0x0e3521f5, 0xf824e7f1,
++	0x0010e3f1, 0x7867d7f1, 0x0040d3f1, 0x0e3521f5,
++	0x054877f1, 0x000073f1, 0x0cec21f5, 0x7370e7f1,
++	0x0013e3f1, 0x0003d7f1, 0x0000d3f1, 0x0e3521f5,
++	0x7380e7f1, 0x0013e3f1, 0x0001d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x7360e7f1, 0x0013e3f1, 0x0002d7f1,
++	0x0000d3f1, 0x0e3521f5, 0xf090e7f1, 0x0010e3f1,
++	0x007fd7f1, 0x4000d3f1, 0x0e3521f5, 0xf210e7f1,
++	0x0010e3f1, 0x0000d7f1, 0x8000d3f1, 0x0e3521f5,
++	0x00c877f1, 0x000073f1, 0x0cec21f5, 0xf300e7f1,
++	0x0010e3f1, 0x1d70d7f1, 0x0000d3f1, 0x0e3521f5,
++	0x006477f1, 0x000073f1, 0x0cec21f5, 0xf300e7f1,
++	0x0010e3f1, 0x1c70d7f1, 0x0000d3f1, 0x0e3521f5,
++	0x006477f1, 0x000073f1, 0x0cec21f5, 0xf320e7f1,
++	0x0010e3f1, 0x0080d7f1, 0x0020d3f1, 0x0e3521f5,
++	0x006477f1, 0x000073f1, 0x0cec21f5, 0xf300e7f1,
++	0x0010e3f1, 0x1420d7f1, 0x0000d3f1, 0x0e3521f5,
++	0x006477f1, 0x000073f1, 0x0cec21f5, 0xf224e7f1,
++	0x0010e3f1, 0x0a07d7f1, 0x0c04d3f1, 0x0e3521f5,
++	0xf290e7f1, 0x0010e3f1, 0x2411d7f1, 0x0518d3f1,
++	0x0e3521f5, 0xf294e7f1, 0x0010e3f1, 0x4286d7f1,
++	0x4c51d3f1, 0x0e3521f5, 0xf298e7f1, 0x0010e3f1,
++	0x0411d7f1, 0x4406d3f1, 0x0e3521f5, 0xf29ce7f1,
++	0x0010e3f1, 0x1e6ad7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf2a0e7f1, 0x0010e3f1, 0x0035d7f1, 0x42e2d3f1,
++	0x0e3521f5, 0xf200e7f1, 0x0010e3f1, 0x8000d7f1,
++	0x0002d3f1, 0x0e3521f5, 0xf604e7f1, 0x0010e3f1,
++	0x0000d7f1, 0xf000d3f1, 0x0e3521f5, 0xf614e7f1,
++	0x0010e3f1, 0x4f77d7f1, 0x4004d3f1, 0x0e3521f5,
++	0xf610e7f1, 0x0010e3f1, 0x5f77d7f1, 0x4005d3f1,
++	0x0e3521f5, 0xf808e7f1, 0x0010e3f1, 0x0004d7f1,
++	0x4802d3f1, 0x0e3521f5, 0x0a9077f1, 0x000073f1,
++	0x0cec21f5, 0x73ece7f1, 0x0013e3f1, 0x0707d7f1,
++	0x0000d3f1, 0x0e3521f5, 0x73f8e7f1, 0x0013e3f1,
++	0x2055d7f1, 0x0000d3f1, 0x0e3521f5, 0x0c00e7f1,
++	0x0010e3f1, 0x0124d7f1, 0x0c09d3f1, 0x0e3521f5,
++	0xf300e7f1, 0x0010e3f1, 0x1520d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x006477f1, 0x000073f1, 0x0cec21f5,
++	0xf300e7f1, 0x0010e3f1, 0x1420d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x006477f1, 0x000073f1, 0x0cec21f5,
++	0x00c877f1, 0x000073f1, 0x0cec21f5, 0xf830e7f1,
++	0x0010e3f1, 0x0017d7f1, 0x0100d3f1, 0x0e3521f5,
++	0xf830e7f1, 0x0010e3f1, 0x0017d7f1, 0x0000d3f1,
++	0x0e3521f5, 0x0d7d21f5, 0x054877f1, 0x000073f1,
++	0x0cec21f5, 0x0b0ce7f1, 0x0010e3f1, 0x0028d7f1,
++	0x0008d3f1, 0x0e3521f5, 0x1200e7f1, 0x0061e3f1,
++	0x3330d7f1, 0x0000d3f1, 0x0e3521f5, 0xf200e7f1,
++	0x0010e3f1, 0x8800d7f1, 0x0002d3f1, 0x0e3521f5,
++	0x1548e7f1, 0x0000e3f1, 0x0101d7f1, 0x8000d3f1,
++	0x0e3521f5, 0xf468e7f1, 0x0010e3f1, 0x1005d7f1,
++	0x0000d3f1, 0x0e3521f5, 0xf420e7f1, 0x0010e3f1,
++	0x0042d7f1, 0x0000d3f1, 0x0e3521f5, 0xf430e7f1,
++	0x0010e3f1, 0x0040d7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf400e7f1, 0x0010e3f1, 0x1707d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf410e7f1, 0x0010e3f1, 0x0307d7f1,
++	0x0000d3f1, 0x0e3521f5, 0xf444e7f1, 0x0010e3f1,
++	0x881fd7f1, 0x04ccd3f1, 0x0e3521f5, 0x2018e7f1,
++	0x0013e3f1, 0x1000d7f1, 0x1000d3f1, 0x0e3521f5,
++	0xf824e7f1, 0x0010e3f1, 0x7867d7f1, 0x0040d3f1,
++	0x0e3521f5, 0xf824e7f1, 0x0010e3f1, 0x79e7d7f1,
++	0x0040d3f1, 0x0e3521f5, 0xf808e7f1, 0x0010e3f1,
++	0x0004d7f1, 0x0802d3f1, 0x0e3521f5, 0x1548e7f1,
++	0x0000e3f1, 0x0102d7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf468e7f1, 0x0010e3f1, 0x1005d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf420e7f1, 0x0010e3f1, 0x0042d7f1,
++	0x0000d3f1, 0x0e3521f5, 0xf430e7f1, 0x0010e3f1,
++	0x0040d7f1, 0x0000d3f1, 0x0e3521f5, 0xf400e7f1,
++	0x0010e3f1, 0x1707d7f1, 0x0000d3f1, 0x0e3521f5,
++	0xf410e7f1, 0x0010e3f1, 0x0307d7f1, 0x0000d3f1,
++	0x0e3521f5, 0xf444e7f1, 0x0010e3f1, 0x881fd7f1,
++	0x04ccd3f1, 0x0e3521f5, 0x1548e7f1, 0x0000e3f1,
++	0x0101d7f1, 0x0000d3f1, 0x0e3521f5, 0x1548e7f1,
++	0x0000e3f1, 0x0101d7f1, 0x8000d3f1, 0x0e3521f5,
++	0x000000f8, 0x7360e7f1, 0x0013e3f1, 0x0dde21f5,
++	0x0001d4f1, 0xf500d6b0, 0xf5000a1b, 0xf81bb421,
++	0x9021f500, 0x0000f816,
++};
+diff -ruN a/nvkm/subdev/fb/ramgf100.c b/nvkm/subdev/fb/ramgf100.c
+--- a/nvkm/subdev/fb/ramgf100.c	2026-11-24 15:10:58.704459775 +0000
++++ b/nvkm/subdev/fb/ramgf100.c	2026-11-24 15:11:11.474909837 +0000
+@@ -112,6 +112,7 @@
+ 	enum {
+ 		GF100_DDR3_NONE = 0,
+ 		GF100_DDR3_L702X,	/* 10de:0dcd 1028:04b7, GF106M, fexec_code.inc */
++		GF100_DDR3_Q600,	/* 10de:0df8 103c:0835, GF108, fexec_code_gf108.inc */
+ 	} ddr3_board;
+ 	bool ddr3_skip_logged;
+ };
+@@ -166,6 +167,9 @@
+ /* Custom-executor image (assembled from tmp/memx_exec_custom.fuc).
+  * Signals completion via PDAEMON.SCRATCH0 (0x10a080). */
+ #include "fexec_code.inc"
++/* Quadro 600 image: same helpers, NVIDIA 390.157 blocks 20/28 (cmd 2/1),
++ * cmd 0 = probe.  Generated by tools/gen-fexec-gf108.py. */
++#include "fexec_code_gf108.inc"
+ 
+ 
+ static void fexec_upload(struct nvkm_device *device, const u32 *code, int nwords)
+@@ -190,6 +194,7 @@
+ }
+ 
+ static bool fexec_resident_running = false;
++static const u32 *fexec_resident_image;
+ 
+ /* VBlank-aligned memory reclock (Zero-Tear VBlank Onset Sync).
+  * On NV50/GF100 display hardware (dispnv50/head.c, nouveau_display.c),
+@@ -318,18 +323,26 @@
+ 	return 0;
+ }
+ 
++/* Run command @cmd of executor image @code.  @freq is the expected memory
++ * clock afterwards (0 = do not check, probe).  @host_latch: strobe the
++ * 0x001548 PHY commit latch from the host after DONE (GF106M image only;
++ * the GF108 image ends with NVIDIA's own 0x001548 sequence). */
+ static int
+-gf100_ram_exec_custom(struct gf100_ram *ram, u32 freq)
++gf100_ram_fexec_run(struct gf100_ram *ram, const u32 *code, int nwords,
++		    u32 cmd, u32 freq, bool host_latch)
+ {
+ 	struct nvkm_subdev *subdev = &ram->base.fb->subdev;
+ 	struct nvkm_device *device = subdev->device;
+ 	unsigned long deadline;
+-	u32 done = 0, cur = 0, pmc, cmd;
++	u32 done = 0, cur = 0, pmc;
+ 	int i, sync_head = -1, vpos_start = 0, vpos_end = 0;
+ 	ktime_t t_start;
+ 	s64 exec_us;
+ 
+-	cmd = (freq == 900000) ? 1 : 2;
++	if (fexec_resident_running && fexec_resident_image != code) {
++		nvkm_info(subdev, "DDR3: resident executor is a different image, reloading via cold path\n");
++		fexec_resident_running = false;
++	}
+ 
+ 	/* Check if resident executor is already running and ready in Falcon IMEM */
+ 	if (fexec_resident_running) {
+@@ -392,13 +405,20 @@
+ 
+ 		if (done == 0xE1EC0001) {
+ 			/* Assert hardware PHY timing commit latch from host inside VBlank */
+-			nvkm_wr32(device, 0x001548, 0x00000101);
+-			nvkm_wr32(device, 0x001548, 0x80000101);
+-			(void)nvkm_rd32(device, 0x001548);
++			if (host_latch) {
++				nvkm_wr32(device, 0x001548, 0x00000101);
++				nvkm_wr32(device, 0x001548, 0x80000101);
++				(void)nvkm_rd32(device, 0x001548);
++			}
+ 
+ 			exec_us = ktime_us_delta(ktime_get(), t_start);
+ 			if (sync_head >= 0)
+ 				vpos_end = gf100_ram_read_vpos(device, sync_head);
++			if (!freq) {
++				nvkm_info(subdev, "DDR3: resident executor cmd=%u DONE in %lld us (no clock check)\n",
++					  cmd, exec_us);
++				return 0;
++			}
+ 
+ 			for (i = 0; i < 20; i++) {
+ 				cur = nvkm_clk_read(device->clk, nv_clk_src_mem);
+@@ -487,7 +507,7 @@
+ 	nvkm_wr32(device, 0x10a004, 0xffffffff);
+ 
+ 	/* Upload program to IMEM */
+-	fexec_upload(device, fexec_code, ARRAY_SIZE(fexec_code));
++	fexec_upload(device, code, nwords);
+ 	nvkm_wr32(device, 0x10a080, 0x00000000);  /* clear DONE */
+ 	nvkm_wr32(device, 0x10a084, cmd);         /* send cmd: 1=900MHz, 2=324MHz */
+ 	(void)nvkm_rd32(device, 0x10a080);
+@@ -525,15 +545,23 @@
+ 
+ 	if (done == 0xE1EC0001) {
+ 		fexec_resident_running = true;
++		fexec_resident_image = code;
+ 
+ 		/* Assert hardware PHY timing commit latch from host inside VBlank */
+-		nvkm_wr32(device, 0x001548, 0x00000101);
+-		nvkm_wr32(device, 0x001548, 0x80000101);
+-		(void)nvkm_rd32(device, 0x001548);
++		if (host_latch) {
++			nvkm_wr32(device, 0x001548, 0x00000101);
++			nvkm_wr32(device, 0x001548, 0x80000101);
++			(void)nvkm_rd32(device, 0x001548);
++		}
+ 
+ 		exec_us = ktime_us_delta(ktime_get(), t_start);
+ 		if (sync_head >= 0)
+ 			vpos_end = gf100_ram_read_vpos(device, sync_head);
++		if (!freq) {
++			nvkm_info(subdev, "DDR3: native resident executor started, cmd=%u DONE in %lld us (no clock check)\n",
++				  cmd, exec_us);
++			return 0;
++		}
+ 
+ 		for (i = 0; i < 20; i++) {
+ 			cur = nvkm_clk_read(device->clk, nv_clk_src_mem);
+@@ -572,6 +600,211 @@
+ 	return -ETIMEDOUT;
+ }
+ 
++/* L702X GF106M image: cmd 1 = 324 -> 900, cmd 2 = 900 -> 324 (and 324 -> 324). */
++static int
++gf100_ram_exec_custom(struct gf100_ram *ram, u32 freq)
++{
++	u32 hi = ram->ddr3_hi ? ram->ddr3_hi : 900000;
++
++	return gf100_ram_fexec_run(ram, fexec_code, ARRAY_SIZE(fexec_code),
++				   freq == hi ? 1 : 2, freq, true);
++}
++
++/******************************************************************************
++ * Quadro 600 (GF108 / NVC1, 10de:0df8 103c:0835, VBIOS 70.08.2a.00.01)
++ *
++ * Replays NVIDIA 390.157's own PMU memx scripts captured on this card
++ * (docs/research/GF108_QUADRO600.md, testing/gf108_*) through the resident
++ * executor: cmd 1 = block 28 (324 MPLL -> 800 MPLL), cmd 2 = "to 324": the
++ * executor runs block 20 (boot 324 on the mdiv bypass -> 324 on MPLL) when
++ * 0x137360 bit 0 is set, block 54 (800 -> 324 MPLL) when it is clear.
++ * Every transition is gated on the exact register state the capture
++ * started from.
++ *****************************************************************************/
++enum gf100_q600_state {
++	Q600_UNKNOWN = 0,
++	Q600_BOOT324,	/* devinit: mdiv 1620/5 (0x137310 0x0808), MPLL off */
++	Q600_MPLL324,	/* after block 20 (0x137310 0x0808) or block 54 (0x0608):
++			 * MPLL 405*24/6/5 */
++	Q600_MPLL800,	/* after block 28: MPLL 405*47/8/3 = 793 MHz */
++};
++
++static const char * const gf100_q600_state_name[] = {
++	"unknown", "boot-324 (mdiv)", "324 (MPLL)", "800 (MPLL)",
++};
++
++static enum gf100_q600_state
++gf100_ram_q600_state(struct nvkm_device *device)
++{
++	u32 r132000 = nvkm_rd32(device, 0x132000);
++	u32 r132004 = nvkm_rd32(device, 0x132004);
++	u32 r137300 = nvkm_rd32(device, 0x137300);
++	u32 r137310 = nvkm_rd32(device, 0x137310);
++	u32 r137320 = nvkm_rd32(device, 0x137320);
++	u32 r137330 = nvkm_rd32(device, 0x137330);
++	u32 r137360 = nvkm_rd32(device, 0x137360);
++
++	if (r137300 != 0x00000103 || r137320 != 0x00000103 || r137330 != 0x81200606)
++		return Q600_UNKNOWN;
++	if ((r137360 & 3) == 3 && r132000 == 0x18010002 && r137310 == 0x81200808)
++		return Q600_BOOT324;
++	if ((r137360 & 3) == 2 && (r132000 & 0x00000001) && r132004 == 0x00051806 &&
++	    (r137310 == 0x81200808 || r137310 == 0x81200608))
++		return Q600_MPLL324;
++	if ((r137360 & 3) == 2 && (r132000 & 0x00000001) && r132004 == 0x00032f08 &&
++	    r137310 == 0x81200608)
++		return Q600_MPLL800;
++	return Q600_UNKNOWN;
++}
++
++static void
++gf100_ram_q600_dump(struct nvkm_subdev *subdev, const char *why)
++{
++	struct nvkm_device *device = subdev->device;
++
++	nvkm_error(subdev, "DDR3: Q600 %s: 132000=%08x 132004=%08x 137300=%08x 137310=%08x 137320=%08x 137330=%08x 137360=%08x 137390=%08x 10f200=%08x 10f290=%08x\n",
++		   why, nvkm_rd32(device, 0x132000), nvkm_rd32(device, 0x132004),
++		   nvkm_rd32(device, 0x137300), nvkm_rd32(device, 0x137310),
++		   nvkm_rd32(device, 0x137320), nvkm_rd32(device, 0x137330),
++		   nvkm_rd32(device, 0x137360), nvkm_rd32(device, 0x137390),
++		   nvkm_rd32(device, 0x10f200), nvkm_rd32(device, 0x10f290));
++}
++
++/* Board facts the captured scripts depend on; checked once, before the
++ * first transition.  A mismatch downgrades the board to "no script". */
++static bool
++gf100_ram_q600_check(struct gf100_ram *ram)
++{
++	struct nvkm_subdev *subdev = &ram->base.fb->subdev;
++	struct nvkm_device *device = subdev->device;
++	struct nvkm_bios *bios = device->bios;
++	u32 strap = (nvkm_rd32(device, 0x101000) & 0x0000003c) >> 2;
++	u32 fbpas = nvkm_rd32(device, 0x02243c);
++	u32 fbpam = nvkm_rd32(device, 0x022550);
++
++	if (bios->version.major != 0x70 || bios->version.chip != 0x08 ||
++	    bios->version.minor != 0x2a || bios->version.micro != 0x00 ||
++	    bios->version.patch != 0x01) {
++		nvkm_info(subdev, "DDR3: Q600 script is for VBIOS 70.08.2a.00.01, this is %02x.%02x.%02x.%02x.%02x\n",
++			  bios->version.major, bios->version.chip, bios->version.minor,
++			  bios->version.micro, bios->version.patch);
++		return false;
++	}
++	if (strap != 3 || fbpas != 2 || (fbpam & 3)) {
++		nvkm_info(subdev, "DDR3: Q600 script is for strap 3 / 2 FBPAs, this is strap %u / %u FBPAs (mask %08x)\n",
++			  strap, fbpas, fbpam);
++		return false;
++	}
++	if (ram->ddr3_lo != 324000 || ram->ddr3_hi != 800000) {
++		nvkm_info(subdev, "DDR3: Q600 script is for the 324/800 MHz pair, VBIOS gives %u/%u kHz\n",
++			  ram->ddr3_lo, ram->ddr3_hi);
++		return false;
++	}
++	return true;
++}
++
++static int
++gf100_ram_q600_run(struct gf100_ram *ram, u32 cmd, u32 freq,
++		   enum gf100_q600_state want)
++{
++	struct nvkm_subdev *subdev = &ram->base.fb->subdev;
++	struct nvkm_device *device = subdev->device;
++	enum gf100_q600_state st;
++	int ret;
++
++	nvkm_info(subdev, "DDR3: Q600 cmd %u (%s) -> %s\n", cmd,
++		  cmd == 1 ? "NVIDIA block 28" :
++		  cmd == 2 ? (want == Q600_MPLL324 &&
++			      (nvkm_rd32(device, 0x137360) & 1) ? "NVIDIA block 20" :
++			      "NVIDIA block 54") : "probe",
++		  gf100_q600_state_name[want]);
++	ret = gf100_ram_fexec_run(ram, fexec_code_gf108, ARRAY_SIZE(fexec_code_gf108),
++				  cmd, freq, false);
++	st = gf100_ram_q600_state(device);
++	if (ret) {
++		/* SCRATCH2 0xDEAD0020: PLL lock timeout before the FB block,
++		 * DRAM untouched; 0xDEAD0108: failure inside the block, FB
++		 * pause released and engine gating restored by the executor;
++		 * 0xDEAD0000: MMIO-port timeout inside a helper, state unknown. */
++		gf100_ram_q600_dump(subdev, "transition failed");
++		return ret;
++	}
++	if (st != want) {
++		gf100_ram_q600_dump(subdev, "unexpected state after transition");
++		return -EIO;
++	}
++	return 0;
++}
++
++static int
++gf100_ram_calc_q600(struct gf100_ram *ram, u32 freq)
++{
++	struct nvkm_subdev *subdev = &ram->base.fb->subdev;
++	struct nvkm_device *device = subdev->device;
++	enum gf100_q600_state st;
++	int ret;
++
++	/* clk/base.c only calls us with NvFermiMemReclock=true; belt and braces. */
++	if (!nvkm_boolopt(device->cfgopt, "NvFermiMemReclock", false))
++		return 0;
++
++	if (!gf100_ram_q600_check(ram)) {
++		ram->ddr3_board = GF100_DDR3_NONE;
++		nvkm_info(subdev, "DDR3: memory reclock disabled for this board, memory stays as booted\n");
++		return 0;
++	}
++
++	if (freq == 135000)	/* pstate 03 asks 135, same 324 MHz memory state */
++		freq = 324000;
++	if (freq != 324000 && freq != 800000) {
++		nvkm_info(subdev, "DDR3: Q600 has no script for %u kHz, memory untouched\n", freq);
++		return 0;
++	}
++
++	st = gf100_ram_q600_state(device);
++	if (st == Q600_UNKNOWN) {
++		gf100_ram_q600_dump(subdev, "memory clock state not one of the captured ones, refusing");
++		return -EIO;
++	}
++
++	if (freq == 324000) {
++		switch (st) {
++		case Q600_BOOT324:
++			if (nvkm_boolopt(device->cfgopt, "NvFermiMemDryRun", false)) {
++				nvkm_info(subdev, "DDR3: Q600 dry run 324 -> 324 (boot mdiv -> MPLL, full self-refresh/MRS cycle)\n");
++				return gf100_ram_q600_run(ram, 2, 324000, Q600_MPLL324);
++			}
++			fallthrough;
++		case Q600_MPLL324:
++			if (!fexec_resident_running &&
++			    nvkm_boolopt(device->cfgopt, "NvFermiMemProbe", false)) {
++				nvkm_info(subdev, "DDR3: Q600 executor probe (cmd 0, no memory writes)\n");
++				return gf100_ram_q600_run(ram, 0, 0, st);
++			}
++			nvkm_debug(subdev, "DDR3: Q600 memory already at 324 MHz (%s)\n",
++				   gf100_q600_state_name[st]);
++			return 0;
++		default:	/* Q600_MPLL800: cmd 2 runs block 54 (0x137360 bit 0 clear) */
++			return gf100_ram_q600_run(ram, 2, 324000, Q600_MPLL324);
++		}
++	}
++
++	/* freq == 800000 */
++	if (st == Q600_MPLL800) {
++		nvkm_debug(subdev, "DDR3: Q600 memory already at 800 MHz\n");
++		return 0;
++	}
++	if (st == Q600_BOOT324) {
++		/* block 28 starts from MPLL-324: go there first (block 20) */
++		ret = gf100_ram_q600_run(ram, 2, 324000, Q600_MPLL324);
++		if (ret)
++			return ret;
++	}
++	/* Either MPLL-324 form: block 28's first write (0x137310 = 0x81200608)
++	 * is a no-op on the post-54 form, which is exactly NVIDIA's block 61. */
++	return gf100_ram_q600_run(ram, 1, 800000, Q600_MPLL800);
++}
++
+ static int
+ gf100_ram_calc_ddr3(struct gf100_ram *ram, u32 freq)
+ {
+@@ -584,6 +817,8 @@
+ 	switch (ram->ddr3_board) {
+ 	case GF100_DDR3_L702X:
+ 		break;
++	case GF100_DDR3_Q600:
++		return gf100_ram_calc_q600(ram, freq);
+ 	default:
+ 		if (!ram->ddr3_skip_logged) {
+ 			nvkm_info(subdev, "DDR3: no executor script for this board (chip %02x), memory stays at %u kHz\n",
+@@ -1207,8 +1442,13 @@
+ 		    pdev->device == 0x0dcd && pdev->subsystem_vendor == 0x1028 &&
+ 		    pdev->subsystem_device == 0x04b7)
+ 			ram->ddr3_board = GF100_DDR3_L702X;
++		else if (device->chipset == 0xc1 && pdev->vendor == 0x10de &&
++			 pdev->device == 0x0df8 && pdev->subsystem_vendor == 0x103c &&
++			 pdev->subsystem_device == 0x0835)
++			ram->ddr3_board = GF100_DDR3_Q600;
+ 		nvkm_info(subdev, "DDR3: memory reclock script: %s\n",
+ 			  ram->ddr3_board == GF100_DDR3_L702X ? "GF106M L702X" :
++			  ram->ddr3_board == GF100_DDR3_Q600 ? "Quadro 600 (NVIDIA 390.157 capture)" :
+ 			  "none (memory reclock skipped)");
+ 	}
+ 
