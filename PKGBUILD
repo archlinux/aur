@@ -12,24 +12,27 @@ optdepends=('gnome-keyring: Secret Service provider for credential storage'
 # Checksums are not hard-coded: the release archives are verified in prepare()
 # against the SHA256SUMS file published with the GitHub release, so a new
 # version only needs a pkgver bump in this file.
-source_x86_64=("ic-sync-linux-x86_64.tar.gz::https://github.com/yurisuki/ic-sync/releases/download/v$pkgver/ic-sync-linux-x86_64.tar.gz"
-               "SHA256SUMS::https://github.com/yurisuki/ic-sync/releases/download/v$pkgver/SHA256SUMS")
+# Versioned local filenames force makepkg to re-download on pkgver bumps:
+# upstream archive names are identical across releases.
+source_x86_64=("ic-sync-linux-x86_64-$pkgver.tar.gz::https://github.com/yurisuki/ic-sync/releases/download/v$pkgver/ic-sync-linux-x86_64.tar.gz"
+               "SHA256SUMS-$pkgver::https://github.com/yurisuki/ic-sync/releases/download/v$pkgver/SHA256SUMS")
 sha256sums_x86_64=('SKIP' 'SKIP')
-source_aarch64=("ic-sync-linux-aarch64.tar.gz::https://github.com/yurisuki/ic-sync/releases/download/v$pkgver/ic-sync-linux-aarch64.tar.gz"
-                "SHA256SUMS::https://github.com/yurisuki/ic-sync/releases/download/v$pkgver/SHA256SUMS")
+source_aarch64=("ic-sync-linux-aarch64-$pkgver.tar.gz::https://github.com/yurisuki/ic-sync/releases/download/v$pkgver/ic-sync-linux-aarch64.tar.gz"
+                "SHA256SUMS-$pkgver::https://github.com/yurisuki/ic-sync/releases/download/v$pkgver/SHA256SUMS")
 sha256sums_aarch64=('SKIP' 'SKIP')
 options=(!strip)
 
 prepare() {
   cd "$srcdir"
 
-  local archive="ic-sync-linux-$CARCH.tar.gz"
+  local upstream="ic-sync-linux-$CARCH.tar.gz"
+  local local_file="ic-sync-linux-$CARCH-$pkgver.tar.gz"
   local expected
-  expected=$(awk -v name="$archive" '$2 == name { print $1 }' SHA256SUMS)
+  expected=$(awk -v name="$upstream" '$2 == name { print $1 }' "SHA256SUMS-$pkgver")
   if [[ -z "$expected" ]]; then
-    error "No checksum for $archive in the GitHub SHA256SUMS"
+    error "No checksum for $upstream in the GitHub SHA256SUMS"
   fi
-  printf '%s  %s\n' "$expected" "$archive" | sha256sum --check --strict
+  printf '%s  %s\n' "$expected" "$local_file" | sha256sum --check --strict
 }
 
 package() {
