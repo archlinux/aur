@@ -1,19 +1,23 @@
 pkgbase = aerial-lock-git
 	pkgdesc = Wayland video session lock with idle integration and automatic content service
-	pkgver = 0.3.0.r0.g2884b89
-	pkgrel = 6
+	pkgver = 0.4.0.r0.gacf3c1d
+	pkgrel = 7
 	url = https://github.com/atmosphera-dev/aerial-lock
 	install = aerial-lock-git.install
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-shadertools>=6.12
 	makedepends = wayland-protocols
 	depends = quickshell>=0.3
 	depends = quickshell<0.4
 	depends = qt6-mpvqml>=0.2.0
 	depends = qt6-5compat
-	depends = qt6-base
-	depends = qt6-declarative
+	depends = qt6-base>=6.12
+	depends = qt6-declarative>=6.12
+	depends = qt6-svg>=6.12
 	depends = pam
 	depends = wayland
 	depends = bash
@@ -26,7 +30,8 @@ pkgbase = aerial-lock-git
 	depends = libarchive
 	depends = ffmpeg
 	optdepends = procps-ng: signal-unlock examples
-	optdepends = systemd: content user service, optional aerial-idle and logind integration
+	optdepends = systemd: content user service, optional tray and idle/logind integration
+	optdepends = xdg-desktop-portal: settings file and folder choosers, links and desktop appearance
 	optdepends = elogind: logind integration without systemd (unverified)
 	provides = aerial-lock
 	conflicts = aerial-lock

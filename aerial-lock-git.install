@@ -1,5 +1,9 @@
 post_install() {
     printf '%s\n' \
+        'Open Aerial from your application launcher, or run aerial-settings.' \
+        'The tray icon is off by default. To enable it, open About > Show tray icon' \
+        'in Aerial. This needs a desktop tray that supports StatusNotifierItem.' \
+        '' \
         'Aerial content downloads start at your next login/user-manager startup.' \
         'To start now: systemctl --user start aerial.service' \
         'Or fetch now: aerialctl fetch' \
