@@ -1,0 +1,20 @@
+pkgbase = claude-esp-bin
+	pkgdesc = Stream Claude Code thinking, tool calls and subagents to a separate terminal
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/phiat/claude-esp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = claude-esp
+	conflicts = claude-esp
+	options = !debug
+	source = claude-esp-bin-0.15.0-LICENSE::https://raw.githubusercontent.com/phiat/claude-esp/v0.15.0/LICENSE
+	sha256sums = af9f8ff4a22b98445453fc6f732ddfa19a34f9e98e4c6fad53fcf582931e06ba
+	source_x86_64 = claude-esp-bin-0.15.0-x86_64::https://github.com/phiat/claude-esp/releases/download/v0.15.0/claude-esp-linux-amd64
+	sha256sums_x86_64 = 7cddb61876235e5113df5d863e52c663b799cb56785f43a446145521f4b22c96
+	source_aarch64 = claude-esp-bin-0.15.0-aarch64::https://github.com/phiat/claude-esp/releases/download/v0.15.0/claude-esp-linux-arm64
+	sha256sums_aarch64 = 72d296c533fcb63fd913bf9abe1f68a8bce944dd6b66c5a001fc67a633775dc6
+
+pkgname = claude-esp-bin
