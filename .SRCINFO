@@ -1,0 +1,16 @@
+pkgbase = matui-classic
+	pkgdesc = An opinionated Matrix TUI client, for homeservers without sliding sync.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/pkulak/matui/tree/classic
+	arch = x86_64
+	license = GPL2
+	checkdepends = ffmpeg
+	makedepends = cargo
+	optdepends = ffmpeg: thumbnails for uploaded videos and animated images
+	provides = matui
+	conflicts = matui
+	source = matui-1.1.0.tar.gz::https://github.com/pkulak/matui/archive/refs/tags/v1.1.0.tar.gz
+	b2sums = c9ca0e2be57464e1cd8790e82fc0fb9ebf5fee856101338a00e5c634b9750bb31cc84c6788875a5dc531e8d45974802bc77f3cd0c57b796f5cb56a478a6dc6e1
+
+pkgname = matui-classic
