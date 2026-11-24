@@ -1,19 +1,17 @@
 pkgbase = yesplaymusic-git
-	pkgdesc = A third party music application for Netease Music.高颜值的第三方网易云播放器.
-	pkgver = 0.4.11.r0.g5d5fa23
+	pkgdesc = A better-looking desktop music player for local files, media servers, and plugins.高颜值的桌面音乐播放器，音乐源由插件提供
+	pkgver = 3.0.0.r0.gbb8912f
 	pkgrel = 1
-	url = https://music.qier222.com/
-	arch = any
-	license = MIT
-	makedepends = npm
-	makedepends = nvm
+	url = https://yesplaymusic.0xtangerine.com
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = flutter-bin
 	makedepends = git
-	makedepends = jq
-	makedepends = yarn
-	makedepends = gendesk
-	makedepends = jq
-	depends = electron13-bin
-	provides = yesplaymusic=0.4.11
+	makedepends = pkgconf
+	depends = gtk3
+	depends = mpv
+	provides = yesplaymusic=3.0.0
 	conflicts = yesplaymusic
 	conflicts = my-yesplaymusic
 	conflicts = yesplaymusic-appimage
@@ -21,9 +19,9 @@ pkgbase = yesplaymusic-git
 	conflicts = yesplaymusicosd-origin
 	conflicts = r3play
 	conflicts = r3playx
-	source = yesplaymusic.git::git+https://github.com/qier222/YesPlayMusic.git
+	source = yesplaymusic.git::git+https://github.com/qier222/YesPlayMusic.git#branch=main
 	source = yesplaymusic.sh
 	sha256sums = SKIP
-	sha256sums = cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082
+	sha256sums = d7002fa1a9ae60749490e982fa8a4f4622f7381b02559f5b014df033c0773a3c
 
 pkgname = yesplaymusic-git
