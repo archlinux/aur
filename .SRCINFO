@@ -1,0 +1,21 @@
+pkgbase = iottack
+	pkgdesc = IoT protocol testing framework
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/inradii/iottack
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = libsigrokdecode
+	depends = dbus
+	depends = glib2
+	depends = glibc
+	depends = libgcc
+	depends = libsigrok
+	options = !lto
+	source = iottack-0.4.0.tar.gz::https://github.com/inradii/iottack/archive/refs/tags/0.4.0.tar.gz
+	sha256sums = f1b8f861cab381e0a735814a042dedc864b7218e4bceb779c0164074576b722f
+
+pkgname = iottack
