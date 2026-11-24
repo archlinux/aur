@@ -1,0 +1,14 @@
+pkgbase = dashbrew
+	pkgdesc = TUI dashboard builder for data from scripts and APIs
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/rasjonell/dashbrew
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = dashbrew-1.2.0.tar.gz::https://github.com/rasjonell/dashbrew/archive/v1.2.0.tar.gz
+	sha256sums = bcc7943a105229b22efee97c291ee1b4a6fbae0b7637c90f7526ae8395c2e89d
+
+pkgname = dashbrew
