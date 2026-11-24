@@ -1,0 +1,20 @@
+pkgbase = snoop-ebpf-bin
+	pkgdesc = Syscall tracer built on eBPF
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/pandaadir05/snoop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = snoop-ebpf
+	conflicts = snoop-ebpf
+	conflicts = snoop
+	options = !debug
+	source = snoop-ebpf-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/pandaadir05/snoop/v0.1.0/LICENSE
+	sha256sums = 1601532ca8493a3e57bb77398a38663a56e4cfc4d0da8c05d04bfdf4267b8918
+	source_x86_64 = snoop-ebpf-bin-0.1.0-x86_64.tar.gz::https://github.com/pandaadir05/snoop/releases/download/v0.1.0/snoop-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 3a22670bfb2ab1710598a27df078cb3b4c595915d1507bc78164a2ac294dc069
+	source_aarch64 = snoop-ebpf-bin-0.1.0-aarch64.tar.gz::https://github.com/pandaadir05/snoop/releases/download/v0.1.0/snoop-aarch64-linux.tar.gz
+	sha256sums_aarch64 = f0d978658c0d35cddfdc0dc2698c02d37b986bd66224a52e86e7ba68a5fcda8d
+
+pkgname = snoop-ebpf-bin
