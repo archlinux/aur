@@ -1,6 +1,6 @@
 pkgbase = bluegit
 	pkgdesc = Self-hosted git-platform
-	pkgver = 20261124161002
+	pkgver = 20261124175409
 	pkgrel = 1
 	url = https://git.timfalken.com/timfa/bluegit
 	install = bluegit.install
@@ -11,7 +11,7 @@ pkgbase = bluegit
 	depends = docker
 	options = !debug
 	backup = etc/bluegit/config.yml
-	source = bluegit-0c4fafe2fb46884cdcbd69f17a5892a9d63a50ff.tar.gz::https://git.timfalken.com/timfa/bluegit/-/archive/0c4fafe2fb46884cdcbd69f17a5892a9d63a50ff/bluegit-0c4fafe2fb46884cdcbd69f17a5892a9d63a50ff.tar.gz
-	sha256sums = 9555bd731b6efc23452c3f0a3df214b791feb15aa01a8cecf4a07176d6fad76c
+	source = bluegit-3b3f5508c4c235fa2bd9c51fd743c4daa1472a28.tar.gz::https://git.timfalken.com/timfa/bluegit/-/archive/3b3f5508c4c235fa2bd9c51fd743c4daa1472a28/bluegit-3b3f5508c4c235fa2bd9c51fd743c4daa1472a28.tar.gz
+	sha256sums = 93e5a61593d7799b7f75c1f139c39ba83a07d5add30d76934820dc57c3d4eca7
 
 pkgname = bluegit
