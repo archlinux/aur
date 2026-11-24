@@ -1,0 +1,18 @@
+pkgbase = rimz-bin
+	pkgdesc = Real-time dashboard for agentic coding on tmux
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/rimio-ai/rimz
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = rimz
+	conflicts = rimz
+	options = !debug
+	source = rimz-bin-0.4.3-LICENSE::https://raw.githubusercontent.com/rimio-ai/rimz/v0.4.3/LICENSE
+	sha256sums = b0380183e650ca5fa5c7763b06fc19893b520717432abdb718368373b0407dfc
+	source_x86_64 = rimz-bin-0.4.3-x86_64.tar.gz::https://github.com/rimio-ai/rimz/releases/download/v0.4.3/rimz-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a49d74002f78838c8928e76da258615de6d2dac3598c1e0d33868cdd485f025d
+
+pkgname = rimz-bin
