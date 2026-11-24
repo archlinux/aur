@@ -1,0 +1,15 @@
+pkgbase = waha-tui
+	pkgdesc = Terminal UI for WhatsApp through a WAHA server
+	pkgver = 1.7.5
+	pkgrel = 1
+	url = https://github.com/muhammedaksam/waha-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = waha-tui-1.7.5.tgz
+	source = waha-tui-1.7.5.tgz::https://registry.npmjs.org/@muhammedaksam/waha-tui/-/waha-tui-1.7.5.tgz
+	sha256sums = 34edea7c5b2c9fcf6cf70b3d9d7c6cda587c03ba18c90697c5509cb31d8ccffc
+
+pkgname = waha-tui
