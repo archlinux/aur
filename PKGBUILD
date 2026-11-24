@@ -35,7 +35,7 @@ build() {
 
   cd "$srcdir"
   gendesk -f -n \
-     --pkgname="$pkgname" \
+     --pkgname="linphone-desktop" \
      --pkgdesc="$pkgdesc" \
       --name="Linphone Desktop 6" \
      --genericname="VoIP Client" \
