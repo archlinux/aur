@@ -3,7 +3,7 @@
 
 pkgname=oleafly-bin
 _upstream_name=Oleafly
-pkgver=0.4.12
+pkgver=0.4.13
 pkgrel=1
 pkgdesc='Local-first AI research workspace for LaTeX, Typst, and Markdown (prebuilt)'
 arch=('x86_64')
@@ -49,11 +49,11 @@ source=(
 )
 noextract=("${_upstream_name}_${pkgver}_amd64.deb")
 sha256sums=(
-  '751eb19205099467eb26627eb117e99d020fb6bb79dc34cf0eed3d4db9e97292'
-  '79e22380c16988fa58cf378cc177b3969f21d0652139636eed3b2c23d3e8dc14'
+  '57b2449100124dae217518fe474e740ff6b81458990afcc5b7a4a0a0e0e970e4'
+  'b137a9a6e8dc2f0fee7826b452756d66e3a11bc3762dc9ac52a4cedc66fee92b'
   '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
-  'd5bba856badcbafd3f4300193774125defa9f7b653be9198d2d678cd9db57f28'
-  '724e3c893de1a3a520085e9b1e8a84a307c320f07ef1cdaddeddda5092abb8b7'
+  '63162ec77d20609025b4dd83ea0d5c4a002488748d4954675e30cf598beadb29'
+  '31b64735b1f64e38a107e8631f315d918e9c5eff099114595de62790463d7067'
   'bb414de32bcdfd4cc9de5c2299b2a8c877e32e70e68c3bfebc6d7f6aa104a7dc'
 )
 

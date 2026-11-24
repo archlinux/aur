@@ -1,6 +1,6 @@
 pkgbase = oleafly-bin
 	pkgdesc = Local-first AI research workspace for LaTeX, Typst, and Markdown (prebuilt)
-	pkgver = 0.4.12
+	pkgver = 0.4.13
 	pkgrel = 1
 	url = https://github.com/Oleafly/Oleafly
 	arch = x86_64
@@ -26,22 +26,22 @@ pkgbase = oleafly-bin
 	optdepends = python: optional bundled AI research skill scripts
 	optdepends = texlive-binextra: external latexmk engine support
 	optdepends = texlive-latex: LaTeX format and core packages for external latexmk builds
-	provides = oleafly=0.4.12
+	provides = oleafly=0.4.13
 	conflicts = oleafly
-	noextract = Oleafly_0.4.12_amd64.deb
+	noextract = Oleafly_0.4.13_amd64.deb
 	options = !strip
 	options = !debug
-	source = Oleafly_0.4.12_amd64.deb::https://github.com/Oleafly/Oleafly/releases/download/v0.4.12/Oleafly_0.4.12_amd64.deb
-	source = Oleafly_0.4.12_amd64.deb.minisig.b64::https://github.com/Oleafly/Oleafly/releases/download/v0.4.12/Oleafly_0.4.12_amd64.deb.sig
-	source = oleafly-0.4.12-LICENSE::https://raw.githubusercontent.com/Oleafly/Oleafly/v0.4.12/LICENSE
-	source = oleafly-0.4.12-NOTICE::https://raw.githubusercontent.com/Oleafly/Oleafly/v0.4.12/NOTICE
-	source = oleafly-0.4.12-THIRD_PARTY_LICENSES.md::https://raw.githubusercontent.com/Oleafly/Oleafly/v0.4.12/THIRD_PARTY_LICENSES.md
+	source = Oleafly_0.4.13_amd64.deb::https://github.com/Oleafly/Oleafly/releases/download/v0.4.13/Oleafly_0.4.13_amd64.deb
+	source = Oleafly_0.4.13_amd64.deb.minisig.b64::https://github.com/Oleafly/Oleafly/releases/download/v0.4.13/Oleafly_0.4.13_amd64.deb.sig
+	source = oleafly-0.4.13-LICENSE::https://raw.githubusercontent.com/Oleafly/Oleafly/v0.4.13/LICENSE
+	source = oleafly-0.4.13-NOTICE::https://raw.githubusercontent.com/Oleafly/Oleafly/v0.4.13/NOTICE
+	source = oleafly-0.4.13-THIRD_PARTY_LICENSES.md::https://raw.githubusercontent.com/Oleafly/Oleafly/v0.4.13/THIRD_PARTY_LICENSES.md
 	source = oleafly.pub
-	sha256sums = 751eb19205099467eb26627eb117e99d020fb6bb79dc34cf0eed3d4db9e97292
-	sha256sums = 79e22380c16988fa58cf378cc177b3969f21d0652139636eed3b2c23d3e8dc14
+	sha256sums = 57b2449100124dae217518fe474e740ff6b81458990afcc5b7a4a0a0e0e970e4
+	sha256sums = b137a9a6e8dc2f0fee7826b452756d66e3a11bc3762dc9ac52a4cedc66fee92b
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
-	sha256sums = d5bba856badcbafd3f4300193774125defa9f7b653be9198d2d678cd9db57f28
-	sha256sums = 724e3c893de1a3a520085e9b1e8a84a307c320f07ef1cdaddeddda5092abb8b7
+	sha256sums = 63162ec77d20609025b4dd83ea0d5c4a002488748d4954675e30cf598beadb29
+	sha256sums = 31b64735b1f64e38a107e8631f315d918e9c5eff099114595de62790463d7067
 	sha256sums = bb414de32bcdfd4cc9de5c2299b2a8c877e32e70e68c3bfebc6d7f6aa104a7dc
 
 pkgname = oleafly-bin
