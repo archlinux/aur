@@ -1,131 +1,109 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
-pkgname='openjkdf2-git'
-pkgver=0.9.9.r3.g591bec0
+pkgname=openjkdf2-git
+pkgver=0.9.9.r253.g3e4bc4a
 pkgrel=1
-pkgdesc="A function-by-function reimplementation of DF2 (Dark Forces 2) in C."
+pkgdesc='A function-by-function reimplementation of DF2 (Dark Forces 2) in C'
 arch=('i686' 'x86_64')
 url='https://github.com/shinyquagsire23/OpenJKDF2'
-license=('0BSD')
-makedepends=(
-  'at-spi2-core'
-  'cairo'
-  'gdk-pixbuf2'
-  'git'
-  'glew'
-  'glu'
-  'harfbuzz'
-  'pango'
-  'python-cogapp'
-  'zlib'
-)
+license=('0BSD' 'BSD-3-Clause')
 depends=(
   'curl'
+  'glew'
   'glib2'
   'gtk3'
   'hicolor-icon-theme'
   'libglvnd'
+  'libpng'
   'openal'
+  'physfs'
+  'sdl3'
+  'sdl3_mixer'
 )
-conflicts=('openjkdf2')
-options=(!lto)
+makedepends=(
+  'at-spi2-core'
+  'cairo'
+  'cmake'
+  'freeglut'
+  'gdk-pixbuf2'
+  'git'
+  'glu'
+  'harfbuzz'
+  'pango'
+  'python-cogapp'
+)
 provides=('openjkdf2')
-source=("${pkgname}::git+https://github.com/shinyquagsire23/OpenJKDF2.git"
-        'git+https://github.com/FreeGLUTProject/freeglut.git'
-        'glew::git+https://github.com/Perlmint/glew-cmake.git'
-        'git+https://github.com/madler/zlib.git'
-        'git+https://github.com/icculus/physfs.git'
-        'git+https://github.com/ValveSoftware/GameNetworkingSockets.git'
-        'git+https://github.com/protocolbuffers/protobuf.git'
-        'git+https://github.com/glennrp/libpng.git'
-        'git+https://github.com/libsdl-org/SDL.git'
-        'git+https://github.com/libsdl-org/SDL_mixer.git'
+conflicts=('openjkdf2')
+options=('!lto')
+source=(
+  "${pkgname}::git+${url}.git"
+  'git+https://github.com/ValveSoftware/GameNetworkingSockets.git'
+  'git+https://github.com/protocolbuffers/protobuf.git'
+  'openjkdf2-use-system-libs.patch'
 )
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP' # Run updpkgsums to populate
 )
 
 pkgver() {
-  cd "${pkgname}" || exit
-  git describe --abbrev=7 --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "${pkgname}" describe --long --tags --abbrev=7 \
+    | sed --regexp-extended 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${pkgname}" || exit
+  patch --directory="${pkgname}" --strip=1 --input="${srcdir}/openjkdf2-use-system-libs.patch"
 
-  git submodule init lib/freeglut
-  git submodule init lib/glew
-  git submodule init lib/zlib
-  git submodule init lib/physfs
-  git submodule init lib/GameNetworkingSockets
-  git submodule init lib/protobuf
-  git submodule init lib/libpng
-  git submodule init lib/SDL
-  git submodule init lib/SDL_mixer
+  local _submodules=(
+    'GameNetworkingSockets'
+    'protobuf'
+  )
 
-  git config submodule.freeglut.url "${srcdir}"/freeglut
-  git config submodule.glew.url "${srcdir}"/glew
-  git config submodule.zlib.url "${srcdir}"/zlib
-  git config submodule.physfs.url "${srcdir}"/physfs
-  git config submodule.GameNetworkingSockets.url "${srcdir}"/GameNetworkingSockets
-  git config submodule.protobuf.url "${srcdir}"/protobuf
-  git config submodule.libpng.url "${srcdir}"/libpng
-  git config submodule.SDL.url "${srcdir}"/SDL
-  git config submodule.SDL_mixer.url "${srcdir}"/SDL_mixer
+  git -C "${pkgname}" submodule init "${_submodules[@]/#/lib/}"
 
-  git -c protocol.file.allow=always submodule update --init lib/freeglut
-  git -c protocol.file.allow=always submodule update --init lib/glew
-  git -c protocol.file.allow=always submodule update --init lib/zlib
-  git -c protocol.file.allow=always submodule update --init lib/physfs
-  git -c protocol.file.allow=always submodule update --init lib/GameNetworkingSockets
-  git -c protocol.file.allow=always submodule update --init lib/protobuf
-  git -c protocol.file.allow=always submodule update --init lib/libpng
-  git -c protocol.file.allow=always submodule update --init lib/SDL
-  git -c protocol.file.allow=always submodule update --init lib/SDL_mixer
+  local _git_args=(-c protocol.file.allow=always)
+  local _mod
+  for _mod in "${_submodules[@]}"; do
+    _git_args+=(-c "submodule.${_mod}.url=${srcdir}/${_mod}")
+  done
 
-  export CFLAGS="${CFLAGS} -Wno-incompatible-pointer-types"
-  export CXXFLAGS
-  export CMAKE_POLICY_VERSION_MINIMUM=3.5
-  export LDFLAGS
-  cmake -B ../"${pkgname}"-build -S . \
-    -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
-    -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
-    -DCMAKE_SKIP_RPATH=ON \
-    -Wno-dev
+  git -C "${pkgname}" "${_git_args[@]}" submodule update "${_submodules[@]/#/lib/}"
 }
 
 build() {
-  cmake --build "${pkgname}"-build
+  export CFLAGS="${CFLAGS} -Wno-incompatible-pointer-types"
+
+  cmake -B build -S "${pkgname}" \
+    -D CMAKE_BUILD_TYPE:STRING=None \
+    -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+    -D CMAKE_SKIP_RPATH:BOOL=ON \
+    -W no-dev
+
+  cmake --build build
 }
 
 package() {
-  install -Dm755 "${srcdir}"/"${pkgname}"-build/openjkdf2 "${pkgdir}"/usr/bin/openjkdf2
+  install -D --mode=755 build/openjkdf2 "${pkgdir}/usr/bin/openjkdf2"
 
   # Desktop file
-  install -Dm755 "${srcdir}"/"${pkgname}"/packaging/flatpak/org.openjkdf2.OpenJKDF2.desktop "${pkgdir}"/usr/share/applications/org.openjkdf2.OpenJKDF2.desktop
+  install -D --mode=644 "${srcdir}/${pkgname}/packaging/flatpak/org.openjkdf2.OpenJKDF2.desktop" \
+    "${pkgdir}/usr/share/applications/org.openjkdf2.OpenJKDF2.desktop"
 
   # Icons
-  install -Dm644 "${srcdir}"/"${pkgname}"/packaging/flatpak/icons/16.png "${pkgdir}"/usr/share/icons/hicolor/16x16/apps/org.openjkdf2.OpenJKDF2.png
-  install -Dm644 "${srcdir}"/"${pkgname}"/packaging/flatpak/icons/24.png "${pkgdir}"/usr/share/icons/hicolor/24x24/apps/org.openjkdf2.OpenJKDF2.png
-  install -Dm644 "${srcdir}"/"${pkgname}"/packaging/flatpak/icons/32.png "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/org.openjkdf2.OpenJKDF2.png
-  install -Dm644 "${srcdir}"/"${pkgname}"/packaging/flatpak/icons/48.png "${pkgdir}"/usr/share/icons/hicolor/48x48/apps/org.openjkdf2.OpenJKDF2.png
-  install -Dm644 "${srcdir}"/"${pkgname}"/packaging/flatpak/icons/64.png "${pkgdir}"/usr/share/icons/hicolor/64x64/apps/org.openjkdf2.OpenJKDF2.png
-  install -Dm644 "${srcdir}"/"${pkgname}"/packaging/flatpak/icons/96.png "${pkgdir}"/usr/share/icons/hicolor/96x96/apps/org.openjkdf2.OpenJKDF2.png
-  install -Dm644 "${srcdir}"/"${pkgname}"/packaging/flatpak/icons/128.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/org.openjkdf2.OpenJKDF2.png
-  install -Dm644 "${srcdir}"/"${pkgname}"/packaging/flatpak/icons/192.png "${pkgdir}"/usr/share/icons/hicolor/192x192/apps/org.openjkdf2.OpenJKDF2.png
-  install -Dm644 "${srcdir}"/"${pkgname}"/packaging/flatpak/icons/256.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/org.openjkdf2.OpenJKDF2.png
-  install -Dm644 "${srcdir}"/"${pkgname}"/packaging/flatpak/icons/384.png "${pkgdir}"/usr/share/icons/hicolor/384x384/apps/org.openjkdf2.OpenJKDF2.png
-  install -Dm644 "${srcdir}"/"${pkgname}"/packaging/flatpak/icons/512.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/org.openjkdf2.OpenJKDF2.png
-  install -Dm644 "${srcdir}"/"${pkgname}"/packaging/icon.png "${pkgdir}"/usr/share/icons/hicolor/1024x1024/apps/org.openjkdf2.OpenJKDF2.png
+  local _size
+  for _size in 16 24 32 48 64 96 128 192 256 384 512; do
+    install -D --mode=644 "${srcdir}/${pkgname}/packaging/flatpak/icons/${_size}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/org.openjkdf2.OpenJKDF2.png"
+  done
+  install -D --mode=644 "${srcdir}/${pkgname}/packaging/icon.png" \
+    "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/org.openjkdf2.OpenJKDF2.png"
 
-  # License
-  install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE.md "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  # Licenses
+  install -D --mode=644 "${srcdir}/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D --mode=644 "${srcdir}/${pkgname}/lib/GameNetworkingSockets/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.GameNetworkingSockets"
+  install -D --mode=644 "${srcdir}/${pkgname}/lib/protobuf/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.protobuf"
 }
