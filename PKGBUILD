@@ -2,7 +2,7 @@
 
 pkgname=python-indra-ocr
 _name=${pkgname#python-}
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Fast CPU OCR for PDFs and images using ONNX Runtime'
 arch=(any)
@@ -31,7 +31,7 @@ optdepends=(
   'tesseract: Tesseract executable for the optional viewer comparison'
 )
 source=("${_name//-/_}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('405a40b8a62eb28d36cf96f236f2639286fbc791407733c16f93451dbe733914')
+sha256sums=('c423893fe54a5327ba2b9e037f5291697b83c3f1606ac0b4babe1e307b5558da')
 
 build() {
   cd "${_name//-/_}-${pkgver}"
