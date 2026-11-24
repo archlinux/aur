@@ -1,0 +1,19 @@
+pkgbase = joyczl-agent-bin
+	pkgdesc = Local-first personal assistant for long-running tasks
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/chrisvip001/joyczl-agent
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = joyczl-agent
+	conflicts = joyczl-agent
+	options = !debug
+	source_x86_64 = joyczl-agent-bin-0.17.0-x86_64.tar.gz::https://github.com/chrisvip001/joyczl-agent/releases/download/v0.17.0/joy-v0.17.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2ca3179a8776ef77a249f672200c3d1cd35f6945a45c5ccb026c60fc508c3d02
+	source_aarch64 = joyczl-agent-bin-0.17.0-aarch64.tar.gz::https://github.com/chrisvip001/joyczl-agent/releases/download/v0.17.0/joy-v0.17.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 87a2a0038f6ffd3545db99408cb4088554df244f6251379c725da9d348c4889e
+
+pkgname = joyczl-agent-bin
