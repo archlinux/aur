@@ -1,0 +1,21 @@
+pkgbase = noodle-rest-bin
+	pkgdesc = REST client where the repository is the workspace
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/noodle-rest/noodle
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = noodle-rest
+	conflicts = noodle-rest
+	conflicts = noodle-bin
+	options = !debug
+	source = noodle-rest-bin-1.0.0-LICENSE::https://raw.githubusercontent.com/noodle-rest/noodle/v1.0.0/LICENSE
+	sha256sums = fcf353912854f70ba3768b3755a934d16b8cbc98ed183cc1e8124639b179ef01
+	source_x86_64 = noodle-rest-bin-1.0.0-x86_64::https://github.com/noodle-rest/noodle/releases/download/v1.0.0/noodle-linux-x86_64
+	sha256sums_x86_64 = 0e9689b7d7f6829471a3ae77a4b1d6352fb92a91bc9060c0caf7086a6409ee7a
+	source_aarch64 = noodle-rest-bin-1.0.0-aarch64::https://github.com/noodle-rest/noodle/releases/download/v1.0.0/noodle-linux-arm64
+	sha256sums_aarch64 = 99c0b92f009aa456e597f62336c23398e5b1ca0003598acb8ad81ddad405d360
+
+pkgname = noodle-rest-bin
