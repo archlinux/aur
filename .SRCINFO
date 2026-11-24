@@ -1,6 +1,6 @@
 pkgbase = scribe-tui-bin
 	pkgdesc = Local, offline, cpu-only speech to text in the terminal
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/programmersd21/scribe
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = scribe-tui-bin
 	provides = scribe
 	conflicts = scribe-tui
 	options = !strip
-	source = README-0.2.0.md::https://raw.githubusercontent.com/programmersd21/scribe/v0.2.0/readme.md
-	source = LICENSE-0.2.0::https://raw.githubusercontent.com/programmersd21/scribe/v0.2.0/LICENSE
-	sha256sums = 3379b0a86c922865af1f957e83497f0090f7027e308a3edc283c109381e0e2b5
+	source = README-0.3.0.md::https://raw.githubusercontent.com/programmersd21/scribe/v0.3.0/readme.md
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/programmersd21/scribe/v0.3.0/LICENSE
+	sha256sums = 49ddbd89485fd4f3f4bfd93c9d838b01ec0ebbd4f6e1a76c8200bbd49c841a13
 	sha256sums = 0f74cfa8b2c14f70652e4991c86332f8448a50494082475ff39e2d09c9ae16a4
-	source_x86_64 = scribe-x86_64-0.2.0::https://github.com/programmersd21/scribe/releases/download/v0.2.0/scribe-linux-x86_64
-	sha256sums_x86_64 = f0a7271892ad9742ec274ab151bb2b46b2958f30748f5686ae4b429afd709994
+	source_x86_64 = scribe-x86_64-0.3.0::https://github.com/programmersd21/scribe/releases/download/v0.3.0/scribe-linux-x86_64
+	sha256sums_x86_64 = 0b5620716b217999d1e7cd5bf0e35a41d856b1b2e7bfd93523fe9556374e4e9c
 
 pkgname = scribe-tui-bin
