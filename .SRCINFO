@@ -1,0 +1,19 @@
+pkgbase = woxi-bin
+	pkgdesc = Wolfram Language interpreter written in Rust
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ad-si/woxi
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	provides = woxi
+	conflicts = woxi
+	options = !debug
+	source_x86_64 = woxi-bin-0.4.0-x86_64.tar.gz::https://github.com/ad-si/woxi/releases/download/v0.4.0/woxi-v0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 72945f3114220bfc41d6ad5c7456a4ff1a49a1936849197ddc00c85cea97821a
+	source_aarch64 = woxi-bin-0.4.0-aarch64.tar.gz::https://github.com/ad-si/woxi/releases/download/v0.4.0/woxi-v0.4.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3747c833e22fdf46e86975c957e39b706de2ce514e3aba6f7c7476ebc7c82f6b
+
+pkgname = woxi-bin
