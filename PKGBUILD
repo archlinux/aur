@@ -1,28 +1,30 @@
-# Maintainer: Christopher Fair < christopherpatrickfair@gmail.com>
+# Maintainer: Christopher Fair <christopherpatrickfair@gmail.com>
 
 pkgname=triplea
-pkgver=2.7.14900
-pkgrel=2
+_tag=2026-11.16.15918
+pkgver=2026.11.16.15918
+pkgrel=1
 pkgdesc='An online multiplayer turn based strategy game and board game engine.'
 arch=('any')
-appname="triplea-game-headed"
-url="http://www.triplea-game.org/"
-license=('GPL')
+_appname='game-headed'
+url='https://triplea-game.org/'
+license=('GPL-3.0-or-later')
 install=${pkgname}.install
 depends=('gtk-update-icon-cache' 'java-runtime')
-source=( "https://github.com/triplea-game/triplea/releases/download/${pkgver}/${appname}.zip")
-sha256sums=('09f6683ac7468dbbecbb7e8d19d1abdd0fcc63f29b07145ba56268c82c17a760')
+source=("${pkgname}-${_tag}.zip::https://github.com/triplea-game/triplea/releases/download/${_tag}/${_appname}.zip")
+sha256sums=('6dfeaf541c3401bb88ab94be66eb77cb25791315f6e1bfa67fed0c97d146b275')
+
 package() {
-    install -d ${pkgdir}/usr/share/${pkgname}
-    install -d ${pkgdir}/usr/bin
-    cp -rfpv ${srcdir}/bin ${pkgdir}/usr/share/${pkgname}
-    cp -rfpv ${srcdir}/assets ${pkgdir}/usr/share/${pkgname}/bin
-    cp -rfpv ${srcdir}/.triplea-root ${pkgdir}/usr/share/${pkgname}
-    cp ${srcdir}/.triplea-root ${pkgdir}/usr/share/${pkgname}
-    cd ${pkgdir}/usr/bin
-    # Replace the last . in version with #
-    newVer=$(echo "$pkgver" | sed 's/\([0-9]*\.[0-9]*\)\.\([0-9]*\)/\1+\2/')
-    newAppName=${appname}-${newVer}.jar
-    printf "#! /usr/bin/bash \n cd /usr/share/${pkgname}/bin \n java -jar ${newAppName}" > triplea 
-    chmod +x triplea
+    install -d "${pkgdir}/usr/share/${pkgname}"
+    install -d "${pkgdir}/usr/bin"
+    cp -a "${srcdir}/bin" "${pkgdir}/usr/share/${pkgname}/"
+    cp -a "${srcdir}/assets" "${pkgdir}/usr/share/${pkgname}/"
+    install -Dm644 "${srcdir}/.triplea-root" "${pkgdir}/usr/share/${pkgname}/.triplea-root"
+
+    cat > "${pkgdir}/usr/bin/triplea" << EOF
+#!/usr/bin/bash
+cd /usr/share/${pkgname}
+exec java -jar /usr/share/${pkgname}/bin/${_appname}-${_tag}.jar "\$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/triplea"
 }
