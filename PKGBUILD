@@ -1,12 +1,11 @@
 # rootapp-bin
 pkgname=rootapp-bin
-pkgver=0.9.164
-pkgrel=7
+pkgver=0.9.167
+pkgrel=1
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
 license=('LicenseRef-proprietary')
-# deps payload 2026-11-21
 depends=('alsa-lib'
          'at-spi2-core'
          'ca-certificates-mozilla'
@@ -99,7 +98,7 @@ optdepends=('bluez: org.bluez Bluetooth service (bluetooth.service) for Web Blue
 options=('!strip' '!debug')
 
 source=("Root-${pkgver}-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage")
-sha256sums=('add8421af06956c6fc2e6064b60d41ae6e3ef0c58b1407880ba0129edc87643f')
+sha256sums=('90069e784079a903640985f41113ba208a410f30aec6dad5237d58a62d4cbcd8')
 prepare() {
     chmod +x "${srcdir}/Root-${pkgver}-x86_64.AppImage"
     "${srcdir}/Root-${pkgver}-x86_64.AppImage" --appimage-extract
