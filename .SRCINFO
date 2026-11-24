@@ -1,0 +1,14 @@
+pkgbase = agent-bridge
+	pkgdesc = Local bridge for collaboration between Claude Code and Codex
+	pkgver = 0.1.31
+	pkgrel = 1
+	url = https://github.com/raysonmeng/agent-bridge
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = agent-bridge-0.1.31.tgz
+	source = agent-bridge-0.1.31.tgz::https://registry.npmjs.org/@raysonmeng/agentbridge/-/agentbridge-0.1.31.tgz
+	sha256sums = dd9d1b05caa44ef1c2b1f4064b7b14b77d46555d0e839dec500755f932f7e6df
+
+pkgname = agent-bridge
