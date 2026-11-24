@@ -1,0 +1,17 @@
+pkgbase = diff-tour-bin
+	pkgdesc = Read-through tour of a diff in the terminal
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/init-co-jp/diff-tour
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = diff-tour
+	conflicts = diff-tour
+	options = !debug
+	source_x86_64 = diff-tour-bin-0.7.0-x86_64.tar.gz::https://github.com/init-co-jp/diff-tour/releases/download/v0.7.0/diff-tour_0.7.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 16ca1adf7ce418ef5a39f5d6ce0ed7ba55297e0af90214bb52ef167de5c2a3d7
+	source_aarch64 = diff-tour-bin-0.7.0-aarch64.tar.gz::https://github.com/init-co-jp/diff-tour/releases/download/v0.7.0/diff-tour_0.7.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1a2f0d273e5d8ed4a911b2d54ecc6fbc08a2328acbf905ff9c7c91a82a219f63
+
+pkgname = diff-tour-bin
