@@ -13,7 +13,7 @@ provides=("bilibili-tui")
 conflicts=("bilibili-tui")
 depends=("mpv" "yt-dlp")
 source=("${pkgname}-${pkgver}-x86_64.tar.xz::${url}/releases/download/v${pkgver}/bilibili-tui-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('9b263db451ebc950a0821a270f48f38da505ca73c5f2d29f9f26c2faba1fd742')
 
 package() {
     cd "bilibili-tui-x86_64-unknown-linux-gnu"

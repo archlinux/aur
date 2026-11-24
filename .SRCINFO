@@ -10,6 +10,6 @@ pkgbase = bilibili-tui-bin
 	provides = bilibili-tui
 	conflicts = bilibili-tui
 	source = bilibili-tui-bin-1.1.0-x86_64.tar.xz::https://github.com/MareDevi/bilibili-tui/releases/download/v1.1.0/bilibili-tui-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = SKIP
+	sha256sums = 9b263db451ebc950a0821a270f48f38da505ca73c5f2d29f9f26c2faba1fd742
 
 pkgname = bilibili-tui-bin
