@@ -1,6 +1,6 @@
 # Maintainer: giosuel <me@giosuel.ch>
 pkgname=lituus
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Settings for Hyprland: network, Bluetooth, sound and displays'
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ makedepends=('cargo')
 checkdepends=('ttf-dejavu')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d966dd34e191d48568ff142d7c1455d74b3764c7a21b3a9998a54010c319fb6d')
+sha256sums=('d6a9b1acb1020eade3211597d77b6320fb61e30cff12b85fb51f90637d50b2a5')
 
 prepare() {
   cd "$pkgname-$pkgver"
