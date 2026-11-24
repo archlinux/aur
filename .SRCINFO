@@ -1,6 +1,6 @@
 pkgbase = bo-music
 	pkgdesc = A modern Fluent-style music player
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/lyj404/bo-music
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = bo-music
 	replaces = bo_music
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/lyj404/bo-music/releases/download/v0.0.4/bo-music_0.0.4_linux_x64.tar.gz
-	sha256sums_x86_64 = a31f8ecad1e4f4558304a72ae76a1951e2d52a00fcd564cc828115af82149533
+	source_x86_64 = https://github.com/lyj404/bo-music/releases/download/v0.0.5/bo-music_0.0.5_linux_x64.tar.gz
+	sha256sums_x86_64 = eadf505b7efd6d563d484aafbbdce46904daddfba0234e5cfe12018bbbf513e0
 
 pkgname = bo-music
