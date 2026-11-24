@@ -1,0 +1,19 @@
+pkgbase = git-ai-bin
+	pkgdesc = Git extension for tracking AI-generated code in your repositories
+	pkgver = 1.7.6
+	pkgrel = 1
+	url = https://github.com/git-ai-project/git-ai
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = git-ai
+	conflicts = git-ai
+	options = !debug
+	source = git-ai-bin-1.7.6-LICENSE::https://raw.githubusercontent.com/git-ai-project/git-ai/v1.7.6/LICENSE
+	sha256sums = 8b630f843b98bfd63133e8b196c85cee003af873c2f70219c662c09afcbbfa84
+	source_x86_64 = git-ai-bin-1.7.6-x86_64::https://github.com/git-ai-project/git-ai/releases/download/v1.7.6/git-ai-linux-x64
+	sha256sums_x86_64 = f6cda0cb43c1c9a3d68e7efe2d79577680ea6f382c31bf36a2162906f93f6c1c
+	source_aarch64 = git-ai-bin-1.7.6-aarch64::https://github.com/git-ai-project/git-ai/releases/download/v1.7.6/git-ai-linux-arm64
+	sha256sums_aarch64 = 1326abd5547636e6b6b297ad79afc955e57e82361efac320d4f860147b95a87a
+
+pkgname = git-ai-bin
