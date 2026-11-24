@@ -1,10 +1,12 @@
 pkgname=v2ray-rs
-pkgver=0.21.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc="Linux desktop GUI for v2ray/xray/sing-box proxy management"
 arch=('x86_64')
 url="https://github.com/victorzhuk/v2ray-rs"
 license=('Apache-2.0')
+# ring's pregenerated C objects fail to link under GCC LTO.
+options=('!lto')
 depends=('gtk4' 'libadwaita' 'dbus' 'libcap')
 makedepends=('rust' 'cargo' 'protobuf')
 optdepends=(
@@ -15,7 +17,7 @@ optdepends=(
 )
 install=v2ray-rs.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a8e81ae9219ed188d6e1cfcfb79028a04612323aa2ddcfc92a9539aa086b3354')
+sha256sums=('de9333b001c986212ecfd776274644cb976c8771201e4295edb7ba452e6987a0')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -27,19 +29,23 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release -p v2ray-rs-ui -p v2ray-rs-netctl -p v2ray-rs-run
+    cargo build --frozen --release -p v2ray-rs-ui -p v2ray-rs-netctl -p v2ray-rs-run -p v2ray-rs-antidpi
 }
 
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/v2ray-rs-ui" "$pkgdir/usr/bin/v2ray-rs"
-    # Privileged TUN helpers. The install hook creates the `v2ray-rs` group,
-    # restricts these to it (netctl 0750 + cap_net_admin, run 4750 setuid), and
-    # creates the bypass user. Modes here are the pre-hook defaults.
+    # Privileged helpers. The install hook creates the `v2ray-rs` group,
+    # restricts these to it (netctl 0750 + cap_net_admin, antidpi 0750 +
+    # cap_net_admin,cap_net_raw, run 4750 setuid), and creates the bypass user.
+    # Modes here are the pre-hook defaults.
     install -Dm755 "target/release/v2ray-rs-netctl" "$pkgdir/usr/bin/v2ray-rs-netctl"
     # Archives never carry the setuid bit: the install hook applies root:v2ray-rs
     # and 4750 after systemd-sysusers has created the group and bypass user.
     install -Dm755 "target/release/v2ray-rs-run" "$pkgdir/usr/bin/v2ray-rs-run"
+    # Anti-DPI engine (NFQUEUE desync strategies): the hook applies the
+    # cap_net_admin,cap_net_raw file capabilities.
+    install -Dm755 "target/release/v2ray-rs-antidpi" "$pkgdir/usr/bin/v2ray-rs-antidpi"
     install_icon "assets/v2ray-rs.svg" \
         "crates/ui/icons/hicolor/scalable/apps/com.github.v2ray-rs.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.v2ray-rs.svg"
