@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index 6255c7081b..077e556edf 100644
+index 7024b069d8..833ae87157 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -2,6 +2,7 @@ CLAUDE.local.md
@@ -18,7 +18,7 @@ index 6255c7081b..077e556edf 100644
 +# Desktop packaging scratch directories.
 +apps/desktop/.desktop-build/
 diff --git a/apps/desktop/package.json b/apps/desktop/package.json
-index f13ba3178c..850a0f56b8 100644
+index bc3faafabb..94f438099a 100644
 --- a/apps/desktop/package.json
 +++ b/apps/desktop/package.json
 @@ -39,6 +39,8 @@
@@ -31,11 +31,11 @@ index f13ba3178c..850a0f56b8 100644
      "upload:mac:x64": "tsx scripts/upload-target.ts mac-x64",
      "upload:win:x64": "tsx scripts/upload-target.ts win-x64",
 diff --git a/apps/desktop/scripts/desktop-build-paths.d.mts b/apps/desktop/scripts/desktop-build-paths.d.mts
-index 910f3032ee..b2fc551229 100644
+index aaf7159d44..a56632ad06 100644
 --- a/apps/desktop/scripts/desktop-build-paths.d.mts
 +++ b/apps/desktop/scripts/desktop-build-paths.d.mts
 @@ -1,5 +1,8 @@
- import type { DesktopAutoUpdateTarget } from './desktop-auto-update-environment.mjs'
+ import type { DesktopAutoUpdateTarget } from '@deepseek-ai/dsh-desktop-publisher/desktop-auto-update-environment.mjs'
  
 +/** Directory name of one supported Desktop build target. */
 +export type DesktopTargetName = DesktopAutoUpdateTarget | 'linux-x64'
@@ -131,7 +131,7 @@ index edfd9cdf78..86077edc89 100644
    return targets[target]
  }
 diff --git a/apps/desktop/scripts/desktop-build-version-discovery.ts b/apps/desktop/scripts/desktop-build-version-discovery.ts
-index 68291ca3b8..1855d8f80a 100644
+index d9e87b6965..ba0b69eea8 100644
 --- a/apps/desktop/scripts/desktop-build-version-discovery.ts
 +++ b/apps/desktop/scripts/desktop-build-version-discovery.ts
 @@ -31,7 +31,10 @@ const LISTING_DEADLINE_MS = 8_000
@@ -159,10 +159,10 @@ index 68291ca3b8..1855d8f80a 100644
      && options.environment.DOWNLOAD_TEST_ORIGIN === undefined) return undefined
    const update = resolveDesktopUploadConfig(options.environment, platform, arch)
 diff --git a/apps/desktop/scripts/desktop-edgeone.ts b/apps/desktop/scripts/desktop-edgeone.ts
-index e2faf122a0..37b9f1c814 100644
+index f1f1875f4a..2d2ef687d7 100644
 --- a/apps/desktop/scripts/desktop-edgeone.ts
 +++ b/apps/desktop/scripts/desktop-edgeone.ts
-@@ -25,6 +25,8 @@ export type DesktopPurgeClient = Pick<InstanceType<typeof teo.v20220901.Client>,
+@@ -20,6 +20,8 @@ export type DesktopPurgeClient = Pick<InstanceType<typeof teo.v20220901.Client>,
  export function resolveDesktopPurgeConfig(
    env: NodeJS.ProcessEnv, target: DesktopPackageTargetName, publicUrl?: string,
  ): DesktopPurgeConfig {
@@ -201,7 +201,7 @@ index ec9da721f1..411a0312a8 100644
    options?: { unsigned?: boolean, prepareOnly?: boolean, skipNotarization?: boolean },
  ): void
 diff --git a/apps/desktop/scripts/desktop-package-environment.mjs b/apps/desktop/scripts/desktop-package-environment.mjs
-index 83e9dbbc0f..2075f07618 100644
+index d301ac4b31..24a0ba0c8a 100644
 --- a/apps/desktop/scripts/desktop-package-environment.mjs
 +++ b/apps/desktop/scripts/desktop-package-environment.mjs
 @@ -1,6 +1,6 @@
@@ -260,18 +260,19 @@ index 83e9dbbc0f..2075f07618 100644
    if (target.platform === 'darwin') resolveMacOSPackageSettings(environment)
    else resolveWindowsPackageSettings(environment)
 diff --git a/apps/desktop/scripts/desktop-publication-summary.ts b/apps/desktop/scripts/desktop-publication-summary.ts
-index a9e86575fd..c5c01e2c60 100644
+index 13dfd0ae51..91e1f43df7 100644
 --- a/apps/desktop/scripts/desktop-publication-summary.ts
 +++ b/apps/desktop/scripts/desktop-publication-summary.ts
-@@ -4,6 +4,8 @@ import { z } from 'zod'
+@@ -4,7 +4,9 @@ import { z } from 'zod'
  import { createHash } from 'node:crypto'
  import { createReadStream } from 'node:fs'
- import { desktopWebsiteInstallerUrl } from './desktop-auto-update-environment.mjs'
-+import type { DesktopAutoUpdateTarget } from './desktop-auto-update-environment.mjs'
+ import { desktopWebsiteInstallerUrl } from '@deepseek-ai/dsh-desktop-publisher/desktop-auto-update-environment.mjs'
++import type { DesktopAutoUpdateTarget } from '@deepseek-ai/dsh-desktop-publisher/desktop-auto-update-environment.mjs'
+ import type { DesktopRetainedSource } from '@deepseek-ai/dsh-desktop-publisher/desktop-release-store.ts'
 +import type { DesktopPackageTargetName } from './package-target.ts'
- import type { DesktopRetainedSource } from './desktop-release-store.ts'
  import type { DesktopUploadPlan } from './desktop-upload-plan.ts'
  
+ function text(value: string): string {
 @@ -15,6 +17,15 @@ function code(value: string): string { return `<code>${text(value)}</code>` }
  function row(label: string, value: string): string { return `| ${label} | ${value} |` }
  function link(url: string, label = url): string { return `<a href="${text(url)}">${text(label)}</a>` }
@@ -298,10 +299,10 @@ index a9e86575fd..c5c01e2c60 100644
      '1. 重新校验产物与发布目标；若与审批摘要不一致则停止。',
      '2. 上传缺少的文件，跳过内容一致的已有文件；发现内容冲突则停止。',
 diff --git a/apps/desktop/scripts/desktop-toolchain-preflight.ts b/apps/desktop/scripts/desktop-toolchain-preflight.ts
-index ff855cfd09..08c8dc1fca 100644
+index da0f06a8ec..176f91982a 100644
 --- a/apps/desktop/scripts/desktop-toolchain-preflight.ts
 +++ b/apps/desktop/scripts/desktop-toolchain-preflight.ts
-@@ -75,7 +75,7 @@ async function probeWindowsInstallerToolchain(environment: NodeJS.ProcessEnv): P
+@@ -85,7 +85,7 @@ async function probeWindowsInstallerToolchain(environment: NodeJS.ProcessEnv): P
   * @returns Every probe that failed, empty when the host can run the packaging sequence.
   */
  export async function probeDesktopToolchain(
@@ -310,7 +311,7 @@ index ff855cfd09..08c8dc1fca 100644
    environment: NodeJS.ProcessEnv = process.env,
  ): Promise<readonly DesktopToolchainProbeFailure[]> {
    const failures: DesktopToolchainProbeFailure[] = []
-@@ -92,7 +92,7 @@ export async function probeDesktopToolchain(
+@@ -102,7 +102,7 @@ export async function probeDesktopToolchain(
   * @returns Resolves when every probe passes.
   */
  export async function requireDesktopToolchain(
@@ -320,18 +321,18 @@ index ff855cfd09..08c8dc1fca 100644
  ): Promise<void> {
    const failures = await probeDesktopToolchain(platform, environment)
 diff --git a/apps/desktop/scripts/desktop-upload-plan.ts b/apps/desktop/scripts/desktop-upload-plan.ts
-index 39ff954bf5..325a6cc6f8 100644
+index 2e57bdb4c2..687fd20d86 100644
 --- a/apps/desktop/scripts/desktop-upload-plan.ts
 +++ b/apps/desktop/scripts/desktop-upload-plan.ts
-@@ -6,6 +6,7 @@ import { readFile, stat } from 'node:fs/promises'
+@@ -7,6 +7,7 @@ import { createReadStream } from 'node:fs'
+ import { readFile, stat } from 'node:fs/promises'
  import { basename, join, resolve } from 'node:path'
  import { dump, load } from 'js-yaml'
- import type { DesktopPackageTargetName } from './package-target.ts'
-+import type { DesktopAutoUpdateTarget } from './desktop-auto-update-environment.mjs'
++import type { DesktopAutoUpdateTarget } from '@deepseek-ai/dsh-desktop-publisher/desktop-auto-update-environment.mjs'
  import {
    desktopBuildRecordFilename,
    desktopLatestInstallerFilename,
-@@ -21,11 +22,20 @@ const TARGETS = {
+@@ -24,11 +25,20 @@ const TARGETS = {
    'mac-arm64': { platform: 'darwin', arch: 'arm64', os: 'mac' },
    'mac-x64': { platform: 'darwin', arch: 'x64', os: 'mac' },
    'win-x64': { platform: 'win32', arch: 'x64', os: 'win' },
@@ -352,9 +353,9 @@ index 39ff954bf5..325a6cc6f8 100644
 +  return name !== 'linux-x64'
 +}
  
- /** One local file and its final object metadata. */
- export interface DesktopUploadArtifact {
-@@ -186,10 +196,10 @@ export async function createDesktopUploadPlan(
+ /** Filesystem and environment inputs used to validate one upload. */
+ export interface DesktopUploadPlanOptions {
+@@ -159,10 +169,10 @@ export async function createDesktopUploadPlan(
    targetName: DesktopPackageTargetName,
    options: DesktopUploadPlanOptions = {},
  ): Promise<DesktopUploadPlan> {
@@ -368,18 +369,18 @@ index 39ff954bf5..325a6cc6f8 100644
    const repositoryRoot = options.repositoryRoot ?? REPOSITORY_ROOT
    const appRoot = options.appRoot ?? APP_ROOT
 diff --git a/apps/desktop/scripts/dev.ts b/apps/desktop/scripts/dev.ts
-index 37515c20b0..fef675e413 100644
+index 0753678c0a..449e924a5b 100644
 --- a/apps/desktop/scripts/dev.ts
 +++ b/apps/desktop/scripts/dev.ts
-@@ -11,6 +11,7 @@ import { developmentRuntimeDirectory, resolveDesktopBuildTarget } from './deskto
- import { prepareDevelopmentProject } from './development-project.ts'
+@@ -12,6 +12,7 @@ import { prepareDevelopmentProject } from './development-project.ts'
  import { prepareDevelopmentApp } from './development-app.ts'
+ import { prepareDevelopmentState } from './development-state.ts'
  import { preparePrimaryRuntime } from './prepare-primary-runtime.ts'
 +import { pnpmInvocation } from '../../../scripts/pnpm-invocation.ts'
  
  const APP_ROOT = resolve(import.meta.dirname, '..')
  const REPOSITORY_ROOT = resolve(APP_ROOT, '..', '..')
-@@ -49,11 +50,8 @@ async function run(command: string, args: readonly string[], cwd: string, enviro
+@@ -50,11 +51,8 @@ async function run(command: string, args: readonly string[], cwd: string, enviro
  }
  
  async function runPackageScript(script: string, cwd: string): Promise<void> {
@@ -394,14 +395,14 @@ index 37515c20b0..fef675e413 100644
  
  async function launchElectron(): Promise<void> {
 diff --git a/apps/desktop/scripts/development-project.ts b/apps/desktop/scripts/development-project.ts
-index d544ce6d36..5ceb275da3 100644
+index becb8e79a4..5ceb275da3 100644
 --- a/apps/desktop/scripts/development-project.ts
 +++ b/apps/desktop/scripts/development-project.ts
 @@ -16,7 +16,7 @@ import { dirname, join } from 'node:path'
  import { createDevelopmentProjectMetadata } from '../src/project-manager.ts'
  import type { DesktopRelease } from '../src/release.ts'
  import { DESKTOP_RUNTIME_FILE, type DesktopRuntimeDescriptor } from '../src/runtime-tree.ts'
--import type { DesktopAutoUpdateTarget } from './desktop-auto-update-environment.mjs'
+-import type { DesktopAutoUpdateTarget } from '@deepseek-ai/dsh-desktop-publisher/desktop-auto-update-environment.mjs'
 +import type { DesktopTargetName } from './desktop-build-paths.mjs'
  import { desktopTargetPlatform } from './desktop-build-paths.mjs'
  
@@ -416,7 +417,7 @@ index d544ce6d36..5ceb275da3 100644
  
  function readManifest(path: string): PackageManifest {
 diff --git a/apps/desktop/scripts/electron-builder-config.mjs b/apps/desktop/scripts/electron-builder-config.mjs
-index d5522e3da9..be736d2388 100644
+index a777a0582e..12d189956d 100644
 --- a/apps/desktop/scripts/electron-builder-config.mjs
 +++ b/apps/desktop/scripts/electron-builder-config.mjs
 @@ -66,7 +66,10 @@ export function createElectronBuilderConfig(
@@ -497,7 +498,7 @@ index 7c2f3e75da..1e3d2f12fb 100644
    }
 diff --git a/apps/desktop/scripts/linux-runtime-adjustments.ts b/apps/desktop/scripts/linux-runtime-adjustments.ts
 new file mode 100644
-index 0000000000..f15522aa38
+index 0000000000..73e6b6d154
 --- /dev/null
 +++ b/apps/desktop/scripts/linux-runtime-adjustments.ts
 @@ -0,0 +1,164 @@
@@ -548,8 +549,11 @@ index 0000000000..f15522aa38
 +/** Engine package family whose bundles decide whether the optional native engine is installed. */
 +const OFFICE_ENGINE_PACKAGE = '@deepseek-ai/libreoffice-kit'
 +
-+/** ASAR-insensitive existence probe that replaces the published one. */
-+const OFFICE_ENGINE_EXISTENCE_CHECK = 'lstatSync(join(directory, name), { throwIfNoEntry: false }) !== void 0'
++/** ASAR-insensitive existence probe that replaces the published one.
++ * The bundled builds emit `!== void 0` and the modules tsc places under `lib/types`
++ * keep the source spelling `!== undefined`; both make the same wrong decision.
++ */
++const OFFICE_ENGINE_EXISTENCE_CHECK = /lstatSync\(join\(directory, name\), \{ throwIfNoEntry: false \}\) !== (?:void 0|undefined)/gu
 +const OFFICE_ENGINE_EXISTENCE_FIX = 'Boolean(lstatSync(join(directory, name), { throwIfNoEntry: false }))'
 +
 +function sharpTarballUrl(): string {
@@ -646,27 +650,24 @@ index 0000000000..f15522aa38
 + * incomplete", so every runtime script carrying the probe is rewritten.
 + *
 + * @param root - Prepared dsh tree that becomes `resources/app.asar/dsh`.
-+ * @throws When a script carries the probe more than once, or none carries it.
++ * @throws When no runtime script carries the probe this fix expects.
 + */
 +export function fixLibreOfficeEngineFallback(root: string): void {
 +  const modules = join(root, 'node_modules')
 +  let patched = 0
 +  for (const path of javascriptFiles(modules)) {
 +    const source = readFileSync(path, 'utf8')
-+    const occurrences = source.split(OFFICE_ENGINE_EXISTENCE_CHECK).length - 1
++    const occurrences = source.match(OFFICE_ENGINE_EXISTENCE_CHECK)?.length ?? 0
 +    if (occurrences === 0) continue
-+    if (occurrences !== 1) {
-+      throw new Error(`desktop runtime: ${path} carries ${occurrences} installed-package probes this build cannot patch`)
-+    }
-+    writeFileSync(path, source.replace(OFFICE_ENGINE_EXISTENCE_CHECK, OFFICE_ENGINE_EXISTENCE_FIX))
-+    patched += 1
++    writeFileSync(path, source.replaceAll(OFFICE_ENGINE_EXISTENCE_CHECK, OFFICE_ENGINE_EXISTENCE_FIX))
++    patched += occurrences
 +  }
 +  if (patched === 0) {
 +    throw new Error(`desktop runtime: no installed-package probe to patch for the ${OFFICE_ENGINE_PACKAGE} fallback`)
 +  }
 +}
 diff --git a/apps/desktop/scripts/package-target.ts b/apps/desktop/scripts/package-target.ts
-index b6bc6efb63..49bebd49b0 100644
+index ea244526d5..f64b39e532 100644
 --- a/apps/desktop/scripts/package-target.ts
 +++ b/apps/desktop/scripts/package-target.ts
 @@ -25,6 +25,7 @@ import { suggestDesktopBuildVersion } from './desktop-build-version-discovery.ts
@@ -877,10 +878,10 @@ index 4e33853272..c5977d4bea 100644
      const minimumVersion = execFileSync('/usr/libexec/PlistBuddy', [
        '-c', 'Print LSMinimumSystemVersion', join(BUILD_PATHS.electron, 'Electron.app', 'Contents', 'Info.plist'),
 diff --git a/apps/desktop/scripts/retain-desktop-ci.ts b/apps/desktop/scripts/retain-desktop-ci.ts
-index e672274992..0ebfdffb26 100644
+index d26e6a068c..6626649e75 100644
 --- a/apps/desktop/scripts/retain-desktop-ci.ts
 +++ b/apps/desktop/scripts/retain-desktop-ci.ts
-@@ -34,6 +34,8 @@ export function desktopReleasesRoot(env: NodeJS.ProcessEnv): string {
+@@ -25,6 +25,8 @@ function required(env: NodeJS.ProcessEnv, name: string): string {
   */
  export function resolveDesktopRetentionRunner(env: NodeJS.ProcessEnv): string {
    const target = resolveDesktopBuildTarget(env)
@@ -889,7 +890,7 @@ index e672274992..0ebfdffb26 100644
    const routes = desktopPublishRunnersSchema.parse(JSON.parse(required(env, 'DESKTOP_PUBLISH_RUNNERS')))
    const route = routes[required(env, 'RUNNER_NAME')]
    if (!route || !route.target.includes(target)
-@@ -51,6 +53,8 @@ export function resolveDesktopRetentionRunner(env: NodeJS.ProcessEnv): string {
+@@ -42,6 +44,8 @@ export function resolveDesktopRetentionRunner(env: NodeJS.ProcessEnv): string {
   */
  export async function retainDesktopCi(env: NodeJS.ProcessEnv, appRoot = resolve(import.meta.dirname, '..')): Promise<string> {
    const target = resolveDesktopBuildTarget(env)
@@ -919,7 +920,7 @@ index 6c3c12c857..0ae20f9956 100644
    resolveDesktopPackageTarget(target))
  if (windows && !values.unsigned) await verifyWindowsCode(application)
 diff --git a/apps/desktop/src/main.ts b/apps/desktop/src/main.ts
-index 8f9cd823a5..1dad408f0a 100644
+index 291ed08476..85e75ea2a9 100644
 --- a/apps/desktop/src/main.ts
 +++ b/apps/desktop/src/main.ts
 @@ -261,6 +261,16 @@ function platformLoginUrl(authorizeUrl: string): string {
@@ -950,7 +951,7 @@ index 8f9cd823a5..1dad408f0a 100644
      webPreferences: {
        preload,
        nodeIntegration: false,
-@@ -1155,15 +1169,13 @@ async function main(): Promise<void> {
+@@ -1161,15 +1175,13 @@ async function main(): Promise<void> {
      updates.dispose()
    })
  
@@ -967,7 +968,7 @@ index 8f9cd823a5..1dad408f0a 100644
    })
    // A custom application menu replaces Electron's default menu, so macOS needs
    // its standard menus and application hide commands declared explicitly.
-@@ -1240,8 +1252,11 @@ async function main(): Promise<void> {
+@@ -1249,8 +1261,11 @@ async function main(): Promise<void> {
      tray?.relabel()
    }
    refreshApplicationMenu()
@@ -1064,10 +1065,10 @@ index b7d8315f6a..dc8fc84d7e 100644
      `], { stdio: ['ignore', 'pipe', 'pipe'], env: { PATH: process.env.PATH } })
      let stdout = ''
 diff --git a/apps/desktop/tests/main-startup.spec.ts b/apps/desktop/tests/main-startup.spec.ts
-index 17e16cec09..b3e4e7f235 100644
+index e689f3e672..fd3f04eca8 100644
 --- a/apps/desktop/tests/main-startup.spec.ts
 +++ b/apps/desktop/tests/main-startup.spec.ts
-@@ -847,8 +847,10 @@ describe('desktop main startup', () => {
+@@ -853,8 +853,10 @@ describe('desktop main startup', () => {
      harness.ipcOn.mock.calls.find(([channel]) => channel === DESKTOP_IPC.localeChanged)![1](
        { sender, senderFrame: sender.mainFrame }, nextLocale,
      )
@@ -1095,7 +1096,7 @@ index ba647d76ac..8605086990 100644
      expect(() => resolveDesktopPackageTarget('mac-arm64', 'darwin', 'x64')).toThrow(/Apple Silicon/u)
      expect(() => resolveDesktopPackageTarget('mac-arm64', 'linux', 'arm64')).toThrow(/macOS/u)
 diff --git a/package.json b/package.json
-index e0e4e29514..9bb47df8a2 100644
+index 25fc7a6a55..aca4cc2802 100644
 --- a/package.json
 +++ b/package.json
 @@ -42,6 +42,8 @@
