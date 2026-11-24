@@ -1,12 +1,12 @@
 pkgbase = tributary-bin
 	pkgdesc = A high-performance, Rhythmbox-style media manager (Pre-compiled Binary)
-	pkgver = 0.7.2
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/jm2/tributary
 	arch = x86_64
 	license = GPL-3.0-or-later
-	depends = gtk4
-	depends = libadwaita
+	depends = gtk4>=4.16
+	depends = libadwaita>=1.6
 	depends = gstreamer
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
@@ -15,7 +15,7 @@ pkgbase = tributary-bin
 	depends = dbus
 	provides = tributary
 	conflicts = tributary
-	source = tributary-bin-0.7.2.pkg.tar.zst::https://github.com/jm2/tributary/releases/download/v0.7.2/tributary-x86_64.pkg.tar.zst
-	sha256sums = 4ec5d3a61415967522d83795295d2d2675d389c8b765abbdbb979b2b88d738c0
+	source = tributary-bin-0.7.4.pkg.tar.zst::https://github.com/jm2/tributary/releases/download/v0.7.4/tributary-x86_64.pkg.tar.zst
+	sha256sums = 5f0275201d2cac85f210e6655f0c5bd9efd52d189190cd741f51984c3c0bbcc3
 
 pkgname = tributary-bin
