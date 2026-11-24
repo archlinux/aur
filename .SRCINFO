@@ -1,6 +1,6 @@
 pkgbase = agentero-bin
 	pkgdesc = Local-first research workspace (official desktop binary)
-	pkgver = 0.18.1
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://github.com/poco-ai/Agentero
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = agentero-bin
 	depends = libsoup3
 	optdepends = nodejs: run Node-based agent adapters
 	optdepends = openssh: remote agent connections
-	provides = agentero=0.18.1
+	provides = agentero=0.18.2
 	conflicts = agentero
 	options = !strip
 	options = !debug
-	source = https://github.com/poco-ai/Agentero/releases/download/v0.18.1/Agentero_0.18.1_amd64.deb
-	source = LICENSE-0.18.1::https://github.com/poco-ai/Agentero/raw/refs/tags/v0.18.1/LICENSE
-	sha256sums = bb2a583159b4cb278ec01b19a9ad3841a7217e0399cc0c07b4366e9ecd47295c
+	source = https://github.com/poco-ai/Agentero/releases/download/v0.18.2/Agentero_0.18.2_amd64.deb
+	source = LICENSE-0.18.2::https://github.com/poco-ai/Agentero/raw/refs/tags/v0.18.2/LICENSE
+	sha256sums = 93711d2d9d300803bc436b11b13acdb360d0e018cd18e269965d4da6a1cd73f8
 	sha256sums = f2b7f0cc6fb11f63654ac171d46640de6a8f63407a1a9fa77181a5c43a841fcf
 
 pkgname = agentero-bin
