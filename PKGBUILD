@@ -2,7 +2,7 @@
 # Contributor: justanoobcoder <syaorancode@gmail.com>
 
 pkgname=mechvibes
-pkgver=3.5.6
+pkgver=3.5.11
 pkgrel=1
 pkgdesc="A modern mechanical keyboard sound simulator with customizable soundpacks"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=('alsa-lib'
          'libsoup3'
          'libx11'
          'libxtst'
-         'openssl'
+         'openssl-3'
          'wayland'
          'webkit2gtk-4.1'
          'xdotool'
@@ -26,7 +26,7 @@ depends=('alsa-lib'
          'zstd')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hainguyents13/mechvibes/archive/v${pkgver}.tar.gz")
-sha256sums=('1e9caeea9b89a3b2b5502891212f296f77f83d1820c720149ed29fa0460acf07')
+sha256sums=('ffb01190e873f9772ba850fd17d5a94f49bd6a1f1926f1cc587f81b5c004f06c')
 
  prepare() {
     cd "${pkgname}-${pkgver}"
@@ -38,7 +38,9 @@ sha256sums=('1e9caeea9b89a3b2b5502891212f296f77f83d1820c720149ed29fa0460acf07')
     cd "${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export OPENSSL_NO_VENDOR=1
     export ZSTD_SYS_USE_PKG_CONFIG=1
+    export PKG_CONFIG_PATH=/usr/lib/openssl-3/pkgconfig
     CFLAGS+=" -ffat-lto-objects"
     cargo build --frozen --release --all-features
 }

@@ -1,6 +1,6 @@
 pkgbase = mechvibes
 	pkgdesc = A modern mechanical keyboard sound simulator with customizable soundpacks
-	pkgver = 3.5.6
+	pkgver = 3.5.11
 	pkgrel = 1
 	url = https://mechvibes.com/
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = mechvibes
 	depends = libsoup3
 	depends = libx11
 	depends = libxtst
-	depends = openssl
+	depends = openssl-3
 	depends = wayland
 	depends = webkit2gtk-4.1
 	depends = xdotool
 	depends = xz
 	depends = zstd
-	source = mechvibes-3.5.6.tar.gz::https://github.com/hainguyents13/mechvibes/archive/v3.5.6.tar.gz
-	sha256sums = 1e9caeea9b89a3b2b5502891212f296f77f83d1820c720149ed29fa0460acf07
+	source = mechvibes-3.5.11.tar.gz::https://github.com/hainguyents13/mechvibes/archive/v3.5.11.tar.gz
+	sha256sums = ffb01190e873f9772ba850fd17d5a94f49bd6a1f1926f1cc587f81b5c004f06c
 
 pkgname = mechvibes
