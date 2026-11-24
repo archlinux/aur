@@ -2,7 +2,7 @@
 
 pkgname=python-k3fnmatch
 _name=${pkgname#python-}
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Enhanced fnmatch with grouping regex and path transformation"
 provides=(${pkgname})
@@ -26,7 +26,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('efe8b1f86e7fa2480cf87ea4e008230409e2012823d2ed9244ffb407e570eee2')
+sha256sums=('8349a39d47277a55b3be351b0840b9f7e30172c11f2637eb30bd6b23e5def37f')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
