@@ -1,6 +1,6 @@
 pkgbase = vcvrack-wildergarden
 	pkgdesc = Wildergarden VCV Rack modules
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/ArdenButterfield/wildergarden-vcv
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = vcvrack-wildergarden
 	makedepends = zstd
 	depends = gcc-libs
 	depends = vcvrack
-	source = git+https://github.com/ArdenButterfield/wildergarden-vcv#tag=v2.1.0
-	sha256sums = d166d77d098aca8df3fd62236d41b06011a7075f71df6176353048ff0f46e68b
+	source = git+https://github.com/ArdenButterfield/wildergarden-vcv#commit=cbb5d1b9f9144caa71ab0bd7e8a75933f55fa00f
+	sha256sums = abd149ea496a68b83400910c00fffa9c28d796f44c163b7d3246a428d72e9123
 
 pkgname = vcvrack-wildergarden
