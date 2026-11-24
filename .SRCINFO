@@ -1,0 +1,20 @@
+pkgbase = mdink
+	pkgdesc = Compact, browser-free Markdown-to-PDF CLI with six themes and custom colors
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/davide-leva/mdink
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = gcc
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	options = !debug
+	source = mdink-1.0.0.tar.gz::https://github.com/davide-leva/mdink/archive/refs/tags/v1.0.0.tar.gz
+	source = LICENSE
+	sha256sums = 37ec6214c26017747749ed3ca4df179b98eed42b935ceb8c154704d1e3cdeb15
+	sha256sums = a05a32fb37772cc1e5ab364cfec90ea5dad2efcaae51e1106b085451e7987149
+
+pkgname = mdink
