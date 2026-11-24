@@ -1,0 +1,19 @@
+pkgbase = runwisp-bin
+	pkgdesc = Cron job manager and process supervisor in one binary
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/runwisp/runwisp
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = runwisp
+	conflicts = runwisp
+	options = !debug
+	source = runwisp-bin-1.10.0-LICENSE::https://raw.githubusercontent.com/runwisp/runwisp/v1.10.0/LICENSE
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = runwisp-bin-1.10.0-x86_64.tar.gz::https://github.com/runwisp/runwisp/releases/download/v1.10.0/runwisp-linux-x64.tar.gz
+	sha256sums_x86_64 = f50ff0037a7bc33ecb7f0ee44fc27d928b1bff84af02d408ad143942788bc971
+	source_aarch64 = runwisp-bin-1.10.0-aarch64.tar.gz::https://github.com/runwisp/runwisp/releases/download/v1.10.0/runwisp-linux-arm64.tar.gz
+	sha256sums_aarch64 = 2c5e3951f458d8ea28e60d41e1d4311af125e4799b1211fb6c6973abcc81f32d
+
+pkgname = runwisp-bin
