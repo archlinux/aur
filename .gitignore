@@ -1,0 +1,8 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!fontconfig.install
+!fontconfig.hook
+!40-fontconfig-config.hook
+!40-fontconfig-config.script

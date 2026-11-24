@@ -1,0 +1,44 @@
+pkgbase = fontconfig-typical-git
+	pkgdesc = fontconfig with matching by the fonts' own OpenType data: per-language CJK, CSS-ordered weight/width, family first, design languages, fc-match --explain (git)
+	pkgver = 2.18.4.r28.gd5020de
+	pkgrel = 1
+	url = https://github.com/LaPingvino/typical
+	install = fontconfig.install
+	arch = x86_64
+	license = HPND AND Unicode-DFS-2016
+	makedepends = docbook-sgml
+	makedepends = docbook-utils
+	makedepends = git
+	makedepends = gperf
+	makedepends = meson
+	makedepends = perl-sgmls
+	depends = bash
+	depends = expat
+	depends = freetype2
+	depends = glibc
+	provides = fontconfig=2:2.18.4.r28.gd5020de
+	provides = fontconfig-typical=2.18.4.r28.gd5020de
+	conflicts = fontconfig
+	conflicts = fontconfig-docs
+	conflicts = fontconfig-typical
+	backup = etc/fonts/fonts.conf
+	source = typical::git+https://github.com/LaPingvino/typical.git#branch=typical
+	source = 40-fontconfig-config.hook
+	source = 40-fontconfig-config.script
+	source = fontconfig.hook
+	b2sums = SKIP
+	b2sums = b06b3f2b8c0c38139a9247c26a641e6dc01d50b530478dd14133175a603f60b0af901af16c9fcf1ce73d23786ea14bfdbacd39f1dcfd88f6382965ad22be1411
+	b2sums = 7fb63e76ab126bc0a7decfd74c53429ad1ce6d13de2f14037259616d8d4150b8fa4601c7f02b75918ccd5995d424816dc9d01a5fe7e39dc3dd1fcc83dfdb0fe8
+	b2sums = dfbf47c069c88da7687511356cef5bb94b7190e558a6f08390d6976fa7065ba7137ccb0a5ca1defdef655091afe74eb8a3d33fb9f3e0633409aa79f753ad276d
+
+pkgname = fontconfig-typical-git
+	depends = bash
+	depends = expat
+	depends = freetype2
+	depends = glibc
+	depends = libexpat.so
+	depends = libfreetype.so
+	provides = fontconfig=2:2.18.4.r28.gd5020de
+	provides = fontconfig-typical=2.18.4.r28.gd5020de
+	provides = libfontconfig.so
+	provides = fontconfig-docs

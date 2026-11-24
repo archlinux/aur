@@ -1,0 +1,16 @@
+# The conf.d symlinks are made by 40-fontconfig-config.hook, as in Arch's
+# fontconfig; Arch's one-time migration to conf.default (2:2.13.93-1) does
+# not apply to this package.
+
+post_upgrade() {
+  # typical writes its own cache files (.cache-13~snap1) with objects older
+  # caches lack, so rescan everything
+  echo "Rebuilding fontconfig cache..."
+  /usr/bin/fc-cache -fs
+}
+
+post_install() {
+  post_upgrade
+}
+
+# vim:set sw=2 et:

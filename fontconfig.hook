@@ -1,0 +1,14 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = etc/fonts/conf.d/*
+Target = usr/share/fonts/*
+Target = usr/share/fontconfig/conf.avail/*
+Target = usr/share/fontconfig/conf.default/*
+
+[Action]
+Description = Updating fontconfig cache...
+When = PostTransaction
+Exec = /usr/bin/fc-cache -s
