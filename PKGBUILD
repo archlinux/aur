@@ -5,8 +5,8 @@
 # Contributor: Starfry <archlinux@jelmail.com>
 
 pkgname=nfdump
-pkgver=1.7.8
-pkgrel=2
+pkgver=1.7.10
+pkgrel=1
 pkgdesc="A set of tools to collect and process netflow data."
 arch=('x86_64' 'i686')
 url="https://github.com/phaag/nfdump/"
@@ -17,11 +17,11 @@ source=("nfdump-v${pkgver}.tar.gz::https://github.com/phaag/nfdump/archive/v${pk
         'sysusers'
         'tmpfiles'
         'service')
-sha1sums=('6a41163247f1c4b97735f1fc86b06a0c8b67079a'
+sha1sums=('3f6124f92a3db0cbedb2fff76c464e5a8271cae1'
           '3ab48b59df90c287eb1546128f5462bd1b187cdd'
           'bb33a35fa5dcfc14217aa13d77e67e84652e4f04'
           '9dbccc963a73c3f17c7c8145544e45ee9d529ab6')
-sha256sums=('d9b881f7e3ecde281c1116e8330ae612d0e5adcd0e952f401b2045c6446a1232'
+sha256sums=('9a1bc84eb484c7383eea3b48ad2abe5b9ffe7e90aab3fda7055aa3f64be0cc29'
             '75ea928dec07b9d66d53b8025d378bff0df2e8605b0bcda40bd95e4b8313f064'
             'd1174d15a40745c661162af1fabb25a5008b4f2cab257ab1c3f913c25a941660'
             '8c007f50450458ba4aace1b96c1c7a87644b13c9d6a3ef179b0e00f6c14d8254')
