@@ -2,7 +2,7 @@
 
 pkgname=helcanium-bin
 pkgver=158.0.8127.36
-pkgrel=1
+pkgrel=2
 pkgdesc="Helium Browser with native Wayland Vulkan rendering and Vulkan Video decoding/encoding (prebuilt)"
 arch=('x86_64')
 url="https://github.com/lumexren/vulcanium"
@@ -12,21 +12,32 @@ conflicts=('helcanium')
 depends=(
   'alsa-lib'
   'at-spi2-core'
+  'brotli'
   'cairo'
+  'dav1d'
   'dbus'
   'desktop-file-utils'
+  'double-conversion'
   'expat'
+  'flac'
+  'fontconfig'
+  'freetype2'
   'glib2'
   'glibc'
   'gtk3'
+  'harfbuzz'
   'hicolor-icon-theme'
+  'highway'
   'libcups'
+  'libdrm'
   'libffi'
   'libgcc'
   'libgcrypt'
+  'libjpeg-turbo'
   'libpulse'
   'libstdc++'
   'libva'
+  'libwebp'
   'libx11'
   'libxcb'
   'libxcomposite'
@@ -34,19 +45,25 @@ depends=(
   'libxext'
   'libxfixes'
   'libxkbcommon'
+  'libxml2'
   'libxrandr'
   'libxss'
   'mesa'
+  'minizip'
   'nspr'
   'nss'
+  'openh264'
+  'opus'
   'pango'
   'pciutils'
+  'simdutf'
   'systemd'
   'systemd-libs'
   'ttf-liberation'
   'vulkan-icd-loader'
   'xdg-utils'
   'zlib'
+  'zstd'
 )
 optdepends=(
   'pipewire: WebRTC desktop sharing under Wayland'
@@ -60,7 +77,7 @@ backup=('etc/helcanium/default-flags.conf')
 options=('!strip')
 source=("https://github.com/lumexren/vulcanium/releases/download/v${pkgver}-${pkgrel}/helcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("helcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('4d880067d595253af15ede462aebb569d6e2f777ac03c83079b23b697dcea46e')
+sha256sums=('61781b6ef4e2d81a72e41f176c0ce46a8ba57aa424a2cca6359e0cacd7f12420')
 
 package() {
   bsdtar -xf "${srcdir}/helcanium-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" \
