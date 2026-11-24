@@ -1,0 +1,24 @@
+pkgbase = lue
+	pkgdesc = Terminal eBook reader with text-to-speech for EPUB, PDF, DOCX, HTML, RTF and Markdown
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/paulilaaso/lue
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-docx
+	depends = python-edge-tts
+	depends = python-markdown
+	depends = python-numpy
+	depends = python-platformdirs
+	depends = python-pymupdf
+	depends = python-rich
+	depends = python-striprtf
+	source = https://files.pythonhosted.org/packages/source/l/lue_reader/lue_reader-0.5.0.tar.gz
+	sha256sums = 8e1ce6a5719e5e1cb69a231cb4074ffc842f533a2389fe78e2d419cd22b9f6a1
+
+pkgname = lue
