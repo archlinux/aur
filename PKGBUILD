@@ -1,7 +1,7 @@
 # Maintainer: NickeyGod <niklass.schaeffer@gmail.com>
 
 pkgname=dockerman-ce-bin
-pkgver=6.4.0
+pkgver=6.4.1
 pkgrel=1
 pkgdesc="Lightweight Docker management UI built with Tauri and React"
 arch=('x86_64')
@@ -24,7 +24,7 @@ provides=('dockerman')
 conflicts=('dockerman')
 options=('!strip')
 source=("Dockerman_${pkgver}_amd64.deb::https://github.com/ZingerLittleBee/dockerman.app/releases/download/app-v${pkgver}/Dockerman_${pkgver}_amd64.deb")
-sha256sums=('b5f1c14453712cbe7d74da9763b71d85f962c60b666baaf2fc8933888d6d4b27')
+sha256sums=('9c066355f5a881b1d458cb47deecc63b29f837c6af63c472a4ac9f3bb81b169f')
 
 package() {
   bsdtar -xf data.tar.gz -C "$pkgdir"

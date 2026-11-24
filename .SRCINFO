@@ -1,6 +1,6 @@
 pkgbase = dockerman-ce-bin
 	pkgdesc = Lightweight Docker management UI built with Tauri and React
-	pkgver = 6.4.0
+	pkgver = 6.4.1
 	pkgrel = 1
 	url = https://dockerman.app
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = dockerman-ce-bin
 	provides = dockerman
 	conflicts = dockerman
 	options = !strip
-	source = Dockerman_6.4.0_amd64.deb::https://github.com/ZingerLittleBee/dockerman.app/releases/download/app-v6.4.0/Dockerman_6.4.0_amd64.deb
-	sha256sums = b5f1c14453712cbe7d74da9763b71d85f962c60b666baaf2fc8933888d6d4b27
+	source = Dockerman_6.4.1_amd64.deb::https://github.com/ZingerLittleBee/dockerman.app/releases/download/app-v6.4.1/Dockerman_6.4.1_amd64.deb
+	sha256sums = 9c066355f5a881b1d458cb47deecc63b29f837c6af63c472a4ac9f3bb81b169f
 
 pkgname = dockerman-ce-bin
