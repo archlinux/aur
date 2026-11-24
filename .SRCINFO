@@ -1,0 +1,14 @@
+pkgbase = jjfx-bin
+	pkgdesc = TUI for Jujutsu workspaces and the coding agents editing them
+	pkgver = 0.56.0
+	pkgrel = 1
+	url = https://github.com/jarvvski/jjfx
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = jjfx
+	conflicts = jjfx
+	options = !debug
+	source_x86_64 = jjfx-bin-0.56.0-x86_64.tar.gz::https://github.com/jarvvski/jjfx/releases/download/v0.56.0/jjfx-0.56.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 494e8637ecd20fc515b6e2fd7b6996edbc8337a34b52443c978583680d561f87
+
+pkgname = jjfx-bin
