@@ -1,6 +1,6 @@
 pkgbase = morgan-bin
 	pkgdesc = Shell de escritorio para Hyprland: barra, centro de control, notificaciones, launcher, OSD y bloqueo (binario)
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/ImJustDoingMyPart/morgan
 	install = morgan.install
@@ -24,6 +24,7 @@ pkgbase = morgan-bin
 	optdepends = libvips: miniaturas de la banda de fondos
 	optdepends = hyprsunset: luz nocturna
 	optdepends = ddcutil: brillo de monitores externos (DDC/CI)
+	optdepends = upower: nivel de batería en notebooks
 	optdepends = hyprshot: capturas de pantalla
 	optdepends = cliphist: launcher, portapapeles
 	optdepends = wtype: launcher, escribir símbolos
@@ -36,14 +37,14 @@ pkgbase = morgan-bin
 	optdepends = greetd: morgan-greet, la pantalla de inicio de sesión
 	optdepends = xdg-desktop-portal-gtk: que navegadores y apps de Electron sigan el modo claro u oscuro
 	optdepends = jq: morgan-cuota (cuotas de Claude Code y Antigravity) y umbriel-ciclar (atajos que ciclan apps en Umbriel)
-	provides = morgan=0.3.3
+	provides = morgan=0.3.4
 	provides = notification-daemon
 	conflicts = morgan
 	conflicts = morgan-git
 	options = !strip
 	options = !debug
 	backup = etc/pam.d/morgan-lock
-	source = morgan-0.3.3-x86_64.tar.gz::https://github.com/ImJustDoingMyPart/morgan/releases/download/v0.3.3/morgan-0.3.3-x86_64.tar.gz
-	sha256sums = 371a5a5308a0e99112fea41cac5ca2d97aa1f0ed461ad0609359aa2ac3c0be74
+	source = morgan-0.3.4-x86_64.tar.gz::https://github.com/ImJustDoingMyPart/morgan/releases/download/v0.3.4/morgan-0.3.4-x86_64.tar.gz
+	sha256sums = bec55be0ddc9552241ef25bd42e71d135d31836298c9e88008cc44fdd57fcc49
 
 pkgname = morgan-bin

@@ -9,7 +9,7 @@
 
 pkgname=morgan-bin
 _nombre=morgan
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='Shell de escritorio para Hyprland: barra, centro de control, notificaciones, launcher, OSD y bloqueo (binario)'
 arch=('x86_64')
@@ -38,6 +38,7 @@ optdepends=(
     'libvips: miniaturas de la banda de fondos'
     'hyprsunset: luz nocturna'
     'ddcutil: brillo de monitores externos (DDC/CI)'
+    'upower: nivel de batería en notebooks'
     'hyprshot: capturas de pantalla'
     'cliphist: launcher, portapapeles'
     'wtype: launcher, escribir símbolos'
@@ -57,7 +58,7 @@ backup=('etc/pam.d/morgan-lock')
 options=('!strip' '!debug')
 install=morgan.install
 source=("$_nombre-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_nombre-$pkgver-x86_64.tar.gz")
-sha256sums=('371a5a5308a0e99112fea41cac5ca2d97aa1f0ed461ad0609359aa2ac3c0be74')
+sha256sums=('bec55be0ddc9552241ef25bd42e71d135d31836298c9e88008cc44fdd57fcc49')
 
 package() {
     cp -a --no-preserve=ownership "$_nombre-$pkgver-x86_64"/. "$pkgdir/"
