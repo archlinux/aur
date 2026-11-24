@@ -11,6 +11,6 @@ pkgbase = nouveau-utils
 	provides = nouveau-utils
 	backup = etc/nouveau-dynclockd.conf
 	source = nouveau-utils-2.2.5.tar.gz::https://github.com/Twilight0/nouveau-utils/archive/refs/tags/v2.2.5.tar.gz
-	sha256sums = 24cb1b38e9e1c9420a98e7c4843acbf8a56a9aeccf72d787b1e64c0894d1be4f
+	sha256sums = ca7da6e3e1e5956624555b0ad743aa09a090e077f73d493930cc7d21fa278c44
 
 pkgname = nouveau-utils
