@@ -1,6 +1,6 @@
 pkgbase = tsuki-git
 	pkgdesc = Native Linux game launcher for Wine, Proton, and native titles (git version)
-	pkgver = 0.2.3.r0.g2015b9f
+	pkgver = 0.2.4.r0.g34638f5
 	pkgrel = 1
 	url = https://github.com/muzammilshafique/tsuki
 	install = tsuki.install
