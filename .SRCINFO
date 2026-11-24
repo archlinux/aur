@@ -1,0 +1,16 @@
+pkgbase = gloamy
+	pkgdesc = Secure on-device personal agents
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/ibz-04/gloamy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = gloamy-0.1.9.tar.gz::https://github.com/ibz-04/gloamy/archive/refs/tags/v0.1.9.tar.gz
+	sha256sums = 9ee960becee671e622c71b609a1fd27024c8b4688085e1a6e439e11d134fff2f
+
+pkgname = gloamy
