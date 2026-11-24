@@ -1,7 +1,7 @@
 # Maintainer: ariurn <admin@ariurn.com>
 
 pkgname=happ-desktop-bin
-pkgver=4.8.3
+pkgver=4.8.6
 pkgrel=1
 pkgdesc="Happ — user-friendly GUI client for xray-core with TUN/VPN and anti-censorship"
 url="https://happ.su"
@@ -18,13 +18,14 @@ package() {
 }
 
 
+
 arch=('x86_64' 'aarch64')
-_release_tag='4.8.3'
+_release_tag='4.8.6'
 source_x86_64=("${pkgname}-${pkgver}-x86_64.pkg.tar.zst::https://github.com/Happ-proxy/happ-desktop/releases/download/${_release_tag}/Happ.linux.x64.pkg.tar.zst")
-sha256sums_x86_64=('407c8ce6c35757415da153a55d7da11a669012eabbc0ac29164cf8d1b65a20c2')
+sha256sums_x86_64=('d95e8d2339e8b67057c5f8a07319c8be122cafb41a3ee4dc7df3dc80fa5dc810')
 depends_x86_64=('glibc' 'openssl' 'libx11' 'libxkbcommon-x11' 'wayland' 'hicolor-icon-theme')
 optdepends_x86_64=('polkit: privilege elevation for daemon operations')
 source_aarch64=("${pkgname}-${pkgver}-aarch64.pkg.tar.zst::https://github.com/Happ-proxy/happ-desktop/releases/download/${_release_tag}/Happ.linux.arm64.pkg.tar.zst")
-sha256sums_aarch64=('572ff4a54450913b7905f095385da31058c5fc4a34a7a94e6668880d0c01a144')
+sha256sums_aarch64=('965076059918044e443611276bf8a96ff64005e8a44cf40708875828ce0ddafe')
 depends_aarch64=('glibc' 'openssl' 'libx11' 'libxkbcommon-x11' 'wayland' 'hicolor-icon-theme')
 optdepends_aarch64=('polkit: privilege elevation for daemon operations')
