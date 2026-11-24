@@ -1,0 +1,17 @@
+pkgbase = grom-bin
+	pkgdesc = btop-style terminal dashboards for Prometheus and Grafana
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/qf-studio/grom
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = grom
+	conflicts = grom
+	options = !debug
+	source_x86_64 = grom-bin-0.3.0-x86_64.tar.gz::https://github.com/qf-studio/grom/releases/download/v0.3.0/grom_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 91b8e76d37a9747355f982163a2056ab36480a43cc6431e86a79851fbc5229d4
+	source_aarch64 = grom-bin-0.3.0-aarch64.tar.gz::https://github.com/qf-studio/grom/releases/download/v0.3.0/grom_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = fd7716d1c180bce6e58b1a676a3a9f91273cca9e760a184fd7e79060883b8a16
+
+pkgname = grom-bin
