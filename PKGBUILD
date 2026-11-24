@@ -3,7 +3,7 @@
 pkgname=linphone-desktop-gh-git
 pkgver=6.2.4
 pkgrel=1
-pkgdesc='A free VoIP and video softphone based on the SIP protocol'
+pkgdesc='A free VoIP and video softphone based on the SIP protocol (GitHub releases)'
 arch=(x86_64)
 url='http://linphone.org'
 license=('GPL-3.0-only')
