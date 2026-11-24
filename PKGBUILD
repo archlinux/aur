@@ -1,6 +1,6 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 pkgname=proton-gallery-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Unofficial Proton Photos and Drive gallery with a native photo and video viewer (binaries)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=('proton-gallery' 'proton-gallery-git')
 options=('!strip' '!debug')
 # The Debian package holds the whole installed tree, basemap included.
 source=("proton-gallery_$pkgver-1_amd64.deb::$_repo/releases/download/v$pkgver/proton-gallery_$pkgver-1_amd64.deb")
-sha256sums=('56fb94239029b4cc4890b44740096f7bfbc055b1324bc0ba112742a3330964a0')
+sha256sums=('23d0bbbc54a34d98c081dc9a7a915861471622dea0bba8e935f2167489e7837f')
 
 package() {
   bsdtar -xf "$srcdir/data.tar.zst" -C "$pkgdir"
