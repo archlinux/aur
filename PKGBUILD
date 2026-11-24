@@ -2,7 +2,7 @@
 
 pkgname=openspec-bin
 _pkgname=openspec
-pkgver=2.1.1 # datasource=github-releases depName=Fission-AI/OpenSpec
+pkgver=2.2.0 # datasource=github-releases depName=Fission-AI/OpenSpec
 pkgrel=1
 pkgdesc='Spec-driven development (SDD) for AI coding assistants.'
 arch=('aarch64' 'x86_64')
@@ -16,8 +16,8 @@ conflicts=($_pkgname "${_pkgname}-git")
 source_aarch64=("openspec-${pkgver}-arm64.tgz::${url}/releases/download/v${pkgver}/openspec-linux-arm64.tar.gz")
 source_x86_64=("openspec-${pkgver}-x64.tgz::${url}/releases/download/v${pkgver}/openspec-linux-x64.tar.gz")
 
-sha256sums_aarch64=('b7ab16e4138e88df2d2ddc13e687bf20f6fe22751db68492d48e00d77b0183da')
-sha256sums_x86_64=('22f0c7c96cc14138becb42aa98e589050c94cda793cbefd7e7ac2d7dee78b6d5')
+sha256sums_aarch64=('a3d3f4398579358816a4e6e6306a4dac998f81fa5b3292edaa1a478d4acdd0d7')
+sha256sums_x86_64=('f91f0bc22ecd51279178bf91aaf6149ceba5b95dae9cc46f80f91fb14633e594')
 
 package() {
 
