@@ -1,6 +1,6 @@
 pkgbase = electron46-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 46.0.0alpha12
+	pkgver = 46.0.0alpha13
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -16,19 +16,19 @@ pkgbase = electron46-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron46=46.0.0alpha12
+	provides = electron46=46.0.0alpha13
 	conflicts = electron46
-	noextract = electron46-chromedriver-46.0.0alpha12-x86_64.zip
-	noextract = electron46-46.0.0alpha12-x86_64.zip
+	noextract = electron46-chromedriver-46.0.0alpha13-x86_64.zip
+	noextract = electron46-46.0.0alpha13-x86_64.zip
 	source = electron46.sh
 	sha256sums = 3721240f57668b7ed7970b7fc2dcb9a548acf4956a5b1406d0193af296b8ffad
-	source_aarch64 = electron46-chromedriver-46.0.0alpha12-aarch64.zip::https://github.com/electron/electron/releases/download/v46.0.0-alpha.12/chromedriver-v46.0.0-alpha.12-linux-arm64.zip
-	source_aarch64 = electron46-46.0.0alpha12-aarch64.zip::https://github.com/electron/electron/releases/download/v46.0.0-alpha.12/electron-v46.0.0-alpha.12-linux-arm64.zip
-	sha256sums_aarch64 = 90e35f8d248a186367d58ebba97a6955b7eb10ddd3cf266f5a81fa5ab76d9fbd
-	sha256sums_aarch64 = dbf40a4ac2489ee77930f1bfb52f1232e6737a7dc992fb91b6cf8b966658cfda
-	source_x86_64 = electron46-chromedriver-46.0.0alpha12-x86_64.zip::https://github.com/electron/electron/releases/download/v46.0.0-alpha.12/chromedriver-v46.0.0-alpha.12-linux-x64.zip
-	source_x86_64 = electron46-46.0.0alpha12-x86_64.zip::https://github.com/electron/electron/releases/download/v46.0.0-alpha.12/electron-v46.0.0-alpha.12-linux-x64.zip
-	sha256sums_x86_64 = 388e76a8327fd224115fdb743fd2ca344b0fa93fe9c47e9381a6258fd1453569
-	sha256sums_x86_64 = 6be2bdd1b23dec6aed85a853524b76f7949df84326933f2de661a650cad54c34
+	source_aarch64 = electron46-chromedriver-46.0.0alpha13-aarch64.zip::https://github.com/electron/electron/releases/download/v46.0.0-alpha.13/chromedriver-v46.0.0-alpha.13-linux-arm64.zip
+	source_aarch64 = electron46-46.0.0alpha13-aarch64.zip::https://github.com/electron/electron/releases/download/v46.0.0-alpha.13/electron-v46.0.0-alpha.13-linux-arm64.zip
+	sha256sums_aarch64 = 1f3549b3e32d33e6d830b55bbb9c08a6e61a163dd17ab5e50042e6f50d793f38
+	sha256sums_aarch64 = ee71429729850a3c865b28b2d0bc54854037881f462e72ecc62f9430fe94d203
+	source_x86_64 = electron46-chromedriver-46.0.0alpha13-x86_64.zip::https://github.com/electron/electron/releases/download/v46.0.0-alpha.13/chromedriver-v46.0.0-alpha.13-linux-x64.zip
+	source_x86_64 = electron46-46.0.0alpha13-x86_64.zip::https://github.com/electron/electron/releases/download/v46.0.0-alpha.13/electron-v46.0.0-alpha.13-linux-x64.zip
+	sha256sums_x86_64 = 58f53a77c0df114ef8bd489f3f4646fdef6bfa80cb330c679e1f40b8ef51036c
+	sha256sums_x86_64 = 76befefc458a4148bd4ae9b654f97558cdc2f591673d7b37438928676eeabbc3
 
 pkgname = electron46-bin
