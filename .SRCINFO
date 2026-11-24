@@ -8,7 +8,6 @@ pkgbase = axiom-axle
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = python
 	depends = python-aiohttp
 	depends = python-requests

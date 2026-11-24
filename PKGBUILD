@@ -9,7 +9,7 @@ arch=(any)
 url=https://github.com/AxiomMath/axiom-lean-engine
 license=(MIT)
 depends=(python python-aiohttp python-requests python-tenacity)
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
   LICENSE)
 b2sums=('97672e049c5a07805e9aa424c5594aa711337140d8cbaf5fb714672ce666847b42c6f9fc2d879483d25f3d662c66a52c31af7dc834138299a959907056cecea0'
