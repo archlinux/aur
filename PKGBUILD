@@ -4,7 +4,7 @@
 
 pkgname=plasma6-applet-quicklaunch
 pkgver=6.5.80
-pkgrel=4
+pkgrel=5
 pkgdesc="Customizable quicklaunch widget for KDE Plasma 6 panels"
 arch=(x86_64)
 url="https://github.com/ixnewton/org.kde.plasma.quicklaunch"
@@ -33,6 +33,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DKDE_INSTALL_LIBDIR=lib \
+        -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins \
         -DBUILD_TESTING=OFF
     make -C build -j"$(nproc)"
 }
