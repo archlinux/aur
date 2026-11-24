@@ -1,0 +1,21 @@
+pkgbase = python-k3fnmatch
+	pkgdesc = Enhanced fnmatch with grouping regex and path transformation
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/pykit3/k3fnmatch
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3fnmatch
+	conflicts = python-k3fnmatch
+	source = k3fnmatch::git+https://github.com/pykit3/k3fnmatch.git#tag=v0.1.5
+	sha256sums = efe8b1f86e7fa2480cf87ea4e008230409e2012823d2ed9244ffb407e570eee2
+
+pkgname = python-k3fnmatch
