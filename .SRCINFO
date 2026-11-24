@@ -1,0 +1,26 @@
+pkgbase = ssmcp-bin
+	pkgdesc = Authenticated native tools and terminal access over MCP (official prebuilt binaries)
+	pkgver = 0.10.31
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/ssmcp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = libgcc_s.so
+	depends = glibc
+	depends = nodejs
+	depends = bubblewrap
+	depends = util-linux
+	depends = git
+	optdepends = rsync: workspace directory synchronization
+	provides = ssmcp=0.10.31
+	conflicts = ssmcp
+	conflicts = ssmcp-git
+	options = !strip
+	options = !debug
+	source_x86_64 = ssmcp-0.10.31-x86_64.tar.gz::https://github.com/LIghtJUNction/ssmcp/releases/download/v0.10.31/ssmcp-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7320249b42fbcda02f1b3f8188f2ee226ae2ecf793bf662f561e0c36cec0a5ab
+	source_aarch64 = ssmcp-0.10.31-aarch64.tar.gz::https://github.com/LIghtJUNction/ssmcp/releases/download/v0.10.31/ssmcp-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b022546ff5f62af6a893961f79ff0a142aa3d50d7e3f3f02ce5a70bfb8a7144a
+
+pkgname = ssmcp-bin
