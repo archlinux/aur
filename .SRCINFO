@@ -1,0 +1,21 @@
+pkgbase = sherlock-rs-bin
+	pkgdesc = Find social media accounts by username
+	pkgver = 5.0.8
+	pkgrel = 1
+	url = https://github.com/jonaylor89/sherlock-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = sherlock-rs
+	conflicts = sherlock-rs
+	conflicts = sherlock
+	conflicts = sherlock-git
+	options = !debug
+	source_x86_64 = sherlock-rs-bin-5.0.8-x86_64.tar.gz::https://github.com/jonaylor89/sherlock-rs/releases/download/v5.0.8/sherlock-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 9bce05e50a9e665e191cbdd4ee4f5ac71086ea4f56fa2c8d0d5747382bbfb9e7
+	source_aarch64 = sherlock-rs-bin-5.0.8-aarch64.tar.gz::https://github.com/jonaylor89/sherlock-rs/releases/download/v5.0.8/sherlock-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b88878864319725dada1ac742d940010c4677e9930e8bca502f34de3d074db6a
+
+pkgname = sherlock-rs-bin
