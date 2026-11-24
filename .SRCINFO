@@ -1,15 +1,15 @@
 pkgbase = wsjtz-appimage
 	pkgdesc = AppImage of WSJT-Z – fork of WSJT-X with automation features.
-	pkgver = 2.0.18
-	epoch = 1
+	pkgver = 2.0.20
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/SP5D/wsjtz-AppImage
 	arch = x86_64
 	license = GPL3
 	depends = fuse2
 	noextract = wsjtz-x86_64.AppImage
 	options = !strip
-	source = https://github.com/SP5D/wsjtz-AppImage/releases/download/v2.0.18/wsjtz-x86_64.AppImage
-	sha256sums = 97dd612772f1c9498afc2c9c763c0c3cc78e0763d6eefabad5cfeb18f3e745f5
+	source = https://github.com/SP5D/wsjtz-AppImage/releases/download/v2.0.20/wsjtz-x86_64.AppImage
+	sha256sums = 1eacedacc0356f3f89de0a3a831ad4d2cf7993900d6fb2cca41de374667ce15a
 
 pkgname = wsjtz-appimage
