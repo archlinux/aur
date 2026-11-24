@@ -6,7 +6,7 @@
 _cfgdir=/etc/openresty
 _logdir=/var/log/openresty
 pkgname=openresty
-pkgver=1.31.8.1
+pkgver=1.31.9.1
 pkgrel=1
 pkgdesc="A Fast and Scalable Web Platform by Extending NGINX with Lua"
 arch=('x86_64' 'armv6h')
@@ -29,7 +29,7 @@ source=(https://openresty.org/download/$pkgname-$pkgver.tar.gz{,.asc}
         nginx.conf
         nginx.vh.default.conf
         )
-sha256sums=('b569c63b420f80a4ac8466f2deffe73ed93ab760026532e039c3658409a997f4'
+sha256sums=('71d49935bdc186dafc1f4b0a8ba44dba1bf4abc8ca52d4621f2039ec8fdcc95f'
             'SKIP'
             '67dedde2ca4c660f856641522bae70b856ee30ddeb08c14fdaff37ac22ab6b5c'
             'ba158bbf82d3479a99215457e7ac6d1e4dc3548d9f92f7c240634df7215d85e9'
