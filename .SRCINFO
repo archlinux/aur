@@ -1,0 +1,21 @@
+pkgbase = python-k3heap
+	pkgdesc = Binary min heap implemented with reference
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/pykit3/k3heap
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3heap
+	conflicts = python-k3heap
+	source = k3heap::git+https://github.com/pykit3/k3heap.git#tag=v0.1.13
+	sha256sums = 5bdb20bf24deca5676bc2c9a65b1bba3ff6b94d0b111f691c4b26aa76bc58cef
+
+pkgname = python-k3heap
