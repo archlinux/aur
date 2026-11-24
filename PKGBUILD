@@ -1,7 +1,7 @@
 # Maintainer: colegeming <collegeming@outlook.com>
 
 pkgname=solomd-arch-bin
-pkgver=5.3.5
+pkgver=5.3.6
 pkgrel=1
 pkgdesc='Lightweight Markdown and plain text editor (Tauri 2; upstream .deb repackaged for Arch and Arch Linux ARM)'
 arch=('x86_64' 'aarch64')
@@ -23,12 +23,12 @@ options=('!strip' '!debug')
 
 # The package payload is the upstream .deb; only the license text comes from
 # the repo at the release tag (see [extras.license] in metadata.toml).
-source=("LICENSE::https://raw.githubusercontent.com/zhitongblog/solomd/v5.3.5/LICENSE")
+source=("LICENSE::https://raw.githubusercontent.com/zhitongblog/solomd/v5.3.6/LICENSE")
 sha256sums=('abe8ac7178f2d3e51647e58039cda0bb74ca8661f126108acc2fa57bf9c76dce')
-source_x86_64=("SoloMD_${pkgver}_amd64.deb::https://github.com/zhitongblog/solomd/releases/download/v${pkgver}/SoloMD_5.3.5_amd64.deb")
-sha256sums_x86_64=('af6178621f7d612849c6b817ac926b0b3ed3b68e3eacf3cc4804a89ad6a8d850')
-source_aarch64=("SoloMD_${pkgver}_arm64.deb::https://github.com/zhitongblog/solomd/releases/download/v${pkgver}/SoloMD_5.3.5_arm64.deb")
-sha256sums_aarch64=('8a19dd7dd00a28fb851fb1b1b8852b4b50114610c5a26011654c5beccd553a5b')
+source_x86_64=("SoloMD_${pkgver}_amd64.deb::https://github.com/zhitongblog/solomd/releases/download/v${pkgver}/SoloMD_5.3.6_amd64.deb")
+sha256sums_x86_64=('89debecb15be83c51e1abd87b34d43fca44d8fecbaf9d3ba67d3c4eb9ca72ddf')
+source_aarch64=("SoloMD_${pkgver}_arm64.deb::https://github.com/zhitongblog/solomd/releases/download/v${pkgver}/SoloMD_5.3.6_arm64.deb")
+sha256sums_aarch64=('e99eec3ac2ea51d4a86d7bd7b4cd44ecfb9ced91ae78f84db22a69c8f9f9e3d5')
 
 package() {
     local deb
