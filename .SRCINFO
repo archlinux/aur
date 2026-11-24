@@ -1,0 +1,14 @@
+pkgbase = sea-trader
+	pkgdesc = Terminal trading game inspired by Taipan!
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/zyishai/sea-trader
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = sea-trader-3.2.0.tgz
+	source = sea-trader-3.2.0.tgz::https://registry.npmjs.org/ctrader/-/ctrader-3.2.0.tgz
+	sha256sums = a04a08662e856bbcdfe8eb5b673995e96d561eed5da03265bb89119884a3d007
+
+pkgname = sea-trader
