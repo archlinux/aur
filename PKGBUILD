@@ -2,7 +2,7 @@
 
 pkgname=ungoogled-chromium-widevine-bin
 pkgver=158.0.8127.36
-pkgrel=1
+pkgrel=5
 _upstream_rel=5
 pkgdesc="A lightweight approach to removing Google web service dependency (with Widevine)"
 arch=('x86_64')
