@@ -1,0 +1,4 @@
+pkg/**
+src/**
+# Builded packages
+nsc-*
