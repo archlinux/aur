@@ -2,8 +2,8 @@
 
 pkgname=pgbot-bin
 _pkgbin=pgbot
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="Postgres intelligence for ai agents & apps"
 arch=('x86_64')
 url="https://github.com/pgrundev/pgbot"
@@ -13,7 +13,7 @@ conflicts=('pgbot')
 options=('!strip' '!debug')
 
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${_pkgbin}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('102dd639639ab7a4c2a933bf612390e21b699962ee33d9c939128657e416ae2e')
+sha256sums=('35b8249f3c7f06c8b04cfcd54a980fd9b4fbdd38a0135582ee5e9ad443380520')
 
 package() {
   cd "$srcdir"
