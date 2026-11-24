@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=imsprog-git
-pkgver=1.9.2.r0.gf74c84a
+pkgver=1.9.2+r2+g8081d55
 pkgrel=1
-pkgdesc="I2C, MicroWire and SPI EEPROM/Flash chip Programmer - is a program to read, write EEPROM chips use the CH341A programmer device and CH347T programmer device"
+pkgdesc="Software for CH341A/CH347T/FT232H-based programmers to work with I2C, SPI and MicroWire EEPROM/Flash chips"
 arch=($CARCH)
 url="https://github.com/bigbigmdm/IMSProg"
 license=('GPL-3.0-or-later')
@@ -35,7 +35,7 @@ pkgver() {
   cd "${srcdir}/${pkgname}"
   (
     set -o pipefail
-    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/+/g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
