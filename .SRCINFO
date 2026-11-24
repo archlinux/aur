@@ -1,0 +1,17 @@
+pkgbase = stegodon-bin
+	pkgdesc = Blogging platform you use over SSH
+	pkgver = 1.8.6
+	pkgrel = 1
+	url = https://github.com/deemkeen/stegodon
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = stegodon
+	conflicts = stegodon
+	options = !debug
+	source_x86_64 = stegodon-bin-1.8.6-x86_64.tar.gz::https://github.com/deemkeen/stegodon/releases/download/v1.8.6/stegodon_1.8.6_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = a8d859021f5f27f7952feee2684e72f183b703b33185021255d6ecf5ba04e00a
+	source_aarch64 = stegodon-bin-1.8.6-aarch64.tar.gz::https://github.com/deemkeen/stegodon/releases/download/v1.8.6/stegodon_1.8.6_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 20769f93d19763810aa71177fd4945b95b17f51c3959c8b3d6ef577d49674a33
+
+pkgname = stegodon-bin
