@@ -1,0 +1,17 @@
+pkgbase = k4s-bin
+	pkgdesc = kubectl-aware TUI for Kubernetes and k3s that shows the kubectl equivalent of each action
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/lywwkka-ad/k4s
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = k4s
+	conflicts = k4s
+	options = !debug
+	source_x86_64 = k4s-bin-1.1.5-x86_64.tar.gz::https://github.com/lywwkka-ad/k4s/releases/download/v1.1.5/k4s_1.1.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5f80c07f7915fdf38711650a5366258c2d7f2124d5bc34df3c04032504f427e5
+	source_aarch64 = k4s-bin-1.1.5-aarch64.tar.gz::https://github.com/lywwkka-ad/k4s/releases/download/v1.1.5/k4s_1.1.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = fd1e19e4bee18eecb3defc545c73a8e5adbe287b92d7b56ad31dcf1cb2df5df2
+
+pkgname = k4s-bin
