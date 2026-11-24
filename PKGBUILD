@@ -2,7 +2,7 @@
 
 pkgname=python-k3shell
 _name=${pkgname#python-}
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Shell command dispatcher with nested subcommand support"
 provides=(${pkgname})
@@ -27,7 +27,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('b17dd8437996ea07da87d9b58aebe4c01d0a2f7880d7481f13a484ddf422d26a')
+sha256sums=('f2fb5656c73615bf2d2c65a7b27b3dc9fef8639cbda214a978468c3bea5b9914')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
