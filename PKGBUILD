@@ -2,7 +2,7 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=mistral-vibe
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
@@ -67,15 +67,8 @@ makedepends=(
 checkdepends=(
     "uv"
 )
-source=("git+${url}.git#tag=v${pkgver}"
-        "stretch_e2e_timeouts_when_builder_is_loaded.patch")
-sha256sums=('c78c36e9c4f0022ecc7bae64ada93e14515f13a7792c6d1a278971d0c52f626b'
-            'f6431800cea45f1a74d9786769b93190c4c9c9849f295e3ac83af5cfd2b15324')
-
-prepare() {
-    cd "$pkgname"
-    cat "$srcdir/stretch_e2e_timeouts_when_builder_is_loaded.patch" | patch -p1
-}
+source=("git+${url}.git#tag=v${pkgver}")
+sha256sums=('090bfe6fe9c3001fc026b6c968edb3e5da1d04a8f9da277d88633261b650da1c')
 
 build() {
     cd "$pkgname"
@@ -136,9 +129,13 @@ check() {
     # spawned shells, so a translated builder locale breaks that test.
     export LC_MESSAGES=C
 
-    # These tests exercise scripts/install.sh and assume no `uv`/`vibe`
+    # These tests exercise scripts/install.sh and assume no `vibe`/`uv`
     # binary in /usr/bin or /bin. They fail on a builder that already has
     # system-wide installs (which this package itself provides). Skip them.
+    # test_update_detects_the_uv_tool_when_color_is_forced (new in 3.1.5)
+    # exposes /usr/bin/vibe in the same way: install.sh then takes the
+    # "another vibe in PATH" branch and never prints the expected
+    # `export PATH=...` line to stderr.
     local deselect=(
         --deselect tests/test_install_script.py::test_install_reports_missing_path_for_uv_tool_bin
         --deselect tests/test_install_script.py::test_install_fails_when_vibe_not_in_uv_tool_dir
@@ -147,6 +144,7 @@ check() {
         --deselect tests/test_install_script.py::test_install_makes_uv_trust_the_system_certificate_store
         --deselect tests/test_install_script.py::test_install_keeps_an_explicit_uv_system_certs_choice
         --deselect tests/test_install_script.py::test_install_keeps_a_legacy_uv_native_tls_choice
+        --deselect tests/test_install_script.py::test_update_detects_the_uv_tool_when_color_is_forced
     )
 
     # Run test suite in parallel, skip deselected and any e2e tests.
@@ -157,8 +155,12 @@ check() {
 
 package() {
     cd "$pkgname"
+    # Pin the wheel to this pkgver: makepkg reuses the src tree across
+    # updates, so a stale dist/*.whl from the previous version would
+    # otherwise collide in python-installer with a FileExistsError.
+    local _whl=("dist/mistral_vibe-${pkgver}"-*.whl)
     # The wheel ships entry_points.txt (vibe, vibe-acp, vibe-app-server):
     # python-installer generates the /usr/bin scripts, including /usr/bin/vibe,
     # which imports vibe.cli.launcher:main and execs the bundled vibe-rs TUI.
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" "${_whl[@]}"
 }
