@@ -1,0 +1,20 @@
+pkgbase = hnjobs-bin
+	pkgdesc = Find matching jobs in Hacker News Who's Hiring threads
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/mwinters0/hnjobs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = hnjobs
+	conflicts = hnjobs
+	options = !debug
+	source = hnjobs-bin-0.3.2-LICENSE::https://raw.githubusercontent.com/mwinters0/hnjobs/v0.3.2/LICENSE
+	sha256sums = d8cd45d563b95926d1c4ba0be092e4f189d52ed69ebd6a9d0334421652ac1a5d
+	source_x86_64 = hnjobs-bin-0.3.2-x86_64::https://github.com/mwinters0/hnjobs/releases/download/v0.3.2/hnjobs-v0.3.2-linux-amd64
+	sha256sums_x86_64 = cea510e7430899df564925cce4d682c1dba22567979db3c963e2d288ef7a56c9
+	source_aarch64 = hnjobs-bin-0.3.2-aarch64::https://github.com/mwinters0/hnjobs/releases/download/v0.3.2/hnjobs-v0.3.2-linux-arm64
+	sha256sums_aarch64 = 780dedb58f0a3c859cf6821df2afacda9ba28dd28aaa1d3b9966f7183eaee68f
+
+pkgname = hnjobs-bin
