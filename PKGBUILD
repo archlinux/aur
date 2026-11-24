@@ -7,8 +7,8 @@
 #       !buildflags is needed in order to compile the code
 
 pkgname=calculix-ccx-pardiso
-pkgver=2.23
-pkgrel=3
+pkgver=2.24
+pkgrel=1
 conflicts=('calculix')
 pkgdesc="CalculiX: 3D Structural Finite Element Program - Solver with Pardiso"
 arch=('i686' 'x86_64')
@@ -31,12 +31,10 @@ source=(
     "http://www.dhondt.de/ccx_${pkgver}.structest.tar.bz2"
 )
 
-sha256sums=(
-    '9c88385c10fb04f5dc6c4e98027a51bebdd8aee3920e05190d6c1dd08357d6e7'
-    'be2259fd9a7b990d0453b30708e1b05f2cd4b6df4a90fa96f0e4abd1ae7beaa0'
-    'db8b1361b89e357266d1dcebc071b3fd9fd37b83b4b7bb6f4a0f99b1759fbe80'
-    '3407b2ce1366df62b1ab43a21ea76ff54386b8842e6cd8660fd9047526be5dec'
-)
+sha256sums=('99fb4f9b0ec19b100a914c3a097ea1e7f0c22f715b96338acc4a66b63306a2e2'
+    '788bfafbfd2bf334af567b317decdd528129ecdcf7036a070cfd39076631531d'
+    '1c5a86765bbf3e5184a4fe952e1cee281b01f7e4072cc8bc4cc2d7476f880245'
+    'eced6d10b2c51234d586648d3ec17ef59ebe981b7308df678382762a447006bb')
 #
 # NOTE: remove -Wno-implicit when code is fixed by upstream
 #       idem for -Wno-return-mismatch
