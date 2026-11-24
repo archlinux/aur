@@ -1,0 +1,14 @@
+pkgbase = ward
+	pkgdesc = Security scanner for Laravel applications
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/eljakani/ward
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = ward-0.4.2.tar.gz::https://github.com/eljakani/ward/archive/v0.4.2.tar.gz
+	sha256sums = 797377189ab5394dcc74a489df9238fdb4e548c784699de7907f668d58f86ae9
+
+pkgname = ward
