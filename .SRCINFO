@@ -1,6 +1,6 @@
 pkgbase = noop
 	pkgdesc = Your own AI team: Claude Code and Codex agents that run on your own machines and only ask when they really need you
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://huacnlee.github.io/noop/
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = noop
 	optdepends = codex: run the agents with Codex
 	optdepends = github-cli: let the agents work on GitHub
 	optdepends = git: keep a local copy of the code the agents change
-	noextract = noop-web-1.0.8.tar.gz
-	source = noop-1.0.8.tar.gz::https://github.com/huacnlee/noop/archive/refs/tags/v1.0.8.tar.gz
-	source = noop-web-1.0.8.tar.gz::https://github.com/huacnlee/noop/releases/download/v1.0.8/noop-web.tar.gz
-	sha256sums = 00916f1b3df89b1384fc5eddfa2233a4771957d97d216ae6e3f5e0a837b653a1
-	sha256sums = 83944ee8c5fca0007f8b6b93324097b04b931d01bae59edc96aa4d198e3d4c85
+	noextract = noop-web-1.0.9.tar.gz
+	source = noop-1.0.9.tar.gz::https://github.com/huacnlee/noop/archive/refs/tags/v1.0.9.tar.gz
+	source = noop-web-1.0.9.tar.gz::https://github.com/huacnlee/noop/releases/download/v1.0.9/noop-web.tar.gz
+	sha256sums = 06c6e74bc0158a225dbf08973291504008576de3ad395943c5511fd28797306d
+	sha256sums = bc9ad330b46adb1208cb0561359527d3d10f744730f2ebabf2f961c47a047245
 
 pkgname = noop

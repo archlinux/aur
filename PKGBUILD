@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=noop
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Your own AI team: Claude Code and Codex agents that run on your own machines and only ask when they really need you"
 arch=('any')
@@ -18,8 +18,8 @@ source=("noop-${pkgver}.tar.gz::https://github.com/huacnlee/noop/archive/refs/ta
         "noop-web-${pkgver}.tar.gz::https://github.com/huacnlee/noop/releases/download/v${pkgver}/noop-web.tar.gz")
 # The web client is unpacked into the package, not into the build directory.
 noextract=("noop-web-${pkgver}.tar.gz")
-sha256sums=('00916f1b3df89b1384fc5eddfa2233a4771957d97d216ae6e3f5e0a837b653a1'
-            '83944ee8c5fca0007f8b6b93324097b04b931d01bae59edc96aa4d198e3d4c85')
+sha256sums=('06c6e74bc0158a225dbf08973291504008576de3ad395943c5511fd28797306d'
+            'bc9ad330b46adb1208cb0561359527d3d10f744730f2ebabf2f961c47a047245')
 
 package() {
     # The program finds its own code around the file it runs, so the tree is
