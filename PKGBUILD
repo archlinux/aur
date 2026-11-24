@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Lightweight all-in-one TUI connection manager for SSH, Serial, SFTP, Telnet, FTP and WebDAV"
 
-pkgver=1.3.6
+pkgver=1.4.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,9 +27,9 @@ options=('!strip')
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_i686=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
 source_aarch64=("${_appname}-${arch[2]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('96928feeb7984e15b9dd554e147c301b88657707ab3b55187ce92ad7a16e28e6')
-sha256sums_i686=('7352d3be39231643a51c57cb2e7dfc299082d54a498b89fde8b6ff1663fd4a81')
-sha256sums_aarch64=('f73c981269cb08e82caa48a104b36e40415d994e9186dd129f64972536d6118c')
+sha256sums_x86_64=('fede34e27cd8d86aaf8c7087b164fd227dbc28aecc8c3d35a5bce99cc29d25af')
+sha256sums_i686=('34e6c60e5f84fba124121456552003f8316cc9b832f6e3d695238a9713b07fc7')
+sha256sums_aarch64=('32b27c7e77181e6a3beeb8d65804232af0266c150e2f2108c40ed4b21d834c89')
 
 
 package() {
