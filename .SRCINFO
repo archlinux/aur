@@ -1,6 +1,6 @@
 pkgbase = python-k3logcollector
 	pkgdesc = Log collector for scanning and aggregating log files
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/pykit3/k3logcollector
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-k3logcollector
 	depends = python-k3cat
 	depends = python-k3thread
 	conflicts = python-k3logcollector
-	source = k3logcollector::git+https://github.com/pykit3/k3logcollector.git#tag=v0.1.7
-	sha256sums = 63fab85fdbdd85a2bcb4ccd9226a20281287030fe9e7e52dd617d890afe8ad26
+	source = k3logcollector::git+https://github.com/pykit3/k3logcollector.git#tag=v0.1.8
+	sha256sums = af82b571fcac8fba62362b75a1cb4faa608f3ce6ad49d10d1b2c7bfe02e5efa3
 
 pkgname = python-k3logcollector

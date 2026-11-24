@@ -2,7 +2,7 @@
 
 pkgname=python-k3logcollector
 _name=${pkgname#python-}
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Log collector for scanning and aggregating log files"
 conflicts=(${pkgname})
@@ -29,7 +29,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('63fab85fdbdd85a2bcb4ccd9226a20281287030fe9e7e52dd617d890afe8ad26')
+sha256sums=('af82b571fcac8fba62362b75a1cb4faa608f3ce6ad49d10d1b2c7bfe02e5efa3')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
