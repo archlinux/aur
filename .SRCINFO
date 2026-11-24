@@ -1,0 +1,17 @@
+pkgbase = tmuxwatch-bin
+	pkgdesc = TUI to watch tmux sessions
+	pkgver = 0.10.3
+	pkgrel = 1
+	url = https://github.com/steipete/tmuxwatch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tmuxwatch
+	conflicts = tmuxwatch
+	options = !debug
+	source_x86_64 = tmuxwatch-bin-0.10.3-x86_64.tar.gz::https://github.com/steipete/tmuxwatch/releases/download/v0.10.3/tmuxwatch_0.10.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1b4e5f1475ab39256c114653dd260e14cde831c75498de51fbdb7aeb315d394c
+	source_aarch64 = tmuxwatch-bin-0.10.3-aarch64.tar.gz::https://github.com/steipete/tmuxwatch/releases/download/v0.10.3/tmuxwatch_0.10.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = e0d15805b4ef300cdee33b9fd4c1c6e10848adc4362b2d1da725dbead2b45422
+
+pkgname = tmuxwatch-bin
