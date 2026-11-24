@@ -9,6 +9,7 @@ arch=(any)
 url=https://github.com/vEnhance/tsqx
 license=(MIT)
 depends=(python)
+makedepends=(python-build python-installer python-hatchling)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
   LICENSE)
 
