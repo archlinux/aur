@@ -1,0 +1,26 @@
+pkgbase = safe-chain-git
+	pkgdesc = Protect against malicious code installed via npm, yarn, pnpm, pip, uv and poetry (git version)
+	pkgver = r1613.bcd0336
+	pkgrel = 1
+	url = https://github.com/AikidoSec/safe-chain
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = npm
+	depends = bash
+	depends = nodejs
+	optdepends = npm: wrap npm and npx
+	optdepends = yarn: wrap yarn
+	optdepends = pnpm: wrap pnpm and pnpx
+	optdepends = bun: wrap bun and bunx
+	optdepends = python-pip: wrap pip
+	optdepends = python-pipx: wrap pipx
+	optdepends = uv: wrap uv and uvx
+	optdepends = python-poetry: wrap poetry
+	optdepends = python-pdm: wrap pdm
+	provides = safe-chain
+	conflicts = safe-chain
+	source = safe-chain::git+https://github.com/AikidoSec/safe-chain.git
+	sha256sums = SKIP
+
+pkgname = safe-chain-git
