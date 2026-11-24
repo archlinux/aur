@@ -1,12 +1,12 @@
 pkgbase = roundcubemail-plugin-authres_status
 	pkgdesc = Roundcube plugin for checking the Authentication-Results headers that were added by your MTA and displays an icon to show the verification status.
-	pkgver = 0.7.0
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://plugins.roundcube.net/#/packages/pimlie/authres_status
 	arch = any
 	license = GPL3
 	depends = roundcubemail
-	source = roundcubemail-plugin-authres_status-0.7.0-1.tar.gz::https://github.com/pimlie/authres_status/archive/refs/tags/0.7.0.tar.gz
-	sha256sums = fce5ced295b675d970bc9886c430c73dc14d7b32f322c8432b32ed56597b5c0a
+	source = roundcubemail-plugin-authres_status-0.7.2-1.tar.gz::https://github.com/pimlie/authres_status/archive/refs/tags/0.7.2.tar.gz
+	sha256sums = 947a0d744ba980e1c1304de87237b3a9b19e5bb0595aa32ab7d413dff376f0fd
 
 pkgname = roundcubemail-plugin-authres_status
