@@ -1,6 +1,6 @@
 pkgbase = loadlibrary
 	pkgdesc = Porting Windows Dynamic Link Libraries to Linux
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/taviso/loadlibrary
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = loadlibrary
 	makedepends = cabextract
 	depends = lib32-glibc
 	noextract = mpam-fe.exe
-	source = loadlibrary-0.1.0.tar.gz::https://github.com/taviso/loadlibrary/archive/refs/tags/0.1.0.tar.gz
+	source = loadlibrary-0.2.0-full.tar.gz::https://github.com/taviso/loadlibrary/releases/download/0.2.0/loadlibrary-0.2.0-full.tar.gz
 	source = mpam-fe.exe::http://go.microsoft.com/fwlink/?LinkID=121721&arch=x86
-	md5sums = 11e89979746b5b2374a781f2032dd204
-	md5sums = SKIP
+	md5sums = b2ec07a8b42f3093fdfefe051bd51892
+	md5sums = 8d0a079bb94cab54ac5fbb05221b7556
 
 pkgname = loadlibrary
