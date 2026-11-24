@@ -1,6 +1,6 @@
 pkgbase = kandev-bin
 	pkgdesc = Orchestrate AI coding agents in a Kanban workspace (prebuilt CLI)
-	pkgver = 0.103.0
+	pkgver = 0.103.1
 	pkgrel = 1
 	url = https://github.com/kdlbs/kandev
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = kandev-bin
 	optdepends = docker: run agents in containers
 	optdepends = openssh: run agents on remote hosts
 	optdepends = xdg-utils: open the web interface in a browser
-	provides = kandev=0.103.0
+	provides = kandev=0.103.1
 	conflicts = kandev
 	options = !strip
 	options = !debug
-	source_x86_64 = kandev-0.103.0-linux-x64-full.tar.gz::https://github.com/kdlbs/kandev/releases/download/v0.103.0/kandev-linux-x64-full.tar.gz
-	sha256sums_x86_64 = 451ce3ae1399f226e909ad99f861aa1e7af46e2aa0f14ab704f1cfc8d78a992e
-	source_aarch64 = kandev-0.103.0-linux-arm64-full.tar.gz::https://github.com/kdlbs/kandev/releases/download/v0.103.0/kandev-linux-arm64-full.tar.gz
-	sha256sums_aarch64 = 196d949465cbaa7eb792fe5df3d940c6d311205ae07430bb2b185ba6a33d2776
+	source_x86_64 = kandev-0.103.1-linux-x64-full.tar.gz::https://github.com/kdlbs/kandev/releases/download/v0.103.1/kandev-linux-x64-full.tar.gz
+	sha256sums_x86_64 = 333b6f5f2f5e01654ac4a32a964e2655fb654eea30153acf7b7543b20c8e03cd
+	source_aarch64 = kandev-0.103.1-linux-arm64-full.tar.gz::https://github.com/kdlbs/kandev/releases/download/v0.103.1/kandev-linux-arm64-full.tar.gz
+	sha256sums_aarch64 = 28ab439b50bc9ac1a7c07333575880c04fbfd161e8a57fcd68f02dc0b55693dc
 
 pkgname = kandev-bin
