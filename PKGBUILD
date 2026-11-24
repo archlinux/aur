@@ -2,7 +2,7 @@
 
 pkgbase=lazy-tmux
 pkgname=('lazy-tmux' 'lazy-tmux-fzf')
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=2
 pkgdesc="Fast tmux session manager"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source_aarch64=(
   "lazy-tmux_${pkgver}_linux_arm64.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v${pkgver}/lazy-tmux_linux_arm64.tar.gz"
   "lazy-tmux_${pkgver}_linux_arm64_fzf.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v${pkgver}/lazy-tmux_linux_arm64_fzf.tar.gz"
 )
-sha256sums_x86_64=('bc34339e84829a7353b5cbcb1e9b3a5470204bae5ff16a1965439a0fcc18ed6d' '929c9000f5fa81946f53db02041ed4a020b50223dff283b3abb676cdc99da08c')
-sha256sums_aarch64=('6112965eab762004a3eb340e364eca30458a33d7926a1edb31e39e8d35c6b20d' 'f79f3b7fd3f01ad9ad563dd368f925997119cc9d2ff3b7ae7563852e3233fbf9')
+sha256sums_x86_64=('644ec945b91c660e0a8ab119598af83c0ff454b99f5274313b679d46bc2969e2' 'c0808fc0d5b5804e1ee284f47c1d9a3ee6d8c0a72d91352a86053fe602b620b4')
+sha256sums_aarch64=('bfcb7fbac36396557da5977cd7e3126222daf93623e769526d2804b5220ec755' '2c5095db3a02793d5febb20cbcbc4116f2fe63011a1cbe94dfb6f53157d5705b')
 
 _package_arch_suffix() {
   case "$CARCH" in

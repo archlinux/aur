@@ -1,19 +1,19 @@
 pkgbase = lazy-tmux
 	pkgdesc = Fast tmux session manager
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 2
 	url = https://github.com/alchemmist/lazy-tmux
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = lazy-tmux_0.3.7_linux_amd64.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.3.7/lazy-tmux_linux_amd64.tar.gz
-	source_x86_64 = lazy-tmux_0.3.7_linux_amd64_fzf.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.3.7/lazy-tmux_linux_amd64_fzf.tar.gz
-	sha256sums_x86_64 = bc34339e84829a7353b5cbcb1e9b3a5470204bae5ff16a1965439a0fcc18ed6d
-	sha256sums_x86_64 = 929c9000f5fa81946f53db02041ed4a020b50223dff283b3abb676cdc99da08c
-	source_aarch64 = lazy-tmux_0.3.7_linux_arm64.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.3.7/lazy-tmux_linux_arm64.tar.gz
-	source_aarch64 = lazy-tmux_0.3.7_linux_arm64_fzf.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.3.7/lazy-tmux_linux_arm64_fzf.tar.gz
-	sha256sums_aarch64 = 6112965eab762004a3eb340e364eca30458a33d7926a1edb31e39e8d35c6b20d
-	sha256sums_aarch64 = f79f3b7fd3f01ad9ad563dd368f925997119cc9d2ff3b7ae7563852e3233fbf9
+	source_x86_64 = lazy-tmux_0.3.8_linux_amd64.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.3.8/lazy-tmux_linux_amd64.tar.gz
+	source_x86_64 = lazy-tmux_0.3.8_linux_amd64_fzf.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.3.8/lazy-tmux_linux_amd64_fzf.tar.gz
+	sha256sums_x86_64 = 644ec945b91c660e0a8ab119598af83c0ff454b99f5274313b679d46bc2969e2
+	sha256sums_x86_64 = c0808fc0d5b5804e1ee284f47c1d9a3ee6d8c0a72d91352a86053fe602b620b4
+	source_aarch64 = lazy-tmux_0.3.8_linux_arm64.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.3.8/lazy-tmux_linux_arm64.tar.gz
+	source_aarch64 = lazy-tmux_0.3.8_linux_arm64_fzf.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.3.8/lazy-tmux_linux_arm64_fzf.tar.gz
+	sha256sums_aarch64 = bfcb7fbac36396557da5977cd7e3126222daf93623e769526d2804b5220ec755
+	sha256sums_aarch64 = 2c5095db3a02793d5febb20cbcbc4116f2fe63011a1cbe94dfb6f53157d5705b
 
 pkgname = lazy-tmux
 
