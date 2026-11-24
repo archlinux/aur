@@ -1,5 +1,5 @@
 pkgname=orangchat-bin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="OrangChat desktop - a Discord-like real-time messaging client"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('orangchat')
 options=('!strip')
 source=("orangchat-${pkgver}.tar.gz::https://chat.oranges.lt/download/linux/OrangChat-${pkgver}-x64.tar.gz"
         "orangchat.png")
-sha256sums=('55ea1f742d3ec721153f81e61d0b5d3cbc8d15f3bf878ed05f57d1f17166aeb8'
+sha256sums=('e4ea053c664061c165ba2e17bd54047d7a2dc12b1b74a5810ca4b41e5f920fd7'
             '3018de2f89a912f38ae31a1c42284df05f90ce726cb1f64211774a7bc9fac71a')
 
 package() {
