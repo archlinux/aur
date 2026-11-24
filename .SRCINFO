@@ -1,0 +1,17 @@
+pkgbase = act3-bin
+	pkgdesc = Glance at the last 3 runs of your GitHub Actions workflows
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/dhth/act3
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = act3
+	conflicts = act3
+	options = !debug
+	source_x86_64 = act3-bin-2.0.0-x86_64.tar.gz::https://github.com/dhth/act3/releases/download/v2.0.0/act3_2.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d18e9590cb08390442b5e97bfeb148cee6686f829e788fc8f9395148ce192642
+	source_aarch64 = act3-bin-2.0.0-aarch64.tar.gz::https://github.com/dhth/act3/releases/download/v2.0.0/act3_2.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = c2c3bab9097a91a29daf376db0d65498db2f47cf60d270eaa06a6da495c15d52
+
+pkgname = act3-bin
