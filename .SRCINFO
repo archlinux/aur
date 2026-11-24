@@ -1,0 +1,14 @@
+pkgbase = gotip
+	pkgdesc = Interactive picker for running Go tests
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/lusingander/gotip
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = gotip-0.10.2.tar.gz::https://github.com/lusingander/gotip/archive/v0.10.2.tar.gz
+	sha256sums = 77451f3bb35954ed473620ab0b8848d32abb5535f8d31aeb83eb3d6bdc751d32
+
+pkgname = gotip
