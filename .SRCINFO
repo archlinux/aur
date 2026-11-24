@@ -1,0 +1,21 @@
+pkgbase = python-k3rangeset
+	pkgdesc = Segmented range represented as sorted interleaving intervals
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/pykit3/k3rangeset
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-k3ut
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-k3rangeset
+	conflicts = python-k3rangeset
+	source = k3rangeset::git+https://github.com/pykit3/k3rangeset.git#tag=v0.1.7
+	sha256sums = 4cca893ca94d4c217bef4a59c614bc7cf7285ab35f7650825345011e700e9735
+
+pkgname = python-k3rangeset
