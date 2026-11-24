@@ -6,8 +6,8 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=mapnik-git
-pkgver=4.4.0.r0.g46b2ffc
-pkgrel=2
+pkgver=4.4.0.r2.g7a1a076
+pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps'
 arch=('aarch64' 'i686' 'x86_64')
 url='https://github.com/mapnik/mapnik'
@@ -47,7 +47,7 @@ conflicts=('mapnik')
 options=('staticlibs')
 source=(
   "${pkgname}::git+${url}.git"
-  'geometry::git+https://github.com/mapbox/geometry.hpp.git'
+  'git+https://github.com/mapbox/geometry.hpp.git'
   'git+https://github.com/mapbox/variant.git'
   'git+https://github.com/mapnik/mapnik-vector-tile.git'
   'git+https://github.com/mapnik/polylabel.git'
@@ -78,7 +78,7 @@ prepare() {
 
   git -C "${pkgname}" \
     -c protocol.file.allow=always \
-    -c submodule.deps/mapbox/geometry.url="${srcdir}/geometry" \
+    -c submodule.deps/mapbox/geometry.url="${srcdir}/geometry.hpp" \
     -c submodule.deps/mapbox/mapnik-vector-tile.url="${srcdir}/mapnik-vector-tile" \
     -c submodule.deps/mapbox/polylabel.url="${srcdir}/polylabel" \
     -c submodule.deps/mapbox/variant.url="${srcdir}/variant" \
