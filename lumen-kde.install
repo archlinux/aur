@@ -1,0 +1,23 @@
+post_install() {
+  cat <<'EOF'
+==> Lumen is installed. In your Plasma session run:
+      lumen apply auto      # or dark / light; add --layout for the Lumen taskbar
+    Optional (asks for your password):
+      lumen login on        # Lumen on the login screen
+      lumen boot on         # Plymouth boot splash and Limine boot menu
+    Then log out and back in.
+    To remove it: lumen uninstall (back to Breeze), then remove the package.
+EOF
+}
+
+post_upgrade() {
+  echo "==> Lumen updated: log out and back in to load the new KWin plugins."
+}
+
+pre_remove() {
+  /usr/bin/lumen pre-remove || true
+}
+
+post_remove() {
+  echo "==> Lumen removed. Log out and back in; if the session still used Lumen, pick a Global Theme in System Settings."
+}
