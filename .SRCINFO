@@ -1,0 +1,17 @@
+pkgbase = gorest-bin
+	pkgdesc = Terminal REST client like Postman and Insomnia
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nathanfirmo/gorest
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gorest
+	conflicts = gorest
+	options = !debug
+	source_x86_64 = gorest-bin-0.1.0-x86_64.tar.gz::https://github.com/nathanfirmo/gorest/releases/download/v0.1.0/gorest_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = fb7d045c759889d140a4bdf82801db94a458fc2808e71e7aa3baac1233a69989
+	source_aarch64 = gorest-bin-0.1.0-aarch64.tar.gz::https://github.com/nathanfirmo/gorest/releases/download/v0.1.0/gorest_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 21a7475a66476841def0326be65345fe3fb9297c828f2674907e3636f6f3ddd0
+
+pkgname = gorest-bin
