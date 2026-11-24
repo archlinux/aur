@@ -1,0 +1,19 @@
+pkgbase = mash-tui-bin
+	pkgdesc = Customizable command launcher for storing and executing commands
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/dennisbergevin/mash
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mash-tui
+	conflicts = mash-tui
+	conflicts = mash
+	conflicts = mash-git
+	options = !debug
+	source_x86_64 = mash-tui-bin-0.1.4-x86_64.tar.gz::https://github.com/dennisbergevin/mash/releases/download/v0.1.4/mash_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6ae4714800f1b15080b43ffba9ec7d769c607aea4197d19174a861e0a2714a14
+	source_aarch64 = mash-tui-bin-0.1.4-aarch64.tar.gz::https://github.com/dennisbergevin/mash/releases/download/v0.1.4/mash_Linux_arm64.tar.gz
+	sha256sums_aarch64 = fe8c749832981ff0d6040e78291d5a7d6e188073528c2027b782da23253e5fda
+
+pkgname = mash-tui-bin
