@@ -1,6 +1,6 @@
 # Maintainer: Niyoko Yuliawan <niyoko.yuliawan@logisly.com>
 pkgname=navicat18-premium-lite-en
-pkgver=18.0.1
+pkgver=18.0.3
 pkgrel=1
 pkgdesc='Navicat Premium Lite with complete shutdown when its last window closes'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   'navicat-close-on-exit'
   'Navicat.Premium.18.desktop'
 )
-sha256sums=('fe02a6ad8d9a49c3b15caf67be14f14425d529c5a8bef7e6da13313fb46094e6'
+sha256sums=('5562ab8297c896ab97d0e392c8ce1599c9f2840b4bf23ea0d5ef4be7949cf62c'
             'db65186718d9a1f738e34ab1bdf40a55ad9d532d68be18ccfe44b2bb02d9360e'
             '9581f32c7cf42ed2acf89fd5a69df05fd98b2de4f840724fb988e6158a5557c9')
 
