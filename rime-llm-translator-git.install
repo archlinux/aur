@@ -23,7 +23,7 @@ post_upgrade() {
     echo -e "  \e[1;33m升级提示:\e[0m"
     echo -e "     · 从 r58 之前升上来的话，触发键处理器要重新运行 \e[1;34mrime-llm-config init\e[0m 注册"
     echo -e "       （修复选候选 2 时 vv 残留），在此之前旧接法仍可用。"
-    echo -e "     · 本版本新增 \e[1mmiyu:\e[0m 前缀，可以在输入法里直接跟 Miyu 对话（需装 Miyu 0.5.0 之后的版本）。"
+    echo -e "     · \e[1mmiyu:\e[0m 前缀现在对接 LiteMiyu 和新版 Miyu（2026 年起），旧版 Miyu 0.7.x 不再支持。"
     echo -e "       升级后跑一次 \e[1;34mrime-llm-config sync\e[0m 重新导出 config.lua 才会生效。"
     echo -e "     · \e[1mbase:\e[0m 前缀改由程序计算，不再让模型算 base64，结果不会再出错。"
     echo -e "     · 新增小鹤双拼支持（触发键 \e[1m;;\e[0m，vv 留给「追」）。要用的话重新运行"
