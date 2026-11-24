@@ -1,8 +1,8 @@
 # Maintainer: networkException <git@nwex.de>
 
 pkgname=ungoogled-chromium-bin
-pkgver=156.0.8078.79
-pkgrel=1
+pkgver=158.0.8127.36
+pkgrel=5
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
@@ -12,7 +12,6 @@ depends=(
   'at-spi2-core'
   'cairo'
   'dbus'
-  'desktop-file-utils'
   'expat'
   'glib2'
   'glibc'
@@ -54,7 +53,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 provides=("chromium=$pkgver" "chromedriver=$pkgver")
 conflicts=('chromium' 'chromedriver')
 source=(https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$pkgrel/ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst)
-sha256sums=('8870088b286430c23920c66d0c64ddc55a4e8a9e7e4e961a11e6af7816bb02fc')
+sha256sums=('008436d8b9102976ef3c97699bdc73643dffd44bd8e05c9a46c32150b48ff56f')
 
 declare -gA _system_libs=(
     [brotli]=brotli
@@ -76,7 +75,9 @@ declare -gA _system_libs=(
     #[libvpx]=libvpx
     [libwebp]=libwebp
     [libxml]=libxml2
-    [libxslt]=libxslt
+    # https://gitlab.archlinux.org/archlinux/packaging/packages/libxslt/-/merge_requests/1
+    # unbundle again once the above MR is merged
+    #[libxslt]=libxslt
     [openh264]=openh264
     [opus]=opus
     #[re2]=re2          # needs libstdc++
