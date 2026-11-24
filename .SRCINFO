@@ -1,0 +1,16 @@
+pkgbase = wisdom-tree
+	pkgdesc = TUI concentration app with pomodoro timer and lo-fi radio
+	pkgver = 0.0.20
+	pkgrel = 1
+	url = https://github.com/truegav/wisdom-tree
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	source = wisdom-tree-0.0.20.tar.gz::https://github.com/truegav/wisdom-tree/archive/v0.0.20.tar.gz
+	sha256sums = 9095b0cff2ad8bc31d0b37d2ed22f09621941e481132870fb235f9af6b9a1b16
+
+pkgname = wisdom-tree
