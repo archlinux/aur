@@ -1,12 +1,15 @@
 pkgbase = spinnaker-spin
-	pkgdesc = Spin is a command-line administration tool to manage Spinnaker applications, pipelines and configs
-	pkgver = 1.30.0
+	pkgdesc = Command-line administration tool to manage Spinnaker applications, pipelines and configs
+	pkgver = 2026.2.6
 	pkgrel = 1
-	url = https://spinnaker.io/docs/guides/spin/
+	url = https://github.com/spinnaker/spinnaker/tree/main/spin
 	arch = x86_64
-	license = Apache
-	provides = spin=$pkgver
-	source = https://storage.googleapis.com/spinnaker-artifacts/spin/1.30.0/linux/amd64/spin
-	sha256sums = 1745a658a03887d896cd439b7f209ce3255d428998ca34d52be1e8d3565d6b01
+	license = Apache-2.0
+	depends = glibc
+	provides = spin=2026.2.6
+	options = !strip
+	options = !debug
+	source = spin-2026.2.6-linux-amd64::https://storage.googleapis.com/spinnaker-artifacts/spin/2026.2.6/linux/amd64/spin
+	sha256sums = 178acfa64cc0e9a8216cec0593284239acd0cdc16baf95cf29c5f37f594adfc2
 
 pkgname = spinnaker-spin

@@ -1,15 +1,17 @@
 # Maintainer: Alberto Oliveira <orkan.aos@gmail.com>
 pkgname=spinnaker-spin
-pkgver=1.30.0
+pkgver=2026.2.6
 pkgrel=1
-pkgdesc="Spin is a command-line administration tool to manage Spinnaker applications, pipelines and configs"
+pkgdesc="Command-line administration tool to manage Spinnaker applications, pipelines and configs"
 arch=('x86_64')
-url="https://spinnaker.io/docs/guides/spin/"
-license=('Apache')
-provides=('spin=$pkgver')
-source=("https://storage.googleapis.com/spinnaker-artifacts/spin/$pkgver/linux/amd64/spin")
-sha256sums=('1745a658a03887d896cd439b7f209ce3255d428998ca34d52be1e8d3565d6b01')
+url="https://github.com/spinnaker/spinnaker/tree/main/spin"
+license=('Apache-2.0')
+depends=('glibc')
+provides=("spin=${pkgver}")
+options=('!strip' '!debug')
+source=("spin-${pkgver}-linux-amd64::https://storage.googleapis.com/spinnaker-artifacts/spin/${pkgver}/linux/amd64/spin")
+sha256sums=('178acfa64cc0e9a8216cec0593284239acd0cdc16baf95cf29c5f37f594adfc2')
 
 package() {
-    install -Dm 755 "$srcdir/spin" "$pkgdir/usr/bin/spin"
+    install -Dm755 "${srcdir}/spin-${pkgver}-linux-amd64" "${pkgdir}/usr/bin/spin"
 }
