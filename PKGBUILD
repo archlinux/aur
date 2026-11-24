@@ -3,7 +3,7 @@
 
 pkgname=neostation
 pkgver=1.0.0rc2.3002
-pkgrel=1
+pkgrel=2
 pkgdesc='Controller-friendly emulation frontend with artwork and RetroAchievements integration (source build)'
 arch=('x86_64')
 url='https://neostation.dev/'
@@ -37,13 +37,14 @@ source=(
   'MDK-LICENSE.md::https://raw.githubusercontent.com/wang-bin/mdk-sdk/37f03efa8cfc45a040c2eec835116981fe8dd728/README.md'
   'LLVM-LICENSE.txt::https://raw.githubusercontent.com/llvm/llvm-project/4a1b95bda0c444798a5240fe924dd127b776d12d/libcxx/LICENSE.TXT'
   'system-audio.patch'
+  'desktop-dialog-scaling.patch'
 )
 source_x86_64=(
   "flutter-${_flutter_version}-linux-x64.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutter_version}-stable.tar.xz"
   "mdk-sdk-${_mdk_version}-linux-x64.tar.xz::https://github.com/wang-bin/mdk-sdk/releases/download/v${_mdk_version}/mdk-sdk-linux-x64.tar.xz"
 )
 noextract=("mdk-sdk-${_mdk_version}-linux-x64.tar.xz")
-sha256sums=('50e220dc1922f36435dbcf16e4430ab6b479be6db4d84949f9d8d506f3dea02f' 'a9bf248c8311d4f4551ed49ad67feafcd98b1ac5a13269f2996c4ef4eb4d6dc2' 'db2f6936bbbc92e91a957b0e1ffc1b87ffa6c954be1b20151f095051b3c9a3d0' '539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b' '898da5b8311543eb1812666ed620a6d8ae0f3fa2cc17f0ce9b53f7399321974d')
+sha256sums=('50e220dc1922f36435dbcf16e4430ab6b479be6db4d84949f9d8d506f3dea02f' 'a9bf248c8311d4f4551ed49ad67feafcd98b1ac5a13269f2996c4ef4eb4d6dc2' 'db2f6936bbbc92e91a957b0e1ffc1b87ffa6c954be1b20151f095051b3c9a3d0' '539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b' '898da5b8311543eb1812666ed620a6d8ae0f3fa2cc17f0ce9b53f7399321974d' '2b485f83f66caacf87a7a78a3b83b7a1c6ed376a8397aecddffb7a8ca3364b77')
 sha256sums_x86_64=('25ed8c3c29d51a7353f2a944310b478af8214920639524b19c50a19e6c044c5a' "${_mdk_sha256}")
 
 _flutter_environment() {
@@ -68,6 +69,7 @@ prepare() {
   cd "${srcdir}/${_project}" || return
   [[ $(jq -r .flutter .fvmrc) == "$_flutter_version" ]]
   patch -Np1 -i "${srcdir}/system-audio.patch"
+  patch -Np1 -i "${srcdir}/desktop-dialog-scaling.patch"
   flutter config --no-analytics --enable-linux-desktop
   flutter pub get --enforce-lockfile
   # Seed the plugin cache with the checksum-verified release, not its nightly URL.

@@ -23,6 +23,7 @@ Launch `neostation` or use the desktop menu entry. The wrapper runs from `~/.neo
 - The Java 17 runtime is declared for the shipped JNI bridge. The bridge itself is not part of the verified startup path.
 - Executable updates belong to the package manager. The launcher clears `APPIMAGE` and `APPDIR`; upstream's separate system-definition and metadata updates remain unchanged.
 - No GPU override, `LD_LIBRARY_PATH`, service activation or synchronization configuration is added.
+- A downstream patch scales the systems-update dialog's version labels, download status and percentage consistently with its controls. It does not change overall interface density or desktop DPI. Version/progress scaling is tested at 640×480, 1280×720, 1920×1080 and 3840×2160; the existing dialog layout and cancellation tests are retained.
 
 ## Build diagnostics and verification
 
