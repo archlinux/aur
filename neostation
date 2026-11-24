@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+
+# Extracted builds use the working directory for persistent user data.
+: "${HOME:?HOME must be set}"
+mkdir -p -- "$HOME/.neostation"
+cd -- "$HOME/.neostation"
+
+# Updates belong to pacman, not the upstream AppImage replacement mechanism.
+unset APPIMAGE APPDIR
+exec /opt/neostation/usr/bin/neostation "$@"
