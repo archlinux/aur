@@ -40,6 +40,7 @@ optdepends=(
     'libvips: miniaturas de la banda de fondos'
     'hyprsunset: luz nocturna'
     'ddcutil: brillo de monitores externos (DDC/CI)'
+    'upower: nivel de batería en notebooks'
     'hyprshot: capturas de pantalla'
     'cliphist: launcher, portapapeles'
     'wtype: launcher, escribir símbolos'

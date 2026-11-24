@@ -29,6 +29,7 @@ pkgbase = morgan-git
 	optdepends = libvips: miniaturas de la banda de fondos
 	optdepends = hyprsunset: luz nocturna
 	optdepends = ddcutil: brillo de monitores externos (DDC/CI)
+	optdepends = upower: nivel de batería en notebooks
 	optdepends = hyprshot: capturas de pantalla
 	optdepends = cliphist: launcher, portapapeles
 	optdepends = wtype: launcher, escribir símbolos
