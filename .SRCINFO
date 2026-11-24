@@ -1,0 +1,14 @@
+pkgbase = faf-cli
+	pkgdesc = Write and maintain context files for AI coding agents
+	pkgver = 8.12.0
+	pkgrel = 1
+	url = https://github.com/wolfe-jam/faf-cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = faf-cli-8.12.0.tgz
+	source = faf-cli-8.12.0.tgz::https://registry.npmjs.org/faf-cli/-/faf-cli-8.12.0.tgz
+	sha256sums = dee18c7d150a58ad26acb75d0887143ce487c47633bab4a15681ea9f43f56205
+
+pkgname = faf-cli
