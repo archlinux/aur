@@ -1,0 +1,13 @@
+--- a/pubspec.yaml
++++ b/pubspec.yaml
+@@ -127,3 +127,8 @@
+     - assets/shaders/gif_player.frag
+     - assets/shaders/music_visualizer.frag
+-    - assets/shaders/music_card_background.frag
+\ No newline at end of file
++    - assets/shaders/music_card_background.frag
++
++hooks:
++  user_defines:
++    flutter_soloud:
++      linux_use_system_libs: true

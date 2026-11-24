@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+
+# Extracted Linux builds resolve default persistent storage from their cwd.
+: "${HOME:?HOME must be set}"
+mkdir -p -- "$HOME/.neostation"
+cd -- "$HOME/.neostation"
+
+# Keep executable updates under package-manager control.
+unset APPIMAGE APPDIR
+exec /opt/neostation/neostation "$@"
