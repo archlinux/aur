@@ -1,6 +1,6 @@
 pkgbase = turf-bin
 	pkgdesc = TurfLang: a statically typed, LLVM-backed, ahead-of-time compiled language
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/turf-lang/turf-lang
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = turf-bin
 	conflicts = turf
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/turf-lang/turf-lang/releases/download/v2.2.0/turf-v2.2.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 576e20976e5d43b5001af7c8a30100abd6b37502bfe1c428cc1ff58e26bc1f72
-	source_aarch64 = https://github.com/turf-lang/turf-lang/releases/download/v2.2.0/turf-v2.2.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = e7e3e16a61f02b6f3cca2805111a5c1d663ae847a29ebc349d7105846e0b0bbd
+	source_x86_64 = https://github.com/turf-lang/turf-lang/releases/download/v2.3.0/turf-v2.3.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = de25f519c3e56e470d280107d190997556da2e4d52a64ce4aafd5b8d2dcbd8d9
+	source_aarch64 = https://github.com/turf-lang/turf-lang/releases/download/v2.3.0/turf-v2.3.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 5e971c6469a5c703c4a0825a57ef7fdc0af55b57c4040725a2ba387c86ab126c
 
 pkgname = turf-bin
