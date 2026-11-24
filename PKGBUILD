@@ -1,6 +1,6 @@
 # Maintainer: adelmonte
 pkgname=file-browser-tui
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A Dolphin-like file manager for kitty"
 arch=('x86_64')
@@ -19,14 +19,14 @@ optdepends=(
     'poppler: PDF thumbnails'
     'xdg-utils: opening files with their default app'
     'zip: Compress to zip'
-    'udisks2: mounting, unlocking and safely removing drives'
+    'cryptsetup: unlocking encrypted drives'
     'kdeconnect: Send to Device and browsing phones over Wi-Fi'
     'glib2: file type icons for unusual files'
     'xdg-desktop-portal-tui: use as the Open and Save dialog for other programs'
 )
 install=file-browser-tui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e222329bb679b53bcc2dbcb242cf1e73f5b4d56ab9e5c04f4338ac14ff8951fd')
+sha256sums=('9c534ce9b61a9516c74f5c52ab8ddea19170dfad7659b579c9ff9ad7ee542119')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -50,6 +50,7 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm4755 "target/release/$pkgname-mount" "$pkgdir/usr/bin/$pkgname-mount"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
