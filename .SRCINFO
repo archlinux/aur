@@ -1,0 +1,21 @@
+pkgbase = toktrack-bin
+	pkgdesc = Fast token and cost tracker for LLM coding tools
+	pkgver = 2.18.0
+	pkgrel = 1
+	url = https://github.com/mag123c/toktrack
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = toktrack
+	conflicts = toktrack
+	options = !debug
+	source = toktrack-bin-2.18.0-LICENSE::https://raw.githubusercontent.com/mag123c/toktrack/v2.18.0/LICENSE
+	sha256sums = 5315058f302bf7aa21a1d9aa77973721b8b3e31c817f20eddeefd115321705e3
+	source_x86_64 = toktrack-bin-2.18.0-x86_64.tar.gz::https://github.com/mag123c/toktrack/releases/download/v2.18.0/toktrack-linux-x64.tar.gz
+	sha256sums_x86_64 = 7ca695be6191f0b6233ad3a6c6518950b2f1f5905b962cc682e5031ad564b83e
+	source_aarch64 = toktrack-bin-2.18.0-aarch64.tar.gz::https://github.com/mag123c/toktrack/releases/download/v2.18.0/toktrack-linux-arm64.tar.gz
+	sha256sums_aarch64 = d2050d769fc624c0e541906f66595a9d2f5f4bf6fb2b731914fa192699223648
+
+pkgname = toktrack-bin
