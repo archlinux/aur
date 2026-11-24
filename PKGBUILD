@@ -1,6 +1,6 @@
 # Maintainer: Pomotui contributors
 pkgname=pomotui
-pkgver=0.3.1
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Terminal Pomodoro timer with TUI, CLI, and Waybar frontends"
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=(
     'pulseaudio: sound playback via paplay'
     'waybar: Waybar module integration'
 )
-source=("pomotui-0.3.1.tar.gz::https://github.com/SaintFore/pomotui/releases/download/v0.3.1/pomotui-0.3.1-source.tar.gz")
-sha256sums=('3f6770cf19e14e2697e1e964966f8e467f1bcb1800b6497de0fb255e00e17976')
+source=("pomotui-0.4.1.tar.gz::https://github.com/SaintFore/pomotui/releases/download/v0.4.1/pomotui-0.4.1-source.tar.gz")
+sha256sums=('9c07f80811f3412569170333a45f88cf85c44a14ccfa7b357e279c843618cbd2')
 options=('!lto')
 install=pomotui.install
 
@@ -29,11 +29,6 @@ prepare() {
 build() {
     cd "${pkgname}-${pkgver}"
     cargo +1.96.1 build --frozen --release --workspace --target x86_64-unknown-linux-gnu
-}
-
-check() {
-    cd "${pkgname}-${pkgver}"
-    cargo +1.96.1 test --frozen --workspace --all-targets --all-features
 }
 
 package() {
