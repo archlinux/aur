@@ -4,8 +4,8 @@
 pkgname=lib32-libarchive
 _name="${pkgname#lib32-}"
 pkgver=3.8.11
-pkgrel=1
-pkgdesc="Multi-format archive and compression library - 32bit"
+pkgrel=2
+pkgdesc="Multi-format archive and compression library (32-bit)"
 arch=(x86_64)
 url="https://libarchive.org"
 _url=https://github.com/libarchive/libarchive
@@ -78,6 +78,7 @@ build() {
     --prefix=/usr
     --program-suffix="-32"
     --without-nettle
+    --without-libb2
   )
 
   export CFLAGS+=" -m32"
