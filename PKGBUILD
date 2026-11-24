@@ -2,7 +2,7 @@
 
 pkgname=python-k3zkutil
 _name=${pkgname#python-}
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Helper functions for ZooKeeper with kazoo"
 provides=(${pkgname})
@@ -33,7 +33,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('d1a763e2ef7bfd5d8ddad81e14c821ba0753ea3f6367111392fe31300e0caee2')
+sha256sums=('ae1bcfed8e2cbbc24911c1f62a051fa67c41eda0be42605cb55783889d1a732c')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
@@ -48,11 +48,13 @@ check() {
 	cd "${srcdir}/${_name}"
 	
     export PYTHONPATH="${srcdir}${PYTHONPATH:+:${PYTHONPATH}}"
-    # 以下用例通过 k3utdocker 操作真实 ZooKeeper 容器，构建 chroot 无 Docker daemon。
-    # TestZKLock 与 TestZKLockIdentifier 存在前缀关系，故按方法精确 deselect 避免误伤。
     pytest -x \
         --deselect=test/test_acid.py::TestAcid \
-        --deselect=test/test_cached_reader.py::TestCachedReader \
+        --deselect=test/test_cached_reader.py::TestCachedReader::test_cache \
+        --deselect=test/test_cached_reader.py::TestCachedReader::test_cb \
+        --deselect=test/test_cached_reader.py::TestCachedReader::test_update \
+        --deselect=test/test_cached_reader.py::TestCachedReader::test_ex \
+        --deselect=test/test_cached_reader.py::TestCachedReader::test_watch \
         --deselect=test/test_k3zkutil.py::TestZKinit \
         --deselect=test/test_k3zkutil.py::TestWait \
         --deselect=test/test_zklock.py::TestZKLock::test_bounded_listener \
@@ -75,7 +77,8 @@ check() {
         --deselect=test/test_zklock.py::TestZKLock::test_hosts \
         --deselect=test/test_zklock.py::TestZKLock::test_specify_identifier \
         --deselect=test/test_zklock.py::TestZKLock::test_release_listener_removed \
-        --deselect=test/test_zklock.py::TestZKLock::test_release_owning_client_stopped
+        --deselect=test/test_zklock.py::TestZKLock::test_release_owning_client_stopped \
+        --deselect=test/test_zklock.py::TestZKLock::test_release_after_node_replaced
 }
 
 package() {
