@@ -1,0 +1,16 @@
+pkgbase = wifui
+	pkgdesc = Keyboard-driven TUI for managing Wi-Fi connections
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/sohamw03/wifui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = wifui-0.6.0.tar.gz::https://github.com/sohamw03/wifui/archive/refs/tags/0.6.0.tar.gz
+	sha256sums = 501612489c7b0604f390f3035e41cb0350744420d16b2b2435820038ff9e44a6
+
+pkgname = wifui
