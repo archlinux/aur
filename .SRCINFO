@@ -1,0 +1,17 @@
+pkgbase = contrabass-bin
+	pkgdesc = Project-level orchestrator for AI coding agents
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/junhoyeo/contrabass
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = contrabass
+	conflicts = contrabass
+	options = !debug
+	source_x86_64 = contrabass-bin-0.5.1-x86_64.tar.gz::https://github.com/junhoyeo/contrabass/releases/download/v0.5.1/contrabass_0.5.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8b6c5b7a54dbe2a50308b834e1fcf58bb39cddb0bd3f813dfae63524fd363075
+	source_aarch64 = contrabass-bin-0.5.1-aarch64.tar.gz::https://github.com/junhoyeo/contrabass/releases/download/v0.5.1/contrabass_0.5.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = bf6f988d48c3e5bb038b412a09db640c64a93da0ed04adfc2d84aa016e85bb4d
+
+pkgname = contrabass-bin
