@@ -1,0 +1,17 @@
+pkgbase = gifgrep-bin
+	pkgdesc = Search for GIFs from the terminal
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/steipete/gifgrep
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gifgrep
+	conflicts = gifgrep
+	options = !debug
+	source_x86_64 = gifgrep-bin-0.4.6-x86_64.tar.gz::https://github.com/steipete/gifgrep/releases/download/v0.4.6/gifgrep_0.4.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 36768094df265fe9a9c2dfa2221da4c40d4f7a043ac22ab972c2ad9e1a3ca0a0
+	source_aarch64 = gifgrep-bin-0.4.6-aarch64.tar.gz::https://github.com/steipete/gifgrep/releases/download/v0.4.6/gifgrep_0.4.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = f26a41bd16561b126429d7ddd7d6b8a6da96a664f3e8dd70a319fcce478ff037
+
+pkgname = gifgrep-bin
