@@ -1,0 +1,18 @@
+pkgbase = cctop-bin
+	pkgdesc = Live top-style monitor for Claude Code sessions
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/stefanprodan/cctop
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = cctop
+	conflicts = cctop
+	options = !debug
+	source_x86_64 = cctop-bin-0.9.1-x86_64.tar.gz::https://github.com/stefanprodan/cctop/releases/download/v0.9.1/cctop_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8c88847c90a31627b2a3c0d858ae0e9ab65481b5b7ffa2eb84b4a302eb24447a
+	source_aarch64 = cctop-bin-0.9.1-aarch64.tar.gz::https://github.com/stefanprodan/cctop/releases/download/v0.9.1/cctop_linux_arm64.tar.gz
+	sha256sums_aarch64 = 608cd1f2c3f39db15714177beee2668015c7ed086ca98feed4e3eb2377421fbe
+
+pkgname = cctop-bin
