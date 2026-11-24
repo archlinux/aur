@@ -4,12 +4,12 @@
 # .github/workflows/packaging.yml for every new version before it goes to the AUR (S034); 'SKIP'
 # keeps a local makepkg working. .SRCINFO is generated, not kept here.
 pkgname=hitokoto
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A native, single-file hybrid Markdown editor"
 arch=('x86_64')
 url="https://github.com/Daniel-Fuerst/hitokoto"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-or-later' 'OFL-1.1')
 depends=(
     'gcc-libs'
     'glibc'
@@ -26,7 +26,7 @@ source=(
     "hitokoto.desktop"
 )
 sha256sums=(
-    '505c4b17eca8796e4e984e947d735551a971d5a1e5017269b991ce7903feb607'
+    '3368e846e51d4b167d48c76f212a7017a1446ec3f440307af9c72e1aef980c18'
     '6e780a4fce0fc06cb349b88a8976bb2793cdbe949f60afb0573de375083659b6'
 )
 
@@ -68,4 +68,9 @@ package() {
     # License
     install -Dm644 "$_src/LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # The math font compiled into the program (S045, ADR 0014); versions before it have none.
+    if [ -f "$_src/fonts/stix-two-math/OFL.txt" ]; then
+        install -Dm644 "$_src/fonts/stix-two-math/OFL.txt" \
+            "$pkgdir/usr/share/licenses/$pkgname/OFL-STIX-Two-Math.txt"
+    fi
 }
