@@ -1,6 +1,6 @@
 pkgbase = r-arrayexpress
 	pkgdesc = Access the ArrayExpress Microarray Database at EBI and build Bioconductor data structures: ExpressionSet, AffyBatch, NChannelSet
-	pkgver = 1.66.0
+	pkgver = 1.72.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ArrayExpress
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-arrayexpress
 	depends = r-oligo
 	depends = r-rlang
 	optdepends = r-affy
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ArrayExpress_1.66.0.tar.gz
-	sha256sums = 9cee1aa7f14ae6cd20d0a4032e27c95f154900a3172356c27bb0f55f807bf5d9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ArrayExpress_1.72.0.tar.gz
+	sha256sums = e755a9e974b2d56ed41d9db27a62166115e561f2c2fc6a46d0099b2a6140402b
 
 pkgname = r-arrayexpress
