@@ -1,0 +1,19 @@
+pkgbase = devskim
+	pkgdesc = Terminal feed reader for Hacker News, Reddit, Lobsters and GitHub Trending
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/emarkou/devskim
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-click
+	depends = python-httpx
+	depends = python-textual
+	source = https://files.pythonhosted.org/packages/source/d/devskim/devskim-0.8.0.tar.gz
+	sha256sums = d6f36a13f0701d53e444c8fc2d2479d1ab8e4d07d460a23b5be11a9a60638a26
+
+pkgname = devskim
