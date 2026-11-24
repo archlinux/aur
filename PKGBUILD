@@ -1,13 +1,13 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=wsmancer
 # renovate: datasource=github-releases depName=sresarehumantoo/wsmancer
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='PSRP-native WinRM shell'
 arch=('x86_64')
 url='https://github.com/sresarehumantoo/wsmancer'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7269486f49f9fc8183bbe3a0dfda708fa36f0dd298715fcdf421ad4752bb08a1')
+sha256sums=('18cdc29d8047a516a6c366518fae9a33a553cdef418560894446e22f77bb6bf7')
 license=('LGPL-3.0-only')
 depends=('glibc')
 makedepends=('go-pie' 'git')
