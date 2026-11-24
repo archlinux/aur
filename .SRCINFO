@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 158.0.8127.36
-	pkgrel = 5
+	pkgver = 158.0.8127.88
+	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
 	license = BSD-3-Clause
@@ -83,14 +83,14 @@ pkgbase = ungoogled-chromium
 	optdepends = qt6-base: Qt support
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME, KDE and Xfce
 	optdepends = upower: Battery Status API support
-	provides = chromium=158.0.8127.36
-	provides = chromedriver=158.0.8127.36
+	provides = chromium=158.0.8127.88
+	provides = chromedriver=158.0.8127.88
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-158.0.8127.36-lite.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-158.0.8127.88-lite.tar.xz
 	source = git+https://chromium.googlesource.com/external/github.com/google/crubit.git#commit=d757594f6f7ac27c0cf9c8ea63d9136f8e1f77ae
-	source = ungoogled-chromium-158.0.8127.36-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/158.0.8127.36-1.tar.gz
+	source = ungoogled-chromium-158.0.8127.88-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/158.0.8127.88-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = chromium-138-nodejs-version-check.patch
 	source = chromium-145-fix-SYS_SECCOMP.patch
@@ -110,9 +110,9 @@ pkgbase = ungoogled-chromium
 	source = enable-widevine-arm64.patch
 	source = use-oauth2-client-switches-as-default.patch
 	source = glibc-2.42-baud-rate-fix.patch
-	sha256sums = 8a93030a68231ea046479c47d6b26dfae43becef1b5343cf95f8146109291d6d
+	sha256sums = 76f5aa94996e31a59b9aa01944c5bdc181043ff58553aff572f9d5750acd326d
 	sha256sums = fa10e66c8078c2e02cf7e1df0810b7c7d77b89592cc27fca7a756cc4a5ba06cb
-	sha256sums = 7c6436fad80824245828b649ca776cb1c44f6827267858a7b1bb482ab62819c9
+	sha256sums = c02190304095cd790c729d6069ecf9a43b48123efe5d93ae46489ef71459da57
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
 	sha256sums = 4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e
