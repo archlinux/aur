@@ -1,0 +1,21 @@
+pkgbase = gex-terminal
+	pkgdesc = Terminal UI for intraday gamma exposure and market structure
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/zrack/gex-terminal
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiohttp
+	depends = python-dotenv
+	depends = python-numpy
+	depends = python-textual
+	depends = python-websockets
+	source = gex-terminal-0.6.0.tar.gz::https://github.com/zrack/gex-terminal/archive/v0.6.0.tar.gz
+	sha256sums = dee9463f6d71c36ed1e400750a72300f8560e2cf66841878345685517598e50c
+
+pkgname = gex-terminal
