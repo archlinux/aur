@@ -1,6 +1,6 @@
 # tigervnc-runit — two runit services for TigerVNC
 
-**Version 1.1.0-1.** AUR-ready packaging for Artix Linux + runit, including
+**Version 1.1.0-2.** AUR-ready packaging for Artix Linux + runit, including
 LARBS/dwm. This package installs runit service definitions, not TigerVNC itself
 (which is provided by the `tigervnc` dependency). No services are enabled
 or started during installation. Configure one or both services to your needs.
@@ -58,11 +58,20 @@ so custom settings survive upgrades. Treat it as a privileged shell fragment.
    session=dwm-vnc
    geometry=1920x1080
    depth=24
+   rendernode=
    localhost
    securitytypes=vncauth
    ```
 
    `localhost` is important: VncAuth alone is **not encrypted**.
+   `rendernode=` must have an empty value, without quotes. This disables
+   Xvnc's DRI3 GPU acceleration so the virtual server does not auto-select
+   a GPU and interfere with local Xorg startup. The virtual run script
+   refuses to launch without this setting in the effective configuration
+   (system defaults, user config, then system mandatory overrides).
+   Software rendering is used instead. The service clears inherited
+   `XDG_CONFIG_HOME` and uses `~/.config/tigervnc/config` (or the legacy
+   `~/.vnc/config` when that directory is still in use).
    In the config file, these are TigerVNC options, **not** shell assignments.
 
 3. Enable only this runit service:
@@ -165,6 +174,15 @@ if you will use SSH. Port 5900 is used by `tigervnc-share`, port 5901 by
 
 ## Troubleshooting
 
+- If local Xorg fails with `Device or resource busy` / `drmSetMaster failed`
+  while Xvnc is running, stop the supervised service, not just its PID:
+  `sudo sv down tigervnc`. Killing Xvnc alone lets runit start it again.
+  Add `rendernode=` (empty, no quotes) to the VNC user's config before
+  starting the virtual service again with `sudo sv up tigervnc`.
+  For remote access to your physical desktop, leave `tigervnc` disabled
+  and enable `tigervnc-share` instead. Check `/etc/tigervnc/vncserver-config-mandatory`
+  if a system override defeats the user setting. See the upstream
+  [Xvnc rendernode option](https://tigervnc.org/doc/Xvnc.html).
 - `sudo tail -f /var/log/tigervnc/current` for the virtual session;
   `sudo tail -f /var/log/tigervnc-share/current` for desktop sharing.
 - Virtual-session log: `~/.local/state/tigervnc/*.log` of `VNC_USER`.

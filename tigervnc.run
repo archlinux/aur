@@ -41,4 +41,51 @@ case "${VNC_DISPLAY:-}" in
         ;;
 esac
 
+# vncsession has no Xvnc argument passthrough. Check its configuration in
+# upstream precedence order, and fail closed rather than auto-opening the GPU.
+# Match vncsession's normal HOME-based config lookup, including legacy ~/.vnc.
+unset XDG_CONFIG_HOME
+home=$(getent passwd "$VNC_USER" | cut -d: -f6)
+case "$home" in
+    /*) ;;
+    *) echo 'tigervnc: cannot determine VNC_USER home directory' >&2; exit 1 ;;
+esac
+userdir="$home/.config/tigervnc"
+if [ ! -e "$userdir" ] && [ -e "$home/.vnc" ]; then
+    userdir="$home/.vnc"
+fi
+set --
+for file in /etc/tigervnc/vncserver-config-defaults \
+    "$userdir/config" /etc/tigervnc/vncserver-config-mandatory; do
+    if [ -e "$file" ]; then
+        if [ ! -r "$file" ]; then
+            echo "tigervnc: cannot read $file" >&2
+            exit 1
+        fi
+        set -- "$@" "$file"
+    fi
+done
+# No input files must not make awk wait on the service's stdin.
+if ! awk '
+    /^[[:space:]]*#/ { next }
+    {
+        line = $0
+        sub(/^[[:space:]]*/, "", line)
+        if (tolower(line) ~ /^rendernode[[:space:]]*=/) {
+            sub(/^[^=]*=[[:space:]]*/, "", line)
+            seen = 1
+            safe = (line == "")
+        } else if (tolower(line) ~ /^rendernode([[:space:]]|$)/) {
+            seen = 1
+            safe = 0
+        }
+    }
+    END { exit !(seen && safe) }
+' /dev/null "$@"; then
+    echo "tigervnc: refusing GPU auto-selection; set rendernode= (empty, no quotes) in $userdir/config" >&2
+    echo 'tigervnc: check system overrides too; use tigervnc-share for the local desktop' >&2
+    sleep 10
+    exit 1
+fi
+
 exec /usr/bin/vncsession -D "$VNC_USER" "$VNC_DISPLAY"
