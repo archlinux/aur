@@ -1,0 +1,14 @@
+pkgbase = sudoku-in-terminal
+	pkgdesc = Sudoku game in the terminal
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/mrozio13pl/sudoku-in-terminal
+	arch = any
+	license = Apache-2.0
+	makedepends = npm
+	depends = nodejs
+	noextract = sudoku-in-terminal-1.2.2.tgz
+	source = sudoku-in-terminal-1.2.2.tgz::https://registry.npmjs.org/sudoku-in-terminal/-/sudoku-in-terminal-1.2.2.tgz
+	sha256sums = fb2137626167d9ce82a9b7011f4143fd31e3ed319f250e6c9b9c9ede4067c6c5
+
+pkgname = sudoku-in-terminal
