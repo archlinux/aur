@@ -1,6 +1,6 @@
 # Maintainer: Tim Culverhouse <tim@timculverhouse.com>
 pkgname=monstar
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Linux-native Wayland terminal built on Ghostty terminal core'
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ optdepends=(
   'xdg-utils: open links when a desktop portal is unavailable'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('5a13ca6bb22a5d5e4e029e706c8dc5157655f906949aec4d42082ac88ae6d593')
+sha256sums=('d5c0ed14432c7610bbbfbb798e87a595102c2f42c8ef0517de3e89db9de1781a')
 
 prepare() {
   cd "$pkgname-$pkgver"
