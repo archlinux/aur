@@ -3,7 +3,7 @@
 
 pkgname=nextcloud-app-onlyoffice
 _name=onlyoffice
-pkgver=10.0.0
+pkgver=10.2.1
 pkgrel=1
 pkgdesc="Integrate ONLYOFFICE documentserver into NextCloud"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nextcloud')
 makedepends=('nextcloud' 'php' 'ripgrep' 'yq')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/onlyoffice-nextcloud/releases/download/v$pkgver/onlyoffice.tar.gz")
-sha512sums=('fdb452bb9ef8d6613204036b0a9309da28541f22a83a4b296b749fcbbfe5e06cbe528d3926b347b74aeb204c0af9f4b3a9b50350a960286d79d8dc28929eac17')
+sha512sums=('ae155b317db4675e1079ed0392956150cd1b089a78c027ed00acba1a74cf76a1fe1477cf5beedfbb9fbcb68fbb4c1c6cc8035e838160c112efaba8ca422132e6')
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
