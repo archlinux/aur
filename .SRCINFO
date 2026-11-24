@@ -1,13 +1,13 @@
 pkgbase = atmosphera-niri
 	pkgdesc = Meta package: Atmosphera shell + niri compositor + niri IPC module
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/alexindigo/atmosphera
 	arch = any
 	license = GPL-3.0-or-later
 	depends = atmosphera
 	depends = niri
-	depends = qt6-niriqml
+	depends = qt6-niriqml>=0.3.0
 	depends = xwayland-satellite
 
 pkgname = atmosphera-niri
