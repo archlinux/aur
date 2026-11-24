@@ -25,7 +25,7 @@ pkgbase = ic-sync
 	optdepends = gnome-keyring: Secret Service provider for credential storage
 	optdepends = kwallet: Secret Service provider for KDE Plasma
 	source = ic-sync-0.1.1.tar.gz::https://github.com/yurisuki/ic-sync/archive/refs/tags/v0.1.1.tar.gz
-	source = SHA256SUMS::https://github.com/yurisuki/ic-sync/releases/download/v0.1.1/SHA256SUMS
+	source = SHA256SUMS-0.1.1::https://github.com/yurisuki/ic-sync/releases/download/v0.1.1/SHA256SUMS
 	sha256sums = SKIP
 	sha256sums = SKIP
 

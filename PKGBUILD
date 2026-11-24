@@ -15,7 +15,7 @@ optdepends=('gnome-keyring: Secret Service provider for credential storage'
 # against the SHA256SUMS file published with the GitHub release, so a new
 # version only needs a pkgver bump in this file.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yurisuki/ic-sync/archive/refs/tags/v$pkgver.tar.gz"
-        "SHA256SUMS::https://github.com/yurisuki/ic-sync/releases/download/v$pkgver/SHA256SUMS")
+        "SHA256SUMS-$pkgver::https://github.com/yurisuki/ic-sync/releases/download/v$pkgver/SHA256SUMS")
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
@@ -23,7 +23,7 @@ prepare() {
 
   local archive="$pkgname-$pkgver.tar.gz"
   local expected
-  expected=$(awk -v name="$archive" '$2 == name { print $1 }' SHA256SUMS)
+  expected=$(awk -v name="$archive" '$2 == name { print $1 }' "SHA256SUMS-$pkgver")
   if [[ -z "$expected" ]]; then
     error "No checksum for $archive in the GitHub SHA256SUMS"
   fi
