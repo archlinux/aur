@@ -6,7 +6,7 @@
 # 通过系统 electron43 运行，与国际版、kimi-work-bin 可并存。
 
 pkgname=kimi-work-cn-bin
-pkgver=3.2.27
+pkgver=3.2.28
 pkgrel=1
 _prefix='/opt/kimi-work-cn'
 pkgdesc='Kimi Work desktop client, mainland China build pinned to the China region'
@@ -43,7 +43,7 @@ noextract=("kimi_${pkgver}.exe")
 sha256sums=(
   '85e9c4268a8ee267755f0f3faa4b7cd957db27d57d0c22d53cb2c691d34f0ec2'
   '817e0d47bca30dfb87aa2e9df40fb94ba1d3704305d2b6b0f2b4359e4ab7e304'
-  '34db2d168ba29e0468cc440dc592b5a10f8be07b29618a42a749ffc2ea106a10'
+  '336c6e3841d890fcc1c073ac2b3f25db83fdaafa9475af425f070cc0894e6eaf'
   '51c1c2a95bc83082315531565fdb240af49967614c6eb098e339ae8594782e6f'
   '45c7624addd5a291ee020b20f7f890608c9291306a9d65905371583636648e41'
   'ab973d8d007cfed09bf051378baf4fd220f545a5533ab5e9269aad8674e7f468'
@@ -56,7 +56,7 @@ sha256sums=(
   '3c7318f245a03160c859da344a39cf7f53ad7b54f452822af54e0cf3225071dd'
   '45774e46306a81675a950e940ebab249aef9128267a561874d8c531e99ce245a'
 )
-sha256sums_x86_64=('91437498a5326b3d74ca98e19296ad440c0cc706392258a294f9d13a39731bac')
+sha256sums_x86_64=('68d70c748f3b227c0ec6bf75fd77704c639680f29148bcf0bea224f1117ab300')
 
 prepare() {
   local _res="${srcdir}/payload/resources/resources"
@@ -120,7 +120,7 @@ prepare() {
     "${srcdir}/app/out/main/index.js"
   grep -qF '"launcherEnabled": ![], "launcherShortcut": ' \
     "${srcdir}/app/out/main/index.js"
-  grep -qE '"launcherEnabled": _0x[0-9a-f]+\[_0x[0-9a-f]+\([0-9]+\)\] === !!\[\],' \
+  grep -qE '"launcherEnabled": _0x[0-9a-f]+\[("launcherEnabled"|_0x[0-9a-f]+\([0-9]+\))\] === !!\[\],' \
     "${srcdir}/app/out/main/index.js"
   grep -qF '= "kimi-work-cn.desktop";' \
     "${srcdir}/app/out/main/index.js"
