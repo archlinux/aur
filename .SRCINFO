@@ -1,0 +1,16 @@
+pkgbase = conveyor-bin
+	pkgdesc = Local CI/CD pipelines with a real-time TUI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sumant1122/conveyor
+	arch = x86_64
+	license = MIT
+	provides = conveyor
+	conflicts = conveyor
+	options = !debug
+	source = conveyor-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/sumant1122/conveyor/v0.1.0/LICENSE
+	sha256sums = 572ca8dd67a969ba171c89979adeb309eb4905d786ea9fc347bddda70456b933
+	source_x86_64 = conveyor-bin-0.1.0-x86_64.tar.gz::https://github.com/sumant1122/conveyor/releases/download/v0.1.0/conveyor-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 3701d3a9a9285ffc973639a403236026dacc00666d4eeabccdf9cc902554d719
+
+pkgname = conveyor-bin
