@@ -1,0 +1,17 @@
+pkgbase = diffpane-bin
+	pkgdesc = Real-time TUI diff viewer for AI coding agents
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/astro-han/diffpane
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = diffpane
+	conflicts = diffpane
+	options = !debug
+	source_x86_64 = diffpane-bin-0.4.0-x86_64.tar.gz::https://github.com/astro-han/diffpane/releases/download/v0.4.0/diffpane_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8747f0426336a4d68befb556ccc7299d864e933cb5ab22f61176de3f584382a5
+	source_aarch64 = diffpane-bin-0.4.0-aarch64.tar.gz::https://github.com/astro-han/diffpane/releases/download/v0.4.0/diffpane_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = de557ab837a2b7bffc724ceb7eebd4e2147b4bbd0c3afdcfbd8a9b0ea4e19c27
+
+pkgname = diffpane-bin
