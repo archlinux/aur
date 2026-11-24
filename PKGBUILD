@@ -23,8 +23,8 @@
 # and /usr/bin/zcode would otherwise clash with the packaged entry.
 
 pkgname=zcode-cn-bin
-pkgver=3.18.2_10443
-pkgrel=4
+pkgver=4.0.0_10870
+pkgrel=1
 pkgdesc='ZCode — agentic development environment for GLM (official Linux build, BigModel defaults)'
 arch=('x86_64' 'aarch64')
 url='https://zcode.z.ai/cn'
@@ -51,13 +51,13 @@ conflicts=('zcode-cn' 'z-code-bin' 'zcode-bin' 'zcode-desktop-bin')
 provides=('zcode-cn')
 options=('!strip')
 source=("${pkgname}.sh" 'patch.cjs')
-source_x86_64=("ZCode-3.18.2-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.18.2/linux-x64/ZCode-3.18.2-linux-x64.deb")
-source_aarch64=("ZCode-3.18.2-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.18.2/linux-arm64/ZCode-3.18.2-linux-arm64.deb")
-noextract=('ZCode-3.18.2-linux-x64.deb' 'ZCode-3.18.2-linux-arm64.deb')
+source_x86_64=("ZCode-4.0.0-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/4.0.0/linux-x64/ZCode-4.0.0-linux-x64.deb")
+source_aarch64=("ZCode-4.0.0-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/4.0.0/linux-arm64/ZCode-4.0.0-linux-arm64.deb")
+noextract=('ZCode-4.0.0-linux-x64.deb' 'ZCode-4.0.0-linux-arm64.deb')
 sha256sums=('6f4fbd5d8f8e6a1cd8b920c2a867e20eca10dd61404a20aee399168f5be9035e'
             '2700a8d1d447a6805b1e600bdc12cc05afa16948896696a5a3a0ffb341e1d090')
-sha256sums_x86_64=('a7e066eeb018d15e403546a14dd3692220fc9976769b1f3525a0620cfa974f73')
-sha256sums_aarch64=('be3de63f57b1351d921bd977a21cff212d9e5a0710e3af8eae8abcfc2147b714')
+sha256sums_x86_64=('402f0eea0e3dfa23e3176525ae08d0f4101ced64ddbbe77c88ade87c53ab256a')
+sha256sums_aarch64=('961a872c505473b03649faf5f4eff8055b214dd017d5a79da532fabbca17de25')
 
 # 上游同一份包里只有一张 zcode.png；国内版图标右下角合成 CN 角标，避免两版
 # 在启动器/任务栏里完全一样。
@@ -91,7 +91,7 @@ package() {
     *) echo "unsupported architecture: ${CARCH}" >&2; return 1 ;;
   esac
 
-  bsdtar -C "${_extractdir}" -xf "${srcdir}/ZCode-3.18.2-linux-${_arch}.deb"
+  bsdtar -C "${_extractdir}" -xf "${srcdir}/ZCode-4.0.0-linux-${_arch}.deb"
   _data="$(find "${_extractdir}" -maxdepth 1 -name 'data.tar.*' -print)"
   [[ -n "${_data}" ]] || { echo 'no data.tar.* in deb' >&2; return 1; }
   bsdtar -C "${_extractdir}" -xf "${_data}"
