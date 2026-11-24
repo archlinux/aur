@@ -27,10 +27,10 @@ license=('custom')
 depends=('sdl2' 'sdl2_ttf' 'fontconfig' 'ttf-liberation')
 makedepends=('gcc' 'make' 'python')
 options=('!debug')
-source=('druglord2-port.tar.gz::https://github.com/burecar/druglord2-linux/releases/download/v1.0/druglord2-port.tar.gz'
+source=('druglord2-port.tar.gz::https://github.com/BurekOne/druglord2-linux/releases/download/v1.0/druglord2-port.tar.gz'
         'druglord2.exe::http://www.geekhideout.com/downloads/druglord2.exe')
 noextract=('druglord2.exe')
-sha256sums=('62968e7dcdafd0775e4d2f029ee84953fc286e1f1da5d26ed1976a19710b40cb'
+sha256sums=('5133af95c50eb07fd504640b31772cb588696ae0c03e9ee8bc59d5cf5a53701f'
             '187515f94d434567c58ecee5ced5c909c3fa6a0cb5054f81987ddb04be5aa5fb')
 
 prepare() {
