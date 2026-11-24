@@ -1,0 +1,18 @@
+pkgbase = kanban-python
+	pkgdesc = Kanban board for the terminal
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/zaloog/kanban-python
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-platformdirs
+	depends = python-rich
+	source = https://files.pythonhosted.org/packages/source/k/kanban_python/kanban_python-0.6.4.tar.gz
+	sha256sums = cf818fceabd60185a777896b7d852ab04454ef852d26ae726aa620ed2035f99d
+
+pkgname = kanban-python
