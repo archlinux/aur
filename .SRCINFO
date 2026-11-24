@@ -1,0 +1,21 @@
+pkgbase = ota-bin
+	pkgdesc = Execution governance for AI agents
+	pkgver = 1.6.28
+	pkgrel = 1
+	url = https://github.com/ota-run/ota
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = ota
+	conflicts = ota
+	options = !debug
+	source = ota-bin-1.6.28-LICENSE::https://raw.githubusercontent.com/ota-run/ota/v1.6.28/LICENSE
+	sha256sums = e3c151ac1be0424e8bd314d2852b7b9ac0913195fa340680f4ebd44f1a8d2cff
+	source_x86_64 = ota-bin-1.6.28-x86_64.tar.gz::https://github.com/ota-run/ota/releases/download/v1.6.28/ota-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f7546e64e392a007eb265bf19cbce59421259ff36d652ccd7dd30c13846f0aa0
+	source_aarch64 = ota-bin-1.6.28-aarch64.tar.gz::https://github.com/ota-run/ota/releases/download/v1.6.28/ota-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 69f14b1572800446c481aea38d8c0c35c1aa37eb44f5a6ad0187672990321d37
+
+pkgname = ota-bin
