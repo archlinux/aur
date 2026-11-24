@@ -1,6 +1,6 @@
 pkgbase = hyprland-plus
 	pkgdesc = Hyprland 0.57.2 with Halcyon window features, app-scoped pen pressure curves and Surface touchD integration
-	pkgver = 0.57.2.p3
+	pkgver = 0.57.2.p4
 	pkgrel = 1
 	url = https://github.com/trail-b1az3r/hyprland-plus
 	arch = x86_64
@@ -58,7 +58,7 @@ pkgbase = hyprland-plus
 	provides = hyprland=0.57.2
 	provides = wayland-compositor
 	conflicts = hyprland
-	source = hyprland-plus::git+https://github.com/trail-b1az3r/hyprland-plus.git#commit=832cb04a2798d3488f06332126bb112ae09f9e34
+	source = hyprland-plus::git+https://github.com/trail-b1az3r/hyprland-plus.git#commit=ee4aa4d2096593c6267d9ff04b61263cffbbb5c0
 	source = udis86::git+https://github.com/canihavesomecoffee/udis86.git#commit=5336633af70f3917760a6d441ff02d93477b0c86
 	sha256sums = SKIP
 	sha256sums = SKIP
