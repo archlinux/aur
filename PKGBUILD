@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChIPXpress
-_pkgver=1.50.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc='ChIPXpress: enhanced transcription factor target gene identification from ChIP-seq and ChIP-chip data using publicly available gene expression profiles'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fb950f39b179c63a8315b6e32acc289f02c1bde28fae088c045ffd0d89a81ef2')
+sha256sums=('70541f04f3dcdaa3b33e265a8ef8350a9fb1e90921b8bec36c72298657232bc7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
