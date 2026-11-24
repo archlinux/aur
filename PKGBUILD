@@ -1,7 +1,7 @@
 # Maintainer: lzsnyy <710080675@qq.com>
 
 pkgname=trae-cn-ide
-pkgver=2.3.105403
+pkgver=2.3.106768
 pkgrel=1
 pkgdesc="AI-powered IDE by ByteDance (Chinese Domestic Version)"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source_x86_64=("Trae_CN-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.tra
 source_aarch64=("Trae_CN-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/TRAE_CN-linux-arm64.tar.gz")
 b2sums=('b16bf7b4e9a60d3f2d04fda6b7c6f2ca224009daffeae4e2b82a2b0f2f95d8821ebb45a6a2c394357b6a55b25c801181a3200f25a373202adb0c2637b7b9d5b0'
             '9e0d6934891325eeea1e83c4d79db3f80cc91a2507302601c10763f08cfd55dfbcb456d3b64540e44229b821786d445cfc2d7a5424446c2a233a742c69e55450')
-b2sums_x86_64=('0e267f5551628ef74bcdbc47a9f1b90274cacfdf3fcffbde1e066f8c8a71bf8add08ec1b9d617dd4176fe404d36dbcafb03d2253a812f6593e4c8a402a03d965')
-b2sums_aarch64=('13b5c35492e2cac872c8ac49a867ed13f927406d9cf38c2cd8fd56528a5637757216e0c1e6123500b6eb7e25f83ab3e8e45ababe9b09474be6332be9522b4644')
+b2sums_x86_64=('e4a17381c0a37da8afac06be76d4ba4f5b3c20b6966f52bb252867fbc412d6352774f25977373a413f73872fa7434d352f4d5148c52d1af29d9444a5eed2d4ac')
+b2sums_aarch64=('b8aac8b1808064ab67f00f17091e9ef8ceed7129580bf0f92da57b6930f48fb258d93bd0f1a9c65e0325b0d8d4f08d2ad2ca7e0840e0ba75d7ae2f29e21f66a1')
 
 # 国内版图标与国际版同为上游 code.png，右下角合成 CN 角标以在启动器/任务栏区分。
 _badge_icon() {
