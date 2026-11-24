@@ -1,6 +1,6 @@
 pkgbase = python-k3fmt
 	pkgdesc = Several string operation functions for formatting and manipulation
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/pykit3/k3fmt
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-k3fmt
 	depends = python-k3color
 	provides = python-k3fmt
 	conflicts = python-k3fmt
-	source = k3fmt::git+https://github.com/pykit3/k3fmt.git#tag=v0.1.7
-	sha256sums = c1fa527d6f79bf73c98e51445e92132ffbd3bd4c9fe837b771e2a1aa2fdcebd5
+	source = k3fmt::git+https://github.com/pykit3/k3fmt.git#tag=v0.1.8
+	sha256sums = 6a3fd52506203f1126e6655fc569954f371efb31988386c03688745f3228e78e
 
 pkgname = python-k3fmt

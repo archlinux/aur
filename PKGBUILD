@@ -2,7 +2,7 @@
 
 pkgname=python-k3fmt
 _name=${pkgname#python-}
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Several string operation functions for formatting and manipulation"
 provides=(${pkgname})
@@ -28,7 +28,7 @@ checkdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('c1fa527d6f79bf73c98e51445e92132ffbd3bd4c9fe837b771e2a1aa2fdcebd5')
+sha256sums=('6a3fd52506203f1126e6655fc569954f371efb31988386c03688745f3228e78e')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
