@@ -28,7 +28,7 @@ index fe4cf2d0..2b08fd10 100644
  target_include_directories(DoConfig PRIVATE "../external/glad/include")
  target_compile_definitions(DoConfig PRIVATE IMGUI_IMPL_OPENGL_LOADER_GLAD)
 diff --git a/DoConfig/DoConfig.cpp b/DoConfig/DoConfig.cpp
-index c7bc5704..6ea8bee2 100644
+index c7bc5704..8e489344 100644
 --- a/DoConfig/DoConfig.cpp
 +++ b/DoConfig/DoConfig.cpp
 @@ -1,6 +1,8 @@
@@ -40,7 +40,7 @@ index c7bc5704..6ea8bee2 100644
  #include <stddef.h>
  #include <stdio.h>
  #include <stdlib.h>
-@@ -40,23 +42,17 @@ int main(int argc, char *argv[])
+@@ -40,23 +42,23 @@ int main(int argc, char *argv[])
  
  	char *config_path;
  
@@ -56,47 +56,60 @@ index c7bc5704..6ea8bee2 100644
  
 -			if (config_path == NULL)
 -				return 1;
--
--			memcpy(config_path, argv[0], i);
--			memcpy(config_path + i, config_string, sizeof(config_string));	// Will copy null-character
 +#ifdef JAPANESE
 +	const char config_lang[] = "japanese";
 +#else
 +	const char config_lang[] = "english";
 +#endif
  
+-			memcpy(config_path, argv[0], i);
+-			memcpy(config_path + i, config_string, sizeof(config_string));	// Will copy null-character
++	char *pref_path = SDL_GetPrefPath("cse2", config_lang);
+ 
 -			break;
 -		}
 -	}
-+	sprintf(config_path, "%s/%s", SDL_GetPrefPath("cse2", config_lang), config_string);
++	if (pref_path == NULL)
++		return 1;
++
++	snprintf(config_path, PATH_MAX, "%s%s", pref_path, config_string);
++	SDL_free(pref_path);
  
  	/////////////////////
  	// Initialise GLFW //
 diff --git a/src/Backends/Platform/SDL2.cpp b/src/Backends/Platform/SDL2.cpp
-index b52aa5e3..dd31be5d 100644
+index b52aa5e3..005bb363 100644
 --- a/src/Backends/Platform/SDL2.cpp
 +++ b/src/Backends/Platform/SDL2.cpp
-@@ -104,17 +104,15 @@ bool Backend_GetPaths(std::string *module_path, std::string *data_path)
+@@ -104,17 +104,25 @@ bool Backend_GetPaths(std::string *module_path, std::string *data_path)
  
  	return false;
  #else
 -	char *base_path = SDL_GetBasePath();
 -	if (base_path == NULL)
--		return false;
++
++	#ifdef JAPANESE
++		const char config_lang[] = "japanese";
++	#else
++		const char config_lang[] = "english";
++	#endif
++
++	char *pref_path = SDL_GetPrefPath("cse2", config_lang);
++	if (pref_path == NULL)
+ 		return false;
  
--	// Trim the trailing '/'
+ 	// Trim the trailing '/'
 -	size_t base_path_length = strlen(base_path);
 -	base_path[base_path_length - 1] = '\0';
 -	*module_path = base_path;
 -	SDL_free(base_path);
-+#ifdef JAPANESE
-+	const char config_lang[] = "japanese";
-+#else
-+	const char config_lang[] = "english";
-+#endif
++	size_t pref_path_length = strlen(pref_path);
++	if (pref_path_length > 0 && pref_path[pref_path_length - 1] == '/')
++		pref_path[pref_path_length - 1] = '\0';
++	*module_path = pref_path;
++	SDL_free(pref_path);
  
 -	*data_path = *module_path + "/data";
-+	*module_path = SDL_GetPrefPath("cse2", config_lang);
 +	*data_path = std::string("/usr/share/cse2/") + config_lang + "/data";
  
  	return true;
