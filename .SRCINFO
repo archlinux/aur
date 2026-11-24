@@ -1,6 +1,6 @@
 pkgbase = r-mmuphin
 	pkgdesc = Meta-analysis Methods with Uniform Pipeline for Heterogeneity in Microbiome Studies
-	pkgver = 1.22.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MMUPHin
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-mmuphin
 	depends = r-fpc
 	depends = r-ggplot2
 	depends = r-igraph
-	depends = r-maaslin2
+	depends = r-maaslin3
 	depends = r-metafor
 	depends = r-stringr
 	depends = r-tidyr
@@ -24,7 +24,7 @@ pkgbase = r-mmuphin
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-vegan
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MMUPHin_1.22.0.tar.gz
-	sha256sums = 94fced4c4233307fb9876cdfff3e7a1f0601930dd519d26402e47379cd4a1135
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MMUPHin_2.0.0.tar.gz
+	sha256sums = 121534b8976d25b96ec894face448d01ba65d4ab01df3ac4b0e2b71ba082170d
 
 pkgname = r-mmuphin
