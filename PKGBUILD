@@ -7,7 +7,7 @@ pkgdesc='自用维护：开源 clean-room 版 Adobe Lightroom 替代（照片管
 arch=('x86_64')
 url='https://getartcraft.com/apps/lightcraft'
 # GitHub 下载加速镜像；换镜像可 makepkg GH_MIRROR=https://另一镜像/
-_gh_mirror="${GH_MIRROR:-https://gh-proxy.com/}"
+_gh_mirror="${GH_MIRROR:-https://gh-proxy.cn/}"
 _gh_mirror="${_gh_mirror%/}/"
 license=('MIT' 'Apache')
 provides=("lightcraft=$pkgver")
